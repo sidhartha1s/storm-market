@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-basecamp-diagram-a6 (A6 tail hold, 3.0 s, host 751.452): the Himlung ridge at dawn, bed only, script stage direction
+     "(hold 3 s, base camp diagram at dawn, bed only under a moving picture)". SCHEMATIC, NOT TO SCALE.
+     REDO 29 Sep 26: the old lone triangle left the right 750 px empty. This now uses g-basecamp-diagram-z's full-width
+     ridge geometry (same far ridge, ridge path, summit (760,150), snow cap, avalanche tongue, 5 tents at the base), so the
+     cut into z at 754.452 reads as the same mountain with the light changing. Dawn: a warm light band sweeps the ridge
+     face left to right over the 3 s (gradient rect clipped to the ridge), spindrift streams off the summit (finite
+     repeats), tent windows glow. Only text: "CAMP 1" (26 px) at a ring on the ridge. No exit: it cuts straight to z. -->
+<template>
+<style>
+  #gbda6-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 40% 30%, #3a2a1a 0%, #140e09 45%, #060403 80%); }
+  .gbda6-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gbda6-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:3px; fill:#f4e9d8;
+    paint-order:stroke; stroke:#060403; stroke-width:6px; stroke-linejoin:round; }
+</style>
+<div id="gbda6-root" data-composition-id="g-basecamp-diagram-a6" data-width="1920" data-height="1080" data-duration="3">
+  <svg class="gbda6-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="gbda6-rock" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5e4c3a"/><stop offset="1" stop-color="#15202b"/></linearGradient>
+      <linearGradient id="gbda6-far" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2e24"/><stop offset="1" stop-color="#0b1016"/></linearGradient>
+      <linearGradient id="gbda6-ava" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4e9d8" stop-opacity="0.9"/><stop offset="1" stop-color="#a8998a" stop-opacity="0.85"/></linearGradient>
+      <linearGradient id="gbda6-band" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#e8a24a" stop-opacity="0"/><stop offset="0.5" stop-color="#f0b860" stop-opacity="0.55"/><stop offset="1" stop-color="#e8a24a" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="gbda6-glowg" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#e8c56a" stop-opacity="0.5"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/></radialGradient>
+      <clipPath id="gbda6-ridgeclip">
+        <path d="M0,720 L90,610 L170,640 L260,520 L350,560 L450,400 L540,430 L640,260 L700,200 L760,150 L820,210 L880,250 L950,330 L1010,300 L1090,380 L1180,360 L1290,450 L1400,420 L1520,520 L1640,490 L1760,580 L1920,540 L1920,1080 L0,1080 Z"/>
+      </clipPath>
+    </defs>
+    <g id="gbda6-scene">
+      <path d="M0,560 L130,470 L240,520 L360,400 L470,450 L580,330 L660,380 L900,300 L1040,360 L1150,300 L1300,380 L1450,330 L1600,420 L1760,370 L1920,430 L1920,1080 L0,1080 Z" fill="url(#gbda6-far)"/>
+      <path d="M0,720 L90,610 L170,640 L260,520 L350,560 L450,400 L540,430 L640,260 L700,200 L760,150 L820,210 L880,250 L950,330 L1010,300 L1090,380 L1180,360 L1290,450 L1400,420 L1520,520 L1640,490 L1760,580 L1920,540 L1920,1080 L0,1080 Z"
+            fill="url(#gbda6-rock)" stroke="#8a7048" stroke-width="2" stroke-linejoin="round"/>
+      <!-- the dawn band: a 520 px warm gradient that crosses the ridge face, clipped to the rock -->
+      <g clip-path="url(#gbda6-ridgeclip)">
+        <rect id="gbda6-band" x="0" y="100" width="520" height="980" fill="url(#gbda6-band)"/>
+      </g>
+      <path id="gbda6-cap" d="M700,200 L760,150 L820,210 L792,232 L762,214 L732,238 Z" fill="#f4e9d8" opacity="0.95"/>
+      <path d="M450,400 L540,430 L512,446 L474,430 Z M1010,300 L1090,380 L1052,372 L1030,346 Z" fill="#f4e9d8" opacity="0.6"/>
+      <path d="M470,872 L960,872 L990,900 L440,900 Z" fill="#2a3644"/>
+      <path d="M748,176 L776,178 L800,260 L790,360 L812,470 L846,590 L880,720 L872,862 L560,862 L590,760 L640,640 L690,520 L716,400 L730,280 Z" fill="url(#gbda6-ava)"/>
+      <path d="M760,210 L744,330 L720,470 L680,620 L630,780 M790,300 L800,440 L830,590 L850,760" stroke="#a8998a" stroke-width="3" fill="none" opacity="0.6"/>
+      <!-- tents at the base, windows lit -->
+      <ellipse id="gbda6-glow" cx="700" cy="852" rx="220" ry="70" fill="url(#gbda6-glowg)"/>
+      <path d="M560,872 L584,834 L608,872 Z" fill="#d8a13a"/><rect class="gbda6-win" x="578" y="852" width="12" height="14" fill="#f5d98b"/>
+      <path d="M618,872 L642,834 L666,872 Z" fill="#d8a13a"/><rect class="gbda6-win" x="636" y="852" width="12" height="14" fill="#f5d98b"/>
+      <path d="M676,872 L700,834 L724,872 Z" fill="#d8a13a"/><rect class="gbda6-win" x="694" y="852" width="12" height="14" fill="#f5d98b"/>
+      <path d="M734,872 L758,834 L782,872 Z" fill="#d8a13a"/><rect class="gbda6-win" x="752" y="852" width="12" height="14" fill="#f5d98b"/>
+      <path d="M792,872 L816,834 L840,872 Z" fill="#d8a13a"/><rect class="gbda6-win" x="810" y="852" width="12" height="14" fill="#f5d98b"/>
+      <!-- Camp 1 on the east ridge, dashed route up from the tents -->
+      <path d="M840,852 L930,700 L990,560 L1040,470" fill="none" stroke="#f4e9d8" stroke-width="3" stroke-dasharray="8 6" opacity="0.8"/>
+      <circle id="gbda6-c1ring" cx="1040" cy="470" r="14" fill="none" stroke="#f4e9d8" stroke-width="4"/>
+      <text class="gbda6-lab" x="1066" y="479">CAMP 1</text>
+      <!-- spindrift off the summit -->
+      <g id="gbda6-drift" fill="#f4e9d8">
+        <circle cx="770" cy="156" r="4"/><circle cx="780" cy="162" r="3"/><circle cx="774" cy="170" r="5"/>
+        <circle cx="788" cy="152" r="3"/><circle cx="766" cy="164" r="4"/><circle cx="792" cy="168" r="3"/>
+        <circle cx="784" cy="176" r="4"/><circle cx="776" cy="148" r="3"/><circle cx="798" cy="160" r="4"/>
+        <circle cx="770" cy="178" r="3"/>
+      </g>
+    </g>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-basecamp-diagram-a6", P = "#gbda6-";
+  const DUR = 3;
+  const tl = gsap.timeline({ paused: true });
+  const FLECKS = gsap.utils.toArray(P + "drift circle");
+
+  /* whole 3 s: slow drift so the frame never sits still; everything is revealed at t=0 (a hold, not a build) */
+  tl.fromTo(P + "scene", { scale: 1, x: 0, svgOrigin: "760 600" }, { scale: 1.02, x: -8, duration: DUR, ease: "none" }, 0);
+  /* dawn band crosses the ridge face left to right, x -520 -> 1920 over the 3 s */
+  tl.fromTo(P + "band", { x: -520 }, { x: 1920, duration: DUR, ease: "none" }, 0);
+  /* the summit snow warms as the light arrives */
+  tl.fromTo(P + "cap", { fill: "#f4e9d8" }, { fill: "#f6cf94", duration: 1.6, ease: "sine.inOut" }, 0.4);
+  /* tent windows flicker, lit */
+  tl.fromTo(".gbda6-win", { opacity: 1 }, { opacity: 0.7, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3, stagger: 0.12 }, 0);  /* last ends 2.48 */
+  /* spindrift streams east off the summit: each fleck 0.9 s, repeat 2, staggered 0.03 -> last ends 2.97 */
+  FLECKS.forEach(function (c, i) {
+    tl.fromTo(c, { x: 0, y: 0, opacity: 0.9 },
+      { x: 150 + (i % 4) * 30, y: -14 + (i % 3) * 12, opacity: 0, duration: 0.9, ease: "power1.out", repeat: 2 }, i * 0.03);
+  });
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

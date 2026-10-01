@@ -76,7 +76,8 @@ BASELINE_DIR = Path(os.environ.get("LOCALAPPDATA", str(Path.home() / "AppData" /
 
 # Mirrors render.cmd full-quality flags — the ritual must exercise the production
 # recipe, not a lighter one. Bump both together. --workers 2 matches every production
-# full-render wrapper (scripts/*_full_task.cmd all set RENDER_WORKERS=2); render.cmd's own
+# full-render wrapper (scripts/*_full_task.cmd set RENDER_WORKERS=2, except a low-RAM run such as
+# nepal_full_task.cmd at 1); render.cmd's own
 # bare default of 3 is the draft-tuned value, not what full renders actually use.
 WORKERS = int(os.environ.get("RENDER_WORKERS", "2"))
 RENDER_FLAGS = ["--gpu", "--browser-gpu", "--experimental-fast-capture=true",

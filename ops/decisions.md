@@ -6,6 +6,7 @@ line that names the one it replaces.
 
 | date | decision | by | why |
 |---|---|---|---|
+| 29 Sep 26 | All graphics build, retime, fix, redesign and verify run on Opus 5.5; decides the 24 Sep 26 "Fresh hand-built MGs: Opus, not Sonnet (proposed)" row | owner | ep-nepal ran 15 of 16 graphics writers on Sonnet and shipped thinner graphics at 2.6x Enderlin's output tokens (`learnings/mg.md` 29 Sep 26); roles: CLAUDE.md "Chain of command for motion graphics" |
 | 26 Sep 26 | Presenter circle (Paul) keeps its corner keep-out while shown; he is not shown in motion-graphics-only scenes | owner | "That's just a distraction at that point. at least for now." (`references/mg-quickref.md` "Frame and safe zones") |
 | 26 Sep 26 | Text over footage: the glass card is the one treatment; beige cite card only for quoted sources over dark maps; no dark chip | owner | one surface for text over footage (`references/mg-quickref.md` "Palette and surfaces") |
 | 26 Sep 26 | All text at least 5 % inside the frame: 96 px left/right, 54 px top/bottom; gate to follow (task 16) | owner | text-safe margin (`references/mg-quickref.md` "Frame and safe zones") |
@@ -15,7 +16,7 @@ line that names the one it replaces.
 | 26 Sep 26 | Text doctrine: diagrams label (a line and the name, a figure reference, an equation); the narration explains; no paragraphs | owner | "they will just draw a line and mention the name of it" (`references/mg-quickref.md` "Text doctrine") |
 | 26 Sep 26 | Docs plan: `references/mg-quickref.md` is the single home of MG rules; `LEARNINGS.md` split into `learnings/` by job | owner | one fact, one home; reading rules was the biggest phase of the MG trial (task 12: 38.4 % / 41.6 %) |
 | 26 Sep 26 | Hyperframes pin: keep the lock, drop the currency block, bump at kickoff | owner | owner call; done in #104 (CLAUDE.md pin rule, `render_preflight.py` drift-only, kickoff `pin_ritual.py --check-only`) |
-| 24 Sep 26 | Fresh hand-built MGs: Opus, not Sonnet (proposed) | trial, owner to confirm | one-brief trial: Opus faster (14.19 vs 22.29 min) and blind-judged 43/50 vs 26/50; Sonnet passed all 4 gates with a broken font path and stat spray |
+| 24 Sep 26 | Fresh hand-built MGs: Opus, not Sonnet (proposed; decided by the 29 Sep 26 row) | trial, owner confirmed 29 Sep 26 | one-brief trial: Opus faster (14.19 vs 22.29 min) and blind-judged 43/50 vs 26/50; Sonnet passed all 4 gates with a broken font path and stat spray |
 | 24 Sep 26 | Full 0.25 s layout sweep not built (0 of 30 extra flags real on ep-1974); font-fidelity staging proposed instead (task 14) | eval, owner to confirm | the gates measure text in system Arial while renders use Montserrat/Inter, which hid two shipped collisions |
 | 24 Sep 26 | Fixes 1-6 and the era gate merged (#94-#100) after green e2e and Opus review | owner go | bugs found by the Opus re-review of #85-#91 |
 | 24 Sep 26 | Every PR: branch, code, `/simplify`, tests + E2E, PR, `code-reviewer` on Opus, merge after owner OK | owner | Sonnet reviews approved 7 bugs that an Opus re-review caught |

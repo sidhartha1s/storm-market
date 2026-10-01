@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-insar-creep-a6 (A6): FULL-FRAME opaque diagram, track 2, host 717.735 + 15.627 (nx-a6-s3). Rebuilt 29 Sep 26 (redo
+     list): the small card over Republic's rooftop aerial (wrong picture, burned-in chyron) is gone; v-a6-aerial was removed
+     from index.html. The picture now draws the tool the line names: a satellite, radar pulses, InSAR fringes on a slope,
+     the measurement, the processing, and the warning that never reaches the valley.
+     Facts: factcheck-B #20 / #22 via mg_specs/g-insar-creep.md (Langtang slope moved up to about 12 in, 30 cm, in the 3-4
+     weeks before it failed; nothing published for the Kali Gandaki wall).
+     Palette note: the fringe ramp uses channel colours (#7fb2e5 -> #d8a13a -> #e74c3c), not the old card's green, which
+     the redo list flags as off-palette on g-insar-creep; the two radar comps stay one family.
+     Cues (retime-sheet g-insar-creep-a6): tool 0.44, Langtang 1.44-1.64, satellite 2.74, radar 3.16, measure 4.52,
+     orbit 5.80, fraction 6.70, inch 7.46, processes 9.64, images 10.46, time 10.98, then 12.08, warn 13.04, valley 13.48,
+     slope 14.14, speeds up 14.32-14.66. Exit: fade-through 14.9-15.627. -->
+<template>
+<style>
+  #gia6-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .gia6-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .gia6-all { position:absolute; inset:0; }
+  .gia6-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gia6-eb { position:absolute; left:200px; top:300px; font-weight:700; font-size:22px; line-height:26px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .gia6-cnt { position:absolute; left:1180px; top:400px; font-family:'Courier New', monospace; font-weight:700; font-size:96px; line-height:96px; color:#e74c3c; white-space:nowrap; }
+  .gia6-sub { position:absolute; left:1184px; top:506px; font-family:'Courier New', monospace; font-weight:700; font-size:30px; line-height:34px; color:#dfe7ee; white-space:nowrap; }
+  .gia6-lab { position:absolute; left:1184px; top:556px; font-weight:700; font-size:22px; line-height:26px; letter-spacing:2px; color:#93a3b2; white-space:nowrap; }
+  .gia6-inset { position:absolute; left:1180px; top:640px; width:360px; height:240px; box-sizing:border-box; overflow:hidden; border-radius:28px;
+    background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .gia6-mm { position:absolute; left:28px; top:24px; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .gia6-q { position:absolute; left:1330px; top:430px; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:160px; color:#d0121f;
+    text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+</style>
+<div id="gia6-root" data-composition-id="g-insar-creep-a6" data-width="1920" data-height="1080" data-duration="15.627">
+  <div class="gia6-grid" id="gia6-grid"></div>
+  <div class="gia6-all" id="gia6-all">
+  <svg class="gia6-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="gia6-rock" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a3644"/><stop offset="1" stop-color="#15202b"/></linearGradient>
+      <clipPath id="gia6-slopeclip"><polygon points="200,900 200,560 360,420 520,390 700,470 900,640 1100,860 1100,900"/></clipPath>
+      <clipPath id="gia6-warnclip"><rect id="gia6-warnrect" x="1000" y="250" width="480" height="0"/></clipPath>
+      <clipPath id="gia6-wipe"><rect id="gia6-wiperect" x="200" y="300" width="0" height="640"/></clipPath>
+    </defs>
+    <!-- the slope, left-centre -->
+    <polygon id="gia6-slope" points="200,900 200,560 360,420 520,390 700,470 900,640 1100,860 1100,900" fill="url(#gia6-rock)" stroke="#93a3b2" stroke-width="3"/>
+    <path id="gia6-base" d="M150 900 H1150" stroke="#4a5560" stroke-width="3"/>
+    <!-- InSAR fringes on the slope face (clipped to the slope, wiped across) -->
+    <g clip-path="url(#gia6-slopeclip)"><g clip-path="url(#gia6-wipe)"><g id="gia6-fringes">
+      <ellipse cx="760" cy="560" rx="360" ry="260" fill="#7fb2e5" opacity="0.55"/>
+      <ellipse cx="760" cy="560" rx="290" ry="205" fill="#c8b98a" opacity="0.6"/>
+      <ellipse cx="760" cy="560" rx="220" ry="155" fill="#d8a13a" opacity="0.7"/>
+      <ellipse cx="760" cy="560" rx="150" ry="105" fill="#c0392b" opacity="0.75"/>
+      <ellipse cx="760" cy="560" rx="80" ry="56" fill="#e74c3c" opacity="0.85"/>
+    </g></g></g>
+    <!-- magnifier on the slope and its leaders to the inset -->
+    <g id="gia6-mag" fill="none" stroke="#dfe7ee" stroke-width="3">
+      <circle cx="800" cy="560" r="46"/>
+      <path d="M846 560 L1180 660 M820 602 L1180 880"/>
+    </g>
+    <!-- the valley village at the slope foot -->
+    <g id="gia6-village" fill="#dfe7ee">
+      <path d="M1000 900 V874 L1014 862 L1028 874 V900 Z"/><path d="M1036 900 V870 L1052 856 L1068 870 V900 Z"/><path d="M1076 900 V878 L1088 868 L1100 878 V900 Z"/>
+    </g>
+    <!-- radar beam and pulse arcs from the dish (1452,236) to the slope -->
+    <path id="gia6-beam" d="M1452 236 L800 560" stroke="rgba(127,178,229,0.55)" stroke-width="3" stroke-dasharray="14 12" fill="none"/>
+    <g fill="none" stroke="#7fb2e5" stroke-width="5" stroke-linecap="round">
+      <path id="gia6-a1" d="M1400 250 Q1420 300 1466 316"/>
+      <path id="gia6-a2" d="M1400 250 Q1420 300 1466 316"/>
+      <path id="gia6-a3" d="M1400 250 Q1420 300 1466 316"/>
+    </g>
+    <!-- the warning arrow that stops short -->
+    <path id="gia6-warn" d="M1440 262 L1062 830" stroke="#e8c56a" stroke-width="5" stroke-dasharray="16 12" fill="none" clip-path="url(#gia6-warnclip)"/>
+    <!-- radar tile stack and the processing clock -->
+    <g id="gia6-tiles"></g>
+    <g id="gia6-clock">
+      <circle cx="1640" cy="760" r="90" fill="#0b1016" stroke="#dfe7ee" stroke-width="4"/>
+      <path d="M1640 680 V692 M1720 760 H1708 M1640 840 V828 M1560 760 H1572" stroke="#93a3b2" stroke-width="4"/>
+      <path id="gia6-hand" d="M1640 760 V694" stroke="#e8c56a" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="1640" cy="760" r="8" fill="#e8c56a"/>
+    </g>
+    <!-- the satellite (1400-1700, 110-260), positioned by GSAP only -->
+    <g id="gia6-sat">
+      <rect x="1412" y="150" width="96" height="70" rx="8" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
+      <rect x="1520" y="162" width="170" height="46" fill="#15202b" stroke="#7fb2e5" stroke-width="3"/>
+      <path d="M1548 162 V208 M1576 162 V208 M1604 162 V208 M1632 162 V208 M1660 162 V208 M1508 185 H1520" stroke="#7fb2e5" stroke-width="2"/>
+      <path d="M1420 226 Q1452 262 1484 226 Z" fill="#dfe7ee"/>
+      <path d="M1452 236 V250" stroke="#dfe7ee" stroke-width="4"/>
+      <rect x="1430" y="112" width="60" height="30" rx="4" fill="#15202b" stroke="#93a3b2" stroke-width="2"/>
+    </g>
+  </svg>
+  <div class="gia6-eb" id="gia6-eb1">LANGTANG &middot; AUG 2026</div>
+  <div class="gia6-eb" id="gia6-eb2">KALI GANDAKI &middot; SEPT</div>
+  <div class="gia6-cnt" id="gia6-cnt">ABOUT <span id="gia6-n">1</span> IN</div>
+  <div class="gia6-sub" id="gia6-sub">30 CM</div>
+  <div class="gia6-lab" id="gia6-lab">SLOPE CREEP &middot; 3-4 WEEKS BEFORE IT FAILED</div>
+  <div class="gia6-inset" id="gia6-inset">
+    <svg width="360" height="240" viewBox="0 0 360 240" style="position:absolute; left:0; top:0;">
+      <rect x="30" y="120" width="300" height="60" rx="4" fill="#d8a13a" opacity="0.9"/>
+      <g id="gia6-ticks" stroke="#0b1016" stroke-width="2"></g>
+      <path id="gia6-mark" d="M60 104 L72 88 L48 88 Z" fill="#e74c3c"/>
+      <path id="gia6-markl" d="M60 104 V182" stroke="#e74c3c" stroke-width="3"/>
+    </svg>
+    <div class="gia6-mm" id="gia6-mmlab">MILLIMETRES</div>
+  </div>
+  <div class="gia6-q" id="gia6-q">?</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-insar-creep-a6", P = "#gia6-";
+  const DUR = 15.627;
+  const NS = "http://www.w3.org/2000/svg";
+  /* ruler ticks: 1 mm every 10 px, longer every 5 */
+  const tk = document.getElementById("gia6-ticks");
+  for (let i = 0; i <= 30; i++) {
+    const l = document.createElementNS(NS, "line"); const x = 30 + i * 10;
+    l.setAttribute("x1", x); l.setAttribute("x2", x); l.setAttribute("y1", 120); l.setAttribute("y2", i % 5 ? 138 : 152);
+    tk.appendChild(l);
+  }
+  /* six radar tiles, stacked with an 18 px offset */
+  const tg = document.getElementById("gia6-tiles"); const tiles = [];
+  for (let i = 0; i < 6; i++) {
+    const g = document.createElementNS(NS, "g");
+    const x = 1200 + i * 18, y = 700 + i * 18;
+    g.innerHTML = '<rect x="' + x + '" y="' + y + '" width="160" height="110" rx="6" fill="#15202b" stroke="#93a3b2" stroke-width="2"/>' +
+      '<ellipse cx="' + (x + 80) + '" cy="' + (y + 55) + '" rx="60" ry="38" fill="#7fb2e5" opacity="0.6"/>' +
+      '<ellipse cx="' + (x + 80) + '" cy="' + (y + 55) + '" rx="38" ry="24" fill="#d8a13a" opacity="0.8"/>' +
+      '<ellipse cx="' + (x + 80) + '" cy="' + (y + 55) + '" rx="16" ry="10" fill="#e74c3c"/>';
+    tg.appendChild(g); tiles.push(g);
+  }
+
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P+"eb1", P+"eb2", P+"cnt", P+"sub", P+"lab", P+"inset", P+"q", P+"mag", P+"village", P+"beam", P+"a1", P+"a2", P+"a3", P+"clock", P+"sat", P+"slope", P+"base"], { autoAlpha: 0 }, 0);
+  tl.set(tiles, { autoAlpha: 0 }, 0);
+
+  /* ambient, whole window: grid drift, the satellite on a slow orbit (12 px/s left), the beam dash flowing */
+  tl.fromTo(P+"grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P+"sat", { x: 0 }, { x: -12 * DUR, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P+"beam", { strokeDashoffset: 0 }, { strokeDashoffset: -260, duration: 10, ease: "none" }, 0);
+
+  /* THE TOOL @0.44: the slope and the satellite; LANGTANG @1.44: its name above the slope */
+  tl.fromTo([P+"slope", P+"base"], { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+  tl.fromTo(P+"sat", { autoAlpha: 0, y: -60 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.44);
+  tl.fromTo(P+"eb1", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 1.44);
+  /* radar pulses 0.9-3.2: three arcs travel from the dish to the slope (finite repeats) */
+  tl.to(P+"beam", { autoAlpha: 1, duration: 0.3 }, 0.9);
+  [P+"a1", P+"a2", P+"a3"].forEach(function (a, i) {
+    tl.fromTo(a, { autoAlpha: 1, x: 0, y: 0, scale: 0.6, svgOrigin: "1433 283" }, { autoAlpha: 0.2, x: -560, y: 260, scale: 2.2, svgOrigin: "1433 283", duration: 1.0, ease: "power1.in", repeat: 1 }, 0.9 + i * 0.35);
+  });
+  /* SATELLITE @2.74: the InSAR fringes wipe across the slope face */
+  tl.to(P+"wiperect", { attr: { width: 920 }, duration: 1.2, ease: "power2.inOut" }, 2.74);
+  tl.fromTo(P+"fringes", { scale: 1 }, { scale: 1.04, svgOrigin: "760 560", duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 7 }, 4.0);
+
+  /* MEASURE @4.52: ABOUT 12 IN (opens at 1), 30 CM, the label */
+  tl.fromTo([P+"cnt", P+"sub", P+"lab"], { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out", stagger: 0.12 }, 4.52);
+  const c = { v: 1 };
+  tl.to(c, { v: 12, duration: 0.7, ease: "power4.out", onUpdate: function () {
+    const e = document.getElementById("gia6-n"); if (e) e.textContent = Math.round(c.v);
+  } }, 4.52);
+
+  /* FRACTION OF AN INCH @6.70: magnifier on the slope, the inset with a ruler ticking in mm */
+  tl.fromTo(P+"mag", { autoAlpha: 0, scale: 0.6, svgOrigin: "800 560" }, { autoAlpha: 1, scale: 1, svgOrigin: "800 560", duration: 0.4, ease: "back.out(2)" }, 6.6);
+  tl.fromTo(P+"inset", { autoAlpha: 0, scale: 0.8, transformOrigin: "0% 0%" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 6.7);
+  tl.fromTo([P+"mark", P+"markl"], { x: 0 }, { x: 60, duration: 1.2, ease: "steps(6)" }, 7.0);  /* ticks 1 mm at a time */
+
+  /* IT ONLY WORKS ... PROCESSES THE IMAGES IN TIME @8.34-10.98: inset out, counter dims, six tiles pile up, the clock sweeps */
+  tl.to([P+"inset", P+"mag"], { autoAlpha: 0, duration: 0.3 }, 8.2);
+  tl.to([P+"cnt", P+"sub", P+"lab"], { opacity: 0.35, duration: 0.4 }, 8.34);
+  tl.fromTo(tiles, { autoAlpha: 0, y: -50 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", stagger: 0.28 }, 9.0);
+  tl.fromTo(P+"clock", { autoAlpha: 0, scale: 0.7, svgOrigin: "1640 760" }, { autoAlpha: 1, scale: 1, svgOrigin: "1640 760", duration: 0.35, ease: "back.out(2)" }, 8.6);
+  tl.fromTo(P+"hand", { rotation: 0, svgOrigin: "1640 760" }, { rotation: 720, svgOrigin: "1640 760", duration: 3.0, ease: "none" }, 8.9);
+
+  /* THEN @12.08: the right side clears, the slope relabels to KALI GANDAKI · SEPT and its fringes clear to empty */
+  tl.to([P+"cnt", P+"sub", P+"lab", P+"clock", P+"beam"].concat(tiles), { autoAlpha: 0, x: 80, duration: 0.45, ease: "power3.in" }, 12.08);
+  tl.to(P+"fringes", { autoAlpha: 0, duration: 0.6 }, 12.08);
+  tl.to(P+"eb1", { autoAlpha: 0, y: -12, duration: 0.25 }, 12.08);
+  tl.fromTo(P+"eb2", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 12.3);
+  /* WARN @13.04: a dashed arrow from the satellite toward the valley, stopping short; VALLEY @13.48: the village */
+  /* the dashed line is revealed top-down by its clip rect and stops at 58 % of the way (y 580 of 262-830) */
+  tl.to(P+"warnrect", { attr: { height: 330 }, duration: 0.8, ease: "power2.out" }, 13.04);
+  tl.fromTo(P+"warn", { strokeDashoffset: 0 }, { strokeDashoffset: -140, duration: 2.6, ease: "none" }, 13.04);
+  tl.fromTo(P+"village", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 13.48);
+  /* SLOPE SPEEDS UP @14.14-14.66: nobody is told: the red ? slams in */
+  tl.fromTo(P+"q", { autoAlpha: 0, scale: 2.2, rotation: -12 }, { autoAlpha: 1, scale: 1, rotation: -6, duration: 0.35, ease: "power4.in" }, 14.14);
+
+  /* exit: fade-through 14.9 -> host end */
+  tl.to(P+"all", { autoAlpha: 0, duration: DUR - 14.9, ease: "power2.in" }, 14.9);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

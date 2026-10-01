@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-pore-pressure (A2 full): SCHEMATIC, NOT TO SCALE. Brief: mg_specs/g-pore-pressure.md; factcheck-B row 7 (USGS / AGI:
+     water fills the gaps between grains, raises pore pressure, cuts friction; the slope fails once friction falls below
+     the weight pulling it down).
+     Redo 29 Sep 26 (Opus). The old version had a level box of grains on a loose grid that never touched, a slip that
+     spilled water out of the box, a friction bar that sank 18 px under the baseline, and nothing new from 20 s to 27.4 s.
+     Now: a 30-degree slope block (slope frame translate(140,390) rotate(30), static, never tweened; block local
+     x 0-820, y -260..0, world corners (140,390) (850.1,800) (980.1,574.8) (270,164.8)) sitting on bedrock. Grains r 26 on a
+     52 px hex grid touch; amber ticks mark the contacts and pulse on "friction". Water rises through the pores inside a
+     clipPath that moves with the block. On "down" the block slides DOWN-SLOPE along its own 30 degrees (x +120, y +69).
+     Friction bar scaleY about its exact bottom (svgOrigin 1305 860, y set to 0 first), so its foot stays on the baseline.
+     From 19.41 a rain strip runs across the bottom (x 96-1824, y 880-1000): the LATE SEPT WEEKEND spike, then three
+     cold-blue month blocks (JUNE / JULY / AUG), then the spike pulses. No rainfall numbers.
+     Real word cues from the retime sheet (host 276.483+28.346). -->
+<template>
+<style>
+  .pp-wrap { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .pp-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .pp-head { position:absolute; left:96px; top:70px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; color:#f2f5f8; white-space:nowrap; }
+  .pp-lab { position:absolute; font-weight:700; font-size:26px; letter-spacing:3px; white-space:nowrap; }
+  .pp-schem { position:absolute; right:96px; top:84px; font-weight:700; font-size:19px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .pp-mo { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:4px; fill:#dfe7ee; }
+</style>
+<div class="pp-wrap" data-composition-id="g-pore-pressure" data-width="1920" data-height="1080" data-duration="28.346">
+  <svg class="pp-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <clipPath id="pp-clip"><polygon points="140,390 850.1,800 980.1,574.8 270,164.8"/></clipPath>
+      <clipPath id="pp-stripclip"><rect x="96" y="880" width="1728" height="120"/></clipPath>
+    </defs>
+    <g id="pp-scene">
+      <!-- bedrock under the slip plane -->
+      <polygon id="pp-bed" points="96,364.6 880,817.3 880,860 96,860" fill="#15202b" stroke="#4a5560" stroke-width="3" stroke-linejoin="round"/>
+      <!-- the block: water (world-horizontal, clipped to the block) under the grains; the whole mover slides on "down" -->
+      <g id="pp-mover">
+        <polygon points="140,390 850.1,800 980.1,574.8 270,164.8" fill="#0b1016"/>
+        <g clip-path="url(#pp-clip)">
+          <rect id="pp-water" x="130" y="800" width="860" height="700" fill="#7fb2e5" opacity="0.9"/>
+        </g>
+        <g transform="translate(140,390) rotate(30)">
+          <g id="pp-grains"></g>
+          <g id="pp-ticks" stroke="#e8c56a" stroke-width="5" stroke-linecap="round"></g>
+          <g id="pp-arrows" stroke="#e74c3c" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"></g>
+          <rect x="0" y="-260" width="820" height="260" fill="none" stroke="#93a3b2" stroke-width="3"/>
+        </g>
+      </g>
+      <!-- friction vs weight -->
+      <g id="pp-bars">
+        <!-- round 2: no scale about an origin (it rendered the bar at y 0-340, off the top). The bar only TRANSLATES
+             down (y = 520 * (1 - level)) inside a clip that ends at the baseline 860, so its foot never leaves the
+             baseline and its top is always 860 - 520 * level. -->
+        <clipPath id="pp-fricclip"><rect x="1250" y="300" width="110" height="560"/></clipPath>
+        <g clip-path="url(#pp-fricclip)"><rect id="pp-friction" x="1260" y="340" width="90" height="520" fill="#d8a13a"/></g>
+        <rect id="pp-weight" x="1420" y="560" width="90" height="300" fill="#e74c3c"/>
+        <line x1="1220" y1="860" x2="1560" y2="860" stroke="#93a3b2" stroke-width="3"/>
+      </g>
+      <line id="pp-poreld" x1="770" y1="318" x2="700" y2="520" stroke="#7fb2e5" stroke-width="3"/>
+    </g>
+    <!-- rain strip: the season as a timeline -->
+    <g id="pp-strip">
+      <rect x="96" y="880" width="1728" height="120" fill="rgba(21,32,43,0.85)" stroke="#4a5560" stroke-width="2"/>
+      <g id="pp-months">
+        <rect id="pp-mjun" x="104" y="890" width="500" height="100" fill="#5a768f"/>
+        <rect id="pp-mjul" x="612" y="890" width="500" height="100" fill="#5a768f"/>
+        <rect id="pp-maug" x="1120" y="890" width="500" height="100" fill="#5a768f"/>
+        <text class="pp-mo" id="pp-tjun" x="354" y="950" text-anchor="middle">JUNE</text>
+        <text class="pp-mo" id="pp-tjul" x="862" y="950" text-anchor="middle">JULY</text>
+        <text class="pp-mo" id="pp-taug" x="1370" y="950" text-anchor="middle">AUG</text>
+      </g>
+      <g clip-path="url(#pp-stripclip)"><g id="pp-rain" stroke="#bcd6ef" stroke-width="3" stroke-linecap="round" opacity="0.55"></g></g>
+      <rect id="pp-spike" x="1650" y="420" width="90" height="580" fill="#e74c3c"/>
+    </g>
+  </svg>
+  <div class="pp-head" id="pp-head">Why a Soaked Slope Gives Way</div>
+  <div class="pp-schem" id="pp-schem">SCHEMATIC, NOT TO SCALE</div>
+  <div class="pp-lab" id="pp-lfric" style="left:1260px; top:306px; color:#d8a13a;">FRICTION</div>
+  <div class="pp-lab" id="pp-lwt" style="left:1420px; top:526px; color:#e74c3c;">WEIGHT</div>
+  <div class="pp-lab" id="pp-lpore" style="left:700px; top:274px; color:#7fb2e5; font-size:30px;">PORE PRESSURE</div>
+  <div class="pp-lab" id="pp-lspike" style="right:120px; top:374px; color:#e74c3c;">LATE SEPT WEEKEND</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const D = 28.346;
+  const NS = "http://www.w3.org/2000/svg";
+
+  /* grains: r 26 on a 52 px hex grid in the block's slope frame, rows 45 px apart, odd rows offset 26 (they touch) */
+  const G = [], GSEL = [], TSEL = [];
+  const gEl = document.getElementById("pp-grains"), tEl = document.getElementById("pp-ticks"), aEl = document.getElementById("pp-arrows");
+  const ROWS = [-26, -71, -116, -161, -206];
+  ROWS.forEach(function (y, r) {
+    for (let x = 26 + (r % 2) * 26; x <= 794; x += 52) {
+      const id = "pp-g" + r + "-" + x;
+      const c = document.createElementNS(NS, "circle");
+      c.setAttribute("id", id); c.setAttribute("cx", x); c.setAttribute("cy", y); c.setAttribute("r", 26);
+      c.setAttribute("fill", "#5a768f"); c.setAttribute("stroke", "#2a3644"); c.setAttribute("stroke-width", "2");
+      if (gEl) gEl.appendChild(c);
+      G.push({ id: "#" + id, x: x, y: y });
+      GSEL.push("#" + id);
+    }
+  });
+  /* contact ticks: horizontal neighbours (vertical tick) and up-right neighbours (tick across the 60-degree contact) */
+  let tn = 0;
+  function tick(x1, y1, x2, y2) {
+    const ln = document.createElementNS(NS, "line");
+    ln.setAttribute("id", "pp-t" + tn); ln.setAttribute("x1", x1.toFixed(1)); ln.setAttribute("y1", y1.toFixed(1));
+    ln.setAttribute("x2", x2.toFixed(1)); ln.setAttribute("y2", y2.toFixed(1));
+    if (tEl) tEl.appendChild(ln);
+    TSEL.push("#pp-t" + tn); tn++;
+  }
+  G.forEach(function (g) {
+    if (G.some(function (h) { return h.y === g.y && h.x === g.x + 52; })) tick(g.x + 26, g.y - 6, g.x + 26, g.y + 6);
+    if (G.some(function (h) { return h.y === g.y - 45 && h.x === g.x + 26; })) {
+      const mx = g.x + 13, my = g.y - 22.5;
+      tick(mx - 5.2, my - 3, mx + 5.2, my + 3);
+    }
+  });
+  /* push-apart arrows at six pore contacts in the middle rows */
+  const ASEL = [];
+  [[208, -116], [416, -116], [624, -116], [312, -71], [520, -71], [390, -161]].forEach(function (p, i) {
+    const cx = p[0], cy = p[1];
+    const a = document.createElementNS(NS, "path");
+    a.setAttribute("id", "pp-a" + i);
+    a.setAttribute("d", "M" + (cx - 22) + "," + cy + " L" + (cx + 22) + "," + cy +
+      " M" + (cx - 13) + "," + (cy - 8) + " L" + (cx - 22) + "," + cy + " L" + (cx - 13) + "," + (cy + 8) +
+      " M" + (cx + 13) + "," + (cy - 8) + " L" + (cx + 22) + "," + cy + " L" + (cx + 13) + "," + (cy + 8));
+    if (aEl) aEl.appendChild(a);
+    ASEL.push("#pp-a" + i);
+  });
+  /* rain in the strip: 30 streaks, finite repeats */
+  const rEl = document.getElementById("pp-rain"), RAIN = [];
+  for (let i = 0; i < 30; i++) {
+    const x = 110 + i * 57 + ((i * 17) % 19);
+    const ln = document.createElementNS(NS, "line");
+    ln.setAttribute("id", "pp-r" + i); ln.setAttribute("x1", x); ln.setAttribute("y1", 846); ln.setAttribute("x2", x - 6); ln.setAttribute("y2", 874);
+    if (rEl) rEl.appendChild(ln);
+    RAIN.push(ln);
+  }
+
+  /* ---- initial state ---- */
+  tl.set(["#pp-head", "#pp-schem", "#pp-bed", "#pp-mover", "#pp-bars", "#pp-lfric", "#pp-lwt", "#pp-lpore", "#pp-poreld",
+          "#pp-strip", "#pp-lspike", "#pp-months"], { autoAlpha: 0 }, 0);
+  tl.set(ASEL, { autoAlpha: 0, scale: 0.4, transformOrigin: "50% 50%" }, 0);
+  tl.set(GSEL, { x: 0, y: 0 }, 0);
+  tl.set(TSEL, { autoAlpha: 1 }, 0);
+  tl.set("#pp-friction", { y: 520 }, 0);   /* level 0: fully below the baseline clip */
+  tl.set("#pp-spike", { scaleY: 0, svgOrigin: "1695 1000" }, 0);
+  tl.set(["#pp-mjun", "#pp-mjul", "#pp-maug"], { scaleY: 0, svgOrigin: "0 990" }, 0);
+  tl.set(["#pp-tjun", "#pp-tjul", "#pp-taug"], { autoAlpha: 0 }, 0);
+  tl.set("#pp-mover", { x: 0, y: 0 }, 0);
+  tl.set("#pp-poreld", { scale: 0, svgOrigin: "770 318" }, 0);
+
+  /* "A @0.00 slope @0.36 stays up": headline, bedrock and the block of grains */
+  tl.fromTo("#pp-head", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.10);
+  tl.to("#pp-schem", { autoAlpha: 1, duration: 0.4 }, 0.5);
+  tl.fromTo("#pp-bed", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.30);
+  tl.to("#pp-mover", { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 0.40);
+  tl.from(GSEL, { scale: 0.3, transformOrigin: "50% 50%", duration: 0.45, ease: "back.out(1.6)", stagger: 0.008 }, 0.45);
+
+  /* "friction" @1.90 "between the grains" -> "rock" @3.82: contact ticks pulse, the friction bar stands up */
+  tl.to(TSEL, { scale: 1.6, transformOrigin: "50% 50%", duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3, stagger: 0.004 }, 1.90);
+  tl.to("#pp-bars", { autoAlpha: 1, duration: 0.3 }, 1.90);
+  tl.fromTo("#pp-friction", { y: 520 }, { y: 0, duration: 0.6, ease: "power3.out" }, 1.90);
+  tl.fromTo("#pp-lfric", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 2.20);
+  tl.fromTo("#pp-weight", { scaleY: 0, svgOrigin: "1465 860" }, { scaleY: 1, svgOrigin: "1465 860", duration: 0.6, ease: "power3.out" }, 2.60);
+  tl.fromTo("#pp-lwt", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 2.90);
+  tl.to(TSEL, { opacity: 0.55, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.40);
+
+  /* "Rain @5.46 fills the tiny gaps ... grains" -> 8.62: water rises through the pores, inside the block */
+  tl.to("#pp-water", { attr: { y: 165 }, duration: 3.16, ease: "power1.inOut" }, 5.46);
+
+  /* "pushes" @9.12: arrows fire between grains; "apart" @9.76: grains spread, contacts break */
+  tl.to(ASEL, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.05 }, 9.12);
+  /* grains shrink in place so every contact opens and the pores widen (they stay inside the block outline) */
+  tl.to(GSEL, { scale: 0.86, transformOrigin: "50% 50%", duration: 0.6, ease: "power2.out" }, 9.76);
+  tl.to(TSEL, { opacity: 0.3, duration: 0.6, ease: "power2.out" }, 9.76);
+  tl.to(ASEL, { scale: 1.2, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 3 }, 10.2);
+  tl.to(ASEL, { autoAlpha: 0, duration: 0.4 }, 11.9);
+
+  /* "pore" @12.64 "pressure" @12.94: the label names it, leader into the pores */
+  tl.to("#pp-poreld", { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power2.out" }, 12.55);
+  tl.fromTo("#pp-lpore", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.64);
+  tl.to("#pp-water", { opacity: 1, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 13.0);
+
+  /* "climbs" @14.42 "high enough": friction starts to sag ... */
+  tl.to("#pp-friction", { y: 93.6, duration: 2.0, ease: "power1.inOut" }, 14.42);   /* level 0.82: top 433.6 */
+  tl.to("#pp-lfric", { y: 93.6, duration: 2.0, ease: "power1.inOut" }, 14.42);
+  /* ... "drops" @16.94 "below the weight": the friction top falls under the weight top (860-234 = 626 > 560) */
+  tl.to("#pp-friction", { y: 286, duration: 0.45, ease: "power3.in" }, 16.94);     /* level 0.45: top 626, under the weight top 560 */
+  tl.to("#pp-lfric", { y: 286, duration: 0.45, ease: "power3.in" }, 16.94);
+  tl.to(TSEL, { opacity: 0.08, duration: 0.45 }, 16.94);
+  /* "weight" @17.72 "pulling it" */
+  tl.to("#pp-weight", { scaleX: 1.12, svgOrigin: "1465 860", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 3 }, 17.72);
+  /* "down" @18.42: the block slides DOWN-SLOPE along its own 30 degrees, water stays inside its clip */
+  tl.to("#pp-mover", { x: 120, y: 69, duration: 0.7, ease: "power2.in" }, 18.42);
+
+  /* "A soaked slope" @19.41: bars step aside, the rain strip runs across the bottom */
+  tl.to(["#pp-bars", "#pp-lfric", "#pp-lwt"], { autoAlpha: 0, x: 60, duration: 0.4, ease: "power2.in" }, 19.20);
+  tl.fromTo("#pp-strip", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 19.41);
+  RAIN.forEach(function (ln, i) {
+    const d = 0.55 + (i % 4) * 0.08;
+    const at = 19.5 + (i % 6) * 0.07;
+    const reps = Math.floor((27.5 - at) / d) - 1;
+    tl.fromTo(ln, { y: 0 }, { y: 160, duration: d, ease: "none", repeat: reps }, at);
+  });
+  /* "heavy @23.71 weekend @23.93": the tall red spike at the end of the season */
+  tl.to("#pp-spike", { scaleY: 1, duration: 0.45, ease: "power3.out" }, 23.60);
+  tl.fromTo("#pp-lspike", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 23.93);
+  /* "three @24.97 wet @25.17 months @25.37": three cold-blue month blocks fill in beneath it */
+  tl.to("#pp-months", { autoAlpha: 1, duration: 0.1 }, 24.90);
+  tl.to("#pp-mjun", { scaleY: 1, duration: 0.3, ease: "power3.out" }, 24.97);
+  tl.to("#pp-tjun", { autoAlpha: 1, duration: 0.25 }, 25.05);
+  tl.to("#pp-mjul", { scaleY: 1, duration: 0.3, ease: "power3.out" }, 25.17);
+  tl.to("#pp-tjul", { autoAlpha: 1, duration: 0.25 }, 25.25);
+  tl.to("#pp-maug", { scaleY: 1, duration: 0.3, ease: "power3.out" }, 25.37);
+  tl.to("#pp-taug", { autoAlpha: 1, duration: 0.25 }, 25.45);
+  /* "late @26.37 September @26.55 supplies it": the spike pulses */
+  tl.to("#pp-spike", { scaleX: 1.25, svgOrigin: "1695 1000", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 3 }, 26.55);
+
+  /* exit, finishes by D - 0.2 (last word "it." @27.41) */
+  tl.to(["#pp-scene", "#pp-strip", "#pp-head", "#pp-schem", "#pp-lpore", "#pp-lspike"],
+    { y: "-=40", autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 27.55);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-pore-pressure"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-map-kali-gandaki-a1b (A1 hydro + route): dam pin "144 MW" downstream, then a route line north to Mustang and Muktinath and a trekker
+     on the Annapurna trail. Brief: mg_specs/g-map-kali-gandaki-a1b.md. Library source: episodes/ep-enderlin-2025/compositions/g-master-map.html.
+     10 px per mile; projection as the other Nepal maps. Route line approximate (through the named towns, not road geometry).
+     REDO 29 Sep 26: the route sat in x 450-1000 with the right half empty. Camera: route centre (640,470) -> screen
+     (960,520) at scale 1.35 (pushing to 1.39), so screen = (960 - 640 s + s x, 520 - 470 s + s y); at s 1.35 Pokhara
+     lands at (1162,809), Beni (815,677), Jomsom (950,273), Muktinath (1065,241). Place labels inside the camera are
+     font-size 19.3 so they render at 26 px. MUSTANG is a fixed HUD label (56 px Arial 900) at screen (1203,122), clear
+     of the river (river at x 1030-1090 for y 80-125). "Late September" 7.06: AUTUMN TREKKING SEASON (40 px, #e8c56a)
+     at screen (1150,300) and a trekker walks the Jomsom-Muktinath leg 7.1-10.0; "Annapurna" 10.18: the trails label,
+     held to the cut. The scan line and the never-revealed dam / peak DOM are deleted. -->
+<template>
+<style>
+  #g-map-kali-gandaki-a1b-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 35% 50%, #0b1016 0%, #030507 78%); }
+  .kgb-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .kgb-lab { font-family:Arial, sans-serif; font-weight:700; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .kgb-reg { font-family:Arial, sans-serif; font-weight:700; fill:#93a3b2; letter-spacing:8px; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .kgb-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; fill:#f2f5f8; paint-order:stroke; stroke:#04070c; stroke-width:8px; stroke-linejoin:round; }
+  /* round 2: both HUD labels moved off the Nepal-Tibet border (it crossed MUSTANG at x ~1360 and the season line at
+     x ~1545). MUSTANG now sits west of the river inside Nepal (x 560-~910, y 110-174; river at x ~1000+ there);
+     the season line sits left of the route (x 150-~760, y 330-378; route at x ~825+ there). */
+  .kgb-must { position:absolute; left:560px; top:110px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px;
+    line-height:64px; letter-spacing:8px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; text-shadow:0 2px 10px rgba(0,0,0,0.85); }
+  .kgb-season { position:absolute; left:150px; top:330px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px;
+    line-height:48px; color:#e8c56a; white-space:nowrap; text-shadow:0 2px 10px rgba(0,0,0,0.85); }
+  .kgb-note { position:absolute; left:96px; top:966px; font-size:19px; font-weight:700; letter-spacing:2px; color:#93a3b2; white-space:nowrap; }
+  .kgb-src { position:absolute; left:96px; bottom:54px; font-size:19px; font-weight:700; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-map-kali-gandaki-a1b-root" data-composition-id="g-map-kali-gandaki-a1b" data-width="1920" data-height="1080" data-duration="11.0">
+  <svg class="kgb-svg" viewBox="0 0 1920 1080">
+    <g id="g-map-kali-gandaki-a1b-cam">
+      <g transform="translate(1100,690) scale(10)">
+        <path id="g-map-kali-gandaki-a1b-nepal" fill="#15202b" stroke="#5a768f" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M-28.63,51.56 L-25.55,47.71 L-24.34,47.20 L-23.27,47.45 L-23.00,48.71 L-22.43,49.30 L-21.78,49.69 L-20.32,50.29 L-19.75,50.92 L-19.34,51.96 L105.04,51.96 L105.04,14.36 L103.51,13.64 L103.08,12.81 L102.66,10.81 L101.77,9.50 L101.63,8.86 L102.54,6.31 L102.47,4.59 L101.86,3.25 L100.65,3.00 L95.34,8.51 L95.43,9.21 L96.31,10.79 L95.88,13.34 L95.98,13.74 L96.60,14.17 L97.13,14.81 L96.98,16.73 L97.99,18.15 L98.03,18.88 L95.76,21.09 L94.92,21.48 L94.29,21.59 L92.77,21.42 L89.97,21.75 L88.90,21.32 L88.20,19.61 L88.53,15.46 L87.76,14.18 L85.63,12.27 L84.99,11.33 L84.51,9.73 L84.43,7.58 L83.37,6.15 L82.86,3.91 L81.95,2.84 L80.64,2.04 L77.96,0.82 L76.37,-0.22 L75.03,-1.49 L73.88,-3.00 L72.92,-4.77 L72.81,-7.84 L72.50,-9.34 L71.67,-9.18 L71.47,-8.62 L71.42,-7.35 L71.00,-6.95 L69.71,-6.47 L69.23,-6.07 L67.57,-3.53 L66.79,-3.51 L65.97,-4.37 L64.75,-5.21 L62.03,-5.73 L60.63,-5.71 L59.30,-5.47 L56.62,-6.71 L55.63,-6.66 L54.78,-6.13 L53.35,-4.56 L52.43,-4.12 L51.38,-4.23 L50.19,-5.35 L49.39,-5.72 L48.68,-5.60 L46.99,-4.82 L46.17,-4.62 L44.00,-4.95 L42.89,-5.41 L40.94,-7.21 L39.78,-6.97 L38.54,-6.35 L37.04,-6.37 L35.70,-7.19 L35.26,-8.21 L35.60,-11.16 L35.60,-12.51 L35.10,-16.28 L35.47,-16.96 L37.04,-17.92 L37.41,-18.84 L37.51,-20.54 L37.87,-21.05 L38.92,-21.48 L39.36,-21.82 L39.73,-22.45 L40.60,-26.48 L40.17,-27.29 L37.19,-28.25 L34.95,-29.82 L33.73,-30.31 L32.34,-29.99 L31.93,-29.60 L30.54,-27.25 L29.46,-26.85 L27.65,-25.86 L27.29,-25.45 L26.53,-23.82 L26.04,-23.39 L25.45,-23.19 L23.05,-23.74 L19.69,-23.53 L18.96,-23.63 L18.18,-23.95 L17.13,-24.80 L15.54,-26.63 L14.38,-27.23 L11.60,-27.37 L10.80,-27.94 L11.12,-31.14 L10.40,-31.71 L8.06,-32.39 L7.65,-32.89 L7.06,-34.11 L6.52,-34.42 L3.15,-34.99 L1.94,-35.42 L-0.09,-36.47 L-1.47,-36.43 L-2.99,-36.89 L-3.78,-38.23 L-4.70,-41.40 L-6.50,-43.14 L-7.50,-44.83 L-8.13,-45.38 L-8.87,-45.69 L-13.01,-46.55 L-16.10,-48.37 L-17.82,-51.17 L-16.32,-57.07 L-16.98,-57.96 L-18.34,-58.40 L-19.72,-59.24 L-20.29,-62.08 L-22.00,-63.89 L-22.35,-65.21 L-21.78,-66.35 L-20.96,-67.43 L-20.56,-68.58 L-20.94,-69.55 L-21.76,-69.66 L-22.73,-69.53 L-23.56,-69.72 L-23.99,-70.47 L-24.36,-72.34 L-24.94,-73.00 L-26.01,-73.03 L-27.17,-72.57 L-28.25,-72.38 L-29.63,-73.94 L-30.33,-74.10 L-31.86,-73.50 L-32.01,-74.41 L-32.38,-74.95 L-32.94,-75.25 L-33.70,-75.44 L-35.59,-75.27 L-37.47,-74.76 L-38.36,-73.48 L-40.24,-72.82 L-42.96,-71.49 L-44.33,-71.32 L-45.87,-71.47 L-47.42,-71.41 L-48.90,-70.90 L-50.14,-69.70 L-50.85,-67.35 L-51.30,-66.38 L-52.31,-65.97 L-53.21,-66.02 L-55.68,-66.48 L-57.05,-67.45 L-58.59,-67.66 L-59.34,-67.96 L-59.74,-68.52 L-60.02,-70.72 L-60.60,-73.31 L-61.18,-74.35 L-62.25,-75.10 L-63.92,-75.78 L-64.59,-76.36 L-65.14,-78.31 L-66.55,-79.21 L-67.27,-79.89 L-67.57,-80.85 L-67.54,-81.96 L-133.04,-81.96 L-133.04,31.62 L-130.80,32.75 L-127.52,36.12 L-125.16,36.87 L-119.97,36.26 L-112.31,34.26 L-110.63,34.93 L-109.58,36.66 L-108.84,39.32 L-108.25,44.49 L-107.59,47.11 L-106.23,48.71 L-98.69,49.23 L-97.17,49.72 L-94.38,51.31 L-91.80,51.96 L-69.58,51.96 L-69.23,50.98 L-67.64,50.41 L-61.93,50.46 L-55.28,51.36 L-53.71,51.96 L-35.53,51.96 L-35.07,51.82 L-34.67,51.96 L-29.21,51.96 Z"/>
+        <path id="g-map-kali-gandaki-a1b-kgglow" fill="none" stroke="#7fb2e5" stroke-opacity="0.25" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" d="M-30.38,-66.00 L-30.39,-65.66 L-30.99,-64.65 L-31.34,-63.40 L-31.49,-63.43 L-31.68,-63.08 L-31.60,-62.93 L-31.84,-62.38 L-32.13,-62.26 L-32.63,-61.36 L-32.85,-61.22 L-33.25,-61.28 L-33.39,-60.67 L-34.09,-60.23 L-34.28,-59.85 L-33.92,-58.46 L-34.50,-58.01 L-34.70,-57.34 L-35.68,-57.14 L-36.01,-56.69 L-36.19,-56.25 L-36.11,-55.82 L-36.36,-55.45 L-36.38,-55.11 L-36.70,-54.89 L-36.73,-54.41 L-37.37,-54.33 L-38.14,-53.96 L-38.67,-54.04 L-38.99,-53.77 L-39.03,-53.23 L-39.19,-53.16 L-39.84,-53.19 L-39.78,-53.29 L-40.46,-53.12 L-40.55,-52.22 L-40.77,-52.21 L-40.54,-51.46 L-40.75,-51.36 L-40.88,-51.00 L-40.60,-50.83 L-40.75,-50.70 L-40.78,-50.27 L-41.68,-49.48 L-41.66,-48.81 L-42.65,-48.03 L-42.64,-47.39 L-43.06,-46.80 L-42.84,-46.22 L-43.17,-45.87 L-43.40,-44.98 L-43.28,-44.57 L-43.74,-43.97 L-44.00,-42.94 L-44.53,-42.52 L-44.44,-42.37 L-44.77,-42.00 L-44.85,-41.50 L-45.14,-41.32 L-45.48,-40.68 L-46.81,-40.38 L-47.32,-39.88 L-47.70,-39.80 L-48.00,-39.28 L-48.74,-39.02 L-48.89,-38.75 L-48.88,-38.21 L-49.39,-37.90 L-49.64,-37.28 L-49.85,-37.29 L-50.04,-36.36 L-50.95,-35.59 L-51.32,-35.52 L-51.56,-35.07 L-52.03,-34.97 L-52.41,-34.55 L-53.07,-34.38 L-53.95,-33.17 L-55.14,-32.41 L-55.02,-30.85 L-53.82,-30.17 L-53.54,-29.60 L-52.44,-29.09 L-51.83,-28.37 L-51.71,-27.77 L-52.03,-27.42 L-51.81,-26.98 L-51.93,-26.72 L-51.85,-26.52 L-52.09,-25.77 L-52.39,-25.44 L-52.52,-24.70 L-52.02,-24.33 L-51.91,-23.78 L-51.50,-23.35 L-51.59,-23.15 L-51.46,-22.73 L-51.02,-22.29 L-51.24,-21.49 L-51.10,-21.16 L-51.76,-19.70 L-52.57,-18.94 L-52.96,-17.95 L-53.99,-16.73 L-54.00,-16.51 L-54.15,-16.55 L-54.74,-15.94 L-54.79,-14.94 L-54.61,-14.41 L-54.74,-13.75 L-55.66,-12.50 L-56.53,-12.08 L-56.56,-10.21 L-54.96,-7.22 L-53.27,-3.44 L-52.10,-2.09 L-50.35,-1.09 L-52.26,1.53 L-52.84,2.73 L-53.15,4.19 L-53.60,5.09 L-57.77,9.59 L-57.96,9.98 L-57.89,10.74 L-57.59,11.48 L-56.71,11.52 L-56.19,11.73 L-55.33,13.56 L-56.21,15.08 L-58.13,16.12 L-60.34,16.49 L-62.16,16.03 L-63.20,15.97 L-64.12,16.49 L-64.50,17.42 L-63.94,18.02 L-62.92,18.57 L-62.05,19.32 L-61.36,18.59 L-60.66,18.48 L-58.90,18.81 L-57.16,18.76 L-56.15,18.90 L-55.37,19.32 L-54.66,19.31 L-52.50,20.11 L-52.05,20.01 L-50.96,19.38 L-46.04,19.33 L-44.60,19.50 L-43.56,20.09 L-41.87,21.87 L-41.01,22.37 L-40.42,22.32 L-38.33,21.65 L-35.02,22.24 L-33.58,21.86 L-30.86,20.32 L-29.37,20.15 L-28.14,20.68 L-25.95,22.55 L-24.78,23.30 L-22.19,23.89 L-16.71,23.96 L-14.10,24.47 L-13.02,25.07 L-12.69,25.78 L-12.47,27.81 L-12.14,28.37 L-11.34,28.89 L-11.11,30.12 L-10.88,30.45 L-9.94,30.65 L-9.23,30.31 L-7.69,28.85 L-6.63,28.76 L-6.02,29.35 L-4.75,31.77"/>
+        <path id="g-map-kali-gandaki-a1b-kg" fill="none" stroke="#7fb2e5" stroke-width="0.4" stroke-linecap="round" stroke-linejoin="round" d="M-30.38,-66.00 L-30.39,-65.66 L-30.99,-64.65 L-31.34,-63.40 L-31.49,-63.43 L-31.68,-63.08 L-31.60,-62.93 L-31.84,-62.38 L-32.13,-62.26 L-32.63,-61.36 L-32.85,-61.22 L-33.25,-61.28 L-33.39,-60.67 L-34.09,-60.23 L-34.28,-59.85 L-33.92,-58.46 L-34.50,-58.01 L-34.70,-57.34 L-35.68,-57.14 L-36.01,-56.69 L-36.19,-56.25 L-36.11,-55.82 L-36.36,-55.45 L-36.38,-55.11 L-36.70,-54.89 L-36.73,-54.41 L-37.37,-54.33 L-38.14,-53.96 L-38.67,-54.04 L-38.99,-53.77 L-39.03,-53.23 L-39.19,-53.16 L-39.84,-53.19 L-39.78,-53.29 L-40.46,-53.12 L-40.55,-52.22 L-40.77,-52.21 L-40.54,-51.46 L-40.75,-51.36 L-40.88,-51.00 L-40.60,-50.83 L-40.75,-50.70 L-40.78,-50.27 L-41.68,-49.48 L-41.66,-48.81 L-42.65,-48.03 L-42.64,-47.39 L-43.06,-46.80 L-42.84,-46.22 L-43.17,-45.87 L-43.40,-44.98 L-43.28,-44.57 L-43.74,-43.97 L-44.00,-42.94 L-44.53,-42.52 L-44.44,-42.37 L-44.77,-42.00 L-44.85,-41.50 L-45.14,-41.32 L-45.48,-40.68 L-46.81,-40.38 L-47.32,-39.88 L-47.70,-39.80 L-48.00,-39.28 L-48.74,-39.02 L-48.89,-38.75 L-48.88,-38.21 L-49.39,-37.90 L-49.64,-37.28 L-49.85,-37.29 L-50.04,-36.36 L-50.95,-35.59 L-51.32,-35.52 L-51.56,-35.07 L-52.03,-34.97 L-52.41,-34.55 L-53.07,-34.38 L-53.95,-33.17 L-55.14,-32.41 L-55.02,-30.85 L-53.82,-30.17 L-53.54,-29.60 L-52.44,-29.09 L-51.83,-28.37 L-51.71,-27.77 L-52.03,-27.42 L-51.81,-26.98 L-51.93,-26.72 L-51.85,-26.52 L-52.09,-25.77 L-52.39,-25.44 L-52.52,-24.70 L-52.02,-24.33 L-51.91,-23.78 L-51.50,-23.35 L-51.59,-23.15 L-51.46,-22.73 L-51.02,-22.29 L-51.24,-21.49 L-51.10,-21.16 L-51.76,-19.70 L-52.57,-18.94 L-52.96,-17.95 L-53.99,-16.73 L-54.00,-16.51 L-54.15,-16.55 L-54.74,-15.94 L-54.79,-14.94 L-54.61,-14.41 L-54.74,-13.75 L-55.66,-12.50 L-56.53,-12.08 L-56.56,-10.21 L-54.96,-7.22 L-53.27,-3.44 L-52.10,-2.09 L-50.35,-1.09 L-52.26,1.53 L-52.84,2.73 L-53.15,4.19 L-53.60,5.09 L-57.77,9.59 L-57.96,9.98 L-57.89,10.74 L-57.59,11.48 L-56.71,11.52 L-56.19,11.73 L-55.33,13.56 L-56.21,15.08 L-58.13,16.12 L-60.34,16.49 L-62.16,16.03 L-63.20,15.97 L-64.12,16.49 L-64.50,17.42 L-63.94,18.02 L-62.92,18.57 L-62.05,19.32 L-61.36,18.59 L-60.66,18.48 L-58.90,18.81 L-57.16,18.76 L-56.15,18.90 L-55.37,19.32 L-54.66,19.31 L-52.50,20.11 L-52.05,20.01 L-50.96,19.38 L-46.04,19.33 L-44.60,19.50 L-43.56,20.09 L-41.87,21.87 L-41.01,22.37 L-40.42,22.32 L-38.33,21.65 L-35.02,22.24 L-33.58,21.86 L-30.86,20.32 L-29.37,20.15 L-28.14,20.68 L-25.95,22.55 L-24.78,23.30 L-22.19,23.89 L-16.71,23.96 L-14.10,24.47 L-13.02,25.07 L-12.69,25.78 L-12.47,27.81 L-12.14,28.37 L-11.34,28.89 L-11.11,30.12 L-10.88,30.45 L-9.94,30.65 L-9.23,30.31 L-7.69,28.85 L-6.63,28.76 L-6.02,29.35 L-4.75,31.77"/>
+      </g>
+      <!-- camera-space px below (screen = cam(s) applied); labels are font-size 19.3 = 26 px on screen at s 1.35 -->
+      <!-- the road north: Pokhara, Kushma, Baglung, Beni, then 7 px east of the river to Jomsom, then Muktinath (approximate) -->
+      <path id="g-map-kali-gandaki-a1b-route" d="M789.4,684.2 L607.7,669.3 L553.0,643.9 L532.7,586.4 L527.3,586.6 L528.3,566.4 L538.4,559.2 L545.4,549.5 L546.1,527.8 L560.3,512.3 L568.4,496.9 L576.3,488.3 L579.4,483.1 L582.1,468.9 L579.1,465.6 L573.7,450.4 L569.6,447.9 L567.8,444.2 L569.4,433.4 L573.8,425.5 L572.7,415.6 L574.9,409.9 L571.8,405.3 L561.5,400.4 L557.4,394.7 L544.0,385.3 L541.9,380.5 L541.9,363.7 L545.1,359.3 L556.2,351.8 L564.9,340.7 L572.5,337.4 L589.8,325.4 L595.7,313.1 L604.2,303.6 L604.9,298.5 L607.9,294.7 L629.4,279.6 L718.1,263.6" fill="none" stroke="#e8c56a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle id="g-map-kali-gandaki-a1b-pok" cx="789.4" cy="684.2" r="6" fill="#93a3b2" stroke="#04070c" stroke-width="2"/>
+      <circle id="g-map-kali-gandaki-a1b-beni" cx="532.7" cy="586.4" r="6" fill="#93a3b2" stroke="#04070c" stroke-width="2"/>
+      <circle id="g-map-kali-gandaki-a1b-jom" cx="632.4" cy="287.0" r="6" fill="#93a3b2" stroke="#04070c" stroke-width="2"/>
+      <text id="g-map-kali-gandaki-a1b-t-pok" class="kgb-lab" x="806" y="691" font-size="19.3">Pokhara</text>
+      <text id="g-map-kali-gandaki-a1b-t-beni" class="kgb-lab" x="516" y="593" text-anchor="end" font-size="19.3">Beni</text>
+      <text id="g-map-kali-gandaki-a1b-t-jom" class="kgb-lab" x="596" y="290" text-anchor="end" font-size="19.3">Jomsom</text>
+      <path id="g-map-kali-gandaki-a1b-temple" d="M718.1,249.6 L728.1,263.6 L718.1,277.6 L708.1,263.6 Z" fill="#e8c56a" stroke="#04070c" stroke-width="2"/>
+      <text id="g-map-kali-gandaki-a1b-t-temple" class="kgb-lab" x="738" y="250" font-size="19.3" style="fill:#e8c56a">Muktinath temple</text>
+      <!-- trekker icon drawn about its feet at (0,0); positioned by GSAP only; the inner group bobs while walking -->
+      <g id="g-map-kali-gandaki-a1b-trek"><g id="g-map-kali-gandaki-a1b-trekb">
+        <circle cx="0" cy="-27" r="4.5" fill="#f2f5f8"/>
+        <path d="M0,-22 L0,-10 M0,-10 L-5,0 M0,-10 L5,0 M0,-19 L-6,-13 M0,-19 L6,-14 M6,-14 L9,-2" fill="none" stroke="#f2f5f8" stroke-width="2.6" stroke-linecap="round"/>
+        <rect x="-7" y="-21" width="5" height="9" rx="1.5" fill="#d8a13a"/>
+      </g></g>
+      <text id="g-map-kali-gandaki-a1b-t-trail" class="kgb-lab" x="640" y="352" font-size="19.3">Annapurna trails</text>
+    </g>
+  </svg>
+  <div class="kgb-must" id="g-map-kali-gandaki-a1b-t-must">Mustang</div>
+  <div class="kgb-season" id="g-map-kali-gandaki-a1b-season">AUTUMN TREKKING SEASON</div>
+  <div class="kgb-note" id="g-map-kali-gandaki-a1b-note">Route approximate</div>
+  <div class="kgb-src" id="g-map-kali-gandaki-a1b-src">Map data: OpenStreetMap contributors, Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-map-kali-gandaki-a1b", P = "#g-map-kali-gandaki-a1b-";
+  /* index.html mounts this comp at 228.282 for 11.0 s: the ROUTE paragraph only ("The same valley carries...").
+     Cues from retime-sheet.md word times (host 208.982+11.000 on the sheet). */
+  const CUES = {
+    mustang: 2.45, /* CUE "Mustang," @2.60 (sheet) */
+    temple: 3.91,  /* CUE "temple" @4.06 (sheet) */
+    late: 7.06,    /* CUE "Late September" @7.06-7.24 */
+    annapurna: 10.18 /* CUE "Annapurna" @10.18, "trails" @10.68 */
+  };
+  const DUR = 11.0;
+  const tl = gsap.timeline({ paused: true });
+  const RLEN = Math.ceil(document.querySelector(P + "route").getTotalLength()) + 1;
+  /* the route centre (640,470) sits at screen (960,520) for every s; push 1.35 -> 1.39 */
+  const cam = (s) => ({ attr: { transform: "translate(" + (960 - 640 * s).toFixed(2) + "," + (520 - 470 * s).toFixed(2) + ") scale(" + s + ")" } });
+  /* trekker leg = the route's last segment (629.4,279.6) -> (718.1,263.6); it stops at t 0.8636 = (706.0,265.8),
+     short of the temple icon. Linear x and y with the same ease => on the segment at 7.1 (T0), 8.55 (midpoint
+     667.7,272.7) and 10.0 (T1). */
+  const T0 = { x: 629.4, y: 279.6 }, T1 = { x: 706.0, y: 265.8 };
+
+  /* ---- initial state ---- */
+  tl.set(P + "cam", cam(1.35), 0);
+  tl.set(P + "route", { strokeDasharray: RLEN, strokeDashoffset: RLEN }, 0);
+  tl.set(P + "trek", { x: T0.x, y: T0.y, autoAlpha: 0 }, 0);
+  tl.set([P + "pok", P + "beni", P + "jom", P + "t-pok", P + "t-beni", P + "t-jom", P + "t-must", P + "temple", P + "t-temple",
+    P + "t-trail", P + "season", P + "note"], { autoAlpha: 0 }, 0);
+
+  /* ---- ambient, whole window: camera push + river glow (the full-width scan line is gone) ---- */
+  tl.to(P + "cam", Object.assign(cam(1.39), { duration: DUR, ease: "none" }), 0);
+  tl.fromTo(P + "nepal", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
+  tl.fromTo(P + "kgglow", { attr: { "stroke-opacity": 0.2 } }, { attr: { "stroke-opacity": 0.5 }, duration: 1.5, ease: "sine.inOut", repeat: 6, yoyo: true }, 0);
+  tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);
+
+  /* ---- the same valley: the road north draws immediately ---- */
+  tl.to(P + "route", { strokeDashoffset: 0, duration: 2.45, ease: "power2.inOut" }, 0.05);
+  tl.fromTo([P + "pok", P + "beni", P + "jom"], { autoAlpha: 0, scale: 0.4, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.35, stagger: 0.5, ease: "back.out(2)" }, 0.3);
+  tl.fromTo([P + "t-pok", P + "t-beni", P + "t-jom"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, stagger: 0.5, ease: "power3.out" }, 0.5);
+  tl.fromTo(P + "note", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.6);
+  tl.fromTo(P + "t-must", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUES.mustang);
+  tl.fromTo(P + "route", { attr: { "stroke-opacity": 1 } }, { attr: { "stroke-opacity": 0.55 }, duration: 0.6, ease: "sine.inOut", repeat: 13, yoyo: true }, 2.5);
+
+  /* ---- a temple both faiths visit ---- */
+  tl.fromTo(P + "temple", { autoAlpha: 0, scale: 0, svgOrigin: "718.1 263.6" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, CUES.temple);
+  tl.fromTo(P + "t-temple", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.temple + 0.15);
+
+  /* ---- "Late September" @7.06: the autumn trekking season opens; a trekker walks Jomsom -> Muktinath ---- */
+  tl.fromTo(P + "season", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.late);
+  tl.to(P + "trek", { autoAlpha: 1, duration: 0.2 }, 7.1);
+  tl.fromTo(P + "trek", { x: T0.x, y: T0.y }, { x: T1.x, y: T1.y, duration: 2.9, ease: "none" }, 7.1);
+  tl.fromTo(P + "trekb", { y: 0 }, { y: -2.5, duration: 0.24, ease: "sine.inOut", yoyo: true, repeat: 11 }, 7.1);  /* step bob, to 10.0 */
+
+  /* ---- "Annapurna" @10.18: the trails label lands and holds to the cut ---- */
+  tl.fromTo(P + "t-trail", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, CUES.annapurna);
+  tl.to(P + "season", { scale: 1.03, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1, transformOrigin: "left center" }, 10.2);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

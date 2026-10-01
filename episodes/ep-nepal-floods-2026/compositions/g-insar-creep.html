@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-insar-creep (A3 payoff): FULL-FRAME diagram + right rail, track 2, host 496.93 + 25.243 (nx-a3-s9, nx-a3-s10).
+     Rebuilt 29 Sep 26 (redo list): the rail no longer shows a label over an empty counter slot; the radar is a
+     displacement field on the slope in channel colours (#7fb2e5 -> #d8a13a -> #e74c3c), not a green-red rectangle;
+     the counter fits inside x 1824; every Langtang element leaves before the Kali Gandaki / Himlung state, so the
+     frame never pairs Kali Gandaki with 12 inches; the key claim is a 40 px headline.
+     Facts: factcheck-B #20 (ICIMOD, Kathmandu: satellite radar showed the Langtang slope slid up to 12 in / 30 cm in
+     3-4 weeks), #22 (no radar published for the Kali Gandaki wall or the Himlung face before Sept 27). Slope geometry
+     SCHEMATIC, NOT TO SCALE.
+     Cues (retime-sheet g-insar-creep): August 0.44 (rail in), measure 1.80 (MEASURED), before 3.08 (before it fell), Langtang 2.28, Isamod 4.56, satellite 8.52, slid 10.12,
+     12 10.70, inches 11.20, three 11.46, weeks 11.98, For 12.86, Kali-Gandaki 13.38, wall 13.92, Himlung 14.60,
+     no 15.92, published 16.80, September 27 18.06-18.42, couldn't 22.18, agree 22.74-23.04, taken 24.50.
+     Exit: fade-through 24.643-25.243 into g-ledger. -->
+<template>
+<style>
+  #gic-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .gic-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .gic-all { position:absolute; inset:0; }
+  .gic-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gic-dlab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .gic-ptitle { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:4px; fill:#dfe7ee; }
+  .gic-nodata { font-family:Arial, sans-serif; font-weight:700; font-size:30px; letter-spacing:4px; fill:#e74c3c; }
+  .gic-chip { position:absolute; left:120px; top:150px; padding:16px 26px 18px; border-radius:28px; box-sizing:border-box;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); }
+  .gic-icimod { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:30px; line-height:36px; color:#f2f5f8; white-space:nowrap; }
+  .gic-kath { margin-top:4px; font-size:22px; line-height:26px; font-weight:700; color:#93a3b2; letter-spacing:3px; white-space:nowrap; }
+  .gic-rail { position:absolute; right:0; top:0; bottom:0; width:820px; background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+  .gic-lang { position:absolute; left:1250px; top:0; width:574px; height:1080px; }
+  /* round 3: the rail opens on "August" with its own claim, so x 1190-1920 is never empty for 10 s */
+  .gic-mhead { position:absolute; left:0; top:150px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:48px; color:#f2f5f8; white-space:nowrap; }
+  .gic-mbef { position:absolute; left:0; top:204px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:30px; line-height:38px; color:#d8a13a; white-space:nowrap; }
+  .gic-cnt { position:absolute; left:0; top:300px; font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:84px; color:#e74c3c; white-space:nowrap; }
+  .gic-cntlab { position:absolute; left:0; top:404px; font-size:26px; line-height:30px; font-weight:700; letter-spacing:6px; color:#c8d3e0; white-space:nowrap; }
+  .gic-wklab { position:absolute; left:0; top:486px; font-size:26px; line-height:30px; font-weight:700; letter-spacing:4px; color:#dfe7ee; white-space:nowrap; }
+  .gic-bar { position:absolute; left:0; top:536px; width:574px; height:12px; border-radius:6px; background:#15202b; border:1px solid rgba(255,255,255,0.14); box-sizing:border-box; }
+  .gic-barfill { position:absolute; left:0; top:0; width:100%; height:100%; border-radius:6px; background:linear-gradient(90deg,#7fb2e5,#d8a13a,#e74c3c); }
+  .gic-ph { position:absolute; left:-3px; top:526px; width:6px; height:32px; border-radius:3px; background:#f2f5f8; }
+  .gic-head { position:absolute; left:1250px; top:370px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:48px; color:#f2f5f8; white-space:nowrap; }
+  .gic-before { position:absolute; left:1250px; top:430px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:30px; line-height:38px; color:#d8a13a; white-space:nowrap; }
+  .gic-toll { position:absolute; left:1250px; top:560px; font-weight:700; font-size:30px; line-height:36px; color:#dfe7ee; white-space:nowrap; }
+</style>
+<div id="gic-root" data-composition-id="g-insar-creep" data-width="1920" data-height="1080" data-duration="25.243">
+  <div class="gic-grid" id="gic-grid"></div>
+  <div class="gic-all" id="gic-all">
+  <svg class="gic-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="gic-rock" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a3644"/><stop offset="1" stop-color="#15202b"/></linearGradient>
+      <linearGradient id="gic-disp" x1="0" y1="1" x2="0.6" y2="0"><stop offset="0" stop-color="#7fb2e5"/><stop offset="0.5" stop-color="#d8a13a"/><stop offset="1" stop-color="#e74c3c"/></linearGradient>
+      <clipPath id="gic-slopeclip"><polygon points="96,880 96,760 260,650 420,560 560,500 760,440 900,520 1040,660 1180,780 1180,880"/></clipPath>
+    </defs>
+    <!-- LANGTANG: the slope relief, its displacement block and down-slope arrows (one group, so it can shrink away) -->
+    <g id="gic-lgrp">
+      <polygon id="gic-slope" points="96,880 96,760 260,650 420,560 560,500 760,440 900,520 1040,660 1180,780 1180,880" fill="url(#gic-rock)" stroke="#93a3b2" stroke-width="3"/>
+      <path d="M300 700 L420 640 M520 760 L700 640 M860 800 L980 720" stroke="rgba(147,163,178,0.18)" stroke-width="3" fill="none"/>
+      <g clip-path="url(#gic-slopeclip)">
+        <polygon id="gic-block" points="760,440 900,520 1040,660 960,720 850,640 700,560 640,500" fill="url(#gic-disp)" opacity="0.85"/>
+      </g>
+      <g id="gic-arrows" stroke="#f2f5f8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path id="gic-ar1" d="M760 488 l48 38 m-18 2 l18 -2 l-4 -18"/>
+        <path id="gic-ar2" d="M830 530 l48 38 m-18 2 l18 -2 l-4 -18"/>
+        <path id="gic-ar3" d="M900 580 l48 38 m-18 2 l18 -2 l-4 -18"/>
+        <path id="gic-ar4" d="M720 540 l48 38 m-18 2 l18 -2 l-4 -18"/>
+        <path id="gic-ar5" d="M790 600 l48 38 m-18 2 l18 -2 l-4 -18"/>
+        <path id="gic-ar6" d="M860 650 l48 38 m-18 2 l18 -2 l-4 -18"/>
+      </g>
+      <text id="gic-slopelab" class="gic-dlab" x="430" y="790">LANGTANG SLOPE &#183; AUG 2026</text>
+      <!-- the satellite, positioned by GSAP only, with its scan beam -->
+      <g id="gic-sat">
+        <path id="gic-beam" d="M0 30 L-110 260 L110 260 Z" fill="rgba(127,178,229,0.18)" stroke="rgba(127,178,229,0.5)" stroke-width="2"/>
+        <rect x="-36" y="-26" width="72" height="52" rx="7" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
+        <rect x="44" y="-16" width="110" height="32" fill="#15202b" stroke="#7fb2e5" stroke-width="2"/>
+        <rect x="-154" y="-16" width="110" height="32" fill="#15202b" stroke="#7fb2e5" stroke-width="2"/>
+        <path d="M-24 26 Q0 50 24 26 Z" fill="#dfe7ee"/>
+      </g>
+    </g>
+    <!-- KALI GANDAKI WALL and HIMLUNG FACE: outline terrain, a dashed empty radar frame, NO DATA -->
+    <g id="gic-pa">
+      <rect x="96" y="620" width="524" height="280" rx="28" fill="rgba(10,16,24,0.55)" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+      <text class="gic-ptitle" x="130" y="668">KALI GANDAKI WALL</text>
+      <path d="M130 870 L230 790 L330 730 L420 690 L500 760 L586 840" stroke="#93a3b2" stroke-width="3" fill="none"/>
+      <rect id="gic-fra" x="170" y="714" width="376" height="148" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="14 10"/>
+      <!-- round 2: the scan bar runs only in the band under NO DATA (y 812-860), never across the words -->
+      <rect id="gic-sca" x="170" y="812" width="6" height="48" fill="rgba(127,178,229,0.55)"/>
+      <text class="gic-nodata" x="274" y="800">NO DATA</text>
+    </g>
+    <g id="gic-pb">
+      <rect x="660" y="620" width="520" height="280" rx="28" fill="rgba(10,16,24,0.55)" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+      <text class="gic-ptitle" x="694" y="668">HIMLUNG FACE</text>
+      <path d="M694 870 L790 760 L880 700 L940 720 L1030 790 L1146 860" stroke="#dfe7ee" stroke-width="3" fill="none"/>
+      <rect id="gic-frb" x="734" y="714" width="376" height="148" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="14 10"/>
+      <rect id="gic-scb" x="734" y="812" width="6" height="48" fill="rgba(127,178,229,0.55)"/>
+      <text class="gic-nodata" x="838" y="800">NO DATA</text>
+    </g>
+  </svg>
+  <div class="gic-chip" id="gic-chip">
+    <div class="gic-icimod" id="gic-icimod">ICIMOD</div>
+    <div class="gic-kath" id="gic-kath">MOUNTAIN RESEARCH &#183; KATHMANDU</div>
+  </div>
+  <div class="gic-rail" id="gic-rail"></div>
+  <div class="gic-lang" id="gic-lang">
+    <div class="gic-mhead" id="gic-mhead">MEASURED</div>
+    <div class="gic-mbef" id="gic-mbef">before it fell</div>
+    <div class="gic-cnt" id="gic-cnt"><span id="gic-cntv">1</span> IN</div>
+    <div class="gic-cntlab" id="gic-cntlab">ABOUT &#183; 30 CM</div>
+    <div class="gic-wklab" id="gic-wklab">3 TO 4 WEEKS</div>
+    <div class="gic-bar" id="gic-bar"><div class="gic-barfill" id="gic-barfill"></div></div>
+    <div class="gic-ph" id="gic-ph"></div>
+  </div>
+  <div class="gic-head" id="gic-head">NO RADAR PUBLISHED</div>
+  <div class="gic-before" id="gic-before">before Sept 27</div>
+  <div class="gic-toll" id="gic-toll">Death toll: reports disagree</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-insar-creep", P = "#gic-";
+  const DUR = 25.243;
+  const AR = [P+"ar1", P+"ar2", P+"ar3", P+"ar4", P+"ar5", P+"ar6"];
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P+"slope", P+"slopelab", P+"block", P+"sat", P+"chip", P+"rail", P+"mhead", P+"mbef", P+"cnt", P+"cntlab", P+"wklab", P+"bar", P+"ph", P+"pa", P+"pb", P+"head", P+"before", P+"toll"], { autoAlpha: 0 }, 0);
+  tl.set(AR, { autoAlpha: 0 }, 0);
+  tl.set(P+"barfill", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P+"sat", { x: 200, y: 330 }, 0);
+
+  /* ambient, whole window: grid drift */
+  tl.fromTo(P+"grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+
+  /* IN AUGUST @0.44: the slope; LANGTANG SLOPE @2.28 its label (a slow breath on the relief keeps it alive) */
+  tl.fromTo(P+"slope", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.3);
+  tl.fromTo(P+"slopelab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 2.28);
+  tl.fromTo(P+"lgrp", { scale: 1 }, { scale: 1.03, svgOrigin: "640 880", duration: 12.4, ease: "none" }, 0.4);
+  /* round 3: the rail slides in on AUGUST @0.44 (was 10.3, leaving x 1190-1920 empty for 10 s); MEASURED @1.80
+     "measure", "before it fell" @3.08 "before". The pair sits at y 150-242 in the rail, above the counter slot
+     (y 300+), and leaves with #gic-lang at 15.77, before NO RADAR PUBLISHED (16.6) takes the same column. */
+  tl.fromTo(P+"rail", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.44);
+  tl.fromTo(P+"mhead", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power4.out" }, 1.80);
+  tl.fromTo(P+"mbef", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.08);
+  /* ISAMOD @4.56: the ICIMOD chip in the open air top-left */
+  tl.fromTo(P+"chip", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 4.56);
+  tl.to(P+"chip", { y: -6, duration: 1.3, ease: "sine.inOut", yoyo: true, repeat: 2 }, 5.1);
+
+  /* SATELLITE @8.52: the satellite crosses the top (x 200 -> 1100, 1.5 s), its beam sweeping the slope */
+  tl.to(P+"sat", { autoAlpha: 1, duration: 0.25 }, 8.52);
+  /* round 2: the satellite stops at x 900 (panels to x 1054, beam to x 1010), clear of the rail counter at x 1250+;
+     it collided with "12 IN" when it ran to x 1140 */
+  tl.to(P+"sat", { x: 900, duration: 1.5, ease: "power1.inOut" }, 8.52);
+  tl.fromTo(P+"beam", { rotation: -14, svgOrigin: "0 30" }, { rotation: 14, svgOrigin: "0 30", duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 5 }, 8.52);
+  tl.to(P+"sat", { x: 950, duration: 2.8, ease: "none" }, 10.02);
+
+  /* SLID @10.12: the upper block colours with displacement, six arrows grow down-slope */
+  tl.fromTo(P+"block", { autoAlpha: 0 }, { autoAlpha: 0.85, duration: 0.5, ease: "power2.out" }, 10.12);
+  const TAIL = ["760 488", "830 530", "900 580", "720 540", "790 600", "860 650"];   /* each arrow grows from its tail */
+  AR.forEach(function (a, i) { tl.fromTo(a, { autoAlpha: 0, scale: 0, svgOrigin: TAIL[i] }, { autoAlpha: 1, scale: 1, svgOrigin: TAIL[i], duration: 0.3, ease: "back.out(2)" }, 10.2 + i * 0.07); });
+  AR.forEach(function (a, i) { tl.to(a, { x: 10, y: 8, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 10.8 + i * 0.05); });
+
+  /* 12 @10.70 -> INCHES @11.20: the counter (opens at 1) and its label land under MEASURED in the open rail */
+  tl.fromTo([P+"cnt", P+"cntlab"], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 10.7);
+  const c = { v: 1 };
+  tl.to(c, { v: 12, duration: 0.5, ease: "power4.out", onUpdate: function () {
+    const e = document.getElementById("gic-cntv"); if (e) e.textContent = Math.round(c.v);
+  } }, 10.7);
+  /* THREE TO FOUR WEEKS @11.46-11.98: the timeline bar fills under a moving playhead */
+  tl.fromTo([P+"wklab", P+"bar", P+"ph"], { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 11.3);
+  tl.to(P+"barfill", { scaleX: 1, duration: 0.6, ease: "power1.inOut" }, 11.46);
+  tl.fromTo(P+"ph", { x: 0 }, { x: 574, duration: 0.6, ease: "power1.inOut" }, 11.46);
+  tl.to(P+"cnt", { scale: 1.05, transformOrigin: "left center", duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 12.1);
+
+  /* FOR THE @12.86: the Langtang scene steps back up-right to make room; KALI-GANDAKI WALL @13.38, HIMLUNG FACE @14.60 */
+  tl.to(P+"lgrp", { scale: 0.62, svgOrigin: "1180 150", duration: 0.6, ease: "power2.inOut" }, 12.86);
+  tl.fromTo(P+"pa", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 13.38);
+  tl.fromTo(P+"pb", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 14.6);
+  /* the empty frames keep scanning and marching (ambient to the end) */
+  tl.fromTo([P+"fra", P+"frb"], { strokeDashoffset: 0 }, { strokeDashoffset: -240, duration: 11.2, ease: "none" }, 13.4);
+  tl.fromTo(P+"sca", { x: 0 }, { x: 370, duration: 1.8, ease: "none", repeat: 5 }, 13.5);
+  tl.fromTo(P+"scb", { x: 0 }, { x: 370, duration: 1.8, ease: "none", repeat: 4 }, 14.7);
+
+  /* 15.77: every Langtang element leaves, counter included; the two panels rise to the centre */
+  tl.to([P+"lgrp", P+"chip"], { x: -900, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 15.77);
+  tl.to(P+"lang", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 15.77);
+  tl.to([P+"pa", P+"pb"], { y: -300, duration: 0.8, ease: "power3.inOut" }, 16.2);
+  /* NO ... PUBLISHED @16.80: the claim, then "before Sept 27" on SEPTEMBER 27 @18.06 */
+  tl.fromTo(P+"head", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power4.out" }, 16.6);
+  tl.fromTo(P+"before", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 18.06);
+  tl.to([P+"pa", P+"pb"], { y: -306, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, 17.1);
+
+  /* COULDN'T EVEN AGREE @22.18-23.04: the toll line, with a slow flicker, handing into g-ledger */
+  tl.fromTo(P+"toll", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 22.18);
+  tl.to(P+"toll", { opacity: 0.45, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 3 }, 22.7);
+
+  /* exit: fade-through over the last 0.6 s */
+  tl.to(P+"all", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, DUR - 0.6);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

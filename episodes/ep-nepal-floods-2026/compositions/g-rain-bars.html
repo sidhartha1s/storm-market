@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-rain-bars (A2, "The wrong end of the season"): RHS panel over News18 Bihar river-in-spate footage, muted.
+     Source: episodes/ep-nepal-floods-2026/mg_specs/g-rain-bars.md. Scale 200 px/in on a baseline at y 900, bars 180 px wide:
+     storm bar 520 px (2.6 in, labelled ABOUT 2.5 IN to match the voice), normal bar 60 px (0.3 in); ratio 8.67, spoken as
+     "close to nine times". Redo 29 Sep 26 (Opus): the "Nine times the rain." headline pre-revealed the payoff 8 s early
+     and the 9X figure repeated it; bars were 100 px wide and at most 260 px tall. Now the headline names the source,
+     each bar lands on its figure, and the 9x lands once, on "times".
+     Cues: retime-sheet g-rain-bars (host 265.074+11.409, local seconds). Duration 11.409 s. -->
+<template>
+<style>
+  #rain-bars-root { position:absolute; inset:0; font-family: Arial, sans-serif; color:#f2f5f8; }
+  .rb-panel { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box;
+    background: linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding: 90px 96px 0 170px; }
+  .rb-eb { font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .rb-hl { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:1.1; color:#f2f5f8; margin-top:10px; }
+  .rb-base { position:absolute; left:150px; top:900px; width:560px; height:3px; background:#5a768f; }
+  .rb-bar { position:absolute; top:auto; bottom:180px; width:180px; box-sizing:border-box; border-top:4px solid; }
+  .rb-normal { left:170px; height:60px; background:linear-gradient(180deg, rgba(147,163,178,0.7), rgba(147,163,178,0.2)); border-color:#93a3b2; }
+  .rb-storm { left:480px; height:520px; background:linear-gradient(180deg, rgba(231,76,60,0.75), rgba(231,76,60,0.2)); border-color:#e74c3c; }
+  .rb-val { position:absolute; width:300px; text-align:center; font-family:'Courier New',monospace; font-weight:700; font-size:40px; white-space:nowrap; }
+  .rb-normalval { left:110px; top:788px; color:#dfe7ee; }
+  .rb-stormval { left:420px; top:328px; color:#e74c3c; }
+  .rb-sub { position:absolute; width:180px; top:914px; text-align:center; font-weight:700; font-size:19px; letter-spacing:3px; color:#93a3b2; }
+  .rb-subnormal { left:170px; } .rb-substorm { left:480px; }
+  .rb-mult { position:absolute; left:196px; top:560px; font-family:'Courier New',monospace; font-weight:700; font-size:120px; line-height:1;
+    color:#e74c3c; white-space:nowrap; }
+  .rb-brk { position:absolute; left:0; top:0; width:820px; height:1080px; overflow:visible; }
+</style>
+<div id="rain-bars-root" data-composition-id="g-rain-bars" data-width="1920" data-height="1080" data-duration="11.409">
+  <div class="rb-panel" id="rb-panel">
+    <div class="rb-eb" id="rb-eb">NORTHERN INDIA &middot; SEPT 26-28</div>
+    <div class="rb-hl" id="rb-hl">Al Jazeera<br>rain count</div>
+    <!-- connector bracket: normal bar top (y 840) to storm bar top (y 380), panel-local px -->
+    <svg class="rb-brk" viewBox="0 0 820 1080">
+      <path id="rb-brk" d="M350,840 L420,840 L420,380 L480,380" fill="none" stroke="#e74c3c" stroke-width="3" stroke-dasharray="8 6"/>
+    </svg>
+    <div class="rb-base" id="rb-base"></div>
+    <div class="rb-bar rb-normal" id="rb-normal"></div>
+    <div class="rb-bar rb-storm" id="rb-storm"></div>
+    <div class="rb-val rb-normalval" id="rb-normalval">0.3 IN</div>
+    <div class="rb-val rb-stormval" id="rb-stormval">ABOUT 2.5 IN</div>
+    <div class="rb-sub rb-subnormal" id="rb-subnormal">NORMAL</div>
+    <div class="rb-sub rb-substorm" id="rb-substorm">THIS STORM</div>
+    <div class="rb-mult" id="rb-mult">9&times;</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 11.409;
+  const CUES = {
+    india: 1.66,     /* "northern India," @1.44-1.66 */
+    reported: 3.02,  /* "Al Jazeera reported" @2.70-3.02 */
+    inches: 4.50,    /* "about two and a half inches" @3.56-4.50 */
+    inch: 8.24,      /* "under a third of an inch," @7.46-8.24 */
+    nine: 9.74,      /* "close to nine times as much" @9.74-9.94 */
+    times: 9.94
+  };
+  const BRK = Math.ceil(document.getElementById("rb-brk").getTotalLength()) + 1;
+  tl.set(["#rb-eb", "#rb-hl", "#rb-normalval", "#rb-stormval", "#rb-subnormal", "#rb-substorm", "#rb-mult"], { autoAlpha: 0 }, 0);
+  tl.set(["#rb-normal", "#rb-storm"], { scaleY: 0, transformOrigin: "50% 100%" }, 0);
+  tl.set("#rb-base", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set("#rb-brk", { strokeDasharray: BRK + " " + BRK, strokeDashoffset: BRK }, 0);
+
+  /* panel slides in over the footage */
+  tl.fromTo("#rb-panel", { x: 660 }, { x: 0, duration: 0.7, ease: "power3.out" }, 0.0);
+  tl.to("#rb-base", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.6);
+  tl.fromTo("#rb-eb", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.india - 0.15);
+  tl.fromTo("#rb-hl", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.reported - 0.15);
+
+  /* storm bar grows 0.9 s and lands on "inches" */
+  tl.to("#rb-storm", { scaleY: 1, duration: 0.9, ease: "power3.out" }, CUES.inches - 0.9);
+  tl.fromTo("#rb-stormval", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, CUES.inches - 0.2);
+  tl.fromTo("#rb-substorm", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, CUES.inches - 0.6);
+  tl.to("#rb-storm", { scaleY: 1.015, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, CUES.inches + 0.5);
+
+  /* normal bar lands on "inch" */
+  tl.to("#rb-normal", { scaleY: 1, duration: 0.4, ease: "power3.out" }, CUES.inch - 0.4);
+  tl.fromTo("#rb-normalval", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, CUES.inch - 0.1);
+  tl.fromTo("#rb-subnormal", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, CUES.inch - 0.3);
+
+  /* "nine times": the bracket joins the two bar tops, 9x lands on "times" */
+  tl.to("#rb-brk", { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, CUES.nine - 0.1);
+  tl.fromTo("#rb-mult", { autoAlpha: 0, scale: 1.5, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in" }, CUES.times - 0.3);
+  tl.to("#rb-mult", { scale: 1.05, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, CUES.times + 0.1);
+
+  /* exit, finishes by D - 0.1 */
+  tl.to("#rb-panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.7);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);  // hold the timeline to the host window (graphics_qc short-duration)
+  window.__timelines["g-rain-bars"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

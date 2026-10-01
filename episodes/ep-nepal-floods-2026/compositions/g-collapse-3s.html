@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-collapse-3s (A1 full): four real stills of the collapse (media/collapse-f0..f3.jpg, pulled at 17/18/19/20 s of the
+     WION clip, a centred content strip x 345-1578 over a blurred fill; mg_specs/g-collapse-3s.md), stamped SECOND 0/1/2/3,
+     each with an SVG annotation layer that marks exactly what the voice points at: the phone-video frame, the old pale scars,
+     the tree line and the block that starts to slide, the dust cloud, the debris reaching the river.
+     Annotations sit on a fixed HUD; the stills carry no Ken Burns so every mark stays on its feature.
+     Redo 29 Sep 26 (Opus). v-a1-replay (index.html, starts at this host's end) is the same WION footage at full speed
+     (frames checked against the stills), so the REPLAY chip stays and holds 1.5 s.
+     Cues: retime-sheet g-collapse-3s (host 115.597+23.400, local seconds). Duration 23.4 s. -->
+<template>
+<style>
+  #c3f-root { position:absolute; inset:0; overflow:hidden; background:#04070c; font-family:Arial, sans-serif; }
+  .c3f-still { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; }
+  .c3f-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .c3f-glass { position:absolute; box-sizing:border-box; border-radius:16px; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14);
+    white-space:nowrap; }
+  .c3f-chip { left:96px; top:896px; height:88px; padding:0 30px; display:flex; align-items:center;
+    font-family:'Courier New', monospace; font-weight:700; font-size:58px; color:#f2f5f8; }
+  .c3f-lab { height:58px; padding:0 20px; display:flex; align-items:center; font-family:'Arial Black', Arial, sans-serif;
+    font-weight:900; font-size:30px; letter-spacing:2px; }
+  .c3f-phone { left:460px; top:962px; height:54px; padding:0 20px; display:flex; align-items:center;
+    font-weight:700; font-size:26px; letter-spacing:3px; color:#e8c56a; }
+  .c3f-replay { left:96px; top:96px; height:54px; padding:0 22px; display:flex; align-items:center;
+    font-weight:700; font-size:26px; letter-spacing:3px; color:#e8c56a; }
+  .c3f-eb { left:1420px; top:96px; width:404px; height:54px; display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:30px; letter-spacing:3px; color:#e8c56a; text-transform:uppercase; }
+  .c3f-ticks { position:absolute; left:1420px; top:170px; width:300px; height:20px; }
+  .c3f-tick { position:absolute; top:0; width:14px; height:14px; border-radius:50%; background:#4a5560; border:2px solid rgba(255,255,255,.14); }
+  #c3f-tick0 { left:0; } #c3f-tick1 { left:96px; } #c3f-tick2 { left:192px; } #c3f-tick3 { left:286px; }
+  .c3f-src { position:absolute; right:96px; bottom:54px; font-weight:700; font-size:19px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="c3f-root" data-composition-id="g-collapse-3s" data-width="1920" data-height="1080" data-duration="23.4">
+  <img class="c3f-still" id="c3f-f0" src="media/collapse-f0.jpg">
+  <img class="c3f-still" id="c3f-f1" src="media/collapse-f1.jpg">
+  <img class="c3f-still" id="c3f-f2" src="media/collapse-f2.jpg">
+  <img class="c3f-still" id="c3f-f3" src="media/collapse-f3.jpg">
+
+  <svg class="c3f-svg" viewBox="0 0 1920 1080" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- f0: the phone-video frame (corner brackets on the content strip) -->
+    <g id="c3f-bracket" stroke="#e8c56a" stroke-width="3">
+      <path id="c3f-bk0" d="M361,120 L361,40 L441,40"/>
+      <path id="c3f-bk1" d="M1482,40 L1562,40 L1562,120"/>
+      <path id="c3f-bk2" d="M361,960 L361,1040 L441,1040"/>
+      <path id="c3f-bk3" d="M1482,1040 L1562,1040 L1562,960"/>
+    </g>
+    <!-- f0: three pale scar streaks traced down the bare face -->
+    <g id="c3f-scars" stroke="#e8c56a" stroke-width="4">
+      <path id="c3f-sc0" d="M812,612 L848,760 L866,905"/>
+      <path id="c3f-sc1" d="M930,622 L946,780 L958,900"/>
+      <path id="c3f-sc2" d="M1088,630 L1108,790 L1128,902"/>
+    </g>
+    <!-- f1: the tree line, then the block below it that starts to slide -->
+    <defs><clipPath id="c3f-treeclip"><rect id="c3f-treeclipr" x="480" y="500" width="0" height="300"/></clipPath></defs>
+    <path id="c3f-tree" d="M493,560 L640,585 L800,600 L933,607 L1093,613 L1333,693 L1560,745" stroke="#e8c56a" stroke-width="4" stroke-dasharray="14 10" clip-path="url(#c3f-treeclip)"/>
+    <path id="c3f-block" d="M500,580 L800,614 L1000,622 L1070,700 L1040,850 L860,910 L660,890 L520,820 L470,700 Z" stroke="#e74c3c" stroke-width="4" stroke-dasharray="14 10"/>
+    <g id="c3f-slidearrow" stroke="#e74c3c" stroke-width="6">
+      <path id="c3f-slideline" d="M780,700 L700,940"/>
+      <path id="c3f-slidehead" d="M682,912 L700,940 L720,912"/>
+    </g>
+    <!-- f2: the dust cloud rising off the base -->
+    <ellipse id="c3f-ring" cx="650" cy="300" rx="270" ry="210" stroke="#e74c3c" stroke-width="5"/>
+    <!-- f3: the debris reaches the river -->
+    <g id="c3f-riverarrow" stroke="#7fb2e5" stroke-width="6">
+      <path id="c3f-riverline" d="M1030,882 L806,988"/>
+      <path id="c3f-riverhead" d="M836,992 L806,988 L826,962"/>
+    </g>
+  </svg>
+
+  <div class="c3f-glass c3f-phone" id="c3f-phone">PHONE VIDEO &middot; MUSTANG DISTRICT</div>
+  <div class="c3f-glass c3f-lab" id="c3f-t-scars" style="left:858px; top:530px; color:#e8c56a;">OLD SCARS</div>
+  <div class="c3f-glass c3f-lab" id="c3f-t-tree" style="left:1300px; top:598px; color:#e8c56a;">TREE LINE</div>
+  <div class="c3f-glass c3f-lab" id="c3f-t-dust" style="left:950px; top:110px; color:#e74c3c;">DUST</div>
+  <div class="c3f-glass c3f-lab" id="c3f-t-river" style="left:1040px; top:824px; color:#7fb2e5;">RIVER</div>
+
+  <div class="c3f-glass c3f-chip" id="c3f-chip0">SECOND 0</div>
+  <div class="c3f-glass c3f-chip" id="c3f-chip1">SECOND 1</div>
+  <div class="c3f-glass c3f-chip" id="c3f-chip2">SECOND 2</div>
+  <div class="c3f-glass c3f-chip" id="c3f-chip3">SECOND 3</div>
+  <div class="c3f-glass c3f-replay" id="c3f-replay">REPLAY &middot; FULL SPEED</div>
+  <div class="c3f-glass c3f-eb" id="c3f-eb">Frame By Frame</div>
+  <div class="c3f-ticks" id="c3f-ticks">
+    <span class="c3f-tick" id="c3f-tick0"></span>
+    <span class="c3f-tick" id="c3f-tick1"></span>
+    <span class="c3f-tick" id="c3f-tick2"></span>
+    <span class="c3f-tick" id="c3f-tick3"></span>
+  </div>
+  <div class="c3f-src" id="c3f-src">VIDEO: WION</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-collapse-3s", P = "#c3f-";
+  const tl = gsap.timeline({ paused: true });
+  const D = 23.4;
+  /* still swaps land ON "second" 11.38, "second," 16.36, "third," 20.68 (crossfade starts 0.15 s early) */
+  const SW = [0, 11.23, 16.21, 20.53];
+  const CUES = {
+    phone: 2.80,     /* "phone" @2.80 */
+    mustang: 5.40,   /* "Mustang" @5.40 */
+    pale: 6.30,      /* "Pale" @6.30, "scars" @7.14, "cut" @8.12 */
+    scars: 7.14,
+    tree: 13.78,     /* "tree Line" @13.78-14.26 */
+    slide: 14.58,    /* "starts to slide" @14.26-14.82 */
+    cloud: 17.28,    /* "cloud of brown dust rises" @17.28-18.46 */
+    dust: 18.00,
+    reaches: 21.62,  /* "debris reaches the river" @21.62-22.46 */
+    river: 22.46
+  };
+  const len = (id) => Math.ceil(document.querySelector(P + id).getTotalLength()) + 1;
+  const STILLS = [P + "f0", P + "f1", P + "f2", P + "f3"];
+  const CHIPS = [P + "chip0", P + "chip1", P + "chip2", P + "chip3"];
+  const TICKS = [P + "tick0", P + "tick1", P + "tick2", P + "tick3"];
+  const BK = [0, 1, 2, 3].map((i) => P + "bk" + i), SC = [0, 1, 2].map((i) => P + "sc" + i);
+  const draw = (sel) => { const L = len(sel.slice(P.length)); tl.set(sel, { strokeDasharray: L, strokeDashoffset: L }, 0); };
+  BK.concat(SC, [P + "slideline", P + "riverline"]).forEach(draw);
+  const RING = Math.ceil(document.querySelector(P + "ring").getTotalLength()) + 1;
+
+  /* ---- initial state ---- */
+  tl.set(STILLS, { autoAlpha: 0 }, 0);
+  tl.set(P + "f0", { autoAlpha: 1 }, 0);
+  tl.set(CHIPS.concat([P + "replay", P + "phone", P + "t-scars", P + "t-tree", P + "t-dust", P + "t-river",
+    P + "block", P + "slidehead", P + "riverhead", P + "src"]), { autoAlpha: 0 }, 0);
+  tl.set(P + "ring", { strokeDasharray: RING, strokeDashoffset: RING }, 0);
+  tl.set(P + "eb", { autoAlpha: 0, x: -16 }, 0);
+  tl.set(TICKS, { scale: 0.6, transformOrigin: "center" }, 0);
+
+  /* ---- frame-by-frame chrome: eyebrow (pulses the whole window), second markers, credit ---- */
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.3);
+  tl.to(P + "eb", { scale: 1.03, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 15 }, 0.7);
+  tl.to(P + "src", { autoAlpha: 1, duration: 0.4 }, 0.5);
+  TICKS.forEach((t, i) => tl.to(t, { scale: 1, backgroundColor: "#e74c3c", duration: 0.3, ease: "back.out(2)" }, i === 0 ? 0.3 : SW[i]));
+
+  /* ---- stills and SECOND chips ---- */
+  tl.fromTo(P + "chip0", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.1);
+  for (let i = 1; i < 4; i++) {
+    tl.to(STILLS[i - 1], { autoAlpha: 0, duration: 0.4 }, SW[i]);
+    tl.to(STILLS[i], { autoAlpha: 1, duration: 0.4 }, SW[i]);
+    tl.to(CHIPS[i - 1], { autoAlpha: 0, duration: 0.2 }, SW[i]);
+    tl.fromTo(CHIPS[i], { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, SW[i]);
+  }
+
+  /* ---- f0 "filmed on a phone ... in Mustang district": bracket the phone frame, name it ---- */
+  tl.to(BK, { strokeDashoffset: 0, duration: 0.5, stagger: 0.05, ease: "power2.out" }, CUES.phone - 0.15);
+  tl.fromTo(P + "phone", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.mustang - 0.15);
+
+  /* ---- f0 "Pale scars were already cut down the slope": trace three streaks, then name them ---- */
+  SC.forEach((s, i) => tl.to(s, { strokeDashoffset: 0, duration: 0.55, ease: "power2.inOut" }, CUES.pale + i * 0.35));
+  tl.fromTo(P + "t-scars", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.scars - 0.15);
+  tl.to(SC, { attr: { "stroke-width": 7 }, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 4, stagger: 0.2 }, 7.7);
+  /* cleared with f0 */
+  tl.to(BK.concat(SC, [P + "phone", P + "t-scars"]), { autoAlpha: 0, duration: 0.25 }, SW[1] - 0.1);
+
+  /* ---- f1 "below the tree line starts to slide": dashed tree line, then the red block and a down-slope arrow ---- */
+  tl.to(P + "treeclipr", { attr: { width: 1100 }, duration: 0.5, ease: "power2.out" }, CUES.tree - 0.15);
+  tl.fromTo(P + "t-tree", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.tree);
+  tl.fromTo(P + "block", { autoAlpha: 0, scale: 1.06, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power3.out" }, CUES.slide - 0.15);
+  tl.to(P + "slideline", { strokeDashoffset: 0, duration: 0.4, ease: "power3.in" }, CUES.slide);
+  tl.fromTo(P + "slidehead", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12 }, CUES.slide + 0.36);
+  tl.fromTo(P + "block", { strokeDashoffset: 0 }, { strokeDashoffset: -96, duration: 1.4, ease: "none", repeat: 0 }, CUES.slide + 0.3);
+  tl.to(P + "slidearrow", { y: 12, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 1 }, CUES.slide + 0.5);
+  /* cleared with f1 */
+  tl.to([P + "tree", P + "t-tree", P + "block", P + "slidearrow"], { autoAlpha: 0, duration: 0.25 }, SW[2] - 0.1);
+
+  /* ---- f2 "a cloud of brown dust rises off its base": ring the cloud, name it ---- */
+  tl.to(P + "ring", { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, CUES.cloud);
+  tl.fromTo(P + "t-dust", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.dust - 0.15);
+  tl.to(P + "ring", { scale: 1.04, transformOrigin: "50% 50%", duration: 0.55, ease: "sine.inOut", yoyo: true, repeat: 2 }, 18.4);
+  /* cleared with f2 */
+  tl.to([P + "ring", P + "t-dust"], { autoAlpha: 0, duration: 0.25 }, SW[3] - 0.1);
+
+  /* ---- f3 "the debris reaches the river": arrow to the water at the base of the plume ---- */
+  tl.to(P + "riverline", { strokeDashoffset: 0, duration: 0.5, ease: "power3.in" }, CUES.reaches - 0.1);
+  tl.fromTo(P + "riverhead", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12 }, CUES.reaches + 0.38);
+  tl.fromTo(P + "t-river", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.river - 0.2);
+
+  /* ---- REPLAY chip: v-a1-replay (same WION footage, full speed) starts at this host's end; held 1.5 s+ (21.6 -> 23.1) ---- */
+  tl.fromTo(P + "replay", { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 21.6);
+
+  /* ---- clear by D - 0.05 so the replay clip plays unobstructed ---- */
+  tl.to([P + "f3", P + "chip3", P + "replay", P + "eb", P + "riverarrow", P + "t-river", P + "src"].concat(TICKS),
+    { autoAlpha: 0, duration: 0.25, ease: "power2.in" }, D - 0.3);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

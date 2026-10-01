@@ -4,6 +4,16 @@ Narrated US weather and natural-disaster retrospectives, US English. Separate fr
 the same external tool pattern. One fact, one home: a rule lives here OR in the file named below, never both. If two
 files disagree, fix it in the same PR and say which one won.
 
+**This repo's docs outrank the global `~/.claude/CLAUDE.md`.** Where this file, a doc it names, `ops/decisions.md` or the
+owner's instruction for the episode says something, that wins over any global default (subagent model, effort, review
+flow). The global file only fills what this repo leaves open. Read `ops/decisions.md` before choosing a model or a flow.
+
+**Chain of command for motion graphics.** Every subagent that builds, retimes, fixes, redesigns or verifies a graphic runs
+on Opus 5.5 at high effort or above (blind-judged Opus 43/50 vs Sonnet 26/50; Sonnet passes every gate with broken
+work). Sonnet is for shot logs, sourcing and read-only probes, never graphics. The builder never verifies its own work:
+the orchestrator reads a settled frame of every new or changed graphic over the footage it will sit on before any render.
+A fix goes back to an Opus builder, never to the model that made the defect. Gates passing is not verification.
+
 | Need | Home |
 |---|---|
 | Kickoff preflight, phase map | `skills/storm-episode/SKILL.md`, `skills/mini-storms/SKILL.md` (junctioned into `~/.claude/skills/`, so a skill edit is a repo commit) |

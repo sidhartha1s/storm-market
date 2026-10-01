@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-map-kali-gandaki-a1 (A1 "gorge narrows"): full-frame gorge map centred on the dam. Valley walls reveal on "gorge this
+     narrow", debris enters the channel, a natural dam forms, a lake backs up behind it, the dam splits and a surge of mud runs
+     downstream. Brief: mg_specs/g-map-kali-gandaki-a1.md. Library source: episodes/ep-enderlin-2025/compositions/g-master-map.html.
+     32 px per mile at cam 1; river = OSM "Kali Gandaki" ways (ODbL). Debris, dam, lake, wall bands and surge are SCHEMATIC.
+     Redo 29 Sep 26 (Opus): camera recentred so the dam (538,550) sits at (960,540), scale 1.15 pushing to 1.2; the empty RHS rail,
+     eyebrow, dead r1/r2 rows, scan line and Blocked/Surge-risk arrows are gone. Wall, lake, surge and trail strokes are runtime
+     clones of the river path (same d, one copy in the markup). Labels live on a fixed HUD layer (no camera ride). -->
+<template>
+<style>
+  #g-map-kali-gandaki-a1-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 50%, #0b1016 0%, #030507 78%); }
+  .kga1-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .kga1-lab { font-family:Arial, sans-serif; font-weight:700; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .kga1-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; paint-order:stroke; stroke:#04070c; stroke-width:8px; stroke-linejoin:round; }
+  .kga1-note { position:absolute; left:96px; top:966px; font-size:19px; font-weight:700; letter-spacing:2px; color:#93a3b2; white-space:nowrap; }
+  .kga1-src { position:absolute; left:96px; bottom:54px; font-size:19px; font-weight:700; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-map-kali-gandaki-a1-root" data-composition-id="g-map-kali-gandaki-a1" data-width="1920" data-height="1080" data-duration="15.808">
+  <svg class="kga1-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <!-- map units (1 unit = 32 px at cam 1): hatch on the wall bands, lake clip centred on the dam -->
+      <pattern id="g-map-kali-gandaki-a1-hatch" width="0.36" height="0.36" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="0.36" height="0.36" fill="#2a3644"/>
+        <line x1="0" y1="0" x2="0" y2="0.36" stroke="#5a768f" stroke-width="0.035"/>
+      </pattern>
+      <clipPath id="g-map-kali-gandaki-a1-lakeclip" clipPathUnits="userSpaceOnUse">
+        <circle id="g-map-kali-gandaki-a1-lakeclipc" cx="-53.5625" cy="-29.6875" r="0"/>
+      </clipPath>
+    </defs>
+    <g id="g-map-kali-gandaki-a1-cam">
+      <g transform="translate(2252,1500) scale(32)">
+        <path id="g-map-kali-gandaki-a1-kgglow" fill="none" stroke="#7fb2e5" stroke-opacity="0.25" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" d="M-40.75,-50.92 L-40.74,-50.86 L-40.60,-50.81 L-40.75,-50.70 L-40.69,-50.58 L-40.78,-50.52 L-40.78,-50.27 L-41.00,-49.96 L-41.36,-49.63 L-41.68,-49.48 L-41.66,-49.38 L-41.72,-49.21 L-41.66,-49.15 L-41.62,-48.92 L-41.66,-48.81 L-41.94,-48.69 L-42.23,-48.28 L-42.40,-48.25 L-42.65,-48.03 L-42.64,-47.39 L-43.06,-46.80 L-43.02,-46.67 L-42.90,-46.58 L-42.84,-46.45 L-42.84,-46.22 L-42.96,-46.14 L-43.00,-45.94 L-43.17,-45.87 L-43.17,-45.60 L-43.27,-45.40 L-43.29,-45.21 L-43.40,-44.98 L-43.29,-44.79 L-43.28,-44.57 L-43.38,-44.49 L-43.38,-44.36 L-43.48,-44.28 L-43.53,-44.16 L-43.74,-43.97 L-43.71,-43.78 L-43.83,-43.63 L-43.83,-43.34 L-44.00,-42.94 L-44.40,-42.71 L-44.42,-42.61 L-44.53,-42.52 L-44.44,-42.37 L-44.54,-42.13 L-44.77,-42.00 L-44.88,-41.78 L-44.82,-41.66 L-44.83,-41.53 L-44.98,-41.39 L-45.14,-41.32 L-45.36,-40.95 L-45.44,-40.71 L-45.63,-40.62 L-45.71,-40.65 L-46.19,-40.51 L-46.28,-40.53 L-46.56,-40.39 L-46.63,-40.45 L-46.71,-40.36 L-46.81,-40.38 L-46.96,-40.28 L-47.03,-40.13 L-47.32,-39.88 L-47.70,-39.80 L-47.83,-39.66 L-47.78,-39.54 L-48.00,-39.28 L-48.16,-39.29 L-48.74,-39.02 L-48.86,-38.89 L-48.89,-38.75 L-48.81,-38.48 L-48.88,-38.21 L-49.01,-38.10 L-49.16,-38.08 L-49.28,-37.92 L-49.39,-37.90 L-49.50,-37.42 L-49.64,-37.28 L-49.85,-37.29 L-49.82,-37.06 L-49.99,-36.89 L-50.02,-36.76 L-49.97,-36.69 L-50.04,-36.36 L-50.32,-36.25 L-50.32,-36.16 L-50.41,-36.13 L-50.50,-35.97 L-50.79,-35.80 L-50.95,-35.59 L-51.32,-35.52 L-51.35,-35.34 L-51.49,-35.21 L-51.56,-35.07 L-51.65,-35.04 L-51.76,-35.09 L-52.03,-34.97 L-52.08,-34.88 L-52.21,-34.81 L-52.33,-34.59 L-52.41,-34.55 L-52.60,-34.49 L-52.81,-34.55 L-53.07,-34.38 L-53.28,-34.19 L-53.42,-33.85 L-53.69,-33.69 L-53.71,-33.45 L-53.95,-33.27 L-53.95,-33.17 L-54.14,-33.04 L-54.27,-33.04 L-54.52,-32.92 L-54.69,-32.64 L-55.00,-32.56 L-55.15,-32.39 L-55.20,-32.21 L-55.13,-32.09 L-55.11,-31.86 L-55.08,-31.34 L-55.12,-31.22 L-55.06,-31.16 L-55.11,-31.03 L-55.02,-30.85 L-54.66,-30.70 L-54.60,-30.64 L-54.46,-30.62 L-54.23,-30.37 L-54.12,-30.32 L-54.07,-30.21 L-53.95,-30.22 L-53.82,-30.17 L-53.58,-29.85 L-53.54,-29.60 L-53.36,-29.48 L-53.02,-29.39 L-52.82,-29.19 L-52.56,-29.16 L-52.44,-29.09 L-52.18,-28.88 L-52.16,-28.72 L-52.10,-28.69 L-51.92,-28.39 L-51.83,-28.37 L-51.83,-28.17 L-51.74,-28.04 L-51.71,-27.77 L-51.78,-27.72 L-51.86,-27.52 L-52.03,-27.42 L-51.97,-27.22 L-51.81,-26.98 L-51.93,-26.72 L-51.85,-26.52 L-51.93,-26.39 L-51.89,-26.31 L-51.96,-26.22 L-52.09,-25.77 L-52.39,-25.44 L-52.43,-24.87 L-52.52,-24.70 L-52.46,-24.64 L-52.29,-24.61 L-52.02,-24.33 L-51.95,-24.15 L-51.91,-23.78 L-51.79,-23.68 L-51.70,-23.68 L-51.61,-23.46 L-51.50,-23.35 L-51.49,-23.25 L-51.59,-23.15 L-51.46,-22.73 L-51.23,-22.58 L-51.14,-22.39 L-51.02,-22.29 L-51.09,-22.15 L-51.06,-22.02 L-51.24,-21.49 L-51.12,-21.29 L-51.10,-21.16 L-51.36,-20.79 L-51.35,-20.48 L-51.53,-20.12 L-51.60,-20.15 L-51.66,-20.11 L-51.76,-19.70 L-51.80,-19.64 L-51.89,-19.64 L-52.07,-19.54 L-52.17,-19.25 L-52.34,-19.18 L-52.39,-19.05 L-52.57,-18.94 L-52.78,-18.56 L-52.94,-18.14 L-52.96,-17.95 L-53.35,-17.45 L-53.37,-17.31 L-53.64,-17.15 L-53.70,-16.93 L-53.99,-16.73 L-54.00,-16.51 L-54.09,-16.57 L-54.15,-16.55 L-54.30,-16.43 L-54.41,-16.21 L-54.47,-16.26 L-54.54,-16.11 L-54.74,-15.94 L-54.76,-15.27 L-54.72,-15.09 L-54.79,-14.94 L-54.64,-14.71 L-54.75,-14.61 L-54.61,-14.41 L-54.76,-14.10 L-54.68,-13.95 L-54.74,-13.75 L-54.93,-13.60 L-54.98,-13.42 L-55.13,-13.35 L-55.15,-13.18 L-55.36,-12.99 L-55.44,-12.80 L-55.58,-12.68 L-55.66,-12.50 L-55.98,-12.39 L-56.17,-12.25 L-56.19,-12.13 L-56.35,-12.14 L-56.53,-12.08 L-56.61,-11.47 L-56.56,-10.21 L-56.05,-9.07"/>
+        <path id="g-map-kali-gandaki-a1-kg" fill="none" stroke="#7fb2e5" stroke-width="0.28" stroke-linecap="round" stroke-linejoin="round" d="M-40.75,-50.92 L-40.74,-50.86 L-40.60,-50.81 L-40.75,-50.70 L-40.69,-50.58 L-40.78,-50.52 L-40.78,-50.27 L-41.00,-49.96 L-41.36,-49.63 L-41.68,-49.48 L-41.66,-49.38 L-41.72,-49.21 L-41.66,-49.15 L-41.62,-48.92 L-41.66,-48.81 L-41.94,-48.69 L-42.23,-48.28 L-42.40,-48.25 L-42.65,-48.03 L-42.64,-47.39 L-43.06,-46.80 L-43.02,-46.67 L-42.90,-46.58 L-42.84,-46.45 L-42.84,-46.22 L-42.96,-46.14 L-43.00,-45.94 L-43.17,-45.87 L-43.17,-45.60 L-43.27,-45.40 L-43.29,-45.21 L-43.40,-44.98 L-43.29,-44.79 L-43.28,-44.57 L-43.38,-44.49 L-43.38,-44.36 L-43.48,-44.28 L-43.53,-44.16 L-43.74,-43.97 L-43.71,-43.78 L-43.83,-43.63 L-43.83,-43.34 L-44.00,-42.94 L-44.40,-42.71 L-44.42,-42.61 L-44.53,-42.52 L-44.44,-42.37 L-44.54,-42.13 L-44.77,-42.00 L-44.88,-41.78 L-44.82,-41.66 L-44.83,-41.53 L-44.98,-41.39 L-45.14,-41.32 L-45.36,-40.95 L-45.44,-40.71 L-45.63,-40.62 L-45.71,-40.65 L-46.19,-40.51 L-46.28,-40.53 L-46.56,-40.39 L-46.63,-40.45 L-46.71,-40.36 L-46.81,-40.38 L-46.96,-40.28 L-47.03,-40.13 L-47.32,-39.88 L-47.70,-39.80 L-47.83,-39.66 L-47.78,-39.54 L-48.00,-39.28 L-48.16,-39.29 L-48.74,-39.02 L-48.86,-38.89 L-48.89,-38.75 L-48.81,-38.48 L-48.88,-38.21 L-49.01,-38.10 L-49.16,-38.08 L-49.28,-37.92 L-49.39,-37.90 L-49.50,-37.42 L-49.64,-37.28 L-49.85,-37.29 L-49.82,-37.06 L-49.99,-36.89 L-50.02,-36.76 L-49.97,-36.69 L-50.04,-36.36 L-50.32,-36.25 L-50.32,-36.16 L-50.41,-36.13 L-50.50,-35.97 L-50.79,-35.80 L-50.95,-35.59 L-51.32,-35.52 L-51.35,-35.34 L-51.49,-35.21 L-51.56,-35.07 L-51.65,-35.04 L-51.76,-35.09 L-52.03,-34.97 L-52.08,-34.88 L-52.21,-34.81 L-52.33,-34.59 L-52.41,-34.55 L-52.60,-34.49 L-52.81,-34.55 L-53.07,-34.38 L-53.28,-34.19 L-53.42,-33.85 L-53.69,-33.69 L-53.71,-33.45 L-53.95,-33.27 L-53.95,-33.17 L-54.14,-33.04 L-54.27,-33.04 L-54.52,-32.92 L-54.69,-32.64 L-55.00,-32.56 L-55.15,-32.39 L-55.20,-32.21 L-55.13,-32.09 L-55.11,-31.86 L-55.08,-31.34 L-55.12,-31.22 L-55.06,-31.16 L-55.11,-31.03 L-55.02,-30.85 L-54.66,-30.70 L-54.60,-30.64 L-54.46,-30.62 L-54.23,-30.37 L-54.12,-30.32 L-54.07,-30.21 L-53.95,-30.22 L-53.82,-30.17 L-53.58,-29.85 L-53.54,-29.60 L-53.36,-29.48 L-53.02,-29.39 L-52.82,-29.19 L-52.56,-29.16 L-52.44,-29.09 L-52.18,-28.88 L-52.16,-28.72 L-52.10,-28.69 L-51.92,-28.39 L-51.83,-28.37 L-51.83,-28.17 L-51.74,-28.04 L-51.71,-27.77 L-51.78,-27.72 L-51.86,-27.52 L-52.03,-27.42 L-51.97,-27.22 L-51.81,-26.98 L-51.93,-26.72 L-51.85,-26.52 L-51.93,-26.39 L-51.89,-26.31 L-51.96,-26.22 L-52.09,-25.77 L-52.39,-25.44 L-52.43,-24.87 L-52.52,-24.70 L-52.46,-24.64 L-52.29,-24.61 L-52.02,-24.33 L-51.95,-24.15 L-51.91,-23.78 L-51.79,-23.68 L-51.70,-23.68 L-51.61,-23.46 L-51.50,-23.35 L-51.49,-23.25 L-51.59,-23.15 L-51.46,-22.73 L-51.23,-22.58 L-51.14,-22.39 L-51.02,-22.29 L-51.09,-22.15 L-51.06,-22.02 L-51.24,-21.49 L-51.12,-21.29 L-51.10,-21.16 L-51.36,-20.79 L-51.35,-20.48 L-51.53,-20.12 L-51.60,-20.15 L-51.66,-20.11 L-51.76,-19.70 L-51.80,-19.64 L-51.89,-19.64 L-52.07,-19.54 L-52.17,-19.25 L-52.34,-19.18 L-52.39,-19.05 L-52.57,-18.94 L-52.78,-18.56 L-52.94,-18.14 L-52.96,-17.95 L-53.35,-17.45 L-53.37,-17.31 L-53.64,-17.15 L-53.70,-16.93 L-53.99,-16.73 L-54.00,-16.51 L-54.09,-16.57 L-54.15,-16.55 L-54.30,-16.43 L-54.41,-16.21 L-54.47,-16.26 L-54.54,-16.11 L-54.74,-15.94 L-54.76,-15.27 L-54.72,-15.09 L-54.79,-14.94 L-54.64,-14.71 L-54.75,-14.61 L-54.61,-14.41 L-54.76,-14.10 L-54.68,-13.95 L-54.74,-13.75 L-54.93,-13.60 L-54.98,-13.42 L-55.13,-13.35 L-55.15,-13.18 L-55.36,-12.99 L-55.44,-12.80 L-55.58,-12.68 L-55.66,-12.50 L-55.98,-12.39 L-56.17,-12.25 L-56.19,-12.13 L-56.35,-12.14 L-56.53,-12.08 L-56.61,-11.47 L-56.56,-10.21 L-56.05,-9.07"/>
+        <!-- flow ticks: same river path, dashes march downstream (path runs north to south) -->
+        <path id="g-map-kali-gandaki-a1-flow" fill="none" stroke="#dfe7ee" stroke-opacity="0.45" stroke-width="0.09" stroke-dasharray="0.18 0.62" stroke-linecap="round" stroke-linejoin="round" d="M-40.75,-50.92 L-40.74,-50.86 L-40.60,-50.81 L-40.75,-50.70 L-40.69,-50.58 L-40.78,-50.52 L-40.78,-50.27 L-41.00,-49.96 L-41.36,-49.63 L-41.68,-49.48 L-41.66,-49.38 L-41.72,-49.21 L-41.66,-49.15 L-41.62,-48.92 L-41.66,-48.81 L-41.94,-48.69 L-42.23,-48.28 L-42.40,-48.25 L-42.65,-48.03 L-42.64,-47.39 L-43.06,-46.80 L-43.02,-46.67 L-42.90,-46.58 L-42.84,-46.45 L-42.84,-46.22 L-42.96,-46.14 L-43.00,-45.94 L-43.17,-45.87 L-43.17,-45.60 L-43.27,-45.40 L-43.29,-45.21 L-43.40,-44.98 L-43.29,-44.79 L-43.28,-44.57 L-43.38,-44.49 L-43.38,-44.36 L-43.48,-44.28 L-43.53,-44.16 L-43.74,-43.97 L-43.71,-43.78 L-43.83,-43.63 L-43.83,-43.34 L-44.00,-42.94 L-44.40,-42.71 L-44.42,-42.61 L-44.53,-42.52 L-44.44,-42.37 L-44.54,-42.13 L-44.77,-42.00 L-44.88,-41.78 L-44.82,-41.66 L-44.83,-41.53 L-44.98,-41.39 L-45.14,-41.32 L-45.36,-40.95 L-45.44,-40.71 L-45.63,-40.62 L-45.71,-40.65 L-46.19,-40.51 L-46.28,-40.53 L-46.56,-40.39 L-46.63,-40.45 L-46.71,-40.36 L-46.81,-40.38 L-46.96,-40.28 L-47.03,-40.13 L-47.32,-39.88 L-47.70,-39.80 L-47.83,-39.66 L-47.78,-39.54 L-48.00,-39.28 L-48.16,-39.29 L-48.74,-39.02 L-48.86,-38.89 L-48.89,-38.75 L-48.81,-38.48 L-48.88,-38.21 L-49.01,-38.10 L-49.16,-38.08 L-49.28,-37.92 L-49.39,-37.90 L-49.50,-37.42 L-49.64,-37.28 L-49.85,-37.29 L-49.82,-37.06 L-49.99,-36.89 L-50.02,-36.76 L-49.97,-36.69 L-50.04,-36.36 L-50.32,-36.25 L-50.32,-36.16 L-50.41,-36.13 L-50.50,-35.97 L-50.79,-35.80 L-50.95,-35.59 L-51.32,-35.52 L-51.35,-35.34 L-51.49,-35.21 L-51.56,-35.07 L-51.65,-35.04 L-51.76,-35.09 L-52.03,-34.97 L-52.08,-34.88 L-52.21,-34.81 L-52.33,-34.59 L-52.41,-34.55 L-52.60,-34.49 L-52.81,-34.55 L-53.07,-34.38 L-53.28,-34.19 L-53.42,-33.85 L-53.69,-33.69 L-53.71,-33.45 L-53.95,-33.27 L-53.95,-33.17 L-54.14,-33.04 L-54.27,-33.04 L-54.52,-32.92 L-54.69,-32.64 L-55.00,-32.56 L-55.15,-32.39 L-55.20,-32.21 L-55.13,-32.09 L-55.11,-31.86 L-55.08,-31.34 L-55.12,-31.22 L-55.06,-31.16 L-55.11,-31.03 L-55.02,-30.85 L-54.66,-30.70 L-54.60,-30.64 L-54.46,-30.62 L-54.23,-30.37 L-54.12,-30.32 L-54.07,-30.21 L-53.95,-30.22 L-53.82,-30.17 L-53.58,-29.85 L-53.54,-29.60 L-53.36,-29.48 L-53.02,-29.39 L-52.82,-29.19 L-52.56,-29.16 L-52.44,-29.09 L-52.18,-28.88 L-52.16,-28.72 L-52.10,-28.69 L-51.92,-28.39 L-51.83,-28.37 L-51.83,-28.17 L-51.74,-28.04 L-51.71,-27.77 L-51.78,-27.72 L-51.86,-27.52 L-52.03,-27.42 L-51.97,-27.22 L-51.81,-26.98 L-51.93,-26.72 L-51.85,-26.52 L-51.93,-26.39 L-51.89,-26.31 L-51.96,-26.22 L-52.09,-25.77 L-52.39,-25.44 L-52.43,-24.87 L-52.52,-24.70 L-52.46,-24.64 L-52.29,-24.61 L-52.02,-24.33 L-51.95,-24.15 L-51.91,-23.78 L-51.79,-23.68 L-51.70,-23.68 L-51.61,-23.46 L-51.50,-23.35 L-51.49,-23.25 L-51.59,-23.15 L-51.46,-22.73 L-51.23,-22.58 L-51.14,-22.39 L-51.02,-22.29 L-51.09,-22.15 L-51.06,-22.02 L-51.24,-21.49 L-51.12,-21.29 L-51.10,-21.16 L-51.36,-20.79 L-51.35,-20.48 L-51.53,-20.12 L-51.60,-20.15 L-51.66,-20.11 L-51.76,-19.70 L-51.80,-19.64 L-51.89,-19.64 L-52.07,-19.54 L-52.17,-19.25 L-52.34,-19.18 L-52.39,-19.05 L-52.57,-18.94 L-52.78,-18.56 L-52.94,-18.14 L-52.96,-17.95 L-53.35,-17.45 L-53.37,-17.31 L-53.64,-17.15 L-53.70,-16.93 L-53.99,-16.73 L-54.00,-16.51 L-54.09,-16.57 L-54.15,-16.55 L-54.30,-16.43 L-54.41,-16.21 L-54.47,-16.26 L-54.54,-16.11 L-54.74,-15.94 L-54.76,-15.27 L-54.72,-15.09 L-54.79,-14.94 L-54.64,-14.71 L-54.75,-14.61 L-54.61,-14.41 L-54.76,-14.10 L-54.68,-13.95 L-54.74,-13.75 L-54.93,-13.60 L-54.98,-13.42 L-55.13,-13.35 L-55.15,-13.18 L-55.36,-12.99 L-55.44,-12.80 L-55.58,-12.68 L-55.66,-12.50 L-55.98,-12.39 L-56.17,-12.25 L-56.19,-12.13 L-56.35,-12.14 L-56.53,-12.08 L-56.61,-11.47 L-56.56,-10.21 L-56.05,-9.07"/>
+      </g>
+      <!-- SCHEMATIC overlay, cam-1 px (rides the camera with the map) -->
+      <path id="g-map-kali-gandaki-a1-pk-dh" d="M298,389 L311,411 L285,411 Z" fill="#dfe7ee" stroke="#04070c" stroke-width="2"/>
+      <path id="g-map-kali-gandaki-a1-pk-an" d="M930,610 L943,632 L917,632 Z" fill="#dfe7ee" stroke="#04070c" stroke-width="2"/>
+      <circle id="g-map-kali-gandaki-a1-lete" cx="501.6" cy="571.4" r="6" fill="#93a3b2" stroke="#04070c" stroke-width="2"/>
+      <circle id="g-map-kali-gandaki-a1-jom" cx="755.7" cy="210.4" r="6" fill="#93a3b2" stroke="#04070c" stroke-width="2"/>
+      <text id="g-map-kali-gandaki-a1-t-dh" class="kga1-lab" x="282" y="408" text-anchor="end" font-size="26">Dhaulagiri</text>
+      <text id="g-map-kali-gandaki-a1-t-an" class="kga1-lab" x="952" y="652" font-size="26">Annapurna I</text>
+      <text id="g-map-kali-gandaki-a1-t-lete" class="kga1-lab" x="486" y="600" text-anchor="end" font-size="26">Lete</text>
+      <text id="g-map-kali-gandaki-a1-t-jom" class="kga1-lab" x="772" y="219" font-size="26">Jomsom</text>
+      <g id="g-map-kali-gandaki-a1-deb">
+        <path id="g-map-kali-gandaki-a1-debline" d="M660,470 L556,540" fill="none" stroke="#c0392b" stroke-width="6" stroke-linecap="round"/>
+        <path id="g-map-kali-gandaki-a1-debhead" d="M575.9,537.9 L556.0,540.0 L565.4,522.4" fill="none" stroke="#c0392b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <!-- natural dam across the channel at (538,550): two halves that split at "gives way" -->
+      <path id="g-map-kali-gandaki-a1-damL" d="M484,538 L500,530 L520,534 L538,529 L538,569 L520,566 L502,570 L486,562 Z" fill="#8e2020" stroke="#c0392b" stroke-width="3" stroke-linejoin="round"/>
+      <path id="g-map-kali-gandaki-a1-damR" d="M538,529 L556,532 L574,528 L592,537 L590,561 L574,568 L556,565 L538,569 Z" fill="#8e2020" stroke="#c0392b" stroke-width="3" stroke-linejoin="round"/>
+    </g>
+  </svg>
+  <!-- fixed HUD: labels never ride the camera. Screen px at cam ~1.17; the dam is the push centre, fixed at (960,540) -->
+  <svg class="kga1-svg" viewBox="0 0 1920 1080">
+    <text id="g-map-kali-gandaki-a1-t-deb" class="kga1-big" x="1112" y="436" font-size="30" fill="#e74c3c">DEBRIS</text>
+    <path id="g-map-kali-gandaki-a1-damlead" d="M1130,556 L1034,544" fill="none" stroke="#f2f5f8" stroke-width="3"/>
+    <text id="g-map-kali-gandaki-a1-t-dam" class="kga1-big" x="1140" y="574" font-size="40" fill="#f2f5f8">NATURAL DAM</text>
+    <path id="g-map-kali-gandaki-a1-lakelead" d="M810,402 L918,420" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+    <text id="g-map-kali-gandaki-a1-t-lake" class="kga1-big" x="800" y="414" text-anchor="end" font-size="40" fill="#7fb2e5">LAKE</text>
+    <path id="g-map-kali-gandaki-a1-surgelead" d="M1196,790 L1074,812" fill="none" stroke="#e74c3c" stroke-width="3"/>
+    <text id="g-map-kali-gandaki-a1-t-surge" class="kga1-big" x="1206" y="808" font-size="52" fill="#e74c3c">SURGE OF MUD</text>
+    <g id="g-map-kali-gandaki-a1-bar"><path d="M96,930 L171,930 M96,922 L96,938 M171,922 L171,938" fill="none" stroke="#93a3b2" stroke-width="3"/></g>
+    <text id="g-map-kali-gandaki-a1-t-bar" class="kga1-lab" x="184" y="937" font-size="19" style="fill:#93a3b2">2 mi</text>
+  </svg>
+  <div class="kga1-note" id="g-map-kali-gandaki-a1-note">Schematic: debris, dam, lake, surge</div>
+  <div class="kga1-src" id="g-map-kali-gandaki-a1-src">Map data: OpenStreetMap, Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-map-kali-gandaki-a1", P = "#g-map-kali-gandaki-a1-";
+  /* cues from retime-sheet.md word times (host 167.957+15.808); the window ends on "...a surge of mud." */
+  const CUES = {
+    gorge: 0.42,     /* "gorge this narrow" @0.42-1.36 */
+    river: 4.03,     /* CUE "river." @4.18 (sheet) */
+    debris: 5.05,    /* CUE "Debris" @5.20 (sheet) */
+    dam: 7.73,       /* CUE "dam" @7.88 (sheet) */
+    lake: 9.29,      /* CUE "lake" @9.44 (sheet); the lake fills 9.44-9.94 */
+    gives: 11.38,    /* CUE "gives way" @11.38 (sheet) */
+    stored: 12.47,   /* CUE "stored water" @12.62 (sheet) */
+    downstream: 13.39, /* CUE "downstream" @13.54 (sheet) */
+    mud: 14.92       /* CUE "mud." @14.92 (sheet) */
+  };
+  const DUR = 15.808;
+  const tl = gsap.timeline({ paused: true });
+  const lenOf = (id) => Math.ceil(document.querySelector(P + id).getTotalLength()) + 1;
+  const DEB = lenOf("debline");
+  /* camera: the dam (538,550 cam-1 px) is pinned to (960,540) at every zoom */
+  const cam = (z) => ({ attr: { transform: "translate(" + (960 - 538 * z).toFixed(2) + "," + (540 - 550 * z).toFixed(2) + ") scale(" + z + ")" } });
+
+  /* runtime clones of the river path (same d) for the valley walls, lake, mud trail and surge pulse */
+  const kg = document.querySelector(P + "kg"), glow = document.querySelector(P + "kgglow"), mapG = kg.parentNode;
+  const TOTAL = kg.getTotalLength(), T = Math.ceil(TOTAL) + 1;
+  let LDAM = 0, best = 1e9; /* path length at the dam: nearest point to (-53.5625,-29.6875) map units */
+  for (let l = 0; l <= TOTAL; l += 0.05) {
+    const p = kg.getPointAtLength(l), d = (p.x + 53.5625) * (p.x + 53.5625) + (p.y + 29.6875) * (p.y + 29.6875);
+    if (d < best) { best = d; LDAM = l; }
+  }
+  const clone = (name, attrs, before) => {
+    const c = kg.cloneNode(false);
+    c.setAttribute("id", ID + "-" + name);
+    Object.keys(attrs).forEach((k) => c.setAttribute(k, attrs[k]));
+    if (before) mapG.insertBefore(c, before); else mapG.appendChild(c);
+    return c;
+  };
+  /* 1 map unit = 32 cam-1 px: slope shade +-260 px, wall bands 70-110 px either side, channel floor 140 px wide */
+  const VALLEY = [
+    clone("slopes", { stroke: "#15202b", "stroke-width": "16.25", "stroke-opacity": "0.75" }, glow),
+    clone("walls", { stroke: "#2a3644", "stroke-width": "6.875" }, glow),
+    clone("hatch", { stroke: "url(#g-map-kali-gandaki-a1-hatch)", "stroke-width": "6.875" }, glow),
+    clone("floor", { stroke: "#0b1016", "stroke-width": "4.375" }, glow)
+  ];
+  /* lake: the 220 px (6.9 units) of channel upstream of the dam, revealed by a clip circle growing from the dam */
+  const lake = clone("lake", { stroke: "#7fb2e5", "stroke-opacity": "0.6", "stroke-width": "3.6", "stroke-linecap": "butt",
+    "stroke-dasharray": "0 " + (LDAM - 6.9).toFixed(3) + " 6.9 " + T, "clip-path": "url(#g-map-kali-gandaki-a1-lakeclip)" }, glow);
+  const trail = clone("trail", { stroke: "#8a6a50", "stroke-width": "0.75", "stroke-linecap": "butt",
+    "stroke-dasharray": "0 " + LDAM.toFixed(3) + " 0 " + T });
+  const surge = clone("surge", { stroke: "#c0392b", "stroke-width": "1.0", "stroke-dasharray": "3 " + T });
+
+  /* ---- initial state ---- */
+  tl.set(P + "cam", cam(1.1), 0);
+  tl.set(VALLEY, { strokeDasharray: T, strokeDashoffset: T }, 0);
+  tl.set(P + "debline", { strokeDasharray: DEB, strokeDashoffset: DEB }, 0);
+  tl.set(surge, { autoAlpha: 0, strokeDashoffset: -LDAM }, 0);
+  tl.set([P + "debhead", P + "damL", P + "damR", P + "t-deb", P + "t-dam", P + "damlead", P + "t-lake", P + "lakelead",
+    P + "t-surge", P + "surgelead", P + "pk-dh", P + "pk-an", P + "lete", P + "jom", P + "t-dh", P + "t-an", P + "t-lete", P + "t-jom",
+    P + "bar", P + "t-bar", P + "note", P + "src"], { autoAlpha: 0 }, 0);
+  tl.set([P + "kg", P + "kgglow", P + "flow"], { autoAlpha: 0 }, 0);
+
+  /* ---- base map fades in immediately, so comp-local 0 never reads empty ---- */
+  tl.to([P + "kg", P + "kgglow", P + "flow"], { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 0);
+
+  /* ---- ambient, whole window (29 Sep 26: the full-width .scan line was deleted; it read as a tracking
+     glitch through the labels. The flow dashes, river-glow pulse and camera push carry the motion) ---- */
+  tl.fromTo(P + "flow", { strokeDashoffset: 0 }, { strokeDashoffset: -16, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "kgglow", { attr: { "stroke-opacity": 0.2 } }, { attr: { "stroke-opacity": 0.45 }, duration: 1.4, ease: "sine.inOut", repeat: 10, yoyo: true }, 0);
+  tl.fromTo([P + "note", P + "src"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);
+
+  /* ---- camera settles on the dam, then a slow push 1.15 -> 1.2 for the rest of the window ---- */
+  tl.to(P + "cam", Object.assign(cam(1.15), { duration: 0.9, ease: "power2.out" }), 0);
+  tl.to(P + "cam", Object.assign(cam(1.2), { duration: DUR - 0.9, ease: "none" }), 0.9);
+
+  /* ---- "a gorge this narrow": slope shade, wall bands and channel floor draw north to south ---- */
+  tl.to(VALLEY, { strokeDashoffset: 0, duration: 0.94, ease: "power2.inOut" }, CUES.gorge);
+  tl.fromTo([P + "pk-dh", P + "pk-an", P + "lete", P + "jom"], { autoAlpha: 0, scale: 0.4, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.4, stagger: 0.1, ease: "back.out(2)" }, 1.5);
+  tl.fromTo([P + "t-dh", P + "t-an", P + "t-lete", P + "t-jom"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, stagger: 0.12, ease: "power3.out" }, 1.7);
+  tl.fromTo([P + "bar", P + "t-bar"], { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.4);
+
+  /* ---- the whole river: flow ticks brighten ---- */
+  tl.to(P + "flow", { attr: { "stroke-opacity": 0.8 }, duration: 0.5, ease: "power2.out" }, CUES.river);
+
+  /* ---- debris lands in the channel ---- */
+  tl.to(P + "debline", { strokeDashoffset: 0, duration: 0.7, ease: "power3.in" }, CUES.debris);
+  tl.fromTo(P + "debhead", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.15 }, CUES.debris + 0.6);
+  tl.fromTo(P + "t-deb", { autoAlpha: 0, x: 14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.debris + 0.2);
+
+  /* ---- a natural dam across the channel, named beside it on "dam" ---- */
+  tl.fromTo(P + "damL", { autoAlpha: 0, scale: 0, svgOrigin: "511 550" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)" }, CUES.dam);
+  tl.fromTo(P + "damR", { autoAlpha: 0, scale: 0, svgOrigin: "565 549" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)" }, CUES.dam + 0.06);
+  tl.fromTo([P + "t-dam", P + "damlead"], { autoAlpha: 0, x: 24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.dam);
+  tl.to([P + "debline", P + "debhead"], { autoAlpha: 0.35, duration: 0.5 }, CUES.dam + 0.6);
+  tl.to(P + "t-deb", { autoAlpha: 0, duration: 0.4 }, CUES.dam + 0.9);
+
+  /* ---- "hold back a lake behind it": the lake fills the channel upstream of the dam ---- */
+  tl.to(P + "lakeclipc", { attr: { r: 7.6 }, duration: 0.65, ease: "power2.out" }, CUES.lake);
+  tl.fromTo([P + "t-lake", P + "lakelead"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.lake + 0.05);
+  tl.fromTo(lake, { attr: { "stroke-opacity": 0.6 } }, { attr: { "stroke-opacity": 0.82 }, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, CUES.lake + 0.7);
+
+  /* ---- "when that dam gives way": the two halves rotate +-25 deg and slide apart; the lake drains ---- */
+  tl.to(P + "damL", { rotation: -25, x: -46, y: 8, svgOrigin: "511 550", duration: 0.5, ease: "power3.out" }, CUES.gives);
+  tl.to(P + "damR", { rotation: 25, x: 46, y: 8, svgOrigin: "565 549", duration: 0.5, ease: "power3.out" }, CUES.gives);
+  tl.to(P + "lakeclipc", { attr: { r: 0 }, duration: 1.1, ease: "power2.in" }, CUES.gives + 0.1);
+  tl.to([P + "t-lake", P + "lakelead"], { autoAlpha: 0, duration: 0.4 }, CUES.gives + 0.7);
+  tl.to([P + "t-dam", P + "damlead"], { autoAlpha: 0, duration: 0.4 }, CUES.stored - 0.2);
+
+  /* ---- "the stored water runs downstream as a surge of mud": a red pulse rides the river, mud trail behind it ---- */
+  tl.set(surge, { autoAlpha: 1 }, CUES.stored);
+  tl.fromTo(surge, { strokeDashoffset: -LDAM }, { strokeDashoffset: -TOTAL, duration: CUES.mud - CUES.stored, ease: "power1.in" }, CUES.stored);
+  tl.fromTo(trail, { attr: { "stroke-dasharray": "0 " + LDAM.toFixed(3) + " 0 " + T } },
+    { attr: { "stroke-dasharray": "0 " + LDAM.toFixed(3) + " " + (TOTAL - LDAM).toFixed(3) + " " + T }, duration: CUES.mud - CUES.stored, ease: "power1.in" }, CUES.stored);
+  tl.fromTo([P + "t-surge", P + "surgelead"], { autoAlpha: 0, x: 24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.downstream);
+
+  /* ---- exit: full-frame map; SURGE OF MUD holds, the push and river flow carry the last ~0.9 s to the cut ---- */
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
