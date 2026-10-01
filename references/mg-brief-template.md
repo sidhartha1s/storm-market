@@ -23,7 +23,8 @@ When no reference image exists: derive geometry from numbers through a stated sc
 - Nothing overlaps text or shapes; all text at least 96 px from the left/right edges and 54 px from top/bottom; every label next to the
   thing it names. Every other rule: `references/mg-quickref.md`.
 - Mount only the trimmed cut files named in this brief, never a full source clip. Edit only your own `compositions/` file(s), never
-  another builder's or index.html. Change files with the Edit/Write tools, never a Python or sed splice (ep-nepal: full clips, crossed files and splices).
+  another builder's or index.html: the orchestrator mounts your host div in index.html before dispatch, so §7 finds your comp.
+  How files may be changed: CLAUDE.md "do not write code for what reasoning already does" (ep-nepal: full clips, crossed files, script splices).
 
 ## 7. TOOLS (run from your episode worktree root; paths are repo-relative)
 Pre-render look: `node scripts/freeze_scan.mjs episodes/<slug> --comp <COMPID>` writes a contact sheet (a tile every 3 s) to
