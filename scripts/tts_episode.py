@@ -209,12 +209,11 @@ def main():
     mpath = ep / "audio" / "manifest.json"
     manifest = json.loads(mpath.read_text(encoding="utf-8")) if mpath.exists() else {}
     model = None
+    todo = []
     for sid, text in segs:
         if only and sid not in only:
             continue
         txt = ep / "audio" / f"{sid}.txt"
-        # single suffix so .stem (used in synth_native's log/exit messages) still reads "sid",
-        # not "sid.txt"
         txt_tmp = ep / "audio" / f"{sid}.tmp"
         raw_wav = ep / "audio" / "_raw" / f"{sid}.wav"
         wav = ep / "audio" / f"{sid}.wav"
