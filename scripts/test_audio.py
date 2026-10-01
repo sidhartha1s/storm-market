@@ -86,7 +86,7 @@ except tts_episode.SegmentParseError:
 calls = {"synth": [], "tempo": [], "transcribe": [], "batches": []}
 
 
-def mock_synth_native(pairs, batch_file, ext):
+def mock_synth_native(pairs, ext):
     calls["batches"].append(len(pairs))
     for txt_path, wav_path in pairs:
         calls["synth"].append(txt_path.stem)
@@ -293,7 +293,7 @@ with tempfile.TemporaryDirectory() as d:
     (ep_crash / "audio" / "manifest.json").write_text(json.dumps(
         {"a1-s1": {"wav": "audio/a1-s1.wav", "duration": 5.0, "words": 7}}), encoding="utf-8")
 
-    def mock_synth_native_crash(pairs, batch_file, ext):
+    def mock_synth_native_crash(pairs, ext):
         # simulates tts_clone dying mid-segment, same as the real synth_native's sys.exit
         sys.exit("[test_audio] simulated tts_clone crash")
 
