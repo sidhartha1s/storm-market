@@ -4,7 +4,8 @@ external:
   # pocket-TTS runs from JP-market's isolated venv (runtime invocation only — zero imports;
   # same isolation pattern JP/FR use). If JP-market moves, update these three paths.
   pocket_venv_python: C:\Users\Sidhartha\Automation Projects\JP-market\.venv-pocket\Scripts\python.exe
-  tts_clone_py: C:\Users\Sidhartha\Automation Projects\JP-market\engine\tts_clone.py
+  # a JP-market worktree on origin/main (has --batch); JP's own checkout sits on a stale branch
+  tts_clone_py: C:\Users\Sidhartha\Automation Projects\JP-market\.worktrees\tts-engine\engine\tts_clone.py
   voice_ref: C:\Users\Sidhartha\Automation Projects\storm-market\assets\voice\pharaoh_wisdom_bearer.mp3
   # md5 2d8ea8f14763932f3f76da67d7fd1612 — verify before every produce run (JP voice-ref gotcha)
 
