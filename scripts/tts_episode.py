@@ -149,7 +149,7 @@ def synth_native(pairs, ext):
             break
         print(f"[tts_episode] [FALLBACK] batch of {len(pairs)} attempt {attempt} exited "
               f"{r.returncode} (0x{r.returncode & 0xFFFFFFFF:08X})", flush=True)
-    sys.exit(f"[tts_episode] FAIL on the batch of {len(pairs)} after retry, exit {r.returncode} "
+    sys.exit(f"[tts_episode] FAIL on the batch of {len(pairs)} (attempt {attempt}), exit {r.returncode} "
              f"(tts_clone.py needs --batch: JP-market engine/tts_clone.py on main)")
 
 
