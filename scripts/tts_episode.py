@@ -209,7 +209,7 @@ def main():
     mpath = ep / "audio" / "manifest.json"
     manifest = json.loads(mpath.read_text(encoding="utf-8")) if mpath.exists() else {}
     model = None
-    todo = []
+    todo, stale_pairs = [], []
     for sid, text in segs:
         if only and sid not in only:
             continue
