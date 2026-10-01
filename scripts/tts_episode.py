@@ -128,21 +128,25 @@ def ffprobe_duration(path, attempts=4, sleep_s=3):
     return d
 
 
-def synth_native(txt_path, wav_path, ext):
-    # tts_clone.py intermittently dies at CUDA init/clone with a native crash (no traceback,
-    # non-zero exit; ep6 measured ~1 in 8 segments, same input passes on rerun). One loud
-    # retry per segment; a second consecutive failure is real.
+def synth_native(pairs, batch_file, ext):
+    # One tts_clone.py process for every stale segment (--batch): the model loads and the voice
+    # clones once per run instead of once per segment. tts_clone.py intermittently dies at CUDA
+    # init/clone with a native crash (no traceback, non-zero exit; ep6 measured ~1 in 8 calls,
+    # same input passes on rerun). One loud retry; tts_clone caches finished sentences by text
+    # hash, so the retry only re-pays the load. A second consecutive failure is real.
+    batch_file.write_text("".join(f"{t}\t{w}\n" for t, w in pairs), encoding="utf-8")
     r = None
     for attempt in (1, 2):
         r = subprocess.run([ext["pocket_venv_python"], ext["tts_clone_py"],
-                            "--text-file", str(txt_path), "--out", str(wav_path),
-                            "--voice", ext["voice_ref"]],
+                            "--batch", str(batch_file), "--voice", ext["voice_ref"]],
                            env={**os.environ, "PYTHONUTF8": "1", "PYTHONUNBUFFERED": "1"})
         if r.returncode == 0:
+            batch_file.unlink()
             return
-        print(f"[tts_episode] [FALLBACK] {txt_path.stem} attempt {attempt} exited "
+        print(f"[tts_episode] [FALLBACK] batch of {len(pairs)} attempt {attempt} exited "
               f"{r.returncode} (0x{r.returncode & 0xFFFFFFFF:08X})", flush=True)
-    sys.exit(f"[tts_episode] FAIL on {txt_path.stem} after retry, exit {r.returncode}")
+    sys.exit(f"[tts_episode] FAIL on the batch of {len(pairs)} after retry, exit {r.returncode} "
+             f"(tts_clone.py needs --batch: JP-market engine/tts_clone.py on main)")
 
 
 def apply_tempo(raw_wav, sped_wav, tempo):
