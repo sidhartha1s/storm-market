@@ -8,7 +8,7 @@
 ## Thumbnail text (3 words max)
 3 SECONDS
 
-(Image: the cleanest frame of the collapse at the moment the green slope breaks into brown dust over the river, graded, cropped tight on the falling face. Red timer ring "0:03", small "NEPAL 2026", inset of a snowy peak with one yellow tent. No faces, no toll number.)
+(Owner pick 1 Oct 26, concept A of three: `renders/ep-nepal-floods-2026-thumb.jpg`, 1280x720. Two-panel before/after from the Kali Gandaki reel `media/_orig/ig-reel-Dd09BQnI1rr.mp4`: left the intact slope at 3.0 s, right the dust cloud at 11.0 s, white divider, "3 SECONDS" in Arial Black across the top, BEFORE / AFTER tags at the bottom. Contrast 1.15, saturation 1.2. No faces, no toll number. Note: WION's thumbnail uses the same before/after split of this reel.)
 
 ## Description
 https://paulraymond.online
