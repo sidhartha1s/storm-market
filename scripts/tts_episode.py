@@ -128,12 +128,14 @@ def ffprobe_duration(path, attempts=4, sleep_s=3):
     return d
 
 
-def synth_native(pairs, batch_file, ext):
+def synth_native(pairs, ext):
     # One tts_clone.py process for every stale segment (--batch): the model loads and the voice
     # clones once per run instead of once per segment. tts_clone.py intermittently dies at CUDA
     # init/clone with a native crash (no traceback, non-zero exit; ep6 measured ~1 in 8 calls,
     # same input passes on rerun). One loud retry; tts_clone caches finished sentences by text
-    # hash, so the retry only re-pays the load. A second consecutive failure is real.
+    # hash in <out dir>/_segments, so the retry only re-pays the load. A second consecutive
+    # failure is real. Exit 2 is argparse (e.g. a tts_clone without --batch): deterministic, no retry.
+    batch_file = pairs[0][1].parent / "batch.tsv"
     batch_file.write_text("".join(f"{t}\t{w}\n" for t, w in pairs), encoding="utf-8")
     r = None
     for attempt in (1, 2):
@@ -143,6 +145,8 @@ def synth_native(pairs, batch_file, ext):
         if r.returncode == 0:
             batch_file.unlink()
             return
+        if r.returncode == 2:
+            break
         print(f"[tts_episode] [FALLBACK] batch of {len(pairs)} attempt {attempt} exited "
               f"{r.returncode} (0x{r.returncode & 0xFFFFFFFF:08X})", flush=True)
     sys.exit(f"[tts_episode] FAIL on the batch of {len(pairs)} after retry, exit {r.returncode} "
