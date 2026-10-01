@@ -83,7 +83,8 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 
 ## Voice
 - Kyutai pocket-TTS cloned from `assets/voice/pharaoh_wisdom_bearer.mp3` (md5 2d8ea8f14763932f3f76da67d7fd1612).
-  Run it through the external venv: `<external.pocket_venv_python> <external.tts_clone_py> --text-file ... --out ... --voice <external.voice_ref>`.
+  Run it through the external venv: `<external.pocket_venv_python> <external.tts_clone_py> --text-file ... --out ... --voice <external.voice_ref>`
+  for one probe; `tts_episode.py` passes every stale segment in one `--batch <tsv>` call so the model loads once per run (about 19 s saved per segment, measured 1 Oct 26).
 - Pace is measured, never assumed. Probe-TTS two segments AT THE SHIPPING TEMPO, then
   `python3 scripts/word_budget.py episodes/<slug> --target <min> --probe <wav> <wav>` sizes the script from that
   pace and the real non-voice seconds. It fails outside target +/- 1 min; a script is not locked while it fails.
