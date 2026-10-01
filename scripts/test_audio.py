@@ -266,13 +266,8 @@ with tempfile.TemporaryDirectory() as d:
     tts_episode.main()
     check("tts_episode: two stale segments synthesize in ONE batch call",
           calls["batches"] == [2] and calls["synth"] == ["a1-s1", "a1-s2"], calls)
-    (ep_batch / "edit_script.md").write_text("### A1-S1 -- narration
-> First line here.
-
-"
-                                             "### A1-S2 -- narration
-> Second line, edited.
-", encoding="utf-8")
+    (ep_batch / "edit_script.md").write_text(two_seg.replace("Second line here.", "Second line, edited."),
+                                             encoding="utf-8")
     install_mocks()
     tts_episode.main()
     check("tts_episode: a rerun batches only the edited segment",
