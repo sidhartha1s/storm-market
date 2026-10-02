@@ -207,6 +207,17 @@ with tempfile.TemporaryDirectory() as d:
     check("tts_episode: (tempo 1.0) heading records 1.0 for that segment only",
           pace["a1-s2"]["tempo"] == 1.0 and pace["a1-s1"]["tempo"] == 1.10, pace)
     check("tts_episode: adding a tempo tag re-synthesizes only the tagged segment", calls["synth"] == ["a1-s2"], calls)
+    check("tts_episode: the tagged segment's wav is sped at 1.0, not the lane tempo",
+          calls["tempo"] == [("a1-s2", 1.0)], calls["tempo"])
+
+    # 4d. a heading that mentions tempo in an unreadable form fails loudly, never voices at the lane tempo.
+    (ep_pace / "edit_script.md").write_text(two.replace("### A1-S2 -- narration", "### A1-S2 -- narration (tempo: 1.0)"),
+                                           encoding="utf-8")
+    try:
+        tts_episode.main()
+        check("tts_episode: malformed tempo tag exits non-zero", False, "no exit")
+    except SystemExit as e:
+        check("tts_episode: malformed tempo tag exits non-zero", "unreadable tempo tag" in str(e.code), e.code)
 
     # 5b. legacy manifest (no text_hash) whose wav's .txt matches the current parsed text is
     #     ADOPTED, not re-synthesized — a fresh run over every already-shipped episode must
