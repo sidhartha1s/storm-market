@@ -51,6 +51,6 @@ The editing agent decides where each of these goes by reasoning about the story 
 2. The fact sheet from primary sources, and a teardown of Astrum #3 and Chris #2 (hooks already pulled).
 3. Hook and intro draft. The OWNER GATE and the fact-check fan-out run in parallel.
 4. Voice: if the owner's own voice clone lands today (planned), TTS uses it, not Pharaoh.
-5. Sourcing and re-fetch, with 2-3 candidates per beat and a provenance row per file.
+5. Sourcing and re-fetch, with 2-3 candidates per beat and a provenance row per file. In parallel: SFX KIT APPROVAL and MUSIC TRACKS (a deAPI run on an owner go).
 6. Compose: Opus builders after VO, at most 5 at once.
 7. Gates and frame reads, then the pin ritual (0.8.106 is out now), then a DRAFT RENDER for owner review.
