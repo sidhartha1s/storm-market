@@ -37,6 +37,15 @@ Status: planning. Nothing is scripted, sourced or rendered yet.
 - Act 1: the setup and the Moore shadow. Act 2: the storm and the radar. Act 3: the rating paradox (the g-dimethod-style explainer, cut to 90 s or less). Act 4: the people. The CTA sits in the config window, then the close.
 - Target length 20-25 min. The word budget comes from probe TTS at the shipping tempo.
 
+## Sound and pacing (owner 2 Oct 26; El Reno is the first episode to use these)
+The editing agent decides where each of these goes by reasoning about the story beat. There are no code gates and no per-video quotas.
+- **Pacing.** The baseline tempo stays 1.10. Key reveals drop to 1.0 by voicing them as their own segment. Demo: `C:\Users\Sidhartha\.claude\scratch\devq-retention\pace\B-110-then-100.mp3`.
+- **Music.** Sets replace the one bed across the episode. Tracks are generated with deAPI ACE-Step 1.5, one per mood (dread build, storm, aftermath, the people), and swap at act seams and story turns. Only one bed plays at a time, so the post-mortem's no-pile-up rule still holds. Every paid run needs an owner go that names the run.
+- **SFX.** Only from the owner-approved copyright-free kit (candidates in `C:\Users\Sidhartha\.claude\scratch\devq-retention\sfx\`). Placed by reasoning, not by count.
+- **Silence drops.** About 1.0 s before each key line the agent identifies. The agent also decides per moment what drops out: music, SFX, ambience.
+- **Open loops.** Each loop the script opens is tagged, and each tag must close before the end (script-quickref).
+- **Motion graphics.** Each brief is written to the eval-v2 standard: px geometry, word-cue times from words.json, no number on screen before its word, and a must-be-true checklist. An Opus builder makes each graphic, then a strict Opus viewer reviews it for at most 2 rounds.
+
 ## Order of work (owner gates in caps)
 1. ANGLE + TITLE + THUMB LOCK (packaging before scripting).
 2. The fact sheet from primary sources, and a teardown of Astrum #3 and Chris #2 (hooks already pulled).
