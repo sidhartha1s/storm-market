@@ -92,7 +92,7 @@ def mock_synth_native(txt_path, wav_path, ext):
 
 
 def mock_apply_tempo(raw_wav, sped_wav, tempo):
-    calls["tempo"].append(sped_wav.stem)
+    calls["tempo"].append((sped_wav.stem, tempo))
     sped_wav.write_bytes(raw_wav.read_bytes() + b"SPED")
 
 
