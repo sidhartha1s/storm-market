@@ -247,6 +247,18 @@ with tempfile.TemporaryDirectory() as d:
     check("tts_episode: adopted entry keeps the OLD wav bytes (never touched)",
           (ep_legacy / "audio" / "a1-s1.wav").read_bytes() == b"OLD-RAW-WAV")
 
+    # 5b2. a tempo tag on an adopted legacy segment is a known tempo: it re-synthesizes at 1.0
+    #      (8 of 10 shipped episodes are all-legacy; the tag must not be silently ignored there).
+    (ep_legacy / "edit_script.md").write_text(
+        SCRIPT_ONE_SEG.replace("### A1-S1 -- narration", "### A1-S1 -- narration (tempo 1.0)"), encoding="utf-8")
+    install_mocks()
+    tts_episode.main()
+    tagged_legacy = json.loads((ep_legacy / "audio" / "manifest.json").read_text(encoding="utf-8"))
+    check("tts_episode: tempo tag on a legacy segment re-synthesizes it at 1.0",
+          calls["synth"] == ["a1-s1"] and calls["tempo"] == [("a1-s1", 1.0)]
+          and tagged_legacy["a1-s1"]["tempo"] == 1.0, (calls, tagged_legacy["a1-s1"]))
+    (ep_legacy / "edit_script.md").write_text(SCRIPT_ONE_SEG, encoding="utf-8")
+
     # 5c. re-running over an ALREADY-adopted legacy entry (tempo="legacy", a stored text-only
     #     hash) with unchanged text stays adopted — the text-only hash path, not just the
     #     one-time old-.txt-comparison path, must also recognize "nothing changed".
