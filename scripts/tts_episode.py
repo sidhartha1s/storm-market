@@ -18,6 +18,10 @@ Re-synthesis: a segment is only re-run (new _raw + sped wav, words.json deleted 
 retranscribed) when sha1(text + tempo + voice md5) changes from the manifest's stored hash for
 that id. Editing one script line invalidates only that line's stale audio, nothing else.
 
+Per-segment tempo: '(tempo 1.0)' on a segment heading overrides the lane tempo for that segment
+only (owner 2 Oct 26: key reveals slow to 1.0 against the 1.10 baseline). Which lines slow down
+is the editor's call; nothing here caps or counts them.
+
 Usage: python3 scripts/tts_episode.py episodes/<slug> [--only A3-S5,...]
 Exits non-zero, and leaves manifest.json untouched, when the script parses to 0 segments (an
 unsupported format — see parse_segments docstring) or an --only id isn't in the script.
@@ -96,6 +100,12 @@ def parse_segments(md: str):
         if text:
             segs.append((sid, text))
     return segs
+
+
+def segment_tempos(md: str):
+    """{segment id: tempo} for headings carrying '(tempo X)', e.g. '### A2-S4 — narration (tempo 1.0)'."""
+    return {m.group(1).lower(): float(m.group(2))
+            for m in re.finditer(r"^#{1,6} ([A-Z]\d+-S\d+[a-z]?).*\(tempo ([\d.]+)\)", md, re.M)}
 
 
 def resolve_tempo(cfg, slug):
@@ -179,13 +189,15 @@ def main():
     (ep / "audio").mkdir(exist_ok=True)
     (ep / "audio" / "_raw").mkdir(exist_ok=True)
     try:
-        segs = parse_segments((ep / "edit_script.md").read_text(encoding="utf-8"))
+        script_md = (ep / "edit_script.md").read_text(encoding="utf-8")
+        segs = parse_segments(script_md)
     except SegmentParseError as e:
         sys.exit(f"[tts_episode] FAIL parsing edit_script.md: {e}")
     if not segs:
         sys.exit(f"[tts_episode] FAIL — 0 narration segments parsed from {ep}/edit_script.md "
                  f"(unsupported script format — see parse_segments docstring); "
                  f"manifest.json left untouched")
+    tempos = segment_tempos(script_md)
     seg_ids = {sid for sid, _ in segs}
     if only:
         missing = only - seg_ids
@@ -222,8 +234,9 @@ def main():
         # clone failure, ffmpeg/ffprobe failure, Ctrl-C): the rerun would see old_txt == new
         # text, adopt the entry, and silently keep the OLD wav for the NEW line.
         old_txt = txt.read_text(encoding="utf-8") if txt.exists() else None
+        seg_tempo = tempos.get(sid, tempo)
 
-        h = sha1_text(text, tempo, voice_md5)
+        h = sha1_text(text, seg_tempo, voice_md5)
         h_text = hashlib.sha1(text.encode("utf-8")).hexdigest()
         prior = manifest.get(sid, {})
         prior_tempo = prior.get("tempo")
@@ -254,7 +267,7 @@ def main():
             # that's actually on disk.
             txt_tmp.write_text(text, encoding="utf-8")
             synth_native(txt_tmp, raw_wav, ext)
-            apply_tempo(raw_wav, wav, tempo)
+            apply_tempo(raw_wav, wav, seg_tempo)
             txt_tmp.replace(txt)
             if words_json.exists():
                 words_json.unlink()
@@ -277,7 +290,7 @@ def main():
             tag = " [adopted: legacy tempo unknown]"
         else:
             manifest[sid] = {"wav": f"audio/{sid}.wav", "duration": round(d, 3),
-                             "words": len(text.split()), "text_hash": h, "tempo": tempo}
+                             "words": len(text.split()), "text_hash": h, "tempo": seg_tempo}
             tag = " [re-synth]" if stale else ""
         print(f"[tts_episode] {sid}: {d:.1f}s ({len(text.split())} words){tag}", flush=True)
 
