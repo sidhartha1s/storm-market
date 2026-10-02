@@ -40,7 +40,7 @@ Status: planning. Nothing is scripted, sourced or rendered yet.
 ## Sound and pacing (owner 2 Oct 26; El Reno is the first episode to use these)
 The editing agent decides where each of these goes by reasoning about the story beat. There are no code gates and no per-video quotas.
 - **Pacing.** The baseline tempo stays 1.10. Key reveals drop to 1.0 by voicing them as their own segment. Demo: `C:\Users\Sidhartha\.claude\scratch\devq-retention\pace\B-110-then-100.mp3`.
-- **Music.** Sets replace the one bed across the episode. Tracks are generated with deAPI ACE-Step 1.5, one per mood (dread build, storm, aftermath, the people), and swap at act seams and story turns. Only one bed plays at a time, so the post-mortem's no-pile-up rule still holds. Every paid run needs an owner go that names the run.
+- **Music.** Sets replace the one bed across the episode. Tracks are generated with deAPI ACE-Step 1.5, one per mood (dread build, storm, aftermath, the people), and swap at act seams and story turns. Only one bed plays at a time, so the post-mortem's no-pile-up rule still holds. Every paid run needs an owner go that names the run. BLOCKED 2 Oct 26: all three deAPI keys return 403 "Client account is suspended". The owner's go covered 4 tracks; 0 were made and $0 was spent. Waits on a new account or support.
 - **SFX.** Only from the owner-approved copyright-free kit (candidates in `C:\Users\Sidhartha\.claude\scratch\devq-retention\sfx\`). Placed by reasoning, not by count.
 - **Silence drops.** About 1.0 s before each key line the agent identifies. The agent also decides per moment what drops out: music, SFX, ambience.
 - **Open loops.** Each loop the script opens is tagged, and each tag must close before the end (script-quickref).
