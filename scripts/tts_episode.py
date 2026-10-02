@@ -259,7 +259,9 @@ def main():
         # lane tempo, which replaces the "legacy" marker with a real one). Without adoption at
         # all, the first full run after this fix would re-synthesize every existing episode's
         # segments and shift every duration under already-timed graphics.
-        is_legacy = prior_tempo in (None, "legacy") and wav.exists()
+        # An explicit '(tempo X)' tag is a known tempo, so it is never adopted as legacy: the
+        # tagged segment re-synthesizes at that tempo (else the tag is silently ignored).
+        is_legacy = sid not in tempos and prior_tempo in (None, "legacy") and wav.exists()
         if is_legacy:
             prior_text_hash = prior.get("text_hash")
             text_changed = (prior_text_hash != h_text) if prior_text_hash is not None \
