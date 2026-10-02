@@ -192,6 +192,22 @@ with tempfile.TemporaryDirectory() as d:
     check("tts_episode: non-sh- episode manifest records the default tempo 1.10",
           manifest["a1-s1"]["tempo"] == 1.10, manifest["a1-s1"])
 
+    # 4c. '(tempo 1.0)' on one heading slows that segment only; the untagged one keeps the lane
+    #     tempo. Adding the tag later re-synthesizes just the tagged segment.
+    two = SCRIPT_ONE_SEG + "\n### A1-S2 -- narration\n> Then it grew.\n"
+    ep_pace = make_episode(tmp, two, voice_ref, name="ep-pace")
+    install_mocks()
+    sys.argv = ["tts_episode.py", str(ep_pace)]
+    tts_episode.main()
+    (ep_pace / "edit_script.md").write_text(two.replace("### A1-S2 -- narration", "### A1-S2 -- narration (tempo 1.0)"),
+                                           encoding="utf-8")
+    install_mocks()
+    tts_episode.main()
+    pace = json.loads((ep_pace / "audio" / "manifest.json").read_text(encoding="utf-8"))
+    check("tts_episode: (tempo 1.0) heading records 1.0 for that segment only",
+          pace["a1-s2"]["tempo"] == 1.0 and pace["a1-s1"]["tempo"] == 1.10, pace)
+    check("tts_episode: adding a tempo tag re-synthesizes only the tagged segment", calls["synth"] == ["a1-s2"], calls)
+
     # 5b. legacy manifest (no text_hash) whose wav's .txt matches the current parsed text is
     #     ADOPTED, not re-synthesized — a fresh run over every already-shipped episode must
     #     not blow away every duration under already-timed graphics.
