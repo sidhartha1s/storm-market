@@ -19,8 +19,7 @@ retranscribed) when sha1(text + tempo + voice md5) changes from the manifest's s
 that id. Editing one script line invalidates only that line's stale audio, nothing else.
 
 Per-segment tempo: '(tempo 1.0)' on a segment heading overrides the lane tempo for that segment
-only (owner 2 Oct 26: key reveals slow to 1.0 against the 1.10 baseline). Which lines slow down
-is the editor's call; nothing here caps or counts them.
+only (rule: CLAUDE.md "Voice").
 
 Usage: python3 scripts/tts_episode.py episodes/<slug> [--only A3-S5,...]
 Exits non-zero, and leaves manifest.json untouched, when the script parses to 0 segments (an
