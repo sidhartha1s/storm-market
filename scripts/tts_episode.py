@@ -35,6 +35,7 @@ import time
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
+SEG_ID = r"([A-Z]\d+-S\d+[a-z]?)\b"  # segment id at the start of a heading, e.g. 'A3-S5'
 
 
 class SegmentParseError(Exception):
