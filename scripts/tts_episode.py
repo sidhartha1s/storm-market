@@ -69,7 +69,7 @@ def parse_segments(md: str):
     blocks = re.split(r"\n#{1,6} ", "\n" + md.replace("\r\n", "\n"))
     for b in blocks[1:]:
         header, _, rest = b.partition("\n")
-        m = re.match(r"([A-Z]\d+-S\d+[a-z]?)\b", header)
+        m = re.match(SEG_ID, header)
         if not m:
             continue
         sid = m.group(1).lower()
