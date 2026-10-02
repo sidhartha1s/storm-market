@@ -207,7 +207,6 @@ def main():
         sys.exit(f"[tts_episode] FAIL — 0 narration segments parsed from {ep}/edit_script.md "
                  f"(unsupported script format — see parse_segments docstring); "
                  f"manifest.json left untouched")
-    tempos = segment_tempos(script_md)
     seg_ids = {sid for sid, _ in segs}
     if only:
         missing = only - seg_ids
