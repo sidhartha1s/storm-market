@@ -200,6 +200,7 @@ def main():
     try:
         script_md = (ep / "edit_script.md").read_text(encoding="utf-8")
         segs = parse_segments(script_md)
+        tempos = segment_tempos(script_md)
     except SegmentParseError as e:
         sys.exit(f"[tts_episode] FAIL parsing edit_script.md: {e}")
     if not segs:
