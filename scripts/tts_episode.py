@@ -105,7 +105,7 @@ def parse_segments(md: str):
 def segment_tempos(md: str):
     """{segment id: tempo} for headings carrying '(tempo X)', e.g. '### A2-S4 — narration (tempo 1.0)'."""
     return {m.group(1).lower(): float(m.group(2))
-            for m in re.finditer(r"^#{1,6} ([A-Z]\d+-S\d+[a-z]?)\b.*\(tempo ([\d.]+)\)", md, re.M)}
+            for m in re.finditer(r"^#{1,6} " + SEG_ID + r".*\(tempo ([\d.]+)\)", md, re.M)}
 
 
 def resolve_tempo(cfg, slug):
