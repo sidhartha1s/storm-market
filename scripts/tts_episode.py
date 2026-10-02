@@ -103,9 +103,18 @@ def parse_segments(md: str):
 
 
 def segment_tempos(md: str):
-    """{segment id: tempo} for headings carrying '(tempo X)', e.g. '### A2-S4 — narration (tempo 1.0)'."""
-    return {m.group(1).lower(): float(m.group(2))
-            for m in re.finditer(r"^#{1,6} " + SEG_ID + r".*\(tempo ([\d.]+)\)", md, re.M)}
+    """{segment id: tempo} for headings carrying '(tempo X)', e.g. '### A2-S4 — narration (tempo 1.0)'.
+    A segment heading that mentions tempo in any other form is a hard error, never silently ignored."""
+    tempos = {}
+    for m in re.finditer(r"^#{1,6} " + SEG_ID + r"(.*)$", md, re.M):
+        if "tempo" not in m.group(2).lower():
+            continue
+        t = re.search(r"\(tempo (\d+(?:\.\d+)?)\)", m.group(2))
+        if not t:
+            raise SegmentParseError(f"{m.group(1)}: unreadable tempo tag in heading {m.group(0)!r} "
+                                    f"(write it as '(tempo 1.0)')")
+        tempos[m.group(1).lower()] = float(t.group(1))
+    return tempos
 
 
 def resolve_tempo(cfg, slug):
