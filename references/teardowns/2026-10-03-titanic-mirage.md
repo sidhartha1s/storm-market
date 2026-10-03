@@ -16,6 +16,17 @@ Read with an X post on script concepts (fyreinteractive, 1 Oct 26), checked agai
 - **Overstated.** The post says a generic angle is "dead at 3,000 views". That is false for big channels: "The
   Rise and Fall Of Saddam Hussein" (Mighty Monk) has 2.31M. The post is an ad for a paid tool. The exact
   "meeting nobody was supposed to leave" video it cites was not found. The rule holds as a lever, not a law.
+- **Sources for the numbers above** (live, 3 Oct 26, not saved to disk): channel list
+  `yt-dlp --flat-playlist -j --playlist-end 40 https://www.youtube.com/channel/UCG9dpvZGXwH3juUUHykvR-Q/videos`
+  (median over the 19 uploads with a view count); Saddam counts from `yt-dlp --flat-playlist -j "ytsearch8:saddam
+  hussein meeting 1979 purge documentary"` and `"ytsearch10:rise and fall of saddam hussein"`. Video metadata,
+  transcript and comments: `yt-dlp --write-info-json --write-auto-subs --write-comments` on the video URL.
+
+## Do not copy
+- The cold open sets a scene first and reaches the toll at about 1:00 and the twist at about 1:30. Our hook rules
+  (`script-quickref.md` "The hook", toll and twist inside 20 s) win: take the concept, not their opening.
+- The answer lands at 29:02 (67 %); `script-os.md` rule 7 answers the dominant question in the last 30 to 60 s.
+  Take the concept, plant and payoff, and the mechanism-by-analogy; not the answer placement.
 
 ## How the story is told (timestamps from the transcript)
 - **0:00 cold open.** It opens in second person, present tense, at the moment of impact ("It's April 14th, 1912,
