@@ -47,6 +47,7 @@ The payoff is never dumped early and never hoarded to the end. Structure:
 - **Hook = the endpoint, flashed forward.** State the conclusion (ep7: the court named the
   government). The episode then EARNS it; the final act returns to the hook's scene and pays it
   in full detail. The hook is a promissory note the last act redeems.
+  Hook wording follows script-quickref.md 'The hook (owner 27 Sep 26)', which wins on wording.
 - **Intro = the full WHAT** (the roster, the list, the claim) — the viewer's ROI is delivered as
   information within the first ~2 minutes. Everything after is WHY/HOW — that's what they stay for.
 - **Each act closes one item (a mini-payoff) and plants the next** — small ROI every act, on the
