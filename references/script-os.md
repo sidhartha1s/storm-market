@@ -14,12 +14,11 @@ but / because / which means.
 Seven non-negotiables:
 1. **One dominant question.** Write it as "the viewer keeps watching to find out ______." Everything serves it.
    Krakatau #5: *could the mechanism that killed 426 people happen again, and would anyone see it coming?*
-   The question rides on one **script concept**, written as one line before the outline. It is the event's
-   topic re-cut as a claim that overturns what the viewer believes. "The Titanic sinking" is a topic; "physics
-   hid the iceberg" is a concept. The title states the concept, the thumbnail shows it, the hook confirms it, and
-   every act proves part of it. A topic another channel already covered is open to us only with a new concept.
-   Evidence: `teardowns/2026-10-03-titanic-mirage.md` (one channel re-angled Titanic three times, the third
-   reframe reached 2.3M at 5x its channel median).
+   The question rides on one **script concept**, written as one line before the outline: the one claim the film
+   proves. Its strongest form overturns a belief ("physics hid the iceberg", not "the Titanic sinking"); a
+   checkable fact ("four EF5 tornadoes in one day") also qualifies. The hook confirms it and every act proves part
+   of it; the title carries it (`packaging-rules.md`). Prefer a topic another channel already covered when we have
+   a new concept for it. Evidence, a lever and not a law: `teardowns/2026-10-03-titanic-mirage.md`.
 2. **Consequence before mechanism.** "426 died, and the wave was not caused by an earthquake" beats "a landslide
    tsunami occurs when…".
 3. **Never spend curiosity early.** No "in the next 14 minutes…"; one open question at a time ("But where did the
