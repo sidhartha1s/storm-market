@@ -130,7 +130,7 @@ Priority order, per clip:
 `library/mini-storms/` holds the template compositions (create on the first run, then reuse):
 `clip-hold`, `still-kenburns`, `vertical-embed-credit`, `popfig-red`, `breaking-bug`
 (lower-third kicker), `overlay-vignette-grain`, `stat-card`. Copy → retune per cut. Music: one
-tense bed from `assets/sfx/` (score-act1.mp3 exists) at −24 LUFS under narration, duck 6 dB on
+tense bed from `assets/sfx/` (score-act1.mp3 exists) level per CLAUDE.md "Narration sits above every bed" (Two lanes section), duck 6 dB on
 popfigs. Cut cadence from FORMAT.md: median shot 3.5–4.5 s, hook ≤4.2 s, plus one labelled
 real data-feed hold (USGS/NOAA/NASA loop, 20–40 s) every 2–3 min as a credibility anchor.
 JS/WAAPI only. Red popfig (Abril, text-shadow, ≤3 words) on every date / place / number /
