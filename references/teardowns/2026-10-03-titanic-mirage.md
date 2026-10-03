@@ -30,8 +30,8 @@ Read with an X post on script concepts (fyreinteractive, 1 Oct 26), checked agai
 
 ## How the story is told (timestamps from the transcript)
 - **0:00 cold open.** It opens in second person, present tense, at the moment of impact ("It's April 14th, 1912,
-  11:30 p.m. You're standing on the deck"). Then it states the paradox (the clearest night, yet no one saw a
-  200 ft berg) and lists the official blame (captain, Californian, lifeboats). Then "we were wrong", the two
+  11:30 p.m. You're standing on the deck"). Then it states the paradox (the clearest night, yet the lookouts did
+  not see the berg) and lists the official blame (captain, Californian, lifeboats). Then "we were wrong", the two
   new evidence sources by name, the thesis "it's physics", and an expert soundbite.
 - **Answer withheld.** The mechanism is paid at 29:02 (67 %). Act one rewinds a year and runs chronologically.
 - **Plant and payoff.** "Four compartments. Remember this. That number is going to matter later" (4:30) pays at
