@@ -46,7 +46,8 @@ Read with an X post on script concepts (fyreinteractive, 1 Oct 26), checked agai
 - **One mechanism, two mysteries.** The same mirage explains why the Californian misjudged Titanic's distance.
   It recasts a man blamed for a century; Murdoch's name is cleared by the 2022 scan.
 - **Late new-evidence act.** A late act brings fresh evidence (the 2022 Magellan scan, 37:20 on) to carry the
-  tail, and its peak is the most emotional beat (comments: "chills", "sobbing" at 40:27).
+  tail, and its peak is the most emotional beat. Comments: "literally has me sobbing" (186 likes, about the
+  lights), "almost broke down and cried" at 40:27 (142 likes), "I literally got chills at the end" (1,700 likes).
 - **Human vignettes in the sinking act.** These sit inside the act itself (Astor, Guggenheim, the priest, the
   Lebanese dabke) and draw comments, not only at the end.
 
