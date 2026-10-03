@@ -10,13 +10,13 @@
 
 | Cadence | Rule | Why |
 |---|---|---|
-| Rehook | a REAL beat every 45–60s: broadcast/PD clip, audio insert, stat spike, or a loop opening | audience 40–70+ came for the real thing |
+| Rehook | a REAL beat on the CLAUDE.md real-clip aim (not a gate): broadcast/PD clip, audio insert, stat spike, or a loop opening | audience 40–70+ came for the real thing |
 | Micro-loop | a curiosity gap every 30–45s of narration ("what crossed the river that night was not the fire anyone had been fighting") — phrasing varied, never formulaic | keeps the next 30s pre-sold |
 | Info beat | every 6–10s in narration; graphics reveal on the spoken word and drift while they wait (`references/mg-quickref.md` "Motion and exits") | info density IS the retention; fluff is seasoning (≤20–30%) |
 | Pacing wave | alternate fast (2–4s cuts) and slow (holds 3–10s); never >90s of one tempo | monotony reads as length |
 | Act size | 3–6 min. An act = a mini-episode: hook-in (≤15s) → escalate → payoff → hold/blackout | the self-similar unit that scaling adds |
-| Blackout | 2–3s black between acts (hard cut in/out) | the documentary breath |
-| Emotion | stats mid-act; emotion banked at act ends; the heaviest vignette at the episode's final third | teardown-verified pattern |
+| Blackout | black between acts, duration per DESIGN.md 'Chapter blackout' table (hard cut in/out) | the documentary breath |
+| Emotion | stats mid-act; human moments go where they hit hardest: inside an impact act and at the close; the strongest one sits in the last third | owner 4 Oct 26 (replaced the model-derived 'banked at the end' rule) |
 | TTS breath | holds/voids are WRITTEN pauses — a `hold` segment is a scripted breath, not dead air; full stops = hard breaks | pacing lives in the script, not post |
 | Language | **4th-grader readable** (owner 2026-08-05): short words, concrete pictures, one idea per sentence; emotion comes from facts and rhythm, never from vocabulary | TTS syncs clean; the shipped eps' register |
 | Graphic trigger | spatial claim → map · mechanism → animated diagram · number cluster → stat card · reveal/correction → dedicated graphic | "show, don't make the viewer look at stuff" |

@@ -218,7 +218,7 @@ mid-video beats with its own soft close (one comment + subscribe line after the 
 
 ## Audio
 - Narration pace: CLAUDE.md Voice (tempo per lane in `config.yaml channel.tempo`). Verify by ear on segment 1.
-- One tense music bed at −24 LUFS under narration, ducked 6 dB under popfigs; master −14 LUFS.
+- One tense music bed, level per CLAUDE.md bed rule (narration above every bed), ducked 6 dB under popfigs; master −14 LUFS.
 
 ## Topic selection (Stefan Burns / Hidden Constructions lesson)
 - Be first with credentialed coverage of whatever hazard is live this week; speed is the moat.
