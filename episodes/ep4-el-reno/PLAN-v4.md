@@ -44,6 +44,16 @@ The editing agent decides where each of these goes by reasoning about the story 
 - **SFX.** Only from the owner-approved copyright-free kit (candidates in `C:\Users\Sidhartha\.claude\scratch\devq-retention\sfx\`). Placed by reasoning, not by count.
 - **Silence drops.** About 1.0 s before each key line the agent identifies. The agent also decides per moment what drops out: music, SFX, ambience.
 - **Open loops.** Each loop the script opens is tagged, and each tag must close before the end (script-quickref).
+- **Sketch explainers (owner approved 3 Oct 26: "love it ... use accordingly alongside MGs").** Hand-drawn style
+  explainers built in code (SVG draw-on, pencil/chalk/ink textures, no image model). Samples and kit:
+  `C:\Users\Sidhartha\.claude\scratch\devq-retention\sketch\` (`sketch-kit.js`, field notebook, chalkboard, blueprint).
+  The editor reasons per beat which one a beat gets:
+  - MG (glass card, map, radar, stat panel): exact data on top of footage, such as a number the viewer must read, a
+    place on a map, a time on a clock, or a radar loop.
+  - Sketch: a mechanism, a comparison of scale, a counterfactual or a "why", with no footage to sit on, such as why
+    EF3, how wide it got, or what the turn did to an escape route. One idea per sketch, drawn as the narration
+    says it.
+  - Same Opus builder and viewer chain as MGs; numbers on screen follow the same cue rule.
 - **Motion graphics.** Each brief is written to the eval-v2 standard: px geometry, word-cue times from words.json, no number on screen before its word, and a must-be-true checklist. An Opus builder makes each graphic, then a strict Opus viewer reviews it for at most 2 rounds.
 
 ## Order of work (owner gates in caps)
