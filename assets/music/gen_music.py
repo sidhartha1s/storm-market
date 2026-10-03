@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 """
-Generate music beds via DeAPI ACE-Step. HARD MAX 10 paid calls total (tracked in
+Generate music beds via DeAPI ACE-Step. HARD MAX = MAX_CALLS paid calls total (tracked in
 call_budget.json). Usage:
-    python3 gen_music.py <key> <prompt> <duration> <outfile.mp3>
+    python3 gen_music.py <key> <prompt> <duration> <outfile.mp3> [model]
+model defaults to AceStep_1_5_XL_Turbo_INT8; the free tier caps each model at 3 jobs/day.
 """
-import os, sys, json, time, urllib.request, urllib.error
+import os, subprocess, sys, json, time, urllib.request, urllib.error
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 BUDGET_FILE = os.path.join(ROOT, "call_budget.json")
-MAX_CALLS = 12  # owner authorized +2 calls on 2026-07-22 for aftermath-somber take 3/4
+MAX_CALLS = 19  # +2 owner 2026-07-22 (aftermath-somber takes 3/4); +4 owner 2026-10-02 (El Reno mood set, "go for music"); +3 2026-10-03 replacing calls 12-14 (403 suspended key, nothing billed, balance unchanged)
 
-ENV_PATH = os.path.join(ROOT, "..", "..", ".env")
+# .env is gitignored, so it exists only in the main checkout; worktrees find it via git's common dir.
+_GIT_COMMON = subprocess.run(["git", "-C", ROOT, "rev-parse", "--path-format=absolute", "--git-common-dir"],
+                             capture_output=True, text=True, check=True).stdout.strip()
+ENV_PATH = os.path.join(os.path.dirname(_GIT_COMMON), ".env")
 
 def load_env():
     env = {}
@@ -48,6 +52,9 @@ def api_request(method, url, api_key, body=None):
 
 def main():
     key_name, caption, duration, outfile = sys.argv[1], sys.argv[2], int(sys.argv[3]), sys.argv[4]
+    model = sys.argv[5] if len(sys.argv) > 5 else "AceStep_1_5_XL_Turbo_INT8"
+    if os.path.exists(outfile):
+        sys.exit(f"[SKIP] {outfile} exists; no API call made")
     env = load_env()
     api_key = env[key_name]
 
@@ -60,7 +67,7 @@ def main():
     # required fields are caption, lyrics, duration, inference_steps, guidance_scale, seed, format
     # ("prompt"/"steps"/"guidance" from the provenance.txt shorthand are NOT the real field names).
     body = {
-        "model": "AceStep_1_5_XL_Turbo_INT8",
+        "model": model,
         "caption": caption,
         "lyrics": "[Instrumental]",
         "duration": duration,
@@ -70,10 +77,14 @@ def main():
         "format": "mp3",
     }
 
-    print(f"[CALL {budget['calls_used']+1}/{MAX_CALLS}] Submitting job for {outfile} ...")
-    resp = api_request("POST", "https://api.deapi.ai/api/v2/audio/music", api_key, body)
+    # Reserve the call BEFORE the HTTP request: a POST that raises may still have billed.
     budget["calls_used"] += 1
-    budget["log"].append({"outfile": os.path.basename(outfile), "caption": caption, "duration": duration, "submit_resp": resp})
+    entry = {"outfile": os.path.basename(outfile), "caption": caption, "duration": duration, "model": model}
+    budget["log"].append(entry)
+    save_budget(budget)
+    print(f"[CALL {budget['calls_used']}/{MAX_CALLS}] Submitting job for {outfile} ...")
+    resp = api_request("POST", "https://api.deapi.ai/api/v2/audio/music", api_key, body)
+    entry["submit_resp"] = resp
     save_budget(budget)
 
     # POST returns {"data": {"request_id": "uuid"}}; poll GET /api/v2/jobs/{request_id}
