@@ -41,8 +41,8 @@ Every 20–60 s: question → information → payoff → new question, chained w
 - Every beat in `edit_script.md` is an AV unit: what is said, what moves on screen, what the sound does, one row,
   one judgment. MGs get dedicated slots for information. (`script-framework.md` §1)
 - One dominant question the whole script serves ("the viewer keeps watching to find out ___"), riding on one
-  script concept: the topic re-cut as a claim that overturns a belief ("physics hid the iceberg", not "the
-  Titanic"). Title, thumbnail and hook carry it; every act proves part of it.
+  script concept: the one claim the film proves, strongest when it overturns a belief ("physics hid the iceberg",
+  not "the Titanic"). The hook confirms it; every act proves part of it.
 - Consequence before mechanism ("426 died, and the wave wasn't an earthquake" beats "a landslide tsunami occurs when…").
 - Never spend curiosity early — one open question at a time.
 - Escalating revelations: interesting → surprising → disturbing → enormous → personal → present-day → unresolved.
