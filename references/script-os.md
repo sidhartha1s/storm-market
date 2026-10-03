@@ -87,7 +87,7 @@ materially changes every 60–90 s (new evidence, place, number, person, mechani
     number-dense minute; every superlative with comparator and unit ("1,720 feet, higher than the Empire State
     Building with its antenna").
 12. **One object per segment**, never stacked; one named victim with age, job and a sourced quote per tragedy.
-13. **Close.** Fact + dated forward window, then the CTA spine once. No aphorism, no mirrored callback, no sign-off line.
+13. **Close.** Fact + dated forward window, then the CTA spine once, then the one signature line (DESIGN.md "Signature closing footnote", owner 4 Oct 26). No other aphorism, no mirrored callback.
 Owner decision 2026-09-14: humanise-rules.md stays as written. No thesis opener, no chapter-exit questions (rule 9
 above is read as: seams are stamps; the open fact is stated, not asked). Ep2's hook at 1.5k views is not evidence.
 ## The philosophical change

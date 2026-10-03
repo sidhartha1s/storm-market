@@ -79,7 +79,7 @@ mechanism/analysis pair) and plants+pays a loop.
 - Seams are time-stamps or place-stamps, never "to understand X you have to understand Y."
 - Keep technical terms, define in ≤12 words, reuse 3+ times. Every superlative gets a comparator and unit.
 - One object per segment; one named victim (age, job, sourced quote) per tragedy.
-- Close: fact + dated forward window. No aphorism, no mirrored callback, no sign-off line.
+- Close: fact + dated forward window, then the one signature line (DESIGN.md "Signature closing footnote", owner 4 Oct 26). No other aphorism, no mirrored callback.
 - TTS-safe: spell out ALL dates/times/numbers in narration (except years, dollars), no paired dashes, sentences
   under 24 words per TTS chunk (write the long fact-chain; the TTS layer splits it at commas), probe homographs
   before respelling (`references/homographs.md`).
