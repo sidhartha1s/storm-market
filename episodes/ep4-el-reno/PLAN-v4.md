@@ -35,7 +35,7 @@ Status: planning. Nothing is scripted, sourced or rendered yet.
 - Hook (0:00-0:10): the payoff line over real motion. Narrator from 0:00, no archive audio.
 - Intro: the dominant question in one sentence (the v3 post-mortem found it was missing).
 - Act 1: the setup and the Moore shadow. Act 2: the storm and the radar. Act 3: the rating paradox (the g-dimethod-style explainer, cut to 90 s or less). Act 4: the people. The CTA sits in the config window, then the close.
-- Target length 20-25 min. The word budget comes from probe TTS at the shipping tempo.
+- Target length about 25-30 min, or as the story fits (owner 3 Oct 26). The word budget comes from probe TTS at the shipping tempo.
 
 ## Sound and pacing (owner 2 Oct 26; El Reno is the first episode to use these)
 The editing agent decides where each of these goes by reasoning about the story beat. There are no code gates and no per-video quotas.
