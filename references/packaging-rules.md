@@ -14,8 +14,8 @@ refutation, showrunner synthesis). Read with `yt-packaging` before any title or 
   "The 12-Year EF5 Drought Was a Lie" scores 114; "The Day America Had 7 F5 Tornadoes - 1974 Super Outbreak" scores 53.
 - **Negative beats neutral beats positive** (1of10 media, 23 Sep 26: 11 % of titles are negative and they draw 22 % more
   median views). When brainstorming, list the anger, controversy, humour and joy shapes first; a true negative claim
-  ("lie", "broken", "wrong", "nobody") beats a neutral description, as long as the film pays it. In plain
-  words: "I must have missed the part where everything we know is wrong" (159 likes) is the cost of a title the
+  ("lie", "broken", "wrong", "nobody") beats a neutral description, as long as the film pays it in
+  plain words: "I must have missed the part where everything we know is wrong" (159 likes) is the cost of a title the
   script only implies (`teardowns/2026-10-03-titanic-mirage.md`).
 - Live minis keep present tense and the place ("Texas, This Winter…" got the best mini CTR at 8 %).
 
