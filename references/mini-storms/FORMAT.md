@@ -126,7 +126,7 @@ Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds bef
   NEXT" is a genre convention; use our own wording).
 - Every spatial / mechanism claim gets a purpose-built diagram or labelled agency graphic, not
   b-roll with text over it.
-- Real-clip rehook every 45–60 s (channel rule); stock / stills only fill between real clips.
+- Real-clip rehook: CLAUDE.md "REAL clip" aim (not a hard rule); stock and stills only fill between real clips.
 - Content-gap layer from comments: the whole niche's top comments ask "is this exaggerated?" and
   nobody answers on-screen. One explicit "what is NOT happening" beat per video.
 
@@ -218,7 +218,7 @@ mid-video beats with its own soft close (one comment + subscribe line after the 
 
 ## Audio
 - Narration pace: CLAUDE.md Voice (tempo per lane in `config.yaml channel.tempo`). Verify by ear on segment 1.
-- One tense music bed, level per CLAUDE.md bed rule (narration above every bed), ducked 6 dB under popfigs; master −14 LUFS.
+- One tense music bed, level per CLAUDE.md "Narration sits above every bed" (Two lanes section), ducked 6 dB under popfigs; master −14 LUFS.
 
 ## Topic selection (Stefan Burns / Hidden Constructions lesson)
 - Be first with credentialed coverage of whatever hazard is live this week; speed is the moat.

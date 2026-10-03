@@ -173,7 +173,7 @@ one filmic look that also hides stock/archive/AI seams. Reusable snippet `assets
 
 Tense/curious instrumental bed per episode — generate via DeAPI ACE music when available
 (keys in ./.env), else PD/CC0 fallback (attribution logged in provenance). Level under
-narration: CLAUDE.md bed rule. Rises during holds. Bed choice is an editorial call, owner ear-checks at
+narration: CLAUDE.md "Narration sits above every bed" (Two lanes section). Rises during holds. Bed choice is an editorial call, owner ear-checks at
 preview.
 
 ## Character sub-arcs

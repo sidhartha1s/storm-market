@@ -58,7 +58,7 @@ Every 20–60 s: question → information → payoff → new question, chained w
 ## Cadence lattice (per-minute invariants, hold at any runtime) — `script-scaling.md`
 | Cadence | Rule |
 |---|---|
-| Rehook | real beat every 45–60 s |
+| Rehook | real beat about every 45–60 s, an aim not a gate (CLAUDE.md "REAL clip", owner 4 Oct 26) |
 | Micro-loop | curiosity gap every 30–45 s, phrasing varied |
 | Info beat | every 6–10 s of narration |
 | Pacing wave | alternate fast/slow, never >90 s one tempo |

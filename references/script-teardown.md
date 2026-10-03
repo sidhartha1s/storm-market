@@ -23,7 +23,7 @@ Full a–g breakdown for all 4 videos (SkyWhisper "Joplin", Dark Horizon "Katrin
 
 ## Cross-video formula (weighted toward Joplin/Katrina)
 
-All four share: (1) hook within 10–15s — either a found-footage/audio cold-open or a present-tense "this is happening to you" stat; (2) a thesis/foreshadow line in the first 60–90s that the whole video pays off later; (3) short declarative "breath mark" sentences ending nearly every beat; (4) stats always translated into human-scale comparisons (Formula 1 speed, "longer than California"); (5) a recurring honesty/credibility signal ("no hype," "the honest truth is"). The two proven outliers both bank emotional payoff at the *end* (Joplin's 5 hero vignettes, Katrina's Superdome material) rather than spreading it evenly — stack stats through the middle, cash empathy at the close.
+All four share: (1) hook within 10–15s — either a found-footage/audio cold-open or a present-tense "this is happening to you" stat; (2) a thesis/foreshadow line in the first 60–90s that the whole video pays off later; (3) short declarative "breath mark" sentences ending nearly every beat; (4) stats always translated into human-scale comparisons (Formula 1 speed, "longer than California"); (5) a recurring honesty/credibility signal ("no hype," "the honest truth is"). The two proven outliers both bank emotional payoff at the *end* (Joplin's 5 hero vignettes, Katrina's Superdome material) rather than spreading it evenly (observation only; placement rule: script-scaling.md "Emotion", owner 4 Oct 26).
 
 ## Differences worth stealing
 

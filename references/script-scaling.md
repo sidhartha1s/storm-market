@@ -16,7 +16,7 @@
 | Pacing wave | alternate fast (2–4s cuts) and slow (holds 3–10s); never >90s of one tempo | monotony reads as length |
 | Act size | 3–6 min. An act = a mini-episode: hook-in (≤15s) → escalate → payoff → hold/blackout | the self-similar unit that scaling adds |
 | Blackout | black between acts, duration per DESIGN.md 'Chapter blackout' table (hard cut in/out) | the documentary breath |
-| Emotion | stats mid-act; human moments go where they hit hardest: inside an impact act and at the close; the strongest one sits in the last third | owner 4 Oct 26 (replaced the model-derived 'banked at the end' rule) |
+| Emotion | stats mid-act; human moments go where they hit hardest; the strongest one sits in the last third | owner 4 Oct 26 (replaced the model-derived 'banked at the end' rule) |
 | TTS breath | holds/voids are WRITTEN pauses — a `hold` segment is a scripted breath, not dead air; full stops = hard breaks | pacing lives in the script, not post |
 | Language | **4th-grader readable** (owner 2026-08-05): short words, concrete pictures, one idea per sentence; emotion comes from facts and rhythm, never from vocabulary | TTS syncs clean; the shipped eps' register |
 | Graphic trigger | spatial claim → map · mechanism → animated diagram · number cluster → stat card · reveal/correction → dedicated graphic | "show, don't make the viewer look at stuff" |
@@ -37,8 +37,8 @@ Every episode keeps a LOOP TABLE in its edit_script:
 1. **Never lengthen an act past 6 min.** More runtime = more acts. Runtime arithmetic = narration + blackouts + the 15.1s CTA + its two 1.0s dips.
 2. Each added act needs its own **new material**: a vignette + a mechanism/analysis pair (info first, spice second). No new material → don't add the act → the honest runtime is shorter.
 3. Re-run the loop table: every new act plants one, pays one.
-4. Cadences unchanged. A 500x script is just more 3–6 min mini-episodes on the same lattice,
-   arranged so stakes DESCEND into the close (no recap, no outro summary).
+4. Cadences unchanged. A 500x script is just more 3–6 min mini-episodes on the same lattice
+   (no recap, no outro summary).
 5. **Spice ≠ fluff (owner definition, 2026-08-05):** spice is the clarifying footnote — the one
    example that makes a number felt ("a football field per second"), the one analogy that makes a
    mechanism click ("a skater pulling in her arms"), the one sensory detail that makes a place
