@@ -51,10 +51,10 @@ Read with an X post on script concepts (fyreinteractive, 1 Oct 26), checked agai
 - **Human vignettes in the sinking act.** These sit inside the act itself (Astor, Guggenheim, the priest, the
   Lebanese dabke) and draw comments, not only at the end.
 
-## Look and pace (scene detection, threshold 0.3)
+## Look and pace (ffmpeg `select='gt(scene,0.3)'` on a 360p copy)
 - **Cuts.** 237 cuts; median shot 5.0 s.
-- **Pace varies by act.** Shots per act: 10.0 s for 0:00 to 2:00; 7.3 s for 2:00 to 10:00; 20.8 s for 10:00 to
-  18:20, where the host on camera and long illustration holds carry it; 6.5 s in the evidence act.
+- **Pace varies by act.** Average shot length: 10.0 s (0:00 to 2:00), 7.3 s (2:00 to 10:00), 20.8 s (10:00 to
+  18:20, where the host on camera and long illustration holds carry it), 6.5 s (37:20 to the end).
 - **Visual mix.** 3D night recreations, hand-drawn comic-panel illustrations with yellow captions, archive photos
   with name cards, and a host in a warm studio between beats. It also has partner footage (Magellan), expert
   interviews and a handwritten ship's log.
