@@ -6,6 +6,9 @@ refutation, showrunner synthesis). Read with `yt-packaging` before any title or 
 ## Title
 - Searchable Name + Year inside the first 40 characters; whole promise inside 52; nothing load-bearing after 60.
   Cutoffs (hypothesis, verify in Studio): TV grid ~40–60, phone home 45–55, desktop 55–70.
+- The title states the episode's script concept (`script-os.md` rule 1), never the bare topic. The film must pay
+  it in plain words: "I must have missed the part where everything we know is wrong" (159 likes) is the cost of a
+  concept the script only implies (`teardowns/2026-10-03-titanic-mirage.md`).
 - A checkable fact beats an adjective: "Four EF5 Tornadoes in One Day" passed both seniors; superlative adjectives,
   ALL CAPS and "you won't believe" shapes did not.
 - **Flesch reading ease 100 or more** (owner 23 Sep 26): one-syllable words, one clause per sentence, numbers as
