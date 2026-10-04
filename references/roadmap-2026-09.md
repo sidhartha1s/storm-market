@@ -15,7 +15,7 @@ one alive at all times. (3) AVD share is 18–29 % on docs and 20–26 % on mini
 the docs are not the retention miracle; both leave viewers at the quarter mark. (4) Non-US topics do not get the test.
 
 ## Owner decisions 2026-09-14
-- Humanise rules stay as written (no thesis opener, no chapter-exit questions). Ep2's hook is not evidence at 1.5k views.
+- Humanise rules stay as written (no thesis opener; chapter-exit questions superseded 4 Oct 26, see script-os.md rule 9). Ep2's hook is not evidence at 1.5k views.
 - Ep2's thumbnail was an AI tornado with text and pulled 6.65 % CTR: "no AI storms" is a persona preference, not a
   finding; School A allows a cinematic AI shot when it carries a place name and a checkable fact.
 
