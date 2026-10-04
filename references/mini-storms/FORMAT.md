@@ -90,10 +90,10 @@ Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds bef
 2. **Stakes order, not chronology.** Order chapters by rising stakes for the viewer at home; a strong chapter after
    the CTA, a question before it. Time-order (this week → 2018 → 1883 → 1958) puts the peaks in the wrong places.
 3. **One open question at all times.** Every chapter ends by asking the next one ("Then where?", "So did they fix
-   it?", "And here is why faster is not enough"), then one affirming line that re-hooks it (owner 4 Oct 26: "But why didn't the siren sound? Nobody in town knew until the next morning."; `script-os.md` rule 9). Re-mention each macro-loop several times (hook callbacks, owner 4 Oct 26; `script-scaling.md` "open-loop registry"); pay it explicitly
+   it?", "And here is why faster is not enough"), then one affirming line that re-hooks it (owner 4 Oct 26; `script-os.md` rule 9). Re-mention each macro-loop once mid-way; the hook's claim gets several callbacks (owner 4 Oct 26; `script-scaling.md` "open-loop registry"); pay it explicitly
    ("The wrong number was the plume. The right number is the tilt.").
 4. **No roadmap, no structure announcements.** Never "in the next fourteen minutes you will see…", "the record
-   first", "now the honest part". A reveal that was announced is not a reveal.
+   first", "now the honest part". A reveal that was announced is not a reveal. Exception: hook callbacks (script-scaling.md 'open-loop registry', owner 4 Oct 26).
 5. **Hook = confirm the click with something more specific than the title**, in the present tense, with a person
    or a place, then the question ("Is history going to repeat? Let's find out."). Not a restatement of the title,
    not a proper noun the audience does not know (a US senior has never heard "Sunda Strait").

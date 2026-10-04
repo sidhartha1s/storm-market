@@ -94,8 +94,7 @@ materially changes every 60–90 s (new evidence, place, number, person, mechani
     Building with its antenna").
 12. **One object per segment**, never stacked; one named victim with age, job and a sourced quote per tragedy.
 13. **Close.** Fact + dated forward window, then the CTA spine once, then the one signature line (DESIGN.md "Signature closing footnote", owner 4 Oct 26). No other aphorism, no mirrored callback.
-Owner decision 2026-09-14: humanise-rules.md stays as written. No thesis opener, no chapter-exit questions (rule 9
-above is read as: seams are stamps; the open fact is stated, not asked; superseded 4 Oct 26 for chapter exits: question + affirming line). Ep2's hook at 1.5k views is not evidence.
+Owner decision 2026-09-14: humanise-rules.md stays as written. No thesis opener. Chapter exits: superseded 4 Oct 26, see rule 9 (question + affirming line). Ep2's hook at 1.5k views is not evidence.
 ## The philosophical change
 Optimise for "what information does the viewer want right now, and when do we give it," not for "how do we make this
 more engaging." Narration and visual event are written together, never narration first.
