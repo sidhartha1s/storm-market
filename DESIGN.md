@@ -249,6 +249,5 @@ floors/ceilings; taste stays with the model.
 - **Signature closing footnote (channel = The Warning Hour):** every
   episode ends on a short, punchy, WARM and positive beat — preparedness, never fearmongering —
   landing on the channel name. Canonical shape (tweak per episode, keep the cadence):
-  "Disasters don't ask permission. But they do send warnings. Learn what yours sounds like —
-  so when it comes, you already know what to do. This was The Warning Hour." It plays over the
+  "Disasters don't ask permission. But they do send warnings. Learn what yours sounds like, so when it comes, you already know what to do. This was The Warning Hour." It plays over the
   title card; it IS the outro (still no recap, no content summary).

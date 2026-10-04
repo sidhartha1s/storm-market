@@ -85,7 +85,8 @@ materially changes every 60–90 s (new evidence, place, number, person, mechani
    foreign place names per script. Ray: "Lituya is the one time you gave me feet, and that's the one part I remember."
 9. **Transitions.** Seams are time-stamps or place-stamps ("At half past two that afternoon, in Mississippi"), never
    "to understand X you have to understand Y". Chapter-exit questions only when the answer is an open fact, ≤3 per
-   documentary, ≤2 per mini; the engine's "question" is usually implied by a stamp or an unresolved fact.
+   documentary, ≤2 per mini; the engine's "question" is usually implied by a stamp or an unresolved fact. Preferred form (owner 4 Oct 26):
+   a real open question, then one affirming line that re-hooks it: "But why didn't the siren sound? Nobody in town knew until the next morning." The question opens a curiosity gap the viewer stays for; the affirming line concretes it.
 10. **Debunk block.** Live-hazard videos carry a 60–90 s sourced debunk at 60–75 % ("The problem with that story
     is…", then the measurement).
 11. **Vocabulary.** Keep the term, define it in ≤12 words, reuse it 3+ times; one plain-terms translation per
@@ -94,7 +95,7 @@ materially changes every 60–90 s (new evidence, place, number, person, mechani
 12. **One object per segment**, never stacked; one named victim with age, job and a sourced quote per tragedy.
 13. **Close.** Fact + dated forward window, then the CTA spine once, then the one signature line (DESIGN.md "Signature closing footnote", owner 4 Oct 26). No other aphorism, no mirrored callback.
 Owner decision 2026-09-14: humanise-rules.md stays as written. No thesis opener, no chapter-exit questions (rule 9
-above is read as: seams are stamps; the open fact is stated, not asked). Ep2's hook at 1.5k views is not evidence.
+above is read as: seams are stamps; the open fact is stated, not asked; superseded 4 Oct 26 for chapter exits: question + affirming line). Ep2's hook at 1.5k views is not evidence.
 ## The philosophical change
 Optimise for "what information does the viewer want right now, and when do we give it," not for "how do we make this
 more engaging." Narration and visual event are written together, never narration first.

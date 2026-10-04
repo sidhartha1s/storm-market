@@ -11,7 +11,7 @@ PR and say which one won.
   promised fact leads; the contradiction rides inside the same sentence.
 - No fluff before it: sentence one IS the payoff (numbers first, then the specific image, then the question).
   Delete-test: cut sentence one — if the hook still works, it was fluff.
-- No roadmap phrases ("one more thing before", "in the next twenty minutes") — they read as delay.
+- No roadmap phrases ("one more thing before", "in the next twenty minutes") — they read as delay. Exception (owner 4 Oct 26): a hook callback that names the hook's claim ("Stick with me, because what I'm about to explain is exactly why <the hook's claim>.") is allowed, several times through the video, e.g. at act seams (home: `script-scaling.md` "open-loop registry"). Runtime roadmaps stay banned.
 - Cold open (DESIGN.md): frame one is mid-action, never black. Narrator's first line starts at 0:00 — no broadcast,
   radio or archive audio in the hook (bad audio quality loses viewers before the hook finishes). Date/place popfig
   inside the first second. Every cut lands ON an audio event, never mid-sentence.
@@ -62,7 +62,7 @@ Every 20–60 s: question → information → payoff → new question, chained w
 |---|---|
 | Rehook | real beat about every 45–60 s, an aim not a gate (CLAUDE.md "REAL clip", owner 4 Oct 26) |
 | Micro-loop | curiosity gap every 30–45 s, phrasing varied |
-| Info beat | every 6–10 s of narration |
+| Value beat | every 6–10 s: a reason to keep watching (fact, striking image, open question, stake, human moment), not only a new fact (owner 4 Oct 26; home `script-scaling.md`) |
 | Pacing wave | alternate fast/slow, never >90 s one tempo |
 | Act size | 3–6 min, self-similar (hook-in → escalate → payoff → hold/blackout) |
 | Language | 4th-grader readable: short words, one idea per sentence |
@@ -99,7 +99,7 @@ mechanism/analysis pair) and plants+pays a loop.
   end of the day, when it comes to, plays a crucial role, stands as a, serves as a, is a reminder that, the quiet
   [anything], what sounds like, what amounts to, in what can only be described as, some say, many experts believe,
   it's been reported (name the source or cut the claim).
-- No em dashes, no rhetorical questions, no hedging/filler intensifiers (arguably, kind of, very, really).
+- No em dashes, no rhetorical questions (exception: the chapter-exit question + one affirming line, owner 4 Oct 26; `script-os.md` rule 9), no hedging/filler intensifiers (arguably, kind of, very, really).
 - No banned sentence shapes: reveal-flip ("not X, it's Y"), question-then-answer fragment, anaphora run (3+
   sentences same opener), thesis opener ("this is the story of…"), summary tag ("That's the mechanism.").
 - Specifics over abstractions: exact figures, never rounded, unless the number is a feat not the point (a rail
