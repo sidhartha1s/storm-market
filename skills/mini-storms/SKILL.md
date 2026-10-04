@@ -80,7 +80,7 @@ Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was c
   PAYOFF (open loop closed) → WARM CLOSE (preparedness, never fearmongering) → subscribe line.
 - **Retention architecture is a hard rule from #4 on (FORMAT.md "Retention architecture", owner 2026-09-11):** the
   voice never narrates what the MG shows (dates, clock times, counts go on screen, the voice says the human line);
-  stakes order not chronology; one open question at all times and every chapter ends by asking the next; no
+  stakes order not chronology; one open question at all times and every chapter ends by asking the next, then one affirming line that re-hooks it (owner 4 Oct 26, FORMAT.md rule 3); no
   roadmap or structure announcements; hook confirms the click with a specific present-tense image, never a
   proper noun the audience does not know; one named person per tragedy; fact dumps become a clock / scorecard /
   equation card; "and you" by minute two; "not happening" is one line in the payoff; the ending lands the thesis

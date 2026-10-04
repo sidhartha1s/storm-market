@@ -12,7 +12,7 @@
 |---|---|---|
 | Rehook | a REAL beat on the CLAUDE.md real-clip aim (not a gate): broadcast/PD clip, audio insert, stat spike, or a loop opening | audience 40–70+ came for the real thing |
 | Micro-loop | a curiosity gap every 30–45s of narration ("what crossed the river that night was not the fire anyone had been fighting") — phrasing varied, never formulaic | keeps the next 30s pre-sold |
-| Info beat | every 6–10s in narration; graphics reveal on the spoken word and drift while they wait (`references/mg-quickref.md` "Motion and exits") | info density IS the retention; fluff is seasoning (≤20–30%) |
+| Value beat | a value beat every 6–10 s: something that gives the viewer a reason to keep watching (a fact, a striking image, an open question, a stake, a human moment), not only a new fact; graphics reveal on the spoken word and drift while they wait (`references/mg-quickref.md` "Motion and exits") | owner 4 Oct 26: facts alone every 6-10 s reads dry; fluff is still seasoning (≤20–30%) |
 | Pacing wave | alternate fast (2–4s cuts) and slow (holds 3–10s); never >90s of one tempo | monotony reads as length |
 | Act size | 3–6 min. An act = a mini-episode: hook-in (≤15s) → escalate → payoff → hold/blackout | the self-similar unit that scaling adds |
 | Blackout | black between acts, duration per DESIGN.md 'Chapter blackout' table (hard cut in/out) | the documentary breath |
@@ -25,6 +25,7 @@
 
 Every episode keeps a LOOP TABLE in its edit_script:
 - **1 episode loop**: planted in the hook, paid in the final act. (ep5: "fire is not supposed to do this" → "the warnings were there.")
+- **Hook callbacks (owner 4 Oct 26)**: the hook's promise is re-mentioned several times through the video, not once, e.g. at act seams: "Stick with me, because what I'm about to explain is exactly why <the hook's claim>." A callback names the hook's claim; it never announces runtime or structure (script-quickref.md "No roadmap phrases").
 - **1 loop per act**: planted in that act, paid within 1–2 acts. Each act ALSO pays off one earlier loop — an act that only plants is a tease; an act that only pays is a dead end.
 - **1 CTA hinge (REQUIRED, owner 2026-08-30 — DESIGN.md "CTA contract")**: a tease→payoff pair
   whose tease ends the segment inside the `config.yaml channel.cta` window (85–95%, owner 23 Sep 26) and whose payoff opens the next segment's first
