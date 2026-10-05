@@ -22,7 +22,7 @@ git branch and production silently keeps serving the old build.
 | `widthcheck.mjs` | **Gate.** Fails if the page scrolls sideways at any width. |
 | `shot.mjs` | Full-page screenshots at true device widths. |
 | `field-notes/` | Blog ("Field Notes"): one dispatch per published episode + evergreen field guides. Each dispatch embeds the live YouTube video at the top. |
-| `resources/` | Seven checklist pages + hub — free to read on the page (SEO layer). The printable pack (`/l/checklists`) and the state packets (`/l/packet`) are email-gated via free Gumroad products; every page carries the $14.99 book as the primary CTA. |
+| `resources/` | Seven checklist pages + hub — free to read on the page (SEO layer). The printable pack (`/l/checklists`) and the state packets (`/l/packet`) are email-gated via free Gumroad products; every page carries the $9.99 book as the primary CTA. |
 | `states/` | 51 state guides + menu, **generated** by `tools/gen_states.py` from `tools/state_data.csv`. Edit the CSV or the template in the script, re-run `python3 tools/gen_states.py`, commit the output. Never hand-edit a state page. |
 | `about/` | Author page. Method-led, pen-name framing — no falsifiable credentials, ever (owner-approved 2026-08-26). |
 | `llms.txt`, `sitemap.xml` | Page map for crawlers/LLMs. Regenerate the sitemap whenever a page is added (it lists every `*/index.html`). |
@@ -31,10 +31,10 @@ git branch and production silently keeps serving the old build.
 
 - **Shared design language.** Every content page copies the landing tokens (paper/storm-sky
   palette, Fraunces / Source Serif 4 / IBM Plex Mono, mono kickers) and the shared nav:
-  Field Notes · Free Checklists · State Guides · YouTube · red **Get the Book — $14.99** button
+  Field Notes · Free Checklists · State Guides · YouTube · red **Get the Book — $9.99** button
   (sticky nav, the only solid-red control; ≤540px shows brand + book button only). Inline CSS
   per page, no build step — same as `index.html`.
-- **Book first, candy second (owner 2026-08-26).** The $14.99 book is the product; free pages are
+- **Book first, candy second (owner 2026-08-26).** The $9.99 book is the product; free pages are
   the sample. Every content page carries the book in the sticky nav, a sample strip, a book CTA
   card with the real cover (`assets/cover-mini.webp`, never a CSS fake) and the footer book
   row. The printable pack and state packets are email-gated through free Gumroad products
@@ -99,8 +99,8 @@ higher the credible savings delta right below the pricing, the higher the conver
 9. Look inside — four real rendered pages, not a mockup
 10. Reviews — **invented placeholder cards, owner-accepted for now (see below)**
 11. Paul Raymond — persona block with the quote
-12. What $14.99 is — price anchored against plywood/deductible/generator/hotel/unprovable loss
-13. The offer — $14.99, itemised value stack to $87.99, guarantee seal
+12. What $9.99 is — price anchored against plywood/deductible/generator/hotel/unprovable loss
+13. The offer — $9.99, itemised value stack to $87.99, guarantee seal
 14. Free state packet — a link to the $0 Gumroad product, with the kitchen-table binder photo
 15. FAQ — including "isn't this free from FEMA?", answered honestly
 16. Last call
@@ -117,7 +117,7 @@ ordered all four, so they exist — with these standing caveats on the record:
   the in-file warning marker removed (2026-08-14, "reviews are fine for now / no marker"). The
   standing recommendation on the record is unchanged: swap in real, verifiable buyer quotes once
   they exist — fabricated reviews presented as genuine are an FTC liability.
-- **The value stack** itemises $14.99/$19/$15/$19/$20 → "$87.99 total value". Owner-approved anchoring;
+- **The value stack** itemises $9.99/$19/$15/$19/$20 → "$87.99 total value". Owner-approved anchoring;
   nothing has sold separately at those prices.
 - **The countdown is evergreen** (random 6–14h deadline in localStorage, rolls over on expiry) and
   **the viewer counter is decorative** (random 80–115, re-rolled every 2–3s). Both are aesthetic
@@ -183,7 +183,7 @@ sync if the cover ever changes; the author-block portrait points at it directly 
 a crop of the full cover with `background-position`. The **16:9 cover render** exists at
 `ebook/build/art/cover-16x9.png` (1920×1080), composed from the same plate with the headline and
 proof line typeset into the left half so it stays legible at Gumroad's thumbnail size — it's the
-storefront image on the Gumroad product (`/l/ebook`, published, $14.99).
+storefront image on the Gumroad product (`/l/ebook`, published, $9.99).
 
 **Byline changed to Paul Raymond on 2026-07-29** at the owner's request, replacing Paul Reynolds
 across this page, the sample, the cover art and the art notes. The cover byline was baked into the

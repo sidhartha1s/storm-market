@@ -322,7 +322,7 @@ def build_state_page(row):
         <div>
           <p class="lead">A 486-page manual built from the post-storm reports. 130 numbered
             protections, 23 hazard playbooks, a 60-day sequence, and the printable binder.</p>
-          <p><a class="btn" href="{chrome.BUY}">Get the book, $14.99</a></p>
+          <p><a class="btn" href="{chrome.BUY}">Get the book, $9.99</a></p>
         </div>
         <figure style="margin:0"><img class="cover" src="{rel}assets/cover-mini.webp" width="150" height="225" alt="The Storm-Ready Home by Paul Raymond, book cover"></figure>
       </div>
@@ -440,7 +440,7 @@ def build_menu(rows):
         <div>
           <p class="lead">The Storm-Ready Home ships all 51 state packets with its 130
             protections, 23 hazard playbooks and the printable binder.</p>
-          <p><a class="btn" href="{chrome.BUY}">Get the book, $14.99</a></p>
+          <p><a class="btn" href="{chrome.BUY}">Get the book, $9.99</a></p>
         </div>
         <figure style="margin:0"><img class="cover" src="../assets/cover-mini.webp" width="150" height="225" alt="The Storm-Ready Home by Paul Raymond, book cover"></figure>
       </div>
