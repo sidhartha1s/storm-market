@@ -358,8 +358,8 @@ for name, sdur in sorted(shortest.items()):
         frozen.append((name, y))
 try:
     luma_cache_p.write_text(json.dumps(luma_cache))
-except Exception:
-    pass
+except Exception as e:
+    print(f"WARNING: luma cache not saved ({luma_cache_p}): {e}", file=sys.stderr)
 report("motion gate (no frozen-still sources, frame diff >= 0.6)", frozen,
        lambda x: f"{Path(x[0]).name} diff={x[1]:.3f}")
 report("media probes succeeded", probe_failed, lambda x: f"{x[0]}: {x[1]}")
