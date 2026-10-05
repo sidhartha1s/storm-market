@@ -18,7 +18,7 @@ ALLOW_DEFAULT = {"field notes", "free checklists", "state guides", "youtube", "g
                  "privacy", "terms", "menu", "close",
                  "before you go further", "your state's storm packet is", "no purchase just pick your state",
                  "get my free state packet", "back to the storm ready home", "or see inside the book",
-                 "week one of the plan costs", "it's the week the disaster reports keep citing", "$14 99 refundable for seven days",
+                 "week one of the plan costs", "it's the week the disaster reports keep citing", "$9 99 refundable for seven days",
                  "or see what's inside", "be ready before the next one", "four pages the three hazards your state actually gets who to call your state's mitigation program and deductible rules and a one page plan"}
 
 def visible(h):

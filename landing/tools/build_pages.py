@@ -57,11 +57,11 @@ PACKET = chrome.PACKET
 DASH_CHARS = ("—", "&mdash;")
 
 LITERAL_DASH_FIXES = [
-    ("Get the Book &mdash; $14.99 &rarr;", "Get the Book, $14.99 &rarr;"),
-    ("Get the book &mdash; $14.99 &rarr;", "Get the book, $14.99 &rarr;"),
-    ("Get the Book — $14.99 →", "Get the Book, $14.99 →"),
-    ("Get the book — $14.99 →", "Get the book, $14.99 →"),
-    ("Get the Book &mdash; $14.99", "Get the Book, $14.99"),
+    ("Get the Book &mdash; $9.99 &rarr;", "Get the Book, $9.99 &rarr;"),
+    ("Get the book &mdash; $9.99 &rarr;", "Get the book, $9.99 &rarr;"),
+    ("Get the Book — $9.99 →", "Get the Book, $9.99 →"),
+    ("Get the book — $9.99 →", "Get the book, $9.99 →"),
+    ("Get the Book &mdash; $9.99", "Get the Book, $9.99"),
     (" &mdash; book cover\"", ": book cover\""),
     (" — book cover\"", ": book cover\""),
 ]
@@ -766,7 +766,7 @@ def build_final_tab(n, extracted_gate):
     html = (
         '<section class="sheet" id="%s"><h2>Get the book</h2>'
         '<div class="row"><div><p class="lead">%s</p>'
-        '<p><a class="btn" href="%s">Get the Book, $14.99 &rarr;</a></p>%s</div>'
+        '<p><a class="btn" href="%s">Get the Book, $9.99 &rarr;</a></p>%s</div>'
         '<figure style="margin:0"><img class="cover" src="/assets/cover-mini.webp" width="260" height="347" '
         'alt="The Storm-Ready Home by Paul Raymond: book cover" loading="lazy"></figure></div></section>'
         % (sid, GET_BOOK_LEAD, BUY, extra)
