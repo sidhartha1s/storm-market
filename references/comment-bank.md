@@ -87,6 +87,7 @@ Teardown: `references/teardowns/2026-10-03-titanic-mirage.md`.
   video (653); the pinned comment is a partner promo (21). Releasing on the anniversary was noticed (216).
 
 **For our scripts**
-- The visible craft is the first thing praised, and an AI-sounding script or voice is attacked months later.
+- The visible craft is the first thing praised. An AI-sounding script or voice still gets attacked months later
+  (here in a few 0-like comments).
 - A concept title needs one fact the enthusiast has not heard, or the comments keep saying so for months.
 - A wrong technical detail draws a liked correction (633 here). The storm audience watched these events live.
