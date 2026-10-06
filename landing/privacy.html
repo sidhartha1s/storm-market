@@ -312,7 +312,7 @@ contact option on our Gumroad product page.</p>
   var m=/[?&]src=([a-z0-9_]+)-?([a-z0-9_-]*)/i.exec(q);
   if(u[0]&&u[1]&&u[2]) t=u; else if(m) t=['youtube',m[1].toLowerCase(),(m[2]||'evergreen').toLowerCase()];
   try{ if(t) sessionStorage.setItem('src',t.join('|')); else t=(sessionStorage.getItem('src')||'').split('|'); }catch(e){}
-  if(!t||t.length!==3) return;
+  if(!t||t.length!==3||!t.every(function(x){return /^[a-z0-9_-]+$/.test(x);})) return;
   var tag=k.map(function(n,i){return n+'='+t[i];}).join('&');
   document.querySelectorAll('a[href*="gumroad.com/l/"]').forEach(function(a){
     if(a.href.indexOf('utm_source=')<0) a.href+=(a.href.indexOf('?')<0?'?':'&')+tag;
