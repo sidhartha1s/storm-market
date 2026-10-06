@@ -17,6 +17,7 @@ FORMAT.md first, then the ops slate in `ops/programme-14d.md` and the live cards
 Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
 Format rulebook (measured from teardowns, lives in the repo): `references/mini-storms/FORMAT.md`
 Teardowns + NexLev data: `references/mini-storms/teardowns/README.md`, `references/mini-storms/nexlev-*.md`
+Comments of every reference video (both lanes): analysed into `references/comment-bank.md`
 
 ## Phase 0 — preflight (same as storm-episode, abbreviated)
 1. `git -C <repo> fetch origin` → `git rev-list --count HEAD..origin/main`; non-zero = stale checkout.
