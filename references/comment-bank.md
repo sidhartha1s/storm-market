@@ -2,7 +2,8 @@
 
 **Rule (owner, 6 Oct 26).** Every reference video gets its comments analysed, whoever picked it (the owner or the
 agent) and whatever it is a reference for (script, topic, thumbnail, edit). The findings are added to this file, so
-the bank grows and the writer reads it before every script. A reference video with no entry here is unfinished research.
+the bank grows with every video. The episode research quotes the entries that apply, which is how they reach the
+script writer. A reference video with no entry here is unfinished research.
 
 ## How to pull and read
 1. Pull twice, into a scratch folder (never the repo): most liked, then newest.
