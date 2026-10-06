@@ -17,6 +17,7 @@ MOBILE_CSS = """
   .band #live-n::after{content:" viewing"}
   .band .go{min-height:44px;padding:0 12px;font-size:15px;white-space:nowrap}
   .brand span{display:none}
+  .brand{padding-right:0}
   .tabs{-webkit-mask-image:linear-gradient(90deg,#fff 88%,transparent);mask-image:linear-gradient(90deg,#fff 88%,transparent)}
   .rings{left:6px;width:20px}.rings i{width:20px;height:20px;box-shadow:inset 0 0 0 6px var(--paper),0 1px 2px rgba(0,0,0,.5)}
   .holes{left:10px;width:12px}.holes i{width:12px;height:12px}
