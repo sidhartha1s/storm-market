@@ -34,8 +34,10 @@ Gumroad records a sale's source only when the buy link carries all three of `utm
 (`SRC_JS`) copies the visitor's tag onto every Gumroad link on every page and keeps it for the browser session.
 A visit with no tag leaves the links untouched. Two ways to tag a link into the site:
 
-- **The three utm fields.** This is what the `/yt` and `/yt/<slug>` lines in `_redirects` already send
-  (`youtube / video / <slug>`), so the description link is traced with no extra work.
+- **The three utm fields.** This is what the `/yt` and `/yt/<slug>` lines in `_redirects` send (`youtube / video /
+  <slug>`, or `channel` for plain `/yt`), so a description link that uses `/yt/<slug>` is traced. A bare
+  `https://paulraymond.online` link carries no tag and stays untraced: that is what `config.yaml` `first_link` and
+  the published descriptions use today.
 - **The short form `?src=<how>-<episode>`**, for a URL that must stay short. The QR in the book ad is `?src=qr`.
   It becomes `youtube / <how> / <episode>`, or `youtube / <how> / evergreen` with no episode part.
 
