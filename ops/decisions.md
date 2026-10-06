@@ -30,3 +30,4 @@ line that names the one it replaces.
 | 4 Oct 26 | Paul v2 is the face on every site image (cover set, og, avatar, headshot, lifestyle shots) | owner | one presenter face across video, site and book |
 | 5 Oct 26 | Ebook price is $9.99 on the site, the Gumroad page sources and the rehook template; the $87.99 anchor stays | owner | "reduce the price to 9.99USD. everywhere" |
 | 6 Oct 26 | The value stack keeps the manual's line-item value at $14.99 (price $9.99), so the stack still sums to $87.99 | model after Opus review; owner may reverse | a blanket price swap left a stack that summed to $82.99 under an $87.99 total |
+| 6 Oct 26 | Every reference video, picked by the owner or the agent, gets its comments analysed and added to `references/comment-bank.md`: most liked, newest with dates, and liked requests that are off the video's topic | owner | "overtime, it will be a data bank" |
