@@ -45,8 +45,9 @@ JS = '\n(function(){\n  const links=[...document.querySelectorAll(\'.tabs a\')];
 # Sale tracking. Gumroad records a sale's source only when the buy link carries utm_source, utm_medium AND
 # utm_campaign, so this copies the visitor's tag onto every Gumroad link and keeps it for the browser session.
 # Two ways in: the three utm fields themselves (what the /yt/<slug> lines in _redirects send), or the short
-# ?src=<how>-<episode> used where a URL must stay short (the QR in the book ad is ?src=qr), which becomes
-# youtube / <how> / <episode, or "evergreen">. Runs before the rest of the script so a storage error there cannot stop it.
+# ?src=<how> used where a URL must stay short (the QR in the book ad is ?src=qr), which becomes
+# youtube / <how> / evergreen. No per-episode part (owner 6 Oct 26). Runs before the rest of the script so a
+# storage error there cannot stop it.
 SRC_JS = """
 (function(){
   var q=location.search, k=['utm_source','utm_medium','utm_campaign'], t=null;
