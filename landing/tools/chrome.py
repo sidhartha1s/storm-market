@@ -61,7 +61,7 @@ SRC_JS = """
 })();
 """
 JS = SRC_JS + JS
-BAND = '<div class="band" role="status"><span><span class="dot"></span><b id="live-n">96</b> <span class="lbl">viewing now</span></span><span class="sep">·</span><span><span class="lbl">Launch price ends in </span><b id="countdown">--:--:--</b></span><a class="go" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get my copy, $9.99</a></div>\n'
+BAND = '<div class="band" role="status"><span><span class="dot"></span><b id="live-n">22</b> <span class="lbl">viewing now</span></span><span class="sep">·</span><span><span class="lbl">Launch price ends in </span><b id="countdown">--:--:--</b></span><a class="go" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get my copy, $9.99</a></div>\n'
 BRAND = '<div class="brand"><b>The Storm-Ready Home</b><span>Paul Raymond · First edition</span></div>\n'
 PILL = '<div class="pill"><span>The Storm-Ready Home · $9.99</span><a class="btn" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get the book</a></div>\n'
 TOAST = '<div class="toast" id="toast" role="status" aria-live="polite"><span class="glyph" aria-hidden="true">&#10003;</span><span class="body"></span><button class="x" type="button" aria-label="Dismiss">&times;</button></div>\n'
