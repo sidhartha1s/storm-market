@@ -27,3 +27,6 @@ line that names the one it replaces.
 | 24 Sep 26 | Only the v5-sep6 CTA stays in `assets/cta/`; old versions live in git history | owner | keep only the latest CTA |
 | 24 Sep 26 | Frame QC is 3 settle frames per changed composition, strict FAIL list, 2 fix rounds max | owner | v5/v11/v14/v19 churn came from wrong frames and no stop rule |
 | 24 Sep 26 | Code reviewers run on Opus; Haiku never unless the owner asks | owner | review quality |
+| 4 Oct 26 | Paul v2 is the face on every site image (cover set, og, avatar, headshot, lifestyle shots) | owner | one presenter face across video, site and book |
+| 5 Oct 26 | Ebook price is $9.99 on the site, the Gumroad page sources and the rehook template; the $87.99 anchor stays | owner | "reduce the price to 9.99USD. everywhere" |
+| 6 Oct 26 | The value stack keeps the manual's line-item value at $14.99 (price $9.99), so the stack still sums to $87.99 | Opus review | a blanket price swap left a stack that summed to $82.99 under an $87.99 total |

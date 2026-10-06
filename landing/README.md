@@ -117,7 +117,7 @@ ordered all four, so they exist — with these standing caveats on the record:
   the in-file warning marker removed (2026-08-14, "reviews are fine for now / no marker"). The
   standing recommendation on the record is unchanged: swap in real, verifiable buyer quotes once
   they exist — fabricated reviews presented as genuine are an FTC liability.
-- **The value stack** itemises $9.99/$19/$15/$19/$20 → "$87.99 total value". Owner-approved anchoring;
+- **The value stack** itemises $14.99/$19/$15/$19/$20 (the manual's line is its value, not the $9.99 price) → "$87.99 total value". Owner-approved anchoring;
   nothing has sold separately at those prices.
 - **The countdown is evergreen** (random 6–14h deadline in localStorage, rolls over on expiry) and
   **the viewer counter is decorative** (random 80–115, re-rolled every 2–3s). Both are aesthetic
@@ -179,7 +179,8 @@ ordered all four, so they exist — with these standing caveats on the record:
 
 **Both now done.** The **dedicated headshot** exists at `landing/assets/headshot.png` (500×600,
 5:6), cropped from the approved cover art by `ebook/build/art/make_derived_art.py`, so it stays in
-sync if the cover ever changes; the author-block portrait points at it directly instead of faking
+sync if the cover ever changes (that script still reads the old-face `cover-v3-raymond.png`: point it at
+the Paul v2 cover before re-running, or it puts the old face back); the author-block portrait points at it directly instead of faking
 a crop of the full cover with `background-position`. The **16:9 cover render** exists at
 `ebook/build/art/cover-16x9.png` (1920×1080), composed from the same plate with the headline and
 proof line typeset into the left half so it stays legible at Gumroad's thumbnail size — it's the

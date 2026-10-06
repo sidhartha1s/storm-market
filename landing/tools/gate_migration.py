@@ -67,7 +67,10 @@ def canon(o):
 
 # Deliberate copy changes since main: applied to main's page before comparing, so the gate still
 # catches every other lost sentence. Owner 5 Oct 26: price $14.99 -> $9.99 everywhere.
-OLD_TO_NEW = [("14.99", "9.99")]
+OLD_TO_NEW = [("14.99", "9.99"),
+              # the value stack keeps the manual's line-item VALUE at $14.99 so it still sums to $87.99
+              ("The manual, 486 pages <em>($9.99)</em>", "The manual, 486 pages <em>($14.99)</em>"),
+              ("<span>The manual, 486 pages</span><span>$9.99</span>", "<span>The manual, 486 pages</span><span>$14.99</span>")]
 
 def old_file(rel):
     r = subprocess.run(["git", "-C", REPO, "show", f"main:landing/{rel}"], capture_output=True)
