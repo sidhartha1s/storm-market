@@ -29,14 +29,20 @@ git branch and production silently keeps serving the old build.
 
 ## Sale tracking: which video sold the book
 
-Links into the site carry a tag: `https://www.paulraymond.online/?src=<how>-<episode>`. `how` is `qr` (the QR in the
-video) or `desc` (the description link); `episode` is the episode slug, or left off for an evergreen link
-(`?src=qr`). The shared script in `tools/chrome.py` (`SRC_JS`) keeps the tag for the browser session and adds
-`utm_source=youtube`, `utm_medium=<how>`, `utm_campaign=<episode or "evergreen">` to every Gumroad link on every page.
-Gumroad records a sale's source only when all three are present; it then shows them in the sales CSV export and the
-sales API. A visit with no `src` leaves the links untouched.
+Gumroad records a sale's source only when the buy link carries all three of `utm_source`, `utm_medium` and
+`utm_campaign`; it then shows them in the sales CSV export and the sales API. The shared script in `tools/chrome.py`
+(`SRC_JS`) copies the visitor's tag onto every Gumroad link on every page and keeps it for the browser session.
+A visit with no tag leaves the links untouched. Two ways to tag a link into the site:
 
-Check: `node landing/buycheck.mjs "https://www.paulraymond.online/?src=qr-ep5"` fails any CTA that lost the tag.
+- **The three utm fields.** This is what the `/yt` and `/yt/<slug>` lines in `_redirects` already send
+  (`youtube / video / <slug>`), so the description link is traced with no extra work.
+- **The short form `?src=<how>-<episode>`**, for a URL that must stay short. The QR in the book ad is `?src=qr`.
+  It becomes `youtube / <how> / <episode>`, or `youtube / <how> / evergreen` with no episode part.
+
+Check: `node landing/buycheck.mjs "https://www.paulraymond.online/?src=qr-test"` prints `FAIL ... lost the src tag`
+for the band or dock CTA if the tag did not reach it. Its exit code is no use yet: buycheck also fails on the live
+site for an older reason (it looks for a `#buy` element the Binder design does not have, and for checkout markers
+Gumroad no longer serves). Use a throwaway tag for checks; a real one may be counted as a visit.
 Not yet proven with a real sale: that Gumroad attributes a purchase made through a `?wanted=true` link.
 
 ## Content pages (added 2026-08-26) — the rules

@@ -321,6 +321,19 @@ footer a{color:#fff3df}
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does Kentucky offer storm shelter rebates?", "acceptedAnswer": {"@type": "Answer", "text": "Kentucky runs Strengthen Kentucky Homes Program, a state shelter/mitigation program. Check the program page for current funding and eligibility."}}, {"@type": "Question", "name": "What natural disasters does Kentucky get?", "acceptedAnswer": {"@type": "Answer", "text": "Kentucky's primary weather hazards are tornado (Dec–Mar), extreme rainfall and flash flood (May–Jul) and riverine and coastal flooding (Feb–Apr)."}}, {"@type": "Question", "name": "Who regulates insurance in Kentucky?", "acceptedAnswer": {"@type": "Answer", "text": "Insurance in Kentucky is regulated by Kentucky Department of Insurance."}}]}</script>
 <script>
 (function(){
+  var q=location.search, k=['utm_source','utm_medium','utm_campaign'], t=null;
+  var u=k.map(function(n){var m=new RegExp('[?&]'+n+'=([a-z0-9_-]+)','i').exec(q);return m?m[1].toLowerCase():'';});
+  var m=/[?&]src=([a-z0-9_]+)-?([a-z0-9_-]*)/i.exec(q);
+  if(u[0]&&u[1]&&u[2]) t=u; else if(m) t=['youtube',m[1].toLowerCase(),(m[2]||'evergreen').toLowerCase()];
+  try{ if(t) sessionStorage.setItem('src',t.join('|')); else t=(sessionStorage.getItem('src')||'').split('|'); }catch(e){}
+  if(!t||t.length!==3) return;
+  var tag=k.map(function(n,i){return n+'='+t[i];}).join('&');
+  document.querySelectorAll('a[href*="gumroad.com/l/"]').forEach(function(a){
+    if(a.href.indexOf('utm_source=')<0) a.href+=(a.href.indexOf('?')<0?'?':'&')+tag;
+  });
+})();
+
+(function(){
   const links=[...document.querySelectorAll('.tabs a')];
   const sections=links.map(a=>document.querySelector(a.getAttribute('href')));
   function set(i){links.forEach((a,k)=>{if(k===i)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});}
@@ -356,18 +369,6 @@ footer a{color:#fff3df}
   toast.querySelector('.x').addEventListener('click',()=>{localStorage.setItem(KEY,Date.now()+86400000);clearTimeout(hide);toast.classList.remove('on');});
   if(!dismissed())setTimeout(function loop(){show();setTimeout(loop,7500+Math.random()*2500);},5000);
   window.__showToast=show;
-})();
-
-(function(){
-  var m=/[?&]src=([a-z0-9_-]+)/i.exec(location.search), s=m?m[1].toLowerCase():null;
-  try{ if(s) sessionStorage.setItem('src',s); else s=sessionStorage.getItem('src'); }catch(e){}
-  if(!s) return;
-  var i=s.indexOf('-'), medium=i<0?s:s.slice(0,i), campaign=i<0?'evergreen':s.slice(i+1);
-  document.querySelectorAll('a[href*="gumroad.com/l/"]').forEach(function(a){
-    var u=new URL(a.href);
-    u.searchParams.set('utm_source','youtube'); u.searchParams.set('utm_medium',medium); u.searchParams.set('utm_campaign',campaign);
-    a.href=u.toString();
-  });
 })();
 </script>
 </body>
