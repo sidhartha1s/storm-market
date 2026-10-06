@@ -75,8 +75,8 @@ for (const [label, href] of [['buy', state.buy], ['band', state.band], ['dock', 
   if (!href || href === '#' || href.startsWith('#')) {
     console.log(`FAIL  ${label} CTA is not wired to a checkout (href=${href})`); fail++; continue;
   }
-  // a page opened with ?src=<tag> must hand the tag to Gumroad as all three utm fields, or the sale is untraceable
-  if (/[?&]src=/.test(URL_TO_CHECK) && !['utm_source', 'utm_medium', 'utm_campaign'].every(k => new URL(href).searchParams.get(k))) {
+  // a page opened with a tag (?src=... or the utm fields) must hand it to Gumroad as all three utm fields, or the sale is untraceable
+  if (/[?&](src|utm_campaign)=[a-z0-9_]/i.test(URL_TO_CHECK) && !['utm_source', 'utm_medium', 'utm_campaign'].every(k => new URL(href).searchParams.get(k))) {
     console.log(`FAIL  ${label} CTA lost the src tag (href=${href})`); fail++; continue;
   }
   const r = await fetch(href, { redirect: 'follow' });

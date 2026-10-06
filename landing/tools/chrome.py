@@ -41,24 +41,26 @@ MOBILE_CSS = """
 """
 CSS = CSS + MOBILE_CSS
 JS = '\n(function(){\n  const links=[...document.querySelectorAll(\'.tabs a\')];\n  const sections=links.map(a=>document.querySelector(a.getAttribute(\'href\')));\n  function set(i){links.forEach((a,k)=>{if(k===i)a.setAttribute(\'aria-current\',\'true\');else a.removeAttribute(\'aria-current\');});}\n  const io=new IntersectionObserver(es=>{\n    const vis=es.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];\n    if(vis)set(sections.indexOf(vis.target));\n  },{rootMargin:\'-30% 0px -55% 0px\',threshold:[0,.25,.5,.75,1]});\n  sections.forEach(s=>io.observe(s));\n  set(0);\n})();\n\n// ---- Live viewer counter (decorative): 80-115, re-rolled every 2-3s ----\n(function(){const n=document.getElementById(\'live-n\');const t=()=>{n.textContent=80+Math.floor(Math.random()*36);};t();(function l(){setTimeout(()=>{t();l();},2000+Math.random()*1000);})();})();\n// ---- Countdown: deadline rolled to a random point in the last 15 min before 3h (2:45:00 to 3:00:00), stored so reloads continue ----\n(function(){\n  const out=document.getElementById(\'countdown\'),KEY=\'srh-binder-deadline\';\n  const roll=()=>{const d=Date.now()+(165+Math.random()*15)*60*1000;localStorage.setItem(KEY,d);return d;};\n  let dl=+localStorage.getItem(KEY);if(!dl||dl-Date.now()>3*3600*1000)dl=roll();\n  const tick=()=>{let s=Math.floor((dl-Date.now())/1000);if(s<=0){dl=roll();s=Math.floor((dl-Date.now())/1000);}\n    const p=x=>String(x).padStart(2,\'0\');out.textContent=p(Math.floor(s/3600))+\':\'+p(Math.floor(s%3600/60))+\':\'+p(s%60);};\n  tick();setInterval(tick,1000);\n})();\n// ---- Recently-bought toast (decorative, same behaviour as the live site) ----\n(function(){\n  const PEOPLE=[["Tom R.","San Antonio, TX"],["Linda K.","Tulsa, OK"],["Dale M.","Springfield, MO"],["Carol S.","Wichita, KS"],["Gene P.","Tampa, FL"],["Ruth A.","Baton Rouge, LA"],["Frank D.","Mobile, AL"],["Walt H.","Savannah, GA"],["Eleanor B.","Charlotte, NC"],["Pat G.","Columbia, SC"],["Diane W.","Little Rock, AR"],["Margaret C.","Omaha, NE"],["Sam O.","Des Moines, IA"],["Rosa V.","Columbus, OH"],["Betty J.","Jackson, MS"],["Harold F.","Louisville, KY"],["Nancy T.","Indianapolis, IN"],["Earl G.","Peoria, IL"],["Doris L.","Richmond, VA"],["Gerald K.","Amarillo, TX"],["Joan R.","Norman, OK"],["Wayne S.","Joplin, MO"]];\n  const toast=document.getElementById(\'toast\'),body=toast.querySelector(\'.body\'),KEY=\'srh-binder-toast-until\';\n  const dismissed=()=>{const t=+localStorage.getItem(KEY);return t&&Date.now()<t;};\n  let last=-1,hide=null;\n  const show=()=>{if(dismissed())return;let i;do{i=Math.floor(Math.random()*PEOPLE.length);}while(i===last);last=i;\n    const [name,city]=PEOPLE[i],mins=3+Math.floor(Math.random()*56);\n    body.innerHTML=`<b>${name}</b> from ${city} just got The Storm-Ready Home<span class="when">${mins}m ago</span>`;\n    toast.classList.add(\'on\');clearTimeout(hide);hide=setTimeout(()=>toast.classList.remove(\'on\'),4000);};\n  toast.querySelector(\'.x\').addEventListener(\'click\',()=>{localStorage.setItem(KEY,Date.now()+86400000);clearTimeout(hide);toast.classList.remove(\'on\');});\n  if(!dismissed())setTimeout(function loop(){show();setTimeout(loop,7500+Math.random()*2500);},5000);\n  window.__showToast=show;\n})();\n'
-# Sale tracking. A visitor who arrives with ?src=<how>-<episode> (the QR in a video, a description link) keeps that
-# tag for the session and every Gumroad link carries it as utm_source / utm_medium / utm_campaign. Gumroad records a
-# sale's source only when all three are present, so a tag with no episode part gets the campaign "evergreen".
-# ?src=qr-ep5 -> youtube / qr / ep5.   Check: node landing/buycheck.mjs "<url>?src=qr-ep5"
+# Sale tracking. Gumroad records a sale's source only when the buy link carries utm_source, utm_medium AND
+# utm_campaign, so this copies the visitor's tag onto every Gumroad link and keeps it for the browser session.
+# Two ways in: the three utm fields themselves (what the /yt/<slug> lines in _redirects send), or the short
+# ?src=<how>-<episode> used where a URL must stay short (the QR in the book ad is ?src=qr), which becomes
+# youtube / <how> / <episode, or "evergreen">. Runs before the rest of the script so a storage error there cannot stop it.
 SRC_JS = """
 (function(){
-  var m=/[?&]src=([a-z0-9_-]+)/i.exec(location.search), s=m?m[1].toLowerCase():null;
-  try{ if(s) sessionStorage.setItem('src',s); else s=sessionStorage.getItem('src'); }catch(e){}
-  if(!s) return;
-  var i=s.indexOf('-'), medium=i<0?s:s.slice(0,i), campaign=i<0?'evergreen':s.slice(i+1);
+  var q=location.search, k=['utm_source','utm_medium','utm_campaign'], t=null;
+  var u=k.map(function(n){var m=new RegExp('[?&]'+n+'=([a-z0-9_-]+)','i').exec(q);return m?m[1].toLowerCase():'';});
+  var m=/[?&]src=([a-z0-9_]+)-?([a-z0-9_-]*)/i.exec(q);
+  if(u[0]&&u[1]&&u[2]) t=u; else if(m) t=['youtube',m[1].toLowerCase(),(m[2]||'evergreen').toLowerCase()];
+  try{ if(t) sessionStorage.setItem('src',t.join('|')); else t=(sessionStorage.getItem('src')||'').split('|'); }catch(e){}
+  if(!t||t.length!==3) return;
+  var tag=k.map(function(n,i){return n+'='+t[i];}).join('&');
   document.querySelectorAll('a[href*="gumroad.com/l/"]').forEach(function(a){
-    var u=new URL(a.href);
-    u.searchParams.set('utm_source','youtube'); u.searchParams.set('utm_medium',medium); u.searchParams.set('utm_campaign',campaign);
-    a.href=u.toString();
+    if(a.href.indexOf('utm_source=')<0) a.href+=(a.href.indexOf('?')<0?'?':'&')+tag;
   });
 })();
 """
-JS = JS + SRC_JS
+JS = SRC_JS + JS
 BAND = '<div class="band" role="status"><span><span class="dot"></span><b id="live-n">96</b> <span class="lbl">viewing now</span></span><span class="sep">·</span><span><span class="lbl">Launch price ends in </span><b id="countdown">--:--:--</b></span><a class="go" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get my copy, $9.99</a></div>\n'
 BRAND = '<div class="brand"><b>The Storm-Ready Home</b><span>Paul Raymond · First edition</span></div>\n'
 PILL = '<div class="pill"><span>The Storm-Ready Home · $9.99</span><a class="btn" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get the book</a></div>\n'
