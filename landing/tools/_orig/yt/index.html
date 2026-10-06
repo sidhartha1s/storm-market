@@ -20,6 +20,7 @@
 /* /yt/ is one screen for a phone that just scanned the QR: name, cover, price and the button above the fold. */
 .sheet{padding-bottom:0}
 .pill{display:none}
+.toast{bottom:24px}
 .buy{display:grid;grid-template-columns:104px minmax(0,1fr);column-gap:16px;align-items:start}
 .buy>*{grid-column:1/-1;margin-top:0}
 .buy .kick,.more .counts,.buy .price s{color:var(--soft)}
@@ -52,7 +53,7 @@
   .more .counts{grid-template-columns:auto}
 }
 @media (min-width:600px){
-  .buy{grid-template-columns:minmax(0,1fr) clamp(180px,28vw,300px);grid-template-rows:repeat(5,auto) 1fr;column-gap:clamp(32px,4.4vw,56px)}
+  .buy{grid-template-columns:minmax(0,1fr) clamp(180px,22vw,300px);grid-template-rows:repeat(5,auto) 1fr;column-gap:clamp(32px,4.4vw,56px)}
   .buy>*{grid-column:1}
   .buy h1{font-size:clamp(34px,4.4vw,56px);margin-bottom:22px}
   .buy .cover{grid-column:2;grid-row:1/span 6;transform:rotate(-2deg);box-shadow:0 26px 40px -16px rgba(0,0,0,.65)}
@@ -71,7 +72,7 @@
 <div class="buy">
 <p class="kick">From The Warning Hour</p>
 <h1>The checklist Paul mentioned in the video.</h1>
-<img class="cover" src="/assets/cover-hero.webp" srcset="/assets/cover-mini.webp 350w, /assets/cover-hero.webp 860w" sizes="(min-width:600px) 28vw, 104px" width="860" height="1290" alt="The Storm-Ready Home by Paul Raymond: book cover">
+<img class="cover" src="/assets/cover-hero.webp" srcset="/assets/cover-mini.webp 350w, /assets/cover-hero.webp 860w" sizes="(min-width:600px) 22vw, 104px" width="860" height="1290" alt="The Storm-Ready Home by Paul Raymond: book cover">
 <p class="price"><s>$87.99</s>$9.99, once</p>
 <p class="refund">7-day refund. Reply to the delivery email and the $9.99 comes back.</p>
 <p class="go"><a class="btn" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get the book, $9.99</a></p>

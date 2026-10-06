@@ -12,7 +12,7 @@ git branch and production silently keeps serving the old build.
 |---|---|
 | `index.html` | **Generated** by `tools/build_home.py` (Binder design, 2026-09-06). Edit the content strings in that script, never the HTML. Inline CSS from `tools/chrome.py`; Google Fonts is the only CDN dependency. |
 | `tools/chrome.py` | The one shared chrome for every page: CSS, urgency band (viewer count, rolling 2h45-3h countdown, CTA), pinned index-tab nav, dock, toast, legal footer, JS. Change it here, then rebuild all three generators. |
-| `tools/build_pages.py` | Generates the 14 hand pages (about, privacy, terms, 404, field-notes, resources) from the pre-Binder copies in `tools/_orig/`. Tab labels live in its `TAB_LABELS` dict. |
+| `tools/build_pages.py` | Generates the 16 hand pages (about, privacy, terms, 404, yt, field-notes, resources) from the pre-Binder copies in `tools/_orig/`. Tab labels live in its `TAB_LABELS` dict. |
 | `tools/gate_migration.py` | **Gate.** Every page vs `main`: old visible text present, JSON-LD equal, no lorem / em dash / #000, buy path present. Run before any deploy. |
 | `privacy.html`, `terms.html` | Generic text-only legal pages, linked in the footer, noindexed. |
 | `og-src.html` | Source for `assets/og.png` (1200×630 social card). Regenerate: `node shot.mjs og-src.html ./out 1200`, crop to 630. |
@@ -26,7 +26,7 @@ git branch and production silently keeps serving the old build.
 | `states/` | 51 state guides + menu, **generated** by `tools/gen_states.py` from `tools/state_data.csv`. Edit the CSV or the template in the script, re-run `python3 tools/gen_states.py`, commit the output. Never hand-edit a state page. |
 | `yt/` | Landing page for video viewers (QR code, description link): the video's promise, price, refund and buy button on one screen. Noindexed, not in the sitemap or `llms.txt`. Source `tools/_orig/yt/index.html`, a one-sheet page in `build_pages.py`. |
 | `about/` | Author page. Method-led, pen-name framing — no falsifiable credentials, ever (owner-approved 2026-08-26). |
-| `llms.txt`, `sitemap.xml` | Page map for crawlers/LLMs. Regenerate the sitemap whenever a page is added (it lists every `*/index.html`). |
+| `llms.txt`, `sitemap.xml` | Page map for crawlers/LLMs. Regenerate the sitemap whenever a page is added (it lists every `*/index.html` except the noindexed `yt/`). |
 
 ## Sale tracking: which video sold the book
 
@@ -43,10 +43,10 @@ A visit with no tag leaves the links untouched. Two ways to tag a link into the 
   description link. It becomes `youtube / <how> / evergreen`. There is no per-episode part (owner 6 Oct 26): the
   tag says how the buyer arrived, not which video. Both should point at `https://www.paulraymond.online/yt/?src=<how>`.
 
-Check: `node landing/buycheck.mjs "https://www.paulraymond.online/?src=qr-test"` prints `FAIL ... lost the src tag`
+Check: `node landing/buycheck.mjs "https://www.paulraymond.online/?src=test"` prints `FAIL ... lost the src tag`
 for the band or dock CTA if the tag did not reach it. Its exit code is no use yet: buycheck also fails on the live
 site for an older reason (it looks for a `#buy` element the Binder design does not have, and for checkout markers
-Gumroad no longer serves). Use a throwaway tag for checks; a real one may be counted as a visit.
+Gumroad no longer serves). Use the throwaway tag `test` for checks (it becomes `youtube / test / evergreen`); `qr` or `desc` would be counted with real visits.
 Not yet proven with a real sale: that Gumroad attributes a purchase made through a `?wanted=true` link.
 
 ## Content pages (added 2026-08-26) — the rules
@@ -141,8 +141,8 @@ ordered all four, so they exist — with these standing caveats on the record:
   they exist — fabricated reviews presented as genuine are an FTC liability.
 - **The value stack** itemises $14.99/$19/$15/$19/$20 (the manual's line is its value, not the $9.99 price) → "$87.99 total value". Owner-approved anchoring;
   nothing has sold separately at those prices.
-- **The countdown is evergreen** (random 6–14h deadline in localStorage, rolls over on expiry) and
-  **the viewer counter is decorative** (random 80–115, re-rolled every 2–3s). Both are aesthetic
+- **The countdown is evergreen** (a deadline 2h45 to 3h away, kept in localStorage, rolls over on expiry) and
+  **the viewer counter is decorative** (15 to 30, drifting by at most 2 every 6 to 10 s; owner 6 Oct 26). Both are aesthetic
   urgency, ordered by the owner, not measurements.
 
 ## Status
