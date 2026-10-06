@@ -27,6 +27,18 @@ git branch and production silently keeps serving the old build.
 | `about/` | Author page. Method-led, pen-name framing — no falsifiable credentials, ever (owner-approved 2026-08-26). |
 | `llms.txt`, `sitemap.xml` | Page map for crawlers/LLMs. Regenerate the sitemap whenever a page is added (it lists every `*/index.html`). |
 
+## Sale tracking: which video sold the book
+
+Links into the site carry a tag: `https://www.paulraymond.online/?src=<how>-<episode>`. `how` is `qr` (the QR in the
+video) or `desc` (the description link); `episode` is the episode slug, or left off for an evergreen link
+(`?src=qr`). The shared script in `tools/chrome.py` (`SRC_JS`) keeps the tag for the browser session and adds
+`utm_source=youtube`, `utm_medium=<how>`, `utm_campaign=<episode or "evergreen">` to every Gumroad link on every page.
+Gumroad records a sale's source only when all three are present; it then shows them in the sales CSV export and the
+sales API. A visit with no `src` leaves the links untouched.
+
+Check: `node landing/buycheck.mjs "https://www.paulraymond.online/?src=qr-ep5"` fails any CTA that lost the tag.
+Not yet proven with a real sale: that Gumroad attributes a purchase made through a `?wanted=true` link.
+
 ## Content pages (added 2026-08-26) — the rules
 
 - **Shared design language.** Every content page copies the landing tokens (paper/storm-sky

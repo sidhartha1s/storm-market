@@ -374,6 +374,18 @@ footer a{color:#fff3df}
   if(!dismissed())setTimeout(function loop(){show();setTimeout(loop,7500+Math.random()*2500);},5000);
   window.__showToast=show;
 })();
+
+(function(){
+  var m=/[?&]src=([a-z0-9_-]+)/i.exec(location.search), s=m?m[1].toLowerCase():null;
+  try{ if(s) sessionStorage.setItem('src',s); else s=sessionStorage.getItem('src'); }catch(e){}
+  if(!s) return;
+  var i=s.indexOf('-'), medium=i<0?s:s.slice(0,i), campaign=i<0?'evergreen':s.slice(i+1);
+  document.querySelectorAll('a[href*="gumroad.com/l/"]').forEach(function(a){
+    var u=new URL(a.href);
+    u.searchParams.set('utm_source','youtube'); u.searchParams.set('utm_medium',medium); u.searchParams.set('utm_campaign',campaign);
+    a.href=u.toString();
+  });
+})();
 </script>
 </body>
 </html>
