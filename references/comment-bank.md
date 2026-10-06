@@ -15,8 +15,8 @@ references before 6 Oct 26 are not backfilled unless the owner asks.
    The comments land in `<id>.info.json` under `comments` (`text`, `like_count`, `_time_text`, `is_pinned`,
    `author_is_uploader`). Replies are not pulled.
 2. "Top comments" is YouTube's own order, not a likes sort: sort the top pull by `like_count` yourself (in the
-   Titanic pull, 123 of the 300 had 0 likes). A sort is fine; a keyword filter is not, because what a comment means
-   is a judgment.
+   Titanic pull, 123 of the 300 had 0 likes). A sort is fine, and so is a word match to size a theme you have
+   already read. Neither replaces reading, because what a comment means is a judgment.
 3. Dates: use `_time_text` ("5 months ago") with the pull date. The `timestamp` field is only the pull date minus
    that age, so it is the latest possible date, not the real one.
 4. Read both lists yourself: the most liked first, then the newest.
