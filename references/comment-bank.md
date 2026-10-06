@@ -32,8 +32,8 @@ references before 6 Oct 26 are not backfilled unless the owner asks.
 - **Dates.** Old top comments show the launch audience; the newest show who still arrives and what they say now.
 
 ## Earlier comment findings (before this file, not moved here)
-`references/ep6-katrina/comment-insights-darkhorizon.md`, and the "Top comments" blocks in
-`references/mini-storms/teardowns/README.md`.
+`references/ep6-katrina/comment-insights-darkhorizon.md`, the "Top comments" blocks in
+`references/mini-storms/teardowns/README.md`, and the per-video cards under `references/teardowns/`.
 
 ## Entries, newest first
 
