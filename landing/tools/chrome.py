@@ -36,7 +36,7 @@ MOBILE_CSS = """
   .guar{flex-wrap:wrap}
   .pill{gap:10px;padding:6px 6px 6px 14px;font-size:15px;line-height:1.25;max-width:calc(100% - 20px)}.pill .btn{min-height:44px;padding:0 16px;font-size:17px;white-space:nowrap}
   .toast{font-size:15px;bottom:84px}.toast .x{top:0;right:0;min-width:44px;min-height:44px;display:grid;place-items:center}
-  footer{font-size:16px}.foot-links a{display:inline-block;padding:10px 0}
+  footer{font-size:16px;padding-right:16px}.foot-links a{display:inline-block;padding:10px 0}
 }
 @media (max-width:400px){.band #live-n::after{content:""}}
 """
