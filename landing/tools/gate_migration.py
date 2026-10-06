@@ -65,9 +65,9 @@ def canon(o):
     if isinstance(o, str): return norm(o)
     return o
 
-# Deliberate copy changes since main: applied to main's page before comparing, so the gate still
-# catches every other lost sentence. Owner 5 Oct 26: price $14.99 -> $9.99 everywhere.
-OLD_TO_NEW = [("14.99", "9.99")]
+# Deliberate copy changes since main, as (old, new) pairs: applied to main's page before comparing, so the gate
+# still catches every other lost sentence. Empty once main carries the change.
+OLD_TO_NEW = []
 
 def old_file(rel):
     r = subprocess.run(["git", "-C", REPO, "show", f"main:landing/{rel}"], capture_output=True)
