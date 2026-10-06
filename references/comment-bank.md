@@ -71,7 +71,7 @@ Teardown: `references/teardowns/2026-10-03-titanic-mirage.md`.
 - Late arrivals accuse the script and the voice of being AI, although the art was praised as hand-made: "ChatGPT
   generated script combined with the influencer accent is a recipe for my ears to bleed" (0, 1 month ago); "Your
   script reeks of AI" (0, 1 month ago); "Why do you mispronounce words the way AI voiceovers do?" (0, 3 weeks ago).
-- About 1 in 8 is a conspiracy claim (16 of 150 by a word match), none above 2 likes: "We all know JP Morgan
+- About 1 in 9 is a conspiracy claim (16 of 150 by a word match, after reading), none above 2 likes: "We all know JP Morgan
   intentionally put that iceberg there to collect the insurance" (0, 2 weeks ago).
 - "The host repeatedly said the tragedy started months before Titanic sets sail. That is wrong and is plain
   sensationaliation" (0, 3 days ago).
