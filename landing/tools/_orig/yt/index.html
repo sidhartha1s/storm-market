@@ -17,38 +17,64 @@
 <body>
 <div class="wrap">
 <style>
-.yt{display:grid;grid-template-columns:minmax(0,1fr);justify-items:start}
-.yt>*{margin-top:0}
-.yt h1{font-size:32px;margin:0 0 14px}
-.yt .cover{height:160px;width:auto;margin:0 0 14px;transform:none}
-.yt .price{font-size:32px;margin:0 0 6px;white-space:nowrap}
-.yt .price s{font-size:22px;margin:0 10px 0 0}
-.yt .refund{margin:0 0 14px;font-size:16px;line-height:1.35}
-.yt .says{margin:34px 0 8px}
-.yt .counts{margin:0 0 22px}
-.yt .inside{width:100%;max-width:280px;height:auto;border:1px solid var(--rule);box-shadow:0 10px 24px -14px rgba(0,0,0,.5);margin:0 0 18px}
-.pill,.toast{display:none}
+/* /yt/ is one screen for a phone that just scanned the QR: name, cover, price and the button above the fold. */
+.sheet{padding-bottom:0}
+.pill{display:none}
+.buy{display:grid;grid-template-columns:104px minmax(0,1fr);column-gap:16px;align-items:start}
+.buy>*{grid-column:1/-1;margin-top:0}
+.buy h1{font-size:34px;margin-bottom:18px}
+.buy .cover{grid-column:1;grid-row:3/span 2;width:104px;height:auto;transform:none}
+.buy .price{grid-column:2;font-size:27px;margin:2px 0 8px;white-space:nowrap}
+.buy .price s{display:block;font-size:17px;margin:0 0 6px}
+.buy .refund{grid-column:2;font-size:16px;line-height:1.35;margin:0}
+.buy .go{margin:18px 0 10px}
+.buy .go .btn{width:100%}
+.buy .fmt{font-size:16px;line-height:1.35;color:var(--soft);margin:0}
+.more{margin-top:36px;padding-top:36px;border-top:2px dashed var(--rule);display:grid;grid-template-columns:minmax(0,1fr);row-gap:22px}
+.more .lead{margin:0 0 12px}
+.more .counts{display:flex;flex-wrap:wrap;gap:4px 18px;letter-spacing:.12em;margin:0 0 6px}
+.more .counts span{white-space:nowrap}
+.more figure{margin:0;max-width:300px}
+.more figure img{display:block;width:100%;height:auto;border:1px solid var(--rule);box-shadow:0 10px 24px -14px rgba(0,0,0,.5)}
+@media (max-width:900px){
+  .tabs{display:none}
+  .sheet-wrap{border-radius:6px}
+}
 @media (min-width:901px){
-  .yt{grid-template-columns:minmax(0,1fr) 340px;column-gap:48px;align-items:start}
-  .yt>*{grid-column:1}
-  .yt .cover{grid-column:2;grid-row:1/span 6;height:auto;width:100%;max-width:340px;transform:rotate(-2deg)}
-  .yt h1{font-size:clamp(40px,5.2vw,64px)}
-  .yt .price{font-size:56px}
-  .yt .price s{font-size:30px}
-  .yt .refund{font-size:19px}
+  .buy{grid-template-columns:minmax(0,1fr) 300px;column-gap:56px}
+  .buy>*{grid-column:1}
+  .buy h1{font-size:clamp(44px,4.4vw,56px);margin-bottom:22px}
+  .buy .cover{grid-column:2;grid-row:1/span 6;width:100%;transform:rotate(-2deg)}
+  .buy .price{grid-column:1;font-size:44px;margin:0 0 10px}
+  .buy .price s{display:inline;font-size:24px;margin:0 12px 0 0}
+  .buy .refund{grid-column:1;font-size:19px}
+  .buy .go{margin:22px 0 12px}
+  .buy .go .btn{width:auto}
+  .buy .fmt{font-size:17px}
+  .more{margin-top:52px;padding-top:52px;grid-template-columns:300px minmax(0,1fr);column-gap:56px;align-items:center}
+  .more figure{grid-column:1;grid-row:1}
+  .more .words{grid-column:2;grid-row:1}
 }
 </style>
-<div class="yt">
+<div class="buy">
 <p class="kick">From The Warning Hour</p>
 <h1>The checklist Paul mentioned in the video.</h1>
-<img class="cover" src="/assets/cover-hero.webp" width="860" height="1290" alt="Cover of The Storm-Ready Home">
+<img class="cover" src="/assets/cover-hero.webp" width="860" height="1290" alt="The Storm-Ready Home by Paul Raymond: book cover">
 <p class="price"><s>$87.99</s>$9.99, once</p>
 <p class="refund">7-day refund. Reply to the delivery email and the $9.99 comes back.</p>
-<p><a class="btn" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get the book, $9.99</a></p>
-<p class="lead says">Every protection, as a checklist you can finish on a Saturday.</p>
-<p class="kick counts">486 pages &middot; 130 protections &middot; 23 hazards &middot; 60 day sequence</p>
-<img class="inside" src="/assets/inside-protection.webp" width="576" height="864" alt="A protection page with cost, time and materials" loading="lazy">
+<p class="go"><a class="btn" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get the book, $9.99</a></p>
+<p class="fmt">Printable soft copy (PDF), emailed right after checkout.</p>
+</div>
+<div class="more">
+<div class="words">
+<p class="lead">Every protection, as a checklist you can finish on a Saturday.</p>
+<p class="kick counts"><span>486 pages</span><span>130 protections</span><span>23 hazards</span><span>60-day sequence</span></p>
 <p><a href="/">See everything inside the book</a></p>
+</div>
+<figure>
+<a href="/assets/inside-protection.png"><img src="/assets/inside-protection.webp" width="576" height="864" alt="Protection 23, safe room selection: cost, time, materials and the four steps" loading="lazy"></a>
+<figcaption>Protection 23, straight from the book. Open it to read the page.</figcaption>
+</figure>
 </div>
 </div>
 </body>
