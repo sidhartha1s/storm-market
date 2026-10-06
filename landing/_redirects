@@ -1,7 +1,6 @@
 # www->apex is a Cloudflare zone Redirect Rule (dashboard), not supported here.
-# Per-episode YouTube links: add one static line per episode at publish time, e.g.
+# /yt is a real page (yt/index.html), not a redirect. Per-episode YouTube links: add one static line per episode at publish time, e.g.
 #   /yt/joplin / ?utm_source=youtube&utm_medium=video&utm_campaign=joplin 302
 # (Pages does not substitute :splat inside query strings.)
-/yt https://paulraymond.online/?utm_source=youtube&utm_medium=video&utm_campaign=channel 302
 /yt/joplin /field-notes/joplin-tornado-2011/?utm_source=youtube&utm_medium=video&utm_campaign=joplin 302
 /packet https://paulraymond.gumroad.com/l/ebook?wanted=true&utm_source=packet&utm_medium=pdf&utm_campaign=qr 302

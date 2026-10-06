@@ -24,6 +24,7 @@ git branch and production silently keeps serving the old build.
 | `field-notes/` | Blog ("Field Notes"): one dispatch per published episode + evergreen field guides. Each dispatch embeds the live YouTube video at the top. |
 | `resources/` | Seven checklist pages + hub — free to read on the page (SEO layer). The printable pack (`/l/checklists`) and the state packets (`/l/packet`) are email-gated via free Gumroad products; every page carries the $9.99 book as the primary CTA. |
 | `states/` | 51 state guides + menu, **generated** by `tools/gen_states.py` from `tools/state_data.csv`. Edit the CSV or the template in the script, re-run `python3 tools/gen_states.py`, commit the output. Never hand-edit a state page. |
+| `yt/` | Landing page for video viewers (QR code, description link): the video's promise, price, refund and buy button on one screen. Noindexed, not in the sitemap or `llms.txt`. Source `tools/_orig/yt/index.html`, a one-sheet page in `build_pages.py`. |
 | `about/` | Author page. Method-led, pen-name framing — no falsifiable credentials, ever (owner-approved 2026-08-26). |
 | `llms.txt`, `sitemap.xml` | Page map for crawlers/LLMs. Regenerate the sitemap whenever a page is added (it lists every `*/index.html`). |
 
@@ -34,12 +35,12 @@ Gumroad records a sale's source only when the buy link carries all three of `utm
 (`SRC_JS`) copies the visitor's tag onto every Gumroad link on every page and keeps it for the browser session.
 A visit with no tag leaves the links untouched. Two ways to tag a link into the site:
 
-- **The three utm fields.** This is what the `/yt` and `/yt/<slug>` lines in `_redirects` send (`youtube / video /
-  <slug>`, or `channel` for plain `/yt`), so a description link that uses `/yt/<slug>` is traced. A bare
+- **The three utm fields.** This is what the `/yt/<slug>` lines in `_redirects` send (`youtube / video /
+  <slug>`), so a description link that uses `/yt/<slug>` is traced. A bare
   `https://paulraymond.online` link carries no tag and stays untraced: that is what `config.yaml` `first_link` and
   the published descriptions use today.
 - **The short form `?src=<how>-<episode>`**, for a URL that must stay short. The QR in the book ad is `?src=qr`.
-  It becomes `youtube / <how> / <episode>`, or `youtube / <how> / evergreen` with no episode part.
+  It becomes `youtube / <how> / <episode>`, or `youtube / <how> / evergreen` with no episode part. The QR and the description link should point at `https://www.paulraymond.online/yt/?src=<how>-<episode>`.
 
 Check: `node landing/buycheck.mjs "https://www.paulraymond.online/?src=qr-test"` prints `FAIL ... lost the src tag`
 for the band or dock CTA if the tag did not reach it. Its exit code is no use yet: buycheck also fails on the live
