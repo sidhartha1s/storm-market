@@ -52,8 +52,8 @@ SRC_JS = """
 (function(){
   var q=location.search, k=['utm_source','utm_medium','utm_campaign'], t=null;
   var u=k.map(function(n){var m=new RegExp('[?&]'+n+'=([a-z0-9_-]+)','i').exec(q);return m?m[1].toLowerCase():'';});
-  var m=/[?&]src=([a-z0-9_]+)-?([a-z0-9_-]*)/i.exec(q);
-  if(u[0]&&u[1]&&u[2]) t=u; else if(m) t=['youtube',m[1].toLowerCase(),(m[2]||'evergreen').toLowerCase()];
+  var m=/[?&]src=([a-z0-9_]+)/i.exec(q);
+  if(u[0]&&u[1]&&u[2]) t=u; else if(m) t=['youtube',m[1].toLowerCase(),'evergreen'];
   try{ if(t) sessionStorage.setItem('src',t.join('|')); else t=(sessionStorage.getItem('src')||'').split('|'); }catch(e){}
   if(!t||t.length!==3||!t.every(function(x){return /^[a-z0-9_-]+$/.test(x);})) return;
   var tag=k.map(function(n,i){return n+'='+t[i];}).join('&');
