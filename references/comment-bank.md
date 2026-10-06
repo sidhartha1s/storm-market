@@ -64,7 +64,7 @@ Teardown: `references/teardowns/2026-10-03-titanic-mirage.md`.
   wrong" (159); "For a seasoned Titanic Enthusiast, nothing new here. The Mirage is not new information" (66); a
   676-like comment credits a documentary from a decade ago.
 
-**The newest 150 (2 days to about 1 month old, none above 21 likes)**
+**The newest 150 (1 day to about 1 month old, no viewer comment above 2 likes)**
 - The title complaint has not stopped: at least 7 of the 150. "What a weird clickbait title... 99% of what we know
   about Titanic is the same" (0 likes, 4 weeks ago); "Rename your bloody video. Click bait doesn't suit the
   excellent video this is" (0, 3 weeks ago); "What a bs title" (0, 3 weeks ago).
