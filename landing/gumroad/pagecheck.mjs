@@ -4,7 +4,7 @@
    sandboxed iframe, so `curl` sees none of it: the only honest check is a real
    browser that runs the page's JS and then reads every frame's DOM.
 
-   The two pages assert different things — a product page MUST carry a buy element or the
+   The page kinds assert different things — a product page MUST carry a buy element or the
    product is unpurchasable; a profile page never has one — so the kind is explicit rather
    than guessed. Passing the wrong kind is a loud failure, not a silent pass.
 
