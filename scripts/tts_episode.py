@@ -147,21 +147,29 @@ def ffprobe_duration(path, attempts=4, sleep_s=3):
     return d
 
 
-def synth_native(txt_path, wav_path, ext):
-    # tts_clone.py intermittently dies at CUDA init/clone with a native crash (no traceback,
-    # non-zero exit; ep6 measured ~1 in 8 segments, same input passes on rerun). One loud
-    # retry per segment; a second consecutive failure is real.
+def synth_native(pairs, ext):
+    # One tts_clone.py process for every stale segment (--batch): the model loads and the voice
+    # clones once per run instead of once per segment. tts_clone.py intermittently dies at CUDA
+    # init/clone with a native crash (no traceback, non-zero exit; ep6 measured ~1 in 8 calls,
+    # same input passes on rerun). One loud retry; tts_clone caches finished sentences by text
+    # hash in <out dir>/_segments, so the retry only re-pays the load. A second consecutive
+    # failure is real. Exit 2 is argparse (e.g. a tts_clone without --batch): deterministic, no retry.
+    batch_file = pairs[0][1].parent / "batch.tsv"
+    batch_file.write_text("".join(f"{t}\t{w}\n" for t, w in pairs), encoding="utf-8")
     r = None
     for attempt in (1, 2):
         r = subprocess.run([ext["pocket_venv_python"], ext["tts_clone_py"],
-                            "--text-file", str(txt_path), "--out", str(wav_path),
-                            "--voice", ext["voice_ref"]],
+                            "--batch", str(batch_file), "--voice", ext["voice_ref"]],
                            env={**os.environ, "PYTHONUTF8": "1", "PYTHONUNBUFFERED": "1"})
         if r.returncode == 0:
+            batch_file.unlink()
             return
-        print(f"[tts_episode] [FALLBACK] {txt_path.stem} attempt {attempt} exited "
+        if r.returncode == 2:
+            break
+        print(f"[tts_episode] [FALLBACK] batch of {len(pairs)} attempt {attempt} exited "
               f"{r.returncode} (0x{r.returncode & 0xFFFFFFFF:08X})", flush=True)
-    sys.exit(f"[tts_episode] FAIL on {txt_path.stem} after retry, exit {r.returncode}")
+    sys.exit(f"[tts_episode] FAIL on the batch of {len(pairs)} (attempt {attempt}), exit {r.returncode} "
+             f"(tts_clone.py needs --batch: JP-market engine/tts_clone.py on main)")
 
 
 def apply_tempo(raw_wav, sped_wav, tempo):
@@ -226,12 +234,11 @@ def main():
     mpath = ep / "audio" / "manifest.json"
     manifest = json.loads(mpath.read_text(encoding="utf-8")) if mpath.exists() else {}
     model = None
+    todo, stale_pairs = [], []
     for sid, text in segs:
         if only and sid not in only:
             continue
         txt = ep / "audio" / f"{sid}.txt"
-        # single suffix so .stem (used in synth_native's log/exit messages) still reads "sid",
-        # not "sid.txt"
         txt_tmp = ep / "audio" / f"{sid}.tmp"
         raw_wav = ep / "audio" / "_raw" / f"{sid}.wav"
         wav = ep / "audio" / f"{sid}.wav"
@@ -271,13 +278,22 @@ def main():
         else:
             adopted = False
             stale = prior.get("text_hash") != h or not wav.exists()
+        todo.append((sid, text, txt, txt_tmp, raw_wav, wav, words_json, h, h_text,
+                     is_legacy, adopted, stale, seg_tempo))
         if stale:
             # tts_clone reads from a TEMP text file. <id>.txt (the file old_txt/adoption
             # compares against) is only replaced with the new text after synth + tempo both
             # succeed, so a crash anywhere in between leaves it holding the text of the wav
             # that's actually on disk.
             txt_tmp.write_text(text, encoding="utf-8")
-            synth_native(txt_tmp, raw_wav, ext)
+            stale_pairs.append((txt_tmp, raw_wav))
+
+    if stale_pairs:
+        synth_native(stale_pairs, ext)
+
+    for (sid, text, txt, txt_tmp, raw_wav, wav, words_json, h, h_text, is_legacy, adopted, stale,
+         seg_tempo) in todo:
+        if stale:
             apply_tempo(raw_wav, wav, seg_tempo)
             txt_tmp.replace(txt)
             if words_json.exists():

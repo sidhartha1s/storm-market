@@ -83,12 +83,14 @@ except tts_episode.SegmentParseError:
 
 # ---------------------------------------------------------------------------
 # Harness for tts_episode.main(): mock TTS/atempo/ffprobe/whisper, run in a temp episode dir.
-calls = {"synth": [], "tempo": [], "transcribe": []}
+calls = {"synth": [], "tempo": [], "transcribe": [], "batches": []}
 
 
-def mock_synth_native(txt_path, wav_path, ext):
-    calls["synth"].append(txt_path.stem)
-    wav_path.write_bytes(b"RAWWAV")
+def mock_synth_native(pairs, ext):
+    calls["batches"].append(len(pairs))
+    for txt_path, wav_path in pairs:
+        calls["synth"].append(txt_path.stem)
+        wav_path.write_bytes(b"RAWWAV")
 
 
 def mock_apply_tempo(raw_wav, sped_wav, tempo):
@@ -118,6 +120,7 @@ def install_mocks():
     calls["synth"].clear()
     calls["tempo"].clear()
     calls["transcribe"].clear()
+    calls["batches"].clear()
 
 
 def make_episode(tmp, script_text, voice_ref, name="ep"):
@@ -299,6 +302,25 @@ with tempfile.TemporaryDirectory() as d:
     check("tts_episode: re-synthesized entry gets a real numeric tempo, not 'legacy'",
           legacy_diff_manifest["a1-s1"]["tempo"] == 1.10, legacy_diff_manifest["a1-s1"])
 
+    # 5f. load once per run: every stale segment goes to tts_clone in ONE batch call (the
+    #     per-segment model load + voice clone was the cost), and only stale segments go.
+    two_seg = "### A1-S1 -- narration\n> First line here.\n\n### A1-S2 -- narration\n> Second line here.\n"
+    ep_batch = make_episode(tmp, two_seg, voice_ref, name="ep_batch")
+    install_mocks()
+    sys.argv = ["tts_episode.py", str(ep_batch)]
+    tts_episode.main()
+    check("tts_episode: two stale segments synthesize in ONE batch call",
+          calls["batches"] == [2] and calls["synth"] == ["a1-s1", "a1-s2"], calls)
+    (ep_batch / "edit_script.md").write_text(two_seg.replace("Second line here.", "Second line, edited."),
+                                             encoding="utf-8")
+    install_mocks()
+    tts_episode.main()
+    check("tts_episode: a rerun batches only the edited segment",
+          calls["batches"] == [1] and calls["synth"] == ["a1-s2"], calls)
+    install_mocks()
+    tts_episode.main()
+    check("tts_episode: nothing stale means no tts_clone call at all", calls["batches"] == [], calls)
+
     # 5e. a crash DURING synthesis (tts_clone/ffmpeg/ffprobe failure, Ctrl-C) for a legacy
     #     manifest entry (no text_hash) must not corrupt the next run's adoption check. The
     #     bug: writing the new text to <id>.txt BEFORE synth used to make a post-crash rerun
@@ -316,7 +338,7 @@ with tempfile.TemporaryDirectory() as d:
     (ep_crash / "audio" / "manifest.json").write_text(json.dumps(
         {"a1-s1": {"wav": "audio/a1-s1.wav", "duration": 5.0, "words": 7}}), encoding="utf-8")
 
-    def mock_synth_native_crash(txt_path, wav_path, ext):
+    def mock_synth_native_crash(pairs, ext):
         # simulates tts_clone dying mid-segment, same as the real synth_native's sys.exit
         sys.exit("[test_audio] simulated tts_clone crash")
 
