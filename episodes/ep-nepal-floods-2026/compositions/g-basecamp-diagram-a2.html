@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-basecamp-diagram-a2 (A2 beat, 4.308 s): the FIRST BUILD of the g-basecamp-diagram scene. Line: "On Himlung Himal,
+     that snow sat above a camp full of workers." Brief: mg_specs/g-basecamp-diagram-a2.md. SCHEMATIC, NOT TO SCALE.
+     REDO 29 Sep 26: same background (radial #1a2230 -> #060a10) and the same massif / tent geometry as g-basecamp-diagram
+     (massif M700,150 L1170,830 L230,830; tents base y 828 at x 330-679), drawn through ONE static group that centres the
+     massif at x 960 and scales it 1.2: screen = (120 + 1.2 x, -96 + 1.2 y) -> apex (960,84), base y 900, x 396-1524.
+     "snow" @1.94: a thick cornice slab hangs above the base-camp site, labelled SNOW in open air; "camp full of workers"
+     @2.94-3.56: tents + 16 worker dots pop, labelled BASE CAMP. No rope, no Camp 1 here. Ambient: cornice sways +-2 px,
+     snow flecks drift, slow push. Cues from retime-sheet.md (host 364.255+4.308 on the sheet). -->
+<template>
+<style>
+  #gbda2-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 40% 40%, #1a2230 0%, #060a10 78%); }
+  .gbda2-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gbda2-lab { font-family:Arial, sans-serif; font-weight:700; font-size:30px; letter-spacing:3px; fill:#dfe7ee; }
+</style>
+<div id="gbda2-root" data-composition-id="g-basecamp-diagram-a2" data-width="1920" data-height="1080" data-duration="4.308">
+  <svg class="gbda2-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="gbda2-rockgrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a5560"/><stop offset="1" stop-color="#2a3644"/></linearGradient>
+    </defs>
+    <g id="gbda2-cam">
+      <!-- static placement only; nothing inside is moved by a transform attribute -->
+      <g transform="translate(120,-96) scale(1.2)">
+        <rect id="gbda2-floor" x="-100" y="830" width="1600" height="60" fill="#15202b"/>
+        <path id="gbda2-massif" d="M700,150 L1170,830 L230,830 Z" fill="url(#gbda2-rockgrad)" stroke="#5a768f" stroke-width="2"/>
+        <path id="gbda2-snowcap" d="M700,150 L790,330 L610,330 Z" fill="#dfe7ee" opacity="0.9"/>
+        <line x1="-100" y1="830" x2="1500" y2="830" stroke="#93a3b2" stroke-width="2" opacity="0.5"/>
+        <g id="gbda2-cornice">
+          <path d="M640,300 L700,250 L712,290 L620,372 L540,392 L520,380 Z" fill="#dfe7ee" fill-opacity="0.9" stroke="#f2f5f8" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M530,388 L524,400 M548,386 L542,398 M566,382 L560,394 M584,378 L578,390 M602,374 L596,386 M620,366 L614,378" stroke="#93a3b2" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <path id="gbda2-tent1" d="M330,828 L350,796 L370,828 Z" fill="#d8a13a"/>
+        <path id="gbda2-tent2" d="M385,828 L405,796 L425,828 Z" fill="#d8a13a"/>
+        <path id="gbda2-tent3" d="M440,828 L460,796 L480,828 Z" fill="#d8a13a"/>
+        <path id="gbda2-tent4" d="M495,828 L515,796 L535,828 Z" fill="#d8a13a"/>
+        <path id="gbda2-tent5" d="M550,828 L570,796 L590,828 Z" fill="#d8a13a"/>
+        <path id="gbda2-kitchen" d="M605,828 L618,796 L642,780 L666,796 L679,828 Z" fill="#e8c56a" stroke="#d8a13a" stroke-width="2"/>
+        <g id="gbda2-dots"></g>
+      </g>
+      <path id="gbda2-leader" d="M726,322 L752,350" stroke="#dfe7ee" stroke-width="2"/>
+      <text class="gbda2-lab" id="gbda2-snowlab" x="720" y="316" text-anchor="end">SNOW</text>
+      <text class="gbda2-lab" id="gbda2-camplab" x="726" y="950" text-anchor="middle">BASE CAMP</text>
+      <g id="gbda2-flecks"></g>
+    </g>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-basecamp-diagram-a2", P = "#gbda2-";
+  /* cues from retime-sheet.md word times */
+  const CUES = {
+    snow: 1.94, /* CUE "snow" @1.94 */
+    camp: 2.94  /* CUE "camp" @2.94, "full of workers." runs to 3.56 */
+  };
+  const DUR = 4.308;
+  const tl = gsap.timeline({ paused: true });
+  const NS = "http://www.w3.org/2000/svg";
+
+  /* 16 worker dots on the valley floor in front of the tents (massif coords, 22 px apart) */
+  const dg = document.getElementById("gbda2-dots"), DOTS = [];
+  for (let i = 0; i < 16; i++) {
+    const c = document.createElementNS(NS, "circle");
+    c.setAttribute("cx", 336 + i * 22); c.setAttribute("cy", 842); c.setAttribute("r", 5); c.setAttribute("fill", "#f2f5f8");
+    dg.appendChild(c); DOTS.push(c);
+  }
+  /* snow flecks (screen px, deterministic) */
+  const fg = document.getElementById("gbda2-flecks"), FLECKS = [];
+  let s = 11;
+  const rnd = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+  for (let i = 0; i < 26; i++) {
+    const c = document.createElementNS(NS, "circle");
+    c.setAttribute("cx", Math.round(200 + rnd() * 1560)); c.setAttribute("cy", Math.round(40 + rnd() * 700));
+    c.setAttribute("r", (1.8 + rnd() * 1.8).toFixed(1)); c.setAttribute("fill", "#dfe7ee"); c.setAttribute("opacity", "0.7");
+    fg.appendChild(c); FLECKS.push(c);
+  }
+  const TENTS = [P + "tent1", P + "tent2", P + "tent3", P + "tent4", P + "tent5", P + "kitchen"];
+
+  /* ---- initial state ---- */
+  tl.set([P + "cornice", P + "snowlab", P + "leader", P + "camplab"].concat(TENTS, DOTS), { autoAlpha: 0 }, 0);
+
+  /* ---- whole window: slow push + flecks drifting down-left ---- */
+  tl.fromTo(P + "cam", { scale: 1, svgOrigin: "960 540" }, { scale: 1.03, duration: DUR, ease: "none" }, 0);
+  tl.fromTo([P + "massif", P + "snowcap", P + "floor"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 0);
+  tl.fromTo(FLECKS, { x: 0, y: 0 }, { x: -40, y: 180, duration: DUR, ease: "none" }, 0);
+
+  /* ---- "snow" @1.94: the cornice settles in above the camp site, labelled in open air ---- */
+  tl.fromTo(P + "cornice", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.snow - 0.14);
+  tl.fromTo([P + "snowlab", P + "leader"], { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, CUES.snow + 0.1);
+  tl.fromTo(P + "cornice", { x: 0 }, { x: 2, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, CUES.snow + 0.31);  /* sways to 4.25 */
+
+  /* ---- "a camp full of workers" 2.94-3.56: tents, then 16 workers pop; BASE CAMP ---- */
+  TENTS.forEach((t, i) => {
+    const ox = i < 5 ? 350 + i * 55 : 642;
+    tl.fromTo(t, { autoAlpha: 0, scale: 0.2, svgOrigin: ox + " 828" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2.2)" }, CUES.camp - 0.1 + i * 0.06);
+  });
+  tl.fromTo(DOTS, { autoAlpha: 0, scale: 0 , transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "back.out(2.5)", stagger: 0.03 }, CUES.camp + 0.1);
+  tl.fromTo(P + "camplab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, CUES.camp + 0.3);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

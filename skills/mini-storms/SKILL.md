@@ -42,7 +42,7 @@ Teardowns + NexLev data: `references/mini-storms/teardowns/README.md`, `referenc
 | 6. Compose | 40 min | `index.html` from the breaking template set; red popfigs on every number/place/date, every overlay start resolved from `audio/*.words.json` cues (never estimated seconds; build fails on an unmatched cue) |
 | 7. Static QC | 15 min | `python3 scripts/run_gates.py episodes/ms-<slug>` + `node scripts/freeze_scan.mjs episodes/ms-<slug>`, then the settle-frame pass in `references/mg-quickref.md` "Verify" (new/changed comps only, one subagent reader, two fix rounds max) |
 | 8. Render | 25 min | `scripts\render.cmd ms-<slug> draft` hidden via run_hidden.vbs → owner preview → `full` |
-| 9. Deliverables | 10 min | `master_deliverables.py --hevc`, metadata.md, thumbnail still candidates, private upload |
+| 9. Deliverables | 10 min | `master_deliverables.py` (finals to main, other renders deleted; CLAUDE.md step 7), metadata.md, thumbnail still candidates, private upload |
 
 **The tracker moves with the work.** Every phase change (script, TTS, checks, preview launched/done, full render launched/done, master in the main checkout, upload) runs `python3 ops/build_tracker.py set <slug> <phase> <status> "note"` in the same turn (a new video first gets `python3 ops/build_tracker.py add <slug> <lane> "<DD Mon YY>" "<title>"`), then commit + push. A status reply naming a phase the tracker page does not show is wrong (owner 2026-09-15: three full renders and masters shipped while `ops/tracker.html` still showed 06:28 previews).
 
@@ -80,8 +80,8 @@ Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was c
   PAYOFF (open loop closed) → WARM CLOSE (preparedness, never fearmongering) → subscribe line.
 - **Retention architecture is a hard rule from #4 on (FORMAT.md "Retention architecture", owner 2026-09-11):** the
   voice never narrates what the MG shows (dates, clock times, counts go on screen, the voice says the human line);
-  stakes order not chronology; one open question at all times and every chapter ends by asking the next; no
-  roadmap or structure announcements; hook confirms the click with a specific present-tense image, never a
+  stakes order not chronology; one open question at all times and every chapter ends by asking the next, then one affirming line that re-hooks it (owner 4 Oct 26, FORMAT.md rule 3); no
+  roadmap or structure announcements (exception: hook callbacks, script-scaling.md 'open-loop registry', owner 4 Oct 26); hook confirms the click with a specific present-tense image, never a
   proper noun the audience does not know; one named person per tragedy; fact dumps become a clock / scorecard /
   equation card; "and you" by minute two; "not happening" is one line in the payoff; the ending lands the thesis
   before the END CTA spine; chain seams with but / because / which means. Score the draft script on stakes per
@@ -130,7 +130,7 @@ Priority order, per clip:
 `library/mini-storms/` holds the template compositions (create on the first run, then reuse):
 `clip-hold`, `still-kenburns`, `vertical-embed-credit`, `popfig-red`, `breaking-bug`
 (lower-third kicker), `overlay-vignette-grain`, `stat-card`. Copy → retune per cut. Music: one
-tense bed from `assets/sfx/` (score-act1.mp3 exists) at −24 LUFS under narration, duck 6 dB on
+tense bed from `assets/sfx/` (score-act1.mp3 exists) level per CLAUDE.md "Narration sits above every bed" (Two lanes section), duck 6 dB on
 popfigs. Cut cadence from FORMAT.md: median shot 3.5–4.5 s, hook ≤4.2 s, plus one labelled
 real data-feed hold (USGS/NOAA/NASA loop, 20–40 s) every 2–3 min as a credibility anchor.
 JS/WAAPI only. Red popfig (Abril, text-shadow, ≤3 words) on every date / place / number /

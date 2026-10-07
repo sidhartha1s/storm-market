@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-monsoon-calendar-a6 (A6 return): full-frame, split. TOP BAND (y 80-340): a zoomed calendar Sept 15 - Oct 31
+     (37.5 px/day from x 96) with the TODAY · SEPT 29 pin and two lanes: ANNAPURNA TREKS (red hatched 3-day pause Sept 26-28,
+     then REOPENED) and CLIMBING · HIMLUNG (amber bar across October). LOWER LEFT (y 382-979): a real map of the Annapurna
+     region, 10.8 px per mile (X = (lon-84.5)*60.77 mi, Y = -(lat-28.2)*69.093 mi, origin 818,941.7): trails light up, the
+     Kali Gandaki valley road draws with trekker dots walking it, the Himlung pin lands. LOWER RIGHT: Himlung base camp
+     close-up: 5 tents pop on "crews", a glass tag on "Himlung", a TENTS UP · DAY 1-5 counter on "tents had been up for days".
+     Facts: factcheck-C#22 (Annapurna permits reopened after a 3-day rain pause), -C#23 (Himlung-type climbing season runs
+     through October, crews already deployed). Map data: river + border from g-map-kali-gandaki-ht, road from
+     g-map-kali-gandaki-a1b (OSM ODbL, Natural Earth); trail lines through the named towns (approximate, not path geometry).
+     Redo 29 Sep 26 (Opus): replaces the thin strip in the lower third with the top two thirds empty for 18 s. Two audit
+     fixes conflicted on layout (calendar top + map below vs ridge top + calendar below); the owner-confirmed one (calendar
+     top, map below) won, with the second one's zoomed Sept 15 - Oct 31 scale, lanes, TODAY pin, tents and day counter.
+     Cues: retime-sheet g-monsoon-calendar-a6 (host 714.062+18.090, local seconds). Duration 18.09 s. -->
+<template>
+<style>
+  #gmca6-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .gmca6-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gmca6-lane { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:4px; fill:#93a3b2; }
+  .gmca6-in { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:4px; fill:#04070c; }
+  .gmca6-ax { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .gmca6-today { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:30px; fill:#f2f5f8; }
+  .gmca6-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; fill:#dfe7ee;
+    paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .gmca6-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:30px; letter-spacing:2px;
+    paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .gmca6-glass { position:absolute; box-sizing:border-box; border-radius:16px; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14); white-space:nowrap; }
+  .gmca6-tag { left:1330px; top:780px; height:58px; padding:0 20px; display:flex; align-items:center;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:30px; letter-spacing:2px; color:#e8c56a; }
+  .gmca6-count { position:absolute; left:1000px; top:928px; font-family:'Courier New', monospace; font-weight:700; font-size:52px;
+    line-height:1; color:#f2f5f8; white-space:nowrap; }
+  .gmca6-src { position:absolute; left:96px; bottom:54px; font-weight:700; font-size:19px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="gmca6-root" data-composition-id="g-monsoon-calendar-a6" data-width="1920" data-height="1080" data-duration="18.09">
+  <svg class="gmca6-svg" id="gmca6-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="gmca6-hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="12" height="12" fill="#8e2020"/><line x1="0" y1="0" x2="0" y2="12" stroke="#e74c3c" stroke-width="5"/>
+      </pattern>
+      <linearGradient id="gmca6-rock" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a5560"/><stop offset="1" stop-color="#2a3644"/></linearGradient>
+      <clipPath id="gmca6-mapclip"><rect x="110" y="382" width="780" height="597"/></clipPath>
+    </defs>
+
+    <!-- ================= TOP BAND: calendar, x(d) = 96 + 37.5 d, d = days after Sept 15 ================= -->
+    <text class="gmca6-lane" id="gmca6-l1lab" x="96" y="102">ANNAPURNA TREKS</text>
+    <rect id="gmca6-l1base" x="96" y="112" width="1725" height="40" rx="6" fill="#15202b" stroke="#2a3644" stroke-width="2"/>
+    <rect id="gmca6-open" x="621" y="112" width="1200" height="40" rx="6" fill="#7fb2e5"/>
+    <text class="gmca6-in" id="gmca6-t-open" x="664" y="141">REOPENED</text>
+    <rect id="gmca6-pause" x="508.5" y="112" width="112.5" height="40" fill="url(#gmca6-hatch)" stroke="#e74c3c" stroke-width="2"/>
+    <text class="gmca6-lane" id="gmca6-t-pause" x="508" y="102" style="fill:#e74c3c">3-DAY PAUSE &#183; SEPT 26-28</text>
+
+    <text class="gmca6-lane" id="gmca6-l2lab" x="96" y="190">CLIMBING &#183; HIMLUNG</text>
+    <rect id="gmca6-l2base" x="96" y="200" width="1725" height="40" rx="6" fill="#15202b" stroke="#2a3644" stroke-width="2"/>
+    <rect id="gmca6-climb" x="696" y="200" width="1125" height="40" rx="6" fill="#d8a13a"/>
+    <text class="gmca6-in" id="gmca6-t-climb" x="716" y="229">CLIMBING SEASON</text>
+
+    <g id="gmca6-axis">
+      <line x1="96" y1="262" x2="1821" y2="262" stroke="#5a768f" stroke-width="3"/>
+      <g id="gmca6-dayticks" stroke="#3d5366" stroke-width="2"></g>
+      <line x1="96" y1="250" x2="96" y2="274" stroke="#93a3b2" stroke-width="3"/>
+      <line x1="696" y1="250" x2="696" y2="274" stroke="#93a3b2" stroke-width="3"/>
+      <line x1="1821" y1="250" x2="1821" y2="274" stroke="#93a3b2" stroke-width="3"/>
+      <text class="gmca6-ax" x="96" y="296">SEPT 15</text>
+      <text class="gmca6-ax" x="696" y="296" text-anchor="middle">OCT 1</text>
+      <text class="gmca6-ax" x="1821" y="296" text-anchor="end">OCT 31</text>
+    </g>
+    <!-- TODAY pin at Sept 29 (d = 14.5) -->
+    <g id="gmca6-pin">
+      <line x1="640" y1="106" x2="640" y2="262" stroke="#e74c3c" stroke-width="4"/>
+      <circle cx="640" cy="262" r="9" fill="#e74c3c" stroke="#04070c" stroke-width="2"/>
+    </g>
+    <circle id="gmca6-pinring" cx="640" cy="262" r="9" fill="none" stroke="#e74c3c" stroke-width="3"/>
+    <text class="gmca6-today" id="gmca6-t-today" x="640" y="336" text-anchor="middle">TODAY &#183; SEPT 29</text>
+
+    <!-- ================= LOWER LEFT: Annapurna region map ================= -->
+    <g clip-path="url(#gmca6-mapclip)">
+      <g id="gmca6-mapbase">
+        <g transform="translate(818,941.7) scale(10.8)">
+          <path id="gmca6-kg" fill="none" stroke="#5a768f" stroke-width="0.28" stroke-linecap="round" stroke-linejoin="round" d="M-4.7,31.8 L-6.0,29.4 L-6.6,28.8 L-7.7,28.9 L-9.2,30.3 L-9.9,30.6 L-10.9,30.4 L-11.1,30.1 L-11.3,28.9 L-12.1,28.4 L-12.5,27.8 L-12.7,25.8 L-13.0,25.1 L-14.1,24.5 L-16.7,24.0 L-22.2,23.9 L-24.8,23.3 L-26.0,22.6 L-28.1,20.7 L-29.4,20.2 L-30.9,20.3 L-33.6,21.9 L-35.0,22.2 L-38.3,21.6 L-41.0,22.4 L-41.9,21.9 L-43.6,20.1 L-44.6,19.5 L-46.0,19.3 L-51.0,19.4 L-52.5,20.1 L-54.7,19.3 L-55.4,19.3 L-56.2,18.9 L-58.9,18.8 L-60.7,18.5 L-61.4,18.6 L-62.0,19.3 L-63.9,18.0 L-64.5,17.4 L-64.1,16.5 L-63.2,16.0 L-62.2,16.0 L-60.3,16.5 L-58.1,16.1 L-56.2,15.1 L-55.3,13.6 L-56.2,11.7 L-57.6,11.5 L-58.0,10.0 L-53.6,5.1 L-52.3,1.5 L-50.3,-1.1 L-52.1,-2.1 L-53.3,-3.4 L-55.0,-7.2 L-56.6,-10.2 L-56.5,-12.1 L-55.7,-12.5 L-54.7,-13.8 L-54.6,-14.4 L-54.8,-14.9 L-54.7,-15.9 L-54.0,-16.5 L-53.0,-17.9 L-52.6,-18.9 L-51.8,-19.7 L-51.1,-21.2 L-51.2,-21.5 L-51.0,-22.3 L-51.5,-22.7 L-51.5,-23.3 L-51.9,-23.8 L-52.0,-24.3 L-52.5,-24.7 L-52.4,-25.4 L-51.8,-26.5 L-51.8,-27.0 L-52.0,-27.4 L-51.7,-27.8 L-51.8,-28.4 L-52.4,-29.1 L-53.5,-29.6 L-53.8,-30.2 L-55.0,-30.9 L-55.1,-32.4 L-53.9,-33.2 L-53.1,-34.4 L-51.6,-35.1 L-51.3,-35.5 L-51.0,-35.6 L-50.0,-36.4 L-49.9,-37.3 L-49.6,-37.3 L-49.4,-37.9 L-48.9,-38.2 L-48.7,-39.0 L-48.0,-39.3 L-47.7,-39.8 L-47.3,-39.9 L-46.8,-40.4 L-45.5,-40.7 L-44.8,-41.5 L-44.8,-42.0 L-44.4,-42.4 L-44.5,-42.5 L-44.0,-42.9 L-43.7,-44.0 L-43.3,-44.6 L-43.4,-45.0 L-43.2,-45.9 L-42.8,-46.2 L-43.1,-46.8 L-42.6,-47.4 L-42.7,-48.0 L-41.7,-48.8 L-41.7,-49.5 L-40.8,-50.3 L-40.6,-50.8 L-40.9,-51.0 L-40.5,-51.5 L-40.8,-52.2 L-40.6,-52.2 L-40.5,-53.1 L-39.8,-53.3 L-39.2,-53.2 L-39.0,-53.2 L-39.0,-53.8 L-38.7,-54.0 L-38.1,-54.0 L-36.7,-54.4"/>
+          <path id="gmca6-border" fill="none" stroke="#7fb2e5" stroke-opacity="0.5" stroke-width="2.5" stroke-dasharray="10 6" vector-effect="non-scaling-stroke" d="M-17.8,-51.2 L-16.1,-48.4 L-13.0,-46.6 L-8.9,-45.7 L-8.1,-45.4 L-7.5,-44.8 L-6.5,-43.1 L-4.7,-41.4 L-3.8,-38.2 L-3.0,-36.9 L-1.5,-36.4 L-0.1,-36.5 L3.1,-35.0 L6.5,-34.4"/>
+        </g>
+        <path id="gmca6-pk-an" d="M372,632 L386,656 L358,656 Z" fill="#dfe7ee" stroke="#04070c" stroke-width="2"/>
+        <path id="gmca6-pk-dh" d="M155,557 L169,581 L141,581 Z" fill="#dfe7ee" stroke="#04070c" stroke-width="2"/>
+        <circle cx="483" cy="934" r="6" fill="#93a3b2" stroke="#04070c" stroke-width="2"/>
+        <circle cx="313" cy="509" r="6" fill="#93a3b2" stroke="#04070c" stroke-width="2"/>
+      </g>
+      <!-- Annapurna trails: the Circuit (Besisahar - Manang - Thorong La - Muktinath) and the ABC trail from Pokhara -->
+      <path id="gmca6-circuit" d="M739,919 L733,800 L726,695 L647,680 L560,640 L503,591 L451,501 L406,481" fill="none" stroke="#e8c56a" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="round"/>
+      <path id="gmca6-abc" d="M483,934 L450,860 L430,780 L411,695" fill="none" stroke="#e8c56a" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="round"/>
+      <!-- Kali Gandaki valley road (Pokhara - Beni - Jomsom - Muktinath), a1b route re-projected -->
+      <g transform="translate(818,941.7) scale(1.08) translate(-1100,-690)">
+        <path id="gmca6-road" d="M789.4,684.2 L607.7,669.3 L553.0,643.9 L532.7,586.4 L527.3,586.6 L528.3,566.4 L538.4,559.2 L545.4,549.5 L546.1,527.8 L560.3,512.3 L568.4,496.9 L576.3,488.3 L579.4,483.1 L582.1,468.9 L579.1,465.6 L573.7,450.4 L569.6,447.9 L567.8,444.2 L569.4,433.4 L573.8,425.5 L572.7,415.6 L574.9,409.9 L571.8,405.3 L561.5,400.4 L557.4,394.7 L544.0,385.3 L541.9,380.5 L541.9,363.7 L545.1,359.3 L556.2,351.8 L564.9,340.7 L572.5,337.4 L589.8,325.4 L595.7,313.1 L604.2,303.6 L604.9,298.5 L607.9,294.7 L629.4,279.6 L718.1,263.6" fill="none" stroke="#dfe7ee" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="gmca6-walkers" d="M789.4,684.2 L607.7,669.3 L553.0,643.9 L532.7,586.4 L527.3,586.6 L528.3,566.4 L538.4,559.2 L545.4,549.5 L546.1,527.8 L560.3,512.3 L568.4,496.9 L576.3,488.3 L579.4,483.1 L582.1,468.9 L579.1,465.6 L573.7,450.4 L569.6,447.9 L567.8,444.2 L569.4,433.4 L573.8,425.5 L572.7,415.6 L574.9,409.9 L571.8,405.3 L561.5,400.4 L557.4,394.7 L544.0,385.3 L541.9,380.5 L541.9,363.7 L545.1,359.3 L556.2,351.8 L564.9,340.7 L572.5,337.4 L589.8,325.4 L595.7,313.1 L604.2,303.6 L604.9,298.5 L607.9,294.7 L629.4,279.6 L718.1,263.6" fill="none" stroke="#e8c56a" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 34"/>
+      </g>
+    </g>
+    <text class="gmca6-lab" id="gmca6-t-tibet" x="700" y="424" style="fill:#93a3b2; font-size:22px; letter-spacing:6px;">TIBET</text>
+    <text class="gmca6-lab" id="gmca6-t-an" x="372" y="684" text-anchor="middle">Annapurna I</text>
+    <text class="gmca6-lab" id="gmca6-t-pok" x="496" y="942">Pokhara</text>
+    <text class="gmca6-lab" id="gmca6-t-jom" x="300" y="516" text-anchor="end">Jomsom</text>
+    <text class="gmca6-big" id="gmca6-t-trails" x="560" y="610" fill="#e8c56a" style="font-size:26px;">ANNAPURNA TRAILS</text>
+    <text class="gmca6-big" id="gmca6-t-road" x="120" y="446" fill="#dfe7ee">KALI GANDAKI ROAD</text>
+    <!-- Himlung pin (28.772 N, 84.422 E) -->
+    <circle id="gmca6-hring" cx="767" cy="515" r="10" fill="none" stroke="#e8c56a" stroke-width="3"/>
+    <circle id="gmca6-hpin" cx="767" cy="515" r="10" fill="#e8c56a" stroke="#04070c" stroke-width="2"/>
+    <text class="gmca6-big" id="gmca6-t-him" x="786" y="504" fill="#e8c56a">HIMLUNG</text>
+    <path id="gmca6-lead" d="M778,528 L1328,522" fill="none" stroke="#e8c56a" stroke-width="2" stroke-dasharray="8 8"/>
+
+    <!-- ================= LOWER RIGHT: Himlung base camp close-up (schematic) ================= -->
+    <g id="gmca6-camp">
+      <path d="M960,905 L1150,700 L1250,640 L1330,520 L1400,430 L1450,470 L1530,560 L1640,660 L1760,760 L1824,790 L1824,905 Z" fill="url(#gmca6-rock)" stroke="#5a768f" stroke-width="2"/>
+      <path d="M1330,520 L1400,430 L1450,470 L1426,486 L1402,468 L1372,500 Z" fill="#dfe7ee"/>
+      <line x1="960" y1="905" x2="1824" y2="905" stroke="#5a768f" stroke-width="3"/>
+    </g>
+    <g id="gmca6-tents" fill="#d8a13a" stroke="#04070c" stroke-width="2">
+      <path id="gmca6-tn0" d="M1470,903 L1492,869 L1514,903 Z"/>
+      <path id="gmca6-tn1" d="M1524,903 L1546,869 L1568,903 Z"/>
+      <path id="gmca6-tn2" d="M1578,903 L1600,869 L1622,903 Z"/>
+      <path id="gmca6-tn3" d="M1632,903 L1654,869 L1676,903 Z"/>
+      <path id="gmca6-tn4" d="M1686,903 L1708,869 L1730,903 Z"/>
+    </g>
+  </svg>
+  <div class="gmca6-glass gmca6-tag" id="gmca6-tag">HIMLUNG BASE CAMP</div>
+  <div class="gmca6-count" id="gmca6-count">TENTS UP &#183; DAY <span id="gmca6-day">1</span></div>
+  <div class="gmca6-src" id="gmca6-src">Map data: OpenStreetMap, Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-monsoon-calendar-a6", P = "#gmca6-";
+  const DUR = 18.09;
+  const CUES = {
+    permits: 0.52,     /* "Trekking permits" @0.00-0.52 */
+    trails: 1.74,      /* "Annapurna trails" @1.22-1.74 */
+    reopened: 2.08,    /* "reopened" @2.08-2.56 */
+    pause: 3.16,       /* "three-day pause" @3.16-3.56 */
+    kg: 7.30,          /* "Kaligandaki Valley" @7.30-7.90 */
+    climbing: 9.18,    /* "climbing season" @9.18 */
+    himlung1: 10.68,   /* "Himlung" @10.68 */
+    through: 11.36,    /* "runs through October" @11.36-11.70 */
+    crews: 12.72,      /* "crews" @12.72 */
+    himlung2: 15.18,   /* "At Himlung" @15.18 */
+    tents: 16.26,      /* "the tents had been up for days" @16.26-17.22 */
+    days: 17.22,
+    exit: 17.35
+  };
+  const tl = gsap.timeline({ paused: true });
+  const NS = "http://www.w3.org/2000/svg";
+  const len = (id) => Math.ceil(document.querySelector(P + id).getTotalLength()) + 1;
+
+  /* day ticks on the axis, one per day Sept 15 - Oct 31 */
+  const dt = document.querySelector(P + "dayticks");
+  for (let d = 1; d < 46; d++) {
+    const l = document.createElementNS(NS, "line"), x = 96 + 37.5 * d;
+    l.setAttribute("x1", x); l.setAttribute("x2", x); l.setAttribute("y1", 256); l.setAttribute("y2", 268); dt.appendChild(l);
+  }
+  const ROAD = len("road"), CIRC = len("circuit"), ABC = len("abc"), LEAD = len("lead");
+  const TENTS = [0, 1, 2, 3, 4].map((i) => P + "tn" + i);
+  const day = { v: 1 };
+
+  /* ---- initial state ---- */
+  tl.set([P + "l1lab", P + "l1base", P + "l2lab", P + "l2base", P + "axis", P + "pin", P + "pinring", P + "t-today",
+    P + "t-open", P + "t-pause", P + "t-climb", P + "mapbase", P + "t-tibet", P + "t-an", P + "t-pok", P + "t-jom", P + "t-trails", P + "t-road",
+    P + "hring", P + "hpin", P + "t-him", P + "camp", P + "tag", P + "count", P + "src", P + "walkers"], { autoAlpha: 0 }, 0);
+  tl.set([P + "open", P + "climb"], { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P + "pause", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P + "road", { strokeDasharray: ROAD, strokeDashoffset: ROAD }, 0);
+  tl.set(P + "lead", { strokeDasharray: LEAD, strokeDashoffset: LEAD }, 0);
+  tl.set([P + "circuit", P + "abc"], { autoAlpha: 0 }, 0);
+  tl.set(TENTS, { autoAlpha: 0, scale: 0, transformOrigin: "50% 100%" }, 0);
+
+  /* ---- open "Trekking permits": calendar frame, TODAY pin, map base, camp silhouette ---- */
+  tl.fromTo([P + "axis", P + "l1base", P + "l2base"], { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.08 }, 0);
+  tl.fromTo([P + "l1lab", P + "l2lab"], { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out", stagger: 0.1 }, 0.15);
+  tl.fromTo(P + "pin", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "bounce.out" }, 0.3);
+  tl.fromTo(P + "t-today", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.5);
+  tl.fromTo(P + "pinring", { autoAlpha: 0.9, attr: { r: 9 } }, { autoAlpha: 0, attr: { r: 30 }, duration: 1.2, ease: "power2.out", repeat: 12, repeatDelay: 0.1 }, 0.8);
+  tl.fromTo(P + "mapbase", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+  tl.fromTo([P + "t-tibet", P + "t-an", P + "t-pok", P + "t-jom"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, stagger: 0.08 }, 0.6);
+  tl.fromTo(P + "camp", { autoAlpha: 0, x: 40 }, { autoAlpha: 0.55, x: 0, duration: 0.7, ease: "power3.out" }, 0.4);
+  tl.to(P + "src", { autoAlpha: 1, duration: 0.4 }, 0.8);
+
+  /* ---- "Annapurna trails": the trails light up ---- */
+  tl.set([P + "circuit", P + "abc"], { autoAlpha: 1 }, CUES.trails - 0.15);
+  tl.fromTo(P + "circuit", { strokeDashoffset: CIRC }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, CUES.trails - 0.15);
+  tl.fromTo(P + "abc", { strokeDashoffset: ABC }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, CUES.trails - 0.05);
+  tl.fromTo(P + "t-trails", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.trails);
+  /* trails keep "walking": dash march (finite) */
+  tl.to([P + "circuit", P + "abc"], { strokeDashoffset: "-=90", duration: 6.5, ease: "none" }, CUES.trails + 0.7);
+
+  /* ---- "reopened": the lane turns open after Sept 28 ---- */
+  tl.to(P + "open", { scaleX: 1, duration: 0.5, ease: "power3.out" }, CUES.reopened - 0.05);
+  tl.fromTo(P + "t-open", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, CUES.reopened + 0.3);
+  /* "after a three-day pause": red hatched block Sept 26-28, label */
+  tl.to(P + "pause", { scaleX: 1, duration: 0.4, ease: "power3.out" }, CUES.pause - 0.1);
+  tl.fromTo(P + "t-pause", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, CUES.pause + 0.25);
+
+  /* ---- "roads through the Kaligandaki Valley": the road draws, trekker dots walk it ---- */
+  tl.to(P + "road", { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, CUES.kg - 0.15);
+  tl.fromTo(P + "t-road", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.kg + 0.3);
+  tl.to(P + "walkers", { autoAlpha: 1, duration: 0.3 }, CUES.kg + 0.7);
+  tl.fromTo(P + "walkers", { strokeDashoffset: 0 }, { strokeDashoffset: -34, duration: 1.0, ease: "none", repeat: 8 }, CUES.kg + 0.7);
+
+  /* ---- "The climbing season on peaks like Himlung runs through October" ---- */
+  tl.to(P + "camp", { autoAlpha: 1, duration: 0.5 }, CUES.climbing);
+  tl.fromTo(P + "hpin", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "bounce.out" }, CUES.himlung1 - 0.15);
+  tl.fromTo(P + "t-him", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, CUES.himlung1);
+  tl.fromTo(P + "hring", { autoAlpha: 0.9, attr: { r: 10 } }, { autoAlpha: 0, attr: { r: 34 }, duration: 1.1, ease: "power2.out", repeat: 5, repeatDelay: 0.1 }, CUES.himlung1 + 0.3);
+  tl.to(P + "lead", { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, CUES.himlung1 + 0.25);
+  tl.to(P + "climb", { scaleX: 1, duration: 0.45, ease: "power3.out" }, CUES.through - 0.1);
+  tl.fromTo(P + "t-climb", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, CUES.through + 0.25);
+
+  /* ---- "crews are already on those mountains": five tents pop at the base ---- */
+  tl.to(TENTS, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2.4)", stagger: 0.1 }, CUES.crews - 0.1);
+  /* ---- "At Himlung": the tent cluster gets its tag ---- */
+  tl.fromTo(P + "tag", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.himlung2 - 0.1);
+  tl.to(TENTS, { y: -4, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3, stagger: 0.08 }, CUES.himlung2 + 0.4);
+  /* ---- "the tents had been up for days": TENTS UP · DAY 1 -> 5 ---- */
+  tl.fromTo(P + "count", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, CUES.tents - 0.15);
+  tl.to(day, { v: 5, duration: CUES.days - CUES.tents, ease: "none", onUpdate: function () {
+    const e = document.getElementById("gmca6-day"); if (e) e.textContent = String(Math.max(1, Math.min(5, Math.floor(day.v + 0.001))));
+  } }, CUES.tents);
+
+  /* ---- exit 17.35: fade-through of the full-frame scene, done by D - 0.14 ---- */
+  tl.to([P + "svg", P + "tag", P + "count", P + "src"], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, CUES.exit);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

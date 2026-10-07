@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-oso-map (A2): Washington map -> push into Oso -> SCHEMATIC Oso slope profile (collapse, rain, 43 in the rail) -> split with
+     the Kali Gandaki wall for the shared recipe (loose glacial material, steep slope, full of water). No photo, no photo slot.
+     Brief: mg_specs/g-oso-map.md (facts factcheck-B rows 9-10: USGS, 43 lives, intense three-week rainfall). Map 2.6 px/mile. -->
+<template>
+<style>
+  #g-oso-map-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 35% 50%, #0b1016 0%, #030507 78%); }
+  .oso-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .oso-lab { font-family:Arial, sans-serif; font-weight:700; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .oso-dlab { font-family:Arial, sans-serif; font-weight:700; letter-spacing:3px; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .oso-rail { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box; pointer-events:none;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+  .oso-eb { position:absolute; left:1270px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; white-space:nowrap; text-transform:uppercase; }
+  .oso-row { position:absolute; left:1270px; width:554px; }
+  .oso-pf { font-family:'AbrilFig', Georgia, serif; font-size:64px; line-height:1.1; color:#d0121f; white-space:nowrap;
+    text-shadow:0 2px 14px rgba(0,0,0,.85); }
+  .oso-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:96px; line-height:1; color:#f2f5f8; white-space:nowrap; }
+  .oso-rlab { margin-top:44px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; white-space:nowrap; text-transform:uppercase; }
+  .oso-src { position:absolute; left:96px; bottom:54px; font-size:19px; font-weight:700; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  .oso-reb { position:absolute; left:0; right:0; top:104px; text-align:center; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  .oso-chip { position:absolute; left:0; right:0; margin:0 auto; width:max-content; padding:10px 30px; border-radius:28px;
+    background:rgba(10,16,24,0.55); border:1px solid rgba(255,255,255,0.14);
+    font-size:30px; font-weight:700; letter-spacing:3px; color:#f2f5f8; white-space:nowrap; }
+</style>
+<div id="g-oso-map-root" data-composition-id="g-oso-map" data-width="1920" data-height="1080" data-duration="22.246">
+  <svg class="oso-svg" viewBox="0 0 1920 1080">
+    <g id="g-oso-map-mapscene">
+    <g id="g-oso-map-cam">
+    <g transform="translate(640,540) scale(2.6)">
+      <path id="g-oso-map-bc" fill="#15202b" stroke="#5a768f" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M-280,-253 L-282,-246 L-281,-245 L-277,-245 L-275,-244 L-276,-242 L-280,-240 L-282,-237 L-282,-233 L-275,-233 L-257,-236 L-253,-235 L-253,-234 L-261,-232 L-269,-230 L-277,-228 L-279,-227 L-279,-225 L-277,-223 L-269,-223 L-262,-221 L-256,-220 L-250,-222 L-247,-222 L-246,-220 L-244,-219 L-241,-219 L-239,-220 L-238,-226 L-236,-231 L-235,-223 L-235,-222 L-233,-221 L-221,-219 L-214,-222 L-210,-227 L-208,-233 L-208,-236 L-208,-239 L-208,-243 L-204,-247 L-205,-244 L-204,-236 L-204,-231 L-208,-224 L-214,-215 L-213,-212 L-210,-211 L-208,-207 L-208,-204 L-201,-192 L-201,-188 L-187,-173 L-183,-171 L-177,-171 L-171,-172 L-167,-176 L-163,-178 L-163,-179 L-163,-184 L-162,-186 L-158,-192 L-158,-194 L-161,-199 L-161,-200 L-158,-199 L-156,-197 L-154,-194 L-154,-193 L-156,-190 L-159,-188 L-160,-185 L-159,-172 L-158,-168 L-155,-165 L-153,-163 L-150,-163 L-144,-165 L-152,-158 L-155,-158 L-157,-161 L-160,-167 L-162,-168 L-164,-168 L-165,-167 L-167,-163 L-165,-159 L-159,-152 L-142,-145 L-141,-145 L-138,-149 L-136,-148 L-133,-149 L-132,-153 L-133,-155 L-132,-157 L-126,-164 L-126,-164 L-126,-162 L-128,-158 L-130,-144 L-131,-142 L-130,-141 L-125,-142 L-118,-140 L-115,-140 L-111,-145 L-113,-140 L-115,-138 L-120,-138 L-126,-137 L-128,-135 L-126,-133 L-126,-128 L-126,-126 L-124,-126 L-121,-126 L-123,-121 L-121,-117 L-119,-117 L-118,-120 L-117,-122 L-115,-123 L-114,-123 L-109,-119 L-107,-117 L302,-117 L302,-118 L302,-120 L298,-124 L297,-128 L296,-129 L288,-132 L286,-135 L285,-136 L282,-140 L278,-145 L277,-146 L278,-155 L273,-156 L271,-157 L270,-158 L270,-159 L272,-162 L274,-168 L275,-173 L272,-182 L274,-186 L274,-188 L271,-195 L268,-211 L258,-224 L255,-226 L253,-227 L252,-227 L248,-225 L245,-228 L243,-230 L244,-233 L241,-237 L239,-237 L228,-246 L228,-247 L230,-249 L230,-251 L229,-253 L224,-258 L-281,-258 Z M-328,-258 L-321,-252 L-317,-250 L-307,-246 L-305,-246 L-303,-248 L-287,-250 L-284,-253 L-283,-258 Z M-326,-198 L-323,-192 L-321,-190 L-318,-191 L-317,-193 L-317,-195 L-316,-196 L-315,-195 L-313,-192 L-313,-190 L-314,-186 L-314,-183 L-312,-180 L-310,-178 L-307,-178 L-303,-178 L-301,-182 L-300,-183 L-298,-181 L-293,-180 L-290,-178 L-285,-170 L-284,-168 L-282,-167 L-279,-167 L-277,-164 L-274,-163 L-264,-164 L-265,-162 L-278,-160 L-283,-158 L-284,-157 L-284,-155 L-283,-146 L-282,-145 L-281,-145 L-279,-149 L-277,-148 L-272,-144 L-271,-145 L-270,-147 L-269,-148 L-266,-146 L-262,-147 L-259,-143 L-255,-145 L-257,-137 L-255,-135 L-254,-135 L-250,-137 L-248,-135 L-245,-131 L-241,-130 L-244,-127 L-249,-125 L-250,-124 L-242,-119 L-236,-114 L-234,-113 L-232,-113 L-228,-117 L-219,-117 L-207,-118 L-205,-123 L-202,-132 L-201,-127 L-202,-123 L-204,-119 L-208,-114 L-217,-105 L-217,-104 L-217,-101 L-212,-98 L-196,-90 L-169,-79 L-160,-75 L-145,-71 L-144,-71 L-138,-78 L-133,-76 L-132,-77 L-130,-80 L-135,-95 L-137,-97 L-138,-96 L-139,-95 L-139,-90 L-140,-89 L-146,-105 L-152,-114 L-156,-123 L-157,-126 L-161,-129 L-164,-133 L-173,-138 L-187,-144 L-194,-147 L-203,-154 L-208,-162 L-208,-164 L-206,-165 L-208,-168 L-222,-187 L-231,-204 L-233,-208 L-236,-210 L-240,-211 L-250,-213 L-267,-218 L-291,-222 L-314,-231 L-335,-242 L-335,-228 L-329,-228 L-326,-227 L-329,-224 L-327,-215 L-332,-219 L-335,-220 L-335,-198 Z M-216,-198 L-214,-202 L-217,-210 L-220,-213 L-223,-215 L-225,-215 L-227,-211 L-228,-208 L-223,-196 L-220,-190 L-219,-193 Z M-207,-191 L-207,-196 L-210,-202 L-211,-199 L-212,-196 L-211,-188 Z M-287,-161 L-288,-169 L-292,-176 L-296,-178 L-301,-175 L-300,-172 L-300,-170 L-302,-169 L-302,-168 L-302,-167 L-296,-162 L-293,-160 L-290,-159 L-288,-159 Z M-178,-164 L-184,-168 L-190,-170 L-193,-171 L-194,-170 L-194,-168 L-188,-165 L-185,-161 L-181,-158 L-171,-153 Z M-263,-143 L-267,-144 L-269,-141 L-268,-138 L-266,-137 L-261,-136 L-262,-142 Z M-135,-111 L-140,-114 L-149,-124 L-147,-120 L-142,-114 L-135,-109 L-135,-110 Z M-136,-101 L-137,-103 L-140,-107 L-139,-108 L-143,-112 L-144,-112 L-141,-100 L-141,-99 L-140,-99 L-138,-100 Z"/>
+      <path id="g-oso-map-id" fill="#15202b" stroke="#5a768f" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M443,258 L443,194 L440,192 L438,190 L433,181 L429,177 L428,176 L426,177 L424,179 L424,182 L422,185 L422,188 L423,189 L422,190 L414,189 L408,191 L403,190 L395,190 L387,189 L385,190 L383,191 L381,196 L365,194 L361,196 L360,198 L360,200 L359,201 L358,200 L356,199 L351,195 L351,191 L349,186 L348,182 L345,175 L343,173 L340,172 L336,173 L336,172 L330,166 L329,164 L331,159 L330,157 L328,151 L325,149 L319,138 L316,128 L316,124 L314,122 L314,117 L311,115 L307,112 L305,111 L304,113 L299,119 L295,121 L293,124 L291,125 L288,125 L284,121 L280,119 L280,115 L281,112 L280,105 L280,103 L281,101 L286,99 L286,97 L285,91 L282,87 L283,82 L282,79 L284,76 L284,71 L287,59 L286,55 L288,52 L289,48 L289,44 L287,44 L280,45 L278,45 L276,44 L275,43 L275,40 L274,38 L273,38 L269,39 L268,36 L263,31 L261,26 L256,21 L252,15 L243,5 L241,3 L235,-1 L230,-6 L224,-10 L226,-12 L226,-14 L224,-17 L225,-21 L224,-26 L217,-37 L209,-49 L209,-117 L162,-117 L163,60 L162,62 L164,67 L167,74 L168,79 L166,81 L167,86 L170,93 L175,99 L182,104 L186,109 L189,115 L185,127 L176,147 L172,160 L171,165 L166,175 L158,188 L155,198 L155,204 L157,208 L163,209 L166,211 L168,214 L168,217 L166,220 L166,223 L167,225 L166,230 L163,241 L163,258 Z"/>
+      <path id="g-oso-map-or" fill="#15202b" stroke="#5a768f" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M163,241 L166,230 L167,225 L166,223 L166,220 L168,217 L168,214 L166,211 L163,209 L157,208 L155,204 L155,198 L158,188 L166,175 L171,165 L172,160 L176,147 L185,127 L189,115 L186,109 L182,104 L175,99 L170,93 L169,90 L69,90 L68,91 L62,94 L50,94 L27,101 L16,106 L7,109 L-10,111 L-26,115 L-32,114 L-35,111 L-42,110 L-54,109 L-65,111 L-74,117 L-80,118 L-101,116 L-104,112 L-105,107 L-110,91 L-114,82 L-119,79 L-123,77 L-127,79 L-132,80 L-136,79 L-139,75 L-142,74 L-149,77 L-160,77 L-162,74 L-163,75 L-162,80 L-162,101 L-161,119 L-162,126 L-162,131 L-167,174 L-166,183 L-167,192 L-166,199 L-169,205 L-170,224 L-171,249 L-173,252 L-174,258 L163,258 Z"/>
+      <path id="g-oso-map-wa" fill="#1b2835" stroke="#7fb2e5" stroke-opacity="0.6" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M-104,-107 L-101,-101 L-97,-102 L-96,-101 L-94,-95 L-94,-87 L-94,-83 L-96,-82 L-100,-83 L-101,-82 L-102,-81 L-101,-79 L-100,-78 L-98,-78 L-96,-77 L-93,-74 L-89,-69 L-89,-67 L-92,-66 L-95,-64 L-95,-62 L-95,-59 L-93,-57 L-89,-54 L-88,-55 L-90,-61 L-90,-61 L-88,-60 L-85,-54 L-83,-51 L-82,-49 L-85,-44 L-86,-41 L-89,-36 L-89,-33 L-88,-31 L-88,-29 L-90,-24 L-88,-21 L-88,-16 L-87,-5 L-90,-1 L-92,0 L-94,0 L-96,2 L-99,9 L-100,11 L-103,13 L-104,13 L-108,11 L-113,12 L-118,11 L-117,9 L-115,4 L-113,1 L-109,-3 L-108,-2 L-107,5 L-106,6 L-103,-1 L-101,1 L-99,2 L-97,0 L-96,-7 L-96,-11 L-98,-16 L-102,-22 L-101,-22 L-100,-21 L-99,-22 L-100,-27 L-99,-29 L-95,-32 L-94,-36 L-95,-43 L-98,-43 L-98,-38 L-99,-37 L-104,-32 L-106,-28 L-108,-25 L-116,-18 L-119,-12 L-120,-7 L-113,-8 L-113,-7 L-119,-4 L-122,-3 L-124,-4 L-124,-6 L-123,-10 L-120,-17 L-109,-34 L-108,-33 L-108,-30 L-107,-30 L-101,-40 L-102,-44 L-105,-49 L-106,-54 L-106,-57 L-107,-58 L-111,-55 L-113,-54 L-116,-53 L-118,-54 L-123,-59 L-125,-59 L-129,-57 L-131,-57 L-163,-60 L-169,-62 L-172,-65 L-184,-69 L-194,-74 L-197,-75 L-196,-68 L-197,-59 L-195,-47 L-193,-42 L-186,-33 L-182,-25 L-178,-7 L-173,6 L-172,20 L-171,24 L-169,18 L-166,19 L-163,22 L-157,23 L-169,30 L-167,38 L-162,41 L-159,44 L-160,53 L-161,60 L-165,54 L-166,48 L-166,64 L-167,71 L-162,69 L-159,71 L-149,69 L-148,71 L-139,71 L-136,75 L-131,78 L-129,78 L-127,79 L-123,77 L-119,79 L-114,82 L-110,91 L-105,107 L-104,112 L-101,116 L-80,118 L-74,117 L-65,111 L-54,109 L-42,110 L-35,111 L-32,114 L-26,115 L-10,111 L7,109 L16,106 L27,101 L50,94 L62,94 L68,91 L69,90 L169,90 L167,86 L166,81 L168,79 L167,74 L164,67 L162,62 L163,60 L162,-117 L-107,-117 Z M-121,-117 L-120,-116 L-119,-117 Z M-112,-97 L-116,-95 L-117,-93 L-116,-92 L-112,-89 L-113,-94 L-112,-94 L-110,-92 L-108,-92 L-106,-93 L-107,-95 Z M-118,-86 L-122,-91 L-125,-90 L-125,-89 L-124,-83 L-122,-82 L-117,-81 L-118,-83 Z M-108,-80 L-111,-83 L-111,-86 L-112,-86 L-113,-86 L-114,-82 L-113,-80 L-112,-78 L-109,-77 Z M-98,-62 L-103,-64 L-103,-65 L-96,-69 L-95,-71 L-99,-75 L-100,-75 L-104,-68 L-105,-65 L-105,-64 L-103,-60 L-101,-59 L-99,-59 L-99,-57 L-99,-52 L-96,-48 L-93,-47 L-90,-43 L-88,-43 L-87,-44 L-87,-47 L-94,-54 L-95,-50 Z M-94,-26 L-96,-28 L-97,-27 L-97,-22 L-96,-21 L-94,-19 Z M-89,-7 L-92,-13 L-93,-13 L-94,-8 L-94,-4 L-92,-6 L-92,-6 L-92,-4 L-91,-4 L-89,-5 Z M-110,6 L-112,2 L-113,3 L-113,5 L-111,8 L-111,8 Z"/>
+    </g>
+    <!-- map overlays, screen px (they ride the camera push, so they fade before it) -->
+    <circle id="g-oso-map-sea" cx="417.1" cy="485.4" r="6" fill="#dfe7ee" stroke="#04070c" stroke-width="2"/>
+    <circle id="g-oso-map-ring" cx="467.1" cy="365.3" r="10" fill="none" stroke="#e74c3c" stroke-width="3"/>
+    <circle id="g-oso-map-pin" cx="467.1" cy="365.3" r="10" fill="#e74c3c" stroke="#04070c" stroke-width="2"/>
+    <text id="g-oso-map-t-oso" class="oso-lab" x="490" y="352" font-size="40">Oso</text>
+    <text id="g-oso-map-t-sea" class="oso-lab" x="430" y="492" font-size="22">Seattle</text>
+    <text id="g-oso-map-t-wa" class="oso-lab" x="700" y="600" text-anchor="middle" font-size="40">Washington</text>
+    <text id="g-oso-map-t-or" class="oso-lab" x="640" y="900" text-anchor="middle" font-size="22" style="fill:#93a3b2">Oregon</text>
+    <text id="g-oso-map-t-bc" class="oso-lab" x="560" y="190" text-anchor="middle" font-size="22" style="fill:#93a3b2">British Columbia</text>
+    </g>
+    <g id="g-oso-map-bar">
+      <line x1="96" y1="930" x2="226" y2="930" stroke="#c8d3e0" stroke-width="3"/>
+      <line x1="96" y1="922" x2="96" y2="938" stroke="#c8d3e0" stroke-width="3"/>
+      <line x1="226" y1="922" x2="226" y2="938" stroke="#c8d3e0" stroke-width="3"/>
+      <text id="g-oso-map-t-bar" class="oso-lab" x="238" y="937" font-size="19" style="fill:#93a3b2">50 mi</text>
+    </g>
+    </g>
+
+    <defs>
+      <linearGradient id="g-oso-map-tan" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9a7646"/><stop offset="1" stop-color="#6b4f2c"/></linearGradient>
+      <clipPath id="g-oso-map-osoclip"><polygon points="96,800 96,480 300,470 758,883 560,860"/></clipPath>
+      <clipPath id="g-oso-map-kgclip"><polygon points="1048.7,478.1 1532.3,917.7 1557.1,890.4 1073.5,450.8"/></clipPath>
+    </defs>
+
+    <!-- ===== OSO side profile (SCHEMATIC): tan glacial sediment over bedrock, river at the toe ===== -->
+    <g id="g-oso-map-oso">
+      <polygon points="96,960 96,800 560,860 900,900 900,960" fill="#15202b" stroke="#4a5560" stroke-width="3" stroke-linejoin="round"/>
+      <polygon id="g-oso-map-ososed" points="96,800 96,480 300,470 758,883 560,860" fill="url(#g-oso-map-tan)" stroke="#b89565" stroke-width="3" stroke-linejoin="round"/>
+      <polygon id="g-oso-map-scar" points="336.6,503 744.3,870.6 600,790 470,655 380,560" fill="#3b2d1b" stroke="#6b4f2c" stroke-width="2"/>
+      <rect id="g-oso-map-oriver" x="758" y="884" width="112" height="20" fill="#7fb2e5"/>
+      <polygon id="g-oso-map-wedge" points="336.6,503 744.3,870.6 600,790 470,655 380,560" fill="#b08a55" stroke="#d2b07e" stroke-width="3" stroke-linejoin="round"/>
+      <g clip-path="url(#g-oso-map-osoclip)"><rect id="g-oso-map-osowater" x="96" y="900" width="680" height="600" fill="#7fb2e5" opacity="0.5"/></g>
+      <g id="g-oso-map-osopeb" fill="#c9a877" stroke="#6b4f2c" stroke-width="2">
+        <circle cx="150" cy="560" r="9"/><circle cx="210" cy="620" r="11"/><circle cx="260" cy="700" r="8"/><circle cx="180" cy="770" r="10"/>
+        <circle cx="330" cy="760" r="9"/><circle cx="420" cy="800" r="11"/><circle cx="520" cy="830" r="8"/><circle cx="240" cy="520" r="8"/>
+      </g>
+      <path id="g-oso-map-osoref" d="M300,470 H420" stroke="#e8c56a" stroke-width="3" stroke-dasharray="8 6" fill="none"/>
+      <path id="g-oso-map-osoarc" d="M390,470 A90,90 0 0,1 366.9,530.2" stroke="#e8c56a" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <g id="g-oso-map-orain" stroke="#9cc3ea" stroke-width="3" stroke-linecap="round" opacity="0.55"></g>
+      <text id="g-oso-map-t-osoname" class="oso-dlab" x="116" y="440" font-size="26" fill="#f2f5f8">OSO HILLSIDE</text>
+      <text id="g-oso-map-t-sed" class="oso-dlab" x="116" y="760" font-size="26" fill="#e8c56a">OLD GLACIAL SEDIMENT</text>
+      <text id="g-oso-map-t-bed" class="oso-dlab" x="116" y="910" font-size="19" fill="#93a3b2">BEDROCK</text>
+      <text id="g-oso-map-t-riv" class="oso-dlab" x="776" y="940" font-size="19" fill="#7fb2e5">RIVER</text>
+      <text id="g-oso-map-t-rain" class="oso-dlab" x="116" y="380" font-size="26" fill="#7fb2e5">3 WEEKS OF HEAVY RAIN</text>
+      <text id="g-oso-map-schem" class="oso-dlab" x="560" y="1010" font-size="19" fill="#93a3b2">SCHEMATIC</text>
+    </g>
+
+    <!-- ===== KALI GANDAKI wall profile (same drawing as g-glacial-debris' left face, x0.62) ===== -->
+    <g id="g-oso-map-kg">
+      <polygon points="1020,960 1020,466 1040,470 1538.5,922.6 1538.5,960" fill="#2a3644" stroke="#4a5560" stroke-width="3" stroke-linejoin="round"/>
+      <polygon points="1612,922.6 1824,730 1824,960 1612,960" fill="#1c2631" stroke="#2a3644" stroke-width="3" stroke-linejoin="round"/>
+      <rect x="1538.5" y="922.6" width="73.5" height="27.4" fill="#7fb2e5"/>
+      <polygon id="g-oso-map-kgman" points="1048.7,478.1 1532.3,917.7 1557.1,890.4 1073.5,450.8" fill="url(#g-oso-map-tan)" stroke="#b89565" stroke-width="3" stroke-linejoin="round"/>
+      <g clip-path="url(#g-oso-map-kgclip)"><rect id="g-oso-map-kgwater" x="1040" y="930" width="540" height="600" fill="#7fb2e5" opacity="0.5"/></g>
+      <g id="g-oso-map-kgpeb" fill="#c9a877" stroke="#6b4f2c" stroke-width="2">
+        <circle cx="1109.4" cy="508" r="8"/><circle cx="1206.2" cy="596" r="10"/><circle cx="1303" cy="684" r="8"/>
+        <circle cx="1399.8" cy="772" r="10"/><circle cx="1496.6" cy="860" r="8"/>
+      </g>
+      <path id="g-oso-map-kgref" d="M1073.5,450.8 H1193.5" stroke="#e8c56a" stroke-width="3" stroke-dasharray="8 6" fill="none"/>
+      <path id="g-oso-map-kgarc" d="M1163.5,450.8 A90,90 0 0,1 1140.2,511.3" stroke="#e8c56a" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <text id="g-oso-map-t-kgname" class="oso-dlab" x="1040" y="420" font-size="26" fill="#f2f5f8">KALI GANDAKI WALL</text>
+    </g>
+  </svg>
+  <div class="oso-rail" id="g-oso-map-railbg"></div>
+  <div class="oso-eb" id="g-oso-map-eb" style="top:250px">Oso, Washington</div>
+  <div class="oso-row" id="g-oso-map-r-date" style="top:290px"><div class="oso-pf">March 22, 2014</div><div class="oso-rlab" id="g-oso-map-r-datelab">Hillside collapse</div></div>
+  <div class="oso-row" id="g-oso-map-r-count" style="top:440px"><div class="oso-big"><span id="g-oso-map-cv" style="display:inline-block">1</span></div><div class="oso-rlab">Lives lost · Source: USGS</div></div>
+  <div class="oso-reb" id="g-oso-map-reb">SAME RECIPE</div>
+  <div class="oso-chip" id="g-oso-map-c1" style="top:160px">LOOSE GLACIAL MATERIAL</div>
+  <div class="oso-chip" id="g-oso-map-c2" style="top:232px">STEEP SLOPE</div>
+  <div class="oso-chip" id="g-oso-map-c3" style="top:304px">FULL OF WATER</div>
+  <div class="oso-src" id="g-oso-map-src">Map data: Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-oso-map", P = "#g-oso-map-";
+  /* Redo 29 Sep 26 (Opus). Real word times from retime-sheet.md (host 322.600+22.246).
+     0-7.1 the Washington map, the date in the rail on "March", the pin on "Oso". "hillside" 7.18: the camera pushes x4 into
+     the pin and crossfades to a SCHEMATIC side profile of the Oso slope (tan glacial sediment over bedrock, river at the toe).
+     "collapsed" 8.96: the failure wedge morphs into a debris tongue that crosses the river (same 5-point polygon, attr tween).
+     "Kaligandaki" 15.66: the rail leaves and the Kali Gandaki wall (g-glacial-debris' left face, x0.62) joins on the right.
+     The three recipe chips are ONE centred column (one instance of each fact; a copy on each half would trip overlap_check
+     dup-fact), and each one lights the same feature in BOTH drawings at once: pebbles, angle arcs, rising water. */
+  const CUES = {
+    march: 3.76,   /* "March" @3.76 */
+    oso: 5.43,     /* "Oso," @5.58 */
+    hill: 7.10,    /* "hillside" @7.18 */
+    sed: 8.39,     /* "sediment" @8.54 */
+    coll: 8.96,    /* "collapsed" @8.96 */
+    rain: 9.71,    /* "weeks" @9.86 */
+    n43: 11.20,    /* "43" @11.68 */
+    kg: 15.66,     /* "Kaligandaki" @15.66 "wall" @16.32 */
+    recipe: 17.36, /* "recipe," @17.36 */
+    loose: 18.54,  /* "loose" @18.54 */
+    steep: 20.10,  /* "steep" @20.10 */
+    water: 20.96   /* "full" @20.96 "water." @21.32 */
+  };
+  const DUR = 22.246;
+  const tl = gsap.timeline({ paused: true });
+  const osoArc = document.querySelector(P + "osoarc"), kgArc = document.querySelector(P + "kgarc");
+  const AL = Math.ceil(Math.max(osoArc.getTotalLength(), kgArc.getTotalLength())) + 1;
+
+  /* rain on the Oso slope: 24 streaks, finite repeats */
+  const rEl = document.querySelector(P + "orain"), RAIN = [];
+  for (let i = 0; i < 24; i++) {
+    const x = 130 + i * 32 + ((i * 13) % 11);
+    const y = 400 + ((i * 29) % 60);
+    const ln = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    ln.setAttribute("id", "g-oso-map-r" + i);
+    ln.setAttribute("x1", x); ln.setAttribute("y1", y); ln.setAttribute("x2", x - 7); ln.setAttribute("y2", y + 30);
+    if (rEl) rEl.appendChild(ln);
+    RAIN.push(ln);
+  }
+
+  /* ---- initial state ---- */
+  tl.set([P + "ring", P + "pin", P + "t-oso", P + "sea", P + "t-sea", P + "t-wa", P + "t-or", P + "t-bc", P + "bar", P + "eb",
+    P + "r-date", P + "r-datelab", P + "r-count", P + "oso", P + "kg", P + "scar", P + "t-osoname", P + "t-sed", P + "t-bed",
+    P + "t-riv", P + "t-rain", P + "orain", P + "t-kgname", P + "reb", P + "c1", P + "c2", P + "c3", P + "osopeb", P + "kgpeb",
+    P + "osoref", P + "kgref"], { autoAlpha: 0 }, 0);
+  tl.set(P + "cam", { scale: 1, svgOrigin: "467.1 365.3" }, 0);
+  tl.set([osoArc, kgArc], { strokeDasharray: AL, strokeDashoffset: AL }, 0);
+
+  /* ---- ambient over the map ---- */
+  tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 0.3);
+  tl.fromTo(P + "wa", { attr: { "stroke-opacity": 0.35 } }, { attr: { "stroke-opacity": 0.8 }, duration: 1.2, ease: "sine.inOut", repeat: 3, yoyo: true }, 0);
+  tl.fromTo([P + "t-wa", P + "t-bc", P + "t-or", P + "sea", P + "t-sea"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.45, stagger: 0.15, ease: "power3.out" }, 0.2);
+  tl.fromTo(P + "bar", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.0);
+
+  /* ---- "March" @3.76: the rail headline date ---- */
+  tl.fromTo(P + "r-date", { autoAlpha: 0, scale: 0.8, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(2)" }, CUES.march);
+
+  /* ---- "Oso," @5.58: pin, ring, name ---- */
+  tl.fromTo(P + "pin", { autoAlpha: 0, scale: 0, svgOrigin: "467.1 365.3" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2.5)" }, CUES.oso);
+  tl.fromTo(P + "ring", { autoAlpha: 0.95, attr: { r: 10 } }, { autoAlpha: 0, attr: { r: 52 }, duration: 1.0, ease: "power2.out", repeat: 1, repeatDelay: 0.1 }, CUES.oso + 0.3);
+  tl.fromTo(P + "t-oso", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.oso + 0.15);
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.oso);
+
+  /* ---- "hillside" @7.18: labels clear, the camera pushes x4 into the pin, crossfade to the Oso profile ---- */
+  tl.to([P + "t-oso", P + "t-sea", P + "t-wa", P + "t-or", P + "t-bc", P + "bar", P + "src"], { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 6.80);
+  tl.to(P + "cam", { scale: 4, duration: 1.2, ease: "power2.inOut" }, CUES.hill);
+  tl.to(P + "mapscene", { autoAlpha: 0, duration: 0.45, ease: "power1.in" }, 7.90);
+  tl.fromTo(P + "oso", { autoAlpha: 0, scale: 1.08, svgOrigin: "480 700" }, { autoAlpha: 1, scale: 1, duration: 0.6, ease: "power2.out" }, 7.95);
+  tl.fromTo([P + "t-osoname", P + "t-bed", P + "t-riv"], { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, stagger: 0.08, ease: "power3.out" }, 8.20);
+  tl.fromTo(P + "t-sed", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, CUES.sed);
+
+  /* ---- "collapsed" @8.96: the wedge fails and runs out as a tongue across the river ---- */
+  tl.to(P + "scar", { autoAlpha: 1, duration: 0.2 }, CUES.coll);
+  tl.to(P + "wedge", { attr: { points: "540,850 892,902 760,906 640,890 560,872" }, duration: 0.95, ease: "power2.in" }, CUES.coll);
+  tl.fromTo(P + "r-datelab", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.coll);
+
+  /* ---- "weeks of heavy rain" @9.86-10.58 ---- */
+  tl.to(P + "orain", { autoAlpha: 1, duration: 0.3 }, CUES.rain);
+  RAIN.forEach(function (ln, i) {
+    const d = 0.7 + (i % 5) * 0.08;
+    const at = CUES.rain + (i % 7) * 0.08;
+    const reps = Math.floor((15.3 - at) / d) - 1;
+    tl.fromTo(ln, { y: 0 }, { y: 300, duration: d, ease: "none", repeat: reps }, at);
+  });
+  tl.fromTo(P + "t-rain", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.90);
+
+  /* ---- "43" @11.68: the count in the rail, opening on 1 ---- */
+  tl.fromTo(P + "r-count", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.n43);
+  const o = { v: 1 };
+  tl.to(o, { v: 43, duration: 0.48, ease: "power3.out", onUpdate: function () {
+    const e = document.getElementById("g-oso-map-cv"); if (e) e.textContent = Math.round(o.v);
+  } }, CUES.n43);
+  tl.to(P + "cv", { scale: 1.06, transformOrigin: "left center", duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 12.4);
+
+  /* ---- "Kaligandaki" @15.66 "wall" @16.32: the rail leaves, the Kali Gandaki wall joins on the right ---- */
+  tl.to([P + "eb", P + "r-date", P + "r-count", P + "railbg"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 15.10);
+  tl.to([P + "orain", P + "t-rain"], { autoAlpha: 0, duration: 0.4 }, 15.20);
+  tl.fromTo(P + "kg", { autoAlpha: 0, x: 160 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, CUES.kg);
+  tl.fromTo(P + "t-kgname", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 16.25);
+
+  /* ---- "same recipe" @17.36 ---- */
+  tl.to(P + "t-sed", { autoAlpha: 0, duration: 0.3 }, 17.10);
+  tl.fromTo(P + "reb", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.recipe);
+  tl.to([P + "ososed", P + "kgman"], { attr: { "stroke-width": 7 }, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, CUES.recipe + 0.1);
+
+  /* ---- "loose glacial material" @18.54: pebbles in both tan bodies ---- */
+  tl.fromTo(P + "c1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.loose);
+  tl.fromTo([P + "osopeb", P + "kgpeb"], { autoAlpha: 0, scale: 0.6, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, CUES.loose + 0.1);
+  tl.to([P + "osopeb", P + "kgpeb"], { y: -4, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 19.1);
+
+  /* ---- "steep slope" @20.10: the angle arc draws on both ---- */
+  tl.fromTo(P + "c2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.steep);
+  tl.to([P + "osoref", P + "kgref"], { autoAlpha: 1, duration: 0.2 }, CUES.steep);
+  tl.to([osoArc, kgArc], { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, CUES.steep + 0.1);
+
+  /* ---- "full of water" @20.96: blue rises in both mantles ---- */
+  tl.fromTo(P + "c3", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.water);
+  tl.to(P + "osowater", { attr: { y: 470 }, duration: 0.6, ease: "power2.out" }, CUES.water);
+  tl.to(P + "kgwater", { attr: { y: 445 }, duration: 0.6, ease: "power2.out" }, CUES.water);
+
+  /* ---- exit: fade-through ---- */
+  tl.to([P + "oso", P + "kg", P + "reb", P + "c1", P + "c2", P + "c3"], { autoAlpha: 0, duration: 0.45, ease: "power1.in" }, DUR - 0.55);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -20,10 +20,10 @@ the pack" button on `/resources/*` resolves. Until it exists those buttons 404 o
 > from the manual's 61-page binder. Free. One email; unsubscribe any time.
 >
 > The book these came from carries all 130 numbered protections, 23 hazard playbooks, the 60-day
-> sequence and the whole binder: https://paulraymond.online/#offer — $14.99, instant PDF, 7-day
+> sequence and the whole binder: https://paulraymond.online/#offer — $9.99, instant PDF, 7-day
 > money-back guarantee.
 
 - **After creating:** run `node gumroad/pagecheck.mjs https://paulraymond.gumroad.com/l/checklists product`
   and click one "Email me the pack" button on the live site.
 - **Follow-up email (Gumroad → Emails → Workflow, trigger: purchase of `checklists`):** day 0 =
-  the pack + one line about the book; day 3 = the Joplin dispatch link; day 7 = the $14.99 offer.
+  the pack + one line about the book; day 3 = the Joplin dispatch link; day 7 = the $9.99 offer.

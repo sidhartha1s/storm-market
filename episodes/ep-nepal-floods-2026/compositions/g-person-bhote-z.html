@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-person-bhote-z (Z): text-only name card, track 4, host 769.3 + 3.651 (nx-z1-s1 tail). Rebuilt 29 Sep 26 (redo list):
+     the card used to sit over 7NEWS helicopter-interior footage where an identifiable mud-covered man filled the left of the
+     frame, so a viewer read him as Pasang Bhote. Round 2 (29 Sep 26): the 7NEWS helicopter exterior still showed two people
+     walking to the aircraft under "AMONG THE FIRST TWO REACHED", so v-z-heli now carries NO PEOPLE at all: AFP's river
+     in spate past a wrecked bridge abutment under forest (lallantop full file 160.66-164.31, bug and credit cropped; WION
+     snow would repeat v-z-snow 15 s later). The card's top-left corner sits on forest, so the glass reads. No photo, no monogram
+     (mg-quickref person-card rule).
+     Cues (retime-sheet g-person-bhote-z; whisper hears "A sang boat" for "Pasang Bhote"): Pasang 0.73, among 1.53,
+     first two 1.93-2.15, reached 2.65. Exit slides out on the host end (3.051-3.651). -->
+<template>
+<style>
+  .pbz-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8; }
+  .pbz-card { position:absolute; left:96px; top:96px; padding:28px 48px 34px; box-sizing:border-box; overflow:hidden;
+    background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; box-shadow:0 30px 90px rgba(0,0,0,0.5); }
+  .pbz-name { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:66px; color:#f2f5f8; white-space:nowrap; }
+  .pbz-role { font-family: Georgia, 'Times New Roman', serif; font-style:italic; font-size:28px; line-height:36px; color:#d8a13a; margin-top:4px; white-space:nowrap; }
+  .pbz-org { font-weight:700; font-size:22px; line-height:26px; letter-spacing:4px; color:#93a3b2; margin-top:10px; white-space:nowrap; }
+  .pbz-rule { height:2px; margin-top:16px; background:#7fb2e5; }
+  .pbz-among { font-weight:700; font-size:22px; line-height:26px; letter-spacing:4px; color:#dfe7ee; margin-top:12px; white-space:nowrap; }
+  .pbz-beam { position:absolute; top:0; bottom:0; left:0; width:140px; background:linear-gradient(90deg, transparent, rgba(127,178,229,0.13), transparent); }
+</style>
+<div class="pbz-wrap" data-composition-id="g-person-bhote-z" data-width="1920" data-height="1080" data-duration="3.651">
+  <div class="pbz-card" id="pbz-card">
+    <div class="pbz-beam" id="pbz-beam"></div>
+    <div class="pbz-name" id="pbz-name">Pasang Bhote</div>
+    <div class="pbz-role" id="pbz-role">Climbing guide</div>
+    <div class="pbz-org" id="pbz-org">FROM EASTERN NEPAL</div>
+    <div class="pbz-rule" id="pbz-rule"></div>
+    <div class="pbz-among" id="pbz-among">AMONG THE FIRST TWO REACHED</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 3.651;
+  tl.set(["#pbz-card", "#pbz-name", "#pbz-role", "#pbz-org", "#pbz-among"], { autoAlpha: 0 }, 0);
+  tl.set("#pbz-rule", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient: a beam sweeps across the card for the whole window */
+  tl.fromTo("#pbz-beam", { x: -140 }, { x: 700, duration: 1.6, ease: "none", repeat: 1 }, 0.3);
+
+  /* card in, then PASANG @0.73: the name lands on the word; role and origin follow */
+  tl.fromTo("#pbz-card", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.3);
+  tl.fromTo("#pbz-name", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.5);
+  tl.fromTo("#pbz-role", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.95);
+  tl.fromTo("#pbz-org", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.15);
+  /* AMONG @1.53: the rule draws and the line lands under the origin */
+  tl.to("#pbz-rule", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.53);
+  tl.fromTo("#pbz-among", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 1.6);
+  tl.to("#pbz-card", { y: -6, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.0);
+
+  /* exit on the host end */
+  tl.to("#pbz-card", { x: -700, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  window.__timelines["g-person-bhote-z"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

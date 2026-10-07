@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-rock-ice-vs-rain (A4): two failure mechanisms, built and animated side by side. RIGHT, Kali Gandaki: rain falls, the
+     wetting front climbs the valley wall, no glacier ice, then the wall slumps into the river (rain landslide). LEFT, Langtang:
+     a steep peak with a glacier cap, a 17,000 ft ruler, a rock+ice slab that breaks away and runs down the face. Then a Himlung
+     mini-card with a snow+rock tongue, bracketed to Langtang as the same type. SCHEMATIC, NOT TO SCALE.
+     Brief: mg_specs/g-rock-ice-vs-rain.md. Redo 29 Sep 26 (Opus): replaces the static two-poster slide (nothing broke away,
+     Himlung never drawn, no headline, 24 px chips).
+     Cues: retime-sheet g-rock-ice-vs-rain (host 566.245+29.544, local seconds). Duration 29.544 s. -->
+<template>
+<style>
+  #rvr-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .rvr-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .rvr-hl { position:absolute; left:96px; top:62px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  .rvr-eb { position:absolute; top:150px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .rvr-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:3px; fill:#dfe7ee;
+    paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .rvr-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .rvr-glass { position:absolute; box-sizing:border-box; border-radius:16px; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14); white-space:nowrap; }
+  .rvr-chip { height:56px; padding:0 18px; display:flex; align-items:center; gap:12px; font-family:'Arial Black', Arial, sans-serif;
+    font-weight:900; font-size:30px; letter-spacing:2px; }
+  .rvr-noice { left:1470px; top:300px; height:56px; padding:0 18px; display:flex; align-items:center; gap:12px;
+    font-weight:700; font-size:26px; letter-spacing:3px; color:#dfe7ee; }
+  /* round 2: 420 px wide (the 26 px HIMLUNG AVALANCHE label is ~345 px from left 22, it overflowed the 360 px card)
+     and moved right to x 170-590, clear of the 17,000 FT ruler ticks (x 108-132) */
+  .rvr-card { left:170px; top:610px; width:420px; height:300px; }
+  .rvr-cardt { position:absolute; left:22px; top:16px; font-weight:700; font-size:26px; letter-spacing:3px; color:#dfe7ee; }
+  .rvr-card svg { position:absolute; left:30px; top:0; width:360px; height:300px; }
+  .rvr-schem { position:absolute; right:96px; bottom:54px; font-weight:700; font-size:19px; letter-spacing:2px; color:#93a3b2; white-space:nowrap; }
+</style>
+<div id="rvr-root" data-composition-id="g-rock-ice-vs-rain" data-width="1920" data-height="1080" data-duration="29.544">
+  <svg class="rvr-svg" id="rvr-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="rvr-rock" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a5560"/><stop offset="1" stop-color="#2a3644"/></linearGradient>
+      <linearGradient id="rvr-soil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a3a2e"/><stop offset="1" stop-color="#33281f"/></linearGradient>
+      <linearGradient id="rvr-wetg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fb2e5" stop-opacity="0.18"/><stop offset="1" stop-color="#7fb2e5" stop-opacity="0.5"/></linearGradient>
+      <clipPath id="rvr-wetclip"><rect id="rvr-wetclipr" x="1000" y="900" width="840" height="0"/></clipPath>
+      <clipPath id="rvr-rainclip"><rect x="1030" y="240" width="780" height="640"/></clipPath>
+    </defs>
+    <line id="rvr-div" x1="960" y1="150" x2="960" y2="940" stroke="#4a5560" stroke-width="3" stroke-dasharray="10 8"/>
+
+    <!-- LEFT: Langtang, rock and glacier ice -->
+    <g id="rvr-left">
+      <line x1="96" y1="900" x2="900" y2="900" stroke="#4a5560" stroke-width="3"/>
+      <path id="rvr-peak" d="M130,900 L240,720 L320,650 L400,480 L470,390 L540,180 L600,300 L680,420 L760,600 L840,780 L900,900 Z" fill="url(#rvr-rock)" stroke="#5a768f" stroke-width="2"/>
+      <path id="rvr-cap" d="M470,390 L540,180 L600,300 L574,320 L548,300 L520,336 L494,352 Z" fill="#dfe7ee"/>
+      <!-- altitude ruler at x 120, 900 -> 300 (the release height) -->
+      <g id="rvr-ruler" stroke="#7fb2e5" stroke-width="3">
+        <line x1="120" y1="900" x2="120" y2="300"/>
+        <line x1="108" y1="300" x2="132" y2="300"/><line x1="112" y1="450" x2="128" y2="450"/><line x1="112" y1="600" x2="128" y2="600"/><line x1="112" y1="750" x2="128" y2="750"/>
+        <line x1="132" y1="300" x2="590" y2="300" stroke-dasharray="8 8" stroke-opacity="0.6"/>
+      </g>
+      <text id="rvr-t-alt" class="rvr-big" x="140" y="286" font-size="44" fill="#7fb2e5">17,000 FT</text>
+      <!-- the slab: rock under glacier ice, lying on the upper right face -->
+      <g id="rvr-slab">
+        <path d="M600,300 L680,420 L713,398 L633,278 Z" fill="#6b5a48" stroke="#8e2020" stroke-width="2"/>
+        <path d="M633,278 L713,398 L730,387 L650,267 Z" fill="#dfe7ee"/>
+      </g>
+      <g id="rvr-slabdebris" fill="#93a3b2"></g>
+      <g id="rvr-dust" fill="#93a3b2">
+        <ellipse id="rvr-d0" cx="880" cy="880" rx="60" ry="30" fill-opacity="0.5"/>
+        <ellipse id="rvr-d1" cx="930" cy="870" rx="44" ry="26" fill-opacity="0.4"/>
+        <ellipse id="rvr-d2" cx="840" cy="886" rx="40" ry="22" fill-opacity="0.4"/>
+      </g>
+      <text id="rvr-t-slab" class="rvr-lab" x="742" y="262">ROCK + ICE</text>
+    </g>
+
+    <!-- RIGHT: Kali Gandaki, a soaked valley wall above the river -->
+    <g id="rvr-right">
+      <line x1="1020" y1="900" x2="1824" y2="900" stroke="#4a5560" stroke-width="3"/>
+      <path id="rvr-river" d="M1600,900 L1630,934 L1800,934 L1824,910 L1824,900 Z" fill="#5a768f"/>
+      <path id="rvr-wall" d="M1020,900 L1020,262 L1200,285 C1300,560 1480,760 1600,880 L1620,900 Z" fill="url(#rvr-soil)" stroke="#6b5a48" stroke-width="2"/>
+      <path d="M1020,900 L1020,262 L1200,285 C1300,560 1480,760 1600,880 L1620,900 Z" fill="url(#rvr-wetg)" clip-path="url(#rvr-wetclip)"/>
+      <path id="rvr-scar" d="M1200,285 C1300,560 1480,760 1600,880" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-dasharray="12 9" stroke-opacity="0"/>
+      <g id="rvr-block">
+        <path d="M1200,285 L1320,420 L1440,600 L1540,780 L1600,880 C1480,760 1300,560 1200,285 Z" fill="url(#rvr-soil)" stroke="#6b5a48" stroke-width="2"/>
+        <path d="M1200,285 L1320,420 L1440,600 L1540,780 L1600,880 C1480,760 1300,560 1200,285 Z" fill="url(#rvr-wetg)" clip-path="url(#rvr-wetclip)"/>
+      </g>
+      <g id="rvr-splash" fill="#6b5040"></g>
+      <g clip-path="url(#rvr-rainclip)"><g id="rvr-rain" stroke="#7fb2e5" stroke-width="2" stroke-linecap="round" stroke-opacity="0.45"></g></g>
+    </g>
+
+    <!-- Himlung is the same type: amber bracket from the card to the Langtang slab -->
+    <path id="rvr-bracket" d="M590,760 L630,760 L630,330 L604,330" fill="none" stroke="#e8c56a" stroke-width="4" stroke-linejoin="round"/>
+  </svg>
+
+  <div class="rvr-hl" id="rvr-hl">Two Kinds Of Collapse</div>
+  <div class="rvr-eb" id="rvr-ebl" style="left:120px;">LANGTANG &middot; AUG 26</div>
+  <div class="rvr-eb" id="rvr-ebr" style="left:1044px;">KALI GANDAKI &middot; SEPT 27</div>
+  <div class="rvr-glass rvr-noice" id="rvr-noice">
+    <svg width="40" height="40" viewBox="0 0 40 40"><g stroke="#dfe7ee" stroke-width="3" stroke-linecap="round"><line x1="20" y1="4" x2="20" y2="36"/><line x1="6" y1="12" x2="34" y2="28"/><line x1="6" y1="28" x2="34" y2="12"/></g><line id="rvr-strike" x1="4" y1="36" x2="36" y2="4" stroke="#e74c3c" stroke-width="5" stroke-linecap="round"/></svg>
+    <span id="rvr-noicet">NO GLACIER ICE</span>
+  </div>
+  <div class="rvr-glass rvr-chip" id="rvr-rlab" style="left:1044px; top:190px; color:#e8c56a;">RAIN LANDSLIDE &middot; EVERY MONSOON</div>
+  <div class="rvr-glass rvr-card" id="rvr-card">
+    <svg viewBox="0 0 360 300">
+      <defs><clipPath id="rvr-tongueclip"><rect id="rvr-tongueclipr" x="0" y="80" width="360" height="0"/></clipPath></defs>
+      <path d="M40,280 L180,80 L320,280 Z" fill="url(#rvr-rock)" stroke="#5a768f" stroke-width="2"/>
+      <path d="M150,123 L180,80 L210,123 L196,118 L180,132 L164,118 Z" fill="#dfe7ee"/>
+      <g clip-path="url(#rvr-tongueclip)">
+        <path d="M188,92 L206,98 L286,262 L246,268 Z" fill="#dfe7ee"/>
+        <path d="M204,150 L232,158 L286,262 L256,266 Z" fill="#6b5a48"/>
+      </g>
+    </svg>
+    <div class="rvr-cardt" id="rvr-cardt">HIMLUNG AVALANCHE</div>
+  </div>
+  <div class="rvr-glass rvr-chip" id="rvr-same" style="left:650px; top:500px; color:#e8c56a;">SAME TYPE</div>
+  <div class="rvr-schem" id="rvr-schem">SCHEMATIC, NOT TO SCALE</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-rock-ice-vs-rain", P = "#rvr-";
+  const D = 29.544;
+  const CUES = {
+    open: 0.16,       /* "account" @0.16 */
+    days: 2.62,       /* "days of rain" @2.62-3.68 */
+    soaked: 4.24,     /* "soaked valley wall" @4.24-4.80 */
+    glacier: 6.36,    /* "None mentions glacier ice" @5.78-6.82 */
+    ice: 6.82,
+    langtang: 8.64,   /* "Langtang began" @8.64 */
+    seventeen: 9.80,  /* "17" @9.80 */
+    rock: 12.00,      /* "rock and glacier ice broke away together" @12.00-13.74 */
+    together: 13.74,
+    collapse: 16.09,  /* "Kali Gandaki collapse" @16.09 */
+    rainslide: 17.25, /* "rain landslide ... every monsoon" @17.25-19.29 */
+    himlung: 23.17,   /* "The Himlung Avalanche" @23.17-23.65 */
+    face: 24.73,      /* "coming off a high face with snow and rock" @24.73-26.37 */
+    closer: 27.53     /* "closer" @27.53 */
+  };
+  const tl = gsap.timeline({ paused: true });
+  const NS = "http://www.w3.org/2000/svg";
+  const BR = Math.ceil(document.querySelector(P + "bracket").getTotalLength()) + 1;
+
+  /* rain tile (240 px) drawn three times for a seamless finite y loop over the right panel */
+  const rain = document.querySelector(P + "rain");
+  for (let k = 0; k < 3; k++) {
+    for (let i = 0; i < 22; i++) {
+      const x = 1040 + ((i * 353) % 780), y = 0 + k * 240 + ((i * 89) % 240);
+      const l = document.createElementNS(NS, "path");
+      l.setAttribute("d", "M" + x + "," + y + " L" + (x - 8) + "," + (y + 34));
+      rain.appendChild(l);
+    }
+  }
+  /* 12 slab debris particles and 8 splash particles */
+  const mk = (parent, n, x0, y0, id) => {
+    const g = document.querySelector(P + parent), out = [];
+    for (let i = 0; i < n; i++) {
+      const r = document.createElementNS(NS, "rect");
+      r.setAttribute("id", "rvr-" + id + i);
+      r.setAttribute("x", x0 + (i * 17) % 90); r.setAttribute("y", y0 + (i * 13) % 70);
+      r.setAttribute("width", 8 + (i % 3) * 4); r.setAttribute("height", 6 + (i % 2) * 4);
+      g.appendChild(r); out.push(r);
+    }
+    return out;
+  };
+  const SD = mk("slabdebris", 12, 610, 290, "sd"), SP = mk("splash", 8, 1560, 800, "sp");
+
+  /* ---- initial state ---- */
+  tl.set([P + "hl", P + "ebl", P + "ebr", P + "div", P + "left", P + "right", P + "t-alt", P + "t-slab", P + "noice", P + "rlab",
+    P + "card", P + "same", P + "schem", P + "dust", P + "slabdebris", P + "splash", P + "rain"], { autoAlpha: 0 }, 0);
+  tl.set(P + "ruler", { scaleY: 0, svgOrigin: "120 900" }, 0);
+  tl.set(P + "strike", { autoAlpha: 0 }, 0);
+  tl.set(P + "bracket", { strokeDasharray: BR, strokeDashoffset: BR }, 0);
+  tl.set([P + "d0", P + "d1", P + "d2"], { scale: 0, transformOrigin: "50% 50%" }, 0);
+
+  /* ---- open: headline, both panels (Langtang dim until it is named), divider ---- */
+  tl.fromTo(P + "hl", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUES.open + 0.1);
+  tl.fromTo(P + "right", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 0.3);
+  tl.fromTo(P + "ebr", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.8);
+  tl.fromTo(P + "left", { autoAlpha: 0, x: -40 }, { autoAlpha: 0.35, x: 0, duration: 0.7, ease: "power3.out" }, 0.5);
+  tl.to(P + "div", { autoAlpha: 1, duration: 0.4 }, 0.6);
+  tl.to(P + "schem", { autoAlpha: 1, duration: 0.4 }, 1.0);
+
+  /* ---- RIGHT "days of rain": rain falls (finite loop) ---- */
+  tl.to(P + "rain", { autoAlpha: 1, duration: 0.4 }, CUES.days - 0.15);
+  tl.fromTo(P + "rain", { y: 0 }, { y: 240, duration: 0.7, ease: "none", repeat: 27 }, CUES.days - 0.15);
+  /* "a soaked valley wall": the wetting front climbs the wall */
+  tl.to(P + "wetclipr", { attr: { y: 250, height: 650 }, duration: 0.75, ease: "power2.out" }, CUES.soaked - 0.1);
+  /* "None mentions glacier ice on that slope" */
+  tl.fromTo(P + "noice", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.glacier - 0.2);
+  tl.fromTo(P + "strike", { autoAlpha: 0, scale: 0, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "power3.out" }, CUES.ice - 0.1);
+  tl.to(P + "noice", { autoAlpha: 0, duration: 0.4 }, 15.3);
+
+  /* ---- LEFT "Langtang began about 17,000 feet up" ---- */
+  tl.to(P + "left", { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, CUES.langtang - 0.15);
+  tl.fromTo(P + "ebl", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.langtang - 0.15);
+  tl.to(P + "ruler", { scaleY: 1, svgOrigin: "120 900", duration: 0.6, ease: "power3.out" }, CUES.seventeen - 0.6);
+  tl.fromTo(P + "t-alt", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, CUES.seventeen - 0.1);
+
+  /* "where rock and glacier ice broke away together": the slab shudders, detaches and runs down the face */
+  tl.fromTo(P + "t-slab", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, CUES.rock - 0.15);
+  tl.to(P + "slab", { x: 3, duration: 0.06, ease: "none", yoyo: true, repeat: 5 }, CUES.rock);
+  tl.to(P + "slab", { x: 220, y: 470, rotation: 18, svgOrigin: "665 333", duration: 1.4, ease: "power2.in" }, CUES.rock + 0.36);
+  tl.set(P + "slabdebris", { autoAlpha: 1 }, CUES.rock + 0.5);
+  SD.forEach((r, i) => tl.fromTo(r, { x: 0, y: 0, rotation: 0 },
+    { x: 180 + (i * 19) % 90, y: 420 + (i * 23) % 90, rotation: (i % 2 ? 1 : -1) * 120, transformOrigin: "50% 50%", duration: 1.3, ease: "power2.in" },
+    CUES.rock + 0.5 + i * 0.05));
+  tl.set(P + "dust", { autoAlpha: 1 }, CUES.together - 0.05);
+  [P + "d0", P + "d1", P + "d2"].forEach((d, i) =>
+    tl.fromTo(d, { scale: 0, autoAlpha: 0.9 }, { scale: 1.6, autoAlpha: 0, transformOrigin: "50% 50%", duration: 1.3, ease: "power2.out" }, CUES.together - 0.05 + i * 0.12));
+  tl.to(P + "t-slab", { autoAlpha: 0, duration: 0.4 }, CUES.together + 0.6);
+  tl.to([P + "slab", P + "slabdebris"], { autoAlpha: 0.45, duration: 0.6 }, CUES.together + 1.0);
+
+  /* ---- RIGHT "The Kali Gandaki collapse": the wall slumps into the river, the river turns brown ---- */
+  /* rotational slump: the head drops and tilts back (-6 deg), the toe shoves out into the channel. Round 3: (110,64)
+     lands the toe at ~(1738,922), inside the water (surface 900, bed 934) with the nose's lower edge at ~(1718,905);
+     crest ~(1278,372). (Round 2 was (160,80): toe ~(1788,938), through the bed.) */
+  tl.to(P + "block", { x: 110, y: 64, rotation: -6, svgOrigin: "1400 600", duration: 1.0, ease: "power2.in" }, CUES.collapse - 0.15);
+  tl.to(P + "scar", { attr: { "stroke-opacity": 0.8 }, duration: 0.3 }, CUES.collapse + 0.5);
+  tl.to(P + "river", { attr: { fill: "#6b5040" }, duration: 0.6, ease: "power2.out" }, CUES.collapse + 0.7);
+  tl.set(P + "splash", { autoAlpha: 1 }, CUES.collapse + 0.7);
+  /* each piece lands with its centre at x 1650-1788, y 908-925 (half-extent <= 8 x 5 px): inside the water, above the
+     bed (y 934) and inside the banks, never in the black under the channel */
+  SP.forEach((r, i) => {
+    const cx = +r.getAttribute("x") + r.getAttribute("width") / 2, cy = +r.getAttribute("y") + r.getAttribute("height") / 2;
+    tl.fromTo(r, { x: 0, y: 0 },
+      { x: 1650 + (i * 23) % 140 - cx, y: 908 + (i * 5) % 18 - cy, duration: 0.6, ease: "power2.in" }, CUES.collapse + 0.7 + i * 0.04);
+  });
+  /* the last piece lands at collapse + 1.58; the pieces then dissolve into the brown water */
+  tl.to(P + "splash", { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, CUES.collapse + 1.7);
+  /* "the rain landslide Nepal sees every monsoon" */
+  tl.fromTo(P + "rlab", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.rainslide - 0.15);
+  tl.to(P + "ebr", { autoAlpha: 0, duration: 0.3 }, CUES.rainslide - 0.2);
+
+  /* ---- "The Himlung Avalanche, coming off a high face with snow and rock" ---- */
+  tl.fromTo(P + "card", { autoAlpha: 0, y: 80 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, CUES.himlung - 0.1);
+  tl.to(P + "tongueclipr", { attr: { height: 200 }, duration: 1.6, ease: "power2.in" }, CUES.face);
+  tl.to(P + "card", { y: -6, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3 }, CUES.himlung + 0.6);
+  /* "is the event closer to Langtang's type": bracket joins it to the Langtang slab */
+  tl.to(P + "bracket", { strokeDashoffset: 0, duration: 0.55, ease: "power2.inOut" }, CUES.closer - 0.15);
+  tl.fromTo(P + "same", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.closer + 0.15);
+
+  /* ---- exit: fade-through of the whole full-frame scene, done by D - 0.05 ---- */
+  tl.to([P + "svg", P + "hl", P + "ebl", P + "rlab", P + "card", P + "same", P + "schem"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, D - 0.6);
+  tl.to({}, { duration: 0.01 }, D - 0.01);  // hold the timeline to the host window (graphics_qc short-duration)
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-pore-pressure-a1 (A1 teaser): full-frame slope cross-section that actually fails. Rain falls, soaks in down to a
+     dashed slip surface, water pressure climbs (arrows + gauge), friction ticks along the slip surface blink off, the block
+     above the slip surface slides into the river, then a bottom rail sets days of rain against the 3 s on camera.
+     SCHEMATIC, NOT TO SCALE (no published slope numbers). USGS is a 19 px source credit, never a card.
+     Redo 29 Sep 26 (Opus): replaces the flat-trapezoid + USGS-card version (empty top and right half, 6 px shudder, no failure).
+     Geometry (px): surface crest y 250-300 left, toe (1580,900), river channel x 1590-1818 at y 920-958.
+     Slip surface C-curve (560,300)->(1500,880), 124-173 px deep mid-slope; arrows and friction ticks sampled on it.
+     Cues: retime-sheet g-pore-pressure-a1, host 144.304+23.653 (local seconds). Duration 23.653 s. -->
+<template>
+<style>
+  #pa1-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 40%, #0b1016 0%, #030507 78%); }
+  .pa1-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .pa1-hl { position:absolute; left:96px; top:70px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  .pa1-hl2 { color:#e74c3c; }
+  .pa1-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:3px; fill:#dfe7ee;
+    paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .pa1-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .pa1-src { position:absolute; left:96px; bottom:54px; font-weight:700; font-size:19px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  .pa1-schem { position:absolute; right:96px; top:54px; font-weight:700; font-size:19px; letter-spacing:2px; color:#93a3b2; white-space:nowrap; }
+</style>
+<div id="pa1-root" data-composition-id="g-pore-pressure-a1" data-width="1920" data-height="1080" data-duration="23.653">
+  <svg class="pa1-svg" id="pa1-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="pa1-soil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a3a2e"/><stop offset="1" stop-color="#33281f"/></linearGradient>
+      <linearGradient id="pa1-railfade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#030507" stop-opacity="0"/><stop offset="0.35" stop-color="#030507" stop-opacity="0.82"/><stop offset="1" stop-color="#030507" stop-opacity="0.9"/></linearGradient>
+      <linearGradient id="pa1-railh" x1="0" y1="0" x2="1" y2="0"><stop offset="0.70" stop-color="#ffffff"/><stop offset="0.84" stop-color="#000000"/></linearGradient>
+      <mask id="pa1-railmask" maskUnits="userSpaceOnUse" x="0" y="930" width="1920" height="150">
+        <rect x="0" y="930" width="1920" height="150" fill="url(#pa1-railh)"/>
+      </mask>
+      <clipPath id="pa1-rainclip"><rect x="300" y="170" width="1100" height="330"/></clipPath>
+      <clipPath id="pa1-slipclip"><rect id="pa1-slipclipr" x="540" y="280" width="0" height="640"/></clipPath>
+      <mask id="pa1-wetmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <path id="pa1-wetstroke" d="M560,300 L700,392 L900,540 L1100,672 L1300,790 L1420,850 L1500,880" fill="none" stroke="#ffffff" stroke-width="0" stroke-linejoin="round"/>
+      </mask>
+    </defs>
+
+    <g id="pa1-ground">
+      <!-- stable ground: everything below the slip surface -->
+      <path id="pa1-stable" d="M0,250 L96,256 L360,264 L480,276 L560,300 C600,560 1000,860 1500,880 L1580,900 L1610,936 L1650,958 L1770,958 L1805,934 L1836,904 L1920,896 L1920,1080 L0,1080 Z" fill="url(#pa1-soil)" stroke="#6b5a48" stroke-width="2"/>
+      <path id="pa1-bedrock" d="M0,430 L380,440 C640,720 1060,940 1640,1010 L1920,1010 L1920,1080 L0,1080 Z" fill="#2a3644"/>
+      <path id="pa1-river" d="M1590,920 L1610,936 L1650,958 L1770,958 L1805,934 L1818,920 Z" fill="#5a768f"/>
+      <path id="pa1-riversurf" d="M1590,920 L1818,920" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+    </g>
+
+    <!-- rain above the slope (finite loop, one 240 px tile repeated) -->
+    <g clip-path="url(#pa1-rainclip)"><g id="pa1-rain" stroke="#7fb2e5" stroke-width="2" stroke-linecap="round" stroke-opacity="0.45"></g></g>
+
+    <!-- slip surface (the scar that stays when the block goes) -->
+    <path id="pa1-slip" d="M560,300 C600,560 1000,860 1500,880" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-dasharray="12 9" clip-path="url(#pa1-slipclip)"/>
+
+    <!-- the block above the slip surface: slides at "gives way" -->
+    <g id="pa1-block">
+      <path id="pa1-blockshape" d="M560,300 L700,392 L900,540 L1100,672 L1300,790 L1420,850 L1500,880 C1000,860 600,560 560,300 Z" fill="url(#pa1-soil)" stroke="#6b5a48" stroke-width="2"/>
+      <path id="pa1-wet" d="M560,300 L700,392 L900,540 L1100,672 L1300,790 L1420,850 L1500,880 C1000,860 600,560 560,300 Z" fill="#7fb2e5" fill-opacity="0.42" mask="url(#pa1-wetmask)"/>
+    </g>
+
+    <!-- friction ticks across the slip surface (amber), sampled on the curve -->
+    <g id="pa1-ticks" stroke="#e8c56a" stroke-width="5" stroke-linecap="round">
+      <path id="pa1-tk0" d="M597,373 L568,385"/><path id="pa1-tk1" d="M638,449 L612,467"/><path id="pa1-tk2" d="M698,525 L674,547"/>
+      <path id="pa1-tk3" d="M774,598 L754,623"/><path id="pa1-tk4" d="M866,667 L849,693"/><path id="pa1-tk5" d="M972,728 L957,756"/>
+      <path id="pa1-tk6" d="M1090,780 L1078,810"/><path id="pa1-tk7" d="M1218,821 L1210,852"/><path id="pa1-tk8" d="M1356,850 L1351,882"/>
+    </g>
+
+    <!-- water-pressure arrows rising off the slip surface (lengths kept inside the block) -->
+    <g id="pa1-arrows" fill="none" stroke="#7fb2e5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+      <path id="pa1-ar0" d="M636,466 L636,378 M624,394 L636,378 L648,394"/>
+      <path id="pa1-ar1" d="M715,558 L715,446 M703,462 L715,446 L727,462"/>
+      <path id="pa1-ar2" d="M818,645 L818,529 M806,545 L818,529 L830,545"/>
+      <path id="pa1-ar3" d="M942,722 L942,610 M930,626 L942,610 L954,626"/>
+      <path id="pa1-ar4" d="M1084,787 L1084,695 M1072,711 L1084,695 L1096,711"/>
+      <path id="pa1-ar5" d="M1241,836 L1241,782 M1229,798 L1241,782 L1253,798"/>
+    </g>
+
+    <!-- debris spilling into the river (built in the script) -->
+    <g id="pa1-debris" fill="#6b5040"></g>
+
+    <!-- diagram labels (fixed; nothing here rides a camera move) -->
+    <path id="pa1-slipleader" d="M700,688 L752,624" fill="none" stroke="#dfe7ee" stroke-width="2"/>
+    <text id="pa1-t-slip" class="pa1-lab" x="560" y="716">SLIP SURFACE</text>
+    <path id="pa1-fricleader" d="M640,688 L684,560" fill="none" stroke="#e8c56a" stroke-width="2"/>
+    <text id="pa1-t-fric" class="pa1-lab" x="560" y="716" style="fill:#e8c56a">FRICTION</text>
+
+    <!-- water-pressure gauge, sky upper-right: needle rot 0 = left, 150 = red zone -->
+    <g id="pa1-gauge">
+      <path d="M1440,240 A120,120 0 0 1 1680,240 Z" fill="#0b1016" stroke="#2a3644" stroke-width="2"/>
+      <path d="M1450,240 A110,110 0 0 1 1670,240" fill="none" stroke="#5a768f" stroke-width="10"/>
+      <path d="M1615,144.7 A110,110 0 0 1 1670,240" fill="none" stroke="#e74c3c" stroke-width="10"/>
+      <path id="pa1-needle" d="M1560,240 L1472,240" fill="none" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="1560" cy="240" r="10" fill="#f2f5f8"/>
+    </g>
+    <text id="pa1-t-press" class="pa1-lab" x="1560" y="292" text-anchor="middle" style="fill:#7fb2e5">WATER PRESSURE</text>
+
+    <!-- bottom rail: days of rain vs the 3 s on camera -->
+    <!-- round 2: full-width ground band, its right end dissolved by a horizontal mask (no hard edge at x 1450),
+         fully gone by x 1613 so the river (x 1590-1818) and the slid block stay at full contrast -->
+    <rect x="0" y="930" width="1920" height="150" fill="url(#pa1-railfade)" mask="url(#pa1-railmask)"/>
+    <rect id="pa1-railrain" x="96" y="972" width="1232" height="16" fill="#7fb2e5"/>
+    <rect id="pa1-rail3s" x="1336" y="966" width="44" height="28" fill="#e74c3c"/>
+    <path id="pa1-railstart" d="M96,954 L96,996" fill="none" stroke="#f2f5f8" stroke-width="4"/>
+    <text id="pa1-t-rain" class="pa1-lab" x="712" y="954" text-anchor="middle" style="fill:#7fb2e5">RAIN</text>
+    <text id="pa1-t-3s" class="pa1-big" x="1358" y="954" text-anchor="middle" font-size="40" fill="#e74c3c">3 S</text>
+    <text id="pa1-t-began" class="pa1-lab" x="112" y="954">RAIN BEGAN</text>
+  </svg>
+  <div class="pa1-hl" id="pa1-hl"><span id="pa1-hl1">Days To Build,</span> <span class="pa1-hl2" id="pa1-hl2">Seconds To Fail</span></div>
+  <div class="pa1-schem" id="pa1-schem">SCHEMATIC, NOT TO SCALE</div>
+  <div class="pa1-src" id="pa1-src">Source: U.S. Geological Survey</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-pore-pressure-a1", P = "#pa1-";
+  const D = 23.653;
+  /* local cues, retime-sheet g-pore-pressure-a1 */
+  const CUES = {
+    build: 1.28,     /* "build" @1.28 */
+    seconds: 2.90,   /* "seconds." @2.90 */
+    survey: 6.12,    /* "Survey" @6.12 */
+    pattern: 8.14,   /* "pattern" @8.14 */
+    rain: 10.58,     /* "Rain soaks in slowly" @10.58-11.28 */
+    water: 12.38,    /* "water pressure ... climbs" @12.38-13.72 */
+    climbs: 13.72,
+    friction: 15.74, /* "the last of the friction holding it" @15.08-16.36 */
+    gives: 16.62,    /* "gives way all at once" @16.62 */
+    three: 18.86,    /* "three seconds on camera" @18.86-19.40 */
+    began: 22.38     /* "since the rain began" @22.38 */
+  };
+  const tl = gsap.timeline({ paused: true });
+  const TICKS = [0,1,2,3,4,5,6,7,8].map(i => P + "tk" + i);
+  const ARROWS = [0,1,2,3,4,5].map(i => P + "ar" + i);
+
+  /* rain streaks: one 240 px tile, drawn twice so the y loop is seamless */
+  const rain = document.querySelector(P + "rain");
+  const NS = "http://www.w3.org/2000/svg";
+  for (let k = 0; k < 3; k++) {
+    for (let i = 0; i < 26; i++) {
+      const x = 310 + ((i * 419) % 1080), y = -240 + k * 240 + ((i * 97) % 240);
+      const l = document.createElementNS(NS, "path");
+      l.setAttribute("d", "M" + x + "," + y + " L" + (x - 8) + "," + (y + 34));
+      rain.appendChild(l);
+    }
+  }
+  /* debris particles, start at the toe of the block */
+  const deb = document.querySelector(P + "debris");
+  const DEB = [];
+  for (let i = 0; i < 20; i++) {
+    const r = document.createElementNS(NS, "rect");
+    r.setAttribute("id", "pa1-db" + i);
+    r.setAttribute("x", 1470 + (i * 13) % 70); r.setAttribute("y", 860 + (i * 7) % 30);
+    r.setAttribute("width", 8 + (i % 4) * 3); r.setAttribute("height", 6 + (i % 3) * 3);
+    deb.appendChild(r); DEB.push(r);
+  }
+
+  /* ---- initial state ---- */
+  tl.set([P + "hl1", P + "hl2", P + "src", P + "schem", P + "rain", P + "ticks", P + "gauge", P + "t-press",
+    P + "t-slip", P + "slipleader", P + "t-fric", P + "fricleader", P + "t-rain", P + "t-3s", P + "t-began", P + "railstart", P + "debris"], { autoAlpha: 0 }, 0);
+  tl.set(ARROWS, { autoAlpha: 0, scaleY: 0 }, 0);
+  tl.set(TICKS, { scale: 0, autoAlpha: 1, transformOrigin: "50% 50%" }, 0);
+  tl.set([P + "railrain", P + "rail3s"], { scaleX: 0, autoAlpha: 0 }, 0);
+  tl.set(P + "needle", { rotation: 0, svgOrigin: "1560 240" }, 0);
+  tl.set(DEB, { x: 0, y: 0 }, 0);
+
+  /* ---- the slope rises in ---- */
+  tl.fromTo([P + "ground", P + "block"], { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0);
+  tl.to(P + "schem", { autoAlpha: 1, duration: 0.4 }, 0.4);
+
+  /* ---- "build for days": rain starts and keeps falling to the end ---- */
+  tl.to(P + "rain", { autoAlpha: 1, duration: 0.5 }, CUES.build - 0.15);
+  tl.fromTo(P + "rain", { y: 0 }, { y: 240, duration: 0.7, ease: "none", repeat: 31 }, CUES.build - 0.15);
+  tl.fromTo(P + "hl1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.build - 0.15);
+  /* "finish in seconds" */
+  tl.fromTo(P + "hl2", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.seconds - 0.15);
+
+  /* ---- USGS: a source credit on "Survey", never a card ---- */
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.survey - 0.15);
+
+  /* ---- "the same pattern": the slip surface draws, friction ticks hold it ---- */
+  tl.to(P + "slipclipr", { attr: { width: 980 }, duration: 0.9, ease: "power2.inOut" }, CUES.pattern - 0.15);
+  tl.fromTo([P + "t-slip", P + "slipleader"], { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.pattern + 0.5);
+  tl.set(P + "ticks", { autoAlpha: 1 }, CUES.pattern + 0.6);
+  tl.to(TICKS, { scale: 1, transformOrigin: "50% 50%", duration: 0.25, stagger: 0.07, ease: "back.out(2.4)" }, CUES.pattern + 0.6);
+  tl.to(P + "hl", { autoAlpha: 0, y: -20, duration: 0.4, ease: "power2.in" }, CUES.rain - 0.35);
+
+  /* ---- "Rain soaks in slowly": the infiltration front descends from the surface to the slip surface by 12.3 ---- */
+  tl.to(P + "wetstroke", { attr: { "stroke-width": 380 }, duration: 12.3 - CUES.rain + 0.15, ease: "power1.inOut" }, CUES.rain - 0.15);
+
+  /* ---- "water pressure inside the slope climbs": arrows + gauge into the red ---- */
+  tl.to(P + "t-slip", { autoAlpha: 0, duration: 0.3 }, CUES.water - 0.3);
+  tl.to(P + "slipleader", { autoAlpha: 0, duration: 0.3 }, CUES.water - 0.3);
+  tl.fromTo(P + "gauge", { autoAlpha: 0, scale: 0.8, svgOrigin: "1560 240" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, CUES.water - 0.15);
+  tl.fromTo(P + "t-press", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.water);
+  ARROWS.forEach((a, i) => {
+    const bb = [636, 715, 818, 942, 1084, 1241][i], by = [466, 558, 645, 722, 787, 836][i];
+    tl.fromTo(a, { autoAlpha: 1, scaleY: 0, svgOrigin: bb + " " + by }, { autoAlpha: 1, scaleY: 1, duration: 0.45, ease: "power3.out" }, CUES.water + i * 0.15);
+    tl.to(a, { scaleY: 1.12, svgOrigin: bb + " " + by, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 3 }, CUES.climbs + 0.1 + i * 0.08);
+  });
+  tl.to(P + "needle", { rotation: 150, svgOrigin: "1560 240", duration: CUES.climbs - CUES.water + 0.1, ease: "power2.in" }, CUES.water + 0.1);
+  tl.to(P + "needle", { rotation: 144, svgOrigin: "1560 240", duration: 0.18, ease: "sine.inOut", yoyo: true, repeat: 7 }, CUES.climbs + 0.25);
+
+  /* ---- "the last of the friction holding it": ticks blink off one by one ---- */
+  tl.fromTo([P + "t-fric", P + "fricleader"], { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.friction - 0.3);
+  TICKS.forEach((t, i) => {
+    tl.to(t, { autoAlpha: 0, duration: 0.04, ease: "none", yoyo: true, repeat: 2 }, CUES.friction + i * 0.07);
+  });
+
+  /* ---- "gives way all at once": the block slides into the river ---- */
+  tl.to(ARROWS.concat([P + "t-fric", P + "fricleader"]), { autoAlpha: 0, duration: 0.2 }, CUES.gives - 0.22);
+  /* round 3: the block slides down-slope onto the bank lip and its nose overhangs the channel. About (1030,590),
+     rotation 1 + (155,24) puts the toe (1500,880) at ~(1650,912), just above the water (y 920) inside x 1590-1818;
+     the lower edge rides the ground line (<= 7 px under it at the lip x 1576, hidden under the block) and its lowest
+     point stays at y ~912, clear of the rail band (y 930+) and the '3 S' label (top ~922). Crest (560,300) -> ~(720,316).
+     (Round 2 was rot 4 + (150,70): toe ~(1628,982), under the bed and through the rail band behind '3 S'.) */
+  tl.to(P + "block", { x: 155, y: 24, rotation: 1, svgOrigin: "1030 590", duration: 0.8, ease: "power3.in" }, CUES.gives);
+  tl.set(P + "debris", { autoAlpha: 1 }, CUES.gives + 0.55);
+  DEB.forEach((r, i) => {
+    /* each piece lands with its centre at x 1662-1752, y 930-945: with the +-90 turn its half-extent is <= 8.5 px, so
+       it stays inside the water (surface 920, flat bed 958 across x 1650-1770), never below the bed */
+    const cx = +r.getAttribute("x") + r.getAttribute("width") / 2, cy = +r.getAttribute("y") + r.getAttribute("height") / 2;
+    tl.fromTo(r, { x: 0, y: 0, rotation: 0 },
+      { x: 1662 + (i * 37) % 96 - cx, y: 930 + (i * 7) % 16 - cy, rotation: (i % 2 ? 1 : -1) * 90, transformOrigin: "50% 50%",
+        duration: 0.7, ease: "power2.in" }, CUES.gives + 0.55 + i * 0.03);
+  });
+  tl.to(P + "river", { attr: { fill: "#6b5040" }, duration: 0.6, ease: "power2.out" }, CUES.gives + 0.9);
+  tl.to(P + "riversurf", { attr: { stroke: "#8a6a50" }, duration: 0.6, ease: "power2.out" }, CUES.gives + 0.9);
+  /* the last piece lands at gives + 1.82; the pieces then dissolve into the brown water (no squares left standing) */
+  tl.to(P + "debris", { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, CUES.gives + 1.9);
+  tl.to(P + "block", { y: 20, duration: 0.12, ease: "power1.out", yoyo: true, repeat: 1 }, CUES.gives + 0.8);
+
+  /* ---- "three seconds on camera": days of rain against a 3 s tick ---- */
+  tl.fromTo(P + "railrain", { autoAlpha: 1, scaleX: 0, transformOrigin: "left center" }, { autoAlpha: 1, scaleX: 1, duration: 0.55, ease: "power3.out" }, CUES.three - 0.15);
+  tl.fromTo(P + "t-rain", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, CUES.three + 0.1);
+  tl.fromTo(P + "rail3s", { autoAlpha: 1, scaleX: 0, transformOrigin: "left center" }, { autoAlpha: 1, scaleX: 1, duration: 0.25, ease: "power3.out" }, CUES.three + 0.42);
+  tl.fromTo(P + "t-3s", { autoAlpha: 0, scale: 1.4, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.out" }, CUES.three + 0.45);
+
+  /* ---- "since the rain began": the rail's start label ---- */
+  tl.fromTo(P + "railstart", { autoAlpha: 0, scaleY: 0, svgOrigin: "96 975" }, { autoAlpha: 1, scaleY: 1, duration: 0.3, ease: "power3.out" }, CUES.began - 0.15);
+  tl.fromTo(P + "t-began", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.began - 0.1);
+
+  /* ---- exit: fade-through of the whole scene (full-frame MG), done by D - 0.05 ---- */
+  tl.to([P + "svg", P + "schem", P + "src"], { autoAlpha: 0, duration: 0.55, ease: "power2.in" }, D - 0.6);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

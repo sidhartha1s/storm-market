@@ -81,6 +81,8 @@ surface). Beige cite card above is the only exception, for quoted sources over d
 | 'Courier New', monospace | system | dispatch/radio counters (`.dispatchlab .d1`) |
 | 'AbrilFig' (Abril Fatface), falls back Georgia, serif | `episodes/<slug>/fonts/AbrilFatface-Regular.ttf`, vendored per episode via `@font-face { src: url('fonts/AbrilFatface-Regular.ttf'); }`; canonical copy at `references/editing-patterns/fonts/AbrilFatface-Regular.ttf` | display headline for date/figure popfigs (`.popfig .pf-big`) |
 
+'Arial Black' must always carry `font-weight:900` in comps (CSS rule and SVG text alike): without it the render host substitutes a thin face (ep-nepal 29 Sep 26: every weightless headline rendered light).
+
 ## Type tiers (px)
 Three tiers minimum in every designed card (unchanged gate rule: `graphics_qc` flags flat-type
 below 3 tiers with 4+ text nodes).

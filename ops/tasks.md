@@ -35,6 +35,25 @@ Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or t
 | 17 | gate: one stillness number (graphics_qc idle 3.0/2.5 s -> 4.0 s, idle hard, idle-budget removed) | - | done 26 Sep 26, PR fix/stillness-4s |
 | 18 | library sweep: dark chips and colour-block stamps left in bulletin-typewriter.html, ranked-bars.html, ef-ladder.html, cards.css .stamp, snippets/usage-examples.html | - | todo |
 
+## Parked until the new laptop (owner 28 Sep 26; source review: howseen-ai/claude-motion-design)
+Current box: 16 GB RAM, GTX 1650 4 GB; full renders already hit the commit-memory limit. Revisit when the new laptop arrives.
+| # | task | why parked | status |
+|---|---|---|---|
+| 19 | Motion blur on fast MG moves: 6 to 8 subframes per frame blended with ffmpeg `tmix`, MG scenes only, one graphic as the first test | about 8x the capture work per blurred frame | parked |
+| 20 | 60 fps masters, only if motion blur alone is not enough | 2x frames for a small gain in narrated docs | parked |
+
+## Studio (`hyperframes preview`) on a small box (owner 1 Oct 26)
+Never tested on this box because it always died (learnings/render.md "HF studio": a 32-min comp fired 2,200+ media
+requests at once, black canvas, no audio; that was 0.7.x). Goal: scrub the real timeline without a render. Cheapest first;
+stop at the first one that works. Every row runs alone (one heavy job at a time) and logs peak RAM, so the new laptop has a baseline.
+| # | task | why | status |
+|---|---|---|---|
+| 21 | Re-test full studio on this box at the current pin with `--no-open --no-browser-gpu`, on the newest finished episode: open it, scrub to 3 points, log peak RAM and time to first frame. 0.8.93 loads only media near the playhead, which is the exact 0.7.x failure | may already be fixed upstream; zero code | todo (this box) |
+| 22 | Per-act studio: open one act's sub-composition at a time instead of index.html (the trimmed-scaffold recipe in learnings/render.md, scripted once if it gets used twice) | a 3 to 5 min window holds a fraction of the media | todo, only if #21 fails |
+| 23 | Preview proxies: 540p low-bitrate copies of `media/` served in place of the originals for preview only (renders keep the originals) | decode cost is most of the RAM; the studio's own `--proxy` only converts codecs, not size | todo, only if #22 is still heavy |
+| 24 | Our own scrubber page: a static page that loads index.html in an iframe and seeks its paused GSAP timelines plus video currentTime from one slider; no studio server, lint, filmstrips or thumbnails | lightest way to "see the timeline"; read-only, never writes episode HTML | idea, only if #21 to #23 fail |
+| 25 | New laptop: full studio on a finished 20+ min episode, same 3-point scrub, compared with the #21 numbers | the real fix is RAM | parked until the new laptop |
+
 ## Minor findings, not scheduled
 - #96: a crash after synthesis but before the manifest write labels the segment "legacy" (audio is correct).
 - #97: WARN text misleading when every on-screen file is tagged modern.

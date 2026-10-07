@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-social-mock (A4): FULL-FRAME, track 2, host 577.545 + 8.0 (nx-a4-s4). Rebuilt 29 Sep 26 (redo list): the old phone
+     rendered empty because every child used frame coordinates inside a positioned phone (all of it landed at x 1544-1896).
+     No phone now: six blurred glass post cards cascade in, one becomes the hero post and its line unblurs. Every child uses
+     card-relative coordinates. Blurred-handle rule kept: no real names, handles or avatars (mg_specs/g-social-mock.md).
+     The "12" is the NDRRMA count already on screen in the toll cards (factcheck-C: 12 confirmed dead, 27 Sept).
+     Cues (retime-sheet g-social-mock): story 0.38, online 0.74, count 2.40, Posts 3.48, glacier 4.96, collapse 5.32,
+     repeat 6.30, Langtang 6.84. Exit 7.35-8.0. -->
+<template>
+<style>
+  .sm-wrap { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .sm-glass { position:absolute; box-sizing:border-box; overflow:hidden; border-radius:28px;
+    background: rgba(10,16,24,0.55); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.5); }
+  .sm-card { width:520px; height:300px; }
+  .sm-av { position:absolute; left:28px; top:28px; width:56px; height:56px; border-radius:50%; background:#5a768f; filter:blur(3px); }
+  .sm-bar { position:absolute; border-radius:8px; background:rgba(147,163,178,0.55); filter:blur(4px); }
+  .sm-thumb { position:absolute; border-radius:14px; background:linear-gradient(135deg, #2a3644, #15202b); filter:blur(3px); }
+  .sm-chip { position:absolute; left:96px; top:96px; padding:14px 26px 12px; }
+  .sm-eb { font-weight:700; font-size:22px; line-height:26px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .sm-num { margin-top:4px; font-family:'Courier New', monospace; font-weight:700; font-size:52px; line-height:56px; color:#e74c3c; white-space:nowrap; }
+  .sm-hero { left:410px; top:240px; width:1100px; height:600px; }
+  .sm-hav { position:absolute; left:40px; top:40px; width:88px; height:88px; border-radius:50%; background:#5a768f; filter:blur(4px); }
+  .sm-line1 { position:absolute; left:40px; top:166px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; line-height:76px; color:#f2f5f8; white-space:nowrap; }
+  .sm-line2 { position:absolute; left:40px; top:262px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:40px; line-height:50px; color:#d8a13a; white-space:nowrap; }
+  .sm-play { position:absolute; left:500px; top:450px; width:0; height:0; border-left:56px solid rgba(242,245,248,0.55); border-top:34px solid transparent; border-bottom:34px solid transparent; }
+  .sm-q { position:absolute; left:1440px; top:150px; font-family:'AbrilFig', Georgia, serif; font-size:180px; line-height:190px; color:#d0121f;
+    text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+</style>
+<div class="sm-wrap" data-composition-id="g-social-mock" data-width="1920" data-height="1080" data-duration="8.0">
+  <div class="sm-glass sm-card" id="sm-c1" style="left:300px; top:240px;"><div class="sm-av"></div><div class="sm-bar" style="left:104px; top:40px; width:220px; height:18px;"></div><div class="sm-bar" style="left:28px; top:112px; width:440px; height:16px;"></div><div class="sm-bar" style="left:28px; top:146px; width:380px; height:16px;"></div><div class="sm-thumb" style="left:28px; top:186px; width:464px; height:86px;"></div></div>
+  <div class="sm-glass sm-card" id="sm-c2" style="left:760px; top:190px;"><div class="sm-av"></div><div class="sm-bar" style="left:104px; top:40px; width:180px; height:18px;"></div><div class="sm-bar" style="left:28px; top:112px; width:460px; height:16px;"></div><div class="sm-bar" style="left:28px; top:146px; width:300px; height:16px;"></div><div class="sm-thumb" style="left:28px; top:186px; width:464px; height:86px;"></div></div>
+  <div class="sm-glass sm-card" id="sm-c3" style="left:1160px; top:250px;"><div class="sm-av"></div><div class="sm-bar" style="left:104px; top:40px; width:240px; height:18px;"></div><div class="sm-bar" style="left:28px; top:112px; width:420px; height:16px;"></div><div class="sm-bar" style="left:28px; top:146px; width:440px; height:16px;"></div><div class="sm-thumb" style="left:28px; top:186px; width:464px; height:86px;"></div></div>
+  <div class="sm-glass sm-card" id="sm-c4" style="left:240px; top:520px;"><div class="sm-av"></div><div class="sm-bar" style="left:104px; top:40px; width:200px; height:18px;"></div><div class="sm-bar" style="left:28px; top:112px; width:450px; height:16px;"></div><div class="sm-bar" style="left:28px; top:146px; width:340px; height:16px;"></div><div class="sm-thumb" style="left:28px; top:186px; width:464px; height:86px;"></div></div>
+  <div class="sm-glass sm-card" id="sm-c5" style="left:700px; top:500px;"><div class="sm-av"></div><div class="sm-bar" style="left:104px; top:40px; width:260px; height:18px;"></div><div class="sm-bar" style="left:28px; top:112px; width:430px; height:16px;"></div><div class="sm-bar" style="left:28px; top:146px; width:400px; height:16px;"></div><div class="sm-thumb" style="left:28px; top:186px; width:464px; height:86px;"></div></div>
+  <div class="sm-glass sm-card" id="sm-c6" style="left:1160px; top:520px;"><div class="sm-av"></div><div class="sm-bar" style="left:104px; top:40px; width:210px; height:18px;"></div><div class="sm-bar" style="left:28px; top:112px; width:400px; height:16px;"></div><div class="sm-bar" style="left:28px; top:146px; width:460px; height:16px;"></div><div class="sm-thumb" style="left:28px; top:186px; width:464px; height:86px;"></div></div>
+  <div class="sm-glass sm-chip" id="sm-chip">
+    <div class="sm-eb" id="sm-eb">OFFICIAL COUNT</div>
+    <div class="sm-num" id="sm-num">12</div>
+  </div>
+  <div class="sm-glass sm-hero" id="sm-hero">
+    <div class="sm-hav"></div>
+    <div class="sm-bar" style="left:156px; top:48px; width:320px; height:28px;"></div>
+    <div class="sm-bar" style="left:156px; top:92px; width:200px; height:28px;"></div>
+    <div class="sm-bar" id="sm-b1" style="left:40px; top:192px; width:960px; height:24px;"></div>
+    <div class="sm-bar" id="sm-b2" style="left:40px; top:274px; width:880px; height:24px;"></div>
+    <div class="sm-bar" style="left:40px; top:346px; width:620px; height:24px;"></div>
+    <div class="sm-thumb" style="left:40px; top:396px; width:1020px; height:170px;"></div>
+    <div class="sm-play" id="sm-play"></div>
+    <div class="sm-line1" id="sm-line1">&ldquo;Another Glacier Collapse&rdquo;</div>
+    <div class="sm-line2" id="sm-line2">A Repeat Of Langtang</div>
+  </div>
+  <div class="sm-q" id="sm-q">?</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 8.0;
+  const CARDS = ["#sm-c1", "#sm-c2", "#sm-c3", "#sm-c4", "#sm-c5", "#sm-c6"];
+  const REST = ["#sm-c1", "#sm-c2", "#sm-c3", "#sm-c4", "#sm-c6"];
+  tl.set(CARDS.concat(["#sm-chip", "#sm-hero", "#sm-line1", "#sm-line2", "#sm-q"]), { autoAlpha: 0 }, 0);
+
+  /* STORY ONLINE @0.38: six posts fly in from the right in a loose cascade (0.15 s stagger), each a slight tilt */
+  CARDS.forEach(function (c, i) {
+    tl.fromTo(c, { autoAlpha: 0, x: 900, rotation: 0 }, { autoAlpha: 1, x: 0, rotation: [-3, 2, -2, 3, -1, 2][i], duration: 0.6, ease: "power3.out" }, 0.38 + i * 0.15);
+  });
+  /* the feed keeps scrolling gently until the hero moment */
+  tl.to(CARDS, { y: -18, duration: 2.3, ease: "sine.inOut" }, 1.2);
+  /* COUNT @2.40: the official count chip */
+  tl.fromTo("#sm-chip", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.4);
+
+  /* POSTS @3.48: card 5 grows into the hero post (from card 5's box: scale 520/1100, offset 700-410 = 290, 500-240 = 260), the rest dim and drift */
+  tl.set("#sm-c5", { autoAlpha: 0 }, 3.48);
+  tl.fromTo("#sm-hero", { autoAlpha: 1, scale: 0.4727, x: 290, y: 260, rotation: -1, transformOrigin: "0% 0%" },
+    { autoAlpha: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.6, ease: "power3.inOut" }, 3.48);
+  tl.to(REST, { opacity: 0.25, duration: 0.5 }, 3.48);
+  tl.to(REST, { x: "-=80", duration: 4.0, ease: "none" }, 3.48);
+  /* round 2: the chip drifts INWARD (it sat at the 96 px margin and the -80 drift took it to x 16) */
+  tl.to("#sm-chip", { x: "+=40", duration: 4.0, ease: "none" }, 3.48);
+  tl.fromTo("#sm-play", { scale: 1 }, { scale: 1.15, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 5 }, 4.1);
+
+  /* GLACIER @4.96: the first body line unblurs into the claim */
+  tl.to("#sm-b1", { autoAlpha: 0, duration: 0.3 }, 4.96);
+  tl.fromTo("#sm-line1", { autoAlpha: 0, filter: "blur(14px)" }, { autoAlpha: 1, filter: "blur(0px)", duration: 0.45, ease: "power2.out" }, 4.96);
+  /* REPEAT @6.30: the second line */
+  tl.to("#sm-b2", { autoAlpha: 0, duration: 0.25 }, 6.3);
+  tl.fromTo("#sm-line2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 6.3);
+  /* LANGTANG @6.84: the red ? slams onto the hero's top-right corner */
+  tl.fromTo("#sm-q", { autoAlpha: 0, scale: 2.2, rotation: -12 }, { autoAlpha: 1, scale: 1, rotation: -6, duration: 0.3, ease: "power4.in" }, 6.84);
+
+  /* exit 7.35: the hero and the ? slide right, the rest fade */
+  tl.to(["#sm-hero", "#sm-q"], { x: "+=980", autoAlpha: 0, duration: DUR - 7.35, ease: "power3.in" }, 7.35);
+  tl.to(REST.concat(["#sm-chip"]), { autoAlpha: 0, duration: DUR - 7.35, ease: "power2.in" }, 7.35);
+  window.__timelines["g-social-mock"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

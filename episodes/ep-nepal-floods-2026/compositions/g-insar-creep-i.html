@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-insar-creep-i (I section teaser): full-frame split on ONE shared axis (library/inhouse/split-shared-scale.html
+     idiom). Left: Langtang, August, satellite radar caught the slope moving for weeks before it fell. Right: Kali
+     Gandaki, September, no agency has published anything like that. SCHEMATIC: no ground-movement numbers here
+     (the confirmed ICIMOD figure, ~12 in / 30 cm in 3-4 weeks, is g-insar-creep's payoff at A3; factcheck-B #20, #22).
+     REDO 29 Sep 26 (was a 600x380 card over the g-aug-vs-sep map, with an arbitrary "18 cm / week" counter).
+     index.html must mount host-insar-creep-i at data-start="74.46" data-duration="10.282" data-track-index="2"
+     (was 73.9 / 10.842 / track 4) and end host-aug-vs-sep at 74.46 (data-duration 22.9).
+     Local cue = retime-sheet.md time (host 54.600 on the sheet = abs 73.9) - 0.56:
+       "In" 0.29, "August" 0.39, "satellite" 1.39, "radar" 1.67, "Langtang" 2.65, "moving" 3.37, "weeks" 3.93,
+       "fell" 4.67, "Kali" 5.87, "Gandaki" 6.11, "Wall" 6.67, "no" 7.59, "agency" 7.77, "published" 8.43, "that" 9.33.
+     (The orchestrator's brief listed abs cues ~1-2 s earlier than the words.json; words.json wins: nx-i1-s3 starts
+     69.733 and "satellite" is at 6.12 in it = abs 75.85 = local 1.39.)
+     VERIFIER NOTE (round 3): the retime-sheet row "g-insar-creep-i host 54.600" is the OLD mount (abs 73.9). index.html now
+     mounts this host at abs 74.46, so sheet time - 0.56 = local time: "fell" sheet 5.23 = abs 79.13 = local 4.67 (X at 4.67),
+     "Kali" 6.43 = local 5.87 (ebr), "no" 8.15 = local 7.59 (flat), "agency" 8.33 = local 7.77 (stamp). All on their words. -->
+<template>
+<style>
+  #gci-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .gci-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  .gci-panel { position:absolute; top:230px; width:820px; height:620px; box-sizing:border-box; border-radius:24px;
+    background:rgba(11,16,22,0.82); border:1px solid rgba(255,255,255,0.12); }
+  .gci-eb { position:absolute; top:262px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .gci-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gci-ax { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:4px; fill:#93a3b2; }
+  .gci-fell { font-family:Arial, sans-serif; font-weight:700; font-size:30px; letter-spacing:2px; fill:#e74c3c; }
+  .gci-stamp { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; fill:#e74c3c; }
+</style>
+<div id="gci-root" data-composition-id="g-insar-creep-i" data-width="1920" data-height="1080" data-duration="10.282">
+  <div class="gci-grid" id="gci-grid"></div>
+  <div class="gci-panel" id="gci-pl" style="left:96px;"></div>
+  <div class="gci-panel" id="gci-pr" style="left:1004px;"></div>
+  <div class="gci-eb" id="gci-ebl" style="left:136px;">LANGTANG &middot; AUGUST</div>
+  <div class="gci-eb" id="gci-ebr" style="left:1044px;">KALI GANDAKI &middot; SEPTEMBER</div>
+
+  <svg class="gci-svg" viewBox="0 0 1920 1080">
+    <!-- the ONE shared y axis, drawn once on the centre divider, with shared gridlines across both plots -->
+    <g id="gci-axis">
+      <path id="gci-yax" d="M960,772 L960,388" stroke="#c8d3e0" stroke-width="3" fill="none"/>
+      <path d="M950,400 L960,382 L970,400 Z" fill="#c8d3e0"/>
+      <path d="M952,490 L968,490 M952,580 L968,580 M952,670 L968,670" stroke="#c8d3e0" stroke-width="3"/>
+      <path id="gci-grl" d="M150,490 L900,490 M150,580 L900,580 M150,670 L900,670" stroke="rgba(147,163,178,0.22)" stroke-width="1.5" stroke-dasharray="6 8" fill="none"/>
+      <path id="gci-grr" d="M1020,490 L1770,490 M1020,580 L1770,580 M1020,670 L1770,670" stroke="rgba(147,163,178,0.22)" stroke-width="1.5" stroke-dasharray="6 8" fill="none"/>
+      <!-- x axes (weeks), five week ticks each -->
+      <path d="M150,760 L900,760 M300,760 L300,770 M450,760 L450,770 M600,760 L600,770 M750,760 L750,770" stroke="#5a768f" stroke-width="3" fill="none"/>
+      <path d="M1020,760 L1770,760 M1170,760 L1170,770 M1320,760 L1320,770 M1470,760 L1470,770 M1620,760 L1620,770" stroke="#5a768f" stroke-width="3" fill="none"/>
+    </g>
+    <text class="gci-ax" id="gci-ylab" x="960" y="200" text-anchor="middle">GROUND MOVEMENT</text>
+    <text class="gci-ax" id="gci-xl" x="525" y="808" text-anchor="middle">WEEKS</text>
+    <text class="gci-ax" id="gci-xr" x="1395" y="808" text-anchor="middle">WEEKS</text>
+    <text class="gci-ax" id="gci-tag" x="960" y="912" text-anchor="middle">SCHEMATIC</text>
+
+    <!-- left: the displacement the radar caught, rising for weeks -->
+    <!-- round 3: the line is revealed by a clip edge that rides with the satellite, so the plot fills from "satellite" -->
+    <defs><clipPath id="gci-lclip"><rect id="gci-lrect" x="150" y="380" width="760" height="400"/></clipPath></defs>
+    <path id="gci-line" clip-path="url(#gci-lclip)" d="M170,740 C420,738 640,722 760,642 S872,522 900,472" stroke="#e8c56a" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <g id="gci-x">
+      <path d="M886,458 L914,486 M914,458 L886,486" stroke="#e74c3c" stroke-width="7" stroke-linecap="round"/>
+    </g>
+    <circle id="gci-xring" cx="900" cy="472" r="16" fill="none" stroke="#e74c3c" stroke-width="3"/>
+    <text class="gci-fell" id="gci-fell" x="868" y="444" text-anchor="end">FELL &#183; AUG 26</text>
+
+    <!-- right: nothing published; a flat dashed line and the stamp -->
+    <path id="gci-flat" d="M1040,740 L1760,740" stroke="#93a3b2" stroke-width="4" stroke-dasharray="14 10" fill="none"/>
+    <text class="gci-stamp" id="gci-stamp" x="1414" y="600" text-anchor="middle">NO PUBLISHED DATA</text>
+
+    <!-- satellite, drawn about (0,0) and moved by GSAP only; its radar waves ride with it -->
+    <!-- radar returns: one dot per week tick on the displacement line, placed in JS, popped as the beam passes -->
+    <g id="gci-dots"></g>
+    <g id="gci-sat">
+      <!-- radar beam down to the plot baseline (sat rides at y 330, baseline y 760) -->
+      <path id="gci-cone" d="M0,18 L-46,428 L46,428 Z" fill="#7fb2e5" fill-opacity="0.09"/>
+      <path id="gci-beam" d="M0,18 L0,428" stroke="#7fb2e5" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="6 6" fill="none"/>
+      <rect x="-13" y="-9" width="26" height="18" rx="3" fill="#c8d3e0"/>
+      <rect x="-47" y="-6" width="30" height="12" fill="#5a768f" stroke="#7fb2e5" stroke-width="1.5"/>
+      <rect x="17" y="-6" width="30" height="12" fill="#5a768f" stroke="#7fb2e5" stroke-width="1.5"/>
+      <path d="M0,9 L0,16" stroke="#c8d3e0" stroke-width="3"/>
+      <path id="gci-w1" d="M-26,26 Q0,42 26,26" stroke="#7fb2e5" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path id="gci-w2" d="M-26,26 Q0,42 26,26" stroke="#7fb2e5" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path id="gci-w3" d="M-26,26 Q0,42 26,26" stroke="#7fb2e5" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-insar-creep-i", P = "#gci-";
+  const DUR = 10.282;
+  const tl = gsap.timeline({ paused: true });
+  const line = document.getElementById("gci-line");
+  const WAVES = [P + "w1", P + "w2", P + "w3"];
+
+  /* ---- initial state ---- */
+  tl.set([P + "pl", P + "pr"], { autoAlpha: 0, y: 30 }, 0);
+  tl.set([P + "ebl", P + "ebr", P + "ylab", P + "xl", P + "xr", P + "tag", P + "x", P + "xring", P + "fell", P + "stamp", P + "sat"], { autoAlpha: 0 }, 0);
+  tl.set(P + "axis", { autoAlpha: 0 }, 0);
+  tl.set(P + "lrect", { scaleX: 0, svgOrigin: "150 380" }, 0);
+  tl.set(P + "flat", { scaleX: 0, svgOrigin: "1040 740" }, 0);
+  tl.set(P + "sat", { x: 150, y: 330 }, 0);
+  tl.set(WAVES, { autoAlpha: 0, scale: 0.4, svgOrigin: "0 30" }, 0);
+  tl.set(P + "x", { scale: 1.8, svgOrigin: "900 472" }, 0);
+  tl.set(P + "stamp", { scale: 1.4, svgOrigin: "1414 582" }, 0);
+
+  /* ---- ambient: the grid drifts for the whole window ---- */
+  tl.fromTo(P + "grid", { x: 0 }, { x: 120, duration: DUR, ease: "none" }, 0);
+
+  /* ---- 0.0-0.6: the split and its one shared axis build (axis before anything points at it) ---- */
+  tl.to([P + "pl", P + "pr"], { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.06 }, 0.0);
+  tl.to(P + "axis", { autoAlpha: 1, duration: 0.4 }, 0.15);
+  tl.fromTo(P + "yax", { scaleY: 0, svgOrigin: "960 772" }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, 0.15);
+  tl.fromTo([P + "ylab", P + "xl", P + "xr", P + "tag"], { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.05 }, 0.3);
+  /* "August" @0.39: the left eyebrow; the right one sits dim until its place is named */
+  tl.fromTo(P + "ebl", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.35);
+  tl.fromTo(P + "ebr", { autoAlpha: 0 }, { autoAlpha: 0.4, duration: 0.4 }, 0.5);
+
+  /* ---- "satellite" 1.39 -> "weeks" 3.93: the satellite crosses the top of the left panel (x 150 -> 900), its beam
+     sweeping the plot; the displacement line is revealed under the beam (clip edge x 150 + 760 f tracks the satellite
+     x 150 + 750 f) and a radar return pops on the line at each week tick as the beam passes it.
+     Round 3: the line used to wait for "moving" 3.37 (plot empty 0-3.4); it now fills from the word "satellite". ---- */
+  const SX0 = 150, SX1 = 900, ST0 = 1.39, ST1 = 3.93;
+  tl.to(P + "sat", { autoAlpha: 1, duration: 0.25 }, ST0);
+  tl.to(P + "sat", { x: SX1, duration: ST1 - ST0, ease: "none" }, ST0);        /* y stays 330, clear of the plot top 400 */
+  tl.to(P + "lrect", { scaleX: 1, svgOrigin: "150 380", duration: ST1 - ST0, ease: "none" }, ST0);
+  tl.fromTo(WAVES, { autoAlpha: 1, scale: 0.4 }, { autoAlpha: 0, scale: 1.7, duration: 0.7, ease: "power1.out", stagger: 0.22, repeat: 2, immediateRender: false }, ST0);
+  tl.to(P + "sat", { autoAlpha: 0, duration: 0.3 }, ST1);
+  const dotsG = document.getElementById("gci-dots");
+  const yAt = function (x) {           /* point on the displacement line nearest to screen x */
+    let lo = 0, hi = line.getTotalLength();
+    for (let k = 0; k < 30; k++) { const mid = (lo + hi) / 2; if (line.getPointAtLength(mid).x < x) lo = mid; else hi = mid; }
+    return line.getPointAtLength(lo).y;
+  };
+  [170, 300, 450, 600, 750].forEach(function (x, i) {
+    const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    const y = yAt(x);
+    c.setAttribute("id", "gci-dot" + i); c.setAttribute("cx", x); c.setAttribute("cy", y.toFixed(1)); c.setAttribute("r", "9");
+    c.setAttribute("fill", "#e8c56a"); c.setAttribute("stroke", "#04070c"); c.setAttribute("stroke-width", "2");
+    dotsG.appendChild(c);
+    const at = ST0 + (ST1 - ST0) * (x - SX0) / (SX1 - SX0);
+    tl.set(c, { autoAlpha: 0, scale: 0, svgOrigin: x + " " + y.toFixed(1) }, 0);
+    tl.to(c, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2.5)" }, at);
+  });
+
+  /* ---- "moving" 3.37: the drawn line pulses once as the word lands; "fell" 4.67: the X ---- */
+  tl.fromTo(P + "line", { attr: { "stroke-width": 5 } }, { attr: { "stroke-width": 8 }, duration: 0.28, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 3.37);
+  tl.to(P + "x", { autoAlpha: 1, scale: 1, duration: 0.25, ease: "power4.out" }, 4.67);
+  tl.fromTo(P + "fell", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 4.72);
+  tl.fromTo(P + "xring", { autoAlpha: 0.9, attr: { r: 16 } }, { autoAlpha: 0, attr: { r: 52 }, duration: 1.0, ease: "power2.out", repeat: 2, repeatDelay: 0.2, immediateRender: false }, 4.8);
+
+  /* ---- "Kali Gandaki Wall" 5.87-6.67: the right side lights up ---- */
+  tl.to(P + "ebr", { autoAlpha: 1, duration: 0.35 }, 5.87);
+  tl.fromTo(P + "ebr", { scale: 1, transformOrigin: "left center" }, { scale: 1.06, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 5.87);
+  tl.to(P + "pr", { borderColor: "rgba(232,197,106,0.45)", duration: 0.5, ease: "power2.out" }, 6.11);
+  tl.to([P + "line", P + "dots"], { opacity: 0.55, duration: 0.6 }, 6.67);
+
+  /* ---- "no agency" 7.59: the right plot stays empty, a dashed flat line draws, the stamp lands on "agency" ---- */
+  tl.to(P + "flat", { scaleX: 1, duration: 0.7, ease: "power2.out" }, 7.59);
+  tl.to(P + "stamp", { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.out" }, 7.77);
+  tl.to(P + "stamp", { scale: 1.03, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 3 }, 8.2);   /* breathes to 9.6 */
+
+  /* ---- exit 9.64 (abs 84.1): both sides and the axis slide up together and fade; cut to the map at 10.282 ---- */
+  tl.to([P + "pl", P + "pr", P + "ebl", P + "ebr", P + "axis", P + "ylab", P + "xl", P + "xr", P + "tag", P + "line", P + "dots", P + "x", P + "fell", P + "flat", P + "stamp"],
+        { y: -40, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 9.64);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

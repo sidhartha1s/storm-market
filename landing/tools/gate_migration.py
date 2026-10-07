@@ -14,11 +14,11 @@ SKIP = {"og-src.html"}
 # text that legitimately disappears (old chrome: nav labels, footer rows, hard popup)
 ALLOW = set(a.lower() for a in sys.argv[1:])
 ALLOW_DEFAULT = {"field notes", "free checklists", "state guides", "youtube", "get the book",
-                 "get the book $14.99", "skip to content", "back to top", "look inside", "reviews", "faq",
+                 "get the book $9.99", "skip to content", "back to top", "look inside", "reviews", "faq",
                  "privacy", "terms", "menu", "close",
                  "before you go further", "your state's storm packet is", "no purchase just pick your state",
                  "get my free state packet", "back to the storm ready home", "or see inside the book",
-                 "week one of the plan costs", "it's the week the disaster reports keep citing", "$14 99 refundable for seven days",
+                 "week one of the plan costs", "it's the week the disaster reports keep citing", "$9 99 refundable for seven days",
                  "or see what's inside", "be ready before the next one", "four pages the three hazards your state actually gets who to call your state's mitigation program and deductible rules and a one page plan"}
 
 def visible(h):
@@ -65,9 +65,18 @@ def canon(o):
     if isinstance(o, str): return norm(o)
     return o
 
+# Deliberate copy changes since main, as (old, new) pairs: applied to main's page before comparing, so the gate
+# still catches every other lost sentence. Empty once main carries the change.
+OLD_TO_NEW = []
+
 def old_file(rel):
     r = subprocess.run(["git", "-C", REPO, "show", f"main:landing/{rel}"], capture_output=True)
-    return r.stdout.decode("utf-8", "replace") if r.returncode == 0 else None
+    if r.returncode != 0:
+        return None
+    h = r.stdout.decode("utf-8", "replace")
+    for a, b in OLD_TO_NEW:
+        h = h.replace(a, b)
+    return h
 
 def main():
     fails = 0; pages = 0

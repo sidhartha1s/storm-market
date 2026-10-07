@@ -14,7 +14,7 @@
 4. **Do not announce the move.** Banned openers: here's the thing / here's why this matters / here's the kicker / get
    this / let me walk you through / let me be honest / picture / imagine / notice / consider / do the math / run the
    numbers / start with / which brings us to / buckle up / let's dive in / sit with that / let that sink in / make no
-   mistake / what you need to understand is / what makes this different is. Delete the opener, start with the fact.
+   mistake / what you need to understand is / what makes this different is. Delete the opener, start with the fact. Exception: hook callbacks (script-scaling.md 'open-loop registry', owner 4 Oct 26).
 5. **Banned words:** delve, furthermore, moreover, additionally, comprehensive, crucial/critical/essential as filler,
    robust, unprecedented, leverage, foster, seamless, elevate, navigate (figurative), game-changer, paradigm, tapestry,
    landscape (figurative), realm, testament, underscore (verb), pivotal, groundbreaking, transformative, multifaceted,
@@ -29,8 +29,8 @@
    drama stack of fragments (one deliberate fragment per script); the question-then-answer fragment ("The result?
    Bankruptcy."); the anaphora run (3+ sentences opening on the same word); the balanced-contrast engine beyond one per
    script; the "notice what he didn't do" scaffold; the characterized quote ("what sounded like mercy:"); the aphorism /
-   mirrored-callback ending; the thesis opener ("this is the story of…"); the summary tag ("That's the mechanism.").
-8. **No rhetorical questions in narration.** Write the statement.
+   mirrored-callback ending (exception: the one signature sign-off line, DESIGN.md "Signature closing footnote", owner kept it 4 Oct 26); the thesis opener ("this is the story of…"); the summary tag ("That's the mechanism.").
+8. **No rhetorical questions in narration.** Write the statement. Exception: the chapter-exit question + one affirming line (owner 4 Oct 26; script-os.md rule 9).
 9. **No em dashes.** Period, comma, or parentheses.
 10. **No hedging or filler intensifiers:** arguably, perhaps, kind of, sort of, somewhat, very, really, truly,
     incredibly, absolutely.
@@ -51,9 +51,11 @@
   event.") and the mirrored callback ending ("The physics did not change. The slope did."). Both sat in the #5 draft.
   Rewrite each as one plain statement or a concrete detail.
 - Retention devices survive as facts, not as announcements: a chapter ends on a question the next chapter answers
-  (script-os rule 3) is allowed only when the question is a real open fact ("Then where did the rock go?"), never a
+  (script-os rule 9) is allowed only when the question is a real open fact ("Then where did the rock go?"), never a
   rhetorical one to the viewer.
-- The humanise pass is a gate before TTS, run on the whole script, with a line-by-line diff kept in the episode folder.
+- The humanise pass is a gate before a section locks (revised 27 Sep 26, `references/script-scaling.md` "Section
+  lock — the ONE definition"): run on that section's prose as it's written, not held for the whole finished script,
+  with a line-by-line diff kept in the episode folder.
 
 ## Spoken voice palette (owner 2026-09-20, from the ep-1974 TTS probes)
 The narration is a person telling a story, and pocket-TTS voices every device below. No code enforces this

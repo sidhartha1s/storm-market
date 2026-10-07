@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-sep-2024 (A2): FULL-FRAME map + right rail, track 2, host 364.146 + 19.409 (nx-a2-s8), no footage. Rebuilt 29 Sep 26
+     (redo list): the old RHS panel was built for Lallantop footage that was never mounted (left 57 % black), showed
+     "0 LIVES LOST" from 2.98 s, and its calendar rings sat on no labelled cell.
+     MAP: the Natural Earth Nepal outline copied from g-bay-of-bengal-track, fitted to x 96-1150 by
+     translate(868,1682) scale(2) (raw x -386..140, y -718..-439 -> screen x 96-1148, y 246-804). Kathmandu at (780,617)
+     (g-bay-of-bengal-track's KTM point, same transform). The valley shape is exaggerated for legibility (SCHEMATIC).
+     FACTS: factcheck-B #11: the 2024 Kathmandu Valley floods, "Sept 27-28, 2024", flooding began 26 Sept, toll "more than
+     two hundred" (200+ on screen). factcheck-C #1 / factcheck-D: the 2026 storm, houses in mud Sept 26 (script A5), the
+     wall and the Himlung avalanche Sept 27. Rings: 2024 on 27 and 28, 2026 on 26 and 27; each ring is centred on its cell.
+     Cues (retime-sheet g-sep-2024): Two 3.50, flooded 7.06, Kathmandu 7.62, landslides 9.80, 200 11.42, lives 11.72,
+     same 13.76, dates 13.98, Higher 15.68, falls 17.80, snow 18.40. Exit: fade-through 18.809-19.409. -->
+<template>
+<style>
+  #sep-2024-root { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .s24-all { position:absolute; inset:0; }
+  .s24-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .s24-head { position:absolute; left:96px; top:70px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; line-height:72px; color:#f2f5f8; white-space:nowrap; }
+  .s24-maplab { font-family: Arial, sans-serif; font-weight:700; fill:#f2f5f8; stroke:#04070c; stroke-width:8px; paint-order:stroke fill; stroke-linejoin:round; }
+  .s24-panel { position:absolute; right:0; top:0; bottom:0; width:820px; background: linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); }
+  /* round 2: the rail opens on "calendar" (1.3 s) with the 2026 strip, 2024 joins on "Two years ago", and the counter
+     sits UNDER the calendar (y 640-806), so the right 40 % is never empty and the counter never slides the calendar out */
+  .s24-cgrp { position:absolute; left:1184px; top:640px; }
+  .s24-cnum { font-family:'Courier New', monospace; font-weight:700; font-size:120px; line-height:120px; color:#e74c3c; white-space:nowrap; }
+  .s24-clab { margin-top:16px; font-weight:700; font-size:26px; line-height:30px; letter-spacing:6px; color:#c8d3e0; white-space:nowrap; }
+  .s24-cal { position:absolute; left:1184px; top:230px; width:640px; }
+  .s24-eb { font-weight:700; font-size:22px; line-height:26px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .s24-yr { position:absolute; left:0; font-weight:700; font-size:30px; line-height:36px; letter-spacing:3px; color:#dfe7ee; white-space:nowrap; }
+  .s24-strip { position:absolute; left:0; width:640px; height:64px; }
+  .s24-cell { position:absolute; top:0; width:64px; height:64px; box-sizing:border-box; border:1px solid rgba(147,163,178,0.35); background:rgba(21,32,43,0.85);
+    text-align:center; font-weight:700; font-size:30px; line-height:62px; color:#93a3b2; }
+  .s24-ring { position:absolute; width:56px; height:56px; box-sizing:border-box; border:4px solid #d0121f; border-radius:50%; }
+</style>
+<div id="sep-2024-root" data-composition-id="g-sep-2024" data-width="1920" data-height="1080" data-duration="19.409">
+  <div class="s24-all" id="s24-all">
+  <svg class="s24-svg" viewBox="0 0 1920 1080">
+    <g id="s24-map">
+      <g transform="translate(868,1682) scale(2)">
+        <path id="s24-nepal" fill="#15202b" stroke="#7fb2e5" stroke-opacity="0.7" stroke-width="3" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M137,-544 L121,-545 L105,-540 L74,-542 L66,-548 L49,-554 L45,-559 L36,-559 L34,-550 L27,-548 L14,-554 L9,-561 L5,-559 L4,-548 L-0,-547 L-3,-548 L-10,-562 L-21,-572 L-57,-575 L-59,-578 L-55,-594 L-60,-595 L-78,-591 L-115,-616 L-123,-637 L-134,-641 L-157,-635 L-185,-664 L-194,-665 L-204,-669 L-228,-687 L-245,-695 L-249,-699 L-257,-714 L-269,-716 L-283,-718 L-298,-714 L-308,-697 L-313,-694 L-317,-693 L-324,-702 L-331,-703 L-350,-688 L-363,-672 L-369,-661 L-373,-651 L-374,-635 L-381,-629 L-386,-613 L-385,-610 L-362,-595 L-358,-595 L-356,-599 L-351,-598 L-314,-576 L-304,-565 L-269,-544 L-261,-547 L-230,-530 L-216,-530 L-212,-520 L-176,-509 L-166,-516 L-141,-510 L-137,-514 L-124,-518 L-90,-504 L-85,-486 L-64,-475 L-57,-474 L-52,-468 L-46,-466 L-28,-473 L-23,-472 L-19,-469 L-17,-459 L-13,-456 L0,-459 L24,-454 L46,-445 L66,-453 L71,-444 L84,-439 L92,-444 L106,-442 L120,-445 L130,-441 L133,-444 L140,-465 L140,-470 L129,-493 L131,-512 L140,-539 Z"/>
+      </g>
+      <!-- Kathmandu Valley (schematic, exaggerated), its flood fill, ring and landslide ticks -->
+      <path id="s24-valley" d="M734 612 Q742 588 776 586 Q816 584 826 606 Q832 630 800 644 Q770 652 748 640 Q730 630 734 612 Z" fill="#0b1016" stroke="#dfe7ee" stroke-width="3"/>
+      <path id="s24-flood" d="M734 612 Q742 588 776 586 Q816 584 826 606 Q832 630 800 644 Q770 652 748 640 Q730 630 734 612 Z" fill="#7fb2e5" fill-opacity="0.85"/>
+      <circle id="s24-vring" cx="780" cy="616" r="66" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+      <g id="s24-ticks" stroke="#e74c3c" stroke-width="6" stroke-linecap="round">
+        <path d="M780 540 V520"/><path d="M826 552 L838 536"/><path d="M852 588 L870 580"/><path d="M856 628 L876 634"/><path d="M834 668 L846 684"/>
+        <path d="M780 692 V712"/><path d="M726 668 L714 684"/><path d="M704 628 L684 634"/><path d="M708 588 L690 580"/><path d="M734 552 L722 536"/>
+      </g>
+      <!-- round 4: label moved below the southern border (baseline 758 -> 835). At 758 the border (screen y 732-774 across
+           x 740-916) ran through the glyphs; at 835 the cap tops sit at ~802, clear of the border's lowest point under the label
+           (~772 at x 907), and the label fades out on the map push (it would cross the border / leave frame at scale 1.25) -->
+      <text id="s24-ktmlab" class="s24-maplab" x="560" y="835" font-size="40">Kathmandu Valley</text>
+      <!-- snow over the northern border band -->
+      <g id="s24-snow" fill="#f2f5f8">
+        <circle cx="240" cy="300" r="5"/><circle cx="290" cy="276" r="4"/><circle cx="330" cy="300" r="6"/><circle cx="370" cy="318" r="4"/>
+        <circle cx="410" cy="342" r="5"/><circle cx="450" cy="370" r="4"/><circle cx="480" cy="388" r="6"/><circle cx="520" cy="410" r="4"/>
+        <circle cx="560" cy="428" r="5"/><circle cx="600" cy="436" r="4"/><circle cx="640" cy="470" r="6"/><circle cx="680" cy="500" r="4"/>
+        <circle cx="720" cy="524" r="5"/><circle cx="270" cy="330" r="4"/><circle cx="350" cy="346" r="4"/><circle cx="430" cy="398" r="5"/>
+        <circle cx="500" cy="440" r="4"/><circle cx="580" cy="460" r="5"/><circle cx="660" cy="520" r="4"/><circle cx="200" cy="320" r="5"/>
+      </g>
+      <text id="s24-snowlab" class="s24-maplab" x="330" y="232" font-size="30">Snow</text>
+    </g>
+  </svg>
+  <div class="s24-head" id="s24-head">September 2024</div>
+  <div class="s24-panel" id="s24-panel"></div>
+  <div class="s24-cgrp" id="s24-cgrp">
+    <div class="s24-cnum" id="s24-cnum">150</div>
+    <div class="s24-clab" id="s24-clab">LIVES LOST · SEPT 2024</div>
+  </div>
+  <div class="s24-cal" id="s24-cal">
+    <div class="s24-eb" id="s24-eb">LAST TEN DAYS OF SEPTEMBER</div>
+    <div class="s24-yr" id="s24-y24" style="top:52px;">2024</div>
+    <div class="s24-strip" id="s24-st24" style="top:100px;"></div>
+    <div class="s24-yr" id="s24-y26" style="top:202px;">2026</div>
+    <div class="s24-strip" id="s24-st26" style="top:250px;"></div>
+  </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  /* two strips of Sept 21-30 (10 cells of 64 px, x 1184-1824); rings centred on the named day's cell */
+  function strip(id, ringDays) {
+    const el = document.getElementById(id); const rings = [];
+    for (let d = 21; d <= 30; d++) {
+      const c = document.createElement("div");
+      c.className = "s24-cell"; c.style.left = ((d - 21) * 64) + "px"; c.textContent = d;
+      el.appendChild(c);
+    }
+    ringDays.forEach(function (d) {
+      const r = document.createElement("div");
+      r.className = "s24-ring"; r.style.left = ((d - 21) * 64 + 4) + "px"; r.style.top = "4px";
+      el.appendChild(r); rings.push(r);
+    });
+    return rings;
+  }
+  const r24 = strip("s24-st24", [27, 28]);
+  const r26 = strip("s24-st26", [26, 27]);
+  const rings = r24.concat(r26);
+
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 19.409;
+  tl.set(["#s24-head", "#s24-valley", "#s24-flood", "#s24-vring", "#s24-ktmlab", "#s24-snow", "#s24-snowlab", "#s24-panel", "#s24-cgrp",
+    "#s24-eb", "#s24-y24", "#s24-st24", "#s24-y26", "#s24-st26"], { autoAlpha: 0 }, 0);
+  tl.set(gsap.utils.toArray("#s24-ticks path"), { autoAlpha: 0 }, 0);
+  tl.set(rings, { autoAlpha: 0 }, 0);
+  tl.set("#s24-flood", { scale: 0, svgOrigin: "780 616" }, 0);
+
+  /* round 2: the scan line is deleted (it read as a render glitch). Continuous motion is the border pulse
+     (1.0-8.2), the valley ring pulse (8.4-14.0), the rings (14.3-16.7) and the map push + snow (15.68-19.2). */
+  /* the map draws in on "Nepal" 0.0 */
+  tl.fromTo("#s24-nepal", { autoAlpha: 0, scale: 0.96, svgOrigin: "-123 -578" }, { autoAlpha: 1, scale: 1, svgOrigin: "-123 -578", duration: 0.8, ease: "power3.out" }, 0.1);
+  tl.fromTo("#s24-nepal", { attr: { "stroke-opacity": 0.45 } }, { attr: { "stroke-opacity": 0.9 }, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 1.0);
+
+  /* "late September calendar" @1.26-1.92: the rail opens on this storm's ten days, its dates (26, 27) ringed */
+  tl.fromTo("#s24-panel", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 1.1);
+  tl.fromTo("#s24-eb", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.4);
+  tl.fromTo(["#s24-y26", "#s24-st26"], { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.08 }, 1.5);
+  tl.fromTo(r26, { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in", stagger: 0.06 }, 1.92);
+
+  /* TWO YEARS AGO @3.50: the headline, and the 2024 row joins the calendar (no rings until "same dates") */
+  tl.fromTo("#s24-head", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 3.5);
+  tl.fromTo(["#s24-y24", "#s24-st24"], { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.08 }, 3.6);
+  /* FLOODED @7.06 / KATHMANDU @7.62: the valley ring pops, the flood fills it, the label */
+  tl.fromTo("#s24-valley", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 6.9);
+  tl.fromTo("#s24-vring", { autoAlpha: 0, scale: 0.3, svgOrigin: "780 616" }, { autoAlpha: 1, scale: 1, svgOrigin: "780 616", duration: 0.45, ease: "back.out(2.5)" }, 7.06);
+  tl.to("#s24-flood", { autoAlpha: 1, scale: 1, svgOrigin: "780 616", duration: 1.2, ease: "power2.out" }, 7.06);
+  tl.fromTo("#s24-ktmlab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.62);
+  tl.to("#s24-vring", { scale: 1.08, svgOrigin: "780 616", duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 7 }, 8.4);
+  /* LANDSLIDES @9.80: ten red slide ticks around the rim */
+  tl.fromTo(gsap.utils.toArray("#s24-ticks path"), { autoAlpha: 0, scale: 0.2, svgOrigin: "780 616" }, { autoAlpha: 1, scale: 1, svgOrigin: "780 616", duration: 0.3, ease: "power3.out", stagger: 0.08 }, 9.8);
+
+  /* 200 ... LIVES @11.42-11.72: the counter appears under the calendar at 11.2 on its first tick (150), lands 200+ on LIVES */
+  tl.fromTo("#s24-cgrp", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 11.2);
+  const cnt = { v: 150 };
+  tl.to(cnt, { v: 200, duration: 0.52, ease: "power4.out", onUpdate: function () {
+    const e = document.getElementById("s24-cnum"); if (e) e.textContent = cnt.v > 199.5 ? "200+" : String(Math.round(cnt.v));
+  } }, 11.2);
+  tl.to("#s24-cnum", { scale: 1.05, transformOrigin: "left center", duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 11.8);
+
+  /* SAME DATES @13.76-13.98: the counter dims, the 2024 rings land ON their days (27, 28) under 2026's (26, 27) */
+  tl.to("#s24-cgrp", { opacity: 0.35, duration: 0.4, ease: "power2.out" }, 13.5);
+  tl.fromTo(r24, { autoAlpha: 0, scale: 2.2 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.in", stagger: 0.06 }, 13.72);
+  tl.to(rings, { scale: 1.12, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 14.3);
+
+  /* HIGHER UP @15.68: the map pushes north; FALLS @17.80 ... SNOW @18.40 over the northern border band */
+  /* round 3: origin x 1148 = Nepal's east edge, so the push grows the map leftward and the border stays at x <= 1148,
+     clear of the counter label at x 1184 (origin 1000 carried the border to x 1185, y 801-998, onto "LIVES LOST") */
+  tl.to("#s24-map", { scale: 1.25, y: 120, svgOrigin: "1148 246", duration: 2.5, ease: "power2.inOut" }, 15.68);
+  tl.to("#s24-ticks", { autoAlpha: 0.35, duration: 0.6 }, 15.68);
+  /* the label is gone by 16.03 (map at scale ~1.01, cap tops ~812 vs border ~782): scaled 1.25 it would land at y ~1102, off frame */
+  tl.to("#s24-ktmlab", { autoAlpha: 0, duration: 0.35, ease: "power2.in" }, 15.68);
+  tl.set("#s24-snow", { autoAlpha: 1 }, 16.2);
+  gsap.utils.toArray("#s24-snow circle").forEach(function (c, i) {
+    tl.fromTo(c, { y: -60, autoAlpha: 0 }, { y: 40, autoAlpha: 1, duration: 0.9 + (i % 3) * 0.15, ease: "none", repeat: 1 }  /* ends by 19.24 */, 16.2 + (i % 5) * 0.16);
+  });
+  tl.fromTo("#s24-snowlab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 18.4);
+
+  /* exit: fade-through over the last 0.6 s */
+  tl.to("#s24-all", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, DUR - 0.6);
+  window.__timelines["g-sep-2024"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

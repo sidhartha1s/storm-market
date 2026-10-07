@@ -2,6 +2,35 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 2026-09-29 - ep-nepal-floods-2026: one snapshot at 60 % of each window missed four near-empty openings
+- **What happened:** the pre-render check snapshotted each changed comp once, at 60 % of its window, and all looked full.
+  The final-v2 render then failed `verify_render.sh` with four black spans (74.47-76.17, 78.43-82.27, 513.30-525.97,
+  541.80-545.63 s): g-insar-creep-i, g-insar-creep, g-ledger and g-toll-counter-a4 sat on a title or two small cards
+  over navy while waiting for cue-timed reveals. An 80 min render was spent to find it.
+- **Rule:** settle frames are sampled at reveal-start (window start + ~1 s) as well as mid-hold and pre-exit; a
+  structure is in frame from the window start and cues animate the data, not the arrival of the whole layout
+  (`references/mg-quickref.md` "Frame coverage"). Proposed: a pre-render blackdetect over snapshot frames (task to file).
+
+## 2026-09-29 - ep-nepal-floods-2026: 'Arial Black' needs an explicit font-weight:900 because the render host substitutes it
+- **What happened:** every headline-tier rule written as `font-family:'Arial Black', Arial, sans-serif` with no weight
+  rendered in the master as a thin regular-weight sans ("The toll depends on who's counting.", "32 Days Apart", "SEPT 27",
+  "Pasang Bhote" and more), so the 52 px tier lost its weight and the hierarchy collapsed on TV. g-outro and index.html
+  `.popfig .pf-sub` already carried `font-weight:900` and rendered heavy.
+- **Fix:** `font-weight:900` added to every CSS rule and SVG text style whose font-family starts with 'Arial Black'
+  (37 comps now reference it, 0 without a weight, checked by a read-only regex pass over `compositions/*.html`).
+- **Rule home:** `library/inhouse/snippets/tokens.md` "Fonts".
+
+## 2026-09-29 - ep-nepal-floods-2026: Sonnet built, fixed and checked its own graphics; about 40 % below Enderlin
+- **What happened:** 15 of the 16 subagents that wrote graphics ran on Sonnet 5. The same model fixed and checked them,
+  and nobody read a settled frame before the render. Four graphics shipped mostly empty. `g-sep-2024` was built to sit
+  over footage that was never mounted beneath it. 51 subagents in total, and 2.6x Enderlin's output tokens for half the runtime.
+- **Root cause:** the orchestrator took the global "Subagents: default sonnet" over this repo's 24 Sep Opus trial
+  (Opus 43/50 vs Sonnet 26/50, Sonnet passing every gate with broken work). It left that row marked "proposed", put only
+  the maps on Opus and treated cards, mechanisms and diagrams as simple work. It counted gates passing plus one Sonnet
+  frame check as verification. The gates cannot see an empty frame: blank_scan counts DOM boxes, and graphics_qc stages each comp alone on a blank stage.
+- **Rules now:** CLAUDE.md "Chain of command for motion graphics" (Opus 5.5 for every graphics role; the builder never
+  verifies itself), `ops/decisions.md` 29 Sep 26, `references/mg-quickref.md` "Frame coverage" and "Verify" (pre-render `hyperframes snapshot` over the real footage).
+
 ## 2026-09-26 - MG eval 2 (El Reno "widest tornado", Three.js, Opus builders): the small brief won, house docs lost
 - **The owner's ranking:**
   1. B, small brief only (~21 min build).

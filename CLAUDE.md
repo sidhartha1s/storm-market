@@ -4,6 +4,16 @@ Narrated US weather and natural-disaster retrospectives, US English. Separate fr
 the same external tool pattern. One fact, one home: a rule lives here OR in the file named below, never both. If two
 files disagree, fix it in the same PR and say which one won.
 
+**This repo's docs outrank the global `~/.claude/CLAUDE.md`.** Where this file, a doc it names, `ops/decisions.md` or the
+owner's instruction for the episode says something, that wins over any global default (subagent model, effort, review
+flow). The global file only fills what this repo leaves open. Read `ops/decisions.md` before choosing a model or a flow.
+
+**Chain of command for motion graphics.** Every subagent that builds, retimes, fixes, redesigns or verifies a graphic runs
+on Opus 5.5 at high effort or above (blind-judged Opus 43/50 vs Sonnet 26/50; Sonnet passes every gate with broken
+work). Sonnet is for shot logs, sourcing and read-only probes, never graphics. The builder never verifies its own work:
+the orchestrator reads a settled frame of every new or changed graphic over the footage it will sit on before any render.
+A fix goes back to an Opus builder, never to the model that made the defect. Gates passing is not verification.
+
 | Need | Home |
 |---|---|
 | Kickoff preflight, phase map | `skills/storm-episode/SKILL.md`, `skills/mini-storms/SKILL.md` (junctioned into `~/.claude/skills/`, so a skill edit is a repo commit) |
@@ -26,7 +36,7 @@ An owner correction or a measured surprise lands in its single home (`references
 `learnings/` file) the same session.
 
 ## Two lanes, two skills
-- `/storm-episode`: the documentary. 13 to 23 min is the default band, not a cap. Confirm length per episode.
+- `/storm-episode`: the documentary. Length is set per episode by the story and confirmed with the owner (El Reno: about 25 to 30 min, owner 3 Oct 26). No default band.
 - `/mini-storms`: 8 to 12 min seasonal, breaking and outlier videos shipped in 3 h or less. Stitched news, public
   domain and stock clips, red popfigs with a local scrim, news bug, NO chapter cards, one owner gate (packaging). Slugs `ms-<topic>`.
 - Narration sits above every bed in both lanes: score 0.13, ambience 0.20 or less, checked with ebur128 per 15 s window.
@@ -65,8 +75,8 @@ An owner correction or a measured surprise lands in its single home (`references
 ## The formula
 Script method and hook wording live in `references/script-os.md` and `script-framework.md`; titles and thumbnails in
 `references/packaging-rules.md`. What stays true for every episode:
-- Stats run through the middle, each translated to human scale. Emotion is banked at the END (survivor vignettes close).
-- Tornado episodes march location by location. Stakes descend in order. Micro-loops every 30 to 45 s. No-spoiler metadata.
+- Stats run through the middle, each translated to human scale. Human moments go where they hit hardest (script-scaling.md "Emotion").
+- Tornado episodes may march location by location (editor's call per episode). Micro-loops every 30 to 45 s. No-spoiler metadata.
 - A meteorology explainer layer in every episode, and at least two facts no competitor video has (NWS Service
   Assessments, NIST reports, NEXRAD replots, 911 audio, day-after newspapers).
 - Reused-content safety is scripted original narration with analysis. A clip reel is a channel killer.
@@ -77,7 +87,8 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 - Pace is measured, never assumed. Probe-TTS two segments AT THE SHIPPING TEMPO, then
   `python3 scripts/word_budget.py episodes/<slug> --target <min> --probe <wav> <wav>` sizes the script from that
   pace and the real non-voice seconds. It fails outside target +/- 1 min; a script is not locked while it fails.
-- Tempo per lane lives in `config.yaml channel.tempo`; `tts_episode.py` applies it. Order: TTS, tempo, re-transcribe, THEN time graphics. `sweep_episode.py` fails a words.json or `data-duration` that runs past its wav.
+- Tempo per lane lives in `config.yaml channel.tempo`; `tts_episode.py` applies it. A key reveal can slow to 1.0:
+  give it its own segment and put `(tempo 1.0)` on that segment's heading. The editor picks which lines; no quota (owner 2 Oct 26). Order: TTS, tempo, re-transcribe, THEN time graphics. `sweep_episode.py` fails a words.json or `data-duration` that runs past its wav.
 - TTS-safe text: spell out ALL dates, times and numbers, no paired dashes, sentences under 24 words, flowing connective sentences.
 - Homographs: list, senses and the probe-before-respelling rule live in `references/homographs.md`, gated by
   `scripts/homograph_scan.py` (in `run_gates.py`).
@@ -91,15 +102,18 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
   interleaved) is a per-cut editor decision. Expect Content ID revenue claims on these (claims are not strikes). Never
   build a segment that dies if claimed. Vary sources and chapters, never reuse a broadcast cut.
 - Read the clip's `provenance.csv` row BEFORE wiring it. Era-mismatch or "backup only" notes disqualify it.
-- A REAL clip (broadcast, public domain, survivor) every 45 to 60 s. The core audience saw these events live. Stock only fills between.
+- A REAL clip (broadcast, public domain, survivor) about every 45 to 60 s is the aim, not a hard rule (owner 4 Oct 26). The core audience saw these events live. Stock only fills between.
 - Storm-chaser and independent streamer footage: NEVER without a licence. Credit is not a licence. Never disguise a
   source to slip unlicensed footage past detection. Grain or grade on footage you may legitimately use is fine.
 - No AI-generated witnesses, no fabricated quotes. Real quotes come from NWS assessments or news archives, shown as attributed text.
 
 ## Pipeline
 Per episode in `episodes/<slug>/`. The skill's phase map points at these step numbers. Never edit a shipped episode.
-1. `edit_script.md`: typed segment list plus per-beat visual intent, written on `references/script-scaling.md`. Zero open
-   `[verify]` markers before TTS. The CTA hinge is named (segment before, segment after, estimated time). Owner signs off.
+1. `edit_script.md`: typed segment list plus per-beat visual intent, written on `references/script-scaling.md`. A
+   section goes to TTS only once LOCKED (hook+intro locks and moves first; the one lock definition is
+   `references/script-scaling.md` "Section lock — the ONE definition" — never restated here) — never the whole
+   script waiting on the last act. The CTA hinge is named (segment before, segment after, estimated time). Owner
+   signs off on story/register in parallel with the fact-check fan-out, not serially after it.
 2. TTS: `python3 scripts/tts_episode.py episodes/<slug>` makes per-segment wavs at the lane tempo plus words.json (faster-whisper) in one pass.
 3. Sourcing: the agent downloads everything itself, 2 to 3 frame-checked candidates per key beat. The owner confirms only `insert` clips.
 4. Compose `index.html` by hand as a hyperframes composition, one sub-composition per act, graphics library-first and built to
@@ -109,9 +123,12 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
    including the no-repeat rule (reuse needs `data-callback="reason"`, 3 uses max, last 90 s exempt); (c) the static
    suite, all green; (d) verify changed compositions per `references/mg-quickref.md` "Verify"; (e) after the render only,
    `scripts/verify_render.sh <episode-dir> <basename>`. Never call a rule fixed from your shot map: re-run the gates on the final `index.html`.
-7. Deliverables: `python3 scripts/master_deliverables.py episodes/<slug> <basename> --hevc` makes the 1080p master at
-   -14 LUFS, the EN SRT (needs the `nx-*` id on narration audio) and the HEVC archive (needs the PATH ffmpeg 8.1.1, not
-   the 8.1.2 shared build). The 1080p `-master.mp4` IS the upload file, no upscale. `metadata.md` at publish: first URL
+7. Deliverables: `python3 scripts/master_deliverables.py episodes/<slug> <basename>` makes the 1080p master at
+   -14 LUFS and the EN SRT (needs the `nx-*` id on narration audio). No HEVC archive (owner 28 Sep 26: disk). The 1080p
+   `-master.mp4` IS the upload file, no upscale. The moment the final master exists: move the master and SRT (both
+   gitignored) into the MAIN checkout's `episodes/<slug>/renders/` and delete every other render (drafts, the
+   pre-master final, previews). Never delete the master. `metadata.md` stays tracked in the episode folder. After
+   publish, commit, PR and merge the episode branch, then remove the worktree. `metadata.md` at publish: first URL
    is `channel.cta.first_link`, then the "book mentioned at mm:ss" line, no chapter marker at the CTA, category Education, type Overview.
 - Chunk a render only if a single render proves unstable.
 

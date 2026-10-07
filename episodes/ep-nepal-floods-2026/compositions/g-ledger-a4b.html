@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-ledger-a4b (A4-S6, 17.873 s): the ledger board returns with Established and Disputed already filled, then the
+     three Unknown claims land on their words, each with a small mechanism that animates on its cue. Same sourcing as
+     g-ledger. REDO 29 Sep 26: full height (headers top 110, rows top 200/420/640, row height 180), row text 38 px with a
+     22 px label line, Disputed numerals 96 px Abril, focus moves to the Unknown column on "Some of it is still open".
+     Columns: Established x 96-596, Disputed x 656-1196, Unknown x 1276-1784 (scaled 1.08 from its left edge it ends
+     at 1825, the text-safe edge). Cues from retime-sheet.md (host 595.789+17.873 on the sheet). -->
+<template>
+<style>
+  #gla-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 40%, #0b1016 0%, #030507 78%); }
+  .gla-sweep { position:absolute; left:0; top:0; width:320px; height:1080px;
+    background:linear-gradient(100deg, transparent, rgba(127,178,229,0.06), transparent); }
+  .gla-lcols { position:absolute; left:0; top:0; width:1240px; height:1080px; }
+  .gla-ucol { position:absolute; left:1276px; top:100px; width:508px; height:760px; }
+  .gla-hdr { position:absolute; font-weight:700; font-size:30px; line-height:36px; letter-spacing:8px; text-transform:uppercase; white-space:nowrap; }
+  .gla-hdrline { position:absolute; height:4px; border-radius:2px; }
+  .gla-row { position:absolute; height:180px; padding:22px 26px; border-radius:20px; box-sizing:border-box;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .gla-main { font-size:38px; font-weight:700; line-height:46px; color:#dfe7ee; }
+  .gla-lab { margin-top:8px; font-size:22px; font-weight:700; line-height:28px; letter-spacing:3px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .gla-dis { position:absolute; left:656px; top:200px; width:540px; height:620px; box-sizing:border-box; border-radius:20px; text-align:center;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .gla-disnum { position:absolute; left:0; right:0; top:218px; font-family:'AbrilFig', Georgia, serif; font-size:96px; line-height:110px;
+    color:#d0121f; text-shadow:0 4px 20px rgba(0,0,0,0.7); white-space:nowrap; }
+  .gla-dissub { position:absolute; left:0; right:0; top:346px; font-size:22px; font-weight:700; letter-spacing:3px; color:#93a3b2; text-transform:uppercase; white-space:nowrap; }
+  .gla-glyph { position:absolute; right:22px; top:22px; width:120px; height:136px; }
+  .gla-cnt { font-family:'Courier New', monospace; font-weight:700; font-size:96px; line-height:96px; color:#e74c3c; }
+  .gla-figs { position:absolute; left:170px; top:36px; width:300px; height:60px; }
+  .gla-trace { position:absolute; left:26px; top:112px; width:456px; height:44px; }
+  .gla-stamp { position:absolute; right:30px; top:108px; padding:2px 12px 4px; border:4px solid #e74c3c; border-radius:8px;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:30px; line-height:36px; letter-spacing:2px; color:#e74c3c;
+    background:rgba(4,7,12,0.85); white-space:nowrap; }
+</style>
+<div id="gla-root" data-composition-id="g-ledger-a4b" data-width="1920" data-height="1080" data-duration="17.873">
+  <div class="gla-sweep" id="gla-sweep"></div>
+
+  <!-- Established + Disputed: dimmed together when the narration turns to what is still open -->
+  <div class="gla-lcols" id="gla-lcols">
+    <div class="gla-hdr" id="gla-hdr-est" style="left:96px; top:110px; color:#7fb2e5">Established</div>
+    <div class="gla-hdrline" id="gla-line-est" style="left:96px; top:156px; width:500px; background:#7fb2e5"></div>
+    <div class="gla-hdr" id="gla-hdr-dis" style="left:656px; top:110px; color:#d8a13a">Disputed</div>
+    <div class="gla-hdrline" id="gla-line-dis" style="left:656px; top:156px; width:540px; background:#d8a13a"></div>
+
+    <div class="gla-row" id="gla-est1" style="left:96px; top:200px; width:500px;"><div class="gla-main">Wall fell Sept 27</div><div class="gla-lab">After days of rain</div></div>
+    <div class="gla-row" id="gla-est2" style="left:96px; top:420px; width:500px;"><div class="gla-main">Filmed that day</div><div class="gla-lab">Lete, Mustang</div></div>
+    <div class="gla-row" id="gla-est3" style="left:96px; top:640px; width:500px;"><div class="gla-main">Avalanche hit the camp</div><div class="gla-lab">Himlung base camp</div></div>
+
+    <div class="gla-dis" id="gla-dis">
+      <div class="gla-disnum" id="gla-disnum">12&#8239;&middot;&#8239;21&#8239;&middot;&#8239;24</div>
+      <div class="gla-dissub" id="gla-dissub">The toll &middot; reports disagree</div>
+    </div>
+  </div>
+
+  <!-- Unknown: the focus column; left/top below are column-local (column origin = frame 1276,100) -->
+  <div class="gla-ucol" id="gla-ucol">
+    <div class="gla-hdr" id="gla-hdr-unk" style="left:0; top:10px; color:#f2f5f8">Unknown</div>
+    <div class="gla-hdrline" id="gla-line-unk" style="left:0; top:56px; width:508px; background:#93a3b2"></div>
+
+    <!-- unk1 "how long": river, debris dam, and an hourglass whose sand runs -->
+    <div class="gla-row" id="gla-unk1" style="left:0; top:100px; width:508px;">
+      <div class="gla-main">How long it held</div><div class="gla-lab">Debris dam &middot; river</div>
+      <svg class="gla-glyph" id="gla-g1" viewBox="0 0 120 136">
+        <path d="M0,112 L34,112" stroke="#7fb2e5" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <rect id="gla-lake" x="0" y="100" width="46" height="14" rx="3" fill="#5a768f"/>
+        <path d="M46,118 L58,98 L70,96 L82,104 L90,118 Z" fill="#8e2020" stroke="#c0392b" stroke-width="2"/>
+        <path d="M92,120 L120,120" stroke="#7fb2e5" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 5" fill="none"/>
+        <path d="M40,8 L80,8 M40,84 L80,84" stroke="#c8d3e0" stroke-width="4" stroke-linecap="round"/>
+        <path d="M44,10 L76,10 L62,46 L76,82 L44,82 L58,46 Z" fill="none" stroke="#c8d3e0" stroke-width="3" stroke-linejoin="round"/>
+        <path id="gla-sandtop" d="M48,16 L72,16 L60,44 Z" fill="#e8c56a"/>
+        <path id="gla-sandbot" d="M48,80 L72,80 L60,58 Z" fill="#e8c56a"/>
+        <line id="gla-stream" x1="60" y1="46" x2="60" y2="78" stroke="#e8c56a" stroke-width="2.5" stroke-dasharray="3 4"/>
+      </svg>
+    </div>
+
+    <!-- unk2 "12": counter with twelve missing-person outlines -->
+    <div class="gla-row" id="gla-unk2" style="left:0; top:320px; width:508px;">
+      <div class="gla-cnt"><span id="gla-cntv">1</span></div>
+      <div class="gla-lab" style="margin-top:10px">Crew still missing &middot; Sept 29</div>
+      <svg class="gla-figs" id="gla-figs" viewBox="0 0 300 60">
+        <g id="gla-f1"><circle cx="12" cy="10" r="6" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/><path d="M4,50 L4,26 Q12,18 20,26 L20,50" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/></g>
+        <g id="gla-f2"><circle cx="36" cy="10" r="6" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/><path d="M28,50 L28,26 Q36,18 44,26 L44,50" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/></g>
+        <g id="gla-f3"><circle cx="60" cy="10" r="6" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/><path d="M52,50 L52,26 Q60,18 68,26 L68,50" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/></g>
+        <g id="gla-f4"><circle cx="84" cy="10" r="6" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/><path d="M76,50 L76,26 Q84,18 92,26 L92,50" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/></g>
+        <g id="gla-f5"><circle cx="108" cy="10" r="6" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/><path d="M100,50 L100,26 Q108,18 116,26 L116,50" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/></g>
+        <g id="gla-f6"><circle cx="132" cy="10" r="6" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/><path d="M124,50 L124,26 Q132,18 140,26 L140,50" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/></g>
+        <g id="gla-f7"><circle cx="156" cy="10" r="6" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/><path d="M148,50 L148,26 Q156,18 164,26 L164,50" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/></g>
+        <g id="gla-f8"><circle cx="180" cy="10" r="6" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/><path d="M172,50 L172,26 Q180,18 188,26 L188,50" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/></g>
+        <g id="gla-f9"><circle cx="204" cy="10" r="6" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/><path d="M196,50 L196,26 Q204,18 212,26 L212,50" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/></g>
+        <g id="gla-f10"><circle cx="228" cy="10" r="6" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/><path d="M220,50 L220,26 Q228,18 236,26 L236,50" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/></g>
+        <g id="gla-f11"><circle cx="252" cy="10" r="6" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/><path d="M244,50 L244,26 Q252,18 260,26 L260,50" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/></g>
+        <g id="gla-f12"><circle cx="276" cy="10" r="6" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/><path d="M268,50 L268,26 Q276,18 284,26 L284,50" fill="none" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="3 3"/></g>
+      </svg>
+    </div>
+
+    <!-- unk3 "no agency has published": a flat sensor trace, then the NO DATA stamp on "reading" -->
+    <div class="gla-row" id="gla-unk3" style="left:0; top:540px; width:508px;">
+      <div class="gla-main">Slope sensor data</div><div class="gla-lab">Radar or sensor reading</div>
+      <svg class="gla-trace" viewBox="0 0 456 44">
+        <path d="M0,22 L456,22" stroke="rgba(147,163,178,0.25)" stroke-width="1" fill="none"/>
+        <path id="gla-flat" d="M0,24 L456,24" stroke="#93a3b2" stroke-width="3" stroke-dasharray="10 7" fill="none"/>
+        <circle id="gla-tracehead" cx="0" cy="24" r="5" fill="#c8d3e0"/>
+      </svg>
+      <div class="gla-stamp" id="gla-stamp">NO DATA</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-ledger-a4b", P = "#gla-";
+  const DUR = 17.873;
+  const tl = gsap.timeline({ paused: true });
+  const FIGS = [1,2,3,4,5,6,7,8,9,10,11,12].map(i => P + "f" + i);
+
+  /* ---- initial state ---- */
+  tl.set([P+"hdr-est", P+"hdr-dis", P+"hdr-unk", P+"line-est", P+"line-dis", P+"line-unk"], { autoAlpha: 0 }, 0);
+  tl.set([P+"line-est", P+"line-dis", P+"line-unk"], { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set([P+"est1", P+"est2", P+"est3", P+"dis", P+"unk1", P+"unk2", P+"unk3"], { autoAlpha: 0, x: -40 }, 0);
+  tl.set(P+"lcols", { opacity: 1 }, 0);
+  tl.set(P+"ucol", { scale: 1, transformOrigin: "0% 0%" }, 0);
+  tl.set(FIGS, { autoAlpha: 0 }, 0);
+  tl.set(P+"sandbot", { scaleY: 0, svgOrigin: "60 80" }, 0);
+  tl.set(P+"sandtop", { scaleY: 1, svgOrigin: "60 44" }, 0);
+  tl.set(P+"stream", { autoAlpha: 0 }, 0);
+  tl.set(P+"flat", { scaleX: 0, svgOrigin: "0 24" }, 0);
+  tl.set(P+"tracehead", { autoAlpha: 0, x: 0 }, 0);
+  tl.set(P+"stamp", { autoAlpha: 0, scale: 1.4, rotation: -6, transformOrigin: "50% 50%" }, 0);
+
+  /* ---- ambient: a soft light band crosses the board for the whole window ---- */
+  tl.fromTo(P+"sweep", { x: -320 }, { x: 2200, duration: 8.5, ease: "none", repeat: 1 }, 0);
+
+  /* ---- 0.0 the board returns: headers, rules, the settled and disputed claims rebuild fast ---- */
+  tl.to([P+"hdr-est", P+"hdr-dis", P+"hdr-unk"], { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0.0);
+  tl.to([P+"line-est", P+"line-dis", P+"line-unk"], { scaleX: 1, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 0.1);
+  tl.to([P+"est1", P+"est2", P+"est3", P+"dis"], { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.1 }, 0.15);
+
+  /* ---- "Some of it is still open" @0.84: settled columns step back, the Unknown column comes forward ---- */
+  tl.to(P+"lcols", { opacity: 0.4, duration: 0.5, ease: "power2.out" }, 0.84);
+  tl.to(P+"ucol", { scale: 1.08, duration: 0.6, ease: "power3.out" }, 0.84);
+
+  /* ---- "how long" @2.94: the river row, and the hourglass sand runs (4 finite cycles, to 12.1) ---- */
+  tl.to(P+"unk1", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.79);
+  tl.fromTo(P+"lake", { scaleY: 0.4, svgOrigin: "23 114" }, { scaleY: 1.3, duration: 2.2, ease: "sine.inOut", repeat: 3, yoyo: true }, 3.3);
+  tl.to(P+"stream", { autoAlpha: 1, duration: 0.2 }, 3.3);
+  tl.fromTo(P+"stream", { strokeDashoffset: 0 }, { strokeDashoffset: -14, duration: 0.4, ease: "none", repeat: 21 }, 3.3);
+  tl.fromTo(P+"sandtop", { scaleY: 1 }, { scaleY: 0.05, duration: 2.2, ease: "none", repeat: 3 }, 3.3);
+  tl.fromTo(P+"sandbot", { scaleY: 0 }, { scaleY: 1, duration: 2.2, ease: "none", repeat: 3 }, 3.3);
+
+  /* ---- "12" @10.84: counter runs to 12 (first tick 1), twelve missing outlines appear with it ---- */
+  tl.to(P+"unk2", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 10.69);
+  const N = { v: 1 }, nv = document.getElementById("gla-cntv");
+  tl.to(N, { v: 12, duration: 1.0, ease: "power3.out", onUpdate: () => { if (nv) nv.textContent = Math.round(N.v); } }, 10.84);
+  tl.fromTo(FIGS, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", stagger: 0.07 }, 10.9);
+  tl.to(FIGS, { opacity: 0.45, duration: 0.8, ease: "sine.inOut", stagger: 0.12, yoyo: true, repeat: 3 }, 12.1);
+
+  /* ---- "no agency has published" @13.12: a flat trace draws left to right; "reading" @15.42 NO DATA ---- */
+  tl.to(P+"unk3", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 13.0);
+  tl.to(P+"tracehead", { autoAlpha: 1, duration: 0.2 }, 13.3);
+  tl.to(P+"flat", { scaleX: 1, duration: 2.0, ease: "none" }, 13.3);  /* dashed line grows with the head: head x = 456 * scaleX at every frame */
+  tl.to(P+"tracehead", { x: 456, duration: 2.0, ease: "none" }, 13.3);
+  tl.to(P+"tracehead", { autoAlpha: 0, duration: 0.2 }, 15.3);
+  tl.to(P+"stamp", { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.out" }, 15.42);
+  tl.to(P+"stamp", { scale: 1.04, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 1 }, 15.9);
+
+  /* ---- exit by 17.75: chapter blackout follows ---- */
+  tl.to([P+"lcols", P+"ucol"], { x: 660, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.15);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

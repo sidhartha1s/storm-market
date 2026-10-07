@@ -18,6 +18,9 @@ Re-synthesis: a segment is only re-run (new _raw + sped wav, words.json deleted 
 retranscribed) when sha1(text + tempo + voice md5) changes from the manifest's stored hash for
 that id. Editing one script line invalidates only that line's stale audio, nothing else.
 
+Per-segment tempo: '(tempo 1.0)' on a segment heading overrides the lane tempo for that segment
+only (rule: CLAUDE.md "Voice").
+
 Usage: python3 scripts/tts_episode.py episodes/<slug> [--only A3-S5,...]
 Exits non-zero, and leaves manifest.json untouched, when the script parses to 0 segments (an
 unsupported format — see parse_segments docstring) or an --only id isn't in the script.
@@ -32,6 +35,7 @@ import time
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
+SEG_ID = r"([A-Z]\d+-S\d+[a-z]?)\b"  # segment id at the start of a heading, e.g. 'A3-S5'
 
 
 class SegmentParseError(Exception):
@@ -65,7 +69,7 @@ def parse_segments(md: str):
     blocks = re.split(r"\n#{1,6} ", "\n" + md.replace("\r\n", "\n"))
     for b in blocks[1:]:
         header, _, rest = b.partition("\n")
-        m = re.match(r"([A-Z]\d+-S\d+[a-z]?)\b", header)
+        m = re.match(SEG_ID, header)
         if not m:
             continue
         sid = m.group(1).lower()
@@ -96,6 +100,21 @@ def parse_segments(md: str):
         if text:
             segs.append((sid, text))
     return segs
+
+
+def segment_tempos(md: str):
+    """{segment id: tempo} for headings carrying '(tempo X)', e.g. '### A2-S4 — narration (tempo 1.0)'.
+    A segment heading that mentions tempo in any other form is a hard error, never silently ignored."""
+    tempos = {}
+    for m in re.finditer(r"^#{1,6} " + SEG_ID + r"(.*)$", md, re.M):
+        if "tempo" not in m.group(2).lower():
+            continue
+        t = re.search(r"\(tempo (\d+(?:\.\d+)?)\)", m.group(2))
+        if not t:
+            raise SegmentParseError(f"{m.group(1)}: unreadable tempo tag in heading {m.group(0)!r} "
+                                    f"(write it as '(tempo 1.0)')")
+        tempos[m.group(1).lower()] = float(t.group(1))
+    return tempos
 
 
 def resolve_tempo(cfg, slug):
@@ -179,7 +198,9 @@ def main():
     (ep / "audio").mkdir(exist_ok=True)
     (ep / "audio" / "_raw").mkdir(exist_ok=True)
     try:
-        segs = parse_segments((ep / "edit_script.md").read_text(encoding="utf-8"))
+        script_md = (ep / "edit_script.md").read_text(encoding="utf-8")
+        segs = parse_segments(script_md)
+        tempos = segment_tempos(script_md)
     except SegmentParseError as e:
         sys.exit(f"[tts_episode] FAIL parsing edit_script.md: {e}")
     if not segs:
@@ -191,6 +212,15 @@ def main():
         missing = only - seg_ids
         if missing:
             sys.exit(f"[tts_episode] FAIL — --only id(s) not in edit_script.md: {sorted(missing)}")
+    # A section locks (script-scaling.md "Script fact-QC layer") only once every [verify]
+    # marker on it is resolved. TTS is the mechanical backstop for that rule: never voice a
+    # segment that still carries one, whether it's in the --only set or the whole script.
+    selected = [(sid, text) for sid, text in segs if not only or sid in only]
+    unresolved = sorted(sid for sid, text in selected if "[verify" in text)
+    if unresolved:
+        sys.exit(f"[tts_episode] FAIL — {len(unresolved)} segment(s) still carry an open "
+                 f"[verify] marker, not TTS-safe: {unresolved} (script-scaling.md 'Script "
+                 f"fact-QC layer' — resolve or cut the claim before this section locks)")
     print(f"[tts_episode] {len(segs)} narration segments found")
 
     mpath = ep / "audio" / "manifest.json"
@@ -213,8 +243,9 @@ def main():
         # clone failure, ffmpeg/ffprobe failure, Ctrl-C): the rerun would see old_txt == new
         # text, adopt the entry, and silently keep the OLD wav for the NEW line.
         old_txt = txt.read_text(encoding="utf-8") if txt.exists() else None
+        seg_tempo = tempos.get(sid, tempo)
 
-        h = sha1_text(text, tempo, voice_md5)
+        h = sha1_text(text, seg_tempo, voice_md5)
         h_text = hashlib.sha1(text.encode("utf-8")).hexdigest()
         prior = manifest.get(sid, {})
         prior_tempo = prior.get("tempo")
@@ -228,7 +259,9 @@ def main():
         # lane tempo, which replaces the "legacy" marker with a real one). Without adoption at
         # all, the first full run after this fix would re-synthesize every existing episode's
         # segments and shift every duration under already-timed graphics.
-        is_legacy = prior_tempo in (None, "legacy") and wav.exists()
+        # An explicit '(tempo X)' tag is a known tempo, so it is never adopted as legacy: the
+        # tagged segment re-synthesizes at that tempo (else the tag is silently ignored).
+        is_legacy = sid not in tempos and prior_tempo in (None, "legacy") and wav.exists()
         if is_legacy:
             prior_text_hash = prior.get("text_hash")
             text_changed = (prior_text_hash != h_text) if prior_text_hash is not None \
@@ -245,7 +278,7 @@ def main():
             # that's actually on disk.
             txt_tmp.write_text(text, encoding="utf-8")
             synth_native(txt_tmp, raw_wav, ext)
-            apply_tempo(raw_wav, wav, tempo)
+            apply_tempo(raw_wav, wav, seg_tempo)
             txt_tmp.replace(txt)
             if words_json.exists():
                 words_json.unlink()
@@ -268,7 +301,7 @@ def main():
             tag = " [adopted: legacy tempo unknown]"
         else:
             manifest[sid] = {"wav": f"audio/{sid}.wav", "duration": round(d, 3),
-                             "words": len(text.split()), "text_hash": h, "tempo": tempo}
+                             "words": len(text.split()), "text_hash": h, "tempo": seg_tempo}
             tag = " [re-synth]" if stale else ""
         print(f"[tts_episode] {sid}: {d:.1f}s ({len(text.split())} words){tag}", flush=True)
 

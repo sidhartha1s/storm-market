@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-search-card (A3): FULL-FRAME schematic, track 2, host 439.26 + 19.735 (nx-a3-s5). Rebuilt 29 Sep 26 (redo list):
+     the old glass card sat over a 7NEWS tunnel rescue and WION lowland crowds that contradicted the line. The sources were
+     probed (7NEWS, WION full package, Khoj Samachar): no helicopter at a snow camp exists, and WION's snow b-roll is
+     unconfirmed Everest-style stock already used for the camp at 34.6 s and 115.6 s, so both mounts were removed and this
+     comp carries the beat on its own. Facts: factcheck-D #3 (16 at base camp; 4 found by Sept 28; 12 missing; about 15 ft
+     of snow; survival "very unlikely"). SCHEMATIC, NOT TO SCALE except the snow/human pair: 22 px per ft, snow 330 px
+     (15 ft), human 132 px (6 ft), ground line y 880.
+     Cues (retime-sheet g-search-card): helicopter 0.36, camp 1.42, next day 3.40, ground team 4.32, dug 6.44, 15 7.54,
+     feet 7.96, deep 8.18, 16 9.16, found 13.40 / 4 13.66, 12 14.68, missing 15.62, survival 17.42, unlikely 18.54.
+     Exit: fade-through 19.135-19.735. -->
+<template>
+<style>
+  #sc-root { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .sc-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .sc-glow { position:absolute; left:100px; top:280px; width:1100px; height:760px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.13), rgba(127,178,229,0) 70%); }
+  .sc-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .sc-all { position:absolute; inset:0; }
+  .sc-lab { position:absolute; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .sc-dim { position:absolute; left:96px; top:478px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; white-space:nowrap; }
+  .sc-rail { position:absolute; left:1250px; top:0; width:574px; height:1080px; }
+  .sc-cnum { position:absolute; left:0; top:150px; font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:84px; color:#e74c3c; white-space:nowrap; }
+  .sc-clab { position:absolute; left:0; top:246px; font-weight:700; font-size:26px; line-height:30px; letter-spacing:6px; color:#c8d3e0; white-space:nowrap; }
+  .sc-icons { position:absolute; left:0; top:310px; width:360px; height:360px; }
+  .sc-ic { position:absolute; width:64px; height:64px; }
+  .sc-ic svg { width:64px; height:64px; overflow:visible; }
+  .sc-row { position:absolute; left:0; white-space:nowrap; }
+  .sc-rnum { display:inline-block; width:78px; font-family:'Courier New', monospace; font-weight:700; font-size:52px; line-height:60px; vertical-align:middle; }
+  .sc-rlab { display:inline-block; font-weight:700; font-size:26px; line-height:30px; letter-spacing:4px; color:#dfe7ee; vertical-align:middle; }
+</style>
+<div id="sc-root" data-composition-id="g-search-card" data-width="1920" data-height="1080" data-duration="19.735">
+  <div class="sc-grid" id="sc-grid"></div>
+  <div class="sc-glow" id="sc-glow"></div>
+  <div class="sc-all" id="sc-all">
+  <svg class="sc-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="sc-snowgrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#eef3f8" stop-opacity="0.92"/>
+        <stop offset="1" stop-color="#9fb4c8" stop-opacity="0.78"/>
+      </linearGradient>
+    </defs>
+    <!-- buried camp: amber tents on the ground line -->
+    <g id="sc-tents" fill="rgba(216,161,58,0.35)" stroke="#d8a13a" stroke-width="4" stroke-linejoin="round">
+      <path d="M340 880 L395 808 L450 880 Z"/><path d="M500 880 L555 808 L610 880 Z"/>
+      <path d="M770 880 L825 808 L880 880 Z"/><path d="M930 880 L985 808 L1040 880 Z"/>
+    </g>
+    <!-- the snow block, 330 px = 15 ft, rising from the ground line -->
+    <path id="sc-snow" d="M300 880 L300 556 Q420 540 540 552 Q700 562 860 548 Q980 540 1100 554 L1100 880 Z" fill="url(#sc-snowgrad)" stroke="#dfe7ee" stroke-width="2"/>
+    <!-- the tents stay visible as ghosts under the snow -->
+    <g id="sc-ghost" fill="none" stroke="rgba(216,161,58,0.75)" stroke-width="3" stroke-dasharray="8 6">
+      <path d="M340 880 L395 808 L450 880 Z"/><path d="M500 880 L555 808 L610 880 Z"/>
+      <path d="M770 880 L825 808 L880 880 Z"/><path d="M930 880 L985 808 L1040 880 Z"/>
+    </g>
+    <!-- the trench the ground team dug, opening from the snow surface down -->
+    <rect id="sc-trench" x="630" y="552" width="100" height="328" fill="#0b1016" stroke="#5a768f" stroke-width="3"/>
+    <path id="sc-ground" d="M96 880 H1150" stroke="#93a3b2" stroke-width="4"/>
+    <!-- 15 ft dimension line at x 250 -->
+    <g id="sc-dimline" stroke="#f2f5f8" stroke-width="4" stroke-linecap="round">
+      <path id="sc-dimv" d="M250 880 V552"/>
+      <path d="M228 552 H272 M228 880 H272"/>
+    </g>
+    <!-- 6 ft human for scale, standing on the snow surface (132 px) -->
+    <g id="sc-human" fill="#c8d3e0">
+      <circle cx="400" cy="434" r="15"/>
+      <path d="M386 452 H414 L420 510 L412 510 L410 552 H402 L400 516 L398 552 H390 L388 510 L380 510 Z"/>
+    </g>
+    <path id="sc-hdim" d="M436 420 V552 M428 420 H444 M428 552 H444" stroke="#93a3b2" stroke-width="3" fill="none"/>
+    <!-- three diggers on the snow top beside the trench, shovels working -->
+    <g id="sc-dig1" fill="#dfe7ee"><circle cx="580" cy="436" r="14"/><path d="M567 452 H593 L596 510 L589 552 H581 L580 516 L579 552 H571 L564 510 Z"/>
+      <path id="sc-sh1" d="M592 470 L636 520 M628 512 L646 530" stroke="#e8c56a" stroke-width="6" stroke-linecap="round" fill="none"/></g>
+    <g id="sc-dig2" fill="#dfe7ee"><circle cx="780" cy="436" r="14"/><path d="M767 452 H793 L796 510 L789 552 H781 L780 516 L779 552 H771 L764 510 Z"/>
+      <path id="sc-sh2" d="M768 470 L724 520 M732 512 L714 530" stroke="#e8c56a" stroke-width="6" stroke-linecap="round" fill="none"/></g>
+    <g id="sc-dig3" fill="#dfe7ee"><circle cx="860" cy="436" r="14"/><path d="M847 452 H873 L876 510 L869 552 H861 L860 516 L859 552 H851 L844 510 Z"/>
+      <path id="sc-sh3" d="M872 470 L916 518 M908 510 L926 528" stroke="#e8c56a" stroke-width="6" stroke-linecap="round" fill="none"/></g>
+    <!-- helicopter glyph, drawn round its own centre; positioned by GSAP only -->
+    <g id="sc-heli">
+      <g id="sc-helibody">
+        <path d="M-70 -10 Q-70 -38 -30 -40 L40 -40 Q78 -38 82 -6 Q84 16 50 18 L-50 18 Q-70 16 -70 -10 Z" fill="#5a768f" stroke="#7fb2e5" stroke-width="3"/>
+        <path d="M30 -32 Q66 -30 70 -8 L30 -8 Z" fill="#0b1016" stroke="#7fb2e5" stroke-width="2"/>
+        <path d="M-70 -18 L-170 -26 L-170 -12 L-70 0 Z" fill="#5a768f" stroke="#7fb2e5" stroke-width="2"/>
+        <path d="M-176 -44 L-164 -4" stroke="#dfe7ee" stroke-width="5" stroke-linecap="round"/>
+        <path d="M-50 32 H60 M-30 18 V32 M40 18 V32" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M0 -40 V-52" stroke="#dfe7ee" stroke-width="5"/>
+      </g>
+      <path id="sc-rotor" d="M-120 -54 H120" stroke="#dfe7ee" stroke-width="6" stroke-linecap="round"/>
+    </g>
+    <!-- snow flecks falling over the left scene (ambient) -->
+    <g id="sc-flecks" fill="#eef3f8">
+      <circle id="sc-f1" cx="180" cy="0" r="4"/><circle id="sc-f2" cx="320" cy="0" r="3"/><circle id="sc-f3" cx="470" cy="0" r="5"/>
+      <circle id="sc-f4" cx="610" cy="0" r="3"/><circle id="sc-f5" cx="760" cy="0" r="4"/><circle id="sc-f6" cx="900" cy="0" r="3"/>
+      <circle id="sc-f7" cx="1040" cy="0" r="5"/><circle id="sc-f8" cx="1130" cy="0" r="3"/><circle id="sc-f9" cx="260" cy="0" r="3"/>
+      <circle id="sc-f10" cx="690" cy="0" r="4"/><circle id="sc-f11" cx="980" cy="0" r="3"/><circle id="sc-f12" cx="540" cy="0" r="4"/>
+    </g>
+  </svg>
+  <div class="sc-lab" id="sc-lcamp" style="left:300px; top:900px;">BASE CAMP &middot; UNDER THE SNOW</div>
+  <div class="sc-dim" id="sc-dim">15 FT</div>
+  <div class="sc-lab" id="sc-l6" style="left:456px; top:420px;">6 FT</div>
+  <div class="sc-rail" id="sc-rail">
+    <div class="sc-cnum" id="sc-cnum">1</div>
+    <div class="sc-clab" id="sc-clab">AT THE CAMP</div>
+    <div class="sc-icons" id="sc-icons"></div>
+    <div class="sc-row" id="sc-r1" style="top:700px;"><span class="sc-rnum" style="color:#7fb2e5;">4</span><span class="sc-rlab">FOUND</span></div>
+    <div class="sc-row" id="sc-r2" style="top:776px;"><span class="sc-rnum" style="color:#e74c3c;">12</span><span class="sc-rlab">MISSING</span></div>
+  </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  /* 4 x 4 worker icons, 64 px in a 90 px cell (rail-local x 0-334, y 310-644) */
+  const box = document.getElementById("sc-icons");
+  const icons = [], shapes = [];
+  for (let i = 0; i < 16; i++) {
+    const el = document.createElement("div");
+    el.className = "sc-ic";
+    el.style.left = ((i % 4) * 90) + "px";
+    el.style.top = (Math.floor(i / 4) * 90) + "px";
+    el.innerHTML = '<svg viewBox="0 0 64 64"><circle cx="32" cy="15" r="11" fill="#dfe7ee" stroke="#dfe7ee" stroke-width="0"/>' +
+                   '<path d="M14 62 Q14 32 32 30 Q50 32 50 62 Z" fill="#dfe7ee" stroke="#dfe7ee" stroke-width="0"/></svg>';
+    box.appendChild(el);
+    icons.push(el);
+    shapes.push(Array.from(el.querySelectorAll("circle, path")));
+  }
+  const found = icons.slice(0, 4), missing = icons.slice(4);
+  const foundShapes = [].concat(...shapes.slice(0, 4)), missShapes = [].concat(...shapes.slice(4));
+
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 19.735;
+  const dash = (id) => { const p = document.getElementById(id); return Math.ceil(p.getTotalLength()) + 1; };
+  const GL = dash("sc-ground"), DV = dash("sc-dimv");
+  tl.set(["#sc-heli", "#sc-dig1", "#sc-dig2", "#sc-dig3", "#sc-lcamp", "#sc-dim", "#sc-l6", "#sc-hdim", "#sc-dimline",
+          "#sc-cnum", "#sc-clab", "#sc-r1", "#sc-r2", "#sc-human"], { autoAlpha: 0 }, 0);
+  tl.set(icons, { autoAlpha: 0 }, 0);
+  tl.set("#sc-ground", { strokeDasharray: GL, strokeDashoffset: GL }, 0);
+  tl.set("#sc-dimv", { strokeDasharray: DV, strokeDashoffset: DV }, 0);
+  tl.set("#sc-snow", { scaleY: 0, svgOrigin: "700 880" }, 0);
+  tl.set("#sc-ghost", { autoAlpha: 0 }, 0);
+  tl.set("#sc-trench", { scaleY: 0, svgOrigin: "680 552" }, 0);
+  tl.set("#sc-heli", { x: 1900, y: 220, rotation: 0 }, 0);
+
+  /* ambient, whole window: grid + glow drift, snow flecks falling through the left scene */
+  tl.fromTo("#sc-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#sc-glow", { x: 0, y: 0 }, { x: 160, y: -40, duration: DUR, ease: "none" }, 0);
+  ["#sc-f1", "#sc-f2", "#sc-f3", "#sc-f4", "#sc-f5", "#sc-f6", "#sc-f7", "#sc-f8", "#sc-f9", "#sc-f10", "#sc-f11", "#sc-f12"].forEach((f, i) => {
+    const d = 2.6 + (i % 4) * 0.45;
+    tl.fromTo(f, { y: 60 + (i % 3) * 30, x: 0 }, { y: 860, x: (i % 2 ? 26 : -22), duration: d, ease: "none", repeat: Math.floor((DUR - 0.2 - i * 0.2) / d) - 1 }, 0.1 + i * 0.2);
+  });
+
+  /* the buried camp builds: ground, tents, then snow rising over them (0.1-1.5); BASE CAMP label on CAMP @1.42 */
+  tl.to("#sc-ground", { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 0.05);
+  tl.fromTo("#sc-tents", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.2);
+  tl.to("#sc-snow", { scaleY: 1, svgOrigin: "700 880", duration: 1.0, ease: "power2.out" }, 0.6);
+  tl.to("#sc-ghost", { autoAlpha: 1, duration: 0.3 }, 1.4);
+  tl.fromTo("#sc-human", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.3);
+  tl.fromTo("#sc-lcamp", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 1.42);
+
+  /* HELICOPTER @0.36: flies in from x 1900 to x 900 along y 220 (1.5 s), hovers with a rotor wobble, leaves on NEXT DAY @3.40 */
+  tl.set("#sc-heli", { autoAlpha: 1 }, 0.36);
+  tl.to("#sc-heli", { x: 900, duration: 1.5, ease: "power2.out" }, 0.36);
+  tl.fromTo("#sc-helibody", { rotation: -8, svgOrigin: "0 0" }, { rotation: 0, svgOrigin: "0 0", duration: 1.5, ease: "power2.out" }, 0.36);
+  tl.fromTo("#sc-rotor", { scaleX: 1, svgOrigin: "0 -54" }, { scaleX: 0.15, svgOrigin: "0 -54", duration: 0.07, ease: "none", yoyo: true, repeat: 59 }, 0.36);
+  tl.to("#sc-heli", { y: 234, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1.86);
+  tl.to("#sc-heli", { x: -300, y: 120, duration: 1.1, ease: "power2.in" }, 3.4);
+  tl.set("#sc-heli", { autoAlpha: 0 }, 4.5);
+
+  /* GROUND TEAM @4.32: three diggers drop onto the snow top; DUG @6.44 the trench opens down to DEEP @8.18 */
+  tl.fromTo(["#sc-dig1", "#sc-dig2", "#sc-dig3"], { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out", stagger: 0.14 }, 4.32);
+  tl.fromTo("#sc-sh1", { rotation: 0, svgOrigin: "592 470" }, { rotation: 18, svgOrigin: "592 470", duration: 0.32, ease: "sine.inOut", yoyo: true, repeat: 29 }, 6.3);
+  tl.fromTo("#sc-sh2", { rotation: 0, svgOrigin: "768 470" }, { rotation: -18, svgOrigin: "768 470", duration: 0.36, ease: "sine.inOut", yoyo: true, repeat: 25 }, 6.44);
+  tl.fromTo("#sc-sh3", { rotation: 0, svgOrigin: "872 470" }, { rotation: 16, svgOrigin: "872 470", duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 29 }, 6.6);
+  tl.to("#sc-trench", { scaleY: 1, svgOrigin: "680 552", duration: 1.74, ease: "power1.inOut" }, 6.44);
+  /* ABOUT 15 FEET @7.54-7.96: the dimension line grows the full snow height, the label and the 6 ft reference */
+  tl.set("#sc-dimline", { autoAlpha: 1 }, 7.54);
+  tl.to("#sc-dimv", { strokeDashoffset: 0, duration: 0.42, ease: "power2.out" }, 7.54);
+  tl.fromTo("#sc-dim", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power4.out" }, 7.96);
+  tl.fromTo(["#sc-hdim", "#sc-l6"], { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 8.18);
+
+  /* 16 @9.16: the rail's 4 x 4 workers and the counter (opens at 1, lands on 16 by 9.9) */
+  tl.fromTo(icons, { autoAlpha: 0, scale: 0.4, transformOrigin: "50% 100%" }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(2)", stagger: 0.04 }, 9.16);
+  tl.fromTo(["#sc-cnum", "#sc-clab"], { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 9.16);
+  const c = { v: 1 };
+  tl.to(c, { v: 16, duration: 0.74, ease: "power3.out", onUpdate: function () {
+    const e = document.getElementById("sc-cnum"); if (e) e.textContent = Math.round(c.v);
+  } }, 9.16);
+  tl.to(icons, { y: -4, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3, stagger: { each: 0.05, from: "random" } }, 10.2);
+
+  /* FOUND 4 @13.66: four icons turn blue, the row lands */
+  tl.to(foundShapes, { fill: "#7fb2e5", stroke: "#7fb2e5", duration: 0.35, ease: "power2.out" }, 13.66);
+  tl.fromTo(found, { scale: 1 }, { scale: 1.15, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, 13.66);
+  tl.fromTo("#sc-r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 13.66);
+  /* 12 ... MISSING @14.68-15.62: twelve icons take a red outline, the row lands */
+  tl.to(missShapes, { fill: "rgba(231,76,60,0.16)", stroke: "#e74c3c", strokeWidth: 4, duration: 0.4, ease: "power2.out", stagger: 0.02 }, 14.68);
+  tl.fromTo("#sc-r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.68);
+  tl.to(missing, { y: -5, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: { each: 0.03, from: "random" } }, 15.4);
+  /* SURVIVAL WAS VERY UNLIKELY @17.90: the twelve dim to 40 % over 1.5 s */
+  tl.to(missing, { opacity: 0.4, duration: 1.5, ease: "power1.inOut" }, 17.9);
+
+  /* exit: fade-through over the last 0.6 s */
+  tl.to("#sc-all", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, DUR - 0.6);
+  window.__timelines["g-search-card"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
