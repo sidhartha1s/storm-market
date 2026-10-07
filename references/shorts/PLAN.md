@@ -70,7 +70,7 @@ What stays the same across all three (the senior spec):
   emoji, memes, CGI people, trending audio.
 - **The channel voice.** Same cloned voice as the minis; a different voice breaks the funnel.
 - **Loop-safe close.** The last frame reads as a first frame (the headline again), because Shorts loop.
-- **No Paul CTA video** (15 s is half a short). The funnel is: spoken last line + related-video link + pinned
+- **No Paul CTA video** (at `channel.cta.duration` it would be most of a short). The funnel is: spoken last line + related-video link + pinned
   comment with the long video URL. The ebook link goes in the pinned comment, never on screen.
 - **Same footage doctrine as the channel:** PD/agency spine, licensed or stock fill, no chaser footage,
   no AI witnesses, every clip in `provenance.csv`.
