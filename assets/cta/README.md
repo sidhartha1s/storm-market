@@ -6,13 +6,15 @@ Deterministic gate: `scripts/sweep_episode.py` ("CTA present + placed"). SRT cue
 ## Current file
 | Field | Value |
 |---|---|
-| File | `paul-storm-ready-v5-sep6.mp4` (1920x1080 30 fps, h264/aac, **15.139 s**, 13.3 MB) |
-| md5 | `541db438ad6e948e41286ee9fb6245fb` |
-| Transcript | `paul-storm-ready-v5-sep6.txt` |
-| Source | `C:\Users\Sidhartha\Automation Projects\newest paul CTA sep 6.mp4` (owner 2026-09-08 "newest paul CTA sep 6", 2560x1440, transcoded to 1080p30) |
+| File | `paul-storm-ready-v6-oct7.mp4` (1920x1080 24 fps, h264/aac, **24.5 s**, 8.6 MB) |
+| md5 | `047cd059bdc2a642f833995053aa94ac` |
+| Transcript | `paul-storm-ready-v6-oct7.txt` |
+| Source | `C:\Users\Sidhartha\Videos\paul-v2-test\ad\hf\renders\book-ad-v3-yt.mp4` (book ad v3, owner 7 Oct 26; hyperframes render at 24 fps, transcoded at crf 22, audio copied: -14.5 LUFS, -1.4 dBFS peak) |
+| QR | opens `https://www.paulraymond.online/yt/?src=qr` (decoded from the asset at 20 s and 23.8 s) |
 
 ## Version history
-- **v5-sep6** (2026-09-06): CURRENT.
+- **v6-oct7** (2026-10-07): CURRENT. Book ad v3: Paul on camera with the QR card, then a silent QR end card.
+- v5-sep6 (2026-09-06): 15.139 s, QR to the bare home page. Retired; removed from the tree 2026-10-07 (owner). Restore with `git show <sha>:assets/cta/paul-storm-ready-v5-sep6.mp4`.
 - v4c (2026-08-28): HeyGen talking head, QR on chest. Retired; removed from the tree 2026-09-24 (owner). Restore with `git show <sha>:assets/cta/paul-storm-ready-v4c.mp4`.
 - v4b (2026-08-23): DeAPI/LTX lipsync. Superseded.
 
