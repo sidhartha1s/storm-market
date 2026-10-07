@@ -1,7 +1,7 @@
 # CLAUDE.md: storm-market (The Warning Hour, US weather and disaster documentaries)
 
-Narrated US weather and natural-disaster retrospectives, US English. Separate from JP-market: no shared code, only
-the same external tool pattern. One fact, one home: a rule lives here OR in the file named below, never both. If two
+Narrated US weather and natural-disaster retrospectives, US English. Self-contained: no code, tool, model or file shared
+with any other project (see "everything lives in this folder"). One fact, one home: a rule lives here OR in the file named below, never both. If two
 files disagree, fix it in the same PR and say which one won.
 
 **This repo's docs outrank the global `~/.claude/CLAUDE.md`.** Where this file, a doc it names, `ops/decisions.md` or the
