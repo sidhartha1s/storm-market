@@ -34,6 +34,8 @@ import sys
 import time
 from pathlib import Path
 
+import voice_tool
+
 REPO = Path(__file__).resolve().parent.parent
 SEG_ID = r"([A-Z]\d+-S\d+[a-z]?)\b"  # segment id at the start of a heading, e.g. 'A3-S5'
 
@@ -154,11 +156,15 @@ def synth_native(pairs, ext):
     # same input passes on rerun). One loud retry; tts_clone caches finished sentences by text
     # hash in <out dir>/_segments, so the retry only re-pays the load. A second consecutive
     # failure is real. Exit 2 is argparse (e.g. a tts_clone without --batch): deterministic, no retry.
+    gaps = voice_tool.missing(ext, allow_download=True)
+    if gaps:
+        sys.exit("[tts_episode] FAIL voice tool incomplete:\n  " + "\n  ".join(gaps))
+    voice_tool.use_repo_models(ext)  # the child inherits HF_HOME
     batch_file = pairs[0][1].parent / "batch.tsv"
     batch_file.write_text("".join(f"{t}\t{w}\n" for t, w in pairs), encoding="utf-8")
     r = None
     for attempt in (1, 2):
-        r = subprocess.run([ext["pocket_venv_python"], ext["tts_clone_py"],
+        r = subprocess.run([ext["pocket_venv_python"], str(REPO / "scripts" / "tts_clone.py"),
                             "--batch", str(batch_file), "--voice", ext["voice_ref"]],
                            env={**os.environ, "PYTHONUTF8": "1", "PYTHONUNBUFFERED": "1"})
         if r.returncode == 0:
@@ -169,7 +175,7 @@ def synth_native(pairs, ext):
         print(f"[tts_episode] [FALLBACK] batch of {len(pairs)} attempt {attempt} exited "
               f"{r.returncode} (0x{r.returncode & 0xFFFFFFFF:08X})", flush=True)
     sys.exit(f"[tts_episode] FAIL on the batch of {len(pairs)} (attempt {attempt}), exit {r.returncode} "
-             f"(tts_clone.py needs --batch: JP-market engine/tts_clone.py on main)")
+             f"(exit 2 is argparse: scripts/tts_clone.py rejected its arguments)")
 
 
 def apply_tempo(raw_wav, sped_wav, tempo):
@@ -181,6 +187,7 @@ def apply_tempo(raw_wav, sped_wav, tempo):
 
 
 def load_whisper_model():
+    voice_tool.use_repo_models()  # the whisper model lives in the repo too
     from faster_whisper import WhisperModel
     return WhisperModel("small.en", device="cpu", compute_type="int8")
 
