@@ -94,7 +94,7 @@ for (const s of [sessionId, ...attached]) {
     dom += html;
   } catch {} // a frame can detach mid-read; the others still answer
 }
-console.log(`frames inspected: ${1 + attached.length}`);
+console.log(`checked as: ${KIND} | frames inspected: ${1 + attached.length}`);
 // packet's own layout carries 2 media-library images; product/profile carry more.
 const MIN_IMAGES = KIND === 'packet' ? 2 : 3;
 const common = [
