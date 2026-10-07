@@ -17,6 +17,8 @@ import build_srt          # noqa: E402
 import transcribe_episode  # noqa: E402
 import tts_episode        # noqa: E402
 
+REAL_SYNTH_NATIVE = tts_episode.synth_native  # the mocks below replace it; the voice gate test needs the real one
+
 fails = []
 
 
