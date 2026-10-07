@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Per-segment word timestamps via faster-whisper (offline, small.en cached).
-Run with JP-market .venv python. Usage: python transcribe_episode.py episodes/<slug>
+Usage: python3 scripts/transcribe_episode.py episodes/<slug>
 Outputs audio/<id>.words.json: [{"text","start","end"}, ...] per segment.
 
 tts_episode.py now does this transcription step itself as part of its TTS -> atempo ->
