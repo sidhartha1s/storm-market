@@ -1,3 +1,7 @@
+# pip freeze of .venv-pocket (Python 3.12.10), taken 7 Oct 26. The venv in use is a copy; these rebuild lines have NOT been run yet:
+#   python -m venv ".venv-pocket"      (in the MAIN checkout)
+#   .venv-pocket\Scripts\python -m pip install -r scripts\voice_requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
+#   then: python3 scripts/voice_tool.py
 annotated-doc==0.0.4
 annotated-types==0.7.0
 anyio==4.14.1
