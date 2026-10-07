@@ -32,7 +32,7 @@ channel:
     sh-: 1.16                     # shorts — references/shorts/PLAN.md:47,55,174 (owner 16 Sep 26)
   cta:                            # MUST-KEEP in every episode (owner order 2026-08-30) — DESIGN.md "CTA contract"
     file: assets/cta/paul-storm-ready-v6-oct7.mp4     # md5 047cd059bdc2a642f833995053aa94ac (owner 7 Oct 26: book ad v3, QR opens /yt/?src=qr; 1080p24, crf 22 transcode of the hyperframes render); swap = NEW versioned file + bump here, never overwrite; the old file leaves assets/cta/
-    duration: 24.5
+    duration: 24.417              # the picture stream (586 frames at 24 fps); the audio stream runs to 24.5 s, silent by then
     transcript: assets/cta/paul-storm-ready-v6-oct7.txt
     exempt:                       # shipped BEFORE the contract (2026-08-30) — never extended; demo-* dirs skip by having no epN prefix
       [ep1-joplin, ep2-2011-super-outbreak, ep3-tristate, ep5-california-2018, ep6-katrina-2005,
