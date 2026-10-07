@@ -37,8 +37,8 @@ A visit with no tag leaves the links untouched. Two ways to tag a link into the 
 
 - **The three utm fields.** This is what the `/yt/<slug>` lines in `_redirects` send (`youtube / video /
   <slug>`), so a description link that uses `/yt/<slug>` is traced. A bare
-  `https://paulraymond.online` link carries no tag and stays untraced: that is what `config.yaml` `first_link` and
-  the published descriptions use today.
+  `https://paulraymond.online` link carries no tag and stays untraced: that is what the descriptions published
+  before 7 Oct 26 use. New descriptions take `config.yaml` `first_link`, which is the `?src=desc` form below.
 - **The short form `?src=<how>`**, for a URL that must stay short: `qr` for the QR in the book ad, `desc` for a
   description link. It becomes `youtube / <how> / evergreen`. There is no per-episode part (owner 6 Oct 26): the
   tag says how the buyer arrived, not which video. Both should point at `https://www.paulraymond.online/yt/?src=<how>`.
