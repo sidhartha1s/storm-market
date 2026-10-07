@@ -4,7 +4,7 @@
 Owner 7 Oct 26: everything storm-market uses stays inside the repo folder. The voice tool is
   scripts/tts_clone.py           tracked
   external.pocket_venv_python    .venv-pocket/ in the MAIN checkout (gitignored, 4.9 GB;
-                                 package list: scripts/voice_requirements.txt)
+                                 package list and rebuild lines: scripts/voice_requirements.txt)
   external.voice_ref             tracked, md5 pinned in external.voice_ref_md5
   external.hf_home               .models/hf in the MAIN checkout (gitignored): the cloning
                                  weights (gated repo kyutai/pocket-tts), the faster-whisper
@@ -25,48 +25,45 @@ WEIGHTS = "hub/models--kyutai--pocket-tts/snapshots/*/languages/english*/model.s
 
 
 def load_ext():
+    # Own loader, not tts_episode.load_cfg: tts_clone.py imports this under the voice venv, and
+    # tts_episode imports this module.
     return yaml.safe_load((REPO / "config.yaml").read_text(encoding="utf-8"))["external"]
 
 
-def use_repo_models(ext=None):
-    """Point every Hugging Face download and lookup in this process (and its children) at the repo."""
-    os.environ["HF_HOME"] = (ext or load_ext())["hf_home"]
+def use_repo_models():
+    """Point every Hugging Face download and lookup in this process at the repo. Call it before
+    the first import that pulls in huggingface_hub (it reads HF_HOME at import)."""
+    os.environ["HF_HOME"] = load_ext()["hf_home"]
 
 
-def checks(ext=None):
-    """[(piece, ok, what to do when it is missing)]"""
-    ext = ext or load_ext()
-    hf = Path(ext["hf_home"])
-    ref = Path(ext["voice_ref"])
-    login = f'HF_HOME="{hf.as_posix()}" hf auth login'
+def voice_md5(path):
+    return hashlib.md5(Path(path).read_bytes()).hexdigest()
+
+
+def checks(ext, allow_download=False):
+    """[(piece, ok, what to do when it is not)]. With allow_download the weights count as present
+    when the login that can fetch them is there: the narration run downloads them itself."""
+    hf, ref = Path(ext["hf_home"]), Path(ext["voice_ref"])
+    has_login = (hf / "token").is_file()
+    weights_fix = f"no kyutai/pocket-tts weights under {hf}; the next narration run downloads them" if has_login else (
+        f'no kyutai/pocket-tts weights under {hf} and no login: run HF_HOME="{hf.as_posix()}" hf auth login '
+        "on the account that accepted the terms at https://huggingface.co/kyutai/pocket-tts")
     return [
         ("voice venv", Path(ext["pocket_venv_python"]).is_file(),
-         f"{ext['pocket_venv_python']} is missing: rebuild .venv-pocket from scripts/voice_requirements.txt"),
+         f"{ext['pocket_venv_python']} is missing: rebuild lines are at the top of scripts/voice_requirements.txt"),
         ("clone script", (REPO / "scripts" / "tts_clone.py").is_file(), "scripts/tts_clone.py is missing: git checkout it"),
-        ("voice reference", ref.is_file() and hashlib.md5(ref.read_bytes()).hexdigest() == ext["voice_ref_md5"],
+        ("voice reference", ref.is_file() and voice_md5(ref) == ext["voice_ref_md5"],
          f"{ref} is missing or its md5 is not {ext['voice_ref_md5']}"),
-        ("cloning weights", any(hf.glob(WEIGHTS)),
-         f"no kyutai/pocket-tts weights under {hf}: " + (
-             "the next narration run downloads them" if (hf / "token").is_file()
-             else f"log in first ({login}), on the account that accepted the terms at "
-                  "https://huggingface.co/kyutai/pocket-tts; the next narration run then downloads them")),
+        ("cloning weights", any(hf.glob(WEIGHTS)) or (allow_download and has_login), weights_fix),
     ]
 
 
-def missing(ext=None, allow_download=False):
-    """Fix-it lines for the pieces a narration run cannot start without. With allow_download the
-    weights may be absent as long as the login that can fetch them is present."""
-    ext = ext or load_ext()
-    out = []
-    for piece, ok, fix in checks(ext):
-        if ok or (allow_download and piece == "cloning weights" and (Path(ext["hf_home"]) / "token").is_file()):
-            continue
-        out.append(f"{piece}: {fix}")
-    return out
+def missing(ext, allow_download=False):
+    return [f"{piece}: {fix}" for piece, ok, fix in checks(ext, allow_download) if not ok]
 
 
 if __name__ == "__main__":
-    rows = checks()
+    rows = checks(load_ext())
     for piece, ok, fix in rows:
         print(f"{'PASS' if ok else 'FAIL'}  {piece}" + ("" if ok else f" — {fix}"))
     sys.exit(0 if all(ok for _, ok, _ in rows) else 1)
