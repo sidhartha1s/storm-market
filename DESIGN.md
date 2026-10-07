@@ -40,7 +40,7 @@ selection; cut at the transcript's action/emotion peak).
 - **Every `insert` goes to the owner before it enters any render**: frames + ~10-word transcript
   + source link, one message, wait for yes/no. No exceptions, no batching-through.
 - Narration is TTS'd **per segment** (separate wavs). Tempo is per lane (`config.yaml channel.tempo`,
-  applied by `scripts/tts_episode.py`); a per-segment deviation is the owner's call. Owner ear-check before ship covers it.
+  applied by `scripts/tts_episode.py`); the editor slows a key reveal with `(tempo 1.0)` on its heading (CLAUDE.md "Voice"). Owner ear-check before ship covers it.
 - Ambience/music beds: PD/licensed only, ducked under narration, audible in holds.
 
 ## Placement — LLM judgment, native hyperframes timing, no engine
@@ -125,8 +125,8 @@ per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > 
 
 ### Broadcast-clip rehook cadence
 Core audience is 40–70+ — they watched these events on live TV; real broadcast/news/PD/survivor
-clips are the nostalgia rehook, stock footage only fills between them. **A real clip lands every
-45–60s (or as the beat needs), never long stretches of pure stock.** Network news: transcribe
+clips are the nostalgia rehook, stock footage only fills between them. **A real clip lands as the beat needs
+(cadence aim: CLAUDE.md "REAL clip", not a hard gate), never long stretches of pure stock.** Network news: transcribe
 first, cut at the best moment; up to ~12-15s per pull when narrated over (commentary audio may
 be featured, audio mix is a per-cut editor decision), courtesy credit in
 description — credit manages goodwill, it does NOT remove
@@ -172,13 +172,13 @@ one filmic look that also hides stock/archive/AI seams. Reusable snippet `assets
 ## Music
 
 Tense/curious instrumental bed per episode — generate via DeAPI ACE music when available
-(keys in ./.env), else PD/CC0 fallback (attribution logged in provenance). Ducked under
-narration (~-14dB), rises during holds. Bed choice is an editorial call, owner ear-checks at
+(keys in ./.env), else PD/CC0 fallback (attribution logged in provenance). Level under
+narration: CLAUDE.md "Narration sits above every bed" (Two lanes section). Rises during holds. Bed choice is an editorial call, owner ear-checks at
 preview.
 
 ## Character sub-arcs
 
-The hit videos' vignettes about real people ARE the banked emotional payoff + net-info-gain.
+The hit videos' vignettes about real people ARE the emotional payoff + net-info-gain.
 **Memorial portrait dwell: a real person's face stays on screen briefly —
 ~4-5s max, once — then cut to symbolic/context imagery. Never linger on a victim's face.**
 Rules: real, named, publicly documented people only; verified quotes/facts (NWS service
@@ -244,11 +244,10 @@ floors/ceilings; taste stays with the model.
   the first cut on the table.) ep3 dropped the act-boundary blackouts because its deleted generator never
   emitted them: a regression, not a style choice, so every editor hand-places them. ep3 stays as shipped.
 - Never two inserts back-to-back; narration re-anchors between them.
-- Stats mid-video, emotion banked at the end (teardown-verified pattern).
+- Stats mid-video; where human moments go: script-scaling.md "Emotion".
 - Micro-loops every 30-45s, phrasing varied; no recap; CTA short.
 - **Signature closing footnote (channel = The Warning Hour):** every
   episode ends on a short, punchy, WARM and positive beat — preparedness, never fearmongering —
   landing on the channel name. Canonical shape (tweak per episode, keep the cadence):
-  "Disasters don't ask permission. But they do send warnings. Learn what yours sounds like —
-  so when it comes, you already know what to do. This was The Warning Hour." It plays over the
+  "Disasters don't ask permission. But they do send warnings. Learn what yours sounds like, so when it comes, you already know what to do. This was The Warning Hour." It plays over the
   title card; it IS the outro (still no recap, no content summary).

@@ -11,7 +11,7 @@ PR and say which one won.
   promised fact leads; the contradiction rides inside the same sentence.
 - No fluff before it: sentence one IS the payoff (numbers first, then the specific image, then the question).
   Delete-test: cut sentence one — if the hook still works, it was fluff.
-- No roadmap phrases ("one more thing before", "in the next twenty minutes") — they read as delay.
+- No roadmap phrases ("one more thing before", "in the next twenty minutes"): they read as delay. Exception (owner 4 Oct 26): a hook callback that names the hook's claim ("Stick with me, because what I'm about to explain is exactly why <the hook's claim>.") is allowed, several times through the video, e.g. at act seams (home: `script-scaling.md` "open-loop registry"). Runtime roadmaps stay banned.
 - Cold open (DESIGN.md): frame one is mid-action, never black. Narrator's first line starts at 0:00 — no broadcast,
   radio or archive audio in the hook (bad audio quality loses viewers before the hook finishes). Date/place popfig
   inside the first second. Every cut lands ON an audio event, never mid-sentence.
@@ -40,7 +40,9 @@ PR and say which one won.
 Every 20–60 s: question → information → payoff → new question, chained with but/because/which means, never a list.
 - Every beat in `edit_script.md` is an AV unit: what is said, what moves on screen, what the sound does, one row,
   one judgment. MGs get dedicated slots for information. (`script-framework.md` §1)
-- One dominant question the whole script serves ("the viewer keeps watching to find out ___").
+- One dominant question the whole script serves ("the viewer keeps watching to find out ___"), riding on one
+  script concept: the one claim the film proves, strongest when it overturns a belief ("physics hid the iceberg",
+  not "the Titanic"). The hook confirms it; every act proves part of it.
 - Consequence before mechanism ("426 died, and the wave wasn't an earthquake" beats "a landslide tsunami occurs when…").
 - Never spend curiosity early — one open question at a time.
 - Escalating revelations: interesting → surprising → disturbing → enormous → personal → present-day → unresolved.
@@ -58,9 +60,9 @@ Every 20–60 s: question → information → payoff → new question, chained w
 ## Cadence lattice (per-minute invariants, hold at any runtime) — `script-scaling.md`
 | Cadence | Rule |
 |---|---|
-| Rehook | real beat every 45–60 s |
+| Rehook | real beat about every 45–60 s, an aim not a gate (CLAUDE.md "REAL clip", owner 4 Oct 26) |
 | Micro-loop | curiosity gap every 30–45 s, phrasing varied |
-| Info beat | every 6–10 s of narration |
+| Value beat | every 6–10 s: a reason to keep watching (fact, striking image, open question, stake, human moment), not only a new fact (owner 4 Oct 26; home `script-scaling.md`) |
 | Pacing wave | alternate fast/slow, never >90 s one tempo |
 | Act size | 3–6 min, self-similar (hook-in → escalate → payoff → hold/blackout) |
 | Language | 4th-grader readable: short words, one idea per sentence |
@@ -79,7 +81,7 @@ mechanism/analysis pair) and plants+pays a loop.
 - Seams are time-stamps or place-stamps, never "to understand X you have to understand Y."
 - Keep technical terms, define in ≤12 words, reuse 3+ times. Every superlative gets a comparator and unit.
 - One object per segment; one named victim (age, job, sourced quote) per tragedy.
-- Close: fact + dated forward window. No aphorism, no mirrored callback, no sign-off line.
+- Close: fact + dated forward window, then the one signature line (DESIGN.md "Signature closing footnote", owner 4 Oct 26). No other aphorism, no mirrored callback.
 - TTS-safe: spell out ALL dates/times/numbers in narration (except years, dollars), no paired dashes, sentences
   under 24 words per TTS chunk (write the long fact-chain; the TTS layer splits it at commas), probe homographs
   before respelling (`references/homographs.md`).
@@ -97,7 +99,7 @@ mechanism/analysis pair) and plants+pays a loop.
   end of the day, when it comes to, plays a crucial role, stands as a, serves as a, is a reminder that, the quiet
   [anything], what sounds like, what amounts to, in what can only be described as, some say, many experts believe,
   it's been reported (name the source or cut the claim).
-- No em dashes, no rhetorical questions, no hedging/filler intensifiers (arguably, kind of, very, really).
+- No em dashes, no rhetorical questions (exception: the chapter-exit question + one affirming line, owner 4 Oct 26; `script-os.md` rule 9), no hedging/filler intensifiers (arguably, kind of, very, really).
 - No banned sentence shapes: reveal-flip ("not X, it's Y"), question-then-answer fragment, anaphora run (3+
   sentences same opener), thesis opener ("this is the story of…"), summary tag ("That's the mechanism.").
 - Specifics over abstractions: exact figures, never rounded, unless the number is a feat not the point (a rail

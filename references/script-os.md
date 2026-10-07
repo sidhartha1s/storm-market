@@ -14,6 +14,11 @@ but / because / which means.
 Seven non-negotiables:
 1. **One dominant question.** Write it as "the viewer keeps watching to find out ______." Everything serves it.
    Krakatau #5: *could the mechanism that killed 426 people happen again, and would anyone see it coming?*
+   The question rides on one **script concept**, written as one line before the outline: the one claim the film
+   proves. Its strongest form overturns a belief ("physics hid the iceberg", not "the Titanic sinking"); a
+   checkable fact ("four EF5 tornadoes in one day") also qualifies. The hook confirms it and every act proves part
+   of it; the title carries it (`packaging-rules.md`). A topic another channel already covered is still open to us
+   when we have a new concept for it. Evidence, a lever and not a law: `teardowns/2026-10-03-titanic-mirage.md`.
 2. **Consequence before mechanism.** "426 died, and the wave was not caused by an earthquake" beats "a landslide
    tsunami occurs when…".
 3. **Never spend curiosity early.** No "in the next 14 minutes…"; one open question at a time ("But where did the
@@ -80,16 +85,16 @@ materially changes every 60–90 s (new evidence, place, number, person, mechani
    foreign place names per script. Ray: "Lituya is the one time you gave me feet, and that's the one part I remember."
 9. **Transitions.** Seams are time-stamps or place-stamps ("At half past two that afternoon, in Mississippi"), never
    "to understand X you have to understand Y". Chapter-exit questions only when the answer is an open fact, ≤3 per
-   documentary, ≤2 per mini; the engine's "question" is usually implied by a stamp or an unresolved fact.
+   documentary; minis end every chapter this way (mini FORMAT.md rule 3); the engine's "question" is usually implied by a stamp or an unresolved fact. Preferred form (owner 4 Oct 26):
+   a real open question, then one affirming line that re-hooks it: "But why didn't the siren sound? Nobody in town knew until the next morning." The question opens a curiosity gap the viewer stays for; the affirming line concretes it.
 10. **Debunk block.** Live-hazard videos carry a 60–90 s sourced debunk at 60–75 % ("The problem with that story
     is…", then the measurement).
 11. **Vocabulary.** Keep the term, define it in ≤12 words, reuse it 3+ times; one plain-terms translation per
     number-dense minute; every superlative with comparator and unit ("1,720 feet, higher than the Empire State
     Building with its antenna").
 12. **One object per segment**, never stacked; one named victim with age, job and a sourced quote per tragedy.
-13. **Close.** Fact + dated forward window, then the CTA spine once. No aphorism, no mirrored callback, no sign-off line.
-Owner decision 2026-09-14: humanise-rules.md stays as written. No thesis opener, no chapter-exit questions (rule 9
-above is read as: seams are stamps; the open fact is stated, not asked). Ep2's hook at 1.5k views is not evidence.
+13. **Close.** Fact + dated forward window, then the CTA spine once, then the one signature line (DESIGN.md "Signature closing footnote", owner 4 Oct 26). No other aphorism, no mirrored callback.
+Owner decision 2026-09-14: humanise-rules.md stays as written. No thesis opener. Chapter exits: superseded 4 Oct 26, see rule 9 (question + affirming line). Ep2's hook at 1.5k views is not evidence.
 ## The philosophical change
 Optimise for "what information does the viewer want right now, and when do we give it," not for "how do we make this
 more engaging." Narration and visual event are written together, never narration first.

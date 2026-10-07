@@ -80,8 +80,8 @@ Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was c
   PAYOFF (open loop closed) → WARM CLOSE (preparedness, never fearmongering) → subscribe line.
 - **Retention architecture is a hard rule from #4 on (FORMAT.md "Retention architecture", owner 2026-09-11):** the
   voice never narrates what the MG shows (dates, clock times, counts go on screen, the voice says the human line);
-  stakes order not chronology; one open question at all times and every chapter ends by asking the next; no
-  roadmap or structure announcements; hook confirms the click with a specific present-tense image, never a
+  stakes order not chronology; one open question at all times and every chapter ends by asking the next, then one affirming line that re-hooks it (owner 4 Oct 26, FORMAT.md rule 3); no
+  roadmap or structure announcements (exception: hook callbacks, script-scaling.md 'open-loop registry', owner 4 Oct 26); hook confirms the click with a specific present-tense image, never a
   proper noun the audience does not know; one named person per tragedy; fact dumps become a clock / scorecard /
   equation card; "and you" by minute two; "not happening" is one line in the payoff; the ending lands the thesis
   before the END CTA spine; chain seams with but / because / which means. Score the draft script on stakes per
@@ -130,7 +130,7 @@ Priority order, per clip:
 `library/mini-storms/` holds the template compositions (create on the first run, then reuse):
 `clip-hold`, `still-kenburns`, `vertical-embed-credit`, `popfig-red`, `breaking-bug`
 (lower-third kicker), `overlay-vignette-grain`, `stat-card`. Copy → retune per cut. Music: one
-tense bed from `assets/sfx/` (score-act1.mp3 exists) at −24 LUFS under narration, duck 6 dB on
+tense bed from `assets/sfx/` (score-act1.mp3 exists) level per CLAUDE.md "Narration sits above every bed" (Two lanes section), duck 6 dB on
 popfigs. Cut cadence from FORMAT.md: median shot 3.5–4.5 s, hook ≤4.2 s, plus one labelled
 real data-feed hold (USGS/NOAA/NASA loop, 20–40 s) every 2–3 min as a credibility anchor.
 JS/WAAPI only. Red popfig (Abril, text-shadow, ≤3 words) on every date / place / number /

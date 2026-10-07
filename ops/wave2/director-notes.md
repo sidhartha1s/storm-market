@@ -48,3 +48,7 @@
 - El Niño pool rebuilt after the worktree loss: 45 rows re-fetched + 35 Sept files + 49 cutters. Mudslide stock clip is an Italian coastal town; do not use.
 - 17 Sep slot A (Indonesia) v1 script is on disk (1,371 words). Radar verdict: marginal (Ibu 400 -> 600 m, Semeru 1,000 m again, Lewotolok ongoing, search silent since day 6, Krakatau unchanged). KILL RULE: ships only if the 06:00 check adds a real mover (search extended/closed/found, Krakatau eruption, Ibu at or above 1,000 m, an airport). Otherwise 17 Sep A falls to the next mover.
 - 17 Sep slot B: Kauai/Sakurajima/El Niño all flat at 16 Sep late. Candidates for the morning: Kauai first North Shore neighborhood back (KIUC), the Bermuda system getting a name (NHC), Sakurajima >= 3,000 m (JMA).
+
+## 17 Sep 26, 10:45 IST radar (director)
+- Indonesia FLAT (no Krakatau eruption; the 14 Sep BRIN item was a Monday discussion about early-September activity; Ibu 600 m stands). Kauai: KIUC 82 % (+80 customers in 24 h), North Shore still 0 %; no named neighborhood back. Atlantic FLAT (Bermuda trough 40 %/7-day). Sakurajima FLAT (FL090, ~2,700 m). TD Norbert at 20.2N 140.5W weakening to a remnant low, no Hawaii threat.
+- Kill rule holds on both serial slots; afternoon re-check at ~16:00 IST (MAGMA bulletins, KIUC evening update, NHC 2 PM EDT). Evergreen card ms-0921-tor-b (Tornado Alley moving, NWS/SPC numbers) pulled forward to 17 Sep as the guaranteed slot; fact sheet in progress.

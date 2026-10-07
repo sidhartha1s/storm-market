@@ -1,13 +1,13 @@
 # The Storm-Ready Home
 
-> A 486-page American disaster-preparedness manual by Paul Raymond: 130 numbered protections, 23 hazard playbooks, a 60-day preparation sequence, and a printable family binder. Digital book (PDF), $14.99, 7-day money-back guarantee, sold via Gumroad. Companion to The Warning Hour, Paul Raymond's documentary channel on American storms.
+> A 486-page American disaster-preparedness manual by Paul Raymond: 130 numbered protections, 23 hazard playbooks, a 60-day preparation sequence, and a printable family binder. Digital book (PDF), $9.99, 7-day money-back guarantee, sold via Gumroad. Companion to The Warning Hour, Paul Raymond's documentary channel on American storms.
 
 The site is the sales page for the book, plus free resources: written dispatches for each episode of The Warning Hour (Field Notes), printable preparedness checklists, a storm-preparedness guide for every US state and DC, and a free state-specific preparedness packet.
 
 ## Pages
 
 - [Home / the book](https://paulraymond.online/): what the book covers, who wrote it, sample pages, FAQ, and purchase.
-- [Buy the book](https://paulraymond.gumroad.com/l/ebook): $14.99 checkout, instant PDF delivery.
+- [Buy the book](https://paulraymond.gumroad.com/l/ebook): $9.99 checkout, instant PDF delivery.
 - [Free state packet](https://paulraymond.gumroad.com/l/packet): one state-specific preparedness packet, free.
 - [About Paul Raymond](https://paulraymond.online/about/): the method — primary documents only, every figure cited, honest limits stated.
 - [Field Notes](https://paulraymond.online/field-notes/): written dispatches from The Warning Hour episodes.
@@ -29,7 +29,7 @@ The site is the sales page for the book, plus free resources: written dispatches
 ## Facts
 
 - Author: Paul Raymond. Book: The Storm-Ready Home, 486 pages, PDF.
-- Price: $14.99 one-time. Refunds: 7 days, no questions asked.
+- Price: $9.99 one-time. Refunds: 7 days, no questions asked.
 - Built from National Weather Service and FEMA post-storm reports; figures cited to their issuing documents.
 - The checklists and state guides are free to read without purchase; the printable pack and per-state packets are delivered by email (free Gumroad products).
 - Not medical, legal, engineering, financial, or insurance advice.
