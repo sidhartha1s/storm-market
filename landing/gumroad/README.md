@@ -58,7 +58,7 @@ Roll back to Gumroad's default product page with
 
 1. **Images may only come from the Gumroad media library.** Every other host is blocked, and
    files from `gumroad files upload` are private and fail page moderation. Upload with
-   `gumroad media upload ./assets/<name>.jpg` and paste the returned
+   `gumroad media upload ../assets/<name>.jpg` and paste the returned
    `public-files.gumroad.com/...` URL into the HTML. Current uploads:
 
    | Asset | URL |
