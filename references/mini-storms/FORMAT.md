@@ -171,7 +171,7 @@ Measured against a 14-minute cut that scored 5.5/10 on stakes-per-90-seconds bef
 **Scope: Formats A and B. Format C keeps Paul's ebook CTA at the story break but replaces the END CTA spine and the
 mid-video beats with its own soft close (one comment + subscribe line after the tracking line).**
 - **Paul's ebook CTA** — every video, from `config.yaml channel.cta`, position and dips from `config.yaml channel.cta`, film layer off.
-  Description line 1 = paulraymond.online. No "book mentioned at mm:ss" line.
+  Description line 1 = `config.yaml` `channel.cta.first_link`. No "book mentioned at mm:ss" line.
 - **Hard cap: 3 CTA beats per mini-storm, including the END CTA, excluding Paul's.** Breadcrumbs do not count.
 - **B · Where are you watching from** — once per video, near the one-minute mark, worded fresh every episode; also the
   owner's pinned comment on upload.
