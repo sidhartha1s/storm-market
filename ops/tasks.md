@@ -66,4 +66,4 @@ stop at the first one that works. Every row runs alone (one heavy job at a time)
 - Orphan `.worktrees` folders: owner reviews the list with status and GB each before any deletion (REMIND).
 - `C:\tmp_oldcode_test`: scratch folder left by an agent; owner deletes (deny rule blocks `rm -rf`).
 - Catch-up `/simplify` on the #85-#98 code, one PR.
-- `/yt/` went live on 7 Oct 26 and `channel.cta.first_link` points at it. Still open: the book ad (v3, QR to `/yt/?src=qr`, 24.5 s) is rendered but not in the repo; `channel.cta.file` is still the 15 s `paul-storm-ready-v5-sep6.mp4`. Swapping it is the owner's call (it changes the CTA length in every future episode). (todo)
+- `/yt/` went live on 7 Oct 26 and `channel.cta.first_link` points at it. The book ad v3 (QR to `/yt/?src=qr`, 24.5 s) is `channel.cta.file` since 7 Oct 26. Still open: every unpublished episode restages `media/cta/` and retimes what follows the CTA (9.4 s longer); the owner's 7 Oct 26 placement note (before a payoff, late or halfway) is not in the CTA contract yet. (todo)
