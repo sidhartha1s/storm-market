@@ -544,11 +544,28 @@ with tempfile.TemporaryDirectory() as _d:
     _gaps = voice_tool.missing(_ext, allow_download=True)
     check("voice_tool: no weights and no login blocks the run, and names the login command",
           len(_gaps) == 1 and "hf auth login" in _gaps[0], _gaps)
-    (_d / "hf").mkdir()
+
+    # the real synth_native must stop on that gap before it spawns anything
+    _spawned = []
+    _real_run = tts_episode.subprocess.run
+    tts_episode.subprocess.run = lambda *a, **k: _spawned.append(a)
+    try:
+        REAL_SYNTH_NATIVE([(_d / "a.txt", _d / "a.wav")], _ext)
+        _stopped = ""
+    except SystemExit as e:
+        _stopped = str(e)
+    finally:
+        tts_episode.subprocess.run = _real_run
+    check("synth_native: a missing voice piece stops the run before the clone script is spawned",
+          "voice tool incomplete" in _stopped and not _spawned, (_stopped[:80], len(_spawned)))
+
+    # the no-cloning fallback repo pocket_tts fetches when the gated one is refused is not the weights
+    (_d / "hf" / "hub" / "models--kyutai--pocket-tts-without-voice-cloning" / "snapshots" / "abc" / "languages" / "english").mkdir(parents=True)
+    (_d / "hf" / "hub" / "models--kyutai--pocket-tts-without-voice-cloning" / "snapshots" / "abc" / "languages" / "english" / "model.safetensors").write_bytes(b"")
     (_d / "hf" / "token").write_text("x", encoding="utf-8")
     check("voice_tool: a login without weights may start a run, and the plain check still reports the weights",
           _gap_names(allow_download=True) == [] and _gap_names() == ["cloning weights"])
-    _w = _d / "hf" / "hub" / "models--kyutai--pocket-tts" / "snapshots" / "abc" / "languages" / "english_2026-04"
+    _w = _d / "hf" / "hub" / "models--kyutai--pocket-tts" / "snapshots" / "abc" / "languages" / "english"
     _w.mkdir(parents=True)
     (_w / "model.safetensors").write_bytes(b"")
     check("voice_tool: weights on disk pass", _gap_names() == [])
