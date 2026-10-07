@@ -4,6 +4,10 @@ Owner, 20 Sep 26: replan El Reno and add Super Outbreak 1974 (all seven F5s), Lu
 Fargo 1957 with Ruskin Heights, Woodward 1947, and every Palm Sunday outbreak. 20 to 25 minute documentaries with
 motion graphics. 1974 first. This file is the plan; `tracker.json` holds the live cards.
 
+Read this as the plan written on 20 Sep 26, not as status: the E1 (1974) and E2 (Enderlin) cards below still show
+their target dates and `[verify]` marks although both episodes have since been built. Where this file and
+`tracker.json` or an episode folder disagree, they win.
+
 ## 1. What the Studio export says (lifetime to 20 Sep 26, `references/channel-audit-2026-09-19/studio/`)
 
 | video | lane | length | impressions | CTR | views | AVD | watched |
