@@ -59,13 +59,13 @@ Roll back to Gumroad's default product page with
 
    | Asset | URL |
    |---|---|
-   | cover.jpg | `https://public-files.gumroad.com/ldxt1k0a2pu4odbkeyuyc0kavyat` |
-   | paul-tornado-selfie.jpg | `https://public-files.gumroad.com/jb08usfl5m1ntdei5arewjj0srze` |
-   | paul-plywood.jpg | `https://public-files.gumroad.com/8nuuivv3ojs5fruxvjzc2i48caet` |
-   | paul-binder.jpg | `https://public-files.gumroad.com/2z7lprph1l42ypknjk6wfly0jr0v` |
-   | paul-stage.jpg | `https://public-files.gumroad.com/3dvo3r1m4d9tsyx3pu2in6akecw7` |
-   | field-kit.jpg | `https://public-files.gumroad.com/78n8pu7la9dng9q0b0ghpv8hd93l` |
-   | avatar.jpg (profile masthead) | `https://public-files.gumroad.com/elldfxffu83lvrf7xt2uin2k4a7b` |
+   | cover.jpg | `https://public-files.gumroad.com/2zwvwohyrk5s6bfcwhguofdnae4y` |
+   | paul-tornado-selfie.jpg | `https://public-files.gumroad.com/c0p9i90w0cfsstukjcfgx3ydjiru` |
+   | paul-plywood.jpg | `https://public-files.gumroad.com/5wqgovjx42ub2wuiftjzp6x9kzib` |
+   | paul-binder.jpg | `https://public-files.gumroad.com/yje8sd8i8o2vjsx8enuzwb3zu84o` |
+   | paul-stage.jpg | `https://public-files.gumroad.com/ljt6m4oky07sr5pfwjhtdmdt2lj0` |
+   | field-kit.jpg | `https://public-files.gumroad.com/lnoi087hti6pgxds415fp1qp835b` |
+   | avatar.jpg (profile masthead) | `https://public-files.gumroad.com/r3cx5p1zrtzn27kolqhitw0ha0jn` |
 
    `avatar.jpg` is a square crop of `headshot.jpg`, generated with Pillow — see the command in
    the git history for this file. It is committed rather than left as a one-off so the masthead
