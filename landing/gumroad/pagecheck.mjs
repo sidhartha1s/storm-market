@@ -4,11 +4,11 @@
    sandboxed iframe, so `curl` sees none of it: the only honest check is a real
    browser that runs the page's JS and then reads every frame's DOM.
 
-   The two pages assert different things — a product page MUST carry a buy element or the
+   The page kinds assert different things — a product page MUST carry a buy element or the
    product is unpurchasable; a profile page never has one — so the kind is explicit rather
    than guessed. Passing the wrong kind is a loud failure, not a silent pass.
 
-   Usage: node pagecheck.mjs <url> [product|profile] [screenshot-out.png] */
+   Usage: node pagecheck.mjs <url> [product|packet|profile] [screenshot-out.png] */
 
 import { spawn } from 'node:child_process';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
@@ -94,7 +94,7 @@ for (const s of [sessionId, ...attached]) {
     dom += html;
   } catch {} // a frame can detach mid-read; the others still answer
 }
-console.log(`frames inspected: ${1 + attached.length}`);
+console.log(`checked as: ${KIND} | frames inspected: ${1 + attached.length}`);
 // packet's own layout carries 2 media-library images; product/profile carry more.
 const MIN_IMAGES = KIND === 'packet' ? 2 : 3;
 const common = [

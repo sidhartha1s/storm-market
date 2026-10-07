@@ -33,3 +33,4 @@ line that names the one it replaces.
 | 6 Oct 26 | The smiling cover (the one in book ad v3) is the cover on the site: cover set and social card. Other Paul v2 images are unchanged | owner | "use this smiling image on the landing page please" |
 | 6 Oct 26 | The viewer count in the top band stays between 15 and 30 and drifts by at most 2 every 6 to 10 s (was 80 to 115, re-rolled every 2 to 3 s) | owner | "i think the 111 viewing can be lower - maybe around 15-30. slower cadence." |
 | 6 Oct 26 | Sale tracking has no per-episode tag: `?src=<how>` only (`qr`, `desc`), landing on `/yt/` | owner | "no need for an episode level tag." |
+| 6 Oct 26 | Every reference video, picked by the owner or the agent, gets its comments analysed and added to the bank (`references/comment-bank.md` holds the rule) | owner | "overtime, it will be a data bank" |

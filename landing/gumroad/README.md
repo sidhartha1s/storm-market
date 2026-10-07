@@ -1,12 +1,13 @@
 # Gumroad surfaces — custom product landing page + storefront profile
 
-Two hand-authored pages published to Gumroad with the `gumroad` CLI. They carry the same
+Three hand-authored pages published to Gumroad with the `gumroad` CLI. They carry the same
 field-manual identity as `landing/index.html` (the Cloudflare Pages funnel), so a buyer who
 crosses from `paulraymond.pages.dev` to Gumroad never sees a design seam.
 
 | File | Publishes to | What it is |
 |---|---|---|
 | `landing.html` | `https://paulraymond.gumroad.com/l/ebook` | **Replaces the entire native product page**, price and "I want this!" button included. |
+| `packet.html` | `https://paulraymond.gumroad.com/l/packet` | The free state-packet page ($0 product); published like `landing.html`, with the packet's product id. |
 | `profile.html` | `https://paulraymond.gumroad.com/` | The storefront home page — author masthead, the book, how it's made. |
 | `pagecheck.mjs` | — | **Gate.** Loads a published URL in headless Chrome and asserts the custom HTML actually rendered. |
 
@@ -45,6 +46,9 @@ gumroad products page publish $PRODUCT ./landing.html --json --no-input --non-in
 gumroad pages push profile ./profile.html --json --no-input --non-interactive
 
 node pagecheck.mjs https://paulraymond.gumroad.com/l/ebook   # must exit 0
+# packet and profile need the kind argument; without it the product checks run and fail
+node pagecheck.mjs https://paulraymond.gumroad.com/l/packet packet
+node pagecheck.mjs https://paulraymond.gumroad.com/ profile
 ```
 
 Roll back to Gumroad's default product page with
@@ -54,22 +58,27 @@ Roll back to Gumroad's default product page with
 
 1. **Images may only come from the Gumroad media library.** Every other host is blocked, and
    files from `gumroad files upload` are private and fail page moderation. Upload with
-   `gumroad media upload ./assets/<name>.jpg` and paste the returned
+   `gumroad media upload ../assets/<name>.jpg` and paste the returned
    `public-files.gumroad.com/...` URL into the HTML. Current uploads:
 
    | Asset | URL |
    |---|---|
-   | cover.jpg | `https://public-files.gumroad.com/ldxt1k0a2pu4odbkeyuyc0kavyat` |
-   | paul-tornado-selfie.jpg | `https://public-files.gumroad.com/jb08usfl5m1ntdei5arewjj0srze` |
-   | paul-plywood.jpg | `https://public-files.gumroad.com/8nuuivv3ojs5fruxvjzc2i48caet` |
-   | paul-binder.jpg | `https://public-files.gumroad.com/2z7lprph1l42ypknjk6wfly0jr0v` |
-   | paul-stage.jpg | `https://public-files.gumroad.com/3dvo3r1m4d9tsyx3pu2in6akecw7` |
-   | field-kit.jpg | `https://public-files.gumroad.com/78n8pu7la9dng9q0b0ghpv8hd93l` |
-   | avatar.jpg (profile masthead) | `https://public-files.gumroad.com/elldfxffu83lvrf7xt2uin2k4a7b` |
+   | cover.jpg | `https://public-files.gumroad.com/2zwvwohyrk5s6bfcwhguofdnae4y` |
+   | paul-tornado-selfie.jpg | `https://public-files.gumroad.com/c0p9i90w0cfsstukjcfgx3ydjiru` |
+   | paul-plywood.jpg | `https://public-files.gumroad.com/5wqgovjx42ub2wuiftjzp6x9kzib` |
+   | paul-binder.jpg | `https://public-files.gumroad.com/yje8sd8i8o2vjsx8enuzwb3zu84o` |
+   | paul-stage.jpg | `https://public-files.gumroad.com/ljt6m4oky07sr5pfwjhtdmdt2lj0` |
+   | field-kit.jpg | `https://public-files.gumroad.com/lnoi087hti6pgxds415fp1qp835b` |
+   | avatar.jpg (profile masthead) | `https://public-files.gumroad.com/r3cx5p1zrtzn27kolqhitw0ha0jn` |
 
    `avatar.jpg` is a square crop of `headshot.jpg`, generated with Pillow — see the command in
    the git history for this file. It is committed rather than left as a one-off so the masthead
    image stays regenerable if the cover art ever changes.
+
+   Two images sit outside these pages and must be changed separately when a face or cover
+   changes: each product's thumbnail, which is also its share image (`og:image`), set with
+   `gumroad products thumbnail set <product_id> --image <square.jpg>`; and the account's
+   profile picture (see "Not doable from the CLI").
 
 2. **A custom product page replaces the native buy button**, so `landing.html` must carry its
    own. Every CTA is `data-gumroad-action="buy"`; live values use
@@ -98,4 +107,4 @@ HTML carries its own `<style>`, so it renders standalone exactly as it does embe
 
 The **profile picture / avatar** is dashboard-only — `gumroad user update` exposes `--name` and
 `--bio` and nothing else. Set it at gumroad.com/settings/profile. Everything else here
-(seller name, bio, both pages, media) is scripted above.
+(seller name, bio, all three pages, media) is scripted above.
