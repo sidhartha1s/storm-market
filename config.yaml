@@ -44,4 +44,4 @@ channel:
     dip_in: 1.0                   # black before/after, seconds (blackout table: dramatic punctuation)
     dip_out: 1.0
     srt_label: "[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"
-    first_link: https://paulraymond.online   # Paul says "the first link in the description" on camera
+    first_link: https://www.paulraymond.online/yt/?src=desc   # Paul says "the first link in the description" on camera; /yt/ is the page for video viewers, ?src=desc marks the sale as coming from a description
