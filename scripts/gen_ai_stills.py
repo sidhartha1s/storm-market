@@ -3,7 +3,7 @@
 
   python3 scripts/gen_ai_stills.py [--dry-run] [--max-api-calls N] [--only id,id]
 
-Same DeAPI txt2img/poll pattern as JP-market/engine/gen04.py: async submit ->
+DeAPI txt2img/poll pattern: async submit ->
 poll request-status -> download presigned result_url PNG. Prompts are hardcoded
 below (STILLS list) — this is a one-off episode still-gen script, not a
 per-episode-data engine.
