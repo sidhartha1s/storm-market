@@ -1,6 +1,6 @@
 # Gumroad surfaces — custom product landing page + storefront profile
 
-Two hand-authored pages published to Gumroad with the `gumroad` CLI. They carry the same
+Three hand-authored pages published to Gumroad with the `gumroad` CLI. They carry the same
 field-manual identity as `landing/index.html` (the Cloudflare Pages funnel), so a buyer who
 crosses from `paulraymond.pages.dev` to Gumroad never sees a design seam.
 
