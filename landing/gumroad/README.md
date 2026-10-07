@@ -7,6 +7,7 @@ crosses from `paulraymond.pages.dev` to Gumroad never sees a design seam.
 | File | Publishes to | What it is |
 |---|---|---|
 | `landing.html` | `https://paulraymond.gumroad.com/l/ebook` | **Replaces the entire native product page**, price and "I want this!" button included. |
+| `packet.html` | `https://paulraymond.gumroad.com/l/packet` | The free state-packet page ($0 product); published like `landing.html`, with the packet's product id. |
 | `profile.html` | `https://paulraymond.gumroad.com/` | The storefront home page — author masthead, the book, how it's made. |
 | `pagecheck.mjs` | — | **Gate.** Loads a published URL in headless Chrome and asserts the custom HTML actually rendered. |
 
