@@ -111,6 +111,19 @@ The existing stack already does everything except the frame size. Composition si
 
 Cost per short after the pilot: ~25 min of agent time, ~2 min render, $0 media.
 
+### Planned alternative (28 Sep 26, not yet adopted): reframe from the parent timeline
+Idea from a motion-design course review, owner-approved to record, not to build: instead of step 4's
+independent `index.html` hand-authored from `library/shorts/` templates, a Short is built by **reframing the
+parent episode's own composition timeline to 9:16** — the same timeline moved from
+1920x1080 to 1080x1920, reusing the parent's actual beats and graphics (its `data-start`/`data-duration`
+tracks and comps) for the S1-S3 range instead of re-authoring them from scratch. The caption bar,
+headline card and warning bug still mount as new top tracks per section 3 step 4; everything else in the
+timeline is the parent's, repositioned into the vertical safe zone by hand (reasoning, not a script: moving a beat
+needs to know what it means, which the CLAUDE.md tripwire forbids a script to do). This conflicts with step 4 as written
+today (a separate template build) and is not resolved here — the pilot (section 7) is the place to try
+both and let the owner pick, before any `/storm-shorts` skill gets promoted. No code changes from this
+note; the Shorts pilot is still pending the owner's go (section 8, item 1).
+
 ## 4. Distribution (the part that is new)
 
 | platform | why | rules |
