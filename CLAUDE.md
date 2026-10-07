@@ -135,6 +135,17 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
    is `channel.cta.first_link`, then the "book mentioned at mm:ss" line, no chapter marker at the CTA, category Education, type Overview.
 - Chunk a render only if a single render proves unstable.
 
+## HARD RULE: everything lives in this folder
+Owner 7 Oct 26: "i want all stuff related to storm market within the repo. exceptions, u gotta let me know."
+- Every tool, venv, model, login, key, source project and asset this channel uses sits inside this repo folder: tracked, or
+  gitignored in the MAIN checkout when it is too big or secret (`.venv-pocket/`, `.models/`, `.env`, episode media). Never a
+  path into another project, a shared user cache or a scratch folder.
+- An outside dependency is an exception. Tell the owner before using a new one and add it to this list in the same PR.
+- Exceptions on record: installed programs (Python, Node and the npx cache that holds hyperframes, ffmpeg, Chrome, git, gh,
+  yt-dlp); online accounts and their local logins (GitHub, Cloudflare for the site deploy, Gumroad CLI, YouTube, Flow);
+  the skills' junction into `~/.claude/skills/` (the files are tracked here); stock-fetch keys in `~/.claude/.env`.
+- Not moved in yet, open in `ops/tasks.md`: the book ad's editing project and the Paul source clips.
+
 ## HARD RULE: worktree isolation
 Never build or edit in the main checkout; parallel sessions share it. First action of any session: `git worktree list`
 and `git status`. Before the first write: `git worktree add .worktrees/<task> -b <branch> origin/main`.
