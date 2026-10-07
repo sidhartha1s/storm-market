@@ -29,7 +29,7 @@ Every episode keeps a LOOP TABLE in its edit_script:
 - **1 loop per act**: planted in that act, paid within 1–2 acts. Each act ALSO pays off one earlier loop — an act that only plants is a tease; an act that only pays is a dead end.
 - **1 CTA hinge (REQUIRED, owner 2026-08-30 — DESIGN.md "CTA contract")**: a tease→payoff pair
   whose tease ends the segment inside the `config.yaml channel.cta` window (85–95%, owner 23 Sep 26) and whose payoff opens the next segment's first
-  sentence; the 15.1s CTA sits between them. Listed in the loop table as `cta-hinge` with the two
+  sentence; the CTA (`channel.cta.duration`) sits between them. Listed in the loop table as `cta-hinge` with the two
   segment ids. If no honest payoff falls in that band, restructure the acts — the CTA never moves.
 - Loops close honestly. A dropped loop is the #1 tell of stretched runtime (competitor teardown: the "radar could warn us someday" tease that never resolves).
 
