@@ -202,7 +202,8 @@ mid-video beats with its own soft close (one comment + subscribe line after the 
   intro to the end of the last narration line, except in motion-graphics-only scenes, where he is not shown (owner
   26 Sep 26; `references/mg-quickref.md` "Frame and safe zones"); HIDDEN in the hook, in Paul's full-frame CTA window (the CTA has its
   own higher-quality face and lip-sync) and under the close card.
-- Source = the CTA master, no generation: 410 px square crop centred on his face (he sits 205 px from the frame edge, so
+- Source = the v5 CTA master (`paul-storm-ready-v5-sep6.mp4`, out of the tree since 7 Oct 26: restore per `assets/cta/README.md`;
+  the v6 ad opens on the book and frames Paul differently, so these numbers do not fit it), no generation: 410 px square crop centred on his face (he sits 205 px from the frame edge, so
   the crop starts at x=0 and the left margin is his own background blurred and extended), face ≈ 70 % of the circle.
 - Two loops from HIS OWN speech spans (transcribe the CTA with word timestamps): `paul-talk` = his talking stretches
   joined; `paul-idle` = his pauses joined forward+back. Cut per window to the exact `data-duration` (media_budget),
