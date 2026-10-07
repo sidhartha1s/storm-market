@@ -107,4 +107,4 @@ HTML carries its own `<style>`, so it renders standalone exactly as it does embe
 
 The **profile picture / avatar** is dashboard-only — `gumroad user update` exposes `--name` and
 `--bio` and nothing else. Set it at gumroad.com/settings/profile. Everything else here
-(seller name, bio, both pages, media) is scripted above.
+(seller name, bio, all three pages, media) is scripted above.
