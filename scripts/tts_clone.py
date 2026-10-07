@@ -161,6 +161,7 @@ def main():
         sys.exit(f"voice-ref normalize failed: {cv.stderr}")
     voice_ref = ref_wav
 
+    voice_tool.use_repo_models()  # before pocket_tts: huggingface_hub reads HF_HOME at import
     from pocket_tts.models.tts_model import TTSModel
     from pocket_tts.data.audio import stream_audio_chunks
     import torch
