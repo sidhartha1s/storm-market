@@ -536,25 +536,24 @@ with tempfile.TemporaryDirectory() as _d:
     (_d / "ref.mp3").write_bytes(b"voice")
     _ext = {"pocket_venv_python": str(_d / "py.exe"), "hf_home": str(_d / "hf"), "voice_ref": str(_d / "ref.mp3"),
             "voice_ref_md5": hashlib.md5(b"voice").hexdigest()}
+
+    def _gap_names(**kw):
+        return [g.split(":")[0] for g in voice_tool.missing(_ext, **kw)]
     _gaps = voice_tool.missing(_ext, allow_download=True)
     check("voice_tool: no weights and no login blocks the run, and names the login command",
           len(_gaps) == 1 and "hf auth login" in _gaps[0], _gaps)
     (_d / "hf").mkdir()
     (_d / "hf" / "token").write_text("x", encoding="utf-8")
-    check("voice_tool: a login without weights may start (the run downloads them)",
-          voice_tool.missing(_ext, allow_download=True) == [])
-    check("voice_tool: the plain check still reports the missing weights",
-          [g.split(":")[0] for g in voice_tool.missing(_ext)] == ["cloning weights"])
+    check("voice_tool: a login without weights may start a run, and the plain check still reports the weights",
+          _gap_names(allow_download=True) == [] and _gap_names() == ["cloning weights"])
     _w = _d / "hf" / "hub" / "models--kyutai--pocket-tts" / "snapshots" / "abc" / "languages" / "english_2026-04"
     _w.mkdir(parents=True)
     (_w / "model.safetensors").write_bytes(b"")
-    check("voice_tool: weights on disk pass", voice_tool.missing(_ext) == [])
+    check("voice_tool: weights on disk pass", _gap_names() == [])
     (_d / "ref.mp3").write_bytes(b"other voice")
-    check("voice_tool: a swapped voice reference is caught by md5",
-          [g.split(":")[0] for g in voice_tool.missing(_ext)] == ["voice reference"])
     (_d / "py.exe").unlink()
-    check("voice_tool: a missing venv is reported",
-          "voice venv" in [g.split(":")[0] for g in voice_tool.missing(_ext)])
+    check("voice_tool: a swapped voice reference and a missing venv are both reported",
+          _gap_names() == ["voice venv", "voice reference"])
 
 # ---------------------------------------------------------------------------
 if fails:
