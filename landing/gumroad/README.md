@@ -75,6 +75,11 @@ Roll back to Gumroad's default product page with
    the git history for this file. It is committed rather than left as a one-off so the masthead
    image stays regenerable if the cover art ever changes.
 
+   Two images sit outside these pages and must be changed separately when a face or cover
+   changes: each product's thumbnail, which is also its share image (`og:image`), set with
+   `gumroad products thumbnail set <product_id> --image <square.jpg>`; and the account's
+   profile picture (see "Not doable from the CLI").
+
 2. **A custom product page replaces the native buy button**, so `landing.html` must carry its
    own. Every CTA is `data-gumroad-action="buy"`; live values use
    `data-gumroad-field="name|price"`. **`rating` and `review-count` are deliberately absent**
