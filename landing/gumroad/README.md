@@ -44,7 +44,9 @@ gumroad pages preview ./profile.html  --json --no-input --non-interactive
 gumroad products page publish $PRODUCT ./landing.html --json --no-input --non-interactive
 gumroad pages push profile ./profile.html --json --no-input --non-interactive
 
-node pagecheck.mjs https://paulraymond.gumroad.com/l/ebook   # must exit 0
+node pagecheck.mjs https://paulraymond.gumroad.com/l/ebook            # must exit 0
+node pagecheck.mjs https://paulraymond.gumroad.com/l/packet packet   # the kind is required: without it
+node pagecheck.mjs https://paulraymond.gumroad.com/ profile          # the product checks run and fail
 ```
 
 Roll back to Gumroad's default product page with
