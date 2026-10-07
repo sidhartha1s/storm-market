@@ -43,7 +43,7 @@ Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
    script, voice reference, model login) before scripting toward TTS, and tell the owner if it is the login.
    A FAIL that ends "the next narration run downloads them" needs nothing.
 
-Only after 1–6: plan the episode.
+Only after 1–7: plan the episode.
 
 ## Phase map (each phase's substance lives in the repo docs — follow the pointer)
 
