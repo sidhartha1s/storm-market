@@ -6,7 +6,7 @@ Deterministic gate: `scripts/sweep_episode.py` ("CTA present + placed"). SRT cue
 ## Current file
 | Field | Value |
 |---|---|
-| File | `paul-storm-ready-v6-oct7.mp4` (1920x1080 24 fps, h264/aac, **24.5 s**, 8.6 MB) |
+| File | `paul-storm-ready-v6-oct7.mp4` (1920x1080 24 fps, h264/aac, **24.417 s** of picture, audio stream 24.5 s, 8.6 MB) |
 | md5 | `047cd059bdc2a642f833995053aa94ac` |
 | Transcript | `paul-storm-ready-v6-oct7.txt` |
 | Source | `C:\Users\Sidhartha\Videos\paul-v2-test\ad\hf\renders\book-ad-v3-yt.mp4` (book ad v3, owner 7 Oct 26; hyperframes render at 24 fps, transcoded at crf 22, audio copied: -14.5 LUFS, -1.4 dBFS peak) |
