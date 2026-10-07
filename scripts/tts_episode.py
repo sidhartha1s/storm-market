@@ -159,7 +159,6 @@ def synth_native(pairs, ext):
     gaps = voice_tool.missing(ext, allow_download=True)
     if gaps:
         sys.exit("[tts_episode] FAIL voice tool incomplete:\n  " + "\n  ".join(gaps))
-    voice_tool.use_repo_models(ext)  # the child inherits HF_HOME
     batch_file = pairs[0][1].parent / "batch.tsv"
     batch_file.write_text("".join(f"{t}\t{w}\n" for t, w in pairs), encoding="utf-8")
     r = None
