@@ -129,7 +129,7 @@ def make_episode(tmp, script_text, voice_ref, name="ep"):
     (ep / "edit_script.md").write_text(script_text, encoding="utf-8")
 
     def fake_cfg():
-        return {"external": {"pocket_venv_python": "python3", "tts_clone_py": "noop.py",
+        return {"external": {"pocket_venv_python": "python3",
                              "voice_ref": str(voice_ref)},
                "channel": {"tempo": 1.10, "tempo_by_prefix": {"sh-": 1.16}}}
     tts_episode.load_cfg = fake_cfg
@@ -526,6 +526,35 @@ with tempfile.TemporaryDirectory() as d:
     print(r.stdout)
     check("word_budget: ep-1974 (inline-bold format) falls back to the '## SCRIPT' counter",
           "counted via '## SCRIPT' fallback" in r.stdout, r.stdout)
+
+# voice_tool: a narration run must stop on a missing piece, and may start with the weights absent
+# only when the login that can download them is there.
+import voice_tool  # noqa: E402
+with tempfile.TemporaryDirectory() as _d:
+    _d = Path(_d)
+    (_d / "py.exe").write_bytes(b"")
+    (_d / "ref.mp3").write_bytes(b"voice")
+    _ext = {"pocket_venv_python": str(_d / "py.exe"), "hf_home": str(_d / "hf"), "voice_ref": str(_d / "ref.mp3"),
+            "voice_ref_md5": hashlib.md5(b"voice").hexdigest()}
+    _gaps = voice_tool.missing(_ext, allow_download=True)
+    check("voice_tool: no weights and no login blocks the run, and names the login command",
+          len(_gaps) == 1 and "hf auth login" in _gaps[0], _gaps)
+    (_d / "hf").mkdir()
+    (_d / "hf" / "token").write_text("x", encoding="utf-8")
+    check("voice_tool: a login without weights may start (the run downloads them)",
+          voice_tool.missing(_ext, allow_download=True) == [])
+    check("voice_tool: the plain check still reports the missing weights",
+          [g.split(":")[0] for g in voice_tool.missing(_ext)] == ["cloning weights"])
+    _w = _d / "hf" / "hub" / "models--kyutai--pocket-tts" / "snapshots" / "abc" / "languages" / "english_2026-04"
+    _w.mkdir(parents=True)
+    (_w / "model.safetensors").write_bytes(b"")
+    check("voice_tool: weights on disk pass", voice_tool.missing(_ext) == [])
+    (_d / "ref.mp3").write_bytes(b"other voice")
+    check("voice_tool: a swapped voice reference is caught by md5",
+          [g.split(":")[0] for g in voice_tool.missing(_ext)] == ["voice reference"])
+    (_d / "py.exe").unlink()
+    check("voice_tool: a missing venv is reported",
+          "voice venv" in [g.split(":")[0] for g in voice_tool.missing(_ext)])
 
 # ---------------------------------------------------------------------------
 if fails:
