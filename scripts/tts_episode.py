@@ -208,7 +208,7 @@ def main():
     if not tempo:
         sys.exit("[tts_episode] config.yaml channel.tempo is not set "
                   "(CLAUDE.md Voice: documentaries and minis both run atempo 1.10)")
-    voice_md5 = hashlib.md5(Path(ext["voice_ref"]).read_bytes()).hexdigest()
+    voice_md5 = voice_tool.voice_md5(ext["voice_ref"])
     (ep / "audio").mkdir(exist_ok=True)
     (ep / "audio" / "_raw").mkdir(exist_ok=True)
     try:
