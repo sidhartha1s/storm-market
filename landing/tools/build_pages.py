@@ -32,6 +32,7 @@ PAGES = [
     {"rel": "privacy.html", "depth": 0, "simple": True},
     {"rel": "terms.html", "depth": 0, "simple": True},
     {"rel": "404.html", "depth": 0, "simple": True},
+    {"rel": "yt/index.html", "depth": 1, "simple": True, "tab1_label": "The checklist", "no_final_tab": True},
     {"rel": "field-notes/index.html", "depth": 1, "tab1_label": "Dispatches"},
     {"rel": "field-notes/joplin-tornado-2011/index.html", "depth": 2},
     {"rel": "field-notes/tornado-warning-vs-watch/index.html", "depth": 2},
@@ -791,9 +792,10 @@ def build_page(spec):
     content, extracted_gate = transform_content(content, depth)
     tabs, sheets = split_sections(content, simple, spec.get("tab1_label"))
 
-    sid, label, final_html = build_final_tab(len(tabs) + 1, extracted_gate)
-    tabs.append((sid, label))
-    sheets.append(final_html)
+    if not spec.get("no_final_tab"):  # /yt/ is one screen: the buy button is already on it
+        sid, label, final_html = build_final_tab(len(tabs) + 1, extracted_gate)
+        tabs.append((sid, label))
+        sheets.append(final_html)
 
     out = chrome.render(
         title=fix_dashes(meta["title"]),

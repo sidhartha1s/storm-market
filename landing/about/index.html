@@ -64,7 +64,7 @@ a{color:var(--tab2)}
 
 /* stage */
 .stage{max-width:1180px;margin:0 auto;padding:28px 16px 120px}
-.brand{display:flex;justify-content:space-between;align-items:center;color:#f5ead8;font-family:var(--mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:4px 6px 18px}
+.brand{display:flex;justify-content:space-between;align-items:center;color:#f5ead8;font-family:var(--mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:4px 150px 18px 0}
 .brand b{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:0;text-transform:none}
 
 /* binder */
@@ -194,7 +194,7 @@ figcaption{font-family:var(--hand);font-size:22px;color:var(--soft);margin-top:1
 .pill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:40;display:flex;gap:14px;align-items:center;background:var(--tab2);color:#eef4f8;padding:8px 8px 8px 20px;border-radius:999px;box-shadow:0 12px 30px -8px rgba(0,0,0,.7);font-size:17px}
 .pill .btn{min-height:48px;padding:0 20px;font-size:18px}
 
-footer{max-width:1180px;margin:0 auto;padding:0 22px 110px;color:#e7d9c3;font-size:15px}
+footer{max-width:1180px;margin:0 auto;padding:0 166px 110px 16px;color:#e7d9c3;font-size:15px}
 .foot-links{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:14px}
 .foot-legal{max-width:80ch;line-height:1.5;margin:0 0 8px;color:#d8c9b0;font-size:14px}
 footer a{color:#fff3df}
@@ -225,6 +225,7 @@ footer a{color:#fff3df}
   .band #live-n::after{content:" viewing"}
   .band .go{min-height:44px;padding:0 12px;font-size:15px;white-space:nowrap}
   .brand span{display:none}
+  .brand{padding-right:0}
   .tabs{-webkit-mask-image:linear-gradient(90deg,#fff 88%,transparent);mask-image:linear-gradient(90deg,#fff 88%,transparent)}
   .rings{left:6px;width:20px}.rings i{width:20px;height:20px;box-shadow:inset 0 0 0 6px var(--paper),0 1px 2px rgba(0,0,0,.5)}
   .holes{left:10px;width:12px}.holes i{width:12px;height:12px}
@@ -243,14 +244,14 @@ footer a{color:#fff3df}
   .guar{flex-wrap:wrap}
   .pill{gap:10px;padding:6px 6px 6px 14px;font-size:15px;line-height:1.25;max-width:calc(100% - 20px)}.pill .btn{min-height:44px;padding:0 16px;font-size:17px;white-space:nowrap}
   .toast{font-size:15px;bottom:84px}.toast .x{top:0;right:0;min-width:44px;min-height:44px;display:grid;place-items:center}
-  footer{font-size:16px}.foot-links a{display:inline-block;padding:10px 0}
+  footer{font-size:16px;padding-right:16px}.foot-links a{display:inline-block;padding:10px 0}
 }
 @media (max-width:400px){.band #live-n::after{content:""}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="band" role="status"><span><span class="dot"></span><b id="live-n">96</b> <span class="lbl">viewing now</span></span><span class="sep">·</span><span><span class="lbl">Launch price ends in </span><b id="countdown">--:--:--</b></span><a class="go" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get my copy, $9.99</a></div>
+<div class="band" role="status"><span><span class="dot"></span><b id="live-n">22</b> <span class="lbl">viewing now</span></span><span class="sep">·</span><span><span class="lbl">Launch price ends in </span><b id="countdown">--:--:--</b></span><a class="go" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get my copy, $9.99</a></div>
 <div class="stage">
   <div class="brand"><b><a href="../" style="color:inherit;text-decoration:none">The Storm-Ready Home</a></b><span>Paul Raymond · First edition</span></div>
 
@@ -346,8 +347,8 @@ footer a{color:#fff3df}
 (function(){
   var q=location.search, k=['utm_source','utm_medium','utm_campaign'], t=null;
   var u=k.map(function(n){var m=new RegExp('[?&]'+n+'=([a-z0-9_-]+)','i').exec(q);return m?m[1].toLowerCase():'';});
-  var m=/[?&]src=([a-z0-9_]+)-?([a-z0-9_-]*)/i.exec(q);
-  if(u[0]&&u[1]&&u[2]) t=u; else if(m) t=['youtube',m[1].toLowerCase(),(m[2]||'evergreen').toLowerCase()];
+  var m=/[?&]src=([a-z0-9_]+)/i.exec(q);
+  if(u[0]&&u[1]&&u[2]) t=u; else if(m) t=['youtube',m[1].toLowerCase(),'evergreen'];
   try{ if(t) sessionStorage.setItem('src',t.join('|')); else t=(sessionStorage.getItem('src')||'').split('|'); }catch(e){}
   if(!t||t.length!==3||!t.every(function(x){return /^[a-z0-9_-]+$/.test(x);})) return;
   var tag=k.map(function(n,i){return n+'='+t[i];}).join('&');
@@ -368,8 +369,8 @@ footer a{color:#fff3df}
   set(0);
 })();
 
-// ---- Live viewer counter (decorative): 80-115, re-rolled every 2-3s ----
-(function(){const n=document.getElementById('live-n');const t=()=>{n.textContent=80+Math.floor(Math.random()*36);};t();(function l(){setTimeout(()=>{t();l();},2000+Math.random()*1000);})();})();
+// ---- Live viewer counter (decorative): 15-30, drifts by at most 2 every 6-10s ----
+(function(){const n=document.getElementById('live-n');let v=15+Math.floor(Math.random()*16);const t=()=>{v=Math.max(15,Math.min(30,v+Math.floor(Math.random()*5)-2));n.textContent=v;};t();(function l(){setTimeout(()=>{t();l();},6000+Math.random()*4000);})();})();
 // ---- Countdown: deadline rolled to a random point in the last 15 min before 3h (2:45:00 to 3:00:00), stored so reloads continue ----
 (function(){
   const out=document.getElementById('countdown'),KEY='srh-binder-deadline';
