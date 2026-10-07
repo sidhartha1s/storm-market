@@ -39,6 +39,8 @@ Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
    it before any other work and tell the owner. Episode HTML is HAND-AUTHORED by the session
    via Edit/Write, per cut, with judgment — generated HTML has never passed the owner's
    quality bar. Checkers that only READ episode HTML are fine.
+7. **Voice tool present:** `python3 scripts/voice_tool.py`; exit 1 ⇒ fix the piece it names (venv, clone
+   script, voice reference, model login) before scripting toward TTS, and tell the owner if it is the login.
 
 Only after 1–6: plan the episode.
 
