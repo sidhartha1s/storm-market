@@ -5,7 +5,7 @@ early instead of first seeing him at the CTA. Phase 1 is a muted loop; phase 2 g
 narrator's audible beats so the mouth moves only while there is speech (not lip-sync, "talk-sync").
 
 ## Reference
-- Source frame: `assets/cta/paul-storm-ready-v5-sep6.mp4` (Paul on camera, 2560x1440 master → 1080p asset).
+- Source frame: `assets/cta/paul-storm-ready-v5-sep6.mp4` (left the tree 7 Oct 26, in git history; Paul on camera, 2560x1440 master → 1080p asset).
   Still references: `landing/assets/paul-binder.jpg`, `paul-plywood.jpg`, `paul-stage.jpg`,
   `paul-tornado-selfie.jpg`, `ebook/build/art/cover-v2-paul.png`.
 - Placement: bottom-RIGHT circle, 200 px, 40 px inset, above the bug strip line (the bug occupies the
