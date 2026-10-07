@@ -1,13 +1,12 @@
 # storm-market config — external tools + render settings (single source of truth)
 
 external:
-  # pocket-TTS runs from JP-market's isolated venv (runtime invocation only — zero imports;
-  # same isolation pattern JP/FR use). If JP-market moves, update these three paths.
-  pocket_venv_python: C:\Users\Sidhartha\Automation Projects\JP-market\.venv-pocket\Scripts\python.exe
-  # a JP-market worktree on origin/main (has --batch); JP's own checkout sits on a stale branch
-  tts_clone_py: C:\Users\Sidhartha\Automation Projects\JP-market\.worktrees\tts-engine\engine\tts_clone.py
+  # The voice tool lives inside this repo (owner 7 Oct 26); `python3 scripts/voice_tool.py` checks every piece.
+  # Absolute paths into the MAIN checkout, so every worktree shares one venv and one model folder (both gitignored).
+  pocket_venv_python: C:\Users\Sidhartha\Automation Projects\storm-market\.venv-pocket\Scripts\python.exe
+  hf_home: C:\Users\Sidhartha\Automation Projects\storm-market\.models\hf   # cloning weights, whisper model, Hugging Face login
   voice_ref: C:\Users\Sidhartha\Automation Projects\storm-market\assets\voice\pharaoh_wisdom_bearer.mp3
-  # md5 2d8ea8f14763932f3f76da67d7fd1612 — verify before every produce run (JP voice-ref gotcha)
+  voice_ref_md5: 2d8ea8f14763932f3f76da67d7fd1612
 
 render:
   hyperframes_version: "0.8.114"  # pinned; managed by scripts/pin_ritual.py — do not hand-edit
