@@ -41,6 +41,7 @@ Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
    quality bar. Checkers that only READ episode HTML are fine.
 7. **Voice tool present:** `python3 scripts/voice_tool.py`; exit 1 ⇒ fix the piece it names (venv, clone
    script, voice reference, model login) before scripting toward TTS, and tell the owner if it is the login.
+   A FAIL that ends "the next narration run downloads them" needs nothing.
 
 Only after 1–6: plan the episode.
 
