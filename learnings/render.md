@@ -545,8 +545,8 @@ A 4-agent Workflow sweep before the v3 render found 10 issues, 3 blockers; the "
 - Same-track time overlap = lint error; give crossfade/blackout elements their own track.
 - StaticGuard "uses data-end without data-duration" on validate = **false positive** in 0.7.64
   (reproduced on JP-market's known-good probe fixture) — ignore, don't chase.
-- `hyperframes transcribe` silently produced nothing on this box — use faster-whisper via
-  JP-market `.venv` with `HF_HUB_OFFLINE=1` (models cached: small.en, medium.en).
+- `hyperframes transcribe` silently produced nothing on this box — use faster-whisper
+  (`scripts/transcribe_episode.py`; since 7 Oct 26 its model lives in `config.yaml external.hf_home`).
 **QC:**
 - xstack contact sheets pad undefined regions GREEN — padding, not video content; don't panic.
 - Snapshot sweep (~13 frames) as the mandatory pre-render gate: superseded by code gates + settle frames (2026-07-29, references/mg-quickref.md "Verify").
