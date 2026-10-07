@@ -114,7 +114,7 @@ per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > 
   on the payoff sentence, so chapter-scrubbing lands on the payoff, not the ad.
 - **Deliverables:** SRT cue from `data-srt-label`; `metadata.md` description puts
   `channel.cta.first_link` as the FIRST URL (above socials) and carries the ep2-style line
-  "📘 The book mentioned at mm:ss — Storm-Ready Home ... https://paulraymond.online".
+  "📘 The book mentioned at mm:ss — Storm-Ready Home ... <first_link>" (the same link again, never the bare home page).
 - **Never** skipped, shortened, moved to the outro, muted, or replaced by a text card. A re-cut of
   the clip is a NEW versioned file + config bump; the old file leaves the tree in the same PR.
 - Wiring (staged episode-relative — `render.cmd` cds into the episode dir, no `../` srcs):
