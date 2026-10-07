@@ -98,7 +98,7 @@ shipped; these are the standing requirements for every episode's cold open:
   more captivating; undifferentiated montage is what scored 0.6.
 
 ### CTA contract (must-keep, every episode from ep4 on)
-The ebook CTA (Paul on camera, 15.1s, QR + "first link in the description") is a fixed element of
+The ebook CTA (Paul on camera, QR + "first link in the description") is a fixed element of
 every episode from ep4 on. File, duration, window and labels live in `config.yaml channel.cta`
 (current file and README in `assets/cta/`) — never a
 per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > CTA > close**.
