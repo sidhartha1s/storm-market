@@ -205,7 +205,7 @@ mid-video beats with its own soft close (one comment + subscribe line after the 
 - Source = the v5 CTA master (`paul-storm-ready-v5-sep6.mp4`, out of the tree since 7 Oct 26: restore per `assets/cta/README.md`;
   the v6 ad opens on the book and frames Paul differently, so these numbers do not fit it), no generation: 410 px square crop centred on his face (he sits 205 px from the frame edge, so
   the crop starts at x=0 and the left margin is his own background blurred and extended), face ≈ 70 % of the circle.
-- Two loops from HIS OWN speech spans (transcribe the CTA with word timestamps): `paul-talk` = his talking stretches
+- Two loops from HIS OWN speech spans (transcribe that clip with word timestamps): `paul-talk` = his talking stretches
   joined; `paul-idle` = his pauses joined forward+back. Cut per window to the exact `data-duration` (media_budget),
   crf ~30 at 240 px (≈2 MB per window). Tracks 6 (idle) and 7 (talk); never share a track with anything else. **Mount as a bare timed `<video class="pip">` whose
   geometry is `!important` (the renderer's own `video{inset:0}` otherwise wins and the circle lands at 0,0), plus a separate
