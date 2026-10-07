@@ -8,7 +8,7 @@
    product is unpurchasable; a profile page never has one — so the kind is explicit rather
    than guessed. Passing the wrong kind is a loud failure, not a silent pass.
 
-   Usage: node pagecheck.mjs <url> [product|profile] [screenshot-out.png] */
+   Usage: node pagecheck.mjs <url> [product|packet|profile] [screenshot-out.png] */
 
 import { spawn } from 'node:child_process';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
