@@ -46,6 +46,7 @@ channel:
     window_by_slug:               # per-episode owner placements (one-orange rule: the lane window stays until the owner moves it)
       ep-1974-super-outbreak: [0.85, 0.92]   # owner 21 Sep 26 after the draft: "keep around 85-90 % timeline in a fitting manner"
       ep-nepal-floods-2026: [0.84, 0.92]     # owner 29 Sep 26 after draft v3 (CTA at 84.5 %): "CTA placement is fine"
+      ep-enderlin-2025: [0.85, 0.95]         # shipped under the late lane window, before it moved to the halfway mark
     dip_in: 1.0                   # black before/after, seconds (blackout table: dramatic punctuation)
     dip_out: 1.0
     srt_label: "[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"
