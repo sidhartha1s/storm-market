@@ -1,0 +1,242 @@
+{
+  "slug": "trx",
+  "channel": "TornadoTRX",
+  "thumbs": [
+    {
+      "n": 1, "kind": "popular", "views": 4700000, "title": "2021 Tri-State Tornado: Consumed By Darkness",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph", "subject": "night-time wedge tornado, pale lit cloud left and right, distant town lights along bottom edge", "brightness": "dark", "sharpness": "sharp-ish with grain", "colour_grade": "near-black with pale grey-white highlights"},
+      "text": {"words": ["0%", "Survival"], "word_count": 2, "lines": 2, "position": "left, middle", "case": "mixed (title case)", "type_class": "heavy geometric sans", "typeface": "Montserrat ExtraBold (closest)", "fills": "white #FFFFFF (0%), red #E3212B (Survival)", "effect": "dark drop shadow", "biggest_line_pct_height": 11, "highlight": "Survival in red"},
+      "graphics": "none",
+      "palette": ["near-black #0D0D0F", "pale grey #D8D8D8", "charcoal #303336"],
+      "layout": "left stacked hook",
+      "title_link": "adds second idea (survival odds, title does not mention it)",
+      "hook": "A survival percentage over a dark tornado at night makes the stakes the message."
+    },
+    {
+      "n": 2, "kind": "popular", "views": 4000000, "title": "Jarrell - The Worst F5 Tornado In History",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph", "subject": "multi-vortex tornado over flat ground, tree line at bottom, power line across top", "brightness": "mid-dark", "sharpness": "soft, grainy, low-resolution archival video", "colour_grade": "faded green-grey with cream highlights"},
+      "text": {"words": ["1997", "Dead-man", "Walking"], "word_count": 3, "lines": 2, "position": "top, centre", "case": "mixed (title case)", "type_class": "heavy geometric sans", "typeface": "Montserrat ExtraBold for title, Montserrat SemiBold for year (closest)", "fills": "white/grey #E6E6E6 (1997), red #E3212B (Dead-man Walking)", "effect": "dark drop shadow", "biggest_line_pct_height": 11, "highlight": "whole title in red, year in white"},
+      "graphics": "none; power line across top is part of the scene",
+      "palette": ["sage grey-green #7D8A7A", "cream white #E6E4DC", "black #1A1A1A"],
+      "layout": "year over red place-name, centre",
+      "title_link": "adds second idea (year and phrase, title names Jarrell)",
+      "hook": "A quoted phrase and a year promise a story about survival, not just a storm."
+    },
+    {
+      "n": 3, "kind": "popular", "views": 3600000, "title": "Rainsville - The Strongest Tornado You've Never Heard Of",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph", "subject": "dark wedge tornado with bright sky hole on left and utility poles on right", "brightness": "dark, with bright patch left", "sharpness": "sharp-ish, slightly soft", "colour_grade": "slate blue-grey with pale white"},
+      "text": {"words": ["No", "Warning."], "word_count": 2, "lines": 2, "position": "left, middle", "case": "mixed (title case)", "type_class": "heavy geometric sans", "typeface": "Montserrat ExtraBold (closest)", "fills": "white #FFFFFF (No), red #E3212B (Warning.)", "effect": "dark drop shadow", "biggest_line_pct_height": 11, "highlight": "Warning. in red"},
+      "graphics": "none",
+      "palette": ["slate #4A4F5E", "white #EDEFF2", "dark field green #2B3328"],
+      "layout": "left stacked hook",
+      "title_link": "adds second idea (warning claim, title does not mention it)",
+      "hook": "Two words and a full stop state a danger that the viewer cannot dodge."
+    },
+    {
+      "n": 4, "kind": "popular", "views": 2600000, "title": "The History of F5 Tornadoes",
+      "face": {"present": "no"},
+      "background": {"kind": "real photographs, two panels", "subject": "left: 1870 black-and-white tornado over flat land; right: 2013 colour tornado behind a brick house", "brightness": "mid", "sharpness": "left soft archival, right sharp-ish", "colour_grade": "left monochrome grey, right teal and green"},
+      "text": {"words": ["1870", "2013"], "word_count": 2, "lines": 1, "position": "top, one year centred in each panel", "case": "numerals", "type_class": "heavy geometric sans", "typeface": "Montserrat ExtraBold (closest)", "fills": "white #FFFFFF both", "effect": "dark outline and shadow", "biggest_line_pct_height": 13, "highlight": "none, both white"},
+      "graphics": "white vertical divider line down the centre splitting the two panels",
+      "palette": ["charcoal #3A3A3A", "teal-blue #3F7F93", "white #FFFFFF"],
+      "layout": "split year panel",
+      "title_link": "adds second idea (time span 1870 to 2013, title gives no dates)",
+      "hook": "The same tornado type a century and a half apart shows the history at a glance."
+    },
+    {
+      "n": 5, "kind": "popular", "views": 2000000, "title": "The Rolling Fork Tornado - A Town Completely Destroyed",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph", "subject": "two tornadoes, one left and one right, dark ground line at bottom", "brightness": "dark-mid", "sharpness": "soft, grainy", "colour_grade": "desaturated purple-grey with pale cloud highlights"},
+      "text": {"words": ["“the", "town", "is", "gone”"], "word_count": 4, "lines": 1, "position": "top, centre", "case": "lower case, no capitals", "type_class": "heavy geometric sans", "typeface": "Montserrat Bold (closest)", "fills": "white #FFFFFF, red #E3212B (gone)", "effect": "thin dark shadow", "biggest_line_pct_height": 12, "highlight": "gone in red"},
+      "graphics": "none; the curly quote marks are part of the text",
+      "palette": ["slate purple-grey #3B3C4A", "pale grey #C8CCD6", "black #1B1B1F"],
+      "layout": "top quote, red keyword",
+      "title_link": "repeats title idea (town destroyed) in quoted speech form",
+      "hook": "A quoted line of survivor speech implies the total loss before the video starts."
+    },
+    {
+      "n": 6, "kind": "popular", "views": 1500000, "title": "Matador - The Tornado That Erased Half a Texas Town",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph", "subject": "wide tornado centre-right, bright lit cloud on left, dark field at bottom", "brightness": "dark sky, bright lit left edge", "sharpness": "sharp-ish, slightly soft", "colour_grade": "warm orange-yellow highlights on dark sky"},
+      "text": {"words": ["Nothing", "Left."], "word_count": 2, "lines": 2, "position": "left, middle", "case": "mixed (title case)", "type_class": "heavy geometric sans", "typeface": "Montserrat ExtraBold (closest)", "fills": "red #E3212B (Nothing), white #FFFFFF (Left.)", "effect": "dark drop shadow", "biggest_line_pct_height": 12, "highlight": "Nothing in red"},
+      "graphics": "none",
+      "palette": ["near-black #141414", "warm cream #F2D9A8", "orange #C9772E"],
+      "layout": "left stacked hook",
+      "title_link": "adds second idea (total loss, title says half)",
+      "hook": "Two words of total loss over a glowing tornado read as the worst case in one glance."
+    },
+    {
+      "n": 7, "kind": "popular", "views": 810000, "title": "The Rarest Tornado Occurrences",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph", "subject": "twin funnels centre-right on flat grey horizon, grey strip along bottom edge", "brightness": "mid-bright", "sharpness": "soft, low-resolution", "colour_grade": "washed grey with pale sky"},
+      "text": {"words": ["0.01%", "Chance"], "word_count": 2, "lines": 2, "position": "left, middle", "case": "mixed (title case)", "type_class": "heavy geometric sans", "typeface": "Montserrat Bold (closest)", "fills": "black #111111 both", "effect": "none, no shadow, no box", "biggest_line_pct_height": 10, "highlight": "none, both black"},
+      "graphics": "none",
+      "palette": ["pale grey #C9CBCB", "dark grey #3C3F3F", "black #111111"],
+      "layout": "left stacked hook",
+      "title_link": "adds second idea (rarity as a percentage, title says rarest)",
+      "hook": "A percentage odds number makes rarity concrete."
+    },
+    {
+      "n": 8, "kind": "popular", "views": 791000, "title": "History of Tornadoes That Hit Cities...",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph or upscaled archival composite", "subject": "tornado funnel above a city skyline with a tall white tower and church spire", "brightness": "mid, hazy", "sharpness": "soft, upscaled look", "colour_grade": "desaturated grey with white haze"},
+      "text": {"words": ["EF5"], "word_count": 1, "lines": 1, "position": "left, upper middle", "case": "upper case", "type_class": "heavy geometric sans", "typeface": "Montserrat Black (closest)", "fills": "red #E3212B", "effect": "dark drop shadow", "biggest_line_pct_height": 11, "highlight": "whole word red, plus red arrow"},
+      "graphics": "red arrow starting under EF5 and pointing up-right at the funnel",
+      "palette": ["grey #7C7F80", "charcoal #2C2E30", "red #D7261E"],
+      "layout": "red callout + arrow",
+      "title_link": "adds second idea (rating claim, title does not mention it)",
+      "hook": "The arrow points at the funnel and the EF5 rating says the damage was worst case."
+    },
+    {
+      "n": 9, "kind": "popular", "views": 464000, "title": "The 2023 Nashville Tornado Explosion - A Scientific Investigation",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph (video frame)", "subject": "dark plume top right, bright orange fire glow low right, city lights on horizon", "brightness": "mid, pale blue sky left", "sharpness": "soft, grainy, low-resolution", "colour_grade": "cyan-blue sky with orange fire highlight"},
+      "text": {"words": ["What", "Happened?"], "word_count": 2, "lines": 2, "position": "left, middle", "case": "mixed (title case)", "type_class": "heavy geometric sans", "typeface": "Montserrat Bold (closest)", "fills": "black #111111 both", "effect": "none, no shadow, no box", "biggest_line_pct_height": 12, "highlight": "none, both black"},
+      "graphics": "none",
+      "palette": ["sky blue #7FB4DA", "fire orange #F08A2C", "black #111111"],
+      "layout": "left stacked hook",
+      "title_link": "adds second idea (open question, title names an explosion)",
+      "hook": "A question over a fireball asks the viewer to click for the answer."
+    },
+    {
+      "n": 10, "kind": "latest", "views": 1100000, "title": "Blackwell - The Most Horrifying Tornado In History",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph (archival film frame)", "subject": "pale two-column tornado centre, house silhouette left, dark ground", "brightness": "dark with bright centre", "sharpness": "soft, heavy grain", "colour_grade": "black-and-white grey"},
+      "text": {"words": ["1955", "Blackwell", "Tornado"], "word_count": 3, "lines": 2, "position": "top, centre", "case": "mixed (title case)", "type_class": "heavy geometric sans", "typeface": "Montserrat ExtraBold (title), Montserrat SemiBold (year) (closest)", "fills": "white/grey #E6E6E6 (1955), red #E3212B (Blackwell Tornado)", "effect": "dark drop shadow", "biggest_line_pct_height": 11, "highlight": "title in red, year in white"},
+      "graphics": "none",
+      "palette": ["near-black #111111", "mid grey #8A8A8A", "off-white #E8E8E8"],
+      "layout": "year over red place-name, centre",
+      "title_link": "repeats title place name, adds year",
+      "hook": "A grainy 1955 frame with the place name tells the viewer this is old footage of a known town."
+    },
+    {
+      "n": 11, "kind": "latest", "views": 2200000, "title": "Pilger - The Most Insane Day In Tornado History",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph", "subject": "two tornadoes side by side over flat dark horizon with power poles", "brightness": "dark", "sharpness": "sharp-ish", "colour_grade": "high-contrast black and white-grey"},
+      "text": {"words": ["2014", "Twin", "Tornadoes"], "word_count": 3, "lines": 2, "position": "top, centre", "case": "mixed (title case)", "type_class": "heavy geometric sans", "typeface": "Montserrat ExtraBold (title), Montserrat SemiBold (year) (closest)", "fills": "white/grey #E6E6E6 (2014), red #E3212B (Twin Tornadoes)", "effect": "dark drop shadow", "biggest_line_pct_height": 11, "highlight": "title in red, year in white"},
+      "graphics": "none",
+      "palette": ["black #0E0E0E", "dark grey #3A3A3A", "off-white #F0F0F0"],
+      "layout": "year over red place-name, centre",
+      "title_link": "adds second idea (twin event, title names Pilger)",
+      "hook": "Two funnels side by side in a single frame suggests something unusual happened."
+    },
+    {
+      "n": 12, "kind": "latest", "views": 1700000, "title": "This Tornado Almost Killed Me",
+      "face": {"present": "no", "note": "a hand only, lower left, gripping the steering wheel"},
+      "background": {"kind": "real photograph (in-car camera)", "subject": "tornado at the end of a dirt road seen through the windscreen", "brightness": "mid, overcast", "sharpness": "sharp", "colour_grade": "desaturated grey sky with green fields"},
+      "text": {"words": [], "word_count": 0, "lines": 0, "position": "none", "case": "n/a", "type_class": "n/a", "typeface": "n/a", "fills": "n/a", "effect": "n/a", "biggest_line_pct_height": 0, "highlight": "none"},
+      "graphics": "steering wheel and dashboard edge at bottom",
+      "palette": ["light grey sky #B9BDC0", "dark tornado #3A3D40", "green field #5E6E3A"],
+      "layout": "no text, real scene",
+      "title_link": "no text",
+      "hook": "A first-person view from a car with a tornado straight ahead on the road shows the danger the title describes."
+    },
+    {
+      "n": 13, "kind": "latest", "views": 2400000, "title": "El Reno 2011 - The Strongest Tornado In History",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph", "subject": "wide dark funnel mass between two bright cloud edges, dark ground line", "brightness": "dark", "sharpness": "soft, grainy", "colour_grade": "dark slate with white cloud edges"},
+      "text": {"words": ["2011", "El", "Reno", "Tornado"], "word_count": 4, "lines": 2, "position": "top, centre", "case": "mixed (title case)", "type_class": "heavy geometric sans", "typeface": "Montserrat ExtraBold (title), Montserrat SemiBold (year) (closest)", "fills": "white/grey #E6E6E6 (2011), red #E3212B (El Reno Tornado)", "effect": "dark drop shadow", "biggest_line_pct_height": 11, "highlight": "title in red, year in white"},
+      "graphics": "none",
+      "palette": ["dark slate #2A2E36", "white #E0E4EA", "black #0F1012"],
+      "layout": "year over red place-name, centre",
+      "title_link": "repeats title (place and year)",
+      "hook": "Place name plus year marks a specific, famous event."
+    },
+    {
+      "n": 14, "kind": "latest", "views": 4200000, "title": "Enderlin - The First EF5 Tornado in 12 Years",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph", "subject": "dark sky with bright white cloud edges left and right, black tree line at bottom", "brightness": "dark", "sharpness": "sharp-ish, grainy", "colour_grade": "deep navy and white"},
+      "text": {"words": ["The", "Enderlin", "EF5", "Tornado"], "word_count": 4, "lines": 2, "position": "top, centre", "case": "mixed (title case)", "type_class": "heavy geometric sans", "typeface": "Montserrat ExtraBold (title), Montserrat SemiBold (lead-in) (closest)", "fills": "white/grey #E6E6E6 (The Enderlin), red #E3212B (EF5 Tornado)", "effect": "dark drop shadow", "biggest_line_pct_height": 11, "highlight": "EF5 Tornado in red, lead-in in white"},
+      "graphics": "none",
+      "palette": ["navy #1E2A3A", "white #E6EBF0", "black #0A0C10"],
+      "layout": "year over red place-name, centre",
+      "title_link": "repeats title (place and EF5 rating)",
+      "hook": "The EF5 rating in red with the town name tells the viewer the rarity up front."
+    },
+    {
+      "n": 15, "kind": "latest", "views": 9400000, "title": "Tornado Destroys Family's Home In Front of Me",
+      "face": {"present": "yes", "who": "other person (not identifiable as a presenter)", "count": 1, "width_pct": 4, "position": "right, bottom", "crop": "waist up, cut by bottom edge", "expression": "not readable, head turned down", "gaze": "at an object (debris)", "cutout": "no, part of the scene", "outline_glow": "none"},
+      "background": {"kind": "real photograph (on-scene footage)", "subject": "white funnel centre-left under a dark wall cloud, wrecked house debris in foreground, green fields beyond", "brightness": "mid", "sharpness": "sharp", "colour_grade": "natural, grey sky with green grass and brown debris"},
+      "text": {"words": [], "word_count": 0, "lines": 0, "position": "none", "case": "n/a", "type_class": "n/a", "typeface": "n/a", "fills": "n/a", "effect": "n/a", "biggest_line_pct_height": 0, "highlight": "none"},
+      "graphics": "none; debris is part of the scene",
+      "palette": ["slate grey #5A6068", "pale funnel grey #DDE0E2", "grass green #6B8A45"],
+      "layout": "no text, real scene with person right",
+      "title_link": "no text",
+      "hook": "Wreckage in the foreground under a funnel shows the damage the title describes, with a person in it."
+    },
+    {
+      "n": 16, "kind": "latest", "views": 2800000, "title": "Vilonia - The Strongest Tornado in a Decade",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph", "subject": "wide dark funnel centre, bright white cloud at left and right, dark tree line at bottom", "brightness": "dark, bright edges", "sharpness": "sharp-ish, grainy", "colour_grade": "blue-white and black"},
+      "text": {"words": ["2014", "Vilonia", "Tornado"], "word_count": 3, "lines": 2, "position": "top, centre", "case": "mixed (title case)", "type_class": "heavy geometric sans", "typeface": "Montserrat ExtraBold (title), Montserrat SemiBold (year) (closest)", "fills": "white/grey #E6E6E6 (2014), red #E3212B (Vilonia Tornado)", "effect": "dark drop shadow", "biggest_line_pct_height": 11, "highlight": "title in red, year in white"},
+      "graphics": "none",
+      "palette": ["deep navy #1C2233", "blue-white #D8E4F2", "black #0B0D12"],
+      "layout": "year over red place-name, centre",
+      "title_link": "repeats title (place), adds year",
+      "hook": "Place name and year give a specific event the viewer can look up."
+    },
+    {
+      "n": 17, "kind": "latest", "views": 2700000, "title": "Moore - The Most Destructive Tornado Ever Recorded",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph", "subject": "large dark funnel centre with flying debris specks, bright haze left and right, dark houses and trees at bottom", "brightness": "dark", "sharpness": "sharp-ish", "colour_grade": "dark grey-black with pale haze"},
+      "text": {"words": ["2013", "Moore", "Tornado"], "word_count": 3, "lines": 2, "position": "top, centre", "case": "mixed (title case)", "type_class": "heavy geometric sans", "typeface": "Montserrat ExtraBold (title), Montserrat SemiBold (year) (closest)", "fills": "white/grey #E6E6E6 (2013), red #E3212B (Moore Tornado)", "effect": "dark drop shadow", "biggest_line_pct_height": 11, "highlight": "title in red, year in white"},
+      "graphics": "none",
+      "palette": ["near-black #141414", "slate grey #4B4F55", "pale grey-white #CFD2D6"],
+      "layout": "year over red place-name, centre",
+      "title_link": "repeats title (place), adds year",
+      "hook": "Place name and year, over a funnel with visible debris, tells the viewer this was a real disaster."
+    },
+    {
+      "n": 18, "kind": "latest", "views": 7600000, "title": "Bridge Creek - The Strongest Tornado Ever Recorded",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph", "subject": "bright white tornado left, smaller funnel on right horizon, grass strip at bottom", "brightness": "dark sky, bright left edge", "sharpness": "sharp-ish, grainy", "colour_grade": "dark green sky with yellow-green field"},
+      "text": {"words": ["1999", "Bridge", "Creek"], "word_count": 3, "lines": 2, "position": "top, centre", "case": "mixed (title case)", "type_class": "heavy geometric sans", "typeface": "Montserrat ExtraBold (title), Montserrat SemiBold (year) (closest)", "fills": "white/grey #E6E6E6 (1999), red #E3212B (Bridge Creek)", "effect": "dark drop shadow", "biggest_line_pct_height": 11, "highlight": "title in red, year in white"},
+      "graphics": "none",
+      "palette": ["dark green #1F2A1F", "white-grey #E0E4DA", "yellow-green field #8A8F3A"],
+      "layout": "year over red place-name, centre",
+      "title_link": "repeats title (place), adds year",
+      "hook": "Place name and year, over a bright white funnel, gives the viewer a specific event to click on."
+    },
+    {
+      "n": 19, "kind": "latest", "views": 16000000, "title": "El Reno - The Largest Tornado In Recorded History",
+      "face": {"present": "no"},
+      "background": {"kind": "real photograph", "subject": "huge dark wall cloud over a flat plain, tiny buildings on the horizon, bright cloud edge at bottom left", "brightness": "dark olive, bright bottom left", "sharpness": "soft, grainy", "colour_grade": "olive green-grey"},
+      "text": {"words": ["2013", "El", "Reno", "Tornado"], "word_count": 4, "lines": 2, "position": "top, centre", "case": "mixed (title case)", "type_class": "heavy geometric sans", "typeface": "Montserrat ExtraBold (title), Montserrat SemiBold (year) (closest)", "fills": "white/grey #E6E6E6 (2013), red #E3212B (El Reno Tornado)", "effect": "dark drop shadow", "biggest_line_pct_height": 11, "highlight": "title in red, year in white"},
+      "graphics": "none",
+      "palette": ["dark olive #3E4A33", "grey-green #7A8270", "pale white #D8DCCB"],
+      "layout": "year over red place-name, centre",
+      "title_link": "repeats title (place), adds year",
+      "hook": "A wall cloud filling the top of the frame over a flat plain makes the storm look huge at a glance."
+    }
+  ],
+  "channel_findings": {
+    "templates": [
+      {"name": "year over red place-name, centre", "n": [2, 10, 11, 13, 14, 16, 17, 18, 19], "count": "9/19"},
+      {"name": "left stacked hook", "n": [1, 3, 6, 7, 9], "count": "5/19"},
+      {"name": "no text, real scene", "n": [12, 15], "count": "2/19"},
+      {"name": "split year panel", "n": [4], "count": "1/19"},
+      {"name": "top quote, red keyword", "n": [5], "count": "1/19"},
+      {"name": "red callout + arrow", "n": [8], "count": "1/19"}
+    ],
+    "constants": "Real storm footage as the full frame (18 of 19, thumb 4 is a two-photo split and 8 looks upscaled). Heavy geometric sans (Montserrat-class) with a dark drop shadow. Red #E3212B keyword with white or light grey lead-in (14 of 19 use red). Dark, desaturated grade (most frames near-black or dark slate/olive). No host face, no cutout, no badge, no border, no logo in any thumbnail.",
+    "host_treatment": "0 of 19 thumbnails show a channel host. One thumbnail (15, 9.4M views) shows an unidentified other person: head turned down, lower right, about 4 percent of frame width, waist-up crop, part of the scene, no outline or glow. Thumb 12 shows only a hand on the steering wheel. Face share: 1 of 19 for any person, 0 of 19 for a presenter. Lighting, cutout and placement rules for a host cannot be derived from this channel.",
+    "text_rules": "Usually 2 to 4 words (17 of 19 have text; 2 have none). Title case or mixed case; the only all-caps word is EF5 (thumb 8); one lower-case quote (thumb 5). Placement: top centre for the year template (9 thumbs), left middle for the hook template (5 thumbs). Colours: white or light grey for lead-in or year, red for the key noun or verdict word. Highlight is the place or event name in red (year-title template) or the verdict word in red (hook template). Black text with no shadow appears only on the two lowest-view popular thumbs (7, 9). Biggest line is about 10 to 13 percent of frame height.",
+    "popular_vs_latest": "Popular (n 1 to 9, views 0.46M to 4.7M): 5 of 9 use the left stacked two-word hook (1, 3, 6, 7, 9), 1 uses year-over-title (2), and 1 each uses split panel (4), top quote (5) and red callout (8). Latest (n 10 to 19, views 1.1M to 16.0M): 8 of 10 use year over red place-name (10, 11, 13, 14, 16, 17, 18, 19), 2 have no text (12, 15). Latest thumbs carry the 3 highest-view items. Data caution: meta.json labels 15 (9.4M) and 19 (16.0M) as latest, while the popular set tops out at 4.7M, so the popular label does not match views in this file. Compare the templates, not the labels.",
+    "top3": "19 (El Reno, 16.0M): real footage, huge wall cloud over a flat plain, year and place in the year-over-red template, no face. 15 (9.4M): no text, real on-scene funnel above wreckage, one unidentified person in lower right, no face of the channel. 18 (Bridge Creek, 7.6M): year and place in the year-over-red template over a bright white funnel. Shared: real storm footage as the whole frame, a single dominant tornado as subject, dark grade, no cutout, no host, and 2 of 3 use the year-over-place template.",
+    "transfer": [
+      "Rule 1: Put the year in white on the top line and the place or event name in red below, centred, 2 to 3 words, title case. Evidence: 9 of 19 thumbs use it, including 19 (16.0M), 18 (7.6M) and 13 (2.4M).",
+      "Rule 2: Use real storm footage as the whole frame, dark and desaturated, with no cutout, badge or border. Evidence: 18 of 19 are real footage, 0 of 19 use a cutout, and the top 3 by views (19, 15, 18) are all real footage.",
+      "Rule 3: Test a face-free version first. 0 of 19 show a host, and the top 3 by views carry no presenter face. If the presenter appears, place him inside the scene like the unidentified man in 15 (9.4M), not as a cutout with an outline.",
+      "Rule 4: For a claim with no year, use a two-word left stack with one red word: 'No Warning.' (3), '0% Survival' (1), 'Nothing Left.' (6). Evidence: 3.6M, 4.7M and 1.5M views, all in the popular set.",
+      "Rule 5: Put one red keyword on a dark frame with a dark drop shadow, and leave black-only text off. Evidence: 14 of 19 use red; the two black-only thumbs (7 at 0.81M, 9 at 0.46M) are the lowest-view items on the channel."
+    ],
+    "weak": [
+      "Thumb 9 (0.46M, lowest view count): black 'What Happened?' on a pale blue sky with no shadow or box, a soft low-resolution frame, and no clear subject besides a small orange glow.",
+      "Thumb 7 (0.81M): black '0.01% Chance' on a pale grey sky with no outline, a soft low-resolution frame, and two funnels that are small and low in the frame.",
+      "Thumb 8 (0.79M): a red 'EF5' with an arrow over an upscaled-looking city frame; the funnel the arrow points to is partly hidden in dark haze at the top right, and the skyline competes with it."
+    ]
+  }
+}

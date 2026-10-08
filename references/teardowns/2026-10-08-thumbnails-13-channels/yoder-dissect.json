@@ -1,0 +1,48 @@
+{
+ "slug": "yoder",
+ "channel": "Elias Yoder",
+ "by": "orchestrator (read from the 5x4 contact sheet, 400 px per thumbnail; per-thumbnail rows are short)",
+ "thumbs": [
+  {"n": 1, "kind": "popular", "views": 2200000, "text": "No More Mosquitoes", "layout": "avatar right pointing at an orange bucket on a tripod, yellow text top-left, red curved arrow, night lawn"},
+  {"n": 2, "kind": "popular", "views": 1900000, "text": "ATTIC IS A TRAP / 75°F YEAR ROUND / 160°F DEADLY HEAT / BURIED SINCE 1824 / $4 TO BUILD / NASA HID THIS", "layout": "avatar left pointing at a cool house beside a burning house, pipe diagram, price badge, yellow strip"},
+  {"n": 3, "kind": "popular", "views": 1100000, "text": "STOP BUYING SOAP / WHITE GOLD / $6 = 1 YEAR / $25 (crossed out)", "layout": "avatar left pointing, white bucket centre, branded detergent bottle right with a red cross, starburst price badge"},
+  {"n": 4, "kind": "popular", "views": 785000, "text": "COOL ANY ROOM $7 / $7", "layout": "avatar left holding a yellow price card, crate of charcoal right, orange and blue split ground"},
+  {"n": 5, "kind": "popular", "views": 739000, "text": "$3 KILLS RUST / $3 / ?", "layout": "avatar left pointing with a price card, rusty beam and a mystery bag with a question mark"},
+  {"n": 6, "kind": "popular", "views": 712000, "text": "Who Knew?", "layout": "avatar right gesturing at a car with a cable running to a lit house at night, white serif text top-left"},
+  {"n": 7, "kind": "popular", "views": 634000, "text": "THE $4 POWDER THAT KILLS ANY BUG! / SAFE FOR PETS & HUMANS / THE FORGOTTEN SURVIVAL SECRET!", "layout": "avatar right, pile of white powder with insects, starburst badge, text top and bottom"},
+  {"n": 8, "kind": "popular", "views": 570000, "text": "$300 SOLAR / No Power Bill EVER", "layout": "avatar right pointing at a panel, battery and freezer"},
+  {"n": 9, "kind": "popular", "views": 525000, "text": "WATERPROOF WOOD FOREVER / KILLS WOOD ROT / $20 SOLUTION", "layout": "no face: wet wood before and after with a yellow arrow, badge"},
+  {"n": 10, "kind": "popular", "views": 445000, "text": "DEHUMIDIFIES FOREVER / $4 DRY TRICK / NO POWER", "layout": "avatar right pointing at a jar of salt, cartoon clouds and sun, badges"},
+  {"n": 11, "kind": "latest", "views": 774, "text": "THESE 8 BEFORE WINTER", "layout": "numbered grid of 6 tiles, avatar right pointing"},
+  {"n": 12, "kind": "latest", "views": 4100, "text": "IN$ANE CO$T", "layout": "avatar centre in front of flooded land"},
+  {"n": 13, "kind": "latest", "views": 5900, "text": "THIS WORKS", "layout": "avatar right pouring blue liquid on a cloth, red arrow"},
+  {"n": 14, "kind": "latest", "views": 6300, "text": "THINGS TO DO BEFORE THE FREEZE", "layout": "numbered grid of 6 tiles, avatar right pointing"},
+  {"n": 15, "kind": "latest", "views": 7100, "text": "WHO KNEW?", "layout": "avatar right crouching at a capped pipe in grass"},
+  {"n": 16, "kind": "latest", "views": 5200, "text": "IT IS UP HERE", "layout": "avatar centre holding a candle at a frosty window"},
+  {"n": 17, "kind": "latest", "views": 12000, "text": "INFINITE WATER", "layout": "avatar left scratching his head over a glass cone still, yellow arrow"},
+  {"n": 18, "kind": "latest", "views": 5200, "text": "ICE OUTSIDE / LIFE INSIDE", "layout": "avatar right reaching into soil in a frosty greenhouse"},
+  {"n": 19, "kind": "latest", "views": 5900, "text": "THE $5 FIX", "layout": "avatar right holding a corroded pipe"},
+  {"n": 20, "kind": "latest", "views": 26000, "text": "I ACTUALLY TRIED IT", "layout": "avatar right holding a bucket of salt, yellow arrow"}
+ ],
+ "channel_findings": {
+  "templates": [
+   {"name": "avatar + hero object + price promise (dollar figure on a card, badge or in the headline)", "n": [2, 3, 4, 5, 7, 8, 9, 10, 19], "count": 9},
+   {"name": "avatar + object + 2 to 3 word caps, white then yellow", "n": [12, 13, 15, 16, 17, 18, 20], "count": 7},
+   {"name": "avatar + night scene + short mixed-case line", "n": [1, 6], "count": 2},
+   {"name": "numbered grid of 6 + avatar", "n": [11, 14], "count": 2}
+  ],
+  "constants": "The same avatar on 19 of 20: straw hat, long dark beard with no moustache, white shirt, black suspenders. That costume is the brand mark; there is no logo. Heavy caps in white and yellow with a black stroke. Saturated, warm, high contrast.",
+  "host_treatment": "Generated inside the scene, waist up, face 15 to 20 % of frame width, usually on one side with the hero object on the other. He always points at the object or holds it, and looks at the camera with a stern or surprised face. The hat brim makes a strong shape that reads at small size.",
+  "text_rules": "Popular: the dollar figure is the loudest thing ($3, $4, $6 = 1 YEAR, $7, $20, $300) and it is often shown twice, once in the headline and once on a card he holds. Latest: 2 to 3 words, white line then yellow line, no number.",
+  "popular_vs_latest": "Popular 10: 445,000 to 2,200,000 views. Latest 10: 774 to 26,000. In the thumbnails, 8 of the popular 10 carry a dollar figure and only 1 of the latest 10 does; the latest are also plainer (one object, one line). This study cannot separate the thumbnail change from topic and season, and the popular videos have had far longer to collect views.",
+  "top3": "1 (2,200,000), 2 (1,900,000), 3 (1,100,000): avatar pointing at one physical object that solves a costly problem; 2 and 3 show the price.",
+  "transfer": [
+   "A fixed costume is the logo for an AI presenter: 19 of 20. For Paul: one outfit on every thumbnail.",
+   "He points at or holds the one object the video is about, and looks at the camera: 1, 3, 4, 5, 10, 19, 20.",
+   "One number the viewer can check, shown big: 3, 4, 5, 8. For storms: wind speed, minutes of warning, death toll, year.",
+   "Face on one side, proof on the other, headline across the top: 3, 4, 5, 8.",
+   "The crowded badge-and-starburst look (2, 7) is a savings-niche habit and does not fit a documentary for viewers aged 45 to 75."
+  ],
+  "weak": "2 and 7: six or more text blocks, nothing reads at small size. 9: no face and three text blocks. 12: gimmick spelling."
+ }
+}
