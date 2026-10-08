@@ -336,7 +336,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A4-S5 — narration
 **Picture:** the map slides to "SW 15th St · near the Dell plant". A storm drain drawn in section under the street, eleven small markers inside. Source line "News 9, June 3, 2013".
-> Across the city, eleven more people had made the same choice. News Nine reported that most of them were young children. They were inside a storm drain under Southwest fifteenth Street, near the Dell plant, to get away from the tornadoes.
+> Elsewhere in the city, eleven more people had made the same choice. News Nine reported that most of them were young children. They were inside a storm drain under Southwest fifteenth Street, near the Dell plant, to get away from the tornadoes.
 
 ### A4-S6 — narration
 **Picture:** the section drawing: a water line rises to a mark "about 2 feet". A line draws from the drain to the "Oklahoma River · a quarter of a mile". Five of the eleven markers dim, six stay lit. Text-only cards for the names once their tags clear.
