@@ -76,7 +76,7 @@ shipped; these are the standing requirements for every episode's cold open:
 - **Frame one is Paul, full frame, speaking the hook line** (documentaries; owner 7 Oct 26: "if the hook or the initial
   frame itself shows Paul's face It will be really nice"). One clip, 10 s at most, so the face on the thumbnail is the
   face in the first second. Clip rules and the per-video budget: `references/mg-quickref.md` "Paul on screen".
-- **NO black start: the shot after Paul is MID-ACTION** — the episode's
+- **The shot after Paul is MID-ACTION, never black** — the episode's
   defining shot already moving. High curiosity, high impact from the first frame.
 - **The highest-intent real clips follow him at once, never only the end.** The footage the title promises (the slide, the
   collapse, the impact) is in the hook. A later act may return to it, but the best shot is never saved for the end (ep-nepal: the hook missed the slide).
