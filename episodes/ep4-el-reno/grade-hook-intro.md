@@ -56,7 +56,7 @@ weakness is shape: the peak is at 0:52 and segments five to seven hold at 3 for 
   about 0:11 and pays at I1-S3; L2 opens at I1-S8.
 - Felt gap, about 1:22 to 2:02: the hook states a fact and no line in H1, T1 or I1 asks why. Then "the safest place
   around Oklahoma City was home, and many people had just driven away from theirs" followed by "fear from that day led
-  them to do things they normally would not" reads as the answer. A viewer can think the case is closed at 1:35.
+  them to do things they normally would not" reads as the answer. A viewer can think the case is closed partway through I1-S5.
 - The closing loop does not lead into Act 1. L2 opens in the last sentence of the intro and closes in A3 (planned
   9:00 to 13:10), three sections later; the quickref asks for one to two acts. A1 opens on L3 instead.
 - L3 is partly spent before it opens: Friday, rush hour, Moore and the fear are all in I1-S1 and I1-S5, and all four
