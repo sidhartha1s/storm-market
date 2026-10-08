@@ -5,8 +5,10 @@ external:
   # Absolute paths into the MAIN checkout, so every worktree shares one venv and one model folder (both gitignored).
   pocket_venv_python: C:\Users\Sidhartha\Automation Projects\storm-market\.venv-pocket\Scripts\python.exe
   hf_home: C:\Users\Sidhartha\Automation Projects\storm-market\.models\hf   # cloning weights, whisper model, Hugging Face login
-  voice_ref: C:\Users\Sidhartha\Automation Projects\storm-market\assets\voice\pharaoh_wisdom_bearer.mp3
-  voice_ref_md5: 2d8ea8f14763932f3f76da67d7fd1612
+  # The narrator is the clone of on-camera Paul (owner 7 Oct 26): 10 s of his Flow clip audio. The voice used through
+  # Enderlin stays at assets\voice\pharaoh_wisdom_bearer.mp3 (md5 2d8ea8f14763932f3f76da67d7fd1612) for reference only.
+  voice_ref: C:\Users\Sidhartha\Automation Projects\storm-market\assets\voice\paul-v2-clone-ref.wav
+  voice_ref_md5: ff03c38fefe26dc0b7adb08ea165f167
 
 render:
   hyperframes_version: "0.8.114"  # pinned; managed by scripts/pin_ritual.py — do not hand-edit
