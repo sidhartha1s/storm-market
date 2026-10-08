@@ -80,7 +80,7 @@ shipped; these are the standing requirements for every episode's cold open:
   defining shot already moving. High curiosity, high impact from the first frame.
 - **The highest-intent real clips follow Paul's clip at once, never only the end.** The footage the title promises (the slide, the
   collapse, the impact) is in the hook. A later act may return to it, but the best shot is never saved for the end (ep-nepal: the hook missed the slide).
-- **The first spoken line starts at 0:00: Paul's on camera, then the narrator's (one voice). No broadcast, radio or
+- **The first spoken line starts at 0:00: Paul's on camera, then the narrator's. No broadcast, radio or
   archive audio anywhere in the hook** (owner 22 Sep 26, replaces the old "anchor line by 2.5 s" rule): archive audio is
   low quality, and a 10/10 narrated hook is worthless if viewers leave before it starts.
   Archive audio belongs inside the acts, as `insert` segments.
