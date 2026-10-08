@@ -188,3 +188,62 @@ H1-S1 and the title are untouched.
 
 10. **Housekeeping for the orchestrator:** the L2 registry row and the loop note under I1-S8 still say "two vortices";
     the I1-S8 picture note says one. Settle it before A3 is written.
+
+## Re-grade after fixes
+
+Text graded: `edit_script.md` as read from disk on the re-grade pass, 9 Oct 26 (reported as commit fcc2c03d; git not
+run by the grader). Counts from the same script run as before: 411 words, 30 sentences, median 16 words, longest 23,
+none at 24 or over. At about 3.0 words a second the tail starts at about 0:05, the intro at about 0:15, and I1-S8
+ends at about 2:16, so the times on the section headings are a few seconds stale.
+
+Caveat on independence: most of the changed sentences are this grader's own suggested wording. A second pass by the
+same grader is less independent than the first. One defect below (I1-S4 "shelter") is in a sentence this grader wrote.
+
+### Hook score: 8.5 / 10 (was 7.5)
+What would move it further: say "Twelve of those twenty one people" in the tail, so the count cannot be heard as
+twelve of the tornadoes just named.
+- The tail is now two sentences and 31 words with no cuttable sentence: date, state and count, then the gap in plain
+  order ("and no tornado took their lives"). The gap still pays at I1-S3.
+- Unchanged and not for rewrite: H1-S1's "that night" for a listener, and its 16 words at about 5.3 s.
+
+### Confidence: 70 %
+
+### Lock verdict: LOCKABLE against the grader bar
+Hook 8.5 is over 8 and no axis is under 3. This is lock condition (c) only. Conditions (a) and (b) are not the
+grader's: the owner has not approved in chat, and two picture-note tags are open (see below).
+
+### Six axes, intro as one section (1 to 5)
+| Axis | Before (1 to 5) | Now (1 to 5) | Why it moved or did not |
+|---|---|---|---|
+| New info | 4 | 4 | Unchanged. I1-S1, I1-S6 and I1-S7 are still known material. |
+| Curiosity | 3 | 4 | "Fear explains the traffic. It does not explain why not one life was lost inside a building." puts the main question to the viewer at about 1:38, inside what was the empty stretch. |
+| Stakes | 4 | 4 | Same curve: 2, 3, 5, 4, 3, 3, 3, 4. I1-S6 to I1-S8 were not moved, so segments five to seven still sit at 3. |
+| Visual change | 4 | 4 | Unchanged. |
+| Payoff | 4 | 4 | Unchanged; the claim sentence is now scoped ("By that count"). |
+| Exit hook | 3 | 4 | The closing sentence now names its source and promises something concrete ("the two vehicles were not struck the same way"). Two questions are open going into Act 1. It still pays in A3; that is the accepted act shape. |
+
+### The two open picture-note tags: pictures only
+- I1-S4, pin places. The spoken words rest on the table's rows ("That table does not list...", "By that count"), not
+  on any place. No narration word depends on the tag. It blocks the 21-pin map.
+- I1-S8, one sub-vortex or two. "not struck the same way" holds under either reading: the research file has the
+  vortex crossing US-81 at about 56 miles an hour and sitting nearly still over Reuter Road. It blocks the replot
+  (one circle at two positions, or two circles).
+- So neither tag is a reason to hold the narration from TTS. The lock definition in `references/script-scaling.md`
+  says "its `[verify]` markers are all resolved" and does not separate picture notes from narration; whether these
+  two count under (a) is the orchestrator's and owner's call, not the grader's.
+
+### Still open, none blocking the grader bar
+1. I1-S4: "That table does not list a single house, store, school or shelter." The grader's own rewrite dropped
+   "storm" and made the ear clash worse: the rows on screen a few seconds earlier read "Sheltering in drainage ditch".
+   Restore "storm shelter".
+2. T1-S1: "Twelve of the twenty one" follows "nineteen tornadoes" with no noun. Suggested: "Twelve of those twenty one
+   people had taken shelter from those tornadoes, and no tornado took their lives."
+3. I1-S5: "It does not explain why not one life was lost inside a building." Two negations in one clause. It can be
+   followed because the hook has already said "not one", so this is a note, not a fix. The segment is now the longest
+   in the intro at 70 words.
+4. I1-S5: "this was the largest of them" is still confirmed from `research/facts.md` only. Re-pull the paper once.
+5. I1-S6: "those roads" points at the city highways of I1-S5; the two crews were on US-81 and Reuter Road near El
+   Reno. Loose, not false.
+6. Carry-forward for Act 1: the intro now says aloud that fear explains the traffic. L3 (what made people leave solid
+   houses) must open on something the intro has not given, such as what they were told, or it will feel answered.
+7. Stale "two vortices" wording: gone from the script on this read.
