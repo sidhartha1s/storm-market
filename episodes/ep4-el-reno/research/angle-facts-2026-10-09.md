@@ -89,7 +89,7 @@ The research car (W14):
 
 ## Still open after this pass
 - The date and source of the return to EF3 (the 4 Jun 2013 upgrade statement is now in section 2).
-- The News 9 pages on the family of seven (home location, the table, the recovery dates).
+- The News 9 report of 9 Jun 2013 on the last recovery (the main report on the family is now read and quoted in section 5).
 - Richard Henderson's age: Appendix C has a 35-year-old "Vehicle, storm chasing" row, no name.
 - The circumstance of the June 1 Okfuskee County flood death.
 - The broadcast recording for the exact words.
