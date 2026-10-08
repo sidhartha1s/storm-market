@@ -348,7 +348,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A4-S8 — narration
 **Picture:** one more pin, apart from the others, label "65". Then a plain timeline bar from "1934" to "2013" with nothing between them. Source line "NWS Service Assessment".
-> The thirteenth life lost to the water that night was a man of sixty five, in a vehicle. The assessment calls it the worst flood Oklahoma City has ever had for lives lost. For the wider region the Norman office covers, nothing like it had happened since nineteen thirty four.
+> The thirteenth life lost to the water that night was a man of sixty five, in a vehicle. The assessment calls it the worst flood Oklahoma City has ever had for lives lost. For the region the Norman office covers, it was the most lives lost to a flash flood since nineteen thirty four.
 
 ### A4-S9 — narration
 **Picture:** [RS] [VE] the city map: several short tracks draw in, each stamped "EF0" or "EF1". One ends at "SW 15th / Meridian · 7:09 PM · EF1". A small scale graphic, six steps, the bottom two lit. No pin sits on any track.
