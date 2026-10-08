@@ -82,7 +82,7 @@ Richard Henderson's age; the two rating statements and their dates; the News 9 p
 *([loop L1 open]: why nobody lost their life indoors. Closes in A5.)*
 
 
-## T1 · Hook tail (0:06)
+## T1 · Hook tail (0:05)
 
 ### T1-S1 — narration
 **Picture:** hard cut on the word "night" to mid-action footage, never black: a real clip of the evening sky and loaded highways around Oklahoma City on May 31 (news or public domain; no chaser footage without a licence). A counter "19 tornadoes · NWS Norman" lands on "nineteen". On "Twelve of the twenty one": twenty-one small markers appear in a row and twelve of them light. One bed swell under the last clause, no siren.
