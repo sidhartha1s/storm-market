@@ -77,7 +77,7 @@ shipped; these are the standing requirements for every episode's cold open:
   frame itself shows Paul's face It will be really nice"). One clip, so the face on the thumbnail is the
   face in the first second. Clip length, word cap and the per-video budget: `references/mg-quickref.md` "Paul on screen".
 - **The shot after Paul is MID-ACTION, never black** — the episode's
-  defining shot already moving. High curiosity, high impact from the first frame.
+  defining shot already moving. High curiosity, high impact from its first frame.
 - **The highest-intent real clips follow Paul's clip at once, never only the end.** The footage the title promises (the slide, the
   collapse, the impact) is in the hook. A later act may return to it, but the best shot is never saved for the end (ep-nepal: the hook missed the slide).
 - **The first spoken line starts at 0:00: Paul's on camera, then the narrator's. No broadcast, radio or
