@@ -267,7 +267,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A3-S5 — narration
 **Picture:** a news still of the vehicle in the field after the storm (licence check). Three small markers beside it turn to "survived" one by one. The bed comes back in, lower than before.
-> All three were wearing seatbelts, and all three got out. Bettes and Reynolds came away with minor injuries. Anderson had a cracked breastbone, five broken ribs and a broken bone in his neck, and he needed surgery. All three survived.
+> All three got out. They had been wearing seatbelts. Bettes and Reynolds came away with minor injuries. Anderson had a cracked breastbone, five broken ribs and a broken bone in his neck, and he needed surgery.
 
 ### A3-S6 — narration
 **Picture:** place stamp "Reuter Road". The road-level map: two markers heading east inside the ring, "Dan Robinson" ahead, the white Cobalt behind. A "45 mph" readout on Robinson; the gap between the two opens. Two small headlight dots on the Cobalt marker fade at "6:22:15 PM · Wurman et al. 2014". Robinson's video is described, never shown: no licence on record.
