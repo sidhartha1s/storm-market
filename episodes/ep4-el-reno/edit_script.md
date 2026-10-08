@@ -287,7 +287,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A3-S10 — narration
 **Picture:** [RS] [HUMAN] black card, text only, one name at a time: "Tim Samaras · 55", "Paul Samaras · 24", "Carl Young · 45". No photographs. The names land on the last two sentences. One second of silence after the last sentence.
-> The weather service's assessment calls these three some of the most experienced and safety minded chasers [verify: the assessment's "some of the most experienced and safety-minded chasers" and the radar paper's "extensive experience deploying instrumentation in and near tornadoes"; neither quote is in the fact files yet]. The radar team wrote that Tim Samaras had long experience placing instruments in and near tornadoes. He was fifty five, and he was still belted into his seat. His son Paul was twenty four, and Carl Young was forty five.
+> The weather service's assessment calls these three some of the most experienced and safety minded chasers. The radar team wrote that Tim Samaras had long experience placing instruments in and near tornadoes. He was fifty five, and he was still belted into his seat. His son Paul was twenty four, and Carl Young was forty five.
 
 ### A3-S11 — narration
 **Picture:** the paper's sentence as attributed text, exact words: "it is likely that no clear direction to safety was apparent · Wurman et al., Bulletin of the American Meteorological Society, 2014". Behind it the replot, the circle's looping track drawn as one line.
@@ -452,11 +452,11 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *(blackout 0.7 s)*
 
 
-## Z1 · Close (about 20:57)
+## Z1 · Close (time waits on the voice probe)
 
 ### Z1-S1 — narration
 **Picture:** the assessment's table one last time, twenty-one lines, the name column absent. Then text-only names over the dimmed map, each landing on the voice, News 9's spellings: "Richard Henderson", "Tim Samaras", "Paul Samaras", "Carl Young", "Samuel Cifuentes", "Florinda Santos", "Alex", "Yolanda Santos", "Cristofer", "Brandon", "Lesly". g-outro begins.
-> The weather service's table for the night of May thirty first, twenty thirteen, has twenty one lines, with ages and no names. Among them were Richard Henderson, Tim Samaras, Paul Samaras and Carl Young. Among them were Samuel, Florinda and Alex, and Yolanda with Cristofer, Brandon and Lesly.
+> The weather service's table for the night of May thirty first, twenty thirteen, has twenty one lines, with ages and no names. Among them were Richard Henderson, Tim Samaras, Paul Samaras and Carl Young. Among them were Samuel, Florinda and Alex, and Yolanda with Cristofer, Brandon and Lesly. Among them was Corey Don Johnson, who was three.
 
 ### Z1-S2 — narration
 **Picture:** the map fades to the outline of the state. Date card "May 31, 2027".
@@ -468,4 +468,4 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 *(outro tail 4 s, g-outro, bed out)*
 
-*(First full draft, 9 Oct 26. Narration 3,669 words. At the Enderlin intro's shipped pace, with five Paul slots at 10 s each and a 20 s book ad, the estimate is about 21:33, with the book ad starting at about 12:40, 58.8 % of that runtime. These are estimates until `word_budget.py` runs on a probe at this episode's tempo; the 23:00 planning times in section B and on the A3 heading predate this count.)*
+*(Full draft after the fix passes, 9 Oct 26. Narration 3,553 words, counted by script with tags stripped. Every time on a heading is an estimate at the Enderlin pace until a voice probe at this episode's tempo replaces it.)*
