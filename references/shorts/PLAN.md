@@ -44,15 +44,15 @@ added on the owner's note:
   8 missing"). S1 structure, up to 90 s (Shorts allow 3 min), one named agency quote, ends on the tracking
   line. Radar feeds these directly; no parent video needed.
 - Owner types b (topic funnels) = S1, c (weather info) = S2. S3 (story card) stays as the 45+ widening play.
-- **Pace: atempo 1.16 on every short** (owner 16 Sep 26; the long form moved to 1.10). Word budgets below are
-  at delivered pace after 1.16.
+- **Pace: shorts run faster than the long form** (owner 16 Sep 26). The number is `config.yaml channel.tempo_by_prefix` `sh-`;
+  it was 1.16 on the old voice and is 0.99 on the Paul clone, the same delivered pace. Word budgets below are at that delivered pace.
 
 | | S1 · The Warning | S2 · Why It Happens | S3 · One Name |
 |---|---|---|---|
 | intent | funnel into today's mini | widen (search + feed) | widen + funnel into the docs |
 | length | 20–30 s | 30–40 s | 20–35 s |
 | words | 50–75 | 75–105 | 50–85 |
-| pace | channel voice, atempo 1.16 (~150 wpm delivered) | same | same |
+| pace | channel voice at the `sh-` tempo (~150 wpm delivered) | same | same |
 | open (0–3 s) | the number, spoken and on the card: "Hawaii is still counting. 41,000 homes dark." | the question the viewer already has: "Why does the sea pull back before a tsunami?" | the headline card: "SHE TIED 13 CHILDREN TOGETHER AND WALKED INTO THE BLIZZARD" |
 | body | who is at risk, what the agency said today (named agency, verbatim quote on screen) | one mechanism, one diagram from the MG library, one real clip | who, where, when; the moment; what happened to them |
 | close | the unresolved tracking line + "the full update is on the channel" | the US stake in one line | the name once more, the date, "the full story is in the documentary" |
@@ -184,7 +184,7 @@ first three, then ~25 min per short.
    to the pilot so the compilation shape gets tested too (four shorts).
 2. Facebook page + Instagram account: none exist, owner will create; X exists. Record the handles in
    `config.yaml channel.socials` once made.
-3. Voice: channel voice, atempo 1.16 — decided.
+3. Voice: channel voice at the `sh-` tempo in `config.yaml` — decided.
 4. TikTok: skipped for the pilot (India ban; see section 4).
 5. Scan of 20–30 more niche shorts channels for content bank + competitor list: `competitors-2026-09-16.md`.
 
