@@ -196,19 +196,19 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A2-S1 — narration
 **Picture:** time stamp "6:19 PM". The map at road level: the circulation as a wide ring reaching Highway 81. A bar "2.6 miles" spans it. Then two outlines side by side, "Hallam, Nebraska · 2004" and "El Reno · 2013", the second wider. A real clip of the tornado, wide shot, licensed or public domain.
-> At six nineteen PM, sixteen minutes after it touched down, the El Reno tornado crossed Highway eighty one. Within minutes it was two point six miles from edge to edge. The weather service said it believed this was the widest tornado ever recorded in the United States. The mark it passed had stood since two thousand four, at Hallam, Nebraska.
+> At six nineteen PM, sixteen minutes after it touched down, the El Reno tornado crossed Highway eighty one. Within minutes the whole turning mass of air, which scientists call the circulation, was two point six miles from edge to edge. The weather service said it believed this was the widest tornado ever recorded in the United States. The old mark was set at Hallam, Nebraska, in two thousand four.
 
 ### A2-S2 — narration
 **Picture:** [VE] forty-five field outlines tile across the ring, end to end. An inner ring draws, "core · about 1.25 miles". Rain texture fills the ring until the edge cannot be seen. Two vehicle markers enter from the same side, marked "weak side · Wurman et al. 2014".
-> Two point six miles is more than forty five football fields laid end to end. Its core, where the two chase crews drove in, was about a mile and a quarter across. And it was wrapped in rain. The radar team led by Joshua Wurman found that both crews entered on its weak side. The team wrote that they may not have known they were inside it.
+> Two point six miles is more than forty five football fields laid end to end. Its core, where the two chase crews drove in, was about a mile and a quarter across. And it was wrapped in rain. The radar team led by Joshua Wurman found that both crews drove in on its weaker side. The team wrote that they may not have known they were inside it.
 
 ### A2-S3 — narration
-**Picture:** a third marker, "Dan Robinson", crosses the inner ring on Reuter Road with a "45 mph" readout and leaves the far side. Then the whole ring drifts north of Interstate 40 and its readout falls to "under 10 mph · NWS Norman". The bed thins on the last sentence.
-> But the wide circulation was the slow part of this storm. A chaser named Dan Robinson drove through its core on Reuter Road at about forty five miles an hour. He drove out the other side. A few minutes later, north of Interstate forty, the whole circulation slowed to less than ten miles an hour. The fast part was somewhere inside it.
+**Picture:** a third marker, "Dan Robinson", crosses the inner ring on Reuter Road with a "45 mph" readout and leaves the far side. Then a later time stamp, "6:27 PM": the whole ring drifts north of Interstate 40 and its readout falls to "under 10 mph · NWS Norman". The bed thins on the last sentence.
+> But a car could drive through the wide circulation and come out. A chaser named Dan Robinson drove through its core on Reuter Road at about forty five miles an hour. He drove out the other side. Later, north of Interstate forty, the whole circulation slowed to less than ten miles an hour. The fast part was somewhere inside it.
 
 ### A2-S4 — narration
-**Picture:** photographs of the two research radars on their trucks (licence check; government or university press images). Labels "University of Oklahoma" and "Doppler on Wheels". A beam draws low across a field toward the ring.
-> Two kinds of research radar were near that tornado, and both could be driven up to a storm. One belonged to the University of Oklahoma. The others were the Doppler on Wheels radars that Joshua Wurman's team used. They measured the moving air itself, very near the ground.
+**Picture:** photographs of the two research radars on their trucks (licence check; government or university press images). Labels "University of Oklahoma" and "Doppler on Wheels · Joshua Wurman's team". A beam draws low across a field toward the ring.
+> Two research radar teams had driven up to that tornado, and their beams measured the moving air near the ground.
 
 ### A2-S5 — Paul on camera, slot 2 (wording not written)
 **Job:** the turn from how wide it was to what was inside it. He names "the tornado inside the tornado" and defines it in twelve words or fewer.
