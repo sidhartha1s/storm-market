@@ -291,7 +291,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A3-S11 — narration
 **Picture:** the paper's sentence as attributed text, exact words: "it is likely that no clear direction to safety was apparent · Wurman et al., Bulletin of the American Meteorological Society, 2014". Behind it the replot, the circle's looping track drawn as one line.
-> The Wurman paper gives them thirty seconds of possible warning, perhaps in poor visibility, from a vortex that kept changing direction. It concludes that they probably had no clear direction to safety.
+> The radar team gives them thirty seconds of possible warning, perhaps in poor visibility, from a vortex that kept changing direction. It concludes that they probably had no clear direction to safety.
 
 ### A3-S12 — Paul on camera, slot 3 (wording not written)
 **Job:** pays L2. He sets the two strikes side by side in one breath: one vortex, crossing the highway at about fifty six miles an hour, nearly still over Reuter Road for about twenty seconds. Two facts, no cause, never "this is why".
