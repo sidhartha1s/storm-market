@@ -180,10 +180,10 @@ def main():
     sr = model.config.mimi.sample_rate
 
     for lines, out in jobs:
-        synth_file(model, voice_state, sr, stream_audio_chunks, lines, out)
+        synth_file(model, voice_state, voice_md5, sr, stream_audio_chunks, lines, out)
 
 
-def synth_file(model, voice_state, sr, stream_audio_chunks, lines, out):
+def synth_file(model, voice_state, voice_md5, sr, stream_audio_chunks, lines, out):
     """Synthesize the lines sentence by sentence into out, then concat + loudnorm."""
     seg_dir = out.parent / "_segments"
     seg_dir.mkdir(parents=True, exist_ok=True)
