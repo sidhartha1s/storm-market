@@ -91,7 +91,7 @@ Richard Henderson's age; the two rating statements and their dates; the News 9 p
 *(no void: cut straight into the intro. No black hold, title card or disclaimer before 1:00.)*
 
 
-## I1 · The night and the count (0:20)
+## I1 · The night and the count (0:18, runs to about 2:12)
 
 ### I1-S1 — narration
 **Picture:** the master map opens: central Oklahoma, Oklahoma City labelled, El Reno marked to its west. Popfig "6:03 PM" and the g-clock starts. A real clip of the tornado over open fields (public domain or licensed news). A bar marked "2.6 miles" draws across the section roads on the last sentence.
