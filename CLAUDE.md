@@ -24,7 +24,7 @@ A fix goes back to an Opus builder, never to the model that made the defect. Gat
 | The one condensed brief a script writer opens (wins for writers) | `references/script-quickref.md` |
 | Violence/death words that trip YouTube's transcript scan, with alternatives; gate `scripts/flag_words.py episodes/<slug>` | `references/flag-words.md` |
 | Heteronyms (word, both senses, a hint) that pocket-TTS can mispronounce by guessing the wrong sense; gate `scripts/homograph_scan.py episodes/<slug>` (WARN-only, reports for a probe, never fails) | `references/homographs.md` |
-| Titles and thumbnails | `references/packaging-rules.md` |
+| Titles and thumbnails; fill-in prompts for a thumbnail with Paul on it | `references/packaging-rules.md`; `references/thumbnail-prompts.md` |
 | News-lane rulebook, templates, clip pools | `references/mini-storms/FORMAT.md`, `library/mini-storms/`, `library/mini-storms/<event>/` (pools are reused across angles) |
 | Shorts spec, slugs `sh-<parent>-<n>`, weekly scan | `references/shorts/PLAN.md`, `references/shorts/competitors-2026-09-15.md`, templates `library/shorts/` (not created yet), `scripts/shorts_scan.py`, gate `node scripts/shorts_lint.mjs episodes/<slug>` |
 | Niche proof, teardowns, slate | `references/script-teardown.md`, `references/teardowns/`, `references/roadmap-2026-09.md` |
