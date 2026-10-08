@@ -20,6 +20,7 @@ A fix goes back to an Opus builder, never to the model that made the defect. Gat
 | Editing architecture, hook contract, CTA contract, chapter blackout table, cadence and sync rules, Content ID protocol, insert gate | `DESIGN.md` (read before any episode work) |
 | Every motion-graphics rule: file contract, safe zones and the presenter circle, glass card, motion, exits, on-screen text, what each gate parses, verification | `references/mg-quickref.md` (goes into every MG builder's brief) |
 | Channel palette, fonts, type-tier px values, TV-readability floor, CSS custom properties | `library/inhouse/snippets/tokens.md` (swatch: `library/inhouse/snippets/brand-swatch.html`) |
+| The angle: what it is, how candidates are found and tested, the owner lock. Comes before any title, thumbnail, hook or script line | `references/angle.md` |
 | Script method, hook wording, humanise pass, scaling | `references/script-os.md`, `script-framework.md`, `script-scaling.md`, `humanise-rules.md` |
 | The one condensed brief a script writer opens (wins for writers) | `references/script-quickref.md` |
 | Violence/death words that trip YouTube's transcript scan, with alternatives; gate `scripts/flag_words.py episodes/<slug>` | `references/flag-words.md` |
@@ -76,6 +77,7 @@ An owner correction or a measured surprise lands in its single home (`references
 ## The formula
 Script method and hook wording live in `references/script-os.md` and `script-framework.md`; titles and thumbnails in
 `references/packaging-rules.md`. What stays true for every episode:
+- The angle is locked by the owner before anything else, chosen from several true candidates (`references/angle.md`). The video is built on the angle, not on the subject.
 - Stats run through the middle, each translated to human scale. Human moments go where they hit hardest (script-scaling.md "Emotion").
 - Tornado episodes may march location by location (editor's call per episode). Micro-loops every 30 to 45 s. No-spoiler metadata.
 - A meteorology explainer layer in every episode, and at least two facts no competitor video has (NWS Service

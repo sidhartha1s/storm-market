@@ -4,6 +4,11 @@ A script writer reads this file, `references/flag-words.md` and the episode rese
 the source file named in each section header; if a rule here and its source disagree, fix the source in the same
 PR and say which one won.
 
+## The angle (owner 9 Oct 26) — `references/angle.md`
+- Your brief carries an Angle block locked by the owner: one true claim the whole video is built on. A brief without it is not ready: stop and say so.
+- Every act serves the angle. The fact every other video on the subject leads with is not the lead here; the block names it.
+- The hook, the open loops and the close all pay the angle. Do not drift back to the subject's default line.
+
 ## The hook (owner 27 Sep 26 — supersedes any looser hook rule below)
 - **One sentence, 3–5 s.** Promise first: the payoff the title/thumbnail already made.
 - **Never pause on a fact that contradicts the title/thumbnail.** Bad: "The weather service called it EF3." then a
@@ -43,7 +48,7 @@ Every 20–60 s: question → information → payoff → new question, chained w
 - One dominant question the whole script serves ("the viewer keeps watching to find out ___"), riding on one
   script concept: the one claim the film proves, strongest when it overturns a belief ("physics hid the iceberg",
   not "the Titanic"). The hook confirms it; every act proves part of it.
-- Consequence before mechanism ("426 died, and the wave wasn't an earthquake" beats "a landslide tsunami occurs when…").
+- Consequence before mechanism ("426 people lost their lives, and the wave wasn't an earthquake" beats "a landslide tsunami occurs when…").
 - Never spend curiosity early — one open question at a time.
 - Escalating revelations: interesting → surprising → disturbing → enormous → personal → present-day → unresolved.
 - 6–10 retention spikes per 15 min, each with a dedicated visual event (`[RS]` tag).
@@ -112,7 +117,8 @@ mechanism/analysis pair) and plants+pays a loop.
 
 ## Flag words — `references/flag-words.md`
 Write with its alternatives from the first draft. `python3 scripts/flag_words.py episodes/<slug>` fails the script
-on any hard word in narration, on-screen text or metadata.
+on any hard word in narration, on-screen text or metadata. Death words (dead, died, killed) take the soft
+alternative by default, for example "lost their lives" (owner 9 Oct 26); the table says how often the plain word may stay.
 
 ## `[verify]` gate — writer tags, never resolves (owner order 27 Sep 26) — `script-scaling.md`
 - Every fact not already in the pasted research gets `[verify: ...]` inline the moment it's written.
