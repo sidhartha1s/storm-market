@@ -279,7 +279,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A3-S8 — narration
 **Picture:** [RS] [VE] the replot: the same small circle leaves the highway, loops, brightens south of the Cobalt marker and comes north. Popfig "6:23:35 PM". It reaches Reuter Road and stops. A second counter starts at zero and runs to about twenty seconds while the circle does not move. Every other sound drops out under the counter.
-> By then the sub-vortex had left the highway and looped back [verify: one and the same sub-vortex at both vehicles, Wurman et al. 2014]. The paper has it strengthening about five hundred and fifty yards to the south of the car, then moving north toward the road. Between four and five minutes after it crossed the highway, it reached Reuter Road and nearly stopped. It stayed over the road for about twenty seconds.
+> By then the sub-vortex had left the highway and looped back [verify: one and the same sub-vortex at both vehicles, Wurman et al. 2014]. By the radar team's account, it strengthened about five hundred and fifty yards south of the car, then moved north toward the road. Between four and five minutes after it crossed the highway, it reached Reuter Road and nearly stopped. It stayed over the road for about twenty seconds.
 
 ### A3-S9 — narration
 **Picture:** the counter holds at its end. Readout "over 180 mph". A line draws from the Cobalt's starting mark, about 580 yards west of Radio Road, to a mark just north-east of the crossroads: "about 650 yards · about 20 seconds". No photograph of the car.
