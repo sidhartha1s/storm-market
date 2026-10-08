@@ -424,7 +424,7 @@ given in full at A1-S8, in report language, and the Cobalt's crew are three of t
    injuries in the S U V. It says the Cobalt's light build likely made it more vulnerable. The paper goes no further
    than that."
    Suggested: "The S U V met that vortex as it crossed the highway, and was carried about two hundred yards. The
-   Cobalt was under it for about twenty seconds, and was carried more than three times that far. The radar team adds
+   Cobalt met it where it sat nearly still for about twenty seconds, and was carried more than three times that far. The radar team adds
    one thing, that the Cobalt's light build likely made it more vulnerable. It does not name a single cause."
 
 2. **A3-S10: cut the detail with no job, add who they were.**
