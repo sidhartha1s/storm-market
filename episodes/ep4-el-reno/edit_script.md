@@ -216,31 +216,31 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A2-S6 — narration
 **Picture:** [RS] [VE] the self-made radar replot: the wide ring, and one small bright circle turning inside it. Label "sub-vortex". A scale bar "300 to 750 feet" on the small circle, then one to two and a half field outlines laid on it, against the forty-five across the ring.
-> Scientists call it a sub-vortex. The one Wurman's team tracked that evening was between about three hundred and seven hundred fifty feet across. That is one to two and a half football fields, inside a storm forty five fields wide.
+> Scientists call it a sub-vortex. The one Wurman's team tracked that evening was between about three hundred and seven hundred fifty feet across. That is one to two and a half football fields, inside a circulation more than forty five fields wide.
 
 *([loop L4 closes]: a small, fast vortex inside the wide circulation.)*
 
 ### A2-S7 — narration
-**Picture:** the small circle moves inside the ring, changing direction. A readout runs up to "about 175 mph · Wurman et al. 2014". A field outline sweeps past once a second to show the pace. Then a second readout, "about 295 mph · National Weather Service". One hit on each readout.
-> A sub-vortex does not keep one speed or one direction. Wurman's team clocked sub-vortices in this tornado crossing the ground at up to about a hundred and seventy five miles an hour. That is about two hundred and sixty feet every second. And the weather service says the air inside them was moving at about two hundred ninety five miles an hour.
+**Picture:** the small circle moves inside the ring, changing direction. A readout runs up to "about 175 mph · Wurman et al. 2014", with "about 260 feet every second" under it; a field outline sweeps past once a second to show the pace. Then a second readout, "about 295 mph · National Weather Service". One hit on each readout.
+> A sub-vortex does not keep one speed or one direction. Wurman's team clocked sub-vortices in this tornado crossing the ground at up to about one hundred seventy five miles an hour. The air spinning inside them was faster still. The weather service puts it at about two hundred ninety five miles an hour.
 
 ### A2-S8 — narration
-**Picture:** [RS] the 21-pin map returns for four seconds, only the eight El Reno pins lit, each on a road line. No new text. The bed holds one note.
-> So the widest tornado on record in the United States carried, inside it, air moving near three hundred miles an hour. And by the weather service's table, it took eight lives, every one of them in a vehicle.
+**Picture:** the replot widens. Faint circles appear and fade inside the ring. A small circle moves south into the ring's northwest side, "satellite tornado". Nearby a second circle turns the other way, an arrow showing clockwise, "Marshall et al., damage survey and radar analysis".
+> It was not alone. The damage survey's radar analysis shows other sub-vortices that came and went, and a second tornado nearby spinning clockwise, against the usual direction.
 
 ### A2-S9 — narration
-**Picture:** the replot widens. Faint circles appear and fade inside the ring. A small circle moves in from the northwest, "satellite tornado". To the east-southeast a second circle turns the other way, an arrow showing clockwise, "Marshall et al., damage survey and radar analysis".
-> And the sub-vortex was not the only extra thing turning out there. The survey team's radar analysis shows one sub-vortex that lasted and others that came and went. It also shows a small satellite tornado moving south into its northwest side, and a second tornado to the east-southeast spinning clockwise. Most tornadoes in this hemisphere spin the other way.
+**Picture:** [RS] the 21-pin map returns for four seconds, only the eight El Reno pins lit, each on a road line. No new text. The bed holds one note.
+> So the widest tornado on record in the United States carried air moving at about two hundred ninety five miles an hour. And by the weather service's table, it took eight lives, every one of them in a vehicle.
 
 ### A2-S10 — narration
-**Picture:** road level again. The wide ring passes over Robinson's marker and leaves it on the road. Then the small circle crosses the same road in under a second. Popfig "about 30 seconds · Wurman et al. 2014".
-> For a driver, that changes what the danger was. The wide circulation could surround a car, as it did Dan Robinson's, and leave it on the road. A sub-vortex a few hundred feet across could cross the same road faster than any car on it. Wurman's team put the possible warning for one of the two crews at about thirty seconds.
+**Picture:** a real clip of the rain-wrapped tornado seen from road level (public domain or licensed news; no chaser footage without a licence), held two seconds before the voice. Then road level on the map: the wide ring passes over Robinson's marker and leaves it on the road, and the small circle crosses the same road in under a second. Popfig "about 30 seconds · Wurman et al. 2014".
+> The wide circulation could surround a car, as it did Dan Robinson's, and leave it on the road. A sub-vortex a few hundred feet across could cross the same road faster than any car on it. Wurman's team put the possible warning for the Cobalt's crew at about thirty seconds.
 
 ### A2-S11 — narration
 **Picture:** the replot, one small circle only. It sits on the S U V marker on "US-81" at "6:19 PM", then on the Cobalt marker on "Reuter Road" between four and five minutes on. The same circle, drawn at two positions, never two circles. Hold on both positions; the bed drops out on the question.
-> As the tornado crossed Highway eighty one, by the radar team's account, one sub-vortex was turning inside the wide circulation, and it struck both vehicles [verify: one and the same sub-vortex at both vehicles, Wurman et al. 2014]. It reached the Weather Channel S U V on Highway eighty one. Between four and five minutes later it reached the white Cobalt on Reuter Road. It was one small vortex on two roads, and only one crew survived it. What did it do in those minutes?
+> As the tornado crossed Highway eighty one, by the radar team's account, one sub-vortex was turning inside it. It struck the Weather Channel S U V there. Between four and five minutes later it struck the white Cobalt on Reuter Road [verify: one and the same sub-vortex at both vehicles, Wurman et al. 2014]. It was one small vortex on two roads, and one crew survived. What happened at each road?
 
-*([loop L2 stays open], sharpened: one sub-vortex, two roads, one crew survives. Pays in A3.)*
+*([loop L2 stays open], sharpened: one sub-vortex, two roads, one crew survives. The question asks what happened at each road, not what the vortex did. Pays in A3.)*
 
 *(blackout 0.7 s)*
 
