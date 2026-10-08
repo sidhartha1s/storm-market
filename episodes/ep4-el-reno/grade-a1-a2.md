@@ -183,7 +183,7 @@ turn, and A2-S10 says it for a driver.
 - A2-S10: "For a driver, that changes what the danger was." It announces the next two sentences.
 
 ### Overclaims
-1. A2-S3: "But the wide circulation was the slow part of this storm." About 80 s earlier A1-S10 says its forward speed
+1. A2-S3: "But the wide circulation was the slow part of this storm." About 85 s earlier A1-S10 says its forward speed
    rose "to more than fifty". The under-ten figure is for a few minutes north of the interstate, after both vehicles
    were struck. "Slow part" is a general claim built on that one stretch.
 2. A2-S11: "It was one small vortex on two roads, and only one crew survived it. What did it do in those four
