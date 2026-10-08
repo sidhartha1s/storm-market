@@ -104,12 +104,12 @@ shipped; these are the standing requirements for every episode's cold open:
 The ebook CTA (Paul on camera, QR + "first link in the description") is a fixed element of
 every episode from ep4 on. File, duration, window and labels live in `config.yaml channel.cta`
 (current file and README in `assets/cta/`) — never a
-per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > CTA > the reveal it was holding back > story > close**.
-- **Window: the CTA starts around the halfway mark of a documentary** (`channel.cta.window`; owner 7 Oct 26: "either keep it
-  halfway mark, before some reveal or before pay-off, so they dont skip or quit. else at the end, before final PAYOFF. BEFORE."
-  and "when i say halfway, not exactly 50% on the dot"). The beat picks the spot inside the window: the CTA goes right before a
-  reveal the viewer is waiting for. Never after the final payoff. A late spot before the final payoff is the owner's
-  per-episode call (`window_by_slug`). `sweep_episode.py` fails outside the window (episodes shipped
+per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > tease > CTA > payoff > story > close**.
+- **Window: in a documentary the CTA sits between a tease and its payoff, around the halfway mark** (`channel.cta.window`).
+  Owner 7 Oct 26: "either keep it halfway mark, before some reveal or before pay-off, so they dont skip or quit. else at the
+  end, before final PAYOFF. BEFORE. dont expect the viewers to stay a second longer after they receive what the clicked for."
+  and "when i say halfway, not exactly 50% on the dot". The story picks the spot inside the window. Never after the final
+  payoff. A late spot before the final payoff is the owner's per-episode call (`window_by_slug`). `sweep_episode.py` fails outside the window (episodes shipped
   before the contract are listed in `channel.cta.exempt` — never extended; `demo-*` dirs print SKIP).
 - **Hinge is scripted, not spliced:** the narration segment BEFORE it ends on a tease (an open
   loop planted in the words — "...that gap was about to close, on the most experienced observers
