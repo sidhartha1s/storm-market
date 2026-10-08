@@ -413,9 +413,9 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 **Picture:** the map slides east to the city. The short "EF0" and "EF1" tracks from A4 return under a `data-callback`. Building icons everywhere, no pin on any.
 > In Oklahoma City, where the buildings were, every tornado that entered that evening was an E F zero or an E F one. None took a life.
 
-### A5-S6 — narration
-**Picture:** date stamp "Moore · May 20, 2013 · EF5". Public domain aerials of Moore after the storm. The assessment's sentence as attributed text, exact words: "survived above ground in predetermined shelters. Shelters ranged from interior closets and bathrooms to safe rooms. · NWS Service Assessment".
-> Now go back eleven days, to the E F five in Moore, the storm that frightened people out of their houses. The same assessment studied it. It found that people in Moore survived above ground, in closets, in bathrooms and in safe rooms. Cellars, where people had them, worked too.
+### A5-S7 — narration
+**Picture:** date stamp "Moore · May 20, 2013 · EF5". Public domain aerials of Moore after the storm. The assessment's sentence as attributed text, exact words: "survived above ground in predetermined shelters. Shelters ranged from interior closets and bathrooms to safe rooms. · NWS Service Assessment". The word "predetermined" lifts out and holds.
+> Eleven days earlier, the E F five in Moore had frightened people out of their houses. The same assessment studied that storm too. It found that people in Moore survived above ground, in closets, in bathrooms and in safe rooms. It calls them predetermined shelters, meaning places a family had picked before the storm came. Cellars, where people had them, worked too.
 
 ### A5-S8 — narration
 **Picture:** text-only card "Harold Brooks · NOAA" with his words as attributed text: "irresponsible at best, and dangerous at worst". Behind it the cutaway house from A1-S2, an inner closet lit.
