@@ -32,8 +32,8 @@ Any first beat outside the title's frame reads as "not the video I clicked" → 
   the rage-bait, not adjectives.
 - **Hook flows into the intro with no void or blackout** (DESIGN.md hook contract, channel post-mortem 27 Sep 26:
   nothing black before 1:00).
-- Narrator-from-zero MAY be the hook (ep7 deviation, owner-ordered) — the broadcast-anchor-by-
-  2.5s contract stays the default for episodes that don't explicitly override it.
+- Who speaks first and what audio the hook may carry: DESIGN.md "Cold-open hook contract" (the old
+  broadcast-anchor-by-2.5s default ended on 22 Sep 26).
 
 - **Zero fluff, matched to the packaging (owner 23 Sep 26).** Sentence one pays the title and the thumbnail. Every
   hook sentence either states a fact the title promised or opens the question it raises; anything else is cut. Feats

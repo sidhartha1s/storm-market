@@ -12,7 +12,7 @@ PR and say which one won.
 - No fluff before it: sentence one IS the payoff (numbers first, then the specific image, then the question).
   Delete-test: cut sentence one — if the hook still works, it was fluff.
 - No roadmap phrases ("one more thing before", "in the next twenty minutes"): they read as delay. Exception (owner 4 Oct 26): a hook callback that names the hook's claim ("Stick with me, because what I'm about to explain is exactly why <the hook's claim>.") is allowed, several times through the video, e.g. at act seams (home: `script-scaling.md` "open-loop registry"). Runtime roadmaps stay banned.
-- Cold open (DESIGN.md): frame one is mid-action, never black. Narrator's first line starts at 0:00 — no broadcast,
+- Cold open (DESIGN.md): frame one is Paul on camera speaking the hook line (documentaries; the one sentence above, nothing added to fill his clip), then mid-action footage, never black. The first line starts at 0:00 — no broadcast,
   radio or archive audio in the hook (bad audio quality loses viewers before the hook finishes). Date/place popfig
   inside the first second. Every cut lands ON an audio event, never mid-sentence.
 
@@ -126,6 +126,9 @@ on any hard word in narration, on-screen text or metadata.
   `script-scaling.md` "Section lock — the ONE definition"; that section goes to TTS the moment
   IT locks, without waiting for later acts.
 - Every audio-carrying insert is transcribed in full before cut selection; cut chosen at the transcript's peak.
+- Paul on camera (documentaries; `references/mg-quickref.md` "Paul on screen"): besides the hook sentence, mark up to 5 lines
+  he speaks full frame, each at most about 26 words (one 10 s clip). They sit at turning points, where the story changes
+  direction, and one of them is the `cta-hinge` tease right before the CTA (that one keeps the hinge's 25-word cap below).
 
 ## CTA hinge (must-keep every episode from ep4 on) — DESIGN.md "CTA contract"
 - Window: the CTA sits between a tease and its payoff, around the halfway mark, inside `config.yaml channel.cta.window`. Never after the final payoff.
