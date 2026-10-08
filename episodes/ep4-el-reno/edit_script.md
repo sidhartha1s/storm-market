@@ -243,4 +243,73 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *(blackout 0.7 s)*
 
 
-*(A3 onward: not written. Outline in section B.)*
+## A3 · Two vehicles, minutes apart (about 8:43)
+
+*(Clock note for the editor: every time in this act is the Wurman paper's radar timing, except 6:19 PM at the highway, which is the weather service's. Dan Robinson's own account puts his last sighting of the Cobalt about three minutes earlier; it is not spoken.)*
+
+### A3-S1 — narration
+**Picture:** time stamp "6:19 PM · National Weather Service". The road-level map: Highway 81 running north to south, the wide ring arriving from the west. One marker, "The Weather Channel", moving south. Name cards "Mike Bettes", "Austin Anderson · driver", "Brad Reynolds · camera". The crew's own footage is held for A3-S3.
+> The weather service puts the tornado on Highway eighty one at six nineteen PM. A Weather Channel S U V was on that highway, heading south. Mike Bettes was aboard, with Austin Anderson driving and Brad Reynolds on the camera. The Wurman paper says they were trying to get through to the tornado's south side.
+
+### A3-S2 — narration
+**Picture:** the replot at road level: the one small circle crosses Highway 81 with the ring, readout "about 56 mph · Wurman et al. 2014", an arrow east-northeast. A side view lifts off the map: ground line, a mark at "about 400 feet", an arrow pointing east on the circle's south side.
+> They met the sub-vortex as it crossed the road. It was moving east-northeast with the wide circulation, at about fifty six miles an hour. On its south side, about four hundred feet up, the air was moving east.
+
+### A3-S3 — narration
+**Picture:** [RS] [VE] the TV crew's own footage, the one sequence in the film (owner's permission, 9 Oct 26), graded, running from here to the end of A3-S4. Readout "over 185 mph" on the first sentence, then the footage full frame. On "kept recording" the voice stops and the clip's own sound plays alone for about six seconds: the black picture, the crash, the camera settling on its side. A line "200 yards" over the settled frame.
+> The radar clocked that air at more than a hundred and eighty five miles an hour. It carried the S U V off the east side of the highway, about two hundred yards. The crew's own camera kept recording. The picture is mostly black, with the sound of the crash, until the camera comes to rest on its side.
+
+### A3-S4 — narration
+**Picture:** the same sequence continues under the voice. Two attributed text cards over it, one at a time, exact words: Bettes, "It was like we were floating. We were tumbling. We were airborne at least one point and we were floating." Then Anderson, "Next thing I know, we're flying into the tornado through the air. The glass in the truck blew out and we were upside down." Source line "weather.com" on both. Text only, never a voice.
+> Bettes said afterward that it felt like floating, and that at one point they were in the air. Anderson remembered the glass blowing out and the truck upside down.
+
+### A3-S5 — narration
+**Picture:** a news still of the vehicle in the field after the storm (licence check). Three small markers beside it turn to "survived" one by one. The bed comes back in, lower than before.
+> All three were wearing seatbelts, and all three got out. Bettes needed stitches in his hand. Anderson had a cracked breastbone, five broken ribs and a broken bone in his neck, and he needed surgery. All three survived.
+
+### A3-S6 — narration
+**Picture:** place stamp "Reuter Road". The road-level map: two markers heading east inside the ring, "Dan Robinson" ahead, the white Cobalt behind. A "45 mph" readout on Robinson; the gap between the two opens. Two small headlight dots on the Cobalt marker fade at "6:22:15 PM · Wurman et al. 2014". Robinson's video is described, never shown: no licence on record.
+> On Reuter Road, two more cars were heading east inside the wide circulation. The first was Dan Robinson's, and the white Cobalt was right behind him. Robinson was doing about forty five miles an hour, and the Wurman paper says the Cobalt fell behind. By the paper's radar timing, its headlights are last seen behind him a little after six twenty two PM.
+
+### A3-S7 — narration
+**Picture:** the map pulls back: Reuter Road and Highway 81 empty except three markers, the two cars and one red pickup parked on the highway. Text line from the assessment, exact words: "there were no other vehicles in our immediate vicinity · Dan Robinson, quoted in the NWS Service Assessment".
+> Robinson later wrote that the road around them was nearly empty. Apart from the Cobalt and one red pickup parked along Highway eighty one, he saw no other vehicle near them. The weather service's assessment took his account and found that traffic did not appear to be a factor for the research team.
+
+### A3-S8 — narration
+**Picture:** [RS] [VE] the replot: the same small circle leaves the highway, loops, brightens south of the Cobalt marker and comes north. Popfig "6:23:35 PM". It reaches Reuter Road and stops. A second counter starts at zero and runs to about twenty seconds while the circle does not move. Every other sound drops out under the counter.
+> By then the sub-vortex had left the highway and looped back [verify: one and the same sub-vortex at both vehicles, Wurman et al. 2014]. The paper has it strengthening about five hundred and fifty yards to the south of the car, then moving north toward the road. Between four and five minutes after it crossed the highway, it reached Reuter Road and nearly stopped. It stayed over the road for about twenty seconds.
+
+### A3-S9 — narration
+**Picture:** the counter holds at its end. Readout "over 180 mph". A line draws from the Cobalt's starting mark, about 580 yards west of Radio Road, to a mark just north-east of the crossroads: "about 650 yards · about 20 seconds". No photograph of the car.
+> The center of it sat just east of where the Cobalt is thought to have been. Air inside it was moving at more than a hundred and eighty miles an hour. The paper notes that the car was not especially heavy and not armored. In about twenty seconds it was carried about six hundred and fifty yards, past the crossroads at Radio Road.
+
+### A3-S10 — narration
+**Picture:** [HUMAN] black card, text only, one name at a time: "Tim Samaras · 55", "Paul Samaras · 24", "Carl Young · 45". No photographs. One second of silence after the last sentence.
+> Tim Samaras was fifty five. He was found inside the car, with his seatbelt still fastened. His son Paul was twenty four, and Carl Young was forty five. Neither of them was found in the car.
+
+### A3-S11 — narration
+**Picture:** the paper's sentence as attributed text, exact words: "it is likely that no clear direction to safety was apparent · Wurman et al., Bulletin of the American Meteorological Society, 2014". Behind it the replot, the circle's looping track drawn as one line.
+> The Wurman paper gives them thirty seconds of possible warning, perhaps in poor visibility, from a vortex that kept changing direction. It concludes that they probably had no clear direction to safety.
+
+### A3-S12 — Paul on camera, slot 3 (wording not written)
+**Job:** pays L2. He sets the two strikes side by side in one breath: one vortex, crossing the highway at about fifty six miles an hour, nearly still over Reuter Road for about twenty seconds. Two facts, no cause, never "this is why".
+**Budget:** 26 words at most, one clip of about 10 s, full frame. Only numbers already spoken in this act.
+
+### A3-S13 — narration
+**Picture:** split frame, the same small circle on both sides. Left: Highway 81, "about 56 mph", a line "200 yards". Right: Reuter Road, "nearly still · about 20 seconds", a line "650 yards" drawn to the same scale. Under them two short lines of attributed text from the paper, one about speed and injuries, one about the car's build. No arrow or word joins the two sides.
+> The S U V was carried about two hundred yards. The Cobalt was carried more than three times that far. The Wurman paper does not say that is why one crew survived. It says the speed at the highway likely added to the injuries in the S U V. It says the Cobalt's light build likely made it more vulnerable. The paper goes no further than that.
+
+*([loop L2 closes]: the two strikes side by side, with what the paper says and where it stops. No cause stated.)*
+
+### A3-S14 — narration
+**Picture:** the 21-pin map returns. The eight El Reno pins are lit, each on a road. The view slides east to Oklahoma City, where twelve pins sit unlit at two points and one more stands apart. Hold on the twelve; the bed thins to rain.
+> With the Cobalt's crew, eight of the twenty one are accounted for, and every one of the eight was in a vehicle. Both crews had driven toward the tornado on purpose. Twelve of the other thirteen had done the opposite. They had gone to hide from it.
+
+### A3-S15 — Paul on camera, slot 4, the `cta-hinge` tease (wording not written)
+**Job:** the line that home was the safe place, teasing the twelve who left theirs. It opens L5 and runs straight into the book ad. It gives no detail of the family: how far they went from their own door is A4-S1's first sentence.
+**Budget:** 25 words at most (the hinge cap), one clip of about 10 s, full frame.
+
+*([loop L5 `cta-hinge` open]: who the twelve were. Book ad mounts here. Closes in A4-S1, first sentence.)*
+
+
+*(A4 onward: not written. Outline in section B.)*
