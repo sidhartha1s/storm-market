@@ -2,7 +2,8 @@
 
 Rules, when to use which, and the open owner pick: `references/packaging-rules.md` "Paul on the thumbnail". This
 file holds only the prompt text. Fill every `<SLOT>`, change nothing else: the fixed wording is what kept Paul on
-his sheet and every word spelled right in the six demos of 8 Oct 26.
+his sheet and every word spelled right in the six demos of 8 Oct 26. A slot's "e.g." shows what filled it in a demo;
+the same slot name used twice takes the same text. Words Paul or the headline must show go in single quotes.
 
 Every prompt attaches two images and names them in the text:
 - **img1** is always `assets/paul/paul-sheet-v2.jpg` (Paul's character sheet).
