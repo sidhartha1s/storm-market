@@ -129,7 +129,7 @@ per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > 
 - Wiring (staged episode-relative — `render.cmd` cds into the episode dir, no `../` srcs):
   copy the asset to `media/cta/<file>` (gitignored; sweep md5-checks it against `assets/cta/`), then
   `<video id="ins-cta-paul" src="media/cta/<channel.cta.file name>" data-start="<T>"
-  data-duration="<channel.cta.duration>" data-track-index="1" data-volume="1" data-srt-label="<channel.cta.srt_label>">`
+  data-duration="<channel.cta.duration>" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="<channel.cta.srt_label>">`
   with a 1.0s blackout element before and after on the picture track.
 
 ### Broadcast-clip rehook cadence
