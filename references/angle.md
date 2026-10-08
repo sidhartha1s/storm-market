@@ -28,7 +28,7 @@ angle > structure > hook > title > thumbnail > script. No title, thumbnail, hook
 5. **Show the owner all candidates with one recommendation and the reason.** Never one angle alone. Candidates may be combined: one as the spine, others as arcs inside it.
 
 ## The lock (OWNER GATE)
-The owner's words lock the angle. Silence, or approval of something built on it, is not a lock. The lock is recorded at the top of the episode's plan or `edit_script.md`:
+The owner's words lock the angle. Silence, or approval of something built on it, is not a lock. The lock is recorded in `episodes/<slug>/angle.md`, written the moment he locks it. That file existing is the lock:
 
 ```
 ## Angle (locked by the owner, <DD Mon YY>: "<his words>")
@@ -39,7 +39,7 @@ Ruled out as the lead: <what the top videos lead with>
 Still unverified: <list, or none>
 ```
 
-A writer's brief carries this block. A brief without it is not ready.
+A writer's brief carries this block, pasted from that file. A brief without it is not ready.
 
 ## Worked example: El Reno 2013 (locked 9 Oct 26)
 - Ruled out: "radar near 300 mph, rated EF3" and "the widest tornado ever recorded". Every top video leads with one of them.

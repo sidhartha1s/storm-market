@@ -38,7 +38,7 @@ Any first beat outside the title's frame reads as "not the video I clicked" → 
 - **Zero fluff, matched to the packaging (owner 23 Sep 26).** Sentence one pays the title and the thumbnail. Every
   hook sentence either states a fact the title promised or opens the question it raises; anything else is cut. Feats
   the viewer cannot relate to (weights, distances) are rounded and never the hook's spine.
-- **Script review loop.** Brainstorm the angle first, then share the script file. The owner edits it in place; diff
+- **Script review loop.** The angle is locked first (`references/angle.md`), then share the script file. The owner edits it in place; diff
   his edits, name the pattern, and add it here before the next script.
 
 ## 3. ROI drip — how the promise is paced across the runtime (AVD is the target)

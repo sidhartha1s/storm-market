@@ -115,7 +115,7 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 
 ## Pipeline
 Per episode in `episodes/<slug>/`. The skill's phase map points at these step numbers. Never edit a shipped episode.
-1. `edit_script.md`: typed segment list plus per-beat visual intent, written on `references/script-scaling.md`. A
+1. `edit_script.md`: started only once `episodes/<slug>/angle.md` holds the owner's locked angle (`references/angle.md`). Typed segment list plus per-beat visual intent, written on `references/script-scaling.md`. A
    section goes to TTS only once LOCKED (hook+intro locks and moves first; the one lock definition is
    `references/script-scaling.md` "Section lock — the ONE definition" — never restated here) — never the whole
    script waiting on the last act. The CTA hinge is named (segment before, segment after, estimated time). Owner
