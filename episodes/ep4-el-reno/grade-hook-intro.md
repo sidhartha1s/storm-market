@@ -140,7 +140,7 @@ H1-S1 and the title are untouched.
    Now: "Scientists later rebuilt both moments from radar, and the two moments did not look alike."
    Suggested: "A radar team led by Joshua Wurman rebuilt both strikes second by second, and the two vehicles were not
    struck the same way." [verify: wording against the one-sub-vortex finding; his institution is still open]
-   And at the end of I1-S5, so the viewer does not leave at 1:35 with a ready answer: "Fear explains the traffic. It
+   And at the end of I1-S5, so the viewer does not leave I1-S5 with a ready answer: "Fear explains the traffic. It
    does not explain why no building around Oklahoma City lost a single person that night."
    If a sag is still felt after that, the larger option is to move I1-S6 to I1-S8 up behind I1-S2 (the crews belong
    with the eight in vehicles), which opens L2 a minute earlier and ends the intro on the claim; its cost is that the
