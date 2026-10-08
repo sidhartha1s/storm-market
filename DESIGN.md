@@ -73,12 +73,15 @@ sparingly/short/narrated-over (claims budgeted, segments must survive being clai
 ### Cold-open hook contract
 The first 25-30s decide the video. Owner rated ep2's first hook 0.6/10 and the rebuilt one
 shipped; these are the standing requirements for every episode's cold open:
-- **NO black start: frame one is MID-ACTION** — the episode's
-  defining shot already moving. High curiosity, high impact from the first frame.
-- **The highest-intent real clips open the video, never only the end.** The footage the title promises (the slide, the
+- **Frame one is Paul, full frame, speaking the hook line** (documentaries; owner 7 Oct 26: "if the hook or the initial
+  frame itself shows Paul's face It will be really nice"). One clip, so the face on the thumbnail is the
+  face in the first second. Clip length, word cap and the per-video budget: `references/mg-quickref.md` "Paul on screen".
+- **The shot after Paul is MID-ACTION, never black** — the episode's
+  defining shot already moving. High curiosity, high impact from its first frame.
+- **The highest-intent real clips follow Paul's clip at once, never only the end.** The footage the title promises (the slide, the
   collapse, the impact) is in the hook. A later act may return to it, but the best shot is never saved for the end (ep-nepal: the hook missed the slide).
-- **The NARRATOR's first line starts at 0:00. No broadcast, radio or archive audio anywhere in
-  the hook** (owner 22 Sep 26, replaces the old "anchor line by 2.5 s" rule): archive audio is
+- **The first spoken line starts at 0:00: Paul's on camera (owner 7 Oct 26; before that the narrator spoke first), then
+  the narrator's. No broadcast, radio or archive audio anywhere in the hook** (owner 22 Sep 26, replaces the old "anchor line by 2.5 s" rule): archive audio is
   low quality, and a 10/10 narrated hook is worthless if viewers leave before it starts.
   Archive audio belongs inside the acts, as `insert` segments.
 - **Date/place popup (popfig) inside the first second** (viewer must know where/when instantly),
@@ -114,7 +117,8 @@ per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > 
   clip after the out-dip; the payoff clip is REAL footage, never a graphic.
 - **Audio:** the CTA carries its own VO (`data-volume="1"`); narration is silent under it (lint
   overlap rule); score/SFX bed ducked ≥12 dB or out. Never within 60s of another audio-carrying
-  insert (the "never two inserts back-to-back" rule).
+  insert (the "never two inserts back-to-back" rule). One exception: Paul's own on-camera line right before it
+  (`references/mg-quickref.md` "Paul on screen"); the 1.0s dip still sits between his line and the CTA.
 - **Not a chapter boundary:** the CTA sits inside the preceding chapter; the next chapter starts
   on the payoff sentence, so chapter-scrubbing lands on the payoff, not the ad.
 - **Deliverables:** SRT cue from `data-srt-label`; `metadata.md` description puts
@@ -125,7 +129,7 @@ per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > 
 - Wiring (staged episode-relative — `render.cmd` cds into the episode dir, no `../` srcs):
   copy the asset to `media/cta/<file>` (gitignored; sweep md5-checks it against `assets/cta/`), then
   `<video id="ins-cta-paul" src="media/cta/<channel.cta.file name>" data-start="<T>"
-  data-duration="<channel.cta.duration>" data-track-index="1" data-volume="1" data-srt-label="<channel.cta.srt_label>">`
+  data-duration="<channel.cta.duration>" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="<channel.cta.srt_label>">`
   with a 1.0s blackout element before and after on the picture track.
 
 ### Broadcast-clip rehook cadence
@@ -232,7 +236,7 @@ floors/ceilings; taste stays with the model.
 
 ## Editing grammar (seed — grows via learnings/)
 
-- Hook: the narrator's payoff line over motion from 0:00; no archive audio in the hook (see "Cold-open hook contract").
+- Hook: Paul speaks the hook line on camera from 0:00, then the narrator continues over motion; no archive audio in the hook (see "Cold-open hook contract").
 - After an emotional payoff: hold 2-4s, ambience up, then cut hard to the next act. Declare each hold with an
   empty marker `<section class="clip hold" id="hold-N" data-start="X" data-duration="3.0" data-track-index="8"></section>`;
   `lint_timeline.py` sanctions a narration gap only inside a blackout, a declared hold, or the CTA (ep-1974, 21 Sep 26).
