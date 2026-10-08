@@ -574,6 +574,15 @@ with tempfile.TemporaryDirectory() as _d:
     check("voice_tool: a swapped voice reference and a missing venv are both reported",
           _gap_names() == ["voice venv", "voice reference"])
 
+# tts_clone's sentence cache: the stamp in the cached file name must change with the voice, or a
+# voice switch re-voices an episode out of the old voice's clips.
+import tts_clone  # noqa: E402
+check("tts_clone: the same sentence under another voice gets another cache stamp",
+      tts_clone.segment_htag("The siren sounded.", "voice-a") != tts_clone.segment_htag("The siren sounded.", "voice-b"))
+check("tts_clone: the same sentence under the same voice keeps its cache stamp, and an edited one does not",
+      tts_clone.segment_htag("The siren sounded.", "voice-a") == tts_clone.segment_htag("The siren sounded.", "voice-a")
+      and tts_clone.segment_htag("The siren sounded.", "voice-a") != tts_clone.segment_htag("The sirens sounded.", "voice-a"))
+
 # ---------------------------------------------------------------------------
 if fails:
     print(f"[test_audio] {len(fails)} FAILED: {fails}")
