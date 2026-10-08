@@ -393,7 +393,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A5-S1 — narration
 **Picture:** date stamp "June 4, 2013". The weather office's public statement of that day on screen (public domain), the line about the upgrade lit. A stamp "EF5" lands on the El Reno track. Readout "about 295 mph".
-> Four days after the storm, on June fourth, twenty thirteen, the weather office in Norman raised the El Reno tornado to an E F five. It did that because of the radar. The research radars had measured air moving at about two hundred ninety five miles an hour.
+> On June fourth, twenty thirteen, four days after the storm, the weather office in Norman raised the tornado to an E F five. It did that because of the radar. The research radars had measured air moving at about two hundred ninety five miles an hour.
 
 ### A5-S2 — narration
 **Picture:** [RS] [VE] the "EF5" stamp lifts and "EF3" settles in its place, no date shown. Then the replot over a land-use map: the small circles' tracks cross fields and roads and touch no building dot. The weather office's sentence as attributed text: "none of these intense sub-vortices impacted any structures in rural Canadian County · NWS Norman".
