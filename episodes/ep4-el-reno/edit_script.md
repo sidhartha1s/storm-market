@@ -421,32 +421,32 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A5-S7 — narration
 **Picture:** date stamp "Moore · May 20, 2013 · EF5". Public domain aerials of Moore after the storm. The assessment's sentence as attributed text, exact words: "survived above ground in predetermined shelters. Shelters ranged from interior closets and bathrooms to safe rooms. · NWS Service Assessment". The word "predetermined" lifts out and holds.
-> Eleven days earlier, the E F five in Moore had frightened people out of their houses. The same assessment studied that storm too. It found that people in Moore survived above ground, in closets, in bathrooms and in safe rooms. It calls them predetermined shelters, meaning places a family had picked before the storm came. Cellars, where people had them, worked too.
+> Eleven days earlier, the E F five in Moore had frightened people out of their houses. That tornado took twenty four lives, by the weather office's count. But the assessment found residents who came through it above ground in the shelters they had planned: closets, bathrooms and safe rooms. It calls those predetermined shelters, meaning places a family had picked before the storm came.
 
 ### A5-S8 — narration
 **Picture:** text-only card "Harold Brooks · NOAA" with his words as attributed text: "irresponsible at best, and dangerous at worst". Behind it the cutaway house from A1-S2, an inner closet lit.
-> Harold Brooks, a federal meteorologist, had words for the message that only underground would do. He called it irresponsible at best and dangerous at worst.
+> Cellars, where people had them, worked too. Harold Brooks, a federal meteorologist, had words for the message that only underground would do. He called it irresponsible at best and dangerous at worst.
 
 ### A5-S9 — narration
 **Picture:** the 21-pin map splits into two layers: roads lit near El Reno with the small circle crossing one; then the city's low ground shaded blue, water running into the two drains. Every pin falls inside one layer or the other.
-> By the count, the storm had two real dangers that night. One was on the open roads near El Reno, where a sub-vortex could cross faster than any car. The other was the water, which ran to the lowest ground in the city. Every one of the twenty one was on a road or in the water.
+> By the table, two things took lives that night. One was the tornado on the open roads near El Reno, where a sub-vortex could cross faster than any car. The other was the water, which ran to the lowest ground in the city. Every one of the twenty one was on a road or in the water.
 
 ### A5-S10 — narration
-**Picture:** the map holds. A small line of text, "count is for the night of May 31", then one grey marker far to the east, "Okfuskee County · June 1", outside the frame of pins.
-> None of this means a house is a match for a sub-vortex. No house was put to that test that night. And the count stops at that night. The next morning the flooding took one more life, in Okfuskee County.
+**Picture:** the map holds. A small line of text, "for the night of May 31", then one grey marker far to the east, "Okfuskee County · June 1", outside the frame of pins.
+> None of this means a house is a match for a sub-vortex. No house was put to that test that night. And all of this is for that one night. The next morning the flooding took one more life, in Okfuskee County.
 
 ### A5-S11 — narration
-**Picture:** [HUMAN] three short returns under `data-callback`, each two seconds: the house and ditch drawing with its "a few feet" measure; the name card "Richard Henderson"; the traffic aerial. Then back to the full map.
-> But the count itself does not move. The family of seven were a few feet from their own door. Richard Henderson had left his home nearby. Many of the people in that traffic had left a house behind them.
+**Picture:** [HUMAN] two short returns under `data-callback`, each two seconds: the house and ditch drawing with its "a few feet" measure; the traffic aerial with the assessment's words "unable to survive if not underground" over it. Then back to the full map.
+> The family of seven were a few feet from their own door, hiding from tornadoes that were real. Many of the people in that traffic had left a house behind them because they were told it would not save them.
 
 ### A5-S12 — narration
-**Picture:** [RS] [VE] the full 21-pin map, every pin lit, building icons unlit, the line "0 of 21 inside a building · NWS Service Assessment, Appendix C" under the first sentence only. The map keeps its tag [verify: a place for the 6 pins still unsourced; 15 of the 21 have one, see fact_check.md]. The bed rises under the last sentence and stops with it.
-> No one lost their life inside a building that night, and the sources give three reasons. The strongest part of the tornado crossed no building. The tornadoes that reached the city's buildings carried the two lowest ratings. And the water that took thirteen lives ran to the lowest ground, where twelve people were hiding. By that count, the safest place was home.
+**Picture:** [RS] [VE] the full 21-pin map, every pin lit, building icons unlit, the line "0 of 21 inside a building · NWS Service Assessment, Appendix C". The map keeps its tag [verify: a place for the 6 pins still unsourced; 15 of the 21 have one, see fact_check.md]. The bed rises under the last sentence and stops with it. The title's line is not spoken here; it is Paul's, next.
+> The strongest part of the tornado crossed no building. The tornadoes that reached the city's buildings carried the two lowest ratings. And the water that took thirteen lives ran to the lowest ground, where twelve people were hiding.
 
-*([loop L1 closes]: why nobody lost their life indoors, answered inside what the sources say. No claim that a house would stand up to a sub-vortex.)*
+*([loop L1 closes] across this segment and Paul's line: three sourced facts, then the title's line once. Stated as the film's reading of the table, inside what the sources say. No claim that a house would stand up to a sub-vortex.)*
 
 ### A5-S13 — Paul on camera, slot 5 (wording not written)
-**Job:** the answer line at the full 21-pin map. It returns to the hook's claim in his own voice: twenty-one lives, none inside a building, and home as the safe place. It adds no new fact and no cause the sources do not give.
+**Job:** the title's line, said once in the film's answer and only here: by that count, the safest place was home. He says it at the full 21-pin map, in his own voice, as the film's reading of the table. "Home" means a sturdy house; his wording must not read as covering a mobile home, and a lower third carries "sturdy building, not a mobile home · National Weather Service" under him. No new fact and no cause the sources do not give.
 **Budget:** 26 words at most, one clip of about 10 s, full frame.
 
 *(blackout 0.7 s)*
