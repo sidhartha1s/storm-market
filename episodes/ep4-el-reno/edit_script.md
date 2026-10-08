@@ -305,7 +305,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A3-S14 — narration
 **Picture:** the 21-pin map returns. The eight El Reno pins are lit, each on a road. The view slides east to Oklahoma City, where twelve pins sit unlit at two points and one more stands apart. Hold on the twelve; the bed thins to rain.
-> With the Cobalt's crew, eight of the twenty one are accounted for, and every one of the eight was in a vehicle. Both crews had driven toward the tornado on purpose. Twelve of the other thirteen had done the opposite. They had gone to hide from it.
+> All eight people lost in the El Reno tornado were in vehicles, and both crews had gone out to find it. Twelve of the other thirteen had done the opposite. They had gone to hide from it.
 
 ### A3-S15 — Paul on camera, slot 4, the `cta-hinge` tease (wording not written)
 **Job:** the line that home was the safe place, teasing the twelve who left theirs. It opens L5 and runs straight into the book ad. It gives no detail of the family: how far they went from their own door is A4-S1's first sentence.
