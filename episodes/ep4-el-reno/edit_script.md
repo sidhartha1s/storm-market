@@ -245,7 +245,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *(blackout 0.7 s)*
 
 
-## A3 · Two vehicles, minutes apart (about 8:41, runs about 3:56 with two Paul slots and six seconds of clip sound; the book ad then lands at about 12:37, 54.9 % of 23:00, inside the window)
+## A3 · Two vehicles, minutes apart (about 8:03, runs about 3:49 with two Paul slots and six seconds of clip sound; the book ad then lands at about 11:53, 57.3 % of an estimated 20:45, inside the window)
 
 *(Clock note for the editor: every time in this act is the Wurman paper's radar timing, except 6:19 PM at the highway, which is the weather service's. Dan Robinson's own account puts his last sighting of the Cobalt about three minutes earlier; it is not spoken.)*
 
