@@ -433,7 +433,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 **Picture:** [HUMAN] three short returns under `data-callback`, each two seconds: the house and ditch drawing with its "a few feet" measure; the name card "Richard Henderson"; the traffic aerial. Then back to the full map.
 > But the count itself does not move. The family of seven were a few feet from their own door. Richard Henderson had left his home nearby. Many of the people in that traffic had left a house behind them.
 
-### A5-S11 — narration
+### A5-S12 — narration
 **Picture:** [RS] [VE] the full 21-pin map, every pin lit, building icons unlit, the line "0 of 21 inside a building · NWS Service Assessment, Appendix C" under the first sentence only. The map keeps its tag [verify: a place for the 6 pins still unsourced; 15 of the 21 have one, see fact_check.md]. The bed rises under the last sentence and stops with it.
 > No one lost their life inside a building that night, and the sources give three reasons. The strongest part of the tornado crossed no building. The tornadoes that reached the city's buildings carried the two lowest ratings. And the water that took thirteen lives ran to the lowest ground, where twelve people were hiding. By that count, the safest place was home.
 
