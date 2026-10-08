@@ -70,6 +70,8 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 - Narration numbers follow the shipped Enderlin copy: spelled out, no hyphen ("twenty one"). H1-S1 is the owner's line verbatim, hyphen included.
 - "wind" does not occur in the hook, tail or intro. No homograph is respelled here; respelling waits for a TTS probe (`references/homographs.md`).
 - Loop tags and timing notes sit between segments as plain notes, never inside a blockquote.
+- A1 and A2 also avoid "wind" and "record" as a noun ("the air inside them", "ever recorded"), so no homograph waits on a probe there.
+- A Paul slot is a heading with a Job and a Budget line and no blockquote; `parse_segments` skips it until his line is written.
 - The estimated times on the section headings come from the word counts at the Enderlin intro's shipped pace. They are estimates until a probe at this episode's tempo.
 
 ---
