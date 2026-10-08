@@ -67,7 +67,7 @@ Per episode, 12 to 16 designed graphics, library first (`library/catalog-index.j
 - **g-then-now**: what was fixed after this event and what still is not (the scorecard device).
 - **g-person**: name card for each act's human (survivor, forecaster, photographer, child).
 - Citation cards (source, date, one line) replace screenshots. Stills 3 to 6 s with motion, real clip every
-  45 to 60 s, chapter blackouts 0.6 to 0.9 s, CTA at 30 to 40 % via a spoken hinge, END CTA spine.
+  45 to 60 s, chapter blackouts 0.6 to 0.9 s, CTA inside the config window via a spoken hinge, END CTA spine.
 - Word budget: 22:00 target, narration = 22 × 0.9 × 152 wpm ≈ 3,000 words, probe-TTS two segments first.
 
 ## 4. Episode cards (order = ship order; every number below is `[verify]` until the fact sheet clears it)

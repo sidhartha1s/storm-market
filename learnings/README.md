@@ -6,7 +6,7 @@
 
 ## Cross-cutting rules (read always)
 The promoted one-line rules from the old `LEARNINGS.md` index, verbatim (one stale row dropped: the 1440p HEVC upload file, superseded 9 Sep 26). Each `§"..."` names a journal section header; search `learnings/` for it.
-- The ebook CTA is a must-keep contract, positioned by the `config.yaml channel.cta` window: late, 85-95 % since 23 Sep 26. → §"the ebook CTA is a channel asset + a must-keep contract"
+- The ebook CTA is a must-keep contract, positioned by the `config.yaml channel.cta` window (rule: DESIGN.md "CTA contract"). → §"the ebook CTA is a channel asset + a must-keep contract"
 - mp4 surgery on a finished render uses h264_nvenc first, never libx264 — the quality gap doesn't survive YouTube's transcode at consumer-master bitrates. → §"1440p upload tier + NVENC-first for mp4 surgery"
 - Convert GIFs before mounting (single-frame → PNG, animated → mp4); every mounted video needs an audio stream — mux silence into mute clips. → §"ep6 render-failure ledger"
 - Audio slots longer than their file are silently truncated (WARN, not FAIL) — read the WARNs of a failed render; clip windows must never exceed the real clip length. → §"ep6 render-failure ledger"
