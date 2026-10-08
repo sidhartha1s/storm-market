@@ -147,6 +147,7 @@ def main():
     voice_ref = Path(args.voice)
     if not voice_ref.exists():
         sys.exit(f"voice ref not found: {voice_ref}")
+    voice_md5 = voice_tool.voice_md5(voice_ref)
 
     seg_dir = jobs[0][1].parent / "_segments"
     seg_dir.mkdir(parents=True, exist_ok=True)
