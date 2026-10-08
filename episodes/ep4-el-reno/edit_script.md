@@ -465,3 +465,5 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 > Tornadoes don't ask permission. But they do send warnings. Learn what yours sounds like, and where in your own home you would go. Then when it comes, you already know what to do. This was The Warning Hour.
 
 *(outro tail 4 s, g-outro, bed out)*
+
+*(First full draft, 9 Oct 26. Narration 3,669 words. At the Enderlin intro's shipped pace, with five Paul slots at 10 s each and a 20 s book ad, the estimate is about 21:33, with the book ad starting at about 12:40, 58.8 % of that runtime. These are estimates until `word_budget.py` runs on a probe at this episode's tempo; the 23:00 planning times in section B and on the A3 heading predate this count.)*
