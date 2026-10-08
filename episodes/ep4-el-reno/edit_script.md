@@ -188,7 +188,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *(blackout 0.7 s)*
 
 
-## A2 · The tornado inside the tornado (about 5:32)
+## A2 · The tornado inside the tornado (about 5:29, runs about 3:14 with Paul's slot, before picture holds)
 
 ### A2-S1 — narration
 **Picture:** time stamp "6:19 PM". The map at road level: the circulation as a wide ring reaching Highway 81. A bar "2.6 miles" spans it. Then two outlines side by side, "Hallam, Nebraska · 2004" and "El Reno · 2013", the second wider. A real clip of the tornado, wide shot, licensed or public domain.
