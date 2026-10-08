@@ -44,8 +44,8 @@ added on the owner's note:
   8 missing"). S1 structure, up to 90 s (Shorts allow 3 min), one named agency quote, ends on the tracking
   line. Radar feeds these directly; no parent video needed.
 - Owner types b (topic funnels) = S1, c (weather info) = S2. S3 (story card) stays as the 45+ widening play.
-- **Pace: shorts run faster than the long form** (owner 16 Sep 26). The number is `config.yaml channel.tempo_by_prefix` `sh-`;
-  it was 1.16 on the old voice and is 0.99 on the Paul clone, the same delivered pace. Word budgets below are at that delivered pace.
+- **Pace: shorts run faster than the long form** (owner 16 Sep 26). The number is `config.yaml channel.tempo_by_prefix` `sh-`.
+  Word budgets below are at that delivered pace.
 
 | | S1 · The Warning | S2 · Why It Happens | S3 · One Name |
 |---|---|---|---|

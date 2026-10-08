@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """TTS driver: extract narration segments from an episode's edit_script.md, then for each
 segment run pocket-TTS (native pace) -> ffmpeg atempo (config.yaml channel.tempo, per-lane
-override in channel.tempo_by_prefix matched against the episode slug — e.g. shorts 'sh-' run
-1.16, everything else 1.10; CLAUDE.md Voice + references/shorts/PLAN.md; tempo BEFORE timing)
+override in channel.tempo_by_prefix matched against the episode slug, e.g. shorts 'sh-';
+CLAUDE.md Voice + references/shorts/PLAN.md; tempo BEFORE timing)
 -> faster-whisper word timestamps on the SPED wav. One driver, one pass per segment.
 
 Segment = a heading ('### <ID> — narration', any '#' depth) followed by exactly one
@@ -121,7 +121,7 @@ def segment_tempos(md: str):
 
 def resolve_tempo(cfg, slug):
     """Per-lane tempo, matched against the episode slug's prefix. config.yaml
-    channel.tempo_by_prefix (e.g. {'sh-': 1.16} for shorts, PLAN.md:47,55,174) overrides
+    channel.tempo_by_prefix (e.g. 'sh-' for shorts, references/shorts/PLAN.md "Pace") overrides
     channel.tempo (docs + minis, CLAUDE.md Voice) for any slug starting with that prefix."""
     channel = cfg.get("channel", {})
     for prefix, t in (channel.get("tempo_by_prefix") or {}).items():
@@ -207,7 +207,7 @@ def main():
     tempo = resolve_tempo(cfg, ep.name)
     if not tempo:
         sys.exit("[tts_episode] config.yaml channel.tempo is not set "
-                  "(CLAUDE.md Voice: documentaries and minis both run atempo 1.10)")
+                  "(CLAUDE.md Voice: documentaries and minis share one lane tempo)")
     voice_md5 = voice_tool.voice_md5(ext["voice_ref"])
     (ep / "audio").mkdir(exist_ok=True)
     (ep / "audio" / "_raw").mkdir(exist_ok=True)

@@ -577,11 +577,13 @@ with tempfile.TemporaryDirectory() as _d:
 # tts_clone's sentence cache: the stamp in the cached file name must change with the voice, or a
 # voice switch re-voices an episode out of the old voice's clips.
 import tts_clone  # noqa: E402
+_stamp = tts_clone.segment_htag("The siren sounded.", "voice-a")
 check("tts_clone: the same sentence under another voice gets another cache stamp",
-      tts_clone.segment_htag("The siren sounded.", "voice-a") != tts_clone.segment_htag("The siren sounded.", "voice-b"))
-check("tts_clone: the same sentence under the same voice keeps its cache stamp, and an edited one does not",
-      tts_clone.segment_htag("The siren sounded.", "voice-a") == tts_clone.segment_htag("The siren sounded.", "voice-a")
-      and tts_clone.segment_htag("The siren sounded.", "voice-a") != tts_clone.segment_htag("The sirens sounded.", "voice-a"))
+      _stamp != tts_clone.segment_htag("The siren sounded.", "voice-b"))
+check("tts_clone: an edited sentence under the same voice gets another cache stamp",
+      _stamp != tts_clone.segment_htag("The sirens sounded.", "voice-a"))
+check("tts_clone: the same sentence under the same voice keeps its cache stamp",
+      _stamp == tts_clone.segment_htag("The siren sounded.", "voice-a"))
 
 # ---------------------------------------------------------------------------
 if fails:
