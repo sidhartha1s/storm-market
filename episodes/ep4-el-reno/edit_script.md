@@ -299,7 +299,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A3-S13 — narration
 **Picture:** split frame, the same small circle on both sides. Left: Highway 81, "about 56 mph", a line "200 yards". Right: Reuter Road, "nearly still · about 20 seconds", a line "650 yards" drawn to the same scale. Under them two short lines of attributed text from the paper, one about speed and injuries, one about the car's build. No arrow or word joins the two sides.
-> The S U V met that vortex as it crossed the highway, and was carried about two hundred yards. The Cobalt met it where it sat nearly still for about twenty seconds, and was carried more than three times that far. The radar team wrote that the speed at the highway likely added to the injuries in the S U V. It wrote that the Cobalt's light build likely made it more vulnerable. It names no single cause.
+> The S U V met that vortex crossing the highway, and was carried about two hundred yards. The Cobalt met it nearly still over Reuter Road, and was carried more than three times that far. The radar team wrote that the speed at the highway likely added to the injuries in the S U V. It wrote that the Cobalt's light build likely made it more vulnerable. It names no single cause.
 
 *([loop L2 closes]: the two strikes as plain statements, the paper's two "likely" lines, and one line of limit. No cause stated.)*
 
