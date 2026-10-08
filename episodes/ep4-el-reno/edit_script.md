@@ -259,7 +259,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A3-S3 — narration
 **Picture:** [RS] [VE] the TV crew's own footage, the one sequence in the film (owner's permission, 9 Oct 26), graded, running from here to the end of A3-S4. Readout "over 185 mph" on the first sentence, then the footage full frame. On "kept recording" the voice stops and the clip's own sound plays alone for about six seconds: the black picture, the crash, the camera settling on its side. A line "200 yards" over the settled frame.
-> The radar clocked that air at more than a hundred and eighty five miles an hour. It carried the S U V off the east side of the highway, about two hundred yards. The crew's own camera kept recording. The picture is mostly black, with the sound of the crash, until the camera comes to rest on its side.
+> A few hundred feet up, the radar clocked that air at more than one hundred eighty five miles an hour. It carried the S U V off the east side of the highway, about two hundred yards. The crew's own camera kept recording.
 
 ### A3-S4 — narration
 **Picture:** the same sequence continues under the voice. Two attributed text cards over it, one at a time, exact words: Bettes, "It was like we were floating. We were tumbling. We were airborne at least one point and we were floating." Then Anderson, "Next thing I know, we're flying into the tornado through the air. The glass in the truck blew out and we were upside down." Source line "weather.com" on both. Text only, never a voice.
