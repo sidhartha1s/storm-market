@@ -52,11 +52,12 @@ def normalize_for_synth(raw):
     return raw
 
 
-def segment_htag(text: str) -> str:
+def segment_htag(text: str, voice_md5: str) -> str:
     """The per-segment cache stamp: a changed sentence gets a changed tag, so a reworded script
     regenerates that segment instead of silently reusing the byte-identical old clip at the same
-    index (index-only caching shipped stale audio once)."""
-    return hashlib.sha1(text.encode("utf-8")).hexdigest()[:8]
+    index (index-only caching shipped stale audio once). The voice reference is part of the stamp
+    for the same reason: a new voice must never reuse a sentence the old voice spoke."""
+    return hashlib.sha1(f"{text}\x1f{voice_md5}".encode("utf-8")).hexdigest()[:8]
 
 
 def probe(p: Path) -> float:
