@@ -255,7 +255,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A3-S2 — narration
 **Picture:** the replot at road level: the one small circle crosses Highway 81 with the ring, readout "about 56 mph · Wurman et al. 2014", an arrow east-northeast. A side view lifts off the map: ground line, a mark at "about 400 feet", an arrow pointing east on the circle's south side.
-> They met the sub-vortex as it crossed the road. It was moving east-northeast with the wide circulation, at about fifty six miles an hour. On its south side, about four hundred feet up, the air was moving east.
+> They met the sub-vortex as it crossed the road at about fifty six miles an hour. On its south side the air was blowing east.
 
 ### A3-S3 — narration
 **Picture:** [RS] [VE] the TV crew's own footage, the one sequence in the film (owner's permission, 9 Oct 26), graded, running from here to the end of A3-S4. Readout "over 185 mph" on the first sentence, then the footage full frame. On "kept recording" the voice stops and the clip's own sound plays alone for about six seconds: the black picture, the crash, the camera settling on its side. A line "200 yards" over the settled frame.
