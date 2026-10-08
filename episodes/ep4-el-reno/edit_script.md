@@ -63,7 +63,7 @@ Each act changes what the viewer understood: A1 the city went out to meet the st
 5. About 21:30, A5, at the full 21-pin map: the answer line that returns to the hook's claim, before the close.
 
 ### Open items the later acts must tag (from angle-facts "Still open")
-Richard Henderson's age; the date the rating went back to E F three (the June 4 upgrade statement is confirmed); the pairing of the press names with the table rows (the News 9 report on the family of seven is read and confirmed); the exact broadcast words; Joshua Wurman's institution; the June 1 flood loss. Each gets a verify tag where it is written, or stays out.
+Richard Henderson's age; the date the rating went back to E F three (the June 4 upgrade statement is confirmed); the pairing of the press names with the table rows (the News 9 report on the family of seven is read and confirmed); the News 9 report of June 9 on the last recovery; one spelling for the family's names, which differ between Fox and News 9 (Christopher and Leslie against Cristofer and Lesly, Floridalma against Florinda); the exact broadcast words; Joshua Wurman's institution; the June 1 flood loss. Each gets a verify tag where it is written, or stays out.
 
 ## Writer notes
 - Narration numbers follow the shipped Enderlin copy: spelled out, no hyphen ("twenty one"). H1-S1 is the owner's line verbatim, hyphen included.
