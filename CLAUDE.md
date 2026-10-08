@@ -38,7 +38,7 @@ An owner correction or a measured surprise lands in its single home (`references
 `learnings/` file) the same session.
 
 ## Two lanes, two skills
-- `/storm-episode`: the documentary. Length is set per episode by the story and confirmed with the owner (El Reno: about 25 to 30 min, owner 3 Oct 26). No default band.
+- `/storm-episode`: the documentary. Length is set per episode by the story and confirmed with the owner (El Reno: about 20 to 25 min, owner 9 Oct 26; it was 25 to 30 on 3 Oct 26). No default band.
 - `/mini-storms`: 8 to 12 min seasonal, breaking and outlier videos shipped in 3 h or less. Stitched news, public
   domain and stock clips, red popfigs with a local scrim, news bug, NO chapter cards, two owner gates (angle, then packaging). Slugs `ms-<topic>`.
 - Narration sits above every bed in both lanes: score 0.13, ambience 0.20 or less, checked with ebur128 per 15 s window.
