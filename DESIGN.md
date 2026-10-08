@@ -73,9 +73,12 @@ sparingly/short/narrated-over (claims budgeted, segments must survive being clai
 ### Cold-open hook contract
 The first 25-30s decide the video. Owner rated ep2's first hook 0.6/10 and the rebuilt one
 shipped; these are the standing requirements for every episode's cold open:
-- **NO black start: frame one is MID-ACTION** — the episode's
+- **Frame one is Paul, full frame, speaking the hook line** (documentaries; owner 7 Oct 26: "if the hook or the initial
+  frame itself shows Paul's face It will be really nice"). One clip, 10 s at most, so the face on the thumbnail is the
+  face in the first second. Clip rules and the per-video budget: `references/mg-quickref.md` "Paul on screen".
+- **NO black start: the shot after Paul is MID-ACTION** — the episode's
   defining shot already moving. High curiosity, high impact from the first frame.
-- **The highest-intent real clips open the video, never only the end.** The footage the title promises (the slide, the
+- **The highest-intent real clips follow him at once, never only the end.** The footage the title promises (the slide, the
   collapse, the impact) is in the hook. A later act may return to it, but the best shot is never saved for the end (ep-nepal: the hook missed the slide).
 - **The NARRATOR's first line starts at 0:00. No broadcast, radio or archive audio anywhere in
   the hook** (owner 22 Sep 26, replaces the old "anchor line by 2.5 s" rule): archive audio is
