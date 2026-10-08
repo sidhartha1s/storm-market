@@ -64,7 +64,9 @@ The research car (W14):
 - **Two sources disagree on the clock.** SA quotes Robinson's own account: "At this point at 6:19:25 p.m., the white Chevy Cobalt ... was immediately behind me." W14, timed against radar, has the same sighting at about 6:22. Speak "a little after 6:20" or use W14 and name it.
 - SA: "It does not appear that traffic was a factor in the deaths of the TWISTEX storm chasers."
 
-**Why one crew lived: the sources describe, they do not conclude.** W14 says the TV crew "was impacted by a very rapidly moving interior subvortex", and that the one over the research car sat nearly still for about 20 s. The script may lay those two facts side by side. It may not say "this is why they survived": no source says it.
+**One sub-vortex, not two (added after the intro fact check, `../fact_check.md`).** W14 reads as a single interior sub-vortex at both vehicles: "a large tornado/MVMC with a single (at this time) embedded subvortex" crosses US-81 with the large circulation at about 25 m/s; "after 2320 UTC; the interior subvortex ... is displaced" and loops, "becoming stationary over Reuters road and the vehicle"; Figure 9 has both vehicles "transported by winds in the embedded subvortex"; the conclusions say "it was an interior subvortex that impacted both the Samaras and Weather Channel teams". The paper never says "the same vortex" in one sentence, so the script tags it. Never write two different vortices.
+
+**Why one crew lived: the sources describe, they do not conclude.** W14 says the TV crew "was impacted by a very rapidly moving interior subvortex", and that over the research car it sat nearly still for about 20 s. The script may lay those two facts side by side. It may not say "this is why they survived": no source says it.
 
 ## 5. The twelve in the drains. Two groups; the tie to the table is OUR INFERENCE
 
