@@ -131,7 +131,7 @@ on any hard word in narration, on-screen text or metadata.
 - Window: CTA starts around the halfway mark (`config.yaml channel.cta.window`), right before a reveal. Never after the final payoff.
 - Hinge is scripted: the segment BEFORE the CTA ends on a tease (`cta-hinge` loop, ≤25 words); the segment AFTER
   opens with the payoff in its first sentence (first three words ideally, e.g. "He wrote a six.").
-- Shape: hook > story > CTA > close. Never skipped, shortened, or moved to the outro.
+- Shape: hook > story > CTA > the reveal > story > close. Never skipped, shortened, or moved to the outro.
 
 ## Title/thumbnail match — owner 27 Sep 26; dual-scope rule from `script-scaling.md`
 - The hook and intro must say aloud what the title/thumbnail promised — a checkable fact, not an adjective.
