@@ -1,4 +1,4 @@
-# ep4-el-reno · edit_script.md (v4b: act outline, hook, intro, acts 1 and 2; acts 3 to 5 not written yet)
+# ep4-el-reno · edit_script.md (v4b: act outline, hook, intro, acts 1 to 3; acts 4 and 5 and the close not written yet)
 
 Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 9 Oct 26 (`angle.md`). Facts from
 `research/angle-facts-2026-10-09.md` (wins where it disagrees) and `research/facts.md`. Status: DRAFT, nothing locked;
