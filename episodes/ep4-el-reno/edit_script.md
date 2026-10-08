@@ -251,7 +251,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A3-S1 — narration
 **Picture:** time stamp "6:19 PM · National Weather Service". The road-level map: Highway 81 running north to south, the wide ring arriving from the west. One marker, "The Weather Channel", moving south. Name cards "Mike Bettes", "Austin Anderson · driver", "Brad Reynolds · camera". The crew's own footage is held for A3-S3.
-> The weather service puts the tornado on Highway eighty one at six nineteen PM. A Weather Channel S U V was on that highway, heading south. Mike Bettes was aboard, with Austin Anderson driving and Brad Reynolds on the camera. The Wurman paper says they were trying to get through to the tornado's south side.
+> The weather service puts the tornado on Highway eighty one at six nineteen PM. A Weather Channel S U V was on that highway, heading south. Mike Bettes was aboard, with Austin Anderson driving and Brad Reynolds on the camera. The radar team's paper says they were trying to get through to the tornado's south side.
 
 ### A3-S2 — narration
 **Picture:** the replot at road level: the one small circle crosses Highway 81 with the ring, readout "about 56 mph · Wurman et al. 2014", an arrow east-northeast. A side view lifts off the map: ground line, a mark at "about 400 feet", an arrow pointing east on the circle's south side.
