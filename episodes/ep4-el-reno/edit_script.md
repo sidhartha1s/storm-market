@@ -52,7 +52,7 @@ Each act changes what the viewer understood: A1 the city went out to meet the st
 
 ### Book-ad hinge
 - **Segment before:** the last segment of A3, Paul on camera, 25 words at most. It is the line that the home was the safe place, and it teases the twelve who left theirs.
-- **Book ad:** mounts at about 13:10, 57.2 % of a 23:00 runtime, inside `config.yaml channel.cta.window` [0.40, 0.60]. 20 s is budgeted until the file's length is read.
+- **Book ad:** planned at about 13:10, 57.2 % of a 23:00 runtime. By the word count of the full draft after the 9 Oct 26 fix pass it lands at about 11:53, 57.3 % of an estimated 20:45, inside `config.yaml channel.cta.window` [0.40, 0.60]. 20 s is budgeted until the file's length is read.
 - **Segment after:** A4-S1. Its first sentence is the payoff, first three words if possible: the family of seven and how far they went from their own door ("only a few feet away", News 9, confirmed).
 
 ### Paul on camera (besides the hook), position and job only
