@@ -450,7 +450,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *(blackout 0.7 s)*
 
 
-## Z1 · Close (about 21:14)
+## Z1 · Close (about 20:57)
 
 ### Z1-S1 — narration
 **Picture:** the assessment's table one last time, twenty-one lines, the name column absent. Then text-only names over the dimmed map, each landing on the voice, News 9's spellings: "Richard Henderson", "Tim Samaras", "Paul Samaras", "Carl Young", "Samuel Cifuentes", "Florinda Santos", "Alex", "Yolanda Santos", "Cristofer", "Brandon", "Lesly". g-outro begins.
