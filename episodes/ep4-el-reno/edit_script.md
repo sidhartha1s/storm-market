@@ -133,7 +133,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *(blackout 0.7 s)*
 
 
-## A1 · A city in its cars (about 2:15, runs about 3:14 with Paul's slot)
+## A1 · A city in its cars (about 2:15, runs about 2:58 with Paul's slot)
 
 ### A1-S1 — narration
 **Picture:** [RS] [VE] place stamp "Oklahoma City · May 31, 2013 · evening". A real clip of a neighbourhood street under a dark sky, sirens audible in the clip's own sound, low. Over it the assessment's sentence as attributed text, one line at a time: "...telling listeners they would be unable to survive if not underground · NWS Service Assessment". Then the words "sheltering in place" from the same page. The bed returns under the last sentence.
