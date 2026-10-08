@@ -425,7 +425,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 **Picture:** the 21-pin map splits into two layers: roads lit near El Reno with the small circle crossing one; then the city's low ground shaded blue, water running into the two drains. Every pin falls inside one layer or the other.
 > By the count, the storm had two real dangers that night. One was on the open roads near El Reno, where a sub-vortex could cross faster than any car. The other was the water, which ran to the lowest ground in the city. Every one of the twenty one was on a road or in the water.
 
-### A5-S9 — narration
+### A5-S10 — narration
 **Picture:** the map holds. A small line of text, "count is for the night of May 31", then one grey marker far to the east, "Okfuskee County · June 1", outside the frame of pins.
 > None of this means a house is a match for a sub-vortex. No house was put to that test that night. And the count stops at that night. The next morning the flooding took one more life, in Okfuskee County.
 
