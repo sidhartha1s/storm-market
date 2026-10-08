@@ -87,7 +87,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### T1-S1 — narration
 **Picture:** hard cut on the first word to mid-action footage, never black: a real clip of the evening sky and loaded highways around Oklahoma City on May 31 (news or public domain; no chaser footage without a licence). A counter "19 tornadoes in Oklahoma · National Weather Service" lands on "nineteen". On "Twelve of the twenty one": twenty-one small markers appear in a row and twelve of them light. One bed swell under the last clause, no siren.
-> On May thirty first, twenty thirteen, the weather service counted nineteen tornadoes across Oklahoma. Twelve of the twenty one had taken shelter from those tornadoes, and no tornado took their lives.
+> On May thirty first, twenty thirteen, the weather service counted nineteen tornadoes across Oklahoma. Twelve of those twenty one people had taken shelter from the tornadoes, and no tornado took their lives.
 
 *(no void: cut straight into the intro. No black hold, title card or disclaimer before 1:00.)*
 
@@ -108,7 +108,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### I1-S4 — narration
 **Picture:** [RS] [VE] the full map, all twenty-one pins lit for the first time. Every pin sits on a road or a drain; the building icons on the map stay unlit. Text line "0 of 21 inside a building · NWS Service Assessment, Appendix C". Hold the map through the second sentence. Pin positions wait on sourcing [verify: a location for each of the 21 Appendix C rows, needed to place the pins; the table gives a circumstance, not a place].
-> That table does not list a single house, store, school or shelter. By that count, the safest place around Oklahoma City that night was home, and many people had just left theirs.
+> That table does not list a single house, store, school or storm shelter. By that count, the safest place around Oklahoma City that night was home, and many people had just left theirs.
 
 ### I1-S5 — narration
 **Picture:** a real news aerial of a jammed highway that evening. Popfig "Moore · May 20, 2013 · EF5", then "11 days earlier". Study card "6 metro areas, 2011 to 2018 · Weather, Climate, and Society, 2022" over the traffic.
