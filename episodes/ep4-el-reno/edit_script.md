@@ -8,7 +8,7 @@ hook and intro wait on the fact-check fan-out, the grader and the owner.
 - **Title (owner, verbatim):** El Reno 2013: The Safest Place Was Home
 - **Target runtime:** 20 to 25 min; planned at 23:00 until `word_budget.py` sizes it from a probe at the shipping tempo.
 - **Claim (locked, copied):** On the night of May 31, 2013, 21 people lost their lives around Oklahoma City, and not one of them was inside a building.
-- **Dominant question:** the viewer keeps watching to find out why, on a night of nineteen tornadoes around Oklahoma City, every one of the twenty-one lives was lost outside a building and none inside one.
+- **Dominant question:** the viewer keeps watching to find out why, on a day of nineteen tornadoes across Oklahoma, every one of the twenty-one lives was lost outside a building and none inside one.
 - **Architecture:** Detective, with one Explanation-with-a-twist act (A2).
 - **Scope held in every act:** "that night" or "on May 31". The weather office counts one more flood loss on the morning of June 1 in Okfuskee County; it is outside the Claim and outside the 21 pins.
 
@@ -63,7 +63,7 @@ Each act changes what the viewer understood: A1 the city went out to meet the st
 5. About 21:30, A5, at the full 21-pin map: the answer line that returns to the hook's claim, before the close.
 
 ### Open items the later acts must tag (from angle-facts "Still open")
-Richard Henderson's age; the two rating statements and their dates; the News 9 pages on the family of seven and the pairing of the press names with the table rows; the exact broadcast words; Joshua Wurman's institution; the June 1 flood loss. Each gets a verify tag where it is written, or stays out.
+Richard Henderson's age; the date the rating went back to E F three (the June 4 upgrade statement is confirmed); the pairing of the press names with the table rows (the News 9 report on the family of seven is read and confirmed); the exact broadcast words; Joshua Wurman's institution; the June 1 flood loss. Each gets a verify tag where it is written, or stays out.
 
 ## Writer notes
 - Narration numbers follow the shipped Enderlin copy: spelled out, no hyphen ("twenty one"). H1-S1 is the owner's line verbatim, hyphen included.
@@ -86,7 +86,7 @@ Richard Henderson's age; the two rating statements and their dates; the News 9 p
 
 ### T1-S1 — narration
 **Picture:** hard cut on the first word to mid-action footage, never black: a real clip of the evening sky and loaded highways around Oklahoma City on May 31 (news or public domain; no chaser footage without a licence). A counter "19 tornadoes · NWS Norman" lands on "nineteen". On "Twelve of the twenty one": twenty-one small markers appear in a row and twelve of them light. One bed swell under the last clause, no siren.
-> That night was May thirty first, twenty thirteen, around Oklahoma City. The weather service counted nineteen tornadoes in the area that day. Twelve of the twenty one had taken shelter from those tornadoes, and the tornadoes are not what took them.
+> That night was May thirty first, twenty thirteen, around Oklahoma City. The weather service counted nineteen tornadoes across Oklahoma that day. Twelve of the twenty one had taken shelter from those tornadoes, and the tornadoes are not what took them.
 
 *(no void: cut straight into the intro. No black hold, title card or disclaimer before 1:00.)*
 
