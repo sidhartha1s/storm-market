@@ -379,18 +379,27 @@ with tempfile.TemporaryDirectory() as d:
           code == 1 and ("dip-in" in out or "dip-out" in out), out)
 
 
-def paul_clip(start, dur):
+def paul_clip(start, dur, volume="1"):
     return (f'<video id="ins-paul-1" src="media/paul.mp4" data-start="{start}" data-duration="{dur}" '
-            'data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="x"></video>')
+            f'data-track-index="1" data-volume="{volume}" data-has-audio="true" data-srt-label="x"></video>')
 
 
+# These timelines have no picture outside Paul's clip, so lint always ends on its FAIL verdict line:
+# "[lint_timeline] FAIL" in out proves it ran to the end instead of crashing before the seam check.
 with tempfile.TemporaryDirectory() as d:
     # the same 5s hole as above, filled by Paul speaking on camera (2.2-6.8): his line is voice, not a gap
     ep = make_lint_ep(Path(d), extra_video=paul_clip(2.2, 4.6), nx2_dur=2.0, nx2_start=7.0)
     (ep / "media" / "paul.mp4").write_bytes(b"0")
     code, out = run("lint_timeline.py", ep)
     check("lint_timeline: Paul's on-camera line between two narration segments is not a narration gap",
-          "narration gap" not in out, out)
+          "[lint_timeline] FAIL" in out and "narration gap" not in out, out)
+
+with tempfile.TemporaryDirectory() as d:
+    # the same clip with its sound off is not voice: the hole is still a hole
+    ep = make_lint_ep(Path(d), extra_video=paul_clip(2.2, 4.6, volume="0"), nx2_dur=2.0, nx2_start=7.0)
+    (ep / "media" / "paul.mp4").write_bytes(b"0")
+    code, out = run("lint_timeline.py", ep)
+    check("lint_timeline: a silent ins-paul- clip does not hide a narration gap", "narration gap" in out, out)
 
 with tempfile.TemporaryDirectory() as d:
     # Paul's line (2.2-3.8) runs into the CTA at 4.0: the dip-in is measured from his last word, not the narrator's
@@ -398,7 +407,7 @@ with tempfile.TemporaryDirectory() as d:
     (ep / "media" / "paul.mp4").write_bytes(b"0")
     code, out = run("lint_timeline.py", ep)
     check("lint_timeline: Paul's on-camera line right before the CTA keeps the dip-in inside config",
-          "dip-in" not in out and "narration gap" not in out, out)
+          "[lint_timeline] FAIL" in out and "dip-in" not in out and "narration gap" not in out, out)
 
 # ===================================================================================
 # 7. blank_scan.mjs — exit code + ancestor-opacity ink measurement
