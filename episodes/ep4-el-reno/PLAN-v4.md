@@ -12,8 +12,13 @@ The three candidates below are the first list (2 Oct 26). A and B are now the le
   - It matches the payoff-first hook rule and the 2011 Super Outbreak data (a paradox hook held 71% at 0:33).
 - **C. Chasers:** the chaser convergence and the TWISTEX deaths. HIGH RISK Chris already owns this (4.39M). Chaser footage is unlicensed, so this angle can't be illustrated well.
 
-## Title candidates: VOID, written for angle B before the lock
-New options on the locked angle wait for the owner's pick (devq page `elreno-angle.html`, 9 Oct 26).
+## Picked by the owner on the locked angle (devq `elreno-angle.html`, saved 9 Oct 26)
+- Hook sentence, Paul on camera, frame one: "Twenty-one people lost their lives that night, and not one of them was inside a building."
+- Title: El Reno 2013: The Safest Place Was Home (39 characters).
+- Thumbnail: open. His note: "1 and 3 is good, more vvariety? not a gate, other work can start now. will decide this," (1 = 21 LOST / 0 INDOORS over the pin map, 3 = THE SAFE PLACE / WAS HOME over a house under that sky).
+- Script: "go ahead will share 2nd omni later." Paul's 6 clips wait for final lines and the second account.
+
+## Old title candidates: VOID, written for angle B before the lock
 1. El Reno 2013: 302 MPH Winds, Rated Only EF3 (43). NOT SUPPORTED as written: `research/facts.md` confirms 130 m/s (about 291 mph) from the survey paper and marks 296 mph unverified; 302 appears in no source pulled. Use a figure the fact sheet confirms
 2. El Reno 2013: The Widest Tornado Ever Recorded (46) [verify: 2.6 mi width record]
 3. El Reno 2013: The Tornado Too Big to See (40)
@@ -38,7 +43,7 @@ Done 9 Oct 26 for everything the angle rests on: `research/angle-facts-2026-10-0
 - Acts on the locked angle (a sketch until the script exists): Act 1, the count and the Moore shadow, why a city already hit eleven days earlier got into its cars. Act 2, the storm and the tornado inside the tornado. Act 3, two vehicles minutes apart. Act 4, the twelve in the drains and the warning gap. Act 5, the map with 21 pins and the answer. Three open questions are paid in order: why one crew lived, who the twelve were, why nobody lost their life indoors.
 - The book ad sits between a tease and its payoff around the halfway mark (`channel.cta.window` 0.40 to 0.60, DESIGN.md "CTA contract"). Owner-approved hinge (9 Oct 26): the line that the home was the safe place. Paul speaks the tease, the ad runs, the payoff opens the next act.
 - Death words go the soft way from the first draft (`references/flag-words.md`, owner 9 Oct 26). Children may be included (owner 9 Oct 26).
-- Target length about 25-30 min, or as the story fits (owner 3 Oct 26). The word budget comes from probe TTS at the shipping tempo.
+- Target length about 20 to 25 min (owner 9 Oct 26: "this video should be around 20 to 25 minutes long plan accordingly"; it was 25 to 30 on 3 Oct 26). The word budget comes from probe TTS at the shipping tempo.
 
 ## Sound and pacing (owner 2 Oct 26; El Reno is the first episode to use these)
 The editing agent decides where each of these goes by reasoning about the story beat. There are no code gates and no per-video quotas.
