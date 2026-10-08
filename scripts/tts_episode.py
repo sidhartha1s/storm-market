@@ -154,7 +154,7 @@ def synth_native(pairs, ext):
     # clones once per run instead of once per segment. tts_clone.py intermittently dies at CUDA
     # init/clone with a native crash (no traceback, non-zero exit; ep6 measured ~1 in 8 calls,
     # same input passes on rerun). One loud retry; tts_clone caches finished sentences by text
-    # hash in <out dir>/_segments, so the retry only re-pays the load. A second consecutive
+    # and voice hash in <out dir>/_segments, so the retry only re-pays the load. A second consecutive
     # failure is real. Exit 2 is argparse (e.g. a tts_clone without --batch): deterministic, no retry.
     gaps = voice_tool.missing(ext, allow_download=True)
     if gaps:
