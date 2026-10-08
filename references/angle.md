@@ -13,7 +13,9 @@ This file is the one home of that rule. `CLAUDE.md`, the episode skills, `refere
 - The **angle** is one true claim that changes what a viewer who already knows the event believes about it. It has the shape "it wasn't X, it was Y".
 - The fact every video on the subject already leads with is not an angle. It is the subject's default line, and it is ruled out as the lead.
 
-## Order of work (documentaries)
+## Order of work (documentaries and minis)
+Owner 9 Oct 26, asked whether minis follow the rule: "yes minis too." A mini's lock is `episodes/ms-<slug>/angle.md`, and its skill has the gate as step 0.
+
 Angle first. Then structure, then title and thumbnail, then the hook that pays them (`references/script-quickref.md` "The hook"), then the script. His sentence lists hook, title and thumbnail as what follows the lock; it does not order them. No title, thumbnail, hook or script line is written before the owner locks the angle. Work done earlier is thrown away, not adapted.
 
 ## How the candidates are found

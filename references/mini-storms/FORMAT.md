@@ -3,7 +3,7 @@
 Source: `teardowns/README.md` (10 videos, contact sheets + scene-cut detection + comments,
 2026-09-08). Numbers below are measured, not guessed; re-measure before changing them.
 Owner brief (2026-09-08): 8–12 min, stitched clips + stills with motion, narration, red emphasis
-text, BREAKING-style packaging, ≤3 h to ship, one owner gate, clip pool reused across angles.
+text, BREAKING-style packaging, ≤3 h to ship, two owner gates (angle, then packaging), clip pool reused across angles.
 
 ## The two formats that win (pick per topic)
 
