@@ -275,3 +275,197 @@ turn, and A2-S10 says it for a driver.
 11. **Small ones.** A1-S4: "instead of sheltering", not "in place of sheltering". A1-S10: cut "And the roads had
     become hard to leave." A2-S4: drop "very". Tag `[RS]` on A1-S6 and A1-S8. Call for one real clip in A2 after
     A2-S4. Thin "the assessment says" in A1-S3 and A1-S4 to one naming each.
+
+---
+
+## Update to Acts 1 and 2 after the fact corrections
+
+Re-read from disk after the corrections (reported as commit c2b941dc; git not run by the grader). Counts now: Act 1
+552 words, longest sentence 22; Act 2 570 words, longest sentence 26. No score, curve or verdict above changes.
+
+- A1-S2, "Not every house had a cellar to go to.": the unverified "Most houses" line is gone, so Act 1 overclaim 2
+  and the first half of fix 10 are closed. "that warning said home would not hold" is unchanged.
+- A2-S1, "Within minutes it was two point six miles": closed.
+- A2-S2, "more than forty five football fields": closed. A2-S6 still says "forty five fields wide", which agrees.
+- A2-S8, "the widest tornado on record in the United States": closed. "near three hundred" is still the third wording
+  of one number (fix 7).
+- A2-S9, "moving south into its northwest side": closed as a fact. The segment is still the second stakes drop.
+- A2-S11: the times are right now. Two things remain. The first sentence is 26 words, over the 24-word TTS limit:
+  "As the tornado crossed Highway eighty one, by the radar team's account, one sub-vortex was turning inside the wide
+  circulation, and it struck both vehicles". And "What did it do in those minutes?" still points at a cause (fix 4).
+- New, from reading Act 3 beside Act 2: A2-S3 "the wide circulation was the slow part of this storm" is now
+  contradicted inside the film. A3-S2 says the sub-vortex "was moving east-northeast with the wide circulation, at
+  about fifty six miles an hour" at the moment it struck the S U V. Fix 8 moves up in weight.
+
+---
+
+## Act 3
+
+Text graded: A3-S1 to A3-S15 as read from disk on this pass. 643 words, 48 sentences, median 13 words, longest 23.
+At the same pace assumptions the act runs from about 8:49 to about 12:42. A3-S12 and A3-S15 are Paul slots with no
+wording; they carry the act's two most important lines (the payoff of L2 and the book-ad tease) and are not graded.
+
+### Verdict
+Lowest axis 3 (exit hook). No axis under 3; the stakes curve never drops more than one point and ends higher than it
+starts. **Act 3 meets the bar as written.** It is the strongest of the three acts.
+
+### Six axes (1 to 5)
+| Axis | Score (1 to 5) | Why |
+|---|---|---|
+| New info | 5 | Fifty six miles an hour at the highway, the crew's own words, the headlights at 6:22, the empty road and the assessment's finding on traffic, twenty seconds nearly still, six hundred and fifty yards. Most of this is not in the videos this audience has seen. |
+| Curiosity | 4 | L2 carries the whole act and is paid inside it. The S U V half runs on "how", since the intro gave the outcome. |
+| Stakes | 5 | Three peaks: the six seconds of the crew's own sound, the counter running in silence, the three names. |
+| Visual change | 5 | The film's one footage sequence, a counter with the sound out, black name cards, a split frame at one scale. No photograph of the car. |
+| Payoff | 4 (low side) | Honest and substantial in A3-S8 to A3-S11. The last written word on it, A3-S13, is spent on what the paper does not say. |
+| Exit hook | 3 | A3-S14's turn ("had done the opposite") is good; its first sentence is a muddled recount and the tease itself is unwritten. |
+
+### Stakes curve
+| Segment | Start (min:s, estimated) | Stakes (1 to 5) | Note |
+|---|---|---|---|
+| A3-S1 | 8:49 | 3 | Crew named, heading south. |
+| A3-S2 | 9:07 | 3 | Directions and a height. |
+| A3-S3 | 9:20 | 5 | The footage and its own sound. |
+| A3-S4 | 9:39 | 4 | Their words. |
+| A3-S5 | 9:49 | 3 | Injuries; all three out. |
+| A3-S6 | 10:02 | 4 | Headlights last seen. |
+| A3-S7 | 10:23 | 3 | The empty road. |
+| A3-S8 | 10:41 | 5 | It reaches the road and nearly stops. |
+| A3-S9 | 11:01 | 5 | Twenty seconds, six hundred and fifty yards. |
+| A3-S10 | 11:22 | 5 | The three names. |
+| A3-S11 | 11:34 | 4 | No clear direction to safety. |
+| A3-S12 | 11:44 | not graded | Paul, wording not written. |
+| A3-S13 | 11:54 | 4 | Side by side. |
+| A3-S14 | 12:17 | 4 | The map turns to the twelve. |
+| A3-S15 | 12:32 | not graded | Paul, wording not written. |
+Starts at 3, ends at 4. No drop larger than one point.
+
+### Loop gaps against the registry
+- L2 closes in A3 as registered (A3-S11 to A3-S13, with Paul's line between). No gap inside the act.
+- Between L2's close and L5's opening (A3-S15) sits A3-S14, about 15 s, with only L1 open. Small, and A3-S14 keeps
+  L1 warm ("every one of the eight was in a vehicle").
+- L5 (who the twelve were) is already partly spent by I1-S3; A3-S14 adds nothing new about them, so the tease in
+  A3-S15 has to.
+- The last tagged `[RS]` is A3-S8; 121 s run from there to the end of the act. A3-S10 is a spike and carries only
+  `[HUMAN]`.
+- Housekeeping: section B's book-ad hinge still says the ad mounts "at about 13:10, 57.2 %"; the A3 heading says
+  about 12:37, 54.9 %.
+
+### Does it pay "why one crew survived" honestly, without feeling like a dodge?
+Honestly: yes. A3-S8 to A3-S11 lay out one vortex, fast at the highway and nearly still over Reuter Road, with both
+distances and the paper's own caution, and no sentence claims a cause.
+Without a dodge: not quite, and the fault is in A3-S13, not in the facts. Three of its six sentences are about the
+paper instead of the event ("The Wurman paper does not say that is why one crew survived", "It says", "It says"), and
+it ends "The paper goes no further than that", which is a summary tag and leaves the viewer on a refusal. "paper" is
+said 8 times in this act. A viewer who has waited ten minutes hears the narrator step back. The facts are strong
+enough to stand as statements with one line of limit at the end.
+
+### Is the passage on the three researchers respectful and free of purposeless detail?
+The pictures are right: text-only cards, no photographs, a second of silence, no picture of the car. Two things in
+the words:
+- A3-S10: "Neither of them was found in the car." It is where two people were found. Nothing later in the act uses it.
+  It is the one detail that serves no purpose, and it invites the viewer to work out what it means.
+- A3-S10: "He was found inside the car, with his seatbelt still fastened." This one has a job only because A3-S5 says
+  "All three were wearing seatbelts, and all three got out", which sounds like a cause. Tim Samaras's seatbelt answers
+  it. If it stays, it should be said for that reason, not as a detail of how he was found.
+- Missing: the act gives their ages and where they were found, and nothing of who they were. I1-S7 gives Tim Samaras
+  one word ("researcher"). One line on their work would do more for respect than either detail above.
+
+### Does A3-S14 hand off to the book-ad tease cleanly?
+The last three sentences do: the crews drove toward it, the twelve did the opposite, they went to hide. The first
+sentence does not: "With the Cobalt's crew, eight of the twenty one are accounted for" recounts a tally the viewer was
+given in full at A1-S8, in report language, and the Cobalt's crew are three of the eight, not the last of them.
+
+### Register violations
+1. Whole act: "paper" 8 times, "about" 9 times. A3-S13 has "The Wurman paper does not say", "It says", "It says",
+   "The paper goes no further".
+2. A3-S2: "It was moving east-northeast with the wide circulation, at about fifty six miles an hour. On its south side,
+   about four hundred feet up, the air was moving east." Three directions and a height in two sentences.
+3. A3-S3: "The picture is mostly black, with the sound of the crash, until the camera comes to rest on its side." The
+   narrator describes the clip the viewer is watching, in the present tense.
+4. A3-S5: "All three" three times in four sentences.
+5. A3-S3 and A3-S9: "more than a hundred and eighty five" and "more than a hundred and eighty" for the two strikes.
+   Both sourced, but the ear hears one number twice; and the form does not match Act 2's "two hundred ninety five".
+6. A3-S6: "its headlights are last seen behind him a little after six twenty two PM". Present tense in a past-tense
+   account.
+7. A3-S8 and A3-S9: six number-words each, back to back (five hundred and fifty yards, four and five minutes, twenty
+   seconds, a hundred and eighty, twenty seconds, six hundred and fifty yards).
+8. A3-S14: "eight of the twenty one are accounted for". Report language; 7 number-words in 47 words.
+
+### Fluff sentences
+- A3-S3: "The picture is mostly black, with the sound of the crash, until the camera comes to rest on its side."
+- A3-S5: "All three survived." Said in I1-S8 and again two sentences earlier ("all three got out").
+- A3-S13: "The paper goes no further than that."
+- A3-S14: "With the Cobalt's crew, eight of the twenty one are accounted for, and every one of the eight was in a
+  vehicle." Only its second half does work.
+
+### Overclaims
+1. A3-S13: "It says the speed at the highway likely added to the injuries in the S U V." The research file quotes two
+   "likely" lines from the paper: "likely that no clear direction to safety was apparent" and the car "not especially
+   heavy or armored, likely adding to its vulnerability". Neither is about the S U V. Its line on the S U V in the
+   research file is "transported the vehicle to the east side of US-81, injuring the occupants", with no "likely" and
+   no link to speed. No row in `fact_check.md` covers A3-S13. As written this attributes a judgment to the paper that
+   is not on file. It needs a `[verify]` tag or it goes.
+2. A3-S14: "Both crews had driven toward the tornado on purpose." A2-S2 says the radar team wrote that "they may not
+   have known they were inside it". They went to chase it on purpose; the film has said they may not have meant to be
+   in it.
+3. A3-S5: "All three were wearing seatbelts, and all three got out." Both halves are sourced; the "and" makes one the
+   cause of the other, which no source on file says.
+4. A3-S8: "the sub-vortex had left the highway and looped back". Rests on the accepted, tagged one-vortex reading. The
+   tag is in the narration here, as in A2-S11.
+5. Checked and sound against the research file: the highway time, fifty six miles an hour, more than a hundred and
+   eighty five at about four hundred feet, two hundred yards, Anderson's injuries, Robinson's speed and the headlight
+   time, the traffic finding, five hundred and fifty yards, twenty seconds, more than a hundred and eighty, six
+   hundred and fifty yards, thirty seconds, "more than three times that far".
+
+### Ranked fixes, Act 3
+1. **A3-S13: state the two strikes, keep the limit to one line, and tag or cut the S U V "likely".**
+   Now: "The S U V was carried about two hundred yards. The Cobalt was carried more than three times that far. The
+   Wurman paper does not say that is why one crew survived. It says the speed at the highway likely added to the
+   injuries in the S U V. It says the Cobalt's light build likely made it more vulnerable. The paper goes no further
+   than that."
+   Suggested: "The S U V met that vortex as it crossed the highway, and was carried about two hundred yards. The
+   Cobalt was under it for about twenty seconds, and was carried more than three times that far. The radar team adds
+   one thing, that the Cobalt's light build likely made it more vulnerable. It does not name a single cause."
+
+2. **A3-S10: cut the detail with no job, add who they were.**
+   Now: "Tim Samaras was fifty five. He was found inside the car, with his seatbelt still fastened. His son Paul was
+   twenty four, and Carl Young was forty five. Neither of them was found in the car."
+   Suggested: "Tim Samaras was fifty five, and he was still belted into his seat. His son Paul was twenty four, and
+   Carl Young was forty five. [one sentence on their work, from a source on file, verify]"
+
+3. **A3-S14: drop the recount, fix "on purpose".**
+   Now: "With the Cobalt's crew, eight of the twenty one are accounted for, and every one of the eight was in a
+   vehicle. Both crews had driven toward the tornado on purpose."
+   Suggested: "All eight people lost in the El Reno tornado were in vehicles, and both of these crews had gone out to
+   chase it. Twelve of the other thirteen had done the opposite. They had gone to hide from it."
+
+4. **A3-S3: let the clip speak.**
+   Now: "The crew's own camera kept recording. The picture is mostly black, with the sound of the crash, until the
+   camera comes to rest on its side."
+   Suggested: "The crew's own camera kept recording." Then the six seconds of clip sound, and A3-S4 picks up.
+
+5. **A3-S5: break the seatbelt cause, drop the repeat.**
+   Now: "All three were wearing seatbelts, and all three got out. ... All three survived."
+   Suggested: "All three got out. They had been wearing seatbelts. Bettes and Reynolds came away with minor injuries.
+   Anderson had a cracked breastbone, five broken ribs and a broken bone in his neck, and he needed surgery."
+
+6. **A3-S2: one sentence, one direction.**
+   Now: three sentences. Suggested: "They met the sub-vortex as it crossed the road at about fifty six miles an hour,
+   and the air on its south side was blowing east."
+
+7. **Small ones.** Thin "the Wurman paper" to one naming per segment. A3-S6: "were last seen". Tag `[RS]` on A3-S10.
+   Update the book-ad time in section B's hinge note.
+
+---
+
+## Top five fixes across Acts 1 to 3
+1. A1-S1 to A1-S3: open on "could not survive unless they were underground"; drop the intro recap and the two
+   signposts (Acts 1 and 2 fix 1).
+2. A2-S4 and A2-S9: fold and trim, to remove Act 2's two stakes drops (fix 2).
+3. A1-S9: lead with "no one lost inside them", scope or cut "the roads were full", to remove Act 1's stakes drop
+   (fix 3).
+4. A3-S13: say the two strikes as statements, one line of limit, and tag or cut the S U V "likely" (Act 3 fix 1).
+5. A3-S10: cut "Neither of them was found in the car" and add who the three were (Act 3 fix 2).
+
+Next in line: A2-S3 "the slow part of this storm" against A3-S2's fifty six miles an hour, and A2-S11's 26-word
+sentence and its question.
