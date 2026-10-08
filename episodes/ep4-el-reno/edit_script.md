@@ -402,8 +402,8 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 > Later the office took the rating back down to E F three. The fastest air was inside the small sub-vortices, it wrote, and none of them crossed a single structure in rural Canadian County.
 
 ### A5-S3 — narration
-**Picture:** public domain footage of a survey team at work. A short list graphic: house, barn, tree, power pole, each with a tick box. Over the sub-vortex tracks the boxes stay empty. Source line "Marshall et al., damage survey".
-> A tornado's rating comes from what it breaks. Surveyors walk the path and grade the damage to buildings, trees and other things on a set list. Where the sub-vortices went, there was little on that list to break. The survey team wrote that the highest speeds were in places with none of those markers at all.
+**Picture:** public domain footage of a survey team at work. A short list graphic: house, barn, tree, power pole, each with a tick box and the label "marker". Over the sub-vortex tracks the structure boxes stay empty. The survey paper's sentence as attributed text, exact words: "Despite the intense wind velocities, surveyors could not find damage that would support a rating higher than EF3. · Marshall et al., damage survey".
+> A tornado's rating comes from what it breaks. Surveyors walk the path and grade the damage to buildings, trees and other things on a set list. Call each one a marker. Where the sub-vortices went, the office found no structure for them to break. Despite those speeds, the survey team wrote, surveyors could not find damage that would support a rating higher than E F three.
 
 *([loop L7 closes]: no pin on a building, because the strongest part of the storm crossed none.)*
 
