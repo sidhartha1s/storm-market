@@ -88,7 +88,7 @@ The research car (W14):
 - **The exact words were not checked against the broadcast recording**, and an NBC transcript of the feed reads slightly differently. Narrate with the assessment's sentence. A quoted line on screen waits for the recording.
 
 ## Still open after this pass
-- The two NWS rating statements (4 Jun and 30 Aug 2013).
+- The date and source of the return to EF3 (the 4 Jun 2013 upgrade statement is now in section 2).
 - The News 9 pages on the family of seven (home location, the table, the recovery dates).
 - Richard Henderson's age: Appendix C has a 35-year-old "Vehicle, storm chasing" row, no name.
 - The circumstance of the June 1 Okfuskee County flood death.
