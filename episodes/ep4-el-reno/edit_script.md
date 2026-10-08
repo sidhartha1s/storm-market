@@ -399,7 +399,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A5-S2 — narration
 **Picture:** [RS] [VE] the "EF5" stamp lifts and "EF3" settles in its place, no date shown. Then the replot over a land-use map: the small circles' tracks cross fields and roads and touch no building dot. The weather office's sentence as attributed text: "none of these intense sub-vortices impacted any structures in rural Canadian County · NWS Norman".
-> Later the office took the rating back down to E F three, and the reason it gave matters here. The fastest air was inside the small sub-vortices. And the office wrote that none of those sub-vortices crossed a single structure in rural Canadian County.
+> Later the office took the rating back down to E F three. The fastest air was inside the small sub-vortices, it wrote, and none of them crossed a single structure in rural Canadian County.
 
 ### A5-S3 — narration
 **Picture:** public domain footage of a survey team at work. A short list graphic: house, barn, tree, power pole, each with a tick box. Over the sub-vortex tracks the boxes stay empty. Source line "Marshall et al., damage survey".
