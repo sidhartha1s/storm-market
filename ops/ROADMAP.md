@@ -15,7 +15,7 @@ Our own Studio export: US topics get a 2–11k impression test, CTR decides; non
 packaging carried the proper noun. Texas/California El Niño minis: ~100 % US 65+ audience.
 
 ## Decisions in force
-- Two lanes. **News lane** (2/day): rolling present-tense update on a live event, 10–14 min, atempo 1.10, no chapter
+- Two lanes. **News lane** (2/day): rolling present-tense update on a live event, 10–14 min, lane tempo from `config.yaml`, no chapter
   cards, popfigs, Paul in the corner circle, one named agency/scientist quote on screen, close on the unresolved
   tracking line then one soft comment + subscribe line. **Documentary lane** (weekends): the banked tornado docs,
   repackaged per `references/packaging-rules.md` before upload.
@@ -41,7 +41,7 @@ Workers never delete; the director diffs everything before commit. Renders are n
 
 ## Daily clock (IST)
 06:00 radar scan → 06:30 director picks two slots, locks packaging → 07:00 scripts (A, B in parallel) + sourcing
-(pools) → 09:00 TTS → atempo 1.10 → re-transcribe → 09:30 assemble #1 → gates → announce → render → 12:00 assemble #2
+(pools) → 09:00 TTS → lane tempo → re-transcribe → 09:30 assemble #1 → gates → announce → render → 12:00 assemble #2
 → gates → announce → render → publish both in the US-evening window (00:00–04:00 UTC) with the pre-publish checklist.
 
 ## Programme

@@ -18,7 +18,7 @@ Re-synthesis: a segment is only re-run (new _raw + sped wav, words.json deleted 
 retranscribed) when sha1(text + tempo + voice md5) changes from the manifest's stored hash for
 that id. Editing one script line invalidates only that line's stale audio, nothing else.
 
-Per-segment tempo: '(tempo 1.0)' on a segment heading overrides the lane tempo for that segment
+Per-segment tempo: '(tempo X)' on a segment heading overrides the lane tempo for that segment
 only (rule: CLAUDE.md "Voice").
 
 Usage: python3 scripts/tts_episode.py episodes/<slug> [--only A3-S5,...]
@@ -105,7 +105,7 @@ def parse_segments(md: str):
 
 
 def segment_tempos(md: str):
-    """{segment id: tempo} for headings carrying '(tempo X)', e.g. '### A2-S4 — narration (tempo 1.0)'.
+    """{segment id: tempo} for headings carrying '(tempo X)', e.g. '### A2-S4 — narration (tempo 0.85)'.
     A segment heading that mentions tempo in any other form is a hard error, never silently ignored."""
     tempos = {}
     for m in re.finditer(r"^#{1,6} " + SEG_ID + r"(.*)$", md, re.M):
@@ -114,7 +114,7 @@ def segment_tempos(md: str):
         t = re.search(r"\(tempo (\d+(?:\.\d+)?)\)", m.group(2))
         if not t:
             raise SegmentParseError(f"{m.group(1)}: unreadable tempo tag in heading {m.group(0)!r} "
-                                    f"(write it as '(tempo 1.0)')")
+                                    f"(write it as '(tempo 0.85)', the number from CLAUDE.md Voice)")
         tempos[m.group(1).lower()] = float(t.group(1))
     return tempos
 
