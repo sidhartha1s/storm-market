@@ -101,8 +101,10 @@ def main():
     _cta_cfg = ((_cfg.get("channel") or {}).get("cta")) or {}
     dip_in = float(_cta_cfg.get("dip_in", 0.8))
     dip_out = float(_cta_cfg.get("dip_out", 0.8))
+    # Voice is the narrator's segments plus Paul's own on-camera lines (<video id="ins-paul-N">,
+    # mg-quickref "Paul on screen", owner 7 Oct 26): a line he speaks on camera is not a hole in the narration.
     voice = sorted((s, s + d) for s, d in ((float(a), float(b)) for a, b in
-                   re.findall(r'<audio\b[^>]*id="nx-(?!ins)[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)))
+                   re.findall(r'<(?:audio\b[^>]*id="nx-(?!ins)|video\b[^>]*id="ins-paul-)[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)))
     structure = [(float(a), float(a) + float(b)) for a, b in re.findall(
         r'<section\b[^>]*class="[^"]*\b(?:blackout|hold)\b[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)]
     for (s1, e1), (s2, e2) in zip(voice, voice[1:]):
