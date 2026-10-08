@@ -34,7 +34,8 @@ SA Appendix C, the fatality table for May 31, counted row by row by script:
 - OUN: "none of these intense sub-vortices impacted any structures in rural Canadian County. So despite the measured wind speeds, surveyors could not find any damage that would support a rating higher than EF-3".
 - The survey paper in `facts.md` gives "in excess of 130 m/s" (290.8 mph). Speak "about 295" with NWS as the source, or "near 300". "296" and "302" are in no primary source pulled.
 - OUN: maximum width 2.6 miles; path 16 miles; tornado 3 ran 1703 to 1744 CST (6:03 to 6:44 PM CDT) in the table, and the text says it "dissipated at 5:42 PM CST" (6:42 PM CDT). The two differ by two minutes: say "about 6:42".
-- **Rating dates: NOT CONFIRMED from NWS's own statements.** News coverage dates the EF5 upgrade to 4 Jun 2013 and the return to EF3 to 30 Aug 2013; neither NWS statement was found. If a date is spoken it needs the statement.
+- **The upgrade to EF5: CONFIRMED.** NWS Norman Public Information Statement, 12:06 PM CDT Tue 4 Jun 2013 (product PNSOUN, Iowa Environmental Mesonet text archive): "THE TORNADO HAS BEEN UPGRADED TO AN EF5 TORNADO BASED ON VELOCITY DATA FROM THE RESEARCH MOBILE RADAR DATA FROM THE UNIVERSITY OF OKLAHOMA RAXPOL RADAR AND THE DOPPLER ON WHEELS RADARS". The same statement: width 2.6 miles "BELIEVED TO BE THE WIDEST TORNADO ON RECORD IN THE UNITED STATES", path 16.2 miles, start 6:03 PM CDT, end 6:43 PM CDT near Interstate 40 and Banner Road.
+- **The return to EF3: date NOT CONFIRMED.** News coverage gives 30 Aug 2013. No PNSOUN statement exists in the archive between 25 Aug and 10 Sep 2013, so it was announced some other way. The reason is confirmed (OUN, quoted above); the date needs its source before it is spoken.
 
 ## 3. The science arc: the tornado inside the tornado. CONFIRMED (W14)
 
