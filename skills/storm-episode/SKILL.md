@@ -64,7 +64,7 @@ Only after 1–7: plan the episode.
 - Chaser/streamer footage NEVER without license; non-PD pulls 3–4s narrated-over; no
   provenance disguise. Repeats allowed only well-spaced (≥3–4 min, never obvious).
 - The ebook CTA is must-keep (owner 2026-08-30): every episode, in-timeline, inside the `config.yaml channel.cta`
-  window (around the halfway mark, right before a reveal, owner 7 Oct 26); `sweep_episode.py` fails without it. Never skipped, shortened, or moved to the outro.
+  window (placement rule: DESIGN.md "CTA contract"); `sweep_episode.py` fails without it. Never skipped, shortened, or moved to the outro.
 - An owner correction lands in its single home the same session (`references/mg-quickref.md`, a gate, or the right `learnings/` file). Docs sweep in the same PR.
 - Every review cut = draft render; owner previews park the pipeline until chat approval.
 - Render monitoring: poll with `/loop` every 2–3 min, never a detached background watcher and
