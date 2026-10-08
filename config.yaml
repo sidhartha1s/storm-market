@@ -38,7 +38,7 @@ channel:
        ms-elnino-texas, ms-krakatau-sirens, ms-krakatoa-1883]   # ms-*: shipped before the news-lane window_ms (17 Sep 26), CTA at the story break
     window: [0.40, 0.60]          # CTA data-start as a fraction of total runtime (deep epN lane): around the halfway mark, between a tease and its payoff (owner 7 Oct 26). A late spot is a per-episode entry below
     window_ms: [0.85, 0.95]       # news lane ms-* (owner 17 Sep 26): AVD dropped with the 35 % CTA; a spoken bridge line runs straight into the CTA at ~90 %, no dip in
-    window_by_slug:               # per-episode owner placements (one-orange rule: the lane window stays until the owner moves it)
+    window_by_slug:               # per-episode windows: owner placements, plus episodes shipped under an earlier lane window (one-orange rule: the lane window stays until the owner moves it)
       ep-1974-super-outbreak: [0.85, 0.92]   # owner 21 Sep 26 after the draft: "keep around 85-90 % timeline in a fitting manner"
       ep-nepal-floods-2026: [0.84, 0.92]     # owner 29 Sep 26 after draft v3 (CTA at 84.5 %): "CTA placement is fine"
       ep-enderlin-2025: [0.85, 0.95]         # shipped at the late window
