@@ -406,8 +406,12 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *([loop L7 closes]: no pin on a building, because the strongest part of the storm crossed none.)*
 
 ### A5-S4 — narration
-**Picture:** the track map near Interstate 40: a cluster of small squares just south of the road lights up, "manufactured homes · densest damage on the path". The eight El Reno pins stay on the roads; none sits in the cluster.
-> So the worst of the El Reno tornado stayed over open ground and over roads. It did reach houses. The survey found its densest cluster of damaged structures in a group of manufactured homes just south of Interstate forty. And the weather service's table lists no one lost in any of them.
+**Picture:** the sixteen mile track as a strip, the survey's markers as dots: thin along most of it, "under 10 per square mile". A count "112 oil tank batteries" over a public domain photo of tank batteries in a field. Then two bars side by side, "damage" and "radar", the radar bar ten to thirty percent taller. Source line "Marshall et al., damage survey and radar analysis".
+> The survey team counted what the tornado had to hit. On most of its sixteen miles, there were fewer than ten of those markers in a square mile. A hundred and twelve of the ones they logged were oil tank batteries. And where radar and damage could be compared, the radar speeds ran ten to thirty percent higher.
+
+### A5-S5 — narration
+**Picture:** the track map near Interstate 40: a cluster of small squares just south of the road lights up, "manufactured homes · 69 per square mile". The eight El Reno pins stay on the roads; none sits in the cluster.
+> So the worst of the El Reno tornado stayed over open ground and over roads. It did reach houses. The survey found its densest cluster of damaged structures in a group of manufactured homes just south of Interstate forty. There the count jumped to sixty nine markers in a square mile. And the weather service's table lists no one lost in any of them.
 
 ### A5-S6 — narration
 **Picture:** the map slides east to the city. The short "EF0" and "EF1" tracks from A4 return under a `data-callback`. Building icons everywhere, no pin on any.
