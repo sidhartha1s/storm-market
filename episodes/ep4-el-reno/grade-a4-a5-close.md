@@ -171,7 +171,7 @@ that is the right length. Nothing should be added except, if a source exists, th
    cars and drive south [verify]. Gary England, at K W T V, called that advice dangerous."
    Suggested: "The story usually told about that advice has one name in it. Mike Morgan was the chief meteorologist
    at K F O R, and the Oklahoma Gazette reported that he told viewers to drive south [verify]. Gary England, his
-   counterpart at a competing station, called that advice dangerous." Add his own later words if a source has them.
+   counterpart at a competing station [verify his title], called that advice dangerous." Add Morgan's own later words if a source has them.
    Picture: do not set the cards and the message at the same size.
 5. **A4-S1: a whole sentence.**
    Now: "A few feet. That is how far one family of seven went from their own door, by the account their relatives
@@ -200,7 +200,7 @@ that is the right length. Nothing should be added except, if a source exists, th
 | Axis | Score (1 to 5) | Why |
 |---|---|---|
 | New info | 4 | The reason for the rating tied to the claim, fewer than ten markers a square mile, the manufactured homes, Moore's above-ground survivors, Brooks. The rating story itself is what other videos lead with. |
-| Curiosity | 3 | L7 pays at A5-S3, about 45 s into the act. From there to A5-S12, about 124 s, the viewer already holds the answer and no question is open. |
+| Curiosity | 3 | L7 pays at A5-S3, inside the act's first 48 s. From there to A5-S12, about 124 s, the viewer already holds the answer and no question is open. |
 | Stakes | 4 | Climbs to the map and the title line. |
 | Visual change | 4 | The stamp swap, the tracks over a land-use map, the map split in two layers. 157 s between the two tagged `[RS]` beats. |
 | Payoff | 4 | It answers, with three sourced facts and its own caution. The form is a list of things already said. |
