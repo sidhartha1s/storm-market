@@ -439,7 +439,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 *([loop L1 closes]: why nobody lost their life indoors, answered inside what the sources say. No claim that a house would stand up to a sub-vortex.)*
 
-### A5-S12 — Paul on camera, slot 5 (wording not written)
+### A5-S13 — Paul on camera, slot 5 (wording not written)
 **Job:** the answer line at the full 21-pin map. It returns to the hook's claim in his own voice: twenty-one lives, none inside a building, and home as the safe place. It adds no new fact and no cause the sources do not give.
 **Budget:** 26 words at most, one clip of about 10 s, full frame.
 
