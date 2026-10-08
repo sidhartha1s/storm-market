@@ -131,7 +131,7 @@ on any hard word in narration, on-screen text or metadata.
   direction, and one of them is the `cta-hinge` tease right before the CTA (that one keeps the hinge's 25-word cap below).
 
 ## CTA hinge (must-keep every episode from ep4 on) — DESIGN.md "CTA contract"
-- Window: CTA starts inside 85–95% of runtime, at a seam that doesn't interrupt a reveal.
+- Window: CTA starts around the halfway mark (`config.yaml channel.cta.window`), right before a reveal. Never after the final payoff.
 - Hinge is scripted: the segment BEFORE the CTA ends on a tease (`cta-hinge` loop, ≤25 words); the segment AFTER
   opens with the payoff in its first sentence (first three words ideally, e.g. "He wrote a six.").
 - Shape: hook > story > CTA > close. Never skipped, shortened, or moved to the outro.
