@@ -83,7 +83,7 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 - Reused-content safety is scripted original narration with analysis. A clip reel is a channel killer.
 
 ## Voice
-- Kyutai pocket-TTS cloned from `assets/voice/pharaoh_wisdom_bearer.mp3` (md5 2d8ea8f14763932f3f76da67d7fd1612).
+- Kyutai pocket-TTS cloned from on-camera Paul: `config.yaml external.voice_ref` (file and md5), so the narrator and the presenter are one voice.
   The whole voice tool sits inside this repo folder (venv, clone script, model files, Hugging Face login: `scripts/voice_tool.py`
   lists the pieces, and `python3 scripts/voice_tool.py` checks them). Run `<external.pocket_venv_python> scripts/tts_clone.py --text-file ... --out ... --voice <external.voice_ref>`
   for one probe; `tts_episode.py` passes every stale segment in one `--batch <tsv>` call so the model loads once per run (about 19 s saved per segment, measured 1 Oct 26).
