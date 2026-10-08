@@ -286,8 +286,8 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 > The center of it sat just east of where the Cobalt is thought to have been. Air inside it was moving at more than one hundred eighty miles an hour. The Cobalt was not especially heavy, and it was not armored. In about twenty seconds it was carried about six hundred and fifty yards, past the crossroads at Radio Road.
 
 ### A3-S10 — narration
-**Picture:** [HUMAN] black card, text only, one name at a time: "Tim Samaras · 55", "Paul Samaras · 24", "Carl Young · 45". No photographs. One second of silence after the last sentence.
-> Tim Samaras was fifty five. He was found inside the car, with his seatbelt still fastened. His son Paul was twenty four, and Carl Young was forty five. Neither of them was found in the car.
+**Picture:** [RS] [HUMAN] black card, text only, one name at a time: "Tim Samaras · 55", "Paul Samaras · 24", "Carl Young · 45". No photographs. The names land on the last two sentences. One second of silence after the last sentence.
+> The weather service's assessment calls these three some of the most experienced and safety minded chasers [verify: the assessment's "some of the most experienced and safety-minded chasers" and the radar paper's "extensive experience deploying instrumentation in and near tornadoes"; neither quote is in the fact files yet]. The radar team wrote that Tim Samaras had long experience placing instruments in and near tornadoes. He was fifty five, and he was still belted into his seat. His son Paul was twenty four, and Carl Young was forty five.
 
 ### A3-S11 — narration
 **Picture:** the paper's sentence as attributed text, exact words: "it is likely that no clear direction to safety was apparent · Wurman et al., Bulletin of the American Meteorological Society, 2014". Behind it the replot, the circle's looping track drawn as one line.
