@@ -391,7 +391,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *(blackout 0.7 s)*
 
 
-## A5 · The map with 21 pins (about 17:36, runs about 3:20 with Paul's slot)
+## A5 · The map with 21 pins (about 16:53, runs about 3:21 with Paul's slot)
 
 ### A5-S1 — narration
 **Picture:** date stamp "June 4, 2013". The weather office's public statement of that day on screen (public domain), the line about the upgrade lit. A stamp "EF5" lands on the El Reno track. Readout "about 295 mph".
