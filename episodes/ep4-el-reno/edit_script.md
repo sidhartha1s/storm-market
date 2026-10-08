@@ -312,4 +312,152 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *([loop L5 `cta-hinge` open]: who the twelve were. Book ad mounts here. Closes in A4-S1, first sentence.)*
 
 
-*(A4 onward: not written. Outline in section B.)*
+## A4 · The twelve and the warning gap (about 12:58, after the book ad)
+
+### A4-S1 — narration
+**Picture:** straight out of the book ad, no black. A street map of Oklahoma City at "NW 26th St and Meridian": one house outline, one ditch line beside it, a short measure between them marked "a few feet · News 9, June 2013". Sirens in a real clip's own sound, low, under the second sentence. Text-only name card "Samuel Cifuentes".
+> A few feet. That is how far one family of seven went from their own door, by the account their relatives gave News Nine. When the tornado sirens sounded in Oklahoma City that Friday, Samuel Cifuentes left his house near Northwest twenty sixth Street and Meridian.
+
+*([loop L5 `cta-hinge` closes] in the first sentence: the family, and how far they went.)*
+
+### A4-S2 — narration
+**Picture:** [HUMAN] text-only name cards, one at a time, in two groups: "Samuel Cifuentes", "Florinda Santos", "Alex"; then "Yolanda Santos", "Cristofer", "Brandon", "Lesly". News 9's spellings. No photographs unless the family's are licensed. Seven pins light at one point on the 21-pin map.
+> With him were his wife, Florinda Santos, and their son, Alex. With them were Florinda's cousin, Yolanda Santos, and Yolanda's three children, Cristofer, Brandon and Lesly. The family was from Guatemala, and Spanish was their first language.
+
+### A4-S3 — narration
+**Picture:** the house and ditch drawing again: a table outline moves from the house to the ditch. Then Enma Aguilar's sentence as attributed text, exact words, held four seconds: "They were in the ditch because they thought it was the safest spot because they just thought it was going to be a tornado, not a flooding. · Enma Aguilar, family member, to News 9". Text only, never a voice.
+> They did not get in a car. They carried a table out of the house, went down into a drainage ditch a few feet away, and hid under the table. A relative, Enma Aguilar, told News Nine why. They thought the ditch was the safest spot, she said, because they thought a tornado was coming, not a flood.
+
+### A4-S4 — narration
+**Picture:** public domain footage of fast brown water in a concrete channel in the city that night or the next morning. The map draws a line from the ditch to "Deep Fork Creek · 4 miles". The bed thins to water sound. One second of silence after "survived".
+> The tornado itself did not harm them, the first reports said. The water did. A surge of flood water came down the ditch and washed all seven away. None of the seven survived. Florinda Santos was found along Deep Fork Creek, four miles from where they had hidden.
+
+### A4-S5 — narration
+**Picture:** the map slides to "SW 15th St · near the Dell plant". A storm drain drawn in section under the street, eleven small markers inside. Source line "News 9, June 3, 2013".
+> Across the city, eleven more people had made the same choice. News Nine reported that most of them were young children. They were inside a storm drain under Southwest fifteenth Street, near the Dell plant, to get away from the tornadoes.
+
+### A4-S6 — narration
+**Picture:** the section drawing: a water line rises to a mark "about 2 feet". A line draws from the drain to the "Oklahoma River · a quarter of a mile". Five of the eleven markers dim, six stay lit. Text-only cards for the names once their tags clear.
+> When the water in the drain reached about two feet, they tried to climb out and could not. It carried all eleven into the Oklahoma River, a quarter of a mile away. Five of them did not survive, and one was a three year old named Corey Don Johnson [verify: News 9 names Corey Don Johnson, 3, in the group of eleven; not in the fact file yet]. Six survived, among them Betty Yeatman and Tara Shrum, who was eight [verify: News 9 names survivors Betty Yeatman and Tara Shrum, 8; not in the fact file yet].
+
+### A4-S7 — narration
+**Picture:** the assessment's table, the twelve lines "Sheltering in drainage ditch, flash flood" highlighted, the name column absent. Counter "18 went in · 12 did not survive". Our pairing of press names with table lines is an inference and is never shown as the table's own.
+> So eighteen people went into two drains that evening, and twelve did not survive. The weather service's table has twelve lines that read, sheltering in drainage ditch, flash flood. It gives ages and no names. The names come from local reporters and from the families.
+
+### A4-S8 — narration
+**Picture:** one more pin, apart from the others, label "65". Then a plain timeline bar from "1934" to "2013" with nothing between them. Source line "NWS Service Assessment".
+> The thirteenth life lost to the water that night was a man of sixty five, in a vehicle. The assessment calls it the worst flood Oklahoma City has ever had for lives lost. For the wider region the Norman office covers, nothing like it had happened since nineteen thirty four.
+
+### A4-S9 — narration
+**Picture:** [RS] [VE] the city map: several short tracks draw in, each stamped "EF0" or "EF1". One ends at "SW 15th / Meridian · 7:09 PM · EF1". A small scale graphic, six steps, the bottom two lit. No pin sits on any track.
+> The tornadoes they were hiding from were real. Several crossed into Oklahoma City that evening, and the weather office rated every one of them E F zero or E F one. Those are the two lowest ratings on the scale. One, an E F one, ended its track at Southwest fifteenth and Meridian at about seven oh nine PM. None of them took a life.
+
+### A4-S10 — narration
+**Picture:** Enma Aguilar's line returns small in a corner, the words "a tornado, not a flooding" lit. Then the assessment page, Finding 6, as attributed text. Behind it, a real clip of that evening's television radar picture (licence check), silent.
+> Enma Aguilar's sentence has the reason in it. They expected a tornado, not a flood. The assessment heard the same thing across the city. People told its team that broadcasters that evening kept their attention on the tornadoes and not on the flooding.
+
+### A4-S11 — narration
+**Picture:** the assessment's paragraph on screen, its two sentences lit one after the other: the family, then the warning resources. A thin rule between them, no arrow joining them. Source line "NWS Service Assessment".
+> The assessment raises one more thing, in the same paragraph where it mentions this family. Emergency managers and broadcast meteorologists told its team there were not enough forecasts and warnings for people who do not speak English. Only a few radio and television stations broadcast in Spanish. The assessment does not say that is why the family chose the ditch. It sets the two facts side by side.
+
+### A4-S12 — narration
+**Picture:** the traffic aerial from A1 returns under a `data-callback`. Text-only name cards "Mike Morgan · KFOR" and "Gary England · KWTV". No broadcast clip and no quoted line on screen until the recording is checked; the Gazette's words wait behind the tag.
+> That leaves the question of who told Oklahoma City to leave. The story usually told has one name in it. Mike Morgan was the chief meteorologist at K F O R. The Oklahoma Gazette quoted him telling viewers to get in their cars and drive south [verify: exact broadcast words against the recording]. Gary England, at K W T V, called that advice dangerous.
+
+*([loop L6 open]: who told the city to drive. Closes in A4-S15.)*
+
+### A4-S13 — narration
+**Picture:** [RS] [VE] a clock face runs back from "6:03 PM" to "1:00 PM", five hours. The weather office's message as attributed text, exact words: "TORNADO SAFETY: If you choose to flee in your car, plan for and anticipate traffic jams and blocked roads, hail, heavy rain and flooding. · NWS Norman, 1 PM, May 31, 2013, quoted in the NWS Service Assessment". One hit when the clock stops.
+> The problem with that story is the clock. At one PM that day, five hours before the tornado, the weather office in Norman posted a safety message of its own. The assessment prints it. If you choose to flee in your car, it said, plan for traffic jams and blocked roads, hail, heavy rain and flooding.
+
+### A4-S14 — narration
+**Picture:** the message stays up. Two phrases lift out of it in turn, "traffic jams" over the highway aerial and "flooding" over the drain map.
+> That message did not tell anyone to leave. But it treated a car as a choice a person might make, and it came from the office that issues the warnings. It also named the two things that went wrong that night, the traffic and the flood.
+
+### A4-S15 — narration
+**Picture:** the assessment's Recommendation 6 as attributed text. Then the two name cards and the weather office's message side by side, the same size.
+> The assessment's sixth recommendation is aimed at the weather service itself: give broadcasters better guidance when more than one danger is coming. So the idea that a car was an option did not start with one man on one channel.
+
+*([loop L6 closes]: the broadcast advice and the weather office's own one PM message, side by side.)*
+
+### A4-S16 — narration
+**Picture:** the 21-pin map, full, every pin lit. Roads and drains carry pins; the building icons across the whole city stay unlit. Slow push in. The bed drops out on the question. Pin places as in the I1-S4 tag: fifteen of the twenty-one are sourced so far.
+> Set the blame aside and go back to the map. Twenty one pins. Eight are vehicles in the path of one tornado. Twelve are in two drains, and one is a vehicle in the flood. The same map is covered in houses, stores and schools, and not one of them has a pin. Why not?
+
+*([loop L7 open]: what is missing from the 21-pin map. Closes in A5.)*
+
+*(blackout 0.7 s)*
+
+
+## A5 · The map with 21 pins (about 17:41)
+
+### A5-S1 — narration
+**Picture:** date stamp "June 4, 2013". The weather office's public statement of that day on screen (public domain), the line about the upgrade lit. A stamp "EF5" lands on the El Reno track. Readout "about 295 mph".
+> Four days after the storm, on June fourth, twenty thirteen, the weather office in Norman raised the El Reno tornado to an E F five. It did that because of the radar. The research radars had measured air moving at about two hundred ninety five miles an hour.
+
+### A5-S2 — narration
+**Picture:** [RS] [VE] the "EF5" stamp lifts and "EF3" settles in its place, no date shown. Then the replot over a land-use map: the small circles' tracks cross fields and roads and touch no building dot. The weather office's sentence as attributed text: "none of these intense sub-vortices impacted any structures in rural Canadian County · NWS Norman".
+> Later the office took the rating back down to E F three, and the reason it gave matters here. The fastest air was inside the small sub-vortices. And the office wrote that none of those sub-vortices crossed a single structure in rural Canadian County.
+
+### A5-S3 — narration
+**Picture:** public domain footage of a survey team at work. A short list graphic: house, barn, tree, power pole, each with a tick box. Over the sub-vortex tracks the boxes stay empty. Source line "Marshall et al., damage survey".
+> A tornado's rating comes from what it breaks. Surveyors walk the path and grade the damage to buildings, trees and other things on a set list. Where the sub-vortices went, there was little on that list to break. The survey team wrote that the highest speeds were in places with none of those markers at all.
+
+*([loop L7 closes]: no pin on a building, because the strongest part of the storm crossed none.)*
+
+### A5-S4 — narration
+**Picture:** the track map near Interstate 40: a cluster of small squares just south of the road lights up, "manufactured homes · densest damage on the path". The eight El Reno pins stay on the roads; none sits in the cluster.
+> So the worst of the El Reno tornado stayed over open ground and over roads. It did reach houses. The survey found its densest cluster of damaged structures in a group of manufactured homes just south of Interstate forty. And the weather service's table lists no one lost in any of them.
+
+### A5-S5 — narration
+**Picture:** the map slides east to the city. The short "EF0" and "EF1" tracks from A4 return under a `data-callback`. Building icons everywhere, no pin on any.
+> In Oklahoma City, where the buildings were, every tornado that entered that evening was an E F zero or an E F one. None took a life.
+
+### A5-S6 — narration
+**Picture:** date stamp "Moore · May 20, 2013 · EF5". Public domain aerials of Moore after the storm. The assessment's sentence as attributed text, exact words: "survived above ground in predetermined shelters. Shelters ranged from interior closets and bathrooms to safe rooms. · NWS Service Assessment".
+> Now go back eleven days, to the E F five in Moore, the storm that frightened people out of their houses. The same assessment studied it. It found that people in Moore survived above ground, in closets, in bathrooms and in safe rooms. Cellars, where people had them, worked too.
+
+### A5-S7 — narration
+**Picture:** text-only card "Harold Brooks · NOAA" with his words as attributed text: "irresponsible at best, and dangerous at worst". Behind it the cutaway house from A1-S2, an inner closet lit.
+> Harold Brooks, a federal meteorologist, had words for the message that only underground would do. He called it irresponsible at best and dangerous at worst.
+
+### A5-S8 — narration
+**Picture:** the 21-pin map splits into two layers: roads lit near El Reno with the small circle crossing one; then the city's low ground shaded blue, water running into the two drains. Every pin falls inside one layer or the other.
+> By the count, the storm had two real dangers that night. One was on the open roads near El Reno, where a sub-vortex could cross faster than any car. The other was the water, which ran to the lowest ground in the city. Every one of the twenty one was on a road or in the water.
+
+### A5-S9 — narration
+**Picture:** the map holds. A small line of text, "count is for the night of May 31", then one grey marker far to the east, "Okfuskee County · June 1", outside the frame of pins.
+> None of this means a house is a match for a sub-vortex. No house was put to that test that night. And the count stops at that night. The next morning the flooding took one more life, in Okfuskee County.
+
+### A5-S10 — narration
+**Picture:** [HUMAN] three short returns under `data-callback`, each two seconds: the house and ditch drawing with its "a few feet" measure; the name card "Richard Henderson"; the traffic aerial. Then back to the full map.
+> But the count itself does not move. The family of seven were a few feet from their own door. Richard Henderson had left his home nearby. Many of the people in that traffic had left a house behind them.
+
+### A5-S11 — narration
+**Picture:** [RS] [VE] the full 21-pin map, every pin lit, building icons unlit, the line "0 of 21 inside a building · NWS Service Assessment, Appendix C" under the first sentence only. The map keeps its tag [verify: a place for the 6 pins still unsourced; 15 of the 21 have one, see fact_check.md]. The bed rises under the last sentence and stops with it.
+> No one lost their life inside a building that night, and the sources give three reasons. The strongest part of the tornado crossed no building. The tornadoes that reached the city's buildings carried the two lowest ratings. And the water that took thirteen lives ran to the lowest ground, where twelve people were hiding. By that count, the safest place was home.
+
+*([loop L1 closes]: why nobody lost their life indoors, answered inside what the sources say. No claim that a house would stand up to a sub-vortex.)*
+
+### A5-S12 — Paul on camera, slot 5 (wording not written)
+**Job:** the answer line at the full 21-pin map. It returns to the hook's claim in his own voice: twenty-one lives, none inside a building, and home as the safe place. It adds no new fact and no cause the sources do not give.
+**Budget:** 26 words at most, one clip of about 10 s, full frame.
+
+*(blackout 0.7 s)*
+
+
+## Z1 · Close (about 21:14)
+
+### Z1-S1 — narration
+**Picture:** the assessment's table one last time, twenty-one lines, the name column absent. Then text-only names over the dimmed map, each landing on the voice, News 9's spellings: "Richard Henderson", "Tim Samaras", "Paul Samaras", "Carl Young", "Samuel Cifuentes", "Florinda Santos", "Alex", "Yolanda Santos", "Cristofer", "Brandon", "Lesly". g-outro begins.
+> The weather service's table for the night of May thirty first, twenty thirteen, has twenty one lines, with ages and no names. Among them were Richard Henderson, Tim Samaras, Paul Samaras and Carl Young. Among them were Samuel, Florinda and Alex, and Yolanda with Cristofer, Brandon and Lesly.
+
+### Z1-S2 — narration
+**Picture:** the map fades to the outline of the state. Date card "May 31, 2027".
+> On May thirty first, twenty twenty seven, it will be fourteen years.
+
+### Z1-S3 — narration
+**Picture:** the channel title card (DESIGN.md "Signature closing footnote": it IS the outro).
+> Tornadoes don't ask permission. But they do send warnings. Learn what yours sounds like, and where in your own home you would go. Then when it comes, you already know what to do. This was The Warning Hour.
+
+*(outro tail 4 s, g-outro, bed out)*
