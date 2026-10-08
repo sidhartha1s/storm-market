@@ -417,7 +417,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 **Picture:** date stamp "Moore · May 20, 2013 · EF5". Public domain aerials of Moore after the storm. The assessment's sentence as attributed text, exact words: "survived above ground in predetermined shelters. Shelters ranged from interior closets and bathrooms to safe rooms. · NWS Service Assessment".
 > Now go back eleven days, to the E F five in Moore, the storm that frightened people out of their houses. The same assessment studied it. It found that people in Moore survived above ground, in closets, in bathrooms and in safe rooms. Cellars, where people had them, worked too.
 
-### A5-S7 — narration
+### A5-S8 — narration
 **Picture:** text-only card "Harold Brooks · NOAA" with his words as attributed text: "irresponsible at best, and dangerous at worst". Behind it the cutaway house from A1-S2, an inner closet lit.
 > Harold Brooks, a federal meteorologist, had words for the message that only underground would do. He called it irresponsible at best and dangerous at worst.
 
