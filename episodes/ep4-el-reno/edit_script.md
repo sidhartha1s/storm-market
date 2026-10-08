@@ -139,7 +139,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 **Picture:** place stamp "Oklahoma City · May 31, 2013 · evening". A real clip of a neighbourhood street under a dark sky, sirens audible in the clip's own sound, low. Then the assessment's cover page (public domain), the camera settling on the words "sheltering in place". The bed returns under the last sentence.
 > The standing advice in central Oklahoma is to shelter in place when a tornado is coming. Afterward, a weather service team went back and asked people why so many had left instead. The fear from Moore was already there. But the team also wrote down two things people were told on May thirty first.
 
-*([loop L3 open]: what made people leave solid houses. Closes in A1-S11.)*
+*([loop L3 open]: what made people leave solid houses. It opens on the two things they were told, which the intro has not given; the fear from Moore comes in as already known. Closes in A1-S11.)*
 
 ### A1-S2 — narration
 **Picture:** [RS] [VE] the assessment's sentence as attributed text, one line at a time: "...telling listeners they would be unable to survive if not underground · NWS Service Assessment". Then a plain cutaway drawing of a one-storey house on a slab, nothing below the floor line. One low hit when the floor line draws.
