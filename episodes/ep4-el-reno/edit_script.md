@@ -342,7 +342,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A4-S7 — narration
 **Picture:** the assessment's table, the twelve lines "Sheltering in drainage ditch, flash flood" highlighted, the name column absent. Counter "18 went in · 12 did not survive". Our pairing of press names with table lines is an inference and is never shown as the table's own.
-> So eighteen people went into two drains that evening, and twelve did not survive. The weather service's table has twelve lines that read, sheltering in drainage ditch, flash flood. It gives ages and no names. The names come from local reporters and from the families.
+> So eighteen people went into two drains that evening, and twelve did not survive. The weather service's table has twelve lines that say, sheltering in drainage ditch, flash flood. It gives ages and no names. The names come from local reporters and from the families.
 
 ### A4-S8 — narration
 **Picture:** one more pin, apart from the others, label "65". Then a plain timeline bar from "1934" to "2013" with nothing between them. Source line "NWS Service Assessment".
