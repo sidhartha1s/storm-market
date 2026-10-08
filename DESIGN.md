@@ -74,8 +74,8 @@ sparingly/short/narrated-over (claims budgeted, segments must survive being clai
 The first 25-30s decide the video. Owner rated ep2's first hook 0.6/10 and the rebuilt one
 shipped; these are the standing requirements for every episode's cold open:
 - **Frame one is Paul, full frame, speaking the hook line** (documentaries; owner 7 Oct 26: "if the hook or the initial
-  frame itself shows Paul's face It will be really nice"). One clip, 10 s at most, so the face on the thumbnail is the
-  face in the first second. Clip rules and the per-video budget: `references/mg-quickref.md` "Paul on screen".
+  frame itself shows Paul's face It will be really nice"). One clip, so the face on the thumbnail is the
+  face in the first second. Clip length, word cap and the per-video budget: `references/mg-quickref.md` "Paul on screen".
 - **The shot after Paul is MID-ACTION, never black** — the episode's
   defining shot already moving. High curiosity, high impact from the first frame.
 - **The highest-intent real clips follow Paul's clip at once, never only the end.** The footage the title promises (the slide, the
