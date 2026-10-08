@@ -5,7 +5,7 @@ the source file named in each section header; if a rule here and its source disa
 PR and say which one won.
 
 ## The angle (owner 9 Oct 26) — `references/angle.md`
-- A documentary brief carries an Angle block locked by the owner: one true claim the whole video is built on. A documentary brief without it is not ready: stop and say so. (Minis: not decided yet, `ops/tasks.md`; a mini brief without the block is fine.)
+- Your brief carries an Angle block locked by the owner, documentary or mini: one true claim the whole video is built on. A brief without it is not ready: stop and say so.
 - Every act serves the angle. The fact every other video on the subject leads with is not the lead here; the block names it.
 - The hook, the open loops and the close all pay the angle. Do not drift back to the subject's default line.
 
@@ -46,7 +46,7 @@ Every 20–60 s: question → information → payoff → new question, chained w
 - Every beat in `edit_script.md` is an AV unit: what is said, what moves on screen, what the sound does, one row,
   one judgment. MGs get dedicated slots for information. (`script-framework.md` §1)
 - One dominant question the whole script serves ("the viewer keeps watching to find out ___"), riding on one
-  script concept: the one claim the film proves (in a documentary it is the Claim line of the locked angle, copied, never rewritten), strongest when it overturns a belief ("physics hid the iceberg",
+  script concept: the one claim the film proves (the Claim line of the locked angle, copied, never rewritten), strongest when it overturns a belief ("physics hid the iceberg",
   not "the Titanic"). The hook confirms it; every act proves part of it.
 - Consequence before mechanism ("426 people lost their lives, and the wave wasn't an earthquake" beats "a landslide tsunami occurs when…").
 - Never spend curiosity early — one open question at a time.
