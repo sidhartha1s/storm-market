@@ -157,7 +157,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A1-S6 — narration
 **Picture:** the g-clock runs ten minutes forward and stops. The bed cuts to silence on "cut out" and stays out for one second. Then two small text cards, "Robbie" and "Wyatt". No assessment card here: its sentence on him carries a hard flag word, so it is paraphrased in the voice only.
-> About ten minutes after his photograph, Henderson said he could hear debris hitting his pickup. Then his phone went dead. He left two sons, Robbie and Wyatt. The weather service's assessment gives him one sentence, as an amateur storm chaser who left his nearby home.
+> About ten minutes after his photograph, Henderson said he could hear debris hitting his pickup. Then his phone cut out. He left two sons, Robbie and Wyatt. The weather service's assessment gives him one sentence, as an amateur storm chaser who left his nearby home.
 
 ### A1-S7 — narration
 **Picture:** the map holds on the El Reno track. Seven more pins light in three groups as they are spoken: three together for the Cobalt, one on a line drawn from El Reno toward Chickasha, labelled "67".
