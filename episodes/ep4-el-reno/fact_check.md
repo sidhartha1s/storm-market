@@ -52,3 +52,14 @@ Only the rows that need action are listed in full. Everything else in A1 and A2 
 | A2-S11 | "At six nineteen PM, by the radar team's account, one sub-vortex was turning inside" | CORRECTED | 6:19 PM is OUN's highway crossing. W14's own times for the single embedded sub-vortex are 2317:38 to 2318:48 UTC (6:17:38 to 6:18:48 PM). Say "as the tornado crossed the highway" and give the clock time to the weather service |
 | A2-S11 | "About four minutes later" and "those four minutes" | CORRECTED | 6:19:00 to 6:23:35 is 4.58 minutes; from W14's 6:18:48 it is 4.78. Say "between four and five minutes" or "minutes later". The same correction applies to the outline's A3 row |
 | A2-S11 | one and the same sub-vortex at both vehicles | tag stays | See the intro check above |
+
+The corrections above were applied to the script on 9 Oct 26 (A1-S2 now reads "Not every house had a cellar to go to.", from SA's "where available"; its tag is gone).
+
+# Act 3 (9 Oct 26, same checker, same sources)
+
+Read against W14, SA, OUN and `research/facts.md`; matches unless listed: southbound on US-81 toward the south side, about 25 m/s (55.9 mph), more than 83 m/s at 120 m (185.7 mph at 394 ft), carried to the east side (W14); about 200 yards, the camera, the two crew quotes paraphrased, seatbelts, the driver's injuries (`facts.md`, weather.com and trade press, not re-pulled); Robinson at 20 m/s and the headlights at 2322:15 UTC (W14); Robinson's account of the empty road and the traffic finding (SA); the vortex about 500 m to the south, 547 yards, then nearly still from 2323:35 to 2323:57 UTC, 22 s (W14); more than 81 m/s, 181.2 mph (W14); "not especially heavy or armored" (W14); about 600 m, 656 yards, to a point north-east of the Radio Road crossing (W14); ages 55, 24, 45 (SA table); the seatbelt detail (`facts.md`, ABC News); "only 30-s potential warning ... no clear direction to safety" (W14); 656 / 200 = 3.28, "more than three times" (by script); the paper's two "likely" lines (W14).
+
+| Segment | Claim | Verdict | Source and the correct fact |
+|---|---|---|---|
+| A3-S5 | "Bettes needed stitches in his hand" | UNVERIFIED, replaced | Not in any source pulled. `facts.md`: "Bettes and cameraman Brad Reynolds sustained only minor injuries". The sentence now says that |
+| A3-S8 | one and the same sub-vortex | tag stays | See the intro check |
