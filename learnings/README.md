@@ -11,7 +11,7 @@ The promoted one-line rules from the old `LEARNINGS.md` index, verbatim (one sta
 - Convert GIFs before mounting (single-frame → PNG, animated → mp4); every mounted video needs an audio stream — mux silence into mute clips. → §"ep6 render-failure ledger"
 - Audio slots longer than their file are silently truncated (WARN, not FAIL) — read the WARNs of a failed render; clip windows must never exceed the real clip length. → §"ep6 render-failure ledger"
 - Batch every owner approval ask into ONE message, as early as possible — scattered mid-run checkpoints don't reliably land. → §"ep6 owner rules + broadcast-geometry gotchas"
-- The hook must contain zero muted/mediocre elements — every beat is mid-action; the narrator opens at 0:00 with no broadcast audio (DESIGN.md cold-open hook contract, owner 22 Sep 26). → §"ep6 owner rules + broadcast-geometry gotchas"
+- The hook must contain zero muted/mediocre elements — every beat is mid-action; the first line opens at 0:00 with no broadcast audio (DESIGN.md cold-open hook contract, which says who speaks it). → §"ep6 owner rules + broadcast-geometry gotchas"
 - Video-range black is Y=16, not 0 — threshold pillarbox/blanking detectors at ≤17, or use cropdetect. → §"ep6 owner rules + broadcast-geometry gotchas"
 - Broadcast compilation reels have per-segment geometry — run cropdetect per cut window, never one blanket crop per reel. → §"ep6 owner rules + broadcast-geometry gotchas"
 - Budget scripts on the previous episode's manifest wpm, then verify against the new manifest after the first full TTS run — probe-TTS only catches gross errors. → §"ep6 TTS + sourcing"
