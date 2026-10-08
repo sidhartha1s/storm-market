@@ -58,8 +58,7 @@ The payoff is never dumped early and never hoarded to the end. Structure:
   13 minutes are unwatched — re-order until the strongest material is load-bearing at the end.
 - **Continuity devices:** but / therefore / however chain every seam — never "and then". Micro-
   loops every 30-45s per the lattice.
-- **CTA anchor (editorial):** around the halfway mark, right BEFORE a reveal the viewer is waiting for, never after
-  the final payoff. The config window (`channel.cta.window`, owner 7 Oct 26) is the gate; DESIGN.md "CTA contract" is the rule.
+- **CTA anchor (editorial):** DESIGN.md "CTA contract" is the rule; the config window (`channel.cta.window`) is the gate.
 
 ## 3b. MG composition doctrine (owner, ep7 draft-v1 review 2026-09-06 — supersedes any "exit everything" reading)
 - **Story elements STAY while relevant.** If the apple landed at :02 and the orange lands at :15,

@@ -136,7 +136,7 @@ Rules, every script from ep-1974 on:
    none, and the clip itself lived only in `Videos\storm-insert-work` — unfindable from the repo.
    Now: `assets/cta/paul-storm-ready-v4c.mp4` (tracked; `.gitignore` negation — the only mp4 in
    git), transcript + README beside it, `config.yaml channel.cta` as the single source of truth.
-2. **Placement is a contract, not taste:** hook > CTA > payoff, start inside 30–40% of runtime (superseded 23 Sep 26: 85–95 %, `config.yaml channel.cta.window`),
+2. **Placement is a contract, not taste:** hook > CTA > payoff, start inside 30–40% of runtime (superseded 23 Sep 26: 85–95 %; superseded again 7 Oct 26: around the halfway mark, `config.yaml channel.cta.window`),
    scripted tease before / payoff first-sentence after, 1.0s dips, own audio, no chapter boundary,
    first link in the description = the ebook. DESIGN.md "CTA contract"; `sweep_episode.py` fails a
    missing or misplaced CTA; `script-scaling.md` requires a `cta-hinge` loop-table row.

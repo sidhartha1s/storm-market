@@ -128,10 +128,10 @@ on any hard word in narration, on-screen text or metadata.
 - Every audio-carrying insert is transcribed in full before cut selection; cut chosen at the transcript's peak.
 
 ## CTA hinge (must-keep every episode from ep4 on) — DESIGN.md "CTA contract"
-- Window: CTA starts around the halfway mark (`config.yaml channel.cta.window`), right before a reveal. Never after the final payoff.
+- Window: the CTA sits between a tease and its payoff, inside `config.yaml channel.cta.window`. Never after the final payoff.
 - Hinge is scripted: the segment BEFORE the CTA ends on a tease (`cta-hinge` loop, ≤25 words); the segment AFTER
   opens with the payoff in its first sentence (first three words ideally, e.g. "He wrote a six.").
-- Shape: hook > story > CTA > the reveal > story > close. Never skipped, shortened, or moved to the outro.
+- Shape: hook > story > tease > CTA > payoff > story > close. Never skipped, shortened, or moved to the outro.
 
 ## Title/thumbnail match — owner 27 Sep 26; dual-scope rule from `script-scaling.md`
 - The hook and intro must say aloud what the title/thumbnail promised — a checkable fact, not an adjective.
