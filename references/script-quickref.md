@@ -126,6 +126,9 @@ on any hard word in narration, on-screen text or metadata.
   `script-scaling.md` "Section lock — the ONE definition"; that section goes to TTS the moment
   IT locks, without waiting for later acts.
 - Every audio-carrying insert is transcribed in full before cut selection; cut chosen at the transcript's peak.
+- Paul on camera (documentaries; `references/mg-quickref.md` "Paul on screen"): besides the hook sentence, mark up to 5 lines
+  he speaks full frame, each at most about 26 words (one 10 s clip). They sit at turning points, where the story changes
+  direction, and one of them is the tease right before the CTA.
 
 ## CTA hinge (must-keep every episode from ep4 on) — DESIGN.md "CTA contract"
 - Window: CTA starts inside 85–95% of runtime, at a seam that doesn't interrupt a reveal.
