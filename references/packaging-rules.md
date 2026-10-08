@@ -32,24 +32,27 @@ refutation, showrunner synthesis). Read with `yt-packaging` before any title or 
 - Series identity (10–15 El Niño videos): fixed type family, blue/amber palette, round "EL NIÑO 26-27" badge
   bottom-left; the variable is the state photograph + state name. Title spine `El Niño Winter 2026-27: <State>: <verdict>`.
 
-## Paul on the thumbnail: three candidate systems (study 8 Oct 26; the owner has not picked one)
-Owner 7 Oct 26: "i need a design system, not a one off show". Until he picks, the three schools above and the El Niño
-series identity stay the rule and none of these ships. Study: `references/teardowns/2026-10-08-thumbnails-13-channels/README.md`.
-The exact look of each system (colours, typefaces, positions, outfit, the two attached images) lives in its prompt:
-`references/thumbnail-prompts.md`. A prompt fixes everything except its slots, so every video looks like the last.
+## Paul on the thumbnail: Field Notes and On the Ground (owner 8 Oct 26)
+Owner 7 Oct 26: "i need a design system, not a one off show". On 8 Oct 26 he kept two of three candidate systems on
+the review page; the third (Witness) was left unticked and is not used. They sit beside the three schools above and
+the El Niño series identity, which are unchanged, and apply when a documentary's thumbnail shows Paul. Study:
+`references/teardowns/2026-10-08-thumbnails-13-channels/README.md`. The exact look of each system (colours,
+typefaces, positions, outfit, the two attached images) lives in its prompt: `references/thumbnail-prompts.md`. A
+prompt fixes everything except its slots, so every video looks like the last.
 - **Field Notes**: Paul beside one pencil diagram drawn from real data, on cream graph paper. From Critical Latitude's
   paper format. Risk: no storm in the frame, and the storm niche's biggest thumbnails are all storm.
-- **Witness**: Paul cut out in front of one real photograph, year over place. From Johnny Harris's host cut-out and the
-  tornado documentaries' year-over-place type. Risk: a cut-out head over a photograph is the most common look on YouTube.
 - **On the Ground**: Paul stands inside one real photograph and points. From the AI avatar channels and HIGH RISK
   Chris's top video. Risk: an AI presenter inside a real disaster photograph reads fake when the blend is off; judge
   this one hardest by eye.
-- In these three systems: the headline is 2 lines and never the title's words; the second image is real (photograph,
-  frame or official map), never an AI storm scene, a CSS mock-up or a landing-page image; its licence is checked first
-  (a CC BY photograph needs its credit in the description).
-- Found in the demos: ChatGPT repainted the real photographs in Witness and On the Ground (a clear Joplin sky came back
-  as storm cloud), so a published thumbnail needs Paul and the words laid over the untouched photograph. Field Notes
-  has no photograph and does not have the problem. Open work: `ops/tasks.md` row 15.
+- Which of the two a video uses is the editor's call (the agent's reading: he kept both and named no rule for choosing).
+- **Every Paul thumbnail is tested against a no-face version** (owner tick 8 Oct 26): the same words over a real
+  photograph, run in YouTube's Test and Compare, so the channel learns which wins.
+- In both systems: the headline is 2 lines and never the title's words; the second image is real (photograph, frame or
+  official map), never an AI storm scene, a CSS mock-up or a landing-page image; its licence is checked first (a CC BY
+  photograph needs its credit in the description).
+- Found in the demos: ChatGPT repainted the real photograph in On the Ground, so a published thumbnail needs Paul and
+  the words laid over the untouched photograph. Field Notes has no photograph and does not have the problem. Open
+  work: `ops/tasks.md` row 15.
 
 ## What the Studio export says (2026-09-14)
 YouTube tested every US-topic upload with 2–11k impressions; CTR decided the rest: 6.65 % kept going (ep2), 3.5 %
