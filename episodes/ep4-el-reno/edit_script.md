@@ -114,10 +114,14 @@ Richard Henderson's age; the two rating statements and their dates; the News 9 p
 > Eleven days earlier, an E F five tornado had gone through Moore, Oklahoma. People later told the weather service that fear from that day led them to do things they normally would not. A twenty twenty two study compared tornado evacuations in six American metro areas, and none came near the size of this one.
 
 ### I1-S6 — narration
-**Picture:** the map pushes in on the track. Two vehicle markers on two labelled roads, "US-81" and "Reuter Road", so the two roads read at a glance. A news still of the Weather Channel vehicle after the storm (licence check; the crew's own footage is held for A3). Name cards "Mike Bettes · The Weather Channel", then "Tim Samaras · 55", "Paul Samaras · 24", "Carl Young · 45". Two marks on the g-clock, minutes apart.
-> Two of the vehicles inside the El Reno tornado carried storm chasing crews, with three people in each. One was a Weather Channel S U V carrying the meteorologist Mike Bettes. The tornado threw it about two hundred yards. The other was a white Chevrolet Cobalt carrying the researcher Tim Samaras, his son Paul [verify: Paul Samaras was Tim Samaras's son] and Carl Young. It was struck minutes later, on a different road.
+**Picture:** the map pushes in on the track. Two vehicle markers on two labelled roads, "US-81" and "Reuter Road", so the two roads read at a glance. A news still of the Weather Channel vehicle after the storm (licence check; the crew's own footage is held for A3). Name card "Mike Bettes · The Weather Channel". A "200 yards" line draws from the road into the field.
+> Two of the vehicles inside the El Reno tornado carried storm chasing crews, with three people in each. One was a Weather Channel S U V carrying the meteorologist Mike Bettes. The tornado threw it about two hundred yards.
 
 ### I1-S7 — narration
+**Picture:** the second marker lights on Reuter Road. Name cards "Tim Samaras · 55", "Paul Samaras · 24", "Carl Young · 45", text only. Two marks on the g-clock, minutes apart.
+> The other was a white Chevrolet Cobalt carrying the researcher Tim Samaras, his son Paul [verify: Paul Samaras was Tim Samaras's son] and Carl Young. It was struck minutes later, on a different road.
+
+### I1-S8 — narration
 **Picture:** split frame: left "3 of 3 survived" over the S U V marker, right "0 of 3" over the Cobalt marker. Then a self-made radar replot of the wide circulation with two small circles inside it, unlabelled. Hold on the two circles through the last sentence; the bed drops out on the last word.
 > Everyone in the S U V survived. No one in the Cobalt did. Scientists later rebuilt both moments from radar, and what struck the S U V is not what struck the car.
 
