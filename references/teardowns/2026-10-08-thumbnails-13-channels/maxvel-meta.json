@@ -1,0 +1,169 @@
+{
+ "slug": "maxvel",
+ "handle": "@MaxVelocityWX",
+ "channel": "Max Velocity - Severe Weather Center",
+ "subs": 2180000,
+ "videos": [
+  {
+   "n": 1,
+   "kind": "popular",
+   "id": "uQ6XWosKuos",
+   "title": "Nobody Has EVER Seen A Winter Like This...",
+   "views": 8700000,
+   "dur_s": 618
+  },
+  {
+   "n": 2,
+   "kind": "popular",
+   "id": "QxymIc0HYPw",
+   "title": "This Winter Will Be Truly Insane...",
+   "views": 2500000,
+   "dur_s": 780
+  },
+  {
+   "n": 3,
+   "kind": "popular",
+   "id": "VWQm4nwAPxU",
+   "title": "This Massive Winter Storm Just SHIFTED...",
+   "views": 2400000,
+   "dur_s": 863
+  },
+  {
+   "n": 4,
+   "kind": "popular",
+   "id": "_gs5dxpu_00",
+   "title": "This Winter Will Dump TONS Of Snow...",
+   "views": 2100000,
+   "dur_s": 531
+  },
+  {
+   "n": 5,
+   "kind": "popular",
+   "id": "mk1EbLm6WtY",
+   "title": "This Has NEVER Happened In Our Lifetime...",
+   "views": 2000000,
+   "dur_s": 725
+  },
+  {
+   "n": 6,
+   "kind": "popular",
+   "id": "FbYFKYdrQDw",
+   "title": "This Winter Storm Just Took A MAJOR Turn...",
+   "views": 1500000,
+   "dur_s": 983
+  },
+  {
+   "n": 7,
+   "kind": "popular",
+   "id": "Of21dnHUPZc",
+   "title": "This Winter Storm Is Taking A Surprising Turn...",
+   "views": 1500000,
+   "dur_s": 758
+  },
+  {
+   "n": 8,
+   "kind": "popular",
+   "id": "gISUZIAg_2M",
+   "title": "This Super El Ni\u00f1o Just Took A HUGE Turn...",
+   "views": 1400000,
+   "dur_s": 755
+  },
+  {
+   "n": 9,
+   "kind": "popular",
+   "id": "brJXCR3hvvQ",
+   "title": "This Winter Forecast Just Changed A LOT...",
+   "views": 1400000,
+   "dur_s": 876
+  },
+  {
+   "n": 10,
+   "kind": "popular",
+   "id": "QuuHj3uFmgw",
+   "title": "This Winter Storm Just Took A Huge Turn...",
+   "views": 1400000,
+   "dur_s": 650
+  },
+  {
+   "n": 11,
+   "kind": "latest",
+   "id": "e_bmfzgNqGU",
+   "title": "A DANGEROUS Hurricane Is Rapidly Developing...",
+   "views": 762000,
+   "dur_s": 721
+  },
+  {
+   "n": 12,
+   "kind": "latest",
+   "id": "Kxvp-yF1pxE",
+   "title": "We Might Have A Serious Problem...",
+   "views": 841000,
+   "dur_s": 769
+  },
+  {
+   "n": 13,
+   "kind": "latest",
+   "id": "8_Pk0NBdmfc",
+   "title": "The Weather Is About To Take A SERIOUS Turn...",
+   "views": 769000,
+   "dur_s": 728
+  },
+  {
+   "n": 14,
+   "kind": "latest",
+   "id": "MM6uiVV0Sdw",
+   "title": "Everyone Is Wrong About This Winter...",
+   "views": 1700000,
+   "dur_s": 764
+  },
+  {
+   "n": 15,
+   "kind": "latest",
+   "id": "88uDmEge7kY",
+   "title": "The Weather Is About To Change In A BIG Way...",
+   "views": 592000,
+   "dur_s": 545
+  },
+  {
+   "n": 16,
+   "kind": "latest",
+   "id": "LpPcn__PPvE",
+   "title": "This Storm Just Got Worse And Nobody Is Ready...",
+   "views": 993000,
+   "dur_s": 750
+  },
+  {
+   "n": 17,
+   "kind": "latest",
+   "id": "WMaNkC8BvKY",
+   "title": "Nobody Is Ready For What This Storm Does Next...",
+   "views": 614000,
+   "dur_s": 871
+  },
+  {
+   "n": 18,
+   "kind": "latest",
+   "id": "_wRumjCoOSk",
+   "title": "An Incredibly Dangerous Storm Is Coming...",
+   "views": 797000,
+   "dur_s": 805
+  },
+  {
+   "n": 19,
+   "kind": "latest",
+   "id": "Kj0hmrtCyJ4",
+   "title": "The Worst Storm Of September Is Coming...",
+   "views": 1200000,
+   "dur_s": 761
+  },
+  {
+   "n": 20,
+   "kind": "latest",
+   "id": "vmv41zmF7ko",
+   "title": "We Haven't Seen A Storm Like This In 85 YEARS...",
+   "views": 673000,
+   "dur_s": 804
+  }
+ ],
+ "uploads_scanned": 600
+}

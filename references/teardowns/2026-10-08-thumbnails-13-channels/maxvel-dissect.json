@@ -1,0 +1,280 @@
+{
+  "slug": "maxvel",
+  "channel": "Max Velocity - Severe Weather Center",
+  "thumbs": [
+    {
+      "n": 1, "kind": "popular", "views": 8700000, "title": "Nobody Has EVER Seen A Winter Like This...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; magenta snow zone over centre and east; frost texture over the west", "brightness": "dark", "focus": "sharp", "grade": "navy and magenta"},
+      "text": {"words": "NO WAY", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from under the text to bottom-left (tip about 30% across, 83% down)", "thin light outline around the magenta zone"],
+      "palette": [{"name": "magenta", "hex": "#FF00FF"}, {"name": "navy", "hex": "#0B1A3D"}, {"name": "electric blue", "hex": "#2A7BE0"}],
+      "layout": "caps-arrow-map-plain",
+      "title_link": "reaction only, no repeat of the title",
+      "hook": "A flat magenta snow zone on a dark frost map with two white words; the danger reads before the title does."
+    },
+    {
+      "n": 2, "kind": "popular", "views": 2500000, "title": "This Winter Will Be Truly Insane...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; magenta snow across north and east; cyan and blue over south-west and Gulf coast", "brightness": "bright", "focus": "sharp", "grade": "saturated cyan and magenta"},
+      "text": {"words": "TONS OF SNOW!", "word_count": 3, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left", "yellow warning triangle with black outline and black exclamation mark, bottom-right corner (about 82-97% across, 70-95% down)"],
+      "palette": [{"name": "magenta", "hex": "#FF00FF"}, {"name": "cyan", "hex": "#00E5FF"}, {"name": "blue", "hex": "#1E7FE8"}],
+      "layout": "caps-arrow-map-triangle",
+      "title_link": "reaction plus subject: adds snow to the title's winter",
+      "hook": "The two-line shout names the threat and the yellow triangle marks it as a warning, over a map that is mostly magenta."
+    },
+    {
+      "n": 3, "kind": "popular", "views": 2400000, "title": "This Massive Winter Storm Just SHIFTED...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; magenta band running south-west to north-east over the centre and south-east", "brightness": "bright", "focus": "sharp", "grade": "sky blue and magenta"},
+      "text": {"words": "NO WAY", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left", "darker blue fringe around the magenta band", "yellow warning triangle with black exclamation mark, bottom-right corner"],
+      "palette": [{"name": "magenta", "hex": "#FF00FF"}, {"name": "sky blue", "hex": "#1EA6F0"}, {"name": "royal blue", "hex": "#1F4FD8"}],
+      "layout": "caps-arrow-map-triangle",
+      "title_link": "reaction only, no repeat of the title",
+      "hook": "A magenta band cuts across a sky-blue map and the triangle warns before the viewer reads the two words."
+    },
+    {
+      "n": 4, "kind": "popular", "views": 2100000, "title": "This Winter Will Dump TONS Of Snow...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; magenta over east half, blue over west, cyan at the south edge", "brightness": "bright", "focus": "sharp", "grade": "blue, cyan and magenta"},
+      "text": {"words": "HUGE SNOW", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left", "yellow warning triangle with black exclamation mark, bottom-right corner"],
+      "palette": [{"name": "magenta", "hex": "#FF00FF"}, {"name": "blue", "hex": "#2A7DF0"}, {"name": "cyan", "hex": "#14C8F5"}],
+      "layout": "caps-arrow-map-triangle",
+      "title_link": "reaction plus subject: repeats snow and adds size",
+      "hook": "HUGE SNOW sits over a map that is mostly magenta, so the topic and the amount read in one glance."
+    },
+    {
+      "n": 5, "kind": "popular", "views": 2000000, "title": "This Has NEVER Happened In Our Lifetime...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; blue top, orange band across south-east, brown south-west corner; spiral storm at the east coast", "brightness": "mid", "focus": "sharp", "grade": "purple, blue and orange"},
+      "text": {"words": "NO WAY", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left", "white spiral storm cloud graphic at right edge, over the Atlantic coast"],
+      "palette": [{"name": "royal blue", "hex": "#2030D0"}, {"name": "orange", "hex": "#FF8C1A"}, {"name": "brown", "hex": "#6E3A1C"}],
+      "layout": "caps-arrow-map-storm-swirl",
+      "title_link": "reaction only, no repeat of the title",
+      "hook": "A spiral storm on the coast next to an orange band tells the viewer a storm is arriving from the sea."
+    },
+    {
+      "n": 6, "kind": "popular", "views": 1500000, "title": "This Winter Storm Just Took A MAJOR Turn...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; white snow zone inside a blue ring over centre and east", "brightness": "bright", "focus": "sharp", "grade": "hot pink, white and blue"},
+      "text": {"words": "NOT GOOD", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left", "yellow warning triangle with black exclamation mark, bottom-right corner"],
+      "palette": [{"name": "hot pink", "hex": "#FF2DD6"}, {"name": "white", "hex": "#FFFFFF"}, {"name": "blue", "hex": "#2A3DFF"}],
+      "layout": "caps-arrow-map-triangle",
+      "title_link": "reaction only, no repeat of the title",
+      "hook": "A white snow zone inside a blue ring on hot pink; NOT GOOD gives a verdict on the shape itself."
+    },
+    {
+      "n": 7, "kind": "popular", "views": 1500000, "title": "This Winter Storm Is Taking A Surprising Turn...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; white band over north, pink band below, solid red over the south-east from Texas to the Carolinas", "brightness": "bright", "focus": "sharp", "grade": "blue with white, pink and red bands"},
+      "text": {"words": "OH WOW", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left", "yellow warning triangle with black exclamation mark, bottom-right corner"],
+      "palette": [{"name": "blue", "hex": "#1E90FF"}, {"name": "red", "hex": "#E00000"}, {"name": "white", "hex": "#FFFFFF"}],
+      "layout": "caps-arrow-map-triangle",
+      "title_link": "reaction only, no repeat of the title",
+      "hook": "Three colour bands stacked north to south show a change in the map, and OH WOW tells the viewer to look."
+    },
+    {
+      "n": 8, "kind": "popular", "views": 1400000, "title": "This Super El Niño Just Took A HUGE Turn...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; lime-green zone with blue ring over the Midwest; red-brown field with orange streaks at the edges", "brightness": "mid", "focus": "sharp", "grade": "red-brown with lime green"},
+      "text": {"words": "NO WAY", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left"],
+      "palette": [{"name": "lime green", "hex": "#66FF33"}, {"name": "blue", "hex": "#2B4BE0"}, {"name": "dark red", "hex": "#6A1A10"}],
+      "layout": "caps-arrow-map-plain",
+      "title_link": "reaction only; the title names El Nino, the text does not",
+      "hook": "A lime-green zone on a red-brown field is an unusual hazard colour, so the viewer stops to ask what it means."
+    },
+    {
+      "n": 9, "kind": "popular", "views": 1400000, "title": "This Winter Forecast Just Changed A LOT...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; magenta zone from Texas to the north-east over a cyan ground", "brightness": "bright", "focus": "sharp", "grade": "cyan and magenta"},
+      "text": {"words": "OH WOW", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left", "yellow warning triangle with black exclamation mark, bottom-right corner"],
+      "palette": [{"name": "cyan", "hex": "#20D8FF"}, {"name": "magenta", "hex": "#FF00FF"}, {"name": "pale blue", "hex": "#A8EEFF"}],
+      "layout": "caps-arrow-map-triangle",
+      "title_link": "reaction only, no repeat of the title",
+      "hook": "Magenta over cyan with a warning triangle: the same snow look as n1 to n3, with OH WOW as the cue."
+    },
+    {
+      "n": 10, "kind": "popular", "views": 1400000, "title": "This Winter Storm Just Took A Huge Turn...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; white band over north and centre, magenta band below, solid red along the Gulf and south-east coast", "brightness": "bright", "focus": "sharp", "grade": "sky blue with white, magenta and red bands"},
+      "text": {"words": "BIG SHIFT", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left", "yellow warning triangle with black exclamation mark, bottom-right corner"],
+      "palette": [{"name": "sky blue", "hex": "#1EAEEB"}, {"name": "white", "hex": "#FFFFFF"}, {"name": "red", "hex": "#E8001A"}],
+      "layout": "caps-arrow-map-triangle",
+      "title_link": "adds a second idea: SHIFT names the movement, the title says turn",
+      "hook": "Three stacked bands show the zone moving, and BIG SHIFT names the movement rather than the storm."
+    },
+    {
+      "n": 11, "kind": "latest", "views": 762000, "title": "A DANGEROUS Hurricane Is Rapidly Developing...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; white north-west, red zone over south-east, spiral storm at the Gulf", "brightness": "dark", "focus": "sharp", "grade": "black, white and red"},
+      "text": {"words": "GET READY", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left", "white spiral storm cloud graphic at bottom-centre over the Gulf"],
+      "palette": [{"name": "black", "hex": "#101010"}, {"name": "white", "hex": "#FFFFFF"}, {"name": "red", "hex": "#E4001E"}],
+      "layout": "caps-arrow-map-storm-swirl",
+      "title_link": "call to action; the storm graphic shows the hurricane the title names, the text does not",
+      "hook": "A spiral storm at the Gulf inside a red zone, with GET READY as a call to act now."
+    },
+    {
+      "n": 12, "kind": "latest", "views": 841000, "title": "We Might Have A Serious Problem...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; purple west, blue top band, red band across the east and south-east with a white glow edge", "brightness": "dark", "focus": "sharp", "grade": "purple, red and dark red"},
+      "text": {"words": "NOT GOOD", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left", "dark red circle with white exclamation mark, bottom-centre over the Gulf"],
+      "palette": [{"name": "purple", "hex": "#5A1A8C"}, {"name": "red", "hex": "#FF0000"}, {"name": "dark red", "hex": "#6E1212"}],
+      "layout": "caps-arrow-map-red-badge",
+      "title_link": "reaction only, no repeat of the title",
+      "hook": "A red alert circle with an exclamation mark sits on the Gulf under a red band, so the alert reads before the text."
+    },
+    {
+      "n": 13, "kind": "latest", "views": 769000, "title": "The Weather Is About To Take A SERIOUS Turn...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; two red zones, one over the upper Midwest and one over the south-east; spiral storm at the Gulf", "brightness": "dark", "focus": "sharp", "grade": "dark green with red"},
+      "text": {"words": "HERE WE GO", "word_count": 3, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left", "white spiral storm cloud graphic at bottom-centre over the Gulf"],
+      "palette": [{"name": "dark green", "hex": "#0F5A40"}, {"name": "red", "hex": "#F00000"}, {"name": "dark teal", "hex": "#0E2A30"}],
+      "layout": "caps-arrow-map-storm-swirl",
+      "title_link": "reaction only, no repeat of the title",
+      "hook": "Two red zones and a spiral storm on dark green set up a two-part threat that the viewer has to follow."
+    },
+    {
+      "n": 14, "kind": "latest", "views": 1700000, "title": "Everyone Is Wrong About This Winter...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; frost-blue north, purple snow zone across the south, cyan outline on the zone edge", "brightness": "dark", "focus": "sharp", "grade": "navy, blue and purple"},
+      "text": {"words": "THIS IS BIG", "word_count": 3, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left", "cyan glowing outline around the purple snow zone", "white snowflake icons, about 5, lower-left and lower-right"],
+      "palette": [{"name": "blue", "hex": "#3A6AE0"}, {"name": "purple", "hex": "#7A2AE8"}, {"name": "navy", "hex": "#101A4A"}],
+      "layout": "caps-arrow-map-snowflakes",
+      "title_link": "reaction only; 'big' sells size, the title says 'wrong'",
+      "hook": "A glowing purple snow zone with snowflake icons; THIS IS BIG avoids the title's claim and sells scale."
+    },
+    {
+      "n": 15, "kind": "latest", "views": 592000, "title": "The Weather Is About To Change In A BIG Way...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map under a temperature-style gradient: yellow west, red and dark red centre, brown edges", "brightness": "mid", "focus": "soft zones, sharp state lines", "grade": "yellow, red and brown"},
+      "text": {"words": "HERE WE GO", "word_count": 3, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left; tip sits on the yellow west zone"],
+      "palette": [{"name": "yellow-orange", "hex": "#FFC020"}, {"name": "red", "hex": "#E01010"}, {"name": "dark brown", "hex": "#6E2A18"}],
+      "layout": "caps-arrow-map-plain",
+      "title_link": "reaction only, no repeat of the title",
+      "hook": "A heat-map gradient with no hard edge reads as a temperature wash, so the danger is least clear here."
+    },
+    {
+      "n": 16, "kind": "latest", "views": 993000, "title": "This Storm Just Got Worse And Nobody Is Ready...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; pale grey-white north-west, purple edges, red oval over centre and east with a dark red rim", "brightness": "mid", "focus": "sharp", "grade": "grey, purple and red"},
+      "text": {"words": "GET READY", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left, over the pale grey zone"],
+      "palette": [{"name": "red", "hex": "#FF0000"}, {"name": "pale grey", "hex": "#C8D0D8"}, {"name": "purple", "hex": "#4A2A6A"}],
+      "layout": "caps-arrow-map-plain",
+      "title_link": "paraphrase: GET READY echoes the title's 'Nobody Is Ready'",
+      "hook": "A red oval on a grey zone with GET READY, which turns the title's 'Nobody Is Ready' into a call to act."
+    },
+    {
+      "n": 17, "kind": "latest", "views": 614000, "title": "Nobody Is Ready For What This Storm Does Next...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; soft red blob with a dark red core over Texas and Oklahoma, blue ring, green edges", "brightness": "mid", "focus": "soft, blurred zone", "grade": "green, blue and red"},
+      "text": {"words": "NO WAY", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left"],
+      "palette": [{"name": "green", "hex": "#22C040"}, {"name": "blue", "hex": "#2050E0"}, {"name": "red", "hex": "#E01010"}],
+      "layout": "caps-arrow-map-plain",
+      "title_link": "reaction only, no repeat of the title",
+      "hook": "A blurred gradient with a dark core has no edge to read, so the zone looks like a haze rather than a boundary."
+    },
+    {
+      "n": 18, "kind": "latest", "views": 797000, "title": "An Incredibly Dangerous Storm Is Coming...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; large red zone from the plains to the Great Lakes, green rim, purple band over the north", "brightness": "dark", "focus": "sharp", "grade": "red, green and purple"},
+      "text": {"words": "NOT GOOD", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left"],
+      "palette": [{"name": "red", "hex": "#FF0000"}, {"name": "green", "hex": "#1EA842"}, {"name": "purple", "hex": "#8A20E0"}],
+      "layout": "caps-arrow-map-plain",
+      "title_link": "reaction only, no repeat of the title",
+      "hook": "One large red shape with a green rim is easy to read at thumbnail size."
+    },
+    {
+      "n": 19, "kind": "latest", "views": 1200000, "title": "The Worst Storm Of September Is Coming...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; large red oval over the centre and east, green band along the south, purple top", "brightness": "dark", "focus": "sharp", "grade": "dark purple, green and red"},
+      "text": {"words": "GET READY", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left"],
+      "palette": [{"name": "red", "hex": "#FF0000"}, {"name": "green", "hex": "#30D060"}, {"name": "dark purple", "hex": "#301860"}],
+      "layout": "caps-arrow-map-plain",
+      "title_link": "call to action; the title's 'worst storm of September' is not named in the text",
+      "hook": "A large red oval on green and purple with GET READY; the oval carries the 'worst' claim without the text naming it."
+    },
+    {
+      "n": 20, "kind": "latest", "views": 673000, "title": "We Haven't Seen A Storm Like This In 85 YEARS...",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map", "subject": "US state map; orange zone over the east and south, brown south-west, purple north-west, spiral storm at upper right over the Atlantic", "brightness": "dark", "focus": "sharp", "grade": "purple, orange and brown"},
+      "text": {"words": "NOT GOOD", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy wide grotesque sans", "typeface": "closest Archivo Black (low confidence)", "fill": "white", "treatment": "black stroke, soft black drop shadow", "biggest_line_pct_height": 20, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from text to bottom-left", "white spiral storm cloud graphic at upper right over the Atlantic"],
+      "palette": [{"name": "orange", "hex": "#FF7A00"}, {"name": "purple", "hex": "#5A1A9A"}, {"name": "brown", "hex": "#7A3010"}],
+      "layout": "caps-arrow-map-storm-swirl",
+      "title_link": "reaction only, no repeat of the title",
+      "hook": "An orange zone over the east with a spiral storm at the Atlantic edge; NOT GOOD gives the verdict that the title's '85 years' sets up."
+    }
+  ],
+  "channel_findings": {
+    "templates": [
+      {"name": "caps-arrow-map-triangle", "n": [2, 3, 4, 6, 7, 9, 10], "count": 7, "out_of": 20, "description": "full-bleed US map, two-line caps top-left, white arrow to bottom-left, yellow warning triangle bottom-right"},
+      {"name": "caps-arrow-map-plain", "n": [1, 8, 15, 16, 17, 18, 19], "count": 7, "out_of": 20, "description": "full-bleed US map, two-line caps top-left, white arrow to bottom-left, no extra badge"},
+      {"name": "caps-arrow-map-storm-swirl", "n": [5, 11, 13, 20], "count": 4, "out_of": 20, "description": "as above plus white spiral storm cloud graphic at the coast or Gulf"},
+      {"name": "caps-arrow-map-red-badge", "n": [12], "count": 1, "out_of": 20, "description": "as above plus dark red circle with white exclamation mark at bottom-centre"},
+      {"name": "caps-arrow-map-snowflakes", "n": [14], "count": 1, "out_of": 20, "description": "as above plus white snowflake icons in the lower corners"}
+    ],
+    "constants": [
+      "Text: heavy wide grotesque sans, all caps, white fill, black stroke, soft black drop shadow (20 of 20)",
+      "Text block: two lines, top left, biggest line about 20 percent of frame height (20 of 20)",
+      "Arrow: white curved arrow with black outline from the text down to the bottom-left quadrant (20 of 20)",
+      "Ground: full-bleed stylised US state map with black state lines (20 of 20); no photo, no host",
+      "Hazard colours: magenta or pink snow bands, red severe zones, lime green or green rims; saturated against blue, purple or dark ground",
+      "Warning triangle: yellow with black exclamation mark, bottom-right (7 of 20, all popular)",
+      "Storm spiral graphic: white cloud spiral (4 of 20: n 5, 11, 13, 20)"
+    ],
+    "host_treatment": {
+      "share_with_face": "0 of 20 (0 percent)",
+      "note": "No thumbnail shows a person. There is no lighting, cut-out, size or placement to measure. The brand is the map, the caps word and the arrow. A presenter rule cannot be tested on this channel."
+    },
+    "text_rules": {
+      "word_count": "2 words in 16 of 20; 3 words in 4 (n 2, 13, 14, 15)",
+      "lines": "2 in all 20",
+      "case": "all caps in all 20",
+      "colours": "white fill, black stroke, drop shadow; no coloured words",
+      "position": "top left in all 20",
+      "highlight": "none; no word coloured, boxed or enlarged beyond the stack",
+      "content": "reaction words (NO WAY 5, NOT GOOD 4, OH WOW 2, GET READY 3, HERE WE GO 2, THIS IS BIG 1); reaction plus subject (TONS OF SNOW! 1, HUGE SNOW 1, BIG SHIFT 1)",
+      "title_repeat": "0 of 20 copy a title phrase; 1 paraphrase (n 16, GET READY for 'Nobody Is Ready')"
+    },
+    "popular_vs_latest": {
+      "popular_1_10": "magenta or pink snow band in 8 of 10 (n 1, 2, 3, 4, 6, 7, 9, 10); yellow warning triangle in 7 of 10; one spiral storm (n 5); views 1.4M to 8.7M",
+      "latest_11_20": "red as the main hazard colour in 8 of 10 (n 11, 12, 13, 15, 16, 17, 18, 19); yellow warning triangle in 0 of 10; three spiral storms (n 11, 13, 20); views 592k to 1.7M",
+      "text": "popular: NO WAY 4, OH WOW 2, one each of NOT GOOD, HUGE SNOW, TONS OF SNOW!, BIG SHIFT; latest: GET READY 3, NOT GOOD 3, HERE WE GO 2, THIS IS BIG 1, NO WAY 1",
+      "data_flag": "n 14 is labelled latest but has 1.7M views, which is above the popular list floor of 1.4M (n 8 to 10). The popular list may come from a different snapshot. Check meta.json before quoting popular rankings."
+    },
+    "top3": {
+      "items": [1, 2, 3],
+      "shared": "magenta snow zone on a blue or cyan ground; white two-to-three-word caps top-left with black stroke; white curved arrow to bottom-left; full-bleed US map; no face. n 2 and n 3 add the yellow warning triangle; n 1 has none."
+    },
+    "transfer": [
+      "Rule 1, two-word caps reaction, white with black stroke, two lines, top left. Evidence: n 1 NO WAY (8.7M), n 3 NO WAY (2.4M), n 6 NOT GOOD (1.5M); 16 of 20 use two words.",
+      "Rule 2, one bold white arrow with black outline from the text to the hazard. Evidence: all 20 have it; the top 3 (n 1, 2, 3) all do.",
+      "Rule 3, one saturated hazard colour that contrasts with the ground and fills the region. Evidence: magenta on blue or cyan for snow in n 1, 2, 3 (top 3); red on dark for severe in n 16, 17, 19.",
+      "Rule 4, yellow warning triangle bottom-right for winter threats. Evidence: 7 of 10 popular, 0 of 10 latest; n 2 (2.5M), n 3 (2.4M), n 4 (2.1M). Correlation only, test it on the next uploads before adopting.",
+      "Rule 5, text never copies the title; it adds a reaction plus one subject word (TONS OF SNOW!, HUGE SNOW, BIG SHIFT) or a call to act (GET READY). Evidence: 0 of 20 repeat the title; n 2 and n 4 are both in the top 4 by views."
+    ],
+    "weak": [
+      "n 15 (592k, lowest view count in the set): heat-map gradient with no hard edge; the white arrow sits on yellow and the zone reads as temperature, not a storm.",
+      "n 17 (614k): blurred red blob with a dark core and no edge; the green rim reads as fair weather, so the hazard boundary is unclear.",
+      "n 8 (1.4M): lime-green zone on red-brown; green usually reads as calm, so the colour signal is mixed even though the view count is high."
+    ]
+  }
+}

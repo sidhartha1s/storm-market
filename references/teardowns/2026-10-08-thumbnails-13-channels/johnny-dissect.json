@@ -1,0 +1,255 @@
+{
+  "slug": "johnny",
+  "channel": "Johnny Harris",
+  "thumbs": [
+    {
+      "n": 1, "kind": "popular", "views": 17000000, "title": "Why People Think The Government Killed JFK",
+      "face": {"present": "yes", "who": "channel host (framed inset, left); other people: JFK (right), Oswald mugshot, LBJ photo", "count": 4, "main_width_pct": 12, "position": "left, top", "crop": "head and shoulders", "expression": "stern, intense stare", "gaze": "at camera", "cutout": "no, framed photo inset", "outline": "none"},
+      "background": {"kind": "collage", "subject": "JFK, mugshot, bullet, typed document, LBJ photo", "brightness": "bright", "sharpness": "sharp", "grade": "cream paper, muted sepia, red marks"},
+      "text": {"words": ["COVER-UP?"], "word_count": 1, "lines": 1, "position": "bottom left", "case": "upper", "type_class": "stencil", "typeface": "no confident match", "fill": "white", "box": "solid black band", "height_pct": 12, "highlight": "none on headline; red marker highlight in small document text"},
+      "graphics": "red hand-drawn ring around bullet labelled CE 399; red arrow from bullet down to bottom centre; mugshot ID 54018; LBJ photo with US flag; signature bottom right; small document text reads: The Committee believes, on the basis of the evidence available to it, that President John F. Kennedy was probably assassinated as a result of a conspiracy. The Committee is unable to identify the other gunman or the extent of the conspiracy. (small print, low confidence on exact wording)",
+      "palette": ["cream #E6D9C3", "black #151515", "red #C8102E"],
+      "layout": "T5 evidence collage: host inset top-left, subject right, caps label bottom",
+      "title_link": "adds a second idea: a cover-up accusation on top of the title question",
+      "hook": "a red-ringed bullet and a typed official document suggest hidden evidence behind a famous man"
+    },
+    {
+      "n": 2, "kind": "popular", "views": 14000000, "title": "The “Deep State” Explained",
+      "face": {"present": "yes", "who": "channel host (left); 8 grey mugshot tiles, most blanked, one real photo (JFK, circled in red)", "count": 9, "main_width_pct": 20, "position": "left, middle", "crop": "head and shoulders", "expression": "neutral, intense stare", "gaze": "at camera", "cutout": "yes, soft edge on dark ground", "outline": "none"},
+      "background": {"kind": "collage", "subject": "grid of mugshot tiles on dark ground", "brightness": "dark", "sharpness": "sharp", "grade": "near-black, white and red"},
+      "text": {"words": ["WHO", "IS", "THE", "DEEP", "STATE?"], "word_count": 5, "lines": 1, "position": "bottom, full width", "case": "upper", "type_class": "heavy sans, slightly condensed", "typeface": "closest Anton (guess)", "fill": "white; DEEP STATE in red", "box": "none; dark drop shadow", "height_pct": 13, "highlight": "DEEP STATE in red with red underline bar"},
+      "graphics": "red ring around JFK tile in row 2; red question marks on two tiles (top row third tile, row 2 right tile); red underline under DEEP STATE",
+      "palette": ["near-black #111111", "white #F2F2F2", "red #C81E1E"],
+      "layout": "T1 host left, caps headline, subject right",
+      "title_link": "repeats the title key term (deep state) and adds a question",
+      "hook": "one circled face among hidden silhouettes and question marks asks who the hidden people are"
+    },
+    {
+      "n": 3, "kind": "popular", "views": 14000000, "title": "Why People Think the World is Flat",
+      "face": {"present": "yes", "who": "channel host (left)", "count": 1, "main_width_pct": 14, "position": "left, middle", "crop": "waist up", "expression": "shocked, both hands on cheeks", "gaze": "at camera", "cutout": "yes", "outline": "none"},
+      "background": {"kind": "illustration", "subject": "3D flat disc under a dome, starfield, sun flare", "brightness": "bright disc on dark space", "sharpness": "sharp", "grade": "deep navy with orange sun"},
+      "text": {"words": ["FLAT", "EARTH", "\"THEORY\""], "word_count": 3, "lines": 2, "position": "right, bottom half", "case": "upper", "type_class": "wide grotesque sans, bold", "typeface": "closest Montserrat ExtraBold (guess)", "fill": "white", "box": "none; dark drop shadow", "height_pct": 12, "highlight": "THEORY with a red underline bar"},
+      "graphics": "red underline bar under THEORY; orange sun flare top centre; dome outline over disc",
+      "palette": ["deep navy #0B1E3F", "orange #E0561B", "white #F0F0F0"],
+      "layout": "T1 host left, caps headline, subject right",
+      "title_link": "repeats the title topic (flat earth) in caps",
+      "hook": "a host clutching his head beside a flat disc under a dome reads as a shocking claim"
+    },
+    {
+      "n": 4, "kind": "popular", "views": 13000000, "title": "The REAL Reason McDonalds Ice Cream Machines Are Always Broken",
+      "face": {"present": "yes", "who": "channel host (right)", "count": 1, "main_width_pct": 11, "position": "right, bottom half", "crop": "waist up", "expression": "scowling, unimpressed", "gaze": "at camera", "cutout": "no, on dark blueprint photo", "outline": "none"},
+      "background": {"kind": "illustration", "subject": "line drawing of ice cream machine on dark blueprint", "brightness": "dark", "sharpness": "sharp", "grade": "charcoal with yellow accent"},
+      "text": {"words": ["Why", "McDonald's", "ice cream machines", "are always broken"], "word_count": 8, "lines": 4, "position": "centre", "case": "mixed", "type_class": "heavy condensed sans, textured", "typeface": "no confident match", "fill": "white with grey texture; Why in white on yellow arches", "box": "red banner behind McDonald's", "height_pct": 17, "highlight": "Why is the largest word, placed under the golden arches"},
+      "graphics": "golden arches (yellow, glowing) behind Why; red banner reading McDonald's; line-drawn machine on left; small icons top edge",
+      "palette": ["charcoal #1E1E1E", "yellow #F5C518", "white #EDEDED"],
+      "layout": "T2 host right, object left, logo headline centre",
+      "title_link": "repeats the title almost word for word",
+      "hook": "famous golden arches with Why over a broken machine diagram promise an answer to a known problem"
+    },
+    {
+      "n": 5, "kind": "popular", "views": 11000000, "title": "The Worst War You Never Learned About, Mapped",
+      "face": {"present": "yes, not the channel host", "who": "other person: soldier in red beret and camouflage beside a tank (archive photo)", "count": 1, "main_width_pct": 9, "position": "left, top", "crop": "waist up", "expression": "serious, neutral", "gaze": "at camera, slight turn", "cutout": "no, photo panel", "outline": "none"},
+      "background": {"kind": "split panel: real photograph (left), satellite or map (right)", "subject": "soldier and tank; Balkans map outlined in red", "brightness": "left mid, right dark", "sharpness": "left soft archive, right sharp", "grade": "left faded warm, right dark teal"},
+      "text": {"words": ["BOSNIAN", "WAR"], "word_count": 2, "lines": 2, "position": "right, centre, over map", "case": "upper", "type_class": "heavy condensed sans", "typeface": "closest Anton (guess)", "fill": "white", "box": "solid black box", "height_pct": 16, "highlight": "none"},
+      "graphics": "Balkans map outlined in red on right panel; black panel border; tank in archive photo",
+      "palette": ["dark teal #1F3A3D", "red #B3202A", "khaki #7A7B5A"],
+      "layout": "T4 person left, map or photo right",
+      "title_link": "names the war; adds the specific subject to the title worst war idea",
+      "hook": "an archive soldier beside a tank and a red-outlined map of the region promises a forgotten war"
+    },
+    {
+      "n": 6, "kind": "popular", "views": 11000000, "title": "What happens if China invades Taiwan?",
+      "face": {"present": "yes", "who": "channel host (left)", "count": 1, "main_width_pct": 23, "position": "left, middle", "crop": "waist up, hands clasped", "expression": "worried, intense", "gaze": "at camera", "cutout": "yes", "outline": "none"},
+      "background": {"kind": "map", "subject": "Taiwan coast, jets, ship, dashed routes", "brightness": "mid, dark ground", "sharpness": "sharp", "grade": "red and black, Taiwan in blue"},
+      "text": {"words": ["COULD", "THIS", "CAUSE", "WW3?"], "word_count": 4, "lines": 2, "position": "top right", "case": "upper", "type_class": "heavy condensed sans", "typeface": "closest Anton (guess)", "fill": "white; the 3 in yellow", "box": "none; dark drop shadow", "height_pct": 22, "highlight": "the 3 in yellow"},
+      "graphics": "red ring around Taiwan; red jet icons and grey ship icon; dashed flight routes; red coastline fill",
+      "palette": ["red #C8102E", "black #101010", "blue Taiwan #2B4C9B"],
+      "layout": "T1 host left, caps headline, subject right",
+      "title_link": "adds a second idea: a world war stake the title does not state",
+      "hook": "a worried face beside a red-ringed Taiwan and a war question raises the stakes"
+    },
+    {
+      "n": 7, "kind": "popular", "views": 10000000, "title": "Why Putin Feared Navalny",
+      "face": {"present": "yes", "who": "other person: unnamed man in dark turtleneck, in a crowd", "count": 6, "main_width_pct": 31, "position": "centre, middle", "crop": "head and shoulders", "expression": "stern, neutral", "gaze": "at camera", "cutout": "no, photo", "outline": "none"},
+      "background": {"kind": "real photograph", "subject": "outdoor rally: flags, buildings, crowd", "brightness": "mid, cool winter light", "sharpness": "main subject sharp, background soft", "grade": "cool grey-blue with red and white flags"},
+      "text": {"words": [], "word_count": 0, "lines": 0, "position": "none", "case": "none", "type_class": "none", "typeface": "none", "fill": "none", "box": "none", "height_pct": 0, "highlight": "none"},
+      "graphics": "none; red and white-blue flags at the edges",
+      "palette": ["cool grey #5E6B78", "white #E8E8E8", "red #B5232F"],
+      "layout": "T8 photo only, face centre",
+      "title_link": "no text; the title names a person the image does not label",
+      "hook": "a stern close face in a crowd reads as a serious news photo with no overlay"
+    },
+    {
+      "n": 8, "kind": "popular", "views": 9600000, "title": "Putin Will Lose, Here's Why",
+      "face": {"present": "yes", "who": "channel host (right); other person (older man, left, cut out); soldiers at bottom", "count": 6, "main_width_pct": 22, "position": "right, top-middle", "crop": "head and shoulders", "expression": "angry, scowling", "gaze": "at camera", "cutout": "yes, red-tinted", "outline": "red tint and red glow on the edge"},
+      "background": {"kind": "collage", "subject": "map of Russia and Ukraine with photo overlays and soldiers", "brightness": "mixed, red dominant", "sharpness": "sharp", "grade": "red and black duotone with grey photos"},
+      "text": {"words": ["PUTIN'S", "WAR,", "EXPLAINED"], "word_count": 3, "lines": 1, "position": "bottom, full width", "case": "upper", "type_class": "wide grotesque sans, bold", "typeface": "closest Montserrat ExtraBold (guess)", "fill": "white", "box": "solid black band with red slash behind", "height_pct": 10, "highlight": "red slash behind the band"},
+      "graphics": "RUSSIA and UKRAINE map labels in white; red location dots on map; tank silhouette top-left; soldier group bottom centre; red diagonal slash across bottom band",
+      "palette": ["red #C0202A", "black #101010", "grey #8A8A8A"],
+      "layout": "T2 host right, other person left, map ground, caps band bottom",
+      "title_link": "names the subject in the text; adds war and explained, the title outcome (will lose) is not on the thumb",
+      "hook": "two faces split across a red map of the conflict under a band that says explained"
+    },
+    {
+      "n": 9, "kind": "popular", "views": 9600000, "title": "The REAL Reason Putin is Invading Ukraine",
+      "face": {"present": "yes", "who": "channel host (left); other person (older man in dark suit, right)", "count": 2, "main_width_pct": 20, "position": "left, middle", "crop": "waist up, hands gesturing", "expression": "frustrated, mid-explanation", "gaze": "at camera", "cutout": "yes, greyscale", "outline": "none"},
+      "background": {"kind": "collage", "subject": "declassified document scans, NATO logo, Russian flag, tank, Ukraine map", "brightness": "mixed", "sharpness": "documents soft, faces sharp", "grade": "split red and blue, host greyscale"},
+      "text": {"words": ["WHAT", "PUTIN", "REALLY", "WANTS"], "word_count": 4, "lines": 2, "position": "top centre", "case": "upper", "type_class": "heavy condensed sans", "typeface": "closest Oswald Bold (guess)", "fill": "white with dark drop shadow", "box": "none", "height_pct": 9, "highlight": "REALLY WANTS inside a white oval outline"},
+      "graphics": "NATO logo top left; Russian flag top right; tank photo; document scans; red and blue split; Ukraine in blue on map",
+      "palette": ["red #C8102E", "blue #1F4E8C", "grey #9A9A9A"],
+      "layout": "T1 host left, caps headline, subject right",
+      "title_link": "repeats the title real reason idea in different words",
+      "hook": "declassified documents and a NATO logo behind a what really wants label promise a hidden motive"
+    },
+    {
+      "n": 10, "kind": "popular", "views": 9500000, "title": "Why Switzerland Has 374,142 Bunkers (and likely more)",
+      "face": {"present": "yes", "who": "channel host (left)", "count": 1, "main_width_pct": 17, "position": "left, middle", "crop": "waist up", "expression": "focused, looking away", "gaze": "away, off to the right", "cutout": "yes, graded into the scene", "outline": "red rim light on one side"},
+      "background": {"kind": "video frame with inset graphics", "subject": "alpine rock, snowy peak, grey cannon graphic, crosshair with small figure", "brightness": "dark", "sharpness": "sharp", "grade": "teal and red split"},
+      "text": {"words": ["SWITZERLAND"], "word_count": 1, "lines": 1, "position": "centre, lower third", "case": "upper, wide letter spacing", "type_class": "wide grotesque sans, light", "typeface": "closest Montserrat Light (guess)", "fill": "white", "box": "none; faint shadow", "height_pct": 5, "highlight": "none"},
+      "graphics": "grey cannon barrel graphic centre; crosshair circle top right around a small figure; red-orange rock floor",
+      "palette": ["dark teal #1B3A4B", "red-orange #D9482B", "white #EDEDED"],
+      "layout": "T6 host left, cut-out graphic centre, wide-spaced word bottom",
+      "title_link": "repeats the country name; the bunker count is not on the thumb",
+      "hook": "a figure in a red-lit alpine scene with a crosshair suggests a secret defence site"
+    },
+    {
+      "n": 11, "kind": "latest", "views": 635000, "title": "The world's most extreme places, explained",
+      "face": {"present": "yes", "who": "channel host (centre)", "count": 1, "main_width_pct": 30, "position": "centre, middle", "crop": "head and shoulders (parka hood)", "expression": "calm, serious", "gaze": "at camera", "cutout": "no, photo", "outline": "none"},
+      "background": {"kind": "real photograph", "subject": "snow field and red helicopter", "brightness": "very bright white", "sharpness": "subject sharp, background soft", "grade": "cool white with orange accent"},
+      "text": {"words": [], "word_count": 0, "lines": 0, "position": "none", "case": "none", "type_class": "none", "typeface": "none", "fill": "none", "box": "none", "height_pct": 0, "highlight": "none"},
+      "graphics": "red and white helicopter at left edge",
+      "palette": ["snow white #EDEFF2", "parka grey-green #3E4A44", "orange #E0622B"],
+      "layout": "T3 host centre cut-out, no headline",
+      "title_link": "no text; the title extreme places shows only as a snow scene",
+      "hook": "a close face in a hood against snow and a helicopter suggests a remote extreme location"
+    },
+    {
+      "n": 12, "kind": "latest", "views": 3300000, "title": "I don't get democracy",
+      "face": {"present": "yes", "who": "channel host (centre)", "count": 1, "main_width_pct": 23, "position": "centre, middle", "crop": "waist up", "expression": "pensive, slight frown", "gaze": "at camera", "cutout": "yes", "outline": "none"},
+      "background": {"kind": "illustration", "subject": "network diagram with raised hands", "brightness": "dark left, dark grey right", "sharpness": "sharp", "grade": "dark grey with multicolour dots"},
+      "text": {"words": ["DEMOCRACY"], "word_count": 1, "lines": 1, "position": "centre of network", "case": "upper; labels in mixed case", "type_class": "bold sans; rounded sans labels", "typeface": "no confident match", "fill": "white on coloured pill labels", "box": "coloured pill labels: blue, red, green, yellow, orange", "height_pct": 4, "highlight": "each label a different colour pill"},
+      "graphics": "five pill labels: Electoral, Liberal, Egalitarian, Participatory, Deliberative; network of about 50 coloured dots; three grey raised hands on left; thin orange vertical line top centre",
+      "palette": ["charcoal #1C1C1C", "bone #E9E9E9", "green #3DBE5A"],
+      "layout": "T3 host centre cut-out, no headline",
+      "title_link": "repeats the title word and adds five labels as a concept map",
+      "hook": "a coloured concept map and raised hands turn an abstract word into parts to learn"
+    },
+    {
+      "n": 13, "kind": "latest", "views": 3400000, "title": "How Money Actually Works",
+      "face": {"present": "yes", "who": "channel host (centre), engraved as the banknote portrait", "count": 1, "main_width_pct": 17, "position": "centre, middle", "crop": "waist up", "expression": "serious, direct stare", "gaze": "at camera", "cutout": "no, engraved into the bill", "outline": "none"},
+      "background": {"kind": "illustration (banknote mock-up)", "subject": "US 100 dollar bill", "brightness": "bright", "sharpness": "sharp", "grade": "pale green-grey with blue security strip"},
+      "text": {"words": [], "word_count": 0, "lines": 0, "position": "none as headline", "case": "none", "type_class": "none", "typeface": "none", "fill": "none", "box": "none", "height_pct": 0, "highlight": "none"},
+      "graphics": "bill text: FEDERAL RESERVE NOTE, UNITED STATES OF AMERICA, serial LG 06350821D, corner 100 marks; Federal Reserve seal left; Liberty bell bottom right; blue security strip; COMPILATION tag bottom right",
+      "palette": ["pale green-grey #B9C4B5", "cream #E8E1CF", "blue #2F4F9A"],
+      "layout": "T3 host centre cut-out, no headline",
+      "title_link": "no headline; the bill echoes the title money word",
+      "hook": "the host face as a banknote portrait makes money the personal subject"
+    },
+    {
+      "n": 14, "kind": "latest", "views": 3100000, "title": "The American war machine, explained",
+      "face": {"present": "yes", "who": "channel host (left)", "count": 1, "main_width_pct": 23, "position": "left, middle", "crop": "head and shoulders", "expression": "serious, mild frown", "gaze": "at camera", "cutout": "yes", "outline": "none"},
+      "background": {"kind": "map", "subject": "dark world map with red flight arcs fanning out from one point", "brightness": "dark navy", "sharpness": "sharp", "grade": "navy with glowing red"},
+      "text": {"words": [], "word_count": 0, "lines": 0, "position": "none as headline", "case": "none", "type_class": "none", "typeface": "none", "fill": "none", "box": "none", "height_pct": 0, "highlight": "none"},
+      "graphics": "red arcs across the globe converging on Central America and the Caribbean; small COMPILATION tag bottom centre",
+      "palette": ["navy #0F2238", "red #E0302B", "off-white #E8E8E8"],
+      "layout": "T4 person left, map or photo right",
+      "title_link": "no headline; arcs show the war machine idea visually",
+      "hook": "red lines fanning out from one point over a dark globe suggest a network of power"
+    },
+    {
+      "n": 15, "kind": "latest", "views": 6200000, "title": "The REAL reason the US can’t beat Iran",
+      "face": {"present": "yes", "who": "channel host (right)", "count": 1, "main_width_pct": 19, "position": "right, middle", "crop": "head and shoulders", "expression": "stern, angry", "gaze": "at camera", "cutout": "yes", "outline": "none"},
+      "background": {"kind": "map", "subject": "dark map with a red-highlighted country", "brightness": "dark", "sharpness": "sharp", "grade": "charcoal with red"},
+      "text": {"words": [], "word_count": 0, "lines": 0, "position": "none", "case": "none", "type_class": "none", "typeface": "none", "fill": "none", "box": "none", "height_pct": 0, "highlight": "none"},
+      "graphics": "five round badges: US flag (upper left), Russian flag (top centre), UK flag (lower left), Israeli flag (bottom centre), CIA seal (right of the country)",
+      "palette": ["red #D7191F", "charcoal #1F2328", "white #F2F2F2"],
+      "layout": "T2 host right, object left, headline or none",
+      "title_link": "no text; the badges add other actors beyond the two named in the title",
+      "hook": "a red-highlighted country ringed by flags and a CIA seal hints at a wider coalition"
+    },
+    {
+      "n": 16, "kind": "latest", "views": 4000000, "title": "Oligarchy is worse than you think",
+      "face": {"present": "yes", "who": "channel host (left); other person (man in dark suit and tie, right)", "count": 2, "main_width_pct": 28, "position": "left, middle", "crop": "head and shoulders", "expression": "worried, intense", "gaze": "at camera", "cutout": "yes", "outline": "none"},
+      "background": {"kind": "flat colour with map", "subject": "faint world map, ornamental red and gold border", "brightness": "bright red", "sharpness": "sharp", "grade": "saturated red and white"},
+      "text": {"words": ["$1", "TRILLION"], "word_count": 2, "lines": 1, "position": "top right", "case": "upper", "type_class": "wide grotesque sans, heavy", "typeface": "closest Arial Black (guess)", "fill": "white", "box": "none; dark drop shadow", "height_pct": 11, "highlight": "none"},
+      "graphics": "faint world map; ornamental red and gold frame edges",
+      "palette": ["red #C8102E", "white #F5F5F5", "navy #1A1F2B"],
+      "layout": "T1 host left, caps headline, subject right",
+      "title_link": "adds a second idea: a dollar figure that gives the oligarchy claim scale",
+      "hook": "a worried host beside a man in a dark suit under $1 TRILLION makes money the story"
+    },
+    {
+      "n": 17, "kind": "latest", "views": 1200000, "title": "The Real Story Behind the Mormon Church",
+      "face": {"present": "yes", "who": "channel host (left); painted historical man (right) and 2 faint figures in the painting", "count": 4, "main_width_pct": 25, "position": "left, middle", "crop": "head and shoulders", "expression": "concerned, wide eyes", "gaze": "at camera", "cutout": "yes, teal tint on edge", "outline": "teal tint on edge"},
+      "background": {"kind": "illustration (painting)", "subject": "historical painted figure, temple silhouette, open book", "brightness": "dark teal", "sharpness": "sharp", "grade": "teal-green with dark vignette"},
+      "text": {"words": ["MORMON", "CHURCH", "EXPLAINED"], "word_count": 3, "lines": 2, "position": "centre bottom", "case": "upper", "type_class": "heavy condensed sans", "typeface": "closest Bebas Neue Bold (guess)", "fill": "white", "box": "MORMON CHURCH on solid red box; EXPLAINED on dark band", "height_pct": 10, "highlight": "MORMON CHURCH in red box"},
+      "graphics": "red box behind MORMON CHURCH; temple silhouette top right; open book bottom right; [COMPILATION] tag bottom right",
+      "palette": ["teal-green #2E5E5A", "red #D71920", "white #F2F2F2"],
+      "layout": "T1 host left, caps headline, subject right",
+      "title_link": "repeats the subject (Mormon Church) and adds explained",
+      "hook": "a worried host beside a painted historical figure and a red topic box promises history explained"
+    },
+    {
+      "n": 18, "kind": "latest", "views": 4300000, "title": "China’s Dirty Money Problem, Explained",
+      "face": {"present": "yes", "who": "channel host (centre); eyes and forehead only", "count": 1, "main_width_pct": 45, "position": "centre, middle", "crop": "face only, cut at the nose by banknotes", "expression": "intense, suspicious glare", "gaze": "at camera", "cutout": "no, photo", "outline": "none"},
+      "background": {"kind": "flat colour with photograph", "subject": "fan of banknotes held in two hands, China flag", "brightness": "bright red ground, mid money", "sharpness": "notes sharp, flag soft", "grade": "saturated red and yellow"},
+      "text": {"words": [], "word_count": 0, "lines": 0, "position": "none", "case": "none", "type_class": "none", "typeface": "none", "fill": "none", "box": "none", "height_pct": 0, "highlight": "none"},
+      "graphics": "yellow stars top left on red flag; banknotes: 100 EURO, 50 EURO, US dollar, RMB; two hands holding the fan",
+      "palette": ["red #D7191F", "yellow #F5C518", "muted blue-green #4A7A7F"],
+      "layout": "T3 host centre cut-out, no headline",
+      "title_link": "no text; flag and money repeat the title China and money",
+      "hook": "eyes above a fan of dirty banknotes against a flag suggest a secret money trail"
+    },
+    {
+      "n": 19, "kind": "latest", "views": 7600000, "title": "The Modern Middle East, Explained",
+      "face": {"present": "yes", "who": "channel host (right)", "count": 1, "main_width_pct": 22, "position": "right, middle", "crop": "head and shoulders", "expression": "calm, neutral", "gaze": "at camera", "cutout": "yes", "outline": "none"},
+      "background": {"kind": "map", "subject": "grey satellite or topographic map of the Middle East", "brightness": "light grey with navy", "sharpness": "sharp", "grade": "desaturated grey-blue"},
+      "text": {"words": ["MIDDLE", "EAST", "EXPLAINED"], "word_count": 3, "lines": 2, "position": "left, centre", "case": "upper", "type_class": "heavy condensed sans", "typeface": "closest Oswald Bold (guess)", "fill": "white", "box": "MIDDLE EAST on red slanted banner; EXPLAINED plain", "height_pct": 8, "highlight": "MIDDLE EAST on red slanted banner"},
+      "graphics": "red slanted banner behind MIDDLE EAST; [COMPILATION] tag bottom left in grey",
+      "palette": ["light grey #B8BEC4", "navy #1B2A3A", "red #D7191F"],
+      "layout": "T2 host right, object left, headline or none",
+      "title_link": "repeats the topic and drops the title word Modern",
+      "hook": "a calm host and a red-banner map read as a clear overview"
+    },
+    {
+      "n": 20, "kind": "latest", "views": null, "title": "Talking news and media with Max Fisher",
+      "face": {"present": "yes", "who": "two men in conversation (left and right); which one is the host is not visible in the pixels; on-image credit reads by MAX FISHER", "count": 2, "main_width_pct": 19, "position": "left and right, middle", "crop": "waist up", "expression": "animated, mid-sentence (left); animated, hands gesturing (right)", "gaze": "away, at each other", "cutout": "no, video frame", "outline": "none"},
+      "background": {"kind": "video frame", "subject": "podcast set with blurred painted art behind", "brightness": "dark", "sharpness": "men sharp, background blurred", "grade": "warm dark with green and blue"},
+      "text": {"words": ["The", "Bigger", "Picture", "by", "MAX", "FISHER"], "word_count": 6, "lines": 2, "position": "centre top", "case": "mixed", "type_class": "serif (The Bigger Picture); handwritten (by MAX FISHER)", "typeface": "closest bold serif (guess); handwritten marker", "fill": "white with blue-violet glow", "box": "none", "height_pct": 8, "highlight": "none"},
+      "graphics": "two microphone arms in foreground bottom; gesturing hands",
+      "palette": ["dark brown-black #1B1714", "green sweater #2F6A4A", "denim blue #3D5A74"],
+      "layout": "T7 two men in conversation, mics foreground, series title card centre top",
+      "title_link": "no repeat of the title; adds a series name and a credit",
+      "hook": "two men mid-argument with mics and a series name promise a discussion, not a single story"
+    }
+  ],
+  "channel_findings": {
+    "templates": [
+      {"name": "T1 host left, caps headline, subject right", "thumbs": [2, 3, 6, 9, 16, 17], "count": 6},
+      {"name": "T2 host right, object or map left, headline or none", "thumbs": [4, 8, 15, 19], "count": 4},
+      {"name": "T3 host centre cut-out, no headline", "thumbs": [11, 12, 13, 18], "count": 4},
+      {"name": "T4 person left, map or photo right", "thumbs": [5, 14], "count": 2},
+      {"name": "T5 evidence collage, host inset top-left", "thumbs": [1], "count": 1},
+      {"name": "T6 host left, cut-out graphic centre, wide-spaced word bottom", "thumbs": [10], "count": 1},
+      {"name": "T7 two men in conversation, mics, title card", "thumbs": [20], "count": 1},
+      {"name": "T8 photo only, face centre", "thumbs": [7], "count": 1}
+    ],
+    "constants": "Recurring presenter in 17 of 20 thumbs (1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19); thumb 20 unclear; no presenter in 5 and 7. Presenter is head and shoulders or waist up, direct gaze, cut out from a flat or map ground. Red accent (underline, box, banner, slash, or red ground) on 10 of 20: 2, 3, 4, 5, 6, 8, 9, 16, 17, 19. No fixed border or badge. [COMPILATION] tag on 13, 14, 17, 19.",
+    "host_treatment": "Lit front-on. Cut out from the ground on 12 of the 17 presenter thumbs (2, 3, 6, 8, 9, 10, 12, 14, 15, 16, 17, 19). Main face width 11 to 30 percent of frame width on the 17 presenter thumbs, median 22 percent, one outlier at 45 (18, face cropped at nose). Placement: left third on 9 thumbs (1, 2, 3, 6, 9, 10, 14, 16, 17), right third on 4 thumbs (4, 8, 15, 19), centre on 4 thumbs (11, 12, 13, 18). Share with presenter face: 17 of 20. Only 2 thumbs (5, 7) have no presenter at all.",
+    "text_rules": "Headline on 13 of 20 thumbs (1, 2, 3, 4, 5, 6, 8, 9, 10, 16, 17, 19, 20). Word count 1 to 8, most often 1 to 4 (1: 1 word, 2: 5 words, 3: 3 words, 4: 8 words, 5: 2 words, 6: 4 words, 8: 3, 9: 4, 10: 1, 16: 2, 17: 3, 19: 3, 20: 6). Upper case on 11 of 13 headlines; thumb 4 and thumb 20 are mixed case. Fill is white on nearly all. Red for the highlight word or box on 2, 3, 4, 5, 8, 9, 16, 17, 19. Text sits bottom on 1, 2, 8, 10, 17; top on 6, 9, 16, 20; side-centre on 3, 5, 19; centre on 4. Highlight is one word or phrase in red or in a shape (oval, box, slash), or the 3 in yellow on 6.",
+    "popular_vs_latest": "Popular (1-10): headline overlay on 9 of 10 (all except 7), presenter face on 8 of 10, red accent on 7 of 10 (2, 3, 4, 5, 6, 8, 9), no COMPILATION tag. Latest (11-20): headline overlay on 4 of 10 (16, 17, 19, 20), presenter face on 9 of 10 (20 unclear), COMPILATION tag on 4 of 10 (13, 14, 17, 19), red accent on 3 of 10 (16, 17, 19), 5 of 10 with no headline (11, 13, 14, 15, 18); 12 has only a diagram word. Latest thumbs lean on cut-out close-ups and map or object graphics; popular thumbs on large caps headline plus object collage.",
+    "top3": "1 (17.0M views), 2 (14.0M), 3 (14.0M). All three put the presenter on the left with a red or white caps claim. All three frame a conspiracy or hidden-truth topic: a cover-up question (1), who is the deep state (2), and flat earth in quotes (3). Each has one clear object or visual anchor (red-ringed bullet, red-ringed JFK tile, flat disc under a dome). Each uses a single short caps phrase at 12 to 13 percent of frame height.",
+    "transfer": [
+      "Rule 1: presenter in the left third, head and shoulders, cut out, direct stare, head 20 to 28 percent of frame width. Evidence: 2 (20%), 6 (23%), 9 (20%), 16 (28%). For a storm channel: the male presenter in the left third with a storm radar or map on the right.",
+      "Rule 2: one headline of 1 to 4 words, white caps, with one red accent word or underline. Evidence: 2 (DEEP STATE in red with underline), 3 (THEORY underlined red), 19 (MIDDLE EAST on red banner), 9 (REALLY WANTS in oval). For storm: TORNADO or HURRICANE in red over the map.",
+      "Rule 3: end the headline with a question or a claim word when the video asks why or could. Evidence: 1 (COVER-UP?), 2 (WHO IS THE DEEP STATE?), 6 (COULD THIS CAUSE WW3?). For storm: COULD THIS STORM HIT YOUR TOWN?",
+      "Rule 4: ring the one key object in red. Evidence: 1 (bullet CE 399 ringed red), 2 (JFK tile ringed red), 6 (Taiwan ringed red), 5 (Balkans outlined red). For storm: the storm track or the affected county outlined red on a map.",
+      "Rule 5: put the presenter on a flat red or dark ground, not a busy collage. Evidence: 6 (red ground), 8 (red map), 16 (red field), 18 (red flag), 17 (teal ground). For storm: a dark sky or red warning-colour ground behind the presenter."
+    ],
+    "weak": [
+      "20: no headline, no topic word; the on-image text names a series and a credit, not the subject; the presenter cannot be told apart from the other man in pixels; low contrast on the serif title.",
+      "11: no text at all; the only cue is snow and a helicopter, so the topic (extreme places) is invisible at thumbnail size; presenter is an extreme close-up that carries no story.",
+      "18: no text; the face is cut at the nose by banknotes, so the expression is partly hidden; the subject reads as generic money, not China or a specific claim."
+    ]
+  }
+}

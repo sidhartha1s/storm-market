@@ -1,0 +1,301 @@
+{
+  "slug": "swegle",
+  "channel": "Swegle Studios",
+  "thumbs": [
+    {
+      "n": 1, "kind": "popular", "views": 5000000,
+      "title": "The Night Texas Hit 140°F (60°C) During a Thunderstorm",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "real photograph", "subject": "white two-storey house under a lightning bolt", "brightness": "dark", "sharpness": "sharp", "colour_grade": "black and white, high contrast"},
+      "text": {"exact": "SATAN'S STORM", "word_count": 2, "lines": 1, "position": "top-centre", "case": "upper", "type_class": "heavy geometric sans", "typeface": "Montserrat ExtraBold-like", "fill": "yellow #FFE600", "effect": "black drop shadow, no box", "height_pct": 14, "highlight": "whole line yellow"},
+      "graphics": "none (the lightning is part of the photo)",
+      "palette": ["black #111111", "grey #8C8C8C", "yellow #FFE600"],
+      "layout": "C single scene, headline top-centre",
+      "title_link": "second idea: occult frame, title is about heat",
+      "hook": "A black and white house under lightning with a yellow SATAN'S STORM promises a supernatural story."
+    },
+    {
+      "n": 2, "kind": "popular", "views": 4300000,
+      "title": "Evolution of Nuclear Bombs",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "real photograph", "subject": "three archival frames: mushroom cloud, underwater blast over a ship, red-orange space image", "brightness": "bright", "sharpness": "sharp", "colour_grade": "saturated cream, blue and red-orange"},
+      "text": {"exact": "FIRST BRITISH / FIRST UNDERWATER / FIRST IN SPACE", "word_count": 7, "lines": 1, "position": "top-per-panel", "case": "upper", "type_class": "heavy condensed italic sans", "typeface": "Anton-italic-like (Impact style)", "fill": "white", "effect": "black drop shadow", "height_pct": 6, "highlight": "none"},
+      "graphics": "three-panel split with thin white dividers; no arrows",
+      "palette": ["red-orange #B5321E", "sky blue #2F6FC0", "cream #EEE6D8"],
+      "layout": "A triptych, label per panel",
+      "title_link": "second idea: a list of firsts, title is about evolution",
+      "hook": "Three firsts shown as archival blasts set up a sequence the viewer wants to finish."
+    },
+    {
+      "n": 3, "kind": "popular", "views": 4300000,
+      "title": "Tornado Sirens are Scary...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "real photograph", "subject": "dark tornado in an amber sky, tornado siren cut out and placed left of centre", "brightness": "bright amber sky, dark tornado", "sharpness": "sharp", "colour_grade": "warm amber and sepia"},
+      "text": {"exact": "ALL ABOUT TORNADO SIRENS / HORRIFYING", "word_count": 5, "lines": 2, "position": "top-centre", "case": "upper", "type_class": "condensed semi-bold sans (top); bold sans in box (tag)", "typeface": "Oswald-like (top); Arial Bold-like (tag)", "fill": "white (top); white in black box (tag)", "effect": "soft shadow on top line; solid black box behind tag", "height_pct": 7, "highlight": "HORRIFYING boxed in black, bottom-left"},
+      "graphics": "tag box bottom-left; white curved arrow from lower-right up to the siren",
+      "palette": ["amber #E0A040", "sepia grey #6B5B4E", "near black #111111"],
+      "layout": "D single scene, word or label + arrow to object",
+      "title_link": "repeat (the siren topic) plus second idea HORRIFYING",
+      "hook": "A siren and a real tornado side by side, an arrow, and the word HORRIFYING tell the viewer a common object is a threat."
+    },
+    {
+      "n": 4, "kind": "popular", "views": 3700000,
+      "title": "Solar System Weather | All the CRAZY Weather on other Planets",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "composite of space photographs", "subject": "sun surface with red plume; half-lit moon with a white flash; Mars with a white storm", "brightness": "dark panels with bright objects", "sharpness": "sharp", "colour_grade": "saturated red-orange, black, moon grey"},
+      "text": {"exact": "SUN TORNADO / MOON LIGHTNING / HURRICANE ON MARS", "word_count": 7, "lines": 2, "position": "top-per-panel", "case": "upper", "type_class": "heavy condensed italic sans", "typeface": "Anton-italic-like (Impact style)", "fill": "white", "effect": "black drop shadow", "height_pct": 6, "highlight": "none"},
+      "graphics": "three-panel split with thin white dividers; white arrow to the flash on the moon; white arrow pointing down at the storm on Mars",
+      "palette": ["deep red #C8321E", "near black #0A0A0A", "moon grey #B4B4B4"],
+      "layout": "A triptych, label per panel",
+      "title_link": "partial repeat (weather on other planets) then three named examples",
+      "hook": "Three named weather events on three bodies, with arrows marking the odd spot."
+    },
+    {
+      "n": 5, "kind": "popular", "views": 3500000,
+      "title": "The Worst Tornado Disaster in 70 years - The Joplin EF5",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "illustration or AI-looking render", "subject": "dark wedge tornado over low buildings, flagpole, debris", "brightness": "dark", "sharpness": "sharp, grainy", "colour_grade": "desaturated grey-green"},
+      "text": {"exact": "THE JOPLIN EF5", "word_count": 3, "lines": 1, "position": "top-centre", "case": "upper", "type_class": "bold condensed sans", "typeface": "Bebas Neue-like", "fill": "red #E0202A", "effect": "none visible on dark ground", "height_pct": 8, "highlight": "whole line red"},
+      "graphics": "none (a small flag at lower right is part of the scene)",
+      "palette": ["charcoal #2A2E2C", "slate #5A605C", "red #D62828"],
+      "layout": "C single scene, headline top-centre",
+      "title_link": "repeat (names the event), no second idea",
+      "hook": "A dark funnel over houses and a named disaster give scale and menace."
+    },
+    {
+      "n": 6, "kind": "popular", "views": 3200000,
+      "title": "Every Tornado Type - A Complete List of Whirlwinds",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "real photograph", "subject": "fire whirl; snow whirl; water spout over a field", "brightness": "mixed: warm orange, white, grey-green", "sharpness": "sharp", "colour_grade": "warm, cool and natural in three panels"},
+      "text": {"exact": "RARE TORNADOES / FIRE / SNOW / WATER", "word_count": 5, "lines": 2, "position": "top-centre", "case": "upper", "type_class": "wide geometric sans", "typeface": "Montserrat Bold-like, outlined", "fill": "gold #F2A93B (headline); white (captions)", "effect": "dark outline on all text", "height_pct": 11, "highlight": "headline gold, captions white"},
+      "graphics": "three-panel split; no arrows",
+      "palette": ["amber #E8912D", "navy #1B2430", "white #FFFFFF"],
+      "layout": "B triptych, headline across top",
+      "title_link": "partial repeat (tornado types) plus three category words",
+      "hook": "Fire, snow and water tornadoes in one row make a rare-list promise."
+    },
+    {
+      "n": 7, "kind": "popular", "views": 2100000,
+      "title": "Emergency Alert Systems (EAS) are Scary...",
+      "face": {"present": "yes", "who": "other person (family: woman at left edge, girl lower-left, boy centre-right, man at right edge)", "count": 4, "width_pct": 9, "position": "bottom, across", "crop": "head and shoulders; edge figures cropped", "expression": "attentive, serious", "gaze": "at an object in frame (the alert sign)", "cutout": "part of the scene (archival photo)", "outline_glow": "none"},
+      "background": {"kind": "real photograph", "subject": "1950s-style living room; family watching an alert sign; tornado in window", "brightness": "dark to mid grey", "sharpness": "sharp", "colour_grade": "black and white"},
+      "text": {"exact": "TERRIFYING", "word_count": 1, "lines": 1, "position": "top-left", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Impact-like", "fill": "white", "effect": "black drop shadow", "height_pct": 7, "highlight": "none"},
+      "graphics": "white arrow from the word down-right to the sign; in-scene sign reads EMERGENCY ALERT SYSTEM, TORNADO EMERGENCY",
+      "palette": ["charcoal #3A3A3A", "white #F2F2F2", "LED red #D9352B"],
+      "layout": "D single scene, word or label + arrow to object",
+      "title_link": "repeat via the in-scene sign (EAS); overlay adds an emotion word",
+      "hook": "A frightened family watching an alert sign, with TERRIFYING and an arrow, makes fear the story."
+    },
+    {
+      "n": 8, "kind": "popular", "views": 2000000,
+      "title": "Terrifying Nocturnal Tornado Events",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "real photograph", "subject": "three night tornado frames, one above houses", "brightness": "dark", "sharpness": "soft, grainy", "colour_grade": "blue-teal night"},
+      "text": {"exact": "NOCTURNAL TORNADO HORRORS", "word_count": 3, "lines": 1, "position": "top-centre", "case": "upper", "type_class": "wide bold sans", "typeface": "Montserrat Bold-like", "fill": "red #E0201B", "effect": "dark outline", "height_pct": 8, "highlight": "whole line red"},
+      "graphics": "none; three-panel split",
+      "palette": ["navy #1E2A3A", "dark grey #3B3F45", "red #E0201B"],
+      "layout": "B triptych, headline across top",
+      "title_link": "repeat (nocturnal tornado); HORRORS replaces Terrifying",
+      "hook": "Three dark night tornadoes under a red headline set up dread of a threat you cannot see."
+    },
+    {
+      "n": 9, "kind": "popular", "views": 1900000,
+      "title": "The Largest Tornado Outbreak in History - 2011 Tornado Super Outbreak",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "real photograph (archival)", "subject": "wedge tornado over flat land with power poles", "brightness": "mid grey, bright sky left", "sharpness": "soft, grainy", "colour_grade": "black and white"},
+      "text": {"exact": "350 TORNADOES IN 1 DAY", "word_count": 5, "lines": 1, "position": "top-centre", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton-like", "fill": "white", "effect": "dark-red shadow", "height_pct": 9, "highlight": "none"},
+      "graphics": "none",
+      "palette": ["light grey #D0D0D0", "charcoal #2A2A2A", "red #C0201A"],
+      "layout": "C single scene, headline top-centre",
+      "title_link": "second idea: a count (350 tornadoes)",
+      "hook": "One large number over one huge archival tornado makes the scale the claim."
+    },
+    {
+      "n": 10, "kind": "popular", "views": 1800000,
+      "title": "The Rarest and Creepiest EAS Alerts (Featuring Real Events)",
+      "face": {"present": "no", "who": "other person (one figure seen from behind)", "count": 1, "width_pct": 7, "position": "bottom-centre", "crop": "full body", "expression": "not visible", "gaze": "away (faces away)", "cutout": "part of the scene (illustration)", "outline_glow": "none"},
+      "background": {"kind": "collage: real photo, illustration, real explosion image", "subject": "tornado at dusk; hooded figure by a lit house at night; mushroom cloud", "brightness": "mixed", "sharpness": "sharp", "colour_grade": "saturated orange-red and navy"},
+      "text": {"exact": "TORNADO EMERGENCY / SHELTER IN PLACE WARNING / NATIONAL EMERGENCY / EMERGENCY ALERT SYSTEM", "word_count": 11, "lines": 3, "position": "top-per-panel", "case": "upper", "type_class": "wide geometric sans (labels); dot-matrix alert style (banner)", "typeface": "Montserrat-like (labels); no match (banner)", "fill": "white; banner white with pink glow", "effect": "none on labels", "height_pct": 6, "highlight": "none"},
+      "graphics": "three-panel split; a banner line across the bottom",
+      "palette": ["navy #1B2236", "orange-red #E0501E", "white #F2F2F2"],
+      "layout": "A triptych, label per panel",
+      "title_link": "partial repeat (EAS) plus three alert types",
+      "hook": "Three emergency scenes with a hooded figure in the middle create suspense through a scenario."
+    },
+    {
+      "n": 11, "kind": "latest", "views": 443000,
+      "title": "Rare Natural Phenomena Accidentally Caught in Movies",
+      "face": {"present": "yes", "who": "other person (film actor, close-up)", "count": 1, "width_pct": 16, "position": "left, middle", "crop": "head and shoulders", "expression": "alarmed, staring up", "gaze": "at an object in frame (up at the meteor)", "cutout": "part of the scene (film still)", "outline_glow": "none"},
+      "background": {"kind": "real photograph (film stills)", "subject": "man looking up; silhouette in orange sky; silhouette with a crescent eclipse", "brightness": "mixed, warm", "sharpness": "sharp", "colour_grade": "warm orange and blue"},
+      "text": {"exact": "METEOR / RARE CLOUD / ECLIPSE", "word_count": 4, "lines": 1, "position": "top-per-panel", "case": "upper", "type_class": "heavy condensed grotesque", "typeface": "Impact-like", "fill": "yellow #FFE000", "effect": "black drop shadow", "height_pct": 8, "highlight": "all three labels yellow"},
+      "graphics": "two yellow arrows: at the meteor trail (left) and at the eclipse crescent (right)",
+      "palette": ["yellow #FFE000", "orange #E8602A", "navy #2A4A7A"],
+      "layout": "A triptych, label per panel",
+      "title_link": "repeat (rare phenomena) with three named examples",
+      "hook": "A frightened face and a yellow arrow to a meteor: a rare-event list with a visible stake."
+    },
+    {
+      "n": 12, "kind": "latest", "views": 565000,
+      "title": "This Extremely Rare Weather Event Could Kill You at Any Moment",
+      "face": {"present": "yes", "who": "other person (two adults)", "count": 2, "width_pct": 9, "position": "centre-right, middle", "crop": "waist up", "expression": "sombre, neutral", "gaze": "at an object in frame (the car)", "cutout": "part of the scene", "outline_glow": "none"},
+      "background": {"kind": "real photograph (archival)", "subject": "two adults behind a car with a dented hood", "brightness": "dark grey", "sharpness": "sharp", "colour_grade": "black and white"},
+      "text": {"exact": "DEADLY", "word_count": 1, "lines": 1, "position": "top-left", "case": "upper", "type_class": "heavy wide sans", "typeface": "Montserrat ExtraBold-like", "fill": "yellow #FFE000", "effect": "black drop shadow", "height_pct": 14, "highlight": "the one word, yellow"},
+      "graphics": "large yellow arrow from DEADLY down-right to the car hood",
+      "palette": ["black #111111", "mid grey #7A7A7A", "yellow #FFE000"],
+      "layout": "D single scene, word or label + arrow to object",
+      "title_link": "second idea: DEADLY, where the title says rare",
+      "hook": "A dented car, two grim faces, one huge word and an arrow tie danger to a real object."
+    },
+    {
+      "n": 13, "kind": "latest", "views": 20000,
+      "title": "Announcement! Dark Suburbia Now on Tubi!",
+      "face": {"present": "yes", "who": "other person (man, in small inset screen)", "count": 1, "width_pct": 8, "position": "bottom-left", "crop": "head and shoulders", "expression": "neutral, mouth closed", "gaze": "at camera", "cutout": "part of the scene (inset screen)", "outline_glow": "none"},
+      "background": {"kind": "real photograph (series key art)", "subject": "dark suburban street at night; street signs; case-file card", "brightness": "dark", "sharpness": "sharp", "colour_grade": "teal-black with amber lamps"},
+      "text": {"exact": "SWEGLE STUDIOS PRESENTS / DARK SUBURBIA / A TUBI ORIGINAL SERIES", "word_count": 9, "lines": 3, "position": "centre", "case": "upper", "type_class": "bold condensed sans (title); letterspaced sans (lines)", "typeface": "Bebas Neue-like (title)", "fill": "white", "effect": "none", "height_pct": 18, "highlight": "DARK SUBURBIA largest"},
+      "graphics": "in-scene street signs (W Highland Dr, 13th Av); case-file card with CONFIDENTIAL stamp; inset TV screen with target graphic bottom-left; Tubi partner line",
+      "palette": ["near black #0E1210", "amber lamp #E8B870", "teal-grey #3E7A6A"],
+      "layout": "F series key art, logo lockup",
+      "title_link": "repeat (series name and platform)",
+      "hook": "A series brand card with no question or stake; it reads as an ad for a show."
+    },
+    {
+      "n": 14, "kind": "latest", "views": 626000,
+      "title": "How a Space Photo Ended With 39 People Dead",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "real photograph (space image)", "subject": "starfield with a bright glowing object and comet-like tail", "brightness": "dark", "sharpness": "soft", "colour_grade": "blue-black with white-blue glow"},
+      "text": {"exact": "39 PEOPLE DIED", "word_count": 3, "lines": 1, "position": "top-centre", "case": "upper", "type_class": "wide geometric bold sans", "typeface": "Montserrat Bold-like", "fill": "red #E02020", "effect": "dark shadow", "height_pct": 12, "highlight": "whole line red"},
+      "graphics": "none",
+      "palette": ["navy-black #0B1A2E", "glow white-blue #C8E0F0", "red #E02020"],
+      "layout": "C single scene, headline top-centre",
+      "title_link": "near-verbatim repeat (39 people dead)",
+      "hook": "A red death count over a glowing space image: a tally with a mystery."
+    },
+    {
+      "n": 15, "kind": "latest", "views": 114000,
+      "title": "The Police Officer Who Hit a UFO",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "CGI or AI-looking render", "subject": "glowing white orb beside an orange 1970s police car on a wet road", "brightness": "dark", "sharpness": "sharp", "colour_grade": "black, orange car, bright orb"},
+      "text": {"exact": "VAL JOHNSON INCIDENT", "word_count": 3, "lines": 1, "position": "top-centre", "case": "upper", "type_class": "wide geometric bold sans", "typeface": "Montserrat Bold-like", "fill": "yellow #FFE600", "effect": "black drop shadow", "height_pct": 9, "highlight": "whole line yellow"},
+      "graphics": "none",
+      "palette": ["black #050505", "orange #E08A2A", "yellow #FFE600"],
+      "layout": "C single scene, headline top-centre",
+      "title_link": "second idea: names the case",
+      "hook": "A named incident and a glowing orb beside a police car make a case-file mystery, though the render looks fake."
+    },
+    {
+      "n": 16, "kind": "latest", "views": 250000,
+      "title": "I Recreated the Wizard of Oz Tornado",
+      "face": {"present": "yes", "who": "other person (man, studio)", "count": 1, "width_pct": 6, "position": "right, middle", "crop": "waist up", "expression": "sceptical, brows raised", "gaze": "at an object in frame (sideways, toward the prop)", "cutout": "part of the scene (studio backdrop)", "outline_glow": "none"},
+      "background": {"kind": "real photographs (archival left, studio right)", "subject": "historic tornado over farmland; man beside a white fabric tube prop on black", "brightness": "mixed: bright sepia left, black right", "sharpness": "sharp", "colour_grade": "sepia against black and white"},
+      "text": {"exact": "WIZARD OF OZ / MINE", "word_count": 4, "lines": 1, "position": "top-per-panel", "case": "upper", "type_class": "condensed bold sans", "typeface": "Oswald-like", "fill": "white", "effect": "black drop shadow", "height_pct": 7, "highlight": "none"},
+      "graphics": "two yellow arrows: at the tornado (left) and at the top of the white tube (right)",
+      "palette": ["sepia brown #7A5A40", "near black #121212", "yellow #F5D000"],
+      "layout": "E two-panel compare, labels + arrows",
+      "title_link": "repeat (Wizard of Oz tornado) plus MINE (ownership)",
+      "hook": "A famous tornado beside a homemade prop, labelled MINE, makes a DIY challenge."
+    },
+    {
+      "n": 17, "kind": "latest", "views": 536000,
+      "title": "Dark Stories Behind Ordinary Bridges",
+      "face": {"present": "yes", "who": "other person (two children)", "count": 2, "width_pct": 9, "position": "bottom, centre-left", "crop": "head and shoulders", "expression": "frightened, face partly hidden", "gaze": "away (down, toward the horizon)", "cutout": "part of the scene", "outline_glow": "none"},
+      "background": {"kind": "real photograph", "subject": "two children crouched against a concrete embankment; tornado on the horizon", "brightness": "mid grey, overcast", "sharpness": "soft", "colour_grade": "muted cool grey with warm skin tones"},
+      "text": {"exact": "TORNADO", "word_count": 1, "lines": 1, "position": "bottom-right", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Impact-like", "fill": "yellow #FFD500", "effect": "black drop shadow", "height_pct": 10, "highlight": "the one word, yellow"},
+      "graphics": "yellow arrow from TORNADO up-left to the tornado on the horizon",
+      "palette": ["concrete grey #6E6F6C", "sky grey #A8B0B0", "yellow #FFD500"],
+      "layout": "D single scene, word or label + arrow to object",
+      "title_link": "second idea: the title has no tornado word; the thumb names the threat",
+      "hook": "Two children hiding in danger with a tornado on the horizon make a child-in-danger frame."
+    },
+    {
+      "n": 18, "kind": "latest", "views": 222000,
+      "title": "What Caused the Mystery Mushroom Cloud of 1984?",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "real photograph (archival)", "subject": "mushroom cloud rising from flat land with a river road", "brightness": "mid-light grey", "sharpness": "sharp", "colour_grade": "black and white"},
+      "text": {"exact": "SECRET / NUCLEAR / TEST?", "word_count": 3, "lines": 3, "position": "left-centre", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton-like", "fill": "yellow #FFE600", "effect": "black drop shadow", "height_pct": 11, "highlight": "whole block yellow; arrow marks NUCLEAR"},
+      "graphics": "yellow arrow right from NUCLEAR to the cloud",
+      "palette": ["charcoal #2B2B2B", "light grey #D8D8D8", "yellow #FFE600"],
+      "layout": "D single scene, word or label + arrow to object",
+      "title_link": "second idea: a secret-test theory the title does not state",
+      "hook": "A three-word theory with an arrow to a mushroom cloud: a secret-test claim."
+    },
+    {
+      "n": 19, "kind": "latest", "views": null,
+      "title": "RARE SKY COLORS - Sky Colors Ranked by Rarity!",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "real photographs, colour-tinted in three panels", "subject": "church towers; bare trees; city skyline", "brightness": "bright tinted", "sharpness": "soft", "colour_grade": "heavy tint: green, pink, orange"},
+      "text": {"exact": "GREEN / PINK / ORANGE", "word_count": 3, "lines": 1, "position": "top-per-panel", "case": "upper", "type_class": "heavy grotesque sans", "typeface": "Arial Black-like", "fill": "white", "effect": "black outline", "height_pct": 9, "highlight": "none"},
+      "graphics": "three-panel split with white dividers",
+      "palette": ["green #6CC040", "pink #E070B8", "orange #E8802A"],
+      "layout": "A triptych, label per panel",
+      "title_link": "partial repeat (sky colours); names three colours",
+      "hook": "Three colour words over tinted scenes promise a colour rarity with no stake."
+    },
+    {
+      "n": 20, "kind": "latest", "views": 151000,
+      "title": "In 1994, Something Strange Rained From the Sky Over Washington",
+      "face": {"present": "yes", "who": "crowd (about 15 visible)", "count": 15, "width_pct": 8, "position": "bottom, across", "crop": "waist up", "expression": "squinting, grimacing, rain-soaked", "gaze": "mixed; some at camera", "cutout": "part of the scene", "outline_glow": "none"},
+      "background": {"kind": "real photograph", "subject": "people in lawn chairs and under umbrellas in heavy rain", "brightness": "dark grey", "sharpness": "sharp", "colour_grade": "desaturated grey with rain streaks"},
+      "text": {"exact": "THE RAIN MADE THEM SICK", "word_count": 5, "lines": 1, "position": "top-centre", "case": "upper", "type_class": "heavy geometric sans", "typeface": "Montserrat ExtraBold-like", "fill": "yellow #FFE600", "effect": "black drop shadow", "height_pct": 11, "highlight": "whole line yellow"},
+      "graphics": "none",
+      "palette": ["rain grey #5A6470", "lawn green #5C7A3A", "yellow #FFE600"],
+      "layout": "C single scene, headline top-centre",
+      "title_link": "partial repeat (rain); adds a health claim (made them sick)",
+      "hook": "A rain-soaked crowd and a claim that the rain made people sick: victims plus a mystery."
+    }
+  ],
+  "channel_findings": {
+    "templates": [
+      {"name": "A triptych, label per panel", "n": [2, 4, 10, 11, 19], "count": 5},
+      {"name": "B triptych, headline across top", "n": [6, 8], "count": 2},
+      {"name": "C single scene, headline top-centre", "n": [1, 5, 9, 14, 15, 20], "count": 6},
+      {"name": "D single scene, word or label + arrow to object", "n": [3, 7, 12, 17, 18], "count": 5},
+      {"name": "E two-panel compare, labels + arrows", "n": [16], "count": 1},
+      {"name": "F series key art, logo lockup", "n": [13], "count": 1}
+    ],
+    "constants": [
+      "Overlay text is upper case on 20 of 20 (in-scene signs excluded).",
+      "Headline is a heavy or bold sans on every thumb; no serif, no script.",
+      "No fixed colour pair. Text colour splits: yellow 7, white 9, red 3, gold 1. Yellow or red is the accent on 10 of 20.",
+      "1 to 5 word overlays on 16 of 20.",
+      "Text sits straight on the photo with a shadow or outline; one solid box in 20 (03, HORRIFYING tag).",
+      "Base is a real photograph on 16 of 20; composite, illustration or CGI-looking on 4 (04, 05, 10, 15).",
+      "No outline, glow or rim light on any person. No cut-out presenter."
+    ],
+    "host_treatment": {
+      "host_face_share": "0 of 20 show an on-camera host portrait",
+      "human_figures": "8 of 20 (07, 10, 11, 12, 13, 16, 17, 20)",
+      "visible_faces": "7 of 20 (07, 11, 12, 13, 16, 17, 20)",
+      "treatment_where_present": "Face 6 to 16% of frame width. Placed bottom or side. Head-and-shoulders or waist-up. Inside the photo, not cut out. Gaze: at an object in frame on 4 of 7 (07, 11, 12, 16); away on 1 (17); at camera on 1 (13); mixed on 1 (20)."
+    },
+    "text_rules": {
+      "usual_word_count": "1 to 5 words on 16 of 20; longest 11 (10) and 9 (13).",
+      "case": "Upper on 20 of 20.",
+      "colours": "Yellow 7, white 9, red 3, gold 1.",
+      "position": "Top-centre 9, top-per-panel 6, top-left 2, centre 1, left-centre 1, bottom-right 1.",
+      "highlight": "Whole line in one colour on 6 (01, 05, 08, 14, 15, 20). One word in yellow with arrow on 12 and 17. Arrow to the object on 8 thumbs (03, 04, 07, 11, 12, 16, 17, 18)."
+    },
+    "popular_vs_latest": {
+      "yellow_text": "Popular (01 to 10): 1 of 10. Latest (11 to 20): 6 of 10.",
+      "faces_visible": "Popular: 1 of 10 (07). Latest: 6 of 10 (11, 12, 13, 16, 17, 20).",
+      "multi_panel": "Popular: 5 of 10 (02, 04, 06, 08, 10). Latest: 3 of 10 (11, 16, 19).",
+      "views": "Popular 1.8M to 5.0M. Latest 20k to 626k; 19 has no view count in meta.",
+      "caveat": "Popular set is older and larger. Not a controlled comparison; the thumbs cannot be credited alone for the view gap."
+    },
+    "top3": {
+      "list": "01 (5.0M), 02 (4.3M), 03 (4.3M). 02 and 03 tie.",
+      "shared": "Real archival photograph as the full frame (all 3). Short all-caps label (1 to 7 words). Zero faces on all 3. One dramatic object per frame: lightning house, blast, siren with tornado. Light text on dark or bright photo, high contrast."
+    },
+    "transfer": [
+      "Use one real archival or real photograph as the full frame. Evidence: 01, 02, 03 (top 3) are single archival frames; 16 of 20 are real photographs. Skip the CGI look (05, 15 are weakest on realism).",
+      "Headline: 1 to 3 words, all caps, top-centre, black drop shadow. Yellow for mystery claims, red for deaths or danger. Evidence: 01 yellow SATAN'S STORM; 14 red 39 PEOPLE DIED (626k); 05 red THE JOPLIN EF5.",
+      "One word plus a yellow arrow on the object that carries the threat. Evidence: 12 DEADLY to the car; 17 TORNADO to the horizon funnel; 18 NUCLEAR to the cloud; 07 TERRIFYING to the sign.",
+      "For list titles, three equal panels with one short label each. Evidence: 02 (4.3M), 04 (3.7M), 11 (443k), 19 (views unknown).",
+      "If the host is on camera, keep the face 9 to 16% of frame width, waist up, looking at an object, no outline. Evidence: 11 face 16% looking at the meteor; 12 face 9% looking at the car; 07 face 9% looking at the sign."
+    ],
+    "weak": [
+      {"n": 13, "why": "Series brand card. Title repeated, 9 words in 3 lines, small type on dark key art, no question or stake. 20k views."},
+      {"n": 19, "why": "Three colour words over tinted photos, no subject or stake; the image reads as a data strip. View count null in meta, so judged on the image only."},
+      {"n": 15, "why": "CGI-looking orb and car with a name-only headline (VAL JOHNSON INCIDENT); a viewer who does not know the name gets no hook. 114k views."}
+    ]
+  }
+}

@@ -1,0 +1,302 @@
+{
+  "slug": "reed",
+  "channel": "Reed Timmer",
+  "thumbs": [
+    {
+      "n": 1, "kind": "popular", "views": 20000000,
+      "title": "The Most Insane Tornado Video Compilation of All Time (Drone & Ground Footage, Andover, KS)",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "real photograph (compilation)", "subject": "three tornadoes at left-centre, orange fire and buildings at right", "brightness": "mid, hazy", "sharpness": "soft", "grade": "desaturated grey with orange and violet glow"},
+      "text": {"exact": "", "word_count": 0, "lines": 0, "position": null, "case": null, "type_class": null, "typeface": null, "fill": null, "treatment": null, "biggest_line_pct_height": null, "highlight": null},
+      "graphics": ["black and grey torn ink-spatter frame with white speckle on all four edges"],
+      "palette": [{"name": "dark grey", "hex": "#3a3d40"}, {"name": "pale grey-white", "hex": "#c9ced3"}, {"name": "fire orange", "hex": "#d9642a"}],
+      "layout": "scene collage, grunge frame, no host",
+      "title_link": "no text",
+      "hook": "Three tornadoes and a fire in one frame promise spectacle before the viewer reads anything."
+    },
+    {
+      "n": 2, "kind": "popular", "views": 11000000,
+      "title": "JAW-DROPPING Tornado Drone Footage Shows Kansas Town Get Ripped Apart",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "real photograph (aerial wide shot)", "subject": "tornado at centre-left striking houses and a large commercial building at right, debris flying", "brightness": "mid, overcast", "sharpness": "sharp", "grade": "cool grey-blue with white dust"},
+      "text": {"exact": "", "word_count": 0, "lines": 0, "position": null, "case": null, "type_class": null, "typeface": null, "fill": null, "treatment": null, "biggest_line_pct_height": null, "highlight": null},
+      "graphics": ["none"],
+      "palette": [{"name": "dark slate", "hex": "#3c4650"}, {"name": "dust white", "hex": "#dcdcd6"}, {"name": "sky grey", "hex": "#7d858d"}],
+      "layout": "scene only, destruction wide",
+      "title_link": "no text",
+      "hook": "A real tornado hitting houses and a building in a town shows the damage at once."
+    },
+    {
+      "n": 3, "kind": "popular", "views": 10000000,
+      "title": "Drone captures INSANE DEBRIS FLOW off Pine Gulch Fire burn scar, Colorado",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "real photograph (drone aerial)", "subject": "brown mud channel crossing a grass bank", "brightness": "mid, flat daylight", "sharpness": "sharp", "grade": "natural, earthy"},
+      "text": {"exact": "", "word_count": 0, "lines": 0, "position": null, "case": null, "type_class": null, "typeface": null, "fill": null, "treatment": null, "biggest_line_pct_height": null, "highlight": null},
+      "graphics": ["none"],
+      "palette": [{"name": "mud brown", "hex": "#6f5f55"}, {"name": "grass green", "hex": "#7fa04e"}, {"name": "khaki bank", "hex": "#b7a777"}],
+      "layout": "scene only, drone level",
+      "title_link": "no text",
+      "hook": "A mud flow in a drone shot is a rare sight, but no tornado is in frame, so the click rests on curiosity."
+    },
+    {
+      "n": 4, "kind": "popular", "views": 9300000,
+      "title": "We Launched a Drone at This Tornado, and then...",
+      "face": {"present": false, "who": "none (small figure in rear window too small to read)", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "real photograph (wide-angle first person from vehicle roof)", "subject": "dirt road running to a dark storm base with a shelf-like cloud, no funnel visible", "brightness": "bright sky, mid ground", "sharpness": "sharp at centre, wide-angle edge distortion", "grade": "natural, saturated green fields"},
+      "text": {"exact": "", "word_count": 0, "lines": 0, "position": null, "case": null, "type_class": null, "typeface": null, "fill": null, "treatment": null, "biggest_line_pct_height": null, "highlight": null},
+      "graphics": ["black vehicle at lower-left foreground, side lettering not readable"],
+      "palette": [{"name": "storm slate", "hex": "#4b5560"}, {"name": "field green", "hex": "#6f8f3f"}, {"name": "pale sky", "hex": "#c8d5dc"}],
+      "layout": "vehicle foreground left, storm top centre, road to horizon",
+      "title_link": "no text",
+      "hook": "A camera vehicle driving toward a dark storm base gives scale and danger in one frame."
+    },
+    {
+      "n": 5, "kind": "popular", "views": 8500000,
+      "title": "Dominator 3 Tornado Tank ULTIMATE Tour",
+      "face": {"present": false, "who": "none (a hand is present, see graphics)", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "photograph with cut-out vehicle on stock-look sky and road", "subject": "steel-blue armoured vehicle with raised canopy panel, centre", "brightness": "bright", "sharpness": "sharp", "grade": "boosted saturation, blue sky"},
+      "text": {"exact": "TORNADO TANK", "word_count": 2, "lines": 2, "position": "top left", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Impact-like (no exact match)", "fill": "white (TORNADO), silver-white (TANK)", "treatment": "dark outline, no box", "biggest_line_pct_height": 14, "highlight": "none"},
+      "graphics": ["pointing hand with red sleeve at bottom right, pointing up-left at the vehicle", "raised canopy panel on vehicle, top right"],
+      "palette": [{"name": "sky blue", "hex": "#4ca3dc"}, {"name": "road grey", "hex": "#5b6068"}, {"name": "vehicle steel blue", "hex": "#5f7f98"}],
+      "layout": "vehicle hero centre, 2-word caps top-left, pointing hand bottom-right",
+      "title_link": "repeats title (Tornado Tank)",
+      "hook": "An odd vehicle with its canopy raised, a pointing hand and TORNADO TANK name the product on sight."
+    },
+    {
+      "n": 6, "kind": "popular", "views": 8500000,
+      "title": "Tank vs. Tornado - Insane Intercept in Dominator 3",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "split panel: left stylised illustration of sky and trees with cut-out vehicle; right real photograph of a tornado", "subject": "vehicle left, tornado right", "brightness": "left bright, right dark", "sharpness": "sharp", "grade": "left saturated and cartoon-like, right dark and desaturated"},
+      "text": {"exact": "VS", "word_count": 1, "lines": 1, "position": "centre", "case": "upper", "type_class": "other (brush display)", "typeface": "no close match", "fill": "red with yellow-orange gradient", "treatment": "white inner edge, black outer outline", "biggest_line_pct_height": 40, "highlight": "the word itself is red and is the only text"},
+      "graphics": ["diagonal split between left and right panels", "VS badge at centre", "DOMINATOR lettering on vehicle side, red on black"],
+      "palette": [{"name": "red", "hex": "#d6261d"}, {"name": "sky blue", "hex": "#3f9be0"}, {"name": "dark storm", "hex": "#2b3440"}],
+      "layout": "split versus, vehicle left, tornado right, VS centre",
+      "title_link": "repeats (VS echoes 'vs.' in title)",
+      "hook": "A versus split sets the vehicle against the tornado, so the viewer reads a contest first."
+    },
+    {
+      "n": 7, "kind": "popular", "views": 4500000,
+      "title": "We Were Hit, Stranded, and got Tornado of the Year",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "real photograph", "subject": "large dark wedge tornado with pinkish dust, two white wind turbines at left, flat field", "brightness": "mid", "sharpness": "sharp to soft", "grade": "pink-beige and grey"},
+      "text": {"exact": "", "word_count": 0, "lines": 0, "position": null, "case": null, "type_class": null, "typeface": null, "fill": null, "treatment": null, "biggest_line_pct_height": null, "highlight": null},
+      "graphics": ["red circle outline, lower right, around a smaller rotating vortex on the tornado side"],
+      "palette": [{"name": "dark grey", "hex": "#4a4a4c"}, {"name": "dusty pink", "hex": "#c9a69b"}, {"name": "red", "hex": "#e21f1f"}],
+      "layout": "scene wide, circle callout bottom-right",
+      "title_link": "no text",
+      "hook": "A red circle on one part of the tornado tells the viewer where to look."
+    },
+    {
+      "n": 8, "kind": "popular", "views": 4300000,
+      "title": "INSANE TORNADO PIPE intercept with windmills toppled near Greenfield, Iowa!",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "real photograph", "subject": "hazy grey tornado wall behind two wind turbines, one upright at right", "brightness": "dull, mid-dark", "sharpness": "soft", "grade": "desaturated grey"},
+      "text": {"exact": "", "word_count": 0, "lines": 0, "position": null, "case": null, "type_class": null, "typeface": null, "fill": null, "treatment": null, "biggest_line_pct_height": null, "highlight": null},
+      "graphics": ["small white debris flecks in the air"],
+      "palette": [{"name": "grey", "hex": "#8a9095"}, {"name": "dark grey", "hex": "#4a4e52"}, {"name": "field brown", "hex": "#6b5a40"}],
+      "layout": "scene only, hazy wide, turbine right",
+      "title_link": "no text",
+      "hook": "A hazy grey tornado beside turbines has low contrast; no turbine is toppled in the frame."
+    },
+    {
+      "n": 9, "kind": "popular", "views": 3400000,
+      "title": "We Rescued a Family From This Monster Tornado",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "real photograph", "subject": "large funnel centre-right over a rural road and telephone poles", "brightness": "bright sky, darker road", "sharpness": "sharp", "grade": "grey-white, low saturation"},
+      "text": {"exact": "HOME", "word_count": 1, "lines": 1, "position": "left, middle", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Impact-like (no exact match)", "fill": "black", "treatment": "no outline, no box, sits on pale sky", "biggest_line_pct_height": 9, "highlight": "black arrow curves from the word down to the funnel base"},
+      "graphics": ["black curved arrow from HOME to the base of the tornado, lower centre"],
+      "palette": [{"name": "pale sky", "hex": "#c8ccd0"}, {"name": "funnel dark grey", "hex": "#50575e"}, {"name": "road grey", "hex": "#6d7478"}],
+      "layout": "annotated scene, label left, arrow to funnel base",
+      "title_link": "adds second idea (home as the place at risk)",
+      "hook": "A one-word label and an arrow point the viewer at the funnel base as if it sits on a home."
+    },
+    {
+      "n": 10, "kind": "popular", "views": 2900000,
+      "title": "We FINALLY Launched a Rocket into a Tornado (again)",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "real photograph (camera on vehicle roof)", "subject": "black vehicle lower centre with mounted pole at left, dust wall across the right", "brightness": "mid-bright", "sharpness": "blurred by motion", "grade": "warm tan"},
+      "text": {"exact": "", "word_count": 0, "lines": 0, "position": null, "case": null, "type_class": null, "typeface": null, "fill": null, "treatment": null, "biggest_line_pct_height": null, "highlight": null},
+      "graphics": ["red curved arrow top left, pointing up and right at sky; no rocket readable at the tip", "mounted pole on vehicle, left"],
+      "palette": [{"name": "dust tan", "hex": "#c49a64"}, {"name": "sky grey-blue", "hex": "#9fb4c2"}, {"name": "arrow red", "hex": "#d42a1e"}],
+      "layout": "vehicle lower centre, dust wall right, red arrow top left",
+      "title_link": "no text",
+      "hook": "A red arrow points at empty sky, so the viewer searches for the rocket the title promises."
+    },
+    {
+      "n": 11, "kind": "latest", "views": 104000,
+      "title": "The Dominator F150 is swamped by a flood while a tornado touches down!",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "real photograph", "subject": "silver pickup half-sunk in brown flood water across a road", "brightness": "mid, overcast", "sharpness": "sharp", "grade": "grey-brown, low saturation"},
+      "text": {"exact": "", "word_count": 0, "lines": 0, "position": null, "case": null, "type_class": null, "typeface": null, "fill": null, "treatment": null, "biggest_line_pct_height": null, "highlight": null},
+      "graphics": ["none"],
+      "palette": [{"name": "flood grey", "hex": "#a9afb2"}, {"name": "mud brown", "hex": "#6b5a48"}, {"name": "sky grey", "hex": "#c9ccce"}],
+      "layout": "scene only, subject centre-right, flood",
+      "title_link": "no text",
+      "hook": "A stranded truck in brown floodwater is clear, but no tornado is in frame and the subject is ordinary."
+    },
+    {
+      "n": 12, "kind": "latest", "views": 166000,
+      "title": "INSANE TORNADO INTERCEPT rips kayak off the Dominator F150 and blows out back window!",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "real photograph", "subject": "funnel centre dropping from dark cloud base to the ground", "brightness": "mid", "sharpness": "soft, slightly blurred", "grade": "warm sepia orange"},
+      "text": {"exact": "", "word_count": 0, "lines": 0, "position": null, "case": null, "type_class": null, "typeface": null, "fill": null, "treatment": null, "biggest_line_pct_height": null, "highlight": null},
+      "graphics": ["none"],
+      "palette": [{"name": "warm tan", "hex": "#c9a074"}, {"name": "dark cloud", "hex": "#4b4a48"}, {"name": "pale sky", "hex": "#e4d6bd"}],
+      "layout": "scene only, funnel centre",
+      "title_link": "no text",
+      "hook": "A single clean funnel under warm light reads at small size; no kayak or vehicle is visible."
+    },
+    {
+      "n": 13, "kind": "latest", "views": null,
+      "title": "So you want to race a STORM CHASER??",
+      "face": {"present": false, "who": "none; driver not visible", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "photograph of a race track with cut-out armoured vehicle", "subject": "rust-brown armoured vehicle circled at upper left, race cars at lower left and right", "brightness": "bright", "sharpness": "sharp", "grade": "saturated orange wall and black asphalt"},
+      "text": {"exact": "BRING IT.", "word_count": 2, "lines": 1, "position": "top right", "case": "upper", "type_class": "wide grotesque sans", "typeface": "Arial Black-like", "fill": "white", "treatment": "thick black outline, no box", "biggest_line_pct_height": 10, "highlight": "none"},
+      "graphics": ["white ellipse outline around the armoured vehicle, upper left", "black race car with number 88, lower left"],
+      "palette": [{"name": "orange wall", "hex": "#e8a24a"}, {"name": "asphalt black", "hex": "#2a2a2a"}, {"name": "white", "hex": "#f5f5f5"}],
+      "layout": "vehicle hero circled left, caps taunt top right",
+      "title_link": "adds second idea (challenge)",
+      "hook": "A circled armoured vehicle on a race track with BRING IT. turns the title's challenge into a taunt."
+    },
+    {
+      "n": 14, "kind": "latest", "views": 106000,
+      "title": "Team Dominator works RARE NOCTURNAL TORNADO OUTBREAK last night in northern Illinois!",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "real photograph (night, low light)", "subject": "faint dark funnel at centre-left over a flat horizon, grass at lower right", "brightness": "dark", "sharpness": "grainy and blurred, heavy noise", "grade": "blue-violet night"},
+      "text": {"exact": "", "word_count": 0, "lines": 0, "position": null, "case": null, "type_class": null, "typeface": null, "fill": null, "treatment": null, "biggest_line_pct_height": null, "highlight": null},
+      "graphics": ["none"],
+      "palette": [{"name": "night blue", "hex": "#2b2a4a"}, {"name": "dark grey", "hex": "#3a3a46"}, {"name": "grass olive", "hex": "#8a9a4a"}],
+      "layout": "scene only, dim night",
+      "title_link": "no text",
+      "hook": "Dim, grainy night footage with a faint funnel gives the eye little to hold."
+    },
+    {
+      "n": 15, "kind": "latest", "views": 68000,
+      "title": "TORNADO PRODUCING MACHINE flips cars and shreds trees in Iowa today!",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "real photograph (dusk)", "subject": "thin funnel right of centre over farm buildings and a tree line", "brightness": "mid-dark", "sharpness": "soft", "grade": "muted teal-grey with warm horizon"},
+      "text": {"exact": "", "word_count": 0, "lines": 0, "position": null, "case": null, "type_class": null, "typeface": null, "fill": null, "treatment": null, "biggest_line_pct_height": null, "highlight": null},
+      "graphics": ["none"],
+      "palette": [{"name": "slate grey", "hex": "#5a6670"}, {"name": "horizon amber", "hex": "#c9a878"}, {"name": "dark green", "hex": "#2f3e2f"}],
+      "layout": "scene wide, funnel right of centre, no text",
+      "title_link": "no text",
+      "hook": "A thin funnel over farm buildings reads as a rural storm; the subject is small and the mood is calm."
+    },
+    {
+      "n": 16, "kind": "latest", "views": 110000,
+      "title": "Vehicles flipped upside down by EF3-EF4 Appleton, Wisconsin tornado",
+      "face": {"present": false, "who": "none readable; partial figures at left edge", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "real photograph (daylight)", "subject": "upturned silver car on a debris pile, stripped trees, damaged building", "brightness": "mid, overcast", "sharpness": "slightly soft", "grade": "natural, muted"},
+      "text": {"exact": "", "word_count": 0, "lines": 0, "position": null, "case": null, "type_class": null, "typeface": null, "fill": null, "treatment": null, "biggest_line_pct_height": null, "highlight": null},
+      "graphics": ["red SUV and white sedan cropped at bottom left"],
+      "palette": [{"name": "pale sky", "hex": "#b8c4cc"}, {"name": "debris grey", "hex": "#8c8c88"}, {"name": "brick", "hex": "#8a4a3a"}],
+      "layout": "aftermath scene, flipped car centre",
+      "title_link": "no text",
+      "hook": "An upturned car in a tree-and-debris scene shows the damage directly, with no caption needed."
+    },
+    {
+      "n": 17, "kind": "latest", "views": 236000,
+      "title": "VIOLENT #TORNADO INTERCEPTED just now in Appleton, Wisconsin! Major damage",
+      "face": {"present": false, "who": "none", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "real photograph (dusk or night)", "subject": "dark cloud base over tree silhouettes with a bright blue-white light at bottom centre", "brightness": "dark", "sharpness": "soft", "grade": "teal-green"},
+      "text": {"exact": "", "word_count": 0, "lines": 0, "position": null, "case": null, "type_class": null, "typeface": null, "fill": null, "treatment": null, "biggest_line_pct_height": null, "highlight": null},
+      "graphics": ["black letterbox bars at top and bottom, about 12 percent of frame height each"],
+      "palette": [{"name": "dark teal", "hex": "#1f4a4a"}, {"name": "storm green-grey", "hex": "#4a7a72"}, {"name": "headlight blue-white", "hex": "#9ac8e8"}],
+      "layout": "letterboxed dark scene, no host, no text",
+      "title_link": "no text",
+      "hook": "A dark teal sky with a bright light gives mood but no readable tornado shape."
+    },
+    {
+      "n": 18, "kind": "latest", "views": 1000000,
+      "title": "RUN! Life-threatening flash flood in Sonora, Texas",
+      "face": {"present": false, "who": "other person (bystander), head cut off at top edge", "count": 0, "width_pct": null, "position": "right", "crop": "waist up", "expression": null, "gaze": "at object in frame (phone)", "cutout": false, "outline": "none"},
+      "background": {"kind": "real photograph", "subject": "fast brown flood water carrying a large grey-beige round object (tank or culvert)", "brightness": "bright daylight", "sharpness": "sharp", "grade": "natural brown and green"},
+      "text": {"exact": "", "word_count": 0, "lines": 0, "position": null, "case": null, "type_class": null, "typeface": null, "fill": null, "treatment": null, "biggest_line_pct_height": null, "highlight": null},
+      "graphics": ["silver metal railing across the bottom and right", "phone held up by the bystander, upper right"],
+      "palette": [{"name": "flood brown", "hex": "#8a6a4a"}, {"name": "tree green", "hex": "#4a6a32"}, {"name": "bank beige", "hex": "#b8aa8a"}],
+      "layout": "bystander right, object left, railing foreground",
+      "title_link": "no text",
+      "hook": "A man filming a flood that carries a large object shows the danger, with the object as focal point."
+    },
+    {
+      "n": 19, "kind": "latest", "views": 888000,
+      "title": "We Were In a Tornado and Now Have A BIG Fix",
+      "face": {"present": false, "who": "none readable; one figure in the cab window, face not visible", "count": 0, "width_pct": null, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline": null},
+      "background": {"kind": "real photograph", "subject": "black Dominator-style vehicle with a crushed front end, smoke and flames at front", "brightness": "bright", "sharpness": "sharp", "grade": "natural, black vehicle"},
+      "text": {"exact": "IT BROKE", "word_count": 2, "lines": 1, "position": "bottom right", "case": "upper", "type_class": "wide grotesque sans", "typeface": "Arial Black-like", "fill": "IT white, BROKE red", "treatment": "solid black box behind each word", "biggest_line_pct_height": 11, "highlight": "BROKE in red"},
+      "graphics": ["smoke and flames at front left of vehicle", "DOMINATOR 3 lettering on side"],
+      "palette": [{"name": "sky grey-blue", "hex": "#9fb0bb"}, {"name": "vehicle black", "hex": "#1c1f22"}, {"name": "flame orange", "hex": "#e8632a"}],
+      "layout": "vehicle centre showing damage, 2-word caps tag bottom right",
+      "title_link": "adds second idea (failure)",
+      "hook": "A burning, broken vehicle with IT BROKE in red states the outcome before the click."
+    },
+    {
+      "n": 20, "kind": "latest", "views": 146000,
+      "title": "Team Dominator intercepts TYPHOON BAVI in Ishigaki, Japan and floats cube vehicle",
+      "face": {"present": true, "who": "channel host (presumed, not labelled)", "count": 1, "width_pct": 30, "position": "left, top to middle", "crop": "head and shoulders", "expression": "serious, neutral, slight frown", "gaze": "at camera", "cutout": false, "outline": "none"},
+      "background": {"kind": "real photograph", "subject": "choppy sea with white spray, yellow barrier at lower left", "brightness": "mid-bright", "sharpness": "blurred by handheld motion", "grade": "cool blue, washed out"},
+      "text": {"exact": "", "word_count": 0, "lines": 0, "position": null, "case": null, "type_class": null, "typeface": null, "fill": null, "treatment": null, "biggest_line_pct_height": null, "highlight": null},
+      "graphics": ["yellow barrier or buoy at lower left"],
+      "palette": [{"name": "sky pale blue", "hex": "#9bb8d0"}, {"name": "sea white", "hex": "#e8eef2"}, {"name": "shirt black", "hex": "#1a1a1a"}],
+      "layout": "host left, face close, sea right",
+      "title_link": "no text",
+      "hook": "A close, blurred face of a serious man in front of a storm sea makes the scene personal."
+    }
+  ],
+  "channel_findings": {
+    "templates": [
+      {"name": "scene only, no text", "n": [2, 3, 4, 8, 11, 12, 14, 15, 16, 17], "count": "10 of 20"},
+      {"name": "annotated scene (red circle or arrow, or black label)", "n": [7, 9, 10], "count": "3 of 20"},
+      {"name": "vehicle hero plus caps text", "n": [5, 13, 19], "count": "3 of 20"},
+      {"name": "versus split", "n": [6], "count": "1 of 20"},
+      {"name": "host close-up", "n": [20], "count": "1 of 20"},
+      {"name": "bystander and object, cropped", "n": [18], "count": "1 of 20"},
+      {"name": "grunge collage frame", "n": [1], "count": "1 of 20"}
+    ],
+    "constants": [
+      "Pure real footage in 17 of 20. Composites with a cut-out vehicle or illustrated panel: 05, 06, 13.",
+      "No face in 19 of 20 (only 20 shows one). No logo, channel name or brand border on any thumbnail.",
+      "Every thumbnail with text uses capitals (5 of 5: 05, 06, 09, 13, 19).",
+      "No fixed typeface: heavy condensed sans (05, 09), wide grotesque sans (13, 19), brush display (06).",
+      "No fixed colour pair. Red is the only recurring accent: 06, 07, 10, 19 (4 of 20).",
+      "Black armoured vehicle recurs in 04, 06, 10, 19 (4 of 20). Storm-dark or dusk grade in 14, 15, 17.",
+      "Colours and hex values are visual estimates from the pixels, not sampled values."
+    ],
+    "host_treatment": {
+      "face_share": "1 of 20 (5%): 20. Popular 0 of 10; latest 1 of 10.",
+      "when_present": "Head and shoulders, close crop, left side, top to middle; face about 30 percent of frame width; not cut out; no outline or rim light; daylight; neutral to serious expression; looks at camera.",
+      "caveat": "The channel's top 10 by views carry no face at all. The owner's face-first design is not supported by this channel's top thumbnails; the storm and the vehicle carry the click here. The face-led layout has one example (20, 146k views), so treat it as untested for this channel."
+    },
+    "text_rules": {
+      "presence": "Text in 5 of 20 (05, 06, 09, 13, 19). 15 of 20 have none.",
+      "word_count": "1 or 2 words (2, 1, 1, 2, 2).",
+      "case": "All capitals.",
+      "colours": "White with black outline (05, 13); black on pale sky, no outline (09); red (06 VS; 19 BROKE); white IT on black box (19).",
+      "position": "Top left (05), centre (06), left middle (09), top right (13), bottom right (19).",
+      "highlight": "Red on one word (19) or the whole word (06). Otherwise none; 09 uses its arrow as the highlight.",
+      "size": "Biggest line about 9 to 14 percent of frame height (05 14, 09 9, 13 10, 19 11); 06 VS about 40 percent.",
+      "title_link": "Repeats title in 05 (Tornado Tank) and echoes it in 06 (VS). Adds a second idea in 09 (HOME), 13 (BRING IT.) and 19 (IT BROKE)."
+    },
+    "popular_vs_latest": {
+      "popular_1_to_10": "Views 2.9M to 20M. Face 0 of 10. Text 3 of 10 (05, 06, 09). Red or black annotation 5 of 10 (hand 05, VS 06, circle 07, arrow 09, arrow 10). Tornado funnel or wall visible 6 of 10 (01, 02, 06, 07, 08, 09). Dominator-style vehicle 4 of 10 (04, 05, 06, 10).",
+      "latest_11_to_20": "Views 68k to 1M (13 has no count). Face 1 of 10 (20). Text 2 of 10 (13, 19). Annotation 1 of 10 (13 white circle). Funnel visible 3 of 10 (12, 14, 15). No tornado in frame 7 of 10 (11, 13, 16, 17, 18, 19, 20). Darker grades in 14, 15, 17.",
+      "difference": "The popular set shows the storm and a marked-up detail; the latest set shows aftermath, floods and dark skies with little annotation. The thumbnails differ in visible tornado and annotation, not in face use, which is zero in both groups except one. Views differ about 100 times, so thumbnails alone do not explain the gap; video age and topic also matter."
+    },
+    "top3": {
+      "items": "01 (20M), 02 (11M), 03 (10M).",
+      "shared": "All three are real footage with no face, no text and no logo. 01 and 02 show tornadoes at full scale, 02 with a town being hit. 03 is a drone shot of a mud flow with no tornado, so the top-view thumbnails do not require a tornado; they require a large, legible disaster scene. 01 adds a torn grunge frame, the only frame treatment in the top 3."
+    },
+    "transfer": [
+      {"rule": "Open on real storm footage that fills the frame with the storm, with a funnel or wall clearly visible.", "evidence": "6 of the top 10 show a funnel or wall (01, 02, 06, 07, 08, 09); the top two (01, 02) show tornadoes on the ground. Latest 10: 3 show a funnel (12, 14, 15)."},
+      {"rule": "Put one red mark on one detail of the storm: a circle, an arrow or a versus badge.", "evidence": "Popular 5 of 10 carry a red or black mark (05 hand, 06 VS, 07 red circle, 09 arrow, 10 red arrow). Latest 1 of 10 (13 white circle)."},
+      {"rule": "Keep any text to one or two words in capitals, white with black outline or on a solid box, placed in a corner.", "evidence": "All text thumbnails: 05 TORNADO TANK, 06 VS, 09 HOME, 13 BRING IT., 19 IT BROKE. All capitals, all 1 or 2 words, all corner or edge placed except 06."},
+      {"rule": "Place the presenter at the storm's edge, not the middle, with the storm filling the other side of the frame.", "evidence": "Vehicle at the edge with the storm on the other side in 04 (lower left, storm top right), 06 (left, tornado right) and 10 (lower centre, dust right). Only 20 puts a person in close-up, and that frame has no storm to share."},
+      {"rule": "Show the result of the storm in one frame and pair it with a short outcome word.", "evidence": "02 shows a town hit (11M). 19 shows a burning vehicle with IT BROKE (888k). 16 shows an upturned car (110k)."}
+    ],
+    "weak": [
+      {"n": 14, "why": "Dim, grainy night frame with a faint funnel. No text, no mark, no subject to hold the eye. 106k views."},
+      {"n": 17, "why": "Dark teal sky and letterbox bars with no readable tornado. The title says the tornado was intercepted, but the frame shows no funnel. 236k views."},
+      {"n": 11, "why": "Silver pickup in brown floodwater. No tornado in frame although the title names one, and the vehicle has no Dominator livery. 104k views."}
+    ]
+  }
+}
