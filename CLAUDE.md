@@ -77,7 +77,7 @@ An owner correction or a measured surprise lands in its single home (`references
 ## The formula
 Script method and hook wording live in `references/script-os.md` and `script-framework.md`; titles and thumbnails in
 `references/packaging-rules.md`. What stays true for every episode:
-- The angle is locked by the owner before anything else, chosen from several true candidates (`references/angle.md`). The video is built on the angle, not on the subject.
+- In a documentary the angle is locked by the owner before anything else, chosen from several true candidates (`references/angle.md`). The video is built on the angle, not on the subject. Whether minis follow the rule is open (`ops/tasks.md`).
 - Stats run through the middle, each translated to human scale. Human moments go where they hit hardest (script-scaling.md "Emotion").
 - Tornado episodes may march location by location (editor's call per episode). Micro-loops every 30 to 45 s. No-spoiler metadata.
 - A meteorology explainer layer in every episode, and at least two facts no competitor video has (NWS Service

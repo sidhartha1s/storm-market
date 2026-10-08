@@ -14,7 +14,7 @@ This file is the one home of that rule. `CLAUDE.md`, the episode skills, `refere
 - The fact every video on the subject already leads with is not an angle. It is the subject's default line, and it is ruled out as the lead.
 
 ## Order of work (documentaries)
-angle > structure > hook > title > thumbnail > script. No title, thumbnail, hook or script line is written before the owner locks the angle. Work done earlier is thrown away, not adapted.
+Angle first. Then structure, then title and thumbnail, then the hook that pays them (`references/script-quickref.md` "The hook"), then the script. His sentence lists hook, title and thumbnail as what follows the lock; it does not order them. No title, thumbnail, hook or script line is written before the owner locks the angle. Work done earlier is thrown away, not adapted.
 
 ## How the candidates are found
 1. **Rule out the default.** From the teardowns of the top videos on the subject, write down what each one leads with. Those leads are the list of angles we do not take.
@@ -22,7 +22,7 @@ angle > structure > hook > title > thumbnail > script. No title, thumbnail, hook
 3. **Write at least four candidates.** Each is one sentence a viewer could repeat, with its source and what is still unverified.
 4. **Test each one:**
    - Would a viewer who watched the top three videos on the subject still learn this? If not, drop it.
-   - Does every act of the video serve it? An angle that fills one act is a segment, not an angle.
+   - Can you name at least three acts it needs? An angle that fills one act is a segment, not an angle.
    - Does the primary source say it, in full, without stretching? If the claim needs a softened word to stay true, write the softened version or drop it.
    - Can the footage and graphics we may legally use carry it?
 5. **Show the owner all candidates with one recommendation and the reason.** Never one angle alone. Candidates may be combined: one as the spine, others as arcs inside it.
@@ -41,7 +41,10 @@ Still unverified: <list, or none>
 
 A writer's brief carries this block, pasted from that file. A brief without it is not ready.
 
+A fact check may tighten the Claim's wording: whoever ran the check updates the file and tells the owner what moved. A changed meaning needs a new lock.
+
 ## Worked example: El Reno 2013 (locked 9 Oct 26)
+- His locking words, on a list of four candidates: "Do a mix of number one and number five. And eventually number two will also be included there. Like as a small arc or something like that." "Five" was read as candidate four, the two vehicles; he was told and went on. The lock is `episodes/ep4-el-reno/angle.md` on the episode's branch.
 - Ruled out: "radar near 300 mph, rated EF3" and "the widest tornado ever recorded". Every top video leads with one of them.
 - Locked: all 21 people who lost their lives on the night of May 31 were in a vehicle or sheltering in a drainage ditch, none in a building (NWS Service Assessment, Appendix C, counted row by row). Two vehicles inside the same tornado minutes apart, one crew surviving and one not, carry the middle; the small fast vortices inside the wide one are the science arc that explains them.
-- What the fact check changed after the lock: the two vehicles were on different roads, and the count holds for that night only (one more flood death the next morning is outside the table). A locked angle still gets its wording from the sources.
+- What the fact check changed after the lock: the two vehicles were on different roads, and the count holds for that night only (one more flood death the next morning is outside the table). Both were wording, not meaning, so the lock stood and he was told.
