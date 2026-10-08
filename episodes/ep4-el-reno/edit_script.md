@@ -429,7 +429,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 **Picture:** the map holds. A small line of text, "count is for the night of May 31", then one grey marker far to the east, "Okfuskee County · June 1", outside the frame of pins.
 > None of this means a house is a match for a sub-vortex. No house was put to that test that night. And the count stops at that night. The next morning the flooding took one more life, in Okfuskee County.
 
-### A5-S10 — narration
+### A5-S11 — narration
 **Picture:** [HUMAN] three short returns under `data-callback`, each two seconds: the house and ditch drawing with its "a few feet" measure; the name card "Richard Henderson"; the traffic aerial. Then back to the full map.
 > But the count itself does not move. The family of seven were a few feet from their own door. Richard Henderson had left his home nearby. Many of the people in that traffic had left a house behind them.
 
