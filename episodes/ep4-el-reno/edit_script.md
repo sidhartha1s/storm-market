@@ -312,7 +312,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *([loop L5 `cta-hinge` open]: who the twelve were. Book ad mounts here. Closes in A4-S1, first sentence.)*
 
 
-## A4 · The twelve and the warning gap (about 12:58, after the book ad)
+## A4 · The twelve and the warning gap (about 13:00, after the book ad; runs about 4:36; the fairness block A4-S12 to A4-S15 sits at about 16:04 to 17:09)
 
 ### A4-S1 — narration
 **Picture:** straight out of the book ad, no black. A street map of Oklahoma City at "NW 26th St and Meridian": one house outline, one ditch line beside it, a short measure between them marked "a few feet · News 9, June 2013". Sirens in a real clip's own sound, low, under the second sentence. Text-only name card "Samuel Cifuentes".
