@@ -78,7 +78,7 @@ weakness is shape: the peak is at 0:52 and segments five to seven hold at 3 for 
    sentences, and "eight" now means three things within 35 s (eight in vehicles, eight children, aged eight), beside
    "eighteen" in I1-S2. The ear loses the count.
 5. I1-S4: "Nowhere on that table is a house, a store, a school or a storm shelter." Inversion.
-6. I1-S4 against I1-S3: "storm shelter" lands ten seconds after "sheltering in ... storm drains". Heard aloud, the
+6. I1-S4 against I1-S3: "storm shelter" lands one sentence after "sheltering in ... storm drains". Heard aloud, the
    twelve sound like people who were in a shelter.
 7. I1-S5: "People later told the weather service that fear from that day led them to do things they normally would
    not." Faithful to the assessment, but the words hold no picture; only the highway shot says what the "things" were.
