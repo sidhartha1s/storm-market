@@ -117,7 +117,8 @@ per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > 
   clip after the out-dip; the payoff clip is REAL footage, never a graphic.
 - **Audio:** the CTA carries its own VO (`data-volume="1"`); narration is silent under it (lint
   overlap rule); score/SFX bed ducked ≥12 dB or out. Never within 60s of another audio-carrying
-  insert (the "never two inserts back-to-back" rule).
+  insert (the "never two inserts back-to-back" rule). One exception: Paul's own on-camera line right before it
+  (`references/mg-quickref.md` "Paul on screen"); the 1.0s dip still sits between his line and the CTA.
 - **Not a chapter boundary:** the CTA sits inside the preceding chapter; the next chapter starts
   on the payoff sentence, so chapter-scrubbing lands on the payoff, not the ad.
 - **Deliverables:** SRT cue from `data-srt-label`; `metadata.md` description puts
