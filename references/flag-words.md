@@ -13,7 +13,7 @@ launder a word the voice track was not allowed to say.
 **Severity.** `hard` = never use it, anywhere, no exception — gate `scripts/flag_words.py`
 fails the build. `soft` = the word is not banned outright (it is often the plainest, most
 factual choice, or genuinely hard to avoid in a disaster documentary), but the alternative
-reads better in TTS narration and should be the default; the gate warns, does not fail.
+is the default (owner 9 Oct 26: YouTube flags these words and can suppress the video) and reads better in TTS narration; the gate warns, does not fail.
 
 **Inflections.** The gate matches every listed term plus its plain English suffixes
 (s/es/d/ed/ing) automatically — "kill" also catches "kills" and "killing" without a separate
@@ -54,7 +54,7 @@ quote that was not actually said.
 | destroy / destroyed | soft | leveled; reduced to rubble; wiped out | Plain, factual, and usually the right word — vary it for rhythm, not for risk. |
 | dead | soft | did not survive; lost their lives | Owner 9 Oct 26: soft wording is the default; the plain word stays only where precision needs it. |
 | death / deaths | soft | the toll; the lives lost | Owner 9 Oct 26: the alternative is the default. The plain noun may stay where a sourced count needs it, never sentence after sentence. |
-| death toll | soft | the number who did not survive; the toll | Standard journalistic phrase; low risk, use when precision matters. |
+| death toll | soft | the number who did not survive; the toll | Owner 9 Oct 26: the alternative is the default; the plain phrase only for a sourced count. |
 | died | soft | lost their lives; did not survive | Owner 9 Oct 26: "use it in a soft way because YouTube flags those and can suppress it. Maybe something like lost life." Write the alternative by default. The plain word may stay once or twice where a count needs it, never stacked. |
 | body / bodies | soft | remains; those who did not survive | Necessary in recovery-effort narration; keep it factual, avoid stacking with other hard terms in the same sentence. |
 | corpse | hard | the remains; the person who did not survive | More clinical/graphic than "body" with no added information — always replaceable. |

@@ -5,7 +5,7 @@ the source file named in each section header; if a rule here and its source disa
 PR and say which one won.
 
 ## The angle (owner 9 Oct 26) — `references/angle.md`
-- Your brief carries an Angle block locked by the owner: one true claim the whole video is built on. A brief without it is not ready: stop and say so.
+- A documentary brief carries an Angle block locked by the owner: one true claim the whole video is built on. A documentary brief without it is not ready: stop and say so. (Minis: not decided yet, `ops/tasks.md`; a mini brief without the block is fine.)
 - Every act serves the angle. The fact every other video on the subject leads with is not the lead here; the block names it.
 - The hook, the open loops and the close all pay the angle. Do not drift back to the subject's default line.
 
@@ -46,7 +46,7 @@ Every 20–60 s: question → information → payoff → new question, chained w
 - Every beat in `edit_script.md` is an AV unit: what is said, what moves on screen, what the sound does, one row,
   one judgment. MGs get dedicated slots for information. (`script-framework.md` §1)
 - One dominant question the whole script serves ("the viewer keeps watching to find out ___"), riding on one
-  script concept: the one claim the film proves, strongest when it overturns a belief ("physics hid the iceberg",
+  script concept: the one claim the film proves (in a documentary it is the Claim line of the locked angle, copied, never rewritten), strongest when it overturns a belief ("physics hid the iceberg",
   not "the Titanic"). The hook confirms it; every act proves part of it.
 - Consequence before mechanism ("426 people lost their lives, and the wave wasn't an earthquake" beats "a landslide tsunami occurs when…").
 - Never spend curiosity early — one open question at a time.
@@ -117,8 +117,8 @@ mechanism/analysis pair) and plants+pays a loop.
 
 ## Flag words — `references/flag-words.md`
 Write with its alternatives from the first draft. `python3 scripts/flag_words.py episodes/<slug>` fails the script
-on any hard word in narration, on-screen text or metadata. Death words (dead, died, killed) take the soft
-alternative by default, for example "lost their lives" (owner 9 Oct 26); the table says how often the plain word may stay.
+on any hard word in narration, on-screen text or metadata. `killed` and `murdered` are hard words: never. `dead`, `died` and `death` take the soft
+alternative by default, for example "lost their lives" (owner 9 Oct 26); the table says when the plain word may stay.
 
 ## `[verify]` gate — writer tags, never resolves (owner order 27 Sep 26) — `script-scaling.md`
 - Every fact not already in the pasted research gets `[verify: ...]` inline the moment it's written.
