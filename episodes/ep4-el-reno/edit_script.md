@@ -283,7 +283,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A3-S9 — narration
 **Picture:** the counter holds at its end. Readout "over 180 mph". A line draws from the Cobalt's starting mark, about 580 yards west of Radio Road, to a mark just north-east of the crossroads: "about 650 yards · about 20 seconds". No photograph of the car.
-> The center of it sat just east of where the Cobalt is thought to have been. Air inside it was moving at more than a hundred and eighty miles an hour. The paper notes that the car was not especially heavy and not armored. In about twenty seconds it was carried about six hundred and fifty yards, past the crossroads at Radio Road.
+> The center of it sat just east of where the Cobalt is thought to have been. Air inside it was moving at more than one hundred eighty miles an hour. The Cobalt was not especially heavy, and it was not armored. In about twenty seconds it was carried about six hundred and fifty yards, past the crossroads at Radio Road.
 
 ### A3-S10 — narration
 **Picture:** [HUMAN] black card, text only, one name at a time: "Tim Samaras · 55", "Paul Samaras · 24", "Carl Young · 45". No photographs. One second of silence after the last sentence.
