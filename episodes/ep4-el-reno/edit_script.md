@@ -271,7 +271,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A3-S6 — narration
 **Picture:** place stamp "Reuter Road". The road-level map: two markers heading east inside the ring, "Dan Robinson" ahead, the white Cobalt behind. A "45 mph" readout on Robinson; the gap between the two opens. Two small headlight dots on the Cobalt marker fade at "6:22:15 PM · Wurman et al. 2014". Robinson's video is described, never shown: no licence on record.
-> On Reuter Road, two more cars were heading east inside the wide circulation. The first was Dan Robinson's, and the white Cobalt was right behind him. Robinson was doing about forty five miles an hour, and the Wurman paper says the Cobalt fell behind. By the paper's radar timing, its headlights are last seen behind him a little after six twenty two PM.
+> On Reuter Road, two more cars were heading east inside the wide circulation. The first was Dan Robinson's, and the white Cobalt was right behind him. Robinson was doing about forty five miles an hour, and the Cobalt fell behind. By the radar team's timing, its headlights were last seen behind him a little after six twenty two PM.
 
 ### A3-S7 — narration
 **Picture:** the map pulls back: Reuter Road and Highway 81 empty except three markers, the two cars and one red pickup parked on the highway. Text line from the assessment, exact words: "there were no other vehicles in our immediate vicinity · Dan Robinson, quoted in the NWS Service Assessment".
