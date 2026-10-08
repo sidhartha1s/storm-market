@@ -421,7 +421,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 **Picture:** text-only card "Harold Brooks · NOAA" with his words as attributed text: "irresponsible at best, and dangerous at worst". Behind it the cutaway house from A1-S2, an inner closet lit.
 > Harold Brooks, a federal meteorologist, had words for the message that only underground would do. He called it irresponsible at best and dangerous at worst.
 
-### A5-S8 — narration
+### A5-S9 — narration
 **Picture:** the 21-pin map splits into two layers: roads lit near El Reno with the small circle crossing one; then the city's low ground shaded blue, water running into the two drains. Every pin falls inside one layer or the other.
 > By the count, the storm had two real dangers that night. One was on the open roads near El Reno, where a sub-vortex could cross faster than any car. The other was the water, which ran to the lowest ground in the city. Every one of the twenty one was on a road or in the water.
 
