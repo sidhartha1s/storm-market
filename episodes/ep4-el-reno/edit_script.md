@@ -318,7 +318,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A4-S1 — narration
 **Picture:** straight out of the book ad, no black. A street map of Oklahoma City at "NW 26th St and Meridian": one house outline, one ditch line beside it, a short measure between them marked "a few feet · News 9, June 2013". Sirens in a real clip's own sound, low, under the second sentence. Text-only name card "Samuel Cifuentes".
-> A few feet. That is how far one family of seven went from their own door, by the account their relatives gave News Nine. When the tornado sirens sounded in Oklahoma City that Friday, Samuel Cifuentes left his house near Northwest twenty sixth Street and Meridian.
+> A few feet is how far one family of seven went from their own door, by the account their relatives gave News Nine. When the tornado sirens sounded in Oklahoma City that Friday, Samuel Cifuentes left his house near Northwest twenty sixth Street and Meridian.
 
 *([loop L5 `cta-hinge` closes] in the first sentence: the family, and how far they went.)*
 
