@@ -1,0 +1,33 @@
+{
+ "slug": "japmethod",
+ "channel": "The Japanese Method",
+ "by": "orchestrator (read from the 5x4 contact sheet, 400 px per thumbnail; per-thumbnail rows are grouped, not one by one)",
+ "thumbs": [
+  {"n": [1, 2, 3, 4, 5, 6, 8, 10], "kind": "popular", "views": "123,000 to 660,000", "layout": "numbered grid: 6 to 10 rounded photo tiles with white numerals, avatar bottom centre or right, one lower-case line across the top", "text": ["this is why you smell", "this is why you smell old", "stop buying this sh*t", "this makes your home smell old", "throw this sh*t away", "throw this sh*t away", "this actually works", "this stops mess coming back"]},
+  {"n": [7], "kind": "popular", "views": 217000, "layout": "numbered grid of 10 small tiles, avatar centre holding toilet roll and toothbrush, thin black line of text on a white strip", "text": ["things Japan never does in the bathroom"]},
+  {"n": [9], "kind": "popular", "views": 136000, "layout": "avatar centre in front of a collage of messy rooms, one lower-case line across the top", "text": ["declutter your home in 24hrs"]},
+  {"n": [11, 13, 15, 16], "kind": "latest", "views": "null on all four", "layout": "avatar large on one side inside a messy room, two stacked label boxes: white caps on black, then black caps on yellow", "text": ["CLEANING / AFTER 50", "YOU'LL REGRET / THIS", "THIS IS WHY / YOU'RE STUCK", "DON'T DONATE / THIS"]},
+  {"n": [12, 18], "kind": "latest", "views": "null", "layout": "avatar in the scene, white lower-case serif line, yellow hand-drawn arrow or labelled boxes", "text": ["this will backfire", "it's all junk"]},
+  {"n": [14, 17, 19, 20], "kind": "latest", "views": "null, null, null, 290,000", "layout": "avatar in the scene, lower-case sans line with one yellow word; 14 has two struck-through words above it; 17 has red circles and arrows over the mess", "text": ["decluttering downsizing (struck through) / death cleaning", "what I'd declutter first.", "they lied to / YOU", "you dont need any of this"]}
+ ],
+ "channel_findings": {
+  "templates": [
+   {"name": "numbered grid + avatar + lower-case top line", "n": [1, 2, 3, 4, 5, 6, 7, 8, 10], "count": 9},
+   {"name": "avatar inside a messy room + stacked black and yellow label boxes", "n": [11, 13, 15, 16], "count": 4},
+   {"name": "avatar inside a scene + lower-case line with one yellow word", "n": [9, 12, 14, 17, 18, 19, 20], "count": 7}
+  ],
+  "constants": "The same avatar on 20 of 20: same man, same short black hair, same red polo shirt every time. White and yellow are the only text colours. Bright, clean, high-key home interiors.",
+  "host_treatment": "The avatar is never a pasted cut-out with an outline: he is generated inside the scene, lit by the room, and he always does something with his hands (pinches his nose, points at tile 3, holds a toilet roll, opens a cupboard, shrugs at the mess). Head and shoulders to waist up, face about 15 to 25 % of frame width in the grid format and 25 to 35 % in the newer scene format. Always at the camera. Same outfit is the brand mark: there is no logo or badge.",
+  "text_rules": "4 to 6 words, one line, lower case, rounded bold sans (Poppins or Montserrat class), white with the last one or two words in yellow, soft drop shadow. Conversational and blunt: this is why you smell, stop buying this sh*t. The numbered tiles do the listing so the text can stay a feeling. Newer thumbnails switch to 2 to 4 word caps in black and yellow boxes.",
+  "popular_vs_latest": "All 9 of the best performers with known views use the numbered grid. The latest 10 dropped the grid for one big messy-room scene with a larger face and boxed caps. 9 of the latest 10 have no public view count in the feed, so this study cannot say whether the change helped.",
+  "top3": "1 (660,000), 2 (457,000), 3 (417,000): all numbered grids with the avatar reacting or pointing and a lower-case line ending in yellow.",
+  "transfer": [
+   "Lock the avatar's outfit. One shirt on every thumbnail does the job of a logo: 20 of 20.",
+   "Generate the avatar inside the scene with his hands doing something tied to the subject, never a floating head: 1, 2, 3, 7, 18.",
+   "Give his hands one job per thumbnail: point at the proof or react to it: 3, 8, 10, 14.",
+   "Two text colours only, with the payoff word in the second colour: 1 to 10, 19, 20.",
+   "A numbered proof grid only fits list videos; a single-event documentary has no list, so this part does not transfer."
+  ],
+  "weak": "7: ten tiny tiles and a thin text strip, unreadable at small size. 17: red circles and arrows everywhere, nothing to look at first. 9: collage with no single subject."
+ }
+}

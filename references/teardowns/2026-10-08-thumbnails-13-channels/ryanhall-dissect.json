@@ -1,0 +1,273 @@
+{
+  "slug": "ryanhall",
+  "channel": "Ryan Hall, Y'all",
+  "thumbs": [
+    {
+      "n": 1, "kind": "popular", "views": 13000000,
+      "title": "This Winter Is Going To be VERY Different (2023-24)",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map with colour gradient)", "subject": "US winter map: magenta west and north, cyan centre, red east coast", "brightness": "mid, navy-black corners", "sharpness": "sharp", "grade": "neon magenta and cyan, saturated"},
+      "text": {"exact": "WINTER PREDICTION", "word_count": 2, "lines": 2, "position": "top-left, spans about 60% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 28, "highlight": "none"},
+      "graphics": [],
+      "palette": [{"name": "magenta", "hex": "#E61CC8"}, {"name": "cyan", "hex": "#35D6E8"}, {"name": "navy-black", "hex": "#0A0A1F"}],
+      "layout": "map + 2-line caps top-left, no arrow",
+      "title_link": "repeats title (winter) and adds 'prediction'",
+      "hook": "Two bold words over a neon winter map promise a forecast at a glance."
+    },
+    {
+      "n": 2, "kind": "popular", "views": 7200000,
+      "title": "Winter Forecast (2025-2026)",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map with frost texture)", "subject": "US map: magenta south and central band, ice-blue and frosted north", "brightness": "mid, dark navy edges", "sharpness": "sharp", "grade": "deep blue and magenta with frost sparkle"},
+      "text": {"exact": "WINTER PREDICTION", "word_count": 2, "lines": 2, "position": "top-left, spans about 60% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 30, "highlight": "none"},
+      "graphics": [],
+      "palette": [{"name": "magenta", "hex": "#E01FD8"}, {"name": "ice blue", "hex": "#4FB8F0"}, {"name": "navy", "hex": "#0C1028"}],
+      "layout": "map + 2-line caps top-left, no arrow",
+      "title_link": "repeats title (winter, forecast)",
+      "hook": "Same two-word promise as thumbnail 1 on a frosted map; the title's 'forecast' becomes 'prediction'."
+    },
+    {
+      "n": 3, "kind": "popular", "views": 4100000,
+      "title": "This Winter Heat Wave Is About To Cause Chaos...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map with colour gradient)", "subject": "US map: blue west, orange and red across centre and east", "brightness": "mid, dark corners", "sharpness": "sharp", "grade": "hot orange-red against blue, saturated"},
+      "text": {"exact": "BRACE YOURSELF", "word_count": 2, "lines": 2, "position": "top-left, spans about 50% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 27, "highlight": "none"},
+      "graphics": ["white arrow with black outline, from under 'BRACE' down-right into the blue west zone", "white arrow with black outline, from bottom-centre up-right toward the red midwest zone"],
+      "palette": [{"name": "orange", "hex": "#F79A1E"}, {"name": "red", "hex": "#E0232A"}, {"name": "blue", "hex": "#3AA8E8"}],
+      "layout": "map + caps top-left, two arrows",
+      "title_link": "adds second idea (text does not repeat the title)",
+      "hook": "Command text plus two arrows pointing at opposite temperature zones shows a clash and a threat."
+    },
+    {
+      "n": 4, "kind": "popular", "views": 4000000,
+      "title": "Here's How Bad This Winter Will Actually Be (2022-23)",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map with colour gradient)", "subject": "US map: cyan and blue across centre and south, magenta over Great Lakes and Ohio valley", "brightness": "mid, navy edges", "sharpness": "sharp", "grade": "cold blue and cyan, saturated"},
+      "text": {"exact": "WINTER PREDICTION", "word_count": 2, "lines": 2, "position": "top-left, spans about 55% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 28, "highlight": "none"},
+      "graphics": [],
+      "palette": [{"name": "cyan", "hex": "#2ED3EE"}, {"name": "blue", "hex": "#2D5FD0"}, {"name": "navy", "hex": "#0C1A33"}],
+      "layout": "map + 2-line caps top-left, no arrow",
+      "title_link": "repeats title (winter)",
+      "hook": "Cold blue map reads as a cold winter at a glance; the same two-word text as thumbnails 1 and 2."
+    },
+    {
+      "n": 5, "kind": "popular", "views": 3700000,
+      "title": "The Biggest Weather Event This Year Is Coming...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map)", "subject": "US map: red-orange outside, white-cyan jet band running west to east across the middle", "brightness": "mid, black corners", "sharpness": "sharp", "grade": "red-orange and cyan, saturated"},
+      "text": {"exact": "EL NINO", "word_count": 2, "lines": 1, "position": "top-left, spans about 60% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 29, "highlight": "none"},
+      "graphics": ["white arrow with black outline, from bottom-left curving up onto the band", "white arrow with black outline, from top-right curving down-left onto the band's east end"],
+      "palette": [{"name": "red-orange", "hex": "#F0401F"}, {"name": "cyan", "hex": "#2FE6F0"}, {"name": "black", "hex": "#0A0A0A"}],
+      "layout": "map + caps top-left, two arrows",
+      "title_link": "adds second idea (names a cause the title does not)",
+      "hook": "Two arrows converge on one bright band, so the viewer reads a single named driver."
+    },
+    {
+      "n": 6, "kind": "popular", "views": 2900000,
+      "title": "This New Forecast Just Got WAY Worse...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map)", "subject": "US map: pale pink-white core over the southern and central plains, blue around", "brightness": "mid-bright, black corners", "sharpness": "sharp", "grade": "blue with pale core"},
+      "text": {"exact": "FRESH DATA", "word_count": 2, "lines": 1, "position": "top-centre, spans about 80% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 18, "highlight": "none"},
+      "graphics": [],
+      "palette": [{"name": "blue", "hex": "#2A7CF0"}, {"name": "pale pink-white", "hex": "#F7E3F5"}, {"name": "magenta edge", "hex": "#E8179F"}],
+      "layout": "map + 1-line caps top-centre, no arrow",
+      "title_link": "adds second idea (process word 'data' against 'new forecast')",
+      "hook": "Pale core on blue shows where new data landed; the label is a process word, not a claim."
+    },
+    {
+      "n": 7, "kind": "popular", "views": 2900000,
+      "title": "El Nino Is About To Completely Change Our Weather...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map)", "subject": "US map: red north and west, cyan south-east, diagonal boundary", "brightness": "mid, black corners", "sharpness": "sharp", "grade": "hard red and cyan split"},
+      "text": {"exact": "STRANGE SHIFT", "word_count": 2, "lines": 2, "position": "top-left, spans about 45% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 32, "highlight": "none"},
+      "graphics": ["white arrow with black outline, from top edge pointing down-right toward the Great Lakes", "white arrow with black outline, from bottom-left pointing up-right at the Texas border"],
+      "palette": [{"name": "red", "hex": "#E8141E"}, {"name": "cyan", "hex": "#40E8E8"}, {"name": "black", "hex": "#0A0A0A"}],
+      "layout": "map + caps top-left, two arrows",
+      "title_link": "adds second idea (title names El Nino, text names a shift)",
+      "hook": "Hard red-to-cyan boundary with two arrows shows a front moving across the country."
+    },
+    {
+      "n": 8, "kind": "popular", "views": 2900000,
+      "title": "Here's How Much Snow You'll Get This Year... (2023-24)",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map)", "subject": "US map: magenta north and south edges, blue-cyan horizontal band across the middle", "brightness": "mid, dark edges", "sharpness": "sharp", "grade": "magenta, blue and cyan, saturated"},
+      "text": {"exact": "LOTS OF SNOW", "word_count": 3, "lines": 2, "position": "left, middle-height, spans about 45% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 30, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from top edge sweeping down to the cyan band near the Appalachians"],
+      "palette": [{"name": "magenta", "hex": "#E038C0"}, {"name": "blue", "hex": "#2A60D8"}, {"name": "cyan", "hex": "#5ADFF0"}],
+      "layout": "map + caps left, single arrow from top edge",
+      "title_link": "repeats title (snow)",
+      "hook": "The arrow lands on the cyan snow band, so the word 'SNOW' points at the exact zone."
+    },
+    {
+      "n": 9, "kind": "popular", "views": 2900000,
+      "title": "The Weather Is About To Get Even Weirder...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map)", "subject": "US map: red across centre and west, yellow across east and south", "brightness": "mid-dark, black edges", "sharpness": "sharp", "grade": "red and yellow, saturated"},
+      "text": {"exact": "DEATH RIDGE", "word_count": 2, "lines": 2, "position": "top-left, spans about 50% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 30, "highlight": "none"},
+      "graphics": [],
+      "palette": [{"name": "red", "hex": "#D8141C"}, {"name": "yellow", "hex": "#F7D21A"}, {"name": "black", "hex": "#13060A"}],
+      "layout": "map + 2-line caps top-left, no arrow",
+      "title_link": "adds second idea (names a pattern the title does not)",
+      "hook": "'DEATH RIDGE' names a specific, ominous pattern the viewer will want to look up."
+    },
+    {
+      "n": 10, "kind": "popular", "views": 2800000,
+      "title": "We've Never Seen This Kind Of El Nino",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "illustration (3D globe render)", "subject": "Earth from space, glowing orange-yellow band across the sea", "brightness": "dark", "sharpness": "sharp, soft glow", "grade": "dark navy with violet rim light and fire-orange band"},
+      "text": {"exact": "OUT OF HAND", "word_count": 3, "lines": 1, "position": "top-centre, spans about 75% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 20, "highlight": "none"},
+      "graphics": ["white arrow with black outline, from left edge pointing right into the orange band"],
+      "palette": [{"name": "yellow", "hex": "#FFC930"}, {"name": "red-orange", "hex": "#F04A1C"}, {"name": "violet", "hex": "#7A1FD0"}],
+      "layout": "globe + caps top-centre, single arrow from side edge",
+      "title_link": "adds second idea (no overlap with title)",
+      "hook": "A glowing band on a dark globe reads as an event, though no place or number is named."
+    },
+    {
+      "n": 11, "kind": "latest", "views": 931000,
+      "title": "This Is Only The BEGINNING...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map)", "subject": "US map on grey: rainbow north-south stripe over centre and east, blue glow at bottom", "brightness": "dark", "sharpness": "sharp", "grade": "grey base with rainbow stripe, low contrast"},
+      "text": {"exact": "IT KEEPS GOING", "word_count": 3, "lines": 2, "position": "left, spans about 50% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 33, "highlight": "none"},
+      "graphics": ["white arrow with black outline, from bottom-centre pointing up along the rainbow stripe"],
+      "palette": [{"name": "grey", "hex": "#2A2A30"}, {"name": "magenta", "hex": "#E62DB0"}, {"name": "blue", "hex": "#1E90FF"}],
+      "layout": "map + caps left, arrow sweeps up from bottom",
+      "title_link": "adds second idea (echoes 'beginning' with 'keeps going')",
+      "hook": "A rainbow stripe with an arrow pointing up the middle suggests a system still moving; the grey base dims it."
+    },
+    {
+      "n": 12, "kind": "latest", "views": 2000000,
+      "title": "I Don't Like How FAST This Is Happening...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map)", "subject": "US map: orange-red east, yellow and cyan west, purple glow at bottom-right", "brightness": "mid, navy top", "sharpness": "sharp", "grade": "navy with orange heat belt"},
+      "text": {"exact": "LAST STAND", "word_count": 2, "lines": 2, "position": "top-left, spans about 45% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 32, "highlight": "none"},
+      "graphics": ["white arrow with black outline, from bottom-left pointing up-right into the orange belt"],
+      "palette": [{"name": "orange", "hex": "#F28A1F"}, {"name": "navy", "hex": "#0D1A4A"}, {"name": "blue", "hex": "#2A78E0"}],
+      "layout": "map + caps top-left, arrow sweeps up from bottom",
+      "title_link": "adds second idea (no overlap with title)",
+      "hook": "'LAST STAND' frames the heat as a final fight; the arrow points at the orange belt."
+    },
+    {
+      "n": 13, "kind": "latest", "views": 2100000,
+      "title": "Be CAREFUL What You Wish For...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map)", "subject": "US map: blue north-west, orange and red south-east, white front band through Ohio valley", "brightness": "mid, navy edges", "sharpness": "sharp", "grade": "blue against orange, saturated"},
+      "text": {"exact": "ALL AT ONCE", "word_count": 3, "lines": 2, "position": "top-left, spans about 50% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 32, "highlight": "none"},
+      "graphics": ["white curved arrow with black outline, from bottom-left sweeping up-right into the orange south-east"],
+      "palette": [{"name": "orange", "hex": "#F5862A"}, {"name": "blue", "hex": "#2A7AE6"}, {"name": "navy", "hex": "#0C1632"}],
+      "layout": "map + caps top-left, arrow sweeps up from bottom",
+      "title_link": "adds second idea (no overlap with title)",
+      "hook": "Orange heat plus a white front band reads as several things hitting at once; the curved arrow leads the eye south-east."
+    },
+    {
+      "n": 14, "kind": "latest", "views": 4400000,
+      "title": "Here's When You'll See Snow This Year...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map with snowflake sprites)", "subject": "US map: cyan north, magenta south, navy background with snowflakes", "brightness": "dark", "sharpness": "sharp", "grade": "navy with cyan and magenta"},
+      "text": {"exact": "FIRST SNOW", "word_count": 2, "lines": 2, "position": "top-left, spans about 50% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 30, "highlight": "none"},
+      "graphics": ["magnifying glass with silver rim, centre-right over the south-east, with a white snowflake inside the lens"],
+      "palette": [{"name": "cyan", "hex": "#3FE6F0"}, {"name": "magenta", "hex": "#E12CC8"}, {"name": "navy", "hex": "#0E1B4A"}],
+      "layout": "map + caps top-left + magnifier badge",
+      "title_link": "repeats title (snow)",
+      "hook": "A magnifier on a snowflake promises the viewer will see the first snow; the text repeats the title's snow idea."
+    },
+    {
+      "n": 15, "kind": "latest", "views": 5000000,
+      "title": "We Haven't Seen This In OVER 100 Years...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map)", "subject": "US map: blue north, orange-red south and east, white specks", "brightness": "dark, black corners", "sharpness": "sharp", "grade": "blue above, orange-red below"},
+      "text": {"exact": "NOT GOOD", "word_count": 2, "lines": 2, "position": "top-left, spans about 45% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 32, "highlight": "none"},
+      "graphics": ["white arrow with black outline, from right edge pointing left into the orange-red south-east"],
+      "palette": [{"name": "blue", "hex": "#3A7FE6"}, {"name": "orange-red", "hex": "#F2601E"}, {"name": "black", "hex": "#0A0A10"}],
+      "layout": "map + caps top-left, single arrow from side edge",
+      "title_link": "adds second idea (no number or 'century' in text)",
+      "hook": "A blunt two-word verdict with an arrow from the edge aimed at the heat zone makes the claim visual."
+    },
+    {
+      "n": 16, "kind": "latest", "views": 5300000,
+      "title": "I Need To Change My Winter Forecast...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map)", "subject": "US map: cyan north-west, magenta centre and east", "brightness": "mid, navy edges", "sharpness": "sharp", "grade": "cyan and magenta on navy"},
+      "text": {"exact": "NEW FORECAST", "word_count": 2, "lines": 2, "position": "top-left, spans about 45% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 33, "highlight": "none"},
+      "graphics": ["white arrow with black outline, from bottom-left sweeping right into the magenta core"],
+      "palette": [{"name": "magenta", "hex": "#E82CE8"}, {"name": "cyan", "hex": "#39E6F2"}, {"name": "navy", "hex": "#0A0C24"}],
+      "layout": "map + caps top-left, arrow sweeps up from bottom",
+      "title_link": "repeats title (forecast)",
+      "hook": "'NEW FORECAST' matches the title's change of mind; the magenta core and arrow mark where it lands."
+    },
+    {
+      "n": 17, "kind": "latest", "views": 1800000,
+      "title": "The Next Cold Front Is About To Change Everything...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map)", "subject": "US map: red south-west, orange-yellow south, blue and purple north-east", "brightness": "mid, navy edges", "sharpness": "sharp", "grade": "red-orange to blue-purple"},
+      "text": {"exact": "BIG CHANGE", "word_count": 2, "lines": 2, "position": "top-left, spans about 45% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 33, "highlight": "none"},
+      "graphics": ["white arrow with black outline, from bottom pointing up-right into the purple zone near Michigan"],
+      "palette": [{"name": "blue", "hex": "#2E6BE0"}, {"name": "purple", "hex": "#8A2BE8"}, {"name": "red-orange", "hex": "#F04A1A"}],
+      "layout": "map + caps top-left, arrow sweeps up from bottom",
+      "title_link": "repeats idea (change)",
+      "hook": "'BIG CHANGE' names the title's promise in two words; the arrow shows where the change lands."
+    },
+    {
+      "n": 18, "kind": "latest", "views": 1800000,
+      "title": "The Cooldown Is Officially LOCKED In...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map)", "subject": "US map: red west, cyan-blue vertical band through Iowa and Illinois, orange-yellow east", "brightness": "mid, navy edges", "sharpness": "sharp", "grade": "red against cyan-blue, saturated"},
+      "text": {"exact": "WHAT'S THIS?", "word_count": 2, "lines": 2, "position": "top-left, spans about 50% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 33, "highlight": "none"},
+      "graphics": ["white arrow with black outline, from bottom-left pointing up-right at the cyan band edge"],
+      "palette": [{"name": "red", "hex": "#E3141C"}, {"name": "cyan-blue", "hex": "#36C4F2"}, {"name": "orange", "hex": "#F7941E"}],
+      "layout": "map + caps top-left, arrow sweeps up from bottom",
+      "title_link": "adds second idea (curiosity question, no overlap)",
+      "hook": "A question over a sharp red-to-blue boundary asks the viewer to find out what the line means."
+    },
+    {
+      "n": 19, "kind": "latest", "views": 2600000,
+      "title": "The First REAL Cold Front Is Coming...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map)", "subject": "US map: green north half, purple south half", "brightness": "mid, black corners", "sharpness": "sharp", "grade": "flat green and purple"},
+      "text": {"exact": "TWO SEASONS", "word_count": 2, "lines": 2, "position": "top-left, spans about 50% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 33, "highlight": "none"},
+      "graphics": ["white arrow with black outline, from bottom pointing up-right at the green and purple boundary"],
+      "palette": [{"name": "green", "hex": "#22E83A"}, {"name": "purple", "hex": "#A020E0"}, {"name": "black", "hex": "#0A0A10"}],
+      "layout": "map + caps top-left, arrow sweeps up from bottom",
+      "title_link": "adds second idea (no overlap with 'cold front')",
+      "hook": "Two flat colour zones split at one line; 'TWO SEASONS' promises a contrast the title does not state."
+    },
+    {
+      "n": 20, "kind": "latest", "views": 7000000,
+      "title": "We're About To Have A RARE Winter...",
+      "face": {"present": "no", "who": null, "count": 0, "width_pct": 0, "position": null, "crop": null, "expression": null, "gaze": null, "cutout": null, "outline_glow": null},
+      "background": {"kind": "satellite or map (vector US state map with frost sprites)", "subject": "US map: cyan north, magenta south, frost crystals in bottom corners", "brightness": "mid, navy edges", "sharpness": "sharp", "grade": "cyan and magenta on navy"},
+      "text": {"exact": "WINTER PREDICTION", "word_count": 2, "lines": 2, "position": "top-left, spans about 60% of width", "case": "upper", "type_class": "heavy condensed sans", "typeface": "Anton (closest, uncertain)", "fill": "white #FFFFFF", "stroke": "thick black outline", "box": "none", "height_pct": 30, "highlight": "none"},
+      "graphics": [],
+      "palette": [{"name": "cyan", "hex": "#37DCEE"}, {"name": "magenta", "hex": "#E83EE4"}, {"name": "navy", "hex": "#101C44"}],
+      "layout": "map + 2-line caps top-left, no arrow",
+      "title_link": "repeats title (winter)",
+      "hook": "Same 'WINTER PREDICTION' text and cyan-magenta map as top-views 1 and 2; the colour split shows the cold-warm line at a glance."
+    }
+  ],
+  "channel_findings": {
+    "templates": [
+      {"name": "T1 map + 2-line caps top-left, no arrow", "n": [1, 2, 4, 9, 20], "count": 5},
+      {"name": "T2 map + caps top-left, arrow sweeps up from bottom", "n": [11, 12, 13, 16, 17, 18, 19], "count": 7},
+      {"name": "T3 map + caps top-left, two arrows", "n": [3, 5, 7], "count": 3},
+      {"name": "T4 map + 1-line caps top-centre, no arrow", "n": [6], "count": 1},
+      {"name": "T5 map or globe + caps, single arrow from a side or top edge", "n": [8, 10, 15], "count": 3},
+      {"name": "T6 map + caps top-left + magnifier badge", "n": [14], "count": 1}
+    ],
+    "constants": "Text on 20 of 20: heavy condensed all-caps sans, white fill, thick black outline, no box, no highlighted word. US state map as base on 19 of 20 (exception: globe, n=10). Saturated gradients in magenta/pink or red/orange against cyan/blue; dark navy or black surround. Arrows on 13 of 20 (n=3,5,7,8,10,11,12,13,15,16,17,18,19), white with black outline. No border, logo, channel mark or host on any thumbnail.",
+    "host_treatment": "No host on any of the 20. Face present on 0 of 20; no person appears at all. Lighting, cut-out, size and placement cannot be measured. This contradicts the lead's premise that Ryan Hall puts his face on forecast thumbnails. Confirm with the orchestrator before any face rule is taken from this channel.",
+    "text_rules": "Words: 2 words on 16 of 20, 3 words on 4 of 20 (n=8,10,11,13). Lines: 2 lines on 17 of 20, 1 line on 3 (n=5,6,10). Case: upper on 20 of 20. Colour: white fill with black outline on 20 of 20. Position: top-left on 17 of 20, top-centre on 2 (n=6,10), left-middle on 1 (n=8). Highlight: none. Biggest line roughly 18 to 33 percent of frame height (visual estimate). Title link: text repeats the title's keyword on 8 of 20 (n=1,2,4,8,14,16,17,20) and adds a second idea on 12 (see per-thumb title_link).",
+    "popular_vs_latest": "Popular (n=1 to 10): median 3,300,000 views. Latest (n=11 to 20): median 2,350,000 views. Popular set uses 'WINTER PREDICTION' or 'winter' text on n=1,2,4 and 'LOTS OF SNOW' on n=8; 3 of 10 are 1-line. Latest set uses all 2-line text (10 of 10), 8 of 10 arrows (n=11,12,13,15,16,17,18,19), and more change or question words (NEW FORECAST, BIG CHANGE, WHAT'S THIS, IT KEEPS GOING). The best latest thumbnail (n=20, 7.0M) has no arrow and reuses the popular winter text.",
+    "top3": "n=1 (13.0M), n=2 (7.2M), n=20 (7.0M). All three: 'WINTER PREDICTION' text (n=2 is 'WINTER PREDICTION' too), 2 lines, top-left, white with black outline; full-bleed US map in magenta and cyan; no arrow; no face; no badge. The shared element is the text and map gradient, not an arrow or a person.",
+    "transfer": [
+      "Headline: 2 words, all caps, white with thick black outline, top-left, 2 lines at about 30% of frame height. Evidence: n=1, 2, 20 (13.0M, 7.2M, 7.0M) all match; 16 of 20 use 2 words.",
+      "Keyword: pair a generic forecast word with the topic word, e.g. 'WINTER PREDICTION'. Evidence: n=1, 2, 4, 20 all use it; the 4 of them range from 4.0M to 13.0M views. For storms, the same pattern would be '[STORM] PREDICTION' or '[STORM] FORECAST'.",
+      "Background: full-bleed US map with one saturated gradient (magenta vs cyan), dark edges, no arrow. Evidence: n=1, 2, 20 are all this; 19 of 20 are map-based.",
+      "Arrows: keep arrows to one per thumbnail and only when the title promises a change. Evidence: n=3, 5, 7 use two arrows and sit at 4.1M, 3.7M, 2.9M; the top 3 use none. Eight latest thumbnails use one arrow each and the best latest (n=20) has none.",
+      "Face: this set has no face, so no rule about presenter placement can be drawn from it. Test a presenter cut-out on the T1 layout (n=1, 2, 20) as a split test against the no-face baseline; do not assume a face lifts clicks from this evidence."
+    ],
+    "weak": [
+      "n=11 'IT KEEPS GOING' (0.93M, lowest in channel sample): grey base and rainbow stripe give low contrast, the arrow points at a band with no place or number named.",
+      "n=6 'FRESH DATA' (2.9M): process label, not a claim; the text names no finding, so the viewer gets no reason to open the video beyond the title.",
+      "n=10 'OUT OF HAND' (2.8M): abstract globe with no place or number; the arrow points at a glow the viewer cannot place."
+    ]
+  }
+}
