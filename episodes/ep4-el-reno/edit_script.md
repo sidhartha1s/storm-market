@@ -156,7 +156,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 > West of the city, near El Reno, one man was driving toward the storm. Richard Henderson drove a truck for a living and chased storms as a hobby. He was thirty five [verify: Richard Henderson's age; Appendix C has an unnamed thirty five year old on a storm chasing line], and he had left his home nearby to see this one. At six oh five PM, two minutes after the tornado touched down, he sent a friend a photograph of it.
 
 ### A1-S6 — narration
-**Picture:** the g-clock runs ten minutes forward and stops. The bed cuts to silence on "went dead" and stays out for one second. Then two small text cards, "Robbie" and "Wyatt". No assessment card here: its sentence on him carries a hard flag word, so it is paraphrased in the voice only.
+**Picture:** the g-clock runs ten minutes forward and stops. The bed cuts to silence on "cut out" and stays out for one second. Then two small text cards, "Robbie" and "Wyatt". No assessment card here: its sentence on him carries a hard flag word, so it is paraphrased in the voice only.
 > About ten minutes after his photograph, Henderson said he could hear debris hitting his pickup. Then his phone went dead. He left two sons, Robbie and Wyatt. The weather service's assessment gives him one sentence, as an amateur storm chaser who left his nearby home.
 
 ### A1-S7 — narration
