@@ -409,7 +409,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 **Picture:** the track map near Interstate 40: a cluster of small squares just south of the road lights up, "manufactured homes · densest damage on the path". The eight El Reno pins stay on the roads; none sits in the cluster.
 > So the worst of the El Reno tornado stayed over open ground and over roads. It did reach houses. The survey found its densest cluster of damaged structures in a group of manufactured homes just south of Interstate forty. And the weather service's table lists no one lost in any of them.
 
-### A5-S5 — narration
+### A5-S6 — narration
 **Picture:** the map slides east to the city. The short "EF0" and "EF1" tracks from A4 return under a `data-callback`. Building icons everywhere, no pin on any.
 > In Oklahoma City, where the buildings were, every tornado that entered that evening was an E F zero or an E F one. None took a life.
 
