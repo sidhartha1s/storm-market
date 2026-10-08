@@ -377,7 +377,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 > That message did not tell anyone to leave. But it treated a car as a choice a person might make, and it came from the office that issues the warnings. It also named the two things that went wrong that night, the traffic and the flood.
 
 ### A4-S15 — narration
-**Picture:** the assessment's Recommendation 6 as attributed text. Then the two name cards and the weather office's message side by side, the same size.
+**Picture:** the assessment's Recommendation 6 as attributed text. Then the two name cards and the weather office's message in one frame, kept visibly different in kind and size: an on-air instruction and a conditional safety note are not drawn as equals.
 > The assessment's sixth recommendation is aimed at the weather service itself: give broadcasters better guidance when more than one danger is coming. So the idea that a car was an option did not start with one man on one channel.
 
 *([loop L6 closes]: the broadcast advice and the weather office's own one PM message, side by side.)*
