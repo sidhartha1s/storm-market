@@ -216,7 +216,7 @@ grader's: the owner has not approved in chat, and two picture-note tags are open
 | Axis | Before (1 to 5) | Now (1 to 5) | Why it moved or did not |
 |---|---|---|---|
 | New info | 4 | 4 | Unchanged. I1-S1, I1-S6 and I1-S7 are still known material. |
-| Curiosity | 3 | 4 | "Fear explains the traffic. It does not explain why not one life was lost inside a building." puts the main question to the viewer at about 1:38, inside what was the empty stretch. |
+| Curiosity | 3 | 4 | "Fear explains the traffic. It does not explain why not one life was lost inside a building." puts the main question to the viewer at about 1:35, inside what was the empty stretch. |
 | Stakes | 4 | 4 | Same curve: 2, 3, 5, 4, 3, 3, 3, 4. I1-S6 to I1-S8 were not moved, so segments five to seven still sit at 3. |
 | Visual change | 4 | 4 | Unchanged. |
 | Payoff | 4 | 4 | Unchanged; the claim sentence is now scoped ("By that count"). |
