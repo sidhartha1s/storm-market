@@ -28,7 +28,7 @@ Every episode keeps a LOOP TABLE in its edit_script:
 - **Hook callbacks (owner 4 Oct 26)**: the hook's promise is re-mentioned several times through the video, not once, e.g. at act seams: "Stick with me, because what I'm about to explain is exactly why <the hook's claim>." A callback names the hook's claim; it never announces runtime or structure (script-quickref.md "No roadmap phrases").
 - **1 loop per act**: planted in that act, paid within 1–2 acts. Each act ALSO pays off one earlier loop — an act that only plants is a tease; an act that only pays is a dead end.
 - **1 CTA hinge (REQUIRED, owner 2026-08-30 — DESIGN.md "CTA contract")**: a tease→payoff pair
-  whose tease ends the segment inside the `config.yaml channel.cta` window (85–95%, owner 23 Sep 26) and whose payoff opens the next segment's first
+  whose tease ends the segment inside the `config.yaml channel.cta` window (around the halfway mark, owner 7 Oct 26) and whose payoff opens the next segment's first
   sentence; the CTA (`channel.cta.duration`) sits between them. Listed in the loop table as `cta-hinge` with the two
   segment ids. If no honest payoff falls in that band, restructure the acts — the CTA never moves.
 - Loops close honestly. A dropped loop is the #1 tell of stretched runtime (competitor teardown: the "radar could warn us someday" tease that never resolves).
