@@ -53,7 +53,7 @@ Each act changes what the viewer understood: A1 the city went out to meet the st
 ### Book-ad hinge
 - **Segment before:** the last segment of A3, Paul on camera, 25 words at most. It is the line that the home was the safe place, and it teases the twelve who left theirs.
 - **Book ad:** mounts at about 13:10, 57.2 % of a 23:00 runtime, inside `config.yaml channel.cta.window` [0.40, 0.60]. 20 s is budgeted until the file's length is read.
-- **Segment after:** A4-S1. Its first sentence is the payoff, first three words if possible: the family of seven.
+- **Segment after:** A4-S1. Its first sentence is the payoff, first three words if possible: the family of seven and how far they went from their own door ("only a few feet away", News 9, confirmed).
 
 ### Paul on camera (besides the hook), position and job only
 1. About 5:25, last line of A1: the owner's hook callback at the act seam; names the hook's claim and points at what was inside the tornado.
