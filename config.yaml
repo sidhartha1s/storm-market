@@ -26,11 +26,14 @@ channel:
   name: The Warning Hour   # owner-locked 2026-07-22
   niche: US weather/disaster documentaries
   target_minutes: [13, 23]
-  tempo: 1.10                     # ffmpeg atempo, applied to every segment by tts_episode.py — CLAUDE.md
-                                   # Voice + references/script-os.md:96-99: docs and minis both run 1.10,
-                                   # applied BEFORE transcription (tempo, then re-transcribe the sped wav)
+  tempo: 0.94                     # ffmpeg atempo, applied to every segment by tts_episode.py — CLAUDE.md
+                                   # Voice + references/script-os.md "tempo BEFORE timing": docs and minis share it,
+                                   # applied BEFORE transcription (tempo, then re-transcribe the sped wav).
+                                   # 0.94 keeps the delivered pace the owner set with the old voice at 1.10: the Paul
+                                   # clone speaks 197 wpm native against the old voice's 168 on the same 313 words
+                                   # (8 Oct 26), so 1.10 x 168 / 197 = 0.94, about 185 wpm on that passage.
   tempo_by_prefix:                 # per-lane override, matched against the episode slug's prefix
-    sh-: 1.16                     # shorts — references/shorts/PLAN.md:47,55,174 (owner 16 Sep 26)
+    sh-: 0.99                     # shorts — references/shorts/PLAN.md "Pace" (owner 16 Sep 26: 1.16 on the old voice, same ratio)
   cta:                            # MUST-KEEP in every episode (owner order 2026-08-30) — DESIGN.md "CTA contract"
     file: assets/cta/paul-storm-ready-v6-oct7.mp4     # md5 047cd059bdc2a642f833995053aa94ac (owner 7 Oct 26: book ad v3, QR opens /yt/?src=qr; 1080p24, crf 22 transcode of the hyperframes render); swap = NEW versioned file + bump here, never overwrite; the old file leaves assets/cta/
     duration: 24.417              # the picture stream (586 frames at 24 fps); the audio stream runs to 24.5 s, silent by then
