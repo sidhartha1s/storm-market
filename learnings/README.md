@@ -19,7 +19,7 @@ The promoted one-line rules from the old `LEARNINGS.md` index, verbatim (one sta
 - Scripts are written on the retention lattice (`references/script-scaling.md`) — read it before writing any script. → §"ep5 kickoff: the retention lattice + script fact-QC layer"
 - Script fact-QC closes every `[verify]` marker before TTS runs; a conditional fact that fails verification gets cut, never softened. → §"ep5 kickoff: the retention lattice + script fact-QC layer"
 - Every audio-carrying insert is transcribed in full before cut selection; the cut lands on the transcript's action/emotion peak. → §"ep5 kickoff: the retention lattice + script fact-QC layer"
-- The hook has no black start — frame one is already mid-action; the narrator opens at 0:00 (DESIGN.md cold-open hook contract, owner 22 Sep 26). → §"ep5 kickoff: the retention lattice + script fact-QC layer"
+- The hook has no black start and the first line opens at 0:00; what frame one shows and who speaks is DESIGN.md cold-open hook contract. → §"ep5 kickoff: the retention lattice + script fact-QC layer"
 - The generator tripwire: any script that authors episode HTML (chooses cuts, holds, graphics, timings) is forbidden — delete it on sight. → §"CHECKPOINT: revert to the ep2 method"
 - The full hook contract lives in DESIGN.md — apply it from episode scene one, don't rediscover it. → §"ep2 hook rebuild + ship"
 - `--workers` must be pinned on every full render, never left on "auto". → §"ep2 hook rebuild + ship"
