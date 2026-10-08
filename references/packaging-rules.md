@@ -33,29 +33,23 @@ refutation, showrunner synthesis). Read with `yt-packaging` before any title or 
   bottom-left; the variable is the state photograph + state name. Title spine `El Niño Winter 2026-27: <State>: <verdict>`.
 
 ## Paul on the thumbnail: three candidate systems (study 8 Oct 26; the owner has not picked one)
-Owner 7 Oct 26: "i need a design system, not a one off show". Until he picks, the three schools above stay the rule and
-none of these ships. Study: `references/teardowns/2026-10-08-thumbnails-13-channels/README.md`. Prompts with their
-slots: `references/thumbnail-prompts.md`. Each system fixes everything except the slots, so every video looks like the last.
-- **Field Notes**: cream graph paper (#F2EAD8); Paul on the right third, head and shoulders, navy jacket; headline top
-  left in Anton caps, line 1 black, line 2 cream on a red brush box (#C8202A); one pencil diagram drawn from real data
-  (track, timeline, map) with 2 or 3 hand-written labels; one red circle. From Critical Latitude's paper format. Risk:
-  no storm in the frame, and the storm niche's biggest thumbnails are all storm.
-- **Witness**: one real photograph full frame, graded darker; Paul cut out on the left third in the white linen shirt;
-  year in white over place in red (#E3212B), Montserrat, upper right; one thin red ring on the object that gives scale.
-  From Johnny Harris's host cut-out and the tornado documentaries' year-over-place type. Risk: a cut-out head over a
-  photograph is the most common look on YouTube.
-- **On the Ground**: Paul stands inside one real photograph, waist up in a lower corner, navy jacket, turned to the
-  storm, looking back and pointing; headline top left in Anton white caps with a black outline; one red arrow from the
-  headline to the storm; a small red place-and-year tag. From the AI avatar channels and HIGH RISK Chris's top video.
-  Risk: an AI presenter inside a real disaster photograph reads fake when the blend is off; judge this one hardest by eye.
-- All three: made in ChatGPT with two attached images that the prompt names. img1 is Paul's sheet
-  `assets/paul/paul-sheet-v2.jpg`. img2 is a real photograph, frame or official map of the event, licence checked first
-  (a CC BY photograph needs its credit in the description). Never a CSS mock-up, never the landing-page images, never
-  an AI storm scene. Headline: 2 lines, never the title's words. One red mark. One outfit per system.
-- Not solved: ChatGPT repainted the real photographs in the Witness and On the Ground demos (a clear Joplin sky came
-  back as storm cloud). A published thumbnail needs Paul and the words laid over the untouched photograph; that step
-  is not built. Field Notes has no photograph and does not have the problem.
-- Not tested: a no-face version of the same video against the Paul version. The study's storm channels win without a host.
+Owner 7 Oct 26: "i need a design system, not a one off show". Until he picks, the three schools above and the El Niño
+series identity stay the rule and none of these ships. Study: `references/teardowns/2026-10-08-thumbnails-13-channels/README.md`.
+The exact look of each system (colours, typefaces, positions, outfit, the two attached images) lives in its prompt:
+`references/thumbnail-prompts.md`. A prompt fixes everything except its slots, so every video looks like the last.
+- **Field Notes**: Paul beside one pencil diagram drawn from real data, on cream graph paper. From Critical Latitude's
+  paper format. Risk: no storm in the frame, and the storm niche's biggest thumbnails are all storm.
+- **Witness**: Paul cut out in front of one real photograph, year over place. From Johnny Harris's host cut-out and the
+  tornado documentaries' year-over-place type. Risk: a cut-out head over a photograph is the most common look on YouTube.
+- **On the Ground**: Paul stands inside one real photograph and points. From the AI avatar channels and HIGH RISK
+  Chris's top video. Risk: an AI presenter inside a real disaster photograph reads fake when the blend is off; judge
+  this one hardest by eye.
+- In these three systems: the headline is 2 lines and never the title's words; the second image is real (photograph,
+  frame or official map), never an AI storm scene, a CSS mock-up or a landing-page image; its licence is checked first
+  (a CC BY photograph needs its credit in the description).
+- Found in the demos: ChatGPT repainted the real photographs in Witness and On the Ground (a clear Joplin sky came back
+  as storm cloud), so a published thumbnail needs Paul and the words laid over the untouched photograph. Field Notes
+  has no photograph and does not have the problem. Open work: `ops/tasks.md` row 15.
 
 ## What the Studio export says (2026-09-14)
 YouTube tested every US-topic upload with 2–11k impressions; CTR decided the rest: 6.65 % kept going (ep2), 3.5 %
