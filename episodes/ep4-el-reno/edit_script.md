@@ -131,4 +131,114 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *(blackout 0.7 s)*
 
 
-*(A1 onward: not written. Outline in section B.)*
+## A1 · A city in its cars (about 2:16)
+
+### A1-S1 — narration
+**Picture:** place stamp "Oklahoma City · May 31, 2013 · evening". A real clip of a neighbourhood street under a dark sky, sirens audible in the clip's own sound, low. Then the assessment's cover page (public domain), the camera settling on the words "sheltering in place". The bed returns under the last sentence.
+> The standing advice in central Oklahoma is to shelter in place when a tornado is coming. On the evening of May thirty first, many people around Oklahoma City did the opposite. Afterward, a weather service team went back and asked them why. Fear from Moore was part of the answer, but the team also wrote down two things people had been told.
+
+*([loop L3 open]: what made people leave solid houses. Closes in A1-S11.)*
+
+### A1-S2 — narration
+**Picture:** [RS] [VE] the assessment's sentence as attributed text, one line at a time: "...telling listeners they would be unable to survive if not underground · NWS Service Assessment". Then a plain cutaway drawing of a one-storey house on a slab, nothing below the floor line. One low hit when the floor line draws.
+> The first was about where a person could survive. Some of the people giving warnings, the assessment says, told listeners they could not survive unless they were underground. Most houses in Oklahoma City have no basement and no storm cellar [verify: most Oklahoma City houses have no basement or storm cellar]. For a family with no cellar, that warning said home would not hold.
+
+### A1-S3 — narration
+**Picture:** the master map, Oklahoma City at centre, an arrow drawing south out of the city on "drive south". The word "atypical" lifts out of the assessment page and holds. No station logo, no face, no name on screen in this act.
+> The second was about what to do instead. The assessment says people followed advice from the media to drive south at once, as storms were bearing down on Oklahoma City. Its word for that advice is atypical, meaning it was not what Oklahomans are normally told. By the assessment's account, that advice overrode the plans families already had.
+
+### A1-S4 — narration
+**Picture:** a real news aerial of stopped traffic on a city highway that evening, held with its own sound for two seconds before the voice. Then a split card: "Rita · 2005" beside "Oklahoma City · 2013", both over lines of tail lights.
+> So at the hour when the highways were already full of people heading home, more cars pulled out to join them. The assessment says that choice, driving away in place of sheltering, led to the traffic jams and accidents that evening. It compares the evening to Hurricane Rita in two thousand five, when people who had just watched Katrina took to the roads.
+
+### A1-S5 — narration
+**Picture:** [HUMAN] the map slides west to El Reno. Text-only name card "Richard Henderson". Popfig "6:05 PM" on the g-clock, two minutes past the touchdown mark. A public domain or licensed shot of the tornado over fields; his own photograph is not used without a licence. His pin lights on the map; its place is one of the six still unsourced under the I1-S4 tag.
+> West of the city, near El Reno, one man was driving toward the storm. Richard Henderson drove a truck for a living and chased storms as a hobby. He was thirty five [verify: Richard Henderson's age; Appendix C has an unnamed thirty five year old on a storm chasing line], and he had left his home nearby to see this one. At six oh five PM, two minutes after the tornado touched down, he sent a friend a photograph of it.
+
+### A1-S6 — narration
+**Picture:** the g-clock runs ten minutes forward and stops. The bed cuts to silence on "went dead" and stays out for one second. Then two small text cards, "Robbie" and "Wyatt". No assessment card here: its sentence on him carries a hard flag word, so it is paraphrased in the voice only.
+> About ten minutes after his photograph, Henderson said he could hear debris hitting his pickup. Then his phone went dead. He left two sons, Robbie and Wyatt. The weather service's assessment gives him one sentence, as an amateur storm chaser who left his nearby home.
+
+### A1-S7 — narration
+**Picture:** the map holds on the El Reno track. Seven more pins light in three groups as they are spoken: three together for the Cobalt, one on a line drawn from El Reno toward Chickasha, labelled "67".
+> Seven more people were lost in that tornado, and the weather service's table says what each was doing. Three were the crew of the white Cobalt, also chasing. One was a man of sixty seven, driving from El Reno to Chickasha.
+
+### A1-S8 — narration
+**Picture:** [HUMAN] Interstate 40 draws across the map. Two pins side by side on its shoulder, labels "26" and "17 days". Hold three seconds with the bed low. Then one last pin, label "32".
+> Two were parked along Interstate forty, a woman of twenty six and a boy seventeen days old. For the last, a man of thirty two, the table says only vehicle.
+
+### A1-S9 — narration
+**Picture:** the full sixteen mile track over a land-use map: farmland pale, the few buildings as dots. Three roads light as they are named. Then the same traffic aerial, wider.
+> The El Reno tornado ran sixteen miles, and most of that was open farmland. It damaged homes and a few businesses near El Reno, and the table lists no one lost inside them. It also crossed Highway eighty one, Reuter Road and Interstate forty. That evening, the roads were full.
+
+### A1-S10 — narration
+**Picture:** the track animates: a speed readout climbs "35 mph" to "50+ mph · NWS Service Assessment" and the path bends left. A riser ends on "difficult".
+> And the roads had become hard to leave. As the tornado strengthened, the assessment says, its forward speed rose from about thirty five miles an hour to more than fifty. It also made a sharp left turn, and driving away from it became difficult.
+
+### A1-S11 — narration
+**Picture:** three words land in a row over the traffic, "fear", "underground", "drive south", then clear. Cut to a rain-streaked windshield view of a grey wall of rain (stock or public domain). On the last sentence a faint radar sweep crosses the frame.
+> So fear, a warning about going underground, and advice to drive had put a great many people on the road. But the drivers nearest El Reno were up against something else. Radar recorded it, and a driver in that rain may never have seen it. What was turning inside that tornado?
+
+*([loop L3 closes]: fear, the underground warning and the advice to drive. [loop L4 open]: what was inside the wide tornado. Closes in A2-S6.)*
+
+### A1-S12 — Paul on camera, slot 1 (wording not written)
+**Job:** the owner's hook callback at the act seam, the one affirming line after the exit question. It names the hook's claim (twenty-one lives, none inside a building) and points at what was inside the tornado.
+**Budget:** 26 words at most, one clip of about 10 s, full frame. No new fact, no number that is not already spoken.
+
+*(blackout 0.7 s)*
+
+
+## A2 · The tornado inside the tornado (about 5:32)
+
+### A2-S1 — narration
+**Picture:** time stamp "6:19 PM". The map at road level: the circulation as a wide ring reaching Highway 81. A bar "2.6 miles" spans it. Then two outlines side by side, "Hallam, Nebraska · 2004" and "El Reno · 2013", the second wider. A real clip of the tornado, wide shot, licensed or public domain.
+> At six nineteen PM, sixteen minutes after it touched down, the El Reno tornado crossed Highway eighty one. By then it was two point six miles from edge to edge. The weather service said it believed this was the widest tornado ever recorded in the United States. The mark it passed had stood since two thousand four, at Hallam, Nebraska.
+
+### A2-S2 — narration
+**Picture:** [VE] forty-five field outlines tile across the ring, end to end. An inner ring draws, "core · about 1.25 miles". Rain texture fills the ring until the edge cannot be seen. Two vehicle markers enter from the same side, marked "weak side · Wurman et al. 2014".
+> Two point six miles is about forty five football fields laid end to end. Its core, where the two chase crews drove in, was about a mile and a quarter across. And it was wrapped in rain. The radar team led by Joshua Wurman found that both crews entered on its weak side. The team wrote that they may not have known they were inside it.
+
+### A2-S3 — narration
+**Picture:** a third marker, "Dan Robinson", crosses the inner ring on Reuter Road with a "45 mph" readout and leaves the far side. Then the whole ring drifts north of Interstate 40 and its readout falls to "under 10 mph · NWS Norman". The bed thins on the last sentence.
+> But the wide circulation was the slow part of this storm. A chaser named Dan Robinson drove through its core on Reuter Road at about forty five miles an hour. He drove out the other side. A few minutes later, north of Interstate forty, the whole circulation slowed to less than ten miles an hour. The fast part was somewhere inside it.
+
+### A2-S4 — narration
+**Picture:** photographs of the two research radars on their trucks (licence check; government or university press images). Labels "University of Oklahoma" and "Doppler on Wheels". A beam draws low across a field toward the ring.
+> Two kinds of research radar were near that tornado, and both could be driven up to a storm. One belonged to the University of Oklahoma. The others were the Doppler on Wheels radars that Joshua Wurman's team used. They measured the moving air itself, very near the ground.
+
+### A2-S5 — Paul on camera, slot 2 (wording not written)
+**Job:** the turn from how wide it was to what was inside it. He names "the tornado inside the tornado" and defines it in twelve words or fewer.
+**Budget:** 26 words at most, one clip of about 10 s, full frame. The next segment opens on the scientists' word for it, so his line must not use "sub-vortex".
+
+### A2-S6 — narration
+**Picture:** [RS] [VE] the self-made radar replot: the wide ring, and one small bright circle turning inside it. Label "sub-vortex". A scale bar "300 to 750 feet" on the small circle, then one to two and a half field outlines laid on it, against the forty-five across the ring.
+> Scientists call it a sub-vortex. The one Wurman's team tracked that evening was between about three hundred and seven hundred fifty feet across. That is one to two and a half football fields, inside a storm forty five fields wide.
+
+*([loop L4 closes]: a small, fast vortex inside the wide circulation.)*
+
+### A2-S7 — narration
+**Picture:** the small circle moves inside the ring, changing direction. A readout runs up to "about 175 mph · Wurman et al. 2014". A field outline sweeps past once a second to show the pace. Then a second readout, "about 295 mph · National Weather Service". One hit on each readout.
+> A sub-vortex does not keep one speed or one direction. Wurman's team clocked sub-vortices in this tornado crossing the ground at up to about a hundred and seventy five miles an hour. That is about two hundred and sixty feet every second. And the weather service says the air inside them was moving at about two hundred ninety five miles an hour.
+
+### A2-S8 — narration
+**Picture:** [RS] the 21-pin map returns for four seconds, only the eight El Reno pins lit, each on a road line. No new text. The bed holds one note.
+> So the widest tornado ever recorded carried, inside it, air moving near three hundred miles an hour. And by the weather service's table, it took eight lives, every one of them in a vehicle.
+
+### A2-S9 — narration
+**Picture:** the replot widens. Faint circles appear and fade inside the ring. A small circle moves in from the northwest, "satellite tornado". To the east-southeast a second circle turns the other way, an arrow showing clockwise, "Marshall et al., damage survey and radar analysis".
+> And the sub-vortex was not the only extra thing turning out there. The survey team's radar analysis shows one sub-vortex that lasted and others that came and went. It also shows a small satellite tornado moving in from the northwest, and a second tornado to the east-southeast spinning clockwise. Most tornadoes in this hemisphere spin the other way.
+
+### A2-S10 — narration
+**Picture:** road level again. The wide ring passes over Robinson's marker and leaves it on the road. Then the small circle crosses the same road in under a second. Popfig "about 30 seconds · Wurman et al. 2014".
+> For a driver, that changes what the danger was. The wide circulation could surround a car, as it did Dan Robinson's, and leave it on the road. A sub-vortex a few hundred feet across could cross the same road faster than any car on it. Wurman's team put the possible warning for one of the two crews at about thirty seconds.
+
+### A2-S11 — narration
+**Picture:** the replot, one small circle only. It sits on the S U V marker on "US-81" at "6:19 PM", then on the Cobalt marker on "Reuter Road" about four minutes on. The same circle, drawn at two positions, never two circles. Hold on both positions; the bed drops out on the question.
+> At six nineteen PM, by the radar team's account, one sub-vortex was turning inside the wide circulation, and it struck both vehicles [verify: one and the same sub-vortex at both vehicles, Wurman et al. 2014]. It reached the Weather Channel S U V on Highway eighty one. About four minutes later it reached the white Cobalt on Reuter Road. It was one small vortex on two roads, and only one crew survived it. What did it do in those four minutes?
+
+*([loop L2 stays open], sharpened: one sub-vortex, two roads, one crew survives. Pays in A3.)*
+
+*(blackout 0.7 s)*
+
+
+*(A3 onward: not written. Outline in section B.)*
