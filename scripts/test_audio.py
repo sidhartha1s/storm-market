@@ -322,6 +322,13 @@ with tempfile.TemporaryDirectory() as d:
     install_mocks()
     tts_episode.main()
     check("tts_episode: nothing stale means no tts_clone call at all", calls["batches"] == [], calls)
+    # 5g. a new voice reference makes every segment stale: the manifest hash carries the voice md5.
+    voice_ref.write_bytes(b"another-voice-bytes")
+    install_mocks()
+    tts_episode.main()
+    check("tts_episode: a swapped voice reference re-synthesizes every segment",
+          calls["batches"] == [2] and calls["synth"] == ["a1-s1", "a1-s2"], calls)
+    voice_ref.write_bytes(b"fake-voice-bytes")
 
     # 5e. a crash DURING synthesis (tts_clone/ffmpeg/ffprobe failure, Ctrl-C) for a legacy
     #     manifest entry (no text_hash) must not corrupt the next run's adoption check. The
