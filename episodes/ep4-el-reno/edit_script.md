@@ -351,26 +351,26 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 > The thirteenth life lost to the water that night was a man of sixty five, in a vehicle. The assessment calls it the worst flood Oklahoma City has ever had for lives lost. For the region the Norman office covers, it was the most lives lost to a flash flood since nineteen thirty four.
 
 ### A4-S9 — narration
-**Picture:** [RS] [VE] the city map: several short tracks draw in, each stamped "EF0" or "EF1". One ends at "SW 15th / Meridian · 7:09 PM · EF1". A small scale graphic, six steps, the bottom two lit. No pin sits on any track.
-> The tornadoes they were hiding from were real. Several crossed into Oklahoma City that evening, and the weather office rated every one of them E F zero or E F one. Those are the two lowest ratings on the scale. One, an E F one, ended its track at Southwest fifteenth and Meridian at about seven oh nine PM. None of them took a life.
+**Picture:** [RS] [VE] the city map: several short tracks draw in, each stamped "EF0" or "EF1"; one carries the weather office's end point and time, "SW 15th / Meridian · 7:09 PM · EF1", on screen only. The drain markers are not drawn on this map: how far that end point was from either drain has not been measured. A small scale graphic, six steps, the bottom two lit. No pin sits on any track.
+> The tornadoes they were hiding from were real. Several crossed into Oklahoma City that evening, and the weather office rated every one of them E F zero or E F one. Those are the two lowest ratings on the scale. None of them took a life.
 
 ### A4-S10 — narration
 **Picture:** Enma Aguilar's line returns small in a corner, the words "a tornado, not a flooding" lit. Then the assessment page, Finding 6, as attributed text. Behind it, a real clip of that evening's television radar picture (licence check), silent.
-> Enma Aguilar's sentence has the reason in it. They expected a tornado, not a flood. The assessment heard the same thing across the city. People told its team that broadcasters that evening kept their attention on the tornadoes and not on the flooding.
+> The assessment's team heard something like the family's reason from people across the city. They said broadcasters that evening kept their attention on the tornadoes and not on the flooding.
 
 ### A4-S11 — narration
-**Picture:** the assessment's paragraph on screen, its two sentences lit one after the other: the family, then the warning resources. A thin rule between them, no arrow joining them. Source line "NWS Service Assessment".
-> The assessment raises one more thing, in the same paragraph where it mentions this family. Emergency managers and broadcast meteorologists told its team there were not enough forecasts and warnings for people who do not speak English. Only a few radio and television stations broadcast in Spanish. The assessment does not say that is why the family chose the ditch. It sets the two facts side by side.
+**Picture:** the assessment's paragraph on screen, its two sentences lit one after the other: the Guatemalan family whose primary language was Spanish, then the warning resources. A thin rule between them, no arrow joining them. Source line "NWS Service Assessment".
+> The assessment describes a Guatemalan family whose first language was Spanish, and in the same paragraph it raises one more thing. Emergency managers and broadcast meteorologists told its team there were not enough forecasts and warnings for people who do not speak English. Only a few radio and television stations broadcast in Spanish. It does not say the gap is why that family went to the ditch.
 
 ### A4-S12 — narration
-**Picture:** the traffic aerial from A1 returns under a `data-callback`. Text-only name cards "Mike Morgan · KFOR" and "Gary England · KWTV". No broadcast clip and no quoted line on screen until the recording is checked; the Gazette's words wait behind the tag.
-> That leaves the question of who told Oklahoma City to leave. The story usually told has one name in it. Mike Morgan was the chief meteorologist at K F O R. The Oklahoma Gazette quoted him telling viewers to get in their cars and drive south [verify: exact broadcast words against the recording]. Gary England, at K W T V, called that advice dangerous.
+**Picture:** the traffic aerial from A1 returns under a `data-callback`. Text-only name cards "Mike Morgan · KFOR" and "Gary England · KWTV, a competing station". No broadcast clip and no quoted line on screen until the recording is checked; the Gazette's words wait behind the tag. No card for Morgan's reply until its tag clears.
+> The story usually told about the advice to drive south has one name in it. Mike Morgan was the chief meteorologist at K F O R, and the Oklahoma Gazette reported that he told viewers to drive south [verify: exact broadcast words against the recording]. Gary England, a longtime meteorologist at the competing station K W T V, called that advice dangerous. Morgan answered the criticism publicly that week.
 
 *([loop L6 open]: who told the city to drive. Closes in A4-S15.)*
 
 ### A4-S13 — narration
 **Picture:** [RS] [VE] a clock face runs back from "6:03 PM" to "1:00 PM", five hours. The weather office's message as attributed text, exact words: "TORNADO SAFETY: If you choose to flee in your car, plan for and anticipate traffic jams and blocked roads, hail, heavy rain and flooding. · NWS Norman, 1 PM, May 31, 2013, quoted in the NWS Service Assessment". One hit when the clock stops.
-> The problem with that story is the clock. At one PM that day, five hours before the tornado, the weather office in Norman posted a safety message of its own. The assessment prints it. If you choose to flee in your car, it said, plan for traffic jams and blocked roads, hail, heavy rain and flooding.
+> He wrote that he felt desperate to help, and that the advice to get out of the way became a traffic jam [verify: his own post, original not found]. The problem with the one name story is the clock. At one PM that day, five hours before the tornado, the weather office in Norman posted a safety message of its own. If you choose to flee in your car, it said, plan for traffic jams and blocked roads, hail, heavy rain and flooding.
 
 ### A4-S14 — narration
 **Picture:** the message stays up. Two phrases lift out of it in turn, "traffic jams" over the highway aerial and "flooding" over the drain map.
