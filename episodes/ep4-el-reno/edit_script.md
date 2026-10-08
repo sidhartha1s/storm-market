@@ -339,12 +339,12 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 > Elsewhere in the city, eleven more people had made the same choice. News Nine reported that most of them were young children. They were inside a storm drain under Southwest fifteenth Street, near the Dell plant, to get away from the tornadoes.
 
 ### A4-S6 — narration
-**Picture:** the section drawing: a water line rises to a mark "about 2 feet". A line draws from the drain to the "Oklahoma River · a quarter of a mile". Five of the eleven markers dim, six stay lit. Text-only cards for the names once their tags clear.
-> When the water in the drain reached about two feet, they tried to climb out and could not. It carried all eleven into the Oklahoma River, a quarter of a mile away. Five of them did not survive, and one was a three year old named Corey Don Johnson [verify: News 9 names Corey Don Johnson, 3, in the group of eleven; not in the fact file yet]. Six survived, among them Betty Yeatman and Tara Shrum, who was eight [verify: News 9 names survivors Betty Yeatman and Tara Shrum, 8; not in the fact file yet].
+**Picture:** [HUMAN] the section drawing: a water line rises to a mark "about 2 feet". A line draws from the drain to the "Oklahoma River · a quarter of a mile". One text-only card, "Corey Don Johnson · 3". No card and no name for either survivor: they are living people, one a child then.
+> When the water in the drain reached about two feet, they tried to climb out and could not. It carried all eleven into the Oklahoma River, a quarter of a mile away. An aunt held her three year old nephew the whole way. His name was Corey Don Johnson, and he did not survive. An eight year old girl was pulled from the river near the dam.
 
 ### A4-S7 — narration
-**Picture:** the assessment's table, the twelve lines "Sheltering in drainage ditch, flash flood" highlighted, the name column absent. Counter "18 went in · 12 did not survive". Our pairing of press names with table lines is an inference and is never shown as the table's own.
-> So eighteen people went into two drains that evening, and twelve did not survive. The weather service's table has twelve lines that say, sheltering in drainage ditch, flash flood. It gives ages and no names. The names come from local reporters and from the families.
+**Picture:** five of the eleven markers dim, six stay lit. Then the assessment's table, the twelve lines "Sheltering in drainage ditch, flash flood" highlighted, the name column absent. Counter "18 went in · 12 did not survive". Our pairing of press names with table lines is an inference and is never shown as the table's own.
+> By the reports and the table, five of the eleven did not survive, and six did. So eighteen people went into two drains that evening, and twelve did not survive. The weather service's table has twelve lines that say, sheltering in drainage ditch, flash flood. It gives ages and no names. The names come from local reporters and from the families.
 
 ### A4-S8 — narration
 **Picture:** one more pin, apart from the others, label "65". Then a plain timeline bar from "1934" to "2013" with nothing between them. Source line "NWS Service Assessment".
