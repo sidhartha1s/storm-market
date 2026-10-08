@@ -43,4 +43,5 @@ A writer's brief carries this block, pasted from that file. A brief without it i
 
 ## Worked example: El Reno 2013 (locked 9 Oct 26)
 - Ruled out: "radar near 300 mph, rated EF3" and "the widest tornado ever recorded". Every top video leads with one of them.
-- Locked: all 21 people who lost their lives that night were in a vehicle or sheltering in a drainage ditch, none in a house (NWS Service Assessment, Appendix C, counted row by row). Two vehicles on the same road, one crew surviving and one not, carry the middle; the small fast vortices inside the wide one are the science arc that explains them.
+- Locked: all 21 people who lost their lives on the night of May 31 were in a vehicle or sheltering in a drainage ditch, none in a building (NWS Service Assessment, Appendix C, counted row by row). Two vehicles inside the same tornado minutes apart, one crew surviving and one not, carry the middle; the small fast vortices inside the wide one are the science arc that explains them.
+- What the fact check changed after the lock: the two vehicles were on different roads, and the count holds for that night only (one more flood death the next morning is outside the table). A locked angle still gets its wording from the sources.
