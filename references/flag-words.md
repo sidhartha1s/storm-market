@@ -52,10 +52,10 @@ quote that was not actually said.
 | doom / doomed | hard | the outlook worsened; the odds turned against them | Sensational framing; the underlying fact is usually a plain probability or forecast statement. |
 | execute | soft | carried out; put into action | Ambiguous word (business sense vs. violent sense); the plain verb removes the ambiguity outright. |
 | destroy / destroyed | soft | leveled; reduced to rubble; wiped out | Plain, factual, and usually the right word — vary it for rhythm, not for risk. |
-| dead | soft | did not survive; had died | Blunt but accurate; prefer a softer construction when the sentence allows it. |
+| dead | soft | did not survive; lost their lives | Owner 9 Oct 26: soft wording is the default; the plain word stays only where precision needs it. |
 | death / deaths | soft | the toll; the lives lost | Necessary factual noun in this niche; keep it, but do not stack it sentence after sentence. |
 | death toll | soft | the number who did not survive; the toll | Standard journalistic phrase; low risk, use when precision matters. |
-| died | soft | lost their lives; did not survive | Genuinely low-risk — plainer and more clinical than "killed". This is usually the correct default, not a word to chase out of the script. |
+| died | soft | lost their lives; did not survive | Owner 9 Oct 26: "use it in a soft way because YouTube flags those and can suppress it. Maybe something like lost life." Write the alternative by default. The plain word may stay once or twice where a count or a quote needs it, never stacked. |
 | body / bodies | soft | remains; those who did not survive | Necessary in recovery-effort narration; keep it factual, avoid stacking with other hard terms in the same sentence. |
 | corpse | hard | the remains; the person who did not survive | More clinical/graphic than "body" with no added information — always replaceable. |
 | drowned | soft | did not survive the rising water; was lost to the floodwaters | Plain cause-of-death term, necessary for flood and storm-surge episodes (Katrina); vary it, do not chase it out. |
