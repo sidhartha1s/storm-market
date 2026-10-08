@@ -103,5 +103,5 @@ more engaging." Narration and visual event are written together, never narration
 Every lane runs Paul's clone at its tempo from `config.yaml channel.tempo` (pitch-preserving atempo). Order of
 operations is fixed: (1) TTS the segment; (2) ffmpeg atempo on the wav; (3) transcribe the SPED wav to words.json;
 (4) only then resolve cues, cards, popfigs and cuts against it. Never render at the slow pace and speed the video
-afterwards; never time graphics against the pre-tempo words.json. `scripts/tts_episode.py` runs steps 1-3 in one pass. Above
-1.13 the long-form clone sounds rushed (shorts run faster by design, see `tempo_by_prefix`); write denser instead.
+afterwards; never time graphics against the pre-tempo words.json. `scripts/tts_episode.py` runs steps 1-3 in one pass. Faster
+than the long-form lane tempo the clone sounds rushed (shorts run faster by design, see `tempo_by_prefix`); write denser instead.
