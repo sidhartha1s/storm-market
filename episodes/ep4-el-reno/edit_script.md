@@ -43,7 +43,7 @@ Each act changes what the viewer understood: A1 the city went out to meet the st
 | Loop | Opens | Closes |
 |---|---|---|
 | L1 episode: why nobody lost their life indoors | H1-S1, T1-S1 | A5, last 30 to 60 s |
-| L2: why one crew survived (facts side by side, no cause stated) | I1-S7 | A3 |
+| L2: why one crew survived (facts side by side, no cause stated) | I1-S8 | A3 |
 | L3: what made people leave solid houses | A1, first segment | A1 |
 | L4: what was inside the wide tornado | A1, last narration segment | A2 |
 | L5 `cta-hinge`: who the twelve were | A3, last segment (Paul) | A4-S1, first sentence |
