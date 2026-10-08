@@ -181,7 +181,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 **Picture:** three words land in a row over the traffic, "fear", "underground", "drive south", then clear. Cut to a rain-streaked windshield view of a grey wall of rain (stock or public domain). On the last sentence a faint radar sweep crosses the frame.
 > So on top of the fear, a warning about going underground and advice to drive had put a great many people on the road. But the drivers nearest El Reno were up against something else. Radar recorded it, and a driver in that rain may never have seen it. What was turning inside that tornado?
 
-*([loop L3 closes]: fear, the underground warning and the advice to drive. [loop L4 open]: what was inside the wide tornado. Closes in A2-S6.)*
+*([loop L3 closes]: the underground warning and the advice to drive, on top of the fear. [loop L4 open]: what was inside the wide tornado. Closes in A2-S6.)*
 
 ### A1-S12 — Paul on camera, slot 1 (wording not written)
 **Job:** the owner's hook callback at the act seam, the one affirming line after the exit question. It names the hook's claim (twenty-one lives, none inside a building) and points at what was inside the tornado.
