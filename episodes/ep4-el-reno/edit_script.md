@@ -63,6 +63,7 @@ Each act changes what the viewer understood: A1 the city went out to meet the st
 5. About 21:30, A5, at the full 21-pin map: the answer line that returns to the hook's claim, before the close.
 
 ### Open items the later acts must tag (from angle-facts "Still open")
+Fact check 9 Oct 26 (`fact_check.md`): the radar paper reads as ONE interior sub-vortex striking both vehicles, racing across US-81 at the S U V and nearly stopped over Reuter Road at the car about four minutes later. A2 and A3 are written to that, never as two different vortices, and the sentence carries a verify tag until the paper's authors' wording is matched line by line.
 Richard Henderson's age; the date the rating went back to E F three (the June 4 upgrade statement is confirmed); the pairing of the press names with the table rows (the News 9 report on the family of seven is read and confirmed); the News 9 report of June 9 on the last recovery; one spelling for the family's names, which differ between Fox and News 9 (Christopher and Leslie against Cristofer and Lesly, Floridalma against Florinda); the exact broadcast words; Joshua Wurman's institution; the June 1 flood loss. Each gets a verify tag where it is written, or stays out.
 
 ## Writer notes
@@ -95,7 +96,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### I1-S1 — narration
 **Picture:** the master map opens: central Oklahoma, Oklahoma City labelled, El Reno marked to its west. Popfig "6:03 PM" and the g-clock starts. A real clip of the tornado over open fields (public domain or licensed news). A bar marked "2.6 miles" draws across the section roads on the last sentence.
-> It was a Friday. The storms arrived around rush hour, when many people were already in their cars. At three minutes past six, a tornado touched down in open farmland near El Reno, a town west of Oklahoma City [verify: El Reno lies west of Oklahoma City]. It stayed on the ground for about forty minutes and grew to two point six miles wide.
+> It was a Friday. The storms arrived around rush hour, when many people were already in their cars. At three minutes past six, a tornado touched down in open farmland near El Reno, a town west of Oklahoma City. It stayed on the ground for about forty minutes and grew to two point six miles wide.
 
 ### I1-S2 — narration
 **Picture:** the weather service's assessment on screen, Appendix C, cropped to the table rows. The "Circumstance" column is read down: eight rows highlight and the word "Vehicle" underlines in each. On the map eight pins drop along the El Reno track. Eighteen other small tracks draw in grey, each with a "0". A soft hit on each group, not on each pin.
@@ -119,11 +120,11 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### I1-S7 — narration
 **Picture:** the second marker lights on Reuter Road. Name cards "Tim Samaras · 55", "Paul Samaras · 24", "Carl Young · 45", text only. Two marks on the g-clock, minutes apart.
-> The other was a white Chevrolet Cobalt carrying the researcher Tim Samaras, his son Paul [verify: Paul Samaras was Tim Samaras's son] and Carl Young. It was struck minutes later, on a different road.
+> The other was a white Chevrolet Cobalt carrying the researcher Tim Samaras, his son Paul and Carl Young. It was struck minutes later, on a different road.
 
 ### I1-S8 — narration
-**Picture:** split frame: left "3 of 3 survived" over the S U V marker, right "0 of 3" over the Cobalt marker. Then a self-made radar replot of the wide circulation with two small circles inside it, unlabelled. Hold on the two circles through the last sentence; the bed drops out on the last word.
-> Everyone in the S U V survived. No one in the Cobalt did. Scientists later rebuilt both moments from radar, and what struck the S U V is not what struck the car.
+**Picture:** split frame: left "3 of 3 survived" over the S U V marker, right "0 of 3" over the Cobalt marker. Then a self-made radar replot of the wide circulation with one small circle inside it, drawn at two positions, unlabelled [verify: one and the same sub-vortex at both vehicles; Wurman et al. 2014 read that way, see fact_check.md]. Hold on the two positions through the last sentence; the bed drops out on the last word.
+> Everyone in the S U V survived. No one in the Cobalt did. Scientists later rebuilt both moments from radar, and the two moments did not look alike.
 
 *([loop L2 open]: why one crew survived. Closes in A3 with the two vortices side by side, no cause stated.)*
 
