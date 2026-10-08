@@ -8,7 +8,7 @@ Method: `yt-dlp` flat pull of each channel's uploads (up to 600), the 10 latest 
 rest, each thumbnail logged field by field (text, layout, face, background, graphics).
 `<slug>-meta.json` is the pull, `<slug>-dissect.json` the per-thumbnail log and the channel findings.
 Ten channels were read by workers from the 640 px files and have one row per thumbnail. Three were read by the
-orchestrator from contact sheets, carry a `by` field saying so, and are thinner: Critical Latitude at 640 px, Elias Yoder at 400 px with short rows,
+orchestrator from contact sheets, and carry a `by` field saying so: Critical Latitude at 640 px with one row per thumbnail, Elias Yoder at 400 px with short rows,
 The Japanese Method at 400 px with its 20 thumbnails logged in 6 grouped rows. Thumbnail images are not kept in the repo.
 
 | Channel | Subscribers | Host face (thumbnails) | Studied (thumbnails) | Latest 10, median (views) | File |
