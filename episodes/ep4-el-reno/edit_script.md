@@ -85,7 +85,7 @@ Richard Henderson's age; the two rating statements and their dates; the News 9 p
 ## T1 · Hook tail (0:05)
 
 ### T1-S1 — narration
-**Picture:** hard cut on the word "night" to mid-action footage, never black: a real clip of the evening sky and loaded highways around Oklahoma City on May 31 (news or public domain; no chaser footage without a licence). A counter "19 tornadoes · NWS Norman" lands on "nineteen". On "Twelve of the twenty one": twenty-one small markers appear in a row and twelve of them light. One bed swell under the last clause, no siren.
+**Picture:** hard cut on the first word to mid-action footage, never black: a real clip of the evening sky and loaded highways around Oklahoma City on May 31 (news or public domain; no chaser footage without a licence). A counter "19 tornadoes · NWS Norman" lands on "nineteen". On "Twelve of the twenty one": twenty-one small markers appear in a row and twelve of them light. One bed swell under the last clause, no siren.
 > That night was May thirty first, twenty thirteen, around Oklahoma City. The weather service counted nineteen tornadoes in the area that day. Twelve of the twenty one had taken shelter from those tornadoes, and the tornadoes are not what took them.
 
 *(no void: cut straight into the intro. No black hold, title card or disclaimer before 1:00.)*
