@@ -324,10 +324,10 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A4-S2 — narration
 **Picture:** [HUMAN] text-only name cards, one at a time, in two groups: "Samuel Cifuentes", "Florinda Santos", "Alex"; then "Yolanda Santos", "Cristofer", "Brandon", "Lesly". News 9's spellings. No photographs unless the family's are licensed. Seven pins light at one point on the 21-pin map.
-> With him were his wife, Florinda Santos, and their son, Alex. With them were Florinda's cousin, Yolanda Santos, and Yolanda's three children, Cristofer, Brandon and Lesly. The family was from Guatemala, and Spanish was their first language.
+> With him were his wife, Florinda Santos, and their son, Alex. With them were Florinda's cousin, Yolanda Santos, and Yolanda's three children, Cristofer, Brandon and Lesly. The house was right behind them, and they chose the ditch.
 
 ### A4-S3 — narration
-**Picture:** the house and ditch drawing again: a table outline moves from the house to the ditch. Then Enma Aguilar's sentence as attributed text, exact words, held four seconds: "They were in the ditch because they thought it was the safest spot because they just thought it was going to be a tornado, not a flooding. · Enma Aguilar, family member, to News 9". Text only, never a voice.
+**Picture:** [RS] the house and ditch drawing again: a table outline moves from the house to the ditch. Then Enma Aguilar's sentence as attributed text, exact words, held four seconds: "They were in the ditch because they thought it was the safest spot because they just thought it was going to be a tornado, not a flooding. · Enma Aguilar, family member, to News 9". Text only, never a voice.
 > They did not get in a car. They carried a table out of the house, went down into a drainage ditch a few feet away, and hid under the table. A relative, Enma Aguilar, told News Nine why. They thought the ditch was the safest spot, she said, because they thought a tornado was coming, not a flood.
 
 ### A4-S4 — narration
