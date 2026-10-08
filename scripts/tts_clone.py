@@ -191,7 +191,7 @@ def synth_file(model, voice_state, voice_md5, sr, stream_audio_chunks, lines, ou
     for i, text in enumerate(lines, 1):
         # cache key includes the text hash so EDITED narration regenerates instead of silently
         # reusing the stale clip at the same index (index-only caching shipped old audio once).
-        seg = seg_dir / f"segment_{i:02d}_{segment_htag(text)}.wav"
+        seg = seg_dir / f"segment_{i:02d}_{segment_htag(text, voice_md5)}.wav"
         if seg.exists() and probe(seg) > 1.0:
             print(f"  [{i}] exists, skip", flush=True); seg_paths.append(seg); continue
         print(f"  [{i}] {text[:60]}...", flush=True)
