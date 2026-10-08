@@ -136,52 +136,54 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 ## A1 · A city in its cars (about 2:15, runs about 3:14 with Paul's slot)
 
 ### A1-S1 — narration
-**Picture:** place stamp "Oklahoma City · May 31, 2013 · evening". A real clip of a neighbourhood street under a dark sky, sirens audible in the clip's own sound, low. Then the assessment's cover page (public domain), the camera settling on the words "sheltering in place". The bed returns under the last sentence.
-> The standing advice in central Oklahoma is to shelter in place when a tornado is coming. Afterward, a weather service team went back and asked people why so many had left instead. The fear from Moore was already there. But the team also wrote down two things people were told on May thirty first.
+**Picture:** [RS] [VE] place stamp "Oklahoma City · May 31, 2013 · evening". A real clip of a neighbourhood street under a dark sky, sirens audible in the clip's own sound, low. Over it the assessment's sentence as attributed text, one line at a time: "...telling listeners they would be unable to survive if not underground · NWS Service Assessment". Then the words "sheltering in place" from the same page. The bed returns under the last sentence.
+> On May thirty first, some of the people giving tornado warnings told listeners they could not survive unless they were underground. That is the weather service's own finding, from the team it sent to ask why so many people left. The standing advice in central Oklahoma is the opposite, to stay and shelter in place.
 
-*([loop L3 open]: what made people leave solid houses. It opens on the two things they were told, which the intro has not given; the fear from Moore comes in as already known. Closes in A1-S11.)*
+*([loop L3 open]: what made people leave solid houses. It opens on the warning that only underground would do, which the intro has not given. Closes in A1-S4.)*
 
 ### A1-S2 — narration
-**Picture:** [RS] [VE] the assessment's sentence as attributed text, one line at a time: "...telling listeners they would be unable to survive if not underground · NWS Service Assessment". Then a plain cutaway drawing of a one-storey house on a slab, nothing below the floor line. One low hit when the floor line draws.
-> The first was about where a person could survive. Some of the people giving warnings, the assessment says, told listeners they could not survive unless they were underground. Not every house had a cellar to go to. For a family with no cellar, that warning said home would not hold.
+**Picture:** a plain cutaway drawing of a one-storey house on a slab, nothing below the floor line. One low hit when the floor line draws. Then the master map: popfig "6:03 PM", the g-clock starts, and a tornado mark lights west of Oklahoma City.
+> Not every house had a cellar to go to. For a family with no cellar, that meant their own house would not save them. And by six oh three PM, a tornado was on the ground west of the city.
 
 ### A1-S3 — narration
 **Picture:** the master map, Oklahoma City at centre, an arrow drawing south out of the city on "drive south". The word "atypical" lifts out of the assessment page and holds. No station logo, no face, no name on screen in this act.
-> The second was about what to do instead. The assessment says people followed advice from the media to drive south at once, as storms were bearing down on Oklahoma City. Its word for that advice is atypical, meaning it was not what Oklahomans are normally told. By the assessment's account, that advice overrode the plans families already had.
+> People were also told what to do instead. They followed advice from the media to drive south at once, as storms were bearing down on Oklahoma City. The assessment's word for that advice is atypical, meaning it was not what Oklahomans are normally told. It overrode the plans families already had.
 
 ### A1-S4 — narration
 **Picture:** a real news aerial of stopped traffic on a city highway that evening, held with its own sound for two seconds before the voice. Then a split card: "Rita · 2005" beside "Oklahoma City · 2013", both over lines of tail lights.
-> So at the hour when the highways were already full of people heading home, more cars pulled out to join them. The assessment says that choice, driving away in place of sheltering, led to the traffic jams and accidents that evening. It compares the evening to Hurricane Rita in two thousand five, when people who had just watched Katrina took to the roads.
+> So at the hour when the highways were already full of people heading home, more cars pulled out to join them. That choice, driving away instead of sheltering, led to the traffic jams and accidents that evening, the assessment found. It compares the evening to Hurricane Rita in two thousand five, when people who had just watched Katrina took to the roads.
+
+*([loop L3 closes]: the underground warning and the advice to drive, which the assessment ties to the traffic. The next segment opens the act's second question, who the tornado's eight were; it pays in A1-S7.)*
 
 ### A1-S5 — narration
-**Picture:** [HUMAN] the map slides west to El Reno. Text-only name card "Richard Henderson". Popfig "6:05 PM" on the g-clock, two minutes past the touchdown mark. A public domain or licensed shot of the tornado over fields; his own photograph is not used without a licence. His pin lights on the map; its place is one of the six still unsourced under the I1-S4 tag.
-> West of the city, near El Reno, one man was driving toward the storm. Richard Henderson drove a truck for a living and chased storms as a hobby. He was thirty five [verify: Richard Henderson's age; Appendix C has an unnamed thirty five year old on a storm chasing line], and he had left his home nearby to see this one. At six oh five PM, two minutes after the tornado touched down, he sent a friend a photograph of it.
+**Picture:** [HUMAN] the map slides west to El Reno. Text-only name card "Richard Henderson". A public domain or licensed shot of the tornado over fields; his own photograph is not used without a licence. His pin lights on the map; its place is one of the six still unsourced under the I1-S4 tag.
+> But half of the people that tornado took were not running from it. West of the city, near El Reno, one man was driving toward the storm. Richard Henderson drove a truck for a living and chased storms as a hobby. He was thirty five [verify: Richard Henderson's age; Appendix C has an unnamed thirty five year old on a storm chasing line], and he had left his home nearby to see this one.
 
 ### A1-S6 — narration
-**Picture:** the g-clock runs ten minutes forward and stops. The bed cuts to silence on "cut out" and stays out for one second. Then two small text cards, "Robbie" and "Wyatt". No assessment card here: its sentence on him carries a hard flag word, so it is paraphrased in the voice only.
-> About ten minutes after his photograph, Henderson said he could hear debris hitting his pickup. Then his phone cut out. He left two sons, Robbie and Wyatt. The weather service's assessment gives him one sentence, as an amateur storm chaser who left his nearby home.
+**Picture:** [RS] popfig "6:05 PM" on the g-clock, two minutes past the touchdown mark. The clock runs ten minutes forward and stops. The bed cuts to silence on "cut out" and stays out for one second. Then two small text cards, "Robbie" and "Wyatt". No assessment card here: its sentence on him carries a hard flag word, so it is paraphrased in the voice only.
+> At six oh five PM, two minutes after the tornado touched down, he sent a friend a photograph of it. About ten minutes later, Henderson said he could hear debris hitting his pickup. Then his phone cut out. He left two sons, Robbie and Wyatt. The weather service's assessment gives him one sentence, as an amateur storm chaser who left his nearby home.
 
 ### A1-S7 — narration
-**Picture:** the map holds on the El Reno track. Seven more pins light in three groups as they are spoken: three together for the Cobalt, one on a line drawn from El Reno toward Chickasha, labelled "67".
-> Seven more people were lost in that tornado, and the weather service's table says what each was doing. Three were the crew of the white Cobalt, also chasing. One was a man of sixty seven, driving from El Reno to Chickasha.
+**Picture:** the map holds on the El Reno track. Pins light as they are spoken: three together for the Cobalt, then a counter "4 of 8 · storm chasing · NWS Service Assessment" beside Henderson's pin and those three. Then one pin on a line drawn from El Reno toward Chickasha, labelled "67".
+> Seven more people were lost in that tornado, and the weather service's table says what each was doing. Three were the crew of the white Cobalt. That makes four of the eight who were chasing the storm. One was a man of sixty seven, driving from El Reno to Chickasha.
 
 ### A1-S8 — narration
-**Picture:** [HUMAN] Interstate 40 draws across the map. Two pins side by side on its shoulder, labels "26" and "17 days". Hold three seconds with the bed low. Then one last pin, label "32".
-> Two were parked along Interstate forty, a woman of twenty six and a boy seventeen days old. For the last, a man of thirty two, the table says only vehicle.
+**Picture:** [RS] [HUMAN] one pin, label "32". Then Interstate 40 draws across the map and two pins land side by side on its shoulder, labels "26" and "17 days". Hold three seconds on those two with the bed low.
+> One was a man of thirty two, and the table says only vehicle. Two were parked along Interstate forty, a woman of twenty six and a boy seventeen days old.
 
 ### A1-S9 — narration
-**Picture:** the full sixteen mile track over a land-use map: farmland pale, the few buildings as dots. Three roads light as they are named. Then the same traffic aerial, wider.
-> The El Reno tornado ran sixteen miles, and most of that was open farmland. It damaged homes and a few businesses near El Reno, and the table lists no one lost inside them. It also crossed Highway eighty one, Reuter Road and Interstate forty. That evening, the roads were full.
+**Picture:** the track over a land-use map near El Reno: the damaged homes and businesses as lit dots, no pin on any of them. Then the full sixteen miles, farmland pale, and three rural roads lighting as they are named. No city traffic aerial here.
+> The tornado damaged homes and a few businesses near El Reno, and the table lists no one lost inside them. Most of its sixteen miles was open farmland. It did cross roads: Highway eighty one, Reuter Road and Interstate forty.
 
 ### A1-S10 — narration
 **Picture:** the track animates: a speed readout climbs "35 mph" to "50+ mph · NWS Service Assessment" and the path bends left. A riser ends on "difficult".
-> And the roads had become hard to leave. As the tornado strengthened, the assessment says, its forward speed rose from about thirty five miles an hour to more than fifty. It also made a sharp left turn, and driving away from it became difficult.
+> As the tornado strengthened, the assessment says, its forward speed rose from about thirty five miles an hour to more than fifty. It also made a sharp left turn, and driving away from it became difficult.
 
 ### A1-S11 — narration
-**Picture:** three words land in a row over the traffic, "fear", "underground", "drive south", then clear. Cut to a rain-streaked windshield view of a grey wall of rain (stock or public domain). On the last sentence a faint radar sweep crosses the frame.
-> So on top of the fear, a warning about going underground and advice to drive had put many people on the road. But the drivers nearest El Reno were up against something else. Radar recorded it, and a driver in that rain may never have seen it. What was turning inside that tornado?
+**Picture:** a rain-streaked windshield view of a grey wall of rain (stock or public domain). On the second sentence a faint radar sweep crosses the frame and one small bright return shows inside the rain. The bed drops out on the question.
+> But the drivers nearest El Reno had a second problem. The tornado was wrapped in rain, and radar recorded something moving inside it. What was turning inside that tornado?
 
-*([loop L3 closes]: the underground warning and the advice to drive, on top of the fear. [loop L4 open]: what was inside the wide tornado. Closes in A2-S6.)*
+*([loop L4 open]: what was inside the wide tornado. Closes in A2-S6.)*
 
 ### A1-S12 — Paul on camera, slot 1 (wording not written)
 **Job:** the owner's hook callback at the act seam, the one affirming line after the exit question. It names the hook's claim (twenty-one lives, none inside a building) and points at what was inside the tornado.
