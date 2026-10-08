@@ -82,7 +82,7 @@ weakness is shape: the peak is at 0:52 and segments five to seven hold at 3 for 
    twelve sound like people who were in a shelter.
 7. I1-S5: "People later told the weather service that fear from that day led them to do things they normally would
    not." Faithful to the assessment, but the words hold no picture; only the highway shot says what the "things" were.
-8. I1-S5: "and none came near the size of this one." "This one" points back twenty words; the ear cannot tell whether
+8. I1-S5: "and none came near the size of this one." "This one" has no named evacuation before it in the segment; the ear cannot tell whether
    Oklahoma City is one of the six; no figure for the size.
 9. I1-S8: "Scientists later rebuilt both moments from radar, and the two moments did not look alike." "Moments" twice,
    nothing to see or count, and "Scientists" is unnamed against the named-source rule.
