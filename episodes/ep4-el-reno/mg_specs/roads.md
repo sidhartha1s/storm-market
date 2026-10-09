@@ -21,7 +21,7 @@ North is up in all six. One scale per comp, scale bar on screen. Datum = the US-
 
 | Comp | px per mile | x81 | Alfadale x | Radio x | yReuter | Reno y | I-40 y | 2.6 mi ring r | core r (1.25 mi) |
 |---|---|---|---|---|---|---|---|---|---|
-| g-i1s6-roads | 520 | 700 | 1220 | 1740 | 330 | 850 | off frame | not drawn | not drawn |
+| g-i1s6-roads | 520 | 700 | 1246 | 1760.8 | 330 | 850 | off frame | not drawn | not drawn |
 | g-a2s2-fields | 384 | no roads | | | | | | 499.2, centre (1020, 540) | 240 |
 | g-a2s3-ring | 220 | 700 | 920 | 1140 | 760 | 980 | 386 (approx) | 286 | 137.5 |
 | g-a3s1-roads | 300 | 760 | 1060 | under panel | 330 | 630 | off frame | 390 | not drawn |
