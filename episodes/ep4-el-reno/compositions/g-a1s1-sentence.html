@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1s1-sentence (A1-S1) · window 18.20 s · brief: mg_specs/cards.md
+     Overlay: root transparent for the whole window, the neighbourhood street clip sits beneath. A place stamp, then the
+     assessment's sentence one line at a time, then "sheltering in place" from the same page (NWS Service Assessment).
+     Cues are audio/a1-s1.words.json seconds. -->
+<template>
+<style>
+  #sn1-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .sn1-glass { position:absolute; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .sn1-h { opacity:0; visibility:hidden; }
+  .sn1-place { position:absolute; left:36px; top:28px; font:900 52px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .sn1-when { position:absolute; left:38px; top:96px; font:italic 28px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+  .sn1-q { position:absolute; left:48px; font:54px Georgia, 'Times New Roman', serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .sn1-src { position:absolute; left:50px; top:262px; font:italic 28px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+  .sn1-rule { position:absolute; left:48px; top:322px; width:1204px; height:1px; background:rgba(255,255,255,0.28); }
+  .sn1-eb { position:absolute; left:50px; top:346px; font:700 20px Arial, sans-serif; letter-spacing:4px; color:#93a3b2; white-space:nowrap; line-height:1; }
+</style>
+<div id="sn1-root" data-composition-id="g-a1s1-sentence" data-width="1920" data-height="1080" data-duration="18.2">
+  <div class="sn1-glass sn1-h" id="sn1-stamp" style="left:110px; top:810px; width:600px; height:150px">
+    <div class="sn1-place">Oklahoma City</div>
+    <div class="sn1-when">May 31, 2013 &middot; evening</div>
+  </div>
+  <div class="sn1-glass sn1-h" id="sn1-card" style="left:150px; top:240px; width:1300px; height:470px">
+    <div class="sn1-q sn1-h" id="sn1-q1" style="top:44px">&ldquo;&hellip;telling listeners</div>
+    <div class="sn1-q sn1-h" id="sn1-q2" style="top:112px">they would be unable to survive</div>
+    <div class="sn1-q sn1-h" id="sn1-q3" style="top:180px">if not underground&rdquo;</div>
+    <div class="sn1-src sn1-h" id="sn1-src">NWS Service Assessment</div>
+    <div class="sn1-rule" id="sn1-rule"></div>
+    <div class="sn1-eb sn1-h" id="sn1-eb">THE STANDING ADVICE</div>
+    <div class="sn1-q sn1-h" id="sn1-q4" style="top:384px">&ldquo;sheltering in place&rdquo;</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var D = 18.2, P = "#sn1-";
+  var tl = gsap.timeline({ paused: true });
+  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, t); }
+  function float(id, a, b) { var n = Math.floor((b - a) / 1.9) - 1; if (n >= 0) tl.to(P + id, { y: -6, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: n }, a); }
+  gsap.set(P + "rule", { scaleX: 0, transformOrigin: "left center" });
+  tl.set(P + "rule", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* MAY 31ST @0.38: the place stamp; it leaves before the sentence */
+  show("stamp", 0.38, -60, 0);
+  tl.to(P + "stamp", { y: -5, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.9);
+  tl.to(P + "stamp", { x: -900, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 2.75);
+  /* TOLD LISTENERS @3.30 · THEY COULD NOT SURVIVE @3.94 · UNLESS UNDERGROUND @4.92 */
+  show("card", 3.30, -60, 0);
+  show("q1", 3.30, 0, 18);
+  show("q2", 3.94, 0, 18);
+  show("q3", 4.92, 0, 18);
+  /* THE WEATHER SERVICE'S OWN FINDING @7.64 */
+  show("src", 7.64, -24, 0);
+  float("card", 5.5, 17.5);
+  /* THE STANDING ADVICE @12.60: the first sentence steps back, the rule draws */
+  tl.to([P + "q1", P + "q2", P + "q3"], { autoAlpha: 0.5, duration: 0.4, ease: "power2.out" }, 12.48);
+  tl.to(P + "rule", { scaleX: 1, duration: 0.7, ease: "power3.out" }, 12.48);
+  show("eb", 12.60, -24, 0);
+  /* SHELTER IN PLACE @16.24 */
+  show("q4", 16.24, 0, 18);
+  tl.to(P + "card", { x: -1500, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
+  window.__timelines["g-a1s1-sentence"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
