@@ -20,9 +20,14 @@ number, place or quote that is not in `fact_check.md` or the segment's Picture n
 - Photo in a comp: `media/pd/nssl-doppler-on-wheels-dow7-1.jpg` (NOAA NSSL, 30 May 2015, not 2013), captioned on screen
   with what it is. "University of Oklahoma" is text only: a photo of a different radar under that name would mislead
   (orchestrator, 10 Oct 26).
-- I1-S7 second clock mark carries no clock time: `fact_check.md` lines 28 and 60 give the sub-vortex over Reuter Road
-  from 2323:35 to 2323:57 UTC (it rounds to 6:24 PM and is not stated as the strike time), and the roads family prints
-  6:22:15 PM on Reuter Road (headlights, line 60). The US-81 mark "6:19 PM" is line 28 (OUN, 5:19 PM CST).
+- I1-S7 second clock mark reads "6:23 PM": `fact_check.md` lines 28 and 60 give the sub-vortex over Reuter Road from
+  2323:35 to 2323:57 UTC; the orchestrator ruled on 10 Oct 26 that 2323:35 UTC is the paper's strike time and "6:23 PM"
+  stands (the clock minute, not a rounding). The roads family prints 6:22:15 PM on Reuter Road for the headlights
+  (line 60), an earlier moment. The US-81 mark "6:19 PM" is line 28 (OUN, 5:19 PM CST).
+- Road grid in I1-S7 (roads builder, 10 Oct 26): 520 px per mile from US-81 at x 700; Alfadale 1.05 mi = x 1246, Radio
+  2.04 mi = x 1761; the research car's point is 1.71 mi = x 1589.2.
+- Fix round, 10 Oct 26: every cue is a literal timeline position (sweep check 7). Overlay cards drift at about 6.5 px/s
+  from landing to exit instead of a 6 px float; no cue time, word or fact changed.
 
 ## 2. Datum and positions
 - Presenter corner x >= 1600, y >= 680 is empty in every comp. Text is 96 px or more from left/right, 54 px from top/bottom.
