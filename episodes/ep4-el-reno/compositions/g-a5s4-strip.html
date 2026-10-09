@@ -28,8 +28,13 @@
   .s4-ring { fill:none; stroke:#f2f5f8; stroke-width:0.6; }
   .s4-eb { position:absolute; left:96px; top:64px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
   .s4-ten { position:absolute; left:520px; top:138px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; color:#f2f5f8; white-space:nowrap; }
-  .s4-tensub { position:absolute; left:524px; top:212px; font-size:22px; font-weight:700; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
-  .s4-clab { position:absolute; left:1396px; top:204px; font-size:22px; font-weight:700; letter-spacing:3px; color:#f2f5f8; white-space:nowrap; }
+  /* two lines ending near x 900: the contour's edge at this height is at x 1220 and beyond */
+  .s4-tensub { position:absolute; left:524px; top:208px; font-size:22px; line-height:30px; font-weight:700; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .s4-tensub span { display:block; }
+  .s4-leader { fill:none; stroke:#f2f5f8; stroke-width:0.5; }
+  .s4-ghost { position:absolute; width:150px; box-sizing:border-box; border:1px solid rgba(147,163,178,0.40); border-bottom:none; }
+  /* right of the contour (its edge is at x 1421 at this height), on a leader from the ring */
+  .s4-clab { position:absolute; left:1476px; top:282px; font-size:22px; font-weight:700; letter-spacing:3px; color:#f2f5f8; white-space:nowrap; }
   .s4-photo { position:absolute; left:96px; top:660px; width:480px; height:300px; box-sizing:border-box; overflow:hidden;
     border:1px solid rgba(147,163,178,0.45); background:linear-gradient(180deg, #15202b, #0b1016 70%, #04070a); }
   .s4-photo svg { position:absolute; left:0; top:0; width:480px; height:300px; }
