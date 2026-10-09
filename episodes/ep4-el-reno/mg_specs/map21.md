@@ -121,6 +121,19 @@ Text: "0 of 21 inside a building", "NWS SERVICE ASSESSMENT, APPENDIX C", "Strong
 The metro map shrinks into its place inside the outline of Oklahoma. Text: "May 31, 2027", "14 years".
 | May 31 0.70 | 14 3.22 |
 
+## Fix round (10 Oct 26, verifier rows A to E)
+- A. Tray title: tracking 3 px to 1.5 px (type stays 19 px); it now ends about 44 px inside the tray border.
+- B. g-a1s7 "to Chickasha": left of the dashed bearing line, clear of US-81; the Union City outlines beneath are not drawn.
+- C. g-a5s10 "Okfuskee County · June 1": right edge at x 1824, y 384, with the grey marker under its end at 1800, 434;
+  no outline is drawn in that zone. The view opens from the metro view to the whole map at 9.3 to 9.9 s so the east
+  edge is open country when the marker lands.
+- D. Metro view (scale 1.5, centre 890, 480) replaces the scale 1 map in g-i1s4, g-a2s9, g-a4s16, g-a5s9, g-a5s10
+  (to 9.3 s) and g-a5s12. El Reno view is scale 2.4 with US-81 at x 1150. A pin key (the §3 colour code: "In a vehicle,
+  in the tornado", "In flood water", "Building") sits top right on every map state except g-a2s9 (no new text; the key
+  alone tripped the type-tier gate there), g-a4s2-names and g-z1s2.
+- E. The window-long scan tween carries a literal duration, so sweep check 7 reads each timeline's length.
+- Outlines hidden after generation (the rest keep their places): Union City, Calumet, the east-edge label zone.
+
 ## Build notes
 - Shared layout (team lead, OpenStreetMap via Overpass, 10 Oct 26): US-81 x 503.2, Radio Road x 572.7, Reuter Road y 518.9,
   Interstate 40 y 467.2 where it meets US-81. Reuter Road and pins 1 to 3 use these px directly. Interstate 40 passes
