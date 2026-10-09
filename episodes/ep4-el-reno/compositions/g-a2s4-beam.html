@@ -15,7 +15,9 @@
   .bm4-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
     background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
     background-size:120px 120px; }
-  .bm4-tile { position:absolute; top:70px; height:541px; overflow:hidden; border-radius:14px; border:1px solid rgba(255,255,255,0.22);
+  .bm4-glass { position:absolute; top:100px; width:700px; height:467px; box-sizing:border-box; border-radius:14px; border:1px solid rgba(255,255,255,0.22);
+    background:linear-gradient(160deg, rgba(21,32,43,0.78), rgba(10,16,24,0.55)); backdrop-filter:blur(18px) saturate(1.15); box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .bm4-tile { position:absolute; top:100px; height:467px; overflow:hidden; border-radius:14px; border:1px solid rgba(255,255,255,0.22);
     box-shadow:0 18px 50px rgba(0,0,0,0.55); background:#0b1016; }
   .bm4-tile img { position:absolute; left:0; top:0; width:100%; height:100%; object-fit:cover; }
   .bm4-h { opacity:0; visibility:hidden; }
