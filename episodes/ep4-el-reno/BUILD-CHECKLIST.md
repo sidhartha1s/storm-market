@@ -40,7 +40,8 @@ Owner, 10 Oct 26: "clips are good. go ahead. move faster." Status is read from t
 - [ ] Fix round out to five Opus builders (map21, drawings, replot, roads, cards) from verifier 1's 29 rows, sent 10 Oct 26 02:52. Then a second verifier on maps, docs, cards and the fixed comps.
 - [ ] Watch every footage cut in motion (one frame each at least).
 - [ ] The Weather Channel crew sequence (A3-S3, A3-S4): owner confirms the insert before any render
-- [ ] Sound: bed, sirens, hits; mixdown listened to
+- [x] Sound layer mounted (10 Oct 26, 03:26): two baked ambience stems (`bake_beds.py`: score, rain, two sirens, every drop-out from the script), 22 swells ending on a line, 6 hits on named cues. `audio_levels` passes every bed; its only failures are Paul's six clips (file gain, fixed with the voice conversion).
+- [ ] Sound still open: the TV crew clip's own sound for about six seconds after "kept recording" (the timeline leaves no gap for it and the clip is muted); mixdown with ebur128 per 15 s window; owner's ear on the bed.
 - [ ] Outro card (Z1-S3)
 - [ ] Gates: `python3 scripts/run_gates.py episodes/ep4-el-reno` all green
 - [ ] Pin check, then draft render; absolute path posted; park for the owner
