@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a3s10-names (A3-S10) · window 20.78 s · brief: mg_specs/cards.md
+     Dark card, text only, no photographs. The assessment's phrase (read directly, fact_check) holds while the voice
+     quotes it; the three names land on the last two sentences, one at a time. Nothing moves in the last second.
+     Cues are audio/a3-s10.words.json seconds. -->
+<template>
+<style>
+  #nx10-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #080b10, #020304 78%); }
+  .nx10-glow { position:absolute; left:260px; top:160px; width:1400px; height:760px; border-radius:50%;
+    background:radial-gradient(ellipse, rgba(147,163,178,0.10), rgba(147,163,178,0) 68%); }
+  .nx10-h { opacity:0; visibility:hidden; }
+  .nx10-src { position:absolute; left:480px; top:178px; font:italic 24px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+  .nx10-q { position:absolute; left:478px; font:54px Georgia, 'Times New Roman', serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .nx10-name { position:absolute; left:476px; font:900 76px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .nx10-age { position:absolute; left:1200px; font:48px Georgia, 'Times New Roman', serif; color:#e8c56a; white-space:nowrap; line-height:1; }
+</style>
+<div id="nx10-root" data-composition-id="g-a3s10-names" data-width="1920" data-height="1080" data-duration="20.78">
+  <div class="nx10-glow" id="nx10-glow"></div>
+  <div id="nx10-quote">
+    <div class="nx10-src nx10-h" id="nx10-src">NWS Service Assessment</div>
+    <div class="nx10-q nx10-h" id="nx10-q1" style="top:226px">&ldquo;some of the most experienced</div>
+    <div class="nx10-q nx10-h" id="nx10-q2" style="top:296px">and safety-minded chasers&rdquo;</div>
+  </div>
+  <div class="nx10-name nx10-h" id="nx10-n1" style="top:470px">Tim Samaras</div>
+  <div class="nx10-age nx10-h" id="nx10-a1" style="top:492px">&middot; 55</div>
+  <div class="nx10-name nx10-h" id="nx10-n2" style="top:590px">Paul Samaras</div>
+  <div class="nx10-age nx10-h" id="nx10-a2" style="top:612px">&middot; 24</div>
+  <div class="nx10-name nx10-h" id="nx10-n3" style="top:710px">Carl Young</div>
+  <div class="nx10-age nx10-h" id="nx10-a3" style="top:732px">&middot; 45</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var D = 20.78, P = "#nx10-";
+  var tl = gsap.timeline({ paused: true });
+  function show(id, t, dx, dy, d) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: d || 0.45, ease: "power3.out" }, t); }
+
+  /* ambient: the glow drifts until the last name has landed, then the card is still for the last second */
+  tl.fromTo(P + "glow", { x: -220 }, { x: 220, duration: 19.7, ease: "none" }, 0);
+  /* THE WEATHER SERVICE'S ASSESSMENT @0.68 · SOME OF THE MOST EXPERIENCED @2.78 · AND SAFETY MINDED CHASERS @4.06 */
+  show("src", 0.68, -24, 0);
+  show("q1", 2.78, 0, 20);
+  show("q2", 4.06, 0, 20);
+  tl.to(P + "quote", { y: -6, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, 5.0);
+  /* the phrase steps back before the names */
+  tl.to(P + "quote", { autoAlpha: 0.4, y: -18, duration: 0.5, ease: "power2.out" }, 12.3);
+  /* HE WAS @13.04 · 55 @13.30 */
+  show("n1", 13.04, -40, 0);
+  show("a1", 13.30, 24, 0);
+  /* HIS SON PAUL @17.42 · 24 @17.88 */
+  show("n2", 17.42, -40, 0);
+  show("a2", 17.88, 24, 0);
+  /* CARL YOUNG @19.04 · 45 @19.60 (settled by 19.78; one still second to the cut) */
+  show("n3", 19.04, -40, 0);
+  show("a3", 19.60, 24, 0, 0.18);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-a3s10-names"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
