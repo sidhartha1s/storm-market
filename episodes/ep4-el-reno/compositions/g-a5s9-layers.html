@@ -17,7 +17,7 @@
   .l9-h { opacity:0; visibility:hidden; }
   .l9-pl { position:absolute; font:700 26px Arial, sans-serif; color:#dfe7ee; letter-spacing:1px; white-space:nowrap; line-height:1;
     text-shadow:0 0 6px #04070c, 0 0 12px #04070c, 0 2px 3px #04070c; }
-  .l9-tray { position:absolute; left:96px; top:872px; width:440px; height:140px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+  .l9-tray { position:absolute; left:96px; top:872px; width:440px; height:140px; box-sizing:border-box; background:#0a1018;
     backdrop-filter:blur(18px) saturate(1.15); border:1px dashed rgba(255,255,255,0.28); border-radius:20px; }
   .l9-trayt { position:absolute; left:22px; top:16px; font:700 19px Arial, sans-serif; letter-spacing:1.5px; color:#93a3b2; white-space:nowrap; line-height:1; }
   .l9-tl { position:absolute; top:98px; width:76px; margin-left:-38px; text-align:center; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
@@ -145,9 +145,16 @@ window.__timelines = window.__timelines || {};
   TOWNS.forEach(function (t) { var cx = X(t[0]), cy = Y(t[1]), n = 0, tries = 0;
     while (n < t[2] && tries++ < t[2] * 14) { var x = cx + (rnd() * 2 - 1) * t[3], y = cy + (rnd() * 2 - 1) * t[4], r = rnd();
       if (!free(x, y, got)) continue; var k = r < 0.7 ? "h" : r < 0.85 ? "s" : "c"; got.push([x, y]); n++; if (HIDE.some(function (h) { return x > h[0] && x < h[2] && y > h[1] && y < h[3]; })) continue;
-      ic[k].push(el("path", { d: icon(k, x, y, 1), fill: "none", stroke: "#93a3b2", "stroke-width": 1.5, "stroke-linejoin": "round" }, icg)); } });
+      var pe = el("path", { d: icon(k, x, y, 1), fill: "none", stroke: "#93a3b2", "stroke-width": 1.5, "stroke-linejoin": "round" }, icg); pe._xy = [x, y]; ic[k].push(pe); } });
   var house = el("path", { d: icon("h", HOUSE[0], HOUSE[1], 1.3), fill: "none", stroke: "#93a3b2", "stroke-width": 1.6, "stroke-linejoin": "round" }, map);
   function bump(k, t) { tl.to(ic[k], { scale: 1.5, duration: 0.24, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, t); }
+  /* no outline under a panel, the key or the tray: an outline one of them would cover or cut in view v is not drawn */
+  function under(v) {
+    var bx = [].map.call(document.querySelectorAll("#" + P + "-root ." + P + "-rail, #" + P + "-root ." + P + "-tray"), function (e) { var s = e.style, c = e.id === P + "-tray";
+      return [parseFloat(s.left) || 96, parseFloat(s.top) || (c ? 872 : 64), parseFloat(s.width) || (c ? 440 : 640), parseFloat(s.height) || 140]; });
+    ["h", "s", "c"].forEach(function (k) { ic[k].forEach(function (e) { var x = e._xy[0] * v.scale + v.x, y = e._xy[1] * v.scale + v.y, m = 11 * v.scale + 6;
+      if (bx.some(function (b) { return x > b[0] - m && x < b[0] + b[2] + m && y > b[1] - m && y < b[1] + b[3] + m; })) e.setAttribute("visibility", "hidden"); }); });
+  }
 
   /* ---- drains (a short channel under each city cluster) and the small circle ---- */
   el("path", { d: "M" + (SITE.nw[0] - 42) + "," + (SITE.nw[1] + 27) + " L" + (SITE.nw[0] + 42) + "," + (SITE.nw[1] + 27), stroke: "#5a768f", "stroke-width": 3, "stroke-linecap": "round" }, map);
@@ -190,7 +197,7 @@ window.__timelines = window.__timelines || {};
   function on(id) { s0($(id), { autoAlpha: 1 }); }
   function nudge(i, t) { var p = pins[i]; tl.fromTo(p.dot, { scale: 1 }, { scale: 1.55, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, svgOrigin: p.o, immediateRender: false }, t); }
   init("222222222222222222222");                            /* all 21 lit; the map splits into roads and water */
-  setCam(METRO); at("pl-er", 318, 380, METRO); at("pl-okc", 1254, 504, METRO); on("pl-er"); on("pl-okc");
+  setCam(METRO); at("pl-er", 318, 380, METRO); at("pl-okc", 1254, 504, METRO); on("pl-er"); on("pl-okc"); under(METRO);
   at("pl-sv", 383, 587, METRO);                            /* under the circle's path, west of the US-81 line */
   draw(hl.us81, 4.44, 0.9); draw(hl.reuter, 4.6, 0.7);      /* tornado @4.44 on the open roads @5.40 near El Reno */
   show("rail", 4.9, -60, 0); show("r1v", 5.40, 0, 20); show("r1l", 5.6, -20, 0);

@@ -17,7 +17,7 @@
   .m7-h { opacity:0; visibility:hidden; }
   .m7-pl { position:absolute; font:700 26px Arial, sans-serif; color:#dfe7ee; letter-spacing:1px; white-space:nowrap; line-height:1;
     text-shadow:0 0 6px #04070c, 0 0 12px #04070c, 0 2px 3px #04070c; }
-  .m7-tray { position:absolute; left:96px; top:872px; width:440px; height:140px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+  .m7-tray { position:absolute; left:96px; top:872px; width:440px; height:140px; box-sizing:border-box; background:#0a1018;
     backdrop-filter:blur(18px) saturate(1.15); border:1px dashed rgba(255,255,255,0.28); border-radius:20px; }
   .m7-trayt { position:absolute; left:22px; top:16px; font:700 19px Arial, sans-serif; letter-spacing:1.5px; color:#93a3b2; white-space:nowrap; line-height:1; }
   .m7-tl { position:absolute; top:98px; width:76px; margin-left:-38px; text-align:center; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
@@ -46,7 +46,7 @@
     </div>
     <svg class="m7-svg" id="m7-hudsvg" viewBox="0 0 1920 1080"></svg>
     <!-- HUD:BEGIN -->
-    <div class="m7-pl m7-h" id="m7-pl-chk" style="right:845px;top:960px">to Chickasha</div>
+    <div class="m7-pl m7-h" id="m7-pl-chk" style="right:920px;top:960px">to Chickasha</div>
     <div class="m7-rail" id="m7-rail" style="height:300px">
       <div class="m7-big" style="left:32px;top:28px">8</div>
       <div class="m7-mid" style="left:92px;top:50px">lost in the El Reno tornado</div>
@@ -146,9 +146,16 @@ window.__timelines = window.__timelines || {};
   TOWNS.forEach(function (t) { var cx = X(t[0]), cy = Y(t[1]), n = 0, tries = 0;
     while (n < t[2] && tries++ < t[2] * 14) { var x = cx + (rnd() * 2 - 1) * t[3], y = cy + (rnd() * 2 - 1) * t[4], r = rnd();
       if (!free(x, y, got)) continue; var k = r < 0.7 ? "h" : r < 0.85 ? "s" : "c"; got.push([x, y]); n++; if (HIDE.some(function (h) { return x > h[0] && x < h[2] && y > h[1] && y < h[3]; })) continue;
-      ic[k].push(el("path", { d: icon(k, x, y, 1), fill: "none", stroke: "#93a3b2", "stroke-width": 1.5, "stroke-linejoin": "round" }, icg)); } });
+      var pe = el("path", { d: icon(k, x, y, 1), fill: "none", stroke: "#93a3b2", "stroke-width": 1.5, "stroke-linejoin": "round" }, icg); pe._xy = [x, y]; ic[k].push(pe); } });
   var house = el("path", { d: icon("h", HOUSE[0], HOUSE[1], 1.3), fill: "none", stroke: "#93a3b2", "stroke-width": 1.6, "stroke-linejoin": "round" }, map);
   function bump(k, t) { tl.to(ic[k], { scale: 1.5, duration: 0.24, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, t); }
+  /* no outline under a panel, the key or the tray: an outline one of them would cover or cut in view v is not drawn */
+  function under(v) {
+    var bx = [].map.call(document.querySelectorAll("#" + P + "-root ." + P + "-rail, #" + P + "-root ." + P + "-tray"), function (e) { var s = e.style, c = e.id === P + "-tray";
+      return [parseFloat(s.left) || 96, parseFloat(s.top) || (c ? 872 : 64), parseFloat(s.width) || (c ? 440 : 640), parseFloat(s.height) || 140]; });
+    ["h", "s", "c"].forEach(function (k) { ic[k].forEach(function (e) { var x = e._xy[0] * v.scale + v.x, y = e._xy[1] * v.scale + v.y, m = 11 * v.scale + 6;
+      if (bx.some(function (b) { return x > b[0] - m && x < b[0] + b[2] + m && y > b[1] - m && y < b[1] + b[3] + m; })) e.setAttribute("visibility", "hidden"); }); });
+  }
 
   /* ---- drains (a short channel under each city cluster) and the small circle ---- */
   el("path", { d: "M" + (SITE.nw[0] - 42) + "," + (SITE.nw[1] + 27) + " L" + (SITE.nw[0] + 42) + "," + (SITE.nw[1] + 27), stroke: "#5a768f", "stroke-width": 3, "stroke-linecap": "round" }, map);
@@ -190,7 +197,8 @@ window.__timelines = window.__timelines || {};
   function on(id) { s0($(id), { autoAlpha: 1 }); }
   function nudge(i, t) { var p = pins[i]; tl.fromTo(p.dot, { scale: 1 }, { scale: 1.55, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, svgOrigin: p.o, immediateRender: false }, t); }
   init("000200001111111111110");                            /* Henderson's pin is lit from A1-S5; seven more to come */
-  setCam(WEST); at("pl-er", 318, 380, WEST); on("pl-er");
+  WEST = { x: 1100 - 503.2 * 3, y: 880 - 518.9 * 3, scale: 3 };   /* this segment names only El Reno: the town, both roads and the four pins sit across the lower half */
+  setCam(WEST); at("pl-er", 318, 380, WEST); on("pl-er"); under(WEST);
   s0($("tray"), { autoAlpha: 0 });
   show("src", 3.44, -20, 0);                                /* table @3.44 */
   [0, 1, 2].forEach(function (i, n) { land(i, 6.22 + n * 0.07); });   /* Three @6.22: together, on Reuter Road */

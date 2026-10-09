@@ -17,7 +17,7 @@
   .m14-h { opacity:0; visibility:hidden; }
   .m14-pl { position:absolute; font:700 26px Arial, sans-serif; color:#dfe7ee; letter-spacing:1px; white-space:nowrap; line-height:1;
     text-shadow:0 0 6px #04070c, 0 0 12px #04070c, 0 2px 3px #04070c; }
-  .m14-tray { position:absolute; left:96px; top:872px; width:440px; height:140px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+  .m14-tray { position:absolute; left:96px; top:872px; width:440px; height:140px; box-sizing:border-box; background:#0a1018;
     backdrop-filter:blur(18px) saturate(1.15); border:1px dashed rgba(255,255,255,0.28); border-radius:20px; }
   .m14-trayt { position:absolute; left:22px; top:16px; font:700 19px Arial, sans-serif; letter-spacing:1.5px; color:#93a3b2; white-space:nowrap; line-height:1; }
   .m14-tl { position:absolute; top:98px; width:76px; margin-left:-38px; text-align:center; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
@@ -100,10 +100,10 @@ window.__timelines = window.__timelines || {};
               el("path", { d: dOf([SITE.sw].concat(RIV.slice(3, 7))), fill: "none", stroke: "#7fb2e5", "stroke-width": 3.5, "stroke-linecap": "round", opacity: 0 }, map)];
 
   /* ---- roads: grey base, amber highlight copies that draw on ---- */
-  var hl = {};
+  var hl = {}, rd = {};
   [["i40", 5], ["i35", 5], ["i44", 5], ["us81", 3.5], ["reuter", 2.5]].forEach(function (r) {
-    el("path", { d: dOf(R[r[0]]), fill: "none", stroke: "#2a3644", "stroke-width": r[1] + 2.5, "stroke-linejoin": "round" }, map);
-    el("path", { d: dOf(R[r[0]]), fill: "none", stroke: "#93a3b2", "stroke-width": 1.6, "stroke-linejoin": "round", opacity: 0.8 }, map);
+    rd[r[0]] = [el("path", { d: dOf(R[r[0]]), fill: "none", stroke: "#2a3644", "stroke-width": r[1] + 2.5, "stroke-linejoin": "round" }, map),
+      el("path", { d: dOf(R[r[0]]), fill: "none", stroke: "#93a3b2", "stroke-width": 1.6, "stroke-linejoin": "round", opacity: 0.8 }, map)];
   });
   ["i40", "us81", "reuter"].forEach(function (k) {
     hl[k] = el("path", { d: dOf(R[k]), fill: "none", stroke: "#d8a13a", "stroke-width": 3.5, "stroke-linejoin": "round", "stroke-linecap": "round", opacity: 0 }, map);
@@ -141,9 +141,16 @@ window.__timelines = window.__timelines || {};
   TOWNS.forEach(function (t) { var cx = X(t[0]), cy = Y(t[1]), n = 0, tries = 0;
     while (n < t[2] && tries++ < t[2] * 14) { var x = cx + (rnd() * 2 - 1) * t[3], y = cy + (rnd() * 2 - 1) * t[4], r = rnd();
       if (!free(x, y, got)) continue; var k = r < 0.7 ? "h" : r < 0.85 ? "s" : "c"; got.push([x, y]); n++; if (HIDE.some(function (h) { return x > h[0] && x < h[2] && y > h[1] && y < h[3]; })) continue;
-      ic[k].push(el("path", { d: icon(k, x, y, 1), fill: "none", stroke: "#93a3b2", "stroke-width": 1.5, "stroke-linejoin": "round" }, icg)); } });
+      var pe = el("path", { d: icon(k, x, y, 1), fill: "none", stroke: "#93a3b2", "stroke-width": 1.5, "stroke-linejoin": "round" }, icg); pe._xy = [x, y]; ic[k].push(pe); } });
   var house = el("path", { d: icon("h", HOUSE[0], HOUSE[1], 1.3), fill: "none", stroke: "#93a3b2", "stroke-width": 1.6, "stroke-linejoin": "round" }, map);
   function bump(k, t) { tl.to(ic[k], { scale: 1.5, duration: 0.24, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, t); }
+  /* no outline under a panel, the key or the tray: an outline one of them would cover or cut in view v is not drawn */
+  function under(v) {
+    var bx = [].map.call(document.querySelectorAll("#" + P + "-root ." + P + "-rail, #" + P + "-root ." + P + "-tray"), function (e) { var s = e.style, c = e.id === P + "-tray";
+      return [parseFloat(s.left) || 96, parseFloat(s.top) || (c ? 872 : 64), parseFloat(s.width) || (c ? 440 : 640), parseFloat(s.height) || 140]; });
+    ["h", "s", "c"].forEach(function (k) { ic[k].forEach(function (e) { var x = e._xy[0] * v.scale + v.x, y = e._xy[1] * v.scale + v.y, m = 11 * v.scale + 6;
+      if (bx.some(function (b) { return x > b[0] - m && x < b[0] + b[2] + m && y > b[1] - m && y < b[1] + b[3] + m; })) e.setAttribute("visibility", "hidden"); }); });
+  }
 
   /* ---- drains (a short channel under each city cluster) and the small circle ---- */
   el("path", { d: "M" + (SITE.nw[0] - 42) + "," + (SITE.nw[1] + 27) + " L" + (SITE.nw[0] + 42) + "," + (SITE.nw[1] + 27), stroke: "#5a768f", "stroke-width": 3, "stroke-linecap": "round" }, map);
@@ -189,6 +196,8 @@ window.__timelines = window.__timelines || {};
   setCam(WEST); at("pl-er", 318, 380, WEST); on("pl-er"); at("pl-okc", 1254, 504, CITY);
   [0, 1, 2, 3, 4, 5, 6, 7].forEach(function (i, n) { nudge(i, 0.38 + n * 0.05); });   /* eight @0.38 */
   show("rail", 2.6, -60, 0); show("r1v", 2.90, 0, 20); show("r1l", 3.05, -20, 0);    /* vehicles @2.90 */
+  [WEST, CITY].forEach(under);
+  tl.to(rd.reuter.concat(hl.reuter), { opacity: 0, duration: 0.4, ease: "none" }, 5.5);   /* Reuter Road ends just inside the city view: it leaves with El Reno */
   hide("pl-er", 4.0); move(CITY, 4.3, 1.6);                 /* the view slides east; settles before "12" */
   show("pl-okc", 5.95);
   show("r2v", 6.16, 0, 20); show("r2l", 6.58, -20, 0);      /* 12 @6.16 · of the other 13 @6.58 */

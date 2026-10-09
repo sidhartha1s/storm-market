@@ -17,7 +17,7 @@
   .m10-h { opacity:0; visibility:hidden; }
   .m10-pl { position:absolute; font:700 26px Arial, sans-serif; color:#dfe7ee; letter-spacing:1px; white-space:nowrap; line-height:1;
     text-shadow:0 0 6px #04070c, 0 0 12px #04070c, 0 2px 3px #04070c; }
-  .m10-tray { position:absolute; left:96px; top:872px; width:440px; height:140px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+  .m10-tray { position:absolute; left:96px; top:872px; width:440px; height:140px; box-sizing:border-box; background:#0a1018;
     backdrop-filter:blur(18px) saturate(1.15); border:1px dashed rgba(255,255,255,0.28); border-radius:20px; }
   .m10-trayt { position:absolute; left:22px; top:16px; font:700 19px Arial, sans-serif; letter-spacing:1.5px; color:#93a3b2; white-space:nowrap; line-height:1; }
   .m10-tl { position:absolute; top:98px; width:76px; margin-left:-38px; text-align:center; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
@@ -46,7 +46,7 @@
     </div>
     <svg class="m10-svg" id="m10-hudsvg" viewBox="0 0 1920 1080"></svg>
     <!-- HUD:BEGIN -->
-    <div class="m10-pl m10-h" id="m10-pl-ok" style="right:96px;top:384px">Okfuskee County &middot; June 1</div>
+    <div class="m10-pl m10-h" id="m10-pl-ok" style="right:250px;top:262px">Okfuskee County &middot; June 1</div>
     <div class="m10-rail m10-h" id="m10-rail" style="height:104px;width:500px">
       <div class="m10-big" style="left:32px;top:22px">21</div>
       <div class="m10-ser" style="left:136px;top:44px">for the night of May 31</div>
@@ -141,9 +141,16 @@ window.__timelines = window.__timelines || {};
   TOWNS.forEach(function (t) { var cx = X(t[0]), cy = Y(t[1]), n = 0, tries = 0;
     while (n < t[2] && tries++ < t[2] * 14) { var x = cx + (rnd() * 2 - 1) * t[3], y = cy + (rnd() * 2 - 1) * t[4], r = rnd();
       if (!free(x, y, got)) continue; var k = r < 0.7 ? "h" : r < 0.85 ? "s" : "c"; got.push([x, y]); n++; if (HIDE.some(function (h) { return x > h[0] && x < h[2] && y > h[1] && y < h[3]; })) continue;
-      ic[k].push(el("path", { d: icon(k, x, y, 1), fill: "none", stroke: "#93a3b2", "stroke-width": 1.5, "stroke-linejoin": "round" }, icg)); } });
+      var pe = el("path", { d: icon(k, x, y, 1), fill: "none", stroke: "#93a3b2", "stroke-width": 1.5, "stroke-linejoin": "round" }, icg); pe._xy = [x, y]; ic[k].push(pe); } });
   var house = el("path", { d: icon("h", HOUSE[0], HOUSE[1], 1.3), fill: "none", stroke: "#93a3b2", "stroke-width": 1.6, "stroke-linejoin": "round" }, map);
   function bump(k, t) { tl.to(ic[k], { scale: 1.5, duration: 0.24, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, t); }
+  /* no outline under a panel, the key or the tray: an outline one of them would cover or cut in view v is not drawn */
+  function under(v) {
+    var bx = [].map.call(document.querySelectorAll("#" + P + "-root ." + P + "-rail, #" + P + "-root ." + P + "-tray"), function (e) { var s = e.style, c = e.id === P + "-tray";
+      return [parseFloat(s.left) || 96, parseFloat(s.top) || (c ? 872 : 64), parseFloat(s.width) || (c ? 440 : 640), parseFloat(s.height) || 140]; });
+    ["h", "s", "c"].forEach(function (k) { ic[k].forEach(function (e) { var x = e._xy[0] * v.scale + v.x, y = e._xy[1] * v.scale + v.y, m = 11 * v.scale + 6;
+      if (bx.some(function (b) { return x > b[0] - m && x < b[0] + b[2] + m && y > b[1] - m && y < b[1] + b[3] + m; })) e.setAttribute("visibility", "hidden"); }); });
+  }
 
   /* ---- drains (a short channel under each city cluster) and the small circle ---- */
   el("path", { d: "M" + (SITE.nw[0] - 42) + "," + (SITE.nw[1] + 27) + " L" + (SITE.nw[0] + 42) + "," + (SITE.nw[1] + 27), stroke: "#5a768f", "stroke-width": 3, "stroke-linecap": "round" }, map);
@@ -185,19 +192,15 @@ window.__timelines = window.__timelines || {};
   var METRO = V(890, 480, 1.5);                           /* the metro view: every pin, El Reno to the east side of the city */
   function on(id) { s0($(id), { autoAlpha: 1 }); }
   init("222222222222222222222");                            /* the map holds, all 21 lit */
-  setCam(METRO); at("pl-er", 318, 380, METRO); at("pl-okc", 1254, 504, METRO); on("pl-er"); on("pl-okc");
-  /* a grey hollow marker at the east edge, pointing off the map: Okfuskee County is outside the frame and outside the 21 */
-  var em = el("path", { d: "M1800,420 L1814,434 L1800,448 L1786,434 Z", fill: "none", stroke: "#93a3b2", "stroke-width": 2.5, opacity: 0 }, hud);
-  var ea = el("path", { d: "M1824,434 L1866,434 M1854,424 L1866,434 L1854,444", fill: "none", stroke: "#93a3b2", "stroke-width": 2.5, opacity: 0 }, hud);
+  setCam(METRO); at("pl-er", 318, 380, METRO); at("pl-okc", 1254, 504, METRO); on("pl-er"); on("pl-okc"); under(METRO);
+  /* a grey hollow marker beside its label on the east side, arrow pointing off the map: Okfuskee County is outside the frame and outside the 21 */
+  var em = el("path", { d: "M1706,261 L1720,275 L1706,289 L1692,275 Z", fill: "none", stroke: "#93a3b2", "stroke-width": 2.5, opacity: 0 }, hud);
+  var ea = el("path", { d: "M1730,275 L1772,275 M1760,265 L1772,275 L1760,285", fill: "none", stroke: "#93a3b2", "stroke-width": 2.5, opacity: 0 }, hud);
+  gsap.set(em, { transformOrigin: "50% 50%" });             /* origin fixed at full size: set inside the pop from scale 0 it drew the marker half its size up and left */
   bump("h", 1.32);                                          /* house @1.32: outlines stir, unlit */
   bump("h", 4.16);                                          /* No house @4.16 */
   show("rail", 7.74, -60, 0);                               /* for that one night @7.94 */
-  hide("pl-er", 9.0); hide("pl-okc", 9.0);
-  move(FULL, 9.3, 0.6);                                    /* the frame opens to the whole map so the east edge is open country; settles 9.9 */
-  tl.set($("pl-er"), { left: 318, top: 380 }, 9.9);
-  tl.set($("pl-okc"), { left: 1254, top: 504 }, 9.9);
-  show("pl-er", 10.0); show("pl-okc", 10.0);
-  tl.fromTo(em, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2.5)", svgOrigin: "1800 434", immediateRender: false }, 9.98);   /* next morning @9.98 */
+  tl.fromTo(em, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2.5)", immediateRender: false }, 9.98);   /* next morning @9.98 */
   tl.fromTo(ea, { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out", immediateRender: false }, 10.3);
   tl.to(ea, { x: 8, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 5 }, 10.8);
   show("pl-ok", 12.54, 0, 12);                              /* Okfuskee County @12.54 */
