@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5s7-quote (A5-S7): Moore date stamp, the assessment's sentence as an attributed text card, "predetermined" lifts out.
+     Brief: mg_specs/docs.md. Root is transparent for the whole window: public domain aerials of Moore sit beneath.
+     The sentence is copied from the page (media/docs/sa-p41-sheltering-in-place-predetermined-shelters.png).
+     Cues are words.json seconds (host starts with the segment's voice). -->
+<template>
+<style>
+  #q7-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .q7-h { opacity:0; visibility:hidden; }
+  .q7-glass { position:absolute; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; overflow:hidden; }
+  .q7-sheen { position:absolute; left:0; top:0; width:260px; height:100%;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.07), rgba(255,255,255,0)); }
+  .q7-big { position:absolute; font:900 60px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .q7-mid { position:absolute; font:700 30px Arial, sans-serif; color:#dfe7ee; letter-spacing:1px; white-space:nowrap; line-height:1; }
+  .q7-sm { position:absolute; font:700 19px Arial, sans-serif; color:#93a3b2; letter-spacing:3px; white-space:nowrap; line-height:1; }
+  .q7-row { position:absolute; display:flex; align-items:flex-start; gap:12px; }
+  .q7-q { font:44px Georgia, 'Times New Roman', serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .q7-w { position:relative; }
+  .q7-ul { position:absolute; left:0; right:0; bottom:-9px; height:4px; background:#e8c56a; }
+</style>
+<div id="q7-root" data-composition-id="g-a5s7-quote" data-width="1920" data-height="1080">
+  <div class="q7-glass q7-h" id="q7-stamp" style="left:96px;top:64px;width:560px;height:144px">
+    <div class="q7-sheen" id="q7-sh1"></div>
+    <div class="q7-mid" style="left:32px;top:22px">May 20, 2013</div>
+    <div class="q7-big q7-h" id="q7-moore" style="left:32px;top:64px">Moore</div>
+    <div class="q7-big q7-h" id="q7-ef5" style="left:300px;top:64px;color:#e8c56a">EF5</div>
+  </div>
+  <div class="q7-glass q7-h" id="q7-lift" style="left:96px;top:222px;width:840px;height:152px">
+    <div class="q7-big" style="left:36px;top:18px;font-size:84px;color:#e8c56a">predetermined</div>
+    <div class="q7-sm" style="left:40px;top:116px">THE ASSESSMENT&rsquo;S WORD</div>
+  </div>
+  <div class="q7-glass q7-h" id="q7-card" style="left:96px;top:392px;width:1300px;height:300px">
+    <div class="q7-sheen" id="q7-sh2"></div>
+    <div class="q7-row" style="left:48px;top:44px">
+      <div class="q7-q q7-h" id="q7-a1">&ldquo;&hellip;survived above ground</div>
+      <div class="q7-q q7-h" id="q7-a2">in</div>
+      <div class="q7-w q7-h" id="q7-a3"><div class="q7-q">predetermined</div><div class="q7-ul" id="q7-ul"></div></div>
+      <div class="q7-q q7-h" id="q7-a4">shelters.</div>
+    </div>
+    <div class="q7-row" style="left:48px;top:110px"><div class="q7-q q7-h" id="q7-b1">Shelters ranged from interior closets</div></div>
+    <div class="q7-row" style="left:48px;top:176px">
+      <div class="q7-q q7-h" id="q7-c1">and bathrooms</div>
+      <div class="q7-q q7-h" id="q7-c2">to safe rooms.&rdquo;</div>
+    </div>
+    <div class="q7-sm" style="left:48px;top:250px">NWS SERVICE ASSESSMENT</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a5s7-quote", P = "q7", D = 24.11;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function show(id, t, dx, dy) { tl.fromTo($(id), { autoAlpha: 0, x: dx || 0, y: dy == null ? 24 : dy }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, t); }
+  function sheen(id, w, t) { tl.fromTo($(id), { x: -300 }, { x: w + 40, duration: 2.6, ease: "none", repeat: Math.max(0, Math.floor((D - t) / 3.0) - 1), repeatDelay: 0.4, immediateRender: false }, t); }
+
+  s0($("ul"), { scaleX: 0, transformOrigin: "left center" });
+  show("stamp", 0.30, -60, 0); sheen("sh1", 560, 0.4);      /* Eleven days earlier @0.00: May 20, 2013 */
+  show("ef5", 2.04, 0, 20);                                 /* E F five @2.04 */
+  show("moore", 3.00, 0, 20);                               /* Moore @3.00 */
+  show("card", 10.20, -80, 0); sheen("sh2", 1300, 10.3);    /* the assessment found @10.30 */
+  show("a1", 11.74, -30, 0);                                /* came through it above ground @11.74 */
+  show("a2", 13.08, -20, 0); show("a3", 13.14, -20, 0); show("a4", 13.20, -20, 0);   /* in the shelters they had planned @13.08 */
+  show("b1", 14.72, -30, 0);                                /* closets @14.72 */
+  show("c1", 15.80, -30, 0);                                /* bathrooms @15.80 */
+  show("c2", 16.58, -30, 0);                                /* safe rooms @16.58 */
+  tl.to($("ul"), { scaleX: 1, duration: 0.6, ease: "power2.out" }, 18.86);   /* predetermined @18.86: the word lifts out and holds */
+  tl.fromTo($("lift"), { autoAlpha: 0, y: 190, scale: 0.6 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, ease: "power3.out", transformOrigin: "0% 50%", immediateRender: false }, 18.90);
+  tl.to([$("stamp"), $("lift"), $("card")], { x: -1500, autoAlpha: 0, duration: 0.55, ease: "power3.in", stagger: 0.04 }, 23.46);
+  tl.to({}, { duration: 0.01 }, 24.10);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
