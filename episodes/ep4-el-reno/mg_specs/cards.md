@@ -56,7 +56,7 @@ number, place or quote that is not in `fact_check.md` or the segment's Picture n
 7. A5-S3: four rows (house, barn, tree, power pole), each with a box. No box is ever ticked; the house and barn boxes are the ones marked empty under "Where the sub-vortices went".
 8. A1-S5: eight pins, four lit ("half"), no map; no place is claimed for the pin beyond "Near El Reno".
 9. A2-S4: the one photograph (DOW 7) is not presented as 31 May 2013; its caption says what it is. No photograph sits under "University of Oklahoma".
-10. Nothing lands before its spoken word (cue table). A3-S10: names only on the last two sentences; no motion in the last second.
+10. Nothing lands before its spoken word (cue table); the two ordered exceptions are the A4-S8 axis with its end labels and the outro ground and rule, on from frame 0. A3-S10: names only on the last two sentences; no word moves in the last second (only the background glow drifts).
 11. Overlay comps keep the root transparent; text sits on a glass card (or the red popfig with its local scrim).
 
 ## 5. On-screen words (exact) and cues
