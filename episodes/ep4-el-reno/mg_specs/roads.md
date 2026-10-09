@@ -23,10 +23,12 @@ North is up in all six. One scale per comp, scale bar on screen. Datum = the US-
 |---|---|---|---|---|---|---|---|---|---|
 | g-i1s6-roads | 520 | 700 | 1246 | 1760.8 | 330 | 850 | off frame | not drawn | not drawn |
 | g-a2s2-fields | 384 | no roads | | | | | | 499.2, centre (1020, 540) | 240 |
-| g-a2s3-ring | 220 | 700 | 920 | 1140 | 760 | 980 | 386 (approx) | 286 | 137.5 |
-| g-a3s1-roads | 300 | 760 | 1060 | under panel | 330 | 630 | off frame | 390 | not drawn |
-| g-a3s6-reuter | 640 | 130 | 770 | 1410 | 620 | off frame | off frame | not drawn (frame is inside it) | not drawn |
-| g-a3s7-cars | 400 | 980 | 1380 | 1780 | 380 | 780 | off frame | not drawn | not drawn |
+| g-a2s3-ring | 220 | 700 | 931 | 1148.8 | 760 | 980 | 386 (approx) | 286 | 137.5 |
+| g-a3s1-roads | 300 | 760 | 1075 | 1372 (under the panel from 8.7 s) | 330 | 630 | off frame | 390 | not drawn |
+| g-a3s6-reuter | 640 | 130 | 802 | 1435.6 | 620 | off frame | off frame | not drawn (frame is inside it) | not drawn |
+| g-a3s7-cars | 400 | 980 | 1400 | 1796 | 380 | 780 | off frame | not drawn | not drawn |
+
+Fix round, 10 Oct 26: Alfadale Road is 1.05 mi and Radio Road 2.04 mi east of US-81 in every comp (x = x81 + 1.05 x ppm, x81 + 2.04 x ppm), matching the replot family. The first build drew them on whole miles.
 
 ## 3. GEOMETRY (px, from the numbers above)
 - 200 yards = 0.1136 mi: 59.1 px at 520 (i1s6), drawn east from US-81 (W14: east side).
