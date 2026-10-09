@@ -25,7 +25,7 @@ number, place or quote that is not in `fact_check.md` or the segment's Picture n
 - I1-S7 continues the g-i1s6-roads schematic (520 px per mile, US-81 x 700, Reuter Road y 330, strike point x 1568.8).
 - A1-S4 split: left box x 0 to 956, right box x 964 to 1920, both y 0 to 1080; divider x 956 to 964.
 - A1-S6 clock rail: 6:00 PM at x 220, 66 px per minute; 6:03 at x 418, 6:05 at x 550, 6:15 at x 1210; rail y 640.
-- A4-S8 bar: 1934 at x 300, 2013 at x 1500, y 700; nothing drawn between the two ends.
+- A4-S8 bar: 1934 at x 300, 2013 at x 1440, y 761; nothing drawn between the two ends.
 
 ## 4. MUST BE TRUE IN THE PICTURE
 1. Every quote is the exact string in section 5 with its source line; no quote card for A1-S6 or A4-S12.
