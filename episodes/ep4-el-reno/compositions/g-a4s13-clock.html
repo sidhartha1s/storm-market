@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a4s13-clock (A4-S13): the clock runs back from 6:03 PM to 1:00 PM, then the weather office's 1 PM message as an
+     attributed text card. Brief: mg_specs/docs.md. Message words: NWS Service Assessment, PDF page 21 ("At 1 p.m. on May 31,
+     WFO Norman tweeted ..."). 6:03 PM: NWS Norman statement of 4 Jun 2013. Cues are words.json seconds. -->
+<template>
+<style>
+  #c13-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .c13-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .c13-scan { position:absolute; left:0; top:0; width:360px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.07), rgba(127,178,229,0)); }
+  .c13-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .c13-h { opacity:0; visibility:hidden; }
+  .c13-num { font-family:Arial, sans-serif; font-weight:700; font-size:24px; fill:#93a3b2; text-anchor:middle; }
+  .c13-big { position:absolute; left:150px; width:500px; text-align:center; font:900 60px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .c13-mid { position:absolute; left:150px; width:500px; text-align:center; font:700 30px Arial, sans-serif; color:#e8c56a; letter-spacing:1px; white-space:nowrap; line-height:1; }
+  .c13-sm { position:absolute; left:150px; width:500px; text-align:center; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:3px; white-space:nowrap; line-height:1; }
+  .c13-note { position:absolute; left:760px; top:150px; width:830px; height:440px; box-sizing:border-box; background:rgba(232,222,200,0.94); border-radius:18px;
+    box-shadow:0 18px 60px rgba(0,0,0,0.5); overflow:hidden; }
+  .c13-hd { position:absolute; left:40px; top:40px; font:900 32px 'Arial Black', Arial, sans-serif; color:#2a2622; letter-spacing:1px; white-space:nowrap; line-height:1; }
+  .c13-row { position:absolute; left:40px; display:flex; align-items:flex-start; gap:11px; }
+  .c13-q { font:40px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:1; }
+  .c13-att { position:absolute; left:40px; font:700 19px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+</style>
+<div id="c13-root" data-composition-id="g-a4s13-clock" data-width="1920" data-height="1080">
+  <div class="c13-bg"></div>
+  <div class="c13-scan" id="c13-scan"></div>
+  <svg class="c13-svg" id="c13-svg" viewBox="0 0 1920 1080"></svg>
+  <div class="c13-big c13-h" id="c13-time" style="top:650px">6:03 PM</div>
+  <div class="c13-sm c13-h" id="c13-td" style="top:728px">TOUCHDOWN</div>
+  <div class="c13-mid c13-h" id="c13-gap" style="top:724px">5 hours before the tornado</div>
+  <div class="c13-note c13-h" id="c13-note">
+    <div class="c13-hd c13-h" id="c13-hd">TORNADO SAFETY:</div>
+    <div class="c13-row" style="top:104px"><div class="c13-q c13-h" id="c13-l1">If you choose to flee in your car,</div></div>
+    <div class="c13-row" style="top:160px"><div class="c13-q c13-h" id="c13-l2">plan for and anticipate traffic jams</div></div>
+    <div class="c13-row" style="top:216px"><div class="c13-q c13-h" id="c13-l3">and blocked roads,</div></div>
+    <div class="c13-row" style="top:272px">
+      <div class="c13-q c13-h" id="c13-l4">hail,</div>
+      <div class="c13-q c13-h" id="c13-l5">heavy rain</div>
+      <div class="c13-q c13-h" id="c13-l6">and flooding.</div>
+    </div>
+    <div class="c13-att" style="top:356px">NWS NORMAN, 1 PM, MAY 31, 2013</div>
+    <div class="c13-att" style="top:386px">QUOTED IN THE NWS SERVICE ASSESSMENT</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a4s13-clock", P = "c13", D = 18.37, NS = "http://www.w3.org/2000/svg", CX = 400, CY = 400, RR = 210;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+  function show(id, t, dx, dy) { tl.fromTo($(id), { autoAlpha: 0, x: dx || 0, y: dy == null ? 24 : dy }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, t); }
+  function pt(deg, r) { var a = deg * Math.PI / 180; return [CX + r * Math.sin(a), CY - r * Math.cos(a)]; }   /* degrees clockwise from 12 */
+  var svg = $("svg"), O = CX + " " + CY;
+
+  /* ---- the face: ring, twelve ticks, four numerals, two hands, the five-hour arc ---- */
+  var ring = el("circle", { cx: CX, cy: CY, r: RR, fill: "rgba(10,16,24,0.55)", stroke: "#93a3b2", "stroke-width": 3 }, svg);
+  var LEN = Math.ceil(2 * Math.PI * RR) + 1; ring.setAttribute("stroke-dasharray", LEN);
+  var ticks = [];
+  for (var i = 0; i < 12; i++) { var a = pt(i * 30, RR - 8), b = pt(i * 30, RR - (i % 3 ? 22 : 34));
+    ticks.push(el("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "#dfe7ee", "stroke-width": i % 3 ? 2 : 4, "stroke-linecap": "round" }, svg)); }
+  var nums = [["12", 0], ["3", 90], ["6", 180], ["9", 270]].map(function (n) { var p = pt(n[1], RR - 62);
+    var t = el("text", { x: p[0], y: p[1] + 9, "class": P + "-num" }, svg); t.textContent = n[0]; return t; });
+  var arcPts = []; for (var d = 181.5; d >= 30; d -= 3.03) arcPts.push(pt(d, RR + 22)); arcPts.push(pt(30, RR + 22));
+  var arc = el("path", { d: arcPts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" "), fill: "none", stroke: "#e8c56a", "stroke-width": 7, "stroke-linecap": "round" }, svg);
+  var ALEN = Math.ceil(arc.getTotalLength()) + 1; arc.setAttribute("stroke-dasharray", ALEN);
+  var hh = el("line", { x1: CX, y1: CY + 18, x2: CX, y2: CY - 112, stroke: "#f2f5f8", "stroke-width": 9, "stroke-linecap": "round" }, svg);
+  var mh = el("line", { x1: CX, y1: CY + 24, x2: CX, y2: CY - 172, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, svg);
+  var hub = el("circle", { cx: CX, cy: CY, r: 9, fill: "#e8c56a" }, svg);
+
+  s0(ring, { strokeDashoffset: LEN }); s0(ticks, { opacity: 0, scale: 0.4, svgOrigin: O }); s0(nums, { opacity: 0 });
+  s0(arc, { strokeDashoffset: ALEN }); s0([hh, mh, hub], { opacity: 0 });
+  s0(hh, { rotation: 181.5, svgOrigin: O }); s0(mh, { rotation: 18, svgOrigin: O });      /* 6:03 */
+  tl.fromTo($("scan"), { x: -400 }, { x: 1960, duration: D, ease: "none" }, 0);
+
+  tl.to(ring, { strokeDashoffset: 0, duration: 2.0, ease: "power2.inOut" }, 0.30);        /* the face draws while the sentence builds to "the clock" */
+  tl.to(ticks, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)", stagger: 0.14 }, 0.50);
+  tl.to(nums, { opacity: 1, duration: 0.3, ease: "power2.out", stagger: 0.1 }, 2.20);
+  tl.to([hh, mh, hub], { opacity: 1, duration: 0.25, ease: "power2.out" }, 2.78);         /* the clock @2.78: 6:03 PM, touchdown */
+  show("time", 2.78, 0, 20); show("td", 2.95, 0, 14);
+  tl.to($("td"), { autoAlpha: 0, duration: 0.25, ease: "power2.in" }, 3.80);
+  var clk = { m: 1083 }, timeEl = $("time");                                               /* minutes since midnight: 18:03 back to 13:00 */
+  tl.to(clk, { m: 780, duration: 1.34, ease: "power2.inOut", onUpdate: function () { var m = Math.round(clk.m), h = Math.floor(m / 60) % 12 || 12, mm = m % 60;
+    timeEl.textContent = h + ":" + (mm < 10 ? "0" : "") + mm + " PM"; } }, 3.96);          /* At 1 PM @3.96: runs back, stops at 5.30 (the one hit) */
+  tl.to(mh, { rotation: -1782, duration: 1.34, ease: "power2.inOut" }, 3.96);
+  tl.to(hh, { rotation: 30, duration: 1.34, ease: "power2.inOut" }, 3.96);
+  tl.to(arc, { strokeDashoffset: 0, duration: 1.34, ease: "power2.inOut" }, 3.96);
+  tl.fromTo(timeEl, { scale: 1 }, { scale: 1.12, duration: 0.16, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 5.30);
+  show("gap", 5.38, 0, 20);                                 /* five hours before the tornado @5.38 */
+  show("note", 7.34, 660, 0);                               /* the weather office in Norman @7.34 */
+  show("hd", 8.96, -30, 0);                                 /* a safety message @8.96 */
+  show("l1", 10.86, -30, 0);                                /* If you choose to flee in your car @10.86 */
+  show("l2", 13.54, -30, 0);                                /* plan for traffic jams @13.54 */
+  show("l3", 14.48, -30, 0);                                /* and blocked roads @14.48 */
+  show("l4", 15.84, 0, 16);                                 /* hail @15.84 */
+  show("l5", 16.54, 0, 16);                                 /* heavy rain @16.54 */
+  show("l6", 17.12, 0, 16);                                 /* and flooding @17.12 */
+  tl.to({}, { duration: 0.01 }, 18.36);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
