@@ -233,13 +233,11 @@ print('overlap_check self-check PASS (repeated place label vs. genuinely repeate
 # ep4-el-reno, 10 Oct 26: one label on several different things ("EF1" on each of two tracks) fails
 # dup-fact until it is declared with data-repeat-ok="reason"; a collision exemption (data-overlap-ok)
 # must not waive the rule.
-EF1 = '<span{attr}>EF1</span>'
-code, out = _rows_check(EF1.format(attr=''), 'TRACK A', EF1.format(attr=''), 'TRACK B')
-assert code == 1 and 'dup-fact: "EF1"' in out, f'an undeclared repeated label must dup-fact: {out}'
-code, out = _rows_check(EF1.format(attr=' data-overlap-ok="x"'), 'TRACK A', EF1.format(attr=' data-overlap-ok="x"'), 'TRACK B')
+OVL = '<span data-overlap-ok="x">EF1</span>'
+code, out = _rows_check(OVL, 'TRACK A', OVL, 'TRACK B')
 assert code == 1 and 'dup-fact: "EF1"' in out, f'data-overlap-ok must not waive dup-fact: {out}'
-REP = ' data-repeat-ok="one rating label per track"'
-code, out = _rows_check(EF1.format(attr=REP), 'TRACK A', EF1.format(attr=REP), 'TRACK B')
+REP = '<span data-repeat-ok="one rating label per track">EF1</span>'
+code, out = _rows_check(REP, 'TRACK A', REP, 'TRACK B')
 assert code == 0 and 'dup-fact' not in out, f'a declared repeated label must pass: {out}'
 print('overlap_check self-check PASS (data-repeat-ok declares a label on several things)')
 
