@@ -134,6 +134,17 @@ The metro map shrinks into its place inside the outline of Oklahoma. Text: "May 
 - E. The window-long scan tween carries a literal duration, so sweep check 7 reads each timeline's length.
 - Outlines hidden after generation (the rest keep their places): Union City, Calumet, the east-edge label zone.
 
+## Fix round 2 (10 Oct 26, verifier rows 1 to 6; these win over the round above where they differ)
+- 1, 2. g-a5s10 holds the metro view to the end. "Okfuskee County · June 1" sits under the key (right edge x 1670, y 262)
+  with the grey marker beside it at 1706, 275 and the arrow pointing east off the map. The marker's scale origin is set
+  at build: set inside the pop from scale 0 it drew the marker 14 px up and left, into the label.
+- 3. g-a2s9 uses the metro view set low (centre 890, 620) so the pins and Interstate 40 cross the upper half.
+- 4. g-a1s7 uses its own El Reno view: scale 3, US-81 at x 1100, Reuter Road at y 880. "to Chickasha" moved with the line.
+- 5. `under(view)`: an outline that a panel, the key or the tray would cover or cut in a view the comp settles on is not drawn.
+- 6. The tray is solid (#0a1018) so the road behind it does not show. Reuter Road fades out when the view goes to the
+  city (g-i1s3, g-a3s14) and comes on with the pull out (g-i1s4): its east end sat just inside the city view.
+- Not added: a key row for the hollow pin. This spec says only "unlit = hollow ring"; it gives the hollow pin no name.
+
 ## Build notes
 - Shared layout (team lead, OpenStreetMap via Overpass, 10 Oct 26): US-81 x 503.2, Radio Road x 572.7, Reuter Road y 518.9,
   Interstate 40 y 467.2 where it meets US-81. Reuter Road and pins 1 to 3 use these px directly. Interstate 40 passes
