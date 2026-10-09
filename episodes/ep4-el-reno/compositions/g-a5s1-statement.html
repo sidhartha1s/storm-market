@@ -112,7 +112,7 @@ window.__timelines = window.__timelines || {};
   tl.to(c, { v: 295, duration: 0.9, ease: "power3.out", onUpdate: function () { ctr.textContent = Math.round(c.v) + " mph"; } }, 13.26);   /* 295 miles an hour @13.26 */
   tl.set(ctr, { autoAlpha: 1 }, 13.26);
   tl.fromTo(ctr, { scale: 0.8 }, { scale: 1, duration: 0.9, ease: "power3.out", transformOrigin: "0% 50%", immediateRender: false }, 13.26);
-  show("w1", 13.98, -20, 0); show("w2", 14.50, -20, 0);
+  show("w2", 13.50, -20, 0); show("w1", 14.10, -20, 0);     /* the source line lands with the figure, tight under it: the page's claim, not ours */
   tl.to({}, { duration: 0.01 }, 15.71);
 
   window.__timelines[ID] = tl;
