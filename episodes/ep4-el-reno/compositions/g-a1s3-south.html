@@ -84,7 +84,10 @@ window.__timelines = window.__timelines || {};
   const AL = Math.ceil(document.getElementById("s13-arrow").getTotalLength()) + 1;
   gsap.set(P + "arrow", { strokeDasharray: AL, strokeDashoffset: AL }); /* at build time: frame 0 never shows the finished arrow */
   gsap.set([P + "ahead", P + "storm"], { opacity: 0 });
-  gsap.set(P + "word", { autoAlpha: 0 });
+  /* every start state and transform origin is set once at build time and the timeline only tweens TO values,
+     so a given second draws the same picture whatever was seeked before it */
+  gsap.set(P + "word", { autoAlpha: 0, scale: 1.18, transformOrigin: "left center" });
+  gsap.set(P + "south", { transformOrigin: "left center" });
   tl.to(P + "arrow", { strokeDashoffset: 0, duration: 0.8, ease: "power2.in" }, 4.98);         /* DRIVE @4.98 */
   tl.to(P + "ahead", { opacity: 1, duration: 0.15 }, 5.72);
   tl.fromTo(P + "south", { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 5.26); /* SOUTH @5.26 */
