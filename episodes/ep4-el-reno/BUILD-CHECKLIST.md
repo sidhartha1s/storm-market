@@ -37,7 +37,8 @@ Owner, 10 Oct 26: "clips are good. go ahead. move faster." Status is read from t
 
 ## Edit
 - [x] Footage placed by hand under every segment that is not a full-frame graphic; full-frame graphics on track 2; outro mounted; no picture gap. `lint_timeline`, `sweep_episode`, `media_budget` pass (10 Oct 26, 03:12).
-- [ ] Fix round out to five Opus builders (map21, drawings, replot, roads, cards) from verifier 1's 29 rows, sent 10 Oct 26 02:52. Then a second verifier on maps, docs, cards and the fixed comps.
+- [x] Fix round done by five Opus builders (map21, drawings, replot, roads, cards) from verifier 1's 29 rows; all five report `graphics_qc` PASS 68 compositions and sweep check 7 PASS (10 Oct 26, 03:25). Committed and pushed.
+- [ ] Two verifiers running since 03:29: verifier 1 re-checks its 29 rows (folder `.qc-tmp/verify-1b/`); verifier 2 gives maps, docs and cards their first independent read, overlays composited over their real footage (`.qc-tmp/verify-2/`).
 - [ ] Watch every footage cut in motion (one frame each at least).
 - [ ] The Weather Channel crew sequence (A3-S3, A3-S4): owner confirms the insert before any render
 - [x] Sound layer mounted (10 Oct 26, 03:26): two baked ambience stems (`bake_beds.py`: score, rain, two sirens, every drop-out from the script), 22 swells ending on a line, 6 hits on named cues. `audio_levels` passes every bed; its only failures are Paul's six clips (file gain, fixed with the voice conversion).
