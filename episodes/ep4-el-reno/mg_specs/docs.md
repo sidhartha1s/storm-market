@@ -44,7 +44,7 @@ Maps (I1-S2, A5-S1, Z1-S1): metro frame, x = (lon + 98.20) * 1920, y = (35.70 - 
 | g-z1s1-table | page crop 782 x 860 (scale 0.80) at left 600, top 96; rail left 96, top 90; then names in two columns at x 140 and x 860 |
 | g-a4s10-finding6 | root transparent; both cards inside the broadcast's left picture pane (x 165 to 800, y 175 to 690), clear of its caption, radar pane, banner and ticker: small card left 150, top 180, 650 x 150; Finding 6 card left 150, top 344, 650 x 342, sentence at 30 px in five lines |
 | g-a4s11-page | page crop (x 170-1530, y 1185-1705) at scale 1.1 = 1496 x 572 at left 96, top 250; unlit page at blur 9 px |
-| g-a4s13-clock | clock centre 400, 400, radius 210; message card left 760, top 150, 830 x 440 |
+| g-a4s13-clock | clock face on from frame 0, at 1.5x and centred (x 612 to 1308, y 102 to 798) until 6.70, then centre 400, 400, radius 210; message card left 760, top 150, 830 x 440 |
 | g-a4s14-message | same card, slides 330 px left and grows to 1.35x (x 285 to 1405, y 73 to 667); lift cards left 140, top 380 |
 | g-a4s15-rec6 | card left 96, top 120, 1100 x 470; then name cards left 96 (800 wide) and the note left 1000, 560 wide |
 | g-a5s1-statement | full metro frame; rail left 96, top 64; statement card left 800, top 96, 790 x 500; readout left 96, top 740 |
