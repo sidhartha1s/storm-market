@@ -41,7 +41,7 @@ number, place or quote that is not in `fact_check.md` or the segment's Picture n
 6. A4-S8: twelve pins in two groups (7 and 5), a thirteenth apart labelled "65"; the bar has two end labels and nothing between.
 7. A5-S3: four rows (house, barn, tree, power pole), each with a box. No box is ever ticked; the house and barn boxes are the ones marked empty under "Where the sub-vortices went".
 8. A1-S5: eight pins, four lit ("half"), no map; no place is claimed for the pin beyond "Near El Reno".
-9. A2-S4: neither photo is presented as 31 May 2013; each caption says what the photo is.
+9. A2-S4: the one photograph (DOW 7) is not presented as 31 May 2013; its caption says what it is. No photograph sits under "University of Oklahoma".
 10. Nothing lands before its spoken word (cue table). A3-S10: names only on the last two sentences; no motion in the last second.
 11. Overlay comps keep the root transparent; text sits on a glass card (or the red popfig with its local scrim).
 
