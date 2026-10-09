@@ -87,6 +87,8 @@ window.__timelines = window.__timelines || {};
     var f = document.createElement("div"); f.className = P + "-dot"; r.appendChild(f); $("dots").appendChild(r); dots.push(f); }
 
   tl.fromTo($("scan"), { x: -400 }, { x: 1960, duration: D, ease: "none" }, 0);
+  s0($("rail"), { x: 339, y: -91, scale: 1.75, transformOrigin: "0 0" });   /* the count holds the centre of the frame (x 435 to 1485, y 19 to 842) until the table arrives */
+  tl.to($("rail"), { x: 0, y: 0, scale: 1, duration: 0.7, ease: "power2.inOut" }, 11.36);
   tl.to(dots.slice(6), { autoAlpha: 0, scale: 0.3, duration: 0.4, ease: "power2.in", stagger: 0.07 }, 2.36);   /* 5 of the 11 did not survive @2.36 */
   show("a1", 2.36, 0, 20); show("a2", 2.54, -20, 0);
   tl.to(dots.slice(0, 6), { scale: 1.35, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.04 }, 4.70);   /* and 6 did @4.70 */
