@@ -31,3 +31,21 @@ The prompt wording below is drafted from the saved clip rules (`references/mg-qu
 - Clip 6 carries a lower third in the edit: "sturdy building, not a mobile home · National Weather Service".
 - Clip 4 says "the same vortex". The radar paper supports it in three passages; the limit is written in `fact_check.md`.
 - Six clips at 15 credits is 90. Free credits are 50 a day on one account, so six clips need two days on one account or the second account.
+
+## Results, 9 Oct 26
+All six clips are made in Flow (Omni 1.1 Flash, first frame only, one take each) and sit in `media/paul/ins-paul-<n>/raw-01.mp4` (git-ignored, 1280x720, 24 fps, 10 s). Each was transcribed and compared with its line before the next one was sent: every word is spoken, none added.
+
+| Clip | Speech starts (s) | Speech ends (s) | Words | Tries |
+|---|---|---|---|---|
+| ins-paul-1 | 0.57 | 5.54 | word for word | 2 (first refused) |
+| ins-paul-2 | 0.47 | 9.26 | word for word | 1 |
+| ins-paul-3 | 0.40 | 9.59 | word for word | 1 |
+| ins-paul-4 | 0.69 | 8.55 | word for word | 1 |
+| ins-paul-5 | 0.46 | 8.23 | word for word | 1 |
+| ins-paul-6 | 0.60 | 9.05 | word for word | 2 (first refused) |
+
+- Eight approvals at 15 credits, two refused by Flow and refunded: 90 credits net. The balance read 905 after the last clip.
+- Flow refused clip 1 and clip 6 once each: "Unable to generate videos that might cause reputational risk or misrepresent current events". Both passed when the prompt opened by saying this is a history documentary about the 2013 tornado and the voice note dropped "grave". The prompts that passed are in each `jobs.json`.
+- The transcript check needs two passes (whole clip, then each phrase between silences): the whole-clip pass dropped ten spoken words on clip 2.
+- Every clip carries Flow's grey four-point star, 48 px wide, centred near (1160, 600): "Visible watermarking is required in your region". The owner's rule (9 Oct 26): a Warning Hour logo bug sits over that spot on every Omni clip. Candidates: `assets/brand/candidates/`; his pick is on the Q page `elreno-logo.html`.
+- Still to do per clip: logo bug, slow and upscale, mount as `ins-paul-<n>`. Clip 1 ends at its last word.
