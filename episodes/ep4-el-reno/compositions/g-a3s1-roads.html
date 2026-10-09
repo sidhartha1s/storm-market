@@ -94,7 +94,7 @@ window.__timelines = window.__timelines || {};
   }
   /* section lines every mile (300 px) west of US-81 and south of Reno Road; half-mile field lines, faint */
   ln(460, 0, 460, 1080, "#34434f", 2); ln(160, 0, 160, 1080, "#34434f", 2); ln(0, 30, 1920, 30, "#34434f", 2); ln(0, 930, 1920, 930, "#34434f", 2);
-  for (let x = 10; x < 1920; x += 300) ln(x, 0, x, 1080, "#16212c", 1.5);
+  [10, 310, 610, 917.5, 1223.5, 1522, 1822].forEach(function (x) { ln(x, 0, x, 1080, "#16212c", 1.5); });
   for (let y = 180; y < 1080; y += 300) ln(0, y, 1920, y, "#16212c", 1.5);
 
   const tl = gsap.timeline({ paused: true });
