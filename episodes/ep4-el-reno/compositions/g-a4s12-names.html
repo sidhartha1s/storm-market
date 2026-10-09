@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a4s12-names (A4-S12) · window 25.93 s · brief: mg_specs/cards.md
+     Overlay: root transparent for the whole window, the traffic aerial sits beneath. Two text-only name cards, nothing else:
+     no quoted line and no card for the reply. Cues are audio/a4-s12.words.json seconds. -->
+<template>
+<style>
+  #nm12-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .nm12-card { position:absolute; left:96px; width:700px; height:152px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .nm12-h { opacity:0; visibility:hidden; }
+  .nm12-name { position:absolute; left:36px; top:24px; font:900 52px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .nm12-rule { position:absolute; left:38px; top:86px; width:320px; height:3px; border-radius:2px; background:#d8a13a; }
+  .nm12-stn { position:absolute; left:38px; top:100px; font:700 34px Arial, sans-serif; color:#e8c56a; letter-spacing:2px; white-space:nowrap; line-height:1; }
+  .nm12-sub { position:absolute; left:166px; top:106px; font:italic 24px Georgia, 'Times New Roman', serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+</style>
+<div id="nm12-root" data-composition-id="g-a4s12-names" data-width="1920" data-height="1080" data-duration="25.93">
+  <div class="nm12-card nm12-h" id="nm12-c1" style="top:640px">
+    <div class="nm12-name nm12-h" id="nm12-n1">Mike Morgan</div>
+    <div class="nm12-rule" id="nm12-r1"></div>
+    <div class="nm12-stn nm12-h" id="nm12-s1">KFOR</div>
+  </div>
+  <div class="nm12-card nm12-h" id="nm12-c2" style="top:812px">
+    <div class="nm12-name nm12-h" id="nm12-n2">Gary England</div>
+    <div class="nm12-rule" id="nm12-r2"></div>
+    <div class="nm12-stn nm12-h" id="nm12-s2">KWTV</div>
+    <div class="nm12-sub nm12-h" id="nm12-b2">a competing station</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var D = 25.93, P = "#nm12-";
+  var tl = gsap.timeline({ paused: true });
+  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, t); }
+  function float(id, a, b) { var n = Math.floor((b - a) / 1.9) - 1; if (n >= 0) tl.to(P + id, { y: -6, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: n }, a); }
+  function rule(id, t) { gsap.set(P + id, { scaleX: 0, transformOrigin: "left center" }); tl.set(P + id, { scaleX: 0, transformOrigin: "left center" }, 0);
+    tl.to(P + id, { scaleX: 1, duration: 0.6, ease: "power3.out" }, t); }
+
+  /* ONE NAME IN IT @3.42: the card arrives with an empty name line */
+  show("c1", 3.42, -60, 0);
+  rule("r1", 3.55);
+  /* MIKE MORGAN @5.20 · KFOR @7.36 */
+  show("n1", 5.20, 0, 20);
+  show("s1", 7.36, -24, 0);
+  float("c1", 4.1, 25.2);
+  /* GARY ENGLAND @12.94 · THE COMPETING STATION @15.60 · KWTV @16.44 */
+  show("c2", 12.94, -60, 0);
+  show("n2", 12.94, 0, 20);
+  rule("r2", 13.1);
+  show("b2", 15.60, 24, 0);
+  show("s2", 16.44, -24, 0);
+  float("c2", 13.6, 25.2);
+  /* exit: both cards slide out left; nothing lands for the reply (20.16 to 25.24) */
+  tl.to([P + "c1", P + "c2"], { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
+  window.__timelines["g-a4s12-names"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
