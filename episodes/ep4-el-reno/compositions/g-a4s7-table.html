@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a4s7-table (A4-S7): five of the eleven markers dim, the count "18 went in, 12 did not survive", then the assessment's
+     table as the page image with its twelve drainage-ditch lines lit. Brief: mg_specs/docs.md.
+     Pages (1700 x 2200): header row from media/docs/sa-p60-appendix-c-fatality-table-first-page.png, the thirteen May 31 rows
+     from sa-p61-...second-page.png. Marks are in page px. The table has no name column; no name is drawn on or beside a row.
+     Cues are words.json seconds. -->
+<template>
+<style>
+  #t7-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .t7-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .t7-scan { position:absolute; left:0; top:0; width:360px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.07), rgba(127,178,229,0)); }
+  .t7-h { opacity:0; visibility:hidden; }
+  .t7-rail { position:absolute; left:96px; top:110px; width:600px; height:470px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .t7-big { position:absolute; font:900 52px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .t7-mid { position:absolute; font:700 30px Arial, sans-serif; color:#dfe7ee; letter-spacing:1px; white-space:nowrap; line-height:1; }
+  .t7-sm { position:absolute; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:3px; white-space:nowrap; line-height:1; }
+  .t7-ser { position:absolute; font:italic 28px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+  .t7-lab { position:absolute; font:700 26px Arial, sans-serif; color:#e8c56a; letter-spacing:2px; white-space:nowrap; line-height:1; }
+  .t7-ring { position:absolute; top:62px; width:22px; height:22px; box-sizing:border-box; border:2px solid #93a3b2; border-radius:50%; background:#0b1016; }
+  .t7-dot { position:absolute; left:-2px; top:-2px; width:22px; height:22px; box-sizing:border-box; border:1.5px solid #f2f5f8; border-radius:50%; background:#7fb2e5; }
+  .t7-hair { position:absolute; left:32px; top:250px; width:536px; height:1px; background:rgba(255,255,255,0.16); }
+  .t7-sheet { position:absolute; left:740px; top:110px; width:841px; height:581px; }
+  .t7-pc { position:absolute; overflow:hidden; box-shadow:0 14px 44px rgba(0,0,0,0.5); }
+  .t7-pc img { position:absolute; filter:sepia(0.18) brightness(0.95); }
+  .t7-mk { position:absolute; }
+  .t7-line { position:absolute; left:740px; top:100px; width:841px; height:3px; background:#e8c56a; }
+</style>
+<div id="t7-root" data-composition-id="g-a4s7-table" data-width="1920" data-height="1080">
+  <div class="t7-bg"></div>
+  <div class="t7-scan" id="t7-scan"></div>
+  <div class="t7-rail" id="t7-rail">
+    <div class="t7-sm" style="left:32px;top:28px">THE GROUP OF ELEVEN</div>
+    <div id="t7-dots"></div>
+    <div class="t7-big t7-h" id="t7-a1" style="left:32px;top:116px">5</div>
+    <div class="t7-mid t7-h" id="t7-a2" style="left:86px;top:132px">of the 11 did not survive</div>
+    <div class="t7-big t7-h" id="t7-b1" style="left:32px;top:180px">6</div>
+    <div class="t7-mid t7-h" id="t7-b2" style="left:86px;top:196px">did</div>
+    <div class="t7-hair"></div>
+    <div class="t7-big t7-h" id="t7-c1" style="left:32px;top:272px">18</div>
+    <div class="t7-mid t7-h" id="t7-c2" style="left:128px;top:288px">went into 2 drains</div>
+    <div class="t7-big t7-h" id="t7-d1" style="left:32px;top:336px">12</div>
+    <div class="t7-mid t7-h" id="t7-d2" style="left:128px;top:352px">did not survive</div>
+    <div class="t7-ser t7-h" id="t7-nm" style="left:32px;top:414px">Names: local reporters and the families</div>
+  </div>
+  <div class="t7-lab t7-h" id="t7-nn" style="left:740px;top:62px">NO NAME COLUMN</div>
+  <div class="t7-line" id="t7-nl"></div>
+  <div class="t7-sheet t7-h" id="t7-sheet"></div>
+  <div class="t7-sm t7-h" id="t7-src" style="left:740px;top:708px">NWS SERVICE ASSESSMENT &middot; APPENDIX C</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a4s7-table", P = "t7", D = 23.72, S = 0.86;
+  var P60 = "media/docs/sa-p60-appendix-c-fatality-table-first-page.png", P61 = "media/docs/sa-p61-appendix-c-fatality-table-second-page.png";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function show(id, t, dx, dy) { tl.fromTo($(id), { autoAlpha: 0, x: dx || 0, y: dy == null ? 24 : dy }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, t); }
+  var sheet = $("sheet");
+  function piece(src, x0, y0, x1, y1, top) {                    /* a crop of the page image at the sheet's one scale; marks in page px */
+    var d = document.createElement("div"); d.className = P + "-pc";
+    d.style.cssText = "left:0;top:" + top + "px;width:" + ((x1 - x0) * S) + "px;height:" + ((y1 - y0) * S) + "px";
+    var im = document.createElement("img"); im.src = src;
+    im.style.cssText = "width:" + (1700 * S) + "px;height:" + (2200 * S) + "px;left:" + (-x0 * S) + "px;top:" + (-y0 * S) + "px";
+    d.appendChild(im); sheet.appendChild(d);
+    d.mark = function (xa, ya, xb, yb, css) { var b = document.createElement("div"); b.className = P + "-mk";
+      b.style.cssText = "left:" + ((xa - x0) * S) + "px;top:" + ((ya - y0) * S) + "px;width:" + ((xb - xa) * S) + "px;height:" + ((yb - ya) * S) + "px;" + css;
+      d.appendChild(b); return b; };
+    return d; }
+
+  piece(P60, 356, 339, 1334, 391, 0);                           /* DATE · SEX · AGE · LOCATION/CIRCUMSTANCES */
+  var rows = piece(P61, 356, 196, 1334, 803, 59);               /* the thirteen May 31 rows of the second page */
+  var lit = [];                                                 /* rows 2 to 13: the twelve drainage-ditch lines (row 1 is "Vehicle, flash flood") */
+  for (var k = 1; k <= 12; k++) lit.push(rows.mark(364, 203 + 45.85 * k, 1326, 245 + 45.85 * k, "background:rgba(232,197,106,0.5);mix-blend-mode:multiply"));
+  var ul = rows.mark(770, 331, 1298, 335, "background:#8e2020");                       /* under "Sheltering in drainage ditch, flash flood" */
+  var age = rows.mark(606, 199, 763, 799, "box-sizing:border-box;border:3px solid #c0392b");   /* the AGE column */
+  s0(lit, { scaleX: 0, transformOrigin: "left center" }); s0(ul, { scaleX: 0, transformOrigin: "left center" });
+  s0(age, { autoAlpha: 0, scaleY: 0, transformOrigin: "50% 0%" }); s0($("nl"), { scaleX: 0, transformOrigin: "left center" });
+
+  var dots = [];
+  for (var i = 0; i < 11; i++) { var r = document.createElement("div"); r.className = P + "-ring"; r.style.left = (32 + i * 46) + "px";
+    var f = document.createElement("div"); f.className = P + "-dot"; r.appendChild(f); $("dots").appendChild(r); dots.push(f); }
+
+  tl.fromTo($("scan"), { x: -400 }, { x: 1960, duration: D, ease: "none" }, 0);
+  tl.to(dots.slice(6), { autoAlpha: 0, scale: 0.3, duration: 0.4, ease: "power2.in", stagger: 0.07 }, 2.36);   /* 5 of the 11 did not survive @2.36 */
+  show("a1", 2.36, 0, 20); show("a2", 2.54, -20, 0);
+  tl.to(dots.slice(0, 6), { scale: 1.35, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.04 }, 4.70);   /* and 6 did @4.70 */
+  show("b1", 4.70, 0, 20); show("b2", 4.96, -20, 0);
+  show("c1", 6.30, 0, 20); show("c2", 7.06, -20, 0);        /* 18 people went into 2 drains @6.30 */
+  show("d1", 9.32, 0, 20); show("d2", 9.58, -20, 0);        /* 12 did not survive @9.32 */
+  show("sheet", 12.12, 660, 0); show("src", 12.40, 0, 14);  /* The weather service's table @12.12 */
+  tl.to(lit, { scaleX: 1, duration: 0.4, ease: "power2.out", stagger: 0.05 }, 12.76);   /* has 12 lines @12.76 */
+  tl.to(ul, { scaleX: 1, duration: 2.4, ease: "none" }, 14.52);   /* sheltering in drainage ditch, flash flood @14.52 to 16.9 */
+  tl.to(age, { autoAlpha: 1, scaleY: 1, duration: 0.6, ease: "power3.out" }, 17.96);   /* ages @17.96 */
+  show("nn", 19.12, 0, 16);                                 /* and no names @19.12 */
+  tl.to($("nl"), { scaleX: 1, duration: 0.6, ease: "power2.out" }, 19.20);
+  show("nm", 20.46, -30, 0);                                /* The names come from local reporters and from the families @20.46 */
+  tl.to({}, { duration: 0.01 }, 23.71);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
