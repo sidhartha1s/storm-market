@@ -15,7 +15,7 @@ number, place or quote that is not in `fact_check.md` or the segment's Picture n
 - weather.com (`research/facts.md`, not re-pulled): the Bettes and Anderson quotes.
 - Local TV, 2014 (`research/facts.md`, not re-pulled): Henderson's 6:05 PM photograph, about ten minutes, sons Robbie and Wyatt.
 - OUN event page: Moore EF5 on May 20, 2013; US-81 crossed at 5:19 PM CST (6:19 PM CDT). W14: sub-vortex over Reuter Road
-  2323:35 to 2323:57 UTC (not printed as a clock time, see below).
+  2323:35 to 2323:57 UTC (printed as 6:23 PM, see below).
 - Marshall et al., damage survey: the EF3 sentence.
 - Photo in a comp: `media/pd/nssl-doppler-on-wheels-dow7-1.jpg` (NOAA NSSL, 30 May 2015, not 2013), captioned on screen
   with what it is. "University of Oklahoma" is text only: a photo of a different radar under that name would mislead
