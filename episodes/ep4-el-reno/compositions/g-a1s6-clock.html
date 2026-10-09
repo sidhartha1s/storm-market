@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1s6-clock (A1-S6) · window 23.30 s · brief: mg_specs/cards.md
+     Full frame. Clock rail: 6:00 PM at x 220, 66 px per minute (6:03 = 418, 6:05 = 550, 6:15 = 1210), rail y 640.
+     Claim: 6:05 PM is two minutes past the 6:03 touchdown; the head runs about ten minutes forward and stops when the
+     phone cuts out; then his two sons' names. No assessment card (its sentence carries a hard flag word).
+     Source: local TV 2014 via research/facts.md (not re-pulled). Cues are audio/a1-s6.words.json seconds. -->
+<template>
+<style>
+  #ck6-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ck6-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  .ck6-sweep { position:absolute; left:0; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,.07), rgba(127,178,229,0)); }
+  .ck6-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .ck6-h { opacity:0; visibility:hidden; }
+  .ck6-tk { font-family:Arial, sans-serif; font-weight:700; font-size:24px; letter-spacing:1px; fill:#93a3b2; }
+  .ck6-td { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:1px; fill:#e8c56a; }
+  .ck6-sm { font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:2px; fill:#93a3b2; }
+  .ck6-md { font-family:Arial, sans-serif; font-weight:700; font-size:30px; letter-spacing:1px; fill:#f2f5f8; }
+  .ck6-pop { position:absolute; left:250px; top:262px; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:150px;
+    color:#d0121f; letter-spacing:0.04em; text-shadow:0 6px 26px rgba(0,0,0,.8); white-space:nowrap; }
+  .ck6-eb { position:absolute; left:222px; top:806px; font:700 20px Arial, sans-serif; letter-spacing:4px; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .ck6-chip { position:absolute; top:840px; height:100px; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:24px; }
+  .ck6-nm { position:absolute; left:32px; top:24px; font:900 52px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+</style>
+<div id="ck6-root" data-composition-id="g-a1s6-clock" data-width="1920" data-height="1080" data-duration="23.3">
+  <div class="ck6-grid" id="ck6-grid"></div>
+  <div class="ck6-sweep" id="ck6-sweep"></div>
+  <svg class="ck6-svg" id="ck6-svg" viewBox="0 0 1920 1080">
+    <line x1="220" y1="640" x2="1540" y2="640" stroke="#5a6b7c" stroke-width="4" stroke-linecap="round"/>
+    <g id="ck6-ticks"></g>
+    <text class="ck6-tk" x="220" y="704" text-anchor="middle">6:00</text>
+    <text class="ck6-tk" x="550" y="704" text-anchor="middle">6:05</text>
+    <text class="ck6-tk" x="880" y="704" text-anchor="middle">6:10</text>
+    <text class="ck6-tk" x="1210" y="704" text-anchor="middle">6:15</text>
+    <text class="ck6-tk" x="1540" y="704" text-anchor="middle">6:20 PM</text>
+    <!-- 6:03 PM, the touchdown mark (OUN; shown in A1-S2) -->
+    <g id="ck6-tdg" class="ck6-h">
+      <line x1="418" y1="596" x2="418" y2="640" stroke="#e8c56a" stroke-width="3" stroke-linecap="round"/>
+      <text class="ck6-td" x="434" y="580" text-anchor="end">6:03 PM &#183; touchdown</text>
+    </g>
+    <!-- two minutes: 6:03 to 6:05 -->
+    <g id="ck6-two" class="ck6-h">
+      <path d="M424 616 L424 626 M424 621 L544 621 M544 616 L544 626" fill="none" stroke="#93a3b2" stroke-width="2"/>
+      <text class="ck6-sm" x="484" y="610" text-anchor="middle">2 minutes</text>
+    </g>
+    <line id="ck6-lead" x1="550" y1="432" x2="550" y2="618" stroke="#d0121f" stroke-width="2"/>
+    <!-- about ten minutes: the run from 6:05 -->
+    <line id="ck6-run" x1="556" y1="600" x2="1210" y2="600" stroke="#e8c56a" stroke-width="3" stroke-linecap="round"/>
+    <text id="ck6-ten" class="ck6-md ck6-h" x="883" y="578" text-anchor="middle">About 10 minutes later</text>
+    <g id="ck6-head" class="ck6-h">
+      <circle id="ck6-halo" cx="550" cy="640" r="14" fill="none" stroke="#e74c3c" stroke-width="2"/>
+      <circle cx="550" cy="640" r="14" fill="#0b1016" stroke="#c8d3e0" stroke-width="2.5"/>
+      <circle id="ck6-dot" cx="550" cy="640" r="14" fill="#e74c3c" stroke="#f2f5f8" stroke-width="2.5"/>
+    </g>
+    <text id="ck6-cut" class="ck6-md ck6-h" x="1210" y="760" text-anchor="middle">Phone cut out</text>
+  </svg>
+  <div class="ck6-pop ck6-h" id="ck6-pop">6:05 PM</div>
+  <div class="ck6-eb ck6-h" id="ck6-eb">TWO SONS</div>
+  <div class="ck6-chip ck6-h" id="ck6-c1" style="left:220px; width:262px"><div class="ck6-nm">Robbie</div></div>
+  <div class="ck6-chip ck6-h" id="ck6-c2" style="left:502px; width:244px"><div class="ck6-nm">Wyatt</div></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var D = 23.3, P = "#ck6-", NS = "http://www.w3.org/2000/svg";
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }
+  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, t); }
+  function dash(id) { var e = document.querySelector(P + id), L = Math.ceil(e.getTotalLength()) + 1; e.setAttribute("stroke-dasharray", L); s0(e, { strokeDashoffset: L }); return e; }
+  /* minute ticks: 66 px per minute, taller every five */
+  var tg = document.getElementById("ck6-ticks");
+  for (var m = 0; m <= 20; m++) { var ln = document.createElementNS(NS, "line"), x = 220 + m * 66;
+    ln.setAttribute("x1", x); ln.setAttribute("x2", x); ln.setAttribute("y1", 640); ln.setAttribute("y2", m % 5 ? 652 : 666);
+    ln.setAttribute("stroke", m % 5 ? "#3b4b5c" : "#93a3b2"); ln.setAttribute("stroke-width", m % 5 ? 2 : 3); tg.appendChild(ln); }
+  var lead = dash("lead"), run = dash("run");
+  s0(P + "halo", { opacity: 0, scale: 1, svgOrigin: "550 640" });
+
+  /* ambient, whole window: light sweep and grid drift */
+  tl.fromTo(P + "sweep", { x: -560 }, { x: 2300, duration: 5.825, ease: "none", repeat: 3 }, 0);
+  tl.fromTo(P + "grid", { x: 0 }, { x: 120, duration: D, ease: "none" }, 0);
+
+  /* 6:05 PM @0.60: the time lands, its mark drops onto the rail */
+  tl.fromTo(P + "pop", { autoAlpha: 0, scale: 1.5, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 0.60);
+  tl.to(lead, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 0.75);
+  tl.fromTo(P + "head", { autoAlpha: 0, scale: 2.2, svgOrigin: "550 640" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2.4)" }, 0.95);
+  tl.fromTo(P + "halo", { scale: 1, opacity: 0.7 }, { scale: 2.8, opacity: 0, duration: 1.3, ease: "power2.out", repeat: 5, repeatDelay: 0.5, immediateRender: false }, 1.4);
+  /* TWO MINUTES @2.00 · AFTER THE TORNADO TOUCHED DOWN @2.74 */
+  show("two", 2.00, 24, 0);
+  show("tdg", 2.74, 0, -20);
+  /* ABOUT TEN MINUTES LATER @6.62: the time steps back, the head runs ten minutes (660 px) and stops */
+  tl.to(P + "pop", { autoAlpha: 0.38, duration: 0.4, ease: "power2.out" }, 6.3);
+  tl.to(lead, { autoAlpha: 0, duration: 0.3, ease: "power2.out" }, 6.3);
+  show("ten", 6.62, 0, 20);
+  tl.to(run, { strokeDashoffset: 0, duration: 2.6, ease: "power1.inOut" }, 6.62);
+  tl.to(P + "head", { x: 660, duration: 2.6, ease: "power1.inOut" }, 6.62);
+  /* HIS PHONE CUT OUT @12.08-12.30: the mark goes hollow */
+  show("cut", 12.08, 0, 18);
+  tl.to(P + "dot", { autoAlpha: 0, scale: 0.4, svgOrigin: "550 640", duration: 0.18, ease: "power2.in" }, 12.30);
+  /* TWO SONS @13.72 · ROBBIE @14.92 · WYATT @15.48 */
+  show("eb", 13.72, -24, 0);
+  show("c1", 14.92, -40, 0);
+  show("c2", 15.48, -40, 0);
+  tl.to([P + "c1", P + "c2"], { y: -6, duration: 1.7, ease: "sine.inOut", yoyo: true, repeat: 3 }, 16.2);
+  window.__timelines["g-a1s6-clock"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
