@@ -180,11 +180,8 @@ for (const h of hosts) {
         const r = el.getBoundingClientRect();
         if (r.width < 4 || r.height < 4) continue;
         if (r.right < 0 || r.bottom < 0 || r.left > 1920 || r.top > 1080) continue;
-        let ok = null, repeatOk = null, p = el;
-        while (p && p !== document.body) {
-          if (p.dataset) { ok = ok || p.dataset.overlapOk || null; repeatOk = repeatOk || p.dataset.repeatOk || null; }
-          p = p.parentElement;
-        }
+        const ok = el.closest('[data-overlap-ok]')?.dataset.overlapOk || null;
+        const repeatOk = el.closest('[data-repeat-ok]')?.dataset.repeatOk || null;
         out.push({ text: el.textContent.trim().slice(0, 60), ok, repeatOk,
                    box: { left: r.left, top: r.top, right: r.right, bottom: r.bottom } });
       }
