@@ -38,7 +38,8 @@ Fix round, 10 Oct 26: Alfadale Road is 1.05 mi and Radio Road 2.04 mi east of US
 - Speed bars in a2s3: 8 px per mph: 45 mph = 360 px, 10 mph = 80 px.
 
 ## 4. MUST BE TRUE IN THE PICTURE
-1. North up; US-81 vertical, Reuter Road horizontal; Alfadale Road 1 mile and Radio Road 2 miles east of US-81; Reno Road 1 mile south of Reuter Road.
+1. North up; US-81 vertical, Reuter Road horizontal; Alfadale Road 1.05 miles and Radio Road 2.04 miles east of US-81; Reno Road 1.00 mile south of Reuter Road.
+1a. No ring line, road line, field line, pulse ring or rain streak crosses a label. Where a tag riding a marker would be crossed by a ring (a2s3 "DAN ROBINSON", a3s1 "THE WEATHER CHANNEL"), the name is fixed outside the ring in the marker's colour.
 2. The scale bar length equals the comp's px per mile (or the stated fraction).
 3. 2.6 mile ring diameter = 2.6 x ppm; core ring diameter = 1.25 x ppm; ratio 2.08.
 4. 45 field outlines, each 1/17.6 mile long, end to end from the ring's west edge; they stop short of the east edge by less than one field.
