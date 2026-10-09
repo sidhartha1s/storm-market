@@ -91,7 +91,8 @@ window.__timelines = window.__timelines || {};
   const HIDE = [P + "sv", P + "ghost", P + "track", P + "suv", P + "car", P + "left", P + "right", P + "s1", P + "s2", P + "t-sch1", P + "t-sch2", P + "bar", P + "t-bar", P + "t-src"];
   gsap.set(HIDE, { autoAlpha: 0 });
   gsap.set(P + "sv", { x: 1000, y: 630 });
-  gsap.set(P + "ring", { opacity: 0.4 });
+  /* pivot set once, outside the timeline, so the ring scales about its centre whatever was seeked before */
+  gsap.set(P + "ring", { opacity: 0.4, svgOrigin: "1000 630" });
   tl.set(HIDE, { autoAlpha: 0 }, 0);
   tl.set(P + "sv", { x: 1000, y: 630 }, 0);
 
