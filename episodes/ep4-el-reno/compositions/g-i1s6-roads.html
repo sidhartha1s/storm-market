@@ -90,7 +90,7 @@ window.__timelines = window.__timelines || {};
     e.setAttribute("stroke", stroke); e.setAttribute("stroke-width", w); grid.appendChild(e);
   }
   /* half-mile field lines (260 px), faint; the mile lines are drawn above */
-  for (let x = 700 - 520 * 2 + 260; x < 1920; x += 260) ln(x, 0, x, 1080, "#16212c", 1.5);
+  [180, 440, 973, 1503.4].forEach(function (x) { ln(x, 0, x, 1080, "#16212c", 1.5); });  /* mile and half-mile west of US-81; midway US-81 to Alfadale; midway Alfadale to Radio */
   for (let y = 330 - 520 + 260; y < 1080; y += 260) ln(0, y, 1920, y, "#16212c", 1.5);
 
   const tl = gsap.timeline({ paused: true });
