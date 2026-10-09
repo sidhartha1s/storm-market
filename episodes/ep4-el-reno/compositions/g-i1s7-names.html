@@ -119,10 +119,10 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "rail", { y: -5, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 6.3);
   /* IT WAS STRUCK @7.08 */
   tl.fromTo(P + "hit", { attr: { r: 12 }, opacity: 1 }, { attr: { r: 96 }, opacity: 0, duration: 1.0, ease: "power2.out", repeat: 1, immediateRender: false }, 7.08);
-  /* MINUTES LATER @7.36: two marks on the clock · LATER @7.64 */
+  /* MINUTES LATER @7.36: two marks on the clock, the second with no clock time */
   show("clock", 7.36, 0, 24);
   tl.to(P + "fill", { scaleX: 1, duration: 0.8, ease: "power2.inOut" }, 7.50);
-  show("t2", 7.64, 0, 16);
+  show("t2", 7.36, 0, 16);
   tl.fromTo(P + "d2", { autoAlpha: 0, scale: 2.4, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 8.20);
   /* ON A DIFFERENT ROAD @8.70 */
   show("rd2", 8.70, -16, 0);
