@@ -261,6 +261,15 @@ window.__timelines = window.__timelines || {};
   /* ---- popfigs: the figure lands as the voice says it ---- */
   pop("#pf-date", 0.5, 3.0);   // date and place inside the first second, over Paul's hook clip (the one text allowed on him)
 
+  /* ---- footage: one slow move per cut, so no shot sits still ---- */
+  kb("#v-t1s1-sky", 7.11, 3.79, 1.02, 1.08, 0, 0, 0, -10);
+  kb("#v-t1s1-jam", 10.9, 8.91, 1.08, 1.02, -14, 14, 0, 0);
+  kb("#v-i1s3-flood", 59.14, 5.3, 1.03, 1.08, 0, -12, 0, 0);
+  kb("#v-a1s11-rain", 315.95, 10.79, 1.0, 1.06, 0, 0, 0, 0);
+  kb("#v-a4s4-creek", 827.41, 9.0, 1.03, 1.08, 10, -10, 0, 0);
+  kb("#v-a4s4-drain", 836.41, 8.85, 1.06, 1.0, 0, 0, 0, 0);
+  kb("#v-a5s11-jam", 1250.7, 5.7, 1.04, 1.09, 12, -6, 0, 0);
+
   filmLayer(tl, DUR);
   window.__timelines["ep4-el-reno"] = tl;
 })();
