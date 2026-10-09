@@ -58,7 +58,7 @@ window.__timelines = window.__timelines || {};
   function sheen(id, w, t) { tl.fromTo($(id), { x: -300 }, { x: w + 40, duration: 2.6, ease: "none", repeat: Math.max(0, Math.floor((D - t) / 3.0) - 1), repeatDelay: 0.4, immediateRender: false }, t); }
 
   s0($("ul"), { scaleX: 0, transformOrigin: "left center" });
-  show("enma", 0.20, -60, 0); sheen("sh1", 700, 0.3);       /* the family's line returns small in the corner */
+  show("enma", 0.20, -60, 0); sheen("sh1", 650, 0.3);       /* the family's line returns small in the corner */
   tl.to($("ul"), { scaleX: 1, duration: 0.7, ease: "power2.out" }, 2.40);   /* the family's reason @2.40 */
   tl.to($("lit"), { color: "#e8c56a", duration: 0.4, ease: "power2.out" }, 2.40);
   show("card", 5.40, -80, 0); sheen("sh2", 1180, 5.5);      /* They said @5.52 */
