@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a4s10-finding6 (A4-S10): Enma Aguilar's line small in the corner, then Finding 6 as an attributed text card.
+     Brief: mg_specs/docs.md. Root is transparent for the whole window: that evening's television radar clip sits beneath.
+     Finding 6 is copied from the page (media/docs/sa-p54-finding6-recommendation6-list.png), not from the narration.
+     Cues are words.json seconds (host starts with the segment's voice). -->
+<template>
+<style>
+  #f6-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .f6-h { opacity:0; visibility:hidden; }
+  .f6-glass { position:absolute; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; overflow:hidden; }
+  .f6-sheen { position:absolute; left:0; top:0; width:260px; height:100%;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.07), rgba(255,255,255,0)); }
+  .f6-acc { position:absolute; left:0; width:6px; background:#d8a13a; }
+  .f6-big { position:absolute; font:900 52px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .f6-q { position:absolute; font:40px Georgia, 'Times New Roman', serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .f6-ser { font:italic 28px Georgia, 'Times New Roman', serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .f6-sm { position:absolute; font:700 19px Arial, sans-serif; color:#93a3b2; letter-spacing:3px; white-space:nowrap; line-height:1; }
+  .f6-row { position:absolute; display:flex; align-items:flex-start; }
+  .f6-w { position:relative; }
+  .f6-ul { position:absolute; left:0; right:0; bottom:-8px; height:3px; background:#e8c56a; }
+</style>
+<div id="f6-root" data-composition-id="g-a4s10-finding6" data-width="1920" data-height="1080">
+  <div class="f6-glass f6-h" id="f6-enma" style="left:96px;top:64px;width:700px;height:170px">
+    <div class="f6-sheen" id="f6-sh1"></div>
+    <div class="f6-row" style="left:32px;top:26px"><div class="f6-ser">&ldquo;&hellip;they just thought it was going to be</div></div>
+    <div class="f6-row" style="left:32px;top:68px">
+      <div class="f6-w"><div class="f6-ser" id="f6-lit">a tornado, not a flooding</div><div class="f6-ul" id="f6-ul"></div></div>
+      <div class="f6-ser">.&rdquo;</div>
+    </div>
+    <div class="f6-sm" style="left:32px;top:126px">ENMA AGUILAR, FAMILY MEMBER, TO NEWS 9</div>
+  </div>
+  <div class="f6-glass f6-h" id="f6-card" style="left:96px;top:290px;width:1180px;height:400px">
+    <div class="f6-sheen" id="f6-sh2"></div>
+    <div class="f6-acc" id="f6-acc" style="top:38px;height:58px"></div>
+    <div class="f6-big" style="left:48px;top:40px">Finding 6</div>
+    <div class="f6-q f6-h" id="f6-l1" style="left:48px;top:122px">&ldquo;Interviews with the public indicated</div>
+    <div class="f6-q f6-h" id="f6-l2" style="left:48px;top:176px">the broadcast media focused</div>
+    <div class="f6-q f6-h" id="f6-l3" style="left:48px;top:230px">on the tornadoes</div>
+    <div class="f6-q f6-h" id="f6-l4" style="left:48px;top:284px">and not the flooding during the May 31 event.&rdquo;</div>
+    <div class="f6-sm" style="left:48px;top:350px">NWS SERVICE ASSESSMENT</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a4s10-finding6", P = "f6", D = 10.75;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function show(id, t, dx, dy) { tl.fromTo($(id), { autoAlpha: 0, x: dx || 0, y: dy == null ? 24 : dy }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, t); }
+  function sheen(id, w, t) { tl.fromTo($(id), { x: -300 }, { x: w + 40, duration: 2.6, ease: "none", repeat: Math.max(0, Math.floor((D - t) / 3.0) - 1), repeatDelay: 0.4, immediateRender: false }, t); }
+
+  s0($("ul"), { scaleX: 0, transformOrigin: "left center" });
+  show("enma", 0.20, -60, 0); sheen("sh1", 700, 0.3);       /* the family's line returns small in the corner */
+  tl.to($("ul"), { scaleX: 1, duration: 0.7, ease: "power2.out" }, 2.40);   /* the family's reason @2.40 */
+  tl.to($("lit"), { color: "#e8c56a", duration: 0.4, ease: "power2.out" }, 2.40);
+  show("card", 5.40, -80, 0); sheen("sh2", 1180, 5.5);      /* They said @5.52 */
+  show("l1", 5.52, -30, 0);
+  show("l2", 5.88, -30, 0);                                 /* broadcasters @5.88 */
+  show("l3", 7.90, -30, 0);                                 /* on the tornadoes @7.90 */
+  show("l4", 8.74, -30, 0);                                 /* and not on the flooding @8.74 */
+  tl.fromTo($("acc"), { scaleY: 1 }, { scaleY: 0.5, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3, transformOrigin: "50% 0%", immediateRender: false }, 5.9);
+  tl.to([$("enma"), $("card")], { x: -1400, autoAlpha: 0, duration: 0.55, ease: "power3.in", stagger: 0.05 }, 10.12);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
