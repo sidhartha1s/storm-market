@@ -75,7 +75,7 @@ window.__timelines = window.__timelines || {};
   /* THEIR BEAMS @3.66: the beam draws low across the field to the ring */
   tl.to(P + "beam", { scaleX: 1, duration: 1.1, ease: "power2.out" }, 3.66);
   /* NEAR THE GROUND @5.04 */
-  show("big", 5.04, 0, 22);
+  tl.fromTo(P + "big", { autoAlpha: 0, scale: 1.25, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power3.out" }, 5.04);
   window.__timelines["g-a2s4-beam"] = tl;
 })();
 </script>
