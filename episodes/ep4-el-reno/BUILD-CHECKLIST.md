@@ -53,7 +53,10 @@ Owner, 10 Oct 26: "clips are good. go ahead. move faster." Status is read from t
 - [ ] Not read by anyone: both seek orders for the map21 family; any graphic in motion.
 - [ ] The Weather Channel crew sequence (A3-S3, A3-S4): owner confirms the insert before any render
 - [x] Sound layer mounted (10 Oct 26, 03:26): two baked ambience stems (`bake_beds.py`: score, rain, two sirens, every drop-out from the script), 22 swells ending on a line, 6 hits on named cues. `audio_levels` passes every bed; its only failures are Paul's six clips (file gain, fixed with the voice conversion).
-- [ ] Sound still open: the TV crew clip's own sound for about six seconds after "kept recording" (the timeline leaves no gap for it and the clip is muted); mixdown with ebur128 per 15 s window; owner's ear on the bed.
+- [x] TV crew sequence rebuilt to the script (10 Oct 26, 04:57). The voice now stops on "kept recording" and the clip's own sound plays alone for six seconds (`ins-crew-sound`, 562.48 to 568.48, declared `hold-crew`). Picture is one continuous take from a longer cut of the same source (`twc-crew-vehicle-cabin-tornado-2.mp4`, 548.67 to 579.02): the first cut stopped before the camera settles. Red figure "185 mph" on its word (`pf-185`). Everything from 562.5 s on moved 6.0 s later by a one-shot content-blind transform (scratch `.qc-tmp/retime_plus6.py`, never committed, to be declared in the PR body); beds re-baked; film is now 1333.38 s. Lint and sweep pass; the level gate passes the crew sound. Nine frames read.
+- Left out on purpose: the script's "200 yards" line over the settled frame. The Anderson quote card is on that frame, and "about 200 yards" is already drawn in `g-i1s6-roads` and `g-a3s13-split`.
+- [ ] Owner: tick `crew_cut` on http://127.0.0.1:8811/elreno-crew.html (the cut with its sound, three stills). No render before that tick.
+- [ ] Sound still open (was): the TV crew clip's own sound for about six seconds after "kept recording" (the timeline leaves no gap for it and the clip is muted); mixdown with ebur128 per 15 s window; owner's ear on the bed.
 - [ ] Outro card (Z1-S3)
 - [ ] Gates: `python3 scripts/run_gates.py episodes/ep4-el-reno` all green
 - [ ] Pin check, then draft render; absolute path posted; park for the owner
