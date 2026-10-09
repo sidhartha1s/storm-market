@@ -104,7 +104,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "rain", { x: 40, y: -220 }, { x: -50, y: 200, duration: 21.0, ease: "none" }, 0);
 
   /* On @0.00, Reuter @0.48: the place stamp */
-  tl.fromTo(P + "hl", { x: -50 }, { x: 0, duration: 0.6, ease: "power3.out" }, 0.0);
+  /* it comes in from the right, so it is never under the US-81 line (x 130) */
+  tl.fromTo(P + "hl", { x: 50 }, { x: 0, duration: 0.6, ease: "power3.out" }, 0.0);
   /* inside @2.96 */
   show("eb", 2.96, { x: -30 });
 
