@@ -85,8 +85,8 @@ window.__timelines = window.__timelines || {};
     e.setAttribute("x1", x1); e.setAttribute("y1", y1); e.setAttribute("x2", x2); e.setAttribute("y2", y2);
     e.setAttribute("stroke", "#16212c"); e.setAttribute("stroke-width", 1.5); grid.appendChild(e);
   }
-  /* half-mile field lines (200 px), faint */
-  for (let x = 380; x < 1920; x += 400) ln(x, 0, x, 1080);
+  /* field lines, faint: half-miles west of US-81 (x 380, 780), midway US-81 to Alfadale (x 1190), midway Alfadale to Radio (x 1598); the last two start below the road labels */
+  ln(380, 0, 380, 1080); ln(780, 0, 780, 1080); ln(1190, 100, 1190, 1080); ln(1598, 100, 1598, 1080);
   for (let y = 180; y < 1080; y += 400) ln(0, y, 1920, y);
 
   const tl = gsap.timeline({ paused: true });
