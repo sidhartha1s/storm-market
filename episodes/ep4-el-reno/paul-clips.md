@@ -48,4 +48,25 @@ All six clips are made in Flow (Omni 1.1 Flash, first frame only, one take each)
 - Flow refused clip 1 and clip 6 once each: "Unable to generate videos that might cause reputational risk or misrepresent current events". Both passed when the prompt opened by saying this is a history documentary about the 2013 tornado and the voice note dropped "grave". The prompts that passed are in each `jobs.json`.
 - The transcript check needs two passes (whole clip, then each phrase between silences): the whole-clip pass dropped ten spoken words on clip 2.
 - Every clip carries Flow's grey four-point star, 48 px wide, centred near (1160, 600): "Visible watermarking is required in your region". The owner's rule (9 Oct 26): a Warning Hour logo bug sits over that spot on every Omni clip. Candidates: `assets/brand/candidates/`; his pick is on the Q page `elreno-logo.html`.
-- Still to do per clip: logo bug, slow and upscale, mount as `ins-paul-<n>`. Clip 1 ends at its last word.
+
+## Mount-ready clips, 9 Oct 26
+The owner picked mark 2 (amber funnel on a dark badge) on the Q page. It is the channel logo: `assets/brand/warning-hour-logo.png` (512 px, transparent corners). Each `media/paul/ins-paul-<n>/ins-paul-<n>.mp4` is the raw clip scaled to 1920x1080 with the logo, 96 px wide, centred at (1740, 900), which is the star's spot at this size. The raw files are kept beside them.
+
+| Clip | Length (s) | Pace of the raw clip (wpm) | Changes besides the logo |
+|---|---|---|---|
+| ins-paul-1 | 6.96 | 205 | cut 0.35 s after the last word (5.89 s), then slowed to 0.85, picture and sound together |
+| ins-paul-2 | 10.01 | 171 | none |
+| ins-paul-3 | 10.01 | 170 | none |
+| ins-paul-4 | 10.01 | 183 | none |
+| ins-paul-5 | 10.01 | 147 | none |
+| ins-paul-6 | 10.01 | 170 | none |
+
+Recipe, one clip (clips 2 to 6):
+```
+ffmpeg -i raw-01.mp4 -i assets/brand/warning-hour-logo.png -filter_complex "[0:v]scale=1920:1080:flags=lanczos[v];[1:v]scale=96:96:flags=lanczos[b];[v][b]overlay=1692:852[o]" -map "[o]" -map 0:a -c:v libx264 -crf 16 -preset slow -pix_fmt yuv420p -r 24 -c:a copy ins-paul-<n>.mp4
+```
+Clip 1 adds `-t 5.89` before `-i`, `,setpts=PTS/0.85` after the overlay, and `[0:a]atempo=0.85` for the sound (re-encoded to AAC).
+
+- Checked: one frame of every clip at 4 s, and the first and last moments of clip 4: the logo sits over the star in each. Clip 1 was transcribed again after the slow-down: every word, speech from 0.66 s to 6.50 s.
+- Only clip 1 is slowed: it is the one clip well above the narrator's measured 179 words a minute.
+- Still to do: mount each as `ins-paul-<n>` in the composition.
