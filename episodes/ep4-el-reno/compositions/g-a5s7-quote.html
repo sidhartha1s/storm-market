@@ -62,7 +62,9 @@ window.__timelines = window.__timelines || {};
   function sheen(id, w, t) { tl.fromTo($(id), { x: -300 }, { x: w + 40, duration: 2.6, ease: "none", repeat: Math.max(0, Math.floor((D - t) / 3.0) - 1), repeatDelay: 0.4, immediateRender: false }, t); }
 
   s0($("ul"), { scaleX: 0, transformOrigin: "left center" });
-  show("stamp", 0.30, -60, 0); sheen("sh1", 560, 0.4);      /* Eleven days earlier @0.00: May 20, 2013 */
+  show("stamp", 0.30, -60, 0); sheen("sh1", 900, 0.4);      /* Eleven days earlier @0.00: May 20, 2013 */
+  show("n24", 6.68, -20, 0);                                /* took 24 lives @6.68 (NWS Norman: 24) */
+  show("n24s", 8.20, -20, 0);                               /* by the weather office's count @8.20 */
   show("ef5", 2.04, 0, 20);                                 /* E F five @2.04 */
   show("moore", 3.00, 0, 20);                               /* Moore @3.00 */
   show("card", 10.20, -80, 0); sheen("sh2", 1300, 10.3);    /* the assessment found @10.30 */
