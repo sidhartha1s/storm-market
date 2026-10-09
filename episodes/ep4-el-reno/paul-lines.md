@@ -54,7 +54,7 @@ All three rest on the one-vortex reading, which still carries its verify tag in 
 
 1. It was one vortex. It crossed the highway at about fifty six miles an hour. Over Reuter Road it sat nearly still for about twenty seconds. (26 words)
 2. One crew met it moving at about fifty six miles an hour. The other met the same vortex nearly still, for about twenty seconds. (24 words; it overlaps the narration line that follows)
-3. The same vortex reached both crews, minutes apart. At the highway it was moving at about fifty six miles an hour. Over Reuter Road it nearly stopped. (27 words as first drafted; see the count check below)
+3. Put the two side by side. Same vortex. At the highway, about fifty six miles an hour. Over Reuter Road, nearly still for about twenty seconds. (26 words)
 
 **Pick: 1.** Two facts, no cause, least overlap with the next line.
 
