@@ -91,7 +91,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "e1", { x: -80, y: 30 }, { x: 60, y: -30, duration: DUR, ease: "none" }, 0);
   tl.fromTo(P + "e2", { x: -60, y: 20 }, { x: 80, y: -40, duration: DUR, ease: "none" }, 0);
   tl.fromTo(P + "e3", { x: -70, y: 30 }, { x: 70, y: -20, duration: DUR, ease: "none" }, 0);
-  tl.fromTo([P + "bar", P + "t-bar", P + "t-ring", P + "t-own", P + "t-real"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.06 }, 0.1);
+  tl.fromTo([P + "bar", P + "t-bar", P + "t-ring", P + "t-own", P + "t-real", P + "t-edge"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.06 }, 0.1);
 
   /* met @0.46: the marker answers */
   tl.fromTo(P + "flash", { autoAlpha: 1, scale: 0.4, svgOrigin: "1000 540" }, { autoAlpha: 0, scale: 2.8, duration: 0.9, ease: "power2.out", immediateRender: false }, CUES.met);
