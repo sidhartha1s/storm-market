@@ -44,7 +44,8 @@ Owner, 10 Oct 26: "clips are good. go ahead. move faster." Status is read from t
 - [x] Fix round 2 (the last allowed) done for replot, drawings, roads; receipts in.
 - [ ] Fix round 2 for map21 (comp edits committed 04:01, receipt not seen) and cards (running); fix round 1 for maps and docs (running). Then the verifier re-reads the maps and docs fixes.
 - [x] News clips, first, middle and last frame of all eight mounts read (10 Oct 26, 04:14): the ABC aerial showed the anchor's face before 2.6 s and after 12.6 s of the file, and the KFOR creek clip opened on the station's wipe. Mounts moved inside the clean spans (`v-t1s1-jam`, `v-a1s4-jam` 9.5 s, `v-a1s4-road` from 208.41, `v-a4s4-creek` in-point 3.7). Lint and sweep pass after.
-- [ ] Watch every footage cut in motion (one frame each at least): stock clips and stills still to read the same way.
+- [x] Every footage mount read (10 Oct 26, 04:20): five frames across each of the 18 stock mounts and one frame of each of the 10 stills (sheets in `.qc-tmp/cuts/`). No watermark, burned-in text or end-of-file flash. Two Moore survey photos (9286 and 9355) are 800 px wide and will look soft at full frame for their 4.05 s and 3.45 s; a larger original is worth one search.
+- [ ] Graphics over their real footage: orchestrator's one frame each, after the builders' last receipts.
 - [ ] The Weather Channel crew sequence (A3-S3, A3-S4): owner confirms the insert before any render
 - [x] Sound layer mounted (10 Oct 26, 03:26): two baked ambience stems (`bake_beds.py`: score, rain, two sirens, every drop-out from the script), 22 swells ending on a line, 6 hits on named cues. `audio_levels` passes every bed; its only failures are Paul's six clips (file gain, fixed with the voice conversion).
 - [ ] Sound still open: the TV crew clip's own sound for about six seconds after "kept recording" (the timeline leaves no gap for it and the clip is muted); mixdown with ebur128 per 15 s window; owner's ear on the bed.
