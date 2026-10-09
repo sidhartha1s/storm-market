@@ -7,7 +7,9 @@
   Claim: the water in the drain reached about two feet; the Oklahoma River was a quarter of a mile away (News 9).
   Must stay true: the water top (y 670) never reaches a dot (lowest dot edge y 609). The dots do not travel in
   water: on "carried all eleven" they turn hollow in place. They do not go dark: six of the eleven survived.
-  One text-only name, Corey Don Johnson, age 3 (fact_check A4-S6, confirmed). No card and no name for either survivor.
+  One text-only name, Corey Don Johnson, age 3 (fact_check A4-S6, confirmed). The street deck runs the full frame width. No card and no name for either survivor.
+  Layout: the section is drawn 1.4x through the svg viewBox (170 164 1371.43 771.43); svg coordinates are the
+  brief's, frame px = (x - 170) * 1.4, (y - 164) * 1.4. The rain clip leaves the text boxes clear.
   Cues are comp-local seconds from audio/a4-s6.words.json.
 -->
 <template>
@@ -21,26 +23,26 @@
     background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,.07), rgba(127,178,229,0)); }
   .dr6-svg { position:absolute; left:0; top:0; }
   .dr6-lab { position:absolute; font-weight:700; white-space:nowrap; }
-  .dr6-small { font-size:22px; letter-spacing:3px; color:#93a3b2; }
-  .dr6-note { font-size:20px; letter-spacing:2px; color:#93a3b2; }
-  .dr6-src { font-size:20px; letter-spacing:2px; color:#c8d3e0; }
-  .dr6-mid { font-size:34px; letter-spacing:1px; color:#f2f5f8; }
-  .dr6-river { font-size:30px; letter-spacing:1px; color:#dfe7ee; }
-  .dr6-dist { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-weight:400; font-size:28px; color:#d8a13a; }
-  .dr6-name { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; }
-  .dr6-age { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-weight:400; font-size:30px; color:#d8a13a; }
-  .dr6-rule { position:absolute; left:140px; top:104px; width:200px; height:3px; background:#d8a13a; }
+  .dr6-small { font-size:28px; letter-spacing:3px; color:#93a3b2; }
+  .dr6-note { font-size:22px; letter-spacing:2px; color:#93a3b2; }
+  .dr6-src { font-size:24px; letter-spacing:2px; color:#c8d3e0; }
+  .dr6-mid { font-size:44px; letter-spacing:1px; color:#f2f5f8; }
+  .dr6-river { font-size:36px; letter-spacing:1px; color:#dfe7ee; }
+  .dr6-dist { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-weight:400; font-size:32px; color:#d8a13a; }
+  .dr6-name { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:64px; color:#f2f5f8; }
+  .dr6-age { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-weight:400; font-size:34px; color:#d8a13a; }
+  .dr6-rule { position:absolute; left:140px; top:84px; width:200px; height:3px; background:#d8a13a; }
 </style>
 <div id="dr6-root" class="dr6-root" data-composition-id="g-a4s6-drain" data-width="1920" data-height="1080" data-duration="21">
   <div class="dr6-grid" id="dr6-grid"></div>
   <div class="dr6-sweep" id="dr6-sweep"></div>
 
-  <svg class="dr6-svg" id="dr6-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <svg class="dr6-svg" id="dr6-svg" width="1920" height="1080" viewBox="170 164 1371.43 771.43">
     <defs>
       <pattern id="dr6-hatch" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
         <line x1="0" y1="0" x2="0" y2="26" stroke="#7fb2e5" stroke-width="3"/>
       </pattern>
-      <clipPath id="dr6-sky"><rect x="0" y="0" width="1920" height="434"/></clipPath>
+      <clipPath id="dr6-sky"><path clip-rule="evenodd" d="M0 0 H1920 V434 H0 Z M262 216 H706 V324 H262 Z M1105 400 H1262 V434 H1105 Z"/></clipPath>
       <g id="dr6-rt" stroke="#7fb2e5" stroke-width="3" stroke-linecap="round" opacity="0.5">
         <line x1="140" y1="40" x2="130" y2="78"/><line x1="330" y1="210" x2="320" y2="248"/><line x1="520" y1="90" x2="510" y2="128"/>
         <line x1="700" y1="330" x2="690" y2="368"/><line x1="860" y1="160" x2="850" y2="198"/><line x1="1040" y1="20" x2="1030" y2="58"/>
@@ -54,7 +56,7 @@
     </g>
     <g id="dr6-site">
       <!-- the street deck -->
-      <rect x="96" y="440" width="1464" height="28" fill="#93a3b2" fill-opacity="0.18" stroke="#93a3b2" stroke-width="3"/>
+      <rect x="150" y="440" width="1420" height="28" fill="#93a3b2" fill-opacity="0.18" stroke="#93a3b2" stroke-width="3"/>
       <!-- earth between street and drain, and under the drain floor: section convention -->
       <rect x="200" y="474" width="760" height="46" fill="url(#dr6-hatch)" opacity="0.3"/>
       <rect x="480" y="760" width="760" height="26" fill="url(#dr6-hatch)" opacity="0.3"/>
@@ -73,9 +75,9 @@
     <path id="dr6-dimt" d="M286 670 L314 670" fill="none" stroke="#d8a13a" stroke-width="4" stroke-linecap="round"/>
     <path id="dr6-ld-two" d="M300 758 L300 796" fill="none" stroke="#f2f5f8" stroke-width="2"/>
     <!-- drain to river: a line and the two things the source gives, the river's name and the distance -->
-    <path id="dr6-flow" d="M1250 700 L1536 700" fill="none" stroke="#7fb2e5" stroke-width="3"/>
-    <polygon id="dr6-arrow" points="1536,690 1556,700 1536,710" fill="#7fb2e5"/>
-    <path id="dr6-rivermark" d="M1572 640 q8 15 0 30 q-8 15 0 30 q8 15 0 30 q-8 15 0 30" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round"/>
+    <path id="dr6-flow" d="M1250 700 L1440 700" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+    <polygon id="dr6-arrow" points="1440,690 1460,700 1440,710" fill="#7fb2e5"/>
+    <path id="dr6-rivermark" d="M1485 640 q8 15 0 30 q-8 15 0 30 q8 15 0 30 q-8 15 0 30" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round"/>
     <!-- eleven people: eleven identical dots -->
     <circle class="dr6-dot" cx="420" cy="600" r="9" fill="#f2f5f8" stroke="#f2f5f8" stroke-width="2"/>
     <circle class="dr6-dot" cx="464" cy="600" r="9" fill="#f2f5f8" stroke="#f2f5f8" stroke-width="2"/>
@@ -90,17 +92,17 @@
     <circle class="dr6-dot" cx="860" cy="600" r="9" fill="#f2f5f8" stroke="#f2f5f8" stroke-width="2"/>
   </svg>
 
-  <div class="dr6-lab dr6-small" id="dr6-l-drain" style="left:1010px; top:484px">Storm drain</div>
-  <div class="dr6-lab dr6-small" id="dr6-l-street" style="left:1140px; top:396px">SW 15th St</div>
-  <div class="dr6-lab dr6-mid" id="dr6-l-two" style="left:250px; top:802px">About 2 feet</div>
-  <div class="dr6-lab dr6-dist" id="dr6-l-dist" style="left:1268px; top:650px">A quarter of a mile</div>
-  <div class="dr6-lab dr6-river" id="dr6-l-river" style="left:1290px; top:718px">Oklahoma River</div>
-  <div class="dr6-lab dr6-note" id="dr6-l-schem" style="left:110px; top:958px">Schematic, not to scale</div>
-  <div class="dr6-lab dr6-src" id="dr6-l-src" style="left:110px; top:992px">News 9, June 3, 2013</div>
+  <div class="dr6-lab dr6-small" id="dr6-l-drain" style="left:1176px; top:450px">Storm drain</div>
+  <div class="dr6-lab dr6-small" id="dr6-l-street" style="left:1330px; top:342px">SW 15th St</div>
+  <div class="dr6-lab dr6-mid" id="dr6-l-two" style="left:130px; top:892px">About 2 feet</div>
+  <div class="dr6-lab dr6-dist" id="dr6-l-dist" style="left:1508px; top:586px">A quarter of a mile</div>
+  <div class="dr6-lab dr6-river" id="dr6-l-river" style="left:1508px; top:630px">Oklahoma River</div>
+  <div class="dr6-lab dr6-note" id="dr6-l-schem" style="left:110px; top:956px">Schematic, not to scale</div>
+  <div class="dr6-lab dr6-src" id="dr6-l-src" style="left:110px; top:990px">News 9, June 3, 2013</div>
 
   <div class="dr6-rule" id="dr6-rule"></div>
-  <div class="dr6-lab dr6-name" id="dr6-l-name" style="left:140px; top:124px">Corey Don Johnson</div>
-  <div class="dr6-lab dr6-age" id="dr6-l-age" style="left:144px; top:196px">Age 3</div>
+  <div class="dr6-lab dr6-name" id="dr6-l-name" style="left:140px; top:100px">Corey Don Johnson</div>
+  <div class="dr6-lab dr6-age" id="dr6-l-age" style="left:144px; top:174px">Age 3</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
