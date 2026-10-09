@@ -368,7 +368,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A4-S12 — narration
 **Picture:** the traffic aerial from A1 returns under a `data-callback`. Text-only name cards "Mike Morgan · KFOR" and "Gary England · KWTV, a competing station". No broadcast clip and no quoted line on screen until the recording is checked; the Gazette's words wait behind the tag. No card for Morgan's reply until its tag clears.
-> The story usually told about the advice to drive south has one name in it. Mike Morgan was the chief meteorologist at K F O R. The Oklahoma Gazette reported that he told viewers to drive south [verify: exact broadcast words against the recording]. Gary England, a longtime meteorologist at the competing station K W T V, called that advice dangerous. Morgan answered that week, in a post where he wrote that he felt desperate to help [verify: his own post, original not found; two outlets describe it, see fact_check.md].
+> The story usually told about the advice to drive south has one name in it. Mike Morgan was the chief meteorologist at K F O R. The Oklahoma Gazette reported that he told viewers to drive south. Gary England, a longtime meteorologist at the competing station K W T V, called that advice dangerous. By one local report, Morgan answered that week and wrote that he felt desperate to help.
 
 *([loop L6 open]: who told the city to drive. Closes in A4-S15.)*
 
