@@ -156,7 +156,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *([loop L3 closes]: the underground warning and the advice to drive, which the assessment ties to the traffic. The next segment opens the act's second question, who the tornado's eight were; it pays in A1-S7.)*
 
 ### A1-S5 — narration
-**Picture:** [HUMAN] the map slides west to El Reno. Text-only name card "Richard Henderson". A public domain or licensed shot of the tornado over fields; his own photograph is not used without a licence. His pin lights on the map; its place is one of the six still unsourced under the I1-S4 tag.
+**Picture:** [HUMAN] the map slides west to El Reno. Text-only name card "Richard Henderson". A public domain or licensed shot of the tornado over fields; his own photograph is not used without a licence. His pin lights on the map on US Highway 81 (News 9, 4 Jun 2013, fact_check.md).
 > But half of the people that tornado took were not running from it. West of the city, near El Reno, one man was driving toward the storm. Richard Henderson drove a truck for a living and chased storms as a hobby. He was thirty five, and he had left his home nearby to see this one.
 
 ### A1-S6 — narration
@@ -440,7 +440,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 > The family of seven were a few feet from their own door, hiding from tornadoes that were real. Many of the people in that traffic had left a house behind them because they were told it would not save them.
 
 ### A5-S12 — narration
-**Picture:** [RS] [VE] the full 21-pin map, every pin lit, building icons unlit, the line "0 of 21 inside a building · NWS Service Assessment, Appendix C". The map keeps its tag [verify: a place for the 6 pins still unsourced; 15 of the 21 have one, see fact_check.md]. The bed rises under the last sentence and stops with it. The title's line is not spoken here; it is Paul's, next.
+**Picture:** [RS] [VE] the full 21-pin map, every pin lit, building icons unlit, the line "0 of 21 inside a building · NWS Service Assessment, Appendix C". The map keeps its tag [verify: a place for the 5 pins still unsourced; 16 of the 21 have one, see fact_check.md]. The bed rises under the last sentence and stops with it. The title's line is not spoken here; it is Paul's, next.
 > The strongest part of the tornado crossed no building. The tornadoes that reached the city's buildings carried the two lowest ratings. And the water that took thirteen lives ran to the lowest ground, where twelve people were hiding.
 
 *([loop L1 closes] across this segment and Paul's line: three sourced facts, then the title's line once. Stated as the film's reading of the table, inside what the sources say. No claim that a house would stand up to a sub-vortex.)*

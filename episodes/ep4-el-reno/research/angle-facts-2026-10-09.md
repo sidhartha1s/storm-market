@@ -91,8 +91,8 @@ The research car (W14):
 - **The exact words were not checked against the broadcast recording**, and an NBC transcript of the feed reads slightly differently. Narrate with the assessment's sentence. A quoted line on screen waits for the recording.
 
 ## Still open after this pass
-- The date and source of the return to EF3 (the 4 Jun 2013 upgrade statement is now in section 2).
+- The weather service's own document for the return to EF3. Narrowed to the last week of August 2013 by a 4 Sep 2013 newspaper column (fact_check.md); the 4 Jun 2013 upgrade statement is in section 2.
 - The News 9 report of 9 Jun 2013 on the last recovery (the main report on the family is now read and quoted in section 5).
-- Richard Henderson's age: Appendix C has a 35-year-old "Vehicle, storm chasing" row, no name.
+- Richard Henderson's age: settled by elimination on 9 Oct 26 (Appendix C has four storm chasing rows, 35, 55, 24, 45; three are the research team). See fact_check.md "Added 9 Oct 26, after the voice probe".
 - The circumstance of the June 1 Okfuskee County flood death.
 - The broadcast recording for the exact words.
