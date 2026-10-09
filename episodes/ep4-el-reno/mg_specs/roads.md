@@ -123,7 +123,7 @@ Text: tags "DAN ROBINSON", "WHITE COBALT", "RED PICKUP · PARKED"; road labels "
 | red | 5.86 | red pickup + tag on US-81 |
 | no (other vehicle) | 9.02 | quote card slides in (8.7), attribution line with it (9.5) |
 | Assessment | 11.80 | attribution line pulses |
-| traffic | 13.96 | sweep along the empty roads |
+| traffic | 13.96 | a thin scan line crosses each empty road (a line, never a dot) |
 
 ## Not confirmed, left off
 - Where on US-81 the S U V and the red pickup were, and where on Reuter Road Robinson and the Cobalt were before the strike: no number in the sources. Drawn as approximate and labelled so.
