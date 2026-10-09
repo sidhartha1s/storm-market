@@ -5,7 +5,9 @@
 <!-- g-i1s5-study (I1-S5) · window 24.57 s · brief: mg_specs/cards.md
      Overlay: root transparent for the whole window, the news aerial of the jammed highway sits beneath.
      Popfig "11 days earlier" with the Moore line, a small tag while the voice stays on that day, then the study card
-     (Weather, Climate, and Society, 2022; research/facts.md, not re-pulled). Cues are audio/i1-s5.words.json seconds. -->
+     (Weather, Climate, and Society, 2022; research/facts.md, not re-pulled). Cues are audio/i1-s5.words.json seconds.
+     Every timeline position is a literal number (sweep check 7); the tag and the study card each drift left at about
+     6.6 px/s from landing to exit. -->
 <template>
 <style>
   #st5-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
@@ -33,11 +35,11 @@
     <div class="st5-big" id="st5-big">11 days earlier</div>
     <div class="st5-subrow"><span class="st5-sub st5-h" id="st5-p1">EF5</span><span class="st5-sub st5-h" id="st5-d1">&middot;</span><span class="st5-sub st5-h" id="st5-p2">MOORE</span><span class="st5-sub st5-h" id="st5-d2">&middot;</span><span class="st5-sub st5-h" id="st5-p3">MAY 20, 2013</span></div>
   </div>
-  <div class="st5-glass st5-h" id="st5-tag" style="left:96px; top:96px; width:560px; height:122px">
+  <div class="st5-glass st5-h" id="st5-tag" style="left:127px; top:96px; width:560px; height:122px">
     <div class="st5-t1">Moore &middot; May 20, 2013 &middot; EF5</div>
     <div class="st5-eb" style="top:76px">11 DAYS EARLIER</div>
   </div>
-  <div class="st5-glass st5-h" id="st5-card" style="left:96px; top:96px; width:780px; height:384px">
+  <div class="st5-glass st5-h" id="st5-card" style="left:176px; top:96px; width:780px; height:384px">
     <div class="st5-eb" style="top:36px" id="st5-eb">A 2022 STUDY</div>
     <div class="st5-src st5-h" id="st5-src">Weather, Climate, and Society, 2022</div>
     <div class="st5-hd st5-h" id="st5-hd">6 metro areas</div>
@@ -51,8 +53,8 @@ window.__timelines = window.__timelines || {};
 (function () {
   var D = 24.57, P = "#st5-";
   var tl = gsap.timeline({ paused: true });
-  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, t); }
-  function float(id, a, b) { var n = Math.floor((b - a) / 1.9) - 1; if (n >= 0) tl.to(P + id, { y: -6, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: n }, a); }
+  function hid(dx, dy) { return { autoAlpha: 0, x: dx, y: dy }; }
+  function vis() { return { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }; }
   gsap.set(P + "rule", { scaleX: 0, transformOrigin: "left center" });
   tl.set(P + "rule", { scaleX: 0, transformOrigin: "left center" }, 0);
 
@@ -60,27 +62,27 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "pop", { autoAlpha: 0, scale: 1.4, transformOrigin: "50% 30%" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 0.0);
   tl.to(P + "big", { scale: 1.04, transformOrigin: "50% 50%", duration: 4.7, ease: "none" }, 0.4);
   /* EF5 @1.90 · MOORE @3.80 · OKLAHOMA @4.12 (the date of that day) */
-  show("p1", 1.90, 0, 18);
-  show("d1", 3.80, 0, 18);
-  show("p2", 3.80, 0, 18);
-  show("d2", 4.12, 0, 18);
-  show("p3", 4.12, 0, 18);
+  tl.fromTo(P + "p1", hid(0, 18), vis(), 1.90);
+  tl.fromTo(P + "d1", hid(0, 18), vis(), 3.80);
+  tl.fromTo(P + "p2", hid(0, 18), vis(), 3.80);
+  tl.fromTo(P + "d2", hid(0, 18), vis(), 4.12);
+  tl.fromTo(P + "p3", hid(0, 18), vis(), 4.12);
   tl.to(P + "pop", { autoAlpha: 0, y: -40, duration: 0.35, ease: "power2.in" }, 5.20);
   /* PEOPLE LATER TOLD @5.64 ... FEAR FROM THAT DAY @7.44: the day stays named, small, top left */
-  show("tag", 5.55, -60, 0);
-  float("tag", 6.1, 10.6);
+  tl.fromTo(P + "tag", hid(60, 0), vis(), 5.55);
+  tl.to(P + "tag", { x: -31, duration: 4.7, ease: "none" }, 6.0);
   tl.to(P + "tag", { x: -800, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 10.70);
   /* A 2022 STUDY @11.44 */
-  show("card", 11.32, -60, 0);
-  show("src", 11.44, -24, 0);
+  tl.fromTo(P + "card", hid(60, 0), vis(), 11.32);
+  tl.fromTo(P + "src", hid(-24, 0), vis(), 11.44);
   /* SIX METRO AREAS @14.34 · the years the study covers @14.98 */
-  show("hd", 14.34, 0, 20);
-  show("yr", 14.98, 0, 20);
+  tl.fromTo(P + "hd", hid(0, 20), vis(), 14.34);
+  tl.fromTo(P + "yr", hid(0, 20), vis(), 14.98);
   /* THIS WAS THE LARGEST @16.96 */
   tl.to(P + "rule", { scaleX: 1, duration: 0.6, ease: "power3.out" }, 16.6);
-  show("lg", 16.96, -24, 0);
-  float("card", 12.0, 23.9);
-  tl.to(P + "card", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
+  tl.fromTo(P + "lg", hid(-24, 0), vis(), 16.96);
+  tl.to(P + "card", { x: -80, duration: 12.2, ease: "none" }, 11.77);   /* slow drift left, 6.6 px/s, to the exit */
+  tl.to(P + "card", { x: -1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 23.97);
   window.__timelines["g-i1s5-study"] = tl;
 })();
 </script>
