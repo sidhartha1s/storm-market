@@ -77,7 +77,7 @@ window.__timelines = window.__timelines || {};
   s0([$("u1"), $("u2")], { scaleX: 0, transformOrigin: "left center" });
   tl.fromTo($("scan"), { x: -400 }, { x: 1960, duration: D, ease: "none" }, 0);
   tl.to($("clock"), { x: -800, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 0.35);  /* That message @0.00: the clock leaves, the message takes the frame */
-  tl.to($("note"), { x: -330, duration: 0.8, ease: "power2.inOut" }, 0.70);
+  tl.to($("note"), { x: -330, scale: 1.35, duration: 0.8, ease: "power2.inOut", transformOrigin: "50% 50%" }, 0.70);   /* 1120 x 594 at x 285 to 1405, y 73 to 667 */
   tl.to($("u1"), { scaleX: 1, duration: 1.4, ease: "power1.inOut" }, 4.32);              /* a car as a choice @4.32: the condition */
   tl.to($("u2"), { scaleX: 1, duration: 0.9, ease: "power2.out" }, 7.38);                /* the office that issues the warnings @7.38 */
   tl.to($("note"), { scale: 1.03, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 9.74);   /* It also named @9.74 */
