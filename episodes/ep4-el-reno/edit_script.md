@@ -24,18 +24,18 @@ hook and intro wait on the fact-check fan-out, the grader and the owner.
 | Close | Z1 |
 
 ## B. Act outline
-Times are planning numbers for a 23:00 cut. Shares are of the full runtime.
+Times come from the voice probe of 9 Oct 26: 178.9 words a minute at tempo 0.94 (`audio/probe/`), Paul's slots at 10 s each, the book ad at 24.417 s, one-second blackouts. Predicted runtime 21:28. Shares are of the full runtime.
 
 | Section | Planned time | Share | What it proves toward the Claim | Loop | Named person it follows |
 |---|---|---|---|---|---|
-| H1, T1, I1 | 0:00 to 2:10 | 9.4 % | States the Claim, the count (8 in vehicles, 12 in drains, 1 in a flooded vehicle) and the roster. | Opens L1 (episode) and L2 (the two crews). | Mike Bettes and Tim Samaras, named only. |
-| A1 · A city in its cars | 2:10 to 5:30 | 14.5 % | The 21 were where they were because a city left its houses: a Friday rush hour, Moore eleven days earlier, people told they could not survive above ground, advice to drive south. The advice is given in the assessment's own sentence, no one named yet. | Opens and pays L3 (what made people leave solid houses). Ends by opening L4 (the tornado they drove toward was not one tornado). | Richard Henderson, the amateur chaser who left his home near El Reno and sent a photo at 6:05 PM: the first pin on the map. |
-| A2 · The tornado inside the tornado | 5:30 to 9:00 | 15.2 % | The danger was not the 2.6 mile circulation, which nearly stopped. It was small vortices inside it, moving at up to about 175 miles an hour. Here "widest ever recorded" and "about 295 miles an hour" arrive as facts. Both crews drove in on the weak side and may not have known they were inside. | Pays L4. Keeps L2 open with the radar picture the viewer now needs. | Joshua Wurman, lead author of the 2014 radar study (mechanism chapter: one researcher, one institution). |
-| A3 · Two vehicles, minutes apart | 9:00 to 13:10 | 18.1 % | Two crews inside the same tornado on two roads, US-81 and Reuter Road. The SUV met a small vortex crossing fast; between four and five minutes later the car met it sitting nearly still for about twenty seconds. The two facts sit side by side and the script never says "this is why". The TV crew's own footage runs here as one sequence under narration. | Pays L2 (open question one). Last segment opens L5, the `cta-hinge`. | Mike Bettes and driver Austin Anderson; Tim Samaras, Paul Samaras and Carl Young; Dan Robinson as the last man to see the Cobalt. |
-| Book ad | 13:10 | starts at 57.2 % | Sits between the tease and its payoff. | Inside L5. | none |
-| A4 · The twelve and the warning gap | 13:30 to 18:30 | 21.7 % | Twelve people, eight of them aged eight or under, went into two storm drains to hide from tornadoes that were E F zero and E F one in the city, and water took them. The family of seven left their house near NW 26th and Meridian when the sirens sounded, went "only a few feet away" into a drainage ditch and hid under a table carried from the house (News 9, confirmed). Enma Aguilar's sentence that they thought the ditch "was the safest spot" runs as attributed text on screen, never as a voice. The assessment names the lack of Spanish-language warnings beside the family of seven; the script says it sits beside them, never that it caused their choice. Then the fairness block at about 15:45 to 17:10 (68 to 75 %): "the problem with that story is" the weather office's own 1 PM tweet about fleeing by car, set next to the broadcast advice. | Pays L5 in its first sentence (open question two). Opens and pays L6 (who told the city to drive). Ends by opening L7 (all 21 pins on one map, and what is missing from it). | Samuel Cifuentes, who walked his family out of the house; Yolanda Santos and her three children; Enma Aguilar (attributed text); Deputy Fire Chief Marc Woodard; Mike Morgan and Gary England in the fairness block. |
-| A5 · The map with 21 pins | 18:30 to 22:20 | 16.7 % | The answer. The strongest winds sat in small vortices that crossed no structure, which is also why the rating ended at E F three after the weather office raised it to E F five on June 4, 2013 (statement confirmed; the date it went back still needs its source); every tornado that entered the city was E F zero or E F one; the water went to the lowest ground. The pins sit on roads and in drains, and no pin sits on a building. | Pays L7, then L1 (open question three) in the last 30 to 60 s. | The weather office surveyors in Norman; Harold Brooks of NOAA on "get underground or you will not survive" messaging. |
-| Z1 · Close | 22:20 to 23:00 | 2.9 % | One fact with a dated forward window, then the signature line. | none | none |
+| H1, T1, I1 | 0:00 to 2:19 | 10.9 % | States the Claim, the count (8 in vehicles, 12 in drains, 1 in a flooded vehicle) and the roster. | Opens L1 (episode) and L2 (the two crews). | Mike Bettes and Tim Samaras, named only. |
+| A1 · A city in its cars | 2:19 to 5:24 | 14.4 % | The 21 were where they were because a city left its houses: a Friday rush hour, Moore eleven days earlier, people told they could not survive above ground, advice to drive south. The advice is given in the assessment's own sentence, no one named yet. | Opens and pays L3 (what made people leave solid houses). Ends by opening L4 (the tornado they drove toward was not one tornado). | Richard Henderson, the amateur chaser who left his home near El Reno and sent a photo at 6:05 PM: the first pin on the map. |
+| A2 · The tornado inside the tornado | 5:24 to 8:24 | 13.9 % | The danger was not the 2.6 mile circulation, which nearly stopped. It was small vortices inside it, moving at up to about 175 miles an hour. Here "widest ever recorded" and "about 295 miles an hour" arrive as facts. Both crews drove in on the weak side and may not have known they were inside. | Pays L4. Keeps L2 open with the radar picture the viewer now needs. | Joshua Wurman, lead author of the 2014 radar study (mechanism chapter: one researcher, one institution). |
+| A3 · Two vehicles, minutes apart | 8:24 to 12:46 | 20.4 % | Two crews inside the same tornado on two roads, US-81 and Reuter Road. The SUV met a small vortex crossing fast; between four and five minutes later the car met it sitting nearly still for about twenty seconds. The two facts sit side by side and the script never says "this is why". The TV crew's own footage runs here as one sequence under narration. | Pays L2 (open question one). Last segment opens L5, the `cta-hinge`. | Mike Bettes and driver Austin Anderson; Tim Samaras, Paul Samaras and Carl Young; Dan Robinson as the last man to see the Cobalt. |
+| Book ad | 12:20 | starts at 57.5 % | Sits between the tease and its payoff. | Inside L5. | none |
+| A4 · The twelve and the warning gap | 12:46 to 17:18 | 21.1 % | Twelve people, eight of them aged eight or under, went into two storm drains to hide from tornadoes that were E F zero and E F one in the city, and water took them. The family of seven left their house near NW 26th and Meridian when the sirens sounded, went "only a few feet away" into a drainage ditch and hid under a table carried from the house (News 9, confirmed). Enma Aguilar's sentence that they thought the ditch "was the safest spot" runs as attributed text on screen, never as a voice. The assessment names the lack of Spanish-language warnings beside the family of seven; the script says it sits beside them, never that it caused their choice. Then the fairness block at about 15:45 to 17:10 (68 to 75 %): "the problem with that story is" the weather office's own 1 PM tweet about fleeing by car, set next to the broadcast advice. | Pays L5 in its first sentence (open question two). Opens and pays L6 (who told the city to drive). Ends by opening L7 (all 21 pins on one map, and what is missing from it). | Samuel Cifuentes, who walked his family out of the house; Yolanda Santos and her three children; Enma Aguilar (attributed text); Deputy Fire Chief Marc Woodard; Mike Morgan and Gary England in the fairness block. |
+| A5 · The map with 21 pins | 17:18 to 20:48 | 16.3 % | The answer. The strongest winds sat in small vortices that crossed no structure, which is also why the rating ended at E F three after the weather office raised it to E F five on June 4, 2013 (statement confirmed; the date it went back still needs its source); every tornado that entered the city was E F zero or E F one; the water went to the lowest ground. The pins sit on roads and in drains, and no pin sits on a building. | Pays L7, then L1 (open question three) in the last 30 to 60 s. | The weather office surveyors in Norman; Harold Brooks of NOAA on "get underground or you will not survive" messaging. |
+| Z1 · Close | 20:48 to 21:28 | 3.1 % | One fact with a dated forward window, then the signature line. | none | none |
 
 Each act changes what the viewer understood: A1 the city went out to meet the storm; A2 the wide tornado was not the threat; A3 minutes and yards decided between two crews, and no source names the cause; A4 the largest group was hiding, not driving; A5 the facts every other video opens with turn out to be the answer.
 
@@ -44,15 +44,15 @@ Each act changes what the viewer understood: A1 the city went out to meet the st
 |---|---|---|
 | L1 episode: why nobody lost their life indoors | H1-S1, T1-S1 | A5, last 30 to 60 s |
 | L2: why one crew survived (facts side by side, no cause stated) | I1-S8 | A3 |
-| L3: what made people leave solid houses | A1, first segment | A1 |
+| L3: what made people leave solid houses | A1, first segment | A1-S4 (a second act question, who the tornado's eight were, runs A1-S5 to A1-S7) |
 | L4: what was inside the wide tornado | A1, last narration segment | A2 |
 | L5 `cta-hinge`: who the twelve were | A3, last segment (Paul) | A4-S1, first sentence |
 | L6: who told the city to drive | A4, after the family of seven | A4, fairness block |
-| L7: what is missing from the 21-pin map | A4, last segment | A5 |
+| L7: what is missing from the 21-pin map (L1 asked aloud) | A4, last segment | A5 |
 
 ### Book-ad hinge
 - **Segment before:** the last segment of A3, Paul on camera, 25 words at most. It is the line that the home was the safe place, and it teases the twelve who left theirs.
-- **Book ad:** planned at about 13:10, 57.2 % of a 23:00 runtime. By the word count of the full draft after the 9 Oct 26 fix pass it lands at about 11:53, 57.3 % of an estimated 20:45, inside `config.yaml channel.cta.window` [0.40, 0.60]. 20 s is budgeted until the file's length is read.
+- **Book ad:** at the measured pace it starts at about 12:20, 57.5 % of a predicted 21:28, inside `config.yaml channel.cta.window` [0.40, 0.60]. Its length is 24.417 s (`config.yaml channel.cta.duration`).
 - **Segment after:** A4-S1. Its first sentence is the payoff, first three words if possible: the family of seven and how far they went from their own door ("only a few feet away", News 9, confirmed).
 
 ### Paul on camera (besides the hook), position and job only
@@ -72,7 +72,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 - Loop tags and timing notes sit between segments as plain notes, never inside a blockquote.
 - A1 and A2 also avoid "wind" and "record" as a noun ("the air inside them", "ever recorded"), so no homograph waits on a probe there.
 - A Paul slot is a heading with a Job and a Budget line and no blockquote; `parse_segments` skips it until his line is written.
-- The estimated times on the section headings come from the word counts at the Enderlin intro's shipped pace. They are estimates until a probe at this episode's tempo.
+- The times on the section headings come from the voice probe of 9 Oct 26 (178.9 words a minute at tempo 0.94). They move when the wording moves.
 
 ---
 
@@ -85,7 +85,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *([loop L1 open]: why nobody lost their life indoors. Closes in A5.)*
 
 
-## T1 · Hook tail (0:05)
+## T1 · Hook tail (starts about 0:05, measured pace)
 
 ### T1-S1 — narration
 **Picture:** hard cut on the first word to mid-action footage, never black: a real clip of the evening sky and loaded highways around Oklahoma City on May 31 (news or public domain; no chaser footage without a licence). A counter "19 tornadoes in Oklahoma · National Weather Service" lands on "nineteen". On "Twelve of the twenty one": twenty-one small markers appear in a row and twelve of them light. One bed swell under the last clause, no siren.
@@ -94,7 +94,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *(no void: cut straight into the intro. No black hold, title card or disclaimer before 1:00.)*
 
 
-## I1 · The night and the count (0:18, runs to about 2:12)
+## I1 · The night and the count (starts about 0:16, measured pace)
 
 ### I1-S1 — narration
 **Picture:** the master map opens: central Oklahoma, Oklahoma City labelled, El Reno marked to its west. Popfig "6:03 PM" and the g-clock starts. A real clip of the tornado over open fields (public domain or licensed news). A bar marked "2.6 miles" draws across the section roads on the last sentence.
@@ -133,7 +133,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *(blackout 0.7 s)*
 
 
-## A1 · A city in its cars (about 2:15, runs about 2:58 with Paul's slot)
+## A1 · A city in its cars (starts about 2:19, runs to about 5:24, measured pace)
 
 ### A1-S1 — narration
 **Picture:** [RS] [VE] place stamp "Oklahoma City · May 31, 2013 · evening". A real clip of a neighbourhood street under a dark sky, sirens audible in the clip's own sound, low. Over it the assessment's sentence as attributed text, one line at a time: "...telling listeners they would be unable to survive if not underground · NWS Service Assessment". Then the words "sheltering in place" from the same page. The bed returns under the last sentence.
@@ -165,7 +165,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A1-S7 — narration
 **Picture:** the map holds on the El Reno track. Pins light as they are spoken: three together for the Cobalt, then a counter "4 of 8 · storm chasing · NWS Service Assessment" beside Henderson's pin and those three. Then one pin on a line drawn from El Reno toward Chickasha, labelled "67".
-> Seven more people were lost in that tornado, and the weather service's table says what each was doing. Three were the crew of the white Cobalt. That makes four of the eight who were chasing the storm. One was a man of sixty seven, driving from El Reno to Chickasha.
+> Seven more people were lost in that tornado, and the weather service's table says what each was doing. Three were the crew of the white Cobalt. That makes four of the eight chasing the storm. One was a man of sixty seven, driving from El Reno to Chickasha.
 
 ### A1-S8 — narration
 **Picture:** [RS] [HUMAN] one pin, label "32". Then Interstate 40 draws across the map and two pins land side by side on its shoulder, labels "26" and "17 days". Hold three seconds on those two with the bed low.
@@ -192,7 +192,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *(blackout 0.7 s)*
 
 
-## A2 · The tornado inside the tornado (about 5:14, runs about 2:49 with Paul's slot, before picture holds)
+## A2 · The tornado inside the tornado (starts about 5:24, runs to about 8:24, measured pace)
 
 ### A2-S1 — narration
 **Picture:** time stamp "6:19 PM". The map at road level: the circulation as a wide ring reaching Highway 81. A bar "2.6 miles" spans it. Then two outlines side by side, "Hallam, Nebraska · 2004" and "El Reno · 2013", the second wider. A real clip of the tornado, wide shot, licensed or public domain.
@@ -222,11 +222,11 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A2-S7 — narration
 **Picture:** the small circle moves inside the ring, changing direction. A readout runs up to "about 175 mph · Wurman et al. 2014", with "about 260 feet every second" under it; a field outline sweeps past once a second to show the pace. Then a second readout, "about 295 mph · National Weather Service". One hit on each readout.
-> A sub-vortex does not keep one speed or one direction. Wurman's team clocked sub-vortices in this tornado crossing the ground at up to about one hundred seventy five miles an hour. The air spinning inside them was faster still. The weather service puts it at about two hundred ninety five miles an hour.
+> A sub-vortex does not keep one speed or one direction. Wurman's team clocked sub-vortices in this tornado crossing the ground at up to about one hundred seventy five miles an hour. That is most of a football field every second. The air spinning inside them was faster still. The weather service puts it at about two hundred ninety five miles an hour.
 
 ### A2-S8 — narration
 **Picture:** the replot widens. Faint circles appear and fade inside the ring. A small circle moves south into the ring's northwest side, "satellite tornado". Nearby a second circle turns the other way, an arrow showing clockwise, "Marshall et al., damage survey and radar analysis".
-> It was not alone. The damage survey's radar analysis shows other sub-vortices that came and went, and a second tornado nearby spinning clockwise, against the usual direction.
+> Those sub-vortices were not alone. The damage survey's radar analysis shows other sub-vortices that came and went, and a second tornado nearby spinning clockwise, against the usual direction.
 
 ### A2-S9 — narration
 **Picture:** [RS] the 21-pin map returns for four seconds, only the eight El Reno pins lit, each on a road line. No new text. The bed holds one note.
@@ -245,7 +245,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *(blackout 0.7 s)*
 
 
-## A3 · Two vehicles, minutes apart (about 8:03, runs about 3:49 with two Paul slots and six seconds of clip sound; the book ad then lands at about 11:53, 57.3 % of an estimated 20:45, inside the window)
+## A3 · Two vehicles, minutes apart (starts about 8:24, runs to about 12:46, measured pace)
 
 *(Clock note for the editor: every time in this act is the Wurman paper's radar timing, except 6:19 PM at the highway, which is the weather service's. Dan Robinson's own account puts his last sighting of the Cobalt about three minutes earlier; it is not spoken.)*
 
@@ -314,7 +314,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *([loop L5 `cta-hinge` open]: who the twelve were. Book ad mounts here. Closes in A4-S1, first sentence.)*
 
 
-## A4 · The twelve and the warning gap (about 12:13, after the book ad; runs about 4:40; the fairness block A4-S12 to A4-S15 sits at about 15:14 to 16:28)
+## A4 · The twelve and the warning gap (starts about 12:46, runs to about 17:18, measured pace)
 
 ### A4-S1 — narration
 **Picture:** straight out of the book ad, no black. A street map of Oklahoma City at "NW 26th St and Meridian": one house outline, one ditch line beside it, a short measure between them marked "a few feet · News 9, June 2013". Sirens in a real clip's own sound, low, under the second sentence. Text-only name card "Samuel Cifuentes".
@@ -324,7 +324,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A4-S2 — narration
 **Picture:** [HUMAN] text-only name cards, one at a time, in two groups: "Samuel Cifuentes", "Florinda Santos", "Alex"; then "Yolanda Santos", "Cristofer", "Brandon", "Lesly". News 9's spellings. No photographs unless the family's are licensed. Seven pins light at one point on the 21-pin map.
-> With him were his wife, Florinda Santos, and their son, Alex. With them were Florinda's cousin, Yolanda Santos, and Yolanda's three children, Cristofer, Brandon and Lesly. The house was right behind them, and they chose the ditch.
+> With him were his wife, Florinda Santos, and their son, Alex. With them were Florinda's cousin, Yolanda Santos, and Yolanda's three children, Cristofer, Brandon and Lesly.
 
 ### A4-S3 — narration
 **Picture:** [RS] the house and ditch drawing again: a table outline moves from the house to the ditch. Then Enma Aguilar's sentence as attributed text, exact words, held four seconds: "They were in the ditch because they thought it was the safest spot because they just thought it was going to be a tornado, not a flooding. · Enma Aguilar, family member, to News 9". Text only, never a voice.
@@ -364,13 +364,13 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A4-S12 — narration
 **Picture:** the traffic aerial from A1 returns under a `data-callback`. Text-only name cards "Mike Morgan · KFOR" and "Gary England · KWTV, a competing station". No broadcast clip and no quoted line on screen until the recording is checked; the Gazette's words wait behind the tag. No card for Morgan's reply until its tag clears.
-> The story usually told about the advice to drive south has one name in it. Mike Morgan was the chief meteorologist at K F O R, and the Oklahoma Gazette reported that he told viewers to drive south [verify: exact broadcast words against the recording]. Gary England, a longtime meteorologist at the competing station K W T V, called that advice dangerous. Morgan answered the criticism publicly that week.
+> The story usually told about the advice to drive south has one name in it. Mike Morgan was the chief meteorologist at K F O R. The Oklahoma Gazette reported that he told viewers to drive south [verify: exact broadcast words against the recording]. Gary England, a longtime meteorologist at the competing station K W T V, called that advice dangerous. Morgan answered that week, in a post where he wrote that he felt desperate to help [verify: his own post, original not found; two outlets describe it, see fact_check.md].
 
 *([loop L6 open]: who told the city to drive. Closes in A4-S15.)*
 
 ### A4-S13 — narration
 **Picture:** [RS] [VE] a clock face runs back from "6:03 PM" to "1:00 PM", five hours. The weather office's message as attributed text, exact words: "TORNADO SAFETY: If you choose to flee in your car, plan for and anticipate traffic jams and blocked roads, hail, heavy rain and flooding. · NWS Norman, 1 PM, May 31, 2013, quoted in the NWS Service Assessment". One hit when the clock stops.
-> He wrote that he felt desperate to help, and that the advice to get out of the way became a traffic jam [verify: his own post, original not found]. The problem with the one name story is the clock. At one PM that day, five hours before the tornado, the weather office in Norman posted a safety message of its own. If you choose to flee in your car, it said, plan for traffic jams and blocked roads, hail, heavy rain and flooding.
+> The problem with the one name story is the clock. At one PM that day, five hours before the tornado, the weather office in Norman posted a safety message of its own. If you choose to flee in your car, it said, plan for traffic jams and blocked roads, hail, heavy rain and flooding.
 
 ### A4-S14 — narration
 **Picture:** the message stays up. Two phrases lift out of it in turn, "traffic jams" over the highway aerial and "flooding" over the drain map.
@@ -391,7 +391,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *(blackout 0.7 s)*
 
 
-## A5 · The map with 21 pins (about 16:53, runs about 3:21 with Paul's slot)
+## A5 · The map with 21 pins (starts about 17:18, runs to about 20:48, measured pace)
 
 ### A5-S1 — narration
 **Picture:** date stamp "June 4, 2013". The weather office's public statement of that day on screen (public domain), the line about the upgrade lit. A stamp "EF5" lands on the El Reno track. Readout "about 295 mph".
@@ -413,7 +413,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A5-S5 — narration
 **Picture:** the track map near Interstate 40: a cluster of small squares just south of the road lights up, "manufactured homes · 69 markers per square mile". The eight El Reno pins stay on the roads; none sits in the cluster. On the last two sentences the weather service's guidance as attributed text, exact words: "Mobile homes and trailers are not safe. Evacuate immediately and seek shelter in a sturdy building. · National Weather Service". The safety text holds to the end of the segment and is never cut for time.
-> The tornado did reach buildings. The survey found its densest cluster of damage in a group of manufactured homes just south of Interstate forty. The weather service's table lists no one lost in them, and no source says whether anyone was inside. That is not a reason to stay in one. The weather service's standing advice is that a mobile home is not safe in a tornado, and to get to a sturdy building.
+> The tornado did reach buildings. The survey found its densest cluster of damage in a group of manufactured homes, also called mobile homes, just south of Interstate forty. The weather service's table lists no one lost in them, and the survey does not say whether anyone was inside. That is not a reason to stay in one. The weather service's standing advice is that a mobile home is not safe in a tornado, and to get to a sturdy building.
 
 ### A5-S6 — narration
 **Picture:** the map slides east to the city. The short "EF0" and "EF1" tracks from A4 return under a `data-callback`. Building icons everywhere, no pin on any.
@@ -452,7 +452,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *(blackout 0.7 s)*
 
 
-## Z1 · Close (time waits on the voice probe)
+## Z1 · Close (starts about 20:48, runtime about 21:28, measured pace)
 
 ### Z1-S1 — narration
 **Picture:** the assessment's table one last time, twenty-one lines, the name column absent. Then text-only names over the dimmed map, each landing on the voice, News 9's spellings: "Richard Henderson", "Tim Samaras", "Paul Samaras", "Carl Young", "Samuel Cifuentes", "Florinda Santos", "Alex", "Yolanda Santos", "Cristofer", "Brandon", "Lesly". g-outro begins.
@@ -468,4 +468,4 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 *(outro tail 4 s, g-outro, bed out)*
 
-*(Full draft after the fix passes, 9 Oct 26. Narration 3,553 words, counted by script with tags stripped. Every time on a heading is an estimate at the Enderlin pace until a voice probe at this episode's tempo replaces it.)*
+*(Full draft after the whole-script re-grade, 9 Oct 26. Narration 3,551 words, counted by script with tags stripped. Times are from the voice probe at this episode's tempo: predicted runtime 21:28.)*
