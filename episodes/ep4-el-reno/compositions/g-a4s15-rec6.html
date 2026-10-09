@@ -82,7 +82,7 @@ window.__timelines = window.__timelines || {};
   show("l4", 6.22, -30, 0);                                 /* when @6.22 */
   show("l5", 6.70, -30, 0);                                 /* more than one danger @6.50 */
   tl.fromTo($("acc"), { scaleY: 1 }, { scaleY: 0.5, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 5, transformOrigin: "50% 0%", immediateRender: false }, 2.4);
-  tl.to($("card"), { x: -1400, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 8.00);
+  tl.to($("card"), { x: -1400, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 9.10);   /* So the idea @8.66: the card leaves as the note arrives, no empty frame between */
   show("e2", 9.60, 0, 14); show("note", 9.70, 120, 0);      /* a car was an option @9.70: the 1 PM note, small */
   tl.to($("ul"), { scaleX: 1, duration: 0.6, ease: "power2.out" }, 10.36);   /* an option @10.36: the condition */
   show("e1", 11.58, 0, 14); show("n1", 11.68, -120, 0);     /* one man @11.68 */
