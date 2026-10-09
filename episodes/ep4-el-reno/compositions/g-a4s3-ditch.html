@@ -115,20 +115,23 @@ window.__timelines = window.__timelines || {};
   /* WENT DOWN INTO A DRAINAGE DITCH @4.46-5.74: the table goes down first and waits above the ditch floor */
   tl.to(P+"table", { x: 0, y: -40, duration: 0.54, ease: "power2.inOut" }, 4.46);
   /* then the seven walk out of the door, down the bank and along the ditch floor, one behind another. Every dot
-     runs the same line (door, top of the bank, foot of the bank, its place) at the same speed, ease none, so the
-     22-unit spacing holds the whole way and no dot leaves the ground. All seven arrive at 6.2. */
-  const W1 = { x: 1010, y: 748 };
-  const W2 = { x: 1080, y: 884 };
+     runs the same line at the same speed, ease none, so the 22-unit spacing holds the whole way and no dot leaves
+     the ground. The line (svg units, dot centres): out of the door, the top of the bank, down the bank parallel
+     to it, the foot of the bank, then its own place; both turns are cut 12 units so the dots do not bunch there.
+     All seven arrive at 6.2. */
+  const WALK = [[850, 731], [1004, 744], [1021.5, 755.7], [1082, 873.3], [1099.5, 884]];
   document.querySelectorAll(".dt3-dot").forEach(function (el, k) {
-    const xs = 700 + 22 * k;
     const xf = 1134 + 22 * k;
-    const l1 = Math.hypot(W1.x - xs, W1.y - 730);
-    const l2 = Math.hypot(W2.x - W1.x, W2.y - W1.y);
-    const l3 = xf - W2.x;
-    const v = (l1 + l2 + l3) / 1.7;
-    tl.to(el, { x: W1.x - xf, y: W1.y - 884, duration: l1 / v, ease: "none" }, 4.5);
-    tl.to(el, { x: W2.x - xf, y: 0, duration: l2 / v, ease: "none" }, 4.5 + l1 / v);
-    tl.to(el, { x: 0, y: 0, duration: l3 / v, ease: "none" }, 4.5 + (l1 + l2) / v);
+    const pts = [[700 + 22 * k, 730]].concat(WALK, [[xf, 884]]);
+    const leg = function (i) { return Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); };
+    let total = 0;
+    for (let i = 1; i < pts.length; i++) total += leg(i);
+    let at = 4.5;
+    for (let i = 1; i < pts.length; i++) {
+      const d = leg(i) / total * 1.7;
+      tl.to(el, { x: pts[i][0] - xf, y: pts[i][1] - 884, duration: d, ease: "none" }, at);
+      at += d;
+    }
   });
   /* A DRAINAGE DITCH @5.42 */
   tl.fromTo(P+"l-ditch", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.42);
