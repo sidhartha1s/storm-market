@@ -71,7 +71,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 - "wind" does not occur in the hook, tail or intro. No homograph is respelled here; respelling waits for a TTS probe (`references/homographs.md`).
 - Loop tags and timing notes sit between segments as plain notes, never inside a blockquote.
 - A1 and A2 also avoid "wind" and "record" as a noun ("the air inside them", "ever recorded"), so no homograph waits on a probe there.
-- A Paul slot is a heading with a Job and a Budget line and no blockquote; `parse_segments` skips it until his line is written.
+- A Paul slot is a heading with a Job, a Budget and his line as the blockquote (picked by the owner 9 Oct 26, `paul-lines.md`). `parse_segments` reads it as a segment, so the voice tool also makes a narrator take of each line: the audio-only fallback the owner asked for if a clip has a speech defect.
 - The times on the section headings come from the voice probe of 9 Oct 26 (178.9 words a minute at tempo 0.94). They move when the wording moves.
 
 ---
@@ -125,7 +125,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 > The other was a white Chevrolet Cobalt carrying the researcher Tim Samaras, his son Paul, and Carl Young. It was struck minutes later, on a different road.
 
 ### I1-S8 — narration
-**Picture:** split frame: left "3 of 3 survived" over the S U V marker, right "0 of 3" over the Cobalt marker. Then a self-made radar replot of the wide circulation with one small circle inside it, drawn at two positions, unlabelled [verify: one and the same sub-vortex at both vehicles; Wurman et al. 2014 read that way, see fact_check.md]. Hold on the two positions through the last sentence; the bed drops out on the last word.
+**Picture:** split frame: left "3 of 3 survived" over the S U V marker, right "0 of 3" over the Cobalt marker. Then a self-made radar replot of the wide circulation with one small circle inside it, drawn at two positions, unlabelled. Hold on the two positions through the last sentence; the bed drops out on the last word.
 > Everyone in the S U V survived. No one in the Cobalt did. A radar team led by Joshua Wurman later rebuilt both strikes, and the two vehicles were not struck the same way.
 
 *([loop L2 open]: why one crew survived. Closes in A3 with the two strikes side by side, no cause stated.)*
@@ -185,9 +185,10 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 *([loop L4 open]: what was inside the wide tornado. Closes in A2-S6.)*
 
-### A1-S12 — Paul on camera, slot 1 (wording not written)
+### A1-S12 — Paul on camera, slot 1 (line picked by the owner, 9 Oct 26)
 **Job:** the owner's hook callback at the act seam, the one affirming line after the exit question. It names the hook's claim (twenty-one lives, none inside a building) and points at what was inside the tornado.
 **Budget:** 26 words at most, one clip of about 10 s, full frame. No new fact, no number that is not already spoken.
+> Stick with me. What radar found inside that tornado is part of why twenty one lives were lost that night, and none inside a building.
 
 *(blackout 0.7 s)*
 
@@ -210,9 +211,10 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 **Picture:** photographs of the two research radars on their trucks (licence check; government or university press images). Labels "University of Oklahoma" and "Doppler on Wheels · Joshua Wurman's team". A beam draws low across a field toward the ring.
 > Two research radar teams had driven up to that tornado, and their beams measured the moving air near the ground.
 
-### A2-S5 — Paul on camera, slot 2 (wording not written)
+### A2-S5 — Paul on camera, slot 2 (line picked by the owner, 9 Oct 26)
 **Job:** the turn from how wide it was to what was inside it. He names "the tornado inside the tornado" and defines it in twelve words or fewer.
 **Budget:** 26 words at most, one clip of about 10 s, full frame. The next segment opens on the scientists' word for it, so his line must not use "sub-vortex".
+> Their radar showed two things turning. I call the second one the tornado inside the tornado: a much smaller one, spinning hard inside the wide one.
 
 ### A2-S6 — narration
 **Picture:** [RS] [VE] the self-made radar replot: the wide ring, and one small bright circle turning inside it. Label "sub-vortex". A scale bar "300 to 750 feet" on the small circle, then one to two and a half field outlines laid on it, against the forty-five across the ring.
@@ -238,7 +240,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A2-S11 — narration
 **Picture:** the replot, one small circle only. It sits on the S U V marker on "US-81" at "6:19 PM", then on the Cobalt marker on "Reuter Road" between four and five minutes on. The same circle, drawn at two positions, never two circles. Hold on both positions; the bed drops out on the question.
-> As the tornado crossed Highway eighty one, by the radar team's account, one sub-vortex was turning inside it. It struck the Weather Channel S U V there. Between four and five minutes later it struck the white Cobalt on Reuter Road [verify: one and the same sub-vortex at both vehicles, Wurman et al. 2014]. It was one small vortex on two roads, and one crew survived. What happened at each road?
+> As the tornado crossed Highway eighty one, by the radar team's account, one sub-vortex was turning inside it. It struck the Weather Channel S U V there. Between four and five minutes later it struck the white Cobalt on Reuter Road. It was one small vortex on two roads, and one crew survived. What happened at each road?
 
 *([loop L2 stays open], sharpened: one sub-vortex, two roads, one crew survives. The question asks what happened at each road, not what the vortex did. Pays in A3.)*
 
@@ -279,7 +281,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A3-S8 — narration
 **Picture:** [RS] [VE] the replot: the same small circle leaves the highway, loops, brightens south of the Cobalt marker and comes north. Popfig "6:23:35 PM". It reaches Reuter Road and stops. A second counter starts at zero and runs to about twenty seconds while the circle does not move. Every other sound drops out under the counter.
-> By then the sub-vortex had left the highway and looped back [verify: one and the same sub-vortex at both vehicles, Wurman et al. 2014]. By the radar team's account, it strengthened about five hundred and fifty yards south of the car, then moved north toward the road. Between four and five minutes after it crossed the highway, it reached Reuter Road and nearly stopped. It stayed over the road for about twenty seconds.
+> By then the sub-vortex had left the highway and looped back. By the radar team's account, it strengthened about five hundred and fifty yards south of the car, then moved north toward the road. Between four and five minutes after it crossed the highway, it reached Reuter Road and nearly stopped. It stayed over the road for about twenty seconds.
 
 ### A3-S9 — narration
 **Picture:** the counter holds at its end. Readout "over 180 mph". A line draws from the Cobalt's starting mark, about 580 yards west of Radio Road, to a mark just north-east of the crossroads: "about 650 yards · about 20 seconds". No photograph of the car.
@@ -293,9 +295,10 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 **Picture:** the paper's sentence as attributed text, exact words: "it is likely that no clear direction to safety was apparent · Wurman et al., Bulletin of the American Meteorological Society, 2014". Behind it the replot, the circle's looping track drawn as one line.
 > The radar team gives them thirty seconds of possible warning, perhaps in poor visibility, from a vortex that kept changing direction. It concludes that they probably had no clear direction to safety.
 
-### A3-S12 — Paul on camera, slot 3 (wording not written)
+### A3-S12 — Paul on camera, slot 3 (line picked by the owner, 9 Oct 26)
 **Job:** pays L2. He sets the two strikes side by side in one breath: one vortex, crossing the highway at about fifty six miles an hour, nearly still over Reuter Road for about twenty seconds. Two facts, no cause, never "this is why".
 **Budget:** 26 words at most, one clip of about 10 s, full frame. Only numbers already spoken in this act.
+> One crew met it moving at about fifty six miles an hour. The other met the same vortex nearly still, for about twenty seconds.
 
 ### A3-S13 — narration
 **Picture:** split frame, the same small circle on both sides. Left: Highway 81, "about 56 mph", a line "200 yards". Right: Reuter Road, "nearly still · about 20 seconds", a line "650 yards" drawn to the same scale. Under them two short lines of attributed text from the paper, one about speed and injuries, one about the car's build. No arrow or word joins the two sides.
@@ -307,9 +310,10 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 **Picture:** the 21-pin map returns. The eight El Reno pins are lit, each on a road. The view slides east to Oklahoma City, where twelve pins sit unlit at two points and one more stands apart. Hold on the twelve; the bed thins to rain.
 > All eight people lost in the El Reno tornado were in vehicles, and both crews had gone out to find it. Twelve of the other thirteen had done the opposite. They had gone to hide from it.
 
-### A3-S15 — Paul on camera, slot 4, the `cta-hinge` tease (wording not written)
+### A3-S15 — Paul on camera, slot 4, the `cta-hinge` tease (line picked by the owner, 9 Oct 26)
 **Job:** the line that home was the safe place, teasing the twelve who left theirs. It opens L5 and runs straight into the book ad. It gives no detail of the family: how far they went from their own door is A4-S1's first sentence.
 **Budget:** 25 words at most (the hinge cap), one clip of about 10 s, full frame.
+> That night, home was the safe place. Twelve people went to hide somewhere else. How far did they go?
 
 *([loop L5 `cta-hinge` open]: who the twelve were. Book ad mounts here. Closes in A4-S1, first sentence.)*
 
@@ -445,9 +449,10 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 *([loop L1 closes] across this segment and Paul's line: three sourced facts, then the title's line once. Stated as the film's reading of the table, inside what the sources say. No claim that a house would stand up to a sub-vortex.)*
 
-### A5-S13 — Paul on camera, slot 5 (wording not written)
+### A5-S13 — Paul on camera, slot 5 (line picked by the owner, 9 Oct 26)
 **Job:** the title's line, said once in the film's answer and only here: by that count, the safest place was home. He says it at the full 21-pin map, in his own voice, as the film's reading of the table. "Home" means a sturdy house; his wording must not read as covering a mobile home, and a lower third carries "sturdy building, not a mobile home · National Weather Service" under him. No new fact and no cause the sources do not give.
 **Budget:** 26 words at most, one clip of about 10 s, full frame.
+> That is my reading of the table. No one on it was inside a sturdy building. By that count, the safest place was home.
 
 *(blackout 0.7 s)*
 

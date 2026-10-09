@@ -91,3 +91,14 @@ None of the three mentions the book. None says all twelve left a home: the sourc
 3. That is my reading of the table. No one on it was inside a sturdy building. By that count, the safest place was home. (24 words)
 
 **Pick: 2.** It says the title once and says "sturdy house" aloud.
+
+---
+
+## Owner's picks (review page, 9 Oct 26)
+- Slot 1 · A1-S12: line 1. "Stick with me. What radar found inside that tornado is part of why twenty one lives were lost that night, and none inside a building."
+- Slot 2 · A2-S5: line 3. "Their radar showed two things turning. I call the second one the tornado inside the tornado: a much smaller one, spinning hard inside the wide one."
+- Slot 3 · A3-S12: line 2. "One crew met it moving at about fifty six miles an hour. The other met the same vortex nearly still, for about twenty seconds."
+- Slot 4 · A3-S15: line 1. "That night, home was the safe place. Twelve people went to hide somewhere else. How far did they go?"
+- Slot 5 · A5-S13: line 3. "That is my reading of the table. No one on it was inside a sturdy building. By that count, the safest place was home."
+- His note on slot 1, about making the clips: "spend 1 call at a time, whisper and trasncribe if any speech defect is there. if fixable by a audio only narration run, dont rerun OMNI."
+- His note on slot 4: "nice question"
