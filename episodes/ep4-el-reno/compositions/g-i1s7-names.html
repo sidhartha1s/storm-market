@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-i1s7-names (I1-S7) · window 10.07 s · brief: mg_specs/cards.md
+     Full frame. Continues the g-i1s6-roads schematic where it ended: 520 px per mile, north up, US-81 x 700, Reuter Road
+     y 330, the first vehicle at rest east of US-81 (759.1, 760), the second eastbound on Reuter Road from x 1500 to the
+     strike point x 1568.8 (mg_specs/roads.md). Three text-only name cards; two marks on the clock, minutes apart:
+     6:19 PM at US-81 (OUN, 5:19 PM CST) and 6:23 PM on Reuter Road (W14, 2323:35 UTC). Cues are audio/i1-s7.words.json seconds. -->
+<template>
+<style>
+  #nm7-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 42% 46%, #0d151d 0%, #030507 78%); }
+  .nm7-drift { position:absolute; left:0; right:0; top:-30%; bottom:-30%; opacity:0.22; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.16) 0 1px, transparent 1px 52px); }
+  .nm7-sweep { position:absolute; top:0; bottom:0; left:0; width:560px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0) 0%, rgba(127,178,229,0.13) 50%, rgba(127,178,229,0) 100%); }
+  .nm7-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .nm7-rl { font-family:Arial, sans-serif; font-weight:700; font-size:24px; letter-spacing:3px; fill:#93a3b2; }
+  .nm7-rlm { fill:#dfe7ee; }
+  .nm7-glass { position:absolute; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .nm7-h { opacity:0; visibility:hidden; }
+  .nm7-name { position:absolute; left:28px; font:900 52px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .nm7-age { position:absolute; left:486px; font:italic 34px Georgia, 'Times New Roman', serif; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .nm7-tm { position:absolute; top:22px; font:700 30px Arial, sans-serif; letter-spacing:1px; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .nm7-rd { position:absolute; top:108px; font:700 19px Arial, sans-serif; letter-spacing:3px; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .nm7-line { position:absolute; left:70px; top:80px; width:620px; height:3px; border-radius:2px; background:#3b4b5c; }
+  .nm7-fill { position:absolute; left:70px; top:80px; width:620px; height:3px; border-radius:2px; background:#e8c56a; }
+  .nm7-dot { position:absolute; top:71px; width:20px; height:20px; box-sizing:border-box; border-radius:50%; border:2px solid #04070c; }
+  .nm7-note { position:absolute; left:96px; top:1004px; font:700 19px Arial, sans-serif; letter-spacing:4px; color:#93a3b2; white-space:nowrap; line-height:1; }
+</style>
+<div id="nm7-root" data-composition-id="g-i1s7-names" data-width="1920" data-height="1080" data-duration="10.07">
+  <div class="nm7-drift" id="nm7-drift"></div>
+  <div class="nm7-sweep" id="nm7-sweep"></div>
+  <svg class="nm7-svg" viewBox="0 0 1920 1080">
+    <g id="nm7-grid"></g>
+    <!-- section-line roads, one mile apart: Alfadale x 1220, Radio x 1740, Reno y 850 -->
+    <line x1="1220" y1="0" x2="1220" y2="1080" stroke="#3b4b5c" stroke-width="3"/>
+    <line x1="1740" y1="0" x2="1740" y2="1080" stroke="#3b4b5c" stroke-width="3"/>
+    <line x1="0" y1="850" x2="1920" y2="850" stroke="#3b4b5c" stroke-width="3"/>
+    <line x1="700" y1="0" x2="700" y2="1080" stroke="#b9c6d3" stroke-width="6"/>
+    <line x1="0" y1="330" x2="1920" y2="330" stroke="#b9c6d3" stroke-width="6"/>
+    <line id="nm7-rehl" x1="700" y1="330" x2="1920" y2="330" stroke="#e8c56a" stroke-width="6" opacity="0"/>
+    <text class="nm7-rl nm7-rlm" x="720" y="200">US-81</text>
+    <text id="nm7-lre" class="nm7-rl nm7-rlm" x="96" y="312">REUTER ROAD</text>
+    <text class="nm7-rl" x="1724" y="120" text-anchor="end">RADIO ROAD</text>
+    <text class="nm7-rl" x="96" y="836">RENO ROAD</text>
+    <g>
+      <line x1="96" y1="970" x2="616" y2="970" stroke="#dfe7ee" stroke-width="3"/>
+      <line x1="96" y1="960" x2="96" y2="980" stroke="#dfe7ee" stroke-width="3"/>
+      <line x1="616" y1="960" x2="616" y2="980" stroke="#dfe7ee" stroke-width="3"/>
+      <text class="nm7-rl nm7-rlm" x="96" y="948">1 MILE</text>
+    </g>
+    <g>
+      <path d="M1480 150 L1480 86 M1468 104 L1480 82 L1492 104" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text class="nm7-rl nm7-rlm" x="1480" y="182" text-anchor="middle">N</text>
+    </g>
+    <!-- the first vehicle, at rest east of US-81 where g-i1s6-roads left it: dim, it is not this beat -->
+    <rect x="749.1" y="741" width="20" height="38" rx="4" fill="#7fb2e5" stroke="#04070c" stroke-width="2" opacity="0.45" transform="rotate(100 759.1 760)"/>
+    <!-- the second vehicle, eastbound on Reuter Road -->
+    <g id="nm7-m2">
+      <circle id="nm7-m2p" cx="0" cy="0" r="12" fill="none" stroke="#f2f5f8" stroke-width="2" opacity="0"/>
+      <circle id="nm7-hit" cx="0" cy="0" r="12" fill="none" stroke="#e74c3c" stroke-width="3" opacity="0"/>
+      <rect id="nm7-m2r" x="-19" y="-10" width="38" height="20" rx="4" fill="#f2f5f8" stroke="#04070c" stroke-width="2"/>
+    </g>
+  </svg>
+  <div class="nm7-glass" id="nm7-rail" style="left:72px; top:392px; width:590px; height:252px">
+    <div class="nm7-name nm7-h" id="nm7-n1" style="top:30px">Tim Samaras</div>
+    <div class="nm7-age nm7-h" id="nm7-a1" style="top:42px">&middot; 55</div>
+    <div class="nm7-name nm7-h" id="nm7-n2" style="top:100px">Paul Samaras</div>
+    <div class="nm7-age nm7-h" id="nm7-a2" style="top:112px">&middot; 24</div>
+    <div class="nm7-name nm7-h" id="nm7-n3" style="top:170px">Carl Young</div>
+    <div class="nm7-age nm7-h" id="nm7-a3" style="top:182px">&middot; 45</div>
+  </div>
+  <div class="nm7-glass nm7-h" id="nm7-clock" style="left:800px; top:860px; width:760px; height:150px">
+    <div class="nm7-tm" id="nm7-t1" style="left:70px">6:19 PM</div>
+    <div class="nm7-tm nm7-h" id="nm7-t2" style="left:566px">6:23 PM</div>
+    <div class="nm7-line"></div>
+    <div class="nm7-fill" id="nm7-fill"></div>
+    <div class="nm7-dot" id="nm7-d1" style="left:60px; background:#7fb2e5"></div>
+    <div class="nm7-dot nm7-h" id="nm7-d2" style="left:680px; background:#f2f5f8"></div>
+    <div class="nm7-rd" style="left:70px">US-81</div>
+    <div class="nm7-rd nm7-h" id="nm7-rd2" style="left:534px">REUTER ROAD</div>
+  </div>
+  <div class="nm7-note">VEHICLE POSITIONS APPROXIMATE</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var D = 10.07, P = "#nm7-", NS = "http://www.w3.org/2000/svg";
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }
+  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, t); }
+  /* half-mile field lines (260 px), faint, as in g-i1s6-roads */
+  var grid = document.getElementById("nm7-grid");
+  function ln(x1, y1, x2, y2) { var e = document.createElementNS(NS, "line"); e.setAttribute("x1", x1); e.setAttribute("y1", y1); e.setAttribute("x2", x2); e.setAttribute("y2", y2);
+    e.setAttribute("stroke", "#16212c"); e.setAttribute("stroke-width", 1.5); grid.appendChild(e); }
+  for (var x = 700 - 520 * 2 + 260; x < 1920; x += 260) ln(x, 0, x, 1080);
+  for (var y = 330 - 520 + 260; y < 1080; y += 260) ln(0, y, 1920, y);
+  s0(P + "m2", { x: 1500, y: 330 });
+  s0(P + "fill", { scaleX: 0, transformOrigin: "left center" });
+
+  /* ambient, whole window */
+  tl.fromTo(P + "drift", { y: -110 }, { y: 110, duration: D, ease: "none" }, 0);
+  tl.fromTo(P + "sweep", { x: -560 }, { x: 1920, duration: 5.035, ease: "none", repeat: 1 }, 0);
+
+  /* THE OTHER @0.52: the second marker lights on Reuter Road and keeps east to the strike point */
+  tl.fromTo(P + "m2r", { scale: 1 }, { scale: 1.5, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 0.52);
+  tl.fromTo(P + "m2p", { attr: { r: 12 }, opacity: 0.9 }, { attr: { r: 64 }, opacity: 0, duration: 1.4, ease: "power1.out", repeat: 3, immediateRender: false }, 0.52);
+  tl.to(P + "m2", { x: 1568.8, duration: 6.56, ease: "none" }, 0.52);
+  /* TIM SAMARAS @2.96 · HIS SON PAUL @4.58 · CARL YOUNG @5.46 */
+  show("n1", 2.96, -40, 0); show("a1", 3.30, 20, 0);
+  show("n2", 4.58, -40, 0); show("a2", 4.90, 20, 0);
+  show("n3", 5.46, -40, 0); show("a3", 5.80, 20, 0);
+  tl.to(P + "rail", { y: -5, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 6.3);
+  /* IT WAS STRUCK @7.08 */
+  tl.fromTo(P + "hit", { attr: { r: 12 }, opacity: 1 }, { attr: { r: 96 }, opacity: 0, duration: 1.0, ease: "power2.out", repeat: 1, immediateRender: false }, 7.08);
+  /* MINUTES LATER @7.36: two marks on the clock · LATER @7.64 */
+  show("clock", 7.36, 0, 24);
+  tl.to(P + "fill", { scaleX: 1, duration: 0.8, ease: "power2.inOut" }, 7.50);
+  show("t2", 7.64, 0, 16);
+  tl.fromTo(P + "d2", { autoAlpha: 0, scale: 2.4, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power3.out" }, 8.20);
+  /* ON A DIFFERENT ROAD @8.70 */
+  show("rd2", 8.70, -16, 0);
+  tl.to(P + "rehl", { opacity: 0.9, duration: 0.4, ease: "power2.out" }, 8.70);
+  tl.fromTo(P + "lre", { scale: 1 }, { scale: 1.12, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1, svgOrigin: "96 312" }, 8.70);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-i1s7-names"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
