@@ -5,7 +5,8 @@
 <!-- g-a1s1-sentence (A1-S1) · window 18.20 s · brief: mg_specs/cards.md
      Overlay: root transparent for the whole window, the neighbourhood street clip sits beneath. A place stamp, then the
      assessment's sentence one line at a time, then "sheltering in place" from the same page (NWS Service Assessment).
-     Cues are audio/a1-s1.words.json seconds. -->
+     Cues are audio/a1-s1.words.json seconds. Every timeline position is a literal number (sweep check 7); the quote
+     card drifts left at about 6.6 px/s from its landing to its exit. -->
 <template>
 <style>
   #sn1-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
@@ -24,7 +25,7 @@
     <div class="sn1-place">Oklahoma City</div>
     <div class="sn1-when">May 31, 2013 &middot; evening</div>
   </div>
-  <div class="sn1-glass sn1-h" id="sn1-card" style="left:150px; top:240px; width:1300px; height:470px">
+  <div class="sn1-glass sn1-h" id="sn1-card" style="left:210px; top:240px; width:1300px; height:470px">
     <div class="sn1-q sn1-h" id="sn1-q1" style="top:44px">&ldquo;&hellip;telling listeners</div>
     <div class="sn1-q sn1-h" id="sn1-q2" style="top:112px">they would be unable to survive</div>
     <div class="sn1-q sn1-h" id="sn1-q3" style="top:180px">if not underground&rdquo;</div>
@@ -39,30 +40,30 @@ window.__timelines = window.__timelines || {};
 (function () {
   var D = 18.2, P = "#sn1-";
   var tl = gsap.timeline({ paused: true });
-  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, t); }
-  function float(id, a, b) { var n = Math.floor((b - a) / 1.9) - 1; if (n >= 0) tl.to(P + id, { y: -6, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: n }, a); }
+  function hid(dx, dy) { return { autoAlpha: 0, x: dx, y: dy }; }
+  function vis() { return { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }; }
   gsap.set(P + "rule", { scaleX: 0, transformOrigin: "left center" });
   tl.set(P + "rule", { scaleX: 0, transformOrigin: "left center" }, 0);
 
   /* MAY 31ST @0.38: the place stamp; it leaves before the sentence */
-  show("stamp", 0.38, -60, 0);
+  tl.fromTo(P + "stamp", hid(-60, 0), vis(), 0.38);
   tl.to(P + "stamp", { y: -5, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.9);
   tl.to(P + "stamp", { x: -900, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 2.75);
   /* TOLD LISTENERS @3.30 · THEY COULD NOT SURVIVE @3.94 · UNLESS UNDERGROUND @4.92 */
-  show("card", 3.30, -60, 0);
-  show("q1", 3.30, 0, 18);
-  show("q2", 3.94, 0, 18);
-  show("q3", 4.92, 0, 18);
+  tl.fromTo(P + "card", hid(60, 0), vis(), 3.30);
+  tl.fromTo(P + "q1", hid(0, 18), vis(), 3.30);
+  tl.fromTo(P + "q2", hid(0, 18), vis(), 3.94);
+  tl.fromTo(P + "q3", hid(0, 18), vis(), 4.92);
   /* THE WEATHER SERVICE'S OWN FINDING @7.64 */
-  show("src", 7.64, -24, 0);
-  float("card", 5.5, 17.5);
+  tl.fromTo(P + "src", hid(-24, 0), vis(), 7.64);
+  tl.to(P + "card", { x: -92, duration: 14.0, ease: "none" }, 3.78);   /* slow drift left, 6.6 px/s, to the exit */
   /* THE STANDING ADVICE @12.60: the first sentence steps back, the rule draws */
   tl.to([P + "q1", P + "q2", P + "q3"], { autoAlpha: 0.5, duration: 0.4, ease: "power2.out" }, 12.48);
   tl.to(P + "rule", { scaleX: 1, duration: 0.7, ease: "power3.out" }, 12.48);
-  show("eb", 12.60, -24, 0);
+  tl.fromTo(P + "eb", hid(-24, 0), vis(), 12.60);
   /* SHELTER IN PLACE @16.24: the card holds to 17.80, then slides out */
-  show("q4", 16.24, 0, 18);
-  tl.to(P + "card", { x: -1500, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, D - 0.4);
+  tl.fromTo(P + "q4", hid(0, 18), vis(), 16.24);
+  tl.to(P + "card", { x: -1600, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 17.80);
   window.__timelines["g-a1s1-sentence"] = tl;
 })();
 </script>
