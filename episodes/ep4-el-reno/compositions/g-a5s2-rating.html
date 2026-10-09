@@ -102,6 +102,9 @@ window.__timelines = window.__timelines || {};
   /* hidden from the first frame: set now (a paused timeline has not rendered its time-0 sets yet) and again at 0 */
   const HIDE = [P + "ef3", P + "t-fast1", P + "t-fast2", P + "card", P + "s1", P + "s2", P + "s3"];
   gsap.set(HIDE, { autoAlpha: 0 });
+  /* pivots set once, outside the timeline, so a pulse scales about the same point whatever was seeked before */
+  gsap.set(P + "dots", { svgOrigin: "1040 548" });
+  gsap.set([P + "key1", P + "t-key1"], { svgOrigin: "96 828" });
   tl.set(HIDE, { autoAlpha: 0 }, 0);
 
   /* whole window: the wide circulation turns counter-clockwise, echoes drift */
