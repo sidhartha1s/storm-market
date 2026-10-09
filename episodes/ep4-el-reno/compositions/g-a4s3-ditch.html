@@ -7,7 +7,8 @@
   Claim: the drainage ditch was a few feet from the family's own door. Seven dots, a table outline, no water.
   Then Enma Aguilar's sentence as attributed text (News 9, exact words). Text only.
   Layout: the drawing is shown 1.25x through the svg viewBox (70 216 1536 864); svg coordinates are the brief's,
-  frame px = (x - 70) * 1.25, (y - 216) * 1.25. The ground line runs the full frame width.
+  frame px = (x - 70) * 1.25, (y - 216) * 1.25. The ground line runs the full frame width, and past it, so it still
+  reaches both edges while the drawing drifts into place (svg overflow visible).
   Cues are comp-local seconds from audio/a4-s3.words.json.
 -->
 <template>
@@ -19,7 +20,7 @@
     background-size:120px 120px; }
   .dt3-sweep { position:absolute; left:0; top:0; width:520px; height:1080px;
     background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,.07), rgba(127,178,229,0)); }
-  .dt3-svg { position:absolute; left:0; top:0; }
+  .dt3-svg { position:absolute; left:0; top:0; overflow:visible; }
   .dt3-lab { position:absolute; font-weight:700; white-space:nowrap; }
   .dt3-small { font-size:28px; letter-spacing:3px; color:#93a3b2; }
   .dt3-note { font-size:22px; letter-spacing:2px; color:#93a3b2; }
@@ -46,8 +47,8 @@
     </defs>
     <g id="dt3-site">
       <!-- earth band under the ground line and round the ditch: section convention, no depth claimed -->
-      <polygon points="60,766 998,766 1068,906 1332,906 1402,766 1620,766 1620,800 1424,800 1354,940 1046,940 976,800 60,800" fill="url(#dt3-hatch)" opacity="0.35"/>
-      <path id="dt3-gnd" d="M60 760 L1000 760 L1070 900 L1330 900 L1400 760 L1620 760" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+      <polygon points="60,766 998,766 1068,906 1332,906 1402,766 1670,766 1670,800 1424,800 1354,940 1046,940 976,800 60,800" fill="url(#dt3-hatch)" opacity="0.35"/>
+      <path id="dt3-gnd" d="M60 760 L1000 760 L1070 900 L1330 900 L1400 760 L1670 760" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
       <!-- the house: one storey, slab on grade -->
       <rect x="300" y="746" width="584" height="16" fill="#dfe7ee" fill-opacity="0.85" stroke="#f2f5f8" stroke-width="3"/>
       <polyline points="276,572 592,440 908,572" fill="none" stroke="#f2f5f8" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
