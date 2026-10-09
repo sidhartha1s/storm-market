@@ -115,8 +115,11 @@ window.__timelines = window.__timelines || {};
   /* the turning ring: dashes travel round it for the whole window */
   tl.fromTo(P + "ring", { strokeDashoffset: 0 }, { strokeDashoffset: -420, duration: 25.5, ease: "none" }, 0.2);
   tl.fromTo(P + "ring2", { strokeDashoffset: 0 }, { strokeDashoffset: 300, duration: 25.5, ease: "none" }, 0.2);
-  tl.fromTo(P + "ring", { attr: { r: 0 } }, { attr: { r: 30 }, duration: 0.7, ease: "back.out(1.6)" }, 5.16);   /* CROSSED @5.16 */
-  tl.fromTo(P + "ring2", { attr: { r: 0 } }, { attr: { r: 17 }, duration: 0.7, ease: "back.out(1.6)" }, 5.16);
+  /* the circulation rides on the head from the start, so the frame is in use while it closes on the highway;
+     it carries no width figure until 6:24 PM. It beats once on CROSSED @5.16 */
+  tl.fromTo(P + "ring", { attr: { r: 0 } }, { attr: { r: 30 }, duration: 0.7, ease: "back.out(1.6)" }, 0.2);
+  tl.fromTo(P + "ring2", { attr: { r: 0 } }, { attr: { r: 17 }, duration: 0.7, ease: "back.out(1.6)" }, 0.2);
+  tl.to(P + "ring", { strokeWidth: 1.6, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 5.16);     /* CROSSED @5.16 */
   tl.fromTo(P + "us81", { stroke: "#5a768f", strokeWidth: 0.9 }, { stroke: "#7fb2e5", strokeWidth: 1.1, duration: 0.5 }, 5.64);
   pop("hwlab", 5.64);                                                                         /* HIGHWAY 81 @5.64 */
   run(19, 24, 7.42, 11.4);                                                                    /* WITHIN MINUTES @7.42: moves north-east, widening */
