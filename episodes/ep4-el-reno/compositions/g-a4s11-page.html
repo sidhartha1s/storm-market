@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a4s11-page (A4-S11): the assessment's section 4.5 paragraph as the page image, two sentences lit one after the other,
+     a thin rule between them, nothing joining them. Brief: mg_specs/docs.md.
+     Page: media/docs/sa-p47-guatemalan-family-spanish-paragraph.png (1700 x 2200, printed page 38). Marks are in page px.
+     The unlit page is dimmed and blurred, so the page's death word on the line above stays unreadable; only lit strips are sharp.
+     Cues are words.json seconds. -->
+<template>
+<style>
+  #pg11-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .pg11-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .pg11-scan { position:absolute; left:0; top:0; width:360px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.07), rgba(127,178,229,0)); }
+  .pg11-h { opacity:0; visibility:hidden; }
+  .pg11-sheet { position:absolute; left:96px; top:170px; width:1496px; height:572px; overflow:hidden; border-radius:6px; box-shadow:0 18px 60px rgba(0,0,0,0.55); }
+  .pg11-pc { position:absolute; overflow:hidden; }
+  .pg11-pc img { position:absolute; filter:sepia(0.22) brightness(0.97); }
+  .pg11-dim img { filter:sepia(0.22) brightness(0.46) blur(2.6px); }
+  .pg11-mk { position:absolute; }
+  .pg11-sm { position:absolute; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:3px; white-space:nowrap; line-height:1; }
+</style>
+<div id="pg11-root" data-composition-id="g-a4s11-page" data-width="1920" data-height="1080">
+  <div class="pg11-bg"></div>
+  <div class="pg11-scan" id="pg11-scan"></div>
+  <div class="pg11-sheet pg11-h" id="pg11-sheet"></div>
+  <div class="pg11-sm pg11-h" id="pg11-src" style="left:96px;top:770px">NWS SERVICE ASSESSMENT</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a4s11-page", P = "pg11", D = 25.55, SRC = "media/docs/sa-p47-guatemalan-family-spanish-paragraph.png";
+  var X0 = 170, Y0 = 1185, X1 = 1530, Y1 = 1705, S = 1.1;      /* the crop, in page px, and its one scale */
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function show(id, t, dx, dy) { tl.fromTo($(id), { autoAlpha: 0, x: dx || 0, y: dy == null ? 24 : dy }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, t); }
+  var sheet = $("sheet");
+  function strip(xa, ya, xb, yb, cls) {                         /* a window onto the page image, page px */
+    var d = document.createElement("div"); d.className = P + "-pc" + (cls ? " " + P + "-" + cls : "");
+    d.style.cssText = "left:" + ((xa - X0) * S) + "px;top:" + ((ya - Y0) * S) + "px;width:" + ((xb - xa) * S) + "px;height:" + ((yb - ya) * S) + "px";
+    var im = document.createElement("img"); im.src = SRC;
+    im.style.cssText = "width:" + (1700 * S) + "px;height:" + (2200 * S) + "px;left:" + (-xa * S) + "px;top:" + (-ya * S) + "px";
+    d.appendChild(im); sheet.appendChild(d); return d; }
+  function mark(xa, ya, xb, yb, c) { var b = document.createElement("div"); b.className = P + "-mk";
+    b.style.cssText = "left:" + ((xa - X0) * S) + "px;top:" + ((ya - Y0) * S) + "px;width:" + ((xb - xa) * S) + "px;height:" + ((yb - ya) * S) + "px;background:" + c;
+    sheet.appendChild(b); return b; }
+
+  strip(X0, Y0, X1, Y1, "dim");                                 /* the whole crop, unlit */
+  strip(240, 1198, 1190, 1244);                                 /* "4.5. Crisis Communication: Non-English Speaking Public" */
+  var A = "#e8c56a", B = "#7fb2e5";
+  var s1 = strip(377, 1431, 1182, 1472), u1 = mark(383, 1469, 1176, 1473, A);            /* "a Guatemalan family whose primary language was Spanish." */
+  var rule = mark(1185.5, 1427, 1187.5, 1476, "#f2f5f8");                                  /* the thin rule between the two sentences */
+  var s2a = strip(1191, 1431, 1443, 1472), u2a = mark(1197, 1469, 1437, 1473, B);        /* "In interviews with" */
+  var s2b = strip(195, 1472, 1452, 1510), u2b = mark(201, 1507, 1446, 1511, B);          /* "EMs and broadcast meteorologists, they acknowledged that there are insufficient forecast and" */
+  var s2c = strip(195, 1510, 933, 1549), u2c = mark(200, 1546, 927, 1550, B);            /* "warning resources for those who do not speak English." */
+  var s3 = strip(245, 1584, 1075, 1625), u3 = mark(251, 1622, 1069, 1626, B);            /* "Only a few radio and television stations broadcast in Spanish," */
+  var strips = [s1, s2a, s2b, s2c, s3], bars = [u1, u2a, u2b, u2c, u3];
+  s0(strips, { autoAlpha: 0 }); s0(bars, { scaleX: 0, transformOrigin: "left center" }); s0(rule, { scaleY: 0, transformOrigin: "50% 50%" });
+  function lit(i, t, d) { tl.to(strips[i], { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, t); tl.to(bars[i], { scaleX: 1, duration: d, ease: "none" }, t); }
+
+  tl.fromTo($("scan"), { x: -400 }, { x: 1960, duration: D, ease: "none" }, 0);
+  show("sheet", 0.52, 0, 60); show("src", 0.80, 0, 14);     /* The assessment @0.52 */
+  lit(0, 1.44, 3.0);                                        /* a Guatemalan family whose first language was Spanish @1.44 to 4.5 */
+  tl.to(rule, { scaleY: 1, duration: 0.5, ease: "power2.out" }, 5.06);   /* and in the same paragraph @5.06 */
+  lit(1, 8.98, 1.0);                                        /* Emergency managers @8.98 */
+  lit(2, 10.20, 4.4);                                       /* broadcast meteorologists told its team there were not enough forecasts @10.20 */
+  lit(3, 14.98, 2.0);                                       /* warnings for people who do not speak English @14.98 */
+  lit(4, 17.80, 3.2);                                       /* Only a few radio and television stations broadcast in Spanish @17.80 */
+  tl.to(rule, { scaleY: 1.5, scaleX: 2.5, duration: 0.45, ease: "power2.out", yoyo: true, repeat: 3 }, 22.28);   /* It does not say the gap is why @22.28: the rule, nothing else */
+  tl.to({}, { duration: 0.01 }, 25.54);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
