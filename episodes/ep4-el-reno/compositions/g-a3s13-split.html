@@ -126,7 +126,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "hl", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.suv);
   tl.fromTo(P + "suv", { scale: 1.7, svgOrigin: "420 470" }, { scale: 1, duration: 0.5, ease: "back.out(2)", immediateRender: false }, CUES.suv);
   tl.fromTo(P + "vl", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.crossing);
-  tl.fromTo(P + "l200", { autoAlpha: 1, scaleX: 0, svgOrigin: "420 470" }, { scaleX: 1, duration: 0.5, ease: "power3.out", immediateRender: false }, CUES.carried1);
+  tl.fromTo(P + "l200", { autoAlpha: 0, scaleX: 0, svgOrigin: "420 470" }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, CUES.carried1);
   tl.fromTo(P + "t-200", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.n200);
 
   /* Cobalt @6.22, nearly still @6.94 over Reuter Road @7.96, carried @9.36 more than three times that far @10.06 */
