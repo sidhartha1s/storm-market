@@ -62,8 +62,8 @@ window.__timelines = window.__timelines || {};
   tl.to("#ou-w2", { scale: 1.04, transformOrigin: "50% 60%", duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.1);
 
   /* fade to black by the end, the 4 s bed-out tail */
-  tl.to("#ou-stage", { autoAlpha: 0, duration: 0.92, ease: "power1.in" }, DUR - 0.92);
-  tl.to(["#ou-glow", "#ou-grid"], { autoAlpha: 0, duration: 0.92, ease: "power1.in" }, DUR - 0.92);
+  tl.to("#ou-stage", { autoAlpha: 0, duration: 0.92, ease: "power1.in" }, 5.32);
+  tl.to(["#ou-glow", "#ou-grid"], { autoAlpha: 0, duration: 0.92, ease: "power1.in" }, 5.32);
   window.__timelines["g-outro"] = tl;
 })();
 </script>
