@@ -60,9 +60,9 @@ window.__timelines = window.__timelines || {};
   tl.to([P + "q1", P + "q2", P + "q3"], { autoAlpha: 0.5, duration: 0.4, ease: "power2.out" }, 12.48);
   tl.to(P + "rule", { scaleX: 1, duration: 0.7, ease: "power3.out" }, 12.48);
   show("eb", 12.60, -24, 0);
-  /* SHELTER IN PLACE @16.24 */
+  /* SHELTER IN PLACE @16.24: the card holds to 17.80, then slides out */
   show("q4", 16.24, 0, 18);
-  tl.to(P + "card", { x: -1500, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
+  tl.to(P + "card", { x: -1500, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, D - 0.4);
   window.__timelines["g-a1s1-sentence"] = tl;
 })();
 </script>
