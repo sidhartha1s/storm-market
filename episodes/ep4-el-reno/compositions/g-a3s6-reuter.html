@@ -24,11 +24,27 @@
   <svg class="u6-svg" viewBox="0 0 1920 1080">
     <g id="u6-grid"></g>
     <!-- rain: the whole frame is inside the wide circulation -->
-    <g id="u6-rain"></g>
-    <!-- US-81 x 130, Alfadale Road x 770, Radio Road x 1410 (one mile apart) -->
+    <!-- the mask keeps the rain off every fixed line of text: title, time stamp, road labels, scale and note, north -->
+    <defs>
+      <filter id="u6-soft" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="9"/></filter>
+      <mask id="u6-rm" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <rect x="0" y="0" width="1920" height="1080" fill="#fff"/>
+        <g fill="#000" filter="url(#u6-soft)">
+          <rect x="150" y="60" width="612" height="146" rx="16"/>
+          <rect x="846" y="60" width="490" height="182" rx="16"/>
+          <rect x="140" y="302" width="112" height="38" rx="12"/>
+          <rect x="1446" y="302" width="216" height="38" rx="12"/>
+          <rect x="812" y="984" width="244" height="38" rx="12"/>
+          <rect x="158" y="938" width="484" height="94" rx="14"/>
+          <rect x="1754" y="74" width="52" height="120" rx="12"/>
+        </g>
+      </mask>
+    </defs>
+    <g mask="url(#u6-rm)"><g id="u6-rain"></g></g>
+    <!-- from OpenStreetMap: US-81 x 130; Alfadale Road 1.05 mi = x 802; Radio Road 2.04 mi = x 1435.6 -->
     <line x1="130" y1="0" x2="130" y2="1080" stroke="#93a3b2" stroke-width="6"/>
-    <line x1="770" y1="0" x2="770" y2="1080" stroke="#3b4b5c" stroke-width="4"/>
-    <line x1="1410" y1="0" x2="1410" y2="1080" stroke="#3b4b5c" stroke-width="4"/>
+    <line x1="802" y1="0" x2="802" y2="1080" stroke="#3b4b5c" stroke-width="4"/>
+    <line x1="1435.6" y1="0" x2="1435.6" y2="1080" stroke="#3b4b5c" stroke-width="4"/>
     <!-- Reuter Road -->
     <line x1="0" y1="620" x2="1920" y2="620" stroke="#55677a" stroke-width="16"/>
     <line x1="0" y1="620" x2="1920" y2="620" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="26 22"/>
