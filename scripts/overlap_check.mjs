@@ -224,7 +224,11 @@ for (const h of hosts) {
         addPair(`dup-fact: "${f}" shown twice (${factSeen.get(f)} + ${who})`, tAbs);
       else factSeen.set(f, who);
     };
-    for (const nd of uniqNodes) addFact(nd.text, h.comp);
+    // a label that names several different things at once (an "EF1" tag on each of three tracks, a
+    // source credit under each of two quotes) is not one fact shown twice: data-repeat-ok="reason"
+    // on the node or an ancestor takes it out of the count (ep4-el-reno, 10 Oct 26). It is its own
+    // attribute so a collision exemption (data-overlap-ok) never waives this rule by accident.
+    for (const nd of uniqNodes) if (!nd.repeatOk) addFact(nd.text, h.comp);
     for (const o of overlays) {
       if (!ovInfo[o.id] || tAbs < o.start || tAbs > o.start + o.dur) continue;
       for (const t of ovInfo[o.id].texts || []) addFact(t, '#' + o.id);
