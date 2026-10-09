@@ -23,7 +23,7 @@ Owner, 10 Oct 26: "clips are good. go ahead. move faster." Status is read from t
 - [x] roads, 6 comps: built, builder's gate clean (10 Oct 26).
 - [ ] cards, 12 comps plus the closing channel card: builder started 10 Oct 26 (mg-cards).
 - [ ] docs, 10 comps: builder started 10 Oct 26 (mg-docs).
-- [ ] Meaning check of each family's "must be true" list (orchestrator, as the lists arrive). Done 10 Oct 26: map21, replot, maps, drawings, roads. Open: cards, docs.
+- [ ] Meaning check of each family's "must be true" list (orchestrator, as the lists arrive). Done 10 Oct 26: all seven families (cards with one change: the University of Oklahoma tile is text only; docs unchanged).
 - Road layout all families share, measured from OpenStreetMap road geometry (Overpass, 10 Oct 26): US-81 lon -97.9379; Alfadale Road 1.05 mi and Radio Road 2.04 mi east of it; Reuter Road lat 35.4790; Reno Road 1.00 mi south; Interstate 40 about 1.52 mi north at US-81; research car (530 m west of Radio Road) 1.71 mi east of US-81. Metro frame px: US-81 x 503.2, Radio Road x 572.7, car x 561.5, Reuter y 518.9, I-40 y 467.2.
 - [ ] Settled-frame read of every comp over its footage (Opus verifier, then one frame each by the orchestrator). Verifier mg-verify-1 started 10 Oct 26 on map21, drawings, replot, roads (36 comps); report at `.qc-tmp/verify-1/REPORT.md`. Maps, docs, cards follow.
 
@@ -33,7 +33,7 @@ Owner, 10 Oct 26: "clips are good. go ahead. move faster." Status is read from t
 - [ ] Re-voice the episode, retime every graphic to the new words, convert Paul's six clips to the same voice
 
 ## Edit
-- [ ] Footage placed by hand under every segment that is not a full-frame graphic
+- [ ] Footage placed by hand under every segment that is not a full-frame graphic. Started 10 Oct 26: eight cuts in, full-frame graphics on track 2; timeline lint shows 20 picture gaps left (unbuilt documents and cards segments, A2-S10 and A3-S5 with no footage, four seam pads, the first 12 s of Z1-S3).
 - [ ] The Weather Channel crew sequence (A3-S3, A3-S4): owner confirms the insert before any render
 - [ ] Sound: bed, sirens, hits; mixdown listened to
 - [ ] Outro card (Z1-S3)

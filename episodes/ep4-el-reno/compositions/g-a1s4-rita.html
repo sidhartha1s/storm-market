@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1s4-rita (A1-S4) · window 20.83 s · brief: mg_specs/cards.md
+     Overlay: root transparent for the whole window. Beneath: the 2013 traffic aerial full frame; from 14.84 s the Rita
+     photograph in the left box (x 0 to 956, y 0 to 1080), the aerial stays in the right box (x 964 to 1920).
+     This comp draws only the divider, the two labels and the source of the comparison (NWS Service Assessment).
+     Cues are audio/a1-s4.words.json seconds. -->
+<template>
+<style>
+  #rt4-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .rt4-glass { position:absolute; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .rt4-h { opacity:0; visibility:hidden; }
+  .rt4-eb { position:absolute; left:38px; top:30px; font:700 20px Arial, sans-serif; letter-spacing:6px; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .rt4-name { position:absolute; left:36px; top:62px; font:900 56px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .rt4-yr { position:absolute; left:38px; top:132px; font:700 34px Arial, sans-serif; letter-spacing:2px; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .rt4-div { position:absolute; left:956px; top:0; width:8px; height:1080px; background:#04070c;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.14), 0 0 24px rgba(0,0,0,0.6); }
+  .rt4-blip { position:absolute; left:958px; top:0; width:4px; height:140px; border-radius:2px;
+    background:linear-gradient(180deg, rgba(216,161,58,0), rgba(216,161,58,0.9), rgba(216,161,58,0)); }
+  .rt4-src { position:absolute; left:0; right:0; top:19px; text-align:center; font:italic 26px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+</style>
+<div id="rt4-root" data-composition-id="g-a1s4-rita" data-width="1920" data-height="1080" data-duration="20.83">
+  <div class="rt4-div rt4-h" id="rt4-div"></div>
+  <div class="rt4-blip rt4-h" id="rt4-blip"></div>
+  <div class="rt4-glass rt4-h" id="rt4-okc" style="left:1060px; top:96px; width:520px; height:194px">
+    <div class="rt4-eb">TORNADO</div>
+    <div class="rt4-name">Oklahoma City</div>
+    <div class="rt4-yr">2013</div>
+  </div>
+  <div class="rt4-glass rt4-h" id="rt4-rita" style="left:96px; top:96px; width:420px; height:194px">
+    <div class="rt4-eb">HURRICANE</div>
+    <div class="rt4-name rt4-h" id="rt4-rn">Rita</div>
+    <div class="rt4-yr rt4-h" id="rt4-ry">2005</div>
+  </div>
+  <div class="rt4-glass rt4-h" id="rt4-srcbox" style="left:760px; top:930px; width:400px; height:64px; border-radius:20px">
+    <div class="rt4-src">NWS Service Assessment</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var D = 20.83, P = "#rt4-";
+  var tl = gsap.timeline({ paused: true });
+  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, t); }
+  function float(id, a, b) { var n = Math.floor((b - a) / 1.9) - 1; if (n >= 0) tl.to(P + id, { y: -6, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: n }, a); }
+
+  /* AT THE HOUR @0.52: the label names the aerial beneath */
+  show("okc", 0.52, 60, 0);
+  float("okc", 1.1, 20.1);
+  /* THE ASSESSMENT FOUND @11.90: the source of the comparison, on the centre line */
+  show("srcbox", 11.90, 0, 24);
+  /* HURRICANE @14.84: the frame splits; RITA @15.26 · 2005 @15.88 */
+  tl.fromTo(P + "div", { autoAlpha: 0, scaleY: 0, transformOrigin: "50% 0%" }, { autoAlpha: 1, scaleY: 1, duration: 0.5, ease: "power3.out" }, 14.84);
+  show("rita", 14.84, -60, 0);
+  show("rn", 15.26, 0, 20);
+  show("ry", 15.88, -24, 0);
+  float("rita", 16.4, 20.1);
+  tl.fromTo(P + "blip", { autoAlpha: 0, y: -160 }, { autoAlpha: 1, y: 1100, duration: 2.3, ease: "none", repeat: 1 }, 15.5);
+  /* exit: the labels slide out to their own sides */
+  tl.to(P + "okc", { x: 1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
+  tl.to(P + "rita", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
+  tl.to(P + "srcbox", { y: 220, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
+  tl.to([P + "div", P + "blip"], { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, D - 0.3);
+  window.__timelines["g-a1s4-rita"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
