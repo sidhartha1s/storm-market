@@ -107,6 +107,9 @@ window.__timelines = window.__timelines || {};
   gsap.set(HIDE, { autoAlpha: 0 });
   gsap.set(P + "svl", { x: 290, y: 500 });
   gsap.set(P + "svr", { x: 1125, y: 420 });
+  /* pivots set once, outside the timeline, so a pulse scales about the same point whatever was seeked before */
+  gsap.set(P + "suv", { svgOrigin: "420 470" });
+  gsap.set(P + "car", { svgOrigin: "1090 420" });
   tl.set(HIDE, { autoAlpha: 0 }, 0);
   tl.set(P + "svr", { x: 1125, y: 420 }, 0);
 
