@@ -202,7 +202,7 @@ window.__timelines = window.__timelines || {};
   grey.forEach(function (e, i) { tl.set(e, { opacity: 1 }, 14.06 + i * 0.12); tl.to(e, { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, 14.06 + i * 0.12); });   /* touched down @14.06 */
   show("gt", 14.30, 0, 14); show("gt2", 14.30, 0, 14);
   show("r3v", 16.28, 0, 20); show("r3l", 16.60, -20, 0);    /* None took a life @16.28 */
-  hide("pl-er2", 16.90); hide("pl-okc", 16.90); hide("gt", 16.90);
+  hide("pl-er2", 16.90); hide("pl-okc", 16.90); hide("gt", 16.90); hide("gt2", 16.90);
   tl.to(track, { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 16.95);   /* back to the west view g-i1s3-pins opens on (no track line there) */
   move(WEST, 16.95, 0.8);
   tl.fromTo($("pl-er"), { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 17.60);
