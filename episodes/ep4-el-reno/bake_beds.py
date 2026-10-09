@@ -39,19 +39,19 @@ BED = [  # the score. 1 = full bed
     (1280.21, 0), (1282, .8), (1323.5, .8), (1327.3, 0),                             # the close
 ]
 DRONE_ENV = [(0, 0), (.8, 1), (17.5, 1), (21, 0)]         # hook: low drone from 0:00
-RAIN_ENV = [  # the rain loop is about 10 dB quieter than the score, so its full level is above 1
-    (56.5, 0), (58.3, 3), (72.6, 3), (74.2, 0),           # I1-S3 flood water
-    (315.5, 0), (317, 2.2), (325.5, 2.2), (327, 0),       # A1-S11 the wall of rain
-    (362.6, 0), (364.5, 2.2), (383, 2.2), (384.5, 0),     # A2-S2 rain fills the ring
-    (480.6, 0), (482, 2.2), (497, 2.2), (498.5, 0),       # A2-S10 inside the rain
-    (737.6, 0), (739, 3), (750.9, 3), (751.66, 0),        # A3-S14 thins to rain
-    (826.9, 0), (828.5, 2.5), (838.25, 2.5), (838.6, 0),  # A4-S4 water
-    (845.26, 0), (847, 1.5), (879.5, 1.5), (881, 0),      # A4-S5 and A4-S6 the drain
-    (986.5, 0), (988, 1.5), (999, 1.5), (1000, 0),        # A4-S12 windshield
+RAIN_ENV = [  # the rain loop is about 10 dB quieter than the score, so its level here runs above 1
+    (56.5, 0), (58.3, 1.8), (72.6, 1.8), (74.2, 0),           # I1-S3 flood water
+    (315.5, 0), (317, 1.4), (325.5, 1.4), (327, 0),       # A1-S11 the wall of rain
+    (362.6, 0), (364.5, 1.4), (383, 1.4), (384.5, 0),     # A2-S2 rain fills the ring
+    (480.6, 0), (482, 1.4), (497, 1.4), (498.5, 0),       # A2-S10 inside the rain
+    (737.6, 0), (739, 1.8), (750.9, 1.8), (751.66, 0),        # A3-S14 thins to rain
+    (826.9, 0), (828.5, 1.6), (838.25, 1.6), (838.6, 0),  # A4-S4 water
+    (845.26, 0), (847, 1), (879.5, 1), (881, 0),      # A4-S5 and A4-S6 the drain
+    (986.5, 0), (988, 1), (999, 1), (1000, 0),        # A4-S12 windshield
 ]
 SIRENS = [  # (episode second the siren file starts, its envelope)
-    (150.08, [(150.08, 0), (151.5, .8), (161.5, .8), (164.5, 0)]),   # A1-S1 warnings going out
-    (784.8, [(784.8, 0), (786.3, .8), (792.5, .8), (795, 0)]),       # A4-S1 "When the tornado sirens sounded"
+    (150.08, [(150.08, 0), (151.5, 2.5), (161.5, 2.5), (164.5, 0)]),   # A1-S1 warnings going out
+    (784.8, [(784.8, 0), (786.3, 2.5), (792.5, 2.5), (795, 0)]),       # A4-S1 "When the tornado sirens sounded"
 ]
 STEMS = [("elreno-bed-a.mp3", 0.0, 751.66, 0.0), ("elreno-bed-b.mp3", 778.07, 1327.38, 200.0)]   # name, from, to, where in the score loop it starts
 
