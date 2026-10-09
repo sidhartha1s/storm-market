@@ -28,8 +28,8 @@ Owner, 10 Oct 26: "clips are good. go ahead. move faster." Status is read from t
 - [ ] Settled-frame read of every comp over its footage (Opus verifier, then one frame each by the orchestrator). Verifier mg-verify-1 started 10 Oct 26 on map21, drawings, replot, roads (36 comps); report at `.qc-tmp/verify-1/REPORT.md`. Maps, docs, cards follow.
 
 ## Voice (owner, 10 Oct 26: "my own voice will and must be the way ... clone can do good")
-- [ ] Owner records the reference (only owner step)
-- [ ] Probe two segments in his clone, he listens; measure pace, set the new tempo
+- [x] Owner sent his recording; cleaned to `assets/voice/owner-sid-clone-ref.wav` (untracked until he picks his voice), cloned on its own (10 Oct 26)
+- [ ] Two segments and one Paul clip in his voice are on http://127.0.0.1:8811/elreno-voice.html; he listens and picks which voice El Reno ships with. Then measure pace and set the new tempo.
 - [ ] Re-voice the episode, retime every graphic to the new words, convert Paul's six clips to the same voice
 
 ## Edit
