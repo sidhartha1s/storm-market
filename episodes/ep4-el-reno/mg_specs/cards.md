@@ -34,7 +34,16 @@ number, place or quote that is not in `fact_check.md` or the segment's Picture n
 - I1-S7 continues the g-i1s6-roads schematic (520 px per mile, US-81 x 700, Reuter Road y 330, strike point x 1568.8).
 - A1-S4 split: left box x 0 to 956, right box x 964 to 1920, both y 0 to 1080; divider x 956 to 964.
 - A1-S6 clock rail: 6:00 PM at x 220, 66 px per minute; 6:03 at x 418, 6:05 at x 550, 6:15 at x 1210; rail y 640.
-- A4-S8 bar: 1934 at x 300, 2013 at x 1440, y 761; nothing drawn between the two ends.
+- A1-S4 labels use a darker glass (0.80) than the family 0.55 because the left box is a bright daytime photo; the source
+  tag sits wholly on the night side, x 1004 to 1404, y 930 to 994. A1-S1 uses the same darker glass over the cloud picture.
+- A4-S8 bar: 1934 at x 300, 2013 at x 1440, y 761; nothing drawn between the two ends. The dim track, both end caps and
+  both end labels are on from frame 0 (lead's order, round 2); the bar fills from 2013 at 13.30 and each label lights on
+  its word. Pins r 30 at y 300: seven from x 230, five from x 850 (pitch 84), the thirteenth at x 1400.
+- A3-S10: quote 84 px, names 84 px, ages 48 px, source 24 px; three thin lines (one per name) on from frame 0; the block
+  is x 410 to 1510. Motion is a slow push (to 19.70), a glow drift (whole window) and a soft light crossing one line at
+  a time (0.40, 1.30, 2.20, 6.10, 8.90, 11.50, 15.00).
+- Outro: it cuts in over footage, so the ground (glow, grid) and the amber rule are on from frame 0; the rule is the
+  card's mark (no approved logo asset is mounted in this episode).
 
 ## 4. MUST BE TRUE IN THE PICTURE
 1. Every quote is the exact string in section 5 with its source line; no quote card for A1-S6 or A4-S12.
