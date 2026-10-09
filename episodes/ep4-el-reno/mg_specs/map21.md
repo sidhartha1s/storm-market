@@ -140,7 +140,7 @@ The metro map shrinks into its place inside the outline of Oklahoma. Text: "May 
   through 35.501 N at US-81 (y 467.2); its other vertices near El Reno are the builder's estimate, not measured.
   Pin 4 moved from y 476.6 to y 493: at 476.6 it sat on the Interstate 40 interchange once the interstate was at its
   measured place, and in g-a1s8 the amber interstate line ran through it (a pin on a line that must carry none).
-- Views: full map (scale 1); El Reno view (scale 1.8, centre 520, 470); city view (scale 1.5, centre 1260, 540).
+- Views: whole map (scale 1); metro view (scale 1.5, centre 890, 480); El Reno view (scale 2.4, US-81 at x 1150); city view (scale 1.5, centre 1260, 540).
 - Initial states are applied at build and repeated at 0 on the timeline (`s0`): a paused timeline does not render a
   set at 0, so the first frame of every window showed an empty map until this was added (found on the first contact sheets).
 - `freeze_scan.mjs` reads every mounted comp file, so while other families were unbuilt the scans ran on a copy of
