@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-i1s2-table (I1-S2): the assessment's table as the page image (header row and the eight May 31 rows of the first page),
+     "Vehicle" underlined in each; eight pins on the 21-pin map; then the other tornadoes of the day in grey.
+     Briefs: mg_specs/docs.md (page), mg_specs/map21.md (map, pins and tray copied from g-i1s3-pins so the cut is clean).
+     Page: media/docs/sa-p60-appendix-c-fatality-table-first-page.png (1700 x 2200); the May 19 and May 20 rows are cropped out.
+     Metro frame: x = (lon + 98.20) * 1920, y = (35.70 - lat) / 0.46 * 1080. Only tracks with coordinates on disk are drawn
+     (tornadoes 7, 10, 13, 14, 15 of the 18); the 18 and the 0 are rail figures. Cues are words.json seconds. -->
+<template>
+<style>
+  #i2-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .i2-world { position:absolute; inset:0; }
+  .i2-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .i2-cam { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .i2-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .i2-scan { position:absolute; left:0; top:0; width:360px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.07), rgba(127,178,229,0)); }
+  .i2-h { opacity:0; visibility:hidden; }
+  .i2-pl { position:absolute; font:700 26px Arial, sans-serif; color:#dfe7ee; letter-spacing:1px; white-space:nowrap; line-height:1;
+    text-shadow:0 0 6px #04070c, 0 0 12px #04070c, 0 2px 3px #04070c; }
+  .i2-tray { position:absolute; left:96px; top:872px; width:440px; height:140px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px dashed rgba(255,255,255,0.28); border-radius:20px; }
+  .i2-trayt { position:absolute; left:24px; top:16px; font:700 19px Arial, sans-serif; letter-spacing:3px; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .i2-tl { position:absolute; top:98px; width:76px; margin-left:-38px; text-align:center; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .i2-rail { position:absolute; left:96px; top:64px; width:620px; height:300px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .i2-big { position:absolute; font:900 60px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .i2-mid { position:absolute; font:700 30px Arial, sans-serif; color:#dfe7ee; letter-spacing:1px; white-space:nowrap; line-height:1; }
+  .i2-sm { position:absolute; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:3px; white-space:nowrap; line-height:1; }
+  .i2-sheet { position:absolute; left:760px; top:96px; width:802px; height:388px; }
+  .i2-pc { position:absolute; overflow:hidden; box-shadow:0 14px 44px rgba(0,0,0,0.5); }
+  .i2-pc img { position:absolute; filter:sepia(0.18) brightness(0.95); }
+  .i2-mk { position:absolute; }
+</style>
+<div id="i2-root" data-composition-id="g-i1s2-table" data-width="1920" data-height="1080">
+  <div class="i2-world" id="i2-world">
+    <div class="i2-bg"></div>
+    <div class="i2-cam" id="i2-cam"><svg class="i2-svg" id="i2-map" viewBox="0 0 1920 1080"></svg></div>
+    <div class="i2-scan" id="i2-scan"></div>
+    <div class="i2-pl i2-h" id="i2-pl-er">El Reno</div>
+    <div class="i2-pl i2-h" id="i2-pl-er2">El Reno</div>
+    <div class="i2-pl i2-h" id="i2-pl-okc">Oklahoma City</div>
+    <div class="i2-tray i2-h" id="i2-tray">
+      <div class="i2-trayt">PLACE NOT GIVEN IN THE RECORD</div>
+      <div class="i2-tl i2-h" id="i2-tl0" style="left:56px">67</div>
+      <div class="i2-tl i2-h" id="i2-tl1" style="left:136px">32</div>
+      <div class="i2-tl i2-h" id="i2-tl2" style="left:216px">26</div>
+      <div class="i2-tl i2-h" id="i2-tl3" style="left:306px;width:100px;margin-left:-50px">17 days</div>
+    </div>
+    <svg class="i2-svg" id="i2-hudsvg" viewBox="0 0 1920 1080"></svg>
+    <div class="i2-rail i2-h" id="i2-rail">
+      <div class="i2-big i2-h" id="i2-h1" style="left:32px;top:26px">8</div>
+      <div class="i2-mid i2-h" id="i2-h2" style="left:88px;top:48px">in the El Reno tornado&rsquo;s path</div>
+      <div class="i2-mid i2-h" id="i2-r1" style="left:32px;top:108px;color:#e8c56a">all 8 in vehicles</div>
+      <div class="i2-big i2-h" id="i2-r2v" style="left:32px;top:156px">18</div>
+      <div class="i2-mid i2-h" id="i2-r2l" style="left:132px;top:178px">other tornadoes that day</div>
+      <div class="i2-big i2-h" id="i2-r3v" style="left:32px;top:224px">0</div>
+      <div class="i2-mid i2-h" id="i2-r3l" style="left:88px;top:246px">lives lost in them</div>
+    </div>
+    <div class="i2-sm i2-h" id="i2-src" style="left:760px;top:62px">NWS SERVICE ASSESSMENT &middot; APPENDIX C</div>
+    <div class="i2-sheet i2-h" id="i2-sheet"></div>
+    <div class="i2-sm i2-h" id="i2-gt" style="left:548px;top:992px">GREY TRACKS: NWS NORMAN, STORM DATA &middot; 5 OF THE 18 ARE IN THIS FRAME</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-i1s2-table", P = "i2", D = 17.97, S = 0.82, NS = "http://www.w3.org/2000/svg";
+  var P60 = "media/docs/sa-p60-appendix-c-fatality-table-first-page.png";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function X(lon) { return (lon + 98.20) * 1920; }
+  function Y(lat) { return (35.70 - lat) / 0.46 * 1080; }
+  function px(pts) { return pts.map(function (p) { return [X(p[0]), Y(p[1])]; }); }
+  function dOf(pp) { return pp.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" "); }
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+  var map = $("map"), hud = $("hudsvg"), cam = $("cam"), sheet = $("sheet");
+
+  /* ---- geography (lon, lat), as g-i1s3-pins ---- */
+  var R = {
+    i40: px([[-98.20,35.530],[-98.05,35.515],[-97.955,35.503],[-97.938,35.501],[-97.90,35.498],[-97.80,35.487],[-97.74,35.481],[-97.65,35.464],[-97.60,35.461],[-97.55,35.458],[-97.516,35.456],[-97.47,35.452],[-97.40,35.443],[-97.30,35.415],[-97.20,35.388]]),
+    us81: px([[-97.953,35.70],[-97.953,35.545],[-97.940,35.520],[-97.938,35.40],[-97.944,35.31],[-97.940,35.24]]),
+    i35: px([[-97.418,35.70],[-97.425,35.60],[-97.455,35.52],[-97.490,35.475],[-97.497,35.45],[-97.490,35.40],[-97.487,35.339],[-97.484,35.24]]),
+    i44: px([[-97.20,35.665],[-97.35,35.60],[-97.44,35.545],[-97.50,35.53],[-97.555,35.528],[-97.570,35.50],[-97.571,35.46],[-97.570,35.40],[-97.585,35.36],[-97.62,35.31],[-97.60,35.24]]),
+    reuter: [[503.2, 518.9], [649, 518.9]],                  /* px, OpenStreetMap geometry (shared layout, 10 Oct 26) */
+    bear: px([[-97.955,35.532],[-97.9364,35.0525]])            /* El Reno toward Chickasha, a bearing, not a route */
+  };
+  var RIV = px([[-97.70,35.492],[-97.65,35.478],[-97.61,35.462],[-97.579,35.448],[-97.54,35.450],[-97.50,35.455],[-97.45,35.447],[-97.38,35.47],[-97.30,35.49],[-97.20,35.50]]);
+  var DEEP = px([[-97.601,35.4964],[-97.57,35.512],[-97.54,35.525],[-97.49,35.545],[-97.42,35.565],[-97.32,35.60],[-97.20,35.625]]);
+  var SITE = { reu: [561.5, 518.9], hen: [503.2, 493], nw: [X(-97.601), Y(35.4964)], sw: [X(-97.579), Y(35.450)] };
+  var HOUSE = [SITE.nw[0] - 56, SITE.nw[1]];
+  el("path", { d: dOf(RIV), fill: "none", stroke: "#22384c", "stroke-width": 2.5 }, map);
+  el("path", { d: dOf(DEEP), fill: "none", stroke: "#22384c", "stroke-width": 2 }, map);
+  [["i40", 5], ["i35", 5], ["i44", 5], ["us81", 3.5], ["reuter", 2.5]].forEach(function (r) {
+    el("path", { d: dOf(R[r[0]]), fill: "none", stroke: "#2a3644", "stroke-width": r[1] + 2.5, "stroke-linejoin": "round" }, map);
+    el("path", { d: dOf(R[r[0]]), fill: "none", stroke: "#93a3b2", "stroke-width": 1.6, "stroke-linejoin": "round", opacity: 0.8 }, map);
+  });
+
+  /* ---- building outlines: the same seeded scatter as the 21-pin map ---- */
+  var seed = 20130531;
+  function rnd() { seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }
+  function segd(x, y, a, b) { var dx = b[0] - a[0], dy = b[1] - a[1], u = Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / (dx * dx + dy * dy)));
+    return Math.hypot(x - a[0] - u * dx, y - a[1] - u * dy); }
+  function nearLine(x, y, pp, d) { for (var i = 1; i < pp.length; i++) if (segd(x, y, pp[i - 1], pp[i]) < d) return true; return false; }
+  var KEEP = [[300,370,446,412],[1244,494,1456,538],[430,486,620,566]];
+  var LINES = [R.i40, R.us81, R.i35, R.i44, R.reuter, R.bear, RIV, DEEP];
+  function free(x, y, got) {
+    if (x < 24 || x > 1896 || y < 24 || y > 1056) return false;
+    for (var k in SITE) if (Math.hypot(x - SITE[k][0], y - SITE[k][1]) < 62) return false;
+    if (Math.hypot(x - HOUSE[0], y - HOUSE[1]) < 30) return false;
+    for (var i = 0; i < KEEP.length; i++) if (x > KEEP[i][0] && x < KEEP[i][2] && y > KEEP[i][1] && y < KEEP[i][3]) return false;
+    for (i = 0; i < LINES.length; i++) if (nearLine(x, y, LINES[i], 13)) return false;
+    for (i = 0; i < got.length; i++) if (Math.abs(x - got[i][0]) < 24 && Math.abs(y - got[i][1]) < 21) return false;
+    return true;
+  }
+  function icon(k, x, y, s) { function p(a, b) { return (x + a * s).toFixed(1) + "," + (y + b * s).toFixed(1); }
+    if (k === "h") return "M" + p(-8,8) + " L" + p(-8,-1) + " L" + p(0,-8) + " L" + p(8,-1) + " L" + p(8,8) + " Z";
+    if (k === "s") return "M" + p(-9,8) + " L" + p(-9,-3) + " L" + p(9,-3) + " L" + p(9,8) + " Z M" + p(-10,-3) + " L" + p(-7,-8) + " L" + p(7,-8) + " L" + p(10,-3);
+    return "M" + p(-9,8) + " L" + p(-9,-2) + " L" + p(9,-2) + " L" + p(9,8) + " Z M" + p(0,-2) + " L" + p(0,-10) + " L" + p(6,-8) + " L" + p(0,-6); }
+  var TOWNS = [[-97.955,35.532,10,64,36],[-97.762,35.507,8,34,22],[-97.724,35.384,6,30,20],[-97.635,35.515,8,34,22],[-97.53,35.48,74,200,150],
+    [-97.478,35.653,12,56,30],[-97.487,35.339,10,40,28],[-97.397,35.449,12,46,32],[-97.53,35.39,14,80,38],[-97.746,35.642,4,22,14],
+    [-97.941,35.39,3,30,14],[-97.812,35.291,4,22,14],[-97.269,35.497,5,26,16],[-98.119,35.601,3,18,12]];
+  var got = [], icg = el("g", { opacity: 0.8 }, map);
+  TOWNS.forEach(function (t) { var cx = X(t[0]), cy = Y(t[1]), n = 0, tries = 0;
+    while (n < t[2] && tries++ < t[2] * 14) { var x = cx + (rnd() * 2 - 1) * t[3], y = cy + (rnd() * 2 - 1) * t[4], r = rnd();
+      if (!free(x, y, got)) continue; var k = r < 0.7 ? "h" : r < 0.85 ? "s" : "c"; got.push([x, y]); n++;
+      el("path", { d: icon(k, x, y, 1), fill: "none", stroke: "#93a3b2", "stroke-width": 1.5, "stroke-linejoin": "round" }, icg); } });
+  el("path", { d: icon("h", HOUSE[0], HOUSE[1], 1.3), fill: "none", stroke: "#93a3b2", "stroke-width": 1.6, "stroke-linejoin": "round" }, map);
+
+  /* ---- the El Reno track (NWS Norman centreline, media/data/tracks.json) and the other tracks that have coordinates on disk ---- */
+  var TRACK = [[247,517],[257,534],[270,544],[281,569],[301,575],[340,579],[388,580],[405,567],[443,574],[468,581],[524,569],[557,547],[564,520],[571,515],[580,509],[584,501],[594,472],[603,453],[593,457],[590,463],[595,461],[601,459],[613,463],[627,469],[654,462],[656,465],[672,460],[673,465],[676,467]];
+  var track = el("path", { d: dOf(TRACK), fill: "none", stroke: "#d8a13a", "stroke-width": 3, "stroke-linejoin": "round", "stroke-linecap": "round", opacity: 0.85 }, map);
+  var OTHER = [[[672,493],[787,587]], [[960,587],[1152,587]], [[1248,681],[1286,704]], [[1421,681],[1440,681]], [[1133,845],[1171,822]]];   /* tornadoes 7, 10, 13, 14, 15: mg_specs/maps.md section 2 */
+  var grey = OTHER.map(function (o) { var e = el("path", { d: dOf(o), fill: "none", stroke: "#93a3b2", "stroke-width": 5, "stroke-linecap": "round" }, map);
+    var L = Math.ceil(e.getTotalLength()) + 1; e.setAttribute("stroke-dasharray", L); s0(e, { strokeDashoffset: L, opacity: 0 }); return e; });
+
+  /* ---- pins, as the 21-pin map: 0-2 crew, 3 Henderson, 4-7 tray (67, 32, 26, 17 days) ---- */
+  var A = "#e8c56a", pins = [], TX = [56, 136, 216, 306], TY = 872 + 66;
+  function mk(parent, x, y, c) { var g = el("g", {}, parent);
+    var halo = el("circle", { cx: x, cy: y, r: 9, fill: "none", stroke: c, "stroke-width": 2, opacity: 0 }, g);
+    var ring = el("circle", { cx: x, cy: y, r: 8.5, fill: "#0b1016", stroke: "#93a3b2", "stroke-width": 1.6, opacity: 0 }, g);
+    var dot = el("circle", { cx: x, cy: y, r: 8.5, fill: c, stroke: "#f2f5f8", "stroke-width": 1.4, opacity: 0 }, g);
+    pins.push({ halo: halo, ring: ring, dot: dot, o: x + " " + y }); }
+  [-19, 0, 19].forEach(function (dx) { mk(map, SITE.reu[0] + dx, SITE.reu[1], A); });
+  mk(map, SITE.hen[0], SITE.hen[1], A);
+  [0, 1, 2, 3].forEach(function (i) { mk(hud, 96 + TX[i], TY, A); });
+  pins.forEach(function (p) { s0(p.ring, { opacity: 0 }); s0(p.dot, { opacity: 0, scale: 0, svgOrigin: p.o }); s0(p.halo, { opacity: 0, scale: 1, svgOrigin: p.o }); });
+  function pulse(i, t) { var p = pins[i], n = Math.floor((D - t) / 1.9) - 1; if (n < 0) return;
+    tl.fromTo(p.halo, { scale: 1, opacity: 0.6 }, { scale: 2.8, opacity: 0, duration: 1.3, ease: "power2.out", repeat: n, repeatDelay: 0.6, svgOrigin: p.o, immediateRender: false }, t); }
+  function land(i, t) { var p = pins[i]; tl.set(p.ring, { opacity: 1 }, t); tl.set(p.dot, { opacity: 1 }, t);
+    tl.fromTo(p.dot, { scale: 0 }, { scale: 1, duration: 0.45, ease: "back.out(3)", svgOrigin: p.o, immediateRender: false }, t); pulse(i, t + 0.35); }
+
+  /* ---- the page: header row and the eight May 31 rows, one scale, marks in page px ---- */
+  function piece(src, x0, y0, x1, y1, top) {
+    var d = document.createElement("div"); d.className = P + "-pc";
+    d.style.cssText = "left:0;top:" + top + "px;width:" + ((x1 - x0) * S) + "px;height:" + ((y1 - y0) * S) + "px";
+    var im = document.createElement("img"); im.src = src;
+    im.style.cssText = "width:" + (1700 * S) + "px;height:" + (2200 * S) + "px;left:" + (-x0 * S) + "px;top:" + (-y0 * S) + "px";
+    d.appendChild(im); sheet.appendChild(d);
+    d.mark = function (xa, ya, xb, yb, css) { var b = document.createElement("div"); b.className = P + "-mk";
+      b.style.cssText = "left:" + ((xa - x0) * S) + "px;top:" + ((ya - y0) * S) + "px;width:" + ((xb - xa) * S) + "px;height:" + ((yb - ya) * S) + "px;" + css;
+      d.appendChild(b); return b; };
+    return d; }
+  var head = piece(P60, 356, 339, 1334, 391, 0), rows = piece(P60, 356, 1574, 1334, 1982, 53);
+  var RED = "background:#8e2020", uAge = head.mark(640, 382, 726, 386, RED), uCirc = head.mark(770, 382, 1250, 386, RED);
+  var lit = [[1580, 1655], [1661, 1701], [1707, 1746], [1753, 1792], [1799, 1838], [1844, 1884], [1890, 1930], [1936, 1976]].map(function (r) {
+    return rows.mark(364, r[0], 1326, r[1], "background:rgba(232,197,106,0.45);mix-blend-mode:multiply"); });
+  var veh = [1612, 1696, 1741, 1787, 1833, 1879, 1925, 1971].map(function (y) { return rows.mark(770, y, 866, y + 4, RED); });   /* under "Vehicle" in each of the eight */
+  s0([uAge, uCirc], { scaleX: 0, transformOrigin: "left center" }); s0(lit, { scaleX: 0, transformOrigin: "left center" }); s0(veh, { scaleX: 0, transformOrigin: "left center" });
+
+  /* ---- camera and fixed-layer helpers ---- */
+  function V(cx, cy, s) { return { x: Math.min(0, Math.max(1920 * (1 - s), 960 - cx * s)), y: Math.min(0, Math.max(1080 * (1 - s), 540 - cy * s)), scale: s }; }
+  function move(v, t, d) { tl.to(cam, { x: v.x, y: v.y, scale: v.scale, duration: d, ease: "power2.inOut" }, t); }
+  function at(id, mx, my, v) { var e = $(id); e.style.left = Math.round(mx * v.scale + v.x) + "px"; e.style.top = Math.round(my * v.scale + v.y) + "px"; }
+  function show(id, t, dx, dy) { tl.fromTo($(id), { autoAlpha: 0, x: dx || 0, y: dy == null ? 24 : dy }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, t); }
+  function hide(id, t) { tl.to($(id), { autoAlpha: 0, y: -16, duration: 0.3, ease: "power2.in" }, t); }
+  tl.fromTo($("scan"), { x: -400 }, { x: 1960, duration: D, ease: "none" }, 0);
+  var FULL = V(960, 540, 1), WEST = V(520, 470, 1.8);
+  s0(cam, { x: WEST.x, y: WEST.y, scale: WEST.scale, transformOrigin: "0 0" });
+  at("pl-er", 318, 380, WEST); at("pl-er2", 318, 380, FULL); at("pl-okc", 1254, 504, FULL);
+  s0($("pl-er"), { autoAlpha: 1 });
+
+  show("sheet", 2.34, 660, 0); show("src", 2.60, 0, 14);    /* a table @2.34 */
+  tl.to(uAge, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 5.32);    /* each person's age @5.32 */
+  tl.to(uCirc, { scaleX: 1, duration: 0.8, ease: "power2.out" }, 6.10);   /* what they were doing @6.10 */
+  tl.to(lit, { scaleX: 1, duration: 0.35, ease: "power2.out", stagger: 0.06 }, 7.80);   /* Eight @7.80 */
+  show("rail", 7.70, -60, 0); show("h1", 7.80, 0, 20); show("h2", 8.30, -20, 0);         /* in the path of the El Reno tornado @8.30 */
+  show("tray", 8.20, 0, 30);
+  [0, 1, 2, 3, 4, 5, 6, 7].forEach(function (i) { land(i, 8.30 + i * 0.1); });           /* eight pins: four at sourced places, four in the tray */
+  [0, 1, 2, 3].forEach(function (i) { show("tl" + i, 8.75 + i * 0.1, 0, 10); });
+  tl.to(veh, { scaleX: 1, duration: 0.3, ease: "power2.out", stagger: 0.07 }, 10.80);    /* all eight were in vehicles @10.80 */
+  show("r1", 11.28, -20, 0);
+  tl.to([$("sheet"), $("src")], { y: -560, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 12.30);   /* the page leaves; the map opens to the whole metro */
+  hide("pl-er", 12.30); move(FULL, 12.40, 1.0);
+  show("r2v", 12.80, 0, 20); show("r2l", 13.24, -20, 0);    /* Eighteen other tornadoes @12.80 */
+  show("pl-er2", 13.45); show("pl-okc", 13.55);
+  grey.forEach(function (e, i) { tl.set(e, { opacity: 1 }, 14.06 + i * 0.12); tl.to(e, { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, 14.06 + i * 0.12); });   /* touched down @14.06 */
+  show("gt", 14.30, 0, 14);
+  show("r3v", 16.28, 0, 20); show("r3l", 16.60, -20, 0);    /* None took a life @16.28 */
+  hide("pl-er2", 16.90); hide("pl-okc", 16.90); hide("gt", 16.90);
+  tl.to(track, { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 16.95);   /* back to the west view g-i1s3-pins opens on (no track line there) */
+  move(WEST, 16.95, 0.8);
+  tl.fromTo($("pl-er"), { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 17.60);
+  tl.to({}, { duration: 0.01 }, 17.96);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
