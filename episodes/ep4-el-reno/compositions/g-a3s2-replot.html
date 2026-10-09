@@ -80,6 +80,8 @@ window.__timelines = window.__timelines || {};
   /* hidden from the first frame: set now (a paused timeline has not rendered its time-0 sets yet) and again at 0 */
   const HIDE = [P + "flash", P + "east", P + "head", P + "t-head", P + "t-east", P + "t-south", P + "l1", P + "v1", P + "s1"];
   gsap.set(HIDE, { autoAlpha: 0 });
+  /* pivots set once, outside the timeline, so a pulse scales about the same point whatever was seeked before */
+  gsap.set([P + "flash", P + "suv"], { svgOrigin: "1000 540" });
   tl.set(HIDE, { autoAlpha: 0 }, 0);
 
   /* whole window: the circle crosses at 18.64 px a second toward east-northeast (17.22 east, 7.13 north);
