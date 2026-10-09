@@ -82,8 +82,6 @@ window.__timelines = window.__timelines || {};
   /* CARL YOUNG @19.04 · 45 @19.60 (settled by 19.78) */
   tl.fromTo(P + "n3", hid(-40, 0), vis(), 19.04);
   tl.fromTo(P + "a3", hid(24, 0), { autoAlpha: 1, x: 0, y: 0, duration: 0.18, ease: "power3.out" }, 19.60);
-  /* one still second to the cut, by order: this holds the timeline to the window and moves nothing */
-  tl.to({}, { duration: 0.01 }, 20.77);
   window.__timelines["g-a3s10-names"] = tl;
 })();
 </script>
