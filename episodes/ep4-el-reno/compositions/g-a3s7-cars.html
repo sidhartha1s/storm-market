@@ -110,12 +110,12 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "at", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 9.5);
   /* Assessment @11.80 */
   tl.fromTo(P + "at", { scale: 1, transformOrigin: "0% 50%" }, { scale: 1.04, duration: 0.5, ease: "power2.out", yoyo: true, repeat: 1 }, 11.8);
-  /* traffic @13.96: a glint runs each road and finds nothing else on it */
-  tl.fromTo(P + "g1", { autoAlpha: 0 }, { autoAlpha: 0.9, duration: 0.2 }, 13.6);
-  tl.fromTo(P + "g1", { attr: { cx: 900 } }, { attr: { cx: 1920 }, duration: 2.2, ease: "power1.inOut" }, 13.6);
+  /* traffic @13.96: a thin scan line crosses each road end to end and finds nothing else on it */
+  tl.fromTo(P + "g1", { autoAlpha: 0 }, { autoAlpha: 0.6, duration: 0.2 }, 13.6);
+  tl.fromTo(P + "g1", { x: 0 }, { x: 1020, duration: 2.2, ease: "power1.inOut" }, 13.6);
   tl.to(P + "g1", { autoAlpha: 0, duration: 0.3 }, 15.5);
-  tl.fromTo(P + "g2", { autoAlpha: 0 }, { autoAlpha: 0.9, duration: 0.2 }, 14.3);
-  tl.fromTo(P + "g2", { attr: { cy: 0 } }, { attr: { cy: 1080 }, duration: 2.2, ease: "power1.inOut" }, 14.3);
+  tl.fromTo(P + "g2", { autoAlpha: 0 }, { autoAlpha: 0.6, duration: 0.2 }, 14.3);
+  tl.fromTo(P + "g2", { y: 0 }, { y: 980, duration: 2.2, ease: "power1.inOut" }, 14.3);
   tl.to(P + "g2", { autoAlpha: 0, duration: 0.3 }, 16.2);
   /* exit: the card slides out in the last 0.6 s */
   tl.to(P + "card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 16.8);
