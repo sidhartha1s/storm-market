@@ -67,13 +67,14 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "ring", { strokeDashoffset: 0 }, { strokeDashoffset: -240, duration: D, ease: "none" }, 0);
   tl.fromTo(P + "core", { strokeDashoffset: 0 }, { strokeDashoffset: -160, duration: D, ease: "none" }, 0);
 
-  /* TWO RESEARCH RADAR TEAMS @0.00-1.20: the first photograph is in frame at 0 and settles, the second lands on "research" */
-  tl.fromTo([P + "ta", P + "na", P + "ca"], { x: -40 }, { x: 0, duration: 0.8, ease: "power3.out" }, 0);
+  /* TWO RESEARCH RADAR TEAMS @0.00-1.20: the first team's name is in frame at 0 and settles, the second team's photograph lands on "research" */
+  s0(P + "rule", { scaleX: 0, transformOrigin: "left center" });
+  tl.fromTo([P + "o1", P + "o2"], { x: -40 }, { x: 0, duration: 0.8, ease: "power3.out" }, 0);
+  tl.to(P + "rule", { scaleX: 1, duration: 0.7, ease: "power3.out" }, 0.15);
   show("tb", 0.44, 60, 0);
   show("nb", 0.60, 0, 18);
   show("tm", 0.72, 0, 18);
   show("cb", 0.82, 0, 18);
-  tl.fromTo(P + "ta img", { scale: 1.06 }, { scale: 1, duration: D, ease: "none" }, 0);
   tl.fromTo(P + "tb img", { scale: 1 }, { scale: 1.06, duration: D, ease: "none" }, 0);
   /* THEIR BEAMS @3.66: the beam draws low across the field to the ring */
   tl.to(P + "beam", { scaleX: 1, duration: 1.1, ease: "power2.out" }, 3.66);
