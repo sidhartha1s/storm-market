@@ -110,9 +110,10 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "m2p", { attr: { r: 12 }, opacity: 0.9 }, { attr: { r: 64 }, opacity: 0, duration: 1.4, ease: "power1.out", repeat: 3, immediateRender: false }, 0.52);
   tl.to(P + "m2", { x: 1568.8, duration: 6.56, ease: "none" }, 0.52);
   /* TIM SAMARAS @2.96 · HIS SON PAUL @4.58 · CARL YOUNG @5.46 */
-  show("n1", 2.96, -40, 0); show("a1", 3.30, 20, 0);
-  show("n2", 4.58, -40, 0); show("a2", 4.90, 20, 0);
-  show("n3", 5.46, -40, 0); show("a3", 5.80, 20, 0);
+  show("rail", 2.96, -40, 0);
+  show("n1", 2.96, 0, 18); show("a1", 3.30, 20, 0);
+  show("n2", 4.58, 0, 18); show("a2", 4.90, 20, 0);
+  show("n3", 5.46, 0, 18); show("a3", 5.80, 20, 0);
   tl.to(P + "rail", { y: -5, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 6.3);
   /* IT WAS STRUCK @7.08 */
   tl.fromTo(P + "hit", { attr: { r: 12 }, opacity: 1 }, { attr: { r: 96 }, opacity: 0, duration: 1.0, ease: "power2.out", repeat: 1, immediateRender: false }, 7.08);
