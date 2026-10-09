@@ -43,6 +43,8 @@ Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or t
 | 2 | Label-over-painted-shape check in `graphics_qc.mjs`: sample points across every visible text box at each cue and through the first 0.5 s, fail when a line, ring or dot paints under it | | todo |
 | 3 | `lint_timeline.py`: a comp that declares a transparent span needs a track 1 picture under that span (today the track 2 host counts as picture and the hole renders black) | | todo |
 | 4 | Media probe: fail a JPEG that does not end with the end marker (headless Chrome left a truncated one unpainted in 3 of 4 loads) | | todo |
+| 5 | `overlap_check.mjs`: a label that sits on several different things (a rating tag on each track, a credit under each quote) had no way to be declared, so 7 true repeats failed the gate; `data-repeat-ok="reason"` takes a comp node out of the duplicate-fact count | branch `gate-dupfact-ok` | PR open, owner's OK to merge |
+| 6 | Script picture notes are not walked by any gate: El Reno's first build missed the hook's counter and marker row, the crew clip's own sound and two "held two seconds" asks (`learnings/script-process.md` 2026-10-10). A read-only check that lists every `**Picture:**` ask beside what is mounted in its window, for the editor to tick | | todo |
 ## Parked until the new laptop (owner 28 Sep 26; source review: howseen-ai/claude-motion-design)
 Current box: 16 GB RAM, GTX 1650 4 GB; full renders already hit the commit-memory limit. Revisit when the new laptop arrives.
 | # | task | why parked | status |
