@@ -6,6 +6,9 @@
   g-a4s5-drain · A4-S5 · window 14.71 s · brief: mg_specs/drawings.md
   Claim: eleven people, most of them young children, were inside a storm drain under SW 15th St (News 9, June 3, 2013).
   Eleven identical dots. No water in this comp. The drain's size is not sourced: unlabelled, schematic.
+  The street deck runs the full frame width.
+  Layout: the section is drawn 1.4x through the svg viewBox (170 164 1371.43 771.43); svg coordinates are the
+  brief's, frame px = (x - 170) * 1.4, (y - 164) * 1.4. The rain clip leaves the text boxes clear.
   Cues are comp-local seconds from audio/a4-s5.words.json.
 -->
 <template>
@@ -19,22 +22,22 @@
     background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,.07), rgba(127,178,229,0)); }
   .dr5-svg { position:absolute; left:0; top:0; }
   .dr5-lab { position:absolute; font-weight:700; white-space:nowrap; }
-  .dr5-small { font-size:22px; letter-spacing:3px; color:#93a3b2; }
-  .dr5-note { font-size:20px; letter-spacing:2px; color:#93a3b2; }
-  .dr5-src { font-size:20px; letter-spacing:2px; color:#c8d3e0; }
-  .dr5-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:64px; color:#f2f5f8; }
-  .dr5-mid { font-size:30px; letter-spacing:1px; color:#dfe7ee; }
+  .dr5-small { font-size:28px; letter-spacing:3px; color:#93a3b2; }
+  .dr5-note { font-size:22px; letter-spacing:2px; color:#93a3b2; }
+  .dr5-src { font-size:24px; letter-spacing:2px; color:#c8d3e0; }
+  .dr5-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:72px; line-height:80px; color:#f2f5f8; }
+  .dr5-mid { font-size:40px; letter-spacing:1px; color:#dfe7ee; }
 </style>
 <div id="dr5-root" class="dr5-root" data-composition-id="g-a4s5-drain" data-width="1920" data-height="1080" data-duration="14.71">
   <div class="dr5-grid" id="dr5-grid"></div>
   <div class="dr5-sweep" id="dr5-sweep"></div>
 
-  <svg class="dr5-svg" id="dr5-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <svg class="dr5-svg" id="dr5-svg" width="1920" height="1080" viewBox="170 164 1371.43 771.43">
     <defs>
       <pattern id="dr5-hatch" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
         <line x1="0" y1="0" x2="0" y2="26" stroke="#7fb2e5" stroke-width="3"/>
       </pattern>
-      <clipPath id="dr5-sky"><rect x="0" y="0" width="1920" height="434"/></clipPath>
+      <clipPath id="dr5-sky"><path clip-rule="evenodd" d="M0 0 H1920 V434 H0 Z M262 296 H692 V426 H262 Z M1105 364 H1392 V434 H1105 Z"/></clipPath>
       <g id="dr5-rt" stroke="#7fb2e5" stroke-width="3" stroke-linecap="round" opacity="0.5">
         <line x1="140" y1="40" x2="130" y2="78"/><line x1="330" y1="210" x2="320" y2="248"/><line x1="520" y1="90" x2="510" y2="128"/>
         <line x1="700" y1="330" x2="690" y2="368"/><line x1="860" y1="160" x2="850" y2="198"/><line x1="1040" y1="20" x2="1030" y2="58"/>
@@ -48,7 +51,7 @@
     </g>
     <g id="dr5-site">
       <!-- the street deck -->
-      <rect x="96" y="440" width="1464" height="28" fill="#93a3b2" fill-opacity="0.18" stroke="#93a3b2" stroke-width="3"/>
+      <rect x="150" y="440" width="1420" height="28" fill="#93a3b2" fill-opacity="0.18" stroke="#93a3b2" stroke-width="3"/>
       <!-- earth between street and drain, and under the drain floor: section convention -->
       <rect x="200" y="474" width="760" height="46" fill="url(#dr5-hatch)" opacity="0.3"/>
       <rect x="200" y="760" width="1040" height="26" fill="url(#dr5-hatch)" opacity="0.3"/>
@@ -59,7 +62,7 @@
       <path d="M200 520 L214 580 L186 640 L214 700 L200 760" fill="none" stroke="#93a3b2" stroke-width="3" stroke-linejoin="round"/>
       <path d="M1240 500 L1240 540 M1240 740 L1240 792" fill="none" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
     </g>
-    <path id="dr5-ld-count" d="M574 270 L728 270 L728 582" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+    <path id="dr5-ld-count" d="M588 340 L728 340 L728 582" fill="none" stroke="#f2f5f8" stroke-width="2"/>
     <!-- eleven people: eleven identical dots -->
     <circle class="dr5-dot" cx="420" cy="600" r="9" fill="#f2f5f8"/>
     <circle class="dr5-dot" cx="464" cy="600" r="9" fill="#f2f5f8"/>
@@ -74,13 +77,13 @@
     <circle class="dr5-dot" cx="860" cy="600" r="9" fill="#f2f5f8"/>
   </svg>
 
-  <div class="dr5-lab dr5-big" id="dr5-l-count" style="left:250px; top:236px">11 people</div>
-  <div class="dr5-lab dr5-mid" id="dr5-l-young" style="left:253px; top:312px">Most were young children</div>
-  <div class="dr5-lab dr5-small" id="dr5-l-drain" style="left:1010px; top:484px">Storm drain</div>
-  <div class="dr5-lab dr5-small" id="dr5-l-street" style="left:1140px; top:360px">SW 15th St</div>
-  <div class="dr5-lab dr5-small" id="dr5-l-dell" style="left:1140px; top:396px">Near the Dell plant</div>
-  <div class="dr5-lab dr5-note" id="dr5-l-schem" style="left:110px; top:958px">Schematic, not to scale</div>
-  <div class="dr5-lab dr5-src" id="dr5-l-src" style="left:110px; top:992px">News 9, June 3, 2013</div>
+  <div class="dr5-lab dr5-big" id="dr5-l-count" style="left:150px; top:206px">11 people</div>
+  <div class="dr5-lab dr5-mid" id="dr5-l-young" style="left:153px; top:300px">Most were young children</div>
+  <div class="dr5-lab dr5-small" id="dr5-l-drain" style="left:1176px; top:450px">Storm drain</div>
+  <div class="dr5-lab dr5-small" id="dr5-l-street" style="left:1330px; top:302px">SW 15th St</div>
+  <div class="dr5-lab dr5-small" id="dr5-l-dell" style="left:1330px; top:342px">Near the Dell plant</div>
+  <div class="dr5-lab dr5-note" id="dr5-l-schem" style="left:110px; top:956px">Schematic, not to scale</div>
+  <div class="dr5-lab dr5-src" id="dr5-l-src" style="left:110px; top:990px">News 9, June 3, 2013</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
