@@ -119,6 +119,9 @@ window.__timelines = window.__timelines || {};
   /* both strikes @7.78: the one small circle, first position */
   tl.fromTo(P + "sv", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 }, CUES.both);
   tl.fromTo(P + "svin", { scale: 0.2, svgOrigin: "0 0" }, { scale: 1, duration: 0.5, ease: "back.out(2.5)" }, CUES.both);
+  tl.fromTo(P + "suv", { autoAlpha: 0, scale: 0.2, svgOrigin: "1000 630" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2.5)" }, CUES.both);
+  /* the research car's marker lands as the circle reaches its second position (two vehicles @9.34 + 1.2 s of travel) */
+  tl.fromTo(P + "car", { autoAlpha: 0, scale: 0.2, svgOrigin: "1513 330" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2.5)" }, 10.54);
 
   /* two vehicles @9.34: the same circle moves to its second position and leaves a hollow outline; the ring moves with it */
   const rev = document.querySelector(P + "trackrev"), sv = document.querySelector(P + "sv");
