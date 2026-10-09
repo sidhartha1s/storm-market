@@ -150,6 +150,21 @@ No card and no name for either survivor.
 | (exit) | 5.10 | drawing and ground push in and fade; root transparent from 5.70 |
 | because | 8.48 | glass card: "unable to survive if not underground"; "NWS Service Assessment" at 9.04; card slides out 10.40 to 11.00 |
 
+## Fix round 1 (10 Oct 26): drawings enlarged, no cue, count, fact or quote changed
+The section 3 coordinates stay as written: they are svg user units. Each comp now shows them through a viewBox,
+so frame px = (x - vx) * s, (y - vy) * s. Ground line and street deck run the full frame width.
+| Comp | Scale s | viewBox origin vx, vy | Drawing share of frame (union box of shapes) |
+|---|---|---|---|
+| g-a4s1-ditch, g-a4s3-ditch | 1.25 | 70, 216 | 57.9 % (was 36.2 %) |
+| g-a5s11-returns | 1.4 | 152, 318 | 64.8 % (was 36.2 %) |
+| g-a4s5-drain | 1.4 | 170, 164 | 58.6 % (was 25.1 %) |
+| g-a4s6-drain | 1.4 | 170, 164 | 46.1 % (was 25.1 %) |
+| g-a5s8-closet | house 1.25 at left 240, top 190 | n/a | 59.4 % (was 20.9 %) |
+Labels went up a tier (22 to 28 px; source lines 20 to 24 px; notes 20 to 22 px; "A few feet" 56 to 72 or 76 px;
+"11 people" 56 to 72 px; "About 2 feet" 34 to 44 px). "News 9, June 2013" now sits 14 px clear under "A few feet".
+In g-a4s6 the river line is shorter (svg x 1250 to 1440) so its two labels stay above y 680. In g-a5s8 the quote
+block moved to the clear space above the right roof slope. The rain clip in both drain comps leaves text boxes clear.
+
 ## Check run (10 Oct 26)
 `freeze_scan.mjs` reads every mounted comp and stops when one file is missing, so the contact sheets were made from a
 scratch copy of the episode that mounts only these seven hosts (`.qc-tmp/dstage/`, gitignored): PASS, 7 comps, no
