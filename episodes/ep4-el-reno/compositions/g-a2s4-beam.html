@@ -73,7 +73,7 @@ window.__timelines = window.__timelines || {};
 
   /* TWO RESEARCH RADAR TEAMS @0.00-1.20: the first team's name is in frame at 0 and settles, the second team's photograph lands on "research" */
   s0(P + "rule", { scaleX: 0, transformOrigin: "left center" });
-  tl.fromTo([P + "o1", P + "o2"], { x: -40 }, { x: 0, duration: 0.8, ease: "power3.out" }, 0);
+  tl.fromTo(P + "ga", { x: -40 }, { x: 0, duration: 0.8, ease: "power3.out" }, 0);
   tl.to(P + "rule", { scaleX: 1, duration: 0.7, ease: "power3.out" }, 0.15);
   show("tb", 0.44, 60, 0);
   show("nb", 0.60, 0, 18);
