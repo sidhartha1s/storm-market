@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5s3-markers (A5-S3) · window 23.30 s · brief: mg_specs/cards.md
+     Overlay: root transparent for the whole window, the survey footage or survey photographs sit beneath.
+     A short list: house, barn, tree, power pole, each with a tick box and the label "marker". No box is ever ticked;
+     where the sub-vortices went, the two structure boxes (house, barn) are the ones marked empty. Then the survey
+     paper's sentence, exact words (Marshall et al., damage survey; fact_check A5-S3). Cues are audio/a5-s3.words.json seconds. -->
+<template>
+<style>
+  #mk3-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .mk3-glass { position:absolute; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .mk3-h { opacity:0; visibility:hidden; }
+  .mk3-row { position:absolute; left:0; width:760px; height:92px; }
+  .mk3-ic { position:absolute; left:44px; top:8px; width:64px; height:64px; overflow:visible; }
+  .mk3-nm { position:absolute; left:136px; top:6px; font:900 52px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .mk3-tag { position:absolute; left:138px; top:66px; font:700 19px Arial, sans-serif; letter-spacing:4px; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .mk3-box { position:absolute; left:644px; top:10px; width:60px; height:60px; box-sizing:border-box; border:3px solid #c8d3e0; border-radius:10px; background:rgba(4,7,12,0.35); }
+  .mk3-rule { position:absolute; left:44px; top:444px; width:672px; height:1px; background:rgba(255,255,255,0.28); }
+  .mk3-wh { position:absolute; left:44px; top:466px; font:700 30px Arial, sans-serif; letter-spacing:1px; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .mk3-no { position:absolute; left:44px; top:512px; font:italic 28px Georgia, 'Times New Roman', serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .mk3-q { position:absolute; left:48px; font:50px Georgia, 'Times New Roman', serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .mk3-src { position:absolute; left:50px; top:268px; font:italic 28px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+</style>
+<div id="mk3-root" data-composition-id="g-a5s3-markers" data-width="1920" data-height="1080" data-duration="23.3">
+  <div class="mk3-glass mk3-h" id="mk3-list" style="left:96px; top:110px; width:760px; height:572px">
+    <div class="mk3-row mk3-h" id="mk3-r1" style="top:36px">
+      <svg class="mk3-ic" viewBox="0 0 64 64"><path d="M8 58 L8 28 L32 8 L56 28 L56 58 Z M26 58 L26 40 L38 40 L38 58" fill="none" stroke="#c8d3e0" stroke-width="3.5" stroke-linejoin="round"/></svg>
+      <div class="mk3-nm">House</div><div class="mk3-tag mk3-h" id="mk3-t1">MARKER</div><div class="mk3-box" id="mk3-b1"></div>
+    </div>
+    <div class="mk3-row mk3-h" id="mk3-r2" style="top:136px">
+      <svg class="mk3-ic" viewBox="0 0 64 64"><path d="M6 58 L6 30 L16 14 L32 6 L48 14 L58 30 L58 58 Z M22 58 L22 36 L42 36 L42 58 M22 36 L42 58 M42 36 L22 58" fill="none" stroke="#c8d3e0" stroke-width="3.5" stroke-linejoin="round"/></svg>
+      <div class="mk3-nm">Barn</div><div class="mk3-tag mk3-h" id="mk3-t2">MARKER</div><div class="mk3-box" id="mk3-b2"></div>
+    </div>
+    <div class="mk3-row mk3-h" id="mk3-r3" style="top:236px">
+      <svg class="mk3-ic" viewBox="0 0 64 64"><path d="M32 60 L32 38 M32 46 L22 38 M32 44 L42 36" fill="none" stroke="#c8d3e0" stroke-width="3.5" stroke-linecap="round"/><circle cx="32" cy="22" r="17" fill="none" stroke="#c8d3e0" stroke-width="3.5"/></svg>
+      <div class="mk3-nm">Tree</div><div class="mk3-tag mk3-h" id="mk3-t3">MARKER</div><div class="mk3-box" id="mk3-b3"></div>
+    </div>
+    <div class="mk3-row mk3-h" id="mk3-r4" style="top:336px">
+      <svg class="mk3-ic" viewBox="0 0 64 64"><path d="M32 60 L32 6 M12 16 L52 16 M18 26 L46 26 M12 16 L12 22 M52 16 L52 22" fill="none" stroke="#c8d3e0" stroke-width="3.5" stroke-linecap="round"/></svg>
+      <div class="mk3-nm">Power pole</div><div class="mk3-tag mk3-h" id="mk3-t4">MARKER</div><div class="mk3-box" id="mk3-b4"></div>
+    </div>
+    <div class="mk3-rule" id="mk3-rule"></div>
+    <div class="mk3-wh mk3-h" id="mk3-wh">Where the sub-vortices went</div>
+    <div class="mk3-no mk3-h" id="mk3-no">no structure in the path</div>
+  </div>
+  <div class="mk3-glass mk3-h" id="mk3-card" style="left:150px; top:290px; width:1300px; height:340px">
+    <div class="mk3-q mk3-h" id="mk3-q1" style="top:46px">&ldquo;Despite the intense wind velocities,</div>
+    <div class="mk3-q mk3-h" id="mk3-q2" style="top:112px">surveyors could not find damage</div>
+    <div class="mk3-q mk3-h" id="mk3-q3" style="top:178px">that would support a rating higher than EF3.&rdquo;</div>
+    <div class="mk3-src mk3-h" id="mk3-src">Marshall et al., damage survey</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var D = 23.3, P = "#mk3-";
+  var tl = gsap.timeline({ paused: true });
+  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, t); }
+  function float(id, a, b) { var n = Math.floor((b - a) / 1.9) - 1; if (n >= 0) tl.to(P + id, { y: -6, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: n }, a); }
+  gsap.set(P + "rule", { scaleX: 0, transformOrigin: "left center" });
+  tl.set(P + "rule", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* SURVEYORS WALK THE PATH @3.30: the list arrives */
+  show("list", 3.30, -60, 0);
+  /* BUILDINGS @5.54 (house, barn) · TREES @6.42 · OTHER THINGS ON A SET LIST @6.88 */
+  show("r1", 5.54, -30, 0);
+  show("r2", 5.90, -30, 0);
+  show("r3", 6.42, -30, 0);
+  show("r4", 6.88, -30, 0);
+  float("list", 7.5, 14.9);
+  /* CALL EACH ONE A MARKER @9.86 */
+  ["t1", "t2", "t3", "t4"].forEach(function (id, i) { show(id, 9.86 + i * 0.1, -16, 0); });
+  /* WHERE THE SUB-VORTICES WENT @11.24: the tree and pole rows step back */
+  tl.to(P + "rule", { scaleX: 1, duration: 0.6, ease: "power3.out" }, 11.0);
+  show("wh", 11.24, -24, 0);
+  tl.to([P + "r3", P + "r4"], { autoAlpha: 0.35, duration: 0.4, ease: "power2.out" }, 11.24);
+  /* NO STRUCTURE @13.38: the house and barn boxes are marked, and stay empty */
+  show("no", 13.38, -24, 0);
+  tl.to([P + "b1", P + "b2"], { borderColor: "#e74c3c", duration: 0.2, ease: "power2.out" }, 13.38);
+  tl.to([P + "b1", P + "b2"], { scale: 1.22, duration: 0.28, ease: "power2.out", yoyo: true, repeat: 3, transformOrigin: "50% 50%" }, 13.38);
+  tl.to(P + "list", { x: -1000, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 15.0);
+  /* DESPITE THOSE SPEEDS @15.62 · THE SURVEY TEAM WROTE @17.16 · COULD NOT FIND DAMAGE @18.70 · THAT WOULD SUPPORT @20.06 */
+  show("card", 15.62, -60, 0);
+  show("q1", 15.62, 0, 18);
+  show("src", 17.16, -24, 0);
+  show("q2", 18.70, 0, 18);
+  show("q3", 20.06, 0, 18);
+  float("card", 16.3, 22.6);
+  tl.to(P + "card", { x: -1500, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
+  window.__timelines["g-a5s3-markers"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
