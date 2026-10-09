@@ -13,7 +13,7 @@ Owner, 10 Oct 26: "clips are good. go ahead. move faster." Status is read from t
 - [ ] News footage: `media/news/` (worker src-news). Round 1: 5 usable clips, highway jam and flooding only. Round 2 running (10 Oct 26): the TV crew's own sequence, station helicopter footage of the tornado, radar on air, a drainage channel, a listen pass.
 - [ ] Government documents, page captures, photos, track data: `media/docs/`, `media/pd/`, `media/data/` (worker src-pd). Round 1: 57 files, ledger matches. Round 2 running: the tornado itself, a survey team, city flooding, a siren, a slab house, radar trucks.
 - [x] Stock fills: `media/stock/`, 21 clips kept of 66 fetched (Pixabay 6 of 30, Pexels 15 of 36), every strip read by eye, ledger `media/provenance-stock.csv` (10 Oct 26). Open: no usable stock for need 4 (one-storey house) or need 7 (warning siren); cover from government photos or the drawings.
-- [ ] Merge the lane ledgers into `media/provenance.csv`
+- [x] Lane ledgers merged into `media/provenance.csv` (the picture gate reads it) and the tracked copy `provenance.csv` at the episode root: 105 rows, every file on disk, no duplicate (10 Oct 26). Re-merge if a lane ledger changes.
 
 ## Graphics (Opus builders; mounts and windows in `mg_specs/mounts.json`)
 - [x] map21, 12 comps: built, builder's gate clean (10 Oct 26). Flood footage needed under g-i1s3-pins, comp-local 2.0 to 6.9 s.
