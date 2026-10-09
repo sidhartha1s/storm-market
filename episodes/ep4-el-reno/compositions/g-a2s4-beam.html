@@ -4,7 +4,8 @@
 <body>
 <!-- g-a2s4-beam (A2-S4) · window 6.45 s · brief: mg_specs/cards.md
      Full frame. Two public domain photographs of mobile research radars (media/provenance-pd.csv rows 21 and 23); neither
-     is from 31 May 2013, so each caption says what the photo is. Below them a schematic beam drawn low across a field
+     is from 31 May 2013, so each caption says what the photo is (tiles 780 x 541 and 812 x 541, the photos' own
+     aspect, no crop). Below them a schematic beam drawn low across a field
      to the ring. Cues are audio/a2-s4.words.json seconds. -->
 <template>
 <style>
@@ -13,26 +14,25 @@
   .bm4-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
     background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
     background-size:120px 120px; }
-  .bm4-tile { position:absolute; top:90px; height:440px; overflow:hidden; border-radius:14px; border:1px solid rgba(255,255,255,0.22);
+  .bm4-tile { position:absolute; top:70px; height:541px; overflow:hidden; border-radius:14px; border:1px solid rgba(255,255,255,0.22);
     box-shadow:0 18px 50px rgba(0,0,0,0.55); background:#0b1016; }
   .bm4-tile img { position:absolute; left:0; top:0; width:100%; height:100%; object-fit:cover; }
   .bm4-h { opacity:0; visibility:hidden; }
-  .bm4-name { position:absolute; top:548px; font:700 34px Arial, sans-serif; letter-spacing:1px; color:#f2f5f8; white-space:nowrap; line-height:1; }
-  .bm4-team { position:absolute; top:553px; font:italic 28px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
-  .bm4-cap { position:absolute; top:598px; font:700 19px Arial, sans-serif; letter-spacing:1px; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .bm4-name { position:absolute; top:630px; font:700 34px Arial, sans-serif; letter-spacing:1px; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .bm4-team { margin-left:16px; font:italic 28px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+  .bm4-cap { position:absolute; top:678px; font:700 19px Arial, sans-serif; letter-spacing:1px; color:#93a3b2; white-space:nowrap; line-height:1; }
   .bm4-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
   .bm4-big { position:absolute; left:470px; top:770px; font:900 52px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
   .bm4-note { position:absolute; left:150px; top:992px; font:700 19px Arial, sans-serif; letter-spacing:4px; color:#93a3b2; white-space:nowrap; line-height:1; }
 </style>
 <div id="bm4-root" data-composition-id="g-a2s4-beam" data-width="1920" data-height="1080" data-duration="6.45">
   <div class="bm4-grid" id="bm4-grid"></div>
-  <div class="bm4-tile" id="bm4-ta" style="left:150px; width:634px"><img src="media/pd/noaa-smart-r-mobile-radar-1.png" alt=""></div>
-  <div class="bm4-tile bm4-h" id="bm4-tb" style="left:870px; width:660px"><img src="media/pd/nssl-doppler-on-wheels-dow7-1.jpg" alt=""></div>
-  <div class="bm4-name" id="bm4-na" style="left:150px">University of Oklahoma</div>
-  <div class="bm4-cap" id="bm4-ca" style="left:150px">Photo: SMART-R mobile radar, undated. Not the 2013 truck. NOAA</div>
-  <div class="bm4-name bm4-h" id="bm4-nb" style="left:870px">Doppler on Wheels</div>
-  <div class="bm4-team bm4-h" id="bm4-tm" style="left:1196px">Joshua Wurman&rsquo;s team</div>
-  <div class="bm4-cap bm4-h" id="bm4-cb" style="left:870px">Photo: DOW 7 in 2015. NOAA NSSL</div>
+  <div class="bm4-tile" id="bm4-ta" style="left:96px; width:780px"><img src="media/pd/noaa-smart-r-mobile-radar-1.png" alt=""></div>
+  <div class="bm4-tile bm4-h" id="bm4-tb" style="left:924px; width:812px"><img src="media/pd/nssl-doppler-on-wheels-dow7-1.jpg" alt=""></div>
+  <div class="bm4-name" id="bm4-na" style="left:96px">University of Oklahoma</div>
+  <div class="bm4-cap" id="bm4-ca" style="left:96px">Photo: SMART-R mobile radar, undated. Not the 2013 truck. NOAA</div>
+  <div class="bm4-name" style="left:924px"><span class="bm4-h" id="bm4-nb" style="display:inline-block">Doppler on Wheels</span><span class="bm4-team bm4-h" id="bm4-tm" style="display:inline-block">&middot; Joshua Wurman&rsquo;s team</span></div>
+  <div class="bm4-cap bm4-h" id="bm4-cb" style="left:924px">Photo: DOW 7 in 2015. NOAA NSSL</div>
   <svg class="bm4-svg" viewBox="0 0 1920 1080">
     <line x1="150" y1="962" x2="1540" y2="962" stroke="#5a6b7c" stroke-width="3" stroke-linecap="round"/>
     <!-- the tornado's ring, seen low and side-on -->
