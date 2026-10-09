@@ -87,11 +87,10 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "drift", { y: -100 }, { y: 100, duration: 19.65, ease: "none" }, 0);
   tl.fromTo(P + "scan", { x: -240 }, { x: 1940, duration: 4.8, ease: "none", repeat: 3 }, 0.3);
   gsap.set([P + "contour", P + "traffic", P + "td", P + "tdring", P + "er"], { opacity: 0 });
-  /* the map opens: the interstates draw out from Oklahoma City */
-  /* fast out of the gate: half of each road is on screen inside 0.3 s, so the window never opens on an empty frame */
-  draw("r40", 0, 1.6, "power3.out"); draw("r35", 0, 1.5, "power3.out"); draw("r44", 0.05, 1.6, "power3.out"); draw("r81", 0.1, 1.5, "power3.out");
+  /* the base map (roads, the city marker and its name) is on from frame 0: the Picture note opens on "Oklahoma City labelled",
+     and the name is the only thing that makes the road lines a place for the 12 s before the voice says it (maps.md, g-i1s1-map) */
+  gsap.set(P + "okclab", { transformOrigin: "left center" });
   tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.68);   /* FRIDAY @0.68 */
-  tl.fromTo(P + "okclab", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.2);
   /* ALREADY IN THEIR CARS @4.80: traffic runs on the interstates from RUSH HOUR @2.72 */
   tl.to(P + "traffic", { opacity: 1, duration: 0.6 }, 2.72);
   tl.fromTo([P + "t40", P + "t35", P + "t44"], { strokeDashoffset: 0 }, { strokeDashoffset: -208, duration: 6.0, ease: "none" }, 2.72);
