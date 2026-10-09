@@ -22,8 +22,10 @@
   .i1m-scan { position:absolute; left:0; top:0; width:220px; height:1080px; pointer-events:none;
     background:linear-gradient(90deg, rgba(127,178,229,0) 0%, rgba(127,178,229,0.07) 70%, rgba(127,178,229,0.30) 98%, rgba(127,178,229,0) 100%); }
   .i1m-map { position:absolute; left:0; top:0; width:1920px; height:1080px; }
-  .i1m-road { fill:none; stroke:#4a5560; stroke-width:1.6; stroke-linejoin:round; }
-  .i1m-traffic { fill:none; stroke:rgba(245,217,139,0.75); stroke-width:1.8; stroke-dasharray:3 10; stroke-linecap:round; }
+  /* couch-readable at zoom 1: interstates 3 px in cold blue, US-81 2.2 px grey; they thin as the camera pushes to zoom 3 */
+  .i1m-road { fill:none; stroke:#5a768f; stroke-width:3; stroke-linejoin:round; }
+  #i1m-r81 { stroke:#4a5560; stroke-width:2.2; }
+  .i1m-traffic { fill:none; stroke:rgba(245,217,139,0.95); stroke-width:4.5; stroke-dasharray:7 16; stroke-linecap:round; }
   .i1m-contour { fill:rgba(192,57,43,0.14); stroke:rgba(192,57,43,0.40); stroke-width:0.5; }
   .i1m-track { fill:none; stroke:#e74c3c; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; }
   .i1m-dim { fill:none; stroke:#f2f5f8; stroke-width:0.9; }
