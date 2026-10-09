@@ -101,5 +101,27 @@ number, place or quote that is not in `fact_check.md` or the segment's Picture n
 | g-a5s3-markers | 0 to 23.30 | 1093.24 to 1116.54 | survey team footage or the survey photos |
 | g-outro | none; Z1-S3 0 to 12.00 has no card | 1309.14 to 1321.14 | footage under the closing lines |
 
+## Addendum, 10 Oct 26: g-t1s1-markers (the hook's marker row, missed in the first build)
+The T1-S1 Picture note asks for two things that were not built: a counter "19 tornadoes in Oklahoma · National Weather
+Service" on "nineteen" (now the red popfig `pf-19` in index.html, the orchestrator's) and this comp: "On 'Twelve of the
+twenty one': twenty-one small markers appear in a row and twelve of them light."
+- 0. Claim: 21 people, 12 of them had taken shelter from the tornadoes (fact_check T1-S1, CONFIRMED: SA Appendix C, 21
+  rows, 12 "Sheltering in drainage ditch, flash flood"). Nothing else.
+- 1. Source: NWS Service Assessment, Appendix C. No source line on screen (the popfig before it names the weather service;
+  the table itself is shown in A4).
+- 2. Position: one row, centred on x 960, in the band y 600 to 760; presenter corner (x >= 1600, y >= 680) empty; 96 px
+  from left and right. Overlay, root transparent, host on track 4 over `v-t1s1-jam` (ABC night aerial of the jammed
+  highway, 31 May 2013 by its ledger row). The row never covers the broadcaster's own banner or bug in that clip.
+- 3. Geometry: 21 markers, same size, even pitch; the 12 lit ones are the first 12 from the left, the 9 others dim. Marker
+  style from `g-a1s5-henderson` (eight pins, four lit), so the hook and A1-S5 read as one system. Glass behind the row
+  if the footage under it is bright at that second (mg-quickref "glass under text over footage").
+- 4. MUST BE TRUE: (1) exactly 21 markers, exactly 12 lit, 9 dim, at every settled second; (2) no text, no numeral, no
+  icon of a person, no cross, nothing red on a marker; (3) the 12 land lit on "12" and the 9 dim ones join on "21", never
+  before their word; (4) the row is gone before the cut at 19.81; (5) something moves in every 4 s (a slow drift is
+  enough) and nothing flashes.
+- 5. Cues, comp-local s (host starts 13.31; local = t1-s1 word start minus 6.20): 12 @0.50, 21 @1.06, shelter @2.36,
+  "no tornado" @4.20, lives @5.28, voice ends 6.20, host ends 6.50.
+- Mount: `host-t1s1-markers`, 13.31 to 19.81, track 4.
+
 ## 7. Tools
 `node scripts/graphics_qc.mjs episodes/ep4-el-reno`; freeze_scan on the staged copy `.qc-tmp/cards-stage/`; sheets in `sheets-pre/`.
