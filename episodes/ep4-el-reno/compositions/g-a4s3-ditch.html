@@ -106,15 +106,30 @@ window.__timelines = window.__timelines || {};
   tl.to([P+"l-door", P+"l-ditch", P+"l-schem", P+"l-src"], { y: -5, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: 10 }, 0.2);
 
   /* THEY DID NOT GET IN A CAR @0.00: the drawing is back, seven dots at the door, nothing else moves in */
-  tl.fromTo(P+"svg", { x: -30 }, { x: 0, duration: 0.9, ease: "power3.out" }, 0);
+  /* the "Door" label drifts with the drawing, so the wall never crosses it */
+  tl.fromTo([P+"svg", P+"l-door"], { x: -30 }, { x: 0, duration: 0.9, ease: "power3.out" }, 0);
   tl.fromTo(".dt3-dot", { x: -434, y: -154 }, { x: -434, y: -154, duration: 0.01 }, 0);
-  /* CARRIED A TABLE OUT OF THE HOUSE @2.54-3.68 */
+  /* CARRIED A TABLE OUT OF THE HOUSE @2.54-3.68: the table appears with its legs either side of the seven */
   tl.fromTo(P+"table", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 2.54);
-  tl.fromTo(P+"table", { x: -455, y: -150 }, { x: -210, y: -150, duration: 1.7, ease: "power2.inOut" }, 2.54);
-  /* WENT DOWN INTO @4.46-4.94: the table, then the seven, go down into the ditch */
-  tl.to(P+"table", { x: 0, y: -40, duration: 1.3, ease: "power2.inOut" }, 4.46);
-  tl.to(".dt3-dot", { x: -150, duration: 0.7, ease: "power2.inOut", stagger: 0.05 }, 4.5);
-  tl.to(".dt3-dot", { x: 0, y: 0, duration: 0.8, ease: "power2.inOut", stagger: 0.05 }, 5.25);
+  tl.fromTo(P+"table", { x: -434, y: -150 }, { x: -210, y: -150, duration: 1.7, ease: "power2.inOut" }, 2.54);
+  /* WENT DOWN INTO A DRAINAGE DITCH @4.46-5.74: the table goes down first and waits above the ditch floor */
+  tl.to(P+"table", { x: 0, y: -40, duration: 0.54, ease: "power2.inOut" }, 4.46);
+  /* then the seven walk out of the door, down the bank and along the ditch floor, one behind another. Every dot
+     runs the same line (door, top of the bank, foot of the bank, its place) at the same speed, ease none, so the
+     22-unit spacing holds the whole way and no dot leaves the ground. All seven arrive at 6.2. */
+  const W1 = { x: 1010, y: 748 };
+  const W2 = { x: 1080, y: 884 };
+  document.querySelectorAll(".dt3-dot").forEach(function (el, k) {
+    const xs = 700 + 22 * k;
+    const xf = 1134 + 22 * k;
+    const l1 = Math.hypot(W1.x - xs, W1.y - 730);
+    const l2 = Math.hypot(W2.x - W1.x, W2.y - W1.y);
+    const l3 = xf - W2.x;
+    const v = (l1 + l2 + l3) / 1.7;
+    tl.to(el, { x: W1.x - xf, y: W1.y - 884, duration: l1 / v, ease: "none" }, 4.5);
+    tl.to(el, { x: W2.x - xf, y: 0, duration: l2 / v, ease: "none" }, 4.5 + l1 / v);
+    tl.to(el, { x: 0, y: 0, duration: l3 / v, ease: "none" }, 4.5 + (l1 + l2) / v);
+  });
   /* A DRAINAGE DITCH @5.42 */
   tl.fromTo(P+"l-ditch", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.42);
   /* A FEW FEET AWAY @6.22: the measure, door to ditch */
