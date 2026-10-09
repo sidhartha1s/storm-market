@@ -10,22 +10,22 @@ Owner, 10 Oct 26: "clips are good. go ahead. move faster." Status is read from t
 - [x] Branch brought up to main (merge, 10 Oct 26)
 
 ## Sourcing (workers write `media/provenance-<lane>.csv`)
-- [ ] News footage: `media/news/` (worker src-news). Round 1: 5 usable clips, highway jam and flooding only. Round 2 running (10 Oct 26): the TV crew's own sequence, station helicopter footage of the tornado, radar on air, a drainage channel, a listen pass.
-- [ ] Government documents, page captures, photos, track data: `media/docs/`, `media/pd/`, `media/data/` (worker src-pd). Round 1: 57 files, ledger matches. Round 2 running: the tornado itself, a survey team, city flooding, a siren, a slab house, radar trucks.
+- [x] News footage: `media/news/`, 15 files on disk, 8 of them on the timeline in 11 mounts (10 Oct 26). Round 2 brought the TV crew's own sequence. Not sourced: a road-level clip of the rain-wrapped tornado (script A2-S10).
+- [x] Government documents, page captures, photos, track data: `media/docs/` 11 files, `media/pd/` 58, `media/data/` 5 (10 Oct 26); 10 stills on the timeline.
 - [x] Stock fills: `media/stock/`, 21 clips kept of 66 fetched (Pixabay 6 of 30, Pexels 15 of 36), every strip read by eye, ledger `media/provenance-stock.csv` (10 Oct 26). Open: no usable stock for need 4 (one-storey house) or need 7 (warning siren); cover from government photos or the drawings.
 - [x] Lane ledgers merged into `media/provenance.csv` (the picture gate reads it) and the tracked copy `provenance.csv` at the episode root: 105 rows, every file on disk, no duplicate (10 Oct 26). Re-merge if a lane ledger changes.
 
 ## Graphics (Opus builders; mounts and windows in `mg_specs/mounts.json`)
 - [x] map21, 12 comps: built, builder's gate clean (10 Oct 26). Flood footage needed under g-i1s3-pins, comp-local 2.0 to 6.9 s.
 - [x] replot, 11 comps: built, builder's gate clean, measured road layout applied to the three comps that draw both roads (10 Oct 26).
-- [ ] maps, 9 comps: 9 files on disk, builder's receipt not in yet.
+- [x] maps, 9 comps: built; fix round receipt in (7 of 7 rows, 10 Oct 26 04:30).
 - [x] drawings, 7 comps: built, builder's gate clean (10 Oct 26). Traffic aerial needed under g-a5s11-returns, episode 1250.90 to 1256.20 s.
 - [x] roads, 6 comps: built, builder's gate clean (10 Oct 26).
-- [ ] cards, 12 comps plus the closing channel card: builder started 10 Oct 26 (mg-cards).
-- [ ] docs, 10 comps: builder started 10 Oct 26 (mg-docs).
-- [ ] Meaning check of each family's "must be true" list (orchestrator, as the lists arrive). Done 10 Oct 26: all seven families (cards with one change: the University of Oklahoma tile is text only; docs unchanged).
+- [x] cards, 12 comps plus the closing channel card: built; two fix rounds, receipts in (10 Oct 26).
+- [x] docs, 10 comps: built; fix round receipt in (8 of 8 rows, 10 Oct 26 04:30).
+- [x] Meaning check of each family's "must be true" list (orchestrator, as the lists arrive). Done 10 Oct 26: all seven families (cards with one change: the University of Oklahoma tile is text only; docs unchanged).
 - Road layout all families share, measured from OpenStreetMap road geometry (Overpass, 10 Oct 26): US-81 lon -97.9379; Alfadale Road 1.05 mi and Radio Road 2.04 mi east of it; Reuter Road lat 35.4790; Reno Road 1.00 mi south; Interstate 40 about 1.52 mi north at US-81; research car (530 m west of Radio Road) 1.71 mi east of US-81. Metro frame px: US-81 x 503.2, Radio Road x 572.7, car x 561.5, Reuter y 518.9, I-40 y 467.2.
-- [ ] Settled-frame read of every comp over its footage (Opus verifier, then one frame each by the orchestrator). Verifier mg-verify-1 started 10 Oct 26 on map21, drawings, replot, roads (36 comps); report at `.qc-tmp/verify-1/REPORT.md`. Maps, docs, cards follow.
+- [x] Settled-frame read of every comp over its footage: two Opus verifiers (reports in `.qc-tmp/verify-1/`, verifier 2: 16 pass, 16 fix of 32 reached), then one frame of each of the 68 hosts by the orchestrator (see "Graphics over their real footage" under Edit).
 
 ## Voice (owner, 10 Oct 26: "my own voice will and must be the way ... clone can do good")
 - [x] Owner sent his recording; cleaned to `assets/voice/owner-sid-clone-ref.wav` (untracked until he picks his voice), cloned on its own (10 Oct 26)
@@ -42,7 +42,7 @@ Owner, 10 Oct 26: "clips are good. go ahead. move faster." Status is read from t
 - [x] Fix round done by five Opus builders (map21, drawings, replot, roads, cards) from verifier 1's 29 rows; all five report `graphics_qc` PASS 68 compositions and sweep check 7 PASS (10 Oct 26, 03:25). Committed and pushed.
 - [x] Verifier 1 re-check (10 Oct 26): of its 29 rows, 27 fixed, 2 partly, 6 new. Verifier 2's first read of maps, docs and cards: 20 rows (7 maps, 8 docs, 5 cards). Findings filed in `learnings/mg.md` 2026-10-10, `references/mg-brief-template.md` 7a, `references/mg-quickref.md` "Verify", `ops/tasks.md`.
 - [x] Fix round 2 (the last allowed) done for replot, drawings, roads; receipts in.
-- [ ] Fix round 2 for map21 (comp edits committed 04:01, receipt not seen) and cards (running); fix round 1 for maps and docs (running). Then the verifier re-reads the maps and docs fixes.
+- [x] Fix round 2 for map21 and cards, fix round 1 for maps and docs: receipts in (the two lines below). No verifier re-read after them; the orchestrator's frame read is the last read.
 - [x] News clips, first, middle and last frame of all eight mounts read (10 Oct 26, 04:14): the ABC aerial showed the anchor's face before 2.6 s and after 12.6 s of the file, and the KFOR creek clip opened on the station's wipe. Mounts moved inside the clean spans (`v-t1s1-jam`, `v-a1s4-jam` 9.5 s, `v-a1s4-road` from 208.41, `v-a4s4-creek` in-point 3.7). Lint and sweep pass after.
 - [x] Every footage mount read (10 Oct 26, 04:20): five frames across each of the 18 stock mounts and one frame of each of the 10 stills (sheets in `.qc-tmp/cuts/`). No watermark, burned-in text or end-of-file flash. Two Moore survey photos (9286 and 9355) are 800 px wide and will look soft at full frame for their 4.05 s and 3.45 s; a larger original is worth one search.
 - [x] A1-S4 footage replaced (10 Oct 26, 04:30): the card over it says "Tornado · Oklahoma City · 2013" for the whole 20.83 s, and a stock highway clip from another city sat under 11.33 s of that. Now three clips of that evening's own ABC footage: `v-a1s4-city` (green sky over the city, 3.8 s), `v-a1s4-wet` (new to the timeline, 7.5 s), `v-a1s4-jam` (9.53 s, under the Rita split). `v-a1s4-road` is gone; the stock file's unused tail is trimmed to 16.68 s (original in `media/_orig/`). Lint, sweep and media budget pass after.
@@ -51,12 +51,13 @@ Owner, 10 Oct 26: "clips are good. go ahead. move faster." Status is read from t
 - [x] Graphics over their real footage: one settled frame of each of the 68 hosts read by the orchestrator (10 Oct 26, 04:40; `npx hyperframes@0.8.114 snapshot` at 72 % of each window; sheets in `.qc-tmp/cuts/all68/`). Each label that names a place or a date checked against the file under it. One more found and fixed: the Henderson card says "near El Reno" and sat over a stock dusk landscape with hedged hills; the clip under it is now a close shot of grass in rain (`v-a1s5-grass`), which reads as no particular place. Nothing else sent back; the two fix rounds are used.
 - Seen in that read and left as they are: `g-a1s7-map21` right side empty (18.4 %, inside the rule); `g-a5s10-map21` shows its hollow marker about 2.7 s before its label; `g-a5s11-returns` and the two other mounts of the ABC night aerial look soft at full frame (the source is 720p).
 - [ ] Not read by anyone: both seek orders for the map21 family; any graphic in motion.
-- [ ] The Weather Channel crew sequence (A3-S3, A3-S4): owner confirms the insert before any render
+- The Weather Channel crew sequence (A3-S3, A3-S4): the owner's confirm before any render is the `crew_cut` line below.
 - [x] Sound layer mounted (10 Oct 26, 03:26): two baked ambience stems (`bake_beds.py`: score, rain, two sirens, every drop-out from the script), 22 swells ending on a line, 6 hits on named cues. `audio_levels` passes every bed; its only failures are Paul's six clips (file gain, fixed with the voice conversion).
 - [x] TV crew sequence rebuilt to the script (10 Oct 26, 04:57). The voice now stops on "kept recording" and the clip's own sound plays alone for six seconds (`ins-crew-sound`, 562.48 to 568.48, declared `hold-crew`). Picture is one continuous take from a longer cut of the same source (`twc-crew-vehicle-cabin-tornado-2.mp4`, 548.67 to 579.02): the first cut stopped before the camera settles. Red figure "185 mph" on its word (`pf-185`). Everything from 562.5 s on moved 6.0 s later by a one-shot content-blind transform (scratch `.qc-tmp/retime_plus6.py`, never committed, to be declared in the PR body); beds re-baked; film is now 1333.38 s. Lint and sweep pass; the level gate passes the crew sound. Nine frames read.
 - Left out on purpose: the script's "200 yards" line over the settled frame. The Anderson quote card is on that frame, and "about 200 yards" is already drawn in `g-i1s6-roads` and `g-a3s13-split`.
 - [ ] Owner: tick `crew_cut` on http://127.0.0.1:8811/elreno-crew.html (the cut with its sound, three stills). No render before that tick.
+- [x] Paul's six clips level-fixed in place (10 Oct 26, 05:05): file gains +8.3 to +11.9 dB, means now -16.7 to -16.9 dB against the narration median -16.5 dB; Flow originals kept beside them as `*.flowlevel.mp4`. `audio_levels` PASS, 112 elements.
 - [ ] Sound still open: mixdown with ebur128 per 15 s window; owner's ear on the bed.
-- [ ] Outro card (Z1-S3)
+- [x] Outro card (Z1-S3): `host-outro` (`g-outro`) mounted 1327.14 to 1333.38, read in the 68-frame pass.
 - [ ] Gates: `python3 scripts/run_gates.py episodes/ep4-el-reno` all green
 - [ ] Pin check, then draft render; absolute path posted; park for the owner
