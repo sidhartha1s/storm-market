@@ -50,7 +50,7 @@ not answer.
 **Before (A3-S11):** "It concludes that they probably had no clear direction to safety."
 **After (A3-S13):** "The S U V met that vortex crossing the highway, and was carried about two hundred yards."
 
-All three rest on the one-vortex reading, which still carries its verify tag in A2-S11 and A3-S8. If that tag fails, this slot is rewritten.
+All three rest on the one-vortex reading, which still carries its verify tag in I1-S8, A2-S11 and A3-S8. If that tag fails, this slot is rewritten.
 
 1. It was one vortex. It crossed the highway at about fifty six miles an hour. Over Reuter Road it sat nearly still for about twenty seconds. (26 words)
 2. One crew met it moving at about fifty six miles an hour. The other met the same vortex nearly still, for about twenty seconds. (24 words; it overlaps the narration line that follows)
