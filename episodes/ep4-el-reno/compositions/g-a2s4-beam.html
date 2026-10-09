@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a2s4-beam (A2-S4) · window 6.45 s · brief: mg_specs/cards.md
+     Full frame. Two public domain photographs of mobile research radars (media/provenance-pd.csv rows 21 and 23); neither
+     is from 31 May 2013, so each caption says what the photo is. Below them a schematic beam drawn low across a field
+     to the ring. Cues are audio/a2-s4.words.json seconds. -->
+<template>
+<style>
+  #bm4-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .bm4-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  .bm4-tile { position:absolute; top:90px; height:440px; overflow:hidden; border-radius:14px; border:1px solid rgba(255,255,255,0.22);
+    box-shadow:0 18px 50px rgba(0,0,0,0.55); background:#0b1016; }
+  .bm4-tile img { position:absolute; left:0; top:0; width:100%; height:100%; object-fit:cover; }
+  .bm4-h { opacity:0; visibility:hidden; }
+  .bm4-name { position:absolute; top:548px; font:700 34px Arial, sans-serif; letter-spacing:1px; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .bm4-team { position:absolute; top:553px; font:italic 28px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+  .bm4-cap { position:absolute; top:598px; font:700 19px Arial, sans-serif; letter-spacing:1px; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .bm4-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .bm4-big { position:absolute; left:470px; top:770px; font:900 52px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .bm4-note { position:absolute; left:150px; top:992px; font:700 19px Arial, sans-serif; letter-spacing:4px; color:#93a3b2; white-space:nowrap; line-height:1; }
+</style>
+<div id="bm4-root" data-composition-id="g-a2s4-beam" data-width="1920" data-height="1080" data-duration="6.45">
+  <div class="bm4-grid" id="bm4-grid"></div>
+  <div class="bm4-tile" id="bm4-ta" style="left:150px; width:634px"><img src="media/pd/noaa-smart-r-mobile-radar-1.png" alt=""></div>
+  <div class="bm4-tile bm4-h" id="bm4-tb" style="left:870px; width:660px"><img src="media/pd/nssl-doppler-on-wheels-dow7-1.jpg" alt=""></div>
+  <div class="bm4-name" id="bm4-na" style="left:150px">University of Oklahoma</div>
+  <div class="bm4-cap" id="bm4-ca" style="left:150px">Photo: SMART-R mobile radar, undated. Not the 2013 truck. NOAA</div>
+  <div class="bm4-name bm4-h" id="bm4-nb" style="left:870px">Doppler on Wheels</div>
+  <div class="bm4-team bm4-h" id="bm4-tm" style="left:1196px">Joshua Wurman&rsquo;s team</div>
+  <div class="bm4-cap bm4-h" id="bm4-cb" style="left:870px">Photo: DOW 7 in 2015. NOAA NSSL</div>
+  <svg class="bm4-svg" viewBox="0 0 1920 1080">
+    <line x1="150" y1="962" x2="1540" y2="962" stroke="#5a6b7c" stroke-width="3" stroke-linecap="round"/>
+    <!-- the tornado's ring, seen low and side-on -->
+    <ellipse id="bm4-ring" cx="1340" cy="904" rx="160" ry="44" fill="none" stroke="#c8d3e0" stroke-width="2.5" stroke-dasharray="14 10"/>
+    <ellipse id="bm4-core" cx="1340" cy="904" rx="76" ry="21" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="8 8"/>
+    <!-- the beam, low over the field -->
+    <polygon id="bm4-beam" points="238,892 1184,874 1184,934" fill="rgba(127,178,229,0.16)" stroke="#7fb2e5" stroke-width="1.5" stroke-linejoin="round"/>
+    <!-- radar truck -->
+    <g fill="none" stroke="#c8d3e0" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M168 950 L168 918 L286 918 L286 950 Z M286 950 L286 928 L318 928 L330 940 L330 950 Z"/>
+      <circle cx="198" cy="954" r="8" fill="#0b1016"/><circle cx="300" cy="954" r="8" fill="#0b1016"/>
+      <path d="M226 918 L226 894 M238 868 Q214 892 238 916 M226 892 L238 892"/>
+    </g>
+  </svg>
+  <div class="bm4-big bm4-h" id="bm4-big">Near the ground</div>
+  <div class="bm4-note">SCHEMATIC</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var D = 6.45, P = "#bm4-";
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }
+  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, t); }
+  s0(P + "beam", { scaleX: 0, svgOrigin: "238 904" });
+
+  /* ambient, whole window: grid drift, the ring's air keeps moving */
+  tl.fromTo(P + "grid", { x: 0 }, { x: 90, duration: D, ease: "none" }, 0);
+  tl.fromTo(P + "ring", { strokeDashoffset: 0 }, { strokeDashoffset: -240, duration: D, ease: "none" }, 0);
+  tl.fromTo(P + "core", { strokeDashoffset: 0 }, { strokeDashoffset: -160, duration: D, ease: "none" }, 0);
+
+  /* TWO RESEARCH RADAR TEAMS @0.00-1.20: the first photograph is in frame at 0 and settles, the second lands on "research" */
+  tl.fromTo([P + "ta", P + "na", P + "ca"], { x: -40 }, { x: 0, duration: 0.8, ease: "power3.out" }, 0);
+  show("tb", 0.44, 60, 0);
+  show("nb", 0.60, 0, 18);
+  show("tm", 0.72, 0, 18);
+  show("cb", 0.82, 0, 18);
+  tl.fromTo(P + "ta img", { scale: 1.06 }, { scale: 1, duration: D, ease: "none" }, 0);
+  tl.fromTo(P + "tb img", { scale: 1 }, { scale: 1.06, duration: D, ease: "none" }, 0);
+  /* THEIR BEAMS @3.66: the beam draws low across the field to the ring */
+  tl.to(P + "beam", { scaleX: 1, duration: 1.1, ease: "power2.out" }, 3.66);
+  /* NEAR THE GROUND @5.04 */
+  show("big", 5.04, 0, 22);
+  window.__timelines["g-a2s4-beam"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
