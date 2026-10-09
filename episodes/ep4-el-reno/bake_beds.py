@@ -92,8 +92,7 @@ for name, t0, t1, loop_at in STEMS:
     for start, env in SIRENS:
         if t0 <= start < t1:
             cmd += ["-i", str(SIREN)]
-            n = (len(cmd) - 6) // 2 - 1 + 0   # index of the input just added
-            n = sum(1 for c in cmd if c == "-i") - 1
+            n = sum(1 for c in cmd if c == "-i") - 1   # index of the input just added
             chains.append(f"[{n}]aformat=sample_rates=44100:channel_layouts=stereo,adelay={int((start - t0) * 1000)}:all=1,{vol(env)}[s{n}]")
             mix.append(f"[s{n}]")
     graph = ";".join(chains) + ";" + "".join(mix) + f"amix=inputs={len(mix)}:normalize=0:duration=longest,atrim=0:{dur:.3f},alimiter=limit=0.9"
