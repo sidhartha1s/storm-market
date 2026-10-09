@@ -59,7 +59,7 @@ number, place or quote that is not in `fact_check.md` or the segment's Picture n
 | g-a1s4-rita | "TORNADO" "Oklahoma City" "2013"; "HURRICANE" "Rita" "2005"; "NWS Service Assessment" (SA) | 0.52; 14.84, 15.26, 15.88; 11.90 |
 | g-a1s5-henderson | eight pins, four lit; "NEAR EL RENO"; "Richard Henderson" (News 9; SA table count) | 0.56; 5.54; 9.60 |
 | g-a1s6-clock | popfig "6:05 PM"; rail "6:00" "6:05" "6:10" "6:15" "6:20 PM"; "6:03 PM · touchdown"; "2 minutes"; "About 10 minutes later"; "Phone cut out"; "TWO SONS" "Robbie" "Wyatt" (local TV 2014; OUN 6:03) | 0.60; 2.00; 2.74; 6.62; 12.08; 13.72, 14.92, 15.48 |
-| g-a2s4-beam | "University of Oklahoma"; "Doppler on Wheels · Joshua Wurman's team"; captions "Photo: SMART-R mobile radar, undated. Not the 2013 truck. NOAA" and "Photo: DOW 7 in 2015. NOAA NSSL"; "Near the ground"; "SCHEMATIC" | 0.00, 0.44; beam 3.66; 5.04 |
+| g-a2s4-beam | "University" / "of Oklahoma" (text only); "Doppler on Wheels · Joshua Wurman's team"; caption "Photo: DOW 7 in 2015. NOAA NSSL"; "Near the ground"; "SCHEMATIC" | 0.00, 0.44; beam 3.66; 5.04 |
 | g-a3s4-quotes | "Mike Bettes" · "It was like we were floating. We were tumbling. We were airborne at least one point and we were floating." · "weather.com" | 0.00; 0.76, 2.52, 3.82 |
 | | "Austin Anderson" · "Next thing I know, we're flying into the tornado through the air. The glass in the truck blew out and we were upside down." · "weather.com" | 6.28; 6.58, 7.14 |
 | g-a3s10-names | "NWS Service Assessment" · "some of the most experienced and safety-minded chasers" (SA, read directly) | 0.68, 2.78 |
