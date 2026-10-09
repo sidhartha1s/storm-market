@@ -52,7 +52,7 @@ window.__timelines = window.__timelines || {};
   /* AT THE HOUR @0.52: the label names the aerial beneath */
   tl.fromTo(P + "okc", hid(-60, 0), vis(), 0.52);
   tl.to(P + "okc", { x: 125, duration: 19.2, ease: "none" }, 1.0);   /* slow drift right, 6.5 px/s, to the exit */
-  /* THE ASSESSMENT FOUND @11.90: the source of the comparison, on the centre line */
+  /* THE ASSESSMENT FOUND @11.90: the source of the comparison, wholly on the night side (x 1004 to 1404), clear of the divider */
   tl.fromTo(P + "srcbox", hid(0, 24), vis(), 11.90);
   /* HURRICANE @14.84: the frame splits; RITA @15.26 · 2005 @15.88 */
   tl.fromTo(P + "div", { autoAlpha: 0, scaleY: 0, transformOrigin: "50% 0%" }, { autoAlpha: 1, scaleY: 1, duration: 0.5, ease: "power3.out" }, 14.84);
