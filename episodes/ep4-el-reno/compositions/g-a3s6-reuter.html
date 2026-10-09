@@ -88,8 +88,8 @@ window.__timelines = window.__timelines || {};
   const NS = "http://www.w3.org/2000/svg";
   function el(parent, tag, a) { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
   const grid = document.getElementById("u6-grid");
-  /* half-mile field lines (320 px), faint */
-  [450, 1090, 1730].forEach(function (x) { el(grid, "line", { x1: x, y1: 0, x2: x, y2: 1080, stroke: "#16212c", "stroke-width": 1.5 }); });
+  /* field lines, faint: midway US-81 to Alfadale (x 466), midway Alfadale to Radio (x 1118.8), half a mile past Radio (x 1755.6); each stops short of the text it would cross */
+  [[466, 215, 925], [1118.8, 250, 1080], [1755.6, 200, 1080]].forEach(function (v) { el(grid, "line", { x1: v[0], y1: v[1], x2: v[0], y2: v[2], stroke: "#16212c", "stroke-width": 1.5 }); });
   [300, 940].forEach(function (y) { el(grid, "line", { x1: 0, y1: y, x2: 1920, y2: y, stroke: "#16212c", "stroke-width": 1.5 }); });
   /* rain streaks over the whole frame, drawn past the edges so the drift never shows a gap */
   const rg = document.getElementById("u6-rain");
