@@ -2,6 +2,19 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 2026-10-10 - ep4-el-reno: the timeline was built from the voice files alone and lost what the script's picture notes ask for
+- Found at the last read before the draft, by the orchestrator, after every gate was green: the locked script stops the
+  voice on "kept recording" and gives the TV crew clip six seconds of its own sound; the timeline had no gap and the
+  clip was muted. The same picture note names a "185 mph" readout that nobody built. The clip itself had been cut
+  before its ending (the source runs 40 s; the cut stopped at 28 s, before the camera settles).
+- Cost: a 6.0 s retime of everything after 562.5 s (120 start times, 16 picture moves, 59 bed breakpoints, 49 timeline
+  rows), a re-pull of the clip and a re-bake of both ambience stems, hours after the graphics were verified.
+- **Rule:** when the timeline is laid out from the voice files, walk every segment's `**Picture:**` note once and list
+  each thing it asks for that is not a clip or a graphic already in the mount list: holds, a clip's own sound, readouts,
+  silences. Each one gets its seconds in the timeline or a line saying why it is left out, before any builder starts.
+  A news pull that the script uses to its end is fetched whole and read to its last frame before it is cut.
+- The lint passes a missing hold (it only fails a gap that exists), so no gate can catch this. It is a reading step.
+
 ## 2026-09-23 - CTA moves late by default; hooks carry zero fluff; the owner edits scripts in a review loop
 - CTA: the owner judged the 30-40 % placement was not converting and only annoyed viewers. The documentary default is
   now 85-95 % (`config.yaml channel.cta.window`), placed where it does not interrupt a reveal. He may move it again.
