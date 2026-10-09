@@ -6,7 +6,8 @@
      Overlay: root transparent for the whole window. Beneath: the 2013 traffic aerial full frame; from 14.84 s the Rita
      photograph in the left box (x 0 to 956, y 0 to 1080), the aerial stays in the right box (x 964 to 1920).
      This comp draws only the divider, the two labels and the source of the comparison (NWS Service Assessment).
-     Cues are audio/a1-s4.words.json seconds. -->
+     Cues are audio/a1-s4.words.json seconds. Every timeline position is a literal number (sweep check 7); the Oklahoma
+     City label drifts right 125 px (x 1060 to 1185) and the Rita label left 32 px (x 128 to 96), about 6.5 px/s. -->
 <template>
 <style>
   #rt4-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
@@ -30,7 +31,7 @@
     <div class="rt4-name">Oklahoma City</div>
     <div class="rt4-yr">2013</div>
   </div>
-  <div class="rt4-glass rt4-h" id="rt4-rita" style="left:96px; top:96px; width:420px; height:194px">
+  <div class="rt4-glass rt4-h" id="rt4-rita" style="left:128px; top:96px; width:420px; height:194px">
     <div class="rt4-eb">HURRICANE</div>
     <div class="rt4-name rt4-h" id="rt4-rn">Rita</div>
     <div class="rt4-yr rt4-h" id="rt4-ry">2005</div>
@@ -44,26 +45,26 @@ window.__timelines = window.__timelines || {};
 (function () {
   var D = 20.83, P = "#rt4-";
   var tl = gsap.timeline({ paused: true });
-  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, t); }
-  function float(id, a, b) { var n = Math.floor((b - a) / 1.9) - 1; if (n >= 0) tl.to(P + id, { y: -6, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: n }, a); }
+  function hid(dx, dy) { return { autoAlpha: 0, x: dx, y: dy }; }
+  function vis() { return { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }; }
 
   /* AT THE HOUR @0.52: the label names the aerial beneath */
-  show("okc", 0.52, 60, 0);
-  float("okc", 1.1, 20.1);
+  tl.fromTo(P + "okc", hid(-60, 0), vis(), 0.52);
+  tl.to(P + "okc", { x: 125, duration: 19.2, ease: "none" }, 1.0);   /* slow drift right, 6.5 px/s, to the exit */
   /* THE ASSESSMENT FOUND @11.90: the source of the comparison, on the centre line */
-  show("srcbox", 11.90, 0, 24);
+  tl.fromTo(P + "srcbox", hid(0, 24), vis(), 11.90);
   /* HURRICANE @14.84: the frame splits; RITA @15.26 · 2005 @15.88 */
   tl.fromTo(P + "div", { autoAlpha: 0, scaleY: 0, transformOrigin: "50% 0%" }, { autoAlpha: 1, scaleY: 1, duration: 0.5, ease: "power3.out" }, 14.84);
-  show("rita", 14.84, -60, 0);
-  show("rn", 15.26, 0, 20);
-  show("ry", 15.88, -24, 0);
-  float("rita", 16.4, 20.1);
+  tl.fromTo(P + "rita", hid(60, 0), vis(), 14.84);
+  tl.fromTo(P + "rn", hid(0, 20), vis(), 15.26);
+  tl.fromTo(P + "ry", hid(-24, 0), vis(), 15.88);
+  tl.to(P + "rita", { x: -32, duration: 4.9, ease: "none" }, 15.32);   /* slow drift left, 6.5 px/s, to the exit */
   tl.fromTo(P + "blip", { autoAlpha: 0, y: -160 }, { autoAlpha: 1, y: 1100, duration: 2.3, ease: "none", repeat: 1 }, 15.5);
   /* exit: the labels slide out to their own sides */
-  tl.to(P + "okc", { x: 1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
-  tl.to(P + "rita", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
-  tl.to(P + "srcbox", { y: 220, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
-  tl.to([P + "div", P + "blip"], { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, D - 0.3);
+  tl.to(P + "okc", { x: 1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 20.23);
+  tl.to(P + "rita", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 20.23);
+  tl.to(P + "srcbox", { y: 220, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 20.23);
+  tl.to([P + "div", P + "blip"], { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 20.53);
   window.__timelines["g-a1s4-rita"] = tl;
 })();
 </script>
