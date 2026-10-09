@@ -383,7 +383,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 *([loop L6 closes]: the broadcast advice and the weather office's own one PM message, side by side.)*
 
 ### A4-S16 — narration
-**Picture:** [RS] the 21-pin map, full, every pin lit. Roads and drains carry pins; the building icons across the whole city stay unlit. On the second sentence a slow push in to the house outline at NW 26th and Meridian, unlit, with seven pins beside it. The bed drops out on the question. Pin places as in the I1-S4 tag: fifteen of the twenty-one are sourced so far.
+**Picture:** [RS] the 21-pin map, full, every pin lit. Roads and drains carry pins; the building icons across the whole city stay unlit. On the second sentence a slow push in to the house outline at NW 26th and Meridian, unlit, with seven pins beside it. The bed drops out on the question. Pin places as in the I1-S4 tag: sixteen of the twenty-one are sourced so far.
 > The map has twenty one pins, on roads and in two drains. The house near Northwest twenty sixth and Meridian is on it too, a few feet from seven of them. The same map is covered in houses, stores and schools, and not one of them has a pin. Why not?
 
 *([loop L7 open]: what is missing from the 21-pin map. It is L1 asked aloud. Closes in A5.)*
