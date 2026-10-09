@@ -44,17 +44,22 @@
       <circle id="s1-ctr" cx="0" cy="0" r="7" fill="#c8d3e0"/>
     </g>
     <text class="s1-rl" x="778" y="76">US-81</text>
-    <text class="s1-rl s1-rls" x="96" y="316">REUTER ROAD</text>
-    <text class="s1-rl s1-rls" x="96" y="616">RENO ROAD</text>
+    <!-- the left labels and the scale come on once the arriving ring has passed them, so the ring line never crosses text -->
+    <text id="s1-lre" class="s1-rl s1-rls s1-hid" x="96" y="316">REUTER ROAD</text>
+    <text id="s1-lrn" class="s1-rl s1-rls s1-hid" x="96" y="616">RENO ROAD</text>
     <g id="s1-north">
-      <path d="M1000 140 L1000 82 M989 99 L1000 78 L1011 99" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <text class="s1-rl" x="1000" y="172" text-anchor="middle">N</text>
+      <path d="M680 140 L680 82 M669 99 L680 78 L691 99" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text class="s1-rl" x="680" y="172" text-anchor="middle">N</text>
     </g>
     <!-- scale bar: 300 px = 1 mile -->
-    <line x1="96" y1="905" x2="396" y2="905" stroke="#dfe7ee" stroke-width="3"/>
-    <line x1="96" y1="895" x2="96" y2="915" stroke="#dfe7ee" stroke-width="3"/>
-    <line x1="396" y1="895" x2="396" y2="915" stroke="#dfe7ee" stroke-width="3"/>
-    <text class="s1-rl" x="96" y="883">1 MILE</text>
+    <g id="s1-scale" class="s1-hid">
+      <line x1="96" y1="905" x2="396" y2="905" stroke="#dfe7ee" stroke-width="3"/>
+      <line x1="96" y1="895" x2="96" y2="915" stroke="#dfe7ee" stroke-width="3"/>
+      <line x1="396" y1="895" x2="396" y2="915" stroke="#dfe7ee" stroke-width="3"/>
+      <text class="s1-rl" x="96" y="883">1 MILE</text>
+    </g>
+    <!-- the vehicle's name stays above the ring (ring top y 220 at its highest), in the mark's colour: a tag riding the mark is crossed by the ring line -->
+    <text id="s1-tag" class="s1-tag s1-hid" x="790" y="200" style="fill:#7fb2e5">THE WEATHER CHANNEL</text>
     <!-- the way through to the south side -->
     <g id="s1-way" class="s1-hid">
       <line id="s1-wayl" x1="760" y1="600" x2="760" y2="992" stroke="#7fb2e5" stroke-width="5" stroke-dasharray="14 12"/>
