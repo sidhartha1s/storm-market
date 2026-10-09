@@ -88,7 +88,7 @@ window.__timelines = window.__timelines || {};
   const DUR = 11.7;
   const tl = gsap.timeline({ paused: true });
   /* hidden from the first frame: set now (a paused timeline has not rendered its time-0 sets yet) and again at 0 */
-  const HIDE = [P + "sv", P + "ghost", P + "track", P + "left", P + "right", P + "s1", P + "s2", P + "t-sch1", P + "t-sch2", P + "bar", P + "t-bar", P + "t-src"];
+  const HIDE = [P + "sv", P + "ghost", P + "track", P + "suv", P + "car", P + "left", P + "right", P + "s1", P + "s2", P + "t-sch1", P + "t-sch2", P + "bar", P + "t-bar", P + "t-src"];
   gsap.set(HIDE, { autoAlpha: 0 });
   gsap.set(P + "sv", { x: 1000, y: 630 });
   gsap.set(P + "ring", { opacity: 0.4 });
