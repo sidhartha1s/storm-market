@@ -95,7 +95,8 @@ window.__timelines = window.__timelines || {};
   run(0, 8, 0.66, 4.6);                  /* TORNADO @0.66: south-east leg, slow */
   tl.fromTo(P + "panel", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 3.8); /* SPEED @3.80 */
   gsap.set(P + "more", { autoAlpha: 0 });
-  tl.fromTo(P + "num", { scale: 1.25, transformOrigin: "right center" }, { scale: 1, duration: 0.4, ease: "power3.out" }, 5.08); /* 35 @5.08 */
+  /* the panel title lands on SPEED @3.80; the number, its "about" and the source land on 35 @5.08 */
+  tl.fromTo([P + "pre", P + "numrow", P + "src"], { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.08); /* 35 @5.08 */
   run(8, 13, 4.6, 6.4);                  /* east leg quickens */
   const SP = { v: 35 };
   tl.to(SP, { v: 50, duration: 1.5, ease: "power2.in", onUpdate: function () {
