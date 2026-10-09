@@ -59,7 +59,7 @@ Maps (I1-S2, A5-S1, Z1-S1): metro frame, x = (lon + 98.20) * 1920, y = (35.70 - 
 6. Section 4.5: the two sentences are lit separately, in two colours, with a thin rule between them and no arrow or bracket joining them. The word "killed" on that line is never lit and stays unreadable (the unlit page is blurred).
 7. Clock: starts at 6:03, runs backward, stops at 1:00; the gap reads "5 hours".
 8. "295 mph" carries the event page as its source and the page's words "at least"; the 4 June statement card does not contain it.
-9. The EF5 mark sits on the El Reno track (metro x 247 to 676, y 453 to 581).
+9. "EF5" sits directly under the western leg of the El Reno track and west of the US-81 line (screen x 258 to 458, y 598 to 690; the track above it runs y 517 to 581, US-81 is at x 503), so neither the track nor the road passes through the letters; a ring pulse on the track itself (468, 581) marks where it lands. (Spec changed to match the comp, 10 Oct 26 fix round: the earlier wording put the letters on the line.)
 10. A4-S15: the name cards are large glass cards; the 1 PM message is a small beige note with its condition ("If you choose") underlined. Different kind, different size.
 11. Death words: "lost", "did not survive". Names are text only. No photographs of people.
 12. Nothing appears before its spoken word; counts shown never exceed the count spoken so far.
