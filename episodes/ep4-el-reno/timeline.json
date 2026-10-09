@@ -275,6 +275,13 @@
    "end": 562.48
   },
   {
+   "id": "ins-crew-sound",
+   "kind": "hold",
+   "start": 562.48,
+   "dur": 6.0,
+   "end": 568.48
+  },
+  {
    "id": "nx-a3-s4",
    "kind": "narration",
    "start": 568.78,
