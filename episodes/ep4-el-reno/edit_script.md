@@ -157,7 +157,7 @@ Richard Henderson's age; the date the rating went back to E F three (the June 4 
 
 ### A1-S5 — narration
 **Picture:** [HUMAN] the map slides west to El Reno. Text-only name card "Richard Henderson". A public domain or licensed shot of the tornado over fields; his own photograph is not used without a licence. His pin lights on the map; its place is one of the six still unsourced under the I1-S4 tag.
-> But half of the people that tornado took were not running from it. West of the city, near El Reno, one man was driving toward the storm. Richard Henderson drove a truck for a living and chased storms as a hobby. He was thirty five [verify: Richard Henderson's age; Appendix C has an unnamed thirty five year old on a storm chasing line], and he had left his home nearby to see this one.
+> But half of the people that tornado took were not running from it. West of the city, near El Reno, one man was driving toward the storm. Richard Henderson drove a truck for a living and chased storms as a hobby. He was thirty five, and he had left his home nearby to see this one.
 
 ### A1-S6 — narration
 **Picture:** [RS] popfig "6:05 PM" on the g-clock, two minutes past the touchdown mark. The clock runs ten minutes forward and stops. The bed cuts to silence on "cut out" and stays out for one second. Then two small text cards, "Robbie" and "Wyatt". No assessment card here: its sentence on him carries a hard flag word, so it is paraphrased in the voice only.
