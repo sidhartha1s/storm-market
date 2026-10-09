@@ -109,6 +109,9 @@ window.__timelines = window.__timelines || {};
   const HIDE = [P + "sv", P + "ghost", P + "track", P + "flash1", P + "flash2", P + "suv", P + "car", P + "t-us81", P + "t-reuter", P + "lead", P + "t-one", P + "t-suv", P + "t-time", P + "t-approx", P + "t-later", P + "t-car", P + "hl1", P + "hl2", P + "t-sch1", P + "t-sch2"];
   gsap.set(HIDE, { autoAlpha: 0 });
   gsap.set(P + "sv", { x: 1000, y: 630 });
+  /* pivots set once, outside the timeline, so a flash ring grows about its marker whatever was seeked before */
+  gsap.set(P + "flash1", { svgOrigin: "1000 630" });
+  gsap.set(P + "flash2", { svgOrigin: "1513 330" });
   tl.set(HIDE, { autoAlpha: 0 }, 0);
   tl.set(P + "sv", { x: 1000, y: 630 }, 0);
 
