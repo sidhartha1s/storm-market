@@ -121,7 +121,7 @@ window.__timelines = window.__timelines || {};
   /* inside a circulation @10.98: the ring answers. 45 @12.68: fields laid across it */
   tl.to(P + "edge", { attr: { "stroke-width": 9 }, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.inside);
   tl.to([P + "lead", P + "t-sv"], { autoAlpha: 0, duration: 0.3 }, CUES.inside + 0.9);
-  tl.fromTo(P + "fieldrow", { autoAlpha: 1, scaleX: 0, svgOrigin: "650 548" }, { scaleX: 1, duration: 1.0, ease: "power2.out", immediateRender: false }, CUES.n45 - 0.5);
+  tl.fromTo(P + "fieldrow", { autoAlpha: 0, scaleX: 0, svgOrigin: "650 548" }, { autoAlpha: 1, scaleX: 1, duration: 1.0, ease: "power2.out" }, CUES.n45 - 0.5);
   tl.fromTo(P + "t-45", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.n45);
   window.__timelines[ID] = tl;
 })();
