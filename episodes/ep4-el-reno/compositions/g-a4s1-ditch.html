@@ -5,6 +5,8 @@
 <!--
   g-a4s1-ditch · A4-S1 · window 16.11 s · brief: mg_specs/drawings.md
   Claim: the drainage ditch was a few feet from the family's own door (News 9). Seven dots at the door. No water.
+  Layout: the drawing is shown 1.25x through the svg viewBox (70 216 1536 864); svg coordinates are the brief's,
+  frame px = (x - 70) * 1.25, (y - 216) * 1.25. The ground line runs the full frame width.
   Cues are comp-local seconds from audio/a4-s1.words.json.
 -->
 <template>
@@ -18,19 +20,19 @@
     background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,.07), rgba(127,178,229,0)); }
   .dt1-svg { position:absolute; left:0; top:0; }
   .dt1-lab { position:absolute; font-weight:700; white-space:nowrap; }
-  .dt1-small { font-size:22px; letter-spacing:3px; color:#93a3b2; }
-  .dt1-note { font-size:20px; letter-spacing:2px; color:#93a3b2; }
-  .dt1-src { font-size:20px; letter-spacing:2px; color:#c8d3e0; }
-  .dt1-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:64px; color:#f2f5f8; }
-  .dt1-name { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; }
-  .dt1-place { font-size:30px; letter-spacing:1px; color:#dfe7ee; }
-  .dt1-rule { position:absolute; left:140px; top:104px; width:200px; height:3px; background:#d8a13a; }
+  .dt1-small { font-size:28px; letter-spacing:3px; color:#93a3b2; }
+  .dt1-note { font-size:22px; letter-spacing:2px; color:#93a3b2; }
+  .dt1-src { font-size:24px; letter-spacing:2px; color:#c8d3e0; }
+  .dt1-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:72px; line-height:80px; color:#f2f5f8; }
+  .dt1-name { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:64px; color:#f2f5f8; }
+  .dt1-place { font-size:34px; letter-spacing:1px; color:#dfe7ee; }
+  .dt1-rule { position:absolute; left:140px; top:76px; width:200px; height:3px; background:#d8a13a; }
 </style>
 <div id="dt1-root" class="dt1-root" data-composition-id="g-a4s1-ditch" data-width="1920" data-height="1080" data-duration="16.11">
   <div class="dt1-grid" id="dt1-grid"></div>
   <div class="dt1-sweep" id="dt1-sweep"></div>
 
-  <svg class="dt1-svg" id="dt1-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <svg class="dt1-svg" id="dt1-svg" width="1920" height="1080" viewBox="70 216 1536 864">
     <defs>
       <pattern id="dt1-hatch" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
         <line x1="0" y1="0" x2="0" y2="26" stroke="#7fb2e5" stroke-width="3"/>
@@ -38,8 +40,8 @@
     </defs>
     <g id="dt1-site">
       <!-- earth band under the ground line and round the ditch: section convention, no depth claimed -->
-      <polygon points="96,766 998,766 1068,906 1332,906 1402,766 1590,766 1590,800 1424,800 1354,940 1046,940 976,800 96,800" fill="url(#dt1-hatch)" opacity="0.35"/>
-      <path id="dt1-gnd" d="M96 760 L1000 760 L1070 900 L1330 900 L1400 760 L1590 760" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+      <polygon points="60,766 998,766 1068,906 1332,906 1402,766 1620,766 1620,800 1424,800 1354,940 1046,940 976,800 60,800" fill="url(#dt1-hatch)" opacity="0.35"/>
+      <path id="dt1-gnd" d="M60 760 L1000 760 L1070 900 L1330 900 L1400 760 L1620 760" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
       <!-- the house: one storey, slab on grade -->
       <rect x="300" y="746" width="584" height="16" fill="#dfe7ee" fill-opacity="0.85" stroke="#f2f5f8" stroke-width="3"/>
       <polyline points="276,572 592,440 908,572" fill="none" stroke="#f2f5f8" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
@@ -53,7 +55,7 @@
     <!-- the measure: door to the near edge of the ditch -->
     <path id="dt1-dim" d="M864 700 L1000 700" fill="none" stroke="#d8a13a" stroke-width="4"/>
     <path id="dt1-tick" d="M1000 684 L1000 716" fill="none" stroke="#d8a13a" stroke-width="4" stroke-linecap="round"/>
-    <path id="dt1-ld-few" d="M954 668 L934 696" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+    <path id="dt1-ld-few" d="M1024 648 L958 694" fill="none" stroke="#f2f5f8" stroke-width="2"/>
     <!-- seven people: seven identical dots at the door -->
     <circle class="dt1-dot" cx="700" cy="730" r="9" fill="#f2f5f8"/>
     <circle class="dt1-dot" cx="722" cy="730" r="9" fill="#f2f5f8"/>
@@ -64,15 +66,15 @@
     <circle class="dt1-dot" cx="832" cy="730" r="9" fill="#f2f5f8"/>
   </svg>
 
-  <div class="dt1-lab dt1-small" id="dt1-l-door" style="left:776px; top:584px">Door</div>
-  <div class="dt1-lab dt1-small" id="dt1-l-ditch" style="left:1100px; top:958px">Drainage ditch</div>
-  <div class="dt1-lab dt1-big" id="dt1-l-few" style="left:960px; top:566px">A few feet</div>
-  <div class="dt1-lab dt1-src" id="dt1-l-src" style="left:964px; top:636px">News 9, June 2013</div>
+  <div class="dt1-lab dt1-small" id="dt1-l-door" style="left:900px; top:446px">Door</div>
+  <div class="dt1-lab dt1-small" id="dt1-l-ditch" style="left:1280px; top:916px">Drainage ditch</div>
+  <div class="dt1-lab dt1-big" id="dt1-l-few" style="left:1200px; top:470px">A few feet</div>
+  <div class="dt1-lab dt1-src" id="dt1-l-src" style="left:1204px; top:564px">News 9, June 2013</div>
   <div class="dt1-lab dt1-note" id="dt1-l-schem" style="left:110px; top:992px">Schematic, not to scale</div>
 
   <div class="dt1-rule" id="dt1-rule"></div>
-  <div class="dt1-lab dt1-name" id="dt1-l-name" style="left:140px; top:124px">Samuel Cifuentes</div>
-  <div class="dt1-lab dt1-place" id="dt1-l-place" style="left:143px; top:200px">Near NW 26th St and Meridian</div>
+  <div class="dt1-lab dt1-name" id="dt1-l-name" style="left:140px; top:92px">Samuel Cifuentes</div>
+  <div class="dt1-lab dt1-place" id="dt1-l-place" style="left:143px; top:168px">Near NW 26th St and Meridian</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
