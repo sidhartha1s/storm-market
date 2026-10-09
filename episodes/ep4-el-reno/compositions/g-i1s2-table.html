@@ -200,7 +200,7 @@ window.__timelines = window.__timelines || {};
   show("r2v", 12.80, 0, 20); show("r2l", 13.24, -20, 0);    /* Eighteen other tornadoes @12.80 */
   show("pl-er2", 13.45); show("pl-okc", 13.55);
   grey.forEach(function (e, i) { tl.set(e, { opacity: 1 }, 14.06 + i * 0.12); tl.to(e, { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, 14.06 + i * 0.12); });   /* touched down @14.06 */
-  show("gt", 14.30, 0, 14);
+  show("gt", 14.30, 0, 14); show("gt2", 14.30, 0, 14);
   show("r3v", 16.28, 0, 20); show("r3l", 16.60, -20, 0);    /* None took a life @16.28 */
   hide("pl-er2", 16.90); hide("pl-okc", 16.90); hide("gt", 16.90);
   tl.to(track, { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 16.95);   /* back to the west view g-i1s3-pins opens on (no track line there) */
