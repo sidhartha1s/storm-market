@@ -36,6 +36,15 @@ Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or t
 | 17 | gate: one stillness number (graphics_qc idle 3.0/2.5 s -> 4.0 s, idle hard, idle-budget removed) | - | done 26 Sep 26, PR fix/stillness-4s |
 | 18 | library sweep: dark chips and colour-block stamps left in bulletin-typewriter.html, ranked-bars.html, ef-ladder.html, cards.css .stamp, snippets/usage-examples.html | - | todo |
 
+## Gates from the El Reno graphics rounds (owner 10 Oct 26: "improve it. like CICD"; findings in `learnings/mg.md` 2026-10-10)
+| # | task | PR | status |
+|---|---|---|---|
+| 1 | Seek-order gate: stage each comp, capture every cue second forward-only and after a seek to 0, fail on a differing state (prototype: `episodes/ep4-el-reno/.qc-tmp/replot-stage/seekcheck.mjs`, 11 comps, 1,795 sample times) | | todo |
+| 2 | Label-over-painted-shape check in `graphics_qc.mjs`: sample points across every visible text box at each cue and through the first 0.5 s, fail when a line, ring or dot paints under it | | todo |
+| 3 | `lint_timeline.py`: a comp that declares a transparent span needs a track 1 picture under that span (today the track 2 host counts as picture and the hole renders black) | | todo |
+| 4 | Media probe: fail a JPEG that does not end with the end marker (headless Chrome left a truncated one unpainted in 3 of 4 loads) | | todo |
+| 5 | `run_gates.py` in every builder's done line is not enough: `sweep_episode.py` check 7 must run per family during the build; add it to the MG builder brief generator if one is ever made | | todo |
+
 ## Parked until the new laptop (owner 28 Sep 26; source review: howseen-ai/claude-motion-design)
 Current box: 16 GB RAM, GTX 1650 4 GB; full renders already hit the commit-memory limit. Revisit when the new laptop arrives.
 | # | task | why parked | status |
