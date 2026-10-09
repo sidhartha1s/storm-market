@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a4s8-timeline (A4-S8) · window 17.51 s · brief: mg_specs/cards.md
+     Full frame. Twelve flood pins in their two groups (7 and 5, 21-pin map blue), a thirteenth apart, labelled "65".
+     Then a plain bar from 1934 (x 300) to 2013 (x 1440), y 720, with nothing between the two ends.
+     Source: NWS Service Assessment. Cues are audio/a4-s8.words.json seconds. -->
+<template>
+<style>
+  #tb8-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .tb8-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  .tb8-sweep { position:absolute; left:0; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,.07), rgba(127,178,229,0)); }
+  .tb8-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .tb8-h { opacity:0; visibility:hidden; }
+  .tb8-eb { position:absolute; font:700 22px Arial, sans-serif; letter-spacing:6px; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .tb8-age { position:absolute; left:1046px; top:226px; font:900 64px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .tb8-veh { position:absolute; left:1160px; top:252px; font:italic 30px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+  .tb8-row { position:absolute; left:200px; top:400px; font:700 38px Arial, sans-serif; letter-spacing:1px; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .tb8-src { position:absolute; left:202px; top:462px; font:italic 28px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+  .tb8-bar { position:absolute; left:300px; top:717px; width:1140px; height:6px; border-radius:3px; background:#c8d3e0; }
+  .tb8-cap { position:absolute; top:696px; width:4px; height:48px; border-radius:2px; background:#f2f5f8; }
+  .tb8-yr { position:absolute; top:764px; font:900 64px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+</style>
+<div id="tb8-root" data-composition-id="g-a4s8-timeline" data-width="1920" data-height="1080" data-duration="17.51">
+  <div class="tb8-grid" id="tb8-grid"></div>
+  <div class="tb8-sweep" id="tb8-sweep"></div>
+  <svg class="tb8-svg" id="tb8-pins" viewBox="0 0 1920 1080"></svg>
+  <div class="tb8-eb tb8-h" id="tb8-eb" style="left:200px; top:150px">13 LOST TO FLOOD WATER</div>
+  <div class="tb8-age tb8-h" id="tb8-age">65</div>
+  <div class="tb8-veh tb8-h" id="tb8-veh">in a vehicle</div>
+  <div class="tb8-row tb8-h" id="tb8-row">Oklahoma City&rsquo;s worst flood for lives lost</div>
+  <div class="tb8-src tb8-h" id="tb8-src">NWS Service Assessment</div>
+  <div class="tb8-eb tb8-h" id="tb8-eb2" style="left:300px; top:640px">FLASH FLOODS &middot; NORMAN FORECAST AREA</div>
+  <div class="tb8-bar" id="tb8-bar"></div>
+  <div class="tb8-cap tb8-h" id="tb8-capr" style="left:1438px"></div>
+  <div class="tb8-cap tb8-h" id="tb8-capl" style="left:298px"></div>
+  <div class="tb8-yr tb8-h" id="tb8-y2" style="left:1240px; width:200px; text-align:right">2013</div>
+  <div class="tb8-yr tb8-h" id="tb8-y1" style="left:300px">1934</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var D = 17.51, P = "#tb8-", NS = "http://www.w3.org/2000/svg";
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }
+  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, t); }
+  function el(tag, a) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); document.getElementById("tb8-pins").appendChild(e); return e; }
+  s0(P + "bar", { scaleX: 0, transformOrigin: "right center" });
+
+  /* pins: 7 + 5 lit from the start (placed in A4-S2 and A4-S5), the thirteenth apart */
+  var xs = [], i;
+  for (i = 0; i < 7; i++) xs.push(214 + i * 46);
+  for (i = 0; i < 5; i++) xs.push(600 + i * 46);
+  xs.forEach(function (x) { el("circle", { cx: x, cy: 256, r: 13, fill: "#7fb2e5", stroke: "#f2f5f8", "stroke-width": 1.6 }); });
+  var o = "1000 256";
+  var halo = el("circle", { cx: 1000, cy: 256, r: 13, fill: "none", stroke: "#7fb2e5", "stroke-width": 2, opacity: 0 });
+  var ring = el("circle", { cx: 1000, cy: 256, r: 13, fill: "#0b1016", stroke: "#93a3b2", "stroke-width": 1.8, opacity: 0 });
+  var dot = el("circle", { cx: 1000, cy: 256, r: 13, fill: "#7fb2e5", stroke: "#f2f5f8", "stroke-width": 1.6, opacity: 0 });
+  s0(halo, { opacity: 0, scale: 1, svgOrigin: o }); s0(ring, { opacity: 0 }); s0(dot, { opacity: 0, scale: 0, svgOrigin: o });
+
+  /* ambient, whole window */
+  tl.fromTo(P + "sweep", { x: -560 }, { x: 2300, duration: 5.83, ease: "none", repeat: 2 }, 0);
+  tl.fromTo(P + "grid", { x: 0 }, { x: 110, duration: D, ease: "none" }, 0);
+
+  /* THE 13TH @0.58: one more pin, apart from the others · LIFE LOST TO THE WATER @1.22 */
+  tl.set(ring, { opacity: 1 }, 0.58);
+  tl.set(dot, { opacity: 1 }, 0.58);
+  tl.to(dot, { scale: 1, duration: 0.45, ease: "back.out(3)" }, 0.58);
+  tl.fromTo(halo, { scale: 1, opacity: 0.7 }, { scale: 2.8, opacity: 0, duration: 1.3, ease: "power2.out", repeat: 4, repeatDelay: 0.6, immediateRender: false }, 0.95);
+  show("eb", 1.22, -24, 0);
+  /* A MAN OF 65 @3.40 · IN A VEHICLE @4.40 */
+  show("age", 3.40, 0, 22);
+  show("veh", 4.40, -24, 0);
+  /* THE ASSESSMENT @6.00 · THE WORST FLOOD OKLAHOMA CITY HAS EVER HAD @7.00 */
+  show("src", 6.00, -24, 0);
+  show("row", 7.00, 0, 22);
+  /* THE REGION THE NORMAN OFFICE COVERS @11.34 */
+  show("eb2", 11.34, -24, 0);
+  /* IT WAS @13.20: the bar runs back from 2013 · SINCE 1934 @15.66 */
+  show("capr", 13.20, 0, -16);
+  show("y2", 13.20, 0, 22);
+  tl.to(P + "bar", { scaleX: 1, duration: 2.3, ease: "power2.inOut" }, 13.30);
+  show("capl", 15.60, 0, -16);
+  show("y1", 15.66, 0, 22);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-a4s8-timeline"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
