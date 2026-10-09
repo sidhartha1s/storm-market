@@ -7,6 +7,8 @@
   Return 1 (0.0-5.7 s): the house and ditch drawing with its "a few feet" measure, opaque ground.
   Return 2 (5.7-11.0 s): the ROOT IS TRANSPARENT for the traffic aerial mounted beneath by the editor; only a
   glass card with the assessment's words sits in that span.
+  Layout: the drawing is shown 1.4x through the svg viewBox (152 318 1371.43 771.43); svg coordinates are the
+  brief's, frame px = (x - 152) * 1.4, (y - 318) * 1.4. The ground line runs the full frame width.
   Cues are comp-local seconds from audio/a5-s11.words.json.
 -->
 <template>
@@ -20,11 +22,11 @@
     background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,.07), rgba(127,178,229,0)); }
   .rt11-svg { position:absolute; left:0; top:0; }
   .rt11-lab { position:absolute; font-weight:700; white-space:nowrap; }
-  .rt11-small { font-size:22px; letter-spacing:3px; color:#93a3b2; }
-  .rt11-mid { font-size:28px; letter-spacing:1px; color:#dfe7ee; }
-  .rt11-note { font-size:20px; letter-spacing:2px; color:#93a3b2; }
-  .rt11-src { font-size:20px; letter-spacing:2px; color:#c8d3e0; }
-  .rt11-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:64px; color:#f2f5f8; }
+  .rt11-small { font-size:26px; letter-spacing:3px; color:#93a3b2; }
+  .rt11-mid { font-size:32px; letter-spacing:1px; color:#dfe7ee; }
+  .rt11-note { font-size:22px; letter-spacing:2px; color:#93a3b2; }
+  .rt11-src { font-size:24px; letter-spacing:2px; color:#c8d3e0; }
+  .rt11-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:76px; line-height:86px; color:#f2f5f8; }
   .rt11-card { position:absolute; left:110px; top:770px; width:1130px; height:200px; box-sizing:border-box; border-radius:28px;
     background:rgba(10,16,24,.55); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(18px) saturate(1.15); }
   .rt11-q { position:absolute; left:52px; top:36px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-weight:400;
@@ -37,7 +39,7 @@
     <div class="rt11-grid" id="rt11-grid"></div>
     <div class="rt11-sweep" id="rt11-sweep"></div>
 
-    <svg class="rt11-svg" id="rt11-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <svg class="rt11-svg" id="rt11-svg" width="1920" height="1080" viewBox="152 318 1371.43 771.43">
       <defs>
         <pattern id="rt11-hatch" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
           <line x1="0" y1="0" x2="0" y2="26" stroke="#7fb2e5" stroke-width="3"/>
@@ -45,8 +47,8 @@
       </defs>
       <g id="rt11-site">
         <!-- earth band under the ground line and round the ditch: section convention, no depth claimed -->
-        <polygon points="96,766 998,766 1068,906 1332,906 1402,766 1590,766 1590,800 1424,800 1354,940 1046,940 976,800 96,800" fill="url(#rt11-hatch)" opacity="0.35"/>
-        <path id="rt11-gnd" d="M96 760 L1000 760 L1070 900 L1330 900 L1400 760 L1590 760" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <polygon points="140,766 998,766 1068,906 1332,906 1402,766 1540,766 1540,800 1424,800 1354,940 1046,940 976,800 140,800" fill="url(#rt11-hatch)" opacity="0.35"/>
+        <path id="rt11-gnd" d="M140 760 L1000 760 L1070 900 L1330 900 L1400 760 L1540 760" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
         <!-- the house: one storey, slab on grade -->
         <rect x="300" y="746" width="584" height="16" fill="#dfe7ee" fill-opacity="0.85" stroke="#f2f5f8" stroke-width="3"/>
         <polyline points="276,572 592,440 908,572" fill="none" stroke="#f2f5f8" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
@@ -62,7 +64,7 @@
       <!-- the measure: door to the near edge of the ditch -->
       <path id="rt11-dim" d="M864 700 L1000 700" fill="none" stroke="#d8a13a" stroke-width="4"/>
       <path id="rt11-tick" d="M1000 684 L1000 716" fill="none" stroke="#d8a13a" stroke-width="4" stroke-linecap="round"/>
-      <path id="rt11-ld-few" d="M954 668 L934 696" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+      <path id="rt11-ld-few" d="M1025 641 L952 695" fill="none" stroke="#f2f5f8" stroke-width="2"/>
       <!-- seven people: seven identical dots under the table -->
       <circle class="rt11-dot" cx="1134" cy="884" r="9" fill="#f2f5f8"/>
       <circle class="rt11-dot" cx="1156" cy="884" r="9" fill="#f2f5f8"/>
@@ -73,10 +75,10 @@
       <circle class="rt11-dot" cx="1266" cy="884" r="9" fill="#f2f5f8"/>
     </svg>
 
-    <div class="rt11-lab rt11-mid" id="rt11-l-door" style="left:618px; top:582px">Their own door</div>
-    <div class="rt11-lab rt11-small" id="rt11-l-ditch" style="left:1100px; top:958px">Drainage ditch</div>
-    <div class="rt11-lab rt11-big" id="rt11-l-few" style="left:960px; top:566px">A few feet</div>
-    <div class="rt11-lab rt11-src" id="rt11-l-src" style="left:964px; top:636px">News 9, June 2013</div>
+    <div class="rt11-lab rt11-mid" id="rt11-l-door" style="left:730px; top:356px">Their own door</div>
+    <div class="rt11-lab rt11-small" id="rt11-l-ditch" style="left:1340px; top:884px">Drainage ditch</div>
+    <div class="rt11-lab rt11-big" id="rt11-l-few" style="left:1230px; top:380px">A few feet</div>
+    <div class="rt11-lab rt11-src" id="rt11-l-src" style="left:1234px; top:480px">News 9, June 2013</div>
     <div class="rt11-lab rt11-note" id="rt11-l-schem" style="left:110px; top:992px">Schematic, not to scale</div>
   </div>
 
