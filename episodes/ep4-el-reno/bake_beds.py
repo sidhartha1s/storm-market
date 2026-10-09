@@ -27,16 +27,16 @@ BED = [  # the score. 1 = full bed
     (402.4, 1), (403, .5), (411.6, .5), (412.2, .7), (421.9, .7), (422.6, 1),   # A2-S3 thins; Paul clip 3
     (517.9, 1), (518.4, 0), (521.06, 0), (523, 1),        # A2-S11: out on the question, back after the blackout
     (547.9, 1), (548.67, 0),                              # the TV crew's sequence carries no bed
-    (573.02, 0), (575, .75),                              # A3-S5: back in, lower than before
-    (637, .75), (637.5, 0), (645.9, 0), (646.8, .75),     # A3-S8: everything out under the counter
-    (684.9, .75), (685.4, 0), (686.1, 0), (687, .75),     # A3-S10: silence after the three names
-    (698, .75), (698.6, .6), (707.5, .6), (708.2, .75),   # Paul clip 4
-    (737.6, .75), (738.6, .4), (750.9, .4), (751.66, 0),  # A3-S14: thins to rain; out at the ad's blackout
-    (778.07, 0), (780, .85),                              # Act 4 opens after the ad
-    (833.2, .85), (834.2, .4), (838.25, .4), (838.6, 0), (841, 0), (842.5, .85),   # A4-S4: water, then silence after "survived"
-    (1063.2, .85), (1063.6, 0), (1065.58, 0), (1067.5, .85),                         # A4-S16: out on "Why not?"
-    (1263.6, .85), (1268.6, 1.5), (1268.94, 1.5), (1269.1, 0),                       # A5-S12: rises under the last sentence, stops with it
-    (1280.21, 0), (1282, .8), (1323.5, .8), (1327.3, 0),                             # the close
+    (579.02, 0), (581, .75),                              # A3-S5: back in, lower than before
+    (643, .75), (643.5, 0), (651.9, 0), (652.8, .75),     # A3-S8: everything out under the counter
+    (690.9, .75), (691.4, 0), (692.1, 0), (693, .75),     # A3-S10: silence after the three names
+    (704, .75), (704.6, .6), (713.5, .6), (714.2, .75),   # Paul clip 4
+    (743.6, .75), (744.6, .4), (756.9, .4), (757.66, 0),  # A3-S14: thins to rain; out at the ad's blackout
+    (784.07, 0), (786, .85),                              # Act 4 opens after the ad
+    (839.2, .85), (840.2, .4), (844.25, .4), (844.6, 0), (847, 0), (848.5, .85),   # A4-S4: water, then silence after "survived"
+    (1069.2, .85), (1069.6, 0), (1071.58, 0), (1073.5, .85),                         # A4-S16: out on "Why not?"
+    (1269.6, .85), (1274.6, 1.5), (1274.94, 1.5), (1275.1, 0),                       # A5-S12: rises under the last sentence, stops with it
+    (1286.21, 0), (1288, .8), (1329.5, .8), (1333.3, 0),                             # the close
 ]
 DRONE_ENV = [(0, 0), (.8, 1), (17.5, 1), (21, 0)]         # hook: low drone from 0:00
 RAIN_ENV = [  # the rain loop is about 10 dB quieter than the score, so its level here runs above 1
@@ -44,16 +44,16 @@ RAIN_ENV = [  # the rain loop is about 10 dB quieter than the score, so its leve
     (315.5, 0), (317, 1.4), (325.5, 1.4), (327, 0),       # A1-S11 the wall of rain
     (362.6, 0), (364.5, 1.4), (383, 1.4), (384.5, 0),     # A2-S2 rain fills the ring
     (480.6, 0), (482, 1.4), (497, 1.4), (498.5, 0),       # A2-S10 inside the rain
-    (737.6, 0), (739, 1.8), (750.9, 1.8), (751.66, 0),        # A3-S14 thins to rain
-    (826.9, 0), (828.5, 1.6), (838.25, 1.6), (838.6, 0),  # A4-S4 water
-    (845.26, 0), (847, 1), (879.5, 1), (881, 0),      # A4-S5 and A4-S6 the drain
-    (986.5, 0), (988, 1), (999, 1), (1000, 0),        # A4-S12 windshield
+    (743.6, 0), (745, 1.8), (756.9, 1.8), (757.66, 0),        # A3-S14 thins to rain
+    (832.9, 0), (834.5, 1.6), (844.25, 1.6), (844.6, 0),  # A4-S4 water
+    (851.26, 0), (853, 1), (885.5, 1), (887, 0),      # A4-S5 and A4-S6 the drain
+    (992.5, 0), (994, 1), (1005, 1), (1006, 0),        # A4-S12 windshield
 ]
 SIRENS = [  # (episode second the siren file starts, its envelope)
     (150.08, [(150.08, 0), (151.5, 2.5), (161.5, 2.5), (164.5, 0)]),   # A1-S1 warnings going out
-    (784.8, [(784.8, 0), (786.3, 2.5), (792.5, 2.5), (795, 0)]),       # A4-S1 "When the tornado sirens sounded"
+    (790.8, [(790.8, 0), (792.3, 2.5), (798.5, 2.5), (801, 0)]),       # A4-S1 "When the tornado sirens sounded"
 ]
-STEMS = [("elreno-bed-a.mp3", 0.0, 751.66, 0.0), ("elreno-bed-b.mp3", 778.07, 1327.38, 200.0)]   # name, from, to, where in the score loop it starts
+STEMS = [("elreno-bed-a.mp3", 0.0, 757.66, 0.0), ("elreno-bed-b.mp3", 784.07, 1333.38, 200.0)]   # name, from, to, where in the score loop it starts
 
 
 def expr(points, shift):

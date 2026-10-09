@@ -1,5 +1,5 @@
 {
- "total": 1327.38,
+ "total": 1333.38,
  "rows": [
   {
    "id": "ins-paul-1",
@@ -277,345 +277,345 @@
   {
    "id": "nx-a3-s4",
    "kind": "narration",
-   "start": 562.78,
+   "start": 568.78,
    "dur": 9.934,
-   "end": 572.72
+   "end": 578.72
   },
   {
    "id": "nx-a3-s5",
    "kind": "narration",
-   "start": 573.02,
+   "start": 579.02,
    "dur": 14.19,
-   "end": 587.21
+   "end": 593.21
   },
   {
    "id": "nx-a3-s6",
    "kind": "narration",
-   "start": 587.51,
+   "start": 593.51,
    "dur": 20.573,
-   "end": 608.08
+   "end": 614.08
   },
   {
    "id": "nx-a3-s7",
    "kind": "narration",
-   "start": 608.38,
+   "start": 614.38,
    "dur": 17.125,
-   "end": 625.5
+   "end": 631.5
   },
   {
    "id": "nx-a3-s8",
    "kind": "narration",
-   "start": 625.8,
+   "start": 631.8,
    "dur": 20.487,
-   "end": 646.29
+   "end": 652.29
   },
   {
    "id": "nx-a3-s9",
    "kind": "narration",
-   "start": 646.59,
+   "start": 652.59,
    "dur": 18.445,
-   "end": 665.04
+   "end": 671.04
   },
   {
    "id": "nx-a3-s10",
    "kind": "narration",
-   "start": 665.34,
+   "start": 671.34,
    "dur": 20.487,
-   "end": 685.82
+   "end": 691.82
   },
   {
    "id": "nx-a3-s11",
    "kind": "narration",
-   "start": 686.12,
+   "start": 692.12,
    "dur": 11.977,
-   "end": 698.1
+   "end": 704.1
   },
   {
    "id": "ins-paul-4",
    "kind": "paul:a3-s12",
-   "start": 698.4,
+   "start": 704.4,
    "dur": 9.0,
-   "end": 707.4
+   "end": 713.4
   },
   {
    "id": "nx-a3-s13",
    "kind": "narration",
-   "start": 707.7,
+   "start": 713.7,
    "dur": 23.934,
-   "end": 731.63
+   "end": 737.63
   },
   {
    "id": "nx-a3-s14",
    "kind": "narration",
-   "start": 731.93,
+   "start": 737.93,
    "dur": 10.742,
-   "end": 742.68
+   "end": 748.68
   },
   {
    "id": "ins-paul-5",
    "kind": "paul:a3-s15",
-   "start": 742.98,
+   "start": 748.98,
    "dur": 8.68,
-   "end": 751.66
+   "end": 757.66
   },
   {
    "id": "bo-cta-in",
    "kind": "blackout",
-   "start": 751.66,
+   "start": 757.66,
    "dur": 1.0,
-   "end": 752.66
+   "end": 758.66
   },
   {
    "id": "ins-cta-paul",
    "kind": "cta",
-   "start": 752.66,
+   "start": 758.66,
    "dur": 24.417,
-   "end": 777.07
+   "end": 783.07
   },
   {
    "id": "bo-cta-out",
    "kind": "blackout",
-   "start": 777.07,
+   "start": 783.07,
    "dur": 1.0,
-   "end": 778.07
+   "end": 784.07
   },
   {
    "id": "nx-a4-s1",
    "kind": "narration",
-   "start": 778.07,
+   "start": 784.07,
    "dur": 15.806,
-   "end": 793.88
+   "end": 799.88
   },
   {
    "id": "nx-a4-s2",
    "kind": "narration",
-   "start": 794.18,
+   "start": 800.18,
    "dur": 12.147,
-   "end": 806.33
+   "end": 812.33
   },
   {
    "id": "nx-a4-s3",
    "kind": "narration",
-   "start": 806.63,
+   "start": 812.63,
    "dur": 20.487,
-   "end": 827.11
+   "end": 833.11
   },
   {
    "id": "nx-a4-s4",
    "kind": "narration",
-   "start": 827.41,
+   "start": 833.41,
    "dur": 17.551,
-   "end": 844.96
+   "end": 850.96
   },
   {
    "id": "nx-a4-s5",
    "kind": "narration",
-   "start": 845.26,
+   "start": 851.26,
    "dur": 14.403,
-   "end": 859.67
+   "end": 865.67
   },
   {
    "id": "nx-a4-s6",
    "kind": "narration",
-   "start": 859.97,
+   "start": 865.97,
    "dur": 20.7,
-   "end": 880.67
+   "end": 886.67
   },
   {
    "id": "nx-a4-s7",
    "kind": "narration",
-   "start": 880.97,
+   "start": 886.97,
    "dur": 23.423,
-   "end": 904.39
+   "end": 910.39
   },
   {
    "id": "nx-a4-s8",
    "kind": "narration",
-   "start": 904.69,
+   "start": 910.69,
    "dur": 17.21,
-   "end": 921.9
+   "end": 927.9
   },
   {
    "id": "nx-a4-s9",
    "kind": "narration",
-   "start": 922.2,
+   "start": 928.2,
    "dur": 15.21,
-   "end": 937.41
+   "end": 943.41
   },
   {
    "id": "nx-a4-s10",
    "kind": "narration",
-   "start": 937.71,
+   "start": 943.71,
    "dur": 10.445,
-   "end": 948.16
+   "end": 954.16
   },
   {
    "id": "nx-a4-s11",
    "kind": "narration",
-   "start": 948.46,
+   "start": 954.46,
    "dur": 25.253,
-   "end": 973.71
+   "end": 979.71
   },
   {
    "id": "nx-a4-s12",
    "kind": "narration",
-   "start": 974.01,
+   "start": 980.01,
    "dur": 25.636,
-   "end": 999.64
+   "end": 1005.64
   },
   {
    "id": "nx-a4-s13",
    "kind": "narration",
-   "start": 999.94,
+   "start": 1005.94,
    "dur": 18.062,
-   "end": 1018.01
+   "end": 1024.01
   },
   {
    "id": "nx-a4-s14",
    "kind": "narration",
-   "start": 1018.31,
+   "start": 1024.31,
    "dur": 14.488,
-   "end": 1032.79
+   "end": 1038.79
   },
   {
    "id": "nx-a4-s15",
    "kind": "narration",
-   "start": 1033.09,
+   "start": 1039.09,
    "dur": 13.509,
-   "end": 1046.6
+   "end": 1052.6
   },
   {
    "id": "nx-a4-s16",
    "kind": "narration",
-   "start": 1046.9,
+   "start": 1052.9,
    "dur": 17.678,
-   "end": 1064.58
+   "end": 1070.58
   },
   {
    "id": "bo-a4",
    "kind": "blackout",
-   "start": 1064.58,
+   "start": 1070.58,
    "dur": 0.8,
-   "end": 1065.38
+   "end": 1071.38
   },
   {
    "id": "nx-a5-s1",
    "kind": "narration",
-   "start": 1065.58,
+   "start": 1071.58,
    "dur": 15.423,
-   "end": 1081.0
+   "end": 1087.0
   },
   {
    "id": "nx-a5-s2",
    "kind": "narration",
-   "start": 1081.3,
+   "start": 1087.3,
    "dur": 11.636,
-   "end": 1092.94
+   "end": 1098.94
   },
   {
    "id": "nx-a5-s3",
    "kind": "narration",
-   "start": 1093.24,
+   "start": 1099.24,
    "dur": 22.997,
-   "end": 1116.24
+   "end": 1122.24
   },
   {
    "id": "nx-a5-s4",
    "kind": "narration",
-   "start": 1116.54,
+   "start": 1122.54,
    "dur": 21.424,
-   "end": 1137.96
+   "end": 1143.96
   },
   {
    "id": "nx-a5-s5",
    "kind": "narration",
-   "start": 1138.26,
+   "start": 1144.26,
    "dur": 26.913,
-   "end": 1165.17
+   "end": 1171.17
   },
   {
    "id": "nx-a5-s6",
    "kind": "narration",
-   "start": 1165.47,
+   "start": 1171.47,
    "dur": 9.849,
-   "end": 1175.32
+   "end": 1181.32
   },
   {
    "id": "nx-a5-s7",
    "kind": "narration",
-   "start": 1175.62,
+   "start": 1181.62,
    "dur": 23.806,
-   "end": 1199.43
+   "end": 1205.43
   },
   {
    "id": "nx-a5-s8",
    "kind": "narration",
-   "start": 1199.73,
+   "start": 1205.73,
    "dur": 13.041,
-   "end": 1212.77
+   "end": 1218.77
   },
   {
    "id": "nx-a5-s9",
    "kind": "narration",
-   "start": 1213.07,
+   "start": 1219.07,
    "dur": 17.678,
-   "end": 1230.75
+   "end": 1236.75
   },
   {
    "id": "nx-a5-s10",
    "kind": "narration",
-   "start": 1231.05,
+   "start": 1237.05,
    "dur": 13.849,
-   "end": 1244.9
+   "end": 1250.9
   },
   {
    "id": "nx-a5-s11",
    "kind": "narration",
-   "start": 1245.2,
+   "start": 1251.2,
    "dur": 10.7,
-   "end": 1255.9
+   "end": 1261.9
   },
   {
    "id": "nx-a5-s12",
    "kind": "narration",
-   "start": 1256.2,
+   "start": 1262.2,
    "dur": 13.211,
-   "end": 1269.41
+   "end": 1275.41
   },
   {
    "id": "ins-paul-6",
    "kind": "paul:a5-s13",
-   "start": 1269.71,
+   "start": 1275.71,
    "dur": 9.5,
-   "end": 1279.21
+   "end": 1285.21
   },
   {
    "id": "bo-a5",
    "kind": "blackout",
-   "start": 1279.21,
+   "start": 1285.21,
    "dur": 0.8,
-   "end": 1280.01
+   "end": 1286.01
   },
   {
    "id": "nx-z1-s1",
    "kind": "narration",
-   "start": 1280.21,
+   "start": 1286.21,
    "dur": 23.891,
-   "end": 1304.1
+   "end": 1310.1
   },
   {
    "id": "nx-z1-s2",
    "kind": "narration",
-   "start": 1304.4,
+   "start": 1310.4,
    "dur": 4.445,
-   "end": 1308.84
+   "end": 1314.84
   },
   {
    "id": "nx-z1-s3",
    "kind": "narration",
-   "start": 1309.14,
+   "start": 1315.14,
    "dur": 14.232,
-   "end": 1323.38
+   "end": 1329.38
   }
  ]
 }
