@@ -135,7 +135,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "vr", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.still);
   tl.fromTo(P + "sr", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.reuter);
   tl.to(P + "reuter", { attr: { "stroke-width": 12 }, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.reuter);
-  tl.fromTo(P + "l650", { autoAlpha: 1, scale: 0, svgOrigin: "1090 420" }, { scale: 1, duration: 0.9, ease: "power2.out", immediateRender: false }, CUES.carried2);
+  tl.fromTo(P + "l650", { autoAlpha: 0, scale: 0, svgOrigin: "1090 420" }, { autoAlpha: 1, scale: 1, duration: 0.9, ease: "power2.out" }, CUES.carried2);
   tl.fromTo(P + "t-650", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.three);
 
   /* speed at the highway @13.56: the paper's line on the injuries. Cobalt's light build @18.50: its line on the car */
