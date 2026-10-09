@@ -57,7 +57,7 @@ number, place or quote that is not in `fact_check.md` or the segment's Picture n
 | | tag "Moore · May 20, 2013 · EF5" / "11 DAYS EARLIER" | 5.30 to 10.70 |
 | | card "A 2022 STUDY", "Weather, Climate, and Society, 2022", "6 metro areas", "2011 to 2018", "This was the largest" (WCAS 2022; voice) | 11.32, 11.44, 14.34, 14.98, 16.96 |
 | g-i1s7-names | "Tim Samaras" "55", "Paul Samaras" "24", "Carl Young" "45" (SA ages; W14 names) | 2.96, 4.58, 5.46 |
-| | clock "6:19 PM" "US-81", "Minutes later" "REUTER ROAD"; map labels "US-81", "REUTER ROAD", "RADIO ROAD", "RENO ROAD", "1 MILE", "N", "VEHICLE POSITIONS APPROXIMATE" (OUN, W14; roads.md) | 7.36; strike pulse 7.08 |
+| | clock "6:19 PM" "US-81", "6:23 PM" "REUTER ROAD"; map labels "US-81", "REUTER ROAD", "RADIO ROAD", "RENO ROAD", "1 MILE", "N", "VEHICLE POSITIONS APPROXIMATE" (OUN, W14; roads.md) | 7.36; strike pulse 7.08 |
 | g-a1s1-sentence | stamp "Oklahoma City" / "May 31, 2013 · evening" (Picture note) | 0.38 to 2.90 |
 | | "…telling listeners" / "they would be unable to survive" / "if not underground" · "NWS Service Assessment" (SA) | 3.30, 3.94, 4.92; source 7.64 |
 | | "THE STANDING ADVICE" / "sheltering in place" (SA, same page) | 12.60, 16.24 |
