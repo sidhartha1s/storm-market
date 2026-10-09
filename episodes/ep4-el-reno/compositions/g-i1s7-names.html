@@ -99,7 +99,7 @@ window.__timelines = window.__timelines || {};
   var grid = document.getElementById("nm7-grid");
   function ln(x1, y1, x2, y2) { var e = document.createElementNS(NS, "line"); e.setAttribute("x1", x1); e.setAttribute("y1", y1); e.setAttribute("x2", x2); e.setAttribute("y2", y2);
     e.setAttribute("stroke", "#16212c"); e.setAttribute("stroke-width", 1.5); grid.appendChild(e); }
-  for (var x = 700 - 520 * 2 + 260; x < 1920; x += 260) ln(x, 0, x, 1080);
+  for (var x = 700 - 520 * 2 + 260; x < 1920; x += 260) if (x !== 1220 && x !== 1740) ln(x, 0, x, 1080);   /* no faint line beside Alfadale or Radio */
   for (var y = 330 - 520 + 260; y < 1080; y += 260) ln(0, y, 1920, y);
   s0(P + "m2", { x: 1500, y: 330 });
   s0(P + "fill", { scaleX: 0, transformOrigin: "left center" });
