@@ -32,7 +32,7 @@ Fix round, 10 Oct 26: Alfadale Road is 1.05 mi and Radio Road 2.04 mi east of US
 
 ## 3. GEOMETRY (px, from the numbers above)
 - 200 yards = 0.1136 mi: 59.1 px at 520 (i1s6), drawn east from US-81 (W14: east side).
-- Research car strike point, 530 m = 0.3293 mi west of Radio Road: x 1568.8 at 520 (i1s6); x 1199.2 at 640 (a3s6, the car stays west of it: the window ends near 6:22:15 PM, 80 s before the strike).
+- Research car strike point, 530 m = 0.3293 mi west of Radio Road, which is 1.71 mi east of US-81: x 1589.6 at 520 (i1s6); x 1224.8 at 640 (a3s6, the car stays west of it: the window ends near 6:22:15 PM, 80 s before the strike).
 - Field: 100 yards = 21.818 px at 384; 45 outlines = 981.8 px from the ring's west edge (x 520.8 to 1502.6); ring east edge x 1519.2, so 16.6 px (0.76 field) stays open: "more than 45". Outline height 11.6 px (53.3 yards, standard field width, a drawing proportion only).
 - a2s3 speeds share one time compression: Robinson 60 px/s for about 45 mph, so under 10 mph is under 13.4 px/s; the ring creeps at 9 px/s. The move to the 6:27 PM position is a time skip, drawn as a fast dashed-trail glide.
 - Speed bars in a2s3: 8 px per mph: 45 mph = 360 px, 10 mph = 80 px.
