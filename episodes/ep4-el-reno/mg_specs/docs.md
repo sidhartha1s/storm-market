@@ -48,7 +48,7 @@ Maps (I1-S2, A5-S1, Z1-S1): metro frame, x = (lon + 98.20) * 1920, y = (35.70 - 
 | g-a4s14-message | same card, slides 330 px left and grows to 1.35x (x 285 to 1405, y 73 to 667); lift cards left 140, top 380 |
 | g-a4s15-rec6 | card left 96, top 120, 1100 x 470; then name cards left 96 (800 wide) and the note left 1000, 560 wide |
 | g-a5s1-statement | full metro frame; rail left 96, top 64; statement card left 800, top 96, 790 x 500; readout left 96, top 740 |
-| g-a5s7-quote | root transparent; stamp left 96, top 64; lifted word left 96, top 214; quote card left 96, top 360, 1300 x 320 |
+| g-a5s7-quote | root transparent; stamp left 96, top 64, 900 x 144; lifted word left 96, top 222; quote card left 96, top 392, 1300 x 300 |
 
 ## 4. Must be true in the picture
 1. Table rows on screen are only rows dated May 31. Eight on the first page, thirteen on the second, twenty-one in all.
