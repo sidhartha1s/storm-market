@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a4s14-message (A4-S14): the 1 PM message stays up (same card as g-a4s13-clock), then "traffic jams" and "flooding"
+     lift out of it. Brief: mg_specs/docs.md. The root clears at 12.20 (transparent from 12.70): the highway aerial, then the
+     drain map, sit beneath the two lifted phrases. Cues are words.json seconds. -->
+<template>
+<style>
+  #m14-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .m14-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .m14-scan { position:absolute; left:0; top:0; width:360px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.07), rgba(127,178,229,0)); }
+  .m14-clock { position:absolute; left:0; top:0; width:760px; height:1080px; }
+  .m14-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .m14-h { opacity:0; visibility:hidden; }
+  .m14-num { font-family:Arial, sans-serif; font-weight:700; font-size:24px; fill:#93a3b2; text-anchor:middle; }
+  .m14-big { position:absolute; left:150px; width:500px; text-align:center; font:900 60px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .m14-mid { position:absolute; left:150px; width:500px; text-align:center; font:700 30px Arial, sans-serif; color:#e8c56a; letter-spacing:1px; white-space:nowrap; line-height:1; }
+  .m14-note { position:absolute; left:760px; top:150px; width:830px; height:440px; box-sizing:border-box; background:rgba(232,222,200,0.94); border-radius:18px;
+    box-shadow:0 18px 60px rgba(0,0,0,0.5); overflow:hidden; }
+  .m14-hd { position:absolute; left:40px; top:40px; font:900 32px 'Arial Black', Arial, sans-serif; color:#2a2622; letter-spacing:1px; white-space:nowrap; line-height:1; }
+  .m14-row { position:absolute; left:40px; display:flex; align-items:flex-start; gap:11px; }
+  .m14-q { font:40px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:1; }
+  .m14-w { position:relative; }
+  .m14-ul { position:absolute; left:0; right:0; bottom:-8px; height:4px; background:#8e2020; }
+  .m14-att { font:700 19px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+  .m14-lift { position:absolute; left:140px; top:380px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; overflow:hidden; }
+  .m14-lw { position:absolute; left:40px; top:28px; font:900 96px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .m14-ls { position:absolute; left:44px; top:146px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:3px; white-space:nowrap; line-height:1; }
+</style>
+<div id="m14-root" data-composition-id="g-a4s14-message" data-width="1920" data-height="1080">
+  <div class="m14-bg" id="m14-bg"></div>
+  <div class="m14-scan" id="m14-scan"></div>
+  <div class="m14-clock" id="m14-clock">
+    <svg class="m14-svg" id="m14-svg" viewBox="0 0 1920 1080"></svg>
+    <div class="m14-big" style="top:650px">1:00 PM</div>
+    <div class="m14-mid" style="top:724px">5 hours before the tornado</div>
+  </div>
+  <div class="m14-note" id="m14-note">
+    <div class="m14-hd">TORNADO SAFETY:</div>
+    <div class="m14-row" style="top:104px"><div class="m14-w"><div class="m14-q">If you choose to flee in your car,</div><div class="m14-ul" id="m14-u1"></div></div></div>
+    <div class="m14-row" style="top:160px"><div class="m14-q">plan for and anticipate traffic jams</div></div>
+    <div class="m14-row" style="top:216px"><div class="m14-q">and blocked roads,</div></div>
+    <div class="m14-row" style="top:272px"><div class="m14-q">hail,</div><div class="m14-q">heavy rain</div><div class="m14-q">and flooding.</div></div>
+    <div class="m14-row" style="top:356px"><div class="m14-w"><div class="m14-att">NWS NORMAN, 1 PM, MAY 31, 2013</div><div class="m14-ul" id="m14-u2" style="bottom:-7px;height:3px"></div></div></div>
+    <div class="m14-row" style="top:386px"><div class="m14-att">QUOTED IN THE NWS SERVICE ASSESSMENT</div></div>
+  </div>
+  <div class="m14-lift m14-h" id="m14-t1" style="width:800px"><div class="m14-lw">traffic jams</div><div class="m14-ls">NWS NORMAN, 1 PM</div></div>
+  <div class="m14-lift m14-h" id="m14-t2" style="width:600px"><div class="m14-lw">flooding</div><div class="m14-ls">NWS NORMAN, 1 PM</div></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a4s14-message", P = "m14", D = 14.78, NS = "http://www.w3.org/2000/svg", CX = 400, CY = 400, RR = 210;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+  function pt(deg, r) { var a = deg * Math.PI / 180; return [CX + r * Math.sin(a), CY - r * Math.cos(a)]; }   /* degrees clockwise from 12 */
+  var svg = $("svg");
+
+  /* ---- the stopped clock from g-a4s13-clock, at 1:00 PM, so the cut is clean; it slides away first ---- */
+  el("circle", { cx: CX, cy: CY, r: RR, fill: "rgba(10,16,24,0.55)", stroke: "#93a3b2", "stroke-width": 3 }, svg);
+  for (var i = 0; i < 12; i++) { var a = pt(i * 30, RR - 8), b = pt(i * 30, RR - (i % 3 ? 22 : 34));
+    el("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "#dfe7ee", "stroke-width": i % 3 ? 2 : 4, "stroke-linecap": "round" }, svg); }
+  [["12", 0], ["3", 90], ["6", 180], ["9", 270]].forEach(function (n) { var p = pt(n[1], RR - 62);
+    el("text", { x: p[0], y: p[1] + 9, "class": P + "-num" }, svg).textContent = n[0]; });
+  var arcPts = []; for (var d = 181.5; d >= 30; d -= 3.03) arcPts.push(pt(d, RR + 22)); arcPts.push(pt(30, RR + 22));
+  el("path", { d: arcPts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" "), fill: "none", stroke: "#e8c56a", "stroke-width": 7, "stroke-linecap": "round" }, svg);
+  var h1 = pt(30, 112), h0 = pt(210, 18);
+  el("line", { x1: h0[0], y1: h0[1], x2: h1[0], y2: h1[1], stroke: "#f2f5f8", "stroke-width": 9, "stroke-linecap": "round" }, svg);
+  el("line", { x1: CX, y1: CY + 24, x2: CX, y2: CY - 172, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, svg);
+  el("circle", { cx: CX, cy: CY, r: 9, fill: "#e8c56a" }, svg);
+
+  s0([$("u1"), $("u2")], { scaleX: 0, transformOrigin: "left center" });
+  tl.fromTo($("scan"), { x: -400 }, { x: 1960, duration: D, ease: "none" }, 0);
+  tl.to($("clock"), { x: -800, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 0.35);  /* That message @0.00: the clock leaves, the message takes the frame */
+  tl.to($("note"), { x: -330, duration: 0.8, ease: "power2.inOut" }, 0.70);
+  tl.to($("u1"), { scaleX: 1, duration: 1.4, ease: "power1.inOut" }, 4.32);              /* a car as a choice @4.32: the condition */
+  tl.to($("u2"), { scaleX: 1, duration: 0.9, ease: "power2.out" }, 7.38);                /* the office that issues the warnings @7.38 */
+  tl.to($("note"), { scale: 1.03, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, 9.74);   /* It also named @9.74 */
+  tl.to([$("bg"), $("scan")], { autoAlpha: 0, duration: 0.5, ease: "power2.inOut" }, 12.20);   /* root transparent from 12.70: aerial, then drain map */
+  tl.to($("note"), { y: -70, autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 12.22);
+  tl.fromTo($("t1"), { autoAlpha: 0, x: 760, y: -80, scale: 0.42 }, { autoAlpha: 1, x: 0, y: 0, scale: 1, duration: 0.5, ease: "power3.out", transformOrigin: "0% 0%", immediateRender: false }, 12.58);   /* the traffic @12.58 */
+  tl.to($("t1"), { x: -1100, autoAlpha: 0, duration: 0.22, ease: "power3.in" }, 13.46);
+  tl.fromTo($("t2"), { autoAlpha: 0, x: 660, y: 40, scale: 0.42 }, { autoAlpha: 1, x: 0, y: 0, scale: 1, duration: 0.5, ease: "power3.out", transformOrigin: "0% 0%", immediateRender: false }, 13.72);    /* the flood @13.72 */
+  tl.to($("t2"), { y: -8, duration: 0.5, ease: "sine.inOut" }, 14.26);
+  tl.to({}, { duration: 0.01 }, 14.77);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
