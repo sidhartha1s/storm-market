@@ -24,6 +24,9 @@
 <div id="f2-root" data-composition-id="g-a2s2-fields" data-width="1920" data-height="1080">
   <svg class="f2-svg" viewBox="0 0 1920 1080">
     <defs><clipPath id="f2-clip"><circle cx="1020" cy="540" r="497"/></clipPath>
+      <!-- keeps the rain off the core label -->
+      <filter id="f2-soft" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="9"/></filter>
+      <mask id="f2-rm" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><rect x="0" y="0" width="1920" height="1080" fill="#fff"/><rect x="792" y="576" width="456" height="54" rx="14" fill="#000" filter="url(#f2-soft)"/></mask>
       <radialGradient id="f2-fill" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1b2a38" stop-opacity="0.75"/><stop offset="100%" stop-color="#0d151d" stop-opacity="0.35"/></radialGradient></defs>
     <circle cx="1020" cy="540" r="499.2" fill="url(#f2-fill)"/>
     <circle id="f2-halo" cx="1020" cy="540" r="513" fill="none" stroke="#3b4b5c" stroke-width="2" stroke-dasharray="6 22"/>
