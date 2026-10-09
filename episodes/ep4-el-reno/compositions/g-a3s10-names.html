@@ -3,61 +3,86 @@
 <head><meta charset="UTF-8"></head>
 <body>
 <!-- g-a3s10-names (A3-S10) · window 20.78 s · brief: mg_specs/cards.md
-     Dark card, text only, no photographs. The assessment's phrase (read directly, fact_check) holds while the voice
-     quotes it; the three names land on the last two sentences, one at a time. Nothing moves in the last second.
-     Cues are audio/a3-s10.words.json seconds. -->
+     Dark card, text only, no photographs. Three thin lines wait for three names from the first frame. The assessment's
+     phrase (read directly, fact_check) holds, sized to the frame, while the voice quotes it; the three names land on
+     the last two sentences, one at a time, each on its line. Quiet motion only: a slow push on the whole card and a
+     soft light that crosses one line at a time. Nothing moves in the last second (ordered: one second of silence).
+     Cues are audio/a3-s10.words.json seconds; every timeline position is a literal number (sweep check 7). -->
 <template>
 <style>
   #nx10-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
     background:radial-gradient(ellipse at 50% 45%, #080b10, #020304 78%); }
   .nx10-glow { position:absolute; left:260px; top:160px; width:1400px; height:760px; border-radius:50%;
     background:radial-gradient(ellipse, rgba(147,163,178,0.10), rgba(147,163,178,0) 68%); }
+  .nx10-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
   .nx10-h { opacity:0; visibility:hidden; }
-  .nx10-src { position:absolute; left:480px; top:178px; font:italic 24px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
-  .nx10-q { position:absolute; left:478px; font:54px Georgia, 'Times New Roman', serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
-  .nx10-name { position:absolute; left:476px; font:900 76px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
-  .nx10-age { position:absolute; left:1100px; font:48px Georgia, 'Times New Roman', serif; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .nx10-src { position:absolute; left:304px; top:112px; font:italic 24px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+  .nx10-q { position:absolute; left:300px; font:84px Georgia, 'Times New Roman', serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .nx10-name { position:absolute; left:300px; font:900 84px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .nx10-age { position:absolute; left:1060px; font:48px Georgia, 'Times New Roman', serif; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .nx10-lw { position:absolute; left:300px; width:1100px; height:2px; overflow:hidden; background:rgba(200,211,224,0.30); }
+  .nx10-glint { position:absolute; left:0; top:0; width:240px; height:2px;
+    background:linear-gradient(90deg, rgba(232,197,106,0), rgba(232,197,106,0.95), rgba(232,197,106,0)); }
 </style>
 <div id="nx10-root" data-composition-id="g-a3s10-names" data-width="1920" data-height="1080" data-duration="20.78">
   <div class="nx10-glow" id="nx10-glow"></div>
-  <div id="nx10-quote">
-    <div class="nx10-src nx10-h" id="nx10-src">NWS Service Assessment</div>
-    <div class="nx10-q nx10-h" id="nx10-q1" style="top:226px">&ldquo;some of the most experienced</div>
-    <div class="nx10-q nx10-h" id="nx10-q2" style="top:296px">and safety-minded chasers&rdquo;</div>
+  <div class="nx10-stage" id="nx10-stage">
+    <div id="nx10-quote">
+      <div class="nx10-src nx10-h" id="nx10-src">NWS Service Assessment</div>
+      <div class="nx10-q nx10-h" id="nx10-q1" style="top:156px">&ldquo;some of the most experienced</div>
+      <div class="nx10-q nx10-h" id="nx10-q2" style="top:256px">and safety-minded chasers&rdquo;</div>
+    </div>
+    <div class="nx10-name nx10-h" id="nx10-n1" style="top:470px">Tim Samaras</div>
+    <div class="nx10-age nx10-h" id="nx10-a1" style="top:499px">&middot; 55</div>
+    <div class="nx10-lw" style="top:568px"><div class="nx10-glint" id="nx10-g1"></div></div>
+    <div class="nx10-name nx10-h" id="nx10-n2" style="top:600px">Paul Samaras</div>
+    <div class="nx10-age nx10-h" id="nx10-a2" style="top:629px">&middot; 24</div>
+    <div class="nx10-lw" style="top:698px"><div class="nx10-glint" id="nx10-g2"></div></div>
+    <div class="nx10-name nx10-h" id="nx10-n3" style="top:730px">Carl Young</div>
+    <div class="nx10-age nx10-h" id="nx10-a3" style="top:759px">&middot; 45</div>
+    <div class="nx10-lw" style="top:828px"><div class="nx10-glint" id="nx10-g3"></div></div>
   </div>
-  <div class="nx10-name nx10-h" id="nx10-n1" style="top:470px">Tim Samaras</div>
-  <div class="nx10-age nx10-h" id="nx10-a1" style="top:492px">&middot; 55</div>
-  <div class="nx10-name nx10-h" id="nx10-n2" style="top:590px">Paul Samaras</div>
-  <div class="nx10-age nx10-h" id="nx10-a2" style="top:612px">&middot; 24</div>
-  <div class="nx10-name nx10-h" id="nx10-n3" style="top:710px">Carl Young</div>
-  <div class="nx10-age nx10-h" id="nx10-a3" style="top:732px">&middot; 45</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  var D = 20.78, P = "#nx10-";
+  var P = "#nx10-";
   var tl = gsap.timeline({ paused: true });
-  function show(id, t, dx, dy, d) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: d || 0.45, ease: "power3.out" }, t); }
+  function hid(dx, dy) { return { autoAlpha: 0, x: dx, y: dy }; }
+  function vis() { return { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }; }
+  function pass() { return { x: 1100, duration: 2.6, ease: "sine.inOut" }; }   /* a soft light crosses one line, left to right */
 
-  /* ambient: the glow drifts until the last name has landed, then the card is still for the last second */
+  /* quiet motion, 0 to 19.70: the glow drifts and the whole card pushes in; both stop before the last second */
   tl.fromTo(P + "glow", { x: -220 }, { x: 220, duration: 19.7, ease: "none" }, 0);
+  tl.fromTo(P + "stage", { scale: 1 }, { scale: 1.04, transformOrigin: "50% 45%", duration: 19.7, ease: "none" }, 0);
+
+  /* THESE THREE @2.42: the light crosses the three waiting lines in turn before the phrase lands */
+  tl.fromTo(P + "g1", { x: -240 }, pass(), 0.40);
+  tl.fromTo(P + "g2", { x: -240 }, pass(), 1.30);
+  tl.fromTo(P + "g3", { x: -240 }, pass(), 2.20);
   /* THE WEATHER SERVICE'S ASSESSMENT @0.68 · SOME OF THE MOST EXPERIENCED @2.78 · AND SAFETY MINDED CHASERS @4.06 */
-  show("src", 0.68, -24, 0);
-  show("q1", 2.78, 0, 20);
-  show("q2", 4.06, 0, 20);
-  tl.to(P + "quote", { y: -6, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, 5.0);
+  tl.fromTo(P + "src", hid(-24, 0), vis(), 0.68);
+  tl.fromTo(P + "q1", hid(0, 20), vis(), 2.78);
+  tl.fromTo(P + "q2", hid(0, 20), vis(), 4.06);
+  /* the phrase holds through the radar team's sentence (6.76 to 11.54): one line at a time takes the light */
+  tl.fromTo(P + "g1", { x: -240 }, pass(), 6.10);
+  tl.fromTo(P + "g2", { x: -240 }, pass(), 8.90);
+  tl.fromTo(P + "g3", { x: -240 }, pass(), 11.50);
   /* the phrase steps back before the names */
-  tl.to(P + "quote", { autoAlpha: 0.4, y: -18, duration: 0.5, ease: "power2.out" }, 12.3);
-  /* HE WAS @13.04 · 55 @13.30 (ages sit at x 1100, beside the names) */
-  show("n1", 13.04, -40, 0);
-  show("a1", 13.30, 24, 0);
+  tl.to(P + "quote", { autoAlpha: 0.4, duration: 0.5, ease: "power2.out" }, 12.30);
+  /* HE WAS @13.04 · 55 @13.30 */
+  tl.fromTo(P + "n1", hid(-40, 0), vis(), 13.04);
+  tl.fromTo(P + "a1", hid(24, 0), vis(), 13.30);
+  /* still belted into his seat (14.48 to 16.10): the second line takes the light, then his son's name lands on it */
+  tl.fromTo(P + "g2", { x: -240 }, pass(), 15.00);
   /* HIS SON PAUL @17.42 · 24 @17.88 */
-  show("n2", 17.42, -40, 0);
-  show("a2", 17.88, 24, 0);
-  /* CARL YOUNG @19.04 · 45 @19.60 (settled by 19.78; one still second to the cut) */
-  show("n3", 19.04, -40, 0);
-  show("a3", 19.60, 24, 0, 0.18);
-  tl.to({}, { duration: 0.01 }, D - 0.01);
+  tl.fromTo(P + "n2", hid(-40, 0), vis(), 17.42);
+  tl.fromTo(P + "a2", hid(24, 0), vis(), 17.88);
+  /* CARL YOUNG @19.04 · 45 @19.60 (settled by 19.78) */
+  tl.fromTo(P + "n3", hid(-40, 0), vis(), 19.04);
+  tl.fromTo(P + "a3", hid(24, 0), { autoAlpha: 1, x: 0, y: 0, duration: 0.18, ease: "power3.out" }, 19.60);
+  /* one still second to the cut, by order: this holds the timeline to the window and moves nothing */
+  tl.to({}, { duration: 0.01 }, 20.77);
   window.__timelines["g-a3s10-names"] = tl;
 })();
 </script>
