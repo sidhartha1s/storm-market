@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1s5-henderson (A1-S5) · window 17.81 s · brief: mg_specs/cards.md
+     Overlay: root transparent for the whole window; the map sliding west, then the tornado over fields, sit beneath.
+     One glass card: eight pins (the eight lost in the El Reno tornado, 21-pin map amber), four lit on "half", then the
+     text-only name. No age (fact_check: it stays tagged), no photograph, no map. Cues are audio/a1-s5.words.json seconds. -->
+<template>
+<style>
+  #hn5-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .hn5-card { position:absolute; left:96px; top:700px; width:800px; height:270px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .hn5-h { opacity:0; visibility:hidden; }
+  .hn5-pins { position:absolute; left:0; top:0; width:800px; height:100px; overflow:visible; }
+  .hn5-eb { position:absolute; left:44px; top:104px; font:700 20px Arial, sans-serif; letter-spacing:4px; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .hn5-name { position:absolute; left:42px; top:144px; font:900 60px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .hn5-rule { position:absolute; left:44px; top:222px; width:420px; height:3px; border-radius:2px; background:#d8a13a; }
+</style>
+<div id="hn5-root" data-composition-id="g-a1s5-henderson" data-width="1920" data-height="1080" data-duration="17.81">
+  <div class="hn5-card hn5-h" id="hn5-card">
+    <svg class="hn5-pins" id="hn5-pins" viewBox="0 0 800 100"></svg>
+    <div class="hn5-eb hn5-h" id="hn5-eb">NEAR EL RENO</div>
+    <div class="hn5-name hn5-h" id="hn5-name">Richard Henderson</div>
+    <div class="hn5-rule" id="hn5-rule"></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var D = 17.81, P = "#hn5-", NS = "http://www.w3.org/2000/svg";
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }
+  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, t); }
+  function el(tag, a) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); document.getElementById("hn5-pins").appendChild(e); return e; }
+  s0(P + "rule", { scaleX: 0, transformOrigin: "left center" });
+
+  /* eight pins, 21-pin map style: hollow ring, amber fill when lit */
+  var rings = [], dots = [], halo;
+  for (var i = 0; i < 8; i++) {
+    var x = 62 + i * 50, y = 56, o = x + " " + y;
+    if (i === 0) { halo = el("circle", { cx: x, cy: y, r: 12, fill: "none", stroke: "#e8c56a", "stroke-width": 2, opacity: 0 }); s0(halo, { opacity: 0, scale: 1, svgOrigin: o }); }
+    var r = el("circle", { cx: x, cy: y, r: 12, fill: "#0b1016", stroke: "#93a3b2", "stroke-width": 1.8 });
+    s0(r, { scale: 0, svgOrigin: o }); rings.push(r);
+    if (i < 4) { var d = el("circle", { cx: x, cy: y, r: 12, fill: "#e8c56a", stroke: "#f2f5f8", "stroke-width": 1.6 }); s0(d, { scale: 0, svgOrigin: o }); dots.push(d); }
+  }
+
+  /* HALF OF THE PEOPLE @0.56: eight pins, four of them lit */
+  show("card", 0.56, -60, 0);
+  rings.forEach(function (r, i) { tl.to(r, { scale: 1, duration: 0.35, ease: "back.out(3)" }, 0.62 + i * 0.05); });
+  dots.forEach(function (d, i) { tl.to(d, { scale: 1, duration: 0.4, ease: "back.out(3)" }, 1.10 + i * 0.14); });
+  tl.to(P + "card", { y: -6, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: 7 }, 1.8);
+  /* NEAR EL RENO @5.54 */
+  show("eb", 5.54, -24, 0);
+  /* ONE MAN @6.78: his pin keeps pulsing, the other three step back */
+  tl.to(dots.slice(1), { opacity: 0.45, duration: 0.4, ease: "power2.out" }, 6.78);
+  tl.fromTo(halo, { scale: 1, opacity: 0.7 }, { scale: 2.8, opacity: 0, duration: 1.3, ease: "power2.out", repeat: 4, repeatDelay: 0.6, immediateRender: false }, 6.78);
+  /* RICHARD HENDERSON @9.60 */
+  show("name", 9.60, 0, 22);
+  tl.to(P + "rule", { scaleX: 1, duration: 0.6, ease: "power3.out" }, 9.9);
+  tl.to(P + "card", { x: -1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
+  window.__timelines["g-a1s5-henderson"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
