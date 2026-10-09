@@ -17,8 +17,12 @@ number, place or quote that is not in `fact_check.md` or the segment's Picture n
 - OUN event page: Moore EF5 on May 20, 2013; US-81 crossed at 5:19 PM CST (6:19 PM CDT). W14: sub-vortex over Reuter Road
   2323:35 to 2323:57 UTC (6:23 PM CDT).
 - Marshall et al., damage survey: the EF3 sentence.
-- Photos in comps: `media/pd/nssl-doppler-on-wheels-dow7-1.jpg` (NOAA NSSL, 30 May 2015, not 2013) and
-  `media/pd/noaa-smart-r-mobile-radar-1.png` (NOAA, undated, not 2013); both captioned on screen with what they are.
+- Photo in a comp: `media/pd/nssl-doppler-on-wheels-dow7-1.jpg` (NOAA NSSL, 30 May 2015, not 2013), captioned on screen
+  with what it is. "University of Oklahoma" is text only: a photo of a different radar under that name would mislead
+  (orchestrator, 10 Oct 26).
+- I1-S7 second clock mark carries no clock time: `fact_check.md` lines 28 and 60 give the sub-vortex over Reuter Road
+  from 2323:35 to 2323:57 UTC (it rounds to 6:24 PM and is not stated as the strike time), and the roads family prints
+  6:22:15 PM on Reuter Road (headlights, line 60). The US-81 mark "6:19 PM" is line 28 (OUN, 5:19 PM CST).
 
 ## 2. Datum and positions
 - Presenter corner x >= 1600, y >= 680 is empty in every comp. Text is 96 px or more from left/right, 54 px from top/bottom.
