@@ -50,14 +50,14 @@
     <div class="st1-mono st1-h" id="st1-l2" style="top:250px;color:#f2f5f8">BEEN UPGRADED TO AN EF5 TORNADO BASED ON</div>
     <div class="st1-mono st1-h" id="st1-l3" style="top:286px;color:#dfe7ee">VELOCITY DATA FROM THE RESEARCH MOBILE</div>
     <div class="st1-mono st1-h" id="st1-l4" style="top:322px;color:#dfe7ee">RADAR DATA...</div>
-    <div class="st1-ul" id="st1-u1" style="left:426px;top:316px;width:234px"></div>
+    <div class="st1-ul" id="st1-u1" style="left:395px;top:316px;width:234px"></div>
     <div class="st1-ul" id="st1-u2" style="left:36px;top:352px;width:156px"></div>
     <div class="st1-sm" style="left:36px;top:420px">NWS NORMAN &middot; PUBLIC INFORMATION STATEMENT</div>
   </div>
   <div class="st1-ef st1-h" id="st1-ef">EF5</div>
   <div class="st1-glass st1-h" id="st1-wind" style="left:96px;top:740px;width:640px;height:250px">
     <div class="st1-sm" style="left:32px;top:28px">WINDS OF AT LEAST</div>
-    <div class="st1-ctr" id="st1-ctr">295 mph</div>
+    <div class="st1-ctr st1-h" id="st1-ctr">295 mph</div>
     <div class="st1-sm st1-h" id="st1-w1" style="left:32px;top:164px">VERY CLOSE TO THE SURFACE &middot; RAXPOL RADAR</div>
     <div class="st1-sm st1-h" id="st1-w2" style="left:32px;top:200px">NWS NORMAN EVENT PAGE</div>
   </div>
@@ -107,9 +107,10 @@ window.__timelines = window.__timelines || {};
   show("l3", 9.14, -30, 0); show("l4", 9.40, -30, 0);       /* because of the radar @9.14 */
   tl.to($("u1"), { scaleX: 1, duration: 0.5, ease: "power2.out" }, 9.82);   /* radar @9.82: "RESEARCH MOBILE RADAR DATA" */
   tl.to($("u2"), { scaleX: 1, duration: 0.4, ease: "power2.out" }, 10.20);
-  var c = { v: 240 }, ctr = $("ctr");
+  var c = { v: 240 }, ctr = $("ctr");                       /* the figure opens on its first tick when "295" is spoken, never before */
   show("wind", 12.88, -60, 0);                              /* at about @12.88 */
   tl.to(c, { v: 295, duration: 0.9, ease: "power3.out", onUpdate: function () { ctr.textContent = Math.round(c.v) + " mph"; } }, 13.26);   /* 295 miles an hour @13.26 */
+  tl.set(ctr, { autoAlpha: 1 }, 13.26);
   tl.fromTo(ctr, { scale: 0.8 }, { scale: 1, duration: 0.9, ease: "power3.out", transformOrigin: "0% 50%", immediateRender: false }, 13.26);
   show("w1", 13.98, -20, 0); show("w2", 14.50, -20, 0);
   tl.to({}, { duration: 0.01 }, 15.71);
