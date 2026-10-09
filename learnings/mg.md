@@ -29,6 +29,12 @@ Newest first. New entries go at the top, under this line. Superseded lines point
 - **Proposed gates (filed in `ops/tasks.md`):** a seek-order probe (working prototype in the episode's
   `.qc-tmp/replot-stage/seekcheck.mjs`), a label-over-painted-shape DOM check, a "transparent span needs track 1"
   check in `lint_timeline.py`, and a JPEG end-marker check in the media probes.
+- **Found later the same day, by the orchestrator's own frame read, not by either verifier:** the overlay `g-a1s4-rita`
+  holds the label "Tornado · Oklahoma City · 2013" for its whole 20.83 s window, and for 11.33 s of it the picture
+  beneath was a stock highway clip from another city. Both verifiers read that frame for layout and passed it. Fixed in
+  `index.html` by mounting that evening's own news footage under the whole window. **Rule:** a label that names a
+  place, a date or an event is a claim about the picture under it. The brief names the file that sits under every
+  second of such a label, and the frame read checks the ledger row of that file, not only the layout.
 
 ## 2026-09-29 - ep-nepal-floods-2026: one snapshot at 60 % of each window missed four near-empty openings
 - **What happened:** the pre-render check snapshotted each changed comp once, at 60 % of its window, and all looked full.
