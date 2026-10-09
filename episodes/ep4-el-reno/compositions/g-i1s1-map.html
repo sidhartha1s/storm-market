@@ -89,7 +89,7 @@ window.__timelines = window.__timelines || {};
   gsap.set([P + "contour", P + "traffic", P + "td", P + "tdring", P + "er"], { opacity: 0 });
   /* the base map (roads, the city marker and its name) is on from frame 0: the Picture note opens on "Oklahoma City labelled",
      and the name is the only thing that makes the road lines a place for the 12 s before the voice says it (maps.md, g-i1s1-map) */
-  gsap.set(P + "okclab", { transformOrigin: "left center" });
+  gsap.set(P + "okclab", { transformOrigin: "center center" });
   tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.68);   /* FRIDAY @0.68 */
   /* ALREADY IN THEIR CARS @4.80: traffic runs on the interstates from RUSH HOUR @2.72 */
   tl.to(P + "traffic", { opacity: 1, duration: 0.6 }, 2.72);
