@@ -125,7 +125,7 @@ window.__timelines = window.__timelines || {};
   /* 20 seconds @12.84, carried @13.96, 650 yards @14.48: the line from the start mark to the end mark */
   tl.fromTo(P + "t-20", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.n20);
   tl.fromTo(P + "n3", { scale: 1.15, svgOrigin: "200 650" }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, CUES.n20);
-  tl.fromTo(P + "carry", { autoAlpha: 1, scale: 0, svgOrigin: "940 430" }, { scale: 1, duration: 0.9, ease: "power2.inOut", immediateRender: false }, CUES.carried - 0.4);
+  tl.fromTo(P + "carry", { autoAlpha: 0, scale: 0, svgOrigin: "940 430" }, { autoAlpha: 1, scale: 1, duration: 0.9, ease: "power2.inOut" }, CUES.carried - 0.4);
   tl.fromTo(P + "t-650", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.n650);
   tl.fromTo(P + "end", { autoAlpha: 0, scale: 0.2, svgOrigin: "1374 390" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, CUES.n650 + 0.05);
 
