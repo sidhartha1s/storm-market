@@ -59,7 +59,11 @@
       <text class="s1-rl" x="96" y="883">1 MILE</text>
     </g>
     <!-- the vehicle's name stays above the ring (ring top y 220 at its highest), in the mark's colour: a tag riding the mark is crossed by the ring line -->
-    <text id="s1-tag" class="s1-tag s1-hid" x="790" y="200" style="fill:#7fb2e5">THE WEATHER CHANNEL</text>
+    <!-- a swatch of the mark's own shape and colour sits beside the name, so the two read as one thing -->
+    <g id="s1-tag" class="s1-hid">
+      <rect x="788" y="175" width="16" height="29" rx="3" fill="#7fb2e5" stroke="#04070c" stroke-width="2"/>
+      <text class="s1-tag" x="814" y="200" style="fill:#7fb2e5; letter-spacing:1px">THE WEATHER CHANNEL</text>
+    </g>
     <!-- the way through to the south side -->
     <g id="s1-way" class="s1-hid">
       <line id="s1-wayl" x1="760" y1="600" x2="760" y2="992" stroke="#7fb2e5" stroke-width="5" stroke-dasharray="14 12"/>
