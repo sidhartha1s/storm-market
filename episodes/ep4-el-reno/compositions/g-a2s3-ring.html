@@ -89,8 +89,8 @@ window.__timelines = window.__timelines || {};
     e.setAttribute("x1", x1); e.setAttribute("y1", y1); e.setAttribute("x2", x2); e.setAttribute("y2", y2);
     e.setAttribute("stroke", stroke); e.setAttribute("stroke-width", w); grid.appendChild(e);
   }
-  /* section lines every mile (220 px) from the datum (700, 760) */
-  for (let x = 920; x < 1920; x += 220) ln(x, 0, x, 1080, "#34434f", 2);
+  /* section-line roads east of US-81 (x 700), from OpenStreetMap: Alfadale 1.05 mi = x 931, Radio 2.04 mi = x 1148.8, then one mile apart */
+  [931, 1148.8, 1368.8, 1588.8, 1808.8].forEach(function (x) { ln(x, 0, x, 1080, "#34434f", 2); });
   for (let y = 760 - 660; y < 1080; y += 220) if (y !== 760) ln(560, y, 1920, y, "#34434f", 2);
 
   const tl = gsap.timeline({ paused: true });
