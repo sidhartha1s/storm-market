@@ -8,7 +8,8 @@
   Return 2 (5.7-11.0 s): the ROOT IS TRANSPARENT for the traffic aerial mounted beneath by the editor; only a
   glass card with the assessment's words sits in that span.
   Layout: the drawing is shown 1.4x through the svg viewBox (152 318 1371.43 771.43); svg coordinates are the
-  brief's, frame px = (x - 152) * 1.4, (y - 318) * 1.4. The ground line runs the full frame width.
+  brief's, frame px = (x - 152) * 1.4, (y - 318) * 1.4. The ground line runs the full frame width, and past it, so
+  it still reaches both edges while the drawing drifts into place (svg overflow visible).
   Cues are comp-local seconds from audio/a5-s11.words.json.
 -->
 <template>
@@ -20,7 +21,7 @@
     background-size:120px 120px; }
   .rt11-sweep { position:absolute; left:0; top:0; width:520px; height:1080px;
     background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,.07), rgba(127,178,229,0)); }
-  .rt11-svg { position:absolute; left:0; top:0; }
+  .rt11-svg { position:absolute; left:0; top:0; overflow:visible; }
   .rt11-lab { position:absolute; font-weight:700; white-space:nowrap; }
   .rt11-small { font-size:26px; letter-spacing:3px; color:#93a3b2; }
   .rt11-mid { font-size:32px; letter-spacing:1px; color:#dfe7ee; }
@@ -47,8 +48,8 @@
       </defs>
       <g id="rt11-site">
         <!-- earth band under the ground line and round the ditch: section convention, no depth claimed -->
-        <polygon points="140,766 998,766 1068,906 1332,906 1402,766 1540,766 1540,800 1424,800 1354,940 1046,940 976,800 140,800" fill="url(#rt11-hatch)" opacity="0.35"/>
-        <path id="rt11-gnd" d="M140 760 L1000 760 L1070 900 L1330 900 L1400 760 L1540 760" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <polygon points="140,766 998,766 1068,906 1332,906 1402,766 1590,766 1590,800 1424,800 1354,940 1046,940 976,800 140,800" fill="url(#rt11-hatch)" opacity="0.35"/>
+        <path id="rt11-gnd" d="M140 760 L1000 760 L1070 900 L1330 900 L1400 760 L1590 760" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
         <!-- the house: one storey, slab on grade -->
         <rect x="300" y="746" width="584" height="16" fill="#dfe7ee" fill-opacity="0.85" stroke="#f2f5f8" stroke-width="3"/>
         <polyline points="276,572 592,440 908,572" fill="none" stroke="#f2f5f8" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
