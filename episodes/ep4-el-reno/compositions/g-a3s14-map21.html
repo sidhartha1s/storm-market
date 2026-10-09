@@ -19,7 +19,7 @@
     text-shadow:0 0 6px #04070c, 0 0 12px #04070c, 0 2px 3px #04070c; }
   .m14-tray { position:absolute; left:96px; top:872px; width:440px; height:140px; box-sizing:border-box; background:rgba(10,16,24,0.55);
     backdrop-filter:blur(18px) saturate(1.15); border:1px dashed rgba(255,255,255,0.28); border-radius:20px; }
-  .m14-trayt { position:absolute; left:24px; top:16px; font:700 19px Arial, sans-serif; letter-spacing:3px; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .m14-trayt { position:absolute; left:22px; top:16px; font:700 19px Arial, sans-serif; letter-spacing:1.5px; color:#93a3b2; white-space:nowrap; line-height:1; }
   .m14-tl { position:absolute; top:98px; width:76px; margin-left:-38px; text-align:center; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
   .m14-rail { position:absolute; left:96px; top:64px; width:640px; box-sizing:border-box; background:rgba(10,16,24,0.55);
     backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
@@ -52,6 +52,12 @@
       <div class="m14-big m14-h" id="m14-r2v" style="left:32px;top:112px">12</div>
       <div class="m14-mid m14-h" id="m14-r2l" style="left:136px;top:134px">of the other 13</div>
       <div class="m14-ser m14-h" id="m14-r2s" style="left:136px;top:180px">sheltering</div>
+    </div>
+    <div class="m14-rail" id="m14-leg" style="left:1304px;top:64px;width:520px;height:112px">
+      <svg class="m14-gl" style="left:28px;top:20px" viewBox="-14 -14 28 28"><circle r="9" fill="#e8c56a" stroke="#f2f5f8" stroke-width="1.6"/></svg>
+      <div class="m14-sm" style="left:72px;top:24px;font-size:22px;letter-spacing:1px;color:#c8d3e0">In a vehicle, in the tornado</div>
+      <svg class="m14-gl" style="left:28px;top:62px" viewBox="-14 -14 28 28"><path d="M-9,10 L-9,-1 L0,-10 L9,-1 L9,10 Z" fill="none" stroke="#93a3b2" stroke-width="2"/></svg>
+      <div class="m14-sm" style="left:72px;top:66px;font-size:22px;letter-spacing:1px;color:#c8d3e0">Building</div>
     </div>
     <!-- HUD:END -->
   </div>
@@ -113,6 +119,7 @@ window.__timelines = window.__timelines || {};
     return Math.hypot(x - a[0] - u * dx, y - a[1] - u * dy); }
   function nearLine(x, y, pp, d) { for (var i = 1; i < pp.length; i++) if (segd(x, y, pp[i - 1], pp[i]) < d) return true; return false; }
   var KEEP = [[300,370,446,412],[1244,494,1456,538],[430,486,620,566]];   /* El Reno label, Oklahoma City label, the sub-vortex crossing */
+  var HIDE = [[455,700,545,756],[1440,356,1880,470],[125,210,195,260]];   /* no outline under the Chickasha bearing label / the tray, nor under the east-edge marker and its label */
   var LINES = [R.i40, R.us81, R.i35, R.i44, R.reuter, R.bear, RIV, DEEP];
   function free(x, y, got) {
     if (x < 24 || x > 1896 || y < 24 || y > 1056) return false;
@@ -133,7 +140,7 @@ window.__timelines = window.__timelines || {};
   var ic = { h: [], s: [], c: [] }, got = [], icg = el("g", { opacity: 0.8 }, map);
   TOWNS.forEach(function (t) { var cx = X(t[0]), cy = Y(t[1]), n = 0, tries = 0;
     while (n < t[2] && tries++ < t[2] * 14) { var x = cx + (rnd() * 2 - 1) * t[3], y = cy + (rnd() * 2 - 1) * t[4], r = rnd();
-      if (!free(x, y, got)) continue; var k = r < 0.7 ? "h" : r < 0.85 ? "s" : "c"; got.push([x, y]); n++;
+      if (!free(x, y, got)) continue; var k = r < 0.7 ? "h" : r < 0.85 ? "s" : "c"; got.push([x, y]); n++; if (HIDE.some(function (h) { return x > h[0] && x < h[2] && y > h[1] && y < h[3]; })) continue;
       ic[k].push(el("path", { d: icon(k, x, y, 1), fill: "none", stroke: "#93a3b2", "stroke-width": 1.5, "stroke-linejoin": "round" }, icg)); } });
   var house = el("path", { d: icon("h", HOUSE[0], HOUSE[1], 1.3), fill: "none", stroke: "#93a3b2", "stroke-width": 1.6, "stroke-linejoin": "round" }, map);
   function bump(k, t) { tl.to(ic[k], { scale: 1.5, duration: 0.24, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, t); }
@@ -171,8 +178,8 @@ window.__timelines = window.__timelines || {};
   function at(id, mx, my, v) { var e = $(id); e.style.left = Math.round(mx * v.scale + v.x) + "px"; e.style.top = Math.round(my * v.scale + v.y) + "px"; }
   function show(id, t, dx, dy) { tl.fromTo($(id), { autoAlpha: 0, x: dx || 0, y: dy == null ? 24 : dy }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, t); }
   function hide(id, t) { tl.to($(id), { autoAlpha: 0, y: -16, duration: 0.3, ease: "power2.in" }, t); }
-  tl.fromTo($("scan"), { x: -400 }, { x: 1960, duration: D, ease: "none" }, 0);
-  var FULL = V(960, 540, 1), WEST = V(520, 470, 1.8), CITY = V(1260, 540, 1.5);
+  tl.fromTo($("scan"), { x: -400 }, { x: 1960, duration: 11.05, ease: "none" }, 0);
+  var FULL = V(960, 540, 1), WEST = { x: 1150 - 503.2 * 2.4, y: 540 - 440 * 2.4, scale: 2.4 }, CITY = V(1260, 540, 1.5);
 
   /* TL:BEGIN */
   function on(id) { s0($(id), { autoAlpha: 1 }); }

@@ -123,7 +123,7 @@ window.__timelines = window.__timelines || {};
     return Math.hypot(x - a[0] - u * dx, y - a[1] - u * dy); }
   function nearLine(x, y, pp, d) { for (var i = 1; i < pp.length; i++) if (segd(x, y, pp[i - 1], pp[i]) < d) return true; return false; }
   var KEEP = [[300,370,446,412],[1244,494,1456,538],[430,486,620,566]];   /* El Reno label, Oklahoma City label, the sub-vortex crossing */
-  var HIDE = [[455,700,545,756],[1440,356,1880,470]];   /* no outline under the Chickasha bearing label / the tray, nor under the east-edge marker and its label */
+  var HIDE = [[455,700,545,756],[1440,356,1880,470],[125,210,195,260]];   /* no outline under the Chickasha bearing label / the tray, nor under the east-edge marker and its label */
   var LINES = [R.i40, R.us81, R.i35, R.i44, R.reuter, R.bear, RIV, DEEP];
   function free(x, y, got) {
     if (x < 24 || x > 1896 || y < 24 || y > 1056) return false;

@@ -6,7 +6,8 @@
      Full frame. Clock rail: 6:00 PM at x 220, 66 px per minute (6:03 = 418, 6:05 = 550, 6:15 = 1210), rail y 640.
      Claim: 6:05 PM is two minutes past the 6:03 touchdown; the head runs about ten minutes forward and stops when the
      phone cuts out; then his two sons' names. No assessment card (its sentence carries a hard flag word).
-     Source: local TV 2014 via research/facts.md (not re-pulled). Cues are audio/a1-s6.words.json seconds. -->
+     Source: local TV 2014 via research/facts.md (not re-pulled). Cues are audio/a1-s6.words.json seconds.
+     Every timeline position is a literal number (sweep check 7); the grid drift and light sweep run to the window end. -->
 <template>
 <style>
   #ck6-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
@@ -72,7 +73,8 @@ window.__timelines = window.__timelines || {};
   var D = 23.3, P = "#ck6-", NS = "http://www.w3.org/2000/svg";
   var tl = gsap.timeline({ paused: true });
   function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }
-  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, t); }
+  function hid(dx, dy) { return { autoAlpha: 0, x: dx, y: dy }; }
+  function vis() { return { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }; }
   function dash(id) { var e = document.querySelector(P + id), L = Math.ceil(e.getTotalLength()) + 1; e.setAttribute("stroke-dasharray", L); s0(e, { strokeDashoffset: L }); return e; }
   /* minute ticks: 66 px per minute, taller every five */
   var tg = document.getElementById("ck6-ticks");
@@ -82,9 +84,9 @@ window.__timelines = window.__timelines || {};
   var lead = dash("lead"), run = dash("run");
   s0(P + "halo", { opacity: 0, scale: 1, svgOrigin: "550 640" });
 
-  /* ambient, whole window: light sweep and grid drift */
+  /* ambient, whole window (0 to 23.30): light sweep and grid drift */
   tl.fromTo(P + "sweep", { x: -560 }, { x: 2300, duration: 5.825, ease: "none", repeat: 3 }, 0);
-  tl.fromTo(P + "grid", { x: 0 }, { x: 120, duration: D, ease: "none" }, 0);
+  tl.fromTo(P + "grid", { x: 0 }, { x: 120, duration: 23.3, ease: "none" }, 0);
 
   /* 6:05 PM @0.60: the time lands, its mark drops onto the rail */
   tl.fromTo(P + "pop", { autoAlpha: 0, scale: 1.5, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 0.60);
@@ -92,21 +94,21 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "head", { autoAlpha: 0, scale: 2.2, svgOrigin: "550 640" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2.4)" }, 0.95);
   tl.fromTo(P + "halo", { scale: 1, opacity: 0.7 }, { scale: 2.8, opacity: 0, duration: 1.3, ease: "power2.out", repeat: 5, repeatDelay: 0.5, immediateRender: false }, 1.4);
   /* TWO MINUTES @2.00 · AFTER THE TORNADO TOUCHED DOWN @2.74 */
-  show("two", 2.00, 24, 0);
-  show("tdg", 2.74, 0, -20);
+  tl.fromTo(P + "two", hid(24, 0), vis(), 2.00);
+  tl.fromTo(P + "tdg", hid(0, -20), vis(), 2.74);
   /* ABOUT TEN MINUTES LATER @6.62: the time steps back, the head runs ten minutes (660 px) and stops */
   tl.to(P + "pop", { autoAlpha: 0.38, duration: 0.4, ease: "power2.out" }, 6.3);
   tl.to(lead, { autoAlpha: 0, duration: 0.3, ease: "power2.out" }, 6.3);
-  show("ten", 6.62, 0, 20);
+  tl.fromTo(P + "ten", hid(0, 20), vis(), 6.62);
   tl.to(run, { strokeDashoffset: 0, duration: 2.6, ease: "power1.inOut" }, 6.62);
   tl.to(P + "head", { x: 660, duration: 2.6, ease: "power1.inOut" }, 6.62);
   /* HIS PHONE CUT OUT @12.08-12.30: the mark goes hollow */
-  show("cut", 12.08, 0, 18);
+  tl.fromTo(P + "cut", hid(0, 18), vis(), 12.08);
   tl.to(P + "dot", { autoAlpha: 0, scale: 0.4, svgOrigin: "550 640", duration: 0.18, ease: "power2.in" }, 12.30);
   /* TWO SONS @13.72 · ROBBIE @14.92 · WYATT @15.48 */
-  show("eb", 13.72, -24, 0);
-  show("c1", 14.92, -40, 0);
-  show("c2", 15.48, -40, 0);
+  tl.fromTo(P + "eb", hid(-24, 0), vis(), 13.72);
+  tl.fromTo(P + "c1", hid(-40, 0), vis(), 14.92);
+  tl.fromTo(P + "c2", hid(-40, 0), vis(), 15.48);
   tl.to([P + "c1", P + "c2"], { y: -6, duration: 1.7, ease: "sine.inOut", yoyo: true, repeat: 3 }, 16.2);
   window.__timelines["g-a1s6-clock"] = tl;
 })();
