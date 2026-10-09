@@ -11,7 +11,8 @@
 <template>
 <style>
   #rt4-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
-  .rt4-glass { position:absolute; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+  /* darker than the family glass (0.55): the left box is a bright daytime photo and the labels must hold over it */
+  .rt4-glass { position:absolute; box-sizing:border-box; background:rgba(6,9,13,0.80); backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
   .rt4-h { opacity:0; visibility:hidden; }
   .rt4-eb { position:absolute; left:38px; top:30px; font:700 20px Arial, sans-serif; letter-spacing:6px; color:#93a3b2; white-space:nowrap; line-height:1; }
