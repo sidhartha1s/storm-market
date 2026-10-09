@@ -96,6 +96,9 @@ window.__timelines = window.__timelines || {};
   const HIDE = [P + "ctr", P + "ctrlead", P + "t-ctr", P + "t-ctr2", P + "t-build", P + "carry", P + "end", P + "t-20", P + "t-650", P + "t-end", P + "dim", P + "t-580", P + "l1", P + "v1", P + "s1"];
   gsap.set(HIDE, { autoAlpha: 0 });
   gsap.set(P + "sv", { x: 975, y: 430 });
+  /* pivots set once, outside the timeline, so a pulse scales about the same point whatever was seeked before */
+  gsap.set(P + "car", { svgOrigin: "940 430" });
+  gsap.set(P + "n3", { svgOrigin: "200 650" });
   tl.set(HIDE, { autoAlpha: 0 }, 0);
   tl.set(P + "sv", { x: 975, y: 430 }, 0);
 
