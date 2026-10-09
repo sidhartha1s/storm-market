@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a3s2-replot: the sub-vortex crosses US-81 at about 56 mph toward east-northeast; air on its south side blows east.
+     Brief: mg_specs/replot.md. Road level, 1200 px per mile (0.7456 px per m), north up.
+     The circle moves 18.6 px a second = 25 m/s at this scale, so the crossing plays at real speed. Our own redraw. -->
+<template>
+<style>
+  #rp32-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 54% 50%, #0b1016 0%, #030507 78%); }
+  .rp32-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .rp32-fig { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; fill:#f2f5f8; }
+  .rp32-mid { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#dfe7ee; }
+  .rp32-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .rp32-sm { font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px; fill:#93a3b2; }
+</style>
+<div id="rp32-root" data-composition-id="g-a3s2-replot" data-width="1920" data-height="1080">
+  <svg class="rp32-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="rp32-grid" width="300" height="300" patternUnits="userSpaceOnUse" x="100" y="200"><path d="M300,0 L0,0 L0,300" fill="none" stroke="#2a3644" stroke-width="1.5" stroke-opacity="0.55"/></pattern>
+      <radialGradient id="rp32-echo"><stop offset="0" stop-color="#7fb2e5" stop-opacity="0.3"/><stop offset="1" stop-color="#7fb2e5" stop-opacity="0"/></radialGradient>
+      <radialGradient id="rp32-glow"><stop offset="0" stop-color="#e8c56a" stop-opacity="0.6"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect x="0" y="0" width="1920" height="1080" fill="url(#rp32-grid)"/>
+    <ellipse id="rp32-e1" cx="820" cy="300" rx="330" ry="220" fill="url(#rp32-echo)"/>
+    <ellipse id="rp32-e2" cx="1360" cy="760" rx="360" ry="240" fill="url(#rp32-echo)"/>
+    <ellipse id="rp32-e3" cx="1420" cy="260" rx="260" ry="200" fill="url(#rp32-echo)"/>
+    <!-- US-81, north to south -->
+    <path id="rp32-us81" d="M1000,54 L1000,1026" stroke="#93a3b2" stroke-width="7" stroke-opacity="0.8"/>
+    <path d="M1000,54 L1000,1026" stroke="#04070c" stroke-width="1.5" stroke-dasharray="22 18"/>
+    <text id="rp32-t-us81" class="rp32-lab" x="1020" y="112">US-81</text>
+    <!-- the sub-vortex: r 60 px = 160 m across, the middle of 90 to 230 m -->
+    <g id="rp32-sv">
+      <circle cx="0" cy="0" r="120" fill="url(#rp32-glow)"/>
+      <circle cx="0" cy="0" r="60" fill="#e8c56a" fill-opacity="0.2" stroke="#f5d98b" stroke-width="4"/>
+      <circle id="rp32-rim" cx="0" cy="0" r="60" fill="none" stroke="#f5d98b" stroke-width="12" stroke-opacity="0.75" stroke-dasharray="5 26.4"/>
+      <path id="rp32-east" d="M-40,36 L34,36 M18,24 L36,36 L18,48" fill="none" stroke="#f2f5f8" stroke-width="6"/>
+    </g>
+    <!-- the TV crew: a marker on the highway, on the circle's south side as its centre crosses -->
+    <circle id="rp32-flash" cx="1000" cy="540" r="30" fill="none" stroke="#e74c3c" stroke-width="5"/>
+    <rect id="rp32-suv" x="989" y="529" width="22" height="22" fill="#f2f5f8" stroke="#04070c" stroke-width="2"/>
+    <path id="rp32-lead" d="M986,556 L962,612" stroke="#93a3b2" stroke-width="2"/>
+    <text id="rp32-t-suv" class="rp32-mid" x="972" y="644" text-anchor="end">TV crew</text>
+    <!-- heading: east-northeast -->
+    <path id="rp32-head" d="M1200,420 L1300,378.6 M1279,374 L1300,378.6 L1288,396" fill="none" stroke="#e8c56a" stroke-width="5"/>
+    <text id="rp32-t-head" class="rp32-lab" x="1210" y="350" fill="#e8c56a">East-northeast</text>
+    <text id="rp32-t-east" class="rp32-mid" x="1030" y="640">Air blowing east</text>
+    <text id="rp32-t-south" class="rp32-lab" x="1030" y="672">South side · about 400 ft up</text>
+    <!-- readout -->
+    <text id="rp32-l1" class="rp32-lab" x="96" y="150">Forward speed, about</text>
+    <text id="rp32-v1" class="rp32-fig" x="92" y="240">56 mph</text>
+    <text id="rp32-s1" class="rp32-sm" x="96" y="280">Wurman et al. 2014</text>
+    <text id="rp32-t-real" class="rp32-sm" x="96" y="908">Shown at real speed for this scale</text>
+    <!-- scale bar: 341 px = 500 yards -->
+    <path id="rp32-bar" d="M96,986 L437,986 M96,976 L96,996 M437,976 L437,996" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+    <text id="rp32-t-bar" class="rp32-sm" x="96" y="964" fill="#dfe7ee">500 yards</text>
+    <text id="rp32-t-ring" class="rp32-sm" x="453" y="993">Sub-vortex: middle of about 300 to 750 ft</text>
+    <text id="rp32-t-own" class="rp32-sm" x="96" y="1022">Our redraw of mobile-radar measurements · the wide circulation's edge is outside this view</text>
+    <path id="rp32-north" d="M1760,150 L1760,96 M1748,112 L1760,92 L1772,112" fill="none" stroke="#93a3b2" stroke-width="3"/>
+    <text id="rp32-t-n" class="rp32-lab" x="1751" y="182">N</text>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a3s2-replot", P = "#rp32-";
+  /* cues: audio/a3-s2.words.json (comp-local = segment seconds) */
+  const CUES = {
+    met: 0.46,     /* met @0.46 */
+    crossed: 1.82, /* crossed the road @1.82 */
+    about: 2.62,   /* about @2.62 */
+    n56: 2.80,     /* 56 @2.80 */
+    south: 5.30,   /* south side @5.30 */
+    blowing: 6.58  /* blowing east @6.58 */
+  };
+  const DUR = 8.05;
+  const tl = gsap.timeline({ paused: true });
+  /* hidden from the first frame: set now (a paused timeline has not rendered its time-0 sets yet) and again at 0 */
+  const HIDE = [P + "flash", P + "east", P + "head", P + "t-head", P + "t-east", P + "t-south", P + "l1", P + "v1", P + "s1"];
+  gsap.set(HIDE, { autoAlpha: 0 });
+  tl.set(HIDE, { autoAlpha: 0 }, 0);
+
+  /* whole window: the circle crosses at 18.64 px a second toward east-northeast (17.22 east, 7.13 north);
+     its centre is on the highway at "56" @2.80 */
+  tl.fromTo(P + "sv", { x: 951.8, y: 520 }, { x: 1090.4, y: 462.6, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "rim", { rotation: 0, svgOrigin: "0 0" }, { rotation: -483, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e1", { x: -80, y: 30 }, { x: 60, y: -30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e2", { x: -60, y: 20 }, { x: 80, y: -40, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e3", { x: -70, y: 30 }, { x: 70, y: -20, duration: DUR, ease: "none" }, 0);
+  tl.fromTo([P + "bar", P + "t-bar", P + "t-ring", P + "t-own", P + "t-real"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.06 }, 0.1);
+
+  /* met @0.46: the marker answers */
+  tl.fromTo(P + "flash", { autoAlpha: 1, scale: 0.4, svgOrigin: "1000 540" }, { autoAlpha: 0, scale: 2.8, duration: 0.9, ease: "power2.out", immediateRender: false }, CUES.met);
+  tl.fromTo(P + "suv", { scale: 1.7, svgOrigin: "1000 540" }, { scale: 1, duration: 0.5, ease: "back.out(2)", immediateRender: false }, CUES.met);
+
+  /* crossed the road @1.82: heading. about @2.62, 56 @2.80: the readout */
+  tl.fromTo([P + "head", P + "t-head"], { autoAlpha: 0, x: -30, y: 12 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, CUES.crossed);
+  tl.fromTo(P + "l1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.about - 0.3);
+  tl.fromTo(P + "v1", { autoAlpha: 0, scale: 1.5, svgOrigin: "96 240" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, CUES.n56 - 0.35);
+  tl.fromTo(P + "s1", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.n56 + 0.6);
+
+  /* south side @5.30: the arrow on the circle's south side. blowing east @6.58 */
+  tl.fromTo(P + "east", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.south);
+  tl.fromTo(P + "t-south", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.south + 0.3);
+  tl.fromTo(P + "t-east", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.blowing);
+  tl.to(P + "east", { x: 10, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 3 }, CUES.blowing);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

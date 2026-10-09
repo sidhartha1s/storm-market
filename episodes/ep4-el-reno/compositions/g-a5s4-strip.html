@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a5s4-strip · A5-S4 · window 21.72 s · brief: mg_specs/maps.md
+  Claim: the path gave the tornado little to hit: under 10 markers per square mile away from one cluster; 112 of the
+  markers were oil tank batteries; where radar and damage could be compared, radar ran 10 to 30 percent higher
+  (Marshall et al.).
+  Strip: metro frame window 114 431 691.2 194.4 in a 1728 x 486 box (zoom 2.5; 1 mile = 85 px). Dots = the 337 NWS
+  Damage Assessment Toolkit points inside the NWS contour. They are the weather service's survey points, not the
+  601 markers of the Marshall paper, so the dot layer and the Marshall figures carry separate labels.
+  PHOTO SLOT: #s4-photo, 480 x 300 at left 96, top 660. It holds a line drawing of tanks until a public domain
+  photograph of an oil tank battery is supplied; drop an <img> with object-fit:cover inside it.
+  Bars: damage = 180 px; radar = 198 px solid (plus 10 percent) with a 36 px hatched band up to 234 px (plus 30 percent).
+  Cues are comp-local seconds from audio/a5-s4.words.json.
+-->
+<template>
+<style>
+  #s4-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    color:#dfe7ee; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .s4-drift { position:absolute; left:0; right:0; top:-220px; height:1520px; opacity:0.28; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.16) 0 1px, transparent 1px 46px); }
+  .s4-map { position:absolute; left:96px; top:110px; width:1728px; height:486px; }
+  .s4-contour { fill:rgba(192,57,43,0.09); stroke:rgba(192,57,43,0.32); stroke-width:0.5; }
+  .s4-track { fill:none; stroke:rgba(231,76,60,0.75); stroke-width:1.1; stroke-linecap:round; stroke-linejoin:round; }
+  .s4-dots { fill:none; stroke:#e8c56a; stroke-width:1.9; stroke-linecap:round; }
+  .s4-ring { fill:none; stroke:#f2f5f8; stroke-width:0.6; }
+  .s4-eb { position:absolute; left:96px; top:64px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .s4-ten { position:absolute; left:520px; top:138px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; color:#f2f5f8; white-space:nowrap; }
+  .s4-tensub { position:absolute; left:524px; top:212px; font-size:22px; font-weight:700; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .s4-clab { position:absolute; left:1396px; top:204px; font-size:22px; font-weight:700; letter-spacing:3px; color:#f2f5f8; white-space:nowrap; }
+  .s4-photo { position:absolute; left:96px; top:660px; width:480px; height:300px; box-sizing:border-box; overflow:hidden;
+    border:1px solid rgba(147,163,178,0.45); background:linear-gradient(180deg, #15202b, #0b1016 70%, #04070a); }
+  .s4-photo svg { position:absolute; left:0; top:0; width:480px; height:300px; }
+  .s4-num { position:absolute; left:610px; top:676px; font-family:'Courier New', monospace; font-weight:700; font-size:110px; line-height:1; color:#e8c56a; }
+  .s4-numlab { position:absolute; left:612px; top:800px; font-size:26px; font-weight:700; letter-spacing:2px; color:#dfe7ee; white-space:nowrap; }
+  .s4-numsub { position:absolute; left:612px; top:842px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:24px; color:#d8a13a; white-space:nowrap; }
+  .s4-barhead { position:absolute; left:980px; top:660px; font-size:19px; font-weight:700; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .s4-bar { position:absolute; width:150px; }
+  .s4-bd { left:980px; top:770px; height:180px; background:linear-gradient(180deg, #7fb2e5, #5a768f); }
+  .s4-br { left:1190px; top:752px; height:198px; background:linear-gradient(180deg, #e74c3c, #8e2020); }
+  .s4-band { left:1190px; top:716px; height:36px; box-sizing:border-box; border:2px solid #e74c3c; border-bottom:none;
+    background:repeating-linear-gradient(135deg, rgba(231,76,60,0.55) 0 6px, transparent 6px 12px); }
+  .s4-base { position:absolute; left:960px; top:950px; width:400px; height:2px; background:#93a3b2; }
+  .s4-barlab { position:absolute; top:962px; width:150px; text-align:center; font-size:22px; font-weight:700; letter-spacing:3px; color:#dfe7ee; }
+  .s4-pct { position:absolute; left:1362px; top:716px; font-size:30px; font-weight:700; letter-spacing:1px; color:#e74c3c; white-space:nowrap; }
+  .s4-src { position:absolute; left:980px; top:1004px; font-size:19px; font-weight:700; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  .s4-scale { position:absolute; left:96px; top:556px; width:85px; height:8px; border:2px solid #93a3b2; border-top:none; box-sizing:border-box; }
+  .s4-scalelab { position:absolute; left:96px; top:572px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+</style>
+<div id="s4-root" data-composition-id="g-a5s4-strip" data-width="1920" data-height="1080">
+  <div class="s4-drift" id="s4-drift"></div>
+  <svg class="s4-map" id="s4-map" viewBox="114 431 691.2 194.4" preserveAspectRatio="none">
+    <polygon class="s4-contour" id="s4-contour" points="237.5,523.0 241.2,535.4 246.9,545.7 256.0,560.9 258.2,567.2 266.3,584.7 273.6,592.0 281.8,597.6 299.7,605.6 321.0,616.0 334.8,620.9 352.8,620.5 384.9,615.0 421.8,602.8 437.0,602.2 450.5,605.4 469.5,610.5 499.9,615.7 522.2,613.2 544.6,604.4 558.5,596.1 572.4,588.2 596.4,573.4 612.3,559.9 622.9,545.3 625.0,538.4 642.3,505.1 653.9,490.2 658.6,486.0 667.3,478.8 677.0,473.6 683.8,469.0 680.6,457.1 677.1,450.6 671.7,445.6 659.9,442.4 649.9,441.6 630.5,436.7 626.6,436.4 611.0,435.1 578.5,454.2 570.6,472.5 566.6,478.4 562.5,482.7 545.7,499.1 528.9,515.9 508.2,526.7 493.2,531.6 469.1,538.0 436.0,540.1 403.3,547.7 399.1,550.0 385.0,557.2 372.5,562.9 354.9,564.7 333.0,565.5 315.5,563.3 303.8,557.3 298.7,554.7 293.8,548.4 291.3,542.0 288.3,537.1 282.9,532.9 275.5,528.2 271.5,525.5 265.1,518.5 257.5,513.6 244.6,494.6 238.4,495.1 236.2,499.5 235.8,508.9"/>
+    <polyline class="s4-track" id="s4-track" points="247.0,516.6 249.1,523.0 256.5,534.1 258.6,533.9 269.8,543.9 274.3,557.0 280.7,568.5 284.1,571.9 300.6,575.1 319.9,579.4 339.5,579.1 360.9,585.1 388.1,580.3 404.8,570.2 405.2,566.9 423.7,566.7 442.5,573.6 455.1,580.6 468.5,581.3 497.8,580.0 523.7,569.5 539.3,558.8 557.1,547.0 561.6,535.3 563.9,520.5 563.5,518.5 571.1,515.5 580.2,512.2 579.6,509.3 579.9,507.7 584.0,501.1 586.1,496.0 593.7,471.9 599.3,462.2 602.8,453.3 596.0,454.4 593.0,457.1 591.4,459.8 590.3,463.2 590.2,464.4 595.1,461.1 598.4,457.8 601.0,459.2 606.6,460.2 613.4,462.9 621.3,466.6 627.5,468.6 643.0,468.9 653.8,462.3 655.4,463.8 656.1,465.1 665.4,460.8 671.5,459.6 672.5,461.3 672.7,464.5 675.6,466.7"/>
+    <path class="s4-dots" id="s4-d0" d="M239.6 519.6h.01M239.8 516.1h.01M250.9 552.0h.01M258.4 551.7h.01M263.6 555.0h.01M265.0 548.4h.01M268.8 572.4h.01M284.4 554.3h.01M284.4 555.7h.01M291.8 555.7h.01M295.9 571.0h.01M296.4 570.2h.01M312.8 591.4h.01M316.6 595.4h.01M321.2 589.3h.01M328.3 603.4h.01M333.9 601.0h.01M333.9 602.9h.01M341.4 593.5h.01M342.0 595.4h.01M353.0 586.6h.01M353.5 598.5h.01M354.4 588.8h.01M355.0 594.7h.01M359.6 604.3h.01M362.9 588.7h.01M363.3 587.1h.01M363.9 595.5h.01M364.4 600.1h.01M366.5 579.2h.01M367.1 590.9h.01M367.3 592.4h.01M367.5 593.3h.01M367.7 591.4h.01M367.9 589.2h.01M369.4 583.5h.01M369.5 582.6h.01M370.2 592.6h.01M370.6 594.0h.01M370.9 582.3h.01M371.1 592.6h.01M372.7 582.3h.01M373.2 586.4h.01M396.5 564.2h.01M403.8 560.4h.01M414.8 587.1h.01M420.5 582.5h.01M421.6 593.3h.01M423.2 576.2h.01M424.5 597.3h.01M431.4 580.9h.01M444.1 584.6h.01M444.2 585.3h.01M445.6 579.7h.01M461.4 592.8h.01M470.4 587.4h.01"/>
+    <path class="s4-dots" id="s4-d1" d="M470.4 596.8h.01M470.4 598.9h.01M470.4 603.9h.01M470.4 610.0h.01M470.5 582.3h.01M471.2 581.9h.01M471.7 607.4h.01M472.1 587.1h.01M473.9 605.3h.01M476.0 604.6h.01M483.8 589.3h.01M484.2 587.9h.01M488.3 585.3h.01M496.9 578.7h.01M498.0 603.9h.01M498.2 561.4h.01M502.8 599.9h.01M503.4 601.0h.01M505.7 587.4h.01M506.5 584.6h.01M507.1 530.5h.01M509.0 530.4h.01M513.2 543.5h.01M513.4 581.3h.01M514.2 586.0h.01M514.6 583.4h.01M514.9 572.6h.01M515.3 578.7h.01M515.3 586.3h.01M515.7 526.9h.01M515.9 586.2h.01M516.1 585.1h.01M516.2 579.0h.01M517.5 577.3h.01M517.7 573.3h.01M517.8 585.9h.01M518.8 580.4h.01M519.7 586.3h.01M520.3 574.5h.01M520.7 586.5h.01M521.7 585.3h.01M531.1 561.8h.01M531.6 528.0h.01M535.7 518.6h.01M535.7 518.8h.01M536.8 527.3h.01M537.4 554.5h.01M537.6 601.3h.01M537.6 602.0h.01M538.5 518.8h.01M539.8 531.3h.01M539.9 551.3h.01M540.3 531.8h.01M540.5 531.3h.01M542.4 531.5h.01M545.7 589.3h.01"/>
+    <path class="s4-dots" id="s4-d2" d="M545.9 588.6h.01M546.6 595.9h.01M547.4 588.4h.01M551.6 549.4h.01M553.0 558.5h.01M553.9 531.8h.01M554.9 523.3h.01M557.0 517.0h.01M561.4 517.7h.01M562.7 518.7h.01M566.1 484.0h.01M567.6 483.9h.01M569.5 483.2h.01M570.8 482.7h.01M571.8 500.8h.01M571.8 519.8h.01M572.0 483.7h.01M573.0 482.7h.01M573.1 519.6h.01M574.5 500.8h.01M575.3 518.7h.01M576.0 474.0h.01M576.2 519.6h.01M576.6 480.6h.01M578.3 519.1h.01M580.8 492.8h.01M581.2 527.6h.01M581.4 460.9h.01M582.3 516.8h.01M583.3 455.7h.01M583.5 452.0h.01M583.9 455.7h.01M584.3 451.5h.01M584.3 454.1h.01M584.3 455.7h.01M585.0 505.7h.01M585.8 459.9h.01M587.1 456.2h.01M588.3 469.3h.01M588.7 453.6h.01M588.7 455.0h.01M588.7 456.2h.01M588.9 454.5h.01M589.1 455.0h.01M589.1 460.6h.01M589.1 464.9h.01M589.2 452.4h.01M589.2 459.0h.01M589.6 460.4h.01M591.0 452.2h.01M591.0 458.3h.01M591.6 453.1h.01M592.3 448.4h.01M593.9 449.7h.01M594.6 447.5h.01"/>
+    <path class="s4-dots" id="s4-d3" d="M595.0 448.9h.01M595.0 460.6h.01M596.4 509.5h.01M597.7 485.1h.01M598.1 484.4h.01M598.3 485.3h.01M599.0 510.7h.01M600.9 489.1h.01M602.1 449.4h.01M602.1 526.6h.01M603.5 537.4h.01M604.2 488.1h.01M604.4 454.8h.01M604.8 445.1h.01M606.3 446.3h.01M608.3 447.7h.01M608.8 444.2h.01M608.8 448.2h.01M608.8 549.3h.01M609.0 446.1h.01M609.2 446.6h.01M609.7 444.2h.01M610.4 445.6h.01M610.6 541.2h.01M610.8 447.7h.01M611.3 542.6h.01M612.1 540.2h.01M612.6 444.9h.01M612.6 446.4h.01M613.7 500.7h.01M613.8 448.5h.01M613.8 551.9h.01M614.4 498.4h.01M614.8 472.1h.01M614.8 491.2h.01M615.2 485.5h.01M615.9 509.2h.01M616.1 464.2h.01M616.1 491.2h.01M616.3 496.1h.01M616.5 485.5h.01M617.5 485.5h.01M617.5 492.7h.01M617.9 491.2h.01M618.4 491.4h.01M618.6 484.1h.01M618.6 487.2h.01M618.6 490.2h.01M618.7 485.5h.01M618.8 492.8h.01M619.0 488.6h.01M620.0 486.0h.01M620.0 487.4h.01M620.0 488.6h.01M620.0 490.0h.01"/>
+    <path class="s4-dots" id="s4-d4" d="M620.0 491.4h.01M620.2 492.8h.01M620.2 548.7h.01M620.4 488.1h.01M621.3 452.7h.01M621.3 486.0h.01M621.3 487.2h.01M621.3 491.2h.01M621.3 492.6h.01M621.5 464.2h.01M621.5 488.6h.01M621.6 460.5h.01M622.1 459.5h.01M622.8 485.8h.01M622.8 487.2h.01M622.8 488.3h.01M622.8 489.8h.01M622.8 491.4h.01M622.8 492.6h.01M622.9 476.7h.01M623.6 470.7h.01M623.7 441.7h.01M627.3 479.9h.01M630.5 482.0h.01M631.5 449.4h.01M631.7 475.7h.01M631.7 475.9h.01M632.4 500.6h.01M633.0 492.1h.01M633.2 494.2h.01M633.2 496.1h.01M633.4 491.2h.01M633.4 492.8h.01M633.4 499.1h.01M633.6 494.2h.01M634.0 448.7h.01M634.6 499.1h.01M634.8 485.8h.01M634.8 489.5h.01M634.8 491.2h.01M634.8 497.3h.01M634.8 501.0h.01M634.9 487.4h.01M634.9 494.9h.01M634.9 498.2h.01M635.1 490.0h.01M635.1 491.4h.01M635.1 492.6h.01M635.3 501.5h.01M635.7 496.3h.01M636.7 499.1h.01M637.6 498.9h.01M638.0 500.1h.01M638.2 485.3h.01M638.4 499.4h.01M639.4 475.7h.01"/>
+    <path class="s4-dots" id="s4-d5" d="M639.6 492.9h.01M640.3 453.6h.01M641.1 482.2h.01M641.1 484.4h.01M641.1 485.8h.01M641.3 456.9h.01M641.3 484.1h.01M642.0 455.8h.01M642.2 456.9h.01M642.2 459.9h.01M642.2 461.3h.01M642.4 486.0h.01M642.8 450.3h.01M642.8 463.7h.01M643.0 481.1h.01M643.2 462.8h.01M643.4 456.9h.01M643.4 482.2h.01M643.4 482.9h.01M643.9 453.1h.01M644.0 454.1h.01M644.0 455.2h.01M644.0 456.2h.01M644.5 478.3h.01M644.7 451.7h.01M644.7 452.9h.01M644.7 454.1h.01M644.7 455.5h.01M644.7 456.2h.01M645.3 477.3h.01M646.8 452.2h.01M647.0 479.2h.01M647.2 450.5h.01M647.6 457.4h.01M647.6 479.2h.01M648.8 458.5h.01M649.0 475.7h.01M649.3 455.9h.01M651.3 459.5h.01M651.6 463.2h.01M651.6 475.2h.01M651.8 463.9h.01M652.2 480.4h.01M652.4 459.7h.01M652.4 478.0h.01M652.6 466.0h.01M656.4 464.4h.01M656.6 459.7h.01M656.8 456.7h.01M657.7 484.5h.01M661.2 450.7h.01M664.1 448.2h.01M664.5 449.8h.01M665.6 444.7h.01M667.5 447.2h.01M671.6 458.3h.01M675.8 465.6h.01"/>
+    <circle class="s4-ring" id="s4-ring" cx="618.8" cy="489.2" r="9"/>
+    <circle class="s4-ring" id="s4-pulse" cx="618.8" cy="489.2" r="9"/>
+  </svg>
+  <div class="s4-eb" id="s4-eb">WHAT THE TORNADO HAD TO HIT · NWS DAMAGE SURVEY POINTS</div>
+  <div class="s4-ten" id="s4-ten">UNDER 10</div>
+  <div class="s4-tensub" id="s4-tensub">MARKERS PER SQUARE MILE · AWAY FROM THE CLUSTER</div>
+  <div class="s4-clab" id="s4-clab">ONE CLUSTER</div>
+  <div class="s4-photo" id="s4-photo" data-slot="public domain photograph of an oil tank battery, 480 x 300, object-fit cover">
+    <svg viewBox="0 0 480 300">
+      <path d="M0 236H480" stroke="#4a5560" stroke-width="2" fill="none"/>
+      <g fill="none" stroke="#93a3b2" stroke-width="3">
+        <path d="M70 236V120a44 12 0 0 1 88 0V236"/><ellipse cx="114" cy="120" rx="44" ry="12"/>
+        <path d="M186 236V104a44 12 0 0 1 88 0V236"/><ellipse cx="230" cy="104" rx="44" ry="12"/>
+        <path d="M302 236V120a44 12 0 0 1 88 0V236"/><ellipse cx="346" cy="120" rx="44" ry="12"/>
+        <path d="M114 108V84H346V108M230 92V84M390 200H430V236"/>
+      </g>
+    </svg>
+  </div>
+  <div class="s4-num"><span id="s4-num">112</span></div>
+  <div class="s4-numlab" id="s4-numlab">OIL TANK BATTERIES</div>
+  <div class="s4-numsub" id="s4-numsub">storage tanks beside oil wells</div>
+  <div class="s4-barhead" id="s4-barhead">WIND SPEED WHERE BOTH COULD BE COMPARED</div>
+  <div class="s4-bar s4-bd" id="s4-bd"></div>
+  <div class="s4-bar s4-br" id="s4-br"></div>
+  <div class="s4-bar s4-band" id="s4-band"></div>
+  <div class="s4-base" id="s4-base"></div>
+  <div class="s4-barlab" id="s4-ld" style="left:980px">DAMAGE</div>
+  <div class="s4-barlab" id="s4-lr" style="left:1190px">RADAR</div>
+  <div class="s4-pct" id="s4-pct">+10 TO 30 %</div>
+  <div class="s4-src" id="s4-src">Marshall et al. · damage survey and radar analysis</div>
+  <div class="s4-scale" id="s4-scale"></div>
+  <div class="s4-scalelab" id="s4-scalelab">1 MILE</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#s4-";
+  function pop(id, at) { tl.fromTo(P + id, { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, at); }
+  tl.fromTo(P + "drift", { y: -110 }, { y: 110, duration: 21.8, ease: "none" }, 0);
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+  tl.fromTo(P + "scale", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.fromTo(P + "scalelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.5);
+  const L = Math.ceil(document.getElementById("s4-track").getTotalLength()) + 1;
+  gsap.set(P + "track", { strokeDasharray: L, strokeDashoffset: L }); /* at build time: frame 0 never shows the finished line */
+  gsap.set([P + "ring", P + "pulse"], { opacity: 0 });
+  tl.to(P + "track", { strokeDashoffset: 0, duration: 2.2, ease: "power1.inOut" }, 0.3);        /* THE SURVEY TEAM @0.54 */
+  /* COUNTED @1.24: the survey points light west to east */
+  tl.fromTo(P + "d0", { autoAlpha: 0.22 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" },1.24);
+  tl.fromTo(P + "d1", { autoAlpha: 0.22 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" },1.44);
+  tl.fromTo(P + "d2", { autoAlpha: 0.22 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" },1.64);
+  tl.fromTo(P + "d3", { autoAlpha: 0.22 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" },1.84);
+  tl.fromTo(P + "d4", { autoAlpha: 0.22 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" },2.04);
+  tl.fromTo(P + "d5", { autoAlpha: 0.22 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" },2.24);
+  /* the points keep twinkling so no hold is still */
+  tl.fromTo(P + "d0", { strokeWidth: 1.9 }, { strokeWidth: 2.7, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 25 }, 2.6);
+  tl.fromTo(P + "d2", { strokeWidth: 1.9 }, { strokeWidth: 2.7, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 25 }, 3.0);
+  tl.fromTo(P + "d4", { strokeWidth: 1.9 }, { strokeWidth: 2.7, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 24 }, 3.4);
+  tl.fromTo(P + "ring", { attr: { r: 24 }, opacity: 0 }, { attr: { r: 9 }, opacity: 1, duration: 0.6, ease: "power3.out" }, 4.2); /* CLUSTER @4.20 */
+  tl.fromTo(P + "pulse", { attr: { r: 9 }, opacity: 0.8 }, { attr: { r: 18 }, opacity: 0, duration: 1.3, ease: "power2.out", repeat: 12, immediateRender: false }, 4.8);
+  pop("clab", 4.4);
+  tl.fromTo(P + "ten", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 6.22); /* FEWER THAN 10 @6.22 */
+  pop("tensub", 6.82);                                                                        /* MARKERS @6.82 */
+  /* 112 @8.90: the count runs up beside the photo slot */
+  tl.fromTo(P + "photo", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 8.5);
+  const N = { v: 1 };
+  tl.fromTo(P + "num", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 }, 8.9);
+  tl.fromTo(N, { v: 1 }, { v: 112, duration: 1.3, ease: "power3.out", onUpdate: function () {
+    const e = document.getElementById("s4-num"); if (e) e.textContent = Math.round(N.v);
+  } }, 8.9);
+  pop("numlab", 10.9);                                                                        /* OIL TANK BATTERIES @10.90 */
+  pop("numsub", 12.54);                                                                       /* STORAGE TANKS @12.54 */
+  /* RADAR AND DAMAGE @15.92: two bars from one baseline */
+  pop("barhead", 15.74);
+  tl.fromTo(P + "base", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 15.92);
+  tl.fromTo(P + "br", { scaleY: 0, transformOrigin: "center bottom" }, { scaleY: 1, duration: 0.6, ease: "power3.out" }, 15.92); /* RADAR @15.92 */
+  pop("lr", 15.92);
+  tl.fromTo(P + "bd", { scaleY: 0, transformOrigin: "center bottom" }, { scaleY: 1, duration: 0.6, ease: "power3.out" }, 16.5);  /* DAMAGE @16.50 */
+  pop("ld", 16.5);
+  tl.fromTo(P + "band", { scaleY: 0, autoAlpha: 0, transformOrigin: "center bottom" }, { scaleY: 1, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 19.36); /* 10 TO 30 PERCENT @19.36 */
+  tl.fromTo(P + "pct", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 19.5);
+  pop("src", 20.3);                                                                           /* HIGHER @20.62 */
+  window.__timelines["g-a5s4-strip"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

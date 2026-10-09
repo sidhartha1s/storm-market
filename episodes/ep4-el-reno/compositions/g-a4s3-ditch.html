@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4s3-ditch · A4-S3 · window 20.78 s · brief: mg_specs/drawings.md
+  Claim: the drainage ditch was a few feet from the family's own door. Seven dots, a table outline, no water.
+  Then Enma Aguilar's sentence as attributed text (News 9, exact words). Text only.
+  Cues are comp-local seconds from audio/a4-s3.words.json.
+-->
+<template>
+<style>
+  .dt3-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .dt3-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  .dt3-sweep { position:absolute; left:0; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,.07), rgba(127,178,229,0)); }
+  .dt3-svg { position:absolute; left:0; top:0; }
+  .dt3-lab { position:absolute; font-weight:700; white-space:nowrap; }
+  .dt3-small { font-size:22px; letter-spacing:3px; color:#93a3b2; }
+  .dt3-note { font-size:20px; letter-spacing:2px; color:#93a3b2; }
+  .dt3-src { font-size:20px; letter-spacing:2px; color:#c8d3e0; }
+  .dt3-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:64px; color:#f2f5f8; }
+  .dt3-card { position:absolute; left:140px; top:70px; width:1560px; height:236px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,.55); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(18px) saturate(1.15); }
+  .dt3-mark { position:absolute; left:36px; top:16px; font-family:'AbrilFig', Georgia, serif; font-size:120px; line-height:120px; color:#d8a13a; }
+  .dt3-q { position:absolute; left:130px; right:40px; top:32px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-weight:400;
+    font-size:38px; line-height:54px; color:#f2f5f8; }
+  .dt3-q span { display:inline-block; }
+  .dt3-rule { position:absolute; left:130px; top:162px; width:200px; height:3px; background:#d8a13a; }
+  .dt3-attr { position:absolute; left:130px; top:180px; font-weight:700; font-size:22px; letter-spacing:2px; color:#d8a13a; white-space:nowrap; }
+</style>
+<div id="dt3-root" class="dt3-root" data-composition-id="g-a4s3-ditch" data-width="1920" data-height="1080" data-duration="20.78">
+  <div class="dt3-grid" id="dt3-grid"></div>
+  <div class="dt3-sweep" id="dt3-sweep"></div>
+
+  <svg class="dt3-svg" id="dt3-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="dt3-hatch" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="26" stroke="#7fb2e5" stroke-width="3"/>
+      </pattern>
+    </defs>
+    <g id="dt3-site">
+      <!-- earth band under the ground line and round the ditch: section convention, no depth claimed -->
+      <polygon points="96,766 998,766 1068,906 1332,906 1402,766 1590,766 1590,800 1424,800 1354,940 1046,940 976,800 96,800" fill="url(#dt3-hatch)" opacity="0.35"/>
+      <path id="dt3-gnd" d="M96 760 L1000 760 L1070 900 L1330 900 L1400 760 L1590 760" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- the house: one storey, slab on grade -->
+      <rect x="300" y="746" width="584" height="16" fill="#dfe7ee" fill-opacity="0.85" stroke="#f2f5f8" stroke-width="3"/>
+      <polyline points="276,572 592,440 908,572" fill="none" stroke="#f2f5f8" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+      <line x1="320" y1="746" x2="320" y2="560" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
+      <line x1="864" y1="630" x2="864" y2="560" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
+      <line x1="320" y1="560" x2="864" y2="560" stroke="#5a768f" stroke-width="4"/>
+      <line x1="592" y1="560" x2="592" y2="746" stroke="#93a3b2" stroke-width="3"/>
+      <path d="M380 620 L500 620 L500 700 L380 700 Z M440 620 L440 700" fill="none" stroke="#5a768f" stroke-width="3"/>
+      <line id="dt3-door" x1="864" y1="632" x2="864" y2="744" stroke="#d8a13a" stroke-width="8" stroke-linecap="round"/>
+    </g>
+    <!-- the measure: door to the near edge of the ditch -->
+    <path id="dt3-dim" d="M864 700 L1000 700" fill="none" stroke="#d8a13a" stroke-width="4"/>
+    <path id="dt3-tick" d="M1000 684 L1000 716" fill="none" stroke="#d8a13a" stroke-width="4" stroke-linecap="round"/>
+    <path id="dt3-ld-few" d="M954 668 L934 696" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+    <!-- the table they carried: an outline, drawn at its place in the ditch and moved by GSAP only -->
+    <path id="dt3-table" d="M1105 852 L1295 852 M1117 852 L1117 896 M1283 852 L1283 896" fill="none" stroke="#c8d3e0" stroke-width="5" stroke-linecap="round"/>
+    <!-- seven people: seven identical dots, drawn at their place in the ditch and moved by GSAP only -->
+    <circle class="dt3-dot" cx="1134" cy="884" r="9" fill="#f2f5f8"/>
+    <circle class="dt3-dot" cx="1156" cy="884" r="9" fill="#f2f5f8"/>
+    <circle class="dt3-dot" cx="1178" cy="884" r="9" fill="#f2f5f8"/>
+    <circle class="dt3-dot" cx="1200" cy="884" r="9" fill="#f2f5f8"/>
+    <circle class="dt3-dot" cx="1222" cy="884" r="9" fill="#f2f5f8"/>
+    <circle class="dt3-dot" cx="1244" cy="884" r="9" fill="#f2f5f8"/>
+    <circle class="dt3-dot" cx="1266" cy="884" r="9" fill="#f2f5f8"/>
+  </svg>
+
+  <div class="dt3-lab dt3-small" id="dt3-l-door" style="left:776px; top:584px">Door</div>
+  <div class="dt3-lab dt3-small" id="dt3-l-ditch" style="left:1100px; top:958px">Drainage ditch</div>
+  <div class="dt3-lab dt3-big" id="dt3-l-few" style="left:960px; top:566px">A few feet</div>
+  <div class="dt3-lab dt3-src" id="dt3-l-src" style="left:964px; top:636px">News 9, June 2013</div>
+  <div class="dt3-lab dt3-note" id="dt3-l-schem" style="left:110px; top:992px">Schematic, not to scale</div>
+
+  <div class="dt3-card" id="dt3-card">
+    <div class="dt3-mark" id="dt3-mark">&ldquo;</div>
+    <div class="dt3-q" id="dt3-q"><span id="dt3-a1">They were in the ditch</span> <span id="dt3-a2">because they thought it was the safest spot</span> <span id="dt3-a3">because they just thought it was going to be a tornado,</span> <span id="dt3-a4">not a flooding.&rdquo;</span></div>
+    <div class="dt3-rule" id="dt3-rule"></div>
+    <div class="dt3-attr" id="dt3-attr">Enma Aguilar, family member, to News 9</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#dt3-";
+  function draw(sel, at, dur) {
+    document.querySelectorAll(sel).forEach(function (el) {
+      const len = Math.ceil(el.getTotalLength()) + 1;
+      gsap.set(el, { strokeDasharray: len });
+      tl.fromTo(el, { strokeDashoffset: len }, { strokeDashoffset: 0, duration: dur, ease: "power2.out" }, at);
+    });
+  }
+
+  /* ambient, whole window: light sweep, grid drift, label float */
+  tl.fromTo(P+"sweep", { x: -560 }, { x: 2300, duration: 4.156, ease: "none", repeat: 4 }, 0);
+  tl.fromTo(P+"grid", { x: 0 }, { x: 160, duration: 20.78, ease: "none" }, 0);
+  tl.to([P+"l-door", P+"l-ditch", P+"l-schem", P+"l-src"], { y: -5, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: 10 }, 0.2);
+
+  /* THEY DID NOT GET IN A CAR @0.00: the drawing is back, seven dots at the door, nothing else moves in */
+  tl.fromTo(P+"svg", { x: -30 }, { x: 0, duration: 0.9, ease: "power3.out" }, 0);
+  tl.fromTo(".dt3-dot", { x: -434, y: -154 }, { x: -434, y: -154, duration: 0.01 }, 0);
+  /* CARRIED A TABLE OUT OF THE HOUSE @2.54-3.68 */
+  tl.fromTo(P+"table", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 2.54);
+  tl.fromTo(P+"table", { x: -455, y: -150 }, { x: -210, y: -150, duration: 1.7, ease: "power2.inOut" }, 2.54);
+  /* WENT DOWN INTO @4.46-4.94: the table, then the seven, go down into the ditch */
+  tl.to(P+"table", { x: 0, y: -40, duration: 1.3, ease: "power2.inOut" }, 4.46);
+  tl.to(".dt3-dot", { x: -150, duration: 0.7, ease: "power2.inOut", stagger: 0.05 }, 4.5);
+  tl.to(".dt3-dot", { x: 0, y: 0, duration: 0.8, ease: "power2.inOut", stagger: 0.05 }, 5.25);
+  /* A DRAINAGE DITCH @5.42 */
+  tl.fromTo(P+"l-ditch", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.42);
+  /* A FEW FEET AWAY @6.22: the measure, door to ditch */
+  draw(P+"dim", 6.22, 0.5);
+  draw(P+"tick", 6.5, 0.25);
+  tl.fromTo(P+"l-few", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 6.22);
+  draw(P+"ld-few", 6.55, 0.3);
+  tl.fromTo(P+"l-src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 6.7);
+  /* HID UNDER THE TABLE @7.44: the table comes down over the seven */
+  tl.to(P+"table", { y: 0, duration: 0.55, ease: "power2.out" }, 7.44);
+  /* ENMA AGUILAR @10.22: her card, attribution first */
+  tl.fromTo(P+"card", { autoAlpha: 0, y: -50 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 10.22);
+  tl.fromTo(P+"rule", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 10.5);
+  tl.fromTo(P+"attr", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 10.4);
+  tl.fromTo(P+"mark", { autoAlpha: 0, scale: 1.6, transformOrigin: "50% 40%" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 11.44);
+  /* THEY THOUGHT THE DITCH @13.68 */
+  tl.fromTo(P+"a1", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 13.68);
+  /* WAS THE SAFEST SPOT @14.40 */
+  tl.fromTo(P+"a2", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.4);
+  /* BECAUSE THEY THOUGHT A TORNADO WAS COMING @17.28 */
+  tl.fromTo(P+"a3", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 17.28);
+  /* NOT A FLOOD @19.36 */
+  tl.fromTo(P+"a4", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 19.36);
+  tl.to({}, { duration: 0.01 }, 20.77);
+  window.__timelines["g-a4s3-ditch"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a2s11-replot: one sub-vortex, US-81 first, Reuter Road between four and five minutes later.
+     Brief: mg_specs/replot.md. Scale 300 px per mile, north up. Our own redraw, no figure traced.
+     Roads from OpenStreetMap (10 Oct 26): US-81 x 1000; Reuter Road y 330; Reno Road y 630 (1.00 mile south);
+     Radio Road x 1612 (2.04 miles east of US-81); research car x 1513 (1.71 miles east, 530 m west of Radio Road).
+     Not measured, so approximate or schematic: where on US-81 the TV crew was (NWS: the crossing was near Reno Road),
+     the track between the roads, and where the ring sat after 6:19 PM. -->
+<template>
+<style>
+  #rp211-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 54% 50%, #0b1016 0%, #030507 78%); }
+  .rp211-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .rp211-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; fill:#f2f5f8; }
+  .rp211-mid { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#dfe7ee; }
+  .rp211-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .rp211-sm { font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px; fill:#93a3b2; }
+</style>
+<div id="rp211-root" data-composition-id="g-a2s11-replot" data-width="1920" data-height="1080">
+  <svg class="rp211-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <!-- half-mile squares, lined up on US-81 and Reuter Road -->
+      <pattern id="rp211-grid" width="150" height="150" patternUnits="userSpaceOnUse" x="100" y="30"><path d="M150,0 L0,0 L0,150" fill="none" stroke="#2a3644" stroke-width="1.5" stroke-opacity="0.55"/></pattern>
+      <radialGradient id="rp211-echo"><stop offset="0" stop-color="#7fb2e5" stop-opacity="0.34"/><stop offset="1" stop-color="#7fb2e5" stop-opacity="0"/></radialGradient>
+      <radialGradient id="rp211-glow"><stop offset="0" stop-color="#e8c56a" stop-opacity="0.75"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/></radialGradient>
+      <mask id="rp211-trackmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="rp211-trackrev" d="M1000,630 C1150,570 1330,560 1400,620 C1460,675 1380,720 1350,660 C1320,600 1500,560 1549,416 L1513,330" fill="none" stroke="#fff" stroke-width="12"/></mask>
+    </defs>
+    <rect x="0" y="0" width="1920" height="1080" fill="url(#rp211-grid)"/>
+    <!-- roads: US-81 and Radio Road north to south, Reuter Road and Reno Road east to west -->
+    <path id="rp211-us81" d="M1000,54 L1000,1026" stroke="#93a3b2" stroke-width="3" stroke-opacity="0.75"/>
+    <path id="rp211-reuter" d="M600,330 L1824,330" stroke="#93a3b2" stroke-width="3" stroke-opacity="0.75"/>
+    <path id="rp211-radio" d="M1612,54 L1612,1026" stroke="#93a3b2" stroke-width="2" stroke-opacity="0.5"/>
+    <path id="rp211-reno" d="M600,630 L1824,630" stroke="#93a3b2" stroke-width="2" stroke-opacity="0.5"/>
+    <!-- the wide circulation: r 390 px = 1.3 miles, centred on the highway crossing at 6:19 PM -->
+    <g id="rp211-ring">
+      <ellipse id="rp211-e1" cx="860" cy="500" rx="150" ry="110" fill="url(#rp211-echo)"/>
+      <ellipse id="rp211-e2" cx="1150" cy="470" rx="120" ry="90" fill="url(#rp211-echo)"/>
+      <ellipse id="rp211-e3" cx="920" cy="830" rx="170" ry="100" fill="url(#rp211-echo)"/>
+      <ellipse id="rp211-e4" cx="1190" cy="760" rx="110" ry="120" fill="url(#rp211-echo)"/>
+      <circle cx="1000" cy="630" r="390" fill="none" stroke="#5a768f" stroke-width="30" stroke-opacity="0.22"/>
+      <circle cx="1000" cy="630" r="390" fill="none" stroke="#7fb2e5" stroke-width="2.5"/>
+      <circle id="rp211-ticks" cx="1000" cy="630" r="390" fill="none" stroke="#7fb2e5" stroke-width="14" stroke-opacity="0.7" stroke-dasharray="5 44"/>
+    </g>
+    <!-- the track between the two roads: not measured here, so dashed. Its last leg comes from the south-southeast (W14) -->
+    <path id="rp211-track" d="M1000,630 C1150,570 1330,560 1400,620 C1460,675 1380,720 1350,660 C1320,600 1500,560 1549,416 L1513,330" fill="none" stroke="#e8c56a" stroke-width="3" stroke-dasharray="10 9" stroke-opacity="0.85" mask="url(#rp211-trackmask)"/>
+    <!-- crew markers -->
+    <circle id="rp211-flash1" cx="1000" cy="630" r="30" fill="none" stroke="#e74c3c" stroke-width="5"/>
+    <circle id="rp211-flash2" cx="1513" cy="330" r="30" fill="none" stroke="#e74c3c" stroke-width="5"/>
+    <rect id="rp211-suv" x="991" y="621" width="18" height="18" fill="#f2f5f8" stroke="#04070c" stroke-width="2"/>
+    <path id="rp211-car" d="M1513,317 L1526,330 L1513,343 L1500,330 Z" fill="#f2f5f8" stroke="#04070c" stroke-width="2"/>
+    <circle id="rp211-ghost" cx="1000" cy="630" r="15" fill="none" stroke="#e8c56a" stroke-width="2.5" stroke-dasharray="4 4"/>
+    <!-- the one sub-vortex: r 15 px = 160 m across, the middle of 90 to 230 m -->
+    <g id="rp211-sv"><g id="rp211-svin">
+      <circle cx="0" cy="0" r="34" fill="url(#rp211-glow)"/>
+      <circle cx="0" cy="0" r="15" fill="#e8c56a" fill-opacity="0.35" stroke="#f5d98b" stroke-width="3"/>
+      <path id="rp211-spin" d="M0,-9 A9,9 0 0 0 -9,0" fill="none" stroke="#f2f5f8" stroke-width="3"/>
+    </g></g>
+    <!-- labels -->
+    <text id="rp211-t-us81" class="rp211-lab" x="1018" y="120">US-81</text>
+    <text id="rp211-t-reuter" class="rp211-lab" x="620" y="316">Reuter Road</text>
+    <text id="rp211-t-radio" class="rp211-sm" x="1630" y="232">Radio Road</text>
+    <text id="rp211-t-reno" class="rp211-sm" x="650" y="616">Reno Road</text>
+    <path id="rp211-lead" d="M1014,618 L1064,570" stroke="#e8c56a" stroke-width="2"/>
+    <text id="rp211-t-one" class="rp211-mid" x="1072" y="566" fill="#e8c56a">One sub-vortex</text>
+    <text id="rp211-t-suv" class="rp211-mid" x="1050" y="672">TV crew</text>
+    <text id="rp211-t-time" class="rp211-lab" x="1050" y="704">6:19 PM · NWS</text>
+    <text id="rp211-t-approx" class="rp211-sm" x="1050" y="732">position approximate</text>
+    <text id="rp211-t-later" class="rp211-mid" x="1090" y="500" fill="#e8c56a">4 to 5 minutes later</text>
+    <text id="rp211-t-car" class="rp211-mid" x="1490" y="306" text-anchor="end">Research car</text>
+    <text id="rp211-hl1" class="rp211-big" x="96" y="180">One vortex.</text>
+    <text id="rp211-hl2" class="rp211-big" x="96" y="246">Two roads.</text>
+    <text id="rp211-t-osm" class="rp211-sm" x="96" y="852">Roads: OpenStreetMap</text>
+    <text id="rp211-t-sch1" class="rp211-sm" x="96" y="880">Track between the roads, ring after 6:19 PM:</text>
+    <text id="rp211-t-sch2" class="rp211-sm" x="96" y="908">not measured here · schematic</text>
+    <!-- scale bar: 300 px = 1 mile -->
+    <path id="rp211-bar" d="M96,986 L396,986 M96,976 L96,996 M396,976 L396,996" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+    <text id="rp211-t-bar" class="rp211-sm" x="96" y="964" fill="#dfe7ee">1 mile</text>
+    <text id="rp211-t-ring" class="rp211-sm" x="412" y="993">Ring: 2.6 miles at its widest</text>
+    <text id="rp211-t-src" class="rp211-sm" x="96" y="1022">Our redraw of mobile-radar measurements · Wurman et al. 2014</text>
+    <!-- compass -->
+    <path id="rp211-north" d="M1760,150 L1760,96 M1748,112 L1760,92 L1772,112" fill="none" stroke="#93a3b2" stroke-width="3"/>
+    <text id="rp211-t-n" class="rp211-lab" x="1751" y="182">N</text>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a2s11-replot", P = "#rp211-";
+  /* cues: audio/a2-s11.words.json (comp-local = segment seconds) */
+  const CUES = {
+    highway: 1.46,  /* Highway @1.46 */
+    one: 4.58,      /* one sub vortex @4.58 */
+    struck1: 7.42,  /* struck @7.42 */
+    there: 8.88,    /* there @8.88 */
+    between: 10.42, /* Between four and five minutes later @10.42 */
+    struck2: 12.36, /* struck @12.36 */
+    cobalt: 13.12,  /* Cobalt @13.12 */
+    reuter: 13.82,  /* Reuter Road @13.82 */
+    onesmall: 15.56,/* one small vortex @15.56 */
+    two: 16.86,     /* two roads @16.86 */
+    what: 20.22     /* What happened at each road @20.22 */
+  };
+  const DUR = 21.9;
+  const tl = gsap.timeline({ paused: true });
+  const q = function (s) { return document.querySelector(P + s); };
+  /* hidden from the first frame: set now (a paused timeline has not rendered its time-0 sets yet) and again at 0 */
+  const HIDE = [P + "sv", P + "ghost", P + "track", P + "flash1", P + "flash2", P + "suv", P + "car", P + "t-us81", P + "t-reuter", P + "lead", P + "t-one", P + "t-suv", P + "t-time", P + "t-approx", P + "t-later", P + "t-car", P + "hl1", P + "hl2", P + "t-sch1", P + "t-sch2"];
+  gsap.set(HIDE, { autoAlpha: 0 });
+  gsap.set(P + "sv", { x: 1000, y: 630 });
+  tl.set(HIDE, { autoAlpha: 0 }, 0);
+  tl.set(P + "sv", { x: 1000, y: 630 }, 0);
+
+  /* whole window: the wide circulation turns counter-clockwise, echoes drift, the sub-vortex spins */
+  tl.fromTo(P + "ticks", { rotation: 0, svgOrigin: "1000 630" }, { rotation: -176, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e1", { x: -30, y: 10 }, { x: 40, y: -30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e2", { x: 30, y: -20 }, { x: -50, y: 30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e3", { x: -40, y: 0 }, { x: 50, y: -20, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e4", { x: 20, y: 30 }, { x: -30, y: -40, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "spin", { rotation: 0, svgOrigin: "0 0" }, { rotation: -360, duration: 1.1, ease: "none", repeat: 19 }, 0);
+  tl.fromTo([P + "bar", P + "t-bar", P + "t-ring", P + "t-src", P + "t-osm"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.08 }, 0.2);
+
+  /* Highway @1.46: the road is named */
+  tl.fromTo(P + "t-us81", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.highway);
+  tl.to(P + "us81", { attr: { "stroke-width": 7 }, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.highway);
+
+  /* one sub-vortex @4.58: the small circle, at the ring centre, on the highway */
+  tl.fromTo(P + "sv", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 }, CUES.one);
+  tl.fromTo(P + "svin", { scale: 0.2, svgOrigin: "0 0" }, { scale: 1, duration: 0.5, ease: "back.out(2.5)" }, CUES.one);
+  tl.fromTo([P + "lead", P + "t-one"], { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.one + 0.25);
+
+  /* struck @7.42: the TV crew marker on US-81; there @8.88: the weather service's clock time */
+  tl.fromTo(P + "suv", { autoAlpha: 0, scale: 0.2, svgOrigin: "1000 630" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2.5)" }, CUES.struck1);
+  tl.fromTo(P + "flash1", { autoAlpha: 1, scale: 0.4, svgOrigin: "1000 630" }, { autoAlpha: 0, scale: 2.6, duration: 0.9, ease: "power2.out", immediateRender: false }, CUES.struck1);
+  tl.fromTo(P + "t-suv", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.struck1 + 0.4);
+  tl.fromTo([P + "t-time", P + "t-approx"], { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.15 }, CUES.there);
+  tl.to([P + "lead", P + "t-one"], { autoAlpha: 0, x: 16, duration: 0.3, ease: "power2.in" }, CUES.between - 0.4);
+
+  /* Between four and five minutes later @10.42: the same circle leaves a hollow outline and travels the dashed track;
+     the wide ring moves with it (its place after 6:19 PM is schematic) */
+  const rev = q("trackrev"), sv = q("sv");
+  if (rev && sv) {
+    const len = Math.ceil(rev.getTotalLength()) + 1, N = 48, legs = [], TRAVEL = CUES.struck2 - CUES.between;
+    for (let i = 1; i <= N; i++) { const pt = rev.getPointAtLength((len - 1) * i / N); legs.push({ x: pt.x, y: pt.y, duration: TRAVEL / N, ease: "none" }); }
+    gsap.set(rev, { strokeDasharray: len, strokeDashoffset: len });
+    tl.set(rev, { strokeDasharray: len, strokeDashoffset: len }, 0);
+    tl.set(P + "track", { autoAlpha: 1 }, CUES.between);
+    tl.to(rev, { strokeDashoffset: 0, duration: TRAVEL, ease: "none" }, CUES.between);
+    tl.to(sv, { keyframes: legs }, CUES.between);
+  }
+  tl.fromTo(P + "ghost", { autoAlpha: 0 }, { autoAlpha: 0.9, duration: 0.3 }, CUES.between);
+  tl.fromTo(P + "t-later", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.between);
+  tl.fromTo([P + "t-sch1", P + "t-sch2"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.between + 0.3);
+  tl.fromTo(P + "ring", { x: 0, y: 0 }, { x: 300, y: -160, duration: 1.94, ease: "power1.inOut" }, CUES.between);
+
+  /* struck @12.36, Cobalt @13.12, Reuter Road @13.82 */
+  tl.fromTo(P + "flash2", { autoAlpha: 1, scale: 0.4, svgOrigin: "1513 330" }, { autoAlpha: 0, scale: 2.6, duration: 0.9, ease: "power2.out", immediateRender: false }, CUES.struck2);
+  tl.fromTo(P + "car", { autoAlpha: 0, scale: 0.2, svgOrigin: "1513 330" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2.5)" }, CUES.struck2);
+  tl.fromTo(P + "t-car", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.cobalt);
+  tl.fromTo(P + "t-reuter", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.reuter);
+  tl.to(P + "reuter", { attr: { "stroke-width": 7 }, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.reuter);
+
+  /* one small vortex @15.56 on two roads @16.86 */
+  tl.fromTo(P + "hl1", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.onesmall);
+  tl.fromTo(P + "hl2", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.two);
+  tl.to(P + "svin", { scale: 1.5, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.onesmall);
+
+  /* What happened at each road @20.22: both markers answer */
+  tl.to(P + "flash1", { autoAlpha: 0.9, scale: 0.4, duration: 0.01 }, CUES.what - 0.02);
+  tl.to(P + "flash1", { autoAlpha: 0, scale: 2.6, duration: 0.9, ease: "power2.out" }, CUES.what);
+  tl.to(P + "flash2", { autoAlpha: 0.9, scale: 0.4, duration: 0.01 }, CUES.what + 0.38);
+  tl.to(P + "flash2", { autoAlpha: 0, scale: 2.6, duration: 0.9, ease: "power2.out" }, CUES.what + 0.4);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

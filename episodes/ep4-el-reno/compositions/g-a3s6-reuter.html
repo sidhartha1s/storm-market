@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a3s6-reuter: 640 px per mile, north up. Datum US-81 x Reuter Road = (130, 620); Alfadale x 770, Radio x 1410.
+     Strike point (530 m west of Radio Road) = x 1199: the Cobalt stays west of it. Spec: mg_specs/roads.md */
+  #u6-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 55%, #101a24 0%, #030507 82%); }
+  .u6-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .u6-rl { font-family:Arial, sans-serif; font-weight:700; font-size:24px; letter-spacing:3px; fill:#93a3b2; }
+  .u6-tag { font-family:Arial, sans-serif; font-weight:700; font-size:24px; letter-spacing:2px; fill:#f2f5f8; paint-order:stroke; stroke:#04070c; stroke-width:5px; }
+  .u6-mph { font-family:Arial, sans-serif; font-weight:700; font-size:34px; letter-spacing:1px; fill:#e8c56a; paint-order:stroke; stroke:#04070c; stroke-width:5px; }
+  .u6-hl { position:absolute; left:170px; top:80px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:68px; line-height:1; color:#f2f5f8; }
+  .u6-eb { position:absolute; left:172px; top:164px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  .u6-time { position:absolute; left:860px; top:80px; font-family:'Courier New', monospace; font-weight:700; font-size:76px; line-height:1; color:#e8c56a; }
+  .u6-tl { position:absolute; left:864px; top:164px; font-size:22px; font-weight:700; letter-spacing:4px; color:#dfe7ee; }
+  .u6-src { position:absolute; left:864px; top:198px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .u6-note { position:absolute; left:170px; top:1000px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+  .u6-hid { opacity:0; visibility:hidden; }
+</style>
+<div id="u6-root" data-composition-id="g-a3s6-reuter" data-width="1920" data-height="1080">
+  <svg class="u6-svg" viewBox="0 0 1920 1080">
+    <g id="u6-grid"></g>
+    <!-- rain: the whole frame is inside the wide circulation -->
+    <g id="u6-rain"></g>
+    <!-- US-81 x 130, Alfadale Road x 770, Radio Road x 1410 (one mile apart) -->
+    <line x1="130" y1="0" x2="130" y2="1080" stroke="#93a3b2" stroke-width="6"/>
+    <line x1="770" y1="0" x2="770" y2="1080" stroke="#3b4b5c" stroke-width="4"/>
+    <line x1="1410" y1="0" x2="1410" y2="1080" stroke="#3b4b5c" stroke-width="4"/>
+    <!-- Reuter Road -->
+    <line x1="0" y1="620" x2="1920" y2="620" stroke="#55677a" stroke-width="16"/>
+    <line x1="0" y1="620" x2="1920" y2="620" stroke="#c8d3e0" stroke-width="2" stroke-dasharray="26 22"/>
+    <text class="u6-rl" x="148" y="330">US-81</text>
+    <text class="u6-rl" x="788" y="1012">ALFADALE ROAD</text>
+    <text class="u6-rl" x="1428" y="330">RADIO ROAD</text>
+    <g id="u6-north">
+      <path d="M1780 150 L1780 92 M1769 109 L1780 88 L1791 109" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text class="u6-rl" x="1780" y="182" text-anchor="middle" style="fill:#dfe7ee">N</text>
+    </g>
+    <!-- scale bar: 320 px = 0.5 mile -->
+    <line x1="170" y1="960" x2="490" y2="960" stroke="#dfe7ee" stroke-width="3"/>
+    <line x1="170" y1="950" x2="170" y2="970" stroke="#dfe7ee" stroke-width="3"/>
+    <line x1="490" y1="950" x2="490" y2="970" stroke="#dfe7ee" stroke-width="3"/>
+    <text class="u6-rl" x="506" y="968" style="fill:#dfe7ee">0.5 MILE</text>
+    <!-- the white Cobalt, behind -->
+    <g id="u6-cob" class="u6-hid">
+      <g id="u6-hl2"><path d="M22 -8 L96 -26 L96 8 Z" fill="#fff3c4" opacity="0.22"/><path d="M22 8 L96 -8 L96 26 Z" fill="#fff3c4" opacity="0.22"/>
+        <circle cx="23" cy="-7" r="5" fill="#fff3c4"/><circle cx="23" cy="7" r="5" fill="#fff3c4"/></g>
+      <rect x="-22" y="-12" width="44" height="24" rx="5" fill="#f2f5f8" stroke="#04070c" stroke-width="2"/>
+      <text id="u6-tc" class="u6-tag u6-hid" x="0" y="52" text-anchor="middle">WHITE COBALT</text>
+    </g>
+    <!-- Dan Robinson, ahead: a mark only -->
+    <g id="u6-rob" class="u6-hid">
+      <circle id="u6-robp" cx="0" cy="0" r="14" fill="none" stroke="#e8c56a" stroke-width="2"/>
+      <rect x="-22" y="-12" width="44" height="24" rx="5" fill="#e8c56a" stroke="#04070c" stroke-width="2"/>
+      <text id="u6-tr" class="u6-tag u6-hid" x="0" y="-34" text-anchor="middle" style="fill:#e8c56a">DAN ROBINSON</text>
+      <text id="u6-mph" class="u6-mph u6-hid" x="0" y="-74" text-anchor="middle">about 45 mph</text>
+    </g>
+  </svg>
+  <div class="u6-hl" id="u6-hl">Reuter Road</div>
+  <div class="u6-eb u6-hid" id="u6-eb">INSIDE THE WIDE CIRCULATION</div>
+  <div class="u6-time u6-hid" id="u6-time">6:22:15 PM</div>
+  <div class="u6-tl u6-hid" id="u6-tl">HEADLIGHTS LAST SEEN</div>
+  <div class="u6-src u6-hid" id="u6-src">Wurman et al. 2014</div>
+  <div class="u6-note" id="u6-note">VEHICLE POSITIONS APPROXIMATE</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const NS = "http://www.w3.org/2000/svg";
+  function el(parent, tag, a) { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+  const grid = document.getElementById("u6-grid");
+  /* half-mile field lines (320 px), faint */
+  [450, 1090, 1730].forEach(function (x) { el(grid, "line", { x1: x, y1: 0, x2: x, y2: 1080, stroke: "#16212c", "stroke-width": 1.5 }); });
+  [300, 940].forEach(function (y) { el(grid, "line", { x1: 0, y1: y, x2: 1920, y2: y, stroke: "#16212c", "stroke-width": 1.5 }); });
+  /* rain streaks over the whole frame, drawn past the edges so the drift never shows a gap */
+  const rg = document.getElementById("u6-rain");
+  for (let i = 0; i < 190; i++) {
+    const x = -80 + (i * 211.7) % 2160, y = -260 + (i * 97.3) % 1560, L = 30 + (i % 5) * 10;
+    el(rg, "line", { x1: x, y1: y, x2: x - L * 0.3, y2: y + L, stroke: "#9db4c8", "stroke-width": 2, opacity: (0.14 + (i % 4) * 0.07).toFixed(2), "stroke-linecap": "round" });
+  }
+
+  const tl = gsap.timeline({ paused: true });
+  const P = "#u6-";
+  function show(id, at, vars) { tl.fromTo(P + id, Object.assign({ autoAlpha: 0 }, vars || {}), { autoAlpha: 1, x: 0, y: 0, duration: 0.5, ease: "power3.out" }, at); }
+  tl.fromTo(P + "rain", { x: 40, y: -220 }, { x: -50, y: 200, duration: 21.0, ease: "none" }, 0);
+
+  /* On @0.00, Reuter @0.48: the place stamp */
+  tl.fromTo(P + "hl", { x: -50 }, { x: 0, duration: 0.6, ease: "power3.out" }, 0.0);
+  /* inside @2.96 */
+  show("eb", 2.96, { x: -30 });
+
+  /* two (more cars) @1.48: both marks, heading east at 30 px/s, the Cobalt right behind */
+  tl.set(P + "rob", { x: 560, y: 620 }, 0);
+  tl.set(P + "cob", { x: 490, y: 620 }, 0);
+  tl.fromTo(P + "rob", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 1.48);
+  tl.fromTo(P + "cob", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 1.66);
+  tl.to(P + "rob", { x: 1142, duration: 19.4, ease: "none" }, 1.5);
+  tl.to(P + "cob", { x: 842, duration: 11.74, ease: "none" }, 1.5);
+  tl.fromTo(P + "robp", { attr: { r: 14 }, opacity: 0.9 }, { attr: { r: 60 }, opacity: 0, duration: 1.4, ease: "power1.out", repeat: 13 }, 1.5);
+  /* Dan @5.84 · white (Cobalt) @7.48 */
+  tl.fromTo(P + "tr", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 5.84);
+  tl.fromTo(P + "tc", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35 }, 7.48);
+  /* about @10.76, 45 @11.02 */
+  tl.fromTo(P + "mph", { autoAlpha: 0, scale: 1.3, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 10.9);
+  /* fell (behind) @13.24: the Cobalt slows to 13 px/s, the gap opens */
+  tl.to(P + "cob", { x: 942, duration: 7.66, ease: "none" }, 13.24);
+  /* headlights @16.68: the two dots dim; 6 (.22) @18.92: gone, the time stamp lands */
+  tl.to(P + "hl2", { autoAlpha: 0.45, duration: 1.2, ease: "power1.in" }, 16.68);
+  tl.to(P + "hl2", { autoAlpha: 0, duration: 1.0, ease: "power1.in" }, 17.9);
+  tl.fromTo(P + "time", { autoAlpha: 0, scale: 1.4, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 18.92);
+  show("tl", 19.2, { x: -24 });
+  show("src", 19.4, { x: -24 });
+
+  window.__timelines["g-a3s6-reuter"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

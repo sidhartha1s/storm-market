@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5s10-map21 (A5-S10): one state of the 21-pin map. Brief: mg_specs/map21.md.
+     Metro frame: x = (lon + 98.20) * 1920, y = (35.70 - lat) / 0.46 * 1080. 16 pins at 4 sourced places, 5 in the tray.
+     Building outlines never fill or brighten. Cues are words.json seconds (host starts with the segment's voice). -->
+<template>
+<style>
+  #m10-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .m10-world { position:absolute; inset:0; }
+  .m10-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .m10-cam { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .m10-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .m10-scan { position:absolute; left:0; top:0; width:360px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.07), rgba(127,178,229,0)); }
+  .m10-h { opacity:0; visibility:hidden; }
+  .m10-pl { position:absolute; font:700 26px Arial, sans-serif; color:#dfe7ee; letter-spacing:1px; white-space:nowrap; line-height:1;
+    text-shadow:0 0 6px #04070c, 0 0 12px #04070c, 0 2px 3px #04070c; }
+  .m10-tray { position:absolute; left:96px; top:872px; width:440px; height:140px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px dashed rgba(255,255,255,0.28); border-radius:20px; }
+  .m10-trayt { position:absolute; left:24px; top:16px; font:700 19px Arial, sans-serif; letter-spacing:3px; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .m10-tl { position:absolute; top:98px; width:76px; margin-left:-38px; text-align:center; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .m10-rail { position:absolute; left:96px; top:64px; width:640px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .m10-big { position:absolute; font:900 60px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .m10-mid { position:absolute; font:700 30px Arial, sans-serif; color:#dfe7ee; letter-spacing:1px; white-space:nowrap; line-height:1; }
+  .m10-sm { position:absolute; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:3px; white-space:nowrap; line-height:1; }
+  .m10-ser { position:absolute; font:italic 28px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+  .m10-gl { position:absolute; width:28px; height:28px; overflow:visible; }
+</style>
+<div id="m10-root" data-composition-id="g-a5s10-map21" data-width="1920" data-height="1080">
+  <div class="m10-world" id="m10-world">
+    <div class="m10-bg"></div>
+    <div class="m10-cam" id="m10-cam"><svg class="m10-svg" id="m10-map" viewBox="0 0 1920 1080"></svg></div>
+    <div class="m10-scan" id="m10-scan"></div>
+    <div class="m10-pl m10-h" id="m10-pl-er">El Reno</div>
+    <div class="m10-pl m10-h" id="m10-pl-okc">Oklahoma City</div>
+    <div class="m10-tray" id="m10-tray">
+      <div class="m10-trayt">PLACE NOT GIVEN IN THE RECORD</div>
+      <div class="m10-tl m10-h" id="m10-tl0" style="left:56px">67</div>
+      <div class="m10-tl m10-h" id="m10-tl1" style="left:136px">32</div>
+      <div class="m10-tl m10-h" id="m10-tl2" style="left:216px">26</div>
+      <div class="m10-tl m10-h" id="m10-tl3" style="left:306px;width:100px;margin-left:-50px">17 days</div>
+      <div class="m10-tl m10-h" id="m10-tl4" style="left:392px">65</div>
+    </div>
+    <svg class="m10-svg" id="m10-hudsvg" viewBox="0 0 1920 1080"></svg>
+    <!-- HUD:BEGIN -->
+    <div class="m10-pl m10-h" id="m10-pl-ok" style="left:1440px;top:484px">Okfuskee County &middot; June 1</div>
+    <div class="m10-rail m10-h" id="m10-rail" style="height:104px;width:500px">
+      <div class="m10-big" style="left:32px;top:22px">21</div>
+      <div class="m10-ser" style="left:136px;top:44px">for the night of May 31</div>
+    </div>
+    <!-- HUD:END -->
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a5s10-map21", P = "m10", D = 14.15, NS = "http://www.w3.org/2000/svg";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function X(lon) { return (lon + 98.20) * 1920; }
+  function Y(lat) { return (35.70 - lat) / 0.46 * 1080; }
+  function px(pts) { return pts.map(function (p) { return [X(p[0]), Y(p[1])]; }); }
+  function dOf(pp) { return pp.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" "); }
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+  var map = $("map"), hud = $("hudsvg"), cam = $("cam");
+
+  /* ---- geography (lon, lat) ---- */
+  var R = {
+    i40: px([[-98.20,35.530],[-98.05,35.515],[-97.955,35.503],[-97.938,35.501],[-97.90,35.498],[-97.80,35.487],[-97.74,35.481],[-97.65,35.464],[-97.60,35.461],[-97.55,35.458],[-97.516,35.456],[-97.47,35.452],[-97.40,35.443],[-97.30,35.415],[-97.20,35.388]]),
+    us81: px([[-97.953,35.70],[-97.953,35.545],[-97.940,35.520],[-97.938,35.40],[-97.944,35.31],[-97.940,35.24]]),
+    i35: px([[-97.418,35.70],[-97.425,35.60],[-97.455,35.52],[-97.490,35.475],[-97.497,35.45],[-97.490,35.40],[-97.487,35.339],[-97.484,35.24]]),
+    i44: px([[-97.20,35.665],[-97.35,35.60],[-97.44,35.545],[-97.50,35.53],[-97.555,35.528],[-97.570,35.50],[-97.571,35.46],[-97.570,35.40],[-97.585,35.36],[-97.62,35.31],[-97.60,35.24]]),
+    reuter: [[503.2, 518.9], [649, 518.9]],                  /* px, OpenStreetMap geometry (shared layout, 10 Oct 26) */
+    bear: px([[-97.955,35.532],[-97.9364,35.0525]])            /* El Reno toward Chickasha, a bearing, not a route */
+  };
+  var RIV = px([[-97.70,35.492],[-97.65,35.478],[-97.61,35.462],[-97.579,35.448],[-97.54,35.450],[-97.50,35.455],[-97.45,35.447],[-97.38,35.47],[-97.30,35.49],[-97.20,35.50]]);
+  var DEEP = px([[-97.601,35.4964],[-97.57,35.512],[-97.54,35.525],[-97.49,35.545],[-97.42,35.565],[-97.32,35.60],[-97.20,35.625]]);
+  var SITE = { reu: [561.5, 518.9], hen: [503.2, 493], nw: [X(-97.601), Y(35.4964)], sw: [X(-97.579), Y(35.450)] };
+  var HOUSE = [SITE.nw[0] - 56, SITE.nw[1]];                   /* the house near NW 26th and Meridian, unlit */
+
+  /* ---- water layer (schematic corridors), hidden until a comp asks ---- */
+  var low = el("g", { opacity: 0 }, map);
+  el("path", { d: dOf(RIV), fill: "none", stroke: "#5a768f", "stroke-width": 30, "stroke-linecap": "round", "stroke-linejoin": "round", opacity: 0.32 }, low);
+  el("path", { d: dOf(DEEP), fill: "none", stroke: "#5a768f", "stroke-width": 22, "stroke-linecap": "round", "stroke-linejoin": "round", opacity: 0.32 }, low);
+  el("path", { d: dOf(RIV), fill: "none", stroke: "#22384c", "stroke-width": 2.5 }, map);
+  el("path", { d: dOf(DEEP), fill: "none", stroke: "#22384c", "stroke-width": 2 }, map);
+  var flow = [el("path", { d: dOf(DEEP.slice(0, 4)), fill: "none", stroke: "#7fb2e5", "stroke-width": 3.5, "stroke-linecap": "round", opacity: 0 }, map),
+              el("path", { d: dOf([SITE.sw].concat(RIV.slice(3, 7))), fill: "none", stroke: "#7fb2e5", "stroke-width": 3.5, "stroke-linecap": "round", opacity: 0 }, map)];
+
+  /* ---- roads: grey base, amber highlight copies that draw on ---- */
+  var hl = {};
+  [["i40", 5], ["i35", 5], ["i44", 5], ["us81", 3.5], ["reuter", 2.5]].forEach(function (r) {
+    el("path", { d: dOf(R[r[0]]), fill: "none", stroke: "#2a3644", "stroke-width": r[1] + 2.5, "stroke-linejoin": "round" }, map);
+    el("path", { d: dOf(R[r[0]]), fill: "none", stroke: "#93a3b2", "stroke-width": 1.6, "stroke-linejoin": "round", opacity: 0.8 }, map);
+  });
+  ["i40", "us81", "reuter"].forEach(function (k) {
+    hl[k] = el("path", { d: dOf(R[k]), fill: "none", stroke: "#d8a13a", "stroke-width": 3.5, "stroke-linejoin": "round", "stroke-linecap": "round", opacity: 0 }, map);
+  });
+  var bear = el("path", { d: dOf(R.bear), fill: "none", stroke: "#d8a13a", "stroke-width": 2.5, "stroke-dasharray": "10 9", opacity: 0 }, map);
+  function draw(e, t, d) { var L = Math.ceil(e.getTotalLength()) + 1; e.setAttribute("stroke-dasharray", L);
+    s0(e, { strokeDashoffset: L, opacity: 1 }); tl.to(e, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t); }
+
+  /* ---- building outlines: seeded scatter, never near a pin site, a road or a place label ---- */
+  var seed = 20130531;
+  function rnd() { seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }
+  function segd(x, y, a, b) { var dx = b[0] - a[0], dy = b[1] - a[1], u = Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / (dx * dx + dy * dy)));
+    return Math.hypot(x - a[0] - u * dx, y - a[1] - u * dy); }
+  function nearLine(x, y, pp, d) { for (var i = 1; i < pp.length; i++) if (segd(x, y, pp[i - 1], pp[i]) < d) return true; return false; }
+  var KEEP = [[300,370,446,412],[1244,494,1456,538],[430,486,620,566]];   /* El Reno label, Oklahoma City label, the sub-vortex crossing */
+  var LINES = [R.i40, R.us81, R.i35, R.i44, R.reuter, R.bear, RIV, DEEP];
+  function free(x, y, got) {
+    if (x < 24 || x > 1896 || y < 24 || y > 1056) return false;
+    for (var k in SITE) if (Math.hypot(x - SITE[k][0], y - SITE[k][1]) < 62) return false;
+    if (Math.hypot(x - HOUSE[0], y - HOUSE[1]) < 30) return false;
+    for (var i = 0; i < KEEP.length; i++) if (x > KEEP[i][0] && x < KEEP[i][2] && y > KEEP[i][1] && y < KEEP[i][3]) return false;
+    for (i = 0; i < LINES.length; i++) if (nearLine(x, y, LINES[i], 13)) return false;
+    for (i = 0; i < got.length; i++) if (Math.abs(x - got[i][0]) < 24 && Math.abs(y - got[i][1]) < 21) return false;
+    return true;
+  }
+  function icon(k, x, y, s) { function p(a, b) { return (x + a * s).toFixed(1) + "," + (y + b * s).toFixed(1); }
+    if (k === "h") return "M" + p(-8,8) + " L" + p(-8,-1) + " L" + p(0,-8) + " L" + p(8,-1) + " L" + p(8,8) + " Z";
+    if (k === "s") return "M" + p(-9,8) + " L" + p(-9,-3) + " L" + p(9,-3) + " L" + p(9,8) + " Z M" + p(-10,-3) + " L" + p(-7,-8) + " L" + p(7,-8) + " L" + p(10,-3);
+    return "M" + p(-9,8) + " L" + p(-9,-2) + " L" + p(9,-2) + " L" + p(9,8) + " Z M" + p(0,-2) + " L" + p(0,-10) + " L" + p(6,-8) + " L" + p(0,-6); }
+  var TOWNS = [[-97.955,35.532,10,64,36],[-97.762,35.507,8,34,22],[-97.724,35.384,6,30,20],[-97.635,35.515,8,34,22],[-97.53,35.48,74,200,150],
+    [-97.478,35.653,12,56,30],[-97.487,35.339,10,40,28],[-97.397,35.449,12,46,32],[-97.53,35.39,14,80,38],[-97.746,35.642,4,22,14],
+    [-97.941,35.39,3,30,14],[-97.812,35.291,4,22,14],[-97.269,35.497,5,26,16],[-98.119,35.601,3,18,12]];
+  var ic = { h: [], s: [], c: [] }, got = [], icg = el("g", { opacity: 0.8 }, map);
+  TOWNS.forEach(function (t) { var cx = X(t[0]), cy = Y(t[1]), n = 0, tries = 0;
+    while (n < t[2] && tries++ < t[2] * 14) { var x = cx + (rnd() * 2 - 1) * t[3], y = cy + (rnd() * 2 - 1) * t[4], r = rnd();
+      if (!free(x, y, got)) continue; var k = r < 0.7 ? "h" : r < 0.85 ? "s" : "c"; got.push([x, y]); n++;
+      ic[k].push(el("path", { d: icon(k, x, y, 1), fill: "none", stroke: "#93a3b2", "stroke-width": 1.5, "stroke-linejoin": "round" }, icg)); } });
+  var house = el("path", { d: icon("h", HOUSE[0], HOUSE[1], 1.3), fill: "none", stroke: "#93a3b2", "stroke-width": 1.6, "stroke-linejoin": "round" }, map);
+  function bump(k, t) { tl.to(ic[k], { scale: 1.5, duration: 0.24, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, t); }
+
+  /* ---- drains (a short channel under each city cluster) and the small circle ---- */
+  el("path", { d: "M" + (SITE.nw[0] - 42) + "," + (SITE.nw[1] + 27) + " L" + (SITE.nw[0] + 42) + "," + (SITE.nw[1] + 27), stroke: "#5a768f", "stroke-width": 3, "stroke-linecap": "round" }, map);
+  el("path", { d: "M" + (SITE.sw[0] - 32) + "," + (SITE.sw[1] + 27) + " L" + (SITE.sw[0] + 32) + "," + (SITE.sw[1] + 27), stroke: "#5a768f", "stroke-width": 3, "stroke-linecap": "round" }, map);
+  var sv = el("circle", { cx: 452, cy: 548, r: 12, fill: "rgba(231,76,60,0.18)", stroke: "#e74c3c", "stroke-width": 2.5, opacity: 0 }, map);
+
+  /* ---- pins: 0-2 crew, 3 Henderson, 4-7 tray (67, 32, 26, 17 days), 8-14 NW 26th, 15-19 SW 15th, 20 tray (65) ---- */
+  var A = "#e8c56a", B = "#7fb2e5", pins = [], TX = [56, 136, 216, 306, 392], TY = 872 + 66;
+  function mk(parent, x, y, c) { var g = el("g", {}, parent);
+    var halo = el("circle", { cx: x, cy: y, r: 9, fill: "none", stroke: c, "stroke-width": 2, opacity: 0 }, g);
+    var ring = el("circle", { cx: x, cy: y, r: 8.5, fill: "#0b1016", stroke: "#93a3b2", "stroke-width": 1.6, opacity: 0 }, g);
+    var dot = el("circle", { cx: x, cy: y, r: 8.5, fill: c, stroke: "#f2f5f8", "stroke-width": 1.4, opacity: 0 }, g);
+    pins.push({ halo: halo, ring: ring, dot: dot, o: x + " " + y }); }
+  [-19, 0, 19].forEach(function (dx) { mk(map, SITE.reu[0] + dx, SITE.reu[1], A); });
+  mk(map, SITE.hen[0], SITE.hen[1], A);
+  [0, 1, 2, 3].forEach(function (i) { mk(hud, 96 + TX[i], TY, A); });
+  [[-28.5,-10],[-9.5,-10],[9.5,-10],[28.5,-10],[-19,9],[0,9],[19,9]].forEach(function (o) { mk(map, SITE.nw[0] + o[0], SITE.nw[1] + o[1], B); });
+  [[-19,-10],[0,-10],[19,-10],[-9.5,9],[9.5,9]].forEach(function (o) { mk(map, SITE.sw[0] + o[0], SITE.sw[1] + o[1], B); });
+  mk(hud, 96 + TX[4], TY, B);
+  function pulse(i, t) { var p = pins[i], n = Math.floor((D - t) / 1.9) - 1; if (n < 0) return;
+    tl.fromTo(p.halo, { scale: 1, opacity: 0.6 }, { scale: 2.8, opacity: 0, duration: 1.3, ease: "power2.out", repeat: n, repeatDelay: 0.6, svgOrigin: p.o, immediateRender: false }, t); }
+  function init(st) { pins.forEach(function (p, i) { var s = +st.charAt(i);          /* 0 hidden, 1 hollow, 2 lit */
+    s0(p.ring, { opacity: s ? 1 : 0 }); s0(p.dot, { opacity: s === 2 ? 1 : 0, scale: s === 2 ? 1 : 0, svgOrigin: p.o });
+    s0(p.halo, { opacity: 0, scale: 1, svgOrigin: p.o }); if (s === 2) pulse(i, 0.2 + (i * 0.37) % 1.7); }); }
+  function land(i, t) { var p = pins[i]; tl.set(p.ring, { opacity: 1 }, t); tl.set(p.dot, { opacity: 1 }, t);
+    tl.fromTo(p.dot, { scale: 0 }, { scale: 1, duration: 0.45, ease: "back.out(3)", svgOrigin: p.o, immediateRender: false }, t); pulse(i, t + 0.35); }
+
+  /* ---- camera and fixed-layer helpers ---- */
+  function V(cx, cy, s) { return { x: Math.min(0, Math.max(1920 * (1 - s), 960 - cx * s)), y: Math.min(0, Math.max(1080 * (1 - s), 540 - cy * s)), scale: s }; }
+  function setCam(v) { s0(cam, { x: v.x, y: v.y, scale: v.scale, transformOrigin: "0 0" }); }
+  function move(v, t, d, e) { tl.to(cam, { x: v.x, y: v.y, scale: v.scale, duration: d, ease: e || "power2.inOut" }, t); }
+  function at(id, mx, my, v) { var e = $(id); e.style.left = Math.round(mx * v.scale + v.x) + "px"; e.style.top = Math.round(my * v.scale + v.y) + "px"; }
+  function show(id, t, dx, dy) { tl.fromTo($(id), { autoAlpha: 0, x: dx || 0, y: dy == null ? 24 : dy }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, t); }
+  function hide(id, t) { tl.to($(id), { autoAlpha: 0, y: -16, duration: 0.3, ease: "power2.in" }, t); }
+  tl.fromTo($("scan"), { x: -400 }, { x: 1960, duration: D, ease: "none" }, 0);
+  var FULL = V(960, 540, 1), WEST = V(520, 470, 1.8), CITY = V(1260, 540, 1.5);
+
+  /* TL:BEGIN */
+  function on(id) { s0($(id), { autoAlpha: 1 }); }
+  init("222222222222222222222");                            /* the map holds, all 21 lit */
+  setCam(FULL); at("pl-er", 318, 380, FULL); at("pl-okc", 1254, 504, FULL); on("pl-er"); on("pl-okc");
+  /* a grey hollow marker at the east edge, pointing off the map: Okfuskee County is outside the frame and outside the 21 */
+  var em = el("path", { d: "M1800,531 L1814,545 L1800,559 L1786,545 Z", fill: "none", stroke: "#93a3b2", "stroke-width": 2.5, opacity: 0 }, hud);
+  var ea = el("path", { d: "M1824,545 L1866,545 M1854,535 L1866,545 L1854,555", fill: "none", stroke: "#93a3b2", "stroke-width": 2.5, opacity: 0 }, hud);
+  bump("h", 1.32);                                          /* house @1.32: outlines stir, unlit */
+  bump("h", 4.16);                                          /* No house @4.16 */
+  show("rail", 7.74, -60, 0);                               /* for that one night @7.94 */
+  tl.fromTo(em, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2.5)", svgOrigin: "1800 545", immediateRender: false }, 9.98);   /* next morning @9.98 */
+  tl.fromTo(ea, { opacity: 0, x: -14 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out", immediateRender: false }, 10.3);
+  tl.to(ea, { x: 8, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 5 }, 10.8);
+  show("pl-ok", 12.54, 0, 12);                              /* Okfuskee County @12.54 */
+  /* TL:END */
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

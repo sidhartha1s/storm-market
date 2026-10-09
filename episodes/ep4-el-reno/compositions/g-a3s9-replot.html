@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a3s9-replot: the vortex centre sat just east of the car; wind inside over 180 mph; the car was carried about
+     650 yards in about 20 seconds, past the Radio Road crossing.
+     Brief: mg_specs/replot.md. Road level, 1200 px per mile (0.7456 px per m), north up. Same frame as g-a3s8-replot.
+     Car (940,430). Radio Road x 1335 = car + 530 m. Carried-to mark (1374,390) = crossing + 75 m north-east; line 447 px.
+     Markers only: no vehicle, no wreckage. The route between the two marks is not measured, so dashed. -->
+<template>
+<style>
+  #rp39-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 54% 50%, #0b1016 0%, #030507 78%); }
+  .rp39-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .rp39-fig { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; fill:#f2f5f8; }
+  .rp39-mid { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#dfe7ee; }
+  .rp39-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .rp39-sm { font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px; fill:#93a3b2; }
+</style>
+<div id="rp39-root" data-composition-id="g-a3s9-replot" data-width="1920" data-height="1080">
+  <svg class="rp39-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="rp39-grid" width="300" height="300" patternUnits="userSpaceOnUse" x="135" y="130"><path d="M300,0 L0,0 L0,300" fill="none" stroke="#2a3644" stroke-width="1.5" stroke-opacity="0.55"/></pattern>
+      <radialGradient id="rp39-echo"><stop offset="0" stop-color="#7fb2e5" stop-opacity="0.3"/><stop offset="1" stop-color="#7fb2e5" stop-opacity="0"/></radialGradient>
+      <radialGradient id="rp39-glow"><stop offset="0" stop-color="#e8c56a" stop-opacity="0.6"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect x="0" y="0" width="1920" height="1080" fill="url(#rp39-grid)"/>
+    <ellipse id="rp39-e1" cx="820" cy="250" rx="330" ry="200" fill="url(#rp39-echo)"/>
+    <ellipse id="rp39-e2" cx="1400" cy="780" rx="360" ry="240" fill="url(#rp39-echo)"/>
+    <ellipse id="rp39-e3" cx="1500" cy="250" rx="260" ry="190" fill="url(#rp39-echo)"/>
+    <!-- Reuter Road east to west, Radio Road north to south -->
+    <path id="rp39-reuter" d="M600,430 L1824,430" stroke="#93a3b2" stroke-width="7" stroke-opacity="0.8"/>
+    <path d="M600,430 L1824,430" stroke="#04070c" stroke-width="1.5" stroke-dasharray="22 18"/>
+    <path id="rp39-radio" d="M1335,54 L1335,1026" stroke="#93a3b2" stroke-width="5" stroke-opacity="0.6"/>
+    <text id="rp39-t-reuter" class="rp39-lab" x="1560" y="466">Reuter Road</text>
+    <text id="rp39-t-radio" class="rp39-lab" x="1353" y="112">Radio Road</text>
+    <!-- the sub-vortex, nearly still: r 60 px = 160 m across -->
+    <g id="rp39-sv">
+      <circle cx="0" cy="0" r="120" fill="url(#rp39-glow)"/>
+      <circle cx="0" cy="0" r="60" fill="#e8c56a" fill-opacity="0.2" stroke="#f5d98b" stroke-width="4"/>
+      <circle id="rp39-rim" cx="0" cy="0" r="60" fill="none" stroke="#f5d98b" stroke-width="12" stroke-opacity="0.75" stroke-dasharray="5 26.4"/>
+      <path id="rp39-ctr" d="M-9,0 L9,0 M0,-9 L0,9" stroke="#f2f5f8" stroke-width="3"/>
+    </g>
+    <!-- carried: start mark to end mark, 447 px = 600 m. Route between not measured, so dashed -->
+    <path id="rp39-carry" d="M940,430 L1374,390" stroke="#f2f5f8" stroke-width="4" stroke-dasharray="12 8"/>
+    <path id="rp39-end" d="M1374,374 L1390,390 L1374,406 L1358,390 Z" fill="none" stroke="#f2f5f8" stroke-width="3"/>
+    <path id="rp39-car" d="M940,414 L956,430 L940,446 L924,430 Z" fill="#f2f5f8" stroke="#04070c" stroke-width="2"/>
+    <text id="rp39-t-car" class="rp39-mid" x="900" y="398" text-anchor="end">Research car</text>
+    <text id="rp39-t-build" class="rp39-lab" x="900" y="482" text-anchor="end">Not especially heavy or armored</text>
+    <path id="rp39-ctrlead" d="M979,442 L1000,512" stroke="#93a3b2" stroke-width="2"/>
+    <text id="rp39-t-ctr" class="rp39-lab" x="990" y="538" fill="#dfe7ee">Vortex center</text>
+    <text id="rp39-t-ctr2" class="rp39-sm" x="990" y="566">just east of the car's inferred position</text>
+    <text id="rp39-t-20" class="rp39-lab" x="1070" y="318">In about 20 seconds</text>
+    <text id="rp39-t-650" class="rp39-mid" x="1070" y="358">about 650 yards</text>
+    <text id="rp39-t-end" class="rp39-lab" x="1400" y="372">Carried to here</text>
+    <!-- 530 m from the car's start to the Radio Road crossing: 395 px -->
+    <path id="rp39-dim" d="M940,520 L1335,520 M940,508 L940,532 M1335,508 L1335,532" fill="none" stroke="#93a3b2" stroke-width="2.5"/>
+    <text id="rp39-t-580" class="rp39-sm" x="1137" y="552" text-anchor="middle">about 580 yards to Radio Road</text>
+    <!-- rail -->
+    <text id="rp39-l1" class="rp39-lab" x="96" y="150">Wind inside it, more than</text>
+    <text id="rp39-v1" class="rp39-fig" x="92" y="240" fill="#e74c3c">180 mph</text>
+    <text id="rp39-s1" class="rp39-sm" x="96" y="280">Wurman et al. 2014</text>
+    <text id="rp39-l3" class="rp39-lab" x="96" y="560">Nearly still for about</text>
+    <text id="rp39-n3" class="rp39-fig" x="200" y="650" text-anchor="end">20</text>
+    <text id="rp39-u3" class="rp39-mid" x="218" y="650">seconds</text>
+    <text id="rp39-t-sch1" class="rp39-sm" x="96" y="880">Start and end marks from the paper ·</text>
+    <text id="rp39-t-sch2" class="rp39-sm" x="96" y="908">route between them not measured</text>
+    <!-- scale bar: 341 px = 500 yards -->
+    <path id="rp39-bar" d="M96,986 L437,986 M96,976 L96,996 M437,976 L437,996" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+    <text id="rp39-t-bar" class="rp39-sm" x="96" y="964" fill="#dfe7ee">500 yards</text>
+    <text id="rp39-t-own" class="rp39-sm" x="96" y="1022">Our redraw of mobile-radar measurements · sub-vortex drawn at the middle of about 300 to 750 ft</text>
+    <path id="rp39-north" d="M1760,150 L1760,96 M1748,112 L1760,92 L1772,112" fill="none" stroke="#93a3b2" stroke-width="3"/>
+    <text id="rp39-t-n" class="rp39-lab" x="1751" y="182">N</text>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a3s9-replot", P = "#rp39-";
+  /* cues: audio/a3-s9.words.json (comp-local = segment seconds) */
+  const CUES = {
+    center: 0.56,  /* center @0.56 */
+    east: 1.62,    /* just east @1.62 */
+    more: 5.58,    /* more than @5.58 */
+    n180: 5.98,    /* 180 @5.98 */
+    heavy: 9.46,   /* especially heavy @9.46 */
+    n20: 12.84,    /* 20 seconds @12.84 */
+    carried: 13.96,/* carried @13.96 */
+    n650: 14.48,   /* 650 yards @14.48 */
+    past: 15.88,   /* past the crossroads @15.88 */
+    radio: 17.32   /* Radio Road @17.32 */
+  };
+  const DUR = 18.75;
+  const tl = gsap.timeline({ paused: true });
+  /* hidden from the first frame: set now (a paused timeline has not rendered its time-0 sets yet) and again at 0 */
+  const HIDE = [P + "ctr", P + "ctrlead", P + "t-ctr", P + "t-ctr2", P + "t-build", P + "carry", P + "end", P + "t-20", P + "t-650", P + "t-end", P + "dim", P + "t-580", P + "l1", P + "v1", P + "s1"];
+  gsap.set(HIDE, { autoAlpha: 0 });
+  gsap.set(P + "sv", { x: 975, y: 430 });
+  tl.set(HIDE, { autoAlpha: 0 }, 0);
+  tl.set(P + "sv", { x: 975, y: 430 }, 0);
+
+  /* whole window: the sub-vortex spins counter-clockwise and only trembles in place; echoes drift */
+  tl.fromTo(P + "rim", { rotation: 0, svgOrigin: "0 0" }, { rotation: -1125, duration: DUR, ease: "none" }, 0);
+  tl.to(P + "sv", { x: 978, y: 428, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 13 }, 0);
+  tl.fromTo(P + "e1", { x: -80, y: 30 }, { x: 60, y: -30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e2", { x: -60, y: 20 }, { x: 80, y: -40, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e3", { x: -70, y: 30 }, { x: 70, y: -20, duration: DUR, ease: "none" }, 0);
+  tl.fromTo([P + "bar", P + "t-bar", P + "t-own"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.06 }, 0.1);
+
+  /* center @0.56, just east @1.62: the centre mark, east of the car marker */
+  tl.fromTo(P + "ctr", { autoAlpha: 0, scale: 3, svgOrigin: "0 0" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, CUES.center);
+  tl.fromTo([P + "ctrlead", P + "t-ctr"], { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.center + 0.2);
+  tl.fromTo(P + "t-ctr2", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.east);
+  tl.fromTo(P + "car", { scale: 1.7, svgOrigin: "940 430" }, { scale: 1, duration: 0.5, ease: "back.out(2)", immediateRender: false }, CUES.east + 0.6);
+
+  /* more than @5.58, 180 @5.98: the wind inside it */
+  tl.fromTo(P + "l1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.more - 0.3);
+  tl.fromTo(P + "v1", { autoAlpha: 0, scale: 1.5, svgOrigin: "96 240" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, CUES.n180 - 0.35);
+  tl.fromTo(P + "s1", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.n180 + 0.8);
+
+  /* especially heavy @9.46: the paper's words on the car */
+  tl.to([P + "ctrlead", P + "t-ctr", P + "t-ctr2"], { autoAlpha: 0, duration: 0.3 }, CUES.heavy - 0.6);
+  tl.fromTo(P + "t-build", { autoAlpha: 0, x: 24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.heavy);
+
+  /* 20 seconds @12.84, carried @13.96, 650 yards @14.48: the line from the start mark to the end mark */
+  tl.fromTo(P + "t-20", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.n20);
+  tl.fromTo(P + "n3", { scale: 1.15, svgOrigin: "200 650" }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, CUES.n20);
+  tl.fromTo(P + "carry", { autoAlpha: 1, scale: 0, svgOrigin: "940 430" }, { scale: 1, duration: 0.9, ease: "power2.inOut", immediateRender: false }, CUES.carried - 0.4);
+  tl.fromTo(P + "t-650", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.n650);
+  tl.fromTo(P + "end", { autoAlpha: 0, scale: 0.2, svgOrigin: "1374 390" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, CUES.n650 + 0.05);
+
+  /* past the crossroads @15.88, Radio Road @17.32 */
+  tl.fromTo(P + "t-end", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.past);
+  tl.fromTo(P + "dim", { autoAlpha: 0, scaleX: 0, svgOrigin: "940 520" }, { autoAlpha: 1, scaleX: 1, duration: 0.6, ease: "power3.out" }, CUES.past + 0.56);
+  tl.fromTo(P + "t-580", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.past + 0.9);
+  tl.to(P + "radio", { attr: { "stroke-width": 11 }, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.radio);
+  tl.to(P + "t-radio", { x: 12, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.radio);
+  tl.fromTo([P + "t-sch1", P + "t-sch2"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.carried);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2s1-width · A2-S1 · window 25.64 s · brief: mg_specs/maps.md
+  Claim: 6:19 PM at Highway 81, 16 minutes after touchdown; within minutes 2.6 miles edge to edge; the weather
+  service believed it the widest on record in the United States; the old mark was Hallam, Nebraska, 2004 (2.5 miles).
+  Map: metro frame window 368 440 320 180 (zoom 6; 1 mile = 204.5 px).
+  True scale: El Reno ring r 44.3 metro px = 2.6 miles across = 532 px on screen, centred on the NWS 6:24 PM position
+  (maximum size 6:24 to 6:26 PM). Hallam outline r 42.6 metro px = 2.5 miles across = 511 px. Ratio 1.04.
+  The ring before 6:24 has no stated width: it is drawn smaller and carries no number.
+  Cues are comp-local seconds from audio/a2-s1.words.json.
+-->
+<template>
+<style>
+  #w21-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    color:#dfe7ee; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .w21-drift { position:absolute; left:0; right:0; top:-200px; height:1480px; opacity:0.30; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.16) 0 1px, transparent 1px 46px); }
+  .w21-map { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .w21-road { fill:none; stroke:#2a3644; stroke-width:0.7; stroke-linejoin:round; }
+  .w21-hw { fill:none; stroke:#5a768f; stroke-width:0.9; }
+  .w21-track { fill:none; stroke:#e74c3c; stroke-width:1.1; stroke-linecap:round; stroke-linejoin:round; }
+  .w21-ring { fill:rgba(192,57,43,0.10); stroke:#e74c3c; stroke-width:0.75; stroke-dasharray:5 2.4; }
+  .w21-ring2 { fill:none; stroke:rgba(231,76,60,0.45); stroke-width:0.4; stroke-dasharray:2 3; }
+  .w21-hallam { fill:rgba(127,178,229,0.06); stroke:#7fb2e5; stroke-width:0.7; }
+  .w21-dim { fill:none; stroke:#f2f5f8; stroke-width:0.5; }
+  .w21-time { position:absolute; left:96px; top:250px; font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:1; color:#f5d98b; white-space:nowrap; }
+  .w21-after { position:absolute; left:100px; top:350px; font-size:22px; font-weight:700; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .w21-lab { position:absolute; font-size:22px; font-weight:700; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .w21-big { position:absolute; top:804px; width:520px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:1; color:#f2f5f8; white-space:nowrap; }
+  .w21-cap { position:absolute; top:874px; width:520px; text-align:center; font-size:22px; font-weight:700; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .w21-cite { position:absolute; left:96px; top:196px; width:620px; box-sizing:border-box; padding:30px 34px 28px; border-radius:6px;
+    background:linear-gradient(180deg, rgba(232,222,200,0.94), rgba(222,210,186,0.92)); box-shadow:0 18px 50px rgba(0,0,0,0.5); }
+  .w21-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:34px; line-height:1.28; color:#2a2622; }
+  .w21-attr { margin-top:18px; font-size:19px; font-weight:700; letter-spacing:3px; color:#6b6257; }
+  .w21-scale { position:absolute; left:96px; top:984px; width:204px; height:8px; border:2px solid #93a3b2; border-top:none; box-sizing:border-box; }
+  .w21-scalelab { position:absolute; left:96px; top:1002px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+</style>
+<div id="w21-root" data-composition-id="g-a2s1-width" data-width="1920" data-height="1080">
+  <div class="w21-drift" id="w21-drift"></div>
+  <svg class="w21-map" id="w21-map" viewBox="368 440 320 180" preserveAspectRatio="none">
+    <g id="w21-base">
+      <!-- Interstate 40, Reuter Road, US-81: US Census TIGERweb lines -->
+      <polyline class="w21-road" points="298.0,400.3 306.0,402.2 384.0,436.9 421.6,445.9 473.7,466.7 571.6,468.6 610.6,466.7 660.5,469.8 733.4,467.2"/>
+      <polyline class="w21-road" points="164.9,519.1 700,519.1"/>
+      <polyline class="w21-hw" id="w21-us81" points="475.2,417.7 488.3,445.9 495.2,450.1 504.6,450.8 504.8,488.1 501.7,512.5 505.0,527.8 504.6,698.9"/>
+      <polyline class="w21-track" id="w21-track" points="247.0,516.6 249.1,523.0 256.5,534.1 258.6,533.9 269.8,543.9 274.3,557.0 280.7,568.5 284.1,571.9 300.6,575.1 319.9,579.4 339.5,579.1 360.9,585.1 388.1,580.3 404.8,570.2 405.2,566.9 423.7,566.7 442.5,573.6 455.1,580.6 468.5,581.3 497.8,580.0 523.7,569.5 539.3,558.8 557.1,547.0 561.6,535.3 563.9,520.5"/>
+    </g>
+    <circle class="w21-hallam" id="w21-hallam" cx="448" cy="520.5" r="42.6"/>
+    <path class="w21-dim" id="w21-hbar" d="M405.4 567.7V571.7H490.6V567.7"/>
+    <g id="w21-head">
+      <circle class="w21-ring" id="w21-ring" cx="0" cy="0" r="0"/>
+      <circle class="w21-ring2" id="w21-ring2" cx="0" cy="0" r="0"/>
+      <circle cx="0" cy="0" r="1.3" fill="#f5d98b"/>
+    </g>
+    <path class="w21-dim" id="w21-bar" d="M519.6 571.7H608.2"/>
+    <path class="w21-dim" id="w21-tickl" d="M519.6 571.7V565.2"/>
+    <path class="w21-dim" id="w21-tickr" d="M608.2 571.7V565.2"/>
+  </svg>
+  <div class="w21-time" id="w21-time">6:19 PM</div>
+  <div class="w21-after" id="w21-after">16 MIN AFTER TOUCHDOWN</div>
+  <div class="w21-lab" id="w21-hwlab" style="left:838px; top:960px">HIGHWAY 81</div>
+  <div class="w21-lab" id="w21-circ" style="left:990px; top:296px">THE CIRCULATION</div>
+  <div class="w21-big" id="w21-big" style="left:915px">2.6 MILES</div>
+  <div class="w21-cap" id="w21-cap" style="left:915px">EL RENO · 2013</div>
+  <div class="w21-big" id="w21-hbig" style="left:220px; color:#7fb2e5">2.5 MILES</div>
+  <div class="w21-cap" id="w21-hcap" style="left:220px">HALLAM, NEBRASKA · 2004</div>
+  <div class="w21-cap" id="w21-hsrc" style="left:220px; top:908px; font-size:19px; letter-spacing:3px">SOURCE: NWS OMAHA</div>
+  <div class="w21-lab" id="w21-same" style="left:750px; top:430px; font-size:19px">SAME SCALE</div>
+  <div class="w21-cite" id="w21-cite">
+    <div class="w21-q">&ldquo;believed to be the widest tornado on record in the United States&rdquo;</div>
+    <div class="w21-attr">NATIONAL WEATHER SERVICE, NORMAN</div>
+  </div>
+  <div class="w21-scale" id="w21-scale"></div>
+  <div class="w21-scalelab" id="w21-scalelab">1 MILE</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#w21-";
+  const trackEl = document.getElementById("w21-track");
+  const pts = trackEl.getAttribute("points").trim().split(/\s+/).map(function (p) { p = p.split(","); return [parseFloat(p[0]), parseFloat(p[1])]; });
+  const cum = [0];
+  for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+  const L = Math.ceil(cum[cum.length - 1]) + 1;
+  /* head and drawn line move together: each leg lasts in proportion to its length */
+  function run(i0, i1, t0, t1) {
+    const span = cum[i1] - cum[i0];
+    let t = t0;
+    for (let i = i0 + 1; i <= i1; i++) {
+      const d = (t1 - t0) * (cum[i] - cum[i - 1]) / span;
+      tl.to(P + "head", { x: pts[i][0], y: pts[i][1], duration: d, ease: "none" }, t);
+      t += d;
+    }
+    tl.to(P + "track", { strokeDashoffset: L - cum[i1], duration: t1 - t0, ease: "none" }, t0);
+  }
+  function draw(id, at, dur) {
+    const n = Math.ceil(document.getElementById("w21-" + id).getTotalLength()) + 1;
+    gsap.set(P + id, { strokeDasharray: n, strokeDashoffset: n }); /* at build time: frame 0 never shows the finished line */
+    tl.to(P + id, { strokeDashoffset: 0, duration: dur, ease: "power2.out" }, at);
+  }
+  function pop(id, at) { tl.fromTo(P + id, { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, at); }
+  tl.fromTo(P + "drift", { y: -110 }, { y: 110, duration: 25.7, ease: "none" }, 0);
+  gsap.set(P + "track", { strokeDasharray: L, strokeDashoffset: L - cum[12] });
+  gsap.set(P + "head", { x: pts[12][0], y: pts[12][1] });
+  tl.fromTo(P + "scale", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.fromTo(P + "scalelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.5);
+  run(12, 19, 0.2, 5.16);                                                                     /* reaches the highway on CROSSED @5.16 */
+  tl.fromTo(P + "time", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.42); /* 6:19 @0.42 */
+  pop("after", 2.02);                                                                         /* 16 MINUTES @2.02 */
+  /* the turning ring: dashes travel round it for the whole window */
+  tl.fromTo(P + "ring", { strokeDashoffset: 0 }, { strokeDashoffset: -420, duration: 25.5, ease: "none" }, 0.2);
+  tl.fromTo(P + "ring2", { strokeDashoffset: 0 }, { strokeDashoffset: 300, duration: 25.5, ease: "none" }, 0.2);
+  tl.fromTo(P + "ring", { attr: { r: 0 } }, { attr: { r: 30 }, duration: 0.7, ease: "back.out(1.6)" }, 5.16);   /* CROSSED @5.16 */
+  tl.fromTo(P + "ring2", { attr: { r: 0 } }, { attr: { r: 17 }, duration: 0.7, ease: "back.out(1.6)" }, 5.16);
+  tl.fromTo(P + "us81", { stroke: "#5a768f", strokeWidth: 0.9 }, { stroke: "#7fb2e5", strokeWidth: 1.1, duration: 0.5 }, 5.64);
+  pop("hwlab", 5.64);                                                                         /* HIGHWAY 81 @5.64 */
+  run(19, 24, 7.42, 11.4);                                                                    /* WITHIN MINUTES @7.42: moves north-east, widening */
+  tl.to(P + "ring", { attr: { r: 44.3 }, duration: 3.98, ease: "power1.inOut" }, 7.42);
+  tl.to(P + "ring2", { attr: { r: 26 }, duration: 3.98, ease: "power1.inOut" }, 7.42);
+  pop("circ", 10.78);                                                                         /* CIRCULATION @10.78 */
+  draw("bar", 12.24, 0.7);                                                                    /* 2.6 @12.24 */
+  tl.fromTo(P + "big", { autoAlpha: 0, scale: 1.25 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 12.62);
+  draw("tickl", 13.88, 0.3);                                                                  /* EDGE @13.88 */
+  draw("tickr", 14.36, 0.3);                                                                  /* EDGE @14.36 */
+  tl.to(P + "time", { x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 15.1);
+  tl.to(P + "after", { x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 15.16);
+  tl.fromTo(P + "cite", { x: -760, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 15.72); /* THE WEATHER SERVICE SAID @15.72 */
+  tl.to(P + "cite", { y: -10, duration: 4.0, ease: "sine.inOut" }, 16.42);
+  tl.to(P + "cite", { x: -760, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 20.42);
+  tl.to(P + "base", { opacity: 0.3, duration: 0.6 }, 20.7);
+  tl.to(P + "hwlab", { autoAlpha: 0, duration: 0.4 }, 20.7);
+  tl.to(P + "circ", { autoAlpha: 0, duration: 0.4 }, 20.7);
+  /* OLD MARK @21.22: the Hallam outline at the same scale */
+  const HL = Math.ceil(document.getElementById("w21-hallam").getTotalLength()) + 1;
+  gsap.set(P + "hallam", { strokeDasharray: HL, strokeDashoffset: HL, autoAlpha: 0 });
+  tl.to(P + "hallam", { autoAlpha: 1, duration: 0.3 }, 21.22);
+  tl.to(P + "hallam", { strokeDashoffset: 0, duration: 1.0, ease: "power2.inOut" }, 21.22);
+  pop("hcap", 22.32);                                                                         /* HALLAM @22.32 */
+  draw("hbar", 23.0, 0.6);
+  tl.fromTo(P + "hbig", { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 23.38); /* NEBRASKA @23.38 */
+  pop("cap", 24.04);                                                                          /* 2004 @24.04: the pair is labelled */
+  pop("same", 24.3);
+  pop("hsrc", 23.6);                                                                          /* the Hallam width's source, small, under its caption */
+  tl.fromTo(P + "big", { scale: 1 }, { scale: 1.06, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 24.5);
+  window.__timelines["g-a2s1-width"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

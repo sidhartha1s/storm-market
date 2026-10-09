@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a2s2-fields: 384 px per mile, north up. Ring centre (1020, 540), 2.6 mi = r 499.2; core 1.25 mi = r 240.
+     One field = 100 yards = 21.818 px. Spec: mg_specs/roads.md */
+  #f2-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 53% 50%, #0e1720 0%, #030507 80%); }
+  .f2-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .f2-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#dfe7ee; }
+  .f2-eb { position:absolute; left:96px; top:84px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  .f2-hl { position:absolute; left:96px; top:120px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; line-height:1; color:#f2f5f8; }
+  .f2-more { position:absolute; left:96px; top:800px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  .f2-num { position:absolute; left:96px; top:828px; font-family:'Courier New', monospace; font-weight:700; font-size:96px; line-height:1; color:#e8c56a; }
+  .f2-ff { position:absolute; left:232px; top:846px; font-size:30px; font-weight:700; letter-spacing:1px; color:#dfe7ee; line-height:1.15; }
+  .f2-each { position:absolute; left:234px; top:888px; font-size:20px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+  .f2-note { position:absolute; left:96px; top:1000px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+  .f2-weak { position:absolute; left:1516px; top:250px; font-size:30px; font-weight:700; letter-spacing:2px; color:#e8c56a; }
+  .f2-src { position:absolute; left:1518px; top:292px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:22px; color:#d8a13a; }
+  .f2-hid { opacity:0; visibility:hidden; }
+</style>
+<div id="f2-root" data-composition-id="g-a2s2-fields" data-width="1920" data-height="1080">
+  <svg class="f2-svg" viewBox="0 0 1920 1080">
+    <defs><clipPath id="f2-clip"><circle cx="1020" cy="540" r="497"/></clipPath>
+      <radialGradient id="f2-fill" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1b2a38" stop-opacity="0.75"/><stop offset="100%" stop-color="#0d151d" stop-opacity="0.35"/></radialGradient></defs>
+    <circle cx="1020" cy="540" r="499.2" fill="url(#f2-fill)"/>
+    <circle id="f2-halo" cx="1020" cy="540" r="513" fill="none" stroke="#3b4b5c" stroke-width="2" stroke-dasharray="6 22"/>
+    <!-- rain inside the ring -->
+    <g clip-path="url(#f2-clip)"><g id="f2-rain" class="f2-hid"></g></g>
+    <!-- the 2.6 mile ring (dim from the first frame, the bright stroke draws over it) -->
+    <circle id="f2-ring0" cx="1020" cy="540" r="499.2" fill="none" stroke="#4a5b6c" stroke-width="3"/>
+    <circle id="f2-ring" cx="1020" cy="540" r="499.2" fill="none" stroke="#c8d3e0" stroke-width="4" stroke-dasharray="3137" stroke-dashoffset="3137"/>
+    <!-- the core, about 1.25 miles -->
+    <circle id="f2-core" cx="1020" cy="540" r="240" fill="none" stroke="#d8a13a" stroke-width="3" stroke-dasharray="1509" stroke-dashoffset="1509"/>
+    <text id="f2-corel" class="f2-lab f2-hid" x="1020" y="612" text-anchor="middle" style="fill:#e8c56a">CORE · ABOUT 1.25 MILES</text>
+    <!-- 45 fields, end to end from the west edge: x 520.8 to 1502.6 -->
+    <g id="f2-fields"></g>
+    <line id="f2-gapa" class="f2-hid" x1="520.8" y1="508" x2="520.8" y2="572" stroke="#c8d3e0" stroke-width="2"/>
+    <line id="f2-gapb" class="f2-hid" x1="1519.2" y1="508" x2="1519.2" y2="572" stroke="#c8d3e0" stroke-width="2"/>
+    <!-- weak side: the north half -->
+    <path id="f2-arc" d="M520.8 540 A499.2 499.2 0 0 1 1519.2 540" fill="none" stroke="#e8c56a" stroke-width="5" stroke-dasharray="1569" stroke-dashoffset="1569" opacity="0.85"/>
+    <line id="f2-lead" class="f2-hid" x1="1508" y1="286" x2="1436" y2="270" stroke="#e8c56a" stroke-width="2"/>
+    <!-- two crews, marks only -->
+    <g id="f2-m1" class="f2-hid"><circle id="f2-m1p" cx="0" cy="0" r="12" fill="none" stroke="#7fb2e5" stroke-width="2"/><rect x="-7" y="-13" width="14" height="26" rx="3" fill="#7fb2e5" stroke="#04070c" stroke-width="2"/></g>
+    <g id="f2-m2" class="f2-hid"><circle id="f2-m2p" cx="0" cy="0" r="12" fill="none" stroke="#f2f5f8" stroke-width="2"/><rect x="-13" y="-7" width="26" height="14" rx="3" fill="#f2f5f8" stroke="#04070c" stroke-width="2"/></g>
+    <!-- scale bar: 384 px = 1 mile -->
+    <g id="f2-scale" class="f2-hid">
+      <line x1="1440" y1="110" x2="1824" y2="110" stroke="#dfe7ee" stroke-width="3"/>
+      <line x1="1440" y1="100" x2="1440" y2="120" stroke="#dfe7ee" stroke-width="3"/>
+      <line x1="1824" y1="100" x2="1824" y2="120" stroke="#dfe7ee" stroke-width="3"/>
+      <text class="f2-lab" x="1824" y="150" text-anchor="end">1 MILE</text>
+    </g>
+    <g id="f2-north" class="f2-hid">
+      <path d="M1380 150 L1380 92 M1369 109 L1380 88 L1391 109" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text class="f2-lab" x="1380" y="180" text-anchor="middle">N</text>
+    </g>
+  </svg>
+  <div class="f2-eb" id="f2-eb">MAXIMUM WIDTH · NWS NORMAN</div>
+  <div class="f2-hl" id="f2-hl">2.6 miles</div>
+  <div class="f2-more f2-hid" id="f2-more">MORE THAN</div>
+  <div class="f2-num f2-hid" id="f2-num"><span id="f2-n">45</span></div>
+  <div class="f2-ff f2-hid" id="f2-ff">football fields</div>
+  <div class="f2-each f2-hid" id="f2-each">END TO END · 100 YARDS EACH</div>
+  <div class="f2-weak f2-hid" id="f2-weak">WEAK SIDE</div>
+  <div class="f2-src f2-hid" id="f2-src">Wurman et al. 2014</div>
+  <div class="f2-note f2-hid" id="f2-note">WIDTHS TO SCALE · POSITIONS APPROXIMATE</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const NS = "http://www.w3.org/2000/svg";
+  function el(parent, tag, a) { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+  /* 45 outlines: 100 yards = 384 / 17.6 = 21.818 px long, 53.3 yards = 11.64 px high */
+  const FW = 384 / 17.6, X0 = 1020 - 499.2, fg = document.getElementById("f2-fields");
+  for (let i = 0; i < 45; i++) {
+    const g = el(fg, "g", { id: "f2-f" + i, opacity: 0 });
+    el(g, "rect", { x: (X0 + i * FW + 1).toFixed(2), y: 534.2, width: (FW - 2).toFixed(2), height: 11.64, fill: "rgba(127,178,229,0.22)", stroke: "#f2f5f8", "stroke-width": 1.5 });
+    el(g, "line", { x1: (X0 + (i + 0.5) * FW).toFixed(2), y1: 534.2, x2: (X0 + (i + 0.5) * FW).toFixed(2), y2: 545.84, stroke: "#f2f5f8", "stroke-width": 1 });
+  }
+  /* rain streaks, drawn wider than the ring so the drift never shows an edge */
+  const rg = document.getElementById("f2-rain");
+  for (let i = 0; i < 150; i++) {
+    const x = 440 + (i * 137.5) % 1240, y = -160 + (i * 89.3) % 1400, L = 26 + (i % 5) * 9;
+    el(rg, "line", { x1: x, y1: y, x2: x - L * 0.28, y2: y + L, stroke: "#9db4c8", "stroke-width": 2, opacity: (0.25 + (i % 4) * 0.12).toFixed(2), "stroke-linecap": "round" });
+  }
+
+  const tl = gsap.timeline({ paused: true });
+  const P = "#f2-";
+  function show(id, at, vars) { tl.fromTo(P + id, Object.assign({ autoAlpha: 0 }, vars || {}), { autoAlpha: 1, x: 0, y: 0, duration: 0.5, ease: "power3.out" }, at); }
+  tl.fromTo(P + "halo", { rotation: 0, transformOrigin: "50% 50%" }, { rotation: 44, duration: 21.0, ease: "none" }, 0);
+
+  /* 2 (.6 miles) @0.00: the ring draws */
+  tl.to(P + "ring", { strokeDashoffset: 0, duration: 1.2, ease: "power2.out" }, 0.0);
+  tl.fromTo(P + "hl", { x: -40 }, { x: 0, duration: 0.6, ease: "power3.out" }, 0.0);
+  tl.fromTo(P + "eb", { x: -30 }, { x: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+  tl.fromTo(P + "scale", { autoAlpha: 0, scaleX: 0, transformOrigin: "100% 50%" }, { autoAlpha: 1, scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.7);
+  show("north", 0.9, { y: 14 });
+  show("gapa", 1.1); show("gapb", 1.1);
+  show("more", 1.62, { y: 12 });  /* more @1.62 */
+
+  /* 45 @2.00 ... end @3.76: 45 outlines tile west to east, the count runs with them */
+  show("num", 2.0, { y: 16 });
+  for (let i = 0; i < 45; i++) tl.fromTo(P + "f" + i, { opacity: 0, y: -14 }, { opacity: 1, y: 0, duration: 0.22, ease: "power2.out" }, 2.0 + i * 0.038);
+  const C = { v: 1 };
+  tl.fromTo(C, { v: 1 }, { v: 45, duration: 1.7, ease: "none", onUpdate: function () { const e = document.getElementById("f2-n"); if (e) e.textContent = Math.round(C.v); } }, 2.0);
+  show("ff", 2.44, { x: -20 });  /* football @2.44 */
+  show("each", 3.44, { x: -20 }); /* end (to end) @3.44 */
+  show("note", 4.0, { y: 10 });
+
+  /* core @5.12: the inner ring draws; about (a mile and a quarter) @7.90 */
+  tl.to(P + "core", { strokeDashoffset: 0, duration: 1.4, ease: "power2.inOut" }, 5.12);
+  tl.fromTo(P + "core", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1.03, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 6.6);
+  show("corel", 7.9, { y: 14 });
+
+  /* wrapped @10.72, rain @11.26: rain fills the ring, the edge goes */
+  tl.fromTo(P + "rain", { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.2, ease: "power1.in" }, 10.6);
+  tl.fromTo(P + "rain", { x: 30, y: -140 }, { x: -40, y: 110, duration: 10.6, ease: "none" }, 10.4);
+  tl.to(P + "ring", { opacity: 0.16, duration: 1.4, ease: "power1.inOut" }, 10.9);
+  tl.to(P + "ring0", { opacity: 0, duration: 1.4, ease: "power1.inOut" }, 10.9);
+  tl.to(P + "fields", { opacity: 0.3, duration: 1.2, ease: "power1.inOut" }, 10.9);
+  tl.to([P + "gapa", P + "gapb"], { autoAlpha: 0, duration: 1.0 }, 10.9);
+
+  /* both (crews drove in) @14.74: two marks enter the north half */
+  gsap.set(P + "m1", { x: 990, y: 20 });
+  gsap.set(P + "m2", { x: 500, y: 410 });
+  tl.set(P + "m1", { x: 990, y: 20 }, 0);
+  tl.fromTo(P + "m1", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 14.74);
+  tl.to(P + "m1", { y: 330, duration: 6.2, ease: "none" }, 14.74);
+  tl.fromTo(P + "m1p", { attr: { r: 12 }, opacity: 0.9 }, { attr: { r: 38 }, opacity: 0, duration: 1.3, ease: "power1.out", repeat: 4 }, 14.8);
+  tl.set(P + "m2", { x: 500, y: 410 }, 0);
+  tl.fromTo(P + "m2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 14.96);
+  tl.to(P + "m2", { x: 850, duration: 6.0, ease: "none" }, 14.96);
+  tl.fromTo(P + "m2p", { attr: { r: 12 }, opacity: 0.9 }, { attr: { r: 38 }, opacity: 0, duration: 1.3, ease: "power1.out", repeat: 4 }, 15.1);
+  /* weaker (side) @16.04 */
+  tl.to(P + "arc", { strokeDashoffset: 0, duration: 1.1, ease: "power2.out" }, 15.8);
+  show("weak", 16.04, { x: 30 });
+  show("lead", 16.2);
+  show("src", 16.4, { x: 30 });
+  /* (may not have) known @18.96: the rain thickens over the marks */
+  tl.to(P + "corel", { autoAlpha: 0.45, duration: 1.0 }, 18.4);
+  tl.to(P + "arc", { opacity: 0.4, duration: 1.4 }, 18.9);
+
+  window.__timelines["g-a2s2-fields"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

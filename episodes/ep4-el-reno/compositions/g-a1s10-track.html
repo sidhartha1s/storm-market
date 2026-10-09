@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1s10-track · A1-S10 · window 12.61 s · brief: mg_specs/maps.md
+  Claim: forward speed rose from about 35 mph to more than 50 (NWS Service Assessment), then a sharp left turn.
+  Map: metro frame window 140 330 640 360 (zoom 3; 1 mile = 102 px). Track = the 56 NWS Norman centreline points.
+  Cues are comp-local seconds from audio/a1-s10.words.json.
+-->
+<template>
+<style>
+  #t10-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    color:#dfe7ee; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .t10-drift { position:absolute; left:0; right:0; top:-200px; height:1480px; opacity:0.34; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.16) 0 1px, transparent 1px 46px); }
+  .t10-map { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .t10-road { fill:none; stroke:#2a3644; stroke-width:1.1; stroke-linejoin:round; }
+  .t10-hw { fill:none; stroke:#5a768f; stroke-width:1.3; }
+  .t10-contour { fill:rgba(192,57,43,0.10); stroke:rgba(192,57,43,0.32); stroke-width:0.4; }
+  .t10-ghost { fill:none; stroke:#4a5560; stroke-width:0.7; stroke-dasharray:1.6 1.6; }
+  .t10-track { fill:none; stroke:#e74c3c; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+  .t10-turn { fill:none; stroke:#e8c56a; stroke-width:1.3; stroke-linecap:round; }
+  .t10-place { position:absolute; font-size:26px; font-weight:700; color:#dfe7ee; }
+  .t10-lab { position:absolute; font-size:22px; font-weight:700; letter-spacing:3px; color:#93a3b2; }
+  .t10-turnlab { position:absolute; left:1300px; top:610px; font-size:26px; font-weight:700; letter-spacing:3px; color:#e8c56a; }
+  .t10-panel { position:absolute; right:96px; top:72px; text-align:right; }
+  .t10-eb { font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  .t10-pre { font-size:30px; font-weight:700; letter-spacing:1px; color:#dfe7ee; margin-top:14px; height:36px; position:relative; }
+  .t10-pre span { position:absolute; right:0; top:0; white-space:nowrap; }
+  .t10-num { font-family:'Courier New', monospace; font-size:120px; font-weight:700; line-height:1; color:#e74c3c; margin-top:4px; }
+  .t10-unit { font-size:30px; font-weight:700; letter-spacing:1px; color:#dfe7ee; }
+  .t10-src { font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; margin-top:12px; }
+  .t10-scale { position:absolute; left:96px; top:984px; width:102px; height:8px; border:2px solid #93a3b2; border-top:none; box-sizing:border-box; }
+  .t10-scalelab { position:absolute; left:96px; top:1002px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+</style>
+<div id="t10-root" data-composition-id="g-a1s10-track" data-width="1920" data-height="1080">
+  <div class="t10-drift" id="t10-drift"></div>
+  <svg class="t10-map" id="t10-map" viewBox="140 330 640 360" preserveAspectRatio="none">
+    <polygon class="t10-contour" id="t10-contour" points="237.5,523.0 241.2,535.4 246.9,545.7 256.0,560.9 258.2,567.2 266.3,584.7 273.6,592.0 281.8,597.6 299.7,605.6 321.0,616.0 334.8,620.9 352.8,620.5 384.9,615.0 421.8,602.8 437.0,602.2 450.5,605.4 469.5,610.5 499.9,615.7 522.2,613.2 544.6,604.4 558.5,596.1 572.4,588.2 596.4,573.4 612.3,559.9 622.9,545.3 625.0,538.4 642.3,505.1 653.9,490.2 658.6,486.0 667.3,478.8 677.0,473.6 683.8,469.0 680.6,457.1 677.1,450.6 671.7,445.6 659.9,442.4 649.9,441.6 630.5,436.7 626.6,436.4 611.0,435.1 578.5,454.2 570.6,472.5 566.6,478.4 562.5,482.7 545.7,499.1 528.9,515.9 508.2,526.7 493.2,531.6 469.1,538.0 436.0,540.1 403.3,547.7 399.1,550.0 385.0,557.2 372.5,562.9 354.9,564.7 333.0,565.5 315.5,563.3 303.8,557.3 298.7,554.7 293.8,548.4 291.3,542.0 288.3,537.1 282.9,532.9 275.5,528.2 271.5,525.5 265.1,518.5 257.5,513.6 244.6,494.6 238.4,495.1 236.2,499.5 235.8,508.9"/>
+    <!-- Interstate 40, US-81, Reuter Road: US Census TIGERweb lines -->
+    <polyline class="t10-road" points="-204.5,415.8 -181.6,413.5 -142.5,386.2 -131.1,382.9 -100.8,384.6 -36.3,401.2 -20.5,403.4 56.1,399.4 151.1,400.3 193.5,402.7 233.7,400.1 298.0,400.3 306.0,402.2 384.0,436.9 421.6,445.9 473.7,466.7 571.6,468.6 610.6,466.7 660.5,469.8 733.4,467.2 783.4,469.1 798.1,474.0 827.5,490.5 874.2,521.9"/>
+    <polyline class="t10-road" points="164.9,519.1 680,519.1"/>
+    <polyline class="t10-hw" id="t10-us81" points="461.8,308.5 469.8,333.6 470.6,395.8 474.8,395.8 475.2,417.7 488.3,445.9 495.2,450.1 504.6,450.8 504.8,488.1 501.7,512.5 505.0,527.8 504.6,698.9"/>
+    <rect x="466.4" y="390.4" width="8" height="8" fill="none" stroke="#93a3b2" stroke-width="0.8"/>
+    <polyline class="t10-ghost" points="247.0,516.6 249.1,523.0 256.5,534.1 258.6,533.9 269.8,543.9 274.3,557.0 280.7,568.5 284.1,571.9 300.6,575.1 319.9,579.4 339.5,579.1 360.9,585.1 388.1,580.3 404.8,570.2 405.2,566.9 423.7,566.7 442.5,573.6 455.1,580.6 468.5,581.3 497.8,580.0 523.7,569.5 539.3,558.8 557.1,547.0 561.6,535.3 563.9,520.5 563.5,518.5 571.1,515.5 580.2,512.2 579.6,509.3 579.9,507.7 584.0,501.1 586.1,496.0 593.7,471.9"/>
+    <polyline class="t10-track" id="t10-track" points="247.0,516.6 249.1,523.0 256.5,534.1 258.6,533.9 269.8,543.9 274.3,557.0 280.7,568.5 284.1,571.9 300.6,575.1 319.9,579.4 339.5,579.1 360.9,585.1 388.1,580.3 404.8,570.2 405.2,566.9 423.7,566.7 442.5,573.6 455.1,580.6 468.5,581.3 497.8,580.0 523.7,569.5 539.3,558.8 557.1,547.0 561.6,535.3 563.9,520.5 563.5,518.5 571.1,515.5 580.2,512.2 579.6,509.3 579.9,507.7 584.0,501.1 586.1,496.0 593.7,471.9"/>
+    <path class="t10-turn" id="t10-turn" d="M512 596 Q566 588 584 536"/>
+    <path class="t10-turn" id="t10-turnhead" d="M578.5 542.5 L584 536 L587.5 544.5"/>
+    <circle id="t10-ring" cx="247" cy="516.6" r="2" fill="none" stroke="#f5d98b" stroke-width="0.6"/>
+    <circle id="t10-dot" cx="247" cy="516.6" r="2.6" fill="#f5d98b"/>
+  </svg>
+  <div class="t10-place" id="t10-elreno" style="left:1012px; top:174px">El Reno</div>
+  <div class="t10-lab" id="t10-hwlab" style="left:1112px; top:880px">HIGHWAY 81</div>
+  <div class="t10-turnlab" id="t10-turnlab">SHARP LEFT TURN</div>
+  <div class="t10-panel" id="t10-panel">
+    <div class="t10-eb" id="t10-eb">FORWARD SPEED</div>
+    <div class="t10-pre"><span id="t10-about">ABOUT</span><span id="t10-more">MORE THAN</span></div>
+    <div class="t10-num"><span id="t10-num">35</span><span class="t10-unit"> MPH</span></div>
+    <div class="t10-src" id="t10-src">NWS SERVICE ASSESSMENT</div>
+  </div>
+  <div class="t10-scale" id="t10-scale"></div>
+  <div class="t10-scalelab" id="t10-scalelab">1 MILE</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#t10-";
+  const trackEl = document.getElementById("t10-track");
+  const pts = trackEl.getAttribute("points").trim().split(/\s+/).map(function (p) { p = p.split(","); return [parseFloat(p[0]), parseFloat(p[1])]; });
+  const cum = [0];
+  for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+  const L = Math.ceil(cum[cum.length - 1]) + 1;
+  /* head and drawn line move together: each leg lasts in proportion to its length */
+  function run(i0, i1, t0, t1) {
+    const span = cum[i1] - cum[i0];
+    let t = t0;
+    for (let i = i0 + 1; i <= i1; i++) {
+      const d = (t1 - t0) * (cum[i] - cum[i - 1]) / span;
+      /* per-leg attr tweens (no MotionPathPlugin); attr, not x/y, so graphics_qc still samples geometry while the head moves */
+      tl.to([P + "ring", P + "dot"], { attr: { cx: pts[i][0], cy: pts[i][1] }, duration: d, ease: "none" }, t);
+      t += d;
+    }
+    tl.to(P + "track", { strokeDashoffset: L - cum[i1], duration: t1 - t0, ease: "none" }, t0);
+  }
+  tl.fromTo(P + "drift", { y: -90 }, { y: 90, duration: 12.7, ease: "none" }, 0);
+  /* start states are set at build time, so frame 0 never shows the finished drawing */
+  gsap.set(P + "track", { strokeDasharray: L, strokeDashoffset: L });
+  tl.fromTo(P + "ring", { attr: { r: 2 }, opacity: 0.9 }, { attr: { r: 10 }, opacity: 0, duration: 1.1, ease: "power2.out", repeat: 11 }, 0.1);
+  tl.fromTo(P + "elreno", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+  tl.fromTo(P + "scale", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.fromTo(P + "scalelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.5);
+  run(0, 8, 0.66, 4.6);                  /* TORNADO @0.66: south-east leg, slow */
+  tl.fromTo(P + "panel", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 3.8); /* SPEED @3.80 */
+  gsap.set(P + "more", { autoAlpha: 0 });
+  tl.fromTo(P + "num", { scale: 1.25, transformOrigin: "right center" }, { scale: 1, duration: 0.4, ease: "power3.out" }, 5.08); /* 35 @5.08 */
+  run(8, 13, 4.6, 6.4);                  /* east leg quickens */
+  const SP = { v: 35 };
+  tl.to(SP, { v: 50, duration: 1.5, ease: "power2.in", onUpdate: function () {
+    const e = document.getElementById("t10-num"); if (e) e.textContent = Math.round(SP.v) + (SP.v >= 49.6 ? "+" : "");
+  } }, 5.44);                            /* climbs into 50 @6.94 */
+  tl.to(P + "about", { autoAlpha: 0, y: -10, duration: 0.2, ease: "power2.in" }, 6.3);   /* gone before MORE THAN arrives: the two never overlap */
+  tl.fromTo(P + "more", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 6.58); /* MORE THAN @6.58 */
+  tl.fromTo(P + "num", { scale: 1.18 }, { scale: 1, duration: 0.45, ease: "back.out(2)" }, 6.94);
+  run(13, 19, 6.4, 7.9);                 /* fastest stretch, to Highway 81 */
+  tl.fromTo(P + "hwlab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.6);
+  run(19, 20, 7.9, 9.1);
+  run(20, 24, 9.1, 10.5);                /* LEFT @9.12: bends north */
+  const TL1 = Math.ceil(document.getElementById("t10-turn").getTotalLength()) + 1;
+  gsap.set(P + "turn", { strokeDasharray: TL1, strokeDashoffset: TL1 });
+  gsap.set(P + "turnhead", { autoAlpha: 0 });
+  tl.to(P + "turn", { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 9.12);
+  tl.to(P + "turnhead", { autoAlpha: 1, duration: 0.2 }, 9.7);
+  tl.fromTo(P + "turnlab", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 9.38); /* TURN @9.38 */
+  run(24, 32, 10.5, 12.4);               /* DIFFICULT @11.36: still heading north */
+  window.__timelines["g-a1s10-track"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

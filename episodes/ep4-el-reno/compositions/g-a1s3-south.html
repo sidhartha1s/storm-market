@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1s3-south · A1-S3 · window 18.66 s · brief: mg_specs/maps.md
+  Claim: people followed advice from the media to drive south as storms bore down on Oklahoma City; the NWS Service
+  Assessment's word for that advice is "atypical".
+  Map: metro frame window 320 95 1600 900 (zoom 1.2; 5 miles = 204 px). The south arrow is a direction out of the
+  city, not a route and not a distance. The storm arcs are a schematic of storms moving east toward the city, not a
+  radar outline. No station logo, face or name. The cite card quotes one word and names the document; no page image.
+  Cues are comp-local seconds from audio/a1-s3.words.json.
+-->
+<template>
+<style>
+  #s13-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    color:#dfe7ee; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .s13-drift { position:absolute; left:0; right:0; top:-200px; height:1480px; opacity:0.30; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.16) 0 1px, transparent 1px 46px); }
+  .s13-scan { position:absolute; left:0; top:0; width:220px; height:1080px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0) 0%, rgba(127,178,229,0.07) 70%, rgba(127,178,229,0.30) 98%, rgba(127,178,229,0) 100%); }
+  .s13-map { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .s13-road { fill:none; stroke:#4a5560; stroke-width:1.6; stroke-linejoin:round; }
+  .s13-arrow { fill:none; stroke:#e8c56a; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; }
+  .s13-storm { fill:none; stroke:rgba(192,57,43,0.85); stroke-width:3.4; stroke-linecap:round; }
+  .s13-eb { position:absolute; left:96px; top:72px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .s13-place { position:absolute; left:1214px; top:486px; font-size:30px; font-weight:700; color:#f2f5f8; white-space:nowrap; }
+  .s13-south { position:absolute; left:1290px; top:704px; font-size:30px; font-weight:700; letter-spacing:2px; color:#e8c56a; white-space:nowrap; }
+  .s13-stlab { position:absolute; left:640px; top:296px; font-size:22px; font-weight:700; letter-spacing:4px; color:#e74c3c; white-space:nowrap; }
+  .s13-cite { position:absolute; left:96px; top:560px; width:660px; box-sizing:border-box; padding:26px 34px 26px; border-radius:6px;
+    background:linear-gradient(180deg, rgba(232,222,200,0.95), rgba(222,210,186,0.93)); box-shadow:0 18px 50px rgba(0,0,0,0.5); }
+  .s13-ceb { font-size:19px; font-weight:700; letter-spacing:4px; color:#6b6257; }
+  .s13-word { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:112px; line-height:1.1; color:#2a2622; }
+  .s13-attr { margin-top:10px; font-size:16px; font-weight:700; letter-spacing:2px; line-height:1.5; color:#6b6257; }
+  .s13-sub { position:absolute; left:100px; top:852px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:28px; color:#d8a13a; white-space:nowrap; }
+  .s13-scale { position:absolute; left:96px; top:984px; width:204px; height:8px; border:2px solid #93a3b2; border-top:none; box-sizing:border-box; }
+  .s13-scalelab { position:absolute; left:96px; top:1002px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+</style>
+<div id="s13-root" data-composition-id="g-a1s3-south" data-width="1920" data-height="1080">
+  <div class="s13-drift" id="s13-drift"></div>
+  <svg class="s13-map" id="s13-map" viewBox="320 95 1600 900" preserveAspectRatio="none">
+    <!-- Interstates 40, 35, 44 and US-81: US Census TIGERweb lines -->
+    <polyline class="s13-road" points="193.5,402.7 233.7,400.1 298.0,400.3 306.0,402.2 384.0,436.9 421.6,445.9 473.7,466.7 571.6,468.6 610.6,466.7 660.5,469.8 733.4,467.2 783.4,469.1 798.1,474.0 827.5,490.5 874.2,521.9 935.2,558.5 956.5,563.2 1014.7,563.0 1190.4,563.5 1254.3,559.7 1299.6,571.7 1321.0,572.4 1328.1,570.3 1338.0,561.1 1344.2,558.3 1391.6,556.4 1408.3,550.3 1417.2,556.0 1430.8,568.6 1459.0,577.1 1494.1,600.6 1517.6,622.9 1540.6,624.1 1561.0,622.4 1581.5,625.0 1710.3,677.1 1828.8,738.4 1844.5,741.0 2031.2,741.7"/>
+    <polyline class="s13-road" points="1504.9,-58.7 1504.9,38.3 1502.4,51.7 1493.6,82.6 1488.6,120.7 1487.6,217.9 1435.6,319.1 1424.1,368.6 1420.0,378.7 1419.6,386.0 1422.1,398.2 1421.8,442.8 1411.2,484.4 1411.4,513.9 1407.0,547.7 1402.4,552.9 1397.0,555.5 1365.7,558.3 1364.0,577.8 1370.3,597.3 1370.5,642.8 1353.6,697.1 1353.4,757.6 1353.8,792.9 1351.7,804.8 1354.0,813.1 1354.6,831.6 1362.8,859.3 1363.2,940.8 1371.5,975.5 1371.6,1134.9"/>
+    <polyline class="s13-road" points="2032.7,113.2 1857.8,146.0 1727.0,179.4 1491.8,235.5 1479.6,234.3 1476.9,236.7 1435.2,319.1 1423.7,366.7 1418.3,374.7 1411.6,378.0 1396.0,380.3 1376.6,390.2 1370.7,389.5 1363.0,385.5 1357.1,385.7 1345.3,395.6 1336.5,399.6 1313.5,400.3 1293.7,403.6 1281.0,411.6 1266.6,413.2 1260.5,421.9 1257.4,432.2 1248.4,438.6 1236.3,442.6 1209.4,442.3 1196.4,459.9 1192.7,472.9 1190.4,495.6 1193.1,511.4 1191.4,541.9 1193.3,550.1 1208.4,589.1 1209.4,624.1 1207.7,630.2 1197.7,642.8 1188.3,666.3 1195.6,686.5 1195.6,707.2 1200.6,713.0 1201.5,749.0 1200.0,758.1 1160.6,878.8 1153.9,931.1 1151.4,978.1 1148.7,985.6 1142.4,994.8 1130.3,1003.5 1106.5,1010.5 1091.5,1018.3 1081.0,1026.9"/>
+    <polyline class="s13-road" points="462.5,13.9 461.8,308.5 469.8,333.6 470.6,395.8 474.8,395.8 475.2,417.7 488.3,445.9 495.2,450.1 504.6,450.8 504.8,488.1 501.7,512.5 505.0,527.8 504.6,698.9 505.2,730.2 514.6,761.2 520.7,774.1 518.8,791.5 509.0,846.6 498.4,859.1 495.0,866.6 494.2,888.7 489.0,918.0 475.6,931.9 472.9,939.1 472.9,1064.5"/>
+    <rect x="1307.3" y="538.7" width="12" height="12" fill="none" stroke="#f2f5f8" stroke-width="1.6"/>
+    <g id="s13-storm">
+      <path class="s13-storm" d="M700 390 Q752 480 700 570"/>
+      <path class="s13-storm" d="M742 410 Q788 480 742 550" opacity="0.7"/>
+      <path class="s13-storm" d="M782 430 Q820 480 782 530" opacity="0.45"/>
+    </g>
+    <path class="s13-arrow" id="s13-arrow" d="M1313.3 598V838"/>
+    <path class="s13-arrow" id="s13-ahead" d="M1297 820L1313.3 842L1329.6 820"/>
+  </svg>
+  <div class="s13-scan" id="s13-scan"></div>
+  <div class="s13-eb" id="s13-eb">THE ADVICE THAT EVENING</div>
+  <div class="s13-place" id="s13-place">Oklahoma City</div>
+  <div class="s13-south" id="s13-south">DRIVE SOUTH</div>
+  <div class="s13-stlab" id="s13-stlab">STORMS</div>
+  <div class="s13-cite" id="s13-cite">
+    <div class="s13-ceb">THE ASSESSMENT'S WORD</div>
+    <div class="s13-word"><span id="s13-word">&ldquo;atypical&rdquo;</span></div>
+    <div class="s13-attr">NWS SERVICE ASSESSMENT · MAY 2013 OKLAHOMA TORNADOES AND FLASH FLOODING</div>
+  </div>
+  <div class="s13-sub" id="s13-sub">not what Oklahomans are normally told</div>
+  <div class="s13-scale" id="s13-scale"></div>
+  <div class="s13-scalelab" id="s13-scalelab">5 MILES</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#s13-";
+  function pop(id, at) { tl.fromTo(P + id, { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, at); }
+  tl.fromTo(P + "drift", { y: -100 }, { y: 100, duration: 18.75, ease: "none" }, 0);
+  tl.fromTo(P + "scan", { x: -240 }, { x: 1940, duration: 4.6, ease: "none", repeat: 3 }, 0.2); /* a sweep keeps the holds between cues alive */
+  tl.fromTo(P + "place", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.fromTo(P + "scale", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.fromTo(P + "scalelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.5);
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.06);   /* TOLD @1.06 */
+  const AL = Math.ceil(document.getElementById("s13-arrow").getTotalLength()) + 1;
+  gsap.set(P + "arrow", { strokeDasharray: AL, strokeDashoffset: AL }); /* at build time: frame 0 never shows the finished arrow */
+  gsap.set([P + "ahead", P + "storm"], { opacity: 0 });
+  gsap.set(P + "word", { autoAlpha: 0 });
+  tl.to(P + "arrow", { strokeDashoffset: 0, duration: 0.8, ease: "power2.in" }, 4.98);         /* DRIVE @4.98 */
+  tl.to(P + "ahead", { opacity: 1, duration: 0.15 }, 5.72);
+  tl.fromTo(P + "south", { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 5.26); /* SOUTH @5.26 */
+  /* STORMS WERE BEARING DOWN ON OKLAHOMA CITY @6.60: the arcs move east toward the city, then keep creeping */
+  tl.to(P + "storm", { opacity: 1, duration: 0.5 }, 6.6);
+  tl.fromTo(P + "storm", { x: -70 }, { x: 150, duration: 3.0, ease: "power1.out" }, 6.6);
+  tl.to(P + "storm", { x: 215, duration: 9.1, ease: "none" }, 9.6);
+  pop("stlab", 6.9);
+  /* THE ASSESSMENT'S WORD @9.70: the cite card; the word lands on ATYPICAL @11.22 */
+  tl.fromTo(P + "cite", { x: -800, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 9.7);
+  tl.fromTo(P + "word", { autoAlpha: 0, scale: 1.18, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out", immediateRender: false }, 11.22);
+  pop("sub", 12.86);                                                                          /* NOT WHAT OKLAHOMANS @12.86 */
+  /* IT OVERRODE THE PLANS @15.80: the arrow beats twice */
+  tl.fromTo([P + "arrow", P + "ahead"], { strokeWidth: 5 }, { strokeWidth: 8.5, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 3, immediateRender: false }, 15.8);
+  tl.fromTo(P + "south", { scale: 1, transformOrigin: "left center" }, { scale: 1.1, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 15.8);
+  window.__timelines["g-a1s3-south"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

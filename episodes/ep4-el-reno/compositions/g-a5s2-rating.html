@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5s2-rating: the rating goes from EF5 back to EF3 (no date: it is not confirmed); the fastest air was in the
+     small sub-vortices and none of them crossed a structure.
+     Brief: mg_specs/replot.md. Scale 300 px per mile, north up. Every track and structure dot here is schematic:
+     no survey positions are on file. Quote, exact words: NWS Norman event page. Our own redraw. -->
+<template>
+<style>
+  #rp52-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 54% 50%, #0b1016 0%, #030507 78%); }
+  .rp52-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .rp52-ef { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:120px; fill:#f2f5f8; }
+  .rp52-mid { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#dfe7ee; }
+  .rp52-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .rp52-sm { font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px; fill:#93a3b2; }
+  .rp52-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:30px; fill:#2a2622; }
+  .rp52-att { font-family:Arial, sans-serif; font-weight:700; font-size:19px; fill:#6b6257; }
+</style>
+<div id="rp52-root" data-composition-id="g-a5s2-rating" data-width="1920" data-height="1080">
+  <svg class="rp52-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="rp52-grid" width="150" height="150" patternUnits="userSpaceOnUse" x="140" y="98"><path d="M150,0 L0,0 L0,150" fill="none" stroke="#2a3644" stroke-width="2" stroke-opacity="0.75"/></pattern>
+      <radialGradient id="rp52-echo"><stop offset="0" stop-color="#7fb2e5" stop-opacity="0.26"/><stop offset="1" stop-color="#7fb2e5" stop-opacity="0"/></radialGradient>
+      <radialGradient id="rp52-glow"><stop offset="0" stop-color="#e8c56a" stop-opacity="0.75"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/></radialGradient>
+      <mask id="rp52-m1" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="rp52-r1" d="M760,640 C860,560 900,420 1010,380" fill="none" stroke="#fff" stroke-width="12"/></mask>
+      <mask id="rp52-m2" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="rp52-r2" d="M930,760 C1040,700 1130,720 1220,610" fill="none" stroke="#fff" stroke-width="12"/></mask>
+      <mask id="rp52-m3" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="rp52-r3" d="M1090,330 C1180,400 1290,420 1330,520" fill="none" stroke="#fff" stroke-width="12"/></mask>
+    </defs>
+    <!-- land: section-line fields, half a mile apart (schematic) -->
+    <rect x="0" y="0" width="1920" height="1080" fill="url(#rp52-grid)"/>
+    <g id="rp52-ring">
+      <ellipse id="rp52-e1" cx="900" cy="420" rx="150" ry="110" fill="url(#rp52-echo)"/>
+      <ellipse id="rp52-e2" cx="1200" cy="700" rx="130" ry="100" fill="url(#rp52-echo)"/>
+      <circle cx="1040" cy="548" r="390" fill="none" stroke="#5a768f" stroke-width="30" stroke-opacity="0.22"/>
+      <circle cx="1040" cy="548" r="390" fill="none" stroke="#7fb2e5" stroke-width="2.5"/>
+      <circle id="rp52-ticks" cx="1040" cy="548" r="390" fill="none" stroke="#7fb2e5" stroke-width="14" stroke-opacity="0.7" stroke-dasharray="5 44"/>
+    </g>
+    <!-- structures: schematic dots, none on a track -->
+    <g id="rp52-dots" fill="#dfe7ee">
+      <rect x="714" y="464" width="12" height="12"/><rect x="994" y="494" width="12" height="12"/><rect x="994" y="814" width="12" height="12"/>
+      <rect x="1194" y="754" width="12" height="12"/><rect x="1094" y="604" width="12" height="12"/><rect x="1234" y="294" width="12" height="12"/>
+      <rect x="1174" y="474" width="12" height="12"/><rect x="1364" y="424" width="12" height="12"/><rect x="1474" y="294" width="12" height="12"/>
+      <rect x="1514" y="554" width="12" height="12"/><rect x="1454" y="814" width="12" height="12"/><rect x="754" y="244" width="12" height="12"/>
+      <rect x="824" y="874" width="12" height="12"/><rect x="884" y="254" width="12" height="12"/>
+    </g>
+    <!-- sub-vortex tracks: schematic, dashed -->
+    <path id="rp52-t1" d="M760,640 C860,560 900,420 1010,380" fill="none" stroke="#e8c56a" stroke-width="3" stroke-dasharray="10 9" stroke-opacity="0.85" mask="url(#rp52-m1)"/>
+    <path id="rp52-t2" d="M930,760 C1040,700 1130,720 1220,610" fill="none" stroke="#e8c56a" stroke-width="3" stroke-dasharray="10 9" stroke-opacity="0.85" mask="url(#rp52-m2)"/>
+    <path id="rp52-t3" d="M1090,330 C1180,400 1290,420 1330,520" fill="none" stroke="#e8c56a" stroke-width="3" stroke-dasharray="10 9" stroke-opacity="0.85" mask="url(#rp52-m3)"/>
+    <g id="rp52-s1"><circle cx="0" cy="0" r="34" fill="url(#rp52-glow)"/><circle cx="0" cy="0" r="15" fill="#e8c56a" fill-opacity="0.35" stroke="#f5d98b" stroke-width="3"/></g>
+    <g id="rp52-s2"><circle cx="0" cy="0" r="34" fill="url(#rp52-glow)"/><circle cx="0" cy="0" r="15" fill="#e8c56a" fill-opacity="0.35" stroke="#f5d98b" stroke-width="3"/></g>
+    <g id="rp52-s3"><circle cx="0" cy="0" r="34" fill="url(#rp52-glow)"/><circle cx="0" cy="0" r="15" fill="#e8c56a" fill-opacity="0.35" stroke="#f5d98b" stroke-width="3"/></g>
+    <!-- the rating -->
+    <text id="rp52-ef5" class="rp52-ef" x="90" y="270" fill="#93a3b2">EF5</text>
+    <text id="rp52-ef3" class="rp52-ef" x="90" y="270">EF3</text>
+    <text id="rp52-l0" class="rp52-lab" x="96" y="340">Rating</text>
+    <text id="rp52-t-fast1" class="rp52-mid" x="96" y="402" fill="#e8c56a">Fastest air:</text>
+    <text id="rp52-t-fast2" class="rp52-mid" x="96" y="440" fill="#e8c56a">inside the small sub-vortices</text>
+    <!-- the weather office's sentence, exact words, on the beige cite card -->
+    <g id="rp52-card">
+      <rect x="96" y="470" width="540" height="270" rx="14" fill="#e8dec8" fill-opacity="0.92"/>
+      <rect x="96" y="470" width="8" height="270" fill="#d8a13a"/>
+      <text class="rp52-q" x="130" y="526">“none of these intense</text>
+      <text class="rp52-q" x="130" y="568">sub-vortices impacted any</text>
+      <text class="rp52-q" x="130" y="610">structures in rural</text>
+      <text class="rp52-q" x="130" y="652">Canadian County”</text>
+      <text class="rp52-att" x="130" y="704">NWS Norman</text>
+    </g>
+    <rect id="rp52-key1" x="96" y="822" width="12" height="12" fill="#dfe7ee"/>
+    <text id="rp52-t-key1" class="rp52-sm" x="122" y="835">Structures</text>
+    <path id="rp52-key2" d="M96,862 L150,862" stroke="#e8c56a" stroke-width="3" stroke-dasharray="10 9"/>
+    <text id="rp52-t-key2" class="rp52-sm" x="164" y="869">Sub-vortex tracks</text>
+    <text id="rp52-t-sch" class="rp52-sm" x="96" y="908">Tracks and structures: schematic, not a survey map</text>
+    <!-- scale bar: 300 px = 1 mile -->
+    <path id="rp52-bar" d="M96,986 L396,986 M96,976 L96,996 M396,976 L396,996" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+    <text id="rp52-t-bar" class="rp52-sm" x="96" y="964" fill="#dfe7ee">1 mile</text>
+    <text id="rp52-t-ring" class="rp52-sm" x="412" y="993">Ring: 2.6 miles at its widest</text>
+    <text id="rp52-t-own" class="rp52-sm" x="96" y="1022">Our redraw</text>
+    <path id="rp52-north" d="M1760,150 L1760,96 M1748,112 L1760,92 L1772,112" fill="none" stroke="#93a3b2" stroke-width="3"/>
+    <text id="rp52-t-n" class="rp52-lab" x="1751" y="182">N</text>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a5s2-rating", P = "#rp52-";
+  /* cues: audio/a5-s2.words.json (comp-local = segment seconds) */
+  const CUES = {
+    took: 1.20,     /* took the rating back down @1.20 */
+    ef3: 2.62,      /* EF3 @2.62 */
+    fastest: 4.24,  /* fastest air @4.24 */
+    small: 5.58,    /* small sub-vortices @5.58 */
+    wrote: 7.08,    /* it wrote @7.08 */
+    none: 8.02,     /* none of them @8.02 */
+    structure: 9.30 /* a single structure @9.30 */
+  };
+  const DUR = 11.95;
+  const tl = gsap.timeline({ paused: true });
+  /* hidden from the first frame: set now (a paused timeline has not rendered its time-0 sets yet) and again at 0 */
+  const HIDE = [P + "ef3", P + "t-fast1", P + "t-fast2", P + "card", P + "s1", P + "s2", P + "s3"];
+  gsap.set(HIDE, { autoAlpha: 0 });
+  tl.set(HIDE, { autoAlpha: 0 }, 0);
+
+  /* whole window: the wide circulation turns counter-clockwise, echoes drift */
+  tl.fromTo(P + "ticks", { rotation: 0, svgOrigin: "1040 548" }, { rotation: -96, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e1", { x: -30, y: 10 }, { x: 40, y: -30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e2", { x: 30, y: -20 }, { x: -50, y: 30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo([P + "bar", P + "t-bar", P + "t-ring", P + "t-own", P + "key1", P + "t-key1", P + "key2", P + "t-key2", P + "t-sch"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.04 }, 0.1);
+
+  /* took the rating back down @1.20: EF5 lifts away. EF3 @2.62: EF3 settles in its place. No date */
+  tl.to(P + "ef5", { y: -70, autoAlpha: 0, duration: 0.9, ease: "power2.in" }, CUES.took);
+  tl.fromTo(P + "ef3", { autoAlpha: 0, scale: 1.4, svgOrigin: "96 180" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, CUES.ef3 - 0.35);
+
+  /* fastest air @4.24 inside the small sub-vortices @5.58: three small circles ride their schematic tracks to the end */
+  tl.fromTo(P + "t-fast1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.fastest);
+  tl.fromTo(P + "t-fast2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.small - 0.5);
+  const RUN = [["r1", "s1", 4.1, 7.0], ["r2", "s2", 4.5, 7.0], ["r3", "s3", 4.9, 7.0]];
+  RUN.forEach(function (r) {
+    const rev = document.querySelector(P + r[0]), dot = P + r[1];
+    if (!rev) return;
+    const len = Math.ceil(rev.getTotalLength()) + 1, N = 40, legs = [], p0 = rev.getPointAtLength(0);
+    for (let i = 1; i <= N; i++) { const pt = rev.getPointAtLength((len - 1) * i / N); legs.push({ x: pt.x, y: pt.y, duration: r[3] / N, ease: "none" }); }
+    gsap.set(rev, { strokeDasharray: len, strokeDashoffset: len });
+    gsap.set(dot, { x: p0.x, y: p0.y });
+    tl.set(rev, { strokeDasharray: len, strokeDashoffset: len }, 0);
+    tl.set(dot, { x: p0.x, y: p0.y }, 0);
+    tl.fromTo(dot, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, r[2]);
+    tl.to(rev, { strokeDashoffset: 0, duration: r[3], ease: "none" }, r[2]);
+    tl.to(dot, { keyframes: legs }, r[2]);
+  });
+
+  /* it wrote @7.08: the office's sentence. none of them @8.02, a single structure @9.30: the dots answer, untouched */
+  tl.fromTo(P + "card", { autoAlpha: 0, x: -120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, CUES.wrote - 0.3);
+  tl.fromTo(P + "dots", { scale: 1, svgOrigin: "1040 548" }, { scale: 1.02, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 3, immediateRender: false }, CUES.structure);
+  tl.to(P + "dots", { attr: { fill: "#f2f5f8" }, duration: 0.3 }, CUES.structure);
+  tl.fromTo([P + "key1", P + "t-key1"], { scale: 1 }, { scale: 1.12, svgOrigin: "96 828", duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, CUES.structure);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

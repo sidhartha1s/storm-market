@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4s6-drain · A4-S6 · window 21.00 s · brief: mg_specs/drawings.md
+  Claim: the water in the drain reached about two feet; the Oklahoma River was a quarter of a mile away (News 9).
+  Must stay true: the water top (y 670) never reaches a dot (lowest dot edge y 609). The dots do not travel in
+  water: on "carried all eleven" they turn hollow in place. They do not go dark: six of the eleven survived.
+  One text-only name, Corey Don Johnson, age 3 (fact_check A4-S6, confirmed). No card and no name for either survivor.
+  Cues are comp-local seconds from audio/a4-s6.words.json.
+-->
+<template>
+<style>
+  .dr6-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .dr6-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  .dr6-sweep { position:absolute; left:0; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,.07), rgba(127,178,229,0)); }
+  .dr6-svg { position:absolute; left:0; top:0; }
+  .dr6-lab { position:absolute; font-weight:700; white-space:nowrap; }
+  .dr6-small { font-size:22px; letter-spacing:3px; color:#93a3b2; }
+  .dr6-note { font-size:20px; letter-spacing:2px; color:#93a3b2; }
+  .dr6-src { font-size:20px; letter-spacing:2px; color:#c8d3e0; }
+  .dr6-mid { font-size:34px; letter-spacing:1px; color:#f2f5f8; }
+  .dr6-river { font-size:30px; letter-spacing:1px; color:#dfe7ee; }
+  .dr6-dist { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-weight:400; font-size:28px; color:#d8a13a; }
+  .dr6-name { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; }
+  .dr6-age { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-weight:400; font-size:30px; color:#d8a13a; }
+  .dr6-rule { position:absolute; left:140px; top:104px; width:200px; height:3px; background:#d8a13a; }
+</style>
+<div id="dr6-root" class="dr6-root" data-composition-id="g-a4s6-drain" data-width="1920" data-height="1080" data-duration="21">
+  <div class="dr6-grid" id="dr6-grid"></div>
+  <div class="dr6-sweep" id="dr6-sweep"></div>
+
+  <svg class="dr6-svg" id="dr6-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="dr6-hatch" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="26" stroke="#7fb2e5" stroke-width="3"/>
+      </pattern>
+      <clipPath id="dr6-sky"><rect x="0" y="0" width="1920" height="434"/></clipPath>
+      <g id="dr6-rt" stroke="#7fb2e5" stroke-width="3" stroke-linecap="round" opacity="0.5">
+        <line x1="140" y1="40" x2="130" y2="78"/><line x1="330" y1="210" x2="320" y2="248"/><line x1="520" y1="90" x2="510" y2="128"/>
+        <line x1="700" y1="330" x2="690" y2="368"/><line x1="860" y1="160" x2="850" y2="198"/><line x1="1040" y1="20" x2="1030" y2="58"/>
+        <line x1="1210" y1="260" x2="1200" y2="298"/><line x1="1380" y1="110" x2="1370" y2="148"/><line x1="1560" y1="370" x2="1550" y2="408"/>
+        <line x1="1730" y1="200" x2="1720" y2="238"/><line x1="260" y1="380" x2="250" y2="418"/><line x1="1120" y1="396" x2="1110" y2="434"/>
+      </g>
+    </defs>
+    <!-- rain above the street: the ambient motion for the whole window -->
+    <g clip-path="url(#dr6-sky)">
+      <g id="dr6-rain"><use href="#dr6-rt"/><use href="#dr6-rt" y="-436"/></g>
+    </g>
+    <g id="dr6-site">
+      <!-- the street deck -->
+      <rect x="96" y="440" width="1464" height="28" fill="#93a3b2" fill-opacity="0.18" stroke="#93a3b2" stroke-width="3"/>
+      <!-- earth between street and drain, and under the drain floor: section convention -->
+      <rect x="200" y="474" width="760" height="46" fill="url(#dr6-hatch)" opacity="0.3"/>
+      <rect x="480" y="760" width="760" height="26" fill="url(#dr6-hatch)" opacity="0.3"/>
+      <!-- the drain in section: roof slab, floor slab, open inside; left end breaks off, right end is the outfall -->
+      <rect x="200" y="540" width="1040" height="200" fill="#15202b" fill-opacity="0.55"/>
+      <rect x="200" y="526" width="1040" height="14" fill="#dfe7ee" fill-opacity="0.7" stroke="#f2f5f8" stroke-width="3"/>
+      <rect x="200" y="740" width="1040" height="14" fill="#dfe7ee" fill-opacity="0.7" stroke="#f2f5f8" stroke-width="3"/>
+      <path d="M200 520 L214 580 L186 640 L214 700 L200 760" fill="none" stroke="#93a3b2" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M1240 500 L1240 540 M1240 740 L1240 792" fill="none" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
+    </g>
+    <!-- the water: rises from the floor (y 740) to the mark (y 670) and stops there, 61 px under the dots -->
+    <rect id="dr6-water" x="204" y="740" width="1036" height="0" fill="#7fb2e5" fill-opacity="0.3"/>
+    <line id="dr6-surf" x1="204" y1="740" x2="1240" y2="740" stroke="#7fb2e5" stroke-width="3"/>
+    <line id="dr6-glint" x1="204" y1="670" x2="344" y2="670" stroke="#f2f5f8" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+    <path id="dr6-dim" d="M300 738 L300 672" fill="none" stroke="#d8a13a" stroke-width="4"/>
+    <path id="dr6-dimt" d="M286 670 L314 670" fill="none" stroke="#d8a13a" stroke-width="4" stroke-linecap="round"/>
+    <path id="dr6-ld-two" d="M300 758 L300 796" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+    <!-- drain to river: a line and the two things the source gives, the river's name and the distance -->
+    <path id="dr6-flow" d="M1250 700 L1536 700" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+    <polygon id="dr6-arrow" points="1536,690 1556,700 1536,710" fill="#7fb2e5"/>
+    <path id="dr6-rivermark" d="M1572 640 q8 15 0 30 q-8 15 0 30 q8 15 0 30 q-8 15 0 30" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round"/>
+    <!-- eleven people: eleven identical dots -->
+    <circle class="dr6-dot" cx="420" cy="600" r="9" fill="#f2f5f8" stroke="#f2f5f8" stroke-width="2"/>
+    <circle class="dr6-dot" cx="464" cy="600" r="9" fill="#f2f5f8" stroke="#f2f5f8" stroke-width="2"/>
+    <circle class="dr6-dot" cx="508" cy="600" r="9" fill="#f2f5f8" stroke="#f2f5f8" stroke-width="2"/>
+    <circle class="dr6-dot" cx="552" cy="600" r="9" fill="#f2f5f8" stroke="#f2f5f8" stroke-width="2"/>
+    <circle class="dr6-dot" cx="596" cy="600" r="9" fill="#f2f5f8" stroke="#f2f5f8" stroke-width="2"/>
+    <circle class="dr6-dot" cx="640" cy="600" r="9" fill="#f2f5f8" stroke="#f2f5f8" stroke-width="2"/>
+    <circle class="dr6-dot" cx="684" cy="600" r="9" fill="#f2f5f8" stroke="#f2f5f8" stroke-width="2"/>
+    <circle class="dr6-dot" cx="728" cy="600" r="9" fill="#f2f5f8" stroke="#f2f5f8" stroke-width="2"/>
+    <circle class="dr6-dot" cx="772" cy="600" r="9" fill="#f2f5f8" stroke="#f2f5f8" stroke-width="2"/>
+    <circle class="dr6-dot" cx="816" cy="600" r="9" fill="#f2f5f8" stroke="#f2f5f8" stroke-width="2"/>
+    <circle class="dr6-dot" cx="860" cy="600" r="9" fill="#f2f5f8" stroke="#f2f5f8" stroke-width="2"/>
+  </svg>
+
+  <div class="dr6-lab dr6-small" id="dr6-l-drain" style="left:1010px; top:484px">Storm drain</div>
+  <div class="dr6-lab dr6-small" id="dr6-l-street" style="left:1140px; top:396px">SW 15th St</div>
+  <div class="dr6-lab dr6-mid" id="dr6-l-two" style="left:250px; top:802px">About 2 feet</div>
+  <div class="dr6-lab dr6-dist" id="dr6-l-dist" style="left:1268px; top:650px">A quarter of a mile</div>
+  <div class="dr6-lab dr6-river" id="dr6-l-river" style="left:1290px; top:718px">Oklahoma River</div>
+  <div class="dr6-lab dr6-note" id="dr6-l-schem" style="left:110px; top:958px">Schematic, not to scale</div>
+  <div class="dr6-lab dr6-src" id="dr6-l-src" style="left:110px; top:992px">News 9, June 3, 2013</div>
+
+  <div class="dr6-rule" id="dr6-rule"></div>
+  <div class="dr6-lab dr6-name" id="dr6-l-name" style="left:140px; top:124px">Corey Don Johnson</div>
+  <div class="dr6-lab dr6-age" id="dr6-l-age" style="left:144px; top:196px">Age 3</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#dr6-";
+  function draw(sel, at, dur) {
+    document.querySelectorAll(sel).forEach(function (el) {
+      const len = Math.ceil(el.getTotalLength()) + 1;
+      gsap.set(el, { strokeDasharray: len });
+      tl.fromTo(el, { strokeDashoffset: len }, { strokeDashoffset: 0, duration: dur, ease: "power2.out" }, at);
+    });
+  }
+
+  /* ambient, whole window: rain above the street (one tile, 436 px, per 1.05 s), light sweep, grid drift, label float */
+  tl.fromTo(P+"rain", { y: 0 }, { y: 436, duration: 1.05, ease: "none", repeat: 19 }, 0);
+  tl.fromTo(P+"sweep", { x: -560 }, { x: 2300, duration: 4.2, ease: "none", repeat: 4 }, 0);
+  tl.fromTo(P+"grid", { x: 0 }, { x: 160, duration: 21, ease: "none" }, 0);
+  tl.to([P+"l-schem", P+"l-drain", P+"l-street", P+"l-src"], { y: -5, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 10 }, 0.2);
+
+  /* WHEN THE WATER @0.72 ... REACHED ABOUT 2 FEET @1.82-2.40: the water line rises to the mark and stops */
+  tl.fromTo(P+"water", { attr: { y: 740, height: 0 } }, { attr: { y: 670, height: 70 }, duration: 1.5, ease: "power1.inOut" }, 0.72);
+  tl.fromTo(P+"surf", { attr: { y1: 740, y2: 740 } }, { attr: { y1: 670, y2: 670 }, duration: 1.5, ease: "power1.inOut" }, 0.72);
+  draw(P+"dim", 1.82, 0.4);
+  draw(P+"dimt", 2.1, 0.2);
+  tl.fromTo(P+"l-two", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.82);
+  draw(P+"ld-two", 2.2, 0.3);
+  /* THEY TRIED TO CLIMB OUT AND COULD NOT @3.18-4.78: nothing is drawn for this; the water line holds at the mark,
+     and a glint runs along it toward the outfall (the water is moving), 2.3 s to the end */
+  tl.fromTo(P+"glint", { autoAlpha: 0 }, { autoAlpha: 0.8, duration: 0.3, ease: "power2.out" }, 2.3);
+  tl.fromTo(P+"glint", { x: 0 }, { x: 896, duration: 1.7, ease: "none", repeat: 10 }, 2.3);
+  /* IT CARRIED ALL 11 @6.12: the eleven dots turn hollow where they are */
+  tl.to(".dr6-dot", { fillOpacity: 0, strokeOpacity: 0.6, duration: 0.5, ease: "power2.out", stagger: 0.04 }, 6.12);
+  tl.fromTo(".dr6-dot", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1.25, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.04 }, 6.12);
+  /* INTO THE OKLAHOMA RIVER @6.92-7.82 */
+  draw(P+"flow", 6.92, 1.4);
+  tl.fromTo(P+"arrow", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 8.1);
+  draw(P+"rivermark", 7.38, 0.7);
+  tl.fromTo(P+"l-river", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.38);
+  /* A QUARTER OF A MILE AWAY @8.76 */
+  tl.fromTo(P+"l-dist", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.76);
+  /* AN AUNT HELD HER THREE YEAR OLD NEPHEW @10.56-12.66: no mark; the drawing holds */
+  /* HIS NAME WAS COREY DON JOHNSON @14.34 */
+  tl.fromTo(P+"rule", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 14.34);
+  tl.fromTo(P+"l-name", { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 14.34);
+  tl.fromTo(P+"l-age", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 15.0);
+  /* AN EIGHT YEAR OLD GIRL WAS PULLED FROM THE RIVER @17.54-20.00: no card, no name; the drawing holds */
+  window.__timelines["g-a4s6-drain"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

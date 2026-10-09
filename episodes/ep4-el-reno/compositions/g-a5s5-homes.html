@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a5s5-homes · A5-S5 · window 27.21 s · brief: mg_specs/maps.md
+  Claim: the densest cluster of damage was a group of manufactured homes just south of Interstate 40 (69 markers per
+  square mile, Marshall et al.); the NWS table lists no one lost in them; the weather service's standing advice is
+  that a mobile home is not safe.
+  Map: metro frame window 540 433 160 90 (zoom 12; half a mile = 204 px). Squares = the 31 NWS Damage Assessment
+  Toolkit points of class "Manufactured Home" in the cluster, at their surveyed places, about 0.6 mile south of the
+  interstate. Grey dots = the other toolkit points in view. No square or dot stands for a person.
+  The safety card carries the NWS words exactly and holds to the end of the timeline: it has no exit.
+  Cues are comp-local seconds from audio/a5-s5.words.json.
+-->
+<template>
+<style>
+  #h55-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    color:#dfe7ee; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .h55-drift { position:absolute; left:0; right:0; top:-260px; height:1600px; opacity:0.30; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.16) 0 1px, transparent 1px 46px); }
+  .h55-scan { position:absolute; left:0; top:0; width:220px; height:1080px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0) 0%, rgba(127,178,229,0.07) 70%, rgba(127,178,229,0.30) 98%, rgba(127,178,229,0) 100%); }
+  .h55-map { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .h55-road { fill:none; stroke:#2a3644; stroke-width:0.5; stroke-linejoin:round; }
+  .h55-lit { fill:none; stroke:#7fb2e5; stroke-width:0.55; stroke-linejoin:round; stroke-linecap:round; }
+  .h55-track { fill:none; stroke:#e74c3c; stroke-width:0.5; stroke-linecap:round; stroke-linejoin:round; }
+  .h55-other { fill:none; stroke:#4a5560; stroke-width:0.55; stroke-linecap:round; }
+  .h55-mh { fill:none; stroke:#e8c56a; stroke-width:0.7; stroke-linecap:square; }
+  .h55-ring { fill:none; stroke:#e8c56a; stroke-width:0.18; }
+  .h55-eb { position:absolute; left:96px; top:72px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .h55-hl { position:absolute; left:96px; top:104px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; color:#f2f5f8; white-space:nowrap; }
+  .h55-sub { position:absolute; left:96px; top:182px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:28px; color:#d8a13a; white-space:nowrap; }
+  .h55-table { position:absolute; left:96px; top:236px; font-size:22px; font-weight:700; letter-spacing:3px; color:#c8d3e0; white-space:nowrap; }
+  .h55-lab { position:absolute; font-size:22px; font-weight:700; letter-spacing:3px; white-space:nowrap; }
+  .h55-cite { position:absolute; left:1010px; top:60px; width:814px; box-sizing:border-box; padding:28px 34px 26px; border-radius:6px;
+    background:linear-gradient(180deg, rgba(232,222,200,0.95), rgba(222,210,186,0.93)); box-shadow:0 18px 50px rgba(0,0,0,0.5); }
+  .h55-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:34px; line-height:1.28; color:#2a2622; }
+  .h55-attr { margin-top:16px; font-size:19px; font-weight:700; letter-spacing:3px; color:#6b6257; }
+  .h55-scale { position:absolute; left:96px; top:984px; width:204px; height:8px; border:2px solid #93a3b2; border-top:none; box-sizing:border-box; }
+  .h55-scalelab { position:absolute; left:96px; top:1002px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+</style>
+<div id="h55-root" data-composition-id="g-a5s5-homes" data-width="1920" data-height="1080">
+  <div class="h55-drift" id="h55-drift"></div>
+  <svg class="h55-map" id="h55-map" viewBox="540 433 160 90" preserveAspectRatio="none">
+    <!-- Interstate 40 and Reuter Road: US Census TIGERweb lines -->
+    <polyline class="h55-road" points="421.6,445.9 473.7,466.7 571.6,468.6 610.6,466.7 660.5,469.8 733.4,467.2"/>
+    <polyline class="h55-road" points="500,519.1 700,519.1"/>
+    <polyline class="h55-lit" id="h55-l40" points="421.6,445.9 473.7,466.7 571.6,468.6 610.6,466.7 660.5,469.8 733.4,467.2"/>
+    <polyline class="h55-track" id="h55-track" points="539.3,558.8 557.1,547.0 561.6,535.3 563.9,520.5 563.5,518.5 571.1,515.5 580.2,512.2 579.6,509.3 579.9,507.7 584.0,501.1 586.1,496.0 593.7,471.9 599.3,462.2 602.8,453.3 596.0,454.4 593.0,457.1 591.4,459.8 590.3,463.2 590.2,464.4 595.1,461.1 598.4,457.8 601.0,459.2 606.6,460.2 613.4,462.9 621.3,466.6 627.5,468.6 643.0,468.9 653.8,462.3 655.4,463.8 656.1,465.1 665.4,460.8 671.5,459.6 672.5,461.3 672.7,464.5 675.6,466.7"/>
+    <path class="h55-other" id="h55-other" d="M575.3 518.7h.01M573.0 482.7h.01M576.6 480.6h.01M600.9 489.1h.01M613.7 500.7h.01M621.6 460.5h.01M622.1 459.5h.01M609.7 444.2h.01M612.6 444.9h.01M612.6 446.4h.01M613.8 448.5h.01M675.8 465.6h.01M562.7 518.7h.01M667.5 447.2h.01M642.0 455.8h.01M640.3 453.6h.01M631.5 449.4h.01M634.0 448.7h.01M656.6 459.7h.01M593.9 449.7h.01M639.6 492.9h.01M641.1 485.8h.01M569.5 483.2h.01M566.1 484.0h.01M657.7 484.5h.01M665.6 444.7h.01M623.7 441.7h.01M643.9 453.1h.01M634.9 494.9h.01M588.7 456.2h.01M588.7 453.6h.01M588.9 454.5h.01M589.2 459.0h.01M589.6 460.4h.01M604.2 488.1h.01M639.4 475.7h.01M641.1 482.2h.01M645.3 477.3h.01M647.0 479.2h.01M648.8 458.5h.01M584.3 454.1h.01M602.1 449.4h.01M604.4 454.8h.01M616.1 464.2h.01M621.5 464.2h.01M635.3 501.5h.01M642.8 450.3h.01M643.0 481.1h.01M647.6 479.2h.01M652.2 480.4h.01M604.8 445.1h.01M595.0 460.6h.01M588.3 469.3h.01M589.1 464.9h.01M591.0 458.3h.01M614.8 472.1h.01M597.7 485.1h.01M576.0 474.0h.01M608.3 447.7h.01M608.8 448.2h.01M608.8 444.2h.01M610.4 445.6h.01M609.2 446.6h.01M651.6 463.2h.01M609.0 446.1h.01M614.4 498.4h.01M616.3 496.1h.01M631.7 475.7h.01M588.7 455.0h.01M591.6 453.1h.01M634.8 485.8h.01M649.0 475.7h.01M649.3 455.9h.01M652.4 478.0h.01M652.4 459.7h.01M652.6 466.0h.01M585.8 459.9h.01M589.1 455.0h.01M637.6 498.9h.01M638.0 500.1h.01M638.2 485.3h.01M642.2 459.9h.01M642.8 463.7h.01M644.5 478.3h.01M647.6 457.4h.01M651.3 459.5h.01M632.4 500.6h.01M633.2 494.2h.01M633.6 494.2h.01M561.4 517.7h.01M571.8 500.8h.01M574.5 500.8h.01M587.1 456.2h.01M622.9 476.7h.01M627.3 479.9h.01M630.5 482.0h.01M647.2 450.5h.01M606.3 446.3h.01M610.8 447.7h.01M651.8 463.9h.01M589.1 460.6h.01M623.6 470.7h.01M651.6 475.2h.01M599.0 510.7h.01M635.1 490.0h.01M634.8 491.2h.01M635.1 491.4h.01M635.1 492.6h.01M634.8 497.3h.01M634.6 499.1h.01M634.8 501.0h.01M642.4 486.0h.01M584.3 451.5h.01M583.5 452.0h.01M583.3 455.7h.01M642.2 456.9h.01M643.4 456.9h.01M644.0 454.1h.01M644.0 455.2h.01M644.7 456.2h.01M646.8 452.2h.01M642.2 461.3h.01M643.2 462.8h.01M615.9 509.2h.01M567.6 483.9h.01M570.8 482.7h.01M572.0 483.7h.01M633.4 491.2h.01M633.4 492.8h.01M633.0 492.1h.01M633.2 496.1h.01M633.4 499.1h.01M634.9 487.4h.01M634.8 489.5h.01M635.7 496.3h.01M634.9 498.2h.01M636.7 499.1h.01M638.4 499.4h.01M641.1 484.4h.01M641.3 484.1h.01M643.4 482.9h.01M643.4 482.2h.01M583.9 455.7h.01M584.3 455.7h.01M589.2 452.4h.01M591.0 452.2h.01M592.3 448.4h.01M595.0 448.9h.01M594.6 447.5h.01M621.3 452.7h.01M641.3 456.9h.01M644.0 456.2h.01M644.7 451.7h.01M644.7 452.9h.01M644.7 454.1h.01M644.7 455.5h.01M656.8 456.7h.01M656.4 464.4h.01M671.6 458.3h.01M664.5 449.8h.01M664.1 448.2h.01M581.4 460.9h.01M580.8 492.8h.01M585.0 505.7h.01M557.0 517.0h.01M571.8 519.8h.01M573.1 519.6h.01M576.2 519.6h.01M618.6 484.1h.01M582.3 516.8h.01M596.4 509.5h.01M578.3 519.1h.01M598.1 484.4h.01M598.3 485.3h.01M661.2 450.7h.01"/>
+    <path class="h55-mh" id="h55-mh1" d="M614.8 491.2h.01M615.2 485.5h.01M616.1 491.2h.01M616.5 485.5h.01M617.5 485.5h.01M617.5 492.7h.01M617.9 491.2h.01M618.4 491.4h.01M618.6 487.2h.01M618.6 490.2h.01M618.7 485.5h.01M618.8 492.8h.01M619.0 488.6h.01M620.0 486.0h.01M620.0 487.4h.01"/>
+    <path class="h55-mh" id="h55-mh2" d="M620.0 488.6h.01M620.0 490.0h.01M620.0 491.4h.01M620.2 492.8h.01M620.4 488.1h.01M621.3 486.0h.01M621.3 487.2h.01M621.3 491.2h.01M621.3 492.6h.01M621.5 488.6h.01M622.8 485.8h.01M622.8 487.2h.01M622.8 488.3h.01M622.8 489.8h.01M622.8 491.4h.01M622.8 492.6h.01"/>
+    <circle class="h55-ring" id="h55-ring" cx="618.8" cy="489.2" r="6.4"/>
+    <circle class="h55-ring" id="h55-pulse" cx="618.8" cy="489.2" r="6.4"/>
+  </svg>
+  <div class="h55-scan" id="h55-scan"></div>
+  <div class="h55-eb" id="h55-eb">THE DENSEST CLUSTER OF DAMAGE</div>
+  <div class="h55-hl" id="h55-hl">Manufactured homes</div>
+  <div class="h55-sub" id="h55-sub">69 markers per square mile · Marshall et al.</div>
+  <div class="h55-table" id="h55-table">NWS TABLE: NO ONE LOST IN THEM</div>
+  <div class="h55-lab" id="h55-clab" style="left:800px; top:786px; color:#e8c56a">MANUFACTURED HOMES</div>
+  <div class="h55-lab" id="h55-lab40" style="left:96px; top:446px; color:#7fb2e5">INTERSTATE 40</div>
+  <div class="h55-cite" id="h55-cite">
+    <div class="h55-q"><span id="h55-q1">&ldquo;Mobile homes and trailers are not safe.</span> <span id="h55-q2">Evacuate immediately and seek shelter in a sturdy building.&rdquo;</span></div>
+    <div class="h55-attr" id="h55-attr">NATIONAL WEATHER SERVICE</div>
+  </div>
+  <div class="h55-scale" id="h55-scale"></div>
+  <div class="h55-scalelab" id="h55-scalelab">1/2 MILE</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#h55-";
+  function draw(id, at, dur, ease) {
+    const L = Math.ceil(document.getElementById("h55-" + id).getTotalLength()) + 1;
+    gsap.set(P + id, { strokeDasharray: L, strokeDashoffset: L }); /* at build time: frame 0 never shows the finished line */
+    tl.to(P + id, { strokeDashoffset: 0, duration: dur, ease: ease || "power2.out" }, at);
+  }
+  function pop(id, at) { tl.fromTo(P + id, { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, at); }
+  tl.fromTo(P + "drift", { y: -130 }, { y: 130, duration: 27.3, ease: "none" }, 0);
+  tl.fromTo(P + "scale", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.fromTo(P + "scalelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.5);
+  gsap.set([P + "ring", P + "pulse"], { opacity: 0 });
+  draw("track", 0.3, 2.6, "power1.inOut");                                                    /* THE TORNADO DID REACH @0.54 */
+  tl.fromTo(P + "other", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 1.58);              /* BUILDINGS @1.58 */
+  tl.fromTo(P + "mh1", { autoAlpha: 0 }, { autoAlpha: 0.35, duration: 0.6 }, 1.58);
+  tl.fromTo(P + "mh2", { autoAlpha: 0 }, { autoAlpha: 0.35, duration: 0.6 }, 1.58);
+  pop("eb", 3.88);                                                                            /* DENSEST @3.88 */
+  /* CLUSTER @4.40: the squares light and the ring closes on them */
+  tl.to(P + "mh1", { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 4.4);
+  tl.to(P + "mh2", { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 4.6);
+  tl.fromTo(P + "ring", { attr: { r: 16 }, opacity: 0 }, { attr: { r: 6.4 }, opacity: 1, duration: 0.6, ease: "power3.out" }, 4.4);
+  tl.fromTo(P + "pulse", { attr: { r: 6.4 }, opacity: 0.8 }, { attr: { r: 11 }, opacity: 0, duration: 1.3, ease: "power2.out", repeat: 16, immediateRender: false }, 5.0);
+  tl.fromTo(P + "scan", { x: -240 }, { x: 1940, duration: 5.4, ease: "none", repeat: 4 }, 0.2); /* a sweep keeps the long holds alive */
+  tl.fromTo(P + "mh1", { strokeWidth: 0.7 }, { strokeWidth: 0.95, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 31 }, 4.9);
+  tl.fromTo(P + "mh2", { strokeWidth: 0.7 }, { strokeWidth: 0.95, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 30 }, 5.25);
+  tl.fromTo(P + "hl", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 6.0); /* MANUFACTURED HOMES @6.00 */
+  pop("clab", 6.2);
+  pop("sub", 6.9);
+  draw("l40", 9.38, 0.9);                                                                     /* JUST SOUTH OF INTERSTATE 40 @9.38 */
+  pop("lab40", 9.9);                                                                          /* INTERSTATE @9.90 */
+  pop("table", 13.06);                                                                        /* NO ONE LOST IN THEM @13.06 */
+  /* THAT IS NOT A REASON TO STAY IN ONE @18.08: the weather service's own words, held to the end */
+  gsap.set(P + "q2", { autoAlpha: 0 });
+  tl.fromTo(P + "cite", { x: 900, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 18.08);
+  tl.to(P + "q2", { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 24.64);                 /* AND TO GET TO A STURDY BUILDING @24.64 */
+  tl.fromTo(P + "cite", { y: 0 }, { y: 8, duration: 3.0, ease: "sine.inOut", yoyo: true, repeat: 2 }, 18.8);
+  window.__timelines["g-a5s5-homes"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

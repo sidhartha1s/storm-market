@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a2s7-replot: forward speed up to about 175 mph (about 260 ft a second); wind inside about 295 mph.
+     Brief: mg_specs/replot.md. Scale 300 px per mile, north up. The track shown is schematic. Our own redraw. -->
+<template>
+<style>
+  #rp27-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 54% 50%, #0b1016 0%, #030507 78%); }
+  .rp27-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .rp27-fig { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; fill:#f2f5f8; }
+  .rp27-mid { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#dfe7ee; }
+  .rp27-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .rp27-sm { font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px; fill:#93a3b2; }
+</style>
+<div id="rp27-root" data-composition-id="g-a2s7-replot" data-width="1920" data-height="1080">
+  <svg class="rp27-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="rp27-grid" width="150" height="150" patternUnits="userSpaceOnUse" x="140" y="98"><path d="M150,0 L0,0 L0,150" fill="none" stroke="#2a3644" stroke-width="1.5" stroke-opacity="0.55"/></pattern>
+      <radialGradient id="rp27-echo"><stop offset="0" stop-color="#7fb2e5" stop-opacity="0.34"/><stop offset="1" stop-color="#7fb2e5" stop-opacity="0"/></radialGradient>
+      <radialGradient id="rp27-glow"><stop offset="0" stop-color="#e8c56a" stop-opacity="0.75"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/></radialGradient>
+      <mask id="rp27-trackmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="rp27-trackrev" d="M900,640 L1010,430 L1150,600 L1230,400 L1120,330 L960,470 L1100,690 L1240,560 L1140,440 L980,560" fill="none" stroke="#fff" stroke-width="12" stroke-linejoin="round"/></mask>
+    </defs>
+    <rect x="0" y="0" width="1920" height="1080" fill="url(#rp27-grid)"/>
+    <!-- the wide circulation: r 390 px = 1.3 miles -->
+    <g id="rp27-ring">
+      <ellipse id="rp27-e1" cx="900" cy="400" rx="150" ry="110" fill="url(#rp27-echo)"/>
+      <ellipse id="rp27-e2" cx="1240" cy="700" rx="120" ry="90" fill="url(#rp27-echo)"/>
+      <ellipse id="rp27-e3" cx="930" cy="760" rx="170" ry="100" fill="url(#rp27-echo)"/>
+      <circle cx="1040" cy="548" r="390" fill="none" stroke="#5a768f" stroke-width="30" stroke-opacity="0.22"/>
+      <circle cx="1040" cy="548" r="390" fill="none" stroke="#7fb2e5" stroke-width="2.5"/>
+      <circle id="rp27-ticks" cx="1040" cy="548" r="390" fill="none" stroke="#7fb2e5" stroke-width="14" stroke-opacity="0.7" stroke-dasharray="5 44"/>
+    </g>
+    <!-- the track: direction and speed keep changing. Not a measured path, so dashed -->
+    <path id="rp27-track" d="M900,640 L1010,430 L1150,600 L1230,400 L1120,330 L960,470 L1100,690 L1240,560 L1140,440 L980,560" fill="none" stroke="#e8c56a" stroke-width="3" stroke-dasharray="10 9" stroke-opacity="0.8" stroke-linejoin="round" mask="url(#rp27-trackmask)"/>
+    <!-- the sub-vortex: r 15 px = 160 m across, the middle of 90 to 230 m -->
+    <g id="rp27-sv"><g id="rp27-svin">
+      <circle cx="0" cy="0" r="34" fill="url(#rp27-glow)"/>
+      <circle cx="0" cy="0" r="15" fill="#e8c56a" fill-opacity="0.35" stroke="#f5d98b" stroke-width="3"/>
+      <path id="rp27-spin" d="M0,-9 A9,9 0 0 0 -9,0" fill="none" stroke="#f2f5f8" stroke-width="3"/>
+    </g></g>
+    <!-- readout 1: forward speed -->
+    <text id="rp27-l1" class="rp27-lab" x="96" y="150">Forward speed, up to about</text>
+    <text id="rp27-v1" class="rp27-fig" x="92" y="240"><tspan id="rp27-n1">175</tspan><tspan> mph</tspan></text>
+    <text id="rp27-s1" class="rp27-sm" x="96" y="280">Wurman et al. 2014</text>
+    <text id="rp27-t-fps" class="rp27-mid" x="96" y="352">about 260 feet every second</text>
+    <!-- one field, 300 px = 300 ft; the bar crosses 259 px in each second -->
+    <g id="rp27-field">
+      <rect x="96" y="378" width="300" height="54" fill="#5a768f" fill-opacity="0.2" stroke="#7fb2e5" stroke-width="2"/>
+      <path d="M126,378 L126,432 M156,378 L156,432 M186,378 L186,432 M216,378 L216,432 M246,378 L246,432 M276,378 L276,432 M306,378 L306,432 M336,378 L336,432 M366,378 L366,432" stroke="#7fb2e5" stroke-width="1.5" stroke-opacity="0.5"/>
+      <rect id="rp27-runner" x="96" y="378" width="8" height="54" fill="#e8c56a"/>
+    </g>
+    <text id="rp27-t-field" class="rp27-sm" x="96" y="462">One football field, 300 ft · one second</text>
+    <!-- readout 2: the wind inside -->
+    <text id="rp27-l2" class="rp27-lab" x="96" y="580">Wind inside them, about</text>
+    <text id="rp27-v2" class="rp27-fig" x="92" y="670" fill="#e74c3c"><tspan id="rp27-n2">295</tspan><tspan> mph</tspan></text>
+    <text id="rp27-s2" class="rp27-sm" x="96" y="710">National Weather Service</text>
+    <text id="rp27-t-sch" class="rp27-sm" x="96" y="908">Track shown: schematic, not a measured path</text>
+    <!-- scale bar: 300 px = 1 mile -->
+    <path id="rp27-bar" d="M96,986 L396,986 M96,976 L96,996 M396,976 L396,996" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+    <text id="rp27-t-bar" class="rp27-sm" x="96" y="964" fill="#dfe7ee">1 mile</text>
+    <text id="rp27-t-ring" class="rp27-sm" x="412" y="993">Ring: 2.6 miles at its widest</text>
+    <text id="rp27-t-own" class="rp27-sm" x="96" y="1022">Our redraw of mobile-radar measurements</text>
+    <path id="rp27-north" d="M1760,150 L1760,96 M1748,112 L1760,92 L1772,112" fill="none" stroke="#93a3b2" stroke-width="3"/>
+    <text id="rp27-t-n" class="rp27-lab" x="1751" y="182">N</text>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a2s7-replot", P = "#rp27-";
+  /* cues: audio/a2-s7.words.json (comp-local = segment seconds) */
+  const CUES = {
+    upto: 7.80,    /* up to about @7.80 */
+    n175: 8.28,    /* 175 @8.28 */
+    that: 10.72,   /* That is most of a football field @10.72 */
+    field: 11.54,  /* football field every second @11.54 */
+    air: 13.80,    /* The air spinning inside them @13.80 */
+    n295: 18.26    /* 295 @18.26 */
+  };
+  const DUR = 20.85;
+  const tl = gsap.timeline({ paused: true });
+  /* hidden from the first frame: set now (a paused timeline has not rendered its time-0 sets yet) and again at 0 */
+  const HIDE = [P + "l1", P + "v1", P + "s1", P + "t-fps", P + "field", P + "t-field", P + "l2", P + "v2", P + "s2"];
+  gsap.set(HIDE, { autoAlpha: 0 });
+  tl.set(HIDE, { autoAlpha: 0 }, 0);
+
+  /* whole window: the wide circulation turns counter-clockwise, echoes drift, the sub-vortex spins */
+  tl.fromTo(P + "ticks", { rotation: 0, svgOrigin: "1040 548" }, { rotation: -167, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e1", { x: -30, y: 10 }, { x: 40, y: -30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e2", { x: 30, y: -20 }, { x: -50, y: 30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e3", { x: -40, y: 0 }, { x: 50, y: -20, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "spin", { rotation: 0, svgOrigin: "0 0" }, { rotation: -360, duration: 1.1, ease: "none", repeat: 18 }, 0);
+  tl.fromTo([P + "bar", P + "t-bar", P + "t-ring", P + "t-own", P + "t-sch"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.08 }, 0.2);
+
+  /* "does not keep one speed or one direction" @0.94: nine legs, each its own length and time, from 0.3 to 20.5 */
+  const PTS = [[900, 640], [1010, 430], [1150, 600], [1230, 400], [1120, 330], [960, 470], [1100, 690], [1240, 560], [1140, 440], [980, 560]];
+  const LEG = [2.4, 1.2, 3.0, 1.0, 2.8, 1.6, 3.4, 2.2, 2.6];
+  const rev = document.querySelector(P + "trackrev");
+  let total = 0, at = 0.3, done = 0;
+  for (let i = 1; i < PTS.length; i++) total += Math.hypot(PTS[i][0] - PTS[i - 1][0], PTS[i][1] - PTS[i - 1][1]);
+  const len = Math.ceil(total) + 1;
+  gsap.set(rev, { strokeDasharray: len, strokeDashoffset: len });
+  gsap.set(P + "sv", { x: PTS[0][0], y: PTS[0][1] });
+  tl.set(rev, { strokeDasharray: len, strokeDashoffset: len }, 0);
+  tl.set(P + "sv", { x: PTS[0][0], y: PTS[0][1] }, 0);
+  for (let i = 1; i < PTS.length; i++) {
+    done += Math.hypot(PTS[i][0] - PTS[i - 1][0], PTS[i][1] - PTS[i - 1][1]);
+    tl.to(P + "sv", { x: PTS[i][0], y: PTS[i][1], duration: LEG[i - 1], ease: "sine.inOut" }, at);
+    tl.to(rev, { strokeDashoffset: len - done, duration: LEG[i - 1], ease: "sine.inOut" }, at);
+    at += LEG[i - 1];
+  }
+
+  /* up to about @7.80, 175 @8.28: the forward-speed readout runs up and lands on the number */
+  tl.fromTo(P + "l1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.upto - 0.5);
+  tl.fromTo(P + "v1", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, CUES.upto);
+  const c1 = { v: 100 }, n1 = document.querySelector(P + "n1");
+  tl.fromTo(c1, { v: 100 }, { v: 175, duration: 0.75, ease: "power3.out", onUpdate: function () { if (n1) n1.textContent = String(Math.round(c1.v)); } }, CUES.n175 - 0.75);
+  tl.fromTo(P + "v1", { scale: 1.12, svgOrigin: "96 240" }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, CUES.n175);
+  tl.fromTo(P + "s1", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.n175 + 0.6);
+
+  /* That is @10.72, football field every second @11.54: the bar crosses 259 of the field's 300 px each second */
+  tl.fromTo(P + "t-fps", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.that);
+  tl.fromTo([P + "field", P + "t-field"], { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.field - 0.3);
+  tl.fromTo(P + "runner", { x: 0 }, { x: 259, duration: 1, ease: "none", repeat: 8 }, CUES.field + 0.2);
+
+  /* The air spinning inside them @13.80; 295 @18.26 */
+  tl.fromTo(P + "l2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.air);
+  tl.to(P + "spin", { attr: { "stroke-width": 6 }, duration: 0.4, ease: "power2.out" }, CUES.air);
+  tl.fromTo(P + "v2", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, CUES.n295 - 0.75);
+  const c2 = { v: 200 }, n2 = document.querySelector(P + "n2");
+  tl.fromTo(c2, { v: 200 }, { v: 295, duration: 0.75, ease: "power3.out", onUpdate: function () { if (n2) n2.textContent = String(Math.round(c2.v)); } }, CUES.n295 - 0.75);
+  tl.fromTo(P + "v2", { scale: 1.12, svgOrigin: "96 670" }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, CUES.n295);
+  tl.fromTo(P + "s2", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.n295 + 0.6);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

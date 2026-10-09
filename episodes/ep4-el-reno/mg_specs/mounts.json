@@ -1,0 +1,538 @@
+[
+ {
+  "family": "map21",
+  "segment": "i1-s3",
+  "comp": "g-i1s3-pins",
+  "start": 57.34,
+  "window": 16.28,
+  "voice_dur": 15.976
+ },
+ {
+  "family": "map21",
+  "segment": "i1-s4",
+  "comp": "g-i1s4-map21",
+  "start": 73.62,
+  "window": 12.36,
+  "voice_dur": 12.062
+ },
+ {
+  "family": "map21",
+  "segment": "a1-s7",
+  "comp": "g-a1s7-map21",
+  "start": 260.85,
+  "window": 16.53,
+  "voice_dur": 16.231
+ },
+ {
+  "family": "map21",
+  "segment": "a1-s8",
+  "comp": "g-a1s8-map21",
+  "start": 277.38,
+  "window": 10.32,
+  "voice_dur": 10.019
+ },
+ {
+  "family": "map21",
+  "segment": "a2-s9",
+  "comp": "g-a2s9-map21",
+  "start": 469.74,
+  "window": 11.34,
+  "voice_dur": 11.04
+ },
+ {
+  "family": "map21",
+  "segment": "a3-s14",
+  "comp": "g-a3s14-map21",
+  "start": 731.93,
+  "window": 11.05,
+  "voice_dur": 10.742
+ },
+ {
+  "family": "map21",
+  "segment": "a4-s2",
+  "comp": "g-a4s2-names",
+  "start": 794.18,
+  "window": 12.45,
+  "voice_dur": 12.147
+ },
+ {
+  "family": "map21",
+  "segment": "a4-s16",
+  "comp": "g-a4s16-map21",
+  "start": 1046.9,
+  "window": 17.68,
+  "voice_dur": 17.678
+ },
+ {
+  "family": "map21",
+  "segment": "a5-s9",
+  "comp": "g-a5s9-layers",
+  "start": 1213.07,
+  "window": 17.98,
+  "voice_dur": 17.678
+ },
+ {
+  "family": "map21",
+  "segment": "a5-s10",
+  "comp": "g-a5s10-map21",
+  "start": 1231.05,
+  "window": 14.15,
+  "voice_dur": 13.849
+ },
+ {
+  "family": "map21",
+  "segment": "a5-s12",
+  "comp": "g-a5s12-map21",
+  "start": 1256.2,
+  "window": 13.51,
+  "voice_dur": 13.211
+ },
+ {
+  "family": "map21",
+  "segment": "z1-s2",
+  "comp": "g-z1s2-map21",
+  "start": 1304.4,
+  "window": 4.74,
+  "voice_dur": 4.445
+ },
+ {
+  "family": "maps",
+  "segment": "i1-s1",
+  "comp": "g-i1s1-map",
+  "start": 19.81,
+  "window": 19.56,
+  "voice_dur": 19.253
+ },
+ {
+  "family": "maps",
+  "segment": "a1-s3",
+  "comp": "g-a1s3-south",
+  "start": 180.25,
+  "window": 18.66,
+  "voice_dur": 18.359
+ },
+ {
+  "family": "maps",
+  "segment": "a1-s9",
+  "comp": "g-a1s9-landuse",
+  "start": 287.7,
+  "window": 15.64,
+  "voice_dur": 15.338
+ },
+ {
+  "family": "maps",
+  "segment": "a1-s10",
+  "comp": "g-a1s10-track",
+  "start": 303.34,
+  "window": 12.61,
+  "voice_dur": 12.317
+ },
+ {
+  "family": "maps",
+  "segment": "a2-s1",
+  "comp": "g-a2s1-width",
+  "start": 337.45,
+  "window": 25.64,
+  "voice_dur": 25.338
+ },
+ {
+  "family": "maps",
+  "segment": "a4-s9",
+  "comp": "g-a4s9-citymap",
+  "start": 922.2,
+  "window": 15.51,
+  "voice_dur": 15.21
+ },
+ {
+  "family": "maps",
+  "segment": "a5-s4",
+  "comp": "g-a5s4-strip",
+  "start": 1116.54,
+  "window": 21.72,
+  "voice_dur": 21.424
+ },
+ {
+  "family": "maps",
+  "segment": "a5-s5",
+  "comp": "g-a5s5-homes",
+  "start": 1138.26,
+  "window": 27.21,
+  "voice_dur": 26.913
+ },
+ {
+  "family": "maps",
+  "segment": "a5-s6",
+  "comp": "g-a5s6-citymap",
+  "start": 1165.47,
+  "window": 10.15,
+  "voice_dur": 9.849
+ },
+ {
+  "family": "roads",
+  "segment": "i1-s6",
+  "comp": "g-i1s6-roads",
+  "start": 110.55,
+  "window": 16.79,
+  "voice_dur": 16.487
+ },
+ {
+  "family": "roads",
+  "segment": "a2-s2",
+  "comp": "g-a2s2-fields",
+  "start": 363.09,
+  "window": 20.91,
+  "voice_dur": 20.615
+ },
+ {
+  "family": "roads",
+  "segment": "a2-s3",
+  "comp": "g-a2s3-ring",
+  "start": 384.0,
+  "window": 21.43,
+  "voice_dur": 21.126
+ },
+ {
+  "family": "roads",
+  "segment": "a3-s1",
+  "comp": "g-a3s1-roads",
+  "start": 521.06,
+  "window": 19.59,
+  "voice_dur": 19.296
+ },
+ {
+  "family": "roads",
+  "segment": "a3-s6",
+  "comp": "g-a3s6-reuter",
+  "start": 587.51,
+  "window": 20.87,
+  "voice_dur": 20.573
+ },
+ {
+  "family": "roads",
+  "segment": "a3-s7",
+  "comp": "g-a3s7-cars",
+  "start": 608.38,
+  "window": 17.42,
+  "voice_dur": 17.125
+ },
+ {
+  "family": "replot",
+  "segment": "i1-s8",
+  "comp": "g-i1s8-replot",
+  "start": 137.41,
+  "window": 11.67,
+  "voice_dur": 11.679
+ },
+ {
+  "family": "replot",
+  "segment": "a2-s6",
+  "comp": "g-a2s6-replot",
+  "start": 422.19,
+  "window": 14.7,
+  "voice_dur": 14.403
+ },
+ {
+  "family": "replot",
+  "segment": "a2-s7",
+  "comp": "g-a2s7-replot",
+  "start": 436.89,
+  "window": 20.83,
+  "voice_dur": 20.53
+ },
+ {
+  "family": "replot",
+  "segment": "a2-s8",
+  "comp": "g-a2s8-replot",
+  "start": 457.72,
+  "window": 12.02,
+  "voice_dur": 11.721
+ },
+ {
+  "family": "replot",
+  "segment": "a2-s11",
+  "comp": "g-a2s11-replot",
+  "start": 498.17,
+  "window": 21.89,
+  "voice_dur": 21.892
+ },
+ {
+  "family": "replot",
+  "segment": "a3-s2",
+  "comp": "g-a3s2-replot",
+  "start": 540.65,
+  "window": 8.02,
+  "voice_dur": 7.721
+ },
+ {
+  "family": "replot",
+  "segment": "a3-s8",
+  "comp": "g-a3s8-replot",
+  "start": 625.8,
+  "window": 20.79,
+  "voice_dur": 20.487
+ },
+ {
+  "family": "replot",
+  "segment": "a3-s9",
+  "comp": "g-a3s9-replot",
+  "start": 646.59,
+  "window": 18.75,
+  "voice_dur": 18.445
+ },
+ {
+  "family": "replot",
+  "segment": "a3-s11",
+  "comp": "g-a3s11-replot",
+  "start": 686.12,
+  "window": 12.28,
+  "voice_dur": 11.977
+ },
+ {
+  "family": "replot",
+  "segment": "a3-s13",
+  "comp": "g-a3s13-split",
+  "start": 707.7,
+  "window": 24.23,
+  "voice_dur": 23.934
+ },
+ {
+  "family": "replot",
+  "segment": "a5-s2",
+  "comp": "g-a5s2-rating",
+  "start": 1081.3,
+  "window": 11.94,
+  "voice_dur": 11.636
+ },
+ {
+  "family": "docs",
+  "segment": "i1-s2",
+  "comp": "g-i1s2-table",
+  "start": 39.37,
+  "window": 17.97,
+  "voice_dur": 17.678
+ },
+ {
+  "family": "docs",
+  "segment": "a4-s7",
+  "comp": "g-a4s7-table",
+  "start": 880.97,
+  "window": 23.72,
+  "voice_dur": 23.423
+ },
+ {
+  "family": "docs",
+  "segment": "z1-s1",
+  "comp": "g-z1s1-table",
+  "start": 1280.21,
+  "window": 24.19,
+  "voice_dur": 23.891
+ },
+ {
+  "family": "docs",
+  "segment": "a4-s10",
+  "comp": "g-a4s10-finding6",
+  "start": 937.71,
+  "window": 10.75,
+  "voice_dur": 10.445
+ },
+ {
+  "family": "docs",
+  "segment": "a4-s11",
+  "comp": "g-a4s11-page",
+  "start": 948.46,
+  "window": 25.55,
+  "voice_dur": 25.253
+ },
+ {
+  "family": "docs",
+  "segment": "a4-s13",
+  "comp": "g-a4s13-clock",
+  "start": 999.94,
+  "window": 18.37,
+  "voice_dur": 18.062
+ },
+ {
+  "family": "docs",
+  "segment": "a4-s14",
+  "comp": "g-a4s14-message",
+  "start": 1018.31,
+  "window": 14.78,
+  "voice_dur": 14.488
+ },
+ {
+  "family": "docs",
+  "segment": "a4-s15",
+  "comp": "g-a4s15-rec6",
+  "start": 1033.09,
+  "window": 13.81,
+  "voice_dur": 13.509
+ },
+ {
+  "family": "docs",
+  "segment": "a5-s1",
+  "comp": "g-a5s1-statement",
+  "start": 1065.58,
+  "window": 15.72,
+  "voice_dur": 15.423
+ },
+ {
+  "family": "docs",
+  "segment": "a5-s7",
+  "comp": "g-a5s7-quote",
+  "start": 1175.62,
+  "window": 24.11,
+  "voice_dur": 23.806
+ },
+ {
+  "family": "drawings",
+  "segment": "a1-s2",
+  "comp": "g-a1s2-house",
+  "start": 168.28,
+  "window": 11.97,
+  "voice_dur": 11.679
+ },
+ {
+  "family": "drawings",
+  "segment": "a4-s1",
+  "comp": "g-a4s1-ditch",
+  "start": 778.07,
+  "window": 16.11,
+  "voice_dur": 15.806
+ },
+ {
+  "family": "drawings",
+  "segment": "a4-s3",
+  "comp": "g-a4s3-ditch",
+  "start": 806.63,
+  "window": 20.78,
+  "voice_dur": 20.487
+ },
+ {
+  "family": "drawings",
+  "segment": "a4-s5",
+  "comp": "g-a4s5-drain",
+  "start": 845.26,
+  "window": 14.71,
+  "voice_dur": 14.403
+ },
+ {
+  "family": "drawings",
+  "segment": "a4-s6",
+  "comp": "g-a4s6-drain",
+  "start": 859.97,
+  "window": 21.0,
+  "voice_dur": 20.7
+ },
+ {
+  "family": "drawings",
+  "segment": "a5-s8",
+  "comp": "g-a5s8-closet",
+  "start": 1199.73,
+  "window": 13.34,
+  "voice_dur": 13.041
+ },
+ {
+  "family": "drawings",
+  "segment": "a5-s11",
+  "comp": "g-a5s11-returns",
+  "start": 1245.2,
+  "window": 11.0,
+  "voice_dur": 10.7
+ },
+ {
+  "family": "cards",
+  "segment": "i1-s5",
+  "comp": "g-i1s5-study",
+  "start": 85.98,
+  "window": 24.57,
+  "voice_dur": 24.274
+ },
+ {
+  "family": "cards",
+  "segment": "i1-s7",
+  "comp": "g-i1s7-names",
+  "start": 127.34,
+  "window": 10.07,
+  "voice_dur": 9.764
+ },
+ {
+  "family": "cards",
+  "segment": "a1-s1",
+  "comp": "g-a1s1-sentence",
+  "start": 150.08,
+  "window": 18.2,
+  "voice_dur": 17.891
+ },
+ {
+  "family": "cards",
+  "segment": "a1-s4",
+  "comp": "g-a1s4-rita",
+  "start": 198.91,
+  "window": 20.83,
+  "voice_dur": 20.53
+ },
+ {
+  "family": "cards",
+  "segment": "a1-s5",
+  "comp": "g-a1s5-henderson",
+  "start": 219.74,
+  "window": 17.81,
+  "voice_dur": 17.508
+ },
+ {
+  "family": "cards",
+  "segment": "a1-s6",
+  "comp": "g-a1s6-clock",
+  "start": 237.55,
+  "window": 23.3,
+  "voice_dur": 22.997
+ },
+ {
+  "family": "cards",
+  "segment": "a2-s4",
+  "comp": "g-a2s4-beam",
+  "start": 405.43,
+  "window": 6.45,
+  "voice_dur": 6.147
+ },
+ {
+  "family": "cards",
+  "segment": "a3-s4",
+  "comp": "g-a3s4-quotes",
+  "start": 562.78,
+  "window": 10.24,
+  "voice_dur": 9.934
+ },
+ {
+  "family": "cards",
+  "segment": "a3-s10",
+  "comp": "g-a3s10-names",
+  "start": 665.34,
+  "window": 20.78,
+  "voice_dur": 20.487
+ },
+ {
+  "family": "cards",
+  "segment": "a4-s8",
+  "comp": "g-a4s8-timeline",
+  "start": 904.69,
+  "window": 17.51,
+  "voice_dur": 17.21
+ },
+ {
+  "family": "cards",
+  "segment": "a4-s12",
+  "comp": "g-a4s12-names",
+  "start": 974.01,
+  "window": 25.93,
+  "voice_dur": 25.636
+ },
+ {
+  "family": "cards",
+  "segment": "a5-s3",
+  "comp": "g-a5s3-markers",
+  "start": 1093.24,
+  "window": 23.3,
+  "voice_dur": 22.997
+ }
+]

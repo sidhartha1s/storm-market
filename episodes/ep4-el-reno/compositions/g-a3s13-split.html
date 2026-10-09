@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a3s13-split: the same sub-vortex at the two roads, both sides to one scale. Left: crossing US-81 at about 56 mph,
+     the SUV carried about 200 yards. Right: nearly still over Reuter Road for about 20 seconds, the car carried about
+     650 yards. Two attributed lines from the paper. No arrow or word joins the two sides; no cause is stated.
+     Brief: mg_specs/replot.md. Road level, 1200 px per mile (0.6818 px per yard), north up. 200 yd = 136 px, 600 m = 447 px. -->
+<template>
+<style>
+  #rp313-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .rp313-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .rp313-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; fill:#f2f5f8; }
+  .rp313-mid { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#dfe7ee; }
+  .rp313-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .rp313-sm { font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px; fill:#93a3b2; }
+  .rp313-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:27px; fill:#2a2622; }
+  .rp313-att { font-family:Arial, sans-serif; font-weight:700; font-size:19px; fill:#6b6257; }
+</style>
+<div id="rp313-root" data-composition-id="g-a3s13-split" data-width="1920" data-height="1080">
+  <svg class="rp313-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="rp313-grid" width="300" height="300" patternUnits="userSpaceOnUse" x="120" y="170"><path d="M300,0 L0,0 L0,300" fill="none" stroke="#2a3644" stroke-width="1.5" stroke-opacity="0.55"/></pattern>
+      <radialGradient id="rp313-echo"><stop offset="0" stop-color="#7fb2e5" stop-opacity="0.28"/><stop offset="1" stop-color="#7fb2e5" stop-opacity="0"/></radialGradient>
+      <radialGradient id="rp313-glow"><stop offset="0" stop-color="#e8c56a" stop-opacity="0.6"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect x="0" y="0" width="1920" height="1080" fill="url(#rp313-grid)"/>
+    <ellipse id="rp313-e1" cx="520" cy="460" rx="330" ry="200" fill="url(#rp313-echo)"/>
+    <ellipse id="rp313-e2" cx="1440" cy="470" rx="340" ry="210" fill="url(#rp313-echo)"/>
+    <path d="M960,280 L960,650" stroke="#2a3644" stroke-width="3"/>
+    <!-- LEFT: US-81, north to south -->
+    <path id="rp313-us81" d="M420,280 L420,650" stroke="#93a3b2" stroke-width="7" stroke-opacity="0.8"/>
+    <path d="M420,280 L420,650" stroke="#04070c" stroke-width="1.5" stroke-dasharray="22 18"/>
+    <g id="rp313-svl"><g id="rp313-svlin">
+      <circle cx="0" cy="0" r="110" fill="url(#rp313-glow)"/>
+      <circle cx="0" cy="0" r="60" fill="#e8c56a" fill-opacity="0.2" stroke="#f5d98b" stroke-width="4"/>
+      <circle id="rp313-riml" cx="0" cy="0" r="60" fill="none" stroke="#f5d98b" stroke-width="12" stroke-opacity="0.75" stroke-dasharray="5 26.4"/>
+    </g></g>
+    <!-- carried about 200 yards, to the east side of the highway: 136 px -->
+    <path id="rp313-l200" d="M420,470 L556,470 M556,458 L556,482" fill="none" stroke="#f2f5f8" stroke-width="4"/>
+    <rect id="rp313-suv" x="409" y="459" width="22" height="22" fill="#f2f5f8" stroke="#04070c" stroke-width="2"/>
+    <text id="rp313-t-200" class="rp313-mid" x="436" y="616">about 200 yards</text>
+    <text id="rp313-hl" class="rp313-mid" x="96" y="150">US-81 · TV crew</text>
+    <text id="rp313-vl" class="rp313-big" x="94" y="216">about 56 mph</text>
+    <!-- RIGHT: Reuter Road, east to west -->
+    <path id="rp313-reuter" d="M1020,420 L1824,420" stroke="#93a3b2" stroke-width="7" stroke-opacity="0.8"/>
+    <path d="M1020,420 L1824,420" stroke="#04070c" stroke-width="1.5" stroke-dasharray="22 18"/>
+    <g id="rp313-svr"><g id="rp313-svrin">
+      <circle cx="0" cy="0" r="110" fill="url(#rp313-glow)"/>
+      <circle cx="0" cy="0" r="60" fill="#e8c56a" fill-opacity="0.2" stroke="#f5d98b" stroke-width="4"/>
+      <circle id="rp313-rimr" cx="0" cy="0" r="60" fill="none" stroke="#f5d98b" stroke-width="12" stroke-opacity="0.75" stroke-dasharray="5 26.4"/>
+    </g></g>
+    <!-- carried about 650 yards (600 m): 447 px, same scale -->
+    <path id="rp313-l650" d="M1090,420 L1535,380 M1534,368 L1536,392" fill="none" stroke="#f2f5f8" stroke-width="4"/>
+    <path id="rp313-car" d="M1090,404 L1106,420 L1090,436 L1074,420 Z" fill="#f2f5f8" stroke="#04070c" stroke-width="2"/>
+    <text id="rp313-t-650" class="rp313-mid" x="1106" y="616">about 650 yards</text>
+    <text id="rp313-hr" class="rp313-mid" x="1020" y="150">Reuter Road · research car</text>
+    <text id="rp313-vr" class="rp313-big" x="1018" y="216">nearly still</text>
+    <text id="rp313-sr" class="rp313-lab" x="1020" y="254">for about 20 seconds</text>
+    <!-- the paper's two lines, exact words, on beige cite cards. Square brackets mark our words for the paper's symbol Vp -->
+    <g id="rp313-cardl">
+      <rect x="96" y="700" width="790" height="150" rx="14" fill="#e8dec8" fill-opacity="0.92"/>
+      <rect x="96" y="700" width="8" height="150" fill="#d8a13a"/>
+      <text class="rp313-q" x="128" y="750">“This high [forward speed] likely contributed to</text>
+      <text class="rp313-q" x="128" y="788">injuries among a media team”</text>
+      <text class="rp313-att" x="128" y="826">Wurman et al. 2014</text>
+    </g>
+    <g id="rp313-cardr">
+      <rect x="1020" y="700" width="560" height="150" rx="14" fill="#e8dec8" fill-opacity="0.92"/>
+      <rect x="1020" y="700" width="8" height="150" fill="#d8a13a"/>
+      <text class="rp313-q" x="1052" y="750">“not especially heavy or armored,</text>
+      <text class="rp313-q" x="1052" y="788">likely adding to its vulnerability”</text>
+      <text class="rp313-att" x="1052" y="826">Wurman et al. 2014</text>
+    </g>
+    <!-- scale bar: 341 px = 500 yards -->
+    <path id="rp313-bar" d="M96,986 L437,986 M96,976 L96,996 M437,976 L437,996" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+    <text id="rp313-t-bar" class="rp313-sm" x="96" y="964" fill="#dfe7ee">500 yards · both sides to one scale</text>
+    <text id="rp313-t-own" class="rp313-sm" x="96" y="1022">Our redraw of mobile-radar measurements · the same sub-vortex, drawn at the middle of about 300 to 750 ft</text>
+    <path id="rp313-north" d="M1760,150 L1760,96 M1748,112 L1760,92 L1772,112" fill="none" stroke="#93a3b2" stroke-width="3"/>
+    <text id="rp313-t-n" class="rp313-lab" x="1751" y="182">N</text>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a3s13-split", P = "#rp313-";
+  /* cues: audio/a3-s13.words.json (comp-local = segment seconds) */
+  const CUES = {
+    suv: 0.46,      /* SUV @0.46 */
+    crossing: 1.88, /* crossing the highway @1.88 */
+    carried1: 3.66, /* carried @3.66 */
+    n200: 4.20,     /* 200 yards @4.20 */
+    cobalt: 6.22,   /* Cobalt @6.22 */
+    still: 6.94,    /* nearly still @6.94 */
+    reuter: 7.96,   /* Reuter Road @7.96 */
+    carried2: 9.36, /* carried @9.36 */
+    three: 10.06,   /* three times that far @10.06 */
+    speed: 13.56,   /* speed at the highway @13.56 */
+    light: 18.50,   /* Cobalt's light build @18.50 */
+    nocause: 22.32  /* no single cause @22.32 */
+  };
+  const DUR = 24.25;
+  const tl = gsap.timeline({ paused: true });
+  /* hidden from the first frame: set now (a paused timeline has not rendered its time-0 sets yet) and again at 0 */
+  const HIDE = [P + "l200", P + "t-200", P + "hl", P + "vl", P + "l650", P + "t-650", P + "hr", P + "vr", P + "sr", P + "cardl", P + "cardr"];
+  gsap.set(HIDE, { autoAlpha: 0 });
+  gsap.set(P + "svl", { x: 290, y: 500 });
+  gsap.set(P + "svr", { x: 1125, y: 420 });
+  tl.set(HIDE, { autoAlpha: 0 }, 0);
+  tl.set(P + "svr", { x: 1125, y: 420 }, 0);
+
+  /* whole window: both circles spin counter-clockwise. Left: four passes across the highway toward east-northeast.
+     Right: the circle only trembles in place */
+  tl.fromTo(P + "riml", { rotation: 0, svgOrigin: "0 0" }, { rotation: -1455, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "rimr", { rotation: 0, svgOrigin: "0 0" }, { rotation: -1455, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "svl", { x: 290, y: 500 }, { x: 550, y: 392.3, duration: 6, ease: "none", repeat: 3, repeatDelay: 0.08 }, 0);
+  tl.fromTo(P + "svlin", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out", repeat: 3, repeatDelay: 5.58 }, 0);
+  tl.fromTo(P + "svlin", { opacity: 1 }, { opacity: 0, duration: 0.5, ease: "power1.in", repeat: 3, repeatDelay: 5.58, immediateRender: false }, 5.5);
+  tl.to(P + "svr", { x: 1128, y: 418, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 25 }, 0);
+  tl.fromTo(P + "e1", { x: -50, y: 20 }, { x: 50, y: -20, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e2", { x: 40, y: 20 }, { x: -40, y: -20, duration: DUR, ease: "none" }, 0);
+  tl.fromTo([P + "bar", P + "t-bar", P + "t-own"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.06 }, 0.1);
+
+  /* SUV @0.46, crossing the highway @1.88, carried @3.66 about 200 yards @4.20 */
+  tl.fromTo(P + "hl", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.suv);
+  tl.fromTo(P + "suv", { scale: 1.7, svgOrigin: "420 470" }, { scale: 1, duration: 0.5, ease: "back.out(2)", immediateRender: false }, CUES.suv);
+  tl.fromTo(P + "vl", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.crossing);
+  tl.fromTo(P + "l200", { autoAlpha: 1, scaleX: 0, svgOrigin: "420 470" }, { scaleX: 1, duration: 0.5, ease: "power3.out", immediateRender: false }, CUES.carried1);
+  tl.fromTo(P + "t-200", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.n200);
+
+  /* Cobalt @6.22, nearly still @6.94 over Reuter Road @7.96, carried @9.36 more than three times that far @10.06 */
+  tl.fromTo(P + "hr", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.cobalt);
+  tl.fromTo(P + "car", { scale: 1.7, svgOrigin: "1090 420" }, { scale: 1, duration: 0.5, ease: "back.out(2)", immediateRender: false }, CUES.cobalt);
+  tl.fromTo(P + "vr", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.still);
+  tl.fromTo(P + "sr", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.reuter);
+  tl.to(P + "reuter", { attr: { "stroke-width": 12 }, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.reuter);
+  tl.fromTo(P + "l650", { autoAlpha: 1, scale: 0, svgOrigin: "1090 420" }, { scale: 1, duration: 0.9, ease: "power2.out", immediateRender: false }, CUES.carried2);
+  tl.fromTo(P + "t-650", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.three);
+
+  /* speed at the highway @13.56: the paper's line on the injuries. Cobalt's light build @18.50: its line on the car */
+  tl.fromTo(P + "cardl", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, CUES.speed - 0.4);
+  tl.fromTo(P + "cardr", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, CUES.light - 0.4);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!-- ep4-el-reno (v4b) · The Warning Hour · assembly v1 (10 Oct 26). Script: edit_script.md; angle: angle.md (owner-locked).
+     Times: timeline.json (cumulative wav durations + 0.30 s seams, 0.15 s after Paul's hook line, 0.8 s blackout + 0.2 s at
+     act seams, 1.0 s dips around the book ad, 4.0 s outro tail). Paul speaks six times on camera (ins-paul-1..6, his own
+     sound, no narration under them); the narrator wavs of those six slots are not mounted.
+     The NARRATION block and the GRAPHIC HOSTS block were filled once by a content-blind transform from timeline.json and a
+     hand-written mount list (segment, comp name); every other line is written by hand. Clip credits: media/provenance*.csv.
+     SOUND: not placed yet (beds, sirens, hits come after the picture is locked). -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>El Reno 2013: The Safest Place Was Home · The Warning Hour</title>
+  <script src="gsap.min.js"></script>
+  <script src="grain.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .hold { position: absolute; inset: 0; pointer-events: none; }
+    /* one subtle grade on all broadcast and news clips (CLAUDE.md "Grading"); stock and public domain are exempt */
+    video.graded { filter: saturate(0.88) contrast(1.06) brightness(0.94); }
+    /* ---- Abril figure popup (channel device: red, text-shadow, 3 words or fewer, mid-screen, never over a map comp) ---- */
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    .popfig { position: absolute; left: 200px; right: 300px; top: 36%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 12px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 38px; color: #f4f0e8;
+      letter-spacing: 0.3em; -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill;
+      text-shadow: 0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+    .popfig::before { content: ''; position: absolute; left: 14%; right: 14%; top: -90px; bottom: -70px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
+    /* ---- source credit (small, bottom-left) ---- */
+    .credit { position: absolute; left: 96px; bottom: 60px; font: 700 22px Arial, sans-serif; color: rgba(244,240,232,0.88); letter-spacing: 0.04em;
+      text-shadow: 0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+    /* ---- film layer ---- */
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="ep4-el-reno" data-start="0" data-width="1920" data-height="1080" data-duration="1327.38" data-fps="30">
+
+  <!-- ============ NARRATION (74 segments; Paul's six lines are in PAUL ON CAMERA) ============ -->
+  <audio id="nx-t1-s1" src="audio/t1-s1.wav" data-start="7.11" data-duration="12.402" data-volume="1"></audio>
+  <audio id="nx-i1-s1" src="audio/i1-s1.wav" data-start="19.81" data-duration="19.253" data-volume="1"></audio>
+  <audio id="nx-i1-s2" src="audio/i1-s2.wav" data-start="39.37" data-duration="17.678" data-volume="1"></audio>
+  <audio id="nx-i1-s3" src="audio/i1-s3.wav" data-start="57.34" data-duration="15.976" data-volume="1"></audio>
+  <audio id="nx-i1-s4" src="audio/i1-s4.wav" data-start="73.62" data-duration="12.062" data-volume="1"></audio>
+  <audio id="nx-i1-s5" src="audio/i1-s5.wav" data-start="85.98" data-duration="24.274" data-volume="1"></audio>
+  <audio id="nx-i1-s6" src="audio/i1-s6.wav" data-start="110.55" data-duration="16.487" data-volume="1"></audio>
+  <audio id="nx-i1-s7" src="audio/i1-s7.wav" data-start="127.34" data-duration="9.764" data-volume="1"></audio>
+  <audio id="nx-i1-s8" src="audio/i1-s8.wav" data-start="137.41" data-duration="11.679" data-volume="1"></audio>
+  <audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="150.08" data-duration="17.891" data-volume="1"></audio>
+  <audio id="nx-a1-s2" src="audio/a1-s2.wav" data-start="168.28" data-duration="11.679" data-volume="1"></audio>
+  <audio id="nx-a1-s3" src="audio/a1-s3.wav" data-start="180.25" data-duration="18.359" data-volume="1"></audio>
+  <audio id="nx-a1-s4" src="audio/a1-s4.wav" data-start="198.91" data-duration="20.53" data-volume="1"></audio>
+  <audio id="nx-a1-s5" src="audio/a1-s5.wav" data-start="219.74" data-duration="17.508" data-volume="1"></audio>
+  <audio id="nx-a1-s6" src="audio/a1-s6.wav" data-start="237.55" data-duration="22.997" data-volume="1"></audio>
+  <audio id="nx-a1-s7" src="audio/a1-s7.wav" data-start="260.85" data-duration="16.231" data-volume="1"></audio>
+  <audio id="nx-a1-s8" src="audio/a1-s8.wav" data-start="277.38" data-duration="10.019" data-volume="1"></audio>
+  <audio id="nx-a1-s9" src="audio/a1-s9.wav" data-start="287.7" data-duration="15.338" data-volume="1"></audio>
+  <audio id="nx-a1-s10" src="audio/a1-s10.wav" data-start="303.34" data-duration="12.317" data-volume="1"></audio>
+  <audio id="nx-a1-s11" src="audio/a1-s11.wav" data-start="315.95" data-duration="10.487" data-volume="1"></audio>
+  <audio id="nx-a2-s1" src="audio/a2-s1.wav" data-start="337.45" data-duration="25.338" data-volume="1"></audio>
+  <audio id="nx-a2-s2" src="audio/a2-s2.wav" data-start="363.09" data-duration="20.615" data-volume="1"></audio>
+  <audio id="nx-a2-s3" src="audio/a2-s3.wav" data-start="384.0" data-duration="21.126" data-volume="1"></audio>
+  <audio id="nx-a2-s4" src="audio/a2-s4.wav" data-start="405.43" data-duration="6.147" data-volume="1"></audio>
+  <audio id="nx-a2-s6" src="audio/a2-s6.wav" data-start="422.19" data-duration="14.403" data-volume="1"></audio>
+  <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="436.89" data-duration="20.53" data-volume="1"></audio>
+  <audio id="nx-a2-s8" src="audio/a2-s8.wav" data-start="457.72" data-duration="11.721" data-volume="1"></audio>
+  <audio id="nx-a2-s9" src="audio/a2-s9.wav" data-start="469.74" data-duration="11.04" data-volume="1"></audio>
+  <audio id="nx-a2-s10" src="audio/a2-s10.wav" data-start="481.08" data-duration="16.785" data-volume="1"></audio>
+  <audio id="nx-a2-s11" src="audio/a2-s11.wav" data-start="498.17" data-duration="21.892" data-volume="1"></audio>
+  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="521.06" data-duration="19.296" data-volume="1"></audio>
+  <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="540.65" data-duration="7.721" data-volume="1"></audio>
+  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="548.67" data-duration="13.807" data-volume="1"></audio>
+  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="562.78" data-duration="9.934" data-volume="1"></audio>
+  <audio id="nx-a3-s5" src="audio/a3-s5.wav" data-start="573.02" data-duration="14.19" data-volume="1"></audio>
+  <audio id="nx-a3-s6" src="audio/a3-s6.wav" data-start="587.51" data-duration="20.573" data-volume="1"></audio>
+  <audio id="nx-a3-s7" src="audio/a3-s7.wav" data-start="608.38" data-duration="17.125" data-volume="1"></audio>
+  <audio id="nx-a3-s8" src="audio/a3-s8.wav" data-start="625.8" data-duration="20.487" data-volume="1"></audio>
+  <audio id="nx-a3-s9" src="audio/a3-s9.wav" data-start="646.59" data-duration="18.445" data-volume="1"></audio>
+  <audio id="nx-a3-s10" src="audio/a3-s10.wav" data-start="665.34" data-duration="20.487" data-volume="1"></audio>
+  <audio id="nx-a3-s11" src="audio/a3-s11.wav" data-start="686.12" data-duration="11.977" data-volume="1"></audio>
+  <audio id="nx-a3-s13" src="audio/a3-s13.wav" data-start="707.7" data-duration="23.934" data-volume="1"></audio>
+  <audio id="nx-a3-s14" src="audio/a3-s14.wav" data-start="731.93" data-duration="10.742" data-volume="1"></audio>
+  <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="778.07" data-duration="15.806" data-volume="1"></audio>
+  <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="794.18" data-duration="12.147" data-volume="1"></audio>
+  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="806.63" data-duration="20.487" data-volume="1"></audio>
+  <audio id="nx-a4-s4" src="audio/a4-s4.wav" data-start="827.41" data-duration="17.551" data-volume="1"></audio>
+  <audio id="nx-a4-s5" src="audio/a4-s5.wav" data-start="845.26" data-duration="14.403" data-volume="1"></audio>
+  <audio id="nx-a4-s6" src="audio/a4-s6.wav" data-start="859.97" data-duration="20.7" data-volume="1"></audio>
+  <audio id="nx-a4-s7" src="audio/a4-s7.wav" data-start="880.97" data-duration="23.423" data-volume="1"></audio>
+  <audio id="nx-a4-s8" src="audio/a4-s8.wav" data-start="904.69" data-duration="17.21" data-volume="1"></audio>
+  <audio id="nx-a4-s9" src="audio/a4-s9.wav" data-start="922.2" data-duration="15.21" data-volume="1"></audio>
+  <audio id="nx-a4-s10" src="audio/a4-s10.wav" data-start="937.71" data-duration="10.445" data-volume="1"></audio>
+  <audio id="nx-a4-s11" src="audio/a4-s11.wav" data-start="948.46" data-duration="25.253" data-volume="1"></audio>
+  <audio id="nx-a4-s12" src="audio/a4-s12.wav" data-start="974.01" data-duration="25.636" data-volume="1"></audio>
+  <audio id="nx-a4-s13" src="audio/a4-s13.wav" data-start="999.94" data-duration="18.062" data-volume="1"></audio>
+  <audio id="nx-a4-s14" src="audio/a4-s14.wav" data-start="1018.31" data-duration="14.488" data-volume="1"></audio>
+  <audio id="nx-a4-s15" src="audio/a4-s15.wav" data-start="1033.09" data-duration="13.509" data-volume="1"></audio>
+  <audio id="nx-a4-s16" src="audio/a4-s16.wav" data-start="1046.9" data-duration="17.678" data-volume="1"></audio>
+  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="1065.58" data-duration="15.423" data-volume="1"></audio>
+  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="1081.3" data-duration="11.636" data-volume="1"></audio>
+  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="1093.24" data-duration="22.997" data-volume="1"></audio>
+  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="1116.54" data-duration="21.424" data-volume="1"></audio>
+  <audio id="nx-a5-s5" src="audio/a5-s5.wav" data-start="1138.26" data-duration="26.913" data-volume="1"></audio>
+  <audio id="nx-a5-s6" src="audio/a5-s6.wav" data-start="1165.47" data-duration="9.849" data-volume="1"></audio>
+  <audio id="nx-a5-s7" src="audio/a5-s7.wav" data-start="1175.62" data-duration="23.806" data-volume="1"></audio>
+  <audio id="nx-a5-s8" src="audio/a5-s8.wav" data-start="1199.73" data-duration="13.041" data-volume="1"></audio>
+  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="1213.07" data-duration="17.678" data-volume="1"></audio>
+  <audio id="nx-a5-s10" src="audio/a5-s10.wav" data-start="1231.05" data-duration="13.849" data-volume="1"></audio>
+  <audio id="nx-a5-s11" src="audio/a5-s11.wav" data-start="1245.2" data-duration="10.7" data-volume="1"></audio>
+  <audio id="nx-a5-s12" src="audio/a5-s12.wav" data-start="1256.2" data-duration="13.211" data-volume="1"></audio>
+  <audio id="nx-z1-s1" src="audio/z1-s1.wav" data-start="1280.21" data-duration="23.891" data-volume="1"></audio>
+  <audio id="nx-z1-s2" src="audio/z1-s2.wav" data-start="1304.4" data-duration="4.445" data-volume="1"></audio>
+  <audio id="nx-z1-s3" src="audio/z1-s3.wav" data-start="1309.14" data-duration="14.232" data-volume="1"></audio>
+
+  <!-- ============ PAUL ON CAMERA (his own sound; clip 1 is frame one of the video) ============ -->
+  <video id="ins-paul-1" src="media/paul/ins-paul-1/ins-paul-1.mp4" data-start="0" data-duration="6.96" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Twenty-one people lost their lives that night, and not one of them was inside a building."></video>
+  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2.mp4" data-start="326.74" data-duration="9.71" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Stick with me. What radar found inside that tornado is part of why twenty one lives were lost that night, and none inside a building."></video>
+  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3.mp4" data-start="411.88" data-duration="10.0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Their radar showed two things turning. I call the second one the tornado inside the tornado: a much smaller one, spinning hard inside the wide one."></video>
+  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4.mp4" data-start="698.4" data-duration="9.0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="One crew met it moving at about fifty six miles an hour. The other met the same vortex nearly still, for about twenty seconds."></video>
+  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5.mp4" data-start="742.98" data-duration="8.68" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="That night, home was the safe place. Twelve people went to hide somewhere else. How far did they go?"></video>
+  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6.mp4" data-start="1269.71" data-duration="9.5" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="That is my reading of the table. No one on it was inside a sturdy building. By that count, the safest place was home."></video>
+
+  <!-- ============ BOOK AD (config.yaml channel.cta: between the tease, Paul's "How far did they go?", and its payoff, A4-S1) ============ -->
+  <section class="clip blackout" id="bo-cta-in" data-start="751.66" data-duration="1.0" data-track-index="1"></section>
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v6-oct7.mp4" data-start="752.66" data-duration="24.417" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+  <section class="clip blackout" id="bo-cta-out" data-start="777.07" data-duration="1.0" data-track-index="1"></section>
+
+  <!-- ============ CHAPTER BLACKOUTS (act seams; none before 1:00) ============ -->
+  <section class="clip blackout" id="bo-i1" data-start="149.08" data-duration="0.8" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a1" data-start="336.45" data-duration="0.8" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a2" data-start="520.06" data-duration="0.8" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a4" data-start="1064.58" data-duration="0.8" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a5" data-start="1279.21" data-duration="0.8" data-track-index="1"></section>
+
+  <!-- ============ FOOTAGE (track 1 and 2; placed by hand once the sourced clips are frame-checked) ============ -->
+
+  <!-- ============ GRAPHIC HOSTS (track 4; one comp per appearance, window = its narration segment) ============ -->
+  <!-- map21 -->
+  <div id="host-i1s3-pins" data-composition-id="g-i1s3-pins" data-composition-src="compositions/g-i1s3-pins.html" data-start="57.34" data-duration="16.28" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-i1s4-map21" data-composition-id="g-i1s4-map21" data-composition-src="compositions/g-i1s4-map21.html" data-start="73.62" data-duration="12.36" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s7-map21" data-composition-id="g-a1s7-map21" data-composition-src="compositions/g-a1s7-map21.html" data-start="260.85" data-duration="16.53" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s8-map21" data-composition-id="g-a1s8-map21" data-composition-src="compositions/g-a1s8-map21.html" data-start="277.38" data-duration="10.32" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s9-map21" data-composition-id="g-a2s9-map21" data-composition-src="compositions/g-a2s9-map21.html" data-start="469.74" data-duration="11.34" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s14-map21" data-composition-id="g-a3s14-map21" data-composition-src="compositions/g-a3s14-map21.html" data-start="731.93" data-duration="11.05" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s2-names" data-composition-id="g-a4s2-names" data-composition-src="compositions/g-a4s2-names.html" data-start="794.18" data-duration="12.45" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s16-map21" data-composition-id="g-a4s16-map21" data-composition-src="compositions/g-a4s16-map21.html" data-start="1046.9" data-duration="17.68" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s9-layers" data-composition-id="g-a5s9-layers" data-composition-src="compositions/g-a5s9-layers.html" data-start="1213.07" data-duration="17.98" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s10-map21" data-composition-id="g-a5s10-map21" data-composition-src="compositions/g-a5s10-map21.html" data-start="1231.05" data-duration="14.15" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s12-map21" data-composition-id="g-a5s12-map21" data-composition-src="compositions/g-a5s12-map21.html" data-start="1256.2" data-duration="13.51" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-z1s2-map21" data-composition-id="g-z1s2-map21" data-composition-src="compositions/g-z1s2-map21.html" data-start="1304.4" data-duration="4.74" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- maps -->
+  <div id="host-i1s1-map" data-composition-id="g-i1s1-map" data-composition-src="compositions/g-i1s1-map.html" data-start="19.81" data-duration="19.56" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s3-south" data-composition-id="g-a1s3-south" data-composition-src="compositions/g-a1s3-south.html" data-start="180.25" data-duration="18.66" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s9-landuse" data-composition-id="g-a1s9-landuse" data-composition-src="compositions/g-a1s9-landuse.html" data-start="287.7" data-duration="15.64" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s10-track" data-composition-id="g-a1s10-track" data-composition-src="compositions/g-a1s10-track.html" data-start="303.34" data-duration="12.61" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s1-width" data-composition-id="g-a2s1-width" data-composition-src="compositions/g-a2s1-width.html" data-start="337.45" data-duration="25.64" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s9-citymap" data-composition-id="g-a4s9-citymap" data-composition-src="compositions/g-a4s9-citymap.html" data-start="922.2" data-duration="15.51" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s4-strip" data-composition-id="g-a5s4-strip" data-composition-src="compositions/g-a5s4-strip.html" data-start="1116.54" data-duration="21.72" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s5-homes" data-composition-id="g-a5s5-homes" data-composition-src="compositions/g-a5s5-homes.html" data-start="1138.26" data-duration="27.21" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s6-citymap" data-composition-id="g-a5s6-citymap" data-composition-src="compositions/g-a5s6-citymap.html" data-start="1165.47" data-duration="10.15" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- roads -->
+  <div id="host-i1s6-roads" data-composition-id="g-i1s6-roads" data-composition-src="compositions/g-i1s6-roads.html" data-start="110.55" data-duration="16.79" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s2-fields" data-composition-id="g-a2s2-fields" data-composition-src="compositions/g-a2s2-fields.html" data-start="363.09" data-duration="20.91" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s3-ring" data-composition-id="g-a2s3-ring" data-composition-src="compositions/g-a2s3-ring.html" data-start="384.0" data-duration="21.43" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s1-roads" data-composition-id="g-a3s1-roads" data-composition-src="compositions/g-a3s1-roads.html" data-start="521.06" data-duration="19.59" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s6-reuter" data-composition-id="g-a3s6-reuter" data-composition-src="compositions/g-a3s6-reuter.html" data-start="587.51" data-duration="20.87" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s7-cars" data-composition-id="g-a3s7-cars" data-composition-src="compositions/g-a3s7-cars.html" data-start="608.38" data-duration="17.42" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- replot -->
+  <div id="host-i1s8-replot" data-composition-id="g-i1s8-replot" data-composition-src="compositions/g-i1s8-replot.html" data-start="137.41" data-duration="11.67" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s6-replot" data-composition-id="g-a2s6-replot" data-composition-src="compositions/g-a2s6-replot.html" data-start="422.19" data-duration="14.7" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s7-replot" data-composition-id="g-a2s7-replot" data-composition-src="compositions/g-a2s7-replot.html" data-start="436.89" data-duration="20.83" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s8-replot" data-composition-id="g-a2s8-replot" data-composition-src="compositions/g-a2s8-replot.html" data-start="457.72" data-duration="12.02" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s11-replot" data-composition-id="g-a2s11-replot" data-composition-src="compositions/g-a2s11-replot.html" data-start="498.17" data-duration="21.89" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s2-replot" data-composition-id="g-a3s2-replot" data-composition-src="compositions/g-a3s2-replot.html" data-start="540.65" data-duration="8.02" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s8-replot" data-composition-id="g-a3s8-replot" data-composition-src="compositions/g-a3s8-replot.html" data-start="625.8" data-duration="20.79" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s9-replot" data-composition-id="g-a3s9-replot" data-composition-src="compositions/g-a3s9-replot.html" data-start="646.59" data-duration="18.75" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s11-replot" data-composition-id="g-a3s11-replot" data-composition-src="compositions/g-a3s11-replot.html" data-start="686.12" data-duration="12.28" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s13-split" data-composition-id="g-a3s13-split" data-composition-src="compositions/g-a3s13-split.html" data-start="707.7" data-duration="24.23" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s2-rating" data-composition-id="g-a5s2-rating" data-composition-src="compositions/g-a5s2-rating.html" data-start="1081.3" data-duration="11.94" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- docs -->
+  <div id="host-i1s2-table" data-composition-id="g-i1s2-table" data-composition-src="compositions/g-i1s2-table.html" data-start="39.37" data-duration="17.97" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s7-table" data-composition-id="g-a4s7-table" data-composition-src="compositions/g-a4s7-table.html" data-start="880.97" data-duration="23.72" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-z1s1-table" data-composition-id="g-z1s1-table" data-composition-src="compositions/g-z1s1-table.html" data-start="1280.21" data-duration="24.19" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s10-finding6" data-composition-id="g-a4s10-finding6" data-composition-src="compositions/g-a4s10-finding6.html" data-start="937.71" data-duration="10.75" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s11-page" data-composition-id="g-a4s11-page" data-composition-src="compositions/g-a4s11-page.html" data-start="948.46" data-duration="25.55" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s13-clock" data-composition-id="g-a4s13-clock" data-composition-src="compositions/g-a4s13-clock.html" data-start="999.94" data-duration="18.37" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s14-message" data-composition-id="g-a4s14-message" data-composition-src="compositions/g-a4s14-message.html" data-start="1018.31" data-duration="14.78" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s15-rec6" data-composition-id="g-a4s15-rec6" data-composition-src="compositions/g-a4s15-rec6.html" data-start="1033.09" data-duration="13.81" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s1-statement" data-composition-id="g-a5s1-statement" data-composition-src="compositions/g-a5s1-statement.html" data-start="1065.58" data-duration="15.72" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s7-quote" data-composition-id="g-a5s7-quote" data-composition-src="compositions/g-a5s7-quote.html" data-start="1175.62" data-duration="24.11" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- drawings -->
+  <div id="host-a1s2-house" data-composition-id="g-a1s2-house" data-composition-src="compositions/g-a1s2-house.html" data-start="168.28" data-duration="11.97" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s1-ditch" data-composition-id="g-a4s1-ditch" data-composition-src="compositions/g-a4s1-ditch.html" data-start="778.07" data-duration="16.11" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s3-ditch" data-composition-id="g-a4s3-ditch" data-composition-src="compositions/g-a4s3-ditch.html" data-start="806.63" data-duration="20.78" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s5-drain" data-composition-id="g-a4s5-drain" data-composition-src="compositions/g-a4s5-drain.html" data-start="845.26" data-duration="14.71" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s6-drain" data-composition-id="g-a4s6-drain" data-composition-src="compositions/g-a4s6-drain.html" data-start="859.97" data-duration="21.0" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s8-closet" data-composition-id="g-a5s8-closet" data-composition-src="compositions/g-a5s8-closet.html" data-start="1199.73" data-duration="13.34" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s11-returns" data-composition-id="g-a5s11-returns" data-composition-src="compositions/g-a5s11-returns.html" data-start="1245.2" data-duration="11.0" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- cards -->
+  <div id="host-i1s5-study" data-composition-id="g-i1s5-study" data-composition-src="compositions/g-i1s5-study.html" data-start="85.98" data-duration="24.57" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-i1s7-names" data-composition-id="g-i1s7-names" data-composition-src="compositions/g-i1s7-names.html" data-start="127.34" data-duration="10.07" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s1-sentence" data-composition-id="g-a1s1-sentence" data-composition-src="compositions/g-a1s1-sentence.html" data-start="150.08" data-duration="18.2" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s4-rita" data-composition-id="g-a1s4-rita" data-composition-src="compositions/g-a1s4-rita.html" data-start="198.91" data-duration="20.83" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s5-henderson" data-composition-id="g-a1s5-henderson" data-composition-src="compositions/g-a1s5-henderson.html" data-start="219.74" data-duration="17.81" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a1s6-clock" data-composition-id="g-a1s6-clock" data-composition-src="compositions/g-a1s6-clock.html" data-start="237.55" data-duration="23.3" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a2s4-beam" data-composition-id="g-a2s4-beam" data-composition-src="compositions/g-a2s4-beam.html" data-start="405.43" data-duration="6.45" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s4-quotes" data-composition-id="g-a3s4-quotes" data-composition-src="compositions/g-a3s4-quotes.html" data-start="562.78" data-duration="10.24" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a3s10-names" data-composition-id="g-a3s10-names" data-composition-src="compositions/g-a3s10-names.html" data-start="665.34" data-duration="20.78" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s8-timeline" data-composition-id="g-a4s8-timeline" data-composition-src="compositions/g-a4s8-timeline.html" data-start="904.69" data-duration="17.51" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a4s12-names" data-composition-id="g-a4s12-names" data-composition-src="compositions/g-a4s12-names.html" data-start="974.01" data-duration="25.93" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-a5s3-markers" data-composition-id="g-a5s3-markers" data-composition-src="compositions/g-a5s3-markers.html" data-start="1093.24" data-duration="23.3" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ OVERLAYS (popfigs, credits; each wrapped in a timed section) ============ -->
+  <section id="ov-pf-date" data-start="0.4" data-duration="3.2" data-track-index="6">
+    <div class="popfig" id="pf-date"><span class="pf-big">May 31, 2013</span><span class="pf-sub">El Reno · Oklahoma</span></div>
+  </section>
+
+  <!-- ============ FILM LAYER ============ -->
+  <div id="vignette"></div>
+  <canvas id="grain" width="480" height="270"></canvas>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 1327.38;
+  function kb(sel, at, dur, s0, s1, x0, x1, y0, y1) {
+    tl.fromTo(sel, { scale: s0, x: x0, y: y0, transformOrigin: "center" }, { scale: s1, x: x1, y: y1, duration: dur, ease: "none" }, at);
+  }
+  function pop(sel, at, hold) {
+    tl.fromTo(sel, { scale: 2.2, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "power4.in" }, at);
+    tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.28, ease: "power2.in" }, at + hold - 0.28);
+  }
+
+  /* ---- popfigs: the figure lands as the voice says it ---- */
+  pop("#pf-date", 0.5, 3.0);   // date and place inside the first second, over Paul's hook clip (the one text allowed on him)
+
+  filmLayer(tl, DUR);
+  window.__timelines["ep4-el-reno"] = tl;
+})();
+</script>
+</body>
+</html>

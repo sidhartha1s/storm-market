@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1s2-house · A1-S2 · window 11.97 s · brief: mg_specs/drawings.md
+  Claim: a one-storey house on a slab; nothing below the floor line but solid ground. Then 6:03 PM.
+  Cues are comp-local seconds from audio/a1-s2.words.json.
+-->
+<template>
+<style>
+  .hs1-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .hs1-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  .hs1-sweep { position:absolute; left:0; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,.07), rgba(127,178,229,0)); }
+  .hs1-house { position:absolute; left:360px; top:200px; overflow:visible; }
+  .hs1-lines { position:absolute; left:0; top:0; }
+  .hs1-lab { position:absolute; font-weight:700; white-space:nowrap; }
+  .hs1-small { font-size:22px; letter-spacing:3px; color:#93a3b2; }
+  .hs1-mid { font-size:34px; letter-spacing:1px; color:#f2f5f8; }
+  .hs1-note { font-size:20px; letter-spacing:2px; color:#93a3b2; }
+  .hs1-pop { position:absolute; left:136px; top:96px; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:150px;
+    color:#d0121f; letter-spacing:0.04em; text-shadow:0 6px 26px rgba(0,0,0,.8); white-space:nowrap; }
+</style>
+<div id="hs1-root" class="hs1-root" data-composition-id="g-a1s2-house" data-width="1920" data-height="1080" data-duration="11.97">
+  <div class="hs1-grid" id="hs1-grid"></div>
+  <div class="hs1-sweep" id="hs1-sweep"></div>
+
+  <!-- the house: one storey, slab on grade, earth hatch below. No shape under the slab. -->
+  <svg class="hs1-house" id="hs1-house" width="1200" height="720" viewBox="0 0 1000 600">
+    <defs>
+      <pattern id="hs1-hatch" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="26" stroke="#7fb2e5" stroke-width="3"/>
+      </pattern>
+      <linearGradient id="hs1-fade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0.35" stop-color="#070b10" stop-opacity="0"/><stop offset="1" stop-color="#070b10" stop-opacity="1"/>
+      </linearGradient>
+    </defs>
+    <line id="hs1-gl" x1="-220" y1="480" x2="120" y2="480" stroke="#93a3b2" stroke-width="4" stroke-linecap="round"/>
+    <line id="hs1-gr" x1="880" y1="480" x2="1020" y2="480" stroke="#93a3b2" stroke-width="4" stroke-linecap="round"/>
+    <g id="hs1-earth">
+      <rect x="120" y="496" width="760" height="100" fill="url(#hs1-hatch)" opacity="0.7"/>
+      <rect x="120" y="496" width="760" height="102" fill="url(#hs1-fade)"/>
+    </g>
+    <rect id="hs1-slab" x="120" y="468" width="760" height="24" fill="#dfe7ee" fill-opacity="0.85" stroke="#f2f5f8" stroke-width="3"/>
+    <polyline class="hs1-out" points="100,262 500,90 900,262" fill="none" stroke="#f2f5f8" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+    <line class="hs1-out" x1="150" y1="468" x2="150" y2="250" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
+    <line class="hs1-out" x1="850" y1="468" x2="850" y2="250" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
+    <line class="hs1-in" x1="150" y1="250" x2="850" y2="250" stroke="#5a768f" stroke-width="4"/>
+    <line class="hs1-in" x1="390" y1="250" x2="390" y2="468" stroke="#93a3b2" stroke-width="3"/>
+    <line class="hs1-in" x1="640" y1="250" x2="640" y2="468" stroke="#93a3b2" stroke-width="3"/>
+    <path class="hs1-in" d="M450 468 L450 330 L560 330 L560 468" fill="none" stroke="#93a3b2" stroke-width="3"/>
+    <path class="hs1-in" d="M200 310 L320 310 L320 390 L200 390 Z M260 310 L260 390" fill="none" stroke="#5a768f" stroke-width="3"/>
+    <path class="hs1-in" d="M740 468 L740 330 L810 330 L810 468" fill="none" stroke="#5a768f" stroke-width="3"/>
+  </svg>
+
+  <svg class="hs1-lines" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <path id="hs1-ld-cellar" d="M330 858 L560 858" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+    <circle id="hs1-dot-cellar" cx="564" cy="858" r="5" fill="#f2f5f8"/>
+    <path id="hs1-ld-slab" d="M302 716 L506 768" fill="none" stroke="#93a3b2" stroke-width="2"/>
+  </svg>
+
+  <div class="hs1-lab hs1-mid" id="hs1-l-cellar" style="left:150px; top:836px">No cellar</div>
+  <div class="hs1-lab hs1-small" id="hs1-l-slab" style="left:150px; top:700px">Floor slab</div>
+  <div class="hs1-lab hs1-note" id="hs1-l-schem" style="left:110px; top:968px">Schematic, not to scale</div>
+
+  <div class="hs1-pop" id="hs1-pop">6:03 PM</div>
+  <div class="hs1-lab hs1-mid" id="hs1-l-tor" style="left:142px; top:262px">Tornado on the ground</div>
+  <div class="hs1-lab hs1-small" id="hs1-l-west" style="left:144px; top:316px">West of the city</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const D = 11.97;
+  const tl = gsap.timeline({ paused: true });
+  const P = "#hs1-";
+  function draw(sel, at, dur) {
+    document.querySelectorAll(sel).forEach(function (el) {
+      const len = Math.ceil(el.getTotalLength()) + 1;
+      gsap.set(el, { strokeDasharray: len });
+      tl.fromTo(el, { strokeDashoffset: len }, { strokeDashoffset: 0, duration: dur, ease: "power2.out" }, at);
+    });
+  }
+  tl.set([P+"l-cellar", P+"l-slab", P+"pop", P+"l-tor", P+"l-west", P+"dot-cellar"], { autoAlpha: 0 }, 0);
+
+  /* ambient, whole window: light sweep, grid drift, label float */
+  tl.fromTo(P+"sweep", { x: -560 }, { x: 2300, duration: 4.0, ease: "none", repeat: 2 }, 0);
+  tl.fromTo(P+"grid", { x: 0 }, { x: 120, duration: 11.97, ease: "none" }, 0);
+  tl.to([P+"l-cellar", P+"l-slab", P+"l-schem"], { y: -5, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0.2);
+
+  /* NOT EVERY HOUSE @0.00-0.82: the outline is on screen at 0 and settles; the rooms draw inside it */
+  tl.fromTo(P+"house", { x: -40 }, { x: 0, duration: 0.9, ease: "power3.out" }, 0);
+  draw(".hs1-in", 0.1, 1.0);
+  /* CELLAR @1.36: solid ground under the house */
+  tl.fromTo(P+"earth", { scaleX: 0, svgOrigin: "120 540" }, { scaleX: 1, duration: 1.1, ease: "power3.out" }, 1.36);
+  /* NO CELLAR @3.64: the floor line draws; label names what is below it */
+  tl.fromTo(P+"slab", { scaleX: 0, svgOrigin: "120 480" }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, 3.64);
+  tl.fromTo(P+"l-cellar", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 3.64);
+  draw(P+"ld-cellar", 3.84, 0.5);
+  tl.fromTo(P+"dot-cellar", { autoAlpha: 0, scale: 2.4, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power3.out" }, 4.3);
+  /* THAT MEANT @4.78 */
+  tl.fromTo(P+"l-slab", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 4.78);
+  draw(P+"ld-slab", 4.9, 0.4);
+  /* WOULD NOT SAVE THEM @5.64-6.32: no new mark, the drawing holds */
+  /* BY 6:03 PM @7.60: the drawing steps back, the time lands */
+  tl.to([P+"house", P+"l-cellar", P+"l-slab", P+"ld-cellar", P+"dot-cellar", P+"ld-slab"], { autoAlpha: 0.38, duration: 0.4, ease: "power2.out" }, 7.2);
+  tl.fromTo(P+"pop", { autoAlpha: 0, scale: 1.5, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 7.6);
+  /* A TORNADO WAS ON THE GROUND @9.32 */
+  tl.fromTo(P+"l-tor", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.32);
+  /* WEST OF THE CITY @10.36 */
+  tl.fromTo(P+"l-west", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.36);
+  tl.to({}, { duration: 0.01 }, 11.96);
+  window.__timelines["g-a1s2-house"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

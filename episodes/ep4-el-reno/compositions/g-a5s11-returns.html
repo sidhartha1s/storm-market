@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a5s11-returns · A5-S11 · window 11.00 s · brief: mg_specs/drawings.md
+  Return 1 (0.0-5.7 s): the house and ditch drawing with its "a few feet" measure, opaque ground.
+  Return 2 (5.7-11.0 s): the ROOT IS TRANSPARENT for the traffic aerial mounted beneath by the editor; only a
+  glass card with the assessment's words sits in that span.
+  Cues are comp-local seconds from audio/a5-s11.words.json.
+-->
+<template>
+<style>
+  .rt11-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee; }
+  .rt11-scene { position:absolute; inset:0; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .rt11-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  .rt11-sweep { position:absolute; left:0; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,.07), rgba(127,178,229,0)); }
+  .rt11-svg { position:absolute; left:0; top:0; }
+  .rt11-lab { position:absolute; font-weight:700; white-space:nowrap; }
+  .rt11-small { font-size:22px; letter-spacing:3px; color:#93a3b2; }
+  .rt11-mid { font-size:28px; letter-spacing:1px; color:#dfe7ee; }
+  .rt11-note { font-size:20px; letter-spacing:2px; color:#93a3b2; }
+  .rt11-src { font-size:20px; letter-spacing:2px; color:#c8d3e0; }
+  .rt11-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:64px; color:#f2f5f8; }
+  .rt11-card { position:absolute; left:110px; top:770px; width:1130px; height:200px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,.55); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(18px) saturate(1.15); }
+  .rt11-q { position:absolute; left:52px; top:36px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-weight:400;
+    font-size:46px; line-height:58px; color:#f2f5f8; white-space:nowrap; }
+  .rt11-rule { position:absolute; left:52px; top:116px; width:200px; height:3px; background:#d8a13a; }
+  .rt11-attr { position:absolute; left:52px; top:136px; font-weight:700; font-size:22px; letter-spacing:2px; color:#d8a13a; white-space:nowrap; }
+</style>
+<div id="rt11-root" class="rt11-root" data-composition-id="g-a5s11-returns" data-width="1920" data-height="1080" data-duration="11">
+  <div class="rt11-scene" id="rt11-scene">
+    <div class="rt11-grid" id="rt11-grid"></div>
+    <div class="rt11-sweep" id="rt11-sweep"></div>
+
+    <svg class="rt11-svg" id="rt11-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <defs>
+        <pattern id="rt11-hatch" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="26" stroke="#7fb2e5" stroke-width="3"/>
+        </pattern>
+      </defs>
+      <g id="rt11-site">
+        <!-- earth band under the ground line and round the ditch: section convention, no depth claimed -->
+        <polygon points="96,766 998,766 1068,906 1332,906 1402,766 1590,766 1590,800 1424,800 1354,940 1046,940 976,800 96,800" fill="url(#rt11-hatch)" opacity="0.35"/>
+        <path id="rt11-gnd" d="M96 760 L1000 760 L1070 900 L1330 900 L1400 760 L1590 760" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <!-- the house: one storey, slab on grade -->
+        <rect x="300" y="746" width="584" height="16" fill="#dfe7ee" fill-opacity="0.85" stroke="#f2f5f8" stroke-width="3"/>
+        <polyline points="276,572 592,440 908,572" fill="none" stroke="#f2f5f8" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+        <line x1="320" y1="746" x2="320" y2="560" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
+        <line x1="864" y1="630" x2="864" y2="560" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
+        <line x1="320" y1="560" x2="864" y2="560" stroke="#5a768f" stroke-width="4"/>
+        <line x1="592" y1="560" x2="592" y2="746" stroke="#93a3b2" stroke-width="3"/>
+        <path d="M380 620 L500 620 L500 700 L380 700 Z M440 620 L440 700" fill="none" stroke="#5a768f" stroke-width="3"/>
+        <!-- the table, where the brief's A4-S3 drawing left it -->
+        <path id="rt11-table" d="M1105 852 L1295 852 M1117 852 L1117 896 M1283 852 L1283 896" fill="none" stroke="#c8d3e0" stroke-width="5" stroke-linecap="round"/>
+      </g>
+      <line id="rt11-door" x1="864" y1="632" x2="864" y2="744" stroke="#d8a13a" stroke-width="8" stroke-linecap="round"/>
+      <!-- the measure: door to the near edge of the ditch -->
+      <path id="rt11-dim" d="M864 700 L1000 700" fill="none" stroke="#d8a13a" stroke-width="4"/>
+      <path id="rt11-tick" d="M1000 684 L1000 716" fill="none" stroke="#d8a13a" stroke-width="4" stroke-linecap="round"/>
+      <path id="rt11-ld-few" d="M954 668 L934 696" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+      <!-- seven people: seven identical dots under the table -->
+      <circle class="rt11-dot" cx="1134" cy="884" r="9" fill="#f2f5f8"/>
+      <circle class="rt11-dot" cx="1156" cy="884" r="9" fill="#f2f5f8"/>
+      <circle class="rt11-dot" cx="1178" cy="884" r="9" fill="#f2f5f8"/>
+      <circle class="rt11-dot" cx="1200" cy="884" r="9" fill="#f2f5f8"/>
+      <circle class="rt11-dot" cx="1222" cy="884" r="9" fill="#f2f5f8"/>
+      <circle class="rt11-dot" cx="1244" cy="884" r="9" fill="#f2f5f8"/>
+      <circle class="rt11-dot" cx="1266" cy="884" r="9" fill="#f2f5f8"/>
+    </svg>
+
+    <div class="rt11-lab rt11-mid" id="rt11-l-door" style="left:618px; top:582px">Their own door</div>
+    <div class="rt11-lab rt11-small" id="rt11-l-ditch" style="left:1100px; top:958px">Drainage ditch</div>
+    <div class="rt11-lab rt11-big" id="rt11-l-few" style="left:960px; top:566px">A few feet</div>
+    <div class="rt11-lab rt11-src" id="rt11-l-src" style="left:964px; top:636px">News 9, June 2013</div>
+    <div class="rt11-lab rt11-note" id="rt11-l-schem" style="left:110px; top:992px">Schematic, not to scale</div>
+  </div>
+
+  <div class="rt11-card" id="rt11-card">
+    <div class="rt11-q" id="rt11-q">&ldquo;unable to survive if not underground&rdquo;</div>
+    <div class="rt11-rule" id="rt11-rule"></div>
+    <div class="rt11-attr" id="rt11-attr">NWS Service Assessment</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#rt11-";
+  function draw(sel, at, dur) {
+    document.querySelectorAll(sel).forEach(function (el) {
+      const len = Math.ceil(el.getTotalLength()) + 1;
+      gsap.set(el, { strokeDasharray: len });
+      tl.fromTo(el, { strokeDashoffset: len }, { strokeDashoffset: 0, duration: dur, ease: "power2.out" }, at);
+    });
+  }
+
+  /* ambient for return 1: light sweep, grid drift, label float */
+  tl.fromTo(P+"sweep", { x: -560 }, { x: 2300, duration: 2.85, ease: "none", repeat: 1 }, 0);
+  tl.fromTo(P+"grid", { x: 0 }, { x: 60, duration: 5.7, ease: "none" }, 0);
+  tl.to([P+"l-ditch", P+"l-schem", P+"l-src"], { y: -5, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.1);
+
+  /* THE FAMILY @0.00: the drawing is back, house, ditch and table */
+  tl.fromTo(P+"svg", { x: -30 }, { x: 0, duration: 0.8, ease: "power3.out" }, 0);
+  /* OF SEVEN @0.84: seven dots under the table */
+  tl.fromTo(".rt11-dot", { autoAlpha: 0, scale: 2.2, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "power3.out", stagger: 0.05 }, 0.84);
+  /* A FEW FEET @1.50: the measure */
+  draw(P+"dim", 1.5, 0.45);
+  draw(P+"tick", 1.75, 0.2);
+  tl.fromTo(P+"l-few", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.5);
+  draw(P+"ld-few", 1.8, 0.3);
+  tl.fromTo(P+"l-src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 1.95);
+  /* FROM THEIR OWN DOOR @2.08-2.40 */
+  tl.fromTo(P+"l-door", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.08);
+  tl.fromTo(P+"door", { scaleX: 1, svgOrigin: "864 688" }, { scaleX: 2.6, duration: 0.22, ease: "power2.out", yoyo: true, repeat: 3 }, 2.4);
+  /* HIDING FROM TORNADOES THAT WERE REAL @3.16-4.50: the drawing holds */
+  /* exit of return 1 @5.10: push in and fade through; root is transparent from 5.70 */
+  tl.to(P+"scene", { scale: 1.08, autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 5.1);
+  /* BECAUSE THEY WERE TOLD @8.48-9.04: the assessment's words, on glass over the traffic aerial */
+  tl.fromTo(P+"card", { autoAlpha: 0, x: -80 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 8.48);
+  tl.fromTo(P+"q", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.62);
+  tl.fromTo(P+"rule", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.45, ease: "power3.out" }, 8.9);
+  tl.fromTo(P+"attr", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 9.04);
+  /* exit, anchored to the last 0.6 s */
+  tl.to(P+"card", { x: -1300, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 10.4);
+  window.__timelines["g-a5s11-returns"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

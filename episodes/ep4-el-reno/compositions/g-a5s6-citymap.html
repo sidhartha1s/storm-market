@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a5s6-citymap · A5-S6 · window 10.15 s · brief: mg_specs/maps.md
+  Claim: in Oklahoma City, where the buildings were, every tornado that entered that evening was an EF0 or an EF1;
+  none took a life.
+  Map: zoom 1.5 (5 miles = 256 px). The window slides east from 100 300 1280 720 (the El Reno contour in frame) to
+  440 300 1280 720 (the city). Text sits on the fixed layer and enters after the slide settles at 1.7 s.
+  City tornadoes as in g-a4s9-citymap (tracks.json). The block texture is a schematic of the built-up area, not surveyed
+  buildings, and is labelled so.
+  Cues are comp-local seconds from audio/a5-s6.words.json.
+-->
+<template>
+<style>
+  #c56-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    color:#dfe7ee; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .c56-drift { position:absolute; left:0; right:0; top:-200px; height:1480px; opacity:0.30; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(120,150,180,0.16) 0 1px, transparent 1px 46px); }
+  .c56-map { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .c56-road { fill:none; stroke:#4a5560; stroke-width:1.6; stroke-linejoin:round; }
+  .c56-contour { fill:rgba(192,57,43,0.12); stroke:rgba(192,57,43,0.42); stroke-width:0.8; }
+  .c56-ertrack { fill:none; stroke:rgba(231,76,60,0.55); stroke-width:1.4; stroke-linejoin:round; }
+  .c56-ef1 { fill:none; stroke:#e8c56a; stroke-width:3.6; stroke-linecap:round; }
+  .c56-ef0 { fill:none; stroke:#7fb2e5; stroke-width:3.6; stroke-linecap:round; }
+  .c56-eb { position:absolute; left:96px; top:72px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .c56-place { position:absolute; left:1330px; top:314px; font-size:30px; font-weight:700; color:#f2f5f8; white-space:nowrap; }
+  .c56-lab { position:absolute; font-size:22px; font-weight:700; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .c56-small { position:absolute; left:760px; top:150px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .c56-tag { position:absolute; font-size:26px; font-weight:700; letter-spacing:1px; white-space:nowrap; }
+  .c56-t0 { color:#7fb2e5; }
+  .c56-t1 { color:#e8c56a; }
+  .c56-none { position:absolute; left:96px; top:836px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; color:#f2f5f8; white-space:nowrap; }
+  .c56-nonesub { position:absolute; left:100px; top:912px; font-size:22px; font-weight:700; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .c56-scale { position:absolute; left:96px; top:984px; width:256px; height:8px; border:2px solid #93a3b2; border-top:none; box-sizing:border-box; }
+  .c56-scalelab { position:absolute; left:96px; top:1002px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+  .c56-src { position:absolute; left:420px; top:1002px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+</style>
+<div id="c56-root" data-composition-id="g-a5s6-citymap" data-width="1920" data-height="1080">
+  <div class="c56-drift" id="c56-drift"></div>
+  <svg class="c56-map" id="c56-map" viewBox="100 300 1280 720" preserveAspectRatio="none">
+    <defs>
+      <pattern id="c56-bld" width="9" height="9" patternUnits="userSpaceOnUse"><rect x="2" y="2" width="3.6" height="3.6" fill="rgba(147,163,178,0.34)"/></pattern>
+      <clipPath id="c56-clip10"><rect id="c56-clipr" x="955" y="565" width="0" height="50"/></clipPath>
+      <clipPath id="c56-clipw"><rect x="955" y="565" width="62.6" height="50"/></clipPath>
+    </defs>
+    <rect id="c56-city" x="930" y="380" width="600" height="520" rx="60" fill="url(#c56-bld)"/>
+    <!-- Interstates 40, 35, 44 and US-81: US Census TIGERweb lines -->
+    <polyline class="c56-road" points="-20.5,403.4 56.1,399.4 151.1,400.3 193.5,402.7 233.7,400.1 298.0,400.3 306.0,402.2 384.0,436.9 421.6,445.9 473.7,466.7 571.6,468.6 610.6,466.7 660.5,469.8 733.4,467.2 783.4,469.1 798.1,474.0 827.5,490.5 874.2,521.9 935.2,558.5 956.5,563.2 1014.7,563.0 1190.4,563.5 1254.3,559.7 1299.6,571.7 1321.0,572.4 1328.1,570.3 1338.0,561.1 1344.2,558.3 1391.6,556.4 1408.3,550.3 1417.2,556.0 1430.8,568.6 1459.0,577.1 1494.1,600.6 1517.6,622.9 1540.6,624.1 1561.0,622.4 1581.5,625.0 1710.3,677.1 1828.8,738.4"/>
+    <polyline class="c56-road" points="1487.6,217.9 1435.6,319.1 1424.1,368.6 1420.0,378.7 1419.6,386.0 1422.1,398.2 1421.8,442.8 1411.2,484.4 1411.4,513.9 1407.0,547.7 1402.4,552.9 1397.0,555.5 1365.7,558.3 1364.0,577.8 1370.3,597.3 1370.5,642.8 1353.6,697.1 1353.4,757.6 1353.8,792.9 1351.7,804.8 1354.0,813.1 1354.6,831.6 1362.8,859.3 1363.2,940.8 1371.5,975.5 1371.6,1134.9"/>
+    <polyline class="c56-road" points="1857.8,146.0 1727.0,179.4 1491.8,235.5 1479.6,234.3 1476.9,236.7 1435.2,319.1 1423.7,366.7 1418.3,374.7 1411.6,378.0 1396.0,380.3 1376.6,390.2 1370.7,389.5 1363.0,385.5 1357.1,385.7 1345.3,395.6 1336.5,399.6 1313.5,400.3 1293.7,403.6 1281.0,411.6 1266.6,413.2 1260.5,421.9 1257.4,432.2 1248.4,438.6 1236.3,442.6 1209.4,442.3 1196.4,459.9 1192.7,472.9 1190.4,495.6 1193.1,511.4 1191.4,541.9 1193.3,550.1 1208.4,589.1 1209.4,624.1 1207.7,630.2 1197.7,642.8 1188.3,666.3 1195.6,686.5 1195.6,707.2 1200.6,713.0 1201.5,749.0 1200.0,758.1 1160.6,878.8 1153.9,931.1 1151.4,978.1 1148.7,985.6 1142.4,994.8 1130.3,1003.5 1106.5,1010.5 1091.5,1018.3 1081.0,1026.9"/>
+    <polyline class="c56-road" points="461.8,208.5 461.8,308.5 469.8,333.6 470.6,395.8 474.8,395.8 475.2,417.7 488.3,445.9 495.2,450.1 504.6,450.8 504.8,488.1 501.7,512.5 505.0,527.8 504.6,698.9 505.2,730.2 514.6,761.2 520.7,774.1 518.8,791.5 509.0,846.6 498.4,859.1 495.0,866.6 494.2,888.7 489.0,918.0 475.6,931.9 472.9,939.1 472.9,1064.5"/>
+    <polygon class="c56-contour" id="c56-contour" points="237.5,523.0 241.2,535.4 246.9,545.7 256.0,560.9 258.2,567.2 266.3,584.7 273.6,592.0 281.8,597.6 299.7,605.6 321.0,616.0 334.8,620.9 352.8,620.5 384.9,615.0 421.8,602.8 437.0,602.2 450.5,605.4 469.5,610.5 499.9,615.7 522.2,613.2 544.6,604.4 558.5,596.1 572.4,588.2 596.4,573.4 612.3,559.9 622.9,545.3 625.0,538.4 642.3,505.1 653.9,490.2 658.6,486.0 667.3,478.8 677.0,473.6 683.8,469.0 680.6,457.1 677.1,450.6 671.7,445.6 659.9,442.4 649.9,441.6 630.5,436.7 626.6,436.4 611.0,435.1 578.5,454.2 570.6,472.5 566.6,478.4 562.5,482.7 545.7,499.1 528.9,515.9 508.2,526.7 493.2,531.6 469.1,538.0 436.0,540.1 403.3,547.7 399.1,550.0 385.0,557.2 372.5,562.9 354.9,564.7 333.0,565.5 315.5,563.3 303.8,557.3 298.7,554.7 293.8,548.4 291.3,542.0 288.3,537.1 282.9,532.9 275.5,528.2 271.5,525.5 265.1,518.5 257.5,513.6 244.6,494.6 238.4,495.1 236.2,499.5 235.8,508.9"/>
+    <polyline class="c56-ertrack" points="247.0,516.6 249.1,523.0 256.5,534.1 269.8,543.9 274.3,557.0 284.1,571.9 300.6,575.1 339.5,579.1 360.9,585.1 388.1,580.3 404.8,570.2 423.7,566.7 455.1,580.6 497.8,580.0 523.7,569.5 557.1,547.0 563.9,520.5 580.2,512.2 586.1,496.0 593.7,471.9 602.8,453.3 590.3,463.2 601.0,459.2 627.5,468.6 643.0,468.9 653.8,462.3 675.6,466.7"/>
+    <rect x="1309.3" y="540.7" width="8" height="8" fill="none" stroke="#f2f5f8" stroke-width="1.2"/>
+    <!-- tornado 10: NWS EF1 damage polygon; its first 1.6 miles are EF0 in Storm Data -->
+    <g id="c56-t10" clip-path="url(#c56-clip10)">
+      <polygon points="960.3,577.6 965.3,575.0 980.8,575.9 1000.9,578.8 1026.6,582.5 1049.3,586.5 1073.5,589.7 1102.4,591.1 1118.9,589.4 1152.5,586.8 1155.1,590.1 1151.4,594.9 1143.2,597.3 1127.9,600.1 1109.5,602.3 1091.0,602.8 1073.4,601.9 1048.6,598.9 1022.9,596.3 989.8,590.7 971.5,586.7 965.1,583.0" fill="#e8c56a"/>
+      <polygon clip-path="url(#c56-clipw)" points="960.3,577.6 965.3,575.0 980.8,575.9 1000.9,578.8 1026.6,582.5 1049.3,586.5 1073.5,589.7 1102.4,591.1 1118.9,589.4 1152.5,586.8 1155.1,590.1 1151.4,594.9 1143.2,597.3 1127.9,600.1 1109.5,602.3 1091.0,602.8 1073.4,601.9 1048.6,598.9 1022.9,596.3 989.8,590.7 971.5,586.7 965.1,583.0" fill="#7fb2e5"/>
+    </g>
+    <path class="c56-ef1" id="c56-t13" d="M1248.0 680.9L1286.4 704.3"/>
+    <path class="c56-ef0" id="c56-t14" d="M1420.8 680.9L1440.0 680.9"/>
+    <path class="c56-ef1" id="c56-t15" d="M1132.8 845.2L1171.2 821.7"/>
+    <circle id="c56-blip13" cx="1286.4" cy="704.3" r="3" fill="none" stroke="#e8c56a" stroke-width="1"/>
+    <circle id="c56-blip14" cx="1440" cy="680.9" r="3" fill="none" stroke="#7fb2e5" stroke-width="1"/>
+    <circle id="c56-blip15" cx="1171.2" cy="821.7" r="3" fill="none" stroke="#e8c56a" stroke-width="1"/>
+    <circle id="c56-blip10" cx="1152" cy="590" r="3" fill="none" stroke="#e8c56a" stroke-width="1"/>
+  </svg>
+  <div class="c56-eb" id="c56-eb">OKLAHOMA CITY · THE EVENING OF MAY 31, 2013</div>
+  <div class="c56-lab" id="c56-erlab" style="left:96px; top:504px">EL RENO TORNADO</div>
+  <div class="c56-place" id="c56-place">Oklahoma City</div>
+  <div class="c56-small" id="c56-bldlab">BUILT-UP AREA (SCHEMATIC)</div>
+  <div class="c56-tag c56-t0" id="c56-g10a" style="left:786px; top:462px">EF0</div>
+  <div class="c56-tag c56-t1" id="c56-g10b" style="left:946px; top:462px">EF1</div>
+  <div class="c56-tag c56-t1" id="c56-g13" style="left:1284px; top:568px">EF1</div>
+  <div class="c56-tag c56-t0" id="c56-g14" style="left:1516px; top:556px">EF0</div>
+  <div class="c56-tag c56-t1" id="c56-g15" style="left:962px; top:806px">EF1</div>
+  <div class="c56-none" id="c56-none">NO LIVES LOST</div>
+  <div class="c56-nonesub" id="c56-nonesub">IN ANY OF THEM · NWS NORMAN</div>
+  <div class="c56-scale" id="c56-scale"></div>
+  <div class="c56-scalelab" id="c56-scalelab">5 MILES</div>
+  <div class="c56-src" id="c56-src">TRACKS: NWS NORMAN, STORM DATA</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#c56-";
+  function draw(id, at, dur) {
+    const L = Math.ceil(document.getElementById("c56-" + id).getTotalLength()) + 1;
+    gsap.set(P + id, { strokeDasharray: L, strokeDashoffset: L }); /* at build time: frame 0 never shows the finished line */
+    tl.to(P + id, { strokeDashoffset: 0, duration: dur, ease: "power2.out" }, at);
+  }
+  function pop(id, at) { tl.fromTo(P + id, { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, at); }
+  function blip(id, at, n) { tl.fromTo(P + id, { attr: { r: 3 }, opacity: 0.9 }, { attr: { r: 14 }, opacity: 0, duration: 1.2, ease: "power2.out", repeat: n, immediateRender: false }, at); }
+  tl.fromTo(P + "drift", { y: -70 }, { y: 70, duration: 10.25, ease: "none" }, 0);
+  /* IN OKLAHOMA CITY @0.00: the map slides east, 340 metro px = 510 px on screen */
+  tl.fromTo(P + "map", { attr: { viewBox: "100 300 1280 720" } }, { attr: { viewBox: "440 300 1280 720" }, duration: 1.7, ease: "power2.inOut" }, 0);
+  gsap.set([P + "blip10", P + "blip13", P + "blip14", P + "blip15"], { opacity: 0 });
+  tl.fromTo(P + "place", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.72);
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.8);
+  pop("erlab", 1.9);
+  tl.fromTo(P + "scale", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 1.8);
+  tl.fromTo(P + "scalelab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 2.0);
+  tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 2.0);
+  tl.fromTo(P + "city", { opacity: 0.25 }, { opacity: 1, duration: 0.7, ease: "power2.out" }, 2.08);  /* BUILDINGS @2.08 */
+  pop("bldlab", 2.32);
+  tl.to(P + "city", { opacity: 0.6, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 5 }, 2.9);
+  /* EVERY TORNADO THAT ENTERED @3.20: the tracks draw in, west to east */
+  tl.fromTo(P + "clipr", { attr: { width: 0 } }, { attr: { width: 205 }, duration: 1.0, ease: "power2.out" }, 3.2);
+  draw("t15", 3.8, 0.45);
+  draw("t13", 4.1, 0.45);
+  draw("t14", 4.4, 0.4);
+  blip("blip10", 4.2, 4); blip("blip15", 4.3, 4); blip("blip13", 4.6, 4); blip("blip14", 4.9, 3);
+  pop("g10a", 5.26); pop("g14", 5.46);                                                        /* EF0 @5.26 */
+  pop("g10b", 6.6); pop("g13", 6.75); pop("g15", 6.9);                                         /* EF1 @6.60 */
+  tl.fromTo(P + "none", { autoAlpha: 0, y: 24, scale: 1.1, transformOrigin: "left center" }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 8.42); /* NONE @8.42 */
+  pop("nonesub", 8.78);                                                                        /* A LIFE @8.78 */
+  window.__timelines["g-a5s6-citymap"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

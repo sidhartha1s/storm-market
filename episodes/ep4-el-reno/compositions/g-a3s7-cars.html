@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a3s7-cars: 400 px per mile, north up. Datum US-81 x Reuter Road = (980, 380); Alfadale x 1380, Radio x 1780, Reno y 780.
+     Spec: mg_specs/roads.md */
+  #c7-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 56% 42%, #0d151d 0%, #030507 80%); }
+  .c7-sweep { position:absolute; top:0; bottom:0; left:0; width:560px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0) 0%, rgba(127,178,229,0.12) 50%, rgba(127,178,229,0) 100%); }
+  .c7-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .c7-rl { font-family:Arial, sans-serif; font-weight:700; font-size:24px; letter-spacing:3px; fill:#93a3b2; }
+  .c7-rlm { fill:#dfe7ee; }
+  .c7-tag { font-family:Arial, sans-serif; font-weight:700; font-size:24px; letter-spacing:2px; fill:#f2f5f8; paint-order:stroke; stroke:#04070c; stroke-width:5px; }
+  .c7-card { position:absolute; left:96px; top:540px; width:800px; box-sizing:border-box; padding:40px 46px 34px; border-radius:22px;
+    background:rgba(232,222,200,0.92); }
+  .c7-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:52px; line-height:1.18; color:#2a2622; }
+  .c7-at { margin-top:22px; font-size:26px; font-weight:700; letter-spacing:0.5px; color:#6b6257; }
+  .c7-note { position:absolute; left:96px; top:1000px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+  .c7-hid { opacity:0; visibility:hidden; }
+</style>
+<div id="c7-root" data-composition-id="g-a3s7-cars" data-width="1920" data-height="1080">
+  <svg class="c7-svg" viewBox="0 0 1920 1080">
+    <g id="c7-grid"></g>
+    <!-- Alfadale Road x 1380, Radio Road x 1780, Reno Road y 780, and the mile lines west of US-81 -->
+    <line x1="1380" y1="0" x2="1380" y2="1080" stroke="#3b4b5c" stroke-width="3"/>
+    <line x1="1780" y1="0" x2="1780" y2="1080" stroke="#3b4b5c" stroke-width="3"/>
+    <line x1="580" y1="0" x2="580" y2="1080" stroke="#34434f" stroke-width="2"/>
+    <line x1="180" y1="0" x2="180" y2="1080" stroke="#34434f" stroke-width="2"/>
+    <line x1="0" y1="780" x2="1920" y2="780" stroke="#3b4b5c" stroke-width="3"/>
+    <!-- Reuter Road and US-81 -->
+    <line x1="0" y1="380" x2="1920" y2="380" stroke="#b9c6d3" stroke-width="6"/>
+    <line x1="980" y1="0" x2="980" y2="1080" stroke="#b9c6d3" stroke-width="6"/>
+    <text class="c7-rl c7-rlm" x="998" y="76">US-81</text>
+    <text class="c7-rl c7-rlm" x="96" y="364">REUTER ROAD</text>
+    <text class="c7-rl" x="1398" y="76">ALFADALE ROAD</text>
+    <text class="c7-rl" x="1764" y="130" text-anchor="end">RADIO ROAD</text>
+    <g id="c7-north">
+      <path d="M1560 250 L1560 192 M1549 209 L1560 188 L1571 209" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text class="c7-rl c7-rlm" x="1560" y="282" text-anchor="middle">N</text>
+    </g>
+    <!-- a glint that runs the empty roads -->
+    <circle id="c7-g1" class="c7-hid" cx="0" cy="380" r="9" fill="#f2f5f8"/>
+    <circle id="c7-g2" class="c7-hid" cx="980" cy="0" r="9" fill="#f2f5f8"/>
+    <!-- one red pickup, parked along US-81 -->
+    <g id="c7-pick" class="c7-hid">
+      <circle id="c7-pickp" cx="0" cy="0" r="14" fill="none" stroke="#e74c3c" stroke-width="2"/>
+      <rect x="-10" y="-18" width="20" height="36" rx="4" fill="#c0392b" stroke="#04070c" stroke-width="2"/>
+      <text class="c7-tag" x="30" y="8" style="fill:#e74c3c">RED PICKUP · PARKED</text>
+    </g>
+    <!-- the white Cobalt -->
+    <g id="c7-cob" class="c7-hid">
+      <circle id="c7-cobp" cx="0" cy="0" r="14" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+      <rect x="-18" y="-10" width="36" height="20" rx="4" fill="#f2f5f8" stroke="#04070c" stroke-width="2"/>
+      <text class="c7-tag" x="0" y="48" text-anchor="middle">WHITE COBALT</text>
+    </g>
+    <!-- Dan Robinson: a mark only -->
+    <g id="c7-rob">
+      <circle id="c7-robp" cx="0" cy="0" r="14" fill="none" stroke="#e8c56a" stroke-width="2"/>
+      <rect x="-18" y="-10" width="36" height="20" rx="4" fill="#e8c56a" stroke="#04070c" stroke-width="2"/>
+      <text class="c7-tag" x="0" y="-30" text-anchor="middle" style="fill:#e8c56a">DAN ROBINSON</text>
+    </g>
+    <!-- scale bar: 400 px = 1 mile -->
+    <line x1="96" y1="950" x2="496" y2="950" stroke="#dfe7ee" stroke-width="3"/>
+    <line x1="96" y1="940" x2="96" y2="960" stroke="#dfe7ee" stroke-width="3"/>
+    <line x1="496" y1="940" x2="496" y2="960" stroke="#dfe7ee" stroke-width="3"/>
+    <text class="c7-rl c7-rlm" x="512" y="958">1 MILE</text>
+  </svg>
+  <div class="c7-sweep" id="c7-sweep"></div>
+  <div class="c7-card c7-hid" id="c7-card">
+    <div class="c7-q" id="c7-q">&ldquo;there were no other vehicles in our immediate vicinity&rdquo;</div>
+    <div class="c7-at" id="c7-at">Dan Robinson, quoted in the NWS Service Assessment</div>
+  </div>
+  <div class="c7-note" id="c7-note">VEHICLE POSITIONS APPROXIMATE</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const NS = "http://www.w3.org/2000/svg";
+  const grid = document.getElementById("c7-grid");
+  function ln(x1, y1, x2, y2) {
+    const e = document.createElementNS(NS, "line");
+    e.setAttribute("x1", x1); e.setAttribute("y1", y1); e.setAttribute("x2", x2); e.setAttribute("y2", y2);
+    e.setAttribute("stroke", "#16212c"); e.setAttribute("stroke-width", 1.5); grid.appendChild(e);
+  }
+  /* half-mile field lines (200 px), faint */
+  for (let x = 380; x < 1920; x += 400) ln(x, 0, x, 1080);
+  for (let y = 180; y < 1080; y += 400) ln(0, y, 1920, y);
+
+  const tl = gsap.timeline({ paused: true });
+  const P = "#c7-";
+  tl.fromTo(P + "sweep", { x: -560 }, { x: 1920, duration: 8.75, ease: "none", repeat: 1 }, 0);
+
+  /* Robinson @0.00: his mark on Reuter Road, heading east */
+  tl.fromTo(P + "rob", { x: 1180, y: 380 }, { x: 1318, y: 380, duration: 17.5, ease: "none" }, 0);
+  tl.fromTo(P + "robp", { attr: { r: 14 }, opacity: 0.9 }, { attr: { r: 60 }, opacity: 0, duration: 1.4, ease: "power1.out", repeat: 11 }, 0.1);
+  /* cobalt @4.76: the white Cobalt, behind him */
+  tl.fromTo(P + "cob", { x: 1163, y: 380 }, { x: 1263, y: 380, duration: 12.74, ease: "none" }, 4.76);
+  tl.fromTo(P + "cob", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 4.76);
+  tl.fromTo(P + "cobp", { attr: { r: 14 }, opacity: 0.9 }, { attr: { r: 60 }, opacity: 0, duration: 1.4, ease: "power1.out", repeat: 8 }, 4.8);
+  /* red @5.86, pickup @6.12, parked @6.54 */
+  tl.set(P + "pick", { x: 980, y: 480 }, 0);
+  tl.fromTo(P + "pick", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 5.86);
+  tl.fromTo(P + "pickp", { attr: { r: 14 }, opacity: 0.9 }, { attr: { r: 70 }, opacity: 0, duration: 1.2, ease: "power2.out", repeat: 2 }, 5.9);
+
+  /* no (other vehicle) @9.02: the quoted words, with who said them and where */
+  tl.fromTo(P + "card", { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 8.7);
+  tl.fromTo(P + "at", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 9.5);
+  /* Assessment @11.80 */
+  tl.fromTo(P + "at", { scale: 1, transformOrigin: "0% 50%" }, { scale: 1.04, duration: 0.5, ease: "power2.out", yoyo: true, repeat: 1 }, 11.8);
+  /* traffic @13.96: a glint runs each road and finds nothing else on it */
+  tl.fromTo(P + "g1", { autoAlpha: 0 }, { autoAlpha: 0.9, duration: 0.2 }, 13.6);
+  tl.fromTo(P + "g1", { attr: { cx: 900 } }, { attr: { cx: 1920 }, duration: 2.2, ease: "power1.inOut" }, 13.6);
+  tl.to(P + "g1", { autoAlpha: 0, duration: 0.3 }, 15.5);
+  tl.fromTo(P + "g2", { autoAlpha: 0 }, { autoAlpha: 0.9, duration: 0.2 }, 14.3);
+  tl.fromTo(P + "g2", { attr: { cy: 0 } }, { attr: { cy: 1080 }, duration: 2.2, ease: "power1.inOut" }, 14.3);
+  tl.to(P + "g2", { autoAlpha: 0, duration: 0.3 }, 16.2);
+  /* exit: the card slides out in the last 0.6 s */
+  tl.to(P + "card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 16.8);
+
+  window.__timelines["g-a3s7-cars"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4s5-drain · A4-S5 · window 14.71 s · brief: mg_specs/drawings.md
+  Claim: eleven people, most of them young children, were inside a storm drain under SW 15th St (News 9, June 3, 2013).
+  Eleven identical dots. No water in this comp. The drain's size is not sourced: unlabelled, schematic.
+  Cues are comp-local seconds from audio/a4-s5.words.json.
+-->
+<template>
+<style>
+  .dr5-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .dr5-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  .dr5-sweep { position:absolute; left:0; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,.07), rgba(127,178,229,0)); }
+  .dr5-svg { position:absolute; left:0; top:0; }
+  .dr5-lab { position:absolute; font-weight:700; white-space:nowrap; }
+  .dr5-small { font-size:22px; letter-spacing:3px; color:#93a3b2; }
+  .dr5-note { font-size:20px; letter-spacing:2px; color:#93a3b2; }
+  .dr5-src { font-size:20px; letter-spacing:2px; color:#c8d3e0; }
+  .dr5-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:64px; color:#f2f5f8; }
+  .dr5-mid { font-size:30px; letter-spacing:1px; color:#dfe7ee; }
+</style>
+<div id="dr5-root" class="dr5-root" data-composition-id="g-a4s5-drain" data-width="1920" data-height="1080" data-duration="14.71">
+  <div class="dr5-grid" id="dr5-grid"></div>
+  <div class="dr5-sweep" id="dr5-sweep"></div>
+
+  <svg class="dr5-svg" id="dr5-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="dr5-hatch" width="26" height="26" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="26" stroke="#7fb2e5" stroke-width="3"/>
+      </pattern>
+      <clipPath id="dr5-sky"><rect x="0" y="0" width="1920" height="434"/></clipPath>
+      <g id="dr5-rt" stroke="#7fb2e5" stroke-width="3" stroke-linecap="round" opacity="0.5">
+        <line x1="140" y1="40" x2="130" y2="78"/><line x1="330" y1="210" x2="320" y2="248"/><line x1="520" y1="90" x2="510" y2="128"/>
+        <line x1="700" y1="330" x2="690" y2="368"/><line x1="860" y1="160" x2="850" y2="198"/><line x1="1040" y1="20" x2="1030" y2="58"/>
+        <line x1="1210" y1="260" x2="1200" y2="298"/><line x1="1380" y1="110" x2="1370" y2="148"/><line x1="1560" y1="370" x2="1550" y2="408"/>
+        <line x1="1730" y1="200" x2="1720" y2="238"/><line x1="260" y1="380" x2="250" y2="418"/><line x1="1120" y1="396" x2="1110" y2="434"/>
+      </g>
+    </defs>
+    <!-- rain above the street: the ambient motion for the whole window -->
+    <g clip-path="url(#dr5-sky)">
+      <g id="dr5-rain"><use href="#dr5-rt"/><use href="#dr5-rt" y="-436"/></g>
+    </g>
+    <g id="dr5-site">
+      <!-- the street deck -->
+      <rect x="96" y="440" width="1464" height="28" fill="#93a3b2" fill-opacity="0.18" stroke="#93a3b2" stroke-width="3"/>
+      <!-- earth between street and drain, and under the drain floor: section convention -->
+      <rect x="200" y="474" width="760" height="46" fill="url(#dr5-hatch)" opacity="0.3"/>
+      <rect x="200" y="760" width="1040" height="26" fill="url(#dr5-hatch)" opacity="0.3"/>
+      <!-- the drain in section: roof slab, floor slab, open inside; left end breaks off, right end is the outfall -->
+      <rect x="200" y="540" width="1040" height="200" fill="#15202b" fill-opacity="0.55"/>
+      <rect x="200" y="526" width="1040" height="14" fill="#dfe7ee" fill-opacity="0.7" stroke="#f2f5f8" stroke-width="3"/>
+      <rect x="200" y="740" width="1040" height="14" fill="#dfe7ee" fill-opacity="0.7" stroke="#f2f5f8" stroke-width="3"/>
+      <path d="M200 520 L214 580 L186 640 L214 700 L200 760" fill="none" stroke="#93a3b2" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M1240 500 L1240 540 M1240 740 L1240 792" fill="none" stroke="#f2f5f8" stroke-width="6" stroke-linecap="round"/>
+    </g>
+    <path id="dr5-ld-count" d="M574 270 L728 270 L728 582" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+    <!-- eleven people: eleven identical dots -->
+    <circle class="dr5-dot" cx="420" cy="600" r="9" fill="#f2f5f8"/>
+    <circle class="dr5-dot" cx="464" cy="600" r="9" fill="#f2f5f8"/>
+    <circle class="dr5-dot" cx="508" cy="600" r="9" fill="#f2f5f8"/>
+    <circle class="dr5-dot" cx="552" cy="600" r="9" fill="#f2f5f8"/>
+    <circle class="dr5-dot" cx="596" cy="600" r="9" fill="#f2f5f8"/>
+    <circle class="dr5-dot" cx="640" cy="600" r="9" fill="#f2f5f8"/>
+    <circle class="dr5-dot" cx="684" cy="600" r="9" fill="#f2f5f8"/>
+    <circle class="dr5-dot" cx="728" cy="600" r="9" fill="#f2f5f8"/>
+    <circle class="dr5-dot" cx="772" cy="600" r="9" fill="#f2f5f8"/>
+    <circle class="dr5-dot" cx="816" cy="600" r="9" fill="#f2f5f8"/>
+    <circle class="dr5-dot" cx="860" cy="600" r="9" fill="#f2f5f8"/>
+  </svg>
+
+  <div class="dr5-lab dr5-big" id="dr5-l-count" style="left:250px; top:236px">11 people</div>
+  <div class="dr5-lab dr5-mid" id="dr5-l-young" style="left:253px; top:312px">Most were young children</div>
+  <div class="dr5-lab dr5-small" id="dr5-l-drain" style="left:1010px; top:484px">Storm drain</div>
+  <div class="dr5-lab dr5-small" id="dr5-l-street" style="left:1140px; top:360px">SW 15th St</div>
+  <div class="dr5-lab dr5-small" id="dr5-l-dell" style="left:1140px; top:396px">Near the Dell plant</div>
+  <div class="dr5-lab dr5-note" id="dr5-l-schem" style="left:110px; top:958px">Schematic, not to scale</div>
+  <div class="dr5-lab dr5-src" id="dr5-l-src" style="left:110px; top:992px">News 9, June 3, 2013</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#dr5-";
+  function draw(sel, at, dur) {
+    document.querySelectorAll(sel).forEach(function (el) {
+      const len = Math.ceil(el.getTotalLength()) + 1;
+      gsap.set(el, { strokeDasharray: len });
+      tl.fromTo(el, { strokeDashoffset: len }, { strokeDashoffset: 0, duration: dur, ease: "power2.out" }, at);
+    });
+  }
+
+  /* ambient, whole window: rain above the street (one tile, 436 px, per 1.05 s), light sweep, grid drift, label float */
+  tl.fromTo(P+"rain", { y: 0 }, { y: 436, duration: 1.0507, ease: "none", repeat: 13 }, 0);
+  tl.fromTo(P+"sweep", { x: -560 }, { x: 2300, duration: 3.6775, ease: "none", repeat: 3 }, 0);
+  tl.fromTo(P+"grid", { x: 0 }, { x: 120, duration: 14.71, ease: "none" }, 0);
+  tl.to([P+"l-schem", P+"l-drain", P+"l-street", P+"l-dell"], { y: -5, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0.2);
+
+  /* ELSEWHERE IN THE CITY @0.00: street and drain section are on screen at 0 and settle */
+  tl.fromTo(P+"site", { x: 40 }, { x: 0, duration: 1.0, ease: "power3.out" }, 0);
+  /* 11 MORE PEOPLE @1.98: eleven dots, one after another */
+  tl.fromTo(".dr5-dot", { autoAlpha: 0, scale: 2.2, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power3.out", stagger: 0.09 }, 1.98);
+  tl.fromTo(P+"l-count", { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 1.98);
+  draw(P+"ld-count", 2.3, 0.7);
+  /* NEWS 9 REPORTED @4.76 */
+  tl.fromTo(P+"l-src", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.76);
+  /* MOST OF THEM WERE YOUNG CHILDREN @5.74-6.60 */
+  tl.fromTo(P+"l-young", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 6.26);
+  /* INSIDE A STORM DRAIN @8.74 */
+  tl.fromTo(P+"l-drain", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 8.74);
+  /* UNDER SOUTHWEST 15TH STREET @9.70 */
+  tl.fromTo(P+"l-street", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 9.7);
+  /* NEAR THE DELL PLANT @11.34 */
+  tl.fromTo(P+"l-dell", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 11.34);
+  tl.to({}, { duration: 0.01 }, 14.7);
+  window.__timelines["g-a4s5-drain"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

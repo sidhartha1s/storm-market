@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-i1s8-replot: 3 of 3 survived in the SUV, 0 of 3 in the Cobalt; then one small circle at two positions, unlabelled.
+     Brief: mg_specs/replot.md. Scale 300 px per mile, north up. Our own redraw, no figure traced.
+     The two positions follow the OpenStreetMap road layout used in g-a2s11-replot: first (1000,630) on US-81,
+     second (1513,330) on Reuter Road, 1.71 miles east and 1.00 mile north. The first is approximate (near Reno Road). -->
+<template>
+<style>
+  #rp18-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 54% 50%, #0b1016 0%, #030507 78%); }
+  .rp18-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .rp18-fig { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; fill:#f2f5f8; }
+  .rp18-mid { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#dfe7ee; }
+  .rp18-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .rp18-sm { font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px; fill:#93a3b2; }
+</style>
+<div id="rp18-root" data-composition-id="g-i1s8-replot" data-width="1920" data-height="1080">
+  <svg class="rp18-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="rp18-grid" width="150" height="150" patternUnits="userSpaceOnUse" x="100" y="30"><path d="M150,0 L0,0 L0,150" fill="none" stroke="#2a3644" stroke-width="1.5" stroke-opacity="0.55"/></pattern>
+      <radialGradient id="rp18-echo"><stop offset="0" stop-color="#7fb2e5" stop-opacity="0.34"/><stop offset="1" stop-color="#7fb2e5" stop-opacity="0"/></radialGradient>
+      <radialGradient id="rp18-glow"><stop offset="0" stop-color="#e8c56a" stop-opacity="0.75"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/></radialGradient>
+      <mask id="rp18-trackmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="rp18-trackrev" d="M1000,630 C1150,570 1330,560 1400,620 C1460,675 1380,720 1350,660 C1320,600 1500,560 1549,416 L1513,330" fill="none" stroke="#fff" stroke-width="12"/></mask>
+    </defs>
+    <rect x="0" y="0" width="1920" height="1080" fill="url(#rp18-grid)"/>
+    <!-- the wide circulation: r 390 px = 1.3 miles -->
+    <g id="rp18-ring">
+      <ellipse id="rp18-e1" cx="860" cy="500" rx="150" ry="110" fill="url(#rp18-echo)"/>
+      <ellipse id="rp18-e2" cx="1150" cy="470" rx="120" ry="90" fill="url(#rp18-echo)"/>
+      <ellipse id="rp18-e3" cx="920" cy="830" rx="170" ry="100" fill="url(#rp18-echo)"/>
+      <ellipse id="rp18-e4" cx="1190" cy="760" rx="110" ry="120" fill="url(#rp18-echo)"/>
+      <circle cx="1000" cy="630" r="390" fill="none" stroke="#5a768f" stroke-width="30" stroke-opacity="0.22"/>
+      <circle cx="1000" cy="630" r="390" fill="none" stroke="#7fb2e5" stroke-width="2.5"/>
+      <circle id="rp18-ticks" cx="1000" cy="630" r="390" fill="none" stroke="#7fb2e5" stroke-width="14" stroke-opacity="0.7" stroke-dasharray="5 44"/>
+    </g>
+    <!-- the track between the two positions: not measured here, so dashed -->
+    <path id="rp18-track" d="M1000,630 C1150,570 1330,560 1400,620 C1460,675 1380,720 1350,660 C1320,600 1500,560 1549,416 L1513,330" fill="none" stroke="#e8c56a" stroke-width="3" stroke-dasharray="10 9" stroke-opacity="0.85" mask="url(#rp18-trackmask)"/>
+    <circle id="rp18-ghost" cx="1000" cy="630" r="15" fill="none" stroke="#e8c56a" stroke-width="2.5" stroke-dasharray="4 4"/>
+    <!-- the one sub-vortex: r 15 px = 160 m across, the middle of 90 to 230 m -->
+    <g id="rp18-sv"><g id="rp18-svin">
+      <circle cx="0" cy="0" r="34" fill="url(#rp18-glow)"/>
+      <circle cx="0" cy="0" r="15" fill="#e8c56a" fill-opacity="0.35" stroke="#f5d98b" stroke-width="3"/>
+      <path id="rp18-spin" d="M0,-9 A9,9 0 0 0 -9,0" fill="none" stroke="#f2f5f8" stroke-width="3"/>
+    </g></g>
+    <!-- the two crews, stacked in the left rail so the replot keeps its true layout. Markers only -->
+    <g id="rp18-left">
+      <rect x="96" y="132" width="18" height="18" fill="#f2f5f8"/>
+      <text class="rp18-lab" x="128" y="149">TV crew · SUV</text>
+      <text id="rp18-n1" class="rp18-fig" x="92" y="246">3 of 3</text>
+      <text id="rp18-s1" class="rp18-mid" x="100" y="292">survived</text>
+    </g>
+    <g id="rp18-right">
+      <path d="M105,372 L118,385 L105,398 L92,385 Z" fill="#f2f5f8"/>
+      <text class="rp18-lab" x="128" y="393">Research car · Cobalt</text>
+      <text id="rp18-n2" class="rp18-fig" x="92" y="490">0 of 3</text>
+      <text id="rp18-s2" class="rp18-mid" x="100" y="536">survived</text>
+    </g>
+    <text id="rp18-t-sch1" class="rp18-sm" x="96" y="880">Track and ring position between the two:</text>
+    <text id="rp18-t-sch2" class="rp18-sm" x="96" y="908">not measured here · schematic</text>
+    <!-- scale bar: 300 px = 1 mile -->
+    <path id="rp18-bar" d="M96,986 L396,986 M96,976 L96,996 M396,976 L396,996" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+    <text id="rp18-t-bar" class="rp18-sm" x="96" y="964" fill="#dfe7ee">1 mile</text>
+    <text id="rp18-t-src" class="rp18-sm" x="96" y="1022">Our redraw of mobile-radar measurements · Wurman et al. 2014</text>
+    <path id="rp18-north" d="M1760,150 L1760,96 M1748,112 L1760,92 L1772,112" fill="none" stroke="#93a3b2" stroke-width="3"/>
+    <text id="rp18-t-n" class="rp18-lab" x="1751" y="182">N</text>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-i1s8-replot", P = "#rp18-";
+  /* cues: audio/i1-s8.words.json (comp-local = segment seconds) */
+  const CUES = {
+    suv: 1.02,      /* SUV @1.02 */
+    survived: 1.48, /* survived @1.48 */
+    cobalt: 3.66,   /* Cobalt @3.66 */
+    did: 3.98,      /* did @3.98 */
+    radar: 5.16,    /* radar team @5.16 */
+    both: 7.78,     /* both strikes @7.78 */
+    two: 9.34,      /* two vehicles @9.34 */
+    same: 10.72     /* same way @10.72 */
+  };
+  const DUR = 11.7;
+  const tl = gsap.timeline({ paused: true });
+  /* hidden from the first frame: set now (a paused timeline has not rendered its time-0 sets yet) and again at 0 */
+  const HIDE = [P + "sv", P + "ghost", P + "track", P + "left", P + "right", P + "s1", P + "s2", P + "t-sch1", P + "t-sch2", P + "bar", P + "t-bar", P + "t-src"];
+  gsap.set(HIDE, { autoAlpha: 0 });
+  gsap.set(P + "sv", { x: 1000, y: 630 });
+  gsap.set(P + "ring", { opacity: 0.4 });
+  tl.set(HIDE, { autoAlpha: 0 }, 0);
+  tl.set(P + "sv", { x: 1000, y: 630 }, 0);
+
+  /* whole window: the wide circulation turns counter-clockwise, echoes drift */
+  tl.fromTo(P + "ticks", { rotation: 0, svgOrigin: "1000 630" }, { rotation: -94, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e1", { x: -30, y: 10 }, { x: 40, y: -30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e2", { x: 30, y: -20 }, { x: -50, y: 30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e3", { x: -40, y: 0 }, { x: 50, y: -20, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e4", { x: 20, y: 30 }, { x: -30, y: -40, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "spin", { rotation: 0, svgOrigin: "0 0" }, { rotation: -360, duration: 1.1, ease: "none", repeat: 10 }, 0);
+
+  /* SUV @1.02, survived @1.48 */
+  tl.fromTo(P + "left", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.suv - 0.5);
+  tl.fromTo(P + "s1", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.survived);
+  /* Cobalt @3.66, did @3.98 */
+  tl.fromTo(P + "right", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.cobalt - 0.5);
+  tl.fromTo(P + "s2", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.did);
+
+  /* radar team @5.16: the replot comes up, with its scale */
+  tl.to(P + "ring", { opacity: 1, duration: 0.7, ease: "power2.out" }, CUES.radar);
+  tl.fromTo(P + "ring", { scale: 0.94, svgOrigin: "1000 630" }, { scale: 1, duration: 0.9, ease: "power3.out", immediateRender: false }, CUES.radar);
+  tl.fromTo([P + "bar", P + "t-bar", P + "t-src"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.08 }, CUES.radar + 0.2);
+
+  /* both strikes @7.78: the one small circle, first position */
+  tl.fromTo(P + "sv", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 }, CUES.both);
+  tl.fromTo(P + "svin", { scale: 0.2, svgOrigin: "0 0" }, { scale: 1, duration: 0.5, ease: "back.out(2.5)" }, CUES.both);
+
+  /* two vehicles @9.34: the same circle moves to its second position and leaves a hollow outline; the ring moves with it */
+  const rev = document.querySelector(P + "trackrev"), sv = document.querySelector(P + "sv");
+  if (rev && sv) {
+    const len = Math.ceil(rev.getTotalLength()) + 1, N = 40, legs = [], TRAVEL = 1.2;
+    for (let i = 1; i <= N; i++) { const pt = rev.getPointAtLength((len - 1) * i / N); legs.push({ x: pt.x, y: pt.y, duration: TRAVEL / N, ease: "none" }); }
+    gsap.set(rev, { strokeDasharray: len, strokeDashoffset: len });
+    tl.set(rev, { strokeDasharray: len, strokeDashoffset: len }, 0);
+    tl.set(P + "track", { autoAlpha: 1 }, CUES.two);
+    tl.to(rev, { strokeDashoffset: 0, duration: TRAVEL, ease: "none" }, CUES.two);
+    tl.to(sv, { keyframes: legs }, CUES.two);
+  }
+  tl.fromTo(P + "ghost", { autoAlpha: 0 }, { autoAlpha: 0.9, duration: 0.3 }, CUES.two);
+  tl.to(P + "ring", { x: 300, y: -160, duration: 1.2, ease: "power1.inOut" }, CUES.two);
+  tl.fromTo([P + "t-sch1", P + "t-sch2"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.two + 0.3);
+
+  /* same way @10.72: one beat on the circle, then hold */
+  tl.to(P + "svin", { scale: 1.6, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.same);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

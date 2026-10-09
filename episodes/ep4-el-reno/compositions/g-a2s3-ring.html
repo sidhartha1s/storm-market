@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a2s3-ring: 220 px per mile, north up. Datum US-81 x Reuter Road = (700, 760). I-40 about 1.7 mi north = y 386.
+     Ring 2.6 mi = r 286, core 1.25 mi = r 137.5. One time compression: 60 px/s = about 45 mph. Spec: mg_specs/roads.md */
+  #r3-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 60% 50%, #0d151d 0%, #030507 80%); }
+  .r3-sweep { position:absolute; top:0; bottom:0; left:0; width:560px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0) 0%, rgba(127,178,229,0.12) 50%, rgba(127,178,229,0) 100%); }
+  .r3-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .r3-rl { font-family:Arial, sans-serif; font-weight:700; font-size:24px; letter-spacing:3px; fill:#dfe7ee; }
+  .r3-tag { font-family:Arial, sans-serif; font-weight:700; font-size:24px; letter-spacing:2px; fill:#e8c56a; paint-order:stroke; stroke:#04070c; stroke-width:5px; }
+  .r3-panel { position:absolute; left:0; top:0; bottom:0; width:640px;
+    background:linear-gradient(90deg, rgba(6,9,13,0.96) 70%, rgba(6,9,13,0)); }
+  .r3-lab { position:absolute; left:96px; font-size:20px; font-weight:700; letter-spacing:4px; color:#93a3b2; line-height:1.5; }
+  .r3-val { position:absolute; left:96px; display:flex; align-items:baseline; gap:16px; }
+  .r3-w { font-size:32px; font-weight:700; letter-spacing:1px; color:#dfe7ee; }
+  .r3-n { font-family:'Courier New', monospace; font-weight:700; font-size:104px; line-height:1; color:#e8c56a; }
+  .r3-bar { position:absolute; left:96px; height:12px; border-radius:2px; background:#e8c56a; }
+  .r3-time { position:absolute; left:96px; top:520px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; color:#f2f5f8; }
+  .r3-src { position:absolute; left:98px; top:812px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px; color:#d8a13a; }
+  .r3-note { position:absolute; left:96px; top:1000px; font-size:19px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+  .r3-hid { opacity:0; visibility:hidden; }
+</style>
+<div id="r3-root" data-composition-id="g-a2s3-ring" data-width="1920" data-height="1080">
+  <svg class="r3-svg" viewBox="0 0 1920 1080">
+    <defs><radialGradient id="r3-fill" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#22364a" stop-opacity="0.70"/><stop offset="100%" stop-color="#101b26" stop-opacity="0.30"/></radialGradient></defs>
+    <g id="r3-grid"></g>
+    <!-- Interstate 40, about 1.7 mi north of Reuter Road (position approximate) -->
+    <line x1="560" y1="386" x2="1920" y2="386" stroke="#7d91a6" stroke-width="9"/>
+    <line x1="560" y1="386" x2="1920" y2="386" stroke="#0b1016" stroke-width="3"/>
+    <!-- US-81 and Reuter Road -->
+    <line x1="700" y1="0" x2="700" y2="1080" stroke="#b9c6d3" stroke-width="5"/>
+    <line x1="560" y1="760" x2="1920" y2="760" stroke="#b9c6d3" stroke-width="5"/>
+    <text class="r3-rl" x="716" y="76">US-81</text>
+    <text class="r3-rl" x="1584" y="798" text-anchor="end">REUTER ROAD</text>
+    <text class="r3-rl" x="716" y="368">INTERSTATE 40</text>
+    <g id="r3-north">
+      <path d="M1800 150 L1800 92 M1789 109 L1800 88 L1811 109" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text class="r3-rl" x="1800" y="182" text-anchor="middle">N</text>
+    </g>
+    <!-- time skip trail: 6:27 PM position north of I-40 -->
+    <line id="r3-trail" x1="1080" y1="730" x2="1300" y2="318" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="468" stroke-dashoffset="468" opacity="0.55"/>
+    <!-- Robinson's path on Reuter Road -->
+    <line id="r3-path" x1="880" y1="760" x2="1420" y2="760" stroke="#e8c56a" stroke-width="5" stroke-dasharray="541" stroke-dashoffset="541"/>
+    <!-- the wide circulation: 2.6 mi ring and the 1.25 mi core -->
+    <g id="r3-ring">
+      <circle cx="0" cy="0" r="286" fill="url(#r3-fill)"/>
+      <circle id="r3-halo" cx="0" cy="0" r="296" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="10 21" opacity="0.7"/>
+      <circle cx="0" cy="0" r="286" fill="none" stroke="#c8d3e0" stroke-width="4"/>
+      <circle id="r3-core" cx="0" cy="0" r="137.5" fill="none" stroke="#d8a13a" stroke-width="3"/>
+      <g id="r3-fast" class="r3-hid"><circle cx="62" cy="0" r="20" fill="none" stroke="#f2f5f8" stroke-width="2" opacity="0.6"/><circle cx="62" cy="0" r="9" fill="#f2f5f8"/></g>
+    </g>
+    <g id="r3-rob" class="r3-hid">
+      <circle id="r3-robp" cx="0" cy="0" r="12" fill="none" stroke="#e8c56a" stroke-width="2"/>
+      <rect x="-15" y="-9" width="30" height="18" rx="4" fill="#e8c56a" stroke="#04070c" stroke-width="2"/>
+      <text class="r3-tag" x="0" y="-26" text-anchor="middle">DAN ROBINSON</text>
+    </g>
+  </svg>
+  <div class="r3-sweep" id="r3-sweep"></div>
+  <div class="r3-panel" id="r3-panel"></div>
+  <div class="r3-lab r3-hid" id="r3-la" style="top:180px">THROUGH THE CORE</div>
+  <div class="r3-val r3-hid" id="r3-va" style="top:226px"><span class="r3-w">about</span><span class="r3-n">45</span><span class="r3-w">mph</span></div>
+  <div class="r3-bar" id="r3-ba" style="top:350px; width:360px"></div>
+  <div class="r3-time r3-hid" id="r3-time">6:27 PM</div>
+  <div class="r3-lab r3-hid" id="r3-lb" style="top:586px">WIDE CIRCULATION<br>NORTH OF INTERSTATE 40</div>
+  <div class="r3-val r3-hid" id="r3-vb" style="top:662px"><span class="r3-w">under</span><span class="r3-n" style="color:#7fb2e5">10</span><span class="r3-w">mph</span></div>
+  <div class="r3-bar" id="r3-bb" style="top:786px; width:80px; background:#7fb2e5"></div>
+  <div class="r3-src r3-hid" id="r3-src">NWS Norman</div>
+  <!-- scale bar: 220 px = 1 mile -->
+  <svg class="r3-svg" viewBox="0 0 1920 1080">
+    <line x1="96" y1="960" x2="316" y2="960" stroke="#dfe7ee" stroke-width="3"/>
+    <line x1="96" y1="950" x2="96" y2="970" stroke="#dfe7ee" stroke-width="3"/>
+    <line x1="316" y1="950" x2="316" y2="970" stroke="#dfe7ee" stroke-width="3"/>
+    <text class="r3-rl" x="332" y="968">1 MILE</text>
+  </svg>
+  <div class="r3-note" id="r3-note">RING AND I-40 POSITIONS APPROXIMATE</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const NS = "http://www.w3.org/2000/svg";
+  const grid = document.getElementById("r3-grid");
+  function ln(x1, y1, x2, y2, stroke, w) {
+    const e = document.createElementNS(NS, "line");
+    e.setAttribute("x1", x1); e.setAttribute("y1", y1); e.setAttribute("x2", x2); e.setAttribute("y2", y2);
+    e.setAttribute("stroke", stroke); e.setAttribute("stroke-width", w); grid.appendChild(e);
+  }
+  /* section lines every mile (220 px) from the datum (700, 760) */
+  for (let x = 920; x < 1920; x += 220) ln(x, 0, x, 1080, "#34434f", 2);
+  for (let y = 760 - 660; y < 1080; y += 220) if (y !== 760) ln(560, y, 1920, y, "#34434f", 2);
+
+  const tl = gsap.timeline({ paused: true });
+  const P = "#r3-";
+  function show(id, at, vars) { tl.fromTo(P + id, Object.assign({ autoAlpha: 0 }, vars || {}), { autoAlpha: 1, x: 0, y: 0, duration: 0.5, ease: "power3.out" }, at); }
+  tl.fromTo(P + "sweep", { x: 500 }, { x: 1920, duration: 7.2, ease: "none", repeat: 2 }, 0);
+
+  /* but @0.00: the wide circulation sits over Reuter Road, turning */
+  gsap.set(P + "ring", { x: 1080, y: 730 });
+  gsap.set([P + "ba", P + "bb"], { scaleX: 0, transformOrigin: "0% 50%" });
+  tl.set(P + "ring", { x: 1080, y: 730 }, 0);
+  tl.fromTo(P + "halo", { rotation: 0, transformOrigin: "50% 50%" }, { rotation: 150, duration: 21.5, ease: "none" }, 0);
+  tl.fromTo(P + "core", { scale: 0.9, transformOrigin: "50% 50%" }, { scale: 1, duration: 1.4, ease: "power2.out" }, 0.0);
+  tl.set(P + "ba", { scaleX: 0, transformOrigin: "0% 50%" }, 0);
+  tl.set(P + "bb", { scaleX: 0, transformOrigin: "0% 50%" }, 0);
+
+  /* Dan @4.90: his mark on Reuter Road, eastbound at 60 px/s; core @6.52 (enters x 946 at 6.0); out @10.86 (leaves x 1214 at 10.47) */
+  tl.set(P + "rob", { x: 880, y: 760 }, 0);
+  tl.fromTo(P + "rob", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 4.9);
+  tl.to(P + "rob", { x: 1420, duration: 9.0, ease: "none" }, 4.9);
+  tl.to(P + "path", { strokeDashoffset: 0, duration: 9.0, ease: "none" }, 4.9);
+  tl.fromTo(P + "robp", { attr: { r: 12 }, opacity: 0.9 }, { attr: { r: 46 }, opacity: 0, duration: 1.3, ease: "power1.out", repeat: 6 }, 4.9);
+  show("la", 4.9, { x: -30 });
+  /* about @8.00, 45 @8.24 */
+  show("va", 8.0, { x: -30 });
+  tl.to(P + "ba", { scaleX: 1, duration: 0.6, ease: "power3.out" }, 8.24);
+  /* side @11.40: he is out of the core; the mark leaves the ring (x 1364 at 12.97) */
+  tl.to(P + "rob", { autoAlpha: 0, duration: 0.5 }, 13.4);
+  tl.to(P + "path", { opacity: 0.35, duration: 0.8 }, 13.4);
+
+  /* Later @12.50: the time stamp; north (of Interstate 40) @13.22: the ring jumps ahead in time */
+  show("time", 12.5, { x: -30 });
+  show("lb", 13.22, { x: -30 });
+  tl.to(P + "ring", { x: 1300, y: 318, duration: 2.6, ease: "power2.inOut" }, 13.0);
+  tl.to(P + "trail", { strokeDashoffset: 0, duration: 2.6, ease: "power2.inOut" }, 13.0);
+  /* slowed @15.64: from here the ring creeps at 7 px/s (60 px/s = about 45 mph, so under 10 mph is under 13 px/s) */
+  tl.to(P + "ring", { x: 1330, y: 290, duration: 5.9, ease: "none" }, 15.6);
+  /* less (than) @16.32, 10 @17.00 */
+  show("vb", 16.32, { x: -30 });
+  tl.to(P + "bb", { scaleX: 1, duration: 0.6, ease: "power3.out" }, 17.0);
+  show("src", 17.3, { x: -20 });
+  /* fast (part) @19.02: one small bright spot moving inside the ring */
+  tl.fromTo(P + "fast", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 19.02);
+  tl.fromTo(P + "fast", { rotation: -40, svgOrigin: "0 0" }, { rotation: 320, duration: 2.5, ease: "none" }, 19.0);
+
+  window.__timelines["g-a2s3-ring"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

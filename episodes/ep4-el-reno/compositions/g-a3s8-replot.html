@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a3s8-replot: the same sub-vortex strengthens about 550 yards south-southeast of the car, moves north-northwest,
+     reaches Reuter Road at 6:23:35 PM and nearly stops for about 20 seconds.
+     Brief: mg_specs/replot.md. Road level, 1200 px per mile (0.7456 px per m), north up. Our own redraw.
+     Car (940,430). Strengthens at car + (143,344) = 500 m. Radio Road x 1335 = car + 530 m. -->
+<template>
+<style>
+  #rp38-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 54% 50%, #0b1016 0%, #030507 78%); }
+  .rp38-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .rp38-fig { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; fill:#f2f5f8; }
+  .rp38-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; fill:#f2f5f8; }
+  .rp38-mid { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#dfe7ee; }
+  .rp38-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .rp38-sm { font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px; fill:#93a3b2; }
+</style>
+<div id="rp38-root" data-composition-id="g-a3s8-replot" data-width="1920" data-height="1080">
+  <svg class="rp38-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="rp38-grid" width="300" height="300" patternUnits="userSpaceOnUse" x="135" y="130"><path d="M300,0 L0,0 L0,300" fill="none" stroke="#2a3644" stroke-width="1.5" stroke-opacity="0.55"/></pattern>
+      <radialGradient id="rp38-echo"><stop offset="0" stop-color="#7fb2e5" stop-opacity="0.3"/><stop offset="1" stop-color="#7fb2e5" stop-opacity="0"/></radialGradient>
+      <radialGradient id="rp38-glow"><stop offset="0" stop-color="#e8c56a" stop-opacity="0.6"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/></radialGradient>
+      <mask id="rp38-loopmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="rp38-looprev" d="M620,640 C720,520 880,560 850,680 C825,770 700,760 740,670 C790,570 980,700 1083,774" fill="none" stroke="#fff" stroke-width="12"/></mask>
+    </defs>
+    <rect x="0" y="0" width="1920" height="1080" fill="url(#rp38-grid)"/>
+    <ellipse id="rp38-e1" cx="820" cy="250" rx="330" ry="200" fill="url(#rp38-echo)"/>
+    <ellipse id="rp38-e2" cx="1400" cy="780" rx="360" ry="240" fill="url(#rp38-echo)"/>
+    <ellipse id="rp38-e3" cx="1500" cy="250" rx="260" ry="190" fill="url(#rp38-echo)"/>
+    <!-- Reuter Road east to west, Radio Road north to south -->
+    <path id="rp38-reuter" d="M600,430 L1824,430" stroke="#93a3b2" stroke-width="7" stroke-opacity="0.8"/>
+    <path d="M600,430 L1824,430" stroke="#04070c" stroke-width="1.5" stroke-dasharray="22 18"/>
+    <path id="rp38-radio" d="M1335,54 L1335,1026" stroke="#93a3b2" stroke-width="5" stroke-opacity="0.6"/>
+    <text id="rp38-t-reuter" class="rp38-lab" x="1560" y="466">Reuter Road</text>
+    <text id="rp38-t-radio" class="rp38-lab" x="1353" y="112">Radio Road</text>
+    <!-- the loop back from the highway: not measured here, so dashed -->
+    <path id="rp38-loop" d="M620,640 C720,520 880,560 850,680 C825,770 700,760 740,670 C790,570 980,700 1083,774" fill="none" stroke="#e8c56a" stroke-width="3" stroke-dasharray="10 9" stroke-opacity="0.8" mask="url(#rp38-loopmask)"/>
+    <!-- 500 m from the car to where it strengthens: 373 px -->
+    <path id="rp38-dim" d="M940,430 L1083,774" stroke="#dfe7ee" stroke-width="2.5" stroke-dasharray="3 7"/>
+    <text id="rp38-t-550" class="rp38-mid" x="1046" y="604">about 550 yards</text>
+    <path id="rp38-north2" d="M1083,774 L975,430" stroke="#e8c56a" stroke-width="3" stroke-dasharray="10 9" stroke-opacity="0.8"/>
+    <!-- the sub-vortex: r 60 px = 160 m across, the middle of 90 to 230 m -->
+    <g id="rp38-sv"><g id="rp38-svin">
+      <circle id="rp38-glowc" cx="0" cy="0" r="120" fill="url(#rp38-glow)"/>
+      <circle cx="0" cy="0" r="60" fill="#e8c56a" fill-opacity="0.2" stroke="#f5d98b" stroke-width="4"/>
+      <circle id="rp38-rim" cx="0" cy="0" r="60" fill="none" stroke="#f5d98b" stroke-width="12" stroke-opacity="0.75" stroke-dasharray="5 26.4"/>
+    </g></g>
+    <!-- the research car: a marker only -->
+    <path id="rp38-car" d="M940,414 L956,430 L940,446 L924,430 Z" fill="#f2f5f8" stroke="#04070c" stroke-width="2"/>
+    <text id="rp38-t-car" class="rp38-mid" x="900" y="398" text-anchor="end">Research car</text>
+    <text id="rp38-t-str" class="rp38-lab" x="1083" y="880" text-anchor="middle" fill="#dfe7ee">Strengthens here</text>
+    <!-- rail -->
+    <text id="rp38-l1" class="rp38-lab" x="96" y="150">After US-81</text>
+    <text id="rp38-v1" class="rp38-mid" x="96" y="192">4 to 5 minutes</text>
+    <text id="rp38-l2" class="rp38-lab" x="96" y="300">Reaches Reuter Road</text>
+    <text id="rp38-v2" class="rp38-big" x="94" y="364">6:23:35 PM</text>
+    <text id="rp38-s2" class="rp38-sm" x="96" y="400">Wurman et al. 2014</text>
+    <text id="rp38-l3" class="rp38-lab" x="96" y="560">Nearly still for about</text>
+    <text id="rp38-n3" class="rp38-fig" x="200" y="650" text-anchor="end">0</text>
+    <text id="rp38-u3" class="rp38-mid" x="218" y="650">seconds</text>
+    <text id="rp38-t-sch1" class="rp38-sm" x="96" y="880">Loop back from US-81:</text>
+    <text id="rp38-t-sch2" class="rp38-sm" x="96" y="908">not measured here · schematic</text>
+    <!-- scale bar: 341 px = 500 yards -->
+    <path id="rp38-bar" d="M96,986 L437,986 M96,976 L96,996 M437,976 L437,996" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+    <text id="rp38-t-bar" class="rp38-sm" x="96" y="964" fill="#dfe7ee">500 yards</text>
+    <text id="rp38-t-own" class="rp38-sm" x="96" y="1022">Our redraw of mobile-radar measurements · sub-vortex drawn at the middle of about 300 to 750 ft</text>
+    <path id="rp38-north" d="M1760,150 L1760,96 M1748,112 L1760,92 L1772,112" fill="none" stroke="#93a3b2" stroke-width="3"/>
+    <text id="rp38-t-n" class="rp38-lab" x="1751" y="182">N</text>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a3s8-replot", P = "#rp38-";
+  /* cues: audio/a3-s8.words.json (comp-local = segment seconds) */
+  const CUES = {
+    left: 1.70,     /* left the highway and looped back @1.70 */
+    strong: 5.74,   /* strengthened @5.74 */
+    n550: 6.48,     /* 550 yards @6.48 */
+    moved: 9.30,    /* moved north @9.30 */
+    between: 11.58, /* Between 4 and 5 minutes @11.58 */
+    reached: 15.00, /* reached Reuter Road @15.00 */
+    stopped: 16.60, /* nearly stopped @16.60 */
+    n20: 19.28      /* 20 seconds @19.28 */
+  };
+  const DUR = 20.8;
+  const tl = gsap.timeline({ paused: true });
+  /* hidden from the first frame: set now (a paused timeline has not rendered its time-0 sets yet) and again at 0 */
+  const HIDE = [P + "dim", P + "t-550", P + "north2", P + "t-str", P + "l1", P + "v1", P + "l2", P + "v2", P + "s2", P + "l3", P + "n3", P + "u3"];
+  gsap.set(HIDE, { autoAlpha: 0 });
+  gsap.set(P + "sv", { x: 620, y: 640 });
+  gsap.set(P + "svin", { opacity: 0.45 });
+  tl.set(HIDE, { autoAlpha: 0 }, 0);
+  tl.set(P + "sv", { x: 620, y: 640 }, 0);
+
+  /* whole window: the sub-vortex spins counter-clockwise, echoes drift */
+  tl.fromTo(P + "rim", { rotation: 0, svgOrigin: "0 0" }, { rotation: -1248, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e1", { x: -80, y: 30 }, { x: 60, y: -30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e2", { x: -60, y: 20 }, { x: 80, y: -40, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e3", { x: -70, y: 30 }, { x: 70, y: -20, duration: DUR, ease: "none" }, 0);
+  tl.fromTo([P + "bar", P + "t-bar", P + "t-own", P + "t-sch1", P + "t-sch2"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.06 }, 0.1);
+
+  /* left the highway and looped back @1.70: the faint circle rides the dashed loop from 0.3 to 5.6 */
+  const rev = document.querySelector(P + "looprev"), sv = document.querySelector(P + "sv");
+  if (rev && sv) {
+    const len = Math.ceil(rev.getTotalLength()) + 1, N = 60, legs = [], TRAVEL = 5.3;
+    for (let i = 1; i <= N; i++) { const pt = rev.getPointAtLength((len - 1) * i / N); legs.push({ x: pt.x, y: pt.y, duration: TRAVEL / N, ease: "none" }); }
+    gsap.set(rev, { strokeDasharray: len, strokeDashoffset: len });
+    tl.set(rev, { strokeDasharray: len, strokeDashoffset: len }, 0);
+    tl.to(rev, { strokeDashoffset: 0, duration: TRAVEL, ease: "none" }, 0.3);
+    tl.to(sv, { keyframes: legs }, 0.3);
+  }
+
+  /* strengthened @5.74: it brightens. 550 yards @6.48: the measured distance from the car */
+  tl.to(P + "svin", { opacity: 1, duration: 0.5, ease: "power2.out" }, CUES.strong);
+  tl.fromTo(P + "glowc", { scale: 0.6, svgOrigin: "0 0" }, { scale: 1.25, duration: 0.6, ease: "back.out(2)", immediateRender: false }, CUES.strong);
+  tl.fromTo(P + "t-str", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.strong + 0.2);
+  tl.fromTo(P + "dim", { autoAlpha: 0, scale: 0, svgOrigin: "940 430" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, CUES.n550 - 0.3);
+  tl.fromTo(P + "t-550", { autoAlpha: 0, x: 24 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.n550);
+  tl.to([P + "t-550", P + "dim", P + "t-str"], { autoAlpha: 0, duration: 0.3 }, CUES.moved - 0.4);
+
+  /* moved north @9.30: north-northwest to the road, arriving on "reached" @15.00 */
+  tl.set(P + "north2", { autoAlpha: 1 }, CUES.moved);
+  tl.fromTo(P + "north2", { scale: 0, svgOrigin: "1083 774" }, { scale: 1, duration: 5.7, ease: "power1.inOut", immediateRender: false }, CUES.moved);
+  tl.to(P + "sv", { x: 975, y: 430, duration: 5.7, ease: "power1.inOut" }, CUES.moved);
+
+  /* Between 4 and 5 minutes @11.58; reached @15.00: the paper's clock time */
+  tl.fromTo([P + "l1", P + "v1"], { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.12 }, CUES.between);
+  tl.fromTo(P + "l2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.reached - 0.2);
+  tl.fromTo(P + "v2", { autoAlpha: 0, scale: 1.4, svgOrigin: "96 364" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.in" }, CUES.reached + 0.25);
+  tl.fromTo(P + "s2", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.reached + 0.9);
+  tl.to(P + "reuter", { attr: { "stroke-width": 12 }, duration: 0.35, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.reached + 0.28);
+
+  /* nearly stopped @16.60: the circle only trembles, and the counter runs 0 to 20, landing on "20" @19.28 */
+  tl.to(P + "sv", { x: 978, y: 428, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 5 }, CUES.reached + 0.1);
+  tl.fromTo([P + "l3", P + "n3", P + "u3"], { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, CUES.stopped);
+  const c3 = { v: 0 }, n3 = document.querySelector(P + "n3");
+  tl.fromTo(c3, { v: 0 }, { v: 20, duration: 2.68, ease: "none", onUpdate: function () { if (n3) n3.textContent = String(Math.round(c3.v)); } }, CUES.stopped);
+  tl.fromTo(P + "n3", { scale: 1.15, svgOrigin: "200 650" }, { scale: 1, duration: 0.35, ease: "power3.out", immediateRender: false }, CUES.n20);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

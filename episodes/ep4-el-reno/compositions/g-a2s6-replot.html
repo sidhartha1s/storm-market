@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a2s6-replot: the sub-vortex was about 300 to 750 ft across, inside a circulation more than 45 fields wide.
+     Brief: mg_specs/replot.md. Scale 300 px per mile, north up; the lens is 1 px = 2.5 ft. Our own redraw. -->
+<template>
+<style>
+  #rp26-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 54% 50%, #0b1016 0%, #030507 78%); }
+  .rp26-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .rp26-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; fill:#f2f5f8; }
+  .rp26-mid { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#dfe7ee; }
+  .rp26-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .rp26-sm { font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px; fill:#93a3b2; }
+</style>
+<div id="rp26-root" data-composition-id="g-a2s6-replot" data-width="1920" data-height="1080">
+  <svg class="rp26-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <pattern id="rp26-grid" width="150" height="150" patternUnits="userSpaceOnUse" x="140" y="98"><path d="M150,0 L0,0 L0,150" fill="none" stroke="#2a3644" stroke-width="1.5" stroke-opacity="0.55"/></pattern>
+      <radialGradient id="rp26-echo"><stop offset="0" stop-color="#7fb2e5" stop-opacity="0.34"/><stop offset="1" stop-color="#7fb2e5" stop-opacity="0"/></radialGradient>
+      <radialGradient id="rp26-glow"><stop offset="0" stop-color="#e8c56a" stop-opacity="0.75"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/></radialGradient>
+      <radialGradient id="rp26-lensbg"><stop offset="0" stop-color="#15202b" stop-opacity="0.95"/><stop offset="1" stop-color="#0b1016" stop-opacity="0.95"/></radialGradient>
+    </defs>
+    <rect x="0" y="0" width="1920" height="1080" fill="url(#rp26-grid)"/>
+    <!-- the wide circulation: r 390 px = 1.3 miles -->
+    <g id="rp26-ring">
+      <ellipse id="rp26-e1" cx="900" cy="420" rx="150" ry="110" fill="url(#rp26-echo)"/>
+      <ellipse id="rp26-e2" cx="1190" cy="700" rx="120" ry="90" fill="url(#rp26-echo)"/>
+      <ellipse id="rp26-e3" cx="930" cy="740" rx="170" ry="100" fill="url(#rp26-echo)"/>
+      <circle cx="1040" cy="548" r="390" fill="none" stroke="#5a768f" stroke-width="30" stroke-opacity="0.22"/>
+      <circle id="rp26-edge" cx="1040" cy="548" r="390" fill="none" stroke="#7fb2e5" stroke-width="2.5"/>
+      <circle id="rp26-ticks" cx="1040" cy="548" r="390" fill="none" stroke="#7fb2e5" stroke-width="14" stroke-opacity="0.7" stroke-dasharray="5 44"/>
+    </g>
+    <!-- 45.76 fields across the ring: 780 px / 17.05 px per field -->
+    <path id="rp26-fieldrow" d="M650,548 L1430,548" stroke="#dfe7ee" stroke-width="12" stroke-dasharray="15.05 2"/>
+    <text id="rp26-t-45" class="rp26-mid" x="1040" y="604" text-anchor="middle">More than 45 fields across</text>
+    <!-- the sub-vortex: r 15 px = 160 m across, the middle of 90 to 230 m -->
+    <g id="rp26-sv"><g id="rp26-svin">
+      <circle cx="0" cy="0" r="34" fill="url(#rp26-glow)"/>
+      <circle cx="0" cy="0" r="15" fill="#e8c56a" fill-opacity="0.35" stroke="#f5d98b" stroke-width="3"/>
+      <path id="rp26-spin" d="M0,-9 A9,9 0 0 0 -9,0" fill="none" stroke="#f2f5f8" stroke-width="3"/>
+    </g>
+      <path id="rp26-lead" d="M-20,-8 L-52,-26" stroke="#e8c56a" stroke-width="2"/>
+      <text id="rp26-t-sv" class="rp26-mid" x="-60" y="-24" text-anchor="end" fill="#e8c56a">Sub-vortex</text>
+    </g>
+    <!-- the lens: the same sub-vortex enlarged, 1 px = 2.5 ft. Inner circle 295 ft, outer circle 755 ft -->
+    <g id="rp26-lens">
+      <circle cx="330" cy="500" r="196" fill="url(#rp26-lensbg)" stroke="#2a3644" stroke-width="3"/>
+      <text class="rp26-lab" x="330" y="286" text-anchor="middle">Sub-vortex, enlarged</text>
+      <g id="rp26-f25">
+        <rect x="180" y="468" width="120" height="64" fill="#5a768f" fill-opacity="0.22" stroke="#7fb2e5" stroke-width="2"/>
+        <rect x="300" y="468" width="120" height="64" fill="#5a768f" fill-opacity="0.22" stroke="#7fb2e5" stroke-width="2"/>
+        <rect x="420" y="468" width="60" height="64" fill="#5a768f" fill-opacity="0.22" stroke="#7fb2e5" stroke-width="2"/>
+      </g>
+      <rect id="rp26-f1" x="270" y="468" width="120" height="64" fill="#7fb2e5" fill-opacity="0.3" stroke="#dfe7ee" stroke-width="3"/>
+      <circle id="rp26-cmin" cx="330" cy="500" r="59" fill="#e8c56a" fill-opacity="0.18" stroke="#f5d98b" stroke-width="3"/>
+      <circle id="rp26-cmax" cx="330" cy="500" r="151" fill="none" stroke="#f5d98b" stroke-width="3" stroke-dasharray="9 7"/>
+    </g>
+    <text id="rp26-big" class="rp26-big" x="96" y="170">about 300 to 750 ft</text>
+    <text id="rp26-t-src" class="rp26-lab" x="96" y="212">across · Wurman et al. 2014</text>
+    <text id="rp26-t-fields" class="rp26-mid" x="96" y="760">1 to 2½ football fields</text>
+    <text id="rp26-t-lens" class="rp26-sm" x="96" y="796">Lens scale: 1 field = 300 ft</text>
+    <!-- scale bar: 300 px = 1 mile -->
+    <path id="rp26-bar" d="M96,986 L396,986 M96,976 L96,996 M396,976 L396,996" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+    <text id="rp26-t-bar" class="rp26-sm" x="96" y="964" fill="#dfe7ee">1 mile</text>
+    <text id="rp26-t-ring" class="rp26-sm" x="412" y="993">Ring: 2.6 miles at its widest</text>
+    <text id="rp26-t-own" class="rp26-sm" x="96" y="1022">Our redraw of mobile-radar measurements</text>
+    <path id="rp26-north" d="M1760,150 L1760,96 M1748,112 L1760,92 L1772,112" fill="none" stroke="#93a3b2" stroke-width="3"/>
+    <text id="rp26-t-n" class="rp26-lab" x="1751" y="182">N</text>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a2s6-replot", P = "#rp26-";
+  /* cues: audio/a2-s6.words.json (comp-local = segment seconds) */
+  const CUES = {
+    sub: 1.36,      /* sub-vortex @1.36 */
+    tracked: 3.96,  /* tracked @3.96 */
+    n300: 5.66,     /* 300 @5.66 */
+    n750: 6.30,     /* 750 @6.30 */
+    one: 8.84,      /* one @8.84 */
+    twohalf: 9.16,  /* two and a half @9.16 */
+    inside: 10.98,  /* inside a circulation @10.98 */
+    n45: 12.68      /* 45 fields wide @12.68 */
+  };
+  const DUR = 14.7;
+  const tl = gsap.timeline({ paused: true });
+  /* hidden from the first frame: set now (a paused timeline has not rendered its time-0 sets yet) and again at 0 */
+  const HIDE = [P + "lead", P + "t-sv", P + "lens", P + "cmin", P + "cmax", P + "f1", P + "f25", P + "big", P + "t-src", P + "t-fields", P + "t-lens", P + "fieldrow", P + "t-45"];
+  gsap.set(HIDE, { autoAlpha: 0 });
+  tl.set(HIDE, { autoAlpha: 0 }, 0);
+
+  /* whole window: the wide circulation turns counter-clockwise, echoes drift, the sub-vortex spins and drifts */
+  tl.fromTo(P + "ticks", { rotation: 0, svgOrigin: "1040 548" }, { rotation: -118, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e1", { x: -30, y: 10 }, { x: 40, y: -30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e2", { x: 30, y: -20 }, { x: -50, y: 30, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "e3", { x: -40, y: 0 }, { x: 50, y: -20, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "sv", { x: 1130, y: 410 }, { x: 1176, y: 344, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "spin", { rotation: 0, svgOrigin: "0 0" }, { rotation: -360, duration: 1.1, ease: "none", repeat: 13 }, 0);
+  tl.fromTo(P + "svin", { scale: 0.2, svgOrigin: "0 0" }, { scale: 1, duration: 0.6, ease: "back.out(2.5)" }, 0.15);
+  tl.fromTo([P + "bar", P + "t-bar", P + "t-ring", P + "t-own"], { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out", stagger: 0.08 }, 0.2);
+
+  /* sub-vortex @1.36: the name */
+  tl.fromTo([P + "lead", P + "t-sv"], { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.sub);
+  tl.to(P + "svin", { scale: 1.5, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.sub);
+
+  /* tracked @3.96: the lens opens. 300 @5.66: the small size. 750 @6.30: the large size */
+  tl.fromTo(P + "lens", { autoAlpha: 0, scale: 0.6, svgOrigin: "330 500" }, { autoAlpha: 1, scale: 1, duration: 0.6, ease: "power3.out" }, CUES.tracked);
+  tl.fromTo(P + "cmin", { autoAlpha: 0, scale: 0.3, svgOrigin: "330 500" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, CUES.n300);
+  tl.fromTo(P + "big", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, CUES.n300);
+  tl.fromTo(P + "cmax", { autoAlpha: 0, scale: 0.39, svgOrigin: "330 500" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, CUES.n750);
+  tl.fromTo(P + "t-src", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.n750 + 0.6);
+
+  /* one @8.84: one field across the small size. two and a half @9.16: two and a half across the large size */
+  tl.fromTo(P + "f1", { autoAlpha: 0, scaleX: 0, svgOrigin: "330 500" }, { autoAlpha: 1, scaleX: 1, duration: 0.3, ease: "power3.out" }, CUES.one);
+  tl.fromTo([P + "t-fields", P + "t-lens"], { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.1 }, CUES.one);
+  tl.fromTo(P + "f25", { autoAlpha: 0, scaleX: 0.4, svgOrigin: "330 500" }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, CUES.twohalf);
+
+  /* inside a circulation @10.98: the ring answers. 45 @12.68: fields laid across it */
+  tl.to(P + "edge", { attr: { "stroke-width": 9 }, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1 }, CUES.inside);
+  tl.to([P + "lead", P + "t-sv"], { autoAlpha: 0, duration: 0.3 }, CUES.inside + 0.9);
+  tl.fromTo(P + "fieldrow", { autoAlpha: 1, scaleX: 0, svgOrigin: "650 548" }, { scaleX: 1, duration: 1.0, ease: "power2.out", immediateRender: false }, CUES.n45 - 0.5);
+  tl.fromTo(P + "t-45", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.n45);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
