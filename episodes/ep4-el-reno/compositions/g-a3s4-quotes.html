@@ -5,11 +5,12 @@
 <!-- g-a3s4-quotes (A3-S4) · window 10.24 s · brief: mg_specs/cards.md
      Overlay: root transparent for the whole window, the sequence continues beneath. Two attributed text cards, one at a time,
      exact words, source line "weather.com" (research/facts.md, not re-pulled). Text only, never a voice or a photograph.
-     Cues are audio/a3-s4.words.json seconds. -->
+     Cues are audio/a3-s4.words.json seconds. Every timeline position is a literal number (sweep check 7); each card
+     drifts left at about 6.6 px/s while it is up. -->
 <template>
 <style>
   #qt4-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
-  .qt4-card { position:absolute; left:120px; top:610px; width:1400px; height:330px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+  .qt4-card { position:absolute; left:160px; top:610px; width:1400px; height:330px; box-sizing:border-box; background:rgba(10,16,24,0.55);
     backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
   .qt4-h { opacity:0; visibility:hidden; }
   .qt4-name { position:absolute; left:44px; top:30px; font:900 52px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
@@ -37,26 +38,26 @@ window.__timelines = window.__timelines || {};
 (function () {
   var D = 10.24, P = "#qt4-";
   var tl = gsap.timeline({ paused: true });
-  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.4, ease: "power3.out" }, t); }
-  function float(id, a, b) { var n = Math.floor((b - a) / 1.6) - 1; if (n >= 0) tl.to(P + id, { y: -6, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: n }, a); }
+  function hid(dx, dy) { return { autoAlpha: 0, x: dx, y: dy }; }
+  function vis() { return { autoAlpha: 1, x: 0, y: 0, duration: 0.4, ease: "power3.out" }; }
 
   /* BETTES @0.00: his card and name; SAID @0.76: the first sentence and the source */
-  show("cb", 0.0, -60, 0);
-  show("sb", 0.76, 0, 16);
-  show("b1", 0.76, 0, 16);
+  tl.fromTo(P + "cb", hid(60, 0), vis(), 0.0);
+  tl.fromTo(P + "sb", hid(0, 16), vis(), 0.76);
+  tl.fromTo(P + "b1", hid(0, 16), vis(), 0.76);
   /* FLOATING @2.52 · AT ONE POINT @3.82 */
-  show("b2", 2.52, 0, 16);
-  show("b3", 3.82, 0, 16);
-  float("cb", 0.6, 5.6);
+  tl.fromTo(P + "b2", hid(0, 16), vis(), 2.52);
+  tl.fromTo(P + "b3", hid(0, 16), vis(), 3.82);
+  tl.to(P + "cb", { x: -35, duration: 5.3, ease: "none" }, 0.42);   /* slow drift left, 6.6 px/s */
   tl.to(P + "cb", { x: -1600, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 5.72);
   /* ANDERSON @6.28 · REMEMBERED @6.58 · GLASS @7.14 */
-  show("ca", 6.28, -60, 0);
-  show("sa", 6.58, 0, 16);
-  show("a1", 6.58, 0, 16);
-  show("a2", 6.70, 0, 16);
-  show("a3", 7.14, 0, 16);
-  float("ca", 6.9, 9.6);
-  tl.to(P + "ca", { x: -1600, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
+  tl.fromTo(P + "ca", hid(60, 0), vis(), 6.28);
+  tl.fromTo(P + "sa", hid(0, 16), vis(), 6.58);
+  tl.fromTo(P + "a1", hid(0, 16), vis(), 6.58);
+  tl.fromTo(P + "a2", hid(0, 16), vis(), 6.70);
+  tl.fromTo(P + "a3", hid(0, 16), vis(), 7.14);
+  tl.to(P + "ca", { x: -20, duration: 2.9, ease: "none" }, 6.72);
+  tl.to(P + "ca", { x: -1600, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.64);
   window.__timelines["g-a3s4-quotes"] = tl;
 })();
 </script>
