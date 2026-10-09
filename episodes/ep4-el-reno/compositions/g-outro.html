@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-outro (Z1-S3, close): channel wordmark. Base: the shipped ep-nepal-floods-2026 g-outro (DESIGN.md "Signature closing
+     footnote"), retuned by hand to audio/z1-s3.words.json. Host starts 12.00 s into Z1-S3 (episode 1321.14, 6.24 s), so the
+     card cuts in just before "This was The Warning Hour" and the closing lines before it play over footage, as in Nepal.
+     Comp-local cues (word time minus 12.00): This 0.30, was 0.62, The 0.98, Warning 1.16, Hour 1.42; voice ends 1.70;
+     then the 4 s bed-out tail. Rule 1.7, breath 2.1, fade to black over the last 0.92 s. -->
+<template>
+<style>
+  .ou-wrap { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ou-glow { position:absolute; left:360px; top:240px; width:1200px; height:600px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(216,161,58,0.12), rgba(216,161,58,0) 70%); }
+  .ou-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.04) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .ou-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ou-mark { position:absolute; left:0; right:0; top:462px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:120px; line-height:140px; letter-spacing:6px; color:#f2f5f8; white-space:nowrap; }
+  /* word gaps are explicit margins (a whitespace node before "Hour" rendered about 10 px in Nepal: "The WarningHour") */
+  .ou-mark span { display:inline-block; }
+  #ou-w2, #ou-w3 { margin-left:0.33em; }
+  .ou-amber { color:#d8a13a; }
+  .ou-rule { position:absolute; left:660px; width:600px; top:630px; height:4px; border-radius:2px; background:#d8a13a; }
+</style>
+<div class="ou-wrap" data-composition-id="g-outro" data-width="1920" data-height="1080" data-duration="6.24">
+  <div class="ou-grid" id="ou-grid"></div>
+  <div class="ou-glow" id="ou-glow"></div>
+  <div class="ou-stage" id="ou-stage">
+    <div class="ou-mark" id="ou-mark"><span id="ou-w1">The</span><span class="ou-amber" id="ou-w2">Warning</span><span id="ou-w3">Hour</span></div>
+    <div class="ou-rule" id="ou-rule"></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 6.24;
+  /* a paused timeline does not render a set at 0 on seek 0: the hidden states are applied at build time as well */
+  gsap.set("#ou-rule", { scaleX: 0, transformOrigin: "50% 50%" });
+  gsap.set(["#ou-w1", "#ou-w2", "#ou-w3"], { autoAlpha: 0, y: 10 });
+  tl.set("#ou-rule", { scaleX: 0, transformOrigin: "50% 50%" }, 0);
+  tl.set(["#ou-w1", "#ou-w2", "#ou-w3"], { autoAlpha: 0, y: 10 }, 0);
+
+  /* ambient, whole window: slow push on the stage, glow and grid drift, never a static hold */
+  tl.fromTo("#ou-stage", { scale: 1 }, { scale: 1.05, transformOrigin: "50% 50%", duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#ou-glow", { x: -80 }, { x: 80, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#ou-grid", { x: 0 }, { x: 70, duration: DUR, ease: "none" }, 0);
+
+  /* THE @0.98, WARNING @1.16, HOUR @1.42: each word lands on the voice */
+  tl.fromTo(["#ou-glow", "#ou-grid"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 0);
+  tl.to("#ou-w1", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.98);
+  tl.to("#ou-w2", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.16);
+  tl.to("#ou-w3", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.42);
+  tl.to("#ou-rule", { scaleX: 1, duration: 0.9, ease: "power3.out" }, 1.7);
+  /* the amber word breathes once after the rule lands */
+  tl.to("#ou-w2", { scale: 1.04, transformOrigin: "50% 60%", duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.1);
+
+  /* fade to black by the end, the 4 s bed-out tail */
+  tl.to("#ou-stage", { autoAlpha: 0, duration: 0.92, ease: "power1.in" }, DUR - 0.92);
+  tl.to(["#ou-glow", "#ou-grid"], { autoAlpha: 0, duration: 0.92, ease: "power1.in" }, DUR - 0.92);
+  window.__timelines["g-outro"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
