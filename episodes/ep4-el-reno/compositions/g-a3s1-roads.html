@@ -111,6 +111,12 @@ window.__timelines = window.__timelines || {};
   /* The @0.00: the ring comes in from the west; 6 (.19) @3.42: its centre is on US-81 near Reno Road by 4.4 */
   tl.fromTo(P + "ring", { x: 40, y: 630 }, { x: 760, y: 630, duration: 4.4, ease: "power1.out" }, 0);
   tl.to(P + "ring", { x: 820, y: 622, duration: 15.3, ease: "none" }, 4.4);
+  /* no cue: each comes on after the ring's edge has cleared it (Reuter label by 2.2 s, Reno label by 3.0 s, scale and notes by 3.3 s) */
+  tl.fromTo(P + "lre", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 2.5);
+  tl.fromTo(P + "lrn", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 3.3);
+  tl.fromTo(P + "scale", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 3.6);
+  tl.fromTo(P + "nt1", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 3.6);
+  tl.fromTo(P + "nt2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 3.7);
   tl.fromTo(P + "time", { autoAlpha: 0, scale: 1.5, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 3.42);
   show("tsub", 3.9, { x: -30 });
   tl.fromTo(P + "ctr", { attr: { r: 7 } }, { attr: { r: 15 }, duration: 0.5, ease: "power2.out", yoyo: true, repeat: 1 }, 4.3);
