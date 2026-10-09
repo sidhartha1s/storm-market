@@ -65,7 +65,7 @@ window.__timelines = window.__timelines || {};
   show("l1", 5.52, -30, 0);
   show("l2", 5.88, -30, 0);                                 /* broadcasters @5.88 */
   show("l3", 7.90, -30, 0);                                 /* on the tornadoes @7.90 */
-  show("l4", 8.74, -30, 0);                                 /* and not on the flooding @8.74 */
+  show("l4", 8.74, -30, 0); show("l5", 8.74, -30, 0);       /* and not on the flooding @8.74 (one cue, two short lines) */
   tl.fromTo($("acc"), { scaleY: 1 }, { scaleY: 0.5, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3, transformOrigin: "50% 0%", immediateRender: false }, 5.9);
   tl.to([$("enma"), $("card")], { x: -1400, autoAlpha: 0, duration: 0.55, ease: "power3.in", stagger: 0.05 }, 10.12);
   tl.to({}, { duration: 0.01 }, 10.74);
