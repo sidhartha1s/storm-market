@@ -38,7 +38,7 @@ Gates: `node scripts/graphics_qc.mjs episodes/<slug>`, then `python3 scripts/run
 4. Seek order: each cue second captured twice (fresh page forward only; then seek 0, past it, back to it) and the two frames match. Never `autoAlpha`, `opacity` or `svgOrigin` only in the from vars of a deferred tween.
 5. No label under a line, ring, arrow, dot, rain or another label, including the first half second of every entrance.
 6. Shared numbers (road layout, scales, counts) are computed from the brief's table by a script and stated in the receipt, never placed by eye.
-7. Overlay comps: one frame composited over the real picture mounted under them at that second; a transparent span names the clip that sits under it.
+7. Overlay comps: one frame composited over the real picture mounted under them at that second; a transparent span names the clip that sits under it. A label that names a place, a date or an event is a claim about that picture: the file under every second of the label is footage of that place and date by its ledger row, never stock.
 A family built on one base: send the base alone for a full-size read before copying it.
 
 ## 8. RECEIPT (final message, ≤15 lines)
