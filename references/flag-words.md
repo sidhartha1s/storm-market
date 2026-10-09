@@ -13,7 +13,7 @@ launder a word the voice track was not allowed to say.
 **Severity.** `hard` = never use it, anywhere, no exception — gate `scripts/flag_words.py`
 fails the build. `soft` = the word is not banned outright (it is often the plainest, most
 factual choice, or genuinely hard to avoid in a disaster documentary), but the alternative
-reads better in TTS narration and should be the default; the gate warns, does not fail.
+is the default (owner 9 Oct 26: YouTube flags these words and can suppress the video) and reads better in TTS narration; the gate warns, does not fail.
 
 **Inflections.** The gate matches every listed term plus its plain English suffixes
 (s/es/d/ed/ing) automatically — "kill" also catches "kills" and "killing" without a separate
@@ -52,16 +52,16 @@ quote that was not actually said.
 | doom / doomed | hard | the outlook worsened; the odds turned against them | Sensational framing; the underlying fact is usually a plain probability or forecast statement. |
 | execute | soft | carried out; put into action | Ambiguous word (business sense vs. violent sense); the plain verb removes the ambiguity outright. |
 | destroy / destroyed | soft | leveled; reduced to rubble; wiped out | Plain, factual, and usually the right word — vary it for rhythm, not for risk. |
-| dead | soft | did not survive; had died | Blunt but accurate; prefer a softer construction when the sentence allows it. |
-| death / deaths | soft | the toll; the lives lost | Necessary factual noun in this niche; keep it, but do not stack it sentence after sentence. |
-| death toll | soft | the number who did not survive; the toll | Standard journalistic phrase; low risk, use when precision matters. |
-| died | soft | lost their lives; did not survive | Genuinely low-risk — plainer and more clinical than "killed". This is usually the correct default, not a word to chase out of the script. |
+| dead | soft | did not survive; lost their lives | Owner 9 Oct 26: soft wording is the default; the plain word stays only where precision needs it. |
+| death / deaths | soft | the toll; the lives lost | Owner 9 Oct 26: the alternative is the default. The plain noun may stay where a sourced count needs it, never sentence after sentence. |
+| death toll | soft | the number who did not survive; the toll | Owner 9 Oct 26: the alternative is the default; the plain phrase only for a sourced count. |
+| died | soft | lost their lives; did not survive | Owner 9 Oct 26: "use it in a soft way because YouTube flags those and can suppress it. Maybe something like lost life." Write the alternative by default. The plain word may stay once or twice where a count needs it, never stacked. |
 | body / bodies | soft | remains; those who did not survive | Necessary in recovery-effort narration; keep it factual, avoid stacking with other hard terms in the same sentence. |
 | corpse | hard | the remains; the person who did not survive | More clinical/graphic than "body" with no added information — always replaceable. |
 | drowned | soft | did not survive the rising water; was lost to the floodwaters | Plain cause-of-death term, necessary for flood and storm-surge episodes (Katrina); vary it, do not chase it out. |
 | casualties | soft | the toll; people affected | Official NWS/NIST report language; safe but clinical — prefer a human-scale phrase when the sentence allows it. |
 | fatal / fatalities | soft | did not survive; claimed [n] lives | Official/clinical register; fine in a sourced-report sentence, vary elsewhere. |
-| victims | soft | those who died; survivors and their families | Hard to avoid entirely (especially "victims' families"); name individuals per script-os rule 12 instead of repeating this word. |
+| victims | soft | those who lost their lives; survivors and their families | Hard to avoid entirely (especially "victims' families"); name individuals per script-os rule 12 instead of repeating this word. |
 
 ## On-screen text rule
 Every row above applies identically to on-screen text: lower-thirds, popfigs, chapter cards,

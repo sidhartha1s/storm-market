@@ -9,7 +9,7 @@ Same channel, same repo, same voice, same claim-safe footage doctrine as `/storm
 This file is the tracked copy in `storm-market/skills/mini-storms/`; `~/.claude/skills/mini-storms` is a junction to it.
 Different product: an **8–12 min information-passing video** on this week's disaster outlier,
 cut like news (stitched clips + stills with motion, red stat pops, vignette, music bed), built
-and shipped in **≤3 hours wall-clock including render**, with ONE owner gate.
+and shipped in **≤3 hours wall-clock including render**, with two owner gates: the angle, then the packaging.
 
 **From 2026-09-15 the news lane ships Format C (rolling present-tense update) by default; read that section of
 FORMAT.md first, then the ops slate in `ops/programme-14d.md` and the live cards in `ops/tracker.json`.**
@@ -35,8 +35,9 @@ Comments of every reference video (both lanes): analysed into `references/commen
 
 | Step | Budget | Output |
 |---|---|---|
-| 1. Topic + packaging | 25 min | `packaging.md`: 3 titles, thumbnail text (top-of-frame, ≤4 words, BREAKING-style kicker), the 3–5 s hook sentence, intro outline, chapter list with the per-section word/time table |
-| 2. OWNER GATE | — | Owner picks title/hook in chat. The ONLY gate. Never infer approval. |
+| 0. Topic + ANGLE LOCK (OWNER GATE) | 15 min, then his answer | Topic picked first (step details 0). Then candidate angles shown in chat per `references/angle.md` (owner 9 Oct 26: "yes minis too"); park until he locks one in words; write `episodes/ms-<slug>/angle.md`. No title, thumbnail text or hook exists before that file does |
+| 1. Packaging | 25 min | `packaging.md`: 3 titles, thumbnail text (top-of-frame, ≤4 words, BREAKING-style kicker), the 3–5 s hook sentence, intro outline, chapter list with the per-section word/time table |
+| 2. OWNER GATE | — | Owner picks title/hook in chat. The second and last gate. Never infer approval. |
 | 3. Script | 25 min | `edit_script.md` (storm-episode segment format so `tts_episode.py` works unchanged), then the humanise pass (3b) |
 | 4. TTS + words | 10 min | `python3 scripts/voice_tool.py` at kickoff (exit 1 names the missing piece), then `python3 scripts/tts_episode.py episodes/ms-<slug>`: TTS, lane tempo, words.json in one pass |
 | 5. Sourcing | 35 min | `media/` + `provenance.csv`; pool reused from `library/mini-storms/<topic>/` first |
@@ -47,11 +48,12 @@ Comments of every reference video (both lanes): analysed into `references/commen
 
 **The tracker moves with the work.** Every phase change (script, TTS, checks, preview launched/done, full render launched/done, master in the main checkout, upload) runs `python3 ops/build_tracker.py set <slug> <phase> <status> "note"` in the same turn (a new video first gets `python3 ops/build_tracker.py add <slug> <lane> "<DD Mon YY>" "<title>"`), then commit + push. A status reply naming a phase the tracker page does not show is wrong (owner 2026-09-15: three full renders and masters shipped while `ops/tracker.html` still showed 06:28 previews).
 
-Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was cut; never widen scope.
+Total ≈ 3 h 20 of work. The waits at the two owner gates sit outside the clock. Step 0's 15 min is the agent's figure (9 Oct 26), not the owner's: before the angle gate the total was 3 h 05. If any step overruns 2×, ship what exists and list what was cut; never widen scope.
 
 ## Step details
 
-### 1. Topic + packaging (`episodes/ms-<slug>/packaging.md`)
+### 0. Topic + angle (`episodes/ms-<slug>/angle.md`)
+- **Angle:** the rule, the candidate tests and the lock are `references/angle.md`; this step applies it to the topic picked here.
 - **Topic source:** owner gives one, or you propose 3 from this week's outliers (NexLev via the
   claude7 profile, ≤6 outlier calls/day: see memory `reference-nexlev-via-claude7`; plus
   `yt-dlp --flat-playlist` on the tracked breaking channels listed in FORMAT.md). Pick
@@ -59,6 +61,8 @@ Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was c
 - **One event, many angles, one asset pool.** Krakatoa ⇒ "what just happened", "who is at risk",
   "the 1883 precedent", "state X should watch this". Each angle = a new script + TTS over the
   SAME clip pool, re-ordered and re-trimmed. Never the same clip in the same order twice.
+
+### 1. Packaging (`episodes/ms-<slug>/packaging.md`)
 - **Title → hook carry (owner rule):** the hook (3–5 s, one sentence) pays off the title;
   the thumbnail phrase is said aloud inside the intro. Slightly dramatic, never false: every
   claim in title/hook must be in the script with a source.
@@ -70,7 +74,7 @@ Total ≈ 3 h 05. If any step overruns 2×, ship what exists and list what was c
   the hook, pay it off in the last third.
 
 ### 3. Script (`edit_script.md`)
-- **Brief the writer with `references/script-quickref.md` + `references/flag-words.md` + the episode research
+- **Brief the writer with the locked Angle block (`episodes/ms-<slug>/angle.md`, pasted inline) + `references/script-quickref.md` + `references/flag-words.md` + the episode research
   pasted inline; the writer opens no other rule file.** The bullets below are that file's mini-storms-specific additions only.
 - 8–12 min, sized with `scripts/word_budget.py` at the shipping tempo (repo CLAUDE.md "Voice"; the lane
   tempo lives in `config.yaml channel.tempo`). TTS-safe text rules from the same section. Mid-roll needs ≥8:00; author for 8:30+.
@@ -171,7 +175,7 @@ courtesy credits block listing every non-PD source with @handles, chapters at ea
   br-elnino-california index.html). Glass card stays reserved for quotes.
 - **No chapter cards.** Chapters butt-cut with a 0.45 s narration gap; the script's last line of every
   chapter is the connective into the next.
-- Minimum hand-holding: one gate (packaging). Everything else runs to a shipped private upload.
+- Minimum hand-holding: two gates (angle, then packaging). Everything else runs to a shipped private upload.
 - Ship speed beats polish; the documentary lane owns taste. But: hook, open loops, instant ROI,
   and a proper script are non-negotiable here too (owner: "the script will be proper").
 - ≥8:00 runtime for mid-rolls, always.

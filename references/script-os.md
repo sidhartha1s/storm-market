@@ -15,7 +15,8 @@ Seven non-negotiables:
 1. **One dominant question.** Write it as "the viewer keeps watching to find out ______." Everything serves it.
    Krakatau #5: *could the mechanism that killed 426 people happen again, and would anyone see it coming?*
    The question rides on one **script concept**, written as one line before the outline: the one claim the film
-   proves. Its strongest form overturns a belief ("physics hid the iceberg", not "the Titanic sinking"); a
+   proves. It is the Claim line of the angle the owner locked (`references/angle.md`): copied, never
+   rewritten. Its strongest form overturns a belief ("physics hid the iceberg", not "the Titanic sinking"); a
    checkable fact ("four EF5 tornadoes in one day") also qualifies. The hook confirms it and every act proves part
    of it; the title carries it (`packaging-rules.md`). A topic another channel already covered is still open to us
    when we have a new concept for it. Evidence, a lever and not a law: `teardowns/2026-10-03-titanic-mirage.md`.

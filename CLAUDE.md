@@ -20,6 +20,7 @@ A fix goes back to an Opus builder, never to the model that made the defect. Gat
 | Editing architecture, hook contract, CTA contract, chapter blackout table, cadence and sync rules, Content ID protocol, insert gate | `DESIGN.md` (read before any episode work) |
 | Every motion-graphics rule: file contract, safe zones and the presenter circle, glass card, motion, exits, on-screen text, what each gate parses, verification | `references/mg-quickref.md` (goes into every MG builder's brief) |
 | Channel palette, fonts, type-tier px values, TV-readability floor, CSS custom properties | `library/inhouse/snippets/tokens.md` (swatch: `library/inhouse/snippets/brand-swatch.html`) |
+| The angle: what it is, how candidates are found and tested, the owner lock. Comes before any title, thumbnail, hook or script line | `references/angle.md` |
 | Script method, hook wording, humanise pass, scaling | `references/script-os.md`, `script-framework.md`, `script-scaling.md`, `humanise-rules.md` |
 | The one condensed brief a script writer opens (wins for writers) | `references/script-quickref.md` |
 | Violence/death words that trip YouTube's transcript scan, with alternatives; gate `scripts/flag_words.py episodes/<slug>` | `references/flag-words.md` |
@@ -37,9 +38,9 @@ An owner correction or a measured surprise lands in its single home (`references
 `learnings/` file) the same session.
 
 ## Two lanes, two skills
-- `/storm-episode`: the documentary. Length is set per episode by the story and confirmed with the owner (El Reno: about 25 to 30 min, owner 3 Oct 26). No default band.
+- `/storm-episode`: the documentary. Length is set per episode by the story and confirmed with the owner (El Reno: about 20 to 25 min, owner 9 Oct 26; it was 25 to 30 on 3 Oct 26). No default band.
 - `/mini-storms`: 8 to 12 min seasonal, breaking and outlier videos shipped in 3 h or less. Stitched news, public
-  domain and stock clips, red popfigs with a local scrim, news bug, NO chapter cards, one owner gate (packaging). Slugs `ms-<topic>`.
+  domain and stock clips, red popfigs with a local scrim, news bug, NO chapter cards, two owner gates (angle, then packaging). Slugs `ms-<topic>`.
 - Narration sits above every bed in both lanes: score 0.13, ambience 0.20 or less, checked with ebur128 per 15 s window.
 - Shorts: planned, pilot pending the owner's go. No skill until about ten shorts stabilise.
 
@@ -76,6 +77,7 @@ An owner correction or a measured surprise lands in its single home (`references
 ## The formula
 Script method and hook wording live in `references/script-os.md` and `script-framework.md`; titles and thumbnails in
 `references/packaging-rules.md`. What stays true for every episode:
+- The angle is locked by the owner before anything else, in documentaries and minis alike, chosen from several true candidates (`references/angle.md`). The video is built on the angle, not on the subject.
 - Stats run through the middle, each translated to human scale. Human moments go where they hit hardest (script-scaling.md "Emotion").
 - Tornado episodes may march location by location (editor's call per episode). Micro-loops every 30 to 45 s. No-spoiler metadata.
 - A meteorology explainer layer in every episode, and at least two facts no competitor video has (NWS Service
@@ -113,7 +115,7 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 
 ## Pipeline
 Per episode in `episodes/<slug>/`. The skill's phase map points at these step numbers. Never edit a shipped episode.
-1. `edit_script.md`: typed segment list plus per-beat visual intent, written on `references/script-scaling.md`. A
+1. `edit_script.md`: started only once `episodes/<slug>/angle.md` holds the owner's locked angle (`references/angle.md`). Typed segment list plus per-beat visual intent, written on `references/script-scaling.md`. A
    section goes to TTS only once LOCKED (hook+intro locks and moves first; the one lock definition is
    `references/script-scaling.md` "Section lock — the ONE definition" — never restated here) — never the whole
    script waiting on the last act. The CTA hinge is named (segment before, segment after, estimated time). Owner
