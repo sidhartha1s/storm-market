@@ -32,7 +32,9 @@ Owner, 10 Oct 26: "clips are good. go ahead. move faster." Status is read from t
 - [x] Owner's picks saved 10 Oct 26 02:54: Route A (tone conversion) for Paul's clips; El Reno ships in his voice once his reference is better. He likes Route A's American delivery and calls the direct clone of his voice off.
 - [x] Narration through Route A proven on two segments (10 Oct 26): same words (50 of 50, 54 of 54), same length, 3.7 to 7.5 s per 17.7 s segment on the GTX 1650. No second TTS, no retime.
 - [x] Tone check (10 Oct 26): his recording is boxy against the studio voice; a half-strength corrected copy is on card 5 of the page.
-- [ ] Owner: new recording from the script given in chat; then his tick on card 5 (`tone`).
+- [x] Owner's second recording (`20261010_034112.mp3`, 10 Oct 26 03:41) cleaned into `assets/voice/owner-sid-clone-ref-v2.wav` (studio tone) and `assets/voice/_sid-variants/ref-v2-clean-noeq.wav` (no tone fix), both untracked. Demo on Paul's clips 1 and 3 at the top of the voice page; every word kept (16 of 16, 26 of 26).
+- [ ] Owner: tick `v2_go` on the voice page (studio tone, no tone fix, or not yet). That tick is the go to mount his voice.
+- [ ] Staged, not mounted (10 Oct 26, 04:17): both variants of every narration wav and Paul's six clips in `.qc-tmp/voice-sid/full/<studio|plain>/`, word check in `.qc-tmp/voice-sid/full/report.json`. Script `.qc-tmp/voice-sid/v2_full.py` is scratch; the conversion tool moves into `scripts/` by its own PR once he picks.
 - [ ] Convert the 80 narration wavs, Paul's six clips and the ad clip to his voice with the new reference; listen-proof by transcript; set insert file gains (audio_levels fails all six Paul clips at -8 to -11 dB against narration today).
 
 ## Edit
