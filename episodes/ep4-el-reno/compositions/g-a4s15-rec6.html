@@ -6,6 +6,7 @@
      1 PM message in one frame, different in kind and size (large glass name cards; a small beige note with its condition
      underlined). Brief: mg_specs/docs.md. Recommendation 6 is copied from the page
      (media/docs/sa-p54-finding6-recommendation6-list.png), not from the narration. No broadcast words are quoted.
+     The note takes the frame while the voice is on it (9.70 to 11.08), then steps down to its small place as the names land.
      Cues are words.json seconds. -->
 <template>
 <style>
@@ -16,11 +17,11 @@
   .r15-h { opacity:0; visibility:hidden; }
   .r15-glass { position:absolute; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:28px; overflow:hidden; }
-  .r15-acc { position:absolute; left:0; width:6px; background:#d8a13a; }
-  .r15-big { position:absolute; font:900 52px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
-  .r15-q { position:absolute; font:40px Georgia, 'Times New Roman', serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
-  .r15-ser { position:absolute; font:italic 28px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
-  .r15-sm { position:absolute; font:700 19px Arial, sans-serif; color:#93a3b2; letter-spacing:3px; white-space:nowrap; line-height:1; }
+  .r15-acc { position:absolute; left:0; width:7px; background:#d8a13a; }
+  .r15-big { position:absolute; font:900 65px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .r15-q { position:absolute; left:60px; font:50px Georgia, 'Times New Roman', serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .r15-ser { position:absolute; font:italic 30px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+  .r15-sm { position:absolute; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:3px; white-space:nowrap; line-height:1; }
   .r15-note { position:absolute; left:1000px; top:330px; width:560px; height:290px; box-sizing:border-box; background:rgba(232,222,200,0.94); border-radius:14px;
     box-shadow:0 14px 44px rgba(0,0,0,0.5); overflow:hidden; }
   .r15-row { position:absolute; left:28px; display:flex; align-items:flex-start; gap:7px; }
@@ -33,24 +34,25 @@
 <div id="r15-root" data-composition-id="g-a4s15-rec6" data-width="1920" data-height="1080">
   <div class="r15-bg"></div>
   <div class="r15-scan" id="r15-scan"></div>
-  <div class="r15-glass r15-h" id="r15-card" style="left:96px;top:120px;width:1160px;height:470px">
-    <div class="r15-acc" id="r15-acc" style="top:38px;height:58px"></div>
-    <div class="r15-big r15-h" id="r15-hd" style="left:48px;top:40px">Recommendation 6</div>
-    <div class="r15-q r15-h" id="r15-l1" style="left:48px;top:126px">&ldquo;The NWS needs to provide</div>
-    <div class="r15-q r15-h" id="r15-l2" style="left:48px;top:180px">specific educational material</div>
-    <div class="r15-q r15-h" id="r15-l3" style="left:48px;top:234px">to the broadcast media partners</div>
-    <div class="r15-q r15-h" id="r15-l4" style="left:48px;top:288px">on how to manage warning dissemination</div>
-    <div class="r15-q r15-h" id="r15-l5" style="left:48px;top:342px">for multiple severe weather hazards.&rdquo;</div>
-    <div class="r15-sm" style="left:48px;top:412px">NWS SERVICE ASSESSMENT</div>
+  <!-- the card ground is on from frame 0 (x 96 to 1546, y 246 to 834); its lines build on their cues -->
+  <div class="r15-glass" id="r15-card" style="left:96px;top:246px;width:1450px;height:588px">
+    <div class="r15-acc" id="r15-acc" style="top:48px;height:72px"></div>
+    <div class="r15-big r15-h" id="r15-hd" style="left:60px;top:50px">Recommendation 6</div>
+    <div class="r15-q r15-h" id="r15-l1" style="top:158px">&ldquo;The NWS needs to provide</div>
+    <div class="r15-q r15-h" id="r15-l2" style="top:226px">specific educational material</div>
+    <div class="r15-q r15-h" id="r15-l3" style="top:294px">to the broadcast media partners</div>
+    <div class="r15-q r15-h" id="r15-l4" style="top:362px">on how to manage warning dissemination</div>
+    <div class="r15-q r15-h" id="r15-l5" style="top:430px">for multiple severe weather hazards.&rdquo;</div>
+    <div class="r15-sm" style="left:60px;top:520px">NWS SERVICE ASSESSMENT</div>
   </div>
-  <div class="r15-sm r15-h" id="r15-e1" style="left:100px;top:292px">ON TELEVISION</div>
-  <div class="r15-glass r15-h" id="r15-n1" style="left:96px;top:330px;width:800px;height:140px">
-    <div class="r15-big" style="left:36px;top:24px;font-size:60px">Mike Morgan</div>
-    <div class="r15-ser r15-h" id="r15-n1s" style="left:38px;top:94px">KFOR</div>
+  <div class="r15-sm r15-h" id="r15-e1" style="left:100px;top:304px">ON TELEVISION</div>
+  <div class="r15-glass r15-h" id="r15-n1" style="left:96px;top:346px;width:760px;height:200px">
+    <div class="r15-big" style="left:36px;top:28px;font-size:84px">Mike Morgan</div>
+    <div class="r15-ser r15-h" id="r15-n1s" style="left:40px;top:136px">KFOR</div>
   </div>
-  <div class="r15-glass r15-h" id="r15-n2" style="left:96px;top:490px;width:800px;height:140px">
-    <div class="r15-big" style="left:36px;top:24px;font-size:60px">Gary England</div>
-    <div class="r15-ser" style="left:38px;top:94px">KWTV, a competing station</div>
+  <div class="r15-glass r15-h" id="r15-n2" style="left:96px;top:576px;width:760px;height:200px">
+    <div class="r15-big" style="left:36px;top:28px;font-size:84px">Gary England</div>
+    <div class="r15-ser" style="left:40px;top:136px">KWTV, a competing station</div>
   </div>
   <div class="r15-sm r15-h" id="r15-e2" style="left:1004px;top:292px">POSTED AT 1 PM</div>
   <div class="r15-note r15-h" id="r15-note">
@@ -73,8 +75,9 @@ window.__timelines = window.__timelines || {};
   function show(id, t, dx, dy) { tl.fromTo($(id), { autoAlpha: 0, x: dx || 0, y: dy == null ? 24 : dy }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, t); }
 
   s0($("ul"), { scaleX: 0, transformOrigin: "left center" });
+  s0($("card"), { y: 40 });
   tl.fromTo($("scan"), { x: -400 }, { x: 1960, duration: D, ease: "none" }, 0);
-  show("card", 0.50, -80, 0);                               /* The assessment's @0.58 */
+  tl.to($("card"), { y: 0, duration: 0.7, ease: "power3.out" }, 0.05);   /* The assessment's @0.58: the card settles */
   show("hd", 1.18, -30, 0);                                 /* sixth recommendation @1.18 */
   show("l1", 2.32, -30, 0);                                 /* aimed at the weather service itself @2.32 */
   show("l2", 4.52, -30, 0);                                 /* give @4.52 */
@@ -82,9 +85,14 @@ window.__timelines = window.__timelines || {};
   show("l4", 6.22, -30, 0);                                 /* when @6.22 */
   show("l5", 6.70, -30, 0);                                 /* more than one danger @6.50 */
   tl.fromTo($("acc"), { scaleY: 1 }, { scaleY: 0.5, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 5, transformOrigin: "50% 0%", immediateRender: false }, 2.4);
-  tl.to($("card"), { x: -1400, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 9.10);   /* So the idea @8.66: the card leaves as the note arrives, no empty frame between */
-  show("e2", 9.60, 0, 14); show("note", 9.70, 120, 0);      /* a car was an option @9.70: the 1 PM note, small */
+  tl.to($("card"), { x: -1700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 9.10);   /* So the idea @8.66: the card leaves as the note arrives, no empty frame between */
+  /* a car was an option @9.70: the 1 PM note holds the frame at 2.2x (x 344 to 1576, y 221 to 859) while the voice is on it */
+  tl.fromTo($("e2"), { autoAlpha: 0, x: -654, y: -95 }, { autoAlpha: 1, x: -654, y: -109, duration: 0.45, ease: "power3.out", immediateRender: false }, 9.60);
+  tl.fromTo($("note"), { autoAlpha: 0, x: -200, y: 65, scale: 2.2 }, { autoAlpha: 1, x: -320, y: 65, scale: 2.2, duration: 0.45, ease: "power3.out", transformOrigin: "50% 50%", immediateRender: false }, 9.70);
   tl.to($("ul"), { scaleX: 1, duration: 0.6, ease: "power2.out" }, 10.36);   /* an option @10.36: the condition */
+  /* did not start @10.70: the note steps down to its small place (x 900 to 1572, y 387 to 735) before the names land */
+  tl.to($("note"), { x: -44, y: 86, scale: 1.2, duration: 0.55, ease: "power2.inOut" }, 11.08);
+  tl.to($("e2"), { x: -100, y: 57, duration: 0.55, ease: "power2.inOut" }, 11.08);
   show("e1", 11.58, 0, 14); show("n1", 11.68, -120, 0);     /* one man @11.68 */
   show("n2", 12.04, -120, 0);
   show("n1s", 12.46, -20, 0);                               /* on one channel @12.46 */
