@@ -50,12 +50,14 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#ou-glow", { x: -80 }, { x: 80, duration: DUR, ease: "none" }, 0);
   tl.fromTo("#ou-grid", { x: 0 }, { x: 70, duration: DUR, ease: "none" }, 0);
 
+  /* frame 0: the ground is on and the amber rule is already a third drawn; it reaches full width before "The" */
+  tl.fromTo("#ou-rule", { scaleX: 0.35 }, { scaleX: 1, transformOrigin: "50% 50%", duration: 0.9, ease: "power3.out" }, 0);
   /* THE @0.98, WARNING @1.16, HOUR @1.42: each word lands on the voice */
-  tl.fromTo(["#ou-glow", "#ou-grid"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 0);
   tl.to("#ou-w1", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.98);
   tl.to("#ou-w2", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.16);
   tl.to("#ou-w3", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.42);
-  tl.to("#ou-rule", { scaleX: 1, duration: 0.9, ease: "power3.out" }, 1.7);
+  /* voice ends @1.70: the rule thickens once */
+  tl.to("#ou-rule", { scaleY: 2.5, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.7);
   /* the amber word breathes once after the rule lands */
   tl.to("#ou-w2", { scale: 1.04, transformOrigin: "50% 60%", duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.1);
 
