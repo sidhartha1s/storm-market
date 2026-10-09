@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-z1s1-table (Z1-S1): the assessment's table one last time, twenty-one May 31 lines, no name column; then text-only names
+     over the dimmed map, each landing on the voice. Brief: mg_specs/docs.md.
+     Pages (1700 x 2200): media/docs/sa-p60-...first-page.png (header row, eight May 31 rows) and sa-p61-...second-page.png
+     (thirteen rows). Marks are in page px. No name is ever drawn on or beside a table row: the table leaves before a name lands.
+     Metro frame: x = (lon + 98.20) * 1920, y = (35.70 - lat) / 0.46 * 1080. Cues are words.json seconds. -->
+<template>
+<style>
+  #z1-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .z1-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .z1-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .z1-scan { position:absolute; left:0; top:0; width:360px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.07), rgba(127,178,229,0)); }
+  .z1-h { opacity:0; visibility:hidden; }
+  .z1-rail { position:absolute; left:96px; top:90px; width:480px; height:360px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .z1-big { position:absolute; font:900 52px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .z1-mid { position:absolute; font:700 30px Arial, sans-serif; color:#dfe7ee; letter-spacing:1px; white-space:nowrap; line-height:1; }
+  .z1-sm { position:absolute; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:3px; white-space:nowrap; line-height:1; }
+  .z1-ser { position:absolute; font:italic 28px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+  .z1-lab { position:absolute; font:700 26px Arial, sans-serif; color:#e8c56a; letter-spacing:2px; white-space:nowrap; line-height:1; }
+  .z1-sheet { position:absolute; left:600px; top:96px; width:782px; height:860px; }
+  .z1-pc { position:absolute; overflow:hidden; }
+  .z1-pc img { position:absolute; filter:sepia(0.18) brightness(0.95); }
+  .z1-mk { position:absolute; }
+  .z1-line { position:absolute; left:600px; top:88px; width:782px; height:3px; background:#e8c56a; }
+</style>
+<div id="z1-root" data-composition-id="g-z1s1-table" data-width="1920" data-height="1080">
+  <div class="z1-bg"></div>
+  <svg class="z1-svg z1-h" id="z1-map" viewBox="0 0 1920 1080"></svg>
+  <div class="z1-scan" id="z1-scan"></div>
+  <div class="z1-rail z1-h" id="z1-rail">
+    <div class="z1-sm z1-h" id="z1-dt" style="left:32px;top:28px">THE NIGHT OF MAY 31, 2013</div>
+    <div class="z1-big z1-h" id="z1-n" style="left:32px;top:66px;font-size:84px">21</div>
+    <div class="z1-mid z1-h" id="z1-nl" style="left:166px;top:112px">lines</div>
+    <div class="z1-mid z1-h" id="z1-ag" style="left:32px;top:182px">ages</div>
+    <div class="z1-mid z1-h" id="z1-nn" style="left:32px;top:228px;color:#e8c56a">no names</div>
+    <div class="z1-sm" style="left:32px;top:290px">NWS SERVICE ASSESSMENT</div>
+    <div class="z1-sm" style="left:32px;top:318px">APPENDIX C</div>
+  </div>
+  <div class="z1-lab z1-h" id="z1-nc" style="left:600px;top:54px">NO NAME COLUMN</div>
+  <div class="z1-line" id="z1-ncl"></div>
+  <div class="z1-sheet z1-h" id="z1-sheet"></div>
+  <div class="z1-big z1-h" id="z1-p0" style="left:140px;top:150px">Richard Henderson</div>
+  <div class="z1-big z1-h" id="z1-p1" style="left:140px;top:226px">Tim Samaras</div>
+  <div class="z1-big z1-h" id="z1-p2" style="left:140px;top:302px">Paul Samaras</div>
+  <div class="z1-big z1-h" id="z1-p3" style="left:140px;top:378px">Carl Young</div>
+  <div class="z1-big z1-h" id="z1-p4" style="left:860px;top:150px">Samuel Cifuentes</div>
+  <div class="z1-big z1-h" id="z1-p5" style="left:860px;top:226px">Florinda Santos</div>
+  <div class="z1-big z1-h" id="z1-p6" style="left:860px;top:302px">Alex</div>
+  <div class="z1-big z1-h" id="z1-p7" style="left:860px;top:378px">Yolanda Santos</div>
+  <div class="z1-big z1-h" id="z1-p8" style="left:860px;top:454px">Cristofer</div>
+  <div class="z1-big z1-h" id="z1-p9" style="left:860px;top:530px">Brandon</div>
+  <div class="z1-big z1-h" id="z1-p10" style="left:860px;top:606px">Lesly</div>
+  <div class="z1-big z1-h" id="z1-p11" style="left:140px;top:530px">Corey Don Johnson</div>
+  <div class="z1-ser z1-h" id="z1-age" style="left:142px;top:600px">3 years old</div>
+  <div class="z1-sm z1-h" id="z1-src" style="left:140px;top:760px">NAMES FROM PRESS REPORTS &middot; SPELLINGS AS NEWS 9 GAVE THEM</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-z1s1-table", P = "z1", D = 24.19, S = 0.80, NS = "http://www.w3.org/2000/svg";
+  var P60 = "media/docs/sa-p60-appendix-c-fatality-table-first-page.png", P61 = "media/docs/sa-p61-appendix-c-fatality-table-second-page.png";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function show(id, t, dx, dy) { tl.fromTo($(id), { autoAlpha: 0, x: dx || 0, y: dy == null ? 24 : dy }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, t); }
+  function X(lon) { return (lon + 98.20) * 1920; }
+  function Y(lat) { return (35.70 - lat) / 0.46 * 1080; }
+  function dOf(pp) { return pp.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" "); }
+  function px(pts) { return pts.map(function (p) { return [X(p[0]), Y(p[1])]; }); }
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+  var sheet = $("sheet"), map = $("map");
+  function piece(src, x0, y0, x1, y1, top) {                    /* a crop of the page image at the sheet's one scale; marks in page px */
+    var d = document.createElement("div"); d.className = P + "-pc";
+    d.style.cssText = "left:0;top:" + top + "px;width:" + ((x1 - x0) * S) + "px;height:" + ((y1 - y0) * S) + "px";
+    var im = document.createElement("img"); im.src = src;
+    im.style.cssText = "width:" + (1700 * S) + "px;height:" + (2200 * S) + "px;left:" + (-x0 * S) + "px;top:" + (-y0 * S) + "px";
+    d.appendChild(im); sheet.appendChild(d);
+    d.mark = function (xa, ya, xb, yb, css) { var b = document.createElement("div"); b.className = P + "-mk";
+      b.style.cssText = "left:" + ((xa - x0) * S) + "px;top:" + ((ya - y0) * S) + "px;width:" + ((xb - xa) * S) + "px;height:" + ((yb - ya) * S) + "px;" + css;
+      d.appendChild(b); return b; };
+    return d; }
+
+  /* ---- the table: header row, eight rows of the first page, thirteen of the second ---- */
+  piece(P60, 356, 339, 1334, 391, 0);
+  var a = piece(P60, 356, 1574, 1334, 1982, 52), b = piece(P61, 356, 198, 1334, 803, 376);
+  var HL = "background:rgba(232,197,106,0.42);mix-blend-mode:multiply", lit = [];
+  [[1580, 1655], [1661, 1701], [1707, 1746], [1753, 1792], [1799, 1838], [1844, 1884], [1890, 1930], [1936, 1976]].forEach(function (r) { lit.push(a.mark(364, r[0], 1326, r[1], HL)); });
+  for (var k = 0; k < 13; k++) lit.push(b.mark(364, 203 + 45.85 * k, 1326, 245 + 45.85 * k, HL));
+  var BOX = "box-sizing:border-box;border:3px solid #c0392b", age = [a.mark(606, 1576, 763, 1980, BOX), b.mark(606, 199, 763, 799, BOX)];
+  s0(lit, { scaleX: 0, transformOrigin: "left center" }); s0(age, { autoAlpha: 0, scaleY: 0, transformOrigin: "50% 0%" });
+  s0($("ncl"), { scaleX: 0, transformOrigin: "left center" });
+
+  /* ---- the dimmed map under the names: interstates, US-81, the rivers, the El Reno track ---- */
+  [[[-98.20,35.530],[-98.05,35.515],[-97.955,35.503],[-97.938,35.501],[-97.90,35.498],[-97.80,35.487],[-97.74,35.481],[-97.65,35.464],[-97.60,35.461],[-97.55,35.458],[-97.516,35.456],[-97.47,35.452],[-97.40,35.443],[-97.30,35.415],[-97.20,35.388]],
+   [[-97.953,35.70],[-97.953,35.545],[-97.940,35.520],[-97.938,35.40],[-97.944,35.31],[-97.940,35.24]],
+   [[-97.418,35.70],[-97.425,35.60],[-97.455,35.52],[-97.490,35.475],[-97.497,35.45],[-97.490,35.40],[-97.487,35.339],[-97.484,35.24]],
+   [[-97.20,35.665],[-97.35,35.60],[-97.44,35.545],[-97.50,35.53],[-97.555,35.528],[-97.570,35.50],[-97.571,35.46],[-97.570,35.40],[-97.585,35.36],[-97.62,35.31],[-97.60,35.24]]].forEach(function (r, i) {
+    el("path", { d: dOf(px(r)), fill: "none", stroke: "#2a3644", "stroke-width": i === 1 ? 6 : 7.5, "stroke-linejoin": "round" }, map);
+    el("path", { d: dOf(px(r)), fill: "none", stroke: "#93a3b2", "stroke-width": 1.6, "stroke-linejoin": "round", opacity: 0.8 }, map); });
+  [[[-97.70,35.492],[-97.65,35.478],[-97.61,35.462],[-97.579,35.448],[-97.54,35.450],[-97.50,35.455],[-97.45,35.447],[-97.38,35.47],[-97.30,35.49],[-97.20,35.50]],
+   [[-97.601,35.4964],[-97.57,35.512],[-97.54,35.525],[-97.49,35.545],[-97.42,35.565],[-97.32,35.60],[-97.20,35.625]]].forEach(function (r) {
+    el("path", { d: dOf(px(r)), fill: "none", stroke: "#22384c", "stroke-width": 2.5 }, map); });
+  var TRACK = [[247,517],[257,534],[270,544],[281,569],[301,575],[340,579],[388,580],[405,567],[443,574],[468,581],[524,569],[557,547],[564,520],[571,515],[580,509],[584,501],[594,472],[603,453],[593,457],[590,463],[595,461],[601,459],[613,463],[627,469],[654,462],[656,465],[672,460],[673,465],[676,467]];   /* NWS Norman centreline, media/data/tracks.json */
+  el("path", { d: dOf(TRACK), fill: "none", stroke: "#d8a13a", "stroke-width": 3.5, "stroke-linejoin": "round", "stroke-linecap": "round" }, map);
+
+  tl.fromTo($("scan"), { x: -400 }, { x: 1960, duration: D, ease: "none" }, 0);
+  show("sheet", 1.16, 0, 80); show("rail", 1.30, -60, 0);   /* The weather service's table @1.16 */
+  show("dt", 2.12, -20, 0);                                 /* the night of May 31, 2013 @2.12 */
+  var cnt = { v: 1 }, nEl = $("n");
+  show("n", 4.86, 0, 20); show("nl", 5.34, -20, 0);         /* 21 lines @4.86: the rows light top to bottom as the figure counts up */
+  tl.to(cnt, { v: 21, duration: 0.84, ease: "none", onUpdate: function () { nEl.textContent = Math.round(cnt.v); } }, 4.86);
+  tl.to(lit, { scaleX: 1, duration: 0.3, ease: "power2.out", stagger: 0.04 }, 4.86);
+  tl.to(age, { autoAlpha: 1, scaleY: 1, duration: 0.6, ease: "power3.out" }, 6.40);   /* with ages @6.40 */
+  show("ag", 6.40, -20, 0);
+  show("nn", 7.24, -20, 0); show("nc", 7.24, 0, 16);        /* and no names @7.24 */
+  tl.to($("ncl"), { scaleX: 1, duration: 0.5, ease: "power2.out" }, 7.30);
+  tl.to([$("sheet"), $("nc"), $("ncl")], { y: -1100, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 8.20);   /* the table leaves before any name lands */
+  tl.to($("rail"), { x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 8.20);
+  tl.fromTo(map, { autoAlpha: 0 }, { autoAlpha: 0.42, duration: 0.7, ease: "power2.out", immediateRender: false }, 8.40);
+  [9.16, 10.56, 11.68, 12.54, 14.46, 15.40, 15.98, 16.96, 17.58, 18.84, 19.30, 21.34].forEach(function (t, i) { show("p" + i, t, -40, 0); });
+  /* Richard Henderson @9.16 · Tim Samaras @10.56 · Paul Samaras @11.68 · Carl Young @12.54 · Samuel @14.46 · Florinda @15.40 · Alex @15.98 ·
+     Yolanda @16.96 · Cristofer @17.58 · Brandon @18.84 · Lesly @19.30 · Corey Don Johnson @21.34 */
+  show("src", 9.40, 0, 14);
+  show("age", 23.08, -20, 0);                               /* who was three @23.08 */
+  tl.to({}, { duration: 0.01 }, 24.18);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
