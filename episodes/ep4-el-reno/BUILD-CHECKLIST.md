@@ -36,7 +36,9 @@ Owner, 10 Oct 26: "clips are good. go ahead. move faster." Status is read from t
 - [ ] Convert the 80 narration wavs, Paul's six clips and the ad clip to his voice with the new reference; listen-proof by transcript; set insert file gains (audio_levels fails all six Paul clips at -8 to -11 dB against narration today).
 
 ## Edit
-- [ ] Footage placed by hand under every segment that is not a full-frame graphic. Started 10 Oct 26: eight cuts in, full-frame graphics on track 2; timeline lint shows 20 picture gaps left (unbuilt documents and cards segments, A2-S10 and A3-S5 with no footage, four seam pads, the first 12 s of Z1-S3).
+- [x] Footage placed by hand under every segment that is not a full-frame graphic; full-frame graphics on track 2; outro mounted; no picture gap. `lint_timeline`, `sweep_episode`, `media_budget` pass (10 Oct 26, 03:12).
+- [ ] Fix round out to five Opus builders (map21, drawings, replot, roads, cards) from verifier 1's 29 rows, sent 10 Oct 26 02:52. Then a second verifier on maps, docs, cards and the fixed comps.
+- [ ] Watch every footage cut in motion (one frame each at least).
 - [ ] The Weather Channel crew sequence (A3-S3, A3-S4): owner confirms the insert before any render
 - [ ] Sound: bed, sirens, hits; mixdown listened to
 - [ ] Outro card (Z1-S3)
