@@ -8,7 +8,8 @@
 //      initial 8% draft flagged line-box touches of stacked title/subtitle pairs; comp-internal AND
 //      comp-vs-active-card), unless either element carries data-overlap-ok="reason".
 //   3) Duplicate-fact: two visible nodes rendering the same normalized fact string (dates,
-//      percentages, numbers) at the same instant = FAIL — one fact, one on-screen instance.
+//      percentages, numbers) at the same instant = FAIL — one fact, one on-screen instance,
+//      unless the comp node carries data-repeat-ok="reason" (one label on several different things).
 // READ-ONLY checker. Usage: node scripts/overlap_check.mjs <episode-dir>
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import fs from 'fs';
