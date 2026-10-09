@@ -6,7 +6,9 @@
      Overlay: root transparent for the whole window, the survey footage or survey photographs sit beneath.
      A short list: house, barn, tree, power pole, each with a tick box and the label "marker". No box is ever ticked;
      where the sub-vortices went, the two structure boxes (house, barn) are the ones marked empty. Then the survey
-     paper's sentence, exact words (Marshall et al., damage survey; fact_check A5-S3). Cues are audio/a5-s3.words.json seconds. -->
+     paper's sentence, exact words (Marshall et al., damage survey; fact_check A5-S3). Cues are audio/a5-s3.words.json seconds.
+     Every timeline position is a literal number (sweep check 7); the list and the quote card each drift left at about
+     6.5 px/s from landing to exit. -->
 <template>
 <style>
   #mk3-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
@@ -25,7 +27,7 @@
   .mk3-src { position:absolute; left:50px; top:268px; font:italic 28px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
 </style>
 <div id="mk3-root" data-composition-id="g-a5s3-markers" data-width="1920" data-height="1080" data-duration="23.3">
-  <div class="mk3-glass mk3-h" id="mk3-list" style="left:96px; top:110px; width:760px; height:572px">
+  <div class="mk3-glass mk3-h" id="mk3-list" style="left:169px; top:110px; width:760px; height:572px">
     <div class="mk3-row mk3-h" id="mk3-r1" style="top:36px">
       <svg class="mk3-ic" viewBox="0 0 64 64"><path d="M8 58 L8 28 L32 8 L56 28 L56 58 Z M26 58 L26 40 L38 40 L38 58" fill="none" stroke="#c8d3e0" stroke-width="3.5" stroke-linejoin="round"/></svg>
       <div class="mk3-nm">House</div><div class="mk3-tag mk3-h" id="mk3-t1">MARKER</div><div class="mk3-box" id="mk3-b1"></div>
@@ -46,7 +48,7 @@
     <div class="mk3-wh mk3-h" id="mk3-wh">Where the sub-vortices went</div>
     <div class="mk3-no mk3-h" id="mk3-no">no structure in the path</div>
   </div>
-  <div class="mk3-glass mk3-h" id="mk3-card" style="left:150px; top:290px; width:1300px; height:340px">
+  <div class="mk3-glass mk3-h" id="mk3-card" style="left:195px; top:290px; width:1300px; height:340px">
     <div class="mk3-q mk3-h" id="mk3-q1" style="top:46px">&ldquo;Despite the intense wind velocities,</div>
     <div class="mk3-q mk3-h" id="mk3-q2" style="top:112px">surveyors could not find damage</div>
     <div class="mk3-q mk3-h" id="mk3-q3" style="top:178px">that would support a rating higher than EF3.&rdquo;</div>
@@ -58,38 +60,41 @@ window.__timelines = window.__timelines || {};
 (function () {
   var D = 23.3, P = "#mk3-";
   var tl = gsap.timeline({ paused: true });
-  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, t); }
-  function float(id, a, b) { var n = Math.floor((b - a) / 1.9) - 1; if (n >= 0) tl.to(P + id, { y: -6, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: n }, a); }
+  function hid(dx, dy) { return { autoAlpha: 0, x: dx, y: dy }; }
+  function vis() { return { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }; }
   gsap.set(P + "rule", { scaleX: 0, transformOrigin: "left center" });
   tl.set(P + "rule", { scaleX: 0, transformOrigin: "left center" }, 0);
 
   /* SURVEYORS WALK THE PATH @3.30: the list arrives */
-  show("list", 3.30, -60, 0);
+  tl.fromTo(P + "list", hid(60, 0), vis(), 3.30);
   /* BUILDINGS @5.54 (house, barn) · TREES @6.42 · OTHER THINGS ON A SET LIST @6.88 */
-  show("r1", 5.54, -30, 0);
-  show("r2", 5.90, -30, 0);
-  show("r3", 6.42, -30, 0);
-  show("r4", 6.88, -30, 0);
-  float("list", 7.5, 14.9);
+  tl.fromTo(P + "r1", hid(-30, 0), vis(), 5.54);
+  tl.fromTo(P + "r2", hid(-30, 0), vis(), 5.90);
+  tl.fromTo(P + "r3", hid(-30, 0), vis(), 6.42);
+  tl.fromTo(P + "r4", hid(-30, 0), vis(), 6.88);
+  tl.to(P + "list", { x: -73, duration: 11.2, ease: "none" }, 3.78);   /* slow drift left, 6.5 px/s, to the exit */
   /* CALL EACH ONE A MARKER @9.86 */
-  ["t1", "t2", "t3", "t4"].forEach(function (id, i) { show(id, 9.86 + i * 0.1, -16, 0); });
+  tl.fromTo(P + "t1", hid(-16, 0), vis(), 9.86);
+  tl.fromTo(P + "t2", hid(-16, 0), vis(), 9.96);
+  tl.fromTo(P + "t3", hid(-16, 0), vis(), 10.06);
+  tl.fromTo(P + "t4", hid(-16, 0), vis(), 10.16);
   /* WHERE THE SUB-VORTICES WENT @11.24: the tree and pole rows step back */
   tl.to(P + "rule", { scaleX: 1, duration: 0.6, ease: "power3.out" }, 11.0);
-  show("wh", 11.24, -24, 0);
+  tl.fromTo(P + "wh", hid(-24, 0), vis(), 11.24);
   tl.to([P + "r3", P + "r4"], { autoAlpha: 0.35, duration: 0.4, ease: "power2.out" }, 11.24);
   /* NO STRUCTURE @13.38: the house and barn boxes are marked, and stay empty */
-  show("no", 13.38, -24, 0);
+  tl.fromTo(P + "no", hid(-24, 0), vis(), 13.38);
   tl.to([P + "b1", P + "b2"], { borderColor: "#e74c3c", duration: 0.2, ease: "power2.out" }, 13.38);
   tl.to([P + "b1", P + "b2"], { scale: 1.22, duration: 0.28, ease: "power2.out", yoyo: true, repeat: 3, transformOrigin: "50% 50%" }, 13.38);
   tl.to(P + "list", { x: -1000, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 15.0);
   /* DESPITE THOSE SPEEDS @15.62 · THE SURVEY TEAM WROTE @17.16 · COULD NOT FIND DAMAGE @18.70 · THAT WOULD SUPPORT @20.06 */
-  show("card", 15.62, -60, 0);
-  show("q1", 15.62, 0, 18);
-  show("src", 17.16, -24, 0);
-  show("q2", 18.70, 0, 18);
-  show("q3", 20.06, 0, 18);
-  float("card", 16.3, 22.6);
-  tl.to(P + "card", { x: -1500, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
+  tl.fromTo(P + "card", hid(60, 0), vis(), 15.62);
+  tl.fromTo(P + "q1", hid(0, 18), vis(), 15.62);
+  tl.fromTo(P + "src", hid(-24, 0), vis(), 17.16);
+  tl.fromTo(P + "q2", hid(0, 18), vis(), 18.70);
+  tl.fromTo(P + "q3", hid(0, 18), vis(), 20.06);
+  tl.to(P + "card", { x: -43, duration: 6.6, ease: "none" }, 16.09);   /* slow drift left, 6.5 px/s, to the exit */
+  tl.to(P + "card", { x: -1600, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 22.70);
   window.__timelines["g-a5s3-markers"] = tl;
 })();
 </script>
