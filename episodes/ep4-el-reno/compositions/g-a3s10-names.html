@@ -52,8 +52,9 @@ window.__timelines = window.__timelines || {};
   function vis() { return { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }; }
   function pass() { return { x: 1100, duration: 2.6, ease: "sine.inOut" }; }   /* a soft light crosses one line, left to right */
 
-  /* quiet motion, 0 to 19.70: the glow drifts and the whole card pushes in; both stop before the last second */
-  tl.fromTo(P + "glow", { x: -220 }, { x: 220, duration: 19.7, ease: "none" }, 0);
+  /* quiet motion: the background glow drifts for the whole window (0 to 20.78); the card pushes in and stops at 19.70,
+     so every word is still for the last second */
+  tl.fromTo(P + "glow", { x: -220 }, { x: 220, duration: 20.78, ease: "none" }, 0);
   tl.fromTo(P + "stage", { scale: 1 }, { scale: 1.04, transformOrigin: "50% 45%", duration: 19.7, ease: "none" }, 0);
 
   /* THESE THREE @2.42: the light crosses the three waiting lines in turn before the phrase lands */
