@@ -44,6 +44,10 @@
       <circle cx="0" cy="0" r="15" fill="#e8c56a" fill-opacity="0.35" stroke="#f5d98b" stroke-width="3"/>
       <path id="rp18-spin" d="M0,-9 A9,9 0 0 0 -9,0" fill="none" stroke="#f2f5f8" stroke-width="3"/>
     </g></g>
+    <!-- crew markers on the map: square = TV crew at the first position, diamond = research car at the second.
+         Drawn above the circle, dark outline, corners reaching past the circle's edge (r 15), so each reads as its own shape while the circle is on it -->
+    <rect id="rp18-suv" x="989" y="619" width="22" height="22" fill="#f2f5f8" stroke="#04070c" stroke-width="3"/>
+    <path id="rp18-car" d="M1513,314 L1529,330 L1513,346 L1497,330 Z" fill="#f2f5f8" stroke="#04070c" stroke-width="3"/>
     <!-- the two crews, stacked in the left rail so the replot keeps its true layout. Markers only -->
     <g id="rp18-left">
       <rect x="96" y="132" width="18" height="18" fill="#f2f5f8"/>
