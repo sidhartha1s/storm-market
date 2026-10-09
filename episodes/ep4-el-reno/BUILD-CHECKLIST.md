@@ -29,8 +29,11 @@ Owner, 10 Oct 26: "clips are good. go ahead. move faster." Status is read from t
 
 ## Voice (owner, 10 Oct 26: "my own voice will and must be the way ... clone can do good")
 - [x] Owner sent his recording; cleaned to `assets/voice/owner-sid-clone-ref.wav` (untracked until he picks his voice), cloned on its own (10 Oct 26)
-- [ ] Two segments and one Paul clip in his voice are on http://127.0.0.1:8811/elreno-voice.html; he listens and picks which voice El Reno ships with. Then measure pace and set the new tempo.
-- [ ] Re-voice the episode, retime every graphic to the new words, convert Paul's six clips to the same voice
+- [x] Owner's picks saved 10 Oct 26 02:54: Route A (tone conversion) for Paul's clips; El Reno ships in his voice once his reference is better. He likes Route A's American delivery and calls the direct clone of his voice off.
+- [x] Narration through Route A proven on two segments (10 Oct 26): same words (50 of 50, 54 of 54), same length, 3.7 to 7.5 s per 17.7 s segment on the GTX 1650. No second TTS, no retime.
+- [x] Tone check (10 Oct 26): his recording is boxy against the studio voice; a half-strength corrected copy is on card 5 of the page.
+- [ ] Owner: new recording from the script given in chat; then his tick on card 5 (`tone`).
+- [ ] Convert the 80 narration wavs, Paul's six clips and the ad clip to his voice with the new reference; listen-proof by transcript; set insert file gains (audio_levels fails all six Paul clips at -8 to -11 dB against narration today).
 
 ## Edit
 - [ ] Footage placed by hand under every segment that is not a full-frame graphic. Started 10 Oct 26: eight cuts in, full-frame graphics on track 2; timeline lint shows 20 picture gaps left (unbuilt documents and cards segments, A2-S10 and A3-S5 with no footage, four seam pads, the first 12 s of Z1-S3).
