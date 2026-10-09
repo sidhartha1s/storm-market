@@ -83,6 +83,9 @@ window.__timelines = window.__timelines || {};
   /* hidden from the first frame: set now (a paused timeline has not rendered its time-0 sets yet) and again at 0 */
   const HIDE = [P + "l1", P + "v1", P + "s1", P + "t-fps", P + "field", P + "t-field", P + "l2", P + "v2", P + "s2"];
   gsap.set(HIDE, { autoAlpha: 0 });
+  /* pivots set once, outside the timeline, so each readout's landing pulse scales about the same point whatever was seeked before */
+  gsap.set(P + "v1", { svgOrigin: "96 240" });
+  gsap.set(P + "v2", { svgOrigin: "96 670" });
   tl.set(HIDE, { autoAlpha: 0 }, 0);
 
   /* whole window: the wide circulation turns counter-clockwise, echoes drift, the sub-vortex spins */
