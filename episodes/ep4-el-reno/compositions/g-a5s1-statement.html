@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5s1-statement (A5-S1): June 4, 2013; the weather office's public statement as an attributed text card, the upgrade
+     line lit; "EF5" lands on the El Reno track; then the radar wind readout. Brief: mg_specs/docs.md.
+     Statement words: media/docs/nws-oun-pns-2013-06-04-el-reno-ef5.txt (the corrected issue; a text bulletin, no page image).
+     295 mph is NOT in that statement: it is the NWS Norman event page (media/docs/nws-oun-events-20130531.html), "winds of at
+     least 295 mph very close to the surface", and carries that source on screen.
+     Metro frame: x = (lon + 98.20) * 1920, y = (35.70 - lat) / 0.46 * 1080. Cues are words.json seconds. -->
+<template>
+<style>
+  #st1-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .st1-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .st1-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .st1-scan { position:absolute; left:0; top:0; width:360px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.07), rgba(127,178,229,0)); }
+  .st1-h { opacity:0; visibility:hidden; }
+  .st1-pl { position:absolute; font:700 26px Arial, sans-serif; color:#dfe7ee; letter-spacing:1px; white-space:nowrap; line-height:1;
+    text-shadow:0 0 6px #04070c, 0 0 12px #04070c, 0 2px 3px #04070c; }
+  .st1-glass { position:absolute; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; overflow:hidden; }
+  .st1-big { position:absolute; font:900 60px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .st1-ef { position:absolute; left:352px; top:604px; font:900 110px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px #04070c, 0 0 26px #04070c; }
+  .st1-ser { position:absolute; font:italic 28px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+  .st1-sm { position:absolute; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:3px; white-space:nowrap; line-height:1; }
+  .st1-mono { position:absolute; left:36px; font:700 26px 'Courier New', monospace; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .st1-hl { position:absolute; left:24px; width:690px; height:34px; background:rgba(232,197,106,0.20); }
+  .st1-ul { position:absolute; height:3px; background:#e8c56a; }
+  .st1-ctr { position:absolute; left:32px; top:62px; font:700 84px 'Courier New', monospace; color:#e74c3c; white-space:nowrap; line-height:1; }
+</style>
+<div id="st1-root" data-composition-id="g-a5s1-statement" data-width="1920" data-height="1080">
+  <div class="st1-bg"></div>
+  <svg class="st1-svg" id="st1-map" viewBox="0 0 1920 1080"></svg>
+  <div class="st1-scan" id="st1-scan"></div>
+  <div class="st1-pl" style="left:318px;top:380px">El Reno</div>
+  <div class="st1-glass st1-h" id="st1-rail" style="left:96px;top:64px;width:560px;height:150px">
+    <div class="st1-big st1-h" id="st1-date" style="left:32px;top:26px">June 4, 2013</div>
+    <div class="st1-ser st1-h" id="st1-four" style="left:34px;top:100px">four days after the storm</div>
+  </div>
+  <div class="st1-glass st1-h" id="st1-card" style="left:800px;top:96px;width:790px;height:490px">
+    <div class="st1-hl" id="st1-h1" style="top:210px"></div>
+    <div class="st1-hl" id="st1-h2" style="top:246px"></div>
+    <div class="st1-mono" style="top:34px">PUBLIC INFORMATION STATEMENT...CORRECTED</div>
+    <div class="st1-mono" style="top:70px">NATIONAL WEATHER SERVICE NORMAN OK</div>
+    <div class="st1-mono" style="top:106px">1206 PM CDT TUE JUN 4 2013</div>
+    <div class="st1-mono" style="top:160px">...UPDATE ON MAY 31 EL RENO TORNADO...</div>
+    <div class="st1-mono st1-h" id="st1-l1" style="top:214px;color:#f2f5f8">WITH THIS INVESTIGATION... THE TORNADO HAS</div>
+    <div class="st1-mono st1-h" id="st1-l2" style="top:250px;color:#f2f5f8">BEEN UPGRADED TO AN EF5 TORNADO BASED ON</div>
+    <div class="st1-mono st1-h" id="st1-l3" style="top:286px;color:#dfe7ee">VELOCITY DATA FROM THE RESEARCH MOBILE</div>
+    <div class="st1-mono st1-h" id="st1-l4" style="top:322px;color:#dfe7ee">RADAR DATA...</div>
+    <div class="st1-ul" id="st1-u1" style="left:426px;top:316px;width:234px"></div>
+    <div class="st1-ul" id="st1-u2" style="left:36px;top:352px;width:156px"></div>
+    <div class="st1-sm" style="left:36px;top:420px">NWS NORMAN &middot; PUBLIC INFORMATION STATEMENT</div>
+  </div>
+  <div class="st1-ef st1-h" id="st1-ef">EF5</div>
+  <div class="st1-glass st1-h" id="st1-wind" style="left:96px;top:740px;width:640px;height:250px">
+    <div class="st1-sm" style="left:32px;top:28px">WINDS OF AT LEAST</div>
+    <div class="st1-ctr" id="st1-ctr">295 mph</div>
+    <div class="st1-sm st1-h" id="st1-w1" style="left:32px;top:164px">VERY CLOSE TO THE SURFACE &middot; RAXPOL RADAR</div>
+    <div class="st1-sm st1-h" id="st1-w2" style="left:32px;top:200px">NWS NORMAN EVENT PAGE</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a5s1-statement", P = "st1", D = 15.72, NS = "http://www.w3.org/2000/svg";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function show(id, t, dx, dy) { tl.fromTo($(id), { autoAlpha: 0, x: dx || 0, y: dy == null ? 24 : dy }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out", immediateRender: false }, t); }
+  function X(lon) { return (lon + 98.20) * 1920; }
+  function Y(lat) { return (35.70 - lat) / 0.46 * 1080; }
+  function dOf(pp) { return pp.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" "); }
+  function px(pts) { return pts.map(function (p) { return [X(p[0]), Y(p[1])]; }); }
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+  var map = $("map");
+
+  /* ---- the metro map: interstates, US-81, the rivers, the El Reno track (NWS Norman centreline, media/data/tracks.json) ---- */
+  [[[-97.70,35.492],[-97.65,35.478],[-97.61,35.462],[-97.579,35.448],[-97.54,35.450],[-97.50,35.455],[-97.45,35.447],[-97.38,35.47],[-97.30,35.49],[-97.20,35.50]],
+   [[-97.601,35.4964],[-97.57,35.512],[-97.54,35.525],[-97.49,35.545],[-97.42,35.565],[-97.32,35.60],[-97.20,35.625]]].forEach(function (r) {
+    el("path", { d: dOf(px(r)), fill: "none", stroke: "#22384c", "stroke-width": 2.5 }, map); });
+  [[[-98.20,35.530],[-98.05,35.515],[-97.955,35.503],[-97.938,35.501],[-97.90,35.498],[-97.80,35.487],[-97.74,35.481],[-97.65,35.464],[-97.60,35.461],[-97.55,35.458],[-97.516,35.456],[-97.47,35.452],[-97.40,35.443],[-97.30,35.415],[-97.20,35.388]],
+   [[-97.953,35.70],[-97.953,35.545],[-97.940,35.520],[-97.938,35.40],[-97.944,35.31],[-97.940,35.24]],
+   [[-97.418,35.70],[-97.425,35.60],[-97.455,35.52],[-97.490,35.475],[-97.497,35.45],[-97.490,35.40],[-97.487,35.339],[-97.484,35.24]],
+   [[-97.20,35.665],[-97.35,35.60],[-97.44,35.545],[-97.50,35.53],[-97.555,35.528],[-97.570,35.50],[-97.571,35.46],[-97.570,35.40],[-97.585,35.36],[-97.62,35.31],[-97.60,35.24]]].forEach(function (r, i) {
+    el("path", { d: dOf(px(r)), fill: "none", stroke: "#2a3644", "stroke-width": i === 1 ? 6 : 7.5, "stroke-linejoin": "round" }, map);
+    el("path", { d: dOf(px(r)), fill: "none", stroke: "#93a3b2", "stroke-width": 1.6, "stroke-linejoin": "round", opacity: 0.8 }, map); });
+  var TRACK = [[247,517],[257,534],[270,544],[281,569],[301,575],[340,579],[388,580],[405,567],[443,574],[468,581],[524,569],[557,547],[564,520],[571,515],[580,509],[584,501],[594,472],[603,453],[593,457],[590,463],[595,461],[601,459],[613,463],[627,469],[654,462],[656,465],[672,460],[673,465],[676,467]];
+  var glow = el("path", { d: dOf(TRACK), fill: "none", stroke: "#e8c56a", "stroke-width": 14, "stroke-linejoin": "round", "stroke-linecap": "round", opacity: 0 }, map);
+  el("path", { d: dOf(TRACK), fill: "none", stroke: "#d8a13a", "stroke-width": 4, "stroke-linejoin": "round", "stroke-linecap": "round" }, map);
+  var ringO = "468 581", ring = el("circle", { cx: 468, cy: 581, r: 14, fill: "none", stroke: "#f2f5f8", "stroke-width": 3, opacity: 0 }, map);
+
+  s0([$("h1"), $("h2"), $("u1"), $("u2")], { scaleX: 0, transformOrigin: "left center" });
+  s0(glow, { opacity: 0 }); s0(ring, { opacity: 0, scale: 1, svgOrigin: ringO });
+  tl.fromTo($("scan"), { x: -400 }, { x: 1960, duration: D, ease: "none" }, 0);
+
+  show("rail", 0.30, -60, 0); show("date", 0.40, 0, 20);    /* June 4, 2013 @0.40 */
+  show("four", 2.54, -20, 0);                               /* four days after the storm @2.54 */
+  show("card", 4.30, 660, 0);                               /* the weather office in Norman @4.30 */
+  show("l1", 5.54, -30, 0); tl.to($("h1"), { scaleX: 1, duration: 0.5, ease: "power2.out" }, 5.54);   /* raised the tornado @5.54 */
+  show("l2", 6.46, -30, 0); tl.to($("h2"), { scaleX: 1, duration: 0.5, ease: "power2.out" }, 6.46);   /* to an EF5 @6.46 */
+  tl.fromTo($("ef"), { autoAlpha: 0, scale: 2.6, y: -60 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "power4.in", transformOrigin: "50% 60%", immediateRender: false }, 6.84);   /* EF5 @6.84: lands on the track */
+  tl.to(glow, { opacity: 0.4, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 5 }, 7.24);
+  tl.fromTo(ring, { scale: 1, opacity: 0.9 }, { scale: 6, opacity: 0, duration: 1.0, ease: "power2.out", repeat: 2, repeatDelay: 0.2, svgOrigin: ringO, immediateRender: false }, 7.24);
+  show("l3", 9.14, -30, 0); show("l4", 9.40, -30, 0);       /* because of the radar @9.14 */
+  tl.to($("u1"), { scaleX: 1, duration: 0.5, ease: "power2.out" }, 9.82);   /* radar @9.82: "RESEARCH MOBILE RADAR DATA" */
+  tl.to($("u2"), { scaleX: 1, duration: 0.4, ease: "power2.out" }, 10.20);
+  var c = { v: 240 }, ctr = $("ctr");
+  show("wind", 12.88, -60, 0);                              /* at about @12.88 */
+  tl.to(c, { v: 295, duration: 0.9, ease: "power3.out", onUpdate: function () { ctr.textContent = Math.round(c.v) + " mph"; } }, 13.26);   /* 295 miles an hour @13.26 */
+  tl.fromTo(ctr, { scale: 0.8 }, { scale: 1, duration: 0.9, ease: "power3.out", transformOrigin: "0% 50%", immediateRender: false }, 13.26);
+  show("w1", 13.98, -20, 0); show("w2", 14.50, -20, 0);
+  tl.to({}, { duration: 0.01 }, 15.71);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
