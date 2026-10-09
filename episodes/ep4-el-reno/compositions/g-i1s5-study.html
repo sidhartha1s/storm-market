@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-i1s5-study (I1-S5) · window 24.57 s · brief: mg_specs/cards.md
+     Overlay: root transparent for the whole window, the news aerial of the jammed highway sits beneath.
+     Popfig "11 days earlier" with the Moore line, a small tag while the voice stays on that day, then the study card
+     (Weather, Climate, and Society, 2022; research/facts.md, not re-pulled). Cues are audio/i1-s5.words.json seconds. -->
+<template>
+<style>
+  #st5-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .st5-h { opacity:0; visibility:hidden; }
+  .st5-pop { position:absolute; left:200px; top:330px; width:1420px; height:300px; text-align:center; white-space:nowrap; }
+  .st5-scrim { position:absolute; left:200px; right:200px; top:-90px; bottom:-60px;
+    background:radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
+  .st5-big { position:absolute; left:0; right:0; top:0; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:160px; color:#d0121f; letter-spacing:0.04em;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  .st5-subrow { position:absolute; left:0; right:0; top:184px; }
+  .st5-sub { display:inline-block; margin:0 12px; font:900 38px 'Arial Black', Arial, sans-serif; color:#f4f0e8; letter-spacing:0.3em; line-height:1;
+    -webkit-text-stroke:1px rgba(0,0,0,0.85); paint-order:stroke fill; text-shadow:0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+  .st5-glass { position:absolute; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .st5-t1 { position:absolute; left:36px; top:28px; font:700 30px Arial, sans-serif; letter-spacing:1px; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .st5-eb { position:absolute; left:38px; font:700 20px Arial, sans-serif; letter-spacing:4px; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .st5-src { position:absolute; left:38px; top:72px; font:italic 28px Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; line-height:1; }
+  .st5-hd { position:absolute; left:36px; top:138px; font:900 64px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .st5-mid { position:absolute; left:38px; font:700 30px Arial, sans-serif; letter-spacing:1px; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .st5-rule { position:absolute; left:38px; top:278px; width:700px; height:1px; background:rgba(255,255,255,0.28); }
+</style>
+<div id="st5-root" data-composition-id="g-i1s5-study" data-width="1920" data-height="1080" data-duration="24.57">
+  <div class="st5-pop st5-h" id="st5-pop">
+    <div class="st5-scrim"></div>
+    <div class="st5-big" id="st5-big">11 days earlier</div>
+    <div class="st5-subrow"><span class="st5-sub st5-h" id="st5-p1">EF5</span><span class="st5-sub st5-h" id="st5-d1">&middot;</span><span class="st5-sub st5-h" id="st5-p2">MOORE</span><span class="st5-sub st5-h" id="st5-d2">&middot;</span><span class="st5-sub st5-h" id="st5-p3">MAY 20, 2013</span></div>
+  </div>
+  <div class="st5-glass st5-h" id="st5-tag" style="left:96px; top:96px; width:560px; height:122px">
+    <div class="st5-t1">Moore &middot; May 20, 2013 &middot; EF5</div>
+    <div class="st5-eb" style="top:76px">11 DAYS EARLIER</div>
+  </div>
+  <div class="st5-glass st5-h" id="st5-card" style="left:96px; top:96px; width:780px; height:384px">
+    <div class="st5-eb" style="top:36px" id="st5-eb">A 2022 STUDY</div>
+    <div class="st5-src st5-h" id="st5-src">Weather, Climate, and Society, 2022</div>
+    <div class="st5-hd st5-h" id="st5-hd">6 metro areas</div>
+    <div class="st5-mid st5-h" id="st5-yr" style="top:224px">2011 to 2018</div>
+    <div class="st5-rule" id="st5-rule"></div>
+    <div class="st5-mid st5-h" id="st5-lg" style="top:308px; font-size:34px; color:#e8c56a">This was the largest</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var D = 24.57, P = "#st5-";
+  var tl = gsap.timeline({ paused: true });
+  function show(id, t, dx, dy) { tl.fromTo(P + id, { autoAlpha: 0, x: dx || 0, y: dy || 0 }, { autoAlpha: 1, x: 0, y: 0, duration: 0.45, ease: "power3.out" }, t); }
+  function float(id, a, b) { var n = Math.floor((b - a) / 1.9) - 1; if (n >= 0) tl.to(P + id, { y: -6, duration: 1.9, ease: "sine.inOut", yoyo: true, repeat: n }, a); }
+  gsap.set(P + "rule", { scaleX: 0, transformOrigin: "left center" });
+  tl.set(P + "rule", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* 11 DAYS EARLIER @0.00: the figure lands with the first word */
+  tl.fromTo(P + "pop", { autoAlpha: 0, scale: 1.4, transformOrigin: "50% 30%" }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 0.0);
+  tl.to(P + "big", { scale: 1.04, transformOrigin: "50% 50%", duration: 4.7, ease: "none" }, 0.4);
+  /* EF5 @1.90 · MOORE @3.80 · OKLAHOMA @4.12 (the date of that day) */
+  show("p1", 1.90, 0, 18);
+  show("d1", 3.80, 0, 18);
+  show("p2", 3.80, 0, 18);
+  show("d2", 4.12, 0, 18);
+  show("p3", 4.12, 0, 18);
+  tl.to(P + "pop", { autoAlpha: 0, y: -40, duration: 0.35, ease: "power2.in" }, 5.20);
+  /* PEOPLE LATER TOLD @5.64 ... FEAR FROM THAT DAY @7.44: the day stays named, small, top left */
+  show("tag", 5.55, -60, 0);
+  float("tag", 6.1, 10.6);
+  tl.to(P + "tag", { x: -800, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 10.70);
+  /* A 2022 STUDY @11.44 */
+  show("card", 11.32, -60, 0);
+  show("src", 11.44, -24, 0);
+  /* SIX METRO AREAS @14.34 · the years the study covers @14.98 */
+  show("hd", 14.34, 0, 20);
+  show("yr", 14.98, 0, 20);
+  /* THIS WAS THE LARGEST @16.96 */
+  tl.to(P + "rule", { scaleX: 1, duration: 0.6, ease: "power3.out" }, 16.6);
+  show("lg", 16.96, -24, 0);
+  float("card", 12.0, 23.9);
+  tl.to(P + "card", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
+  window.__timelines["g-i1s5-study"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
