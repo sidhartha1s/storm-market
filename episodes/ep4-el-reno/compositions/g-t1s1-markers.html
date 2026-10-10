@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-t1s1-markers (T1-S1, the hook) · window 6.50 s · brief: mg_specs/cards.md "Addendum, 10 Oct 26"
+     Overlay: root transparent for the whole window; v-t1s1-jam (ABC night aerial of the jammed highway) sits beneath.
+     One glass strip, one row of 21 markers in the g-a1s5-henderson pin style: the first 12 from the left lit amber on
+     "12", the other 9 hollow on "21". No text, no numeral. Cues are audio/t1-s1.words.json seconds minus 6.20.
+     Band y 625 to 735, x 342 to 1578 with the drift: clear of the ABC bug (x 1300 to 1640, y 870 and below) and of the
+     presenter corner. Every timeline position outside the marker loops is a literal number (sweep check 7); the strip
+     drifts left 36 px (x 18 to -18, 6 px/s) for the whole window. -->
+<template>
+<style>
+  #hk1-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
+  .hk1-move { position:absolute; left:360px; top:625px; width:1200px; height:110px; }
+  .hk1-card { position:absolute; left:0; top:0; width:1200px; height:110px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .hk1-h { opacity:0; visibility:hidden; }
+  .hk1-pins { position:absolute; left:0; top:0; width:1200px; height:110px; overflow:visible; }
+</style>
+<div id="hk1-root" data-composition-id="g-t1s1-markers" data-width="1920" data-height="1080" data-duration="6.5">
+  <div class="hk1-move" id="hk1-move">
+    <div class="hk1-card hk1-h" id="hk1-card">
+      <svg class="hk1-pins" id="hk1-pins" viewBox="0 0 1200 110"></svg>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var P = "#hk1-", NS = "http://www.w3.org/2000/svg";
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }
+  function el(tag, a) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); document.getElementById("hk1-pins").appendChild(e); return e; }
+  s0(P + "move", { x: 18 });
+  s0(P + "card", { autoAlpha: 0, x: 0, y: 24 });
+
+  /* 21 markers, even pitch 54 px, centred on x 960: the first 12 lit (amber fill), the other 9 hollow */
+  var lit = [], dim = [];
+  for (var i = 0; i < 21; i++) {
+    var x = 60 + i * 54, y = 55, on = i < 12;
+    var c = el("circle", on ? { cx: x, cy: y, r: 15, fill: "#e8c56a", stroke: "#f2f5f8", "stroke-width": 2 }
+                            : { cx: x, cy: y, r: 15, fill: "#0b1016", stroke: "#93a3b2", "stroke-width": 2.25 });
+    s0(c, { scale: 0, svgOrigin: x + " " + y });
+    (on ? lit : dim).push(c);
+  }
+
+  tl.to(P + "move", { x: -18, duration: 6.0, ease: "none" }, 0.50);   /* slow drift left, 6 px/s, to the end of the window */
+  /* TWELVE @0.50: the strip rises in and the 12 lit markers land, all settled by 1.00 */
+  tl.to(P + "card", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.50);
+  lit.forEach(function (c, i) { tl.to(c, { scale: 1, duration: 0.28, ease: "back.out(1.6)" }, 0.50 + i * 0.02); });
+  /* TWENTY ONE @1.06: the 9 hollow markers join */
+  dim.forEach(function (c, i) { tl.to(c, { scale: 1, duration: 0.3, ease: "back.out(1.6)" }, 1.06 + i * 0.03); });
+  /* voice ends 6.20; the strip is out by 6.30, before the cut at 6.50 */
+  tl.to(P + "card", { x: -1300, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 5.70);
+  window.__timelines["g-t1s1-markers"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
