@@ -9,8 +9,9 @@ Runs with the FlashHead venv's own Python, never the system one. The install sit
 .models\\lipsync\\flashhead (gitignored; learnings/render.md "Presenter circle face" says how it was built) and is
 found from the interpreter's path. Measured 10 Oct 26 on the RTX A2000: 53 s start-up, then 2.28 s per second of face.
 
-Usage: <main checkout>\\.models\\lipsync\\flashhead\\venv\\Scripts\\python.exe scripts\\circle_face.py <narration.wav> <out.mp4> [portrait.jpg]
-       (the wav comes from circle_audio.py; launch it hidden like a render, scripts\\run_hidden.vbs)
+Usage: <main checkout>\\.models\\lipsync\\flashhead\\venv\\Scripts\\python.exe scripts\\circle_face.py <narration.wav> <out.mp4>
+       (the wav comes from circle_audio.py; launch it hidden like a render, scripts\\run_hidden.vbs. The portrait is
+       assets\\paul\\circle-portrait-560.jpg: circle_cut.py's crop is measured on that framing)
 """
 import os
 import subprocess
