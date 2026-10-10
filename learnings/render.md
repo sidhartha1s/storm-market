@@ -5,7 +5,7 @@ Newest first. New entries go at the top, under this line. Superseded lines point
 ## 10 Oct 26: first render on the ZBook (hostname Sidhartha, RTX A2000), driven from the ASUS over `ssh zbook`
 
 ep4-el-reno draft, 1333.38 s, 20001 frames at 15 fps, 3 workers: compile 20.2 s, audio 4 min 15.3 s, capture
-25 min 11.4 s (13.6 frames/s), assemble 4 min 41.9 s. Output matched the ASUS snapshot frames of all 69 graphics
+25 min 11.4 s (13.2 frames/s), assemble 4 min 41.9 s, 34.6 min in all. Output matched the ASUS snapshot frames of all 69 graphics
 (SSIM min 0.8837, median 0.9849; the three lowest are moving footage under a card, read side by side). What it took:
 
 1. **Transport.** `git fetch` from GitHub fails in the ssh session (Windows credential store). Ship commits as a
