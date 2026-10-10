@@ -42,23 +42,26 @@ def plan(wins, passes):
     return cuts, uncovered
 
 
-def probe(path, entry):
-    return subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", entry, "-of", "csv=p=0", path],
-                          capture_output=True, text=True, check=True).stdout.strip().split(",")[0]
+def probe(path):
+    """(width_px, length_s) of the picture stream: the picture's length, not the file's (the sound can run longer)."""
+    out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,duration", "-of", "default=nw=1", path],
+                         capture_output=True, text=True, check=True).stdout
+    v = dict(line.split("=", 1) for line in out.split())
+    return int(v["width"]), float(v["duration"])
 
 
 def main():
     ep = Path(sys.argv[1])
-    passes = []
+    passes, widths = [], {}
     for arg in sys.argv[2:]:
         face, start = arg.rsplit("@", 1)
-        passes.append((face, float(start), float(probe(face, "stream=duration"))))  # the picture's length, not the file's
+        widths[face], length = probe(face)
+        passes.append((face, float(start), length))
     cuts, uncovered = plan(windows((ep / "index.html").read_text(encoding="utf8")), passes)
     if uncovered or not cuts:
         sys.exit(f"FAIL: no face pass covers {uncovered}" if uncovered else "FAIL: index.html mounts no <video class=\"pip\">")
     for src, face, seek, dur in cuts:
-        w = int(probe(face, "stream=width"))
-        c, x, y = (round(f * w) for f in CROP)
+        c, x, y = (round(f * widths[face]) for f in CROP)
         (ep / src).parent.mkdir(parents=True, exist_ok=True)
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{seek:.3f}", "-i", face, "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo",
                         "-t", f"{dur + PAD:.3f}", "-map", "0:v", "-map", "1:a", "-vf", f"crop={c}:{c}:{x}:{y},scale={SIZE}:{SIZE}:flags=lanczos",
