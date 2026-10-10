@@ -1,5 +1,13 @@
 [
  {
+  "family": "cards",
+  "segment": "t1-s1",
+  "comp": "g-t1s1-markers",
+  "start": 13.31,
+  "window": 6.5,
+  "voice_dur": 12.402
+ },
+ {
   "family": "map21",
   "segment": "i1-s3",
   "comp": "g-i1s3-pins",
