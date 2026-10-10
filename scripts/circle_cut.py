@@ -52,7 +52,7 @@ def main():
     passes = []
     for arg in sys.argv[2:]:
         face, start = arg.rsplit("@", 1)
-        passes.append((face, float(start), float(probe(face, "format=duration"))))
+        passes.append((face, float(start), float(probe(face, "stream=duration"))))  # the picture's length, not the file's
     cuts, uncovered = plan(windows((ep / "index.html").read_text(encoding="utf8")), passes)
     if uncovered or not cuts:
         sys.exit(f"FAIL: no face pass covers {uncovered}" if uncovered else "FAIL: index.html mounts no <video class=\"pip\">")
