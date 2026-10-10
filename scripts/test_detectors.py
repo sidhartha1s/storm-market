@@ -239,6 +239,9 @@ assert code == 1 and 'dup-fact: "EF1"' in out, f'data-overlap-ok must not waive 
 REP = '<span data-repeat-ok="one rating label per track">EF1</span>'
 code, out = _rows_check(REP, 'TRACK A', REP, 'TRACK B')
 assert code == 0 and 'dup-fact' not in out, f'a declared repeated label must pass: {out}'
+ANC = '<span data-repeat-ok="one rating label per track"><span>EF1</span></span>'
+code, out = _rows_check(ANC, 'TRACK A', ANC, 'TRACK B')
+assert code == 0 and 'dup-fact' not in out, f'a label declared on an ancestor must pass: {out}'
 print('overlap_check self-check PASS (data-repeat-ok declares a label on several things)')
 
 # ---------------------------------------------------------------- graphics_qc.mjs
