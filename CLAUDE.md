@@ -144,7 +144,7 @@ Owner 7 Oct 26: "i want all stuff related to storm market within the repo. excep
   gitignored in the MAIN checkout when it is too big or secret (`.venv-pocket/`, `.models/`, `.env`, episode media). Never a
   path into another project, a shared user cache or a scratch folder.
 - An outside dependency is an exception. Tell the owner before using a new one and add it to this list in the same PR.
-- Exceptions on record: installed programs (Python with its packages such as pyyaml and faster-whisper, Node and the npx
+- Exceptions on record: installed programs (Python with its packages such as pyyaml, faster-whisper and uv, Node and the npx
   cache that holds hyperframes, ffmpeg, Chrome, git, gh, yt-dlp); online accounts and their local logins (GitHub, Cloudflare
   for the site deploy, Gumroad CLI, YouTube, Flow); the skills' junction into `~/.claude/skills/` (the files are tracked
   here); stock-fetch keys in `~/.claude/.env`; ChatGPT image generation for thumbnails, driven by the webgen browser
