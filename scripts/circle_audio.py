@@ -35,12 +35,12 @@ def main():
     segs = narration((ep / "index.html").read_text(encoding="utf8"), lo, hi)
     if not segs:
         sys.exit(f"FAIL: no nx-* narration starts between {lo} and {hi} s in {ep / 'index.html'}")
-    t0, end = segs[0][0], max(s + d for s, d, _ in segs)
+    t0 = segs[0][0]
     cmd = ["ffmpeg", "-v", "error", "-y"]
     for _, _, src in segs:
         cmd += ["-i", str(ep / src)]
-    subprocess.run(cmd + ["-filter_complex", mix_graph(segs), "-map", "[m]", "-ac", "1", "-ar", "16000", "-t", f"{end - t0:.3f}", out], check=True)
-    print(f"{out}: {len(segs)} segments, starts at timeline {t0:.2f} s, {end - t0:.2f} s long, speech {sum(d for _, d, _ in segs):.1f} s")
+    subprocess.run(cmd + ["-filter_complex", mix_graph(segs), "-map", "[m]", "-ac", "1", "-ar", "16000", "-t", f"{hi - t0:.3f}", out], check=True)
+    print(f"{out}: {len(segs)} segments, starts at timeline {t0:.2f} s, {hi - t0:.2f} s long, speech {sum(d for _, d, _ in segs):.1f} s")
 
 
 if __name__ == "__main__":
