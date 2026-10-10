@@ -10,7 +10,7 @@ Deterministic gate: `scripts/sweep_episode.py` ("CTA present + placed"). SRT cue
 | md5 | `d67d2240b9bc771ed6a3c1b231e91f5a` |
 | Transcript | `paul-storm-ready-v7-oct10.txt` (the words are v6-oct7's, unchanged) |
 | Voice | the owner's own voice (10 Oct 26): v6-oct7's audio converted, timing kept, so the lips still match. All 64 words of the transcript read back from the converted audio. -14.8 LUFS, -3.5 dBFS peak. The picture stream is v6-oct7's, copied without re-encoding (stream md5 `676c3204cb47a62c0ac09d058f46f722` on both) |
-| Source | `C:\Users\Sidhartha\Videos\paul-v2-test\ad\hf\renders\book-ad-v3-yt.mp4` (book ad v3, owner 7 Oct 26; hyperframes render at 24 fps, transcoded at crf 22, audio copied: -14.5 LUFS, -1.4 dBFS peak) |
+| Source | `C:\Users\Sidhartha\Videos\paul-v2-test\ad\hf\renders\book-ad-v3-yt.mp4` (book ad v3, owner 7 Oct 26; hyperframes render at 24 fps, transcoded at crf 22; its own audio, the v6-oct7 voice, was -14.5 LUFS, -1.4 dBFS peak) |
 | QR | opens `https://www.paulraymond.online/yt/?src=qr` (decoded from the asset at 20 s and 23.8 s) |
 
 ## Version history
