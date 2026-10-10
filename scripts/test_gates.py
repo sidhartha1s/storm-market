@@ -354,6 +354,23 @@ with tempfile.TemporaryDirectory() as d:
     check("lint_timeline: a muted track-1 video passes clean", "unmuted b-roll" not in out, out)
 
 with tempfile.TemporaryDirectory() as d:
+    # a 40 s b-roll hold is reported for the editor; the presenter circle held just as long is not a cut and is not
+    ep = Path(d)
+    (ep / "media").mkdir(); (ep / "compositions").mkdir()
+    write_wav(ep / "media" / "a1.wav", 2.0)
+    for name in ("broll.mp4", "paul-w01.mp4"):
+        (ep / "media" / name).write_bytes(b"0")
+    (ep / "index.html").write_text(
+        '<section data-duration="300">'
+        '<audio id="nx-a1" src="media/a1.wav" data-start="0" data-duration="2"></audio>'
+        '<video src="media/broll.mp4" data-start="0" data-duration="40" data-track-index="1" muted></video>'
+        '<video id="pip-w01" class="pip" src="media/paul-w01.mp4" data-start="0" data-duration="40" data-track-index="7" muted></video>'
+        '</section>', encoding="utf-8")
+    code, out = run("lint_timeline.py", ep)
+    check("lint_timeline: the pacing report names a long b-roll hold but never the presenter circle",
+          "[pacing report] video media/broll.mp4" in out and "paul-w01.mp4" not in out, out)
+
+with tempfile.TemporaryDirectory() as d:
     # narration window (1.0s) shorter than its real wav (2.0s) -> truncation gate (FORMAT.md:59)
     ep = Path(d)
     (ep / "media").mkdir(); (ep / "compositions").mkdir()
