@@ -14,7 +14,8 @@ Deterministic gate: `scripts/sweep_episode.py` ("CTA present + placed"). SRT cue
 | QR | opens `https://www.paulraymond.online/yt/?src=qr` (decoded from the asset at 20 s and 23.8 s) |
 
 ## Version history
-- **v6-oct7** (2026-10-07): CURRENT. Book ad v3: opens on the book cover and pages, then Paul on camera with the QR card, then a silent QR end card.
+- **v7-oct10** (2026-10-10): CURRENT. Book ad v3 with the owner's own voice; picture unchanged.
+- v6-oct7 (2026-10-07): book ad v3 in the cloned Flow voice: opens on the book cover and pages, then Paul on camera with the QR card, then a silent QR end card. Retired; removed from the tree 2026-10-10 (owner: the ad in his voice). Restore with `git show c4829acd:assets/cta/paul-storm-ready-v6-oct7.mp4 > paul-storm-ready-v6-oct7.mp4`.
 - v5-sep6 (2026-09-06): 15.139 s, QR to the bare home page. Retired; removed from the tree 2026-10-07 (owner). Restore with `git show 59dcbea5:assets/cta/paul-storm-ready-v5-sep6.mp4 > paul-storm-ready-v5-sep6.mp4`.
 - v4c (2026-08-28): HeyGen talking head, QR on chest. Retired; removed from the tree 2026-09-24 (owner). Restore with `git show <sha>:assets/cta/paul-storm-ready-v4c.mp4`.
 - v4b (2026-08-23): DeAPI/LTX lipsync. Superseded.
