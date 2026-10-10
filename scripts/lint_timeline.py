@@ -163,7 +163,8 @@ def main():
     visuals = []
     for e in re.finditer(r'<video\b([^>]*)>', html):
         a = e.group(1)
-        if re.search(r'class="[^"]*\bpip\b', a):
+        cls = re.search(r'class="([^"]*)"', a)
+        if cls and "pip" in cls.group(1).split():
             continue  # the presenter circle is not a picture cut: cadence and no-repeat do not apply to it
         src = re.search(r'src="([^"]+)"', a)
         st = re.search(r'data-start="([\d.]+)"', a)
