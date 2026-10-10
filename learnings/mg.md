@@ -35,6 +35,13 @@ Newest first. New entries go at the top, under this line. Superseded lines point
   `index.html` by mounting that evening's own news footage under the whole window. **Rule:** a label that names a
   place, a date or an event is a claim about the picture under it. The brief names the file that sits under every
   second of such a label, and the frame read checks the ledger row of that file, not only the layout.
+- **Found when the whole suite first ran, after both fix rounds:** `overlap_check.mjs` reported 21 findings that no
+  builder or verifier had seen, because the builders' done line named `graphics_qc` and the sweep only. Read frame by
+  frame, 14 were line boxes that touch with the ink clear (declared with `data-overlap-ok`) and 7 were one label on
+  several different things, such as an "EF1" tag on each track (the gate had no way to declare those; PR #154 adds
+  `data-repeat-ok`). A graphic added later the same way failed `blank_scan.mjs`: its host was mounted 0.50 s ahead of
+  its first mark. **Rule:** the done line names every gate that stages a comp (`graphics_qc`, sweep, `blank_scan`,
+  `overlap_check`), and an overlay's host starts on its first mark (`references/mg-brief-template.md` 7a item 1).
 
 ## 2026-09-29 - ep-nepal-floods-2026: one snapshot at 60 % of each window missed four near-empty openings
 - **What happened:** the pre-render check snapshotted each changed comp once, at 60 % of its window, and all looked full.
