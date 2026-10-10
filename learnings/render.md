@@ -2,6 +2,32 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 10 Oct 26: Presenter circle face, SoulX-FlashHead Lite on the ZBook (RTX A2000 8 GB, 15.6 GB RAM)
+
+1. Three local lip-sync models were installed and timed on the same 3.6 s and 10 s lines, wall time from launch to
+   finished file: MuseTalk 1.5 105.8 s and 154.6 s (7290 MiB), FlashHead Lite 91.4 s and 121.3 s (6045 MiB), JoyVASA
+   lips-only 53.0 s and 93.3 s (2031 MiB). Most of each is start-up. The owner picked FlashHead on the look.
+2. One long pass is how FlashHead is built: a portrait and a wav, no text prompt, the audio walked in 0.96 s chunks, each
+   chunk carrying on from the last. Measured on 319.3 s of El Reno narration: 782.0 s wall, 53.2 s of it start-up
+   (Python and libraries 19.2, model load 26.1, portrait and audio 6.3), then 2.28 s per second of face, 2.11 s per
+   chunk and flat over all 333 chunks; card peak 6043 MiB, RAM peak 14.2 GB. The face did not drift or smear over
+   the pass, and mouth movement stayed one frame (40 ms) from the voice in the first minute and the last.
+3. The makers' `generate_video.py` holds every chunk in RAM until the end (75 MB per 0.96 s, about 25 GB for that
+   pass). `scripts/circle_face.py` is the same loop writing each chunk to the mp4 as it is made; it reproduced the
+   short clip (SSIM 0.9846). Their 2-step setting saves 17 s on a short clip and smears the face: not used.
+4. The install is hand-built and lives only on the ZBook, in the main checkout: `.models\lipsync\` holds a uv-managed
+   Python 3.10.20 (`python\`, it runs under Smart App Control), the uv cache and `flashhead\` (`venv\` with torch
+   2.7.1+cu128, `repo\` = github.com/Soul-AILab/SoulX-FlashHead at 9bc03de0, `models\SoulX-FlashHead-1_3B` and
+   `models\wav2vec2-base-960h`). Three local edits to the repo, none to the model: `COMPILE_MODEL` and `COMPILE_VAE`
+   set False in `flash_head/src/pipeline/flash_head_pipeline.py` (no C compiler on Windows), the `xfuser` import in
+   `flash_head/src/modules/flash_head_model.py` wrapped in try/except (multi-GPU only), and
+   `infer_params['sample_steps']` read from `FH_STEPS` with default 4 in `flash_head/inference.py`.
+5. A face pass that stops with the last word leaves the last circle window short: two El Reno windows ran 0.3 s past
+   their pass and the pass's last frame was held for them. `circle_audio.py` now pads the wav to the asked end and
+   `circle_face.py` keeps its whole last chunk.
+6. Launch a pass hidden like a render (`scripts\run_hidden.vbs`), one heavy job at a time on the box: the pass fills
+   the card and RAM, so no render beside it.
+
 ## 10 Oct 26: pin 0.8.114 to 0.8.143 before El Reno's first render; a real episode's frames as the second A/B
 
 1. Ritual on demo-pin (hidden task, 159 s): duration 24.000/24.000 s, black 0/0, RMS -21.602701/-21.602701 dB,
