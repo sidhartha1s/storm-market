@@ -34,6 +34,7 @@ check("circle-01 only nx-* narration that starts inside the span is picked (the 
       [s[2] for s in segs] == ["audio/a1-s1.wav", "audio/a1-s2.wav"])
 check("circle-02 the second segment is delayed by its distance from the first (20.0 - 10.5 s = 9500 ms), the first by 0",
       "adelay=0:all=1" in circle_audio.mix_graph(segs) and "adelay=9500:all=1" in circle_audio.mix_graph(segs))
+check("circle-07 the mix is padded with silence, so the wav can run to <to_s> past the last word", circle_audio.mix_graph(segs).endswith(",apad[m]"))
 check("circle-03 a span holding no narration returns nothing (main exits FAIL on it)", circle_audio.narration(HTML, 50, 60) == [])
 
 wins = circle_cut.windows(HTML)
