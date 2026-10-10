@@ -36,8 +36,8 @@ channel:
     sh-: 0.99                     # shorts — references/shorts/PLAN.md "Pace" (owner 16 Sep 26: 1.16 on the old voice, same ratio)
   cta:                            # MUST-KEEP in every episode (owner order 2026-08-30) — DESIGN.md "CTA contract"
     file: assets/cta/paul-storm-ready-v7-oct10.mp4    # md5 d67d2240b9bc771ed6a3c1b231e91f5a (owner 10 Oct 26: book ad v3 in the owner's own voice; the picture stream is v6-oct7's, copied; QR opens /yt/?src=qr; 1080p24); swap = NEW versioned file + bump here, never overwrite; the old file leaves assets/cta/
-    duration: 24.417              # the picture stream (586 frames at 24 fps); the audio stream runs to 24.5 s, silent by then
-    transcript: assets/cta/paul-storm-ready-v6-oct7.txt
+    duration: 24.417              # the picture stream (586 frames at 24 fps); the audio stream ends with it (24.416 s)
+    transcript: assets/cta/paul-storm-ready-v7-oct10.txt
     exempt:                       # shipped BEFORE the contract (2026-08-30) — never extended; demo-* dirs skip by having no epN prefix
       [ep1-joplin, ep2-2011-super-outbreak, ep3-tristate, ep5-california-2018, ep6-katrina-2005,
        ms-elnino-texas, ms-krakatau-sirens, ms-krakatoa-1883]   # ms-*: shipped before the news-lane window_ms (17 Sep 26), CTA at the story break
