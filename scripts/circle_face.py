@@ -65,7 +65,8 @@ def main():
                 writer.append_data(frame)
             if i % 50 == 0:
                 print(f"chunk {i}/{len(chunks) - 1} | {time.time() - t_ready:.0f} s | card peak {torch.cuda.max_memory_allocated() / 2**20:.0f} MiB", flush=True)
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", tmp, "-i", audio, "-c:v", "copy", "-c:a", "aac", "-shortest", out], check=True)
+    # no -shortest: the picture keeps its whole last chunk, so it is never shorter than the wav it was made from
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", tmp, "-i", audio, "-c:v", "copy", "-c:a", "aac", out], check=True)
     os.remove(tmp)
     made = len(chunks) * keep / fps
     print(f"DONE {out}: {made:.1f} s of face in {time.time() - t_start:.1f} s ({(time.time() - t_ready) / made:.2f} s per second of face after start-up)", flush=True)
