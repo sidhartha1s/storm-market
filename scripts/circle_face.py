@@ -55,7 +55,7 @@ def main():
     t_ready = time.time()
     print(f"start-up {t_ready - t_start:.1f} s | {len(chunks)} chunks of {keep} frames | audio {len(speech) / rate:.1f} s", flush=True)
 
-    tmp = out.replace(".mp4", "_tmp.mp4")
+    tmp = out[:-4] + "_tmp.mp4"  # picture only; the narration is muxed in below so a pass can be played and judged with its sound
     with imageio.get_writer(tmp, format="mp4", mode="I", fps=fps, codec="h264", ffmpeg_params=["-bf", "0"]) as writer:
         for i, chunk in enumerate(chunks):
             heard.extend(chunk.tolist())
