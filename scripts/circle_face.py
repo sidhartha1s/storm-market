@@ -42,7 +42,7 @@ def main():
     t_start = time.time()
     pipeline = get_pipeline(world_size=1, ckpt_dir=str(HOME / "flashhead" / "models" / "SoulX-FlashHead-1_3B"),
                             wav2vec_dir=str(HOME / "flashhead" / "models" / "wav2vec2-base-960h"), model_type="lite")
-    get_base_data(pipeline, cond_image_path_or_dir=portrait, base_seed=SEED, use_face_crop=False)
+    get_base_data(pipeline, cond_image_path_or_dir=str(PORTRAIT), base_seed=SEED, use_face_crop=False)
     p = get_infer_params()
     rate, fps, window_s = p["sample_rate"], p["tgt_fps"], p["cached_audio_duration"]
     keep = p["frame_num"] - p["motion_frames_num"]  # new frames per chunk; the rest repeat the previous chunk's motion
