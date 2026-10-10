@@ -23,6 +23,11 @@
     .clip { position: absolute; inset: 0; }
     .blackout { position: absolute; inset: 0; background: #000; }
     .hold { position: absolute; inset: 0; pointer-events: none; }
+    /* presenter circle (references/mg-quickref.md): geometry is !important so the renderer's video{inset:0} cannot win; the ring is its own timed section */
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
     /* one subtle grade on all broadcast and news clips (CLAUDE.md "Grading"); stock and public domain are exempt */
     video.graded { filter: saturate(0.88) contrast(1.06) brightness(0.94); }
     /* ---- Abril figure popup (channel device: red, text-shadow, 3 words or fewer, mid-screen, never over a map comp) ---- */
