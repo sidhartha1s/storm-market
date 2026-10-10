@@ -28,6 +28,7 @@ A fix goes back to an Opus builder, never to the model that made the defect. Gat
 | Titles and thumbnails; fill-in prompts for a thumbnail with Paul on it | `references/packaging-rules.md`; `references/thumbnail-prompts.md` |
 | News-lane rulebook, templates, clip pools | `references/mini-storms/FORMAT.md`, `library/mini-storms/`, `library/mini-storms/<event>/` (pools are reused across angles) |
 | Shorts spec, slugs `sh-<parent>-<n>`, weekly scan | `references/shorts/PLAN.md`, `references/shorts/competitors-2026-09-15.md`, templates `library/shorts/` (not created yet), `scripts/shorts_scan.py`, gate `node scripts/shorts_lint.mjs episodes/<slug>` |
+| Other platforms the videos can go to, their payout programs, and the posting tool (a first check, nothing built) | `references/distribution.md` |
 | Niche proof, teardowns, slate | `references/script-teardown.md`, `references/teardowns/`, `references/roadmap-2026-09.md` |
 | What viewers say under every reference video: the rule, the pull commands, the entries | `references/comment-bank.md` |
 | Measured gotchas, newest first | `learnings/` (`README.md` says which file serves which job): read yours before building |
