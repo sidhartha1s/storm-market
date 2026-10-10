@@ -9,7 +9,7 @@ single go. Like I will be giving you all the API keys and stuff, you will automa
 guides that disagree with each other; the platform's own page or the account's own monetization tab is the only
 authority, and each one is re-read before any build. Which platforms a short goes to, and in what order, is already
 decided in `references/shorts/PLAN.md` ("Platform facts" and the platform table); this file adds long form, the payout
-programs and the posting tool. The reminder is `ops/tasks.md` task 16.
+programs and the posting tool. The reminder is `ops/tasks.md` task 26.
 
 ## What each platform pays for
 
