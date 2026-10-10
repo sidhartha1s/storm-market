@@ -8,7 +8,8 @@
 //      initial 8% draft flagged line-box touches of stacked title/subtitle pairs; comp-internal AND
 //      comp-vs-active-card), unless either element carries data-overlap-ok="reason".
 //   3) Duplicate-fact: two visible nodes rendering the same normalized fact string (dates,
-//      percentages, numbers) at the same instant = FAIL — one fact, one on-screen instance.
+//      percentages, numbers) at the same instant = FAIL: one fact, one on-screen instance,
+//      unless the comp node carries data-repeat-ok="reason" (one label on several different things).
 // READ-ONLY checker. Usage: node scripts/overlap_check.mjs <episode-dir>
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import fs from 'fs';
@@ -179,9 +180,9 @@ for (const h of hosts) {
         const r = el.getBoundingClientRect();
         if (r.width < 4 || r.height < 4) continue;
         if (r.right < 0 || r.bottom < 0 || r.left > 1920 || r.top > 1080) continue;
-        let ok = null, p = el;
-        while (p && p !== document.body) { if (p.dataset && p.dataset.overlapOk) { ok = p.dataset.overlapOk; break; } p = p.parentElement; }
-        out.push({ text: el.textContent.trim().slice(0, 60), ok,
+        const ok = el.closest('[data-overlap-ok]')?.dataset.overlapOk || null;
+        const repeatOk = el.closest('[data-repeat-ok]')?.dataset.repeatOk || null;
+        out.push({ text: el.textContent.trim().slice(0, 60), ok, repeatOk,
                    box: { left: r.left, top: r.top, right: r.right, bottom: r.bottom } });
       }
       return out;
@@ -221,7 +222,11 @@ for (const h of hosts) {
         addPair(`dup-fact: "${f}" shown twice (${factSeen.get(f)} + ${who})`, tAbs);
       else factSeen.set(f, who);
     };
-    for (const nd of uniqNodes) addFact(nd.text, h.comp);
+    // a label that names several different things at once (an "EF1" tag on each of three tracks, a
+    // source credit under each of two quotes) is not one fact shown twice: data-repeat-ok="reason"
+    // on the node or an ancestor takes it out of the count (ep4-el-reno, 10 Oct 26). It is its own
+    // attribute so a collision exemption (data-overlap-ok) never waives this rule by accident.
+    for (const nd of uniqNodes) if (!nd.repeatOk) addFact(nd.text, h.comp);
     for (const o of overlays) {
       if (!ovInfo[o.id] || tAbs < o.start || tAbs > o.start + o.dur) continue;
       for (const t of ovInfo[o.id].texts || []) addFact(t, '#' + o.id);

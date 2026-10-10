@@ -230,6 +230,20 @@ code, out = _rows_check('TANNER · AL', '6:20 PM CDT', 'TANNER · AL', '6:20 PM 
 assert code == 1 and 'dup-fact' in out, f'an identical repeated row must still dup-fact: {out}'
 print('overlap_check self-check PASS (repeated place label vs. genuinely repeated row)')
 
+# ep4-el-reno, 10 Oct 26: one label on several different things ("EF1" on each of two tracks) fails
+# dup-fact until it is declared with data-repeat-ok="reason"; a collision exemption (data-overlap-ok)
+# must not waive the rule.
+OVL = '<span data-overlap-ok="x">EF1</span>'
+code, out = _rows_check(OVL, 'TRACK A', OVL, 'TRACK B')
+assert code == 1 and 'dup-fact: "EF1"' in out, f'data-overlap-ok must not waive dup-fact: {out}'
+REP = '<span data-repeat-ok="one rating label per track">EF1</span>'
+code, out = _rows_check(REP, 'TRACK A', REP, 'TRACK B')
+assert code == 0 and 'dup-fact' not in out, f'a declared repeated label must pass: {out}'
+ANC = '<span data-repeat-ok="one rating label per track"><span>EF1</span></span>'
+code, out = _rows_check(ANC, 'TRACK A', ANC, 'TRACK B')
+assert code == 0 and 'dup-fact' not in out, f'a label declared on an ancestor must pass: {out}'
+print('overlap_check self-check PASS (data-repeat-ok declares a label on several things)')
+
 # ---------------------------------------------------------------- graphics_qc.mjs
 # qc-gates-07 (stillness HARD) + assets-comps-05 (host duration vs tl duration): a 3s timeline
 # mounted in a 7s host window — frozen tail undetected and idle only a warning before. Since
