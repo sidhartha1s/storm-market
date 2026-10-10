@@ -14,7 +14,7 @@ Newest first. New entries go at the top, under this line. Superseded lines point
 3. The demo has one tone and a handful of tweens, so it cannot see most of that list. Second A/B, cheap and worth
    repeating on every bump made with an episode in hand: `npx hyperframes@<old> snapshot` and `@<new> snapshot` of the
    same episode at one time per composition host, then ffmpeg `ssim` per pair. ep4-el-reno, 69 hosts at 72 % of each
-   window: min 0.995305, median 0.999786, none under 0.98. Both captures and the compare took under 3 minutes.
+   window: min 0.995305, median 0.999786, none under 0.98. From the first captured frame to the written compare: 156 s.
    It reads stills only: audio and seeks during playback are still first seen in the draft render.
 
 ## 26 Sep 26: pin 0.8.41 to 0.8.78; currency moves to episode kickoff; the ritual demo is demo-pin
