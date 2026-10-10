@@ -27,7 +27,7 @@ def mix_graph(segs):
     """ffmpeg filter graph that delays each segment to its place after the first one and sums them."""
     t0 = segs[0][0]
     parts = [f"[{i}:a]aresample=16000,adelay={round((s - t0) * 1000)}:all=1[a{i}]" for i, (s, _, _) in enumerate(segs)]
-    return ";".join(parts) + ";" + "".join(f"[a{i}]" for i in range(len(segs))) + f"amix=inputs={len(segs)}:normalize=0:duration=longest[m]"
+    return ";".join(parts) + ";" + "".join(f"[a{i}]" for i in range(len(segs))) + f"amix=inputs={len(segs)}:normalize=0:duration=longest,apad[m]"
 
 
 def main():
