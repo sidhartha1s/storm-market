@@ -38,8 +38,8 @@ SEED = 42
 
 
 def main():
-    audio, out = sys.argv[1], sys.argv[2]
-    portrait = sys.argv[3] if len(sys.argv) > 3 else str(PORTRAIT)
+    audio, out = ARGS[0], ARGS[1]
+    portrait = ARGS[2] if len(ARGS) > 2 else str(PORTRAIT)
     t_start = time.time()
     pipeline = get_pipeline(world_size=1, ckpt_dir=str(HOME / "flashhead" / "models" / "SoulX-FlashHead-1_3B"),
                             wav2vec_dir=str(HOME / "flashhead" / "models" / "wav2vec2-base-960h"), model_type="lite")
