@@ -119,9 +119,11 @@ twenty one': twenty-one small markers appear in a row and twelve of them light."
   icon of a person, no cross, nothing red on a marker; (3) the 12 land lit on "12" and the 9 dim ones join on "21", never
   before their word; (4) the row is gone before the cut at 19.81; (5) something moves in every 4 s (a slow drift is
   enough) and nothing flashes.
-- 5. Cues, comp-local s (host starts 13.31; local = t1-s1 word start minus 6.20): 12 @0.50, 21 @1.06, shelter @2.36,
-  "no tornado" @4.20, lives @5.28, voice ends 6.20, host ends 6.50.
-- Mount: `host-t1s1-markers`, 13.31 to 19.81, track 4.
+- 5. Cues, comp-local s (host starts 13.61; local = t1-s1 word start minus 6.50): 12 @0.20, 21 @0.76, shelter @2.06,
+  "no tornado" @3.90, lives @4.98, voice ends 5.90, host ends 6.20.
+- Mount: `host-t1s1-markers`, 13.61 to 19.81, track 4. First mounted from 13.31 (0.50 s ahead of the first mark):
+  `blank_scan` read that as 0.75 s with nothing drawn, so the host now starts 0.20 s before "12" (orchestrator's
+  brief error, 10 Oct 26).
 
 ## 7. Tools
 `node scripts/graphics_qc.mjs episodes/ep4-el-reno`; freeze_scan on the staged copy `.qc-tmp/cards-stage/`; sheets in `sheets-pre/`.
