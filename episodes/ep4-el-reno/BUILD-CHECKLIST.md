@@ -63,4 +63,6 @@ Owner, 10 Oct 26: "clips are good. go ahead. move faster." Status is read from t
 - [ ] Sound, the part a meter cannot do: the owner's ear on the bed and the swells in the draft.
 - [x] Outro card (Z1-S3): `host-outro` (`g-outro`) mounted 1327.14 to 1333.38, read in the 68-frame pass.
 - [ ] Gates: `python3 scripts/run_gates.py episodes/ep4-el-reno` all green
-- [ ] Pin check, then draft render; absolute path posted; park for the owner
+- [x] Pin check (10 Oct 26): `pin_ritual.py --check-only` said 0.8.114 stale against 0.8.143. Ritual PASS on demo-pin (duration 24.000/24.000 s, RMS identical, SSIM 0.9969); bump is PR #155. This episode's own frames at both versions: 69 hosts, one frame each, SSIM min 0.995305, median 0.999786, none under 0.98 (`.qc-tmp/pin/compare.json`).
+- [ ] Owner's OK to merge PR #154 (overlap gate, `data-repeat-ok`) and PR #155 (pin). Then bring this branch up to main: until then this branch's own `overlap_check.mjs` reports the 7 declared labels and its pin is 0.8.114.
+- [ ] Draft render; absolute path posted; park for the owner
