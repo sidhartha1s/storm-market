@@ -2,6 +2,40 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 10 Oct 26: first render on the ZBook (hostname Sidhartha, RTX A2000), driven from the ASUS over `ssh zbook`
+
+ep4-el-reno draft, 1333.38 s, 20001 frames at 15 fps, 3 workers: compile 20.2 s, audio 4 min 15.3 s, capture
+25 min 11.4 s (13.6 frames/s), assemble 4 min 41.9 s. Output matched the ASUS snapshot frames of all 69 graphics
+(SSIM min 0.8837, median 0.9849; the three lowest are moving footage under a card, read side by side). What it took:
+
+1. **Transport.** `git fetch` from GitHub fails in the ssh session (Windows credential store). Ship commits as a
+   `git bundle` by scp, fetch from the bundle, fast-forward the worktree. Gitignored media goes by
+   `tar -cf - ... | ssh zbook 'tar -xf - -C "<dir>"'`. Before the render, md5 every file the timeline references on
+   both laptops: 124 of 124 matched.
+2. **First run of a new pin.** `npx hyperframes@X` stops on "Ok to proceed? (y)" in a hidden task and hangs for ever.
+   Run `npx --yes hyperframes@X --version` once over ssh first.
+3. **Smart App Control is on** and blocks hyperframes' unsigned `chrome-headless-shell.exe` ("Chrome cannot start",
+   CodeIntegrity events 3077 and 3118). Set `HYPERFRAMES_BROWSER_PATH=C:\Program Files\Google\Chrome\Application\chrome.exe`
+   for the render: the signed Chrome runs headless on the A2000 (`ANGLE (NVIDIA ...)` in the log). Turning Smart App
+   Control off is one-way until a reset and is the owner's call.
+4. **The GPU needs the logged-on session.** Launch as on the ASUS: a once-only scheduled task through
+   `run_hidden.vbs`, then delete the task (a once trigger refires).
+5. **The audio mix timed out at 20 %** (`audio_processing_failed`, reason `ffmpeg_timeout`, stage `mix`, 304570 ms).
+   hyperframes mixes every audible element in ONE ffmpeg pass under `ffmpegProcessTimeout`, default 300 s. The same
+   mix of El Reno's 112 tracks, timed alone: ASUS 23.9x (57.4 s), ZBook 4.8x (about 278 s). Cause on the ZBook: the
+   power overlay was "Best power efficiency" (`961cc777-2547-4f9d-8174-7d86181b8a7a`) while on the charger, so the
+   single-threaded mix ran on efficiency cores (logical 12 to 19) at 68 % of nominal speed. `FFMPEG_PROCESS_TIMEOUT_MS=900000`
+   for that render carried it; the power mode is the owner's setting. Mix time grows with tracks x duration, so check
+   it before the first render of any episode on a new box.
+6. **ffmpeg differs by session.** Over ssh `ffmpeg -version` is 8.1.1 essentials; the logged-on session's PATH gives
+   hyperframes `ffmpeg-8.1.2-full_build-shared` (WinGet). Read the version from the render's own process, not from ssh.
+7. **hyperframes' own lint runs inside the render** and printed "12 error(s), 20 warning(s) ... Continuing render":
+   `subcomposition_root_styled_by_class` on 8 graphics and `font_family_without_font_face` (AbrilFig, declared once in
+   `index.html`) on 4. Both are static guesses: the snapshot frames and the draft show the root styles and the font
+   applied. `npx hyperframes@X lint <episode> --verbose` lists them; it also flags `_blank_tmp.html` as a second root
+   until `render.cmd` deletes it.
+8. `.venv-pocket` is not on the ZBook and `.models` is partial, so voice work stays on the ASUS. A render needs neither.
+
 ## 10 Oct 26: pin 0.8.114 to 0.8.143 before El Reno's first render; a real episode's frames as the second A/B
 
 1. Ritual on demo-pin (hidden task, 159 s): duration 24.000/24.000 s, black 0/0, RMS -21.602701/-21.602701 dB,
