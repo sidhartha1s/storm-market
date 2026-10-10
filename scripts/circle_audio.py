@@ -1,9 +1,11 @@
 """The narration alone, placed as it sits on the timeline: the sound one presenter-circle face pass is made from.
 
 Reads the `nx-*` narration elements of `episodes/<slug>/index.html` that start between two timeline seconds and writes
-one 16 kHz mono wav that begins at the first of them and is silent where Paul does not speak, so the face video lines
-up with the episode second for second. Prints the timeline second the wav starts at: `circle_cut.py` takes it after
-the `@`. Split passes at the book ad and at full-frame Paul clips, where the circle is hidden anyway.
+one 16 kHz mono wav that begins at the first of them, runs to <to_s> and is silent where Paul does not speak, so the
+face video lines up with the episode second for second. <to_s> is where the pass's last circle window ends: a wav that
+stopped with the last word would leave that window without a face (El Reno: two windows ran 0.3 s past their pass).
+Prints the timeline second the wav starts at: `circle_cut.py` takes it after the `@`. Split passes at the book ad,
+where the circle is hidden anyway.
 
 Usage: python3 scripts/circle_audio.py episodes/<slug> <from_s> <to_s> <out.wav>
 """
