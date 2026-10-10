@@ -23,6 +23,7 @@ HOME = Path(sys.executable).resolve().parents[3]  # ...\.models\lipsync
 REPO = HOME / "flashhead" / "repo"
 os.environ.setdefault("HF_HOME", str(HOME / "hf"))
 os.environ.setdefault("HF_HUB_OFFLINE", "1")
+ARGS = [str(Path(a).resolve()) for a in sys.argv[1:]]  # resolved before the chdir below
 os.chdir(REPO)  # the model reads its yaml configs by relative path
 sys.path.insert(0, str(REPO))
 
