@@ -2,6 +2,21 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 10 Oct 26: pin 0.8.114 to 0.8.143 before El Reno's first render; a real episode's frames as the second A/B
+
+1. Ritual on demo-pin (hidden task, 159 s): duration 24.000/24.000 s, black 0/0, RMS -21.602701/-21.602701 dB,
+   workers 2/2, SSIM 0.9969, video-region SSIM 0.9990. Bumped clean.
+2. 29 releases were skipped. The ones that can change a render: 0.8.116 (a seek onto a tween's start shows that tween),
+   0.8.117 (the render fails when an injected video frame cannot decode), 0.8.122 (composition scripts start after web
+   fonts are ready), 0.8.135 (the render fails when a composition's script throws before its timeline binds), 0.8.139
+   (renders keep a fromTo's from-only values from the frame it starts on), 0.8.143 (the CLI normalizes the audio
+   passage a clip plays; long videos are extracted in segments).
+3. The demo has one tone and a handful of tweens, so it cannot see most of that list. Second A/B, cheap and worth
+   repeating on every bump made with an episode in hand: `npx hyperframes@<old> snapshot` and `@<new> snapshot` of the
+   same episode at one time per composition host, then ffmpeg `ssim` per pair. ep4-el-reno, 69 hosts at 72 % of each
+   window: min 0.995305, median 0.999786, none under 0.98. Both captures and the compare took under 3 minutes.
+   It reads stills only: audio and seeks during playback are still first seen in the draft render.
+
 ## 26 Sep 26: pin 0.8.41 to 0.8.78; currency moves to episode kickoff; the ritual demo is demo-pin
 
 1. **Owner: "I always prefer the latest version because they will be adding fixes on the go".** The pin LOCK stays
