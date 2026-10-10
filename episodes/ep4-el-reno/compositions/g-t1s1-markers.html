@@ -50,8 +50,8 @@ window.__timelines = window.__timelines || {};
   /* TWELVE @0.50: the strip rises in and the 12 lit markers land, all settled by 1.00 */
   tl.to(P + "card", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.50);
   lit.forEach(function (c, i) { tl.to(c, { scale: 1, duration: 0.28, ease: "back.out(1.6)" }, 0.50 + i * 0.02); });
-  /* TWENTY ONE @1.06: the 9 hollow markers join */
-  dim.forEach(function (c, i) { tl.to(c, { scale: 1, duration: 0.3, ease: "back.out(1.6)" }, 1.06 + i * 0.03); });
+  /* TWENTY ONE @1.06: the 9 hollow markers join, all settled by 1.48 */
+  dim.forEach(function (c, i) { tl.to(c, { scale: 1, duration: 0.26, ease: "back.out(1.6)" }, 1.06 + i * 0.02); });
   /* voice ends 6.20; the strip is out by 6.30, before the cut at 6.50 */
   tl.to(P + "card", { x: -1300, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 5.70);
   window.__timelines["g-t1s1-markers"] = tl;
