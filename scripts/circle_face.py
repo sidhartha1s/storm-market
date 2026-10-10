@@ -1,13 +1,14 @@
 """One long face pass for the presenter circle: Paul's portrait speaking a narration wav, on the ZBook's card.
 
 SoulX-FlashHead Lite as its makers ship it (4 steps, 512 px, 25 fps, streaming audio in 0.96 s chunks, each chunk
-carrying on from the last; no text prompt, nothing to batch). The one change from their generate_video.py: each chunk
-is written to the mp4 as it is made. Theirs holds every chunk in memory until the end, about 75 MB per 0.96 s, which
-a 16 GB machine cannot hold for minutes of video.
+carrying on from the last; no text prompt, nothing to batch). Two changes from their generate_video.py, neither to
+the model: each chunk is written to the mp4 as it is made (theirs holds every chunk in memory until the end, about
+75 MB per 0.96 s, which a 16 GB machine cannot hold for minutes of video), and the finished file keeps its whole last
+chunk (theirs trims the picture to the sound).
 
 Runs with the FlashHead venv's own Python, never the system one. The install sits in the main checkout under
 .models\\lipsync\\flashhead (gitignored; learnings/render.md "Presenter circle face" says how it was built) and is
-found from the interpreter's path. Measured 10 Oct 26 on the RTX A2000: 53 s start-up, then 2.28 s per second of face.
+found from the interpreter's path. Measured times: learnings/render.md "Presenter circle face".
 
 Usage: <main checkout>\\.models\\lipsync\\flashhead\\venv\\Scripts\\python.exe scripts\\circle_face.py <narration.wav> <out.mp4>
        (the wav comes from circle_audio.py; launch it hidden like a render, scripts\\run_hidden.vbs. The portrait is
