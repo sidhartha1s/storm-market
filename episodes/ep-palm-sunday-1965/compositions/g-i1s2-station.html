@@ -151,10 +151,21 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"eb", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.71);
   tl.fromTo(P+"name", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.86);
   tl.fromTo(P+"sub", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.01);
-  /* WATCHING @2.51: map out left, name card out right; the television draws on, screen Idle */
+  /* WATCHING @2.51: map out left; the wall rises; the television draws on, screen Idle */
   tl.to(P+"map", { x: -980, autoAlpha: 0, duration: 0.32, ease: "power3.in" }, 2.51);
-  tl.to(P+"card", { x: 980, autoAlpha: 0, duration: 0.32, ease: "power3.in" }, 2.51);
+  tl.to(P+"wall", { y: 0, duration: 0.5, ease: "power3.out" }, 2.51);
   tl.set(P+"tv", { autoAlpha: 1 }, 2.51);
+  tl.to(P+"cab", { attr: { "fill-opacity": 1 }, duration: 0.3, ease: "power2.out" }, 2.51);
+  /* the name stays (lead ruling): its plate goes, its lines park under the television as ink on the floor band */
+  tl.to([P+"card", P+"eb", P+"name", P+"sub"], { autoAlpha: 0, duration: 0.15, ease: "power2.in" }, 2.51);
+  tl.set(P+"eb", { x: -716, color: "#6b6257" }, 2.70);
+  tl.set(P+"name", { x: -380, color: "#2a2622" }, 2.70);
+  tl.set(P+"sub", { x: 132, color: "#2a2622" }, 2.70);
+  tl.fromTo(P+"eb", { autoAlpha: 0, y: 651 }, { autoAlpha: 1, y: 635, duration: 0.3, ease: "power3.out", immediateRender: false }, 2.72);
+  tl.fromTo(P+"name", { autoAlpha: 0, y: 596 }, { autoAlpha: 1, y: 580, duration: 0.3, ease: "power3.out", immediateRender: false }, 2.78);
+  tl.fromTo(P+"sub", { autoAlpha: 0, y: 529 }, { autoAlpha: 1, y: 513, duration: 0.3, ease: "power3.out", immediateRender: false }, 2.84);
+  /* the name leaves before the station's words arrive at 5.63 */
+  tl.to(P+"who", { y: 140, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 5.20);
   const lines = document.querySelectorAll("#stn-tv .stn-ln");
   draw(lines[1], 2.51, 0.8);   /* cabinet, the longest line */
   draw(lines[5], 2.51, 0.34);  /* screen outline: complete before the picture comes on */
