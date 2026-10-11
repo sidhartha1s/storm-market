@@ -31,7 +31,7 @@ Part A:
 | Element | Px |
 |---|---|
 | Ground | canvas gradient; map on a Beige polaroid border 10 px, shadow as the document card |
-| State chips | Beige polaroid chip with a 2 px Caption dark edge (the map is white), padding 8 x 18, Arial Black 900 30 px, Caption dark; one per state at its centre from section 2; a 3 px Crimson-free ring in Amber 2 (radius 30 to 70, one pulse) behind each as it lands. No chip covers a red track |
+| State chips | Beige polaroid chip with a 2 px Caption dark edge (the map is white), padding 8 x 18, Arial Black 900 30 px, Caption dark; one per state at its centre from section 2; a 3 px Amber 2 ring (radius 30 to 70, one pulse; never red, the tracks are red) behind each as it lands. No chip covers a red track |
 | Count | in the left margin, clear of the map (which starts at x 251): `6` Courier New 700 84 px Amber 2 at left 96, top 96; `states` Arial 700 26 px Body light at left 96, top 192 |
 | Map credit | credit corner: `Courtesy: Dr. Russell Schneider, SPC` |
 Part B:
