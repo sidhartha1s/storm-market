@@ -45,7 +45,7 @@ Line pitch on the page is about 47 px, so about 65 px on screen: large enough to
 7. Design sheet S6, S7.
 
 ## 5. Text (exact) and cues
-Text: `WEATHER BUREAU` · `5:43 PM` · `South Bend, Indiana` · `Weather Bureau survey report, 1965` · `Weather Bureau Communications Center, about 1955 · NOAA`. Page words are the image.
+Text: `WEATHER BUREAU` · `5:43 PM` · `South Bend, Indiana` · `Weather Bureau survey report, 1965, p. 39` · `Weather Bureau Communications Center, about 1955 · NOAA`. Page words are the image.
 | Step | cue | t= | What |
 |---|---|---|---|
 | 0 | first frame (hard cut from 01, word "At") | | ground on, photo caption on |
