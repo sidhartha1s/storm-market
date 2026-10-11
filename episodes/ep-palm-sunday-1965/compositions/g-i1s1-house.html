@@ -13,20 +13,19 @@
   .house-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
     background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
   .house-layer { position:absolute; left:0; top:0; width:1920px; height:1080px; }
-  .house-room { background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  /* daylight: the wash runs to the street line and is stronger than the brief's 12 %, which read as night on a frame */
-  .house-sky { position:absolute; left:0; top:0; width:1920px; height:850px;
-    background:linear-gradient(rgba(232,197,106,0.34), rgba(232,197,106,0.10)); }
-  .house-sun { position:absolute; left:272px; top:242px; width:116px; height:116px; }
-  .house-glow { position:absolute; left:-322px; top:-322px; width:760px; height:760px; border-radius:50%;
-    background:radial-gradient(circle, rgba(232,197,106,0.34), rgba(232,197,106,0) 68%); }
-  .house-disc { position:absolute; inset:0; border-radius:50%; background:#e8c56a; opacity:0.85; }
+  /* DAYLIGHT (lead ruling 12 Oct 26): comp 06's sky (Cold blue 2) down to the street line, a pale ground band below it;
+     inside, a light warm wall (Beige polaroid) and a floor band. Dark bodies and dark lines read on both. */
+  .house-room { background:#f4f0e6; }
+  .house-floor { position:absolute; left:0; top:820px; width:1920px; height:260px; background:#e8dec8; }
+  .house-sky { position:absolute; left:0; top:0; width:1920px; height:850px; background:linear-gradient(#7fb2e5, #a2c6eb); }
+  .house-ground { position:absolute; left:0; top:850px; width:1920px; height:230px; background:#dfe7ee; }
+  .house-sun { position:absolute; left:272px; top:242px; width:116px; height:116px; border-radius:50%; background:#e8c56a; }
   .house-svg { position:absolute; left:0; top:0; }
-  .house-flood { position:absolute; inset:0; background:linear-gradient(rgba(232,197,106,0.85), rgba(232,197,106,0.85)), #15202b; }
+  .house-flood { position:absolute; inset:0; background:linear-gradient(rgba(232,197,106,0.85), rgba(232,197,106,0.85)), #f4f0e6; }
   .house-t1 { position:absolute; left:96px; top:64px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
-    line-height:60px; color:#f2f5f8; white-space:nowrap; }
+    line-height:60px; color:#15202b; white-space:nowrap; }
   .house-t2 { position:absolute; left:98px; top:132px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px;
-    line-height:32px; color:#e8c56a; white-space:nowrap; }
+    line-height:32px; color:#15202b; white-space:nowrap; }
 </style>
 <div id="house-root" class="house-root" data-composition-id="g-i1s1-house" data-width="1920" data-height="1080" data-duration="9.98">
 
