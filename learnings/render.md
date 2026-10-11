@@ -7,7 +7,7 @@ Newest first. New entries go at the top, under this line. Superseded lines point
 1. Ritual on demo-pin (hidden task, exit 0): duration 24.000/24.000 s, black 0/0, RMS -21.602701/-21.602708 dB,
    workers 2/2, SSIM 0.9948, video-region SSIM 0.9977. Bumped clean. The SSIM figures sit a little under the 0.8.143
    bump (0.9969 and 0.9990); the ritual's own thresholds passed them.
-2. 6 releases were skipped (0.8.144 to 0.8.149, all notes read on the upstream GitHub releases). The ones that can
+2. 6 releases are in the range (0.8.144 to 0.8.149, all notes read on the upstream GitHub releases). The ones that can
    change a render: 0.8.144 (audio duration is recovered by decoding the final frame; a data script in a
    sub-composition no longer stops every timeline; a missing timeline is waited for once per render, not once per
    browser; Windows renders stop cancelling when an old parent's pid is reused), 0.8.145 (the audio duration probe reads
