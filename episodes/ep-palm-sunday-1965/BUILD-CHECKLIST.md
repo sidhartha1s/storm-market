@@ -37,7 +37,10 @@ Status is read from this file. A box is ticked only with the check that proved i
     - Built: all 12 files in `compositions/`.
     - Verifier pass 1 (01, 02, 03, 07, 08, 12): 4 pass (01 toll, 03 list, 07 states, 08 on air); 02 warning and 12 list question fail. 02: the telephone drawing reads as a kitchen scale, it is still whole on the cut at 21.07 s, and it draws over the leaving page for about 0.16 s. 12: the last pulse clears about 0.48 s after "nobody?" ends. Heads-up on 04: first frame at 37.60 s showed no house.
     - Fix round 1 sent 12 Oct 26: a redrawn 1965 desk telephone (`media/drawings/telephone.svg`, `telephone-lifted.svg`) mounted in 02 and in the list header of 03, 08, 12; 02's exit and overlap; 12 pulses three rows only; 04's first frame.
-    - Open: verifier pass 2 (04, 05, 06, 09, 10, 11) and the re-check of 02 and 12.
+    - Fix round 1 back (builders' own reads, not verdicts): 02 telephone inline at 360 px with 5.6 px lines on a glass plate, page off before it shows, gone before the cut; 12 pulses three rows, last one cleared before "nobody?" ends; header glyph in 03, 08, 12 is the new telephone; 08 source line fades before the sliding paper; 07 ring start states written out; 06 and 10 televisions on the light wall; 09 and 10 page crops taller (bare share 59 % and 61 % down to 27.9 % at reveal).
+    - Cause of 04's empty first frame, found by its builder: at a host's exact first frame the timeline's time-0 sets are not applied yet, so a start-hidden layer shows. Fixed in 04, 05 and 11 by hiding start-hidden elements in CSS too. The other nine are swept by the verifier (each host's first frame and the one after).
+    - Orchestrator frame reads so far: telephone test sheet; 02 at 20.11 and 21.04 s; list header at 32.87 s; 06 at 58.3 s; 10 at 99.4 s.
+    - Open: verifier pass 2 (02 and 12 re-check, 04, 05, 06, 09, 10, 11, first-frame sweep of all 12).
   - [ ] Gates run; findings that exist only because this cut is an opening (no book ad, no corner face, short runtime) listed apart.
   - [ ] Preview v1 rendered (draft) and shown to the owner.
   - Pin: `pin_ritual.py` passed 0.8.143 to 0.8.149 on 12 Oct 26 (branch `pin-0-8-149`); the bump merges on the owner's OK, so preview v1 renders on 0.8.143.
