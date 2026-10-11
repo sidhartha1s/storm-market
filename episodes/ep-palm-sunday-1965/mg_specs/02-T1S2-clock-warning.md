@@ -27,7 +27,7 @@ Line pitch on the page is about 47 px, so about 65 px on screen: large enough to
 |---|---|
 | Ground | A3 `<img>` cover, `object-position:50% 40%`, scale 1.00 to 1.06 over the window, `.dim` scrim (`rgba(3,5,8,0.45)`) |
 | Clock stamp | design sheet section 8: glass card left 96, top 96, 590 x 200; `WEATHER BUREAU` / `5:43 PM` / `South Bend, Indiana`; hands 171.5 and 258 degrees |
-| Document card | left 96, top 320, 1480 x 351 (right 1576, bottom 671); Beige polaroid border 10 px; crop 1460 x 331 inside at (106, 330) |
+| Document card | left 96, top 320, 1480 x 334 (right 1576, bottom 654); Beige polaroid border 10 px; crop 1460 x 314 inside at (106, 330) |
 | Underline | Popfig red 6 px under `Severe thunderstorm and tornado warning.` only (the crop's last line) |
 | Unlit page | covers the heading `SOUTH BEND (Continued)` at 45 %; `Issued at 5:43 PM EST.` and the underlined line stay bright |
 | Quote strip | not used: the line is about 65 px tall on screen |
