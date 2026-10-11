@@ -125,7 +125,7 @@ window.__timelines = window.__timelines || {};
 
   tl.set([P+"t1", P+"t2", P+"room", P+"flood"], { autoAlpha: 0 }, 0);
   tl.set(P+"street", { transformOrigin: "823.6px 616.8px" }, 0);
-  tl.set(P+"sun", { y: 40 }, 0);
+  tl.set(P+"sun", { y: 0 }, 0);   /* the sun's low start (centre y 340) is in the CSS, so the host's first frame has it too */
 
   /* APRIL @0.00: house, street line and sky already lit; the date slides in */
   tl.fromTo(P+"t1", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0);
