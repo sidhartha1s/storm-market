@@ -85,3 +85,114 @@ State Police, sheriffs and city police took its telephone calls. [A6]
 So did radio and television stations, and a civil defense director could pass word on by radio. [A6, A13]
 A warning in 1965 was one message, and each of them had to hand it on. [A6]
 So follow that one message.
+
+# Round 2 (owner: "any other versions for the hook? and intro?"). Hooks 4 to 8 pay the title's "who" in sentence one. Intros A to C work after any hook. Draft, not yet checked.
+
+Rows per county: "tornado warning" with police rests on County A (C1, C2). The chief's reason, the radio call and the thirty-five minutes are County B (A13, C5, C7), worded as "where the tornado was".
+
+## Hook 4. Opening move: the contradiction in one sentence (it went out, and police held it)
+
+PAUL (on camera):
+The warning went out, and police held it until the tornado hit. [C2]
+
+HOOK:
+It was April eleventh, 1965.
+Four Weather Service offices now count two hundred seventy-one lives lost that day. [F]
+The Weather Bureau set up a survey team the next day. [E]
+Did anyone fix the police desk? [loop L1 open]
+
+## Hook 5. Opening move: the quote first, the chief's own words
+
+PAUL (on camera):
+"I don't like to panic them," said the police chief who knew. [C5] [verify: the study gives the chief's reason; that the chief personally had the word, and not only the department, is inferred]
+
+HOOK:
+The chief's police had been told by radio where a tornado was. [A13, C5]
+Four Weather Service offices now count two hundred seventy-one lives lost that day. [F]
+That tornado was about thirty-five minutes from the county seat. [C7] [loop L1 open]
+
+## Hook 6. Opening move: the number first, thirty-five minutes with the police in it
+
+PAUL (on camera):
+For about thirty-five minutes, police held a tornado's position and told nobody. [A13, C5, C7]
+
+HOOK:
+Then it hit the county seat. [C7]
+It was April eleventh, 1965.
+Four Weather Service offices now count two hundred seventy-one lives lost that day. [F]
+A 1966 study printed the chief's reason, in the chief's own words. [C5] [loop L1 open]
+
+## Hook 7. Opening move: the count, seven of eight counties and one police headquarters
+
+PAUL (on camera):
+Seven of eight counties had forewarning, and one police headquarters told nobody. [C19, C2]
+
+HOOK:
+Four Weather Service offices now count two hundred seventy-one lives lost that day. [F]
+Those seven were in the Weather Bureau's advisories before a tornado touched down there. [C19]
+Police were not the only ones who told nobody. [C2, A13] [loop L1 open]
+
+## Hook 8. Opening move: the picture, one radio call that stopped at the police
+
+PAUL (on camera):
+One radio call told police where the tornado was, and stopped there. [A13, C5]
+
+HOOK:
+The caller asked police to tell the radio station. [C5]
+Nobody did. [C5]
+Four Weather Service offices now count two hundred seventy-one lives lost that day. [F]
+The caller had waited fifteen minutes before making that call. [A13] [loop L1 open]
+
+## Intro A. Shape: the roster of hands a warning passed through
+
+INTRO:
+It was April eleventh, 1965, and tornadoes crossed six states that day. [IWX page]
+On Palm Sunday 1965 the forecast did not fail and the warnings were sent. [claim, angle.md]
+They stopped one desk short of the people. [claim, angle.md]
+Word of a tornado passed through a lot of hands.
+Forecasters in Kansas City wrote the forecasts. [A1, A5]
+A Weather Bureau office in South Bend sent northern Indiana's first tornado warning at five forty-three in the evening. [A6]
+It went by telephone to State Police, sheriffs and city police. [A6]
+It went to the electric company, the Red Cross, and named radio and television stations. [A6]
+Last in line was a family at home, with a radio or a television. [C12]
+A 1966 study by John Brouillette of the Disaster Research Center followed that line through eight Indiana counties. [C19]
+Seven of the eight were in the Weather Bureau's advisories before a tornado touched down there. [C19]
+The study found the warnings were sent, and that people along the line did not always pass them on. [C11, C2]
+A warning in 1965 was one message. [A6]
+So follow that one message.
+
+## Intro B. Shape: the stack of things that went right, then the step that did not
+
+INTRO:
+Tornadoes crossed six states on April eleventh, 1965. [IWX page]
+A forecast reaching into north central Indiana was on the Weather Bureau teletype at eleven forty-five that morning. [A1]
+At five twenty in the evening, a second forecast covered most of the northern half of Indiana. [A5]
+At five forty-three, the Weather Bureau office in South Bend sent northern Indiana's first tornado warning. [A6]
+It went by telephone to State Police, sheriffs, city police, and radio and television stations. [A6]
+A 1966 study by John Brouillette of the Disaster Research Center checked eight Indiana counties. [C19]
+Seven of the eight were in the Weather Bureau's advisories before a tornado touched down there. [C19]
+On Palm Sunday 1965 the forecast did not fail and the warnings were sent. [claim, angle.md]
+They stopped one desk short of the people. [claim, angle.md]
+After the Weather Bureau, a warning depended on the person who took the call. [A6, C2]
+That person had to tell the next, down to a radio announcer and a family at home. [C12]
+The study found that in some places nobody did. [C2, C9]
+A warning in 1965 was one message. [A6]
+So follow that one message.
+
+## Intro C. Shape: a family at home with the radio on, and what had to happen for them to hear
+
+INTRO:
+On April eleventh, 1965, a family in northern Indiana got tornado warnings from the radio or the television. [C12]
+Tornadoes crossed six states that day. [IWX page]
+For the announcer to read a warning, the station had to be told. [A6, C8]
+For the station to be told, somebody had to pick up a telephone. [A6]
+The Weather Bureau office in South Bend did that at five forty-three in the evening. [A6]
+It sent northern Indiana's first tornado warning to State Police, sheriffs, city police and named stations. [A6]
+Behind that office were forecasters in Kansas City, with a forecast on the teletype by eleven forty-five that morning. [A1]
+A 1966 study by John Brouillette of the Disaster Research Center covered eight Indiana counties. [C19]
+Seven of the eight were in the Weather Bureau's advisories before a tornado touched down there. [C19]
+On Palm Sunday 1965 the forecast did not fail and the warnings were sent. [claim, angle.md]
+They stopped one desk short of the people. [claim, angle.md]
+The family's radio came last, and could only repeat what it was given.
+A warning in 1965 was one message. [A6]
+So follow that one message.
