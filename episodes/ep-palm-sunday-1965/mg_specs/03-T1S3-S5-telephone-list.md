@@ -52,11 +52,11 @@ Sheet text: `SOUTH BEND WEATHER BUREAU · BY TELEPHONE` · `Organizations notifi
 |---|---|---|---|---|
 | 0 | T1-S2 | cue: "list" (comp starts on this word; match cut from 02) | | ground at scale 1.06, `.dim`; sheet rises in Close state (`y:1100 to 0`, 0.7, power3.out); scrim to 0.68 |
 | 1 | seam | 0.15 s after the sheet lands | | eight rows type in, one row every 0.09 s, each a 0.08 s `autoAlpha` step (pre-authored text, never typed into the DOM); source line in |
-| 2 | T1-S3 | cue: "State" | | tick row 1, text to Caption dark; one soft key strike (sound, orchestrator) |
-| 3 | T1-S3 | cue: "Sheriffs" | | tick row 2 |
-| 4 | T1-S3 | cue: "City" | | tick row 3 |
-| 5 | T1-S3 | cue: "Named" | | tick row 6; rows 4, 5, 7, 8 stay grey |
-| 6 | T1-S4 | cue: "A" (first word) | | row 9's tick box and rule draw on (0.3 s), cursor starts to blink; camera Close to Everything with `logZoom`, 0.9 s, power2.inOut; dotted line draws left to right as the frame widens |
+| 2 | T1-S3 | cue: "State" | | pen tick beside `State Police`, text to Caption dark; one soft key strike (sound, orchestrator) |
+| 3 | T1-S3 | cue: "Sheriffs" | | pen tick beside `Sheriffs' Departments` |
+| 4 | T1-S3 | cue: "City" | | pen tick beside `City Police Departments` |
+| 5 | T1-S3 | cue: "Named" | | pen tick beside `Specified radio and TV stations`; the other four rows stay grey |
+| 6 | T1-S4 | cue: "A" (first word) | | the ninth row's rule draws on (0.3 s), cursor starts to blink; camera Close to Everything with `logZoom`, 0.9 s, power2.inOut; dotted line draws left to right as the frame widens |
 | 7 | T1-S4 | cue: "family" | | house draws on (0.6 s), label `a family` after the last line |
 | 8 | T1-S4 | cue: "announcer" (first) | | microphone draws on (0.5 s), label `an announcer` |
 | 9 | T1-S4 | cue: "if" | | lamp on the microphone: Amber 2 for 0.12 s, off 0.1 s, on 0.12 s, then off for good |
