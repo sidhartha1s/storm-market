@@ -103,7 +103,7 @@ One existing video starts from the same place as ours. Tornado Autopsy, "The Pal
 - "The information died with the police." (the 1966 study)
 - Fort Wayne's own log: no warnings for an hour because the office had no power (the Weather Bureau survey, printed page 44)
 - The Marion warning that went out an hour and twenty minutes after the tornado
-- The 6:50 PM South Bend message in full, with the telephones line, and the 7:13 PM request to stop the joke calls
+- The 7:13 PM request to stop the joke calls (the 6:50 PM South Bend message with the telephones line is not ours alone: Tornado Autopsy reads it at 14:11)
 - The survey's first recommendation: an alarm at the announcer's desk
 
 ## Still unverified, and how the structure treats it
