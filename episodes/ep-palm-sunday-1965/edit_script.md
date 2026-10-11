@@ -102,7 +102,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 **Rows:** [C22; study printed p. 36] · [C22; study printed p. 36]
 
 ### I1-S4 · narration
-**Picture:** the tornado track map of the day (inventory B7, courtesy Dr. Russell Schneider, SPC). Six state names light one by one: Iowa, Illinois, Wisconsin, Indiana, Michigan, Ohio. Then a clock "11:45 AM" over a teletype machine photograph (inventory A4), with the label "Forecasters · Kansas City". No free picture of the Kansas City forecast room exists (A7 is Ask). [verify: whether the 11:45 AM forecast is one of the four forecast scans in inventory A9, to show it as a document card]
+**Picture:** the tornado track map of the day (inventory B7, courtesy Dr. Russell Schneider, SPC). Six state names light one by one: Iowa, Illinois, Wisconsin, Indiana, Michigan, Ohio. Then a clock "11:45 AM" over a teletype machine photograph (inventory A4), with the label "Forecasters · Kansas City". No free picture of the Kansas City forecast room exists (A7 is Ask). No document card here: whether the 11:45 AM forecast is among the four scans of inventory A9 was not checked, so the clock over the photograph carries it.
 > Tornadoes crossed six states that day. By eleven forty five that morning, forecasters in Kansas City had a tornado forecast out on the teletype.
 
 **Rows:** [IWX page, six states confirmed by the checker 11 Oct 26] · [A1]
