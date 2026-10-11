@@ -9,11 +9,13 @@ At 5:43 PM the Weather Bureau in South Bend issued a warning whose first line re
 
 ## 1. Source
 - `edit_script.md` T1-S2, Rows [A6; survey printed p. 39] and [A6; study printed p. 14: South Bend "also telephoned several organizations", said of its warnings in general].
-- Page image: the Weather Bureau survey report, printed p. 39, first line `Severe thunderstorm and tornado warning.` **Waits for inventory row B1** (the PDF returned 403 to the picture helper; no file on disk on 12 Oct 26).
-- Ground: teletype room photograph, **waits for inventory row A3**. It shows the Weather Bureau Communications Center about 1955: not South Bend, not 1965.
+- Page image: `media/stills/b1-south-bend-warning-page-orig.png` (2550 x 3300, inventory row B1, opened 12 Oct 26). The page is headed `SOUTH BEND (Continued)`. Its first entry reads, line by line: `Issued at 5:43 PM EST.` / `Severe thunderstorm and tornado warning.` / `Radio and television stations are requested to use emergency frequencies.` / then the radar lines, which name Michigan City, Knox and the counties of LaPorte, Starke and Marshall.
+- So the Picture note's "first line" is the entry's second line; the line above it is the page's own time stamp, which is kept lit beside the clock.
+- Ground: `media/stills/a3-teletype-operators.jpg` (1370 x 1080, inventory row A3). It shows the Weather Bureau Communications Center about 1955, two operators from behind: not South Bend, not 1965.
 
 ## 2. Datum, scale, orientation
-Page scale = 1460 / text column width in page px (design sheet section 9, "Scale rule"). The builder measures the column, the first line's box and the next four lines on the page image and records them as page px constants in the comp. Crop: the warning's first five lines, full column width.
+Crop (page px of the 2550 x 3300 file, read on the 835 px copy and multiplied by 3.054; the builder confirms each edge within 10 px on the file): x 290 to 1350, y 263 to 476. It holds three lines and no more: the heading `SOUTH BEND (Continued)`, `Issued at 5:43 PM EST.`, `Severe thunderstorm and tornado warning.` The crop is cut once to `media/stills/b1-warning-crop.png` (1060 x 213) and that file is what the comp mounts.
+Scale on screen = 1460 / 1060 = 1.377. Line pitch on the page is about 47 px, so about 65 px on screen: large enough to read without a quote strip.
 
 ## 3. Geometry (screen px)
 | Element | Px |
