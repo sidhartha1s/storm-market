@@ -16,6 +16,8 @@
   .chn-sweep { position:absolute; left:0; top:0; width:520px; height:1080px;
     background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
   .chn-svg { position:absolute; left:0; top:0; }
+  /* hidden in CSS as well as at timeline 0, so the host's very first frame is the dark chain and nothing else */
+  #chn-eb, #chn-ra, #chn-rb, #chn-head, #chn-desk, #chn-dot, #chn-ringp, #chn-tka, #chn-tkb, #chn-l1, #chn-l2, #chn-l3, #chn-stop { opacity:0; visibility:hidden; }
   .chn-eb { position:absolute; left:96px; top:96px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
   .chn-row { position:absolute; left:136px; font-size:30px; line-height:36px; font-weight:700; color:#dfe7ee; white-space:nowrap; }
   .chn-lab { position:absolute; top:676px; font-size:22px; line-height:28px; font-weight:700; color:#93a3b2; text-align:center; }
@@ -172,6 +174,7 @@ window.__timelines = window.__timelines || {};
   }
   function light(sel, at) { tl.to(sel, { attr: { stroke: "#f2f5f8" }, duration: 0.3, ease: "power2.out" }, at); }
   function run(link, x0, x1, at, dur) {
+    tl.set(link, { autoAlpha: 1 }, at);
     tl.fromTo(link, { scaleX: 0 }, { scaleX: 1, svgOrigin: x0 + " 520", duration: dur, ease: "power2.inOut" }, at);
     tl.set(P+"dot", { autoAlpha: 1 }, at);
     tl.fromTo(P+"dot", { attr: { cx: x0 } }, { attr: { cx: x1 }, duration: dur, ease: "power2.inOut" }, at);
