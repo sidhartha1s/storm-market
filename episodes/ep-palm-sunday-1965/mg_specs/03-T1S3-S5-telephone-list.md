@@ -39,15 +39,15 @@ The longest row is `Indiana and Michigan Electric Company` (37 characters): at 4
 5. The ninth row has a rule and a blinking cursor, and no text and no tick, to the end of the comp.
 6. The sheet's title is the study's "Organizations notified included:". It never says how many, "all", "complete" or "warning system" (S2).
 7. The microphone is off the paper: at least 200 px of ground between sheet and microphone in the Everything state, no row rule beside it, no call letters, no station name (S4).
-7. The microphone and the house are dark from their first frame to the last: no amber on either. The lamp on the microphone flickers on "if" and ends off.
-8. The dotted line runs from the blank row, not from row 6. It never becomes solid and nothing travels along it to the house.
-9. The house has no person at a window (S5).
-10. Reveal order follows the voice: house on "family", microphone on "announcer".
-11. In the last frame the blank row, the microphone and the house are all inside the frame.
-12. Design sheet S1, S6, S7.
+8. The microphone and the house are dark from their first frame to the last: no amber on either. The lamp on the microphone flickers on "if" and ends off.
+9. The dotted line runs from the blank row, not from the stations' row. It never becomes solid and nothing travels along it to the house.
+10. The house has no person at a window (S5).
+11. Reveal order follows the voice: house on "family", microphone on "announcer".
+12. In the last frame the blank row, the microphone and the house are all inside the frame.
+13. Design sheet S1, S6, S7.
 
 ## 5. Text (exact) and cues
-Sheet text: `WEATHER BUREAU · SOUTH BEND, INDIANA` · `Warnings telephoned to:` · the eight rows. Chain labels: `an announcer` · `a family`. Source line as section 3.
+Sheet text: `SOUTH BEND WEATHER BUREAU · BY TELEPHONE` · `Organizations notified included:` · the eight rows. Chain labels: `an announcer` · `a family`. Source line as section 3.
 | Step | Seg | cue | t= | What |
 |---|---|---|---|---|
 | 0 | T1-S2 | cue: "list" (comp starts on this word; match cut from 02) | | ground at scale 1.06, `.dim`; sheet rises in Close state (`y:1100 to 0`, 0.7, power3.out); scrim to 0.68 |
