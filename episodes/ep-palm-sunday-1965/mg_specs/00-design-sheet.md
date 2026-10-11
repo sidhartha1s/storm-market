@@ -199,7 +199,7 @@ A page brief's source line is the attribution on the quote strip instead; the fr
 
 ## 11. Labels on photographs
 - **Place label (01):** glass chip at left 110, bottom 110, padding 14 x 26, one line, Arial Black 900 34 px, Headline white. One chip per photograph, each pre-authored, toggled with `autoAlpha`.
-- **Date label on Paul's clip (H1-S1, an `index.html` overlay built by the orchestrator, not a comp):** the channel popfig, big line `April 11, 1965` (14 characters), sub line `one Indiana county` (the script's Picture note) or `Indiana` (the orchestrator's wording): the orchestrator picks one, the big line does not change. Inside the first second, out before T1-S1, wrapped in a timed `<section>`. Paul's line is now "City police in one county heard troopers report a tornado and told nobody until one hit. Weather Bureau warnings went to offices and stations, not homes."; the label does not depend on it.
+- **Date label on Paul's clip (H1-S1, an `index.html` overlay built by the orchestrator, not a comp):** the channel popfig, big line `April 11, 1965` (14 characters), sub line `one Indiana county` (the script's Picture note; orchestrator ruling 12 Oct 26: Indiana is spoken nowhere, so the label carries it). Inside the first second, out before T1-S1, wrapped in a timed `<section>`. Paul's line is now "City police in one county heard troopers report a tornado and told nobody until one hit. Weather Bureau warnings went to offices and stations, not homes."; the label does not depend on it.
 
 ## 12. Standing truths (every brief's section 4 includes these by reference)
 S1. No county or town is named as "the one". County labels read `one Indiana county` and `a different county`, never in the same frame.
