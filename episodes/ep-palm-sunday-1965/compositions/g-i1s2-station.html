@@ -137,7 +137,8 @@ window.__timelines = window.__timelines || {};
     tl.set(P+"flash", { autoAlpha: 0 }, at + 0.1);
   }
 
-  tl.set([P+"tv", P+"lab", P+"card", P+"eb", P+"name", P+"sub", P+"prog", P+"cardst", P+"flash"], { autoAlpha: 0 }, 0);
+  tl.set([P+"tv", P+"lab", P+"who", P+"eb", P+"name", P+"sub", P+"prog", P+"cardst", P+"flash"], { autoAlpha: 0 }, 0);
+  tl.set(P+"wall", { y: 1080 }, 0);
 
   /* IN @0.00: Indiana and its neighbours are on; the map floats for the whole map hold */
   tl.fromTo(P+"map", { y: 0 }, { y: -4, duration: 1.25, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
