@@ -8,7 +8,7 @@ Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` se
 In one Indiana county, city police heard and told nobody (comp 09). Whether any other office on the list did the same is an open question; nothing is shown as answered.
 
 ## 1. Source
-`edit_script.md` I1-S10 (the question; no row) and I1-S6 Rows [C2] for the mark on row 3. Ground: teletype room photograph, **waits for inventory row A3**.
+`edit_script.md` I1-S10 (the question; no row) and I1-S6 Rows [C2] for the mark on row 3. Ground: `media/stills/a3-teletype-operators.jpg` (1370 x 1080, inventory row A3).
 
 ## 2. Datum, scale, orientation
 Design sheet section 5, Close state: s 1.6, tx 147.6, ty -66. Row centres on screen: 276.4, 353.2, 430.0, 506.8, 583.6, 660.4, 737.2, 814.0, 890.8. Row 3 is at y 430.0.
