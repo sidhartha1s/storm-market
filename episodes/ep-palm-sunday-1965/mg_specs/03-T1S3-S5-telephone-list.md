@@ -1,6 +1,6 @@
 # 03 · T1-S3, T1-S4, T1-S5 · the telephone list, the blank row, the family (comp `g-t1s3-list`)
 
-Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` sections 4, 5, 6, 7, 10. **One comp across three segments:** the sheet, the camera and the photograph must be continuous from the first tick to the last word of the hook, and three builds would break the match at each seam. This is the base of the list family (08, 12 copy it): send it alone for a full-size read before those are built.
+Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` sections 4, 5, 6, 7, 10. **One comp across three segments:** the sheet, the camera and the photograph must be continuous from the first tick to the last word of the hook, and three builds would break the match at each seam. This is the base of the list family (08, 12 copy it): send it alone for a full-size read before those are built. Written 12 Oct 26.
 
 **Spoken:**
 - T1-S3: "State Police. Sheriffs. City police. Named radio and television stations."
@@ -28,7 +28,7 @@ One world, design sheet sections 5 and 6. The blank row's centre line (world y 5
 | Push (T1-S5 end) | scale 1.2 about the blank row, which lands at (560, 560) | text 31.2 px | house right edge at x 1899, y 298 to 598; label "a family" centred (1743, 639) |
 Ground: A3 `<img>`, `object-position:50% 40%`, scale 1.06 to 1.14 across the window; scrim tweens `.dim` (0.45) to `.dim-heavy` (0.68) over the sheet's 0.7 s entrance.
 HUD (fixed, outside the world): source line left 96, bottom 60: `Disaster Research Center, 1966 · list of offices the Weather Bureau telephoned`.
-Row 6's longest neighbour is row 4 (37 characters): at 41.6 px it ends at x 1311, inside the sheet.
+The longest row is row 4 (37 characters): at 41.6 px it ends at x 1311, inside the sheet.
 
 ## 4. Must be true in the picture
 1. Eight typed rows in the study's order and spelling (design sheet section 5 table). All eight are on the sheet before the first tick.
