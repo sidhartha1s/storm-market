@@ -2,18 +2,127 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-i1s5-onair: stub, build in progress. Brief: mg_specs/08-I1S5-on-air.md. -->
+<!-- g-i1s5-onair (I1-S5): the same typed telephone list in the Close state; the stations' row lights and an ON AIR lamp sits on
+     that row's line. The lamp rests as an outline ("expected to", not "did"): it fills once on "public" and returns to the outline.
+     Brief: mg_specs/08-I1S5-on-air.md; the sheet is a copy of compositions/g-t1s3-list.html (design sheet section 5, world px).
+     All eight rows are plain Caption dark: no tick, no tick box, no number. No other row changes.
+     Cues are comp-local seconds (host start 77.02) from audio/i1-s5.words.json. -->
 <template>
 <style>
-  #air-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
+  #air-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .air-bg { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; object-position:50% 40%; }
+  .air-scrim { position:absolute; left:0; top:0; width:1920px; height:1080px; background:rgba(2,4,6,0.68); }
+  .air-world { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .air-paper { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .air-sheet { position:absolute; left:64px; top:60px; width:760px; height:590px; background:#f4f0e6; border-radius:2px; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .air-eye { position:absolute; left:96px; top:84px; font:700 19px 'Courier New', Courier, monospace; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+  .air-title { position:absolute; left:96px; top:118px; font:700 30px 'Courier New', Courier, monospace; color:#2a2622; white-space:nowrap; line-height:1; }
+  .air-phone { position:absolute; left:730px; top:108px; width:60px; height:29.33px; overflow:visible; }
+  .air-rule { position:absolute; left:96px; top:171px; width:696px; height:2px; background:rgba(107,98,87,0.4); }
+  .air-row { position:absolute; left:150px; height:44px; font:700 26px 'Courier New', Courier, monospace; color:#2a2622; white-space:nowrap; line-height:44px; }
+  .air-rr { position:absolute; left:96px; width:696px; height:1px; background:rgba(107,98,87,0.25); }
+  .air-cur { position:absolute; left:150px; top:584px; width:14px; height:28px; background:#2a2622; }
+  .air-band { position:absolute; left:89px; top:432px; width:712.5px; height:44px; background:#e8c56a; opacity:0.35; }
+  .air-lamp { position:absolute; left:660px; top:436px; width:130px; height:36px; }
+  .air-lamp-fill { position:absolute; left:0; top:0; width:130px; height:36px; border-radius:6px; background:#d0121f; }
+  .air-lamp-line { position:absolute; left:0; top:0; width:130px; height:36px; overflow:visible; }
+  .air-lamp-txt { position:absolute; left:0; top:0; width:130px; height:36px; text-align:center; font:900 18px 'Arial Black', Arial, sans-serif; color:#d0121f; letter-spacing:1px; white-space:nowrap; line-height:36px; }
+  .air-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .air-h { opacity:0; visibility:hidden; }
 </style>
-<div id="air-root" data-composition-id="g-i1s5-onair" data-width="1920" data-height="1080"></div>
+<div id="air-root" data-composition-id="g-i1s5-onair" data-width="1920" data-height="1080">
+  <img class="air-bg" id="air-bg" src="media/stills/a3-teletype-operators.jpg" alt="">
+  <div class="air-scrim"></div>
+
+  <div class="air-world" id="air-world">
+    <div class="air-paper" id="air-paper">
+      <div class="air-sheet"></div>
+      <div class="air-eye">SOUTH BEND WEATHER BUREAU &middot; BY TELEPHONE</div>
+      <div class="air-title">Organizations notified included:</div>
+      <svg class="air-phone" viewBox="0 0 90 44" fill="none" stroke="#2a2622" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0 44 H90 L78 14 H12 Z"/>
+        <path d="M36 29 A9 9 0 1 1 54 29 A9 9 0 1 1 36 29 Z"/>
+        <path d="M9 0 H81 A5 5 0 0 1 81 10 H9 A5 5 0 0 1 9 0 Z"/>
+        <path d="M4 10 V18 H14 V10 M76 10 V18 H86 V10"/>
+      </svg>
+      <div class="air-rule"></div>
+
+      <div class="air-band" id="air-band"></div>
+
+      <div class="air-rr" style="top:238px"></div>
+      <div class="air-rr" style="top:286px"></div>
+      <div class="air-rr" style="top:334px"></div>
+      <div class="air-rr" style="top:382px"></div>
+      <div class="air-rr" style="top:430px"></div>
+      <div class="air-rr" style="top:478px"></div>
+      <div class="air-rr" style="top:526px"></div>
+      <div class="air-rr" style="top:574px"></div>
+      <div class="air-rr" style="top:622px"></div>
+
+      <div class="air-row" style="top:192px">State Police</div>
+      <div class="air-row" style="top:240px">Sheriffs' Departments</div>
+      <div class="air-row" style="top:288px">City Police Departments</div>
+      <div class="air-row" style="top:336px">Indiana and Michigan Electric Company</div>
+      <div class="air-row" style="top:384px">Red Cross</div>
+      <div class="air-row" style="top:432px">Specified radio and TV stations</div>
+      <div class="air-row" style="top:480px">Flying services</div>
+      <div class="air-row" style="top:528px">Airlines</div>
+      <div class="air-cur"></div>
+
+      <div class="air-lamp" id="air-lamp">
+        <div class="air-lamp-fill air-h" id="air-lamp-fill"></div>
+        <svg class="air-lamp-line" viewBox="0 0 130 36" fill="none" stroke="#d0121f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path id="air-lamp-line" d="M6 1 H124 A5 5 0 0 1 129 6 V30 A5 5 0 0 1 124 35 H6 A5 5 0 0 1 1 30 V6 A5 5 0 0 1 6 1 Z"/>
+        </svg>
+        <div class="air-lamp-txt air-h" id="air-lamp-txt">ON AIR</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="air-src air-h" id="air-src">Disaster Research Center, 1966, p. 14</div>
+</div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  var ID = "g-i1s5-onair", P = "air";
+  var CLOSE = { scale: 1.6, x: 147.6, y: -66 };   /* design sheet section 5: the sheet at x 250 to 1466, y 30 to 974 */
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
   var tl = gsap.timeline({ paused: true });
-  tl.to({}, { duration: 4.64 }, 0);
-  window.__timelines["g-i1s5-onair"] = tl;
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+
+  var band = $("band"), line = $("lamp-line"), fill = $("lamp-fill"), txt = $("lamp-txt"), lamp = $("lamp");
+  var L = Math.ceil(line.getTotalLength()) + 1;
+
+  s0($("world"), { scale: CLOSE.scale, x: CLOSE.x, y: CLOSE.y, transformOrigin: "0 0" });
+  s0(band, { scaleX: 0, transformOrigin: "left center" });
+  s0(line, { strokeDasharray: L, strokeDashoffset: L, autoAlpha: 0 });
+
+  /* 0 · "The" @0.00: ground and sheet on in the Close state */
+  tl.fromTo($("bg"), { scale: 1 }, { scale: 1.05, duration: 4.64, ease: "none" }, 0);
+  tl.fromTo($("src"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0);
+
+  /* 1 · "stations" @0.07: the lit band wipes across the stations' row, then breathes between 30 % and 38 % */
+  tl.to(band, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.07);
+  tl.fromTo(band, { opacity: 0.38 }, { opacity: 0.30, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 7, immediateRender: false }, 0.62);
+
+  /* 2 · "expected" @1.55: the lamp's outline draws on in 0.4 s, its letters with the last of the line */
+  tl.set(line, { autoAlpha: 1 }, 1.55);
+  tl.to(line, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 1.55);
+  tl.fromTo(txt, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.15, ease: "none", immediateRender: false }, 1.80);
+
+  /* 3 · "public" @3.21: the lamp fills Popfig red with Headline white letters for 0.5 s, then back to the outline in 0.3 s */
+  tl.fromTo(fill, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.08, ease: "none", immediateRender: false }, 3.21);
+  tl.to(txt, { color: "#f2f5f8", duration: 0.08, ease: "none" }, 3.21);
+  tl.fromTo(lamp, { scale: 1 }, { scale: 1.08, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 3.21);
+  tl.to(fill, { autoAlpha: 0, duration: 0.3, ease: "power1.inOut" }, 3.71);
+  tl.to(txt, { color: "#d0121f", duration: 0.3, ease: "power1.inOut" }, 3.71);
+
+  /* 4 · hold @3.64: band breathing and ground push; 5 · exit: the sheet slides down, ending on the hard cut to 09 @4.64 */
+  tl.to($("paper"), { y: 1100, duration: 0.6, ease: "power3.in" }, 4.04);
+  tl.to($("src"), { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 4.34);
+  tl.to({}, { duration: 0.01 }, 4.63);
+
+  window.__timelines[ID] = tl;
 })();
 </script>
 </template>
