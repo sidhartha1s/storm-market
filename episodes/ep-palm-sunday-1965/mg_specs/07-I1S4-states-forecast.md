@@ -67,9 +67,9 @@ Text: the six state names · `6` · `states` · `Courtesy: Dr. Russell Schneider
 | 3 | cue: "By" | | hard cut to Part B: A4 ground and its caption |
 | 4 | cue: "11:45" (spoken "eleven forty five") | | clock stamp slides in, minute hand sweeps into place |
 | 5 | cue: "Kansas" | | place line `Kansas City` rises inside the stamp |
-| 6 | cue: "forecast" (second, "tornado forecast") | | paper strip starts to rise; label card slides in (`x:-660 to 0`, 0.6, power3.out) |
+| 6 | cue: "forecast" (second, "tornado forecast") | | paper strip starts to rise; label card slides in from the right (`x:660 to 0`, 0.6, power3.out) |
 | 7 | cue: "teletype" (last word) | | hold 1.0 s; the strip keeps rising |
-| 8 | exit | | stamp and label slide out left (`x:-980`, 0.6, power3.in) into the hard cut to 08 |
+| 8 | exit | | stamp slides out left (`x:-980`), label card right (`x:980`), 0.6, power3.in, into the hard cut to 08 |
 
 ## 6 to 8. Contract, tools, done line, receipt
 As `references/mg-brief-template.md` sections 6, 7, 7a, 8, unchanged. File `compositions/g-i1s4-states.html`, id prefix `st6-`, root id `st6-root`. Done line 7: the map label names six places, each a claim about the map under it.
