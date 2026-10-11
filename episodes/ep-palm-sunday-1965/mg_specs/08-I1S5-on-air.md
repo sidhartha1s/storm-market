@@ -8,7 +8,7 @@ Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` se
 The radio and television stations on South Bend's list were the ones meant to broadcast the warning. Only that row carries it to the public.
 
 ## 1. Source
-`edit_script.md` I1-S5, Rows [A6]. The spoken line is under a fact check (what "use emergency frequencies" asked of the stations) and may change by a few words; the picture does not. Ground: teletype room photograph, **waits for inventory row A3**.
+`edit_script.md` I1-S5, Rows [A6]. The spoken line is under a fact check (what "use emergency frequencies" asked of the stations) and may change by a few words; the picture does not. Ground: `media/stills/a3-teletype-operators.jpg` (1370 x 1080, inventory row A3). The survey page B1 (`b1-south-bend-warning-page-orig.png`) prints the request itself: "Radio and television stations are requested to use emergency frequencies."; it is not shown in this comp.
 
 ## 2. Datum, scale, orientation
 Design sheet section 5, Close state: s 1.6, tx 147.6, ty -66. Row 6 centre on screen: y 660.4.
