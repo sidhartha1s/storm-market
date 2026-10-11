@@ -47,13 +47,16 @@
 </style>
 <div id="stn-root" class="stn-root" data-composition-id="g-i1s2-station" data-width="1920" data-height="1080" data-duration="10.63">
 
-  <!-- THE TELEVISION (big, design sheet section 7): beneath the map and the name card, drawn as they leave -->
+  <!-- THE WALL: rises as the map leaves, so the television sits in the daylit room of comp 04 -->
+  <div class="stn-wall" id="stn-wall"><div class="stn-floor"></div><div class="stn-fline"></div></div>
+
+  <!-- THE TELEVISION (big, design sheet section 7): beneath the map and the name card, drawn as the map leaves -->
   <div class="stn-layer" id="stn-tv">
     <svg class="stn-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
       <g transform="translate(480 150) scale(3.2)">
         <g fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path class="stn-ln" d="M40 200 L28 240 M260 200 L272 240"/>
-          <rect class="stn-ln" x="0" y="0" width="300" height="200" rx="6" fill="#15202b"/>
+          <path class="stn-ln" d="M40 200 L28 240 M260 200 L272 240" stroke="#15202b"/>
+          <rect class="stn-ln" id="stn-cab" x="0" y="0" width="300" height="200" rx="6" fill="#15202b" fill-opacity="0" stroke="#15202b"/>
           <rect x="20" y="20" width="192" height="160" rx="24" fill="#15202b" stroke="none"/>
           <path d="M40 78 A46 46 0 0 1 78 40" stroke="#93a3b2" stroke-width="0.8"/>
           <circle class="stn-ln" cx="256" cy="62" r="14"/>
