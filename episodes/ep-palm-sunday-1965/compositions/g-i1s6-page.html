@@ -62,7 +62,7 @@ window.__timelines = window.__timelines || {};
   function mark(xa, xb, yb) { var b = document.createElement("div"); b.className = P + "-ul";   /* the red line, 4 px under the line box */
     b.style.cssText = "left:" + (B + xa) + "px;top:" + (B + yb + 4) + "px;width:" + (xb - xa) + "px"; card.appendChild(b); return b; }
 
-  var s1 = strip(406, 94, 1367, 129), u1 = mark(406, 1367, 129);     /* "Police headquarters did not notify other members of" (starts at "Police", after "action at that time.") */
+  var s1 = strip(405, 180, 1367, 215), u1 = mark(405, 1367, 215);    /* "Police headquarters did not notify other members of" (starts at "Police", after "action at that time.") */
   var s2 = strip(20, 177, 1440, 212), u2 = mark(20, 1440, 212);      /* "their own organization nor any other organization until after the first tornado" */
   var s3 = strip(19, 265, 278, 295), u3 = mark(19, 278, 295);        /* "hit the county." */
   var strips = [s1, s2, s3], bars = [u1, u2, u3];
