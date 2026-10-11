@@ -108,10 +108,10 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 **Rows:** [IWX page, six states confirmed by the checker 11 Oct 26] · [A1]
 
 ### I1-S5 · narration
-**Picture:** the eight-row telephone list from T1-S3 returns over the teletype room photograph (inventory A3). The "Specified radio and TV stations" row lights and a small red "ON AIR" lamp comes on beside it. Nothing else on the list moves.
-> The stations on that list were supposed to put the warning on the air.
+**Picture:** the eight-row telephone list from T1-S3 returns over the teletype room photograph (inventory A3). The "Specified radio and TV stations" row lights and a small red "ON AIR" lamp comes on beside it. No tick boxes; nothing else on the list moves.
+> The stations on that list were the ones expected to pass the warning to the public.
 
-**Rows:** [A6] [verify: the A6 warning asks stations "to use emergency frequencies"; confirm that this means broadcast it]
+**Rows:** [A6; study printed p. 9: interviewees "said it was the responsibility of radio and TV stations to pass on such information"]
 
 ### I1-S6 · narration
 **Picture:** the study's own page (printed pp. 19 to 20), one sentence underlined as it is spoken: "Police headquarters did not notify other members of their own organization nor any other organization until after the first tornado hit the county." Label "one Indiana county", the county of Paul's line.
