@@ -14,8 +14,13 @@ At 5:43 PM the Weather Bureau in South Bend issued a warning that the page recor
 - Ground: `media/stills/a3-teletype-operators.jpg` (1370 x 1080, inventory row A3). It shows the Weather Bureau Communications Center about 1955, two operators from behind: not South Bend, not 1965.
 
 ## 2. Datum, scale, orientation
-Crop (page px of the 2550 x 3300 file, read on the 835 px copy and multiplied by 3.054; the builder confirms each edge within 10 px on the file): x 290 to 1350, y 263 to 476. It holds three lines and no more: the heading `SOUTH BEND (Continued)`, `Issued at 5:43 PM EST.`, `Severe thunderstorm and tornado warning.` The crop is cut once to `media/stills/b1-warning-crop.png` (1060 x 213) and that file is what the comp mounts.
-Scale on screen = 1460 / 1060 = 1.377. Line pitch on the page is about 47 px, so about 65 px on screen: large enough to read without a quote strip.
+Crop box, page px (measured on the file by a row and word scan): x 285 to 1345, y 244 to 484 (1060 x 240). It holds three lines and no more. The crop is cut once and saved as `media/docs/survey-p39-warning-crop.png` at 1460 x 331 (scale 1.3774, an enlargement of a bilevel scan: cut with a smooth filter and read the edges on a frame); that file is what the comp mounts.
+| Line | Page px (x0 to x1, y0 to y1) | Px inside the 1460 crop |
+|---|---|---|
+| `SOUTH BEND (Continued)` | 301 to 929, 260 to 308 | x 22 to 887, y 22 to 88 |
+| `Issued at 5:43 PM EST.` | 309 to 837, 382 to 418 | x 33 to 760, y 190 to 240 |
+| `Severe thunderstorm and tornado warning.` (underlined) | 310 to 1284, 429 to 468 | x 34 to 1376, y 255 to 309 |
+Line pitch on the page is about 47 px, so about 65 px on screen: large enough to read without a quote strip. The next page line (`Radio and television stations are requested to use emergency frequencies.`, page y 475 to 518) is cut off by the crop's lower edge at y 484 on purpose; if any of its ink shows, pull the edge up to y 472.
 
 ## 3. Geometry (screen px)
 | Element | Px |
