@@ -24,7 +24,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 ## Writer notes
 - The blockquote is the spoken line and nothing else: `parse_segments` voices every character in it. Row tags sit on the `Rows:` line under each segment, in sentence order, never inside the blockquote.
 - Hook lines against Rebuild 2: H1-S1 is rewritten to the study's sentence (fact check, 12 Oct 26). The toll now comes straight after Paul (T1-S1). The 5:43 line says "issued a tornado warning"; the telephone is a general statement about South Bend's warnings. The list line, the announcer line and the question are word for word.
-- H1-S1 alternative, 25 words, with Indiana spoken and the Weather Bureau unnamed: "Police in one Indiana county heard a tornado reported and told nobody until it hit. South Bend's warning went to offices and stations, not homes."
+- H1-S1 alternative, not used: fails the check ("until it hit"). It read: "Police in one Indiana county heard a tornado reported and told nobody until it hit. South Bend's warning went to offices and stations, not homes."
 - Narration numbers follow the El Reno copy: spelled out, no hyphen ("five forty three", "nineteen sixty five"). The claim in I1-S9 is the locked wording with its year spelled for the voice.
 - The claim carries "desk", a word the critique lists as unshowable. It is the locked wording, so it stays; a drawn desk appears on that word.
 - T1-S3 is four name-only sentences, the telephone list read aloud. The quickref bans trailer fragments; this is the owner's picked line and stays as picked (orchestrator ruling, 12 Oct 26).
