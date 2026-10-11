@@ -9,7 +9,7 @@ At 5:43 PM the Weather Bureau in South Bend issued a warning that the page recor
 
 ## 1. Source
 - `edit_script.md` T1-S2, Rows [A6; survey printed p. 39] and [A6; study printed p. 14: South Bend "also telephoned several organizations", said of its warnings in general].
-- Page image: `media/stills/b1-south-bend-warning-page-orig.png` (2550 x 3300, inventory row B1, opened 12 Oct 26). The page is headed `SOUTH BEND (Continued)`. Its first entry reads, line by line: `Issued at 5:43 PM EST.` / `Severe thunderstorm and tornado warning.` / `Radio and television stations are requested to use emergency frequencies.` / then the radar lines, which name Michigan City, Knox and the counties of LaPorte, Starke and Marshall.
+- Page image: `media/docs/survey-pdf-67-orig.png` (2550 x 3300, survey printed p. 39, inventory row B1, read by eye 12 Oct 26; `media/stills/b1-south-bend-warning-page-orig.png` is the same file). The page is headed `SOUTH BEND (Continued)`. Its first entry reads, line by line: `Issued at 5:43 PM EST.` / `Severe thunderstorm and tornado warning.` / `Radio and television stations are requested to use emergency frequencies.` / then the radar lines, which name Michigan City, Knox and the counties of LaPorte, Starke and Marshall.
 - So the Picture note's "first line" is the entry's second line; the line above it is the page's own time stamp, which is kept lit beside the clock.
 - Ground: `media/stills/a3-teletype-operators.jpg` (1370 x 1080, inventory row A3). It shows the Weather Bureau Communications Center about 1955, two operators from behind: not South Bend, not 1965.
 
