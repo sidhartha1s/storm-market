@@ -46,7 +46,7 @@ Opened 12 Oct 26; rows in `provenance.csv`. Mount the 1080-fit copy named here, 
 | Teletype machines | A4 (wea01821) | `a4-teletype-room.jpg`, 1456 x 1080. Wide room, a row of machines, three people with faces, a wall clock | 07 | `.dim` | "Weather Bureau teletypewriters, about 1955 · NOAA" |
 | Damage, Dunlap | C2 | `c2-dunlap-sunnyside-damage.jpg`, 800 x 647 only, with a faded white edge | 01 | none; popfig carries its own local scrim | place label, section 11 |
 | Damage, Alto | C5 | `c5-alto-aerial-damage.jpg`, 1543 x 1080 | 01 | none | place label |
-| Damage, Pittsfield | C7 | `c7-pittsfield-damage-aerial.jpg`, 1887 x 1080, newspaper halftone | 01 | none | place label |
+| Damage, Pittsfield | C7 | `c7-pittsfield-damage-aerial.jpg`, 1887 x 1080, newspaper halftone | none: out until its town is confirmed in `provenance.csv` | none | none |
 | Track map | B7 | `b7-tornado-track-map.jpg`, 1396 x 1046. White ground, grey county lines, red tracks; it prints no state name | 07 | none | "Courtesy: Dr. Russell Schneider, SPC" |
 At cover, A3 is enlarged 1.40x and loses 28.6 % of its height, A4 1.32x, C2 2.4x (soft: read it on a frame). No card, chip or stamp may sit over a face in A4.
 
