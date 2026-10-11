@@ -133,7 +133,7 @@ alternative by default, for example "lost their lives" (owner 9 Oct 26); the tab
   IT locks, without waiting for later acts.
 - Every audio-carrying insert is transcribed in full before cut selection; cut chosen at the transcript's peak.
 - Paul on camera (documentaries; `references/mg-quickref.md` "Paul on screen"): besides the hook sentence, mark up to 5 lines
-  he speaks full frame, each at most about 26 words (one 10 s clip). They sit at turning points, where the story changes
+  he speaks full frame, each about 22 to 26 words (one 10 s clip, filled: a short line wastes the clip). They sit at turning points, where the story changes
   direction, and one of them is the `cta-hinge` tease right before the CTA (that one keeps the hinge's 25-word cap below).
 
 ## CTA hinge (must-keep every episode from ep4 on) — DESIGN.md "CTA contract"
