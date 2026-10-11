@@ -2,6 +2,47 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 2026-10-10 - ep4-el-reno: 45 of 68 graphics needed a fix after every builder's gates were green
+- **What happened:** seven Opus builders built 68 comps, each ending on `graphics_qc` PASS. Two independent Opus
+  verifiers then read settled frames: 29 of 36 needed a fix in the first four families, 16 of 32 in the other three.
+  It took one fix round per family plus a second for four of them. Owner, shown six before and after pairs: "yes,
+  these were good calls. pick the learnings / feedbacks and fill it back to the main model, observe next time. and
+  improve it. like CICD."
+- **The kinds, with counts (verifier rows):**
+  - A shared base carried one defect into every copy: a tray title 1 px onto its border in 10 map comps and again in a table comp.
+  - Small on an empty field: 6 drawings at 21 to 36 % of the frame, and 8 maps, tables and cards with a 44 to 66 % empty block.
+  - One family drew the shared road layout on whole miles (1.00 and 2.00) while the others used the measured 1.05 and 2.04.
+  - Seek order: a line showed in forward play and was gone after a seek back to 0. Causes: `fromTo` with `autoAlpha` only
+    in the from vars and `immediateRender: false` (4 tweens), and `svgOrigin` only in the from vars of a deferred tween (13 elements).
+  - `sweep_episode.py` check 7 ("graphic window fits its timeline") failed 16 comps; no builder had run the sweep.
+  - A label crossed by a road, ring, arrow or rain in 16 comps, several only during the first half second of an entrance.
+  - An empty dark frame for 0.5 to 2.3 s at the start of 7 full-frame hosts.
+  - The picture beneath: a transparent span with nothing mounted on track 1 (`lint_timeline.py` counts the track 2 host
+    as picture), a news anchor's face under a card's first second, a broadcast caption half covered by a card, and a
+    truncated JPEG that headless Chrome left unpainted in 3 of 4 loads.
+  - Fixes made new defects: 4 of the 6 found on the re-check came from the first fix round.
+  - A verifier's final reply is cut at about 4,000 characters; one report was lost that way and had to be re-sent.
+- **Rule:** the brief template carries these as the builder's done line (`references/mg-brief-template.md` section 7a), and
+  the verify section names the two-capture read and the picture-beneath read (`references/mg-quickref.md` "Verify").
+  A shared base is read at full size by the orchestrator before any comp is copied from it. A fix is re-read by the
+  verifier, never taken from the builder's receipt. Verifiers report through messages under 3,500 characters.
+- **Proposed gates (filed in `ops/tasks.md`):** a seek-order probe (working prototype in the episode's
+  `.qc-tmp/replot-stage/seekcheck.mjs`), a label-over-painted-shape DOM check, a "transparent span needs track 1"
+  check in `lint_timeline.py`, and a JPEG end-marker check in the media probes.
+- **Found later the same day, by the orchestrator's own frame read, not by either verifier:** the overlay `g-a1s4-rita`
+  holds the label "Tornado · Oklahoma City · 2013" for its whole 20.83 s window, and for 11.33 s of it the picture
+  beneath was a stock highway clip from another city. Both verifiers read that frame for layout and passed it. Fixed in
+  `index.html` by mounting that evening's own news footage under the whole window. **Rule:** a label that names a
+  place, a date or an event is a claim about the picture under it. The brief names the file that sits under every
+  second of such a label, and the frame read checks the ledger row of that file, not only the layout.
+- **Found when the whole suite first ran, after both fix rounds:** `overlap_check.mjs` reported 21 findings that no
+  builder or verifier had seen, because the builders' done line named `graphics_qc` and the sweep only. Read frame by
+  frame, 14 were line boxes that touch with the ink clear (declared with `data-overlap-ok`) and 7 were one label on
+  several different things, such as an "EF1" tag on each track (the gate had no way to declare those; PR #154 adds
+  `data-repeat-ok`). A graphic added later the same way failed `blank_scan.mjs`: its host was mounted 0.50 s ahead of
+  its first mark. **Rule:** the done line names every gate that stages a comp (`graphics_qc`, sweep, `blank_scan`,
+  `overlap_check`), and an overlay's host starts on its first mark (`references/mg-brief-template.md` 7a item 1).
+
 ## 2026-09-29 - ep-nepal-floods-2026: one snapshot at 60 % of each window missed four near-empty openings
 - **What happened:** the pre-render check snapshotted each changed comp once, at 60 % of its window, and all looked full.
   The final-v2 render then failed `verify_render.sh` with four black spans (74.47-76.17, 78.43-82.27, 513.30-525.97,
