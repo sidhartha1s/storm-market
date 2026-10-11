@@ -138,7 +138,8 @@ window.__timelines = window.__timelines || {};
   /* YEAR @4.38: the date leaves before the camera moves */
   tl.to([P+"t1", P+"t2"], { x: -980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 4.38);
   /* MANY @5.60: push into the left front window, centre (823.6, 616.8), to scale 9 */
-  tl.fromTo(P+"street", { scale: 1.03 }, { scale: 9, duration: 1.1, ease: logEase(1.03, 9) }, 5.60);
+  /* a plain to(): a fromTo here renders its 1.03 start at build time and the host's first frame comes out 3 % large */
+  tl.to(P+"street", { scale: 9, duration: 1.1, ease: logEase(1.03, 9) }, 5.60);
   tl.to(P+"flood", { autoAlpha: 1, duration: 0.4, ease: "power2.in" }, 6.30);
   /* full amber @6.70: hard switch to the room beneath it, then the amber clears */
   tl.set(P+"street", { autoAlpha: 0 }, 6.70);
