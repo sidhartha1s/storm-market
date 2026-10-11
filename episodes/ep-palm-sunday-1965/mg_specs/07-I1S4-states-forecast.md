@@ -53,7 +53,8 @@ The strip's right edge is x 1420, clear of the corner.
 5. `Kansas City` is on the glass stamp, never bare on the photograph; the photograph's caption says what it is (S8).
 6. The paper strip carries bars, not words: the forecast's text is not in the script, so none is typed.
 7. The map keeps its courtesy credit for as long as it is on screen.
-8. No Indiana county is singled out on the map by us (S1).
+8. No Indiana county is singled out on the map by us (S1). The map's two green dots and its rating numbers are left as printed and are not labelled.
+10. The wall clock in the A4 photograph cannot be read as a time in any Part B frame (it would contradict 11:45). Read it on a frame before the label card arrives; if its hands show, the label card enters with the stamp at step 4 instead of step 6.
 9. Design sheet S6, S7.
 
 ## 5. Text (exact) and cues
