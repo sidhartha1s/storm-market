@@ -92,8 +92,10 @@ window.__timelines = window.__timelines || {};
   function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
   function chip(n, t) {                                     /* a state name lands on its state, one amber ring behind it (radius 30 to 70) */
     tl.fromTo($("c" + n), { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(2)", immediateRender: false }, t);
-    tl.set($("g" + n), { autoAlpha: 1 }, t);
-    tl.to($("g" + n), { autoAlpha: 0, scale: 2.33, duration: 0.5, ease: "power2.out" }, t);
+    /* every start state is written out, so the ring is the same whichever way the timeline is seeked */
+    tl.fromTo($("g" + n), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.04, ease: "none", immediateRender: false }, t);
+    tl.fromTo($("g" + n), { scale: 1 }, { scale: 2.33, duration: 0.5, ease: "power2.out", immediateRender: false }, t);
+    tl.fromTo($("g" + n), { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.4, ease: "power1.in", immediateRender: false }, t + 0.1);
   }
 
   /* ---- the clock face (design sheet section 8): centre (95,100) in the stamp, radius 62; 11:45 AM ---- */
