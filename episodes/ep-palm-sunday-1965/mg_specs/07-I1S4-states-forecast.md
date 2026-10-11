@@ -9,12 +9,22 @@ Tornadoes crossed six states on April 11, 1965: Iowa, Illinois, Wisconsin, India
 
 ## 1. Source
 `edit_script.md` I1-S4, Rows [IWX page, six states confirmed by the checker 11 Oct 26] · [A1].
-- Part A ground: the tornado tracks map, **waits for inventory row B7** ("Courtesy: Dr. Russell Schneider, SPC").
-- Part B ground: teletype machines photograph, **waits for inventory row A4** (Weather Bureau teletypewriters, about 1955: not Kansas City, not 1965).
+- Part A ground: `media/stills/b7-tornado-track-map.jpg` (1396 x 1046, inventory row B7, "Courtesy: Dr. Russell Schneider, SPC"; opened 12 Oct 26). White ground, grey county and state lines, red track lines with small rating numbers, Lake Michigan top centre. **It prints no state name**, so the six names are ours, set on it.
+- Part B ground: `media/stills/a4-teletype-room.jpg` (1456 x 1080, inventory row A4; opened 12 Oct 26). A wide Weather Bureau teletype room about 1955: a row of machines, three people whose faces show, a wall clock right of centre. Not Kansas City, not 1965.
 - No picture of the Kansas City forecast room is free (row A7 is Ask): none is used and none is drawn.
 
 ## 2. Datum, scale, orientation
-The map is shown whole, north up, at one scale: fitted by height into y 54 to 1026 and centred on x 880 (so its right edge stays clear of the corner; the builder states the fitted box in the receipt). The six state-name positions are measured on the map image in image px (the centre of each state's area as drawn on that map) and multiplied by the fit scale.
+The map is shown whole, north up, at one scale: 972 / 1046 = 0.9293, fitted into x 251 to 1549, y 54 to 1026 (centred on x 900, right edge clear of the corner). Screen x = 251.4 + 0.9293 x image x; screen y = 54 + 0.9293 x image y.
+State chip centres (image px read by eye on the file, then the screen px they give; the builder moves a chip only to clear a red track, and keeps it inside its state):
+| State | Image px | Screen px |
+|---|---|---|
+| Iowa | (80, 270) | (326, 305) |
+| Illinois | (330, 560) | (558, 574) |
+| Wisconsin | (320, 110) | (549, 156) |
+| Indiana | (590, 660) | (800, 667) |
+| Michigan | (880, 200) | (1069, 240) |
+| Ohio | (900, 650) | (1088, 658) |
+Only the east edge of Iowa is on this map (left of the river line near image x 160 to 230): its chip sits there and nowhere else.
 
 ## 3. Geometry (screen px)
 Part A:
