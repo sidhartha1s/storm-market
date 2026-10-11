@@ -14,7 +14,7 @@ South Bend's Weather Bureau telephoned its warnings to offices and stations (eig
 ## 1. Source
 - `edit_script.md` T1-S3 Rows [A6; study printed p. 14] (four of the eight entries); T1-S4 Rows [C12] [C8] ("the C8 station has no name and no county in the study"); T1-S5 has no row.
 - Row text and order: design sheet section 5 table, copied from the T1-S3 Picture note.
-- Ground: teletype room photograph, **waits for inventory row A3**.
+- Ground: `media/stills/a3-teletype-operators.jpg` (1370 x 1080, inventory row A3, opened 12 Oct 26: two operators from behind at teletype machines, about 1955).
 - The house and microphone are drawings because the inventory holds no 1965 studio or home.
 
 ## 2. Datum, scale, orientation
