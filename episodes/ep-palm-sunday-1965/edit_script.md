@@ -54,7 +54,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 
 ### T1-S2 · narration
 **Picture:** a Weather Bureau teletype room photograph (inventory A3, teletype operators at the Weather Bureau Communications Center, about 1955). A clock "5:43 PM" lands on "five forty three". The warning itself comes in as the survey report's own page, first line underlined: "Severe thunderstorm and tornado warning." (inventory B1). Place label "South Bend, Indiana". On the second sentence a telephone ring, made in house, and the clock label fades so the telephone is not pinned to 5:43.
-> At five forty three, the Weather Bureau in South Bend issued a tornado warning. It telephoned its warnings down a list.
+> At five forty three, the Weather Bureau in South Bend issued a tornado warning. It also telephoned its warnings down a list.
 
 **Rows:** [A6; survey printed p. 39] · [A6; study printed p. 14: South Bend "also telephoned several organizations", said of its warnings in general]
 
