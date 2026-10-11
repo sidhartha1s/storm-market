@@ -33,7 +33,7 @@ The headline is about 1,200 px wide at 52 px: checked on a frame to end before x
 4. The two links right of the desk stay dotted and grey to the last frame.
 5. The miniature list has eight bars and a ninth empty tick box and no readable name: no office is singled out here (S1, S2).
 6. Rows A and B and the headline are the locked claim's words, unchanged.
-7. Ticks on rows A and B are Caption... no: they are Body light pen ticks, never red. Crimson is on the stop mark and on `one desk short` only.
+7. The ticks on rows A and B are Body light pen ticks, never red. Crimson is on the stop mark and on `one desk short` only.
 8. No person at the desk, at the microphone or in the house (S5).
 9. Design sheet S4, S6, S7: the microphone carries no station name.
 
