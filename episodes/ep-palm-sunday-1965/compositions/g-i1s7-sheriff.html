@@ -43,24 +43,20 @@
 <div id="shf-root" data-composition-id="g-i1s7-sheriff" data-width="1920" data-height="1080">
   <div class="shf-bg"></div>
   <div class="shf-scan" id="shf-scan"></div>
-  <svg class="shf-tv shf-h" id="shf-tv" viewBox="0 0 1920 1080">
-    <g transform="translate(480 150) scale(3.2)">
-      <g class="dw-tv" fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path class="dw-ln" d="M40 200 L28 240 M260 200 L272 240"/>
-        <rect class="dw-ln" x="0" y="0" width="300" height="200" rx="6" fill="#15202b"/>
-        <rect class="dw-ln dw-screen" x="20" y="20" width="192" height="160" rx="24" fill="#15202b"/>
-        <circle class="dw-ln" cx="256" cy="62" r="14"/>
-        <circle class="dw-ln" cx="256" cy="112" r="14"/>
-        <path class="dw-ln" d="M236 146 H276 M236 156 H276 M236 166 H276 M236 176 H276"/>
-      </g>
-    </g>
-  </svg>
-  <div class="shf-screen shf-h" id="shf-screen">
-    <div class="shf-prog"></div>
-    <div class="shf-bar" style="top:-130px"></div>
-    <div class="shf-bar" style="top:40.67px"></div>
-    <div class="shf-bar" style="top:211.33px"></div>
-    <div class="shf-bar" style="top:382px"></div>
+  <!-- the daylit room of comps 04 to 06 (media/drawings/README.md "Ground under the television"): wall, floor band, floor line, the television standing on it -->
+  <div class="shf-room shf-h" id="shf-room">
+    <div class="shf-floor"></div><div class="shf-fline"></div>
+    <img class="shf-tv" src="media/drawings/television.svg" alt="">
+    <div class="shf-screen" id="shf-screen">
+      <div class="shf-prog"></div>
+      <div class="shf-bar" style="top:-130px"></div>
+      <div class="shf-bar" style="top:40.67px"></div>
+      <div class="shf-bar" style="top:211.33px"></div>
+      <div class="shf-bar" style="top:382px"></div>
+    </div>
+    <svg style="position:absolute;left:0;top:0;overflow:visible" width="1920" height="1080" viewBox="0 0 1920 1080">   <!-- the screen's own line, over the screen state, as comp 05 draws it -->
+      <rect x="544" y="214" width="614.4" height="512" rx="76.8" fill="none" stroke="#dfe7ee" stroke-width="6.4"/>
+    </svg>
   </div>
   <div class="shf-chip shf-h" id="shf-chip">a different county</div>
   <div class="shf-card" id="shf-card">
