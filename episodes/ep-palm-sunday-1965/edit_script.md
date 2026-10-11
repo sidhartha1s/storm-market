@@ -84,10 +84,10 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 ## I1 · The living room and the list (start time waits on the voice probe)
 
 ### I1-S1 · narration
-**Picture:** the drawn house from T1-S4, now in afternoon sun, seen from the street. Date label "Palm Sunday · April 11, 1965". Move through the front window into the living room: a television set and a table radio, both switched off. A drawing, because the inventory holds no picture of a home or a street that day.
-> April eleventh, nineteen sixty five, was the first nice spring day of the year. Many people had no radio or television on.
+**Picture:** the drawn house from T1-S4, now in afternoon sun, seen from the street. Date label "Palm Sunday · April 11, 1965". Move through the front window into the living room: a television set and a table radio, both idle, with no one at them. A drawing, because the inventory holds no picture of a home or a street that day.
+> April eleventh, nineteen sixty five, was the first nice spring day of the year. Many people were not listening to the radio or watching television.
 
-**Rows:** [C21] · [C21]
+**Rows:** [C21; study printed p. 25] · [C21; study printed p. 25]
 
 ### I1-S2 · narration
 **Picture:** our own map of Indiana, one pin on South Bend. Name card "Ron Przybylinski · age 11 · South Bend · recalled in 2014". Then the drawn television set, switched on: its screen changes from a plain programme frame to a card reading "WEATHER BUREAU". No frame of the real show; nothing real exists that we may use.
