@@ -41,7 +41,7 @@ The strip's longest line is 51 characters; at Georgia 40 px it is checked on a f
 8. Design sheet S6, S7.
 
 ## 5. Text (exact) and cues
-Text: `one Indiana county` · the quote in three lines as section 3 · `Disaster Research Center, 1966, p. 20`. Page words are the image.
+Text: `one Indiana county` · the quote in three lines as section 3 · `Disaster Research Center, 1966, pp. 19-20`. Page words are the image.
 | Step | cue | t= | What |
 |---|---|---|---|
 | 0 | first frame (word "In") | | canvas ground; document card already sliding in (`x:660 to 0`, 0.7, power3.out) |
