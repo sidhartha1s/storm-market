@@ -204,7 +204,7 @@ A page brief's source line is the attribution on the quote strip instead; the fr
 ## 12. Standing truths (every brief's section 4 includes these by reference)
 S1. No county or town is named as "the one". County labels read `one Indiana county` and `a different county`, never in the same frame.
 S2. The eight-row list is never shown as the complete warning system, and never as a call order: no numbering (section 5).
-S3. The toll reads 271 with its source line; no other toll figure is larger than the source line's type.
+S3. The toll reads 271, labelled `lives lost across six states`, with its source line; no other toll figure is larger than the source line's type.
 S4. No station from the study's row C8 is drawn as a member of the South Bend list: the microphone has no name and sits off the paper.
 S5. No real person is drawn. No frame, title card, logo or character of the real "Lassie" show appears; the word "Lassie" is never on screen.
 S6. Nothing appears before its spoken word.
