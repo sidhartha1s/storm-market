@@ -96,7 +96,10 @@ Fact rows (A1, C5 and so on) are the rows of `research/facts.md`.
 | Third question | Did anyone fix the last desk? | the end of Act 5 | Act 6 and the close |
 | Book ad hinge | One county still had working radios and the warning in its hands. What did it do? | the last line of Act 3 | the first minute of Act 4 |
 
-## Facts none of the four existing videos uses (`research/teardowns.md`)
+## Open check on the angle
+One existing video starts from the same place as ours. Tornado Autopsy, "The Palm Sunday Massacre: 47 Tornadoes While America Was in Church" (118,872 views, uploaded 8 Jul 26), says in its description that "the forecasts were almost perfect" and puts the cause in the words: a survey team found "hardly anyone knew the difference" between a forecast and a warning. Ours puts the cause in the chain of desks. Same start, different cause. Its spoken words have not been heard yet (YouTube refused the captions), and the 1966 State Police and WISH-TV film has no captions at all. A helper is transcribing both from the audio. If either already follows the warning desk to desk, this structure changes before any title is written.
+
+## Facts the two videos we could read do not use (`research/teardowns.md`; the other two not heard yet)
 - "The information died with the police." (the 1966 study)
 - Fort Wayne's own log: no warnings for an hour because the office had no power (the Weather Bureau survey, printed page 44)
 - The Marion warning that went out an hour and twenty minutes after the tornado
