@@ -25,7 +25,7 @@ One world, design sheet sections 5 and 6. The blank row's centre line (world y 5
 | State | Sheet | Rows | Chain |
 |---|---|---|---|
 | Close (T1-S3) | x 250 to 1466, y 30 to 974 | centres 276.4, 353.2, 430.0, 506.8, 583.6, 660.4, 737.2, 814.0; text 41.6 px from x 387.6; the ninth slot (centre 890.8) is plain paper: no rule, no cursor yet | off frame to the right |
-| Everything (T1-S4, T1-S5 start) | x 64 to 824, y 170 to 760 | row n centre = 324 + 48 x (n - 1); row 9 centre 708 | dotted line y 708, x 824 to 1030 and 1150 to 1300; microphone x 1030 to 1150, y 510 to 740; house x 1300 to 1560, y 490 to 740; labels at y 774 |
+| Everything (T1-S4, T1-S5 start) | x 64 to 824, y 170 to 760 | row centres 324 to 660 in steps of 48; the blank ninth row's centre 708 | dotted line y 708, x 824 to 1030 and 1150 to 1300; microphone x 1030 to 1150, y 510 to 740; house x 1300 to 1560, y 490 to 740; labels at y 774 |
 | Push (T1-S5 end) | scale 1.2 about the blank row, which lands at (560, 560) | text 31.2 px | house right edge at x 1899, y 298 to 598; label "a family" centred (1743, 639) |
 Ground: A3 `<img>`, `object-position:50% 40%`, scale 1.06 to 1.14 across the window; scrim tweens `.dim` (0.45) to `.dim-heavy` (0.68) over the sheet's 0.7 s entrance.
 HUD (fixed, outside the world): source line left 96, bottom 60: `Disaster Research Center, 1966, p. 14`.
