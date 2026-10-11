@@ -1,3 +1,5 @@
+Host: id=g-t1s3-list file=compositions/g-t1s3-list.html start=21.07 duration=16.53 track=2
+
 # 03 · T1-S3, T1-S4, T1-S5 · the telephone list, the blank row, the family (comp `g-t1s3-list`)
 
 Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` sections 4, 5, 6, 7, 10. **One comp across three segments:** the sheet, the camera and the photograph must be continuous from the first tick to the last word of the hook, and three builds would break the match at each seam. This is the base of the list family (08, 12 copy it): send it alone for a full-size read before those are built. Written 12 Oct 26.
@@ -50,20 +52,20 @@ The longest row is `Indiana and Michigan Electric Company` (37 characters): at 4
 Sheet text: `SOUTH BEND WEATHER BUREAU · BY TELEPHONE` · `Organizations notified included:` · the eight rows. Chain labels: `an announcer` · `a family`. Source line as section 3.
 | Step | Seg | cue | t= | What |
 |---|---|---|---|---|
-| 0 | T1-S2 | cue: "list" (comp starts on this word; match cut from 02) | | ground at scale 1.06, `.dim`; sheet rises in Close state (`y:1100 to 0`, 0.7, power3.out); scrim to 0.68 |
-| 1 | seam | 0.15 s after the sheet lands | | eight rows type in, one row every 0.09 s, each a 0.08 s `autoAlpha` step (pre-authored text, never typed into the DOM); source line in |
-| 2 | T1-S3 | cue: "State" | | pen tick beside `State Police`, text to Caption dark; one soft key strike (sound, orchestrator) |
-| 3 | T1-S3 | cue: "Sheriffs" | | pen tick beside `Sheriffs' Departments` |
-| 4 | T1-S3 | cue: "City" | | pen tick beside `City Police Departments` |
-| 5 | T1-S3 | cue: "Named" | | pen tick beside `Specified radio and TV stations`; the other four rows stay grey |
-| 6 | T1-S4 | cue: "A" (first word) | | the ninth row's rule draws on (0.3 s), cursor starts to blink; camera Close to Everything with `logZoom`, 0.9 s, power2.inOut; dotted line draws left to right as the frame widens |
-| 7 | T1-S4 | cue: "family" | | house draws on (0.6 s), label `a family` after the last line |
-| 8 | T1-S4 | cue: "announcer" (first) | | microphone draws on (0.5 s), label `an announcer` |
-| 9 | T1-S4 | cue: "if" | | lamp on the microphone: Amber 2 for 0.12 s, off 0.1 s, on 0.12 s, then off for good |
-| 10 | T1-S5 | cue: "Whose" | | camera Everything to Push, linear, lasting to the last word (a 1.2x move, no `logZoom` needed) |
-| 11 | T1-S5 | cue: "family" | | house outline pulses once to Body light at 100 % and back to dark (0.5 s); no amber |
-| 12 | T1-S5 | cue: "list" (last word) | | the cursor's blink is in its on phase at this word; hold 1.0 s (land time) |
-| 13 | exit | | | hard cut into comp 04, whose first frame is this house in sun. No fade, no black (script: "no void") |
+| 0 | T1-S2 | cue: "list" (comp starts on this word; match cut from 02) | 0.00 | ground at scale 1.06, `.dim`; sheet rises in Close state (`y:1100 to 0`, 0.7, power3.out); scrim to 0.68 |
+| 1 | seam | 0.15 s after the sheet lands | 0.85 | eight rows type in, one row every 0.09 s, each a 0.08 s `autoAlpha` step (pre-authored text, never typed into the DOM); source line in |
+| 2 | T1-S3 | cue: "State" | 1.59 | pen tick beside `State Police`, text to Caption dark; one soft key strike (sound, orchestrator) |
+| 3 | T1-S3 | cue: "Sheriffs" | 3.27 | pen tick beside `Sheriffs' Departments` |
+| 4 | T1-S3 | cue: "City" | 4.53 | pen tick beside `City Police Departments` |
+| 5 | T1-S3 | cue: "Named" | 5.89 | pen tick beside `Specified radio and TV stations`; the other four rows stay grey |
+| 6 | T1-S4 | cue: "A" (first word) | 8.83 | the ninth row's rule draws on (0.3 s), cursor starts to blink; camera Close to Everything with `logZoom`, 0.9 s, power2.inOut; dotted line draws left to right as the frame widens |
+| 7 | T1-S4 | cue: "family" | 8.92 | house draws on (0.6 s), label `a family` after the last line |
+| 8 | T1-S4 | cue: "announcer" (first) | 9.84 | microphone draws on (0.5 s), label `an announcer` |
+| 9 | T1-S4 | cue: "if" | 10.48 | lamp on the microphone: Amber 2 for 0.12 s, off 0.1 s, on 0.12 s, then off for good |
+| 10 | T1-S5 | cue: "Whose" | 12.58 | camera Everything to Push, linear, lasting to the last word (a 1.2x move, no `logZoom` needed) |
+| 11 | T1-S5 | cue: "family" | 14.02 | house outline pulses once to Body light at 100 % and back to dark (0.5 s); no amber |
+| 12 | T1-S5 | cue: "list" (last word) | 15.10 | the cursor's blink is in its on phase at this word; hold 1.0 s (land time) |
+| 13 | exit | | 16.53 | hard cut into comp 04, whose first frame is this house in sun. No fade, no black (script: "no void") |
 Motion through every hold: the cursor blink (1 s cycle), the photograph push, and from step 10 the camera.
 
 ## 6 to 8. Contract, tools, done line, receipt
