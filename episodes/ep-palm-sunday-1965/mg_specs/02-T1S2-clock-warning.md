@@ -60,4 +60,4 @@ Text: `WEATHER BUREAU` · `5:43 PM` · `South Bend, Indiana` · `Weather Bureau 
 
 ## 6 to 8. Contract, tools, done line, receipt
 As `references/mg-brief-template.md` sections 6, 7, 7a, 8, unchanged. File `compositions/g-t1s2-warning.html`, id prefix `warn-`, root id `warn-root`. Done line 6: the ground's end scale (1.06) is the shared number with comp 03.
-**Closest library exemplar:** El Reno `compositions/g-a4s13-clock.html` (clock face, time, a card that follows it) for steps 1 to 4; El Reno `compositions/g-a4s11-page.html` for the page crop and lit line. In-house: `library/inhouse/bulletin-typewriter.html` is the fallback if the survey page never arrives (the warning's first line typed as an attributed bulletin, source line unchanged).
+**Closest library exemplar:** El Reno `compositions/g-a4s13-clock.html` (clock face, time, a card that follows it) for steps 1 to 4; El Reno `compositions/g-a4s11-page.html` for the page crop and lit line.
