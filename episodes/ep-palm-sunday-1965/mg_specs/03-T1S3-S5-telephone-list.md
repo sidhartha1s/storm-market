@@ -28,16 +28,17 @@ One world, design sheet sections 5 and 6. The blank row's centre line (world y 5
 | Everything (T1-S4, T1-S5 start) | x 64 to 824, y 170 to 760 | row n centre = 324 + 48 x (n - 1); row 9 centre 708 | dotted line y 708, x 824 to 1030 and 1150 to 1300; microphone x 1030 to 1150, y 510 to 740; house x 1300 to 1560, y 490 to 740; labels at y 774 |
 | Push (T1-S5 end) | scale 1.2 about the blank row, which lands at (560, 560) | text 31.2 px | house right edge at x 1899, y 298 to 598; label "a family" centred (1743, 639) |
 Ground: A3 `<img>`, `object-position:50% 40%`, scale 1.06 to 1.14 across the window; scrim tweens `.dim` (0.45) to `.dim-heavy` (0.68) over the sheet's 0.7 s entrance.
-HUD (fixed, outside the world): source line left 96, bottom 60: `Disaster Research Center, 1966 · list of offices the Weather Bureau telephoned`.
-The longest row is row 4 (37 characters): at 41.6 px it ends at x 1311, inside the sheet.
+HUD (fixed, outside the world): source line left 96, bottom 60: `Disaster Research Center, 1966, p. 14`.
+The longest row is `Indiana and Michigan Electric Company` (37 characters): at 41.6 px it ends at x 1311, inside the sheet.
 
 ## 4. Must be true in the picture
 1. Eight typed rows in the study's order and spelling (design sheet section 5 table). All eight are on the sheet before the first tick.
-2. Exactly four ticks at the end of T1-S3: rows 1, 2, 3, 6. Rows 4, 5, 7, 8 are grey, unticked and still readable on a frame at television distance.
+2. Exactly four pen ticks at the end of T1-S3, beside State Police, Sheriffs' Departments, City Police Departments and Specified radio and TV stations. The other four rows are grey, unticked and still readable on a frame at television distance.
 3. The count of ticks on screen never exceeds the count of names spoken so far.
-4. Row 9 has a tick box, a rule and a blinking cursor, and no text and no tick, to the end of the comp.
-5. The sheet never says how many offices, "all", "complete" or "warning system" (S2).
-6. The microphone is off the paper: at least 200 px of ground between sheet and microphone in the Everything state, no tick box beside it, no call letters, no station name (S4).
+4. **No numbering and no call order.** No number, letter, arrow, "first" or "then" is on or beside any row, and there is no tick box: an empty box would say that row was not called. A tick means "read aloud".
+5. The ninth row has a rule and a blinking cursor, and no text and no tick, to the end of the comp.
+6. The sheet's title is the study's "Organizations notified included:". It never says how many, "all", "complete" or "warning system" (S2).
+7. The microphone is off the paper: at least 200 px of ground between sheet and microphone in the Everything state, no row rule beside it, no call letters, no station name (S4).
 7. The microphone and the house are dark from their first frame to the last: no amber on either. The lamp on the microphone flickers on "if" and ends off.
 8. The dotted line runs from the blank row, not from row 6. It never becomes solid and nothing travels along it to the house.
 9. The house has no person at a window (S5).
