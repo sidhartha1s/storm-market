@@ -1,3 +1,5 @@
+Host: id=g-i1s10-list file=compositions/g-i1s10-list.html start=109.29 duration=3.19 track=2
+
 # 12 · I1-S10 · the list once more: were police the only ones? (comp `g-i1s10-list`)
 
 Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` sections 4, 5. A copy of comp 03's sheet (`g-t1s3-list`): same world, Close state. Revised 12 Oct 26: no ticks, no boxes.
@@ -37,11 +39,11 @@ Design sheet section 5, Close state: s 1.6, tx 147.6, ty -66. Row centres on scr
 Text: the sheet's text as design sheet section 5 · `in one Indiana county` · the source line.
 | Step | cue | t= | What |
 |---|---|---|---|
-| 0 | first frame (word "Were") | | ground and sheet on in the Close state; city police row marked and tagged; cursor blinking |
-| 1 | cue: "police" | | the mark thickens once (`scaleY` 1 to 1.6 to 1, 0.3 s) |
-| 2 | cue: "only" | | pulses start on the seven other named rows, one every 0.3 s |
-| 3 | cue: "nobody" (last word) | | the last pulse has cleared by the end of this word; hold 1.0 s on the sheet; the bed drops out here (sound, orchestrator) |
-| 4 | exit | | hard cut to the 0.7 s blackout the script places after I1-S10. No fade |
+| 0 | first frame (word "Were") | 0.00 | ground and sheet on in the Close state; city police row marked and tagged; cursor blinking |
+| 1 | cue: "police" | 0.09 | the mark thickens once (`scaleY` 1 to 1.6 to 1, 0.3 s) |
+| 2 | cue: "only" | 0.65 | pulses start on the seven other named rows, one every 0.3 s |
+| 3 | cue: "nobody" (last word) | 1.65 | the last pulse has cleared by the end of this word; hold 1.0 s on the sheet; the bed drops out here (sound, orchestrator) |
+| 4 | exit | 3.19 | hard cut to the 0.7 s blackout the script places after I1-S10. No fade |
 If the voice gives fewer than 2.1 s between "only" and the end of "nobody", the pulses run every 0.22 s; the order does not change.
 
 ## 6 to 8. Contract, tools, done line, receipt
