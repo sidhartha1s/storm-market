@@ -20,7 +20,8 @@
   .list-sheet { position:absolute; left:64px; top:60px; width:760px; height:590px; background:#f4f0e6; border-radius:2px; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
   .list-eye { position:absolute; left:96px; top:84px; font:700 19px 'Courier New', Courier, monospace; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
   .list-title { position:absolute; left:96px; top:118px; font:700 30px 'Courier New', Courier, monospace; color:#2a2622; white-space:nowrap; line-height:1; }
-  .list-phone { position:absolute; left:730px; top:108px; width:60px; height:29.33px; overflow:visible; }
+  /* media/drawings/telephone.svg (viewBox -6 -58 102 106) at 0.638: the telephone spans x 730 to 790, centred on y 123 */
+  .list-phone { position:absolute; left:727.5px; top:77.7px; width:65.1px; height:67.6px; }
   .list-rule { position:absolute; left:96px; top:171px; width:696px; height:2px; background:rgba(107,98,87,0.4); }
   .list-row { position:absolute; left:150px; height:44px; font:700 26px 'Courier New', Courier, monospace; color:#6b6257; white-space:nowrap; line-height:44px; }
   .list-rr { position:absolute; left:96px; width:696px; height:1px; background:rgba(107,98,87,0.25); }
@@ -115,8 +116,10 @@ window.__timelines = window.__timelines || {};
 (function () {
   var ID = "g-t1s3-list", P = "list", D = 16.53;
   /* camera states, design sheet section 5: Close puts the sheet at x 250 to 1466, y 30 to 974; Everything at x 64 to 824, y 170 to 760;
-     Push lands the blank row's centre (world 444, 598) on screen (560, 560) */
-  var CLOSE = { scale: 1.6, x: 147.6, y: -66 }, ALL = { scale: 1, x: 0, y: 110 }, PUSH = { scale: 1.2, x: 27.2, y: -157.6 };
+     Push lands the blank row's centre (world 444, 598) on screen (560, 540). The sheet's table says y -157.6 (560, 560), which
+     cut the title in half at the top of the frame; y -178 puts the title just above the frame and crops the paper at the rule
+     (lead's ruling, 12 Oct 26) */
+  var CLOSE = { scale: 1.6, x: 147.6, y: -66 }, ALL = { scale: 1, x: 0, y: 110 }, PUSH = { scale: 1.2, x: 27.2, y: -178 };
   var $ = function (s) { return document.getElementById(P + "-" + s); };
   var tl = gsap.timeline({ paused: true });
   function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
