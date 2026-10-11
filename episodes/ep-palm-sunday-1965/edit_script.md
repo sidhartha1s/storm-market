@@ -70,7 +70,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 
 **Rows:** [C12] [C8] (the C8 station has no name and no county in the study)
 
-### T1-S5 · narration
+### T1-S5 · narration (tempo 0.85)
 **Picture:** one frame holding everything so far: the eight rows, the blank ninth row, the dark microphone, the dark house. Push in slowly on the blank row and hold it through the question.
 > Whose job was it to tell the family at the end of the list?
 
