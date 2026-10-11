@@ -1,3 +1,5 @@
+Host: id=g-i1s5-onair file=compositions/g-i1s5-onair.html start=77.02 duration=4.64 track=2
+
 # 08 · I1-S5 · the stations' row and the ON AIR lamp (comp `g-i1s5-onair`)
 
 Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` sections 4, 5. Built as a copy of comp 03's sheet (`g-t1s3-list`): same world, Close state, never the Everything state. Revised 12 Oct 26 to the fact-checked line.
@@ -37,12 +39,12 @@ The lamp ends at x 1411.6: clear of the corner.
 Text: the sheet's text as design sheet section 5 · `ON AIR` · the source line.
 | Step | cue | t= | What |
 |---|---|---|---|
-| 0 | first frame (word "The") | | ground and sheet on, in the Close state |
-| 1 | cue: "stations" | | lit band wipes across the row (`scaleX` 0 to 1, 0.5 s, left origin) |
-| 2 | cue: "expected" | | lamp outline draws on (0.4 s) |
-| 3 | cue: "public" (last word) | | lamp fills for 0.5 s, then back to the outline (0.3 s) |
-| 4 | hold | | 1.0 s; the lit band breathes between 30 % and 38 % (finite repeats) and the ground pushes |
-| 5 | exit | | sheet slides down out of frame (`y:1100`, 0.6, power3.in) into the hard cut to 09 |
+| 0 | first frame (word "The") | 0.00 | ground and sheet on, in the Close state |
+| 1 | cue: "stations" | 0.07 | lit band wipes across the row (`scaleX` 0 to 1, 0.5 s, left origin) |
+| 2 | cue: "expected" | 1.55 | lamp outline draws on (0.4 s) |
+| 3 | cue: "public" (last word) | 3.21 | lamp fills for 0.5 s, then back to the outline (0.3 s) |
+| 4 | hold | 3.64 | 1.0 s; the lit band breathes between 30 % and 38 % (finite repeats) and the ground pushes |
+| 5 | exit | 4.64 | sheet slides down out of frame (`y:1100`, 0.6, power3.in) into the hard cut to 09 |
 
 ## 6 to 8. Contract, tools, done line, receipt
 As `references/mg-brief-template.md` sections 6, 7, 7a, 8, unchanged. File `compositions/g-i1s5-onair.html`, id prefix `air-`, root id `air-root`. Built only after comp 03's base has had its full-size read.
