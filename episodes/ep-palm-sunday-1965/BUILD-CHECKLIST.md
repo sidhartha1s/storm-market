@@ -17,7 +17,9 @@ Status is read from this file. A box is ticked only with the check that proved i
 - [ ] Every quoted line in `facts.md` looked up again by the orchestrator in its source. State 11 Oct 26: 88 found exactly, 37 found with scan-broken letters, 0 not found, 19 sit on the image-only survey scan. Of those 19, one read on its page image so far (Fort Wayne, printed p. 44, word for word). Each line that reaches the script is read on its page image before it is voiced.
 
 ## Design (not started; nothing here is written before the research is read)
-- [ ] Structure: `structure.md` (six acts on a clock, three open questions, candidate 3 as the small arc in Act 5, candidate 4 as two short beats, book ad after Act 3). Shown to the owner 11 Oct 26 on the review page `p65-structure.html`; open until he saves it. His three choices there: the structure, the length, the twin funnel photograph.
+- [x] Structure: `structure.md` (six acts on a clock, three open questions, candidate 3 as the small arc in Act 5, candidate 4 as two short beats, book ad after Act 3). The owner ticked "Go as shown" on the review page `p65-structure.html`, saved 11 Oct 26 17:24, with the open check on the angle shown at the top of that page.
+- [x] Twin funnel photograph (picture inventory row C1): owner on the same page, in his words: "use it." This picture only. Used on the Wikimedia Commons public-domain claim; credit "Paul Huffman / The Elkhart Truth" in the description.
+- [ ] Open check on the angle: the Tornado Autopsy video and the 1966 State Police film heard from their audio (helper p65-teardown). If either follows the warning desk to desk, the structure goes back to the owner.
 - [ ] Title and thumbnail options (`references/packaging-rules.md`). Owner picks.
 - [ ] Hook and intro, graded by an independent reader, then the owner's sign-off.
 - [ ] Paul's on-camera lines; the book ad hinge inside the config window.
