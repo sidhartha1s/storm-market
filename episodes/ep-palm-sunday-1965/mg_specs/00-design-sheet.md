@@ -56,7 +56,7 @@ World coordinates (1 world px = 1 screen px in the "everything" frame, before th
 | Element | World px |
 |---|---|
 | Sheet | left 64, top 60, width 760, height 590 (right 824, bottom 650). Fill Beige polaroid, no border, `box-shadow: 0 18px 50px rgba(0,0,0,0.55)`, corner radius 2 |
-| Eyebrow | x 96, y 84, Courier New 700 14 px, Caption dark sub, tracking 3: `WEATHER BUREAU · SOUTH BEND, INDIANA` |
+| Eyebrow | x 96, y 84, Courier New 700 19 px, Caption dark sub, tracking 2: `WEATHER BUREAU · SOUTH BEND, INDIANA` |
 | Title | x 96, y 118, Courier New 700 30 px, Caption dark: `Warnings telephoned to:` |
 | Telephone glyph | drawn telephone (section 7), handset on hook, at 0.5 scale, box x 730 to 790, y 96 to 150, Caption dark lines 2 px |
 | Rule | y 172, x 96 to 792, 2 px, Caption dark sub at 40 % |
@@ -94,7 +94,7 @@ Camera states (one transform on the world container, origin top left; screen = s
 | Everything | 1.0 | 0 | 110 | x 64 to 824, y 170 to 760 | 26 px | 03 (T1-S4, T1-S5 start) |
 | Push | 1.2 | 27.2 | -157.6 | blank row centre lands at (560, 560) | 31.2 px | 03 (T1-S5 end) |
 
-Close-state row centres on screen: 276.4, 353.2, 430.0, 506.8, 583.6, 660.4, 737.2, 814.0, 890.8. Tick box left edge 301.2; row text left edge 387.6; eyebrow renders at 22.4 px, title at 48 px.
+Close-state row centres on screen: 276.4, 353.2, 430.0, 506.8, 583.6, 660.4, 737.2, 814.0, 890.8. Tick box left edge 301.2; row text left edge 387.6; eyebrow renders at 30.4 px, title at 48 px. In the Everything state the eyebrow is 19 px, the floor.
 Close to Everything is a 1.6x move: use `logZoom` (`library/inhouse/snippets/helpers.js`).
 Source line for the list (HUD, fixed): `Disaster Research Center, 1966 · list of offices the Weather Bureau telephoned` at left 96, bottom 60 (section 11).
 
@@ -113,15 +113,16 @@ Hook version, world px, same world as the sheet:
 The microphone is **apart from the paper**: 206 px of ground between the sheet's edge and the microphone, no tick box, no row rule, not on beige. It stands for any station. No call letters, no station name, no frequency.
 "Dark" for the microphone and the house means: lines Label grey at 55 %, windows and lamp filled Panel dark, no amber anywhere on them.
 
-Intro version (comp 11), five stations on one line, centre y 430, screen px:
-| Station | Box (x, y) | Drawing | Label under it (Arial 700 22 px, Label grey, y 600) |
+Intro version (comp 11), five stations on one line, centre y 520, screen px:
+| Station | Box (x, y) | Drawing | Label under it (Arial 700 22 px, Label grey, top 676) |
 |---|---|---|---|
-| 1 | 110 to 250, 360 to 500 | teletype icon | Kansas City forecasters |
-| 2 | 400 to 560, 370 to 500 | telephone, handset off the hook | Weather Bureau · South Bend |
-| 3 | 720 to 1010, 250 to 560 | miniature list sheet: 8 grey bars 180 x 10 px on beige 290 x 310, a ninth empty tick box | the list |
-| 4 | 1180 to 1280, 330 to 530 | microphone at 0.85 scale | an announcer |
-| 5 | 1410 to 1580, 340 to 530 | house at 0.68 scale | a family |
-Links: 4 px Label grey lines at y 430 between boxes: 250 to 400, 560 to 720, 1010 to 1180, 1280 to 1410. The last two are dotted.
+| 1 | 96 to 236, 450 to 590 | teletype icon | Kansas City forecasters |
+| 2 | 316 to 460, 490 to 590 | telephone at 1.6 scale, handset off the hook | Weather Bureau · South Bend |
+| 3 | 540 to 800, 350 to 650 | miniature list sheet: Beige polaroid 260 x 300, 8 Caption dark sub bars 170 x 10 px with 8 tick boxes, a ninth empty tick box, no words | the list |
+| desk | 840 to 1095, 490 to 618 | desk at 0.85 scale, telephone at 0.85 scale on it (x 930 to 1006, y 487 to 524; the desk's top surface is y 524), handset on the hook | none |
+| 4 | 1170 to 1272, 420 to 616 | microphone at 0.85 scale | an announcer |
+| 5 | 1400 to 1577, 430 to 600 | house at 0.68 scale (aerial rises to y 407) | a family |
+Links at y 520, 4 px, Label grey: 236 to 316 and 460 to 540 solid; 800 to 840 solid; 1095 to 1170 and 1272 to 1400 dotted. The desk is not drawn until its cue; until then the 800 to 1170 stretch is one dotted line.
 
 ## 7. Drawings: period-plain line
 Rules that keep them off clip art and off AI art:
@@ -165,12 +166,12 @@ Exemplar: El Reno `compositions/g-a4s13-clock.html` (`.worktrees/ep-el-reno-v4b/
 
 ## 9. Document card and quote strip (comps 02, 06, 09, 10)
 A real page, shown as the page. Never retyped to look like a page.
-- **Card:** the page image cropped to the full width of its text column (never a word cut at an edge), on a Beige polaroid border 10 px, `box-shadow: 0 18px 50px rgba(0,0,0,0.55)`. Screen box per brief; standard box left 96, top 96, 1480 x 470 (right 1576, clear of the corner).
+- **Card:** the page image cropped to the full width of its text column (never a word cut at an edge), on a Beige polaroid border 10 px, `box-shadow: 0 18px 50px rgba(0,0,0,0.55)`. Screen box per brief; standard box left 96, top 116, 1480 x 450 (right 1576, bottom 566, clear of the corner).
 - **Scale rule:** scale = card inner width / text column width in page px. The builder measures the column and the sentence's line boxes on the page image first, writes them into the comp as constants in page px, and multiplies by the scale (El Reno `mg_specs/docs.md` section 2 is the method). If a text line would be under 34 px tall on screen, crop fewer lines, never a narrower column.
 - **Unlit page:** four Panel dark rects at 45 % cover everything on the card except the sentence's line boxes, fading in over 0.4 s as the underline starts.
 - **Underline:** Crimson, 6 px, 4 px below each line box, drawn left to right with `scaleX` (`transformOrigin:"left center"`), one line box at a time, on the voice.
 - **Quote strip (the lift):** the underlined words retyped, because a page line is too small for a television across the room. Beige polaroid strip, left 96, top 606, 1480 x 220 (bottom 826, right 1576). Quote in Georgia, Caption dark, with quotation marks, 52 px for up to 8 words, 40 px in two or three lines above that. Attribution under it: Arial 700 22 px, Caption dark sub, tracking 2. The strip enters `fromTo(y:60 to 0, autoAlpha 0 to 1, 0.4, power3.out)` on the sentence's last underlined word, never before the underline is complete.
-- **County label:** glass chip, left 96, top 54... no: it sits in the card's top margin zone, left 96, top 40, height 44, Arial 700 26 px, Body light: `one Indiana county` (09) or `a different county` (10). The two never share a frame.
+- **County label:** glass chip above the card, left 96, top 54, height 46, padding 0 x 22, Arial 700 26 px, Body light: `one Indiana county` (09) or `a different county` (10). The two never share a frame.
 - Exit: card and strip slide out together, `to x:1900, autoAlpha:0, 0.6, power3.in`.
 - The study scan is not a row of the picture inventory and its rights line is unread: every page brief waits for the scan and its `provenance.csv` row.
 Exemplars: El Reno `compositions/g-a4s11-page.html` (page crop, unlit page, lit sentence) and `library/inhouse/quote-card.html` (beige quote, phrase by phrase).
