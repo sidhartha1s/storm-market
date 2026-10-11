@@ -2,7 +2,7 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
-## 2026-10-10 - ep4-el-reno: the timeline was built from the voice files alone and lost what the script's picture notes ask for
+## 10 Oct 26 - ep4-el-reno: the timeline was built from the voice files alone and lost what the script's picture notes ask for
 - Found at the last read before the draft, by the orchestrator, after every gate was green: the locked script stops the
   voice on "kept recording" and gives the TV crew clip six seconds of its own sound; the timeline had no gap and the
   clip was muted. The same picture note names a "185 mph" readout that nobody built. The clip itself had been cut
