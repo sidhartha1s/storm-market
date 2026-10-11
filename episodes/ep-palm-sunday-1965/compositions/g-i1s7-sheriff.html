@@ -2,18 +2,128 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-i1s7-sheriff (I1-S7 + S8): stub, build in progress. Brief: mg_specs/10-I1S7-S8-sheriff-page.md. -->
+<!-- g-i1s7-sheriff (I1-S7 + I1-S8): another page of the 1966 study, labelled "a different county"; the sheriff's two
+     sentences underlined in turn and lifted onto one strip; then a television showing an ordinary programme.
+     Brief: mg_specs/10-I1S7-S8-sheriff-page.md; shared look: mg_specs/00-design-sheet.md sections 7, 9.
+     Page: media/docs/study-p22-sheriff-crop.png (1460 x 287, cut from study-pdf-24-orig.png x 630 to 2230, y 1740 to 2055,
+     study printed p. 22). Marks are in crop px. "(County B)" is the study's own bracket: it stands on the strip as printed
+     and takes no underline on the page. The narrator reads the words; no person is named or drawn.
+     Television: media/drawings/television.svg, mounted inline at the big scale (box x 480 to 1440, y 150 to 918).
+     Cues: audio/i1-s7.words.json seconds minus 0.55 (wav at 87.33), audio/i1-s8.words.json seconds plus 6.16 (wav at 94.04); host at 87.88. -->
 <template>
 <style>
-  #s7-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  #shf-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .shf-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .shf-scan { position:absolute; left:0; top:0; width:360px; height:1080px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.07), rgba(127,178,229,0)); }
+  .shf-h { opacity:0; visibility:hidden; }
+  .shf-chip { position:absolute; left:96px; top:54px; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:23px;
+    font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  .shf-card { position:absolute; left:96px; top:116px; width:1480px; height:307px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); overflow:hidden; }
+  .shf-crop { position:absolute; left:10px; top:10px; width:1460px; height:287px; mix-blend-mode:multiply; }
+  .shf-unlit { position:absolute; inset:0; background:rgba(21,32,43,0.45); }
+  .shf-pc { position:absolute; overflow:hidden; background:#f4f0e6; }
+  .shf-pc img { position:absolute; width:1460px; height:287px; mix-blend-mode:multiply; }
+  .shf-ul { position:absolute; height:6px; background:#d0121f; }
+  .shf-strip { position:absolute; left:96px; top:470px; width:1480px; height:240px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; }
+  .shf-mask { position:absolute; left:0; top:0; width:1480px; height:166px; overflow:hidden; }
+  .shf-q1 { position:absolute; left:54px; top:40px; font:52px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:1.15; }
+  .shf-q2 { position:absolute; left:54px; font:44px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:56px; }
+  .shf-att { position:absolute; left:56px; top:176px; font:700 22px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+  .shf-tv { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .shf-screen { position:absolute; left:544px; top:214px; width:614.4px; height:512px; border-radius:76.8px; overflow:hidden; }
+  .shf-prog { position:absolute; inset:0; background:linear-gradient(rgba(232,197,106,0.22), rgba(232,197,106,0.22)), #15202b; }
+  .shf-bar { position:absolute; left:0; width:100%; height:56px; background:linear-gradient(rgba(242,245,248,0), rgba(242,245,248,0.10), rgba(242,245,248,0)); }
 </style>
-<div id="s7-root" data-composition-id="g-i1s7-sheriff" data-width="1920" data-height="1080"></div>
+<div id="shf-root" data-composition-id="g-i1s7-sheriff" data-width="1920" data-height="1080">
+  <div class="shf-bg"></div>
+  <div class="shf-scan" id="shf-scan"></div>
+  <svg class="shf-tv shf-h" id="shf-tv" viewBox="0 0 1920 1080">
+    <g transform="translate(480 150) scale(3.2)">
+      <g class="dw-tv" fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path class="dw-ln" d="M40 200 L28 240 M260 200 L272 240"/>
+        <rect class="dw-ln" x="0" y="0" width="300" height="200" rx="6" fill="#15202b"/>
+        <rect class="dw-ln dw-screen" x="20" y="20" width="192" height="160" rx="24" fill="#15202b"/>
+        <circle class="dw-ln" cx="256" cy="62" r="14"/>
+        <circle class="dw-ln" cx="256" cy="112" r="14"/>
+        <path class="dw-ln" d="M236 146 H276 M236 156 H276 M236 166 H276 M236 176 H276"/>
+      </g>
+    </g>
+  </svg>
+  <div class="shf-screen shf-h" id="shf-screen">
+    <div class="shf-prog"></div>
+    <div class="shf-bar" style="top:-130px"></div>
+    <div class="shf-bar" style="top:40.67px"></div>
+    <div class="shf-bar" style="top:211.33px"></div>
+    <div class="shf-bar" style="top:382px"></div>
+  </div>
+  <div class="shf-chip shf-h" id="shf-chip">a different county</div>
+  <div class="shf-card" id="shf-card">
+    <img class="shf-crop" src="media/docs/study-p22-sheriff-crop.png" alt="">
+    <div class="shf-unlit shf-h" id="shf-unlit"></div>
+  </div>
+  <div class="shf-strip shf-h" id="shf-strip">
+    <div class="shf-mask">
+      <div class="shf-q1" id="shf-q1">&ldquo;We didn&rsquo;t have any warning at all&rdquo;</div>
+      <div id="shf-q2">
+        <div class="shf-q2" style="top:24px">&ldquo;the television didn&rsquo;t even list here</div>
+        <div class="shf-q2" style="top:80px">(County B) as being in the danger area.&rdquo;</div>
+      </div>
+    </div>
+    <div class="shf-att">a county sheriff · Disaster Research Center, 1966, p. 22</div>
+  </div>
+</div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  var ID = "g-i1s7-sheriff", D = 12.09;
+  var ID = "g-i1s7-sheriff", P = "shf", D = 12.09, SRC = "media/docs/study-p22-sheriff-crop.png", B = 10;   /* B: the card's beige border */
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
   var tl = gsap.timeline({ paused: true });
-  tl.to({}, { duration: 0.01 }, D - 0.01);
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  var card = $("card");
+  function strip(xa, ya, xb, yb) {                           /* a lit window onto the page, crop px, above the unlit layer */
+    var d = document.createElement("div"); d.className = P + "-pc";
+    d.style.cssText = "left:" + (B + xa - 8) + "px;top:" + (B + ya - 2) + "px;width:" + (xb - xa + 16) + "px;height:" + (yb - ya + 4) + "px";
+    var im = document.createElement("img"); im.src = SRC; im.style.cssText = "left:" + (8 - xa) + "px;top:" + (2 - ya) + "px";
+    d.appendChild(im); card.appendChild(d); return d; }
+  function mark(xa, xb, yb) { var b = document.createElement("div"); b.className = P + "-ul";   /* the red line under the line box; the quote is single spaced, so it sits 1 px under the box */
+    b.style.cssText = "left:" + (B + xa) + "px;top:" + (B + yb + 1) + "px;width:" + (xb - xa) + "px"; card.appendChild(b); return b; }
+
+  var sA1 = strip(810, 72, 1435, 117), sA2 = strip(19, 121, 152, 168);       /* "We didn't have any warning" / "at all" (stops before the page's three dots) */
+  var sB1 = strip(559, 172, 1349, 209), sB2 = strip(272, 223, 915, 269);     /* "the television didn't even list here" (after "And") / "as being in the danger area." (after the bracket) */
+  var uA1 = mark(810, 1435, 115), uA2 = mark(19, 152, 164), uB1 = mark(559, 1349, 207), uB2 = mark(272, 915, 268);
+  s0([sA1, sA2, sB1, sB2], { autoAlpha: 0 }); s0([uA1, uA2, uB1, uB2], { scaleX: 0, transformOrigin: "left center" });
+
+  /* ---- the television: lines drawn on, the screen already in the Programme state (four soft bars drifting at 30 px/s) ---- */
+  var lines = $("tv").querySelectorAll(".dw-ln");
+  for (var i = 0; i < lines.length; i++) { var n = Math.ceil(lines[i].getTotalLength()) + 1; lines[i].setAttribute("stroke-dasharray", n); s0(lines[i], { strokeDashoffset: n }); }
+  var bars = $("screen").querySelectorAll("." + P + "-bar");
+
+  tl.fromTo($("scan"), { x: -400 }, { x: 1960, duration: D, ease: "none" }, 0);
+  s0(card, { x: 660 });                                      /* A @0: the page is already sliding in on the first frame */
+  tl.to(card, { x: 0, duration: 0.7, ease: "power3.out" }, 0);
+  tl.fromTo($("chip"), { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 0.53);   /* another @0.53 */
+  tl.to(card, { y: -3, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.80);                                                     /* a 3 px float carries the wait for the sheriff's words */
+  tl.to($("unlit"), { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 4.09);                                                               /* We @4.09 */
+  tl.set([sA1, sA2], { autoAlpha: 1 }, 4.09);
+  tl.to(uA1, { scaleX: 1, duration: 0.5, ease: "none" }, 4.09);                                                                               /* We didn't have any warning @4.09 */
+  tl.to(uA2, { scaleX: 1, duration: 0.2, ease: "none" }, 5.21);                                                                               /* at all @5.23, complete at 5.41 */
+  tl.fromTo($("strip"), { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", immediateRender: false }, 5.41);    /* all @5.41 */
+  tl.to([uA1, uA2], { opacity: 0.35, duration: 0.3, ease: "power2.out" }, 6.66);                                                              /* television @6.66 */
+  tl.set(sB1, { autoAlpha: 1 }, 6.66);
+  tl.to(uB1, { scaleX: 1, duration: 0.6, ease: "none" }, 6.66);
+  s0($("q2"), { y: 170 });
+  tl.to($("q1"), { y: -170, duration: 0.4, ease: "power3.inOut" }, 7.98);                                                                     /* said @7.98: the line swap inside the strip */
+  tl.to($("q2"), { y: 0, duration: 0.4, ease: "power3.inOut" }, 7.98);
+  tl.set(sB2, { autoAlpha: 1 }, 9.26);                                                                                                        /* list @9.26 */
+  tl.to(uB2, { scaleX: 1, duration: 0.5, ease: "none" }, 9.26);
+  tl.to([$("chip"), card, $("strip")], { x: 1900, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 10.30);                                   /* danger @10.30 */
+  tl.to([$("tv"), $("screen")], { autoAlpha: 1, duration: 0.2, ease: "power2.out" }, 10.30);
+  tl.to(lines, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out", stagger: 0.03 }, 10.30);                                            /* drawn by 10.90 */
+  tl.fromTo(bars, { y: 0 }, { y: 170.67, duration: 5.689, ease: "none", immediateRender: false }, 10.30);                                     /* area @10.54, then a 1 s hold on the programme */
+  tl.to({}, { duration: 0.01 }, 12.08);
+
   window.__timelines[ID] = tl;
 })();
 </script>
