@@ -35,7 +35,7 @@ Scale on screen = 1460 / 1060 = 1.377. Line pitch on the page is about 47 px, so
 2. The underlined words are the page's own first line. Nothing on the card is retyped.
 3. "South Bend, Indiana" is on the glass stamp, never bare on the photograph; the photograph's own caption says what it is (S8).
 4. **The telephone is not at 5:43.** The clock stamp has left the frame before the telephone is fully drawn. No time is on screen with the telephone.
-5. The page crop shows the warning text only. The three county names in the warning's body (LaPorte, Starke, Marshall) are in lines the crop excludes or the unlit page covers at 45 %; none is underlined or lit (S1).
+5. The crop ends under `Severe thunderstorm and tornado warning.` The lines that name Michigan City, Knox, LaPorte, Starke and Marshall are outside the crop and never on screen (S1). The page's `5:43 PM EST` and the stamp's `5:43 PM` agree; the stamp does not print "EST".
 6. No list row, no count of offices and no office name appears in this comp. The list belongs to comp 03.
 7. Design sheet S6, S7.
 
