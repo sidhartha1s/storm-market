@@ -37,6 +37,17 @@ Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or t
 | 17 | gate: one stillness number (graphics_qc idle 3.0/2.5 s -> 4.0 s, idle hard, idle-budget removed) | - | done 26 Sep 26, PR fix/stillness-4s |
 | 18 | library sweep: dark chips and colour-block stamps left in bulletin-typewriter.html, ranked-bars.html, ef-ladder.html, cards.css .stamp, snippets/usage-examples.html | - | todo |
 
+## Gates from El Reno (owner 10 Oct 26: "improve it. like CICD"; findings in `learnings/mg.md` and `learnings/script-process.md`, 10 Oct 26)
+| # | task | PR | status |
+|---|---|---|---|
+| 27 | Seek-order gate: stage each comp, capture every cue second forward-only and after a seek to 0, fail on a differing state (prototype, run on 11 comps and 1,795 sample times: `docs/backlog/seekcheck-prototype.mjs`) | | todo |
+| 28 | Label-over-painted-shape check in `graphics_qc.mjs`: sample points across every visible text box at each cue and through the first 0.5 s, fail when a line, ring or dot paints under it | | todo |
+| 29 | `lint_timeline.py`: a comp that declares a transparent span needs a track 1 picture under that span (today the track 2 host counts as picture and the hole renders black) | | todo |
+| 30 | Media probe: fail a JPEG that does not end with the end marker (headless Chrome left a truncated one unpainted in 3 of 4 loads) | | todo |
+| 31 | `overlap_check.mjs`: `data-repeat-ok="reason"` declares one label that sits on several different things | #154 | done |
+| 32 | Script picture notes are not walked by any gate (`learnings/script-process.md` 10 Oct 26). A read-only check that lists every `**Picture:**` ask beside what is mounted in its window, for the editor to tick | | todo |
+| 33 | Paul's screen time is not checked by any gate: El Reno's first draft had no corner circle and no face between 0:07 and 5:26, and the owner found it in the draft (10 Oct 26). `sweep_episode.py`: fail a documentary whose corner circle is missing outside his full-frame clips, the book ad and the stretches `references/mg-quickref.md` "Corner circle" lists as off | | todo |
+
 ## Parked until the new laptop (owner 28 Sep 26; source review: howseen-ai/claude-motion-design)
 Current box: 16 GB RAM, GTX 1650 4 GB; full renders already hit the commit-memory limit. Revisit when the new laptop arrives.
 | # | task | why parked | status |
