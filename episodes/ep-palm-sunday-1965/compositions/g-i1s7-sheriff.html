@@ -91,8 +91,8 @@ window.__timelines = window.__timelines || {};
     d.style.cssText = "left:" + (B + xa - 8) + "px;top:" + (B + ya - 2) + "px;width:" + (xb - xa + 16) + "px;height:" + (yb - ya + 4) + "px";
     var im = document.createElement("img"); im.src = SRC; im.style.cssText = "left:" + (8 - xa) + "px;top:" + (2 - ya) + "px";
     d.appendChild(im); card.appendChild(d); return d; }
-  function mark(xa, xb, yb) { var b = document.createElement("div"); b.className = P + "-ul";   /* the red line under the line box; the quote is single spaced, so it sits 1 px under the box */
-    b.style.cssText = "left:" + (B + xa) + "px;top:" + (B + yb + 1) + "px;width:" + (xb - xa) + "px"; card.appendChild(b); return b; }
+  function mark(xa, xb, yt) { var b = document.createElement("div"); b.className = P + "-ul";   /* the red line, top at crop y yt: 3 to 4 px under the words' baseline, clear of the next line */
+    b.style.cssText = "left:" + (B + xa) + "px;top:" + (B + yt) + "px;width:" + (xb - xa) + "px"; card.appendChild(b); return b; }
 
   /* "at all" ends at crop x 139; the page's three dots start at x 142 (measured on the crop: the brief's x 152 took in the first dot), so the window stops at x 141 */
   var sA1 = strip(810, 72, 1435, 117), sA2 = strip(19, 121, 133, 168);       /* "We didn't have any warning" / "at all" (stops before the page's three dots) */
