@@ -90,11 +90,11 @@ window.__timelines = window.__timelines || {};
   tl.to($("stamp"), { x: -980, autoAlpha: 0, duration: 0.42, ease: "power3.in" }, 4.99);                                                        /* It @4.99: the time leaves; both are off by 5.41, before the telephone's first stroke */
   tl.to($("card"), { x: 1900, autoAlpha: 0, duration: 0.42, ease: "power3.in" }, 4.99);
   tl.to($("src"), { x: 400, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 4.99);
-  tl.to(tel, { autoAlpha: 1, duration: 0.15, ease: "power2.out" }, 5.43);                                                                       /* telephoned @5.43 */
-  tl.to([body, bar, dial, earL, earR], { strokeDashoffset: 0, duration: 0.4, ease: "power2.out", stagger: 0.05 }, 5.43);                         /* drawn by 6.03 */
-  tl.fromTo(arcsL.concat(arcsR), { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1.12, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 3, immediateRender: false }, 5.47);   /* two rings, 0.4 s each */
-  tl.to(hs, { y: -104, rotation: -20, duration: 0.35, ease: "back.out(1.6)" }, 6.10);                                                           /* the handset lifts 26 px of the drawing (104 on screen) */
-  tl.to(cord, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 6.14);
+  tl.fromTo(tel, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.22, ease: "power3.out", immediateRender: false }, 5.43);            /* telephoned @5.43: on the cradle, after the page and the stamp are off */
+  tl.fromTo(tel0, { rotation: -2.5 }, { rotation: 2.5, duration: 0.06, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 5.52);   /* it rings: a short shake on the cradle */
+  tl.set(tel0, { autoAlpha: 0 }, 5.78);                                                                                                         /* the handset is lifted inside the word */
+  tl.set(tel1, { autoAlpha: 1 }, 5.78);
+  tl.fromTo(tel1, { y: 16 }, { y: 0, duration: 0.3, ease: "back.out(2)", immediateRender: false }, 5.78);
   tl.to(tel, { x: -1300, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 6.49);                                                              /* down @6.49: gone by 6.84, before the cut to comp 03 at 6.89 */
   tl.to({}, { duration: 0.01 }, 6.98);                      /* list @6.89: the cut to comp 03 lands here */
 
