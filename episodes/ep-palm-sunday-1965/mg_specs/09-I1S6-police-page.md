@@ -27,7 +27,7 @@ U1 starts at "Police" (page x 884), after "action at that time." on the same lin
 | County label | glass chip left 96, top 54, height 46: `one Indiana county` Arial 700 26 px, Body light |
 | Document card | left 96, top 116, 1480 x 329 (right 1576, bottom 445); crop inside at (106, 126) |
 | Underlines | Popfig red 6 px, U1, U2, U3 |
-| Quote strip | left 96, top 490, 1480 x 250 (bottom 740). Quote in Georgia 40 px, Caption dark, left 150, top 514, three lines, line height 50: `"Police headquarters did not notify other members of` / `their own organization nor any other organization` / `until after the first tornado hit the county."` Attribution `Disaster Research Center, 1966, p. 20` Arial 700 22 px, Caption dark sub, left 152, top 684 |
+| Quote strip | left 96, top 490, 1480 x 250 (bottom 740). Quote in Georgia 40 px, Caption dark, left 150, top 514, three lines, line height 50: `"Police headquarters did not notify other members of` / `their own organization nor any other organization` / `until after the first tornado hit the county."` Attribution `Disaster Research Center, 1966, pp. 19-20` Arial 700 22 px, Caption dark sub, left 152, top 684 (the orchestrator's page reference for the passage; the quoted sentence itself sits on p. 20) |
 The strip's longest line is 51 characters; at Georgia 40 px it is checked on a frame to end before x 1530.
 
 ## 4. Must be true in the picture
