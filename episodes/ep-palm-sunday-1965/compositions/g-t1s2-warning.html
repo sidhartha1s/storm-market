@@ -115,9 +115,10 @@ window.__timelines = window.__timelines || {};
   s0(mh, { rotation: 228, svgOrigin: O });                  /* minute hand sweeps its last 30 degrees to 258, between 8 and 9 */
 
   /* ---- the telephone: the drawings builder's 1965 desk telephone (media/drawings/telephone.svg on the cradle, telephone-lifted.svg
-          with the handset raised; one viewBox, so the two pictures register), on a glass plate so it reads on the photograph ---- */
+          with the handset raised; one viewBox, so the two states register), on a glass plate so it reads on the photograph ---- */
   var tel = $("tel"), tel0 = $("tel0"), tel1 = $("tel1");
-  s0(tel0, { transformOrigin: "50% 96%" });                 /* the ring shake pivots on the body's base */
+  s0(tel0, { svgOrigin: "45 44" });                         /* the ring shake pivots on the middle of the body's base */
+  s0(tel1, { autoAlpha: 0 });
 
   /* ---- cues ---- */
   s0($("ul"), { scaleX: 0, transformOrigin: "left center" });
