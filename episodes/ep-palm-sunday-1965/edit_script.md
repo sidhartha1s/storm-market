@@ -114,7 +114,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 **Rows:** [A6; study printed p. 9: interviewees "said it was the responsibility of radio and TV stations to pass on such information"]
 
 ### I1-S6 · narration
-**Picture:** the study's own page (printed pp. 19 to 20), one sentence underlined as it is spoken: "Police headquarters did not notify other members of their own organization nor any other organization until after the first tornado hit the county." Label "one Indiana county", the county of Paul's line.
+**Picture:** the study's own page (printed pp. 19-20, files `C:\Users\Sidhartha\AppData\Local\Temp\p65chk\hi\study-pdf-21.png` and `study-pdf-22.png`), one sentence underlined as it is spoken: "Police headquarters did not notify other members of their own organization nor any other organization until after the first tornado hit the county." Label "one Indiana county", the county of Paul's line.
 > In one county, police headquarters did not tell their own officers until the first tornado hit.
 
 **Rows:** [C2] (County A)
