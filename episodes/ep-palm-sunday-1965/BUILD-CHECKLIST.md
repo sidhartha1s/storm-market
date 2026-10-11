@@ -7,7 +7,7 @@ Status is read from this file. A box is ticked only with the check that proved i
 - [x] Worktree `.worktrees/ep-palm-sunday-1965` from origin/main at 15c15a29; main checkout not touched.
 - [x] Voice tool: `python3 scripts/voice_tool.py` exit 0 (venv, clone script, voice reference, cloning weights all PASS).
 - [ ] Pin: `python3 scripts/pin_ritual.py --check-only` says 0.8.143 is stale, npm latest is 0.8.147. Run the ritual and PR the bump before the first render, when no other heavy job is running.
-- [ ] El Reno learnings on main (PR #160: graphics done line, verify reads, logo rule). Merge main into this branch once it lands, before any graphics brief is written.
+- [x] El Reno learnings on main (PR #160: graphics done line, verify reads, logo rule): merged 11 Oct 26, origin/main 18252a35, tree identical to the reviewed head eace5ef7 (`git diff --stat` empty). Main merged into this branch; `git grep "7a. DONE LINE" -- references/mg-brief-template.md` finds it here.
 - [ ] Length: the slate says 20 to 25 minutes. Not yet confirmed by the owner for this episode.
 
 ## Research (three helpers, started 16:39 to 16:42)
