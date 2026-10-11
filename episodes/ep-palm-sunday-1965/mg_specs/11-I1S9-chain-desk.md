@@ -19,7 +19,7 @@ Stations, desk and links: the design sheet section 6 intro table, as written. Pl
 |---|---|
 | Ground | canvas gradient |
 | Eyebrow | left 96, top 96: `PALM SUNDAY · APRIL 11, 1965` Arial 700 22 px, Label grey, tracking 6 |
-| Row A | left 96, top 142: `The forecast did not fail` Arial 700 30 px, Body light; a pen tick 26 px to its left edge at x 96, text from x 136 |
+| Row A | left 96, top 142: `The forecast did not fail` Arial 700 30 px, Body light; a pen tick 26 px wide at x 96 to 122, text from x 136 |
 | Row B | left 96, top 192: `The warnings were sent`, same style |
 | Light | Amber 2 line 6 px drawn over a link with `scaleX` from its left end, with a leading dot radius 8; a lit station's lines turn Headline white and its paper or lamp parts Amber 2 |
 | Stop mark | Crimson bar 6 px wide, x 837 to 843, y 484 to 556 |
