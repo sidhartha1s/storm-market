@@ -31,14 +31,14 @@ Pre-render look: `node scripts/freeze_scan.mjs episodes/<slug> --comp <COMPID>` 
 `episodes/<slug>/sheets-pre/`. Read it and check §4 first, then overlaps/cut-offs. `python3`, never `python`.
 Gates: `node scripts/graphics_qc.mjs episodes/<slug>`, then `python3 scripts/run_gates.py episodes/<slug>` (rules: `references/mg-quickref.md`).
 
-## 7a. DONE LINE (all seven, before the receipt; from El Reno, where 45 of 68 gate-green comps needed a fix: `learnings/mg.md` 2026-10-10)
-1. Gates on the real folder after the last edit: `graphics_qc` 0 errors AND `python3 scripts/sweep_episode.py episodes/<slug>` with your comps absent from "graphic window fits its timeline", AND `node scripts/blank_scan.mjs episodes/<slug>` with none of your comps listed (an overlay's host starts on its first mark: El Reno's hook row was mounted 0.50 s ahead of its first cue and read as 0.75 s blank), AND `node scripts/overlap_check.mjs episodes/<slug>` with none of your comps in a finding (El Reno: 21 findings reached the orchestrator after both fix rounds; a label that sits on several different things is declared with `data-repeat-ok="reason"`, a line box that only touches its neighbour with `data-overlap-ok="reason"`, each after a frame read).
-2. Fill: the drawing or map covers the frame; no empty block over about a third of it for more than 3 s. State the figure you measured.
+## 7a. DONE LINE (all seven, before the receipt; why: `learnings/mg.md` 10 Oct 26)
+1. Gates on the real folder after the last edit, each run on its own: `graphics_qc` 0 errors, and none of your comps named by `python3 scripts/sweep_episode.py episodes/<slug>` ("graphic window fits its timeline"), `node scripts/blank_scan.mjs episodes/<slug>`, `node scripts/overlap_check.mjs episodes/<slug>` or `node scripts/occlusion_check.mjs episodes/<slug>` (the gates of `scripts/run_gates.py` that stage a comp). An overlay's host starts on its first mark. A repeat or a touch is declared only after a frame read (`data-repeat-ok`, `data-overlap-ok`: `references/mg-quickref.md`).
+2. Fill: `references/mg-quickref.md` "Frame coverage". State the figure you measured.
 3. Frame 0 shows the opening state, and a full-frame host has its ground on from frame 0 (no dark empty frame after the cut).
 4. Seek order: each cue second captured twice (fresh page forward only; then seek 0, past it, back to it) and the two frames match. Never `autoAlpha`, `opacity` or `svgOrigin` only in the from vars of a deferred tween.
 5. No label under a line, ring, arrow, dot, rain or another label, including the first half second of every entrance.
 6. Shared numbers (road layout, scales, counts) are computed from the brief's table by a script and stated in the receipt, never placed by eye.
-7. Overlay comps: one frame composited over the real picture mounted under them at that second; a transparent span names the clip that sits under it. A label that names a place, a date or an event is a claim about that picture: the file under every second of the label is footage of that place and date by its ledger row, never stock.
+7. Overlay comps: one frame composited over the real picture mounted under them at that second; a transparent span names the clip that sits under it. A label that names a place, a date or an event is a claim about that picture: the file under every second of the label is footage of that place and date by its `provenance.csv` row, never stock.
 A family built on one base: send the base alone for a full-size read before copying it.
 
 ## 8. RECEIPT (final message, ≤15 lines)
