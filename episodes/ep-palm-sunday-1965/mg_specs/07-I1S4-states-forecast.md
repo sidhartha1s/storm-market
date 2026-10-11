@@ -1,0 +1,64 @@
+# 07 · I1-S4 · six states, then 11:45 AM in Kansas City (comp `g-i1s4-states`)
+
+Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` sections 4, 8, 10.
+**Spoken (I1-S4):** "Tornadoes crossed six states that day. By eleven forty five that morning, forecasters in Kansas City had a tornado forecast out on the teletype."
+**One look:** the day's track map with six state names lighting up; then a clock at 11:45 AM and paper coming off a teletype.
+
+## 0. What this graphic claims
+Tornadoes crossed six states on April 11, 1965: Iowa, Illinois, Wisconsin, Indiana, Michigan, Ohio. By 11:45 AM, forecasters in Kansas City had a tornado forecast out on the teletype.
+
+## 1. Source
+`edit_script.md` I1-S4, Rows [IWX page, six states confirmed by the checker 11 Oct 26] · [A1].
+- Part A ground: the tornado tracks map, **waits for inventory row B7** ("Courtesy: Dr. Russell Schneider, SPC").
+- Part B ground: teletype machines photograph, **waits for inventory row A4** (Weather Bureau teletypewriters, about 1955: not Kansas City, not 1965).
+- No picture of the Kansas City forecast room is free (row A7 is Ask): none is used and none is drawn.
+
+## 2. Datum, scale, orientation
+The map is shown whole, north up, at one scale: fitted by height into y 54 to 1026 and centred on x 880 (so its right edge stays clear of the corner; the builder states the fitted box in the receipt). The six state-name positions are measured on the map image in image px (the centre of each state's area as drawn on that map) and multiplied by the fit scale.
+
+## 3. Geometry (screen px)
+Part A:
+| Element | Px |
+|---|---|
+| Ground | canvas gradient; map on a Beige polaroid border 10 px, shadow as the document card |
+| State chips | Beige polaroid chip, padding 8 x 18, Arial Black 900 30 px, Caption dark; one per state at its measured centre; a 3 px Amber 2 ring (radius 30 to 70, one pulse) behind each as it lands |
+| Count | left 96, top 96: `6` Courier New 700 84 px Amber 2; `states` Arial 700 26 px Body light at left 160, top 142. If the fitted map covers x 96 to 400, the count moves to the map's left margin and the map centre moves right by the same amount, keeping x < 1600 below y 680 |
+| Map credit | credit corner: `Courtesy: Dr. Russell Schneider, SPC` |
+Part B:
+| Element | Px |
+|---|---|
+| Ground | A4 `<img>` cover, scale 1.00 to 1.05, `.dim` scrim |
+| Clock stamp | design sheet section 8: `FORECASTERS` / `11:45 AM` / `Kansas City`; hands 352.5 and 270 degrees |
+| Paper strip | Beige polaroid, x 900 to 1420, rising from y 1080 to y 420 at 60 px/s, never stopping inside the window; typed lines are Caption dark sub bars 16 px tall, widths 300 to 440 px, every 44 px; no readable word |
+| Label | glass card left 96, top 340, 640 x 150: `Tornado forecast` Arial Black 900 52 px Headline white at top 366; `out on the teletype` Georgia italic 26 px Amber 2 at top 440 |
+| Photo caption | credit corner: `Weather Bureau teletypewriters, about 1955 · NOAA` |
+The strip's right edge is x 1420, clear of the corner.
+
+## 4. Must be true in the picture
+1. Exactly six names light, in the spoken order: Iowa, Illinois, Wisconsin, Indiana, Michigan, Ohio. No seventh state is labelled by us.
+2. Each chip sits inside its own state on the map.
+3. The count `6` is on screen only once the word "six" is spoken; the sixth chip lands before the word "day" ends.
+4. The clock reads 11:45 AM: AM, hour hand just short of 12, minute hand on 9.
+5. `Kansas City` is on the glass stamp, never bare on the photograph; the photograph's caption says what it is (S8).
+6. The paper strip carries bars, not words: the forecast's text is not in the script, so none is typed.
+7. The map keeps its courtesy credit for as long as it is on screen.
+8. No Indiana county is singled out on the map by us (S1).
+9. Design sheet S6, S7.
+
+## 5. Text (exact) and cues
+Text: the six state names · `6` · `states` · `Courtesy: Dr. Russell Schneider, SPC` · `FORECASTERS` · `11:45 AM` · `Kansas City` · `Tornado forecast` · `out on the teletype` · `Weather Bureau teletypewriters, about 1955 · NOAA`.
+| Step | cue | t= | What |
+|---|---|---|---|
+| 0 | first frame (word "Tornadoes") | | map on, credit on; map pushes scale 1.00 to 1.03 |
+| 1 | cue: "six" (whisper may write "6") | | count `6` lands; chips land one every 0.22 s in the order of truth 1, each with its ring |
+| 2 | cue: "day" | | all six on; hold to the end of the sentence |
+| 3 | cue: "By" | | hard cut to Part B: A4 ground and its caption |
+| 4 | cue: "11:45" (spoken "eleven forty five") | | clock stamp slides in, minute hand sweeps into place |
+| 5 | cue: "Kansas" | | place line `Kansas City` rises inside the stamp |
+| 6 | cue: "forecast" (second, "tornado forecast") | | paper strip starts to rise; label card slides in (`x:-660 to 0`, 0.6, power3.out) |
+| 7 | cue: "teletype" (last word) | | hold 1.0 s; the strip keeps rising |
+| 8 | exit | | stamp and label slide out left (`x:-980`, 0.6, power3.in) into the hard cut to 08 |
+
+## 6 to 8. Contract, tools, done line, receipt
+As `references/mg-brief-template.md` sections 6, 7, 7a, 8, unchanged. File `compositions/g-i1s4-states.html`, id prefix `st6-`, root id `st6-root`. Done line 7: the map label names six places, each a claim about the map under it.
+**Closest library exemplar:** El Reno `compositions/g-i1s3-pins.html` (labels landing one by one on a map) for Part A; El Reno `compositions/g-a4s13-clock.html` for the stamp; `library/inhouse/bulletin-typewriter.html` for the feel of paper feeding (the motion only, not its green screen).
