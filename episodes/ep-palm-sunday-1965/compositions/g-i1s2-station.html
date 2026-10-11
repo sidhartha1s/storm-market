@@ -134,7 +134,7 @@ window.__timelines = window.__timelines || {};
   /* IN @0.00: Indiana and its neighbours are on; the map floats for the whole map hold */
   tl.fromTo(P+"map", { y: 0 }, { y: -4, duration: 1.25, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
   /* SOUTH @0.21: the ring grows in, the label names the area; the ring breathes 46 to 52 */
-  tl.fromTo(P+"ring", { scale: 0 }, { scale: 1, svgOrigin: "464.5 187.9", duration: 0.4, ease: "back.out(1.7)" }, 0.21);
+  tl.fromTo(P+"ring", { attr: { r: 0 } }, { attr: { r: 46 }, duration: 0.4, ease: "back.out(1.7)" }, 0.21);
   tl.fromTo(P+"lab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.36);
   tl.to(P+"ring", { attr: { r: 52 }, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.65);
   /* ELEVEN @1.71: the name card slides in; eyebrow, name, sub 0.15 s apart */
