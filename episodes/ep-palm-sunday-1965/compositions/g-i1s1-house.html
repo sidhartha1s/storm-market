@@ -132,7 +132,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"street", { scale: 1 }, { scale: 1.03, duration: 5.6, ease: "none" }, 0);
   /* NICE @3.30: the sun rises, the windows brighten */
   tl.to(P+"sun", { y: 0, duration: 1.2, ease: "power2.out" }, 3.30);
-  tl.to(".house-win", { attr: { "fill-opacity": 0.3 }, duration: 0.15, ease: "none" }, 3.30);
+  tl.to(".house-win", { attr: { "fill-opacity": 0.95 }, duration: 0.15, ease: "none" }, 3.30);
   /* YEAR @4.38: the date leaves before the camera moves */
   tl.to([P+"t1", P+"t2"], { x: -980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 4.38);
   /* MANY @5.60: push into the left front window, centre (823.6, 616.8), to scale 9 */
