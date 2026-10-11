@@ -96,10 +96,10 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 **Rows:** [E] · [E] (a 2014 recollection: the "South Bend Indiana area", "the local CBS station"; an age and no gender, so "an eleven year old")
 
 ### I1-S3 · narration
-**Picture:** the drawn television screen flips from the "WEATHER BUREAU" card back to the plain programme frame on "went back". Then the study's own page (printed p. 37) fills the frame, one sentence underlined as it is spoken: "There was not a cloud in the sky." Source line "Disaster Research Center, 1966".
-> Stations cut in with a warning, then went back to their shows. People looked outside, and there was not a cloud in the sky.
+**Picture:** the drawn television screen flips from the station card back to the plain programme frame on "went back". Then a clear sky, no time of day shown. Over it the study's own page (printed p. 36, file `C:\Users\Sidhartha\AppData\Local\Temp\p65chk\hi\study-pdf-38.png`), one sentence underlined as it is spoken: "There was not a cloud in the sky." It is the study's own sentence, not a person's words. Source line "Disaster Research Center, 1966, p. 36".
+> TV stations cut in with a warning, then went back to their shows. Some people looked outside, and there was not a cloud in the sky.
 
-**Rows:** [C22] · [C22]
+**Rows:** [C22; study printed p. 36] · [C22; study printed p. 36]
 
 ### I1-S4 · narration
 **Picture:** the tornado track map of the day (inventory B7, courtesy Dr. Russell Schneider, SPC). Six state names light one by one: Iowa, Illinois, Wisconsin, Indiana, Michigan, Ohio. Then a clock "11:45 AM" over a teletype machine photograph (inventory A4), with the label "Forecasters · Kansas City". No free picture of the Kansas City forecast room exists (A7 is Ask). [verify: whether the 11:45 AM forecast is one of the four forecast scans in inventory A9, to show it as a document card]
