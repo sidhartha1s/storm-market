@@ -120,7 +120,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 **Rows:** [C2] (County A)
 
 ### I1-S7 · narration
-**Picture:** the study's own page (printed p. 22, file `C:\Users\Sidhartha\AppData\Local\Temp\p65chk\hi\study-pdf-24.png`), label "a different county". The sheriff's sentence is underlined as the narrator speaks it: "We didn't have any warning at all". Source line "a county sheriff · Disaster Research Center, 1966". The narrator reads the words; no actor's voice.
+**Picture:** the study's own page (printed p. 22, file `media/docs/study-pdf-24-orig.png`), label "a different county". The sheriff's sentence is underlined as the narrator speaks it: "We didn't have any warning at all". Source line "a county sheriff · Disaster Research Center, 1966". The narrator reads the words; no actor's voice.
 > A sheriff in another county found out when the tornado was going over, and said, "We didn't have any warning at all."
 
 **Rows:** [C6] (County B)
