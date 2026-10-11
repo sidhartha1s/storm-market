@@ -2,18 +2,114 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-t1s2-warning (T1-S2): stub, build in progress. Brief: mg_specs/02-T1S2-clock-warning.md. -->
+<!-- g-t1s2-warning (T1-S2): a clock at 5:43 PM, the survey's own warning page with one line underlined, then a telephone
+     picked up. Brief: mg_specs/02-T1S2-clock-warning.md; shared look: mg_specs/00-design-sheet.md sections 4, 7, 8, 9, 10.
+     Page: media/docs/survey-p39-warning-crop.png (1460 x 314, cut from survey-pdf-67-orig.png x 285 to 1345, y 244 to 472,
+     survey printed p. 39). Marks are in crop px. Ground: media/stills/a3-teletype-operators.jpg, a Weather Bureau
+     communications centre about 1955 (not South Bend, not 1965): it carries its own caption, the place sits on the glass stamp.
+     The clock stamp has left before the telephone is drawn: the telephone is not pinned to 5:43.
+     Cues are audio/t1-s2.words.json seconds minus 0.35 (wav at 13.83, host at 14.18). -->
 <template>
 <style>
-  #w2-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  #warn-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; background:#04070c; }
+  .warn-ph { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; object-position:50% 40%; }
+  .warn-scrim { position:absolute; inset:0; background:rgba(3,5,8,0.45); }
+  .warn-h { opacity:0; visibility:hidden; }
+  .warn-stamp { position:absolute; left:96px; top:96px; width:590px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .warn-face { position:absolute; left:0; top:0; width:200px; height:200px; overflow:visible; }
+  .warn-eye { position:absolute; left:188px; top:20px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .warn-time { position:absolute; left:188px; top:46px; font:700 84px 'Courier New', monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .warn-place { position:absolute; left:190px; top:148px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .warn-card { position:absolute; left:96px; top:320px; width:1480px; height:334px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .warn-crop { position:absolute; left:10px; top:10px; width:1460px; height:314px; }
+  .warn-unlit { position:absolute; left:0; top:0; width:1480px; height:186px; background:rgba(21,32,43,0.45); }
+  .warn-ul { position:absolute; left:44px; top:322px; width:1342px; height:6px; background:#d0121f; }
+  .warn-src { position:absolute; right:360px; top:668px; font:700 20px Arial, sans-serif; color:#dfe7ee; letter-spacing:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .warn-cap { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .warn-tel { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
 </style>
-<div id="w2-root" data-composition-id="g-t1s2-warning" data-width="1920" data-height="1080"></div>
+<div id="warn-root" data-composition-id="g-t1s2-warning" data-width="1920" data-height="1080">
+  <img class="warn-ph" id="warn-ph" src="media/stills/a3-teletype-operators.jpg" alt="">
+  <div class="warn-scrim"></div>
+  <div class="warn-stamp warn-h" id="warn-stamp">
+    <svg class="warn-face" id="warn-face" viewBox="0 0 200 200"></svg>
+    <div class="warn-eye">WEATHER BUREAU</div>
+    <div class="warn-time">5:43 PM</div>
+    <div class="warn-place warn-h" id="warn-place">South Bend, Indiana</div>
+  </div>
+  <div class="warn-card warn-h" id="warn-card">
+    <img class="warn-crop" src="media/docs/survey-p39-warning-crop.png" alt="">
+    <div class="warn-unlit warn-h" id="warn-unlit"></div>
+    <div class="warn-ul" id="warn-ul"></div>
+  </div>
+  <div class="warn-src warn-h" id="warn-src">Weather Bureau survey report, 1965, p. 39</div>
+  <svg class="warn-tel warn-h" id="warn-tel" viewBox="0 0 1920 1080"></svg>
+  <div class="warn-cap" id="warn-cap">Weather Bureau Communications Center, about 1955 · NOAA</div>
+</div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  var ID = "g-t1s2-warning", D = 6.89;
+  var ID = "g-t1s2-warning", P = "warn", D = 6.89, NS = "http://www.w3.org/2000/svg";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
   var tl = gsap.timeline({ paused: true });
-  tl.to({}, { duration: 0.01 }, D - 0.01);
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+  function dash(e) { var n = Math.ceil(e.getTotalLength()) + 1; e.setAttribute("stroke-dasharray", n); s0(e, { strokeDashoffset: n }); return e; }
+
+  /* ---- the ground: one photograph, a slow push that carries every hold; 1.06 is the number comp 03 opens on ---- */
+  tl.fromTo($("ph"), { scale: 1 }, { scale: 1.06, duration: D, ease: "none" }, 0);
+
+  /* ---- the clock face (design sheet section 8): centre (95,100) in the stamp, radius 62 ---- */
+  var face = $("face"), CX = 95, CY = 100, RR = 62, O = CX + " " + CY;
+  function pt(deg, r) { var a = deg * Math.PI / 180; return [CX + r * Math.sin(a), CY - r * Math.cos(a)]; }   /* degrees clockwise from 12 */
+  el("circle", { cx: CX, cy: CY, r: RR, fill: "none", stroke: "#dfe7ee", "stroke-width": 4 }, face);
+  for (var i = 0; i < 12; i++) { var a = pt(i * 30, RR - 7), b = pt(i * 30, RR - (i % 3 ? 15 : 21));
+    el("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "#dfe7ee", "stroke-width": 3, "stroke-linecap": "round" }, face); }
+  var hh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 34, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  var mh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 52, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  el("circle", { cx: CX, cy: CY, r: 5, fill: "#e8c56a" }, face);
+  s0(hh, { rotation: 171.5, svgOrigin: O });                /* 5:43: hour hand between 5 and 6 */
+  s0(mh, { rotation: 228, svgOrigin: O });                  /* minute hand sweeps its last 30 degrees to 258, between 8 and 9 */
+
+  /* ---- the telephone (design sheet section 7), 4x, box x 760 to 1120, y 420 to 596: screen = (760 + 4x, 420 + 4y) ---- */
+  var tel = $("tel"), LN = { fill: "none", stroke: "#dfe7ee", "stroke-width": 4, "stroke-linecap": "round", "stroke-linejoin": "round" };
+  function ln(tag, a, parent, fill) { for (var k in LN) if (!(k in a)) a[k] = LN[k]; if (fill) a.fill = "#15202b"; return el(tag, a, parent); }
+  var cord = dash(ln("path", { d: "M786,412 a18,18 0 0 0 0,36 a18,18 0 0 1 0,36 a18,18 0 0 0 0,36" }, tel));   /* three small arcs, drawn as the handset lifts */
+  var body = dash(ln("path", { d: "M760,596 L1120,596 L1072,476 L808,476 Z" }, tel, true));
+  var dial = dash(ln("circle", { cx: 940, cy: 536, r: 36 }, tel));
+  var hs = el("g", {}, tel);
+  var earL = dash(ln("rect", { x: 776, y: 460, width: 40, height: 32 }, hs, true));
+  var earR = dash(ln("rect", { x: 1064, y: 460, width: 40, height: 32 }, hs, true));
+  var bar = dash(ln("rect", { x: 776, y: 420, width: 328, height: 40, rx: 20 }, hs, true));
+  function ring(cx, r, dir) { var k = r * 0.7071;           /* a quarter arc facing away from the handset end */
+    return ln("path", { d: "M" + (cx + dir * k) + "," + (440 - k) + " A" + r + "," + r + " 0 0 " + (dir > 0 ? 1 : 0) + " " + (cx + dir * k) + "," + (440 + k) }, tel); }
+  var arcsL = [ring(776, 40, -1), ring(776, 64, -1)], arcsR = [ring(1104, 40, 1), ring(1104, 64, 1)];
+  s0(arcsL, { autoAlpha: 0, svgOrigin: "776 440" }); s0(arcsR, { autoAlpha: 0, svgOrigin: "1104 440" });
+  s0(hs, { svgOrigin: "940 440" });
+
+  /* ---- cues ---- */
+  s0($("ul"), { scaleX: 0, transformOrigin: "left center" });
+  tl.fromTo($("stamp"), { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 0.13);   /* 5:43 @0.13 */
+  tl.to(mh, { rotation: 258, duration: 0.5, ease: "power3.out" }, 0.33);
+  tl.fromTo($("place"), { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 2.37);     /* South @2.37 */
+  tl.fromTo($("card"), { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out", immediateRender: false }, 2.95);     /* issued @2.95 */
+  tl.fromTo($("src"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, 3.35);       /* the page's source, fixed, once the card has landed */
+  tl.to($("unlit"), { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 3.49);                                                                 /* tornado @3.49 */
+  tl.to($("ul"), { scaleX: 1, duration: 0.6, ease: "none" }, 3.49);                                                                             /* tornado warning @3.49 to 4.09 */
+  tl.to($("stamp"), { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 4.99);                                                         /* It @4.99: the time leaves */
+  tl.to($("card"), { x: 1900, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 4.99);
+  tl.to($("src"), { x: 400, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 4.99);
+  tl.to(tel, { autoAlpha: 1, duration: 0.15, ease: "power2.out" }, 5.43);                                                                       /* telephoned @5.43 */
+  tl.to([body, bar, dial, earL, earR], { strokeDashoffset: 0, duration: 0.4, ease: "power2.out", stagger: 0.05 }, 5.43);                         /* drawn by 6.03 */
+  tl.fromTo(arcsL.concat(arcsR), { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1.12, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 3, immediateRender: false }, 5.47);   /* two rings, 0.4 s each */
+  tl.to(hs, { y: -104, rotation: -20, duration: 0.35, ease: "back.out(1.6)" }, 6.10);                                                           /* the handset lifts 26 px of the drawing (104 on screen) */
+  tl.to(cord, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 6.14);
+  tl.to(tel, { x: -1100, duration: 0.5, ease: "power3.in" }, 6.49);                                                                             /* down @6.49 */
+  tl.to({}, { duration: 0.01 }, 6.98);                      /* list @6.89: the cut to comp 03 lands here */
+
   window.__timelines[ID] = tl;
 })();
 </script>
