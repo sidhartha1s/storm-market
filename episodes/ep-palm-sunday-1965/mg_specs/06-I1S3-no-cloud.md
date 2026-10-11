@@ -1,3 +1,5 @@
+Host: id=g-i1s3-cloud file=compositions/g-i1s3-cloud.html start=58.21 duration=8.74 track=2
+
 # 06 · I1-S3 · back to the show, a clear sky, and the study's sentence (comp `g-i1s3-cloud`)
 
 Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` sections 7, 9. Revised 12 Oct 26 to the fact-checked line and the page scan.
@@ -46,13 +48,13 @@ The builder confirms each box within 10 px on the cut file.
 Text: the Station card's lines (from frame 0, as comp 05) · `"There was not a cloud in the sky."` · `Disaster Research Center, 1966, p. 36`. Page words are the image.
 | Step | cue | t= | What |
 |---|---|---|---|
-| 0 | first frame (word "TV") | | television with the Station card; its frame line pulses once on "warning" |
-| 1 | cue: "went" | | screen hard switches to the Programme state; bars drift |
-| 2 | cue: "Some" | | television slides out left (`x:-1500`, 0.5, power3.in); the sky rises over the canvas (`y:1080 to 0`, 0.6, power3.out), then drifts `y` 0 to -24 px to the end |
-| 3 | cue: "outside" | | document card slides in from the right (`x:660 to 0`, 0.7, power3.out) |
-| 4 | cue: "not" | | unlit page fades in; underline draws on "There was not a cloud in" (0.5 s), then on "the sky." (0.25 s), ending on "sky" |
-| 5 | cue: "sky" (last word) | | quote strip rises; hold 1.2 s; a 3 px float on card and strip carries it |
-| 6 | exit | | card and strip slide out right (`x:1900`, 0.6, power3.in) into the hard cut to 07 |
+| 0 | first frame (word "TV") | 0.00 | television with the Station card; its frame line pulses once on "warning" |
+| 1 | cue: "went" | 2.27 | screen hard switches to the Programme state; bars drift |
+| 2 | cue: "Some" | 4.21 | television slides out left (`x:-1500`, 0.5, power3.in); the sky rises over the canvas (`y:1080 to 0`, 0.6, power3.out), then drifts `y` 0 to -24 px to the end |
+| 3 | cue: "outside" | 4.87 | document card slides in from the right (`x:660 to 0`, 0.7, power3.out) |
+| 4 | cue: "not" | 6.21 | unlit page fades in; underline draws on "There was not a cloud in" (0.5 s), then on "the sky." (0.25 s), ending on "sky" |
+| 5 | cue: "sky" (last word) | 7.05 | quote strip rises; hold 1.2 s; a 3 px float on card and strip carries it |
+| 6 | exit | 8.74 | card and strip slide out right (`x:1900`, 0.6, power3.in) into the hard cut to 07 |
 Option for the lead, not built unless asked: on step 3 the page's own "TV stations interrupted usual programming to issue warnings, but then resumed their normal schedules." can stay bright for a second before the unlit page covers it; its boxes are in section 2.
 
 ## 6 to 8. Contract, tools, done line, receipt
