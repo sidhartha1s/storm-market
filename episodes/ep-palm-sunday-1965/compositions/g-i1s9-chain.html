@@ -189,7 +189,22 @@ window.__timelines = window.__timelines || {};
   tl.set([P+"eb", P+"ra", P+"rb", P+"head", P+"desk", P+"dot", P+"ringp", P+"tka", P+"tkb"], { autoAlpha: 0 }, 0);
   tl.set([P+"l1", P+"l2", P+"l3"], { scaleX: 0, svgOrigin: "0 520" }, 0);
   tl.set(P+"stop", { scaleY: 0, svgOrigin: "840 484" }, 0);
-  tl.set(P+"s3", { opacity: 0.36 }, 0);
+  /* ON @0.00 to 2.40: the dim chain is laid out left to right, one station after another, before anything lights.
+     The desk is not among them: it is drawn on the word "desk" (brief section 4.3). */
+  function arrive(sel, at) { tl.fromTo(sel, { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, at); }
+  function link(sel, at) { tl.fromTo(sel, { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, at); }
+  arrive([P+"s1", P+"s1bars", P+"b1"], 0.00);
+  link(P+"k1", 0.40);
+  arrive([P+"s2", P+"s2holes", P+"b2"], 0.45);
+  link(P+"k2", 0.85);
+  tl.fromTo(P+"s3", { opacity: 0, y: 16 }, { opacity: 0.36, y: 0, duration: 0.4, ease: "power3.out" }, 0.90);
+  arrive(P+"b3", 0.90);
+  link(P+"k3", 1.22);
+  link(P+"dotb", 1.28);
+  link(P+"k4", 1.34);
+  arrive([P+"s4", P+"b4"], 1.40);
+  link(P+"k5", 1.82);
+  arrive([P+"s5", P+"b5"], 1.90);
   tl.fromTo(P+"sweep", { x: -560 }, { x: 2300, duration: 4.66, ease: "none", repeat: 1 }, 0);
   /* PALM @0.14: eyebrow */
   tl.fromTo(P+"eb", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.14);
