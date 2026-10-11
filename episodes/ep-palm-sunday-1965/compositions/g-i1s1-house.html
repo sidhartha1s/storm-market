@@ -32,17 +32,19 @@
   <!-- STREET VIEW: the hook's house, now in sunshine. This layer is the camera. -->
   <div class="house-layer" id="house-street">
     <div class="house-sky"></div>
-    <div class="house-sun" id="house-sun"><div class="house-glow"></div><div class="house-disc"></div></div>
+    <div class="house-ground"></div>
+    <div class="house-sun" id="house-sun"></div>
     <svg class="house-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
-      <line x1="96" y1="850" x2="1560" y2="850" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round"/>
+      <line x1="96" y1="850" x2="1560" y2="850" stroke="#15202b" stroke-width="4" stroke-linecap="round"/>
       <g transform="translate(674 300) scale(2.2)">
-        <g fill="none" stroke="#f2f5f8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M186 37.3 V22 H208 V50"/>
+        <!-- a light house with dark lines and a dark roof, so it reads on the sky; sunlight on the window glass -->
+        <g fill="none" stroke="#15202b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M186 37.3 V22 H208 V50" fill="#f4f0e6"/>
           <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
-          <rect x="20" y="80" width="220" height="170" fill="#15202b"/>
-          <rect x="112" y="170" width="36" height="80"/>
-          <rect class="house-win" x="44" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.2"/>
-          <rect class="house-win" x="168" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.2"/>
+          <rect x="20" y="80" width="220" height="170" fill="#f4f0e6"/>
+          <rect x="112" y="170" width="36" height="80" fill="#15202b"/>
+          <rect class="house-win" x="44" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.6"/>
+          <rect class="house-win" x="168" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.6"/>
           <path d="M68 120 V168 M44 144 H92"/>
           <path d="M192 120 V168 M168 144 H216"/>
           <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
