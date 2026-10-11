@@ -20,7 +20,7 @@ Crop box, page px (measured on the file by a row and word scan): x 285 to 1345, 
 | `SOUTH BEND (Continued)` | 301 to 929, 260 to 308 | x 22 to 887, y 22 to 88 |
 | `Issued at 5:43 PM EST.` | 309 to 837, 382 to 418 | x 33 to 760, y 190 to 240 |
 | `Severe thunderstorm and tornado warning.` (underlined) | 310 to 1284, 429 to 468 | x 34 to 1376, y 255 to 309 |
-Line pitch on the page is about 47 px, so about 65 px on screen: large enough to read without a quote strip. The next page line (`Radio and television stations are requested to use emergency frequencies.`, page y 475 to 518) is cut off by the crop's lower edge at y 484 on purpose; if any of its ink shows, pull the edge up to y 472.
+Line pitch on the page is about 47 px, so about 65 px on screen: large enough to read without a quote strip. The next page line (`Radio and television stations are requested to use emergency frequencies.`) starts at page y 475, so the crop's lower edge is y 472: none of its ink is in the crop.
 
 ## 3. Geometry (screen px)
 | Element | Px |
