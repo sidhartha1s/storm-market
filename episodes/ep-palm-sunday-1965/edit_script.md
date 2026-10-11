@@ -90,10 +90,10 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 **Rows:** [C21; study printed p. 25] · [C21; study printed p. 25]
 
 ### I1-S2 · narration
-**Picture:** our own map of Indiana, one pin on South Bend. Name card "Ron Przybylinski · age 11 · South Bend · recalled in 2014". Then the drawn television set, switched on: its screen changes from a plain programme frame to a card reading "WEATHER BUREAU". No frame of the real show; nothing real exists that we may use.
-> In South Bend, Indiana, an eleven year old was watching Lassie when the Weather Bureau broke into the show.
+**Picture:** our own map of Indiana, a soft ring around the South Bend area. Name card "Ron Przybylinski · age 11 · South Bend area · recalled in 2014". Then the drawn television set, switched on, showing a plain programme frame. On the second sentence a station card comes up on its screen, the local station passing on the Weather Bureau's word: "so many tornado reports that it was hard to keep track of them", small line "as recalled in 2014". Not a "WEATHER BUREAU" bulletin card. No frame of the real show; nothing real exists that we may use.
+> In the South Bend area, an eleven year old was watching Lassie on the local station. The station carried word from the Weather Bureau that there were too many tornado reports to keep track of.
 
-**Rows:** [E] (facts.md states an age and no gender, so "an eleven year old")
+**Rows:** [E] · [E] (a 2014 recollection: the "South Bend Indiana area", "the local CBS station"; an age and no gender, so "an eleven year old")
 
 ### I1-S3 · narration
 **Picture:** the drawn television screen flips from the "WEATHER BUREAU" card back to the plain programme frame on "went back". Then the study's own page (printed p. 37) fills the frame, one sentence underlined as it is spoken: "There was not a cloud in the sky." Source line "Disaster Research Center, 1966".
