@@ -99,8 +99,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo($("src"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, 3.35);       /* the page's source, fixed, once the card has landed */
   tl.to($("unlit"), { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 3.49);                                                                 /* tornado @3.49 */
   tl.to($("ul"), { scaleX: 1, duration: 0.6, ease: "none" }, 3.49);                                                                             /* tornado warning @3.49 to 4.09 */
-  tl.to($("stamp"), { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 4.99);                                                         /* It @4.99: the time leaves */
-  tl.to($("card"), { x: 1900, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 4.99);
+  tl.to($("stamp"), { x: -980, autoAlpha: 0, duration: 0.42, ease: "power3.in" }, 4.99);                                                        /* It @4.99: the time leaves; both are off by 5.41, before the telephone's first stroke */
+  tl.to($("card"), { x: 1900, autoAlpha: 0, duration: 0.42, ease: "power3.in" }, 4.99);
   tl.to($("src"), { x: 400, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 4.99);
   tl.to(tel, { autoAlpha: 1, duration: 0.15, ease: "power2.out" }, 5.43);                                                                       /* telephoned @5.43 */
   tl.to([body, bar, dial, earL, earR], { strokeDashoffset: 0, duration: 0.4, ease: "power2.out", stagger: 0.05 }, 5.43);                         /* drawn by 6.03 */
