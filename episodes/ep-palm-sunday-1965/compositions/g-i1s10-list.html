@@ -103,10 +103,11 @@ window.__timelines = window.__timelines || {};
   /* 1 · "police" @0.09: the mark thickens once */
   tl.fromTo($("mark"), { scaleY: 1 }, { scaleY: 1.6, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 0.09);
 
-  /* 2 · "only" @0.65: the pulse on the seven other named rows, top to bottom, one every 0.22 s; never the city police row or the blank row */
-  pulse(1, 0.65); pulse(2, 0.87); pulse(4, 1.09); pulse(5, 1.31); pulse(6, 1.53); pulse(7, 1.75); pulse(8, 1.97);
+  /* 2 · "only" @0.65: the pulse on State Police, Sheriffs' Departments, Specified radio and TV stations, top to bottom, one every
+     0.3 s; never the city police row, the blank row or the other four */
+  pulse(1, 0.65); pulse(2, 0.95); pulse(6, 1.25);
 
-  /* 3 · "nobody?" @1.65 to 1.99: the last pulse clears @2.47, then the sheet holds; 4 · hard cut to the blackout @3.19 */
+  /* 3 · "nobody?" @1.65 to 1.99: the last pulse clears @1.75, then the sheet holds; 4 · hard cut to the blackout @3.19 */
   tl.to({}, { duration: 0.01 }, 3.18);
 
   window.__timelines[ID] = tl;
