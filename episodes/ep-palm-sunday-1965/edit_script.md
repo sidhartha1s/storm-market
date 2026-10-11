@@ -126,7 +126,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 **Rows:** [C6] (County B)
 
 ### I1-S8 · narration
-**Picture:** the same page holds (printed p. 22, file `study-pdf-24.png` in the same folder); the underline moves on to the sheriff's next sentence, "the television didn't even list here". Then cut to the drawn television set from I1-S2, its screen on the plain programme frame.
+**Picture:** the same page holds (printed p. 22, file `media/docs/study-pdf-24-orig.png`); the underline moves on to the sheriff's next sentence, "the television didn't even list here". Then cut to the drawn television set from I1-S2, its screen on the plain programme frame.
 > The television, the sheriff said, did not even list that county in the danger area.
 
 **Rows:** [C6] (County B; the sheriff's words are "as being in the danger area")
