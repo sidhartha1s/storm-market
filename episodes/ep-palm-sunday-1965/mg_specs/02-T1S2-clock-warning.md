@@ -14,7 +14,7 @@ At 5:43 PM the Weather Bureau in South Bend issued a warning that the page recor
 - Ground: `media/stills/a3-teletype-operators.jpg` (1370 x 1080, inventory row A3). It shows the Weather Bureau Communications Center about 1955, two operators from behind: not South Bend, not 1965.
 
 ## 2. Datum, scale, orientation
-Crop box, page px (measured on the file by a row and word scan): x 285 to 1345, y 244 to 484 (1060 x 240). It holds three lines and no more. The crop is cut once and saved as `media/docs/survey-p39-warning-crop.png` at 1460 x 331 (scale 1.3774, an enlargement of a bilevel scan: cut with a smooth filter and read the edges on a frame); that file is what the comp mounts.
+Crop box, page px (measured on the file by a row and word scan): x 285 to 1345, y 244 to 472 (1060 x 228). It holds three lines and no more. The crop is cut once and saved as `media/docs/survey-p39-warning-crop.png` at 1460 x 314 (scale 1.3774, an enlargement of a bilevel scan: cut with a smooth filter and read the edges on a frame); that file is what the comp mounts.
 | Line | Page px (x0 to x1, y0 to y1) | Px inside the 1460 crop |
 |---|---|---|
 | `SOUTH BEND (Continued)` | 301 to 929, 260 to 308 | x 22 to 887, y 22 to 88 |
