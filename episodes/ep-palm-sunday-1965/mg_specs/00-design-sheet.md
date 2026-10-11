@@ -3,7 +3,7 @@
 Read this before any brief in this folder. It is the one home of every recurring piece: the telephone list, the chain,
 the drawn house and living room, the clock stamp, the document card, the source line. A brief names a piece and gives
 only what is new in its own beat. Rules: `references/mg-quickref.md`. Hex, fonts, tiers: `library/inhouse/snippets/tokens.md`
-(tokens are named here, never restated as new values). Written 12 Oct 26, before any still was on disk.
+(tokens are named here, never restated as new values). Written 12 Oct 26. The study's page scans (comps 06, 09, 10) are not on disk yet; every other photograph is (section 4).
 
 ## 1. The world in four sentences
 - **Paper is their words.** Anything the 1966 study or the Weather Bureau wrote sits on paper: the telephone list sheet, the page scans, the lifted quote strip.
