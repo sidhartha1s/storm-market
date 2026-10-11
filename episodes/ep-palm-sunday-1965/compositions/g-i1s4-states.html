@@ -2,18 +2,149 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-i1s4-states: stub, build in progress. Brief: mg_specs/07-I1S4-states-forecast.md. -->
+<!-- g-i1s4-states (I1-S4): Part A, the day's track map with six state names landing in the spoken order; Part B, a clock stamp at
+     11:45 AM and paper feeding up off a teletype. Brief: mg_specs/07-I1S4-states-forecast.md; design sheet sections 4, 8, 10.
+     Map: media/stills/b7-tornado-track-map.jpg (1396 x 1046, provenance row B7, "Courtesy: Dr. Russell Schneider, SPC"), shown whole at
+     0.9293: screen x = 251.4 + 0.9293 x image x, screen y = 54 + 0.9293 x image y. It prints no state name: the six chips are ours,
+     each centred inside its own state and clear of every red track. Wisconsin (image 330, 100) and Michigan (image 790, 245) are
+     moved from the brief's table: at 30 px the chips are wider than the brief allowed for (Wisconsin met a track end, Michigan ran
+     past the Lake Huron shore).
+     Part B ground: media/stills/a4-teletype-room.jpg (row A4, a Weather Bureau teletype room about 1955, not Kansas City, not 1965):
+     the place and time sit on the glass stamp, the photograph keeps its own caption. Its wall clock (screen about 1174, 356) shows
+     no readable hands on the file, so the label card keeps its cue at "forecast".
+     Cues are comp-local seconds (host start 66.95) from audio/i1-s4.words.json. -->
 <template>
 <style>
-  #st6-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
+  #st6-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .st6-part { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .st6-card { position:absolute; left:241px; top:44px; width:1297px; height:972px; border:10px solid #f4f0e6; background:#fff; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .st6-card img { position:absolute; left:0; top:0; width:1297px; height:972px; }
+  .st6-at { position:absolute; width:0; height:0; display:flex; align-items:center; justify-content:center; }
+  .st6-chip { flex:none; padding:8px 18px; background:#f4f0e6; border:2px solid #2a2622; font:900 30px 'Arial Black', Arial, sans-serif; color:#2a2622; white-space:nowrap; line-height:1; }
+  .st6-ring { position:absolute; left:-30px; top:-30px; width:60px; height:60px; box-sizing:border-box; border:3px solid #e8c56a; border-radius:50%; }
+  .st6-six { position:absolute; left:96px; top:96px; font:700 84px 'Courier New', Courier, monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .st6-states { position:absolute; left:96px; top:192px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .st6-mapcr { position:absolute; left:271px; bottom:64px; padding:6px 12px; background:#f4f0e6; font:700 22px Arial, sans-serif; color:#2a2622; letter-spacing:0.04em; white-space:nowrap; line-height:1; }
+  .st6-bg { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; object-position:50% 50%; }
+  .st6-scrim { position:absolute; left:0; top:0; width:1920px; height:1080px; background:rgba(3,5,8,0.45); }
+  .st6-stamp { position:absolute; left:96px; top:96px; width:590px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .st6-face { position:absolute; left:0; top:0; width:200px; height:200px; overflow:visible; }
+  .st6-eye { position:absolute; left:188px; top:20px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .st6-time { position:absolute; left:188px; top:46px; font:700 84px 'Courier New', Courier, monospace; color:#e8c56a; letter-spacing:-4px; white-space:nowrap; line-height:1; }
+  .st6-place { position:absolute; left:190px; top:148px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .st6-strip { position:absolute; left:900px; top:1080px; width:520px; height:640px; background:#f4f0e6; box-shadow:0 -8px 40px rgba(0,0,0,0.5); }
+  .st6-bar { position:absolute; left:40px; height:16px; background:#6b6257; }
+  .st6-label { position:absolute; left:880px; top:250px; width:640px; height:150px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .st6-big { position:absolute; left:36px; top:26px; font:900 52px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .st6-sub { position:absolute; left:38px; top:100px; font:italic 26px Georgia, 'Times New Roman', serif; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .st6-cap { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .st6-h { opacity:0; visibility:hidden; }
 </style>
-<div id="st6-root" data-composition-id="g-i1s4-states" data-width="1920" data-height="1080"></div>
+<div id="st6-root" data-composition-id="g-i1s4-states" data-width="1920" data-height="1080">
+
+  <div class="st6-part" id="st6-a">
+    <div class="st6-part" id="st6-map">
+      <div class="st6-card"><img src="media/stills/b7-tornado-track-map.jpg" alt=""></div>
+      <div class="st6-at" style="left:326px;top:305px"><div class="st6-ring st6-h" id="st6-g1"></div><div class="st6-chip st6-h" id="st6-c1">Iowa</div></div>
+      <div class="st6-at" style="left:558px;top:574px"><div class="st6-ring st6-h" id="st6-g2"></div><div class="st6-chip st6-h" id="st6-c2">Illinois</div></div>
+      <div class="st6-at" style="left:558px;top:147px"><div class="st6-ring st6-h" id="st6-g3"></div><div class="st6-chip st6-h" id="st6-c3">Wisconsin</div></div>
+      <div class="st6-at" style="left:800px;top:667px"><div class="st6-ring st6-h" id="st6-g4"></div><div class="st6-chip st6-h" id="st6-c4">Indiana</div></div>
+      <div class="st6-at" style="left:986px;top:282px"><div class="st6-ring st6-h" id="st6-g5"></div><div class="st6-chip st6-h" id="st6-c5">Michigan</div></div>
+      <div class="st6-at" style="left:1088px;top:658px"><div class="st6-ring st6-h" id="st6-g6"></div><div class="st6-chip st6-h" id="st6-c6">Ohio</div></div>
+    </div>
+    <div class="st6-six st6-h" id="st6-six">6</div>
+    <div class="st6-states st6-h" id="st6-states">states</div>
+    <div class="st6-mapcr">Courtesy: Dr. Russell Schneider, SPC</div>
+  </div>
+
+  <div class="st6-part st6-h" id="st6-b">
+    <img class="st6-bg" id="st6-bg" src="media/stills/a4-teletype-room.jpg" alt="">
+    <div class="st6-scrim"></div>
+    <div class="st6-strip" id="st6-strip">
+      <div class="st6-bar" style="top:28px;width:440px"></div>
+      <div class="st6-bar" style="top:72px;width:360px"></div>
+      <div class="st6-bar" style="top:116px;width:420px"></div>
+      <div class="st6-bar" style="top:160px;width:300px"></div>
+      <div class="st6-bar" style="top:204px;width:400px"></div>
+    </div>
+    <div class="st6-stamp st6-h" id="st6-stamp">
+      <svg class="st6-face" id="st6-face" viewBox="0 0 200 200"></svg>
+      <div class="st6-eye">FORECASTERS</div>
+      <div class="st6-time">11:45 AM</div>
+      <div class="st6-place st6-h" id="st6-place">Kansas City</div>
+    </div>
+    <div class="st6-label st6-h" id="st6-label">
+      <div class="st6-big">Tornado forecast</div>
+      <div class="st6-sub">out on the teletype</div>
+    </div>
+    <div class="st6-cap">Weather Bureau teletypewriters, about 1955 &middot; NOAA</div>
+  </div>
+</div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  var ID = "g-i1s4-states", P = "st6", NS = "http://www.w3.org/2000/svg";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
   var tl = gsap.timeline({ paused: true });
-  tl.to({}, { duration: 10.07 }, 0);
-  window.__timelines["g-i1s4-states"] = tl;
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+  function chip(n, t) {                                     /* a state name lands on its state, one amber ring behind it (radius 30 to 70) */
+    tl.fromTo($("c" + n), { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(2)", immediateRender: false }, t);
+    tl.fromTo($("g" + n), { autoAlpha: 1, scale: 1 }, { autoAlpha: 0, scale: 2.33, duration: 0.5, ease: "power2.out", immediateRender: false }, t);
+  }
+
+  /* ---- the clock face (design sheet section 8): centre (95,100) in the stamp, radius 62; 11:45 AM ---- */
+  var face = $("face"), CX = 95, CY = 100, RR = 62, O = CX + " " + CY;
+  function pt(deg, r) { var a = deg * Math.PI / 180; return [CX + r * Math.sin(a), CY - r * Math.cos(a)]; }   /* degrees clockwise from 12 */
+  el("circle", { cx: CX, cy: CY, r: RR, fill: "none", stroke: "#dfe7ee", "stroke-width": 4 }, face);
+  for (var i = 0; i < 12; i++) { var a = pt(i * 30, RR - 6), b = pt(i * 30, RR - 6 - (i % 3 ? 8 : 14));
+    el("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "#dfe7ee", "stroke-width": 3, "stroke-linecap": "round" }, face); }
+  var hh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 34, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  var mh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 52, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  el("circle", { cx: CX, cy: CY, r: 5, fill: "#e8c56a" }, face);
+  s0(hh, { rotation: 352.5, svgOrigin: O });                /* hour hand just short of 12 */
+  s0(mh, { rotation: 240, svgOrigin: O });                  /* minute hand sweeps its last 30 degrees to 270, on the 9 */
+  s0($("map"), { transformOrigin: "900px 540px" });
+
+  /* ================= Part A: the track map ================= */
+  /* 0 · "Tornadoes" @0.00: map and its courtesy credit on; the map pushes 1.00 to 1.03 */
+  tl.fromTo($("map"), { scale: 1 }, { scale: 1.03, duration: 3.19, ease: "none" }, 0);
+
+  /* 1 · "six" @0.79: the count lands, then the six names in the spoken order, one every 0.22 s */
+  tl.fromTo($("six"), { autoAlpha: 0, scale: 1.3 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power4.out", immediateRender: false }, 0.79);
+  tl.fromTo($("states"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 0.89);
+  chip(1, 0.79);   /* Iowa */
+  chip(2, 1.01);   /* Illinois */
+  chip(3, 1.23);   /* Wisconsin */
+  chip(4, 1.45);   /* Indiana */
+  chip(5, 1.67);   /* Michigan */
+  chip(6, 1.89);   /* Ohio: landed @2.14, before "day" ends @2.23 */
+
+  /* ================= Part B: 11:45 AM, Kansas City ================= */
+  /* 3 · "By" @3.19: hard cut to the teletype room and its caption */
+  tl.set($("a"), { autoAlpha: 0 }, 3.19);
+  tl.set($("b"), { autoAlpha: 1 }, 3.19);
+  tl.fromTo($("bg"), { scale: 1 }, { scale: 1.05, duration: 6.88, ease: "none", immediateRender: false }, 3.19);
+
+  /* 4 · "11:45" @3.29: the clock stamp slides in, the minute hand sweeps onto the 9 */
+  tl.fromTo($("stamp"), { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 3.29);
+  tl.to(mh, { rotation: 270, duration: 0.5, ease: "power3.out" }, 3.49);
+
+  /* 5 · "Kansas" @6.01: the place line rises inside the stamp */
+  tl.fromTo($("place"), { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out", immediateRender: false }, 6.01);
+
+  /* 6 · "forecast" @7.31: the paper starts to feed at 60 px/s and never stops inside the window; the label card slides in */
+  tl.to($("strip"), { y: -166, duration: 2.76, ease: "none" }, 7.31);
+  tl.fromTo($("label"), { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 7.31);
+
+  /* 7 · "teletype" @8.51 to 9.01, hold; 8 · exit: stamp out left, label card out right, ending on the hard cut to 08 @10.07 */
+  tl.to($("stamp"), { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.47);
+  tl.to($("label"), { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.47);
+  tl.to({}, { duration: 0.01 }, 10.06);
+
+  window.__timelines[ID] = tl;
 })();
 </script>
 </template>
