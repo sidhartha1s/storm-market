@@ -1,3 +1,5 @@
+Host: id=g-i1s4-states file=compositions/g-i1s4-states.html start=66.95 duration=10.07 track=2
+
 # 07 · I1-S4 · six states, then 11:45 AM in Kansas City (comp `g-i1s4-states`)
 
 Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` sections 4, 8, 10.
@@ -61,15 +63,15 @@ The strip's right edge is x 1420, clear of the corner.
 Text: the six state names · `6` · `states` · `Courtesy: Dr. Russell Schneider, SPC` · `FORECASTERS` · `11:45 AM` · `Kansas City` · `Tornado forecast` · `out on the teletype` · `Weather Bureau teletypewriters, about 1955 · NOAA`.
 | Step | cue | t= | What |
 |---|---|---|---|
-| 0 | first frame (word "Tornadoes") | | map on, credit on; map pushes scale 1.00 to 1.03 |
-| 1 | cue: "six" (whisper may write "6") | | count `6` lands; chips land one every 0.22 s in the order of truth 1, each with its ring |
-| 2 | cue: "day" | | all six on; hold to the end of the sentence |
-| 3 | cue: "By" | | hard cut to Part B: A4 ground and its caption |
-| 4 | cue: "11:45" (spoken "eleven forty five") | | clock stamp slides in, minute hand sweeps into place |
-| 5 | cue: "Kansas" | | place line `Kansas City` rises inside the stamp |
-| 6 | cue: "forecast" (second, "tornado forecast") | | paper strip starts to rise; label card slides in from the right (`x:660 to 0`, 0.6, power3.out) |
-| 7 | cue: "teletype" (last word) | | hold 1.0 s; the strip keeps rising |
-| 8 | exit | | stamp slides out left (`x:-980`), label card right (`x:980`), 0.6, power3.in, into the hard cut to 08 |
+| 0 | first frame (word "Tornadoes") | 0.00 | map on, credit on; map pushes scale 1.00 to 1.03 |
+| 1 | cue: "six" (whisper may write "6") | 0.79 | count `6` lands; chips land one every 0.22 s in the order of truth 1, each with its ring |
+| 2 | cue: "day" | 1.83 | all six on; hold to the end of the sentence |
+| 3 | cue: "By" | 3.19 | hard cut to Part B: A4 ground and its caption |
+| 4 | cue: "11:45" (spoken "eleven forty five") | 3.29 | clock stamp slides in, minute hand sweeps into place |
+| 5 | cue: "Kansas" | 6.01 | place line `Kansas City` rises inside the stamp |
+| 6 | cue: "forecast" (second, "tornado forecast") | 7.31 | paper strip starts to rise; label card slides in from the right (`x:660 to 0`, 0.6, power3.out) |
+| 7 | cue: "teletype" (last word) | 8.51 | hold 1.0 s; the strip keeps rising |
+| 8 | exit | 10.07 | stamp slides out left (`x:-980`), label card right (`x:980`), 0.6, power3.in, into the hard cut to 08 |
 
 ## 6 to 8. Contract, tools, done line, receipt
 As `references/mg-brief-template.md` sections 6, 7, 7a, 8, unchanged. File `compositions/g-i1s4-states.html`, id prefix `st6-`, root id `st6-root`. Done line 7: the map label names six places, each a claim about the map under it.
