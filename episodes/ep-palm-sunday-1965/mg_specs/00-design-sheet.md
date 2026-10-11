@@ -37,14 +37,17 @@ Fonts: Courier New 700 for everything typed on the list sheet and for clock time
 - Cues are words, not seconds. The voice is not recorded: every brief writes `cue: "<word>"` with `t=` blank; the builder fills `t=` from `audio/<seg>.words.json` and keeps the word in a comment (`/* list @t */`).
 
 ## 4. Photograph grounds
-| Ground | Inventory row | Used by | Scrim | True caption (HUD credit) |
-|---|---|---|---|---|
-| Teletype room | A3 (wea01832) | 02, 03, 08, 12 | `.dim` under 02; tween to `.dim-heavy` when paper arrives | "Weather Bureau Communications Center, about 1955 · NOAA" |
-| Teletype machines | A4 (wea01821) | 07 | `.dim` | "Weather Bureau teletypewriters, about 1955 · NOAA" |
-| Damage, Dunlap | C2 | 01 | none; popfig carries its own local scrim | place label, section 11 |
-| Damage, Alto | C5 | 01 | none | place label |
-| Damage, Pittsfield | C7 | 01 | none | place label |
-| Track map | B7 | 07 | none | "Courtesy: Dr. Russell Schneider, SPC" |
+Files landed in `media/stills/` at 03:15 on 12 Oct 26 and were opened for this sheet; rows in `provenance.csv`. Mount the 1080-fit copy named here, never an `-orig` file (media budget), except where a brief names a crop to be cut from one.
+| Ground | Inventory row | File (`media/stills/`) and size | Used by | Scrim | True caption (HUD credit) |
+|---|---|---|---|---|---|
+| Teletype room | A3 (wea01832) | `a3-teletype-operators.jpg`, 1370 x 1080. Two operators seen from behind at their machines; no face shows | 02, 03, 08, 12 | `.dim` under 02; tween to `.dim-heavy` when paper arrives | "Weather Bureau Communications Center, about 1955 · NOAA" |
+| Teletype machines | A4 (wea01821) | `a4-teletype-room.jpg`, 1456 x 1080. Wide room, a row of machines, three people with faces, a wall clock | 07 | `.dim` | "Weather Bureau teletypewriters, about 1955 · NOAA" |
+| Damage, Dunlap | C2 | `c2-dunlap-sunnyside-damage.jpg`, 800 x 647 only, with a faded white edge | 01 | none; popfig carries its own local scrim | place label, section 11 |
+| Damage, Alto | C5 | `c5-alto-aerial-damage.jpg`, 1543 x 1080 | 01 | none | place label |
+| Damage, Pittsfield | C7 | `c7-pittsfield-damage-aerial.jpg`, 1887 x 1080, newspaper halftone | 01 | none | place label |
+| Track map | B7 | `b7-tornado-track-map.jpg`, 1396 x 1046. White ground, grey county lines, red tracks; it prints no state name | 07 | none | "Courtesy: Dr. Russell Schneider, SPC" |
+| Survey page | B1 | `b1-south-bend-warning-page-orig.png`, 2550 x 3300 (the 835 x 1080 copy is too small for text) | 02 | none | section 9 |
+At cover, A3 is enlarged 1.40x and loses 28.6 % of its height, A4 1.32x, C2 2.4x (soft: read it on a frame). No card, chip or stamp may sit over a face in A4.
 
 A3 and A4 are not South Bend, not Kansas City and not 1965. **A place or time label never sits bare on them.** The place and time live on the clock stamp (a glass card, our label), and the photograph carries its own true caption in the credit corner. See template section 7a.7.
 Teletype room continuity (comps 02 then 03 are a match cut): the `<img>` runs scale 1.00 to 1.06 across comp 02; comp 03 opens at scale 1.06 and runs to 1.14 across its window. Same `object-position: 50% 40%` in every comp that uses A3.
