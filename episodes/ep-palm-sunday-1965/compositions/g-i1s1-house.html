@@ -151,9 +151,8 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"radio", { attr: { stroke: "#f2f5f8", "stroke-width": 6.5 }, duration: 0.12, ease: "power2.out" }, 7.08);
   tl.to(P+"radio", { attr: { stroke: "#dfe7ee", "stroke-width": 3.7 }, duration: 0.28, ease: "power2.in" }, 7.20);
   /* TELEVISION @8.24: outline flashes once the same way; the screen stays Idle */
-  tl.to(P+"tv", { attr: { stroke: "#f2f5f8" }, duration: 0.12, ease: "power2.out" }, 8.24);
-  tl.fromTo(P+"tv", { scale: 1 }, { scale: 1.04, svgOrigin: "985 820", duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 8.24);
-  tl.to(P+"tv", { attr: { stroke: "#dfe7ee" }, duration: 0.28, ease: "power2.in" }, 8.36);
+  tl.to(P+"tv", { attr: { stroke: "#f2f5f8", "stroke-width": 5.5 }, duration: 0.12, ease: "power2.out" }, 8.24);
+  tl.to(P+"tv", { attr: { stroke: "#dfe7ee", "stroke-width": 3 }, duration: 0.28, ease: "power2.in" }, 8.36);
   tl.to({}, { duration: 0.01 }, 9.97);
   window.__timelines["g-i1s1-house"] = tl;
 })();
