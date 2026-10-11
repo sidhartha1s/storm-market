@@ -198,6 +198,7 @@ window.__timelines = window.__timelines || {};
   /* WARNINGS @4.36: station 2 lights; the light runs 460 to 540 */
   light(P+"s2", 4.36);
   tl.to(P+"s2dial", { attr: { fill: "#e8c56a" }, duration: 0.3, ease: "power2.out" }, 4.36);
+  tl.to(P+"s2holes", { attr: { stroke: "#2a2622" }, duration: 0.3, ease: "power2.out" }, 4.36);
   run(P+"l2", 460, 540, 4.36, 0.5);
   tl.set(P+"dot", { autoAlpha: 0 }, 4.88);
   /* SENT @4.90: station 3 lights (paper to full Beige polaroid); row B and its tick; the light runs 800 to 840 */
