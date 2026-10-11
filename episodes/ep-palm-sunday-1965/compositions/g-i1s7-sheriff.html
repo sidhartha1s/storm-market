@@ -99,9 +99,7 @@ window.__timelines = window.__timelines || {};
   var uA1 = mark(809, 1293, 254), uA2 = mark(198, 293, 290), uB1 = mark(616, 1225, 333), uB2 = mark(394, 890, 372);
   s0([sA1, sA2, sB1, sB2], { autoAlpha: 0 }); s0([uA1, uA2, uB1, uB2], { scaleX: 0, transformOrigin: "left center" });
 
-  /* ---- the television: lines drawn on, the screen already in the Programme state (four soft bars drifting at 30 px/s) ---- */
-  var lines = $("tv").querySelectorAll(".dw-ln");
-  for (var i = 0; i < lines.length; i++) { var n = Math.ceil(lines[i].getTotalLength()) + 1; lines[i].setAttribute("stroke-dasharray", n); s0(lines[i], { strokeDashoffset: n }); }
+  /* ---- the television in its daylit room, the screen already in the Programme state (four soft bars drifting at 30 px/s) ---- */
   var bars = $("screen").querySelectorAll("." + P + "-bar");
 
   tl.fromTo($("scan"), { x: -400 }, { x: 1960, duration: D, ease: "none" }, 0);
