@@ -1,3 +1,5 @@
+Host: id=g-i1s2-station file=compositions/g-i1s2-station.html start=47.58 duration=10.63 track=2
+
 # 05 · I1-S2 · the South Bend area, the name, the station's card (comp `g-i1s2-station`)
 
 Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` sections 2, 3, 7. Revised 12 Oct 26 to the fact-checked line.
@@ -39,15 +41,15 @@ North up. Indiana's outline is fitted into the box x 230 to 650, y 150 to 930 by
 Text: `South Bend area` · `RECALLED IN 2014` · `Ron Przybylinski` · `age 11 · South Bend area` · the four card lines · `as recalled in 2014`. Two leaves carry "2014" (the name card's eyebrow, the screen's small line) but never in the same frame: the name card has left before the card is on.
 | Step | cue | t= | What |
 |---|---|---|---|
-| 0 | first frame (hard cut from 04, word "In") | | Indiana and neighbours on; a slow `y` float of 4 px on the map group for the whole map hold |
-| 1 | cue: "South" | | ring grows in (`scale 0 to 1`, 0.4, back.out), label in |
-| 2 | cue: "eleven" (whisper may write "11") | | name card slides in (`x:660 to 0`, 0.7, power3.out); eyebrow, name, sub 0.15 s apart |
-| 3 | cue: "watching" | | map exits left (`x:-980`), name card exits right (`x:980`), 0.5 s; television draws on (0.8 s), screen Idle |
-| 4 | cue: "Lassie" | | screen to Programme state (hard switch, one flash); bars drift |
-| 5 | cue: "carried" (second sentence) | | screen to Station card (hard switch, one flash); the four lines are on at once, as a broadcast card would be |
-| 6 | cue: "reports" | | the card's frame line pulses once |
-| 7 | cue: "of" (last word) | | hold 0.8 s |
-| 8 | exit | | hard cut to 06, which opens on this television in this state |
+| 0 | first frame (hard cut from 04, word "In") | 0.00 | Indiana and neighbours on; a slow `y` float of 4 px on the map group for the whole map hold |
+| 1 | cue: "South" | 0.21 | ring grows in (`scale 0 to 1`, 0.4, back.out), label in |
+| 2 | cue: "eleven" (whisper may write "11") | 1.71 | name card slides in (`x:660 to 0`, 0.7, power3.out); eyebrow, name, sub 0.15 s apart |
+| 3 | cue: "watching" | 2.51 | map exits left (`x:-980`), name card exits right (`x:980`), 0.5 s; television draws on (0.8 s), screen Idle |
+| 4 | cue: "Lassie" | 2.85 | screen to Programme state (hard switch, one flash); bars drift |
+| 5 | cue: "carried" (second sentence) | 5.63 | screen to Station card (hard switch, one flash); the four lines are on at once, as a broadcast card would be |
+| 6 | cue: "reports" | 8.41 | the card's frame line pulses once |
+| 7 | cue: "of" (last word) | 9.49 | hold 0.8 s |
+| 8 | exit | 10.63 | hard cut to 06, which opens on this television in this state |
 
 ## 6 to 8. Contract, tools, done line, receipt
 As `references/mg-brief-template.md` sections 6, 7, 7a, 8, unchanged. File `compositions/g-i1s2-station.html`, id prefix `stn-`, root id `stn-root`.
