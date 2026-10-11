@@ -136,7 +136,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(tel0, { rotation: -2.5 }, { rotation: 2.5, duration: 0.06, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 5.52);   /* it rings: a short shake on the cradle */
   tl.set(tel0, { autoAlpha: 0 }, 5.78);                                                                                                         /* the handset is lifted inside the word */
   tl.set(tel1, { autoAlpha: 1 }, 5.78);
-  tl.fromTo(tel1, { y: 16 }, { y: 0, duration: 0.3, ease: "back.out(2)", immediateRender: false }, 5.78);
+  tl.fromTo(tel1, { y: 4 }, { y: 0, duration: 0.3, ease: "back.out(2)", immediateRender: false }, 5.78);   /* 4 drawing units = 14 px */
   tl.to(tel, { x: -1300, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 6.49);                                                              /* down @6.49: gone by 6.84, before the cut to comp 03 at 6.89 */
   tl.to({}, { duration: 0.01 }, 6.98);                      /* list @6.89: the cut to comp 03 lands here */
 
