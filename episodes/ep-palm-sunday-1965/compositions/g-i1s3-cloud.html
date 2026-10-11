@@ -13,7 +13,10 @@
 <template>
 <style>
   #cloud-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
-  .cloud-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  /* the daylit room of comps 04 and 05 (media/drawings/README.md "Ground under the television"): wall, floor band, floor line */
+  .cloud-bg { position:absolute; inset:0; background:#f4f0e6; }
+  .cloud-floor { position:absolute; left:0; top:918px; width:1920px; height:162px; background:#e8dec8; }
+  .cloud-fline { position:absolute; left:96px; top:916px; width:1464px; height:4px; border-radius:2px; background:#15202b; }
   .cloud-h { opacity:0; visibility:hidden; }
   .cloud-set { position:absolute; left:0; top:0; width:1920px; height:1080px; }
   .cloud-tv { position:absolute; left:470.4px; top:140.4px; width:979.2px; height:787.2px; }
