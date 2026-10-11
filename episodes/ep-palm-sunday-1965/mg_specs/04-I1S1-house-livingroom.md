@@ -1,3 +1,5 @@
+Host: id=g-i1s1-house file=compositions/g-i1s1-house.html start=37.60 duration=9.98 track=2
+
 # 04 · I1-S1 · the house in the sun, the living room, both sets idle (comp `g-i1s1-house`)
 
 Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` sections 2, 3, 7. Revised 12 Oct 26 to the fact-checked line.
@@ -40,14 +42,14 @@ Nothing in x >= 1600.
 Text: `Palm Sunday` · `April 11, 1965`. No other text.
 | Step | cue | t= | What |
 |---|---|---|---|
-| 0 | first frame (hard cut from 03, word "April") | | house, street line and sky wash on, already lit; sun at y 340 |
-| 1 | cue: "April" | | title `Palm Sunday` (`x:-60 to 0`, 0.4), then `April 11, 1965` 0.2 s later |
-| 2 | cue: "nice" | | sun rises `y:340 to 300` (1.2 s, power2.out); window fills step from 20 % to 30 % |
-| 3 | cue: "year" | | title slides out left (`x:-980`, 0.5, power3.in) |
-| 4 | cue: "Many" | | camera pushes into the left front window with `logZoom`, scale 1 to 9 about (823.6, 616.8), 1.1 s; at scale 9 the window's amber fills the frame and the room view is switched on beneath it (hard switch at full amber, then the amber clears in 0.3 s). The empty armchair is in the room from its first frame |
-| 5 | cue: "radio" | | radio outline flashes Headline white once (0.4 s) and settles to Body light; dial stays dark |
-| 6 | cue: "television" (last word) | | television outline flashes once the same way; screen stays Idle; hold 1.0 s; the sun patch drift carries it |
-| 7 | exit | | hard cut to 05 |
+| 0 | first frame (hard cut from 03, word "April") | 0.00 | house, street line and sky wash on, already lit; sun at y 340 |
+| 1 | cue: "April" | 0.00 | title `Palm Sunday` (`x:-60 to 0`, 0.4), then `April 11, 1965` 0.2 s later |
+| 2 | cue: "nice" | 3.30 | sun rises `y:340 to 300` (1.2 s, power2.out); window fills step from 20 % to 30 % |
+| 3 | cue: "year" | 4.38 | title slides out left (`x:-980`, 0.5, power3.in) |
+| 4 | cue: "Many" | 5.60 | camera pushes into the left front window with `logZoom`, scale 1 to 9 about (823.6, 616.8), 1.1 s; at scale 9 the window's amber fills the frame and the room view is switched on beneath it (hard switch at full amber, then the amber clears in 0.3 s). The empty armchair is in the room from its first frame |
+| 5 | cue: "radio" | 7.08 | radio outline flashes Headline white once (0.4 s) and settles to Body light; dial stays dark |
+| 6 | cue: "television" (last word) | 8.24 | television outline flashes once the same way; screen stays Idle; hold 1.0 s; the sun patch drift carries it |
+| 7 | exit | 9.98 | hard cut to 05 |
 
 ## 6 to 8. Contract, tools, done line, receipt
 As `references/mg-brief-template.md` sections 6, 7, 7a, 8, unchanged. File `compositions/g-i1s1-house.html`, id prefix `house-`, root id `house-root`.
