@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- ep-palm-sunday-1965 · The Warning Hour · preview v1: hook and intro only (12 Oct 26). Script: edit_script.md; angle: angle.md (owner-locked).
+     Written by hand. Times come from the wav lengths and audio/*.words.json:
+     - Paul speaks H1-S1 on camera (ins-paul-1, his own sound, no narration under it; audio/h1-s1.wav is not mounted). His sound ends
+       at 9.71 s of the clip, so the clip is cut at 9.72 and the toll graphic starts on that frame, never on black.
+     - Seams between narration wavs: 0.15 s after Paul's line; 0.30 s inside a graphic that runs across segments; where a brief names a
+       land time after its last word, the seam is that land time minus the wav's own silent tail, never under 0.30 s and never over
+       0.75 s (lint allows 0.8 s). T1-S2 to T1-S3 is 0.75 s by hand: the eight rows have to be typed before "State" is read.
+     - Every graphic host starts on the first word of its first segment and ends where the next one starts. Two follow their briefs
+       instead: g-t1s1-toll starts on the cut from Paul (0.15 s before "Two"), and g-t1s3-list starts on the word "list" of T1-S2
+       (match cut out of g-t1s2-warning).
+     - Every graphic in this set is full frame with its own ground (mg_specs/00-design-sheet.md section 3), so no still is mounted here.
+     - This cut ends on the 0.7 s blackout after I1-S10. No book ad and no chapter card in it.
+     PRESENTER CIRCLE: not mounted in this cut (the face is made later on the ZBook). It would run from 38.31 to 114.29, I1-S1's first
+     word to the end of the list question: face on track 7, ring on track 9, as references/mg-quickref.md "Corner circle". It stays off
+     through Paul's clip, the hook tail (0 to 38.31) and the blackout. Every graphic keeps x >= 1600, y >= 680 free for it. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Who Stopped the Palm Sunday 1965 Tornado Warning? · The Warning Hour</title>
+  <script src="gsap.min.js"></script>
+  <script src="grain.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    /* ---- Abril figure popup (channel device: red, text-shadow, 3 words or fewer, never over a map comp) ---- */
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    .popfig { position: absolute; left: 200px; right: 300px; top: 36%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 12px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 38px; color: #f4f0e8;
+      letter-spacing: 0.3em; -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill;
+      text-shadow: 0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+    .popfig::before { content: ''; position: absolute; left: 14%; right: 14%; top: -90px; bottom: -70px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
+    /* the date label sits on Paul's shirt, below his chin (his face runs from y 70 to 570 in this clip), so frame one is his face */
+    .popfig.pf-chest { top: 61%; }
+    /* ---- film layer ---- */
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="ep-palm-sunday-1965" data-start="0" data-width="1920" data-height="1080" data-duration="114.99" data-fps="30">
+
+  <!-- ============ PAUL ON CAMERA (his own sound; frame one of the video) ============ -->
+  <video id="ins-paul-1" src="media/paul/ins-paul-1/ins-paul-1.mp4" data-start="0" data-duration="9.72" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="City police in one county heard troopers report a tornado and told nobody until one hit. Weather Bureau warnings went to offices and stations, not homes."></video>
+
+  <!-- ============ NARRATION (15 segments; Paul's line H1-S1 is his clip above) ============ -->
+  <!-- hook tail -->
+  <audio id="nx-t1-s1" src="audio/t1-s1.wav" data-start="9.87" data-duration="3.764" data-volume="1"></audio>
+  <audio id="nx-t1-s2" src="audio/t1-s2.wav" data-start="14.13" data-duration="7.976" data-volume="1"></audio>
+  <audio id="nx-t1-s3" src="audio/t1-s3.wav" data-start="22.86" data-duration="6.956" data-volume="1"></audio>
+  <audio id="nx-t1-s4" src="audio/t1-s4.wav" data-start="30.12" data-duration="3.593" data-volume="1"></audio>
+  <audio id="nx-t1-s5" src="audio/t1-s5.wav" data-start="34.01" data-duration="3.877" data-volume="1"></audio>
+  <!-- intro: no void, I1-S1 follows the question 1.0 s after its last word -->
+  <audio id="nx-i1-s1" src="audio/i1-s1.wav" data-start="38.31" data-duration="9.423" data-volume="1"></audio>
+  <audio id="nx-i1-s2" src="audio/i1-s2.wav" data-start="48.21" data-duration="10.614" data-volume="1"></audio>
+  <audio id="nx-i1-s3" src="audio/i1-s3.wav" data-start="59.17" data-duration="8.061" data-volume="1"></audio>
+  <audio id="nx-i1-s4" src="audio/i1-s4.wav" data-start="67.87" data-duration="9.593" data-volume="1"></audio>
+  <audio id="nx-i1-s5" src="audio/i1-s5.wav" data-start="78.13" data-duration="4.189" data-volume="1"></audio>
+  <audio id="nx-i1-s6" src="audio/i1-s6.wav" data-start="82.87" data-duration="5.296" data-volume="1"></audio>
+  <audio id="nx-i1-s7" src="audio/i1-s7.wav" data-start="88.92" data-duration="6.658" data-volume="1"></audio>
+  <audio id="nx-i1-s8" src="audio/i1-s8.wav" data-start="95.88" data-duration="5.211" data-volume="1"></audio>
+  <audio id="nx-i1-s9" src="audio/i1-s9.wav" data-start="101.64" data-duration="8.657" data-volume="1"></audio>
+  <audio id="nx-i1-s10" src="audio/i1-s10.wav" data-start="111.05" data-duration="2.742" data-volume="1"></audio>
+
+  <!-- ============ GRAPHIC HOSTS (track 2; one comp per brief in mg_specs, each full frame with its own ground) ============ -->
+  <!-- 01 · T1-S1: the toll over the Dunlap and Alto photographs. Starts on the cut from Paul; "271" is spoken at 9.87 -->
+  <div id="host-t1s1-toll" data-composition-id="g-t1s1-toll" data-composition-src="compositions/g-t1s1-toll.html" data-start="9.72" data-duration="4.41" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 02 · T1-S2: the clock, the warning page, the telephone. Ends on the word "list" at 21.37 -->
+  <div id="host-t1s2-warning" data-composition-id="g-t1s2-warning" data-composition-src="compositions/g-t1s2-warning.html" data-start="14.13" data-duration="7.24" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 03 · T1-S3, T1-S4, T1-S5: the telephone list, the blank row, the family. From "list" in T1-S2 to 1.0 s after the question's last word -->
+  <div id="host-t1s3-list" data-composition-id="g-t1s3-list" data-composition-src="compositions/g-t1s3-list.html" data-start="21.37" data-duration="16.94" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 04 · I1-S1: the house in the sun, the living room -->
+  <div id="host-i1s1-house" data-composition-id="g-i1s1-house" data-composition-src="compositions/g-i1s1-house.html" data-start="38.31" data-duration="9.9" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 05 · I1-S2: the South Bend area, the name card, the station's card -->
+  <div id="host-i1s2-station" data-composition-id="g-i1s2-station" data-composition-src="compositions/g-i1s2-station.html" data-start="48.21" data-duration="10.96" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 06 · I1-S3: back to the show, a clear sky, the study's sentence -->
+  <div id="host-i1s3-cloud" data-composition-id="g-i1s3-cloud" data-composition-src="compositions/g-i1s3-cloud.html" data-start="59.17" data-duration="8.7" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 07 · I1-S4: six states, then 11:45 AM in Kansas City -->
+  <div id="host-i1s4-states" data-composition-id="g-i1s4-states" data-composition-src="compositions/g-i1s4-states.html" data-start="67.87" data-duration="10.26" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 08 · I1-S5: the stations' row and the ON AIR lamp -->
+  <div id="host-i1s5-onair" data-composition-id="g-i1s5-onair" data-composition-src="compositions/g-i1s5-onair.html" data-start="78.13" data-duration="4.74" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 09 · I1-S6: the study's sentence about police headquarters (one Indiana county) -->
+  <div id="host-i1s6-page" data-composition-id="g-i1s6-page" data-composition-src="compositions/g-i1s6-page.html" data-start="82.87" data-duration="6.05" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 10 · I1-S7, I1-S8: the sheriff's two sentences (a different county), then the television -->
+  <div id="host-i1s7-sheriff" data-composition-id="g-i1s7-sheriff" data-composition-src="compositions/g-i1s7-sheriff.html" data-start="88.92" data-duration="12.72" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 11 · I1-S9: the whole chain, and the desk where the light stops -->
+  <div id="host-i1s9-chain" data-composition-id="g-i1s9-chain" data-composition-src="compositions/g-i1s9-chain.html" data-start="101.64" data-duration="9.41" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 12 · I1-S10: the list once more. Ends 1.0 s after "nobody?", on the cut to black -->
+  <div id="host-i1s10-list" data-composition-id="g-i1s10-list" data-composition-src="compositions/g-i1s10-list.html" data-start="111.05" data-duration="3.24" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ BLACKOUT (the script's 0.7 s after the intro's last line; this cut ends on it) ============ -->
+  <section class="clip blackout" id="bo-i1" data-start="114.29" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- ============ OVERLAYS (each wrapped in a timed section) ============ -->
+  <!-- date and place inside the first second, over Paul's clip (the one text allowed on him); gone at 3.5, six seconds before his clip ends -->
+  <section id="ov-pf-date" data-start="0.4" data-duration="3.2" data-track-index="6">
+    <div class="popfig pf-chest" id="pf-date"><span class="pf-big">April 11, 1965</span><span class="pf-sub">one Indiana county</span></div>
+  </section>
+
+  <!-- ============ SOUND (choices and reasons: edit_script.md "Sound, hook and intro") ============
+       No siren: this story is a warning that did not travel. One low bed from 0:00, out on the intro's last word.
+       The swell ends on the last word of the toll line. The ring starts on "It" of T1-S2's second sentence.
+       One key strike on each of the four rows read aloud in T1-S3. -->
+  <audio id="sx-bed" src="media/sfx/bed-hook-intro.mp3" data-bed="" data-start="0" data-duration="113.25" data-volume="0.13"></audio>
+  <audio id="sx-swell-toll" src="media/sfx/swell-toll.wav" data-bed="" data-start="8.13" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-ring" src="media/sfx/telephone-ring.wav" data-bed="" data-start="19.47" data-duration="1.88" data-volume="0.3"></audio>
+  <audio id="sx-key-state" src="media/sfx/key-strike.wav" data-bed="" data-start="22.86" data-duration="0.22" data-volume="0.35"></audio>
+  <audio id="sx-key-sheriffs" src="media/sfx/key-strike.wav" data-bed="" data-start="24.74" data-duration="0.22" data-volume="0.35"></audio>
+  <audio id="sx-key-city" src="media/sfx/key-strike.wav" data-bed="" data-start="26.0" data-duration="0.22" data-volume="0.35"></audio>
+  <audio id="sx-key-named" src="media/sfx/key-strike.wav" data-bed="" data-start="27.36" data-duration="0.22" data-volume="0.35"></audio>
+
+  <!-- ============ FILM LAYER ============ -->
+  <div id="vignette"></div>
+  <canvas id="grain" width="480" height="270"></canvas>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 114.99;
+  function pop(sel, at, hold) {
+    tl.fromTo(sel, { scale: 2.2, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "power4.in" }, at);
+    tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.28, ease: "power2.in" }, at + hold - 0.28);
+  }
+
+  /* ---- popfig: the date and place land inside the first second, as Paul says "in one county" (0.56 to 1.36) ---- */
+  pop("#pf-date", 0.5, 3.0);
+
+  filmLayer(tl, DUR);
+  window.__timelines["ep-palm-sunday-1965"] = tl;
+})();
+</script>
+</body>
+</html>
