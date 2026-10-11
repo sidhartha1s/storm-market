@@ -50,5 +50,5 @@ Text: `South Bend area` · `RECALLED IN 2014` · `Ron Przybylinski` · `age 11 �
 | 8 | exit | | hard cut to 06, which opens on this television in this state |
 
 ## 6 to 8. Contract, tools, done line, receipt
-As `references/mg-brief-template.md` sections 6, 7, 7a, 8, unchanged. File `compositions/g-i1s2-station.html`, id prefix `brk-`, root id `brk-root`.
+As `references/mg-brief-template.md` sections 6, 7, 7a, 8, unchanged. File `compositions/g-i1s2-station.html`, id prefix `stn-`, root id `stn-root`.
 **Closest library exemplar:** `library/inhouse/master-map-us-canada.html` (the basemap and its projection) and El Reno `compositions/g-i1s1-map.html` (a state map with one marked place and a card beside it); name card from `library/inhouse/snippets/cards.css` `.namecard`, values baked in under the comp's own class.
