@@ -6,14 +6,15 @@ Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` se
 - T1-S3: "State Police. Sheriffs. City police. Named radio and television stations."
 - T1-S4: "A family got it from an announcer, if the announcer had it."
 - T1-S5: "Whose job was it to tell the family at the end of the list?"
-**One look:** a typed telephone list. Four names get a tick. The last row has no name. Past the edge of the paper: a microphone, then a house, both dark.
+**One look:** a typed telephone list. Four names get a tick as they are read. The last row has no name. Past the edge of the paper: a microphone, then a house, both dark.
 
 ## 0. What this graphic claims
-South Bend's Weather Bureau telephoned its warnings to offices and stations (eight entries in the study; four are read aloud). No household is on the list. A family heard only through a broadcaster, and only if the broadcaster had the warning.
+South Bend's Weather Bureau also telephoned its warnings to organizations; those notified "included" eight the study names, and four are read aloud. No household is among them. A family heard only through a broadcaster, and only if the broadcaster had the warning.
 
 ## 1. Source
 - `edit_script.md` T1-S3 Rows [A6; study printed p. 14] (four of the eight entries); T1-S4 Rows [C12] [C8] ("the C8 station has no name and no county in the study"); T1-S5 has no row.
-- Row text and order: design sheet section 5 table, copied from the T1-S3 Picture note.
+- Row text and order: the study's sentence on printed p. 14, read on `media/docs/study-pdf-16-orig.png` and quoted in full in design sheet section 5: "Those organizations notified included the State Police, Sheriffs' Departments, City Police Departments, Indiana and Michigan Electric Company, Red Cross, specified radio and TV stations, flying services, and airlines." The page is the source; it is not shown in this comp.
+- "Included" means two things for the picture: the sheet is not everyone who was told, and it is not an order of calls. Rows stand in the sentence's order with no numbering.
 - Ground: `media/stills/a3-teletype-operators.jpg` (1370 x 1080, inventory row A3, opened 12 Oct 26: two operators from behind at teletype machines, about 1955).
 - The house and microphone are drawings because the inventory holds no 1965 studio or home.
 
