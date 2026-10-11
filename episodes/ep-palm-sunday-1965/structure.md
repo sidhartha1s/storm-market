@@ -1,4 +1,4 @@
-# Palm Sunday 1965: structure (shown to the owner 11 Oct 26, not yet signed off)
+# Palm Sunday 1965: structure (signed off by the owner 11 Oct 26 17:24: 'go', length '20-25', twin funnel 'use it.')
 
 Claim (copied from `angle.md`, never rewritten): On Palm Sunday 1965 the forecast did not fail and the warnings were sent. They stopped one desk short of the people.
 
