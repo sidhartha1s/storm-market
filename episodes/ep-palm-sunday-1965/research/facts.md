@@ -181,7 +181,7 @@ NWS pages, not primary (they report what followed; the claim is the NWS's, no We
 - IWX: South Bend had no radar. "The South Bend office had no radar, nor a remote radar feed. They were relying on phone conversations with radar operators in Chicago." STUDY printed p. 14: "South Bend ... had no radar, and, therefore, relied upon information from other WB radar stations nearby (i.e., Chicago, Fort Wayne, or Indianapolis)."
 - Curran, IWX: the Fort Wayne radar was the WSR-3 "built in WWII for the purpose of detecting aircraft"; "The small scope had a rapid decay rate with no map background".
 
-## I. Candidate facts not in the top videos (unchecked against any video; the owner's research agent has not been given the video transcripts here)
+## I. Candidate facts the top videos may not use (not checked against any video transcript in this run)
 
 1. The warning that went out for Marion an hour and twenty minutes late, with the log line, and Fort Wayne passing the same wrong time to the Columbus office (IWX narrative; A22).
 2. Fort Wayne, the office that had to warn Berne and Marion, was dark: "No issuances between 9:30 PM EST and 10:30 PM EST due to power failure" (SURVEY printed p. 44), lit by an extension cord from the FAA office (Curran, IWX).
