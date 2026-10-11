@@ -1,3 +1,5 @@
+Host: id=g-i1s6-page file=compositions/g-i1s6-page.html start=81.66 duration=6.22 track=2
+
 # 09 · I1-S6 · the study's sentence about police headquarters (comp `g-i1s6-page`)
 
 Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` section 9. Kept apart from comp 10 on purpose: this page is one county, comp 10's page is another, and the two never share a frame or a comp. Revised 12 Oct 26 to the page scan.
@@ -44,13 +46,13 @@ The strip's longest line is 51 characters; at Georgia 40 px it is checked on a f
 Text: `one Indiana county` · the quote in three lines as section 3 · `Disaster Research Center, 1966, pp. 19-20`. Page words are the image.
 | Step | cue | t= | What |
 |---|---|---|---|
-| 0 | first frame (word "In") | | canvas ground; document card already sliding in (`x:660 to 0`, 0.7, power3.out) |
-| 1 | cue: "one" | | county label drops in (`y:-30 to 0`, 0.3) |
-| 2 | cue: "police" | | unlit page fades in; U1 draws (0.5 s) |
-| 3 | cue: "officers" | | U2 draws (0.7 s) |
-| 4 | cue: "tornado" | | U3 draws (0.25 s) |
-| 5 | cue: "hit" (last word) | | quote strip rises; hold 1.5 s; a 3 px float on card and strip carries it |
-| 6 | exit | | label, card and strip slide out right (`x:1900`, 0.6, power3.in); the frame is clear before the hard cut to 10 |
+| 0 | first frame (word "In") | 0.00 | canvas ground; document card already sliding in (`x:660 to 0`, 0.7, power3.out) |
+| 1 | cue: "one" | 0.12 | county label drops in (`y:-30 to 0`, 0.3) |
+| 2 | cue: "police" | 1.04 | unlit page fades in; U1 draws (0.5 s) |
+| 3 | cue: "officers" | 2.72 | U2 draws (0.7 s) |
+| 4 | cue: "tornado" | 3.88 | U3 draws (0.25 s) |
+| 5 | cue: "hit" (last word) | 4.22 | quote strip rises; hold 1.5 s; a 3 px float on card and strip carries it |
+| 6 | exit | 6.22 | label, card and strip slide out right (`x:1900`, 0.6, power3.in); the frame is clear before the hard cut to 10 |
 
 ## 6 to 8. Contract, tools, done line, receipt
 As `references/mg-brief-template.md` sections 6, 7, 7a, 8, unchanged. File `compositions/g-i1s6-page.html`, id prefix `pol-`, root id `pol-root`.
