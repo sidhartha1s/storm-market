@@ -2,17 +2,215 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
+<!--
+  g-i1s9-chain · I1-S9 · window 9.32 s · brief: mg_specs/11-I1S9-chain-desk.md
+  Claim (locked, word for word): "the forecast did not fail and the warnings were sent. They stopped one desk short of the people."
+  SCHEMATIC, NOT TO SCALE: who told whom, left to right. Link line y 520. The light never passes x 840.
+  No amber on the desk, the microphone or the house in any frame. Desk telephone: handset ON the hook. Nobody is drawn.
+  Cues are comp-local seconds (brief t=, audio/i1-s9.words.json minus 0.34). Drawings: media/drawings (design sheet section 7).
+-->
 <template>
 <style>
-  .chn-root { position:absolute; inset:0; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .chn-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .chn-sweep { position:absolute; left:0; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
+  .chn-svg { position:absolute; left:0; top:0; }
+  .chn-eb { position:absolute; left:96px; top:96px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .chn-row { position:absolute; left:136px; font-size:30px; line-height:36px; font-weight:700; color:#dfe7ee; white-space:nowrap; }
+  .chn-lab { position:absolute; top:676px; font-size:22px; line-height:28px; font-weight:700; color:#93a3b2; text-align:center; }
+  .chn-head { position:absolute; left:96px; top:780px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:64px;
+    color:#f2f5f8; white-space:nowrap; }
+  .chn-head b { font-weight:900; color:#d0121f; }
 </style>
 <div id="chn-root" class="chn-root" data-composition-id="g-i1s9-chain" data-width="1920" data-height="1080" data-duration="9.32">
+  <div class="chn-sweep" id="chn-sweep"></div>
+
+  <svg class="chn-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <!-- links at y 520: solid as far as the list, dotted after it -->
+    <g fill="none" stroke="#55606b" stroke-width="4" stroke-linecap="round">
+      <path d="M236 520 H316 M460 520 H540"/>
+      <path d="M800 520 H840" stroke-dasharray="0.1 14"/>
+      <path id="chn-dotb" d="M854 520 H1095" stroke-dasharray="0.1 14"/>
+      <path d="M1100 520 H1170 M1272 520 H1400" stroke-dasharray="0.1 14"/>
+    </g>
+
+    <!-- the travelling light: three links, never past x 840 -->
+    <g fill="none" stroke="#e8c56a" stroke-width="6" stroke-linecap="round">
+      <path id="chn-l1" d="M236 520 H316"/>
+      <path id="chn-l2" d="M460 520 H540"/>
+      <path id="chn-l3" d="M800 520 H837"/>
+    </g>
+
+    <!-- 1 · teletype icon -->
+    <g transform="translate(96 450)">
+      <g id="chn-s1" fill="none" stroke="#55606b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <rect id="chn-s1paper" x="34" y="0" width="72" height="50" fill="#15202b"/>
+        <rect x="0" y="50" width="140" height="90" fill="#15202b"/>
+        <rect x="14" y="112" width="112" height="20"/>
+      </g>
+      <path id="chn-s1bars" d="M44 14 H88 M44 26 H96 M44 38 H80" fill="none" stroke="#55606b" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <!-- 2 · telephone, handset OFF the hook -->
+    <g transform="translate(316 519.6) scale(1.6)">
+      <g id="chn-s2" fill="none" stroke="#55606b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0 44 H90 L78 14 H12 Z" fill="#15202b"/>
+        <circle id="chn-s2dial" cx="45" cy="29" r="9" fill="#15202b"/>
+        <path d="M10 -5 a4 4 0 0 0 0 7 a4 4 0 0 1 0 7 a4 4 0 0 0 4 5"/>
+        <g transform="translate(0 -26) rotate(-20 45 5)">
+          <rect x="4" y="10" width="10" height="8" fill="#15202b"/>
+          <rect x="76" y="10" width="10" height="8" fill="#15202b"/>
+          <rect x="4" y="0" width="82" height="10" rx="5" fill="#15202b"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- 3 · the list in miniature: eight bars, a ninth row with nothing on it. No words, no numbers, no boxes. -->
+    <g id="chn-s3">
+      <rect x="540" y="350" width="260" height="300" rx="2" fill="#f4f0e6"/>
+      <g fill="#6b6257">
+        <rect x="570" y="381" width="170" height="10"/>
+        <rect x="570" y="411" width="170" height="10"/>
+        <rect x="570" y="441" width="170" height="10"/>
+        <rect x="570" y="471" width="170" height="10"/>
+        <rect x="570" y="501" width="170" height="10"/>
+        <rect x="570" y="531" width="170" height="10"/>
+        <rect x="570" y="561" width="170" height="10"/>
+        <rect x="570" y="591" width="170" height="10"/>
+      </g>
+      <path d="M566 401 H774 M566 431 H774 M566 461 H774 M566 491 H774 M566 521 H774 M566 551 H774 M566 581 H774 M566 611 H774 M566 641 H774"
+        fill="none" stroke="#6b6257" stroke-opacity="0.3" stroke-width="1.5"/>
+    </g>
+
+    <!-- 4 · microphone, dark to the last frame -->
+    <g transform="translate(1170 420) scale(0.85)">
+      <g id="chn-s4" fill="none" stroke="#55606b" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60 112 V182"/>
+        <rect x="30" y="0" width="60" height="112" rx="30" fill="#15202b"/>
+        <path d="M40 30 H80 M40 56 H80 M40 82 H80"/>
+        <path d="M30 182 H90 L108 230 H12 Z" fill="#15202b"/>
+        <circle cx="104" cy="20" r="9" fill="#15202b"/>
+      </g>
+    </g>
+
+    <!-- 5 · house, dark to the last frame -->
+    <g transform="translate(1400 430) scale(0.68)">
+      <g id="chn-s5" fill="none" stroke="#55606b" stroke-width="5.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M186 37.3 V22 H208 V50"/>
+        <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+        <rect x="20" y="80" width="220" height="170" fill="#15202b"/>
+        <rect x="112" y="170" width="36" height="80"/>
+        <rect x="44" y="120" width="48" height="48" fill="#15202b"/>
+        <rect x="168" y="120" width="48" height="48" fill="#15202b"/>
+        <path d="M68 120 V168 M44 144 H92"/>
+        <path d="M192 120 V168 M168 144 H216"/>
+        <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+      </g>
+    </g>
+
+    <!-- the desk where the light stops: telephone on its hook, nobody at it, no amber -->
+    <g id="chn-desk">
+      <g transform="translate(840 490) scale(0.85)">
+        <g fill="none" stroke="#dfe7ee" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect class="chn-dl" x="0" y="40" width="300" height="12" fill="#15202b"/>
+          <rect class="chn-dl" x="14" y="52" width="12" height="98"/>
+          <rect class="chn-dl" x="274" y="52" width="12" height="98"/>
+          <rect class="chn-dl" x="190" y="62" width="74" height="38"/>
+          <path class="chn-dl" d="M219 81 H235"/>
+          <path class="chn-dl" d="M106 40 H196 L184 10 H118 Z" fill="#15202b"/>
+          <circle class="chn-dl" cx="151" cy="25" r="9"/>
+          <rect class="chn-dl" x="110" y="6" width="10" height="8" fill="#15202b"/>
+          <rect class="chn-dl" x="182" y="6" width="10" height="8" fill="#15202b"/>
+          <rect class="chn-dl" x="110" y="-4" width="82" height="10" rx="5" fill="#15202b"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- the light's leading dot, its last ring, and the stop mark at x 840 -->
+    <circle id="chn-ringp" cx="840" cy="520" r="8" fill="none" stroke="#e8c56a" stroke-width="3"/>
+    <circle id="chn-dot" cx="236" cy="520" r="8" fill="#e8c56a"/>
+    <rect id="chn-stop" x="837" y="484" width="6" height="72" fill="#d0121f"/>
+
+    <!-- pen ticks on the two claim rows: Body light, never red -->
+    <path id="chn-tka" d="M98 161 L106 171 L122 149" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="chn-tkb" d="M98 211 L106 221 L122 199" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+
+  <div class="chn-eb" id="chn-eb">PALM SUNDAY &middot; APRIL 11, 1965</div>
+  <div class="chn-row" id="chn-ra" style="top:142px">The forecast did not fail</div>
+  <div class="chn-row" id="chn-rb" style="top:192px">The warnings were sent</div>
+
+  <div class="chn-lab" style="left:96px; width:140px">Kansas City forecasters</div>
+  <div class="chn-lab" style="left:293px; width:190px">Weather Bureau &middot; South Bend</div>
+  <div class="chn-lab" style="left:540px; width:260px">the list</div>
+  <div class="chn-lab" style="left:1121px; width:200px">an announcer</div>
+  <div class="chn-lab" style="left:1388px; width:200px">a family</div>
+
+  <div class="chn-head" id="chn-head">They stopped <b>one desk short</b> of the people.</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.to({}, { duration: 9.32 }, 0);
+  const P = "#chn-";
+  function draw(el, at, dur) {
+    const len = Math.ceil(el.getTotalLength()) + 1;
+    gsap.set(el, { strokeDasharray: len });
+    tl.fromTo(el, { strokeDashoffset: len }, { strokeDashoffset: 0, duration: dur, ease: "power2.out" }, at);
+  }
+  function light(sel, at) { tl.to(sel, { attr: { stroke: "#f2f5f8" }, duration: 0.3, ease: "power2.out" }, at); }
+  function run(link, x0, x1, at, dur) {
+    tl.fromTo(link, { scaleX: 0 }, { scaleX: 1, svgOrigin: x0 + " 520", duration: dur, ease: "power2.inOut" }, at);
+    tl.set(P+"dot", { autoAlpha: 1 }, at);
+    tl.fromTo(P+"dot", { attr: { cx: x0 } }, { attr: { cx: x1 }, duration: dur, ease: "power2.inOut" }, at);
+  }
+
+  /* ON @0.00: five stations and the links drawn dark, labels on; no desk */
+  tl.set([P+"eb", P+"ra", P+"rb", P+"head", P+"desk", P+"dot", P+"ringp", P+"tka", P+"tkb"], { autoAlpha: 0 }, 0);
+  tl.set([P+"l1", P+"l2", P+"l3"], { scaleX: 0, svgOrigin: "0 520" }, 0);
+  tl.set(P+"stop", { scaleY: 0, svgOrigin: "840 484" }, 0);
+  tl.set(P+"s3", { opacity: 0.36 }, 0);
+  tl.fromTo(P+"sweep", { x: -560 }, { x: 2300, duration: 4.66, ease: "none", repeat: 1 }, 0);
+  /* PALM @0.14: eyebrow */
+  tl.fromTo(P+"eb", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.14);
+  /* FORECAST @2.50: station 1 lights; the light runs 236 to 316 */
+  light(P+"s1", 2.50);
+  tl.to(P+"s1paper", { attr: { fill: "#e8c56a" }, duration: 0.3, ease: "power2.out" }, 2.50);
+  tl.to(P+"s1bars", { attr: { stroke: "#2a2622" }, duration: 0.3, ease: "power2.out" }, 2.50);
+  run(P+"l1", 236, 316, 2.50, 0.5);
+  tl.set(P+"dot", { autoAlpha: 0 }, 3.02);
+  /* FAIL @3.36: row A and its tick */
+  tl.fromTo(P+"ra", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 3.36);
+  tl.set(P+"tka", { autoAlpha: 1 }, 3.36);
+  draw(document.getElementById("chn-tka"), 3.36, 0.25);
+  /* WARNINGS @4.36: station 2 lights; the light runs 460 to 540 */
+  light(P+"s2", 4.36);
+  tl.to(P+"s2dial", { attr: { fill: "#e8c56a" }, duration: 0.3, ease: "power2.out" }, 4.36);
+  run(P+"l2", 460, 540, 4.36, 0.5);
+  tl.set(P+"dot", { autoAlpha: 0 }, 4.88);
+  /* SENT @4.90: station 3 lights (paper to full Beige polaroid); row B and its tick; the light runs 800 to 840 */
+  tl.to(P+"s3", { opacity: 1, duration: 0.3, ease: "power2.out" }, 4.90);
+  tl.fromTo(P+"s3", { scale: 1 }, { scale: 1.04, svgOrigin: "670 500", duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 4.90);
+  tl.fromTo(P+"rb", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.90);
+  tl.set(P+"tkb", { autoAlpha: 1 }, 4.90);
+  draw(document.getElementById("chn-tkb"), 4.90, 0.25);
+  run(P+"l3", 800, 840, 4.92, 0.4);
+  /* the lit stations' amber parts breathe to carry the holds */
+  tl.to([P+"s1paper", P+"s2dial"], { attr: { "fill-opacity": 0.55 }, duration: 0.65, ease: "sine.inOut", yoyo: true, repeat: 5 }, 5.40);
+  /* STOPPED @5.98: the dot dies at x 840 in one ring pulse; the stop mark draws top to bottom */
+  tl.set(P+"ringp", { autoAlpha: 1 }, 5.98);
+  tl.fromTo(P+"ringp", { attr: { r: 8 }, opacity: 0.9 }, { attr: { r: 40 }, opacity: 0, duration: 0.45, ease: "power2.out" }, 5.98);
+  tl.to(P+"dot", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 5.98);
+  tl.to(P+"stop", { scaleY: 1, duration: 0.25, ease: "power3.out" }, 5.98);
+  /* DESK @6.68: the desk and its telephone draw on where the light stopped; the headline rises */
+  tl.to(P+"dotb", { autoAlpha: 0, duration: 0.2, ease: "power2.out" }, 6.68);
+  tl.set(P+"desk", { autoAlpha: 1 }, 6.68);
+  document.querySelectorAll(".chn-dl").forEach(function (el, i) { draw(el, 6.68 + Math.min(i, 5) * 0.03, 0.45); });
+  tl.fromTo(P+"head", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.68);
+  /* PEOPLE @7.56: the microphone and the house pulse once to Body light at 80 % and back to dark; no amber */
+  tl.to([P+"s4", P+"s5"], { attr: { stroke: "#b4bcc3" }, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 7.56);
+  tl.to({}, { duration: 0.01 }, 9.31);
   window.__timelines["g-i1s9-chain"] = tl;
 })();
 </script>
