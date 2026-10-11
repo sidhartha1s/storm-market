@@ -31,7 +31,7 @@ The headline is about 1,200 px wide at 52 px: checked on a frame to end before x
 2. The light passes stations 1, 2 and 3 and never passes x 840. No amber is on the desk, the microphone or the house in any frame.
 3. The desk is drawn at the stop point, between the list and the microphone, on the word "desk" and not before. Its telephone handset is **on the hook**. Station 2's handset is off the hook.
 4. The two links right of the desk stay dotted and grey to the last frame.
-5. The miniature list has eight bars and a ninth empty tick box and no readable name: no office is singled out here (S1, S2).
+5. The miniature list has eight bars and a ninth empty row, no readable name, no numbering and no tick box: no organization is singled out here (S1, S2).
 6. Rows A and B and the headline are the locked claim's words, unchanged.
 7. The ticks on rows A and B are Body light pen ticks, never red. Popfig red is on the stop mark and on `one desk short` only.
 8. No person at the desk, at the microphone or in the house (S5).
