@@ -17,7 +17,7 @@ PR and say which one won.
 - No fluff before it: sentence one IS the payoff (numbers first, then the specific image, then the question).
   Delete-test: cut sentence one — if the hook still works, it was fluff.
 - No roadmap phrases ("one more thing before", "in the next twenty minutes"): they read as delay. Exception (owner 4 Oct 26): a hook callback that names the hook's claim ("Stick with me, because what I'm about to explain is exactly why <the hook's claim>.") is allowed, several times through the video, e.g. at act seams (home: `script-scaling.md` "open-loop registry"). Runtime roadmaps stay banned.
-- Cold open (DESIGN.md): frame one is Paul on camera speaking the hook line (documentaries; the one sentence above, nothing added to fill his clip), then mid-action footage, never black. The first line starts at 0:00 — no broadcast,
+- Cold open (DESIGN.md): frame one is Paul on camera speaking the hook line (documentaries; the one sentence above comes first, then he keeps speaking the next line or two of the tail so his clip carries about 22 to 26 words: owner 11 Oct 26, a clip costs the same at 12 words or 30, "12 is just too low"), then mid-action footage, never black. The first line starts at 0:00 — no broadcast,
   radio or archive audio in the hook (bad audio quality loses viewers before the hook finishes). Date/place popfig
   inside the first second. Every cut lands ON an audio event, never mid-sentence.
 
