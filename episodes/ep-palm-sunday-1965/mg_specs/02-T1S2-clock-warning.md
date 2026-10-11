@@ -22,9 +22,10 @@ Scale on screen = 1460 / 1060 = 1.377. Line pitch on the page is about 47 px, so
 |---|---|
 | Ground | A3 `<img>` cover, `object-position:50% 40%`, scale 1.00 to 1.06 over the window, `.dim` scrim (`rgba(3,5,8,0.45)`) |
 | Clock stamp | design sheet section 8: glass card left 96, top 96, 590 x 200; `WEATHER BUREAU` / `5:43 PM` / `South Bend, Indiana`; hands 171.5 and 258 degrees |
-| Document card | left 96, top 340, 1480 x 320 (right 1576, bottom 660); Beige polaroid border 10 px; inner width 1460 |
-| Underline | Crimson 6 px under the first line box only |
-| Quote strip | not used here: the first line is a heading on the page and the crop is five lines, so it is checked on a frame; if the line renders under 34 px tall, crop to three lines |
+| Document card | left 96, top 340, 1480 x 314 (right 1576, bottom 654); Beige polaroid border 10 px; inner 1460 x 294 |
+| Underline | Crimson 6 px under `Severe thunderstorm and tornado warning.` only (the crop's last line) |
+| Unlit page | covers the heading `SOUTH BEND (Continued)` at 45 %; `Issued at 5:43 PM EST.` and the underlined line stay bright |
+| Quote strip | not used: the line is about 65 px tall on screen |
 | Photo caption | credit corner, left 96, bottom 60: `Weather Bureau Communications Center, about 1955 · NOAA` |
 | Document source | on the card's lower border, right aligned at x 1560, y 668 to 690: Arial 700 20 px, Body light with the credit shadow: `Weather Bureau survey report, 1965` |
 | Telephone | drawn telephone (design sheet section 7) at 4.0 scale, box x 760 to 1120, y 420 to 596, lines Body light 4 px on screen (stroke set after scaling, `vector-effect:non-scaling-stroke`), body fill Panel dark; two ring arcs each side, radius 40 and 64 from the handset ends |
