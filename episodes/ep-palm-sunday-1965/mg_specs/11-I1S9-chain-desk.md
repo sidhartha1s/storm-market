@@ -1,3 +1,5 @@
+Host: id=g-i1s9-chain file=compositions/g-i1s9-chain.html start=99.97 duration=9.32 track=2
+
 # 11 · I1-S9 · the whole chain, and the desk where the light stops (comp `g-i1s9-chain`)
 
 Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` sections 6 (intro version), 7. This is the claim of the episode in one frame.
@@ -41,16 +43,16 @@ The headline is about 1,200 px wide at 52 px: checked on a frame to end before x
 Text: `PALM SUNDAY · APRIL 11, 1965` · `The forecast did not fail` · `The warnings were sent` · `They stopped one desk short of the people.` · the five station labels (design sheet section 6).
 | Step | cue | t= | What |
 |---|---|---|---|
-| 0 | first frame (word "On") | | all five stations and the links drawn dark (Label grey at 55 %), labels on; the 800 to 1170 stretch is one dotted line; no desk |
-| 1 | cue: "Palm" | | eyebrow in |
-| 2 | cue: "forecast" | | station 1 lights; light runs link 236 to 316 (0.5 s) |
-| 3 | cue: "fail" | | row A and its tick |
-| 4 | cue: "warnings" | | station 2 lights; light runs link 460 to 540 (0.5 s) |
-| 5 | cue: "sent" | | station 3 lights (its paper to full Beige polaroid); row B and its tick; light runs 800 to 840 |
-| 6 | cue: "stopped" | | the dot reaches x 840 and dies in one ring pulse (radius 8 to 40); stop mark draws top to bottom (0.25 s) |
-| 7 | cue: "desk" | | desk and telephone draw on (0.6 s), lines Body light, no amber; headline rises (`y:30 to 0`, 0.4) |
-| 8 | cue: "people" (last word) | | microphone and house pulse once to Body light at 80 % and back to dark; hold 1.5 s. The lit stations' amber parts breathe (finite repeats) to carry the hold |
-| 9 | exit | | hard cut to 12 |
+| 0 | first frame (word "On") | 0.00 | all five stations and the links drawn dark (Label grey at 55 %), labels on; the 800 to 1170 stretch is one dotted line; no desk |
+| 1 | cue: "Palm" | 0.14 | eyebrow in |
+| 2 | cue: "forecast" | 2.50 | station 1 lights; light runs link 236 to 316 (0.5 s) |
+| 3 | cue: "fail" | 3.36 | row A and its tick |
+| 4 | cue: "warnings" | 4.36 | station 2 lights; light runs link 460 to 540 (0.5 s) |
+| 5 | cue: "sent" | 4.90 | station 3 lights (its paper to full Beige polaroid); row B and its tick; light runs 800 to 840 |
+| 6 | cue: "stopped" | 5.98 | the dot reaches x 840 and dies in one ring pulse (radius 8 to 40); stop mark draws top to bottom (0.25 s) |
+| 7 | cue: "desk" | 6.68 | desk and telephone draw on (0.6 s), lines Body light, no amber; headline rises (`y:30 to 0`, 0.4) |
+| 8 | cue: "people" (last word) | 7.56 | microphone and house pulse once to Body light at 80 % and back to dark; hold 1.5 s. The lit stations' amber parts breathe (finite repeats) to carry the hold |
+| 9 | exit | 9.32 | hard cut to 12 |
 
 ## 6 to 8. Contract, tools, done line, receipt
 As `references/mg-brief-template.md` sections 6, 7, 7a, 8, unchanged. File `compositions/g-i1s9-chain.html`, id prefix `chn-`, root id `chn-root`. Done line 2: state the measured fill; the chain band, the claim rows above it and the headline below it are placed so no empty block passes a third of the frame.
