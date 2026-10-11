@@ -97,6 +97,7 @@ window.__timelines = window.__timelines || {};
 
   /* 0 · "Were" @0.00: ground and sheet on in the Close state, the city police row marked and tagged, the cursor blinking */
   tl.fromTo($("bg"), { scale: 1 }, { scale: 1.05, duration: 3.19, ease: "none" }, 0);
+  tl.fromTo($("src"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0);
   for (var k = 0; 0.5 + k < D; k++) {
     tl.set(cur, { autoAlpha: 0 }, 0.5 + k);
     if (1 + k < D) tl.set(cur, { autoAlpha: 1 }, 1 + k);
