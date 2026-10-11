@@ -119,7 +119,7 @@ window.__timelines = window.__timelines || {};
 
   /* 4 · hold @3.64: band breathing and ground push; 5 · exit: the sheet slides down, ending on the hard cut to 09 @4.64 */
   tl.to($("paper"), { y: 1100, duration: 0.6, ease: "power3.in" }, 4.04);
-  tl.to($("src"), { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 4.34);
+  tl.to($("src"), { autoAlpha: 0, duration: 0.12, ease: "none" }, 4.04);   /* gone before the sliding paper reaches it @4.18 */
   tl.to({}, { duration: 0.01 }, 4.63);
 
   window.__timelines[ID] = tl;
