@@ -79,7 +79,7 @@ A forecast reaching into north central Indiana was on the Weather Bureau teletyp
 The first tornado warning for northern Indiana went out at five forty-three in the evening. [A6]
 The thirty-five minutes come from John Brouillette of the Disaster Research Center, who studied eight Indiana counties. [C7, C19]
 In seven of the eight, the Weather Bureau had named the county before a tornado touched down there. [C19]
-He calls them County A, County B and County C, and never says which is which. [F]
+The study calls them County A, County B and County C, and never says which is which. [F]
 Between the Weather Bureau and a family at home stood a line of people. [A6]
 State Police, sheriffs and city police took its telephone calls. [A6]
 So did radio and television stations, and a civil defense director could pass word on by radio. [A6, A13]
