@@ -186,7 +186,7 @@ NWS pages, not primary (they report what followed; the claim is the NWS's, no We
 1. The warning that went out for Marion an hour and twenty minutes late, with the log line, and Fort Wayne passing the same wrong time to the Columbus office (IWX narrative; A22).
 2. Fort Wayne, the office that had to warn Berne and Marion, was dark: "No issuances between 9:30 PM EST and 10:30 PM EST due to power failure" (SURVEY printed p. 44), lit by an extension cord from the FAA office (Curran, IWX).
 3. The South Bend desk's own message at 6:50 PM that it could no longer keep track and could not notify people, then at 7:13 PM the request to stop calling (SURVEY printed pp. 40-41). Plus: the all clears at 7:33 PM (partial) and 8:30 PM, while central Indiana tornadoes were still on the log (A14, A18, A19, A20).
-4. "The information died with the police" (County B), and a police chief who "didn't want to panic" people (STUDY printed pp. 22-23).
+4. "The information died with the police" (County B), and a police chief who "was afraid that the people might panic unnecessarily if warned directly by them" (STUDY printed p. 23).
 5. The survey's first recommendation is an alarm at the announcer's desk: "positive alerting devices (remoted to the announcer's position where necessary)" (SURVEY printed p. 2).
 
 ## Not fetched, or fetched and not read
