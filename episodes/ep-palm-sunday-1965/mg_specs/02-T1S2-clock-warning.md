@@ -32,7 +32,7 @@ Line pitch on the page is about 47 px, so about 65 px on screen: large enough to
 | Unlit page | covers the heading `SOUTH BEND (Continued)` at 45 %; `Issued at 5:43 PM EST.` and the underlined line stay bright |
 | Quote strip | not used: the line is about 65 px tall on screen |
 | Photo caption | credit corner, left 96, bottom 60: `Weather Bureau Communications Center, about 1955 · NOAA` |
-| Document source | under the card, right aligned at x 1560, top 684: Arial 700 20 px, Body light with the credit shadow: `Weather Bureau survey report, 1965, p. 39` (it ends at x 1560, left of the corner) |
+| Document source | under the card, right aligned at x 1560, top 668: Arial 700 20 px, Body light with the credit shadow: `Weather Bureau survey report, 1965, p. 39` (it ends at x 1560, left of the corner) |
 | Telephone | drawn telephone (design sheet section 7) at 4.0 scale, box x 760 to 1120, y 420 to 596, lines Body light 4 px on screen (stroke set after scaling, `vector-effect:non-scaling-stroke`), body fill Panel dark; two ring arcs each side, radius 40 and 64 from the handset ends |
 
 ## 4. Must be true in the picture
