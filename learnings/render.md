@@ -17,7 +17,7 @@ Newest first. New entries go at the top, under this line. Superseded lines point
    project's npm installer packages are found), 0.8.147 (a render stall names the step Chrome hung in), 0.8.148 (MP4,
    MOV and TS exports keep sound and picture in sync when a file's streams start apart). 0.8.149 only adds an importable
    `hyperframes/api` entry (transcribe, removeBackground): nothing for a render.
-3. No capture, seek or font change in this range. The audio duration, stream-start sync and long-export items touch
+3. No seek or font change in this range. The audio duration, stream-start sync and long-export items touch
    what El Reno-length episodes meet, but demo-pin has one tone and a 4 s clip, so it cannot see them: first seen in
    Palm Sunday 1965's draft render. The second A/B in the 0.8.143 entry (snapshot both pins on a real episode) was not
    run for this bump.
