@@ -39,7 +39,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 
 ### H1-S1 · Paul on camera, one clip
 **Picture:** Paul on camera, full frame, frame one: the white shirt desk frame used in El Reno, not a thumbnail image. He speaks these two sentences in one clip and nothing else. Label "April 11, 1965 · one Indiana county" inside the first second. Low drone bed from 0:00; no broadcast, radio or archive audio. Cut out on his last word.
-> Police in one county heard troopers report a tornado and told nobody until it hit. The Weather Bureau's warning went to offices and stations, not homes.
+> City police in one county heard troopers report a tornado and told nobody until one hit. Weather Bureau warnings went to offices and stations, not homes.
 
 **Rows:** [C2, A7; study printed pp. 19 to 20, page image read: city police monitored the 5:50 PM State Police message; headquarters notified no one "until after the first tornado hit the county"] · [A6; study printed p. 14: the list holds offices and stations, no households]
 
