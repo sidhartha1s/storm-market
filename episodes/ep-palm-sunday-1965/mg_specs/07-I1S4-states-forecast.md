@@ -41,7 +41,7 @@ Part B:
 | Clock stamp | design sheet section 8: `FORECASTERS` / `11:45 AM` / `Kansas City`; hands 352.5 and 270 degrees |
 | Paper strip | Beige polaroid, x 900 to 1420, rising from y 1080 to y 440 at 60 px/s, never stopping inside the window; typed lines are Caption dark sub bars 16 px tall, widths 300 to 440 px, every 44 px; no readable word |
 | Label | glass card left 880, top 250, 640 x 150 (right 1520, bottom 400): `Tornado forecast` Arial Black 900 52 px Headline white at top 276; `out on the teletype` Georgia italic 26 px Amber 2 at top 350. Placed here so its blur sits over the photograph's wall clock (screen about 1174, 356) |
-| Faces | the three faces in A4 fall near screen (158, 620), (30, 520) and (1870, 630) at cover: no card, stamp or strip is over them |
+| Faces | the three faces in A4 fall near screen (158, 620), (30, 520) and (1870, 630) at cover (read by eye; confirm on a frame): no card, stamp or strip is over them |
 | Photo caption | credit corner: `Weather Bureau teletypewriters, about 1955 · NOAA` |
 The strip's right edge is x 1420, clear of the corner.
 
