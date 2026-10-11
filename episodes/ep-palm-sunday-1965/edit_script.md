@@ -47,7 +47,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 ## T1 · Hook tail (start time waits on the voice probe)
 
 ### T1-S1 · narration
-**Picture:** hard cut on the first word to real photographs, never black: the damage pictures marked Free in the inventory, each with its place label: Sunnyside in Dunlap, Indiana (C2), Alto, Indiana, from the air (C5), Pittsfield, Ohio (C7). The number "271" lands on "two hundred seventy one" and holds. Source line under it, small: "four National Weather Service offices · other counts run from 260 to 266". One bed swell, no siren.
+**Picture:** hard cut on the first word to real photographs, never black: the damage pictures marked Free in the inventory, each with its place label: Sunnyside in Dunlap, Indiana (C2) and Alto, Indiana, from the air (C5). C7 stays out until its town is confirmed. The number "271" lands on "two hundred seventy one" and holds, with the label "lives lost across six states" so the count is not read as Indiana's. Source line under it, small: "National Weather Service · other counts run from 260 to 266". One bed swell, no siren.
 > Two hundred seventy one people lost their lives that day.
 
 **Rows:** [F] (said once; the attribution sits on screen, after the number)
