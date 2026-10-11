@@ -5,7 +5,7 @@ Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` se
 **One look:** a clock at 5:43, the typed warning itself, then a telephone picked up.
 
 ## 0. What this graphic claims
-At 5:43 PM the Weather Bureau in South Bend issued a warning whose first line reads "Severe thunderstorm and tornado warning." Separately, and not tied to 5:43, South Bend telephoned its warnings to a list of offices.
+At 5:43 PM the Weather Bureau in South Bend issued a warning that the page records as "Issued at 5:43 PM EST. Severe thunderstorm and tornado warning." Separately, and not tied to 5:43, South Bend also telephoned its warnings to a list of organizations.
 
 ## 1. Source
 - `edit_script.md` T1-S2, Rows [A6; survey printed p. 39] and [A6; study printed p. 14: South Bend "also telephoned several organizations", said of its warnings in general].
