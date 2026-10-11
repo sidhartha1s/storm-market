@@ -74,21 +74,9 @@ window.__timelines = window.__timelines || {};
   s0(hh, { rotation: 171.5, svgOrigin: O });                /* 5:43: hour hand between 5 and 6 */
   s0(mh, { rotation: 228, svgOrigin: O });                  /* minute hand sweeps its last 30 degrees to 258, between 8 and 9 */
 
-  /* ---- the telephone (design sheet section 7), 4x, box x 760 to 1120, y 420 to 596: screen = (760 + 4x, 420 + 4y) ---- */
-  var tel = $("tel"), LN = { fill: "none", stroke: "#dfe7ee", "stroke-width": 4, "stroke-linecap": "round", "stroke-linejoin": "round" };
-  function ln(tag, a, parent, fill) { for (var k in LN) if (!(k in a)) a[k] = LN[k]; if (fill) a.fill = "#15202b"; return el(tag, a, parent); }
-  var cord = dash(ln("path", { d: "M798,432 a14,14 0 0 0 0,28 a14,14 0 0 1 0,28 a14,14 0 0 0 0,28" }, tel));   /* three small arcs from the lifted handset's left end to the body, drawn as it lifts */
-  var body = dash(ln("path", { d: "M760,596 L1120,596 L1072,476 L808,476 Z" }, tel, true));
-  var dial = dash(ln("circle", { cx: 940, cy: 536, r: 36 }, tel));
-  var hs = el("g", {}, tel);
-  var earL = dash(ln("rect", { x: 776, y: 460, width: 40, height: 32 }, hs, true));
-  var earR = dash(ln("rect", { x: 1064, y: 460, width: 40, height: 32 }, hs, true));
-  var bar = dash(ln("rect", { x: 776, y: 420, width: 328, height: 40, rx: 20 }, hs, true));
-  function ring(cx, r, dir) { var k = r * 0.7071;           /* a quarter arc facing away from the handset end */
-    return ln("path", { d: "M" + (cx + dir * k) + "," + (440 - k) + " A" + r + "," + r + " 0 0 " + (dir > 0 ? 1 : 0) + " " + (cx + dir * k) + "," + (440 + k) }, tel); }
-  var arcsL = [ring(776, 40, -1), ring(776, 64, -1)], arcsR = [ring(1104, 40, 1), ring(1104, 64, 1)];
-  s0(arcsL, { autoAlpha: 0, svgOrigin: "776 440" }); s0(arcsR, { autoAlpha: 0, svgOrigin: "1104 440" });
-  s0(hs, { svgOrigin: "940 440" });
+  /* ---- the telephone: the drawings builder's 1965 desk telephone (media/drawings/telephone.svg on the cradle, telephone-lifted.svg
+          with the handset raised; one viewBox, so the two pictures register), on a glass plate so it reads on the photograph ---- */
+  var tel = $("tel"), tel0 = $("tel0"), tel1 = $("tel1");
 
   /* ---- cues ---- */
   s0($("ul"), { scaleX: 0, transformOrigin: "left center" });
