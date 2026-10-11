@@ -27,8 +27,16 @@ Status is read from this file. A box is ticked only with the check that proved i
   - 12 Oct 26: he found all of those hard to picture ("hard to visualize this as the hook or the intro"). An independent critique (`hook-critique.md`) named the defect (no line gave the viewer a picture) and offered three rebuilt hooks as storyboards (review page `p65-hookfix.html`).
   - Owner's pick, saved 12 Oct 26 02:50: **Rebuild 2, the telephone list.** His note, verbatim: "dont use the first frame as u suggested. use the white shirt paul like el reno. go ahead with 2. show me preview v1. let me know is zbook needs to stay alive."
   - Reading, the agent's: "preview v1" is a draft render of the hook and intro. Paul's first frame is El Reno's desk frame (white linen shirt), `episodes/ep4-el-reno/media/paul/inputs/paul-desk-frame.jpg` in the El Reno worktree, never a thumbnail image.
-  - [ ] `edit_script.md` sections H1, T1, I1 written with a picture per line; the six picked hook lines fact-checked on page images before Paul's clip is made.
+  - [x] `edit_script.md` sections H1, T1, I1 written with a picture per line (12 Oct 26): 16 segments. Fact check on page images: 3 of the 6 picked hook lines corrected, 5 of the 9 intro lines corrected; grade T1 7 and I1 5 of 10 before the fix pass; one check round on the rewritten lines, two word fixes applied. Paul's line is now "City police in one county heard troopers report a tornado and told nobody until one hit. Weather Bureau warnings went to offices and stations, not homes." The owner picked "Police headquarters heard the tornado warning and did nothing until it hit..."; the study does not support it (the message was State Police reporting a sighting at 5:50 PM). He has not seen the new line yet. Hook order changed too: the toll comes straight after Paul (his hook rule: toll inside 20 s).
+  - [x] Paul's clip 1 made in Flow, one take, 15 credits (12 Oct 26): `media/paul/ins-paul-1/raw-01.mp4`, every word spoken, none added; mounted file `ins-paul-1.mp4` at 1080p with the logo and the owner's voice. Two earlier sends spent nothing (driver clicked a "How do I get started?" card; then Flow asked which mode to use).
+  - [x] Voice (12 Oct 26): 16 segments voiced at the lane tempo, converted to the owner's voice with the El Reno scratch tools (`episodes/ep4-el-reno/.qc-tmp/voice-sid/convert_one.py` in the El Reno worktree; not in the repo proper yet), each transcript matching its line. T1-S5 carries `(tempo 0.85)`.
+  - [x] Stills (12 Oct 26): 9 free pictures in `media/stills/` with `provenance.csv` rows; 8 page scans of the study and the survey in `media/docs/`. C7's town is unconfirmed, so it is not used. The study scan's rights line has not been read.
+  - [x] Graphic briefs (12 Oct 26): `mg_specs/00-design-sheet.md` and briefs 01 to 12 (3 hook, 9 intro).
+  - [ ] Timeline `index.html` for hook and intro, cue times written into the briefs.
+  - [ ] The 12 graphics built by Opus builders, read by an Opus verifier, one frame each read by the orchestrator.
+  - [ ] Gates run; findings that exist only because this cut is an opening (no book ad, no corner face, short runtime) listed apart.
   - [ ] Preview v1 rendered (draft) and shown to the owner.
+  - Pin: `pin_ritual.py` passed 0.8.143 to 0.8.149 on 12 Oct 26 (branch `pin-0-8-149`); the bump merges on the owner's OK, so preview v1 renders on 0.8.143.
 - [ ] Paul's on-camera lines; the book ad hinge inside the config window.
 - [ ] `edit_script.md` section by section, fact-check fan-out beside the owner's read.
 
