@@ -1,7 +1,7 @@
 // PROTOTYPE for ops/tasks.md task 27 (seek-order gate). Not a gate and run by nothing.
 // Copied as it ran in the El Reno worktree, where it sat in episodes/ep4-el-reno/.qc-tmp/replot-stage/:
 // its import path, EP and COMPS assume that place and that episode. A gate built from it takes the episode as an argument.
-// replot-stage scratch (read-only checker, never committed): does a comp draw the same picture at second t
+// replot-stage scratch (read-only checker): does a comp draw the same picture at second t
 // whatever was seeked before? Order A = fresh page, forward only. Order B = fresh page, seek 0, seek past t, seek back to t.
 // Usage: node seekcheck.mjs state            -> DOM-state diff, every 0.5 s, all 11 replot comps
 //        node seekcheck.mjs shot comp:t ...  -> two PNGs per pair (A and B), byte-compared, saved to seek-frames/
