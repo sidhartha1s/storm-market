@@ -32,8 +32,12 @@ Status is read from this file. A box is ticked only with the check that proved i
   - [x] Voice (12 Oct 26): 16 segments voiced at the lane tempo, converted to the owner's voice with the El Reno scratch tools (`episodes/ep4-el-reno/.qc-tmp/voice-sid/convert_one.py` in the El Reno worktree; not in the repo proper yet), each transcript matching its line. T1-S5 carries `(tempo 0.85)`.
   - [x] Stills (12 Oct 26): 9 free pictures in `media/stills/` with `provenance.csv` rows; 8 page scans of the study and the survey in `media/docs/`. C7's town is unconfirmed, so it is not used. The study scan's rights line has not been read.
   - [x] Graphic briefs (12 Oct 26): `mg_specs/00-design-sheet.md` and briefs 01 to 12 (3 hook, 9 intro).
-  - [ ] Timeline `index.html` for hook and intro, cue times written into the briefs.
+  - [x] Timeline `index.html` for hook and intro (12 Oct 26): cut 113.18 s, Paul 0 to 9.72 s, 12 graphic hosts, cue times written into the briefs; `python3 scripts/lint_timeline.py` PASS.
   - [ ] The 12 graphics built by Opus builders, read by an Opus verifier, one frame each read by the orchestrator.
+    - Built: all 12 files in `compositions/`.
+    - Verifier pass 1 (01, 02, 03, 07, 08, 12): 4 pass (01 toll, 03 list, 07 states, 08 on air); 02 warning and 12 list question fail. 02: the telephone drawing reads as a kitchen scale, it is still whole on the cut at 21.07 s, and it draws over the leaving page for about 0.16 s. 12: the last pulse clears about 0.48 s after "nobody?" ends. Heads-up on 04: first frame at 37.60 s showed no house.
+    - Fix round 1 sent 12 Oct 26: a redrawn 1965 desk telephone (`media/drawings/telephone.svg`, `telephone-lifted.svg`) mounted in 02 and in the list header of 03, 08, 12; 02's exit and overlap; 12 pulses three rows only; 04's first frame.
+    - Open: verifier pass 2 (04, 05, 06, 09, 10, 11) and the re-check of 02 and 12.
   - [ ] Gates run; findings that exist only because this cut is an opening (no book ad, no corner face, short runtime) listed apart.
   - [ ] Preview v1 rendered (draft) and shown to the owner.
   - Pin: `pin_ritual.py` passed 0.8.143 to 0.8.149 on 12 Oct 26 (branch `pin-0-8-149`); the bump merges on the owner's OK, so preview v1 renders on 0.8.143.
