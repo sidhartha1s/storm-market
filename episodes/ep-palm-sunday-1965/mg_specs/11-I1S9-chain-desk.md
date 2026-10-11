@@ -22,8 +22,8 @@ Stations, desk and links: the design sheet section 6 intro table, as written. Pl
 | Row A | left 96, top 142: `The forecast did not fail` Arial 700 30 px, Body light; a pen tick 26 px wide at x 96 to 122, text from x 136 |
 | Row B | left 96, top 192: `The warnings were sent`, same style |
 | Light | Amber 2 line 6 px drawn over a link with `scaleX` from its left end, with a leading dot radius 8; a lit station's lines turn Headline white and its paper or lamp parts Amber 2 |
-| Stop mark | Crimson bar 6 px wide, x 837 to 843, y 484 to 556 |
-| Headline | left 96, top 780: `They stopped one desk short of the people.` Arial Black 900 52 px, Headline white; the words `one desk short` in Crimson |
+| Stop mark | Popfig red bar 6 px wide, x 837 to 843, y 484 to 556 |
+| Headline | left 96, top 780: `They stopped one desk short of the people.` Arial Black 900 52 px, Headline white; the words `one desk short` in Popfig red |
 The headline is about 1,200 px wide at 52 px: checked on a frame to end before x 1560. Every label and the headline are fixed; nothing here rides a camera, because there is no camera move.
 
 ## 4. Must be true in the picture
@@ -33,7 +33,7 @@ The headline is about 1,200 px wide at 52 px: checked on a frame to end before x
 4. The two links right of the desk stay dotted and grey to the last frame.
 5. The miniature list has eight bars and a ninth empty tick box and no readable name: no office is singled out here (S1, S2).
 6. Rows A and B and the headline are the locked claim's words, unchanged.
-7. The ticks on rows A and B are Body light pen ticks, never red. Crimson is on the stop mark and on `one desk short` only.
+7. The ticks on rows A and B are Body light pen ticks, never red. Popfig red is on the stop mark and on `one desk short` only.
 8. No person at the desk, at the microphone or in the house (S5).
 9. Design sheet S4, S6, S7: the microphone carries no station name.
 
