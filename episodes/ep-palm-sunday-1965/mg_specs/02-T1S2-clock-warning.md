@@ -54,7 +54,7 @@ Text: `WEATHER BUREAU` · `5:43 PM` · `South Bend, Indiana` · `Weather Bureau 
 | 3 | cue: "issued" | | document card slides in from the right (`x:660 to 0`, 0.7, power3.out) |
 | 4 | cue: "tornado" (first sentence) | | unlit page fades in over the heading, underline draws under `Severe thunderstorm and tornado warning.` (0.6 s) |
 | 5 | cue: "It" (second sentence; the ring sound starts here) | | clock stamp exits left; document card exits right (`x:1900`, 0.6, power3.in) |
-| 6 | cue: "telephoned" | | telephone draws on (0.6 s); handset lifts 26 px and turns -20 degrees (0.35 s, back.out); ring arcs pulse twice (0.4 s each, finite) |
+| 6 | cue: "telephoned" (the line now reads "It also telephoned") | | telephone draws on (0.6 s); handset lifts 26 px and turns -20 degrees (0.35 s, back.out); ring arcs pulse twice (0.4 s each, finite) |
 | 7 | cue: "down" | | telephone slides left out of frame (`x:-1100`, 0.5, power3.in) |
 | 8 | cue: "list" | | comp ends on this word; comp 03 starts on the same frame (match cut on the ground, scale 1.06) |
 
