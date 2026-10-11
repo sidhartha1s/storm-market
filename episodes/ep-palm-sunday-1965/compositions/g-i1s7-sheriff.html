@@ -94,8 +94,8 @@ window.__timelines = window.__timelines || {};
   function mark(xa, xb, yt) { var b = document.createElement("div"); b.className = P + "-ul";   /* the red line, top at crop y yt: 3 to 4 px under the words' baseline, clear of the next line */
     b.style.cssText = "left:" + (B + xa) + "px;top:" + (B + yt) + "px;width:" + (xb - xa) + "px"; card.appendChild(b); return b; }
 
-  /* "at all" ends at crop x 139; the page's three dots start at x 142 (measured on the crop: the brief's x 152 took in the first dot), so the window stops at x 141 */
-  var sA1 = strip(810, 72, 1435, 117), sA2 = strip(19, 121, 133, 168);       /* "We didn't have any warning" / "at all" (stops before the page's three dots) */
+  /* "at all" ends at crop x 293; the page's three dots start at x 295 (measured on the crop: the brief's box took in the first dot), so the window stops at x 294 */
+  var sA1 = strip(809, 225, 1293, 257), sA2 = strip(198, 263, 286, 296);     /* "We didn't have any warning" / "at all" (stops before the page's three dots) */
   var sB1 = strip(559, 172, 1349, 217), sB2 = strip(272, 223, 915, 269);     /* "the television didn't even list here" (after "And") / "as being in the danger area." (after the bracket) */
   var uA1 = mark(810, 1435, 115), uA2 = mark(19, 139, 160), uB1 = mark(559, 1349, 212), uB2 = mark(272, 915, 268);
   s0([sA1, sA2, sB1, sB2], { autoAlpha: 0 }); s0([uA1, uA2, uB1, uB2], { scaleX: 0, transformOrigin: "left center" });
