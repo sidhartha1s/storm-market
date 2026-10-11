@@ -109,7 +109,7 @@ Two kinds of Free, read before using:
 - B3, B4, B5, the 11 Apr 1965 charts that start the day
 - B1, the Weather Bureau survey report (not opened by me)
 - A13 to A15, Office of Civil Defense films (office and communications scenes, not watched)
-- C1, the Huffman twin funnel, as a Commons PD claim (lead to decide)
+- C1, the Huffman twin funnel, as a Commons PD claim. Decided by the owner on 11 Oct 26 (review page `p65-structure.html`, his words: "use it."). This picture only; rows D2 and D3 are other pictures and stay "Ask".
 - C2, C5, C6, C7, Dunlap, Alto, Kokomo and Pittsfield damage, as Commons PD claims
 
 ### Gaps where nothing free was found
