@@ -217,6 +217,7 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"ringp", { autoAlpha: 1 }, 5.98);
   tl.fromTo(P+"ringp", { attr: { r: 8 }, opacity: 0.9 }, { attr: { r: 40 }, opacity: 0, duration: 0.45, ease: "power2.out" }, 5.98);
   tl.to(P+"dot", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 5.98);
+  tl.set(P+"stop", { autoAlpha: 1 }, 5.98);
   tl.to(P+"stop", { scaleY: 1, duration: 0.25, ease: "power3.out" }, 5.98);
   /* DESK @6.68: the desk and its telephone draw on where the light stopped; the headline rises */
   tl.to(P+"dotb", { autoAlpha: 0, duration: 0.2, ease: "power2.out" }, 6.68);
