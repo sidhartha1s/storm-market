@@ -2,18 +2,83 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-t1s1-toll: stub, build in progress. Brief: mg_specs/01-T1S1-toll-271.md. -->
+<!-- g-t1s1-toll (T1-S1): real wreckage in two named Indiana places and one number for the whole outbreak: 271, across six states.
+     Brief: mg_specs/01-T1S1-toll-271.md; shared look: mg_specs/00-design-sheet.md sections 10, 11.
+     P1 media/stills/c2-dunlap-sunnyside-damage.jpg (provenance row C2: Sunnyside subdivision, Dunlap, Indiana) is 800 x 647, so it is
+     shown as a print at 1.3x (crop x 20 to 780, y 20 to 630 of the file, inside its faded white edge) over a blurred copy of itself,
+     never at the 2.5x a full-frame cover would need. P2 media/stills/c5-alto-aerial-damage.jpg (row C5: Alto, Indiana) is full frame.
+     The popfig values are index.html's .popfig, baked in under this comp's own class names.
+     Cues are comp-local seconds (host start 9.72) from audio/t1-s1.words.json. -->
 <template>
 <style>
-  #toll-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; }
+  #toll-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .toll-full { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; object-position:50% 50%; }
+  .toll-soft { filter:blur(26px) brightness(0.55); }
+  .toll-print { position:absolute; left:456px; top:80px; width:988px; height:793px; overflow:hidden; border:10px solid #f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .toll-print img { position:absolute; left:-26px; top:-26px; width:1040px; height:841px; }
+  .toll-scrim { position:absolute; left:410px; top:260px; width:1100px; height:520px; background:radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
+  .toll-num { position:absolute; left:0; top:389px; width:1920px; text-align:center; font:150px 'AbrilFig', Georgia, serif; color:#d0121f; letter-spacing:0.04em; text-indent:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  .toll-lab { position:absolute; left:0; top:551px; width:1920px; text-align:center; font:900 38px 'Arial Black', Arial, sans-serif; color:#f2f5f8; letter-spacing:0.2em; text-indent:0.2em; white-space:nowrap; line-height:1;
+    -webkit-text-stroke:1px rgba(0,0,0,0.85); paint-order:stroke fill; text-shadow:0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+  .toll-src { position:absolute; left:0; top:610px; width:1920px; text-align:center; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .toll-chip { position:absolute; left:110px; bottom:110px; padding:14px 26px; font:900 34px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .toll-h { opacity:0; visibility:hidden; }
 </style>
-<div id="toll-root" data-composition-id="g-t1s1-toll" data-width="1920" data-height="1080"></div>
+<div id="toll-root" data-composition-id="g-t1s1-toll" data-width="1920" data-height="1080">
+  <div id="toll-p1">
+    <img class="toll-full toll-soft" id="toll-p1-soft" src="media/stills/c2-dunlap-sunnyside-damage.jpg" alt="">
+    <div class="toll-print"><img id="toll-p1-img" src="media/stills/c2-dunlap-sunnyside-damage.jpg" alt=""></div>
+  </div>
+  <img class="toll-full toll-h" id="toll-p2" src="media/stills/c5-alto-aerial-damage.jpg" alt="">
+
+  <div class="toll-scrim toll-h" id="toll-scrim"></div>
+  <div class="toll-num toll-h" id="toll-num">271</div>
+  <div class="toll-lab toll-h" id="toll-lab">lives lost across six states</div>
+  <div class="toll-src toll-h" id="toll-src">National Weather Service &middot; other counts run from 260 to 266</div>
+
+  <div class="toll-chip toll-h" id="toll-chip1">Sunnyside &middot; Dunlap, Indiana</div>
+  <div class="toll-chip toll-h" id="toll-chip2">Alto, Indiana &middot; from the air</div>
+</div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
+  var ID = "g-t1s1-toll", P = "toll";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
   var tl = gsap.timeline({ paused: true });
-  tl.to({}, { duration: 4.46 }, 0);
-  window.__timelines["g-t1s1-toll"] = tl;
+  var num = $("num");
+
+  /* 0 · hard cut from Paul @0.00: P1 on at full brightness, its place chip slides in */
+  tl.fromTo($("p1-soft"), { scale: 1.1 }, { scale: 1.16, duration: 2.61, ease: "none" }, 0);
+  tl.fromTo($("p1-img"), { scale: 1 }, { scale: 1.05, duration: 2.61, ease: "none" }, 0);
+  tl.fromTo($("chip1"), { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 0);
+
+  /* 1 · "271" @0.58: the figure lands on its own scrim */
+  tl.fromTo($("scrim"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.35, ease: "power2.out", immediateRender: false }, 0.58);
+  tl.fromTo(num, { autoAlpha: 0, scale: 1.3 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out", immediateRender: false }, 0.58);
+  /* the figure's slow float, plus or minus 4 px, carries the hold */
+  tl.to(num, { y: -4, duration: 0.6, ease: "sine.inOut" }, 0.95);
+  tl.fromTo(num, { y: -4 }, { y: 4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 2, immediateRender: false }, 1.55);
+
+  /* 2 · "lost" @2.01: the label rises */
+  tl.fromTo($("lab"), { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 2.01);
+
+  /* 3 · "lives" @2.61: cut to P2; the place chip changes on the same frame */
+  tl.set($("p2"), { autoAlpha: 1 }, 2.61);
+  tl.set($("p1"), { autoAlpha: 0 }, 2.61);
+  tl.set($("chip1"), { autoAlpha: 0 }, 2.61);
+  tl.set($("chip2"), { autoAlpha: 1 }, 2.61);
+  tl.fromTo($("chip2"), { x: -60 }, { x: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 2.61);
+  tl.fromTo($("p2"), { scale: 1 }, { scale: 1.05, duration: 1.85, ease: "none", immediateRender: false }, 2.61);
+
+  /* 4 · "that" @2.89: the source line, on for 1.57 s before the cut */
+  tl.fromTo($("src"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 2.89);
+
+  /* 5 · "day" @3.17 to 3.41, then land time; 6 · hard cut to comp 02 @4.46 */
+  tl.to({}, { duration: 0.01 }, 4.45);
+
+  window.__timelines[ID] = tl;
 })();
 </script>
 </template>
