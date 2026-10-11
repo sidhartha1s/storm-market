@@ -2,17 +2,150 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
+<!--
+  g-i1s1-house · I1-S1 · window 9.98 s · brief: mg_specs/04-I1S1-house-livingroom.md
+  Claim: April 11, 1965 was the first nice spring day of the year; many people were not at the radio or the television.
+  The sets are IDLE with nobody at them: no amber on either set, no switch, no plug, no "off".
+  Cues are comp-local seconds (brief t=, audio/i1-s1.words.json minus 0.20). Drawings: media/drawings (design sheet section 7).
+-->
 <template>
 <style>
-  .house-root { position:absolute; inset:0; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .house-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .house-layer { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .house-room { background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .house-sky { position:absolute; left:0; top:0; width:1920px; height:620px;
+    background:linear-gradient(rgba(232,197,106,0.12), rgba(232,197,106,0)); }
+  .house-sun { position:absolute; left:272px; top:242px; width:116px; height:116px; border-radius:50%; background:rgba(232,197,106,0.85); }
+  .house-svg { position:absolute; left:0; top:0; }
+  .house-flood { position:absolute; inset:0; background:linear-gradient(rgba(232,197,106,0.3), rgba(232,197,106,0.3)), #15202b; }
+  .house-t1 { position:absolute; left:96px; top:64px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:60px; color:#f2f5f8; white-space:nowrap; }
+  .house-t2 { position:absolute; left:98px; top:132px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px;
+    line-height:32px; color:#e8c56a; white-space:nowrap; }
 </style>
 <div id="house-root" class="house-root" data-composition-id="g-i1s1-house" data-width="1920" data-height="1080" data-duration="9.98">
+
+  <!-- STREET VIEW: the hook's house, now in sunshine. This layer is the camera. -->
+  <div class="house-layer" id="house-street">
+    <div class="house-sky"></div>
+    <div class="house-sun" id="house-sun"></div>
+    <svg class="house-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <line x1="96" y1="850" x2="1560" y2="850" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round"/>
+      <g transform="translate(674 300) scale(2.2)">
+        <g fill="none" stroke="#f2f5f8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M186 37.3 V22 H208 V50"/>
+          <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+          <rect x="20" y="80" width="220" height="170" fill="#15202b"/>
+          <rect x="112" y="170" width="36" height="80"/>
+          <rect class="house-win" x="44" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.2"/>
+          <rect class="house-win" x="168" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.2"/>
+          <path d="M68 120 V168 M44 144 H92"/>
+          <path d="M192 120 V168 M168 144 H216"/>
+          <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <!-- ROOM VIEW: through the window. Empty armchair, idle television, idle radio. -->
+  <div class="house-layer house-room" id="house-room">
+    <svg class="house-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <polygon id="house-patch" points="560,820 700,820 640,900 500,900" fill="#e8c56a" fill-opacity="0.18"/>
+      <line x1="96" y1="820" x2="1560" y2="820" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round"/>
+      <!-- window seen from inside: afternoon light -->
+      <g fill="none" stroke="#dfe7ee" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="180" y="220" width="340" height="380" fill="#e8c56a" fill-opacity="0.3"/>
+        <path d="M350 220 V600 M180 410 H520"/>
+      </g>
+      <!-- armchair, always empty -->
+      <g transform="translate(420 600) scale(1.1)">
+        <g fill="#15202b" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 160 V200 M176 160 V200" fill="none"/>
+          <rect x="30" y="0" width="140" height="130" rx="16"/>
+          <rect x="30" y="110" width="140" height="40"/>
+          <rect x="0" y="80" width="34" height="80"/>
+          <rect x="166" y="80" width="34" height="80"/>
+        </g>
+      </g>
+      <!-- television, screen Idle -->
+      <g transform="translate(760 460) scale(1.5)">
+        <g id="house-tv" fill="none" stroke="#93a3b2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M40 200 L28 240 M260 200 L272 240"/>
+          <rect x="0" y="0" width="300" height="200" rx="6" fill="#15202b"/>
+          <rect x="20" y="20" width="192" height="160" rx="24" fill="#15202b"/>
+          <path d="M40 78 A46 46 0 0 1 78 40" stroke="#93a3b2" stroke-width="1.4"/>
+          <circle cx="256" cy="62" r="14"/>
+          <circle cx="256" cy="112" r="14"/>
+          <path d="M236 146 H276 M236 156 H276 M236 166 H276 M236 176 H276"/>
+        </g>
+      </g>
+      <!-- side table: top surface at y 700 so the radio stands on it -->
+      <g fill="#15202b" stroke="#dfe7ee" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="1272" y="710" width="10" height="110"/>
+        <rect x="1478" y="710" width="10" height="110"/>
+        <rect x="1260" y="700" width="240" height="10"/>
+      </g>
+      <!-- table radio, dial unlit -->
+      <g transform="translate(1290 592) scale(1.2)">
+        <g id="house-radio" fill="none" stroke="#93a3b2" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="0" y="0" width="150" height="90" rx="8" fill="#15202b"/>
+          <path d="M20 20 V70 M32 20 V70 M44 20 V70 M56 20 V70 M68 20 V70"/>
+          <circle cx="112" cy="45" r="22" fill="#15202b"/>
+          <path d="M112 45 L124 31"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="house-flood" id="house-flood"></div>
+
+  <!-- fixed HUD: the date. Gone before the camera moves. -->
+  <div class="house-t1" id="house-t1">Palm Sunday</div>
+  <div class="house-t2" id="house-t2">April 11, 1965</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.to({}, { duration: 9.98 }, 0);
+  const P = "#house-";
+  /* logZoom (library/inhouse/snippets/helpers.js) as an ease: scale runs in log space from a to b, eased in and out */
+  function logEase(a, b) {
+    const io = gsap.parseEase("power1.inOut");
+    return function (p) { return (Math.exp(Math.log(a) + (Math.log(b) - Math.log(a)) * io(p)) - a) / (b - a); };
+  }
+
+  tl.set([P+"t1", P+"t2", P+"room", P+"flood"], { autoAlpha: 0 }, 0);
+  tl.set(P+"street", { transformOrigin: "823.6px 616.8px" }, 0);
+  tl.set(P+"sun", { y: 40 }, 0);
+
+  /* APRIL @0.00: house, street line and sky already lit; the date slides in */
+  tl.fromTo(P+"t1", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0);
+  tl.fromTo(P+"t2", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.2);
+  /* slow drift toward the left front window carries the street hold */
+  tl.fromTo(P+"street", { scale: 1 }, { scale: 1.03, duration: 5.6, ease: "none" }, 0);
+  /* NICE @3.30: the sun rises, the windows brighten */
+  tl.to(P+"sun", { y: 0, duration: 1.2, ease: "power2.out" }, 3.30);
+  tl.to(".house-win", { attr: { "fill-opacity": 0.3 }, duration: 0.15, ease: "none" }, 3.30);
+  /* YEAR @4.38: the date leaves before the camera moves */
+  tl.to([P+"t1", P+"t2"], { x: -980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 4.38);
+  /* MANY @5.60: push into the left front window, centre (823.6, 616.8), to scale 9 */
+  tl.fromTo(P+"street", { scale: 1.03 }, { scale: 9, duration: 1.1, ease: logEase(1.03, 9) }, 5.60);
+  tl.to(P+"flood", { autoAlpha: 1, duration: 0.4, ease: "power2.in" }, 6.30);
+  /* full amber @6.70: hard switch to the room beneath it, then the amber clears */
+  tl.set(P+"street", { autoAlpha: 0 }, 6.70);
+  tl.set(P+"room", { autoAlpha: 1 }, 6.70);
+  tl.to(P+"flood", { autoAlpha: 0, duration: 0.3, ease: "power2.out" }, 6.70);
+  tl.fromTo(P+"patch", { x: 0 }, { x: 40, duration: 3.28, ease: "none" }, 6.70);
+  /* RADIO @7.08: outline flashes once, settles to Body light; the dial stays dark */
+  tl.to(P+"radio", { attr: { stroke: "#f2f5f8" }, duration: 0.12, ease: "power2.out" }, 7.08);
+  tl.fromTo(P+"radio", { scale: 1 }, { scale: 1.07, svgOrigin: "1380 700", duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 7.08);
+  tl.to(P+"radio", { attr: { stroke: "#dfe7ee" }, duration: 0.28, ease: "power2.in" }, 7.20);
+  /* TELEVISION @8.24: outline flashes once the same way; the screen stays Idle */
+  tl.to(P+"tv", { attr: { stroke: "#f2f5f8" }, duration: 0.12, ease: "power2.out" }, 8.24);
+  tl.fromTo(P+"tv", { scale: 1 }, { scale: 1.04, svgOrigin: "985 820", duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 8.24);
+  tl.to(P+"tv", { attr: { stroke: "#dfe7ee" }, duration: 0.28, ease: "power2.in" }, 8.36);
+  tl.to({}, { duration: 0.01 }, 9.97);
   window.__timelines["g-i1s1-house"] = tl;
 })();
 </script>
