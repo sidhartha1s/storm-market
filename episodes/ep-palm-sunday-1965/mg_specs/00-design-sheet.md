@@ -178,7 +178,7 @@ A real page, shown as the page. Never retyped to look like a page.
 Page images are in `media/docs/` (bilevel scans, about 2650 x 3370). A comp never mounts a whole page: the builder cuts the crop box below from the `-orig` file once, saves it at the stated size (never over 1920 x 1080), and mounts that file. Line boxes were measured on the files by a row and word scan on 12 Oct 26 and each page was read by eye.
 | Comp | Page file | Printed page | Crop box, page px (x0, y0 to x1, y1) | Saved as (`media/docs/`) | Size |
 |---|---|---|---|---|---|
-| 02 | `survey-pdf-67-orig.png` | survey p. 39 | 285, 244 to 1345, 484 | `survey-p39-warning-crop.png` | 1460 x 331 |
+| 02 | `survey-pdf-67-orig.png` | survey p. 39 | 285, 244 to 1345, 472 | `survey-p39-warning-crop.png` | 1460 x 314 |
 | 06 | `study-pdf-38-orig.png` | study p. 36 | 360, 2355 to 2440, 2895 | `study-p36-cloud-crop.png` | 1460 x 379 |
 | 09 | `study-pdf-22-orig.png` | study p. 20 | 320, 370 to 2350, 800 | `study-p20-police-crop.png` | 1460 x 309 |
 | 10 | `study-pdf-24-orig.png` | study p. 22 | 630, 1740 to 2230, 2055 | `study-p22-sheriff-crop.png` | 1460 x 287 |
