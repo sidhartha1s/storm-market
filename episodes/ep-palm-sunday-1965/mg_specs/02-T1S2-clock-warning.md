@@ -1,3 +1,5 @@
+Host: id=g-t1s2-warning file=compositions/g-t1s2-warning.html start=14.18 duration=6.89 track=2
+
 # 02 · T1-S2 · 5:43 PM, the warning, the telephone (comp `g-t1s2-warning`)
 
 Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` sections 4, 7, 8, 9, 10. Revised 12 Oct 26 to the fact-checked line and the page scan.
@@ -48,15 +50,15 @@ Line pitch on the page is about 47 px, so about 65 px on screen: large enough to
 Text: `WEATHER BUREAU` · `5:43 PM` · `South Bend, Indiana` · `Weather Bureau survey report, 1965, p. 39` · `Weather Bureau Communications Center, about 1955 · NOAA`. Page words are the image.
 | Step | cue | t= | What |
 |---|---|---|---|
-| 0 | first frame (hard cut from 01, word "At") | | ground on, photo caption on |
-| 1 | cue: "5:43" (whisper writes the digits; the spoken words are "five forty three") | | clock stamp slides in; minute hand sweeps its last 30 degrees; time lands on the word |
-| 2 | cue: "South" | | place line `South Bend, Indiana` rises inside the stamp (`y:16 to 0`, 0.3 s) |
-| 3 | cue: "issued" | | document card slides in from the right (`x:660 to 0`, 0.7, power3.out) |
-| 4 | cue: "tornado" (first sentence) | | unlit page fades in over the heading, underline draws under `Severe thunderstorm and tornado warning.` (0.6 s) |
-| 5 | cue: "It" (second sentence; the ring sound starts here) | | clock stamp exits left; document card exits right (`x:1900`, 0.6, power3.in) |
-| 6 | cue: "telephoned" (the line now reads "It also telephoned") | | telephone draws on (0.6 s); handset lifts 26 px and turns -20 degrees (0.35 s, back.out); ring arcs pulse twice (0.4 s each, finite) |
-| 7 | cue: "down" | | telephone slides left out of frame (`x:-1100`, 0.5, power3.in) |
-| 8 | cue: "list" | | comp ends on this word; comp 03 starts on the same frame (match cut on the ground, scale 1.06) |
+| 0 | first frame (hard cut from 01, word "At") | 0.00 | ground on, photo caption on |
+| 1 | cue: "5:43" (whisper writes the digits; the spoken words are "five forty three") | 0.13 | clock stamp slides in; minute hand sweeps its last 30 degrees; time lands on the word |
+| 2 | cue: "South" | 2.37 | place line `South Bend, Indiana` rises inside the stamp (`y:16 to 0`, 0.3 s) |
+| 3 | cue: "issued" | 2.95 | document card slides in from the right (`x:660 to 0`, 0.7, power3.out) |
+| 4 | cue: "tornado" (first sentence) | 3.49 | unlit page fades in over the heading, underline draws under `Severe thunderstorm and tornado warning.` (0.6 s) |
+| 5 | cue: "It" (second sentence; the ring sound starts here) | 4.99 | clock stamp exits left; document card exits right (`x:1900`, 0.6, power3.in) |
+| 6 | cue: "telephoned" (the line now reads "It also telephoned") | 5.43 | telephone draws on (0.6 s); handset lifts 26 px and turns -20 degrees (0.35 s, back.out); ring arcs pulse twice (0.4 s each, finite) |
+| 7 | cue: "down" | 6.49 | telephone slides left out of frame (`x:-1100`, 0.5, power3.in) |
+| 8 | cue: "list" | 6.89 | comp ends on this word; comp 03 starts on the same frame (match cut on the ground, scale 1.06) |
 
 ## 6 to 8. Contract, tools, done line, receipt
 As `references/mg-brief-template.md` sections 6, 7, 7a, 8, unchanged. File `compositions/g-t1s2-warning.html`, id prefix `warn-`, root id `warn-root`. Done line 6: the ground's end scale (1.06) is the shared number with comp 03.
