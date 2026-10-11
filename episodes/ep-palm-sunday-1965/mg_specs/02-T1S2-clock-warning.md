@@ -1,7 +1,7 @@
 # 02 · T1-S2 · 5:43 PM, the warning, the telephone (comp `g-t1s2-warning`)
 
-Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` sections 4, 7, 8, 9, 10.
-**Spoken (T1-S2):** "At five forty three, the Weather Bureau in South Bend issued a tornado warning. It telephoned its warnings down a list."
+Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` sections 4, 7, 8, 9, 10. Revised 12 Oct 26 to the fact-checked line and the page scan.
+**Spoken (T1-S2):** "At five forty three, the Weather Bureau in South Bend issued a tornado warning. It also telephoned its warnings down a list."
 **One look:** a clock at 5:43, the typed warning itself, then a telephone picked up.
 
 ## 0. What this graphic claims
