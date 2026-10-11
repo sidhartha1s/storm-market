@@ -1,3 +1,5 @@
+Host: id=g-i1s7-sheriff file=compositions/g-i1s7-sheriff.html start=87.88 duration=12.09 track=2
+
 # 10 · I1-S7, I1-S8 · the sheriff's two sentences, then the television (comp `g-i1s7-sheriff`)
 
 Brief on `references/mg-brief-template.md`. Shared look: `00-design-sheet.md` sections 7, 9. **One comp across two segments:** the script holds the same page and moves the underline from one sentence to the next. Revised 12 Oct 26 to the page scan.
@@ -48,16 +50,16 @@ A2 stops before the page's three dots. B1 starts at "the", after "And". B2 start
 Text: `a different county` · `"We didn't have any warning at all"` · `"the television didn't even list here (County B) as being in the danger area."` · `a county sheriff · Disaster Research Center, 1966, p. 22`. The attribution is one line of text reused by both strips: pre-author it once, outside the two quote nodes.
 | Step | Seg | cue | t= | What |
 |---|---|---|---|---|
-| 0 | I1-S7 | first frame (word "A") | | canvas ground; document card sliding in (`x:660 to 0`, 0.7, power3.out) |
-| 1 | I1-S7 | cue: "another" | | county label drops in |
-| 2 | I1-S7 | cue: "We" | | unlit page fades in; A1 draws (0.5 s), then A2 (0.2 s) |
-| 3 | I1-S7 | cue: "all" (last word) | | strip 1 rises; hold through the seam |
-| 4 | I1-S8 | cue: "television" | | A1 and A2 to 35 %; B1 draws (0.6 s) |
-| 5 | I1-S8 | cue: "said" | | strip 1's quote slides up and out inside the strip, strip 2's quote rises in (masked line swap, 0.4 s) |
-| 6 | I1-S8 | cue: "list" | | B2 draws (0.5 s) |
-| 7 | I1-S8 | cue: "danger" | | label, card and strip slide out right (`x:1900`, 0.5, power3.in); television draws on (0.6 s) already in the Programme state, bars drifting |
-| 8 | I1-S8 | cue: "area" (last word) | | hold 1.0 s on the television |
-| 9 | exit | | | hard cut to 11 |
+| 0 | I1-S7 | first frame (word "A") | 0.00 | canvas ground; document card sliding in (`x:660 to 0`, 0.7, power3.out) |
+| 1 | I1-S7 | cue: "another" | 0.53 | county label drops in |
+| 2 | I1-S7 | cue: "We" | 4.09 | unlit page fades in; A1 draws (0.5 s), then A2 (0.2 s) |
+| 3 | I1-S7 | cue: "all" (last word) | 5.41 | strip 1 rises; hold through the seam |
+| 4 | I1-S8 | cue: "television" | 6.66 | A1 and A2 to 35 %; B1 draws (0.6 s) |
+| 5 | I1-S8 | cue: "said" | 7.98 | strip 1's quote slides up and out inside the strip, strip 2's quote rises in (masked line swap, 0.4 s) |
+| 6 | I1-S8 | cue: "list" | 9.26 | B2 draws (0.5 s) |
+| 7 | I1-S8 | cue: "danger" | 10.30 | label, card and strip slide out right (`x:1900`, 0.5, power3.in); television draws on (0.6 s) already in the Programme state, bars drifting |
+| 8 | I1-S8 | cue: "area" (last word) | 10.54 | hold 1.0 s on the television |
+| 9 | exit | | 12.09 | hard cut to 11 |
 
 ## 6 to 8. Contract, tools, done line, receipt
 As `references/mg-brief-template.md` sections 6, 7, 7a, 8, unchanged. File `compositions/g-i1s7-sheriff.html`, id prefix `shf-`, root id `shf-root`. Host window: first word of I1-S7 to 1.0 s after the last word of I1-S8.
