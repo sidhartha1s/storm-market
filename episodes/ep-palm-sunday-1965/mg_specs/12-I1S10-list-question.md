@@ -18,7 +18,7 @@ Design sheet section 5, Close state: s 1.6, tx 147.6, ty -66. Row centres on scr
 |---|---|
 | Ground | A3 `<img>`, `object-position:50% 40%`, scale 1.00 to 1.05, `.dim-heavy` scrim |
 | Sheet | x 250 to 1466, y 30 to 974; eight rows typed; ticks on rows 1, 2, 3, 6; row 9 blank with its cursor blinking |
-| Mark on row 3 | Crimson line 5 world px (8 on screen) under `City Police Departments`, world x 150 to 509, y 328; Crimson ring round row 3's tick box, 3 world px |
+| Mark on row 3 | Crimson line 5 world px (8 on screen) under `City Police Departments`, world x 150 to 509, y 326 (16 world px under row 3's centre at 310); Crimson ring round row 3's tick box, 3 world px |
 | Mark's tag | on the paper, world x 530, baseline of row 3: `in one Indiana county` Arial 700, 14 world px (22.4 on screen), Crimson; on screen it starts at x 995.6 |
 | Pulse band | Amber 2 at 25 %, the row's full width (screen x 290 to 1430, 70 px tall), wipes left to right in 0.3 s and fades in 0.2 s |
 | Source line | left 96, bottom 60: `Disaster Research Center, 1966 · list of offices the Weather Bureau telephoned` |
