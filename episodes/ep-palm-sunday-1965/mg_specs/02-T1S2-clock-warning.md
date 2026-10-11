@@ -47,7 +47,7 @@ Text: `WEATHER BUREAU` · `5:43 PM` · `South Bend, Indiana` · `Weather Bureau 
 | 1 | cue: "5:43" (whisper writes the digits; the spoken words are "five forty three") | | clock stamp slides in; minute hand sweeps its last 30 degrees; time lands on the word |
 | 2 | cue: "South" | | place line `South Bend, Indiana` rises inside the stamp (`y:16 to 0`, 0.3 s) |
 | 3 | cue: "issued" | | document card slides in from the right (`x:660 to 0`, 0.7, power3.out) |
-| 4 | cue: "tornado" (first sentence) | | unlit page fades in, underline draws under the first line (0.6 s) |
+| 4 | cue: "tornado" (first sentence) | | unlit page fades in over the heading, underline draws under `Severe thunderstorm and tornado warning.` (0.6 s) |
 | 5 | cue: "It" (second sentence; the ring sound starts here) | | clock stamp exits left; document card exits right (`x:1900`, 0.6, power3.in) |
 | 6 | cue: "telephoned" | | telephone draws on (0.6 s); handset lifts 26 px and turns -20 degrees (0.35 s, back.out); ring arcs pulse twice (0.4 s each, finite) |
 | 7 | cue: "down" | | telephone slides left out of frame (`x:-1100`, 0.5, power3.in) |
