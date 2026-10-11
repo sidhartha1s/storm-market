@@ -55,18 +55,19 @@
 
   <!-- ROOM VIEW: through the window. Empty armchair, idle television, idle radio. -->
   <div class="house-layer house-room" id="house-room">
+    <div class="house-floor"></div>
     <svg class="house-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
-      <polygon id="house-patch" points="560,820 700,820 640,900 500,900" fill="#e8c56a" fill-opacity="0.18"/>
-      <line x1="96" y1="820" x2="1560" y2="820" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round"/>
-      <!-- window seen from inside: afternoon light -->
-      <g fill="none" stroke="#dfe7ee" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="180" y="220" width="340" height="380" fill="#e8c56a" fill-opacity="0.3"/>
+      <polygon id="house-patch" points="560,820 700,820 640,900 500,900" fill="#e8c56a" fill-opacity="0.55"/>
+      <line x1="96" y1="820" x2="1560" y2="820" stroke="#15202b" stroke-width="4" stroke-linecap="round"/>
+      <!-- window seen from inside: the same clear sky in its panes -->
+      <g fill="none" stroke="#15202b" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="180" y="220" width="340" height="380" fill="#7fb2e5"/>
         <path d="M350 220 V600 M180 410 H520"/>
       </g>
       <!-- armchair, always empty -->
       <g transform="translate(420 600) scale(1.1)">
         <g fill="#15202b" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M24 160 V200 M176 160 V200" fill="none"/>
+          <path d="M24 160 V200 M176 160 V200" fill="none" stroke="#15202b"/>
           <rect x="30" y="0" width="140" height="130" rx="16"/>
           <rect x="30" y="110" width="140" height="40"/>
           <rect x="0" y="80" width="34" height="80"/>
