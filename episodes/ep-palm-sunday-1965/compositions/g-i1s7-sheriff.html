@@ -121,8 +121,7 @@ window.__timelines = window.__timelines || {};
   tl.set(sB2, { autoAlpha: 1 }, 9.26);                                                                                                        /* list @9.26 */
   tl.to(uB2, { scaleX: 1, duration: 0.5, ease: "none" }, 9.26);
   tl.to([$("chip"), card, $("strip")], { x: 1900, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 10.30);                                   /* danger @10.30 */
-  tl.to([$("tv"), $("screen")], { autoAlpha: 1, duration: 0.2, ease: "power2.out" }, 10.30);
-  tl.to(lines, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out", stagger: 0.03 }, 10.30);                                            /* drawn by 10.90 */
+  tl.fromTo($("room"), { autoAlpha: 1, y: 1080 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out", immediateRender: false }, 10.30);   /* the room rises with the television in it, as comp 05's wall does (lead's ruling 12 Oct 26: daylight; it replaces the draw-on) */
   tl.fromTo(bars, { y: 0 }, { y: 170.67, duration: 5.689, ease: "none", immediateRender: false }, 10.30);                                     /* area @10.54, then a 1 s hold on the programme */
   tl.to({}, { duration: 0.01 }, 12.08);
 
