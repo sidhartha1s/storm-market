@@ -20,11 +20,12 @@ Newest first. New entries go at the top, under this line. Superseded lines point
     The brief's own arithmetic (count times beat length against the window in words.json) is checked when it is written.
   - A hard vanish: an element whole in frame 0.03 s before the cut. Its exit finishes inside the host.
   - Visible text outside the frame: a header carried out by a push-in, a strip line parked below.
-- **Homes:** `references/mg-quickref.md` "Motion and exits" (CSS start states, text outside the frame) and "Verify"
-  (first frame of every host). The done line of `references/mg-brief-template.md` already asks for `graphics_qc` at 0
-  errors and an opening state on frame 0: when builders share a machine the gate run is queued, never dropped.
-- **Open:** `graphics_qc` flat-type fails a typed sheet and a page crop with a quote strip (two type tiers by design).
-  Left red in the preview and reported to the owner; a declared exemption in the gate is his call.
+- **Rule:** the rules are in `references/mg-quickref.md` "Motion and exits" (CSS hide for start-hidden elements, text
+  outside the frame) and "Verify" (first frame of every host). The done line of `references/mg-brief-template.md`
+  already asks for `graphics_qc` at 0 errors and an opening state on frame 0: when builders share a machine the gate
+  run is queued, never dropped.
+- **Open:** `graphics_qc` flat-type fails five comps, three typed sheets and two page crops with a quote strip (two
+  type tiers by design). Left red in the preview and reported to the owner; a declared exemption in the gate is his call.
 
 ## 10 Oct 26 - ep4-el-reno: 45 of 68 graphics needed a fix after every builder's gates were green
 - **What happened:** seven Opus builders built 68 comps, each ending on `graphics_qc` PASS. Two independent Opus
