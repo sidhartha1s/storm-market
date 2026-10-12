@@ -148,7 +148,20 @@ window.__timelines = window.__timelines || {};
   hands("r", 5, 55);                        /* 177.5 and 330 */
   dash(lArc, lArc.getTotalLength()); dash(rArc, rArc.getTotalLength());
   dash(lBox, lBox.getTotalLength() / 2); dash(rBox, rBox.getTotalLength() / 2);   /* each half of the outline is one sub-path */
-  s0($("l-col"), { x: -800 }); s0($("r-col"), { x: 1100 });
+  s0($("l-col"), { x: -1100 }); s0($("r-col"), { x: 1100 });   /* both off the frame; the left one is further out because its stage starts enlarged */
+
+  /* ---- staging (acts-plan rule 22): the last frame is the brief's; the earlier steps keep the frame covered.
+          A: the left card alone, centred in the frame, pushed slowly up to 1.5 times its size.
+          B: on the right card's cue the left goes to its briefed x and size; both sit vertically centred.
+          C: on the first bar's cue both rise to their briefed y. ---- */
+  var GX = (96 + 796) / 2, GY = (150 + 470) / 2;            /* centre of the left card with its source line */
+  var BIG = 1.5, PUSH = 1.03, MID = 540 - GY;
+  var lStage = $("l-stage"), rStage = $("r-stage");
+  s0(lStage, { transformOrigin: GX + "px " + GY + "px", x: 960 - GX, y: MID, scale: BIG / PUSH, force3D: false });
+  s0(rStage, { y: MID, force3D: false });
+  tl.to(lStage, { scale: BIG, duration: 6.04, ease: "none", force3D: false }, 0.09);
+  tl.to(lStage, { x: 0, scale: 1, duration: 0.6, ease: "power3.out", force3D: false }, 6.13);   /* same ease as the right card's slide: the two never overlap */
+  tl.to([lStage, rStage], { y: 0, duration: 0.5, ease: "power3.out", force3D: false }, 11.82);
   s0([$("l-src"), $("r-src"), $("l-place"), $("r-place")], { y: 12 });
   s0([$("l-barlab"), $("r-barlab")], { y: 16 });
   s0([$("l-bar"), $("r-bar")], { scaleX: 0, transformOrigin: "left center" });
