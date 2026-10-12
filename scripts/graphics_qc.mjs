@@ -329,16 +329,16 @@ writeFileSync(join(compDir, '_durations.json'), JSON.stringify(DURS, null, 1), '
 writeFileSync(join(TMP, 'frame_times.json'), JSON.stringify(FRAMES, null, 1), 'utf8');
 
 /* ---------- report ---------- */
-const hard = defects.filter(d => d.hard), soft = defects.filter(d => !d.hard && !d.ok);
+const hard = defects.filter(d => d.hard), soft = defects.filter(d => !d.hard);
 const byComp = {};
 for (const d of defects) (byComp[d.comp] ||= []).push(d);
 for (const [c, list] of Object.entries(byComp)) {
-  const h = list.filter(d => d.hard).length, w = list.filter(d => !d.hard && !d.ok).length;
-  console.log(`  ${c}  — ${h} error${h === 1 ? '' : 's'}, ${w} warning${w === 1 ? '' : 's'}`);
+  const h = list.filter(d => d.hard).length;
+  console.log(`  ${c}  — ${h} error${h === 1 ? '' : 's'}, ${list.length - h} warning${list.length - h === 1 ? '' : 's'}`);
   for (const d of list.filter(d => d.hard)) console.log(`    ERROR [${d.kind}] ${d.msg}`);
-  for (const d of list.filter(d => !d.hard && !d.ok)) console.log(`    warn  [${d.kind}] ${d.msg}`);
-  for (const d of list.filter(d => d.ok)) console.log(`    exempt [${d.kind}] ${c}: ${d.msg} — declared: ${d.ok}`);
+  for (const d of list.filter(d => !d.hard)) console.log(`    warn  [${d.kind}] ${d.msg}`);
 }
+for (const d of exempt) console.log(`    exempt [${d.kind}] ${d.comp}: ${d.msg} — declared: ${d.ok}`);
 if (!hard.length) { console.log(`\n[graphics_qc] PASS — ${files.length} compositions, 0 errors, ${soft.length} warnings`); process.exit(0); }
 console.log(`\n[graphics_qc] FAIL — ${hard.length} errors, ${soft.length} warnings across ${files.length} compositions`);
 process.exit(1);
