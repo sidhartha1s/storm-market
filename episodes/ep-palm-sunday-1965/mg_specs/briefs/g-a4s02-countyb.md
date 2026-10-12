@@ -47,7 +47,7 @@ The chain (all four segments), one group `cntb-chain`, authored numbers at full 
 | House | `media/drawings/house.svg` inline, `translate(1400 430) scale(0.68)`, `stroke-width="5.9"` (box x 1400 to 1577, y 430 to 600, aerial to y 407, centre x 1488.5); windows Panel dark in every frame |
 | Links, y 520, 4 px Label grey, dotted (`stroke-dasharray="0.1 14"`, round caps) | 837 to 1068 and 1170 to 1400. No ground link joins the two desks |
 | Unlit state | every line Label grey, bodies Panel dark |
-| Labels (HTML, outside the group, hidden until A4-S3) | Arial 700 22 px, line-height 28, Label grey, top 676, each 200 px wide and centred on its station: `civil defense` (x 223.5), `city police` (x 709.5), `the radio station` (x 1119), `a family` (x 1488.5) |
+| Labels (HTML, outside the group but in the stage, hidden until A4-S3) | Arial 700 22 px, line-height 28, Label grey, authored top 676 (on screen 808), each 200 px wide and centred on its station: `civil defense` (x 223.5), `city police` (x 709.5), `the radio station` (x 1119), `a family` (x 1488.5) |
 
 Fixed layer:
 | Element | Px |
@@ -136,7 +136,7 @@ All inlined, ids under `cntb-`; mount rules in `media/drawings/README.md`, which
 As template section 7, from the worktree root: `node scripts/freeze_scan.mjs episodes/ep-palm-sunday-1965 --comp g-a4s02-countyb`, then `node scripts/graphics_qc.mjs episodes/ep-palm-sunday-1965`, then `python3 scripts/run_gates.py episodes/ep-palm-sunday-1965`.
 
 ## 7a. Done line
-All seven lines of template section 7a. Line 2 here: state the measured fill for 10.9 to 14.9 (the chain alone, before the stamp) as well as for the whole comp. Line 4 here: the chain's scale and `svgOrigin`, the hand rotations and the light's proxy are set at timeline 0; capture 10.50 (mid growth) both ways. Line 6 here: the four station boxes (gap 230.7 px), the waiting chain's box, the arc's apex and the two hand angles are computed by a script and stated in the receipt.
+All seven lines of template section 7a. Line 2 here: measure the largest empty block at every step of the coverage table in section 5 and give it beside the expected figure; any step over a third for more than about 3 s is a FIX (truth 10). Line 4 here: the chain's scale and `svgOrigin`, the hand rotations and the light's proxy are set at timeline 0; capture 10.50 (mid growth) both ways. Line 6 here: the four station boxes (gap 230.7 px), the waiting chain's box, the arc's apex and the two hand angles are computed by a script and stated in the receipt.
 ## 8. Receipt
 As template section 8.
 
