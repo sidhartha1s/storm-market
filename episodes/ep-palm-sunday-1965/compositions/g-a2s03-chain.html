@@ -338,7 +338,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"world", { scale: SMALL.scale, x: SMALL.x, y: SMALL.y, duration: 0.7, ease: function (p) { return (Math.pow(R, io(p)) - 1) / (R - 1); } }, BACK);
   tl.to(P+"world", { autoAlpha: 0, duration: 0.25, ease: "none" }, BACK + 0.45);
   tl.to(P+"view", { autoAlpha: 1, duration: 0.3, ease: "none" }, BACK);
-  tl.to(P+"clock", { autoAlpha: 1, duration: 0.3, ease: "none" }, BACK + 0.47);   /* @14.45: the shrinking sheet's box leaves the clock's box at 14.444 (sheet right edge 876.4); before that the clock sat over the sheet's title */
+  tl.to(P+"clock", { autoAlpha: 1, duration: 0.3, ease: "none" }, BACK + 0.47);   /* @14.45: the shrinking sheet's box leaves the clock's box at 14.41 (sheet right edge 876); before that the clock sat over the sheet's title */
   tl.to(P+"src", { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, BACK);
   /* WARNING @14.62: station 2 and the list's edge turn Amber 2 and stay */
   stroke(P+"s2", "#e8c56a", 14.62, 0.3);
