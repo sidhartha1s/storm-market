@@ -276,7 +276,7 @@ At most five builders at a time. A builder owns whole files; no file is in two b
 | 4 | 4-c photo and page | g-a5s06-hold, g-a5s09-alto, g-a5s14-noissue, g-a5s20-team |
 | 4 | 4-d drawings | g-a5s15-dark, g-a5s18-curran |
 | 4 | 4-e chain and list | g-a5s12-spotters, g-a5s21-end |
-| 5 (12 comps) | 5-a page and plan | g-a6s01-recs, g-a6s02-floorplan |
+| 5 (13 comps) | 5-a page and plan | g-a6s01-recs, g-a6s02-floorplan |
 | 5 | 5-b list and microphone | g-a6s03-announcer, g-a6s10-watch, g-z1s02-row |
 | 5 | 5-c chain | g-a6s05-wires, g-a6s08-spotters |
 | 5 | 5-d map and drawing | g-a6s07-power, g-a6s09-third, g-z1s04-drill |
