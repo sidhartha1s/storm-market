@@ -83,7 +83,7 @@ window.__timelines = window.__timelines || {};
   el("circle", { cx: CX, cy: CY, r: 5, fill: "#e8c56a" }, face);
 
   /* start states: hidden in CSS (kc-h), transforms set here at 0; every move from rest below is a plain to() */
-  s0($("bg"), { scale: 1, transformOrigin: "1700px 600px" });
+  s0($("bg"), { scale: 1, transformOrigin: "1920px 600px" });   /* on the frame's right edge: that edge shows image x 1439.5 from first frame to last */
   s0($("tile"), { y: -60 });                                /* from above, not from the left: a slide from the left crosses the bending man's head (screen x 0 to 67, y 490 to 567) */
   s0($("stamp"), { x: -660 });
   s0($("time"), { y: 16 });
