@@ -17,7 +17,7 @@
   .clk-h { opacity:0; visibility:hidden; }
 
   /* ---- clock stamp: design sheet section 8 measured from the card's corner, every number times --clk-k ---- */
-  .clk-stamp { --clk-k:1.4; position:absolute; left:110px; top:400px; width:calc(590px * var(--clk-k)); height:calc(200px * var(--clk-k)); }
+  .clk-stamp { --clk-k:1.4; position:absolute; left:110px; top:400px; width:calc(590px * var(--clk-k)); height:calc(200px * var(--clk-k)); z-index:1; }   /* above the house while it leaves the centre */
   .clk-glass { position:absolute; inset:0; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
   .clk-face { position:absolute; left:0; top:0; width:calc(590px * var(--clk-k)); height:calc(200px * var(--clk-k)); overflow:visible; }
