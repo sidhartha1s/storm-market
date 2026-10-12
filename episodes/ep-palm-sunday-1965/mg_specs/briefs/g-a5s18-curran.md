@@ -34,7 +34,7 @@ Ground: the canvas gradient on the root, on from frame 0.
 | Source line | design sheet section 10, left 96, bottom 60: `John Curran's recollection, published by the National Weather Service`. On for the whole comp |
 | Clock (part 1) | `wall-clock.svg` inline, `<g transform="translate(467 447) scale(1.5)">`: box x 467 to 653, y 447 to 633, centre (560, 540). Rim fill Panel dark, lines Body light. `svgOrigin:"560 540"` on both hands, set once at build |
 | Time under the clock | centred on x 560, top 660, Courier New 700 56 px, Amber 2: `4:00 PM`, then `10:30 PM` (two pre-authored lines in the same place, toggled, never retyped) |
-| House (part 1) | `house.svg` inline, `<g transform="translate(900 365) scale(1.4)">`: box x 900 to 1264, y 365 to 715, aerial top y 317.4. Dark state first; lit state is the look of `house-lit.svg` (lines Headline white, `dw-win` fill Amber 2 at `fill-opacity` 0.3), reached by tweening the inline group, not by swapping files |
+| House (part 1) | `house.svg` inline, `<g transform="translate(900 365) scale(1.4)">`: box x 900 to 1264, y 365 to 715, aerial top y 317.4. Dark state first; lit state is the look of `house-lit.svg` (lines Headline white, `dw-win` fill Amber 2 at `fill-opacity` 0.85, as built and passed), reached by tweening the inline group, not by swapping files |
 | Floor line (part 2) | y 820, x 96 to 1560, 4 px, Label grey |
 | Room | left wall x 140, y 330 to 820; ceiling y 330, x 140 to 760; right wall x 760, y 330 to 640 (the door is the open stretch y 640 to 820). 4 px Label grey. Body: rect x 140 to 760, y 330 to 820, Panel dark, under the lines |
 | Teletype 1 | `teletype.svg` inline, `<g transform="translate(220 624) scale(1.4)">`: box x 220 to 416, y 624 to 820 |
