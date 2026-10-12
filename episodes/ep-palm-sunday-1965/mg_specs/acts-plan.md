@@ -2,7 +2,7 @@
 
 Written 12 Oct 26 from the final `edit_script.md` (112 segments, A1 to Z1), the twelve built comps in `compositions/`, `media/drawings/README.md`, `research/film-shot-log.md`, `provenance.csv` and `00-design-sheet.md`. No brief is written yet; this file says what each brief will cover and what must exist before a builder starts. Paths are relative to the episode folder. E is that folder, W the worktree root.
 
-**The number:** 68 compositions carry the 107 narrated segments (A1 10, A2 13, A3 10, A4 10, A5 13, A6 9, Z1 3). 5 segments are Paul's clips. A new composition starts only where the picture's world changes (map, chain, list, page, photograph, room); inside one composition every spoken line has its own visible change.
+**The number:** 69 compositions carry the 108 narrated segments (A1 10, A2 13, A3 10, A4 10, A5 13, A6 9, Z1 4; the 69th, g-z1s4b-book for the new line Z1-S4b, was added 12 Oct 26). 5 segments are Paul's clips. A new composition starts only where the picture's world changes (map, chain, list, page, photograph, room); inside one composition every spoken line has its own visible change.
 
 ## 1. Rules every brief inherits (stated once)
 From the opening round and the lead's list:
