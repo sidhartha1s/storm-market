@@ -9,7 +9,7 @@ Rules this comp inherits, restated: start-hidden elements are hidden in CSS (`op
 **One look:** three seconds of a real room in a film window under one label; then the study's typed page with four words underlined, and a clock beside it at about 7:30.
 
 ## 0. What this graphic claims
-County B's civil defense director did not pass the report on to other organizations in his county at once. He waited fifteen minutes, to about 7:30 PM, until he saw the tornado, in the study's words, "with his own eyes". The page gives "about 7:30 p. m." and "fifteen minutes"; about 7:15 PM is those two put together and is shown as "about".
+County B's civil defense director did not pass the report on to other organizations in his county at once. He waited fifteen minutes, to about 7:30 PM, until he saw the tornado, in the study's words, "with his own eyes". The page gives "about 7:30 p. m." and "fifteen minutes"; the stamp shows the page's own time only, `about` over `7:30 PM`, and no earlier time is worked out or shown.
 
 ## 1. Source
 - `edit_script.md` A4-S1, Rows [A13; study printed p. 21] (County B).
