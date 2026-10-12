@@ -104,7 +104,7 @@ Cue words and times are from `audio/a1-s9.words.json`, `a1-s10`, `a1-s11` and `a
 | 14 | A1-S10 | 21 | a | 8.04 | 16.51 | underline `A TORNADO OR TWO` (0.4 s) |
 | 15 | A1-S10 | 24 | two. | 8.72 | 17.19 | strip 2 lifts in under strip 1 |
 | 16 | A1-S11 | 5 | northern | 1.30 | 19.25 | the band's fill goes 25 % to 45 % and back (0.6 s): a fill change, no scale |
-| 17 | A1-S11 | 10 | South | 3.24 | 21.19 | card 69 and both strips exit right (0.4 s); band and label fade (0.3 s); the map moves INDIANA to NORTH (0.9 s) and the county lines fade in during the move |
+| 17 | A1-S11 | 10 | South | 3.24 | 21.19 | card 69 and strip 1 exit right (`x:1900` with the fade, 0.4 s, power3.in; both above y 680); strip 2, `A TORNADO OR TWO`, whose box reaches y 702, leaves the way it came (`y:0` to 60 with the fade; 0.4 s, power3.in), because out to the right it crossed the presenter corner (up to 13,271 px at 21.40 to 21.50 s); band and label fade (0.3 s); the map moves INDIANA to NORTH (0.9 s) and the county lines fade in during the move |
 | 18 | A1-S11 | 15 | ten | 4.28 | 22.23 | stamp goes to state 5:30 PM, South Bend |
 | 19 | A1-S11 | 20 | seven | 5.38 | 23.33 | the seven counties fill in the order Porter, LaPorte, St. Joseph, Elkhart, Starke, Marshall, Kosciusko, 0.1 s apart (0.25 s each), each with its name; the source line fades in |
 | 20 | A1-S12 | 5 | Fort | 1.68 | 26.41 | Fort Wayne dot and label fade in (0.3 s) |
