@@ -28,17 +28,7 @@ Colours: ground `radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%)`; Lab
 ## 3. Geometry (screen px)
 Ground, all four segments: canvas gradient, on from frame 0, with the intro's faint sweep band (520 px wide, Label grey at 6 %, drifting left to right, ease none) for the whole window.
 
-Film view (A4-S2, comp 0.00 to 4.06):
-| Element | Px |
-|---|---|
-| Ground with window | the canvas gradient as four opaque panels around a transparent hole at x 480 to 1440, y 150 to 870 (960 x 720, 1.5 times the 640 x 480 cut). Each panel carries the full 1920 x 1080 gradient offset by its own left and top, so no seam shows. Nothing of this comp covers the hole while the window is open: no dim, no strip |
-| Frame | 4 px Body light rectangle on the hole's edge (outer edge x 476 to 1444, y 146 to 874), on from frame 0 |
-| Film label | glass chip, left 480, top 886, height 46, padding 0 x 22, Arial 700 26 px, Body light: `Civil defense training film, 1967`. On from frame 0, off with the window at 4.06 |
-| Film under the hole | mounted by the timeline's author in `index.html` (track 1, class `filmwin`, left 480, top 150, 960 x 720, muted): file offset 20.0 s, starts at comp 0.0, 4.2 s mounted. The comp shows it from 0.00 to 4.06 and is opaque over it after that |
-| Hole cover | a fifth opaque panel, the same gradient at the same offset, over x 480 to 1440, y 150 to 870: on in one frame at 4.06 and never off again. Frame and film label go off in that frame |
-| Not on screen | the chain, the chip `County B`, the map and the stamp are all hidden from 0.00 to 4.06 |
-
-The map (A4-S2, comp 4.06 to 10.46), one group `cntb-map`:
+The map (A4-S2, comp 0.00 to 10.46), one group `cntb-map`:
 | Element | Px |
 |---|---|
 | River | one path, Cold blue 2, 10 px, round caps, no fill: `M470 120 A520 520 0 0 1 430 420 A420 420 0 0 0 500 700 A520 520 0 0 1 450 960` (three circular arcs, bulges 22.5, 25.6 and 17.1 px by script). If an arc bows the wrong way in the first frame read, flip its sweep flag; the river must stay between x 400 and x 520 |
