@@ -315,7 +315,7 @@ window.__timelines = window.__timelines || {};
 
   /* 15 · "take" @27.46: the scope moves to its briefed place and size as the page slides in from the right (as the family base's card does); its source fades in after */
   tl.to($("scopeview"), { x: 0, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 27.46);
-  tl.fromTo($("page"), { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out", immediateRender: false }, 27.46);
+  tl.fromTo($("page"), { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out", immediateRender: false }, 27.46);
   tl.fromTo($("doc"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, 27.86);
 
   /* 16 · "for" @28.66: the rest of the page goes unlit; the underline draws under "for the next 30 to 60 minutes." */
