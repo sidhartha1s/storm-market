@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5s10-alert (A5-S10, A5-S11): four counties put on alert after the tornado had left; the 9:07 phone call. Four counties
+     light at 9:20 PM; the storm's path already runs through three of them and the tornado mark stands in Ohio at 8:52 PM; a
+     few seconds of a telephone on film; then 9:07 PM on the map, word from Marion reaching Fort Wayne.
+     Brief: mg_specs/briefs/g-a5s10-alert.md; map facts: media/maps/README.md.
+     Map family with a film window: copies the base g-a2s14-six (mount, inlining, lit county, stamp) and the film view of
+     g-a1s15-offices (ground panes round a hole, frame, label chip, hole cover, hard cuts). The film is not this comp's:
+     index.html mounts it on track 1 under the hole (left 480, top 150, 960 x 720, from 8.83). This comp holds no video.
+     Views: MAP 0.00 to 8.83, FILM 8.83 to 11.03, MAP 11.03 to the end. Both cuts are hard: one frame.
+     Map: media/maps/indiana-counties.svg (BM-1), ids prefixed alr-, no camera move. The SVG fills the frame; its viewBox is the camera.
+       EAST  box 716, 62, 1080 x 450   2.8125 px per unit   viewBox 75.4222 261.9556 682.6667 384   (screen x = 2.8125u - 212.125, y = 2.8125u - 736.75)
+     Every number below is computed from media/data/points.csv and the four county paths:
+       Fort Wayne (605.1, 297.0) screen (1489.7, 98.6); Marion (539.5, 396.7) screen (1305.2, 379.0).
+       County boxes, screen px, centre: Wells (1448.7, 278.8), Adams (1563.3, 277.3), Blackford (1425.3, 418.9), Jay (1537.1, 436.2).
+       Path, map units: (539.5, 404.7) 8 units south of Marion's dot, (619.0, 379.1) Linn Grove, (648.4, 369.6) the state line;
+       on screen (1305.2, 401.5), (1528.8, 329.5), (1611.5, 302.8): 321.8 px. The mark stands 28.5 px past the line, at (1640.0, 293.6).
+       Link Marion to Fort Wayne: 335.7 px on a bearing of -56.656 degrees from the x axis.
+     The path is SCHEMATIC, the construction of g-a5s07-marion: straight legs between the places the survey names.
+     Coverage (plan rule 22): nothing in this brief ever sits under the map, so in both MAP views its box runs on down at the
+     same camera (to y 660 across its width, to y 984 left of x 1580; the corner x >= 1600, y >= 680 stays bare) and opens
+     left to x 620, Indiana's west line; it closes to its briefed left edge when the stamp needs the room (13.73).
+     MAP BLOCK: BM-1's groups map-neighbours, map-counties and map-state, every path element that crosses what the camera
+     shows copied whole and unchanged from the file by one mechanical copy that added the id prefix and nothing else.
+     Cues are comp-local seconds from the brief's table (audio/a5-s10, a5-s11 words.json plus each segment's start in the comp). -->
+<template>
+<style>
+  /* no background: the hole must stay clear. No z-index here: index.html puts the film under its host */
+  #alr-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .alr-h { opacity:0; visibility:hidden; }
+  .alr-full { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* ---- FILM VIEW (family block, as g-a1s15-offices): ground with a 4:3 hole at x 480 to 1440, y 150 to 870, frame, label chip, hole cover ---- */
+  /* every pane carries the whole 1920 x 1080 gradient, offset by its own left and top, so no pane edge shows a seam */
+  .alr-pane { position:absolute; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%) no-repeat; background-size:1920px 1080px; }
+  .alr-pane-t { left:0; top:0; width:1920px; height:150px; background-position:0 0; }
+  .alr-pane-b { left:0; top:870px; width:1920px; height:210px; background-position:0 -870px; }
+  .alr-pane-l { left:0; top:150px; width:480px; height:720px; background-position:0 -150px; }
+  .alr-pane-r { left:1440px; top:150px; width:480px; height:720px; background-position:-1440px -150px; }
+  .alr-cover { left:480px; top:150px; width:960px; height:720px; background-position:-480px -150px; }
+  .alr-frame { position:absolute; left:476px; top:146px; width:968px; height:728px; box-sizing:border-box; border:4px solid #dfe7ee; }
+  .alr-chip { position:absolute; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:23px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  .alr-label { left:480px; top:886px; }
+
+  /* ---- map block: the SVG fills the frame; the camera is its viewBox (fixed), the visible box is its clip-path ---- */
+  .alr-map { position:absolute; left:0; top:0; width:1920px; height:1080px;
+    clip-path:polygon(620px 62px, 1796px 62px, 1796px 660px, 1580px 660px, 1580px 984px, 620px 984px); }
+  .alr-town { position:absolute; font:700 22px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .alr-state { position:absolute; left:1626px; top:180px; font:700 22px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  /* county names: a point at the county box's centre, the name centred on it (the 2 px of tracking after the last letter is taken back) */
+  .alr-cn { position:absolute; width:0; height:0; display:flex; align-items:center; justify-content:center; }
+  .alr-cn span, .alr-bf { font:700 22px Arial, sans-serif; color:#f2f5f8; letter-spacing:2px; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .alr-cn span { flex:none; margin-right:-2px; }
+  .alr-bf { position:absolute; right:464px; top:474px; margin-right:-2px; }
+  .alr-mark { position:absolute; left:1613px; top:217.1px; width:54px; height:69px; overflow:visible; }
+
+  /* ---- clock stamp, top left (design sheet section 8, as the map bases) ---- */
+  .alr-stamp { position:absolute; left:96px; top:96px; width:590px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .alr-face { position:absolute; left:0; top:0; width:200px; height:200px; overflow:visible; }
+  .alr-eye { position:absolute; left:188px; top:20px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .alr-time { position:absolute; left:188px; top:46px; font:700 84px 'Courier New', Courier, monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .alr-place { position:absolute; left:190px; top:148px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+</style>
+<div id="alr-root" data-composition-id="g-a5s10-alert" data-width="1920" data-height="1080">
+
+  <!-- FILM VIEW (family block): the cover is on in both MAP views and off only while the film shows -->
+  <div class="alr-pane alr-pane-t"></div>
+  <div class="alr-pane alr-pane-b"></div>
+  <div class="alr-pane alr-pane-l"></div>
+  <div class="alr-pane alr-pane-r"></div>
+  <div class="alr-pane alr-cover" id="alr-cover"></div>
+
+  <!-- ================= MAP view: everything here goes off in one frame at the cut to film ================= -->
+  <div class="alr-full" id="alr-mapview">
+    <svg class="alr-map" id="alr-map" viewBox="75.4222 261.9556 682.6667 384" preserveAspectRatio="xMidYMid meet" fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+      <g id="alr-map-neighbours" stroke="#93a3b2" stroke-opacity="0.4">
+      </g>
+      <g id="alr-map-counties" fill="#15202b" stroke="#93a3b2" stroke-width="1.5">
+      </g>
+      <g id="alr-map-state" stroke-width="3">
+      </g>
+      <!-- the storm's path: one line, Body light 4 px, never red, no arrowhead -->
+      <polyline id="alr-path" class="alr-h" points="539.5,404.7 619.0,379.1 648.4,369.6" stroke="#dfe7ee" stroke-width="4" vector-effect="non-scaling-stroke"/>
+      <!-- town dots at the file's positions, r 2.1333 units (6 px), Body light -->
+      <g fill="#dfe7ee" stroke="none">
+        <g id="alr-pt-fort-wayne"><circle cx="605.1" cy="297.0" r="2.1333"/></g>
+        <g id="alr-pt-marion" class="alr-h"><circle cx="539.5" cy="396.7" r="2.1333"/></g>
+      </g>
+    </svg>
+    <div class="alr-town" id="alr-fw" style="left:1503px;top:87px">Fort Wayne</div>
+    <div class="alr-town alr-h" id="alr-mar" style="left:1317px;top:350px">Marion</div>
+
+    <!-- A5-S10 only: county names, the alert chip, the mark in Ohio and its chip -->
+    <div class="alr-full" id="alr-s10">
+      <div class="alr-cn alr-h" id="alr-n1" style="left:1448.7px;top:278.8px"><span>WELLS</span></div>
+      <div class="alr-cn alr-h" id="alr-n2" style="left:1563.3px;top:277.3px"><span>ADAMS</span></div>
+      <div class="alr-bf alr-h" id="alr-n3">BLACKFORD</div>
+      <div class="alr-cn alr-h" id="alr-n4" style="left:1537.1px;top:436.2px"><span>JAY</span></div>
+      <svg class="alr-full" viewBox="0 0 1920 1080" fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round">
+        <line id="alr-lead" class="alr-h" x1="1425" y1="470" x2="1425" y2="444"/>
+      </svg>
+      <div class="alr-chip alr-h" id="alr-c1" style="left:96px;top:96px">9:20 PM · on alert</div>
+      <div class="alr-state alr-h" id="alr-oh">OHIO</div>
+      <!-- tornado mark (media/drawings/tornado-mark.svg) at 0.75: object box 45 x 60, x 1617.5 to 1662.5, y 221.6 to 281.6 -->
+      <svg class="alr-mark alr-h" id="alr-mark" viewBox="-6 -6 72 92">
+        <g fill="none" stroke="#dfe7ee" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6 H57"/><path d="M14 26 H52"/><path d="M20 46 H42"/><path d="M27 64 L30 76"/></g>
+      </svg>
+      <div class="alr-chip alr-h" id="alr-c2" style="right:124px;top:524px">8:52 PM · already in Ohio</div>
+    </div>
+
+    <!-- A5-S11 only: the ring round Marion's dot and the dotted link to Fort Wayne (frame px) -->
+    <svg class="alr-full" viewBox="0 0 1920 1080" fill="none" stroke-linecap="round">
+      <defs>
+        <clipPath id="alr-lclip"><rect id="alr-grow" x="0" y="-8" width="0" height="16" transform="translate(1305.2 379.0) rotate(-56.656)"/></clipPath>
+      </defs>
+      <g clip-path="url(#alr-lclip)">
+        <line x1="1305.2" y1="379.0" x2="1489.7" y2="98.6" stroke="#dfe7ee" stroke-width="3" stroke-dasharray="2 10"/>
+      </g>
+      <circle id="alr-ring" class="alr-h" cx="1305.2" cy="379.0" r="14" stroke="#f2f5f8" stroke-width="3"/>
+    </svg>
+    <div class="alr-chip alr-h" id="alr-c3" style="right:635px;top:356px">tornadoes hit near 8:00 PM</div>
+  </div>
+
+  <!-- FILM VIEW (family block): frame and label, on only while the film shows -->
+  <div class="alr-frame alr-h" id="alr-frame"></div>
+  <div class="alr-chip alr-label alr-h" id="alr-label">Civil defense training film, 1967</div>
+
+  <!-- ================= clock stamp: word from Marion, 9:07 PM ================= -->
+  <div class="alr-stamp alr-h" id="alr-stamp">
+    <svg class="alr-face" viewBox="0 0 200 200" fill="none" stroke="#dfe7ee" stroke-linecap="round">
+      <circle cx="95" cy="100" r="62" stroke-width="4"/>
+      <g stroke-width="3">
+        <line x1="95.0" y1="45.0" x2="95.0" y2="59.0"/>
+        <line x1="122.5" y1="52.4" x2="118.5" y2="59.3"/>
+        <line x1="142.6" y1="72.5" x2="135.7" y2="76.5"/>
+        <line x1="150.0" y1="100.0" x2="136.0" y2="100.0"/>
+        <line x1="142.6" y1="127.5" x2="135.7" y2="123.5"/>
+        <line x1="122.5" y1="147.6" x2="118.5" y2="140.7"/>
+        <line x1="95.0" y1="155.0" x2="95.0" y2="141.0"/>
+        <line x1="67.5" y1="147.6" x2="71.5" y2="140.7"/>
+        <line x1="47.4" y1="127.5" x2="54.3" y2="123.5"/>
+        <line x1="40.0" y1="100.0" x2="54.0" y2="100.0"/>
+        <line x1="47.4" y1="72.5" x2="54.3" y2="76.5"/>
+        <line x1="67.5" y1="52.4" x2="71.5" y2="59.3"/>
+      </g>
+      <line id="alr-hh" x1="95" y1="100" x2="95" y2="66" stroke="#f2f5f8" stroke-width="5"/>
+      <line id="alr-mh" x1="95" y1="100" x2="95" y2="48" stroke="#f2f5f8" stroke-width="5"/>
+      <circle cx="95" cy="100" r="5" fill="#e8c56a" stroke="none"/>
+    </svg>
+    <div class="alr-eye">WORD FROM MARION</div>
+    <div class="alr-time">9:07 PM</div>
+    <div class="alr-place">Fort Wayne signal department</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a5s10-alert", P = "alr", CUT1 = 8.83, CUT2 = 11.03;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function show(e, t, d) { tl.to(e, { autoAlpha: 1, duration: d || 0.3, ease: "power2.out" }, t); }
+  function rise(e, t) { tl.fromTo(e, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, t); }
+
+  var map = $("map");
+  var OPEN = "polygon(716px 62px, 1796px 62px, 1796px 660px, 1580px 660px, 1580px 984px, 716px 984px)";
+  var four = ["wells", "adams", "blackford", "jay"];        /* the message's own order (survey printed p. 43) */
+
+  /* ---- lit-county block: the family's lit value is Amber 2 at 0.45, a fill change on the county's own path ---- */
+  function light(county, t) { tl.to($("co-in-" + county), { fill: "#e8c56a", fillOpacity: 0.45, duration: 0.3, ease: "power2.out" }, t); }
+
+  s0($("path"), { strokeDasharray: 323, strokeDashoffset: 323 });   /* non-scaling line: dashes are screen px; the path is 321.8 px */
+  /* clock hands: degrees clockwise from 12, about the face centre (95, 100) */
+  s0($("hh"), { rotation: 273.5, svgOrigin: "95 100" });    /* 9:07: hour hand just past 9 */
+  s0($("mh"), { rotation: 12, svgOrigin: "95 100" });       /* minute hand sweeps its last 30 degrees to 42 */
+
+  /* ================= A5-S10: four counties on alert, the tornado already gone ================= */
+  /* 0 · "With" @0.00: ground, the map in EAST (lines only), Fort Wayne's dot and label */
+
+  /* 1 · "four" @1.51: the four counties fill 0.2 s apart in the message's order, each name with its county */
+  light("wells", 1.51);     show($("n1"), 1.51);
+  light("adams", 1.71);     show($("n2"), 1.71);
+  light("blackford", 1.91); show([$("n3"), $("lead")], 1.91);
+  light("jay", 2.11);       show($("n4"), 2.11);
+
+  /* 2 · "alert" @2.37: the alert chip */
+  rise($("c1"), 2.37);
+
+  /* 3 · "tornado" @5.13: Marion's dot and name; the path draws west to east (1.2 s, to @6.33) */
+  show([$("pt-marion"), $("mar")], 5.13, 0.2);
+  tl.to($("path"), { autoAlpha: 1, duration: 0.05, ease: "none" }, 5.13);
+  tl.to($("path"), { strokeDashoffset: 0, duration: 1.2, ease: "power1.inOut" }, 5.13);
+
+  /* 4 · "left" @7.13: the tornado mark and OHIO east of the line; the Ohio chip */
+  show([$("mark"), $("oh")], 7.13);
+  rise($("c2"), 7.13);
+
+  /* ================= A5-S11: the phone call ================= */
+  /* 5 · "The" @8.83: hard cut to the film view in one frame: the map and all that is on it off; the hole open, frame and film label on.
+         Behind the cut the map is reset for its return: counties unlit, no path, Marion's name at its second place */
+  tl.set([$("mapview"), $("s10"), $("path"), $("cover")], { autoAlpha: 0 }, CUT1);
+  tl.set([$("frame"), $("label")], { autoAlpha: 1 }, CUT1);
+  tl.set(four.map(function (c) { return $("co-in-" + c); }), { fill: "#15202b", fillOpacity: 1 }, CUT1);
+  tl.set($("mar"), { y: 36 }, CUT1);
+
+  /* 6 · "Word" @11.03: hard cut back in one frame: hole cover on, frame and film label off; the map returns with Fort Wayne and Marion only */
+  tl.set([$("cover"), $("mapview")], { autoAlpha: 1 }, CUT2);
+  tl.set([$("frame"), $("label")], { autoAlpha: 0 }, CUT2);
+
+  /* 7 · "Marion" @11.27: the ring comes on round Marion's dot; the dotted link draws from Marion to Fort Wayne (0.8 s, to @12.07) */
+  show($("ring"), 11.27, 0.2);
+  tl.to($("grow"), { attr: { width: 340 }, duration: 0.8, ease: "none" }, 11.27);
+
+  /* 8 · "nine oh seven" @13.73: the map's box closes to its left edge; the stamp slides in from the left, the minute hand lands on 42 */
+  tl.to(map, { clipPath: OPEN, duration: 0.5, ease: "power2.inOut" }, 13.73);
+  tl.fromTo($("stamp"), { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 13.73);
+  tl.to($("mh"), { rotation: 42, duration: 0.5, ease: "power3.out" }, 13.93);
+
+  /* 9 · "about" @15.05: the chip beside Marion's dot; hold to the last frame */
+  show($("c3"), 15.05);
+
+  tl.to({}, { duration: 0.01 }, 17.98);                     /* holds to the last frame @17.99 */
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
