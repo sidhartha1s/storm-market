@@ -46,15 +46,15 @@ The real map is shown at 950 x 758 (0.632 of its file size), never enlarged.
 
 ## 5. Text (exact) and cues
 Text: `our sketch · not to scale` · `Surface weather map · 1:00 AM EST` · `Weather Bureau Daily Weather Map · Sunday, April 11, 1965` · `L` · `the northern plains`.
-Cue words and times are from `audio/a1-s6.words.json` as it stood on 12 Oct 26 (wav 7.25 s). One segment, so the two time columns are equal; a lead-in gap from `mg_specs/timeline-map.md` (not on disk yet), if any, is added to every row. Retime from the word, never from the seconds.
+Cue words and times are from `audio/a1-s6.words.json` as it stood on 12 Oct 26 at 17:50, after the voice conversion's re-transcription (wav 7.25 s). The transcriber writes word 0 as "But"; the spoken word is "What". One segment, so the two time columns are equal; a lead-in gap from `mg_specs/timeline-map.md` (not on disk yet), if any, is added to every row. Retime from the word, never from the seconds.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
-| 0 | A1-S6 | 0 | What | 0.00 | 0.00 | first frame: ground, our map's state outlines and the sketch label, nothing else |
-| 1 | A1-S6 | 6 | map | 1.80 | 1.80 | the real map card slides in from the left (`x:-1080` set at 0, to 0; 0.6 s, power3.out); its label chip and the source line fade in 0.2 s after it lands |
-| 2 | A1-S6 | 12 | storm | 3.52 | 3.52 | the system disc fades in on our map (0.4 s) |
+| 0 | A1-S6 | 0 | But | 0.00 | 0.00 | first frame: ground, our map's state outlines and the sketch label, nothing else |
+| 1 | A1-S6 | 6 | map | 1.82 | 1.82 | the real map card slides in from the left (`x:-1080` set at 0, to 0; 0.6 s, power3.out); its label chip and the source line fade in 0.2 s after it lands |
+| 2 | A1-S6 | 12 | storm | 3.54 | 3.54 | the system disc fades in on our map (0.4 s) |
 | 3 | A1-S6 | 15 | low, | 4.78 | 4.78 | the `L` lands (fade and `y:20` to 0, 0.3 s) |
 | 4 | A1-S6 | 16 | turning | 5.46 | 5.46 | the four arrows draw on (0.4 s, `strokeDashoffset`), then the group turns -40 degrees to the end of the comp (ease none) |
-| 5 | A1-S6 | 19 | northern | 6.08 | 6.08 | `the northern plains` fades in (0.3 s). Hold to the end |
+| 5 | A1-S6 | 19 | northern | 6.10 | 6.10 | `the northern plains` fades in (0.3 s). Hold to the end |
 
 ## 6. Contract
 As `references/mg-brief-template.md` section 6, with these: file `compositions/g-a1s06-low.html` is the only file the builder writes; `data-composition-id="g-a1s06-low"`; id prefix `low-`; root `<div id="low-root" ...>` styled through `#low-root` (plan rule 3 overrides the template's `id="root"`). Full frame, own ground on from frame 0.
