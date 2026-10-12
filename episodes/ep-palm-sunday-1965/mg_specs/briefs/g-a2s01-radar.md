@@ -1,4 +1,4 @@
-Host: id=g-a2s01-radar file=compositions/g-a2s01-radar.html start=289.61 (timeline-map.md table 1; the mount in index.html wins) duration=16.69 s (wavs 16.29 s plus their gaps) track=2
+Host: id=g-a2s01-radar file=compositions/g-a2s01-radar.html start=289.86 (timeline-map.md table 1; the mount in index.html wins) duration=16.69 s (wavs 16.29 s plus their gaps) track=2
 
 # g-a2s01-radar · A2-S1, A2-S2 · what the 5:43 warning said, and where its radar news came from (wave 2, map family)
 
