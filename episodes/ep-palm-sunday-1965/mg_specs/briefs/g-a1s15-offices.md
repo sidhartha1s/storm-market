@@ -79,6 +79,7 @@ No source line in the credit corner: every paper strip carries its own attributi
 11. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680; all text at least 96 px from the sides and 54 px from top and bottom.
 12. The ground shows no seam: the four panels and the hole cover read as one gradient.
 Beat check (rule 13): `inaction` is settled 11.83 to 12.99 (1.16 s, one word, the paper already up for 1.5 s). Strip B is settled 21.95 to 24.28 (2.33 s, eight words). Strip D's quote is settled 31.25 to 34.71 (3.46 s).
+Accepted as built (lead, 13 Oct 26): the microphone group stands alone at its lowered place from 24.65 to 26.11 s (68.3 % of the frame empty, under 3 s); its base touches strip C's top edge at 28.10 s for one tenth of a second.
 
 ## 5. Text (exact) and cues
 Text: `Civil defense training film, 1967` · `“inaction”` · `Disaster Research Center, 1966, pp. 8-9` · `ON AIR` · `“(A few stations never passed on the forecast)”` · `Disaster Research Center, 1966, p. 10` · `“A TORNADO OR TWO”` · `Disaster Research Center, 1966, p. 7` · `half a state` · `“should be on the alert”` · `Weather Bureau survey report, 1965, p. 39` · `three counties`.
