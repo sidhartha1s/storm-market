@@ -15,7 +15,9 @@
      timed from its first sound (mg_specs/timeline-map.md table 5). No audio and no video element in this file. -->
 <template>
 <style>
-  #off-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }   /* no background: the hole must stay clear */
+  /* no background: the hole must stay clear. z-index 1: the film mounts come after this comp's host in index.html and carry no z-index,
+     so without it the film paints over the dim, strip A and the hole cover (seen on the 12.40 frame, 12 Oct 26) */
+  #off-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; z-index:1; font-family:Arial, sans-serif; }
   .off-h { opacity:0; visibility:hidden; }
 
   /* ---- FILM VIEW (family block): ground with a 4:3 hole at x 480 to 1440, y 150 to 870, frame, label chip, hole cover ---- */
