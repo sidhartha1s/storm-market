@@ -83,33 +83,33 @@ The Picture note's `EST` does not fit beside an 84 px time inside the 590 px car
 
 ## 5. Text (exact) and cues
 Text: the three stamp states above · `extreme southern` / `Wisconsin` · `extreme eastern` / `Iowa` · `portions of` / `northern Illinois` · `“ONE OR TWO TORNADOES”` · `Severe Weather Forecast 68 · issued 1:00 PM CST (2:00 PM EST)` · `“PORTIONS OF NORTHERN INDIANA”` · `“A TORNADO OR TWO”` · `Severe Weather Forecast 69 · issued 4:20 PM CST (5:20 PM EST)` · `portions of northern Indiana` · the seven county names · `Weather Bureau survey, 1965, p. 38` · `Fort Wayne` · `“but not the one at 5:20 p.m.”` · `Disaster Research Center, 1966, p. 10`. The sheets' words are the image.
-Cue words and times are from `audio/a1-s9.words.json`, `a1-s10`, `a1-s11` and `a1-s12` as they stood on 12 Oct 26. Segment starts inside the comp are the wav lengths added up: A1-S9 0.00, A1-S10 8.61, A1-S11 18.04, A1-S12 24.74; total 30.67 s. The gaps `mg_specs/timeline-map.md` puts between segments (not on disk yet) are added to every later segment's rows. Retime from the word, never from the seconds.
+Cue words and times are from `audio/a1-s9.words.json`, `a1-s10`, `a1-s11` and `a1-s12` as they stood on 12 Oct 26 at 17:50, after the voice conversion's re-transcription. Segment starts inside the comp are the wav lengths added up: A1-S9 0.00, A1-S10 8.61, A1-S11 18.04, A1-S12 24.74; total 30.67 s. The gaps `mg_specs/timeline-map.md` puts between segments (not on disk yet) are added to every later segment's rows. Retime from the word, never from the seconds.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A1-S9 | 0 | At | 0.00 | 0.00 | first frame: ground and the map in MIDWEST (state outlines only) |
-| 1 | A1-S9 | 1 | two | 0.34 | 0.34 | clock stamp slides in from the left (0.6 s, power3.out), state 2:00 PM; the minute hand sweeps its last 30 degrees into place |
+| 1 | A1-S9 | 1 | two | 0.36 | 0.36 | clock stamp slides in from the left (0.6 s, power3.out), state 2:00 PM; the minute hand sweeps its last 30 degrees into place |
 | 2 | A1-S9 | 6 | forecast | 1.70 | 1.70 | forecast card 68 slides in from the right (`x:700` set at 0, to 0; 0.7 s, power3.out) |
 | 3 | A1-S9 | 12 | Wisconsin, | 3.54 | 3.54 | Wisconsin fills (0.3 s) with its label |
-| 4 | A1-S9 | 13 | Iowa, | 4.52 | 4.52 | Iowa fills with its label |
-| 5 | A1-S9 | 15 | Illinois | 5.14 | 5.14 | Illinois fills with its label |
+| 4 | A1-S9 | 13 | Iowa, | 4.54 | 4.54 | Iowa fills with its label |
+| 5 | A1-S9 | 15 | Illinois, | 5.14 | 5.14 | Illinois fills with its label |
 | 6 | A1-S9 | 19 | one | 6.54 | 6.54 | unlit page fades in on the card; underline `ONE OR TWO` (0.3 s), then `TORNADOES` (0.25 s) |
 | 7 | A1-S9 | 22 | tornadoes. | 7.52 | 7.52 | the strip lifts in under the card (`y:60` set at 0, to 0, with the fade; 0.4 s, power3.out) |
 | 8 | A1-S10 | 0 | Then, | 0.00 | 8.61 | strip and card 68 exit right (`x:1900`, 0.4 s, power3.in); the three fills and labels fade (0.3 s) |
 | 9 | A1-S10 | 2 | 5 | 0.68 | 9.29 | stamp goes to state 5:20 PM |
 | 10 | A1-S10 | 5 | severe | 1.54 | 10.15 | forecast card 69 slides in from the right (0.7 s) |
-| 11 | A1-S10 | 10 | It | 4.48 | 13.09 | map push MIDWEST to INDIANA (0.9 s) |
-| 12 | A1-S10 | 12 | parts | 4.88 | 13.49 | unlit page on card 69; underline `PORTIONS OF NORTHERN INDIANA` (0.4 s) |
+| 11 | A1-S10 | 10 | It | 4.44 | 13.05 | map push MIDWEST to INDIANA (0.9 s) |
+| 12 | A1-S10 | 12 | parts | 4.90 | 13.51 | unlit page on card 69; underline `PORTIONS OF NORTHERN INDIANA` (0.4 s) |
 | 13 | A1-S10 | 15 | Indiana, | 5.66 | 14.27 | strip 1 lifts in; the northern band wipes down from the north edge (0.5 s) and its label fades in |
-| 14 | A1-S10 | 21 | a | 8.02 | 16.63 | underline `A TORNADO OR TWO` (0.4 s) |
+| 14 | A1-S10 | 21 | a | 8.04 | 16.65 | underline `A TORNADO OR TWO` (0.4 s) |
 | 15 | A1-S10 | 24 | two. | 8.72 | 17.33 | strip 2 lifts in under strip 1 |
 | 16 | A1-S11 | 5 | northern | 1.30 | 19.34 | the band's fill goes 25 % to 45 % and back (0.6 s): a fill change, no scale |
 | 17 | A1-S11 | 10 | South | 3.24 | 21.28 | card 69 and both strips exit right (0.4 s); band and label fade (0.3 s); the map moves INDIANA to NORTH (0.9 s) and the county lines fade in during the move |
-| 18 | A1-S11 | 15 | 10 | 4.28 | 22.32 | stamp goes to state 5:30 PM, South Bend |
-| 19 | A1-S11 | 20 | seven | 5.40 | 23.44 | the seven counties fill in the order Porter, LaPorte, St. Joseph, Elkhart, Starke, Marshall, Kosciusko, 0.1 s apart (0.25 s each), each with its name; the source line fades in |
+| 18 | A1-S11 | 15 | ten | 4.28 | 22.32 | stamp goes to state 5:30 PM, South Bend |
+| 19 | A1-S11 | 20 | seven | 5.38 | 23.42 | the seven counties fill in the order Porter, LaPorte, St. Joseph, Elkhart, Starke, Marshall, Kosciusko, 0.1 s apart (0.25 s each), each with its name; the source line fades in |
 | 20 | A1-S12 | 5 | Fort | 1.68 | 26.42 | Fort Wayne dot and label fade in (0.3 s) |
-| 21 | A1-S12 | 7 | didn't | 2.26 | 27.00 | the teletype draws on beside it (0.5 s, `strokeDashoffset`), unlit |
+| 21 | A1-S12 | 7 | didn't | 2.24 | 26.98 | the teletype draws on beside it (0.5 s, `strokeDashoffset`), unlit |
 | 22 | A1-S12 | 10 | one | 3.02 | 27.76 | the paper strip rises into the lower band (0.4 s); the `p. 38` source line fades out as it arrives (one source per frame) |
-| 23 | A1-S12 | 12 | Remember | 4.30 | 29.04 | county names and the Fort Wayne label fade (0.2 s, starting 0.2 s earlier); push NORTH to FORTWAYNE (0.9 s); the Fort Wayne label returns at its new place at 30.00. Hold to the end |
+| 23 | A1-S12 | 12 | remember | 3.50 | 28.24 | county names and the Fort Wayne label fade (0.2 s, starting 0.2 s earlier); push NORTH to FORTWAYNE (0.9 s); the Fort Wayne label returns at its new place at 30.00. Hold to the end |
 Card 68 is on screen 6.9 s and changes at 6.54; card 69 is on screen 11.1 s and changes at 13.49 and 16.63: no stretch over 8 s without a change.
 
 ## 6. Contract
