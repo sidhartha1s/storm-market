@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a3s10-towers (A3-S10): the typed telephone list close up, one row lit, the power company; then the list gives way to
+     three rows of 18 small steel towers under "11 breaks in major lines", and they fall one after another while a count runs
+     to 54. The towers are schematic, not to scale and not a map: one tower is one tower of the company's report, and their
+     places on screen mean nothing. Brief: mg_specs/briefs/g-a3s10-towers.md.
+     Copies: the sheet and its world from g-t1s3-list in its Close state (s 1.6, tx 147.6, ty -66; world px of design sheet
+     section 5; screen = s x world + t), the Lit band from g-i1s5-onair.
+     Tower: media/drawings/steel-tower.svg (object 80 x 160) inline 54 times at 0.36, stroke-width 6 (4.5 on the braces) as
+     media/drawings/README.md gives for this size; each tips about its base centre (40, 160) in the drawing's own units.
+     Cues are comp-local seconds from audio/a3-s10.words.json (wav start -0.38, timeline-map.md table 5). -->
+<template>
+<style>
+  /* ---- ground ---- */
+  #tow-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .tow-h { opacity:0; visibility:hidden; }
+
+  /* ---- part A: list sheet (design sheet section 5, world px; the world carries the camera transform) ---- */
+  .tow-world { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .tow-sheet { position:absolute; left:64px; top:60px; width:760px; height:590px; background:#f4f0e6; border-radius:2px; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .tow-eye { position:absolute; left:96px; top:84px; font:700 19px 'Courier New', Courier, monospace; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+  .tow-title { position:absolute; left:96px; top:118px; font:700 30px 'Courier New', Courier, monospace; color:#2a2622; white-space:nowrap; line-height:1; }
+  /* media/drawings/telephone.svg (viewBox -6 -58 102 106) at 0.638: the telephone spans x 730 to 790, centred on y 123 */
+  .tow-phone { position:absolute; left:727.5px; top:77.7px; width:65.1px; height:67.6px; }
+  .tow-rule { position:absolute; left:96px; top:171px; width:696px; height:2px; background:rgba(107,98,87,0.4); }
+  .tow-row { position:absolute; left:150px; height:44px; font:700 26px 'Courier New', Courier, monospace; color:#2a2622; white-space:nowrap; line-height:44px; }
+  .tow-rr { position:absolute; left:96px; width:696px; height:1px; background:rgba(107,98,87,0.25); }
+  .tow-band { position:absolute; left:96px; top:336px; width:696px; height:44px; background:#e8c56a; opacity:0.35; visibility:hidden; }   /* Lit, slot 4, behind the type */
+
+  /* ---- part B: heading, count, labels, towers ---- */
+  .tow-head { position:absolute; left:96px; top:140px; font:900 60px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .tow-count { position:absolute; left:96px; top:232px; width:230px; font:900 140px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .tow-clab { position:absolute; left:340px; top:316px; font:700 34px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .tow-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .tow-rep { position:absolute; left:96px; top:900px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+
+  /* ---- source line: the list's, then the report's (one at a time) ---- */
+  .tow-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="tow-root" data-composition-id="g-a3s10-towers" data-width="1920" data-height="1080" data-duration="11.47">
+
+  <!-- part A: the list, eight rows in the study's sentence order (printed p. 14); the ninth slot has only its rule -->
+  <div class="tow-world" id="tow-world">
+    <div class="tow-sheet"></div>
+    <div class="tow-band" id="tow-band"></div>
+    <div class="tow-eye">SOUTH BEND WEATHER BUREAU &middot; BY TELEPHONE</div>
+    <div class="tow-title">Organizations notified included:</div>
+    <img class="tow-phone" src="media/drawings/telephone.svg" alt="">
+    <div class="tow-rule"></div>
+    <div class="tow-rr" style="top:238px"></div>
+    <div class="tow-rr" style="top:286px"></div>
+    <div class="tow-rr" style="top:334px"></div>
+    <div class="tow-rr" style="top:382px"></div>
+    <div class="tow-rr" style="top:430px"></div>
+    <div class="tow-rr" style="top:478px"></div>
+    <div class="tow-rr" style="top:526px"></div>
+    <div class="tow-rr" style="top:574px"></div>
+    <div class="tow-rr" style="top:622px"></div>
+    <div class="tow-row" id="tow-r1" style="top:192px">State Police</div>
+    <div class="tow-row" id="tow-r2" style="top:240px">Sheriffs' Departments</div>
+    <div class="tow-row" id="tow-r3" style="top:288px">City Police Departments</div>
+    <div class="tow-row" id="tow-r4" style="top:336px">Indiana and Michigan Electric Company</div>
+    <div class="tow-row" id="tow-r5" style="top:384px">Red Cross</div>
+    <div class="tow-row" id="tow-r6" style="top:432px">Specified radio and TV stations</div>
+    <div class="tow-row" id="tow-r7" style="top:480px">Flying services</div>
+    <div class="tow-row" id="tow-r8" style="top:528px">Airlines</div>
+  </div>
+
+  <!-- part B: the company's report: 11 breaks, 54 steel towers down -->
+  <div class="tow-head tow-h" id="tow-head">11 breaks in major lines</div>
+  <div class="tow-count tow-h" id="tow-count">0</div>
+  <div class="tow-clab tow-h" id="tow-clab">steel towers down</div>
+  <svg class="tow-svg" id="tow-svg" viewBox="0 0 1920 1080"></svg>
+  <div class="tow-rep tow-h" id="tow-rep">Indiana &middot; reported by the Indiana and Michigan Electric Company</div>
+
+  <div class="tow-src" id="tow-src14">Disaster Research Center, 1966, p. 14</div>
+  <div class="tow-src tow-h" id="tow-src16">Disaster Research Center, 1966, p. 16</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a3s10-towers", P = "tow", D = 11.47, NS = "http://www.w3.org/2000/svg";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+
+  /* ---- towers: 54 inline copies of the drawing, three rows of 18; tower n runs row by row, left to right ---- */
+  var COLS = 18, ROWS = 3, N = COLS * ROWS, X0 = 100, PITCH = 83, TOP = [502.4, 642.4, 782.4], K = 0.36;
+  var LINES = ["M10 160 L40 0 L70 160", "M16 22 H64 M8 46 H72 M2 70 H78"], BRACES = ["M24.3 84 L62.5 120 M55.7 84 L17.5 120", "M17.5 120 L70 160 M62.5 120 L10 160"];
+  var svg = $("svg"), towers = [], rows = [[], [], []];
+  for (var n = 1; n <= N; n++) {
+    var r = Math.floor((n - 1) / COLS), c = (n - 1) % COLS;
+    var box = el("g", { transform: "translate(" + (X0 + PITCH * c) + " " + TOP[r] + ") scale(" + K + ")" }, svg);
+    var g = el("g", { id: P + "-t" + n, "class": P + "-h", fill: "none", stroke: "#dfe7ee", "stroke-width": 6, "stroke-linecap": "round", "stroke-linejoin": "round" }, box);
+    LINES.forEach(function (d) { el("path", { d: d }, g); });
+    BRACES.forEach(function (d) { el("path", { d: d, "stroke-width": 4.5 }, g); });
+    towers.push(g); rows[r].push(g);
+  }
+
+  /* ---- part A camera: Close (design sheet section 5); it does not move ---- */
+  var world = $("world"), band = $("band"), count = $("count");
+  var others = [$("r1"), $("r2"), $("r3"), $("r5"), $("r6"), $("r7"), $("r8")];
+
+  /* rest states, set at 0 */
+  s0(world, { scale: 1.6, x: 147.6, y: -66, transformOrigin: "0 0", force3D: false });
+  s0(band, { scaleX: 0, transformOrigin: "left center" });
+  s0(towers, { rotation: 0, svgOrigin: "40 160" });        /* the base centre, in the drawing's own units */
+  s0($("head"), { y: 30 });
+
+  /* 0 · "One" @0.00: ground, the list close with eight plain rows, the list's source line; no band */
+
+  /* 1 · power @1.90: the Lit band wipes onto Indiana and Michigan Electric Company and stays */
+  tl.set(band, { visibility: "visible" }, 1.90);
+  tl.to(band, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 1.90);
+
+  /* 2 · Indiana @3.24: the other seven rows go to Caption dark sub; the lit row stays Caption dark */
+  tl.to(others, { color: "#6b6257", duration: 0.3, ease: "none" }, 3.24);
+
+  /* 3 · It @5.34: the sheet, its band and the list's source line fade out in place, gone @5.64 */
+  tl.to([world, $("src14")], { autoAlpha: 0, duration: 0.3, ease: "none" }, 5.34);
+
+  /* 4 · 11 @5.84: the heading rises; the report's source line fades in */
+  tl.to($("head"), { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.84);
+  tl.to($("src16"), { autoAlpha: 1, duration: 0.3, ease: "none" }, 5.84);
+
+  /* 5 · lines @7.20: the 54 towers fade in standing, a row at a time, all standing @7.74 */
+  rows.forEach(function (row, i) { tl.to(row, { autoAlpha: 1, duration: 0.3, ease: "none" }, 7.20 + i * 0.12); });
+
+  /* 6 · Indiana @7.72: the report label */
+  tl.to($("rep"), { autoAlpha: 1, duration: 0.3, ease: "none" }, 7.72);
+
+  /* 7 · 54 @8.78: the count comes on and the towers fall in order, one start time and one beat: tower n starts at
+     FALL + BEAT x (n - 1), turns 90 degrees to its right in 0.2 s and goes Label grey as it lands; the count shows n from the
+     moment tower n starts, so it reads 54 @10.37 and the last tower lands @10.57 */
+  var FALL = 8.78, BEAT = 0.03;
+  tl.set(count, { autoAlpha: 1 }, FALL);
+  towers.forEach(function (g, i) {
+    var t = FALL + BEAT * i;
+    tl.set(count, { textContent: String(i + 1) }, t);
+    tl.to(g, { rotation: 90, duration: 0.2, ease: "power2.in" }, t);
+    tl.to(g, { stroke: "#93a3b2", duration: 0.1, ease: "none" }, t + 0.15);
+  });
+
+  /* 8 · steel @9.24: the count's label */
+  tl.to($("clab"), { autoAlpha: 1, duration: 0.2, ease: "none" }, 9.24);
+
+  /* 9 · down. @9.94: nothing new starts. Hold to 11.47: 54 grey towers lying down, 54, the heading, both labels */
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
