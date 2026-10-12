@@ -166,7 +166,8 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const P = "#ch15-", D = 9.92, LINE_Y = 520, DARK = "#55606b", LIGHT = "#dfe7ee";
+  const P = "#ch15-", LINE_Y = 520, DARK = "#55606b", LIGHT = "#dfe7ee";
+  const D = 9.92;   /* its own const: sweep check 7 reads a tween position only as a number or as such a const */
   function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
 
   /* a station lights: its lines go Headline white, its lamp Amber 2, the marks on the lamp go ink. A colour change, never a scale pop. */
@@ -185,8 +186,7 @@ window.__timelines = window.__timelines || {};
     tl.to(P+"dot", { attr: { cx: x1 }, duration: dur, ease: "power2.inOut" }, at);
     if (!waits) tl.set(P+"dot", { autoAlpha: 0 }, at + dur);
   }
-  /* a pulse: a stroke or fill goes to a colour and comes back */
-  function pulse(sel, prop, hex, at, dur) { const a = {}; a[prop] = hex; tl.to(sel, { attr: a, duration: dur, ease: "power2.inOut", yoyo: true, repeat: 1 }, at); }
+  /* a pulse below: a stroke or fill goes to a colour and comes back (yoyo, repeat 1), written out so check 7 reads its position */
 
   /* IN @0.00: the whole chain at rest, dark; the list at 0.36. No light, no stop mark, no strip. */
   s0([P+"dot", P+"ring"], { autoAlpha: 0 });
@@ -214,15 +214,15 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"stop", { autoAlpha: 1 }, 3.47);
   tl.to(P+"stop", { scaleY: 1, duration: 0.25, ease: "power3.out" }, 3.47);
   /* RECEIVING @4.19: the microphone and the house pulse once to Body light at 80 % and back. No amber. */
-  pulse([P+"s4", P+"s5"], "stroke", "#b4bcc3", 4.19, 0.3);
+  tl.to([P+"s4", P+"s5"], { attr: { stroke: "#b4bcc3" }, duration: 0.3, ease: "power2.inOut", yoyo: true, repeat: 1 }, 4.19);
   /* KEY @5.47: the paper strip rises with the quote and its attribution */
   tl.to(P+"strip", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.47);
   /* OFFICES: at 5.90, once the strip is up, the desk goes Headline white and back to Body light */
-  pulse(P+"desk", "stroke", "#f2f5f8", 5.90, 0.3);
+  tl.to(P+"desk", { attr: { stroke: "#f2f5f8" }, duration: 0.3, ease: "power2.inOut", yoyo: true, repeat: 1 }, 5.90);
   /* PUBLIC @6.49: the house pulses and goes dark again; its windows stay Panel dark */
-  pulse(P+"s5", "stroke", "#b4bcc3", 6.49, 0.3);
+  tl.to(P+"s5", { attr: { stroke: "#b4bcc3" }, duration: 0.3, ease: "power2.inOut", yoyo: true, repeat: 1 }, 6.49);
   /* NOT @8.29: the stop mark flashes Headline white and back to Popfig red */
-  pulse(P+"stop", "fill", "#f2f5f8", 8.29, 0.15);
+  tl.to(P+"stop", { attr: { fill: "#f2f5f8" }, duration: 0.15, ease: "power2.inOut", yoyo: true, repeat: 1 }, 8.29);
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-a4s15-chain"] = tl;
 })();
