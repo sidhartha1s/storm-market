@@ -107,7 +107,7 @@ Track 1, muted, class `filmwin`: left 480, top 150, 960 x 720 (the 4:3 window of
 | v-a1s16-announcer | media/films/cuts/a14-09-announcer.mp4 | g-a1s15-offices | 255.76 | 9.44 | 12.99 |
 | v-a2s4-operators | media/films/cuts/a14-13-operators.mp4 | g-a2s03-chain | 312.69 | 7.84 | 6.14 |
 | v-a3s7-telephone | media/films/cuts/a14-10-desk-telephone.mp4 | g-a3s07-calls | 528.39 | 11.41 | 0.00 |
-| v-a4s1-room | media/films/cuts/a14-05-operations-room.mp4 | g-a4s01-eyes | 661.85 | 3.15 | 0.00 |
+| v-a4s1-room | media/films/cuts/a14-05b-operations-room-wide.mp4 | g-a4s01-eyes | 661.85 | 3.15 | 0.00 |
 | v-a5s11-call | media/films/cuts/a14-08-telephone-call.mp4 | g-a5s10-alert | 915.58 | 4.17 | 8.83 |
 | v-a6s12-horn | media/films/cuts/a14-01-siren-horn.mp4 | g-a6s11-sirens | 1114.32 | 10.90 | 5.35 |
 
