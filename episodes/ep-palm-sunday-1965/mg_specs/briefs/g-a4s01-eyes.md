@@ -46,7 +46,7 @@ Clock hands, clockwise degrees from 12: 7:30 is hour 225, minute 180. In the rul
 |---|---|
 | Ground | canvas gradient (design sheet section 2), on from frame 0 |
 | County chip | design sheet section 9 "County label": glass chip, left 96, top 54, height 46, padding 0 x 22, Arial 700 26 px, Body light: `County B`. On from the cut at 3.15 |
-| Document card | design sheet section 9: left 96, top 116, 1480 x 319 (right 1576, bottom 435), Beige polaroid border 10 px, its shadow; the crop at (106, 126). On from frame 0, all of it bright |
+| Document card | design sheet section 9: left 96, top 116, 1480 x 319 (right 1576, bottom 435), Beige polaroid border 10 px, its shadow; the crop at (106, 126). On from the cut at 3.15, with the unlit page already on |
 | Unlit page | Panel dark at 45 %: R1 screen x 106 to 1566, y 126 to 201 (line 1); R2 screen x 386 to 1566, y 277 to 353 (line 3 after `own eyes".`); R3 screen x 106 to 1566, y 353 to 425 (line 4). Line 2 whole and `own eyes".` stay bright |
 | Underline 1 | Popfig red, 6 px, screen x 1361 to 1505, y 258 to 264, under `"with his`; `scaleX` 0 to 1 from the left |
 | Underline 2 | Popfig red, 6 px, screen x 187 to 367, y 335 to 341, under `own eyes".` |
