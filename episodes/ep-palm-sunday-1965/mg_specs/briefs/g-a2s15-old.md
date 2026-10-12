@@ -1,4 +1,4 @@
-Host: id=g-a2s15-old file=compositions/g-a2s15-old.html start=404.71 (timeline-map.md table 1; the mount in index.html wins) duration=10.91 s (wav 10.61 s plus its gaps) track=2
+Host: id=g-a2s15-old file=compositions/g-a2s15-old.html start=404.96 (timeline-map.md table 1; the mount in index.html wins) duration=10.91 s (wav 10.61 s plus its gaps) track=2
 
 # g-a2s15-old · A2-S15 · "too old ... to be truly worthwhile as a warning" (wave 2, page family)
 
