@@ -742,7 +742,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 
 **Rows:** (the act's exit question; no row)
 
-*([loop L3 open]: why warnings kept going out for storms that had already passed. Closes in A5-S13.)*
+*([loop L3 open]: why warnings kept going out for storms that had already passed. Closes in A5-S16.)*
 
 *(blackout 0.7 s)*
 
