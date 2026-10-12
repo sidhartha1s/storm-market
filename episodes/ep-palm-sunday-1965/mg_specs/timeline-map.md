@@ -112,7 +112,7 @@ Track 1, muted, class `filmwin`: left 480, top 150, 960 x 720 (the 4:3 window of
 | v-a6s12-horn | media/films/cuts/a14-01-siren-horn.mp4 | g-a6s11-sirens | 1114.32 | 10.90 | 5.35 |
 
 - `v-a1s16-announcer` ends 22.43 s into `g-a1s15-offices`; the window must be covered by then. "A few stations" is spoken at 21.47 s, so the first angle alone is enough and the two extra angle files are not mounted.
-- `v-a4s2-room` (added 12 Oct 26, 19:30, on the lead's order) is the first film after the book ad: the operations room from 20.0 s into the file (`data-media-start="20"`), for the first 4.0 s of `g-a4s02-countyb`, which must leave the window open for those 4.0 s. It is the file's second use (the first is its first 12.99 s under `g-a1s15-offices`), so the mount carries `data-callback="payoff cut after the book ad: real footage"`.
+- `v-a4s1-room` (added 12 Oct 26 on the lead's order, moved to this place the same day) is the picture on the hard cut out of the book ad's dip: the operations room from 20.0 s into the file (`data-media-start="20"`), for the first 3.15 s of `g-a4s01-eyes`, which must leave the window open for those 3.15 s; the page comes on at word 9, "in". No film sits under `g-a4s02-countyb`. It is the file's second use (the first is its first 12.99 s under `g-a1s15-offices`), so the mount carries `data-callback="payoff cut after the book ad: real footage"`.
 - `v-a5s11-call` is the whole 4.17 s file; the first sentence of A5-S11 ends 10.31 s into `g-a5s10-alert`, so the window is open for about 1.5 s.
 
 ## 4. Black and the book ad
