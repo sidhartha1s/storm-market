@@ -250,4 +250,45 @@ Book ad `ins-cta-paul` (`media/cta/paul-storm-ready-v7-oct10.mp4`): 636.44 for 2
 - **The six film cuts now have an audio stream** (`ffprobe`, 12 Oct 26, 19:31: video and audio in each). They stay mounted muted.
 - **The cut out of the book ad's dip (661.85) lands on film**: `v-a4s1-room` under `g-a4s01-eyes`, 3.15 s, then the page.
 - **The track map returns under 5 minutes after its first use** (`g-i1s4-states` starts 66.95, `g-a1s07-tracks` 170.07). DESIGN.md asks for more than 5 minutes between a picture and its callback. `lint_timeline.py` reads `data-callback` on videos and on stills in a section, not on a composition host, so the declaration on `host-a1s07-tracks` is for the reader and the lint passes either way.
+
+## 7. Sound for the acts and the close (33 mounts, added 12 Oct 26)
+The hook and intro's seven sounds are not listed here and were not touched. Every element carries `data-bed`. Files are in `media/sfx/`; where each came from is in `provenance.csv`. A swell's "Start" is 5.0 s before the last sound of its line (it ends on the line); a match-cut sound starts on the frame its picture moves (composition start + the cue time in the composition's brief).
+| Start (s) | Element | File | Volume | Length (s) | What it lands on |
+|---|---|---|---|---|---|
+| 113.18 | sx-bed-a1 | bed-a1.mp3 | 0.13 | 175.98 | act one, cut out of black to `bo-a1`; fades out over the last 1.0 s |
+| 289.86 | sx-bed-a2 | bed-a2.mp3 | 0.13 | 190.11 | act two, to `bo-a2`; fades out over the last 1.0 s |
+| 480.67 | sx-bed-a3 | bed-a3.mp3 | 0.13 | 154.77 | act three and Paul's tease, to the book ad's dip at 635.44; fades out over the last 0.5 s |
+| 661.85 | sx-bed-a4 | bed-a4.mp3 | 0.13 | 151.96 | act four, from the cut to the film after the ad to `bo-a4`; fades out over the last 1.0 s |
+| 814.51 | sx-bed-a5 | bed-a5.mp3 | 0.13 | 192.87 | act five, to `bo-a5`; fades out over the last 1.0 s |
+| 1008.08 | sx-bed-a6 | bed-a6.mp3 | 0.13 | 117.14 | act six, to `bo-a6`; fades out over the last 1.0 s |
+| 1125.92 | sx-bed-z1 | bed-z1.mp3 | 0.13 | 58.74 | the close, to the last frame; fades out over the 4.0 s end hold |
+| 156.56 | sx-swell-a1s5 | swell-toll.wav | 0.4 | 5.00 | A1-S5, ends 161.56 on "the clock to watch" |
+| 221.35 | sx-swell-a1s12 | swell-toll.wav | 0.4 | 5.00 | A1-S12, ends 226.35 on "remember Fort Wayne" |
+| 261.25 | sx-swell-a1s16 | swell-toll.wav | 0.4 | 5.00 | A1-S16, ends 266.25 on "never passed it on at all" |
+| 306.88 | sx-swell-a2s3 | swell-toll.wav | 0.4 | 5.00 | A2-S3, ends 311.88 on "somebody else's telephone line" |
+| 346.81 | sx-swell-a2s8 | swell-toll.wav | 0.4 | 5.00 | A2-S8, ends 351.81 on "Ten people did not survive it" |
+| 398.96 | sx-swell-a2s14 | swell-toll.wav | 0.4 | 5.00 | A2-S14, ends 403.96 on "first started touching down" |
+| 438.60 | sx-swell-a2s17 | swell-toll.wav | 0.4 | 5.00 | A2-S17, ends 443.60 on "Fourteen people lost their lives" |
+| 489.31 | sx-swell-a3s2 | swell-toll.wav | 0.4 | 5.00 | A3-S2, ends 494.31 on "impossible to keep track" |
+| 539.62 | sx-swell-a3s8 | swell-toll.wav | 0.4 | 5.00 | A3-S8, ends 544.62 on "the poor observer" |
+| 602.87 | sx-swell-a3s14 | swell-toll.wav | 0.4 | 5.00 | A3-S14, ends 607.87 on "for three days" |
+| 700.16 | sx-swell-a4s6 | swell-toll.wav | 0.4 | 5.00 | A4-S6, ends 705.16 on "died with the police" |
+| 735.73 | sx-swell-a4s10 | swell-toll.wav | 0.4 | 5.00 | A4-S10, ends 740.73 on "We didn't have any warning at all, the sheriff said" (mid-segment, from `words.json`) |
+| 779.09 | sx-swell-a4s13 | swell-toll.wav | 0.4 | 5.00 | A4-S13, ends 784.09 on "as its job" |
+| 858.87 | sx-swell-a5s5 | swell-toll.wav | 0.4 | 5.00 | A5-S5, ends 863.87 on "12 minutes left in Indiana" |
+| 900.74 | sx-swell-a5s9 | swell-toll.wav | 0.4 | 5.00 | A5-S9, ends 905.74 on "25 lives lost" |
+| 962.89 | sx-swell-a5s16 | swell-toll.wav | 0.4 | 5.00 | A5-S16, ends 967.89 on "18 people there lost their lives" |
+| 1037.63 | sx-swell-a6s4 | swell-toll.wav | 0.4 | 5.00 | A6-S4, ends 1042.63 on "broke in four more places" |
+| 1079.73 | sx-swell-a6s8 | swell-toll.wav | 0.4 | 5.00 | A6-S8, ends 1084.73 on "SkyWarn" |
+| 1139.73 | sx-swell-z1s2 | swell-toll.wav | 0.4 | 5.00 | Z1-S2, ends 1144.73 on "stopped on a police desk" |
+| 151.72 | sx-tty-a1s4 | teletype-burst.wav | 0.3 | 0.85 | `g-a1s04-wire` cue 2 (8.23): the amber wash on "typed out" |
+| 456.37 | sx-key-a2s19-1 | key-strike.wav | 0.35 | 0.22 | `g-a2s19-log` cue 3 (6.11): sighting card 1 starts to rise |
+| 458.15 | sx-key-a2s19-2 | key-strike.wav | 0.35 | 0.22 | `g-a2s19-log` cue 5 (7.89): card 2 starts to rise |
+| 459.93 | sx-key-a2s19-3 | key-strike.wav | 0.35 | 0.22 | `g-a2s19-log` cue 7 (9.67): card 3 starts to rise |
+| 533.92 | sx-ring-a3s7 | telephone-ring.wav | 0.3 | 1.88 | `g-a3s07-calls` cue 2: the ring arcs start to pulse (5.53) |
+| 866.87 | sx-tty-a5s6 | teletype-burst.wav | 0.3 | 0.85 | `g-a5s06-hold` cue 2 (1.99): the typed quote strip starts to rise |
+| 915.58 | sx-ring-a5s11 | telephone-ring.wav | 0.3 | 1.88 | `g-a5s10-alert` cue 5 (8.83): hard cut to the telephone film `v-a5s11-call` |
+
+- A match-cut sound moves with its composition: if a builder changes one of those cue times, the sound's start changes with it.
+- Nothing sounds in the five act blackouts, in the book ad's two dips or under the ad (635.44 to 661.85). No swell or match-cut sound sits under any of Paul's clips.
 - **Paul starts speaking 0.19 to 0.60 s into each new clip** (table 2); `ins-paul-1` has no such lead-in. The clips are mounted from their first frame, so the silence before his first word is 1.0 s plus that lead-in.
