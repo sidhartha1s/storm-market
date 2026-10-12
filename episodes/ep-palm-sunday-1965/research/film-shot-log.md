@@ -63,6 +63,6 @@ Place, date or agency marks that would misplace the story are in the last column
 
 ## Things in these films that would mislead
 
-- A14: the film is about radiological fallout. Desk signs "RADEF" and "BLAST & FIRE" appear in most EOC shots from 2:00 to 5:30; none of those are logged. The end card names the Office of Civil Defense Staff College in Battle Creek, Michigan (13:52 and after), and a map at 10:31 names Cobb AFB. Neither is in a logged shot.
+- A14: the film is about radiological fallout. Desk signs "RADEF" and "BLAST & FIRE" appear in most EOC shots from 2:00 to 5:30; none of those are logged. The end card names the Office of Civil Defense Staff College in Battle Creek, Michigan (from 14:00), and a hand-held map around 10:30 to 10:40 names Cobb AFB (Georgia). Neither is in a logged shot.
 - A13: set in Alaska in 1964 (earthquake) plus flood scenes; "WELFARE ALASKA" on a sleeve at 8:40 and the handwritten map at 3:35 name the place. The 5:49 tornado is of unknown place and date.
 - A15: cartoons with a strong teal colour cast; fallout headlines and a "STAY STRONG, the facts about NUCLEAR WEAPONS" title run through it; the closing card at 14:10 is the Prelinger Archives / Filecoin hosting credit and must not be used.
