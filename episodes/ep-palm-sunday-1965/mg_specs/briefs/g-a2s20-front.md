@@ -49,7 +49,7 @@ Cue words and times are from `audio/a2-s20.words.json` as re-transcribed on 12 O
 |---|---|---|---|---|---|---|
 | 0 | A2-S20 | 0 | A | 0.32 | 0.00 | first frame: ground only |
 | 1 | A2-S20 | 1 | warning | 0.42 | 0.10 | the long link draws from x 420 to x 840 (0.6 s), the arrowhead and the end label fade in (0.3 s); source line in |
-| 2 | A2-S20 | 4 | anywhere. | 1.24 | 0.92 | the three rings pulse in turn, 0.2 s apart, at x 980, 560, 760 |
+| 2 | A2-S20 | 4 | anywhere. | 1.24 | 0.92 | the three rings pulse in turn, 0.2 s apart: ring 1 (on the long link, whole inside x 420 to 840; exact x from the fixer's measure, not 980), then x 560, then x 760 |
 | 3 | A2-S20 | 6 | person | 2.78 | 2.46 | the house draws on (0.7 s), label `a person` |
 | 4 | A2-S20 | 11 | calls | 4.20 | 3.88 | the telephone draws on with its link to the house (0.4 s); the light runs house to telephone (0.3 s) |
 | 5 | A2-S20 | 13 | police, | 4.62 | 4.30 | the desk draws on with its link (0.5 s), label `the police`; the light runs telephone to desk (0.3 s) and the desk's lines turn Amber 2 for 0.4 s, then back |
