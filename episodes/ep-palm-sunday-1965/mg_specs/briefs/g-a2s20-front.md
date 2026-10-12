@@ -70,4 +70,4 @@ All seven lines of template section 7a. Line 6 here: the station positions are t
 As template section 8.
 
 ## Frames the verifier reads
-First frame (0.00) and the frame after it (0.04): ground only. Then settled frames: 0.80 (long link, arrowhead, end label), 1.20 and 1.50 (rings, one at a time), 2.20 (rings gone), 3.30 (house and label), 4.20 (telephone, light arrived), 5.00 (desk and label, desk back to Body light), 6.10 (light on the long link, moving left), 6.90 and 8.00 (arrowhead amber, end label white).
+First frame (0.00) and the frame after it (0.04): ground only. Then settled frames: 0.80 (long link, arrowhead, end label), 1.20 and 1.50 (rings in turn, on the link), 2.20 (rings gone), 3.30 (house and label), 4.20 (telephone, light arrived), 5.00 (desk and label, desk back to Body light), 6.10 (light on the long link, moving left), 6.90 and 8.00 (arrowhead amber, end label white).
