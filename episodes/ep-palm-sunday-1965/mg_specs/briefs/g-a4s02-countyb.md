@@ -38,7 +38,7 @@ The map (A4-S2, comp 0.00 to 10.46), one group `cntb-map`:
 | Tornado mark | `media/drawings/tornado-mark.svg` inline, scale 2 (120 x 160 px), `stroke-width="3"` on the group (6 px lines), stroke Body light, never red. It enters from box left -140 and comes to box x 150 to 270, y 503 to 663, then drifts to box left 190 by 10.06. It never reaches x 400 |
 The two marks, their labels and the tornado mark sit 133 px below the first brief's y (450, 386, 482 and 370), on the frame's middle line with the waiting chain (plan rule 22). No x moved.
 
-The chain (all four segments), one group `cntb-chain`, authored numbers at full size (on screen every y is 132 lower):
+The chain (all four segments), one group `cntb-chain`, authored numbers at full size (on screen every y is 36 lower from the growth on):
 | Element | Px |
 |---|---|
 | Civil defense desk | `media/drawings/desk.svg` inline, `translate(96 490) scale(0.85)`, `stroke-width="4.7"` (box x 96 to 351, y 490 to 617.5, top surface y 524, centre x 223.5). Its `dw-phone` group is not rendered: he used a radio, and the note gives the telephone to the police desk |
