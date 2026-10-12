@@ -51,9 +51,26 @@ else
   read -r COMP_W COMP_H COMP_DUR COMP_FPS <<< "$COMPOUT"
 fi
 
+# The frame rate this render must have. A draft is rendered at render.cmd's draft _FPS (a proxy
+# of the composition), so that number is read from render.cmd, the one place it is set.
+EXPECT_FPS="$COMP_FPS"
+if [ "$MODE" = draft ]; then
+  EXPECT_FPS=$(python3 - "$(dirname "$0")/render.cmd" <<'PYEOF'
+import re, sys
+m = re.search(r'if "%MODE%"=="draft" \(.*?set _FPS=(\d+)', open(sys.argv[1], encoding="utf-8", errors="replace").read(), re.S)
+print(m.group(1) if m else "")
+PYEOF
+)
+  EXPECT_FPS=${EXPECT_FPS%$'\r'}
+  if [ -z "$EXPECT_FPS" ]; then
+    echo "FAIL: could not read the draft _FPS out of render.cmd — cannot say what frame rate a draft must have"
+    EXPECT_FPS=0; FAIL=1
+  fi
+fi
+
 echo
-echo "=== artifact vs composition (duration/fps/resolution/audio must match — a truncated, ==="
-echo "=== downgraded or muted render used to exit 0 here) ==="
+echo "=== artifact vs composition (duration/resolution/audio must match the composition, fps the ==="
+echo "=== $MODE rate $EXPECT_FPS — a truncated, downgraded or muted render used to exit 0 here) ==="
 PROBE=$(ffprobe -v error -show_entries format=duration,size,bit_rate \
         -show_entries stream=codec_name,codec_type,width,height,r_frame_rate,nb_frames \
         -of default=noprint_wrappers=1 "$MP4")
