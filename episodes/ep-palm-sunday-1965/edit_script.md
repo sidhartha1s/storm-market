@@ -32,6 +32,17 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 - Drawings are used only where the inventory has nothing real: the house, the living room and its television set, the announcer's microphone, the desk.
 - Loop tags and timing notes sit between segments as plain notes, never inside a blockquote.
 - Start times wait on the voice probe; none is estimated here.
+- Acts and close, 12 Oct 26, where the draft departs from `structure.md` or needs a ruling:
+  - Hinge wording: `structure.md` has the county with "the warning in its hands" at about 7:30 PM. The scope rule bars "warning" there, and the director was told at about 7:15, so Paul's tease (A3-S22) says he "learned where a tornado was" at about seven fifteen.
+  - Act 3 has no map of broken power lines: the sources place only some of the towers, so A3-S12 is a count of 54 drawn towers.
+  - Row C8 (the radio station) is voiced in Act 4 with the line that the study does not give its county; it is not tied to County B (`county-key.md`).
+  - Row C4 (the second tornado down the same path) is added to Act 2 in the wording `county-key.md` calls safe. It sits a few segments before the twin funnel photograph with its place label; the lead rules whether that is too near.
+  - Act 5 leaves out the 8:10 PM Fort Wayne message that adds Grant County, so nothing there points at County B. The 8:07 PM time is said once, in Act 4, and never beside Marion.
+  - "The information died with the police" is voiced once (A4-S7); `flag_words.py` warns on it as a soft word. On-screen crops near rows C4 and A15 must stop short of the study's hard words.
+  - Page numbers in the acts are the printed pages of `facts.md`. The 12 Oct 26 fact check found some rows one page lower on the page images (C2, C6, C21, C22), so every page named in an act is read on its image before a crop is cut.
+  - The survey chairman's name is on screen only (A6-S1), not spoken. Paul is on camera five times after the hook: A1-S16, A3-S22, A4-S8, A5-S17, Z1-S1.
+  - The close: the signature line is the DESIGN.md "Signature closing footnote" with one phrase changed; that one section of DESIGN.md was looked up by search, outside the nine files named in the brief. The dated forward window (Z1-S4) and the present-day line (Z1-S3) are `[verify]`. The spoken book line in the close is a note, not copy.
+  - Act 4 runs shorter than its 4 minutes in `structure.md` and Act 5 longer: the study gives County B only the rows used, and nothing was stretched to fill.
 
 ---
 
