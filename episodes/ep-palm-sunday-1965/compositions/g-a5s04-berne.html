@@ -197,10 +197,11 @@ window.__timelines = window.__timelines || {};
     tl.to(map, { attr: { viewBox: viewBox }, duration: d, ease: camEase(ratio, ease) }, t);
     tl.to(dots, { attr: { r: dotR }, duration: d, ease: camEase(ratio, ease) }, t);
   }
-  var OPEN = "polygon(96px 62px, 1796px 62px, 1796px 660px, 1580px 660px, 1580px 1000px, 96px 1000px)";
-  var BOX = "polygon(716px 62px, 1796px 62px, 1796px 512px, 1580px 512px, 1580px 512px, 716px 512px)";
+  var OPEN = "polygon(96px 62px, 1796px 62px, 1796px 660px, 1580px 660px, 1580px 984px, 96px 984px)";
+  var BOX = "polygon(716px 62px, 1660px 62px, 1660px 512px, 1580px 512px, 1580px 512px, 716px 512px)";
 
   s0($("stage"), { x: 300 });                               /* the LINE picture waits 300 px right (plan rule 22) */
+  s0($("src"), { x: -392, y: 476 });                        /* the source line waits at left 96, top 1000, under the open box */
   s0($("rw"), { rotation: 0, svgOrigin: "1489.7 98.6" });
   s0($("trail"), { strokeDasharray: 124, strokeDashoffset: 124 });   /* the leg is 123.6 px */
   s0([$("a1"), $("a2"), $("r1")], { scaleX: 0, transformOrigin: "left center" });
