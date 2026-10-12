@@ -1,4 +1,5 @@
 Host: id=g-a4s01-eyes file=compositions/g-a4s01-eyes.html start=661.85 (timeline-map.md table 1; the mount in index.html wins) duration=6.71 s track=2
+RULED by the lead 12 Oct 26: film. Build the 'If the lead rules film' variant. File media/films/cuts/a14-05-operations-room.mp4 from 20.0 s into the file, window 0.00 to 3.15 s, mounted by the composer on track 1 at 661.85.
 
 # g-a4s01-eyes · A4-S1 · he waited fifteen minutes, until he saw it "with his own eyes" (wave 3, page family)
 
