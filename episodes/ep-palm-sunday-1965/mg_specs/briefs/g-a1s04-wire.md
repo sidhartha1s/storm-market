@@ -32,7 +32,7 @@ Nothing else is on screen: no arrow, no dot, no route line, no city label, no cl
 1. No route is traced. Nothing of ours follows, highlights or points along any line on the slide, and nothing joins Kansas City to South Bend.
 2. The amber wash covers the whole frame evenly. It is not a band, a sweep or a spot, so it reads as "the far machine typed", never as a path.
 3. The only words of ours are the caption, and they are the photograph's true caption. No "Kansas City", no "South Bend", no "1965" is set on the photograph.
-4. The wash is a change of opacity only (0 to 0.26 to 0). No scale pop, no shake.
+4. The wash is a change of opacity only: Amber 2 with a screen blend, opacity 0 to a peak of 0.50 and back to 0 (cue 8.23 s, 0.30 s up, 0.55 s down), over the whole frame. No scale pop, no shake. As fixed, 12 Oct 26: at the 0.26 this brief first gave, the wash moved the frame's mean luminance by 1.5 levels and failed its reader; at 0.50 with the screen blend it moves it by 22.5 levels at the peak.
 5. The photograph never shows an edge and never scales under 1.
 6. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680 (the caption ends well left of it; the bottom band is a scrim, not an object, but read the corner on a frame).
 7. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
