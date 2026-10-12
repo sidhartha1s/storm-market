@@ -64,6 +64,28 @@
         </g>
       </g>
     </g>
+  </svg>
+
+  <!-- the map's two labels: they move out with the map and fade first -->
+  <div id="cntb-maplabs">
+    <div class="cntb-mlab" id="cntb-mlabsh" style="left:420px; top:519px">the sheriff</div>
+    <div class="cntb-mlab" id="cntb-mlabcd" style="left:490px; top:615px">civil defense</div>
+  </div>
+
+  <!-- the stage: chain, arc, ghost, station labels and the chip, all at the brief's own numbers (chain line y 520).
+       Coverage (plan rule 22): the timeline holds the whole stage 133 px down while the chain waits, and 36 px down
+       from the growth on. Copy the blocks inside with their numbers; the offset is one value in the timeline. -->
+  <div id="cntb-stage">
+  <svg id="cntb-chainsvg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <!-- the dotted arc is drawn on, and its white wave is carried, by a solid stroke in a mask -->
+      <mask id="cntb-arcmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <path id="cntb-arcrev" d="M224 508 Q425 300 626 508" fill="none" stroke="#fff" stroke-width="20"/>
+      </mask>
+      <mask id="cntb-wavemask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <path id="cntb-waverev" d="M224 508 Q425 300 626 508" fill="none" stroke="#fff" stroke-width="20"/>
+      </mask>
+    </defs>
 
     <!-- BASE · the county chain, authored at full size: four stations, two dotted links, every line Label grey when unlit.
          It waits at scale 0.5 about (1577, 380) and grows to 1 on A4-S3. -->
