@@ -99,8 +99,7 @@ Cue words and times are from `audio/a4-s2.words.json` (34 words), `a4-s3.words.j
 | 12 | A4-S3 | 9 | other | 2.68 | 12.52 | microphone: the same stroke pulse, label `the radio station` |
 | 13 | A4-S3 | 10 | office | 2.90 | 12.74 | house: the same stroke pulse, label `a family` |
 | 14 | A4-S4 | 1 | about | 0.38 | 14.90 | the clock stamp slides in from the left (`x:-660` to 0, 0.6 s, power3.out) with `about`; hands at 7:25. On "7" (index 2, 15.08) the minute hand sweeps 150 to 180 and the hour hand 222.5 to 225.0 (0.5 s, power3.out) and `7:30 PM` lands |
-| 15 | A4-S4 | 7 | tornado | 2.06 | 16.58 | the chip's second span fades in (0.3 s): `County B · where the tornado was` |
-| 16 | A4-S4 | 10 | radioed | 3.76 | 18.28 | the radio arc draws from the civil defense desk to the police desk, dot by dot (0.6 s) |
+| 15 | A4-S4 | 10 | radioed | 3.76 | 18.28 | the radio arc draws from the civil defense desk to the police desk, dot by dot (0.6 s) |
 | 17 | A4-S4 | 13 | police | 4.52 | 19.04 | the light leaves the civil defense desk and crosses the arc (0.8 s, ease none) |
 | 18 | A4-S4 | 16 | location | 5.30 | 19.82 | when the light arrives (19.84) it hides and the police desk's lines turn Amber 2 (0.3 s) and stay |
 | 19 | A4-S4 | 25 | radio | 7.80 | 22.32 | the microphone's lines go to Body light and back to Label grey (0.3 s, yoyo). No amber: he asked, nothing was sent |
