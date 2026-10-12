@@ -386,24 +386,33 @@ if HAVE_FFMPEG:
         (ep / "index.html").write_text(
             '<div id="root" data-composition-id="x" data-start="0" data-width="320" '
             'data-height="240" data-duration="2.00" data-fps="25"></div>', encoding="utf-8")
-        (ep / "render_draft.log").write_text("browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n", encoding="utf-8")
-        (ep / "render_full.log").write_text("browserGpuMode probe worker0 Intel(R) UHD Graphics\n", encoding="utf-8")
         mk_clip(ep / "renders" / "pal-preview-v1.mp4", 15)
         mk_clip(ep / "renders" / "pal-24.mp4", 24)
+        NVIDIA, INTEL = "browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n", "browserGpuMode probe worker0 Intel(R) UHD Graphics\n"
 
-        r = run_verify(ep, "pal-preview-v1", "draft")
-        check("render-11 NEW: a 15 fps draft with no 'draft' in its name passes, reading render_draft.log",
-              r.returncode == 0 and "OK: 320x240 @ 15/1" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
-        (ep / "render_full.log").write_text("browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n", encoding="utf-8")
-        r = run_verify(ep, "pal-preview-v1", "full")
-        check("render-11 NEW: the same 15 fps file checked as a final still fails the fps check",
-              r.returncode != 0 and "FAIL: fps 15 != full 25fps" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
-        r = run_verify(ep, "pal-24", "draft")
-        check("render-11 NEW: a draft at another rate than render.cmd's draft rate fails",
-              r.returncode != 0 and "FAIL: fps 24 != draft 15fps" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
-        r = run_verify(ep, "pal-preview-v1", "mastered")
-        check("render-11 NEW: an unknown mode is a usage error, not a guess",
-              r.returncode == 1 and "usage:" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
+        # (label, clip, mode arg, recorded draft fps, expect exit 0, text that must be in stdout).
+        # The log of the mode under test is NVIDIA and the other one Intel, so a wrong log pick fails too.
+        cases = [
+            ("a draft at the recorded 15 fps passes with no 'draft' in its name", "pal-preview-v1", "draft", "15", True, "OK: 320x240 @ 15/1"),
+            ("a draft at a recorded rate other than 15 (RENDER_FPS=24) passes", "pal-24", "draft", "24", True, "OK: 320x240 @ 24/1"),
+            ("a draft whose rate differs from the recorded one fails", "pal-24", "draft", "15", False, "FAIL: fps 24 != expected 15fps"),
+            ("a draft with no render_draft.fps fails and names the file", "pal-preview-v1", "draft", None, False, "render_draft.fps"),
+            ("a 15 fps file checked as a final fails against the composition's 25", "pal-preview-v1", "full", "15", False, "FAIL: fps 15 != expected 25fps"),
+            ("no mode argument is a usage error", "pal-preview-v1", None, "15", False, "usage:"),
+            ("an unknown mode is a usage error", "pal-preview-v1", "mastered", "15", False, "usage:"),
+        ]
+        for label, clip, mode, rec_fps, want_ok, text in cases:
+            (ep / "render_draft.log").write_text(NVIDIA if mode != "full" else INTEL, encoding="utf-8")
+            (ep / "render_full.log").write_text(NVIDIA if mode == "full" else INTEL, encoding="utf-8")
+            if rec_fps is None:
+                (ep / "render_draft.fps").unlink(missing_ok=True)
+            else:
+                (ep / "render_draft.fps").write_text(f"{rec_fps} \r\n", encoding="utf-8")
+            r = run_verify(ep, clip, mode)
+            ok = (r.returncode == 0) == want_ok and text in r.stdout and (want_ok or r.returncode != 0)
+            if not want_ok and mode in (None, "mastered", "draft") and "usage:" in text + r.stdout[:0]:
+                ok = ok and r.returncode == 1
+            check(f"render-11 NEW: {label}", ok, f"rc={r.returncode}\n{r.stdout[-800:]}")
 else:
     print("SKIP render-07 synthetic-clip checks: ffmpeg not on PATH")
 
