@@ -338,7 +338,9 @@ for (const [c, list] of Object.entries(byComp)) {
   for (const d of list.filter(d => d.hard)) console.log(`    ERROR [${d.kind}] ${d.msg}`);
   for (const d of list.filter(d => !d.hard)) console.log(`    warn  [${d.kind}] ${d.msg}`);
 }
+if (exempt.length) console.log('  declared exemptions:');
 for (const d of exempt) console.log(`    exempt [${d.kind}] ${d.comp}: ${d.msg} — declared: ${d.ok}`);
-if (!hard.length) { console.log(`\n[graphics_qc] PASS — ${files.length} compositions, 0 errors, ${soft.length} warnings`); process.exit(0); }
-console.log(`\n[graphics_qc] FAIL — ${hard.length} errors, ${soft.length} warnings across ${files.length} compositions`);
+const exemptCount = exempt.length ? `, ${exempt.length} exempt` : '';   // nothing declared: the summary reads as it always did
+if (!hard.length) { console.log(`\n[graphics_qc] PASS — ${files.length} compositions, 0 errors, ${soft.length} warnings${exemptCount}`); process.exit(0); }
+console.log(`\n[graphics_qc] FAIL — ${hard.length} errors, ${soft.length} warnings across ${files.length} compositions${exemptCount}`);
 process.exit(1);
