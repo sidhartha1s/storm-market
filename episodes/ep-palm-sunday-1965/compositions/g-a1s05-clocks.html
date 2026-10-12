@@ -120,6 +120,13 @@ window.__timelines = window.__timelines || {};
   s0($("src"), { y: 12 });
   s0($("family"), { y: 16 });
 
+  /* ---- staging (acts-plan rule 22): until the house's cue the stamp is alone, so it sits centred in the frame and enlarged,
+          on a slow push; on that cue it goes to its briefed place and size. It scales about its own centre, which is on y 540. ---- */
+  var BIG = 1.4, PUSH = 1.03, CX = 110 + 826 / 2;
+  s0($("stamp"), { x: 960 - CX, scale: BIG, force3D: false });
+  tl.to($("stamp"), { scale: BIG * PUSH, duration: 4.70, ease: "none", force3D: false }, 0);
+  tl.to($("stamp"), { x: 0, scale: 1, duration: 0.5, ease: "power3.out", force3D: false }, 4.70);
+
   /* 0 · "Every" @0.00: ground and the stamp in place (card, clock at 11:45, time, place line); no eyebrow, nothing on the right */
 
   rise("src", 1.28, 0.3);                   /* 1 · study @1.28: source line */
