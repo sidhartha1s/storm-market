@@ -67,7 +67,7 @@ These are the truths of the ruled film variant.
 10. Coverage (plan rule 22): no empty block over a third of the frame for more than about 3 s at any step. By script: in the film view the largest empty block is a side panel, 25.0 % of the frame; after the cut the largest is the ground right of the stamp (x 981 to 1920, y 435 to 1080), 29.2 %, then the band under the stamp (y 800 to 1080), 25.9 %.
 
 ## 5. Text (exact) and cues
-Text: `County B` · `ABOUT` · `7:15 PM` · `7:30 PM` · `by the study's account` · `Disaster Research Center, 1966, p. 21`. Page words are the image.
+Text: `Civil defense training film, 1967` · `County B` · `about` · `7:30 PM` · `by the study's account` · `Disaster Research Center, 1966, p. 21`. Page words are the image.
 Cue words and times are from `audio/a4-s1.words.json` as it stood on 12 Oct 26 at 19:30. t from comp start = the segment's wav start inside the composition (`mg_specs/timeline-map.md` table 5: -0.31) plus the word's time; the first word uses table 5's first sound. The transcriber writes word 2 as "15"; the voice says "fifteen". Retime from the word index and the word, never from the seconds.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
