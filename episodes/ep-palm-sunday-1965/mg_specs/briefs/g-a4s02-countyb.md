@@ -123,7 +123,7 @@ All inlined, ids under `cntb-`; mount rules in `media/drawings/README.md`, which
 As template section 7, from the worktree root: `node scripts/freeze_scan.mjs episodes/ep-palm-sunday-1965 --comp g-a4s02-countyb`, then `node scripts/graphics_qc.mjs episodes/ep-palm-sunday-1965`, then `python3 scripts/run_gates.py episodes/ep-palm-sunday-1965`.
 
 ## 7a. Done line
-All seven lines of template section 7a. Line 2 here: measure the largest empty block over the three spans of the coverage table in section 5 and give it beside the builder's figure; any block over a third for more than about 3 s is a FIX (truth 10). Line 4 here: the chain's scale and `svgOrigin`, the hand rotations and the light's proxy are set at timeline 0; capture 10.50 (mid growth) both ways. Line 6 here: the four station boxes (gap 230.7 px), the waiting chain's box, the arc's apex, the two hand angles, the one stage offset (132 px) and the chip's two places are computed by a script and stated in the receipt.
+All seven lines of template section 7a. Line 2 here: measure the largest empty block over the three spans of the coverage table in section 5 and give it beside the builder's figure; any block over a third for more than about 3 s is a FIX (truth 10). Line 4 here: the chain's scale and `svgOrigin`, the hand rotations and the light's proxy are set at timeline 0; capture 10.50 (mid growth) both ways. Line 6 here: the four station boxes (gap 230.7 px), the waiting chain's box, the arc's apex, the two hand angles, and the stage's two drops (133 px while the chain waits, 36 px from the growth on) are computed by a script and stated in the receipt.
 ## 8. Receipt
 As template section 8.
 
