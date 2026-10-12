@@ -81,7 +81,7 @@ Cue words and times are from `audio/a4-s2.words.json` (34 words), `a4-s3.words.j
 | 3 | A4-S2 | 12 | sheriff | 3.28 | 2.88 | the sheriff's mark lands the same way with its label |
 | 4 | A4-S2 | 19 | water. | 5.10 | 4.70 | the river's stroke goes to Headline white and back to Cold blue 2 (0.3 s each way) |
 | 5 | A4-S2 | 23 | told | 6.82 | 6.42 | the sheriff's mark fills Amber 2 (0.3 s) and stays |
-| 6 | A4-S2 | 27 | tornado | 7.84 | 7.44 | the tornado mark comes in from the left edge to box left 250 (1.4 s, power2.out), then drifts to box left 290 (ease none, to 10.06) |
+| 6 | A4-S2 | 27 | tornado | 7.84 | 7.44 | the tornado mark comes in from the left edge to box left 150 (1.4 s, power2.out), then drifts to box left 190 (ease none, to 10.06) |
 | 7 | A4-S2 | 33 | west. | 9.24 | 8.84 | the civil defense mark fills Amber 2 (0.3 s): he has heard |
 | 8 | A4-S3 | 0 | He | 0.22 | 10.06 | the map's two labels fade (0.15 s), then the whole map group slides out left with its fade (`x:-1000`, 0.4 s, power3.in; gone by 10.46) |
 | 9 | A4-S3 | 1 | told | 0.32 | 10.16 | the chain grows from 0.5 to 1 about the authored point (1577, 380) (0.66 s, power2.inOut, done at 10.82); over the same 0.66 s the chip moves from top 448 to top 250 |
