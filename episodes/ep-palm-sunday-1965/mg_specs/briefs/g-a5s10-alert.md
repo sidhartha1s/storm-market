@@ -32,7 +32,7 @@ Clock hands at 9:07, degrees clockwise from 12: hour 273.5, minute 42.
 |---|---|
 | Ground | canvas gradient (design sheet section 2), on from frame 0 |
 | Map | BM-1 groups `map-neighbours`, `map-counties`, `map-state` inlined with ids prefixed `alr-`; county lines 1.5 px, neighbour outlines 2 px, Indiana's outline 3 px, non-scaling. Every `pt-` group hidden except Fort Wayne and Marion. Dot radius 6 px (`r` 2.133 map units), Body light |
-| Fort Wayne | dot (1489.7, 98.6); label `Fort Wayne` left 1503, top 87. Town labels Arial 700 22 px, Body light |
+| Fort Wayne | dot (1489.7, 98.6); label `Fort Wayne` centred above its dot (left 1430, top 64 in the file; as built, pending its reader: at left 1503, top 87 it ran over Indiana's east line). Town labels Arial 700 22 px, Body light |
 | Lit counties | Wells, Adams, Blackford, Jay: fill Amber 2 at `fill-opacity` 0.45 (the family's lit county), a fill change on the county's own path |
 | County names | Arial 700 22 px, Headline white with the credit shadow, tracking 2, centred on the box centre: `WELLS` (1448.7, 278.8), `ADAMS` (1563.3, 277.3), `JAY` (1537.1, 436.2). `BLACKFORD` is wider than its county (87.8 px), so by hand: right aligned to x 1456, top 474 (under the county's south line), with a 2 px Body light leader from (1425, 470) up to (1425, 444) |
 | Alert chip | glass chip, left 96, top 96, height 46, padding 0 x 22, Arial 700 26 px, Body light: `9:20 PM · on alert` |
