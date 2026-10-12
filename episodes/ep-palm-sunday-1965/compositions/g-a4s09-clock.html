@@ -247,7 +247,7 @@ window.__timelines = window.__timelines || {};
   stroke(P+"s4", DARKLINE, 16.92, 0.3);
   tl.to(P+"b4", { opacity: 0.55, duration: 0.3, ease: "power2.out" }, 16.92);
   /* OUT @19.82: the police desk goes grey, last. The stop mark stays red. Hold. */
-  stroke(P+"s2", GREY, 19.82, 0.4);
+  tl.to(P+"s2", { attr: { stroke: GREY }, duration: 0.4, ease: "power2.out" }, 19.82);   /* stroke()'s own tween written out: scripts/sweep_episode.py reads a position only as a number in the call */
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines["g-a4s09-clock"] = tl;
 })();
