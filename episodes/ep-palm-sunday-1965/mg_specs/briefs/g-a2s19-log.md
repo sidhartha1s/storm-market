@@ -43,7 +43,7 @@ Clock angles, clockwise from 12 (by script): 6:23 is hour 191.5, minute 138; 6:2
 4. No county is filled amber (in this family an amber county is a warned county) and no tornado mark is drawn: the entries report sightings, the picture places only the towns they name.
 5. `12 minutes` is the span from the first card's time to the third's. No count of entries is printed ("among others").
 6. Every card's right edge is x 1576 and the stack ends at y 991: nothing of ours in x >= 1600, y >= 680. Nothing appears before its spoken word.
-7. Read the bottom edge of card 2 in a frame. Measured on the file: the next line's sliver is rows 126 to 128; the third typed line's own ink runs to row 123, so the ruled 12 px mask also trims rows 117 to 123 (descenders). If a letter reads as cut, report it; do not change the mask.
+7. Read the bottom edge of card 2 in a frame. Measured on the file: the next line's sliver is rows 126 to 128; the third typed line's own ink runs to row 123, so the ruled 4 px mask (rows 125 to 128) removes the sliver and leaves the descenders whole. If a letter reads as cut or the sliver still shows, report it; do not change the mask.
 
 ## 5. Text (exact) and cues
 Text: `WEATHER BUREAU` · `6:23 PM` · `6:24 PM` · `6:35 PM` · `South Bend, Indiana` · `12 minutes` · `South Bend` · `Plymouth` · `Bremen` · `Goshen` · `Weather Bureau survey report, 1965, pp. 39-40`. The cards' words are the images.
