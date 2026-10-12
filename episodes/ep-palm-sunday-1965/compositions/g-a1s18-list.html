@@ -140,8 +140,8 @@ window.__timelines = window.__timelines || {};
   tl.to(world, { x: BESIDE.x, duration: 0.7, ease: "power3.out", force3D: false }, 6.27);
   tl.to(world, { y: BESIDE.y, duration: 0.35, ease: "power2.out", force3D: false }, 6.72);
   tl.to($("type"), { autoAlpha: 1, duration: 0.2, ease: "none" }, 6.43);
-  tl.to($("cap"), { autoAlpha: 0, duration: 0.3, ease: "none" }, 6.27);
-  tl.to($("src"), { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 6.27);
+  tl.to($("cap"), { autoAlpha: 0, duration: 0.15, ease: "none" }, 6.27);            /* out, then in: the two lines share one place and are never on together */
+  tl.to($("src"), { autoAlpha: 1, y: 0, duration: 0.15, ease: "power3.out" }, 6.42);
 
   /* 5 · How @8.48: hold. 6 · long @8.62: the minute hand starts forward, one minute at most (258 to 264), the hour hand with it
      (171.5 to 172); power1.in, so it is still moving on the last frame. The printed time stays 5:43 PM */
