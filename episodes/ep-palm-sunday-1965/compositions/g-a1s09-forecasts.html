@@ -423,7 +423,8 @@ window.__timelines = window.__timelines || {};
   tl.to($("band"), { opacity: 1, duration: 0.3, ease: "power2.out" }, 19.25);
   tl.to($("band"), { opacity: 0.5556, duration: 0.3, ease: "power2.in" }, 19.55);
 
-  /* 17 · "South" @21.19: card 69 and both strips leave right; the band fades; the map moves INDIANA to NORTH, 3.44 times, and
+  /* 17 · "South" @21.19: card 69 and strip 1 leave right, strip 2 (bottom y 702) leaves down the way it came, never through
+          the presenter corner; the band fades; the map moves INDIANA to NORTH, 3.44 times, and
           its box goes to the top right, tall (down to y 660) until the paper strip needs the room; the county lines come on
           during the move. The band's label is fixed to the frame, so it has gone 0.2 s before the map moves (plan rule 2) */
   tl.to($("lin"), { autoAlpha: 0, duration: 0.2, ease: "power2.out" }, 20.99);
