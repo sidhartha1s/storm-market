@@ -29,7 +29,7 @@ Time scale for the bars: 9.8 px per minute. It is the map's own: Linn Grove's do
 | Element | Px |
 |---|---|
 | Ground | canvas gradient (design sheet section 2), on from frame 0 |
-| Map | BM-1 groups `map-neighbours`, `map-counties`, `map-state` inlined with ids prefixed `brn-`; county lines 1.5 px, neighbour outlines 2 px, Indiana's outline 3 px, non-scaling. Every `pt-` group hidden except Fort Wayne, Berne and Linn Grove. No county is lit and no county is named in this comp |
+| Map | BM-1 groups `map-neighbours`, `map-counties`, `map-state` inlined with ids prefixed `brn-`; county lines 1.5 px, neighbour outlines 2 px, Indiana's outline 3 px, non-scaling. Every `pt-` group hidden except Fort Wayne, Berne and Linn Grove. No county is lit and no county is named in this comp. As built and passed (lead, 12 Oct 26): the map is clipped 136 px short of its box's right edge, because BM-1's Ohio outline ends in a straight cut at map x 790, which showed inside the box at screen x 1676 |
 | EAST, frame 0 | Fort Wayne dot (1489.7, 98.6); label `Fort Wayne` right aligned to x 1441, top 88. Berne dot (1556.9, 323.0); label `Berne` right aligned to x 1544, top 312. Town labels Arial 700 22 px, Body light |
 | Radar ring | overlay SVG centred on Fort Wayne's dot, as `g-a2s01-radar` but radius 36 and 20 (so the ring stays inside the box top at y 62: it spans y 62.6 to 134.6), Body light 3 px, one sweep line from the centre to the outer circle, at rest pointing up |
 | Recollection chip | glass chip, left 96, top 96, height 46, padding 0 x 22, Arial 700 26 px, Body light: `John Curran's recollection` |
