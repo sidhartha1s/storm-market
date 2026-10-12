@@ -87,6 +87,9 @@
     #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
     #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
     .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+    /* text edges grey in every frame: Chrome draws subpixel (colour-fringed) text on a layer it knows is opaque and grey text elsewhere,
+       so labels flipped as a moving layer crossed the frame. will-change: transform on the root turns subpixel text off for everything inside it */
+    #root { will-change: transform; }
   </style>
 </head>
 <body>
