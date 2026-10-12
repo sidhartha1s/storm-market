@@ -352,9 +352,10 @@ window.__timelines = window.__timelines || {};
   s0($("mh"), { rotation: 330, svgOrigin: "95 100" });      /* minute hand sweeps its last 30 degrees onto the 12 */
   var uls = [$("ul1"), $("ul2"), $("ul3"), $("ul4")];
   s0(uls, { scaleX: 0, transformOrigin: "left center" });
-  /* each card waits lower, centred in the frame's height, until its strip's cue (plan rule 22) */
-  s0($("c68"), { x: 700, y: 278 });
-  s0($("c69"), { x: 700, y: 267 });
+  /* each card waits lower, centred in the frame's height, until its strip's cue (plan rule 22); it starts 80 px below that
+     and rises in: from the right it crossed the presenter corner (its waiting bottom is y 706 and 717) */
+  s0($("c68"), { y: 358 });
+  s0($("c69"), { y: 347 });
   /* the teletype's lines are non-scaling, so their dashes are screen px: 0.75 px per drawing unit in NORTH */
   var lns = map.querySelectorAll(".fc-ln");
   for (var i = 0; i < lns.length; i++) { var len = Math.ceil(lns[i].getTotalLength() * 0.75) + 1; s0(lns[i], { strokeDasharray: len, strokeDashoffset: len }); }
