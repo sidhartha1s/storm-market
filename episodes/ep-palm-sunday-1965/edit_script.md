@@ -248,7 +248,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 **Rows:** [A5; study printed p. 7] · [IWX table: first Indiana tornado 5:45 PM EST; study printed p. 14: about 6:00 PM] · [A6; study printed p. 9: said of the forecast, "the responsibility of radio and TV stations"]
 
 ### A1-S15 · narration
-**Picture:** [film] the 1967 civil defense training film (inventory A14, shot 14-03, 0:57.8 to 1:03.6: a room of men and women at a long table, a wall board), muted, in a framed 4:3 window with the label "Civil defense training film, 1967". It stands for a kind of room, not an Indiana office. On the second sentence the window dims and one word lifts onto a quote strip: "inaction", source line "Disaster Research Center, 1966, pp. 8-9".
+**Picture:** [film] the 1967 civil defense training film (inventory A14, shot 14-05, 1:13.8 to 1:45.9: a wide operations room, staff at telephones and papers, a round wall clock), muted, in a framed 4:3 window with the label "Civil defense training film, 1967". It stands for a kind of room, not an Indiana office. On the second sentence the window dims and one word lifts onto a quote strip: "inaction", source line "Disaster Research Center, 1966, pp. 8-9".
 > The Weather Bureau, the State Police and most sheriffs passed the forecast along as routine. Many of the other offices that heard it did nothing more, and the researchers' word for that is inaction.
 
 **Rows:** [C20; study printed pp. 8-9: "rather routinely disseminated"; "it was that of inaction insofar as further dissemination and transmission of the tornado forecasts was concerned"]
