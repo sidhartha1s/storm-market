@@ -5,7 +5,9 @@ REM Example: scripts\render.cmd ep2-2011-super-outbreak full ep2-final
 REM Launch DETACHED (harness bg tasks get killed):
 REM   powershell Start-Process cmd.exe -ArgumentList '/c','"<ABS path>\scripts\render.cmd" <slug> <mode>' -WindowStyle Hidden
 REM Writes episodes\<slug>\render_<mode>.log, render_<mode>_preflight.log (gate output, so a
-REM hidden/schtasks launch still leaves a refusal reason on disk) and render_<mode>_done.marker
+REM hidden/schtasks launch still leaves a refusal reason on disk), render_<mode>.fps (the frame rate
+REM this render was launched with, RENDER_FPS included; verify_render.sh checks a draft against it)
+REM and render_<mode>_done.marker
 REM (contains the exit code; deleted at the start of every run so a poller never reads a stale one).
 REM Version pin must match config.yaml hyperframes_version — pin_ritual.py bumps both together.
 setlocal
