@@ -2,6 +2,20 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 12 Oct 26 - ep-palm-sunday-1965 preview v1: a picture written for every spoken line is what the owner approved
+- Before: eight hooks and six intros, graded and fact-checked, and the owner could not picture any of them ("finding it
+  hard to visualize this as the hook or the intro"). The critique named one defect for the whole set: no line gave the
+  viewer a picture; every noun was a metaphor or a citation.
+- What changed: the hook was rebuilt as a storyboard (what is said, then what is on screen under each line), he picked
+  one, and the script kept that shape: every segment's `**Picture:**` note names a thing that can be shown (a page of
+  the study with the quoted words underlined, a typed list, a clock, a drawn object, a real photograph).
+- Owner on the 113 s draft render, 12 Oct 26: "i loved the motion graphics and stuff. i didnt expect it this good.
+  amazing visual story telling. keep it up."
+- **Rule:** a line that cannot be pictured is rewritten before it is graded. The writer's brief says so and points at
+  an approved section's picture notes as the model. A hook goes to the owner as a storyboard, not as text alone.
+- Also from this round: the owner's picked line was changed by the fact check (the study did not support its wording).
+  The change went to him on the review page as before, now, and what he can do; he let it stand.
+
 ## 10 Oct 26 - ep4-el-reno: the timeline was built from the voice files alone and lost what the script's picture notes ask for
 - Found at the last read before the draft, by the orchestrator, after every gate was green: the locked script stops the
   voice on "kept recording" and gives the TV crew clip six seconds of its own sound; the timeline had no gap and the
