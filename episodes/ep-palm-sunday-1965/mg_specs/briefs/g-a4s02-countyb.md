@@ -99,26 +99,13 @@ Cue words and times are from `audio/a4-s2.words.json` (34 words), `a4-s3.words.j
 | 21 | A4-S5 | 12 | the | 4.66 | 28.23 | the ghost runs x 837 to 1068 (0.8 s, ease none), its grey line growing behind it; on arrival ("station,", index 16, 29.03) the microphone's lines pulse to Body light and back |
 | 22 | A4-S5 | 19 | station | 6.62 | 30.19 | the ghost jumps to x 1170 and runs to x 1400 (0.64 s, ease none); on arrival ("everyone.", index 21, 30.83) the house's lines pulse to Body light and back, windows dark. Hold to 32.43: two amber desks, the amber arc, the grey ghost line |
 
-**Coverage by step (truth 10), by script on 12 Oct 26.** The script lays every element's box on a 4 px grid at its settled place for that step and finds the largest empty rectangle. The dotted links, the dotted arc and the ghost line are not counted as cover, so the real figure is no larger. Before this placement the brief left 38.6 % for 8.46 s and 34.8 % for 19.13 s (builder's measure).
-| Step | Seconds (from comp start) | Holds (s) | Largest empty block (% of frame) | Where (x, y) |
-|---|---|---|---|---|
-| 0 | 0.00 | 0.58 | 43.5 | x 0 to 836, full height; under 3 s, before the river's word |
-| 1 | 0.58 | 1.58 | 28.9 | x 584 to 1920, y 0 to 448 |
-| 2 | 2.16 | 0.72 | 28.9 | the same |
-| 3 | 2.88 | 1.82 | 28.9 | the same |
-| 4 | 4.70 | 1.72 | 28.9 | the same |
-| 5 | 6.42 | 1.02 | 28.9 | the same |
-| 6 | 7.44 | 1.40 | 28.9 | the same |
-| 7 | 8.84 | 1.22 | 28.9 | the same |
-| 8 | 10.06 | 0.10 | 43.5 | x 0 to 836, full height; the map leaving, 0.10 s |
-| 9 | 10.16 | 0.66 | 30.4 | y 752 to 1080, full width; the chain grown, no label yet |
-| 10 | 10.82 | 1.50 | 25.8 | x 292 to 1920, y 752 to 1080 |
-| 11 | 12.32 | 0.20 | 24.2 | x 0 to 836, y 0 to 600 |
-| 12 | 12.52 | 0.22 | 24.2 | the same |
-| 13 | 12.74 | 2.16 | 24.2 | the same |
-| 14 | 14.90 | 3.38 | 23.9 | x 996 to 1920, y 0 to 536 |
-| 15 to 22 | 18.28 to 30.19 | to 32.43 | 23.9 | the same |
-The longest run of one block is 9.48 s at 28.9 % (steps 1 to 7) and 17.53 s at 23.9 % (steps 14 to 22): both under a third.
+**Coverage (truth 10): measured on frames by the builder, 21:40** (12 Oct 26; frames in `.qc-tmp/cb3-r1` and `.qc-tmp/cb3-r2`). Largest empty block held for more than 3 s:
+| Span (s from comp start) | Held (s) | Largest empty block (% of frame) | What is on screen |
+|---|---|---|---|
+| 1.60 to 10.06 | 8.46 | 30.9 | the map and the waiting chain |
+| 10.82 to 14.90 | 4.08 | 32.6 | the full chain, before the stamp |
+| 14.90 to 32.43 | 17.53 | 31.1 | the full chain with the stamp, to the end |
+All three are under a third. Before the stage was dropped the first brief's numbers left 38.6 % for 8.46 s and 34.8 % for 19.13 s.
 
 ## 6. Contract
 As `references/mg-brief-template.md` section 6, with these: `compositions/g-a4s02-countyb.html` is the only file the builder writes; `data-composition-id="g-a4s02-countyb"`, `data-duration="32.43"`; id prefix `cntb-`; root `<div id="cntb-root" ...>` styled through `#cntb-root` (plan rule 3 overrides the template's `id="root"`). Full frame, opaque, own ground on from frame 0 for the whole 32.43 s. The host is already mounted in `index.html` as `host-a4s02-countyb`; do not edit `index.html`.
