@@ -147,6 +147,7 @@ window.__timelines = window.__timelines || {};
   }
   function fill(id, t) {                                    /* outline to filled, as generator-filled.svg: fill and stroke colour only */
     var g = $(id);
+    s0(g.querySelectorAll("." + P + "-ink"), { stroke: DARK });   /* its own start value: inherited, it would be read after the group had changed */
     tl.to(g, { stroke: BODY, duration: 0.3, ease: "power2.out" }, t);
     tl.to(g.querySelectorAll("." + P + "-lamp"), { fill: AMBER, duration: 0.3, ease: "power2.out" }, t);
     tl.to(g.querySelectorAll("." + P + "-ink"), { stroke: INK, duration: 0.3, ease: "power2.out" }, t);
