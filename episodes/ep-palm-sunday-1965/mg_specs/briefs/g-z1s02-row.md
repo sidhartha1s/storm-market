@@ -51,6 +51,7 @@ All stations share the floor y 898. Set `stroke-width` on each group so a line i
 4. The house window turns Amber 2 only after the phone is lit, and it is the first amber house window in A1 to Z1.
 5. No carrier, phone maker, app or logo is named or drawn. The phone's screen carries no text.
 6. No county chip. Nothing in x >= 1600 and y >= 680 (the house ends at x 1557). Nothing appears before its spoken word.
+7. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Staged once: at steps 0 and 1 the sheet sits centred in the frame's height (sheet y 245 to 835, 191 px below its briefed place; x 580 to 1340 as briefed), and the row pulse rides it. At step 1b ("list.", 2.23) the sheet moves up to its briefed place over 0.5 s (done at 2.73), before the chain draws on at 3.37. The frame's left and right 580 px (30.2 % each) are then the largest empty blocks. Unstaged, the band under the sheet (y 644 to 1080, 40.4 % of the frame) would be empty for 3.37 s. From step 2 the chain fills that band.
 
 ## 5. Text (exact) and cues
 Text: the sheet's text as design sheet section 5 · `Weather Bureau` · `a police desk` · `an announcer` · `a family` · the two source lines.
