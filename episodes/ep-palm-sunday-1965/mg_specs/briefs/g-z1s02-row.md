@@ -60,6 +60,7 @@ t from comp start = the segment's wav start inside the composition (timeline-map
 |---|---|---|---|---|---|---|
 | 0 | cut | | | | 0.00 | first frame: the sheet whole, cursor blinking in the blank row, source line on |
 | 1 | Z1-S2 | 5 | row | 1.52 | 1.67 | the row pulse wipes across the blank ninth row (0.5 s) and leaves |
+| 1b | Z1-S2 | 8 | list. | 2.08 | 2.23 | the sheet moves up 191 px from its centred, staged place to its briefed place (0.5 s, power2.inOut; done at 2.73) |
 | 2 | Z1-S2 | 9 | Reaching | 3.22 | 3.37 | the chain draws on under the list, left to right: Weather Bureau desk, police desk, microphone, house, with their links and labels (0.3 s each, 1.2 s in all), all dark |
 | 3 | Z1-S2 | 27 | stopped | 7.70 | 7.85 | the old light runs from the Weather Bureau desk to the police desk (0.5 s, `ease:"none"`) |
 | 4 | Z1-S2 | 31 | desk. | 8.50 | 8.65 | the stop mark lands (`scaleY` 0 to 1 from its middle, 0.2 s) |
