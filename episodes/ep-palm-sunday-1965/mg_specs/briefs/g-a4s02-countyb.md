@@ -32,10 +32,11 @@ Ground, all four segments: canvas gradient, on from frame 0, with the intro's fa
 The map (A4-S2, comp 0.00 to 10.46), one group `cntb-map`:
 | Element | Px |
 |---|---|
-| River | one path, Cold blue 2, 10 px, round caps, no fill: `M470 120 A520 520 0 0 1 430 420 A420 420 0 0 0 500 700 A520 520 0 0 1 450 960` (three circular arcs, bulges 22.5, 25.6 and 17.1 px by script). If an arc bows the wrong way in the first frame read, flip its sweep flag; the river must stay between x 400 and x 520 |
-| Sheriff's mark | circle, centre (540, 450), radius 14, 4 px Body light, fill Panel dark; label `the sheriff`, Arial 700 26 px, Body light, centred on x 540, top 386 |
-| Civil defense mark | circle, centre (610, 450), radius 14, same stroke; label `civil defense`, same type, centred on x 610, top 482 |
-| Tornado mark | `media/drawings/tornado-mark.svg` inline, scale 2 (120 x 160 px), `stroke-width="3"` on the group (6 px lines), stroke Body light, never red. It enters from box left -140 and comes to box x 150 to 270, y 370 to 530, then drifts to box left 190 by 10.06. It never reaches x 400 |
+| River | one path, Cold blue 2, 10 px, round caps, no fill: `M570 120 A520 520 0 0 1 530 420 A420 420 0 0 0 600 700 A520 520 0 0 1 550 960` (the first path moved 100 px right; three circular arcs, bulges 22.5, 25.6 and 17.1 px by script; the line runs x 528 to 601 by script) |
+| Sheriff's mark | circle, centre (640, 582), radius 14, 4 px Body light, fill Panel dark; label `the sheriff`, Arial 700 26 px, Body light, centred on x 640, top 518 |
+| Civil defense mark | circle, centre (710, 582), radius 14, same stroke; label `civil defense`, same type, centred on x 710, top 614 |
+| Tornado mark | `media/drawings/tornado-mark.svg` inline, scale 2 (120 x 160 px), `stroke-width="3"` on the group (6 px lines), stroke Body light, never red. It enters from box left -140 and comes to box x 250 to 370, y 502 to 662, then drifts to box left 290 by 10.06. It never reaches x 500 |
+The two marks, their labels and the tornado mark sit on the waiting chain's line, y 582, the frame's middle.
 
 The chain (all four segments), one group `cntb-chain`, numbers at full size:
 | Element | Px |
