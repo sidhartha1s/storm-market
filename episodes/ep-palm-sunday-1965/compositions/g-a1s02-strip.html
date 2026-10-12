@@ -307,8 +307,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo($("quote"), { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", immediateRender: false }, 4.59);
   tl.to($("quote"), { scale: 1.03, duration: 4.4, ease: "none" }, 4.99);                           /* 1.00 to 1.03, until it leaves @9.39 */
 
-  /* 5 · "South" @9.39: the quote card leaves right; the two names and the band fade, all gone before the map moves */
-  tl.to($("quote"), { x: 1900, autoAlpha: 0, duration: 0.25, ease: "power3.in" }, 9.39);
+  /* 5 · "South" @9.39: the quote card leaves the way it came, down with a fade (never through the presenter corner); the two
+         names and the band fade */
+  tl.to($("quote"), { y: 60, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 9.39);
   tl.to([$("mo"), $("in"), $("band")], { autoAlpha: 0, duration: 0.25, ease: "power2.out" }, 9.39);
 
   /* ================= A1-S3: South Bend's 12:20 PM version ================= */
