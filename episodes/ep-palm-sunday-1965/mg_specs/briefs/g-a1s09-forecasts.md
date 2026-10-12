@@ -109,8 +109,8 @@ Cue words and times are from `audio/a1-s9.words.json`, `a1-s10`, `a1-s11` and `a
 | 20 | A1-S12 | 5 | Fort | 1.68 | 26.42 | Fort Wayne dot and label fade in (0.3 s) |
 | 21 | A1-S12 | 7 | didn't | 2.24 | 26.98 | the teletype draws on beside it (0.5 s, `strokeDashoffset`), unlit |
 | 22 | A1-S12 | 10 | one | 3.02 | 27.76 | the paper strip rises into the lower band (0.4 s); the `p. 38` source line fades out as it arrives (one source per frame) |
-| 23 | A1-S12 | 12 | remember | 3.50 | 28.24 | county names and the Fort Wayne label fade (0.2 s, starting 0.2 s earlier); push NORTH to FORTWAYNE (0.9 s); the Fort Wayne label returns at its new place at 30.00. Hold to the end |
-Card 68 is on screen 6.9 s and changes at 6.54; card 69 is on screen 11.1 s and changes at 13.49 and 16.63: no stretch over 8 s without a change.
+| 23 | A1-S12 | 12 | remember | 3.50 | 28.24 | county names and the Fort Wayne label fade (0.2 s, starting 0.2 s earlier); push NORTH to FORTWAYNE (0.9 s); the Fort Wayne label returns at its new place at 29.20. Hold to the end. The file's start for this word (3.50) takes in the pause before it; the word is heard near 4.3. The push may start in that pause: it shows nothing new |
+Card 68 is on screen 6.9 s and changes at 6.54; card 69 is on screen 11.1 s and changes at 13.51 and 16.65: no stretch over 8 s without a change.
 
 ## 6. Contract
 As `references/mg-brief-template.md` section 6, with these: file `compositions/g-a1s09-forecasts.html` is the only file the builder writes; `data-composition-id="g-a1s09-forecasts"`; id prefix `fc-`; root `<div id="fc-root" ...>` styled through `#fc-root` (plan rule 3 overrides the template's `id="root"`). Full frame, own ground on from frame 0.
