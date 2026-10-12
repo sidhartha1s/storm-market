@@ -1,4 +1,4 @@
-Host: id=g-a2s21-list file=compositions/g-a2s21-list.html start=470.63 (timeline-map.md table 1; the mount in index.html wins) duration=9.09 s (wav 9.00 s plus its gaps) track=2
+Host: id=g-a2s21-list file=compositions/g-a2s21-list.html start=470.88 (timeline-map.md table 1; the mount in index.html wins) duration=9.09 s (wav 9.00 s plus its gaps) track=2
 
 # g-a2s21-list · A2-S21 · the blank row, then 6:50 PM and a blank sheet (wave 2, list family)
 
