@@ -32,7 +32,7 @@ The crop is mounted at its own size, 1460 x 299, at screen (106, 126) inside the
 | Line 2, `"with his` | 1255 to 1399, 97 to 128 | x 1361 to 1505, y 223 to 254 |
 | Line 3, `own eyes".` | 81 to 261, 173 to 205 | x 187 to 367, y 299 to 331 |
 | Line 4, whole | 81 to 1401, 249 to 283 | x 187 to 1507, y 375 to 409 |
-Clock hands, clockwise degrees from 12: 7:30 is hour 225, minute 180. In the ruled variant the stamp arrives already at 7:30; the 7:15 angles (hour 217.5, minute 90) and the quarter turn sweep are not built.
+Clock hands, clockwise degrees from 12: 7:30 is hour 225, minute 180. The stamp arrives already at 7:30 and no hand moves.
 
 **RULED by the lead 12 Oct 26: a film cut opens this picture.** It is the first picture after the book ad, and DESIGN.md "CTA contract" asks for real footage, never a graphic, on that cut.
 - Film: `media/films/cuts/a14-05-operations-room.mp4` (31.53 s) from 20.0 s into the file (the wide room with the wall clock, men at the desks). The film window is open from 0.00 to 3.15 s, under "He waited fifteen minutes, until he saw the tornado,". The composer mounts it in `index.html` on track 1 (class `filmwin`, left 480, top 150, 960 x 720, muted) at 661.85; this comp does not mount it. The room stands for a civil defense room of the time, not County B's office and not an Indiana room.
