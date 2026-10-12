@@ -218,7 +218,7 @@ window.__timelines = window.__timelines || {};
   tl.to($("ul"), { scaleX: 1, duration: 0.6, ease: "none" }, 3.86);
 
   /* 6 · "That" @6.42: the county names and South Bend's label fade before the map moves; the fills stay */
-  tl.to([$("n1"), $("n2"), $("n3"), $("n4"), $("sb")], { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 6.42);
+  tl.to([$("n1"), $("n2"), $("n3"), $("n4"), $("sb")], { autoAlpha: 0, duration: 0.2, ease: "power2.out" }, 6.42);   /* gone @6.62 */
 
   /* 7 · "was" @6.66: push NORTH to MARSHALL, 2.0 times in 0.8 s, ends @7.46 */
   cam("373 216 180 75", 1, 0.5, 6.66, 0.8, "power2.inOut");
