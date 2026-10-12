@@ -331,49 +331,96 @@ CLOCK = ('<!doctype html><html><head><meta charset="UTF-8"></head><body><templat
          'const tl = gsap.timeline({ paused: true });\n'
          "tl.fromTo('#g-cv-lbl', { x: 0 }, { x: 300, duration: 1, ease: 'power3.out' }, 0);\n"
          "tl.to({}, { duration: 7 }, 0);\nwindow.__timelines['g-cv'] = tl;\n</script>\n</template></body></html>\n")
-CASES = {  # comp: (source, host s, new output must hold, must not hold, why)
-    'g-p1': (CANVAS_FILES['compositions/g-cv.html'], 3, None, 'undesigned', 'a full-frame canvas is a designed background'),
-    'g-p2': (cv, 3, None, 'fade-only', 'an onUpdate canvas renderer is continuous motion'),
-    'g-n1': (small(CANVAS_FILES['compositions/g-cv.html']), 3, 'ERROR [undesigned] flat background', None, 'a 100 px canvas is not a designed background'),
-    'g-n2': (small(cv), 3, 'ERROR [fade-only]', None, 'a 100 px canvas excuses no stillness'),
-    'g-n3': (no_update, 3, 'ERROR [fade-only]', None, 'a canvas without onUpdate is still'),
-    'g-n4': (CLOCK, 7, 'ERROR [idle] 6.0s frozen at 1.0s', None, 'a {} clock is not motion'),
+# Declared exemptions (t, c, i): a typed sheet with two type tiers by design, and a blurred full-frame copy
+# of a photograph behind the whole photograph, are not defects (ep-palm-sunday-1965, 12 Oct 26), and the
+# gate could not be told so. data-type-ok="reason" on the comp root exempts flat-type for that comp;
+# data-crop-ok="reason" on an img exempts bad-crop for that img. Each one used is printed with its reason.
+# An empty reason, a second undeclared img of the same file and the idle rule get nothing. Old 29dfbdca
+# (main before this change): the declared comps fail exactly like the undeclared ones.
+def _ok_comp(root_attrs, inner, dur=3, clock=''):
+    return ('<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+            f'<div id="root" data-composition-id="g-cv" {root_attrs} style="position:absolute;inset:0;background:linear-gradient(#123,#000)">\n'
+            f'{inner}'
+            '  <div id="ok-box" style="position:absolute;left:200px;top:900px;width:80px;height:80px;background:#c33"></div>\n'
+            '</div>\n<script>\nwindow.__timelines = window.__timelines || {};\n'
+            'const tl = gsap.timeline({ paused: true });\n'
+            f"tl.fromTo('#ok-box', {{ x: 0 }}, {{ x: 400, duration: {dur}, ease: 'power3.out' }}, 0);\n"
+            f"{clock}window.__timelines['g-cv'] = tl;\n</script>\n</template></body></html>\n")
+
+
+# four text nodes in two tiers (60 px and 30 px): flat-type
+SHEET = ''.join(f'  <span style="position:absolute;left:200px;top:{top}px;font-size:{px}px;color:#fff">{txt}</span>\n'
+                for top, px, txt in ((100, 60, 'State police'), (200, 60, 'Sheriffs'), (320, 30, 'City police'), (400, 30, 'Named stations')))
+# a 4:1 picture covering a 1:1 box keeps a quarter of itself: bad-crop, "loses 75%"
+photo = lambda attrs, left=0: (f'  <img {attrs} src="media/wide.svg" alt="" style="position:absolute;left:{left}px;top:0;'
+                               'width:400px;height:400px;object-fit:cover">\n')
+TYPE_WHY, CROP_WHY = 'typed sheet, two tiers by design', 'blurred backdrop behind the whole photograph'
+CASES = {  # comp: (source, host s, new output must hold all of, must not hold, why)
+    'g-p1': (CANVAS_FILES['compositions/g-cv.html'], 3, [], 'undesigned', 'a full-frame canvas is a designed background'),
+    'g-p2': (cv, 3, [], 'fade-only', 'an onUpdate canvas renderer is continuous motion'),
+    'g-n1': (small(CANVAS_FILES['compositions/g-cv.html']), 3, ['ERROR [undesigned] flat background'], None, 'a 100 px canvas is not a designed background'),
+    'g-n2': (small(cv), 3, ['ERROR [fade-only]'], None, 'a 100 px canvas excuses no stillness'),
+    'g-n3': (no_update, 3, ['ERROR [fade-only]'], None, 'a canvas without onUpdate is still'),
+    'g-n4': (CLOCK, 7, ['ERROR [idle] 6.0s frozen at 1.0s'], None, 'a {} clock is not motion'),
+    'g-t1': (_ok_comp(f'data-type-ok="{TYPE_WHY}"', SHEET), 3, [f'exempt [flat-type] g-t1: only 2 type tier(s) across 4 text elements — mg-quickref Type tiers — declared: {TYPE_WHY}'], 'ERROR', 'a reasoned data-type-ok on the root exempts flat-type and is printed'),
+    'g-t2': (_ok_comp('data-type-ok=""', SHEET), 3, ['ERROR [flat-type]'], 'exempt', 'an empty data-type-ok exempts nothing'),
+    'g-t3': (_ok_comp('', SHEET), 3, ['ERROR [flat-type]'], 'exempt', 'an undeclared flat sheet still fails'),
+    'g-c1': (_ok_comp('', photo(f'data-crop-ok="{CROP_WHY}"')), 3, [f'exempt [bad-crop] g-c1: wide.svg loses 75% (source 4:1 in 1:1 box) — declared: {CROP_WHY}'], 'ERROR', 'a reasoned data-crop-ok on the img exempts bad-crop and is printed'),
+    'g-c2': (_ok_comp('', photo('data-crop-ok=""')), 3, ['ERROR [bad-crop]'], 'exempt', 'an empty data-crop-ok exempts nothing'),
+    'g-c3': (_ok_comp('', photo('')), 3, ['ERROR [bad-crop]'], 'exempt', 'an undeclared crop still fails'),
+    'g-c4': (_ok_comp('', photo(f'data-crop-ok="{CROP_WHY}"') + photo('', 500)), 3, ['ERROR [bad-crop] wide.svg', 'exempt [bad-crop] g-c4:'], None, 'the exemption is per img: an undeclared img of the same file still fails'),
+    'g-i1': (_ok_comp(f'data-type-ok="{TYPE_WHY}" data-idle-ok="held on purpose"', SHEET, 1, "tl.to({}, { duration: 7 }, 0);\n"), 7, ['ERROR [idle] 6.0s frozen at 1.0s', 'exempt [flat-type] g-i1:'], None, 'the idle rule takes no exemption, flat-type stays exempt beside it'),
 }
-files = {'index.html': ''.join(CANVAS_FILES['index.html'].replace('g-cv', c).replace('data-duration="3"', f'data-duration="{dur}"')
-                               for c, (_, dur, _, _, _) in CASES.items())}
-files.update({f'compositions/{c}.html': src.replace('g-cv', c) for c, (src, *_) in CASES.items()})
 
 
-def by_comp(out, cases=CASES):
-    """graphics_qc stdout split into one block per composition header line (no block = no defects)."""
+def case_files(comps):
+    """One staged episode holding the named CASES comps."""
+    files = {'index.html': ''.join(CANVAS_FILES['index.html'].replace('g-cv', c).replace('data-duration="3"', f'data-duration="{CASES[c][1]}"')
+                                   for c in comps),
+             'media/wide.svg': '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100"><rect width="400" height="100" fill="#39c"/></svg>\n'}
+    files.update({f'compositions/{c}.html': CASES[c][0].replace('g-cv', c) for c in comps})
+    return files
+
+
+def by_comp(out):
+    """graphics_qc stdout split into one block per composition: the lines under its header line plus
+    the exempt lines that name it (no block = no defects)."""
     blocks, cur = {}, None
     for line in out.splitlines():
         head = line.strip().split(' ')[0]
-        if line.startswith('  ') and not line.startswith('    ') and head in cases:
+        if line.startswith('    exempt ['):
+            head = line.split('] ', 1)[1].split(':')[0]
+            blocks[head] = blocks.get(head, '') + line + '\n'
+        elif line.startswith('  ') and not line.startswith('    ') and head in CASES:
             cur = head
         elif cur:
             blocks[cur] = blocks.get(cur, '') + line + '\n'
     return blocks
 
 
-ep = _stage_ep(files)
-r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+ep = _stage_ep(case_files(CASES))
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True, encoding='utf-8')
+shutil.rmtree(ep, ignore_errors=True)
 assert '[graphics_qc]' in r.stdout, r.stdout + r.stderr
 got = by_comp(r.stdout)
 for c, (_, _, has, lacks, why) in CASES.items():
-    assert (has is None or has in got.get(c, '')) and (lacks is None or lacks not in got.get(c, '')), f'{c} {why}: {r.stdout}'
+    assert all(h in got.get(c, '') for h in has) and (lacks is None or lacks not in got.get(c, '')), f'{c} {why}: {r.stdout}'
 assert '[idle]' not in got.get('g-p2', ''), f'the renderer span covers the {{}} clock window: {r.stdout}'
-olds = {}
-for rev in ('f3a6fece', 'fbebe442'):
+olds = {}  # each old revision runs only the comps its assertion reads
+for rev, comps in (('f3a6fece', ('g-p1', 'g-p2')), ('fbebe442', ('g-n1', 'g-n4')), ('29dfbdca', ('g-t1', 'g-c1'))):
+    ep = _stage_ep(case_files(comps))
     old_gq = old_rev('graphics_qc.mjs', f'_old_gqc_{rev}_tmp.mjs', rev)
     olds[rev] = by_comp(subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True).stdout)
     old_gq.unlink()
-shutil.rmtree(ep, ignore_errors=True)
+    shutil.rmtree(ep, ignore_errors=True)
 assert 'ERROR [undesigned] flat background' in olds['f3a6fece'].get('g-p1', ''), f'old code should flag the canvas comp: {olds}'
 assert 'ERROR [fade-only]' in olds['f3a6fece'].get('g-p2', ''), f'old code should call the canvas renderer fade-only: {olds}'
 assert 'flat background' in olds['fbebe442'].get('g-n1', '') and '[idle]' not in olds['fbebe442'].get('g-n4', ''), \
     f'pre-fix main should run and count the {{}} clock as motion: {olds}'
+assert 'ERROR [flat-type]' in olds['29dfbdca'].get('g-t1', '') and 'ERROR [bad-crop]' in olds['29dfbdca'].get('g-c1', ''), \
+    f'old code should fail the declared comps: {olds}'
 print('graphics_qc self-check PASS (canvas background + renderer span, their quarter-frame/onUpdate limits, a {} clock is not motion)')
+print('graphics_qc self-check PASS (declared exemptions: data-type-ok and data-crop-ok need a reason, are printed, and reach no other rule or img)')
 
 # ---------------------------------------------------------------- settle frames for the vision pass
 # The old reader sampled every 3 s from the comp start, so frame 1 was always mid-reveal. The frames
