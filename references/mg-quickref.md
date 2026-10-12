@@ -29,7 +29,7 @@ Read this, then `learnings/mg.md`. [G] = a gate fails it (gate named). A bespoke
 - RHS stat panel (ep2 anatomy): `right:0; top:0; bottom:0; width:820px; background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); padding:90px 96px 0 170px; box-sizing:border-box`, text in the solid zone; order eyebrow, place, serif sub, rows, counter, counter label. Show the thing mid-frame or across the right side; a stat as text over b-roll is a miss. Any spatial claim gets a map (routes fit to real landmarks: `references/editing-patterns/ep3-map-route-fit.html`).
 
 ## Type tiers
-- Three tiers in every designed card: big >= 52 px, mid 26-51, small < 26 — these are the exact thresholds `graphics_qc` checks. [G graphics_qc flat-type: < 3 tiers with >= 4 text nodes] A comp with two tiers by design (a typed sheet, a page crop) says so with `data-type-ok="reason"` on its root: the gate prints the reason instead of failing, and an empty reason exempts nothing.
+- Three tiers in every designed card: big >= 52 px, mid 26-51, small < 26 — these are the exact thresholds `graphics_qc` checks. [G graphics_qc flat-type: < 3 tiers with >= 4 text nodes] Two tiers by design: `data-type-ok="reason"` on the comp root ("Gate-readable authoring", graphics_qc).
 - Exact hex, font stacks and per-tier px values (eyebrow, headline, serif sub, row value/label, counter, section header, diagram label, popfig): `library/inhouse/snippets/tokens.md` "Fonts" and "Type tiers" — the one home, do not restate them here. Proper case, never all-lowercase.
 
 ## Palette and surfaces (fixed meaning)
