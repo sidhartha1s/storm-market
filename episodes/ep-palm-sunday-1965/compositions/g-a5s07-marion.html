@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5s07-marion (A5-S7, A5-S8): the storm had been through Marion. One storm path runs east past Marion to the Ohio line;
+     Fort Wayne's 9:20 message about Marion comes in on paper; then a hospital clock stopped at 8:10 sits beside the stamp at 9:20.
+     Brief: mg_specs/briefs/g-a5s07-marion.md; map facts: media/maps/README.md.
+     Map family: copies the base g-a2s14-six (mount, inlining, stamp, paper card), the quote strip of g-a1s15-offices, the wall
+     clock's inline mount of g-a2s06-headstart.
+     Map: media/maps/indiana-counties.svg (BM-1), ids prefixed mrn-, no camera move. The SVG fills the frame; its viewBox is the camera.
+       EAST  box 716, 62, 1080 x 450   2.8125 px per unit   viewBox 75.4222 261.9556 682.6667 384   (screen x = 2.8125u - 212.125, y = 2.8125u - 736.75)
+     Every number below is computed from media/data/points.csv, Howard County's path and the brief's section 2:
+       Fort Wayne (605.1, 297.0) screen (1489.7, 98.6); Marion (539.5, 396.7) screen (1305.2, 379.0);
+       Linn Grove (619.0, 379.1) screen (1528.8, 329.5); Indiana's east line x 648.4, screen x 1611.5.
+       Path, map units: (481.2, 411.5) Howard County's centre, (539.5, 404.7) 8 units south of Marion's dot, (619.0, 379.1),
+       (648.4, 369.6); on screen (1141.2, 420.6), (1305.2, 401.5), (1528.8, 329.5), (1611.5, 302.8): 486.9 px, Linn Grove at 82 %.
+     The path is SCHEMATIC: straight legs between the places the survey names, not a surveyed track. No county is lit or named.
+     Coverage (plan rule 22): while nothing is under the map (until the page, 5.07, and again from 9.96 until the map dims,
+     12.50) its box runs on down at the same camera (to y 660 across its width, to y 984 left of x 1580; the corner
+     x >= 1600, y >= 680 stays bare); until the stamp (3.31) it also opens left to x 620, Indiana's west line.
+     The path caption keeps its briefed place, so it lies on the map while the box is open and carries the credit shadow.
+     MAP BLOCK: BM-1's groups map-neighbours, map-counties and map-state, every path element that crosses what the camera
+     shows copied whole and unchanged from the file by one mechanical copy that added the id prefix and nothing else.
+     Page: media/docs/survey-p43-920pm-crop.png (1460 x 377, survey printed p. 43); the underline and the unlit page are in card px.
+     Cues are comp-local seconds from the brief's table (audio/a5-s7, a5-s8 words.json plus each segment's start in the comp). -->
+<template>
+<style>
+  #mrn-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .mrn-h { opacity:0; visibility:hidden; }
+
+  /* ---- map block: the SVG fills the frame; the camera is its viewBox (fixed), the visible box is its clip-path ---- */
+  .mrn-map { position:absolute; left:0; top:0; width:1920px; height:1080px;
+    clip-path:polygon(620px 62px, 1796px 62px, 1796px 660px, 1580px 660px, 1580px 984px, 620px 984px); }
+  .mrn-town { position:absolute; font:700 22px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .mrn-state { position:absolute; left:1626px; top:262px; font:700 22px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .mrn-cap { position:absolute; left:716px; top:520px; font:700 20px Arial, sans-serif; color:#93a3b2; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .mrn-chip { position:absolute; right:631px; top:312px; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:23px;
+    font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+
+  /* ---- the two clock cards (design sheet section 8): the 9:20 stamp, and the hospital clock laid out as the stamp ---- */
+  .mrn-stamp { position:absolute; left:96px; top:96px; width:590px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .mrn-face { position:absolute; left:0; top:0; width:200px; height:200px; overflow:visible; }
+  .mrn-wall { position:absolute; left:27px; top:32px; width:136px; height:136px; overflow:visible; }
+  .mrn-eye { position:absolute; left:188px; top:20px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .mrn-time { position:absolute; left:188px; top:46px; font:700 84px 'Courier New', Courier, monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .mrn-place { position:absolute; left:190px; top:148px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .mrn-clab { position:absolute; left:96px; top:310px; font:700 20px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:26px;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+
+  /* ---- paper card, lower band (design sheet section 9): the page's own image, 10 px of beige round it ---- */
+  .mrn-page { position:absolute; left:96px; top:560px; width:1480px; height:397px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .mrn-crop { position:absolute; left:10px; top:10px; width:1460px; height:377px; mix-blend-mode:multiply; }
+  .mrn-unlit { position:absolute; left:0; top:0; width:1480px; height:397px; }
+  .mrn-dim { position:absolute; background:rgba(21,32,43,0.45); }
+  .mrn-ul { position:absolute; left:215px; top:160px; width:789px; height:4px; background:#d0121f; }
+  .mrn-doc { position:absolute; right:360px; top:969px; font:700 20px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+
+  /* ---- quote strip (paper: the source's words only), as g-a1s15-offices ---- */
+  .mrn-strip { position:absolute; left:96px; top:640px; width:1480px; height:170px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; }
+  .mrn-q { position:absolute; left:54px; top:26px; font:52px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:1.15; }
+  .mrn-att { position:absolute; left:56px; top:116px; font:700 22px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+</style>
+<div id="mrn-root" data-composition-id="g-a5s07-marion" data-width="1920" data-height="1080">
+
+  <svg class="mrn-map" id="mrn-map" viewBox="75.4222 261.9556 682.6667 384" preserveAspectRatio="xMidYMid meet" fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <g id="mrn-map-neighbours" stroke="#93a3b2" stroke-opacity="0.4">
+    </g>
+    <g id="mrn-map-counties" fill="#15202b" stroke="#93a3b2" stroke-width="1.5">
+    </g>
+    <g id="mrn-map-state" stroke-width="3">
+    </g>
+    <!-- the storm's path: one line, Body light 4 px, never red, no arrowhead; a 6 px open circle marks its start -->
+    <polyline id="mrn-path" class="mrn-h" points="481.2,411.5 539.5,404.7 619.0,379.1 648.4,369.6" stroke="#dfe7ee" stroke-width="4" vector-effect="non-scaling-stroke"/>
+    <circle id="mrn-start" class="mrn-h" cx="481.2" cy="411.5" r="2.1333" fill="#15202b" stroke="#dfe7ee" stroke-width="3" vector-effect="non-scaling-stroke"/>
+    <!-- town dots at the file's positions, r 2.1333 units (6 px), Body light -->
+    <g fill="#dfe7ee" stroke="none">
+      <g id="mrn-pt-fort-wayne"><circle cx="605.1" cy="297.0" r="2.1333"/></g>
+      <g id="mrn-pt-linn-grove" class="mrn-h"><circle cx="619.0" cy="379.1" r="2.1333"/></g>
+      <g id="mrn-pt-marion" class="mrn-h"><circle id="mrn-mdot" cx="539.5" cy="396.7" r="2.1333" stroke="#f2f5f8" stroke-opacity="0" stroke-width="6" vector-effect="non-scaling-stroke"/></g>
+    </g>
+  </svg>
+  <div class="mrn-town" id="mrn-fw" style="left:1503px;top:87px">Fort Wayne</div>
+  <div class="mrn-town mrn-h" id="mrn-mar" style="left:1317px;top:350px">Marion</div>
+  <div class="mrn-town mrn-h" id="mrn-lg" style="right:320px;top:345px">Linn Grove</div>
+  <div class="mrn-state" id="mrn-oh">OHIO</div>
+  <div class="mrn-cap mrn-h" id="mrn-cap">places the survey names · path schematic</div>
+  <div class="mrn-chip mrn-h" id="mrn-chip">hit near 8:00 PM</div>
+
+  <!-- ================= clock stamp: 9:20 PM, top left; it slides to left 986 in A5-S8 ================= -->
+  <div class="mrn-stamp mrn-h" id="mrn-stamp">
+    <svg class="mrn-face" viewBox="0 0 200 200" fill="none" stroke="#dfe7ee" stroke-linecap="round">
+      <circle cx="95" cy="100" r="62" stroke-width="4"/>
+      <g stroke-width="3">
+        <line x1="95.0" y1="45.0" x2="95.0" y2="59.0"/>
+        <line x1="122.5" y1="52.4" x2="118.5" y2="59.3"/>
+        <line x1="142.6" y1="72.5" x2="135.7" y2="76.5"/>
+        <line x1="150.0" y1="100.0" x2="136.0" y2="100.0"/>
+        <line x1="142.6" y1="127.5" x2="135.7" y2="123.5"/>
+        <line x1="122.5" y1="147.6" x2="118.5" y2="140.7"/>
+        <line x1="95.0" y1="155.0" x2="95.0" y2="141.0"/>
+        <line x1="67.5" y1="147.6" x2="71.5" y2="140.7"/>
+        <line x1="47.4" y1="127.5" x2="54.3" y2="123.5"/>
+        <line x1="40.0" y1="100.0" x2="54.0" y2="100.0"/>
+        <line x1="47.4" y1="72.5" x2="54.3" y2="76.5"/>
+        <line x1="67.5" y1="52.4" x2="71.5" y2="59.3"/>
+      </g>
+      <line id="mrn-hh" x1="95" y1="100" x2="95" y2="66" stroke="#f2f5f8" stroke-width="5"/>
+      <line id="mrn-mh" x1="95" y1="100" x2="95" y2="48" stroke="#f2f5f8" stroke-width="5"/>
+      <circle cx="95" cy="100" r="5" fill="#e8c56a" stroke="none"/>
+    </svg>
+    <div class="mrn-eye" id="mrn-s1">WEATHER BUREAU</div>
+    <div class="mrn-time" id="mrn-s2">9:20 PM</div>
+    <div class="mrn-place" id="mrn-s3">Fort Wayne, Indiana</div>
+  </div>
+
+  <!-- ================= paper card: the survey's 9:20 PM entry ================= -->
+  <div class="mrn-page mrn-h" id="mrn-page">
+    <img class="mrn-crop" src="media/docs/survey-p43-920pm-crop.png" alt="">
+    <!-- the unlit page: the whole crop except the box round "three tornadoes had struck the city of Marion" (card x 207 to 1012, y 125 to 162) -->
+    <div class="mrn-unlit mrn-h" id="mrn-unlit">
+      <div class="mrn-dim" style="left:10px;top:10px;width:1460px;height:115px"></div>
+      <div class="mrn-dim" style="left:10px;top:125px;width:197px;height:37px"></div>
+      <div class="mrn-dim" style="left:1012px;top:125px;width:458px;height:37px"></div>
+      <div class="mrn-dim" style="left:10px;top:162px;width:1460px;height:225px"></div>
+    </div>
+    <div class="mrn-ul" id="mrn-ul"></div>
+  </div>
+  <div class="mrn-doc mrn-h" id="mrn-doc">Weather Bureau survey report, 1965, p. 43</div>
+
+  <!-- ================= A5-S8: the source's own words, then the hospital clock ================= -->
+  <div class="mrn-strip mrn-h" id="mrn-strip">
+    <div class="mrn-q">&ldquo;a full hour and twenty minutes earlier&rdquo;</div>
+    <div class="mrn-att mrn-h" id="mrn-att">National Weather Service, Northern Indiana</div>
+  </div>
+  <div class="mrn-stamp mrn-h" id="mrn-hosp">
+    <!-- wall clock (media/drawings/wall-clock.svg), centre (62, 62) on the card's (95, 100); hands at 8:10 and never moved -->
+    <svg class="mrn-wall" viewBox="-6 -6 136 136">
+      <g fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="62" cy="62" r="62" fill="#15202b"/>
+        <path d="M62.0 8.0 L62.0 22.0 M89.0 15.2 L85.0 22.2 M108.8 35.0 L101.8 39.0 M116.0 62.0 L102.0 62.0 M108.8 89.0 L101.8 85.0 M89.0 108.8 L85.0 101.8 M62.0 116.0 L62.0 102.0 M35.0 108.8 L39.0 101.8 M15.2 89.0 L22.2 85.0 M8.0 62.0 L22.0 62.0 M15.2 35.0 L22.2 39.0 M35.0 15.2 L39.0 22.2" stroke-width="3"/>
+        <g transform="rotate(245 62 62)"><path d="M62 62 V28" stroke-width="5"/></g>
+        <g transform="rotate(60 62 62)"><path d="M62 62 V10" stroke-width="5"/></g>
+        <path d="M62 62 h0.01" stroke-width="10"/>
+      </g>
+    </svg>
+    <div class="mrn-eye">STOPPED AT</div>
+    <div class="mrn-time mrn-h" id="mrn-h2">8:10 PM</div>
+  </div>
+  <div class="mrn-clab mrn-h" id="mrn-clab">a hospital clock, Marion ·<br>Weather Bureau survey report, 1965, p. 45</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a5s07-marion", P = "mrn";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function show(e, t, d) { tl.to(e, { autoAlpha: 1, duration: d || 0.3, ease: "power2.out" }, t); }
+
+  var map = $("map");
+  var OPEN = "polygon(716px 62px, 1796px 62px, 1796px 660px, 1580px 660px, 1580px 984px, 716px 984px)";
+  var BOX = "polygon(716px 62px, 1796px 62px, 1796px 512px, 1580px 512px, 1580px 512px, 716px 512px)";
+
+  s0($("path"), { strokeDasharray: 488, strokeDashoffset: 488 });   /* non-scaling line: dashes are screen px; the path is 486.9 px */
+  s0($("ul"), { scaleX: 0, transformOrigin: "left center" });
+  s0($("strip"), { y: 40 });
+  /* clock hands: degrees clockwise from 12, about the face centre (95, 100) */
+  s0($("hh"), { rotation: 280, svgOrigin: "95 100" });      /* 9:20: hour hand a third of the way from 9 to 10 */
+  s0($("mh"), { rotation: 90, svgOrigin: "95 100" });       /* minute hand sweeps its last 30 degrees onto the 4 */
+
+  /* ================= A5-S7: the path, Marion, the 9:20 message ================= */
+  /* 0 · "That" @0.00: ground, the map in EAST (lines only), Fort Wayne's dot and label, OHIO */
+
+  /* 1 · "storm" @0.51: the path draws west to east (1.2 s, to @1.71); Linn Grove's dot and name as the line reaches it (82 %) */
+  tl.to([$("path"), $("start")], { autoAlpha: 1, duration: 0.05, ease: "none" }, 0.51);
+  tl.to($("path"), { strokeDashoffset: 0, duration: 1.2, ease: "power1.inOut" }, 0.51);
+  show([$("pt-linn-grove"), $("lg")], 1.35, 0.2);
+
+  /* 2 · "Marion." @1.85: Marion's dot and name; the dot's stroke flashes Headline white once; the path caption */
+  show([$("pt-marion"), $("mar"), $("cap")], 1.85);
+  tl.to($("mdot"), { attr: { "stroke-opacity": 1 }, duration: 0.1, ease: "none" }, 2.15);
+  tl.to($("mdot"), { attr: { "stroke-opacity": 0 }, duration: 0.4, ease: "power1.out" }, 2.25);
+
+  /* 3 · "nine twenty" @3.31: the map's box closes to its left edge; the stamp slides in from the left, the minute hand lands on the 4 */
+  tl.to(map, { clipPath: OPEN, duration: 0.5, ease: "power2.inOut" }, 3.31);
+  tl.fromTo($("stamp"), { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 3.31);
+  tl.to($("mh"), { rotation: 120, duration: 0.5, ease: "power3.out" }, 3.51);
+
+  /* 4 · "wire," @5.07: the map's box closes to its briefed size; the page slides in from the right; its source fades in after */
+  tl.to(map, { clipPath: BOX, duration: 0.3, ease: "power2.out" }, 5.07);
+  tl.fromTo($("page"), { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out", immediateRender: false }, 5.07);
+  tl.fromTo($("doc"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, 5.47);
+
+  /* 5 · "three" @6.03: the rest of the page goes unlit; the underline draws under the message's words */
+  tl.to($("unlit"), { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 6.03);
+  tl.to($("ul"), { scaleX: 1, duration: 0.7, ease: "none" }, 6.03);
+
+  /* ================= A5-S8: an hour and twenty minutes, and the stopped clock ================= */
+  /* 6 · "Marion" @9.96: the source fades, the page leaves to the right, the map's box opens down again; the chip beside Marion's dot */
+  tl.to($("doc"), { autoAlpha: 0, duration: 0.2, ease: "power2.out" }, 9.96);
+  tl.to($("page"), { x: 1600, duration: 0.4, ease: "power3.in" }, 9.96);
+  tl.set($("page"), { autoAlpha: 0 }, 10.36);
+  tl.to(map, { clipPath: OPEN, duration: 0.5, ease: "power2.inOut" }, 9.96);
+  show($("chip"), 9.96);
+
+  /* 7 · "Fort" @12.50: the map dims and its box closes; every map label, the caption and the chip go; the stamp's three
+         lines fade, the stamp slides to left 986, its lines return */
+  tl.to(map, { opacity: 0.2, clipPath: BOX, duration: 0.4, ease: "power2.out" }, 12.50);
+  tl.to([$("fw"), $("mar"), $("lg"), $("oh"), $("cap"), $("chip")], { autoAlpha: 0, duration: 0.4, ease: "power2.out" }, 12.50);
+  tl.to([$("s1"), $("s2"), $("s3")], { autoAlpha: 0, duration: 0.15, ease: "power2.out" }, 12.50);
+  tl.to($("stamp"), { x: 890, duration: 0.5, ease: "power2.inOut" }, 12.65);
+  tl.to([$("s1"), $("s2"), $("s3")], { autoAlpha: 1, duration: 0.2, ease: "power2.out" }, 13.15);
+
+  /* 8 · "full" @13.76: the quote strip rises in: the quote, then its attribution */
+  tl.to($("strip"), { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 13.76);
+  show($("att"), 13.96);
+
+  /* 9 · "clock" @16.22: the hospital clock card slides in from the left, hands already at 8:10, no time yet */
+  tl.fromTo($("hosp"), { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 16.22);
+
+  /* 10 · "eight" @18.20: the time on the card, and the clock's label under it; hold to the last frame */
+  show($("h2"), 18.20, 0.25);
+  show($("clab"), 18.20);
+
+  tl.to({}, { duration: 0.01 }, 19.89);                     /* holds to the last frame @19.90 */
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
