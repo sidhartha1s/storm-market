@@ -144,7 +144,7 @@ const MEASURE = `((t) => {
           const sa = el.naturalWidth / el.naturalHeight, ba = r.width / r.height;
           const keep = sa > ba ? ba / sa : sa / ba;   // fraction of source retained
           if (1 - keep > CROPFAIL) out.crops.push({ src: src.split('/').pop(), srcAspect: +sa.toFixed(2), boxAspect: +ba.toFixed(2), lost: +((1-keep)*100).toFixed(0),
-                                                    ok: (el.getAttribute('data-crop-ok') || '').trim() });
+                                                    ok: el.getAttribute('${EXEMPT['bad-crop']}') });
         }
       }
     }
