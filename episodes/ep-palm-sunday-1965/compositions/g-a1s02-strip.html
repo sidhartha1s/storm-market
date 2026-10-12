@@ -212,7 +212,8 @@ window.__timelines = window.__timelines || {};
   s0($("lead"), { scaleY: 0, transformOrigin: "center top" });
 
   /* ================= A1-S2: the strip across three states ================= */
-  /* 0 · "It" @0.00: ground and the map in MIDWEST-STRIP, state outlines only */
+  /* 0 · "It" @0.00: ground and the map in MIDWEST-STRIP, state outlines only; the box runs down to y 1026 at the same camera */
+  var TALL = "inset(62px 341px 54px 96px)";
 
   /* 1 · "northeastern" @1.17: the band draws from the Missouri end, complete @3.17 */
   tl.to($("bandedge"), { attr: { points: "-389.7,429.7 508.8,172.1 563.9,364.4 -334.6,622.0" }, duration: 2.0, ease: "none" }, 1.17);
