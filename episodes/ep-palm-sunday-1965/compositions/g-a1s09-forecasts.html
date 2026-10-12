@@ -248,9 +248,11 @@
     </svg>
     <div class="fc-eye" id="fc-eye1">FORECASTERS</div>
     <div class="fc-eye fc-h" id="fc-eye2">WEATHER BUREAU</div>
-    <div class="fc-time" id="fc-time1">2:00 PM</div>
-    <div class="fc-time fc-h" id="fc-time2">5:20 PM</div>
-    <div class="fc-time fc-h" id="fc-time3">5:30 PM</div>
+    <!-- the time: each state is the whole string on the same spot, so every glyph keeps its place. Line 1 carries `:` and `0 PM`
+         for all three states; only the hour digit and the tens-of-minutes digit swap. A hidden span only holds its width -->
+    <div class="fc-time" id="fc-time1"><span id="fc-hr2">2</span>:<span id="fc-mt0">0</span>0 PM</div>
+    <div class="fc-time" id="fc-time2"><span class="fc-h" id="fc-hr5">5</span><span class="fc-h">:</span><span class="fc-h" id="fc-mt2">2</span><span class="fc-h">0 PM</span></div>
+    <div class="fc-time" id="fc-time3"><span class="fc-h">5:</span><span class="fc-h" id="fc-mt3">3</span><span class="fc-h">0 PM</span></div>
     <div class="fc-place" id="fc-place1">Kansas City · Eastern time</div>
     <div class="fc-place fc-h" id="fc-place2">South Bend, Indiana</div>
   </div>
