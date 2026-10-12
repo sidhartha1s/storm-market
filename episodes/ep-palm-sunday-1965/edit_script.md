@@ -735,7 +735,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 
 ### A5-S13 · Paul on camera, one clip
 **Picture:** [Paul] Paul on camera, full frame, the white shirt desk frame. One clip, these words and nothing else.
-> The office warning those towns then lost its own power. For one hour that night, the Fort Wayne Weather Bureau sent out nothing at all.
+> The office warning those towns then lost its own power. For one full hour that night, that office sent out nothing at all.
 
 **Rows:** [A23; survey printed p. 44]
 
