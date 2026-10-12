@@ -58,7 +58,10 @@ function settleFrames(tweens, windowEnd) {
     { t: pre, why: exits.length ? `pre-exit: last settled moment before the exit tween at ${exitStart.toFixed(2)}s` : `pre-exit: no exit tween, last settled moment of the ${windowEnd.toFixed(2)}s window` },
   ];
 }
-const add = (comp, kind, msg) => defects.push({ comp, kind, msg, hard: HARD.has(kind) });
+/* A declared exemption (flat-type: data-type-ok="reason" on the comp root; bad-crop: data-crop-ok="reason"
+ * on the img) is recorded with its reason and printed, never silent. An empty reason exempts nothing;
+ * no other rule takes one (idle least of all). */
+const add = (comp, kind, msg, ok = '') => defects.push({ comp, kind, msg, ok, hard: !ok && HARD.has(kind) });
 
 /* ---------- in-page probe: runs inside the composition ---------- */
 const PROBE = `(() => {
