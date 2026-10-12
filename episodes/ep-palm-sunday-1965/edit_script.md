@@ -293,7 +293,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 
 **Rows:** (the act's exit question; no row)
 
-*([loop L6 open]: how long a warning took to cross the list. Paid in A2-S5 and A2-S15.)*
+*([loop L6 open]: how long a warning took to cross the list. Paid in A2-S5 and A2-S17.)*
 
 *(blackout 0.7 s)*
 
