@@ -17,7 +17,7 @@
   .wire-bg { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; object-position:50% 20%; }
   .wire-band { position:absolute; left:0; top:900px; width:1920px; height:180px; background:linear-gradient(to bottom, rgba(3,5,8,0), rgba(3,5,8,0.55)); }   /* no scrim over the map: it is the subject */
   .wire-cap { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
-  .wire-wash { position:absolute; left:0; top:0; width:1920px; height:1080px; background:#e8c56a; opacity:0; }   /* the whole map lifts at once: no edge, no band, no path */
+  .wire-wash { position:absolute; left:0; top:0; width:1920px; height:1080px; background:#e8c56a; mix-blend-mode:screen; opacity:0; }   /* the whole map lifts at once: no edge, no band, no path. Screen, because plain Amber 2 over the orange slide is nearly its own hue (mean luminance +1.5 at 0.26) */
 </style>
 <div id="wire-root" data-composition-id="g-a1s04-wire" data-width="1920" data-height="1080">
   <img class="wire-bg" id="wire-bg" src="media/stills/a1-service-a-teletype.jpg" alt="">
