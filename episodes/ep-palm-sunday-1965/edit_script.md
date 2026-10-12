@@ -905,7 +905,11 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 
 **Rows:** [NWS Indianapolis, https://www.weather.gov/ind/severewxweek : "statewide test of communication systems"; the 2026 drill was in March; no later date is published]
 
-*(the book, once, here: per structure.md "then the book once". No copy is written here; the wording belongs to the CTA contract in DESIGN.md.)*
+### Z1-S4b · narration
+**Picture:** [graphic] the book's front cover (repo file `landing/assets/cover.png`, "The Storm-Ready Home"; not yet staged in this episode's `media/`, the builder copies it in) standing on the channel ground, with one line under it: "first link in the description". No price, no QR code (the code lives in the ad), no page from inside the book.
+> My book, The Storm-Ready Home, is the checklist for your house, at the first link in the description.
+
+**Rows:** [`config.yaml channel.cta`: the book's name and `first_link`] · [ad transcript `assets/cta/paul-storm-ready-v7-oct10.txt`: "Every protection, as a checklist"; "the first link in the description"] (structure.md: "then the book once"; the El Reno close has no spoken book line, so the wording follows the ad)
 
 ### Z1-S5 · narration
 **Picture:** [graphic] the channel title card. The signature footnote plays over it; it is the outro.
