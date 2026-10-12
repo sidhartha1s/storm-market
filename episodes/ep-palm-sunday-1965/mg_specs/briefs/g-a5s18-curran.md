@@ -68,7 +68,7 @@ Cue words and times are from `audio/a5-s18.words.json` and `audio/a5-s19.words.j
 | 2 | A5-S18 | 9 | with | 2.92 | 2.92 | the clock's rim goes Body light to Label grey and back to Body light (0.8 s in all, a stroke change): a quiet afternoon, nothing else arrives |
 | 3 | A5-S18 | 19 | slept | 6.56 | 6.56 | the house draws on, dark (`strokeDashoffset`, longest line first, 0.6 s) |
 | 4 | A5-S18 | 23 | woke | 7.54 | 7.54 | the hands run to 10:30: hour 120 to 315, minute 0 to 2340 (six and a half turns, ending on 180), 0.8 s, `power2.inOut`; `4:00 PM` is swapped for `10:30 PM` at 8.34, when the hands land |
-| 5 | A5-S18 | 26 | 10 | 8.46 | 8.46 | the house lights: lines to Headline white, both windows to Amber 2 at 0.3 (0.3 s) |
+| 5 | A5-S18 | 26 | 10 | 8.46 | 8.46 | the house lights: lines to Headline white, both windows to Amber 2 at 0.85 (0.3 s) |
 | 6 | A5-S19 | 0 | He | 0.00 | 10.12 | part 1 has left (clock, time and house fade out 9.64 to 10.04); the floor line and the room draw on (0.6 s) with the two teletypes in it, unlit |
 | 7 | A5-S19 | 6 | teletype | 2.58 | 12.22 | both teletypes light (stroke to Body light, paper to Amber 2, bars to Caption dark, 0.3 s; the second 0.15 s after the first) |
 | 8 | A5-S19 | 12 | extension | 4.24 | 13.88 | the cord draws from the machines to the door, x 448 to 760 with its two branches (0.5 s, `strokeDashoffset`); `extension cord` fades in at 14.30 |
