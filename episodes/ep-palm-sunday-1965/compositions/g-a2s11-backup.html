@@ -1,0 +1,360 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2s11-backup · A2-S11, A2-S12, A2-S13 · window 22.96 s · brief: mg_specs/briefs/g-a2s11-backup.md
+  Claim: in County A the civil defense director learned of the tornado at home, from a police officer, twenty minutes after
+  it hit. Civil defense there counted itself the back up for radio and TV, and its plan began after the first tornado had
+  passed. When the power failed there, anyone on a plug-in set lost the broadcast.
+  Three views on one ground. View 1 (0.00 to 8.30): the house large and dark, a clock that counts elapsed time (no hour hand,
+  no time of day). View 2 (8.30 to 17.18): the house in its chain slot with the microphone; the back up is a second dotted
+  path below the line, and it lights only after the tornado mark has left the frame. View 3 (17.18 to the end): the living
+  room of compositions/g-i1s1-house.html, evening; the screen cuts to Idle, then the window goes dark.
+  Cues are comp-local seconds (audio/a2-s11, a2-s12, a2-s13 words.json plus -0.16, 7.98, 16.96).
+  Coverage (plan rule 22): view 2 is authored at the brief's px; the timeline holds it 248 px left (centred in the frame)
+  until strip 2 rises at 16.36, then settles it onto the brief's px before the push at 17.18.
+  Corner x >= 1600, y >= 680: the chain layer is clipped out of it, so the push through the window paints nothing there.
+  BASE for g-a3s13-battery: the room block (#backup-room) and the screen block (#backup-screen, the cut at 18.40).
+-->
+<template>
+<style>
+  #backup-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  /* the faint band that carries the holds: starts off the left edge, drifts right */
+  #backup-sweep { position:absolute; left:-560px; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
+  .backup-layer { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .backup-svg { position:absolute; left:0; top:0; }
+  /* nothing of the chain layer paints in the presenter corner, the push through the window included */
+  #backup-clip { clip-path:polygon(0 0, 1920px 0, 1920px 680px, 1600px 680px, 1600px 1080px, 0 1080px); }
+  #backup-chain { transform-origin:1446px 528px; }
+  .backup-chip { position:absolute; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; }
+  #backup-chip { left:96px; top:96px; height:46px; padding:0 22px; border-radius:23px; font:700 26px Arial, sans-serif; color:#dfe7ee; line-height:44px; }
+  #backup-after { left:1130px; top:492px; height:56px; padding:0 22px; border-radius:28px; font:900 32px 'Arial Black', Arial, sans-serif;
+    color:#e8c56a; line-height:54px; }
+  .backup-lab { position:absolute; top:676px; width:200px; text-align:center; font-size:22px; line-height:28px; font-weight:700; color:#93a3b2; white-space:nowrap; }
+  .backup-strip { position:absolute; left:96px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  #backup-strip1 { top:870px; width:1480px; height:120px; }
+  #backup-strip2 { top:200px; width:620px; height:150px; }
+  .backup-quote { position:absolute; left:40px; font-family:Georgia, 'Times New Roman', serif; font-size:52px; line-height:60px; color:#2a2622; white-space:nowrap; }
+  .backup-att { position:absolute; left:40px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:2px; color:#6b6257; white-space:nowrap; }
+  /* ---- BASE · the room: wall, floor band, the evening scrim above them and below the furniture ---- */
+  #backup-room { background:#f4f0e6; transform-origin:934px 610px; }
+  #backup-floor { position:absolute; left:0; top:820px; width:1920px; height:260px; background:#e8dec8; }
+  #backup-scrim { position:absolute; inset:0; background:#15202b; opacity:0.62; }
+  /* ---- BASE · the screen area at the living-room scale 1.5: x 790 to 1078, y 490 to 730, radius 36 ---- */
+  #backup-screen { position:absolute; left:790px; top:490px; width:288px; height:240px; border-radius:36px; overflow:hidden; }
+  #backup-prog { position:absolute; inset:0; background:linear-gradient(rgba(232,197,106,.22), rgba(232,197,106,.22)), #15202b; }
+  .backup-bar { position:absolute; left:0; width:100%; height:26px; background:linear-gradient(rgba(242,245,248,0), rgba(242,245,248,.10), rgba(242,245,248,0)); }
+  #backup-flash { position:absolute; inset:0; background:#f2f5f8; }
+  /* hidden in CSS as well as at timeline 0, so the host's very first frame is the ground line and the county chip */
+  #backup-house, #backup-clock, #backup-arc, #backup-after, #backup-strip1, #backup-strip2, #backup-desk, #backup-labcd, #backup-path,
+  #backup-patha, #backup-run, #backup-labbu, #backup-mic, #backup-link, #backup-labrt, #backup-labfam, #backup-tor, #backup-room,
+  #backup-flash { opacity:0; visibility:hidden; }
+</style>
+<div id="backup-root" data-composition-id="g-a2s11-backup" data-width="1920" data-height="1080" data-duration="22.96">
+  <div id="backup-sweep"></div>
+
+  <!-- VIEW 1 · ground line, the elapsed-time clock and its arc -->
+  <svg class="backup-svg" id="backup-v1svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <path id="backup-ground" d="M96 830 H1560" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round"/>
+    <!-- media/drawings/wall-clock.svg without its hour hand: box x 900 to 1098, y 420 to 618, centre (999.2, 519.2). The minute hand starts at 12. -->
+    <g transform="translate(900 420) scale(1.6)">
+      <g id="backup-clock" fill="none" stroke="#dfe7ee" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="62" cy="62" r="62" fill="#15202b"/>
+        <path d="M62.0 8.0 L62.0 22.0 M89.0 15.2 L85.0 22.2 M108.8 35.0 L101.8 39.0 M116.0 62.0 L102.0 62.0 M108.8 89.0 L101.8 85.0 M89.0 108.8 L85.0 101.8 M62.0 116.0 L62.0 102.0 M35.0 108.8 L39.0 101.8 M15.2 89.0 L22.2 85.0 M8.0 62.0 L22.0 62.0 M15.2 35.0 L22.2 39.0 M35.0 15.2 L39.0 22.2" stroke-width="3"/>
+        <g id="backup-min"><path d="M62 62 V10" stroke-width="5"/></g>
+        <path d="M62 62 h0.01" stroke-width="10"/>
+      </g>
+    </g>
+    <!-- twenty minutes: 120 degrees clockwise from 12, radius 113 about the face centre; its d is set in the script -->
+    <path id="backup-arc" fill="none" stroke="#e8c56a" stroke-width="10" stroke-linecap="round"/>
+  </svg>
+  <div class="backup-chip" id="backup-after">20 minutes after</div>
+  <div class="backup-strip" id="backup-strip1">
+    <div class="backup-quote" style="top:12px">&ldquo;until twenty minutes after it hit&rdquo;</div>
+    <div class="backup-att" style="top:80px">Disaster Research Center, 1966, p. 20</div>
+  </div>
+
+  <div class="backup-layer" id="backup-clip">
+  <div class="backup-layer" id="backup-chain">
+    <!-- VIEW 2 · the stage: desk, back-up path, microphone, link and labels at the brief's px (chain line y 520) -->
+    <div class="backup-layer" id="backup-stage">
+    <svg class="backup-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <defs>
+        <!-- a dotted line is drawn on by a solid stroke in a mask -->
+        <mask id="backup-pmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+          <path id="backup-prev" d="M1095 804 L1488 606" fill="none" stroke="#fff" stroke-width="20"/>
+        </mask>
+        <mask id="backup-amask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+          <path id="backup-arev" d="M1095 804 L1488 606" fill="none" stroke="#fff" stroke-width="20"/>
+        </mask>
+        <mask id="backup-lmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+          <path id="backup-lrev" d="M1272 520 H1400" fill="none" stroke="#fff" stroke-width="20"/>
+        </mask>
+      </defs>
+      <!-- the back up: a second path, desk top (1095, 804) to the foot of the house (1488, 606). Grey, then Amber 2 at 60 % behind the light -->
+      <path id="backup-path" d="M1095 804 L1488 606" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round" stroke-dasharray="0.1 14" mask="url(#backup-pmask)"/>
+      <path id="backup-patha" d="M1095 804 L1488 606" fill="none" stroke="#e8c56a" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round" stroke-dasharray="0.1 14" mask="url(#backup-amask)"/>
+      <path id="backup-run" d="M1095 804 L1488 606" fill="none" stroke="#e8c56a" stroke-width="6" stroke-linecap="round"/>
+      <!-- chain link, microphone to house: dotted, Label grey, never lit -->
+      <path id="backup-link" d="M1272 520 H1400" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round" stroke-dasharray="0.1 14" mask="url(#backup-lmask)"/>
+      <!-- microphone (media/drawings/microphone.svg): box x 1170 to 1272, y 420 to 615.5; lamp Panel dark in every frame -->
+      <g transform="translate(1170 420) scale(0.85)">
+        <g id="backup-mic" fill="none" stroke="#dfe7ee" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M60 112 V182"/>
+          <rect x="30" y="0" width="60" height="112" rx="30" fill="#15202b"/>
+          <path d="M40 30 H80 M40 56 H80 M40 82 H80"/>
+          <path d="M30 182 H90 L108 230 H12 Z" fill="#15202b"/>
+          <circle cx="104" cy="20" r="9" fill="#15202b"/>
+        </g>
+      </g>
+      <!-- civil defense desk (media/drawings/desk.svg whole): box x 840 to 1095, y 770 to 898, top surface y 804 -->
+      <g transform="translate(840 770) scale(0.85)">
+        <g id="backup-desk" fill="none" stroke="#dfe7ee" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="14" y="52" width="12" height="98"/>
+          <rect x="274" y="52" width="12" height="98"/>
+          <rect x="190" y="62" width="74" height="38"/>
+          <path d="M219 81 H235"/>
+          <rect x="0" y="40" width="300" height="12" fill="#15202b"/>
+          <g transform="translate(106 -4)" stroke-width="3.5">
+            <rect x="24" y="-6" width="8" height="14" fill="#15202b"/>
+            <rect x="58" y="-6" width="8" height="14" fill="#15202b"/>
+            <path d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+            <circle cx="45" cy="27" r="15"/>
+            <circle cx="45" cy="27" r="3"/>
+            <circle cx="43.2" cy="37" r="0.8"/><circle cx="37.2" cy="33.6" r="0.8"/><circle cx="34.8" cy="27" r="0.8"/><circle cx="37.2" cy="20.4" r="0.8"/>
+            <circle cx="43.2" cy="17" r="0.8"/><circle cx="50.1" cy="18.2" r="0.8"/><circle cx="54.6" cy="23.5" r="0.8"/>
+            <path fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+    <div class="backup-lab" id="backup-labrt" style="left:1121px">radio and TV</div>
+    <div class="backup-lab" id="backup-labfam" style="left:1388px">a family</div>
+    <div class="backup-lab" id="backup-labcd" style="left:867px; top:912px">civil defense</div>
+    <div class="backup-lab" id="backup-labbu" style="left:1110px; top:820px; width:auto; text-align:left">the back up</div>
+    </div>
+
+    <!-- the house (media/drawings/house.svg), one element in views 1 and 2: dark in every frame, windows Panel dark.
+         View 1: translate(280 330) scale(2), box x 280 to 800, y 330 to 830. #backup-housecam carries it to its chain slot. -->
+    <svg class="backup-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <g id="backup-housecam">
+        <g transform="translate(280 330) scale(2)">
+          <g id="backup-house" fill="none" stroke="#55606b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M186 37.3 V22 H208 V50"/>
+            <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+            <rect x="20" y="80" width="220" height="170" fill="#15202b"/>
+            <rect x="112" y="170" width="36" height="80"/>
+            <rect x="44" y="120" width="48" height="48" fill="#15202b"/>
+            <rect x="168" y="120" width="48" height="48" fill="#15202b"/>
+            <path d="M68 120 V168 M44 144 H92"/>
+            <path d="M192 120 V168 M168 144 H216"/>
+            <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+          </g>
+        </g>
+      </g>
+      <!-- media/drawings/tornado-mark.svg at scale 2 (120 x 160): box y 150 to 310, Body light, never red; crosses left to right -->
+      <g id="backup-tor">
+        <g transform="translate(0 150) scale(2)" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6 H57"/><path d="M14 26 H52"/><path d="M20 46 H42"/><path d="M27 64 L30 76"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+  </div>
+
+  <div class="backup-strip" id="backup-strip2">
+    <div class="backup-quote" style="top:16px">&ldquo;too late&rdquo;</div>
+    <div class="backup-att" style="top:96px">Disaster Research Center, 1966, p. 20</div>
+  </div>
+
+  <!-- VIEW 3 · BASE · the living room of g-i1s1-house.html in the evening: empty armchair, the set on, the table radio's dial unlit -->
+  <div class="backup-layer" id="backup-room">
+    <div id="backup-floor"></div>
+    <div id="backup-scrim"></div>
+    <svg class="backup-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <line x1="96" y1="820" x2="1560" y2="820" stroke="#15202b" stroke-width="4" stroke-linecap="round"/>
+      <!-- window seen from inside: the room's light in its panes until the power goes -->
+      <g fill="none" stroke="#15202b" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect id="backup-win" x="180" y="220" width="340" height="380" fill="#e8c56a" fill-opacity="0.3"/>
+        <path d="M350 220 V600 M180 410 H520"/>
+      </g>
+      <!-- armchair, always empty -->
+      <g transform="translate(420 600) scale(1.1)">
+        <g fill="#15202b" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 160 V200 M176 160 V200" fill="none" stroke="#15202b"/>
+          <rect x="30" y="0" width="140" height="130" rx="16"/>
+          <rect x="30" y="110" width="140" height="40"/>
+          <rect x="0" y="80" width="34" height="80"/>
+          <rect x="166" y="80" width="34" height="80"/>
+        </g>
+      </g>
+      <!-- television (media/drawings/television.svg at 1.5): box x 760 to 1210, y 460 to 820 -->
+      <g transform="translate(760 460) scale(1.5)">
+        <g fill="none" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M40 200 L28 240 M260 200 L272 240" stroke="#15202b" stroke-width="3"/>
+          <rect x="0" y="0" width="300" height="200" rx="6" fill="#15202b" stroke="#15202b" stroke-width="3"/>
+          <rect x="20" y="20" width="192" height="160" rx="24" fill="#15202b"/>
+          <path d="M40 78 A46 46 0 0 1 78 40" stroke="#93a3b2" stroke-width="1.4"/>
+          <circle cx="256" cy="62" r="14"/>
+          <circle cx="256" cy="112" r="14"/>
+          <path d="M236 146 H276 M236 156 H276 M236 166 H276 M236 176 H276"/>
+        </g>
+      </g>
+      <!-- side table: top surface at y 700 so the radio stands on it -->
+      <g fill="#15202b" stroke="#15202b" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="1272" y="710" width="10" height="110"/>
+        <rect x="1478" y="710" width="10" height="110"/>
+        <rect x="1260" y="700" width="240" height="10"/>
+      </g>
+      <!-- table radio, dial unlit in every frame (the battery radio belongs to A3-S13) -->
+      <g transform="translate(1290 592) scale(1.2)">
+        <g fill="none" stroke="#93a3b2" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="0" y="0" width="150" height="90" rx="8" fill="#15202b" stroke="#15202b" stroke-width="3.7"/>
+          <path d="M20 20 V70 M32 20 V70 M44 20 V70 M56 20 V70 M68 20 V70"/>
+          <circle cx="112" cy="45" r="22" fill="#15202b"/>
+          <path d="M112 45 L124 31"/>
+        </g>
+      </g>
+    </svg>
+    <!-- BASE · the screen. Programme (media/drawings/README.md "Television screen" at 1.5 / 3.2): fill, four bars 80 px apart moving down
+         80 px in 2.667 s. Idle is the drawing's own dark screen under this block. -->
+    <div id="backup-screen">
+      <div id="backup-prog">
+        <div class="backup-bar" style="top:-61px"></div>
+        <div class="backup-bar" style="top:19px"></div>
+        <div class="backup-bar" style="top:99px"></div>
+        <div class="backup-bar" style="top:179px"></div>
+      </div>
+      <div id="backup-flash"></div>
+    </div>
+  </div>
+
+  <div class="backup-chip" id="backup-chip">County A</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#backup-", D = 22.96;
+  const el = function (id) { return document.getElementById("backup-" + id); };
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function fade(sel, to, at, dur) { tl.to(sel, { autoAlpha: to, duration: dur, ease: to ? "power3.out" : "power2.in" }, at); }
+  function draw(e, at, dur, ease) {
+    const len = Math.ceil(e.getTotalLength()) + 1;
+    s0(e, { strokeDasharray: len, strokeDashoffset: len });
+    tl.to(e, { strokeDashoffset: 0, duration: dur, ease: ease || "power2.out" }, at);
+  }
+  /* a drawing draws on, longest line first: each shorter line starts 0.04 s after the one before and they end together */
+  function drawOn(id, at, dur) {
+    Array.from(el(id).querySelectorAll("path, rect, circle"))
+      .sort(function (a, b) { return b.getTotalLength() - a.getTotalLength(); })
+      .forEach(function (e, i) { const late = Math.min(i * 0.04, dur - 0.15); draw(e, at + late, dur - late); });
+    tl.to(P+id, { autoAlpha: 1, duration: 0.15, ease: "none" }, at);
+  }
+  /* logZoom (library/inhouse/snippets/helpers.js) as an ease: scale runs in log space from a to b, eased in and out */
+  function logEase(a, b) {
+    const io = gsap.parseEase("power1.inOut");
+    return function (p) { return (Math.exp(Math.log(a) + (Math.log(b) - Math.log(a)) * io(p)) - a) / (b - a); };
+  }
+  /* a clockwise circle arc as a path, degrees clockwise from 12 (g-a2s06-headstart.html) */
+  function arc(cx, cy, r, fromDeg, toDeg) {
+    function pt(deg) { const a = deg * Math.PI / 180; return (cx + r * Math.sin(a)).toFixed(2) + " " + (cy - r * Math.cos(a)).toFixed(2); }
+    return "M" + pt(fromDeg) + " A" + r + " " + r + " 0 " + (toDeg - fromDeg > 180 ? 1 : 0) + " 1 " + pt(toDeg);
+  }
+
+  /* numbers the picture stands on */
+  const MIN_DEG = 20 * 6;                                     /* twenty minutes on the face: 120 degrees */
+  const FACE = { x: 900 + 62 * 1.6, y: 420 + 62 * 1.6 };      /* clock pivot on screen: (999.2, 519.2) */
+  const STAGE_DX = -248;                                      /* coverage: view 2 waits centred (its box x 840 to 1577) */
+  const A = { x: 280, y: 330, s: 2 }, B = { x: 1400 + STAGE_DX, y: 430, s: 0.68 }, K = B.s / A.s;
+  /* the one screen point that a zoom by K about it carries the view 1 house onto its (waiting) chain slot */
+  const CAM = { x: (B.x - K * A.x) / (1 - K), y: (B.y - K * A.y) / (1 - K) };
+
+  /* COUNTY @0.00: ground, ground line, chip County A */
+  s0([P+"house", P+"clock", P+"arc", P+"strip2", P+"desk", P+"labcd", P+"path", P+"patha", P+"run", P+"labbu", P+"mic", P+"link",
+      P+"labrt", P+"labfam", P+"tor", P+"room", P+"flash"], { autoAlpha: 0 });
+  s0(P+"after", { autoAlpha: 0, y: 16 });
+  s0(P+"strip1", { autoAlpha: 0, y: 60 });
+  s0(P+"strip2", { y: 60 });
+  s0(P+"min", { rotation: 0, svgOrigin: "62 62" });
+  s0(P+"housecam", { scale: 1, x: 0, svgOrigin: CAM.x + " " + CAM.y });
+  s0(P+"stage", { x: STAGE_DX });
+  s0(P+"tor", { x: -140 });
+  s0(".backup-bar", { y: 0 });
+  tl.to(P+"sweep", { x: 2860, duration: D / 4, ease: "none", repeat: 3 }, 0);
+
+  /* ---- VIEW 1 ---- CIVIL @0.56: the house draws on, dark */
+  drawOn("house", 0.56, 0.8);
+  /* CAME @3.24: the clock draws on beside the house, minute hand at 12 */
+  drawOn("clock", 3.24, 0.5);
+  /* THAT @5.20: the minute hand sweeps to twenty minutes and the arc grows with it */
+  const arcEl = el("arc");
+  arcEl.setAttribute("d", arc(FACE.x, FACE.y, 113, 0, MIN_DEG));
+  tl.set(arcEl, { autoAlpha: 1 }, 5.20);
+  draw(arcEl, 5.20, 0.8, "none");
+  tl.to(P+"min", { rotation: MIN_DEG, duration: 0.8, ease: "none" }, 5.20);
+  /* 20 @5.62: the chip lands */
+  tl.to(P+"after", { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 5.62);
+  /* HIT @7.04: quote strip 1 rises */
+  tl.to(P+"strip1", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.04);
+
+  /* ---- VIEW 2 ---- CIVIL @8.30: strip 1, the clock, its arc and label leave; the ground line fades; the house moves to its chain slot */
+  /* the strip is gone in 0.25 s, before the desk and its label come up where it stood (8.56) */
+  tl.to(P+"strip1", { autoAlpha: 0, y: 60, duration: 0.25, ease: "power2.in" }, 8.30);
+  fade([P+"clock", P+"arc", P+"after", P+"ground"], 0, 8.30, 0.4);
+  tl.to(P+"housecam", { scale: K, duration: 0.8, ease: logEase(1, K) }, 8.30);
+  tl.to(P+"house", { attr: { "stroke-width": 5 }, duration: 0.8, ease: "power1.inOut" }, 8.30);
+  /* DEFENSE @8.56: the civil defense desk draws on with its label */
+  drawOn("desk", 8.56, 0.5);
+  fade(P+"labcd", 1, 8.56, 0.3);
+  /* BACKUP @10.60: the back-up path draws from the desk to the house, Label grey, with its label */
+  tl.set(P+"path", { autoAlpha: 1 }, 10.60);
+  draw(el("prev"), 10.60, 0.6, "none");
+  fade(P+"labbu", 1, 10.60, 0.3);
+  /* RADIO @11.20: the microphone draws on with its dotted link to the house; both labels */
+  drawOn("mic", 11.20, 0.5);
+  tl.set(P+"link", { autoAlpha: 1 }, 11.20);
+  draw(el("lrev"), 11.20, 0.5, "none");
+  fade([P+"labrt", P+"labfam"], 1, 11.20, 0.3);
+  /* AFTER @13.84: the tornado mark crosses the frame left to right; it is out of frame at 15.24 (ALREADY) */
+  tl.set(P+"tor", { autoAlpha: 1 }, 13.84);
+  tl.to(P+"tor", { x: 1940, duration: 15.24 - 13.84, ease: "none" }, 13.84);
+  tl.set(P+"tor", { autoAlpha: 0 }, 15.24);
+  /* THROUGH @15.86: only now the light runs the back-up path, desk to house; the path stays Amber 2 at 60 % behind it */
+  const pathLen = el("run").getTotalLength(), SEG = 60, RUN = 0.5;
+  s0(el("arev"), { strokeDasharray: Math.ceil(pathLen) + 1, strokeDashoffset: Math.ceil(pathLen) + 1 });
+  s0(P+"run", { strokeDasharray: SEG + " " + (pathLen + SEG + 10), strokeDashoffset: SEG });
+  tl.set([P+"patha", P+"run"], { autoAlpha: 1 }, 15.86);
+  tl.to(el("arev"), { strokeDashoffset: 0, duration: RUN, ease: "none" }, 15.86);
+  tl.to(P+"run", { strokeDashoffset: -pathLen, duration: RUN * (pathLen + SEG) / pathLen, ease: "none" }, 15.86);
+  tl.set(P+"run", { autoAlpha: 0 }, 15.86 + RUN * (pathLen + SEG) / pathLen);
+  /* 16.36: quote strip 2 rises, and the view settles onto the brief's px to give it the room */
+  tl.to(P+"strip2", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 16.36);
+  tl.to(P+"stage", { x: 0, duration: 0.5, ease: "power3.inOut" }, 16.36);
+  tl.to(P+"housecam", { x: -STAGE_DX, duration: 0.5, ease: "power3.inOut" }, 16.36);
+
+  /* ---- VIEW 3 ---- AND @17.18: the chain layer pushes in on the house's left window, centre (1446, 528); the room fades in over the last 0.2 s */
+  fade([P+"strip2", P+"labrt", P+"labfam", P+"labcd", P+"labbu"], 0, 17.18, 0.15);
+  tl.to(P+"chain", { scale: 6, duration: 0.5, ease: logEase(1, 6) }, 17.18);
+  tl.to(P+"room", { autoAlpha: 1, duration: 0.2, ease: "power2.in" }, 17.48);
+  tl.set(P+"chain", { autoAlpha: 0 }, 17.68);
+  tl.to(".backup-bar", { y: 80, duration: 2.667, ease: "none" }, 17.18);
+  /* OUT @18.40: the screen cuts Programme to Idle: one hard cut, one 0.1 s flash at 30 % */
+  tl.set(P+"prog", { autoAlpha: 0 }, 18.40);
+  tl.set(P+"flash", { autoAlpha: 0.3 }, 18.40);
+  tl.set(P+"flash", { autoAlpha: 0 }, 18.50);
+  /* POWER @18.72: the window goes Amber 2 to Panel dark */
+  tl.to(P+"win", { attr: { fill: "#15202b", "fill-opacity": 1 }, duration: 0.2, ease: "power2.out" }, 18.72);
+  /* ANYONE @19.56: a slow push on the television, about its screen, to the end */
+  tl.to(P+"room", { scale: 1.06, duration: D - 19.56, ease: "none" }, 19.56);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-a2s11-backup"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
