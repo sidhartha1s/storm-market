@@ -862,7 +862,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 
 ### A6-S6 · narration
 **Picture:** [graphic] the dark telephone links of A3-S4 return; over them an amber radio arc is drawn from office to office. A small paper card: "back up emergency radio communications", source line "Weather Bureau survey, 1965, p. 2, recommendation 7".
-> For the telephones that failed, the team asked for back up radio between Weather Bureau offices, and out to civil defense and local offices.
+> For the failed telephones, the team asked for back up radio between Weather Bureau offices, and out to civil defense and local offices.
 
 **Rows:** [G, Rec. 7; survey printed p. 2]
 
