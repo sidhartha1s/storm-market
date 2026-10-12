@@ -350,8 +350,9 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"prog", { autoAlpha: 0 }, 18.40);
   tl.set(P+"flash", { autoAlpha: 0.3 }, 18.40);
   tl.set(P+"flash", { autoAlpha: 0 }, 18.50);
-  /* POWER @18.72: the window goes Amber 2 to Panel dark */
-  tl.to(P+"win", { attr: { fill: "#15202b", "fill-opacity": 1 }, duration: 0.2, ease: "power2.out" }, 18.72);
+  /* POWER @18.72: the window goes from Amber 2 to unlit glass: Panel dark at 27 % over the wall, about 20 levels under it,
+     so the pane lines still show. At 100 % it was one flat block, 71 to 85 levels under the wall, the panes gone */
+  tl.to(P+"win", { attr: { fill: "#15202b", "fill-opacity": 0.27 }, duration: 0.2, ease: "power2.out" }, 18.72);
   /* ANYONE @19.56: a slow push on the television, about its screen, to the end */
   tl.to(P+"room", { scale: 1.06, duration: D - 19.56, ease: "none" }, 19.56);
   tl.to({}, { duration: 0.01 }, D - 0.01);
