@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a2s15-old (A2-S15): the study's own typed page, one figure underlined, then the sentence lifted onto a strip with a microphone
+     beside it. Brief: mg_specs/briefs/g-a2s15-old.md. Page family: crop, unlit page, underline and strip of g-i1s3-cloud and g-i1s7-sheriff.
+     Crop: media/docs/study-p24-media-crop.png, 1460 x 434, study printed p. 24, at its own size: screen x = crop x + 106, y = crop y + 126.
+       Line 7: "Tornado warnings were generally too old--i.e. 15-30 minutes--"; line 8: "to be truly worthwhile as a warning."
+       The voice says the figure first, so "15-30 minutes" is underlined first, then "too old", then line 8. Lines 3 to 6 are other
+       comments: dimmed, never underlined. The block quote is single spaced: underlines are 4 px, 2 px under their line box.
+     Plan rule 22: until the strip needs the room the page sits centred in the frame (197 px lower); it rises on the strip's cue.
+     Cues: audio/a2-s15.words.json seconds minus 0.39 (mg_specs/timeline-map.md table 5). -->
+<template>
+<style>
+  #old-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .old-h { opacity:0; visibility:hidden; }
+  .old-page { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* ---- the document card and what is drawn on it (screen px of the brief; the whole layer moves as one) ---- */
+  .old-card { position:absolute; left:96px; top:116px; width:1480px; height:454px; box-sizing:border-box; border:10px solid #f4f0e6; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .old-card img { position:absolute; left:0; top:0; width:1460px; height:434px; }
+  .old-unlit { position:absolute; background:rgba(21,32,43,0.45); }
+  .old-ul { position:absolute; height:4px; background:#d0121f; }
+  .old-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+
+  /* ---- the narrow quote strip (retyped, with its quotation marks and attribution) and the drawing beside it ---- */
+  .old-strip { position:absolute; left:96px; top:610px; width:1180px; height:200px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; }
+  .old-q { position:absolute; left:40px; font:40px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:52px; }
+  .old-att { position:absolute; left:40px; top:148px; font:700 22px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+  .old-mic { position:absolute; left:1374.6px; top:594.6px; width:118.8px; height:217.8px; overflow:visible; }   /* 0.9 times: object box x 1380 to 1488, y 600 to 807; line 3.6 px */
+</style>
+<div id="old-root" data-composition-id="g-a2s15-old" data-width="1920" data-height="1080">
+
+  <div class="old-page" id="old-page">
+    <div class="old-card"><img src="media/docs/study-p24-media-crop.png" alt=""></div>
+    <!-- unlit page: the first six words of line 1, and lines 3 to 6 -->
+    <div class="old-unlit old-h" id="old-u1" style="left:106px;top:126px;width:984px;height:75px"></div>
+    <div class="old-unlit old-h" id="old-u2" style="left:106px;top:273px;width:1460px;height:184px"></div>
+    <!-- underlines: A "15-30 minutes", B "too old", C line 8 -->
+    <div class="old-ul" id="old-ula" style="left:1176px;top:509px;width:204px"></div>
+    <div class="old-ul" id="old-ulb" style="left:936px;top:509px;width:125px"></div>
+    <div class="old-ul" id="old-ulc" style="left:373px;top:547px;width:590px"></div>
+  </div>
+  <div class="old-src" id="old-src">Disaster Research Center, 1966, p. 24</div>
+
+  <div class="old-strip old-h" id="old-strip">
+    <div class="old-q" style="top:24px">&ldquo;too old ...</div>
+    <div class="old-q old-h" id="old-q2" style="top:76px">to be truly worthwhile as a warning&rdquo;</div>
+    <div class="old-att old-h" id="old-att">media personnel &middot; Disaster Research Center, 1966</div>
+  </div>
+
+  <!-- media/drawings/microphone.svg inline at 0.9: lines Body light, body Panel dark, lamp unlit; no name, no call letters -->
+  <svg class="old-mic" viewBox="-6 -6 132 242" width="118.8" height="217.8">
+    <g fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path class="old-h" id="old-m-neck" d="M60 112 V182"/>
+      <rect class="old-h" id="old-m-cap" x="30" y="0" width="60" height="112" rx="30" fill="#15202b"/>
+      <path class="old-h" id="old-m-grille" d="M40 30 H80 M40 56 H80 M40 82 H80"/>
+      <path class="old-h" id="old-m-base" d="M30 182 H90 L108 230 H12 Z" fill="#15202b"/>
+      <circle class="old-h" id="old-m-lamp" cx="104" cy="20" r="9" fill="#15202b"/>
+    </g>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a2s15-old", P = "old", D = 10.91;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function draw(e, t, d) {                                  /* a line drawn on: dash = ceil(len)+1, hidden until its start */
+    var L = Math.ceil(e.getTotalLength()) + 1;
+    s0(e, { strokeDasharray: L, strokeDashoffset: L, autoAlpha: 0 });
+    tl.set(e, { autoAlpha: 1 }, t);
+    tl.to(e, { strokeDashoffset: 0, duration: d, ease: "power2.out" }, t);
+  }
+  function under(e, t, d) { tl.to(e, { scaleX: 1, duration: d, ease: "power2.out" }, t); }
+
+  /* start states: hidden in CSS (old-h) or by scaleX 0; transforms set here at 0; every move from rest below is a plain to() */
+  s0($("page"), { y: 197 });                                /* centred in the frame until the strip needs the room (plan rule 22) */
+  s0($("ula"), { scaleX: 0, transformOrigin: "left center" });
+  s0($("ulb"), { scaleX: 0, transformOrigin: "left center" });
+  s0($("ulc"), { scaleX: 0, transformOrigin: "left center" });
+  s0($("strip"), { y: 60 });
+
+  /* 0 · "A" @0.00: the cut lands on the page, all of it bright; page source on */
+
+  /* 1 · "tornado" @1.53: the unlit page: the heading words and lines 7 and 8 stay bright */
+  tl.to([$("u1"), $("u2")], { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 1.53);
+
+  /* 2 · "15" @3.07: underline A under "15-30 minutes" */
+  under($("ula"), 3.07, 0.5);
+
+  /* 3 · "They" @5.55: underline B under "too old" (complete 5.80, before the strip) */
+  under($("ulb"), 5.55, 0.25);
+
+  /* 4 · "too" @5.81: the page rises to its briefed place and the strip comes up under it with its first line; the page source leaves */
+  tl.to($("page"), { y: 0, duration: 0.5, ease: "power3.out" }, 5.81);
+  tl.to($("strip"), { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 5.81);
+  tl.to($("src"), { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 5.81);
+
+  /* 5 · "broadcasters" @6.85 (the voice says "broadcaster"): the microphone draws on beside the strip, longest line first; lamp unlit */
+  draw($("m-cap"), 6.85, 0.3); draw($("m-base"), 6.92, 0.3); draw($("m-grille"), 7.02, 0.25);
+  draw($("m-neck"), 7.10, 0.25); draw($("m-lamp"), 7.18, 0.27);
+
+  /* 6 · "to" @8.03: underline C under line 8 (complete 8.53) */
+  under($("ulc"), 8.03, 0.5);
+
+  /* 7 · "worthwhile" @8.55: the strip's second line and its attribution. Hold to the cut */
+  tl.to([$("q2"), $("att")], { autoAlpha: 1, duration: 0.3, ease: "power1.out" }, 8.55);
+
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
