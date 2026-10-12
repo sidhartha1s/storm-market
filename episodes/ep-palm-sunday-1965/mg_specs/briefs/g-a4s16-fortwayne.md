@@ -82,4 +82,4 @@ All seven lines of template section 7a. Line 4 here: the card's `x`, `y` and `sc
 As template section 8.
 
 ## Frames the verifier reads
-First frame (0.00) and the frame after it (0.04): map lines, South Bend lit, nothing else. Then: 0.70 (South Bend dim), 2.50 (Fort Wayne amber, label on no line), 3.10 (link and teletype, label inside x 1565), 4.60 (strip rising, three bars), 6.00 (strip at full height, four bars, 8 px under the map box), 7.50 (line, town, mark west of the town), 8.20 (mark east of the town, no card yet), 8.55 (card in flight), 9.20 (card at rest above the town, leader and `the warning`), 10.20 (last frame).
+First frame (0.00) and the frame after it (0.04): map lines, South Bend lit, nothing else. Then: 0.70 (South Bend dim), 2.50 (Fort Wayne amber, label on no line), 3.10 (link and teletype, label inside x 1565), 4.60 (paper 38.6 px out, two bars), 6.00 (paper at full height, three bars, 8 px under the map box), 7.50 (line, town, mark west of the town), 8.20 (mark east of the town, no card yet), 8.55 (card in flight), 9.20 (card at rest above the town, leader and `the warning`), 10.20 (last frame).
