@@ -58,7 +58,7 @@ The sheriff's line (A4-S10), lower band:
 | Unlit page | Panel dark at 45 % over the window, except two lit boxes, window px: `We didn't have any warning` x 485.4 to 775.8, y 2.4 to 21.6; `at all` x 118.8 to 171.6, y 25.2 to 45.0 |
 | Underlines | Popfig red, 3 px, drawn left to right with `scaleX` (`transformOrigin:"left center"`): under box 1 at window y 23.6, under box 2 at window y 47.0 (it may sit on the window's bottom edge; extend the window box 4 px down for it, with no page ink in the extra rows) |
 | Retyped quote | Georgia 52 px, Caption dark, left 136, top 846: `“We didn’t have any warning at all”` |
-| Attribution | Arial 700 22 px, Caption dark sub, tracking 2, left 136, top 942: `County B's sheriff · Disaster Research Center, 1966, p. 22` |
+| Attribution | Arial 700 26 px (line height 26; as built, file saved 01:00:15, 13 Oct 26), Caption dark sub, tracking 2, left 136, top 942: `County B's sheriff · Disaster Research Center, 1966, p. 22` |
 
 ## 4. Must be true in the picture
 1. The first frame is the chain as `g-a4s06-died` left it: civil defense desk amber, radio arc amber, police desk amber with the red stop mark at its right edge, microphone and house Label grey with lamp and windows dark. Nothing past the stop mark is amber in any frame.
