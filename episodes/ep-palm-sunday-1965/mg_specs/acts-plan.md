@@ -123,6 +123,94 @@ Columns: comp id · segments · kind · what the viewer sees and what changes on
 | g-z1s04-drill | Z1-S4 | map | Indiana: every county lights amber in one sweep from the Weather Bureau's dot; label "statewide tornado drill · each spring"; no date | `BM-1` | `compositions/g-a2s14-six.html` after wave 1 | 5 |
 | g-z1s05-title | Z1-S5 | graphic | The channel title card under the signature footnote; it is the outro | none | none (copy `library/inhouse/outro-brand.html` from W) | 5 |
 
+## 3. Assets (made in wave 0, 12 Oct 26; every row names the file on disk)
+Checked 12 Oct 26 with a folder listing, `ffprobe` on every cut and the pixel size of every crop. A brief names the file path from these rows, never an id alone. A row marked "ordered" is checked again before a brief uses it.
+
+### 3a. Drawings (11, plus 4 state files), in `media/drawings/`
+Mount rules, classes and the test sheet are in `media/drawings/README.md` ("Drawings for the acts"); that file wins over any number here. The object box starts at (0, 0) and the viewBox adds 6 units a side. A state file shares its viewBox and classes with its base file: a picture mount swaps the file, an inline mount tweens the classed part. The files carry classes only; a comp adds ids under its own prefix.
+| Id | File | State file | Shows, and the part a comp changes | Object box | viewBox (x y w h) | Line (units) | Needed by |
+|---|---|---|---|---|---|---|---|
+| DR-01 | `media/drawings/teletype.svg` (paper unlit) | `media/drawings/teletype-lit.svg` (paper Amber 2, bars Caption dark) | Body, keyboard slab, a paper strip with three typed bars. `dw-lamp` paper fill, `dw-type` bars stroke | 140 x 140 | -6 -6 152 152 | 4 | a1s01, a1s09, a1s13, a2s03, a2s09, a3s04, a4s15, a4s16, a5s01, a5s18, a6s02, a6s05 |
+| DR-02 | `media/drawings/radar-scope.svg` | none | A round scope with a rim, a centre dot, one sweep line and an amber afterglow wedge behind the sweep; no map lines. `dw-sweep` turns about (100, 100); `dw-glow` may be hidden | 200 x 200 | -6 -6 212 212 | 4 | a2s03, a5s01, a6s07 |
+| DR-03 | `media/drawings/tornado-mark.svg` | none | A map mark: three bars of falling width over a point. Group stroke only, never red | 60 x 80 | -6 -6 72 92 | 6 | a1s07, a2s08, a2s09, a2s11, a2s14, a2s16, a3s05, a3s15, a4s02, a4s16, a5s04, a5s10 |
+| DR-04 | `media/drawings/steel-tower.svg` | none | A lattice transmission tower. The whole group tips about the base centre (40, 160) | 80 x 160 | -6 -6 92 172 | 4, braces 3 | a3s10, a5s15 |
+| DR-05 | `media/drawings/generator.svg` (outline: the one that is not there) | `media/drawings/generator-filled.svg` (box and housing Amber 2) | A box on skids with a round housing, one pipe and a bolt mark. `dw-lamp` fills, `dw-ink` strokes | 120 x 80 | -6 -6 132 92 | 4, bolt and hub 3 | a3s15, a6s07, a6s09 |
+| DR-06 | `media/drawings/horn-pole.svg` | none | A pole and one flared horn, outline. Group stroke only; no sound lines, ever | 80 x 220 | -6 -6 92 232 | 4 | a4s11, a6s11 |
+| DR-07 | `media/drawings/police-car.svg` | none | A 1960s sedan, side elevation, one roof speaker, no markings. An amber blink is the `dw-body` fill | 240 x 90, speaker up to y -6 | -6 -14 252 114 | 4, windows and speaker 3 | a4s11 |
+| DR-08 | `media/drawings/plug-cord.svg` | none | A two-pin plug and a short cord. Group stroke | 60 x 40 | -6 -6 72 52 | 4 | a3s05 |
+| DR-09 | `media/drawings/wall-clock.svg` (both hands at 12) | `media/drawings/wall-clock-nohands.svg` | Circle, twelve ticks, centre dot, two hands. `dw-hour` and `dw-minute` turn about (62, 62) | 124 x 124 | -6 -6 136 136 | 4, ticks 3, hands 5 | a1s05, a2s03, a2s06, a2s11, a3s12, a4s01, a4s02, a4s09, a5s07, a5s14, a5s16, a5s18 |
+| DR-10 | `media/drawings/cell-phone.svg` (screen dark) | `media/drawings/cell-phone-lit.svg` (screen Amber 2) | A plain slab phone, front elevation. `dw-lamp` screen fill | 60 x 110 | -6 -6 72 122 | 4, screen and button 3 | z1s02 |
+| DR-11 | `media/drawings/cell-tower.svg` | none | A mast with three panel antennas. Group stroke | 60 x 240 | -6 -6 72 252 | 4, arms 3 | z1s02 |
+
+What a brief carries from the README for these:
+- Line weight by size: keep the file's weight between about half and twice the object box. Smaller, set `stroke-width` on the `dw-...` group so a line stays near 2 px (the 54 towers of A3-S10 at about 26 px wide: `stroke-width="6"`, 4.5 on the two brace paths). Larger, thin it so a line stays near 6 px (the scope of A5-S2 at 420 px wide: `stroke-width="3"`).
+- Light ground (rooms, paper): the group's `stroke` is `#15202b`, and every `dw-body` and unlit `dw-lamp` fill takes the ground's colour.
+- Turning parts (`dw-sweep`, `dw-hour`, `dw-minute`, the tower) carry no transform in the file. Inline, give the part an id and tween `rotation` with `svgOrigin` set once before any tween. Clock angles are clockwise degrees from 12.
+- Dots drawn as zero-length round-capped lines (the clock hub, the car's wheel hubs) and the scope's wedge fade in; they take no draw-on.
+- Two things the builder added to this plan's wording, both kept: the scope's rim and afterglow wedge (a bare circle with one line reads as a clock face), and the generator's bolt mark.
+
+### 3b. Base maps (3), in `media/maps/`
+Built by `media/maps/build_maps.py` from two US Census files in `media/data/` (`cb_2023_us_county_500k.zip`, `2023_Gaz_place_national.zip`; town table `media/data/points.csv`). Projection, ids, the points table, colours and line weights are in `media/maps/README.md`; that file wins over any number here. All three files share one coordinate space (one unit is one pixel of `compositions/g-i1s2-station.html`), so a push from one map into another is a camera move. Today's county lines stand in for 1965. The files carry no labels: a composition sets type.
+| Id | File | viewBox (x y w h) | Largest fit inside the text-safe area | Units with an id | Town dots | Needed by |
+|---|---|---|---|---|---|---|
+| BM-1 | `media/maps/indiana-counties.svg` | 96 100 664 880 | scale 1.1045, 733 x 972 px, left 593, top 54 | 92 counties `co-in-<name>`, Indiana's outline `st-in`, neighbours `st-il st-mi st-oh st-ky` cut to the window | 21: South Bend, Michigan City, Knox, Koontz Lake, Plymouth, Argos, Donaldson, Bremen, Goshen, Elkhart, Dunlap, Nappanee, Fort Wayne, Berne, Linn Grove, Marion, Indianapolis, Kokomo, Russiaville, Greentown, Chicago | a1s02, a1s09, a2s01, a2s08, a2s14, a2s16, a2s19, a3s01, a3s05, a4s16, a5s01, a5s04, a5s07, a5s10, z1s04 |
+| BM-2 | `media/maps/midwest-states.svg` | -980 -1280 2220 2560 | scale 0.3797, 843 x 972 px, left 539, top 54 | 9 states: `st-mo st-ia st-il st-wi st-in st-mi st-oh st-ky st-mn` | 7: Kansas City, Chicago, South Bend, Fort Wayne, Indianapolis, Toledo, Columbus | a1s02, a1s09, a2s01, a5s16, a6s07 |
+| BM-3 | `media/maps/us-states.svg` | -4490 -1300 7470 4720 | scale 0.2059, 1538 x 972 px, left 191, top 54 | 48 states and DC, `st-<postal code>`; the L of A1-S6 sits over `st-nd st-sd st-mn` | none | a1s06 |
+
+What a brief carries for every map graphic:
+- **Mount box.** To match the built station graphic, BM-1 mounts at left 96, top 100, 664 x 880 px (one unit per pixel). The "largest fit" column is the most a map can fill inside the margins, centred; a composition with a card beside the map picks its own box and keeps the aspect. From the BM-2 fit to the BM-1 fit is a push of 2.909 times; from BM-3 to BM-2, 1.844 times.
+- **Ids.** A town is `pt-<name>` (a group holding one circle). A composition that inlines map paths puts its own prefix on every id. Two pairs read alike: `co-in-marion` is Marion County (Indianapolis) while the city of Marion is `pt-marion` in `co-in-grant`; `co-in-knox` is a county in the south-west while the town of Knox is `pt-knox` in `co-in-starke`.
+- **Alto has no dot.** It is not in the source file, none was guessed, and no map may show Alto. The photograph of A5-S9 keeps its own label; nothing marks the place on a map.
+- **Donaldson and Plymouth sit close:** 16.0 units apart, 17.7 px at the largest fit. A graphic that shows both (A2-S14) places their two labels by hand and reads them in a frame.
+- **Line weight after any zoom.** Every path carries `vector-effect="non-scaling-stroke"`, so the weights are screen pixels at any mount size. Whether a CSS scale on a wrapper (a camera push) also leaves the weight alone is not yet checked: every map graphic's first frame read checks line weight at both ends of each zoom.
+- **Lighting.** A county or state lights by its fill (a flash is a fill change). `st-in` on BM-1 has no fill, so lit counties show through; "all of Indiana" on BM-1 is the 92 counties (Z1-S4), on BM-2 it is `st-in`.
+- **Southern Porter** (A1-S3): `co-in-porter` runs y 182.4 to 272.9 in map units; the schematic split is its mid line, y 227.6.
+- **Clipping.** BM-1's neighbour outlines are cut 30 units outside its viewBox; a composition that copies them into a wider SVG clips them to the window x 96 to 760.
+
+### 3c. Page crops (18), in `media/docs/`
+Cut from 300 dpi page images in the same folder; each has a `provenance.csv` row with its crop box in page pixels. Printed survey log pages sit at PDF page = printed page + 28. Printed p. 1 is PDF p. 7 and printed p. 2 is PDF p. 8; the memo is PDF p. 3. Study printed page = PDF page less 2. Page images made in wave 0: `media/docs/survey-pdf-03-orig.png`, `media/docs/survey-pdf-07-orig.png`, `media/docs/survey-pdf-08-orig.png`, `media/docs/survey-pdf-65-orig.png`, `media/docs/survey-pdf-68-orig.png`, `media/docs/survey-pdf-71-orig.png`, `media/docs/survey-pdf-72-orig.png`, `media/docs/study-pdf-23-orig.png`, `media/docs/study-pdf-26-orig.png`.
+| Id | File | Size (px) | Printed page | What the file holds | Ruling or note for the brief | Needed by |
+|---|---|---|---|---|---|---|
+| PC-01 | `media/docs/survey-p37-1220pm-crop.png` | 1460 x 353 | survey p. 37 | The 12:20 PM entry, "Issued at 12:20 PM EST" to "Starke and southern Porter and Laporte Counties.", 9 lines | Nine lines: the card shows them all, the underline finds "several tornadoes are expected" | a1s02 |
+| PC-02 | `media/docs/survey-p39-radar-crop.png` | 1460 x 142 | survey p. 39 | 4 lines, "Radar indicates" to "should be on the alert" | none | a2s01 |
+| PC-03 | `media/docs/survey-p39-600pm-crop.png` | 1460 x 283 | survey p. 39 | The 6:00 PM entry, "Issued at 6:00 PM EST." to "during the next 30 to 60 minutes.", 7 lines | none | a2s14 |
+| PC-04 | `media/docs/study-p24-media-crop.png` | 1460 x 434 | study p. 24 | 8 lines, from "Media personnel typically commented as follows:" through the "15-30 minutes" quote | The manpower quote sits between the heading and the spoken quote: it is dimmed with the unlit page, never underlined | a2s15 |
+| PC-05 | `media/docs/survey-p39-623pm-crop.png` | 1460 x 90 | survey p. 39 | The 6:23 PM entry: time line and first line | 1460 px wide, not 900: the card is sized from the file | a2s19 |
+| PC-06 | `media/docs/survey-p40-624pm-crop.png` | 1460 x 129 | survey p. 40 | The 6:24 PM entry: time line and 2 lines naming Bremen | 1460 px wide, not 900. A sliver of the next line shows at the bottom edge: the card masks the bottom 12 px | a2s19 |
+| PC-07 | `media/docs/survey-p40-635pm-crop.png` | 1460 x 128 | survey p. 40 | The 6:35 PM entry: time line and 2 lines naming Goshen | 1460 px wide, not 900: the card is sized from the file | a2s19 |
+| PC-08 | `media/docs/survey-p40-650pm-crop.png` | 1460 x 240 | survey p. 40 | The 6:50 PM entry whole, 6 lines | none | a3s01 |
+| PC-09 | `media/docs/study-p21-eyes-crop.png` | 1460 x 299 | study p. 21 | 4 lines: "with his own eyes" (lines 2 and 3) with a line above and below | The crop prints the study's code "County B" once; it matches the chip | a4s01 |
+| PC-10 | `media/docs/study-p22-died-crop.png` | 1460 x 225 | study p. 22 | The page's first three lines, ending "The information died with the police." | Names no county | a4s06 |
+| PC-11 | `media/docs/study-p22-chief-crop.png` | 1460 x 529 | study p. 22 | "The Chief of Police was afraid..." and both paragraphs of his quote, to "they panic right now.", 10 lines | Names no county | a4s08 |
+| PC-12 | `media/docs/survey-p43-840pm-crop.png` | 1460 x 202 | survey p. 43 | The 8:40 PM Fort Wayne entry whole, 4 lines | none | a5s01 |
+| PC-13 | `media/docs/survey-p43-920pm-crop.png` | 1460 x 377 | survey p. 43 | The 9:20 PM entry whole, 9 lines | none | a5s07 |
+| PC-14 | `media/docs/survey-p44-nowarn-crop.png` | 1460 x 591 | survey p. 44 | "No issuances between 9:30 PM EST and 10:30 PM EST due to power failure.", the page heading above it and the whole 10:45 PM entry below | The page has no entry above the line: the heading is what sits above it | a5s14 |
+| PC-15 | `media/docs/survey-memo-p3-crop.png` | 1460 x 868 | memo (PDF p. 3) | Memo heading, the date May 2, 1965 and the first paragraph | The memo's own date is May 2; the label "April 12, 1965" is ours and sits on glass | a5s20 |
+| PC-16 | `media/docs/survey-p1-excellent-crop.png` | 1460 x 169 | survey p. 1 | 3 whole lines holding "were excellent." | The third line (the toll approaching 200) stays in frame: the page is skewed and a rectangle cannot hold two lines alone. Only "excellent" is underlined | a5s20 |
+| PC-17 | `media/docs/survey-p2-recs-page.png` | 835 x 1080 | survey p. 2 | The recommendations page whole | none | a6s01 |
+| PC-18 | `media/docs/survey-p2-rec1-crop.png` | 1460 x 290 | survey p. 2 | Recommendation 1 alone, 7 lines | none | a6s01 |
+On disk from the opening and reused as they are: `media/docs/study-p20-police-crop.png` (1460 x 647; a2s09), `media/docs/study-p22-sheriff-crop.png` (1460 x 642; a4s09).
+
+Sizing a card from the file: the card is the crop at one scale s, so it is 1460 x s wide and the file's height x s tall, on the Beige border of design sheet section 9. The three log cards of A2-S19 share a frame with the map, so their brief picks s from the layout and proves the typed line clears the 19 px floor at that s; if it does not, the card in voice sits large and the earlier ones step back.
+
+### 3d. Film cuts (8 files for 6 shots), in `media/films/cuts/`
+All from `media/films/a14-eoc-radef.mp4` (inventory A14). Lengths are `ffprobe` on the files, 12 Oct 26. Every file is 640 x 480 with no audio stream, cut 0.3 s inside each logged edge, and has a `provenance.csv` row.
+| Id | Shot | File | Length (s) | Source in to out (s) | In frame | Needed by |
+|---|---|---|---|---|---|---|
+| FC-01 | 14-05 | `media/films/cuts/a14-05-operations-room.mp4` | 31.53 | 74.1 to 105.6 | Wide of the operations room, slow zoom out, a man writing on the wall board. Ordinary desk placards are in frame from about 2 s to the end | a1s15 |
+| FC-02 | 14-09, first angle | `media/films/cuts/a14-09-announcer.mp4` | 9.44 | 384.2 to 393.65 | The announcer reading a sheet at a microphone, front on | a1s15 |
+| FC-02b | 14-09, second angle (ordered; on disk at this check) | `media/films/cuts/a14-09b-announcer-shoulder.mp4` | 7.17 | 393.95 to 401.12 | The announcer from behind, over the shoulder; the sheet shows no readable text | a1s15 |
+| FC-02c | 14-09, third angle (ordered; on disk at this check) | `media/films/cuts/a14-09c-announcer-microphone.mp4` | 7.84 | 401.46 to 409.30 | Close on the microphone, the announcer's ear and glasses | a1s15 |
+| FC-03 | 14-13 | `media/films/cuts/a14-13-operators.mp4` | 15.21 | 701.8 to 717.0 | Women in headsets in booths on telephones; one continuous pan | a2s03 |
+| FC-04 | 14-10 | `media/films/cuts/a14-10-desk-telephone.mp4` | 15.72 | 468.3 to 484.0 | A man at a desk with a black rotary telephone; a second man holds it by the end | a3s07 |
+| FC-05 | 14-08 | `media/films/cuts/a14-08-telephone-call.mp4` | 4.17 | 259.8 to 264.0 | Close on a man talking on a black telephone, a wall map behind | a5s10 |
+| FC-06 | 14-01 | `media/films/cuts/a14-01-siren-horn.mp4` | 11.71 | 33.6 to 45.3 | A siren horn on a pole in tree branches, static then a slow push | a6s11 |
+Rulings on the cuts:
+- **FC-01 keeps its desk placards** (ordinary office placards: HEALTH & MEDICAL, RESOURCES, EMERGENCY INFORMATION, MAYOR). It is shown only under the label `Civil defense training film, 1967`; frame toward the wall board where the layout allows. Its first 2 s are placard-free.
+- **FC-02 is 9.44 s, the first angle only.** A composition that needs the announcer longer runs the three angle files in sequence (FC-02, FC-02b, FC-02c: 24.46 s in all), never a slowed or looped single shot. FC-02b and FC-02c were ordered after the first six and are used only when the window outruns FC-02; a brief checks both files exist before it names them.
+- A film window never runs past its file's length. Section 7 holds each window's length against the voice.
+
+OLD-SECTION-3-START
 ## 3. Assets to make first (each once)
 ### 3a. Drawings (11), into `media/drawings/`
 All match `media/drawings/README.md`: hand-written SVG, front elevation, one line weight (4 units; 3 on small parts), round caps and joins, at most 16 path segments, two fills (Panel dark body, Amber 2 light), no people, no brand, no text. Classes as the existing files: every stroked element `dw-ln`, bodies `dw-body`, lit parts `dw-lamp` or `dw-win`, one group `dw-<name>`. viewBox convention: the object box starts at (0, 0) and the viewBox adds 6 units of margin on each side (`-6 -6 w+12 h+12`), extended where a part rises above the box. Each is read alone on a test sheet at 60 px, 200 px and its largest mount before any comp uses it, and its row is added to the README.
