@@ -21,7 +21,7 @@ Two new desks stand off the line, one above and one below, both between the tele
 | New desk | Drawing | Box (x, y) | Wire, solid |
 |---|---|---|---|
 | A | `media/drawings/desk.svg` at 0.7 (210 x 105) | 300 to 510, 150 to 255 | from the teletype's top (166, 450) up to y 216, then right to the desk's left edge (300, 216) |
-| B | `media/drawings/desk.svg` at 0.7 | 300 to 510, 720 to 825 | from the teletype's bottom (166, 590) down to y 786, then right to (300, 786) |
+| B | `media/drawings/desk.svg` at 0.7 | 300 to 510, 760 to 865 (40 px lower than first drawn: at y 720 its telephone sat on `South Bend`) | from the teletype's bottom (166, 590) down to y 826, then right to (300, 826) |
 In this comp the teletype is the Weather Bureau's: its label reads `Weather Bureau teletype`, not `Kansas City forecasters`.
 
 ## 3. Geometry (screen px)
