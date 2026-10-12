@@ -244,9 +244,12 @@ window.__timelines = window.__timelines || {};
   tl.to(big, { scale: 1, x: 0, y: 0, duration: 0.5, ease: "power2.inOut", force3D: false }, 12.75);
   tl.to(chip2, { x: 0, y: 0, duration: 0.5, ease: "power2.inOut" }, 12.75);
 
-  /* 7 to 9 · broke @14.93: the four marks come in with their labels, one start time and one step; mark 4 lands on "places." @15.83 */
-  var MARKS = 14.93, STEP = 0.30;
-  for (var m = 1; m <= 4; m++) tl.to([$("m" + m), $("ml" + m)], { autoAlpha: 1, duration: 0.25, ease: "none" }, MARKS + STEP * (m - 1));
+  /* 7 to 9 · broke @14.93: the four marks come in with their labels, 0.30 s apart; mark 4 lands on "places." @15.83.
+     Written out, not looped: the sweep reads a tween's position only where the tl call itself ends in a number */
+  tl.to([$("m1"), $("ml1")], { autoAlpha: 1, duration: 0.25, ease: "none" }, 14.93);
+  tl.to([$("m2"), $("ml2")], { autoAlpha: 1, duration: 0.25, ease: "none" }, 15.23);
+  tl.to([$("m3"), $("ml3")], { autoAlpha: 1, duration: 0.25, ease: "none" }, 15.53);
+  tl.to([$("m4"), $("ml4")], { autoAlpha: 1, duration: 0.25, ease: "none" }, 15.83);
 
   /* 10 · @17.47: the comp ends on the hold */
   tl.to({}, { duration: 0.01 }, D - 0.01);
