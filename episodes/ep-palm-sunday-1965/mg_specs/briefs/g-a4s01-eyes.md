@@ -90,7 +90,7 @@ Not used: `media/films/cuts/a14-10-desk-telephone.mp4` (15.72 s) and `media/film
 As template section 7, from the worktree root: `node scripts/freeze_scan.mjs episodes/ep-palm-sunday-1965 --comp g-a4s01-eyes`, then `node scripts/graphics_qc.mjs episodes/ep-palm-sunday-1965`, then `python3 scripts/run_gates.py episodes/ep-palm-sunday-1965`. `graphics_qc` flat-type flags this comp by design (the page).
 
 ## 7a. Done line
-All seven lines of template section 7a. Line 4 here: seek to 1.40 (mid sweep) and 2.03 forward and backward and match the frames; the hands' `svgOrigin` is set once at build, before any tween. Line 6: the screen boxes of section 2 are the crop boxes plus (106, 126) and the hand angles are (217.5, 90) and (225, 180), computed by a script and stated in the receipt.
+All seven lines of template section 7a. Line 2 here: state the measured fill of the film view and of the frame after the cut (truth 10). Line 4 here: seek to 3.15 (the cut) and 4.90 (mid underline 1) forward and backward and match the frames; the hands are set once at build (225 and 180, `svgOrigin` set with them) and never tweened. Line 6: the screen boxes of section 2 are the crop boxes plus (106, 126), the stamp's numbers are the design sheet's times 1.5 and the hand angles are (225, 180), computed by a script and stated in the receipt. Line 7 here: one frame at 1.50 composited over the film (the window shows the operations room, the film label is the only text), and one at 3.25 (hole covered, no film showing).
 
 ## 8. Receipt
 As template section 8.
