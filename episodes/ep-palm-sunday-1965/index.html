@@ -506,6 +506,12 @@ window.__timelines = window.__timelines || {};
   pop("#pf-date", 0.5, 3.0);
 
   filmLayer(tl, DUR);
+  /* ---- the dust ends with the picture: the closing title (host-z1s05-title, at 1169.43) fades to black over its own 14.03 to 15.08 s.
+          The six specks fade over the same seconds and are off after them, so the last frames are black in every pixel. filmLayer
+          owns each speck's opacity, x and y, so the fade rides on the filter, which filmLayer never touches ---- */
+  const TITLE = 1169.43;
+  tl.fromTo(".dust", { filter: "blur(1.2px) opacity(1)" }, { filter: "blur(1.2px) opacity(0)", duration: 15.08 - 14.03, ease: "none", immediateRender: false }, TITLE + 14.03);
+  tl.set(".dust", { display: "none" }, TITLE + 15.08);
   window.__timelines["ep-palm-sunday-1965"] = tl;
 })();
 </script>
