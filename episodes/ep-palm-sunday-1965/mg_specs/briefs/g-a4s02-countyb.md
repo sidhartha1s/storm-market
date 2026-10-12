@@ -71,7 +71,7 @@ Fixed layer:
 ## 4. Must be true in the picture
 1. Amber reaches two things and no more: the civil defense desk (A4-S3) and the police desk (A4-S4, only when the light has crossed the arc). The microphone's lamp and lines, the house's lines and windows and both dotted links are never amber in any frame.
 2. The ghost is Label grey from its first frame to its last and starts at the police desk. It never touches the civil defense desk or the arc.
-3. `County B` is the only county label. No `County A`, no real county, town or river name, no state outline. The map carries two labels, `the sheriff` and `civil defense`, and nothing else.
+3. While any film pixel shows (0.00 to 4.06), `Civil defense training film, 1967` is on screen and is the only text and the only chip: no `County B`, no chain, no stamp, no place or time. The film is never frozen, slowed, looped or reversed, and from 4.06 to the last frame the hole is opaque (read at 4.50: no black, no stale frame, no seam in the ground). `County B` is the only county label and its chip carries those two words alone. No `County A`, no real county, town or river name, no state outline. The map carries two labels, `the sheriff` and `civil defense`, and nothing else.
 4. The map and the chain are two different counties: the tornado mark, the river and the two marks stay west of x 700, the waiting chain stays east of x 836, and the chip sits over the chain, never over the map.
 5. The tornado mark comes from the left edge and moves east. It is Body light, never red, and it never reaches the river.
 6. The civil defense desk has no telephone; the police desk has one, handset on the cradle. Nobody is drawn: the two marks on the map are plain circles.
