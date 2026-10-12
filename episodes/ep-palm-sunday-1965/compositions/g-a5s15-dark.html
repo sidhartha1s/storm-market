@@ -103,11 +103,18 @@ window.__timelines = window.__timelines || {};
   var WHITE = "#f2f5f8", GREY = "#93a3b2";
   var layer = $("layer"), stage = $("stage"), tower = $("tower");
 
-  /* rest states, set at 0. The tower turns about its right foot, (80, 160) in the drawing's own units = screen (1500, 820).
-     The stage scales about the middle of the tower's feet, screen (1380, 820), so the tower always stands on the ground line */
+  /* origins, set once at build and never again: a second svgOrigin on an element that is already scaled and moved is read
+     through that transform and lands somewhere else. The tower turns about its right foot, where the right leg meets the
+     ground: (70, 160) in the drawing's own units = screen (1470, 820) (the brief's (1500, 820) is the box's corner, 30 px
+     right of the leg, and lifts the foot 6 px). The stage scales about the middle of the tower's feet, screen (1380, 820),
+     so the tower always stands on the ground line */
   var BIG = 1.4, PUSH = 1.03;
-  s0(tower, { rotation: 0, svgOrigin: "80 160" });
-  s0(stage, { svgOrigin: "1380 820", scale: BIG, x: 960 - 1380 });
+  gsap.set(tower, { svgOrigin: "70 160" });
+  gsap.set(stage, { svgOrigin: "1380 820" });
+
+  /* rest states, set at 0 */
+  s0(tower, { rotation: 0 });
+  s0(stage, { scale: BIG, x: 960 - 1380 });
   s0(layer, { scale: 1, transformOrigin: "960px 540px", force3D: false });
 
   /* 0 · "Curran" @0.00: ground, ground line, the recollection line, the tower upright in Body light, centred, on a slow push */
