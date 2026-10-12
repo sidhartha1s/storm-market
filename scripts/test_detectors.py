@@ -385,11 +385,13 @@ def case_files(comps):
 
 def by_comp(out):
     """graphics_qc stdout split into one block per composition: the lines under its header line plus
-    the exempt lines that name it (no block = no defects)."""
+    the exempt lines that name it (no block = no defects). The exemptions header ends the last block."""
     blocks, cur = {}, None
     for line in out.splitlines():
         head = line.strip().split(' ')[0]
-        if line.startswith('    exempt ['):
+        if line == '  declared exemptions:':
+            cur = None
+        elif line.startswith('    exempt ['):
             head = line.split('] ', 1)[1].split(':')[0]
             blocks[head] = blocks.get(head, '') + line + '\n'
         elif line.startswith('  ') and not line.startswith('    ') and head in CASES:
