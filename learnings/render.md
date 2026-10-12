@@ -14,6 +14,8 @@ Newest first. New entries go at the top, under this line. Superseded lines point
    must have exactly that rate, and a draft with no `render_draft.fps` (it predates this check, or never reached the
    render step) exits 1 with one FAIL line naming the file. A full render is still held to the composition's `data-fps`,
    so a 15 fps file checked as `full` FAILs and a draft shipped as the final is still caught.
+   The recorded rate is per mode, not per output name: two drafts of one episode at different rates share
+   `render_draft.fps`, the same limit as `render_draft.log`, so verify a draft before rendering the next.
 3. Rule: pass the mode every time, and read the rate from what the render recorded, never from a constant typed in the
    checker (a draft rendered with `RENDER_FPS` set would fail it). The file name says neither.
 
