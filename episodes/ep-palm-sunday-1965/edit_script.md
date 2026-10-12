@@ -709,7 +709,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 
 ### A5-S4 · narration
 **Picture:** [map] our map of the Indiana and Ohio line, drawn from true positions: Linn Grove, Berne, the state line. A drawn tornado mark sits at Linn Grove with the chip "8:40 PM" and moves to the state line, chip "near 8:52 PM". Label chip "John Curran's recollection" under the first sentence only. Source line "Weather Bureau survey, 1965, pp. 43 and 45".
-> Curran recalls the man in charge, Clyde Downes, issuing it straight off the radar. The Bureau's own survey has that tornado over Linn Grove at eight forty, and across the Ohio line near eight fifty two.
+> Curran later wrote that the man in charge, Clyde Downes, issued it straight off the radar. The Bureau's own survey has that tornado over Linn Grove at eight forty, and across the Ohio line near eight fifty two.
 
 **Rows:** [E, Downes; Curran in IWX; survey printed p. 45 for the name] · [A20; survey printed p. 45]
 
