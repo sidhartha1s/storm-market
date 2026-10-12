@@ -62,7 +62,7 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  var ID = "g-a4s08-chief", P = "chief", D = 11.18;
+  var ID = "g-a4s08-chief", P = "chief"; const D = 11.18;
   var $ = function (s) { return document.getElementById(P + "-" + s); };
   var tl = gsap.timeline({ paused: true });
   function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
