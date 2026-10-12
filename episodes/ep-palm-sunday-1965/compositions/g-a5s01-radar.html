@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5s01-radar (A5-S1, A5-S2, A5-S3): Fort Wayne had a radar. The unlit teletype in Fort Wayne gets a radar ring that South
+     Bend lacks; the map gives way to one large bare scope with a sweep and a picture that fades; a hook appears west of
+     Berne and the office's own typed 8:40 PM warning comes in under it.
+     Brief: mg_specs/briefs/g-a5s01-radar.md; map facts: media/maps/README.md; drawings: media/drawings/README.md.
+     Map family: copies the base g-a2s14-six (NORTH, stamp, paper card), the ring and "no radar" of g-a2s01-radar, Fort Wayne's
+     dot, label and unlit teletype of g-a1s09-forecasts, the name card of g-i1s2-station.
+     Map: media/maps/indiana-counties.svg (BM-1), ids prefixed fwr-, no camera move.
+       NORTH  box 716, 62, 1080 x 450   3 px per unit   viewBox 57.333 145.333 640 360   (screen x = 3u - 172, y = 3u - 436)
+     Every number below is computed from media/data/points.csv:
+       Fort Wayne (605.1, 297.0) screen (1643.3, 455.0); South Bend (462.2, 188.5) screen (1214.6, 129.5);
+       teletype (612 to 647, 240 to 275) screen x 1664 to 1769, y 284 to 389.
+       SCOPE: centre (1220, 340), 1.7 px per map unit about Fort Wayne. Berne (629.0, 376.8) is 23.9 units east and 79.8 south:
+       on the scope (1260.6, 475.7), 141.6 px from the centre on bearing 163.3. Five miles is 8.05 km, 12.17 units, 20.7 px:
+       the hook's centre is (1239.9, 475.7). The smear's centre (1182.9, 225.9) is 120 px out on bearing 342, where the sweep
+       points at 17.26. The sweep turns 2430 degrees from 14.98 to 31.18 and rests pointing west.
+     The scope is our drawing (no 1965 scope picture exists); the hook's shape and the smear are schematic.
+     Coverage (plan rule 22): the map's box runs on down at the same camera (to y 660 across its width, to y 1000 left of
+     x 1580; the corner x >= 1600, y >= 680 stays bare) for as long as the map is on. The scope, with everything on it, waits
+     120 px left and 260 px lower (centre (1100, 600)) and moves to its briefed place when the page needs the lower band.
+     MAP BLOCK: BM-1's groups map-neighbours, map-counties and map-state, every path element that crosses the map's box copied
+     whole and unchanged from the file by one mechanical copy that added the id prefix and nothing else.
+     Page: media/docs/survey-p43-840pm-crop.png (1460 x 202, survey printed p. 43); the underline and the unlit page are in card px.
+     Cues are comp-local seconds from the brief's table (audio/a5-s1, a5-s2, a5-s3 words.json plus each segment's start in the comp). -->
+<template>
+<style>
+  #fwr-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .fwr-h { opacity:0; visibility:hidden; }
+  .fwr-full { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* ---- map block: the SVG fills the frame; the camera is its viewBox (fixed), the visible box is its clip-path ---- */
+  .fwr-map { position:absolute; left:0; top:0; width:1920px; height:1080px;
+    clip-path:polygon(716px 62px, 1796px 62px, 1796px 660px, 1580px 660px, 1580px 1000px, 716px 1000px); }
+  .fwr-town { position:absolute; font:700 22px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .fwr-note { position:absolute; font:700 22px Arial, sans-serif; color:#93a3b2; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .fwr-berne { position:absolute; left:1270px; top:442px; font:700 22px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+
+  /* ---- top left: the office chip, then the name card, then the clock stamp (never two at once) ---- */
+  .fwr-chip { position:absolute; left:96px; top:96px; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:23px;
+    font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  .fwr-card { position:absolute; left:96px; top:96px; width:590px; height:260px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .fwr-name { position:absolute; left:42px; top:22px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:64px; color:#f2f5f8; white-space:nowrap; }
+  .fwr-sub { position:absolute; left:44px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:30px; line-height:38px; color:#e8c56a; white-space:nowrap; }
+  .fwr-small { position:absolute; left:44px; font:700 20px Arial, sans-serif; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .fwr-stamp { position:absolute; left:96px; top:96px; width:590px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .fwr-face { position:absolute; left:0; top:0; width:200px; height:200px; overflow:visible; }
+  .fwr-eye { position:absolute; left:188px; top:20px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .fwr-time { position:absolute; left:188px; top:46px; font:700 84px 'Courier New', Courier, monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .fwr-place { position:absolute; left:190px; top:148px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+
+  /* ---- paper card, lower band (design sheet section 9): the page's own image, 10 px of beige round it ---- */
+  .fwr-page { position:absolute; left:96px; top:640px; width:1480px; height:222px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .fwr-crop { position:absolute; left:10px; top:10px; width:1460px; height:202px; mix-blend-mode:multiply; }
+  .fwr-unlit { position:absolute; left:0; top:0; width:1480px; height:222px; }
+  .fwr-dim { position:absolute; background:rgba(21,32,43,0.45); }
+  .fwr-ul { position:absolute; left:193px; top:198px; width:517px; height:6px; background:#d0121f; }
+  .fwr-doc { position:absolute; right:360px; top:876px; font:700 20px Arial, sans-serif; color:#dfe7ee; letter-spacing:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="fwr-root" data-composition-id="g-a5s01-radar" data-width="1920" data-height="1080">
+
+  <!-- ================= MAP view: everything here leaves together when the scope comes ================= -->
+  <div class="fwr-full" id="fwr-mapview">
+    <svg class="fwr-map" id="fwr-map" viewBox="57.333 145.333 640 360" preserveAspectRatio="xMidYMid meet" fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+      <g id="fwr-map-neighbours" stroke="#93a3b2" stroke-opacity="0.4">
+      </g>
+      <g id="fwr-map-counties" fill="#15202b" stroke="#93a3b2" stroke-width="1.5">
+      </g>
+      <g id="fwr-map-state" stroke-width="3">
+      </g>
+      <!-- town dots at the file's positions, r 2 units (6 px), Body light: Fort Wayne from the first frame, South Bend from its cue -->
+      <g fill="#dfe7ee" stroke="none">
+        <g id="fwr-pt-fort-wayne"><circle cx="605.1" cy="297.0" r="2"/></g>
+        <g id="fwr-pt-south-bend" class="fwr-h"><circle cx="462.2" cy="188.5" r="2"/></g>
+      </g>
+      <!-- teletype (media/drawings/teletype.svg, the unlit drawing), as g-a1s09-forecasts left it in NORTH: 35 map units wide,
+           Label grey 3 px lines, paper and body Panel dark: unlit from first to last frame -->
+      <g id="fwr-tty" class="fwr-h" transform="translate(612 240) scale(0.25)" stroke="#93a3b2" stroke-width="3">
+        <rect class="fwr-ln" x="34" y="0" width="72" height="50" fill="#15202b" vector-effect="non-scaling-stroke"/>
+        <path class="fwr-ln" d="M44 14 H88 M44 26 H96 M44 38 H80" vector-effect="non-scaling-stroke"/>
+        <rect class="fwr-ln" x="0" y="50" width="140" height="90" fill="#15202b" vector-effect="non-scaling-stroke"/>
+        <rect class="fwr-ln" x="14" y="112" width="112" height="20" vector-effect="non-scaling-stroke"/>
+      </g>
+    </svg>
+    <div class="fwr-town" style="right:335px;top:444px">Fort Wayne</div>
+    <div class="fwr-town fwr-h" id="fwr-sb" style="left:1232px;top:106px">South Bend</div>
+    <div class="fwr-note fwr-h" id="fwr-nr" style="left:1232px;top:132px">no radar</div>
+    <!-- the radar ring round Fort Wayne's dot, as g-a2s01-radar: circles of 46 and 26 px, one sweep line -->
+    <svg class="fwr-full" viewBox="0 0 1920 1080" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round">
+      <circle id="fwr-r1" class="fwr-h" cx="1643.3" cy="455.0" r="46"/>
+      <circle id="fwr-r2" class="fwr-h" cx="1643.3" cy="455.0" r="26"/>
+      <line id="fwr-rw" class="fwr-h" x1="1643.3" y1="455.0" x2="1643.3" y2="409.0"/>
+    </svg>
+  </div>
+
+  <!-- ================= SCOPE view: the drawn scope and everything on it, one group ================= -->
+  <div class="fwr-full" id="fwr-scopeview">
+    <svg class="fwr-full" viewBox="0 0 1920 1080" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- radar scope (media/drawings/radar-scope.svg) at 2.1: box x 1010 to 1430, y 130 to 550; 6.3 px lines; no map line, no ring -->
+      <g id="fwr-scope" class="fwr-h" transform="translate(1010 130) scale(2.1)" stroke="#dfe7ee" stroke-width="3">
+        <circle id="fwr-rim" cx="100" cy="100" r="98" fill="#15202b"/>
+        <circle id="fwr-screen" cx="100" cy="100" r="86" fill="#15202b"/>
+        <g id="fwr-sweep" class="fwr-h">
+          <path id="fwr-glow" class="fwr-h" d="M100 100 L100 14 A86 86 0 0 0 34.1 44.7 Z" fill="#e8c56a" fill-opacity="0.25" stroke="none"/>
+          <path d="M100 100 V14"/>
+        </g>
+        <circle id="fwr-hub" class="fwr-h" cx="100" cy="100" r="3"/>
+      </g>
+      <!-- the smear stands for "the picture", not for a storm: it lights as the sweep crosses bearing 342 and fades -->
+      <ellipse id="fwr-smear" cx="1182.9" cy="225.9" rx="26" ry="14" transform="rotate(-18 1182.9 225.9)" fill="#dfe7ee" opacity="0"/>
+      <!-- the hook: a filled comma 14 x 20 px centred (1239.9, 475.7), its tail curling south and west; schematic -->
+      <path id="fwr-hook" class="fwr-h" d="M1239.9 465.7 A7 7 0 0 1 1246.9 472.7 C1246.9 479.7 1241.5 484.7 1232.9 485.7 C1237.5 483.2 1239.3 481.2 1239.9 479.7 A7 7 0 0 1 1239.9 465.7 Z" fill="#dfe7ee" fill-opacity="0.85"/>
+      <circle id="fwr-bdot" class="fwr-h" cx="1260.6" cy="475.7" r="5" fill="#dfe7ee"/>
+    </svg>
+    <div class="fwr-berne fwr-h" id="fwr-berne">Berne</div>
+  </div>
+
+  <!-- ================= top left: chip, name card, stamp ================= -->
+  <div class="fwr-chip fwr-h" id="fwr-chip">Weather Bureau · Fort Wayne</div>
+  <div class="fwr-card fwr-h" id="fwr-card">
+    <div class="fwr-name fwr-h" id="fwr-name">John Curran</div>
+    <div class="fwr-sub fwr-h" id="fwr-sub1" style="top:102px">observer, Fort Wayne</div>
+    <div class="fwr-sub fwr-h" id="fwr-sub2" style="top:140px">Weather Bureau, 1965</div>
+    <div class="fwr-small fwr-h" id="fwr-sm1" style="top:194px">his recollection, published by</div>
+    <div class="fwr-small fwr-h" id="fwr-sm2" style="top:220px">the National Weather Service</div>
+  </div>
+  <div class="fwr-stamp fwr-h" id="fwr-stamp">
+    <svg class="fwr-face" viewBox="0 0 200 200" fill="none" stroke="#dfe7ee" stroke-linecap="round">
+      <circle cx="95" cy="100" r="62" stroke-width="4"/>
+      <g stroke-width="3">
+        <line x1="95.0" y1="45.0" x2="95.0" y2="59.0"/>
+        <line x1="122.5" y1="52.4" x2="118.5" y2="59.3"/>
+        <line x1="142.6" y1="72.5" x2="135.7" y2="76.5"/>
+        <line x1="150.0" y1="100.0" x2="136.0" y2="100.0"/>
+        <line x1="142.6" y1="127.5" x2="135.7" y2="123.5"/>
+        <line x1="122.5" y1="147.6" x2="118.5" y2="140.7"/>
+        <line x1="95.0" y1="155.0" x2="95.0" y2="141.0"/>
+        <line x1="67.5" y1="147.6" x2="71.5" y2="140.7"/>
+        <line x1="47.4" y1="127.5" x2="54.3" y2="123.5"/>
+        <line x1="40.0" y1="100.0" x2="54.0" y2="100.0"/>
+        <line x1="47.4" y1="72.5" x2="54.3" y2="76.5"/>
+        <line x1="67.5" y1="52.4" x2="71.5" y2="59.3"/>
+      </g>
+      <line id="fwr-hh" x1="95" y1="100" x2="95" y2="66" stroke="#f2f5f8" stroke-width="5"/>
+      <line id="fwr-mh" x1="95" y1="100" x2="95" y2="48" stroke="#f2f5f8" stroke-width="5"/>
+      <circle cx="95" cy="100" r="5" fill="#e8c56a" stroke="none"/>
+    </svg>
+    <div class="fwr-eye">WEATHER BUREAU</div>
+    <div class="fwr-time">8:40 PM</div>
+    <div class="fwr-place">Fort Wayne, Indiana</div>
+  </div>
+
+  <!-- ================= paper card: the survey's 8:40 PM entry ================= -->
+  <div class="fwr-page fwr-h" id="fwr-page">
+    <img class="fwr-crop" src="media/docs/survey-p43-840pm-crop.png" alt="">
+    <!-- the unlit page: the whole crop except the box round "for the next 30 to 60 minutes." (card x 185 to 718, y 165 to 198) -->
+    <div class="fwr-unlit fwr-h" id="fwr-unlit">
+      <div class="fwr-dim" style="left:10px;top:10px;width:1460px;height:155px"></div>
+      <div class="fwr-dim" style="left:10px;top:165px;width:175px;height:33px"></div>
+      <div class="fwr-dim" style="left:718px;top:165px;width:752px;height:33px"></div>
+      <div class="fwr-dim" style="left:10px;top:198px;width:1460px;height:14px"></div>
+    </div>
+    <div class="fwr-ul" id="fwr-ul"></div>
+  </div>
+  <div class="fwr-doc fwr-h" id="fwr-doc">Weather Bureau survey report, 1965, p. 43</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a5s01-radar", P = "fwr";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function show(e, t, d) { tl.to(e, { autoAlpha: 1, duration: d || 0.3, ease: "power2.out" }, t); }
+  function dash(e, len) { s0(e, { strokeDasharray: len, strokeDashoffset: len }); }
+  function draw(e, t, d) {
+    tl.to(e, { autoAlpha: 1, duration: 0.05, ease: "none" }, t);
+    tl.to(e, { strokeDashoffset: 0, duration: d, ease: "power2.out" }, t);
+  }
+
+  /* the teletype's lines are non-scaling, so their dashes are screen px: 0.75 px per drawing unit in NORTH */
+  var lns = $("map").querySelectorAll(".fwr-ln");
+  for (var i = 0; i < lns.length; i++) dash(lns[i], Math.ceil(lns[i].getTotalLength() * 0.75) + 1);
+  dash($("r1"), 290);                                       /* circumference of r 46 is 289.0 px */
+  dash($("r2"), 164);                                       /* of r 26, 163.4 px */
+  dash($("rim"), 617);                                      /* of r 98 units, 615.8 units */
+  dash($("screen"), 542);                                   /* of r 86 units, 540.4 units */
+  s0($("rw"), { rotation: 0, svgOrigin: "1643.3 455" });
+  s0($("sweep"), { rotation: 0, svgOrigin: "1220 340" });   /* the mount position plus the pivot times the scale */
+  s0($("scopeview"), { x: -120, y: 260 });                  /* the scope waits lower and left, centre (1100, 600) (plan rule 22) */
+  s0($("ul"), { scaleX: 0, transformOrigin: "left center" });
+  /* clock hands: degrees clockwise from 12, about the face centre (95, 100) */
+  s0($("hh"), { rotation: 260, svgOrigin: "95 100" });      /* 8:40: hour hand two thirds of the way from 8 to 9 */
+  s0($("mh"), { rotation: 210, svgOrigin: "95 100" });      /* minute hand sweeps its last 30 degrees onto the 8 */
+
+  /* ================= A5-S1: the office with a radar ================= */
+  /* 0 · "Fort" @0.00: ground, the map in NORTH, Fort Wayne's dot and label */
+
+  /* 1 · "Wayne" @0.19: the office chip */
+  tl.fromTo($("chip"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, 0.19);
+
+  /* 2 · "office" @0.77: the teletype draws on beside the dot, unlit */
+  tl.to($("tty"), { autoAlpha: 1, duration: 0.05, ease: "none" }, 0.77);
+  tl.to(lns, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 0.77);
+
+  /* 3 · "South" @4.73: South Bend's dot and name, then "no radar" */
+  show([$("pt-south-bend"), $("sb")], 4.73);
+  show($("nr"), 4.88);
+
+  /* 4 · "radar" @6.51: the ring rises round Fort Wayne, outer circle then inner; the sweep line makes one turn, to @8.91 */
+  draw($("r1"), 6.51, 0.25);
+  draw($("r2"), 6.66, 0.25);
+  show($("rw"), 6.51, 0.2);
+  tl.to($("rw"), { rotation: 360, duration: 2.4, ease: "none" }, 6.51);
+
+  /* ================= A5-S2: John Curran's recollection of the set ================= */
+  /* 5 · "A" @8.33: the office chip fades */
+  tl.to($("chip"), { autoAlpha: 0, duration: 0.2, ease: "power2.out" }, 8.33);
+
+  /* 6 · "John" @9.82: the name card slides in from the left: name, the two lines under it, then the credit */
+  tl.fromTo($("card"), { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 9.82);
+  show($("name"), 10.07);
+  show([$("sub1"), $("sub2")], 10.22);
+  show([$("sm1"), $("sm2")], 10.37);
+
+  /* 7 · "set" @11.64: the map view fades out; the scope draws on, rim first, then the screen circle, then the centre dot
+         and the sweep line at rest pointing up; no wedge yet */
+  tl.to($("mapview"), { autoAlpha: 0, duration: 0.4, ease: "power2.out" }, 11.64);
+  tl.to($("scope"), { autoAlpha: 1, duration: 0.2, ease: "power2.out" }, 11.64);
+  tl.to($("rim"), { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 11.64);
+  tl.to($("screen"), { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, 11.99);
+  show([$("hub"), $("sweep")], 12.14, 0.2);
+
+  /* 8 · "Its" @14.98: the afterglow wedge fades in and the sweep starts: one tween, 6.75 turns, ends @31.18 pointing west */
+  show($("glow"), 14.98);
+  tl.to($("sweep"), { rotation: 2430, duration: 16.2, ease: "none" }, 14.98);
+
+  /* 9 · "picture" @17.26: the smear lights as the line crosses it;  10 · "faded" @17.60: it fades, gone @18.30 */
+  tl.to($("smear"), { opacity: 0.8, duration: 0.1, ease: "none" }, 17.26);
+  tl.to($("smear"), { opacity: 0, duration: 0.7, ease: "power1.out" }, 17.60);
+
+  /* ================= A5-S3: 8:40 PM, the hook west of Berne ================= */
+  /* 11 · "At" @19.48: the name card leaves to the left */
+  tl.to($("card"), { x: -700, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 19.48);
+
+  /* 12 · ".40" @19.86: the clock stamp slides in from the left, the minute hand lands on the 8 */
+  tl.fromTo($("stamp"), { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 19.86);
+  tl.to($("mh"), { rotation: 240, duration: 0.5, ease: "power3.out" }, 20.06);
+
+  /* 13 · "hook" @21.52: the hook fades in on the scope */
+  show($("hook"), 21.52);
+
+  /* 14 · "Berne," @24.00: Berne's dot, then our label for it */
+  show($("bdot"), 24.00);
+  show($("berne"), 24.10);
+
+  /* 15 · "take" @27.46: the scope moves to its briefed place as the page slides in from the right; its source fades in after */
+  tl.to($("scopeview"), { x: 0, y: 0, duration: 0.5, ease: "power2.inOut" }, 27.46);
+  tl.fromTo($("page"), { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out", immediateRender: false }, 27.46);
+  tl.fromTo($("doc"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, 27.86);
+
+  /* 16 · "for" @28.66: the rest of the page goes unlit; the underline draws under "for the next 30 to 60 minutes." */
+  tl.to($("unlit"), { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 28.66);
+  tl.to($("ul"), { scaleX: 1, duration: 0.6, ease: "none" }, 28.66);
+
+  tl.to({}, { duration: 0.01 }, 31.66);                     /* holds to the last frame @31.67 */
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
