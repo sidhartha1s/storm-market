@@ -53,7 +53,7 @@ The clock (design sheet section 8, as `g-a4s02-countyb` builds it):
 The sheriff's line (A4-S10), lower band:
 | Element | Px |
 |---|---|
-| Paper strip | Beige polaroid, left 96, top 760, 1000 x 250 (right 1096, bottom 1010), `box-shadow: 0 18px 50px rgba(0,0,0,0.55)`, radius 2. The strip is outside the stage and keeps top 760, so its top clears the station labels (one line each, bottom y 740 on screen) by 20 px: as built, pending its reader |
+| Paper strip | Beige polaroid, left 96, top 760, 1000 x 250 (right 1096, bottom 1010), `box-shadow: 0 18px 50px rgba(0,0,0,0.55)`, radius 2. The strip is outside the stage and keeps top 760, so its top clears the station labels: the labels end at y 736, the strip's top is y 760, 24 px clear (read and passed, ruling of 13 Oct 26, 00:58) |
 | Page window | a 876 x 47.4 px window at (116, 778) showing rows y 221 to 300 of `media/docs/study-p22-sheriff-crop.png`: the `<img>` is 876 x 385.2 (scale 0.6), `mix-blend-mode:multiply`, shifted up 132.6 px inside an `overflow:hidden` box. It shows the page's two lines whole, edge to edge |
 | Unlit page | Panel dark at 45 % over the window, except two lit boxes, window px: `We didn't have any warning` x 485.4 to 775.8, y 2.4 to 21.6; `at all` x 118.8 to 171.6, y 25.2 to 45.0 |
 | Underlines | Popfig red, 3 px, drawn left to right with `scaleX` (`transformOrigin:"left center"`): under box 1 at window y 23.6, under box 2 at window y 47.0 (it may sit on the window's bottom edge; extend the window box 4 px down for it, with no page ink in the extra rows) |
