@@ -127,19 +127,18 @@ const MEASURE = `((t) => {
     const r = el.getBoundingClientRect();
     if (r.width < 1 || r.height < 1) continue;
     const cs = getComputedStyle(el);
-    let clip;
     /* glyph-level ink boxes, not element boxes: line-height padding and block width
        make element rects overlap constantly without any visible garbling */
     for (const node of el.childNodes) {
       if (node.nodeType !== 3 || !node.textContent.trim()) continue;
       const rng = document.createRange(); rng.selectNodeContents(node);
-      clip ??= clipBox(el);
+      const clip = clipBox(el, cs);
       for (const ir of rng.getClientRects()) {
-        if (ir.width < 2 || ir.height < 2) continue;
-        /* the collision pass takes the painted part of the box; with under 2 px painted it takes none */
+        if (ir.width < MINBOX || ir.height < MINBOX) continue;
+        /* the collision pass takes the painted part of the box, or nothing when too little is painted */
         const x = Math.max(ir.x, clip.x0), y = Math.max(ir.y, clip.y0);
         const w = Math.min(ir.right, clip.x1) - x, h = Math.min(ir.bottom, clip.y1) - y;
-        if (w >= 2 && h >= 2)
+        if (w >= MINBOX && h >= MINBOX)
           rects.push({ el, id: el.id || el.className || el.tagName, text: node.textContent.trim().slice(0, 42),
                        x, y, w, h, fs: parseFloat(cs.fontSize) });
         if (ir.x < -SAFEPAD || ir.y < -SAFEPAD || ir.right > 1920 + SAFEPAD || ir.bottom > 1080 + SAFEPAD)
