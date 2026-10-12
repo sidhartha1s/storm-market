@@ -39,7 +39,8 @@ The toll card's right edge is x 1570: it sits beside the presenter corner, not i
 4. Nothing of ours covers the funnel in photograph 1.
 5. No map, no dot and no arrow places Alto.
 6. Nothing in x >= 1600 and y >= 680.
-7. **Photograph 1 is on for 0.97 s** (the Picture note cuts on "twenty five"). Its caption cannot be read in that time. The brief builds the note as written and reports it; if the lead moves the cut, the next natural word is word 7 "on" (2.33 s from the comp's start).
+7. **Photograph 1 is on for 2.33 s.** The cut is on word 7 "on", not on "twenty five" (0.97 s) as the Picture note has it: this departs from the Picture note by the lead's ruling of 12 Oct 26, because a photograph with a caption needs the time to be read. The toll card follows the cut, so the figure `25` lands after its spoken word, never before.
+8. No empty block over a third of the frame for more than about 3 s at any step (plan rule 22): both photographs fill the frame from their first frame.
 
 ## 5. Text (exact) and cues
 Text: `Tornado over Alto, toward Kokomo · Kokomo Morning Times, April 16, 1965` · `Alto, Indiana` · `25` · `lives lost` · `along this storm's path` · `from Russiaville to Marion` · `National Weather Service`.
