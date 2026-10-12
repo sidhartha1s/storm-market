@@ -66,7 +66,16 @@ Status is read from this file. A box is ticked only with the check that proved i
     - Agent's reading of "rest ok": it also answers the third open item of that message, the OK to merge PR #163 (pin) and PR #164 (lessons). Stated to the owner in the report.
     - "cook the rest": acts one to six and the close are written, checked and built without a stop per act; the script goes on a review page as it is fact-checked, for him to read alongside. Gates that still wait for his word: each new Flow take of Paul (credits), any `insert` clip, a render when memory is under the floor.
   - Pin: `pin_ritual.py` passed 0.8.143 to 0.8.149 on 12 Oct 26 (branch `pin-0-8-149`); the bump merges on the owner's OK, so preview v1 renders on 0.8.143.
-- [ ] Paul's on-camera lines; the book ad hinge inside the config window.
+- [x] Script, acts one to six and the close (12 Oct 26, 15:10 to 16:22): `edit_script.md` v5, sections A1 to A6 and Z1, 112 segments, 2907 words; whole script 3212 words (`word_budget.py --target 20` PASS, predicted 19:20; at the rendered preview's real pace about 20:16 with the book ad).
+  - Draft 1 (138 segments): fact check by three checkers on page images of both scans (`.qc-tmp/factcheck/fc-*.md`): 175 confirmed, 64 corrected, 8 unverified. Independent grade (`grade-1.md`): A1 5, A2 7, A3 6, A4 7, A5 6, A6 4, Z1 7; bar 8.
+  - Fix pass 1, then the one check round (`fc2-*.md`, `grade-2.md`): 143 confirmed, 24 corrected, 3 unverified; grades A1 7, A2 8, A3 7, A4 7, A5 8, A6 7, Z1 8. Fix pass 2 applied that list; the orchestrator read every changed spoken line in the diff. No third round.
+  - Orchestrator rulings: the "second tornado down the same path" line cut (it let a viewer work out County A next to the twin funnel photograph); the study's own names "County A" and "County B" on air and on chips; Marion stays in Act 5 as the structure has it, never joined to County B in a line (a viewer can still connect 8:07 PM with "near eight"; offered to the owner as an optional decision on `p65-script.html`); training film A14 only, 6 shots, its own label the only chip in frame, siren horn never sounding; teletype room photograph (inventory A3) at most 3 times; length may sit under the tool's 20:00 floor rather than be padded.
+  - Not in the script because `facts.md` does not say: what happened at Bremen after 7:10 PM.
+  - Sources for the check: both scans downloaded and rendered page by page to `.qc-tmp/sources/` (study 42 pages, survey 92 pages).
+- [ ] Paul's on-camera lines: 5 written (A1-S14 26 words, A3-S18 23, A4-S7 26, A5-S13 25, Z1-S1 23), shown to the owner with the first frame on `p65-script.html`. BLOCKED on the owner: his go for 5 Flow takes, 75 credits. Book ad hinge: A3-S18 (Paul's tease) into A4-S1.
+- [ ] Voice for A1 to Z1 in the owner's voice (helper p65-voice, started 16:23): TTS, conversion, re-transcribe, in that order.
+- [ ] Graphics plan `mg_specs/acts-plan.md` (helper p65-mg-director, started 16:24): every segment assigned to a composition, assets to make first, build waves of five.
+- [x] More pictures (12 Oct 26): 17 Free inventory pictures pulled (4 usable full frame; 13 under 1000 px, card use only) and three civil defense films with a shot log (`research/film-shot-log.md`); only the 1967 training film is used.
 - [ ] `edit_script.md` section by section, fact-check fan-out beside the owner's read.
 
 ## Build (not started)
