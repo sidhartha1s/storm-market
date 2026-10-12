@@ -40,6 +40,7 @@ Count against the window: five marks, 0.33 s apart, take 1.32 s from the first t
 4. No town is named: the house label is `a town`.
 5. One source per frame: the strip's attribution, then the source line.
 6. Nothing in x >= 1600 and y >= 680 (the house ends at x 1577, y 600). Nothing appears before its spoken word.
+7. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). **Not met as drawn, and reported to the lead.** The row is the full-width chain row of `g-a5s12-spotters` (x 96 to 1577), so it cannot be enlarged or centred further. The band above it (y 0 to 430, 39.8 % of the frame) is empty from frame 0 until the glass card at 9.87 s; the band below its labels is empty except while the strip is up (3.05 to 6.65 s). Until the lead rules a fix for the chain row (it applies to `g-a5s12-spotters` unchanged), the builder runs the sweep band and a slow push (1.00 to 1.03) on the row and reports the largest empty block in per cent and seconds.
 
 ## 5. Text (exact) and cues
 Text: `the warning office` · `a town` · `“severe storm warning reporting networks”` · `Weather Bureau survey, 1965, p. 2, recommendation 3` · `THE SPOTTER PROGRAM` · `SKYWARN` · `National Weather Service, Chicago`.
