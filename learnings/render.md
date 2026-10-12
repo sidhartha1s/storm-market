@@ -8,11 +8,14 @@ Newest first. New entries go at the top, under this line. Superseded lines point
    `render.cmd` renders drafts at `_FPS=15` and the check compared the file with the composition's `data-fps`. A draft
    named `ep-palm-sunday-1965-preview-v1` was also checked against `render_full.log` (the log was picked by "draft" in
    the basename) and failed the GPU probe for a log that was not its own.
-2. Fix: `verify_render.sh <episode-dir> <basename> <draft|full>` takes the mode you gave `render.cmd`. The mode picks
-   `render_<mode>.log` and the frame rate: a draft must have the draft `_FPS` read out of `render.cmd` (the one place it
-   is set), a full render the composition's `data-fps`. A 15 fps file checked as `full` still FAILs, so a draft shipped as
-   the final is still caught. Without the argument the old name guess stands for existing callers.
-3. Rule: pass the mode every time. A frame-rate gate has to know which render it is judging; the file name does not say.
+2. Fix: `verify_render.sh <episode-dir> <basename> <draft|full>` takes the mode you gave `render.cmd`, and it is
+   required (missing or unknown: usage line, exit 1; the name guess is gone). The mode picks `render_<mode>.log` and the
+   frame rate. `render.cmd` now writes the rate it launched with (`RENDER_FPS` included) to `render_<mode>.fps`; a draft
+   must have exactly that rate, and a draft with no `render_draft.fps` (it predates this check, or never reached the
+   render step) exits 1 with one FAIL line naming the file. A full render is still held to the composition's `data-fps`,
+   so a 15 fps file checked as `full` FAILs and a draft shipped as the final is still caught.
+3. Rule: pass the mode every time, and read the rate from what the render recorded, never from a constant typed in the
+   checker (a draft rendered with `RENDER_FPS` set would fail it). The file name says neither.
 
 ## 12 Oct 26: pin 0.8.143 to 0.8.149 before Palm Sunday 1965's first render
 
