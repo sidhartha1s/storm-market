@@ -226,15 +226,15 @@ window.__timelines = window.__timelines || {};
   /* 4 · announcer @6.11: the 12 dots between the sheet and the microphone turn Body light, sheet end first */
   tl.to(dots, { fill: BODY, duration: 0.03, ease: "none", stagger: 0.03 }, 6.11);
 
-  /* 5 · When @7.83: part 1 fades out; the big microphone and its lit lamp fade in, centred; chip 2 lands; the source line
-     changes (out, then in: the two lines share one place and are never on together) */
-  tl.to($("p1"), { autoAlpha: 0, duration: 0.3, ease: "none" }, 7.83);
-  tl.to(big, { autoAlpha: 1, duration: 0.3, ease: "none" }, 7.83);
-  tl.to(chip2, { autoAlpha: 1, y: 216 - 236, duration: 0.3, ease: "power3.out" }, 7.83);
-  tl.to($("src14"), { autoAlpha: 0, duration: 0.15, ease: "none" }, 7.83);
+  /* 5 · When @7.83: part 1 fades out (0.15 s); then the big microphone and its lit lamp fade in, centred, chip 2 lands and the
+     source line changes. Out, then in: the big microphone stands where the sheet was, and the two source lines share one
+     place, so neither pair is ever on together */
+  tl.to([$("p1"), $("src14")], { autoAlpha: 0, duration: 0.15, ease: "none" }, 7.83);
+  tl.to(big, { autoAlpha: 1, duration: 0.3, ease: "none" }, 7.98);
+  tl.to(chip2, { autoAlpha: 1, y: 216 - 236, duration: 0.3, ease: "power3.out" }, 7.98);
   tl.to($("src31"), { autoAlpha: 1, duration: 0.15, ease: "none" }, 7.98);
-  var pushed = centred(BIG * PUSH); pushed.duration = 12.75 - 7.83; pushed.ease = "none";
-  tl.to(big, pushed, 7.83);
+  var pushed = centred(BIG * PUSH); pushed.duration = 12.75 - 7.98; pushed.ease = "none";
+  tl.to(big, pushed, 7.98);
 
   /* 6 · hadn't @10.95: the lamp becomes an empty outline: fill to Panel dark, stroke to Label grey. It stays that way */
   tl.to(bigLamp, { fill: PANEL, stroke: GREY, duration: 0.4, ease: "power2.out" }, 10.95);
