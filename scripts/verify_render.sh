@@ -1,15 +1,23 @@
 #!/usr/bin/env bash
-# Post-render verification. Usage: verify_render.sh <episode-dir> <render-basename>
+# Post-render verification. Usage: verify_render.sh <episode-dir> <render-basename> [draft|full]
+# The mode is the one passed to render.cmd: it picks the log (render_<mode>.log) and the frame
+# rate the file must have (render.cmd's draft _FPS, or the composition's data-fps for full).
+# Without it the old guess stands for existing callers: a basename containing "draft" is a draft.
 # Everything here reads the finished mp4 — the checks that do not need pixels already ran
 # before the render (sweep_episode.py, blank_scan.mjs, beat_density.py, graphics_qc.mjs).
 set -u
 EP="$1"; BASE="$2"
+MODE="${3:-}"
+if [ -z "$MODE" ]; then
+  MODE=full; [ "$BASE" != "${BASE%draft*}" ] && MODE=draft
+fi
+case "$MODE" in draft|full) ;; *) echo "usage: verify_render.sh <episode-dir> <render-basename> [draft|full]"; exit 1 ;; esac
 MP4="$EP/renders/$BASE.mp4"
 [ -f "$MP4" ] || { echo "MISSING $MP4"; exit 1; }
 FAIL=0
 
 echo "=== gpu (owner 2026-09-15: capture must run on the dedicated GPU, never the Intel iGPU) ==="
-LOG="$EP/render_full.log"; [ "$BASE" != "${BASE%draft*}" ] && LOG="$EP/render_draft.log"
+LOG="$EP/render_$MODE.log"
 PROBES=$(grep -ao 'browserGpuMode probe.*' "$LOG" 2>/dev/null | cut -c1-160)
 echo "${PROBES:-no probe line in $LOG}"
 # one probe line per capture worker; every one of them must name NVIDIA
