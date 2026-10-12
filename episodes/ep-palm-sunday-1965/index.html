@@ -43,6 +43,14 @@
       background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
     /* the date label sits on Paul's shirt, below his chin (his face runs from y 70 to 570 in this clip), so frame one is his face */
     .popfig.pf-chest { top: 61%; }
+    /* ---- training film cut under a composition's 4:3 window (mg_specs/acts-plan.md rule 15: x 480 to 1440, y 150 to 870, the 640 x 480 cut at 1.5x);
+            geometry is !important so the renderer's video{inset:0} cannot win ---- */
+    .filmwin { position: absolute !important; inset: auto !important; left: 480px !important; top: 150px !important;
+      width: 960px !important; height: 720px !important; object-fit: cover !important; }
+    /* ---- glass chip over Paul's clip (the county label of mg_specs/00-design-sheet.md section 9: our label, on glass) ---- */
+    .ovchip { position: absolute; left: 96px; top: 54px; height: 46px; padding: 0 22px; box-sizing: border-box; background: rgba(10,16,24,0.55);
+      backdrop-filter: blur(18px) saturate(1.15); border: 1px solid rgba(255,255,255,0.14); border-radius: 23px;
+      font: 700 26px Arial, sans-serif; color: #dfe7ee; white-space: nowrap; line-height: 44px; z-index: 6; }
     /* ---- film layer ---- */
     #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
     #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
