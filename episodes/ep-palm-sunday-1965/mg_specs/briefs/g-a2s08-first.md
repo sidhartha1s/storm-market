@@ -47,7 +47,7 @@ North is up. One inline SVG holds the map: BM-1 mounted at left 620, top 62, wid
 
 ## 5. Text (exact) and cues
 Text: `The 5:45 PM tornado` · `Koontz Lake` · `STARKE COUNTY` · `South Bend` · `10` · `lives lost` · `this tornado` · `National Weather Service`.
-Cue words and times are from `audio/a2-s8.words.json` as it stood on 12 Oct 26 (wav 6.53 s). The comp holds one segment, so the two time columns are equal; if `mg_specs/timeline-map.md` puts a lead-in gap before the segment, add it to every row. Retime from the word, never from the seconds.
+Cue words and times are from `audio/a2-s8.words.json` as it stood on 12 Oct 26 at 17:50, after the voice conversion's re-transcription (wav 6.53 s). The comp holds one segment, so the two time columns are equal; if `mg_specs/timeline-map.md` puts a lead-in gap before the segment, add it to every row. Retime from the word, never from the seconds.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A2-S8 | 0 | That | 0.00 | 0.00 | first frame: ground and the county map, nothing else |
