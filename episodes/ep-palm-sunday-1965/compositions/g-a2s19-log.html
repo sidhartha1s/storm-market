@@ -20,8 +20,8 @@
      copied whole and unchanged from the file by one mechanical copy that added the id prefix and nothing else (compared with
      the source on 12 Oct 26: 47 path elements, 29,543 bytes, every one identical and in the file's order: Illinois, Michigan,
      Ohio, 43 counties, Indiana's outline).
-     Cards: media/docs/survey-p39-623pm-crop.png (1460 x 90), survey-p40-624pm-crop.png (1460 x 129, its bottom 4 px behind the
-     card's window, as ruled), survey-p40-635pm-crop.png (1460 x 128): each the scan at its own size, 10 px of beige round it.
+     Cards: media/docs/survey-p39-623pm-crop.png (1460 x 90), survey-p40-624pm-crop.png (1460 x 129, its bottom 4 px shown only
+     left of scan x 1000, as ruled), survey-p40-635pm-crop.png (1460 x 128): each the scan at its own size, 10 px of beige round it.
      Cues are comp-local seconds from the brief's table (audio/a2-s19.words.json minus 0.23). -->
 <template>
 <style>
@@ -31,7 +31,7 @@
   /* ---- map block: the SVG fills the frame; the camera is its viewBox (fixed), the visible box is its clip-path ---- */
   .log-map { position:absolute; left:0; top:0; width:1920px; height:1080px;
     clip-path:polygon(716px 62px, 1796px 62px, 1796px 660px, 1580px 660px, 1580px 1000px, 716px 1000px); }
-  /* a county line runs under each of the four names at the brief's places, so they carry the credit shadow */
+  /* the four names stand 8 px or more clear of every county line (label rule); they keep the credit shadow */
   .log-town { position:absolute; font:700 22px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:26px; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
   .log-lit { color:#f2f5f8; }
 
