@@ -232,9 +232,11 @@ window.__timelines = window.__timelines || {};
   gsap.set(el("arcrev"), { strokeDasharray: arcLen, strokeDashoffset: arcLen });
   gsap.set(el("waverev"), { strokeDasharray: WAVE + " " + (arcLen + WAVE), strokeDashoffset: WAVE });
 
-  /* HE'D @0.00: the film view. Ground, open window, frame, film label; nothing else until 4.06. */
-  tl.set([P+"cover", P+"sweepb", P+"chain", P+"map", P+"tor", P+"chipb", P+"b1", P+"b2", P+"b3", P+"b4", P+"time",
-          P+"arc", P+"arcwave", P+"gdot"], { autoAlpha: 0 }, 0);
+  /* the waiting chain is half size from the host's very first frame: set here at build, and again at timeline 0 for any seek */
+  gsap.set(P+"chain", { scale: 0.5, svgOrigin: "1577 380" });
+
+  /* HE'D @0.00: ground, the chain waiting at half size in Label grey, the chip over it. No map yet. */
+  tl.set([P+"river", P+"tor", P+"b1", P+"b2", P+"b3", P+"b4", P+"time", P+"arc", P+"arcwave", P+"gdot"], { autoAlpha: 0 }, 0);
   tl.set(P+"chain", { scale: 0.5, svgOrigin: "1577 380" }, 0);
   tl.set(P+"tor", { x: -290 }, 0);
   tl.set(P+"stamp", { autoAlpha: 0, x: -660 }, 0);
