@@ -1,4 +1,4 @@
-Host: id=g-a2s09-countya file=compositions/g-a2s09-countya.html start=352.57 duration=18.79 s (timeline-map.md; wav sum 18.34 s plus its gaps) track=2
+Host: id=g-a2s09-countya file=compositions/g-a2s09-countya.html start=352.82 duration=18.79 s (timeline-map.md; wav sum 18.34 s plus its gaps) track=2
 
 # g-a2s09-countya · A2-S9, A2-S10 · the report that ran the wrong way, and the air that came after (wave 2, chain family)
 
