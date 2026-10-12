@@ -42,6 +42,7 @@ Clock angles, clockwise degrees from 12: 9:30 PM is hour hand 285, minute hand 1
 4. The 10:45 PM entry is never brighter than the line and is never underlined.
 5. A visible change at least every 2 s: underline, stamp, arc, dark.
 6. Nothing in x >= 1600 and y >= 680; the card ends at x 1576 and the stamp at x 686.
+7. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). It holds without staging: the document card (y 116 to 727) is on from the first frame, the band under it is under a third of the frame, and the stamp lands in that band at 1.83 s.
 
 ## 5. Text (exact) and cues
 Text: `WEATHER BUREAU` · `9:30 PM` · `Fort Wayne, Indiana` · `Weather Bureau survey report, 1965, p. 44`. Page words are the image.
