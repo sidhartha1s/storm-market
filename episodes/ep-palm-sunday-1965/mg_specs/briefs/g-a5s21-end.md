@@ -38,6 +38,7 @@ World, sheet and chain sit in one container that takes the push; the source line
 4. The microphone has no name and sits off the paper.
 5. Nothing in x >= 1600 and y >= 680 at any moment of the push (house right edge 1588 at the end).
 6. The last frame is a clean hold: black follows it.
+7. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). It holds without staging: the comp is the hook tail's frame (sheet, microphone, house) for all of its 2.62 s.
 
 ## 5. Text (exact) and cues
 Text: the list sheet's eyebrow, title and eight rows exactly as design sheet section 5 · `an announcer` · `a family` · `Disaster Research Center, 1966, p. 14`.
