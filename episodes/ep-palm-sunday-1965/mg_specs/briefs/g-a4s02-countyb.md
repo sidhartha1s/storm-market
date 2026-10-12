@@ -68,7 +68,7 @@ Fixed layer:
 9. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680. No label under a line, the arc, a dot or another label, including while the chain grows (its labels are hidden until it has stopped).
 
 ## 5. Text (exact) and cues
-Text: `Civil defense training film, 1967` · `County B` · `the sheriff` · `civil defense` (on the map, and again under the first desk) · `city police` · `the radio station` · `a family` · `about` · `7:30 PM`.
+Text: `County B` · `the sheriff` · `civil defense` (on the map, and again under the first desk) · `city police` · `the radio station` · `a family` · `about` · `7:30 PM`.
 Cue words and times are from `audio/a4-s2.words.json` (34 words), `a4-s3.words.json` (15), `a4-s4.words.json` (27) and `a4-s5.words.json` (22), read on 12 Oct 26. t from comp start = the segment's "wav start inside the composition" in `mg_specs/timeline-map.md` table 5 (A4-S2 -0.40, A4-S3 9.84, A4-S4 14.52, A4-S5 23.57) plus the word's time; a segment's first word uses the table's "first sound" (0.00, 10.06, 14.77, 24.14). Retime from the word, never from the seconds.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
