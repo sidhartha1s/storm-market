@@ -289,6 +289,24 @@ The hook and intro's seven sounds are not listed here and were not touched. Ever
 | 866.87 | sx-tty-a5s6 | teletype-burst.wav | 0.3 | 0.85 | `g-a5s06-hold` cue 2 (1.99): the typed quote strip starts to rise |
 | 915.58 | sx-ring-a5s11 | telephone-ring.wav | 0.3 | 1.88 | `g-a5s10-alert` cue 5 (8.83): hard cut to the telephone film `v-a5s11-call` |
 
+- For the corner circle see section 8.
 - A match-cut sound moves with its composition: if a builder changes one of those cue times, the sound's start changes with it.
 - Nothing sounds in the five act blackouts, in the book ad's two dips or under the ad (635.44 to 661.85). No swell or match-cut sound sits under any of Paul's clips, and the bed is 3 dB down inside its file under each of them (0.5 s ramps before and after the clip). If a Paul clip moves, that bed file is cut again.
+
+## 8. Presenter circle (10 windows mounted 12 Oct 26)
+Windows 2 to 11 of `mg_specs/pip-windows.md`, as mounted in `index.html` (the mount wins). Each window is one face video `pip-w<n>` (class `pip`, track 7, muted, `media/pip/paul-w<n>.mp4` from its first frame) and one ring section `pip-ring-w<n>` (track 9) with the same start and length. Window 1 (the intro) is not mounted: the hook and intro are approved as rendered, without the circle. Window 6 starts on the cut to `g-a4s02-countyb`, not at 668.16 as the table first had it.
+| Window | Start (s) | End (s) | Length (s) | Starts on | Ends on |
+|---|---|---|---|---|---|
+| 2 | 113.18 | 233.10 | 119.92 | cut out of `bo-i1` | `ins-paul-2` |
+| 3 | 242.77 | 289.16 | 46.39 | end of `ins-paul-2` | `bo-a1` |
+| 4 | 289.86 | 479.97 | 190.11 | cut out of `bo-a1` | `bo-a2` |
+| 5 | 480.67 | 626.21 | 145.54 | cut out of `bo-a2` | `ins-paul-3` |
+| 6 | 668.56 | 706.15 | 37.59 | `g-a4s02-countyb` | `ins-paul-4` |
+| 7 | 715.65 | 813.81 | 98.16 | end of `ins-paul-4` | `bo-a4` |
+| 8 | 814.51 | 932.76 | 118.25 | cut out of `bo-a4` | `ins-paul-5` |
+| 9 | 942.11 | 1007.38 | 65.27 | end of `ins-paul-5` | `bo-a5` |
+| 10 | 1008.08 | 1125.22 | 117.14 | cut out of `bo-a5` | `bo-a6` |
+| 11 | 1135.63 | 1169.43 | 33.80 | end of `ins-paul-6` | `g-z1s05-title` |
+
+Stacking inside `#root`: film windows -1, hosts and pictures, overlays 6, the face 8, its ring 9, then the vignette 90, the grain 91 and the dust 92. The circle is off from 635.44 to 668.56 (the book ad, its dips, and `g-a4s01-eyes` with its film). Window 11 runs over `g-z1s4b-book` (1163.12 to 1169.43), which is not built yet: if the book cover sits in the corner, the window ends at 1163.12.
 - **Paul starts speaking 0.19 to 0.60 s into each new clip** (table 2); `ins-paul-1` has no such lead-in. The clips are mounted from their first frame, so the silence before his first word is 1.0 s plus that lead-in.
