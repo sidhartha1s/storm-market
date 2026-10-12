@@ -28,7 +28,7 @@ In this comp the teletype is the Weather Bureau's: its label reads `Weather Bure
 | Element | Px |
 |---|---|
 | Ground | canvas gradient with the intro's faint sweep band, on from frame 0 |
-| Chain | the five stations, the chain's desk and the links of `g-a1s13-chain.md` section 3, all at rest (lines `#55606b`), as `g-a3s04-links` leaves them: telephone links dotted and dark, the miniature list at opacity 0.36. Labels as that brief, except the teletype's: `Weather Bureau teletype` (left 96, width 140, two lines, top 676) |
+| Chain | the five stations, the chain's desk and the links of `g-a1s13-chain.md` section 3, all at rest (lines `#55606b`), as `g-a3s04-links` leaves them: telephone links dotted and dark, the miniature list at opacity 0.36. Labels as that brief, except the teletype's: `Weather Bureau teletype` (left-aligned, left 180, three lines, x 180 to 266, y 676 to 760, beside wire B, which runs down x 166; `Weather Bureau` on one line would run into station 2's label) |
 | Desks A and B | section 2; lines `#55606b` at rest, Headline white when lit; their own telephones on the cradle |
 | Wires A and B | 4 px, round caps and joins, Amber 2, drawn from the teletype outward with `strokeDashoffset` |
 | Desk labels | Arial 700 22 px, Label grey: `a fire department` at left 530, top 190; `a police department` at left 530, top 760 |
