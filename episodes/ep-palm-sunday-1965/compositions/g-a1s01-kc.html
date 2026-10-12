@@ -8,8 +8,10 @@
      credit corner, our labels on glass. The three blocks a later comp copies are marked in the CSS and the markup.
      Photograph: media/stills/a4-teletype-room.jpg, 1456 x 1080, NOAA Central Library, U.S. Weather Bureau, wea01821, about 1955.
        It is not Kansas City and it is not 1965: the place and the time live on the glass stamp, the photograph keeps its own caption.
-       Cover: 1920 / 1456 = 1.3187 (1920 x 1424.2, image rows 130.5 to 949.5 in frame). Push 1.00 to 1.06 about screen (1700, 600),
-       by the seated man at the right, so his face stays in the frame. The plates do not ride the push.
+       The file carries its own light border from image x 1441 to 1456, and the seated man's head runs up to it. So the picture is
+       mounted 1942 px wide from the frame's left edge: scale 1942 / 1456 = 1.3338 (1942 x 1440.5, image rows 135.1 to 944.9 in frame),
+       and the frame's right edge is image x 1439.5. Push 1.00 to 1.06 about screen (1920, 600): the right edge does not travel, so the
+       border stays out at every moment and the seated man stays whole. The plates do not ride the push.
      Cues: audio/a1-s1.words.json seconds minus 0.31 (mg_specs/timeline-map.md table 5). -->
 <template>
 <style>
@@ -91,8 +93,8 @@ window.__timelines = window.__timelines || {};
   /* 0 · "A" @0.00: photograph, scrim and caption on; the push carries the whole comp */
   tl.to($("bg"), { scale: 1.06, duration: D, ease: "none" }, 0);
 
-  /* 1 · "forecast" @0.09: the icon tile slides in from the left, paper unlit */
-  tl.to($("tile"), { x: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 0.09);
+  /* 1 · "forecast" @0.09: the icon tile drops in over the equipment rack, paper unlit */
+  tl.to($("tile"), { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 0.09);
 
   /* 2 · "typed" @2.17: the paper turns Amber 2 and the typed bars Caption dark; a fill and stroke change, nothing moves */
   tl.to($("paper"), { fill: "#e8c56a", duration: 0.3, ease: "power2.out" }, 2.17);
