@@ -331,6 +331,20 @@ CLOCK = ('<!doctype html><html><head><meta charset="UTF-8"></head><body><templat
          'const tl = gsap.timeline({ paused: true });\n'
          "tl.fromTo('#g-cv-lbl', { x: 0 }, { x: 300, duration: 1, ease: 'power3.out' }, 0);\n"
          "tl.to({}, { duration: 7 }, 0);\nwindow.__timelines['g-cv'] = tl;\n</script>\n</template></body></html>\n")
+# Clipped text (k): Range rects ignore clipping. A quote line sitting below its overflow:hidden mask is never
+# painted, so it collides with nothing (ep-palm-sunday-1965 g-a4s13-duty, 12 Oct 26: two hard
+# text-collisions against the attribution under the mask; old fbebe442 reports the clipped line). The same
+# pair with no mask still collides, and so does an absolute line inside a static mask that is not its
+# containing block (the mask does not clip it).
+def _masked(mask, left, top):
+    line = 'position:absolute;font-size:40px;line-height:50px;color:#fff;white-space:nowrap'
+    return CANVAS_FILES['compositions/g-cv.html'].replace(
+        '</div>\n<script>',
+        f'  <div style="{mask}"><div style="{line};left:{left}px;top:{top}px">Quote line two</div></div>\n'
+        f'  <div style="{line};left:200px;top:672px">Said of the forecast</div>\n</div>\n<script>')
+
+
+BOX = 'position:absolute;left:200px;top:600px;width:600px;height:60px'
 CASES = {  # comp: (source, host s, new output must hold, must not hold, why)
     'g-p1': (CANVAS_FILES['compositions/g-cv.html'], 3, None, 'undesigned', 'a full-frame canvas is a designed background'),
     'g-p2': (cv, 3, None, 'fade-only', 'an onUpdate canvas renderer is continuous motion'),
