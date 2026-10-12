@@ -58,6 +58,7 @@ t from comp start = the segment's wav start inside the composition (timeline-map
 | 4 | A6-S3 | 21 | announcer | 6.52 | 6.11 | the dots between the sheet and the microphone turn Body light one after another, sheet end first (12 dots, 0.03 s apart) |
 | 5 | A6-S4 | 0 | When | 0.00 | 7.83 | sheet, house, dotted line, labels and chip 1 fade out (0.3 s); the big microphone and its lit lamp fade in (0.3 s); chip 2 lands; the source line swaps |
 | 6 | A6-S4 | 9 | hadn't | 3.50 | 10.95 | the lamp's fill goes to Panel dark and its stroke to Label grey (0.4 s): an empty outline |
+| 6b | A6-S4 | 12 | And | 5.30 | 12.75 | the microphone, its empty lamp and chip 2 move from the centred, staged place to their briefed place and size (0.5 s, power2.inOut; done at 13.25) |
 | 7 | A6-S4 | 21 | broke | 7.48 | 14.93 | mark 1 fades in with its label (0.25 s) |
 | 8 | A6-S4 | 22 | in | 7.66 | 15.11 | reference only: marks 2, 3 and 4 follow mark 1 at 0.30 s steps (15.23, 15.53, 15.83) |
 | 9 | A6-S4 | 25 | places. | 8.38 | 15.83 | mark 4 lands on this word |
