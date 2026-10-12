@@ -194,7 +194,7 @@ echo "=== pop scan (single-frame diff spikes, downscaled 180x180 gray, sampled a
 echo "=== fps — CPU-light) — REPORT only: every other check above FAILs, this one deliberately does ==="
 echo "=== not, because an intentional quick cut/flash-edit can trip the same signature (see ==="
 echo "=== scripts/pop_scan.py module docstring for why) ==="
-POP_FPS="$COMP_FPS"  # already parsed off #root above; no need to re-read index.html
+POP_FPS="$EXPECT_FPS"  # the render's own rate (draft 15, full = #root data-fps)
 if [ -z "$POP_FPS" ] || [ "$POP_FPS" = "0" ]; then
   echo "SKIP: no composition fps available to sample at"
 else
