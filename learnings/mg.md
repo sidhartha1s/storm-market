@@ -2,6 +2,19 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 12 Oct 26 - ep-palm-sunday-1965 acts: a brief that checks coverage in its last frame only fails during the build-up
+- **What happened:** g-a2s06-headstart passed all eight must-be-true lines at the verifier and still failed. Its brief
+  put two clock cards at the top of the frame and brought the bars on 11.82 s later, so the lower 56.9 % of the frame was
+  black for 12 s (the El Reno kind: blocks of 44 to 66 % were sent back). g-a1s05-clocks had the same kind (right half
+  empty for 4.7 s). Both briefs gave the fill figure for the settled frame; the builders built them as written and
+  flagged it; the verifier flagged it and did not fail it because the geometry came from an accepted brief.
+- **Rule made:** the brief states where things sit at every step of the cue table, and its must-be-true list carries "no
+  empty block over a third of the frame for more than about 3 s at any step". Where the reveal order leaves a block,
+  what is on screen sits centred (a lone element up to 1.5 times its size) and moves to its last-frame place on the cue
+  of the element that needs the room. A verifier fails the block whatever its cause.
+- **Still open:** `references/mg-brief-template.md` item 2 ("Fill") asks for one measured figure; it should ask for the
+  figure per step. To change in the episode's docs sweep.
+
 ## 12 Oct 26 - ep-palm-sunday-1965 preview: 12 graphics, 3 failed the verifier, then the gate flagged 2 the verifier had passed
 - **What happened:** three Opus builders built 12 comps for a 113 s opening; one Opus verifier read them in four passes.
   3 of 12 failed (hook warning, list question, house), two fix rounds, then all 12 passed. `graphics_qc` was run only
