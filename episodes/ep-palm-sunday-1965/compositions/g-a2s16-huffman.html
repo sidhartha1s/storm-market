@@ -179,7 +179,7 @@ window.__timelines = window.__timelines || {};
   show($("src"), 3.83);
 
   /* 4 · "editor" @5.41: Elkhart County's outline turns Headline white, 3 px: a stroke change, no scale */
-  tl.to($("ring"), { stroke: "#f2f5f8", strokeWidth: 3, duration: 0.4, ease: "power2.out" }, 5.41);
+  tl.to($("ring"), { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 5.41);   /* the white line comes up over the grey one: a seek back to 0 leaves no trace */
 
   /* 5 · "Before" @7.95: the label has gone 0.2 s before; push NORTH to ELKHART, 2.5 times in 0.9 s, ends @8.85; the label
          is back at its new place @8.91 */
