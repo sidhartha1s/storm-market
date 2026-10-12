@@ -305,6 +305,8 @@ window.__timelines = window.__timelines || {};
   fade(P+"sc1", 0, 6.53, 0.25);
   stroke(P+"telb", LIGHT, 6.40, 0.3);
   tl.set(P+"sc2", { autoAlpha: 1 }, 6.40);
+  /* the strip holds 6.27 s with a band above and a band below: a slow push 1.00 to 1.03, desk B with its road */
+  tl.to([P+"sc2", P+"bsvg"], { scale: 1.03, duration: 12.67 - 6.40, ease: "none" }, 6.40);
   /* OFFICE @6.67: the desk's new label */
   fade(P+"office", 1, 6.67, 0.3);
   /* TORNADO'S @7.29: the road draws west from the desk with its three grey marks; the tornado mark fades in at point x 130 and moves to x 340 by 11.86 */
