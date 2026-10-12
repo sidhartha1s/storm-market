@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1s15-offices (A1-S15, A1-S16, A1-S17): a film window that stands for a kind of room, one word lifted out of it; a second
+     window that empties to a microphone with its lamp off; then the lamp comes on, a house gets the word, and two strips of paper
+     show how little a forecast said beside a warning. Brief: mg_specs/briefs/g-a1s15-offices.md.
+     BASE OF THE FILM FAMILY. The film is not this comp's: index.html mounts it on track 1 (class filmwin, left 480, top 150,
+     960 x 720) and this comp sits above it with a transparent hole. The film view (ground with hole, frame, label chip, the cover
+     that closes the hole in one frame) is one CSS block and one markup block, marked, so a copy is a paste.
+     Views: ROOM 0.00 to 12.99 (a14-05, dimmed from 6.63), ANNOUNCER 12.99 to 21.45 (a14-09, first angle only), DRAWN 21.45 to 34.71.
+     The announcer mount ends at 22.43: the hole is covered from 21.45 and never opens again.
+     While any film pixel shows, "Civil defense training film, 1967" is the only glass chip in the frame.
+     Cues: words.json seconds plus the wav start inside the comp: a1-s15 +0.15, a1-s16 +12.65, a1-s17 +23.91; a segment's first word is
+     timed from its first sound (mg_specs/timeline-map.md table 5). No audio and no video element in this file. -->
+<template>
+<style>
+  #off-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }   /* no background: the hole must stay clear */
+  .off-h { opacity:0; visibility:hidden; }
+
+  /* ---- FILM VIEW (family block): ground with a 4:3 hole at x 480 to 1440, y 150 to 870, frame, label chip, hole cover ---- */
+  /* every pane carries the whole 1920 x 1080 gradient, offset by its own left and top, so no pane edge shows a seam */
+  .off-pane { position:absolute; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%) no-repeat; background-size:1920px 1080px; }
+  .off-pane-t { left:0; top:0; width:1920px; height:150px; background-position:0 0; }
+  .off-pane-b { left:0; top:870px; width:1920px; height:210px; background-position:0 -870px; }
+  .off-pane-l { left:0; top:150px; width:480px; height:720px; background-position:0 -150px; }
+  .off-pane-r { left:1440px; top:150px; width:480px; height:720px; background-position:-1440px -150px; }
+  .off-cover { left:480px; top:150px; width:960px; height:720px; background-position:-480px -150px; }
+  .off-dim { position:absolute; left:480px; top:150px; width:960px; height:720px; background:rgba(3,5,8,0.60); }
+  .off-frame { position:absolute; left:476px; top:146px; width:968px; height:728px; box-sizing:border-box; border:4px solid #dfe7ee; }
+  .off-chip { position:absolute; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:23px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  .off-label { left:480px; top:886px; }
+
+  /* ---- quote strip (paper: the documents' words only), the look of g-i1s3-cloud ---- */
+  .off-strip { position:absolute; left:96px; top:640px; width:1480px; height:170px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; }
+  .off-strip-c { width:730px; }
+  .off-strip-d { left:846px; width:730px; }
+  .off-q { position:absolute; left:54px; top:26px; font:52px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:1.15; }
+  .off-att { position:absolute; left:56px; top:116px; font:700 22px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+
+  /* ---- microphone and ON AIR lamp (family block: copied by g-a6s03-announcer); the lamp is g-i1s5-onair's at 1.5 times ---- */
+  .off-micg { position:absolute; left:0; top:0; width:0; height:0; }
+  .off-mic { position:absolute; left:411px; top:206px; width:198px; height:363px; overflow:visible; }
+  .off-lamp { position:absolute; left:413px; top:135px; width:195px; height:54px; }
+  .off-lamp-fill { position:absolute; left:0; top:0; width:195px; height:54px; border-radius:9px; background:#d0121f; }
+  .off-lamp-line { position:absolute; left:0; top:0; width:195px; height:54px; overflow:visible; }
+  .off-lamp-txt { position:absolute; left:0; top:0; width:195px; height:54px; text-align:center; font:900 27px 'Arial Black', Arial, sans-serif; color:#55606b; letter-spacing:1.5px; white-space:nowrap; line-height:54px; }
+
+  /* ---- this comp only: the house, the dotted link, the two chips under the half strips ---- */
+  .off-house { position:absolute; left:1121px; top:122px; width:408px; height:447px; overflow:visible; }
+  .off-link { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .off-chip-c { left:96px; top:826px; }
+  .off-chip-d { left:846px; top:826px; }
+</style>
+<div id="off-root" data-composition-id="g-a1s15-offices" data-width="1920" data-height="1080">
+
+  <!-- FILM VIEW (family block) -->
+  <div class="off-pane off-pane-t"></div>
+  <div class="off-pane off-pane-b"></div>
+  <div class="off-pane off-pane-l"></div>
+  <div class="off-pane off-pane-r"></div>
+  <div class="off-pane off-cover off-h" id="off-cover"></div>
+  <div class="off-dim off-h" id="off-dim"></div>
+  <div class="off-frame" id="off-frame"></div>
+  <div class="off-chip off-label" id="off-label">Civil defense training film, 1967</div>
+
+  <!-- strip A: paper over the lower part of the dimmed window -->
+  <div class="off-strip off-h" id="off-strip-a" data-overlap-ok="strip A lies over the dimmed film window and its frame line by design">
+    <div class="off-q off-h" id="off-q-a">&ldquo;inaction&rdquo;</div>
+    <div class="off-att">Disaster Research Center, 1966, pp. 8-9</div>
+  </div>
+
+  <!-- view DRAWN: dotted link, house (dark, never the lit file), microphone group -->
+  <svg class="off-link" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <defs><clipPath id="off-linkclip"><rect id="off-linkrect" x="620" y="388" width="0" height="24"/></clipPath></defs>
+    <path d="M630 400 H1100" fill="none" stroke="#93a3b2" stroke-width="6" stroke-linecap="round" stroke-dasharray="0.1 22" clip-path="url(#off-linkclip)"/>
+  </svg>
+
+  <!-- media/drawings/house.svg inline at 1.5 times: object box x 1130 to 1520, y 185 to 560; line 6 px -->
+  <svg class="off-house" viewBox="-6 -42 272 298" width="408" height="447">
+    <g fill="none" stroke="#55606b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path class="off-h" id="off-h-chim" d="M186 37.3 V22 H208 V50"/>
+      <path class="off-h" id="off-h-roof" d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+      <rect class="off-h" id="off-h-wall" x="20" y="80" width="220" height="170" fill="#15202b"/>
+      <rect class="off-h" id="off-h-door" x="112" y="170" width="36" height="80"/>
+      <rect class="off-h" id="off-h-win1" x="44" y="120" width="48" height="48" fill="#15202b"/>
+      <rect class="off-h" id="off-h-win2" x="168" y="120" width="48" height="48" fill="#15202b"/>
+      <path class="off-h" id="off-h-bar1" d="M68 120 V168 M44 144 H92"/>
+      <path class="off-h" id="off-h-bar2" d="M192 120 V168 M168 144 H216"/>
+      <path class="off-h" id="off-h-aer" d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+    </g>
+  </svg>
+
+  <!-- microphone group (family block): media/drawings/microphone.svg inline at 1.5 times, object box x 420 to 600, y 215 to 560 at rest -->
+  <div class="off-micg" id="off-micg">
+    <svg class="off-mic" viewBox="-6 -6 132 242" width="198" height="363">
+      <g fill="none" stroke="#55606b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <path class="off-h" id="off-m-neck" d="M60 112 V182"/>
+        <rect class="off-h" id="off-m-cap" x="30" y="0" width="60" height="112" rx="30" fill="#15202b"/>
+        <path class="off-h" id="off-m-grille" d="M40 30 H80 M40 56 H80 M40 82 H80"/>
+        <path class="off-h" id="off-m-base" d="M30 182 H90 L108 230 H12 Z" fill="#15202b"/>
+        <circle class="off-h" id="off-m-lamp" cx="104" cy="20" r="9" fill="#15202b"/>
+      </g>
+    </svg>
+    <div class="off-lamp off-h" id="off-lamp">
+      <div class="off-lamp-fill off-h" id="off-lamp-fill"></div>
+      <svg class="off-lamp-line" viewBox="0 0 130 36" fill="none" stroke="#55606b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path id="off-lamp-line" d="M6 1 H124 A5 5 0 0 1 129 6 V30 A5 5 0 0 1 124 35 H6 A5 5 0 0 1 1 30 V6 A5 5 0 0 1 6 1 Z"/>
+      </svg>
+      <div class="off-lamp-txt" id="off-lamp-txt">ON AIR</div>
+    </div>
+  </div>
+
+  <!-- strips B, C, D and the two chips of ours -->
+  <div class="off-strip off-h" id="off-strip-b">
+    <div class="off-q">&ldquo;(A few stations never passed on the forecast)&rdquo;</div>
+    <div class="off-att">Disaster Research Center, 1966, p. 10</div>
+  </div>
+  <div class="off-strip off-strip-c off-h" id="off-strip-c">
+    <div class="off-q">&ldquo;A TORNADO OR TWO&rdquo;</div>
+    <div class="off-att">Disaster Research Center, 1966, p. 7</div>
+  </div>
+  <div class="off-strip off-strip-d off-h" id="off-strip-d">
+    <div class="off-q">&ldquo;should be on the alert&rdquo;</div>
+    <div class="off-att">Weather Bureau survey report, 1965, p. 39</div>
+  </div>
+  <div class="off-chip off-chip-c off-h" id="off-chip-c">half a state</div>
+  <div class="off-chip off-chip-d off-h" id="off-chip-d">three counties</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a1s15-offices", P = "off", D = 34.71, CUT1 = 12.99, CUT2 = 21.45;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function draw(e, t, d) {                                  /* a line drawn on: dash = ceil(len)+1, hidden until its start */
+    var L = Math.ceil(e.getTotalLength()) + 1;
+    s0(e, { strokeDasharray: L, strokeDashoffset: L, autoAlpha: 0 });
+    tl.set(e, { autoAlpha: 1 }, t);
+    tl.to(e, { strokeDashoffset: 0, duration: d, ease: "power2.out" }, t);
+  }
+  function stripIn(e, t) { tl.to(e, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, t); }
+
+  /* start states: hidden in CSS (off-h), transforms set here at 0; every move from rest below is a plain to() */
+  s0($("strip-a"), { y: 60 });
+  s0($("q-a"), { y: 16 });
+  s0($("strip-b"), { y: 60 });
+  s0($("strip-c"), { y: 60 });
+  s0($("strip-d"), { y: 60 });
+  s0($("micg"), { x: 450 });                                /* the microphone waits at centre, where the announcer was */
+
+  /* ================= view ROOM: 0.00 to 12.99 ================= */
+  /* 0 · "The" @0.00 (voice @0.47): ground, open window on the operations room, frame, film label. The film is the motion */
+
+  /* 1 · "Many" @6.63: the window dims */
+  tl.to($("dim"), { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 6.63);
+
+  /* 2 · "researcher's" @9.99: strip A enters with its attribution, no word yet */
+  stripIn($("strip-a"), 9.99);
+
+  /* 3 · "in" @11.53 ("in" + "action." in the transcript): the one word lands */
+  tl.to($("q-a"), { y: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 11.53);
+
+  /* ================= view ANNOUNCER: 12.99 to 21.45 ================= */
+  /* 4 · "That" @12.99: hard cut. Dim and strip A off in one frame; frame and film label stay */
+  tl.set([$("dim"), $("strip-a")], { autoAlpha: 0 }, CUT1);
+
+  /* ================= view DRAWN: 21.45 to 34.71 ================= */
+  /* 5 · "A" @21.45: hard cut. The hole closes for good; frame and film label off; the microphone draws on, longest line first */
+  tl.set($("cover"), { autoAlpha: 1 }, CUT2);
+  tl.set([$("frame"), $("label")], { autoAlpha: 0 }, CUT2);
+  draw($("m-cap"), 21.45, 0.3); draw($("m-base"), 21.50, 0.3); draw($("m-grille"), 21.58, 0.25);
+  draw($("m-neck"), 21.64, 0.25); draw($("m-lamp"), 21.70, 0.25);
+  tl.to($("lamp"), { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 21.65);          /* ON AIR in the off state: grey outline and letters, no fill */
+
+  /* 6 · "few" @21.55: strip B enters */
+  stripIn($("strip-b"), 21.55);
+
+  /* 7 · "Many" @24.28: strip B leaves right; the microphone group slides left to rest */
+  tl.to($("strip-b"), { x: 1900, duration: 0.5, ease: "power3.in" }, 24.28);
+  tl.set($("strip-b"), { autoAlpha: 0 }, 24.78);                                         /* parked outside the frame: not visible there */
+  tl.to($("micg"), { x: 0, duration: 0.6, ease: "power2.inOut" }, 24.28);
+
+  /* 8 · "air" @25.89: the lamp turns on by fill and colour only; the microphone's own small lamp with it */
+  tl.to($("lamp-fill"), { autoAlpha: 1, duration: 0.15, ease: "none" }, 25.89);
+  tl.to($("lamp-txt"), { color: "#f2f5f8", duration: 0.15, ease: "none" }, 25.89);
+  tl.to($("lamp-line"), { stroke: "#d0121f", duration: 0.15, ease: "none" }, 25.89);
+  tl.to($("m-lamp"), { fill: "#d0121f", duration: 0.15, ease: "none" }, 25.89);
+
+  /* 9 · "in" @26.11: the dotted link grows from the microphone to the house; the house draws on over the same 0.6 s */
+  tl.to($("linkrect"), { attr: { width: 490 }, duration: 0.6, ease: "none" }, 26.11);
+  draw($("h-wall"), 26.11, 0.3); draw($("h-roof"), 26.15, 0.3); draw($("h-door"), 26.22, 0.26);
+  draw($("h-win1"), 26.27, 0.26); draw($("h-win2"), 26.30, 0.26); draw($("h-bar1"), 26.33, 0.26); draw($("h-bar2"), 26.35, 0.26);
+  draw($("h-chim"), 26.38, 0.26); draw($("h-aer"), 26.42, 0.26);
+
+  /* 10 · "act," @26.83: the left window turns amber (Amber 2 at 30 %); the right one stays dark */
+  tl.to($("h-win1"), { fill: "#e8c56a", fillOpacity: 0.3, duration: 0.3, ease: "power2.out" }, 26.83);
+
+  /* 11 · "forecast" @28.05: strip C; 12 · "half" @28.89: its chip */
+  stripIn($("strip-c"), 28.05);
+  tl.to($("chip-c"), { autoAlpha: 1, duration: 0.3, ease: "power1.out" }, 28.89);
+
+  /* 13 · "warning" @30.85: strip D; 14 · "Counties" @31.49: its chip. Hold to the last frame */
+  stripIn($("strip-d"), 30.85);
+  tl.to($("chip-d"), { autoAlpha: 1, duration: 0.3, ease: "power1.out" }, 31.49);
+
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
