@@ -24,7 +24,7 @@ The push: scale 1.00 to 1.10 over the whole comp, `ease:"none"`, `transformOrigi
 | Ground | `<img src="media/stills/a1-service-a-teletype.jpg">`, left 0, top 0, 1920 x 1080, `object-fit:cover; object-position:50% 20%`, moved by GSAP only (section 2). On from frame 0. Behind it the canvas gradient, so a late image never shows a transparent frame |
 | Scrim | none over the map: it is the subject. One bottom band only, left 0, top 900, 1920 x 180, `linear-gradient(to bottom, rgba(3,5,8,0), rgba(3,5,8,0.55))`, so the caption reads on the orange slide |
 | Caption | credit corner, left 96, bottom 60, the source-line type of design sheet section 10 (Arial 700 22 px, its colour and shadow): `Service A teletypewriter system, about 1960 · NOAA` |
-| Amber wash | one `<div>` over the whole frame, left 0, top 0, 1920 x 1080, fill Amber 2, CSS `opacity:0`. It does not move and has no edge: the whole map lifts at once |
+| Amber wash | one `<div>` over the whole frame, left 0, top 0, 1920 x 1080, fill Amber 2 with a screen blend (as fixed, 12 Oct 26), CSS `opacity:0`. It does not move and has no edge: the whole map lifts at once |
 
 Nothing else is on screen: no arrow, no dot, no route line, no city label, no clock.
 
