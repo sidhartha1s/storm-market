@@ -2,174 +2,187 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-a2s06-headstart (A2-S6, A2-S7): two panels that never touch, a clock in each (5:45 PM, Starke County; about 6:00 PM,
-     Marshall County), each with its own source line; then the same amber delay bar under both, longer than one head start and
-     most of the other. Brief: mg_specs/briefs/g-a2s06-headstart.md. Base of the clock family: the panel block and the bar row
-     block lift out whole.
-     Each panel is one wrapper at its own left (96 and 864); everything inside is in panel px (screen x minus the panel's left,
-     screen y unchanged), so both panels share one set of rules. Clock: media/drawings/wall-clock.svg (DR-09) inline at 1.5.
-     Bars: 40 px per minute from a zero tick that stands for the 5:43 PM warning; widths are set from the minutes in the script.
+<!-- g-a2s06-headstart (A2-S6, A2-S7): two glass cards side by side, each a clock, a time, a county and its own source line
+     (5:45 PM, Starke County; about 6:00 PM, Marshall County); then under each an amber bar of the same length, which swallows the
+     2 minute head start whole and covers most of the 17 minute one. The two figures are never joined.
+     Brief: mg_specs/briefs/g-a2s06-headstart.md. Base of the clock family: the clock block (inlined drawing, hands()) and the arc
+     block (arc()) are separate and lift out whole.
+     Clock: media/drawings/wall-clock.svg inline at 1.6, hands turned about (62, 62) in the drawing's own units.
+     Delay arc: radius 113 about the face centre, 258 degrees (the 5:43 minute mark) to 318 (ten minutes on), 10 px, round caps.
+     Bars: 30 px per minute from each card's left edge. Angles and lengths are computed in the script from the times and minutes.
      Cues are comp-local seconds from audio/a2-s6.words.json and a2-s7.words.json (wav starts -0.47 and 11.44, timeline-map.md). -->
 <template>
 <style>
   /* ---- ground ---- */
-  #hs-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
-  .hs-h { opacity:0; visibility:hidden; }
+  #hds-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .hds-sweep { position:absolute; left:0; top:0; width:520px; height:1080px; background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
+  .hds-h { opacity:0; visibility:hidden; }
 
-  /* ---- panel: glass card, clock, time, place, source ---- */
-  .hs-pan { position:absolute; top:0; width:720px; height:1080px; }
-  .hs-card { position:absolute; left:0; top:240px; width:720px; height:560px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+  /* ---- card: glass, clock, eyebrow slot, time, place (screen px; the wrapper is full frame and slides as one) ---- */
+  .hds-col { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .hds-card { position:absolute; top:150px; width:700px; height:280px; box-sizing:border-box; background:rgba(10,16,24,0.55);
     backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
-  .hs-svg { position:absolute; left:0; top:0; width:720px; height:1080px; overflow:visible; }
-  .hs-about { position:absolute; left:240px; top:284px; font:700 34px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
-  .hs-time { position:absolute; left:240px; top:318px; font:700 104px 'Courier New', Courier, monospace; color:#e8c56a; letter-spacing:-5px; white-space:nowrap; line-height:1; }
-  .hs-place { position:absolute; left:242px; top:436px; font:700 34px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
-  .hs-src { position:absolute; left:30px; top:502px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; }
-  .hs-rule { position:absolute; left:20px; top:544px; width:680px; height:1px; background:rgba(255,255,255,0.14); }
+  .hds-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .hds-eye { position:absolute; top:196px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .hds-time { position:absolute; top:236px; font:700 84px 'Courier New', Courier, monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .hds-place { position:absolute; top:334px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .hds-src { position:absolute; top:444px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
 
-  /* ---- bar row: zero tick, head start bar and its wash, delay bar; 40 px per minute ---- */
-  .hs-headlab { position:absolute; left:20px; top:574px; font:700 28px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
-  .hs-tick { position:absolute; left:18.5px; top:612px; width:3px; height:124px; border-radius:1.5px; background:#dfe7ee; }
-  .hs-ticklab { position:absolute; left:20px; top:748px; font:700 22px Arial, sans-serif; color:#93a3b2; white-space:nowrap; line-height:1; }
-  .hs-head { position:absolute; left:20px; top:620px; height:48px; box-sizing:border-box; border:3px solid #dfe7ee; background:#15202b; }
-  .hs-wash { position:absolute; left:23px; top:623px; height:42px; background:rgba(232,197,106,0.45); }
-  .hs-delay { position:absolute; left:20px; top:680px; height:48px; background:#e8c56a; }
-  .hs-delaylab { position:absolute; left:36px; top:692px; font:700 24px Arial, sans-serif; color:#2a2622; white-space:nowrap; line-height:24px; }
+  /* ---- delay arc on a face ---- */
+  .hds-arc { fill:none; stroke:#e8c56a; stroke-width:10; stroke-linecap:round; }
 
-  /* ---- frame source line (design sheet section 10) ---- */
-  .hs-frame-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  /* ---- bar row: amber delay bar, head start outline over it, their labels; 30 px per minute ---- */
+  .hds-bar { position:absolute; top:652px; height:36px; background:#e8c56a; }
+  .hds-box { fill:none; stroke:#dfe7ee; stroke-width:3; stroke-linejoin:miter; }
+  .hds-lab { position:absolute; font:900 30px 'Arial Black', Arial, sans-serif; white-space:nowrap; line-height:1; }
+  .hds-lab-head { top:590px; color:#dfe7ee; }
+  .hds-lab-bar { top:718px; color:#e8c56a; }
 </style>
-<div id="hs-root" data-composition-id="g-a2s06-headstart" data-width="1920" data-height="1080">
+<div id="hds-root" data-composition-id="g-a2s06-headstart" data-width="1920" data-height="1080" data-duration="17.66">
+  <div class="hds-sweep" id="hds-sweep"></div>
 
-  <!-- left panel: the Weather Service's account -->
-  <div class="hs-pan" id="hs-l" style="left:96px">
-    <div class="hs-card"></div>
-    <svg class="hs-svg" viewBox="0 0 720 1080">
-      <g transform="translate(30 284) scale(1.5)">
-        <g fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+  <!-- left column: the Weather Service's account -->
+  <div class="hds-col hds-h" id="hds-l-col">
+    <div class="hds-card" style="left:96px"></div>
+    <svg class="hds-svg" viewBox="0 0 1920 1080">
+      <g transform="translate(132 191) scale(1.6)">
+        <g fill="none" stroke="#dfe7ee" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="62" cy="62" r="62" fill="#15202b"/>
           <path d="M62.0 8.0 L62.0 22.0 M89.0 15.2 L85.0 22.2 M108.8 35.0 L101.8 39.0 M116.0 62.0 L102.0 62.0 M108.8 89.0 L101.8 85.0 M89.0 108.8 L85.0 101.8 M62.0 116.0 L62.0 102.0 M35.0 108.8 L39.0 101.8 M15.2 89.0 L22.2 85.0 M8.0 62.0 L22.0 62.0 M15.2 35.0 L22.2 39.0 M35.0 15.2 L39.0 22.2" stroke-width="3"/>
-          <g class="hs-h" id="hs-l-hour"><path d="M62 62 V28" stroke-width="5"/></g>
-          <g class="hs-h" id="hs-l-min"><path d="M62 62 V10" stroke-width="5"/></g>
+          <g id="hds-l-hour"><path d="M62 62 V28" stroke-width="5"/></g>
+          <g id="hds-l-min"><path d="M62 62 V10" stroke-width="5"/></g>
           <path d="M62 62 h0.01" stroke-width="10"/>
         </g>
       </g>
+      <path class="hds-arc hds-h" id="hds-l-arc"/>
     </svg>
-    <div class="hs-time hs-h" id="hs-l-time">5:45 PM</div>
-    <div class="hs-place hs-h" id="hs-l-place">Starke County</div>
-    <div class="hs-src hs-h" id="hs-l-src">National Weather Service, Northern Indiana</div>
-    <div class="hs-rule"></div>
-
-    <div class="hs-headlab hs-h" id="hs-l-headlab">2 minute head start</div>
-    <div class="hs-head hs-h" id="hs-l-head"></div>
-    <div class="hs-wash hs-h" id="hs-l-wash"></div>
-    <div class="hs-delay hs-h" id="hs-l-delay"></div>
-    <div class="hs-delaylab hs-h" id="hs-l-delaylab">at least 10 minutes</div>
-    <div class="hs-tick hs-h" id="hs-l-tick"></div>
-    <div class="hs-ticklab hs-h" id="hs-l-ticklab">5:43 PM warning</div>
+    <div class="hds-time hds-h" id="hds-l-time" style="left:376px">5:45 PM</div>
+    <div class="hds-place hds-h" id="hds-l-place" style="left:378px">Starke County</div>
   </div>
+  <div class="hds-src hds-h" id="hds-l-src" style="left:96px">National Weather Service, Northern Indiana</div>
 
-  <!-- right panel: the 1966 study's account; dim until its sentence -->
-  <div class="hs-pan" id="hs-r" style="left:864px; opacity:0.45">
-    <div class="hs-card"></div>
-    <svg class="hs-svg" viewBox="0 0 720 1080">
-      <g transform="translate(30 284) scale(1.5)">
-        <g fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+  <!-- right column: the 1966 study's account -->
+  <div class="hds-col hds-h" id="hds-r-col">
+    <div class="hds-card" style="left:876px"></div>
+    <svg class="hds-svg" viewBox="0 0 1920 1080">
+      <g transform="translate(912 191) scale(1.6)">
+        <g fill="none" stroke="#dfe7ee" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="62" cy="62" r="62" fill="#15202b"/>
           <path d="M62.0 8.0 L62.0 22.0 M89.0 15.2 L85.0 22.2 M108.8 35.0 L101.8 39.0 M116.0 62.0 L102.0 62.0 M108.8 89.0 L101.8 85.0 M89.0 108.8 L85.0 101.8 M62.0 116.0 L62.0 102.0 M35.0 108.8 L39.0 101.8 M15.2 89.0 L22.2 85.0 M8.0 62.0 L22.0 62.0 M15.2 35.0 L22.2 39.0 M35.0 15.2 L39.0 22.2" stroke-width="3"/>
-          <g class="hs-h" id="hs-r-hour"><path d="M62 62 V28" stroke-width="5"/></g>
-          <g class="hs-h" id="hs-r-min"><path d="M62 62 V10" stroke-width="5"/></g>
+          <g id="hds-r-hour"><path d="M62 62 V28" stroke-width="5"/></g>
+          <g id="hds-r-min"><path d="M62 62 V10" stroke-width="5"/></g>
           <path d="M62 62 h0.01" stroke-width="10"/>
         </g>
       </g>
+      <path class="hds-arc hds-h" id="hds-r-arc"/>
     </svg>
-    <div class="hs-about hs-h" id="hs-r-about">about</div>
-    <div class="hs-time hs-h" id="hs-r-time">6:00 PM</div>
-    <div class="hs-place hs-h" id="hs-r-place">Marshall County</div>
-    <div class="hs-src hs-h" id="hs-r-src">Disaster Research Center, 1966, p. 14</div>
-    <div class="hs-rule"></div>
-
-    <div class="hs-headlab hs-h" id="hs-r-headlab">17 minute head start</div>
-    <div class="hs-head hs-h" id="hs-r-head"></div>
-    <div class="hs-wash hs-h" id="hs-r-wash"></div>
-    <div class="hs-delay hs-h" id="hs-r-delay"></div>
-    <div class="hs-delaylab hs-h" id="hs-r-delaylab">at least 10 minutes</div>
-    <div class="hs-tick hs-h" id="hs-r-tick"></div>
-    <div class="hs-ticklab hs-h" id="hs-r-ticklab">5:43 PM warning</div>
+    <div class="hds-eye hds-h" id="hds-r-about" style="left:1158px">about</div>
+    <div class="hds-time hds-h" id="hds-r-time" style="left:1156px">6:00 PM</div>
+    <div class="hds-place hds-h" id="hds-r-place" style="left:1158px">Marshall County</div>
   </div>
+  <div class="hds-src hds-h" id="hds-r-src" style="left:876px">Disaster Research Center, 1966, p. 14</div>
 
-  <div class="hs-frame-src hs-h" id="hs-frame-src">Delay: Disaster Research Center, 1966, p. 14</div>
+  <!-- bar rows: the same delay bar under each card, the head start outline drawn over it -->
+  <div class="hds-bar hds-h" id="hds-l-bar" style="left:96px"></div>
+  <div class="hds-bar hds-h" id="hds-r-bar" style="left:876px"></div>
+  <svg class="hds-svg" viewBox="0 0 1920 1080">
+    <path class="hds-box hds-h" id="hds-l-box"/>
+    <path class="hds-box hds-h" id="hds-r-box"/>
+  </svg>
+  <div class="hds-lab hds-lab-head hds-h" id="hds-l-headlab" style="left:96px">2 minute head start</div>
+  <div class="hds-lab hds-lab-head hds-h" id="hds-r-headlab" style="left:876px">17 minute head start</div>
+  <div class="hds-lab hds-lab-bar hds-h" id="hds-l-barlab" style="left:96px">at least 10 minutes</div>
+  <div class="hds-lab hds-lab-bar hds-h" id="hds-r-barlab" style="left:876px">at least 10 minutes</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  var ID = "g-a2s06-headstart", P = "hs";
-  var PXM = 40, HEAD_L = 2, HEAD_R = 17, DELAY = 10, LINE = 3;   /* px per minute; minutes; the head start bar's outline */
-  var HUB = "62 62";                                             /* the hands turn about the face centre, in the drawing's own units */
+  var ID = "g-a2s06-headstart", P = "hds";
   var $ = function (s) { return document.getElementById(P + "-" + s); };
   var tl = gsap.timeline({ paused: true });
   function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
   function fade(id, t, d) { tl.to($(id), { autoAlpha: 1, duration: d, ease: "none" }, t); }
   function rise(id, t, d) { tl.to($(id), { y: 0, autoAlpha: 1, duration: d, ease: "power3.out" }, t); }
-  function grow(id, t, d, ease) { tl.set($(id), { autoAlpha: 1 }, t); tl.to($(id), { scaleX: 1, duration: d, ease: ease }, t); }
 
-  /* bar lengths from the minutes: head starts 80 and 680 px, delay 400 px in both panels, washes 80 and 400 px less the outline */
-  $("l-head").style.width = (HEAD_L * PXM) + "px";
-  $("r-head").style.width = (HEAD_R * PXM) + "px";
-  $("l-delay").style.width = (DELAY * PXM) + "px";
-  $("r-delay").style.width = (DELAY * PXM) + "px";
-  $("l-wash").style.width = (HEAD_L * PXM - 2 * LINE) + "px";
-  $("r-wash").style.width = (DELAY * PXM - LINE) + "px";
+  /* ---- clock: angles from the time, clockwise degrees from 12; the hands turn about (62, 62) in the drawing's own units ---- */
+  var HUB = "62 62";
+  function hourDeg(h, m) { return (h % 12) * 30 + m * 0.5; }
+  function minDeg(m) { return m * 6; }
+  function hands(side, h, m) { s0($(side + "-hour"), { rotation: hourDeg(h, m), svgOrigin: HUB }); s0($(side + "-min"), { rotation: minDeg(m), svgOrigin: HUB }); }
+  function sweep(side, h, m, turn, t) {   /* turn 360 keeps a hand that ends on 12 moving clockwise */
+    tl.to($(side + "-hour"), { rotation: hourDeg(h, m), duration: 0.5, ease: "power3.out" }, t);
+    tl.to($(side + "-min"), { rotation: minDeg(m) + turn, duration: 0.5, ease: "power3.out" }, t);
+  }
+
+  /* ---- arc: a clockwise circle arc as a path, degrees clockwise from 12, grown with strokeDashoffset ---- */
+  function arc(cx, cy, r, fromDeg, toDeg) {
+    function pt(deg) { var a = deg * Math.PI / 180; return (cx + r * Math.sin(a)).toFixed(2) + " " + (cy - r * Math.cos(a)).toFixed(2); }
+    return "M" + pt(fromDeg) + " A" + r + " " + r + " 0 " + (toDeg - fromDeg > 180 ? 1 : 0) + " 1 " + pt(toDeg);
+  }
+  function dash(e, len) { var L = Math.ceil(len) + 1; s0(e, { strokeDasharray: L, strokeDashoffset: L }); return e; }
+  function drawOn(e, t, d, ease) { tl.set(e, { autoAlpha: 1 }, t); tl.to(e, { strokeDashoffset: 0, duration: d, ease: ease }, t); }
+
+  /* ---- bars: 30 px per minute from the card's left edge; the outline is two halves that run left to right and meet ---- */
+  var PXM = 30, DELAY = 10, WARN = 43, Y0 = 642, Y1 = 698, LINE = 3;
+  function box(x0, minutes) { var a = x0 + LINE / 2, b = x0 + minutes * PXM - LINE / 2, m = (Y0 + Y1) / 2, t = Y0 + LINE / 2, u = Y1 - LINE / 2;
+    return "M" + a + " " + m + " V" + t + " H" + b + " V" + m + " M" + a + " " + m + " V" + u + " H" + b + " V" + m; }
+  function bar(side, t, d) { tl.set($(side + "-bar"), { autoAlpha: 1 }, t); tl.to($(side + "-bar"), { scaleX: 1, duration: d, ease: "none" }, t); }
+
+  var lArc = $("l-arc"), rArc = $("r-arc"), lBox = $("l-box"), rBox = $("r-box");
+  $("l-bar").style.width = (DELAY * PXM) + "px";
+  $("r-bar").style.width = (DELAY * PXM) + "px";
+  lArc.setAttribute("d", arc(231.2, 290.2, 113, minDeg(WARN), minDeg(WARN + DELAY)));    /* 258 to 318 */
+  rArc.setAttribute("d", arc(1011.2, 290.2, 113, minDeg(WARN), minDeg(WARN + DELAY)));
+  lBox.setAttribute("d", box(96, 2));       /* 60 px */
+  rBox.setAttribute("d", box(876, 17));     /* 510 px */
 
   /* rest states, set at 0 */
-  s0($("l-hour"), { rotation: 172.5, svgOrigin: HUB });    /* 5:45: hour hand just short of 6 */
-  s0($("l-min"), { rotation: 240, svgOrigin: HUB });       /* sweeps its last 30 degrees onto the 9 */
-  s0($("r-hour"), { rotation: 180, svgOrigin: HUB });      /* 6:00: hour hand on 6 */
-  s0($("r-min"), { rotation: 330, svgOrigin: HUB });       /* sweeps its last 30 degrees onto 12 */
-  s0([$("l-time"), $("r-time"), $("l-place"), $("r-place")], { y: 16 });
-  s0($("frame-src"), { y: 12 });
-  s0([$("l-tick"), $("r-tick")], { scaleY: 0, transformOrigin: "50% 0%" });
-  s0([$("l-head"), $("r-head"), $("l-wash"), $("r-wash"), $("l-delay"), $("r-delay")], { scaleX: 0, transformOrigin: "left center" });
+  hands("l", 5, 40);                        /* 170.0 and 240 */
+  hands("r", 5, 55);                        /* 177.5 and 330 */
+  dash(lArc, lArc.getTotalLength()); dash(rArc, rArc.getTotalLength());
+  dash(lBox, lBox.getTotalLength() / 2); dash(rBox, rBox.getTotalLength() / 2);   /* each half of the outline is one sub-path */
+  s0($("l-col"), { x: -800 }); s0($("r-col"), { x: 1100 });
+  s0([$("l-src"), $("r-src"), $("l-place"), $("r-place")], { y: 12 });
+  s0([$("l-barlab"), $("r-barlab")], { y: 16 });
+  s0([$("l-bar"), $("r-bar")], { scaleX: 0, transformOrigin: "left center" });
+  s0($("sweep"), { x: -520 });
 
-  /* 0 · "The" @0.00: both panels, rule and face without hands; the right panel at 0.45 */
-  fade("l-src", 0.09, 0.3);                                /* 1 · Weather @0.09 */
+  /* 0 · "The" @0.00: ground and the sweep band only */
+  tl.to($("sweep"), { x: 1920, duration: 17.66, ease: "none" }, 0);
 
-  /* 2 · 545 @3.01: the left hands, the minute hand's sweep, the time */
-  tl.to([$("l-hour"), $("l-min")], { autoAlpha: 1, duration: 0.15, ease: "none" }, 3.01);
-  tl.to($("l-min"), { rotation: 270, duration: 0.5, ease: "power3.out" }, 3.01);
-  rise("l-time", 3.01, 0.35);
-  rise("l-place", 4.51, 0.3);                              /* 3 · Stark @4.51: Starke County */
+  /* 1 · Weather @0.09: the left card slides in with its clock at 5:40; its source line on "Service" @0.29 */
+  tl.set($("l-col"), { autoAlpha: 1 }, 0.09);
+  tl.to($("l-col"), { x: 0, duration: 0.6, ease: "power3.out" }, 0.09);
+  rise("l-src", 0.29, 0.3);
 
-  /* 4 · 1966 @6.13: the right panel to full, its source line with it */
-  tl.to($("r"), { opacity: 1, duration: 0.3, ease: "none" }, 6.13);
-  fade("r-src", 6.13, 0.3);
-  tl.to($("r-about"), { autoAlpha: 1, duration: 0.2, ease: "power2.out" }, 8.95);   /* 5 · about @8.95, mostly up before the time starts @9.13 */
+  sweep("l", 5, 45, 0, 3.01);               /* 2 · 545 @3.01: hands to 172.5 and 270; the time lands */
+  fade("l-time", 3.01, 0.3);
+  rise("l-place", 4.51, 0.3);               /* 3 · Stark @4.51: Starke County */
 
-  /* 6 · 6 @9.13: the right hands, the minute hand's sweep, the time */
-  tl.to([$("r-hour"), $("r-min")], { autoAlpha: 1, duration: 0.15, ease: "none" }, 9.13);
-  tl.to($("r-min"), { rotation: 360, duration: 0.5, ease: "power3.out" }, 9.13);
-  rise("r-time", 9.13, 0.35);
-  rise("r-place", 10.21, 0.3);                             /* 7 · Marshall @10.21 */
+  /* 4 · 1966 @6.13: the right card slides in with its clock at 5:55; its source line on "study" @6.91 */
+  tl.set($("r-col"), { autoAlpha: 1 }, 6.13);
+  tl.to($("r-col"), { x: 0, duration: 0.6, ease: "power3.out" }, 6.13);
+  rise("r-src", 6.91, 0.3);
 
-  /* 8 · "A" @11.69: both zero ticks draw, both tick labels and the frame source line in */
-  tl.set([$("l-tick"), $("r-tick")], { autoAlpha: 1 }, 11.69);
-  tl.to([$("l-tick"), $("r-tick")], { scaleY: 1, duration: 0.25, ease: "power2.out" }, 11.69);
-  fade("l-ticklab", 11.69, 0.12); fade("r-ticklab", 11.69, 0.12);   /* up before the bars start @11.82 */
-  rise("frame-src", 11.69, 0.3);
+  tl.to($("r-about"), { autoAlpha: 1, duration: 0.2, ease: "power2.out" }, 8.95);   /* 5 · about @8.95 */
+  sweep("r", 6, 0, 360, 9.13);              /* 6 · 6 @9.13: hands to 180.0 and 12; the time lands */
+  fade("r-time", 9.13, 0.3);
+  rise("r-place", 10.21, 0.3);              /* 7 · Marshall @10.21 */
 
-  /* 9 · 10 @11.82: both delay bars grow from their ticks at once; their labels over the last 0.2 s */
-  grow("l-delay", 11.82, 0.5, "power2.out"); grow("r-delay", 11.82, 0.5, "power2.out");
-  fade("l-delaylab", 12.12, 0.2); fade("r-delaylab", 12.12, 0.2);
+  /* 8 · 10 @11.82: the left bar and the left face's delay arc grow together, done @12.60 on "eats"; 9 · minute @12.04: its label */
+  bar("l", 11.82, 0.78); drawOn(lArc, 11.82, 0.78, "none");
+  rise("l-barlab", 12.04, 0.3);
 
-  /* 10 · 2 @13.46: the left head start bar and its label; 11 · head @13.86: the wash covers all of it */
-  grow("l-head", 13.46, 0.3, "power2.out"); fade("l-headlab", 13.46, 0.3);
-  grow("l-wash", 13.86, 0.3, "none");
+  /* 10 · 2 @13.46: the 60 px outline draws on over the bar; its label */
+  drawOn(lBox, 13.46, 0.3, "power2.out"); fade("l-headlab", 13.46, 0.3);
 
-  /* 12 · 17 @15.60: the right head start bar and its label; 13 · one @16.22: the wash stops at 400 of its 680 px */
-  grow("r-head", 15.60, 0.5, "power2.out"); fade("r-headlab", 15.60, 0.3);
-  grow("r-wash", 16.22, 0.4, "none");
+  /* 11 · and @14.98: the right bar and arc grow, done @15.48; 12 · most @15.12: its label */
+  bar("r", 14.98, 0.5); drawOn(rArc, 14.98, 0.5, "none");
+  rise("r-barlab", 15.12, 0.3);
 
-  /* hold to the last frame @17.66 */
+  /* 13 · 17 @15.60: the 510 px outline draws left to right, 210 px past the bar's end; its label. Hold to 17.66 */
+  drawOn(rBox, 15.60, 0.5, "power2.out"); fade("r-headlab", 15.60, 0.3);
+
   tl.to({}, { duration: 0.01 }, 17.65);
 
   window.__timelines[ID] = tl;
