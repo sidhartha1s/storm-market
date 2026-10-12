@@ -83,7 +83,7 @@ As `references/mg-brief-template.md` section 6, with these: `compositions/g-a4s0
 **Assets mounted (paths from the episode folder):**
 - `media/docs/study-p21-eyes-crop.png` (1460 x 299 px).
 - `media/drawings/wall-clock.svg` (object box 124 x 124, viewBox -6 -6 136 136), inlined for the stamp's face if the builder does not copy the built stamp's own face.
-- `media/films/cuts/a14-05-operations-room.mp4` (640 x 480, 31.53 s, no audio; used from 20.0 s, window 0.00 to 3.15): not mounted by this comp; the composer mounts it under it in `index.html`. The comp is opaque over the whole frame except that window.
+- `media/films/cuts/a14-05b-operations-room-wide.mp4` (the pre-trimmed cut, mounted from file second 0, window 0.00 to 3.15; cut by the composer from seconds 20.0 to 24.0 of `media/films/cuts/a14-05-operations-room.mp4`, which is 640 x 480, 31.53 s, no audio; the trimmed file was not on disk when this brief was edited): not mounted by this comp; the composer mounts it under it in `index.html`. The comp is opaque over the whole frame except that window. If no `filmwin` video sits under this comp at 661.85 when the build starts, stop and tell the orchestrator.
 Not used: `media/films/cuts/a14-10-desk-telephone.mp4` (15.72 s) and `media/films/cuts/a14-08-telephone-call.mp4` (4.17 s), for the reasons in section 2.
 
 ## 7. Tools
