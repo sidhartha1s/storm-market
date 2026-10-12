@@ -51,6 +51,7 @@ No part of the page card is dimmed: all three lines stay at full brightness.
 4. Nothing on either card is retyped. "a team of five" is spoken, not shown: no figure 5 is on screen.
 5. One source line per frame, and it names the page that is on screen.
 6. A visible change at least every 3 s. Nothing in x >= 1600 and y >= 680.
+7. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Steps 0 to 3: the memo card fills the frame (y 54 to 942). Step 4 on: the memo card does not leave. It stays in place and dims to opacity 0.22, and the page card (y 380 to 569) sits over it; a page card alone would leave the band below it (y 569 to 1080, 47.3 % of the frame) empty for 5.26 s.
 
 ## 5. Text (exact) and cues
 Text: `April 12, 1965` · `Weather Bureau survey team memo, May 2, 1965` · `Weather Bureau survey report, 1965, p. 1`. Page words are the images.
