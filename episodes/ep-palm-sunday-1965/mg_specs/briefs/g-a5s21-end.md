@@ -48,7 +48,7 @@ t from comp start = the segment's wav start inside the composition (timeline-map
 | 1 | A5-S21 | 4 | end | 1.34 | 0.91 | the dots between the sheet and the microphone turn Body light one after another, sheet end first (12 dots at the 18 px pitch, 0.03 s apart, 0.36 s in all) |
 | 2 | A5-S21 | 7 | list? | 1.68 | 1.25 | the microphone's lines step from 55 % Label grey to full Label grey (a stroke change, 0.3 s); the lamp stays Panel dark |
 | 3 | end | | | | 2.62 | comp ends on the hold; black follows |
-The dot count is checked against the window: 15 dots at 0.03 s is 0.45 s, inside the 0.34 s to the next cue plus its 0.3 s move.
+The dot count is checked against the window: the 206 px stretch holds 12 dots at its 18 px pitch; 12 dots at 0.03 s is 0.36 s, against 0.34 s to the next cue, so the last dot lands as the microphone starts its step.
 
 ## 6. Contract
 As `references/mg-brief-template.md` section 6, with plan rule 3 over its `id="root"`. File the builder may write: `compositions/g-a5s21-end.html` only. Id prefix `end-`, root id `end-root`. Base it copies: the sheet, the chain and the labels of the built `compositions/g-t1s3-list.html` at its Everything state. Assets mounted: `media/drawings/microphone.svg`, `media/drawings/house.svg`, both inline. `g-a6s03-announcer` opens on this same frame with the microphone lit: keep every box here unchanged.
