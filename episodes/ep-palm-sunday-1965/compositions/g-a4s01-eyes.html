@@ -105,7 +105,9 @@ window.__timelines = window.__timelines || {};
   s0($("ul1"), { scaleX: 0, transformOrigin: "left center" });
   s0($("ul2"), { scaleX: 0, transformOrigin: "left center" });
 
-  /* 0 · "He" @0.00: the cut out of the book ad. Ground, open window on the operations room, frame, film label. The film is the motion */
+  /* 0 · "He" @0.00: the cut out of the book ad. Ground, open window on the operations room, frame, film label. The film is the
+     motion; the label floats 6 px down, back and down, away from the film's edge, so the composition's own layer is never still for 4 s */
+  tl.to($("label"), { y: 6, duration: CUT / 3, ease: "sine.inOut", yoyo: true, repeat: 2 }, 0);
 
   /* 1 · "in" @3.15: hard cut. The hole closes for good; frame and film label off; chip, card with its unlit page, stamp and source line on */
   tl.set($("cover"), { autoAlpha: 1 }, CUT);
