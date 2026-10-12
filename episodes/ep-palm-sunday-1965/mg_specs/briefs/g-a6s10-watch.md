@@ -27,7 +27,7 @@ The microphone is `media/drawings/microphone.svg` at scale 1.6 (object box 192 x
 | Source A | design sheet section 10, left 96, bottom 60: `Disaster Research Center, 1966, p. 30` |
 | Glass card | glass plate as the clock stamp's, left 1200, top 300, 600 x 300 (right 1800, bottom 600) |
 | Glass line 1 | Courier New 700 44 px, Headline white, left 1240, top 350: `TORNADO FORECAST` |
-| Strike | a Body light line, 4 px, round caps, across glass line 1 at its mid height (y 376), from x 1232 to the text's measured right edge plus 8 px; drawn left to right with `strokeDashoffset` |
+| Strike | a Body light line, 4 px, round caps, across glass line 1 at its mid height (y 376), from x 1232 to the text's measured right edge plus 8 px; drawn left to right with `strokeDashoffset`. As built and accepted by the lead, 12 Oct 26: the strike is a bar on the glass line, and the struck line's letters go Label grey |
 | Glass line 2 | Courier New 700 44 px, Headline white, left 1240, top 470: `TORNADO WATCH` |
 | Source B | same place as source A, a second pre-authored element: `National Weather Service, Chicago` |
 Text widths are estimates until read on a frame: strip text about 540 px, glass text about 425 px. Each must end 30 px or more inside its plate.
