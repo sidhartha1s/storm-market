@@ -344,9 +344,9 @@ window.__timelines = window.__timelines || {};
     tl.fromTo(n, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out", immediateRender: false }, t);
   }
   function lift(strip, t) { tl.fromTo(strip, { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", immediateRender: false }, t); }
-  function swap(from, to, t) {                              /* the stamp's text changes at the middle of the hands' sweep */
-    tl.to(from, { autoAlpha: 0, duration: 0.1, ease: "none" }, t + 0.2);
-    tl.to(to, { autoAlpha: 1, duration: 0.1, ease: "none" }, t + 0.2);
+  function swap(from, to, t) {                              /* the stamp's text changes at the middle of the hands' sweep, in sequence: the old is at 0 before the new starts, so two texts never share a slot */
+    tl.to(from, { autoAlpha: 0, duration: 0.1, ease: "none" }, t + 0.15);
+    tl.to(to, { autoAlpha: 1, duration: 0.1, ease: "none" }, t + 0.25);
   }
 
   /* ---- clock hands: degrees clockwise from 12, about the face centre (95, 100); the minute hand's angle keeps counting up ---- */
