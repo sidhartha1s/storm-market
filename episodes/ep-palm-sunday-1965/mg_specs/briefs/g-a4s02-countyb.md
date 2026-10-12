@@ -94,7 +94,7 @@ Cue words and times are from `audio/a4-s2.words.json` (34 words), `a4-s3.words.j
 | 16 | A4-S4 | 13 | police | 4.52 | 19.04 | the light leaves the civil defense desk and crosses the arc (0.8 s, ease none) |
 | 17 | A4-S4 | 16 | location | 5.30 | 19.82 | when the light arrives (19.84) it hides and the police desk's lines turn Amber 2 (0.3 s) and stay |
 | 18 | A4-S4 | 25 | radio | 7.80 | 22.32 | the microphone's lines go to Body light and back to Label grey (0.3 s, yoyo). No amber: he asked, nothing was sent |
-| 19 | A4-S5 | 3 | path | 1.04 | 24.61 | the ghost dot appears at the authored point (837, 520) on the police desk's right edge with one Label grey ring (radius 8 to 30, 0.45 s) |
+| 19 | A4-S5 | 3 | path | 1.04 | 24.61 | the ghost dot appears at (837, 520) on the police desk's right edge with one Label grey ring (radius 8 to 30, 0.45 s) |
 | 20 | A4-S5 | 8 | defense | 3.00 | 26.57 | the arc's dots go to Headline white and back to Amber 2 in a wave from left to right (0.6 s in all) |
 | 21 | A4-S5 | 12 | the | 4.66 | 28.23 | the ghost runs x 837 to 1068 (0.8 s, ease none), its grey line growing behind it; on arrival ("station,", index 16, 29.03) the microphone's lines pulse to Body light and back |
 | 22 | A4-S5 | 19 | station | 6.62 | 30.19 | the ghost jumps to x 1170 and runs to x 1400 (0.64 s, ease none); on arrival ("everyone.", index 21, 30.83) the house's lines pulse to Body light and back, windows dark. Hold to 32.43: two amber desks, the amber arc, the grey ghost line |
