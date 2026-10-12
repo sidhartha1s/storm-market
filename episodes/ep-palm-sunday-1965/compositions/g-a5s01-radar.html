@@ -274,7 +274,9 @@ window.__timelines = window.__timelines || {};
   /* 5 · "A" @8.33: the office chip fades */
   tl.to($("chip"), { autoAlpha: 0, duration: 0.2, ease: "power2.out" }, 8.33);
 
-  /* 6 · "John" @9.82: the name card slides in from the left: name, the two lines under it, then the credit */
+  /* 6 · "John" @9.82: the map view moves to its briefed place; the name card slides in from the left: name, the two lines
+         under it, then the credit */
+  tl.to($("mapview"), { x: 0, duration: 0.5, ease: "power2.inOut" }, 9.82);
   tl.fromTo($("card"), { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 9.82);
   show($("name"), 10.07);
   show([$("sub1"), $("sub2")], 10.22);
