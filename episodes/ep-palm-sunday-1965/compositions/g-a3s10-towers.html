@@ -113,7 +113,7 @@ window.__timelines = window.__timelines || {};
   /* 0 · "One" @0.00: ground, the list close with eight plain rows, the list's source line; no band */
 
   /* 1 · power @1.90: the Lit band wipes onto Indiana and Michigan Electric Company and stays */
-  tl.set(band, { visibility: "visible" }, 1.90);
+  tl.set(band, { visibility: "inherit" }, 1.90);   /* inherit, never "visible": a forced-visible band still paints while the host is hidden */
   tl.to(band, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 1.90);
 
   /* 2 · Indiana @3.24: the other seven rows go to Caption dark sub; the lit row stays Caption dark */
