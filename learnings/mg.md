@@ -24,7 +24,7 @@ Newest first. New entries go at the top, under this line. Superseded lines point
   centred box. Fix the box to fit its text; do not exempt the label. One label on two different bars is what
   `data-repeat-ok` is for, and it goes on the two labels, not on the root (the root waives the rule for every text).
 - **The full gate suite was first run after all 69 reads.** It then failed three times in a row (sweep: 2 checks, overlap:
-  3 findings, graphics check: 3 flat-type), about 80 minutes before all were green. **Rule:** the non-browser gates
+  3 findings, graphics check: 3 flat-type): first failure 03:34, all green 04:05, with the render waiting behind it. **Rule:** the non-browser gates
   (`sweep_episode.py` first) run after every build or fix wave, and `run_gates.py` once before the read round starts.
 - **Helpers are not always woken when their background capture ends** (waits of 20 to 80 minutes, five times). The brief
   now says: look in the folder 5 minutes after the capture should have ended; the lead checks folders for silent readers.
