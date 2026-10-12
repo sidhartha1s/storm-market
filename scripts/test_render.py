@@ -370,8 +370,9 @@ if HAVE_FFMPEG:
 
     # render-11 (12 Oct 26): a draft is rendered at render.cmd's 15 fps, so judging it against the
     # composition's data-fps failed every draft, and the log came from the basename ("draft" in it),
-    # so a draft named ...-preview-v1 was checked against render_full.log. The mode is now an
-    # argument; the final-render checks must keep failing.
+    # so a draft named ...-preview-v1 was checked against render_full.log. The mode is now a
+    # required argument, a draft is judged against the rate render.cmd recorded in
+    # render_draft.fps (RENDER_FPS included), and the final-render checks must keep failing.
     def mk_clip(path, fps):
         subprocess.run(["ffmpeg", "-y", "-v", "error",
                         "-f", "lavfi", "-i", f"testsrc=size=320x240:rate={fps}:duration=2",
