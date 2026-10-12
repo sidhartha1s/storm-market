@@ -84,10 +84,10 @@ Text: `Civil defense training film, 1967` · `County B` · `the sheriff` · `civ
 Cue words and times are from `audio/a4-s2.words.json` (34 words), `a4-s3.words.json` (15), `a4-s4.words.json` (27) and `a4-s5.words.json` (22), read on 12 Oct 26. t from comp start = the segment's "wav start inside the composition" in `mg_specs/timeline-map.md` table 5 (A4-S2 -0.40, A4-S3 9.84, A4-S4 14.52, A4-S5 23.57) plus the word's time; a segment's first word uses the table's "first sound" (0.00, 10.06, 14.77, 24.14). Retime from the word, never from the seconds.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
-| 0 | A4-S2 | 0 | He'd | 0.40 | 0.00 | first frame: ground, the chain waiting at half size in Label grey with its two dotted links, the chip `County B` over it. No map yet |
-| 1 | A4-S2 | 4 | one | 0.98 | 0.58 | the river draws on from top to bottom (0.8 s, `strokeDashoffset`) |
-| 2 | A4-S2 | 8 | he | 2.56 | 2.16 | the civil defense mark lands (0.3 s fade with `y:16` to 0) with its label |
-| 3 | A4-S2 | 12 | sheriff | 3.28 | 2.88 | the sheriff's mark lands the same way with its label |
+| 0 | A4-S2 | 0 | He'd | 0.40 | 0.00 | first frame: film view. Ground, open window on the operations room, frame, film label. Nothing else until step 1 |
+| 1 | A4-S2 | 16 | lost | 4.46 | 4.06 | hard cut, the first cue word after 4.0 s: hole cover on, frame and film label off in that frame; the chain waiting at half size in Label grey with its two dotted links and the chip `County B` over it are on; the river draws on from top to bottom (0.5 s, `strokeDashoffset`) |
+| 2 | A4-S2 | 17 | in | 4.80 | 4.40 | the civil defense mark lands (0.3 s fade with `y:16` to 0) with its label |
+| 3 | A4-S2 | 20 | State | 6.24 | 5.84 | the sheriff's mark lands the same way with its label |
 | 4 | A4-S2 | 19 | water. | 5.10 | 4.70 | the river's stroke goes to Headline white and back to Cold blue 2 (0.3 s each way) |
 | 5 | A4-S2 | 23 | told | 6.82 | 6.42 | the sheriff's mark fills Amber 2 (0.3 s) and stays |
 | 6 | A4-S2 | 27 | tornado | 7.84 | 7.44 | the tornado mark comes in from the left edge to box left 150 (1.4 s, power2.out), then drifts to box left 190 (ease none, to 10.06) |
