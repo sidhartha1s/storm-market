@@ -335,16 +335,21 @@ CLOCK = ('<!doctype html><html><head><meta charset="UTF-8"></head><body><templat
 # painted, so it collides with nothing (ep-palm-sunday-1965 g-a4s13-duty, 12 Oct 26: two hard
 # text-collisions against the attribution under the mask; old fbebe442 reports the clipped line). The same
 # pair with no mask still collides, and so does an absolute line inside a static mask that is not its
-# containing block (the mask does not clip it).
-def _masked(mask, left, top):
-    line = 'position:absolute;font-size:40px;line-height:50px;color:#fff;white-space:nowrap'
+# containing block (the mask does not clip it). A mask that holds the text itself clips it too: a
+# fixed-height overflow:hidden headline whose line sits below its box.
+LINE = 'position:absolute;font-size:40px;line-height:50px;color:#fff;white-space:nowrap'
+BOX = 'position:absolute;left:200px;top:600px;width:600px;height:60px'
+quote = lambda left, top: f'<div style="{LINE};left:{left}px;top:{top}px">Quote line two</div>'
+
+
+def _masked(mask, inner):
     return CANVAS_FILES['compositions/g-cv.html'].replace(
         '</div>\n<script>',
-        f'  <div style="{mask}"><div style="{line};left:{left}px;top:{top}px">Quote line two</div></div>\n'
-        f'  <div style="{line};left:200px;top:672px">Said of the forecast</div>\n</div>\n<script>')
+        f'  <div style="{mask}">{inner}</div>\n'
+        f'  <div style="{LINE};left:200px;top:672px">Said of the forecast</div>\n</div>\n<script>')
 
 
-BOX = 'position:absolute;left:200px;top:600px;width:600px;height:60px'
+
 CASES = {  # comp: (source, host s, new output must hold, must not hold, why)
     'g-p1': (CANVAS_FILES['compositions/g-cv.html'], 3, None, 'undesigned', 'a full-frame canvas is a designed background'),
     'g-p2': (cv, 3, None, 'fade-only', 'an onUpdate canvas renderer is continuous motion'),
