@@ -1,4 +1,4 @@
-Host: id=g-a2s19-log file=compositions/g-a2s19-log.html start=450.01 duration=12.55 s (timeline-map.md; wav 12.06 s plus its gaps) track=2
+Host: id=g-a2s19-log file=compositions/g-a2s19-log.html start=450.26 duration=12.55 s (timeline-map.md; wav 12.06 s plus its gaps) track=2
 
 # g-a2s19-log · A2-S19 · three entries in twelve minutes: Plymouth, Bremen, Goshen (wave 2, map family)
 
