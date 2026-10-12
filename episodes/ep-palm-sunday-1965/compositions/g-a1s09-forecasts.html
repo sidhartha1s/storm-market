@@ -1,0 +1,373 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1s09-forecasts (A1-S9 to A1-S12): two afternoon forecasts on their own typed sheets, a clock, and a map that closes in:
+     three states, Indiana's northern half, seven named counties, one unlit teletype in Fort Wayne.
+     Brief: mg_specs/briefs/g-a1s09-forecasts.md; map facts: media/maps/README.md. Map family: copies the bases g-a1s02-strip
+     (full-frame SVG, viewBox camera, clip-path box, BM-2 with BM-1 over it) and g-a2s14-six (NORTH, lit counties, stamp).
+     Maps: media/maps/midwest-states.svg (BM-2) and media/maps/indiana-counties.svg (BM-1), one coordinate space, ids prefixed fc-.
+     The SVG fills the frame; the camera is its viewBox and the visible box is its clip-path:
+       MIDWEST    box 96, 320, 644 x 680    0.35416 px per unit   viewBox -1282.266 -1739.078 5421.317 3049.491
+       INDIANA    box 96, 320, 644 x 680    0.87179 px per unit   viewBox -39.021 -215.559 2202.353 1238.824
+       NORTH      box 716, 62, 1080 x 450   3 px per unit         viewBox 57.333 145.333 640 360   (screen x = 3u - 172, y = 3u - 436)
+       FORTWAYNE  box 716, 62, 1080 x 450   4.5 px per unit       viewBox 280.889 202.222 426.667 240
+     Computed from the files with those formulas:
+       MIDWEST state boxes: Wisconsin x 320 to 594, y 329 to 629, centre (457, 479); Iowa x 151 to 444, y 563 to 768, centre (297, 666);
+       Illinois x 382 to 563, y 628 to 991, centre (472, 809); Indiana x 536 to 685, y 677 to 938 (no fill, no label).
+       INDIANA: the state x 234 to 601, y 339 to 981; its mid line is map y 541.45 (screen y 660); 40 px is 45.88 units.
+       Fort Wayne (605.1, 297.0): NORTH (1643.3, 455.0), FORTWAYNE (1459.0, 426.5). Teletype (612 to 647, 240 to 275):
+       NORTH x 1664 to 1769, y 284 to 389; FORTWAYNE x 1490 to 1647.5, y 170 to 327.5.
+       The seven names sit inside their counties' boxes in NORTH: Porter x 851 to 963, LaPorte x 961 to 1132, St. Joseph x 1116 to 1294,
+       Elkhart x 1293 to 1449, Starke x 962 to 1139 (y 264 to 410), Marshall x 1139 to 1296, Kosciusko x 1288 to 1450.
+     MAP BLOCK: BM-2's group map-states and BM-1's group map-counties, every path element copied whole and unchanged from the two
+     files by one mechanical copy that added the id prefix and nothing else. Indiana's outline is one path (the two files carry
+     the same one): fc-st-in, drawn again at 3 px by a use element. The northern band is schematic: no source draws its edge.
+     Coverage (plan rule 22): each forecast card waits lower (centred in the height of the frame) and rises to its briefed top
+     on the cue of the strip that needs the room under it; in NORTH the box runs down to y 660 at the same camera until the
+     paper strip's cue. Every cue time and every last-frame position is the brief's.
+     Sheets: media/stills/a9-sels-forecast-68.png (702 x 914), a9-sels-forecast-69.png (672 x 872), own size, typed text only
+     (file y 0 to 312 and 0 to 334); the figure under the text never enters the frame.
+     Cues are comp-local seconds from the brief's table (audio/a1-s9 to a1-s12 words.json plus each segment's start in the comp). -->
+<template>
+<style>
+  #fc-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .fc-h { opacity:0; visibility:hidden; }
+
+  /* ---- map block: the SVG fills the frame; the camera is its viewBox, the visible box is its clip-path ---- */
+  .fc-map { position:absolute; left:0; top:0; width:1920px; height:1080px; clip-path:inset(320px 1180px 80px 96px); }
+  .fc-at { position:absolute; width:0; height:0; display:flex; align-items:center; justify-content:center; }
+  .fc-st { flex:none; font:700 22px Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:26px; text-align:center; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .fc-co { flex:none; font:700 22px Arial, sans-serif; color:#f2f5f8; letter-spacing:2px; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .fc-town { position:absolute; font:700 22px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+
+  /* ---- clock stamp, top left (design sheet section 8, as g-t1s2-warning and the two map bases) ---- */
+  .fc-stamp { position:absolute; left:96px; top:96px; width:590px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .fc-face { position:absolute; left:0; top:0; width:200px; height:200px; overflow:visible; }
+  .fc-eye { position:absolute; left:188px; top:20px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .fc-time { position:absolute; left:188px; top:46px; font:700 84px 'Courier New', Courier, monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .fc-place { position:absolute; left:190px; top:148px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+
+  /* ---- forecast cards (design sheet section 9): the sheet at its own size behind a window that ends under the typed text ---- */
+  .fc-card { position:absolute; left:760px; top:96px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .fc-win { position:absolute; left:10px; top:10px; overflow:hidden; }
+  .fc-sheet { display:block; mix-blend-mode:multiply; }
+  .fc-unlit { position:absolute; left:0; top:0; }
+  .fc-dim { position:absolute; background:rgba(21,32,43,0.45); }
+  .fc-ul { position:absolute; height:3px; background:#d0121f; }
+
+  /* ---- quote strips (as g-i1s3-cloud's strip): the sheet's own words, then the study's ---- */
+  .fc-strip { position:absolute; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; }
+  .fc-q52 { position:absolute; left:54px; top:12px; font:52px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:1.15; }
+  .fc-q40 { position:absolute; left:54px; top:23px; font:40px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:1.15; }
+  .fc-att { position:absolute; left:56px; top:86px; font:700 22px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+  .fc-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="fc-root" data-composition-id="g-a1s09-forecasts" data-width="1920" data-height="1080">
+
+  <!-- ================= map block: BM-2 states, BM-1 counties over them, ids prefixed fc- ================= -->
+  <svg class="fc-map" id="fc-map" viewBox="-1282.266 -1739.078 5421.317 3049.491" preserveAspectRatio="xMidYMid meet" fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <defs>
+      <clipPath id="fc-inclip"><use href="#fc-st-in"/></clipPath>
+      <!-- the northern band's fill: flat down to 40 px (45.88 units) above the state's mid line y 541.45, then fading to nothing on it -->
+      <linearGradient id="fc-bfade" gradientUnits="userSpaceOnUse" x1="0" y1="495.57" x2="0" y2="541.45">
+        <stop offset="0" stop-color="#e8c56a" stop-opacity="0.45"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <g id="fc-map-states" fill="#15202b">
+    </g>
+    <!-- the northern band, in map units so it rides the camera: Amber 2 at 25 % (the 0.45 fill at opacity 0.5556), clipped to
+         Indiana, from the state's north edge y 173.0 down to its mid line; its height opens from 0, so it wipes down -->
+    <g clip-path="url(#fc-inclip)" stroke="none">
+      <rect id="fc-band" x="229.8" y="173.0" width="420.9" height="0" fill="url(#fc-bfade)" opacity="0.5556"/>
+    </g>
+    <g id="fc-map-counties" class="fc-h" fill="#15202b" stroke="#93a3b2" stroke-width="1.5">
+    </g>
+    <g id="fc-map-state" class="fc-h" stroke-width="3">
+      <use href="#fc-st-in" fill="none"/>
+    </g>
+    <!-- Fort Wayne at the file's position; the radius is ours: 6 px on screen is 2 units in NORTH, 1.3333 in FORTWAYNE -->
+    <g id="fc-pt-fort-wayne" class="fc-h"><circle id="fc-dot" cx="605.1" cy="297.0" r="2" fill="#dfe7ee" stroke="none"/></g>
+    <!-- teletype (media/drawings/teletype.svg, the unlit drawing), 35 map units wide, so it rides the push; Label grey lines,
+         paper and body Panel dark: unlit from first to last frame -->
+    <g id="fc-tty" class="fc-h" transform="translate(612 240) scale(0.25)" stroke="#93a3b2" stroke-width="3">
+      <rect class="fc-ln" x="34" y="0" width="72" height="50" fill="#15202b" vector-effect="non-scaling-stroke"/>
+      <path class="fc-ln" d="M44 14 H88 M44 26 H96 M44 38 H80" vector-effect="non-scaling-stroke"/>
+      <rect class="fc-ln" x="0" y="50" width="140" height="90" fill="#15202b" vector-effect="non-scaling-stroke"/>
+      <rect class="fc-ln" x="14" y="112" width="112" height="20" vector-effect="non-scaling-stroke"/>
+    </g>
+  </svg>
+
+  <!-- ---- labels over the map: a fixed layer, nothing here rides the camera ---- -->
+  <!-- MIDWEST: each state with the sheet's own qualifier -->
+  <div class="fc-at" style="left:457px;top:479px"><div class="fc-st fc-h" id="fc-lwi">extreme southern<br>Wisconsin</div></div>
+  <div class="fc-at" style="left:297px;top:665px"><div class="fc-st fc-h" id="fc-lia">extreme eastern<br>Iowa</div></div>
+  <div class="fc-at" style="left:472px;top:809px"><div class="fc-st fc-h" id="fc-lil">portions of<br>northern Illinois</div></div>
+  <!-- INDIANA: the band's label -->
+  <div class="fc-at" style="left:418px;top:499px"><div class="fc-st fc-h" id="fc-lin">portions of northern Indiana</div></div>
+  <!-- NORTH: the seven counties, in the order they light -->
+  <div class="fc-at" style="left:907px;top:247px"><div class="fc-co fc-h" id="fc-n1">PORTER</div></div>
+  <div class="fc-at" style="left:1046px;top:228px"><div class="fc-co fc-h" id="fc-n2">LAPORTE</div></div>
+  <div class="fc-at" style="left:1205px;top:174px"><div class="fc-co fc-h" id="fc-n3">ST. JOSEPH</div></div>
+  <div class="fc-at" style="left:1371px;top:173px"><div class="fc-co fc-h" id="fc-n4">ELKHART</div></div>
+  <div class="fc-at" style="left:1051px;top:388px"><div class="fc-co fc-h" id="fc-n5">STARKE</div></div>
+  <div class="fc-at" style="left:1218px;top:324px"><div class="fc-co fc-h" id="fc-n6">MARSHALL</div></div>
+  <div class="fc-at" style="left:1369px;top:372px"><div class="fc-co fc-h" id="fc-n7">KOSCIUSKO</div></div>
+  <!-- Fort Wayne's label, right aligned: to x 1625 in NORTH, to x 1441 in FORTWAYNE -->
+  <div class="fc-town fc-h" id="fc-fw1" style="right:295px;top:444px">Fort Wayne</div>
+  <div class="fc-town fc-h" id="fc-fw2" style="right:479px;top:415px">Fort Wayne</div>
+
+  <!-- ================= clock stamp: 2:00 PM, 5:20 PM, 5:30 PM ================= -->
+  <div class="fc-stamp fc-h" id="fc-stamp">
+    <svg class="fc-face" viewBox="0 0 200 200" fill="none" stroke="#dfe7ee" stroke-linecap="round">
+      <circle cx="95" cy="100" r="62" stroke-width="4"/>
+      <g stroke-width="3">
+        <line x1="95.0" y1="45.0" x2="95.0" y2="59.0"/>
+        <line x1="122.5" y1="52.4" x2="118.5" y2="59.3"/>
+        <line x1="142.6" y1="72.5" x2="135.7" y2="76.5"/>
+        <line x1="150.0" y1="100.0" x2="136.0" y2="100.0"/>
+        <line x1="142.6" y1="127.5" x2="135.7" y2="123.5"/>
+        <line x1="122.5" y1="147.6" x2="118.5" y2="140.7"/>
+        <line x1="95.0" y1="155.0" x2="95.0" y2="141.0"/>
+        <line x1="67.5" y1="147.6" x2="71.5" y2="140.7"/>
+        <line x1="47.4" y1="127.5" x2="54.3" y2="123.5"/>
+        <line x1="40.0" y1="100.0" x2="54.0" y2="100.0"/>
+        <line x1="47.4" y1="72.5" x2="54.3" y2="76.5"/>
+        <line x1="67.5" y1="52.4" x2="71.5" y2="59.3"/>
+      </g>
+      <line id="fc-hh" x1="95" y1="100" x2="95" y2="66" stroke="#f2f5f8" stroke-width="5"/>
+      <line id="fc-mh" x1="95" y1="100" x2="95" y2="48" stroke="#f2f5f8" stroke-width="5"/>
+      <circle cx="95" cy="100" r="5" fill="#e8c56a" stroke="none"/>
+    </svg>
+    <div class="fc-eye" id="fc-eye1">FORECASTERS</div>
+    <div class="fc-eye fc-h" id="fc-eye2">WEATHER BUREAU</div>
+    <div class="fc-time" id="fc-time1">2:00 PM</div>
+    <div class="fc-time fc-h" id="fc-time2">5:20 PM</div>
+    <div class="fc-time fc-h" id="fc-time3">5:30 PM</div>
+    <div class="fc-place" id="fc-place1">Kansas City · Eastern time</div>
+    <div class="fc-place fc-h" id="fc-place2">South Bend, Indiana</div>
+  </div>
+
+  <!-- ================= A1-S9: Forecast 68 ================= -->
+  <!-- the strip sits under the card in the stack: it lifts in as the card rises off it -->
+  <div class="fc-strip fc-h" id="fc-s68" style="left:760px;top:448px;width:816px;height:124px">
+    <div class="fc-q52">&ldquo;ONE OR TWO TORNADOES&rdquo;</div>
+    <div class="fc-att">Severe Weather Forecast 68 · issued 1:00 PM CST (2:00 PM EST)</div>
+  </div>
+  <div class="fc-card fc-h" id="fc-c68" style="width:722px;height:332px">
+    <div class="fc-win" style="width:702px;height:312px"><img class="fc-sheet" src="media/stills/a9-sels-forecast-68.png" alt="" style="width:702px;height:914px"></div>
+    <!-- the unlit page: the whole window except the boxes round "ONE OR TWO" (card x 596 to 692, y 178 to 197)
+         and "TORNADOES" (card x 53 to 137, y 195 to 214), each the word box padded 4 px -->
+    <div class="fc-unlit fc-h" id="fc-u68">
+      <div class="fc-dim" style="left:10px;top:10px;width:702px;height:168px"></div>
+      <div class="fc-dim" style="left:10px;top:178px;width:586px;height:17px"></div>
+      <div class="fc-dim" style="left:692px;top:178px;width:20px;height:17px"></div>
+      <div class="fc-dim" style="left:10px;top:195px;width:43px;height:2px"></div>
+      <div class="fc-dim" style="left:137px;top:195px;width:459px;height:2px"></div>
+      <div class="fc-dim" style="left:692px;top:195px;width:20px;height:2px"></div>
+      <div class="fc-dim" style="left:10px;top:197px;width:43px;height:17px"></div>
+      <div class="fc-dim" style="left:137px;top:197px;width:575px;height:17px"></div>
+      <div class="fc-dim" style="left:10px;top:214px;width:702px;height:108px"></div>
+    </div>
+    <div class="fc-ul" id="fc-ul1" style="left:600px;top:194px;width:88px"></div>
+    <div class="fc-ul" id="fc-ul2" style="left:57px;top:211px;width:76px"></div>
+  </div>
+
+  <!-- ================= A1-S10: Forecast 69 ================= -->
+  <div class="fc-strip fc-h" id="fc-s69a" style="left:760px;top:470px;width:816px;height:92px">
+    <div class="fc-q40">&ldquo;PORTIONS OF NORTHERN INDIANA&rdquo;</div>
+  </div>
+  <div class="fc-strip fc-h" id="fc-s69b" style="left:760px;top:578px;width:816px;height:124px">
+    <div class="fc-q52">&ldquo;A TORNADO OR TWO&rdquo;</div>
+    <div class="fc-att">Severe Weather Forecast 69 · issued 4:20 PM CST (5:20 PM EST)</div>
+  </div>
+  <div class="fc-card fc-h" id="fc-c69" style="width:692px;height:354px">
+    <div class="fc-win" style="width:672px;height:334px"><img class="fc-sheet" src="media/stills/a9-sels-forecast-69.png" alt="" style="width:672px;height:872px"></div>
+    <!-- the unlit page: the whole window except the boxes round "PORTIONS OF NORTHERN INDIANA" (card x 31 to 281, y 148 to 167)
+         and "A TORNADO OR TWO" (card x 345 to 492, y 215 to 236), each the word box padded 4 px -->
+    <div class="fc-unlit fc-h" id="fc-u69">
+      <div class="fc-dim" style="left:10px;top:10px;width:672px;height:138px"></div>
+      <div class="fc-dim" style="left:10px;top:148px;width:21px;height:19px"></div>
+      <div class="fc-dim" style="left:281px;top:148px;width:401px;height:19px"></div>
+      <div class="fc-dim" style="left:10px;top:167px;width:672px;height:48px"></div>
+      <div class="fc-dim" style="left:10px;top:215px;width:335px;height:21px"></div>
+      <div class="fc-dim" style="left:492px;top:215px;width:190px;height:21px"></div>
+      <div class="fc-dim" style="left:10px;top:236px;width:672px;height:108px"></div>
+    </div>
+    <div class="fc-ul" id="fc-ul3" style="left:35px;top:164px;width:242px"></div>
+    <div class="fc-ul" id="fc-ul4" style="left:349px;top:233px;width:139px"></div>
+  </div>
+
+  <!-- ================= A1-S11, A1-S12: the survey's source line, then the study's words on Fort Wayne ================= -->
+  <div class="fc-src fc-h" id="fc-src">Weather Bureau survey, 1965, p. 38</div>
+  <div class="fc-strip fc-h" id="fc-paper" style="left:96px;top:640px;width:780px;height:124px">
+    <div class="fc-q52">&ldquo;but not the one at 5:20 p.m.&rdquo;</div>
+    <div class="fc-att">Disaster Research Center, 1966, p. 10</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a1s09-forecasts", P = "fc";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+
+  /* ---- camera block (as the two map bases): the viewBox is the camera, the clip-path is the box. A push is geometric (the
+          logZoom maths of library/inhouse/snippets/helpers.js: the width runs w0 x (w1 / w0)^p). Every viewBox number is a
+          straight line in that width, so one ease on a plain attr tween moves them together and lands the end values exactly;
+          no onUpdate, so a seek with events off lands the camera too. ratio = w1 / w0; every push is 0.9 s, power2.inOut ---- */
+  var map = $("map"), dot = $("dot");
+  var INDIANA = "-39.021 -215.559 2202.353 1238.824", NORTH = "57.333 145.333 640 360", FORTWAYNE = "280.889 202.222 426.667 240";
+  var LEFT = "inset(320px 1180px 80px 96px)", TALL = "inset(62px 124px 420px 716px)", RIGHT = "inset(62px 124px 568px 716px)";
+  function camEase(ratio, ease) { var e = gsap.parseEase(ease); return function (p) { return (1 - Math.pow(ratio, e(p))) / (1 - ratio); }; }
+  function cam(viewBox, ratio, t) { tl.to(map, { attr: { viewBox: viewBox }, duration: 0.9, ease: camEase(ratio, "power2.inOut") }, t); }
+
+  /* ---- fills: a fill change on the path itself. A forecast area is Amber 2 at 0.25, a lit county the family's 0.45 ---- */
+  function area(state, label, t) {
+    tl.to($("st-" + state), { fill: "#e8c56a", fillOpacity: 0.25, duration: 0.3, ease: "power2.out" }, t);
+    tl.to(label, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, t);
+  }
+  function light(county, n, t) {
+    tl.to($("co-in-" + county), { fill: "#e8c56a", fillOpacity: 0.45, duration: 0.25, ease: "power2.out" }, t);
+    tl.fromTo(n, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out", immediateRender: false }, t);
+  }
+  function lift(strip, t) { tl.fromTo(strip, { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", immediateRender: false }, t); }
+  function swap(from, to, t) {                              /* the stamp's text changes at the middle of the hands' sweep */
+    tl.to(from, { autoAlpha: 0, duration: 0.1, ease: "none" }, t + 0.2);
+    tl.to(to, { autoAlpha: 1, duration: 0.1, ease: "none" }, t + 0.2);
+  }
+
+  /* ---- clock hands: degrees clockwise from 12, about the face centre (95, 100); the minute hand's angle keeps counting up ---- */
+  s0($("hh"), { rotation: 60, svgOrigin: "95 100" });       /* 2:00: hour hand on the 2 */
+  s0($("mh"), { rotation: 330, svgOrigin: "95 100" });      /* minute hand sweeps its last 30 degrees onto the 12 */
+  var uls = [$("ul1"), $("ul2"), $("ul3"), $("ul4")];
+  s0(uls, { scaleX: 0, transformOrigin: "left center" });
+  /* each card waits lower, centred in the frame's height, until its strip's cue (plan rule 22) */
+  s0($("c68"), { x: 700, y: 278 });
+  s0($("c69"), { x: 700, y: 267 });
+  /* the teletype's lines are non-scaling, so their dashes are screen px: 0.75 px per drawing unit in NORTH */
+  var lns = map.querySelectorAll(".fc-ln");
+  for (var i = 0; i < lns.length; i++) { var len = Math.ceil(lns[i].getTotalLength() * 0.75) + 1; s0(lns[i], { strokeDasharray: len, strokeDashoffset: len }); }
+
+  /* ================= A1-S9: Forecast 68, three states ================= */
+  /* 0 · "At" @0.00: ground and the map in MIDWEST, state outlines only */
+
+  /* 1 · "two" @0.13: the stamp slides in from the left at 2:00 PM, the minute hand lands on the 12 */
+  tl.fromTo($("stamp"), { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 0.13);
+  tl.to($("mh"), { rotation: 360, duration: 0.5, ease: "power3.out" }, 0.33);
+
+  /* 2 · "forecast" @1.47: card 68 slides in from the right, at its waiting height */
+  tl.to($("c68"), { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 1.47);
+
+  /* 3, 4, 5 · "Wisconsin," @3.31, "Iowa," @4.31, "Illinois," @4.91: each state fills with its label */
+  area("wi", $("lwi"), 3.31);
+  area("ia", $("lia"), 4.31);
+  area("il", $("lil"), 4.91);
+
+  /* 6 · "one" @6.31: the rest of the sheet goes unlit; underline ONE OR TWO, then TORNADOES */
+  tl.to($("u68"), { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 6.31);
+  tl.to($("ul1"), { scaleX: 1, duration: 0.3, ease: "none" }, 6.31);
+  tl.to($("ul2"), { scaleX: 1, duration: 0.25, ease: "none" }, 6.61);
+
+  /* 7 · "tornadoes." @7.29: the card rises to its briefed top as the strip lifts in under it */
+  tl.to($("c68"), { y: 0, duration: 0.5, ease: "power3.out" }, 7.29);
+  lift($("s68"), 7.29);
+
+  /* ================= A1-S10: Forecast 69, northern Indiana ================= */
+  /* 8 · "Then," @8.87: strip and card 68 leave right; the three fills and labels fade */
+  tl.to([$("c68"), $("s68")], { x: 1900, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 8.87);
+  tl.to([$("st-wi"), $("st-ia"), $("st-il")], { fill: "#15202b", fillOpacity: 1, duration: 0.3, ease: "power2.out" }, 8.87);
+  tl.to([$("lwi"), $("lia"), $("lil")], { autoAlpha: 0, duration: 0.3, ease: "power2.out" }, 8.87);
+
+  /* 9 · "5" @9.15: the stamp goes to 5:20 PM */
+  tl.to($("hh"), { rotation: 160, duration: 0.5, ease: "power3.out" }, 9.15);
+  tl.to($("mh"), { rotation: 480, duration: 0.5, ease: "power3.out" }, 9.15);
+  swap($("time1"), $("time2"), 9.15);
+
+  /* 10 · "severe" @10.01: card 69 slides in from the right, at its waiting height */
+  tl.to($("c69"), { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 10.01);
+
+  /* 11 · "It" @12.91: push MIDWEST to INDIANA, 2.46 times, ends @13.81 */
+  cam(INDIANA, 2202.353 / 5421.317, 12.91);
+
+  /* 12 · "parts" @13.37: the rest of the sheet goes unlit; underline PORTIONS OF NORTHERN INDIANA */
+  tl.to($("u69"), { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 13.37);
+  tl.to($("ul3"), { scaleX: 1, duration: 0.4, ease: "none" }, 13.37);
+
+  /* 13 · "Indiana," @14.13: the card rises to its briefed top, strip 1 lifts in; the band wipes down from the north edge, then its label */
+  tl.to($("c69"), { y: 0, duration: 0.5, ease: "power3.out" }, 14.13);
+  lift($("s69a"), 14.13);
+  tl.to($("band"), { attr: { height: 368.45 }, duration: 0.5, ease: "power2.out" }, 14.13);
+  tl.to($("lin"), { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 14.38);
+
+  /* 14 · "a" @16.51: underline A TORNADO OR TWO */
+  tl.to($("ul4"), { scaleX: 1, duration: 0.4, ease: "none" }, 16.51);
+
+  /* 15 · "two." @17.19: strip 2 lifts in under strip 1 */
+  lift($("s69b"), 17.19);
+
+  /* ================= A1-S11: seven counties ================= */
+  /* 16 · "northern" @19.25: the band's fill goes 25 % to 45 % and back, a fill change */
+  tl.to($("band"), { opacity: 1, duration: 0.3, ease: "power2.out" }, 19.25);
+  tl.to($("band"), { opacity: 0.5556, duration: 0.3, ease: "power2.in" }, 19.55);
+
+  /* 17 · "South" @21.19: card 69 and both strips leave right; the band fades; the map moves INDIANA to NORTH, 3.44 times, and
+          its box goes to the top right, tall (down to y 660) until the paper strip needs the room; the county lines come on
+          during the move. The band's label is fixed to the frame, so it has gone 0.2 s before the map moves (plan rule 2) */
+  tl.to($("lin"), { autoAlpha: 0, duration: 0.2, ease: "power2.out" }, 20.99);
+  tl.to([$("c69"), $("s69a"), $("s69b")], { x: 1900, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 21.19);
+  tl.to($("band"), { opacity: 0, duration: 0.3, ease: "power2.out" }, 21.19);
+  cam(NORTH, 640 / 2202.353, 21.19);
+  tl.fromTo(map, { clipPath: LEFT }, { clipPath: TALL, duration: 0.9, ease: "power2.inOut", immediateRender: false }, 21.19);
+  tl.to([$("map-counties"), $("map-state")], { autoAlpha: 1, duration: 0.9, ease: "power2.in" }, 21.19);   /* all on @22.09 */
+
+  /* 18 · "ten" @22.23: the stamp goes to 5:30 PM, South Bend */
+  tl.to($("hh"), { rotation: 165, duration: 0.5, ease: "power3.out" }, 22.23);
+  tl.to($("mh"), { rotation: 540, duration: 0.5, ease: "power3.out" }, 22.23);
+  swap($("time2"), $("time3"), 22.23);
+  swap($("eye1"), $("eye2"), 22.23);
+  swap($("place1"), $("place2"), 22.23);
+
+  /* 19 · "seven" @23.33: the seven counties in the survey's order, 0.1 s apart, each with its name; the source line */
+  light("porter", $("n1"), 23.33);
+  light("laporte", $("n2"), 23.43);
+  light("st-joseph", $("n3"), 23.53);
+  light("elkhart", $("n4"), 23.63);
+  light("starke", $("n5"), 23.73);
+  light("marshall", $("n6"), 23.83);
+  light("kosciusko", $("n7"), 23.93);                       /* all lit @24.18 */
+  tl.fromTo($("src"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, 23.33);
+
+  /* ================= A1-S12: Fort Wayne ================= */
+  /* 20 · "Fort" @26.41: the dot and its label */
+  tl.to([$("pt-fort-wayne"), $("fw1")], { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 26.41);
+
+  /* 21 · "didn't" @26.97: the teletype draws on beside it, unlit; once drawn its lines are plain again so they hold through the push */
+  tl.to($("tty"), { autoAlpha: 1, duration: 0.05, ease: "none" }, 26.97);
+  tl.to(lns, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 26.97);
+  tl.set(lns, { strokeDasharray: "none" }, 27.48);
+
+  /* 22 · "one" @27.75: the box's bottom edge rises to its briefed y 512 as the paper strip rises into the lower band; the
+          survey's source line goes as it arrives (one source per frame) */
+  tl.fromTo(map, { clipPath: TALL }, { clipPath: RIGHT, duration: 0.45, ease: "power3.out", immediateRender: false }, 27.75);
+  lift($("paper"), 27.75);
+  tl.to($("src"), { autoAlpha: 0, duration: 0.3, ease: "power2.out" }, 27.75);
+
+  /* 23 · "remember" @28.23: names and the town label have gone 0.2 s before; push NORTH to FORTWAYNE, 1.5 times, ends @29.13;
+          the dot stays 6 px; the label returns at its new place @29.20 */
+  tl.to([$("n1"), $("n2"), $("n3"), $("n4"), $("n5"), $("n6"), $("n7"), $("fw1")], { autoAlpha: 0, duration: 0.2, ease: "power2.out" }, 28.03);
+  cam(FORTWAYNE, 426.667 / 640, 28.23);
+  tl.to(dot, { attr: { r: 1.3333 }, duration: 0.9, ease: camEase(426.667 / 640, "power2.inOut") }, 28.23);
+  tl.to($("fw2"), { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 29.20);
+
+  tl.to({}, { duration: 0.01 }, 31.19);                     /* holds to the last frame @31.20 */
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
