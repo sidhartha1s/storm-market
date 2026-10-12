@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a4s14-eight (A4-S14): eight plain squares in a row, one for each county in the 1966 study. Seven turn amber under a
+     big 7 (in a Weather Bureau advisory before a tornado touched down there); the last takes a red outline under a big 1
+     (no notice ahead of time). A count: not a map, not a ranking. No square has a name, a letter or a number; the red
+     square is outlined, never filled.
+     Brief: mg_specs/briefs/g-a4s14-eight.md. Glass chips as g-a6s03-announcer's. No file under media/ is used.
+     Squares: 150 px, 40 px apart, left edges 96 + 190 x (n - 1): 96, 286, 476, 666, 856, 1046, 1236, 1426; y 420 to 570.
+     Each outline is drawn inside its box (4 px: the rect is inset 2 px; the eighth at 6 px is inset 3 px).
+     Rule 22: no staging. The band under the squares is over a third only until label A lands at 2.10 s.
+     Cues are comp-local seconds from audio/a4-s14.words.json (wav start -0.22, timeline-map.md table 5). -->
+<template>
+<style>
+  #eight-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .eight-h { opacity:0; visibility:hidden; }
+  .eight-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .eight-eye { position:absolute; left:96px; top:110px; font:700 22px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .eight-big { position:absolute; top:190px; width:400px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:180px; line-height:180px; white-space:nowrap; }
+  .eight-brk { position:absolute; left:96px; top:590px; width:1290px; height:4px; background:#e8c56a; }
+  .eight-chip { position:absolute; top:620px; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:23px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  .eight-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="eight-root" data-composition-id="g-a4s14-eight" data-width="1920" data-height="1080" data-duration="8.48">
+
+  <!-- eight squares, all alike on the first frame -->
+  <svg class="eight-svg" viewBox="0 0 1920 1080">
+    <g id="eight-seven" fill="#15202b" stroke="#dfe7ee" stroke-width="4">
+      <rect class="eight-sq" x="98" y="422" width="146" height="146" rx="2"/>
+      <rect class="eight-sq" x="288" y="422" width="146" height="146" rx="2"/>
+      <rect class="eight-sq" x="478" y="422" width="146" height="146" rx="2"/>
+      <rect class="eight-sq" x="668" y="422" width="146" height="146" rx="2"/>
+      <rect class="eight-sq" x="858" y="422" width="146" height="146" rx="2"/>
+      <rect class="eight-sq" x="1048" y="422" width="146" height="146" rx="2"/>
+      <rect class="eight-sq" x="1238" y="422" width="146" height="146" rx="2"/>
+    </g>
+    <rect id="eight-last" x="1428" y="422" width="146" height="146" rx="2" fill="#15202b" stroke="#dfe7ee" stroke-width="4"/>
+  </svg>
+
+  <div class="eight-eye eight-h" id="eight-eye">EIGHT COUNTIES IN THE 1966 STUDY</div>
+
+  <!-- the two figures: 7 centred on x 741 (the seven squares' middle), 1 centred on x 1501 (the eighth's) -->
+  <div class="eight-big eight-h" id="eight-n7" style="left:541px; color:#e8c56a">7</div>
+  <div class="eight-big eight-h" id="eight-n1" style="left:1301px; color:#d0121f">1</div>
+
+  <div class="eight-brk" id="eight-brk"></div>
+
+  <div class="eight-chip eight-h" id="eight-la" style="left:96px">in a Weather Bureau advisory before a tornado touched down</div>
+  <div class="eight-chip eight-h" id="eight-lb" style="right:344px">no notice ahead of time</div>   <!-- right edge at x 1576 -->
+
+  <div class="eight-src eight-h" id="eight-src">Disaster Research Center, 1966, p. 15</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a4s14-eight", P = "eight", D = 8.48;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function land(id, t) { s0($(id), { y: 16 }); tl.to($(id), { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, t); }
+
+  var AMBER = "#e8c56a", RED = "#d0121f", LIGHT = "#dfe7ee", PANEL = "#15202b";
+  var seven = $("seven"), sq = seven.children, last = $("last"), brk = $("brk");
+
+  /* rest states, set at 0 */
+  s0(sq, { fill: PANEL, stroke: LIGHT });
+  s0(last, { stroke: LIGHT, attr: { x: 1428, y: 422, width: 146, height: 146, "stroke-width": 4 } });
+  s0(brk, { scaleX: 0, transformOrigin: "left center" });
+  s0($("src"), { y: 12 });
+
+  /* 0 · "Seven" @0.00: the first frame is the ground and eight plain squares. From 0.04 the 7 lands and squares 1 to 7
+     fill Amber 2 left to right, 0.08 s apart, 0.25 s each (the run ends @0.77, inside "Seven of the eight counties") */
+  land("n7", 0.04);
+  tl.to(sq, { fill: AMBER, stroke: AMBER, duration: 0.25, ease: "power2.out", stagger: 0.08 }, 0.04);
+
+  /* 1 · eight @0.50: the eyebrow */
+  tl.to($("eye"), { autoAlpha: 1, duration: 0.3, ease: "none" }, 0.50);
+
+  /* 2 · counties @0.72: the source line */
+  tl.to($("src"), { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.72);
+
+  /* 3 · were @1.62: the bracket draws under the seven, left to right */
+  tl.to(brk, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.62);
+
+  /* 4 · Weather @2.10: label A */
+  land("la", 2.10);
+
+  /* 5 · Only @5.52: the seven lit squares, the 7, the bracket and label A drop to 45 % */
+  tl.to([seven, $("n7"), brk, $("la")], { opacity: 0.45, duration: 0.3, ease: "none" }, 5.52);
+
+  /* 6 · one @5.70: the eighth square's outline turns Popfig red and thickens to 6 px, still inside its box; the 1 lands */
+  tl.to(last, { stroke: RED, attr: { x: 1429, y: 423, width: 144, height: 144, "stroke-width": 6 }, duration: 0.3, ease: "power2.out" }, 5.70);
+  land("n1", 5.70);
+
+  /* 7 · no @6.26: label B; hold to the cut */
+  land("lb", 6.26);
+
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
