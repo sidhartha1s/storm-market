@@ -94,7 +94,7 @@ Cue words and times are from `audio/a1-s9.words.json`, `a1-s10`, `a1-s11` and `a
 | 4 | A1-S9 | 13 | Iowa, | 4.54 | 4.31 | Iowa fills with its label |
 | 5 | A1-S9 | 15 | Illinois, | 5.14 | 4.91 | Illinois fills with its label |
 | 6 | A1-S9 | 19 | one | 6.54 | 6.31 | unlit page fades in on the card; underline `ONE OR TWO` (0.3 s), then `TORNADOES` (0.25 s) |
-| 7 | A1-S9 | 22 | tornadoes. | 7.52 | 7.29 | the strip lifts in under the card (`y:60` set at 0, to 0, with the fade; 0.4 s, power3.out) |
+| 7 | A1-S9 | 22 | tornadoes. | 7.52 | 7.29 | the strip lifts in under the card (`y:60` set at 0, to 0, with the fade; 0.4 s, power3.out); on the same cue card 68 moves up to its briefed place (`y:278` to 0; 0.5 s, power3.out) |
 | 8 | A1-S10 | 0 | Then, | 0.00 | 8.87 | strip and card 68 exit right (`x:1900`, 0.4 s, power3.in); the three fills and labels fade (0.3 s) |
 | 9 | A1-S10 | 2 | 5 | 0.68 | 9.15 | stamp goes to state 5:20 PM |
 | 10 | A1-S10 | 5 | severe | 1.54 | 10.01 | forecast card 69 slides in from the right (0.7 s) |
