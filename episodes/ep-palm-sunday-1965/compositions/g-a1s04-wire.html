@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1s04-wire (A1-S4): the Weather Bureau's own teletype circuit map, drifting toward the Midwest, and one soft amber wash when
+     the far machine types. Brief: mg_specs/briefs/g-a1s04-wire.md. Photograph family: mount, push and caption of g-a1s01-kc.
+     Photograph: media/stills/a1-service-a-teletype.jpg, 1668 x 1212, the Service A teletypewriter system map slide, about 1960, NOAA.
+       The slide's circuit lines, numbers and legend are the photograph's. No route is traced: nothing of ours follows, marks or joins
+       anything on the map, and the wash covers the whole frame at once.
+       Cover: 1920 / 1668 = 1.1511 (1920 x 1395.1, object-position 50% 20%: image rows 54.7 to 993.0 in frame at the start).
+       Push 1.00 to 1.10 about screen (1208.6, 397.4) = image (1050, 400), between Kansas City and the Great Lakes on the slide.
+     Cues: audio/a1-s4.words.json seconds minus 0.21 (mg_specs/timeline-map.md table 5). -->
+<template>
+<style>
+  #wire-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .wire-h { opacity:0; visibility:hidden; }
+  .wire-bg { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; object-position:50% 20%; }
+  .wire-band { position:absolute; left:0; top:900px; width:1920px; height:180px; background:linear-gradient(to bottom, rgba(3,5,8,0), rgba(3,5,8,0.55)); }   /* no scrim over the map: it is the subject */
+  .wire-cap { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .wire-wash { position:absolute; left:0; top:0; width:1920px; height:1080px; background:#e8c56a; opacity:0; }   /* the whole map lifts at once: no edge, no band, no path */
+</style>
+<div id="wire-root" data-composition-id="g-a1s04-wire" data-width="1920" data-height="1080">
+  <img class="wire-bg" id="wire-bg" src="media/stills/a1-service-a-teletype.jpg" alt="">
+  <div class="wire-band"></div>
+  <div class="wire-wash" id="wire-wash"></div>
+  <div class="wire-cap wire-h" id="wire-cap">Service A teletypewriter system, about 1960 &middot; NOAA</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a1s04-wire", P = "wire", D = 9.94;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+
+  /* start states: hidden in CSS, transforms set here at 0; every move from rest below is a plain to() */
+  s0($("bg"), { scale: 1, transformOrigin: "1208.6px 397.4px" });
+  s0($("cap"), { y: 12 });
+
+  /* 0 · "It" @0.00: the map and the bottom band; the push carries the whole comp */
+  tl.to($("bg"), { scale: 1.10, duration: D, ease: "none" }, 0);
+
+  /* 1 · "teletype," @0.85: the photograph's true caption */
+  tl.to($("cap"), { y: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 0.85);
+
+  /* 2 · "typed" @8.23: the amber wash, opacity only: up in 0.30 s, peak 8.53 (inside "out." @8.57), gone by 9.08 */
+  tl.to($("wash"), { opacity: 0.26, duration: 0.30, ease: "power2.out" }, 8.23);
+  tl.to($("wash"), { opacity: 0, duration: 0.55, ease: "power1.in" }, 8.53);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
