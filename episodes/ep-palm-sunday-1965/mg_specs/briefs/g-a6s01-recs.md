@@ -62,7 +62,7 @@ Cue words and times are from `audio/a6-s1.words.json` as it stood on 12 Oct 26 a
 | 1 | A6-S1 | 1 | May | 0.54 | 0.15 | date label `May 2, 1965` rises beside the page (`y:16` set at 0, then `to y:0, autoAlpha:1`, 0.3 s) |
 | 2 | A6-S1 | 9 | team | 3.30 | 2.91 | name card slides in from the right (`x:120` set at 0, then `to x:0`, 0.5 s, power3.out), name then sub 0.15 s apart |
 | 3 | A6-S1 | 11 | ten | 3.80 | 3.41 | the ten margin dots land top to bottom, 0.06 s apart (0.54 s in all, each a 0.15 s fade): done by 4.10, inside the word "recommendations" |
-| 4 | A6-S1 | 15 | first | 5.74 | 5.35 | the first dot goes Caption dark to Popfig red (0.15 s); the page, the dots, the date label and the name card go to opacity 0.18 (0.3 s); the crop card slides in from the right (`x:660` set at 0, then `to x:0`, 0.45 s, power3.out) |
+| 4 | A6-S1 | 15 | first | 5.74 | 5.35 | the page, the dots, the date label and the name card go to opacity 0.18 (0.3 s); the crop card slides in from the right (`x:660` set at 0, then `to x:0`, 0.45 s, power3.out) |
 | 5 | A6-S1 | 17 | reaches | 6.24 | 5.85 | unlit page fades in on the crop (0.3 s); underline A draws (0.35 s) |
 | 6 | A6-S1 | 19 | announcer. | 6.74 | 6.35 | underline B draws (0.35 s). Hold to the last frame (7.92) |
 Step 4's first dot is the one use of Popfig red off the page: it marks which item the crop is. If the lead strikes it, the dot stays Caption dark.
