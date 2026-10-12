@@ -1,4 +1,4 @@
-Host: id=g-a2s17-funnels file=compositions/g-a2s17-funnels.html start=(timeline-map.md) duration=18.96 s (wav sum 18.68 s plus gaps from timeline-map.md) track=2
+Host: id=g-a2s17-funnels file=compositions/g-a2s17-funnels.html start=431.30 (timeline-map.md table 1; the mount in index.html wins) duration=18.96 s (wav sum 18.68 s plus gaps from timeline-map.md) track=2
 
 # g-a2s17-funnels · A2-S17, A2-S18 · the twin funnels, then Sunnyside (wave 1, base of the photograph family)
 
