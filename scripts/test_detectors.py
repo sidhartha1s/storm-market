@@ -370,7 +370,7 @@ CASES = {  # comp: (source, host s, new output must hold all of, must not hold, 
     'g-c2': (_ok_comp('', photo('data-crop-ok="  "')), 3, ['ERROR [bad-crop]'], 'exempt', 'a whitespace-only data-crop-ok exempts nothing'),
     'g-c3': (_ok_comp('', photo('')), 3, ['ERROR [bad-crop]'], 'exempt', 'an undeclared crop still fails'),
     'g-c4': (_ok_comp('', photo(f'data-crop-ok="{CROP_WHY}"') + photo('', 500)), 3, ['ERROR [bad-crop] wide.svg', 'exempt [bad-crop] g-c4:'], None, 'the exemption is per img: an undeclared img of the same file still fails'),
-    'g-i1': (_ok_comp(f'data-type-ok="{TYPE_WHY}" data-idle-ok="held on purpose"', SHEET, 1, "tl.to({}, { duration: 7 }, 0);\n"), 7, ['ERROR [idle] 6.0s frozen at 1.0s', 'exempt [flat-type] g-i1:'], None, 'the idle rule takes no exemption, flat-type stays exempt beside it'),
+    'g-i1': (_ok_comp(f'data-type-ok="{TYPE_WHY}" data-idle-ok="held on purpose"', SHEET, 1, "tl.to({}, { duration: 7 }, 0);\n"), 7, ['ERROR [idle] 6.0s frozen at 1.0s', 'ERROR [undesigned] 2 type tier(s)', 'exempt [flat-type] g-i1:'], None, 'idle takes no exemption and undesigned still counts the two tiers, flat-type stays exempt beside them'),
 }
 
 
