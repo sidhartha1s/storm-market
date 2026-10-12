@@ -161,7 +161,7 @@ window.__timelines = window.__timelines || {};
   s0(hour, { rotation: hourDeg(4, 0) });                    /* 120 */
   s0(min, { rotation: minDeg(0) });                         /* 0 */
   s0(rim, { stroke: BODY });
-  s0([$("tty1"), $("tty2")].map(function (g) { return g.querySelectorAll("." + P + "-bar"); }), { stroke: GREY });
+  s0(room.querySelectorAll("." + P + "-bar"), { stroke: GREY });   /* their own start value: inherited, it would be read after the group had changed */
 
   /* ---- staging, part 1: the clock and its time scale about the clock's centre (560, 540); centred, the pair spans
           y 338 to 742 under the name card ---- */
