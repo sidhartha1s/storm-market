@@ -126,7 +126,7 @@ As `references/mg-brief-template.md` section 6, with these: file `compositions/g
 As template section 7, from the worktree root: `node scripts/freeze_scan.mjs episodes/ep-palm-sunday-1965 --comp g-a1s09-forecasts`, then `node scripts/graphics_qc.mjs episodes/ep-palm-sunday-1965`, then `python3 scripts/run_gates.py episodes/ep-palm-sunday-1965`. `graphics_qc` may flag two type sizes on the page cards (rule 10).
 
 ## 7a. Done line
-All seven lines of template section 7a. Line 4 here: the three moves run on a proxy; seek to 13.5, 21.7 and 29.5 (mid move) forward and backward and match the frames. Line 6: the four state boxes, the seven name centres, the Fort Wayne dot and the teletype box are computed by a script from `media/maps/indiana-counties.svg` and `media/data/points.csv` and stated in the receipt.
+All seven lines of template section 7a. Line 4 here: the three moves run on a proxy; seek to 13.5, 21.7 and 28.7 (mid move) forward and backward and match the frames. Line 6: the four state boxes, the seven name centres, the Fort Wayne dot and the teletype box are computed by a script from `media/maps/indiana-counties.svg` and `media/data/points.csv` and stated in the receipt.
 
 ## 8. Receipt
 As template section 8.
