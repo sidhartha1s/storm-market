@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4s11-farend · A4-S11, A4-S12 · window 22.43 s · brief: mg_specs/briefs/g-a4s11-farend.md
+  Claim: a station told the researchers that local police had been told a tornado was headed its way and did not notify the
+  station, so it could not prepare its listeners. And there was little or no attempt to warn people any other way than radio
+  and TV: a few fire sirens in a very few small communities, and police car speakers that could not reach everyone.
+  SCHEMATIC, NOT TO SCALE. The study does not say which county this station was in: no county code is on screen.
+  Part A (0.00 to 10.59): police desk, dotted link, microphone. The link never lights. Part B (10.59 to the end): the desk has
+  left; microphone, house, and two other dotted grey ways to the house. THE HORN IS NEVER SHOWN SOUNDING: it is drawn and then
+  never changes. Amber twice only: the police desk's lines, and one blink of the police car's body.
+  Station boxes are compositions/g-a4s02-countyb.html's (chain line y 520). Cues are comp-local seconds
+  (audio/a4-s11.words.json minus 0.42, audio/a4-s12.words.json plus 10.17).
+  Coverage (plan rule 22): everything is authored at the brief's px. Part A waits 30 px down until the strip rises (5.44).
+  Part B's own last frame leaves the left 55.6 % of the frame empty, so from 10.74 the whole stage stands 334 px left of the
+  brief's px (its box x 1010 to 1577 centred in the frame) and carries a slow push, 1.00 to 1.03.
+-->
+<template>
+<style>
+  #far-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  /* the faint band that carries the holds: starts off the left edge, drifts right for the whole window */
+  #far-sweep { position:absolute; left:-560px; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
+  /* part B's push turns about the point that stands at the frame's centre once the stage has moved */
+  #far-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:1294px 520px; }
+  #far-svg { position:absolute; left:0; top:0; }
+  #far-chip { position:absolute; left:836px; top:316px; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:23px;
+    font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  .far-lab { position:absolute; top:676px; font-size:22px; line-height:28px; font-weight:700; color:#93a3b2; white-space:nowrap; }
+  /* a label as wide as its text, centred on its left value */
+  .far-c { transform:translateX(-50%); }
+  /* the paper strip of g-i1s7-sheriff.html */
+  #far-strip { position:absolute; left:96px; top:800px; width:1480px; height:226px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; }
+  .far-q { position:absolute; left:40px; font-family:Georgia, 'Times New Roman', serif; font-size:52px; line-height:60px; color:#2a2622; white-space:nowrap; }
+  #far-att { position:absolute; left:40px; top:168px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:2px; color:#6b6257; white-space:nowrap; }
+  /* hidden in CSS as well as at timeline 0, so the host's very first frame is three grey things, the chip and one label */
+  #far-labpol, #far-strip, #far-q2, #far-house, #far-k2, #far-k2wave, #far-labrt, #far-labfam, #far-horn, #far-hway, #far-labhorn,
+  #far-car, #far-cway, #far-labcar { opacity:0; visibility:hidden; }
+</style>
+<div id="far-root" data-composition-id="g-a4s11-farend" data-width="1920" data-height="1080" data-duration="22.43">
+  <div id="far-sweep"></div>
+
+  <div id="far-stage">
+  <svg id="far-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <!-- a dotted way is drawn on, and the link's wave is carried, by a solid stroke in a mask -->
+      <mask id="far-hmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <path id="far-hrev" d="M1290 200 Q1460 200 1488 400" fill="none" stroke="#fff" stroke-width="20"/>
+      </mask>
+      <mask id="far-cmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <path id="far-crev" d="M1380 805 Q1570 805 1575 620" fill="none" stroke="#fff" stroke-width="20"/>
+      </mask>
+      <mask id="far-wmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <path id="far-wrev" d="M1170 520 H1400" fill="none" stroke="#fff" stroke-width="20"/>
+      </mask>
+    </defs>
+
+    <!-- PART A · the link from the police desk to the microphone: dotted Label grey until it leaves. It never lights. -->
+    <path id="far-k1" d="M837 520 H1068" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round" stroke-dasharray="0.1 14"/>
+    <!-- police desk (media/drawings/desk.svg whole, telephone on its cradle): box x 582 to 837, y 490 to 617.5 -->
+    <g id="far-deskg" transform="translate(582 490) scale(0.85)">
+      <g id="far-desk" fill="none" stroke="#93a3b2" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="14" y="52" width="12" height="98"/>
+        <rect x="274" y="52" width="12" height="98"/>
+        <rect x="190" y="62" width="74" height="38"/>
+        <path d="M219 81 H235"/>
+        <rect x="0" y="40" width="300" height="12" fill="#15202b"/>
+        <g transform="translate(106 -4)" stroke-width="3.5">
+          <rect x="24" y="-6" width="8" height="14" fill="#15202b"/>
+          <rect x="58" y="-6" width="8" height="14" fill="#15202b"/>
+          <path d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+          <circle cx="45" cy="27" r="15"/>
+          <circle cx="45" cy="27" r="3"/>
+          <circle cx="43.2" cy="37" r="0.8"/><circle cx="37.2" cy="33.6" r="0.8"/><circle cx="34.8" cy="27" r="0.8"/><circle cx="37.2" cy="20.4" r="0.8"/>
+          <circle cx="43.2" cy="17" r="0.8"/><circle cx="50.1" cy="18.2" r="0.8"/><circle cx="54.6" cy="23.5" r="0.8"/>
+          <path fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+        </g>
+      </g>
+    </g>
+    <!-- microphone (media/drawings/microphone.svg): box x 1068 to 1170, y 420 to 615.5. Lamp Panel dark in every frame; never amber -->
+    <g transform="translate(1068 420) scale(0.85)">
+      <g id="far-mic" fill="none" stroke="#93a3b2" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60 112 V182"/>
+        <rect x="30" y="0" width="60" height="112" rx="30" fill="#15202b"/>
+        <path d="M40 30 H80 M40 56 H80 M40 82 H80"/>
+        <path d="M30 182 H90 L108 230 H12 Z" fill="#15202b"/>
+        <circle cx="104" cy="20" r="9" fill="#15202b"/>
+      </g>
+    </g>
+
+    <!-- PART B · the one link, microphone to house, and its Body light wave -->
+    <path id="far-k2" d="M1170 520 H1400" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round" stroke-dasharray="0.1 14"/>
+    <path id="far-k2wave" d="M1170 520 H1400" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-dasharray="0.1 14" mask="url(#far-wmask)"/>
+    <!-- house (media/drawings/house.svg): box x 1400 to 1577, y 430 to 600, aerial to y 407; windows Panel dark in every frame -->
+    <g transform="translate(1400 430) scale(0.68)">
+      <g id="far-house" fill="none" stroke="#93a3b2" stroke-width="5.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M186 37.3 V22 H208 V50"/>
+        <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+        <rect x="20" y="80" width="220" height="170" fill="#15202b"/>
+        <rect x="112" y="170" width="36" height="80"/>
+        <rect x="44" y="120" width="48" height="48" fill="#15202b"/>
+        <rect x="168" y="120" width="48" height="48" fill="#15202b"/>
+        <path d="M68 120 V168 M44 144 H92"/>
+        <path d="M192 120 V168 M168 144 H216"/>
+        <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+      </g>
+    </g>
+    <!-- horn on a pole (media/drawings/horn-pole.svg): box x 1200 to 1280, y 150 to 370, its mouth toward the house.
+         Outline only: no sound lines, no pulse, no colour change, ever. Its way is dotted grey and never lights. -->
+    <path id="far-hway" d="M1290 200 Q1460 200 1488 400" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round" stroke-dasharray="0.1 14" mask="url(#far-hmask)"/>
+    <g transform="translate(1200 150)">
+      <g id="far-horn" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40 220 V48 M26 220 H54"/>
+        <rect x="8" y="22" width="16" height="22" fill="#15202b"/>
+        <path d="M24 26 L72 4 V62 L24 40 Z" fill="#15202b"/>
+      </g>
+    </g>
+    <!-- police car (media/drawings/police-car.svg): box x 1130 to 1370, y 760 to 850, roof speaker to y 754. No markings, no word -->
+    <path id="far-cway" d="M1380 805 Q1570 805 1575 620" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round" stroke-dasharray="0.1 14" mask="url(#far-cmask)"/>
+    <g transform="translate(1130 760)">
+      <g id="far-car" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M114 16 V8"/>
+        <path class="far-body" d="M104 4 L124 -6 V14 L104 8 Z" fill="#15202b" stroke-width="3"/>
+        <path class="far-body" d="M6 68 V40 L10 34 L18 40 H62 L82 16 H150 L172 40 L230 44 L236 50 V68 H202.6 A19 19 0 0 0 165.4 68 H74.6 A19 19 0 0 0 37.4 68 Z" fill="#15202b"/>
+        <path d="M70 40 L86 22 H146 L162 40 Z M116 22 V66" stroke-width="3"/>
+        <circle cx="56" cy="72" r="16" fill="#15202b"/>
+        <circle cx="184" cy="72" r="16" fill="#15202b"/>
+        <path d="M56 72 h0.01 M184 72 h0.01" stroke-width="8"/>
+        <circle cx="227" cy="54" r="3.5" stroke-width="3"/>
+      </g>
+    </g>
+  </svg>
+  <div class="far-lab" id="far-labpol" style="left:609.5px; width:200px; text-align:center">local police</div>
+  <div class="far-lab" id="far-labst" style="left:1019px; width:200px; text-align:center">a station</div>
+  <div class="far-lab far-c" id="far-labrt" style="left:1119px">radio and TV</div>
+  <div class="far-lab far-c" id="far-labfam" style="left:1488.5px">a family</div>
+  <div class="far-lab" id="far-labhorn" style="right:740px; top:240px">a few fire sirens</div>
+  <div class="far-lab far-c" id="far-labcar" style="left:1250px; top:866px">police car speakers</div>
+  <div id="far-chip">a station &middot; county not given in the study</div>
+  </div>
+
+  <!-- the station's own words, retyped: no crop of p. 25 is on disk -->
+  <div id="far-strip">
+    <div class="far-q" style="top:16px">&ldquo;were not notified by the local police</div>
+    <div class="far-q" id="far-q2" style="top:82px">so we couldn&rsquo;t prepare our listeners&rdquo;</div>
+    <div id="far-att">media personnel &middot; Disaster Research Center, 1966, p. 25</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#far-", D = 22.43, GREY = "#93a3b2", LIGHT = "#dfe7ee", AMBER = "#e8c56a", PANEL = "#15202b";
+  const el = function (id) { return document.getElementById("far-" + id); };
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function fade(sel, to, at, dur) { tl.to(sel, { autoAlpha: to, duration: dur, ease: to ? "power3.out" : "power2.in" }, at); }
+  function draw(e, at, dur, ease) {
+    const len = Math.ceil(e.getTotalLength()) + 1;
+    s0(e, { strokeDasharray: len, strokeDashoffset: len });
+    tl.to(e, { strokeDashoffset: 0, duration: dur, ease: ease || "power2.out" }, at);
+  }
+  /* a drawing draws on, longest line first; a zero-length line (a wheel hub) takes no draw-on and comes with the group's fade */
+  function drawOn(id, at, dur) {
+    Array.from(el(id).querySelectorAll("path, rect, circle"))
+      .filter(function (e) { return e.getTotalLength() > 1; })
+      .sort(function (a, b) { return b.getTotalLength() - a.getTotalLength(); })
+      .forEach(function (e, i) { const late = Math.min(i * 0.04, dur - 0.15); draw(e, at + late, dur - late); });
+    tl.to(P+id, { autoAlpha: 1, duration: 0.15, ease: "none" }, at);
+  }
+  /* a dotted way draws on behind a solid stroke in its mask */
+  function way(id, rev, at, dur) { tl.set(P+id, { autoAlpha: 1 }, at); draw(el(rev), at, dur, "none"); }
+
+  /* coverage (plan rule 22): part A waits this far down; part B stands this far left of the brief's px */
+  const A_DY = 30, B_DX = -334;
+
+  /* A @0.00: the police desk, the dotted link and the microphone, all Label grey; the chip; the label "a station" */
+  s0([P+"labpol", P+"q2", P+"house", P+"k2", P+"k2wave", P+"labrt", P+"labfam", P+"horn", P+"hway", P+"labhorn", P+"car", P+"cway", P+"labcar"], { autoAlpha: 0 });
+  s0(P+"strip", { autoAlpha: 0, y: 60 });
+  s0(P+"stage", { x: 0, y: A_DY, scale: 1 });
+  tl.to(P+"sweep", { x: 2860, duration: D / 4, ease: "none", repeat: 3 }, 0);
+
+  /* ---- PART A ---- LOCAL @1.18: the desk's label */
+  fade(P+"labpol", 1, 1.18, 0.3);
+  /* TOLD @2.16: the police desk's lines turn Amber 2 and stay */
+  tl.to(P+"desk", { attr: { stroke: AMBER }, duration: 0.3, ease: "power2.out" }, 2.16);
+  /* HEADED @3.22: the microphone goes to Body light and back to Label grey. No amber; the link does not change */
+  tl.to(P+"mic", { attr: { stroke: LIGHT }, duration: 0.3, ease: "power2.inOut", yoyo: true, repeat: 1 }, 3.22);
+  /* NOTIFIED @5.44: the paper strip rises with quote line 1 and the attribution; the stage settles onto the brief's px */
+  tl.to(P+"strip", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.44);
+  tl.to(P+"stage", { y: 0, duration: 0.5, ease: "power3.inOut" }, 5.44);
+  /* SO @8.02: quote line 2 */
+  fade(P+"q2", 1, 8.02, 0.3);
+
+  /* ---- PART B ---- THERE @10.59: the strip, the chip, the police desk with its label and its link fade out in place;
+     "a station" gives way to "radio and TV"; the house draws on with its label and its link */
+  fade([P+"strip", P+"chip", P+"deskg", P+"labpol", P+"k1", P+"labst"], 0, 10.59, 0.3);
+  fade([P+"labrt", P+"labfam", P+"k2"], 1, 10.59, 0.3);
+  drawOn("house", 10.59, 0.5);
+  /* the faded things are all but gone when the stage moves: it stands centred by 11.19 and then pushes slowly to the end */
+  tl.to(P+"stage", { x: B_DX, duration: 0.45, ease: "power3.inOut" }, 10.74);
+  tl.to(P+"stage", { scale: 1.03, duration: D - 11.19, ease: "none" }, 11.19);
+  /* OTHER @12.83: the horn on a pole draws on and its dotted way draws toward the house; 0.25 s later the police car and its way */
+  drawOn("horn", 12.83, 0.5);
+  way("hway", "hrev", 12.83, 0.5);
+  drawOn("car", 13.08, 0.5);
+  way("cway", "crev", 13.08, 0.5);
+  /* RADIO @13.41: the dots of the microphone to house link go to Body light and back in a wave, left to right */
+  const WAVE = 60, k2Len = 230;
+  s0(el("wrev"), { strokeDasharray: WAVE + " " + (k2Len + WAVE + 10), strokeDashoffset: WAVE });
+  tl.set(P+"k2wave", { autoAlpha: 1 }, 13.41);
+  tl.to(el("wrev"), { strokeDashoffset: -k2Len, duration: 0.5, ease: "none" }, 13.41);
+  tl.set(P+"k2wave", { autoAlpha: 0 }, 13.91);
+  /* SIRENS @16.65: the horn's label. The horn itself does not change. */
+  fade(P+"labhorn", 1, 16.65, 0.3);
+  /* POLICE @19.19: the police car's body fills Amber 2 and goes back to Panel dark, once; its label fades in */
+  tl.to(".far-body", { attr: { fill: AMBER }, duration: 0.3, ease: "power2.inOut", yoyo: true, repeat: 1 }, 19.19);
+  fade(P+"labcar", 1, 19.19, 0.3);
+  /* NOT @20.41: the car's way dims. Hold: microphone, house, three dotted grey ways, two labelled */
+  tl.to(P+"cway", { opacity: 0.55, duration: 0.4, ease: "power2.out" }, 20.41);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-a4s11-farend"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
