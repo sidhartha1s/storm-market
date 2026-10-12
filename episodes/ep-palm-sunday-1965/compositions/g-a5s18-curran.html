@@ -227,7 +227,10 @@ window.__timelines = window.__timelines || {};
   drawOne($("cord2"), 15.02, 0.6, "none");
 
   fade("boxlab", 15.42);                                    /* 10 · office @15.42: the box's label */
-  rise("koch", 17.02);                                      /* 11 · strung @17.02: the Koch line rises under the hall */
+  /* 11 · strung @17.02: the Koch line rises under the hall. rise() written out: the sweep reads a tween's position only
+     where the tl call itself ends in a number, and this is the last one it can read before the bars' loop */
+  s0($("koch"), { y: 16 });
+  tl.to($("koch"), { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 17.02);
 
   /* the hold, 17.40 on: the machines are running. Each teletype's three typed bars step their stroke opacity to 0.4 and
      back in turn, one bar every 0.3 s, eight steps (the last ends @19.95) */
