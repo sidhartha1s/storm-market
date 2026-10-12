@@ -243,8 +243,8 @@ check("render-07 NEW script asserts duration/fps/resolution/audio against the co
       "comp_dur" in verify_src and "has_audio" in verify_src.replace("HAS_AUDIO", "has_audio"))
 
 
-def run_verify(ep_dir, base):
-    return subprocess.run(["bash", str(S / "verify_render.sh"), str(ep_dir), base],
+def run_verify(ep_dir, base, mode=None):
+    return subprocess.run(["bash", str(S / "verify_render.sh"), str(ep_dir), base, *([mode] if mode else [])],
                           capture_output=True, text=True)
 
 
