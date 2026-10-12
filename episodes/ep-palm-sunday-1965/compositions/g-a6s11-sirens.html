@@ -10,7 +10,12 @@
      The film is not this comp's: index.html mounts media/films/cuts/a14-01-siren-horn.mp4 on track 1 (class filmwin, left 480,
      top 150, 960 x 720) from 5.35 to the last frame, and this comp sits above it. The hole is open only from 5.35 to 9.20.
      Views: PAPER 0.00 to 5.35, FILM 5.35 to 9.20, AFTER 9.20 to 16.25.
-     Horn: media/drawings/horn-pole.svg at 1.5 times, object box x 900 to 1020, y 200 to 530, where the filmed horn stands.
+     Horn: media/drawings/horn-pole.svg at 1.5 times, object box x 992 to 1112, y 410 to 740. Its mouth (centre 1100, 460) stands on
+       the filmed horn's mouth (x 1091 to 1111, y 418 to 501 on episode frames at 5.40 and 9.16), so both cuts read as one object.
+       The pole runs down behind the strips. Pole and foot are one line drawn from the pole's top (a second subpath would start its
+       own dash at once), so the foot comes last and nothing shows below strip A while the strip moves.
+     Strips: quote Georgia 52 px, attribution 26 px (mg_specs/briefs/README.md, strip type). Strip A is 220 px tall for its two lines
+       and grows upward (top 620, bottom 840 as before), so its shadow reaches no further toward the presenter corner.
      Sweep band: the chain base's faint band crosses the ground three times to carry the holds. It is cut out of the hole, and a
        second copy rides on the hole cover in step with it, so it never lies over the film and shows no seam on the cover.
      Plan rule 22: strip A sits in the middle of the frame (200 px higher) until the horn needs the room, then goes to its place.
@@ -42,15 +47,15 @@
   .sir-sweep-c { left:-1040px; top:-150px; }   /* the same band in the cover's own box (left 480, top 150) */
 
   /* ---- the drawn horn: an outline and nothing else ---- */
-  .sir-horn { position:absolute; left:891px; top:191px; width:138px; height:348px; overflow:visible; }
+  .sir-horn { position:absolute; left:983px; top:401px; width:138px; height:348px; overflow:visible; }
 
   /* ---- quote strips (paper: the study's words only), the base's strip ---- */
   .sir-strip { position:absolute; left:96px; top:640px; width:1480px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; }
-  .sir-strip-a { height:200px; }
+  .sir-strip-a { top:620px; height:220px; }
   .sir-strip-b { height:170px; }
-  .sir-qa { position:absolute; left:40px; top:20px; font:40px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:52px; }
+  .sir-qa { position:absolute; left:40px; top:16px; font:52px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:64px; }
   .sir-qb { position:absolute; left:40px; top:12px; font:52px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:1.15; }
-  .sir-att { position:absolute; left:40px; font:700 22px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+  .sir-att { position:absolute; left:40px; font:700 26px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
 </style>
 <div id="sir-root" data-composition-id="g-a6s11-sirens" data-width="1920" data-height="1080" data-duration="16.25">
 
@@ -67,7 +72,7 @@
   <!-- media/drawings/horn-pole.svg inline at 1.5 times: line 6 px, Label grey, no fill. No sound lines, ever -->
   <svg class="sir-horn" id="sir-horn" viewBox="-6 -6 92 232" width="138" height="348">
     <g fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-      <path class="sir-h" id="sir-h-pole" d="M40 220 V48 M26 220 H54"/>
+      <path class="sir-h" id="sir-h-pole" d="M40 48 V220 H26 H54"/>
       <rect class="sir-h" id="sir-h-driver" x="8" y="22" width="16" height="22"/>
       <path class="sir-h" id="sir-h-bell" d="M24 26 L72 4 V62 L24 40 Z"/>
     </g>
@@ -76,7 +81,7 @@
   <!-- strip A (view PAPER): the study's sentence as the script's Picture note gives it -->
   <div class="sir-strip sir-strip-a" id="sir-strip-a">
     <div class="sir-qa sir-h" id="sir-qa">&ldquo;It is presently impossible to tell what effect<br>these recommendations will eventually have&rdquo;</div>
-    <div class="sir-att" style="top:146px">Disaster Research Center, 1966, p. 31</div>
+    <div class="sir-att" style="top:160px">Disaster Research Center, 1966, p. 31</div>
   </div>
 
   <!-- strip B (view AFTER) -->
@@ -114,7 +119,7 @@ window.__timelines = window.__timelines || {};
   /* 1 · "impossible" @1.27: the quote lands on strip A, both lines together */
   tl.to($("qa"), { y: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 1.27);
 
-  /* 2 · "recommendations" @3.11: strip A goes to its briefed place and the horn draws on over it, pole first (complete 3.71) */
+  /* 2 · "recommendations" @3.11: strip A goes to its briefed place and the horn draws on above it, pole first from its top (complete 3.71) */
   tl.to($("strip-a"), { y: 0, duration: 0.5, ease: "power3.out" }, 3.11);
   draw($("h-pole"), 3.11, 0.3); draw($("h-driver"), 3.26, 0.25); draw($("h-bell"), 3.36, 0.35);
 
