@@ -51,20 +51,14 @@ else
   read -r COMP_W COMP_H COMP_DUR COMP_FPS <<< "$COMPOUT"
 fi
 
-# The frame rate this render must have. A draft is rendered at render.cmd's draft _FPS (a proxy
-# of the composition), so that number is read from render.cmd, the one place it is set.
+# The frame rate this render must have. A final matches the composition. A draft is a proxy
+# rendered at the rate render.cmd launched it with (RENDER_FPS included) and recorded in render_draft.fps.
 EXPECT_FPS="$COMP_FPS"
 if [ "$MODE" = draft ]; then
-  EXPECT_FPS=$(python3 - "$(dirname "$0")/render.cmd" <<'PYEOF'
-import re, sys
-m = re.search(r'if "%MODE%"=="draft" \(.*?set _FPS=(\d+)', open(sys.argv[1], encoding="utf-8", errors="replace").read(), re.S)
-print(m.group(1) if m else "")
-PYEOF
-)
-  EXPECT_FPS=${EXPECT_FPS%$'\r'}
+  EXPECT_FPS=$(tr -d ' \t\r\n' < "$EP/render_draft.fps" 2>/dev/null)
   if [ -z "$EXPECT_FPS" ]; then
-    echo "FAIL: could not read the draft _FPS out of render.cmd — cannot say what frame rate a draft must have"
-    EXPECT_FPS=0; FAIL=1
+    echo "FAIL: $EP/render_draft.fps is missing or empty — this draft predates the check or never reached the render step, so its frame rate cannot be verified"
+    exit 1
   fi
 fi
 
