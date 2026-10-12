@@ -1,4 +1,4 @@
-Host: id=g-a2s03-chain file=compositions/g-a2s03-chain.html start=306.30 duration=21.92 s (timeline-map.md; wav sum 21.08 s plus its gaps) track=2
+Host: id=g-a2s03-chain file=compositions/g-a2s03-chain.html start=306.55 duration=21.92 s (timeline-map.md; wav sum 21.08 s plus its gaps) track=2
 
 # g-a2s03-chain · A2-S3, A2-S4, A2-S5 · one link longer, office after office, at least ten minutes (wave 2, chain family)
 
