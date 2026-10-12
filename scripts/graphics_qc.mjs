@@ -102,24 +102,25 @@ const MEASURE = `((t) => {
     while (n && n.nodeType === 1) { o *= parseFloat(getComputedStyle(n).opacity || '1'); n = n.parentElement; }
     return o > 0.12;
   };
-  /* the screen box an element's overflow hidden/clip/scroll ancestors leave painted (Range rects ignore
-     clipping: g-a4s13-duty, 12 Oct 26, a quote line below its mask "collided" with the attribution under it).
-     Only ancestors in the containing-block chain clip (an absolute child of a static mask is not clipped),
-     and an ancestor's border box stands in for its padding box, so the box errs towards painted.
-     clip-path is not read. */
-  const clipBox = (el) => {
+  /* the screen box that the overflow (hidden, clip, scroll, auto) of an element and of the ancestors in its
+     containing-block chain leaves painted of its text; clip-path is not read */
+  const clipBox = (el, cs) => {
     const b = { x0: -Infinity, y0: -Infinity, x1: Infinity, y1: Infinity };
-    let pos = getComputedStyle(el).position;
-    for (let p = el.parentElement; p; p = p.parentElement) {
-      const s = getComputedStyle(p);
-      if (pos === 'fixed' ? s.transform === 'none' : pos === 'absolute' && s.position === 'static' && s.transform === 'none') continue;
-      const r = p.getBoundingClientRect();
-      if (s.overflowX !== 'visible') { b.x0 = Math.max(b.x0, r.left); b.x1 = Math.min(b.x1, r.right); }
-      if (s.overflowY !== 'visible') { b.y0 = Math.max(b.y0, r.top); b.y1 = Math.min(b.y1, r.bottom); }
+    let pos = cs.position;
+    for (let p = el; p; p = p.parentElement) {
+      const s = p === el ? cs : getComputedStyle(p);
+      const skips = p !== el && pos === 'absolute' && s.position === 'static' && s.transform === 'none';   // not its containing block
+      if (skips) continue;
+      if (s.overflowX !== 'visible' || s.overflowY !== 'visible') {
+        const r = p.getBoundingClientRect();
+        if (s.overflowX !== 'visible') { b.x0 = Math.max(b.x0, r.left); b.x1 = Math.min(b.x1, r.right); }
+        if (s.overflowY !== 'visible') { b.y0 = Math.max(b.y0, r.top); b.y1 = Math.min(b.y1, r.bottom); }
+      }
       pos = s.position;
     }
     return b;
   };
+  const MINBOX = 2;   // px: a glyph box, or the painted part of one, under this on either side is not measured
   const rects = [];
   for (const el of document.querySelectorAll('body *')) {
     if (!vis(el)) continue;
