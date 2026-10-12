@@ -95,7 +95,7 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
   pace and the real non-voice seconds. It fails outside target +/- 1 min; a script is not locked while it fails.
 - Tempo per lane lives in `config.yaml channel.tempo`; `tts_episode.py` applies it. The number belongs to the voice: a new
   voice reference gets a new tempo that keeps the delivered pace (config comment shows the sum). A key reveal can slow to 0.85:
-  give it its own segment and put `(tempo 0.85)` on that segment's heading. The editor picks which lines; no quota (owner 2 Oct 26). Order: TTS, tempo, re-transcribe, THEN time graphics. `sweep_episode.py` fails a words.json or `data-duration` that runs past its wav.
+  give it its own segment and put `(tempo 0.85)` on that segment's heading. The editor picks which lines; no quota (owner 2 Oct 26). Order: TTS, tempo, any later step that rewrites the wav (a voice conversion), re-transcribe, THEN time graphics. `sweep_episode.py` fails a words.json or `data-duration` that runs past its wav.
 - TTS-safe text: spell out ALL dates, times and numbers, no paired dashes, sentences under 24 words, flowing connective sentences.
 - Homographs: list, senses and the probe-before-respelling rule live in `references/homographs.md`, gated by
   `scripts/homograph_scan.py` (in `run_gates.py`).
