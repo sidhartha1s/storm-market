@@ -14,7 +14,7 @@ The day's storms were supercells; single storms lasted up to 4.5 hours and moved
 ## 1. Source
 - `edit_script.md` A1-S7, Rows [IWX: "individual storms persisted for up to 4.5 hours"; NWS glossary "supercell"] and [survey printed pp. 38 and 39: "moving east northeast about 45 mph"]. A1-S8, Rows [the writer's reading] and [study printed p. 21: "neither pre-planned nor systematic"].
 - Photograph: `media/stills/b7-tornado-track-map.jpg` (1396 x 1046, inventory row B7; credit "Courtesy: Dr. Russell Schneider, SPC"). White ground, grey county lines, red tracks. It prints no state name, no time and no track name, so no track can be told from another on it.
-- Red ink measured on the file: image x 67 to 1066, y 53 to 575. Nothing red lies below image y 575.
+- Red ink: none of it is ours; no red of ours is anywhere in this comp. The source map's own red, as the reader measured it on the passed graphic's frame (lead, 12 Oct 26): its lowest row of real track ink is at y 582, and below that the map prints one red `2` with a dot at x 1261 to 1268, y 831 to 840 (8 by 10 px), part of the source and 3 px clear of our arrow. This brief first said, from a measure on the file (image x 67 to 1066, y 53 to 575), that nothing red lay below y 575: that was wrong about the source.
 
 ## 2. Datum, scale, orientation
 North is up. The map sits exactly as in the built `compositions/g-i1s4-states.html` part A: shown whole at 0.9293, screen x = 251.4 + 0.9293 x image x, screen y = 54 + 0.9293 x image y, so the image covers x 251 to 1549, y 54 to 1026, inside a Beige polaroid border 10 px (card left 241, top 44, 1297 x 972 inside the border). On that scale the red ink ends at screen y 588: **the band y 640 to 1026 of the map holds no track** and takes every element of ours.
@@ -36,7 +36,7 @@ The tile row is schematic: six equal squares, not real counties, not to scale, n
 | Tiles (A1-S8) | six squares 150 x 150 in one row, top 640, left edges 275, 495, 715, 935, 1155, 1375 (gap 70; the row runs x 275 to 1525, centred on x 900). Fill Panel dark, stroke Body light 4 px, square corners. No name, number or letter on any tile |
 | Hand-off marks | five dotted links in the gaps on the row's centre line y 715, each from 10 px right of a tile to 10 px left of the next (50 px): 6 px round dots, `stroke-dasharray:"0 12.5"`, `stroke-linecap:round`. Amber 2 when drawn (the travelling word), Label grey later |
 | Tornado mark | `media/drawings/tornado-mark.svg` inline at scale 1.0 (object box 60 x 80, line 6), group stroke Body light, never red. Its point rides y 628, from x 350 (over tile 1) to x 1450 (over tile 6) |
-| Row caption | Arial 700 22 px, Label grey, centred on x 900, top 812: `schematic: not a real track` |
+| Row caption | Arial 700 22 px, Body light, centred on x 900, top 812: `schematic: not a real track`. The ink is raised from Label grey to Body light for contrast (Label grey measured 2.29 to 1 on the frame; lead, 12 Oct 26); size and place unchanged |
 
 ## 4. Must be true in the picture
 1. **No track is singled out.** The veil and its amber edge cross the whole height of the map in one move. Nothing of ours touches, circles, traces or brightens one red line more than another.
