@@ -159,6 +159,7 @@ window.__timelines = window.__timelines || {};
 
   /* ================= view ROOM: 0.00 to 12.99 ================= */
   /* 0 · "The" @0.00 (voice @0.47): ground, open window on the operations room, frame, film label. The film is the motion */
+  tl.to($("label"), { y: -8, duration: CUT2 / 8, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);   /* the film label floats 8 px while it is on, back at rest on the cut @21.45: the hold's slow float (mg-quickref "Motion and exits") */
 
   /* 1 · "Many" @6.63: the window dims */
   tl.to($("dim"), { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 6.63);
