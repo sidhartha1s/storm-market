@@ -55,6 +55,14 @@ Status is read from this file. A box is ticked only with the check that proved i
     - `verify_render.sh`: no black, silence or freeze spans, no pop frames, audio present, duration matches; its one FAIL line is "fps 15 != composition 30fps", which every draft trips (`render.cmd` drafts at 15 fps). The file was first named without "draft", so the script read `render_full.log`; renamed with the `-draft` suffix and the wrapper with it.
     - Orchestrator read 26 frames of the render (two per scene, `.claude/scratch/devq-retention/shot-p65prev-sheet-1..4.jpg`). Review page for the owner: `p65-preview.html` on the devq server. Audio unheard by the agent.
     - Open: the render tool's own lint prints 3 errors, `subcomposition_root_styled_by_class` on `g-i1s1-house`, `g-i1s2-station`, `g-i1s9-chain` (root styled through a class, not `#root`); the render went through and the frames read right. Fix with the next round's edits.
+  - [x] Owner on preview v1, in chat, 12 Oct 26 15:08, verbatim: "this was a really interesting preview. i loved the motion graphics and stuff. i didnt expect it this good. amazing visual story telling. keep it up. uh oh. zbook is closed lid. cool, do the rest. earcheck is a go. cook the rest. note the "founds" accordingly. fix whats to be cleared. rest ok."
+    - Hook, hook tail and intro (H1, T1, I1): approved as rendered. Sound: "earcheck is a go" (his ears; the agent cannot hear).
+    - Paul's line as recorded (not the storyboard's wording) and the toll straight after Paul: stand ("rest ok").
+    - Two text sizes on five graphics (03, 06, 08, 09, 12): left as they are ("rest ok"). The gate still prints 5 flat-type lines for them.
+    - Corner face: the ZBook's lid is closed, so the full cut is built without the circle until it is up again. Book ad: mounted at the Act 3 seam in the full cut.
+    - To clear (his "fix whats to be cleared"): the render tool's 3 lint errors on 04, 05, 11 (root styled through a class); `verify_render.sh` failing every draft on frame rate and picking its log from the file name.
+    - Agent's reading of "rest ok": it also answers the third open item of that message, the OK to merge PR #163 (pin) and PR #164 (lessons). Stated to the owner in the report.
+    - "cook the rest": acts one to six and the close are written, checked and built without a stop per act; the script goes on a review page as it is fact-checked, for him to read alongside. Gates that still wait for his word: each new Flow take of Paul (credits), any `insert` clip, a render when memory is under the floor.
   - Pin: `pin_ritual.py` passed 0.8.143 to 0.8.149 on 12 Oct 26 (branch `pin-0-8-149`); the bump merges on the owner's OK, so preview v1 renders on 0.8.143.
 - [ ] Paul's on-camera lines; the book ad hinge inside the config window.
 - [ ] `edit_script.md` section by section, fact-check fan-out beside the owner's read.
