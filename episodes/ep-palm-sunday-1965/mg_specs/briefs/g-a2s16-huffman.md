@@ -22,7 +22,7 @@ North is up. One inline SVG holds BM-1; the camera is its `viewBox` and its CSS 
 | NORTH (family state) | 716, 62, 1080, 450 | `296 166 360 150` | 3.0 (screen x = 3u - 172, y = 3u - 436) | first sentence |
 | ELKHART (this comp's) | 620, 62, 960, 900 | `438 152 128 120` | 7.5 (screen x = 620 + 7.5 x (u - 438), y = 62 + 7.5 x (u - 152)) | second sentence |
 NORTH to ELKHART is a 2.5 times push: move the viewBox numbers geometrically (the `logZoom` maths of `library/inhouse/snippets/helpers.js` on a proxy with `onUpdate`), box and viewBox in the same 0.9 s tween, and set the end values exactly. Both boxes end left of x 1600 or above y 680: the presenter corner stays empty.
-The tornado mark's place is schematic: 7 map units west and 7 north of `pt-nappanee` (about 5 km), which is "northwest" and nothing more exact.
+The tornado mark's place is schematic: 7 map units west and 7 north of `pt-nappanee` (about 6 km, 74 px on screen), which is "northwest" and nothing more exact.
 
 ## 3. Geometry (screen px)
 | Element | Px |
