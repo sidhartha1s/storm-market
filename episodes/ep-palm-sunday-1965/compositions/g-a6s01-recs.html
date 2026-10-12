@@ -123,8 +123,10 @@ window.__timelines = window.__timelines || {};
   /* 3 · ten @3.41: the ten margin dots land top to bottom, 0.06 s apart (done @4.10) */
   tl.to(dots, { autoAlpha: 1, duration: 0.15, ease: "none", stagger: 0.06 }, 3.41);
 
-  /* 4 · first @5.35: the page, its dots, the date label and the name card drop to 0.18; the crop card slides in from the left */
-  tl.to([page, date, who], { opacity: 0.18, duration: 0.3, ease: "none" }, 5.35);
+  /* 4 · first @5.35: the page, its dots and the date label drop to 0.18; the name card goes out (the crop card's top edge,
+     y 385, would cut its name in half); the crop card slides in from the left */
+  tl.to([page, date], { opacity: 0.18, duration: 0.3, ease: "none" }, 5.35);
+  tl.to(who, { autoAlpha: 0, duration: 0.3, ease: "none" }, 5.35);
   tl.set(card, { autoAlpha: 1 }, 5.35);
   tl.to(card, { x: 0, duration: 0.45, ease: "power3.out" }, 5.35);
 
