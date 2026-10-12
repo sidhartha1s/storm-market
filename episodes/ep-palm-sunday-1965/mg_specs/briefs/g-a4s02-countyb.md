@@ -56,7 +56,7 @@ Fixed layer:
 | Clock stamp (A4-S4 on) | design sheet section 8: glass card left 96, top 96, 590 x 200; clock face `media/drawings/wall-clock.svg` inline at `translate(129 134)` (centre (191, 196)). In the eyebrow slot the word `about`, Arial 700 26 px, Body light, left 286, top 108. Time `7:30 PM`, Courier New 700 84 px, Amber 2, x 284, y 142. The two read as one line of sense, `about 7:30 PM`. No place line |
 | Radio arc (A4-S4 on; in the stage, authored numbers) | path `M224 508 Q425 300 626 508` (apex (425, 404) by script; on screen (425, 536)), Amber 2, 4 px, dotted like the links. It starts over the civil defense desk and ends over the bare left end of the police desk's top |
 | The light | Amber 2 dot, radius 10, moved along the arc with `getPointAtLength` from a 0 to 1 proxy tween (seek-safe) |
-| Ghost (A4-S5) | Label grey dot, radius 8, and a 6 px Label grey line that grows behind it over the two dotted links: x 837 to 1068, then x 1170 to 1400, both at y 520. Never Amber 2 |
+| Ghost (A4-S5; in the stage, authored numbers) | Label grey dot, radius 8, and a 6 px Label grey line that grows behind it over the two dotted links: x 837 to 1068, then x 1170 to 1400, both at y 520 (on screen y 652). Never Amber 2 |
 
 ## 4. Must be true in the picture
 1. Amber reaches two things and no more: the civil defense desk (A4-S3) and the police desk (A4-S4, only when the light has crossed the arc). The microphone's lamp and lines, the house's lines and windows and both dotted links are never amber in any frame.
