@@ -68,7 +68,7 @@ No source line in the credit corner: every paper strip carries its own attributi
 ## 4. Must be true in the picture
 1. Whenever any film pixel shows (0.00 to 21.45), `Civil defense training film, 1967` is on screen and is the only glass chip. No place, office, station, person, time or county is named over the film. The only other text over film is strip A, which is paper and is the Picture note's own.
 2. The film is never frozen, slowed, looped or reversed. The room is the first 12.99 s of its file; the announcer is the first 8.46 s of the first angle. From 21.45 to the last frame the hole is opaque (read at 22.50, after the announcer mount has ended at 22.43: no black, no stale frame).
-3. The room's placards are neither cropped nor masked; they stand under the label (rule 16). Its first 2 s are placard-free.
+3. The room's placards are neither cropped nor masked; they stand under the label (rule 16). In its first 2 s nothing readable at viewing size names a place, office, station or county (a small desk tent card and the wall board's heading are in frame at 0.50 and 1.80 s, unreadable; ruling of 13 Oct 26, 00:58).
 4. `inaction` is the only quoted word of A1-S15 and is not on screen before 11.53. Strip A and the dim are gone in the frame the announcer appears (12.99).
 5. The microphone has no name and no call letters. The ON AIR lamp is off (grey outline, no fill) from 21.45 to 25.89 and red from 25.89 to the end. It changes by fill only: no pulse, no scale, no glow lines.
 6. Strip B's words are the study's, parentheses included, and nothing is added to them.
