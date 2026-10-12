@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a4s08-chief (A4-S8): the study's typed page; the chief's own sentence underlined and lifted onto paper; then the underline
+     moves up to the study's words, "might panic unnecessarily". Brief: mg_specs/briefs/g-a4s08-chief.md.
+     Page family: crop, unlit page, two underlines in turn, strip and county chip of g-i1s6-page and g-i1s7-sheriff.
+     Crop: media/docs/study-p22-chief-crop.png, 1460 x 529, study printed p. 22, at its own size: screen x = crop x + 106, y = crop y + 126.
+       Lines 1 and 2 are the study's sentence, double spaced (underline 6 px, 4 px under the line box). Lines 3 to 10 are the chief's
+       block quote, single spaced: line 9's ink starts at crop y 441, so underline 1 is 4 px at crop y 436 to 440 and the bright
+       box of state CHIEF ends with it (screen y 566), so no tip of line 9 is lit.
+     Plan rule 22: until the strip needs the room the chip and the card sit 180 px lower (centred in the frame) and rise on the
+       strip's cue; the last hold is 3.39 s, so the whole picture carries a slow push, 1.00 to 1.03.
+     Cues: audio/a4-s8.words.json seconds plus 0.15 (mg_specs/timeline-map.md table 5). The comp starts on the cut out of Paul's
+     clip; the voice follows at 0.68. -->
+<template>
+<style>
+  #chief-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .chief-h { opacity:0; visibility:hidden; }
+  .chief-all { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .chief-page { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* ---- county chip, the document card and what is drawn on it (screen px of the brief; the layer moves as one) ---- */
+  .chief-chip { position:absolute; left:96px; top:54px; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:23px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  .chief-card { position:absolute; left:96px; top:116px; width:1480px; height:549px; box-sizing:border-box; border:10px solid #f4f0e6; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .chief-card img { position:absolute; left:0; top:0; width:1460px; height:529px; }
+  .chief-unlit { position:absolute; background:rgba(21,32,43,0.45); }
+  .chief-ul { position:absolute; background:#d0121f; }
+
+  /* ---- the quote strip (retyped, with its quotation marks and attribution) ---- */
+  .chief-strip { position:absolute; left:96px; top:690px; width:1480px; height:170px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; }
+  .chief-q { position:absolute; left:40px; top:24px; font:52px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:1.15; }
+  .chief-att { position:absolute; left:40px; top:118px; font:700 22px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+</style>
+<div id="chief-root" data-composition-id="g-a4s08-chief" data-width="1920" data-height="1080">
+  <div class="chief-all" id="chief-all">
+
+    <div class="chief-page" id="chief-page">
+      <div class="chief-chip">County B</div>
+      <div class="chief-card"><img src="media/docs/study-p22-chief-crop.png" alt=""></div>
+      <!-- unlit page, state STUDY: lines 3 to 10 -->
+      <div class="chief-unlit chief-h" id="chief-st" style="left:106px;top:277px;width:1460px;height:378px"></div>
+      <!-- unlit page, state CHIEF: four rects around the box x 328 to 784, y 522 to 566 ("I don't like to panic them." and its underline) -->
+      <div class="chief-h" id="chief-ch">
+        <div class="chief-unlit" style="left:106px;top:126px;width:1460px;height:396px"></div>
+        <div class="chief-unlit" style="left:106px;top:522px;width:222px;height:44px"></div>
+        <div class="chief-unlit" style="left:784px;top:522px;width:782px;height:44px"></div>
+        <div class="chief-unlit" style="left:106px;top:566px;width:1460px;height:89px"></div>
+      </div>
+      <!-- underlines: 1 under "I don't like to panic them.", 2 under "might panic unnecessarily" -->
+      <div class="chief-ul" id="chief-ul1" style="left:338px;top:562px;width:436px;height:4px"></div>
+      <div class="chief-ul" id="chief-ul2" style="left:975px;top:186px;width:437px;height:6px"></div>
+    </div>
+
+    <div class="chief-strip chief-h" id="chief-strip">
+      <div class="chief-q">&ldquo;I don't like to panic them.&rdquo;</div>
+      <div class="chief-att">a city police chief &middot; Disaster Research Center, 1966</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a4s08-chief", P = "chief", D = 11.18;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function under(e, t, d) { tl.to(e, { scaleX: 1, duration: d, ease: "power2.out" }, t); }
+
+  /* start states: hidden in CSS (chief-h) or by scaleX 0; transforms set here at 0; every move from rest below is a plain to() */
+  s0($("all"), { scale: 1, transformOrigin: "960px 540px" });
+  s0($("page"), { y: 180 });                                /* chip and card centred in the frame until the strip needs the room (plan rule 22) */
+  s0($("ul1"), { scaleX: 0, transformOrigin: "left center" });
+  s0($("ul2"), { scaleX: 0, transformOrigin: "left center" });
+  s0($("strip"), { y: 60 });
+
+  /* 0 · the cut @0.00 ("Their" @0.68): ground, chip, the card whole and bright. The slow push carries the whole comp */
+  tl.to($("all"), { scale: 1.03, duration: D, ease: "none" }, 0);
+
+  /* 1 · "chief" @0.85: unlit page, state STUDY: the study's sentence about the Chief of Police is the bright part */
+  tl.to($("st"), { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 0.85);
+
+  /* 2 · "He" @3.31: cross fade to state CHIEF: the chief's own sentence is the bright part */
+  tl.to($("st"), { autoAlpha: 0, duration: 0.4, ease: "none" }, 3.31);
+  tl.to($("ch"), { autoAlpha: 1, duration: 0.4, ease: "none" }, 3.31);
+
+  /* 3 · "I" @4.13: underline 1 (complete 4.73) */
+  under($("ul1"), 4.13, 0.6);
+
+  /* 4 · "them." @5.15: the page rises to its briefed place and the strip comes up under it */
+  tl.to($("page"), { y: 0, duration: 0.5, ease: "power3.out" }, 5.15);
+  tl.to($("strip"), { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 5.15);
+
+  /* 5 · "He" @6.33: underline 1 goes (gone 6.53, before underline 2); cross fade back to state STUDY. The strip stays */
+  tl.to($("ul1"), { autoAlpha: 0, duration: 0.2, ease: "power1.in" }, 6.33);
+  tl.to($("ch"), { autoAlpha: 0, duration: 0.4, ease: "none" }, 6.33);
+  tl.to($("st"), { autoAlpha: 1, duration: 0.4, ease: "none" }, 6.33);
+
+  /* 6 · "might" @7.19: underline 2 (complete 7.79). Hold to the cut */
+  under($("ul2"), 7.19, 0.6);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
