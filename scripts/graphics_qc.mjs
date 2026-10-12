@@ -111,6 +111,27 @@ const MEASURE = `((t) => {
     while (n && n.nodeType === 1) { o *= parseFloat(getComputedStyle(n).opacity || '1'); n = n.parentElement; }
     return o > 0.12;
   };
+  /* the screen box that the overflow (hidden, clip, scroll, auto) of an element and of the ancestors in its
+     containing-block chain leaves painted of its text; clip-path is not read */
+  const clipBox = (el, cs) => {
+    const b = { x0: -Infinity, y0: -Infinity, x1: Infinity, y1: Infinity };
+    let pos = cs.position;
+    for (let p = el; p; p = p.parentElement) {
+      const s = p === el ? cs : getComputedStyle(p);
+      const skips = p !== el && pos === 'absolute' && s.position === 'static' && s.transform === 'none';   // not its containing block
+      if (skips) continue;
+      const boxless = s.display === 'contents' || (s.display === 'inline' && !(p instanceof SVGSVGElement));   // overflow clips nothing there; an inline <svg> does clip
+      if (!boxless && (s.overflowX !== 'visible' || s.overflowY !== 'visible')) {
+        const r = p.getBoundingClientRect();
+        if (s.overflowX !== 'visible') { b.x0 = Math.max(b.x0, r.left); b.x1 = Math.min(b.x1, r.right); }
+        if (s.overflowY !== 'visible') { b.y0 = Math.max(b.y0, r.top); b.y1 = Math.min(b.y1, r.bottom); }
+      }
+      pos = s.position;
+      if (pos === 'fixed') break;   // nothing above a fixed box clips it
+    }
+    return b;
+  };
+  const MINBOX = 2;   // px: a glyph box, or the painted part of one, under this on either side is not measured
   const rects = [];
   for (const el of document.querySelectorAll('body *')) {
     if (!vis(el)) continue;
@@ -122,10 +143,15 @@ const MEASURE = `((t) => {
     for (const node of el.childNodes) {
       if (node.nodeType !== 3 || !node.textContent.trim()) continue;
       const rng = document.createRange(); rng.selectNodeContents(node);
+      const clip = clipBox(el, cs);
       for (const ir of rng.getClientRects()) {
-        if (ir.width < 2 || ir.height < 2) continue;
-        rects.push({ el, id: el.id || el.className || el.tagName, text: node.textContent.trim().slice(0, 42),
-                     x: ir.x, y: ir.y, w: ir.width, h: ir.height, fs: parseFloat(cs.fontSize) });
+        if (ir.width < MINBOX || ir.height < MINBOX) continue;
+        /* the collision pass takes the painted part of the box, or nothing when too little is painted */
+        const x = Math.max(ir.x, clip.x0), y = Math.max(ir.y, clip.y0);
+        const w = Math.min(ir.right, clip.x1) - x, h = Math.min(ir.bottom, clip.y1) - y;
+        if (w >= MINBOX && h >= MINBOX)
+          rects.push({ el, id: el.id || el.className || el.tagName, text: node.textContent.trim().slice(0, 42),
+                       x, y, w, h, fs: parseFloat(cs.fontSize) });
         if (ir.x < -SAFEPAD || ir.y < -SAFEPAD || ir.right > 1920 + SAFEPAD || ir.bottom > 1080 + SAFEPAD)
           out.oob.push({ id: el.id || el.className, text: node.textContent.trim().slice(0,42),
                          x: Math.round(ir.x), y: Math.round(ir.y), right: Math.round(ir.right), bottom: Math.round(ir.bottom) });

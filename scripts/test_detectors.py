@@ -355,6 +355,25 @@ SHEET = ''.join(f'  <span style="position:absolute;left:200px;top:{top}px;font-s
 photo = lambda attrs, left=0: (f'  <img {attrs} src="media/wide.svg" alt="" style="position:absolute;left:{left}px;top:0;'
                                'width:400px;height:400px;object-fit:cover">\n')
 TYPE_WHY, CROP_WHY = 'typed sheet, two tiers by design', 'blurred backdrop behind the whole photograph'
+# Clipped text (k): Range rects ignore clipping. A quote line sitting below its overflow:hidden mask is never
+# painted, so it collides with nothing (ep-palm-sunday-1965 g-a4s13-duty, 12 Oct 26: two hard
+# text-collisions against the attribution under the mask; old fbebe442 reports the clipped line). The same
+# pair with no mask still collides, and so does an absolute line inside a static mask that is not its
+# containing block (the mask does not clip it). A mask that holds the text itself clips it too: a
+# fixed-height overflow:hidden headline whose line sits below its box. Two partly painted lines inside
+# one mask still collide, and an inline <svg> clips its text (hidden by default, display inline).
+LINE = 'position:absolute;font-size:40px;line-height:50px;color:#fff;white-space:nowrap'
+BOX = 'position:absolute;left:200px;top:600px;width:600px;height:60px'
+quote = lambda left, top: f'<div style="{LINE};left:{left}px;top:{top}px">Quote line two</div>'
+
+
+def _masked(mask, inner):
+    return CANVAS_FILES['compositions/g-cv.html'].replace(
+        '</div>\n<script>',
+        f'  <div style="{mask}">{inner}</div>\n'
+        f'  <div style="{LINE};left:200px;top:672px">Said of the forecast</div>\n</div>\n<script>')
+
+
 CASES = {  # comp: (source, host s, new output must hold all of, must not hold, why)
     'g-p1': (CANVAS_FILES['compositions/g-cv.html'], 3, [], 'undesigned', 'a full-frame canvas is a designed background'),
     'g-p2': (cv, 3, [], 'fade-only', 'an onUpdate canvas renderer is continuous motion'),
@@ -371,6 +390,12 @@ CASES = {  # comp: (source, host s, new output must hold all of, must not hold, 
     'g-c3': (_ok_comp('', photo('')), 3, ['ERROR [bad-crop]'], 'exempt', 'an undeclared crop still fails'),
     'g-c4': (_ok_comp('', photo(f'data-crop-ok="{CROP_WHY}"') + photo('', 500)), 3, ['ERROR [bad-crop] wide.svg', 'exempt [bad-crop] g-c4:'], None, 'the exemption is per img: an undeclared img of the same file still fails'),
     'g-i1': (_ok_comp(f'data-type-ok="{TYPE_WHY}" data-idle-ok="held on purpose"', SHEET, 1, "tl.to({}, { duration: 7 }, 0);\n"), 7, ['ERROR [idle] 6.0s frozen at 1.0s', 'ERROR [undesigned] 2 type tier(s)', 'exempt [flat-type] g-i1:'], None, 'idle takes no exemption and undesigned still counts the two tiers, flat-type stays exempt beside them'),
+    'g-k1': (_masked(BOX + ';overflow:hidden', quote(0, 70)), 3, [], 'text-collision', 'a line clipped away by its overflow:hidden mask collides with nothing'),
+    'g-k2': (_masked(BOX, quote(0, 70)), 3, ['ERROR [text-collision] "Quote line two"'], None, 'the same pair with no mask still collides'),
+    'g-k3': (_masked('width:600px;height:60px;overflow:hidden', quote(200, 670)), 3, ['ERROR [text-collision] "Quote line two"'], None, 'a static mask does not clip an absolute line it does not contain'),
+    'g-k4': (_masked(BOX + ';overflow:hidden;font-size:40px;line-height:190px;color:#fff;white-space:nowrap', 'Quote line two'), 3, [], 'text-collision', 'a mask that holds the text itself clips it'),
+    'g-k5': (_masked(BOX + ';overflow:hidden', quote(0, 30) + quote(0, 26)), 3, ['ERROR [text-collision] "Quote line two"'], None, 'two partly painted lines inside one mask still collide'),
+    'g-k6': (_masked('position:absolute;left:200px;top:600px', '<svg width="600" height="60"><text x="0" y="105" font-size="40" fill="#fff">Quote line two</text></svg>'), 3, [], 'text-collision', 'an inline <svg> clips its text though its display is inline'),
 }
 
 
@@ -412,7 +437,7 @@ assert '[idle]' not in got.get('g-p2', ''), f'the renderer span covers the {{}} 
 assert '\n  declared exemptions:\n    exempt [' in r.stdout and r.stdout.rstrip().endswith(' compositions, 4 exempt'), \
     f'the exempt lines sit under one header and the summary counts them: {r.stdout}'
 olds = {}  # each old revision runs only the comps its assertion reads
-for rev, comps in (('f3a6fece', ('g-p1', 'g-p2')), ('fbebe442', ('g-n1', 'g-n4')), ('29dfbdca', ('g-t1', 'g-c1'))):
+for rev, comps in (('f3a6fece', ('g-p1', 'g-p2')), ('fbebe442', ('g-n1', 'g-n4', 'g-k1', 'g-k4', 'g-k6')), ('29dfbdca', ('g-t1', 'g-c1'))):
     ep = _stage_ep(case_files(comps))
     old_gq = old_rev('graphics_qc.mjs', f'_old_gqc_{rev}_tmp.mjs', rev)
     olds[rev] = by_comp(subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True, encoding='utf-8').stdout)
@@ -424,7 +449,8 @@ assert 'flat background' in olds['fbebe442'].get('g-n1', '') and '[idle]' not in
     f'pre-fix main should run and count the {{}} clock as motion: {olds}'
 assert 'ERROR [flat-type]' in olds['29dfbdca'].get('g-t1', '') and 'ERROR [bad-crop]' in olds['29dfbdca'].get('g-c1', ''), \
     f'old code should fail the declared comps: {olds}'
-print('graphics_qc self-check PASS (canvas background + renderer span, their quarter-frame/onUpdate limits, a {} clock is not motion)')
+assert all('text-collision' in olds['fbebe442'].get(c, '') for c in ('g-k1', 'g-k4', 'g-k6')), f'old code should report the clipped lines: {olds}'
+print('graphics_qc self-check PASS (canvas background + renderer span, their quarter-frame/onUpdate limits, a {} clock is not motion, text clipped away by its mask collides with nothing)')
 print('graphics_qc self-check PASS (declared exemptions: data-type-ok and data-crop-ok need a reason, are printed, and reach no other rule or img)')
 
 # ---------------------------------------------------------------- settle frames for the vision pass
