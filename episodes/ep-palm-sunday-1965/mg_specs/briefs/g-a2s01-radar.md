@@ -61,7 +61,7 @@ The echo shapes are schematic: the warning gives a vicinity, not an outline.
 
 ## 5. Text (exact) and cues
 Text: `WEATHER BUREAU` · `5:43 PM` · `South Bend, Indiana` · `Michigan City` · `Knox` · `LAPORTE` · `STARKE` · `MARSHALL` · `Weather Bureau survey report, 1965, p. 39` · `South Bend` · `no radar` · `by telephone` · `Chicago` · `Fort Wayne` · `Indianapolis` · `Disaster Research Center, 1966, p. 13 · National Weather Service, Northern Indiana`. Page words are the image.
-Cue words and times are from `audio/a2-s1.words.json` and `audio/a2-s2.words.json` as they stood on 12 Oct 26. A2-S2 starts at 9.00 s (the wav length of A2-S1); the gap `mg_specs/timeline-map.md` puts between the two segments (not on disk yet) is added to every A2-S2 row. Retime from the word, never from the seconds.
+Cue words and times are from `audio/a2-s1.words.json` and `audio/a2-s2.words.json` as they stood on 12 Oct 26 at 17:50, after the voice conversion's re-transcription. A2-S2 starts at 9.00 s (the wav length of A2-S1); the gap `mg_specs/timeline-map.md` puts between the two segments (not on disk yet) is added to every A2-S2 row. Retime from the word, never from the seconds.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A2-S1 | 0 | The | 0.00 | 0.00 | first frame: ground and the map in NORTH, no dot, no label |
