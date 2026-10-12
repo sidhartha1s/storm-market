@@ -63,7 +63,7 @@ Text: `a station · county not given in the study` · `local police` · `a stati
 Cue words and times are from `audio/a4-s11.words.json` (32 words) and `audio/a4-s12.words.json` (38 words), read on 12 Oct 26. t from comp start = the segment's "wav start inside the composition" in `mg_specs/timeline-map.md` table 5 (A4-S11 -0.42, A4-S12 10.17) plus the word's time; a segment's first word uses the table's "first sound" (0.00, 10.59). Retime from the word, never from the seconds.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
-| 0 | A4-S11 | 0 | A | 0.00 | 0.00 | first frame: the police desk, the dotted link and the microphone, all Label grey; the chip; the label `a station`. No desk label, no strip |
+| 0 | A4-S11 | 0 | A | 0.42 | 0.00 | first frame: the police desk, the dotted link and the microphone, all Label grey; the chip; the label `a station`. No desk label, no strip |
 | 1 | A4-S11 | 5 | local | 1.60 | 1.18 | the label `local police` fades in (0.3 s) |
 | 2 | A4-S11 | 9 | told | 2.58 | 2.16 | the police desk's lines turn Amber 2 (0.3 s) and stay |
 | 3 | A4-S11 | 13 | headed | 3.64 | 3.22 | the microphone's lines go to Body light and back to Label grey (0.3 s, yoyo). No amber, and the link does not change |
