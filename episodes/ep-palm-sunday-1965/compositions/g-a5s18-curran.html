@@ -135,19 +135,16 @@ window.__timelines = window.__timelines || {};
     return max;
   }
   function drawOne(e, t, d, ease) {
-    var L = Math.ceil(longest(e)) + 1; s0(e, { strokeDasharray: L, strokeDashoffset: L });
+    var L = Math.ceil(longest(e)) + 1; s0(e, { strokeDasharray: L, strokeDashoffset: L, fillOpacity: 0 });
     tl.set(e, { autoAlpha: 1 }, t);
     tl.to(e, { strokeDashoffset: 0, duration: d, ease: ease || "power2.out" }, t);
+    tl.to(e, { fillOpacity: 1, duration: d, ease: "power2.in" }, t);   /* a body's fill comes up with its line: it never stands as a bare dark block */
   }
   function draw(id, t, d) {                                 /* a group: longest line first, all lines done d after t */
     var lines = Array.prototype.slice.call($(id).children);
     lines.sort(function (a, b) { return b.getTotalLength() - a.getTotalLength(); });
     var step = d * 0.4 / lines.length;
-    lines.forEach(function (e, i) {                         /* a body's fill comes up with its line: it never stands as a bare dark block */
-      drawOne(e, t + i * step, d - i * step);
-      s0(e, { fillOpacity: 0 });
-      tl.to(e, { fillOpacity: 1, duration: d - i * step, ease: "power2.in" }, t + i * step);
-    });
+    lines.forEach(function (e, i) { drawOne(e, t + i * step, d - i * step); });
   }
 
   var WHITE = "#f2f5f8", BODY = "#dfe7ee", GREY = "#93a3b2", AMBER = "#e8c56a", INK = "#2a2622";
