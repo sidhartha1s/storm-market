@@ -5,9 +5,10 @@
 # Everything here reads the finished mp4 — the checks that do not need pixels already ran
 # before the render (sweep_episode.py, blank_scan.mjs, beat_density.py, graphics_qc.mjs).
 set -u
-EP="${1:-}"; BASE="${2:-}"; MODE="${3:-}"
-case "$MODE" in draft|full) [ -n "$EP" ] && [ -n "$BASE" ] || MODE="" ;; esac
-case "$MODE" in draft|full) ;; *) echo "usage: verify_render.sh <episode-dir> <render-basename> <draft|full>"; exit 1 ;; esac
+if [ $# -ne 3 ] || { [ "$3" != draft ] && [ "$3" != full ]; }; then
+  echo "usage: verify_render.sh <episode-dir> <render-basename> <draft|full>"; exit 1
+fi
+EP="$1"; BASE="$2"; MODE="$3"
 MP4="$EP/renders/$BASE.mp4"
 [ -f "$MP4" ] || { echo "MISSING $MP4"; exit 1; }
 FAIL=0
