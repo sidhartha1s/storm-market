@@ -299,7 +299,7 @@ for (const f of files) {
     for (const o of m.texts) { const k = o.a + '|' + o.b; if (!seenOverlap.has(k)) { seenOverlap.add(k); add(name, 'text-collision', `"${o.a}" ⨯ "${o.b}" (${o.overlapPct}% at ${t.toFixed(1)}s)`); } }
     for (const o of m.oob) { const k = o.text; if (!seenOob.has(k)) { seenOob.add(k); add(name, 'out-of-frame', `"${o.text}" at x${o.x} y${o.y} → ${o.right}×${o.bottom} (${t.toFixed(1)}s)`); } }
     /* keyed by source AND reason: an undeclared img of the same file still fails beside a declared one */
-    for (const c of m.crops) { const k = c.src + '|' + c.ok; if (!seenCrop.has(k)) { seenCrop.add(k); add(name, 'bad-crop', `${c.src} loses ${c.lost}% (source ${c.srcAspect}:1 in ${c.boxAspect}:1 box)`, c.ok); } }
+    for (const c of m.crops) { const k = c.src + '|' + reason('bad-crop', c.ok); if (!seenCrop.has(k)) { seenCrop.add(k); add(name, 'bad-crop', `${c.src} loses ${c.lost}% (source ${c.srcAspect}:1 in ${c.boxAspect}:1 box)`, c.ok); } }
     for (const e of m.empty) { if (!seenEmpty.has(e)) { seenEmpty.add(e); add(name, 'empty-container', `${e} visible but empty (first at ${t.toFixed(1)}s)`); } }
     for (const b of m.broken) { if (!seenBroken.has(b)) { seenBroken.add(b); add(name, 'broken-image', `${b} failed to load (naturalWidth 0) — staged-path 404, not a crop/empty defect (${t.toFixed(1)}s)`); } }
   }
