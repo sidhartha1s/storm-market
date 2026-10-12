@@ -99,7 +99,7 @@ Every host is `id="host-<name without g->"`, track 2, 1920 x 1080.
 
 Track 1, own sound, no narration under them; the narrator wavs of these five segments are not mounted. Every file is 10.000 s, 1920 x 1080, with the logo burned in. Each clip is cut where his sound ends, as `ins-paul-1` was (silence scan at -30 dB, 0.08 s). `ins-paul-4` is cut at 9.50 from a -25 dB scan: at -30 dB its sound runs to 9.91, room noise after his last word (`words.json` ends "office." at 9.24). The chip "County B" over `ins-paul-4` is the overlay `ov-chip-countyb` in `index.html` (same window as the clip). `ins-paul-3` ends on "What did he do?" and the book ad's dip-in starts on that cut.
 
-## 3. Film cuts under compositions (6 mounts)
+## 3. Film cuts under compositions (7 mounts)
 Track 1, muted, class `filmwin`: left 480, top 150, 960 x 720 (the 4:3 window of `acts-plan.md` rule 15). The composition above draws the ground, the frame and the label, leaves the window open while the film shows, and covers it when the script says the window goes. A mount runs longer than the window needs so the composition, not the mount, decides the cut. No builder mounts a film.
 | Film mount | File | Under composition | Start (s) | Duration (s) | Start inside the composition (s) |
 |---|---|---|---|---|---|
