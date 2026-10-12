@@ -100,7 +100,7 @@ window.__timelines = window.__timelines || {};
   function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
 
   /* ---- bands ---- */
-  function lit(e, t) { tl.set(e, { visibility: "visible" }, t); tl.to(e, { scaleX: 1, duration: 0.3, ease: "power2.out" }, t); }
+  function lit(e, t) { tl.set(e, { visibility: "inherit" }, t); tl.to(e, { scaleX: 1, duration: 0.3, ease: "power2.out" }, t); }
   function pulse(e, t) {                                    /* wipes across the row from the left in 0.12 s, fades in 0.13 s, leaves nothing */
     tl.set(e, { visibility: "visible", scaleX: 0, opacity: 0.25 }, t);
     tl.to(e, { scaleX: 1, duration: 0.12, ease: "none" }, t);
