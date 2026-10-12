@@ -49,7 +49,7 @@ No quote strip in this comp: the same words come as a paper card in the next one
 3. The date label reads `May 2, 1965` and sits on glass beside the page, never on the page: the page prints no date.
 4. The name card reads `P. H. Kutschenreuter` and `chairman, Weather Bureau survey team`. No portrait, no drawn person.
 5. The underline is Popfig red, the page's own mark in this episode. The margin dots are Caption dark: they count, they do not accuse.
-6. While the crop is on, the whole page, the date label and the name card are at opacity 0.18 or less behind it and nothing of them can be read as a second claim.
+6. While the crop is on, the whole page and the date label are at opacity 0.18 or less behind it, the name card is gone (it fades out as the crop comes in), and nothing of them can be read as a second claim.
 7. No county chip, no "County A", no "County B", no station name.
 8. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680 (the crop card ends at x 1576).
 9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
