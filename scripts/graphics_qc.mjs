@@ -111,12 +111,14 @@ const MEASURE = `((t) => {
       const s = p === el ? cs : getComputedStyle(p);
       const skips = p !== el && pos === 'absolute' && s.position === 'static' && s.transform === 'none';   // not its containing block
       if (skips) continue;
-      if (s.overflowX !== 'visible' || s.overflowY !== 'visible') {
+      const boxless = s.display === 'contents' || (s.display === 'inline' && !(p instanceof SVGSVGElement));   // overflow clips nothing there; an inline <svg> does clip
+      if (!boxless && (s.overflowX !== 'visible' || s.overflowY !== 'visible')) {
         const r = p.getBoundingClientRect();
         if (s.overflowX !== 'visible') { b.x0 = Math.max(b.x0, r.left); b.x1 = Math.min(b.x1, r.right); }
         if (s.overflowY !== 'visible') { b.y0 = Math.max(b.y0, r.top); b.y1 = Math.min(b.y1, r.bottom); }
       }
       pos = s.position;
+      if (pos === 'fixed') break;   // nothing above a fixed box clips it
     }
     return b;
   };
