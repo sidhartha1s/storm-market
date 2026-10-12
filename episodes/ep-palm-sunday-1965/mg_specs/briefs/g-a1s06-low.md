@@ -17,7 +17,7 @@ The Weather Bureau's surface map for 1:00 AM EST on Sunday, April 11, 1965 showe
 - State outlines: `media/maps/us-states.svg` (BM-3).
 
 ## 2. Datum, scale, orientation
-North is up. Our map is BM-3 inlined in an SVG mounted at left 1100, top 151, width 724, height 509 with `viewBox="-2300 -1300 3000 2109.1"` (state PLAINS: 0.2413 px per map unit; screen x = 1100 + 0.2413 x (u + 2300), screen y = 151 + 0.2413 x (u + 1300)). The window runs from Montana to Ohio and from the Canadian border to Missouri. Its bottom edge is y 660, above the presenter corner.
+North is up. Our map is BM-3 inlined in an SVG mounted at left 1100, top 151, width 724, height 509 with `viewBox="-2300 -1300 3000 2109.1"` (state PLAINS: 0.2413 px per map unit; screen x = 1100 + 0.2413 x (u + 2300), screen y = 151 + 0.2413 x (u + 1300)). The window runs from 108.0 W (eastern Montana) to 84.4 W (Indiana's east edge) and from 49.7 N (the Canadian border) to 38.3 N (central Missouri). Its bottom edge is y 660, above the presenter corner.
 The L's centre is the centre of the joint box of `st-nd`, `st-sd` and `st-mn`: map units (-873, -598), screen (1444.4, 320.4). That point is where the two Dakotas meet Minnesota. The low's exact centre is not claimed: our map is labelled a sketch.
 The real map is shown at 950 x 758 (0.632 of its file size), never enlarged.
 
