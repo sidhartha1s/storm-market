@@ -34,7 +34,7 @@ Clock angles, clockwise from 12 (by script): 6:23 is hour 191.5, minute 138; 6:2
 | Card 2 (6:24) | left 96, top 684, 1480 x 145 (bottom 829); crop `survey-p40-624pm-crop.png` at (106, 694) inside a window 1460 x 125 with `overflow:hidden`: the file's bottom 4 px (rows 125 to 128) are not shown |
 | Card 3 (6:35) | left 96, top 843, 1480 x 148 (bottom 991); crop `survey-p40-635pm-crop.png` 1460 x 128 inside at (106, 853) |
 | Card shadow | `0 18px 50px rgba(0,0,0,0.55)` (design sheet section 9) |
-| Source line | not in the credit corner (the stack ends at y 983): left 96, top 376, Arial 700 22 px with the credit shadow: `Weather Bureau survey report, 1965, pp. 39-40` |
+| Source line | not in the credit corner (the stack ends at y 991): left 96, top 376, Arial 700 22 px with the credit shadow: `Weather Bureau survey report, 1965, pp. 39-40` |
 
 ## 4. Must be true in the picture
 1. Each card is the scan itself at its own size: nothing retyped, nothing cropped inside a line, except card 2's ruled 12 px mask.
