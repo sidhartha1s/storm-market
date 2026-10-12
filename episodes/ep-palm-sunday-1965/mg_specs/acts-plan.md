@@ -278,7 +278,7 @@ At most five builders at a time. A builder owns whole files; no file is in two b
 | 5 | 5-c chain | g-a6s05-wires, g-a6s08-spotters |
 | 5 | 5-d map and drawing | g-a6s07-power, g-a6s09-third, g-z1s04-drill |
 | 5 | 5-e film and title | g-a6s11-sirens, g-z1s05-title |
-Wave 0's four jobs run together. Waves 1 to 5 each wait for the verifier's read of the wave before; a comp that "reuses ... after wave 1" copies a wave 1 base only once that base has passed.
+Wave 0 finished 12 Oct 26: its files are the rows of section 3. Wave 0's four jobs ran together. Waves 1 to 5 each wait for the verifier's read of the wave before; a comp that "reuses ... after wave 1" copies a wave 1 base only once that base has passed.
 
 ## 6. Picture notes that cannot be built as written, and the smallest change
 The script is not changed; these are changes to how a note is drawn.
