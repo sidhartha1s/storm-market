@@ -391,10 +391,11 @@ if HAVE_FFMPEG:
         mk_clip(ep / "renders" / "pal-24.mp4", 24)
 
         r = run_verify(ep, "pal-preview-v1", "draft")
-        check("render-10 NEW: a 15 fps draft with no 'draft' in its name passes, reading render_draft.log",
+        check("render-11 NEW: a 15 fps draft with no 'draft' in its name passes, reading render_draft.log",
               r.returncode == 0 and "OK: 320x240 @ 15/1" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
+        (ep / "render_full.log").write_text("browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n", encoding="utf-8")
         r = run_verify(ep, "pal-preview-v1", "full")
-        check("render-10 NEW: the same 15 fps file checked as a final still fails the fps check",
+        check("render-11 NEW: the same 15 fps file checked as a final still fails the fps check",
               r.returncode != 0 and "FAIL: fps 15 != full 25fps" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
         r = run_verify(ep, "pal-24", "draft")
         check("render-10 NEW: a draft at another rate than render.cmd's draft rate fails",
