@@ -102,21 +102,45 @@ const MEASURE = `((t) => {
     while (n && n.nodeType === 1) { o *= parseFloat(getComputedStyle(n).opacity || '1'); n = n.parentElement; }
     return o > 0.12;
   };
+  /* the screen box an element's overflow hidden/clip/scroll ancestors leave painted (Range rects ignore
+     clipping: g-a4s13-duty, 12 Oct 26, a quote line below its mask "collided" with the attribution under it).
+     Only ancestors in the containing-block chain clip (an absolute child of a static mask is not clipped),
+     and an ancestor's border box stands in for its padding box, so the box errs towards painted.
+     clip-path is not read. */
+  const clipBox = (el) => {
+    const b = { x0: -Infinity, y0: -Infinity, x1: Infinity, y1: Infinity };
+    let pos = getComputedStyle(el).position;
+    for (let p = el.parentElement; p; p = p.parentElement) {
+      const s = getComputedStyle(p);
+      if (pos === 'fixed' ? s.transform === 'none' : pos === 'absolute' && s.position === 'static' && s.transform === 'none') continue;
+      const r = p.getBoundingClientRect();
+      if (s.overflowX !== 'visible') { b.x0 = Math.max(b.x0, r.left); b.x1 = Math.min(b.x1, r.right); }
+      if (s.overflowY !== 'visible') { b.y0 = Math.max(b.y0, r.top); b.y1 = Math.min(b.y1, r.bottom); }
+      pos = s.position;
+    }
+    return b;
+  };
   const rects = [];
   for (const el of document.querySelectorAll('body *')) {
     if (!vis(el)) continue;
     const r = el.getBoundingClientRect();
     if (r.width < 1 || r.height < 1) continue;
     const cs = getComputedStyle(el);
+    let clip;
     /* glyph-level ink boxes, not element boxes: line-height padding and block width
        make element rects overlap constantly without any visible garbling */
     for (const node of el.childNodes) {
       if (node.nodeType !== 3 || !node.textContent.trim()) continue;
       const rng = document.createRange(); rng.selectNodeContents(node);
+      clip ??= clipBox(el);
       for (const ir of rng.getClientRects()) {
         if (ir.width < 2 || ir.height < 2) continue;
-        rects.push({ el, id: el.id || el.className || el.tagName, text: node.textContent.trim().slice(0, 42),
-                     x: ir.x, y: ir.y, w: ir.width, h: ir.height, fs: parseFloat(cs.fontSize) });
+        /* the collision pass takes the painted part of the box; with under 2 px painted it takes none */
+        const x = Math.max(ir.x, clip.x0), y = Math.max(ir.y, clip.y0);
+        const w = Math.min(ir.right, clip.x1) - x, h = Math.min(ir.bottom, clip.y1) - y;
+        if (w >= 2 && h >= 2)
+          rects.push({ el, id: el.id || el.className || el.tagName, text: node.textContent.trim().slice(0, 42),
+                       x, y, w, h, fs: parseFloat(cs.fontSize) });
         if (ir.x < -SAFEPAD || ir.y < -SAFEPAD || ir.right > 1920 + SAFEPAD || ir.bottom > 1080 + SAFEPAD)
           out.oob.push({ id: el.id || el.className, text: node.textContent.trim().slice(0,42),
                          x: Math.round(ir.x), y: Math.round(ir.y), right: Math.round(ir.right), bottom: Math.round(ir.bottom) });
