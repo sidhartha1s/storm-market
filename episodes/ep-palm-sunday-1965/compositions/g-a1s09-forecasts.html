@@ -367,8 +367,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo($("stamp"), { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 0.13);
   tl.to($("mh"), { rotation: 360, duration: 0.5, ease: "power3.out" }, 0.33);
 
-  /* 2 · "forecast" @1.47: card 68 slides in from the right, at its waiting height */
-  tl.to($("c68"), { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 1.47);
+  /* 2 · "forecast" @1.47: card 68 rises in from below with a fade, to its waiting height */
+  tl.to($("c68"), { autoAlpha: 1, y: 278, duration: 0.7, ease: "power3.out" }, 1.47);
 
   /* 3, 4, 5 · "Wisconsin," @3.31, "Iowa," @4.31, "Illinois," @4.91: each state fills with its label */
   area("wi", $("lwi"), 3.31);
