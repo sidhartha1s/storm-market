@@ -91,6 +91,7 @@ window.__timelines = window.__timelines || {};
 
   /* 4 · Weather @2.10: label A */
   land("la", 2.10);
+  tl.to($("stage"), { scale: 1.03, duration: 3.12, ease: "none" }, 2.40);   /* 2.40 to 5.52: a slow push through the hold, so the frame is never a still (plan rule 22) */
 
   /* 5 · Only @5.52: the seven lit squares, the 7, the bracket and label A drop to 45 % */
   tl.to([seven, $("n7"), brk, $("la")], { opacity: 0.45, duration: 0.3, ease: "none" }, 5.52);
