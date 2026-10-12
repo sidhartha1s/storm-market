@@ -357,7 +357,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 **Rows:** [C1; study printed p. 20] (County A)
 
 ### A2-S12 · narration
-**Picture:** [film] the 1967 civil defense training film (inventory A14, shot 14-06, 1:46.0 to 1:57.4: men at a table with telephones under wall maps), muted, framed, same label. It stands for a civil defense office of the time, not this county's. On the second sentence two words lift onto a quote strip: "too late", source line "p. 20".
+**Picture:** [graphic] the first county's chain: the microphone and the house, and under them a second, dotted path drawn from a civil defense desk straight to the house, the back up. On the second sentence a drawn tornado mark crosses the frame first; only then does the dotted path light. Two words lift onto a quote strip: "too late", source line "Disaster Research Center, 1966, p. 20". Label chip "the first county".
 > Civil defense there saw part of its job as the back up for radio and TV. Its plan started after the first tornado had already passed through.
 
 **Rows:** [C3; study printed p. 20] (County A)
