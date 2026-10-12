@@ -73,11 +73,12 @@
     </g>
     <!-- five hand-off marks on the row's centre line y 715, 50 px each: 6 px dots, 12.5 px apart -->
     <g fill="none" stroke="#e8c56a" stroke-width="6" stroke-linecap="round" stroke-dasharray="0 12.5">
-      <path id="trk-k1" d="M435 715 H485" clip-path="url(#trk-kc1)"/>
-      <path id="trk-k2" d="M655 715 H705" clip-path="url(#trk-kc2)"/>
-      <path id="trk-k3" d="M875 715 H925" clip-path="url(#trk-kc3)"/>
-      <path id="trk-k4" d="M1095 715 H1145" clip-path="url(#trk-kc4)"/>
-      <path id="trk-k5" d="M1315 715 H1365" clip-path="url(#trk-kc5)"/>
+      <!-- each path runs 0.2 px past 50 so the fifth dot, at the path's very end, is painted -->
+      <path id="trk-k1" d="M435 715 H485.2" clip-path="url(#trk-kc1)"/>
+      <path id="trk-k2" d="M655 715 H705.2" clip-path="url(#trk-kc2)"/>
+      <path id="trk-k3" d="M875 715 H925.2" clip-path="url(#trk-kc3)"/>
+      <path id="trk-k4" d="M1095 715 H1145.2" clip-path="url(#trk-kc4)"/>
+      <path id="trk-k5" d="M1315 715 H1365.2" clip-path="url(#trk-kc5)"/>
     </g>
   </svg>
   <div class="trk-chip trk-h" id="trk-chip">about 45 mph</div>
