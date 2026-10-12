@@ -92,7 +92,12 @@ window.__timelines = window.__timelines || {};
     return max;
   }
   function dash(e) { var L = Math.ceil(longest(e)) + 1; s0(e, { strokeDasharray: L, strokeDashoffset: L }); return e; }
-  function drawOn(e, t, d) { tl.set(e, { autoAlpha: 1 }, t); tl.to(e, { strokeDashoffset: 0, duration: d, ease: "power2.out" }, t); }
+  function drawOn(e, t, d) {                               /* a body's fill comes up with its line: it never stands as a bare dark block */
+    s0(e, { fillOpacity: 0 });
+    tl.set(e, { autoAlpha: 1 }, t);
+    tl.to(e, { strokeDashoffset: 0, duration: d, ease: "power2.out" }, t);
+    tl.to(e, { fillOpacity: 1, duration: d, ease: "power2.in" }, t);
+  }
   function house(n, t) {                                   /* longest line first, all lines done 0.5 s after t */
     var lines = Array.prototype.slice.call($("h" + n).children);
     lines.sort(function (a, b) { return b.getTotalLength() - a.getTotalLength(); });
