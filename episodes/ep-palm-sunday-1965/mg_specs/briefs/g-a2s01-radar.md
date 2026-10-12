@@ -67,7 +67,7 @@ Cue words and times are from `audio/a2-s1.words.json` and `audio/a2-s2.words.jso
 |---|---|---|---|---|---|---|
 | 0 | A2-S1 | 0 | The | 0.00 | 0.00 | first frame: ground and the map in NORTH, no dot, no label |
 | 1 | A2-S1 | 1 | warning | 0.50 | 0.08 | clock stamp slides in from the left (0.6 s, power3.out), hands already at 5:43 |
-| 2 | A2-S1 | 2 | said | 0.76 | 0.34 | document card slides in from the right (`x:660` to 0, 0.7 s, power3.out); document source fades in after it |
+| 2 | A2-S1 | 2 | said | 0.76 | 0.34 | document card rises in from below with a fade (`y:80` set at 0, to 0, opacity 0 to 1; 0.7 s, power3.out); document source fades in after it. Corrected 12 Oct 26: this brief first brought the card in from the right, which crosses the presenter corner (the reader failed it at 0.45 to 0.70 s) |
 | 3 | A2-S1 | 9 | Michigan | 3.10 | 2.68 | Michigan City dot and label; echo 1 fades in (0.4 s) |
 | 4 | A2-S1 | 15 | Knox | 5.00 | 4.58 | Knox dot and label; echo 2 fades in (0.4 s) |
 | 5 | A2-S1 | 20 | three | 7.06 | 6.64 | LaPorte, Starke, Marshall fill in that order, 0.12 s apart (0.3 s each), each with its name |
