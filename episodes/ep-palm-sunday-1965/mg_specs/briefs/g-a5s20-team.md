@@ -80,4 +80,4 @@ As the template's section 7a, all seven. `graphics_qc` flat type: a page crop is
 As the template's section 8, plus: a close frame of underline 3 showing it under `excellent` and clear of the line below, and the date label's measured box.
 
 ## Frames the verifier reads
-First frame 0.00 and the frame after it (0.04); 0.70 (label settled); 2.60 (both memo underlines); 4.80 (page card settled, memo gone, source swapped); 8.10 (underline 3); last frame 9.10.
+First frame 0.00 and the frame after it (0.04); 0.70 (label settled); 2.60 (both memo underlines); 4.80 (page card settled over the dimmed memo, source swapped; the page card's words must read cleanly against the dim memo behind its border); 8.10 (underline 3); last frame 9.10.
