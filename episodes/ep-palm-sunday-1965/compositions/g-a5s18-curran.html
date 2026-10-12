@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5s18-curran (A5-S18, A5-S19): John Curran's recollection. Part 1: a clock at 4:00 that runs to 10:30 beside a
+     house that wakes up. Part 2: a dark room in section, two lit teletypes, and one cord along the floor, out of the door
+     and down the hall to a box labelled FAA Flight Service Station. No person is drawn; Koch is a typed name only.
+     Brief: mg_specs/briefs/g-a5s18-curran.md. Bases: the drawn clock and house of g-a1s05-clocks; the name card's glass
+     plate and type of g-i1s2-station. Drawings, inline: media/drawings/wall-clock.svg at 1.5, house.svg at 1.4 (lit look
+     as house-lit.svg), teletype.svg at 1.4, twice (lit look as teletype-lit.svg).
+     The name card takes this brief's numbers (700 x 170): g-a5s01-radar's taller card (bottom y 356) would sit on the
+     room's ceiling (y 330). The lit windows are Amber 2 at 0.85, as g-z1s02-row's: at house-lit.svg's 0.3 they read khaki.
+     Staging (acts-plan rule 22): from "four" to "slept" the clock and its time are alone, so they sit centred at 1.5
+     times on a slow push; on "slept" they go to their briefed place as the house draws on. From "He" to "extension" the
+     room is alone, so it stands centred on the floor line on a slow push; on "extension" it goes to its briefed place as
+     the cord draws to its door, one cue before the hall and the box.
+     Cues are comp-local seconds from audio/a5-s18.words.json and a5-s19.words.json (wav starts 0.00 and 9.64). -->
+<template>
+<style>
+  #cur-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .cur-h { opacity:0; visibility:hidden; }
+  .cur-full { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .cur-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .cur-draw > * { opacity:0; visibility:hidden; }
+  /* the name card: glass plate and type of g-i1s2-station */
+  .cur-plate { position:absolute; left:96px; top:96px; width:700px; height:170px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .cur-name { position:absolute; left:138px; top:118px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:64px;
+    color:#f2f5f8; white-space:nowrap; }
+  .cur-sub { position:absolute; left:140px; top:198px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:30px; line-height:38px;
+    color:#e8c56a; white-space:nowrap; }
+  .cur-time { position:absolute; left:360px; top:660px; width:400px; text-align:center; font:700 56px 'Courier New', Courier, monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .cur-t { position:absolute; text-align:center; font-weight:700; white-space:nowrap; line-height:1; }
+  .cur-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="cur-root" data-composition-id="g-a5s18-curran" data-width="1920" data-height="1080" data-duration="20.33">
+
+  <!-- ===== part 1 (A5-S18): the clock and the house, on the centre line y 540 ===== -->
+  <div class="cur-full" id="cur-p1">
+    <!-- the clock and its time: briefed box x 467 to 653, y 447 to 633, centre (560, 540). This container carries the staging -->
+    <div class="cur-full" id="cur-clk">
+      <svg class="cur-svg" viewBox="0 0 1920 1080" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <g transform="translate(467 447) scale(1.5)">
+          <g stroke="#dfe7ee" stroke-width="4">
+            <circle class="cur-h" id="cur-rim" cx="62" cy="62" r="62" fill="#15202b"/>
+            <path class="cur-h" id="cur-ticks" d="M62.0 8.0 L62.0 22.0 M89.0 15.2 L85.0 22.2 M108.8 35.0 L101.8 39.0 M116.0 62.0 L102.0 62.0 M108.8 89.0 L101.8 85.0 M89.0 108.8 L85.0 101.8 M62.0 116.0 L62.0 102.0 M35.0 108.8 L39.0 101.8 M15.2 89.0 L22.2 85.0 M8.0 62.0 L22.0 62.0 M15.2 35.0 L22.2 39.0 M35.0 15.2 L39.0 22.2" stroke-width="3"/>
+            <g class="cur-h" id="cur-hands">
+              <g id="cur-hour"><path d="M62 62 V28" stroke-width="5"/></g>
+              <g id="cur-min"><path d="M62 62 V10" stroke-width="5"/></g>
+              <path d="M62 62 h0.01" stroke-width="10"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+      <div class="cur-time cur-h" id="cur-t1">4:00 PM</div>
+      <div class="cur-time cur-h" id="cur-t2">10:30 PM</div>
+    </div>
+    <!-- the house: box x 900 to 1264, y 365 to 715; dark first -->
+    <svg class="cur-svg" viewBox="0 0 1920 1080" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="translate(900 365) scale(1.4)">
+        <g class="cur-draw" id="cur-house" stroke="#55606b" stroke-width="4">
+          <path d="M186 37.3 V22 H208 V50"/>
+          <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+          <path d="M20 80 H240 V250 H20 Z" fill="#15202b"/>
+          <path d="M112 250 V170 H148 V250"/>
+          <path class="cur-win" d="M44 120 H92 V168 H44 Z" fill="#15202b"/>
+          <path class="cur-win" d="M168 120 H216 V168 H168 Z" fill="#15202b"/>
+          <path d="M68 120 V168 M44 144 H92 M192 120 V168 M168 144 H216"/>
+          <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <!-- ===== part 2 (A5-S19): one flat side view on the floor line y 820: the office room, its door, the hall, the box ===== -->
+  <svg class="cur-svg" viewBox="0 0 1920 1080" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path class="cur-h" id="cur-floor" d="M96 820 H1560" stroke="#93a3b2" stroke-width="4"/>
+
+    <!-- the hall's ceiling and the cord's run down the hall, x 760 to 1240; then the box, so the cord ends on its left wall -->
+    <path class="cur-h" id="cur-hall" d="M760 640 H1240" stroke="#93a3b2" stroke-width="4"/>
+    <path class="cur-h" id="cur-cord2" d="M760 806 H1240" stroke="#dfe7ee" stroke-width="4"/>
+    <rect class="cur-h" id="cur-box" x="1240" y="600" width="320" height="220" stroke="#dfe7ee" stroke-width="4" fill="#15202b"/>
+
+    <!-- the room (x 140 to 760, y 330 to 820; the door is the open stretch y 640 to 820 of its right wall), the two
+         teletypes and the cord as far as the door. This group carries the staging -->
+    <g id="cur-room">
+      <rect class="cur-h" id="cur-body" x="140" y="330" width="620" height="490" fill="#15202b"/>
+      <path class="cur-h" id="cur-walls" d="M140 820 V330 H760 V640" stroke="#93a3b2" stroke-width="4"/>
+      <g transform="translate(220 624) scale(1.4)">
+        <g class="cur-draw" id="cur-tty1" stroke="#93a3b2" stroke-width="4">
+          <rect class="cur-paper" x="34" y="0" width="72" height="50" fill="#15202b"/>
+          <path class="cur-bar" d="M44 14 H88"/><path class="cur-bar" d="M44 26 H96"/><path class="cur-bar" d="M44 38 H80"/>
+          <rect x="0" y="50" width="140" height="90" fill="#15202b"/>
+          <rect x="14" y="112" width="112" height="20"/>
+        </g>
+      </g>
+      <g transform="translate(480 624) scale(1.4)">
+        <g class="cur-draw" id="cur-tty2" stroke="#93a3b2" stroke-width="4">
+          <rect class="cur-paper" x="34" y="0" width="72" height="50" fill="#15202b"/>
+          <path class="cur-bar" d="M44 14 H88"/><path class="cur-bar" d="M44 26 H96"/><path class="cur-bar" d="M44 38 H80"/>
+          <rect x="0" y="50" width="140" height="90" fill="#15202b"/>
+          <rect x="14" y="112" width="112" height="20"/>
+        </g>
+      </g>
+      <!-- one cord: a branch from each machine to (448, 806), then along y 806, in front of teletype 2's foot, to the door -->
+      <path class="cur-h" id="cur-cord1" d="M448 806 H760 M416 790 L448 806 M480 790 L448 806" stroke="#dfe7ee" stroke-width="4"/>
+    </g>
+  </svg>
+  <div class="cur-t cur-h" id="cur-cordlab" style="left:800px;top:760px;width:400px;font-size:22px;color:#93a3b2">extension cord</div>
+  <div class="cur-t cur-h" id="cur-boxlab" style="left:1250px;top:668px;width:300px;font-size:26px;color:#dfe7ee;line-height:36px;margin-top:-5px">FAA Flight<br>Service Station</div>
+  <div class="cur-t cur-h" id="cur-koch" style="left:700px;top:846px;width:600px;font-size:22px;color:#dfe7ee">strung by Arnie Koch, electronics technician</div>
+
+  <!-- the name card and the source line, on for the whole comp -->
+  <div class="cur-plate"></div>
+  <div class="cur-name" id="cur-name">John Curran</div>
+  <div class="cur-sub" id="cur-sub">observer, Fort Wayne Weather Bureau, 1965</div>
+  <div class="cur-src" id="cur-src">John Curran's recollection, published by the National Weather Service</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a5s18-curran", P = "cur", D = 20.33;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function fade(id, t, d) { tl.to($(id), { autoAlpha: 1, duration: d || 0.3, ease: "none" }, t); }
+  function rise(id, t) { s0($(id), { y: 16 }); tl.to($(id), { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, t); }
+
+  /* ---- draw-on: a dash restarts on every sub-path, so a shape of several lines is dashed by its longest one ---- */
+  function longest(e) {
+    if (e.tagName !== "path") return e.getTotalLength();
+    var p = document.createElementNS("http://www.w3.org/2000/svg", "path"), max = 0;
+    e.getAttribute("d").split("M").forEach(function (s) { if (!s.trim()) return; p.setAttribute("d", "M" + s); max = Math.max(max, p.getTotalLength()); });
+    return max;
+  }
+  function drawOne(e, t, d, ease) {
+    var L = Math.ceil(longest(e)) + 1; s0(e, { strokeDasharray: L, strokeDashoffset: L });
+    tl.set(e, { autoAlpha: 1 }, t);
+    tl.to(e, { strokeDashoffset: 0, duration: d, ease: ease || "power2.out" }, t);
+  }
+  function draw(id, t, d) {                                 /* a group: longest line first, all lines done d after t */
+    var lines = Array.prototype.slice.call($(id).children);
+    lines.sort(function (a, b) { return b.getTotalLength() - a.getTotalLength(); });
+    var step = d * 0.4 / lines.length;
+    lines.forEach(function (e, i) { drawOne(e, t + i * step, d - i * step); });
+  }
+
+  var WHITE = "#f2f5f8", BODY = "#dfe7ee", GREY = "#93a3b2", AMBER = "#e8c56a", INK = "#2a2622";
+  var clk = $("clk"), rim = $("rim"), hour = $("hour"), min = $("min"), house = $("house"), room = $("room");
+  function hourDeg(h, m) { return (h % 12) * 30 + m * 0.5; }
+  function minDeg(m) { return m * 6; }
+
+  /* origins, set once at build and never again (a second svgOrigin on a moved element lands somewhere else). The hands
+     turn about the hub, (62, 62) in the drawing's own units = screen (560, 540). The room scales about the middle of
+     its floor, screen (450, 820) */
+  gsap.set([hour, min], { svgOrigin: "62 62" });
+  gsap.set(room, { svgOrigin: "450 820" });
+
+  /* rest states, set at 0 */
+  s0(hour, { rotation: hourDeg(4, 0) });                    /* 120 */
+  s0(min, { rotation: minDeg(0) });                         /* 0 */
+  s0(rim, { stroke: BODY });
+  s0([$("tty1"), $("tty2")].map(function (g) { return g.querySelectorAll("." + P + "-bar"); }), { stroke: GREY });
+
+  /* ---- staging, part 1: the clock and its time scale about the clock's centre (560, 540); centred, the pair spans
+          y 338 to 742 under the name card ---- */
+  var BIG = 1.5, PUSH = 1.03;
+  s0(clk, { transformOrigin: "560px 540px", scale: BIG, x: 960 - 560, y: -62, force3D: false });
+  tl.to(clk, { scale: BIG * PUSH, duration: 6.56 - 1.46, ease: "none", force3D: false }, 1.46);
+  tl.to(clk, { scale: 1, x: 0, y: 0, duration: 0.5, ease: "power3.out", force3D: false }, 6.56);
+
+  /* ---- staging, part 2: the room stands 510 px right of its briefed place, centred on the floor line ---- */
+  s0(room, { x: 960 - 450, scale: 1 });
+  tl.to(room, { scale: PUSH, duration: 13.88 - 10.12, ease: "none" }, 10.12);
+  tl.to(room, { x: 0, scale: 1, duration: 0.5, ease: "power2.inOut" }, 13.88);
+
+  /* 0 · "Curran" @0.00: ground, the name card complete, the source line */
+
+  /* 1 · four @1.46: the clock draws on at 4:00 (rim and ticks; hands and hub fade in); 4:00 PM rises under it */
+  drawOne(rim, 1.46, 0.5); drawOne($("ticks"), 1.46, 0.5);
+  fade("hands", 1.46);
+  rise("t1", 1.46);
+
+  /* 2 · with @2.92: the rim goes Body light to Label grey and back, stroke only: a quiet afternoon, nothing else arrives */
+  tl.to(rim, { stroke: GREY, duration: 0.4, ease: "sine.inOut" }, 2.92);
+  tl.to(rim, { stroke: BODY, duration: 0.4, ease: "sine.inOut" }, 3.32);
+
+  /* 3 · slept @6.56: the house draws on, dark, longest line first (the clock goes to its briefed place, staging above) */
+  draw("house", 6.56, 0.6);
+
+  /* 4 · woke @7.54: the hands run to 10:30: hour 120 to 315, minute 0 to 2340 (six and a half turns, ending on 180);
+     the typed time changes @8.34, when the hands land */
+  tl.to(hour, { rotation: hourDeg(10, 30), duration: 0.8, ease: "power2.inOut" }, 7.54);
+  tl.to(min, { rotation: 6 * 360 + minDeg(30), duration: 0.8, ease: "power2.inOut" }, 7.54);
+  tl.set($("t1"), { autoAlpha: 0 }, 8.34);
+  tl.set($("t2"), { autoAlpha: 1 }, 8.34);
+
+  /* 5 · 10 @8.46: the house lights: lines to Headline white, both windows to Amber 2 */
+  tl.to(house, { stroke: WHITE, duration: 0.3, ease: "power2.out" }, 8.46);
+  tl.to(house.querySelectorAll("." + P + "-win"), { fill: AMBER, fillOpacity: 0.85, duration: 0.3, ease: "power2.out" }, 8.46);
+
+  /* part 1 leaves, 9.64 to 10.04 */
+  tl.to($("p1"), { autoAlpha: 0, duration: 0.4, ease: "none" }, 9.64);
+
+  /* 6 · "He" @10.12: the floor line and the room draw on with the two teletypes in it, unlit */
+  drawOne($("floor"), 10.12, 0.6); drawOne($("walls"), 10.12, 0.6);
+  fade("body", 10.12);
+  draw("tty1", 10.12, 0.6); draw("tty2", 10.12, 0.6);
+
+  /* 7 · teletype @12.22: both teletypes light, the second 0.15 s after the first: lines Body light, paper Amber 2, bars Caption dark */
+  ["tty1", "tty2"].forEach(function (id, i) {
+    var g = $(id), t = 12.22 + i * 0.15;
+    tl.to(g, { stroke: BODY, duration: 0.3, ease: "power2.out" }, t);
+    tl.to(g.querySelector("." + P + "-paper"), { fill: AMBER, duration: 0.3, ease: "power2.out" }, t);
+    tl.to(g.querySelectorAll("." + P + "-bar"), { stroke: INK, duration: 0.3, ease: "power2.out" }, t);
+  });
+
+  /* 8 · extension @13.88: the cord draws from the machines to the door (the room goes to its briefed place, staging above);
+     its label @14.30 */
+  drawOne($("cord1"), 13.88, 0.5, "none");
+  fade("cordlab", 14.30);
+
+  /* 9 · aviation @15.02: the hall's ceiling and the box draw on; the cord runs on down the hall to the box (arrives @15.62) */
+  drawOne($("hall"), 15.02, 0.5); drawOne($("box"), 15.02, 0.5);
+  drawOne($("cord2"), 15.02, 0.6, "none");
+
+  fade("boxlab", 15.42);                                    /* 10 · office @15.42: the box's label */
+  rise("koch", 17.02);                                      /* 11 · strung @17.02: the Koch line rises under the hall */
+
+  /* the hold, 17.40 on: the machines are running. Each teletype's three typed bars step their stroke opacity to 0.4 and
+     back in turn, one bar every 0.3 s, eight steps (the last ends @19.95) */
+  ["tty1", "tty2"].forEach(function (id, i) {
+    var bars = $(id).querySelectorAll("." + P + "-bar");
+    for (var k = 0; k < 8; k++) tl.to(bars[k % 3], { strokeOpacity: 0.4, duration: 0.15, ease: "none", yoyo: true, repeat: 1 }, 17.40 + i * 0.15 + k * 0.3);
+  });
+
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
