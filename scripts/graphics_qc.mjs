@@ -299,7 +299,7 @@ for (const f of files) {
     for (const b of m.broken) { if (!seenBroken.has(b)) { seenBroken.add(b); add(name, 'broken-image', `${b} failed to load (naturalWidth 0) — staged-path 404, not a crop/empty defect (${t.toFixed(1)}s)`); } }
   }
   if (tierMax < 3 && maxTextNodes >= 4)
-    add(name, 'flat-type', `only ${tierMax} type tier(s) across ${maxTextNodes} text elements — mg-quickref Type tiers`);
+    add(name, 'flat-type', `only ${tierMax} type tier(s) across ${maxTextNodes} text elements — mg-quickref Type tiers`, probe.typeOk);
   if (maxCoverage >= 0.9 && probe.duration > 20 && !probe.tweens.some(t => t.dur >= 8))
     add(name, 'no-continuous-motion', `full-frame ${probe.duration.toFixed(0)}s graphic (${(maxCoverage*100).toFixed(0)}% opaque), longest tween ${Math.max(...probe.tweens.map(t=>t.dur)).toFixed(1)}s; see references/mg-quickref.md "Motion and exits". Either animate something continuously or let a moving photo carry it (ep2 panels cover ~43%).`);
   const avgElems = elemSamples.length ? elemSamples.reduce((a,b)=>a+b,0)/elemSamples.length : 0;
