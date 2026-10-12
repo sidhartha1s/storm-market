@@ -243,19 +243,17 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"hour", { rotation: 222.5, svgOrigin: "62 62" }, 0);
   tl.set(P+"minute", { rotation: 150, svgOrigin: "62 62" }, 0);
   tl.set(P+"gring", { visibility: "hidden", opacity: 0.9, attr: { r: 8 } }, 0);
-  tl.to([P+"sweepa", P+"sweepb"], { x: 2860, duration: 32.43 / 6, ease: "none", repeat: 5 }, 0);
+  tl.to(P+"sweep", { x: 2860, duration: 32.43 / 6, ease: "none", repeat: 5 }, 0);
 
-  /* LOST @4.06: hard cut. The window closes for good; the waiting chain, the chip and the river are on. */
-  tl.set(P+"cover", { autoAlpha: 1 }, 4.06);
-  tl.set([P+"frame", P+"flabel", P+"sweepclip"], { autoAlpha: 0 }, 4.06);
-  tl.set([P+"sweepb", P+"chain", P+"chipb", P+"map"], { autoAlpha: 1 }, 4.06);
-  tl.to(river, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 4.06);
-  /* IN @4.40: the civil defense mark lands with its label */
-  land([P+"mkcd", P+"mlabcd"], 4.40);
+  /* ONE @0.58: the river draws on from top to bottom */
+  tl.set(river, { autoAlpha: 1 }, 0.58);
+  tl.to(river, { strokeDashoffset: 0, duration: 0.8, ease: "power2.out" }, 0.58);
+  /* HE @2.16: the civil defense mark lands with its label */
+  land([P+"mkcd", P+"mlabcd"], 2.16);
+  /* SHERIFF @2.88: the sheriff's mark lands with its label */
+  land([P+"mksh", P+"mlabsh"], 2.88);
   /* WATER @4.70: the river flashes Headline white and back */
   tl.to(river, { attr: { stroke: "#f2f5f8" }, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 4.70);
-  /* STATE @5.84: the sheriff's mark lands with its label */
-  land([P+"mksh", P+"mlabsh"], 5.84);
   /* TOLD @6.42: the sheriff's mark fills amber */
   tl.to(P+"mkshc", { attr: { fill: "#e8c56a" }, duration: 0.3, ease: "power2.out" }, 6.42);
   /* TORNADO @7.44: the tornado mark comes in from the west, then drifts east to 10.06 */
