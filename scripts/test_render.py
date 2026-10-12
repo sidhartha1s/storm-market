@@ -194,6 +194,21 @@ check("render-08 NEW: the done marker is deleted before any gate runs",
 check("render-08 NEW: the missing-index.html and :usage paths write a marker",
       render_cmd.count("render_last_error.marker") == 2)
 
+# render-12: verify_render.sh judges a draft by render_draft.fps, which only this line writes. Delete
+# or move it and render-11 (a fixture file) stays green while every real draft exits 1.
+FPS_LINE = 'echo %_FPS% > "render_%MODE%.fps"'
+
+
+def fps_line_in_place(text):
+    i = text.find(FPS_LINE)
+    return 0 <= text.find('cd /d "%EP%"') < i < text.find("call npx hyperframes")
+
+
+check("render-12 NEW: render.cmd records the effective fps after cd into the episode and before the render",
+      fps_line_in_place(render_cmd))
+check("render-12 NEW: the position check fails on a render.cmd without that line",
+      not fps_line_in_place(render_cmd.replace(FPS_LINE, "")))
+
 # Dry harness: exercise render.cmd's error path for real (no render reached — it exits
 # before preflight/render_busy/npx). Cleans up the marker it writes.
 last_err = S / "render_last_error.marker"
