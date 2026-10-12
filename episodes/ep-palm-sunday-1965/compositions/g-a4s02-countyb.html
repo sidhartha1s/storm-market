@@ -282,6 +282,7 @@ window.__timelines = window.__timelines || {};
   tl.to([P+"map", P+"maplabs"], { x: -1000, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 10.06);
   /* TOLD @10.16: the chain grows to full size about (1577, 380) */
   tl.to(P+"chain", { scale: 1, duration: 0.66, ease: "power2.inOut" }, 10.16);
+  tl.to(P+"stage", { y: FULL_DY, duration: 0.66, ease: "power2.inOut" }, 10.16);
   /* CIVIL @10.82: the civil defense desk goes amber and stays */
   amber(P+"s1", 10.82);
   fadeIn(P+"b1", 10.82);
