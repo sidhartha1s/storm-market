@@ -311,7 +311,7 @@ Cut lengths are `ffprobe` on the files. Voice times are from the draft voice in 
 
 Rows whose picture changed, with no film in them:
 - **g-a2s19-log (A2-S19):** the three log cards are cut 1460 px wide (file heights 90, 129 and 128 px), not 900. Three cards and a map cannot all sit at full size; the cards are sized from the files (section 3c) and the 6:24 PM card masks its bottom 12 px.
-- **g-a2s14-six (A2-S14):** Plymouth and Donaldson are 17.7 px apart at the map's largest fit, less than one tornado mark's width. The row needs a push in on Marshall County before the three marks land, and hand-placed labels for the two towns.
+- **g-a2s14-six (A2-S14):** Plymouth and Donaldson are 17.7 px apart at the map's largest fit, closer than a readable tornado mark is wide. The row needs a push in on Marshall County before the three marks land, and hand-placed labels for the two towns.
 - **g-a5s20-team (A5-S20):** the tight crop of printed p. 1 is three lines, not one sentence; the third line stays in frame and only "excellent" is underlined.
 - **g-a5s09-alto (A5-S9):** no change to the row. Alto appears as the photograph's label only; no map inset may be added to place it.
 
