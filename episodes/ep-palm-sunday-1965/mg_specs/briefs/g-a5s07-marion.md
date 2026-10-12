@@ -70,7 +70,7 @@ Cue words and times are from `audio/a5-s7.words.json` and `audio/a5-s8.words.jso
 | 1 | A5-S7 | 2 | storm | 0.74 | 0.51 | the path draws west to east (1.2 s, `strokeDashoffset`, power1.inOut, to 1.71); Linn Grove's dot and label as the line reaches it |
 | 2 | A5-S7 | 7 | Marion. | 2.08 | 1.85 | Marion's dot and label (0.3 s); the dot's stroke flashes Headline white once (stroke change); the path caption fades in |
 | 3 | A5-S7 | 9 | 920 | 3.54 | 3.31 | clock stamp slides in from the left (`x: -660` to 0, 0.6 s, power3.out); the minute hand sweeps its last 30 degrees onto the 4 |
-| 4 | A5-S7 | 16 | wire, | 5.30 | 5.07 | document card slides in from the right (`x: 660` to 0, 0.7 s, power3.out); the document source fades in after it |
+| 4 | A5-S7 | 16 | wire, | 5.30 | 5.07 | document card rises in from below with a fade (`y: 80` set at 0, to 0, opacity 0 to 1; 0.7 s, power3.out); the document source fades in after it. Corrected 12 Oct 26: not in from the right, which crosses the presenter corner (the card reaches y 957) |
 | 5 | A5-S7 | 17 | three | 6.26 | 6.03 | unlit page fades in (0.4 s); the underline draws left to right (0.7 s) |
 | 6 | A5-S8 | 0 | Marion | first sound 0.00 | 9.96 | the document source fades, the card leaves to the right (`x: 1600`, 0.4 s, power3.in); chip `hit near 8:00 PM` fades in beside Marion's dot (0.3 s) |
 | 7 | A5-S8 | 7 | Fort | 2.54 | 12.50 | the map dims (0.4 s): map to 0.2, labels, caption and chip to 0; the stamp's three lines fade (0.15 s), the stamp slides to left 986 (0.5 s, power2.inOut), its lines return (0.2 s) |
