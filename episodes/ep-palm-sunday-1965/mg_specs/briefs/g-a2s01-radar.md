@@ -57,7 +57,7 @@ The echo shapes are schematic: the warning gives a vicinity, not an outline.
 5. In WIDE, South Bend's dot has no ring. Rings sit only at Chicago, Fort Wayne and Indianapolis. The telephone line joins Chicago to South Bend and no other pair.
 6. No ring radius is a range: the rings are all one size and none is labelled with miles.
 7. Line weights and dot sizes are the same at both ends of the pull back (read both frames).
-8. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680. The crop is on screen about 8.3 s and changes at 7.68 (underline and unlit page).
+8. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680. The crop is on screen about 8.2 s and changes at 7.70 (underline and unlit page).
 
 ## 5. Text (exact) and cues
 Text: `WEATHER BUREAU` · `5:43 PM` · `South Bend, Indiana` · `Michigan City` · `Knox` · `LAPORTE` · `STARKE` · `MARSHALL` · `Weather Bureau survey report, 1965, p. 39` · `South Bend` · `no radar` · `by telephone` · `Chicago` · `Fort Wayne` · `Indianapolis` · `Disaster Research Center, 1966, p. 13 · National Weather Service, Northern Indiana`. Page words are the image.
@@ -65,16 +65,16 @@ Cue words and times are from `audio/a2-s1.words.json` and `audio/a2-s2.words.jso
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A2-S1 | 0 | The | 0.00 | 0.00 | first frame: ground and the map in NORTH, no dot, no label |
-| 1 | A2-S1 | 1 | warning | 0.48 | 0.48 | clock stamp slides in from the left (0.6 s, power3.out), hands already at 5:43 |
-| 2 | A2-S1 | 2 | said | 0.74 | 0.74 | document card slides in from the right (`x:660` to 0, 0.7 s, power3.out); document source fades in after it |
-| 3 | A2-S1 | 9 | Michigan | 3.08 | 3.08 | Michigan City dot and label; echo 1 fades in (0.4 s) |
-| 4 | A2-S1 | 15 | Knox. | 5.00 | 5.00 | Knox dot and label; echo 2 fades in (0.4 s) |
+| 1 | A2-S1 | 1 | warning | 0.50 | 0.50 | clock stamp slides in from the left (0.6 s, power3.out), hands already at 5:43 |
+| 2 | A2-S1 | 2 | said | 0.76 | 0.76 | document card slides in from the right (`x:660` to 0, 0.7 s, power3.out); document source fades in after it |
+| 3 | A2-S1 | 9 | Michigan | 3.10 | 3.10 | Michigan City dot and label; echo 1 fades in (0.4 s) |
+| 4 | A2-S1 | 15 | Knox | 5.00 | 5.00 | Knox dot and label; echo 2 fades in (0.4 s) |
 | 5 | A2-S1 | 20 | three | 7.06 | 7.06 | LaPorte, Starke, Marshall fill in that order, 0.12 s apart (0.3 s each), each with its name |
-| 6 | A2-S1 | 22 | to | 7.68 | 7.68 | unlit page fades in; underline draws under `should be on the alert` (0.5 s, left to right) |
+| 6 | A2-S1 | 22 | to | 7.70 | 7.70 | unlit page fades in; underline draws under `should be on the alert` (0.5 s, left to right) |
 | 7 | A2-S2 | 0 | But | 0.00 | 9.00 | card and document source exit right (`x:1900`, 0.5 s, power3.in); stamp exits left (0.5 s); county fills and names, town labels fade (0.3 s) |
 | 8 | A2-S2 | 1 | South | 0.52 | 9.52 | pull back NORTH to WIDE (0.8 s); the two echoes stay on the map, smaller |
 | 9 | A2-S2 | 5 | radar. | 1.40 | 10.40 | South Bend dot, `South Bend`, then `no radar` 0.15 s later |
-| 10 | A2-S2 | 6 | It's | 2.60 | 11.60 | source line fades in (0.3 s) |
+| 10 | A2-S2 | 6 | Its | 2.60 | 11.60 | source line fades in (0.3 s) |
 | 11 | A2-S2 | 12 | telephone | 3.90 | 12.90 | Chicago dot; the telephone line draws from Chicago to South Bend (0.6 s); `by telephone` fades in at its end |
 | 12 | A2-S2 | 14 | operators | 4.88 | 13.88 | rings and labels at Chicago, Fort Wayne, Indianapolis, 0.25 s apart; each sweep line makes its one turn. Hold to the end |
 
