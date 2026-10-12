@@ -518,7 +518,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 **Rows:** [E, families; IWX, read by the fact check: "the Ed Sullivan Show with the Herman's Hermits performing and the tv signal was lost"; "then the power went out for 3 days"]
 
 ### A3-S15 · narration
-**Picture:** [film] the 1967 civil defense training film (inventory A14, shot 14-11, 11:27.8 to 11:36.4: a desk with a typewriter and a lamp, a seated man), muted, framed, same label. It stands for an office of the time. Small source line "Disaster Research Center, 1966, p. 29".
+**Picture:** [drawing] two drawn police desks, an amber radio arc between them. As the line is said the arc goes dotted, then dark, and an empty generator outline is drawn beside each desk (the outlines fill in A6-S9). No county label. Small source line "Disaster Research Center, 1966, p. 29".
 > Two city police departments had no good back up power either, and lost full communication for a time.
 
 **Rows:** [D; study printed p. 29]
