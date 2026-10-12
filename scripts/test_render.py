@@ -390,18 +390,18 @@ if HAVE_FFMPEG:
         mk_clip(ep / "renders" / "pal-24.mp4", 24)
         NVIDIA, INTEL = "browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n", "browserGpuMode probe worker0 Intel(R) UHD Graphics\n"
 
-        # (label, clip, mode arg, recorded draft fps, expect exit 0, text that must be in stdout).
+        # (label, clip, mode arg, recorded draft fps, expected exit code, text that must be in stdout).
         # The log of the mode under test is NVIDIA and the other one Intel, so a wrong log pick fails too.
         cases = [
-            ("a draft at the recorded 15 fps passes with no 'draft' in its name", "pal-preview-v1", "draft", "15", True, "OK: 320x240 @ 15/1"),
-            ("a draft at a recorded rate other than 15 (RENDER_FPS=24) passes", "pal-24", "draft", "24", True, "OK: 320x240 @ 24/1"),
-            ("a draft whose rate differs from the recorded one fails", "pal-24", "draft", "15", False, "FAIL: fps 24 != expected 15fps"),
-            ("a draft with no render_draft.fps fails and names the file", "pal-preview-v1", "draft", None, False, "render_draft.fps"),
-            ("a 15 fps file checked as a final fails against the composition's 25", "pal-preview-v1", "full", "15", False, "FAIL: fps 15 != expected 25fps"),
-            ("no mode argument is a usage error", "pal-preview-v1", None, "15", False, "usage:"),
-            ("an unknown mode is a usage error", "pal-preview-v1", "mastered", "15", False, "usage:"),
+            ("a draft at the recorded 15 fps passes with no 'draft' in its name", "pal-preview-v1", "draft", "15", 0, "OK: 320x240 @ 15/1"),
+            ("a draft at a recorded rate other than 15 (RENDER_FPS=24) passes", "pal-24", "draft", "24", 0, "OK: 320x240 @ 24/1"),
+            ("a draft whose rate differs from the recorded one fails", "pal-24", "draft", "15", 4, "FAIL: fps 24 != expected 15fps"),
+            ("a draft with no render_draft.fps fails and names the file", "pal-preview-v1", "draft", None, 1, "render_draft.fps"),
+            ("a 15 fps file checked as a final fails against the composition's 25", "pal-preview-v1", "full", "15", 4, "FAIL: fps 15 != expected 25fps"),
+            ("no mode argument is a usage error", "pal-preview-v1", None, "15", 1, "usage:"),
+            ("an unknown mode is a usage error", "pal-preview-v1", "mastered", "15", 1, "usage:"),
         ]
-        for label, clip, mode, rec_fps, want_ok, text in cases:
+        for label, clip, mode, rec_fps, want_rc, text in cases:
             (ep / "render_draft.log").write_text(NVIDIA if mode != "full" else INTEL, encoding="utf-8")
             (ep / "render_full.log").write_text(NVIDIA if mode == "full" else INTEL, encoding="utf-8")
             if rec_fps is None:
