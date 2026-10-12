@@ -396,9 +396,8 @@ assert 'ERROR [undesigned] flat background' in olds['f3a6fece'].get('g-p1', ''),
 assert 'ERROR [fade-only]' in olds['f3a6fece'].get('g-p2', ''), f'old code should call the canvas renderer fade-only: {olds}'
 assert 'flat background' in olds['fbebe442'].get('g-n1', '') and '[idle]' not in olds['fbebe442'].get('g-n4', ''), \
     f'pre-fix main should run and count the {{}} clock as motion: {olds}'
-assert 'text-collision' in olds['fbebe442'].get('g-k1', ''), f'old code should report the clipped line: {olds}'
-print('graphics_qc self-check PASS (canvas background + renderer span, their quarter-frame/onUpdate limits, a {} clock is not motion)')
-print('graphics_qc self-check PASS (text-collision reads the painted part of a glyph box: clipped away by its mask, a line collides with nothing)')
+assert all('text-collision' in olds['fbebe442'].get(c, '') for c in ('g-k1', 'g-k4')), f'old code should report the clipped lines: {olds}'
+print('graphics_qc self-check PASS (canvas background + renderer span, their quarter-frame/onUpdate limits, a {} clock is not motion, text clipped away by its mask collides with nothing)')
 
 # ---------------------------------------------------------------- settle frames for the vision pass
 # The old reader sampled every 3 s from the comp start, so frame 1 was always mid-reveal. The frames
