@@ -44,6 +44,7 @@ The four marks stand in four slots 250 px apart, centres x 700, 950, 1200, 1450 
 4. The four marks are dark. The only red in the comp is the stop mark on mark 1. No figure 4 is printed and the marks carry no numbers.
 5. `Fort Wayne` and `Marion` name places the script named for those marks (A5 and A5-S11); no county chip appears.
 6. Nothing in x >= 1600 and y >= 680. Nothing appears before its spoken word.
+7. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Part 1 (steps 0 to 4) is the hook tail's frame and needs no staging. Part 2 is staged: from step 5 (7.83) the microphone, its lamp and chip 2 sit centred, the microphone at scale 3.0 (1.5 times its briefed 2.0: 360 x 690 at x 780 to 1140, y 195 to 885; lamp radius 27 centred (1092, 255)), chip 2 at left 1180, top 216, on a slow push (1.00 to 1.03). The lamp empties at step 6 in that place. At step 6b (word 12 "And", 12.75) the group moves to its briefed place and size over 0.5 s, so the four slots are clear before mark 1 lands on "broke" (14.93). Unstaged, the block x 900 to 1920 (53.1 % of the frame) would be empty for 7.10 s.
 
 ## 5. Text (exact) and cues
 Text: the sheet's text as design sheet section 5 · `an announcer` · `a family` · `the survey team's first recommendation` · `when the researchers came` · `a police desk` · `the telephone lines` · `Fort Wayne` · `Marion` · the two source lines.
