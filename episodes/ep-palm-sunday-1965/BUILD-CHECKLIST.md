@@ -74,7 +74,10 @@ Status is read from this file. A box is ticked only with the check that proved i
   - Sources for the check: both scans downloaded and rendered page by page to `.qc-tmp/sources/` (study 42 pages, survey 92 pages).
 - [ ] Paul's on-camera lines: 5 written (A1-S14 26 words, A3-S18 23, A4-S7 26, A5-S13 25, Z1-S1 23), shown to the owner with the first frame on `p65-script.html`. BLOCKED on the owner: his go for 5 Flow takes, 75 credits. Book ad hinge: A3-S18 (Paul's tease) into A4-S1.
 - [ ] Voice for A1 to Z1 in the owner's voice (helper p65-voice, started 16:23): TTS, conversion, re-transcribe, in that order.
-- [ ] Graphics plan `mg_specs/acts-plan.md` (helper p65-mg-director, started 16:24): every segment assigned to a composition, assets to make first, build waves of five.
+- [x] Graphics plan `mg_specs/acts-plan.md` (helper p65-mg-director, 16:24 to 16:38): 68 compositions (A1 10, A2 13, A3 10, A4 10, A5 13, A6 9, Z1 3), 112 of 112 segments placed once (its own script check), 5 Paul clips, 50 assets to make first, build waves of five. Its 15 "cannot be built as written" items are accepted with the smaller version it gives (section 6): schematic where no source places a thing, light fills with "parts of" kept on the chip, straight legs between the survey's named places.
+  - County outlines and town positions come from US Census files (government work), kept in `media/data/` with provenance rows; earlier episodes built maps from data the same way (`ep-enderlin-2025/research/b1-maps/basemap.py`).
+- [ ] Wave 0, assets (started 16:40): 11 drawings (p65-build-drawings), 3 base maps (p65-maps), 18 page crops and 6 film cuts (p65-crops).
+- [ ] Waves 1 to 5, 68 compositions, start when the voice is final (cue times come from the word files).
 - [x] More pictures (12 Oct 26): 17 Free inventory pictures pulled (4 usable full frame; 13 under 1000 px, card use only) and three civil defense films with a shot log (`research/film-shot-log.md`); only the 1967 training film is used.
 - [ ] `edit_script.md` section by section, fact-check fan-out beside the owner's read.
 
