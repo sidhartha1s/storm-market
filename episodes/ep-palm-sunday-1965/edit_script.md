@@ -779,7 +779,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 
 ### A5-S15 · narration
 **Picture:** [drawing] a row of three drawn houses at night, every window dark; behind them one drawn steel tower, leaning. Small line "John Curran's recollection, not a log". Nothing ties the towers to the office's own power.
-> Curran remembers that the power company's high voltage lines were down, and none of its Fort Wayne customers had power.
+> Curran later wrote that the power company's high voltage lines were down, and none of its Fort Wayne customers had power.
 
 **Rows:** [D, Curran; IWX personal stories, a recollection] (no source says the office was one of those customers)
 
