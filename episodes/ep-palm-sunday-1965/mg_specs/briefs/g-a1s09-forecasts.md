@@ -89,7 +89,7 @@ Cue words and times are from `audio/a1-s9.words.json`, `a1-s10`, `a1-s11` and `a
 |---|---|---|---|---|---|---|
 | 0 | A1-S9 | 0 | At | 0.00 | 0.00 | first frame: ground and the map in MIDWEST (state outlines only) |
 | 1 | A1-S9 | 1 | two | 0.36 | 0.13 | clock stamp slides in from the left (0.6 s, power3.out), state 2:00 PM; the minute hand sweeps its last 30 degrees into place |
-| 2 | A1-S9 | 6 | forecast | 1.70 | 1.47 | forecast card 68 slides in from the right (`x:700` set at 0, to 0; 0.7 s, power3.out) |
+| 2 | A1-S9 | 6 | forecast | 1.70 | 1.47 | forecast card 68 rises in from below with a fade (`y:358` set at 0, to `y:278`; 0.7 s, power3.out) and holds there, 278 px under its briefed place, until step 7. Corrected 13 Oct 26 to the file as saved at 00:14: this brief first slid the card in from the right, and that entrance crossed the presenter corner (8,281 px at 1.60 s) |
 | 3 | A1-S9 | 12 | Wisconsin, | 3.54 | 3.31 | Wisconsin fills (0.3 s) with its label |
 | 4 | A1-S9 | 13 | Iowa, | 4.54 | 4.31 | Iowa fills with its label |
 | 5 | A1-S9 | 15 | Illinois, | 5.14 | 4.91 | Illinois fills with its label |
