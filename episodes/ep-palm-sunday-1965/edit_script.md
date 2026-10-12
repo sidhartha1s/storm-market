@@ -480,7 +480,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 **Rows:** [E, the South Bend observer; IWX]
 
 ### A3-S9 · narration
-**Picture:** [film] the same film (shot 14-04, 1:03.7 to 1:13.7: a woman on a black telephone at a desk), muted, framed, same label. On the second sentence the window gives way to two drawn telephones with a busy mark between them.
+**Picture:** [graphic] a row of drawn houses, windows dark, each with a small drawn telephone; a line runs from every telephone to one point, and the lines pile up there under a busy mark. On the second sentence two drawn office desks come in on the far side of the same busy mark, their own line stopped by it. Small source line "Disaster Research Center, 1966, pp. 17 and 25".
 > People who lost their power tried to phone for more information. So many were calling that they couldn't get through, and offices trying to reach each other hit the same jam.
 
 **Rows:** [D; study printed p. 25] · [D; study printed p. 17]
