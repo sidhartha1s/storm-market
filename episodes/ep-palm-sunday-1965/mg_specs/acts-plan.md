@@ -297,3 +297,22 @@ The script is not changed; these are changes to how a note is drawn.
 13. **A5-S7, "one storm path ... through Marion and on to Linn Grove".** Drawn as straight legs between the survey's named places (Howard County, Marion, Linn Grove, the state line), labelled as the survey's list of places, not a surveyed track.
 14. **The other list frames** (A2-S4, A3-S10, A4-S13, A5-S21, A6-S3, Z1-S2) sit on the canvas gradient, not on the teletype room photograph, to keep that photograph at three uses.
 15. **Film inside a composition** (six shots): the cut is mounted in `index.html` under the comp, which carries the window, the frame and the label (rule 15).
+
+## 7. After wave 0: rows whose length or picture changed (12 Oct 26)
+Cut lengths are `ffprobe` on the files. Voice times are from the draft voice in `audio/` (segment wav and words.json), read on 12 Oct 26; the final voice may move them, so each brief measures again before it sets a cue.
+| Comp | Segment | Film file and length (s) | Film window in the draft voice (s) | Verdict |
+|---|---|---|---|---|
+| g-a1s15-offices | A1-S15 | `media/films/cuts/a14-05-operations-room.mp4`, 31.53 (plan said 32.1) | 0 to 12.32, the whole segment; it dims at 6.48 | Fits. The window starts at the file's start so its first 2 s are placard-free; placards are in frame after that under the one label (rule 16) |
+| g-a1s15-offices | A1-S16 | `media/films/cuts/a14-09-announcer.mp4`, 9.44 (plan said 25.7) | 0 to 8.82, until the last sentence | **Length changed.** Fits with 0.62 s to spare. If the final voice moves that cue past 9.44 s the row needs a second picture: a hard cut to `media/films/cuts/a14-09b-announcer-shoulder.mp4` (7.17), then `media/films/cuts/a14-09c-announcer-microphone.mp4` (7.84), 24.46 in all (rule 17) |
+| g-a2s03-chain | A2-S4 | `media/films/cuts/a14-13-operators.mp4`, 15.21 (plan said 15.8) | 0 to 5.98, until "office after office" | Fits |
+| g-a3s07-calls | A3-S7 | `media/films/cuts/a14-10-desk-telephone.mp4`, 15.72 (plan said 16.3) | 0 to 4.70, the first sentence | Fits |
+| g-a5s10-alert | A5-S11 | `media/films/cuts/a14-08-telephone-call.mp4`, 4.17 (plan said 4.8) | 0 to 1.96, the first sentence | Fits. The window is under 2 s: the brief reads whether the film registers at that length |
+| g-a6s11-sirens | A6-S12 | `media/films/cuts/a14-01-siren-horn.mp4`, 11.71 (plan said 12.3) | 0 to 4.44, the first sentence | Fits |
+
+Rows whose picture changed, with no film in them:
+- **g-a2s19-log (A2-S19):** the three log cards are cut 1460 px wide (file heights 90, 129 and 128 px), not 900. Three cards and a map cannot all sit at full size; the cards are sized from the files (section 3c) and the 6:24 PM card masks its bottom 12 px.
+- **g-a2s14-six (A2-S14):** Plymouth and Donaldson are 17.7 px apart at the map's largest fit, less than one tornado mark's width. The row needs a push in on Marshall County before the three marks land, and hand-placed labels for the two towns.
+- **g-a5s20-team (A5-S20):** the tight crop of printed p. 1 is three lines, not one sentence; the third line stays in frame and only "excellent" is underlined.
+- **g-a5s09-alto (A5-S9):** no change to the row. Alto appears as the photograph's label only; no map inset may be added to place it.
+
+Not on disk: nothing. Every file named in section 3 exists; the two extra announcer angles arrived during this check.
