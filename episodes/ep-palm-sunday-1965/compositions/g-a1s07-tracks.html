@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1s07-tracks (A1-S7, A1-S8): the real track map comes up out of the dark from west to east; then it dims and one storm steps
+     along a row of plain county tiles, the hand-off marks between them going grey and dropping out. Brief: mg_specs/briefs/g-a1s07-tracks.md.
+     Photograph: media/stills/b7-tornado-track-map.jpg, 1396 x 1046, courtesy Dr. Russell Schneider, SPC. Mounted as in g-i1s4-states
+       part A: whole at 0.9293 inside a Beige polaroid card (screen x = 251.4 + 0.9293 x image x, y = 54 + 0.9293 x image y).
+       Red ink ends at screen y 588 (590 at the end of the push). NO TRACK IS SINGLED OUT: the veil and its amber edge cross the whole
+       height of the map in one move, and everything else of ours sits at y 640 or lower.
+     The tornado mark rides ON the tile row (object box y 679 to 759), not above it: with its point at y 628 the mark's box passes over
+       red ink (measured on the file: x 738 to 1135, y 547 to 588), and must-be-true line 3 wins.
+     The tile row is schematic: six equal squares, not counties, not to scale, not registered to the map.
+     Cues: a1-s7.words.json seconds minus 0.42; a1-s8.words.json seconds plus 11.86, first word from its first sound 12.32
+       (mg_specs/timeline-map.md table 5). -->
+<template>
+<style>
+  #trk-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .trk-h { opacity:0; visibility:hidden; }
+  .trk-full { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* ---- the map card (values of g-i1s4-states .st6-card), its two veils and the amber edge; the card clips them ---- */
+  .trk-card { position:absolute; left:241px; top:44px; width:1297px; height:972px; border:10px solid #f4f0e6; background:#fff; box-shadow:0 18px 50px rgba(0,0,0,0.55); overflow:hidden; }
+  .trk-card img { position:absolute; left:0; top:0; width:1297px; height:972px; }
+  .trk-veil { position:absolute; left:0; top:0; width:1297px; height:972px; background:rgba(3,5,8,0.45); }
+  .trk-veil2 { position:absolute; left:0; top:0; width:1297px; height:972px; background:rgba(3,5,8,0.62); }
+  .trk-edge { position:absolute; left:-45px; top:0; width:90px; height:972px; background:linear-gradient(to right, rgba(232,197,106,0), rgba(232,197,106,0.35), rgba(232,197,106,0)); }
+  .trk-credit { position:absolute; left:271px; bottom:64px; padding:6px 12px; background:#f4f0e6; font:700 22px Arial, sans-serif; color:#2a2622; letter-spacing:0.04em; white-space:nowrap; line-height:1; }
+
+  /* ---- our labels, all at y 640 or lower: glass raised to 0.82 because the ground under it is white paper ---- */
+  .trk-label { position:absolute; left:291px; height:78px; padding:0 28px; box-sizing:border-box; background:rgba(10,16,24,0.82); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; font:700 34px Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:76px; }
+  .trk-chip { position:absolute; left:1080px; top:926px; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.82); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:23px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  .trk-mark { position:absolute; left:314px; top:673px; width:72px; height:92px; }   /* object box x 320 to 380, y 679 to 759: centred on tile 1 (x 350), inside the tile row */
+  .trk-rowcap { position:absolute; left:500px; top:812px; width:800px; text-align:center; font:700 22px Arial, sans-serif; color:#93a3b2; white-space:nowrap; line-height:1; }
+</style>
+<div id="trk-root" data-composition-id="g-a1s07-tracks" data-width="1920" data-height="1080">
+
+  <!-- the map card: pushes 1.00 to 1.03 about (900, 540) -->
+  <div class="trk-full" id="trk-map">
+    <div class="trk-card">
+      <img src="media/stills/b7-tornado-track-map.jpg" alt="">
+      <div class="trk-veil" id="trk-veil"></div>
+      <div class="trk-edge trk-h" id="trk-edge"></div>
+      <div class="trk-veil2 trk-h" id="trk-veil2"></div>
+    </div>
+  </div>
+  <div class="trk-credit">Courtesy: Dr. Russell Schneider, SPC</div>
+
+  <!-- A1-S7: two labels, the east northeast arrow (22.5 degrees), its chip -->
+  <div class="trk-label trk-h" id="trk-l1" style="top:690px">supercell: a thunderstorm that rotates</div>
+  <div class="trk-label trk-h" id="trk-l2" style="top:784px">single storms lasted up to 4.5 hours</div>
+  <svg class="trk-full" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <defs>
+      <clipPath id="trk-kc1"><rect id="trk-kr1" x="428" y="703" width="0" height="24"/></clipPath>
+      <clipPath id="trk-kc2"><rect id="trk-kr2" x="648" y="703" width="0" height="24"/></clipPath>
+      <clipPath id="trk-kc3"><rect id="trk-kr3" x="868" y="703" width="0" height="24"/></clipPath>
+      <clipPath id="trk-kc4"><rect id="trk-kr4" x="1088" y="703" width="0" height="24"/></clipPath>
+      <clipPath id="trk-kc5"><rect id="trk-kr5" x="1308" y="703" width="0" height="24"/></clipPath>
+    </defs>
+    <!-- arrow: tail (1080, 900), tip (1412.6, 762.2), 360 px at 22.5 degrees; the line stops inside the 34 px head -->
+    <path class="trk-h" id="trk-arrow" d="M1080 900 L1392.3 770.7" fill="none" stroke="#15202b" stroke-width="8" stroke-linecap="round"/>
+    <path class="trk-h" id="trk-head" d="M1412.6 762.2 L1386.9 789.1 L1375.4 761.4 Z" fill="#15202b" stroke="#15202b" stroke-width="2" stroke-linejoin="round"/>
+    <!-- A1-S8: six plain tiles 150 x 150, top 640, left edges 275, 495, 715, 935, 1155, 1375; no name, number or letter -->
+    <g fill="#15202b" stroke="#dfe7ee" stroke-width="4" stroke-linejoin="miter">
+      <rect class="trk-h" id="trk-t1" x="277" y="642" width="146" height="146"/>
+      <rect class="trk-h" id="trk-t2" x="497" y="642" width="146" height="146"/>
+      <rect class="trk-h" id="trk-t3" x="717" y="642" width="146" height="146"/>
+      <rect class="trk-h" id="trk-t4" x="937" y="642" width="146" height="146"/>
+      <rect class="trk-h" id="trk-t5" x="1157" y="642" width="146" height="146"/>
+      <rect class="trk-h" id="trk-t6" x="1377" y="642" width="146" height="146"/>
+    </g>
+    <!-- five hand-off marks on the row's centre line y 715, 50 px each: 6 px dots, 12.5 px apart -->
+    <g fill="none" stroke="#e8c56a" stroke-width="6" stroke-linecap="round" stroke-dasharray="0 12.5">
+      <path id="trk-k1" d="M435 715 H485" clip-path="url(#trk-kc1)"/>
+      <path id="trk-k2" d="M655 715 H705" clip-path="url(#trk-kc2)"/>
+      <path id="trk-k3" d="M875 715 H925" clip-path="url(#trk-kc3)"/>
+      <path id="trk-k4" d="M1095 715 H1145" clip-path="url(#trk-kc4)"/>
+      <path id="trk-k5" d="M1315 715 H1365" clip-path="url(#trk-kc5)"/>
+    </g>
+  </svg>
+  <div class="trk-chip trk-h" id="trk-chip">about 45 mph</div>
+  <!-- media/drawings/tornado-mark.svg inline at scale 1.0: a mark, Body light, never red -->
+  <svg class="trk-mark trk-h" id="trk-mark" viewBox="-6 -6 72 92" width="72" height="92">
+    <g fill="none" stroke="#dfe7ee" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 6 H57"/><path d="M14 26 H52"/><path d="M20 46 H42"/><path d="M27 64 L30 76"/>
+    </g>
+  </svg>
+  <div class="trk-rowcap trk-h" id="trk-rowcap">schematic: not a real track</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a1s07-tracks", P = "trk", D = 26.08, AMB = "#746a47";   /* Amber 2 at 45 % over Panel dark, pre-mixed */
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function draw(e, t, d) {                                  /* a line drawn on: dash = ceil(len)+1, hidden until its start */
+    var L = Math.ceil(e.getTotalLength()) + 1;
+    s0(e, { strokeDasharray: L, strokeDashoffset: L, autoAlpha: 0 });
+    tl.set(e, { autoAlpha: 1 }, t);
+    tl.to(e, { strokeDashoffset: 0, duration: d, ease: "power2.out" }, t);
+  }
+  function pass(t, total) {                                 /* the mark runs tile 1 to tile 6 at one speed; each tile blinks while the mark is over it */
+    var b = total / 6;                                      /* six blinks fill the window; the mark is on a tile's centre at the middle of its blink */
+    tl.to(mark, { x: 1100, duration: b * 5, ease: "none" }, t + b / 2);
+    for (var i = 0; i < 6; i++) {
+      tl.to($("t" + (i + 1)), { fill: AMB, duration: b / 3, ease: "power1.out" }, t + b * i);                 /* a fill change, nothing moves */
+      tl.to($("t" + (i + 1)), { fill: "#15202b", duration: b * 2 / 3, ease: "power1.in" }, t + b * i + b / 3);
+    }
+  }
+  var mark = $("mark"), i;
+
+  /* start states: hidden in CSS (trk-h), transforms set here at 0; every move from rest below is a plain to() */
+  s0($("map"), { scale: 1, transformOrigin: "900px 540px" });
+  s0($("veil"), { scaleX: 1, transformOrigin: "right center" });
+  s0($("edge"), { x: 0 });
+  s0($("l1"), { x: -60 });
+  s0($("l2"), { x: -60 });
+  s0($("chip"), { y: 12 });
+  s0(mark, { x: 0 });
+
+  /* ================= A1-S7 ================= */
+  /* 0 · "The" @0.00: the map card under its veil, the credit plate; the push carries the whole comp */
+  tl.to($("map"), { scale: 1.03, duration: D, ease: "none" }, 0);
+
+  /* 1 · "storms" @0.08: the veil shrinks toward the east with the amber edge on its lip; the whole height at once, no track singled out */
+  tl.to($("veil"), { scaleX: 0, duration: 2.2, ease: "none" }, 0.08);
+  tl.set($("edge"), { autoAlpha: 1 }, 0.08);
+  tl.to($("edge"), { x: 1297, duration: 2.2, ease: "none" }, 0.08);
+  tl.to($("edge"), { autoAlpha: 0, duration: 0.1, ease: "none" }, 2.18);
+
+  /* 2 · "supercells," @1.10 and 3 · "single" @3.84: the two labels, in the lower band */
+  tl.to($("l1"), { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 1.10);
+  tl.to($("l2"), { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 3.84);
+
+  /* 4 · "east" @8.94: the arrow draws from its tail, the head when the line arrives; 5 · "about" @9.96: its chip */
+  draw($("arrow"), 8.94, 0.6);
+  tl.to($("head"), { autoAlpha: 1, duration: 0.15, ease: "none" }, 9.54);
+  tl.to($("chip"), { y: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 9.96);
+
+  /* ================= A1-S8 ================= */
+  /* 6 · "A" @12.32: labels, arrow and chip out; the heavy veil over the whole map, so no real county reads as a tile */
+  tl.to([$("l1"), $("l2"), $("arrow"), $("head"), $("chip")], { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 12.32);
+  tl.to($("veil2"), { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 12.32);
+
+  /* 7 · "crosses" @13.78: six tiles draw on from the west; the mark (over tile 1) and the row caption */
+  for (i = 0; i < 6; i++) draw($("t" + (i + 1)), 13.78 + 0.05 * i, 0.3);
+  tl.to([mark, $("rowcap")], { autoAlpha: 1, duration: 0.3, ease: "power1.out" }, 13.78);
+
+  /* 8 · "county" @14.16: first pass. Six blinks of 0.45 s = 2.70 s, done 16.86, inside "county" to "handed" (2.74 s) */
+  pass(14.16, 2.70);
+
+  /* 9 · "handed" @16.90: the five hand-off marks draw in Amber 2, west to east (last complete 17.63) */
+  for (i = 0; i < 5; i++) tl.to($("kr" + (i + 1)), { attr: { width: 64 }, duration: 0.25, ease: "none" }, 16.90 + 0.12 * i);
+
+  /* 10 · "That" @18.98: the mark returns to tile 1 (out, back, in: 0.3 s) */
+  tl.to(mark, { autoAlpha: 0, duration: 0.15, ease: "none" }, 18.98);
+  tl.set(mark, { x: 0 }, 19.13);
+  tl.to(mark, { autoAlpha: 1, duration: 0.15, ease: "none" }, 19.13);
+
+  /* 11 · "passing" @19.94: second pass, 2.6 s; the five marks stay as they are */
+  pass(19.94, 2.60);
+
+  /* 12 · "neither" @22.88: all five marks turn Label grey */
+  for (i = 0; i < 5; i++) tl.to($("k" + (i + 1)), { stroke: "#93a3b2", duration: 0.3, ease: "power1.out" }, 22.88);
+
+  /* 13 · "nor" @24.00: marks 2, 3 and 5 drop out (done 24.55); 1 and 4 remain: uneven, not a pattern. Hold to the cut */
+  tl.to($("k2"), { autoAlpha: 0, duration: 0.25, ease: "power1.in" }, 24.00);
+  tl.to($("k3"), { autoAlpha: 0, duration: 0.25, ease: "power1.in" }, 24.15);
+  tl.to($("k5"), { autoAlpha: 0, duration: 0.25, ease: "power1.in" }, 24.30);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
