@@ -54,14 +54,16 @@ Clock hands, clockwise degrees from 12: 7:30 is hour 225, minute 180. In the rul
 | Source line | design sheet section 10, left 96, bottom 60: `Disaster Research Center, 1966, p. 21` |
 
 ## 4. Must be true in the picture
-1. Every word on the card is the page's own; nothing on the card is retyped. The underlined words are `"with his` and `own eyes".` and nothing else.
-2. The clock starts at 7:15 (hour hand between 7 and 8, minute hand on the 3) and ends at 7:30 (minute hand on the 6, hour hand half way between 7 and 8). The minute hand moves a quarter turn, clockwise, once. The word `ABOUT` is on the stamp the whole time.
-3. The time text changes from `7:15 PM` to `7:30 PM` when the sweep ends, not before; the page's own `7:30 p. m.` is bright while it does.
-4. The chip reads `County B` and no other county, town or person is named. No person is drawn.
-5. No telephone, radio or police desk is drawn here: in these fifteen minutes he told no other office. The radio call belongs to the next composition.
-6. Line 1 with the page's own `County B.` is dimmed, not hidden; it stays readable under the dim.
-7. The card is never still for 8 seconds: a visible change lands at 0.11, 0.83, 1.25, 2.03, 3.15, 4.73 and 5.07.
-8. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680.
+These are the truths of the ruled film variant.
+1. While any film pixel shows (0.00 to 3.15), `Civil defense training film, 1967` is on screen and is the only chip and the only text: no `County B`, no card, no stamp, no source line. The film is the operations room from 20.0 s into its file, never frozen, slowed, looped or reversed. From 3.15 to the last frame the hole is opaque (read at 3.25: no black, no stale frame, no seam in the ground).
+2. Every word on the card is the page's own; nothing on the card is retyped. The underlined words are `"with his` and `own eyes".` and nothing else.
+3. The page, the chip `County B`, the stamp and the source line come on together in the cut at word 9 "in" (3.15), not before. The unlit page is already on in that frame.
+4. The stamp reads `ABOUT` and `7:30 PM` from its first frame, minute hand on the 6, hour hand half way between 7 and 8. No `7:15 PM` is shown and no hand moves; the page's own `7:30 p. m.` is bright.
+5. The chip reads `County B` and no other county, town or person is named. No person is drawn.
+6. No telephone, radio or police desk is drawn here, and neither telephone film shot is used: in these fifteen minutes he told no other office. The radio call belongs to the next composition.
+7. Line 1 with the page's own `County B.` is dimmed, not hidden; it stays readable under the dim.
+8. The card is on screen for 3.56 s (3.15 to 6.71) and a visible change lands on it at 4.73 and 5.07.
+9. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680.
 
 ## 5. Text (exact) and cues
 Text: `County B` · `ABOUT` · `7:15 PM` · `7:30 PM` · `by the study's account` · `Disaster Research Center, 1966, p. 21`. Page words are the image.
