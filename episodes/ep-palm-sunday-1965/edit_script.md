@@ -148,6 +148,528 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 *(blackout 0.7 s)*
 
 
+## A1 · They saw it coming (11:45 AM to 5:20 PM; start time waits on the voice)
+
+### A1-S1 · narration
+**Picture:** the clock stamp from the intro returns, "FORECASTERS · 11:45 AM · Kansas City", over the teletype machines photograph (inventory A4, true caption in the credit corner). The drawn teletype icon of the chain lights amber, alone; the rest of the chain is not on screen yet.
+> A warning in nineteen sixty five was one message, so follow that one message from the start. It starts in Kansas City, at eleven forty five that morning.
+
+**Rows:** [A1; study printed p. 7]
+
+### A1-S2 · narration
+**Picture:** our own map of the Midwest. A band is drawn from northeastern Missouri up to north central Indiana as the words are said. Then the study's page (printed p. 7) as a document crop, underlined: "did not indicate any immediate tornado threat to any portion of Indiana". Source line "Disaster Research Center, 1966, p. 7".
+> The forecast covered a strip from northeastern Missouri up to north central Indiana. The study says it showed no immediate tornado threat to any part of Indiana.
+
+**Rows:** [A1; study printed p. 7] · [A1; study printed p. 7]
+
+### A1-S3 · narration
+**Picture:** clock stamp "WEATHER BUREAU · 12:20 PM · South Bend, Indiana". The Weather Bureau survey's own page (inventory B1, printed p. 37), the 12:20 entry underlined: "this includes Starke and southern Porter and Laporte Counties". On our Indiana map those three counties light amber, with their names.
+> But at twelve twenty the Weather Bureau in South Bend sent it on again, and named three Indiana counties inside it.
+
+**Rows:** [A1; survey printed p. 37]
+
+### A1-S4 · narration
+**Picture:** the same survey page holds; the underline moves to the entry's first words, "Severe thunderstorm and tornado forecast". Then the chain from the intro, whole: Kansas City, South Bend, the list, the microphone, the house. Light sits on the first two stations only.
+> So the forecast was out, and it was right about where. Who it was written for is another matter.
+
+**Rows:** [A1; survey printed p. 37] (the act's question, stated flat)
+
+*([loop L5 open]: who the forecast was written for. Paid in A1-S5 and A1-S6.)*
+
+### A1-S5 · narration
+**Picture:** a Weather Bureau teletypewriter photograph (inventory A1, Service A teletypewriter system, about 1960; true caption "Weather Bureau teletypewriter, about 1960 · NOAA"). Slow push on the paper coming out of the machine. No place or year label on the photograph.
+> The word on the page that day was forecast, a tornado forecast. It moved by teletype, a machine that types out what a distant office is typing.
+
+**Rows:** [A1, G: "tornado forecast" was the term in use] · [verify: one plain line on what a teletype does]
+
+### A1-S6 · narration
+**Picture:** the study's page (printed p. 7), the footnote at the foot of the page as a document crop, underlined as spoken: "the time the forecast first entered the system via local Weather Bureaus, and not the time that the general public became aware of the threat". Quote strip under it with the last eleven words.
+> The study prints a footnote under its clock times. Each time marks a forecast entering the system through a Weather Bureau office. It does not mark when the public heard.
+
+**Rows:** [time zones note; study printed p. 7 footnote]
+
+*([loop L5 closes]: the forecast was written for offices, and its clock time is an office's time.)*
+
+### A1-S7 · narration
+**Picture:** the Weather Bureau surface chart for 7 AM, April 11, 1965 (inventory B4), full frame, slow push. Our amber ring closes around the low. True caption "Weather Bureau surface chart, 7 AM, April 11, 1965". Source line "National Weather Service, Northern Indiana".
+> What the forecasters saw was one powerful low pressure system. The Weather Service office for northern Indiana later studied the storms it set off.
+
+**Rows:** [H; IWX meteorological analysis: "A powerful mid-latitude cyclone"] · [H; IWX] · [verify: "low pressure system" as the plain word for the cyclone on this chart, and that B4 shows it]
+
+### A1-S8 · narration
+**Picture:** the tornado track map (inventory B7, "Courtesy: Dr. Russell Schneider, SPC"). One long track is traced in amber from end to end while a small timer counts up to "4.5 hours". Label on glass: "supercell: a thunderstorm that rotates".
+> They were supercells, thunderstorms that rotate, and single storms lasted up to four and a half hours.
+
+**Rows:** [H; IWX: "individual storms persisted for up to 4.5 hours"] · [verify: "a thunderstorm that rotates" as the short definition of a supercell]
+
+### A1-S9 · narration
+**Picture:** the same track map; county lines come up under the amber track, and each county it crosses blinks once in turn. No county is named.
+> A storm that lasts four and a half hours crosses county after county. Its warning has to be handed on each time.
+
+**Rows:** [H] (the writer's reading of the track map; no source sentence says "handed on")
+
+### A1-S10 · narration
+**Picture:** clock stamp "FORECASTERS · 2:00 PM · Kansas City". The real forecast as a scan (inventory A9, Severe Weather Forecast No. 68, full text), the words "ONE OR TWO TORNADOES" underlined. Then the survey page (printed p. 37), South Bend's 2:30 entry underlined: "which is still in effect".
+> At two o'clock Kansas City sent a second forecast, for parts of Wisconsin, Iowa and Illinois. South Bend told its stations the earlier one still stood.
+
+**Rows:** [A2; study printed pp. 7-8] · [A2; survey printed p. 37]
+
+### A1-S11 · narration
+**Picture:** [RS] [VE] clock stamp "FORECASTERS · 5:20 PM · Kansas City". The real forecast scan (inventory A9, Severe Weather Forecast No. 69, full text), two phrases underlined in turn: "PORTIONS OF NORTHERN INDIANA" and "A TORNADO OR TWO". Quote strip with those two phrases.
+> Then at five twenty came Severe Weather Forecast Number Sixty Nine. It named portions of northern Indiana, and it used the words "a tornado or two."
+
+**Rows:** [A5; study printed p. 8; inventory A9]
+
+### A1-S12 · narration
+**Picture:** our Indiana map; the northern half fills amber. Then the survey page (printed p. 38), South Bend's 5:30 entry, the seven county names underlined, and the same seven light on the map with their names.
+> The study says this one covered most of the northern half of the state. South Bend passed it on at five thirty and named seven counties.
+
+**Rows:** [A5; study printed p. 8] · [A5; survey printed p. 38]
+
+### A1-S13 · narration
+**Picture:** the same map. A dot for Fort Wayne comes up in the east with a drawn teletype icon beside it, lines at rest, unlit. The study's page (printed p. 11) as a crop, underlined: "but not the one at 5:20 p.m."
+> The Fort Wayne office had passed on the two o'clock forecast. The study says it did not pass on this one.
+
+**Rows:** [A5; study printed p. 11]
+
+### A1-S14 · Paul on camera, one clip
+**Picture:** Paul on camera, full frame, the white shirt desk frame. One clip, these words and nothing else; no label, no graphic.
+> By five twenty, Kansas City had a tornado forecast out for northern Indiana. No tornado had touched the state yet. The forecasters had done their job.
+
+**Rows:** [A5] · [B table and row F: the first Indiana touchdown is 5:45 PM (IWX) or about 6:00 PM (study), both after 5:20]
+
+### A1-S15 · narration
+**Picture:** the study's page (printed pp. 9-10) as a crop, one word underlined in red as it is spoken: "inaction". Around it the unlit page. Source line on the quote strip.
+> But a forecast still had to get from an office to a living room. The study found one pattern in what offices did with it, and its word is inaction.
+
+**Rows:** [C20; study printed pp. 9-10]
+
+### A1-S16 · narration
+**Picture:** the study's page (printed p. 11), underlined as spoken: "understaffed during the Palm Sunday weekend", then "(A few stations never passed on the forecast)". Then the eight-row list; the "Specified radio and TV stations" row carries the red mark, and the ON AIR lamp beside it stays off.
+> Most radio and TV stations were short of staff that Palm Sunday weekend, so the forecast often went out late. A few stations never passed it on at all.
+
+**Rows:** [C13; study printed p. 11]
+
+*([loop L2, first payment]: police were not the only ones; a few stations never passed on the forecast. Closes in A4-S15.)*
+
+### A1-S17 · narration
+**Picture:** the drawn living room from the intro: the television idle, the armchair empty, afternoon light in the window (callback, one hold).
+> And on the first nice spring day of the year, many people weren't listening anyway.
+
+**Rows:** [C21; study printed p. 26] (said in I1-S1; a short callback)
+
+### A1-S18 · narration
+**Picture:** clock stamp "WEATHER BUREAU · 5:43 PM · South Bend, Indiana", as in the hook tail. The eight-row list slides in beside it, all rows plain, the drawn telephone on its hook above the list.
+> At five forty three, South Bend's forecast became a warning. Now it was one message, with one telephone list to cross.
+
+**Rows:** [A6; survey printed p. 39; study printed p. 14]
+
+### A1-S19 · narration
+**Picture:** hold on the list and the clock. The minute hand starts to move.
+> How long does a warning take to cross that list?
+
+**Rows:** (the act's exit question; no row)
+
+*([loop L6 open]: how long a warning took to cross the list. Paid in A2-S5 and A2-S13.)*
+
+*(blackout 0.7 s)*
+
+
+## A2 · One message, one telephone list (5:43 to 6:46 PM)
+
+### A2-S1 · narration
+**Picture:** the survey's page for the 5:43 warning again (inventory B1, printed p. 39, file `media/docs/survey-pdf-67-orig.png`), this time the next lines underlined: "Radar indicates some very strong storm echoes", then "LaPorte Starke and Marshall should be on the alert". Clock stamp 5:43 PM.
+> The five forty three warning said radar showed very strong storm echoes near Michigan City and just west of Knox. It told people in three counties to be on the alert.
+
+**Rows:** [A6; survey printed p. 39]
+
+### A2-S2 · narration
+**Picture:** our Indiana map. Drawn radar rings sit at Chicago, Fort Wayne and Indianapolis. South Bend is a dot with no ring. The study's page (printed p. 14), underlined: "had no radar". A drawn telephone line runs from Chicago to South Bend.
+> But the South Bend office had no radar of its own. Its radar news came over the telephone, from operators at other Weather Bureau offices.
+
+**Rows:** [H; study printed p. 14] · [H; IWX: "relying on phone conversations with radar operators in Chicago"]
+
+### A2-S3 · narration
+**Picture:** [VE] the chain graphic. A new station is drawn in front of South Bend: a drawn radar scope (a circle and one sweep line, same line weight), joined to South Bend's telephone by a solid link. The chain is now one link longer than it was in the intro.
+> So the office that started the telephone list was already at the far end of somebody else's telephone line.
+
+**Rows:** [H] (the writer's reading of the two rows above)
+
+### A2-S4 · narration
+**Picture:** the eight-row list, close, all rows plain. To its left the drawn teletype icon, to its right the drawn telephone, handset off the hook. Light leaves South Bend on both at once.
+> From there the warning went out twice, once by teletype and once by telephone, office after office.
+
+**Rows:** [A6; study printed p. 14: "not only issued the warnings via teletype, but it also telephoned several organizations"]
+
+### A2-S5 · narration
+**Picture:** [RS] [VE] the study's page (printed pp. 14-15) as a crop, underlined as spoken: "a delay of at least ten minutes". On the clock stamp an amber arc grows from the 5:43 mark, labelled "at least 10 minutes"; no end time is printed.
+> The study put a number on the wait. Between a warning being issued and radio and TV putting it on the air, the delay was generally at least ten minutes.
+
+**Rows:** [A6; study printed pp. 14-15]
+
+*([loop L6, first payment]: at least ten minutes.)*
+
+### A2-S6 · narration
+**Picture:** two glass cards side by side, each with its own source line. Left: "first touchdown · 2 minutes after the warning · Starke County", source "National Weather Service, Northern Indiana". Right: "first touchdown · about 17 minutes after the warning · Marshall County", source "Disaster Research Center, 1966". Each lands on its own sentence. The two are not merged into one figure.
+> Now set that wait beside the storm. The Weather Service today puts the first Indiana tornado on the ground two minutes after the warning, in Starke County. The nineteen sixty six study puts the first touchdown about seventeen minutes after it, in Marshall County.
+
+**Rows:** [B table; F: IWX "two minutes before the Koontz Lake tornado touched down in central Starke County"] · [F: study "approximately seventeen minutes before the first tornado touched down at Lapaz in Marshall County"]
+
+### A2-S7 · narration
+**Picture:** under both cards the same amber bar, "at least 10 minutes", is laid against each: it covers all of the left card's two minutes and most of the right card's seventeen.
+> By either clock, the wait took most of the warning time, or all of it.
+
+**Rows:** [A6, F] (the writer's comparison of ten minutes with two and with seventeen; check by script)
+
+### A2-S8 · narration
+**Picture:** clock stamp 5:50 PM. Label chip "one Indiana county". A drawn telephone, handset off the hook, joined to the drawn teletype icon; light runs from the telephone to the teletype, the reverse of the list.
+> At five fifty, State Police in one county saw a tornado and telephoned the Weather Bureau, which put it on the teletype.
+
+**Rows:** [A7; study printed pp. 20-21] (County A)
+
+### A2-S9 · narration
+**Picture:** the study's page from the intro (printed pp. 20-21; files `media/docs/study-pdf-21-orig.png`, `media/docs/study-pdf-22-orig.png`), the police headquarters sentence underlined again (callback). Label chip "one Indiana county".
+> The study never names that county. It is the county where city police heard the troopers' message, and where police headquarters told nobody.
+
+**Rows:** [C2; study printed pp. 20-21] (County A; said in H1-S1 and I1-S6)
+
+### A2-S10 · narration
+**Picture:** the same page, the underline moving to: "the tornadoes had already started touching down in the county". The drawn microphone, its lamp coming on amber only on the last word.
+> By the time stations started broadcasting it, the study says, tornadoes had already started touching down in that county.
+
+**Rows:** [A7; study printed pp. 20-21] (County A)
+
+### A2-S11 · narration
+**Picture:** the study's page (printed p. 21) as a crop, underlined: "until twenty minutes after it hit". Then the drawn house, dark, a drawn clock beside its door reading "20 minutes after". No person is drawn.
+> That county's civil defense director heard about it from a policeman who came to his house, after the tornado had hit. Civil defense was not told until twenty minutes after.
+
+**Rows:** [C1; study printed p. 21] (County A)
+
+### A2-S12 · narration
+**Picture:** the same page, underlined: "a back-up warning system to radio and TV", then "too late". A drawn desk with its telephone on the hook, unlit.
+> Civil defense there saw itself as the back up for radio and TV. Its plan was put into effect after the first tornado had already passed through.
+
+**Rows:** [C3; study printed p. 21] (County A)
+
+*([loop L2, second payment]: civil defense, the back up, was itself told late.)*
+
+### A2-S13 · narration
+**Picture:** clock stamp 6:00 PM, South Bend. The survey's page (printed p. 39), the 6:00 entry, underlined: "Confirmed tornadoes have been reported", then "during the next 30 to 60 minutes". Four counties light on our map: St. Joseph, Marshall, Elkhart, Kosciusko.
+> At six o'clock South Bend sent the next one. Confirmed tornadoes had been reported, and people in four counties should take emergency precautions during the next thirty to sixty minutes.
+
+**Rows:** [A8; survey printed p. 39]
+
+### A2-S14 · narration
+**Picture:** the study's page (printed p. 15) as a crop, underlined: "just about the time the tornadoes first started touching down". The clock stamp holds at 6:00 PM.
+> The study says that warning came just about the time the tornadoes first started touching down.
+
+**Rows:** [A8; study printed p. 15]
+
+### A2-S15 · narration
+**Picture:** the study's page (printed p. 25) as a crop, underlined as spoken: "too old-i.e. 15-30 minutes-to be truly worthwhile as a warning". Quote strip: "too old ... to be truly worthwhile as a warning", attribution "a broadcasting station · Disaster Research Center, 1966". The drawn microphone beside it.
+> One station told the researchers what that did to a warning. By the time warnings reached the air, they were generally fifteen to thirty minutes old. Too old, the station said, to be truly worthwhile as a warning.
+
+**Rows:** [C14; study printed p. 25]
+
+*([loop L6 closes]: at least ten minutes to cross, fifteen to thirty minutes old on arrival.)*
+
+### A2-S16 · narration
+**Picture:** name card "Paul Huffman · photographer, The Elkhart Truth". Our map: a dot for Elkhart. A drawn desk and telephone, since no free picture of a 1965 newsroom exists. Small line "as retold by the National Weather Service".
+> In Elkhart, a newspaper photographer named Paul Huffman was sifting through the warnings when his editor told him to grab his camera.
+
+**Rows:** [E, Huffman; IWX narrative, a retelling with no date or source line]
+
+### A2-S17 · narration
+**Picture:** the same map; a dot for Nappanee, a drawn tornado mark northwest of it and an arrow pointing northeast. The drawn telephone's handset lifts.
+> Before he left, the South Bend weather office told him a tornado was reported northwest of Nappanee, moving northeast.
+
+**Rows:** [E, Huffman; IWX narrative]
+
+### A2-S18 · narration
+**Picture:** [RS] [VE] the real photograph, full frame, slow push: Paul Huffman's twin funnels (inventory C1, the owner's "use it."). Clock chip "6:32 PM". Credit "Paul Huffman, The Elkhart Truth · April 11, 1965". Place label from the inventory caption: "Midway Trailer Court". Hold it for the whole segment; nothing else on screen.
+> At six thirty two he took this picture, two funnels side by side. It ran on the front page of his newspaper the next day.
+
+**Rows:** [inventory C1: 11 Apr 1965, 6:32 pm] · [inventory B11: Elkhart Truth page 1, 12 Apr 1965]
+
+### A2-S19 · narration
+**Picture:** three log entries from the survey's pages (printed pp. 39-40) as three paper cards in a row, each landing on its time: "6:23 PM", "6:24 PM", "6:35 PM", with "west of Plymouth", "moving toward Bremen" and "3 miles west of Goshen" underlined. On our map Plymouth, Bremen and Goshen light in turn.
+> South Bend kept typing as the sightings came in. At six twenty three it was a tornado west of Plymouth, and a minute later one moving toward Bremen. At six thirty five it was another, three miles west of Goshen.
+
+**Rows:** [A9; survey printed pp. 39-40]
+
+### A2-S20 · narration
+**Picture:** the chain graphic's front end: a drawn house, a drawn telephone with the handset off the hook, a link to South Bend. Light runs toward the Weather Bureau, the wrong way down the chain.
+> Each of those began with a person who saw a tornado and reached a telephone.
+
+**Rows:** [A9, H: South Bend had no radar and worked from sightings and telephone calls]
+
+### A2-S21 · narration
+**Picture:** clock stamp 6:50 PM, South Bend. The teletype room photograph (inventory A3, true caption). A blank sheet of paper sits where the next page will come; nothing is typed on it yet.
+> At six fifty, the South Bend desk typed a message no warning office wants to send.
+
+**Rows:** [A10; survey printed p. 40]
+
+### A2-S22 · narration
+**Picture:** the eight-row list over the same photograph. The drawn telephone above it; its cord goes from a solid line to a dotted one.
+> What happens to a telephone list when the telephones go?
+
+**Rows:** (the act's exit question; no row)
+
+*([loop L7 open]: what happens to the list when the telephones go. Paid through A3.)*
+
+*(blackout 0.7 s)*
+
+
+## A3 · The wires (6:50 to 7:45 PM)
+
+### A3-S1 · narration
+**Picture:** [RS] the survey's page (inventory B1, printed p. 40), the 6:50 entry as a document crop, underlined as spoken: "so numerous that it is impossible to keep track of them". Clock stamp 6:50 PM.
+> The message said reports of tornadoes and funnel clouds had become so numerous that it was impossible to keep track of them.
+
+**Rows:** [A10; survey printed p. 40]
+
+### A3-S2 · narration
+**Picture:** the drawn television from the intro, its screen on the station card with the recalled words and the small line "as recalled in 2014" (callback).
+> Those are the words an eleven year old in the South Bend area remembered hearing on his television.
+
+**Rows:** [E, Przybylinski; A10] (said in I1-S2; a short callback. The source gives an age and no gender: "his" must be checked or changed to "the")
+
+### A3-S3 · narration
+**Picture:** the same survey crop; the underline moves on to: "telephones being out in many areas and it is impossible to notify many people". Quote strip with those words, attribution "Weather Bureau, South Bend · 6:50 PM".
+> The same message had a second part. Telephones were out in many areas, it said, and it was impossible to notify many people.
+
+**Rows:** [A10; survey printed p. 40]
+
+### A3-S4 · narration
+**Picture:** [VE] the chain graphic. The solid links between South Bend and the list flicker, turn dotted, then go dark one at a time. The list and everything after it lose their light.
+> A telephone list runs on telephone lines and electric power. The first tornadoes of the evening were taking both down ahead of the later ones.
+
+**Rows:** [A10, D] (the act's change, from the rows below)
+
+### A3-S5 · narration
+**Picture:** clock stamp 7:10 PM. The survey's page (printed p. 41), underlined: "Bremen cannot be contacted by phone." Our map: the Bremen dot with a red ring, a drawn tornado mark just west of it.
+> At seven ten a tornado was just west of Bremen and moving toward it. South Bend asked radio and TV to use their emergency warning devices, because Bremen could not be contacted by phone.
+
+**Rows:** [A11; survey printed p. 41; study printed p. 18]
+
+### A3-S6 · narration
+**Picture:** the same map. The telephone link into Bremen is dark. One dotted arc, a broadcast, reaches from the drawn microphone toward the town.
+> That left a broadcast as the only way into the town, for anyone there who was listening.
+
+**Rows:** [A11] (the writer's reading of the 7:10 message)
+
+### A3-S7 · narration
+**Picture:** clock stamp 7:13 PM. The survey's page (printed p. 41), the next entry underlined: "numerous poor joke calls and they tie up the lines". The drawn telephone, handset off the hook, ring marks around it.
+> At seven thirteen the office asked stations to tell people not to call the Weather Bureau unless they had weather to report. It had numerous poor joke calls, it said, and they tie up the lines.
+
+**Rows:** [A12; survey printed p. 41]
+
+### A3-S8 · narration
+**Picture:** the study's page (printed p. 26) as a crop, underlined: "tried to phone for more information", then "unable to get through". The drawn house, one window lit, a drawn telephone in front of it with a busy mark.
+> People who had heard something tried to phone for more information. The study says so many calls piled onto the lines that they could not get through.
+
+**Rows:** [D; study printed p. 26; study printed p. 18]
+
+### A3-S9 · narration
+**Picture:** the eight-row list, close. One row lights with the amber band: "Indiana and Michigan Electric Company". Nothing is numbered.
+> One name on South Bend's list was a power company, Indiana and Michigan Electric.
+
+**Rows:** [A6; study printed p. 14]
+
+### A3-S10 · narration
+**Picture:** [RS] [VE] our graphic: fifty four small drawn steel towers in rows, falling one after another while a count runs to "54"; above them "11 breaks in major lines". Label "Indiana · reported by the Indiana and Michigan Electric Company". The study's line (printed p. 17) underlined beside it. No map: the sources place only some of the towers, and the inventory has no picture of one (row C22).
+> The company reported eleven breaks in its major lines in Indiana, with fifty four steel towers brought down by the tornadoes.
+
+**Rows:** [D; study printed p. 17, citing the Marion Chronicle, 21 Apr 1965]
+
+### A3-S11 · narration
+**Picture:** the study's page (printed p. 17), underlined: "became inoperative in many areas due to the loss of electricity". The drawn microphone; its ON AIR lamp goes from red to dark.
+> When the power went, radio and TV that had been carrying the forecasts went off the air in many areas.
+
+**Rows:** [D; study printed p. 17]
+
+### A3-S12 · narration
+**Picture:** clock stamp 7:45 PM, label "a radio station". The study's page (printed p. 25), underlined: "all power to our studio and transmitter was out", then "on an intermittent basis". The microphone's lamp blinks on and off.
+> One station told the researchers that at seven forty five, all power to its studio and transmitter was out. It went to emergency power and broadcast on and off.
+
+**Rows:** [D; study printed p. 25] (the study gives this station no name and no county)
+
+### A3-S13 · narration
+**Picture:** the drawn living room, evening: the window dark, the television screen idle. On the side table the drawn table radio alone keeps a small amber dial. The study's page (printed p. 26), underlined: "battery-powered transistor radios".
+> In the houses, the sets went dark with the lights. Unless people owned a battery powered transistor radio, the study says, they could not get any later warning.
+
+**Rows:** [D; study printed p. 26]
+
+### A3-S14 · narration
+**Picture:** the study's page (printed p. 30), underlined: "did not have adequate auxiliary power". Two drawn desks with telephones, both unlit. No county label.
+> Two city police departments had no good back up power either, and were without full communication for a time.
+
+**Rows:** [D; study printed p. 30]
+
+### A3-S15 · narration
+**Picture:** the study's page (printed p. 22), underlined as spoken: "only one, ten, or thirty minutes before impact". Three small clock faces beside it showing 1, 10 and 30 minutes.
+> Where an alert did reach an office in a tornado's path, the study says it came one, ten or thirty minutes before the tornado did.
+
+**Rows:** [C15; study printed p. 22]
+
+*([loop L7 closes]: the list lost its telephones, its stations lost power, and what arrived came late. [loop L3, first seed]: warnings that arrive late.)*
+
+### A3-S16 · narration
+**Picture:** the chain graphic with its dark links. One new thing: a dotted amber arc, a two way radio, between two drawn desks. It is the only light on the screen.
+> So the list had lost telephones, and the stations at the end of it were losing power. A warning could still move over the two way radios that police and civil defense used.
+
+**Rows:** [A10, D] · [A13: the civil defense director "radioed" the city police]
+
+### A3-S17 · Paul on camera, one clip
+**Picture:** Paul on camera, full frame, the white shirt desk frame. One clip, these words and nothing else. Cut to the book ad on his last word.
+> One county still had working radios. At about seven fifteen, its civil defense director learned where a tornado was. What did he do?
+
+**Rows:** [A13; study printed p. 22] (County B; "where a tornado was", never "tornado warning")
+
+*([loop cta-hinge open]: what he did with it. Paid by the first sentence of A4-S1.)*
+
+*(book ad here: after A3-S17, Paul's tease, and before A4-S1, which pays it in its first three words. The ad file carries its own voice; no ad copy is written here. Where the chapter blackout sits around the ad follows DESIGN.md "CTA contract".)*
+
+
+## A4 · The desk where it stopped (7:15 to 8:07 PM)
+
+### A4-S1 · narration
+**Picture:** the study's page (printed p. 22) as a crop, underlined as spoken: "with his own eyes". Label chip "a different county", the sheriff's county from the intro. Clock stamp "about 7:15 PM", its minute hand sweeping a quarter turn.
+> He waited fifteen minutes. The study says he waited until he saw the tornado, in its words, "with his own eyes."
+
+**Rows:** [A13; study printed p. 22] (County B)
+
+*([loop cta-hinge closes].)*
+
+### A4-S2 · narration
+**Picture:** our drawing: two plain boxes side by side, labelled "the next county west" and "his county". No real outline and no name, so neither box can be read as a place. A drawn tornado mark enters the west box from its left edge.
+> The word had reached him one county to the west. State Police told the sheriff there that a tornado was just entering that county from the west.
+
+**Rows:** [A13; study printed p. 22]
+
+### A4-S3 · narration
+**Picture:** the same two boxes; a small drawn desk mark for the sheriff in the west box, and beside it a civil defense mark. Nothing else is drawn of the scene.
+> The civil defense director was there with that sheriff, helping to recover a person lost in the water.
+
+**Rows:** [A13; study printed p. 22]
+
+### A4-S4 · narration
+**Picture:** the study's page (printed p. 22), underlined: "did not notify any other organizations". In the "his county" box, three drawn desks stay unlit.
+> He told his own civil defense members. The study says he did not notify any other organization in his own county.
+
+**Rows:** [A13; study printed p. 22] (County B)
+
+### A4-S5 · narration
+**Picture:** [VE] the chain graphic for this county: a civil defense desk, a dotted amber radio arc, the police desk with its telephone, a dotted link, the microphone, the house. Light crosses the radio arc and lands on the police desk. Clock stamp "about 7:30 PM".
+> Fifteen minutes later he saw it. At about seven thirty he radioed the city police, gave them the tornado's location, and asked them to tell the radio station.
+
+**Rows:** [A13, C5; study printed pp. 22-23] (County B)
+
+### A4-S6 · narration (tempo 0.85)
+**Picture:** [RS] [VE] the study's page (printed pp. 22-23) as a crop, one sentence underlined in red as it is spoken: "The information died with the police." In the chain the light stops on the police desk and a red stop mark lands on it. The microphone and the house stay dark. Hold.
+> The study tells what happened next in six words. "The information died with the police."
+
+**Rows:** [C5; study printed pp. 22-23] (County B; the study's own sentence, voiced once)
+
+*([loop L1, first answer]: where it stopped and who was holding it.)*
+
+### A4-S7 · Paul on camera, one clip
+**Picture:** Paul on camera, full frame, the white shirt desk frame. One clip, these words and nothing else.
+> The city police had the tornado's location and a working radio. They passed it to nobody, and their chief told the researchers why.
+
+**Rows:** [C5; study printed pp. 22-23] (County B)
+
+### A4-S8 · narration
+**Picture:** the study's page (printed p. 23), the chief's words underlined: "I don't like to panic them." Quote strip in Georgia with the same words, attribution "a city police chief · Disaster Research Center, 1966". The narrator reads the words; no actor's voice. Label chip "a different county".
+> He said, "I don't like to panic them." He was afraid people might panic unnecessarily if the warning came straight from the police.
+
+**Rows:** [C5; study printed pp. 22-23] · [I, item 4; study printed p. 23]
+
+### A4-S9 · narration
+**Picture:** the study's page (printed p. 10) as a crop, underlined: "I never felt that it was our primary duty to inform the public". No county label on this frame: the study does not tie this chief to a county.
+> The study quotes a police chief on whose duty it was. He never felt it was their primary duty to inform the public, because usually the radio had the information before they did.
+
+**Rows:** [C10; study printed p. 10]
+
+### A4-S10 · narration
+**Picture:** [RS] [VE] the chain holds on the police desk with its red stop mark. Beside it the clock stamp runs from "about 7:30 PM" to "8:07 PM", an amber arc growing with the label "about 35 minutes". The study's line (printed p. 23) underlined under the clock.
+> So the call to the radio station was never made, and the clock ran. The tornado hit the county seat at eight oh seven, about thirty five minutes after the civil defense director first radioed the police.
+
+**Rows:** [C5] · [C7; study printed p. 23] (County B)
+
+### A4-S11 · narration
+**Picture:** the sheriff's page from the intro (printed p. 23 in facts.md; file `media/docs/study-pdf-24-orig.png`), "We didn't have any warning at all" underlined again (callback). Label chip "a different county".
+> That county's sheriff is the one who found out when the tornado was going over.
+
+**Rows:** [C6] (County B; said in I1-S7)
+
+### A4-S12 · narration
+**Picture:** the same chain; every light on it goes out, the police desk last. The study's page (printed p. 23), underlined: "inoperative for about an hour".
+> As the tornado went through, all power to the radio and TV stations and to the public was cut off. The city police radio was out for about an hour, until a generator could be hooked up.
+
+**Rows:** [D, County B row; study printed p. 23]
+
+### A4-S13 · narration
+**Picture:** the study's page (printed p. 26) as a crop. Label chip "a radio station · county not given in the study". The drawn microphone, dark.
+> The study also quotes a radio station, and does not say which county that station was in.
+
+**Rows:** [C8; study printed p. 26] (not tied to County B: county-key.md)
+
+### A4-S14 · narration
+**Picture:** the same page, underlined as spoken: "were not notified by the local police so we couldn't prepare our listeners". Quote strip with those words, attribution "a radio station · Disaster Research Center, 1966".
+> The station understood later that the local police had been told a tornado was headed its way. "We were not notified by the local police," it said, "so we couldn't prepare our listeners."
+
+**Rows:** [C8; study printed p. 26]
+
+### A4-S15 · narration
+**Picture:** the eight-row list, close. The study's page (printed p. 10) slides over it, underlined as spoken: "No member of any organization interviewed saw it as their responsibility". Quote strip.
+> Police were not the only ones. No member of any organization the study interviewed saw it as their responsibility to back up radio or TV.
+
+**Rows:** [C9; study printed p. 10]
+
+*([loop L2 closes]: police were not the only ones.)*
+
+### A4-S16 · narration
+**Picture:** the study's page (printed p. 36), underlined: "the general assumption that providing relevant information to the radio and TV stations was sufficient to warn the public". The list's "Specified radio and TV stations" row lights; every other row's light drains toward it.
+> The general assumption, the study found, was that giving the information to radio and TV stations was enough to warn the public.
+
+**Rows:** [C12; study printed p. 36]
+
+### A4-S17 · narration
+**Picture:** the drawn television: its screen flips from the station card to the plain programme frame (callback to I1-S3, one hold).
+> And the stations that did have it cut in, then went back to their shows.
+
+**Rows:** [C22; study printed p. 37] (said in I1-S3; a short callback)
+
+### A4-S18 · narration
+**Picture:** the whole chain in one frame, as in I1-S9: Kansas City, South Bend and the list lit; the desk with its red stop mark; the microphone and house dark. The study's page (printed pp. 35-36), underlined: "the system tended to break down on the receiving end".
+> In most cases, the study concluded, the Weather Bureau sent the warning and the system broke down on the receiving end.
+
+**Rows:** [C11; study printed pp. 35-36]
+
+### A4-S19 · narration
+**Picture:** [VE] our graphic: eight plain squares in a row, no names. Seven fill amber on "seven"; the eighth takes a red outline on "one". The study's line (printed p. 16) underlined under them.
+> Seven of the eight counties it studied were in a Weather Bureau advisory before a tornado touched down there. Only one got no forewarning.
+
+**Rows:** [C19; study printed p. 16]
+
+### A4-S20 · narration
+**Picture:** our Indiana map. The South Bend dot dims; a dot for Fort Wayne lights to the east with the drawn teletype icon beside it, typing.
+> And one office to the east, the Fort Wayne Weather Bureau was still typing warnings, for storms that had already gone by.
+
+**Rows:** [A20, A22, C16]
+
+### A4-S21 · narration
+**Picture:** hold on the Fort Wayne dot and the teletype icon; a paper strip keeps coming out of it.
+> How late can a warning be and still be sent?
+
+**Rows:** (the act's exit question; no row)
+
+*([loop L3 open]: why warnings kept going out for storms that had already passed. Closes in A5-S10.)*
+
+*(blackout 0.7 s)*
+
+
 ## Sound, hook and intro
 Preview v1, 12 Oct 26. Files in `media/sfx/`, mounted in `index.html` "SOUND". No broadcast, radio or archive audio.
 - **No siren.** The story is a warning that did not travel, so the sound a warning makes is never heard here.
