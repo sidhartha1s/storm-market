@@ -17,7 +17,7 @@ Newest first. New entries go at the top, under this line. Superseded lines point
   envelope edge), not on the transcriber's stamp alone.
 - **Homograph probe without Praat:** "lives" in "lost their lives" measured as the noun with LPC formants on the final
   wav (F1 peak about 877 Hz, vowel about 0.16 s; the short-i signature is F1 under about 500 Hz and about 60 ms).
-- **Open:** the conversion script still sits in an El Reno scratch folder outside the tracked repo (`ops/tasks.md`).
+- **Open:** the conversion script still sits in an El Reno scratch folder outside the tracked repo (`ops/tasks.md` "Housekeeping").
 
 ## 2026-09-27 - ep-enderlin: the "lyvz" respelling voiced "livs"; plain "lives" is correct; gate shipped 2026-09-28
 
