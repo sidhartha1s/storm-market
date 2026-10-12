@@ -47,7 +47,7 @@ The chain (all four segments), one group `cntb-chain`, authored numbers at full 
 | House | `media/drawings/house.svg` inline, `translate(1400 430) scale(0.68)`, `stroke-width="5.9"` (box x 1400 to 1577, y 430 to 600, aerial to y 407, centre x 1488.5); windows Panel dark in every frame |
 | Links, y 520, 4 px Label grey, dotted (`stroke-dasharray="0.1 14"`, round caps) | 837 to 1068 and 1170 to 1400. No ground link joins the two desks |
 | Unlit state | every line Label grey, bodies Panel dark |
-| Labels (HTML, outside the group but in the stage, hidden until A4-S3) | Arial 700 22 px, line-height 28, Label grey, authored top 676 (on screen 808), each 200 px wide and centred on its station: `civil defense` (x 223.5), `city police` (x 709.5), `the radio station` (x 1119), `a family` (x 1488.5) |
+| Labels (HTML, outside the group but in the stage, hidden until A4-S3) | Arial 700 22 px, line-height 28, Label grey, authored top 676 (on screen 712), each 200 px wide and centred on its station: `civil defense` (x 223.5), `city police` (x 709.5), `the radio station` (x 1119), `a family` (x 1488.5) |
 
 Fixed layer:
 | Element | Px |
