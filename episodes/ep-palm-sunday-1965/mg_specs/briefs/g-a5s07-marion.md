@@ -72,7 +72,7 @@ Cue words and times are from `audio/a5-s7.words.json` and `audio/a5-s8.words.jso
 | 3 | A5-S7 | 9 | 920 | 3.54 | 3.31 | clock stamp slides in from the left (`x: -660` to 0, 0.6 s, power3.out); the minute hand sweeps its last 30 degrees onto the 4 |
 | 4 | A5-S7 | 16 | wire, | 5.30 | 5.07 | document card rises in from below with a fade (`y: 80` set at 0, to 0, opacity 0 to 1; 0.7 s, power3.out); the document source fades in after it. Corrected 12 Oct 26: not in from the right, which crosses the presenter corner (the card reaches y 957) |
 | 5 | A5-S7 | 17 | three | 6.26 | 6.03 | unlit page fades in (0.4 s); the underline draws left to right (0.7 s) |
-| 6 | A5-S8 | 0 | Marion | first sound 0.00 | 9.96 | the document source fades, the card leaves to the right (`x: 1600`, 0.4 s, power3.in); chip `hit near 8:00 PM` fades in beside Marion's dot (0.3 s) |
+| 6 | A5-S8 | 0 | Marion | first sound 0.00 | 9.96 | the document source fades, the card leaves the way it came (`y: 0` to 60, opacity 1 to 0; 0.4 s, power3.in; corrected 12 Oct 26: not out to the right); chip `hit near 8:00 PM` fades in beside Marion's dot (0.3 s) |
 | 7 | A5-S8 | 7 | Fort | 2.54 | 12.50 | the map dims (0.4 s): map to 0.2, labels, caption and chip to 0; the stamp's three lines fade (0.15 s), the stamp slides to left 986 (0.5 s, power2.inOut), its lines return (0.2 s) |
 | 8 | A5-S8 | 13 | full | 3.80 | 13.76 | quote strip rises in (`y: 40` to 0, 0.5 s, power3.out): the quote, then the attribution 0.2 s later |
 | 9 | A5-S8 | 20 | clock | 6.26 | 16.22 | hospital clock card slides in from the left (`x: -660` to 0, 0.6 s, power3.out), hands already at 8:10, eyebrow `STOPPED AT`, no time yet |
