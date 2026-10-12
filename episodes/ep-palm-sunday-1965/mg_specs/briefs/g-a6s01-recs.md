@@ -63,7 +63,7 @@ Cue words and times are from `audio/a6-s1.words.json` as it stood on 12 Oct 26 a
 | 1 | A6-S1 | 1 | May | 0.54 | 0.15 | date label `May 2, 1965` rises beside the page (`y:16` set at 0, then `to y:0, autoAlpha:1`, 0.3 s) |
 | 2 | A6-S1 | 9 | team | 3.30 | 2.91 | name card slides in from the right (`x:120` set at 0, then `to x:0`, 0.5 s, power3.out), name then sub 0.15 s apart |
 | 3 | A6-S1 | 11 | ten | 3.80 | 3.41 | the ten margin dots land top to bottom, 0.06 s apart (0.54 s in all, each a 0.15 s fade): done by 4.10, inside the word "recommendations" |
-| 4 | A6-S1 | 15 | first | 5.74 | 5.35 | the page, the dots, the date label and the name card go to opacity 0.18 (0.3 s); the crop card slides in from the right (`x:660` set at 0, then `to x:0`, 0.45 s, power3.out) |
+| 4 | A6-S1 | 15 | first | 5.74 | 5.35 | the page, the dots and the date label go to opacity 0.18 (0.3 s); the name card fades out over 0.3 s as the crop card comes in (this brief first kept it dimmed to the end; dimmed, it sat half under the card's top edge); the crop card enters from the left (0.45 s, power3.out; as built and passed, this brief first said from the right) |
 | 5 | A6-S1 | 17 | reaches | 6.24 | 5.85 | unlit page fades in on the crop (0.3 s); underline A draws (0.35 s) |
 | 6 | A6-S1 | 19 | announcer. | 6.74 | 6.35 | underline B draws (0.35 s). Hold to the last frame (7.92) |
 The ten margin dots are not in the Picture note: they give "ten recommendations" a visible change. If the lead strikes them, step 3 is empty and the page holds on its drift.
