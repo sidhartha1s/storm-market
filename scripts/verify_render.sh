@@ -79,9 +79,9 @@ HAS_AUDIO=$(ffprobe -v error -select_streams a -show_entries stream=codec_type -
 # Passed as an argv string, never a /tmp file: this python runs as a native Windows exe (no
 # MSYS path translation for text read from a heredoc), so a bash-side /tmp/... path that
 # ffmpeg/grep resolve fine is simply not there when a plain open() asks for it.
-if ! python3 - "$COMP_W" "$COMP_H" "$COMP_DUR" "$COMP_FPS" "$HAS_AUDIO" "$PROBE" <<'PYEOF'
+if ! python3 - "$COMP_W" "$COMP_H" "$COMP_DUR" "$EXPECT_FPS" "$HAS_AUDIO" "$PROBE" "$MODE" <<'PYEOF'
 import re, sys
-comp_w, comp_h, comp_dur, comp_fps, has_audio, probe = sys.argv[1:7]
+comp_w, comp_h, comp_dur, expect_fps, has_audio, probe, mode = sys.argv[1:8]
 probe = probe.replace("\r\n", "\n")  # ffprobe is a native console app; bash keeps its \r
 def field(name):
     m = re.search(rf'^{name}=(.+)$', probe, re.MULTILINE)
