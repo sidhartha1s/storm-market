@@ -37,7 +37,7 @@ Clock angles, clockwise from 12 (by script): 6:23 is hour 191.5, minute 138; 6:2
 | Source line | not in the credit corner (the stack ends at y 991): left 96, top 376, Arial 700 22 px with the credit shadow: `Weather Bureau survey report, 1965, pp. 39-40` |
 
 ## 4. Must be true in the picture
-1. Each card is the scan itself at its own size: nothing retyped, nothing cropped inside a line, except card 2's ruled 12 px mask.
+1. Each card is the scan itself at its own size: nothing retyped, nothing cropped inside a line, except card 2's ruled 4 px mask.
 2. The cards land in time order, 6:23, 6:24, 6:35, and the stamp's time matches the card that has just landed.
 3. Each town's dot sits on its position from the points table within 2 px, and lights on its own spoken name: Plymouth, then Bremen, then Goshen. No other town lights. Donaldson, Nappanee and Elkhart are hidden.
 4. No county is filled amber (in this family an amber county is a warned county) and no tornado mark is drawn: the entries report sightings, the picture places only the towns they name.
