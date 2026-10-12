@@ -290,5 +290,5 @@ The hook and intro's seven sounds are not listed here and were not touched. Ever
 | 915.58 | sx-ring-a5s11 | telephone-ring.wav | 0.3 | 1.88 | `g-a5s10-alert` cue 5 (8.83): hard cut to the telephone film `v-a5s11-call` |
 
 - A match-cut sound moves with its composition: if a builder changes one of those cue times, the sound's start changes with it.
-- Nothing sounds in the five act blackouts, in the book ad's two dips or under the ad (635.44 to 661.85). No swell or match-cut sound sits under any of Paul's clips.
+- Nothing sounds in the five act blackouts, in the book ad's two dips or under the ad (635.44 to 661.85). No swell or match-cut sound sits under any of Paul's clips, and the bed is 3 dB down inside its file under each of them (0.5 s ramps before and after the clip). If a Paul clip moves, that bed file is cut again.
 - **Paul starts speaking 0.19 to 0.60 s into each new clip** (table 2); `ins-paul-1` has no such lead-in. The clips are mounted from their first frame, so the silence before his first word is 1.0 s plus that lead-in.
