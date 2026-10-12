@@ -2,6 +2,35 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 13 Oct 26 - ep-palm-sunday-1965 acts: what 69 reads and the first full gate pass found
+- **Staged frames lie about fit.** A staged capture draws this laptop's Georgia and Arial; the episode render swaps in
+  EB Garamond (narrower) and a wider sans. One strip was failed for an overflow that existed only in staged Georgia, and
+  wires' attribution is 27 px wider in the episode than staged. **Rule:** a strip's fit is judged on an episode frame
+  (`hyperframes snapshot` of the episode); a staged width is a second number, never the verdict.
+- **Text swapped in place overlapped.** Forecasts' clock card and the closing card's two lines crossfaded in one spot, so
+  for a few frames two texts were readable on top of each other (title: 0.42 over 0.22 opacity at 4.90 s; the overlap
+  gate caught it only at one 0.5 s sample). **Rule:** old and new of one place are never both over 0.15 opacity: old out
+  by t + 0.15, new in from t + 0.25. A one-digit crossfade of 2 frames (a clock minute) is the accepted exception.
+- **Label text flipped between grey and colour-fringed edges.** Chrome draws subpixel text on a layer it knows is opaque
+  and grey text elsewhere, so labels changed edge colour whenever a moving layer crossed the frame. Fix, once per
+  episode in `index.html`: `#root { will-change: transform; }`. Proof on episode frames: fringed pixels 321, 890, 527
+  to 0; 72 before and after pairs over 51 graphics showed 0 px changed in film, grain and vignette. Staged pages have no
+  `#root`, so staged frames still show the flip.
+- **`sweep_episode.py` check 7 could not read 10 timelines** and failed them as idle; none idled. Causes: the length
+  declared inside a `var` list (`fold()` reads only `const D = 1.2;`), last tweens made by a helper function, a loop.
+  **Rule for builders:** `const D = <number>;` on its own line, and the last beat written as a plain `tl.to(..., <number>);`.
+  Known weakness: the check passes any file whose end pad at `D - 0.01` folds, so it cannot see a real idle.
+- **`overlap_check.mjs` reads layout boxes, not ink.** Two minute marks 165 px apart failed because each sat in a 300 px
+  centred box. Fix the box to fit its text; do not exempt the label. One label on two different bars is what
+  `data-repeat-ok` is for, and it goes on the two labels, not on the root (the root waives the rule for every text).
+- **The full gate suite was first run after all 69 reads.** It then failed three times in a row (sweep: 2 checks, overlap:
+  3 findings, graphics check: 3 flat-type), about 80 minutes before all were green. **Rule:** the non-browser gates
+  (`sweep_episode.py` first) run after every build or fix wave, and `run_gates.py` once before the read round starts.
+- **Helpers are not always woken when their background capture ends** (waits of 20 to 80 minutes, five times). The brief
+  now says: look in the folder 5 minutes after the capture should have ended; the lead checks folders for silent readers.
+- **Still open:** `references/mg-quickref.md` "Verify" does not yet carry the episode-frame rule or the swap rule; the
+  check 7 weakness and a shared clip helper are rows in `ops/tasks.md`.
+
 ## 12 Oct 26 - ep-palm-sunday-1965 acts: a brief that checks coverage in its last frame only fails during the build-up
 - **What happened:** g-a2s06-headstart passed all eight must-be-true lines at the verifier and still failed. Its brief
   put two clock cards at the top of the frame and brought the bars on 11.82 s later, so the lower 56.9 % of the frame was
