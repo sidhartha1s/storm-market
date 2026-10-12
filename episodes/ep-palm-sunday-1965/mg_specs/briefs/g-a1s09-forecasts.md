@@ -100,7 +100,7 @@ Cue words and times are from `audio/a1-s9.words.json`, `a1-s10`, `a1-s11` and `a
 | 10 | A1-S10 | 5 | severe | 1.54 | 10.01 | forecast card 69 rises in from below with a fade (`y:347` set at 0, to `y:267`; 0.7 s, power3.out) and holds there until step 13. Corrected 13 Oct 26 to the file as saved at 00:14: not in from the right, which crossed the presenter corner (7,770 px at 10.15 s) |
 | 11 | A1-S10 | 10 | It | 4.44 | 12.91 | map push MIDWEST to INDIANA (0.9 s) |
 | 12 | A1-S10 | 12 | parts | 4.90 | 13.37 | unlit page on card 69; underline `PORTIONS OF NORTHERN INDIANA` (0.4 s) |
-| 13 | A1-S10 | 15 | Indiana, | 5.66 | 14.13 | strip 1 lifts in; the northern band wipes down from the north edge (0.5 s) and its label fades in |
+| 13 | A1-S10 | 15 | Indiana, | 5.66 | 14.13 | strip 1 lifts in and card 69 moves up to its briefed place on the same cue (`y:267` to 0; 0.5 s, power3.out); the northern band wipes down from the north edge (0.5 s) and its label fades in |
 | 14 | A1-S10 | 21 | a | 8.04 | 16.51 | underline `A TORNADO OR TWO` (0.4 s) |
 | 15 | A1-S10 | 24 | two. | 8.72 | 17.19 | strip 2 lifts in under strip 1 |
 | 16 | A1-S11 | 5 | northern | 1.30 | 19.25 | the band's fill goes 25 % to 45 % and back (0.6 s): a fill change, no scale |
