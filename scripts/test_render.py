@@ -409,10 +409,8 @@ if HAVE_FFMPEG:
             else:
                 (ep / "render_draft.fps").write_text(f"{rec_fps} \r\n", encoding="utf-8")
             r = run_verify(ep, clip, mode)
-            ok = (r.returncode == 0) == want_ok and text in r.stdout and (want_ok or r.returncode != 0)
-            if not want_ok and mode in (None, "mastered", "draft") and "usage:" in text + r.stdout[:0]:
-                ok = ok and r.returncode == 1
-            check(f"render-11 NEW: {label}", ok, f"rc={r.returncode}\n{r.stdout[-800:]}")
+            check(f"render-11 NEW: {label}", r.returncode == want_rc and text in r.stdout,
+                  f"rc={r.returncode} (want {want_rc})\n{r.stdout[-800:]}")
 else:
     print("SKIP render-07 synthetic-clip checks: ffmpeg not on PATH")
 
