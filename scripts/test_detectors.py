@@ -435,3 +435,57 @@ got = _frames(_one_tween_comp(
     "tl.to('#z-card', { x: 2200, duration: 1.0 }, 2.0);\n"))
 assert all(0 <= t <= 9.95 for t in got) and got[0] >= 3.0, f'overlapping opening/exit: frames {got}'
 print('graphics_qc self-check PASS (settle frames from the tween schedule, not a fixed 3 s grid)')
+
+# ---------------------------------------------------------------- declared exemptions: flat-type, bad-crop
+# A typed sheet with two type tiers by design, and a blurred full-frame copy of a photograph behind the
+# whole photograph, are not defects (ep-palm-sunday-1965, 12 Oct 26), and the gate could not be told so.
+# data-type-ok="reason" on the comp root exempts flat-type for that comp; data-crop-ok="reason" on an img
+# exempts bad-crop for that img. Each one used is printed with its reason. An empty reason, a second
+# undeclared img of the same file and the idle rule get nothing. Old 29dfbdca (main before this change):
+# the declared comps fail exactly like the undeclared ones.
+def _ok_comp(root_attrs, inner, dur=3, clock=''):
+    return ('<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+            f'<div id="root" data-composition-id="g-ok" {root_attrs} style="position:absolute;inset:0;background:linear-gradient(#123,#000)">\n'
+            f'{inner}'
+            '  <div id="ok-box" style="position:absolute;left:200px;top:900px;width:80px;height:80px;background:#c33"></div>\n'
+            '</div>\n<script>\nwindow.__timelines = window.__timelines || {};\n'
+            'const tl = gsap.timeline({ paused: true });\n'
+            f"tl.fromTo('#ok-box', {{ x: 0 }}, {{ x: 400, duration: {dur}, ease: 'power3.out' }}, 0);\n"
+            f"{clock}window.__timelines['g-ok'] = tl;\n</script>\n</template></body></html>\n")
+
+
+# four text nodes in two tiers (60 px and 30 px): flat-type
+SHEET = ''.join(f'  <span style="position:absolute;left:200px;top:{top}px;font-size:{px}px;color:#fff">{txt}</span>\n'
+                for top, px, txt in ((100, 60, 'State police'), (200, 60, 'Sheriffs'), (320, 30, 'City police'), (400, 30, 'Named stations')))
+# a 4:1 picture covering a 1:1 box keeps a quarter of itself: bad-crop, "loses 75%"
+photo = lambda attrs, left=0: (f'  <img {attrs} src="media/wide.svg" alt="" style="position:absolute;left:{left}px;top:0;'
+                               'width:400px;height:400px;object-fit:cover">\n')
+TYPE_WHY, CROP_WHY = 'typed sheet, two tiers by design', 'blurred backdrop behind the whole photograph'
+OK_CASES = {  # comp: (source, host s, new output must hold, must not hold, why)
+    'g-t1': (_ok_comp(f'data-type-ok="{TYPE_WHY}"', SHEET), 3, f'exempt [flat-type] g-t1: only 2 type tier(s) across 4 text elements — mg-quickref Type tiers — declared: {TYPE_WHY}', 'ERROR', 'a reasoned data-type-ok on the root exempts flat-type and is printed'),
+    'g-t2': (_ok_comp('data-type-ok=""', SHEET), 3, 'ERROR [flat-type]', 'exempt', 'an empty data-type-ok exempts nothing'),
+    'g-t3': (_ok_comp('', SHEET), 3, 'ERROR [flat-type]', 'exempt', 'an undeclared flat sheet still fails'),
+    'g-c1': (_ok_comp('', photo(f'data-crop-ok="{CROP_WHY}"')), 3, f'exempt [bad-crop] g-c1: wide.svg loses 75% (source 4:1 in 1:1 box) — declared: {CROP_WHY}', 'ERROR', 'a reasoned data-crop-ok on the img exempts bad-crop and is printed'),
+    'g-c2': (_ok_comp('', photo('data-crop-ok=""')), 3, 'ERROR [bad-crop]', 'exempt', 'an empty data-crop-ok exempts nothing'),
+    'g-c3': (_ok_comp('', photo('')), 3, 'ERROR [bad-crop]', 'exempt', 'an undeclared crop still fails'),
+    'g-c4': (_ok_comp('', photo(f'data-crop-ok="{CROP_WHY}"') + photo('', 500)), 3, 'ERROR [bad-crop] wide.svg', None, 'the exemption is per img: an undeclared img of the same file still fails'),
+    'g-i1': (_ok_comp(f'data-type-ok="{TYPE_WHY}" data-idle-ok="held on purpose"', SHEET, 1, "tl.to({}, { duration: 7 }, 0);\n"), 7, 'ERROR [idle] 6.0s frozen at 1.0s', None, 'the idle rule takes no exemption'),
+}
+files = {'index.html': ''.join(CANVAS_FILES['index.html'].replace('g-cv', c).replace('data-duration="3"', f'data-duration="{dur}"')
+                               for c, (_, dur, _, _, _) in OK_CASES.items()),
+         'media/wide.svg': '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100"><rect width="400" height="100" fill="#39c"/></svg>\n'}
+files.update({f'compositions/{c}.html': src.replace('g-ok', c) for c, (src, *_) in OK_CASES.items()})
+ep = _stage_ep(files)
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True, encoding='utf-8')
+assert '[graphics_qc]' in r.stdout, r.stdout + r.stderr
+got = by_comp(r.stdout, OK_CASES)
+for c, (_, _, has, lacks, why) in OK_CASES.items():
+    assert has in got.get(c, '') and (lacks is None or lacks not in got.get(c, '')), f'{c} {why}: {r.stdout}'
+assert 'exempt [flat-type] g-i1:' in got['g-i1'], f'flat-type is exempt on g-i1 while its idle error stands: {r.stdout}'
+old_gq = old_rev('graphics_qc.mjs', '_old_gqc_29dfbdca_tmp.mjs', '29dfbdca')
+old = by_comp(subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True, encoding='utf-8').stdout, OK_CASES)
+old_gq.unlink()
+shutil.rmtree(ep, ignore_errors=True)
+assert 'ERROR [flat-type]' in old.get('g-t1', '') and 'ERROR [bad-crop]' in old.get('g-c1', ''), \
+    f'old code should fail the declared comps: {old}'
+print('graphics_qc self-check PASS (declared exemptions: data-type-ok and data-crop-ok need a reason, are printed, and reach no other rule or img)')
