@@ -41,6 +41,7 @@ At 9:00 PM the Fort Wayne Weather Bureau typed a message asking stations to hold
 5. The arc says when the tornado hit relative to 9:00 PM (a quarter of the face, ending at 12). No time is printed for the hit.
 6. Nothing in x >= 1600 and y >= 680; the strip ends at x 1576.
 7. Nothing appears before its spoken word.
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). It holds without staging: the photograph fills the frame from the first frame to the last.
 
 ## 5. Text (exact) and cues
 Text: `WEATHER BUREAU` · `9:00 PM` · `Fort Wayne, Indiana` · `it hit 10 to 15 minutes before` · the two quotes above · `Weather Bureau, Fort Wayne · 9:00 PM` · `Teletypes and operator, about 1947 · NOAA`.
