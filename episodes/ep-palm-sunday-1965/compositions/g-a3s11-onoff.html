@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3s11-onoff · A3-S11 · window 12.69 s · brief: mg_specs/briefs/g-a3s11-onoff.md
+  Claim: when the power failed, radio and television went with it in many areas. One station, not named, told the researchers
+  that all power to its studio and transmitter was out and that it broadcast only on and off, from emergency power.
+  One object, centred on x 960: the microphone at 2.6 times its file, the ON AIR lamp of g-i1s5-onair.html at 2 times over it.
+  "On" and "off" are the two lamp states (g-a1s15-offices.html): a fill and letter colour change in 0.15 s, never a scale or a glow.
+  No name, no call letters, no time, no county, no transmitter. Six changes after "on": on, off, on, off, on, off; it ends off.
+  Cues are comp-local seconds (audio/a3-s11.words.json minus 0.45).
+  Coverage (plan rule 22): not met as drawn: one 312 px object centred leaves a band on each side. The object carries a slow
+  push, 1.00 to 1.03, for the whole window.
+-->
+<template>
+<style>
+  #onoff-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  /* the faint band that carries the holds: starts off the left edge, drifts right for the whole window */
+  #onoff-sweep { position:absolute; left:-560px; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
+  /* the object: microphone and lamp. The slow push turns about a point low on the stand, so the label's gap below stays */
+  #onoff-obj { position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:960px 600px; }
+  #onoff-svg { position:absolute; left:0; top:0; }
+  /* ---- the ON AIR lamp of g-i1s5-onair.html at 2 times: x 830 to 1090, y 70 to 142 ---- */
+  #onoff-lamp { position:absolute; left:830px; top:70px; width:260px; height:72px; }
+  #onoff-lamp-fill { position:absolute; left:0; top:0; width:260px; height:72px; border-radius:12px; background:#d0121f; }
+  #onoff-lamp-svg { position:absolute; left:0; top:0; width:260px; height:72px; overflow:visible; }
+  #onoff-lamp-txt { position:absolute; left:0; top:0; width:260px; height:72px; text-align:center; font:900 36px 'Arial Black', Arial, sans-serif;
+    color:#f2f5f8; letter-spacing:2px; white-space:nowrap; line-height:72px; }
+  #onoff-lab { position:absolute; left:760px; top:786px; width:400px; text-align:center; font-size:26px; line-height:32px; font-weight:700; color:#dfe7ee; white-space:nowrap; }
+  #onoff-strip { position:absolute; left:96px; top:850px; width:1480px; height:130px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  #onoff-quote { position:absolute; left:40px; top:12px; font-family:Georgia, 'Times New Roman', serif; font-size:52px; line-height:60px; color:#2a2622; white-space:nowrap; }
+  #onoff-att { position:absolute; left:40px; top:82px; font-size:26px; line-height:26px; font-weight:700; letter-spacing:2px; color:#6b6257; white-space:nowrap; }
+  /* hidden in CSS as well as at timeline 0, so the host's very first frame is the lit microphone and its lamp */
+  #onoff-lab, #onoff-strip { opacity:0; visibility:hidden; }
+</style>
+<div id="onoff-root" data-composition-id="g-a3s11-onoff" data-width="1920" data-height="1080" data-duration="12.69">
+  <div id="onoff-sweep"></div>
+
+  <div id="onoff-obj">
+    <svg id="onoff-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <!-- media/drawings/microphone.svg at 2.6: object box x 804 to 1116, y 170 to 768; its small lamp at screen (1074.4, 222), radius 23.4 -->
+      <g transform="translate(804 170) scale(2.6)">
+        <g id="onoff-mic" fill="none" stroke="#dfe7ee" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M60 112 V182"/>
+          <rect x="30" y="0" width="60" height="112" rx="30" fill="#15202b"/>
+          <path d="M40 30 H80 M40 56 H80 M40 82 H80"/>
+          <path d="M30 182 H90 L108 230 H12 Z" fill="#15202b"/>
+          <circle id="onoff-small" cx="104" cy="20" r="9" fill="#d0121f"/>
+        </g>
+      </g>
+    </svg>
+    <div id="onoff-lamp">
+      <div id="onoff-lamp-fill"></div>
+      <svg id="onoff-lamp-svg" viewBox="0 0 130 36" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path id="onoff-lamp-line" stroke="#d0121f" d="M6 1 H124 A5 5 0 0 1 129 6 V30 A5 5 0 0 1 124 35 H6 A5 5 0 0 1 1 30 V6 A5 5 0 0 1 6 1 Z"/>
+      </svg>
+      <div id="onoff-lamp-txt">ON AIR</div>
+    </div>
+  </div>
+
+  <div id="onoff-lab">a station</div>
+
+  <!-- the study's words on the station's broadcast; the strip's attribution is the frame's source -->
+  <div id="onoff-strip">
+    <div id="onoff-quote">&ldquo;broadcasting was on an intermittent basis&rdquo;</div>
+    <div id="onoff-att">media personnel &middot; Disaster Research Center, 1966</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#onoff-", D = 12.69, LIGHT = "#dfe7ee", DARKLINE = "#55606b", RED = "#d0121f", WHITE = "#f2f5f8", PANEL = "#15202b";
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  /* the microphone's lines: Body light, or the dark stroke */
+  function lines(lit, at, dur) { tl.to(P+"mic", { attr: { stroke: lit ? LIGHT : DARKLINE }, duration: dur, ease: "none" }, at); }
+  /* one lamp change, 0.15 s: fill, letters, outline, and the microphone's own small lamp in the same tween time */
+  function lamp(on, at) {
+    tl.to(P+"lamp-fill", { autoAlpha: on ? 1 : 0, duration: 0.15, ease: "none" }, at);
+    tl.to(P+"lamp-txt", { color: on ? WHITE : DARKLINE, duration: 0.15, ease: "none" }, at);
+    tl.to(P+"lamp-line", { attr: { stroke: on ? RED : DARKLINE }, duration: 0.15, ease: "none" }, at);
+    tl.to(P+"small", { attr: { fill: on ? RED : PANEL }, duration: 0.15, ease: "none" }, at);
+  }
+  /* from "on" the lines follow the lamp each time */
+  function both(on, at) { lamp(on, at); lines(on, at, 0.15); }
+
+  /* WITH @0.00: ground, the microphone lit, ON AIR lamp on, small lamp red */
+  s0(P+"lab", { autoAlpha: 0, y: 12 });
+  s0(P+"strip", { autoAlpha: 0, y: 60 });
+  s0(P+"lamp-fill", { autoAlpha: 1 });
+  tl.to(P+"sweep", { x: 2860, duration: D / 2, ease: "none", repeat: 1 }, 0);
+  tl.to(P+"obj", { scale: 1.03, duration: D, ease: "none" }, 0);          /* the slow push that carries the holds */
+
+  /* WENT @0.61: the lamp goes off; the small lamp goes Panel dark with it */
+  lamp(false, 0.61);
+  /* STATION @4.09: the label comes in */
+  tl.to(P+"lab", { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 4.09);
+  /* RESEARCHERS @4.87: the quote strip rises */
+  tl.to(P+"strip", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.87);
+  /* OUT @7.89: the microphone's lines fall to the dark stroke: the whole object is dark */
+  lines(false, 7.89, 0.4);
+  /* ON @9.23, OFF @10.15, EMERGENCY @10.63, then 11.03, 11.43, 11.83: on, off, on, off, on, off. It stays off to the end. */
+  both(true, 9.23);
+  both(false, 10.15);
+  both(true, 10.63);
+  both(false, 11.03);
+  both(true, 11.43);
+  both(false, 11.83);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-a3s11-onoff"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
