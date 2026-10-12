@@ -58,7 +58,15 @@ function settleFrames(tweens, windowEnd) {
     { t: pre, why: exits.length ? `pre-exit: last settled moment before the exit tween at ${exitStart.toFixed(2)}s` : `pre-exit: no exit tween, last settled moment of the ${windowEnd.toFixed(2)}s window` },
   ];
 }
-const add = (comp, kind, msg) => defects.push({ comp, kind, msg, hard: HARD.has(kind) });
+/* Declared exemptions: the only kinds that take one and the attribute that carries its reason (mg-quickref "Gate-readable authoring"). */
+const EXEMPT = { 'flat-type': 'data-type-ok', 'bad-crop': 'data-crop-ok' };
+const exempt = [];
+const reason = (kind, raw) => (EXEMPT[kind] ? raw || '' : '').trim();
+const add = (comp, kind, msg, raw) => {
+  const ok = reason(kind, raw);
+  if (ok) exempt.push({ comp, kind, msg, ok });
+  else defects.push({ comp, kind, msg, hard: HARD.has(kind) });
+};
 
 /* ---------- in-page probe: runs inside the composition ---------- */
 const PROBE = `(() => {
@@ -67,6 +75,7 @@ const PROBE = `(() => {
   const tl = window.__timelines[key];
   if (!tl) return { error: 'no timeline registered' };
   R.id = key;
+  R.typeOk = document.querySelector('body [data-composition-id]')?.getAttribute('${EXEMPT['flat-type']}');
   R.duration = tl.duration();
   // a canvas redrawn from the timeline onUpdate moves every frame though no DOM tween does:
   // one continuous kinetic span (MG eval 3, 26 Sep 26; rule in stage_comp.mjs)
@@ -134,7 +143,8 @@ const MEASURE = `((t) => {
         if (fit === 'cover' && r.width > 200) {
           const sa = el.naturalWidth / el.naturalHeight, ba = r.width / r.height;
           const keep = sa > ba ? ba / sa : sa / ba;   // fraction of source retained
-          if (1 - keep > CROPFAIL) out.crops.push({ src: src.split('/').pop(), srcAspect: +sa.toFixed(2), boxAspect: +ba.toFixed(2), lost: +((1-keep)*100).toFixed(0) });
+          if (1 - keep > CROPFAIL) out.crops.push({ src: src.split('/').pop(), srcAspect: +sa.toFixed(2), boxAspect: +ba.toFixed(2), lost: +((1-keep)*100).toFixed(0),
+                                                    ok: el.getAttribute('${EXEMPT['bad-crop']}') });
         }
       }
     }
@@ -288,12 +298,13 @@ for (const f of files) {
     elemSamples.push(m.elements || 0); gradAny = gradAny || !!m.gradient;
     for (const o of m.texts) { const k = o.a + '|' + o.b; if (!seenOverlap.has(k)) { seenOverlap.add(k); add(name, 'text-collision', `"${o.a}" ⨯ "${o.b}" (${o.overlapPct}% at ${t.toFixed(1)}s)`); } }
     for (const o of m.oob) { const k = o.text; if (!seenOob.has(k)) { seenOob.add(k); add(name, 'out-of-frame', `"${o.text}" at x${o.x} y${o.y} → ${o.right}×${o.bottom} (${t.toFixed(1)}s)`); } }
-    for (const c of m.crops) { if (!seenCrop.has(c.src)) { seenCrop.add(c.src); add(name, 'bad-crop', `${c.src} loses ${c.lost}% (source ${c.srcAspect}:1 in ${c.boxAspect}:1 box)`); } }
+    /* keyed by source AND reason: an undeclared img of the same file still fails beside a declared one */
+    for (const c of m.crops) { const k = c.src + '|' + reason('bad-crop', c.ok); if (!seenCrop.has(k)) { seenCrop.add(k); add(name, 'bad-crop', `${c.src} loses ${c.lost}% (source ${c.srcAspect}:1 in ${c.boxAspect}:1 box)`, c.ok); } }
     for (const e of m.empty) { if (!seenEmpty.has(e)) { seenEmpty.add(e); add(name, 'empty-container', `${e} visible but empty (first at ${t.toFixed(1)}s)`); } }
     for (const b of m.broken) { if (!seenBroken.has(b)) { seenBroken.add(b); add(name, 'broken-image', `${b} failed to load (naturalWidth 0) — staged-path 404, not a crop/empty defect (${t.toFixed(1)}s)`); } }
   }
   if (tierMax < 3 && maxTextNodes >= 4)
-    add(name, 'flat-type', `only ${tierMax} type tier(s) across ${maxTextNodes} text elements — mg-quickref Type tiers`);
+    add(name, 'flat-type', `only ${tierMax} type tier(s) across ${maxTextNodes} text elements — mg-quickref Type tiers`, probe.typeOk);
   if (maxCoverage >= 0.9 && probe.duration > 20 && !probe.tweens.some(t => t.dur >= 8))
     add(name, 'no-continuous-motion', `full-frame ${probe.duration.toFixed(0)}s graphic (${(maxCoverage*100).toFixed(0)}% opaque), longest tween ${Math.max(...probe.tweens.map(t=>t.dur)).toFixed(1)}s; see references/mg-quickref.md "Motion and exits". Either animate something continuously or let a moving photo carry it (ep2 panels cover ~43%).`);
   const avgElems = elemSamples.length ? elemSamples.reduce((a,b)=>a+b,0)/elemSamples.length : 0;
@@ -327,6 +338,9 @@ for (const [c, list] of Object.entries(byComp)) {
   for (const d of list.filter(d => d.hard)) console.log(`    ERROR [${d.kind}] ${d.msg}`);
   for (const d of list.filter(d => !d.hard)) console.log(`    warn  [${d.kind}] ${d.msg}`);
 }
-if (!hard.length) { console.log(`\n[graphics_qc] PASS — ${files.length} compositions, 0 errors, ${soft.length} warnings`); process.exit(0); }
-console.log(`\n[graphics_qc] FAIL — ${hard.length} errors, ${soft.length} warnings across ${files.length} compositions`);
+if (exempt.length) console.log('  declared exemptions:');
+for (const d of exempt) console.log(`    exempt [${d.kind}] ${d.comp}: ${d.msg} — declared: ${d.ok}`);
+const exemptCount = exempt.length ? `, ${exempt.length} exempt` : '';   // nothing declared: the summary reads as it always did
+if (!hard.length) { console.log(`\n[graphics_qc] PASS — ${files.length} compositions, 0 errors, ${soft.length} warnings${exemptCount}`); process.exit(0); }
+console.log(`\n[graphics_qc] FAIL — ${hard.length} errors, ${soft.length} warnings across ${files.length} compositions${exemptCount}`);
 process.exit(1);

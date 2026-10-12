@@ -84,8 +84,8 @@ surface). Beige cite card above is the only exception, for quoted sources over d
 'Arial Black' must always carry `font-weight:900` in comps (CSS rule and SVG text alike): without it the render host substitutes a thin face (ep-nepal 29 Sep 26: every weightless headline rendered light).
 
 ## Type tiers (px)
-Three tiers minimum in every designed card (unchanged gate rule: `graphics_qc` flags flat-type
-below 3 tiers with 4+ text nodes).
+Three tiers minimum in every designed card (the gate rule and its declared exemption:
+`references/mg-quickref.md` "Gate-readable authoring").
 
 Per-role spec (verbatim, moved from `references/mg-quickref.md` — the one home now):
 Eyebrow Arial 700 22 #93a3b2 tracking 6 · headline Arial Black 52 #f2f5f8 · serif sub Georgia
