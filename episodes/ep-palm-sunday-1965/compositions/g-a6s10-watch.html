@@ -89,11 +89,13 @@ window.__timelines = window.__timelines || {};
   /* 1 · TV, @0.77: the lamp turns Popfig red: on the air */
   tl.to($("lamp"), { fill: "#d0121f", duration: 0.2, ease: "power2.out" }, 0.77);
 
-  /* 2 · explaining @2.39: source A; the microphone goes to its briefed size at x 500 to 692 (done @2.89) */
+  /* 2 · explaining @2.39: source A (nothing at this cue needs the microphone's place, so it stays centred) */
   tl.to($("srca"), { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.39);
-  tl.to(mic, { scale: 1, x: 0, y: 0, duration: 0.5, ease: "power2.inOut", force3D: false }, 2.39);
 
-  rise("s1", 3.97);                                         /* 3 · forecast @3.97: strip 1 rises */
+  /* 3 · forecast @3.97: strip 1 rises; on its cue the microphone goes to its briefed size at x 500 to 692 (done @4.47),
+     out from under the strip, which is drawn over it */
+  tl.to(mic, { scale: 1, x: 0, y: 0, duration: 0.5, ease: "power3.out", force3D: false }, 3.97);
+  rise("s1", 3.97);
   rise("s2", 4.79);                                         /* 4 · warning. @4.79: strip 2 rises */
 
   /* 5 · Weather @6.65: source A gives way to source B, out then in (the two share one place) */
