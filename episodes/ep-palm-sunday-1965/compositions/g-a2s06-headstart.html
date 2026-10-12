@@ -18,6 +18,9 @@
   .hds-sweep { position:absolute; left:0; top:0; width:520px; height:1080px; background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
   .hds-h { opacity:0; visibility:hidden; }
 
+  /* ---- stage: a card and its source line, full frame, moved and scaled as one while the layout builds up (acts-plan rule 22) ---- */
+  .hds-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
   /* ---- card: glass, clock, eyebrow slot, time, place (screen px; the wrapper is full frame and slides as one) ---- */
   .hds-col { position:absolute; left:0; top:0; width:1920px; height:1080px; }
   .hds-card { position:absolute; top:150px; width:700px; height:280px; box-sizing:border-box; background:rgba(10,16,24,0.55);
@@ -42,6 +45,7 @@
   <div class="hds-sweep" id="hds-sweep"></div>
 
   <!-- left column: the Weather Service's account -->
+  <div class="hds-stage" id="hds-l-stage">
   <div class="hds-col hds-h" id="hds-l-col">
     <div class="hds-card" style="left:96px"></div>
     <svg class="hds-svg" viewBox="0 0 1920 1080">
