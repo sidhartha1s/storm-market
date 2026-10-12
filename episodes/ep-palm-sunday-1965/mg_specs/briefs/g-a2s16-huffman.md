@@ -60,7 +60,7 @@ Cue words and times are from `audio/a2-s16.words.json` as it stood on 12 Oct 26 
 | 2 | A2-S16 | 6 | Paul | 2.70 | 2.70 | name card slides in from the left (0.6 s, power3.out), name then sub (0.15 s apart) |
 | 3 | A2-S16 | 9 | sifting | 4.12 | 4.12 | source line fades in (0.3 s) |
 | 4 | A2-S16 | 15 | editor | 5.70 | 5.70 | Elkhart County's outline turns Headline white (0.4 s) |
-| 5 | A2-S16 | 22 | Before | 8.24 | 8.24 | label `Elkhart` fades (0.2 s, starting 0.2 s earlier); push NORTH to ELKHART (0.9 s); label back at its new place at 9.20 |
+| 5 | A2-S16 | 22 | Before | 8.24 | 8.24 | label `Elkhart` fades (0.2 s, starting 0.2 s earlier); push NORTH to ELKHART (0.9 s, ends 9.14); label back at its new place at 9.20 |
 | 6 | A2-S16 | 26 | South | 9.42 | 9.42 | South Bend dot and label fade in (0.3 s) |
 | 7 | A2-S16 | 30 | told | 10.62 | 10.62 | dotted link draws from South Bend to Elkhart (0.5 s) |
 | 8 | A2-S16 | 38 | Napanee, | 12.90 | 12.90 | Nappanee dot and label (0.3 s); the tornado mark fades in northwest of it 0.15 s later |
