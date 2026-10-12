@@ -64,7 +64,7 @@ t from comp start = the segment's wav start inside the composition (timeline-map
 | 6 | A6-S5 | 23 | weather | 7.12 | 6.80 | the teletype lights (lines Headline white, paper Amber 2) |
 | 7 | A6-S6 | 0 | For | 0.00 | 8.68 | desks A and B, their wires and labels fade out (0.4 s); the teletype returns to rest |
 | 8 | A6-S6 | 3 | telephones, | 0.84 | 9.10 | the dotted telephone links step to Label grey and back to `#55606b` once (0.2 s each way) |
-| 9 | A6-S6 | 8 | backup | 2.64 | 10.90 | the paper strip rises (`y:60` to 0 with the fade, 0.4 s); the p. 29 source line leaves |
+| 9 | A6-S6 | 8 | backup | 2.64 | 10.90 | the paper strip rises (`y:60` to 0 with the fade, 0.4 s); the p. 29 source line has gone out in the 0.15 s before this cue (from 10.75), so there is one source on every frame |
 | 10 | A6-S6 | 11 | Weather | 3.84 | 12.10 | the second office draws on with its label (0.4 s); radio arc 1 draws to it (0.6 s) |
 | 11 | A6-S6 | 17 | civil | 5.92 | 14.18 | radio arc 2 draws over the list to the chain's desk (0.7 s); the desk's label fades in |
 | 12 | end | | | | 16.94 | comp ends on the hold |
