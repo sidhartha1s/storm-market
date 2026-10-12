@@ -245,13 +245,11 @@ window.__timelines = window.__timelines || {};
   drawing("db", 0.18, 0.5);
 
   /* 2 · wire @0.86: wire A draws from the teletype to desk A (0.5 s); the source line fades in */
-  tl.set($("wa"), { autoAlpha: 1 }, 0.86);
-  line($("wa"), 0.86, 0.5);
+  tl.set($("wa"), { autoAlpha: 1 }, 0.86); line($("wa"), 0.86, 0.5);
   fadeIn($("src"), 0.86);
 
   /* 3 · two @1.96: wire B draws to desk B (0.5 s) */
-  tl.set($("wb"), { autoAlpha: 1 }, 1.96);
-  line($("wb"), 1.96, 0.5);
+  tl.set($("wb"), { autoAlpha: 1 }, 1.96); line($("wb"), 1.96, 0.5);
 
   /* 4 · fire @3.66: desk A lights and its label fades in. 5 · police @4.98: desk B the same */
   tl.to(da, { stroke: WHITE, duration: 0.3, ease: "power2.out" }, 3.66);

@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3s13-battery · A3-S13, A3-S14 · window 21.23 s · brief: mg_specs/briefs/g-a3s13-battery.md
+  Claim: when the power failed, the television and the plug-in radio in a house went dark with the lights; only a family with a
+  battery radio could still get a later warning. One woman in Fort Wayne remembers that order: the television signal was lost
+  first, then the power went out.
+  Two rooms, never on screen together. Room 1 (0.00 to 9.24) is the room of compositions/g-i1s1-house.html in the evening; the
+  radio's dial is the one amber thing and it never goes out. Room 2 (9.24 to the end) is the same drawing mirrored about x 828
+  with no side table and no radio; its screen block and the cut are compositions/g-a2s11-backup.html's view 3.
+  Evening is a scrim over the wall and the floor band, under the furniture: 0.62, and 0.86 with the lights out.
+  NO SHOW on the screen: the Programme state is the plain frame. No person; both armchairs are empty. No number of days.
+  Cues are comp-local seconds (audio/a3-s13.words.json minus 0.22, audio/a3-s14.words.json plus 8.98).
+-->
+<template>
+<style>
+  #batt-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee; background:#f4f0e6; }
+  .batt-room { position:absolute; left:0; top:0; width:1920px; height:1080px; background:#f4f0e6; }
+  /* the camera: each room layer pushes about its own point; the floor line's right end stays at x 1581.6 in both */
+  #batt-r1 { transform-origin:1380px 646px; }
+  #batt-r2 { transform-origin:1200px 610px; }
+  .batt-floor { position:absolute; left:0; top:820px; width:1920px; height:260px; background:#e8dec8; }
+  .batt-scrim { position:absolute; inset:0; background:#15202b; opacity:0.62; }
+  .batt-svg { position:absolute; left:0; top:0; }
+  /* the screen area of the mirrored set: x 578 to 866, y 490 to 730, radius 36 (g-a2s11-backup.html's screen block) */
+  #batt-screen { position:absolute; left:578px; top:490px; width:288px; height:240px; border-radius:36px; overflow:hidden; }
+  #batt-prog { position:absolute; inset:0; background:linear-gradient(rgba(232,197,106,.22), rgba(232,197,106,.22)), #15202b; }
+  .batt-bar { position:absolute; left:0; width:100%; height:26px; background:linear-gradient(rgba(242,245,248,0), rgba(242,245,248,.10), rgba(242,245,248,0)); }
+  #batt-flash { position:absolute; inset:0; background:#f2f5f8; }
+  /* name card: the glass plate and type of g-i1s2-station.html */
+  #batt-card { position:absolute; left:96px; top:96px; width:760px; height:170px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #batt-name { position:absolute; left:42px; top:22px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:64px;
+    color:#f2f5f8; white-space:nowrap; }
+  #batt-sub { position:absolute; left:44px; top:102px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:30px; line-height:38px;
+    color:#e8c56a; white-space:nowrap; }
+  .batt-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em;
+    white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  /* hidden in CSS as well as at timeline 0, so the host's very first frame is room 1 in the evening and nothing else */
+  #batt-r2, #batt-flash, #batt-card, #batt-name, #batt-sub, #batt-src1, #batt-src2 { opacity:0; visibility:hidden; }
+</style>
+<div id="batt-root" data-composition-id="g-a3s13-battery" data-width="1920" data-height="1080" data-duration="21.23">
+
+  <!-- ROOM 1 · the intro's room, evening: window dark, screen idle, the radio's dial amber -->
+  <div class="batt-room" id="batt-r1">
+    <div class="batt-floor"></div>
+    <div class="batt-scrim" id="batt-scrim1"></div>
+    <svg class="batt-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <line x1="96" y1="820" x2="1560" y2="820" stroke="#15202b" stroke-width="4" stroke-linecap="round"/>
+      <!-- the three things that fall back when the room dims round the radio -->
+      <g id="batt-dim">
+        <!-- window seen from inside: night outside -->
+        <g fill="none" stroke="#15202b" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="180" y="220" width="340" height="380" fill="#15202b"/>
+          <path d="M350 220 V600 M180 410 H520"/>
+        </g>
+        <!-- armchair, always empty -->
+        <g transform="translate(420 600) scale(1.1)">
+          <g fill="#15202b" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 160 V200 M176 160 V200" fill="none" stroke="#15202b"/>
+            <rect x="30" y="0" width="140" height="130" rx="16"/>
+            <rect x="30" y="110" width="140" height="40"/>
+            <rect x="0" y="80" width="34" height="80"/>
+            <rect x="166" y="80" width="34" height="80"/>
+          </g>
+        </g>
+        <!-- television (media/drawings/television.svg at 1.5): box x 760 to 1210, y 460 to 820; screen Idle in every frame -->
+        <g transform="translate(760 460) scale(1.5)">
+          <g id="batt-tv1" fill="none" stroke="#93a3b2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M40 200 L28 240 M260 200 L272 240" stroke="#15202b" stroke-width="3"/>
+            <rect x="0" y="0" width="300" height="200" rx="6" fill="#15202b" stroke="#15202b" stroke-width="3"/>
+            <rect x="20" y="20" width="192" height="160" rx="24" fill="#15202b"/>
+            <path id="batt-arc1" d="M40 78 A46 46 0 0 1 78 40" stroke="#93a3b2" stroke-width="1.4"/>
+            <circle cx="256" cy="62" r="14"/>
+            <circle cx="256" cy="112" r="14"/>
+            <path d="M236 146 H276 M236 156 H276 M236 166 H276 M236 176 H276"/>
+          </g>
+        </g>
+      </g>
+      <!-- side table: top surface at y 700 so the radio stands on it -->
+      <g fill="#15202b" stroke="#15202b" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="1272" y="710" width="10" height="110"/>
+        <rect x="1478" y="710" width="10" height="110"/>
+        <rect x="1260" y="700" width="240" height="10"/>
+      </g>
+      <!-- table radio: box x 1290 to 1470, y 592 to 700. Dial centre (1424.4, 646), radius 26.4: Amber 2 from the first frame.
+           No battery, cord, plug or brand; the pointer is Panel dark so it reads on the lit dial -->
+      <g transform="translate(1290 592) scale(1.2)">
+        <g id="batt-radio" fill="none" stroke="#93a3b2" stroke-width="3.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="0" y="0" width="150" height="90" rx="8" fill="#15202b" stroke="#15202b" stroke-width="3.7"/>
+          <path d="M20 20 V70 M32 20 V70 M44 20 V70 M56 20 V70 M68 20 V70"/>
+          <circle id="batt-dial" cx="112" cy="45" r="22" fill="#e8c56a" fill-opacity="0.55"/>
+          <path id="batt-ptr" d="M112 45 L124 31" stroke="#15202b"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <!-- ROOM 2 · another family's room: the same drawing mirrored about x 828, no side table, no radio -->
+  <div class="batt-room" id="batt-r2">
+    <div class="batt-floor"></div>
+    <div class="batt-scrim" id="batt-scrim2"></div>
+    <svg class="batt-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <line x1="96" y1="820" x2="1560" y2="820" stroke="#15202b" stroke-width="4" stroke-linecap="round"/>
+      <g transform="translate(1656 0) scale(-1 1)">
+        <!-- window: x 1136 to 1476 on screen; the room's light in its panes until the power goes -->
+        <g fill="none" stroke="#15202b" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect id="batt-win2" x="180" y="220" width="340" height="380" fill="#e8c56a" fill-opacity="0.3"/>
+          <path d="M350 220 V600 M180 410 H520"/>
+        </g>
+        <!-- armchair: x 1016 to 1236 on screen, empty -->
+        <g transform="translate(420 600) scale(1.1)">
+          <g fill="#15202b" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 160 V200 M176 160 V200" fill="none" stroke="#15202b"/>
+            <rect x="30" y="0" width="140" height="130" rx="16"/>
+            <rect x="30" y="110" width="140" height="40"/>
+            <rect x="0" y="80" width="34" height="80"/>
+            <rect x="166" y="80" width="34" height="80"/>
+          </g>
+        </g>
+        <!-- television: box x 446 to 896 on screen; screen x 578 to 866, y 490 to 730 -->
+        <g transform="translate(760 460) scale(1.5)">
+          <g id="batt-tv2" fill="none" stroke="#93a3b2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M40 200 L28 240 M260 200 L272 240" stroke="#15202b" stroke-width="3"/>
+            <rect x="0" y="0" width="300" height="200" rx="6" fill="#15202b" stroke="#15202b" stroke-width="3"/>
+            <rect x="20" y="20" width="192" height="160" rx="24" fill="#15202b"/>
+            <path d="M40 78 A46 46 0 0 1 78 40" stroke="#93a3b2" stroke-width="1.4"/>
+            <circle cx="256" cy="62" r="14"/>
+            <circle cx="256" cy="112" r="14"/>
+            <path d="M236 146 H276 M236 156 H276 M236 166 H276 M236 176 H276"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+    <!-- the screen. Programme: fill, four bars 80 px apart moving down 80 px in 2.667 s, three passes. Idle is the drawing's own dark screen. -->
+    <div id="batt-screen">
+      <div id="batt-prog">
+        <div class="batt-bar" style="top:-61px"></div>
+        <div class="batt-bar" style="top:19px"></div>
+        <div class="batt-bar" style="top:99px"></div>
+        <div class="batt-bar" style="top:179px"></div>
+      </div>
+      <div id="batt-flash"></div>
+    </div>
+  </div>
+
+  <!-- fixed HUD: the name card and each room's source line do not ride the camera -->
+  <div id="batt-card">
+    <div id="batt-name">Kathy Selzer Miller</div>
+    <div id="batt-sub">Fort Wayne</div>
+  </div>
+  <div class="batt-src" id="batt-src1">Disaster Research Center, 1966, p. 25</div>
+  <div class="batt-src" id="batt-src2">a recollection published by the National Weather Service</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#batt-", D = 21.23, CUT = 9.24, LIGHT = "#dfe7ee", DARKLINE = "#55606b", PANEL = "#15202b";
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function stroke(sel, hex, at, dur) { tl.to(sel, { attr: { stroke: hex }, duration: dur, ease: "power2.out" }, at); }
+  function show(sel, at) { tl.to(sel, { autoAlpha: 1, duration: 0.3, ease: "power3.out" }, at); }
+
+  /* IN @0.00: room 1 in the evening, window dark, screen idle, dial amber; the push starts */
+  s0([P+"r2", P+"flash", P+"name", P+"sub", P+"src1", P+"src2"], { autoAlpha: 0 });
+  s0(P+"card", { autoAlpha: 0, x: -860 });
+  s0(P+"ptr", { rotation: 0, svgOrigin: "112 45" });
+  s0(".batt-bar", { y: 0 });
+  tl.to(P+"r1", { scale: 1.12, duration: CUT, ease: "none" }, 0);
+
+  /* ---- ROOM 1 ---- SETS @1.02: the television's inner lines rise to Body light; the source line fades in */
+  stroke(P+"tv1", LIGHT, 1.02, 0.2);
+  show(P+"src1", 1.02);
+  /* DARK @1.42: the set's inner lines and its reflection arc fall to the dark stroke */
+  stroke([P+"tv1", P+"arc1"], DARKLINE, 1.42, 0.3);
+  /* LIGHTS @2.14: lights out. The dial does not change */
+  tl.to(P+"scrim1", { opacity: 0.86, duration: 0.25, ease: "power2.out" }, 2.14);
+  /* UNLESS @3.24: the radio's lines rise to Body light */
+  stroke(P+"radio", LIGHT, 3.24, 0.3);
+  /* BATTERY @4.48: the dial goes to full Amber 2 and stays */
+  tl.to(P+"dial", { attr: { "fill-opacity": 1 }, duration: 0.2, ease: "power2.out" }, 4.48);
+  /* RADIO @5.64: the pointer turns 40 degrees clockwise and 20 back: someone is tuning it */
+  tl.to(P+"ptr", { rotation: 40, duration: 0.35, ease: "power2.inOut" }, 5.64);
+  tl.to(P+"ptr", { rotation: 20, duration: 0.25, ease: "power2.inOut" }, 5.99);
+  /* COULDN'T @6.72: the window, armchair and television fall back; the radio and its table do not */
+  tl.to(P+"dim", { opacity: 0.5, duration: 0.4, ease: "power2.out" }, 6.72);
+
+  /* ---- ROOM 2 ---- IN @9.24: hard cut. Evening again, window lit, screen on Programme; room 1 and its source line are gone */
+  tl.set([P+"r1", P+"src1"], { autoAlpha: 0 }, CUT);
+  tl.set(P+"r2", { autoAlpha: 1 }, CUT);
+  tl.to(P+"r2", { scale: 1.06, duration: D - CUT, ease: "none" }, CUT);
+  tl.to(".batt-bar", { y: 80, duration: 2.667, ease: "none", repeat: 2 }, CUT);
+  /* KATHY @10.54: the name card slides in from the left; the name, then the line under it */
+  tl.to(P+"card", { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 10.54);
+  show(P+"name", 10.79);
+  show(P+"sub", 10.94);
+  /* REMEMBERS @11.32: the second source line */
+  show(P+"src2", 11.32);
+  /* WATCHING @11.74: the set's inner lines rise to Body light */
+  stroke(P+"tv2", LIGHT, 11.74, 0.3);
+  /* LOST @15.80: the screen cuts Programme to Idle: one hard cut, one 0.1 s flash at 30 % */
+  tl.set(P+"prog", { autoAlpha: 0 }, 15.80);
+  tl.set(P+"flash", { autoAlpha: 0.3 }, 15.80);
+  tl.set(P+"flash", { autoAlpha: 0 }, 15.90);
+  /* OUT @17.64: only then the window goes dark and the lights with it */
+  tl.to(P+"win2", { attr: { fill: PANEL, "fill-opacity": 1 }, duration: 0.2, ease: "power2.out" }, 17.64);
+  tl.to(P+"scrim2", { opacity: 0.86, duration: 0.2, ease: "power2.out" }, 17.64);
+  /* THREE @19.48: no new element; the dark room and the name card hold on the push */
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-a3s13-battery"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

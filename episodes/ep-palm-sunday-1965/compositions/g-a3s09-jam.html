@@ -154,7 +154,8 @@ window.__timelines = window.__timelines || {};
   const STAGE_DX = 344;
 
   /* PEOPLE @0.00: ground, the five houses with lit windows */
-  s0([tels, lines, dots, desks, P+"mark", P+"labm", P+"labd1", P+"labd2", P+"oline", P+"odot", P+"leg", P+"src"], { autoAlpha: 0 });
+  s0(tels.concat(lines, dots, desks), { autoAlpha: 0 });
+  s0([P+"mark", P+"labm", P+"labd1", P+"labd2", P+"oline", P+"odot", P+"leg", P+"src"], { autoAlpha: 0 });
   s0(P+"stage", { x: STAGE_DX });
   tl.to(P+"sweep", { x: 2860, duration: D / 2, ease: "none", repeat: 1 }, 0);
 
