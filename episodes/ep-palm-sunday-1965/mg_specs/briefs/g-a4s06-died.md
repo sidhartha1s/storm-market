@@ -51,7 +51,7 @@ Line pitch is 75 px, so the typed line is large enough to read without a quote s
 8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
-Text: `County B` · ` · where the tornado was` · `civil defense` · `city police` · `the radio station` · `a family` · `about` · `7:30 PM` (first frame only) · `Disaster Research Center, 1966, p. 22`. Page words are the image.
+Text: `County B` · `civil defense` · `city police` · `the radio station` · `a family` · `about` · `7:30 PM` (first frame only) · `Disaster Research Center, 1966, p. 22`. Page words are the image.
 Cue words and times are from `audio/a4-s6.words.json` (9 words), read on 12 Oct 26. t from comp start = the segment's "wav start inside the composition" in `mg_specs/timeline-map.md` table 5 (A4-S6 -0.27) plus the word's time; the first word uses the table's "first sound" (0.00). Retime from the word, never from the seconds.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
