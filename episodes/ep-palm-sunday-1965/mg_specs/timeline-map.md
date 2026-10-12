@@ -122,7 +122,7 @@ Track 1, muted, class `filmwin`: left 480, top 150, 960 x 720 (the 4:3 window of
 | bo-a1 | 289.16 | 0.70 | 289.86 |
 | bo-a2 | 479.97 | 0.70 | 480.67 |
 | bo-cta-in (the ad's dip in) | 635.44 | 1.00 | 636.44 |
-| bo-cta-out (the ad's dip out) | 660.85 | 1.00 | 661.85 |
+| bo-cta-out (the ad's dip out) | 660.86 | 0.99 | 661.85 |
 | bo-a4 | 813.81 | 0.70 | 814.51 |
 | bo-a5 | 1007.38 | 0.70 | 1008.08 |
 | bo-a6 | 1125.22 | 0.70 | 1125.92 |
