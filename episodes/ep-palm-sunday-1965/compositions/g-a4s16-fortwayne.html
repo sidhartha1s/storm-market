@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a4s16-fortwayne (A4-S16): South Bend's dot goes dim and a dot to the east lights, with a teletype under it and paper
+     coming out; then, off the map, a tornado mark runs past a town with no name and a paper card from that teletype lands
+     behind it. Brief: mg_specs/briefs/g-a4s16-fortwayne.md; map facts: media/maps/README.md.
+     Map family: copies the base g-a2s14-six (BM-1 inlined in the NORTH box, the viewBox is the camera; no camera move here).
+     Map: media/maps/indiana-counties.svg (BM-1), ids prefixed ftw-.
+       NORTH  viewBox 296 166 360 150 in the box 716, 62, 1080 x 450: 3 px per unit, screen x = 3u - 172, y = 3u - 436
+     Every screen number below is that formula on media/data/points.csv and the county path's own box:
+       South Bend (462.2, 188.5) screen (1214.6, 129.5); Fort Wayne (605.1, 297.0) screen (1643.3, 455.0);
+       Allen County x 1569.2 to 1773.2, y 354.5 to 550.7 (cut by the box's bottom edge, y 512).
+     The lower band (y 620 to 912) is schematic and not part of the map: a line, a circle, a mark that moves left to right.
+       The mark's point runs x 200 to 1150 from 7.07 to 8.60: it crosses the town (x 700) at 7.88 and is at x 970 at 8.31,
+       when the card leaves the teletype; the card lands at 8.81.
+     Coverage (plan rule 22): the map, its two towns, the link, the teletype and its paper sit 296 px to the left (the map's box
+     centred in the frame, x 420 to 1500) until the lower band's cue, then move to their briefed places in 0.5 s. They are one
+     group, ftw-stage, so every position inside it is the brief's.
+     MAP BLOCK: BM-1's groups map-neighbours, map-counties and map-state, every path element that crosses the NORTH camera
+     copied whole and unchanged from the file by one mechanical copy that added the id prefix and nothing else.
+     Drawings inline from media/drawings: teletype (scale 1), tornado-mark (scale 1). Nothing in this comp is red.
+     Cues are comp-local seconds from the brief's table (audio/a4-s16.words.json minus 0.21). -->
+<template>
+<style>
+  #ftw-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .ftw-h { opacity:0; visibility:hidden; }
+
+  /* ---- the map and everything joined to it: one group, so it can wait centred and move as one ---- */
+  .ftw-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ftw-map { position:absolute; left:716px; top:62px; width:1080px; height:450px; overflow:hidden; }
+  .ftw-over { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ftw-top { position:absolute; width:0; height:0; display:flex; align-items:flex-start; justify-content:center; }
+  .ftw-sb { position:absolute; left:1232px; top:118px; font:700 22px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .ftw-fw { flex:none; font:700 22px Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .ftw-office { position:absolute; left:1375px; top:752px; width:190px; text-align:center; font:700 22px Arial, sans-serif; color:#93a3b2; line-height:28px; white-space:nowrap; }
+
+  /* ---- the lower band: schematic, not to scale ---- */
+  .ftw-note { flex:none; font:700 22px Arial, sans-serif; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .ftw-warn { position:absolute; left:816px; top:688px; font:700 22px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .ftw-mark { position:absolute; left:164px; top:774px; width:72px; height:92px; overflow:visible; }   /* object box 60 x 80, its lowest point at (200, 860) */
+  .ftw-card { position:absolute; left:600px; top:640px; width:200px; height:120px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .ftw-bar { position:absolute; left:24px; height:12px; background:#6b6257; }
+</style>
+<div id="ftw-root" data-composition-id="g-a4s16-fortwayne" data-duration="10.31" data-width="1920" data-height="1080">
+
+  <div class="ftw-stage" id="ftw-stage">
+    <!-- ================= map block: BM-1 inlined, ids prefixed ftw- ================= -->
+    <svg class="ftw-map" id="ftw-map" viewBox="296 166 360 150" preserveAspectRatio="xMidYMid meet" fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+      <g id="ftw-map-neighbours" stroke="#93a3b2" stroke-opacity="0.4">
+      </g>
+      <g id="ftw-map-counties" fill="#15202b" stroke="#93a3b2" stroke-width="1.5">
+      </g>
+      <g id="ftw-map-state" stroke-width="3">
+      </g>
+      <!-- town dots at the file's positions, r 2 units (6 px): South Bend Body light from the first frame, Fort Wayne Amber 2 from its cue -->
+      <g stroke="none">
+        <g id="ftw-pt-south-bend"><circle id="ftw-dsb" cx="462.2" cy="188.5" r="2" fill="#dfe7ee"/></g>
+        <g id="ftw-pt-fort-wayne" class="ftw-h"><circle cx="605.1" cy="297.0" r="2" fill="#e8c56a"/></g>
+      </g>
+    </svg>
+    <div class="ftw-sb" id="ftw-sb">South Bend</div>
+    <div class="ftw-top" style="left:1671px;top:392px"><div class="ftw-fw ftw-h" id="ftw-fw">Fort Wayne</div></div>
+
+    <!-- ---- in frame px: Fort Wayne's one ring, the link down to the teletype, the paper coming out of it, the teletype ---- -->
+    <svg class="ftw-over" viewBox="0 0 1920 1080" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <defs>
+        <clipPath id="ftw-slot"><rect x="1434" y="520" width="72" height="80"/></clipPath>
+      </defs>
+      <circle id="ftw-ring" class="ftw-h" cx="1643.3" cy="455.0" r="8" stroke="#e8c56a" stroke-width="3"/>
+      <path id="ftw-link" class="ftw-h" d="M1643.3 465 V670 H1540" stroke="#dfe7ee" stroke-width="4"/>
+      <!-- the paper strip, seen only through the slot window above the teletype: the group rises 80 px, its three bars ride on it -->
+      <g clip-path="url(#ftw-slot)">
+        <g id="ftw-paper">
+          <rect x="1434" y="520" width="72" height="80" fill="#f4f0e6"/>
+          <rect x="1444" y="524.2" width="44" height="6" fill="#6b6257"/>
+          <rect x="1444" y="544.0" width="52" height="6" fill="#6b6257"/>
+          <rect x="1444" y="578.4" width="36" height="6" fill="#6b6257"/>
+        </g>
+      </g>
+      <!-- teletype (media/drawings/teletype.svg), scale 1: box x 1400 to 1540, y 600 to 740; lines Headline white, body Panel
+           dark, paper Beige polaroid, typed bars Caption dark sub -->
+      <g id="ftw-tty" class="ftw-h" transform="translate(1400 600)" stroke="#f2f5f8" stroke-width="4">
+        <rect class="ftw-ln" x="34" y="0" width="72" height="50" fill="#f4f0e6"/>
+        <path class="ftw-ln" d="M44 14 H88 M44 26 H96 M44 38 H80" stroke="#6b6257"/>
+        <rect class="ftw-ln" x="0" y="50" width="140" height="90" fill="#15202b"/>
+        <rect class="ftw-ln" x="14" y="112" width="112" height="20"/>
+      </g>
+    </svg>
+    <div class="ftw-office ftw-h" id="ftw-office">Weather Bureau ·<br>Fort Wayne</div>
+  </div>
+
+  <!-- ================= the lower band: a town with no name, the mark that passes it, the warning that lands after ================= -->
+  <svg class="ftw-over" viewBox="0 0 1920 1080" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <line id="ftw-line" class="ftw-h" x1="96" y1="860" x2="1300" y2="860" stroke="#93a3b2" stroke-width="2"/>
+    <line id="ftw-lead" class="ftw-h" x1="700" y1="760" x2="700" y2="846" stroke="#93a3b2" stroke-width="2"/>
+    <circle id="ftw-town" class="ftw-h" cx="700" cy="860" r="12" stroke="#dfe7ee" stroke-width="4" fill="#15202b"/>
+  </svg>
+  <div class="ftw-top" style="left:700px;top:884px"><div class="ftw-note ftw-h" id="ftw-atown">a town</div></div>
+  <!-- the tornado mark (Body light, never red), scale 1 -->
+  <svg class="ftw-mark ftw-h" id="ftw-mark" viewBox="-6 -6 72 92">
+    <g fill="none" stroke="#dfe7ee" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 6 H57"/><path d="M14 26 H52"/><path d="M20 46 H42"/><path d="M27 64 L30 76"/>
+    </g>
+  </svg>
+  <!-- the message card: bars, no words. It leaves from over the paper strip at 0.36 of its size and lands above the town -->
+  <div class="ftw-card ftw-h" id="ftw-card">
+    <div class="ftw-bar" style="top:24px;width:150px"></div>
+    <div class="ftw-bar" style="top:46px;width:128px"></div>
+    <div class="ftw-bar" style="top:68px;width:142px"></div>
+    <div class="ftw-bar" style="top:90px;width:96px"></div>
+  </div>
+  <div class="ftw-warn ftw-h" id="ftw-warn">the warning</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a4s16-fortwayne", P = "ftw";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var root = $("root");
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function show(e, t, d) { tl.to(e, { autoAlpha: 1, duration: d || 0.3, ease: "power2.out" }, t); }
+
+  var lns = root.querySelectorAll(".ftw-ln");
+  for (var i = 0; i < lns.length; i++) { var len = Math.ceil(lns[i].getTotalLength()) + 1; s0(lns[i], { strokeDasharray: len, strokeDashoffset: len }); }
+  s0($("link"), { strokeDasharray: 310, strokeDashoffset: 310 });   /* the link is 308.3 px long */
+  s0($("line"), { strokeDasharray: 1205, strokeDashoffset: 1205 }); /* the schematic line is 1204 px long */
+  s0($("stage"), { x: -296 });                               /* the map's box waits centred, x 420 to 1500 (plan rule 22) */
+  s0($("paper"), { y: 80 });
+  s0($("mark"), { x: 0 });
+  s0($("card"), { x: 770, y: -140, scale: 0.36 });           /* its centre on the paper strip's, (1470, 560) */
+
+  /* 0 · "and" @0.00: ground, the map in NORTH, South Bend's dot and label in Body light */
+
+  /* 1 · "one" @0.13: South Bend's dot and label go dim */
+  tl.to($("dsb"), { fill: "#55606b", duration: 0.4, ease: "power2.out" }, 0.13);
+  tl.to($("sb"), { color: "#55606b", duration: 0.4, ease: "power2.out" }, 0.13);
+
+  /* 2 · "Fort" @1.91: Fort Wayne's dot comes on in Amber 2 with its one ring, 8 to 26 px, fading as it grows; its label */
+  show($("pt-fort-wayne"), 1.91, 0.2);
+  tl.to($("ring"), { autoAlpha: 1, duration: 0.05, ease: "none" }, 1.91);
+  tl.to($("ring"), { attr: { r: 26 }, duration: 0.45, ease: "power2.out" }, 1.91);
+  tl.to($("ring"), { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 1.96);
+  show($("fw"), 1.91);
+
+  /* 3 · "Weather" @2.37: the link draws from the dot down to the teletype; the teletype draws on, its label fades in */
+  tl.to($("link"), { autoAlpha: 1, duration: 0.05, ease: "none" }, 2.37);
+  tl.to($("link"), { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 2.37);
+  show($("tty"), 2.37, 0.2);
+  tl.to(lns, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 2.37);
+  show($("office"), 2.37);
+
+  /* 4 to 7 · "typing" @3.39: the paper comes out of the teletype's top at 31.87 px per second and stops @5.90; its bars
+         clear the slot on "warnings" @3.71, "storms" @4.33 and "gone" @5.41 */
+  tl.to($("paper"), { y: 0, duration: 2.51, ease: "none" }, 3.39);
+
+  /* 8 · "Later" @7.07: the map and its teletype move to their briefed places; the schematic line draws from the left, the
+         town and its label fade in, the tornado mark comes on at x 200 and runs to x 1150 @8.60, then drifts to x 1210 */
+  tl.to($("stage"), { x: 0, duration: 0.5, ease: "power2.inOut" }, 7.07);
+  tl.to($("line"), { autoAlpha: 1, duration: 0.05, ease: "none" }, 7.07);
+  tl.to($("line"), { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 7.07);
+  show([$("town"), $("atown")], 7.07);
+  show($("mark"), 7.07, 0.2);
+  tl.to($("mark"), { x: 950, duration: 1.53, ease: "none" }, 7.07);
+  tl.to($("mark"), { x: 1010, duration: 1.71, ease: "none" }, 8.60);
+
+  /* 9 · "some" @8.31: the message card leaves the paper strip and flies to its place above the town, lands @8.81 */
+  tl.to($("card"), { autoAlpha: 1, duration: 0.1, ease: "none" }, 8.31);
+  tl.to($("card"), { x: 0, y: 0, scale: 1, duration: 0.5, ease: "power2.inOut" }, 8.31);
+
+  /* 10 · "after." @8.77: 0.1 s later the leader and the label */
+  show([$("lead"), $("warn")], 8.87, 0.25);
+
+  tl.to({}, { duration: 0.01 }, 10.30);                     /* holds to the last frame @10.31 */
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
