@@ -102,7 +102,7 @@ window.__timelines = window.__timelines || {};
   /* ---- bands ---- */
   function lit(e, t) { tl.set(e, { visibility: "inherit" }, t); tl.to(e, { scaleX: 1, duration: 0.3, ease: "power2.out" }, t); }
   function pulse(e, t) {                                    /* wipes across the row from the left in 0.12 s, fades in 0.13 s, leaves nothing */
-    tl.set(e, { visibility: "visible", scaleX: 0, opacity: 0.25 }, t);
+    tl.set(e, { visibility: "inherit", scaleX: 0, opacity: 0.25 }, t);   /* inherit, never "visible": a forced-visible band still paints while the host is hidden */
     tl.to(e, { scaleX: 1, duration: 0.12, ease: "none" }, t);
     tl.to(e, { opacity: 0, duration: 0.13, ease: "none" }, t + 0.12);
     tl.set(e, { visibility: "hidden" }, t + 0.25);
