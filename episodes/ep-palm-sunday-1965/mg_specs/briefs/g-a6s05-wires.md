@@ -31,7 +31,7 @@ In this comp the teletype is the Weather Bureau's: its label reads `Weather Bure
 | Chain | the five stations, the chain's desk and the links of `g-a1s13-chain.md` section 3, all at rest (lines `#55606b`), as `g-a3s04-links` leaves them: telephone links dotted and dark, the miniature list at opacity 0.36. Labels as that brief, except the teletype's: `Weather Bureau teletype` (left-aligned, left 180, three lines, x 180 to 266, y 676 to 760, beside wire B, which runs down x 166; `Weather Bureau` on one line would run into station 2's label) |
 | Desks A and B | section 2; lines `#55606b` at rest, Headline white when lit; their own telephones on the cradle |
 | Wires A and B | 4 px, round caps and joins, Amber 2, drawn from the teletype outward with `strokeDashoffset` |
-| Desk labels | Arial 700 22 px, Label grey: `a fire department` at left 530, top 190; `a police department` at left 530, top 760 |
+| Desk labels | Arial 700 22 px, Label grey: `a fire department` at left 530, top 190; `a police department` at left 530, top 800 (with desk B) |
 | Source line | fixed HUD, left 96, bottom 60: `Disaster Research Center, 1966, p. 29`. It leaves when the paper strip arrives |
 | Second office | `media/drawings/telephone-lifted.svg` inline at scale 1.2, box x 700 to 822, y 150 to 277, lines `#55606b`; label `another Weather Bureau office`, Arial 700 22 px, Label grey, left 840, top 200 |
 | Radio arc 1 | from the South Bend telephone's top (388, 433) to the second office's left (700, 220): a quadratic curve with its control point at (480, 190), dotted (`stroke-dasharray="0.1 14"`), 5 px, round caps, Amber 2 |
