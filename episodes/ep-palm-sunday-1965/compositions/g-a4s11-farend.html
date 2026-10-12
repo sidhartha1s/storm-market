@@ -195,11 +195,12 @@ window.__timelines = window.__timelines || {};
   /* SO @8.02: quote line 2 */
   fade(P+"q2", 1, 8.02, 0.3);
 
-  /* ---- PART B ---- THERE @10.59: the strip, the chip, the police desk with its label and its link fade out in place;
-     "a station" gives way to "radio and TV"; the house draws on with its label and its link */
-  fade([P+"strip", P+"chip", P+"deskg", P+"labpol", P+"k1", P+"labst"], 0, 10.59, 0.3);
-  fade([P+"labrt", P+"labfam", P+"k2"], 1, 10.59, 0.3);
-  drawOn("house", 10.59, 0.5);
+  /* ---- PART B ---- THERE @10.59: the strip, the chip, the police desk with its label and its link fade out in place,
+     gone by 10.74; only then "radio and TV" takes the place of "a station" and the house draws on with its label and its
+     link. One after the other: on one cue the two parts lay on each other for 0.3 s */
+  fade([P+"strip", P+"chip", P+"deskg", P+"labpol", P+"k1", P+"labst"], 0, 10.59, 0.15);
+  fade([P+"labrt", P+"labfam", P+"k2"], 1, 10.74, 0.2);
+  drawOn("house", 10.74, 0.5);
   /* the faded things are all but gone when the stage moves: it stands centred by 11.19 and then pushes slowly to the end */
   tl.to(P+"stage", { x: B_DX, duration: 0.45, ease: "power3.inOut" }, 10.74);
   tl.to(P+"stage", { scale: 1.03, duration: D - 11.19, ease: "none" }, 11.19);
