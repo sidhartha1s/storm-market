@@ -87,8 +87,8 @@ Cue words and times are from `audio/a4-s2.words.json` (34 words), `a4-s3.words.j
 | 0 | A4-S2 | 0 | He'd | 0.40 | 0.00 | first frame: film view. Ground, open window on the operations room, frame, film label. Nothing else until step 1 |
 | 1 | A4-S2 | 16 | lost | 4.46 | 4.06 | hard cut, the first cue word after 4.0 s: hole cover on, frame and film label off in that frame; the chain waiting at half size in Label grey with its two dotted links and the chip `County B` over it are on; the river draws on from top to bottom (0.5 s, `strokeDashoffset`) |
 | 2 | A4-S2 | 17 | in | 4.80 | 4.40 | the civil defense mark lands (0.3 s fade with `y:16` to 0) with its label |
-| 3 | A4-S2 | 20 | State | 6.24 | 5.84 | the sheriff's mark lands the same way with its label |
-| 4 | A4-S2 | 19 | water. | 5.10 | 4.70 | the river's stroke goes to Headline white and back to Cold blue 2 (0.3 s each way) |
+| 3 | A4-S2 | 19 | water. | 5.10 | 4.70 | the river's stroke goes to Headline white and back to Cold blue 2 (0.3 s each way) |
+| 4 | A4-S2 | 20 | State | 6.24 | 5.84 | the sheriff's mark lands the same way as the civil defense mark, with its label |
 | 5 | A4-S2 | 23 | told | 6.82 | 6.42 | the sheriff's mark fills Amber 2 (0.3 s) and stays |
 | 6 | A4-S2 | 27 | tornado | 7.84 | 7.44 | the tornado mark comes in from the left edge to box left 150 (1.4 s, power2.out), then drifts to box left 190 (ease none, to 10.06) |
 | 7 | A4-S2 | 33 | west. | 9.24 | 8.84 | the civil defense mark fills Amber 2 (0.3 s): he has heard |
@@ -100,13 +100,13 @@ Cue words and times are from `audio/a4-s2.words.json` (34 words), `a4-s3.words.j
 | 13 | A4-S3 | 10 | office | 2.90 | 12.74 | house: the same stroke pulse, label `a family` |
 | 14 | A4-S4 | 1 | about | 0.38 | 14.90 | the clock stamp slides in from the left (`x:-660` to 0, 0.6 s, power3.out) with `about`; hands at 7:25. On "7" (index 2, 15.08) the minute hand sweeps 150 to 180 and the hour hand 222.5 to 225.0 (0.5 s, power3.out) and `7:30 PM` lands |
 | 15 | A4-S4 | 10 | radioed | 3.76 | 18.28 | the radio arc draws from the civil defense desk to the police desk, dot by dot (0.6 s) |
-| 17 | A4-S4 | 13 | police | 4.52 | 19.04 | the light leaves the civil defense desk and crosses the arc (0.8 s, ease none) |
-| 18 | A4-S4 | 16 | location | 5.30 | 19.82 | when the light arrives (19.84) it hides and the police desk's lines turn Amber 2 (0.3 s) and stay |
-| 19 | A4-S4 | 25 | radio | 7.80 | 22.32 | the microphone's lines go to Body light and back to Label grey (0.3 s, yoyo). No amber: he asked, nothing was sent |
-| 20 | A4-S5 | 3 | path | 1.04 | 24.61 | the ghost dot appears at (837, 520) on the police desk's right edge with one Label grey ring (radius 8 to 30, 0.45 s) |
-| 21 | A4-S5 | 8 | defense | 3.00 | 26.57 | the arc's dots go to Headline white and back to Amber 2 in a wave from left to right (0.6 s in all) |
-| 22 | A4-S5 | 12 | the | 4.66 | 28.23 | the ghost runs x 837 to 1068 (0.8 s, ease none), its grey line growing behind it; on arrival ("station,", index 16, 29.03) the microphone's lines pulse to Body light and back |
-| 23 | A4-S5 | 19 | station | 6.62 | 30.19 | the ghost jumps to x 1170 and runs to x 1400 (0.64 s, ease none); on arrival ("everyone.", index 21, 30.83) the house's lines pulse to Body light and back, windows dark. Hold to 32.43: two amber desks, the amber arc, the grey ghost line |
+| 16 | A4-S4 | 13 | police | 4.52 | 19.04 | the light leaves the civil defense desk and crosses the arc (0.8 s, ease none) |
+| 17 | A4-S4 | 16 | location | 5.30 | 19.82 | when the light arrives (19.84) it hides and the police desk's lines turn Amber 2 (0.3 s) and stay |
+| 18 | A4-S4 | 25 | radio | 7.80 | 22.32 | the microphone's lines go to Body light and back to Label grey (0.3 s, yoyo). No amber: he asked, nothing was sent |
+| 19 | A4-S5 | 3 | path | 1.04 | 24.61 | the ghost dot appears at (837, 520) on the police desk's right edge with one Label grey ring (radius 8 to 30, 0.45 s) |
+| 20 | A4-S5 | 8 | defense | 3.00 | 26.57 | the arc's dots go to Headline white and back to Amber 2 in a wave from left to right (0.6 s in all) |
+| 21 | A4-S5 | 12 | the | 4.66 | 28.23 | the ghost runs x 837 to 1068 (0.8 s, ease none), its grey line growing behind it; on arrival ("station,", index 16, 29.03) the microphone's lines pulse to Body light and back |
+| 22 | A4-S5 | 19 | station | 6.62 | 30.19 | the ghost jumps to x 1170 and runs to x 1400 (0.64 s, ease none); on arrival ("everyone.", index 21, 30.83) the house's lines pulse to Body light and back, windows dark. Hold to 32.43: two amber desks, the amber arc, the grey ghost line |
 
 ## 6. Contract
 As `references/mg-brief-template.md` section 6, with these: `compositions/g-a4s02-countyb.html` is the only file the builder writes; `data-composition-id="g-a4s02-countyb"`, `data-duration="32.43"`; id prefix `cntb-`; root `<div id="cntb-root" ...>` styled through `#cntb-root` (plan rule 3 overrides the template's `id="root"`). Full frame, own ground on from frame 0. The host is already mounted in `index.html` as `host-a4s02-countyb`; do not edit `index.html`.
