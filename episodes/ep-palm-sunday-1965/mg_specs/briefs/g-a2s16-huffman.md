@@ -49,7 +49,7 @@ The tornado mark's place is schematic: 7 map units west and 7 north of `pt-nappa
 6. No county is filled amber. No time is on screen (6:32 PM belongs to the next comp). No Dunlap, no Goshen, no Alto.
 7. Line weights are the same at both ends of the push (read both frames).
 8. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680.
-9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
+9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry. As built and passed (lead, 13 Oct 26): `Elkhart` sits right of its dot in NORTH, not centred above it at top 84; the NORTH map box is x 732 to 1580, y 62 to 965 (rule 22); the tornado mark stands across the county's west outline at this brief's own point, accepted.
 
 ## 5. Text (exact) and cues
 Text: `Elkhart` · `Paul Huffman` · `photographer, The Elkhart Truth` · `as told by the National Weather Service` · `Weather Bureau · South Bend` · `Nappanee`.
