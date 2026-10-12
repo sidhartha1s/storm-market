@@ -21,7 +21,8 @@
   /* the faint band that carries the holds: starts off the left edge, drifts right for the whole window */
   #cntb-sweep { position:absolute; left:-560px; top:0; width:520px; height:1080px;
     background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
-  #cntb-svg { position:absolute; left:0; top:0; }
+  #cntb-svg, #cntb-chainsvg { position:absolute; left:0; top:0; }
+  #cntb-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
   .cntb-chip { position:absolute; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55);
     backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:23px;
     font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
@@ -243,10 +244,14 @@ window.__timelines = window.__timelines || {};
 
   /* the waiting chain is half size from the host's very first frame: set here at build, and again at timeline 0 for any seek */
   gsap.set(P+"chain", { scale: 0.5, svgOrigin: "1577 380" });
+  /* coverage (plan rule 22): the stage's drop below the brief's y while the chain waits, and from the growth on */
+  const WAIT_DY = 133, FULL_DY = 36;
+  gsap.set(P+"stage", { y: WAIT_DY });
 
   /* HE'D @0.00: ground, the chain waiting at half size in Label grey, the chip over it. No map yet. */
   tl.set([P+"river", P+"tor", P+"b1", P+"b2", P+"b3", P+"b4", P+"time", P+"arc", P+"arcwave", P+"gdot"], { autoAlpha: 0 }, 0);
   tl.set(P+"chain", { scale: 0.5, svgOrigin: "1577 380" }, 0);
+  tl.set(P+"stage", { y: WAIT_DY }, 0);
   tl.set(P+"tor", { x: -290 }, 0);
   tl.set(P+"stamp", { autoAlpha: 0, x: -660 }, 0);
   tl.set(P+"hour", { rotation: 222.5, svgOrigin: "62 62" }, 0);
