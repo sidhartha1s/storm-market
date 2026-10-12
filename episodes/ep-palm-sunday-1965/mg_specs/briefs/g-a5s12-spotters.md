@@ -32,7 +32,7 @@ The chain line is y 520. The town's house and its telephone stand exactly where 
 | Short link | y 520, x 1274 to 1400, solid, 4 px, Label grey (the town's own telephone) |
 | House | `media/drawings/house.svg` inline, `translate(1400 430) scale(0.68)` (box x 1400 to 1577, y 430 to 600, aerial to y 407); `stroke-width="5"` on the group (3.4 px lines); lines Body light, windows Panel dark |
 | House label | `Marion`, Arial 700 22 px, Label grey, centred on x 1488, top 676 |
-| Quote strip | Beige polaroid, left 96, top 780, 960 x 124 (right 1056, bottom 904), `box-shadow: 0 18px 50px rgba(0,0,0,0.55)`. Quote, Georgia 52 px, Caption dark, left 136, top 792: `“primitive, mostly nonexistent”`. Attribution, Arial 700 22 px, Caption dark sub, tracking 2, left 136, top 862: `John Curran, on the trained spotter network`. Measure the quote's width in a frame and state it; it must end at least 40 px inside the strip's right edge |
+| Quote strip | Beige polaroid, left 96, top 780, 960 x 124 (right 1056, bottom 904), `box-shadow: 0 18px 50px rgba(0,0,0,0.55)`. Quote, Georgia 52 px, Caption dark, left 136, top 792: `“primitive, mostly nonexistent”`. Attribution, Arial 700 26 px (as built and ruled, lead, 12 Oct 26; this brief first said 22 px), Caption dark sub, tracking 2, left 136, top 862: `John Curran, on the trained spotter network`. Measure the quote's width in a frame and state it; it must end at least 40 px inside the strip's right edge |
 | Source line | none: the strip's attribution is the frame's source (design sheet section 10) |
 
 ## 4. Must be true in the picture
