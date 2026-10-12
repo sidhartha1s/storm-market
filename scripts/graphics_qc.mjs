@@ -75,7 +75,7 @@ const PROBE = `(() => {
   const tl = window.__timelines[key];
   if (!tl) return { error: 'no timeline registered' };
   R.id = key;
-  R.typeOk = (document.querySelector('body [data-composition-id]')?.getAttribute('data-type-ok') || '').trim();
+  R.typeOk = document.querySelector('body [data-composition-id]')?.getAttribute('${EXEMPT['flat-type']}');
   R.duration = tl.duration();
   // a canvas redrawn from the timeline onUpdate moves every frame though no DOM tween does:
   // one continuous kinetic span (MG eval 3, 26 Sep 26; rule in stage_comp.mjs)
