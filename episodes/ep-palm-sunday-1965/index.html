@@ -65,6 +65,12 @@
             geometry is !important so the renderer's video{inset:0} cannot win ---- */
     .filmwin { position: absolute !important; inset: auto !important; left: 480px !important; top: 150px !important;
       width: 960px !important; height: 720px !important; object-fit: cover !important; }
+    /* film under hosts: a film window paints below its graphic host, whatever their order in the file and however the player places a
+       host. #root is made its own stacking context and every film sits at z-index -1 inside it: above the root's ground, below every
+       host, and below the overlays (6), the vignette (90), the grain and the dust as before. A film is also below the other track 1
+       pictures, and none of them shares a second with a film. The hook and intro have no film and no rule here names their elements. */
+    #root { isolation: isolate; }
+    .filmwin { z-index: -1 !important; }
     /* ---- glass chip over Paul's clip (the county label of mg_specs/00-design-sheet.md section 9: our label, on glass) ---- */
     .ovchip { position: absolute; left: 96px; top: 54px; height: 46px; padding: 0 22px; box-sizing: border-box; background: rgba(10,16,24,0.55);
       backdrop-filter: blur(18px) saturate(1.15); border: 1px solid rgba(255,255,255,0.14); border-radius: 23px;
@@ -393,8 +399,8 @@
 
   <!-- ============ SOUND, ACTS ONE TO SIX AND THE CLOSE (12 Oct 26; the hook and intro's manner, carried on) ============
        THE BED: the hook's own bed carried on, one file an act, each mounted 0.13. Same source (assets/sfx/deapi/score-act1-darkambient.mp3, from
-       18 s in, looped on itself with a 6 s crossfade) and the same levelling as media/sfx/bed-hook-intro.mp3; every file's mean is -19.9 to
-       -20.3 dB against the hook bed's -20.0. Each fades in over 0.4 s on the cut out of black. Each fades out over the 1.0 s between an
+       18 s in, looped on itself with a 6 s crossfade) and the same levelling as media/sfx/bed-hook-intro.mp3; every file's mean is -20.0 to
+       -20.6 dB against the hook bed's -20.0. Each fades in over 0.4 s on the cut out of black. Each fades out over the 1.0 s between an
        act's last sound and its blackout, so every blackout is silent. The A3 bed runs under Paul's tease and is out by the book ad's dip
        (635.44): nothing of ours sounds under the dips or the ad (636.44 to 660.86). The bed comes back on the cut to the film at 661.85.
        Under each of Paul's five clips the bed is 3 dB down inside the file (0.5 s ramps before and after the clip), so it is never louder
