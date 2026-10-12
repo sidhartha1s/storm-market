@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1s02-strip (A1-S2, A1-S3): the forecast's strip as a soft band from north-east Missouri to north central Indiana, with the
+     study's verdict on a quote card; then the map pushes in to the corner of Indiana where South Bend's 12:20 PM version named
+     three counties, with the survey's own typed entry under it. Brief: mg_specs/briefs/g-a1s02-strip.md; map facts: media/maps/README.md.
+     MAP FAMILY BASE (second): the Midwest map with the Indiana counties over it in one SVG, and the push from a Midwest view into NORTH.
+     Maps: media/maps/midwest-states.svg (BM-2) and media/maps/indiana-counties.svg (BM-1), one coordinate space, ids prefixed strip-.
+     The SVG fills the frame; the camera is its viewBox and the visible box is its clip-path, moved together:
+       MIDWEST-STRIP  box 96, 62, 1483 x 618    0.98867 px per unit   viewBox -917.100 47.289 1942.009 1092.380
+       NORTH          box 716, 62, 1080 x 450   3 px per unit         viewBox 57.333 145.333 640 360   (screen x = 3u - 172, y = 3u - 436)
+     Computed from the files with those formulas:
+       band ends M (-266.0, 498.3), inside st-mo, north-east quarter, screen (643.7, 445.9); N (440.2, 295.8), inside st-in, screen (1341.9, 245.7);
+       its middle lies inside st-il; length 734.7 units, width 180. The band is schematic: it claims no edge, width or ends.
+       county area centroids in NORTH: Starke (1070.0, 348.8), LaPorte (1034.9, 201.9).
+       Porter's mid line is map y 227.6 (screen y 246.8): "southern Porter" is the half below it, schematic, with a soft top edge.
+       The leader runs x 907 from y 100 to y 290: over the lake to y 139, inside Porter from y 140, ending 43 px inside the lit half.
+     INLINED SO FAR: of BM-2's nine states the three the band touches (Missouri, Illinois, Indiana); of BM-1 the 21 counties that cross
+     the NORTH window, each path's d copied whole and unchanged. Indiana's outline is one path (the two files carry the same one):
+     strip-st-in, drawn again at 3 px by a use element. Still to add from BM-2: Iowa, Michigan, Ohio, Kentucky.
+     No town dot, no tornado mark. Page: media/docs/survey-p37-1220pm-crop.png (1460 x 353, survey printed p. 37).
+     Cues are comp-local seconds: audio/a1-s2.words.json minus 0.25; audio/a1-s3.words.json plus 9.03. -->
+<template>
+<style>
+  #strip-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .strip-h { opacity:0; visibility:hidden; }
+
+  /* ---- map block: the SVG fills the frame; the camera is its viewBox, the visible box is its clip-path ---- */
+  .strip-map { position:absolute; left:0; top:0; width:1920px; height:1080px; clip-path:inset(62px 341px 400px 96px); }
+  .strip-at { position:absolute; width:0; height:0; display:flex; align-items:center; justify-content:center; }
+  .strip-st { flex:none; font:700 22px Arial, sans-serif; color:#93a3b2; letter-spacing:2px; white-space:nowrap; line-height:1; }
+  .strip-co { flex:none; font:700 22px Arial, sans-serif; color:#f2f5f8; letter-spacing:2px; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .strip-lead { position:absolute; left:906px; top:100px; width:2px; height:190px; background:#dfe7ee; }
+
+  /* ---- quote card (as g-i1s3-cloud's strip): the study's words ---- */
+  .strip-quote { position:absolute; left:96px; top:740px; width:1100px; height:200px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; }
+  .strip-q { position:absolute; left:54px; font:40px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:1; }
+  .strip-att { position:absolute; left:56px; top:148px; font:700 22px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+
+  /* ---- clock stamp, top left (design sheet section 8, as g-t1s2-warning; eight characters set as g-i1s4-states) ---- */
+  .strip-stamp { position:absolute; left:96px; top:96px; width:590px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .strip-face { position:absolute; left:0; top:0; width:200px; height:200px; overflow:visible; }
+  .strip-eye { position:absolute; left:188px; top:20px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .strip-time { position:absolute; left:188px; top:46px; font:700 84px 'Courier New', Courier, monospace; color:#e8c56a; letter-spacing:-4px; white-space:nowrap; line-height:1; }
+  .strip-place { position:absolute; left:190px; top:148px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+
+  /* ---- paper card, lower band (design sheet section 9): the page's own image, 10 px of beige round it ---- */
+  .strip-card { position:absolute; left:96px; top:600px; width:1480px; height:373px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .strip-crop { position:absolute; left:10px; top:10px; width:1460px; height:353px; mix-blend-mode:multiply; }
+  .strip-unlit { position:absolute; left:0; top:0; width:1480px; height:373px; }
+  .strip-dim { position:absolute; background:rgba(21,32,43,0.45); }
+  .strip-ul { position:absolute; height:6px; background:#d0121f; }
+  .strip-src { position:absolute; right:360px; top:987px; font:700 20px Arial, sans-serif; color:#dfe7ee; letter-spacing:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="strip-root" data-composition-id="g-a1s02-strip" data-width="1920" data-height="1080">
+
+  <!-- ================= map block: BM-2 states, BM-1 counties over them, ids prefixed strip- ================= -->
+  <svg class="strip-map" id="strip-map" viewBox="-917.100 47.289 1942.009 1092.380" preserveAspectRatio="xMidYMid meet" fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <defs>
+      <filter id="strip-soft" filterUnits="userSpaceOnUse" x="-420" y="140" width="1020" height="520"><feGaussianBlur stdDeviation="6"/></filter>
+      <!-- the band's clip: a box 200 units wide along the line M to N, its leading edge runs from behind M to past N -->
+      <clipPath id="strip-bandclip"><polygon id="strip-bandedge" points="-389.7,429.7 -389.7,429.7 -334.6,622.0 -334.6,622.0"/></clipPath>
+      <clipPath id="strip-porterclip"><use href="#strip-co-in-porter"/></clipPath>
+      <!-- southern Porter's fill: the lit value, its top 8 px (2.667 units) fading to nothing below the mid line y 227.6 -->
+      <linearGradient id="strip-sfade" gradientUnits="userSpaceOnUse" x1="0" y1="227.6" x2="0" y2="230.267">
+        <stop offset="0" stop-color="#e8c56a" stop-opacity="0"/><stop offset="1" stop-color="#e8c56a" stop-opacity="0.45"/>
+      </linearGradient>
+    </defs>
+    <g id="strip-map-states" fill="#15202b">
+    </g>
+    <!-- the forecast band, in map units so it rides the camera: Amber 2 at 25 %, 180 units wide, a 6-unit blur, no outline -->
+    <g id="strip-band" filter="url(#strip-soft)" stroke="none">
+      <g clip-path="url(#strip-bandclip)">
+        <line x1="-266.0" y1="498.3" x2="440.2" y2="295.8" stroke="#e8c56a" stroke-opacity="0.25" stroke-width="180" stroke-linecap="round"/>
+      </g>
+    </g>
+    <g id="strip-map-counties" class="strip-h" fill="#15202b" stroke="#93a3b2" stroke-width="1.5">
+    </g>
+    <!-- southern Porter: a rect at the lit fill clipped to the county, then the county's own line drawn again over it -->
+    <g id="strip-sporter" class="strip-h" stroke="#93a3b2" stroke-width="1.5">
+      <rect x="340" y="227.6" width="39" height="46" fill="url(#strip-sfade)" stroke="none" clip-path="url(#strip-porterclip)"/>
+      <use href="#strip-co-in-porter" fill="none"/>
+    </g>
+    <g id="strip-map-state" class="strip-h" stroke-width="3">
+      <use href="#strip-st-in" fill="none"/>
+    </g>
+  </svg>
+
+  <!-- ---- labels over the map: a fixed layer, nothing here rides the camera ---- -->
+  <div class="strip-at" style="left:589px;top:586px"><div class="strip-st strip-h" id="strip-mo">MISSOURI</div></div>
+  <div class="strip-at" style="left:1342px;top:489px"><div class="strip-st strip-h" id="strip-in">INDIANA</div></div>
+  <div class="strip-at" style="left:1070px;top:349px"><div class="strip-co strip-h" id="strip-n1">STARKE</div></div>
+  <div class="strip-at" style="left:907px;top:83px"><div class="strip-co strip-h" id="strip-n2">southern Porter</div></div>
+  <div class="strip-lead strip-h" id="strip-lead"></div>
+  <div class="strip-at" style="left:1035px;top:202px"><div class="strip-co strip-h" id="strip-n3">LAPORTE</div></div>
+
+  <!-- ================= quote card: the study's verdict ================= -->
+  <div class="strip-quote strip-h" id="strip-quote">
+    <div class="strip-q" style="top:28px">&ldquo;did not indicate any immediate tornado</div>
+    <div class="strip-q" style="top:78px">threat to any portion of Indiana&rdquo;</div>
+    <div class="strip-att">Disaster Research Center, 1966, p. 6</div>
+  </div>
+
+  <!-- ================= clock stamp: 12:20 PM ================= -->
+  <div class="strip-stamp strip-h" id="strip-stamp">
+    <svg class="strip-face" viewBox="0 0 200 200" fill="none" stroke="#dfe7ee" stroke-linecap="round">
+      <circle cx="95" cy="100" r="62" stroke-width="4"/>
+      <g stroke-width="3">
+        <line x1="95.0" y1="45.0" x2="95.0" y2="59.0"/>
+        <line x1="122.5" y1="52.4" x2="118.5" y2="59.3"/>
+        <line x1="142.6" y1="72.5" x2="135.7" y2="76.5"/>
+        <line x1="150.0" y1="100.0" x2="136.0" y2="100.0"/>
+        <line x1="142.6" y1="127.5" x2="135.7" y2="123.5"/>
+        <line x1="122.5" y1="147.6" x2="118.5" y2="140.7"/>
+        <line x1="95.0" y1="155.0" x2="95.0" y2="141.0"/>
+        <line x1="67.5" y1="147.6" x2="71.5" y2="140.7"/>
+        <line x1="47.4" y1="127.5" x2="54.3" y2="123.5"/>
+        <line x1="40.0" y1="100.0" x2="54.0" y2="100.0"/>
+        <line x1="47.4" y1="72.5" x2="54.3" y2="76.5"/>
+        <line x1="67.5" y1="52.4" x2="71.5" y2="59.3"/>
+      </g>
+      <line id="strip-hh" x1="95" y1="100" x2="95" y2="66" stroke="#f2f5f8" stroke-width="5"/>
+      <line id="strip-mh" x1="95" y1="100" x2="95" y2="48" stroke="#f2f5f8" stroke-width="5"/>
+      <circle cx="95" cy="100" r="5" fill="#e8c56a" stroke="none"/>
+    </svg>
+    <div class="strip-eye">WEATHER BUREAU</div>
+    <div class="strip-time" id="strip-time">12:20 PM</div>
+    <div class="strip-place">South Bend, Indiana</div>
+  </div>
+
+  <!-- ================= paper card: the survey's 12:20 PM entry ================= -->
+  <div class="strip-card strip-h" id="strip-card">
+    <img class="strip-crop" src="media/docs/survey-p37-1220pm-crop.png" alt="">
+    <!-- the unlit page: the whole crop except the boxes round "several" (card x 1285 to 1420, y 103 to 136)
+         and "tornadoes are expected" (card x 55 to 447, y 139 to 172) -->
+    <div class="strip-unlit strip-h" id="strip-unlit">
+      <div class="strip-dim" style="left:10px;top:10px;width:1460px;height:93px"></div>
+      <div class="strip-dim" style="left:10px;top:103px;width:1275px;height:33px"></div>
+      <div class="strip-dim" style="left:1420px;top:103px;width:50px;height:33px"></div>
+      <div class="strip-dim" style="left:10px;top:136px;width:1460px;height:3px"></div>
+      <div class="strip-dim" style="left:10px;top:139px;width:45px;height:33px"></div>
+      <div class="strip-dim" style="left:447px;top:139px;width:1023px;height:33px"></div>
+      <div class="strip-dim" style="left:10px;top:172px;width:1460px;height:191px"></div>
+    </div>
+    <div class="strip-ul" id="strip-ul1" style="left:1293px;top:136px;width:119px"></div>
+    <div class="strip-ul" id="strip-ul2" style="left:63px;top:172px;width:376px"></div>
+  </div>
+  <div class="strip-src strip-h" id="strip-src">Weather Bureau survey report, 1965, p. 37</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a1s02-strip", P = "strip";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+
+  /* ---- camera block: the viewBox is the camera, the clip-path is the box. A push is geometric (the logZoom maths of
+          library/inhouse/snippets/helpers.js: the width runs w0 x (w1 / w0)^p). Every viewBox number is a straight line in that
+          width, so one ease on a plain attr tween moves them together and lands the end values exactly; no onUpdate, so a
+          seek with events off lands the camera too. ratio = w1 / w0 ---- */
+  var map = $("map");
+  var MIDWEST = { viewBox: "-917.100 47.289 1942.009 1092.380", box: "inset(62px 341px 400px 96px)" };
+  var NORTH = { viewBox: "57.333 145.333 640 360", box: "inset(62px 124px 568px 716px)" };
+  function camEase(ratio, ease) { var e = gsap.parseEase(ease); return function (p) { return (1 - Math.pow(ratio, e(p))) / (1 - ratio); }; }
+  function cam(from, to, ratio, t, d, ease) {
+    tl.to(map, { attr: { viewBox: to.viewBox }, duration: d, ease: camEase(ratio, ease) }, t);
+    tl.fromTo(map, { clipPath: from.box }, { clipPath: to.box, duration: d, ease: ease, immediateRender: false }, t);
+  }
+
+  /* ---- lit-county block: the family's lit value is Amber 2 at 0.45, a fill change on the county's own path ---- */
+  function light(county, t) { tl.to($("co-in-" + county), { fill: "#e8c56a", fillOpacity: 0.45, duration: 0.3, ease: "power2.out" }, t); }
+  function name(n, t) { tl.fromTo(n, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, t); }
+
+  /* ---- clock hands: degrees clockwise from 12, about the face centre (95, 100) ---- */
+  s0($("hh"), { rotation: 10, svgOrigin: "95 100" });       /* 12:20: hour hand just past 12 */
+  s0($("mh"), { rotation: 90, svgOrigin: "95 100" });       /* minute hand sweeps its last 30 degrees onto the 4 */
+  s0($("ul1"), { scaleX: 0, transformOrigin: "left center" });
+  s0($("ul2"), { scaleX: 0, transformOrigin: "left center" });
+  s0($("lead"), { scaleY: 0, transformOrigin: "center top" });
+
+  /* ================= A1-S2: the strip across three states ================= */
+  /* 0 · "It" @0.00: ground and the map in MIDWEST-STRIP, state outlines only */
+
+  /* 1 · "northeastern" @1.17: the band draws from the Missouri end, complete @3.17 */
+  tl.to($("bandedge"), { attr: { points: "-389.7,429.7 508.8,172.1 563.9,364.4 -334.6,622.0" }, duration: 2.0, ease: "none" }, 1.17);
+
+  /* 2 · "Missouri" @1.57 and 3 · "Indiana." @3.07: each state's name as the band is there */
+  tl.to($("mo"), { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 1.57);
+  tl.to($("in"), { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 3.07);
+
+  /* 4 · "study" @4.59: the quote card rises in; it floats 8 px through its hold so the frame is never still for 4 s */
+  tl.fromTo($("quote"), { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", immediateRender: false }, 4.59);
+  tl.to($("quote"), { y: -8, duration: 2.15, ease: "sine.inOut", yoyo: true, repeat: 1 }, 5.03);   /* back at rest @9.33 */
+
+  /* 5 · "South" @9.39: the quote card leaves right; the two names and the band fade, all gone before the map moves */
+  tl.to($("quote"), { x: 1900, autoAlpha: 0, duration: 0.25, ease: "power3.in" }, 9.39);
+  tl.to([$("mo"), $("in"), $("band")], { autoAlpha: 0, duration: 0.25, ease: "power2.out" }, 9.39);
+
+  /* ================= A1-S3: South Bend's 12:20 PM version ================= */
+  /* 6 · "Bend's" @9.69: push MIDWEST-STRIP to NORTH, 3.03 times in 0.9 s, ends @10.59; the county lines come on in its second half */
+  cam(MIDWEST, NORTH, 640 / 1942.009, 9.69, 0.9, "power2.inOut");
+  tl.to([$("map-counties"), $("map-state")], { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 10.04);
+
+  /* 7 · "office" @10.61: the clock stamp slides in from the left, the minute hand lands on the 4 */
+  tl.fromTo($("stamp"), { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 10.61);
+  tl.to($("mh"), { rotation: 120, duration: 0.5, ease: "power3.out" }, 10.81);
+
+  /* 8 · "its" @12.39: the page slides in from the right; its source fades in once it is nearly home */
+  tl.fromTo($("card"), { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out", immediateRender: false }, 12.39);
+  tl.fromTo($("src"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, 12.79);
+
+  /* 9 · "Three" @13.19: Starke, southern Porter, LaPorte in the entry's order, 0.12 s apart, each with its name */
+  light("starke", 13.19);
+  name($("n1"), 13.19);
+  tl.to($("sporter"), { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 13.31);
+  name($("n2"), 13.31);
+  tl.to($("lead"), { autoAlpha: 1, duration: 0.05, ease: "none" }, 13.31);
+  tl.to($("lead"), { scaleY: 1, duration: 0.3, ease: "power2.out" }, 13.31);
+  light("laporte", 13.43);
+  name($("n3"), 13.43);                                     /* all lit @13.73 */
+
+  /* 10 · "several" @15.47: the rest of the page goes unlit; underline 1 draws under "several" */
+  tl.to($("unlit"), { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 15.47);
+  tl.to($("ul1"), { scaleX: 1, duration: 0.2, ease: "none" }, 15.47);
+
+  /* 11 · "tornadoes" @15.87: underline 2 draws under "tornadoes are expected"; the page floats 8 px through the hold */
+  tl.to($("ul2"), { scaleX: 1, duration: 0.5, ease: "none" }, 15.87);
+  tl.to($("card"), { y: -8, duration: 2.05, ease: "sine.inOut", yoyo: true, repeat: 1 }, 16.45);   /* back at rest @20.55 */
+
+  tl.to({}, { duration: 0.01 }, 20.55);                     /* holds to the last frame @20.56 */
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
