@@ -71,6 +71,13 @@
        pictures, and none of them shares a second with a film. The hook and intro have no film and no rule here names their elements. */
     #root { isolation: isolate; }
     .filmwin { z-index: -1 !important; }
+    /* ---- presenter circle (references/mg-quickref.md "Corner circle"; the CSS of references/mini-storms/FORMAT.md "Presenter circle" as ep4-el-reno
+            mounts it): a bare timed video whose geometry is !important, and a separate timed section for the ring. In the stacking above:
+            film -1, hosts and pictures, overlays 6, the face 8, its ring 9, then the vignette 90, the grain 91 and the dust 92 over it ---- */
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
     /* ---- glass chip over Paul's clip (the county label of mg_specs/00-design-sheet.md section 9: our label, on glass) ---- */
     .ovchip { position: absolute; left: 96px; top: 54px; height: 46px; padding: 0 22px; box-sizing: border-box; background: rgba(10,16,24,0.55);
       backdrop-filter: blur(18px) saturate(1.15); border: 1px solid rgba(255,255,255,0.14); border-radius: 23px;
