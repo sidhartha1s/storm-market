@@ -280,7 +280,7 @@ At most five builders at a time. A builder owns whole files; no file is in two b
 | 5 | 5-b list and microphone | g-a6s03-announcer, g-a6s10-watch, g-z1s02-row |
 | 5 | 5-c chain | g-a6s05-wires, g-a6s08-spotters |
 | 5 | 5-d map and drawing | g-a6s07-power, g-a6s09-third, g-z1s04-drill |
-| 5 | 5-e film and title | g-a6s11-sirens, g-z1s05-title |
+| 5 | 5-e film, title and book | g-a6s11-sirens, g-z1s05-title, g-z1s4b-book |
 Wave 0 finished 12 Oct 26: its files are the rows of section 3. Wave 0's four jobs ran together. Waves 1 to 5 each wait for the verifier's read of the wave before; a comp that "reuses ... after wave 1" copies a wave 1 base only once that base has passed.
 
 ## 6. Picture notes that cannot be built as written, and the smallest change
@@ -331,3 +331,18 @@ Rows the wave 1 and 2 briefs proved wrong or made exact (12 Oct 26, evening; the
 - **PC-06 and rule 18:** the next line's sliver is rows 126 to 128 of the file; the third typed line's descenders run to row 123. A 12 px mask cuts rows 117 to 128; a 4 px mask would remove the sliver alone. The brief follows the ruling and has the verifier read that edge.
 - **Stamp zone:** "EST" does not fit beside an 84 px time in the 590 px card; the briefs write the zone in the place line as `Eastern time`.
 - **Family bases:** no "Reuses" cell names g-a2s17-funnels or g-a1s05-clocks; their briefs name the later comps that copy them.
+
+Rows the wave 3, 4 and 5 briefs proved wrong or made exact (12 Oct 26, night; the brief named holds the numbers):
+- **g-a4s09-clock:** the sheriff page crop cannot run whole as a small strip; the brief shows two page lines at 0.6 of their size with the quote typed again beside them. 7:30 to 8:07 is 37 minutes; the label stays the study's "about 35 minutes".
+- **Section 6, item 13 (the straight leg through Marion):** a straight leg through Marion's dot misses Blackford County; the briefs route the path 8 map units south and call it schematic.
+- **g-a3s09-jam:** it mounts `media/drawings/telephone-lifted.svg`, not `media/drawings/telephone.svg`.
+- **g-a6s07-power:** it also mounts the desk and the teletype drawings.
+- **g-a6s01-recs:** the page is single-spaced, so its underline is 3 px.
+- **g-a3s10-towers:** the 54 marks fall 0.03 s apart, 1.62 s in a 1.69 s spoken window.
+- **g-a4s01-eyes:** no film opens it. A film cut could hold at most 3.15 s there (`media/films/cuts/a14-08-telephone-call.mp4`), it would contradict "He waited", and each shot is used once (rule 4); the brief carries the variant in case the lead rules for film.
+- **g-a5s10-alert:** the film window is open for 2.20 s. **g-a3s07-calls:** the film is mounted for 11.41 s and its window shows 4.21 s.
+- **g-a5s09-alto:** the first photograph is on screen for 0.97 s only.
+- **g-a6s05-wires:** the teletype's label reads `Weather Bureau teletype` there, not `Kansas City forecasters`; the study's p. 29 is cited and not shown, because it prints the county letters.
+- **g-a6s08-spotters:** the house label reads `a town`, not `Marion`; the spotter mark is a ring with a mast, drawn in the composition, with no file.
+- **g-z1s02-row:** the chain stands under a centred list (sheet x 580 to 1340), not beside it, so the new light can pass between them; the Reuses cell's chain is redrawn at that size.
+- **g-z1s4b-book:** the staged cover needs a `provenance.csv` row, which is the orchestrator's to add.
