@@ -91,10 +91,10 @@ All inlined, ids under `far-`; mount rules in `media/drawings/README.md`, which 
 As template section 7, from the worktree root: `node scripts/freeze_scan.mjs episodes/ep-palm-sunday-1965 --comp g-a4s11-farend`, then `node scripts/graphics_qc.mjs episodes/ep-palm-sunday-1965`, then `python3 scripts/run_gates.py episodes/ep-palm-sunday-1965`.
 
 ## 7a. Done line
-All seven lines of template section 7a. Line 2 here: state the measured fill for part A before the strip (0.0 to 5.4) and for part B. Line 4 here: capture 19.34 (the car at full amber) and 19.80 (back to dark) both ways. Line 6 here: the two ways' sample points, the gap from the car's way to the `a family` label and the horn's way to the aerial are computed by a script and stated in the receipt.
+All seven lines of template section 7a. Line 2 here: state the measured fill for part A before the strip (0.0 to 5.4) and for part B. Line 4 here: capture 19.49 (the car at full amber) and 19.80 (back to dark) both ways. Line 6 here: the two ways' sample points, the gap from the car's way to the `a family` label and the horn's way to the aerial are computed by a script and stated in the receipt.
 
 ## 8. Receipt
 As template section 8.
 
 ## Frames the verifier reads
-First frame (0.00) and the frame after it (0.04): three grey things and the chip, no amber. Then settled frames: 1.60 (`local police` label), 2.60 (desk amber, link still dotted grey), 3.60 (microphone grey again, lamp dark), 6.00 (strip with line 1), 8.50 (both quote lines, attribution), 11.20 (desk, chip and strip gone; microphone, house, one link, `radio and TV`), 13.70 (horn, car and both ways drawn, all grey), 17.00 (`a few fire sirens`; horn unchanged), 19.34 (car body amber), 19.90 (car dark again, its label on), 21.00 and 22.30 (hold: horn grey, no sound lines, house windows dark).
+First frame (0.00) and the frame after it (0.04): three grey things and the chip, no amber. Then settled frames: 1.60 (`local police` label), 2.60 (desk amber, link still dotted grey), 3.60 (microphone grey again, lamp dark), 6.00 (strip with line 1), 8.50 (both quote lines, attribution), 11.20 (desk, chip and strip gone; microphone, house, one link, `radio and TV`), 13.70 (horn, car and both ways drawn, all grey), 17.00 (`a few fire sirens`; horn unchanged), 19.49 (car body amber), 19.90 (car dark again, its label on), 21.00 and 22.30 (hold: horn grey, no sound lines, house windows dark).
