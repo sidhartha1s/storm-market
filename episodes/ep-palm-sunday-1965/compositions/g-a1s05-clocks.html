@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1s05-clocks (A1-S5): the office's clock and the family's clock. Left, the clock stamp "AN OFFICE · 11:45 AM · Eastern time";
+     right, a clock face with no hands beside a dark house labelled "a family". The two are never joined, the house never lights,
+     and the right face never carries a hand, a time or a digit: the study gives nothing to put on it.
+     Brief: mg_specs/briefs/g-a1s05-clocks.md. Second base of the clock family: the stamp block (CSS and markup) lifts out whole.
+     Stamp: design sheet section 8, every number times --clk-k (1.4); a copy sets --clk-k back to 1.
+     Clock: media/drawings/wall-clock.svg inline, hands turned about (62, 62) in the drawing's own units; hands(), sweep-free.
+     Empty face: media/drawings/wall-clock-nohands.svg inline at 1.5. House: media/drawings/house.svg (dark state) inline at 1.4.
+     Cues are comp-local seconds from audio/a1-s5.words.json (wav start -0.40, timeline-map.md table 5). -->
+<template>
+<style>
+  /* ---- ground ---- */
+  #clk-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .clk-h { opacity:0; visibility:hidden; }
+
+  /* ---- clock stamp: design sheet section 8 measured from the card's corner, every number times --clk-k ---- */
+  .clk-stamp { --clk-k:1.4; position:absolute; left:110px; top:400px; width:calc(590px * var(--clk-k)); height:calc(200px * var(--clk-k)); }
+  .clk-glass { position:absolute; inset:0; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .clk-face { position:absolute; left:0; top:0; width:calc(590px * var(--clk-k)); height:calc(200px * var(--clk-k)); overflow:visible; }
+  .clk-eye { position:absolute; left:calc(188px * var(--clk-k)); top:calc(20px * var(--clk-k)); font:700 calc(20px * var(--clk-k)) Arial, sans-serif; color:#93a3b2;
+    letter-spacing:calc(6px * var(--clk-k)); text-transform:uppercase; white-space:nowrap; line-height:1; }
+  .clk-time { position:absolute; left:calc(188px * var(--clk-k)); top:calc(46px * var(--clk-k)); font:700 calc(84px * var(--clk-k)) 'Courier New', Courier, monospace; color:#e8c56a;
+    letter-spacing:calc(-4px * var(--clk-k)); white-space:nowrap; line-height:1; }
+  .clk-place { position:absolute; left:calc(190px * var(--clk-k)); top:calc(148px * var(--clk-k)); font:700 calc(26px * var(--clk-k)) Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+
+  /* ---- the family's side: empty clock face, dark house, its label ---- */
+  .clk-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .clk-lab { position:absolute; left:1220px; top:729px; width:364px; text-align:center; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+
+  /* ---- source line ---- */
+  .clk-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="clk-root" data-composition-id="g-a1s05-clocks" data-width="1920" data-height="1080" data-duration="9.13">
+
+  <!-- clock stamp: glass card, clock face from the drawing file, eyebrow, time, place line -->
+  <div class="clk-stamp" id="clk-stamp">
+    <div class="clk-glass"></div>
+    <svg class="clk-face" viewBox="0 0 590 200">
+      <g transform="translate(33 38)">
+        <g fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="62" cy="62" r="62" fill="#15202b"/>
+          <path d="M62.0 8.0 L62.0 22.0 M89.0 15.2 L85.0 22.2 M108.8 35.0 L101.8 39.0 M116.0 62.0 L102.0 62.0 M108.8 89.0 L101.8 85.0 M89.0 108.8 L85.0 101.8 M62.0 116.0 L62.0 102.0 M35.0 108.8 L39.0 101.8 M15.2 89.0 L22.2 85.0 M8.0 62.0 L22.0 62.0 M15.2 35.0 L22.2 39.0 M35.0 15.2 L39.0 22.2" stroke-width="3"/>
+          <g id="clk-hour"><path d="M62 62 V28" stroke-width="5"/></g>
+          <g id="clk-min"><path d="M62 62 V10" stroke-width="5"/></g>
+          <path d="M62 62 h0.01" stroke-width="10"/>
+        </g>
+      </g>
+    </svg>
+    <div class="clk-eye clk-h" id="clk-eye">An office</div>
+    <div class="clk-time">11:45 AM</div>
+    <div class="clk-place">Eastern time</div>
+  </div>
+
+  <!-- the family's side: a clock face with no hands, a dark house -->
+  <svg class="clk-svg" viewBox="0 0 1920 1080">
+    <g transform="translate(990 447) scale(1.5)">
+      <g id="clk-empty" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <circle class="clk-h" id="clk-empty-rim" cx="62" cy="62" r="62" fill="#15202b"/>
+        <path class="clk-h" id="clk-empty-ticks" d="M62.0 8.0 L62.0 22.0 M89.0 15.2 L85.0 22.2 M108.8 35.0 L101.8 39.0 M116.0 62.0 L102.0 62.0 M108.8 89.0 L101.8 85.0 M89.0 108.8 L85.0 101.8 M62.0 116.0 L62.0 102.0 M35.0 108.8 L39.0 101.8 M15.2 89.0 L22.2 85.0 M8.0 62.0 L22.0 62.0 M15.2 35.0 L22.2 39.0 M35.0 15.2 L39.0 22.2" stroke-width="3"/>
+        <path class="clk-h" id="clk-empty-hub" d="M62 62 h0.01" stroke-width="10"/>
+      </g>
+    </g>
+    <g transform="translate(1220 365) scale(1.4)">
+      <g id="clk-house" fill="none" stroke="#55606b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <path class="clk-h" d="M186 37.3 V22 H208 V50"/>
+        <path class="clk-h" d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+        <rect class="clk-h" x="20" y="80" width="220" height="170" fill="#15202b"/>
+        <rect class="clk-h" x="112" y="170" width="36" height="80"/>
+        <rect class="clk-h" x="44" y="120" width="48" height="48" fill="#15202b"/>
+        <rect class="clk-h" x="168" y="120" width="48" height="48" fill="#15202b"/>
+        <path class="clk-h" d="M68 120 V168 M44 144 H92"/>
+        <path class="clk-h" d="M192 120 V168 M168 144 H216"/>
+        <path class="clk-h" d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+      </g>
+    </g>
+  </svg>
+  <div class="clk-lab clk-h" id="clk-family">a family</div>
+
+  <div class="clk-src clk-h" id="clk-src">Disaster Research Center, 1966, p. 6 (footnote)</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a1s05-clocks", P = "clk";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function fade(id, t, d) { tl.to($(id), { autoAlpha: 1, duration: d, ease: "none" }, t); }
+  function rise(id, t, d) { tl.to($(id), { y: 0, autoAlpha: 1, duration: d, ease: "power3.out" }, t); }
+
+  /* ---- clock: angles from the time, clockwise degrees from 12; the hands turn about (62, 62) in the drawing's own units ---- */
+  var HUB = "62 62";
+  function hourDeg(h, m) { return (h % 12) * 30 + m * 0.5; }
+  function minDeg(m) { return m * 6; }
+  function hands(h, m) { s0($("hour"), { rotation: hourDeg(h, m), svgOrigin: HUB }); s0($("min"), { rotation: minDeg(m), svgOrigin: HUB }); }
+
+  /* ---- draw-on: a dash restarts on every sub-path, so a shape of several lines is dashed by its longest one ---- */
+  function longest(e) {
+    if (e.tagName !== "path") return e.getTotalLength();
+    var p = document.createElementNS("http://www.w3.org/2000/svg", "path"), max = 0;
+    e.getAttribute("d").split("M").forEach(function (s) { if (!s.trim()) return; p.setAttribute("d", "M" + s); max = Math.max(max, p.getTotalLength()); });
+    return max;
+  }
+  function dash(e) { var L = Math.ceil(longest(e)) + 1; s0(e, { strokeDasharray: L, strokeDashoffset: L }); return e; }
+  function drawOn(e, t, d) { tl.set(e, { autoAlpha: 1 }, t); tl.to(e, { strokeDashoffset: 0, duration: d, ease: "power2.out" }, t); }
+
+  var GREY = "#93a3b2", WHITE = "#f2f5f8", BODY = "#dfe7ee";
+  var empty = $("empty"), rim = $("empty-rim"), ticks = $("empty-ticks");
+  var house = Array.prototype.slice.call($("house").children);
+  house.sort(function (a, b) { return b.getTotalLength() - a.getTotalLength(); });   /* longest line first */
+
+  /* rest states, set at 0 */
+  hands(11, 45);                            /* 352.5 and 270, set once, never moved */
+  dash(rim); dash(ticks); house.forEach(dash);
+  s0(empty, { stroke: GREY });
+  s0($("src"), { y: 12 });
+  s0($("family"), { y: 16 });
+
+  /* 0 · "Every" @0.00: ground and the stamp in place (card, clock at 11:45, time, place line); no eyebrow, nothing on the right */
+
+  rise("src", 1.28, 0.3);                   /* 1 · study @1.28: source line */
+  fade("eye", 2.86, 0.3);                   /* 2 · office @2.86: AN OFFICE */
+
+  /* 3 · It @4.70: the house draws on, longest line first, all lines done @5.30; the empty face from 4.85, done @5.35 */
+  house.forEach(function (e, i) { drawOn(e, 4.70 + i * 0.04, 0.6 - i * 0.04); });
+  drawOn(rim, 4.85, 0.5);
+  drawOn(ticks, 5.05, 0.3);
+  fade("empty-hub", 5.05, 0.3);             /* the hub is a zero-length line: it fades */
+
+  /* 4 · family @5.56: the label rises under the house; the empty face pulses once, stroke colour only */
+  rise("family", 5.56, 0.3);
+  tl.to(empty, { stroke: WHITE, duration: 0.25, ease: "power2.out" }, 5.56);
+  tl.to(empty, { stroke: GREY, duration: 0.5, ease: "power2.inOut" }, 5.81);
+
+  /* 5 · clock @7.16: the stamp steps back, the empty face comes up to Body light and stays. Hold to 9.13 */
+  tl.to($("stamp"), { opacity: 0.45, duration: 0.4, ease: "power2.out" }, 7.16);
+  tl.to(empty, { stroke: BODY, duration: 0.4, ease: "power2.out" }, 7.16);
+
+  tl.to({}, { duration: 0.01 }, 9.12);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
