@@ -25,7 +25,7 @@ A count, not a map and not a chart with an axis. Eight squares of 150 px with 40
 | Lit square (1 to 7) | fill Amber 2, outline Amber 2 |
 | Marked square (8) | outline Popfig red, 6 px; fill stays Panel dark. It is never filled |
 | Big `7` | Arial Black 900 (`font-weight:900`), 180 px, Amber 2, centred on x 741, top 190 (line box y 190 to 370) |
-| Big `1` | same type, Popfig red, centred on x 1501, top 190 |
+| Big `1` | same type, Popfig red, its ink centred on x 1501, the red square's middle, top 190. As built (fixer item 20, file saved 01:02:40, 13 Oct 26): its 400 px box stands at left 1309, centre x 1509, 8 px right of the ink's centre, because Arial Black's `1` carries its ink left of its box's middle |
 | Eyebrow | left 96, top 110, Arial 700 22 px, Label grey, tracking 6: `EIGHT COUNTIES IN THE 1966 STUDY` |
 | Bracket | 4 px Amber 2 line, x 96 to 1386, y 590 to 594, drawn left to right (`scaleX` from the left) |
 | Label A | glass chip, left 96, top 620, height 46, padding 0 x 22, Arial 700 26 px, Body light: `in a Weather Bureau advisory before a tornado touched down` |
