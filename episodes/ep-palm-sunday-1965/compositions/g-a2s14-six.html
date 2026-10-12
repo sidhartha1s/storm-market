@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a2s14-six (A2-S14): the 6:00 PM warning. A clock at six, the four counties the warning named lit on the map, the survey's
+     own typed entry under them with one phrase underlined; then the map pushes in on Marshall County and a tornado mark stands
+     at each of the three places the entry names. Brief: mg_specs/briefs/g-a2s14-six.md; map facts: media/maps/README.md.
+     MAP FAMILY BASE: later map graphics copy the map block, the camera block and the lit-county block below.
+     Map: media/maps/indiana-counties.svg (BM-1), inlined, every id prefixed six-. One map unit is one unit of the viewBox.
+       NORTH    viewBox 296 166 360 150 in the box 716, 62, 1080 x 450: 3 px per unit, screen x = 3u - 172, y = 3u - 436
+       MARSHALL viewBox 373 216 180 75 in the same box:                 6 px per unit, screen x = 6u - 1522, y = 6u - 1234
+     Every screen number below is those two formulas on media/data/points.csv and the county paths' own boxes:
+       South Bend (462.2, 188.5) NORTH (1214.6, 129.5); Plymouth (455.7, 249.1) MARSHALL (1212.2, 260.6);
+       Donaldson (439.9, 246.6) MARSHALL (1117.4, 245.6); Argos (464.1, 269.6) MARSHALL (1262.6, 383.6);
+       county box centres in NORTH: St. Joseph (1205, 174), Elkhart (1371, 173), Marshall (1218, 324), Kosciusko (1369, 372).
+     The three town labels are the only things placed by hand. No dot for Alto: it is not in the source data.
+     Page: media/docs/survey-p39-600pm-crop.png (1460 x 283, survey printed p. 39); the underline and the unlit page are in card px.
+     Cues are audio/a2-s14.words.json seconds minus 0.26 (the wav starts 0.26 s before the composition). -->
+<template>
+<style>
+  #six-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .six-h { opacity:0; visibility:hidden; }
+
+  /* ---- map block: the box is fixed, the camera is the viewBox ---- */
+  .six-map { position:absolute; left:716px; top:62px; width:1080px; height:450px; overflow:hidden; }
+  .six-at { position:absolute; width:0; height:0; display:flex; align-items:center; justify-content:center; }
+  .six-co { flex:none; font:700 22px Arial, sans-serif; color:#f2f5f8; letter-spacing:2px; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .six-town { position:absolute; font:700 22px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .six-mark { position:absolute; width:54px; height:69px; overflow:visible; }   /* media/drawings/tornado-mark.svg at 0.75: object box 45 x 60 px, line 4.5 px */
+
+  /* ---- clock stamp, top left (design sheet section 8, as g-t1s2-warning) ---- */
+  .six-stamp { position:absolute; left:96px; top:96px; width:590px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .six-face { position:absolute; left:0; top:0; width:200px; height:200px; overflow:visible; }
+  .six-eye { position:absolute; left:188px; top:20px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .six-time { position:absolute; left:188px; top:46px; font:700 84px 'Courier New', monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .six-place { position:absolute; left:190px; top:148px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+
+  /* ---- paper card, lower band (design sheet section 9): the page's own image, 10 px of beige round it ---- */
+  .six-card { position:absolute; left:96px; top:640px; width:1480px; height:303px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .six-crop { position:absolute; left:10px; top:10px; width:1460px; height:283px; mix-blend-mode:multiply; }
+  .six-unlit { position:absolute; left:0; top:0; width:1480px; height:303px; }
+  .six-dim { position:absolute; background:rgba(21,32,43,0.45); }
+  .six-ul { position:absolute; left:863px; top:281px; width:572px; height:6px; background:#d0121f; }
+  .six-src { position:absolute; right:360px; top:957px; font:700 20px Arial, sans-serif; color:#dfe7ee; letter-spacing:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="six-root" data-composition-id="g-a2s14-six" data-width="1920" data-height="1080">
+
+  <!-- ================= map block: BM-1 inlined, ids prefixed six- ================= -->
+  <svg class="six-map" id="six-map" viewBox="296 166 360 150" preserveAspectRatio="xMidYMid meet" fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <g id="six-map-neighbours" stroke="#93a3b2" stroke-opacity="0.4">
+    </g>
+    <g id="six-map-counties" fill="#15202b" stroke="#93a3b2" stroke-width="1.5">
+    </g>
+    <g id="six-map-state" stroke-width="3">
+    </g>
+    <!-- town dots at the file's positions; the radius is ours: 6 px on screen is 2 units in NORTH, 1 in MARSHALL -->
+    <g id="six-map-points" fill="#dfe7ee" stroke="none">
+      <g id="six-pt-south-bend" class="six-h"><circle class="six-dot" cx="462.2" cy="188.5" r="2"/></g>
+      <g id="six-pt-plymouth" class="six-h"><circle class="six-dot" cx="455.7" cy="249.1" r="2"/></g>
+      <g id="six-pt-argos" class="six-h"><circle class="six-dot" cx="464.1" cy="269.6" r="2"/></g>
+      <g id="six-pt-donaldson" class="six-h"><circle class="six-dot" cx="439.9" cy="246.6" r="2"/></g>
+    </g>
+  </svg>
+
+  <!-- ---- labels over the map: a fixed layer, nothing here rides the camera ---- -->
+  <div class="six-town six-h" id="six-sb" style="left:1232px;top:118px">South Bend</div>
+  <div class="six-at" style="left:1205px;top:174px"><div class="six-co six-h" id="six-n1">ST. JOSEPH</div></div>
+  <div class="six-at" style="left:1218px;top:324px"><div class="six-co six-h" id="six-n2">MARSHALL</div></div>
+  <div class="six-at" style="left:1371px;top:173px"><div class="six-co six-h" id="six-n3">ELKHART</div></div>
+  <div class="six-at" style="left:1369px;top:372px"><div class="six-co six-h" id="six-n4">KOSCIUSKO</div></div>
+
+  <!-- ---- three tornado marks (media/drawings/tornado-mark.svg): the point of each is 12 px straight above its town's dot ---- -->
+  <svg class="six-mark six-h" id="six-m1" style="left:1185.2px;top:184.1px" viewBox="-6 -6 72 92">
+    <g fill="none" stroke="#dfe7ee" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 6 H57"/><path d="M14 26 H52"/><path d="M20 46 H42"/><path d="M27 64 L30 76"/>
+    </g>
+  </svg>
+  <svg class="six-mark six-h" id="six-m2" style="left:1235.6px;top:307.1px" viewBox="-6 -6 72 92">
+    <g fill="none" stroke="#dfe7ee" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 6 H57"/><path d="M14 26 H52"/><path d="M20 46 H42"/><path d="M27 64 L30 76"/>
+    </g>
+  </svg>
+  <svg class="six-mark six-h" id="six-m3" style="left:1090.4px;top:169.1px" viewBox="-6 -6 72 92">
+    <g fill="none" stroke="#dfe7ee" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 6 H57"/><path d="M14 26 H52"/><path d="M20 46 H42"/><path d="M27 64 L30 76"/>
+    </g>
+  </svg>
+  <!-- town labels, placed by hand: Plymouth and Argos east of their dots, Donaldson west of its own -->
+  <div class="six-town six-h" id="six-t1" style="left:1228px;top:262px">Plymouth</div>
+  <div class="six-town six-h" id="six-t2" style="left:1279px;top:380px">Argos</div>
+  <div class="six-town six-h" id="six-t3" style="right:832px;top:235px">Donaldson</div>
+
+  <!-- ================= clock stamp: 6:00 PM ================= -->
+  <div class="six-stamp six-h" id="six-stamp">
+    <svg class="six-face" viewBox="0 0 200 200" fill="none" stroke="#dfe7ee" stroke-linecap="round">
+      <circle cx="95" cy="100" r="62" stroke-width="4"/>
+      <g stroke-width="3">
+        <line x1="95.0" y1="45.0" x2="95.0" y2="59.0"/>
+        <line x1="122.5" y1="52.4" x2="118.5" y2="59.3"/>
+        <line x1="142.6" y1="72.5" x2="135.7" y2="76.5"/>
+        <line x1="150.0" y1="100.0" x2="136.0" y2="100.0"/>
+        <line x1="142.6" y1="127.5" x2="135.7" y2="123.5"/>
+        <line x1="122.5" y1="147.6" x2="118.5" y2="140.7"/>
+        <line x1="95.0" y1="155.0" x2="95.0" y2="141.0"/>
+        <line x1="67.5" y1="147.6" x2="71.5" y2="140.7"/>
+        <line x1="47.4" y1="127.5" x2="54.3" y2="123.5"/>
+        <line x1="40.0" y1="100.0" x2="54.0" y2="100.0"/>
+        <line x1="47.4" y1="72.5" x2="54.3" y2="76.5"/>
+        <line x1="67.5" y1="52.4" x2="71.5" y2="59.3"/>
+      </g>
+      <line id="six-hh" x1="95" y1="100" x2="95" y2="66" stroke="#f2f5f8" stroke-width="5"/>
+      <line id="six-mh" x1="95" y1="100" x2="95" y2="48" stroke="#f2f5f8" stroke-width="5"/>
+      <circle cx="95" cy="100" r="5" fill="#e8c56a" stroke="none"/>
+    </svg>
+    <div class="six-eye">WEATHER BUREAU</div>
+    <div class="six-time">6:00 PM</div>
+    <div class="six-place six-h" id="six-place">South Bend, Indiana</div>
+  </div>
+
+  <!-- ================= paper card: the survey's 6:00 PM entry ================= -->
+  <div class="six-card six-h" id="six-card">
+    <img class="six-crop" src="media/docs/survey-p39-600pm-crop.png" alt="">
+    <!-- the unlit page: the whole crop except the box round "during the next 30 to 60 minutes." (card x 855 to 1443, y 243 to 281) -->
+    <div class="six-unlit six-h" id="six-unlit">
+      <div class="six-dim" style="left:10px;top:10px;width:1460px;height:233px"></div>
+      <div class="six-dim" style="left:10px;top:243px;width:845px;height:38px"></div>
+      <div class="six-dim" style="left:1443px;top:243px;width:27px;height:38px"></div>
+      <div class="six-dim" style="left:10px;top:281px;width:1460px;height:12px"></div>
+    </div>
+    <div class="six-ul" id="six-ul"></div>
+  </div>
+  <div class="six-src six-h" id="six-src">Weather Bureau survey report, 1965, p. 39</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a2s14-six", P = "six";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+
+  /* ---- camera block: the viewBox is the camera. A push is geometric (the logZoom maths of library/inhouse/snippets/helpers.js:
+          the width runs w0 x (w1 / w0)^p). Every viewBox number and every dot radius is a straight line in that width, so one
+          ease on a plain attr tween moves them all together and lands the end values exactly; no onUpdate, so a seek with
+          events off lands the camera too. ratio = w1 / w0 ---- */
+  var map = $("map"), dots = map.querySelectorAll(".six-dot");
+  function camEase(ratio, ease) { var e = gsap.parseEase(ease); return function (p) { return (1 - Math.pow(ratio, e(p))) / (1 - ratio); }; }
+  function cam(viewBox, dotR, ratio, t, d, ease) {
+    tl.to(map, { attr: { viewBox: viewBox }, duration: d, ease: camEase(ratio, ease) }, t);
+    tl.to(dots, { attr: { r: dotR }, duration: d, ease: camEase(ratio, ease) }, t);        /* a dot stays 6 px on screen */
+  }
+
+  /* ---- lit-county block: the family's lit value is Amber 2 at 0.45, a fill change on the county's own path ---- */
+  function light(county, t) { tl.to($("co-in-" + county), { fill: "#e8c56a", fillOpacity: 0.45, duration: 0.3, ease: "power2.out" }, t); }
+
+  /* ---- clock hands: degrees clockwise from 12, about the face centre (95, 100) ---- */
+  s0($("hh"), { rotation: 180, svgOrigin: "95 100" });      /* 6:00: hour hand straight down */
+  s0($("mh"), { rotation: 330, svgOrigin: "95 100" });      /* minute hand sweeps its last 30 degrees onto the 12 */
+  s0($("ul"), { scaleX: 0, transformOrigin: "left center" });
+
+  /* 0 · "At" @0.00: ground and the map in NORTH, lines only */
+
+  /* 1 · "6" @0.12: the clock stamp slides in from the left, the minute hand lands on the 12 */
+  tl.fromTo($("stamp"), { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 0.12);
+  tl.to($("mh"), { rotation: 360, duration: 0.5, ease: "power3.out" }, 0.32);
+
+  /* 2 · "South" @0.96: the place line rises in the stamp; South Bend's dot and label come on */
+  tl.fromTo($("place"), { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 0.96);
+  tl.to($("pt-south-bend"), { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 0.96);
+  tl.to($("sb"), { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 0.96);
+
+  /* 3 · "four" @1.64: the four counties fill in the entry's order, 0.12 s apart, each with its name */
+  light("st-joseph", 1.64);
+  light("marshall", 1.76);
+  light("elkhart", 1.88);
+  light("kosciusko", 2.00);
+  tl.fromTo($("n1"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 1.64);
+  tl.fromTo($("n2"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 1.76);
+  tl.fromTo($("n3"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 1.88);
+  tl.fromTo($("n4"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 2.00);   /* settled @2.30 */
+
+  /* 4 · "take" @2.54: the page slides in from the right; its source fades in once it is nearly home */
+  tl.fromTo($("card"), { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out", immediateRender: false }, 2.54);
+  tl.fromTo($("src"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, 2.94);
+
+  /* 5 · "for" @3.86: the rest of the page goes unlit; the underline draws left to right under "during the next 30 to 60 minutes." */
+  tl.to($("unlit"), { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 3.86);
+  tl.to($("ul"), { scaleX: 1, duration: 0.6, ease: "none" }, 3.86);
+
+  /* 6 · "That" @6.42: the county names and South Bend's label fade before the map moves; the fills stay */
+  tl.to([$("n1"), $("n2"), $("n3"), $("n4"), $("sb")], { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 6.42);
+
+  /* 7 · "was" @6.66: push NORTH to MARSHALL, 2.0 times in 0.8 s, ends @7.46 */
+  cam("373 216 180 75", 1, 0.5, 6.66, 0.8, "power2.inOut");
+
+  /* 8 · "tornadoes" @7.50: Plymouth, Argos, Donaldson in the entry's order, 0.15 s apart: dot, mark, then its label 0.1 s later */
+  function place(dot, mark, label, t) {
+    tl.to(dot, { autoAlpha: 1, duration: 0.15, ease: "power2.out" }, t);
+    tl.fromTo(mark, { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, t);
+    tl.to(label, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, t + 0.1);
+  }
+  place($("pt-plymouth"), $("m1"), $("t1"), 7.50);
+  place($("pt-argos"), $("m2"), $("t2"), 7.65);
+  place($("pt-donaldson"), $("m3"), $("t3"), 7.80);   /* last label settled @8.20 */
+
+  tl.to({}, { duration: 0.01 }, 10.38);                     /* holds to the last frame @10.39 */
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

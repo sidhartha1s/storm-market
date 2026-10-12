@@ -1,4 +1,4 @@
-Host: id=g-a2s08-first file=compositions/g-a2s08-first.html start=(timeline-map.md) duration=6.53 s plus gaps from timeline-map.md track=2
+Host: id=g-a2s08-first file=compositions/g-a2s08-first.html start=345.88 (timeline-map.md table 1; the mount in index.html wins) duration=6.69 s (wav 6.53 s plus its gaps) track=2
 
 # g-a2s08-first · A2-S8 · the first tornado's path, then its toll (wave 2, map family)
 
@@ -51,11 +51,12 @@ Cue words and times are from `audio/a2-s8.words.json` as it stood on 12 Oct 26 a
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A2-S8 | 0 | That | 0.00 | 0.00 | first frame: ground and the county map, nothing else |
-| 1 | A2-S8 | 2 | tornado | 0.88 | 0.88 | chip `The 5:45 PM tornado` slides in from the left (0.5 s, power3.out); source line fades in (0.3 s) |
-| 2 | A2-S8 | 5 | Stark | 1.82 | 1.82 | Koontz Lake dot and label, `STARKE COUNTY` label (0.3 s fades); the tornado mark fades in on the dot. The transcriber writes "Stark"; the label is spelled `STARKE` |
-| 3 | A2-S8 | 7 | to | 2.40 | 2.40 | the dotted path grows from Koontz Lake to its end and the mark rides its head (1.0 s, ease none; it arrives at 3.40) |
-| 4 | A2-S8 | 11 | South | 3.28 | 3.28 | South Bend dot and label (0.3 s) |
-| 5 | A2-S8 | 13 | Ten | 4.66 | 4.66 | map dim fades in (0.3 s); `10` lands (0.35 s, `y:24` to 0 with the fade); `lives lost` and `this tornado` follow 0.25 s later. Hold to the end |
+| 1 | A2-S8 | 2 | tornado | 0.88 | 0.39 | chip `The 5:45 PM tornado` slides in from the left (0.5 s, power3.out); source line fades in (0.3 s) |
+| 2 | A2-S8 | 5 | Stark | 1.82 | 1.33 | Koontz Lake dot and label, `STARKE COUNTY` label (0.3 s fades); the tornado mark fades in on the dot. The transcriber writes "Stark"; the label is spelled `STARKE` |
+| 3 | A2-S8 | 7 | to | 2.40 | 1.91 | the dotted path grows from Koontz Lake to its end and the mark rides its head (1.0 s, ease none; it arrives at 3.40) |
+| 4 | A2-S8 | 11 | South | 3.28 | 2.79 | South Bend dot and label (0.3 s) |
+| 5 | A2-S8 | 13 | Ten | 4.66 | 4.17 | map dim fades in (0.3 s); `10` lands (0.35 s, `y:24` to 0 with the fade); `lives lost` and `this tornado` follow 0.25 s later. Hold to the end |
+Time basis (converted 12 Oct 26 from wav sums): t from comp start = the segment's wav start inside the composition (`mg_specs/timeline-map.md` table 5) plus the word's time in words.json; a segment's first word uses table 5's first sound. Gaps are now included. Where another line of this brief quotes a second from the comp's start, this table wins.
 
 ## 6. Contract
 As `references/mg-brief-template.md` section 6, with these: file `compositions/g-a2s08-first.html` is the only file the builder writes; `data-composition-id="g-a2s08-first"`; id prefix `first-`; root `<div id="first-root" ...>` styled through `#first-root` (plan rule 3 overrides the template's `id="root"`). Full frame, own ground on from frame 0.

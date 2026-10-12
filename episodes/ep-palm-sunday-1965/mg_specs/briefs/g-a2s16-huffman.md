@@ -1,4 +1,4 @@
-Host: id=g-a2s16-huffman file=compositions/g-a2s16-huffman.html start=(timeline-map.md) duration=15.04 s plus gaps from timeline-map.md track=2
+Host: id=g-a2s16-huffman file=compositions/g-a2s16-huffman.html start=415.62 (timeline-map.md table 1; the mount in index.html wins) duration=15.43 s (wav 15.04 s plus its gaps) track=2
 
 # g-a2s16-huffman · A2-S16 · a photographer in Elkhart is told where to look (wave 2, map family)
 
@@ -56,15 +56,16 @@ Cue words and times are from `audio/a2-s16.words.json` as it stood on 12 Oct 26 
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A2-S16 | 0 | In | 0.00 | 0.00 | first frame: ground and the map in NORTH, no dot, no label |
-| 1 | A2-S16 | 1 | Oakhart, | 0.40 | 0.40 | Elkhart dot and label fade in (0.3 s) |
-| 2 | A2-S16 | 6 | Paul | 2.70 | 2.70 | name card slides in from the left (0.6 s, power3.out), name then sub (0.15 s apart) |
-| 3 | A2-S16 | 9 | sifting | 4.12 | 4.12 | source line fades in (0.3 s) |
-| 4 | A2-S16 | 15 | editor | 5.70 | 5.70 | Elkhart County's outline turns Headline white (0.4 s) |
-| 5 | A2-S16 | 22 | Before | 8.24 | 8.24 | label `Elkhart` fades (0.2 s, starting 0.2 s earlier); push NORTH to ELKHART (0.9 s, ends 9.14); label back at its new place at 9.20 |
-| 6 | A2-S16 | 26 | South | 9.42 | 9.42 | South Bend dot and label fade in (0.3 s) |
-| 7 | A2-S16 | 30 | told | 10.62 | 10.62 | dotted link draws from South Bend to Elkhart (0.5 s) |
-| 8 | A2-S16 | 38 | Napanee, | 12.90 | 12.90 | Nappanee dot and label (0.3 s); the tornado mark fades in northwest of it 0.15 s later |
-| 9 | A2-S16 | 40 | northeast. | 14.04 | 14.04 | the arrow draws from the mark toward the northeast (0.4 s). Hold to the end |
+| 1 | A2-S16 | 1 | Oakhart, | 0.40 | 0.11 | Elkhart dot and label fade in (0.3 s) |
+| 2 | A2-S16 | 6 | Paul | 2.70 | 2.41 | name card slides in from the left (0.6 s, power3.out), name then sub (0.15 s apart) |
+| 3 | A2-S16 | 9 | sifting | 4.12 | 3.83 | source line fades in (0.3 s) |
+| 4 | A2-S16 | 15 | editor | 5.70 | 5.41 | Elkhart County's outline turns Headline white (0.4 s) |
+| 5 | A2-S16 | 22 | Before | 8.24 | 7.95 | label `Elkhart` fades (0.2 s, starting 0.2 s earlier); push NORTH to ELKHART (0.9 s, ends 9.14); label back at its new place at 9.20 |
+| 6 | A2-S16 | 26 | South | 9.42 | 9.13 | South Bend dot and label fade in (0.3 s) |
+| 7 | A2-S16 | 30 | told | 10.62 | 10.33 | dotted link draws from South Bend to Elkhart (0.5 s) |
+| 8 | A2-S16 | 38 | Napanee, | 12.90 | 12.61 | Nappanee dot and label (0.3 s); the tornado mark fades in northwest of it 0.15 s later |
+| 9 | A2-S16 | 40 | northeast. | 14.04 | 13.75 | the arrow draws from the mark toward the northeast (0.4 s). Hold to the end |
+Time basis (converted 12 Oct 26 from wav sums): t from comp start = the segment's wav start inside the composition (`mg_specs/timeline-map.md` table 5) plus the word's time in words.json; a segment's first word uses table 5's first sound. Gaps are now included. Where another line of this brief quotes a second from the comp's start, this table wins.
 Longest stretch with no change: 12.9 minus 10.6 (2.3 s), inside the beat rule.
 
 ## 6. Contract

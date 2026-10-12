@@ -1,4 +1,4 @@
-Host: id=g-a2s01-radar file=compositions/g-a2s01-radar.html start=(timeline-map.md) duration=16.29 s plus gaps from timeline-map.md track=2
+Host: id=g-a2s01-radar file=compositions/g-a2s01-radar.html start=289.61 (timeline-map.md table 1; the mount in index.html wins) duration=16.69 s (wavs 16.29 s plus their gaps) track=2
 
 # g-a2s01-radar · A2-S1, A2-S2 · what the 5:43 warning said, and where its radar news came from (wave 2, map family)
 
@@ -65,18 +65,19 @@ Cue words and times are from `audio/a2-s1.words.json` and `audio/a2-s2.words.jso
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A2-S1 | 0 | The | 0.00 | 0.00 | first frame: ground and the map in NORTH, no dot, no label |
-| 1 | A2-S1 | 1 | warning | 0.50 | 0.50 | clock stamp slides in from the left (0.6 s, power3.out), hands already at 5:43 |
-| 2 | A2-S1 | 2 | said | 0.76 | 0.76 | document card slides in from the right (`x:660` to 0, 0.7 s, power3.out); document source fades in after it |
-| 3 | A2-S1 | 9 | Michigan | 3.10 | 3.10 | Michigan City dot and label; echo 1 fades in (0.4 s) |
-| 4 | A2-S1 | 15 | Knox | 5.00 | 5.00 | Knox dot and label; echo 2 fades in (0.4 s) |
-| 5 | A2-S1 | 20 | three | 7.06 | 7.06 | LaPorte, Starke, Marshall fill in that order, 0.12 s apart (0.3 s each), each with its name |
-| 6 | A2-S1 | 22 | to | 7.70 | 7.70 | unlit page fades in; underline draws under `should be on the alert` (0.5 s, left to right) |
-| 7 | A2-S2 | 0 | But | 0.00 | 9.00 | card and document source exit right (`x:1900`, 0.5 s, power3.in); stamp exits left (0.5 s); county fills and names, town labels fade (0.3 s) |
-| 8 | A2-S2 | 1 | South | 0.52 | 9.52 | pull back NORTH to WIDE (0.8 s); the two echoes stay on the map, smaller |
-| 9 | A2-S2 | 5 | radar. | 1.40 | 10.40 | South Bend dot, `South Bend`, then `no radar` 0.15 s later |
-| 10 | A2-S2 | 6 | Its | 2.60 | 11.60 | source line fades in (0.3 s) |
-| 11 | A2-S2 | 12 | telephone | 3.90 | 12.90 | Chicago dot; the telephone line draws from Chicago to South Bend (0.6 s); `by telephone` fades in at its end |
-| 12 | A2-S2 | 14 | operators | 4.88 | 13.88 | rings and labels at Chicago, Fort Wayne, Indianapolis, 0.25 s apart; each sweep line makes its one turn. Hold to the end |
+| 1 | A2-S1 | 1 | warning | 0.50 | 0.08 | clock stamp slides in from the left (0.6 s, power3.out), hands already at 5:43 |
+| 2 | A2-S1 | 2 | said | 0.76 | 0.34 | document card slides in from the right (`x:660` to 0, 0.7 s, power3.out); document source fades in after it |
+| 3 | A2-S1 | 9 | Michigan | 3.10 | 2.68 | Michigan City dot and label; echo 1 fades in (0.4 s) |
+| 4 | A2-S1 | 15 | Knox | 5.00 | 4.58 | Knox dot and label; echo 2 fades in (0.4 s) |
+| 5 | A2-S1 | 20 | three | 7.06 | 6.64 | LaPorte, Starke, Marshall fill in that order, 0.12 s apart (0.3 s each), each with its name |
+| 6 | A2-S1 | 22 | to | 7.70 | 7.28 | unlit page fades in; underline draws under `should be on the alert` (0.5 s, left to right) |
+| 7 | A2-S2 | 0 | But | 0.00 | 9.07 | card and document source exit right (`x:1900`, 0.5 s, power3.in); stamp exits left (0.5 s); county fills and names, town labels fade (0.3 s) |
+| 8 | A2-S2 | 1 | South | 0.52 | 9.17 | pull back NORTH to WIDE (0.8 s); the two echoes stay on the map, smaller |
+| 9 | A2-S2 | 5 | radar. | 1.40 | 10.05 | South Bend dot, `South Bend`, then `no radar` 0.15 s later |
+| 10 | A2-S2 | 6 | Its | 2.60 | 11.25 | source line fades in (0.3 s) |
+| 11 | A2-S2 | 12 | telephone | 3.90 | 12.55 | Chicago dot; the telephone line draws from Chicago to South Bend (0.6 s); `by telephone` fades in at its end |
+| 12 | A2-S2 | 14 | operators | 4.88 | 13.53 | rings and labels at Chicago, Fort Wayne, Indianapolis, 0.25 s apart; each sweep line makes its one turn. Hold to the end |
+Time basis (converted 12 Oct 26 from wav sums): t from comp start = the segment's wav start inside the composition (`mg_specs/timeline-map.md` table 5) plus the word's time in words.json; a segment's first word uses table 5's first sound. Gaps are now included. Where another line of this brief quotes a second from the comp's start, this table wins.
 
 ## 6. Contract
 As `references/mg-brief-template.md` section 6, with these: file `compositions/g-a2s01-radar.html` is the only file the builder writes; `data-composition-id="g-a2s01-radar"`; id prefix `radar-`; root `<div id="radar-root" ...>` styled through `#radar-root` (plan rule 3 overrides the template's `id="root"`). Full frame, own ground on from frame 0.

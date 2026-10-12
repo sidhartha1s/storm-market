@@ -1,4 +1,4 @@
-Host: id=g-a1s18-list file=compositions/g-a1s18-list.html start=(timeline-map.md) duration=11.49 s plus gaps from timeline-map.md track=2
+Host: id=g-a1s18-list file=compositions/g-a1s18-list.html start=277.23 (timeline-map.md table 1; the mount in index.html wins) duration=11.68 s (wavs 11.49 s plus their gaps) track=2
 
 # g-a1s18-list · A1-S18, A1-S19 · 5:43 PM, one message, one telephone list (wave 2, list family)
 
@@ -50,12 +50,13 @@ Cue words and times are from `audio/a1-s18.words.json` and `audio/a1-s19.words.j
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A1-S18 | 0 | At | 0.00 | 0.00 | first frame: the photograph under its scrim, the photo caption on. The push starts (11.49 s) |
-| 1 | A1-S18 | 1 | 543 | 0.52 | 0.52 | the stamp slides in (`x:-660` to 0 with the fade, 0.6 s, power3.out); the minute hand sweeps its last 30 degrees, 228 to 258 (0.5 s, from 0.72) |
-| 2 | A1-S18 | 2 | South | 1.40 | 1.40 | the place line `South Bend, Indiana` rises inside the stamp (`y:16` to 0, 0.3 s) |
-| 3 | A1-S18 | 10 | Now | 4.68 | 4.68 | the scrim deepens (0.7 s) |
-| 4 | A1-S18 | 17 | telephone | 6.68 | 6.68 | the list sheet slides in from the right in the Beside state (world `x` from tx + 900 to tx, 0.7 s, power3.out; it lands at 7.38), rows already typed; the photo caption gives way to the list source (0.3 s cross fade) |
-| 5 | A1-S19 | 0 | How | 0.00 | 8.402 | hold on the clock and the list |
-| 6 | A1-S19 | 1 | long | 0.58 | 8.982 | the minute hand starts to move: 258 to 264 degrees over 2.50 s, `power1.in`, ending on the comp's last frame (11.485); the hour hand moves 171.5 to 172 with it |
+| 1 | A1-S18 | 1 | 543 | 0.52 | 0.11 | the stamp slides in (`x:-660` to 0 with the fade, 0.6 s, power3.out); the minute hand sweeps its last 30 degrees, 228 to 258 (0.5 s, from 0.72) |
+| 2 | A1-S18 | 2 | South | 1.40 | 0.99 | the place line `South Bend, Indiana` rises inside the stamp (`y:16` to 0, 0.3 s) |
+| 3 | A1-S18 | 10 | Now | 4.68 | 4.27 | the scrim deepens (0.7 s) |
+| 4 | A1-S18 | 17 | telephone | 6.68 | 6.27 | the list sheet slides in from the right in the Beside state (world `x` from tx + 900 to tx, 0.7 s, power3.out; it lands at 7.38), rows already typed; the photo caption gives way to the list source (0.3 s cross fade) |
+| 5 | A1-S19 | 0 | How | 0.00 | 8.48 | hold on the clock and the list |
+| 6 | A1-S19 | 1 | long | 0.58 | 8.62 | the minute hand starts to move: 258 to 264 degrees over 2.50 s, `power1.in`, ending on the comp's last frame (11.485); the hour hand moves 171.5 to 172 with it |
+Time basis (converted 12 Oct 26 from wav sums): t from comp start = the segment's wav start inside the composition (`mg_specs/timeline-map.md` table 5) plus the word's time in words.json; a segment's first word uses table 5's first sound. Gaps are now included. Where another line of this brief quotes a second from the comp's start, this table wins.
 Entrance check for step 4: at its start the sheet's left edge is at x 1640 and its bottom at y 759, inside the corner zone for the first frames of the slide. Give the slide a lead on y as `g-t1s3-list` does: start the sheet 120 px high (world `y` from ty - 120 to ty, `power3.out`) so its bottom edge is above y 680 until its right edge is left of x 1600, and read the first three frames of the slide.
 
 ## 6. Contract

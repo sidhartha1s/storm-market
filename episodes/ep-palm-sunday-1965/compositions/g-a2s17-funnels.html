@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a2s17-funnels (A2-S17, A2-S18): the twin funnels photograph, whole and slowly nearer; one number in the grass under it;
+     then a hard cut to a small print of what the evening left. Brief: mg_specs/briefs/g-a2s17-funnels.md.
+     BASE OF THE PHOTOGRAPH FAMILY. Three blocks lift out whole (CSS and markup are marked): the fitted picture over a soft
+     copy of itself, the place chip, the toll on a glass card.
+     Photograph 1: media/stills/c1-elkhart-twin-funnel.jpg, 1188 x 1068, Paul Huffman, The Elkhart Truth, 6:32 PM, April 11, 1965.
+       Fitted to the frame's height (1080 / 1068 = 1.0112: 1201 x 1080 at left 359), never at cover. Pushed 1.00 to 1.05 about (960, 540).
+       Below file y 772 the picture is dark road and grass: every label of ours sits there or left of the picture.
+     Photograph 2: media/stills/c2-dunlap-sunnyside-damage.jpg, 800 x 647, Sunnyside subdivision, Dunlap. Shown as a print at its own
+       size or smaller (0.95 to 1.00 about file point 400, 324); the window 722 x 574 never shows the file's faded edge.
+     Cues: audio/a2-s17.words.json seconds minus 0.50, audio/a2-s18.words.json seconds plus 12.74 (mg_specs/timeline-map.md table 5). -->
+<template>
+<style>
+  #fun-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .fun-h { opacity:0; visibility:hidden; }
+  .fun-layer { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* ---- FAMILY BLOCK 1: the fitted picture over a soft copy of itself ---- */
+  .fun-soft { position:absolute; left:-40px; top:-40px; width:2000px; height:1160px; object-fit:cover; object-position:50% 50%; }
+  .fun-soft-a { filter:blur(22px) brightness(0.6); }
+  .fun-soft-b { filter:blur(9px) brightness(0.7); }
+  .fun-dim { position:absolute; inset:0; background:rgba(3,5,8,0.45); }
+  .fun-fit { position:absolute; left:359px; top:0; width:1201px; height:1080px; box-shadow:0 0 60px rgba(0,0,0,0.6); }
+
+  /* ---- FAMILY BLOCK 2: the place chip (glass, one line, names what the photograph shows) ---- */
+  .fun-chip { position:absolute; left:110px; bottom:110px; padding:14px 26px; font:900 34px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+
+  /* ---- FAMILY BLOCK 3: a toll on a glass card (figure, two-line label, source) ---- */
+  .fun-toll { position:absolute; left:1010px; top:792px; width:560px; height:200px; }
+  .fun-toll-card { position:absolute; inset:0; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .fun-toll-num { position:absolute; left:30px; top:40px; font:120px 'AbrilFig', Georgia, serif; color:#d0121f; letter-spacing:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  .fun-toll-lab { position:absolute; left:214px; font:900 34px 'Arial Black', Arial, sans-serif; color:#f2f5f8; letter-spacing:0.12em; white-space:nowrap; line-height:1;
+    -webkit-text-stroke:1px rgba(0,0,0,0.85); paint-order:stroke fill; text-shadow:0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+  .fun-toll-src { position:absolute; left:214px; top:130px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+
+  /* ---- this comp only: the clock chip, the credit, the print ---- */
+  .fun-clock { position:absolute; left:96px; top:96px; width:228.8px; height:62px; box-sizing:border-box; text-align:center; font:700 44px 'Courier New', monospace; color:#e8c56a;
+    white-space:nowrap; line-height:60px; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .fun-credit { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .fun-print { position:absolute; left:589px; top:243px; width:722px; height:574px; overflow:hidden; border:10px solid #f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .fun-print img { position:absolute; left:-39px; top:-37px; width:800px; height:647px; }
+</style>
+<div id="fun-root" data-composition-id="g-a2s17-funnels" data-width="1920" data-height="1080">
+
+  <!-- LAYER A (A2-S17): on from frame 0, off on the cut at 13.10 -->
+  <div class="fun-layer" id="fun-a">
+    <!-- family block 1 -->
+    <img class="fun-soft fun-soft-a" src="media/stills/c1-elkhart-twin-funnel.jpg" alt="">
+    <div class="fun-dim"></div>
+    <img class="fun-fit" id="fun-fit" src="media/stills/c1-elkhart-twin-funnel.jpg" alt="">
+    <!-- this comp only -->
+    <div class="fun-clock fun-h" id="fun-clock">6:32 PM</div>
+    <div class="fun-credit" id="fun-credit">Paul Huffman, The Elkhart Truth &middot; April 11, 1965</div>
+    <!-- family block 2 -->
+    <div class="fun-chip fun-h" id="fun-chip1">Midway Trailer Court</div>
+    <!-- family block 3 -->
+    <div class="fun-toll" id="fun-toll">
+      <div class="fun-toll-card fun-h" id="fun-toll-card"></div>
+      <div class="fun-toll-num fun-h" id="fun-toll-num">14</div>
+      <div class="fun-toll-lab fun-h" id="fun-toll-l1" style="top:30px">lives lost</div>
+      <div class="fun-toll-lab fun-h" id="fun-toll-l2" style="top:74px">this tornado</div>
+      <div class="fun-toll-src fun-h" id="fun-toll-src">National Weather Service</div>
+    </div>
+  </div>
+
+  <!-- LAYER B (A2-S18): on from the cut at 13.10 to the last frame -->
+  <div class="fun-layer fun-h" id="fun-b">
+    <img class="fun-soft fun-soft-b" src="media/stills/c2-dunlap-sunnyside-damage.jpg" alt="">
+    <div class="fun-print"><img id="fun-print-img" src="media/stills/c2-dunlap-sunnyside-damage.jpg" alt=""></div>
+    <!-- family block 2 -->
+    <div class="fun-chip fun-h" id="fun-chip2">Sunnyside &middot; Dunlap, Indiana</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a2s17-funnels", P = "fun", D = 18.96, CUT = 13.10;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+
+  /* start states: hidden in CSS (fun-h), transforms set here at 0; every move from rest below is a plain to() */
+  s0($("fit"), { scale: 1, transformOrigin: "50% 50%" });
+  s0($("clock"), { x: -40 });
+  s0($("chip1"), { x: -60 });
+  s0($("chip2"), { x: -60 });
+  s0($("toll-num"), { y: 24 });
+  s0($("print-img"), { scale: 0.95, transformOrigin: "400px 324px" });
+
+  /* ---- layer A ---- */
+  tl.to($("fit"), { scale: 1.05, duration: CUT, ease: "none" }, 0);                                         /* At @0.00: the push, 1.00 to 1.05, carries the whole of A2-S17 */
+  tl.to($("clock"), { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0.26);                       /* 6 (.32) @0.26 */
+  tl.to($("chip1"), { x: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 1.44);                       /* this @1.44 */
+                                                                                                            /* The @4.72: nothing new, the photograph is the subject */
+  tl.to($("toll-card"), { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 9.24);                         /* Fourteen @9.24 */
+  tl.to($("toll-num"), { y: 0, autoAlpha: 1, duration: 0.35, ease: "power4.out" }, 9.24);
+  tl.to([$("toll-l1"), $("toll-l2"), $("toll-src")], { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 9.49);
+
+  /* ---- the cut: one frame, nothing of layer A after it ---- */
+  tl.set($("a"), { autoAlpha: 0 }, CUT);                                                                    /* And @13.10 */
+  tl.set($("b"), { autoAlpha: 1 }, CUT);
+
+  /* ---- layer B ---- */
+  tl.to($("print-img"), { scale: 1, duration: D - CUT, ease: "none" }, CUT);                                /* the print comes to its own size, never past it */
+  tl.to($("chip2"), { x: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 13.70);                      /* Sunnyside @13.70 */
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

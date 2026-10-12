@@ -51,7 +51,7 @@ Columns: comp id · segments · kind · what the viewer sees and what changes on
 ### A2 · One message, one telephone list (13 compositions, 21 segments)
 | Comp | Segments | Kind | Viewer sees, and the change per segment | Assets | Reuses | Wave |
 |---|---|---|---|---|---|---|
-| g-a2s01-radar | A2-S1, A2-S2 | map | S1: Indiana, drawn echo blobs near Michigan City and west of Knox, three counties light, the 5:43 entry's body on a paper card, underline on "should be on the alert". S2: pull back; radar rings at Chicago, Fort Wayne, Indianapolis; South Bend a bare dot; a telephone line Chicago to South Bend | `BM-1`, `BM-2`, `PC-02` | `compositions/g-t1s2-warning.html` (page card) | 2 |
+| g-a2s01-radar | A2-S1, A2-S2 | map | S1: Indiana, drawn echo blobs near Michigan City and west of Knox, three counties light, the 5:43 entry's body on a paper card, underline on "should be on the alert". S2: pull back; radar rings at Chicago, Fort Wayne, Indianapolis; South Bend a bare dot; a telephone line Chicago to South Bend | `BM-1`, `PC-02` | `compositions/g-t1s2-warning.html` (page card) | 2 |
 | g-a2s03-chain | A2-S3, A2-S4, A2-S5 | graphic | S3: the chain gains a station in front of South Bend, a radar scope on a solid link. S4: film window (operators); on "office after office" the window goes and the list takes the frame. S5: back to the chain with its clock; an amber arc "at least 10 minutes" grows from 5:43 while light crawls from list to microphone | `DR-02`, `DR-01`, `DR-09`, `FC-03`, `media/drawings/telephone-lifted.svg`, `media/drawings/microphone.svg`, `media/drawings/house.svg` | `compositions/g-i1s9-chain.html`, `compositions/g-t1s3-list.html` | 2 |
 | g-a2s06-headstart | A2-S6, A2-S7 | graphic | S6: two glass cards with clock faces, "5:45 PM · Starke County" and "about 6:00 PM · Marshall County", each with its own source, each on its own sentence. S7: the amber bar "at least 10 minutes" laid against 2 minutes and against 17 | `DR-09` | `compositions/g-t1s2-warning.html` (clock face) | 1 |
 | g-a2s08-first | A2-S8 | map | Indiana: a path from Koontz Lake in Starke County to just south of South Bend; then the toll on glass "10 lives lost · this tornado" | `BM-1`, `DR-03` | `compositions/g-t1s1-toll.html` (toll type) | 2 |
@@ -161,7 +161,7 @@ Built by `media/maps/build_maps.py` from two US Census files in `media/data/` (`
 | Id | File | viewBox (x y w h) | Largest fit inside the text-safe area | Units with an id | Town dots | Needed by |
 |---|---|---|---|---|---|---|
 | BM-1 | `media/maps/indiana-counties.svg` | 96 100 664 880 | scale 1.1045, 733 x 972 px, left 593, top 54 | 92 counties `co-in-<name>`, Indiana's outline `st-in`, neighbours `st-il st-mi st-oh st-ky` cut to the window | 21: South Bend, Michigan City, Knox, Koontz Lake, Plymouth, Argos, Donaldson, Bremen, Goshen, Elkhart, Dunlap, Nappanee, Fort Wayne, Berne, Linn Grove, Marion, Indianapolis, Kokomo, Russiaville, Greentown, Chicago | a1s02, a1s09, a2s01, a2s08, a2s14, a2s16, a2s19, a3s01, a3s05, a4s16, a5s01, a5s04, a5s07, a5s10, z1s04 |
-| BM-2 | `media/maps/midwest-states.svg` | -980 -1280 2220 2560 | scale 0.3797, 843 x 972 px, left 539, top 54 | 9 states: `st-mo st-ia st-il st-wi st-in st-mi st-oh st-ky st-mn` | 7: Kansas City, Chicago, South Bend, Fort Wayne, Indianapolis, Toledo, Columbus | a1s02, a1s09, a2s01, a5s16, a6s07 |
+| BM-2 | `media/maps/midwest-states.svg` | -980 -1280 2220 2560 | scale 0.3797, 843 x 972 px, left 539, top 54 | 9 states: `st-mo st-ia st-il st-wi st-in st-mi st-oh st-ky st-mn` | 7: Kansas City, Chicago, South Bend, Fort Wayne, Indianapolis, Toledo, Columbus | a1s02, a1s09, a5s16, a6s07 |
 | BM-3 | `media/maps/us-states.svg` | -4490 -1300 7470 4720 | scale 0.2059, 1538 x 972 px, left 191, top 54 | 48 states and DC, `st-<postal code>`; the L of A1-S6 sits over `st-nd st-sd st-mn` | none | a1s06 |
 
 What a brief carries for every map graphic:
@@ -316,3 +316,15 @@ Rows whose picture changed, with no film in them:
 - **g-a5s09-alto (A5-S9):** no change to the row. Alto appears as the photograph's label only; no map inset may be added to place it.
 
 Not on disk: nothing. Every file named in section 3 exists; the two extra announcer angles arrived during this check.
+
+Rows the wave 1 and 2 briefs proved wrong or made exact (12 Oct 26, evening; the brief named holds the numbers):
+- **g-a2s01-radar:** it does not need the Midwest map. The Indiana map holds Chicago, Fort Wayne and Indianapolis; the row and the BM-2 row are corrected above.
+- **g-a2s14-six (section 7 line above):** no extra push is needed. In the map family's NORTH state (3 px per map unit) Plymouth and Donaldson are 48 px apart; the labels are still placed by hand.
+- **g-a2s19-log (section 7 line above):** the three log cards do fit at their full 1460 px width under the map in the NORTH state (stack y 560 to 983).
+- **g-a2s21-list:** the list and the blank sheet cannot share the frame with the stamp; the list leaves on "typed" before the blank sheet lands.
+- **PT-05, PT-06 (forecast scans):** each card shows the typed text only (file y 0 to 312 and y 0 to 334). The figure below it carries marks added later by the page's author, some for tornadoes after the forecast time.
+- **PT-09 (Sunnyside):** the clean print inside the faded edge is file x 20 to 780, y 22 to 626; it runs 0.95 to 1.00 in a 722 x 574 window and is never enlarged.
+- **PC-04:** the page prints "too old--i.e. 15-30 minutes--" on one single-spaced line, so its underline is 4 px at 2 px under the line, not 6 px at 4 px.
+- **PC-06 and rule 18:** the next line's sliver is rows 126 to 128 of the file; the third typed line's descenders run to row 123. A 12 px mask cuts rows 117 to 128; a 4 px mask would remove the sliver alone. The brief follows the ruling and has the verifier read that edge.
+- **Stamp zone:** "EST" does not fit beside an 84 px time in the 590 px card; the briefs write the zone in the place line as `Eastern time`.
+- **Family bases:** no "Reuses" cell names g-a2s17-funnels or g-a1s05-clocks; their briefs name the later comps that copy them.

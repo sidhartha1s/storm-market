@@ -1,4 +1,4 @@
-Host: id=g-a2s21-list file=compositions/g-a2s21-list.html start=(timeline-map.md) duration=9.00 s plus gaps from timeline-map.md track=2
+Host: id=g-a2s21-list file=compositions/g-a2s21-list.html start=470.63 (timeline-map.md table 1; the mount in index.html wins) duration=9.09 s (wav 9.00 s plus its gaps) track=2
 
 # g-a2s21-list · A2-S21 · the blank row, then 6:50 PM and a blank sheet (wave 2, list family)
 
@@ -53,11 +53,12 @@ Cue words and times are from `audio/a2-s21.words.json` as it stood on 12 Oct 26 
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A2-S21 | 0 | Whose | 0.00 | 0.00 | first frame: photograph, scrim, the list sheet with eight plain rows, list source on. The ninth slot shows nothing yet. The push starts (9.00 s) |
-| 1 | A2-S21 | 5 | tell | 1.50 | 1.50 | the ninth row's rule draws (`scaleX` 0 to 1 from the left, 0.3 s); the cursor comes on at 1.80 and blinks, on 0.5 s, off 0.5 s, four times (finite) |
-| 2 | A2-S21 | 13 | 6 | 3.82 | 3.82 | the stamp slides in (`x:-660` to 0 with the fade, 0.6 s, power3.out); the minute hand sweeps its last 30 degrees, 270 to 300 (0.5 s, from 4.02), landing inside word 14 `.50,` (4.04) |
-| 3 | A2-S21 | 16 | South | 4.98 | 4.98 | the place line `South Bend, Indiana` rises inside the stamp (`y:16` to 0, 0.3 s) |
-| 4 | A2-S21 | 19 | typed | 5.90 | 5.90 | the list sheet leaves: it drops 40 px and fades (0.4 s, power2.in; gone at 6.30); the list source gives way to the photo caption (0.3 s cross fade) |
-| 5 | A2-S21 | 21 | message | 6.46 | 6.46 | the blank sheet slides in from the right (`x:660` to 0 with the fade, 0.7 s, power3.out; it lands at 7.16). Hold to the cut at 9.00 |
+| 1 | A2-S21 | 5 | tell | 1.50 | 0.94 | the ninth row's rule draws (`scaleX` 0 to 1 from the left, 0.3 s); the cursor comes on at 1.80 and blinks, on 0.5 s, off 0.5 s, four times (finite) |
+| 2 | A2-S21 | 13 | 6 | 3.82 | 3.26 | the stamp slides in (`x:-660` to 0 with the fade, 0.6 s, power3.out); the minute hand sweeps its last 30 degrees, 270 to 300 (0.5 s, from 4.02), landing inside word 14 `.50,` (4.04) |
+| 3 | A2-S21 | 16 | South | 4.98 | 4.42 | the place line `South Bend, Indiana` rises inside the stamp (`y:16` to 0, 0.3 s) |
+| 4 | A2-S21 | 19 | typed | 5.90 | 5.34 | the list sheet leaves: it drops 40 px and fades (0.4 s, power2.in; gone at 6.30); the list source gives way to the photo caption (0.3 s cross fade) |
+| 5 | A2-S21 | 21 | message | 6.46 | 5.90 | the blank sheet slides in from the right (`x:660` to 0 with the fade, 0.7 s, power3.out; it lands at 7.16). Hold to the cut at 9.00 |
+Time basis (converted 12 Oct 26 from wav sums): t from comp start = the segment's wav start inside the composition (`mg_specs/timeline-map.md` table 5) plus the word's time in words.json; a segment's first word uses table 5's first sound. Gaps are now included. Where another line of this brief quotes a second from the comp's start, this table wins.
 The hold from 7.16 to 9.00 is carried by the photograph's drift under the paper edge. After this comp the orchestrator places a 0.7 s blackout; the comp does not fade itself out.
 
 ## 6. Contract

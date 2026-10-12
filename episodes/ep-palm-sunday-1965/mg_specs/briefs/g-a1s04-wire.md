@@ -1,4 +1,4 @@
-Host: id=g-a1s04-wire file=compositions/g-a1s04-wire.html start=(timeline-map.md) duration=9.51 s plus gaps from timeline-map.md track=2
+Host: id=g-a1s04-wire file=compositions/g-a1s04-wire.html start=143.49 (timeline-map.md table 1; the mount in index.html wins) duration=9.94 s (wav 9.51 s plus its gaps) track=2
 
 # g-a1s04-wire · A1-S4 · the teletype circuit map, one pulse (wave 2, photograph family)
 
@@ -42,9 +42,10 @@ Cue words and times are from `audio/a1-s4.words.json` as it stood on 12 Oct 26 a
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A1-S4 | 0 | It | 0.00 | 0.00 | first frame: the map at scale 1.00, the bottom band on. The push starts and runs to the last frame (1.00 to 1.10, 9.51 s, ease none) |
-| 1 | A1-S4 | 3 | teletype, | 1.06 | 1.06 | caption fades in (0.3 s, `y:12` to 0) |
-| 2 | A1-S4 | 24 | typed | 8.44 | 8.44 | the amber wash: opacity 0 to 0.26 in 0.30 s (`power2.out`), then to 0 in 0.55 s (`power1.in`); it is gone by 9.29 |
-| 3 | A1-S4 | 25 | out. | 8.78 | 8.78 | no new element: the wash is at its peak inside this word (8.74). Hold to the cut at 9.51 |
+| 1 | A1-S4 | 3 | teletype, | 1.06 | 0.85 | caption fades in (0.3 s, `y:12` to 0) |
+| 2 | A1-S4 | 24 | typed | 8.44 | 8.23 | the amber wash: opacity 0 to 0.26 in 0.30 s (`power2.out`), then to 0 in 0.55 s (`power1.in`); it is gone by 9.29 |
+| 3 | A1-S4 | 25 | out. | 8.78 | 8.57 | no new element: the wash is at its peak inside this word (8.74). Hold to the cut at 9.51 |
+Time basis (converted 12 Oct 26 from wav sums): t from comp start = the segment's wav start inside the composition (`mg_specs/timeline-map.md` table 5) plus the word's time in words.json; a segment's first word uses table 5's first sound. Gaps are now included. Where another line of this brief quotes a second from the comp's start, this table wins.
 Between steps 1 and 2 (7.4 s) the push is the only motion: it must be visible on the contact sheet as a steady drift. If the read says the frame looks frozen, raise the end scale to 1.14 with the same origin and report it.
 
 ## 6. Contract

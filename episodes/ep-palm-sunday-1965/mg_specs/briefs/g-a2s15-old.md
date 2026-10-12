@@ -1,4 +1,4 @@
-Host: id=g-a2s15-old file=compositions/g-a2s15-old.html start=(timeline-map.md) duration=10.61 s plus gaps from timeline-map.md track=2
+Host: id=g-a2s15-old file=compositions/g-a2s15-old.html start=404.71 (timeline-map.md table 1; the mount in index.html wins) duration=10.91 s (wav 10.61 s plus its gaps) track=2
 
 # g-a2s15-old · A2-S15 · "too old ... to be truly worthwhile as a warning" (wave 2, page family)
 
@@ -65,13 +65,14 @@ Cue words and times are from `audio/a2-s15.words.json` as it stood on 12 Oct 26 
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A2-S15 | 0 | A | 0.00 | 0.00 | first frame: ground and the document card, all of it bright; page source on |
-| 1 | A2-S15 | 5 | tornado | 1.92 | 1.92 | the unlit page fades in over R1 and R2 (0.4 s) |
-| 2 | A2-S15 | 9 | 15 | 3.46 | 3.46 | underline A draws under `15-30 minutes` (0.5 s, power2.out) |
-| 3 | A2-S15 | 14 | They | 5.94 | 5.94 | underline B draws under `too old` (0.25 s) |
-| 4 | A2-S15 | 16 | too | 6.20 | 6.20 | the strip rises (`y:60` to 0 with the fade, 0.4 s, power3.out) showing line 1 `“too old ...` only; the page source fades out (0.3 s) |
-| 5 | A2-S15 | 19 | broadcasters | 7.24 | 7.24 | the microphone draws on beside the strip (0.6 s, longest line first) |
-| 6 | A2-S15 | 21 | to | 8.42 | 8.42 | underline C draws under line 8 (0.5 s; complete at 8.92) |
-| 7 | A2-S15 | 24 | worthwhile | 8.94 | 8.94 | the strip's second line and its attribution fade in (0.3 s). Hold to the cut at 10.61 |
+| 1 | A2-S15 | 5 | tornado | 1.92 | 1.53 | the unlit page fades in over R1 and R2 (0.4 s) |
+| 2 | A2-S15 | 9 | 15 | 3.46 | 3.07 | underline A draws under `15-30 minutes` (0.5 s, power2.out) |
+| 3 | A2-S15 | 14 | They | 5.94 | 5.55 | underline B draws under `too old` (0.25 s) |
+| 4 | A2-S15 | 16 | too | 6.20 | 5.81 | the strip rises (`y:60` to 0 with the fade, 0.4 s, power3.out) showing line 1 `“too old ...` only; the page source fades out (0.3 s) |
+| 5 | A2-S15 | 19 | broadcasters | 7.24 | 6.85 | the microphone draws on beside the strip (0.6 s, longest line first) |
+| 6 | A2-S15 | 21 | to | 8.42 | 8.03 | underline C draws under line 8 (0.5 s; complete at 8.92) |
+| 7 | A2-S15 | 24 | worthwhile | 8.94 | 8.55 | the strip's second line and its attribution fade in (0.3 s). Hold to the cut at 10.61 |
+Time basis (converted 12 Oct 26 from wav sums): t from comp start = the segment's wav start inside the composition (`mg_specs/timeline-map.md` table 5) plus the word's time in words.json; a segment's first word uses table 5's first sound. Gaps are now included. Where another line of this brief quotes a second from the comp's start, this table wins.
 
 ## 6. Contract
 As `references/mg-brief-template.md` section 6, with these: file `compositions/g-a2s15-old.html` is the only file the builder writes; `data-composition-id="g-a2s15-old"`; id prefix `old-`; root `<div id="old-root" ...>` styled through `#old-root` (plan rule 3 overrides the template's `id="root"`). Full frame, own ground on from frame 0.

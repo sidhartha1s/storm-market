@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1s13-chain · A1-S13 · window 5.75 s · brief: mg_specs/briefs/g-a1s13-chain.md
+  Claim: the 1966 study found the two afternoon forecasts gave the local Weather Bureau offices enough notice.
+  The first link of the chain worked. Nothing past the telephone lights: the light never passes x 316.
+  SCHEMATIC, NOT TO SCALE: who told whom, left to right. Link line y 520. No desk, no stop mark, no headline.
+  Cues are comp-local seconds (audio/a1-s13.words.json minus 0.32). Drawings: media/drawings (README.md beside them).
+  FAMILY BASE: later chain graphics copy three blocks from here, each marked BASE below:
+    stations (one group per station), links (one path per link), the travelling light (run()).
+-->
+<template>
+<style>
+  #ch13-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  /* the faint band that carries the hold: starts off the left edge, drifts right for the whole window */
+  #ch13-sweep { position:absolute; left:-560px; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
+  #ch13-svg { position:absolute; left:0; top:0; }
+  /* hidden in CSS as well as at timeline 0, so the host's very first frame is the dark chain and nothing else */
+  #ch13-l1, #ch13-dot, #ch13-tk1, #ch13-tk2, #ch13-strip { opacity:0; visibility:hidden; }
+  .ch13-lab { position:absolute; top:676px; font-size:22px; line-height:28px; font-weight:700; color:#93a3b2; text-align:center; }
+  #ch13-strip { position:absolute; left:96px; top:780px; width:780px; height:124px; background:#f4f0e6;
+    box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  #ch13-quote { position:absolute; left:40px; top:12px; font-family:Georgia, 'Times New Roman', serif; font-size:52px; line-height:60px;
+    color:#2a2622; white-space:nowrap; }
+  #ch13-src { position:absolute; left:40px; top:82px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:2px;
+    color:#6b6257; white-space:nowrap; }
+</style>
+<div id="ch13-root" data-composition-id="g-a1s13-chain" data-width="1920" data-height="1080" data-duration="5.75">
+  <div id="ch13-sweep"></div>
+
+  <svg id="ch13-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <!-- BASE · links at y 520, one path per link: solid as far as the list, dotted after it -->
+    <g fill="none" stroke="#55606b" stroke-width="4" stroke-linecap="round">
+      <path id="ch13-k1" d="M236 520 H316"/>
+      <path id="ch13-k2" d="M460 520 H540"/>
+      <path id="ch13-k3" d="M800 520 H1170" stroke-dasharray="0.1 14"/>
+      <path id="ch13-k4" d="M1272 520 H1400" stroke-dasharray="0.1 14"/>
+    </g>
+
+    <!-- BASE · the travelling light: one amber line per lit link, led by one dot. Here link 1 only. -->
+    <g fill="none" stroke="#e8c56a" stroke-width="6" stroke-linecap="round">
+      <path id="ch13-l1" d="M236 520 H316"/>
+    </g>
+
+    <!-- BASE · station 1 · teletype (media/drawings/teletype.svg) -->
+    <g id="ch13-st1" transform="translate(96 450)">
+      <g id="ch13-s1" fill="none" stroke="#55606b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <rect id="ch13-s1paper" x="34" y="0" width="72" height="50" fill="#15202b" fill-opacity="1"/>
+        <rect x="0" y="50" width="140" height="90" fill="#15202b"/>
+        <rect x="14" y="112" width="112" height="20"/>
+      </g>
+      <!-- the typed bars: line colour at rest, ink on the lit paper -->
+      <path id="ch13-s1bars" d="M44 14 H88 M44 26 H96 M44 38 H80" fill="none" stroke="#55606b" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <!-- BASE · station 2 · telephone, handset OFF the hook (media/drawings/telephone-lifted.svg) -->
+    <g id="ch13-st2" transform="translate(316 519.6) scale(1.6)">
+      <g id="ch13-s2" fill="none" stroke="#55606b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="24" y="-6" width="8" height="14" fill="#15202b"/>
+        <rect x="58" y="-6" width="8" height="14" fill="#15202b"/>
+        <path d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+        <circle id="ch13-s2dial" cx="45" cy="27" r="15" fill="#15202b" fill-opacity="1"/>
+        <path d="M14 -10 L4 -5 a3.2 3.2 0 0 0 0 6.4 a3.2 3.2 0 0 1 0 6.4 a3.2 3.2 0 0 0 0 6.4 a3.2 3.2 0 0 1 0 6.4 a3.2 3.2 0 0 0 0 6.4 L6.5 28"/>
+        <g transform="translate(2 -26) rotate(-18 45 -5)">
+          <path fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+        </g>
+      </g>
+      <!-- the dial's hub and finger holes: line colour at rest, ink on the lit dial -->
+      <g id="ch13-s2holes" fill="none" stroke="#55606b" stroke-width="2.5" stroke-linecap="round">
+        <circle cx="45" cy="27" r="3"/>
+        <circle cx="43.2" cy="37" r="0.8"/><circle cx="37.2" cy="33.6" r="0.8"/><circle cx="34.8" cy="27" r="0.8"/><circle cx="37.2" cy="20.4" r="0.8"/>
+        <circle cx="43.2" cy="17" r="0.8"/><circle cx="50.1" cy="18.2" r="0.8"/><circle cx="54.6" cy="23.5" r="0.8"/>
+      </g>
+    </g>
+
+    <!-- BASE · station 3 · the list in miniature, dim (0.36) from first frame to last: eight bars, a ninth row with nothing on it -->
+    <g id="ch13-s3" opacity="0.36">
+      <rect x="540" y="350" width="260" height="300" rx="2" fill="#f4f0e6"/>
+      <g fill="#6b6257">
+        <rect x="570" y="381" width="170" height="10"/>
+        <rect x="570" y="411" width="170" height="10"/>
+        <rect x="570" y="441" width="170" height="10"/>
+        <rect x="570" y="471" width="170" height="10"/>
+        <rect x="570" y="501" width="170" height="10"/>
+        <rect x="570" y="531" width="170" height="10"/>
+        <rect x="570" y="561" width="170" height="10"/>
+        <rect x="570" y="591" width="170" height="10"/>
+      </g>
+      <path d="M566 401 H774 M566 431 H774 M566 461 H774 M566 491 H774 M566 521 H774 M566 551 H774 M566 581 H774 M566 611 H774 M566 641 H774"
+        fill="none" stroke="#6b6257" stroke-opacity="0.3" stroke-width="1.5"/>
+    </g>
+
+    <!-- BASE · station 4 · microphone, dark to the last frame (media/drawings/microphone.svg) -->
+    <g id="ch13-st4" transform="translate(1170 420) scale(0.85)">
+      <g id="ch13-s4" fill="none" stroke="#55606b" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60 112 V182"/>
+        <rect x="30" y="0" width="60" height="112" rx="30" fill="#15202b"/>
+        <path d="M40 30 H80 M40 56 H80 M40 82 H80"/>
+        <path d="M30 182 H90 L108 230 H12 Z" fill="#15202b"/>
+        <circle cx="104" cy="20" r="9" fill="#15202b"/>
+      </g>
+    </g>
+
+    <!-- BASE · station 5 · house, dark to the last frame (media/drawings/house.svg) -->
+    <g id="ch13-st5" transform="translate(1400 430) scale(0.68)">
+      <g id="ch13-s5" fill="none" stroke="#55606b" stroke-width="5.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M186 37.3 V22 H208 V50"/>
+        <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+        <rect x="20" y="80" width="220" height="170" fill="#15202b"/>
+        <rect x="112" y="170" width="36" height="80"/>
+        <rect x="44" y="120" width="48" height="48" fill="#15202b"/>
+        <rect x="168" y="120" width="48" height="48" fill="#15202b"/>
+        <path d="M68 120 V168 M44 144 H92"/>
+        <path d="M192 120 V168 M168 144 H216"/>
+        <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+      </g>
+    </g>
+
+    <!-- BASE · the light's leading dot -->
+    <circle id="ch13-dot" cx="236" cy="520" r="8" fill="#e8c56a"/>
+
+    <!-- pen ticks over the two lit stations (centres x 166 and x 388, the same offsets): Body light, never red, never amber -->
+    <path id="ch13-tk1" d="M148 402 L160 417 L184 384" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="ch13-tk2" d="M370 402 L382 417 L406 384" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+
+  <div class="ch13-lab" id="ch13-b1" style="left:96px; width:140px">Kansas City forecasters</div>
+  <div class="ch13-lab" id="ch13-b2" style="left:293px; width:190px">Weather Bureau &middot; South Bend</div>
+  <div class="ch13-lab" id="ch13-b3" style="left:540px; width:260px">the list</div>
+  <div class="ch13-lab" id="ch13-b4" style="left:1121px; width:200px">an announcer</div>
+  <div class="ch13-lab" id="ch13-b5" style="left:1388px; width:200px">a family</div>
+
+  <!-- the study's own three words, retyped on a paper strip; the one source line on screen -->
+  <div id="ch13-strip">
+    <div id="ch13-quote">&ldquo;gave adequate forewarning&rdquo;</div>
+    <div id="ch13-src">Disaster Research Center, 1966, pp. 9-10</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#ch13-";
+  const LINE_Y = 520;
+
+  /* BASE · a station lights: its lines go Headline white, its lamp Amber 2, the marks on the lamp go ink. A colour change, never a scale pop. */
+  function lightStation(n, lamp, ink, at) {
+    tl.to(P+"s"+n, { attr: { stroke: "#f2f5f8" }, duration: 0.3, ease: "power2.out" }, at);
+    tl.to(P+lamp, { attr: { fill: "#e8c56a" }, duration: 0.3, ease: "power2.out" }, at);
+    tl.to(P+ink, { attr: { stroke: "#2a2622" }, duration: 0.3, ease: "power2.out" }, at);
+  }
+  /* BASE · the travelling light: the amber line grows from x0 to x1 behind the dot; the dot hides on arrival, the line stays.
+     The line's scaleX and svgOrigin are set at timeline 0, so a seek to any second finds them. */
+  function run(link, x0, x1, at, dur) {
+    tl.set(link, { autoAlpha: 0, scaleX: 0, svgOrigin: x0 + " " + LINE_Y }, 0);
+    tl.set(link, { autoAlpha: 1 }, at);
+    tl.to(link, { scaleX: 1, duration: dur, ease: "power2.inOut" }, at);
+    tl.set(P+"dot", { autoAlpha: 1, attr: { cx: x0 } }, at);
+    tl.to(P+"dot", { attr: { cx: x1 }, duration: dur, ease: "power2.inOut" }, at);
+    tl.set(P+"dot", { autoAlpha: 0 }, at + dur);
+  }
+  /* a pen tick draws on along its own length */
+  function tick(id, at) {
+    const el = document.getElementById(id);
+    const len = Math.ceil(el.getTotalLength()) + 1;
+    gsap.set(el, { strokeDasharray: len, strokeDashoffset: len });
+    tl.set(el, { autoAlpha: 1 }, at);
+    tl.to(el, { strokeDashoffset: 0, duration: 0.25, ease: "power2.out" }, at);
+  }
+
+  /* THE @0.00: the whole chain at rest, dark; the list at 0.36. No tick, no strip, no light. */
+  tl.set([P+"dot", P+"tk1", P+"tk2"], { autoAlpha: 0 }, 0);
+  tl.set(P+"strip", { autoAlpha: 0, y: 60 }, 0);
+  tl.to(P+"sweep", { x: 2860, duration: 5.75, ease: "none" }, 0);
+  /* TWO @0.82: station 1 lights */
+  lightStation(1, "s1paper", "s1bars", 0.82);
+  /* FORECASTS @1.48: tick 1 */
+  tick("ch13-tk1", 1.48);
+  /* GAVE @2.10: the light runs link 1, x 236 to x 316; it arrives at 2.60 */
+  run(P+"l1", 236, 316, 2.10, 0.5);
+  /* LOCAL @2.62: station 2 lights, only after the light has arrived */
+  lightStation(2, "s2dial", "s2holes", 2.62);
+  /* OFFICES @3.38: tick 2 */
+  tick("ch13-tk2", 3.38);
+  /* ENOUGH @3.88: the paper strip rises; from 4.40 the two amber fills breathe to carry the hold */
+  tl.to(P+"strip", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.88);
+  tl.to([P+"s1paper", P+"s2dial"], { attr: { "fill-opacity": 0.55 }, duration: 0.65, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4.40);
+  tl.to({}, { duration: 0.01 }, 5.74);
+  window.__timelines["g-a1s13-chain"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

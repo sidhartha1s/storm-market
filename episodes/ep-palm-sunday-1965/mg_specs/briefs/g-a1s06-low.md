@@ -1,4 +1,4 @@
-Host: id=g-a1s06-low file=compositions/g-a1s06-low.html start=(timeline-map.md) duration=7.25 s plus gaps from timeline-map.md track=2
+Host: id=g-a1s06-low file=compositions/g-a1s06-low.html start=162.56 (timeline-map.md table 1; the mount in index.html wins) duration=7.51 s (wav 7.25 s plus its gaps) track=2
 
 # g-a1s06-low · A1-S6 · the low on the morning map (wave 2, map family)
 
@@ -50,11 +50,12 @@ Cue words and times are from `audio/a1-s6.words.json` as it stood on 12 Oct 26 a
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A1-S6 | 0 | But | 0.00 | 0.00 | first frame: ground, our map's state outlines and the sketch label, nothing else |
-| 1 | A1-S6 | 6 | map | 1.82 | 1.82 | the real map card slides in from the left (`x:-1080` set at 0, to 0; 0.6 s, power3.out); its label chip and the source line fade in 0.2 s after it lands |
-| 2 | A1-S6 | 12 | storm | 3.54 | 3.54 | the system disc fades in on our map (0.4 s) |
-| 3 | A1-S6 | 15 | low, | 4.78 | 4.78 | the `L` lands (fade and `y:20` to 0, 0.3 s) |
-| 4 | A1-S6 | 16 | turning | 5.46 | 5.46 | the four arrows draw on (0.4 s, `strokeDashoffset`), then the group turns -40 degrees to the end of the comp (ease none) |
-| 5 | A1-S6 | 19 | northern | 6.10 | 6.10 | `the northern plains` fades in (0.3 s). Hold to the end |
+| 1 | A1-S6 | 6 | map | 1.82 | 1.33 | the real map card slides in from the left (`x:-1080` set at 0, to 0; 0.6 s, power3.out); its label chip and the source line fade in 0.2 s after it lands |
+| 2 | A1-S6 | 12 | storm | 3.54 | 3.05 | the system disc fades in on our map (0.4 s) |
+| 3 | A1-S6 | 15 | low, | 4.78 | 4.29 | the `L` lands (fade and `y:20` to 0, 0.3 s) |
+| 4 | A1-S6 | 16 | turning | 5.46 | 4.97 | the four arrows draw on (0.4 s, `strokeDashoffset`), then the group turns -40 degrees to the end of the comp (ease none) |
+| 5 | A1-S6 | 19 | northern | 6.10 | 5.61 | `the northern plains` fades in (0.3 s). Hold to the end |
+Time basis (converted 12 Oct 26 from wav sums): t from comp start = the segment's wav start inside the composition (`mg_specs/timeline-map.md` table 5) plus the word's time in words.json; a segment's first word uses table 5's first sound. Gaps are now included. Where another line of this brief quotes a second from the comp's start, this table wins.
 
 ## 6. Contract
 As `references/mg-brief-template.md` section 6, with these: file `compositions/g-a1s06-low.html` is the only file the builder writes; `data-composition-id="g-a1s06-low"`; id prefix `low-`; root `<div id="low-root" ...>` styled through `#low-root` (plan rule 3 overrides the template's `id="root"`). Full frame, own ground on from frame 0.

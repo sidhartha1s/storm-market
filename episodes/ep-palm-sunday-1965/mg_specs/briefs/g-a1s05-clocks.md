@@ -1,4 +1,4 @@
-Host: id=g-a1s05-clocks file=compositions/g-a1s05-clocks.html start=153.43 (timeline-map.md) duration=9.13 s (wav sum 8.83 s plus gaps from timeline-map.md) track=2
+Host: id=g-a1s05-clocks file=compositions/g-a1s05-clocks.html start=(timeline-map.md) duration=9.13 s (wav sum 8.83 s plus gaps from timeline-map.md) track=2
 
 # g-a1s05-clocks · A1-S5 · the office's clock and the family's clock (wave 1, second base of the clock family)
 
@@ -13,7 +13,8 @@ The times in the 1966 study are the times a forecast reached a Weather Bureau of
 ## 1. Source
 - `edit_script.md` A1-S5, Rows [study printed p. 6, footnote: the SELS forecast times "refer to the time the forecast first entered the system via local Weather Bureaus, and not the time that the general public became aware of the threat"]. Picture note: "two clocks side by side. Left, the clock stamp 'an office · 11:45 AM EST', lit amber. Right, beside the drawn house, a clock face with no hands. Small source line 'Disaster Research Center, 1966, p. 6 (footnote)'. The empty clock face pulses once on 'family'."
 - The time on the left clock is the forecast time of A1-S1, 11:45 AM Eastern (design sheet section 8, comp 07: hour hand 352.5 degrees, minute hand 270).
-- The zone: "EST" does not fit beside the time in the stamp, so the place line carries it as `Eastern time`, as in the other stamps of this act.
+- The zone: the Picture note writes "EST". It does not fit beside the time in the stamp, so the place line carries it as `Eastern time`, the voice's own words in A1-S1 and the wording of the stamps in `mg_specs/briefs/g-a1s09-forecasts.md` and `mg_specs/briefs/g-a1s01-kc.md` (the lead may rule it back to `EST`).
+- No photograph is mounted in this comp, so no `provenance.csv` row applies. The three drawing files were confirmed on disk on 12 Oct 26: `wall-clock.svg` 1,205 bytes, `wall-clock-nohands.svg` 825 bytes, `house.svg` 978 bytes.
 - Drawings: `media/drawings/wall-clock.svg` (hands), `media/drawings/wall-clock-nohands.svg` (no hands; same viewBox and classes), `media/drawings/house.svg` (dark state: lines Label grey at 55 %, pre-mixed `#55606b`, windows Panel dark).
 
 ## 2. Datum, scale, orientation
@@ -66,7 +67,7 @@ As `references/mg-brief-template.md` section 6, with these: `compositions/g-a1s0
 **This comp is a family base (clock family, with `g-a2s06-headstart`).** `acts-plan.md` section 5 puts both in wave 1. What later comps take from this one, once it has passed its read: the clock stamp built on the drawing file (`wall-clock.svg` inline, hands set by `rotation` with `svgOrigin`) and a drawn clock standing beside a drawn object. The comps that use it are `g-a5s07-marion` (A5-S8, a stopped wall clock beside a stamp) and `g-a5s18-curran` (wave 4). Keep the stamp in its own block of CSS and markup so it lifts out whole, and write its numbers as the design sheet's times a single factor (1.4) so a copy can set the factor back to 1. Send it alone for a full-size read before anything copies it (template section 7a, last line).
 It copies the stamp's values from the built `compositions/g-i1s4-states.html` (`.st6-stamp`, `.st6-time`, `.st6-place`, and the 11:45 hand angles), under this comp's class names, with the face taken from the drawing file in place of that comp's scripted face.
 Inline mounts: copy each file's `<g class="dw-...">` into the comp's own `<svg>` inside the static `<g transform=...>` wrapper given in section 3; GSAP touches only the children. Give the hands ids and set `svgOrigin` once at build, before any tween, in screen px: (243, 540). The files carry classes only: every id takes the `clk-` prefix.
-**Assets mounted (paths from the episode folder):**
+**Assets mounted (paths from the episode folder, each confirmed on disk 12 Oct 26):**
 - `media/drawings/wall-clock.svg` (DR-09, object box 124 x 124, viewBox -6 -6 136 136), inlined at scale 1.4.
 - `media/drawings/wall-clock-nohands.svg` (DR-09 state file, same viewBox), inlined at scale 1.5.
 - `media/drawings/house.svg` (dark state, object box 260 x 250, viewBox -6 -42 272 298), inlined at scale 1.4.

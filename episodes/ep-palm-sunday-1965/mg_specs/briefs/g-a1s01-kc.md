@@ -38,36 +38,35 @@ The stamp, the icon tile and the caption are a fixed layer over the photograph: 
 | Caption | credit corner, left 96, bottom 60, the source-line type of design sheet section 10 (Arial 700 22 px, `rgba(244,240,232,0.88)`, `letter-spacing:0.04em`, its text shadow): `Weather Bureau teletypewriters, about 1955 · NOAA`. On from frame 0: the photograph is never on screen without it |
 | Icon tile | glass plate (fill `rgba(10,16,24,0.55)`, `backdrop-filter:blur(18px) saturate(1.15)`, border 1 px `rgba(255,255,255,0.14)`, radius 28): left 96, top 330, 200 x 200. It covers start-frame screen x 96 to 296, y 330 to 530: an equipment rack, no face (the woman's head is 60 px below it at 0.00 and moves left, away from it) |
 | Teletype | `media/drawings/teletype.svg` inline inside the tile, ids prefixed `kc-`, at scale 1: the 152 x 152 SVG at tile-local left 24, top 24, so the object box is screen x 126 to 266, y 360 to 500. Lines Body light `#dfe7ee`, 4 px. Unlit: paper (`dw-lamp`) fill Panel dark `#15202b`, typed bars (`dw-type`) stroke Body light. Lit: paper fill Amber 2 `#e8c56a`, bars stroke Caption dark `#2a2622` (the values of `teletype-lit.svg`) |
-| Clock stamp | glass plate, same values: left 96, top 96, 680 x 200 (the intro's stamp is 590 wide; this one is 90 px wider to hold `EST`). It covers screen x 96 to 776, y 96 to 296: ceiling lamps and wall, no face |
+| Clock stamp | glass plate, same values: left 96, top 96, 590 x 200 (design sheet section 8, the intro's stamp unchanged). It covers screen x 96 to 686, y 96 to 296: ceiling lamps and wall, no face |
 | Clock face | inside the stamp, as built in `g-i1s4-states.html`: centre stamp-local (95, 100) = screen (191, 196), radius 62, ring 4 px Body light, twelve ticks 3 px (8 px long, the four quarter ticks 14 px), hour hand 34 px and minute hand 52 px, both 5 px Headline white `#f2f5f8`, round caps, centre dot radius 5 Amber 2. Hour hand 352.5 degrees, minute hand 270 degrees at rest (clockwise from 12) |
 | Eyebrow | `FORECASTERS`: stamp-local left 188, top 20 (screen 284, 116), Arial 700 20 px, Label grey `#93a3b2`, letter-spacing 6 px |
 | Time | `11:45 AM`: stamp-local left 188, top 46 (screen 284, 142), Courier New 700 84 px, Amber 2, letter-spacing -4 px. Computed width 371 px, so it ends near screen x 655 |
-| Zone | `EST`: stamp-local left 574, top 96 (screen 670, 192), Arial 700 26 px, Body light. Computed width 51 px, ending near screen x 721, 55 px inside the stamp's right edge. Measure the time's real width on a frame and keep 15 px between `AM` and `EST`; its foot sits on the time's baseline |
-| Place | `Kansas City`: stamp-local left 190, top 148 (screen 286, 244), Arial 700 26 px, Body light |
+| Place line | stamp-local left 190, top 148 (screen 286, 244), Arial 700 26 px, Body light, one line of two pre-authored spans: `Kansas City` and, after it, ` · Eastern time`. The whole line reads `Kansas City · Eastern time`, the wording the accepted brief `mg_specs/briefs/g-a1s09-forecasts.md` gives its stamps. Measure it on a frame: it must end 30 px or more inside the stamp's right edge (screen x 686) |
 
 Nothing else is on screen: no arrow, no route, no second station of the chain, no label under the icon, no paper strip, no year.
 
 ## 4. Must be true in the picture
-1. The photograph is never labelled as Kansas City or as 1965. `Kansas City` and `11:45 AM` `EST` are inside the glass stamp only; the only words set on the photograph itself are its true caption, `Weather Bureau teletypewriters, about 1955 · NOAA`, and the caption is on in every frame the photograph is on, from frame 0 (design sheet S8).
+1. The photograph is never labelled as Kansas City or as 1965. `Kansas City · Eastern time` and `11:45 AM` are inside the glass stamp only; the only words set on the photograph itself are its true caption, `Weather Bureau teletypewriters, about 1955 · NOAA`, and the caption is on in every frame the photograph is on, from frame 0 (design sheet S8).
 2. No plate covers a face at any frame, start to end of the push. Read the stamp and the icon tile against the four people at 0.00, 5.00 and 9.70. If section 3's numbers put a plate on a face, this line wins: move the plate, keep the face clear, report it.
 3. The teletype icon is alone: one drawing, no link line, no telephone, no microphone, no house, no label under it. Its paper is dark until "typed" and Amber 2 after it.
 4. The icon lights by a fill and stroke change only (rule 12): no scale pop, no glow pulse, no shake.
-5. The time reads `11:45 AM`, with `EST` beside it, and the clock face reads 11:45 (hour hand just short of 12, minute hand on the 9). No hand is on the face before the word "eleven".
-6. Nothing appears before its spoken word: the stamp is not on screen before "Kansas", the time is not on screen before "eleven", `EST` is not on screen before "Eastern".
+5. The time reads `11:45 AM`, the place line under it ends `Eastern time`, and the clock face reads 11:45 (hour hand just short of 12, minute hand on the 9). No hand is on the face before the word "eleven".
+6. Nothing appears before its spoken word: the stamp is not on screen before "Kansas", the time is not on screen before "eleven", `Eastern time` is not on screen before "Eastern".
 7. The photograph never shows an edge and never scales under 1. The man at the right is whole in the last frame.
 8. Nothing of ours in x >= 1600, y >= 680 (the photograph itself is ground, not ours; read the corner on a frame).
 
 ## 5. Text (exact) and cues
-Text: `Weather Bureau teletypewriters, about 1955 · NOAA` · `FORECASTERS` · `11:45 AM` · `EST` · `Kansas City`. Every word is from the Picture note of A1-S1 or the photograph's caption. No other word, number or time is on screen.
+Text: `Weather Bureau teletypewriters, about 1955 · NOAA` · `FORECASTERS` · `11:45 AM` · `Kansas City` · ` · Eastern time`. Every word is from the Picture note of A1-S1, the spoken line or the photograph's caption. The Picture note writes the zone as "EST"; the stamp writes it `Eastern time` on the place line, as the voice says it and as `g-a1s09-forecasts` does, so the three stamps of this act match (the lead may rule it back to `EST`). No other word, number or time is on screen.
 Cue words and times are from `audio/a1-s1.words.json` as it stood on 12 Oct 26 at 17:44 (wav 9.42 s). `mg_specs/timeline-map.md` table 5: the wav starts at -0.31 s inside this comp, the first sound is at 0.00 and the last at 8.74; the comp is 9.75 s long. So t from comp start = the word's time minus 0.31, and the first word is at 0.00. Retime from the word, never from the seconds. The transcriber writes "1965" as one word and "11" ".45" as two.
 | Step | Segment | Word index | Word | t in words.json (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A1-S1 | 0 | A | 0.00 | 0.00 | first frame: the photograph at scale 1.00, the scrim and the caption. The push starts and runs to the last frame (1.00 to 1.06, 9.75 s, ease none) |
 | 1 | A1-S1 | 1 | forecast | 0.40 | 0.09 | the icon tile slides in from the left with the unlit teletype in it (`fromTo` x:-420 to 0, autoAlpha 0 to 1, 0.5 s, `power3.out`) |
 | 2 | A1-S1 | 6 | typed | 2.48 | 2.17 | the paper turns Amber 2 and the three typed bars turn Caption dark (0.3 s, `power2.out`). It stays lit to the end |
-| 3 | A1-S1 | 17 | Kansas | 5.98 | 5.67 | the stamp slides in from the left (`fromTo` x:-800 to 0, autoAlpha 0 to 1, 0.6 s, `power3.out`) carrying the clock ring and ticks, `FORECASTERS` and `Kansas City`. The time line is empty and the face has no hands |
+| 3 | A1-S1 | 17 | Kansas | 5.98 | 5.67 | the stamp slides in from the left (`fromTo` x:-660 to 0, autoAlpha 0 to 1, 0.6 s, `power3.out`) carrying the clock ring and ticks, `FORECASTERS` and `Kansas City`. The time line is empty and the face has no hands |
 | 4 | A1-S1 | 20 | 11 | 6.84 | 6.53 | `11:45 AM` rises in (autoAlpha 0 to 1, y:16 to 0, 0.3 s, `power3.out`); the two hands fade in (0.15 s) and the minute hand sweeps from 240 to 270 degrees (0.5 s, `power3.out`, ends 7.03, inside ".45") |
-| 5 | A1-S1 | 24 | Eastern | 8.16 | 7.85 | `EST` fades in (autoAlpha 0 to 1, y:8 to 0, 0.25 s) |
+| 5 | A1-S1 | 24 | Eastern | 8.16 | 7.85 | ` · Eastern time` fades in at the end of the place line (autoAlpha 0 to 1, 0.25 s; it does not move, and `Kansas City` does not shift) |
 | 6 | exit | none | (0.6 s before the cut) | none | 9.15 | the stamp and the icon tile slide out left (`to` x:-980, autoAlpha 0, 0.6 s, `power3.in`); the photograph and its caption hold to the cut at 9.75 |
 Longest stretch with no new element: 2.47 to 5.67 (3.2 s), with the push moving all through it. If the contact sheet reads frozen there, raise the end scale to 1.08 with the same origin, check line 7 of section 4 again and report it.
 
@@ -89,4 +88,4 @@ All seven lines of template section 7a. Line 2 here: the fill is the photograph 
 As template section 8.
 
 ## Frames the verifier reads
-First frame (0.00) and the frame after it (0.04): the photograph fills the frame, scrim and caption on, no plate, no edge. Then one settled frame per cue: 1.00 (icon tile in, paper dark), 2.80 (paper amber, bars dark), 5.00 (mid push, no face under the tile), 6.40 (stamp in: `FORECASTERS`, `Kansas City`, no time, no hands), 7.40 (`11:45 AM` and the hands at 11:45), 8.40 (`EST` on, 15 px clear of `AM`), 9.70 (plates gone, photograph and caption alone, the man at the right whole).
+First frame (0.00) and the frame after it (0.04): the photograph fills the frame, scrim and caption on, no plate, no edge. Then one settled frame per cue: 1.00 (icon tile in, paper dark), 2.80 (paper amber, bars dark), 5.00 (mid push, no face under the tile), 6.40 (stamp in: `FORECASTERS`, `Kansas City`, no time, no hands), 7.40 (`11:45 AM` and the hands at 11:45), 8.40 (the place line reads `Kansas City · Eastern time`, inside the stamp), 9.70 (plates gone, photograph and caption alone, the man at the right whole). Each cue second in both seek orders.

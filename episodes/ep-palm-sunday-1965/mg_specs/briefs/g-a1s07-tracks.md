@@ -1,4 +1,4 @@
-Host: id=g-a1s07-tracks file=compositions/g-a1s07-tracks.html start=(timeline-map.md) duration=25.74 s plus gaps from timeline-map.md track=2
+Host: id=g-a1s07-tracks file=compositions/g-a1s07-tracks.html start=170.07 (timeline-map.md table 1; the mount in index.html wins) duration=26.08 s (wavs 25.74 s plus their gaps) track=2
 
 # g-a1s07-tracks · A1-S7, A1-S8 · the day's tracks, then county after county (wave 2, photograph family)
 
@@ -55,19 +55,20 @@ Cue words and times are from `audio/a1-s7.words.json` and `audio/a1-s8.words.jso
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A1-S7 | 0 | The | 0.00 | 0.00 | first frame: the map card under its veil, the credit plate on. The push starts (25.74 s) |
-| 1 | A1-S7 | 1 | storms | 0.50 | 0.50 | the veil shrinks west to east with the amber edge on its lip (2.2 s, ease none; the map is fully bright at 2.70) |
-| 2 | A1-S7 | 6 | supercells, | 1.52 | 1.52 | label 1 slides in from the left (0.4 s, power3.out) |
-| 3 | A1-S7 | 11 | single | 4.26 | 4.26 | label 2 slides in under it (0.4 s) |
-| 4 | A1-S7 | 28 | east | 9.36 | 9.36 | the arrow draws from its tail (0.6 s, power2.out); its head fades in at 9.96 |
-| 5 | A1-S7 | 31 | about | 10.38 | 10.38 | chip `about 45 mph` fades in (0.3 s, `y:12` to 0) |
-| 6 | A1-S8 | 0 | A | 0.00 | 12.232 | labels, arrow and chip fade out (0.3 s); the heavy veil fades in over the whole map (0.5 s) |
-| 7 | A1-S8 | 6 | crosses | 1.92 | 14.152 | the six tiles draw on from the west (stagger 0.05 s, 0.3 s each); the tornado mark and the row caption fade in, the mark over tile 1 |
-| 8 | A1-S8 | 7 | county | 2.30 | 14.532 | the mark steps along the row (x 350 to 1450, ease none) and each tile blinks as the mark is over it: six blinks of 0.45 s, 2.70 s in all, ending at 17.232 |
-| 9 | A1-S8 | 16 | handed | 5.04 | 17.272 | the five hand-off marks draw in Amber 2, west to east (stagger 0.12 s, 0.25 s each; the last is complete at 18.002) |
-| 10 | A1-S8 | 20 | That | 7.12 | 19.352 | the mark returns to tile 1 (fade out, fade in, 0.3 s) |
-| 11 | A1-S8 | 22 | passing | 8.08 | 20.312 | the mark steps along the row again (2.6 s, ease none) and the tiles blink again; the five hand-off marks stay as they are |
-| 12 | A1-S8 | 33 | neither | 11.02 | 23.252 | all five hand-off marks turn Label grey (0.3 s) |
-| 13 | A1-S8 | 36 | nor | 12.14 | 24.372 | marks 2, 3 and 5 fade out (stagger 0.15 s, 0.25 s each; done at 24.922). Hold to the cut at 25.74 |
+| 1 | A1-S7 | 1 | storms | 0.50 | 0.08 | the veil shrinks west to east with the amber edge on its lip (2.2 s, ease none; the map is fully bright at 2.70) |
+| 2 | A1-S7 | 6 | supercells, | 1.52 | 1.10 | label 1 slides in from the left (0.4 s, power3.out) |
+| 3 | A1-S7 | 11 | single | 4.26 | 3.84 | label 2 slides in under it (0.4 s) |
+| 4 | A1-S7 | 28 | east | 9.36 | 8.94 | the arrow draws from its tail (0.6 s, power2.out); its head fades in at 9.96 |
+| 5 | A1-S7 | 31 | about | 10.38 | 9.96 | chip `about 45 mph` fades in (0.3 s, `y:12` to 0) |
+| 6 | A1-S8 | 0 | A | 0.00 | 12.32 | labels, arrow and chip fade out (0.3 s); the heavy veil fades in over the whole map (0.5 s) |
+| 7 | A1-S8 | 6 | crosses | 1.92 | 13.78 | the six tiles draw on from the west (stagger 0.05 s, 0.3 s each); the tornado mark and the row caption fade in, the mark over tile 1 |
+| 8 | A1-S8 | 7 | county | 2.30 | 14.16 | the mark steps along the row (x 350 to 1450, ease none) and each tile blinks as the mark is over it: six blinks of 0.45 s, 2.70 s in all, ending at 17.232 |
+| 9 | A1-S8 | 16 | handed | 5.04 | 16.90 | the five hand-off marks draw in Amber 2, west to east (stagger 0.12 s, 0.25 s each; the last is complete at 18.002) |
+| 10 | A1-S8 | 20 | That | 7.12 | 18.98 | the mark returns to tile 1 (fade out, fade in, 0.3 s) |
+| 11 | A1-S8 | 22 | passing | 8.08 | 19.94 | the mark steps along the row again (2.6 s, ease none) and the tiles blink again; the five hand-off marks stay as they are |
+| 12 | A1-S8 | 33 | neither | 11.02 | 22.88 | all five hand-off marks turn Label grey (0.3 s) |
+| 13 | A1-S8 | 36 | nor | 12.14 | 24.00 | marks 2, 3 and 5 fade out (stagger 0.15 s, 0.25 s each; done at 24.922). Hold to the cut at 25.74 |
+Time basis (converted 12 Oct 26 from wav sums): t from comp start = the segment's wav start inside the composition (`mg_specs/timeline-map.md` table 5) plus the word's time in words.json; a segment's first word uses table 5's first sound. Gaps are now included. Where another line of this brief quotes a second from the comp's start, this table wins.
 Beat count (rule 13), computed: six blinks x 0.45 s = 2.70 s, inside the window from "county" (2.30) to "handed" (5.04), 2.74 s. If the final voice shortens that window, shorten each blink; never drop a tile.
 
 ## 6. Contract
