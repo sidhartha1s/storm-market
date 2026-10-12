@@ -907,7 +907,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 11 
 
 ### Z1-S4b · narration
 **Picture:** [graphic] the book's front cover (repo file `landing/assets/cover.png`, "The Storm-Ready Home"; not yet staged in this episode's `media/`, the builder copies it in) standing on the channel ground, with one line under it: "first link in the description". No price, no QR code (the code lives in the ad), no page from inside the book.
-> My book, The Storm-Ready Home, is the checklist for your house, at the first link in the description.
+> My book, The Storm-Ready Home, is the checklist for your house, first link in the description.
 
 **Rows:** [`config.yaml channel.cta`: the book's name and `first_link`] · [ad transcript `assets/cta/paul-storm-ready-v7-oct10.txt`: "Every protection, as a checklist"; "the first link in the description"] (structure.md: "then the book once"; the El Reno close has no spoken book line, so the wording follows the ad)
 
