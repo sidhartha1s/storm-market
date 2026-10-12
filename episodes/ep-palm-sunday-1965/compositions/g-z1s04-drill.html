@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-z1s04-drill (Z1-S4): Indiana still runs a statewide tornado drill each spring. The whole state, dark; light leaves one
+     dot in the north and every county fills amber in one sweep; then the light runs the state once more, the test.
+     Brief: mg_specs/briefs/g-z1s04-drill.md; map facts: media/maps/README.md.
+     Map family: copies the base g-a2s14-six (the way BM-1 is inlined and prefixed, the line weights, the lit-county fill).
+     Map: media/maps/indiana-counties.svg (BM-1), ids prefixed drl-, one SVG in a fixed box, no camera move.
+       WHOLE  box 720, 62, 600 x 955   1.25 px per unit   viewBox 200 160 480 764   (screen x = 720 + 1.25 (u - 200), y = 62 + 1.25 (u - 160))
+       Indiana spans x 757 to 1283, y 78 to 999; the dot (462.2, 188.5) is at screen (1047.8, 97.6), r 4.8 units (6 px).
+     The sweep rule (computed below from the inlined paths, never by eye): a county's box centre is d map units from the
+     dot; its fill starts 1.6 x d / dmax seconds after the cue and takes 0.3 s; the second pass uses 1.2 s in place of 1.6.
+     From the file: 92 counties, dmax 709.7 (Posey); first St. Joseph, the last Posey.
+     No county, town or office is named; no date, no year, no clock. The dot has no label.
+     MAP BLOCK: BM-1's groups map-neighbours, map-counties and map-state, every path element that crosses the map's box
+     copied whole and unchanged from the file by one mechanical copy that added the id prefix and nothing else.
+     Cues are comp-local seconds from the brief's table (audio/z1-s4.words.json plus the segment's start in the comp). -->
+<template>
+<style>
+  #drl-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .drl-h { opacity:0; visibility:hidden; }
+  .drl-map { position:absolute; left:720px; top:62px; width:600px; height:955px; }
+  .drl-chip { position:absolute; left:96px; top:500px; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:23px;
+    font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  .drl-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="drl-root" data-composition-id="g-z1s04-drill" data-width="1920" data-height="1080" data-duration="7.10">
+
+  <svg class="drl-map" id="drl-map" viewBox="200 160 480 764" preserveAspectRatio="xMidYMid meet" fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <g id="drl-map-neighbours" stroke="#93a3b2" stroke-opacity="0.4">
+    </g>
+    <g id="drl-map-counties" fill="#15202b" stroke="#93a3b2" stroke-width="1.5">
+    </g>
+    <g id="drl-map-state" stroke-width="3">
+    </g>
+    <!-- the one dot, at the file's position for South Bend: Body light at rest, Amber 2 from the sweep's cue; no label, no ring -->
+    <g id="drl-pt-south-bend"><circle id="drl-dot" cx="462.2" cy="188.5" r="4.8" fill="#dfe7ee" stroke="none"/></g>
+  </svg>
+
+  <div class="drl-chip drl-h" id="drl-label">statewide tornado drill · each spring</div>
+  <div class="drl-src drl-h" id="drl-src">National Weather Service, Indianapolis</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-z1s04-drill", P = "drl";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function rise(e, t) { tl.fromTo(e, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, t); }
+
+  /* ---- the sweep rule: every county's box centre and its distance from the dot, in map units, read from the inlined paths ---- */
+  var DOT = { x: 462.2, y: 188.5 };
+  var counties = [].slice.call($("map-counties").querySelectorAll("path"));
+  var dist = counties.map(function (c) { var b = c.getBBox(); return Math.hypot(b.x + b.width / 2 - DOT.x, b.y + b.height / 2 - DOT.y); });
+  var dmax = Math.max.apply(null, dist);                    /* 709.7, Posey */
+
+  /* 0 · "And" @0.00: ground, the whole map in lines, every county unlit, the dot in Body light. No label, no source line */
+
+  /* 1 · "statewide" @1.52: the dot turns Amber 2 and the sweep starts: 92 fills over 1.6 s, each 0.3 s (the family's lit
+         value, Amber 2 at 0.45, a fill change on the county's own path). Settled @3.42 */
+  tl.to($("dot"), { fill: "#e8c56a", duration: 0.15, ease: "none" }, 1.52);
+  counties.forEach(function (c, i) {
+    tl.to(c, { fill: "#e8c56a", fillOpacity: 0.45, duration: 0.3, ease: "power2.out" }, 1.52 + 1.6 * dist[i] / dmax);
+  });
+
+  /* 2 · "drill" @2.46: the label chip and the source line */
+  rise($("label"), 2.46);
+  rise($("src"), 2.46);
+
+  /* 3 · "test" @4.26: the second pass runs from the dot in the same order: each county 0.45 to 0.75 and back (0.2 s up,
+         0.4 s down), spread over 1.2 s. Settled by @6.06; hold to the last frame */
+  counties.forEach(function (c, i) {
+    var t = 4.26 + 1.2 * dist[i] / dmax;
+    tl.to(c, { fillOpacity: 0.75, duration: 0.2, ease: "power1.out" }, t);
+    tl.to(c, { fillOpacity: 0.45, duration: 0.4, ease: "power1.inOut" }, t + 0.2);
+  });
+
+  tl.to({}, { duration: 0.01 }, 7.09);                      /* holds to the last frame @7.10 */
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
