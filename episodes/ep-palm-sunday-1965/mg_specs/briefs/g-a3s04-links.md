@@ -77,7 +77,7 @@ All inlined, ids under `lnk-`; mount rules in `media/drawings/README.md`, which 
 As template section 7, from the worktree root: `node scripts/freeze_scan.mjs episodes/ep-palm-sunday-1965 --comp g-a3s04-links`, then `node scripts/graphics_qc.mjs episodes/ep-palm-sunday-1965`, then `python3 scripts/run_gates.py episodes/ep-palm-sunday-1965`.
 
 ## 7a. Done line
-All seven lines of template section 7a. Line 2 here: state the measured fill; the chain band is the content and the sweep band carries the ground. Line 4 here: capture 4.55 (mid flicker) and 6.15 (one line dotted, one dark) both ways; the flicker is a stepped tween, never a `repeat` with `yoyo` that a backward seek can land inside differently. Line 5 here: the two callout labels and their leaders are read at 2.80 against the handset (top y 433), the list (left x 540) and the station labels.
+All seven lines of template section 7a. Line 2 here: state the measured fill; the chain band is the content and the sweep band carries the ground. Line 4 here: capture 4.55 (mid flicker) and 6.50 (telephone line dark, power line dotted) both ways; the flicker is a stepped tween, never a `repeat` with `yoyo` that a backward seek can land inside differently. Line 5 here: the two callout labels and their leaders are read at 2.80 against the handset (top y 433), the list (left x 540) and the station labels.
 
 ## 8. Receipt
 As template section 8.
