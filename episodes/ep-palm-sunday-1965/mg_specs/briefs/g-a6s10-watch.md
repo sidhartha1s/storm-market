@@ -48,7 +48,7 @@ t from comp start = the segment's wav start inside the composition (timeline-map
 |---|---|---|---|---|---|---|
 | 0 | A6-S10 | 0 | Radio, | 0.00 | 0.00 | first frame: the microphone, lamp at rest; it is drawn already (no empty frame) |
 | 1 | A6-S10 | 1 | TV, | 0.98 | 0.77 | the lamp turns Popfig red (0.2 s) |
-| 2 | A6-S10 | 6 | explaining | 2.60 | 2.39 | source A fades in (0.3 s, `y:12` to 0); the microphone moves from its centred, staged place to x 500 to 692 at scale 1.6 (0.5 s, power2.inOut; section 4 item 7) |
+| 2 | A6-S10 | 6 | explaining | 2.60 | 2.39 | source A fades in (0.3 s, `y:12` to 0); the microphone stays centred on its slow push |
 | 3 | A6-S10 | 11 | forecast | 4.18 | 3.97 | strip 1 rises (`y:40` to 0 with the fade, 0.35 s, power3.out) |
 | 4 | A6-S10 | 14 | warning. | 5.00 | 4.79 | strip 2 rises the same way |
 | 5 | A6-S10 | 18 | Weather | 6.86 | 6.65 | source A gives way to source B (0.3 s cross fade) |
