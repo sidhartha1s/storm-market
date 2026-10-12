@@ -16,7 +16,6 @@ The civil defense director of County B heard about the tornado in the next count
 ## 1. Source
 - `edit_script.md` A4-S2, A4-S3, A4-S4, A4-S5, Rows [A13, C5; study printed p. 21] (County B). The Picture notes of those four segments are the only source of what is drawn.
 - "County B" is the study's own code, not a place name. The map of A4-S2 is "a plain map we draw, no names and no real outlines": no file from `media/maps/` is used and nothing on it is traced from a real place. It is labelled nowhere as a county.
-- Film: `media/films/cuts/a14-05-operations-room.mp4` from 20.0 s into the file (shot 14-05 of the 1967 training film: the wide room with the wall clock, men at the desks). It stands for a civil defense room of the time, not County B's office and not an Indiana room. `W\DESIGN.md` "CTA contract" asks for real footage, never a graphic, on the first picture after the book ad (lead ruling, 12 Oct 26). Window, frame and label as `mg_specs/briefs/g-a1s15-offices.md` section 3.
 - The chain: design sheet section 6 and the built `compositions/g-i1s9-chain.html` (link, light and ring code). The clock stamp: design sheet section 8 and the built `compositions/g-t1s2-warning.html`. The chip: the glass chip of the built `compositions/g-i1s6-page.html` (`.pol-chip`).
 
 ## 2. Datum, scale, orientation
