@@ -106,9 +106,7 @@ As `references/mg-brief-template.md` section 6, with these: `compositions/g-a4s0
 - `media/drawings/house.svg` (object 260 x 250, viewBox -6 -42 272 298, file 272 x 298, line 4).
 - `media/drawings/tornado-mark.svg` (object 60 x 80, viewBox -6 -6 72 92, file 72 x 92, line 6).
 - `media/drawings/wall-clock.svg` (object 124 x 124, viewBox -6 -6 136 136, file 136 x 136, line 4, ticks 3, hands 5; `dw-hour` and `dw-minute` turn about (62, 62)).
-All inlined, ids under `cntb-`; mount rules in `media/drawings/README.md`, which wins over any number here.
-- `media/films/cuts/a14-05-operations-room.mp4` (640 x 480, 31.53 s, no audio; used from 20.0 s): not mounted by this comp; it sits under it in `index.html`.
-No map file and no page crop is mounted.
+All inlined, ids under `cntb-`; mount rules in `media/drawings/README.md`, which wins over any number here. No map file, no page crop and no film cut is mounted: the film after the book ad sits under `g-a4s01-eyes`, the composition before this one (lead ruling, 12 Oct 26).
 
 ## 7. Tools
 As template section 7, from the worktree root: `node scripts/freeze_scan.mjs episodes/ep-palm-sunday-1965 --comp g-a4s02-countyb`, then `node scripts/graphics_qc.mjs episodes/ep-palm-sunday-1965`, then `python3 scripts/run_gates.py episodes/ep-palm-sunday-1965`.
