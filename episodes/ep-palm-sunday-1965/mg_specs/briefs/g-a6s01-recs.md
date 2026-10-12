@@ -34,7 +34,7 @@ Ground: the canvas gradient, on from frame 0.
 |---|---|
 | Page whole | `<img>` of `survey-p2-recs-page.png`, left 150, top 54, 752 x 972, `box-shadow: 0 18px 50px rgba(0,0,0,0.55)`. On from frame 0. It drifts `scale` 1.00 to 1.02 about its own centre from 0 to 5.35, `ease:"none"` |
 | Margin dots | ten circles radius 6, fill Caption dark (never Popfig red), in the page's left margin at screen x 224, centres y 217, 339, 414, 462, 522, 596, 676, 751, 812, 872 (one beside each item's number; the two-digit "10." starts at x 242). They ride the page's drift (same wrapper) |
-| Date label | glass chip, left 916, top 250, height 46, padding 0 x 22, Arial 700 26 px, Body light: `May 2, 1965` |
+| Date label | glass chip, left 916, top 250, height 46, padding 0 x 22, Arial 700 26 px, Body light: `May 2, 1965`. As built and passed: the label is in the type of `g-a5s20-team`'s date label |
 | Name card | glass plate as `compositions/g-i1s2-station.html` `.stn-card` (same fill, blur, border, radius 28): left 916, top 330, 660 x 170 (right 1576). Name `P. H. Kutschenreuter`: Arial Black 900 52 px, Headline white, left 958, top 352 (about 560 px wide: read it on a frame, it must end inside the plate; if it does not, set it at 46 px; as built and passed the name is at 46 px). Sub `chairman, Weather Bureau survey team`: Georgia italic 30 px, Amber 2, left 960, top 432 |
 | Source line | design sheet section 10, left 916 (as built and passed; this brief first said left 96), bottom 60: `Weather Bureau survey report, 1965, p. 2`. On for the whole comp |
 | Document card (the crop) | design sheet section 9: left 96, top 385, 1480 x 310 (right 1576, bottom 695), Beige polaroid border 10 px, its shadow; the crop at (106, 395) |
