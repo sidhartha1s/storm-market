@@ -35,7 +35,7 @@ Room 1, A3-S13 (copy the markup of the built `house-room` layer; change only wha
 | Television | `media/drawings/television.svg` as built, `translate(760 460) scale(1.5)` (box x 760 to 1210, y 460 to 820; screen x 790 to 1078, y 490 to 730, radius 36), screen Idle with its reflection arc |
 | Side table | as built: top x 1260 to 1500 at y 700, legs to y 820 |
 | Table radio | as built, `translate(1290 592) scale(1.2)` (box x 1290 to 1470, y 592 to 700); lines Label grey at rest |
-| Radio dial | circle centre (1424.4, 646), radius 26.4, fill Amber 2 at `fill-opacity` 0.55 from the first frame; the pointer runs from the centre to (1438.8, 629.2) and turns about the centre |
+| Radio dial | circle centre (1424.4, 646), radius 26.4, fill Amber 2 at `fill-opacity` 0.55 from the first frame; the pointer, Panel dark so it reads on the lit dial (as built and accepted), runs from the centre to (1438.8, 629.2) and turns about the centre |
 | Light patch | the built `house-patch` polygon is not drawn |
 | Source line | design sheet section 10, left 96, bottom 60: `Disaster Research Center, 1966, p. 25` |
 
