@@ -31,7 +31,8 @@
   /* ---- map block: the SVG fills the frame; the camera is its viewBox (fixed), the visible box is its clip-path ---- */
   .log-map { position:absolute; left:0; top:0; width:1920px; height:1080px;
     clip-path:polygon(716px 62px, 1796px 62px, 1796px 660px, 1580px 660px, 1580px 1000px, 716px 1000px); }
-  .log-town { position:absolute; font:700 22px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:26px; }
+  /* a county line runs under each of the four names at the brief's places, so they carry the credit shadow */
+  .log-town { position:absolute; font:700 22px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:26px; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
   .log-lit { color:#f2f5f8; }
 
   /* ---- clock stamp, top left (design sheet section 8, as g-t1s2-warning and the map bases) ---- */
