@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a6s09-third (A6-S9): a circle cut in three, one part fills amber: about a third of the offices the researchers asked
+     had made changes or planned to. Then two desks, and under each a generator that goes from an empty outline to filled:
+     two city police departments ordered new generators. SCHEMATIC: no percentage, no count of offices, no place.
+     Brief: mg_specs/briefs/g-a6s09-third.md. Bases: the desks, their stroke and the sweep band of g-a1s13-chain; label
+     type of g-i1s9-chain. Drawings, inline at 0.85: media/drawings/desk.svg (twice), generator.svg (twice; its filled state
+     is generator-filled.svg: dw-lamp fills Amber 2, dw-ink strokes Caption dark).
+     Circle: centre (520, 420), radius 190; dividers to 12, 4 and 8 o'clock: (520, 230), (684.5, 515), (355.5, 515).
+     Staging (acts-plan rule 22): the left block is alone until "Two" (5.93). Until "third" the circle sits centred at 1.5
+     times; from "third" the circle and its labels sit centred at 1.25 times, high enough that no label is at the desks'
+     height; on "Two" the block goes to its briefed place as the desks draw on.
+     Cues are comp-local seconds from audio/a6-s9.words.json (wav start -0.23, timeline-map.md table 5). -->
+<template>
+<style>
+  #thd-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  /* the faint band that carries the holds: starts off the left edge, drifts right for the whole window */
+  #thd-sweep { position:absolute; left:-560px; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
+  .thd-h { opacity:0; visibility:hidden; }
+  .thd-full { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .thd-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .thd-draw rect, .thd-draw path, .thd-draw circle { opacity:0; visibility:hidden; }
+  .thd-t { position:absolute; white-space:nowrap; line-height:1; font-weight:700; }
+  .thd-eye { left:320px; top:170px; width:400px; text-align:center; font-size:20px; letter-spacing:6px; color:#93a3b2; }
+  .thd-big { left:730px; top:284px; font-size:34px; color:#f2f5f8; }
+  .thd-sub { left:730px; top:334px; font-size:26px; color:#dfe7ee; }
+  .thd-cap { left:270px; top:640px; width:500px; text-align:center; font-size:22px; color:#93a3b2; }
+  .thd-dlab { left:1032.5px; top:664px; width:500px; text-align:center; font-size:22px; color:#93a3b2; }
+  .thd-glab { left:1032.5px; top:696px; width:500px; text-align:center; font-size:26px; color:#dfe7ee; }
+  .thd-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="thd-root" data-composition-id="g-a6s09-third" data-width="1920" data-height="1080" data-duration="9.47">
+  <div id="thd-sweep"></div>
+
+  <!-- ===== left block: the circle in three parts and its labels (the staging moves this one container) ===== -->
+  <div class="thd-full" id="thd-left">
+    <svg class="thd-svg" viewBox="0 0 1920 1080" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="520" cy="420" r="190" fill="#15202b"/>
+      <!-- the one sector that fills: clockwise from 12 to 4 o'clock, under the outline and the dividers -->
+      <path id="thd-sector" d="M520 420 L520 230 A190 190 0 0 1 684.5 515 Z" fill="#e8c56a" fill-opacity="0"/>
+      <circle cx="520" cy="420" r="190" stroke="#dfe7ee" stroke-width="4"/>
+      <path d="M520 420 L520 230 M520 420 L684.5 515 M520 420 L355.5 515" stroke="#dfe7ee" stroke-width="4"/>
+    </svg>
+    <div class="thd-t thd-eye thd-h" id="thd-eye">WITHIN THREE MONTHS</div>
+    <div class="thd-t thd-big thd-h" id="thd-big">about a third</div>
+    <div class="thd-t thd-sub thd-h" id="thd-sub">had made changes or planned to</div>
+    <div class="thd-t thd-cap thd-h" id="thd-cap">of the offices the researchers asked</div>
+  </div>
+
+  <!-- ===== right block: two desks, and under each a generator (outline, then filled) ===== -->
+  <svg class="thd-svg" viewBox="0 0 1920 1080" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <defs>
+      <!-- media/drawings/desk.svg: desk box 300 x 150, the telephone on its cradle rising to y -22 -->
+      <g id="thd-deskdef">
+        <rect x="14" y="52" width="12" height="98"/>
+        <rect x="274" y="52" width="12" height="98"/>
+        <rect x="190" y="62" width="74" height="38"/>
+        <path d="M219 81 H235"/>
+        <rect x="0" y="40" width="300" height="12" fill="#15202b"/>
+      </g>
+    </defs>
+    <g transform="translate(1010 420) scale(0.85)">
+      <g class="thd-draw" id="thd-desk1" stroke="#dfe7ee" stroke-width="4.7">
+        <rect x="14" y="52" width="12" height="98"/>
+        <rect x="274" y="52" width="12" height="98"/>
+        <rect x="190" y="62" width="74" height="38"/>
+        <path d="M219 81 H235"/>
+        <rect x="0" y="40" width="300" height="12" fill="#15202b"/>
+        <g transform="translate(106 -4)" stroke-width="3.5">
+          <rect x="24" y="-6" width="8" height="14" fill="#15202b"/>
+          <rect x="58" y="-6" width="8" height="14" fill="#15202b"/>
+          <path d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+          <circle cx="45" cy="27" r="15"/>
+          <circle cx="45" cy="27" r="3"/>
+          <path fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+        </g>
+      </g>
+    </g>
+    <g transform="translate(1300 420) scale(0.85)">
+      <g class="thd-draw" id="thd-desk2" stroke="#dfe7ee" stroke-width="4.7">
+        <rect x="14" y="52" width="12" height="98"/>
+        <rect x="274" y="52" width="12" height="98"/>
+        <rect x="190" y="62" width="74" height="38"/>
+        <path d="M219 81 H235"/>
+        <rect x="0" y="40" width="300" height="12" fill="#15202b"/>
+        <g transform="translate(106 -4)" stroke-width="3.5">
+          <rect x="24" y="-6" width="8" height="14" fill="#15202b"/>
+          <rect x="58" y="-6" width="8" height="14" fill="#15202b"/>
+          <path d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+          <circle cx="45" cy="27" r="15"/>
+          <circle cx="45" cy="27" r="3"/>
+          <path fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+        </g>
+      </g>
+    </g>
+    <!-- media/drawings/generator.svg, outline state: lines dark, box and housing Panel dark; centred under its desk -->
+    <g transform="translate(1086.5 572) scale(0.85)">
+      <g class="thd-draw" id="thd-gen1" stroke="#55606b" stroke-width="4.7">
+        <path d="M24 28 V6 H40"/>
+        <rect class="thd-lamp" x="8" y="28" width="66" height="40" fill="#15202b"/>
+        <path class="thd-ink" d="M42 35 L28 50 H40 L27 63" stroke-width="3.5"/>
+        <circle class="thd-lamp" cx="90" cy="46" r="24" fill="#15202b"/>
+        <circle class="thd-ink" cx="90" cy="46" r="6" stroke-width="3.5"/>
+        <path d="M0 70 H120 M8 70 V80 M112 70 V80"/>
+      </g>
+    </g>
+    <g transform="translate(1376.5 572) scale(0.85)">
+      <g class="thd-draw" id="thd-gen2" stroke="#55606b" stroke-width="4.7">
+        <path d="M24 28 V6 H40"/>
+        <rect class="thd-lamp" x="8" y="28" width="66" height="40" fill="#15202b"/>
+        <path class="thd-ink" d="M42 35 L28 50 H40 L27 63" stroke-width="3.5"/>
+        <circle class="thd-lamp" cx="90" cy="46" r="24" fill="#15202b"/>
+        <circle class="thd-ink" cx="90" cy="46" r="6" stroke-width="3.5"/>
+        <path d="M0 70 H120 M8 70 V80 M112 70 V80"/>
+      </g>
+    </g>
+  </svg>
+  <div class="thd-t thd-dlab thd-h" id="thd-dlab">two city police departments</div>
+  <div class="thd-t thd-glab thd-h" id="thd-glab">ordered new generators</div>
+
+  <div class="thd-src thd-h" id="thd-src">Disaster Research Center, 1966, pp. 28 to 30</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a6s09-third", P = "thd", D = 9.47;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function fade(id, t) { tl.to($(id), { autoAlpha: 1, duration: 0.3, ease: "none" }, t); }
+  function rise(id, t) { s0($(id), { y: 12 }); tl.to($(id), { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, t); }
+
+  /* ---- draw-on: a dash restarts on every sub-path, so a shape of several lines is dashed by its longest one ---- */
+  function longest(e) {
+    if (e.tagName !== "path") return e.getTotalLength();
+    var p = document.createElementNS("http://www.w3.org/2000/svg", "path"), max = 0;
+    e.getAttribute("d").split("M").forEach(function (s) { if (!s.trim()) return; p.setAttribute("d", "M" + s); max = Math.max(max, p.getTotalLength()); });
+    return max;
+  }
+  function draw(id, t, d) {                                 /* longest line first, all lines done d after t */
+    var lines = Array.prototype.slice.call($(id).querySelectorAll("rect, path, circle"));
+    lines.sort(function (a, b) { return b.getTotalLength() - a.getTotalLength(); });
+    var step = d * 0.5 / lines.length;
+    lines.forEach(function (e, i) {
+      var L = Math.ceil(longest(e)) + 1; s0(e, { strokeDasharray: L, strokeDashoffset: L });
+      tl.set(e, { autoAlpha: 1 }, t + i * step);
+      tl.to(e, { strokeDashoffset: 0, duration: d - i * step, ease: "power2.out" }, t + i * step);
+    });
+  }
+  function fill(id, t) {                                    /* outline to filled, as generator-filled.svg: fill and stroke colour only */
+    var g = $(id);
+    tl.to(g, { stroke: BODY, duration: 0.3, ease: "power2.out" }, t);
+    tl.to(g.querySelectorAll("." + P + "-lamp"), { fill: AMBER, duration: 0.3, ease: "power2.out" }, t);
+    tl.to(g.querySelectorAll("." + P + "-ink"), { stroke: INK, duration: 0.3, ease: "power2.out" }, t);
+  }
+
+  var AMBER = "#e8c56a", BODY = "#dfe7ee", INK = "#2a2622";
+  var left = $("left");
+
+  /* ---- staging: scale about the circle's centre (520, 420), then x and y carry that centre.
+          A, until "third": the circle alone, centre (960, 540), 1.5 times.
+          B, from "third": circle and labels, centre (820, 470), 1.25 times: its labels sit above the desks' height (y 398).
+          On "Two" the block goes to its briefed place. ---- */
+  s0(left, { transformOrigin: "520px 420px", scale: 1.5, x: 960 - 520, y: 540 - 420, force3D: false });
+  tl.to(left, { scale: 1.25, x: 820 - 520, y: 470 - 420, duration: 0.5, ease: "power3.out", force3D: false }, 1.47);
+  tl.to(left, { scale: 1, x: 0, y: 0, duration: 0.5, ease: "power3.out", force3D: false }, 5.93);
+
+  /* 0 · "Within" @0.00: ground, the circle with its three dividers, no fill, no text */
+  tl.to($("sweep"), { x: 2860, duration: D, ease: "none" }, 0);
+
+  fade("eye", 0.19);                                        /* 1 · three @0.19: the eyebrow */
+
+  /* 2 · third @1.47: one sector fills Amber 2; "about a third" comes in with it */
+  tl.to($("sector"), { fillOpacity: 0.9, duration: 0.3, ease: "power2.out" }, 1.47);
+  rise("big", 1.47);
+
+  fade("cap", 1.85); fade("src", 1.85);                     /* 3 · offices @1.85: the caption under the circle, the source line */
+  rise("sub", 3.65);                                        /* 4 · made @3.65: the sub label */
+
+  /* 5 · Two @5.93: the two desks draw on together (done @6.53); then the two generator outlines (done @6.93), both empty */
+  draw("desk1", 5.93, 0.6); draw("desk2", 5.93, 0.6);
+  draw("gen1", 6.53, 0.4); draw("gen2", 6.53, 0.4);
+
+  fade("dlab", 6.33);                                       /* 6 · police @6.33: the desk label */
+
+  /* 7 · generators. @7.73: generator 1, then generator 2 0.15 s after it, turn to the filled state; the generator label @7.88 */
+  fill("gen1", 7.73);
+  fill("gen2", 7.88);
+  fade("glab", 7.88);
+
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
