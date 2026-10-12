@@ -63,7 +63,7 @@ As the template's section 7.
 As the template's section 7a, all seven. Fill: full frame (photographs). Done line 7 does not apply (the comp is opaque).
 
 ## 8. Receipt
-As the template's section 8, plus: both `object-position` values, the measured width of the widest toll label line, and a sentence on whether caption A is readable in its 0.97 s.
+As the template's section 8, plus: both `object-position` values, the measured width of the widest toll label line, and a sentence on whether caption A is readable in its 2.33 s.
 
 ## Frames the verifier reads
 First frame 0.00 and the frame after it (0.04); 0.90 (last frame of photograph 1); 1.01 (first frame after the cut: no caption A, label B on); 2.10; 3.90; last frame 5.90.
