@@ -82,7 +82,7 @@ window.__timelines = window.__timelines || {};
 
   /* start states: hidden in CSS (kc-h), transforms set here at 0; every move from rest below is a plain to() */
   s0($("bg"), { scale: 1, transformOrigin: "1700px 600px" });
-  s0($("tile"), { x: -420 });
+  s0($("tile"), { y: -60 });                                /* from above, not from the left: a slide from the left crosses the bending man's head (screen x 0 to 67, y 490 to 567) */
   s0($("stamp"), { x: -660 });
   s0($("time"), { y: 16 });
   s0(hh, { rotation: 352.5, svgOrigin: O });                /* hour hand just short of 12 */
