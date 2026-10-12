@@ -58,12 +58,13 @@ These are the truths of the ruled film variant.
 1. While any film pixel shows (0.00 to 3.15), `Civil defense training film, 1967` is on screen and is the only chip and the only text: no `County B`, no card, no stamp, no source line. The film is the pre-trimmed wide cut of the operations room from its first second, never frozen, slowed, looped or reversed. From 3.15 to the last frame the hole is opaque (read at 3.25: no black, no stale frame, no seam in the ground).
 2. Every word on the card is the page's own; nothing on the card is retyped. The underlined words are `"with his` and `own eyes".` and nothing else.
 3. The page, the chip `County B`, the stamp and the source line come on together in the cut at word 9 "in" (3.15), not before. The unlit page is already on in that frame.
-4. The stamp reads `ABOUT` and `7:30 PM` from its first frame, minute hand on the 6, hour hand half way between 7 and 8. No `7:15 PM` is shown and no hand moves; the page's own `7:30 p. m.` is bright.
+4. The stamp reads `about` (lower case) and `7:30 PM` from its first frame, minute hand on the 6, hour hand half way between 7 and 8. No earlier time is shown and no hand moves; the page's own `7:30 p. m.` is bright.
 5. The chip reads `County B` and no other county, town or person is named. No person is drawn.
 6. No telephone, radio or police desk is drawn here, and neither telephone film shot is used: in these fifteen minutes he told no other office. The radio call belongs to the next composition.
 7. Line 1 with the page's own `County B.` is dimmed, not hidden; it stays readable under the dim.
 8. The card is on screen for 3.56 s (3.15 to 6.71) and a visible change lands on it at 4.73 and 5.07.
 9. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680.
+10. Coverage (plan rule 22): no empty block over a third of the frame for more than about 3 s at any step. By script: in the film view the largest empty block is a side panel, 25.0 % of the frame; after the cut the largest is the ground right of the stamp (x 981 to 1920, y 435 to 1080), 29.2 %, then the band under the stamp (y 800 to 1080), 25.9 %.
 
 ## 5. Text (exact) and cues
 Text: `County B` · `ABOUT` · `7:15 PM` · `7:30 PM` · `by the study's account` · `Disaster Research Center, 1966, p. 21`. Page words are the image.
