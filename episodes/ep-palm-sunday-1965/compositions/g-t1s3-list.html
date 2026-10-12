@@ -190,8 +190,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(world, { y: ALL.y }, { y: PUSH.y, duration: 2.78, ease: "power3.out", immediateRender: false }, 12.58);
 
   /* the header rides out of the top of the frame in the push: its two lines and the telephone fade out while still whole and
-     inside the frame (eyebrow top at y 74 to 20), so no glyph is ever cut by the edge or left visible above it */
-  tl.fromTo([$("eye"), $("title"), $("phone")], { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.3, ease: "none", immediateRender: false }, 13.05);
+     inside the frame (eyebrow top at y 71 to 6; GSAP's power3 is the fourth power), so no glyph is ever cut by the edge or left
+     visible above it */
+  tl.fromTo([$("eye"), $("title"), $("phone")], { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.3, ease: "none", immediateRender: false }, 12.95);
 
   /* 11 · "family" @14.02: the house outline pulses once to Body light and back to dark; no amber */
   tl.to(house, { stroke: "#dfe7ee", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 14.02);
