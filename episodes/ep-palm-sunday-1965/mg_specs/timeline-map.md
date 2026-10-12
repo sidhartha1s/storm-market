@@ -86,7 +86,7 @@ How the times were set (the hook and intro's own rules, nothing added):
 | g-z1s4b-book | compositions/g-z1s4b-book.html | Z1-S4b | 1163.12 | 6.31 | 1169.43 |
 | g-z1s05-title | compositions/g-z1s05-title.html | Z1-S5 | 1169.43 | 15.23 | 1184.66 |
 
-Every host is `id="host-<name without g->"`, track 2, 1920 x 1080.
+Every host is `id="host-<name without g->"`, track 2, 1920 x 1080. `host-a1s07-tracks` also carries `data-callback`: the track map (`media/stills/b7-tornado-track-map.jpg`) is used a second time there, after `g-i1s4-states`.
 
 ## 2. Paul's clips (5), real files
 | Paul clip | File | Segment | Start (s) | Duration (s) | End (s) | First sound in the clip (s) |
