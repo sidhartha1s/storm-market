@@ -58,10 +58,15 @@ function settleFrames(tweens, windowEnd) {
     { t: pre, why: exits.length ? `pre-exit: last settled moment before the exit tween at ${exitStart.toFixed(2)}s` : `pre-exit: no exit tween, last settled moment of the ${windowEnd.toFixed(2)}s window` },
   ];
 }
-/* A declared exemption (flat-type: data-type-ok="reason" on the comp root; bad-crop: data-crop-ok="reason"
- * on the img) is recorded with its reason and printed, never silent. An empty reason exempts nothing;
- * no other rule takes one (idle least of all). */
-const add = (comp, kind, msg, ok = '') => defects.push({ comp, kind, msg, ok, hard: !ok && HARD.has(kind) });
+/* Declared exemptions: the only kinds that take one and the attribute that carries its reason (mg-quickref "Gate-readable authoring"). */
+const EXEMPT = { 'flat-type': 'data-type-ok', 'bad-crop': 'data-crop-ok' };
+const exempt = [];
+const reason = (kind, raw) => (EXEMPT[kind] ? raw || '' : '').trim();
+const add = (comp, kind, msg, raw) => {
+  const ok = reason(kind, raw);
+  if (ok) exempt.push({ comp, kind, msg, ok });
+  else defects.push({ comp, kind, msg, hard: HARD.has(kind) });
+};
 
 /* ---------- in-page probe: runs inside the composition ---------- */
 const PROBE = `(() => {
