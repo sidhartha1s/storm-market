@@ -31,7 +31,7 @@ Clock hands, degrees clockwise from 12: 9:20 is hour 280, minute 120; 8:10 is ho
 |---|---|
 | Ground | canvas gradient (design sheet section 2), on from frame 0 |
 | Map | BM-1 groups `map-neighbours`, `map-counties`, `map-state` inlined with ids prefixed `mrn-`; county lines 1.5 px, neighbour outlines 2 px, Indiana's outline 3 px, non-scaling. Every `pt-` group hidden except Fort Wayne, Marion and Linn Grove. Dot radius 6 px (`r` 2.133 map units), Body light. No county is lit |
-| Fort Wayne | dot (1489.7, 98.6); label `Fort Wayne` left 1503, top 87. Town labels Arial 700 22 px, Body light |
+| Fort Wayne | dot (1489.7, 98.6); label `Fort Wayne` centred above its dot (left 1430, top 64 in the file; as built: at left 1503, top 87 it ran over Indiana's east line). Town labels Arial 700 22 px, Body light |
 | Path | one polyline in the map SVG, Body light 4 px, non-scaling, round joins: screen (1141.2, 420.6), (1305.2, 401.5), (1528.8, 329.5), (1611.5, 302.8). A 6 px open circle marks its start. Never red, no arrowhead |
 | Marion | dot (1305.2, 379.0), 22.5 px north of the path; label `Marion` left 1317, top 350 |
 | Linn Grove | dot (1528.8, 329.5); label `Linn Grove` right aligned to x 1600, top 345 (below the path, by hand) |
@@ -72,7 +72,7 @@ Cue words and times are from `audio/a5-s7.words.json` and `audio/a5-s8.words.jso
 | 3 | A5-S7 | 9 | 920 | 3.54 | 3.31 | clock stamp slides in from the left (`x: -660` to 0, 0.6 s, power3.out); the minute hand sweeps its last 30 degrees onto the 4 |
 | 4 | A5-S7 | 16 | wire, | 5.30 | 5.07 | document card rises in from below with a fade (`y: 80` set at 0, to 0, opacity 0 to 1; 0.7 s, power3.out); the document source fades in after it. Corrected 12 Oct 26: not in from the right, which crosses the presenter corner (the card reaches y 957) |
 | 5 | A5-S7 | 17 | three | 6.26 | 6.03 | unlit page fades in (0.4 s); the underline draws left to right (0.7 s) |
-| 6 | A5-S8 | 0 | Marion | first sound 0.00 | 9.96 | the document source fades, the card leaves the way it came (`y: 0` to 60, opacity 1 to 0; 0.4 s, power3.in; corrected 12 Oct 26: not out to the right); chip `hit near 8:00 PM` fades in beside Marion's dot (0.3 s) |
+| 6 | A5-S8 | 0 | Marion | first sound 0.00 | 9.96 | the document source fades, the card leaves the way it came (`y: 0` to 80, opacity 1 to 0; 0.4 s, power3.in; as built in the file saved at 00:11: not out to the right); chip `hit near 8:00 PM` fades in beside Marion's dot (0.3 s) |
 | 7 | A5-S8 | 7 | Fort | 2.54 | 12.50 | the map dims (0.4 s): map to 0.2, labels, caption and chip to 0; the stamp's three lines fade (0.15 s), the stamp slides to left 986 (0.5 s, power2.inOut), its lines return (0.2 s) |
 | 8 | A5-S8 | 13 | full | 3.80 | 13.76 | quote strip rises in (`y: 40` to 0, 0.5 s, power3.out): the quote, then the attribution 0.2 s later |
 | 9 | A5-S8 | 20 | clock | 6.26 | 16.22 | hospital clock card slides in from the left (`x: -660` to 0, 0.6 s, power3.out), hands already at 8:10, eyebrow `STOPPED AT`, no time yet |
