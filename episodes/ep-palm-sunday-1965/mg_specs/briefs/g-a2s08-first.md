@@ -1,4 +1,4 @@
-Host: id=g-a2s08-first file=compositions/g-a2s08-first.html start=345.88 (timeline-map.md table 1; the mount in index.html wins) duration=6.69 s (wav 6.53 s plus its gaps) track=2
+Host: id=g-a2s08-first file=compositions/g-a2s08-first.html start=346.13 (timeline-map.md table 1; the mount in index.html wins) duration=6.69 s (wav 6.53 s plus its gaps) track=2
 
 # g-a2s08-first · A2-S8 · the first tornado's path, then its toll (wave 2, map family)
 
