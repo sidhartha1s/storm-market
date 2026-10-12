@@ -1,0 +1,332 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4s02-countyb · A4-S2 to A4-S5 · window 32.43 s · brief: mg_specs/briefs/g-a4s02-countyb.md
+  Claim: the civil defense director of County B heard about the tornado one county over, told his own members and no other
+  office, saw it himself at about 7:30 PM and radioed the city police. He counted on the police to tell the station and the
+  station to tell everyone: that part is a grey ghost, because the picture does not say it happened.
+  SCHEMATIC, NOT TO SCALE in both halves. West is the left edge. Chain line y 520 at full size.
+  0.00 to 4.06: a film window (the cut is mounted under this comp in index.html, class filmwin); the film label is the only text.
+  Amber reaches the two desks and the arc, nothing else. "County B" is the only county label; no real place is named.
+  Cues are comp-local seconds (audio/a4-s2..s5.words.json plus the offsets of mg_specs/timeline-map.md table 5).
+  FAMILY BASE: later county-chain graphics copy three blocks from here, each marked BASE below:
+    the county chain (four stations, two dotted links), the radio arc with its light, the ghost.
+-->
+<template>
+<style>
+  /* no background on the root: the ground is four panels round the film window, and a fifth that closes it */
+  #cntb-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee; }
+  .cntb-gnd { position:absolute; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%) no-repeat; background-size:1920px 1080px; }
+  #cntb-gt { left:0; top:0; width:1920px; height:150px; background-position:0 0; }
+  #cntb-gb { left:0; top:870px; width:1920px; height:210px; background-position:0 -870px; }
+  #cntb-gl { left:0; top:150px; width:480px; height:720px; background-position:0 -150px; }
+  #cntb-gr { left:1440px; top:150px; width:480px; height:720px; background-position:-1440px -150px; }
+  #cntb-cover { left:480px; top:150px; width:960px; height:720px; background-position:-480px -150px; }
+  /* the faint band that carries the holds. While the window is open it runs inside a clip that leaves the window out. */
+  #cntb-sweepclip { position:absolute; inset:0;
+    clip-path:polygon(evenodd, 0 0, 1920px 0, 1920px 1080px, 0 1080px, 0 0, 480px 150px, 480px 870px, 1440px 870px, 1440px 150px, 480px 150px); }
+  .cntb-sweep { position:absolute; left:-560px; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
+  #cntb-frame { position:absolute; left:476px; top:146px; width:968px; height:728px; box-sizing:border-box; border:4px solid #dfe7ee; }
+  #cntb-svg { position:absolute; left:0; top:0; }
+  .cntb-chip { position:absolute; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:23px;
+    font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  #cntb-flabel { left:480px; top:886px; }
+  #cntb-chipb { left:836px; top:316px; }
+  #cntb-maplabs { position:absolute; left:0; top:0; }
+  .cntb-mlab { position:absolute; width:240px; text-align:center; font:700 26px Arial, sans-serif; line-height:32px; color:#dfe7ee; white-space:nowrap; }
+  .cntb-lab { position:absolute; top:676px; width:200px; font-size:22px; line-height:28px; font-weight:700; color:#93a3b2; text-align:center; }
+  #cntb-stamp { position:absolute; left:96px; top:96px; width:590px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  #cntb-clock { position:absolute; left:27px; top:32px; overflow:visible; }
+  #cntb-about { position:absolute; left:190px; top:12px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  #cntb-time { position:absolute; left:188px; top:46px; font:700 84px 'Courier New', monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  /* hidden in CSS as well as at timeline 0, so the host's very first frame is the film view and nothing else */
+  #cntb-cover, #cntb-sweepb, #cntb-chain, #cntb-map, #cntb-mkcd, #cntb-mksh, #cntb-tor, #cntb-mlabcd, #cntb-mlabsh, #cntb-chipb,
+  #cntb-b1, #cntb-b2, #cntb-b3, #cntb-b4, #cntb-stamp, #cntb-time, #cntb-arc, #cntb-arcwave, #cntb-light,
+  #cntb-gdot, #cntb-g1, #cntb-g2 { opacity:0; visibility:hidden; }
+  #cntb-gring { visibility:hidden; }
+</style>
+<div id="cntb-root" data-composition-id="g-a4s02-countyb" data-width="1920" data-height="1080" data-duration="32.43">
+  <!-- ground: four panels round the window x 480 to 1440, y 150 to 870; the cover closes it at 4.06 for good -->
+  <div class="cntb-gnd" id="cntb-gt"></div>
+  <div class="cntb-gnd" id="cntb-gb"></div>
+  <div class="cntb-gnd" id="cntb-gl"></div>
+  <div class="cntb-gnd" id="cntb-gr"></div>
+  <div class="cntb-gnd" id="cntb-cover"></div>
+  <div id="cntb-sweepclip"><div class="cntb-sweep" id="cntb-sweepa"></div></div>
+  <div class="cntb-sweep" id="cntb-sweepb"></div>
+  <div id="cntb-frame"></div>
+
+  <svg id="cntb-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <!-- the dotted arc is drawn on, and its white wave is carried, by a solid stroke in a mask -->
+      <mask id="cntb-arcmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <path id="cntb-arcrev" d="M224 508 Q425 300 626 508" fill="none" stroke="#fff" stroke-width="20"/>
+      </mask>
+      <mask id="cntb-wavemask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <path id="cntb-waverev" d="M224 508 Q425 300 626 508" fill="none" stroke="#fff" stroke-width="20"/>
+      </mask>
+    </defs>
+
+    <!-- the map of A4-S2: the next county, west of his own. A plain map we draw: no names, no real outline. -->
+    <g id="cntb-map">
+      <path id="cntb-river" d="M470 120 A520 520 0 0 1 430 420 A420 420 0 0 0 500 700 A520 520 0 0 1 450 960"
+        fill="none" stroke="#7fb2e5" stroke-width="10" stroke-linecap="round"/>
+      <g id="cntb-mksh"><circle id="cntb-mkshc" cx="540" cy="450" r="14" fill="#15202b" stroke="#dfe7ee" stroke-width="4"/></g>
+      <g id="cntb-mkcd"><circle id="cntb-mkcdc" cx="610" cy="450" r="14" fill="#15202b" stroke="#dfe7ee" stroke-width="4"/></g>
+      <!-- media/drawings/tornado-mark.svg at scale 2: Body light, never red; it never reaches the river -->
+      <g id="cntb-tor">
+        <g transform="translate(150 370) scale(2)">
+          <g fill="none" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6 H57"/>
+            <path d="M14 26 H52"/>
+            <path d="M20 46 H42"/>
+            <path d="M27 64 L30 76"/>
+          </g>
+        </g>
+      </g>
+    </g>
+
+    <!-- BASE · the county chain, authored at full size: four stations, two dotted links, every line Label grey when unlit.
+         It waits at scale 0.5 about (1577, 380) and grows to 1 on A4-S3. -->
+    <g id="cntb-chain">
+      <g fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round">
+        <path id="cntb-k1" d="M837 520 H1068" stroke-dasharray="0.1 14"/>
+        <path id="cntb-k2" d="M1170 520 H1400" stroke-dasharray="0.1 14"/>
+      </g>
+
+      <!-- station 1 · civil defense desk (media/drawings/desk.svg without its telephone: he used a radio) -->
+      <g transform="translate(96 490) scale(0.85)">
+        <g id="cntb-s1" fill="none" stroke="#93a3b2" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="14" y="52" width="12" height="98"/>
+          <rect x="274" y="52" width="12" height="98"/>
+          <rect x="190" y="62" width="74" height="38"/>
+          <path d="M219 81 H235"/>
+          <rect x="0" y="40" width="300" height="12" fill="#15202b"/>
+        </g>
+      </g>
+
+      <!-- station 2 · city police desk (media/drawings/desk.svg whole: telephone, handset ON the cradle) -->
+      <g transform="translate(582 490) scale(0.85)">
+        <g id="cntb-s2" fill="none" stroke="#93a3b2" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="14" y="52" width="12" height="98"/>
+          <rect x="274" y="52" width="12" height="98"/>
+          <rect x="190" y="62" width="74" height="38"/>
+          <path d="M219 81 H235"/>
+          <rect x="0" y="40" width="300" height="12" fill="#15202b"/>
+          <g transform="translate(106 -4)" stroke-width="3.5">
+            <rect x="24" y="-6" width="8" height="14" fill="#15202b"/>
+            <rect x="58" y="-6" width="8" height="14" fill="#15202b"/>
+            <path d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+            <circle cx="45" cy="27" r="15"/>
+            <circle cx="45" cy="27" r="3"/>
+            <circle cx="43.2" cy="37" r="0.8"/><circle cx="37.2" cy="33.6" r="0.8"/><circle cx="34.8" cy="27" r="0.8"/><circle cx="37.2" cy="20.4" r="0.8"/>
+            <circle cx="43.2" cy="17" r="0.8"/><circle cx="50.1" cy="18.2" r="0.8"/><circle cx="54.6" cy="23.5" r="0.8"/>
+            <path fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- station 3 · microphone (media/drawings/microphone.svg): lamp Panel dark in every frame -->
+      <g transform="translate(1068 420) scale(0.85)">
+        <g id="cntb-s3" fill="none" stroke="#93a3b2" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M60 112 V182"/>
+          <rect x="30" y="0" width="60" height="112" rx="30" fill="#15202b"/>
+          <path d="M40 30 H80 M40 56 H80 M40 82 H80"/>
+          <path d="M30 182 H90 L108 230 H12 Z" fill="#15202b"/>
+          <circle cx="104" cy="20" r="9" fill="#15202b"/>
+        </g>
+      </g>
+
+      <!-- station 4 · house (media/drawings/house.svg): windows Panel dark in every frame -->
+      <g transform="translate(1400 430) scale(0.68)">
+        <g id="cntb-s4" fill="none" stroke="#93a3b2" stroke-width="5.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M186 37.3 V22 H208 V50"/>
+          <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+          <rect x="20" y="80" width="220" height="170" fill="#15202b"/>
+          <rect x="112" y="170" width="36" height="80"/>
+          <rect x="44" y="120" width="48" height="48" fill="#15202b"/>
+          <rect x="168" y="120" width="48" height="48" fill="#15202b"/>
+          <path d="M68 120 V168 M44 144 H92"/>
+          <path d="M192 120 V168 M168 144 H216"/>
+          <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- BASE · the radio arc from the civil defense desk to the bare left end of the police desk's top, and its light.
+         Outside the chain group: both exist only at full size. -->
+    <path id="cntb-arc" d="M224 508 Q425 300 626 508" fill="none" stroke="#e8c56a" stroke-width="4" stroke-linecap="round"
+      stroke-dasharray="0.1 14" mask="url(#cntb-arcmask)"/>
+    <path id="cntb-arcwave" d="M224 508 Q425 300 626 508" fill="none" stroke="#f2f5f8" stroke-width="4" stroke-linecap="round"
+      stroke-dasharray="0.1 14" mask="url(#cntb-wavemask)"/>
+    <circle id="cntb-light" cx="224" cy="508" r="10" fill="#e8c56a"/>
+
+    <!-- BASE · the ghost: the path he counted on, over the two dotted links. Label grey from first frame to last, never amber. -->
+    <g fill="none" stroke="#93a3b2" stroke-width="6" stroke-linecap="round">
+      <path id="cntb-g1" d="M837 520 H1068"/>
+      <path id="cntb-g2" d="M1170 520 H1400"/>
+    </g>
+    <circle id="cntb-gring" cx="837" cy="520" r="8" fill="none" stroke="#93a3b2" stroke-width="3"/>
+    <circle id="cntb-gdot" cx="837" cy="520" r="8" fill="#93a3b2"/>
+  </svg>
+
+  <!-- the map's two labels: they move out with the map and fade first -->
+  <div id="cntb-maplabs">
+    <div class="cntb-mlab" id="cntb-mlabsh" style="left:420px; top:386px">the sheriff</div>
+    <div class="cntb-mlab" id="cntb-mlabcd" style="left:490px; top:482px">civil defense</div>
+  </div>
+
+  <div class="cntb-lab" id="cntb-b1" style="left:123.5px">civil defense</div>
+  <div class="cntb-lab" id="cntb-b2" style="left:609.5px">city police</div>
+  <div class="cntb-lab" id="cntb-b3" style="left:1019px">the radio station</div>
+  <div class="cntb-lab" id="cntb-b4" style="left:1388.5px">a family</div>
+
+  <div class="cntb-chip" id="cntb-flabel">Civil defense training film, 1967</div>
+  <div class="cntb-chip" id="cntb-chipb">County B</div>
+
+  <!-- clock stamp (design sheet section 8) with the word "about" in the eyebrow slot; no place line -->
+  <div id="cntb-stamp">
+    <!-- media/drawings/wall-clock.svg: the hands point at 12 and are turned about (62, 62) -->
+    <svg id="cntb-clock" width="136" height="136" viewBox="-6 -6 136 136">
+      <g fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="62" cy="62" r="62" fill="#15202b"/>
+        <path d="M62.0 8.0 L62.0 22.0 M89.0 15.2 L85.0 22.2 M108.8 35.0 L101.8 39.0 M116.0 62.0 L102.0 62.0 M108.8 89.0 L101.8 85.0 M89.0 108.8 L85.0 101.8 M62.0 116.0 L62.0 102.0 M35.0 108.8 L39.0 101.8 M15.2 89.0 L22.2 85.0 M8.0 62.0 L22.0 62.0 M15.2 35.0 L22.2 39.0 M35.0 15.2 L39.0 22.2" stroke-width="3"/>
+        <g id="cntb-hour"><path d="M62 62 V28" stroke-width="5"/></g>
+        <g id="cntb-minute"><path d="M62 62 V10" stroke-width="5"/></g>
+        <path d="M62 62 h0.01" stroke-width="10"/>
+      </g>
+    </svg>
+    <div id="cntb-about">about</div>
+    <div id="cntb-time">7:30 PM</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#cntb-";
+  const LINE_Y = 520;
+  const el = function (id) { return document.getElementById("cntb-" + id); };
+
+  /* BASE · station strokes: amber stays; a pulse goes to Body light and back to Label grey. Colour changes, never scale pops. */
+  function amber(sel, at) { tl.to(sel, { attr: { stroke: "#e8c56a" }, duration: 0.3, ease: "power2.out" }, at); }
+  function pulse(sel, at) { tl.to(sel, { attr: { stroke: "#dfe7ee" }, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, at); }
+  function fadeIn(sel, at) { tl.to(sel, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, at); }
+  /* a map mark lands with its label */
+  function land(sel, at) {
+    tl.set(sel, { autoAlpha: 0, y: 16 }, 0);
+    tl.to(sel, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, at);
+  }
+  /* BASE · the light crosses a path: positions sampled along its length at build, so any seek finds the dot in place */
+  function along(dot, path, at, dur) {
+    const len = path.getTotalLength(), n = 24, p0 = path.getPointAtLength(0), steps = [];
+    for (let i = 1; i <= n; i++) {
+      const p = path.getPointAtLength(len * i / n);
+      steps.push({ attr: { cx: p.x, cy: p.y }, duration: dur / n, ease: "none" });
+    }
+    tl.set(dot, { autoAlpha: 0, attr: { cx: p0.x, cy: p0.y } }, 0);
+    tl.set(dot, { autoAlpha: 1 }, at);
+    tl.to(dot, { keyframes: steps }, at);
+    tl.set(dot, { autoAlpha: 0 }, at + dur);
+  }
+  /* BASE · the ghost runs one link: the grey line grows from x0 to x1 behind the grey dot.
+     The line's scaleX and svgOrigin are set at timeline 0. */
+  function ghostRun(line, x0, x1, at, dur) {
+    tl.set(line, { autoAlpha: 0, scaleX: 0, svgOrigin: x0 + " " + LINE_Y }, 0);
+    tl.set(line, { autoAlpha: 1 }, at);
+    tl.to(line, { scaleX: 1, duration: dur, ease: "none" }, at);
+    tl.set(P+"gdot", { attr: { cx: x0 } }, at);
+    tl.to(P+"gdot", { attr: { cx: x1 }, duration: dur, ease: "none" }, at);
+  }
+
+  /* build-time states of the drawn-on strokes */
+  const river = el("river"), riverLen = Math.ceil(river.getTotalLength()) + 1;
+  gsap.set(river, { strokeDasharray: riverLen, strokeDashoffset: riverLen });
+  const arcLen = Math.ceil(el("arc").getTotalLength()) + 1, WAVE = 110;
+  gsap.set(el("arcrev"), { strokeDasharray: arcLen, strokeDashoffset: arcLen });
+  gsap.set(el("waverev"), { strokeDasharray: WAVE + " " + (arcLen + WAVE), strokeDashoffset: WAVE });
+
+  /* HE'D @0.00: the film view. Ground, open window, frame, film label; nothing else until 4.06. */
+  tl.set([P+"cover", P+"sweepb", P+"chain", P+"map", P+"tor", P+"chipb", P+"b1", P+"b2", P+"b3", P+"b4", P+"time",
+          P+"arc", P+"arcwave", P+"gdot"], { autoAlpha: 0 }, 0);
+  tl.set(P+"chain", { scale: 0.5, svgOrigin: "1577 380" }, 0);
+  tl.set(P+"tor", { x: -290 }, 0);
+  tl.set(P+"stamp", { autoAlpha: 0, x: -660 }, 0);
+  tl.set(P+"hour", { rotation: 222.5, svgOrigin: "62 62" }, 0);
+  tl.set(P+"minute", { rotation: 150, svgOrigin: "62 62" }, 0);
+  tl.set(P+"gring", { visibility: "hidden", opacity: 0.9, attr: { r: 8 } }, 0);
+  tl.to([P+"sweepa", P+"sweepb"], { x: 2860, duration: 32.43 / 6, ease: "none", repeat: 5 }, 0);
+
+  /* LOST @4.06: hard cut. The window closes for good; the waiting chain, the chip and the river are on. */
+  tl.set(P+"cover", { autoAlpha: 1 }, 4.06);
+  tl.set([P+"frame", P+"flabel", P+"sweepclip"], { autoAlpha: 0 }, 4.06);
+  tl.set([P+"sweepb", P+"chain", P+"chipb", P+"map"], { autoAlpha: 1 }, 4.06);
+  tl.to(river, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 4.06);
+  /* IN @4.40: the civil defense mark lands with its label */
+  land([P+"mkcd", P+"mlabcd"], 4.40);
+  /* WATER @4.70: the river flashes Headline white and back */
+  tl.to(river, { attr: { stroke: "#f2f5f8" }, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 4.70);
+  /* STATE @5.84: the sheriff's mark lands with its label */
+  land([P+"mksh", P+"mlabsh"], 5.84);
+  /* TOLD @6.42: the sheriff's mark fills amber */
+  tl.to(P+"mkshc", { attr: { fill: "#e8c56a" }, duration: 0.3, ease: "power2.out" }, 6.42);
+  /* TORNADO @7.44: the tornado mark comes in from the west, then drifts east to 10.06 */
+  tl.set(P+"tor", { autoAlpha: 1 }, 7.44);
+  tl.to(P+"tor", { x: 0, duration: 1.4, ease: "power2.out" }, 7.44);
+  tl.to(P+"tor", { x: 40, duration: 1.22, ease: "none" }, 8.84);
+  /* WEST @8.84: the civil defense mark fills amber: he has heard */
+  tl.to(P+"mkcdc", { attr: { fill: "#e8c56a" }, duration: 0.3, ease: "power2.out" }, 8.84);
+
+  /* HE @10.06: the map's labels fade, the map slides out west; gone by 10.46 */
+  tl.to([P+"mlabcd", P+"mlabsh"], { autoAlpha: 0, duration: 0.15, ease: "power2.in" }, 10.06);
+  tl.to([P+"map", P+"maplabs"], { x: -1000, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 10.06);
+  /* TOLD @10.16: the chain grows to full size about (1577, 380) */
+  tl.to(P+"chain", { scale: 1, duration: 0.66, ease: "power2.inOut" }, 10.16);
+  /* CIVIL @10.82: the civil defense desk goes amber and stays */
+  amber(P+"s1", 10.82);
+  fadeIn(P+"b1", 10.82);
+  /* NO @12.32, OTHER @12.52, OFFICE @12.74: the other three are named and stay grey */
+  pulse(P+"s2", 12.32); fadeIn(P+"b2", 12.32);
+  pulse(P+"s3", 12.52); fadeIn(P+"b3", 12.52);
+  pulse(P+"s4", 12.74); fadeIn(P+"b4", 12.74);
+
+  /* ABOUT @14.90: the clock stamp slides in, hands at 7:25. SEVEN @15.08: the hands sweep to 7:30 and the time lands. */
+  tl.to(P+"stamp", { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 14.90);
+  tl.to(P+"minute", { rotation: 180, duration: 0.5, ease: "power3.out" }, 15.08);
+  tl.to(P+"hour", { rotation: 225, duration: 0.5, ease: "power3.out" }, 15.08);
+  tl.to(P+"time", { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 15.08);
+  /* RADIOED @18.28: the radio arc draws, dot by dot */
+  tl.set(P+"arc", { autoAlpha: 1 }, 18.28);
+  tl.to(P+"arcrev", { strokeDashoffset: 0, duration: 0.6, ease: "none" }, 18.28);
+  /* POLICE @19.04: the light crosses the arc; LOCATION: it arrives at 19.84, hides, and the police desk goes amber */
+  along(P+"light", el("arc"), 19.04, 0.8);
+  amber(P+"s2", 19.84);
+  /* RADIO @22.32: the microphone pulses. No amber: he asked, nothing was sent. */
+  pulse(P+"s3", 22.32);
+
+  /* PATH @24.61: the ghost dot appears on the police desk's right edge with one grey ring */
+  tl.to(P+"gdot", { autoAlpha: 1, duration: 0.15, ease: "power2.out" }, 24.61);
+  tl.set(P+"gring", { visibility: "visible" }, 24.61);
+  tl.to(P+"gring", { attr: { r: 30 }, opacity: 0, duration: 0.45, ease: "power2.out" }, 24.61);
+  /* DEFENSE @26.57: a white wave runs the arc's dots left to right */
+  tl.set(P+"arcwave", { autoAlpha: 1 }, 26.57);
+  tl.to(P+"waverev", { strokeDashoffset: -arcLen, duration: 0.6, ease: "none" }, 26.57);
+  /* THE @28.23: the ghost runs to the microphone; STATION @29.03: the microphone pulses */
+  ghostRun(P+"g1", 837, 1068, 28.23, 0.8);
+  pulse(P+"s3", 29.03);
+  /* STATION @30.19: the ghost jumps the microphone and runs to the house; EVERYONE @30.83: the house pulses, windows dark */
+  ghostRun(P+"g2", 1170, 1400, 30.19, 0.64);
+  pulse(P+"s4", 30.83);
+  tl.to(P+"gdot", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 30.83);
+  tl.to({}, { duration: 0.01 }, 32.42);
+  window.__timelines["g-a4s02-countyb"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
