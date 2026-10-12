@@ -38,7 +38,7 @@ The tornado mark's place is schematic: 7 map units west and 7 north of `pt-nappa
 | Link | overlay SVG, dotted (Label grey, 4 px dots, 14 px gap), from the South Bend dot (801.5, 335.8) to the Elkhart dot (1093.3, 315.5); drawn from South Bend. Dotted because the source does not say how he was told |
 | Nappanee dot | ELKHART (1060.2, 655.2). Label `Nappanee`: Arial 700 22 px, Body light, left 1078, top 644 |
 | Tornado mark | `media/drawings/tornado-mark.svg` inline at 0.75 scale (45 x 60 px, line 4.5 px), group stroke Body light, never red; its lowest point at (1007.7, 602.8) |
-| Arrow | overlay SVG, Body light 4 px, round caps, from (1024, 586) to (1109, 501) (pointing up and right at 45 degrees, 120 px long), with a two-stroke head 18 px. It points northeast, toward the Elkhart dot's side of the frame, and stops 185 px short of that dot |
+| Arrow | overlay SVG, Body light 4 px, round caps, from (1024, 586) to (1109, 501) (pointing up and right at 45 degrees, 120 px long), with a two-stroke head 18 px. It points northeast, toward the Elkhart dot's side of the frame, and stops 186 px short of that dot |
 
 ## 4. Must be true in the picture
 1. Elkhart's dot is north of Nappanee's and a little east; both sit inside Elkhart County's outline. All three dots come from `media/data/points.csv` by the formulas in section 2, within 2 px.
