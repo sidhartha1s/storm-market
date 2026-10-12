@@ -368,7 +368,7 @@ if HAVE_FFMPEG:
         check("render-07 NEW: a black span over the CTA body still fails",
               r7.returncode != 0 and "FAIL: 1 black span" in r7.stdout, f"rc={r7.returncode}\n{r7.stdout[-800:]}")
 
-    # render-10 (12 Oct 26): a draft is rendered at render.cmd's 15 fps, so judging it against the
+    # render-11 (12 Oct 26): a draft is rendered at render.cmd's 15 fps, so judging it against the
     # composition's data-fps failed every draft, and the log came from the basename ("draft" in it),
     # so a draft named ...-preview-v1 was checked against render_full.log. The mode is now an
     # argument; the final-render checks must keep failing.
