@@ -48,6 +48,7 @@ Arc 2 passes above the miniature list (top y 350) only if its curve stays above 
 5. The microphone and the house stay dark on every frame.
 6. One source per frame: the p. 29 line, then the strip's attribution.
 7. Nothing in x >= 1600 and y >= 680 (the strip ends at x 1096). Nothing appears before its spoken word.
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). It holds without staging: at every step the largest empty block is the band above the chain (y 0 to 350, 32.4 % of the frame) or the band below its labels (y 735 to 1080, 31.9 %), each under a third. Desks A and B fill both bands from 0.18 s to 8.68 s, the strip fills the lower one from 10.90 s and the second office the upper one from 12.10 s.
 
 ## 5. Text (exact) and cues
 Text: the chain's labels as `g-a1s13-chain.md` with `Weather Bureau teletype` · `a fire department` · `a police department` · `another Weather Bureau office` · `civil defense and local offices` · `“back-up emergency radio communications”` · `Weather Bureau survey, 1965, p. 2, recommendation 7` · `Disaster Research Center, 1966, p. 29`.
