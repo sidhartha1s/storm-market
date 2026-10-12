@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5s04-berne (A5-S4, A5-S5): the tornado reaches the Ohio line in 12 minutes; the warning ran 30 to 60. The tornado mark
+     stands on Linn Grove at 8:40 PM and reaches the state line near 8:52 PM; under the map a long amber bar for the warning
+     runs far past the line and a short red bar of 12 minutes stops at it, both on one scale.
+     Brief: mg_specs/briefs/g-a5s04-berne.md; map facts: media/maps/README.md.
+     Map family: copies the base g-a2s14-six (mount, inlining, push maths, dot radius), the ring of g-a2s01-radar, the bars on
+     one stated scale of g-a2s06-headstart, the tornado mark's mount of the family's track comps.
+     Map: media/maps/indiana-counties.svg (BM-1), ids prefixed brn-. The SVG fills the frame; its viewBox is the camera.
+       EAST  box 716, 62, 1080 x 450   2.8125 px per unit   viewBox 75.4222 261.9556 682.6667 384   (screen x = 2.8125u - 212.125, y = 2.8125u - 736.75)
+       LINE  same box                  4 px per unit        viewBox 371 312.5 480 270               (screen x = 4u - 1484, y = 4u - 1250)
+     The push EAST to LINE is 1.422 times (ratio 0.703125); dot r 2.1333 units in EAST, 1.5 in LINE (6 px in both).
+     Every number below is computed from media/data/points.csv and the st-in path:
+       Fort Wayne (605.1, 297.0) EAST (1489.7, 98.6); Berne (629.0, 376.8) EAST (1556.9, 323.0) LINE (1032.0, 257.2);
+       Linn Grove (619.0, 379.1) LINE (992.0, 266.4); Indiana's east line x 648.4 units, LINE x 1109.6.
+       Time scale 9.8 px per minute (117.6 px for the survey's 12 minutes): 12 min ends x 1109.6, 30 min x 1286, 60 min x 1580.
+     The leg from Linn Grove to the state line is SCHEMATIC: the survey gives two places and two times, not a surveyed track.
+     Coverage (plan rule 22): until the bars need the lower band (13.36) the map's box runs on down at the same camera (to
+     y 660 across its width, to y 1000 left of x 1580; the corner x >= 1600, y >= 680 stays bare). In EAST it also opens
+     left to x 620 (Indiana's west line). In LINE the whole picture waits 300 px right of its briefed place (camera
+     viewBox 296 312.5 480 270, the state line at x 1409.6, the box open left to x 96) and moves home on the guides' cue.
+     MAP BLOCK: BM-1's groups map-neighbours, map-counties and map-state, every path element that crosses what the two
+     cameras show copied whole and unchanged from the file by one mechanical copy that added the id prefix and nothing else.
+     Cues are comp-local seconds from the brief's table (audio/a5-s4, a5-s5 words.json plus each segment's start in the comp). -->
+<template>
+<style>
+  #brn-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .brn-h { opacity:0; visibility:hidden; }
+  .brn-full { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* ---- map block: the SVG fills the frame; the camera is its viewBox, the visible box is its clip-path ---- */
+  .brn-map { position:absolute; left:0; top:0; width:1920px; height:1080px;
+    clip-path:polygon(620px 62px, 1796px 62px, 1796px 660px, 1580px 660px, 1580px 1000px, 620px 1000px); }
+  .brn-town { position:absolute; font:700 22px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .brn-state { position:absolute; top:80px; font:700 22px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .brn-chip { position:absolute; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:23px;
+    font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  .brn-mid { position:absolute; left:992px; top:136px; width:0; height:46px; display:flex; justify-content:center; }
+  .brn-mid .brn-chip { position:relative; flex:none; }
+  .brn-src { position:absolute; left:716px; top:524px; font:700 20px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .brn-mark { position:absolute; left:965px; top:189.9px; width:54px; height:69px; overflow:visible; }
+
+  /* ---- the two bars, one scale: 9.8 px per minute from Linn Grove's x (992) ---- */
+  .brn-bar { position:absolute; left:992px; height:40px; }
+  .brn-lab { position:absolute; right:952px; font:700 26px Arial, sans-serif; white-space:nowrap; line-height:1; }
+  .brn-tick { position:absolute; top:668px; font:700 20px Arial, sans-serif; color:#93a3b2; white-space:nowrap; line-height:1; }
+</style>
+<div id="brn-root" data-composition-id="g-a5s04-berne" data-width="1920" data-height="1080">
+
+  <svg class="brn-map" id="brn-map" viewBox="75.4222 261.9556 682.6667 384" preserveAspectRatio="xMidYMid meet" fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <defs>
+      <!-- map units: the strip of st-in that is Indiana's east line (x 646.3 to 648.5 from y 315 to 627) -->
+      <clipPath id="brn-eastline"><rect x="644" y="284" width="8" height="356"/></clipPath>
+    </defs>
+    <g id="brn-map-neighbours" stroke="#93a3b2" stroke-opacity="0.4">
+    </g>
+    <g id="brn-map-counties" fill="#15202b" stroke="#93a3b2" stroke-width="1.5">
+    </g>
+    <g id="brn-map-state" stroke-width="3">
+    </g>
+    <!-- line highlight: the state's own east line again, Headline white 5 px (a stroke change, never a scale pop) -->
+    <use id="brn-hl" class="brn-h" href="#brn-st-in" fill="none" stroke="#f2f5f8" stroke-width="5" clip-path="url(#brn-eastline)"/>
+    <!-- town dots at the file's positions, 6 px on screen in both states, Body light -->
+    <g fill="#dfe7ee" stroke="none">
+      <g id="brn-pt-fort-wayne"><circle class="brn-dot" cx="605.1" cy="297.0" r="2.1333"/></g>
+      <g id="brn-pt-berne"><circle class="brn-dot" cx="629.0" cy="376.8" r="2.1333"/></g>
+      <g id="brn-pt-linn-grove" class="brn-h"><circle class="brn-dot" cx="619.0" cy="379.1" r="2.1333"/></g>
+    </g>
+  </svg>
+
+  <!-- ================= EAST: labels and Fort Wayne's radar ring (radius 36 and 20, inside the box top) ================= -->
+  <div class="brn-town" id="brn-fw" style="right:479px;top:88px">Fort Wayne</div>
+  <div class="brn-town" id="brn-be1" style="right:376px;top:312px">Berne</div>
+  <svg class="brn-full" id="brn-ring" viewBox="0 0 1920 1080" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round">
+    <circle cx="1489.7" cy="98.6" r="36"/>
+    <circle cx="1489.7" cy="98.6" r="20"/>
+    <line id="brn-rw" x1="1489.7" y1="98.6" x2="1489.7" y2="62.6"/>
+  </svg>
+  <div class="brn-chip brn-h" id="brn-rec" style="left:96px;top:96px">John Curran's recollection</div>
+
+  <!-- ================= LINE: everything placed in the brief's last-frame px; the group waits 300 px right ================= -->
+  <div class="brn-full" id="brn-stage">
+    <svg class="brn-full" viewBox="0 0 1920 1080" fill="none" stroke-linecap="round">
+      <defs>
+        <clipPath id="brn-gclip"><rect id="brn-grow" x="980" y="512" width="142" height="0"/></clipPath>
+      </defs>
+      <!-- trail: one straight leg from Linn Grove's dot to the marked point on the line, 123.6 px -->
+      <line id="brn-trail" class="brn-h" x1="992.0" y1="266.4" x2="1109.6" y2="228.5" stroke="#dfe7ee" stroke-opacity="0.6" stroke-width="3"/>
+      <!-- guides: Linn Grove's x and the state line's x, from the map's foot down past the red bar -->
+      <g clip-path="url(#brn-gclip)" stroke="#93a3b2" stroke-width="2" stroke-dasharray="6 6" stroke-linecap="butt">
+        <line x1="992" y1="512" x2="992" y2="742"/>
+        <line x1="1109.6" y1="512" x2="1109.6" y2="742"/>
+      </g>
+    </svg>
+    <div class="brn-town brn-h" id="brn-lg" style="right:946px;top:272px">Linn Grove</div>
+    <div class="brn-town brn-h" id="brn-be2" style="left:1042px;top:268px">Berne</div>
+    <div class="brn-state brn-h" id="brn-in" style="right:831px;margin-right:-6px">INDIANA</div>
+    <div class="brn-state brn-h" id="brn-oh" style="left:1130px">OHIO</div>
+    <div class="brn-src brn-h" id="brn-src">Weather Bureau survey report, 1965, pp. 43 and 45</div>
+
+    <!-- tornado mark (media/drawings/tornado-mark.svg) at 0.75: object box 45 x 60, its foot 12 px above the point it marks -->
+    <svg class="brn-mark brn-h" id="brn-mark" viewBox="-6 -6 72 92">
+      <g fill="none" stroke="#dfe7ee" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6 H57"/><path d="M14 26 H52"/><path d="M20 46 H42"/><path d="M27 64 L30 76"/></g>
+    </svg>
+
+    <div class="brn-mid"><div class="brn-chip brn-h" id="brn-c1">8:40 PM</div></div>
+    <div class="brn-chip brn-h" id="brn-c2" style="left:1150px;top:164px">near 8:52 PM</div>
+
+    <!-- amber bar, the warning: solid to 30 minutes (x 1286), lighter to 60 (x 1580) -->
+    <div class="brn-bar brn-h" id="brn-a1" style="top:620px;width:294px;background:#e8c56a"></div>
+    <div class="brn-bar brn-h" id="brn-a2" style="top:620px;left:1286px;width:294px;background:rgba(232,197,106,0.45)"></div>
+    <div class="brn-lab brn-h" id="brn-al" style="top:625px;color:#e8c56a">warning: the next 30 to 60 minutes</div>
+    <div class="brn-tick brn-h" id="brn-t30" style="left:1186px;width:200px;text-align:center">30 min</div>
+    <div class="brn-tick brn-h" id="brn-t60" style="right:340px">60 min</div>
+    <!-- red bar, the tornado: 12 minutes, ends on the state line's x -->
+    <div class="brn-bar brn-h" id="brn-r1" style="top:702px;width:117.6px;background:#d0121f"></div>
+    <div class="brn-lab brn-h" id="brn-rl" style="top:707px;color:#f2f5f8">12 minutes</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a5s04-berne", P = "brn";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function show(e, t, d) { tl.to(e, { autoAlpha: 1, duration: d || 0.3, ease: "power2.out" }, t); }
+  function rise(e, t) { tl.fromTo(e, { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, t); }
+
+  var map = $("map"), dots = map.querySelectorAll(".brn-dot");
+  /* a geometric push: the viewBox width goes w0 to w0 * ratio at a steady zoom rate under the named ease */
+  function camEase(ratio, ease) { var e = gsap.parseEase(ease); return function (p) { return (1 - Math.pow(ratio, e(p))) / (1 - ratio); }; }
+  function cam(viewBox, dotR, ratio, t, d, ease) {
+    tl.to(map, { attr: { viewBox: viewBox }, duration: d, ease: camEase(ratio, ease) }, t);
+    tl.to(dots, { attr: { r: dotR }, duration: d, ease: camEase(ratio, ease) }, t);
+  }
+  var OPEN = "polygon(96px 62px, 1796px 62px, 1796px 660px, 1580px 660px, 1580px 1000px, 96px 1000px)";
+  var BOX = "polygon(716px 62px, 1796px 62px, 1796px 512px, 1580px 512px, 1580px 512px, 716px 512px)";
+
+  s0($("stage"), { x: 300 });                               /* the LINE picture waits 300 px right (plan rule 22) */
+  s0($("rw"), { rotation: 0, svgOrigin: "1489.7 98.6" });
+  s0($("trail"), { strokeDasharray: 124, strokeDashoffset: 124 });   /* the leg is 123.6 px */
+  s0([$("a1"), $("a2"), $("r1")], { scaleX: 0, transformOrigin: "left center" });
+
+  /* ================= A5-S4: Curran's recollection, then the survey's two times ================= */
+  /* 0 · "Curran" @0.00: ground, the map in EAST, Fort Wayne's dot, label and resting ring, Berne's dot and label */
+
+  /* 1 · "later" @0.24: the recollection chip */
+  rise($("rec"), 0.24);
+
+  /* 2 · "straight" @3.96: the ring's sweep line makes one turn, to @5.76 */
+  tl.to($("rw"), { rotation: 360, duration: 1.8, ease: "none" }, 3.96);
+
+  /* 3 · "The" @5.94: the chip, the ring and both town labels fade; from @6.14 the push EAST to LINE (0.8 s); then Berne's
+         name returns at its LINE place and the source line fades in */
+  tl.to([$("rec"), $("ring"), $("fw"), $("be1")], { autoAlpha: 0, duration: 0.2, ease: "power2.out" }, 5.94);
+  cam("296 312.5 480 270", 1.5, 0.703125, 6.14, 0.8, "power2.inOut");
+  tl.to(map, { clipPath: OPEN, duration: 0.8, ease: "power2.inOut" }, 6.14);
+  show([$("be2"), $("src")], 6.94);
+
+  /* 4 · "Linn" @8.34: Linn Grove's dot and name, the tornado mark over it */
+  show([$("pt-linn-grove"), $("lg"), $("mark")], 8.34);
+
+  /* 5 · "eight forty" @9.08: the first time chip */
+  rise($("c1"), 9.08);
+
+  /* 6 · "across" @10.14: the mark moves to the state line (1.1 s, to @11.24); the trail draws behind it */
+  tl.to($("trail"), { autoAlpha: 1, duration: 0.05, ease: "none" }, 10.14);
+  tl.to($("trail"), { strokeDashoffset: 0, duration: 1.1, ease: "power1.inOut" }, 10.14);
+  tl.to($("mark"), { x: 117.6, y: -37.9, duration: 1.1, ease: "power1.inOut" }, 10.14);
+
+  /* 7 · "Ohio" @10.60: the two state names; the line's highlight comes on */
+  show([$("in"), $("oh"), $("hl")], 10.60);
+
+  /* 8 · "eight fifty two" @11.48: the second time chip */
+  rise($("c2"), 11.48);
+
+  /* ================= A5-S5: the two bars on the map's own scale ================= */
+  /* 9 · "A" @13.36: the picture moves home (the camera pans 75 units, the group 300 px, together) and the map's box closes
+         to its briefed size; the two guides draw down from the map */
+  tl.to(map, { attr: { viewBox: "371 312.5 480 270" }, duration: 0.5, ease: "power2.inOut" }, 13.36);
+  tl.to($("stage"), { x: 0, duration: 0.5, ease: "power2.inOut" }, 13.36);
+  tl.to(map, { clipPath: BOX, duration: 0.3, ease: "power2.out" }, 13.36);
+  tl.to($("grow"), { attr: { height: 230 }, duration: 0.4, ease: "power2.out" }, 13.36);
+
+  /* 10 · "warning" @13.49: the amber bar grows from Linn Grove's x: to 30 minutes in 0.6 s, then the lighter part to 60 in
+          0.6 s; its label and the two tick labels fade in */
+  tl.set([$("a1"), $("a2")], { autoAlpha: 1 }, 13.49);
+  tl.to($("a1"), { scaleX: 1, duration: 0.6, ease: "none" }, 13.49);
+  tl.to($("a2"), { scaleX: 1, duration: 0.6, ease: "power2.out" }, 14.09);
+  show($("al"), 13.49);
+  show($("t30"), 14.09);
+  show($("t60"), 14.69);
+
+  /* 11 · "twelve" @16.03: the red bar grows to the state line's x; its label fades in; hold to the last frame */
+  tl.set($("r1"), { autoAlpha: 1 }, 16.03);
+  tl.to($("r1"), { scaleX: 1, duration: 0.4, ease: "power2.out" }, 16.03);
+  show($("rl"), 16.03);
+
+  tl.to({}, { duration: 0.01 }, 18.69);                     /* holds to the last frame @18.70 */
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
