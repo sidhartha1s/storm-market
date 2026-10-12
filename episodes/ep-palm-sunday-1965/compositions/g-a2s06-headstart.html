@@ -170,7 +170,7 @@ window.__timelines = window.__timelines || {};
   /* 0 · "The" @0.00: ground and the sweep band only */
   tl.to($("sweep"), { x: 1920, duration: 17.66, ease: "none" }, 0);
 
-  /* 1 · Weather @0.09: the left card slides in with its clock at 5:40; its source line on "Service" @0.29 */
+  /* 1 · Weather @0.09: the left card slides in (to the centre of the frame, stage A) with its clock at 5:40; its source line on "Service" @0.29 */
   tl.set($("l-col"), { autoAlpha: 1 }, 0.09);
   tl.to($("l-col"), { x: 0, duration: 0.6, ease: "power3.out" }, 0.09);
   rise("l-src", 0.29, 0.3);
