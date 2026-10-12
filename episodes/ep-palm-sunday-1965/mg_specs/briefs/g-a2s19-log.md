@@ -31,8 +31,8 @@ Clock angles, clockwise from 12 (by script): 6:23 is hour 191.5, minute 138; 6:2
 | Clock stamp | design sheet section 8: glass card left 96, top 96, 590 x 200; eyebrow `WEATHER BUREAU`; place `South Bend, Indiana`; three pre-authored time lines toggled with `autoAlpha`: `6:23 PM`, `6:24 PM`, `6:35 PM` |
 | Span chip | glass chip, left 96, top 316, height 46, padding 0 x 22, Arial 700 26 px, Body light: `12 minutes` |
 | Card 1 (6:23) | Beige polaroid border 10 px, left 96, top 560, 1480 x 110 (bottom 670); crop `survey-p39-623pm-crop.png` 1460 x 90 inside at (106, 570) |
-| Card 2 (6:24) | left 96, top 684, 1480 x 137 (bottom 821); crop `survey-p40-624pm-crop.png` at (106, 694) inside a window 1460 x 117 with `overflow:hidden`: the file's bottom 12 px (rows 117 to 128) are not shown |
-| Card 3 (6:35) | left 96, top 835, 1480 x 148 (bottom 983); crop `survey-p40-635pm-crop.png` 1460 x 128 inside at (106, 845) |
+| Card 2 (6:24) | left 96, top 684, 1480 x 145 (bottom 829); crop `survey-p40-624pm-crop.png` at (106, 694) inside a window 1460 x 125 with `overflow:hidden`: the file's bottom 4 px (rows 125 to 128) are not shown |
+| Card 3 (6:35) | left 96, top 843, 1480 x 148 (bottom 991); crop `survey-p40-635pm-crop.png` 1460 x 128 inside at (106, 853) |
 | Card shadow | `0 18px 50px rgba(0,0,0,0.55)` (design sheet section 9) |
 | Source line | not in the credit corner (the stack ends at y 983): left 96, top 376, Arial 700 22 px with the credit shadow: `Weather Bureau survey report, 1965, pp. 39-40` |
 
