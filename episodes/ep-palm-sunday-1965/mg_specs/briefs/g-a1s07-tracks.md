@@ -88,4 +88,4 @@ All seven lines of template section 7a. Line 6 here: the tile left edges (275, 4
 As template section 8.
 
 ## Frames the verifier reads
-First frame (0.00) and the frame after it (0.04): the map under its veil, credit on, nothing else. Then one settled frame per cue: 1.60 (wipe half way, the edge one soft line top to bottom), 3.00 (map bright, label 1 on), 5.00 (both labels), 10.00 (arrow whole), 11.00 (chip), 13.00 (map dimmed, lower band clear), 14.50 (tiles, mark, caption), 15.90 (a blink in the middle of the row), 18.20 (five amber marks), 21.60 (second pass, marks unlit), 23.80 (marks grey), 25.40 (two marks left, last look).
+First frame (0.00) and the frame after it (0.04): the map under its veil, credit on, nothing else. Then one settled frame per cue: 1.60 (wipe half way, the edge one soft line top to bottom), 3.00 (map bright, label 1 on), 5.00 (both labels), 10.00 (arrow whole), 11.00 (chip), 13.00 (map dimmed, lower band clear), 14.50 (tiles, mark, caption), 15.90 (a blink in the middle of the row), 18.20 (five amber marks), 21.60 (second pass, the five marks unchanged), 23.80 (marks grey), 25.40 (two marks left, last look).
