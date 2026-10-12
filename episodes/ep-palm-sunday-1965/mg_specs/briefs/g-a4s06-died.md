@@ -58,7 +58,7 @@ Cue words and times are from `audio/a4-s6.words.json` (9 words), read on 12 Oct 
 | 1 | A4-S6 | 1 | didn't | 0.40 | 0.13 | the ghost's line and dot fade out (0.35 s); the microphone's and the house's lines stay Label grey |
 | 2 | A4-S6 | 2 | happen. | 0.76 | 0.49 | the stamp slides out left with its fade (`x:-700`, 0.4 s, power3.in) while the card slides in from the right (`x:660` set at 0, to 0; 0.5 s, power3.out), wholly unlit; the source line fades in |
 | 3 | A4-S6 | 3 | The | 2.20 | 1.93 | the unlit page lifts from the sentence box (0.3 s) and the underline starts: one `scaleX` 0 to 1, `transformOrigin:"left center"`, ease none, 1.93 to 3.95, so it runs with the voice |
-| 4 | A4-S6 | 5 | died | 2.84 | 2.57 | the underline is passing `died` (about x 1160 on screen); nothing new starts: read this frame for pace |
+| 4 | A4-S6 | 5 | died | 2.84 | 2.57 | the underline is passing `died` (its leading edge at screen x 1103.6, by script); nothing new starts: read this frame for pace |
 | 5 | A4-S6 | 8 | police. | 3.78 | 3.51 | the stop mark comes on (fade 0.15 s) and the police desk's label `city police` turns Headline white (0.2 s). Hold to 5.16 |
 
 ## 6. Contract
