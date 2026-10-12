@@ -56,7 +56,7 @@ Teletype states, inline from `teletype.svg`: unlit is the group stroke Label gre
 7. The name card reads `John Curran` and `observer, Fort Wayne Weather Bureau, 1965`, and the source line says the account is his recollection, for the whole comp.
 8. The clock's jump is the hands turning, never a change of size (rule 12).
 9. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680.
-10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
+10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry. As built and passed (ruling of 13 Oct 26, 00:58): the clock and `4:00 PM` stand alone, centred at 1.5 times with a slow push, from 1.70 to 6.56 s; the bands at their sides are 40.4 % of the frame each, accepted as the lone-element form.
 
 ## 5. Text (exact) and cues
 Text: `John Curran` · `observer, Fort Wayne Weather Bureau, 1965` · `4:00 PM` · `10:30 PM` · `FAA Flight` / `Service Station` · `extension cord` · `strung by Arnie Koch, electronics technician` · `John Curran's recollection, published by the National Weather Service`.
