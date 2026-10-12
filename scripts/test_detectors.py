@@ -357,9 +357,10 @@ CASES = {  # comp: (source, host s, new output must hold, must not hold, why)
     'g-n2': (small(cv), 3, 'ERROR [fade-only]', None, 'a 100 px canvas excuses no stillness'),
     'g-n3': (no_update, 3, 'ERROR [fade-only]', None, 'a canvas without onUpdate is still'),
     'g-n4': (CLOCK, 7, 'ERROR [idle] 6.0s frozen at 1.0s', None, 'a {} clock is not motion'),
-    'g-k1': (_masked(BOX + ';overflow:hidden', 0, 70), 3, None, 'text-collision', 'a line clipped away by its overflow:hidden mask collides with nothing'),
-    'g-k2': (_masked(BOX, 0, 70), 3, 'ERROR [text-collision] "Quote line two"', None, 'the same pair with no mask still collides'),
-    'g-k3': (_masked('width:600px;height:60px;overflow:hidden', 200, 670), 3, 'ERROR [text-collision] "Quote line two"', None, 'a static mask does not clip an absolute line it does not contain'),
+    'g-k1': (_masked(BOX + ';overflow:hidden', quote(0, 70)), 3, None, 'text-collision', 'a line clipped away by its overflow:hidden mask collides with nothing'),
+    'g-k2': (_masked(BOX, quote(0, 70)), 3, 'ERROR [text-collision] "Quote line two"', None, 'the same pair with no mask still collides'),
+    'g-k3': (_masked('width:600px;height:60px;overflow:hidden', quote(200, 670)), 3, 'ERROR [text-collision] "Quote line two"', None, 'a static mask does not clip an absolute line it does not contain'),
+    'g-k4': (_masked(BOX + ';overflow:hidden;font-size:40px;line-height:190px;color:#fff;white-space:nowrap', 'Quote line two'), 3, None, 'text-collision', 'a mask that holds the text itself clips it'),
 }
 files = {'index.html': ''.join(CANVAS_FILES['index.html'].replace('g-cv', c).replace('data-duration="3"', f'data-duration="{dur}"')
                                for c, (_, dur, _, _, _) in CASES.items())}
