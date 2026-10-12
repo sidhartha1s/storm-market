@@ -92,8 +92,7 @@ if rfr:
     n, d = rfr.split("/")
     fps = round(float(n) / float(d))
     if str(fps) != expect_fps:
-        why = "a draft rendered at the wrong rate?" if mode == "draft" else "a draft mastered by mistake?"
-        print(f"FAIL: fps {fps} != {mode} {expect_fps}fps ({why})")
+        print(f"FAIL: fps {fps} != expected {expect_fps}fps (a draft shipped as the final, or a render at the wrong rate?)")
         ok = False
 if not has_audio.strip():
     print("FAIL: no audio stream in the render")
