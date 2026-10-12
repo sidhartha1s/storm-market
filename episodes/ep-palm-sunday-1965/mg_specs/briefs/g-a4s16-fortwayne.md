@@ -55,10 +55,10 @@ Cue words and times are from `audio/a4-s16.words.json` (28 words), read on 12 Oc
 | 1 | A4-S16 | 1 | one | 0.34 | 0.13 | South Bend's dot and label dim to `#55606b` (0.4 s) |
 | 2 | A4-S16 | 7 | Fort | 2.12 | 1.91 | Fort Wayne's dot turns on in Amber 2 with its one ring (0.45 s); the label `Fort Wayne` fades in |
 | 3 | A4-S16 | 9 | Weather | 2.58 | 2.37 | the link draws from the dot down to the teletype (0.4 s); the teletype draws on (0.5 s) and its label fades in |
-| 4 | A4-S16 | 13 | typing | 3.60 | 3.39 | the paper strip starts to rise (height 0 to 80 px, ease none, 3.39 to 5.60); the first bar appears |
-| 5 | A4-S16 | 14 | warnings | 3.92 | 3.71 | the second bar appears |
-| 6 | A4-S16 | 16 | storms | 4.54 | 4.33 | the third bar appears |
-| 7 | A4-S16 | 20 | gone | 5.62 | 5.41 | the fourth bar appears |
+| 4 | A4-S16 | 13 | typing | 3.60 | 3.39 | the paper strip starts to come out of the teletype (group `y` 80 to 0, ease none, 3.39 to 5.90) |
+| 5 | A4-S16 | 14 | warnings | 3.92 | 3.71 | the first bar has cleared the slot (it rides on the paper) |
+| 6 | A4-S16 | 16 | storms | 4.54 | 4.33 | the second bar has cleared the slot |
+| 7 | A4-S16 | 20 | gone | 5.62 | 5.41 | the third bar has cleared the slot; the paper stops at 5.90 |
 | 8 | A4-S16 | 22 | Later | 7.28 | 7.07 | the schematic line draws from the left (0.3 s), the town and `a town` fade in, and the tornado mark fades in at point x 200 and runs to x 1150 (ease none, to 8.60), then drifts to x 1210 by 10.31 |
 | 9 | A4-S16 | 25 | some | 8.52 | 8.31 | the message card leaves the paper strip and flies to its rest place (0.5 s, power2.inOut, lands 8.81) |
 | 10 | A4-S16 | 27 | after. | 8.98 | 8.77 | 0.1 s later the leader and the label `the warning` fade in (0.25 s). Hold on the card to 10.31 |
