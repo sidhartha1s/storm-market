@@ -76,7 +76,7 @@ Cue words and times are from `audio/a2-s3.words.json`, `a2-s4.words.json`, `a2-s
 | 5 | A2-S4 | 0 | From | 0.29 | 6.14 | hard cut to the film view: window open, frame and film label on. The chain is hidden |
 | 6 | A2-S4 | 14 | office | 6.00 | 11.85 | hard cut: the window is covered, frame and film label off, the list sheet is on in the Close state |
 | 7 | A2-S4 | 16 | office. | 6.74 | 12.59 | the Amber 2 pulse band (25 %) wipes across rows 1 to 8 in turn, 0.12 s apart, each 0.3 s, and leaves |
-| 8 | A2-S5 | 0 | between | 0.20 | 13.98 | the sheet shrinks into station 3's box (`logZoom`, 0.7 s) while the chain and the scope fade back in (0.3 s); the clock fades in at 5:43; source line in |
+| 8 | A2-S5 | 0 | between | 0.20 | 13.98 | the sheet shrinks into station 3's box (`logZoom`, 0.7 s) while the chain and the scope fade back in (0.3 s); source line in. The clock, reading 5:43, does not fade in on this cue: its fade-in (0.3 s) starts at 14.45, 0.47 s after the cue, when the sheet's shrinking box has left the clock's box (the file's number: the sheet's right edge is at x 876.4 at 14.444). Corrected 13 Oct 26: on the same cue the clock covered `included:` for about 0.4 s |
 | 9 | A2-S5 | 2 | warning | 0.84 | 14.62 | station 2 and the miniature list's edge turn Amber 2 (0.3 s) |
 | 10 | A2-S5 | 4 | issued | 1.50 | 15.28 | the light leaves the list at x 800 and crawls along the dotted link toward x 1170 (ease none; it arrives at 20.34) |
 | 11 | A2-S5 | 15 | delay | 4.92 | 18.70 | the arc grows from 258 to 318 degrees and the minute hand sweeps with it; the hour hand turns 171.5 to 176.5 (all ease none, done at 20.34) |
