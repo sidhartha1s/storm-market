@@ -35,7 +35,7 @@ In this comp the teletype is the Weather Bureau's: its label reads `Weather Bure
 | Source line | fixed HUD, left 96, bottom 60: `Disaster Research Center, 1966, p. 29`. It leaves when the paper strip arrives |
 | Second office | `media/drawings/telephone-lifted.svg` inline at scale 1.2, box x 700 to 822, y 150 to 277, lines `#55606b`; label `another Weather Bureau office`, Arial 700 22 px, Label grey, left 840, top 200 |
 | Radio arc 1 | from the South Bend telephone's top (388, 433) to the second office's left (700, 220): a quadratic curve with its control point at (480, 190), dotted (`stroke-dasharray="0.1 14"`), 5 px, round caps, Amber 2 |
-| Radio arc 2 | from the South Bend telephone's top (388, 433) over the list to the chain desk's top (967, 487): control point (680, 290), same stroke |
+| Radio arc 2 | from the South Bend telephone's top (388, 433) over the list to the chain desk's top (967, 487): control point (680, 140), same stroke ((680, 290) crosses the list) |
 | Desk label | `civil defense and local offices`, Arial 700 22 px, Label grey, centred on x 967, top 640 (under the chain's desk, above the labels row) |
 | Paper strip | Beige polaroid, left 96, top 780, 1000 x 124 (right 1096, bottom 904), the chain strip's shadow. Quote, Georgia 44 px, Caption dark, left 136, top 796: `“back-up emergency radio communications”`. Attribution, Arial 700 22 px, Caption dark sub, tracking 2, left 136, top 862: `Weather Bureau survey report, 1965, p. 2, recommendation 7` |
 Arc 2 passes above the miniature list (top y 350) only if its curve stays above y 340 between x 540 and x 800: check it by script and lift the control point if it does not.
