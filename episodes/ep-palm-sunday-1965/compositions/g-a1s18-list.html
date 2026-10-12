@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1s18-list (A1-S18, A1-S19): the clock stamp at 5:43 PM, South Bend, and beside it the typed telephone list, all eight rows
+     in one ink, the ninth slot empty. Nothing on the list is ticked, lit or timed; in A1-S19 the minute hand starts to move and
+     is still moving on the last frame. Brief: mg_specs/briefs/g-a1s18-list.md.
+     Copies: the sheet, its world and its camera transform from g-t1s3-list (world px of design sheet section 5; screen = s x world + t);
+     the clock stamp and its hands from g-t1s2-warning (design sheet section 8).
+     Camera state Beside: s 1.1, tx 669.6, ty 44, which puts the sheet at x 740 to 1576, y 110 to 759.
+     Ground: media/stills/a3-teletype-operators.jpg, a Weather Bureau communications centre about 1955 (not South Bend, not 1965):
+     it carries its own caption until the list arrives, and the place sits on the glass stamp.
+     Cues are comp-local seconds from audio/a1-s18.words.json and a1-s19.words.json (timeline-map.md table 5). -->
+<template>
+<style>
+  /* ---- ground: photograph, scrim ---- */
+  #l43-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:#04070c; font-family:Arial, sans-serif; }
+  .l43-bg { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; object-position:50% 40%; }
+  .l43-scrim { position:absolute; left:0; top:0; width:1920px; height:1080px; background:rgba(3,5,8,0.45); }
+  .l43-h { opacity:0; visibility:hidden; }
+
+  /* ---- clock stamp (design sheet section 8) ---- */
+  .l43-stamp { position:absolute; left:96px; top:96px; width:590px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .l43-face { position:absolute; left:0; top:0; width:200px; height:200px; overflow:visible; }
+  .l43-eye { position:absolute; left:188px; top:20px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .l43-time { position:absolute; left:188px; top:46px; font:700 84px 'Courier New', monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .l43-place { position:absolute; left:190px; top:148px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+
+  /* ---- list sheet (design sheet section 5, world px; the world carries the camera transform) ---- */
+  .l43-world { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .l43-type { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .l43-sheet { position:absolute; left:64px; top:60px; width:760px; height:590px; background:#f4f0e6; border-radius:2px; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .l43-seye { position:absolute; left:96px; top:84px; font:700 19px 'Courier New', Courier, monospace; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+  .l43-title { position:absolute; left:96px; top:118px; font:700 30px 'Courier New', Courier, monospace; color:#2a2622; white-space:nowrap; line-height:1; }
+  /* media/drawings/telephone.svg (viewBox -6 -58 102 106) at 0.638: the telephone spans x 730 to 790, centred on y 123 */
+  .l43-phone { position:absolute; left:727.5px; top:77.7px; width:65.1px; height:67.6px; }
+  .l43-rule { position:absolute; left:96px; top:171px; width:696px; height:2px; background:rgba(107,98,87,0.4); }
+  .l43-row { position:absolute; left:150px; height:44px; font:700 26px 'Courier New', Courier, monospace; color:#2a2622; white-space:nowrap; line-height:44px; }
+  .l43-rr { position:absolute; left:96px; width:696px; height:1px; background:rgba(107,98,87,0.25); }
+
+  /* ---- credit corner: the photograph's caption, then the list's source (one line at a time) ---- */
+  .l43-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="l43-root" data-composition-id="g-a1s18-list" data-width="1920" data-height="1080" data-duration="11.68">
+  <img class="l43-bg" id="l43-bg" src="media/stills/a3-teletype-operators.jpg" alt="">
+  <div class="l43-scrim" id="l43-scrim"></div>
+
+  <!-- clock stamp -->
+  <div class="l43-stamp l43-h" id="l43-stamp">
+    <svg class="l43-face" id="l43-face" viewBox="0 0 200 200"></svg>
+    <div class="l43-eye">WEATHER BUREAU</div>
+    <div class="l43-time">5:43 PM</div>
+    <div class="l43-place l43-h" id="l43-place">South Bend, Indiana</div>
+  </div>
+
+  <!-- list sheet: eight rows in the study's sentence order (printed p. 14), all in one ink; the ninth slot has only its rule -->
+  <div class="l43-world l43-h" id="l43-world">
+    <div class="l43-sheet"></div>
+    <div class="l43-rule"></div>
+    <div class="l43-rr" style="top:238px"></div>
+    <div class="l43-rr" style="top:286px"></div>
+    <div class="l43-rr" style="top:334px"></div>
+    <div class="l43-rr" style="top:382px"></div>
+    <div class="l43-rr" style="top:430px"></div>
+    <div class="l43-rr" style="top:478px"></div>
+    <div class="l43-rr" style="top:526px"></div>
+    <div class="l43-rr" style="top:574px"></div>
+    <div class="l43-rr" style="top:622px"></div>
+    <div class="l43-type l43-h" id="l43-type">
+      <div class="l43-seye">SOUTH BEND WEATHER BUREAU &middot; BY TELEPHONE</div>
+      <div class="l43-title">Organizations notified included:</div>
+      <img class="l43-phone" src="media/drawings/telephone.svg" alt="">
+      <div class="l43-row" style="top:192px">State Police</div>
+      <div class="l43-row" style="top:240px">Sheriffs' Departments</div>
+      <div class="l43-row" style="top:288px">City Police Departments</div>
+      <div class="l43-row" style="top:336px">Indiana and Michigan Electric Company</div>
+      <div class="l43-row" style="top:384px">Red Cross</div>
+      <div class="l43-row" style="top:432px">Specified radio and TV stations</div>
+      <div class="l43-row" style="top:480px">Flying services</div>
+      <div class="l43-row" style="top:528px">Airlines</div>
+    </div>
+  </div>
+
+  <div class="l43-src" id="l43-cap">Weather Bureau Communications Center, about 1955 · NOAA</div>
+  <div class="l43-src l43-h" id="l43-src">Disaster Research Center, 1966, p. 14</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a1s18-list", P = "l43", D = 11.68, NS = "http://www.w3.org/2000/svg";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+
+  /* ---- the clock face (design sheet section 8): centre (95,100) in the stamp, radius 62 ---- */
+  var face = $("face"), CX = 95, CY = 100, RR = 62, O = CX + " " + CY;
+  function pt(deg, r) { var a = deg * Math.PI / 180; return [CX + r * Math.sin(a), CY - r * Math.cos(a)]; }   /* degrees clockwise from 12 */
+  function hourDeg(h, m) { return (h % 12) * 30 + m * 0.5; }
+  function minDeg(m) { return m * 6; }
+  el("circle", { cx: CX, cy: CY, r: RR, fill: "none", stroke: "#dfe7ee", "stroke-width": 4 }, face);
+  for (var i = 0; i < 12; i++) { var a = pt(i * 30, RR - 7), b = pt(i * 30, RR - (i % 3 ? 15 : 21));
+    el("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "#dfe7ee", "stroke-width": 3, "stroke-linecap": "round" }, face); }
+  var hh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 34, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  var mh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 52, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  el("circle", { cx: CX, cy: CY, r: 5, fill: "#e8c56a" }, face);
+
+  /* ---- camera state Beside (design sheet section 5 world; screen = s x world + t) ---- */
+  var BESIDE = { scale: 1.1, x: 669.6, y: 44 }, OFF = 1200, HIGH = 90;   /* the sheet starts off the frame to the right, 90 px high */
+  var world = $("world");
+
+  /* rest states, set at 0 */
+  s0(hh, { rotation: hourDeg(5, 43), svgOrigin: O });      /* 171.5: between 5 and 6 */
+  s0(mh, { rotation: minDeg(43) - 30, svgOrigin: O });     /* 228: it sweeps its last 30 degrees to 258 */
+  s0($("stamp"), { x: -660 });
+  s0($("place"), { y: 16 });
+  s0($("src"), { y: 12 });
+  s0(world, { scale: BESIDE.scale, x: BESIDE.x + OFF, y: BESIDE.y - HIGH, transformOrigin: "0 0", force3D: false });
+  s0($("bg"), { scale: 1 });
+
+  /* 0 · "At" @0.00: the photograph under its scrim, its caption on; the slow push runs the whole comp */
+  tl.to($("bg"), { scale: 1.05, duration: D, ease: "none" }, 0);
+
+  /* 1 · 543 @0.11: the stamp slides in; the minute hand sweeps to 258 once it has landed */
+  tl.to($("stamp"), { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.11);
+  tl.to(mh, { rotation: minDeg(43), duration: 0.5, ease: "power3.out" }, 0.72);
+
+  /* 2 · South @0.99: the place line rises inside the stamp */
+  tl.to($("place"), { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.99);
+
+  /* 3 · Now @4.27: the scrim deepens */
+  tl.to($("scrim"), { backgroundColor: "rgba(2,4,6,0.68)", duration: 0.7, ease: "none" }, 4.27);
+
+  /* 4 · telephone @6.27: the sheet slides in from the right, rows already typed; the caption gives way to the list's source.
+     The sheet stays 90 px high until its right edge has passed x 1600 (0.45 s in), then settles: its bottom edge is above
+     y 680 while any of it is in the presenter corner. Its type fades in once it is inside the text-safe margin (0.16 s in),
+     so no line is ever cut by the frame edge */
+  tl.set(world, { autoAlpha: 1 }, 6.27);
+  tl.to(world, { x: BESIDE.x, duration: 0.7, ease: "power3.out", force3D: false }, 6.27);
+  tl.to(world, { y: BESIDE.y, duration: 0.35, ease: "power2.out", force3D: false }, 6.72);
+  tl.to($("type"), { autoAlpha: 1, duration: 0.2, ease: "none" }, 6.43);
+  tl.to($("cap"), { autoAlpha: 0, duration: 0.3, ease: "none" }, 6.27);
+  tl.to($("src"), { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 6.27);
+
+  /* 5 · How @8.48: hold. 6 · long @8.62: the minute hand starts forward, one minute at most (258 to 264), the hour hand with it
+     (171.5 to 172); power1.in, so it is still moving on the last frame. The printed time stays 5:43 PM */
+  tl.to(mh, { rotation: minDeg(44), duration: D - 8.62, ease: "power1.in" }, 8.62);
+  tl.to(hh, { rotation: hourDeg(5, 44), duration: D - 8.62, ease: "power1.in" }, 8.62);
+
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
