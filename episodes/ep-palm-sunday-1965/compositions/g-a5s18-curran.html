@@ -143,7 +143,11 @@ window.__timelines = window.__timelines || {};
     var lines = Array.prototype.slice.call($(id).children);
     lines.sort(function (a, b) { return b.getTotalLength() - a.getTotalLength(); });
     var step = d * 0.4 / lines.length;
-    lines.forEach(function (e, i) { drawOne(e, t + i * step, d - i * step); });
+    lines.forEach(function (e, i) {                         /* a body's fill comes up with its line: it never stands as a bare dark block */
+      drawOne(e, t + i * step, d - i * step);
+      s0(e, { fillOpacity: 0 });
+      tl.to(e, { fillOpacity: 1, duration: d - i * step, ease: "power2.in" }, t + i * step);
+    });
   }
 
   var WHITE = "#f2f5f8", BODY = "#dfe7ee", GREY = "#93a3b2", AMBER = "#e8c56a", INK = "#2a2622";
