@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
-# Post-render verification. Usage: verify_render.sh <episode-dir> <render-basename> [draft|full]
-# The mode is the one passed to render.cmd: it picks the log (render_<mode>.log) and the frame
-# rate the file must have (render.cmd's draft _FPS, or the composition's data-fps for full).
-# Without it the old guess stands for existing callers: a basename containing "draft" is a draft.
+# Post-render verification. Usage: verify_render.sh <episode-dir> <render-basename> <draft|full>
+# The mode is the one passed to render.cmd and is required: it picks the log (render_<mode>.log)
+# and the frame rate the file must have. The file name says neither.
 # Everything here reads the finished mp4 — the checks that do not need pixels already ran
 # before the render (sweep_episode.py, blank_scan.mjs, beat_density.py, graphics_qc.mjs).
 set -u
-EP="$1"; BASE="$2"
-MODE="${3:-}"
-if [ -z "$MODE" ]; then
-  MODE=full; [ "$BASE" != "${BASE%draft*}" ] && MODE=draft
-fi
-case "$MODE" in draft|full) ;; *) echo "usage: verify_render.sh <episode-dir> <render-basename> [draft|full]"; exit 1 ;; esac
+EP="${1:-}"; BASE="${2:-}"; MODE="${3:-}"
+case "$MODE" in draft|full) [ -n "$EP" ] && [ -n "$BASE" ] || MODE="" ;; esac
+case "$MODE" in draft|full) ;; *) echo "usage: verify_render.sh <episode-dir> <render-basename> <draft|full>"; exit 1 ;; esac
 MP4="$EP/renders/$BASE.mp4"
 [ -f "$MP4" ] || { echo "MISSING $MP4"; exit 1; }
 FAIL=0
