@@ -126,7 +126,7 @@ No map file and no page crop is mounted.
 As template section 7, from the worktree root: `node scripts/freeze_scan.mjs episodes/ep-palm-sunday-1965 --comp g-a4s02-countyb`, then `node scripts/graphics_qc.mjs episodes/ep-palm-sunday-1965`, then `python3 scripts/run_gates.py episodes/ep-palm-sunday-1965`.
 
 ## 7a. Done line
-All seven lines of template section 7a. Line 2 here: state the measured fill for 10.9 to 14.9 (the chain alone, before the stamp) as well as for the whole comp. Line 4 here: the chain's scale and `svgOrigin`, the hand rotations and the light's proxy are set at timeline 0; capture 10.50 (mid growth) both ways. Line 6 here: the four station boxes (gap 230.7 px), the waiting chain's box, the arc's apex and the two hand angles are computed by a script and stated in the receipt.
+All seven lines of template section 7a. Line 2 here: state the measured fill for 10.9 to 14.9 (the chain alone, before the stamp) as well as for the whole comp. Line 4 here: the chain's scale and `svgOrigin`, the hand rotations and the light's proxy are set at timeline 0; capture 10.50 (mid growth) both ways. Line 6 here: the four station boxes (gap 230.7 px), the waiting chain's box, the arc's apex and the two hand angles are computed by a script and stated in the receipt. Line 7 here: one frame at comp 2.00 composited over the film (the window shows the operations room, the film label is the only text), and one at 4.50 (hole covered, no film showing).
 
 ## 8. Receipt
 As template section 8.
