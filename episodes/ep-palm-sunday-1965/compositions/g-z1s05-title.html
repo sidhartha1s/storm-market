@@ -82,8 +82,10 @@ window.__timelines = window.__timelines || {};
   /* 5 · "Warning" @10.53: the wordmark lands, a 0.45 s settle from 1.14 to 1 */
   tl.to($("twh"), { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 10.53);
 
-  /* last sound 11.23; the wordmark holds; from 14.03 the black cover fades in, so the last frame is black */
-  tl.to($("black"), { opacity: 1, duration: 1.2, ease: "power2.in" }, D - 1.2);
+  /* last sound 11.23; the wordmark holds; from 14.03 the black cover fades in and is whole at 15.08, so the last frame
+     (15.20 at 30 fps) is black: ending on D itself left the cover at 0.927 there, the wordmark a ghost */
+  tl.to($("black"), { opacity: 1, duration: 1.05, ease: "power2.in" }, D - 1.2);
+  tl.to({}, { duration: 0.01 }, D - 0.01);                  /* holds black to the last frame @15.23 */
 
   window.__timelines[ID] = tl;
 })();
