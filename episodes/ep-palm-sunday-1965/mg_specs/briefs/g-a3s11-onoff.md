@@ -37,7 +37,7 @@ One object, centred on x 960. The microphone is 2.6 times its file size. There i
 5. Nothing in this comp says which station this is or ties it to the station of the next comp (`g-a3s12-seven`): no clock, no "7:00", no "7:45", no transmitter drawing.
 6. The quote strip carries its attribution and enters only in the second sentence.
 7. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680 (the strip ends at x 1576).
-8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry. As built and passed (ruling of 13 Oct 26, 00:58): the microphone and the lamp stand centred at the brief's size with a slow push 1.00 to 1.03; the bands at their sides are 43.1 and 42.5 % of the frame for 4.87 s, accepted, because 1.5 times does not fit the frame's height.
 
 ## 5. Text (exact) and cues
 Text: `ON AIR` · `a station` · `“broadcasting was on an intermittent basis”` · `media personnel · Disaster Research Center, 1966`.
