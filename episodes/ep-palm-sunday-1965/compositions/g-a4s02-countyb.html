@@ -307,7 +307,7 @@ window.__timelines = window.__timelines || {};
 
   /* PATH @24.61: the ghost dot appears on the police desk's right edge with one grey ring */
   tl.to(P+"gdot", { autoAlpha: 1, duration: 0.15, ease: "power2.out" }, 24.61);
-  tl.set(P+"gring", { visibility: "visible" }, 24.61);
+  tl.set(P+"gring", { visibility: "inherit" }, 24.61);   /* inherit, never "visible": a forced-visible element still paints while the host is hidden */
   tl.to(P+"gring", { attr: { r: 30 }, opacity: 0, duration: 0.45, ease: "power2.out" }, 24.61);
   /* DEFENSE @26.57: a white wave runs the arc's dots left to right */
   tl.set(P+"arcwave", { autoAlpha: 1 }, 26.57);
