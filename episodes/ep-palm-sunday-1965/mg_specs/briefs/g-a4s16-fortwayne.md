@@ -76,7 +76,7 @@ Mount rules: `media/drawings/README.md` and `media/maps/README.md`, which win ov
 As template section 7, from the worktree root: `node scripts/freeze_scan.mjs episodes/ep-palm-sunday-1965 --comp g-a4s16-fortwayne`, then `node scripts/graphics_qc.mjs episodes/ep-palm-sunday-1965`, then `python3 scripts/run_gates.py episodes/ep-palm-sunday-1965`.
 
 ## 7a. Done line
-All seven lines of template section 7a. Line 4 here: the card's `x`, `y` and `scale`, the strip's height and the mark's `x` are set at timeline 0; capture 8.55 (card in flight, mark past the town) both ways. Line 5 here: read the card's flight path against the teletype label and the tornado mark at 8.45 and 8.65. Line 6 here: both dots, the Allen County box and the mark's position at 7.88 and 8.31 are computed by a script from `media/data/points.csv` and the cue table and stated in the receipt.
+All seven lines of template section 7a. Line 4 here: the card's `x`, `y` and `scale`, the strip group's `y` and the mark's `x` are set at timeline 0; capture 8.55 (card in flight, mark past the town) both ways. Line 5 here: read the card's flight path against the teletype label and the tornado mark at 8.45 and 8.65. Line 6 here: both dots, the Allen County box and the mark's position at 7.88 and 8.31 are computed by a script from `media/data/points.csv` and the cue table and stated in the receipt.
 
 ## 8. Receipt
 As template section 8.
