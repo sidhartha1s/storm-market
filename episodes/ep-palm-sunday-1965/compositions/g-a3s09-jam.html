@@ -173,7 +173,7 @@ window.__timelines = window.__timelines || {};
     tl.set(dots[i], { autoAlpha: 1 }, at + 0.6);
   });
   /* MANY @4.10: the five end dots turn Headline white in turn and back: the calls are piling up */
-  dots.forEach(function (d, i) { tl.to(d, { attr: { fill: WHITE, r: 8 }, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1 }, 4.10 + i * 0.1); });
+  dots.forEach(function (d, i) { tl.to(d, { attr: { fill: WHITE }, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1 }, 4.10 + i * 0.1); });
   /* COULDN'T @5.22: the busy mark comes in over the pile with its label; its bars blink once; the five lines turn Label grey */
   fade([P+"mark", P+"labm"], 5.22, 0.2);
   blink(5.22);
