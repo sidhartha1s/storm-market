@@ -339,7 +339,7 @@ Rows the wave 3, 4 and 5 briefs proved wrong or made exact (12 Oct 26, night; th
 - **g-a6s07-power:** it also mounts the desk and the teletype drawings.
 - **g-a6s01-recs:** the page is single-spaced, so its underline is 3 px.
 - **g-a3s10-towers:** the 54 marks fall 0.03 s apart, 1.62 s in a 1.69 s spoken window.
-- **g-a4s01-eyes:** no film opens it. A film cut could hold at most 3.15 s there (`media/films/cuts/a14-08-telephone-call.mp4`), it would contradict "He waited", and each shot is used once (rule 4); the brief carries the variant in case the lead rules for film.
+- **g-a4s01-eyes:** ruled by the lead, rule 23: the first 3.15 s are film (`media/films/cuts/a14-05-operations-room.mp4` from 20.0 s). The brief's writer had advised against film there; the ruling stands and the brief is corrected by its writer.
 - **g-a5s10-alert:** the film window is open for 2.20 s. **g-a3s07-calls:** the film is mounted for 11.41 s and its window shows 4.21 s.
 - **g-a5s09-alto:** the first photograph is on screen for 0.97 s only.
 - **g-a6s05-wires:** the teletype's label reads `Weather Bureau teletype` there, not `Kansas City forecasters`; the study's p. 29 is cited and not shown, because it prints the county letters.
