@@ -1,5 +1,4 @@
 Host: id=g-a4s02-countyb file=compositions/g-a4s02-countyb.html start=668.56 duration=32.43 s (timeline-map.md tables 1 and 5, read again 12 Oct 26; the mount in index.html wins; last sound at 31.43) track=2
-Film window (for the timeline's author, track 1, class `filmwin`, muted): file=media/films/cuts/a14-05-operations-room.mp4 file offset (`data-media-start`)=20.0 s, window start in comp=0.0 s (timeline 668.56), window length=4.0 s. The comp covers the window on the cue word "lost" at comp 4.06, so mount 4.2 s (file 20.0 to 24.2 of 31.53 s) to keep film under that cut.
 
 # g-a4s02-countyb · A4-S2, A4-S3, A4-S4, A4-S5 · heard one county over, told his own members, radioed the police, and the path he counted on (wave 1, chain family base for a county chain)
 
