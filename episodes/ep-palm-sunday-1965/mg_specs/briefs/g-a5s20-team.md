@@ -62,7 +62,7 @@ t from comp start = the segment's wav start inside the composition (timeline-map
 | 1 | A5-S20 | 2 | day, | 0.68 | 0.27 | date label lands (`y:16` to 0 with the fade, 0.3 s) |
 | 2 | A5-S20 | 9 | named | 2.16 | 1.75 | unlit memo rects fade in (0.4 s); underline 1 draws (0.6 s) |
 | 3 | A5-S20 | 11 | team | 2.56 | 2.15 | underline 2 draws (0.2 s) once underline 1 is complete |
-| 4 | A5-S20 | 14 | Its | 4.34 | 3.93 | memo card exits left (`x:-1900`, 0.6 s, power3.in) with its label and underlines; page card enters from the right (to `x:0`, 0.7 s, power3.out); the source line swaps |
+| 4 | A5-S20 | 14 | Its | 4.34 | 3.93 | memo card stays in place and dims to opacity 0.22 with its label, unlit rects and underlines (0.4 s; plan rule 22, see section 4 item 7); page card enters from the right over it (to `x:0`, 0.7 s, power3.out); the source line swaps to the page in front |
 | 5 | A5-S20 | 29 | Excellent. | 7.96 | 7.55 | underline 3 draws under `excellent` (0.4 s) |
 | 6 | end | | | | 9.19 | comp ends; no exit move |
 Between step 4 and step 5 the page card sits for 2.9 s with no mark: it is the entrance that carries that stretch.
