@@ -2,6 +2,26 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 12 Oct 26: pin 0.8.143 to 0.8.149 before Palm Sunday 1965's first render
+
+1. Ritual on demo-pin (hidden task, exit 0): duration 24.000/24.000 s, black 0/0, RMS -21.602701/-21.602708 dB,
+   workers 2/2, SSIM 0.9948, video-region SSIM 0.9977. Bumped clean. The SSIM figures sit a little under the 0.8.143
+   bump (0.9969 and 0.9990); the ritual's own thresholds passed them.
+2. 6 releases are in the range (0.8.144 to 0.8.149, all notes read on the upstream GitHub releases). The ones that can
+   change a render: 0.8.144 (audio duration is recovered by decoding the final frame; a data script in a
+   sub-composition no longer stops every timeline; a missing timeline is waited for once per render, not once per
+   browser; Windows renders stop cancelling when an old parent's pid is reused), 0.8.145 (the audio duration probe reads
+   to the end on Windows; long exports with many clips no longer stall at 90 % or hide a timeout), 0.8.146 (exports no
+   longer fail on a video clip that sits outside the composition's length; the replacement video frame keeps the
+   element's border; re-renders reuse the extracted frames of remote videos; ffmpeg and ffprobe installed by the
+   project's npm installer packages are found), 0.8.147 (a render stall names the step Chrome hung in), 0.8.148 (MP4,
+   MOV and TS exports keep sound and picture in sync when a file's streams start apart). 0.8.149 only adds an importable
+   `hyperframes/api` entry (transcribe, removeBackground): nothing for a render.
+3. No seek or font change in this range. The audio duration, stream-start sync and long-export items touch
+   what El Reno-length episodes meet, but demo-pin has one tone and a 4 s clip, so it cannot see them: first seen in
+   Palm Sunday 1965's draft render. The second A/B in the 0.8.143 entry (snapshot both pins on a real episode) was not
+   run for this bump.
+
 ## 10 Oct 26: Presenter circle face, SoulX-FlashHead Lite on the ZBook (RTX A2000 8 GB, 15.6 GB RAM)
 
 1. Three local lip-sync models were installed and timed on the same 3.6 s and 10 s lines, wall time from launch to

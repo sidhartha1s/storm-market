@@ -2,6 +2,25 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 12 Oct 26 - ep-palm-sunday-1965: a voice conversion after TTS leaves every words.json stale, and the transcriber moves words on the new voice
+
+- **What happened:** `tts_episode.py` wrote each words.json from the TTS wav. The conversion to the owner's voice then
+  wrote new wavs over the same names and nothing re-transcribed them. Twelve graphics were cued and frame-checked
+  against the old stamps before `sweep_episode.py` printed "words.json is older than its wav" for all 15 segments.
+- **Measured:** the speech did not move. The loudness envelopes (10 ms hop) of the unconverted and converted wavs line
+  up within 0.01 s over each whole segment and around each word. Re-transcribing the converted wavs still moved word
+  stamps by up to 0.49 s in 7 of 15 segments, nearly all on a word that follows a pause ("City", "Named", "Many").
+  Against the acoustic edge (30 dB under the segment's peak RMS) the old stamp was the closer one at 11 of the 16 word
+  edges measured; the worst old stamp was 0.17 s off a word start, the worst new one 0.32 s.
+- **Rule:** any step that rewrites a narration wav re-transcribes it before it reports done; the step order is in
+  CLAUDE.md "Voice".
+- **Observation, not a rule yet:** a transcriber stamp on a word that follows a pause can sit up to 0.32 s off the
+  sound. Where such a cue matters, check it against the loudness envelope of the wav. No script does this today; the
+  cue rule's home is `references/mg-quickref.md` "Text doctrine".
+- **Homograph probe without Praat:** "lives" in "lost their lives" measured as the noun with LPC formants on the final
+  wav (F1 peak about 877 Hz, vowel about 0.16 s; the short-i signature is F1 under about 500 Hz and about 60 ms).
+- **Open:** the conversion script still sits in an El Reno scratch folder outside the tracked repo (`ops/tasks.md` "Housekeeping").
+
 ## 2026-09-27 - ep-enderlin: the "lyvz" respelling voiced "livs"; plain "lives" is correct; gate shipped 2026-09-28
 
 - **Owner:** "lives" (lost their lives) came out /lɪvz/, must be /laɪvz/. The TTS copy had respelled it "lyvz".
