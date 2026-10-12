@@ -222,7 +222,9 @@ window.__timelines = window.__timelines || {};
   tl.to($("mo"), { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 1.57);
   tl.to($("in"), { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 3.07);
 
-  /* 4 · "study" @4.59: the quote card rises in; it floats 8 px through its hold so the frame is never still for 4 s */
+  /* 4 · "study" @4.59: the box's bottom edge rises to its briefed y 680 as the quote card rises in under it; the card carries
+         a slow push through its 4.4 s hold (plan rule 22) */
+  tl.fromTo(map, { clipPath: TALL }, { clipPath: MIDWEST.box, duration: 0.5, ease: "power3.out", immediateRender: false }, 4.59);
   tl.fromTo($("quote"), { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", immediateRender: false }, 4.59);
   tl.to($("quote"), { y: -8, duration: 2.15, ease: "sine.inOut", yoyo: true, repeat: 1 }, 5.03);   /* back at rest @9.33 */
 
