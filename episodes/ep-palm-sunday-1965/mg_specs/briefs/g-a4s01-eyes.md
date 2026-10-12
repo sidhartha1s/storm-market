@@ -71,14 +71,11 @@ Text: `Civil defense training film, 1967` · `County B` · `about` · `7:30 PM` 
 Cue words and times are from `audio/a4-s1.words.json` as it stood on 12 Oct 26 at 19:30. t from comp start = the segment's wav start inside the composition (`mg_specs/timeline-map.md` table 5: -0.31) plus the word's time; the first word uses table 5's first sound. The transcriber writes word 2 as "15"; the voice says "fifteen". Retime from the word index and the word, never from the seconds.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
-| 0 | A4-S1 | 0 | He | 0.00 | 0.00 | first frame (the cut out of the book ad): ground, chip `County B`, the document card whole and bright |
-| 1 | A4-S1 | 1 | waited | 0.42 | 0.11 | the clock stamp slides in from the left (`x:-660` set at 0, to 0 with the fade; 0.6 s, power3.out) reading `7:15 PM`, hands 217.5 and 90 |
-| 2 | A4-S1 | 3 | minutes | 1.14 | 0.83 | the minute hand sweeps 90 to 180 and the hour hand 217.5 to 225 (1.2 s, power2.inOut); at 2.03, when the sweep ends, the time text cuts to `7:30 PM` |
-| 3 | A4-S1 | 4 | until | 1.56 | 1.25 | the unlit page fades in over R1, R2, R3 (0.4 s) |
-| 4 | A4-S1 | 9 | in | 3.46 | 3.15 | the source line fades in (0.3 s, `y:12` to 0) |
-| 5 | A4-S1 | 13 | with | 5.04 | 4.73 | underline 1 draws under `"with his` (0.3 s, power2.out) |
-| 6 | A4-S1 | 15 | own | 5.38 | 5.07 | underline 2 draws under `own eyes".` (0.3 s). Hold to the cut at 6.71 |
-**If the lead rules film** (RULED 12 Oct 26: this is the variant to build, and it replaces steps 0 to 4 of the table above; the composer mounts the cut on track 1 at left 480, top 150, 960 x 720): the comp opens as the film view of `compositions/g-a1s15-offices.html` (ground with hole, frame, the one chip `Civil defense training film, 1967`), window open 0.00 to 3.15; at step 4 (word 9 "in", 3.15) a hard cut covers the hole and brings on the chip `County B`, the card with the unlit page already on, the source line and the stamp already reading `7:30 PM` (no sweep); steps 5 and 6 as above. Steps 1 to 3 are dropped.
+| 0 | A4-S1 | 0 | He | 0.00 | 0.00 | first frame (the cut out of the book ad): the film view of `compositions/g-a1s15-offices.html`. Ground with the open window on the operations room, the frame, the one chip `Civil defense training film, 1967`. Nothing else until step 1 |
+| 1 | A4-S1 | 9 | in | 3.46 | 3.15 | hard cut: the hole cover goes on (a fifth opaque panel of the same gradient over x 480 to 1440, y 150 to 870, never off again) and the frame and film label go off in that frame. On in the same frame: the chip `County B`, the document card with the unlit page already over R1, R2, R3, the stamp reading `about` and `7:30 PM` with hands at 225 and 180, and the source line |
+| 2 | A4-S1 | 13 | with | 5.04 | 4.73 | underline 1 draws under `"with his` (0.3 s, power2.out) |
+| 3 | A4-S1 | 15 | own | 5.38 | 5.07 | underline 2 draws under `own eyes".` (0.3 s). Hold to the cut at 6.71 |
+**If the lead rules film** (RULED 12 Oct 26): the table above is that variant and is the only one to build. The composer mounts the pre-trimmed cut on track 1 at left 480, top 150, 960 x 720; the builder does not. The words "He waited fifteen minutes, until he saw the tornado," (0.00 to 3.15) are spoken over the film.
 
 ## 6. Contract
 As `references/mg-brief-template.md` section 6, with these: `compositions/g-a4s01-eyes.html` is the only file the builder writes; `data-composition-id="g-a4s01-eyes"`; id prefix `eyes-`; root `<div id="eyes-root" ...>` styled through `#eyes-root` (plan rule 3 overrides the template's `id="root"`). Full frame, own ground on from frame 0.
