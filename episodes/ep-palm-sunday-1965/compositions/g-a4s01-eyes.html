@@ -82,12 +82,12 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  var ID = "g-a4s01-eyes", P = "eyes", D = 6.71, CUT = 3.15, NS = "http://www.w3.org/2000/svg";
+  var ID = "g-a4s01-eyes", P = "eyes", NS = "http://www.w3.org/2000/svg";
+  const D = 6.71; const CUT = 3.15;   /* one const each: sweep check 7 reads a tween position only as a number or as such a const */
   var $ = function (s) { return document.getElementById(P + "-" + s); };
   var tl = gsap.timeline({ paused: true });
   function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
   function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
-  function under(e, t, d) { tl.to(e, { scaleX: 1, duration: d, ease: "power2.out" }, t); }
 
   /* ---- the clock face (design sheet section 8, drawn in a 200 box shown at 1.5 times): centre (95,100), radius 62 ---- */
   var face = $("face"), CX = 95, CY = 100, RR = 62, O = CX + " " + CY;
@@ -115,10 +115,10 @@ window.__timelines = window.__timelines || {};
   tl.set($("page"), { autoAlpha: 1 }, CUT);
 
   /* 2 · "with" @4.73: underline 1 under "with his */
-  under($("ul1"), 4.73, 0.3);
+  tl.to($("ul1"), { scaleX: 1, duration: 0.3, ease: "power2.out" }, 4.73);
 
   /* 3 · "own" @5.07: underline 2 under own eyes". Hold to the cut */
-  under($("ul2"), 5.07, 0.3);
+  tl.to($("ul2"), { scaleX: 1, duration: 0.3, ease: "power2.out" }, 5.07);
 
   tl.to({}, { duration: 0.01 }, D - 0.01);
   window.__timelines[ID] = tl;
