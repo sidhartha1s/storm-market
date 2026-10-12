@@ -62,13 +62,13 @@ Fixed layer:
 1. Amber reaches two things and no more: the civil defense desk (A4-S3) and the police desk (A4-S4, only when the light has crossed the arc). The microphone's lamp and lines, the house's lines and windows and both dotted links are never amber in any frame.
 2. The ghost is Label grey from its first frame to its last and starts at the police desk. It never touches the civil defense desk or the arc.
 3. `County B` is the only county label and its chip carries those two words alone. No `County A`, no real county, town or river name, no state outline. The map carries two labels, `the sheriff` and `civil defense`, and nothing else.
-4. The map and the chain are two different counties: the tornado mark, the river, the two marks and their labels stay west of x 800, the waiting chain stays east of x 836, and the chip sits over the chain, never over the map.
+4. The map and the chain are two different counties: the tornado mark, the river and the two marks stay west of x 700, the waiting chain stays east of x 836, and the chip sits over the chain, never over the map.
 5. The tornado mark comes from the left edge and moves east. It is Body light, never red, and it never reaches the river.
 6. The civil defense desk has no telephone; the police desk has one, handset on the cradle. Nobody is drawn: the two marks on the map are plain circles.
 7. The stamp reads `about` and `7:30 PM` together, hands at 225.0 and 180 degrees, and names no place.
 8. Order in A4-S3: the civil defense desk goes amber first; the other three stations are named after it and stay Label grey.
 9. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680. No label under a line, the arc, a dot or another label, including while the chain grows (its labels are hidden until it has stopped).
-10. Coverage (plan rule 22): no empty block over a third of the frame for more than about 3 s at any step. The largest block expected at each step is in the table under the cue table; the builder measures the same steps and reports both figures.
+10. Coverage (plan rule 22): no empty block over a third of the frame for more than about 3 s at any step. The figures measured on the build are under the cue table. Amber never passes x 838 (the builder's measured line, the police desk's right edge).
 
 ## 5. Text (exact) and cues
 Text: `County B` · `the sheriff` · `civil defense` (on the map, and again under the first desk) · `city police` · `the radio station` · `a family` · `about` · `7:30 PM`.
