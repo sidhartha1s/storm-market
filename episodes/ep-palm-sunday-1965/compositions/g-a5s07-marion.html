@@ -253,10 +253,10 @@ window.__timelines = window.__timelines || {};
   tl.to($("ul"), { scaleX: 1, duration: 0.7, ease: "none" }, 6.03);
 
   /* ================= A5-S8: an hour and twenty minutes, and the stopped clock ================= */
-  /* 6 · "Marion" @9.96: the source fades, the page leaves to the right, the map's box opens down again; the chip beside Marion's dot */
+  /* 6 · "Marion" @9.96: the source fades, the page leaves the way it came (down, with a fade; never to the right, through
+         the corner), the map's box opens down again; the chip beside Marion's dot */
   tl.to($("doc"), { autoAlpha: 0, duration: 0.2, ease: "power2.out" }, 9.96);
-  tl.to($("page"), { x: 1600, duration: 0.4, ease: "power3.in" }, 9.96);
-  tl.set($("page"), { autoAlpha: 0 }, 10.36);
+  tl.to($("page"), { y: 80, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 9.96);
   tl.to(map, { clipPath: OPEN, duration: 0.5, ease: "power2.inOut" }, 9.96);
   show($("chip"), 9.96);
 
