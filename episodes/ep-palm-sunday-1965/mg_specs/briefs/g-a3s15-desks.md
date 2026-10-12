@@ -64,7 +64,7 @@ Scene 3 (A3-S17, comp 12.67 to 17.34):
 6. Scene 3's stations 1 to 5 and the chain's desk sit within 2 px of the intro's numbers. No stop mark, no tick.
 7. One scene at a time: at 6.80 nothing of scene 1 except desk B is visible, and at 13.10 nothing of scene 2 is visible.
 8. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680; text at least 96 px from the sides and 54 px from top and bottom. No label under the arc, the road, a mark or the tornado mark.
-9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
+9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry. Ruled by the lead, 12 Oct 26: scene 2 (one strip at y 446 to 666, with 40.7 % of the frame empty above it and 37.8 % below, for 6.27 s) is accepted as a full-width chain row on a slow push 1.00 to 1.03, because desk B stays put across the scenes.
 
 ## 5. Text (exact) and cues
 Text: `city police` (twice) · `back up power` (twice) · `Disaster Research Center, 1966, p. 29` · `an office in the path` · `1` · `10` · `30 minutes out` · `Kansas City forecasters` · `Weather Bureau · South Bend` · `the list` · `police` · `civil defense` · `an announcer` · `a family`.
