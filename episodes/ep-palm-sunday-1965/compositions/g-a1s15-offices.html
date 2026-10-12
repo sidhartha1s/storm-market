@@ -205,7 +205,7 @@ window.__timelines = window.__timelines || {};
   draw($("h-chim"), 26.38, 0.26); draw($("h-aer"), 26.42, 0.26);
 
   /* 10 · "act," @26.83: the left window turns amber (Amber 2 at 30 %); the right one stays dark */
-  tl.to($("h-win1"), { fill: "#e8c56a", fillOpacity: 0.3, duration: 0.3, ease: "power2.out" }, 26.83);
+  tl.to($("h-win1"), { fill: "#e8c56a", fillOpacity: 0.85, duration: 0.3, ease: "power2.out" }, 26.83);   /* 0.85 as g-a5s18-curran's lit windows: at 0.3 the pane read olive (85, 83, 70) */
 
   /* 11 · "forecast" @28.05: strip C; 12 · "half" @28.89: its chip */
   tl.to($("drawn"), { y: 0, duration: 0.5, ease: "power3.out" }, 28.05);                  /* the band makes room for the strips */
