@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1s06-low (A1-S6): the low on the morning map. The Weather Bureau's real surface map on a paper card at the left; beside it
+     our plain map, where one L lands where the two Dakotas meet Minnesota and four wind arrows turn counter-clockwise round it.
+     Brief: mg_specs/briefs/g-a1s06-low.md; map facts: media/maps/README.md. Map family: copies the way g-a2s14-six and
+     g-a1s02-strip inline a base map.
+     Real map: media/stills/b5-surface-map-1965-04-11.png (1503 x 1200, U.S. Weather Bureau Daily Weather Map), shown whole at
+     950 x 758, never enlarged or covered. Its fronts are the only fronts on screen: our map draws none.
+     Our map: media/maps/us-states.svg (BM-3), ids prefixed low-. State PLAINS: the box 1100, 151, 724 x 509 with
+     viewBox -2300 -1300 3000 2109.1, 0.2413 px per unit: screen x = 1100 + 0.2413 x (u + 2300), y = 151 + 0.2413 x (u + 1300).
+     MAP BLOCK: the path elements of BM-3's group map-states that cross that window, copied whole and unchanged by one
+     mechanical copy that added the id prefix and nothing else.
+     The L's centre is the centre of the joint box of st-nd, st-sd and st-mn as BM-3 draws them (x -1798 to 43, y -1235 to 40):
+     map (-877.5, -597.5), screen (1443.3, 320.5). The low's exact centre is not claimed: our map is labelled a sketch.
+     Arrows: four arcs of 50 degrees on a circle of radius 96 about that point, starting at 0, 90, 180 and 270 degrees clockwise
+     from 12; each is drawn toward its counter-clockwise end, where its head sits.
+     Cues are audio/a1-s6.words.json seconds minus 0.49 (the wav starts 0.49 s before the composition). -->
+<template>
+<style>
+  #low-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .low-h { opacity:0; visibility:hidden; }
+
+  /* ---- map block: our sketch, the box is fixed, the camera is the viewBox ---- */
+  .low-map { position:absolute; left:1100px; top:151px; width:724px; height:509px; overflow:hidden; }
+  .low-over { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .low-sketch { position:absolute; left:1100px; top:672px; font:700 22px Arial, sans-serif; color:#93a3b2; white-space:nowrap; line-height:1; }
+  .low-at { position:absolute; width:0; height:0; display:flex; align-items:center; justify-content:center; }
+  .low-l { flex:none; font:900 120px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1; }
+  .low-plains { flex:none; font:700 22px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+
+  /* ---- the real map: paper card (as g-i1s6-page), its glass chip above, its source line below ---- */
+  .low-card { position:absolute; left:96px; top:151px; width:970px; height:778px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); overflow:hidden; }
+  .low-sheet { position:absolute; left:10px; top:10px; width:950px; height:758px; mix-blend-mode:multiply; }
+  .low-chip { position:absolute; left:96px; top:93px; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:23px;
+    font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  .low-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="low-root" data-composition-id="g-a1s06-low" data-width="1920" data-height="1080">
+
+  <!-- ================= map block: BM-3 inlined, ids prefixed low- ================= -->
+  <svg class="low-map" id="low-map" viewBox="-2300 -1300 3000 2109.1" preserveAspectRatio="xMidYMid meet" fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <g id="low-map-states" fill="#15202b">
+    </g>
+  </svg>
+  <div class="low-sketch">our sketch &middot; not to scale</div>
+
+  <!-- ---- on our map, in screen px: the system disc and the four wind arrows about (1443.3, 320.5) ---- -->
+  <svg class="low-over" viewBox="0 0 1920 1080">
+    <circle class="low-h" id="low-disc" cx="1443.3" cy="320.5" r="110" fill="#dfe7ee" fill-opacity="0.12"/>
+    <g class="low-h" id="low-wind" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path class="low-arc" d="M1516.8 258.8 A96 96 0 0 0 1443.3 224.5"/><path class="low-head low-h" d="M1457.4 232.0 L1443.3 224.5 L1457.4 217.0"/>
+      <path class="low-arc" d="M1505.0 394.0 A96 96 0 0 0 1539.3 320.5"/><path class="low-head low-h" d="M1531.8 334.6 L1539.3 320.5 L1546.8 334.6"/>
+      <path class="low-arc" d="M1369.8 382.2 A96 96 0 0 0 1443.3 416.5"/><path class="low-head low-h" d="M1429.2 409.0 L1443.3 416.5 L1429.2 424.0"/>
+      <path class="low-arc" d="M1381.6 247.0 A96 96 0 0 0 1347.3 320.5"/><path class="low-head low-h" d="M1354.8 306.4 L1347.3 320.5 L1339.8 306.4"/>
+    </g>
+  </svg>
+  <div class="low-at" style="left:1443.3px;top:320.5px"><div class="low-l low-h" id="low-l">L</div></div>
+  <div class="low-at" style="left:1444px;top:455px"><div class="low-plains low-h" id="low-plains">the northern plains</div></div>
+
+  <!-- ================= the real map: the Weather Bureau's sheet, whole ================= -->
+  <div class="low-card low-h" id="low-card">
+    <img class="low-sheet" src="media/stills/b5-surface-map-1965-04-11.png" alt="">
+  </div>
+  <div class="low-chip low-h" id="low-chip">Surface weather map &middot; 1:00 AM EST</div>
+  <div class="low-src low-h" id="low-src">Weather Bureau Daily Weather Map &middot; Sunday, April 11, 1965</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a1s06-low", P = "low";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+
+  /* ---- the wind arrows: each arc's dash is its own measured length, and the group's pivot is set here, once ---- */
+  var wind = $("wind"), arcs = wind.querySelectorAll(".low-arc"), heads = wind.querySelectorAll(".low-head");
+  for (var i = 0; i < arcs.length; i++) { var len = Math.ceil(arcs[i].getTotalLength()) + 1; s0(arcs[i], { strokeDasharray: len, strokeDashoffset: len }); }
+  s0(wind, { rotation: 0, svgOrigin: "1443.3 320.5" });
+  s0($("card"), { x: -1080 });
+
+  /* 0 · "What" @0.00: ground, our map's state outlines and the sketch label */
+
+  /* 1 · "map" @1.33: the real map card slides in from the left, lands @1.93; its chip and its source line fade in 0.2 s later */
+  tl.to($("card"), { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 1.33);
+  tl.fromTo($("chip"), { autoAlpha: 0, y: -12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 2.13);
+  tl.fromTo($("src"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, 2.13);
+
+  /* 2 · "storm" @3.05: the system disc fades in on our map */
+  tl.to($("disc"), { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 3.05);
+
+  /* 3 · "low," @4.29: the L lands */
+  tl.fromTo($("l"), { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 4.29);
+
+  /* 4 · "turning" @4.97: the four arrows draw toward their heads, then the group turns counter-clockwise to the last frame */
+  tl.to(wind, { autoAlpha: 1, duration: 0.05, ease: "none" }, 4.97);
+  tl.to(arcs, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 4.97);
+  tl.to(heads, { autoAlpha: 1, duration: 0.15, ease: "power2.out" }, 5.22);
+  tl.to(wind, { rotation: -40, duration: 2.14, ease: "none" }, 5.37);   /* ends @7.51 */
+
+  /* 5 · "northern" @5.61: the plains label */
+  tl.to($("plains"), { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 5.61);
+
+  tl.to({}, { duration: 0.01 }, 7.50);                      /* holds to the last frame @7.51 */
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
