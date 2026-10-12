@@ -191,7 +191,7 @@ window.__timelines = window.__timelines || {};
   }
 
   /* 1 · row @1.67: a pulse wipes across the blank ninth row and leaves; nothing is typed */
-  tl.set(pulse, { visibility: "visible" }, 1.67);
+  tl.set(pulse, { visibility: "inherit" }, 1.67);   /* inherit, never "visible": a forced-visible band still paints while the host is hidden */
   tl.to(pulse, { scaleX: 1, duration: 0.3, ease: "none" }, 1.67);
   tl.to(pulse, { opacity: 0, duration: 0.2, ease: "none" }, 1.97);
   tl.set(pulse, { visibility: "hidden" }, 2.17);
