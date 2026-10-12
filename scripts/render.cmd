@@ -5,7 +5,9 @@ REM Example: scripts\render.cmd ep2-2011-super-outbreak full ep2-final
 REM Launch DETACHED (harness bg tasks get killed):
 REM   powershell Start-Process cmd.exe -ArgumentList '/c','"<ABS path>\scripts\render.cmd" <slug> <mode>' -WindowStyle Hidden
 REM Writes episodes\<slug>\render_<mode>.log, render_<mode>_preflight.log (gate output, so a
-REM hidden/schtasks launch still leaves a refusal reason on disk) and render_<mode>_done.marker
+REM hidden/schtasks launch still leaves a refusal reason on disk), render_<mode>.fps (the frame rate
+REM this render was launched with, RENDER_FPS included; verify_render.sh checks a draft against it)
+REM and render_<mode>_done.marker
 REM (contains the exit code; deleted at the start of every run so a poller never reads a stale one).
 REM Version pin must match config.yaml hyperframes_version — pin_ritual.py bumps both together.
 setlocal
@@ -98,6 +100,7 @@ set PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000
 REM worker count is tunable for RAM-tight full renders (fps30 workers use more memory than
 REM draft); default 3 as tested for draft, drop to 2 on a low-free-RAM box. Set RENDER_WORKERS.
 if not defined RENDER_WORKERS set RENDER_WORKERS=3
+echo %_FPS% > "render_%MODE%.fps"
 call npx hyperframes@0.8.149 render . --gpu --browser-gpu --experimental-fast-capture=true %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
 set RC=%ERRORLEVEL%
 echo %RC% > "render_%MODE%_done.marker"
