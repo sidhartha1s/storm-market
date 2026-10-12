@@ -63,7 +63,7 @@ The stamp and the telephone go off in the cut frame at 11.41: the photograph is 
 ## 4. Must be true in the picture
 1. While the film window is open (0.00 to 4.21) the only chip, stamp, strip or label in the frame is `Civil defense training film, 1967`. No clock, no time, no South Bend.
 2. The hole is opaque from 4.21 to the end, although the mount under it runs to 11.41. A frame at 5.00 read over the mount shows no film.
-3. The clock reads 7:13 PM: hour hand between 7 and 8, minute hand just past the 2 and a half minute mark (78 degrees). The strip's attribution says `7:13 PM` too.
+3. The clock reads 7:13 PM: hour hand between 7 and 8, minute hand between the 2 and the 3 (78 degrees). The strip's attribution says `7:13 PM` too.
 4. Strip E's words are the message's as the script quotes them, in quotation marks with the attribution. Nothing on screen is set to look like the survey page.
 5. The photograph's only label is `Weather Bureau teletype room, about 1955`. It is never labelled South Bend, 1965 or 7:13 PM by a bare label, and the stamp is gone before it shows.
 6. Nobody in the photograph is named. `“the poor observer”` sits on paper with its own attribution, beside the photograph's label, so neither operator is read as the observer. No person is drawn anywhere.
