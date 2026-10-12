@@ -68,6 +68,7 @@ Fixed layer:
 7. The stamp reads `about` and `7:30 PM` together, hands at 225.0 and 180 degrees, and names no place.
 8. Order in A4-S3: the civil defense desk goes amber first; the other three stations are named after it and stay Label grey.
 9. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680. No label under a line, the arc, a dot or another label, including while the chain grows (its labels are hidden until it has stopped).
+10. Coverage (plan rule 22): no empty block over a third of the frame for more than about 3 s at any step. The largest block expected at each step is in the table under the cue table; the builder measures the same steps and reports both figures.
 
 ## 5. Text (exact) and cues
 Text: `County B` · `the sheriff` · `civil defense` (on the map, and again under the first desk) · `city police` · `the radio station` · `a family` · `about` · `7:30 PM`.
