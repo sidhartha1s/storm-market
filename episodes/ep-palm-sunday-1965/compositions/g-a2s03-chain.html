@@ -1,0 +1,363 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2s03-chain · A2-S3, A2-S4, A2-S5 · window 21.92 s · brief: mg_specs/briefs/g-a2s03-chain.md
+  Claim: South Bend had no radar of its own; its radar news came by telephone from other Weather Bureau offices, so the chain is one
+  link longer. Its warnings went out by teletype and telephone, office after office. From a warning being issued to a station
+  putting it on the air, the delay was generally at least ten minutes.
+  SCHEMATIC, NOT TO SCALE: who told whom, left to right. Link line y 520. Stations 1 to 5 stand where the intro placed them.
+  Three views: chain (0.00 to 6.14 and 13.98 to the end), film window (6.14 to 11.85; the cut is mounted under this comp in
+  index.html, class filmwin), list sheet in the Close state (11.85 to 13.98). While the window is open the film label is the only text.
+  The scope is NOT at South Bend. The list is never numbered. The house stays dark to the last frame.
+  Cues are comp-local seconds (audio/a2-s3, a2-s4, a2-s5 .words.json plus the offsets of mg_specs/timeline-map.md table 5).
+  Copied blocks: stations, links and light from compositions/g-a1s13-chain.html; film view from g-a1s15-offices.html;
+  list sheet from g-t1s3-list.html; clock arc from g-a2s06-headstart.html.
+-->
+<template>
+<style>
+  /* no background on the root and no z-index: the ground is four panes round the film window, and a fifth that closes it */
+  #chain3-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee; }
+
+  /* ---- FILM VIEW: ground with a 4:3 hole at x 480 to 1440, y 150 to 870, frame, label chip, hole cover ---- */
+  .chain3-pane { position:absolute; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%) no-repeat; background-size:1920px 1080px; }
+  #chain3-pt { left:0; top:0; width:1920px; height:150px; background-position:0 0; }
+  #chain3-pb { left:0; top:870px; width:1920px; height:210px; background-position:0 -870px; }
+  #chain3-pl { left:0; top:150px; width:480px; height:720px; background-position:0 -150px; }
+  #chain3-pr { left:1440px; top:150px; width:480px; height:720px; background-position:-1440px -150px; }
+  #chain3-cover { left:480px; top:150px; width:960px; height:720px; background-position:-480px -150px; }
+  #chain3-frame { position:absolute; left:476px; top:146px; width:968px; height:728px; box-sizing:border-box; border:4px solid #dfe7ee; }
+  .chain3-chip { position:absolute; box-sizing:border-box; padding:0 22px; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; }
+  #chain3-flabel { left:480px; top:886px; height:46px; border-radius:23px; font:700 26px Arial, sans-serif; color:#dfe7ee; line-height:44px; }
+
+  /* ---- CHAIN VIEW ---- */
+  #chain3-view { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #chain3-svg, #chain3-over { position:absolute; left:0; top:0; }
+  .chain3-lab { position:absolute; top:676px; font-size:22px; line-height:28px; font-weight:700; color:#93a3b2; text-align:center; }
+  /* media/drawings/radar-scope.svg (viewBox -6 -6 212 212) at 0.72: object box x 316 to 460, y 206 to 350 */
+  #chain3-scope { position:absolute; left:311.68px; top:201.68px; overflow:visible; }
+  /* media/drawings/wall-clock.svg (viewBox -6 -6 136 136) at 1.6: object box x 886 to 1084.4, y 150 to 348.4, centre (985.2, 249.2) */
+  #chain3-clock { position:absolute; left:876.4px; top:140.4px; overflow:visible; }
+  #chain3-ten { left:1120px; top:222px; height:54px; border-radius:27px; font:900 30px 'Arial Black', Arial, sans-serif; color:#e8c56a; line-height:52px; }
+  #chain3-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em;
+    white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+
+  /* ---- LIST VIEW: the sheet of g-t1s3-list.html, world px, one camera transform on the world (origin top left) ---- */
+  #chain3-world { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #chain3-sheet { position:absolute; left:64px; top:60px; width:760px; height:590px; background:#f4f0e6; border-radius:2px; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  #chain3-eye { position:absolute; left:96px; top:84px; font:700 19px 'Courier New', Courier, monospace; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+  #chain3-title { position:absolute; left:96px; top:118px; font:700 30px 'Courier New', Courier, monospace; color:#2a2622; white-space:nowrap; line-height:1; }
+  /* media/drawings/telephone.svg (viewBox -6 -58 102 106) at 0.638: the telephone spans x 730 to 790, centred on y 123 */
+  #chain3-phone { position:absolute; left:727.5px; top:77.7px; }
+  #chain3-rule { position:absolute; left:96px; top:171px; width:696px; height:2px; background:rgba(107,98,87,0.4); }
+  .chain3-row { position:absolute; left:150px; height:44px; font:700 26px 'Courier New', Courier, monospace; color:#2a2622; white-space:nowrap; line-height:44px; }
+  .chain3-rr { position:absolute; left:96px; width:696px; height:1px; background:rgba(107,98,87,0.25); }
+  /* the pulse band: Amber 2 at 25 %, wipes across its row and leaves */
+  .chain3-bw { position:absolute; left:96px; width:696px; height:44px; overflow:hidden; }
+  .chain3-band { width:100%; height:100%; background:rgba(232,197,106,0.25); }
+
+  /* hidden in CSS as well as at timeline 0, so the host's very first frame is the chain at rest and nothing else */
+  #chain3-frame, #chain3-flabel, #chain3-scope, #chain3-glow, #chain3-k0, #chain3-scopelab, #chain3-r0, #chain3-r2, #chain3-r3, #chain3-s3edge,
+  #chain3-world, #chain3-clock, #chain3-arc, #chain3-ten, #chain3-src { opacity:0; visibility:hidden; }
+</style>
+<div id="chain3-root" data-composition-id="g-a2s03-chain" data-width="1920" data-height="1080" data-duration="21.92">
+  <!-- FILM VIEW · ground panes; the cover is on except while the window is open (6.14 to 11.85) -->
+  <div class="chain3-pane" id="chain3-pt"></div>
+  <div class="chain3-pane" id="chain3-pb"></div>
+  <div class="chain3-pane" id="chain3-pl"></div>
+  <div class="chain3-pane" id="chain3-pr"></div>
+  <div class="chain3-pane" id="chain3-cover"></div>
+
+  <!-- CHAIN VIEW -->
+  <div id="chain3-view">
+  <svg id="chain3-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <!-- links at y 520, one path per link: solid as far as the list, dotted after it. k0 is the new one: scope down to South Bend, a telephone line -->
+    <g fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round">
+      <path id="chain3-k0" d="M388 350 V428"/>
+      <path id="chain3-k1" d="M236 520 H316"/>
+      <path id="chain3-k2" d="M460 520 H540"/>
+      <path id="chain3-k3" d="M800 520 H1170" stroke-dasharray="0.1 14"/>
+      <path id="chain3-k4" d="M1272 520 H1400" stroke-dasharray="0.1 14"/>
+    </g>
+
+    <!-- the travelling light: an Amber 2 run that crosses a link (crawl()) -->
+    <g fill="none" stroke="#e8c56a" stroke-width="6" stroke-linecap="round">
+      <path id="chain3-r0" d="M388 350 V428"/>
+      <path id="chain3-r2" d="M460 520 H540"/>
+      <path id="chain3-r3" d="M800 520 H1170"/>
+    </g>
+
+    <!-- station 1 · teletype (media/drawings/teletype.svg), Body light -->
+    <g id="chain3-st1" transform="translate(96 450)">
+      <g id="chain3-s1" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="34" y="0" width="72" height="50" fill="#15202b"/>
+        <rect x="0" y="50" width="140" height="90" fill="#15202b"/>
+        <rect x="14" y="112" width="112" height="20"/>
+        <path d="M44 14 H88 M44 26 H96 M44 38 H80"/>
+      </g>
+    </g>
+
+    <!-- station 2 · telephone, handset OFF the hook (media/drawings/telephone-lifted.svg), Body light. No scope or ring is drawn on it. -->
+    <g id="chain3-st2" transform="translate(316 519.6) scale(1.6)">
+      <g id="chain3-s2" fill="none" stroke="#dfe7ee" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="24" y="-6" width="8" height="14" fill="#15202b"/>
+        <rect x="58" y="-6" width="8" height="14" fill="#15202b"/>
+        <path d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+        <circle cx="45" cy="27" r="15" fill="#15202b"/>
+        <path d="M14 -10 L4 -5 a3.2 3.2 0 0 0 0 6.4 a3.2 3.2 0 0 1 0 6.4 a3.2 3.2 0 0 0 0 6.4 a3.2 3.2 0 0 1 0 6.4 a3.2 3.2 0 0 0 0 6.4 L6.5 28"/>
+        <g transform="translate(2 -26) rotate(-18 45 -5)">
+          <path fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+        </g>
+        <circle cx="45" cy="27" r="3"/>
+        <circle cx="43.2" cy="37" r="0.8"/><circle cx="37.2" cy="33.6" r="0.8"/><circle cx="34.8" cy="27" r="0.8"/><circle cx="37.2" cy="20.4" r="0.8"/>
+        <circle cx="43.2" cy="17" r="0.8"/><circle cx="50.1" cy="18.2" r="0.8"/><circle cx="54.6" cy="23.5" r="0.8"/>
+      </g>
+    </g>
+
+    <!-- station 3 · the list in miniature: eight bars, a ninth row with nothing on it. No words, no numbers, no boxes. -->
+    <g id="chain3-s3">
+      <rect x="540" y="350" width="260" height="300" rx="2" fill="#f4f0e6"/>
+      <g fill="#6b6257">
+        <rect x="570" y="381" width="170" height="10"/>
+        <rect x="570" y="411" width="170" height="10"/>
+        <rect x="570" y="441" width="170" height="10"/>
+        <rect x="570" y="471" width="170" height="10"/>
+        <rect x="570" y="501" width="170" height="10"/>
+        <rect x="570" y="531" width="170" height="10"/>
+        <rect x="570" y="561" width="170" height="10"/>
+        <rect x="570" y="591" width="170" height="10"/>
+      </g>
+      <path d="M566 401 H774 M566 431 H774 M566 461 H774 M566 491 H774 M566 521 H774 M566 551 H774 M566 581 H774 M566 611 H774 M566 641 H774"
+        fill="none" stroke="#6b6257" stroke-opacity="0.3" stroke-width="1.5"/>
+    </g>
+    <rect id="chain3-s3edge" x="540" y="350" width="260" height="300" rx="2" fill="none" stroke="#e8c56a" stroke-width="4"/>
+
+    <!-- station 4 · microphone (media/drawings/microphone.svg), dark until the light arrives -->
+    <g id="chain3-st4" transform="translate(1170 420) scale(0.85)">
+      <g id="chain3-s4" fill="none" stroke="#55606b" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60 112 V182"/>
+        <rect x="30" y="0" width="60" height="112" rx="30" fill="#15202b"/>
+        <path d="M40 30 H80 M40 56 H80 M40 82 H80"/>
+        <path d="M30 182 H90 L108 230 H12 Z" fill="#15202b"/>
+        <circle id="chain3-s4lamp" cx="104" cy="20" r="9" fill="#15202b"/>
+      </g>
+    </g>
+
+    <!-- station 5 · house (media/drawings/house.svg), dark to the last frame -->
+    <g id="chain3-st5" transform="translate(1400 430) scale(0.68)">
+      <g id="chain3-s5" fill="none" stroke="#55606b" stroke-width="5.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M186 37.3 V22 H208 V50"/>
+        <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+        <rect x="20" y="80" width="220" height="170" fill="#15202b"/>
+        <rect x="112" y="170" width="36" height="80"/>
+        <rect x="44" y="120" width="48" height="48" fill="#15202b"/>
+        <rect x="168" y="120" width="48" height="48" fill="#15202b"/>
+        <path d="M68 120 V168 M44 144 H92"/>
+        <path d="M192 120 V168 M168 144 H216"/>
+        <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+      </g>
+    </g>
+  </svg>
+
+  <!-- the new station: a radar scope at other offices, apart from South Bend. Its own svg, so the sweep turns about (100, 100). -->
+  <svg id="chain3-scope" width="152.64" height="152.64" viewBox="-6 -6 212 212">
+    <g fill="none" stroke="#dfe7ee" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle class="chain3-sd" cx="100" cy="100" r="98" fill="#15202b"/>
+      <circle class="chain3-sd" cx="100" cy="100" r="86" fill="#15202b"/>
+      <g id="chain3-sweep">
+        <path id="chain3-glow" d="M100 100 L100 14 A86 86 0 0 0 34.1 44.7 Z" fill="#e8c56a" fill-opacity="0.25" stroke="none"/>
+        <path class="chain3-sd" d="M100 100 V14"/>
+      </g>
+      <circle cx="100" cy="100" r="3"/>
+    </g>
+  </svg>
+  <div class="chain3-lab" id="chain3-scopelab" style="left:178px; top:160px; width:420px; white-space:nowrap">radar at other Weather Bureau offices</div>
+
+  <div class="chain3-lab" id="chain3-b1" style="left:96px; width:140px">Kansas City forecasters</div>
+  <div class="chain3-lab" id="chain3-b2" style="left:293px; width:190px">Weather Bureau &middot; South Bend</div>
+  <div class="chain3-lab" id="chain3-b3" style="left:540px; width:260px">the list</div>
+  <div class="chain3-lab" id="chain3-b4" style="left:1121px; width:200px">an announcer</div>
+  <div class="chain3-lab" id="chain3-b5" style="left:1388px; width:200px">a family</div>
+  </div>
+
+  <!-- LIST VIEW · the typed sheet, all eight rows Plain, the blank ninth row with its rule; no cursor, no tick, no number -->
+  <div id="chain3-world">
+    <div id="chain3-sheet"></div>
+    <div id="chain3-eye">SOUTH BEND WEATHER BUREAU &middot; BY TELEPHONE</div>
+    <div id="chain3-title">Organizations notified included:</div>
+    <svg id="chain3-phone" width="65.1" height="67.6" viewBox="-6 -58 102 106">
+      <g fill="none" stroke="#2a2622" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="24" y="-6" width="8" height="14" fill="#f4f0e6"/>
+        <rect x="58" y="-6" width="8" height="14" fill="#f4f0e6"/>
+        <path d="M2 44 H88 L77 8 H13 Z" fill="#f4f0e6"/>
+        <circle cx="45" cy="27" r="15"/>
+        <circle cx="45" cy="27" r="3"/>
+        <circle cx="43.2" cy="37" r="0.8"/><circle cx="37.2" cy="33.6" r="0.8"/><circle cx="34.8" cy="27" r="0.8"/><circle cx="37.2" cy="20.4" r="0.8"/>
+        <circle cx="43.2" cy="17" r="0.8"/><circle cx="50.1" cy="18.2" r="0.8"/><circle cx="54.6" cy="23.5" r="0.8"/>
+        <path fill="#f4f0e6" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+      </g>
+    </svg>
+    <div id="chain3-rule"></div>
+
+    <div class="chain3-bw" style="top:192px"><div class="chain3-band"></div></div>
+    <div class="chain3-bw" style="top:240px"><div class="chain3-band"></div></div>
+    <div class="chain3-bw" style="top:288px"><div class="chain3-band"></div></div>
+    <div class="chain3-bw" style="top:336px"><div class="chain3-band"></div></div>
+    <div class="chain3-bw" style="top:384px"><div class="chain3-band"></div></div>
+    <div class="chain3-bw" style="top:432px"><div class="chain3-band"></div></div>
+    <div class="chain3-bw" style="top:480px"><div class="chain3-band"></div></div>
+    <div class="chain3-bw" style="top:528px"><div class="chain3-band"></div></div>
+
+    <div class="chain3-rr" style="top:238px"></div>
+    <div class="chain3-rr" style="top:286px"></div>
+    <div class="chain3-rr" style="top:334px"></div>
+    <div class="chain3-rr" style="top:382px"></div>
+    <div class="chain3-rr" style="top:430px"></div>
+    <div class="chain3-rr" style="top:478px"></div>
+    <div class="chain3-rr" style="top:526px"></div>
+    <div class="chain3-rr" style="top:574px"></div>
+    <div class="chain3-rr" style="top:622px"></div>
+
+    <div class="chain3-row" style="top:192px">State Police</div>
+    <div class="chain3-row" style="top:240px">Sheriffs' Departments</div>
+    <div class="chain3-row" style="top:288px">City Police Departments</div>
+    <div class="chain3-row" style="top:336px">Indiana and Michigan Electric Company</div>
+    <div class="chain3-row" style="top:384px">Red Cross</div>
+    <div class="chain3-row" style="top:432px">Specified radio and TV stations</div>
+    <div class="chain3-row" style="top:480px">Flying services</div>
+    <div class="chain3-row" style="top:528px">Airlines</div>
+  </div>
+
+  <!-- FILM VIEW · frame and the one label -->
+  <div id="chain3-frame"></div>
+  <div class="chain3-chip" id="chain3-flabel">Civil defense training film, 1967</div>
+
+  <!-- A2-S5 · the clock at 5:43, the ten-minute arc on its minute ring, the chip, the source line -->
+  <svg id="chain3-clock" width="217.6" height="217.6" viewBox="-6 -6 136 136">
+    <g fill="none" stroke="#dfe7ee" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="62" cy="62" r="62" fill="#15202b"/>
+      <path d="M62.0 8.0 L62.0 22.0 M89.0 15.2 L85.0 22.2 M108.8 35.0 L101.8 39.0 M116.0 62.0 L102.0 62.0 M108.8 89.0 L101.8 85.0 M89.0 108.8 L85.0 101.8 M62.0 116.0 L62.0 102.0 M35.0 108.8 L39.0 101.8 M15.2 89.0 L22.2 85.0 M8.0 62.0 L22.0 62.0 M15.2 35.0 L22.2 39.0 M35.0 15.2 L39.0 22.2" stroke-width="3"/>
+      <g id="chain3-hour"><path d="M62 62 V28" stroke-width="5"/></g>
+      <g id="chain3-min"><path d="M62 62 V10" stroke-width="5"/></g>
+      <path d="M62 62 h0.01" stroke-width="10"/>
+    </g>
+  </svg>
+  <svg id="chain3-over" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <path id="chain3-arc" fill="none" stroke="#e8c56a" stroke-width="10" stroke-linecap="round"/>
+  </svg>
+  <div class="chain3-chip" id="chain3-ten">at least 10 minutes</div>
+  <div id="chain3-src">Disaster Research Center, 1966, p. 14</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#chain3-";
+  const el = function (id) { return document.getElementById("chain3-" + id); };
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+
+  /* a station's lines change colour and stay: a stroke change, never a scale pop */
+  function stroke(sel, hex, at, dur) { tl.to(sel, { attr: { stroke: hex }, duration: dur, ease: "power2.out" }, at); }
+  /* a line drawn on along its own length */
+  function draw(e, at, dur) {
+    const len = Math.ceil(e.getTotalLength()) + 1;
+    s0(e, { strokeDasharray: len, strokeDashoffset: len });
+    tl.to(e, { strokeDashoffset: 0, duration: dur, ease: "power2.out" }, at);
+  }
+  /* the travelling light: an Amber 2 run seg px long whose head goes from the path's start to its end in dur (ease none).
+     out = true lets the run pass off the end and hides it; out = false stops with the head on the end. No callback: any seek finds it. */
+  function crawl(id, seg, at, dur, out) {
+    const e = el(id), len = e.getTotalLength(), head = dur / (len + (out ? seg : 0));   /* seconds per px */
+    s0(e, { autoAlpha: 0, strokeDasharray: seg + " " + (len + seg + 10), strokeDashoffset: seg });
+    tl.set(e, { autoAlpha: 1 }, at);
+    tl.to(e, { strokeDashoffset: seg - len - (out ? seg : 0), duration: dur, ease: "none" }, at);
+    if (out) tl.set(e, { autoAlpha: 0 }, at + dur);
+    return at + head * len;                                 /* the second the head reaches the end */
+  }
+  /* clock: clockwise degrees from 12; the hands turn about (62, 62) in the drawing's own units (block of g-a2s06-headstart.html) */
+  const HUB = "62 62";
+  function hourDeg(h, m) { return (h % 12) * 30 + m * 0.5; }
+  function minDeg(m) { return m * 6; }
+  function arc(cx, cy, r, fromDeg, toDeg) {
+    function pt(deg) { const a = deg * Math.PI / 180; return (cx + r * Math.sin(a)).toFixed(2) + " " + (cy - r * Math.cos(a)).toFixed(2); }
+    return "M" + pt(fromDeg) + " A" + r + " " + r + " 0 " + (toDeg - fromDeg > 180 ? 1 : 0) + " 1 " + pt(toDeg);
+  }
+
+  /* ---- states at build and at timeline 0 ---- */
+  const CUT_FILM = 6.14, CUT_LIST = 11.85, BACK = 13.98, ARRIVE = 20.34;
+  s0([P+"frame", P+"flabel", P+"scope", P+"glow", P+"k0", P+"scopelab", P+"s3edge", P+"world", P+"clock", P+"arc", P+"ten"], { autoAlpha: 0 });
+  s0(P+"src", { autoAlpha: 0, y: 12 });
+  s0(P+"ten", { y: 16 });
+  s0(P+"sweep", { rotation: 0, svgOrigin: "100 100" });
+  s0(P+"hour", { rotation: hourDeg(5, 43), svgOrigin: HUB });      /* 171.5 */
+  s0(P+"min", { rotation: minDeg(43), svgOrigin: HUB });           /* 258 */
+  /* list camera: Close puts the sheet at x 250 to 1466, y 30 to 974; SMALL lays it on station 3 (sheet 260 px wide, centred on (670, 500)) */
+  const CLOSE = { scale: 1.6, x: 147.6, y: -66 }, SMALL = { scale: 260 / 760 };
+  SMALL.x = 670 - 444 * SMALL.scale; SMALL.y = 500 - 355 * SMALL.scale;
+  s0(P+"world", { scale: CLOSE.scale, x: CLOSE.x, y: CLOSE.y, transformOrigin: "0 0" });
+  s0(".chain3-band", { xPercent: -100 });
+  el("arc").setAttribute("d", arc(985.2, 249.2, 113, minDeg(43), minDeg(53)));   /* 258 to 318: ten minutes of the minute ring */
+  const arcLen = Math.ceil(el("arc").getTotalLength()) + 1;
+  s0(P+"arc", { strokeDasharray: arcLen, strokeDashoffset: arcLen });
+
+  /* SO @0.00: the chain at rest. Stations 1 to 3 Body light, 4 and 5 dark, five labels, all links. No scope. */
+  /* OFFICE @0.42: station 2's lines turn Amber 2 and stay */
+  stroke(P+"s2", "#e8c56a", 0.42, 0.3);
+  /* LIST @1.88: an amber run crosses the link to the list; the list's edge is amber for 0.6 s in all, then back */
+  crawl("r2", 30, 1.88, 0.25, true);
+  tl.to(P+"s3edge", { autoAlpha: 1, duration: 0.1, ease: "none" }, 1.98);
+  tl.to(P+"s3edge", { autoAlpha: 0, duration: 0.15, ease: "none" }, 2.33);
+  /* FAR @3.12: the scope draws on, then its link down to station 2, then its label */
+  tl.set(P+"scope", { autoAlpha: 1 }, 3.12);
+  document.querySelectorAll(".chain3-sd").forEach(function (e, i) { draw(e, 3.12 + i * 0.05, 0.45); });
+  tl.to(P+"glow", { autoAlpha: 1, duration: 0.3, ease: "none" }, 3.42);
+  tl.set(P+"k0", { autoAlpha: 1 }, 3.62);
+  draw(el("k0"), 3.62, 0.3);
+  tl.to(P+"scopelab", { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 3.82);
+  /* TELEPHONE @4.54: the sweep turns once; an amber run goes down the scope link into station 2 */
+  tl.to(P+"sweep", { rotation: 360, duration: 1.2, ease: "none" }, 4.54);
+  crawl("r0", 30, 4.54, 0.4, true);
+
+  /* FROM @6.14: hard cut to the film view. The chain is hidden; station 2 goes back to Body light behind the cut. */
+  tl.set([P+"view", P+"cover"], { autoAlpha: 0 }, CUT_FILM);
+  tl.set([P+"frame", P+"flabel"], { autoAlpha: 1 }, CUT_FILM);
+  tl.set(P+"s2", { attr: { stroke: "#dfe7ee" } }, CUT_FILM);
+  /* OFFICE @11.85: hard cut. The window is covered for good; the list sheet is on in the Close state. */
+  tl.set(P+"cover", { autoAlpha: 1 }, CUT_LIST);
+  tl.set([P+"frame", P+"flabel"], { autoAlpha: 0 }, CUT_LIST);
+  tl.set(P+"world", { autoAlpha: 1 }, CUT_LIST);
+  /* OFFICE. @12.59: the pulse band wipes across rows 1 to 8 in turn and leaves nothing: office after office, not a call order */
+  document.querySelectorAll(".chain3-band").forEach(function (e, i) { tl.to(e, { xPercent: 100, duration: 0.3, ease: "none" }, 12.59 + i * 0.12); });
+
+  /* BETWEEN @13.98: the sheet shrinks onto station 3 (scale on the log curve, x and y linear in scale) while the chain and the
+     scope fade back; the clock is on at 5:43; source line in */
+  const io = gsap.parseEase("power2.inOut"), R = SMALL.scale / CLOSE.scale;
+  tl.to(P+"world", { scale: SMALL.scale, x: SMALL.x, y: SMALL.y, duration: 0.7, ease: function (p) { return (Math.pow(R, io(p)) - 1) / (R - 1); } }, BACK);
+  tl.to(P+"world", { autoAlpha: 0, duration: 0.25, ease: "none" }, BACK + 0.45);
+  tl.to([P+"view", P+"clock"], { autoAlpha: 1, duration: 0.3, ease: "none" }, BACK);
+  tl.to(P+"src", { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, BACK);
+  /* WARNING @14.62: station 2 and the list's edge turn Amber 2 and stay */
+  stroke(P+"s2", "#e8c56a", 14.62, 0.3);
+  tl.to(P+"s3edge", { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 14.62);
+  /* ISSUED @15.28: the light leaves the list and crawls the dotted link; its head is on the microphone at 20.34 */
+  crawl("r3", 60, 15.28, ARRIVE - 15.28, false);
+  /* DELAY @18.70: the arc grows 258 to 318 with the minute hand; the hour hand turns 171.5 to 176.5; all done at 20.34 */
+  tl.set(P+"arc", { autoAlpha: 1 }, 18.70);
+  tl.to(P+"arc", { strokeDashoffset: 0, duration: ARRIVE - 18.70, ease: "none" }, 18.70);
+  tl.to(P+"min", { rotation: minDeg(53), duration: ARRIVE - 18.70, ease: "none" }, 18.70);
+  tl.to(P+"hour", { rotation: hourDeg(5, 53), duration: ARRIVE - 18.70, ease: "none" }, 18.70);
+  /* AT @19.50: the chip lands */
+  tl.to(P+"ten", { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 19.50);
+  /* MINUTES @20.34: arc complete, the light is on the microphone: its lines go Body light, its lamp Popfig red. The house stays dark. */
+  tl.to(P+"r3", { autoAlpha: 0, duration: 0.2, ease: "none" }, ARRIVE);
+  stroke(P+"s4", "#dfe7ee", ARRIVE, 0.2);
+  tl.to(P+"s4lamp", { attr: { fill: "#d0121f" }, duration: 0.2, ease: "power2.out" }, ARRIVE);
+  tl.to({}, { duration: 0.01 }, 21.91);
+  window.__timelines["g-a2s03-chain"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
