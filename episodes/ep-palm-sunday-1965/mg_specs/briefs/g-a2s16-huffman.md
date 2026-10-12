@@ -1,4 +1,4 @@
-Host: id=g-a2s16-huffman file=compositions/g-a2s16-huffman.html start=415.62 (timeline-map.md table 1; the mount in index.html wins) duration=15.43 s (wav 15.04 s plus its gaps) track=2
+Host: id=g-a2s16-huffman file=compositions/g-a2s16-huffman.html start=415.87 (timeline-map.md table 1; the mount in index.html wins) duration=15.43 s (wav 15.04 s plus its gaps) track=2
 
 # g-a2s16-huffman · A2-S16 · a photographer in Elkhart is told where to look (wave 2, map family)
 
