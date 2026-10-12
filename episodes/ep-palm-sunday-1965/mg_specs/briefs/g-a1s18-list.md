@@ -1,4 +1,4 @@
-Host: id=g-a1s18-list file=compositions/g-a1s18-list.html start=277.23 (timeline-map.md table 1; the mount in index.html wins) duration=11.68 s (wavs 11.49 s plus their gaps) track=2
+Host: id=g-a1s18-list file=compositions/g-a1s18-list.html start=277.48 (timeline-map.md table 1; the mount in index.html wins) duration=11.68 s (wavs 11.49 s plus their gaps) track=2
 
 # g-a1s18-list · A1-S18, A1-S19 · 5:43 PM, one message, one telephone list (wave 2, list family)
 
