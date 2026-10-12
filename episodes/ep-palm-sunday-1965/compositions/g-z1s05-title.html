@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-z1s05-title (Z1-S5): the channel's closing footnote, two lines at a time, quiet on the channel ground; on "Warning" the
+     channel's name lands under them and holds while the picture dies to black. The outro: no recap, no episode fact.
+     Brief: mg_specs/briefs/g-z1s05-title.md.
+     Hand-copied and retuned from library/inhouse/outro-brand.html: the .twh wordmark (Arial Black 900, 120 px, tracking 6, the
+       word WARNING in the card's own amber #d8a13a) and its 0.45 s settle from 1.14 to 1. Not copied: its episode line, its tag
+       line, its flat ground, its #root id, its fromTo calls and its times.
+     From episodes/ep6-katrina-2005/compositions/g-close.html: the two-line Georgia italic block (52 and 36 px) and the slow breathing.
+     Every line on screen is the spoken line, word for word. Pair 1 and pair 2 share the same two boxes.
+     Plan rule 22, by the lead's ruling for this card: the two lines sit centred in the frame (170 px lower) until the wordmark
+       needs the room; they rise to their briefed place as they dim on "This" (9.75), so the wordmark lands at 10.53 in clear ground.
+     The comp stays opaque to its last frame: a black cover fades in over it from 14.03; the root is never faded.
+     Cues: audio/z1-s5.words.json seconds minus 0.31 (mg_specs/timeline-map.md table 5). No audio in this file. -->
+<template>
+<style>
+  #ttl-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .ttl-h { opacity:0; visibility:hidden; }
+  .ttl-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ttl-lines { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ttl-pair { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ttl-a { position:absolute; left:0; top:300px; width:1920px; text-align:center; font:italic 52px Georgia, 'Times New Roman', serif; line-height:70px; color:#f2f5f8; white-space:nowrap; }
+  .ttl-b { position:absolute; left:0; top:392px; width:1920px; text-align:center; font:italic 36px Georgia, 'Times New Roman', serif; line-height:48px; color:#d8a13a; white-space:nowrap; }
+  .ttl-twh { position:absolute; left:0; top:548px; width:1920px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:120px; line-height:144px;
+    color:#f2f5f8; letter-spacing:6px; white-space:nowrap; }
+  .ttl-twh span { color:#d8a13a; }
+  .ttl-black { position:absolute; left:0; top:0; width:1920px; height:1080px; background:#000; opacity:0; }
+</style>
+<div id="ttl-root" data-composition-id="g-z1s05-title" data-width="1920" data-height="1080" data-duration="15.23">
+  <div class="ttl-stage" id="ttl-stage">
+    <div class="ttl-lines" id="ttl-lines">
+      <div class="ttl-pair" id="ttl-p1">
+        <div class="ttl-a">Disasters don&rsquo;t ask permission.</div>
+        <div class="ttl-b ttl-h" id="ttl-b1">But they do send warnings.</div>
+      </div>
+      <div class="ttl-pair" id="ttl-p2">
+        <div class="ttl-a ttl-h" id="ttl-a2">Learn how yours will reach you,</div>
+        <div class="ttl-b ttl-h" id="ttl-b2">so when it comes, you already know what to do.</div>
+      </div>
+    </div>
+    <div class="ttl-twh ttl-h" id="ttl-twh">THE <span>WARNING</span> HOUR</div>
+  </div>
+  <div class="ttl-black" id="ttl-black"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-z1s05-title", P = "ttl", D = 15.23;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function rise(e, t) { tl.to(e, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power2.out" }, t); }
+
+  /* start states: hidden in CSS (ttl-h), transforms set here at 0; every move from rest below is a plain to() */
+  s0($("stage"), { scale: 1, transformOrigin: "50% 50%" });
+  s0($("lines"), { y: 170 });                               /* the two lines centred in the frame until the wordmark needs the room (plan rule 22) */
+  s0($("b1"), { y: 14 });
+  s0($("a2"), { y: 16 });
+  s0($("b2"), { y: 14 });
+  s0($("twh"), { scale: 1.14, transformOrigin: "50% 50%" });
+
+  /* 0 · "Disasters" @0.00: ground and pair 1's first line, already on. The card does not sit: the stage breathes to the last frame */
+  tl.to($("stage"), { scale: 1.025, duration: D, ease: "none" }, 0);
+
+  /* 1 · "but" @2.27: pair 1's second line rises */
+  rise($("b1"), 2.27);
+
+  /* 2 · "Learn" @4.71: pair 1 fades out; pair 2's first line rises from 4.86 in the same box */
+  tl.to($("p1"), { autoAlpha: 0, duration: 0.25, ease: "power1.in" }, 4.71);
+  rise($("a2"), 4.86);
+
+  /* 3 · "so" @6.31: pair 2's second line rises */
+  rise($("b2"), 6.31);
+
+  /* 4 · "This" @9.75: pair 2 dims and stays on screen; the lines rise to their briefed place, clear of the wordmark's ground */
+  tl.to($("p2"), { opacity: 0.45, duration: 0.3, ease: "power1.out" }, 9.75);
+  tl.to($("lines"), { y: 0, duration: 0.5, ease: "power2.inOut" }, 9.75);
+
+  /* 5 · "Warning" @10.53: the wordmark lands, a 0.45 s settle from 1.14 to 1 */
+  tl.to($("twh"), { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 10.53);
+
+  /* last sound 11.23; the wordmark holds; from 14.03 the black cover fades in, so the last frame is black */
+  tl.to($("black"), { opacity: 1, duration: 1.2, ease: "power2.in" }, D - 1.2);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
