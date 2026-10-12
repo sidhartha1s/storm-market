@@ -52,7 +52,7 @@ The tornado mark's place is schematic: 7 map units west and 7 north of `pt-nappa
 
 ## 5. Text (exact) and cues
 Text: `Elkhart` · `Paul Huffman` · `photographer, The Elkhart Truth` · `as told by the National Weather Service` · `Weather Bureau · South Bend` · `Nappanee`.
-Cue words and times are from `audio/a2-s16.words.json` as it stood on 12 Oct 26 (wav 15.04 s). One segment, so the two time columns are equal; a lead-in gap from `mg_specs/timeline-map.md`, if any, is added to every row. Retime from the word, never from the seconds. The transcriber writes "Oakhart" for Elkhart and "Napani" for Nappanee; the labels use the true spellings.
+Cue words and times are from `audio/a2-s16.words.json` as it stood on 12 Oct 26 at 17:50 (wav 15.04 s). This file was still the 16:34 transcription then: the voice conversion's re-transcription had not reached it, so check every row's word and time against the new file first. One segment, so the two time columns are equal; a lead-in gap from `mg_specs/timeline-map.md`, if any, is added to every row. Retime from the word, never from the seconds. The transcriber writes "Oakhart" for Elkhart and "Napani" for Nappanee; the labels use the true spellings.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A2-S16 | 0 | In | 0.00 | 0.00 | first frame: ground and the map in NORTH, no dot, no label |
