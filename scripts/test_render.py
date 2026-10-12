@@ -398,7 +398,7 @@ if HAVE_FFMPEG:
         check("render-11 NEW: the same 15 fps file checked as a final still fails the fps check",
               r.returncode != 0 and "FAIL: fps 15 != full 25fps" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
         r = run_verify(ep, "pal-24", "draft")
-        check("render-10 NEW: a draft at another rate than render.cmd's draft rate fails",
+        check("render-11 NEW: a draft at another rate than render.cmd's draft rate fails",
               r.returncode != 0 and "FAIL: fps 24 != draft 15fps" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
         r = run_verify(ep, "pal-preview-v1", "mastered")
         check("render-10 NEW: an unknown mode is a usage error, not a guess",
