@@ -62,7 +62,7 @@ Fixed layer:
 1. Amber reaches two things and no more: the civil defense desk (A4-S3) and the police desk (A4-S4, only when the light has crossed the arc). The microphone's lamp and lines, the house's lines and windows and both dotted links are never amber in any frame.
 2. The ghost is Label grey from its first frame to its last and starts at the police desk. It never touches the civil defense desk or the arc.
 3. `County B` is the only county label and its chip carries those two words alone. No `County A`, no real county, town or river name, no state outline. The map carries two labels, `the sheriff` and `civil defense`, and nothing else.
-4. The map and the chain are two different counties: the tornado mark, the river and the two marks stay west of x 700, the waiting chain stays east of x 836, and the chip sits over the chain, never over the map.
+4. The map and the chain are two different counties: the tornado mark, the river, the two marks and their labels stay west of x 800, the waiting chain stays east of x 836, and the chip sits over the chain, never over the map.
 5. The tornado mark comes from the left edge and moves east. It is Body light, never red, and it never reaches the river.
 6. The civil defense desk has no telephone; the police desk has one, handset on the cradle. Nobody is drawn: the two marks on the map are plain circles.
 7. The stamp reads `about` and `7:30 PM` together, hands at 225.0 and 180 degrees, and names no place.
