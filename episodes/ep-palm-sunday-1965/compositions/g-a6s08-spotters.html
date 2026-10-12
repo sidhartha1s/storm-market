@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a6s08-spotters · A6-S8 · window 12.71 s · brief: mg_specs/briefs/g-a6s08-spotters.md
+  Claim: the survey team recommended stronger severe storm reporting networks in local communities; the National Weather
+  Service says that push eventually resulted in the spotter program called SKYWARN. The first is a recommendation, the second
+  is the Weather Service's own account. No year is on screen and no town is named.
+  SCHEMATIC, NOT TO SCALE. Chain line y 520. Every box is compositions/g-a5s12-spotters.html's; the five marks stand in the
+  slots that comp left empty (centres x 470, 610, 750, 890, 1030). The spotter mark is ours and is not a person: a ring, a dot,
+  a mast with a crossbar. The marks light; nothing travels along the line, which stays dotted and Label grey.
+  Cues are comp-local seconds (audio/a6-s8.words.json minus 0.29).
+  Coverage (plan rule 22): not met as drawn (the brief says so); the row carries a slow push, 1.00 to 1.03, for the whole window.
+-->
+<template>
+<style>
+  #spo-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  /* the faint band that carries the holds: starts off the left edge, drifts right for the whole window */
+  #spo-sweep { position:absolute; left:-560px; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
+  /* the row grows from its left end on the chain line, so the left margin and the lower right corner stay as they are */
+  #spo-row { position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:96px 520px; }
+  #spo-svg { position:absolute; left:0; top:0; }
+  .spo-lab { position:absolute; top:676px; font-size:22px; line-height:28px; font-weight:700; color:#93a3b2; white-space:nowrap; }
+  #spo-strip { position:absolute; left:96px; top:780px; width:1000px; height:124px; background:#f4f0e6;
+    box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  #spo-quote { position:absolute; left:40px; top:16px; font-family:Georgia, 'Times New Roman', serif; font-size:44px; line-height:52px;
+    color:#2a2622; white-space:nowrap; }
+  #spo-att { position:absolute; left:40px; top:82px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:2px;
+    color:#6b6257; white-space:nowrap; }
+  /* glass plate, the clock stamp's values */
+  #spo-card { position:absolute; left:660px; top:220px; width:600px; height:190px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  #spo-eye { position:absolute; left:40px; top:24px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  #spo-word { position:absolute; left:40px; top:62px; font:900 84px 'Arial Black', Arial, sans-serif; color:#f2f5f8; letter-spacing:0.06em; white-space:nowrap; line-height:1; }
+  #spo-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em;
+    white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  /* hidden in CSS as well as at timeline 0, so the host's very first frame is the empty line between the office and the town */
+  #spo-m1, #spo-m2, #spo-m3, #spo-m4, #spo-m5, #spo-strip, #spo-card, #spo-word, #spo-src { opacity:0; visibility:hidden; }
+</style>
+<div id="spo-root" data-composition-id="g-a6s08-spotters" data-width="1920" data-height="1080" data-duration="12.71">
+  <div id="spo-sweep"></div>
+
+  <div id="spo-row">
+  <svg id="spo-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <!-- the long link, desk to town telephone: dotted, Label grey, in every frame. The short link is the town's own telephone line. -->
+    <path d="M351 520 H1166" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round" stroke-dasharray="0.1 14"/>
+    <path d="M1400 520 H1274" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- the warning office's desk (media/drawings/desk.svg whole, handset ON the cradle): box x 96 to 351, y 490 to 618 -->
+    <g transform="translate(96 490) scale(0.85)" fill="none" stroke="#dfe7ee" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="14" y="52" width="12" height="98"/>
+      <rect x="274" y="52" width="12" height="98"/>
+      <rect x="190" y="62" width="74" height="38"/>
+      <path d="M219 81 H235"/>
+      <rect x="0" y="40" width="300" height="12" fill="#15202b"/>
+      <g transform="translate(106 -4)" stroke-width="3.5">
+        <rect x="24" y="-6" width="8" height="14" fill="#15202b"/>
+        <rect x="58" y="-6" width="8" height="14" fill="#15202b"/>
+        <path d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+        <circle cx="45" cy="27" r="15"/>
+        <circle cx="45" cy="27" r="3"/>
+        <circle cx="43.2" cy="37" r="0.8"/><circle cx="37.2" cy="33.6" r="0.8"/><circle cx="34.8" cy="27" r="0.8"/><circle cx="37.2" cy="20.4" r="0.8"/>
+        <circle cx="43.2" cy="17" r="0.8"/><circle cx="50.1" cy="18.2" r="0.8"/><circle cx="54.6" cy="23.5" r="0.8"/>
+        <path fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+      </g>
+    </g>
+
+    <!-- the town's telephone (media/drawings/telephone.svg, handset ON the cradle): body x 1166 to 1274, base y 590 -->
+    <g transform="translate(1166 537.2) scale(1.2)" fill="none" stroke="#dfe7ee" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="24" y="-6" width="8" height="14" fill="#15202b"/>
+      <rect x="58" y="-6" width="8" height="14" fill="#15202b"/>
+      <path d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+      <circle cx="45" cy="27" r="15"/>
+      <circle cx="45" cy="27" r="3"/>
+      <circle cx="43.2" cy="37" r="0.8"/><circle cx="37.2" cy="33.6" r="0.8"/><circle cx="34.8" cy="27" r="0.8"/><circle cx="37.2" cy="20.4" r="0.8"/>
+      <circle cx="43.2" cy="17" r="0.8"/><circle cx="50.1" cy="18.2" r="0.8"/><circle cx="54.6" cy="23.5" r="0.8"/>
+      <path fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+    </g>
+
+    <!-- the town's house (media/drawings/house.svg): box x 1400 to 1577, y 430 to 600, aerial to y 407 -->
+    <g transform="translate(1400 430) scale(0.68)" fill="none" stroke="#dfe7ee" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M186 37.3 V22 H208 V50"/>
+      <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+      <rect x="20" y="80" width="220" height="170" fill="#15202b"/>
+      <rect x="112" y="170" width="36" height="80"/>
+      <rect x="44" y="120" width="48" height="48" fill="#15202b"/>
+      <rect x="168" y="120" width="48" height="48" fill="#15202b"/>
+      <path d="M68 120 V168 M44 144 H92"/>
+      <path d="M192 120 V168 M168 144 H216"/>
+      <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+    </g>
+
+    <!-- the five spotter marks, slots 1 to 5 from the office end: ring r 14 on the slot centre (its Panel dark body covers the dotted
+         link), centre dot r 4, a 16 px mast to y 490 with a 12 px crossbar 4 px under its tip -->
+    <g id="spo-m1"><g class="spo-ln" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round"><circle class="spo-ring" cx="470" cy="520" r="14" fill="#15202b" stroke="#dfe7ee"/><path d="M470 506 V490 M464 494 H476"/></g><circle class="spo-dot" cx="470" cy="520" r="4" fill="#dfe7ee"/></g>
+    <g id="spo-m2"><g class="spo-ln" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round"><circle class="spo-ring" cx="610" cy="520" r="14" fill="#15202b" stroke="#dfe7ee"/><path d="M610 506 V490 M604 494 H616"/></g><circle class="spo-dot" cx="610" cy="520" r="4" fill="#dfe7ee"/></g>
+    <g id="spo-m3"><g class="spo-ln" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round"><circle class="spo-ring" cx="750" cy="520" r="14" fill="#15202b" stroke="#dfe7ee"/><path d="M750 506 V490 M744 494 H756"/></g><circle class="spo-dot" cx="750" cy="520" r="4" fill="#dfe7ee"/></g>
+    <g id="spo-m4"><g class="spo-ln" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round"><circle class="spo-ring" cx="890" cy="520" r="14" fill="#15202b" stroke="#dfe7ee"/><path d="M890 506 V490 M884 494 H896"/></g><circle class="spo-dot" cx="890" cy="520" r="4" fill="#dfe7ee"/></g>
+    <g id="spo-m5"><g class="spo-ln" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round"><circle class="spo-ring" cx="1030" cy="520" r="14" fill="#15202b" stroke="#dfe7ee"/><path d="M1030 506 V490 M1024 494 H1036"/></g><circle class="spo-dot" cx="1030" cy="520" r="4" fill="#dfe7ee"/></g>
+  </svg>
+  <div class="spo-lab" style="left:96px">the warning office</div>
+  <div class="spo-lab" style="left:1388px; width:200px; text-align:center">a town</div>
+  </div>
+
+  <!-- the survey's recommendation, retyped on a paper strip -->
+  <div id="spo-strip">
+    <div id="spo-quote">&ldquo;severe storm warning reporting networks&rdquo;</div>
+    <div id="spo-att">Weather Bureau survey report, 1965, p. 2, recommendation 3</div>
+  </div>
+
+  <!-- the Weather Service's own account, on glass -->
+  <div id="spo-card">
+    <div id="spo-eye">THE SPOTTER PROGRAM</div>
+    <div id="spo-word">SKYWARN</div>
+  </div>
+  <div id="spo-src">National Weather Service, Chicago</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#spo-", D = 12.71, WHITE = "#f2f5f8", AMBER = "#e8c56a", PANEL = "#15202b";
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  const marks = [1, 2, 3, 4, 5].map(function (n) { return document.getElementById("spo-m" + n); });
+  const part = function (m, c) { return m.querySelector(".spo-" + c); };
+
+  /* IT @0.00: the desk, the long empty link, the telephone, the house, both labels */
+  s0(marks, { autoAlpha: 0 });
+  s0(P+"strip", { autoAlpha: 0, y: 60 });
+  s0(P+"card", { autoAlpha: 0, y: 40 });
+  s0([P+"word", P+"src"], { autoAlpha: 0 });
+  tl.to(P+"sweep", { x: 2860, duration: D / 2, ease: "none", repeat: 1 }, 0);
+  tl.to(P+"row", { scale: 1.03, duration: D, ease: "none" }, 0);          /* the slow push the brief orders for the row */
+
+  /* REPORTING @1.21: mark 1 draws on and lights; marks 2 to 5 follow 0.33 s apart, the last on "communities" */
+  marks.forEach(function (m, i) {
+    const at = 1.21 + i * 0.33;
+    m.querySelectorAll(".spo-ln circle, .spo-ln path").forEach(function (e) {
+      const len = Math.ceil(e.getTotalLength()) + 1;
+      s0(e, { strokeDasharray: len, strokeDashoffset: len });
+      tl.to(e, { strokeDashoffset: 0, duration: 0.25, ease: "power2.out" }, at);
+    });
+    tl.to(m, { autoAlpha: 1, duration: 0.1, ease: "none" }, at);
+    tl.to([part(m, "ln"), part(m, "ring")], { attr: { stroke: WHITE }, duration: 0.25, ease: "power2.out" }, at);
+    tl.to(part(m, "dot"), { attr: { fill: AMBER }, duration: 0.25, ease: "power2.out" }, at);
+  });
+  /* BECAUSE @3.05: the paper strip rises */
+  tl.to(P+"strip", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.05);
+  /* UNREPORTED @4.61: the five centre dots step to Panel dark and back, one after another, 0.1 s apart */
+  marks.forEach(function (m, i) {
+    tl.set(part(m, "dot"), { attr: { fill: PANEL } }, 4.61 + i * 0.1);
+    tl.set(part(m, "dot"), { attr: { fill: AMBER } }, 4.71 + i * 0.1);
+  });
+  /* THE @6.65: the paper strip leaves; the source line comes in */
+  tl.to(P+"strip", { autoAlpha: 0, y: 60, duration: 0.3, ease: "power2.in" }, 6.65);
+  tl.to(P+"src", { autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 6.65);
+  /* PUSH @7.93: the five rings step to Amber 2 and back to Headline white, town end first, 0.1 s apart */
+  marks.slice().reverse().forEach(function (m, i) {
+    tl.set(part(m, "ring"), { attr: { stroke: AMBER } }, 7.93 + i * 0.1);
+    tl.set(part(m, "ring"), { attr: { stroke: WHITE } }, 8.03 + i * 0.1);
+  });
+  /* TO @9.87: the glass card rises with its eyebrow. SKYWARN @11.05: the word */
+  tl.to(P+"card", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 9.87);
+  tl.to(P+"word", { autoAlpha: 1, duration: 0.25, ease: "power2.out" }, 11.05);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-a6s08-spotters"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
