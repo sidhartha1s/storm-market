@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5s09-alto (A5-S9): the tornado over Alto, then Alto from the air after it, and the count.
+     Brief: mg_specs/briefs/g-a5s09-alto.md. Photograph family: layers, cut, place chip and toll card of g-a2s17-funnels.
+     Photograph 1: media/stills/c6-alto-tornado-cover.jpg, 1414 x 1080, Kokomo Morning Times special edition, 16 April 1965, cover.
+       Cover 1.3579 (1920 x 1466.5), object-position 50% 100%: file rows 284.7 to 1080 in frame. The funnel's bright shoulder starts
+       at file row 374 and the lit signs sit on rows 828 to 987, so the funnel and the ground are whole and the caption lies on
+       the dark ground under the signs.
+     Photograph 2: media/stills/c5-alto-aerial-damage.jpg, 1543 x 1080, Alto after the tornado. Cover 1.2443 (1920 x 1343.9),
+       object-position 50% 65%: file rows 137.9 to 1005.9 in frame (the empty field at the top gives way to the streets).
+     Toll card: the brief's label lines at 30 px are wider than its 560 px card (the widest would end past x 1600), so the card
+       keeps its right edge (1570), top and height and grows to the left: left 810, 760 wide. Figure, labels and source keep
+       their offsets inside it. The script says "storm", not "tornado": the label does too.
+     Cues: audio/a5-s9.words.json seconds minus 0.49 (mg_specs/timeline-map.md table 5). The cut is on "on" (2.33) by the lead's ruling. -->
+<template>
+<style>
+  #alto-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .alto-h { opacity:0; visibility:hidden; }
+  .alto-layer { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .alto-ph { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; }
+  .alto-ph-a { object-position:50% 100%; }
+  .alto-ph-b { object-position:50% 65%; }
+  .alto-cap { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+
+  /* ---- the place chip (glass, one line, names what the photograph shows) ---- */
+  .alto-chip { position:absolute; left:110px; bottom:110px; padding:14px 26px; font:900 34px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:1;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+
+  /* ---- a toll on a glass card (figure, three-line label, source) ---- */
+  .alto-toll { position:absolute; left:810px; top:792px; width:760px; height:200px; }
+  .alto-toll-card { position:absolute; inset:0; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .alto-toll-num { position:absolute; left:30px; top:40px; font:120px 'AbrilFig', Georgia, serif; color:#d0121f; letter-spacing:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  .alto-toll-lab { position:absolute; left:214px; font:900 30px 'Arial Black', Arial, sans-serif; color:#f2f5f8; letter-spacing:0.12em; white-space:nowrap; line-height:1;
+    -webkit-text-stroke:1px rgba(0,0,0,0.85); paint-order:stroke fill; text-shadow:0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+  .alto-toll-src { position:absolute; left:214px; top:148px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="alto-root" data-composition-id="g-a5s09-alto" data-width="1920" data-height="1080">
+
+  <!-- LAYER A: the tornado over Alto, with its own caption -->
+  <div class="alto-layer" id="alto-a">
+    <img class="alto-ph alto-ph-a" id="alto-ph-a" src="media/stills/c6-alto-tornado-cover.jpg" alt="">
+    <div class="alto-cap">Tornado over Alto, toward Kokomo &middot; Kokomo Morning Times, April 16, 1965</div>
+  </div>
+
+  <!-- LAYER B: Alto from the air after it, with its place chip and the count -->
+  <div class="alto-layer alto-h" id="alto-b">
+    <img class="alto-ph alto-ph-b" id="alto-ph-b" src="media/stills/c5-alto-aerial-damage.jpg" alt="">
+    <div class="alto-chip">Alto, Indiana</div>
+    <div class="alto-toll alto-h" id="alto-toll">
+      <div class="alto-toll-card"></div>
+      <div class="alto-toll-num">25</div>
+      <div class="alto-toll-lab" style="top:22px">lives lost</div>
+      <div class="alto-toll-lab" style="top:60px">along this storm's path</div>
+      <div class="alto-toll-lab alto-h" id="alto-toll-l3" style="top:98px">from Russiaville to Marion</div>
+      <div class="alto-toll-src">National Weather Service</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a5s09-alto", P = "alto", D = 5.99, CUT = 2.33;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+
+  /* start states: hidden in CSS (alto-h), transforms set here at 0; every move from rest below is a plain to() */
+  s0($("ph-a"), { scale: 1, transformOrigin: "960px 540px" });
+  s0($("ph-b"), { scale: 1, transformOrigin: "960px 540px" });
+  s0($("toll"), { y: 40 });
+
+  /* 0 · "The" @0.00: photograph 1 and its caption; a slow push over its own 2.33 s */
+  tl.to($("ph-a"), { scale: 1.03, duration: CUT, ease: "none" }, 0);
+
+  /* 1 · "on" @2.33: hard cut to photograph 2 with its place chip; photograph 1 and its caption off in the same frame; the push restarts */
+  tl.set($("a"), { autoAlpha: 0 }, CUT);
+  tl.set($("b"), { autoAlpha: 1 }, CUT);
+  tl.to($("ph-b"), { scale: 1.03, duration: D - CUT, ease: "none" }, CUT);
+
+  /* 2 · "storm's" @2.69: the toll card rises with the figure, two label lines and the source */
+  tl.to($("toll"), { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 2.69);
+
+  /* 3 · "from" @3.43: the third label line. Hold to the cut */
+  tl.to($("toll-l3"), { autoAlpha: 1, duration: 0.25, ease: "power1.out" }, 3.43);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
