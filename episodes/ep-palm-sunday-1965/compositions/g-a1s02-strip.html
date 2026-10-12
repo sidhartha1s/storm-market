@@ -31,7 +31,8 @@
   .strip-h { opacity:0; visibility:hidden; }
 
   /* ---- map block: the SVG fills the frame; the camera is its viewBox, the visible box is its clip-path ---- */
-  .strip-map { position:absolute; left:0; top:0; width:1920px; height:1080px; clip-path:inset(62px 341px 400px 96px); }
+  /* the box opens tall (bottom edge y 1026) so the lower third is map, not ground, until the quote card needs the room (plan rule 22) */
+  .strip-map { position:absolute; left:0; top:0; width:1920px; height:1080px; clip-path:inset(62px 341px 54px 96px); }
   .strip-at { position:absolute; width:0; height:0; display:flex; align-items:center; justify-content:center; }
   .strip-st { flex:none; font:700 22px Arial, sans-serif; color:#93a3b2; letter-spacing:2px; white-space:nowrap; line-height:1; }
   .strip-co { flex:none; font:700 22px Arial, sans-serif; color:#f2f5f8; letter-spacing:2px; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
