@@ -83,8 +83,8 @@ window.__timelines = window.__timelines || {};
   s0(pulse, { scaleX: 0, transformOrigin: "left center" });
   s0($("strike"), { scaleX: 0, transformOrigin: "left center" });
 
-  /* 0 · "Radio," @0.00: the microphone, drawn already, lamp at rest, centred, on a slow push */
-  tl.to(mic, { scale: BIG * PUSH, duration: 2.39, ease: "none", force3D: false }, 0);
+  /* 0 · "Radio," @0.00: the microphone, drawn already, lamp at rest, centred, on a slow push until strip 1's cue */
+  tl.to(mic, { scale: BIG * PUSH, duration: 3.97, ease: "none", force3D: false }, 0);
 
   /* 1 · TV, @0.77: the lamp turns Popfig red: on the air */
   tl.to($("lamp"), { fill: "#d0121f", duration: 0.2, ease: "power2.out" }, 0.77);
