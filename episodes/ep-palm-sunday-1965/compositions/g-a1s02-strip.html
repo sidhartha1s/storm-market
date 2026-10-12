@@ -321,8 +321,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo($("stamp"), { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 10.61);
   tl.to($("mh"), { rotation: 120, duration: 0.5, ease: "power3.out" }, 10.81);
 
-  /* 8 · "its" @12.39: the page slides in from the right; its source fades in once it is nearly home */
-  tl.fromTo($("card"), { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out", immediateRender: false }, 12.39);
+  /* 8 · "its" @12.39: the page rises in from below with a fade (never through the presenter corner); its source fades in once
+         it is nearly home */
+  tl.fromTo($("card"), { autoAlpha: 0, y: 80 }, { autoAlpha: 1, y: 0, duration: 0.7, ease: "power3.out", immediateRender: false }, 12.39);
   tl.fromTo($("src"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, 12.79);
 
   /* 9 · "Three" @13.19: Starke, southern Porter, LaPorte in the entry's order, 0.12 s apart, each with its name */
