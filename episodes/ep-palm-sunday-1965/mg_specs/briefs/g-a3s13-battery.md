@@ -22,7 +22,7 @@ Two rooms, one after the other, never on screen together.
 - **Room 2 (A3-S14)** is the same drawing mirrored left to right about x 828 (one wrapper `<g transform="translate(1656 0) scale(-1 1)">`), without the side table and without the radio, so it reads as another family's room: window at the right, television left of centre.
 - **Evening** is a scrim, not a new drawing. One full-frame Panel dark `<div>` sits above the wall and the floor band and below the furniture SVG. Evening level: opacity 0.62. Lights out: opacity 0.86. The furniture then reads by its own Label grey and Body light lines.
 - The table radio's dial is the one Amber 2 thing in room 1 and it never goes out.
-Camera (the room layer only; the name card, source line and scrim do not ride it): room 1 scale 1.00 to 1.12 about (1380, 646), ease none, from 0.00 to 9.24; room 2 scale 1.00 to 1.06 about (1200, 610), ease none, from 9.24 to 21.23. By script the floor line's right end stays at x 1581.6 in both, left of x 1600.
+Camera (the room layer with its scrim; the name card and source line do not ride it. As built and accepted, ruling of 13 Oct 26, 00:58: the scrim rides the camera): room 1 scale 1.00 to 1.12 about (1380, 646), ease none, from 0.00 to 9.24; room 2 scale 1.00 to 1.06 about (1200, 610), ease none, from 9.24 to 21.23. By script the floor line's right end stays at x 1581.6 in both, left of x 1600.
 
 ## 3. Geometry (screen px, before the camera)
 Both rooms: wall Beige polaroid full frame; floor band `#e8dec8` (as built) from y 820 to 1080; floor line 4 px Panel dark, y 820, x 96 to 1560; the evening scrim above them.
