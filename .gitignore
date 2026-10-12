@@ -42,6 +42,7 @@ ebook/binder/out/
 
 # runtime artifacts (render done-markers, HF studio caches)
 *.marker
+episodes/*/render_*.fps
 episodes/*/.thumbnails/
 episodes/*/.waveform-cache/
 
