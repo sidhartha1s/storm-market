@@ -65,7 +65,7 @@ Cue words and times are from `audio/a6-s1.words.json` as it stood on 12 Oct 26 a
 | 4 | A6-S1 | 15 | first | 5.74 | 5.35 | the page, the dots, the date label and the name card go to opacity 0.18 (0.3 s); the crop card slides in from the right (`x:660` set at 0, then `to x:0`, 0.45 s, power3.out) |
 | 5 | A6-S1 | 17 | reaches | 6.24 | 5.85 | unlit page fades in on the crop (0.3 s); underline A draws (0.35 s) |
 | 6 | A6-S1 | 19 | announcer. | 6.74 | 6.35 | underline B draws (0.35 s). Hold to the last frame (7.92) |
-Step 4's first dot is the one use of Popfig red off the page: it marks which item the crop is. If the lead strikes it, the dot stays Caption dark.
+The ten margin dots are not in the Picture note: they give "ten recommendations" a visible change. If the lead strikes them, step 3 is empty and the page holds on its drift.
 
 ## 6. Contract
 As `references/mg-brief-template.md` section 6, with these: `compositions/g-a6s01-recs.html` is the only file the builder writes; `data-composition-id="g-a6s01-recs"`; id prefix `rec-`; root `<div id="rec-root" ...>` styled through `#rec-root` (plan rule 3 overrides the template's `id="root"`). Full frame, opaque, own ground on from frame 0.
