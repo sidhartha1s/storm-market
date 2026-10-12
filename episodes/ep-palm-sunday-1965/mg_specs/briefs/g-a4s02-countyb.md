@@ -84,7 +84,7 @@ Cue words and times are from `audio/a4-s2.words.json` (34 words), `a4-s3.words.j
 | 6 | A4-S2 | 27 | tornado | 7.84 | 7.44 | the tornado mark comes in from the left edge to box left 250 (1.4 s, power2.out), then drifts to box left 290 (ease none, to 10.06) |
 | 7 | A4-S2 | 33 | west. | 9.24 | 8.84 | the civil defense mark fills Amber 2 (0.3 s): he has heard |
 | 8 | A4-S3 | 0 | He | 0.22 | 10.06 | the map's two labels fade (0.15 s), then the whole map group slides out left with its fade (`x:-1000`, 0.4 s, power3.in; gone by 10.46) |
-| 9 | A4-S3 | 1 | told | 0.32 | 10.16 | the chain grows from 0.5 to 1 about (1577, 380) (0.66 s, power2.inOut, done at 10.82) |
+| 9 | A4-S3 | 1 | told | 0.32 | 10.16 | the chain grows from 0.5 to 1 about the authored point (1577, 380) (0.66 s, power2.inOut, done at 10.82); over the same 0.66 s the chip moves from top 448 to top 250 |
 | 10 | A4-S3 | 4 | civil | 0.98 | 10.82 | the civil defense desk's lines turn Amber 2 (0.3 s) and stay; label `civil defense` fades in |
 | 11 | A4-S3 | 8 | no | 2.48 | 12.32 | police desk: lines to Body light and back to Label grey (0.3 s, yoyo), label `city police` fades in |
 | 12 | A4-S3 | 9 | other | 2.68 | 12.52 | microphone: the same stroke pulse, label `the radio station` |
