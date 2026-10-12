@@ -410,7 +410,7 @@ olds = {}  # each old revision runs only the comps its assertion reads
 for rev, comps in (('f3a6fece', ('g-p1', 'g-p2')), ('fbebe442', ('g-n1', 'g-n4')), ('29dfbdca', ('g-t1', 'g-c1'))):
     ep = _stage_ep(case_files(comps))
     old_gq = old_rev('graphics_qc.mjs', f'_old_gqc_{rev}_tmp.mjs', rev)
-    olds[rev] = by_comp(subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True).stdout)
+    olds[rev] = by_comp(subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True, encoding='utf-8').stdout)
     old_gq.unlink()
     shutil.rmtree(ep, ignore_errors=True)
 assert 'ERROR [undesigned] flat background' in olds['f3a6fece'].get('g-p1', ''), f'old code should flag the canvas comp: {olds}'
