@@ -72,7 +72,7 @@ Cue words and times are from `audio/a2-s1.words.json` and `audio/a2-s2.words.jso
 | 4 | A2-S1 | 15 | Knox | 5.00 | 4.58 | Knox dot and label; echo 2 fades in (0.4 s) |
 | 5 | A2-S1 | 20 | three | 7.06 | 6.64 | LaPorte, Starke, Marshall fill in that order, 0.12 s apart (0.3 s each), each with its name |
 | 6 | A2-S1 | 22 | to | 7.70 | 7.28 | unlit page fades in; underline draws under `should be on the alert` (0.5 s, left to right) |
-| 7 | A2-S2 | 0 | But | 0.00 | 9.07 | card and document source exit right (`x:1900`, 0.5 s, power3.in); stamp exits left (0.5 s); county fills and names, town labels fade (0.3 s) |
+| 7 | A2-S2 | 0 | But | 0.00 | 9.07 | card and document source leave the way they came (`y:0` to 60, opacity 1 to 0; 0.5 s, power3.in; corrected 12 Oct 26: not out to the right, which crossed the presenter corner at 9.35 to 9.52 s); stamp exits left (0.5 s); county fills and names, town labels fade (0.3 s) |
 | 8 | A2-S2 | 1 | South | 0.52 | 9.17 | pull back NORTH to WIDE (0.8 s); the two echoes stay on the map, smaller |
 | 9 | A2-S2 | 5 | radar. | 1.40 | 10.05 | South Bend dot, `South Bend`, then `no radar` 0.15 s later |
 | 10 | A2-S2 | 6 | Its | 2.60 | 11.25 | source line fades in (0.3 s) |
