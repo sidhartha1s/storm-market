@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3s09-jam · A3-S9 · window 10.26 s · brief: mg_specs/briefs/g-a3s09-jam.md
+  Claim: people whose power had failed turned to the telephone for information. So many called at once that the calls did not
+  get through, and the offices that needed to reach each other were stopped by the same overload.
+  SCHEMATIC, NOT TO SCALE: five houses and two desks stand for "many" and "offices"; no number is printed, nothing is named.
+  House i (0 to 4): box x 96 + 220 i, telephone x 134 + 220 i, call line from (161 + 220 i, 636) to (1000 + 30 i, 351).
+  The busy mark is ours: no red, no cross. No light travels a line; a line that has stopped turns Label grey.
+  Cues are comp-local seconds (audio/a3-s9.words.json minus 0.52).
+  Coverage (plan rule 22): everything is authored at the brief's px; the timeline holds the stage 344 px right (houses and
+  mark centred in the frame) until the desks' cue at 6.52, then settles it onto the brief's px.
+-->
+<template>
+<style>
+  #jam-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  /* the faint band that carries the holds: starts off the left edge, drifts right for the whole window */
+  #jam-sweep { position:absolute; left:-560px; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
+  #jam-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #jam-svg { position:absolute; left:0; top:0; }
+  .jam-lab { position:absolute; width:200px; text-align:center; font-size:22px; line-height:28px; font-weight:700; color:#93a3b2; white-space:nowrap; }
+  #jam-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em;
+    white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  /* hidden in CSS as well as at timeline 0, so the host's very first frame is the five lit houses and nothing else */
+  .jam-tel, .jam-line, .jam-dot, #jam-mark, #jam-labm, .jam-desk, #jam-labd1, #jam-labd2, #jam-oline, #jam-odot, #jam-leg, #jam-src { opacity:0; visibility:hidden; }
+</style>
+<div id="jam-root" data-composition-id="g-a3s09-jam" data-width="1920" data-height="1080" data-duration="10.26">
+  <div id="jam-sweep"></div>
+
+  <div id="jam-stage">
+  <svg id="jam-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <!-- media/drawings/house.svg without its windows: the line colour comes from the group that uses it -->
+      <g id="jam-house-def">
+        <path d="M186 37.3 V22 H208 V50"/>
+        <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+        <rect x="20" y="80" width="220" height="170" fill="#15202b"/>
+        <rect x="112" y="170" width="36" height="80"/>
+        <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+      </g>
+      <!-- media/drawings/telephone-lifted.svg: handset raised, the cradle prongs empty -->
+      <g id="jam-tel-def" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="24" y="-6" width="8" height="14" fill="#15202b"/>
+        <rect x="58" y="-6" width="8" height="14" fill="#15202b"/>
+        <path d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+        <circle cx="45" cy="27" r="15"/>
+        <circle cx="45" cy="27" r="3"/>
+        <circle cx="43.2" cy="37" r="0.8"/><circle cx="37.2" cy="33.6" r="0.8"/><circle cx="34.8" cy="27" r="0.8"/><circle cx="37.2" cy="20.4" r="0.8"/>
+        <circle cx="43.2" cy="17" r="0.8"/><circle cx="50.1" cy="18.2" r="0.8"/><circle cx="54.6" cy="23.5" r="0.8"/>
+        <path d="M14 -10 L4 -5 a3.2 3.2 0 0 0 0 6.4 a3.2 3.2 0 0 1 0 6.4 a3.2 3.2 0 0 0 0 6.4 a3.2 3.2 0 0 1 0 6.4 a3.2 3.2 0 0 0 0 6.4 L6.5 28"/>
+        <g transform="translate(2 -26) rotate(-18 45 -5)">
+          <path fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+        </g>
+      </g>
+      <!-- media/drawings/desk.svg whole: telephone on its cradle, nobody at it -->
+      <g id="jam-desk-def" fill="none" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="14" y="52" width="12" height="98"/>
+        <rect x="274" y="52" width="12" height="98"/>
+        <rect x="190" y="62" width="74" height="38"/>
+        <path d="M219 81 H235"/>
+        <rect x="0" y="40" width="300" height="12" fill="#15202b"/>
+        <g transform="translate(106 -4)" stroke-width="3.5">
+          <rect x="24" y="-6" width="8" height="14" fill="#15202b"/>
+          <rect x="58" y="-6" width="8" height="14" fill="#15202b"/>
+          <path d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+          <circle cx="45" cy="27" r="15"/>
+          <circle cx="45" cy="27" r="3"/>
+          <circle cx="43.2" cy="37" r="0.8"/><circle cx="37.2" cy="33.6" r="0.8"/><circle cx="34.8" cy="27" r="0.8"/><circle cx="37.2" cy="20.4" r="0.8"/>
+          <circle cx="43.2" cy="17" r="0.8"/><circle cx="50.1" cy="18.2" r="0.8"/><circle cx="54.6" cy="23.5" r="0.8"/>
+          <path fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+        </g>
+      </g>
+    </defs>
+
+    <!-- five call lines, telephone to the pile under the mark: straight, none crossing. Body light while running, Label grey once stopped -->
+    <g fill="none" stroke-width="3" stroke-linecap="round">
+      <path class="jam-line" d="M161 636 L1000 351" stroke="#dfe7ee"/>
+      <path class="jam-line" d="M381 636 L1030 351" stroke="#dfe7ee"/>
+      <path class="jam-line" d="M601 636 L1060 351" stroke="#dfe7ee"/>
+      <path class="jam-line" d="M821 636 L1090 351" stroke="#dfe7ee"/>
+      <path class="jam-line" d="M1041 636 L1120 351" stroke="#dfe7ee"/>
+      <!-- the offices' line, desk 1 to the mark's far side; the leg to desk 2 is dotted and never lights -->
+      <path id="jam-oline" d="M1290 184 L1141 285" stroke="#dfe7ee"/>
+      <path id="jam-leg" d="M1141 315 L1290 454" stroke="#93a3b2" stroke-dasharray="0.1 14"/>
+    </g>
+    <circle class="jam-dot" cx="1000" cy="351" r="6" fill="#dfe7ee"/>
+    <circle class="jam-dot" cx="1030" cy="351" r="6" fill="#dfe7ee"/>
+    <circle class="jam-dot" cx="1060" cy="351" r="6" fill="#dfe7ee"/>
+    <circle class="jam-dot" cx="1090" cy="351" r="6" fill="#dfe7ee"/>
+    <circle class="jam-dot" cx="1120" cy="351" r="6" fill="#dfe7ee"/>
+    <circle id="jam-odot" cx="1141" cy="285" r="6" fill="#dfe7ee"/>
+
+    <!-- five houses, 220 px apart: box y 755 to 880, aerial to y 738. Lit in the first frame; dark from "power" -->
+    <g fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <g class="jam-house" transform="translate(96 755) scale(0.5)" stroke="#dfe7ee"><use href="#jam-house-def"/><rect class="jam-win" x="44" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.3"/><rect class="jam-win" x="168" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.3"/><path d="M68 120 V168 M44 144 H92 M192 120 V168 M168 144 H216"/></g>
+      <g class="jam-house" transform="translate(316 755) scale(0.5)" stroke="#dfe7ee"><use href="#jam-house-def"/><rect class="jam-win" x="44" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.3"/><rect class="jam-win" x="168" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.3"/><path d="M68 120 V168 M44 144 H92 M192 120 V168 M168 144 H216"/></g>
+      <g class="jam-house" transform="translate(536 755) scale(0.5)" stroke="#dfe7ee"><use href="#jam-house-def"/><rect class="jam-win" x="44" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.3"/><rect class="jam-win" x="168" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.3"/><path d="M68 120 V168 M44 144 H92 M192 120 V168 M168 144 H216"/></g>
+      <g class="jam-house" transform="translate(756 755) scale(0.5)" stroke="#dfe7ee"><use href="#jam-house-def"/><rect class="jam-win" x="44" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.3"/><rect class="jam-win" x="168" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.3"/><path d="M68 120 V168 M44 144 H92 M192 120 V168 M168 144 H216"/></g>
+      <g class="jam-house" transform="translate(976 755) scale(0.5)" stroke="#dfe7ee"><use href="#jam-house-def"/><rect class="jam-win" x="44" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.3"/><rect class="jam-win" x="168" y="120" width="48" height="48" fill="#e8c56a" fill-opacity="0.3"/><path d="M68 120 V168 M44 144 H92 M192 120 V168 M168 144 H216"/></g>
+    </g>
+    <!-- five telephones, one above each house, 41 px clear of its aerial: base y 697, lifted handset top y 638 -->
+    <use class="jam-tel" href="#jam-tel-def" transform="translate(134 670.8) scale(0.6)" stroke="#dfe7ee"/>
+    <use class="jam-tel" href="#jam-tel-def" transform="translate(354 670.8) scale(0.6)" stroke="#dfe7ee"/>
+    <use class="jam-tel" href="#jam-tel-def" transform="translate(574 670.8) scale(0.6)" stroke="#dfe7ee"/>
+    <use class="jam-tel" href="#jam-tel-def" transform="translate(794 670.8) scale(0.6)" stroke="#dfe7ee"/>
+    <use class="jam-tel" href="#jam-tel-def" transform="translate(1014 670.8) scale(0.6)" stroke="#dfe7ee"/>
+
+    <!-- the busy mark: x 985 to 1135, y 255 to 345, three bars at rest in Label grey -->
+    <g id="jam-mark">
+      <rect x="985" y="255" width="150" height="90" rx="12" fill="#15202b" stroke="#dfe7ee" stroke-width="4"/>
+      <rect class="jam-bar" x="1011" y="295" width="26" height="10" rx="5" fill="#93a3b2"/>
+      <rect class="jam-bar" x="1047" y="295" width="26" height="10" rx="5" fill="#93a3b2"/>
+      <rect class="jam-bar" x="1083" y="295" width="26" height="10" rx="5" fill="#93a3b2"/>
+    </g>
+
+    <!-- two offices on the mark's far side from the houses: boxes x 1290 to 1545, y 150 to 278 and y 420 to 548 -->
+    <use class="jam-desk" href="#jam-desk-def" transform="translate(1290 150) scale(0.85)" stroke="#dfe7ee"/>
+    <use class="jam-desk" href="#jam-desk-def" transform="translate(1290 420) scale(0.85)" stroke="#dfe7ee"/>
+  </svg>
+  <div class="jam-lab" id="jam-labm" style="left:960px; top:215px">line busy</div>
+  <div class="jam-lab" id="jam-labd1" style="left:1317px; top:290px">an office</div>
+  <div class="jam-lab" id="jam-labd2" style="left:1317px; top:560px">an office</div>
+  </div>
+
+  <div id="jam-src">Disaster Research Center, 1966, pp. 17 and 25</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#jam-", D = 10.26, WHITE = "#f2f5f8", GREY = "#93a3b2", DARKLINE = "#55606b", PANEL = "#15202b";
+  const all = function (c) { return Array.from(document.querySelectorAll("#jam-root .jam-" + c)); };
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function fade(sel, at, dur) { tl.to(sel, { autoAlpha: 1, duration: dur, ease: "power3.out" }, at); }
+  function draw(e, len, at, dur, ease) {
+    s0(e, { strokeDasharray: len, strokeDashoffset: len });
+    tl.set(e, { autoAlpha: 1 }, at);
+    tl.to(e, { strokeDashoffset: 0, duration: dur, ease: ease }, at);
+  }
+  /* the mark's three bars turn Headline white one after another, 0.25 s each */
+  function blink(at) {
+    bars.forEach(function (b, i) {
+      tl.set(b, { attr: { fill: WHITE } }, at + i * 0.25);
+      tl.set(b, { attr: { fill: GREY } }, at + (i + 1) * 0.25);
+    });
+  }
+  const houses = all("house"), tels = all("tel"), lines = all("line"), dots = all("dot"), desks = all("desk"), bars = all("bar");
+
+  /* coverage (plan rule 22): how far right of the brief's px the stage waits, so the houses and the mark sit centred */
+  const STAGE_DX = 344;
+
+  /* PEOPLE @0.00: ground, the five houses with lit windows */
+  s0([tels, lines, dots, desks, P+"mark", P+"labm", P+"labd1", P+"labd2", P+"oline", P+"odot", P+"leg", P+"src"], { autoAlpha: 0 });
+  s0(P+"stage", { x: STAGE_DX });
+  tl.to(P+"sweep", { x: 2860, duration: D / 2, ease: "none", repeat: 1 }, 0);
+
+  /* POWER @0.88: the windows go dark house by house, left to right, and each house's lines fall to the dark stroke with them */
+  houses.forEach(function (h, i) {
+    tl.to(h.querySelectorAll(".jam-win"), { attr: { fill: PANEL, "fill-opacity": 1 }, duration: 0.1, ease: "none" }, 0.88 + i * 0.12);
+    tl.to(h, { attr: { stroke: DARKLINE }, duration: 0.1, ease: "none" }, 0.88 + i * 0.12);
+  });
+  /* PHONE @1.78: the five telephones draw on above the houses, handsets raised; the source line fades in */
+  tels.forEach(function (t, i) { draw(t, 300, 1.78 + i * 0.1, 0.3, "power2.out"); });
+  fade(P+"src", 1.78, 0.3);
+  /* INFORMATION @2.42: the five call lines draw to their end points, 0.15 s apart; each end dot appears as its line arrives */
+  lines.forEach(function (l, i) {
+    const at = 2.42 + i * 0.15;
+    draw(l, Math.ceil(l.getTotalLength()) + 1, at, 0.6, "none");
+    tl.set(dots[i], { autoAlpha: 1 }, at + 0.6);
+  });
+  /* MANY @4.10: the five end dots turn Headline white in turn and back: the calls are piling up */
+  dots.forEach(function (d, i) { tl.to(d, { attr: { fill: WHITE, r: 8 }, duration: 0.1, ease: "power2.out", yoyo: true, repeat: 1 }, 4.10 + i * 0.1); });
+  /* COULDN'T @5.22: the busy mark comes in over the pile with its label; its bars blink once; the five lines turn Label grey */
+  fade([P+"mark", P+"labm"], 5.22, 0.2);
+  blink(5.22);
+  tl.to(lines, { attr: { stroke: GREY }, duration: 0.3, ease: "power2.out" }, 5.22);
+  tl.to(dots, { attr: { fill: GREY }, duration: 0.3, ease: "power2.out" }, 5.22);
+  /* OFFICES @6.52: the two desks draw on with their labels; the stage settles onto the brief's px to give them the room */
+  tl.to(P+"stage", { x: 0, duration: 0.5, ease: "power3.inOut" }, 6.52);
+  desks.forEach(function (d, i) { draw(d, 640, 6.52 + i * 0.2, 0.5, "power2.out"); });
+  fade(P+"labd1", 6.52, 0.3);
+  fade(P+"labd2", 6.72, 0.3);
+  /* REACH @7.38: the office line runs from desk 1 to the mark and stops in its dot; the dotted leg to desk 2 fades in, grey */
+  const oline = document.getElementById("jam-oline");
+  draw(oline, Math.ceil(oline.getTotalLength()) + 1, 7.38, 0.5, "none");
+  tl.set(P+"odot", { autoAlpha: 1 }, 7.88);
+  fade(P+"leg", 7.38, 0.3);
+  /* JAM @8.78: the bars blink once more and the office line turns Label grey. Hold. */
+  blink(8.78);
+  tl.to(oline, { attr: { stroke: GREY }, duration: 0.3, ease: "power2.out" }, 8.78);
+  tl.to(P+"odot", { attr: { fill: GREY }, duration: 0.3, ease: "power2.out" }, 8.78);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-a3s09-jam"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
