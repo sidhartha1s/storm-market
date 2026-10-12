@@ -14,7 +14,7 @@ Newest first. New entries go at the top, under this line. Superseded lines point
   edges measured; the worst old stamp was 0.17 s off a word start, the worst new one 0.32 s.
 - **Rule:** any step that rewrites a narration wav re-transcribes it before it reports done; the step order is in
   CLAUDE.md "Voice".
-- **Observation, not a rule yet:** a transcriber stamp on a word that follows a pause can sit 0.2 to 0.5 s off the
+- **Observation, not a rule yet:** a transcriber stamp on a word that follows a pause can sit up to 0.32 s off the
   sound. Where such a cue matters, check it against the loudness envelope of the wav. No script does this today; the
   cue rule's home is `references/mg-quickref.md` "Text doctrine".
 - **Homograph probe without Praat:** "lives" in "lost their lives" measured as the noun with LPC formants on the final
