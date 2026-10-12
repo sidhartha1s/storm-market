@@ -52,7 +52,7 @@ The chain (all four segments), one group `cntb-chain`, authored numbers at full 
 Fixed layer:
 | Element | Px |
 |---|---|
-| County chip | glass chip as `.pol-chip`, left 836, top 316, height 46, padding 0 x 22, Arial 700 26 px, Body light: `County B` and nothing else, on from frame 0. It never moves: it sits 31 px over the waiting chain and stays over the full chain |
+| County chip | glass chip as `.pol-chip`, left 836, top 316, height 46, padding 0 x 22, Arial 700 26 px, Body light: `County B` and nothing else, on from frame 0. While the chain waits it sits at left 836, top 448, 31 px over the waiting chain. As the chain grows (10.16 to 10.82) it moves straight up to left 836, top 250 with a plain `to()` (power2.inOut), where its foot lines up with the stamp's foot at y 296, and it stays there over the full chain. Its old single place was left 836, top 316 |
 | Clock stamp (A4-S4 on) | design sheet section 8: glass card left 96, top 96, 590 x 200; clock face `media/drawings/wall-clock.svg` inline at `translate(129 134)` (centre (191, 196)). In the eyebrow slot the word `about`, Arial 700 26 px, Body light, left 286, top 108. Time `7:30 PM`, Courier New 700 84 px, Amber 2, x 284, y 142. The two read as one line of sense, `about 7:30 PM`. No place line |
 | Radio arc (A4-S4 on) | path `M224 508 Q425 300 626 508` (apex (425, 404) by script), Amber 2, 4 px, dotted like the links. It starts over the civil defense desk and ends over the bare left end of the police desk's top |
 | The light | Amber 2 dot, radius 10, moved along the arc with `getPointAtLength` from a 0 to 1 proxy tween (seek-safe) |
