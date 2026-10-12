@@ -26,6 +26,7 @@ The chain stands under it on one line, y 834, with everything left of x 1600:
 | Cell phone | `media/drawings/cell-phone.svg` at 0.8 (48 x 88) | 1220 to 1268, 810 to 898 |
 | Cell tower | `media/drawings/cell-tower.svg` at 0.9 (54 x 216) | 1290 to 1344, 682 to 898 |
 | House | `media/drawings/house.svg` at 0.68 (177 x 170) | 1380 to 1557, 728 to 898 (aerial to y 705) |
+As built and accepted by the lead, 12 Oct 26: the desk telephones rise to y 750, above the y 770 this table gives for the desk boxes, and the new path starts inside the Weather Bureau desk's telephone.
 All stations share the floor y 898. Set `stroke-width` on each group so a line is 3.5 to 4 px on screen (README, line weight by size).
 
 ## 3. Geometry (screen px)
@@ -38,17 +39,17 @@ All stations share the floor y 898. Set `stroke-width` on each group so a line i
 | Old light | an Amber 2 line, 6 px, growing from x 351 to x 520 on the first link, led by an Amber 2 dot of radius 8 that hides on arrival; the link stays Amber 2 |
 | Stop mark | Popfig red rect 6 x 72 at x 778, y 798 (3 px right of the police desk's right edge, across the line), as `#chn-stop` of the built `compositions/g-i1s9-chain.html` |
 | Station labels | Arial 700 22 px, Label grey, centred under each box, top 916: `Weather Bureau` · `a police desk` · `an announcer` · `a family` (under the house). The phone and the tower take no label |
-| New path | one Amber 2 path, 6 px, round caps and joins: from the Weather Bureau desk's top (223, 770) up to y 712, right along y 712 to x 1290, then to the tower's top (1317, 682). It runs under the sheet (bottom y 644) and over the police desk and the microphone (tops y 770 and 760) and touches neither. Drawn with `strokeDashoffset`, led by a dot of radius 8 |
+| New path | one Amber 2 path, 6 px, round caps and joins: from inside the Weather Bureau desk's telephone (as built and accepted; this brief first said the desk's top at (223, 770)) up to y 712, right along y 712 to x 1290, then to the tower's top (1317, 682). It runs under the sheet (bottom y 644) and over the police desk and the microphone (tops y 770 and 760) and touches neither. Drawn with `strokeDashoffset`, led by a dot of radius 8 |
 | Tower to phone | an Amber 2 line, 6 px, from (1317, 700) to (1244, 810) |
 | Phone lit | the phone's screen (`dw-lamp`) to Amber 2, as `media/drawings/cell-phone-lit.svg` |
-| House lit | lines to Headline white, windows (`dw-win`) to Amber 2 at 0.3, as `media/drawings/house-lit.svg` |
+| House lit | lines to Headline white; windows (`dw-win`) take the telephone's amber (Amber 2) at an opacity where the colour measured on the frame has red over green over blue, with red at 180 or more. The window may stay dimmer than the telephone. Ruled by the lead, 12 Oct 26: this brief first said `Amber 2 at 0.3` (the value in `media/drawings/house-lit.svg`), and that measured RGB 89 85 65 on the frame, khaki, not amber |
 | Source line | fixed HUD, left 96, bottom 60: `Disaster Research Center, 1966, p. 14` in Z1-S2; in Z1-S3 a second pre-authored element in the same place: `National Weather Service` |
 
 ## 4. Must be true in the picture
 1. Nothing is ever typed in the blank ninth row. No numbering, no tick, no tick box, no row count on the sheet.
 2. In Z1-S2 the old light stops at the police desk; the stop mark is the only red; the microphone and the house stay dark.
 3. In Z1-S3 the new path does not touch the sheet, the police desk or the microphone: it goes round them. It leaves from the Weather Bureau desk.
-4. The house window turns Amber 2 only after the phone is lit, and it is the first amber house window in A1 to Z1.
+4. The house window turns amber only after the phone is lit, and it is the first amber house window in A1 to Z1. It reads amber on the frame: measured, red over green over blue, with red at 180 or more.
 5. No carrier, phone maker, app or logo is named or drawn. The phone's screen carries no text.
 6. No county chip. Nothing in x >= 1600 and y >= 680 (the house ends at x 1557). Nothing appears before its spoken word.
 7. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Staged once: at steps 0 and 1 the sheet sits centred in the frame's height (sheet y 245 to 835, 191 px below its briefed place; x 580 to 1340 as briefed), and the row pulse rides it. At step 1b ("list.", 2.23) the sheet moves up to its briefed place over 0.5 s (done at 2.73), before the chain draws on at 3.37. The frame's left and right 580 px (30.2 % each) are then the largest empty blocks. Unstaged, the band under the sheet (y 644 to 1080, 40.4 % of the frame) would be empty for 3.37 s. From step 2 the chain fills that band.

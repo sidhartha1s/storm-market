@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a4s01-eyes (A4-S1): three seconds of a real room in a film window under one label; then the study's typed page with four
+     words underlined, and a clock under it at about 7:30. Brief: mg_specs/briefs/g-a4s01-eyes.md, the ruled film variant.
+     Film family: the film view of g-a1s15-offices. Page family: crop, unlit page and underline of g-i1s6-page; stamp of g-t1s2-warning.
+     The film is not this comp's: index.html mounts media/films/cuts/a14-05b-operations-room-wide.mp4 on track 1 (class filmwin,
+     left 480, top 150, 960 x 720) for 3.15 s and this comp sits above it with a transparent hole. The hole is covered from 3.15.
+     While any film pixel shows, "Civil defense training film, 1967" is the only chip and the only text in the frame.
+     Crop: media/docs/study-p21-eyes-crop.png, 1460 x 299, study printed p. 21, at its own size: screen x = crop x + 106, y = crop y + 126.
+       The page is double spaced: underlines are 6 px, 4 px under the line box. Only "with his and own eyes". are underlined.
+     Stamp: design sheet section 8 at 1.5 times (885 x 300, face centre (238.5, 650), radius 93): "about" over 7:30 PM, the page's
+       own time; hands fixed at 225 and 180, never tweened. No earlier time is worked out or shown.
+     Cues: audio/a4-s1.words.json seconds minus 0.31 (mg_specs/timeline-map.md table 5). No audio and no video element in this file. -->
+<template>
+<style>
+  /* no background: the hole must stay clear. No z-index here: index.html puts the film under its host ("film under hosts") */
+  #eyes-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .eyes-h { opacity:0; visibility:hidden; }
+
+  /* ---- FILM VIEW (family block): ground with a 4:3 hole at x 480 to 1440, y 150 to 870, frame, label chip, hole cover ---- */
+  /* every pane carries the whole 1920 x 1080 gradient, offset by its own left and top, so no pane edge shows a seam */
+  .eyes-pane { position:absolute; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%) no-repeat; background-size:1920px 1080px; }
+  .eyes-pane-t { left:0; top:0; width:1920px; height:150px; background-position:0 0; }
+  .eyes-pane-b { left:0; top:870px; width:1920px; height:210px; background-position:0 -870px; }
+  .eyes-pane-l { left:0; top:150px; width:480px; height:720px; background-position:0 -150px; }
+  .eyes-pane-r { left:1440px; top:150px; width:480px; height:720px; background-position:-1440px -150px; }
+  .eyes-cover { left:480px; top:150px; width:960px; height:720px; background-position:-480px -150px; }
+  .eyes-frame { position:absolute; left:476px; top:146px; width:968px; height:728px; box-sizing:border-box; border:4px solid #dfe7ee; }
+  .eyes-chip { position:absolute; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:23px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  .eyes-label { left:480px; top:886px; }
+
+  /* ---- the page view: county chip, document card and what is drawn on it, the stamp, the source line; one layer ---- */
+  .eyes-page { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .eyes-county { left:96px; top:54px; }
+  .eyes-card { position:absolute; left:96px; top:116px; width:1480px; height:319px; box-sizing:border-box; border:10px solid #f4f0e6; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .eyes-card img { position:absolute; left:0; top:0; width:1460px; height:299px; }
+  .eyes-unlit { position:absolute; background:rgba(21,32,43,0.45); }
+  .eyes-ul { position:absolute; height:6px; background:#d0121f; }
+  .eyes-stamp { position:absolute; left:96px; top:500px; width:885px; height:300px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:42px; }
+  .eyes-face { position:absolute; left:0; top:0; width:300px; height:300px; overflow:visible; }
+  .eyes-about { position:absolute; left:285px; top:18px; font:700 39px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .eyes-time { position:absolute; left:282px; top:69px; font:700 126px 'Courier New', monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .eyes-place { position:absolute; left:285px; top:222px; font:700 39px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .eyes-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="eyes-root" data-composition-id="g-a4s01-eyes" data-width="1920" data-height="1080">
+
+  <!-- FILM VIEW (family block) -->
+  <div class="eyes-pane eyes-pane-t"></div>
+  <div class="eyes-pane eyes-pane-b"></div>
+  <div class="eyes-pane eyes-pane-l"></div>
+  <div class="eyes-pane eyes-pane-r"></div>
+  <div class="eyes-pane eyes-cover eyes-h" id="eyes-cover"></div>
+  <div class="eyes-frame" id="eyes-frame"></div>
+  <div class="eyes-chip eyes-label" id="eyes-label">Civil defense training film, 1967</div>
+
+  <!-- the page view: on in one frame at the cut, the unlit page already over it -->
+  <div class="eyes-page eyes-h" id="eyes-page">
+    <div class="eyes-chip eyes-county">County B</div>
+    <div class="eyes-card"><img src="media/docs/study-p21-eyes-crop.png" alt=""></div>
+    <!-- unlit page: line 1 (the page's own "County B." stays readable under it), line 3 after own eyes"., line 4 -->
+    <div class="eyes-unlit" style="left:106px;top:126px;width:1460px;height:75px"></div>
+    <div class="eyes-unlit" style="left:386px;top:277px;width:1180px;height:76px"></div>
+    <div class="eyes-unlit" style="left:106px;top:353px;width:1460px;height:72px"></div>
+    <!-- underlines: 1 under "with his, 2 under own eyes". -->
+    <div class="eyes-ul" id="eyes-ul1" style="left:1361px;top:258px;width:144px"></div>
+    <div class="eyes-ul" id="eyes-ul2" style="left:187px;top:335px;width:180px"></div>
+
+    <div class="eyes-stamp">
+      <svg class="eyes-face" id="eyes-face" viewBox="0 0 200 200"></svg>
+      <div class="eyes-about">about</div>
+      <div class="eyes-time">7:30 PM</div>
+      <div class="eyes-place">by the study's account</div>
+    </div>
+    <div class="eyes-src">Disaster Research Center, 1966, p. 21</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a4s01-eyes", P = "eyes", D = 6.71, CUT = 3.15, NS = "http://www.w3.org/2000/svg";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+  function under(e, t, d) { tl.to(e, { scaleX: 1, duration: d, ease: "power2.out" }, t); }
+
+  /* ---- the clock face (design sheet section 8, drawn in a 200 box shown at 1.5 times): centre (95,100), radius 62 ---- */
+  var face = $("face"), CX = 95, CY = 100, RR = 62, O = CX + " " + CY;
+  function pt(deg, r) { var a = deg * Math.PI / 180; return [CX + r * Math.sin(a), CY - r * Math.cos(a)]; }   /* degrees clockwise from 12 */
+  el("circle", { cx: CX, cy: CY, r: RR, fill: "none", stroke: "#dfe7ee", "stroke-width": 4 }, face);
+  for (var i = 0; i < 12; i++) { var a = pt(i * 30, RR - 7), b = pt(i * 30, RR - (i % 3 ? 15 : 21));
+    el("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "#dfe7ee", "stroke-width": 3, "stroke-linecap": "round" }, face); }
+  var hh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 34, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  var mh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 52, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  el("circle", { cx: CX, cy: CY, r: 5, fill: "#e8c56a" }, face);
+  s0(hh, { rotation: 225, svgOrigin: O });                  /* 7:30: hour hand half way between 7 and 8 */
+  s0(mh, { rotation: 180, svgOrigin: O });                  /* minute hand on the 6. Set once, never tweened */
+
+  /* start states: hidden in CSS (eyes-h) or by scaleX 0; transforms set here at 0; every move from rest below is a plain to() */
+  s0($("ul1"), { scaleX: 0, transformOrigin: "left center" });
+  s0($("ul2"), { scaleX: 0, transformOrigin: "left center" });
+
+  /* 0 · "He" @0.00: the cut out of the book ad. Ground, open window on the operations room, frame, film label. The film is the motion */
+
+  /* 1 · "in" @3.15: hard cut. The hole closes for good; frame and film label off; chip, card with its unlit page, stamp and source line on */
+  tl.set($("cover"), { autoAlpha: 1 }, CUT);
+  tl.set([$("frame"), $("label")], { autoAlpha: 0 }, CUT);
+  tl.set($("page"), { autoAlpha: 1 }, CUT);
+
+  /* 2 · "with" @4.73: underline 1 under "with his */
+  under($("ul1"), 4.73, 0.3);
+
+  /* 3 · "own" @5.07: underline 2 under own eyes". Hold to the cut */
+  under($("ul2"), 5.07, 0.3);
+
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

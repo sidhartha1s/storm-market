@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5s15-dark (A5-S15): one steel tower tips over, and three houses stand in a row with every window dark. John
+     Curran's later recollection, not a log: one tower and three houses are a picture of "lines" and "customers", not a
+     count. No amber anywhere, no wire, no office, no name but Curran's.
+     Brief: mg_specs/briefs/g-a5s15-dark.md. Base: the house mount and draw-on of g-a1s05-clocks.
+     Drawings, inline: media/drawings/steel-tower.svg at 3.0 (lines 6 px, braces 4.5 px), house.svg (dark state) at 1.3,
+     three times. Ground line y 820. The tower leans 12 degrees clockwise about its right foot, screen (1500, 820).
+     Staging (acts-plan rule 22): until the houses' cue the tower is alone, so it stands centred on the ground line at 1.4
+     times on a slow push; on "none" it goes to its briefed place and size as the first house draws on.
+     Cues are comp-local seconds from audio/a5-s15.words.json (wav start 0.00, timeline-map.md table 5). -->
+<template>
+<style>
+  #drk-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .drk-layer { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .drk-house > * { opacity:0; visibility:hidden; }
+  .drk-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="drk-root" data-composition-id="g-a5s15-dark" data-width="1920" data-height="1080" data-duration="7.71">
+
+  <svg class="drk-layer" id="drk-layer" viewBox="0 0 1920 1080" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M96 820 H1560" stroke="#93a3b2" stroke-width="4"/>
+
+    <!-- the tower, drawn first: upright box x 1260 to 1500, y 340 to 820. The stage group carries the staging only -->
+    <g id="drk-stage">
+      <g transform="translate(1260 340) scale(3)">
+        <g id="drk-tower" stroke="#dfe7ee" stroke-width="2">
+          <path d="M10 160 L40 0 L70 160"/>
+          <path d="M16 22 H64 M8 46 H72 M2 70 H78"/>
+          <path d="M24.3 84 L62.5 120 M55.7 84 L17.5 120" stroke-width="1.5"/>
+          <path d="M17.5 120 L70 160 M62.5 120 L10 160" stroke-width="1.5"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- three houses, alike, dark state for the whole comp: boxes x 150 to 488, 540 to 878, 930 to 1268, y 495 to 820 -->
+    <g transform="translate(150 495) scale(1.3)">
+      <g class="drk-house" id="drk-h1" stroke="#55606b" stroke-width="4">
+        <path d="M186 37.3 V22 H208 V50"/>
+        <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+        <path d="M20 80 H240 V250 H20 Z" fill="#15202b"/>
+        <path d="M112 250 V170 H148 V250"/>
+        <path d="M44 120 H92 V168 H44 Z" fill="#15202b"/>
+        <path d="M168 120 H216 V168 H168 Z" fill="#15202b"/>
+        <path d="M68 120 V168 M44 144 H92 M192 120 V168 M168 144 H216"/>
+        <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+      </g>
+    </g>
+    <g transform="translate(540 495) scale(1.3)">
+      <g class="drk-house" id="drk-h2" stroke="#55606b" stroke-width="4">
+        <path d="M186 37.3 V22 H208 V50"/>
+        <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+        <path d="M20 80 H240 V250 H20 Z" fill="#15202b"/>
+        <path d="M112 250 V170 H148 V250"/>
+        <path d="M44 120 H92 V168 H44 Z" fill="#15202b"/>
+        <path d="M168 120 H216 V168 H168 Z" fill="#15202b"/>
+        <path d="M68 120 V168 M44 144 H92 M192 120 V168 M168 144 H216"/>
+        <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+      </g>
+    </g>
+    <!-- house 3 overlaps the tower's upright box by 8 px and stands in front of its left foot -->
+    <g transform="translate(930 495) scale(1.3)">
+      <g class="drk-house" id="drk-h3" stroke="#55606b" stroke-width="4">
+        <path d="M186 37.3 V22 H208 V50"/>
+        <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+        <path d="M20 80 H240 V250 H20 Z" fill="#15202b"/>
+        <path d="M112 250 V170 H148 V250"/>
+        <path d="M44 120 H92 V168 H44 Z" fill="#15202b"/>
+        <path d="M168 120 H216 V168 H168 Z" fill="#15202b"/>
+        <path d="M68 120 V168 M44 144 H92 M192 120 V168 M168 144 H216"/>
+        <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+      </g>
+    </g>
+  </svg>
+
+  <div class="drk-src" id="drk-src">John Curran's recollection, not a log</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a5s15-dark", P = "drk", D = 7.71;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+
+  /* ---- draw-on: a dash restarts on every sub-path, so a shape of several lines is dashed by its longest one ---- */
+  function longest(e) {
+    var p = document.createElementNS("http://www.w3.org/2000/svg", "path"), max = 0;
+    e.getAttribute("d").split("M").forEach(function (s) { if (!s.trim()) return; p.setAttribute("d", "M" + s); max = Math.max(max, p.getTotalLength()); });
+    return max;
+  }
+  function dash(e) { var L = Math.ceil(longest(e)) + 1; s0(e, { strokeDasharray: L, strokeDashoffset: L }); return e; }
+  function drawOn(e, t, d) { tl.set(e, { autoAlpha: 1 }, t); tl.to(e, { strokeDashoffset: 0, duration: d, ease: "power2.out" }, t); }
+  function house(n, t) {                                   /* longest line first, all lines done 0.5 s after t */
+    var lines = Array.prototype.slice.call($("h" + n).children);
+    lines.sort(function (a, b) { return b.getTotalLength() - a.getTotalLength(); });
+    lines.forEach(dash);
+    lines.forEach(function (e, i) { drawOn(e, t + i * 0.03, 0.5 - i * 0.03); });
+  }
+
+  var WHITE = "#f2f5f8", GREY = "#93a3b2";
+  var layer = $("layer"), stage = $("stage"), tower = $("tower");
+
+  /* rest states, set at 0. The tower turns about its right foot, (80, 160) in the drawing's own units = screen (1500, 820).
+     The stage scales about the middle of the tower's feet, screen (1380, 820), so the tower always stands on the ground line */
+  var BIG = 1.4, PUSH = 1.03;
+  s0(tower, { rotation: 0, svgOrigin: "80 160" });
+  s0(stage, { svgOrigin: "1380 820", scale: BIG, x: 960 - 1380 });
+  s0(layer, { scale: 1, transformOrigin: "960px 540px", force3D: false });
+
+  /* 0 · "Curran" @0.00: ground, ground line, the recollection line, the tower upright in Body light, centred, on a slow push */
+  tl.to(stage, { scale: BIG * PUSH, duration: 5.08, ease: "none" }, 0);
+
+  /* 1 · one @1.18: the tower's lines go Body light to Headline white: the one company's line */
+  tl.to(tower, { stroke: WHITE, duration: 0.3, ease: "power2.out" }, 1.18);
+
+  /* 2 · lost @3.06: the tower tips 12 degrees about its right foot; then its lines go to Label grey */
+  tl.to(tower, { rotation: 12, duration: 0.7, ease: "power2.in" }, 3.06);
+  tl.to(tower, { stroke: GREY, duration: 0.4, ease: "power2.out" }, 3.76);
+
+  /* 3 · none @5.08: the tower goes to its briefed place and size; house 1 draws on, house 2 from 5.28, house 3 from 5.48
+     (all complete @5.98), all dark */
+  tl.to(stage, { scale: 1, x: 0, duration: 0.5, ease: "power3.out" }, 5.08);
+  house(1, 5.08);
+  house(2, 5.28);
+  house(3, 5.48);
+
+  /* 4 · customers @5.50: no new mark. From 5.98 the whole drawing layer drifts 1.00 to 1.02 about the frame centre */
+  tl.to(layer, { scale: 1.02, duration: D - 5.98, ease: "none", force3D: false }, 5.98);
+
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

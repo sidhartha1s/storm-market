@@ -27,7 +27,7 @@ Count against the window: five marks, 0.33 s apart, take 1.32 s from the first t
 | Desk label | `the warning office`, Arial 700 22 px, Label grey, left 96, top 676 |
 | House label | `a town`, Arial 700 22 px, Label grey, centred on x 1488, top 676. `Marion` is not used here: this segment names no town |
 | Spotter marks 1 to 5 | section 2, at x 470, 610, 750, 890, 1030. Drawn in Body light, body of the ring Panel dark (it covers the dotted link behind it). Lit: ring and mast Headline white, centre dot Amber 2 |
-| Paper strip | Beige polaroid, left 96, top 780, 1000 x 124 (right 1096, bottom 904), the chain strip's shadow. Quote, Georgia 44 px, Caption dark, left 136, top 796: `“severe storm warning reporting networks”`. Attribution, Arial 700 22 px, Caption dark sub, tracking 2, left 136, top 862: `Weather Bureau survey, 1965, p. 2, recommendation 3` |
+| Paper strip | Beige polaroid, left 96, top 780, 1000 x 124 (right 1096, bottom 904), the chain strip's shadow. Quote, Georgia 44 px, Caption dark, left 136, top 796: `“severe storm warning reporting networks”`. Attribution, Arial 700 22 px, Caption dark sub, tracking 2, left 136, top 862: `Weather Bureau survey report, 1965, p. 2, recommendation 3` |
 | Glass card | glass plate as the clock stamp's, left 660, top 220, 600 x 190 (right 1260, bottom 410), above the marks' masts (y 490) |
 | Glass eyebrow | Arial 700 20 px, Label grey, letter-spacing 6 px, left 700, top 244: `THE SPOTTER PROGRAM` |
 | Glass word | Arial Black 900 84 px, Headline white, `letter-spacing:0.06em`, left 700, top 282: `SKYWARN` |
@@ -43,7 +43,7 @@ Count against the window: five marks, 0.33 s apart, take 1.32 s from the first t
 7. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). **Not met as drawn, and reported to the lead.** The row is the full-width chain row of `g-a5s12-spotters` (x 96 to 1577), so it cannot be enlarged or centred further. The band above it (y 0 to 430, 39.8 % of the frame) is empty from frame 0 until the glass card at 9.87 s; the band below its labels is empty except while the strip is up (3.05 to 6.65 s). Until the lead rules a fix for the chain row (it applies to `g-a5s12-spotters` unchanged), the builder runs the sweep band and a slow push (1.00 to 1.03) on the row and reports the largest empty block in per cent and seconds.
 
 ## 5. Text (exact) and cues
-Text: `the warning office` · `a town` · `“severe storm warning reporting networks”` · `Weather Bureau survey, 1965, p. 2, recommendation 3` · `THE SPOTTER PROGRAM` · `SKYWARN` · `National Weather Service, Chicago`.
+Text: `the warning office` · `a town` · `“severe storm warning reporting networks”` · `Weather Bureau survey report, 1965, p. 2, recommendation 3` · `THE SPOTTER PROGRAM` · `SKYWARN` · `National Weather Service, Chicago`.
 t from comp start = the segment's wav start inside the composition (timeline-map.md table 5: -0.29) plus the word's time; the first word uses table 5's first sound (0.01).
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|

@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a3s01-message (A3-S1, A3-S2, A3-S3): the typed 6:50 entry under its clock, two phrases underlined; then the television of
+     the opening with the remembered words, beside the message's own; then Indiana with its north central part lit.
+     Brief: mg_specs/briefs/g-a3s01-message.md. Page family: crop, unlit page, underline and strip of g-i1s3-cloud and g-i1s7-sheriff;
+     stamp of g-t1s2-warning; television and station card of g-i1s2-station at 0.875; map weights of g-a2s14-six.
+     Views: PAGE 0.00 to 8.01, SET 8.01 to 14.44, MAP 14.44 to 18.73. Hard cuts between them, one ground under all three.
+     Crop: media/docs/survey-p40-650pm-crop.png, 1460 x 240, survey printed p. 40, at its own size: screen x = crop x + 106, y = crop y + 330.
+       The page is single spaced and skewed, so each underline has its own y: 4 px thick, 2 px under its own words' lowest ink.
+     Television: media/drawings/television.svg at 2.8 times, object box x 96 to 936, y 150 to 822; screen area x 152 to 689.6,
+       y 206 to 654, radius 67.2. Every stroke Body light on the dark ground. Station card numbers are the built card's times 0.875.
+     Map: media/maps/indiana-counties.svg (BM-1), its st-in outline and map-neighbours only; viewBox 206 153 468 780 in 576 x 960
+       (1.2308 px per map unit). The band is a schematic of "the northern central portion of Indiana": no county, no town.
+       Its soft edge is a gradient fill: 0.45 from map y 153 to 398.6, 0 at 478.6 (screen y 362 to 461; the northern third ends at 387).
+     Plan rule 22: until strip S needs the room the stamp and the card sit 202 px lower (the group centred in the frame); until
+       strip G needs the room the television sits 444 px to the right (centred). Each moves to its briefed place on the strip's cue.
+     Cues: words.json seconds plus the wav start inside the comp: a3-s1 -0.55, a3-s2 +6.45, a3-s3 +14.07; a segment's first word is
+     timed from its first sound (mg_specs/timeline-map.md table 5). -->
+<template>
+<style>
+  #msg-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .msg-h { opacity:0; visibility:hidden; }
+  .msg-layer { position:absolute; left:0; top:0; width:0; height:0; }
+
+  /* ---- view PAGE: the clock stamp (design sheet section 8), the document card and what is drawn on it; one layer ---- */
+  .msg-stamp { position:absolute; left:96px; top:96px; width:590px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .msg-face { position:absolute; left:0; top:0; width:200px; height:200px; overflow:visible; }
+  .msg-eye { position:absolute; left:188px; top:20px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .msg-time { position:absolute; left:188px; top:46px; font:700 84px 'Courier New', monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .msg-place { position:absolute; left:190px; top:148px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .msg-card { position:absolute; left:96px; top:320px; width:1480px; height:260px; box-sizing:border-box; border:10px solid #f4f0e6; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .msg-card img { position:absolute; left:0; top:0; width:1460px; height:240px; }
+  .msg-unlit { position:absolute; background:rgba(21,32,43,0.45); }
+  .msg-ul { position:absolute; height:4px; background:#d0121f; }
+
+  /* ---- quote strips (paper: the message's words, retyped, with quotation marks and attribution) ---- */
+  .msg-strip { position:absolute; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; }
+  .msg-strip-s { left:96px; top:610px; width:1480px; height:170px; }
+  .msg-strip-g { left:980px; top:300px; width:596px; height:290px; }
+  .msg-q { position:absolute; font:40px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:52px; }
+  .msg-att { position:absolute; font:700 22px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+
+  /* ---- view SET: the television of the opening at 2.8 times, its station card at 0.875 of the built one ---- */
+  .msg-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .msg-screen { position:absolute; left:152px; top:206px; width:537.6px; height:448px; border-radius:67.2px; overflow:hidden; }
+  .msg-cardst { position:absolute; inset:0; background:#15202b; }
+  .msg-frame { position:absolute; left:8.75px; top:8.75px; right:8.75px; bottom:8.75px; border:2px solid #f2f5f8; border-radius:58.4px; box-sizing:border-box; }
+  .msg-sq { position:absolute; left:0; width:100%; text-align:center; font-size:35px; line-height:38.5px; font-weight:700; color:#f2f5f8; white-space:nowrap; }
+  .msg-rec { position:absolute; left:0; width:100%; top:302.7px; text-align:center; font-size:19.25px; line-height:22.75px; font-weight:700; color:#93a3b2; white-space:nowrap; }
+  .msg-flash { position:absolute; inset:0; background:rgba(242,245,248,0.3); }
+
+  /* ---- view MAP ---- */
+  .msg-map { position:absolute; left:672px; top:60px; width:576px; height:960px; overflow:hidden; }
+  .msg-chip { position:absolute; left:1250px; top:210px; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:23px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  .msg-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="msg-root" data-composition-id="g-a3s01-message" data-width="1920" data-height="1080">
+
+  <!-- view PAGE: stamp, card, unlit page and underlines move as one layer (screen px of the brief at rest) -->
+  <div class="msg-layer" id="msg-page">
+    <div class="msg-stamp" id="msg-stamp">
+      <svg class="msg-face" id="msg-face" viewBox="0 0 200 200"></svg>
+      <div class="msg-eye">WEATHER BUREAU</div>
+      <div class="msg-time">6:50 PM</div>
+      <div class="msg-place">South Bend, Indiana</div>
+    </div>
+    <div class="msg-card"><img src="media/docs/survey-p40-650pm-crop.png" alt=""></div>
+    <!-- unlit page 1: lines 2, 3 and 4; line 6 to the right of "people." -->
+    <div class="msg-unlit msg-h" id="msg-d1" style="left:106px;top:373px;width:1460px;height:110px"></div>
+    <div class="msg-unlit msg-h" id="msg-d2" style="left:281px;top:530px;width:1285px;height:40px"></div>
+    <!-- unlit page 2: lines 5 and 6; line 3 from "Warnings"; line 4 -->
+    <div class="msg-unlit msg-h" id="msg-d3" style="left:106px;top:484px;width:1460px;height:86px"></div>
+    <div class="msg-unlit msg-h" id="msg-d4" style="left:746px;top:412px;width:820px;height:34px"></div>
+    <div class="msg-unlit msg-h" id="msg-d5" style="left:106px;top:446px;width:1460px;height:38px"></div>
+    <!-- underlines: A "telephones being out in many areas", B1 "it is impossible to notify many", B2 "people." -->
+    <div class="msg-ul" id="msg-ula" style="left:204px;top:526px;width:593px"></div>
+    <div class="msg-ul" id="msg-ulb1" style="left:896px;top:518px;width:548px"></div>
+    <div class="msg-ul" id="msg-ulb2" style="left:149px;top:563px;width:116px"></div>
+  </div>
+
+  <div class="msg-strip msg-strip-s msg-h" id="msg-strip-s">
+    <div class="msg-q" style="left:40px;top:18px">&ldquo;telephones being out in many areas ...</div>
+    <div class="msg-q" style="left:40px;top:70px">it is impossible to notify many people&rdquo;</div>
+    <div class="msg-att" style="left:40px;top:130px">Weather Bureau, South Bend &middot; 6:50 PM</div>
+  </div>
+
+  <!-- view SET: media/drawings/television.svg inline at 2.8 times, every stroke Body light; screen Idle until the card cuts in -->
+  <div class="msg-layer msg-h" id="msg-set">
+    <svg class="msg-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <g transform="translate(96 150) scale(2.8)">
+        <g fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M40 200 L28 240 M260 200 L272 240"/>
+          <rect x="0" y="0" width="300" height="200" rx="6" fill="#15202b"/>
+          <rect x="20" y="20" width="192" height="160" rx="24" fill="#15202b"/>
+          <path d="M40 78 A46 46 0 0 1 78 40" stroke="#93a3b2" stroke-width="0.8"/>
+          <circle cx="256" cy="62" r="14"/>
+          <circle cx="256" cy="112" r="14"/>
+          <path d="M236 146 H276 M236 156 H276 M236 166 H276 M236 176 H276"/>
+        </g>
+      </g>
+    </svg>
+    <div class="msg-screen">
+      <!-- Station card: the recalled words, in quotation marks, and the year they were recalled. Never the Weather Bureau's -->
+      <div class="msg-cardst msg-h" id="msg-cardst">
+        <div class="msg-frame"></div>
+        <div class="msg-sq" style="top:75.2px">&ldquo;so many tornado</div>
+        <div class="msg-sq" style="top:120.8px">reports that it was</div>
+        <div class="msg-sq" style="top:166.2px">hard to keep track</div>
+        <div class="msg-sq" style="top:211.8px">of them&rdquo;</div>
+        <div class="msg-rec">as recalled in 2014</div>
+      </div>
+      <div class="msg-flash msg-h" id="msg-flash"></div>
+    </div>
+    <!-- the screen's own outline, above the screen states -->
+    <svg class="msg-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <rect x="152" y="206" width="537.6" height="448" rx="67.2" fill="none" stroke="#dfe7ee" stroke-width="5.6"/>
+    </svg>
+  </div>
+
+  <div class="msg-strip msg-strip-g msg-h" id="msg-strip-g">
+    <div class="msg-q" style="left:32px;top:30px">&ldquo;so numerous that it is</div>
+    <div class="msg-q msg-h" id="msg-g2" style="left:32px;top:82px">impossible to keep track</div>
+    <div class="msg-q msg-h" id="msg-g3" style="left:32px;top:134px">of them&rdquo;</div>
+    <div class="msg-att msg-h" id="msg-gatt" style="left:32px;top:210px">Weather Bureau, South Bend &middot; 6:50 PM</div>
+  </div>
+
+  <!-- view MAP: BM-1's neighbours and Indiana's outline only; no county path, no point -->
+  <svg class="msg-map msg-h" id="msg-map" viewBox="206 153 468 780" preserveAspectRatio="xMidYMid meet" fill="none" stroke="#dfe7ee" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <defs>
+      <clipPath id="msg-inclip"><use href="#msg-st-in"/></clipPath>
+      <linearGradient id="msg-bandg" gradientUnits="userSpaceOnUse" x1="0" y1="153" x2="0" y2="478.6">
+        <stop offset="0" stop-color="#e8c56a" stop-opacity="0.45"/>
+        <stop offset="0.7543" stop-color="#e8c56a" stop-opacity="0.45"/>
+        <stop offset="1" stop-color="#e8c56a" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <g id="msg-map-neighbours" stroke="#93a3b2" stroke-opacity="0.4">
+<path id="msg-st-il" class="st" vector-effect="non-scaling-stroke" d="M180.6,1008.0L177.5,1004.1L177.8,1003.2L176.6,1000.0L177.2,997.3L180.3,989.8L180.9,986.9L180.9,985.1L181.6,981.0L182.4,979.3L184.3,977.0L186.4,975.6L190.3,973.9L191.7,974.6L194.2,976.8L195.0,978.1L196.3,978.1L197.9,976.6L199.9,973.6L202.5,971.1L206.4,968.9L209.8,968.1L213.6,968.0L219.9,966.8L225.0,965.4L225.9,965.6L229.5,965.0L231.8,965.1L232.9,962.8L233.6,962.7L234.2,960.9L234.4,959.2L234.1,957.2L233.4,955.5L232.3,954.2L231.0,953.6L229.1,950.2L226.6,947.3L225.1,946.3L224.3,944.4L224.2,941.1L222.8,937.4L222.1,934.3L221.8,931.0L222.1,929.7L223.7,926.4L225.1,924.7L226.3,921.9L227.2,920.9L229.3,919.8L230.0,918.9L234.1,916.0L235.8,913.2L236.8,910.8L237.6,906.2L238.6,904.8L238.6,904.0L237.4,902.9L236.4,903.2L234.6,904.5L233.6,904.6L232.5,903.8L230.8,901.6L230.5,900.6L231.3,899.3L232.5,899.1L234.8,900.6L236.6,900.7L238.0,900.2L238.9,898.7L238.0,897.0L234.6,895.7L233.5,894.0L232.2,890.1L230.1,887.4L229.8,885.9L230.2,885.1L231.2,885.2L233.1,887.0L235.2,887.8L238.5,887.6L239.6,888.4L240.5,887.2L239.6,883.8L235.6,883.3L234.2,882.9L233.5,882.0L233.6,880.6L235.2,880.0L236.0,881.3L236.9,881.7L238.3,880.7L237.6,878.3L237.5,875.7L239.5,875.3L240.5,873.9L240.6,872.0L239.3,868.1L238.9,866.4L239.3,864.6L240.0,863.3L241.1,862.7L241.1,861.9L240.0,861.3L237.9,861.8L236.8,860.5L236.8,859.2L238.0,858.2L242.0,858.2L244.9,856.7L246.4,855.4L247.7,851.8L247.2,849.4L241.6,852.2L240.7,852.1L240.1,849.8L240.5,848.6L242.4,847.7L244.3,848.0L245.3,847.4L245.5,845.2L246.1,843.6L247.8,843.2L249.1,844.4L250.4,842.0L251.5,841.4L251.3,839.9L253.0,838.6L253.5,837.0L252.9,835.7L252.0,835.7L251.8,837.8L250.9,838.9L249.8,835.4L247.4,833.8L246.0,832.3L244.2,829.1L244.0,827.5L244.3,825.2L244.8,823.3L243.7,820.6L244.5,820.4L245.7,822.1L246.1,823.9L247.2,823.9L247.4,822.2L248.0,821.0L249.6,819.7L248.5,818.5L248.5,816.6L249.9,815.5L250.6,813.1L252.8,812.4L253.9,813.7L252.7,816.0L252.7,817.9L254.0,817.9L255.2,816.1L256.4,815.0L257.4,811.3L258.6,810.1L259.4,810.4L259.9,811.8L259.2,814.2L260.0,816.6L261.1,816.9L262.1,816.4L263.3,814.1L263.7,812.4L263.4,809.3L263.5,807.3L264.6,803.8L266.8,800.7L269.8,799.6L271.5,797.4L274.6,792.2L274.8,791.2L275.3,786.8L276.4,785.9L276.2,784.5L275.2,783.7L273.2,783.5L273.3,782.0L274.6,779.6L275.9,779.1L278.5,779.1L282.1,776.9L283.8,774.0L285.8,775.1L287.3,773.5L287.1,772.6L286.0,771.5L285.3,769.4L284.2,767.7L284.7,766.2L286.6,765.0L286.3,763.5L286.6,762.4L288.0,761.7L287.9,758.8L288.6,758.3L290.1,759.5L291.2,759.2L291.6,758.1L289.9,757.5L289.5,755.9L290.4,754.7L290.2,753.3L291.0,751.9L290.4,750.2L290.8,749.1L292.0,748.6L293.4,744.8L295.6,743.5L299.9,742.6L301.8,741.4L303.3,738.5L303.2,736.5L304.6,733.7L305.0,732.0L306.2,730.6L305.2,729.2L306.1,726.4L305.4,725.7L303.9,725.7L304.2,724.8L306.0,724.1L306.2,722.6L304.7,720.7L303.0,717.6L302.2,716.6L303.0,715.0L302.3,712.8L302.4,710.9L299.1,708.8L300.3,707.6L299.7,706.6L300.0,705.8L301.3,705.4L300.9,704.1L300.1,703.5L300.1,702.4L301.1,702.3L301.4,701.3L302.9,701.0L302.2,699.8L302.4,697.5L303.3,697.2L303.6,695.4L302.9,694.1L304.1,692.2L304.0,691.1L302.5,689.7L302.0,688.2L299.6,687.0L296.0,685.5L296.4,684.6L297.4,685.1L298.0,684.4L296.1,683.7L295.7,682.6L296.3,681.4L296.8,678.7L295.5,675.3L296.5,673.8L296.5,672.4L295.1,670.5L292.9,668.0L291.0,667.8L290.3,666.7L291.1,665.3L290.7,663.7L286.3,663.3L286.5,661.5L287.7,661.8L288.6,660.4L287.7,660.2L287.5,659.3L286.0,658.6L285.6,657.9L286.4,655.2L287.7,654.0L289.4,654.6L289.2,653.8L287.8,653.4L287.9,652.2L290.5,651.2L290.3,650.0L290.7,648.6L292.4,648.7L292.6,647.7L294.7,646.1L294.9,645.1L295.9,644.0L296.2,642.7L295.6,638.0L296.4,637.4L296.4,636.0L295.5,635.9L293.8,637.3L292.5,635.1L292.8,632.7L292.1,632.0L291.9,630.0L293.0,628.8L293.2,627.6L292.3,627.0L291.1,627.4L290.4,626.3L292.3,625.5L294.4,621.3L296.3,619.9L298.0,620.4L299.3,619.6L299.9,617.9L301.0,618.0L301.7,618.7L301.7,602.0L301.6,570.8L301.5,538.8L301.5,521.9L301.6,499.8L301.6,487.9L301.7,470.9L302.0,444.0L302.3,410.2L302.4,407.0L302.4,362.1L302.4,340.6L302.4,309.0L302.3,282.8L302.3,258.4L302.5,224.3L302.5,205.3L302.6,189.8L302.7,182.7L302.0,181.4L302.6,179.8L302.0,178.1L301.8,175.3L300.2,174.6L300.5,173.6L298.8,173.0L298.1,171.5L296.5,169.5L295.6,166.9L296.1,166.4L292.9,160.8L291.8,157.4L292.2,155.9L292.3,153.4L291.0,153.0L290.9,150.5L291.3,149.0L292.7,148.5L292.7,147.9L291.2,148.4L290.1,146.9L289.8,145.3L290.4,144.8L289.6,144.1L288.8,139.4L287.8,137.3L287.7,135.8L288.9,135.2L287.2,134.0L286.2,130.8L285.7,127.5L284.3,123.4L283.7,119.9L283.9,118.0L282.6,114.8L282.7,114.3L281.0,113.2L278.9,111.2L277.2,108.9L275.7,106.4L272.5,100.1L268.1,91.6L266.1,86.6L265.1,82.3L264.0,78.9L263.2,73.1L263.7,71.1L263.7,70.0L66.0,70.0L66.0,1010.0L181.2,1010.0Z"/>
+<path id="msg-st-mi" class="st" vector-effect="non-scaling-stroke" d="M429.7,173.2L462.6,173.1L468.7,173.1L480.1,173.0L488.4,173.0L497.4,173.1L522.8,173.3L539.5,173.3L546.2,173.3L584.2,173.1L598.4,173.2L618.4,173.1L626.8,173.2L648.0,173.1L648.0,184.9L655.1,184.5L704.6,183.0L733.3,181.8L748.0,181.1L750.6,181.1L768.3,180.3L787.4,179.5L790.0,179.3L790.0,70.0L456.0,70.0L454.6,73.7L451.1,81.8L449.1,85.6L445.0,92.5L437.1,103.9L434.7,106.9L434.0,109.3L432.6,113.1L430.7,117.7L426.0,127.6L422.3,139.4L420.3,143.9L417.3,148.7L413.6,153.1L411.3,155.4L409.3,158.3L406.6,160.6L405.2,162.1L397.6,168.5L391.5,173.1Z"/>
+<path id="msg-st-oh" class="st" vector-effect="non-scaling-stroke" d="M648.0,188.9L648.2,215.6L648.3,232.8L648.3,263.5L648.4,315.7L648.4,327.8L648.5,360.2L648.5,392.5L648.4,405.5L648.2,422.0L648.3,441.0L648.0,461.7L647.4,497.3L647.0,532.7L646.9,548.8L646.8,586.6L646.8,594.6L646.3,626.6L646.2,640.4L646.3,653.7L646.2,663.5L649.6,662.1L650.8,661.2L653.0,657.4L654.6,655.9L655.9,655.8L657.4,656.3L659.1,657.7L662.8,663.8L664.4,664.9L665.8,664.9L667.8,666.1L670.1,668.8L671.6,669.4L674.0,669.3L675.1,668.6L677.7,667.8L680.4,664.6L681.6,664.7L683.8,666.0L685.7,665.7L687.7,664.1L689.3,661.4L690.6,660.6L692.6,660.8L693.8,661.9L695.1,664.1L695.4,665.6L695.4,669.5L695.8,672.2L696.9,673.6L698.7,674.6L701.3,674.7L704.6,675.4L706.5,676.2L708.9,677.9L710.6,679.9L711.7,681.8L712.8,685.7L712.9,688.9L713.8,691.2L717.8,697.2L720.6,702.7L721.0,706.5L720.7,710.1L721.2,715.1L722.2,717.4L723.4,718.9L725.2,719.8L730.6,720.9L733.3,721.9L736.6,723.8L741.3,725.4L744.8,725.4L751.0,723.3L753.1,722.3L755.2,722.3L757.5,723.0L759.5,724.7L759.5,725.1L764.8,726.3L766.5,726.9L768.3,727.9L769.2,728.9L770.0,730.6L770.7,734.4L773.1,736.7L777.0,738.1L777.9,739.2L778.7,743.7L779.4,746.2L780.6,747.3L783.7,748.0L785.9,748.3L786.8,749.2L788.0,749.6L790.0,750.8L790.0,179.3L787.4,179.5L768.3,180.3L750.6,181.1L748.0,181.1L733.3,181.8L704.6,183.0L655.1,184.5L648.0,184.9Z"/>
+<path id="msg-st-ky" class="st" vector-effect="non-scaling-stroke" d="M391.7,867.9L390.2,868.9L387.6,870.1L383.7,874.6L381.7,877.6L379.7,879.3L378.7,879.7L373.7,880.2L371.9,880.6L367.7,882.8L364.9,885.1L363.5,887.3L363.7,892.0L363.2,893.8L362.0,899.6L361.4,902.1L360.4,904.4L359.2,905.8L357.0,907.4L355.1,908.0L352.8,907.2L352.2,906.0L351.8,903.4L351.3,901.7L349.4,898.1L348.3,897.1L346.9,897.1L343.3,896.5L341.3,895.6L336.7,892.1L335.1,890.3L331.3,887.0L328.6,885.2L325.4,884.2L324.0,882.6L323.0,882.1L321.8,880.3L320.3,879.3L316.7,878.0L313.6,878.1L311.9,878.6L310.1,880.0L306.1,884.2L304.3,885.0L303.1,883.9L299.2,881.5L297.8,880.1L295.9,876.6L296.3,875.7L296.1,873.7L295.0,872.4L293.5,872.4L292.8,873.1L292.3,877.0L290.6,879.1L289.5,882.1L290.4,884.8L294.6,889.0L295.1,890.3L294.3,893.9L292.2,897.6L291.1,898.8L287.2,899.9L283.8,899.3L283.0,898.0L282.6,894.4L284.5,889.9L284.8,888.7L284.5,887.0L283.0,885.7L282.0,885.7L280.2,886.6L279.0,887.4L277.3,887.7L275.5,887.2L272.4,887.9L269.3,890.6L266.6,890.8L263.8,890.6L262.7,889.9L261.7,888.4L261.7,887.4L260.3,886.1L259.8,884.5L258.4,882.3L255.9,881.1L254.3,881.6L250.0,887.9L249.7,890.1L250.3,892.2L251.4,893.9L253.0,895.5L253.9,897.8L254.4,901.4L254.0,903.3L250.8,905.1L249.2,909.3L248.2,909.9L247.3,909.6L245.2,906.9L242.6,905.1L240.3,904.3L238.6,904.8L237.6,906.2L236.8,910.8L235.8,913.2L234.1,916.0L230.0,918.9L229.3,919.8L227.2,920.9L226.3,921.9L225.1,924.7L223.7,926.4L222.1,929.7L221.8,931.0L222.1,934.3L222.8,937.4L224.2,941.1L224.3,944.4L225.1,946.3L226.6,947.3L229.1,950.2L231.0,953.6L232.3,954.2L233.4,955.5L234.1,957.2L234.4,959.2L234.2,960.9L233.6,962.7L232.9,962.8L231.8,965.1L229.5,965.0L225.9,965.6L225.0,965.4L219.9,966.8L213.6,968.0L209.8,968.1L206.4,968.9L202.5,971.1L199.9,973.6L197.9,976.6L196.3,978.1L195.0,978.1L194.2,976.8L191.7,974.6L190.3,973.9L186.4,975.6L184.3,977.0L182.4,979.3L181.6,981.0L180.9,985.1L180.9,986.9L180.3,989.8L177.2,997.3L176.6,1000.0L177.8,1003.2L177.5,1004.1L180.6,1008.0L181.2,1010.0L790.0,1010.0L790.0,750.8L788.0,749.6L786.8,749.2L785.9,748.3L783.7,748.0L780.6,747.3L779.4,746.2L778.7,743.7L777.9,739.2L777.0,738.1L773.1,736.7L770.7,734.4L770.0,730.6L769.2,728.9L768.3,727.9L766.5,726.9L764.8,726.3L759.5,725.1L759.5,724.7L757.5,723.0L755.2,722.3L753.1,722.3L751.0,723.3L744.8,725.4L741.3,725.4L736.6,723.8L733.3,721.9L730.6,720.9L725.2,719.8L723.4,718.9L722.2,717.4L721.2,715.1L720.7,710.1L721.0,706.5L720.6,702.7L717.8,697.2L713.8,691.2L712.9,688.9L712.8,685.7L711.7,681.8L710.6,679.9L708.9,677.9L706.5,676.2L704.6,675.4L701.3,674.7L698.7,674.6L696.9,673.6L695.8,672.2L695.4,669.5L695.4,665.6L695.1,664.1L693.8,661.9L692.6,660.8L690.6,660.6L689.3,661.4L687.7,664.1L685.7,665.7L683.8,666.0L681.6,664.7L680.4,664.6L677.7,667.8L675.1,668.6L674.0,669.3L671.6,669.4L670.1,668.8L667.8,666.1L665.8,664.9L664.4,664.9L662.8,663.8L659.1,657.7L657.4,656.3L655.9,655.8L654.6,655.9L653.0,657.4L650.8,661.2L649.6,662.1L646.2,663.5L644.7,664.4L641.1,668.6L637.5,670.7L636.5,672.4L636.5,673.2L637.9,676.1L638.9,677.2L639.6,677.9L642.3,682.1L642.7,683.4L644.1,685.2L645.0,688.7L644.3,690.8L642.5,692.6L639.8,696.1L638.7,698.5L639.7,701.2L641.1,701.9L644.9,702.0L647.2,702.4L648.7,703.1L650.5,704.8L650.7,706.0L650.3,708.1L648.4,710.6L645.8,712.7L645.0,714.3L645.3,716.5L646.7,719.0L647.3,721.3L646.9,722.8L646.1,723.1L644.0,722.7L642.1,721.9L637.7,720.9L636.8,721.1L634.1,722.9L631.9,724.1L630.0,724.5L625.9,723.7L624.4,723.9L622.0,726.0L618.2,728.2L616.7,729.5L614.2,730.8L610.9,733.3L606.0,738.4L603.5,739.9L601.4,740.6L599.4,740.7L597.8,740.1L596.3,739.3L594.6,737.3L592.0,732.6L589.2,731.0L586.6,730.6L584.6,730.8L579.0,732.5L576.1,732.8L571.2,731.6L570.1,731.9L567.9,733.2L565.9,736.9L565.3,739.9L565.5,741.7L566.8,744.0L567.6,745.9L567.7,747.9L567.5,750.3L567.5,754.8L567.9,757.2L568.9,759.4L570.5,763.6L570.5,766.7L569.7,769.3L567.7,771.3L564.0,773.4L563.0,774.7L562.2,777.5L560.9,780.1L560.0,781.2L556.7,783.2L553.2,784.0L550.3,784.1L548.9,784.6L546.6,786.3L544.8,789.0L542.9,794.7L542.3,797.5L542.2,800.5L541.5,803.8L540.1,807.9L537.8,811.9L536.5,813.2L529.2,818.3L527.9,818.2L526.7,817.5L525.2,815.0L524.1,814.5L522.9,814.6L519.5,815.6L518.0,816.7L517.1,818.7L516.7,823.5L515.1,826.7L511.5,830.2L509.1,834.4L508.0,837.9L507.9,843.0L508.5,849.3L508.3,851.3L506.9,856.5L506.3,862.2L505.8,863.7L503.6,866.4L503.0,866.8L499.7,867.3L499.2,867.1L495.8,867.9L493.1,868.8L492.2,869.6L491.8,871.2L491.9,874.3L490.9,875.5L489.9,875.1L488.1,872.3L486.7,868.6L485.3,866.8L483.1,865.4L480.0,864.8L477.5,865.0L475.3,865.9L473.9,865.9L468.3,862.5L466.7,860.4L464.9,859.5L462.4,857.3L461.8,856.3L461.0,852.5L460.8,849.1L462.0,843.8L461.6,841.7L459.8,838.6L458.7,837.4L456.0,835.8L454.4,834.2L452.1,831.7L450.9,831.0L448.8,832.0L448.3,833.4L448.3,836.1L449.8,837.9L452.5,838.4L454.6,839.2L455.5,840.6L454.5,843.4L453.0,844.2L448.6,843.6L447.0,844.8L446.0,848.0L445.2,848.5L441.7,844.6L439.2,844.2L437.7,845.4L437.1,846.6L437.1,848.0L438.0,850.0L441.2,851.7L441.7,853.2L441.3,855.3L440.6,856.6L438.9,858.4L437.6,859.0L435.3,859.3L432.8,859.3L430.6,859.9L430.0,860.7L429.6,862.6L429.5,868.1L429.6,873.6L430.4,876.7L431.2,877.6L431.9,879.5L431.4,881.4L428.4,883.1L426.6,882.9L424.4,882.1L422.6,882.0L421.5,882.3L420.6,883.6L420.1,885.0L420.3,892.3L419.5,893.9L416.8,896.0L415.2,896.8L413.4,897.0L412.7,896.5L412.1,894.2L412.7,891.9L414.4,887.2L414.3,885.0L413.7,884.3L410.8,883.5L409.1,883.8L406.4,886.5L405.0,887.5L403.4,887.3L400.9,883.8L397.2,876.0L397.4,875.6L396.3,873.5L395.2,869.7L392.9,868.1Z"/>
+    </g>
+    <!-- the lit area: one rect clipped to the state, under its outline -->
+    <rect class="msg-h" id="msg-band" x="206" y="153" width="468" height="325.6" fill="url(#msg-bandg)" stroke="none" clip-path="url(#msg-inclip)"/>
+    <g id="msg-map-state" stroke-width="3">
+<path id="msg-st-in" class="st" vector-effect="non-scaling-stroke" d="M365.7,188.9L360.9,191.2L356.7,193.1L354.0,194.0L352.7,193.7L350.5,194.2L350.1,195.0L349.2,195.0L349.1,196.9L348.7,196.1L347.1,196.4L346.4,196.9L341.0,198.2L336.0,198.9L332.6,198.8L331.4,198.4L331.3,199.1L330.4,198.5L328.8,198.8L328.8,198.3L325.1,197.8L322.4,197.1L318.2,195.4L317.0,194.6L315.8,195.1L314.6,194.2L313.7,192.5L315.7,191.7L317.3,189.7L316.6,188.7L317.4,187.8L316.4,186.4L315.3,186.0L313.4,187.9L314.2,190.1L313.6,190.7L313.0,190.1L312.5,187.3L312.1,187.1L310.5,188.2L309.8,189.3L305.1,185.7L302.7,182.7L302.6,189.8L302.5,205.3L302.5,224.3L302.3,258.4L302.3,282.8L302.4,309.0L302.4,340.6L302.4,362.1L302.4,407.0L302.3,410.2L302.0,444.0L301.7,470.9L301.6,487.9L301.6,499.8L301.5,521.9L301.5,538.8L301.6,570.8L301.7,602.0L301.7,618.7L301.0,618.0L299.9,617.9L299.3,619.6L298.0,620.4L296.3,619.9L294.4,621.3L292.3,625.5L290.4,626.3L291.1,627.4L292.3,627.0L293.2,627.6L293.0,628.8L291.9,630.0L292.1,632.0L292.8,632.7L292.5,635.1L293.8,637.3L295.5,635.9L296.4,636.0L296.4,637.4L295.6,638.0L296.2,642.7L295.9,644.0L294.9,645.1L294.7,646.1L292.6,647.7L292.4,648.7L290.7,648.6L290.3,650.0L290.5,651.2L287.9,652.2L287.8,653.4L289.2,653.8L289.4,654.6L287.7,654.0L286.4,655.2L285.6,657.9L286.0,658.6L287.5,659.3L287.7,660.2L288.6,660.4L287.7,661.8L286.5,661.5L286.3,663.3L290.7,663.7L291.1,665.3L290.3,666.7L291.0,667.8L292.9,668.0L295.1,670.5L296.5,672.4L296.5,673.8L295.5,675.3L296.8,678.7L296.3,681.4L295.7,682.6L296.1,683.7L298.0,684.4L297.4,685.1L296.4,684.6L296.0,685.5L299.6,687.0L302.0,688.2L302.5,689.7L304.0,691.1L304.1,692.2L302.9,694.1L303.6,695.4L303.3,697.2L302.4,697.5L302.2,699.8L302.9,701.0L301.4,701.3L301.1,702.3L300.1,702.4L300.1,703.5L300.9,704.1L301.3,705.4L300.0,705.8L299.7,706.6L300.3,707.6L299.1,708.8L302.4,710.9L302.3,712.8L303.0,715.0L302.2,716.6L303.0,717.6L304.7,720.7L306.2,722.6L306.0,724.1L304.2,724.8L303.9,725.7L305.4,725.7L306.1,726.4L305.2,729.2L306.2,730.6L305.0,732.0L304.6,733.7L303.2,736.5L303.3,738.5L301.8,741.4L299.9,742.6L295.6,743.5L293.4,744.8L292.0,748.6L290.8,749.1L290.4,750.2L291.0,751.9L290.2,753.3L290.4,754.7L289.5,755.9L289.9,757.5L291.6,758.1L291.2,759.2L290.1,759.5L288.6,758.3L287.9,758.8L288.0,761.7L286.6,762.4L286.3,763.5L286.6,765.0L284.7,766.2L284.2,767.7L285.3,769.4L286.0,771.5L287.1,772.6L287.3,773.5L285.8,775.1L283.8,774.0L282.1,776.9L278.5,779.1L275.9,779.1L274.6,779.6L273.3,782.0L273.2,783.5L275.2,783.7L276.2,784.5L276.4,785.9L275.3,786.8L274.8,791.2L274.6,792.2L271.5,797.4L269.8,799.6L266.8,800.7L264.6,803.8L263.5,807.3L263.4,809.3L263.7,812.4L263.3,814.1L262.1,816.4L261.1,816.9L260.0,816.6L259.2,814.2L259.9,811.8L259.4,810.4L258.6,810.1L257.4,811.3L256.4,815.0L255.2,816.1L254.0,817.9L252.7,817.9L252.7,816.0L253.9,813.7L252.8,812.4L250.6,813.1L249.9,815.5L248.5,816.6L248.5,818.5L249.6,819.7L248.0,821.0L247.4,822.2L247.2,823.9L246.1,823.9L245.7,822.1L244.5,820.4L243.7,820.6L244.8,823.3L244.3,825.2L244.0,827.5L244.2,829.1L246.0,832.3L247.4,833.8L249.8,835.4L250.9,838.9L251.8,837.8L252.0,835.7L252.9,835.7L253.5,837.0L253.0,838.6L251.3,839.9L251.5,841.4L250.4,842.0L249.1,844.4L247.8,843.2L246.1,843.6L245.5,845.2L245.3,847.4L244.3,848.0L242.4,847.7L240.5,848.6L240.1,849.8L240.7,852.1L241.6,852.2L247.2,849.4L247.7,851.8L246.4,855.4L244.9,856.7L242.0,858.2L238.0,858.2L236.8,859.2L236.8,860.5L237.9,861.8L240.0,861.3L241.1,861.9L241.1,862.7L240.0,863.3L239.3,864.6L238.9,866.4L239.3,868.1L240.6,872.0L240.5,873.9L239.5,875.3L237.5,875.7L237.6,878.3L238.3,880.7L236.9,881.7L236.0,881.3L235.2,880.0L233.6,880.6L233.5,882.0L234.2,882.9L235.6,883.3L239.6,883.8L240.5,887.2L239.6,888.4L238.5,887.6L235.2,887.8L233.1,887.0L231.2,885.2L230.2,885.1L229.8,885.9L230.1,887.4L232.2,890.1L233.5,894.0L234.6,895.7L238.0,897.0L238.9,898.7L238.0,900.2L236.6,900.7L234.8,900.6L232.5,899.1L231.3,899.3L230.5,900.6L230.8,901.6L232.5,903.8L233.6,904.6L234.6,904.5L236.4,903.2L237.4,902.9L238.6,904.0L238.6,904.8L240.3,904.3L242.6,905.1L245.2,906.9L247.3,909.6L248.2,909.9L249.2,909.3L250.8,905.1L254.0,903.3L254.4,901.4L253.9,897.8L253.0,895.5L251.4,893.9L250.3,892.2L249.7,890.1L250.0,887.9L254.3,881.6L255.9,881.1L258.4,882.3L259.8,884.5L260.3,886.1L261.7,887.4L261.7,888.4L262.7,889.9L263.8,890.6L266.6,890.8L269.3,890.6L272.4,887.9L275.5,887.2L277.3,887.7L279.0,887.4L280.2,886.6L282.0,885.7L283.0,885.7L284.5,887.0L284.8,888.7L284.5,889.9L282.6,894.4L283.0,898.0L283.8,899.3L287.2,899.9L291.1,898.8L292.2,897.6L294.3,893.9L295.1,890.3L294.6,889.0L290.4,884.8L289.5,882.1L290.6,879.1L292.3,877.0L292.8,873.1L293.5,872.4L295.0,872.4L296.1,873.7L296.3,875.7L295.9,876.6L297.8,880.1L299.2,881.5L303.1,883.9L304.3,885.0L306.1,884.2L310.1,880.0L311.9,878.6L313.6,878.1L316.7,878.0L320.3,879.3L321.8,880.3L323.0,882.1L324.0,882.6L325.4,884.2L328.6,885.2L331.3,887.0L335.1,890.3L336.7,892.1L341.3,895.6L343.3,896.5L346.9,897.1L348.3,897.1L349.4,898.1L351.3,901.7L351.8,903.4L352.2,906.0L352.8,907.2L355.1,908.0L357.0,907.4L359.2,905.8L360.4,904.4L361.4,902.1L362.0,899.6L363.2,893.8L363.7,892.0L363.5,887.3L364.9,885.1L367.7,882.8L371.9,880.6L373.7,880.2L378.7,879.7L379.7,879.3L381.7,877.6L383.7,874.6L387.6,870.1L390.2,868.9L391.7,867.9L392.9,868.1L395.2,869.7L396.3,873.5L397.4,875.6L397.2,876.0L400.9,883.8L403.4,887.3L405.0,887.5L406.4,886.5L409.1,883.8L410.8,883.5L413.7,884.3L414.3,885.0L414.4,887.2L412.7,891.9L412.1,894.2L412.7,896.5L413.4,897.0L415.2,896.8L416.8,896.0L419.5,893.9L420.3,892.3L420.1,885.0L420.6,883.6L421.5,882.3L422.6,882.0L424.4,882.1L426.6,882.9L428.4,883.1L431.4,881.4L431.9,879.5L431.2,877.6L430.4,876.7L429.6,873.6L429.5,868.1L429.6,862.6L430.0,860.7L430.6,859.9L432.8,859.3L435.3,859.3L437.6,859.0L438.9,858.4L440.6,856.6L441.3,855.3L441.7,853.2L441.2,851.7L438.0,850.0L437.1,848.0L437.1,846.6L437.7,845.4L439.2,844.2L441.7,844.6L445.2,848.5L446.0,848.0L447.0,844.8L448.6,843.6L453.0,844.2L454.5,843.4L455.5,840.6L454.6,839.2L452.5,838.4L449.8,837.9L448.3,836.1L448.3,833.4L448.8,832.0L450.9,831.0L452.1,831.7L454.4,834.2L456.0,835.8L458.7,837.4L459.8,838.6L461.6,841.7L462.0,843.8L460.8,849.1L461.0,852.5L461.8,856.3L462.4,857.3L464.9,859.5L466.7,860.4L468.3,862.5L473.9,865.9L475.3,865.9L477.5,865.0L480.0,864.8L483.1,865.4L485.3,866.8L486.7,868.6L488.1,872.3L489.9,875.1L490.9,875.5L491.9,874.3L491.8,871.2L492.2,869.6L493.1,868.8L495.8,867.9L499.2,867.1L499.7,867.3L503.0,866.8L503.6,866.4L505.8,863.7L506.3,862.2L506.9,856.5L508.3,851.3L508.5,849.3L507.9,843.0L508.0,837.9L509.1,834.4L511.5,830.2L515.1,826.7L516.7,823.5L517.1,818.7L518.0,816.7L519.5,815.6L522.9,814.6L524.1,814.5L525.2,815.0L526.7,817.5L527.9,818.2L529.2,818.3L536.5,813.2L537.8,811.9L540.1,807.9L541.5,803.8L542.2,800.5L542.3,797.5L542.9,794.7L544.8,789.0L546.6,786.3L548.9,784.6L550.3,784.1L553.2,784.0L556.7,783.2L560.0,781.2L560.9,780.1L562.2,777.5L563.0,774.7L564.0,773.4L567.7,771.3L569.7,769.3L570.5,766.7L570.5,763.6L568.9,759.4L567.9,757.2L567.5,754.8L567.5,750.3L567.7,747.9L567.6,745.9L566.8,744.0L565.5,741.7L565.3,739.9L565.9,736.9L567.9,733.2L570.1,731.9L571.2,731.6L576.1,732.8L579.0,732.5L584.6,730.8L586.6,730.6L589.2,731.0L592.0,732.6L594.6,737.3L596.3,739.3L597.8,740.1L599.4,740.7L601.4,740.6L603.5,739.9L606.0,738.4L610.9,733.3L614.2,730.8L616.7,729.5L618.2,728.2L622.0,726.0L624.4,723.9L625.9,723.7L630.0,724.5L631.9,724.1L634.1,722.9L636.8,721.1L637.7,720.9L642.1,721.9L644.0,722.7L646.1,723.1L646.9,722.8L647.3,721.3L646.7,719.0L645.3,716.5L645.0,714.3L645.8,712.7L648.4,710.6L650.3,708.1L650.7,706.0L650.5,704.8L648.7,703.1L647.2,702.4L644.9,702.0L641.1,701.9L639.7,701.2L638.7,698.5L639.8,696.1L642.5,692.6L644.3,690.8L645.0,688.7L644.1,685.2L642.7,683.4L642.3,682.1L639.6,677.9L638.9,677.2L637.9,676.1L636.5,673.2L636.5,672.4L637.5,670.7L641.1,668.6L644.7,664.4L646.2,663.5L646.3,653.7L646.2,640.4L646.3,626.6L646.8,594.6L646.8,586.6L646.9,548.8L647.0,532.7L647.4,497.3L648.0,461.7L648.3,441.0L648.2,422.0L648.4,405.5L648.5,392.5L648.5,360.2L648.4,327.8L648.4,315.7L648.3,263.5L648.3,232.8L648.2,215.6L648.0,188.9L648.0,184.9L648.0,173.1L626.8,173.2L618.4,173.1L598.4,173.2L584.2,173.1L546.2,173.3L539.5,173.3L522.8,173.3L497.4,173.1L488.4,173.0L480.1,173.0L468.7,173.1L462.6,173.1L429.7,173.2L391.5,173.1L385.1,177.2L380.8,179.2L379.9,181.2L377.8,182.4L373.9,184.3Z"/>
+    </g>
+  </svg>
+  <div class="msg-chip msg-h" id="msg-chip">north central Indiana</div>
+  <div class="msg-src msg-h" id="msg-src">Weather Bureau survey report, 1965, p. 40 &middot; area drawn is schematic</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a3s01-message", P = "msg", D = 18.73, CUT1 = 8.01, CUT2 = 14.44, NS = "http://www.w3.org/2000/svg";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+  function under(e, t, d) { tl.to(e, { scaleX: 1, duration: d, ease: "power2.out" }, t); }
+  function stripIn(e, t) { tl.to(e, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, t); }
+
+  /* ---- the clock face (design sheet section 8): centre (95,100) in the stamp, radius 62; 6:50, hands at rest ---- */
+  var face = $("face"), CX = 95, CY = 100, RR = 62, O = CX + " " + CY;
+  function pt(deg, r) { var a = deg * Math.PI / 180; return [CX + r * Math.sin(a), CY - r * Math.cos(a)]; }   /* degrees clockwise from 12 */
+  el("circle", { cx: CX, cy: CY, r: RR, fill: "none", stroke: "#dfe7ee", "stroke-width": 4 }, face);
+  for (var i = 0; i < 12; i++) { var a = pt(i * 30, RR - 7), b = pt(i * 30, RR - (i % 3 ? 15 : 21));
+    el("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "#dfe7ee", "stroke-width": 3, "stroke-linecap": "round" }, face); }
+  var hh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 34, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  var mh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 52, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  el("circle", { cx: CX, cy: CY, r: 5, fill: "#e8c56a" }, face);
+  s0(hh, { rotation: 205, svgOrigin: O });                  /* 6:50: hour hand between 6 and 7 */
+  s0(mh, { rotation: 300, svgOrigin: O });                  /* minute hand on the 10 */
+
+  /* start states: hidden in CSS (msg-h) or by scaleX 0; transforms set here at 0; every move from rest below is a plain to() */
+  s0($("page"), { y: 202 });                                /* stamp and card centred in the frame until strip S needs the room (plan rule 22) */
+  s0($("set"), { x: 444 });                                 /* the television centred in the frame until strip G needs the room (plan rule 22) */
+  s0($("ula"), { scaleX: 0, transformOrigin: "left center" });
+  s0($("ulb1"), { scaleX: 0, transformOrigin: "left center" });
+  s0($("ulb2"), { scaleX: 0, transformOrigin: "left center" });
+  s0($("strip-s"), { y: 60 });
+  s0($("strip-g"), { y: 60 });
+  s0($("src"), { y: 12 });
+  s0($("chip"), { y: 16 });
+
+  /* ================= view PAGE: 0.00 to 8.01 ================= */
+  /* 0 · "The" @0.00: ground, the stamp at 6:50 PM, the document card whole and bright */
+
+  /* 1 · "telephones" @1.31: unlit page 1; underline A */
+  tl.to([$("d1"), $("d2")], { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 1.31);
+  under($("ula"), 1.31, 0.6);
+
+  /* 2 · "impossible" @3.87: underline B1 */
+  under($("ulb1"), 3.87, 0.6);
+
+  /* 3 · "people." @5.35: underline B2 (complete 5.55); at 5.60 the page rises to its briefed place and strip S comes up under it */
+  under($("ulb2"), 5.35, 0.2);
+  tl.to($("page"), { y: 0, duration: 0.5, ease: "power3.out" }, 5.60);
+  stripIn($("strip-s"), 5.60);
+
+  /* 4 · "opened" @6.79: the underlines go; unlit page 1 gives way to unlit page 2: the message's opening sentence is the bright part */
+  tl.to([$("ula"), $("ulb1"), $("ulb2")], { autoAlpha: 0, duration: 0.2, ease: "power1.in" }, 6.79);
+  tl.to([$("d1"), $("d2")], { autoAlpha: 0, duration: 0.4, ease: "none" }, 6.79);
+  tl.to([$("d3"), $("d4"), $("d5")], { autoAlpha: 1, duration: 0.4, ease: "none" }, 6.79);
+
+  /* ================= view SET: 8.01 to 14.44 ================= */
+  /* 5 · "an" @8.01: hard cut. Stamp, card, unlit page and strip S off; the television on, drawn, screen Idle */
+  tl.set([$("page"), $("strip-s")], { autoAlpha: 0 }, CUT1);
+  tl.set($("set"), { autoAlpha: 1 }, CUT1);
+
+  /* 6 · "television." @9.53: the screen cuts from Idle to the station card, one 0.1 s flash over the screen area */
+  tl.set($("cardst"), { autoAlpha: 1 }, 9.53);
+  tl.set($("flash"), { autoAlpha: 1 }, 9.53);
+  tl.to($("flash"), { autoAlpha: 0, duration: 0.1, ease: "none" }, 9.53);
+
+  /* 7 · "so" @11.23: the television moves to its briefed place and strip G rises beside it, first line only */
+  tl.to($("set"), { x: 0, duration: 0.5, ease: "power3.out" }, 11.23);
+  stripIn($("strip-g"), 11.23);
+
+  /* 8 · "impossible" @12.35: strip G's second and third lines and its attribution */
+  tl.to([$("g2"), $("g3"), $("gatt")], { autoAlpha: 1, duration: 0.3, ease: "power1.out" }, 12.35);
+
+  /* ================= view MAP: 14.44 to 18.73 ================= */
+  /* 9 · "and" @14.44: hard cut. Television and strip G off; Indiana's outline and the faint neighbours, nothing lit */
+  tl.set([$("set"), $("strip-g")], { autoAlpha: 0 }, CUT2);
+  tl.set($("map"), { autoAlpha: 1 }, CUT2);
+
+  /* 10 · "warning" @15.21: the source line */
+  tl.to($("src"), { y: 0, autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 15.21);
+
+  /* 11 · "whole" @15.89: the band comes on at once (a fill change, no scale) */
+  tl.to($("band"), { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 15.89);
+
+  /* 12 · "north" @16.13: the area label lands. Hold to the cut */
+  tl.to($("chip"), { y: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 16.13);
+
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

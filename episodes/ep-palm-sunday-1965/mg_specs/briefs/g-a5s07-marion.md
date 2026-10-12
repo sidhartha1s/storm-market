@@ -33,7 +33,6 @@ Clock hands, degrees clockwise from 12: 9:20 is hour 280, minute 120; 8:10 is ho
 | Map | BM-1 groups `map-neighbours`, `map-counties`, `map-state` inlined with ids prefixed `mrn-`; county lines 1.5 px, neighbour outlines 2 px, Indiana's outline 3 px, non-scaling. Every `pt-` group hidden except Fort Wayne, Marion and Linn Grove. Dot radius 6 px (`r` 2.133 map units), Body light. No county is lit |
 | Fort Wayne | dot (1489.7, 98.6); label `Fort Wayne` left 1503, top 87. Town labels Arial 700 22 px, Body light |
 | Path | one polyline in the map SVG, Body light 4 px, non-scaling, round joins: screen (1141.2, 420.6), (1305.2, 401.5), (1528.8, 329.5), (1611.5, 302.8). A 6 px open circle marks its start. Never red, no arrowhead |
-| `HOWARD` | county name, Arial 700 22 px, Headline white with the credit shadow, tracking 2, centred on x 1141.2, top 384 (above the path's start) |
 | Marion | dot (1305.2, 379.0), 22.5 px north of the path; label `Marion` left 1317, top 350 |
 | Linn Grove | dot (1528.8, 329.5); label `Linn Grove` right aligned to x 1600, top 345 (below the path, by hand) |
 | `OHIO` | Arial 700 22 px, Label grey, tracking 6, left 1626, top 262 (east of the state line at x 1611.5) |
@@ -46,7 +45,7 @@ Clock hands, degrees clockwise from 12: 9:20 is hour 280, minute 120; 8:10 is ho
 | `hit near 8:00 PM` chip | glass chip, height 46, padding 0 x 22, Arial 700 26 px, Body light, right aligned to x 1289, top 312 (west of and above Marion's dot, clear of the path) |
 | Map dim | the whole map SVG to opacity 0.2; every map label, the caption and the chip to 0 |
 | Hospital clock card | glass card left 96, top 96, 590 x 200, laid out as the stamp: face radius 62 centred (191, 196), `media/drawings/wall-clock.svg` inline, hands fixed at 245 and 60 from its first frame (they never sweep: the clock is stopped); eyebrow `STOPPED AT` at x 284, y 116; time `8:10 PM` at x 284, y 142, Courier New 700 84 px, Amber 2. No place line inside |
-| Clock label | under the card, left 96, top 310, Arial 700 20 px, Body light with the credit shadow: `a hospital clock, Marion · Weather Bureau survey, p. 45` |
+| Clock label | under the card, left 96, top 310, Arial 700 20 px, Body light with the credit shadow: `a hospital clock, Marion · Weather Bureau survey report, 1965, p. 45` (the survey's one source form, lead's ruling of 12 Oct 26; if the line runs past the card's right edge at x 686, break it after `Marion ·` into two lines) |
 | Quote strip | as `g-a1s15-offices`: Beige polaroid, left 96, top 640, 1480 x 170; quote Georgia 52 px, Caption dark, with quotation marks; attribution Arial 700 22 px, Caption dark sub, tracking 2 |
 The card and the strip end at x 1576: the presenter corner (x >= 1600, y >= 680) stays empty. The card (top 560) covers nothing of the map (bottom 512) or the caption (bottom 540).
 
@@ -60,14 +59,15 @@ The card and the strip end at x 1576: the presenter corner (x >= 1600, y >= 680)
 7. Beat check: the crop is on screen 4.89 s (5.07 to 9.96) and changes at 6.03. The clock's time appears at 18.20 and holds 1.70 s.
 8. Nothing of ours in x >= 1600, y >= 680; text at least 96 px from the sides and 54 px from top and bottom.
 9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
+10. No county label other than those the Picture note names. The label `HOWARD` is struck by the lead's ruling of 12 Oct 26: it is true (survey printed p. 45), but the study's hidden counties must stay hidden, and Howard shown west of Marion beside the county-seat hit would let a viewer place County B. Nothing replaces it: the path starts with no label at its west end.
 
 ## 5. Text (exact) and cues
-Text: `Fort Wayne` · `HOWARD` · `Marion` · `Linn Grove` · `OHIO` · `places the survey names · path schematic` · `WEATHER BUREAU` · `9:20 PM` · `Fort Wayne, Indiana` · `Weather Bureau survey report, 1965, p. 43` · `hit near 8:00 PM` · `“a full hour and twenty minutes earlier”` · `National Weather Service, Northern Indiana` · `STOPPED AT` · `8:10 PM` · `a hospital clock, Marion · Weather Bureau survey, p. 45`. Page words are the image.
+Text: `Fort Wayne` · `Marion` · `Linn Grove` · `OHIO` · `places the survey names · path schematic` · `WEATHER BUREAU` · `9:20 PM` · `Fort Wayne, Indiana` · `Weather Bureau survey report, 1965, p. 43` · `hit near 8:00 PM` · `“a full hour and twenty minutes earlier”` · `National Weather Service, Northern Indiana` · `STOPPED AT` · `8:10 PM` · `a hospital clock, Marion · Weather Bureau survey report, 1965, p. 45`. Page words are the image.
 Cue words and times are from `audio/a5-s7.words.json` and `audio/a5-s8.words.json` as they stood on 12 Oct 26. t from comp start = the segment's wav start inside the composition (`mg_specs/timeline-map.md` table 5: A5-S7 -0.23, A5-S8 9.96) plus the word's time; a segment's first word uses table 5's first sound (0.00, 9.96). Retime from the word, never from the seconds. The transcriber writes "nine twenty" as "920" and "eight ten" as "8" and "10.".
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A5-S7 | 0 | That | first sound 0.23 | 0.00 | first frame: ground, the map in EAST (lines only), Fort Wayne's dot and label, `OHIO` |
-| 1 | A5-S7 | 2 | storm | 0.74 | 0.51 | `HOWARD` fades in; the path draws west to east (1.2 s, `strokeDashoffset`, power1.inOut, to 1.71); Linn Grove's dot and label as the line reaches it |
+| 1 | A5-S7 | 2 | storm | 0.74 | 0.51 | the path draws west to east (1.2 s, `strokeDashoffset`, power1.inOut, to 1.71); Linn Grove's dot and label as the line reaches it |
 | 2 | A5-S7 | 7 | Marion. | 2.08 | 1.85 | Marion's dot and label (0.3 s); the dot's stroke flashes Headline white once (stroke change); the path caption fades in |
 | 3 | A5-S7 | 9 | 920 | 3.54 | 3.31 | clock stamp slides in from the left (`x: -660` to 0, 0.6 s, power3.out); the minute hand sweeps its last 30 degrees onto the 4 |
 | 4 | A5-S7 | 16 | wire, | 5.30 | 5.07 | document card slides in from the right (`x: 660` to 0, 0.7 s, power3.out); the document source fades in after it |
@@ -97,4 +97,4 @@ All seven lines of template section 7a. Line 4 here: seek to 1.10 (path mid draw
 As template section 8, plus: the measured width of the clock label (if it runs past x 686, say so; do not shrink the type), and a frame at 7.00 showing the underline clear of line 5.
 
 ## Frames the verifier reads
-First frame (0.00) and the frame after it (0.04): EAST lines, Fort Wayne, `OHIO`, line weights. Then one settled frame per cue: 1.80 (path complete, `HOWARD`, Linn Grove), 2.40 (Marion and the caption), 4.10 (stamp at 9:20), 5.90 (card and source), 7.00 (underline complete, unlit page), 10.50 (card gone, `hit near 8:00 PM`), 13.50 (map dim, stamp on the right with its lines back), 14.60 (quote strip), 17.00 (clock card, hands at 8:10, no time), 18.60 (`8:10 PM` and the label), 19.80 (last frame).
+First frame (0.00) and the frame after it (0.04): EAST lines, Fort Wayne, `OHIO`, line weights. Then one settled frame per cue: 1.80 (path complete, Linn Grove, no county label anywhere), 2.40 (Marion and the caption), 4.10 (stamp at 9:20), 5.90 (card and source), 7.00 (underline complete, unlit page), 10.50 (card gone, `hit near 8:00 PM`), 13.50 (map dim, stamp on the right with its lines back), 14.60 (quote strip), 17.00 (clock card, hands at 8:10, no time), 18.60 (`8:10 PM` and the label), 19.80 (last frame).

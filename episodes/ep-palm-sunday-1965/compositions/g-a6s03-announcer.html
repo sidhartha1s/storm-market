@@ -71,8 +71,8 @@
     <div class="ann-world">
       <!-- the list: eight rows in the study's sentence order (printed p. 14), all plain; the ninth row blank, its cursor blinking -->
       <div class="ann-sheet"></div>
-      <div class="ann-eye">SOUTH BEND WEATHER BUREAU &middot; BY TELEPHONE</div>
-      <div class="ann-title">Organizations notified included:</div>
+      <div class="ann-eye" id="ann-eye">SOUTH BEND WEATHER BUREAU &middot; BY TELEPHONE</div>
+      <div class="ann-title" id="ann-title">Organizations notified included:</div>
       <img class="ann-phone" src="media/drawings/telephone.svg" alt="">
       <div class="ann-rule"></div>
       <div class="ann-rr" style="top:238px"></div>
@@ -87,7 +87,7 @@
       <div class="ann-row" style="top:192px">State Police</div>
       <div class="ann-row" style="top:240px">Sheriffs' Departments</div>
       <div class="ann-row" style="top:288px">City Police Departments</div>
-      <div class="ann-row" style="top:336px">Indiana and Michigan Electric Company</div>
+      <div class="ann-row" id="ann-r4" style="top:336px">Indiana and Michigan Electric Company</div>
       <div class="ann-row" style="top:384px">Red Cross</div>
       <div class="ann-row" style="top:432px">Specified radio and TV stations</div>
       <div class="ann-row" style="top:480px">Flying services</div>
@@ -128,7 +128,8 @@
       </svg>
       <div class="ann-lab" style="left:1280px">a family</div>
     </div>
-    <div class="ann-chip ann-h" id="ann-chip1" style="left:930px;top:420px">the survey team's first recommendation</div>
+    <!-- top 396: the chip's bottom (442) clears the house aerial's tip (454) by 12 px; at the brief's 420 it covered it -->
+    <div class="ann-chip ann-h" id="ann-chip1" style="left:930px;top:396px">the survey team's first recommendation</div>
   </div>
 
   <!-- ===== part 2: the microphone alone, then four dark marks ===== -->

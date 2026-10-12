@@ -64,7 +64,7 @@ A1-S3, state NORTH:
 8. No town dot, no Alto, no tornado mark, no track in this comp.
 9. This comp shows real county names from the Weather Bureau's own entry, so `County A` and `County B` never appear in it.
 10. Line weights are the same at both ends of the push (read 9.65 and 10.62).
-11. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680; all text at least 96 px from the sides and 54 px from top and bottom. The crop is on screen about 8.2 s and changes at 15.47 and 15.87 (underlines and unlit page).
+11. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680, entrances and exits included; all text at least 96 px from the sides and 54 px from top and bottom. The crop is on screen about 8.2 s and changes at 15.47 and 15.87 (underlines and unlit page).
 Beat check (rule 13): the band draws for 2.0 s across the eight words that name its two ends. The source card is settled 4.99 to 9.39 (4.4 s, twelve words). Three counties 0.12 s apart, 0.3 s each: lit by 13.73.
 
 ## 5. Text (exact) and cues
@@ -77,10 +77,10 @@ Cue words and times are from `audio/a1-s2.words.json` and `audio/a1-s3.words.jso
 | 2 | A1-S2 | 6 | Missouri | 1.82 | 1.57 | `MISSOURI` fades in (0.3 s) |
 | 3 | A1-S2 | 11 | Indiana. | 3.32 | 3.07 | `INDIANA` fades in (0.3 s) as the band reaches it |
 | 4 | A1-S2 | 14 | study | 4.84 | 4.59 | source card rises in (`y: 60` to 0 with the fade, 0.4 s, power3.out) |
-| 5 | A1-S3 | 0 | South | first sound 0.36 | 9.39 | source card exits right (`x: 1900`, 0.4 s, power3.in); `MISSOURI`, `INDIANA` and the band fade (0.3 s) |
+| 5 | A1-S3 | 0 | South | first sound 0.36 | 9.39 | source card leaves the way it came (`y: 0` to 60, opacity 1 to 0, 0.4 s, power3.in); `MISSOURI`, `INDIANA` and the band fade (0.3 s) |
 | 6 | A1-S3 | 1 | Bend's | 0.66 | 9.69 | push MIDWEST-STRIP to NORTH (0.9 s, ends 10.59); county lines and Indiana's outline fade in during the move |
 | 7 | A1-S3 | 4 | office | 1.58 | 10.61 | clock stamp slides in from the left (`x: -660` to 0, 0.6 s, power3.out); the minute hand sweeps its last 30 degrees onto the 4 |
-| 8 | A1-S3 | 8 | its | 3.36 | 12.39 | document card slides in from the right (`x: 660` to 0, 0.7 s, power3.out); the document source fades in after it |
+| 8 | A1-S3 | 8 | its | 3.36 | 12.39 | document card rises in from below with a fade (`y: 80` to 0, opacity 0 to 1, 0.7 s, power3.out); the document source fades in after it |
 | 9 | A1-S3 | 11 | Three | 4.16 | 13.19 | Starke, southern Porter, Laporte fill in the entry's order, 0.12 s apart (0.3 s each), each with its name; the leader draws with `southern Porter` |
 | 10 | A1-S3 | 16 | several | 6.44 | 15.47 | unlit page fades in (0.4 s); underline 1 draws under `several` (0.2 s) |
 | 11 | A1-S3 | 17 | tornadoes | 6.84 | 15.87 | underline 2 draws under `tornadoes are expected` (0.5 s). Hold to the last frame (20.56) |

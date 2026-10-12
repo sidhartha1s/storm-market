@@ -33,7 +33,7 @@ Time scale for the bars: 9.8 px per minute. It is the map's own: Linn Grove's do
 | EAST, frame 0 | Fort Wayne dot (1489.7, 98.6); label `Fort Wayne` right aligned to x 1441, top 88. Berne dot (1556.9, 323.0); label `Berne` right aligned to x 1544, top 312. Town labels Arial 700 22 px, Body light |
 | Radar ring | overlay SVG centred on Fort Wayne's dot, as `g-a2s01-radar` but radius 36 and 20 (so the ring stays inside the box top at y 62: it spans y 62.6 to 134.6), Body light 3 px, one sweep line from the centre to the outer circle, at rest pointing up |
 | Recollection chip | glass chip, left 96, top 96, height 46, padding 0 x 22, Arial 700 26 px, Body light: `John Curran's recollection` |
-| Source line | left 716, top 524, Arial 700 20 px, Body light with the credit shadow: `Weather Bureau survey, 1965, pp. 43 and 45` |
+| Source line | left 716, top 524, Arial 700 20 px, Body light with the credit shadow: `Weather Bureau survey report, 1965, pp. 43 and 45` |
 | LINE, after the push | Linn Grove dot (992.0, 266.4); label `Linn Grove` right aligned to x 974, top 272 (below and west of the dot, by hand: the two dots are 41 px apart). Berne dot (1032.0, 257.2); label `Berne` left 1042, top 268 (below and east). State line x 1109.6, top to bottom of the box. Fort Wayne is above the box in LINE and is not shown |
 | Tornado mark | `media/drawings/tornado-mark.svg` inline in an overlay SVG at 0.75 scale (45 x 60 px), group stroke Body light, never red. Its lowest point sits 12 px above the point it marks. At Linn Grove: box x 969.5 to 1014.5, y 194.4 to 254.4. At the line, marking (1109.6, 228.5): box x 1087.1 to 1132.1, y 156.5 to 216.5 |
 | Trail | one straight line from (992.0, 266.4) to (1109.6, 228.5), Body light at 60 %, 3 px, drawn behind the mark as it moves. It passes 3.7 px north of Berne's dot |
@@ -60,7 +60,7 @@ The bars end at x 1580 and the lowest element is the red bar (bottom 742): the p
 10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
-Text: `Fort Wayne` · `Berne` · `Linn Grove` · `John Curran's recollection` · `Weather Bureau survey, 1965, pp. 43 and 45` · `8:40 PM` · `near 8:52 PM` · `INDIANA` · `OHIO` · `warning: the next 30 to 60 minutes` · `30 min` · `60 min` · `12 minutes`.
+Text: `Fort Wayne` · `Berne` · `Linn Grove` · `John Curran's recollection` · `Weather Bureau survey report, 1965, pp. 43 and 45` · `8:40 PM` · `near 8:52 PM` · `INDIANA` · `OHIO` · `warning: the next 30 to 60 minutes` · `30 min` · `60 min` · `12 minutes`.
 Cue words and times are from `audio/a5-s4.words.json` and `audio/a5-s5.words.json` as they stood on 12 Oct 26. t from comp start = the segment's wav start inside the composition (`mg_specs/timeline-map.md` table 5: A5-S4 0.00, A5-S5 13.09) plus the word's time; a segment's first word uses table 5's first sound (0.00, 13.36). Retime from the word, never from the seconds. The transcriber writes "Curran" as "Cohen", and the two times as "840" and "852.".
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|

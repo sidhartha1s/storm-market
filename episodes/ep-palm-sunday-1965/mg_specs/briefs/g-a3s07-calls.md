@@ -55,7 +55,7 @@ View ROOM (11.41 to 17.24):
 |---|---|
 | Photograph | `media/stills/a3-teletype-operators.jpg`, one `<img>` at cover, `object-position:50% 40%`, on in one frame at 11.41 over the whole frame; scale 1.00 to 1.04 from 11.41 to 17.24, `ease:"none"`, GSAP only |
 | Scrim | `rgba(3,5,8,0.45)` over the photograph, under everything else |
-| Photograph label | glass chip, left 96, top 578, height 46, padding 0 x 22, Arial 700 26 px, Body light: `Weather Bureau teletype room, about 1955`. On in the cut frame; it is the one label of this view (no second caption in the credit corner) |
+| Photograph label | glass chip, left 96, top 578, height 46, padding 0 x 22, Arial 700 26 px, Body light: `Weather Bureau Communications Center, about 1955`. On in the cut frame; it is the one label of this view (no second caption in the credit corner) |
 | Strip E | stays in its box across the cut, until step 9 |
 | Strip F | same box, left 96, top 640, 1480 x 170. Quote `“the poor observer”`, Georgia 52 px, Caption dark. Attribution: `National Weather Service, Northern Indiana` |
 The stamp and the telephone go off in the cut frame at 11.41: the photograph is not South Bend, so no South Bend stamp sits on it.
@@ -65,7 +65,7 @@ The stamp and the telephone go off in the cut frame at 11.41: the photograph is 
 2. The hole is opaque from 4.21 to the end, although the mount under it runs to 11.41. A frame at 5.00 read over the mount shows no film.
 3. The clock reads 7:13 PM: hour hand between 7 and 8, minute hand between the 2 and the 3 (78 degrees). The strip's attribution says `7:13 PM` too.
 4. Strip E's words are the message's as the script quotes them, in quotation marks with the attribution. Nothing on screen is set to look like the survey page.
-5. The photograph's only label is `Weather Bureau teletype room, about 1955`. It is never labelled South Bend, 1965 or 7:13 PM by a bare label, and the stamp is gone before it shows.
+5. The photograph's only label is `Weather Bureau Communications Center, about 1955`: the inventory's caption for photograph A3, the one form everywhere by the lead's ruling of 12 Oct 26 (this brief said `teletype room` before). It is never labelled South Bend, 1965 or 7:13 PM by a bare label, and the stamp is gone before it shows.
 6. Nobody in the photograph is named. `“the poor observer”` sits on paper with its own attribution, beside the photograph's label, so neither operator is read as the observer. No person is drawn anywhere.
 7. The ring arcs pulse three times and no more: 3 times 0.4 s is 1.2 s, from 5.53 to 6.73, inside the clause that ends on "report," (7.51).
 8. This is the third and last use of the teletype room photograph in A1 to Z1.
@@ -73,7 +73,7 @@ The stamp and the telephone go off in the cut frame at 11.41: the photograph is 
 10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
-Text: `Civil defense training film, 1967` · `WEATHER BUREAU` · `7:13 PM` · `South Bend, Indiana` · `“numerous poor joke calls and they tie up the lines”` · `Weather Bureau, South Bend · 7:13 PM` · `Weather Bureau teletype room, about 1955` · `“the poor observer”` · `National Weather Service, Northern Indiana`.
+Text: `Civil defense training film, 1967` · `WEATHER BUREAU` · `7:13 PM` · `South Bend, Indiana` · `“numerous poor joke calls and they tie up the lines”` · `Weather Bureau, South Bend · 7:13 PM` · `Weather Bureau Communications Center, about 1955` · `“the poor observer”` · `National Weather Service, Northern Indiana`.
 Cue words and times are from `audio/a3-s7.words.json` and `audio/a3-s8.words.json` as they stood on 12 Oct 26 at 19:30. t from comp start = the segment's wav start inside the composition (`mg_specs/timeline-map.md` table 5: A3-S7 -0.51, A3-S8 11.16) plus the word's time; a segment's first word uses table 5's first sound. Retime from the word index and the word, never from the seconds.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
@@ -100,7 +100,7 @@ As `references/mg-brief-template.md` section 6, with these: `compositions/g-a3s0
 As template section 7, from the worktree root: `node scripts/freeze_scan.mjs episodes/ep-palm-sunday-1965 --comp g-a3s07-calls`, then `node scripts/graphics_qc.mjs episodes/ep-palm-sunday-1965`, then `python3 scripts/run_gates.py episodes/ep-palm-sunday-1965`. The contact sheet shows the hole as empty when the comp is read alone: expected from 0.00 to 4.21 and a defect after 4.21.
 
 ## 7a. Done line
-All seven lines of template section 7a. Line 3 here: frame 0 is the open window with frame and label, the ground on around it. Line 4: seek to 4.21, 5.90 (mid pulse) and 11.41 forward and backward and match the frames. Line 6: the handset ends and arc centres are computed by a script from the inlined telephone and stated in the receipt. Line 7: a frame at 2.00 composited over the real film (the label is the only chip) and a frame at 5.00 over the mount to prove the hole is covered; at 12.50 the label `Weather Bureau teletype room, about 1955` sits on a photograph whose `provenance.csv` row says that.
+All seven lines of template section 7a. Line 3 here: frame 0 is the open window with frame and label, the ground on around it. Line 4: seek to 4.21, 5.90 (mid pulse) and 11.41 forward and backward and match the frames. Line 6: the handset ends and arc centres are computed by a script from the inlined telephone and stated in the receipt. Line 7: a frame at 2.00 composited over the real film (the label is the only chip) and a frame at 5.00 over the mount to prove the hole is covered; at 12.50 the label `Weather Bureau Communications Center, about 1955` sits on a photograph whose `provenance.csv` row says that.
 
 ## 8. Receipt
 As template section 8, plus the measured width of strip E's quote and the line count chosen.

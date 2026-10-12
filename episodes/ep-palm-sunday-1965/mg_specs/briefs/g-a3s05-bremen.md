@@ -13,7 +13,7 @@ At 7:10 PM South Bend's own message said a tornado was just west of Bremen and t
 
 ## 1. Source
 - `edit_script.md` A3-S5, Rows [A11; survey printed p. 41; study printed p. 17]; A3-S6, Rows [A11] (the writer's reading of the 7:10 message).
-- The paper card's words are the survey's: `Bremen cannot be contacted by phone.`, source line `Weather Bureau survey, 1965, p. 41`. No image of survey p. 41 is on disk (`mg_specs/acts-plan.md` section 3c has none), so the six words are retyped on a quote strip, the lift of design sheet section 9, and are never dressed as a page.
+- The paper card's words are the survey's: `Bremen cannot be contacted by phone.`, source line `Weather Bureau survey report, 1965, p. 41`. No image of survey p. 41 is on disk (`mg_specs/acts-plan.md` section 3c has none), so the six words are retyped on a quote strip, the lift of design sheet section 9, and are never dressed as a page.
 - Positions: `media/data/points.csv` (US Census gazetteer), map units: `pt-south-bend` (462.2, 188.5), `pt-bremen` (477.2, 230.6). Map: `media/maps/indiana-counties.svg` (BM-1).
 - "Just west" is the message's phrase. It gives no distance, so the mark's place is schematic: 60 px west of the dot (13.3 map units), on the dot's own latitude.
 
@@ -38,7 +38,7 @@ Clock angles, clockwise from 12 (by script): 7:10 is hour 215.0, minute 60; the 
 | Telephone link | one 4 px line from (1035.3, 118.6) to (1092.7, 279.9), round caps (length 201 px less the two gaps). Beside its middle a telephone glyph: `media/drawings/telephone.svg` inline at 0.5 scale, `stroke-width="6"` (3 px lines), box left 1084, top 160, 51 x 53. Live: Body light. Dark: `stroke-dasharray="0.1 14"`, stroke `#55606b`, the glyph's lines `#55606b` |
 | Tornado mark | `media/drawings/tornado-mark.svg` inline at 0.75 scale (45 x 60 px, line 4.5 px), stroke Body light, never red. Lowest point at (1039.4, 298.7): box x 1016.9 to 1061.9, y 238.7 to 298.7. It drifts 6 px east in all (box right edge 1067.9: 10 px clear of the link, 11.5 px clear of the ring) |
 | Red ring | circle, centre (1099.4, 298.7), radius 20, 4 px Popfig red `#d0121f`, no fill, on a fixed overlay above the map |
-| Quote strip (A3-S5) | Beige polaroid, left 96, top 700, 1100 x 124 (right 1196, bottom 824), `box-shadow: 0 18px 50px rgba(0,0,0,0.55)`. Quote, Georgia 52 px, Caption dark, left 136, top 712: `“Bremen cannot be contacted by phone.”`. Attribution, Arial 700 22 px, Caption dark sub, tracking 2, left 136, top 782: `Weather Bureau survey, 1965, p. 41`. Measure the quote's width in a frame and state it; it must end at least 40 px inside the strip |
+| Quote strip (A3-S5) | Beige polaroid, left 96, top 700, 1100 x 124 (right 1196, bottom 824), `box-shadow: 0 18px 50px rgba(0,0,0,0.55)`. Quote, Georgia 52 px, Caption dark, left 136, top 712: `“Bremen cannot be contacted by phone.”`. Attribution, Arial 700 22 px, Caption dark sub, tracking 2, left 136, top 782: `Weather Bureau survey report, 1965, p. 41`. Measure the quote's width in a frame and state it; it must end at least 40 px inside the strip |
 | Microphone | `media/drawings/microphone.svg` inline, `translate(330 340) scale(0.85)`, `stroke-width="4.7"` (box x 330 to 432, y 340 to 535.5), lines Body light, lamp (`dw-lamp`) Panel dark; label `radio and TV stations`, Arial 700 22 px, Label grey, centred on x 381, top 548 |
 | Broadcast arc (A3-S6) | path `M432 400 Q760 440 1083 310.2`, 4 px Amber 2, dotted (`stroke-dasharray="0.1 14"`, round caps). By script it passes (563.0, 409.2), (758.8, 397.6), (1018.4, 334.5), (1050.7, 322.8): 113 px under the stamp, 24 px under the tornado mark, and it ends on the ring's lower left |
 | House (A3-S6) | `media/drawings/house.svg` inline, `translate(1160 336) scale(0.4)`, `stroke-width="7.5"` (3 px lines; box x 1160 to 1264, y 336 to 436, aerial to y 322.4), lines Label grey, windows Panel dark; label `a home in the town`, Arial 700 22 px, Label grey, left 1276, top 376 |
@@ -58,7 +58,7 @@ Clock angles, clockwise from 12 (by script): 7:10 is hour 215.0, minute 60; the 
 10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
-Text: `WEATHER BUREAU` · `7:10 PM` · `South Bend, Indiana` · `South Bend` · `Bremen` · `“Bremen cannot be contacted by phone.”` · `Weather Bureau survey, 1965, p. 41` · `radio and TV stations` · `a home in the town`.
+Text: `WEATHER BUREAU` · `7:10 PM` · `South Bend, Indiana` · `South Bend` · `Bremen` · `“Bremen cannot be contacted by phone.”` · `Weather Bureau survey report, 1965, p. 41` · `radio and TV stations` · `a home in the town`.
 Cue words and times are from `audio/a3-s5.words.json` (33 words) and `audio/a3-s6.words.json` (21 words), read on 12 Oct 26. t from comp start = the segment's "wav start inside the composition" in `mg_specs/timeline-map.md` table 5 (A3-S5 -0.47, A3-S6 11.72) plus the word's time; a segment's first word uses the table's "first sound" (0.00, 11.98). Retime from the word, never from the seconds.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|

@@ -243,9 +243,10 @@ window.__timelines = window.__timelines || {};
   tl.to(down, { strokeDashoffset: 0, duration: 0.25, ease: "none" }, 14.38);
   tl.to(screen, { fill: AMBER, duration: 0.2, ease: "power2.out" }, 14.53);
 
-  /* 10 · warned @14.92: the house lights, only after the phone: lines Headline white, windows Amber 2 at 0.3 */
+  /* 10 · warned @14.92: the house lights, only after the phone: lines Headline white, windows Amber 2 at 0.85.
+     house-lit.svg's 0.3 measured RGB 89 85 65 over Panel dark, khaki; at 0.85 the window reads amber, a little under the phone */
   tl.to($("house"), { stroke: WHITE, duration: 0.4, ease: "power2.out" }, 14.92);
-  tl.to([$("win1"), $("win2")], { fill: AMBER, fillOpacity: 0.3, duration: 0.4, ease: "power2.out" }, 14.92);
+  tl.to([$("win1"), $("win2")], { fill: AMBER, fillOpacity: 0.85, duration: 0.4, ease: "power2.out" }, 14.92);
 
   /* 11 · Nobody @16.48: the list goes grey */
   tl.to(world, { opacity: 0.36, duration: 0.5, ease: "none" }, 16.48);

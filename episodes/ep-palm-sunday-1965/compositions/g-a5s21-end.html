@@ -8,8 +8,10 @@
      Copies the sheet, the chain and the labels of g-t1s3-list at its Everything state (s 1, tx 0, ty 110: screen = world + (0, 110);
      every left/top below is world px of design sheet sections 5 and 6). House and microphone are media/drawings/house.svg and
      microphone.svg (dark state), inline.
-     One container takes a slow push, 1.00 to 1.06 about the microphone (1090, 625); the source line sits outside it.
-     g-a6s03-announcer opens on this frame: the boxes, the push's end scale and its origin are shared numbers.
+     One container takes a slow push, 1.00 to 1.02 about the text margin at the microphone's height (96, 625); the source line
+     sits outside it. The brief's 1.06 about the microphone (1090, 625) carried the eyebrow and title to x 36: with the origin on
+     the margin no text moves left of x 96, and 1.02 keeps the house's right edge where the brief put it (1589, brief 1588).
+     g-a6s03-announcer's part 1 is this frame before the push (scale 1): it takes no push.
      Cues are comp-local seconds from audio/a5-s21.words.json (wav start -0.43, timeline-map.md table 5). -->
 <template>
 <style>
@@ -35,8 +37,8 @@
     <div class="end-world">
       <!-- the list: eight rows in the study's sentence order (printed p. 14), all plain; the ninth row blank, its cursor blinking -->
       <div class="end-sheet"></div>
-      <div class="end-eye">SOUTH BEND WEATHER BUREAU &middot; BY TELEPHONE</div>
-      <div class="end-title">Organizations notified included:</div>
+      <div class="end-eye" id="end-eye">SOUTH BEND WEATHER BUREAU &middot; BY TELEPHONE</div>
+      <div class="end-title" id="end-title">Organizations notified included:</div>
       <img class="end-phone" src="media/drawings/telephone.svg" alt="">
       <div class="end-rule"></div>
       <div class="end-rr" style="top:238px"></div>
@@ -48,14 +50,14 @@
       <div class="end-rr" style="top:526px"></div>
       <div class="end-rr" style="top:574px"></div>
       <div class="end-rr" style="top:622px"></div>
-      <div class="end-row" style="top:192px">State Police</div>
+      <div class="end-row" id="end-r1" style="top:192px">State Police</div>
       <div class="end-row" style="top:240px">Sheriffs' Departments</div>
       <div class="end-row" style="top:288px">City Police Departments</div>
-      <div class="end-row" style="top:336px">Indiana and Michigan Electric Company</div>
+      <div class="end-row" id="end-r4" style="top:336px">Indiana and Michigan Electric Company</div>
       <div class="end-row" style="top:384px">Red Cross</div>
       <div class="end-row" style="top:432px">Specified radio and TV stations</div>
       <div class="end-row" style="top:480px">Flying services</div>
-      <div class="end-row" style="top:528px">Airlines</div>
+      <div class="end-row" id="end-r8" style="top:528px">Airlines</div>
       <div class="end-cur" id="end-cur"></div>
 
       <!-- the dotted line on the blank row's centre: sheet to microphone (12 dots), microphone to house (9 dots) -->
@@ -78,7 +80,7 @@
         <path d="M30 182 H90 L108 230 H12 Z" fill="#15202b"/>
         <path d="M95 20 A9 9 0 1 1 113 20 A9 9 0 1 1 95 20 Z" fill="#15202b"/>
       </svg>
-      <div class="end-lab" style="left:940px">an announcer</div>
+      <div class="end-lab" id="end-lab1" style="left:940px">an announcer</div>
 
       <svg class="end-draw" style="left:1300px;top:380px" width="260" height="250" viewBox="0 0 260 250" fill="none" stroke="#55606b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
         <path d="M186 37.3 V22 H208 V50"/>
@@ -90,11 +92,11 @@
         <path d="M68 120 V168 M44 144 H92 M192 120 V168 M168 144 H216"/>
         <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
       </svg>
-      <div class="end-lab" style="left:1280px">a family</div>
+      <div class="end-lab" id="end-lab2" style="left:1280px">a family</div>
     </div>
   </div>
 
-  <div class="end-src">Disaster Research Center, 1966, p. 14</div>
+  <div class="end-src" id="end-src">Disaster Research Center, 1966, p. 14</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
@@ -106,9 +108,9 @@ window.__timelines = window.__timelines || {};
 
   var push = $("push"), cur = $("cur"), dots = $("dots").querySelectorAll("circle");
 
-  /* 0 · "Did" @0.00: everything on; the push runs the whole comp, 1.00 to 1.06 about the microphone (1090, 625) */
-  s0(push, { scale: 1, transformOrigin: "1090px 625px", force3D: false });
-  tl.to(push, { scale: 1.06, duration: D, ease: "none", force3D: false }, 0);
+  /* 0 · "Did" @0.00: everything on; the push runs the whole comp, 1.00 to 1.02 about the text margin (96, 625) */
+  s0(push, { scale: 1, transformOrigin: "96px 625px", force3D: false });
+  tl.to(push, { scale: 1.02, duration: D, ease: "none", force3D: false }, 0);
 
   /* the cursor: on 0.5 s, off 0.5 s, finite; it is on for the first and the last frame and never types */
   tl.set(cur, { autoAlpha: 0 }, 0.5);

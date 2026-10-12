@@ -48,7 +48,7 @@ Ground: the canvas gradient, on from frame 0.
 | Ring label | centred on x 416, top 656, Arial 700 22 px, Body light: `a radar in another locality` |
 | South Bend | dot radius 6, `#dfe7ee`, at (776.4, 659.0); label `South Bend`, Arial 700 26 px, Headline white, left 796, top 676 |
 | Repeater scope | `radar-scope.svg` inline, `<g transform="translate(840 480) scale(0.6)">`: box x 840 to 960, y 480 to 600, centre (900, 540). Group stroke Body light with `stroke-dasharray="6 6"` (file units); `dw-glow` hidden for the whole comp; `dw-sweep` turns about the scope's centre |
-| Scope label | centred on x 900, top 438, Arial 700 22 px, Label grey: `asked for: a repeater scope` |
+| Scope label | centred on x 900, top 438, Arial 700 22 px, Label grey: `the team asked for: a repeater scope`. Reworded by the lead's ruling of 12 Oct 26: `asked for:` alone read as South Bend's own request, and it was the survey team's recommendation 5. The line is longer now: measure it on a frame; it must stay one line, inside the map's box and clear of `South Bend` and its dot |
 | Leader | 3 px Body light line from South Bend's dot to the scope's rim, along the line joining the dot and the scope's centre |
 | Link | 4 px Body light dashed line (`stroke-dasharray` 14 12) from the ring's outer circle to the scope's rim, along the line joining the two centres, (416.4, 599.8) and (900, 540). End points by the builder's script |
 
@@ -65,7 +65,7 @@ Ground: the canvas gradient, on from frame 0.
 10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
-Text: `a Weather Bureau office` · `“adequate emergency power for all radar installations` / `and all communications equipment”` · `recommendation 8` · `“remote narrow bandwidth radar repeater scope”` · `recommendation 5` · `a radar in another locality` · `South Bend` · `asked for: a repeater scope` · `Weather Bureau survey report, 1965, pp. 2 and 10`.
+Text: `a Weather Bureau office` · `“adequate emergency power for all radar installations` / `and all communications equipment”` · `recommendation 8` · `“remote narrow bandwidth radar repeater scope”` · `recommendation 5` · `a radar in another locality` · `South Bend` · `the team asked for: a repeater scope` · `Weather Bureau survey report, 1965, pp. 2 and 10`.
 Cue words and times are from `audio/a6-s7.words.json` as it stood on 12 Oct 26 at 19:27 (wav 12.06 s). "t from comp start" is `mg_specs/timeline-map.md` table 5: the segment's "wav start inside the composition" (-0.33) plus the word's time; the first word takes the "first sound" column (0.00). Retime from the word, never from the seconds.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
@@ -77,9 +77,9 @@ Cue words and times are from `audio/a6-s7.words.json` as it stood on 12 Oct 26 a
 | 5 | A6-S7 | 15 | and | 5.62 | 5.29 | part 1 leaves: room, generator, cable, label and card 8 fade out (0.3 s); the four state outlines fade in (0.4 s) |
 | 6 | A6-S7 | 20 | another | 7.06 | 6.73 | the radar ring draws on at the other place (0.4 s), its sweep makes one full turn (1.6 s, `ease:"none"`), `a radar in another locality` fades in under it |
 | 7 | A6-S7 | 24 | South | 8.54 | 8.21 | South Bend's dot and `South Bend` come up (0.3 s) |
-| 8 | A6-S7 | 31 | screen | 10.38 | 10.05 | the scope draws on by South Bend with its leader (0.4 s), dashed; the dashed link draws from the ring to the scope (0.5 s); `asked for: a repeater scope` fades in; card 5 rises into the strip slot |
+| 8 | A6-S7 | 31 | screen | 10.38 | 10.05 | the scope draws on by South Bend with its leader (0.4 s), dashed; the dashed link draws from the ring to the scope (0.5 s); `the team asked for: a repeater scope` fades in; card 5 rises into the strip slot |
 | 9 | A6-S7 | 34 | radar. | 11.24 | 10.91 | the ring's sweep and the scope's sweep make one turn together (1.4 s, `ease:"none"`, ending 12.31). Last frame 12.44 |
-`a Weather Bureau office` and `asked for: a repeater scope` are this brief's labels, not the Picture note's: the first says what the drawing is without placing it, the second keeps the scope from reading as installed. If the lead strikes either, nothing else moves.
+`a Weather Bureau office` and `the team asked for: a repeater scope` are this brief's labels, not the Picture note's: the first says what the drawing is without placing it, the second keeps the scope from reading as installed. If the lead strikes either, nothing else moves.
 
 ## 6. Contract
 As `references/mg-brief-template.md` section 6, with these: `compositions/g-a6s07-power.html` is the only file the builder writes; `data-composition-id="g-a6s07-power"`; id prefix `pwr-`; root `<div id="pwr-root" ...>` styled through `#pwr-root` (plan rule 3 overrides the template's `id="root"`). Full frame, opaque, own ground on from frame 0.

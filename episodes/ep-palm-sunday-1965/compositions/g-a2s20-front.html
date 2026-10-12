@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2s20-front · A2-S20 · window 8.07 s · brief: mg_specs/briefs/g-a2s20-front.md
+  Claim: a warning did not have to begin at the Weather Bureau. A person who saw a tornado could call the police, and the police
+  would pass it on: the message entered the chain at its far end and ran back up it.
+  SCHEMATIC, NOT TO SCALE. Chain line y 520. The house and the desk stand in the intro's own slots (g-i1s9-chain.html:
+  house translate(1400 430) scale(0.68), desk translate(840 490) scale(0.85)); the Weather Bureau is off to the left.
+  The light runs right to left only. No person is drawn, no stop mark, no red, no time, no county chip, no list, no microphone.
+  Cues are comp-local seconds (audio/a2-s20.words.json minus 0.32, mg_specs/timeline-map.md table 5).
+  Coverage (plan rule 22): everything is authored at the brief's px; the timeline holds the stage 80 px left and 50 px up
+  until the light leaves the desk (5.60), then settles it onto the brief's px.
+  FRONT END BASE: g-a5s12-spotters and g-a6s08-spotters copy the stage block (house, telephone, desk, three links, the runs).
+-->
+<template>
+<style>
+  #front-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  /* the faint band that carries the holds: starts off the left edge, drifts right for the whole window */
+  #front-sweep { position:absolute; left:-560px; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
+  #front-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #front-svg { position:absolute; left:0; top:0; }
+  .front-lab { position:absolute; top:676px; width:200px; font-size:22px; line-height:28px; font-weight:700; color:#93a3b2; text-align:center; }
+  .front-end { position:absolute; right:1540px; font:700 26px Arial, sans-serif; line-height:30px; color:#dfe7ee; white-space:nowrap; }
+  #front-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em;
+    white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  /* hidden in CSS as well as at timeline 0, so the host's very first frame is the ground and nothing else */
+  #front-klong, #front-khouse, #front-kdesk, #front-arrow, #front-r1, #front-r2, #front-r3, #front-g1, #front-g2, #front-g3,
+  #front-house, #front-phone, #front-desk, #front-end1, #front-end2, #front-labp, #front-labd, #front-src { opacity:0; visibility:hidden; }
+</style>
+<div id="front-root" data-composition-id="g-a2s20-front" data-width="1920" data-height="1080" data-duration="8.07">
+  <div id="front-sweep"></div>
+
+  <!-- BASE · the chain's front end, seen from its other end: house, lifted telephone, police desk, one long link toward the Weather Bureau -->
+  <div id="front-stage">
+  <svg id="front-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <!-- links at y 520, solid. The long one is drawn from its Weather Bureau end; the two short ones from the caller's side -->
+    <g fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path id="front-klong" d="M420 520 H840"/>
+      <path id="front-khouse" d="M1400 520 H1274"/>
+      <path id="front-kdesk" d="M1166 520 H1095"/>
+      <!-- link end: an arrowhead at x 400 pointing left, two 18 px strokes at 35 degrees to the line -->
+      <path id="front-arrow" stroke="#93a3b2" d="M414.74 509.68 L400 520 L414.74 530.32"/>
+    </g>
+    <!-- "anywhere": three rings at the brief's x, one after another -->
+    <g fill="none" stroke="#e8c56a" stroke-width="3">
+      <circle id="front-g1" cx="980" cy="520" r="0"/>
+      <circle id="front-g2" cx="560" cy="520" r="0"/>
+      <circle id="front-g3" cx="760" cy="520" r="0"/>
+    </g>
+    <!-- the light: an Amber 2 run on each link, each path drawn in the direction the message travels (right to left) -->
+    <g fill="none" stroke="#e8c56a" stroke-width="6" stroke-linecap="round">
+      <path id="front-r1" d="M1400 520 H1274"/>
+      <path id="front-r2" d="M1166 520 H1095"/>
+      <path id="front-r3" d="M840 520 H420"/>
+    </g>
+
+    <!-- police desk (media/drawings/desk.svg whole: telephone, handset ON the cradle): box x 840 to 1095, y 490 to 618. No stop mark. -->
+    <g transform="translate(840 490) scale(0.85)">
+      <g id="front-desk" fill="none" stroke="#dfe7ee" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="14" y="52" width="12" height="98"/>
+        <rect x="274" y="52" width="12" height="98"/>
+        <rect x="190" y="62" width="74" height="38"/>
+        <path d="M219 81 H235"/>
+        <rect x="0" y="40" width="300" height="12" fill="#15202b"/>
+        <g transform="translate(106 -4)" stroke-width="3.5">
+          <rect x="24" y="-6" width="8" height="14" fill="#15202b"/>
+          <rect x="58" y="-6" width="8" height="14" fill="#15202b"/>
+          <path d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+          <circle cx="45" cy="27" r="15"/>
+          <circle cx="45" cy="27" r="3"/>
+          <circle cx="43.2" cy="37" r="0.8"/><circle cx="37.2" cy="33.6" r="0.8"/><circle cx="34.8" cy="27" r="0.8"/><circle cx="37.2" cy="20.4" r="0.8"/>
+          <circle cx="43.2" cy="17" r="0.8"/><circle cx="50.1" cy="18.2" r="0.8"/><circle cx="54.6" cy="23.5" r="0.8"/>
+          <path fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- telephone, handset OFF the hook (media/drawings/telephone-lifted.svg): body x 1166 to 1274, base y 590, handset top y 472 -->
+    <g transform="translate(1166 537.2) scale(1.2)">
+      <g id="front-phone" fill="none" stroke="#dfe7ee" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="24" y="-6" width="8" height="14" fill="#15202b"/>
+        <rect x="58" y="-6" width="8" height="14" fill="#15202b"/>
+        <path d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+        <circle cx="45" cy="27" r="15" fill="#15202b"/>
+        <path d="M14 -10 L4 -5 a3.2 3.2 0 0 0 0 6.4 a3.2 3.2 0 0 1 0 6.4 a3.2 3.2 0 0 0 0 6.4 a3.2 3.2 0 0 1 0 6.4 a3.2 3.2 0 0 0 0 6.4 L6.5 28"/>
+        <g transform="translate(2 -26) rotate(-18 45 -5)">
+          <path fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+        </g>
+        <circle cx="45" cy="27" r="3"/>
+        <circle cx="43.2" cy="37" r="0.8"/><circle cx="37.2" cy="33.6" r="0.8"/><circle cx="34.8" cy="27" r="0.8"/><circle cx="37.2" cy="20.4" r="0.8"/>
+        <circle cx="43.2" cy="17" r="0.8"/><circle cx="50.1" cy="18.2" r="0.8"/><circle cx="54.6" cy="23.5" r="0.8"/>
+      </g>
+    </g>
+
+    <!-- house (media/drawings/house.svg): box x 1400 to 1577, y 430 to 600, aerial to y 407; lines Body light, windows Panel dark. No person. -->
+    <g transform="translate(1400 430) scale(0.68)">
+      <g id="front-house" fill="none" stroke="#dfe7ee" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M186 37.3 V22 H208 V50"/>
+        <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+        <rect x="20" y="80" width="220" height="170" fill="#15202b"/>
+        <rect x="112" y="170" width="36" height="80"/>
+        <rect x="44" y="120" width="48" height="48" fill="#15202b"/>
+        <rect x="168" y="120" width="48" height="48" fill="#15202b"/>
+        <path d="M68 120 V168 M44 144 H92"/>
+        <path d="M192 120 V168 M168 144 H216"/>
+        <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+      </g>
+    </g>
+  </svg>
+  <div class="front-end" id="front-end1" style="top:490px">Weather Bureau</div>
+  <div class="front-end" id="front-end2" style="top:524px">South Bend</div>
+  <div class="front-lab" id="front-labd" style="left:867px">the police</div>
+  <div class="front-lab" id="front-labp" style="left:1388px">a person</div>
+  </div>
+
+  <div id="front-src">Disaster Research Center, 1966, p. 12</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#front-", D = 8.07;
+  const el = function (id) { return document.getElementById("front-" + id); };
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function fadeIn(sel, at) { tl.to(sel, { autoAlpha: 1, duration: 0.3, ease: "power3.out" }, at); }
+  function draw(e, at, dur) {
+    const len = Math.ceil(e.getTotalLength()) + 1;
+    s0(e, { strokeDasharray: len, strokeDashoffset: len });
+    tl.to(e, { strokeDashoffset: 0, duration: dur, ease: "power2.out" }, at);
+  }
+  /* BASE · a link draws on from its first point */
+  function link(id, at, dur) { tl.set(P+id, { autoAlpha: 1 }, at); draw(el(id), at, dur); }
+  /* BASE · a drawing draws on: every line at once, the fills come with the group */
+  function drawOn(id, at, dur) {
+    el(id).querySelectorAll("path, rect, circle").forEach(function (e) { draw(e, at, dur); });
+    tl.to(P+id, { autoAlpha: 1, duration: 0.15, ease: "none" }, at);
+  }
+  /* BASE · the light: a 60 px run whose head crosses the path in dur (ease none), then slips off its far end */
+  function run(id, at, dur) {
+    const e = el(id), len = e.getTotalLength(), SEG = 60, whole = dur * (len + SEG) / len;
+    s0(e, { autoAlpha: 0, strokeDasharray: SEG + " " + (len + SEG + 10), strokeDashoffset: SEG });
+    tl.set(e, { autoAlpha: 1 }, at);
+    tl.to(e, { strokeDashoffset: -len, duration: whole, ease: "none" }, at);
+    tl.set(e, { autoAlpha: 0 }, at + whole);
+  }
+  /* a ring grows from nothing to 18 px and fades as it grows, once */
+  function ring(id, at) {
+    s0(P+id, { autoAlpha: 0, attr: { r: 0 } });
+    tl.set(P+id, { autoAlpha: 1 }, at);
+    tl.to(P+id, { attr: { r: 18 }, autoAlpha: 0, duration: 0.5, ease: "power2.out" }, at);
+  }
+
+  /* coverage (plan rule 22): where the stage waits, as an offset from the brief's px */
+  const STAGE = { x: -80, y: -50 };
+
+  /* A @0.00: ground only */
+  s0([P+"klong", P+"khouse", P+"kdesk", P+"arrow", P+"house", P+"phone", P+"desk", P+"end1", P+"end2", P+"labp", P+"labd", P+"src"], { autoAlpha: 0 });
+  s0(P+"stage", { x: STAGE.x, y: STAGE.y });
+  tl.to(P+"sweep", { x: 2860, duration: D / 2, ease: "none", repeat: 1 }, 0);
+
+  /* WARNING @0.10: the long link draws from x 420 to x 840; the arrowhead, the end label and the source line fade in */
+  link("klong", 0.10, 0.6);
+  fadeIn([P+"arrow", P+"end1", P+"end2", P+"src"], 0.10);
+  /* ANYWHERE @0.92: three rings in turn, 0.2 s apart */
+  ring("g1", 0.92); ring("g2", 1.12); ring("g3", 1.32);
+  /* PERSON @2.46: the house draws on with its label */
+  drawOn("house", 2.46, 0.7);
+  fadeIn(P+"labp", 2.46);
+  /* CALLS @3.88: the telephone draws on with its link to the house; the light runs house to telephone and arrives at 4.18 */
+  link("khouse", 3.88, 0.25);
+  drawOn("phone", 3.88, 0.4);
+  run("r1", 3.88, 0.3);
+  /* POLICE @4.30: the desk draws on with its link and its label; the light runs telephone to desk (4.60); the desk goes amber and back by 5.00 */
+  link("kdesk", 4.30, 0.25);
+  drawOn("desk", 4.30, 0.5);
+  fadeIn(P+"labd", 4.30);
+  run("r2", 4.30, 0.3);
+  tl.to(P+"desk", { attr: { stroke: "#e8c56a" }, duration: 0.1, ease: "power2.out" }, 4.60);
+  tl.to(P+"desk", { attr: { stroke: "#dfe7ee" }, duration: 0.15, ease: "power2.in" }, 4.82);
+  /* PASS @5.60: the light leaves the desk and runs the long link; its head reaches the link's end at 6.52. The stage settles. */
+  run("r3", 5.60, 6.52 - 5.60);
+  tl.to(P+"stage", { x: 0, y: 0, duration: 0.5, ease: "power3.inOut" }, 5.60);
+  /* BUREAU @6.52: the arrowhead turns Amber 2 and the end label Headline white */
+  tl.to(P+"arrow", { attr: { stroke: "#e8c56a" }, duration: 0.2, ease: "power2.out" }, 6.52);
+  tl.to([P+"end1", P+"end2"], { color: "#f2f5f8", duration: 0.2, ease: "power2.out" }, 6.52);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-a2s20-front"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -37,7 +37,7 @@ In this comp the teletype is the Weather Bureau's: its label reads `Weather Bure
 | Radio arc 1 | from the South Bend telephone's top (388, 433) to the second office's left (700, 220): a quadratic curve with its control point at (480, 190), dotted (`stroke-dasharray="0.1 14"`), 5 px, round caps, Amber 2 |
 | Radio arc 2 | from the South Bend telephone's top (388, 433) over the list to the chain desk's top (967, 487): control point (680, 290), same stroke |
 | Desk label | `civil defense and local offices`, Arial 700 22 px, Label grey, centred on x 967, top 640 (under the chain's desk, above the labels row) |
-| Paper strip | Beige polaroid, left 96, top 780, 1000 x 124 (right 1096, bottom 904), the chain strip's shadow. Quote, Georgia 44 px, Caption dark, left 136, top 796: `“back-up emergency radio communications”`. Attribution, Arial 700 22 px, Caption dark sub, tracking 2, left 136, top 862: `Weather Bureau survey, 1965, p. 2, recommendation 7` |
+| Paper strip | Beige polaroid, left 96, top 780, 1000 x 124 (right 1096, bottom 904), the chain strip's shadow. Quote, Georgia 44 px, Caption dark, left 136, top 796: `“back-up emergency radio communications”`. Attribution, Arial 700 22 px, Caption dark sub, tracking 2, left 136, top 862: `Weather Bureau survey report, 1965, p. 2, recommendation 7` |
 Arc 2 passes above the miniature list (top y 350) only if its curve stays above y 340 between x 540 and x 800: check it by script and lift the control point if it does not.
 
 ## 4. Must be true in the picture
@@ -51,7 +51,7 @@ Arc 2 passes above the miniature list (top y 350) only if its curve stays above 
 8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). It holds without staging: at every step the largest empty block is the band above the chain (y 0 to 350, 32.4 % of the frame) or the band below its labels (y 735 to 1080, 31.9 %), each under a third. Desks A and B fill both bands from 0.18 s to 8.68 s, the strip fills the lower one from 10.90 s and the second office the upper one from 12.10 s.
 
 ## 5. Text (exact) and cues
-Text: the chain's labels as `g-a1s13-chain.md` with `Weather Bureau teletype` · `a fire department` · `a police department` · `another Weather Bureau office` · `civil defense and local offices` · `“back-up emergency radio communications”` · `Weather Bureau survey, 1965, p. 2, recommendation 7` · `Disaster Research Center, 1966, p. 29`.
+Text: the chain's labels as `g-a1s13-chain.md` with `Weather Bureau teletype` · `a fire department` · `a police department` · `another Weather Bureau office` · `civil defense and local offices` · `“back-up emergency radio communications”` · `Weather Bureau survey report, 1965, p. 2, recommendation 7` · `Disaster Research Center, 1966, p. 29`.
 t from comp start = the segment's wav start inside the composition (timeline-map.md table 5: A6-S5 -0.32, A6-S6 8.26) plus the word's time; a segment's first word uses table 5's first sound.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|

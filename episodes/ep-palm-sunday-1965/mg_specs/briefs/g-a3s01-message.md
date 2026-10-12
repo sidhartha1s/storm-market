@@ -67,7 +67,7 @@ View MAP (14.44 to 18.73):
 | Map | BM-1's `map-neighbours` group and the `st-in` path only, ids prefixed `msg-`; no county path and no `pt-` group is inlined. Indiana's outline 3 px Body light, neighbour outlines 2 px Label grey at 0.4, as the map family |
 | Band | one `<rect>` in map units, x 206 to 674, y 153 to 478.6, fill Amber 2, clipped to the `st-in` path with a `<clipPath>`, under the outline. Its opacity is a vertical `linearGradient` mask: 0.45 from map y 153 to 398.6 (screen y 60 to 362), falling to 0 at map y 478.6 (screen y 461). The fade is the soft edge: its mid point is the end of the northern third (screen y 387). No county line is inside it |
 | Area label | glass chip, left 1250, top 210, height 46, padding 0 x 22, Arial 700 26 px, Body light: `north central Indiana` |
-| Source line | design sheet section 10, left 96, bottom 60: `Weather Bureau survey, 1965, p. 40 · area drawn is schematic` |
+| Source line | design sheet section 10, left 96, bottom 60: `Weather Bureau survey report, 1965, p. 40 · area drawn is schematic` |
 
 ## 4. Must be true in the picture
 1. Every word on the card is the page's own. Only the two strips are retyped, each with quotation marks and its attribution.
@@ -82,7 +82,7 @@ View MAP (14.44 to 18.73):
 10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
-Text: `WEATHER BUREAU` · `6:50 PM` · `South Bend, Indiana` · `“telephones being out in many areas ...` / `it is impossible to notify many people”` · `Weather Bureau, South Bend · 6:50 PM` (on both strips) · `“so many tornado` / `reports that it was` / `hard to keep track` / `of them”` · `as recalled in 2014` · `“so numerous that it is` / `impossible to keep track` / `of them”` · `north central Indiana` · `Weather Bureau survey, 1965, p. 40 · area drawn is schematic`. Page words are the image.
+Text: `WEATHER BUREAU` · `6:50 PM` · `South Bend, Indiana` · `“telephones being out in many areas ...` / `it is impossible to notify many people”` · `Weather Bureau, South Bend · 6:50 PM` (on both strips) · `“so many tornado` / `reports that it was` / `hard to keep track` / `of them”` · `as recalled in 2014` · `“so numerous that it is` / `impossible to keep track` / `of them”` · `north central Indiana` · `Weather Bureau survey report, 1965, p. 40 · area drawn is schematic`. Page words are the image.
 Cue words and times are from `audio/a3-s1.words.json`, `audio/a3-s2.words.json` and `audio/a3-s3.words.json` as they stood on 12 Oct 26 at 19:30. t from comp start = the segment's wav start inside the composition (`mg_specs/timeline-map.md` table 5: A3-S1 -0.55, A3-S2 6.45, A3-S3 14.07) plus the word's time; a segment's first word uses table 5's first sound. The transcriber writes A3-S1 word 1 as "650" and A3-S2 word 7 as "11"; the voice says "six fifty" and "eleven". Retime from the word index and the word, never from the seconds.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|

@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a3s07-calls (A3-S7, A3-S8): a desk telephone in a period film; then the clock at 7:13, a drawn telephone that rings and
+     the office's typed plea on paper; then a teletype room with three words on paper: the poor observer.
+     Brief: mg_specs/briefs/g-a3s07-calls.md. Film family: the film view and the strip of g-a1s15-offices; clock stamp and telephone
+     of g-t1s2-warning; photograph ground and scrim of g-t1s3-list.
+     The film is not this comp's: index.html mounts it on track 1 (class filmwin, left 480, top 150, 960 x 720) and this comp sits
+     above it with a transparent hole. The mount runs to 11.41; the hole is covered from 4.21 and never opens again.
+     Views: FILM 0.00 to 4.21 (a14-10, "Civil defense training film, 1967" is the only chip), DESK 4.21 to 11.41, ROOM 11.41 to 17.24.
+     Telephone: media/drawings/telephone.svg at 3.5 times, screen x = 782 + 3.5 x (object x + 6), y = 200 + 3.5 x (object y + 58).
+       Handset ends, object (-2, -4) and (92, -4): screen (796, 389) and (1125, 389), the centres of the ring arcs (radius 40 and 64,
+       80 degrees each, tilted 20 degrees up and out).
+     Plan rule 22: until the strip needs the room the stamp and the telephone sit as one group in the middle of the frame
+       (400 px right, 212 px lower); the group moves to its briefed place on the strip's cue.
+     Photograph: media/stills/a3-teletype-operators.jpg, 1370 x 1080, cover 1.4015 (1920 x 1513.6, top offset -173.4).
+     Cues: words.json seconds plus the wav start inside the comp: a3-s7 -0.51, a3-s8 +11.16; a segment's first word is timed from
+     its first sound (mg_specs/timeline-map.md table 5). No audio and no video element in this file. -->
+<template>
+<style>
+  /* no background: the hole must stay clear. No z-index here: index.html puts the film under its host ("film under hosts") */
+  #call-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .call-h { opacity:0; visibility:hidden; }
+
+  /* ---- FILM VIEW (family block): ground with a 4:3 hole at x 480 to 1440, y 150 to 870, frame, label chip, hole cover ---- */
+  /* every pane carries the whole 1920 x 1080 gradient, offset by its own left and top, so no pane edge shows a seam */
+  .call-pane { position:absolute; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%) no-repeat; background-size:1920px 1080px; }
+  .call-pane-t { left:0; top:0; width:1920px; height:150px; background-position:0 0; }
+  .call-pane-b { left:0; top:870px; width:1920px; height:210px; background-position:0 -870px; }
+  .call-pane-l { left:0; top:150px; width:480px; height:720px; background-position:0 -150px; }
+  .call-pane-r { left:1440px; top:150px; width:480px; height:720px; background-position:-1440px -150px; }
+  .call-cover { left:480px; top:150px; width:960px; height:720px; background-position:-480px -150px; }
+  .call-frame { position:absolute; left:476px; top:146px; width:968px; height:728px; box-sizing:border-box; border:4px solid #dfe7ee; }
+  .call-chip { position:absolute; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:23px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  .call-label { left:480px; top:886px; }
+
+  /* ---- view DESK: the clock stamp (design sheet section 8) and the drawn telephone with its ring arcs, one group ---- */
+  .call-desk { position:absolute; left:0; top:0; width:0; height:0; }
+  .call-stamp { position:absolute; left:96px; top:96px; width:590px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .call-face { position:absolute; left:0; top:0; width:200px; height:200px; overflow:visible; }
+  .call-eye { position:absolute; left:188px; top:20px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .call-time { position:absolute; left:188px; top:46px; font:700 84px 'Courier New', monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .call-place { position:absolute; left:190px; top:148px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .call-telsvg { position:absolute; left:782px; top:200px; width:357px; height:371px; overflow:visible; }
+  .call-arcsvg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* ---- view ROOM: the photograph, its scrim and its one label ---- */
+  .call-ph { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; object-position:50% 40%; }
+  .call-scrim { position:absolute; left:0; top:0; width:1920px; height:1080px; background:rgba(3,5,8,0.45); }
+  .call-room { left:96px; top:578px; }
+
+  /* ---- quote strip (paper: the documents' words only), the base's strip ---- */
+  .call-strip { position:absolute; left:96px; top:640px; width:1480px; height:170px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; }
+  .call-q { position:absolute; left:54px; top:26px; font:52px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:1.15; }
+  .call-q-e { top:33px; font-size:40px; }
+  .call-att { position:absolute; left:56px; top:116px; font:700 22px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+  .call-when { position:relative; display:inline-block; }
+  .call-ul { position:absolute; left:0; right:2px; bottom:-8px; height:4px; background:#d0121f; }
+</style>
+<div id="call-root" data-composition-id="g-a3s07-calls" data-width="1920" data-height="1080">
+
+  <!-- FILM VIEW (family block) -->
+  <div class="call-pane call-pane-t"></div>
+  <div class="call-pane call-pane-b"></div>
+  <div class="call-pane call-pane-l"></div>
+  <div class="call-pane call-pane-r"></div>
+  <div class="call-pane call-cover call-h" id="call-cover"></div>
+  <div class="call-frame" id="call-frame"></div>
+  <div class="call-chip call-label" id="call-label">Civil defense training film, 1967</div>
+
+  <!-- view ROOM ground: under the strips, over everything of the first two views -->
+  <img class="call-ph call-h" id="call-ph" src="media/stills/a3-teletype-operators.jpg" alt="">
+  <div class="call-scrim call-h" id="call-scrim"></div>
+
+  <!-- view DESK: one layer, so the stamp and the telephone can sit in the middle of the frame while no strip is up (plan rule 22) -->
+  <div class="call-desk" id="call-desk">
+    <div class="call-stamp call-h" id="call-stamp">
+      <svg class="call-face" id="call-face" viewBox="0 0 200 200"></svg>
+      <div class="call-eye">WEATHER BUREAU</div>
+      <div class="call-time">7:13 PM</div>
+      <div class="call-place">South Bend, Indiana</div>
+    </div>
+
+    <!-- media/drawings/telephone.svg inline at 3.5 times (handset on the cradle), with the 1.6 line its README gives for this size -->
+    <svg class="call-telsvg" viewBox="-6 -58 102 106" width="357" height="371">
+      <g id="call-tel" fill="none" stroke="#dfe7ee" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect class="call-h" id="call-t-prong1" x="24" y="-6" width="8" height="14" fill="#15202b"/>
+        <rect class="call-h" id="call-t-prong2" x="58" y="-6" width="8" height="14" fill="#15202b"/>
+        <path class="call-h" id="call-t-body" d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+        <circle class="call-h" id="call-t-dial" cx="45" cy="27" r="15"/>
+        <circle class="call-h" id="call-t-hub" cx="45" cy="27" r="3"/>
+        <g class="call-h" id="call-t-holes">
+          <circle cx="43.2" cy="37" r="0.8"/>
+          <circle cx="37.2" cy="33.6" r="0.8"/>
+          <circle cx="34.8" cy="27" r="0.8"/>
+          <circle cx="37.2" cy="20.4" r="0.8"/>
+          <circle cx="43.2" cy="17" r="0.8"/>
+          <circle cx="50.1" cy="18.2" r="0.8"/>
+          <circle cx="54.6" cy="23.5" r="0.8"/>
+        </g>
+        <path class="call-h" id="call-t-handset" fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+      </g>
+    </svg>
+
+    <!-- ring arcs, screen px: centres (796, 389) and (1125, 389), radius 40 and 64, 4 px -->
+    <svg class="call-arcsvg" viewBox="0 0 1920 1080" width="1920" height="1080">
+      <g id="call-arcs" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round">
+        <path class="call-h" id="call-arc-l1" d="M776.0 354.4 A40 40 0 0 0 758.4 402.7"/>
+        <path class="call-h" id="call-arc-r1" d="M1145.0 354.4 A40 40 0 0 1 1162.6 402.7"/>
+        <path class="call-h" id="call-arc-l2" d="M764.0 333.6 A64 64 0 0 0 735.9 410.9"/>
+        <path class="call-h" id="call-arc-r2" d="M1157.0 333.6 A64 64 0 0 1 1185.1 410.9"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- the photograph's one label: what the photograph shows, never the town the voice is talking about -->
+  <div class="call-chip call-room call-h" id="call-room">Weather Bureau Communications Center, about 1955</div>
+
+  <!-- strip E: the plea, retyped, in quotation marks with its attribution; strip F in the same box -->
+  <div class="call-strip call-h" id="call-strip-e">
+    <div class="call-q call-q-e">&ldquo;numerous poor joke calls and they tie up the lines&rdquo;</div>
+    <div class="call-att">Weather Bureau, South Bend &middot; <span class="call-when">7:13 PM<span class="call-ul" id="call-ul"></span></span></div>
+  </div>
+  <div class="call-strip call-h" id="call-strip-f">
+    <div class="call-q">&ldquo;the poor observer&rdquo;</div>
+    <div class="call-att">National Weather Service, Northern Indiana</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a3s07-calls", P = "call", D = 17.24, CUT1 = 4.21, CUT2 = 11.41, NS = "http://www.w3.org/2000/svg";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+  function draw(e, t, d) {                                  /* a line drawn on: dash = ceil(len)+1, hidden until its start */
+    var L = Math.ceil(e.getTotalLength()) + 1;
+    s0(e, { strokeDasharray: L, strokeDashoffset: L, autoAlpha: 0 });
+    tl.set(e, { autoAlpha: 1 }, t);
+    tl.to(e, { strokeDashoffset: 0, duration: d, ease: "power2.out" }, t);
+  }
+  function stripIn(e, t) { tl.to(e, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, t); }
+
+  /* ---- the clock face (design sheet section 8): centre (95,100) in the stamp, radius 62 ---- */
+  var face = $("face"), CX = 95, CY = 100, RR = 62, O = CX + " " + CY;
+  function pt(deg, r) { var a = deg * Math.PI / 180; return [CX + r * Math.sin(a), CY - r * Math.cos(a)]; }   /* degrees clockwise from 12 */
+  el("circle", { cx: CX, cy: CY, r: RR, fill: "none", stroke: "#dfe7ee", "stroke-width": 4 }, face);
+  for (var i = 0; i < 12; i++) { var a = pt(i * 30, RR - 7), b = pt(i * 30, RR - (i % 3 ? 15 : 21));
+    el("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "#dfe7ee", "stroke-width": 3, "stroke-linecap": "round" }, face); }
+  var hh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 34, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  var mh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 52, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  el("circle", { cx: CX, cy: CY, r: 5, fill: "#e8c56a" }, face);
+
+  /* start states: hidden in CSS (call-h), transforms set here at 0; every move from rest below is a plain to() */
+  s0(hh, { rotation: 216.5, svgOrigin: O });                /* 7:13: hour hand between 7 and 8 */
+  s0(mh, { rotation: 48, svgOrigin: O });                   /* minute hand sweeps its last 30 degrees to 78, between the 2 and the 3 */
+  s0($("desk"), { x: 400, y: 212 });                        /* stamp and telephone in the middle of the frame until the strip needs the room (plan rule 22) */
+  s0($("stamp"), { x: -660 });
+  s0($("strip-e"), { y: 60 });
+  s0($("strip-f"), { y: 60 });
+  s0($("ul"), { scaleX: 0, transformOrigin: "left center" });
+  s0($("ph"), { scale: 1, transformOrigin: "50% 50%" });
+  var arcsIn = [$("arc-l1"), $("arc-r1")], arcsOut = [$("arc-l2"), $("arc-r2")], arcs = arcsIn.concat(arcsOut);
+  function ring(t) {                                        /* one pulse, 0.4 s, struck like a bell: near arcs on, far arcs on, both die away. Opacity only */
+    tl.set(arcsIn, { autoAlpha: 1 }, t);
+    tl.set(arcsOut, { autoAlpha: 1 }, t + 0.06);
+    tl.to(arcs, { autoAlpha: 0, duration: 0.18, ease: "power1.in" }, t + 0.2);
+  }
+
+  /* ================= view FILM: 0.00 to 4.21 ================= */
+  /* 0 · "Three" @0.00: ground, open window on the desk telephone shot, frame, film label. The film is the motion */
+
+  /* ================= view DESK: 4.21 to 11.41 ================= */
+  /* 1 · "People" @4.21: hard cut. The hole closes for good; frame and film label off; the clock stamp slides in, the minute hand sweeping */
+  tl.set($("cover"), { autoAlpha: 1 }, CUT1);
+  tl.set([$("frame"), $("label")], { autoAlpha: 0 }, CUT1);
+  tl.to($("stamp"), { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, CUT1);
+  tl.to(mh, { rotation: 78, duration: 0.5, ease: "power3.out" }, 4.41);
+
+  /* 2 · "calling" @4.93: the telephone draws on, longest line first (done by 5.45) */
+  draw($("t-handset"), 4.93, 0.3); draw($("t-body"), 4.98, 0.3); draw($("t-dial"), 5.05, 0.25);
+  draw($("t-prong1"), 5.10, 0.2); draw($("t-prong2"), 5.13, 0.2); draw($("t-hub"), 5.18, 0.2);
+  tl.to($("t-holes"), { autoAlpha: 1, duration: 0.2, ease: "power1.out" }, 5.25);
+  /* it rings: three pulses and no more, 5.53 to 6.73, inside the clause that ends on "report," @7.51 */
+  ring(5.53); ring(5.93); ring(6.33);
+
+  /* 3 · "because" @8.33: the ring arcs come on again and stay */
+  tl.to(arcs, { autoAlpha: 1, duration: 0.2, ease: "power1.out" }, 8.33);
+
+  /* 4 · "joke" @8.69: the group moves to its briefed place and strip E comes up under it */
+  tl.to($("desk"), { x: 0, y: 0, duration: 0.5, ease: "power3.out" }, 8.69);
+  stripIn($("strip-e"), 8.69);
+
+  /* 5 · "tying" @9.47: the telephone's lines and the arcs turn Label grey: the line is tied up */
+  tl.to([$("tel"), $("arcs")], { stroke: "#93a3b2", duration: 0.3, ease: "power1.out" }, 9.47);
+
+  /* ================= view ROOM: 11.41 to 17.24 ================= */
+  /* 6 · "The" @11.41: hard cut. Photograph, scrim and its label on; stamp, telephone and arcs off; strip E stays. The slow push starts */
+  tl.set([$("ph"), $("scrim"), $("room")], { autoAlpha: 1 }, CUT2);
+  tl.set($("desk"), { autoAlpha: 0 }, CUT2);
+  tl.to($("ph"), { scale: 1.04, duration: D - CUT2, ease: "none" }, CUT2);
+
+  /* 7 · "typed" @13.72: "that message": a red underline under 7:13 PM in strip E's attribution */
+  tl.to($("ul"), { scaleX: 1, duration: 0.3, ease: "power2.out" }, 13.72);
+
+  /* 8 · "the" @15.14: strip E fades out; 9 · "poor" @15.22: strip F rises in the same box. Hold to the cut */
+  tl.to($("strip-e"), { autoAlpha: 0, duration: 0.2, ease: "power1.in" }, 15.14);
+  stripIn($("strip-f"), 15.22);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a3s12-seven (A3-S12): two clocks side by side, 7:00 PM "named in the warnings" and 7:45 PM "transmitters hit", with the
+     amber arc of the minutes between them on the right face, over the station's own words on a paper strip. Both times are
+     the station's, quoted; no figure for the gap is printed. No microphone, no lamp, no county, no call letters.
+     Brief: mg_specs/briefs/g-a3s12-seven.md. Copies the clock family base g-a2s06-headstart: the two glass cards, the clock
+     mount (media/drawings/wall-clock.svg inline at 1.6, hands turned about (62, 62) in the drawing's own units), the time and
+     line type, the arc (radius 113, 10 px, round caps).
+     Cues are comp-local seconds from audio/a3-s12.words.json (wav start -0.25, timeline-map.md table 5). -->
+<template>
+<style>
+  /* ---- ground ---- */
+  #seven-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .seven-sweep { position:absolute; left:0; top:0; width:520px; height:1080px; background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
+  .seven-h { opacity:0; visibility:hidden; }
+
+  /* ---- stage: the chip and both cards, full frame, moved as one while the layout builds up (acts-plan rule 22) ---- */
+  .seven-top { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* ---- chip ---- */
+  .seven-chip { position:absolute; left:96px; top:84px; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:23px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+
+  /* ---- card: glass, clock, time, line (screen px; the wrapper is full frame) ---- */
+  .seven-col { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .seven-card { position:absolute; top:150px; width:700px; height:280px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .seven-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .seven-time { position:absolute; top:236px; font:700 84px 'Courier New', Courier, monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .seven-line { position:absolute; top:334px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+
+  /* ---- arc on a face: the minutes that passed ---- */
+  .seven-arc { fill:none; stroke:#e8c56a; stroke-width:10; stroke-linecap:round; }
+
+  /* ---- quote strip: the station's words, its attribution (the frame's source) ---- */
+  .seven-strip { position:absolute; left:96px; top:560px; width:1480px; height:190px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .seven-q { position:absolute; left:40px; font:40px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:52px; }
+  .seven-attr { position:absolute; left:40px; top:140px; font:700 22px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+</style>
+<div id="seven-root" data-composition-id="g-a3s12-seven" data-width="1920" data-height="1080" data-duration="7.59">
+  <div class="seven-sweep" id="seven-sweep"></div>
+
+  <div class="seven-top" id="seven-top">
+    <div class="seven-chip seven-h" id="seven-chip">a station</div>
+
+    <!-- left card: named at 7:00 -->
+    <div class="seven-col" id="seven-l-col">
+      <div class="seven-card" style="left:96px"></div>
+      <svg class="seven-svg" viewBox="0 0 1920 1080">
+        <g transform="translate(132 191) scale(1.6)">
+          <g fill="none" stroke="#dfe7ee" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="62" cy="62" r="62" fill="#15202b"/>
+            <path d="M62.0 8.0 L62.0 22.0 M89.0 15.2 L85.0 22.2 M108.8 35.0 L101.8 39.0 M116.0 62.0 L102.0 62.0 M108.8 89.0 L101.8 85.0 M89.0 108.8 L85.0 101.8 M62.0 116.0 L62.0 102.0 M35.0 108.8 L39.0 101.8 M15.2 89.0 L22.2 85.0 M8.0 62.0 L22.0 62.0 M15.2 35.0 L22.2 39.0 M35.0 15.2 L39.0 22.2" stroke-width="3"/>
+            <g id="seven-l-hour"><path d="M62 62 V28" stroke-width="5"/></g>
+            <g id="seven-l-min"><path d="M62 62 V10" stroke-width="5"/></g>
+            <path d="M62 62 h0.01" stroke-width="10"/>
+          </g>
+        </g>
+      </svg>
+      <div class="seven-time seven-h" id="seven-l-time" style="left:376px">7:00 PM</div>
+      <div class="seven-line seven-h" id="seven-l-line" style="left:378px">named in the warnings</div>
+    </div>
+
+    <!-- right card: hit at 7:45; dim until the second sentence -->
+    <div class="seven-col" id="seven-r-col" style="opacity:0.35">
+      <div class="seven-card" style="left:876px"></div>
+      <svg class="seven-svg" viewBox="0 0 1920 1080">
+        <g transform="translate(912 191) scale(1.6)">
+          <g fill="none" stroke="#dfe7ee" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="62" cy="62" r="62" fill="#15202b"/>
+            <path d="M62.0 8.0 L62.0 22.0 M89.0 15.2 L85.0 22.2 M108.8 35.0 L101.8 39.0 M116.0 62.0 L102.0 62.0 M108.8 89.0 L101.8 85.0 M89.0 108.8 L85.0 101.8 M62.0 116.0 L62.0 102.0 M35.0 108.8 L39.0 101.8 M15.2 89.0 L22.2 85.0 M8.0 62.0 L22.0 62.0 M15.2 35.0 L22.2 39.0 M35.0 15.2 L39.0 22.2" stroke-width="3"/>
+            <g id="seven-r-hour"><path d="M62 62 V28" stroke-width="5"/></g>
+            <g id="seven-r-min"><path d="M62 62 V10" stroke-width="5"/></g>
+            <path d="M62 62 h0.01" stroke-width="10"/>
+          </g>
+        </g>
+        <path class="seven-arc seven-h" id="seven-r-arc"/>
+      </svg>
+      <div class="seven-time seven-h" id="seven-r-time" style="left:1156px">7:45 PM</div>
+      <div class="seven-line seven-h" id="seven-r-line" style="left:1158px">transmitters hit</div>
+    </div>
+  </div>
+
+  <!-- quote strip: line 1 with the first time, line 2 and the attribution with the second -->
+  <div class="seven-strip seven-h" id="seven-strip">
+    <div class="seven-q" style="top:20px">&ldquo;our immediate vicinity was not included until 7:00 p.m.</div>
+    <div class="seven-q seven-h" id="seven-q2" style="top:72px">and our transmitters were hit at 7:45&rdquo;</div>
+    <div class="seven-attr seven-h" id="seven-attr">media personnel &middot; Disaster Research Center, 1966</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a3s12-seven", P = "seven", D = 7.59;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function fade(id, t, d) { tl.to($(id), { autoAlpha: 1, duration: d, ease: "none" }, t); }
+  function rise(id, t, d) { tl.to($(id), { y: 0, autoAlpha: 1, duration: d, ease: "power3.out" }, t); }
+
+  /* ---- clock: angles from the time, clockwise degrees from 12; the hands turn about (62, 62) in the drawing's own units ---- */
+  var HUB = "62 62";
+  function hourDeg(h, m) { return (h % 12) * 30 + m * 0.5; }
+  function minDeg(m) { return m * 6; }
+  function hands(side, h, m) { s0($(side + "-hour"), { rotation: hourDeg(h, m), svgOrigin: HUB }); s0($(side + "-min"), { rotation: minDeg(m), svgOrigin: HUB }); }
+
+  /* ---- arc: a clockwise circle arc as a path, degrees clockwise from 12, grown with strokeDashoffset ---- */
+  function arc(cx, cy, r, fromDeg, toDeg) {
+    function pt(deg) { var a = deg * Math.PI / 180; return (cx + r * Math.sin(a)).toFixed(2) + " " + (cy - r * Math.cos(a)).toFixed(2); }
+    return "M" + pt(fromDeg) + " A" + r + " " + r + " 0 " + (toDeg - fromDeg > 180 ? 1 : 0) + " 1 " + pt(toDeg);
+  }
+  function dash(e, len) { var L = Math.ceil(len) + 1; s0(e, { strokeDasharray: L, strokeDashoffset: L }); return e; }
+
+  var rArc = $("r-arc"), top = $("top");
+  rArc.setAttribute("d", arc(1011.2, 290.2, 113, minDeg(0), minDeg(45)));   /* 0 to 270: the minutes from 7:00 to 7:45 */
+
+  /* rest states, set at 0 */
+  hands("l", 6, 55);                        /* 207.5 and 330 */
+  hands("r", 7, 0);                         /* 210.0 and 0 */
+  dash(rArc, rArc.getTotalLength());
+  s0([$("l-time"), $("r-time")], { y: 16 });
+  s0($("strip"), { y: 60 });
+  s0($("sweep"), { x: -520 });
+
+  /* ---- staging (acts-plan rule 22): until the strip comes, the chip and the cards sit vertically centred in the frame; on
+          "7" they rise to their briefed y, so the strip (0.30 s later) comes up into clear ground ---- */
+  var MID = 540 - (84 + 430) / 2;           /* chip top 84 to card bottom 430 */
+  s0(top, { y: MID, force3D: false });
+
+  /* 0 · "A" @0.00: ground, both card shells (the right one dim), left hands at 6:55, right hands at 7:00 */
+  tl.to($("sweep"), { x: 1920, duration: D, ease: "none" }, 0);
+
+  fade("chip", 0.09, 0.3);                  /* 1 · station @0.09: the chip */
+  fade("l-line", 1.51, 0.3);                /* 2 · named @1.51: named in the warnings */
+
+  /* 3 · until @2.43: the left hands sweep 6:55 to 7:00, arriving on the next cue (the minute hand runs on to 360, clockwise) */
+  tl.to($("l-hour"), { rotation: hourDeg(7, 0), duration: 0.34, ease: "power3.out" }, 2.43);
+  tl.to($("l-min"), { rotation: 360, duration: 0.34, ease: "power3.out" }, 2.43);
+
+  /* 4 · 7 @2.77: 7:00 PM lands; the chip and the cards rise to their briefed y; @3.07 the strip rises with line 1 only */
+  rise("l-time", 2.77, 0.2);
+  tl.to(top, { y: 0, duration: 0.5, ease: "power3.out", force3D: false }, 2.77);
+  rise("strip", 3.07, 0.4);
+
+  /* 5 · Its @4.17: the right card comes up from dim to full */
+  tl.to($("r-col"), { opacity: 1, duration: 0.3, ease: "none" }, 4.17);
+
+  /* 6 · hit @5.05: transmitters hit; the right hands run 7:00 to 7:45 and the arc grows behind the minute hand, same ease */
+  fade("r-line", 5.05, 0.3);
+  tl.to($("r-hour"), { rotation: hourDeg(7, 45), duration: 0.76, ease: "none" }, 5.05);
+  tl.to($("r-min"), { rotation: minDeg(45), duration: 0.76, ease: "none" }, 5.05);
+  tl.set(rArc, { autoAlpha: 1 }, 5.05);
+  tl.to(rArc, { strokeDashoffset: 0, duration: 0.76, ease: "none" }, 5.05);
+
+  rise("r-time", 5.43, 0.2);                /* 7 · 7 @5.43: 7:45 PM */
+
+  /* 8 · .45. @5.81: the hands stop at 7:45 and the arc is whole; line 2 of the quote and the attribution. Hold to 7.59 */
+  fade("q2", 5.81, 0.3);
+  fade("attr", 5.81, 0.3);
+
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
