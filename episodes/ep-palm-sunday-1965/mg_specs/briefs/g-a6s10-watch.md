@@ -53,6 +53,7 @@ t from comp start = the segment's wav start inside the composition (timeline-map
 | 4 | A6-S10 | 14 | warning. | 5.00 | 4.79 | strip 2 rises the same way |
 | 5 | A6-S10 | 18 | Weather | 6.86 | 6.65 | source A gives way to source B (0.3 s cross fade) |
 | 6 | A6-S10 | 24 | warning | 8.56 | 8.35 | the pulse wipes across strip 2 (0.5 s) and leaves |
+| 6b | A6-S10 | 28 | update, | 9.34 | 9.13 | the microphone and both strips move 280 px left to their briefed places (0.5 s, power2.inOut; done at 9.63) |
 | 7 | A6-S10 | 29 | so | 10.14 | 9.93 | the glass card rises with glass line 1 on it (`y:40` to 0 with the fade, 0.35 s) |
 | 8 | A6-S10 | 34 | renamed | 11.46 | 11.25 | the strike draws across glass line 1 (0.4 s) |
 | 9 | A6-S10 | 36 | Tornado | 12.10 | 11.89 | glass line 2 fades in (0.25 s) |
