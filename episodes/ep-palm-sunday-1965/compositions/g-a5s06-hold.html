@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5s06-hold (A5-S6): a teletype operator at his machine, a clock at 9:00, and the office's own typed words lifted onto paper.
+     Brief: mg_specs/briefs/g-a5s06-hold.md. Photograph family: ground, stamp and caption of g-a1s01-kc.
+     Photograph: media/stills/a5-teletype-room-1947.jpg, 1820 x 1220, a teletype operator about 1947, NOAA: not Fort Wayne, not 1965.
+       The place and the time live on the glass stamp, never bare on the photograph.
+       Cover: 1920 / 1820 = 1.0549 (1920 x 1287, top -103.5). The scan has a pale border on both sides: file x 0 to 56 and 1748 to
+       1820. The brief's push (1.06 to 1.11 about the frame centre) shows the right one until 1.086, so the picture sits 10 px to
+       the right and runs 1.08 to 1.13 about the frame centre: file x 57.9 to 1743.1 in frame at the start, 95.2 to 1705.8 at the end.
+       The operator's head (file x 310 to 545, y 100 to 385) is screen x 287 to 555, y -41 to 284 at the start and x 256 to 536,
+       y -68 to 272 at the end: nothing of ours enters x 240 to 570, y 0 to 300.
+     Cues: audio/a5-s6.words.json seconds minus 0.43 (mg_specs/timeline-map.md table 5). -->
+<template>
+<style>
+  #hold-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .hold-h { opacity:0; visibility:hidden; }
+  .hold-bg { position:absolute; left:10px; top:0; width:1920px; height:1080px; object-fit:cover; object-position:50% 50%; }
+  .hold-dim { position:absolute; left:0; top:0; width:1920px; height:1080px; background:rgba(3,5,8,0.45); }
+  .hold-cap { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+
+  /* ---- clock stamp (design sheet section 8), over the cable board at the right: no face under it ---- */
+  .hold-stamp { position:absolute; left:1234px; top:96px; width:590px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .hold-face { position:absolute; left:0; top:0; width:200px; height:200px; overflow:visible; }
+  .hold-eye { position:absolute; left:188px; top:20px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .hold-time { position:absolute; left:188px; top:46px; font:700 84px 'Courier New', monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .hold-place { position:absolute; left:190px; top:148px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .hold-chip { position:absolute; left:1234px; top:312px; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:23px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+
+  /* ---- the quote strip (paper: the office's typed words, with quotation marks and attribution) ---- */
+  .hold-strip { position:absolute; left:96px; top:700px; width:1480px; height:200px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; }
+  .hold-q { position:absolute; left:40px; font:40px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:pre; line-height:52px; }
+  .hold-att { position:absolute; left:40px; top:148px; font:700 22px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+</style>
+<div id="hold-root" data-composition-id="g-a5s06-hold" data-width="1920" data-height="1080">
+  <img class="hold-bg" id="hold-bg" src="media/stills/a5-teletype-room-1947.jpg" alt="">
+  <div class="hold-dim"></div>
+  <div class="hold-cap">Teletypes and operator, about 1947 &middot; NOAA</div>
+
+  <div class="hold-stamp hold-h" id="hold-stamp">
+    <svg class="hold-face" id="hold-face" viewBox="0 0 200 200"></svg>
+    <div class="hold-eye">WEATHER BUREAU</div>
+    <div class="hold-time">9:00 PM</div>
+    <div class="hold-place">Fort Wayne, Indiana</div>
+  </div>
+  <div class="hold-chip hold-h" id="hold-chip">it hit 10 to 15 minutes before</div>
+
+  <div class="hold-strip hold-h" id="hold-strip">
+    <!-- quote 1, three spans: "Hold the line a minute / for a definite report / on tornado at Berne." -->
+    <div id="hold-q1">
+      <div class="hold-q" style="top:24px">&ldquo;Hold the line a minute<span class="hold-h" id="hold-q1b1"> for a definite</span></div>
+      <div class="hold-q" style="top:76px"><span class="hold-h" id="hold-q1b2">report</span><span class="hold-h" id="hold-q1c"> on tornado at Berne.&rdquo;</span></div>
+    </div>
+    <!-- quote 2, two spans, in the same place: the survey's wording -->
+    <div class="hold-q hold-h" id="hold-q2a" style="top:24px">&ldquo;several houses destroyed and</div>
+    <div class="hold-q hold-h" id="hold-q2b" style="top:76px">ambulances are rushing to scene&rdquo;</div>
+    <div class="hold-att hold-h" id="hold-att">Weather Bureau, Fort Wayne &middot; 9:00 PM</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a5s06-hold", P = "hold", D = 15.98, NS = "http://www.w3.org/2000/svg";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+  function draw(e, t, d) {                                  /* a line drawn on: dash = ceil(len)+1, hidden until its start */
+    var L = Math.ceil(e.getTotalLength()) + 1;
+    s0(e, { strokeDasharray: L, strokeDashoffset: L, autoAlpha: 0 });
+    tl.set(e, { autoAlpha: 1 }, t);
+    tl.to(e, { strokeDashoffset: 0, duration: d, ease: "power2.out" }, t);
+  }
+  function fade(e, t) { tl.to(e, { autoAlpha: 1, duration: 0.25, ease: "power1.out" }, t); }
+
+  /* ---- the clock face (design sheet section 8): centre (95,100) in the stamp, radius 62 ---- */
+  var face = $("face"), CX = 95, CY = 100, RR = 62, O = CX + " " + CY;
+  function pt(deg, r) { var a = deg * Math.PI / 180; return [CX + r * Math.sin(a), CY - r * Math.cos(a)]; }   /* degrees clockwise from 12 */
+  el("circle", { cx: CX, cy: CY, r: RR, fill: "none", stroke: "#dfe7ee", "stroke-width": 4 }, face);
+  for (var i = 0; i < 12; i++) { var a = pt(i * 30, RR - 7), b = pt(i * 30, RR - (i % 3 ? 15 : 21));
+    el("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "#dfe7ee", "stroke-width": 3, "stroke-linecap": "round" }, face); }
+  /* the arc on the ring, 270 to 360 degrees (8:45 to 9:00): when it hit, relative to 9:00. No time is printed for the hit */
+  var arc = el("path", { d: "M33 100 A62 62 0 0 1 95 38", fill: "none", stroke: "#e8c56a", "stroke-width": 6 }, face);
+  var hh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 34, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  var mh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 52, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  el("circle", { cx: CX, cy: CY, r: 5, fill: "#e8c56a" }, face);
+
+  /* start states: hidden in CSS (hold-h), transforms set here at 0; every move from rest below is a plain to() */
+  s0($("bg"), { scale: 1.08, transformOrigin: "950px 540px" });   /* the frame centre, in the picture's own box (left 10) */
+  s0(hh, { rotation: 270, svgOrigin: O });                  /* 9:00: hour hand on the 9 */
+  s0(mh, { rotation: 330, svgOrigin: O });                  /* minute hand sweeps its last 30 degrees to 12 */
+  s0($("stamp"), { x: 700 });
+  s0($("strip"), { y: 60 });
+
+  /* 0 · "At" @0.00: photograph, scrim, caption; the push carries the whole comp */
+  tl.to($("bg"), { scale: 1.13, duration: D, ease: "none" }, 0);
+
+  /* 1 · "9" @0.11: the clock stamp slides in from the right, the minute hand sweeping to 12 */
+  tl.to($("stamp"), { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0.11);
+  tl.to(mh, { rotation: 360, duration: 0.5, ease: "power3.out" }, 0.31);
+
+  /* 2 · "hold" @1.99: the strip rises with span 1 of quote 1 */
+  tl.to($("strip"), { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 1.99);
+
+  /* 3 · "for" @2.93: span 2; 4 · "on" @4.05: span 3; 5 · "Berne." @4.83: the attribution */
+  fade([$("q1b1"), $("q1b2")], 2.93);
+  fade($("q1c"), 4.05);
+  fade($("att"), 4.83);
+
+  /* 6 · "10" @8.05: the arc draws on the clock face from 8:45 to 9:00; its label under the stamp */
+  draw(arc, 8.05, 0.6);
+  tl.to($("chip"), { autoAlpha: 1, duration: 0.3, ease: "power1.out" }, 8.05);
+
+  /* 7 · "Several" @10.11: quote 1 fades out, then quote 2's first line in the same place */
+  tl.to($("q1"), { autoAlpha: 0, duration: 0.2, ease: "power1.in" }, 10.11);
+  fade($("q2a"), 10.31);
+
+  /* 8 · "ambulances" @12.97: quote 2's second line. Hold to the cut */
+  fade($("q2b"), 12.97);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
