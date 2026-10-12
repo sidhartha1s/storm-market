@@ -29,7 +29,7 @@ The chain line is y 520, as in the intro. The house stands in the intro's statio
 | Links, y 520, 4 px, Label grey, solid | x 1274 to 1400 (house to telephone), x 1095 to 1166 (telephone to desk), x 420 to 840 (desk toward the Weather Bureau) |
 | Link end | an arrowhead at x 400 pointing left: two 18 px strokes at 35 degrees to the line, 4 px, Label grey, meeting at (400, 520) |
 | End label | two lines, right aligned at x 380: `Weather Bureau` top 490 and `South Bend` top 524, Arial 700 26 px, Body light, line-height 30 |
-| "Anywhere" rings | three circles on the long link, y 520. Ring 1: on the long link, spacing as rings 2 and 3, whole inside x 420 to 840; its exact x is to be filled from the fixer's measure (this brief first said x 980, a slip: that is off the long link, and the words win, lead's ruling of 12 Oct 26). Rings 2 and 3: x 560 and x 760. Each ring: radius grows 0 to 18 px, 3 px Amber 2 stroke, each fades as it grows (0.5 s), once |
+| "Anywhere" rings | three circles on the long link, y 520. Ring 1: centre x 700, on the long link and whole inside x 420 to 840: midway between ring 2 at x 560 and the link's end at x 840 (the spacing of rings 2 and 3 continued would land at x 960, past the link). This brief first said x 980, a slip: that is off the long link, and the words win (lead's ruling of 12 Oct 26). Rings 2 and 3: x 560 and x 760. Each ring: radius grows 0 to 18 px, 3 px Amber 2 stroke, each fades as it grows (0.5 s), once |
 | Light | an Amber 2 run, 60 px long, 6 px, travelling along the links from the house to the arrowhead |
 | Source line | design sheet section 10, left 96, bottom 60: `Disaster Research Center, 1966, p. 12` |
 
