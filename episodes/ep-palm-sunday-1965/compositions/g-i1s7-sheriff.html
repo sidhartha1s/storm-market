@@ -116,7 +116,8 @@ window.__timelines = window.__timelines || {};
   tl.to([uA1, uA2], { opacity: 0.35, duration: 0.3, ease: "power2.out" }, 6.66);                                                              /* television @6.66 */
   tl.set(sB1, { autoAlpha: 1 }, 6.66);
   tl.to(uB1, { scaleX: 1, duration: 0.6, ease: "none" }, 6.66);
-  s0($("q2"), { autoAlpha: 0, y: 110 });                     /* waits hidden and inside the frame (its second line at y 990 to 1046), never painted below 1080 */
+  s0($("q2"), { autoAlpha: 0, y: 100 });                     /* waits hidden and inside the frame (its second line at y 980 to 1036), never painted below 1080 */
+  s0($("q2b"), { autoAlpha: 0 });                            /* the second line is painted only once it has risen clear of the attribution line */
   tl.to($("q1"), { y: -170, duration: 0.4, ease: "power3.inOut" }, 7.98);                                                                     /* said @7.98: the line swap inside the strip */
   tl.to($("q2"), { y: 0, duration: 0.4, ease: "power3.inOut" }, 7.98);
   tl.to($("q2"), { autoAlpha: 1, duration: 0.15, ease: "power2.out" }, 7.98);
