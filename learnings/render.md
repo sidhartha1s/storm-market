@@ -2,6 +2,18 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 12 Oct 26: verify_render judged every draft as a final
+
+1. Measured on a real 113 s draft: `FAIL: fps 15 != composition 30fps (a draft mastered by mistake?)`, exit non-zero.
+   `render.cmd` renders drafts at `_FPS=15` and the check compared the file with the composition's `data-fps`. A draft
+   named `ep-palm-sunday-1965-preview-v1` was also checked against `render_full.log` (the log was picked by "draft" in
+   the basename) and failed the GPU probe for a log that was not its own.
+2. Fix: `verify_render.sh <episode-dir> <basename> <draft|full>` takes the mode you gave `render.cmd`. The mode picks
+   `render_<mode>.log` and the frame rate: a draft must have the draft `_FPS` read out of `render.cmd` (the one place it
+   is set), a full render the composition's `data-fps`. A 15 fps file checked as `full` still FAILs, so a draft shipped as
+   the final is still caught. Without the argument the old name guess stands for existing callers.
+3. Rule: pass the mode every time. A frame-rate gate has to know which render it is judging; the file name does not say.
+
 ## 12 Oct 26: pin 0.8.143 to 0.8.149 before Palm Sunday 1965's first render
 
 1. Ritual on demo-pin (hidden task, exit 0): duration 24.000/24.000 s, black 0/0, RMS -21.602701/-21.602708 dB,
