@@ -401,7 +401,7 @@ if HAVE_FFMPEG:
         check("render-11 NEW: a draft at another rate than render.cmd's draft rate fails",
               r.returncode != 0 and "FAIL: fps 24 != draft 15fps" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
         r = run_verify(ep, "pal-preview-v1", "mastered")
-        check("render-10 NEW: an unknown mode is a usage error, not a guess",
+        check("render-11 NEW: an unknown mode is a usage error, not a guess",
               r.returncode == 1 and "usage:" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
 else:
     print("SKIP render-07 synthetic-clip checks: ffmpeg not on PATH")
