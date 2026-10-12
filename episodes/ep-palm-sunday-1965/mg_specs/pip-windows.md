@@ -6,17 +6,17 @@ Each window is its own file `media/pip/paul-w<n>.mp4`. Windows 2 to 11 are cut w
 
 | n | timeline start (s) | timeline end (s) | length (s) | face | offset in pass (s) | file length (s) | starts because | ends because |
 |---|---|---|---|---|---|---|---|---|
-| 1 | 37.60 | 112.48 | 74.88 | A | 27.73 | 74.88 | first intro graphic (g-i1s1-house), after the full-frame opening and the tease | blackout bo-i1 |
-| 2 | 113.18 | 233.10 | 119.92 | A | 103.31 | 119.92 | blackout over | ins-paul-2 starts (full-frame, circle off) |
+| 1 | 37.60 | 112.48 | 74.88 | A | 27.73 | 74.88 | CUT, NOT MOUNTED: the approved intro stays as rendered; the owner can ask for it (ruling, lead, 12 Oct 26). Would start on the first intro graphic (g-i1s1-house) | blackout bo-i1 |
+| 2 | 113.18 | 233.10 | 119.92 | A | 103.31 | 119.96 | act 1 opens after blackout bo-i1: the circle first appears here | ins-paul-2 starts (full-frame, circle off) |
 | 3 | 242.77 | 289.16 | 46.39 | A | 232.90 | 46.40 | ins-paul-2 over (film window v-a1s15 starts) | blackout bo-a1 |
-| 4 | 289.86 | 479.97 | 190.11 | A | 279.99 | 190.12 | blackout over | blackout bo-a2 |
-| 5 | 480.67 | 626.21 | 145.54 | A | 470.80 | 145.56 | blackout over | ins-paul-3 starts |
-| 6 | 668.16 | 706.15 | 37.99 | B | 0.00 | 38.00 | first narration line after the ad (a4-s1), over the film window and g-a4s01-eyes | ins-paul-4 starts |
+| 4 | 289.86 | 479.97 | 190.11 | A | 279.99 | 190.16 | blackout over | blackout bo-a2 |
+| 5 | 480.67 | 626.21 | 145.54 | A | 470.80 | 145.60 | blackout over | ins-paul-3 starts |
+| 6 | 668.56 | 706.15 | 37.59 | B | 0.40 | 37.64 | the cut from the a4s01 graphic to g-a4s02-countyb (ruling: not 668.16); face B's first line runs 668.16 to 668.56 without the circle | ins-paul-4 starts |
 | 7 | 715.65 | 813.81 | 98.16 | B | 47.49 | 98.16 | ins-paul-4 over (g-a4s08-chief starts) | blackout bo-a4 |
-| 8 | 814.51 | 932.76 | 118.25 | B | 146.35 | 118.28 | blackout over | ins-paul-5 starts |
-| 9 | 942.11 | 1007.38 | 65.27 | B | 273.95 | 65.28 | ins-paul-5 over (g-a5s14-noissue starts) | blackout bo-a5 |
-| 10 | 1008.08 | 1125.22 | 117.14 | B | 339.92 | 117.16 | blackout over | blackout bo-a6 |
-| 11 | 1135.63 | 1169.43 | 33.80 | B | 467.47 | 33.80 | ins-paul-6 over (g-z1s02-row starts) | close card g-z1s05-title starts |
+| 8 | 814.51 | 932.76 | 118.25 | B | 146.35 | 118.32 | blackout over | ins-paul-5 starts |
+| 9 | 942.11 | 1007.38 | 65.27 | B | 273.95 | 65.32 | ins-paul-5 over (g-a5s14-noissue starts) | blackout bo-a5 |
+| 10 | 1008.08 | 1125.22 | 117.14 | B | 339.92 | 117.20 | blackout over | blackout bo-a6 |
+| 11 | 1135.63 | 1169.43 | 33.80 | B | 467.47 | 33.84 | ins-paul-6 over (g-z1s02-row starts) | close card g-z1s05-title starts (end stays 1169.43 until g-z1s4b-book is built) |
 
 OFF by rule, no window: 0 to 37.60 (full-frame opening ins-paul-1 0 to 9.72, then the tease T1 9.72 to 37.60); blackouts 112.48, 289.16, 479.97, 813.81, 1007.38, 1125.22 (0.70 s each); ins-paul-2 to 6 (233.10 to 242.77, 626.21 to 635.44, 706.15 to 715.65, 932.76 to 942.11, 1125.92 to 1135.63); the book ad with its dips 635.44 to 661.85; the close card 1169.43 to 1184.66. Silent stretch 661.85 to 668.16: face B has no face before its first line.
 
