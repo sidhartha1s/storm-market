@@ -45,7 +45,7 @@ The echo shapes are schematic: the warning gives a vicinity, not an outline.
 | Lit county | fill Amber 2 at `fill-opacity` 0.45 on `radar-co-in-laporte`, `radar-co-in-starke`, `radar-co-in-marshall` (0.45 so echo 2 stays readable over Starke) |
 | South Bend (WIDE) | dot (966.8, 222.1). Labels left 986, top 198: `South Bend` Arial 700 26 px Body light, and under it (top 230) `no radar` Arial 700 22 px Label grey |
 | Radar rings (WIDE) | overlay SVG, at Chicago (655.3, 170.9), Fort Wayne (1214.1, 409.9), Indianapolis (993.8, 829.5): two circles radius 46 and 26, Body light 3 px, and one sweep line from the centre to the outer circle that turns one full turn in 2.4 s (ease none, one turn, then rests pointing up). Each town's dot sits at the centre |
-| Ring labels | Arial 700 22 px, Body light, centred under each ring: `Chicago` (655, top 226), `Fort Wayne` (1214, top 466), `Indianapolis` (994, top 885) |
+| Ring labels | Arial 700 22 px, Body light, centred under each ring: `Chicago` (655, top 226), `Fort Wayne` (1214, top 466), `Indianapolis` (994, top 885). The `Chicago` label clears the Indiana state line by 6 px or more (lead's ruling, 12 Oct 26): if it does not at this place, move it west until it does and state the place in the receipt |
 | Telephone line | overlay SVG, Body light 4 px solid, round caps, from Chicago (655.3, 170.9) to South Bend (966.8, 222.1), 316 px, drawn from Chicago with `strokeDashoffset`. Label `by telephone`, Arial 700 22 px, Label grey, centred on x 811, top 150 (above the line's midpoint) |
 | Source line | design sheet section 10, left 96, bottom 60: `Disaster Research Center, 1966, p. 13 · National Weather Service, Northern Indiana` (851 px wide at 22 px) |
 
