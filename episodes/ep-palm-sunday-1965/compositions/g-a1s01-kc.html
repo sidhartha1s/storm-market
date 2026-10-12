@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1s01-kc (A1-S1): a Weather Bureau teletype room, drifting; a drawn teletype whose paper turns amber on "typed"; then the
+     intro's clock stamp comes back and its time lands on "eleven forty five". Brief: mg_specs/briefs/g-a1s01-kc.md.
+     BASE OF THE PHOTOGRAPH FAMILY (with g-a2s17-funnels): one photograph at cover with a scrim, a slow push, its true caption in the
+     credit corner, our labels on glass. The three blocks a later comp copies are marked in the CSS and the markup.
+     Photograph: media/stills/a4-teletype-room.jpg, 1456 x 1080, NOAA Central Library, U.S. Weather Bureau, wea01821, about 1955.
+       It is not Kansas City and it is not 1965: the place and the time live on the glass stamp, the photograph keeps its own caption.
+       Cover: 1920 / 1456 = 1.3187 (1920 x 1424.2, image rows 130.5 to 949.5 in frame). Push 1.00 to 1.06 about screen (1700, 600),
+       by the seated man at the right, so his face stays in the frame. The plates do not ride the push.
+     Cues: audio/a1-s1.words.json seconds minus 0.31 (mg_specs/timeline-map.md table 5). -->
+<template>
+<style>
+  #kc-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .kc-h { opacity:0; visibility:hidden; }
+
+  /* ---- FAMILY BLOCK 1: the photograph at cover, its scrim, its true caption in the credit corner ---- */
+  .kc-bg { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; object-position:50% 50%; }
+  .kc-scrim { position:absolute; left:0; top:0; width:1920px; height:1080px; background:rgba(3,5,8,0.45); }
+  .kc-cap { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+
+  /* ---- FAMILY BLOCK 2: the clock stamp on glass (the intro's stamp, values of g-i1s4-states) ---- */
+  .kc-stamp { position:absolute; left:96px; top:96px; width:590px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .kc-face { position:absolute; left:0; top:0; width:200px; height:200px; overflow:visible; }
+  .kc-eye { position:absolute; left:188px; top:20px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .kc-time { position:absolute; left:188px; top:46px; font:700 84px 'Courier New', Courier, monospace; color:#e8c56a; letter-spacing:-4px; white-space:nowrap; line-height:1; }
+  .kc-place { position:absolute; left:190px; top:148px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:pre; line-height:1; }
+
+  /* ---- FAMILY BLOCK 3: one drawing on a glass tile ---- */
+  .kc-tile { position:absolute; left:96px; top:330px; width:200px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .kc-tty { position:absolute; left:23px; top:23px; width:152px; height:152px; }   /* 23 + the 1 px border: the object box is screen x 126 to 266, y 360 to 500 */
+</style>
+<div id="kc-root" data-composition-id="g-a1s01-kc" data-width="1920" data-height="1080">
+
+  <!-- family block 1 -->
+  <img class="kc-bg" id="kc-bg" src="media/stills/a4-teletype-room.jpg" alt="">
+  <div class="kc-scrim"></div>
+  <div class="kc-cap" id="kc-cap">Weather Bureau teletypewriters, about 1955 &middot; NOAA</div>
+
+  <!-- family block 3: media/drawings/teletype.svg inline (DR-01), paper unlit; the paper and the typed bars carry ids -->
+  <div class="kc-tile kc-h" id="kc-tile">
+    <svg class="kc-tty" viewBox="-6 -6 152 152" width="152" height="152">
+      <g fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <rect id="kc-paper" x="34" y="0" width="72" height="50" fill="#15202b"/>
+        <path id="kc-bars" d="M44 14 H88 M44 26 H96 M44 38 H80"/>
+        <rect x="0" y="50" width="140" height="90" fill="#15202b"/>
+        <rect x="14" y="112" width="112" height="20"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- family block 2 -->
+  <div class="kc-stamp kc-h" id="kc-stamp">
+    <svg class="kc-face" id="kc-face" viewBox="0 0 200 200"></svg>
+    <div class="kc-eye">FORECASTERS</div>
+    <div class="kc-time kc-h" id="kc-time">11:45 AM</div>
+    <div class="kc-place"><span id="kc-city">Kansas City</span><span class="kc-h" id="kc-zone"> &middot; Eastern time</span></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a1s01-kc", P = "kc", D = 9.75, NS = "http://www.w3.org/2000/svg";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+
+  /* ---- the clock face (design sheet section 8): centre (95,100) in the stamp, radius 62; the hands wait hidden ---- */
+  var face = $("face"), CX = 95, CY = 100, RR = 62, O = CX + " " + CY;
+  function pt(deg, r) { var a = deg * Math.PI / 180; return [CX + r * Math.sin(a), CY - r * Math.cos(a)]; }   /* degrees clockwise from 12 */
+  el("circle", { cx: CX, cy: CY, r: RR, fill: "none", stroke: "#dfe7ee", "stroke-width": 4 }, face);
+  for (var i = 0; i < 12; i++) { var a = pt(i * 30, RR - 6), b = pt(i * 30, RR - 6 - (i % 3 ? 8 : 14));
+    el("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "#dfe7ee", "stroke-width": 3, "stroke-linecap": "round" }, face); }
+  var hh = el("line", { "class": "kc-h", x1: CX, y1: CY, x2: CX, y2: CY - 34, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  var mh = el("line", { "class": "kc-h", x1: CX, y1: CY, x2: CX, y2: CY - 52, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  el("circle", { cx: CX, cy: CY, r: 5, fill: "#e8c56a" }, face);
+
+  /* start states: hidden in CSS (kc-h), transforms set here at 0; every move from rest below is a plain to() */
+  s0($("bg"), { scale: 1, transformOrigin: "1700px 600px" });
+  s0($("tile"), { x: -420 });
+  s0($("stamp"), { x: -660 });
+  s0($("time"), { y: 16 });
+  s0(hh, { rotation: 352.5, svgOrigin: O });                /* hour hand just short of 12 */
+  s0(mh, { rotation: 240, svgOrigin: O });                  /* minute hand sweeps its last 30 degrees to 270, on the 9 */
+
+  /* 0 · "A" @0.00: photograph, scrim and caption on; the push carries the whole comp */
+  tl.to($("bg"), { scale: 1.06, duration: D, ease: "none" }, 0);
+
+  /* 1 · "forecast" @0.09: the icon tile slides in from the left, paper unlit */
+  tl.to($("tile"), { x: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 0.09);
+
+  /* 2 · "typed" @2.17: the paper turns Amber 2 and the typed bars Caption dark; a fill and stroke change, nothing moves */
+  tl.to($("paper"), { fill: "#e8c56a", duration: 0.3, ease: "power2.out" }, 2.17);
+  tl.to($("bars"), { stroke: "#2a2622", duration: 0.3, ease: "power2.out" }, 2.17);
+
+  /* 3 · "Kansas" @5.67: the stamp slides in with the ring, the ticks, FORECASTERS and Kansas City; no time, no hands */
+  tl.to($("stamp"), { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 5.67);
+
+  /* 4 · "11" @6.53: the time rises in, the hands fade in and the minute hand sweeps onto the 9 (ends 7.03, inside ".45") */
+  tl.to($("time"), { y: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 6.53);
+  tl.to([hh, mh], { autoAlpha: 1, duration: 0.15, ease: "none" }, 6.53);
+  tl.to(mh, { rotation: 270, duration: 0.5, ease: "power3.out" }, 6.53);
+
+  /* 5 · "Eastern" @7.85: the zone fades in at the end of the place line; nothing shifts */
+  tl.to($("zone"), { autoAlpha: 1, duration: 0.25, ease: "power2.out" }, 7.85);
+
+  /* 6 · exit @9.15, 0.6 s before the cut: the plates leave left; the photograph and its caption hold to the cut */
+  tl.to([$("stamp"), $("tile")], { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.15);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
