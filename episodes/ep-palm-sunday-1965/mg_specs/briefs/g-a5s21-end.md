@@ -45,7 +45,7 @@ t from comp start = the segment's wav start inside the composition (timeline-map
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A5-S21 | 0 | Did | 0.00 | 0.00 | first frame: everything in section 3 on; the push starts |
-| 1 | A5-S21 | 4 | end | 1.34 | 0.91 | the dots between the sheet and the microphone turn Body light one after another, sheet end first (15 dots, 0.03 s apart, 0.45 s in all) |
+| 1 | A5-S21 | 4 | end | 1.34 | 0.91 | the dots between the sheet and the microphone turn Body light one after another, sheet end first (12 dots at the 18 px pitch, 0.03 s apart, 0.36 s in all) |
 | 2 | A5-S21 | 7 | list? | 1.68 | 1.25 | the microphone's lines step from 55 % Label grey to full Label grey (a stroke change, 0.3 s); the lamp stays Panel dark |
 | 3 | end | | | | 2.62 | comp ends on the hold; black follows |
 The dot count is checked against the window: 15 dots at 0.03 s is 0.45 s, inside the 0.34 s to the next cue plus its 0.3 s move.
