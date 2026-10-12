@@ -246,6 +246,9 @@ window.__timelines = window.__timelines || {};
   tl.to($("stage"), { x: 0, duration: 0.5, ease: "power2.inOut" }, 13.36);
   tl.to(map, { clipPath: BOX, duration: 0.3, ease: "power2.out" }, 13.36);
   tl.to($("grow"), { attr: { height: 230 }, duration: 0.4, ease: "power2.out" }, 13.36);
+  tl.to($("src"), { autoAlpha: 0, duration: 0.15, ease: "power2.out" }, 13.36);   /* text fades before its place changes */
+  tl.set($("src"), { x: 0, y: 0 }, 13.6);
+  show($("src"), 13.86, 0.2);
 
   /* 10 · "warning" @13.49: the amber bar grows from Linn Grove's x: to 30 minutes in 0.6 s, then the lighter part to 60 in
           0.6 s; its label and the two tick labels fade in */
