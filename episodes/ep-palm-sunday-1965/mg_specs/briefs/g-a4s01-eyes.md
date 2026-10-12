@@ -85,7 +85,8 @@ As `references/mg-brief-template.md` section 6, with these: `compositions/g-a4s0
 **Assets mounted (paths from the episode folder):**
 - `media/docs/study-p21-eyes-crop.png` (1460 x 299 px).
 - `media/drawings/wall-clock.svg` (object box 124 x 124, viewBox -6 -6 136 136), inlined for the stamp's face if the builder does not copy the built stamp's own face.
-Not mounted: `media/films/cuts/a14-10-desk-telephone.mp4` (15.72 s) and `media/films/cuts/a14-08-telephone-call.mp4` (4.17 s), named only for the lead's question in section 2.
+- `media/films/cuts/a14-05-operations-room.mp4` (640 x 480, 31.53 s, no audio; used from 20.0 s, window 0.00 to 3.15): not mounted by this comp; the composer mounts it under it in `index.html`. The comp is opaque over the whole frame except that window.
+Not used: `media/films/cuts/a14-10-desk-telephone.mp4` (15.72 s) and `media/films/cuts/a14-08-telephone-call.mp4` (4.17 s), for the reasons in section 2.
 
 ## 7. Tools
 As template section 7, from the worktree root: `node scripts/freeze_scan.mjs episodes/ep-palm-sunday-1965 --comp g-a4s01-eyes`, then `node scripts/graphics_qc.mjs episodes/ep-palm-sunday-1965`, then `python3 scripts/run_gates.py episodes/ep-palm-sunday-1965`. `graphics_qc` flat-type flags this comp by design (the page).
