@@ -207,6 +207,7 @@ window.__timelines = window.__timelines || {};
   tl.to($("h-win1"), { fill: "#e8c56a", fillOpacity: 0.3, duration: 0.3, ease: "power2.out" }, 26.83);
 
   /* 11 · "forecast" @28.05: strip C; 12 · "half" @28.89: its chip */
+  tl.to($("drawn"), { y: 0, duration: 0.5, ease: "power3.out" }, 28.05);                  /* the band makes room for the strips */
   stripIn($("strip-c"), 28.05);
   tl.to($("chip-c"), { autoAlpha: 1, duration: 0.3, ease: "power1.out" }, 28.89);
 
