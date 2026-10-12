@@ -83,7 +83,7 @@ Cue words and times are from `audio/a5-s1.words.json`, `a5-s2.words.json` and `a
 | 12 | A5-S3 | 2 | .40 | 0.88 | 19.86 | clock stamp slides in from the left (`x: -660` to 0, 0.6 s, power3.out); the minute hand sweeps its last 30 degrees onto the 8 |
 | 13 | A5-S3 | 8 | hook | 2.54 | 21.52 | the hook fades in on the scope (0.3 s) |
 | 14 | A5-S3 | 18 | Bern, | 5.02 | 24.00 | Berne's dot, then its label 0.1 s later (0.3 s fades) |
-| 15 | A5-S3 | 26 | take | 8.48 | 27.46 | document card slides in from the right (`x: 660` to 0, 0.7 s, power3.out); the document source fades in after it |
+| 15 | A5-S3 | 26 | take | 8.48 | 27.46 | document card rises in from below with a fade (`y: 80` set at 0, to 0, opacity 0 to 1; 0.7 s, power3.out); the document source fades in after it. Corrected 12 Oct 26: this brief first brought the card in from the right, which crosses the presenter corner (seen at 27.60 s) |
 | 16 | A5-S3 | 29 | for | 9.68 | 28.66 | unlit page fades in (0.4 s); the underline draws left to right (0.6 s). Hold to the last frame (31.67) |
 
 ## 6. Contract
