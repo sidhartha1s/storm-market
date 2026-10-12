@@ -47,7 +47,7 @@ Each pair is its own pre-authored block, toggled by opacity; pair 1 and pair 2 o
 7. No `<audio>` in this comp; the score and its end are the orchestrator's.
 8. All text at least 96 px from the sides and 54 px from top and bottom.
 Beat check (rule 13): six beats in 10.53 s, the closest two 0.78 s apart (9.75 and 10.53); every entrance is 0.5 s or less. Pair 1 is read for 4.71 s (9 words), pair 2 for 5.04 s before it dims (16 words).
-9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
+9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry. As built and accepted by the lead, 12 Oct 26: while centred, the two lines are shown at 1.5 times about (960, 370), with bands of 41.4 % of the frame above and below for 9.75 s, accepted as a closing statement on black. They go to size 1 and their briefed place over 0.5 s at 9.75 s, on "This" (10.06 in the segment less 0.31), not at 10.53.
 
 ## 5. Text (exact) and cues
 Text: `Disasters don’t ask permission.` · `But they do send warnings.` · `Learn how yours will reach you,` · `so when it comes, you already know what to do.` · `THE WARNING HOUR`.
