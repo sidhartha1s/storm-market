@@ -66,4 +66,4 @@ As the template's section 7a, all seven. Fill: full frame (photographs). Done li
 As the template's section 8, plus: both `object-position` values, the measured width of the widest toll label line, and a sentence on whether caption A is readable in its 2.33 s.
 
 ## Frames the verifier reads
-First frame 0.00 and the frame after it (0.04); 0.90 (last frame of photograph 1); 1.01 (first frame after the cut: no caption A, label B on); 2.10; 3.90; last frame 5.90.
+First frame 0.00 and the frame after it (0.04); 1.20 (photograph 1, caption A, pushed); 2.29 (last frame of photograph 1); 2.37 (first frame after the cut: no caption A, label B on); 3.20 (toll card settled, two label lines); 3.90 (third line); last frame 5.90.
