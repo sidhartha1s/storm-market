@@ -73,7 +73,8 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const P = "#onoff-", D = 12.69, LIGHT = "#dfe7ee", DARKLINE = "#55606b", RED = "#d0121f", WHITE = "#f2f5f8", PANEL = "#15202b";
+  const D = 12.69;     /* on its own line as a plain number: scripts/sweep_episode.py reads a tween's position and duration only through such constants */
+  const P = "#onoff-", LIGHT = "#dfe7ee", DARKLINE = "#55606b", RED = "#d0121f", WHITE = "#f2f5f8", PANEL = "#15202b";
   function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
   /* the microphone's lines: Body light, or the dark stroke */
   function lines(lit, at, dur) { tl.to(P+"mic", { attr: { stroke: lit ? LIGHT : DARKLINE }, duration: dur, ease: "none" }, at); }
