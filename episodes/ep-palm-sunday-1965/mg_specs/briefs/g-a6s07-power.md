@@ -62,6 +62,7 @@ Ground: the canvas gradient, on from frame 0.
 7. No Alto, no tornado mark, no track on the map. No person in the room.
 8. A flash is a fill or stroke change; nothing changes size (rule 12).
 9. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680.
+10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `a Weather Bureau office` · `“adequate emergency power for all radar installations` / `and all communications equipment”` · `recommendation 8` · `“remote narrow bandwidth radar repeater scope”` · `recommendation 5` · `a radar in another locality` · `South Bend` · `asked for: a repeater scope` · `Weather Bureau survey report, 1965, pp. 2 and 10`.

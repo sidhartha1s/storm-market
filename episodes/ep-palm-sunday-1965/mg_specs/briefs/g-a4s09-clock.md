@@ -70,6 +70,7 @@ The sheriff's line (A4-S10), lower band:
 7. Lights go out in this order: the radio arc, the civil defense desk, then the microphone and the house drop from Label grey to the dark line, and the police desk last. In the last frame no line on the chain is amber; the stamp's time stays Amber 2 (it is the clock, not a light on the chain).
 8. Nobody is drawn. The police desk's telephone stays on its cradle.
 9. Nothing of ours in x >= 1600, y >= 680. No label under a line, the arc, a dot or another label: the strip's top (760) clears the station labels (bottom 704) by 56 px.
+10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `County B` · `about` · `7:30 PM` running to `8:07 PM` · `the study says: about 35 minutes` · `civil defense` · `city police` · `the radio station` · `a family` · `“We didn’t have any warning at all”` · `County B's sheriff · Disaster Research Center, 1966, p. 22`. Page words are the image.

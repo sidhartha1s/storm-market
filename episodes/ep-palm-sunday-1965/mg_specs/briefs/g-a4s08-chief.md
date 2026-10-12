@@ -60,6 +60,7 @@ No source line in the credit corner: the strip carries the attribution (design s
 5. The sheriff's words and the sheriff's page do not appear in this comp.
 6. The card is never still for 8 seconds: a visible change lands at 0.85, 3.31, 4.13, 5.15, 6.33 and 7.19; the last hold is 3.39 s.
 7. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680 (the strip ends at x 1576).
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `County B` · `“I don't like to panic them.”` · `a city police chief · Disaster Research Center, 1966`. Page words are the image.

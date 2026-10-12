@@ -1,4 +1,4 @@
-Host: id=g-a2s11-backup file=compositions/g-a2s11-backup.html start=371.36 duration=22.96 s (timeline-map.md; wav sum 22.01 s plus its gaps) track=2
+Host: id=g-a2s11-backup file=compositions/g-a2s11-backup.html start=371.61 duration=22.96 s (timeline-map.md; wav sum 22.01 s plus its gaps) track=2
 
 # g-a2s11-backup · A2-S11, A2-S12, A2-S13 · County A's back up: told twenty minutes after, started too late, then the power (wave 2, chain family)
 
@@ -59,6 +59,7 @@ View 3, A2-S13: the living room of design sheet section 7 exactly as built in `c
 5. The house and the microphone stay dark in view 2: the back up lit late and the strip says `too late`.
 6. In view 3 the screen goes Programme to Idle in one hard cut (one 0.1 s flash at 30 %), then the window goes dark. The drawing shows no switch, plug or the word "off". The table radio's dial stays unlit here (the battery radio belongs to A3-S13).
 7. Both quote strips carry their attribution. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680.
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `County A` · `20 minutes after` · `“until twenty minutes after it hit”` · `Disaster Research Center, 1966, p. 20` (twice) · `radio and TV` · `a family` · `civil defense` · `the back up` · `“too late”`.

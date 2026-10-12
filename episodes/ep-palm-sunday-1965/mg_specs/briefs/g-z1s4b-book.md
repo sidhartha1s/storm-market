@@ -44,6 +44,7 @@ Nothing else is on screen: no price, no URL, no QR code, no logo, no countdown, 
 6. Nothing of ours in x >= 1600, y >= 680; the line is at least 96 px from the sides and 54 px from the bottom.
 7. No `<audio>` in this comp.
 Beat check (rule 13): two beats in 6.31 s (the cover at 0.00, the line at 4.16); the push carries the 4.16 s between them. The line is settled 4.46 to 6.31 (5 words, 1.85 s).
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `first link in the description` (the cover's printed words are the image).

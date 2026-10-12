@@ -40,6 +40,7 @@ The chain line is y 520, as in the intro. The house stands in the intro's statio
 4. The desk carries no stop mark and no red: in this beat the police pass the message on.
 5. No time, no county chip, no town other than `South Bend` in the end label. No list sheet and no microphone: this is the front end only.
 6. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680 (the house label ends left of x 1600).
+7. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `Weather Bureau` · `South Bend` · `a person` · `the police` · `Disaster Research Center, 1966, p. 12`.

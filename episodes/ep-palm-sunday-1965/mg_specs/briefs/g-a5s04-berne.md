@@ -57,6 +57,7 @@ The bars end at x 1580 and the lowest element is the red bar (bottom 742): the p
 7. The amber bar is 2.5 times the red bar's length at 30 minutes (294 px against 117.6 px) and 5 times at 60 (588 px). The 60 minute part is lighter than the 30 minute part.
 8. Beat check: two times, two bars, each from its spoken word; the last change (the red bar) is at 16.03 and holds 2.67 s to the end.
 9. Nothing of ours in x >= 1600, y >= 680; text at least 96 px from the sides and 54 px from top and bottom; line weights after the push are still 1.5, 2 and 3 px.
+10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `Fort Wayne` · `Berne` · `Linn Grove` · `John Curran's recollection` · `Weather Bureau survey, 1965, pp. 43 and 45` · `8:40 PM` · `near 8:52 PM` · `INDIANA` · `OHIO` · `warning: the next 30 to 60 minutes` · `30 min` · `60 min` · `12 minutes`.

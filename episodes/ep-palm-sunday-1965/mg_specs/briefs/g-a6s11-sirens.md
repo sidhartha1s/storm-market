@@ -57,6 +57,7 @@ No source line in the credit corner: each strip carries its own attribution (des
 7. No `County A`, no `County B`, no town, no county name, no time of day.
 8. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680; all text at least 96 px from the sides and 54 px from top and bottom; the ground shows no seam.
 Beat check (rule 13): strip A's quote is settled 1.57 to 5.35 (13 words, 3.78 s). The film runs 3.85 s. Strip B's quote is settled 13.72 to 16.25 (7 words, 2.53 s). From 9.72 to 13.42 the frame holds the horn and the strip with its attribution; the sweep band carries that hold.
+9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `“It is presently impossible to tell what effect these recommendations will eventually have”` · `Disaster Research Center, 1966, p. 31` · `Civil defense training film, 1967` · `“have not gone to a siren system”` · `Disaster Research Center, 1966, p. 33`.

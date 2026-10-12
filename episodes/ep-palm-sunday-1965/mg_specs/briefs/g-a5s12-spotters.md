@@ -43,6 +43,7 @@ The chain line is y 520. The town's house and its telephone stand exactly where 
 5. The quote reads `“primitive, mostly nonexistent”` and carries Curran's name. It is his description of the spotter network, and the attribution says so.
 6. No time, no clock, no stamp: the 9:07 PM report belongs to `g-a5s10-alert`.
 7. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680 (the house label ends left of x 1600; the strip ends at x 1056).
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `the warning office` · `Marion` · `“primitive, mostly nonexistent”` · `John Curran, on the trained spotter network`.

@@ -61,6 +61,7 @@ List view (A2-S4 end, comp 11.85 to 13.98): the list sheet of design sheet secti
 5. The clock starts at 5:43 and the arc spans 60 degrees of the minute ring. No end time is printed: the words are `at least 10 minutes`.
 6. The light reaches the microphone only when the arc is complete. The microphone's lamp turns Popfig red then, not before. The house stays dark to the last frame.
 7. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680.
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `Kansas City forecasters` · `Weather Bureau · South Bend` · `the list` · `an announcer` · `a family` · `radar at other Weather Bureau offices` · `Civil defense training film, 1967` · the list sheet's eyebrow, title and eight rows exactly as design sheet section 5 · `at least 10 minutes` · `Disaster Research Center, 1966, p. 14`.

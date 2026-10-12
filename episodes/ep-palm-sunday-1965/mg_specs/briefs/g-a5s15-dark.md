@@ -45,6 +45,7 @@ The houses keep the file's dark state for the whole comp: stroke `#55606b`, wind
 6. Three houses, in a row, alike. None is singled out. No person, no figure at a window.
 7. The tower's tip is a rotation, not a change of size (rule 12).
 8. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680.
+9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `John Curran's recollection, not a log`. Nothing else is typed.

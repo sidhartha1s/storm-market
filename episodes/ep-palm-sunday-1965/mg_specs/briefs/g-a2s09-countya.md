@@ -55,6 +55,7 @@ A2-S10:
 5. The microphone's lamp is dark while the three marks land and turns Popfig red only after the third. Its label is `a station`: no call letters, no name.
 6. The three marks carry no number and no label: they say "tornadoes", not a count for the county.
 7. No person is drawn. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680.
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `STATE POLICE` · `5:50 PM` · `one Indiana county` · `County A` · ` · the study's own name for it` · `Weather Bureau · South Bend` · `State Police` · `Disaster Research Center, 1966, pp. 19-20` · `a station`. Page words are the image.

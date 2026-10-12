@@ -48,6 +48,7 @@ The tile row is schematic: six equal squares, not real counties, not to scale, n
 7. Five hand-off marks are drawn; at the end two remain. The marks that drop are numbers 2, 3 and 5 from the west, so what is left is uneven, not a pattern.
 8. No state, county or town is named. The credit is the photograph's own.
 9. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680 (tile 6 ends at x 1525; the card at 1.03 ends at x 1577.7).
+10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `Courtesy: Dr. Russell Schneider, SPC` · `supercell: a thunderstorm that rotates` · `single storms lasted up to 4.5 hours` · `about 45 mph` · `schematic: not a real track`.

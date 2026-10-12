@@ -46,6 +46,7 @@ Colours (the built intro's hex): ground `radial-gradient(ellipse at 50% 45%, #0b
 5. Nothing is red. Red in this world means nobody was told, and this beat has not reached that.
 6. Stations 1 to 5, link 1 and the two dotted links sit within 2 px of the base's numbers. No desk, no tick, no stop mark.
 7. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680. No label under a line or a leader, including during the flicker.
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `Kansas City forecasters` · `Weather Bureau · South Bend` · `the list` · `an announcer` · `a family` · `telephone lines` · `electric power`.

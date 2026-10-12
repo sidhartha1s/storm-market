@@ -45,6 +45,7 @@ Fort Wayne's dot is at x 1643, right of x 1600, but at y 455: the presenter corn
 5. The mark is Body light, never red, and has no time, path name or toll. Nothing in this comp is red.
 6. The card and the paper strip carry bars, not words: no retyped warning text, no time.
 7. Nothing appears before its spoken word, except that South Bend's dot and label are on in the first frame (the place the acts have held). Nothing of ours in x >= 1600, y >= 680; text at least 96 px from the sides and 54 px from top and bottom. No label on a county line: read `Fort Wayne` against Allen County's lines at 2.60.
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `South Bend` · `Fort Wayne` · `Weather Bureau ·` / `Fort Wayne` · `a town` · `the warning`.

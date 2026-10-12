@@ -48,6 +48,7 @@ Line pitch is 75 px, so the typed line is large enough to read without a quote s
 5. `County B` is the only county label, on the chip; the crop names no county; `County A` and every real place name are absent.
 6. The chain's stations, links and labels sit within 2 px of the base's numbers. The card covers no station, label, arc or chip.
 7. Nothing of ours in x >= 1600, y >= 680; text at least 96 px from the sides and 54 px from top and bottom. The crop holds 4.67 s (0.49 to 5.16) with changes at 1.93 and 3.51.
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `County B` · ` · where the tornado was` · `civil defense` · `city police` · `the radio station` · `a family` · `about` · `7:30 PM` (first frame only) · `Disaster Research Center, 1966, p. 22`. Page words are the image.

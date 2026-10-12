@@ -58,6 +58,7 @@ The block quote is single spaced: line 8's ink starts 8 px under line 7's. So th
 6. No county chip, no clock, no time of day is on screen: the figure is an age, not a time.
 7. The card is never still for 8 seconds: a visible change lands at 1.92, 3.46, 5.94, 6.20, 7.24, 8.42 and 8.94.
 8. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680.
+9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `Disaster Research Center, 1966, p. 24` · `“too old ...` / `to be truly worthwhile as a warning”` · `media personnel · Disaster Research Center, 1966`. Page words are the image.

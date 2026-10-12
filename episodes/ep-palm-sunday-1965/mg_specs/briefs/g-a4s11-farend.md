@@ -57,6 +57,7 @@ Part B, the far end (A4-S12, comp 10.59 to 22.43). The microphone stays where it
 7. The police desk has left before the house appears: part A and part B are never one chain of four.
 8. Nobody is drawn; the car has no markings and no word on it.
 9. Nothing of ours in x >= 1600, y >= 680 (the car's way peaks at x 1575). No label under a line, a way or another label.
+10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `a station · county not given in the study` · `local police` · `a station` · `“were not notified by the local police` / `so we couldn’t prepare our listeners”` · `media personnel · Disaster Research Center, 1966, p. 25` · `radio and TV` · `a family` · `a few fire sirens` · `police car speakers`.

@@ -44,6 +44,7 @@ North is up. One inline SVG holds the map: BM-1 mounted at left 620, top 62, wid
 5. No county is filled amber (in this family an amber county is a warned county). Starke is named, not lit.
 6. The only time on screen is `5:45 PM` in the chip. No Alto, no other town.
 7. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680.
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `The 5:45 PM tornado` · `Koontz Lake` · `STARKE COUNTY` · `South Bend` · `10` · `lives lost` · `this tornado` · `National Weather Service`.

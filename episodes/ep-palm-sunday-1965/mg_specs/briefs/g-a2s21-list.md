@@ -46,6 +46,7 @@ Rows, exact, top to bottom: `State Police` · `Sheriffs' Departments` · `City P
 6. "South Bend, Indiana" is on the glass stamp, never bare on the photograph; the photograph's own caption shows once the list source has left.
 7. The blank sheet's box is left 96, top 320, 1480 x 260, within 2 px (the next comp's page lands on it).
 8. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680.
+9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `SOUTH BEND WEATHER BUREAU · BY TELEPHONE` · `Organizations notified included:` · the eight rows of section 3 · `Disaster Research Center, 1966, p. 14` · `WEATHER BUREAU` · `6:50 PM` · `South Bend, Indiana` · `Weather Bureau Communications Center, about 1955 · NOAA`.

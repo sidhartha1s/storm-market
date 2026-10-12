@@ -58,6 +58,7 @@ The echo shapes are schematic: the warning gives a vicinity, not an outline.
 6. No ring radius is a range: the rings are all one size and none is labelled with miles.
 7. Line weights and dot sizes are the same at both ends of the pull back (read both frames).
 8. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680. The crop is on screen about 8.2 s and changes at 7.70 (underline and unlit page).
+9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `WEATHER BUREAU` · `5:43 PM` · `South Bend, Indiana` · `Michigan City` · `Knox` · `LAPORTE` · `STARKE` · `MARSHALL` · `Weather Bureau survey report, 1965, p. 39` · `South Bend` · `no radar` · `by telephone` · `Chicago` · `Fort Wayne` · `Indianapolis` · `Disaster Research Center, 1966, p. 13 · National Weather Service, Northern Indiana`. Page words are the image.

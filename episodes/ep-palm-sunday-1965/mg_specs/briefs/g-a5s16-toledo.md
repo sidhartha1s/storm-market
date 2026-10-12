@@ -55,6 +55,7 @@ The map box ends at x 1511.3 and everything on the left ends at x 712 or less: t
 7. The Columbus chip says `a mention`, never "warning". The word "warning" appears nowhere in this comp.
 8. Beat check: the Columbus chip lands at 16.43 and holds 2.84 s; the toll is on screen 3.14 s (9.58 to 12.72).
 9. Nothing of ours in x >= 1600, y >= 680; text at least 96 px from the sides and 54 px from top and bottom.
+10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `OHIO` · `A TORNADO STARTS` · `9:30 PM` · `Toledo, Ohio` · `Toledo` · `Toledo had its own Weather Bureau office` · `18` · `lives lost` · `northern Toledo` · `National Weather Service` · `Columbus` · `Columbus weather office` / `a mention, ten minutes before`.

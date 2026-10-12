@@ -52,6 +52,7 @@ No quote strip in this comp: the same words come as a paper card in the next one
 6. While the crop is on, the whole page, the date label and the name card are at opacity 0.18 or less behind it and nothing of them can be read as a second claim.
 7. No county chip, no "County A", no "County B", no station name.
 8. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680 (the crop card ends at x 1576).
+9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `May 2, 1965` · `P. H. Kutschenreuter` · `chairman, Weather Bureau survey team` · `Weather Bureau survey report, 1965, p. 2`. Page words are the image.

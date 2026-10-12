@@ -55,6 +55,7 @@ Clock angles, clockwise from 12 (by script): 7:10 is hour 215.0, minute 60; the 
 7. The microphone stands off the map (x 330 to 432) and carries no call letters; its label is `radio and TV stations`.
 8. Line weights and dot sizes are the same at both ends of the push (read 0.90 and 1.90). `South Bend` is hidden while the map moves.
 9. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680; text at least 96 px from the sides and 54 px from top and bottom. No label sits on a county line: read `Bremen` and `South Bend` against the map at 5.00.
+10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `WEATHER BUREAU` · `7:10 PM` · `South Bend, Indiana` · `South Bend` · `Bremen` · `“Bremen cannot be contacted by phone.”` · `Weather Bureau survey, 1965, p. 41` · `radio and TV stations` · `a home in the town`.

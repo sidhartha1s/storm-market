@@ -62,6 +62,7 @@ The Ohio chip and the mark are right of x 1600 but above y 680; the stamp, the c
 8. The link runs between Marion and Fort Wayne and nowhere else; it is dotted, never a solid track.
 9. Beat check: the film window is open 2.20 s (8.83 to 11.03). That is long enough to read one picture (a telephone call) and at the floor for the label's five words. The narration's first sentence ends at 10.21, so the last 0.82 s of the window is film with no words spoken. If the lead wants it longer, the cut back can move to A5-S11 word 9 "reached" (11.59 from comp start, 2.76 s open) and stays inside the mount, which ends at 13.00; steps 6 and 7 below then both fire at 11.59.
 10. Nothing of ours in x >= 1600, y >= 680; text at least 96 px from the sides and 54 px from top and bottom.
+11. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `Fort Wayne` · `WELLS` · `ADAMS` · `BLACKFORD` · `JAY` · `9:20 PM · on alert` · `Marion` · `OHIO` · `8:52 PM · already in Ohio` · `Civil defense training film, 1967` · `WORD FROM MARION` · `9:07 PM` · `Fort Wayne signal department` · `tornadoes hit near 8:00 PM`.

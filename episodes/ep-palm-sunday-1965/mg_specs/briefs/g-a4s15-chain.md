@@ -46,6 +46,7 @@ Colours (the built intro's hex): ground `radial-gradient(ellipse at 50% 45%, #0b
 6. No county code, no town, no station name. The labels are the intro's five.
 7. One source on screen: the strip's attribution. No second source line.
 8. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680. No label under a line, the stop mark, the ring or the strip (labels end at y 704, the strip starts at y 780).
+9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `Kansas City forecasters` · `Weather Bureau · South Bend` · `the list` · `an announcer` · `a family` · `“the system tended to break down on the receiving end”` · `Disaster Research Center, 1966, p. 34`.

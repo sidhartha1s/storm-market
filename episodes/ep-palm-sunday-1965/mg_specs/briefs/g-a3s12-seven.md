@@ -44,6 +44,7 @@ Colours and the glass card: as `mg_specs/briefs/g-a2s06-headstart.md` section 2 
 5. **Kept apart from `g-a3s11-onoff`:** no microphone, no ON AIR lamp, no blink, and no word such as "same" or "that station". The chip reads `a station` and nothing more. No county, no town, no call letters.
 6. The two cards are two moments of one account and both carry the one attribution on the strip.
 7. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680.
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `a station` · `7:00 PM` · `named in the warnings` · `7:45 PM` · `transmitters hit` · `“our immediate vicinity was not included until 7:00 p.m.` · `and our transmitters were hit at 7:45”` · `media personnel · Disaster Research Center, 1966`.

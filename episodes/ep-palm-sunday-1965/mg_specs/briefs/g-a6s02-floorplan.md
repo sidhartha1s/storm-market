@@ -50,6 +50,7 @@ Ground: the canvas gradient, on from frame 0. All plan lines sit in one full-fra
 7. The plan is marked schematic for the whole comp. No station name, no call letters, no town, no county chip.
 8. No person is drawn in any room.
 9. Nothing appears before its spoken word. Nothing of ours in x >= 1600, y >= 680.
+10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `weather teletype` · `the announcer` · `schematic · not any one station's building` · `“positive alerting devices (remoted to the` / `announcer's position where necessary)”` · `Weather Bureau survey report, 1965, p. 2 · recommendation 1` · `Weather Bureau survey report, 1965, p. 4`.

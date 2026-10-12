@@ -70,6 +70,7 @@ The stamp and the telephone go off in the cut frame at 11.41: the photograph is 
 7. The ring arcs pulse three times and no more: 3 times 0.4 s is 1.2 s, from 5.53 to 6.73, inside the clause that ends on "report," (7.51).
 8. This is the third and last use of the teletype room photograph in A1 to Z1.
 9. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680.
+10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `Civil defense training film, 1967` · `WEATHER BUREAU` · `7:13 PM` · `South Bend, Indiana` · `“numerous poor joke calls and they tie up the lines”` · `Weather Bureau, South Bend · 7:13 PM` · `Weather Bureau teletype room, about 1955` · `“the poor observer”` · `National Weather Service, Northern Indiana`.

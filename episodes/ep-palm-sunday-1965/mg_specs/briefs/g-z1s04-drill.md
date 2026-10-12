@@ -44,6 +44,7 @@ Colours (the family's hex): ground `radial-gradient(ellipse at 50% 45%, #0b1016,
 7. One source on screen, the source line. No stamp, no chip but the label, no `County A`, no `County B`.
 8. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680; all text at least 96 px from the sides and 54 px from top and bottom.
 Beat check (rule 13): the sweep is one move of 1.6 s plus a 0.3 s fill: it starts on "statewide" (1.52) and is settled at 3.42, inside the first clause (its last word "spring," starts at 3.06). The second pass starts on "test" (4.26) and is settled by 6.06, as "warning." is spoken (5.72). The last 1.04 s holds the lit state.
+9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `statewide tornado drill · each spring` · `National Weather Service, Indianapolis`.

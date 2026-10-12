@@ -43,6 +43,7 @@ Rows, exact, top to bottom: `State Police` · `Sheriffs' Departments` · `City P
 5. In A1-S19 the minute hand moves forward by no more than one minute (258 to 264 degrees) and is still moving on the last frame. The printed time stays `5:43 PM`; no second time, no arc and no duration is shown (the count belongs to A2-S5).
 6. The stamp and the sheet do not overlap (stamp ends x 686, sheet starts x 740).
 7. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680, including while the sheet slides in.
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `WEATHER BUREAU` · `5:43 PM` · `South Bend, Indiana` · `SOUTH BEND WEATHER BUREAU · BY TELEPHONE` · `Organizations notified included:` · the eight rows of section 3 · `Weather Bureau Communications Center, about 1955 · NOAA` · `Disaster Research Center, 1966, p. 14`.

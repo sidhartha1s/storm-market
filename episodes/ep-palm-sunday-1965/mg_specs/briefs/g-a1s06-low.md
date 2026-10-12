@@ -43,6 +43,7 @@ The real map is shown at 950 x 758 (0.632 of its file size), never enlarged.
 5. Our map is labelled `our sketch · not to scale` from the first frame.
 6. The card label names what the sheet is. It does not say "forecast" and does not name Indiana.
 7. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680.
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `our sketch · not to scale` · `Surface weather map · 1:00 AM EST` · `Weather Bureau Daily Weather Map · Sunday, April 11, 1965` · `L` · `the northern plains`.

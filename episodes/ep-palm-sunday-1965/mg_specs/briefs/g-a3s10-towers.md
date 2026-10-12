@@ -52,6 +52,7 @@ Part B (comp 5.34 to 11.47):
 7. A fallen tower never overlaps a standing one (11.0 px clear), and no tower, standing or fallen, is under the heading, the count, the labels or the source line.
 8. The list and the towers are never on screen together: the sheet has faded before the heading rises.
 9. Nothing appears before its spoken word: the heading on "11", the towers standing on "lines", the falls and the count on "54". Nothing of ours in x >= 1600, y >= 680.
+10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `SOUTH BEND WEATHER BUREAU · BY TELEPHONE` · `Organizations notified included:` · rows `State Police` · `Sheriffs' Departments` · `City Police Departments` · `Indiana and Michigan Electric Company` · `Red Cross` · `Specified radio and TV stations` · `Flying services` · `Airlines` · `Disaster Research Center, 1966, p. 14` · `11 breaks in major lines` · `0` to `54` · `steel towers down` · `Indiana · reported by the Indiana and Michigan Electric Company` · `Disaster Research Center, 1966, p. 16`.

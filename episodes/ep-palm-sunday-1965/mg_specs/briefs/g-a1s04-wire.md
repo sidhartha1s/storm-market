@@ -35,6 +35,7 @@ Nothing else is on screen: no arrow, no dot, no route line, no city label, no cl
 4. The wash is a change of opacity only (0 to 0.26 to 0). No scale pop, no shake.
 5. The photograph never shows an edge and never scales under 1.
 6. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680 (the caption ends well left of it; the bottom band is a scrim, not an object, but read the corner on a frame).
+7. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `Service A teletypewriter system, about 1960 · NOAA`.

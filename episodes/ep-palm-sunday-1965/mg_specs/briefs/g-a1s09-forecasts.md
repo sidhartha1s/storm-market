@@ -80,6 +80,7 @@ The Picture note's `EST` does not fit beside an 84 px time inside the 590 px car
 8. Fort Wayne's dot is in the unlit county east of the seven. The teletype beside it is unlit from first to last frame: no amber on it, no pulse, no paper moving.
 9. Line weights and the dot's size are the same at both ends of each move (read both frames).
 10. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680 (the teletype at x 1647 is above y 328).
+11. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: the three stamp states above · `extreme southern` / `Wisconsin` · `extreme eastern` / `Iowa` · `portions of` / `northern Illinois` · `“ONE OR TWO TORNADOES”` · `Severe Weather Forecast 68 · issued 1:00 PM CST (2:00 PM EST)` · `“PORTIONS OF NORTHERN INDIANA”` · `“A TORNADO OR TWO”` · `Severe Weather Forecast 69 · issued 4:20 PM CST (5:20 PM EST)` · `portions of northern Indiana` · the seven county names · `Weather Bureau survey, 1965, p. 38` · `Fort Wayne` · `“but not the one at 5:20 p.m.”` · `Disaster Research Center, 1966, p. 10`. The sheets' words are the image.

@@ -54,6 +54,7 @@ Colours (the built set's hex): ground `radial-gradient(ellipse at 50% 45%, #0b10
 7. Lines are 4 px on screen (3 px on the telephones); no line under 3 px.
 8. One source on screen, the source line. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680; all text at least 96 px from the sides and 54 px from top and bottom; no label under a line or another label.
 Beat check (rule 13): first sentence, four beats in 3.65 s, the closest two 0.38 s apart, each entrance 0.3 s. Second sentence, three beats between 5.93 and 7.73; the desks' 0.6 s draw is complete at 6.53 and the generators' outlines at 6.93, 0.8 s before they fill. The last 1.29 s holds.
+9. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `WITHIN THREE MONTHS` · `about a third` · `had made changes or planned to` · `of the offices the researchers asked` · `two city police departments` · `ordered new generators` · `Disaster Research Center, 1966, pp. 28 to 30`.

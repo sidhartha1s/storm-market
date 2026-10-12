@@ -40,6 +40,7 @@ A count, not a map and not a chart with an axis. Eight squares of 150 px with 40
 5. The seven squares light in a run of seven beats, left to right, 0.08 s apart and 0.25 s each: the run ends 0.77 s in, inside "Seven of the eight counties" (which ends at 1.00 s).
 6. The words on screen say "advisory" and "before a tornado touched down", as the line does; no word says "warning" or "in time".
 7. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680.
+8. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `EIGHT COUNTIES IN THE 1966 STUDY` · `7` · `1` · `in a Weather Bureau advisory before a tornado touched down` · `no notice ahead of time` · `Disaster Research Center, 1966, p. 15`.

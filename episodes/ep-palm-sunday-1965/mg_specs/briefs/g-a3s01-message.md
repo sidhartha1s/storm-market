@@ -79,6 +79,7 @@ View MAP (14.44 to 18.73):
 7. The card is never still for 8 seconds: a visible change lands at 1.31, 3.87, 5.35, 5.60 and 6.79, and the card leaves at 8.01.
 8. The ground is the canvas gradient in all three views; the teletype room photograph does not appear.
 9. Nothing appears before its spoken word; nothing of ours in x >= 1600, y >= 680.
+10. No empty block over a third of the frame for more than about 3 s at any step of the build-up (plan rule 22). Where this brief's reveal order leaves one, the builder stages the earlier steps as rule 22 says and keeps every cue time and the last-frame geometry.
 
 ## 5. Text (exact) and cues
 Text: `WEATHER BUREAU` · `6:50 PM` · `South Bend, Indiana` · `“telephones being out in many areas ...` / `it is impossible to notify many people”` · `Weather Bureau, South Bend · 6:50 PM` (on both strips) · `“so many tornado` / `reports that it was` / `hard to keep track` / `of them”` · `as recalled in 2014` · `“so numerous that it is` / `impossible to keep track` / `of them”` · `north central Indiana` · `Weather Bureau survey, 1965, p. 40 · area drawn is schematic`. Page words are the image.
