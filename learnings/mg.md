@@ -13,7 +13,7 @@ Newest first. New entries go at the top, under this line. Superseded lines point
     test sheet, before any comp mounts it (the redraw passed at 60 px and 360 px).
   - First frame: a comp's exact first frame showed a colour layer the next frame did not, then a start scale 3 %
     larger. Builder's diagnosis: the time-0 `set()`s and a `fromTo` start. Fixed by CSS start states and a plain `to()`;
-    the sweep of all 12 first frames found it in that comp only.
+    a read of all 12 hosts' first frames found it in that comp only.
   - A flash built as a scale pop about the wrong origin: the radio left its table, the television left the floor. The
     brief asked for an outline flash; a stroke change with no transform is the safe form.
   - A beat count that could not fit its voice window: the brief asked for seven row pulses in the 1.34 s a word gave.
