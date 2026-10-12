@@ -395,8 +395,8 @@ window.__timelines = window.__timelines || {};
   tl.to($("mh"), { rotation: 480, duration: 0.5, ease: "power3.out" }, 9.15);
   swap($("time1"), $("time2"), 9.15);
 
-  /* 10 · "severe" @10.01: card 69 slides in from the right, at its waiting height */
-  tl.to($("c69"), { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 10.01);
+  /* 10 · "severe" @10.01: card 69 rises in from below with a fade, to its waiting height */
+  tl.to($("c69"), { autoAlpha: 1, y: 267, duration: 0.7, ease: "power3.out" }, 10.01);
 
   /* 11 · "It" @12.91: push MIDWEST to INDIANA, 2.46 times, ends @13.81 */
   cam(INDIANA, 2202.353 / 5421.317, 12.91);
