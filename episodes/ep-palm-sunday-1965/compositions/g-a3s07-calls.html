@@ -172,7 +172,9 @@ window.__timelines = window.__timelines || {};
   }
 
   /* ================= view FILM: 0.00 to 4.21 ================= */
-  /* 0 · "Three" @0.00: ground, open window on the desk telephone shot, frame, film label. The film is the motion */
+  /* 0 · "Three" @0.00: ground, open window on the desk telephone shot, frame, film label. The film is the motion; the label
+     floats 6 px down and back, twice, away from the film's edge, so the composition's own layer is never still for 4 s */
+  tl.to($("label"), { y: 6, duration: CUT1 / 4, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0);
 
   /* ================= view DESK: 4.21 to 11.41 ================= */
   /* 1 · "People" @4.21: hard cut. The hole closes for good; frame and film label off; the clock stamp slides in, the minute hand sweeping */
