@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a6s10-watch (A6-S10): a microphone on the air beside two typed strips, TORNADO FORECAST over TORNADO WARNING (the
+     study's two terms, on paper); then, on glass, TORNADO FORECAST struck through and TORNADO WATCH under it (the Weather
+     Service's later statement, our setting). No year is on screen. The strike is Body light, never red.
+     Brief: mg_specs/briefs/g-a6s10-watch.md. Bases: the glass plate of g-a1s01-kc; media/drawings/microphone.svg inline
+     at 1.6 (lines 4 px), its lamp Popfig red when on the air.
+     Staging (acts-plan rule 22, brief section 4 item 7): (a) until "explaining" the microphone sits centred at 1.5 times
+     its briefed size on a slow push; (b) from "explaining" the microphone and the strips sit 280 px right of their briefed
+     places, so the paper group is centred; (c) on "update," they go 280 px left to their briefed places, before the glass.
+     Not as the brief writes it: the strike is a bar on the glass line itself (8 px past the text at each end, whatever the
+     text's width), drawn left to right by scaleX; the struck line's letters go to Label grey as it is struck, so a Body
+     light strike reads across Headline white type.
+     Cues are comp-local seconds from audio/a6-s10.words.json (wav start -0.21, timeline-map.md table 5). -->
+<template>
+<style>
+  #wat-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .wat-h { opacity:0; visibility:hidden; }
+  .wat-full { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .wat-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  /* paper: the study's two terms */
+  .wat-strip { position:absolute; left:520px; width:620px; height:110px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; overflow:hidden; }
+  .wat-strip span { position:absolute; left:40px; top:24px; font:700 56px 'Courier New', Courier, monospace; color:#2a2622; white-space:nowrap; line-height:1; }
+  .wat-pulse { position:absolute; inset:0; background:rgba(232,197,106,0.25); }
+  /* glass: the renamed pair */
+  .wat-glass { position:absolute; left:1200px; top:300px; width:600px; height:300px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .wat-gl { position:absolute; left:39px; font:700 44px 'Courier New', Courier, monospace; color:#f2f5f8; white-space:nowrap; line-height:1; }   /* 39 + the 1 px border = screen x 1240 */
+  .wat-strike { position:absolute; left:-8px; right:-8px; top:calc(50% - 2px); height:4px; border-radius:2px; background:#dfe7ee; }
+  .wat-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="wat-root" data-composition-id="g-a6s10-watch" data-width="1920" data-height="1080" data-duration="13.79">
+
+  <!-- ===== the paper group: microphone and the two strips (briefed x 220 to 1140) ===== -->
+  <div class="wat-full" id="wat-paper">
+    <!-- the microphone: briefed box x 220 to 412, y 300 to 668, centre (316, 484). No station name, no call letters -->
+    <div class="wat-full" id="wat-mic">
+      <svg class="wat-svg" viewBox="0 0 1920 1080" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <g transform="translate(220 300) scale(1.6)">
+          <g stroke="#dfe7ee" stroke-width="2.5">
+            <path d="M60 112 V182"/>
+            <rect x="30" y="0" width="60" height="112" rx="30" fill="#15202b"/>
+            <path d="M40 30 H80 M40 56 H80 M40 82 H80"/>
+            <path d="M30 182 H90 L108 230 H12 Z" fill="#15202b"/>
+            <circle id="wat-lamp" cx="104" cy="20" r="9" fill="#15202b"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div class="wat-strip wat-h" id="wat-s1" style="top:330px"><span id="wat-s1t">TORNADO FORECAST</span></div>
+    <div class="wat-strip wat-h" id="wat-s2" style="top:470px"><span id="wat-s2t">TORNADO WARNING</span><div class="wat-pulse wat-h" id="wat-pulse"></div></div>
+  </div>
+
+  <!-- ===== the glass card: FORECAST struck, WATCH under it ===== -->
+  <div class="wat-glass wat-h" id="wat-glass">
+    <div class="wat-gl" id="wat-g1" style="top:49px">TORNADO FORECAST<div class="wat-strike" id="wat-strike"></div></div>
+    <div class="wat-gl wat-h" id="wat-g2" style="top:169px">TORNADO WATCH</div>
+  </div>
+
+  <div class="wat-src wat-h" id="wat-srca">Disaster Research Center, 1966, p. 30</div>
+  <div class="wat-src wat-h" id="wat-srcb">National Weather Service, Chicago</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a6s10-watch", P = "wat", D = 13.79;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function rise(id, t) { s0($(id), { y: 40 }); tl.to($(id), { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, t); }
+
+  var paper = $("paper"), mic = $("mic"), pulse = $("pulse");
+  var SHIFT = 280, BIG = 1.5, PUSH = 1.03, MX = 316, MY = 484;
+
+  /* rest states, set at 0. The paper group sits 280 px right until "update,". Inside it the microphone scales about its own
+     centre; until "explaining" that centre is the frame's, (960, 540) */
+  s0(paper, { x: SHIFT });
+  s0(mic, { transformOrigin: MX + "px " + MY + "px", scale: BIG, x: 960 - SHIFT - MX, y: 540 - MY, force3D: false });
+  s0($("srca"), { y: 12 });
+  s0(pulse, { scaleX: 0, transformOrigin: "left center" });
+  s0($("strike"), { scaleX: 0, transformOrigin: "left center" });
+
+  /* 0 · "Radio," @0.00: the microphone, drawn already, lamp at rest, centred, on a slow push */
+  tl.to(mic, { scale: BIG * PUSH, duration: 2.39, ease: "none", force3D: false }, 0);
+
+  /* 1 · TV, @0.77: the lamp turns Popfig red: on the air */
+  tl.to($("lamp"), { fill: "#d0121f", duration: 0.2, ease: "power2.out" }, 0.77);
+
+  /* 2 · explaining @2.39: source A; the microphone goes to its briefed size at x 500 to 692 (done @2.89) */
+  tl.to($("srca"), { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.39);
+  tl.to(mic, { scale: 1, x: 0, y: 0, duration: 0.5, ease: "power2.inOut", force3D: false }, 2.39);
+
+  rise("s1", 3.97);                                         /* 3 · forecast @3.97: strip 1 rises */
+  rise("s2", 4.79);                                         /* 4 · warning. @4.79: strip 2 rises */
+
+  /* 5 · Weather @6.65: source A gives way to source B, out then in (the two share one place) */
+  tl.to($("srca"), { autoAlpha: 0, duration: 0.15, ease: "none" }, 6.65);
+  tl.to($("srcb"), { autoAlpha: 1, duration: 0.15, ease: "none" }, 6.80);
+
+  /* 6 · warning @8.35: the pulse wipes across strip 2 and leaves (0.5 s in all) */
+  tl.set(pulse, { autoAlpha: 1 }, 8.35);
+  tl.to(pulse, { scaleX: 1, duration: 0.3, ease: "none" }, 8.35);
+  tl.to(pulse, { autoAlpha: 0, duration: 0.2, ease: "none" }, 8.65);
+
+  /* 6b · update, @9.13: the microphone and both strips go 280 px left to their briefed places (done @9.63) */
+  tl.to(paper, { x: 0, duration: 0.5, ease: "power2.inOut" }, 9.13);
+
+  /* 7 · so @9.93: the glass card rises with TORNADO FORECAST on it */
+  rise("glass", 9.93);
+
+  /* 8 · renamed @11.25: the strike draws across glass line 1, and that line's letters step down to Label grey */
+  tl.to($("strike"), { scaleX: 1, duration: 0.4, ease: "none" }, 11.25);
+  tl.to($("g1"), { color: "#93a3b2", duration: 0.4, ease: "none" }, 11.25);
+
+  /* 9 · Tornado @11.89: TORNADO WATCH */
+  tl.to($("g2"), { autoAlpha: 1, duration: 0.25, ease: "none" }, 11.89);
+
+  /* 10 · @13.79: the comp ends on the hold */
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
