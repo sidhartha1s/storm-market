@@ -48,8 +48,8 @@ t from comp start = the segment's wav start inside the composition (timeline-map
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
 | 0 | A5-S9 | 0 | The | 0.00 | 0.00 | first frame: photograph 1 and caption A; push starts |
-| 1 | A5-S9 | 4 | 25 | 1.46 | 0.97 | hard cut to photograph 2 with `Alto, Indiana`; caption A off on the same frame; push restarts at 1.00 |
-| 2 | A5-S9 | 5 | lives | 2.02 | 1.53 | toll card rises (`y:40` to 0 with the fade, 0.35 s, power3.out) with `25`, `lives lost`, `along this storm's path` and the source |
+| 1 | A5-S9 | 7 | on | 2.82 | 2.33 | hard cut to photograph 2 with `Alto, Indiana`; caption A off on the same frame; push restarts at 1.00 |
+| 2 | A5-S9 | 9 | storm's | 3.18 | 2.69 | toll card rises (`y:40` to 0 with the fade, 0.35 s, power3.out) with `25`, `lives lost`, `along this storm's path` and the source |
 | 3 | A5-S9 | 11 | from | 3.92 | 3.43 | third label line `from Russiaville to Marion` fades in (0.25 s) |
 | 4 | end | | | | 5.99 | comp ends; no exit move |
 
