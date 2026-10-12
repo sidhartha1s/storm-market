@@ -24,8 +24,9 @@ Newest first. New entries go at the top, under this line. Superseded lines point
   outside the frame) and "Verify" (first frame of every host). The done line of `references/mg-brief-template.md`
   already asks for `graphics_qc` at 0 errors and an opening state on frame 0: when builders share a machine the gate
   run is queued, never dropped.
-- **Open:** `graphics_qc` flat-type fails five comps, three typed sheets and two page crops with a quote strip (two
-  type tiers by design). Left red in the preview and reported to the owner; a declared exemption in the gate is his call.
+- **Closed 13 Oct 26:** `graphics_qc` flat-type failed five comps, three typed sheets and two page crops with a quote
+  strip (two type tiers by design). The owner approved a declared exemption in the gate on 13 Oct 26 ("type check - yes
+  go."): `data-type-ok="reason"` on the comp root, rule in `references/mg-quickref.md` "Gate-readable authoring".
 
 ## 10 Oct 26 - ep4-el-reno: 45 of 68 graphics needed a fix after every builder's gates were green
 - **What happened:** seven Opus builders built 68 comps, each ending on `graphics_qc` PASS. Two independent Opus
