@@ -184,13 +184,12 @@ window.__timelines = window.__timelines || {};
   /* 6 · "few" @21.55: strip B enters */
   stripIn($("strip-b"), 21.55);
 
-  /* 7 · "Many" @24.28: strip B leaves right; the microphone group slides left to rest */
-  tl.to($("strip-b"), { x: 1900, duration: 0.5, ease: "power3.in" }, 24.28);
-  tl.set($("strip-b"), { autoAlpha: 0 }, 24.78);                                         /* parked outside the frame: not visible there */
+  /* 7 · "Many" @24.28: strip B fades out in place (never through the presenter corner); the microphone group slides left to rest */
+  tl.to($("strip-b"), { autoAlpha: 0, duration: 0.25, ease: "power1.in" }, 24.28);
   tl.to($("micg"), { x: 0, duration: 0.6, ease: "power2.inOut" }, 24.28);
-  /* plan rule 22: with strip B gone the lower 47 % of the frame would be empty until strip C (24.78 to 28.05, 3.3 s). The drawing
+  /* plan rule 22: with strip B gone the lower 48 % of the frame would be empty until strip C (24.53 to 28.05, 3.5 s). The drawing
      band (y 134 to 560) sits centred in the frame (y 327 to 753) for that stretch and rises to its briefed place on strip C's cue */
-  tl.to($("drawn"), { y: 193, duration: 0.5, ease: "power2.inOut" }, 24.78);
+  tl.to($("drawn"), { y: 193, duration: 0.5, ease: "power2.inOut" }, 24.53);
 
   /* 8 · "air" @25.89: the lamp turns on by fill and colour only; the microphone's own small lamp with it */
   tl.to($("lamp-fill"), { autoAlpha: 1, duration: 0.15, ease: "none" }, 25.89);
