@@ -84,7 +84,9 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  var ID = "g-a2s17-funnels", P = "fun", D = 18.96, CUT = 13.10;
+  var ID = "g-a2s17-funnels", P = "fun";
+  const D = 18.96;     /* each on its own line as a plain number: scripts/sweep_episode.py reads a tween's position and duration only through such constants */
+  const CUT = 13.10;
   var $ = function (s) { return document.getElementById(P + "-" + s); };
   var tl = gsap.timeline({ paused: true });
   function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
