@@ -37,7 +37,7 @@ The chain, as `g-a4s02-countyb` at full size (copy its group):
 | House | `media/drawings/house.svg` inline, `translate(1400 430) scale(0.68)`, `stroke-width="5.9"` (box x 1400 to 1577, y 430 to 600, aerial to y 407). Opens Label grey, windows Panel dark |
 | Links, y 520, 4 px, dotted (`stroke-dasharray="0.1 14"`, round caps) | 837 to 1068 and 1170 to 1400, Label grey. The ghost of A4-S5 is gone (it faded in `g-a4s06-died`) |
 | Radio arc | path `M224 508 Q425 300 626 508`, 4 px, dotted like the links. Opens Amber 2 |
-| Labels | Arial 700 22 px, line-height 28, Label grey, top 676, each 200 px wide and centred on its station: `civil defense` (x 223.5), `city police` (x 709.5), `the radio station` (x 1119), `a family` (x 1488.5) |
+| Labels | Arial 700 22 px, line-height 28, Label grey, top 676, each 200 px wide and centred on its station: `civil defense` (x 223.5), `city police` (x 709.5), `the radio station` (x 1119), `a family` (x 1488.5). **On screen the whole stage (chain, links, arc, stop mark, labels and the County chip) sits 36 px lower than this brief's numbers:** the built and passed base `g-a4s02-countyb` leaves its stage at `y:36`, and this comp sets the same at 0. On screen: chain line y 556 (authored 520), labels top 712 (676), stop mark y 520 to 592 (484 to 556), chip top 352 (316). Continuity with the base as built wins (lead, 13 Oct 26) |
 | County chip | glass chip (`.pol-chip` of `compositions/g-i1s6-page.html`), left 836, top 316, height 46, padding 0 x 22, Arial 700 26 px, Body light: `County B`. On in every frame |
 
 The clock (design sheet section 8, as `g-a4s02-countyb` builds it):
