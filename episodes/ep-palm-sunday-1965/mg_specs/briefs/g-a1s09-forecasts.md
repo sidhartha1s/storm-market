@@ -97,7 +97,7 @@ Cue words and times are from `audio/a1-s9.words.json`, `a1-s10`, `a1-s11` and `a
 | 7 | A1-S9 | 22 | tornadoes. | 7.52 | 7.29 | the strip lifts in under the card (`y:60` set at 0, to 0, with the fade; 0.4 s, power3.out); on the same cue card 68 moves up to its briefed place (`y:278` to 0; 0.5 s, power3.out) |
 | 8 | A1-S10 | 0 | Then, | 0.00 | 8.87 | strip and card 68 exit right (`x:1900` with the fade, 0.4 s, power3.in; both sit above y 680 by then, the strip's bottom at y 572, so the exit stays out of the corner); the three fills and labels fade (0.3 s) |
 | 9 | A1-S10 | 2 | 5 | 0.68 | 9.15 | stamp goes to state 5:20 PM |
-| 10 | A1-S10 | 5 | severe | 1.54 | 10.01 | forecast card 69 slides in from the right (0.7 s) |
+| 10 | A1-S10 | 5 | severe | 1.54 | 10.01 | forecast card 69 rises in from below with a fade (`y:347` set at 0, to `y:267`; 0.7 s, power3.out) and holds there until step 13. Corrected 13 Oct 26 to the file as saved at 00:14: not in from the right, which crossed the presenter corner (7,770 px at 10.15 s) |
 | 11 | A1-S10 | 10 | It | 4.44 | 12.91 | map push MIDWEST to INDIANA (0.9 s) |
 | 12 | A1-S10 | 12 | parts | 4.90 | 13.37 | unlit page on card 69; underline `PORTIONS OF NORTHERN INDIANA` (0.4 s) |
 | 13 | A1-S10 | 15 | Indiana, | 5.66 | 14.13 | strip 1 lifts in; the northern band wipes down from the north edge (0.5 s) and its label fades in |
