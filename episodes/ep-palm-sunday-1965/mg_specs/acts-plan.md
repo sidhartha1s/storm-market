@@ -328,7 +328,7 @@ Rows the wave 1 and 2 briefs proved wrong or made exact (12 Oct 26, evening; the
 - **PT-05, PT-06 (forecast scans):** each card shows the typed text only (file y 0 to 312 and y 0 to 334). The figure below it carries marks added later by the page's author, some for tornadoes after the forecast time.
 - **PT-09 (Sunnyside):** the clean print inside the faded edge is file x 20 to 780, y 22 to 626; it runs 0.95 to 1.00 in a 722 x 574 window and is never enlarged.
 - **PC-04:** the page prints "too old--i.e. 15-30 minutes--" on one single-spaced line, so its underline is 4 px at 2 px under the line, not 6 px at 4 px.
-- **PC-06 and rule 18:** the next line's sliver is rows 126 to 128 of the file; the third typed line's descenders run to row 123. A 12 px mask cuts rows 117 to 128; a 4 px mask would remove the sliver alone. The brief follows the ruling and has the verifier read that edge.
+- **PC-06 and rule 18:** the next line's sliver is rows 126 to 128 of the file; the third typed line's descenders run to row 123. A 12 px mask cuts rows 117 to 128; a 4 px mask removes the sliver alone. **Ruled 4 px by the lead, 12 Oct 26:** rule 18 and the brief are changed, and the stack under the map now ends at y 991, not 983. The brief follows the ruling and has the verifier read that edge.
 - **Stamp zone:** "EST" does not fit beside an 84 px time in the 590 px card; the briefs write the zone in the place line as `Eastern time`.
 - **Family bases:** no "Reuses" cell names g-a2s17-funnels or g-a1s05-clocks; their briefs name the later comps that copy them.
 
@@ -341,7 +341,7 @@ Rows the wave 3, 4 and 5 briefs proved wrong or made exact (12 Oct 26, night; th
 - **g-a3s10-towers:** the 54 marks fall 0.03 s apart, 1.62 s in a 1.69 s spoken window.
 - **g-a4s01-eyes:** ruled by the lead, rule 23: the first 3.15 s are film (`media/films/cuts/a14-05-operations-room.mp4` from 20.0 s). The brief's writer had advised against film there; the ruling stands and the brief is corrected by its writer.
 - **g-a5s10-alert:** the film window is open for 2.20 s. **g-a3s07-calls:** the film is mounted for 11.41 s and its window shows 4.21 s.
-- **g-a5s09-alto:** the first photograph is on screen for 0.97 s only.
+- **g-a5s09-alto:** ruled by the lead, 12 Oct 26: the first photograph stays up until "on" (2.33 s), not "twenty five" (0.97 s), so its caption can be read; the toll card follows the cut.
 - **g-a6s05-wires:** the teletype's label reads `Weather Bureau teletype` there, not `Kansas City forecasters`; the study's p. 29 is cited and not shown, because it prints the county letters.
 - **g-a6s08-spotters:** the house label reads `a town`, not `Marion`; the spotter mark is a ring with a mast, drawn in the composition, with no file.
 - **g-z1s02-row:** the chain stands under a centred list (sheet x 580 to 1340), not beside it, so the new light can pass between them; the Reuses cell's chain is redrawn at that size.
