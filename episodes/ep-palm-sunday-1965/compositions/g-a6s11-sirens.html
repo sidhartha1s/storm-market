@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a6s11-sirens (A6-S11, A6-S12): the study's own sentence on paper beside a horn drawn as a bare outline; the outline becomes
+     a real horn on film, silent, under the line that none sounded; then the film is gone and the study's words say most places
+     still had none. Brief: mg_specs/briefs/g-a6s11-sirens.md. Film family: the film view and the strip of g-a1s15-offices.
+     THE HORN NEVER SOUNDS: no sound line, arc, ring or ray, no pulse, shake, scale or glow, no audio. The drawn horn changes only
+     by being drawn on and by being hidden. Nothing is drawn near its mouth in this file.
+     The film is not this comp's: index.html mounts media/films/cuts/a14-01-siren-horn.mp4 on track 1 (class filmwin, left 480,
+     top 150, 960 x 720) from 5.35 to the last frame, and this comp sits above it. The hole is open only from 5.35 to 9.20.
+     Views: PAPER 0.00 to 5.35, FILM 5.35 to 9.20, AFTER 9.20 to 16.25.
+     Horn: media/drawings/horn-pole.svg at 1.5 times, object box x 900 to 1020, y 200 to 530, where the filmed horn stands.
+     Sweep band: the chain base's faint band crosses the ground three times to carry the holds. It is cut out of the hole, and a
+       second copy rides on the hole cover in step with it, so it never lies over the film and shows no seam on the cover.
+     Plan rule 22: strip A sits in the middle of the frame (200 px higher) until the horn needs the room, then goes to its place.
+     Cues: words.json seconds plus the wav start inside the comp: a6-s11 -0.25, a6-s12 +4.76 (mg_specs/timeline-map.md table 5).
+     No audio and no video element in this file. -->
+<template>
+<style>
+  /* no background: the hole must stay clear. No z-index here: index.html puts the film under its host ("film under hosts") */
+  #sir-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; }
+  .sir-h { opacity:0; visibility:hidden; }
+
+  /* ---- FILM VIEW (family block): ground with a 4:3 hole at x 480 to 1440, y 150 to 870, frame, label chip, hole cover ---- */
+  /* every pane carries the whole 1920 x 1080 gradient, offset by its own left and top, so no pane edge shows a seam */
+  .sir-pane { position:absolute; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%) no-repeat; background-size:1920px 1080px; }
+  .sir-pane-t { left:0; top:0; width:1920px; height:150px; background-position:0 0; }
+  .sir-pane-b { left:0; top:870px; width:1920px; height:210px; background-position:0 -870px; }
+  .sir-pane-l { left:0; top:150px; width:480px; height:720px; background-position:0 -150px; }
+  .sir-pane-r { left:1440px; top:150px; width:480px; height:720px; background-position:-1440px -150px; }
+  .sir-cover { left:480px; top:150px; width:960px; height:720px; background-position:-480px -150px; overflow:hidden; }
+  .sir-frame { position:absolute; left:476px; top:146px; width:968px; height:728px; box-sizing:border-box; border:4px solid #dfe7ee; }
+  .sir-chip { position:absolute; height:46px; padding:0 22px; box-sizing:border-box; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:23px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:44px; }
+  .sir-label { left:480px; top:886px; }
+
+  /* ---- the faint sweep band: on the panes (the hole cut out of it) and, as a second copy, on the hole cover ---- */
+  .sir-sweepclip { position:absolute; left:0; top:0; width:1920px; height:1080px; clip-path:path(evenodd, "M0 0 H1920 V1080 H0 Z M480 150 H1440 V870 H480 Z"); }
+  .sir-sweep { position:absolute; left:-560px; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
+  .sir-sweep-c { left:-1040px; top:-150px; }   /* the same band in the cover's own box (left 480, top 150) */
+
+  /* ---- the drawn horn: an outline and nothing else ---- */
+  .sir-horn { position:absolute; left:891px; top:191px; width:138px; height:348px; overflow:visible; }
+
+  /* ---- quote strips (paper: the study's words only), the base's strip ---- */
+  .sir-strip { position:absolute; left:96px; top:640px; width:1480px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; }
+  .sir-strip-a { height:200px; }
+  .sir-strip-b { height:170px; }
+  .sir-qa { position:absolute; left:40px; top:20px; font:40px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:52px; }
+  .sir-qb { position:absolute; left:40px; top:12px; font:52px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:1.15; }
+  .sir-att { position:absolute; left:40px; font:700 22px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+</style>
+<div id="sir-root" data-composition-id="g-a6s11-sirens" data-width="1920" data-height="1080" data-duration="16.25">
+
+  <!-- FILM VIEW (family block); the cover is on from the first frame here and comes off only for the film -->
+  <div class="sir-pane sir-pane-t"></div>
+  <div class="sir-pane sir-pane-b"></div>
+  <div class="sir-pane sir-pane-l"></div>
+  <div class="sir-pane sir-pane-r"></div>
+  <div class="sir-sweepclip"><div class="sir-sweep" id="sir-sweep"></div></div>
+  <div class="sir-pane sir-cover" id="sir-cover"><div class="sir-sweep sir-sweep-c" id="sir-sweep-c"></div></div>
+  <div class="sir-frame sir-h" id="sir-frame"></div>
+  <div class="sir-chip sir-label sir-h" id="sir-label">Civil defense training film, 1967</div>
+
+  <!-- media/drawings/horn-pole.svg inline at 1.5 times: line 6 px, Label grey, no fill. No sound lines, ever -->
+  <svg class="sir-horn" id="sir-horn" viewBox="-6 -6 92 232" width="138" height="348">
+    <g fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path class="sir-h" id="sir-h-pole" d="M40 220 V48 M26 220 H54"/>
+      <rect class="sir-h" id="sir-h-driver" x="8" y="22" width="16" height="22"/>
+      <path class="sir-h" id="sir-h-bell" d="M24 26 L72 4 V62 L24 40 Z"/>
+    </g>
+  </svg>
+
+  <!-- strip A (view PAPER): the study's sentence as the script's Picture note gives it -->
+  <div class="sir-strip sir-strip-a" id="sir-strip-a">
+    <div class="sir-qa sir-h" id="sir-qa">&ldquo;It is presently impossible to tell what effect<br>these recommendations will eventually have&rdquo;</div>
+    <div class="sir-att" style="top:146px">Disaster Research Center, 1966, p. 31</div>
+  </div>
+
+  <!-- strip B (view AFTER) -->
+  <div class="sir-strip sir-strip-b sir-h" id="sir-strip-b">
+    <div class="sir-qb sir-h" id="sir-qb">&ldquo;have not gone to a siren system&rdquo;</div>
+    <div class="sir-att" style="top:90px">Disaster Research Center, 1966, p. 33</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a6s11-sirens", P = "sir", D = 16.25, CUT1 = 5.35, CUT2 = 9.20;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function draw(e, t, d) {                                  /* a line drawn on: dash = ceil(len)+1, hidden until its start */
+    var L = Math.ceil(e.getTotalLength()) + 1;
+    s0(e, { strokeDasharray: L, strokeDashoffset: L, autoAlpha: 0 });
+    tl.set(e, { autoAlpha: 1 }, t);
+    tl.to(e, { strokeDashoffset: 0, duration: d, ease: "power2.out" }, t);
+  }
+
+  /* start states: hidden in CSS (sir-h), transforms set here at 0; every move from rest below is a plain to() */
+  s0($("strip-a"), { y: -200 });                            /* in the middle of the frame until the horn needs the room (plan rule 22) */
+  s0($("qa"), { y: 16 });
+  s0($("strip-b"), { y: 60 });
+  s0($("qb"), { y: 16 });
+
+  /* the sweep band crosses the ground three times, both copies in step */
+  tl.to([$("sweep"), $("sweep-c")], { x: 2860, duration: D / 3, ease: "none", repeat: 2 }, 0);
+
+  /* ================= view PAPER: 0.00 to 5.35 ================= */
+  /* 0 · "The" @0.00: ground, hole covered, strip A with its attribution and no quote yet. No horn */
+
+  /* 1 · "impossible" @1.27: the quote lands on strip A, both lines together */
+  tl.to($("qa"), { y: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 1.27);
+
+  /* 2 · "recommendations" @3.11: strip A goes to its briefed place and the horn draws on over it, pole first (complete 3.71) */
+  tl.to($("strip-a"), { y: 0, duration: 0.5, ease: "power3.out" }, 3.11);
+  draw($("h-pole"), 3.11, 0.3); draw($("h-driver"), 3.26, 0.25); draw($("h-bell"), 3.36, 0.35);
+
+  /* ================= view FILM: 5.35 to 9.20 ================= */
+  /* 3 · "But" @5.35: hard cut on the film mount's first frame. Strip A and the drawn horn off, hole cover off, frame and film label on */
+  tl.set([$("strip-a"), $("horn"), $("cover")], { autoAlpha: 0 }, CUT1);
+  tl.set([$("frame"), $("label")], { autoAlpha: 1 }, CUT1);
+
+  /* ================= view AFTER: 9.20 to 16.25 ================= */
+  /* 4 · "And" @9.20: hard cut. Hole cover on, frame and film label off, the drawn horn back at rest */
+  tl.set([$("cover"), $("horn")], { autoAlpha: 1 }, CUT2);
+  tl.set([$("frame"), $("label")], { autoAlpha: 0 }, CUT2);
+
+  /* 5 · "when" @9.32: strip B enters with its attribution and no quote */
+  tl.to($("strip-b"), { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 9.32);
+
+  /* 6 · "still" @13.42: the quote lands on strip B. Hold to the last frame */
+  tl.to($("qb"), { y: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 13.42);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
