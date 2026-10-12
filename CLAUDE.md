@@ -129,7 +129,7 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
 6. QC, in order: (a) walk every graphic, card and clip as a viewer and fix what idles; (b) `lint_timeline.py` exit 0,
    including the no-repeat rule (reuse needs `data-callback="reason"`, 3 uses max, last 90 s exempt); (c) the static
    suite, all green; (d) verify changed compositions per `references/mg-quickref.md` "Verify"; (e) after the render only,
-   `scripts/verify_render.sh <episode-dir> <basename>`. Never call a rule fixed from your shot map: re-run the gates on the final `index.html`.
+   `scripts/verify_render.sh <episode-dir> <basename> <draft|full>` (the mode you gave `render.cmd`). Never call a rule fixed from your shot map: re-run the gates on the final `index.html`.
 7. Deliverables: `python3 scripts/master_deliverables.py episodes/<slug> <basename>` makes the 1080p master at
    -14 LUFS and the EN SRT (needs the `nx-*` id on narration audio). No HEVC archive (owner 28 Sep 26: disk). The 1080p
    `-master.mp4` IS the upload file, no upscale. The moment the final master exists: move the master and SRT (both
