@@ -55,7 +55,7 @@ Clock hands, clockwise degrees from 12: 7:30 is hour 225, minute 180. The stamp 
 
 ## 4. Must be true in the picture
 These are the truths of the ruled film variant.
-1. While any film pixel shows (0.00 to 3.15), `Civil defense training film, 1967` is on screen and is the only chip and the only text: no `County B`, no card, no stamp, no source line. The film is the operations room from 20.0 s into its file, never frozen, slowed, looped or reversed. From 3.15 to the last frame the hole is opaque (read at 3.25: no black, no stale frame, no seam in the ground).
+1. While any film pixel shows (0.00 to 3.15), `Civil defense training film, 1967` is on screen and is the only chip and the only text: no `County B`, no card, no stamp, no source line. The film is the pre-trimmed wide cut of the operations room from its first second, never frozen, slowed, looped or reversed. From 3.15 to the last frame the hole is opaque (read at 3.25: no black, no stale frame, no seam in the ground).
 2. Every word on the card is the page's own; nothing on the card is retyped. The underlined words are `"with his` and `own eyes".` and nothing else.
 3. The page, the chip `County B`, the stamp and the source line come on together in the cut at word 9 "in" (3.15), not before. The unlit page is already on in that frame.
 4. The stamp reads `ABOUT` and `7:30 PM` from its first frame, minute hand on the 6, hour hand half way between 7 and 8. No `7:15 PM` is shown and no hand moves; the page's own `7:30 p. m.` is bright.
