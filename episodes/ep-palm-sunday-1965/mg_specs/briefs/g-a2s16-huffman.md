@@ -30,7 +30,7 @@ The tornado mark's place is schematic: 7 map units west and 7 north of `pt-nappa
 | Ground | canvas gradient, on from frame 0 |
 | Map | BM-1 groups inlined, ids prefixed `huff-`; county lines 1.5 px, Indiana's outline 3 px, non-scaling. Every `pt-` group hidden except Elkhart, Nappanee and South Bend, each shown only from its cue. Dot radius 6 px on screen: `r` 2 map units in NORTH, 0.8 in ELKHART (tween `r` with the push) |
 | Elkhart dot | NORTH (1331.3, 121.4); ELKHART (1093.3, 315.5) |
-| Label `Elkhart` | Arial 700 22 px, Body light. NORTH: centred on x 1331, top 84. ELKHART: centred on x 1093, top 270. It fades out 0.2 s before the push and back in after it |
+| Label `Elkhart` | Arial 700 22 px, Body light. NORTH: right of its dot (as built and passed; this brief first said centred on x 1331, top 84). ELKHART: centred on x 1093, top 270. It fades out 0.2 s before the push and back in after it |
 | Name card | glass plate as `compositions/g-i1s2-station.html` `.stn-card` (same fill, blur, border, radius 28): left 96, top 96, 520 x 170. Name `Paul Huffman`: Arial Black 900 52 px, Headline white, left 138, top 118 (382 px wide). Sub `photographer, The Elkhart Truth`: Georgia italic 30 px, Amber 2, left 140, top 198 (445 px wide) |
 | Source line | design sheet section 10, left 96, bottom 60: `as told by the National Weather Service` |
 | Elkhart County outline | `huff-co-in-elkhart` stroke goes Label grey to Headline white, 3 px (a stroke change, no scale) |
