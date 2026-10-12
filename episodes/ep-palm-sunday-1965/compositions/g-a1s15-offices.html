@@ -187,6 +187,9 @@ window.__timelines = window.__timelines || {};
   tl.to($("strip-b"), { x: 1900, duration: 0.5, ease: "power3.in" }, 24.28);
   tl.set($("strip-b"), { autoAlpha: 0 }, 24.78);                                         /* parked outside the frame: not visible there */
   tl.to($("micg"), { x: 0, duration: 0.6, ease: "power2.inOut" }, 24.28);
+  /* plan rule 22: with strip B gone the lower 47 % of the frame would be empty until strip C (24.78 to 28.05, 3.3 s). The drawing
+     band (y 134 to 560) sits centred in the frame (y 327 to 753) for that stretch and rises to its briefed place on strip C's cue */
+  tl.to($("drawn"), { y: 193, duration: 0.5, ease: "power2.inOut" }, 24.78);
 
   /* 8 · "air" @25.89: the lamp turns on by fill and colour only; the microphone's own small lamp with it */
   tl.to($("lamp-fill"), { autoAlpha: 1, duration: 0.15, ease: "none" }, 25.89);
