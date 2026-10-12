@@ -52,7 +52,7 @@ fi
 # rendered at the rate render.cmd launched it with (RENDER_FPS included) and recorded in render_draft.fps.
 EXPECT_FPS="$COMP_FPS"
 if [ "$MODE" = draft ]; then
-  EXPECT_FPS=$(tr -d ' \t\r\n' < "$EP/render_draft.fps" 2>/dev/null)
+  EXPECT_FPS=""; [ -f "$EP/render_draft.fps" ] && EXPECT_FPS=$(tr -d ' \t\r\n' < "$EP/render_draft.fps")
   if [ -z "$EXPECT_FPS" ]; then
     echo "FAIL: $EP/render_draft.fps is missing or empty — this draft predates the check or never reached the render step, so its frame rate cannot be verified"
     exit 1
