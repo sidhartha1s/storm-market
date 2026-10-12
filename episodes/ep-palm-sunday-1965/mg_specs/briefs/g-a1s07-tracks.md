@@ -65,7 +65,7 @@ Cue words and times are from `audio/a1-s7.words.json` and `audio/a1-s8.words.jso
 | 8 | A1-S8 | 7 | county | 2.30 | 14.532 | the mark steps along the row (x 350 to 1450, ease none) and each tile blinks as the mark is over it: six blinks of 0.45 s, 2.70 s in all, ending at 17.232 |
 | 9 | A1-S8 | 16 | handed | 5.04 | 17.272 | the five hand-off marks draw in Amber 2, west to east (stagger 0.12 s, 0.25 s each; the last is complete at 18.002) |
 | 10 | A1-S8 | 20 | That | 7.12 | 19.352 | the mark returns to tile 1 (fade out, fade in, 0.3 s) |
-| 11 | A1-S8 | 22 | passing | 8.08 | 20.312 | the mark steps along the row again (2.6 s, ease none); this time the tiles blink but the hand-off marks do not answer |
+| 11 | A1-S8 | 22 | passing | 8.08 | 20.312 | the mark steps along the row again (2.6 s, ease none) and the tiles blink again; the five hand-off marks stay as they are |
 | 12 | A1-S8 | 33 | neither | 11.02 | 23.252 | all five hand-off marks turn Label grey (0.3 s) |
 | 13 | A1-S8 | 36 | nor | 12.14 | 24.372 | marks 2, 3 and 5 fade out (stagger 0.15 s, 0.25 s each; done at 24.922). Hold to the cut at 25.74 |
 Beat count (rule 13), computed: six blinks x 0.45 s = 2.70 s, inside the window from "county" (2.30) to "handed" (5.04), 2.74 s. If the final voice shortens that window, shorten each blink; never drop a tile.
