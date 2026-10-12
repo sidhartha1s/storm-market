@@ -2,7 +2,7 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
-## 12 Oct 26 - ep-palm-sunday-1965 preview: 12 graphics, 3 failed the verifier, 3 more were caught by the gate after it
+## 12 Oct 26 - ep-palm-sunday-1965 preview: 12 graphics, 3 failed the verifier, then the gate flagged 2 it had passed
 - **What happened:** three Opus builders built 12 comps for a 113 s opening; one Opus verifier read them in four passes.
   3 of 12 failed (hook warning, list question, house), two fix rounds, then all 12 passed. `graphics_qc` was run only
   after the verifier, because the builders were told to run no gates while they shared one laptop; it then found text
