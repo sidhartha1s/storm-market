@@ -344,12 +344,12 @@ files = {'index.html': ''.join(CANVAS_FILES['index.html'].replace('g-cv', c).rep
 files.update({f'compositions/{c}.html': src.replace('g-cv', c) for c, (src, *_) in CASES.items()})
 
 
-def by_comp(out):
+def by_comp(out, cases=CASES):
     """graphics_qc stdout split into one block per composition header line (no block = no defects)."""
     blocks, cur = {}, None
     for line in out.splitlines():
         head = line.strip().split(' ')[0]
-        if line.startswith('  ') and not line.startswith('    ') and head in CASES:
+        if line.startswith('  ') and not line.startswith('    ') and head in cases:
             cur = head
         elif cur:
             blocks[cur] = blocks.get(cur, '') + line + '\n'
