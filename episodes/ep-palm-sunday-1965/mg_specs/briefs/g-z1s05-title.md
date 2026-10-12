@@ -58,7 +58,7 @@ Cue words and times are from `audio/z1-s5.words.json` as on disk 12 Oct 26, 19:2
 | 1 | Z1-S5 | 4 | but | 2.58 | 2.27 | pair 1's line b rises (`y: 14` set at 0, to 0 with the fade, 0.5 s, power2.out) |
 | 2 | Z1-S5 | 9 | Learn | 5.02 | 4.71 | pair 1 fades out (0.25 s); pair 2's line a rises from 4.86 (`y: 16` to 0 with the fade, 0.5 s, power2.out) |
 | 3 | Z1-S5 | 15 | so | 6.62 | 6.31 | pair 2's line b rises (0.5 s) |
-| 4 | Z1-S5 | 25 | This | 10.06 | 9.75 | pair 2 dims to opacity 0.45 (0.3 s). It stays on screen |
+| 4 | Z1-S5 | 25 | This | 10.06 | 9.75 | pair 2 dims to opacity 0.45 (0.3 s). It stays on screen. On the same cue the two lines go from 1.5 times about (960, 370) to size 1 and their briefed place (0.5 s; as built and accepted, section 4 item 9) |
 | 5 | Z1-S5 | 28 | Warning | 10.84 | 10.53 | the wordmark lands: opacity 0 in CSS, `scale: 1.14` set at 0, a plain `to()` to opacity 1 and scale 1 (0.45 s, power3.out), as the library card |
 After the last word there is no cue word: the last sound is at 11.23, the wordmark holds, and at 14.03 (15.23 less 1.2) the black div fades in (1.2 s, power2.in) so the last frame is black.
 
