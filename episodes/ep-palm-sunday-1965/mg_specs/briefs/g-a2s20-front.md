@@ -1,4 +1,4 @@
-Host: id=g-a2s20-front file=compositions/g-a2s20-front.html start=462.56 duration=8.07 s (timeline-map.md; wav 7.72 s plus its gaps) track=2
+Host: id=g-a2s20-front file=compositions/g-a2s20-front.html start=462.81 duration=8.07 s (timeline-map.md; wav 7.72 s plus its gaps) track=2
 
 # g-a2s20-front · A2-S20 · a warning can start anywhere: the chain's front end (wave 2, chain family)
 
