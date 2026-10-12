@@ -361,6 +361,8 @@ CASES = {  # comp: (source, host s, new output must hold, must not hold, why)
     'g-k2': (_masked(BOX, quote(0, 70)), 3, 'ERROR [text-collision] "Quote line two"', None, 'the same pair with no mask still collides'),
     'g-k3': (_masked('width:600px;height:60px;overflow:hidden', quote(200, 670)), 3, 'ERROR [text-collision] "Quote line two"', None, 'a static mask does not clip an absolute line it does not contain'),
     'g-k4': (_masked(BOX + ';overflow:hidden;font-size:40px;line-height:190px;color:#fff;white-space:nowrap', 'Quote line two'), 3, None, 'text-collision', 'a mask that holds the text itself clips it'),
+    'g-k5': (_masked(BOX + ';overflow:hidden', quote(0, 30) + quote(0, 26)), 3, 'ERROR [text-collision] "Quote line two"', None, 'two partly painted lines inside one mask still collide'),
+    'g-k6': (_masked('position:absolute;left:200px;top:600px', '<svg width="600" height="60"><text x="0" y="105" font-size="40" fill="#fff">Quote line two</text></svg>'), 3, None, 'text-collision', 'an inline <svg> clips its text though its display is inline'),
 }
 files = {'index.html': ''.join(CANVAS_FILES['index.html'].replace('g-cv', c).replace('data-duration="3"', f'data-duration="{dur}"')
                                for c, (_, dur, _, _, _) in CASES.items())}
