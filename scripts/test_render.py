@@ -367,6 +367,41 @@ if HAVE_FFMPEG:
         r7 = run_verify(ep, "black-final")
         check("render-07 NEW: a black span over the CTA body still fails",
               r7.returncode != 0 and "FAIL: 1 black span" in r7.stdout, f"rc={r7.returncode}\n{r7.stdout[-800:]}")
+
+    # render-10 (12 Oct 26): a draft is rendered at render.cmd's 15 fps, so judging it against the
+    # composition's data-fps failed every draft, and the log came from the basename ("draft" in it),
+    # so a draft named ...-preview-v1 was checked against render_full.log. The mode is now an
+    # argument; the final-render checks must keep failing.
+    def mk_clip(path, fps):
+        subprocess.run(["ffmpeg", "-y", "-v", "error",
+                        "-f", "lavfi", "-i", f"testsrc=size=320x240:rate={fps}:duration=2",
+                        "-f", "lavfi", "-i", "sine=frequency=440:duration=2",
+                        "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", str(path)],
+                       capture_output=True)
+
+    with tempfile.TemporaryDirectory() as d:
+        ep = Path(d)
+        (ep / "renders").mkdir()
+        (ep / "index.html").write_text(
+            '<div id="root" data-composition-id="x" data-start="0" data-width="320" '
+            'data-height="240" data-duration="2.00" data-fps="25"></div>', encoding="utf-8")
+        (ep / "render_draft.log").write_text("browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n", encoding="utf-8")
+        (ep / "render_full.log").write_text("browserGpuMode probe worker0 Intel(R) UHD Graphics\n", encoding="utf-8")
+        mk_clip(ep / "renders" / "pal-preview-v1.mp4", 15)
+        mk_clip(ep / "renders" / "pal-24.mp4", 24)
+
+        r = run_verify(ep, "pal-preview-v1", "draft")
+        check("render-10 NEW: a 15 fps draft with no 'draft' in its name passes, reading render_draft.log",
+              r.returncode == 0 and "OK: 320x240 @ 15/1" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
+        r = run_verify(ep, "pal-preview-v1", "full")
+        check("render-10 NEW: the same 15 fps file checked as a final still fails the fps check",
+              r.returncode != 0 and "FAIL: fps 15 != full 25fps" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
+        r = run_verify(ep, "pal-24", "draft")
+        check("render-10 NEW: a draft at another rate than render.cmd's draft rate fails",
+              r.returncode != 0 and "FAIL: fps 24 != draft 15fps" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
+        r = run_verify(ep, "pal-preview-v1", "mastered")
+        check("render-10 NEW: an unknown mode is a usage error, not a guess",
+              r.returncode == 1 and "usage:" in r.stdout, f"rc={r.returncode}\n{r.stdout[-800:]}")
 else:
     print("SKIP render-07 synthetic-clip checks: ffmpeg not on PATH")
 
