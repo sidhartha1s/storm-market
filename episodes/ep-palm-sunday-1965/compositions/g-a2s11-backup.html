@@ -337,9 +337,12 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"stage", { x: 0, duration: 0.5, ease: "power3.inOut" }, 16.36);
   tl.to(P+"housecam", { x: -STAGE_DX, duration: 0.5, ease: "power3.inOut" }, 16.36);
 
-  /* ---- VIEW 3 ---- AND @17.18: the chain layer pushes in on the house's left window, centre (1446, 528); the room fades in over the last 0.2 s */
+  /* ---- VIEW 3 ---- AND @17.18: the chain layer pushes in on the house's left window, centre (1446, 528), and is faded out
+     by 17.38, before the house's lower right reaches the presenter corner (scale 2.1 @17.41): the clip above never has ink to
+     cut, so no hard edge shows. The room fades in over the push's last 0.2 s */
   fade([P+"strip2", P+"labrt", P+"labfam", P+"labcd", P+"labbu"], 0, 17.18, 0.15);
   tl.to(P+"chain", { scale: 6, duration: 0.5, ease: logEase(1, 6) }, 17.18);
+  fade(P+"chain", 0, 17.24, 0.14);
   tl.to(P+"room", { autoAlpha: 1, duration: 0.2, ease: "power2.in" }, 17.48);
   tl.set(P+"chain", { autoAlpha: 0 }, 17.68);
   tl.to(".backup-bar", { y: 80, duration: 2.667, ease: "none" }, 17.18);
