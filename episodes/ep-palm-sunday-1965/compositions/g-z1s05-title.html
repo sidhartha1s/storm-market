@@ -68,8 +68,9 @@ window.__timelines = window.__timelines || {};
   /* 1 · "but" @2.27: pair 1's second line rises */
   rise($("b1"), 2.27);
 
-  /* 2 · "Learn" @4.71: pair 1 fades out; pair 2's first line rises from 4.86 in the same box */
-  tl.to($("p1"), { autoAlpha: 0, duration: 0.25, ease: "power1.in" }, 4.71);
+  /* 2 · "Learn" @4.71: text swap in the same box. Pair 1 fades out 4.61 to 4.76, in the narration's pause (the last word
+     ends 3.69); pair 2's first line rises from 4.86, so the two lines are never both on screen */
+  tl.to($("p1"), { autoAlpha: 0, duration: 0.15, ease: "power1.in" }, 4.61);
   rise($("a2"), 4.86);
 
   /* 3 · "so" @6.31: pair 2's second line rises */
