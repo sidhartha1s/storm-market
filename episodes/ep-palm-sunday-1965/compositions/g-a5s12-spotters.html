@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a5s12-spotters · A5-S12 · window 8.02 s · brief: mg_specs/briefs/g-a5s12-spotters.md
+  Claim: in 1965 there was almost no network of trained spotters between a town and its Weather Bureau office. For Marion,
+  the warning office had no way to know sooner than a telephone call from the town.
+  SCHEMATIC, NOT TO SCALE. Chain line y 520. The house and the town telephone stand where compositions/g-a2s20-front.html put
+  them (house translate(1400 430) scale(0.68), telephone translate(1166 537.2) scale(1.2)); the office desk is in the intro's
+  station 1 slot. Five spotter slots on the long link (centres x 470, 610, 750, 890, 1030) stay EMPTY here.
+  No light travels any link; both handsets are on their cradles from first frame to last. No time, no clock, no county chip.
+  Cues are comp-local seconds (audio/a5-s12.words.json minus 0.34).
+  Coverage (plan rule 22): everything is authored at the brief's px; the timeline holds the stage 56 px up until the last cue
+  (6.18), then settles it onto the brief's px.
+  BASE: g-a6s08-spotters keeps every box of the stage and draws its spotter marks at the five slot centres.
+-->
+<template>
+<style>
+  #spot-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#dfe7ee;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  /* the faint band that carries the holds: starts off the left edge, drifts right for the whole window */
+  #spot-sweep { position:absolute; left:-560px; top:0; width:520px; height:1080px;
+    background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
+  #spot-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #spot-svg { position:absolute; left:0; top:0; }
+  .spot-lab { position:absolute; top:676px; font-size:22px; line-height:28px; font-weight:700; color:#93a3b2; white-space:nowrap; }
+  /* the paper strip of g-a1s13-chain.html as it stands (attribution 26 px) */
+  #spot-strip { position:absolute; left:96px; top:780px; width:960px; height:124px; background:#f4f0e6;
+    box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  #spot-quote { position:absolute; left:40px; top:12px; font-family:Georgia, 'Times New Roman', serif; font-size:52px; line-height:60px;
+    color:#2a2622; white-space:nowrap; }
+  #spot-src { position:absolute; left:40px; top:80px; font-size:26px; line-height:30px; font-weight:700; letter-spacing:2px;
+    color:#6b6257; white-space:nowrap; }
+  /* hidden in CSS as well as at timeline 0, so the host's very first frame is the office desk and its label */
+  #spot-klong, #spot-kshort, #spot-house, #spot-phone, #spot-labm, #spot-strip { opacity:0; visibility:hidden; }
+</style>
+<div id="spot-root" data-composition-id="g-a5s12-spotters" data-width="1920" data-height="1080" data-duration="8.02">
+  <div id="spot-sweep"></div>
+
+  <div id="spot-stage">
+  <svg id="spot-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <!-- the dotted link is drawn on by a solid stroke in a mask -->
+      <mask id="spot-kmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <path id="spot-krev" d="M351 520 H1166" fill="none" stroke="#fff" stroke-width="20"/>
+      </mask>
+    </defs>
+    <!-- BASE · the long link, desk to town telephone: dotted, Label grey, 815 px with nothing on it. No dot, no mark, no ring. -->
+    <path id="spot-klong" d="M351 520 H1166" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round" stroke-dasharray="0.1 14" mask="url(#spot-kmask)"/>
+    <!-- the town's own telephone line, house to telephone: solid -->
+    <path id="spot-kshort" d="M1400 520 H1274" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- BASE · the warning office's desk (media/drawings/desk.svg whole, handset ON the cradle): box x 96 to 351, y 490 to 618 -->
+    <g transform="translate(96 490) scale(0.85)">
+      <g id="spot-desk" fill="none" stroke="#dfe7ee" stroke-width="4.7" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="14" y="52" width="12" height="98"/>
+        <rect x="274" y="52" width="12" height="98"/>
+        <rect x="190" y="62" width="74" height="38"/>
+        <path d="M219 81 H235"/>
+        <rect x="0" y="40" width="300" height="12" fill="#15202b"/>
+        <g id="spot-dtel" transform="translate(106 -4)" stroke="#dfe7ee" stroke-width="3.5">
+          <rect x="24" y="-6" width="8" height="14" fill="#15202b"/>
+          <rect x="58" y="-6" width="8" height="14" fill="#15202b"/>
+          <path d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+          <circle cx="45" cy="27" r="15"/>
+          <circle cx="45" cy="27" r="3"/>
+          <circle cx="43.2" cy="37" r="0.8"/><circle cx="37.2" cy="33.6" r="0.8"/><circle cx="34.8" cy="27" r="0.8"/><circle cx="37.2" cy="20.4" r="0.8"/>
+          <circle cx="43.2" cy="17" r="0.8"/><circle cx="50.1" cy="18.2" r="0.8"/><circle cx="54.6" cy="23.5" r="0.8"/>
+          <path fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- BASE · the town's telephone (media/drawings/telephone.svg, handset ON the cradle): body x 1166 to 1274, base y 590, handset top y 516 -->
+    <g transform="translate(1166 537.2) scale(1.2)">
+      <g id="spot-phone" fill="none" stroke="#dfe7ee" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="24" y="-6" width="8" height="14" fill="#15202b"/>
+        <rect x="58" y="-6" width="8" height="14" fill="#15202b"/>
+        <path d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+        <circle cx="45" cy="27" r="15"/>
+        <circle cx="45" cy="27" r="3"/>
+        <circle cx="43.2" cy="37" r="0.8"/><circle cx="37.2" cy="33.6" r="0.8"/><circle cx="34.8" cy="27" r="0.8"/><circle cx="37.2" cy="20.4" r="0.8"/>
+        <circle cx="43.2" cy="17" r="0.8"/><circle cx="50.1" cy="18.2" r="0.8"/><circle cx="54.6" cy="23.5" r="0.8"/>
+        <path fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+      </g>
+    </g>
+
+    <!-- BASE · the town's house (media/drawings/house.svg): box x 1400 to 1577, y 430 to 600, aerial to y 407; lines Body light, windows Panel dark -->
+    <g transform="translate(1400 430) scale(0.68)">
+      <g id="spot-house" fill="none" stroke="#dfe7ee" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M186 37.3 V22 H208 V50"/>
+        <path d="M0 80 L130 5 L260 80 Z" fill="#15202b"/>
+        <rect x="20" y="80" width="220" height="170" fill="#15202b"/>
+        <rect x="112" y="170" width="36" height="80"/>
+        <rect x="44" y="120" width="48" height="48" fill="#15202b"/>
+        <rect x="168" y="120" width="48" height="48" fill="#15202b"/>
+        <path d="M68 120 V168 M44 144 H92"/>
+        <path d="M192 120 V168 M168 144 H216"/>
+        <path d="M70 40 V-34 M54 -28 H86 M59 -14 H81"/>
+      </g>
+    </g>
+  </svg>
+  <div class="spot-lab" style="left:96px">the warning office</div>
+  <div class="spot-lab" id="spot-labm" style="left:1388px; width:200px; text-align:center">Marion</div>
+
+  <!-- Curran's own words on the spotter network; the strip's attribution is the frame's source -->
+  <div id="spot-strip">
+    <div id="spot-quote">&ldquo;primitive, mostly nonexistent&rdquo;</div>
+    <div id="spot-src">John Curran, on the trained spotter network</div>
+  </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#spot-", D = 8.02, LIGHT = "#dfe7ee", WHITE = "#f2f5f8", AMBER = "#e8c56a";
+  const el = function (id) { return document.getElementById("spot-" + id); };
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function stroke(sel, hex, at, dur) { tl.to(sel, { attr: { stroke: hex }, duration: dur, ease: "power2.out" }, at); }
+  function draw(e, at, dur, ease) {
+    const len = Math.ceil(e.getTotalLength()) + 1;
+    s0(e, { strokeDasharray: len, strokeDashoffset: len });
+    tl.to(e, { strokeDashoffset: 0, duration: dur, ease: ease || "power2.out" }, at);
+  }
+  /* BASE · a drawing draws on, longest line first: each shorter line starts 0.04 s after the one before and they end together */
+  function drawOn(id, at, dur) {
+    Array.from(el(id).querySelectorAll("path, rect, circle"))
+      .sort(function (a, b) { return b.getTotalLength() - a.getTotalLength(); })
+      .forEach(function (e, i) { const late = Math.min(i * 0.04, dur - 0.15); draw(e, at + late, dur - late); });
+    tl.to(P+id, { autoAlpha: 1, duration: 0.15, ease: "none" }, at);
+  }
+
+  /* coverage (plan rule 22): how far above the brief's px the stage waits */
+  const STAGE_DY = -56;
+
+  /* THERE @0.00: ground, the office desk and its label */
+  s0([P+"klong", P+"kshort", P+"house", P+"phone", P+"labm"], { autoAlpha: 0 });
+  s0(P+"strip", { autoAlpha: 0, y: 60 });
+  s0(P+"stage", { y: STAGE_DY });
+  tl.to(P+"sweep", { x: 2860, duration: D / 2, ease: "none", repeat: 1 }, 0);
+
+  /* NO @0.46: the long dotted link draws from the desk to x 1166: a long line with nothing on it */
+  tl.set(P+"klong", { autoAlpha: 1 }, 0.46);
+  draw(el("krev"), 0.46, 0.9, "none");
+  /* NETWORK @1.56: the quote strip rises */
+  tl.to(P+"strip", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.56);
+  /* MARION @2.68: the house draws on with its label */
+  drawOn("house", 2.68, 0.6);
+  tl.to(P+"labm", { autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 2.68);
+  /* OFFICE @3.94: the desk's lines turn Headline white and stay */
+  stroke([P+"desk", P+"dtel"], WHITE, 3.94, 0.3);
+  /* WAITING @4.48: the telephone on the desk turns Amber 2 and back to Headline white three times: the office is listening for it */
+  tl.to(P+"dtel", { attr: { stroke: AMBER }, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 5 }, 4.48);
+  /* TELEPHONE @5.02: the town's telephone draws on with its short link to the house, handset down */
+  tl.set(P+"kshort", { autoAlpha: 1 }, 5.02);
+  draw(el("kshort"), 5.02, 0.4);
+  drawOn("phone", 5.02, 0.4);
+  /* EVERYONE @6.18: the desk returns to Body light; the long link is still grey and empty. The stage settles. */
+  stroke([P+"desk", P+"dtel"], LIGHT, 6.18, 0.3);
+  tl.to(P+"stage", { y: 0, duration: 0.5, ease: "power3.inOut" }, 6.18);
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+  window.__timelines["g-a5s12-spotters"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
