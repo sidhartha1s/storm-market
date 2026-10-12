@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a4s13-duty (A4-S13): the typed telephone list; an amber band on the city police row while a police chief's words come up
+     on a paper strip, then the band jumps to the stations row; the strip changes to the study's own sentence, a pulse runs
+     down the other seven rows and leaves, and only the stations row stays lit. Both quotes are about the forecast, and each
+     attribution says so. No county, no town, no name. Brief: mg_specs/briefs/g-a4s13-duty.md.
+     Copies: the sheet and its world from g-t1s3-list (world px of design sheet section 5; screen = s x world + t), the Lit band
+     from g-i1s5-onair, the line swap behind a mask from g-i1s7-sheriff.
+     Camera state Beside (g-a1s18-list): s 1.1, tx 669.6, ty 44, sheet at x 740 to 1576, y 110 to 759.
+     Cues are comp-local seconds from audio/a4-s13.words.json (wav start -0.45, timeline-map.md table 5). -->
+<template>
+<style>
+  /* ---- ground ---- */
+  #duty-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .duty-sweep { position:absolute; left:0; top:0; width:520px; height:1080px; background:linear-gradient(90deg, rgba(147,163,178,0), rgba(147,163,178,0.06), rgba(147,163,178,0)); }
+  .duty-h { opacity:0; visibility:hidden; }
+
+  /* ---- list sheet (design sheet section 5, world px; the world carries the camera transform) ---- */
+  .duty-world { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .duty-sheet { position:absolute; left:64px; top:60px; width:760px; height:590px; background:#f4f0e6; border-radius:2px; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .duty-eye { position:absolute; left:96px; top:84px; font:700 19px 'Courier New', Courier, monospace; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:1; }
+  .duty-title { position:absolute; left:96px; top:118px; font:700 30px 'Courier New', Courier, monospace; color:#2a2622; white-space:nowrap; line-height:1; }
+  /* media/drawings/telephone.svg (viewBox -6 -58 102 106) at 0.638: the telephone spans x 730 to 790, centred on y 123 */
+  .duty-phone { position:absolute; left:727.5px; top:77.7px; width:65.1px; height:67.6px; }
+  .duty-rule { position:absolute; left:96px; top:171px; width:696px; height:2px; background:rgba(107,98,87,0.4); }
+  .duty-row { position:absolute; left:150px; height:44px; font:700 26px 'Courier New', Courier, monospace; color:#2a2622; white-space:nowrap; line-height:44px; }
+  .duty-rr { position:absolute; left:96px; width:696px; height:1px; background:rgba(107,98,87,0.25); }
+  /* row bands, behind the type: Lit stays (Amber 2 at 35 %), Pulse crosses and leaves (Amber 2 at 25 %) */
+  .duty-band { position:absolute; left:96px; width:696px; height:44px; background:#e8c56a; visibility:hidden; }
+  .duty-lit { opacity:0.35; }
+  .duty-pulse { opacity:0.25; }
+
+  /* ---- paper strip: the quote behind a mask, its attribution ---- */
+  .duty-strip { position:absolute; left:96px; top:250px; width:604px; height:344px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; }
+  .duty-mask { position:absolute; left:28px; top:28px; width:548px; height:208px; overflow:hidden; }
+  .duty-q { position:absolute; left:0; top:0; font:40px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; line-height:52px; }
+  .duty-attr { position:absolute; left:28px; top:256px; width:548px; font:700 22px Arial, sans-serif; color:#6b6257; letter-spacing:2px; white-space:nowrap; line-height:28px; }
+
+  /* ---- source line ---- */
+  .duty-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="duty-root" data-composition-id="g-a4s13-duty" data-width="1920" data-height="1080" data-duration="13.98">
+  <div class="duty-sweep" id="duty-sweep"></div>
+
+  <!-- list sheet: eight rows in the study's sentence order (printed p. 14), all in one ink; the ninth slot has only its rule -->
+  <div class="duty-world" id="duty-world">
+    <div class="duty-sheet"></div>
+    <div class="duty-band duty-lit" id="duty-lit3" style="top:288px"></div>
+    <div class="duty-band duty-lit" id="duty-lit6" style="top:432px"></div>
+    <div class="duty-band duty-pulse" id="duty-p1" style="top:192px"></div>
+    <div class="duty-band duty-pulse" id="duty-p2" style="top:240px"></div>
+    <div class="duty-band duty-pulse" id="duty-p3" style="top:288px"></div>
+    <div class="duty-band duty-pulse" id="duty-p4" style="top:336px"></div>
+    <div class="duty-band duty-pulse" id="duty-p5" style="top:384px"></div>
+    <div class="duty-band duty-pulse" id="duty-p7" style="top:480px"></div>
+    <div class="duty-band duty-pulse" id="duty-p8" style="top:528px"></div>
+    <div class="duty-eye">SOUTH BEND WEATHER BUREAU &middot; BY TELEPHONE</div>
+    <div class="duty-title">Organizations notified included:</div>
+    <img class="duty-phone" src="media/drawings/telephone.svg" alt="">
+    <div class="duty-rule"></div>
+    <div class="duty-rr" style="top:238px"></div>
+    <div class="duty-rr" style="top:286px"></div>
+    <div class="duty-rr" style="top:334px"></div>
+    <div class="duty-rr" style="top:382px"></div>
+    <div class="duty-rr" style="top:430px"></div>
+    <div class="duty-rr" style="top:478px"></div>
+    <div class="duty-rr" style="top:526px"></div>
+    <div class="duty-rr" style="top:574px"></div>
+    <div class="duty-rr" style="top:622px"></div>
+    <div class="duty-row" style="top:192px">State Police</div>
+    <div class="duty-row" style="top:240px">Sheriffs' Departments</div>
+    <div class="duty-row" style="top:288px">City Police Departments</div>
+    <div class="duty-row" style="top:336px">Indiana and Michigan Electric Company</div>
+    <div class="duty-row" style="top:384px">Red Cross</div>
+    <div class="duty-row" style="top:432px">Specified radio and TV stations</div>
+    <div class="duty-row" style="top:480px">Flying services</div>
+    <div class="duty-row" style="top:528px">Airlines</div>
+  </div>
+
+  <!-- paper strip: quote 1 (a police chief), then quote 2 (the study's sentence); both said of the forecast -->
+  <div class="duty-strip duty-h" id="duty-strip">
+    <div class="duty-mask">
+      <div class="duty-q" id="duty-q1">&ldquo;I never felt that it was<br>our primary duty<br>to inform the public&rdquo;</div>
+      <div class="duty-q duty-h" id="duty-q2">&ldquo;No member of any<br>organization interviewed<br>saw it as their<br>responsibility&rdquo;</div>
+    </div>
+    <div class="duty-attr" id="duty-a1">a police chief, asked about the forecast &middot;<br>Disaster Research Center, 1966, p. 9</div>
+    <div class="duty-attr duty-h" id="duty-a2">said of the forecast &middot; p. 9</div>
+  </div>
+
+  <div class="duty-src" id="duty-src">Disaster Research Center, 1966, p. 14</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a4s13-duty", P = "duty", D = 13.98;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+
+  /* ---- bands ---- */
+  function lit(e, t) { tl.set(e, { visibility: "visible" }, t); tl.to(e, { scaleX: 1, duration: 0.3, ease: "power2.out" }, t); }
+  function pulse(e, t) {                                    /* wipes across the row from the left in 0.12 s, fades in 0.13 s, leaves nothing */
+    tl.set(e, { visibility: "visible", scaleX: 0, opacity: 0.25 }, t);
+    tl.to(e, { scaleX: 1, duration: 0.12, ease: "none" }, t);
+    tl.to(e, { opacity: 0, duration: 0.13, ease: "none" }, t + 0.12);
+    tl.set(e, { visibility: "hidden" }, t + 0.25);
+  }
+
+  /* ---- camera: Beside is the brief's state; until the strip needs the left of the frame the sheet sits centred and enlarged,
+          on a slow push (acts-plan rule 22). Scale, x and y move together, so the sheet's centre stays put in the push ---- */
+  var BESIDE = { scale: 1.1, x: 669.6, y: 44 };
+  var SCX = (64 + 824) / 2, SCY = (60 + 650) / 2, BIG = 1.25, PUSH = 1.03;   /* sheet centre in world px */
+  function centred(s) { return { scale: s, x: 960 - s * SCX, y: 540 - s * SCY, force3D: false }; }
+  var world = $("world"), lit3 = $("lit3"), lit6 = $("lit6");
+  var run = [$("p1"), $("p2"), $("p3"), $("p4"), $("p5"), $("p7"), $("p8")];
+
+  /* rest states, set at 0 */
+  s0(world, { transformOrigin: "0 0" });
+  s0(world, centred(BIG));
+  s0([lit3, lit6].concat(run), { scaleX: 0, transformOrigin: "left center" });
+  s0($("strip"), { y: 60 });
+  s0($("q2"), { y: 220 });
+  s0($("sweep"), { x: -520 });
+
+  /* 0 · "Police" @0.00: ground, the list with eight plain rows, its source line; @0.10 one pulse crosses City Police Departments */
+  tl.to($("sweep"), { x: 1920, duration: D, ease: "none" }, 0);
+  var pushed = centred(BIG * PUSH); pushed.duration = 4.71; pushed.ease = "none";
+  tl.to(world, pushed, 0);
+  pulse($("p3"), 0.10);
+
+  /* 1 · police @4.71: the Lit band wipes onto City Police Departments and stays; the sheet goes to its Beside place, landing
+     @5.21, before the strip arrives (the two never touch) */
+  lit(lit3, 4.71);
+  tl.to(world, { scale: BESIDE.scale, x: BESIDE.x, y: BESIDE.y, duration: 0.5, ease: "power3.out", force3D: false }, 4.71);
+
+  /* 2 · said @5.33: the strip rises with quote 1 and its attribution; the list's source line fades out */
+  tl.to($("strip"), { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.33);
+  tl.to($("src"), { autoAlpha: 0, duration: 0.3, ease: "none" }, 5.33);
+
+  /* 3 · duty. @7.45: the light jumps: the police band leaves to the right, the stations band wipes on 0.1 s later */
+  tl.set(lit3, { transformOrigin: "right center" }, 7.45);
+  tl.to(lit3, { scaleX: 0, duration: 0.2, ease: "power2.in" }, 7.45);
+  tl.set(lit3, { visibility: "hidden" }, 7.65);
+  lit(lit6, 7.55);
+
+  /* 4 · No @8.65: the strip changes: quote 1 slides up behind the mask while quote 2 rises into place; the attribution changes
+     (out, then in: the two lines share one place and are never on together) */
+  tl.to($("q1"), { y: -220, duration: 0.4, ease: "power3.inOut" }, 8.65);
+  tl.set($("q2"), { autoAlpha: 1 }, 8.65);
+  tl.to($("q2"), { y: 0, duration: 0.4, ease: "power3.inOut" }, 8.65);
+  tl.set($("q1"), { autoAlpha: 0 }, 9.05);
+  tl.to($("a1"), { autoAlpha: 0, duration: 0.15, ease: "none" }, 8.65);
+  tl.to($("a2"), { autoAlpha: 1, duration: 0.15, ease: "none" }, 8.80);
+
+  /* 5 · office @8.89: a pulse crosses slots 1, 2, 3, 4, 5, 7, 8 from top to bottom, 0.10 s apart; the last is gone @9.74.
+     The stations band does not move */
+  run.forEach(function (e, i) { pulse(e, 8.89 + i * 0.10); });
+
+  /* 6 · radio @11.09: the stations band brightens once, 35 % to 55 % and back. Hold to 13.98: one lit row, quote 2 */
+  tl.to(lit6, { opacity: 0.55, duration: 0.3, ease: "power2.out" }, 11.09);
+  tl.to(lit6, { opacity: 0.35, duration: 0.3, ease: "power2.inOut" }, 11.39);
+
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
