@@ -70,6 +70,7 @@ stop at the first one that works. Every row runs alone (one heavy job at a time)
 ## Minor findings, not scheduled
 - #96: a crash after synthesis but before the manifest write labels the segment "legacy" (audio is correct).
 - #97: WARN text misleading when every on-screen file is tagged modern.
+- `master_deliverables.py` has no frame-rate check, so a draft verified as `draft` can be mastered; add a check that the file matches the composition's `data-fps`.
 - optimize_clips fits instead of covers, so landscape sources in shorts get upscaled.
 - Remaining minors from the Opus re-review journal (13 total), triaged when a PR touches that file.
 
