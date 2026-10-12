@@ -125,7 +125,7 @@ Columns: comp id · segments · kind · what the viewer sees and what changes on
 | g-a6s10-watch | A6-S10 | graphic | The microphone, lamp lit, two paper strips "TORNADO FORECAST" and "TORNADO WARNING"; then on glass "TORNADO FORECAST" struck through and "TORNADO WATCH" | `media/drawings/microphone.svg` | `compositions/g-i1s5-onair.html` (lamp) | 5 |
 | g-a6s11-sirens | A6-S11, A6-S12 | graphic | S11: a paper card with the researchers' sentence; beside it a horn on a pole, outline only. S12: the film window (a siren horn, silent) where the drawing stood; then the window goes and a quote strip comes in | `DR-06`, `FC-06` | `compositions/g-a1s15-offices.html` after wave 1 | 5 |
 
-### Z1 · Close (3 compositions, 4 segments)
+### Z1 · Close (4 compositions, 5 segments)
 | Comp | Segments | Kind | Viewer sees, and the change per segment | Assets | Reuses | Wave |
 |---|---|---|---|---|---|---|
 | g-z1s02-row | Z1-S2, Z1-S3 | graphic | S2: the list and its blank ninth row, nothing typed; the chain comes up under it with the police desk and its stop mark. S3: a cell tower rises behind the house, a cell phone beside it; light runs from the Weather Bureau desk to the tower and the phone, past the list; the house window turns amber for the first time | `media/drawings/desk.svg`, `media/drawings/house.svg`, `media/drawings/house-lit.svg`, `media/drawings/microphone.svg`, `DR-10`, `DR-11` | `compositions/g-t1s3-list.html`, `compositions/g-i1s9-chain.html` | 5 |
