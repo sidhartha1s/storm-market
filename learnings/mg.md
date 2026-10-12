@@ -2,6 +2,30 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 12 Oct 26 - ep-palm-sunday-1965 preview: 12 graphics, 3 failed the verifier, 3 more were caught by the gate after it
+- **What happened:** three Opus builders built 12 comps for a 113 s opening; one Opus verifier read them in four passes.
+  3 of 12 failed (hook warning, list question, house), two fix rounds, then all 12 passed. `graphics_qc` was run only
+  after the verifier, because the builders were told to run no gates while they shared one laptop; it then found text
+  at visible opacity outside the frame in two comps the verifier had passed.
+- **The kinds:**
+  - A drawn icon that did not read: a telephone made of a trapezoid, a circle and a bar read as "a kitchen scale", and
+    it was mounted in four comps before anyone looked at it alone. A shared drawing is read at every mount size, on a
+    test sheet, before any comp mounts it (the redraw passed at 60 px and 360 px).
+  - First frame: a comp's exact first frame showed a colour layer the next frame did not, then a start scale 3 %
+    larger. Builder's diagnosis: the time-0 `set()`s and a `fromTo` start. Fixed by CSS start states and a plain `to()`;
+    the sweep of all 12 first frames found it in that comp only.
+  - A flash built as a scale pop about the wrong origin: the radio left its table, the television left the floor. The
+    brief asked for an outline flash; a stroke change with no transform is the safe form.
+  - A beat count that could not fit its voice window: the brief asked for seven row pulses in the 1.34 s a word gave.
+    The brief's own arithmetic (count times beat length against the window in words.json) is checked when it is written.
+  - A hard vanish: an element whole in frame 0.03 s before the cut. Its exit finishes inside the host.
+  - Visible text outside the frame: a header carried out by a push-in, a strip line parked below.
+- **Homes:** `references/mg-quickref.md` "Motion and exits" (CSS start states, text outside the frame) and "Verify"
+  (first frame of every host). The done line of `references/mg-brief-template.md` already asks for `graphics_qc` at 0
+  errors and an opening state on frame 0: when builders share a machine the gate run is queued, never dropped.
+- **Open:** `graphics_qc` flat-type fails a typed sheet and a page crop with a quote strip (two type tiers by design).
+  Left red in the preview and reported to the owner; a declared exemption in the gate is his call.
+
 ## 10 Oct 26 - ep4-el-reno: 45 of 68 graphics needed a fix after every builder's gates were green
 - **What happened:** seven Opus builders built 68 comps, each ending on `graphics_qc` PASS. Two independent Opus
   verifiers then read settled frames: 29 of 36 needed a fix in the first four families, 16 of 32 in the other three.
