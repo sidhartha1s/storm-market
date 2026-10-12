@@ -194,6 +194,21 @@ check("render-08 NEW: the done marker is deleted before any gate runs",
 check("render-08 NEW: the missing-index.html and :usage paths write a marker",
       render_cmd.count("render_last_error.marker") == 2)
 
+# render-12: verify_render.sh judges a draft by render_draft.fps, which only this line writes. Delete
+# or move it and render-11 (a fixture file) stays green while every real draft exits 1.
+FPS_LINE = 'echo %_FPS% > "render_%MODE%.fps"'
+
+
+def fps_line_in_place(text):
+    i = text.find(FPS_LINE)
+    return 0 <= text.find('cd /d "%EP%"') < i < text.find("call npx hyperframes")
+
+
+check("render-12 NEW: render.cmd records the effective fps after cd into the episode and before the render",
+      fps_line_in_place(render_cmd))
+check("render-12 NEW: the position check fails on a render.cmd without that line",
+      not fps_line_in_place(render_cmd.replace(FPS_LINE, "")))
+
 # Dry harness: exercise render.cmd's error path for real (no render reached — it exits
 # before preflight/render_busy/npx). Cleans up the marker it writes.
 last_err = S / "render_last_error.marker"
@@ -243,8 +258,8 @@ check("render-07 NEW script asserts duration/fps/resolution/audio against the co
       "comp_dur" in verify_src and "has_audio" in verify_src.replace("HAS_AUDIO", "has_audio"))
 
 
-def run_verify(ep_dir, base):
-    return subprocess.run(["bash", str(S / "verify_render.sh"), str(ep_dir), base],
+def run_verify(ep_dir, base, mode="full"):  # mode=None leaves the argument out
+    return subprocess.run(["bash", str(S / "verify_render.sh"), str(ep_dir), base, *([mode] if mode else [])],
                           capture_output=True, text=True)
 
 
@@ -367,6 +382,50 @@ if HAVE_FFMPEG:
         r7 = run_verify(ep, "black-final")
         check("render-07 NEW: a black span over the CTA body still fails",
               r7.returncode != 0 and "FAIL: 1 black span" in r7.stdout, f"rc={r7.returncode}\n{r7.stdout[-800:]}")
+
+    # render-11 (12 Oct 26): a draft is rendered at render.cmd's 15 fps, so judging it against the
+    # composition's data-fps failed every draft, and the log came from the basename ("draft" in it),
+    # so a draft named ...-preview-v1 was checked against render_full.log. The mode is now a
+    # required argument, a draft is judged against the rate render.cmd recorded in
+    # render_draft.fps (RENDER_FPS included), and the final-render checks must keep failing.
+    def mk_clip(path, fps):
+        subprocess.run(["ffmpeg", "-y", "-v", "error",
+                        "-f", "lavfi", "-i", f"testsrc=size=320x240:rate={fps}:duration=2",
+                        "-f", "lavfi", "-i", "sine=frequency=440:duration=2",
+                        "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", str(path)],
+                       capture_output=True)
+
+    with tempfile.TemporaryDirectory() as d:
+        ep = Path(d)
+        (ep / "renders").mkdir()
+        (ep / "index.html").write_text(
+            '<div id="root" data-composition-id="x" data-start="0" data-width="320" '
+            'data-height="240" data-duration="2.00" data-fps="25"></div>', encoding="utf-8")
+        mk_clip(ep / "renders" / "pal-preview-v1.mp4", 15)
+        mk_clip(ep / "renders" / "pal-24.mp4", 24)
+        NVIDIA, INTEL = "browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n", "browserGpuMode probe worker0 Intel(R) UHD Graphics\n"
+
+        # (label, clip, mode arg, recorded draft fps, expected exit code, text that must be in stdout).
+        # The log of the mode under test is NVIDIA and the other one Intel, so a wrong log pick fails too.
+        cases = [
+            ("a draft at the recorded 15 fps passes with no 'draft' in its name", "pal-preview-v1", "draft", "15", 0, "OK: 320x240 @ 15/1"),
+            ("a draft at a recorded rate other than 15 (RENDER_FPS=24) passes", "pal-24", "draft", "24", 0, "OK: 320x240 @ 24/1"),
+            ("a draft whose rate differs from the recorded one fails", "pal-24", "draft", "15", 4, "FAIL: fps 24 != expected 15fps"),
+            ("a draft with no render_draft.fps fails and names the file", "pal-preview-v1", "draft", None, 1, "render_draft.fps"),
+            ("a 15 fps file checked as a final fails against the composition's 25", "pal-preview-v1", "full", "15", 4, "FAIL: fps 15 != expected 25fps"),
+            ("no mode argument is a usage error", "pal-preview-v1", None, "15", 1, "usage:"),
+            ("an unknown mode is a usage error", "pal-preview-v1", "mastered", "15", 1, "usage:"),
+        ]
+        for label, clip, mode, rec_fps, want_rc, text in cases:
+            (ep / "render_draft.log").write_text(NVIDIA if mode != "full" else INTEL, encoding="utf-8")
+            (ep / "render_full.log").write_text(NVIDIA if mode == "full" else INTEL, encoding="utf-8")
+            if rec_fps is None:
+                (ep / "render_draft.fps").unlink(missing_ok=True)
+            else:
+                (ep / "render_draft.fps").write_text(f"{rec_fps} \r\n", encoding="utf-8")
+            r = run_verify(ep, clip, mode)
+            check(f"render-11 NEW: {label}", r.returncode == want_rc and text in r.stdout,
+                  f"rc={r.returncode} (want {want_rc})\n{r.stdout[-800:]}")
 else:
     print("SKIP render-07 synthetic-clip checks: ffmpeg not on PATH")
 

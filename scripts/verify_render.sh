@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
-# Post-render verification. Usage: verify_render.sh <episode-dir> <render-basename>
+# Post-render verification. Usage: verify_render.sh <episode-dir> <render-basename> <draft|full>
+# The mode is the one passed to render.cmd and is required: it picks the log (render_<mode>.log)
+# and the frame rate the file must have. The file name says neither.
 # Everything here reads the finished mp4 — the checks that do not need pixels already ran
 # before the render (sweep_episode.py, blank_scan.mjs, beat_density.py, graphics_qc.mjs).
 set -u
-EP="$1"; BASE="$2"
+if [ $# -ne 3 ] || { [ "$3" != draft ] && [ "$3" != full ]; }; then
+  echo "usage: verify_render.sh <episode-dir> <render-basename> <draft|full>"; exit 1
+fi
+EP="$1"; BASE="$2"; MODE="$3"
 MP4="$EP/renders/$BASE.mp4"
 [ -f "$MP4" ] || { echo "MISSING $MP4"; exit 1; }
 FAIL=0
 
 echo "=== gpu (owner 2026-09-15: capture must run on the dedicated GPU, never the Intel iGPU) ==="
-LOG="$EP/render_full.log"; [ "$BASE" != "${BASE%draft*}" ] && LOG="$EP/render_draft.log"
+LOG="$EP/render_$MODE.log"
 PROBES=$(grep -ao 'browserGpuMode probe.*' "$LOG" 2>/dev/null | cut -c1-160)
 echo "${PROBES:-no probe line in $LOG}"
 # one probe line per capture worker; every one of them must name NVIDIA
@@ -43,9 +48,20 @@ else
   read -r COMP_W COMP_H COMP_DUR COMP_FPS <<< "$COMPOUT"
 fi
 
+# The frame rate this render must have. A final matches the composition. A draft is a proxy
+# rendered at the rate render.cmd launched it with (RENDER_FPS included) and recorded in render_draft.fps.
+EXPECT_FPS="$COMP_FPS"
+if [ "$MODE" = draft ]; then
+  EXPECT_FPS=""; [ -f "$EP/render_draft.fps" ] && EXPECT_FPS=$(tr -d ' \t\r\n' < "$EP/render_draft.fps")
+  if [ -z "$EXPECT_FPS" ]; then
+    echo "FAIL: $EP/render_draft.fps is missing or empty — this draft predates the check or never reached the render step, so its frame rate cannot be verified"
+    exit 1
+  fi
+fi
+
 echo
-echo "=== artifact vs composition (duration/fps/resolution/audio must match — a truncated, ==="
-echo "=== downgraded or muted render used to exit 0 here) ==="
+echo "=== artifact vs composition (duration/resolution/audio must match the composition, fps the ==="
+echo "=== $MODE rate $EXPECT_FPS — a truncated, downgraded or muted render used to exit 0 here) ==="
 PROBE=$(ffprobe -v error -show_entries format=duration,size,bit_rate \
         -show_entries stream=codec_name,codec_type,width,height,r_frame_rate,nb_frames \
         -of default=noprint_wrappers=1 "$MP4")
@@ -54,9 +70,9 @@ HAS_AUDIO=$(ffprobe -v error -select_streams a -show_entries stream=codec_type -
 # Passed as an argv string, never a /tmp file: this python runs as a native Windows exe (no
 # MSYS path translation for text read from a heredoc), so a bash-side /tmp/... path that
 # ffmpeg/grep resolve fine is simply not there when a plain open() asks for it.
-if ! python3 - "$COMP_W" "$COMP_H" "$COMP_DUR" "$COMP_FPS" "$HAS_AUDIO" "$PROBE" <<'PYEOF'
+if ! python3 - "$COMP_W" "$COMP_H" "$COMP_DUR" "$EXPECT_FPS" "$HAS_AUDIO" "$PROBE" <<'PYEOF'
 import re, sys
-comp_w, comp_h, comp_dur, comp_fps, has_audio, probe = sys.argv[1:7]
+comp_w, comp_h, comp_dur, expect_fps, has_audio, probe = sys.argv[1:7]
 probe = probe.replace("\r\n", "\n")  # ffprobe is a native console app; bash keeps its \r
 def field(name):
     m = re.search(rf'^{name}=(.+)$', probe, re.MULTILINE)
@@ -75,8 +91,8 @@ if w != comp_w or h != comp_h:
 if rfr:
     n, d = rfr.split("/")
     fps = round(float(n) / float(d))
-    if str(fps) != comp_fps:
-        print(f"FAIL: fps {fps} != composition {comp_fps}fps (a draft mastered by mistake?)")
+    if str(fps) != expect_fps:
+        print(f"FAIL: fps {fps} != expected {expect_fps}fps (a draft shipped as the final, or a render at the wrong rate?)")
         ok = False
 if not has_audio.strip():
     print("FAIL: no audio stream in the render")
@@ -168,12 +184,11 @@ echo "=== pop scan (single-frame diff spikes, downscaled 180x180 gray, sampled a
 echo "=== fps — CPU-light) — REPORT only: every other check above FAILs, this one deliberately does ==="
 echo "=== not, because an intentional quick cut/flash-edit can trip the same signature (see ==="
 echo "=== scripts/pop_scan.py module docstring for why) ==="
-POP_FPS="$COMP_FPS"  # already parsed off #root above; no need to re-read index.html
-if [ -z "$POP_FPS" ] || [ "$POP_FPS" = "0" ]; then
-  echo "SKIP: no composition fps available to sample at"
+if [ -z "$EXPECT_FPS" ] || [ "$EXPECT_FPS" = "0" ]; then
+  echo "SKIP: no expected fps available to sample at"
 else
-  ffmpeg -hide_banner -v error -i "$MP4" -vf "fps=$POP_FPS,scale=180:180,format=gray" -f rawvideo - \
-    | python3 "$(dirname "$0")/pop_scan.py" --fps "$POP_FPS"
+  ffmpeg -hide_banner -v error -i "$MP4" -vf "fps=$EXPECT_FPS,scale=180:180,format=gray" -f rawvideo - \
+    | python3 "$(dirname "$0")/pop_scan.py" --fps "$EXPECT_FPS"
   POP_FFMPEG_RC=${PIPESTATUS[0]}
   if [ "$POP_FFMPEG_RC" != 0 ]; then
     echo "SKIP: ffmpeg failed to decode frames for pop scan (exit $POP_FFMPEG_RC) — not run, not clean"
