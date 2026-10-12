@@ -76,7 +76,7 @@ Text: `County B` · `about` · `7:30 PM` running to `8:07 PM` · `the study says
 Cue words and times are from `audio/a4-s9.words.json` (21 words) and `audio/a4-s10.words.json` (44 words), read on 12 Oct 26. t from comp start = the segment's "wav start inside the composition" in `mg_specs/timeline-map.md` table 5 (A4-S9 -0.51, A4-S10 7.86) plus the word's time; a segment's first word uses the table's "first sound" (0.00, 8.35). Retime from the word, never from the seconds. The transcript writes "eight oh seven" as `807,` and "thirty five" as `35`.
 | Step | Segment | Word index | Word | t in segment (s) | t from comp start (s) | What happens |
 |---|---|---|---|---|---|---|
-| 0 | A4-S9 | 0 | So | 0.00 | 0.00 | first frame: the held chain (truth 1), chip `County B`, the stamp reading `about` over `7:30 PM` with hands at 225.0 and 180. No arc, no study label, no strip |
+| 0 | A4-S9 | 0 | So | 0.51 | 0.00 | first frame: the held chain (truth 1), chip `County B`, the stamp reading `about` over `7:30 PM` with hands at 225.0 and 180. No arc, no study label, no strip |
 | 1 | A4-S9 | 3 | ran. | 1.00 | 0.49 | the clock runs: minute hand 180 to 402, hour hand 225.0 to 243.5, the time text steps a minute at a time, the amber arc grows with the minute hand (3.02 s, power1.inOut, all four on one tween start and duration); `about` fades out over the first 0.3 s |
 | 2 | A4-S9 | 11 | 807, | 4.02 | 3.51 | the run ends on this word: `8:07 PM`, hands at 243.5 and 42. The time's fill goes to Headline white and back to Amber 2 (0.3 s each way) |
 | 3 | A4-S9 | 13 | 35 | 5.40 | 4.89 | the study label `the study says: about 35 minutes` rises under the stamp (`y:16` to 0 with the fade, 0.3 s) |
