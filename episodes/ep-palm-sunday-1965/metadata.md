@@ -44,12 +44,12 @@ Source: `mg_specs/timeline-map.md` as retimed on 12 Oct 26; total 1184.66 s. Eac
 
 | Clock time (mm:ss) | Timeline (s) | What starts there | Status |
 |---|---|---|---|
-| 00:00 | 0.00 | Hook and intro | draft, from the timeline; re-check after the render |
-| 1:53 | 113.18 | Act 1, after the black that ends at 113.18 | draft, from the timeline; re-check after the render |
-| 4:50 | 289.86 | Act 2 | draft, from the timeline; re-check after the render |
-| 8:01 | 480.67 | Act 3 | draft, from the timeline; re-check after the render |
-| 10:36 | 636.44 | The book ad (24.417 s long; no chapter here) | draft, from the timeline; re-check after the render |
-| 11:02 | 661.85 | Act 4, on the cut out of the ad's black | draft, from the timeline; re-check after the render |
-| 13:35 | 814.51 | Act 5 | draft, from the timeline; re-check after the render |
-| 16:48 | 1008.08 | Act 6 | draft, from the timeline; re-check after the render |
-| 18:46 | 1125.92 | Close | draft, from the timeline; re-check after the render |
+| 00:00 | 0.00 | Hook and intro | checked 14 Oct 26 against the final timeline |
+| 1:53 | 113.18 | Act 1, after the black that ends at 113.18 | checked 14 Oct 26 against the final timeline |
+| 4:50 | 289.86 | Act 2 | checked 14 Oct 26 against the final timeline |
+| 8:01 | 480.67 | Act 3 | checked 14 Oct 26 against the final timeline |
+| 10:36 | 636.44 | The book ad (24.417 s long; no chapter here) | checked 14 Oct 26 against the final timeline |
+| 11:02 | 661.85 | Act 4, on the cut out of the ad's black | checked 14 Oct 26 against the final timeline |
+| 13:35 | 814.51 | Act 5 | checked 14 Oct 26 against the final timeline |
+| 16:48 | 1008.08 | Act 6 | checked 14 Oct 26 against the final timeline |
+| 18:46 | 1125.92 | Close | checked 14 Oct 26 against the final timeline |
