@@ -2,6 +2,34 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 13 Oct 26: rendering on the ZBook (draft v1 and v2 of ep-palm-sunday-1965)
+
+Owner: "render on zbook." That is the whole order: sync, gates and launch there, no method question back to him, and no
+fallback to the build laptop (the draft sat about 5 hours on this laptop's 4 GB floor before it was moved).
+1. Code: GitHub login fails over ssh on the ZBook, so commits travel as a bundle. Here: `git bundle create <f>
+   <zbook head>..<branch>`; `scp <f> zbook:`; there: `git -C <worktree> pull --ff-only <f> <branch>`. An untracked
+   copy of a file the branch now tracks blocks the pull: remove that copy there first.
+2. Media and audio are git-ignored: compare md5 manifests of the episode folder on both laptops (filter on the path
+   relative to the episode folder: a filter on the full path drops everything under `.worktrees`), send only the
+   differences (tar or single files by scp).
+3. Never pipe a script into `ssh zbook powershell -Command -`. `scp` a `.ps1` to the ZBook home folder and run
+   `ssh zbook powershell -NoProfile -ExecutionPolicy Bypass -File <name>.ps1`, one plain command per call.
+4. Gates there first: `python.exe scripts\run_gates.py episodes\<slug>` over ssh took 2 min 42 s (17:23:58 to
+   17:26:40) against about 5 min on the build laptop. A log written with `*>>` in PowerShell 5 mixes encodings: drop
+   the null bytes before searching it.
+5. Launch: a scheduled task with NO trigger (a once-trigger refires), `New-ScheduledTaskPrincipal -UserId
+   ([System.Security.Principal.WindowsIdentity]::GetCurrent().Name) -LogonType Interactive` (`$env:USERDOMAIN\$env:USERNAME`
+   fails over ssh with "No mapping between account names and security IDs"), action `wscript.exe "<scripts>\run_hidden.vbs"
+   cmd.exe /c "<scripts>\<ep>_draft_zbook_task.cmd"`, then `Start-ScheduledTask`. The wrapper sets `RENDER_WORKERS=4`.
+   Unregister the task when the render ends.
+6. Measured: draft v1, 19 min 44.7 s of video, `rendered in 28m 58.6s` at 4 workers, A2000 through Direct3D11,
+   `streaming-encode gate ... enabled:true`, free memory 7.3 GB at the start and 2.6 GB at 35 %.
+7. The draft is copied back to the build laptop (`scp "zbook:<path>" <local>`): the owner reviews previews there; the
+   final may stay on the ZBook (owner 13 Oct 26).
+8. Claude Code's permission system refused the remote task three times as "Unauthorized Persistence" until the owner had
+   `~/.claude/settings.json` name the ZBook as his own machine (`permissions.allow` for `ssh zbook` and `scp *zbook*`,
+   one `autoMode.allow` and one `autoMode.environment` line). A refusal goes to him as the exact command the same minute.
+
 ## 12 Oct 26: verify_render judged every draft as a final
 
 1. Measured on a real 113 s draft: `FAIL: fps 15 != composition 30fps (a draft mastered by mistake?)`, exit non-zero.
