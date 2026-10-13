@@ -23,7 +23,11 @@ fallback to the build laptop (the draft sat about 5 hours on this laptop's 4 GB 
    cmd.exe /c "<scripts>\<ep>_draft_zbook_task.cmd"`, then `Start-ScheduledTask`. The wrapper sets `RENDER_WORKERS=4`.
    Unregister the task when the render ends.
 6. Measured, 19 min 44.7 s of video at 4 workers, A2000 through Direct3D11, `streaming-encode gate ... enabled:true`:
-   draft v1 `rendered in 28m 58.6s`, draft v2 `rendered in 20m 56.6s`. Free memory on draft v2: 4.85 GB at launch,
+   draft v1 `rendered in 28m 58.6s`, draft v2 `rendered in 20m 56.6s`. The FULL render of the same 19m 44.7s cut
+   (14 Oct 26, 30 fps, standard, 4 workers): `rendered in 38m 1.7s`, 1094.6 MB, 0 error lines; free memory 7.5 GB at
+   launch, lowest status line 2.1 GB, 8.9 GB after. `verify_render.sh` and `master_deliverables.py` ran there too:
+   Git's `bash.exe` is not on the ZBook's PATH (call `C:\Program Files\Git\bin\bash.exe`) and it has no `python3`, so
+   a one-line `python3` wrapper in the temp folder was put first on PATH for that call. Free memory on draft v2: 4.85 GB at launch,
    2.0 GB at 73 %, 6.8 GB after.
 7. The draft is copied back to the build laptop (`scp "zbook:<path>" <local>`): the owner reviews previews there; the
    final may stay on the ZBook (owner 13 Oct 26).
