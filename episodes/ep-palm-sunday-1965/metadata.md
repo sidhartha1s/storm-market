@@ -27,7 +27,7 @@ Sources and courtesy credits: Disaster Research Center, Working Paper 5 (Brouill
 18:46 Close
 
 (No chapter at 10:36: that is the book ad, inside the gap between "The Wires" and "One County Still Had Radios".)
-(Every chapter time is a draft, from the timeline; re-check after the render.)
+(Every chapter time was re-checked on 14 Oct 26 against the act starts in `index.html`.)
 (The script's own heading for the fourth act is "The desk where it stopped". The chapter uses Paul's line before the ad instead, so the list of chapters does not give the answer away.)
 
 ## Tags
