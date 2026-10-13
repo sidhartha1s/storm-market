@@ -1,6 +1,6 @@
 # ep-palm-sunday-1965 · YouTube publish metadata
 
-(Draft of 12 Oct 26, written before the render. Every clock time below is a draft, from the timeline; re-check after the render. The seconds behind each one are in the table at the end.)
+(Written 12 Oct 26; every clock time re-checked on 14 Oct 26 against the timeline the final render was made from: 1184.66 s, final file 1184.67 s. The seconds behind each one are in the table at the end.)
 
 ## Title (owner, locked)
 Who Stopped the Palm Sunday 1965 Tornado Warning?
