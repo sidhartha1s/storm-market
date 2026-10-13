@@ -2,6 +2,28 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 14 Oct 26 - ep-palm-sunday-1965: one small.en transcript that matches the script does not prove the words are heard right
+
+- **What happened:** the owner watched draft v2 and heard Paul's first clip differ from the script. The build check
+  (small.en, one pass) had read all 26 words. "Garbled or misspelled words, whisper it" was his criterion for the SPOKEN
+  words of every Paul clip; the lead read it as lettering in the picture and checked the wrong thing.
+- **Measured:** four recognisers (tiny.en, base, small, small.en; no prompt, `condition_on_previous_text=False`,
+  temperature 0, word probabilities) on the mounted clip: first word "City" came back as "Equity" (tiny.en, 0.03) and
+  "Activity" (small), and at 0.16 and 0.14 in the two that still wrote "City". Omni's own audio reads "City" at 0.75 to
+  0.96. Speech starts 0.04 s into the clip, so the converter (OpenVoice V2, `convert_one.py`) has no sound before the
+  first word. Converting with a 0.6 s lead-in of the clip's own room tone and cutting it off again gives "City" at
+  0.82 to 0.98 in all four, same level (mean -16.4 dB).
+- **Also found by the same pass:** clip 5's `data-srt-label` held an older sentence than the one Paul speaks (the
+  script file had the spoken one). The caption would have been wrong. Fixed in `index.html`.
+- **Do next time:** (1) a converted clip or segment whose first word starts inside the first 0.3 s gets a lead-in
+  before conversion; (2) every Paul clip is read by all four cached recognisers from the RENDERED draft audio, and any
+  word under 0.60 or any disagreement goes on the review page with a player, since the lead cannot hear; (3) each
+  clip's `data-srt-label` is compared with the script line by a command, not by eye.
+- **Narration, same four-recogniser pass (123 segments):** 46 segments had two or more recognisers disagree with the
+  build transcript; most are number formats and place names. Steady ones worth an ear if the owner asks: "teletype"
+  at 1043.30 s (read as "teletime" / "teletyne"), "Starke" at 345.64 s (read as "star"), "County A's" at 371.45 s.
+  List: `episodes/ep-palm-sunday-1965/.qc-tmp/speech-read/sweep.log` (git-ignored).
+
 ## 12 Oct 26 - ep-palm-sunday-1965: a voice conversion after TTS leaves every words.json stale, and the transcriber moves words on the new voice
 
 - **What happened:** `tts_episode.py` wrote each words.json from the TTS wav. The conversion to the owner's voice then
