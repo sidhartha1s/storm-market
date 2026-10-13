@@ -14,7 +14,7 @@ On Palm Sunday, April 11, 1965, tornadoes crossed six states and 271 people lost
 
 Sources and courtesy credits: Disaster Research Center, Working Paper 5 (Brouillette, 1966); U.S. Weather Bureau, Survey Team Report of the Palm Sunday Tornadoes of 1965; U.S. Weather Bureau Severe Local Storm Warning Center, Kansas City (tornado forecasts of April 11, 1965); U.S. Weather Bureau Daily Weather Map, April 11, 1965; National Weather Service, including its Northern Indiana, Chicago, Indianapolis and Louisville offices; NWS Heritage; FEMA. Recollections of John Curran and Kathy Selzer Miller as published by the National Weather Service. Photographs: Paul Huffman, The Elkhart Truth, April 11, 1965; Blake Naftel / National Weather Service · April 1965 (Sunnyside); Kokomo Morning Times, April 13 and April 16, 1965; NOAA Central Library, U.S. Weather Bureau (teletype rooms and circuit maps); newspaper photographs via Wikimedia Commons. Tornado track map courtesy Dr. Russell Schneider, SPC. Film: Office of Civil Defense training film "EOC RADEF Operations", 1967, via Internet Archive; it stands for rooms of the time and does not show an Indiana office. Map boundaries: U.S. Census Bureau.
 
-(Note, not for upload: the clock time in the book line is a draft, from the timeline; re-check after the render.)
+(Note, not for upload: the clock time in the book line was re-checked on 14 Oct 26; the ad starts at 636.44 s.)
 
 ## Chapters
 00:00 Intro
