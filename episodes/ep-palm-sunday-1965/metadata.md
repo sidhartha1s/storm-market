@@ -39,7 +39,7 @@ Education
 ## Type
 Overview
 
-## Clock times to re-check after the render
+## Clock times, re-checked after the render
 Source: `mg_specs/timeline-map.md` as retimed on 12 Oct 26; total 1184.66 s. Each time is the timeline second rounded to the nearest whole second.
 
 | Clock time (mm:ss) | Timeline (s) | What starts there | Status |
