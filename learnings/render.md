@@ -22,8 +22,9 @@ fallback to the build laptop (the draft sat about 5 hours on this laptop's 4 GB 
    fails over ssh with "No mapping between account names and security IDs"), action `wscript.exe "<scripts>\run_hidden.vbs"
    cmd.exe /c "<scripts>\<ep>_draft_zbook_task.cmd"`, then `Start-ScheduledTask`. The wrapper sets `RENDER_WORKERS=4`.
    Unregister the task when the render ends.
-6. Measured: draft v1, 19 min 44.7 s of video, `rendered in 28m 58.6s` at 4 workers, A2000 through Direct3D11,
-   `streaming-encode gate ... enabled:true`, free memory 7.3 GB at the start and 2.6 GB at 35 %.
+6. Measured, 19 min 44.7 s of video at 4 workers, A2000 through Direct3D11, `streaming-encode gate ... enabled:true`:
+   draft v1 `rendered in 28m 58.6s`, draft v2 `rendered in 20m 56.6s`. Free memory on draft v2: 4.85 GB at launch,
+   2.0 GB at 73 %, 6.8 GB after.
 7. The draft is copied back to the build laptop (`scp "zbook:<path>" <local>`): the owner reviews previews there; the
    final may stay on the ZBook (owner 13 Oct 26).
 8. Claude Code's permission system refused the remote task three times as "Unauthorized Persistence" until the owner had
