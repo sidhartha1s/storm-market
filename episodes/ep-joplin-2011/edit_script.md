@@ -699,8 +699,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Rows:** [S34, R24: 2011] · [NIST TN 2008 (Aug 2018), factcheck-acts row A6-S6; NWS siren FAQ undated, per factcheck-A4-Z1 row A6-S6] · [R21, R22, R23]
 
 ### A6-S7 · narration
-**Picture:** a NIST ground photograph of Joplin High School (credit line checked), chip "EMPTY THAT EVENING", then the master map with the 135 dots, chip "MOST WERE INDOORS". The bed drops out on the last word.
-> The rule that took hold covers new schools and emergency buildings. On May twenty-second, 2011, Joplin High School and East Middle School were empty. Most of the people Joplin lost were indoors that evening: at home, at the store, in church, in the hospital and in nursing homes.
+**Picture:** a NIST ground photograph of Joplin High School (credit line checked), chip "EMPTY THAT EVENING". Then the real clip: the school CCTV video re-upload, YouTube 64covicCcIY (research/comment-beats.json; comments-for-writer.md "school CCTV video"), a few seconds of empty school halls as the storm hits, its own sound, no narration over its peak. Confirm which school it shows before any caption names one (a viewer there says the tornado did not hit that school); provenance row and claim risk checked at sourcing. Then the master map with the 135 dots, chip "MOST WERE INDOORS" (the spoken list of places is cut per the acts grade; the map carries it). The bed drops out on the last word.
+> The rule that took hold covers new schools and emergency buildings. But on May twenty-second, 2011, Joplin High School and East Middle School were empty.
 
 **Rows:** [R13] · [B40: no one in Joplin High School] · [B42: East Middle School not occupied] · [T3: 135 of 155 inside structures]
 
