@@ -694,7 +694,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A6-S6 · narration
 **Picture:** our own drawn siren icon (no NOAA graphic cleared). Chips "NO NATIONAL STANDARD · 2011", then "STILL NONE AS OF 2018", source chip "NIST TN 2008"; the NWS siren FAQ on the source line with no date claim. Then the NWS page, Recommendation 2, underlined. Source line "NIST Finding 39 · NWS Assessment, Recommendation 2".
-> And what about the tornado sirens? In 2011 there was no national standard for how a town sounds them, and no national all-clear signal. As of 2018, there still wasn't one. The NWS asked for something simpler: warnings in tiers, based on impact, and an out-of-the-ordinary warning for the violent tornadoes.
+> And what about the tornado sirens? In 2011, there wasn't a national standard for how a town sounds them, and there wasn't a national all-clear signal either. As of 2018, there still wasn't a standard. The NWS asked for something simpler: warnings in tiers, based on impact, and an out-of-the-ordinary warning for the violent tornadoes.
 
 **Rows:** [S34, R24: 2011] · [NIST TN 2008 (Aug 2018), factcheck-acts row A6-S6; NWS siren FAQ undated, per factcheck-A4-Z1 row A6-S6] · [R21, R22, R23]
 
