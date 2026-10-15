@@ -15,7 +15,7 @@ The rest of the grammar is inline in `index.html` (copy from `episodes/br-elnino
 - **data chip** (bottom-left running stat): `.chip` glass pill above the bug strip; `chipSet(text, at)`.
 - **still-kenburns**: `<section class="clip still-wrap"><img>` + `kb(sel, at, dur, s0, s1, x0, x1, y0, y1)`; 3–6 % over the hold, never a static still >4 s.
 - **vertical-embed-credit**: `<section class="clip still-wrap contain-wrap">` holding a blurred cover copy (`img.blurfill` / `video.blurfill`) under the contained 9:16 clip, plus `.credit` lower-left `@handle · platform` for the clip's whole duration.
-- **overlay-vignette-grain**: `#vignette`, `#grade` (cold steel soft-light), `#grain` canvas via `grain.js` + `filmLayer(tl, DUR)`.
+- **overlay-vignette**: `#vignette`, `#grade` (cold steel soft-light). The `#grain` canvas (`grain.js`, `filmLayer`) is retired: no grain on new work (DESIGN.md "Look: no grain"); shipped episodes keep theirs.
 - **data-feed hold**: a labelled PD loop (`.srclab` "SOURCE: NOAA CPC") held 20–40 s with a slow push; one every 2–3 min.
 - **captions**: burned word-highlight captions are NOT in v1 (needs a words.json → caption comp); add when the owner asks.
 
