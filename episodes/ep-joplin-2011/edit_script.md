@@ -440,7 +440,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A3-S10 · narration
 **Picture:** the master map: a pocket of early-1980s ranch houses lit, no dots in it. Chip "BASEMENTS HELD". Source lines "NIST Finding 46" and "NIST Sec. 1.2".
-> So what about the people who did get down there? Their basements held. In the flattened houses where people went down to the basement, nobody was lost. And there's a whole neighborhood of early-eighties ranch houses with basements that got hit hard, and nobody there was lost either.
+> In the flattened houses where people got down to the basement, nobody was lost. And there's a whole neighborhood of early-eighties ranch houses with basements that got hit hard, and nobody there was lost either.
 
 **Rows:** [H5: no fatalities in demolished detached homes where people took refuge in basements] · [H15: the ranch-home neighborhood]
 
