@@ -340,11 +340,11 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S10 · narration
 **Picture:** first the real clip, before Paul's voice comes in: the live TV broadcast re-upload, YouTube FagzNHuI5JI (research/comment-beats.json), 4 to 6 s of the moment the studio takes shelter while the sirens blare (the 3,800-like comment in comments-for-writer.md describes it), its own audio up, cut on an audio event. Transcribe first; a different cut from A1-S9's; station name, provenance row and Content ID risk checked at sourcing. Then the NWS page, Finding 2d (c), "non-routine second siren alert" underlined. Chip "SECOND SIREN". Then the NIST page, Finding 45, "hearing or seeing the tornado approaching" underlined. Source lines "NWS Assessment, Finding 2d" and "NIST Finding 45".
-> So what finally got people moving? Joplin's rule was one sounding per alert, and for a lot of people, that second siren was the out-of-the-ordinary thing that got them going. But the biggest push of all was seeing or hearing the tornado coming.
+> Joplin's rule was one sounding per alert. So a second one was out of the ordinary, and for a lot of people, that's what got them going. But the biggest push of all was seeing or hearing the tornado coming. And what did that second siren tell the people who heard it?
 
 **Rows:** [E20: one sounding per alert] · [E19: the second siren raised awareness, prompted shelter] · [E37] · [E33: Finding 45, high-intensity cues]
 
-*([A2-Q4 paid].)*
+*([A2-Q4 paid], [A2-Q6 paid]. [A2-Q7 open]: what the second siren meant. Paid in A2-S11.)*
 
 ### A2-S11 · narration
 **Picture:** the siren ring splits into two labels: "a worse warning" and "all clear". On "all-clear signal" a crossed-out icon, chip "NO ALL-CLEAR SIGNAL". Source line "NIST Sec. 4.7.1.2 · Sec. 4.3.1".
