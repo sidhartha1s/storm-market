@@ -242,7 +242,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S10 · narration
 **Picture:** our own map, an eighty-mile ring around Joplin. On "a hundred eighty-two" the ring fills with small dots; inside the city outline one dot, "May 5, 1971". Chips "1 IN THE CITY", then "182 WITHIN 80 MILES". Source line "NIST Finding 33". The NWS page with "protective bubble" underlined.
-> Because a lot of people there believed storms always blew over and missed Joplin, as if the town had a protective bubble around it. And you can see where that came from. Since 1950, the city itself had been hit by one tornado rated EF2 or stronger. Within eighty miles of Joplin, there'd been a hundred eighty-two.
+> Because people there believed storms always blew over and missed Joplin, as if the town had a protective bubble around it. And you can see where that came from. Since 1950, the city itself had been hit by one tornado rated EF2 or stronger. Within eighty miles of Joplin, there'd been a hundred eighty-two.
 
 **Rows:** [S23: "protective bubble"] · [S36: one EF-2 or greater in the city since 1950, 5 May 1971] · [S37: 182 within 80 miles] · [S38: NIST calls the immunity belief scientifically unfounded]
 
