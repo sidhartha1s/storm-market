@@ -105,15 +105,21 @@ def subsplit(sent):
 # EVERY sentence end (0.45 lead + 0.42 trail), whatever the sentence did. synth_file now trims each
 # clip's edges and puts this chosen gap between them instead. The owner picked these values by ear
 # on the Joplin hook (designed vs tight 0.28 s vs untouched 0.87 s).
+# Bump PAUSES on any change to gap_after or TRIM_EDGES: tts_episode folds it into its stale hash,
+# so every segment re-joins with the new pauses instead of silently keeping the old ones.
+PAUSES = "designed-1"
+
+
 def gap_after(lines, i):
     """Seconds of silence after lines[i]; 0 after the last line."""
     if i == len(lines) - 1:
         return 0.0
-    if not lines[i].rstrip().endswith((".", "?", "!")):
+    cur = lines[i].rstrip()
+    if not cur.endswith((".", "?", "!")):
         return 0.18     # a subsplit clause boundary inside one sentence: a comma-length breath
     if len(lines[i + 1].split()) <= 3:
         return 0.65     # a beat before a short kicker ("Not one.")
-    if lines[i].rstrip().endswith("?"):
+    if cur.endswith("?"):
         return 0.55     # let a question land
     return 0.32
 
@@ -205,6 +211,17 @@ def main():
         synth_file(model, voice_state, voice_md5, sr, stream_audio_chunks, lines, out)
 
 
+def trim_and_pad(seg, gap):
+    """seg's edge silence cut to a few hundredths, then gap seconds of silence appended."""
+    out = seg.with_name(f"paused_{seg.name}")
+    r = subprocess.run([FFMPEG, "-y", "-i", str(seg), "-af", f"{TRIM_EDGES},apad=pad_dur={gap}",
+                        "-ar", "24000", "-ac", "1", "-c:a", "pcm_s16le", str(out)],
+                       capture_output=True, text=True, creationflags=NT_FLAGS)
+    if r.returncode != 0:
+        sys.exit(f"edge trim failed for {seg.name}: {r.stderr}")
+    return out
+
+
 def synth_file(model, voice_state, voice_md5, sr, stream_audio_chunks, lines, out):
     """Synthesize the lines sentence by sentence into out, then concat + loudnorm."""
     seg_dir = out.parent / "_segments"
@@ -227,28 +244,9 @@ def synth_file(model, voice_state, voice_md5, sr, stream_audio_chunks, lines, ou
     if failed:
         sys.exit(f"FAILED segments: {failed}")
 
-    # trim every clip's edge silence and interleave the designed gaps (gap_after); the cached
+    # trim every clip's edge silence and pad its designed gap (gap_after) in one pass; the cached
     # segments stay untouched, so a gap change never re-voices anything
-    parts = []
-    for i, seg in enumerate(seg_paths):
-        trimmed = seg_dir / f"trim_{seg.name}"
-        t = subprocess.run([FFMPEG, "-y", "-i", str(seg), "-af", TRIM_EDGES, "-ar", "24000", "-ac", "1",
-                            "-c:a", "pcm_s16le", str(trimmed)], capture_output=True, text=True,
-                           creationflags=NT_FLAGS)
-        if t.returncode != 0 or probe(trimmed) <= 0:
-            sys.exit(f"edge trim failed for {seg.name}: {t.stderr}")
-        parts.append(trimmed)
-        gap = gap_after(lines, i)
-        if gap:
-            sil = seg_dir / f"gap_{int(gap * 1000)}ms.wav"
-            if probe(sil) <= 0:
-                s = subprocess.run([FFMPEG, "-y", "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono", "-t", str(gap),
-                                    "-c:a", "pcm_s16le", str(sil)], capture_output=True, text=True,
-                                   creationflags=NT_FLAGS)
-                if s.returncode != 0 or probe(sil) <= 0:
-                    sys.exit(f"gap silence failed ({gap}s): {s.stderr}")
-            parts.append(sil)
-    seg_paths = parts
+    seg_paths = [trim_and_pad(seg, gap_after(lines, i)) for i, seg in enumerate(seg_paths)]
 
     concat = seg_dir / "concat.txt"
     concat.write_text("".join(f"file '{p.name}'\n" for p in seg_paths))
