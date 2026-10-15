@@ -1,0 +1,2000 @@
+[
+ {
+  "vid": "64covicCcIY",
+  "act": "indoors",
+  "quote": "Why do we have to be quiet if the tornado doesn't have ears",
+  "likes": 6000,
+  "age": "9 years ago",
+  "type": "question",
+  "answer": "NWS shelter guidance and school drill procedures"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "indoors",
+  "quote": "When the roof/ceiling goes before a glass door, there's a problem.",
+  "likes": 4200,
+  "age": "11 years ago",
+  "type": "belief",
+  "answer": "NIST: failure order of roof, walls and glass doors"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "Plus the broadcast audio cutting off as the studio takes shelter while sirens blare makes it even more so.",
+  "likes": 3800,
+  "age": "3 years ago",
+  "type": "account",
+  "answer": "Siren sounds 5:11 and 5:38 pm; touchdown about 5:34 pm."
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "codes-rebuild",
+  "quote": "By the way, Joplin is thriving as of now. They’re rebuilding prettier buildings, preparing more public tornado shelters...",
+  "likes": 3600,
+  "age": "8 years ago",
+  "type": "belief",
+  "answer": "Post-2011 rebuild permits and public shelter count"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "other",
+  "quote": "The path was seven miles long and, at its widest point, a quarter mile wide.",
+  "likes": 2900,
+  "age": "8 years ago",
+  "type": "account",
+  "answer": "NWS survey: path length and width for this track"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "other",
+  "quote": "hit many vulnerable places on a busy Sunday afternoon",
+  "likes": 2800,
+  "age": "1 year ago",
+  "type": "belief",
+  "answer": "NWS path, timing, and exposure data for Joplin"
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "other",
+  "quote": "how the hell does someone drive right through an EF5 and survive!?",
+  "likes": 2700,
+  "age": "7 years ago",
+  "type": "question",
+  "answer": "Dashcam timeline and EF5 damage survey"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "other",
+  "quote": "It's freakish how it goes from a thin rope like tornado to very large wedge tornado in a matter of 30 seconds.",
+  "likes": 2600,
+  "age": "11 years ago",
+  "type": "belief",
+  "answer": "Video timeline: rope-to-wedge stage, first visible frame"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "even the best of technology wouldnt have helped alert the people on time",
+  "likes": 2500,
+  "age": "2 years ago",
+  "type": "belief",
+  "answer": "Warning lead time: sirens 5:11 pm, touchdown about 5:34 pm."
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "stores",
+  "quote": "An associate died opening the doors to save people seeking shelter just before it hit.",
+  "likes": 2000,
+  "age": "4 years ago",
+  "type": "account",
+  "answer": "Home Depot casualty records by location and role"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "All the Joplin-area stations were relying on the National Weather Service computer projections.",
+  "likes": 2000,
+  "age": "3 years ago",
+  "type": "correction",
+  "answer": "NWS track forecast versus the actual path, 22 May 2011."
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "codes-rebuild",
+  "quote": "knowing parts of joplin are still being rebuilt",
+  "likes": 2000,
+  "age": "1 year ago",
+  "type": "belief",
+  "answer": "Joplin rebuild status: permits and parcels since 2011"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "Residents of Joplin had plenty of warning time.",
+  "likes": 1800,
+  "age": "3 years ago",
+  "type": "belief",
+  "answer": "Sirens 5:11 and 5:38 pm; touchdown about 5:34 pm."
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "indoors",
+  "quote": "My duplex was totally destroyed around me and I got up and walked away.",
+  "likes": 1600,
+  "age": "6 years ago",
+  "type": "account",
+  "answer": "135 of 155 impact deaths indoors (NIST)"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "indoors",
+  "quote": "my step dad went to the center most closet in the house, threw everything out into the hallway",
+  "likes": 1600,
+  "age": "1 year ago (edited)",
+  "type": "account",
+  "answer": "NIST: 135 of 155 impact deaths were indoors"
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "stores",
+  "quote": "what about that Home Depot? Think that'd be a bad spot?",
+  "likes": 1500,
+  "age": "10 years ago",
+  "type": "question",
+  "answer": "Home Depot structural damage survey, Range Line"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "Joplin didn’t receive a tornado emergency because of how fast it developed.",
+  "likes": 1500,
+  "age": "3 years ago",
+  "type": "belief",
+  "answer": "NWS warning products issued that afternoon, 22 May 2011."
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "other",
+  "quote": "So many healthcare providers are completely unaware of this risk.",
+  "likes": 1500,
+  "age": "4 months ago",
+  "type": "belief",
+  "answer": "Post-storm fungal infection cases: no source in our data yet"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "other",
+  "quote": "School gets destroyed but a garbage can stays standing ?",
+  "likes": 1300,
+  "age": "11 years ago",
+  "type": "question",
+  "answer": "Site survey: bolted tables and bins, ground-level wind"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "other",
+  "quote": "A toddler had his skin peeled away from around his neck",
+  "likes": 1200,
+  "age": "4 months ago",
+  "type": "account",
+  "answer": "Toddler injury record: not in our sources yet"
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "stores",
+  "quote": "Home Depot would NOT have been a good spot to take shelter. That place was flattened that day, and eight people died there.",
+  "likes": 1100,
+  "age": "11 years ago",
+  "type": "correction",
+  "answer": "Home Depot death count, reconciled against other figures"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "indoors",
+  "quote": "most people that took shelter in their homes",
+  "likes": 1100,
+  "age": "1 year ago",
+  "type": "belief",
+  "answer": "NIST: 135 of 155 impact deaths were indoors"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "stores",
+  "quote": "At the Walmart and home depot it wasn't mentioned that every single person who chose to leave the stores instead of taking shelter died.",
+  "likes": 1100,
+  "age": "4 months ago",
+  "type": "belief",
+  "answer": "Big-store refuge areas; deaths among those who left"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "other",
+  "quote": "Keep in mind the tornado didn’t even hit the school.",
+  "likes": 1000,
+  "age": "8 years ago",
+  "type": "correction",
+  "answer": "NWS damage survey and EF rating at school site"
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "other",
+  "quote": "She meant the seeming lack of urgency of other drivers etc.",
+  "likes": 944,
+  "age": "12 years ago",
+  "type": "correction",
+  "answer": "Driver response to warnings, urgency survey data"
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "other",
+  "quote": "There is no law when an F5 is coming at you!!!",
+  "likes": 933,
+  "age": "9 years ago",
+  "type": "belief",
+  "answer": "Missouri traffic law and NWS driving guidance"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "indoors",
+  "quote": "As soon as we closed the bathroom door, The Tornado was actively hitting our house.",
+  "likes": 907,
+  "age": "4 months ago",
+  "type": "account",
+  "answer": "135 of 155 impact deaths indoors"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "the meteorologist unfortunately said the 1st power flash could've been from a lightning strike. It was not.",
+  "likes": 888,
+  "age": "3 years ago",
+  "type": "correction",
+  "answer": "Tower-cam timestamps of power flashes and first tornado view."
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "other",
+  "quote": "Actually it protects less than 0 against the wind because the overpass creates a tunnel effect that INCREASES wind speed",
+  "likes": 862,
+  "age": "1 year ago (edited)",
+  "type": "correction",
+  "answer": "NWS overpass guidance; I-44 vehicle casualty records"
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "sirens-warnings",
+  "quote": "4:27 wtf, the formation of that funnel was like instant",
+  "likes": 853,
+  "age": "8 years ago",
+  "type": "belief",
+  "answer": "Rope-to-wedge formation time; NWS warning lead time"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "other",
+  "quote": "told us everyone at Pizza Hut (less than a block away) were dead.",
+  "likes": 845,
+  "age": "1 year ago",
+  "type": "correction",
+  "answer": "Pizza Hut fatality vs survivor count, Joplin 2011"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "sirens-warnings",
+  "quote": "It literately took just under a single MINUTE for the tornado to go from EF-1 to EF-5.",
+  "likes": 832,
+  "age": "10 years ago (edited)",
+  "type": "belief",
+  "answer": "NWS warning issue time vs touchdown, 22 May 2011"
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "sirens-warnings",
+  "quote": "The sad part is nobody knew what really was coming that day.",
+  "likes": 824,
+  "age": "11 years ago",
+  "type": "belief",
+  "answer": "NWS warning issue times before touchdown, Joplin"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "hospital-nursing",
+  "quote": "Being in the upper floors, if you couldn't get downstairs fast enough, your best course of action was to go to the midmost location...",
+  "likes": 671,
+  "age": "4 months ago",
+  "type": "account",
+  "answer": "St. John's: shelter placement and damage record"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "codes-rebuild",
+  "quote": "Joplin now has been rebuilt spectacularly and in record time almost after a year of the disaster",
+  "likes": 654,
+  "age": "3 years ago (edited)",
+  "type": "belief",
+  "answer": "Rebuild: what codes require now, and when they changed."
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "hospital-nursing",
+  "quote": "the hospital in Joplin was damaged so bad that patients were transported all the way to KC just for proper treatment.",
+  "likes": 653,
+  "age": "4 months ago",
+  "type": "account",
+  "answer": "St. John's damage and patient transfers record"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "hospital-nursing",
+  "quote": "If you want to know where I grew up, just look at the new Mercy Hospital.",
+  "likes": 611,
+  "age": "1 year ago",
+  "type": "account",
+  "answer": "St John's to Mercy: site and displacement records"
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "other",
+  "quote": "16 month old baby pulled from it's mothers arms and found several miles away",
+  "likes": 608,
+  "age": "8 years ago (edited)",
+  "type": "account",
+  "answer": "Victim records: child's age (comments say 13, 16, 18 months)"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "indoors",
+  "quote": "I wouldn't even want to know how many kids would have been killed had this happened during school season.",
+  "likes": 572,
+  "age": "11 years ago",
+  "type": "question",
+  "answer": "NWS touchdown day and time; school calendar that day"
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "other",
+  "quote": "so many people are completely oblivious to what is behind that rain.",
+  "likes": 571,
+  "age": "10 years ago",
+  "type": "belief",
+  "answer": "Pre-impact awareness: what Range Line residents knew"
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "other",
+  "quote": "People could not see the tornado because not only was it rain wrapped it blended in with the color of the sky.",
+  "likes": 552,
+  "age": "7 months ago",
+  "type": "belief",
+  "answer": "NWS storm survey: visibility of rain-wrapped tornado"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "stores",
+  "quote": "My autistic uncle was working at a Walmart during the 2011 Joplin tornado.",
+  "likes": 533,
+  "age": "6 months ago",
+  "type": "account",
+  "answer": "Walmart Joplin refuge area and injury records"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "other",
+  "quote": "If you see a bunch of random flashes, especially in the auditorium, it was the fire alarms going off.",
+  "likes": 514,
+  "age": "11 years ago",
+  "type": "belief",
+  "answer": "School fire-alarm event log and power-loss records"
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "other",
+  "quote": "75 percent of Joplin is just gone!",
+  "likes": 501,
+  "age": "6 years ago (edited)",
+  "type": "belief",
+  "answer": "Share of Joplin destroyed; damage survey (75 vs 70 percent)"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "codes-rebuild",
+  "quote": "Asked a nurse why the windows looked a little weird and she told me they were rated for 250mph winds",
+  "likes": 482,
+  "age": "4 months ago",
+  "type": "question",
+  "answer": "What codes require now for rebuilt hospitals"
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "other",
+  "quote": "R.I.P that 160+ people that died that day.",
+  "likes": 473,
+  "age": "6 years ago",
+  "type": "belief",
+  "answer": "NIST death count; comments cite 158 and 160+"
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "hospital-nursing",
+  "quote": "The hospital was moved something like 4-6 inches off its foundation by the tornado",
+  "likes": 472,
+  "age": "4 years ago",
+  "type": "belief",
+  "answer": "St. John's foundation shift measurement, inches"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "indoors",
+  "quote": "How does anyone survive this?",
+  "likes": 431,
+  "age": "1 year ago",
+  "type": "question",
+  "answer": "NIST: 135 of 155 impact deaths were indoors"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "Many blame local media (Weather) for the last minute notice.",
+  "likes": 423,
+  "age": "1 year ago",
+  "type": "belief",
+  "answer": "Warning lead time and the 2005-2011 warning record."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "stores",
+  "quote": "I was in the 15th st Walmart. I remember it so well and I have PTSD severe anxiety and get over stimulated quickly ...",
+  "likes": 415,
+  "age": "2 years ago",
+  "type": "account",
+  "answer": "Walmart refuge areas; 15th Street store, Joplin."
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "sirens-warnings",
+  "quote": "I never once heard tornado sirens",
+  "likes": 391,
+  "age": "4 months ago",
+  "type": "account",
+  "answer": "Sirens: about once a year since 2007, outside weekly test"
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "indoors",
+  "quote": "I remember looking out the front door and seeing the tornado and having to run to the hallway and just hope we survived.",
+  "likes": 389,
+  "age": "7 years ago",
+  "type": "account",
+  "answer": "135 of 155 impact deaths indoors (NIST)"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "hospital-nursing",
+  "quote": "My wife was in the St John's Hospital when it hit , she was on the 6th floor.",
+  "likes": 341,
+  "age": "3 years ago",
+  "type": "account",
+  "answer": "St. John's damage survey and staff sheltering record."
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "This is so disturbing how, right as they realized how deadly the tornado was, all of their mics just get cut off until 13:07",
+  "likes": 327,
+  "age": "3 years ago (edited)",
+  "type": "account",
+  "answer": "Station off-air log: when staff sheltered and audio returned."
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "sirens-warnings",
+  "quote": "siren going off",
+  "likes": 321,
+  "age": "7 years ago",
+  "type": "account",
+  "answer": "Siren audibility indoors; NWS siren test logs"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "indoors",
+  "quote": "I've got a lady here.. she's got her family in a pickup... Looks pretty much like DOA's",
+  "likes": 304,
+  "age": "4 months ago (edited)",
+  "type": "account",
+  "answer": "135 of 155 impact deaths indoors"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "other",
+  "quote": "Every big tornado hits a school.",
+  "likes": 287,
+  "age": "1 year ago",
+  "type": "belief",
+  "answer": "Schools struck by EF4+ tornadoes, NWS database"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "sirens-warnings",
+  "quote": "then 4 hours later, a warning is put out for portions of Missouri, Kansas, and Oklahoma, then 28 minutes later",
+  "likes": 270,
+  "age": "1 year ago (edited)",
+  "type": "account",
+  "answer": "NWS watch and warning issuance times, 22 May 2011"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "indoors",
+  "quote": "When the tornado hit we hid in our closet and when it was over there was much debris in our front yard.",
+  "likes": 267,
+  "age": "3 years ago",
+  "type": "account",
+  "answer": "135 of 155 impact deaths indoors; 82% of homes had no basement."
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "indoors",
+  "quote": "I was in a movie theater watching rio when they told us all to move up to the front seats",
+  "likes": 255,
+  "age": "10 years ago",
+  "type": "account",
+  "answer": "NIST: 135 of 155 impact deaths were indoors"
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "other",
+  "quote": "Driving down the interstate, those same trees were all pointed in the same diagonal direction.",
+  "likes": 248,
+  "age": "2 years ago (edited)",
+  "type": "account",
+  "answer": "NWS damage survey: tree-fall direction along the path."
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "hospital-nursing",
+  "quote": "Lost my home and my workplace. I worked in the tent hospital.",
+  "likes": 234,
+  "age": "1 year ago",
+  "type": "account",
+  "answer": "Joplin tent hospital capacity and patient count"
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "other",
+  "quote": "Carthage is about 18 miles NE of Joplin, about 20 miles from the tornado.",
+  "likes": 220,
+  "age": "6 years ago (edited)",
+  "type": "correction",
+  "answer": "NWS debris-dispersal survey; Carthage distance"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "other",
+  "quote": "RIP to the 159 victims",
+  "likes": 216,
+  "age": "1 year ago",
+  "type": "belief",
+  "answer": "Final fatality count vs NIST 155 impact deaths"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "sirens-warnings",
+  "quote": "They changed the siren policy after the tornado so that they would only go off when a threat was much more likely.",
+  "likes": 202,
+  "age": "1 year ago",
+  "type": "belief",
+  "answer": "NIST siren activations per year since 2007"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "hospital-nursing",
+  "quote": "He wanted to go to St. John's hospital, where he thought it would be safe.",
+  "likes": 200,
+  "age": "7 years ago (edited)",
+  "type": "account",
+  "answer": "St. John's damage survey and patient evacuation records"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "hospital-nursing",
+  "quote": "I was in the greenbrier nursing home when it happened.",
+  "likes": 193,
+  "age": "1 year ago",
+  "type": "account",
+  "answer": "Greenbriar resident casualty records, 22 May 2011"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "hospital-nursing",
+  "quote": "it twisted the building itself as you went up.",
+  "likes": 169,
+  "age": "1 year ago",
+  "type": "correction",
+  "answer": "St John's structural damage report, twist direction"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "basements-shelters",
+  "quote": "how can you not be too worried when it looks like that outside",
+  "likes": 153,
+  "age": "1 year ago",
+  "type": "question",
+  "answer": "NIST: 82% of homes had no basement"
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "sirens-warnings",
+  "quote": "This shows that you cannot ignore warnings, it will come to haunt you in the future, hurricanes, typhoons, and tornadoes.",
+  "likes": 130,
+  "age": "2 years ago",
+  "type": "belief",
+  "answer": "Warnings 2005-2011: 14 of 18 had no verified tornado."
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "stores",
+  "quote": "He got inside a refrigerator (BY THE WAY, NEVER GET INSIDE AN ICEBOX I KNOW PEOPLE SAY TO DO THAT...",
+  "likes": 126,
+  "age": "6 years ago (edited)",
+  "type": "account",
+  "answer": "Store cooler and freezer refuge outcomes, Joplin cases"
+ },
+ {
+  "vid": "4iGlOS8A0T4",
+  "act": "other",
+  "quote": "It was the first time I saw a professional storm chaser break down sobbing after finding bodies and realizing how serious this was",
+  "likes": 116,
+  "age": "4 months ago",
+  "type": "account",
+  "answer": "Impact deaths: 155 (NIST NCSTAR 3); victim search."
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "stores",
+  "quote": "6 dead, 4 inside the store including two small children and 2 in the parking lot",
+  "likes": 114,
+  "age": "9 years ago",
+  "type": "correction",
+  "answer": "Home Depot deaths by location: store versus parking lot"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "codes-rebuild",
+  "quote": "I hope to also advocate for better tornado shelters in schools, hospitals, and public shelters",
+  "likes": 111,
+  "age": "4 months ago",
+  "type": "belief",
+  "answer": "No county shelters; what codes require now"
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "other",
+  "quote": "The 2011 Tornado season is such a underrated natural disaster.",
+  "likes": 104,
+  "age": "8 years ago",
+  "type": "belief",
+  "answer": "NOAA tornado deaths by year, 1950s vs 2011"
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "basements-shelters",
+  "quote": "Ever house that there area of th USA should have tornado shelters. It should me mandatory.",
+  "likes": 99,
+  "age": "7 years ago (edited)",
+  "type": "belief",
+  "answer": "NIST: no community shelters in the county"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "other",
+  "quote": "This was the first single tornado in the US since 1953 to kill over 100 people.",
+  "likes": 97,
+  "age": "10 years ago",
+  "type": "correction",
+  "answer": "NOAA US tornado fatality records since 1953"
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "sirens-warnings",
+  "quote": "There had been so many warnings in the years past, many people just no longer thought anything would happen.",
+  "likes": 94,
+  "age": "2 years ago",
+  "type": "belief",
+  "answer": "NIST: sirens about once a year outside weekly test."
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "other",
+  "quote": "Did you also know that this tornado was the costliest tornado in US history?",
+  "likes": 93,
+  "age": "7 years ago (edited)",
+  "type": "belief",
+  "answer": "NOAA cost of 2011 Joplin tornado vs other US tornadoes"
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "stores",
+  "quote": "most of the people that died on Rangeline were in box stores,like Walmart,and The Home Depot.",
+  "likes": 93,
+  "age": "7 years ago",
+  "type": "belief",
+  "answer": "NIST deaths by building type, Range Line"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "stores",
+  "quote": "They we're inside of ... on Main St.",
+  "likes": 88,
+  "age": "14 years ago",
+  "type": "account",
+  "answer": "Indoor vs outdoor deaths: NIST 135 of 155 indoors"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "other",
+  "quote": "Though we mourn for the 161 of us who did lose their lives to this magnificent monster.",
+  "likes": 84,
+  "age": "13 years ago",
+  "type": "account",
+  "answer": "NWS final death count and NIST impact-death split"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "The sky outside was green and the clouds looked weird, and the tornado sirens were going off.",
+  "likes": 84,
+  "age": "3 years ago",
+  "type": "account",
+  "answer": "Siren times 5:11 and 5:38 pm; touchdown about 5:34 pm."
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "They could have used better confirmations to get them to turn that outside cam sooner",
+  "likes": 84,
+  "age": "3 years ago (edited)",
+  "type": "correction",
+  "answer": "Tower-cam aim history and first spotter report times."
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "other",
+  "quote": "1/3 of the town was completely destroyed by this tornado. 161 people killed.",
+  "likes": 82,
+  "age": "10 years ago",
+  "type": "correction",
+  "answer": "NIST: 155 impact deaths; share of town damaged"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "sirens-warnings",
+  "quote": "she said there was pretty much no warning at all where she lived.",
+  "likes": 82,
+  "age": "1 year ago",
+  "type": "account",
+  "answer": "NWS warning receipt by neighborhood, Joplin 2011"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "stores",
+  "quote": "A Tornado hitting somewhere like home depot is a worst case scenario, the place is filled to the brim with sharp tools and lumber.",
+  "likes": 81,
+  "age": "4 months ago",
+  "type": "belief",
+  "answer": "Big-store refuge areas (Home Depot, Walmart)"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "just by basic radar scans, no velocity scans, no reflectivity scans",
+  "likes": 80,
+  "age": "3 years ago",
+  "type": "belief",
+  "answer": "Radar products used that afternoon; NWS warning text."
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "other",
+  "quote": "No point in an EF-6 classification. EF-5 goes to infinity.",
+  "likes": 80,
+  "age": "13 years ago",
+  "type": "belief",
+  "answer": "EF scale damage indicators; no EF-6 category"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "sirens-warnings",
+  "quote": "Tornado siren fatigue was wide spread in 2011. I live in central Mn and have experienced the same thing Joplin residents did.",
+  "likes": 79,
+  "age": "4 months ago",
+  "type": "account",
+  "answer": "Sirens: about once a year since 2007, outside weekly test"
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "other",
+  "quote": "if you were in the eye of the tornado you would of been thrown into the air",
+  "likes": 75,
+  "age": "6 years ago",
+  "type": "correction",
+  "answer": "NWS tornado structure and wind-field survey data"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "stores",
+  "quote": "Him and everyone in the gas station thankfully survived by hiding in the freezer, which was the only part of the building left",
+  "likes": 72,
+  "age": "1 year ago",
+  "type": "account",
+  "answer": "Store refuge survival: cooler and freezer shelter records"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "indoors",
+  "quote": "barely made it to their bathroom that was against a rock wall in their house before the storm hit them",
+  "likes": 70,
+  "age": "3 years ago",
+  "type": "account",
+  "answer": "135 of 155 impact deaths indoors; no community shelters."
+ },
+ {
+  "vid": "4iGlOS8A0T4",
+  "act": "other",
+  "quote": "I spent 7 months cleaning up through the residential. Our crew was planting acorns in areas that had been woodlands.",
+  "likes": 67,
+  "age": "4 months ago",
+  "type": "account",
+  "answer": "Debris clearance and rebuild timeline after the storm."
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "indoors",
+  "quote": "I bet even the desks themselves would turn into projectiles in a tornado like the one in this video.",
+  "likes": 65,
+  "age": "11 years ago",
+  "type": "belief",
+  "answer": "NIST: classroom furniture and debris; shelter-position guidance"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "codes-rebuild",
+  "quote": "Moore and Enterprise and throughout OK., known areas for tornados, were built to the minimal standards.",
+  "likes": 62,
+  "age": "12 years ago",
+  "type": "belief",
+  "answer": "NIST code review: school wind standards and shelter requirements"
+ },
+ {
+  "vid": "Leg98FOyIN0",
+  "act": "codes-rebuild",
+  "quote": "I was directly hit by this tornado, Living just across from JHS. Catholic Charities helped us rebuild so we're still living here safe and sound.",
+  "likes": 59,
+  "age": "4 months ago",
+  "type": "account",
+  "answer": "Rebuild aid; codes now; 82% of homes had no basement."
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "hospital-nursing",
+  "quote": "the only tangible building standing was the hospital.",
+  "likes": 58,
+  "age": "8 years ago",
+  "type": "belief",
+  "answer": "St. John's damage vs Freeman hospital survey"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "This footage is the reason why your local news needs to stay with even unconfirmed tornadoes.",
+  "likes": 58,
+  "age": "3 years ago",
+  "type": "belief",
+  "answer": "14 of 18 warnings, 2005-2011, had no verified tornado."
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "stores",
+  "quote": "I do believe everyone there survived.",
+  "likes": 57,
+  "age": "8 years ago (edited)",
+  "type": "belief",
+  "answer": "Gas station occupant outcomes, Joplin case records"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "other",
+  "quote": "I can’t believe the Joplin tornado, just one tornado, killed 161 people.",
+  "likes": 57,
+  "age": "4 months ago",
+  "type": "belief",
+  "answer": "161 deaths vs 155 impact deaths: reconcile in script"
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "sirens-warnings",
+  "quote": "Those poor people had no chance to react",
+  "likes": 51,
+  "age": "2 years ago",
+  "type": "belief",
+  "answer": "NWS warning lead time before touchdown."
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "stores",
+  "quote": "one theme DONT HIDE AT THE GAS STATION THEY ALWAYS GET REKTD",
+  "likes": 45,
+  "age": "7 years ago",
+  "type": "belief",
+  "answer": "Gas-station refuge outcomes in tornado deaths"
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "sirens-warnings",
+  "quote": "tornado sirens are testing at this time ;-;",
+  "likes": 44,
+  "age": "7 years ago (edited)",
+  "type": "account",
+  "answer": "Weekly 1-minute test vs ~1 activation/year since 2007 (NIST)"
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "other",
+  "quote": "Where do you even begin to clean up something of this magnitude?",
+  "likes": 39,
+  "age": "7 years ago",
+  "type": "question",
+  "answer": "Debris cleared and recovery timeline, Joplin"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "basements-shelters",
+  "quote": "her home didn’t really have a basement and she would have died had she still been there.",
+  "likes": 37,
+  "age": "3 years ago",
+  "type": "belief",
+  "answer": "NIST: none killed underground; 82% of homes had no basement."
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "Not sure why they didn't look at the tower cam for their own visual confirmation sooner",
+  "likes": 36,
+  "age": "3 years ago",
+  "type": "question",
+  "answer": "Tower-cam aim history and on-air confirmation times."
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "basements-shelters",
+  "quote": "I ran to the barn where we had a bunker like bomb shelter underneath",
+  "likes": 35,
+  "age": "7 years ago",
+  "type": "account",
+  "answer": "NIST NCSTAR 3: no evidence any death underground"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "basements-shelters",
+  "quote": "We just took cover in a hallway.",
+  "likes": 35,
+  "age": "1 year ago",
+  "type": "account",
+  "answer": "NIST: 82% of homes had no basement"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "sirens-warnings",
+  "quote": "I remember the sirens going off in our town because they thought that this was heading towards our way at first.",
+  "likes": 33,
+  "age": "10 years ago",
+  "type": "account",
+  "answer": "14 of 18 tornado warnings 2005-2011 had no verified tornado"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "sirens-warnings",
+  "quote": "people ignoring a tornado siren is fucking wild! Like what do you mean you just ignore it?!",
+  "likes": 33,
+  "age": "4 months ago",
+  "type": "question",
+  "answer": "14 of 18 warnings 2005-2011 had no verified tornado"
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "stores",
+  "quote": "He herded employees and customers into a walk in freezer and grabbed a cord and held the door shut.",
+  "likes": 32,
+  "age": "7 years ago",
+  "type": "account",
+  "answer": "Store refuge outcomes, Joplin case records"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "It's so common in Joplin to have tornado warnings and watches and to hear the blaring of the sirens, but this day was different.",
+  "likes": 32,
+  "age": "3 years ago",
+  "type": "belief",
+  "answer": "NIST: sirens about once a year since 2007, outside tests."
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "other",
+  "quote": "That thing was already an EF5 by the time it touched the ground",
+  "likes": 32,
+  "age": "2 years ago",
+  "type": "belief",
+  "answer": "Damage survey: EF rating from post-touchdown damage"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "stores",
+  "quote": "Yeah home Depot is a perfect place to take shelter during a tornado",
+  "likes": 28,
+  "age": "1 year ago",
+  "type": "belief",
+  "answer": "NIST big-store refuge areas: Home Depot, Walmart"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "codes-rebuild",
+  "quote": "I wonder why commercial buildings and residential homes like at 15:15 don't have mandatory shelters",
+  "likes": 28,
+  "age": "4 months ago (edited)",
+  "type": "question",
+  "answer": "What codes require now; no county shelters"
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "age",
+  "quote": "They were 85 years old and my Aunt Joanne was in the bathtub",
+  "likes": 26,
+  "age": "10 years ago",
+  "type": "account",
+  "answer": "Death rate, age 60+: 8 vs 2 per 1,000"
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "basements-shelters",
+  "quote": "I remember huddling in my gross ass cellar, surrounded by Cave Crickets",
+  "likes": 26,
+  "age": "8 years ago",
+  "type": "account",
+  "answer": "82% of homes had no basement"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "hospital-nursing",
+  "quote": "the power flash seen at the 12:28 time stamp was when the Joplin, Missouri tornado struck St. John's Regional Medical Center at 5:41 PM.",
+  "likes": 26,
+  "age": "3 years ago",
+  "type": "correction",
+  "answer": "Hospital hit time versus touchdown about 5:34 pm."
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "stores",
+  "quote": "This nice old man I used to talk to who made fishing lures died in Walmart when a wall collapsed on him",
+  "likes": 24,
+  "age": "6 years ago",
+  "type": "account",
+  "answer": "Big-store collapse deaths and refuge-area findings"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "indoors",
+  "quote": "When I was younger we were always told to go to the hallway or to the gym",
+  "likes": 19,
+  "age": "7 years ago",
+  "type": "account",
+  "answer": "NIST and NWS shelter-position guidance, hallway vs gym"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "Was a tornado Emergency issued?",
+  "likes": 19,
+  "age": "1 year ago",
+  "type": "question",
+  "answer": "NWS warning products issued on 22 May 2011."
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "sirens-warnings",
+  "quote": "Seeing a sky looking that black and sinister with the sirens going off means this tornado is in walking distance",
+  "likes": 18,
+  "age": "6 years ago",
+  "type": "belief",
+  "answer": "NIST: 14 of 18 warnings 2005-2011 had no tornado"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "stores",
+  "quote": "A girl in the grade below me was at the Joplin Walmart when it came through",
+  "likes": 18,
+  "age": "3 years ago",
+  "type": "account",
+  "answer": "Big-store refuge areas: Walmart and Home Depot, 2011."
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "age",
+  "quote": "Since a lot of elderly lived there it was common that a good portion of",
+  "likes": 18,
+  "age": "1 year ago",
+  "type": "account",
+  "answer": "Age 60+ death rate 8 per 1,000 vs 2 per 1,000"
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "other",
+  "quote": "The actual reason why Mike Bettis got all choked up when he was reporting about the tornadoes in Tuscaloosa and Birmingham is that ...",
+  "likes": 18,
+  "age": "2 years ago",
+  "type": "correction",
+  "answer": "Stammer's account in 20 Minutes in May."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "age",
+  "quote": "Lost my grandmother n the joplin tornado. Live and work around joplin still. Edit she was in greenbrier nursing home.",
+  "likes": 17,
+  "age": "2 years ago (edited)",
+  "type": "account",
+  "answer": "Age 60+ death rate, 8 vs 2 per 1,000; Greenbriar records."
+ },
+ {
+  "vid": "4iGlOS8A0T4",
+  "act": "sirens-warnings",
+  "quote": "Here, 30 minutes before the tornado, everything was fine in Joplin",
+  "likes": 15,
+  "age": "4 months ago",
+  "type": "belief",
+  "answer": "Warning timeline before impact (NWS, NIST)."
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "sirens-warnings",
+  "quote": "if tornado sirens went of once every week",
+  "likes": 13,
+  "age": "13 years ago",
+  "type": "belief",
+  "answer": "NIST: siren activations outside weekly test, about yearly"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "codes-rebuild",
+  "quote": "Joplin has rebuilt and we’re back and better than ever",
+  "likes": 12,
+  "age": "6 years ago",
+  "type": "belief",
+  "answer": "Post-2011 building codes and rebuild permits, Joplin"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "other",
+  "quote": "Violent is only applied to EF4 or EF5, or that was the intention, now everyone calls any tornado that does more than rustle leaves violent.",
+  "likes": 12,
+  "age": "1 year ago",
+  "type": "correction",
+  "answer": "NWS EF-scale damage indicators and rating definitions"
+ },
+ {
+  "vid": "4iGlOS8A0T4",
+  "act": "other",
+  "quote": "I say this absolute monster should have been categorized as an EF6. Simply because of just how absolutely devastating it was.",
+  "likes": 10,
+  "age": "4 months ago (edited)",
+  "type": "belief",
+  "answer": "EF scale tops out at EF5; no EF6 exists."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "hospital-nursing",
+  "quote": "I remember this tornado vividly, especially hearing stories about the destruction of the old hospital and the Pizza Hut, Walmart, Home Depot",
+  "likes": 10,
+  "age": "2 years ago",
+  "type": "account",
+  "answer": "St. John's damage and evacuation timeline."
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "hospital-nursing",
+  "quote": "the power flash was the backup generators being blown out, which killed 5 people who were on electric powered breathing machines.",
+  "likes": 9,
+  "age": "3 years ago",
+  "type": "correction",
+  "answer": "St. John's Mercy generator failure and patient death records"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "...means everyone at the station took cover.",
+  "likes": 9,
+  "age": "3 years ago",
+  "type": "question",
+  "answer": "Station staff shelter record and off-air time."
+ },
+ {
+  "vid": "Leg98FOyIN0",
+  "act": "hospital-nursing",
+  "quote": "It didn't rotate the hospital off it's foundation 😂😂 the fact that people still spread this myth 15 years later is crazy.",
+  "likes": 9,
+  "age": "4 months ago (edited)",
+  "type": "correction",
+  "answer": "St. John's damage findings: what twisted, what did not move."
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "multiple storm spotters had observed the tornado's formation outside of Joplin and attempted to give an immediate warning",
+  "likes": 8,
+  "age": "3 years ago (edited)",
+  "type": "correction",
+  "answer": "Spotter reports and warning relay log, 22 May 2011."
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "sirens-warnings",
+  "quote": "There was no tornado sirens until 20 mins.",
+  "likes": 8,
+  "age": "5 years ago",
+  "type": "account",
+  "answer": "Siren activation log, Joplin, 22 May 2011"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "sirens-warnings",
+  "quote": "once they issued the warning the bad part of the storm was already approaching Joplin rapidly.",
+  "likes": 8,
+  "age": "11 years ago",
+  "type": "belief",
+  "answer": "NWS warning text and issue time, 22 May 2011"
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "indoors",
+  "quote": "we eventually lost power and went into our parents’ bedroom to wait it out.",
+  "likes": 8,
+  "age": "2 years ago",
+  "type": "account",
+  "answer": "135 of 155 impact deaths were indoors."
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "sirens-warnings",
+  "quote": "we sometimes hear sirens but its usually nothing bad so we decided to stay",
+  "likes": 7,
+  "age": "1 year ago",
+  "type": "account",
+  "answer": "Warnings issued vs verified tornadoes, 2005-2011"
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "stores",
+  "quote": "a HEROIC Pizza Hut manager heroicslly lost his life as he was trying to hold the cooler closed",
+  "likes": 7,
+  "age": "2 years ago (edited)",
+  "type": "account",
+  "answer": "In-store shelter deaths and survivors at Pizza Hut"
+ },
+ {
+  "vid": "4iGlOS8A0T4",
+  "act": "basements-shelters",
+  "quote": "My Dads safe room, saved all 4 of us. I will never forget that roar, it was like a symphony of rocket engines.",
+  "likes": 7,
+  "age": "4 months ago",
+  "type": "account",
+  "answer": "82% of homes had no basement; no community shelters."
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "stores",
+  "quote": "Home Depot, Lowe's, and Wal-Mart Neighborhood Marketplace are no zones for safety from a Tornado.",
+  "likes": 6,
+  "age": "3 years ago",
+  "type": "belief",
+  "answer": "Store-by-store damage records: which roofs failed"
+ },
+ {
+  "vid": "FagzNHuI5JI",
+  "act": "sirens-warnings",
+  "quote": "It is amazing how many people were caught off guard that day or didn't take the warning seriously enough.",
+  "likes": 6,
+  "age": "3 years ago",
+  "type": "belief",
+  "answer": "14 of 18 warnings, 2005-2011, had no verified tornado."
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "other",
+  "quote": "kids claimed to see flying angels in the sky but in reality it was victims being swept from the ground",
+  "likes": 6,
+  "age": "6 months ago",
+  "type": "belief",
+  "answer": "Coroner or medical records of wing-like injuries, if any"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "basements-shelters",
+  "quote": "They were both safe as they hid under the basement staircase.",
+  "likes": 6,
+  "age": "4 months ago",
+  "type": "account",
+  "answer": "82% of homes had no basement"
+ },
+ {
+  "vid": "Leg98FOyIN0",
+  "act": "other",
+  "quote": "I was near some apartments near Mssu when it hit. My apartment came close to getting hit too.",
+  "likes": 6,
+  "age": "4 months ago (edited)",
+  "type": "account",
+  "answer": "Track and damage survey near the MSSU campus."
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "other",
+  "quote": "weird how tornado numbers have gone down SIGNIFICANTLY since 2011",
+  "likes": 5,
+  "age": "11 years ago",
+  "type": "belief",
+  "answer": "NOAA annual US tornado counts, 2011 onward"
+ },
+ {
+  "vid": "4iGlOS8A0T4",
+  "act": "other",
+  "quote": "Prior to the Joplin tornado the last tornado to kill over 100 people was the Flint/Beecher tornado that happened on June 8th 1953.",
+  "likes": 5,
+  "age": "4 months ago",
+  "type": "belief",
+  "answer": "Deadliest-tornado list (NOAA); check the 1953 claim."
+ },
+ {
+  "vid": "Leg98FOyIN0",
+  "act": "other",
+  "quote": "I went to Joplin with a Salvation Army disaster team a few weeks after the tornado. The destruction was so complete that the city...",
+  "likes": 5,
+  "age": "4 months ago",
+  "type": "account",
+  "answer": "Debris clearance and street marking after the storm."
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "other",
+  "quote": "There is no such thing as tornado alley.  There have been tornados in every state but Alaska.",
+  "likes": 4,
+  "age": "5 years ago",
+  "type": "correction",
+  "answer": "NOAA tornado counts by state; deaths by housing type"
+ },
+ {
+  "vid": "6nX7J8_mZpE",
+  "act": "hospital-nursing",
+  "quote": "Freeman was intact just across 32nd street and thankfully that hospital was spared.",
+  "likes": 4,
+  "age": "8 years ago",
+  "type": "correction",
+  "answer": "Hospital damage survey: St. John's vs Freeman"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "basements-shelters",
+  "quote": "i'm glad that there is a FEMA shelter that holds 20,000 people.",
+  "likes": 4,
+  "age": "10 years ago",
+  "type": "correction",
+  "answer": "Check FEMA shelter claim against NIST: no community shelters"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "stores",
+  "quote": "My aunt was in this, she survived by taking shelter in a store.",
+  "likes": 4,
+  "age": "2 years ago",
+  "type": "account",
+  "answer": "Store refuge areas: Home Depot, Walmart; NIST shelter data"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "hospital-nursing",
+  "quote": "the hospital was not shifted off it's foundation",
+  "likes": 4,
+  "age": "4 months ago (edited)",
+  "type": "correction",
+  "answer": "Top floors twisted; verify St. John's NIST findings"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "sirens-warnings",
+  "quote": "SIRENS ARENT SUGGESTIONS. TAKE COVER",
+  "likes": 4,
+  "age": "4 months ago",
+  "type": "belief",
+  "answer": "14 of 18 warnings 2005-2011 had no verified tornado"
+ },
+ {
+  "vid": "4iGlOS8A0T4",
+  "act": "other",
+  "quote": "Another very sad note is when the young lady at 5:35 mentions she saw angels, it was most likely the bodies of some victims...",
+  "likes": 4,
+  "age": "4 months ago",
+  "type": "belief",
+  "answer": "Survey and NIST records on wind-carried debris."
+ },
+ {
+  "vid": "Leg98FOyIN0",
+  "act": "other",
+  "quote": "i was at 17th and connecticut where the tornado was the widest, cant believe i survived, my roof was on the side of my yard...",
+  "likes": 4,
+  "age": "4 months ago",
+  "type": "account",
+  "answer": "Tornado width and path survey at its widest point."
+ },
+ {
+  "vid": "Leg98FOyIN0",
+  "act": "other",
+  "quote": "25% of the city erased",
+  "likes": 4,
+  "age": "4 months ago",
+  "type": "belief",
+  "answer": "Share of city area destroyed; check the survey figure."
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "codes-rebuild",
+  "quote": "The states need to build underground shelters into all public buildings, homes, and into overpasses.",
+  "likes": 3,
+  "age": "3 years ago",
+  "type": "belief",
+  "answer": "Current shelter codes; 82% of homes had no basement"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "other",
+  "quote": "RIP to the 158 souls lost.",
+  "likes": 3,
+  "age": "1 year ago (edited)",
+  "type": "correction",
+  "answer": "NIST: 155 impact deaths; reconcile 158 figure"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "sirens-warnings",
+  "quote": "Even with ample warning, there was no preparation for a monster in a matter of seconds",
+  "likes": 3,
+  "age": "1 year ago",
+  "type": "belief",
+  "answer": "NWS warning lead time, Joplin 2011"
+ },
+ {
+  "vid": "4iGlOS8A0T4",
+  "act": "other",
+  "quote": "Nearly 160 people dead\" is more syllables than \"159 people dead\" so why bother.",
+  "likes": 3,
+  "age": "4 months ago",
+  "type": "question",
+  "answer": "155 impact deaths (NIST NCSTAR 3)."
+ },
+ {
+  "vid": "Leg98FOyIN0",
+  "act": "other",
+  "quote": "Sorry but, he's wrong about ground 0. This monster started up just south of Gallena KS, came into the state line MO and went...",
+  "likes": 3,
+  "age": "4 months ago (edited)",
+  "type": "correction",
+  "answer": "NWS track survey: start point and route."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "sirens-warnings",
+  "quote": "An alarm-weary population and a tornado that forms right on the edge of a city and rapidly intensifies into EF4/EF5 strength",
+  "likes": 3,
+  "age": "2 years ago",
+  "type": "belief",
+  "answer": "NIST: 14 of 18 tornado warnings had no verified tornado."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "basements-shelters",
+  "quote": "we used to normally go to st. john’s since we didn’t have any shelter to go to",
+  "likes": 3,
+  "age": "2 years ago",
+  "type": "account",
+  "answer": "82% of homes had no basement; no community shelters."
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "hospital-nursing",
+  "quote": "So strong was this tornado that the massive concrete Hospital in Joplin was moved 4 inches from its foundation.",
+  "likes": 2,
+  "age": "7 years ago",
+  "type": "correction",
+  "answer": "NIST hospital assessment: displacement and foundation findings"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "basements-shelters",
+  "quote": "I remember sitting in my storm shelter with my family thinking this would just be like any other tornado",
+  "likes": 2,
+  "age": "8 years ago",
+  "type": "account",
+  "answer": "82% of homes had no basement (NIST)"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "basements-shelters",
+  "quote": "the hospitals generator’s were in the basement and were under 3 feet of water",
+  "likes": 2,
+  "age": "3 months ago",
+  "type": "account",
+  "answer": "St. John's generator location and flooding: not in our sources"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "indoors",
+  "quote": "We found one more victim buried in his house that day.",
+  "likes": 2,
+  "age": "4 months ago (edited)",
+  "type": "account",
+  "answer": "135 of 155 impact deaths indoors"
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "other",
+  "quote": "Well Joplin is not the US most deadly tornado as the most deadly tornado is the tri-state tornado in 1925 as it killed 695 people ...",
+  "likes": 2,
+  "age": "1 year ago",
+  "type": "correction",
+  "answer": "Tri-State 1925 deaths: 695. Check Joplin's 158 source."
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "indoors",
+  "quote": "I was hiding under my desk when it hit and I near passed out when the desk starting getting pulled",
+  "likes": 1,
+  "age": "4 months ago",
+  "type": "account",
+  "answer": "NIST desk-shelter outcomes; classroom debris records"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "codes-rebuild",
+  "quote": "The entire school had to be torn down and rebuilt after this.",
+  "likes": 1,
+  "age": "13 years ago",
+  "type": "correction",
+  "answer": "Joplin district records: opening year and rebuild date"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "sirens-warnings",
+  "quote": "He was doing the math and knew ahead of time that something big was going to happen but the cops ignored him.",
+  "likes": 1,
+  "age": "7 years ago",
+  "type": "account",
+  "answer": "Spotter reports and NWS warning log, 22 May 2011"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "sirens-warnings",
+  "quote": "There was zero chance of an early warning with this tornado.",
+  "likes": 1,
+  "age": "2 years ago (edited)",
+  "type": "belief",
+  "answer": "Warning issue time vs touchdown, Joplin 2011"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "other",
+  "quote": "This f5 tornado stayed on the ground for 38 minutes and killed 158 people and injured almost 1200",
+  "likes": 1,
+  "age": "1 year ago",
+  "type": "belief",
+  "answer": "Track duration and injury count, NWS and NIST"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "sirens-warnings",
+  "quote": "Once a week is far too frequently to be testing alarm systems. Obviously they were going to be ignored. Who had that idea?",
+  "likes": 1,
+  "age": "4 months ago",
+  "type": "question",
+  "answer": "Weekly 1-minute siren test; otherwise about yearly"
+ },
+ {
+  "vid": "4iGlOS8A0T4",
+  "act": "other",
+  "quote": "I can't fathom losing a quarter of my city.",
+  "likes": 1,
+  "age": "1 month ago",
+  "type": "belief",
+  "answer": "Share of city area destroyed (survey data)."
+ },
+ {
+  "vid": "Leg98FOyIN0",
+  "act": "other",
+  "quote": "With Joplin being situated in the old lead belt, was the soil turned up by the tornado have high levels of lead.",
+  "likes": 1,
+  "age": "3 months ago",
+  "type": "question",
+  "answer": "Post-storm soil and dust lead testing."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "sirens-warnings",
+  "quote": "As a lifelong resident of Kansas, we had become somewhat uninterested in the watches and warnings.",
+  "likes": 1,
+  "age": "2 years ago",
+  "type": "belief",
+  "answer": "NIST: 14 of 18 tornado warnings had no verified tornado."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "sirens-warnings",
+  "quote": "By the time the sirens went off it was already too late. In matter of fact the sirens were already gone.",
+  "likes": 1,
+  "age": "2 years ago",
+  "type": "account",
+  "answer": "Siren activation record for May 22, from NIST."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "basements-shelters",
+  "quote": "Even you know it's real. If you can't get underground your in trouble.",
+  "likes": 1,
+  "age": "2 years ago",
+  "type": "belief",
+  "answer": "NIST: no evidence any victim was underground (NCSTAR 3)."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "basements-shelters",
+  "quote": "My mom ushered my older brother and I into our basement. My dad ran to our neighbors’ houses who we knew didn’t have basements",
+  "likes": 1,
+  "age": "2 years ago",
+  "type": "account",
+  "answer": "82% of homes had no basement."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "other",
+  "quote": "Were the fatalities 158 or 161? You can find both data and it's confusing",
+  "likes": 1,
+  "age": "2 years ago",
+  "type": "question",
+  "answer": "Official death count: 158 vs 161, with source dates."
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "other",
+  "quote": "this school is on the far eastern side of this town, so by this point the tornado wasnt an ef5",
+  "likes": 0,
+  "age": "5 years ago",
+  "type": "correction",
+  "answer": "NWS EF rating and track at the school location"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "basements-shelters",
+  "quote": "They said that there was no need for storm shelters because tornados only happen once in a while.",
+  "likes": 0,
+  "age": "5 years ago",
+  "type": "belief",
+  "answer": "NWS tornado frequency by county vs shelter cost"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "indoors",
+  "quote": "its a good idea to take cover in the hallway or inside room because walls and roofs can callaps.",
+  "likes": 0,
+  "age": "6 years ago",
+  "type": "belief",
+  "answer": "NIST: hallway and interior-room wall and roof failures"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "indoors",
+  "quote": "the safest spot in the school at the time was the theater area with the seats for cover",
+  "likes": 0,
+  "age": "8 years ago",
+  "type": "belief",
+  "answer": "NIST: auditorium versus classroom damage at the school"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "sirens-warnings",
+  "quote": "last summer I was home alone when I heard the siren and I was freaked out",
+  "likes": 0,
+  "age": "11 years ago",
+  "type": "account",
+  "answer": "NWS siren test logs vs actual warning dates"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "basements-shelters",
+  "quote": "Why are there no BASEMENTS in houses ,schools and all other public buildings in USA?",
+  "likes": 0,
+  "age": "5 years ago",
+  "type": "question",
+  "answer": "NIST: 82% of homes had no basement; no county shelters"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "sirens-warnings",
+  "quote": "How much time did residents have to take cover before it hit their town?",
+  "likes": 0,
+  "age": "5 years ago",
+  "type": "question",
+  "answer": "NWS warning issue time vs touchdown time in Joplin"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "indoors",
+  "quote": "Where were the students taking cover...?",
+  "likes": 0,
+  "age": "6 years ago (edited)",
+  "type": "question",
+  "answer": "School timeline and shelter locations at impact"
+ },
+ {
+  "vid": "64covicCcIY",
+  "act": "other",
+  "quote": "first off that's not east middle school, that's the high school in joplin.",
+  "likes": 0,
+  "age": "5 years ago (edited)",
+  "type": "correction",
+  "answer": "Joplin school building map and video source notes"
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "age",
+  "quote": "He left the cellar to get the dog and they found him 3 blocks away.",
+  "likes": 0,
+  "age": "4 years ago",
+  "type": "account",
+  "answer": "Death rates by age; cellar-refuge outcomes, Joplin"
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "other",
+  "quote": "a possibility of an F6 tornado",
+  "likes": 0,
+  "age": "3 months ago",
+  "type": "correction",
+  "answer": "EF scale definition: EF5 is the top category"
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "sirens-warnings",
+  "quote": "why people were driving on the road like a normal day",
+  "likes": 0,
+  "age": "3 months ago",
+  "type": "question",
+  "answer": "Warning lead time from NWS logs, 22 May 2011"
+ },
+ {
+  "vid": "CburjPYmSdo",
+  "act": "sirens-warnings",
+  "quote": "The first tornado watch for the area was issued at 1:30 pm-four hours before.",
+  "likes": 0,
+  "age": "5 months ago",
+  "type": "correction",
+  "answer": "SPC watch issue time vs touchdown, May 22"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "other",
+  "quote": "before the video even started a small thin rope was trying to touch the ground",
+  "likes": 0,
+  "age": "5 months ago",
+  "type": "correction",
+  "answer": "Earliest chaser footage before the 0:00 frame"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "sirens-warnings",
+  "quote": "there is another tornado warning in effect. We are currently telling the residents of Joplin to take shelter",
+  "likes": 0,
+  "age": "12 years ago",
+  "type": "account",
+  "answer": "Verified-tornado rate per warning, 2005-2011 (NIST)"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "basements-shelters",
+  "quote": "my aunt grabbed my cousin and i grabbed my dog and my whole family ran to the basement",
+  "likes": 0,
+  "age": "9 years ago",
+  "type": "account",
+  "answer": "NIST: 135 of 155 impact deaths indoors; none underground"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "sirens-warnings",
+  "quote": "there were tornado sirens going off in my neighborhood because the tornado was suppose to be coming",
+  "likes": 0,
+  "age": "9 years ago",
+  "type": "account",
+  "answer": "NIST: sirens outside weekly test, about once a year"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "indoors",
+  "quote": "She had hid in a church and they were looking in the rubble.",
+  "likes": 0,
+  "age": "9 years ago",
+  "type": "account",
+  "answer": "135 of 155 impact deaths were indoors (NIST)"
+ },
+ {
+  "vid": "XT7CtF5ljxY",
+  "act": "sirens-warnings",
+  "quote": "That weather man should have been aware that was a potential f 5 from the very start.",
+  "likes": 0,
+  "age": "1 year ago",
+  "type": "belief",
+  "answer": "NWS warning text for Joplin, 22 May 2011"
+ },
+ {
+  "vid": "bDrvj83MNJY",
+  "act": "other",
+  "quote": "70 years was 1956 2011 was 15 years ago Check Google If You Want To",
+  "likes": 0,
+  "age": "3 months ago",
+  "type": "correction",
+  "answer": "NWS deadliest-tornado list vs the title claim"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "basements-shelters",
+  "quote": "I have been so confused as to why people who could afford otherwise high quality homes wouldn't have BASEMENTS in tornado ally!",
+  "likes": 0,
+  "age": "2 months ago",
+  "type": "question",
+  "answer": "82% of homes had no basement"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "sirens-warnings",
+  "quote": "he and my friends told me not to worry about it because 'tornadoes never hit Joplin'.",
+  "likes": 0,
+  "age": "4 months ago",
+  "type": "belief",
+  "answer": "Sirens: about once a year since 2007, outside weekly test"
+ },
+ {
+  "vid": "syfeDcNgmL0",
+  "act": "stores",
+  "quote": "they tried to have us stay there to shelter but my dad argued and we left",
+  "likes": 0,
+  "age": "2 months ago (edited)",
+  "type": "account",
+  "answer": "Big-store refuge areas (Home Depot, Walmart)"
+ },
+ {
+  "vid": "4iGlOS8A0T4",
+  "act": "stores",
+  "quote": "i heard a rumor that Walmart managers asked if any of their employees could show up to work the very next day and if...",
+  "likes": 0,
+  "age": "4 months ago (edited)",
+  "type": "belief",
+  "answer": "Walmart refuge area; staffing claim unverified."
+ },
+ {
+  "vid": "4iGlOS8A0T4",
+  "act": "sirens-warnings",
+  "quote": "Why didn't they issue a tornado emergency before the Joplin tornado hit the city?",
+  "likes": 0,
+  "age": "4 months ago (edited)",
+  "type": "question",
+  "answer": "14 of 18 tornado warnings 2005-2011 had no verified tornado."
+ },
+ {
+  "vid": "4iGlOS8A0T4",
+  "act": "other",
+  "quote": "It was 32 minutes not 38 minutes.",
+  "likes": 0,
+  "age": "3 months ago",
+  "type": "correction",
+  "answer": "NWS path timeline: 32 or 38 minutes?"
+ },
+ {
+  "vid": "4iGlOS8A0T4",
+  "act": "other",
+  "quote": "The smell of the dead bodies lasted for weeks",
+  "likes": 0,
+  "age": "4 months ago",
+  "type": "account",
+  "answer": "Body recovery period after the storm."
+ },
+ {
+  "vid": "Leg98FOyIN0",
+  "act": "codes-rebuild",
+  "quote": "and see people building houses with wood, why , if your gona build, build something thing to withstand a tornado",
+  "likes": 0,
+  "age": "4 months ago",
+  "type": "question",
+  "answer": "Current codes for rebuilt homes in tornado zones."
+ },
+ {
+  "vid": "Leg98FOyIN0",
+  "act": "hospital-nursing",
+  "quote": "How does the weather channel spread the false myth about the hospital moving and twisting off its foundation? False.",
+  "likes": 0,
+  "age": "4 months ago",
+  "type": "correction",
+  "answer": "St. John's damage findings: what twisted, what did not move."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "codes-rebuild",
+  "quote": "I don’t know why every new building isn’t required to have an underground shelter to fit the amount of people ...",
+  "likes": 0,
+  "age": "2 years ago (edited)",
+  "type": "question",
+  "answer": "What codes require for new buildings now."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "basements-shelters",
+  "quote": "Nowadays, we have storm shelters that are designed to withstand a strong tornado such as Joplin.",
+  "likes": 0,
+  "age": "2 years ago (edited)",
+  "type": "belief",
+  "answer": "82% of homes had no basement; no community shelters."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "indoors",
+  "quote": "It’s crazy to me how many people died despite taking the warning seriously and finding shelter.",
+  "likes": 0,
+  "age": "2 years ago",
+  "type": "question",
+  "answer": "135 of 155 impact deaths were indoors."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "sirens-warnings",
+  "quote": "We didnt think anything of the sirens because of how many we had that month.",
+  "likes": 0,
+  "age": "2 years ago",
+  "type": "account",
+  "answer": "NIST: sirens about once a year outside weekly test."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "sirens-warnings",
+  "quote": "If it's a false alarm? Great, that's a blessing!",
+  "likes": 0,
+  "age": "2 years ago",
+  "type": "belief",
+  "answer": "NIST: 14 of 18 tornado warnings had no verified tornado."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "sirens-warnings",
+  "quote": "20 min was enough time to get the heck out of there but people chose to ignore the warnings.",
+  "likes": 0,
+  "age": "2 years ago",
+  "type": "belief",
+  "answer": "Warning lead time on May 22; NWS timeline."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "hospital-nursing",
+  "quote": "Every nurse I've heard who experienced that tornado said they had zero warning.",
+  "likes": 0,
+  "age": "2 years ago",
+  "type": "account",
+  "answer": "St. John's warning timeline; generator and power records."
+ },
+ {
+  "vid": "zMQd2F-GYiM",
+  "act": "stores",
+  "quote": "I could see them as a company locking the doors and not letting anyone in for liability reasons.",
+  "likes": 0,
+  "age": "2 years ago",
+  "type": "belief",
+  "answer": "Walmart and Home Depot refuge-area and door policy."
+ }
+]
