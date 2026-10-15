@@ -572,7 +572,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A5-S2 · narration
 **Picture:** a drawn hallway, beds rolled in from the rooms; label "Condition Gray". Then a clock "5:38 PM", and a chip "5 TO 7 MINUTES", source chip "before the tornado hit the hospital · NIST Sec. 4.4.2". Source line "NIST Sec. 1.2 · Sec. 4.4.2".
-> The hospital had a plan called Condition Gray. Once the head nurse confirmed that the tornado sirens were sounding, staff moved patients into the hallways. The head nurse remembered hearing the sirens once, and NIST thinks that was the second time, at five thirty-eight. That left five to seven minutes.
+> The hospital had a plan called Condition Gray. Once the head nurse confirmed the tornado sirens were sounding, staff moved patients into the hallways. The head nurse only remembered one siren, and it was most likely the second one, at five thirty-eight. So staff had five to seven minutes before the tornado hit the hospital. Was that enough?
 
 **Rows:** [C10] · [C11]
 
