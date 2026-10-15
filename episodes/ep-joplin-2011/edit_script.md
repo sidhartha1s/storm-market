@@ -301,18 +301,20 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 *([A2-Q1 paid].)*
 
 ### A2-S5 · narration
-**Picture:** clock "5:17 PM". Polygon 31 draws over the whole city; "polygon 31" on screen only. The siren ring stays dark. Chip "WHOLE CITY · NO SIREN". Source line "NIST Sec. 1.2".
-> At five-seventeen, a new tornado warning covered the whole city. Did the sirens go off again? They didn't, most likely because they'd already gone off six minutes earlier.
+**Picture:** clock "5:17 PM". Polygon 31 draws over the whole city; "polygon 31" on screen only. Chip "WHOLE CITY". The siren ring holds, unlit, on the question (the "NO SIREN" chip waits for the answer in A2-S6). Source line "NIST Sec. 1.2".
+> At five-seventeen, a new tornado warning covered the whole city. Did the sirens go off again?
 
-**Rows:** [E9] · [E10: not activated again, probably because sounded 6 min earlier]
+**Rows:** [E9]
 
-*([A2-Q2 open] and paid in this segment.)*
+*([A2-Q2 open]. Paid in A2-S6.)*
 
 ### A2-S6 · narration
-**Picture:** the NIST sentence as on-screen text over the master map, an arrow running north toward "Webb City · Carl Junction": "the media continued to report on storms said to be passing to the north and missing Joplin, or moving away from the City". Source line "NIST Sec. 1.2". No TV pull (none sourced).
-> And if you had the TV on, the news was still talking about storms passing to the north, up toward Webb City and Carl Junction.
+**Picture:** on "They didn't" the siren ring stays dark, chip "NO SIREN", source chip "NIST Sec. 1.2". Then the NIST sentence as on-screen text over the master map, an arrow running north toward "Webb City · Carl Junction": "the media continued to report on storms said to be passing to the north and missing Joplin, or moving away from the City". Source line "NIST Sec. 1.2". Then, if the transcript has it, a 3 to 4 s cut of the live TV broadcast re-upload (YouTube FagzNHuI5JI) talking about storms to the north, a different cut from A1-S9's and A2-S10's; transcribe first, provenance row and Content ID risk checked at sourcing; if no such moment, the on-screen text carries it.
+> They didn't, most likely because they'd already gone off six minutes earlier. And the TV hadn't changed its story. If you had it on, the news was still talking about storms passing to the north, up toward Webb City and Carl Junction. How much warning did people in Joplin actually get, then?
 
-**Rows:** [E11: warning information before 5:17 was about a storm to the north, toward Webb City or Carl Junction] · [E12]
+**Rows:** [E10: not activated again, probably because sounded 6 min earlier] · [E11: warning information before 5:17 was about a storm to the north, toward Webb City or Carl Junction] · [E12]
+
+*([A2-Q2 paid]. [A2-Q3 open]: how much warning. Paid in A2-S7.)*
 
 ### A2-S7 · narration
 **Picture:** two comment cards side by side: "Residents of Joplin had plenty of warning time." (1,800 likes) and "even the best of technology wouldnt have helped alert the people on time" (2,500 likes). Between them a lead-time bar. Chips "17 MIN" on the first count, "23 MIN" on the second. Source lines "17 min · 5:17 warning to touchdown · NIST Sec. 2.2.2 · NWS Sec. 4", "23 min · first siren to touchdown" and "most did not act on a warning alone · NWS Assessment".
