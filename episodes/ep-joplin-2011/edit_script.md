@@ -380,7 +380,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A3-S3 · narration
 **Picture:** [RS] dots light in house outlines across the residential area. Chip "59 LOST IN HOUSES". Running label (on screen, not spoken): "59 people · 51 homes · 54 lost in demolished homes · 50 in one-story homes". Source line "NIST Sec. 4.6.2.2 · Table 4-3".
-> Fifty-nine people were lost in single-family houses. Almost all of them were in houses the tornado flattened, and most of them were in one-story houses. Some homes in the path did have a basement, though. So did anyone the tornado took make it down there?
+> Fifty-nine people were lost in single-family houses, and nearly all of them were in a house the tornado flattened. Some homes in the path did have a basement, though. So did anyone the tornado took make it down there?
 
 **Rows:** [H9, H10, H11: 59 people, 51 homes; 54 of the 59 in demolished homes; 50 of the 59 in one-story homes; Table 4-3 base per the H25/H26 CONFLICT] · [H7: 3 of 59 had access to an underground level]
 
