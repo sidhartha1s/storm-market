@@ -476,7 +476,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S4 · narration
 **Picture:** the floor plan: the fallen wall drawn resting on a row of cabinets, the D-shaped pocket lit. Chip "A D-SHAPED POCKET". Then three markers near the middle of the store, not in the refuge area, chip "3 LOST", source chip "location uncertain · likely near the center · NIST Sec. 1.2".
-> The wall came to rest on a row of cabinets and left a pocket of space shaped like a D. Three people were lost in that Walmart. NIST couldn't say exactly where the three were, but store information put them near the middle of the building.
+> The wall came to rest on a row of cabinets, and it left a pocket of space shaped like a D. Three people were lost in that Walmart. Exactly where they were isn't certain, but they were most likely near the middle of the store.
 
 **Rows:** [B10: D-shaped pocket of safety] · [B7: three lost, location uncertain; NIST Sec. 1.2, likely near the center, factcheck-A4-Z1 row A4-S4] · [B6: some protection for the 50 to 60]
 
