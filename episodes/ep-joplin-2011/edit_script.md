@@ -496,7 +496,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 **Rows:** [B11: approximately 35, panels collapsed outward] · [B14: 8 by death certificates, 7 inside by survivor interviews, per the CONFLICT] · [B12: store management's account] · [B13]
 
-*([A4-Q2 open] and paid: the Home Depot.)*
+*([A4-Q2 paid]: the Home Depot.)*
 
 ### A4-S6 · narration
 **Picture:** the master map: the tornado's center line drawn just north of 20th Street, between the two stores, passing near the Pizza Hut. Then a drawn cooler door. Chip "5 LOST". Source line "NIST Sec. 1.2 · Sec. 4.4.8".
