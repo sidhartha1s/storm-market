@@ -538,7 +538,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S12 · narration
 **Picture:** our own text card, never the NIST page (its sentence carries a hard flag word): "In all of the demolished buildings, those lost or badly hurt were above ground · NIST Sec. 4.6.2.1". Chip "ALL ABOVE GROUND".
-> In every demolished building the investigators looked at, the people who were lost or badly hurt were above ground. So did anybody in that part of town make it below ground?
+> In every demolished building the investigators looked at, the people who were lost or badly hurt were above ground. Did anybody in that part of town make it below ground at all?
 
 **Rows:** [B32] · [B4: no building type provided life-safety protection]
 
