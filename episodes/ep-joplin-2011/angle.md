@@ -41,5 +41,5 @@ RODALCO2007, "JOPLIN, MO, Tornado, 22 May 2011" (https://www.youtube.com/watch?v
 June First (syfeDcNgmL0) and Swegle (bDrvj83MNJY) captions, searched for indoor, 87, 135, basement, underground, below ground, once a year, 14 of 18, fourteen, false alarm, siren:
 - Neither says indoors, 87, 135 (as a death count), underground, below ground, once a year or 14 of 18.
 - June First already tells: only 17% of damaged homes had any basement; the siren fatigue and a false-alarm rate above the national average; weekly siren tests, "at minimum, 52 times per year"; tests now monthly.
-- Swegle tells the siren times (5:09 warning, 5:17 warning, sirens 17 minutes later, 5:38) and "nearly 25 minutes since the tornado sirens last sounded".
+- Swegle tells the evening's times (the 5:17 warning, "the sirens did not go off right away", touchdown about 5:34, sirens again at 5:38) and "nearly 25 minutes since the tornado sirens last sounded".
 So the timeline and the fatigue story are known; the 135 / 0 count and the once-a-year record are not.
