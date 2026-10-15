@@ -506,9 +506,11 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S7 · narration
 **Picture:** the map moves to 20th Street and Connecticut; a NIST ground photograph of the Dillon's grocery (credit line checked). A drawn produce cooler, thirty five figures. Chip "35 IN THE COOLER · ALL SURVIVED". Source line "NIST Sec. 1.2".
-> Not at the Dillon's grocery store, it wasn't. Thirty-five people there got into the produce cooler, and the building was demolished. If you were in that cooler, you walked out with minor cuts and bruises at most, and all thirty-five of them did.
+> Not at the Dillon's grocery store, it wasn't. Thirty-five people there got into the produce cooler, and that building was demolished too. If you were in that cooler, you walked out with minor cuts and bruises at most, and all thirty-five of them did. But what if the building you were in had a basement?
 
 **Rows:** [B20]
+
+*([A4-Q2c open]: what if it had a basement? Paid in A4-S9.)*
 
 ### A4-S9 · narration
 **Picture:** a NIST ground photograph of the Stained Glass Theater (credit line checked). The full quote card, no ellipsis: "We have a strong building here and anyone who wants to stay is welcome to do so. We can all go down in the basement." (NIST Interview 121), then "we want you to get to the basement right now". Chip "56 INSIDE". Source line "NIST Sec. 4.4.3".
