@@ -728,7 +728,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### Z1-S2 · narration
 **Picture:** [RS] the master map, all 135 dots, the empty below-ground line. Chips "135 INDOORS", "NONE FOUND BELOW GROUND", "8 IN 10: NO BASEMENT". Source lines "135 of 155 impact-related · NIST Finding 40", "no evidence any were underground · Finding 46", "82% of homes · no basement · Finding 20".
-> A hundred thirty-five of the people the Joplin tornado took were inside a building. NIST found no evidence that any of them were underground. And most homes in Joplin had no basement.
+> What most people in Joplin didn't have was anything below them. Eight in ten homes had no basement, and there wasn't a public shelter anywhere in the city or the county.
 
 **Rows:** [T3] · [H5] · [H1]
 
