@@ -294,7 +294,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S4 · narration
 **Picture:** a quote card over a NIST ground photograph (credit line checked): "The tornado sirens went off once, we walked outside and you couldn't really, didn't really see nothing then, and we went back in and finished eating." · "a survivor · NIST Interview 108". Chip "NOTHING TO SEE". Source line "NIST E.3: few environmental clues".
-> Some people looked outside, and there wasn't much to see. One survivor told NIST they walked out after the sirens, didn't see anything, and went back in to finish eating.
+> Some people looked outside, and there wasn't much to see. One survivor told investigators they walked out after the sirens, didn't see anything, and went back in to finish eating.
 
 **Rows:** [E7: few environmental clues] · [E34: NIST Interview 108]
 
@@ -583,7 +583,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 *([loop L9 open]: which group? Paid in A5-S8.)*
 
 ### A5-S2 · narration
-**Picture:** a drawn hallway, beds rolled in from the rooms; label "Condition Gray". Then a clock "5:38 PM", and a chip "5 TO 7 MINUTES", source chip "before the tornado hit the hospital · NIST Sec. 4.4.2". Source line "NIST Sec. 1.2 · Sec. 4.4.2".
+**Picture:** a drawn hallway, beds rolled in from the rooms; label "Condition Gray". Then a clock "5:38 PM", and a chip "5 TO 7 MINUTES", source chip "the head nurse's own recollection · before the tornado hit the hospital · NIST Sec. 4.4.2". Source line "NIST Sec. 1.2 · Sec. 4.4.2".
 > The hospital had a plan called Condition Gray. Once the head nurse confirmed the tornado sirens were sounding, staff moved patients into the hallways. The head nurse only remembered one siren, and it was most likely the second one, at five thirty-eight. By her own count, that gave her only five to seven minutes before the tornado hit the hospital. What were those hallways like when it hit?
 
 **Rows:** [C10] · [C11]
