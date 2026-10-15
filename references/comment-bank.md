@@ -182,8 +182,10 @@ Pulled 15 Oct 26: 36 comments in the Top order and 36 newest; 59,483 views that 
   from JHS. Catholic Charities helped us rebuild so we're still living here safe and sound." (59, 4 months ago).
 - Viewers credit the presenter: "I really appreciate that they actually had Mike Bettes on this versus just some
   random narrator talking about it." (50, 4 months ago).
-- Part 1's most-liked comment is a chaser's account: "It was the first time I saw a professional storm chaser break
-  down sobbing after finding bodies and realizing how serious this was" (116, 4 months ago).
+- Part 1's most-liked comment is about the subject itself: "Joplin documentaries are like 9/11 documentaries. No matter
+  how many are made, you have to watch." (278, 4 months ago). Third is a chaser's account: "It was the first time I saw
+  a professional storm chaser break down sobbing after finding bodies and realizing how serious this was" (116, 4
+  months ago).
 
 **Corrections and pushback**
 - The hospital twist is the myth viewers call out: "It didn't rotate the hospital off it's foundation ..." (9, 4
