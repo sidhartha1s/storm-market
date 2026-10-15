@@ -198,8 +198,8 @@ Pulled 15 Oct 26: 36 comments in the Top order and 36 newest; 59,483 views that 
 - "I can't fathom losing a quarter of my city." (1, 1 month ago).
 
 **What they add or ask for**
-- Series follow-up: "when is part 3?" (6, 4 months ago), and "Where is the rest of the show part 2, 3,4 etc?" (4, 4
-  months ago) under Part 1.
+- Series follow-up: "when is part 3?" (6, 4 months ago) under Part 2, and "Where is the rest of the show part 2, 3,4
+  etc?" (4, 4 months ago) under Part 1.
 - "Why didn't they issue a tornado emergency before the Joplin tornado hit the city?" (0, 4 months ago).
 - "With Joplin being situated in the old lead belt, was the soil turned up by the tornado have high levels of lead."
   (1, 3 months ago).
