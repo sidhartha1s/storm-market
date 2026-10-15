@@ -512,7 +512,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S10 · narration
 **Picture:** a drawn stair, one person wide; figures on it, fifteen below the line. Three markers above it. Chips "STAIRS ONE PERSON WIDE", then "ABOUT 15 GOT DOWN". Source line "one interviewee · NIST footnote 153 · Sec. 4.6.2.1".
-> The stairs were about one person wide. One person who was there says about fifteen people got down. NIST found no evidence that any of the three people lost were in the basement. The director was at the top of the stairs when the building was hit.
+> The stairs down were only about one person wide. About fifteen people got down. There's no evidence any of the three people lost ever made it to the basement, and the director was still at the top of the stairs when the building was hit.
 
 **Rows:** [B28] · [B29: about 15, one interviewee] · [B25, B31: no evidence any of those lost were in the basement] · [B30: the director at the top of the stairs]
 
