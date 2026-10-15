@@ -207,7 +207,7 @@ Pulled 15 Oct 26: 36 comments in the Top order and 36 newest; 59,483 views that 
   (0, 4 months ago).
 
 **For our scripts** (mine)
-- The hospital myth returns under both parts. The hospital beat must say what twisted and what did not move, in one
+- The hospital myth returns under Part 2, and under the June First and Domin Ator videos above. The hospital beat must say what twisted and what did not move, in one
   plain line, before the St. John's section.
 
 ### "The Deadliest U.S. Tornado Since 1950 — Joplin, 2011" (Paul Raymond, our own old upload)
