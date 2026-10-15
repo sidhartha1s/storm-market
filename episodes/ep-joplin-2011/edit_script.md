@@ -378,7 +378,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A3-S1 · narration
 **Picture:** our own cross-section of a one-story house on a crawl space, a figure in an interior bathroom, label "no basement · 82% of Joplin homes · NIST Finding 20". Chip "8 IN 10: NO BASEMENT". Source line "NIST Sec. 1.2". Then the master map with no shelter icons anywhere, chip "NO PUBLIC SHELTER", source line "no community shelters or safe rooms · city or county · Finding 20" (the spoken A3-S2 line is cut per the acts grade: the viewer already heard it in I1-S1; the chip carries it).
-> For most families in Joplin, the best spot was a closet, a hallway or a bathroom in the middle of the house. Eight of ten homes there didn't have a basement to go to.
+> For most families in Joplin, the best spot was a closet, a hallway or a bathroom in the middle of the house. Eight in ten homes there didn't have a basement to go to.
 
 **Rows:** [H2: interior bathrooms, closets, laundry rooms, hallways] · [H1: 82 percent lacked basements] · [H3, H4: on screen only]
 
