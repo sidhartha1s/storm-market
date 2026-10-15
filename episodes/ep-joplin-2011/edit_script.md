@@ -520,7 +520,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S11 · narration
 **Picture:** a NIST ground photograph of Harmony Heights Baptist (credit line checked), then the Full Gospel Church site. Chips "3 LOST", then "4 LOST". Source line "NIST Sec. 4.4.5 · 7 in churches per Table 4-1".
-> Two churches were in the path too. At Harmony Heights Baptist, the second siren came just as off-duty firefighters' radios were talking about tornadoes, and the pastor sent people to safe places. Three women were lost there. At the Full Gospel Church, four people were lost.
+> So what about the two churches that were in the path? At Harmony Heights Baptist, the second siren came just as off-duty firefighters' radios were talking about tornadoes, and the pastor sent people to safe places. Three women were lost there. At the Full Gospel Church, four people were lost.
 
 **Rows:** [B37: second siren coincided with the radios; the pastor sent people to safety] · [B36: three women] · [B38] · [B39, B45: 3 and 4; 7 on the source line, per the B39/B50 CONFLICT]
 
