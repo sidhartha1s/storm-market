@@ -109,7 +109,10 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
   interleaved) is a per-cut editor decision. Expect Content ID revenue claims on these (claims are not strikes). Never
   build a segment that dies if claimed. Vary sources and chapters, never reuse a broadcast cut.
 - Read the clip's `provenance.csv` row BEFORE wiring it. Era-mismatch or "backup only" notes disqualify it.
-- A REAL clip (broadcast, public domain, survivor) about every 45 to 60 s is the aim, not a hard rule (owner 4 Oct 26). The core audience saw these events live. Stock only fills between.
+- REAL clips (broadcast, public domain, survivor) come in the way a friend telling the story stops and says "hang on, look
+  at this" and shows a video: wherever the story reaches a moment someone filmed, show the film. More real clips than
+  graphics alone, placed by judgment, never by a quota (owner 15 Oct 26; about every 45 to 60 s is a floor, not a target).
+  The core audience saw these events live. Stock only fills between.
 - Storm-chaser and independent streamer footage: NEVER without a licence. Credit is not a licence. Never disguise a
   source to slip unlicensed footage past detection. A grade on footage you may legitimately use is fine; no grain (DESIGN.md "Look: no grain").
 - No AI-generated witnesses, no fabricated quotes. Real quotes come from NWS assessments or news archives, shown as attributed text.
