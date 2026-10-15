@@ -673,8 +673,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Rows:** [FEMA case study "Schools in Joplin, Missouri stand up to tornadoes by building safe rooms" (updated 30 Jul 2024); FEMA release 20 Feb 2020; factcheck-acts row A6-S4 and factcheck-A4-Z1 row A6-S2]
 
 ### A6-S3 · narration
-**Picture:** our map of the United States: the parts of twenty-two states that hold the highest tornado zone fill in. Our own redrawn safe-room diagram (no P-361 figure cleared). Chips "ASCE 7-22", then "22 STATES · NEW SCHOOLS". Source lines "ASCE 7-22 · NIST Impacts page" and "IBC Section 423 · FEMA Recovery Advisory 1, Feb 2023".
-> Nationally, tornado loads made it into the engineering standard that most building codes rely on. And the model building code now requires a storm shelter in new schools and emergency buildings in the worst tornado zone, across parts of twenty-two states, with a minimum size and a limit on how far you walk to get there.
+**Picture:** our map of the United States: the parts of twenty-two states that hold the highest tornado zone fill in. Our own redrawn safe-room diagram (no P-361 figure cleared). Chips "ASCE 7-22", then "22 STATES · NEW SCHOOLS", then "MINIMUM SIZE · MAX WALKING DISTANCE" (moved off the spoken line). Source lines "ASCE 7-22 · NIST Impacts page" and "IBC Section 423 · FEMA Recovery Advisory 1, Feb 2023".
+> Some of it did change. Tornado loads made it into the engineering standard most building codes rely on. And the model building code now requires a storm shelter in new schools and emergency buildings in the worst tornado zone, which covers parts of twenty-two states.
 
 **Rows:** [R12: ASCE 7-22] · [R13: parts of 22 states] · [R16: capacity and travel distance] · [FEMA Recovery Advisory 1, factcheck-acts row A6-S3]
 
