@@ -2,21 +2,6 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
-## 15 Oct 26 - ep-joplin-2011: the hook cited another video's comment, and the spoken lines read the source qualifiers aloud
-- Owner on the gate page: "why the fuck would u refernece someother video directly on the fucking hook? ... why the
-  fuck mention 3000? ... why 'one HUNDRED thirty five' and not one thirty five? ... other miserable phrasings as well".
-- **Rule 1:** the hook is the fact in Paul's own voice. No viewer comment, other video or like count in the hook;
-  comments live inside acts as beliefs the record answers.
-- **Rule 2:** numbers are spoken the way a person says them ("a hundred thirty-five"), never two big counts back to
-  back. Not "one thirty-five": next to clock times it reads as 1:35.
-- **Rule 3:** source qualifiers ("in the investigators' count", "to its impact", "the investigators could place") go on
-  the on-screen source line; the spoken line stays plain. The base stays exact on screen.
-- Owner, same day: "how many direct questions do you ask in the first 2mins or so ... how are u gonna guarantee that
-  the viewers do not leave the video, no MATTER WHAT." Draft 4 asked one, at 1:45.
-- **Rule 4:** from the hook's end to the end of the intro, a spoken question (or a line that plainly opens one) about
-  every 20 s, each paid within 45 s, one carried into Act 1. The grader fails any stretch over 30 s with no open
-  question; each segment carries its loop line.
-
 ## 10 Oct 26 - ep4-el-reno: the timeline was built from the voice files alone and lost what the script's picture notes ask for
 - Found at the last read before the draft, by the orchestrator, after every gate was green: the locked script stops the
   voice on "kept recording" and gives the TV crew clip six seconds of its own sound; the timeline had no gap and the
