@@ -186,7 +186,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S2 · narration
 **Picture:** a quote card over a NIST ground photograph of the Stained Glass Theater (credit line checked): "I didn't put much stock in that siren, because I'd heard them before, and 9 times out of 10, you hear the sirens but nothing really happens" · "an actor in the play · NIST Interview 120". On "three people" three small markers light on the theater's outline on the master map. Chip "3 LOST HERE".
-> One of the people NIST talked to was an actor at the Stained Glass Theater. The actor said they didn't put much stock in that siren, because nine times out of ten, you hear the sirens and nothing really happens. Three people in that theater were lost. So did the sirens really cry wolf in Joplin?
+> One of the people NIST talked to was an actor at the Stained Glass Theater, and the actor said they didn't put much stock in that siren. Nine times out of ten, you hear the sirens and nothing really happens. Three people in that theater were lost. So were the sirens really crying wolf in Joplin?
 
 **Rows:** [S24: NIST Interview 120, no gender given] · [B25: three lost at the theater]
 
