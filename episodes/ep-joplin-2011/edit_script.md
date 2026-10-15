@@ -492,7 +492,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S6 · narration
 **Picture:** the master map: the tornado's center line drawn just north of 20th Street, between the two stores, passing near the Pizza Hut. Then a drawn cooler door. Chip "5 LOST". Source line "NIST Sec. 1.2 · Sec. 4.4.8".
-> The center of the tornado passed between those two stores, right by the Pizza Hut. Staff and customers at the Pizza Hut got into the cooler. The building was demolished, and five people were lost. At five thirty-eight, some of them had been discussing whether that second siren meant all clear.
+> The center of the tornado passed between those two stores, right by the Pizza Hut. Staff and customers there got into the cooler. The building was demolished, and five people were lost. At five thirty-eight, some of them had been discussing whether that second siren meant all clear. So was getting into a cooler a mistake?
 
 **Rows:** [B17] · [B18: five lost, two employees, three customers] · [B19: some discussed whether it meant all clear]
 
