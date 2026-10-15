@@ -194,7 +194,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S3 · narration
 **Picture:** the RODALCO2007 card, its first and only appearance: "no one is paying any attention to the sirens going off" · RODALCO2007 · 3,000 likes · under "JOPLIN, MO, Tornado, 22 May 2011" (likes on the card, never spoken; no frame of that video). Beside it, the NWS assessment's page with "desensitized or complacent" underlined. Chip "NUMB TO SIRENS". Source line "NWS Assessment, Preface and Finding 2c".
-> You've probably seen comments like this one under the old Joplin videos. The NWS found something close to it. Most of the people it surveyed had gone numb to the tornado sirens, and the first siren had lost some of its credibility. But how often did those sirens actually go off?
+> You've probably read comments like this one under the old Joplin videos. A survey after the storm found much the same thing. Most of the people in it had gone numb to the tornado sirens, so for many of them the first siren just wasn't as believable anymore. But how often did those sirens actually go off?
 
 **Rows:** [angle.md: the comment, verbatim] · [S16: "desensitized or complacent"] · [S19: "initial siren activation has lost a degree of credibility"]
 
@@ -392,7 +392,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A3-S4 · narration
 **Picture:** a NIST ground photograph of a demolished apartment complex (figure to pick at sourcing; credit line checked). Twelve dots in three apartment outlines. Chip "12 IN APARTMENTS". Then a drawn staircase, neighbors under it. Source line "NIST Sec. 4.6.2.2 · Sec. 1.2".
-> Twelve more people were lost in three apartment complexes. The buildings were mostly wood frame, there wasn't any protected space, and every one of those twelve was above ground. At the Somerset complex, one woman got out of her apartment and rode out the tornado under the building's staircase with her neighbors. Who else came through in the worst of it?
+> Twelve more people were lost in three apartment complexes. The buildings were mostly wood frame, there wasn't any protected space, and every one of those twelve was above ground. At the Somerset complex, one woman got out of her apartment and rode out the tornado under the building's staircase with her neighbors. So where were the people who lived through the worst of it?
 
 **Rows:** [H19: 12 in three complexes, all above ground] · [H20: the Somerset survivor]
 
@@ -614,7 +614,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A5-S6 · narration
 **Picture:** the comment card "I was in the greenbrier nursing home when it happened." (193 likes). A NIST ground photograph of the Greenbriar site (credit line checked). Our drawing of a one-story building, the inner hallway lit. Chip "19 OF 95 LOST". Source line "NIST Sec. 1.2 · Sec. 4.4.4 · Sec. 4.6.2.2". On "buried in rubble" a source chip "media reports · CDC interviews · where the 19 were: not known (NIST)".
-> The part of the report I keep coming back to is the Greenbriar nursing home. The center of the tornado went right over it. Ninety-five people were inside, and nineteen were lost. The plan was to move residents into the inner hallway and close their room doors against flying glass. People in that hallway were buried in rubble.
+> The part of the report I keep coming back to is the Greenbriar nursing home. One of you wrote that you were in there when it happened. The center of the tornado went right over it. Ninety-five people were inside, and nineteen were lost. The plan was to move residents into the inner hallway and close their room doors against flying glass. From what people told reporters and health investigators afterward, folks in that hallway were buried in rubble. Nobody can say for sure where in the building the nineteen were.
 
 **Rows:** [C17: 19 of 95; "one-story building", walls not described, per the Greenbriar CONFLICT] · [C19] · [C20] · [C21]
 
