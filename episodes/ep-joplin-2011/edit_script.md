@@ -401,8 +401,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 *([A3-Q1 open] and paid.)*
 
 ### A3-S6 · narration
-**Picture:** a NIST ground photograph of a wood-frame house with its roof and walls separated (figure to pick at sourcing; credit line checked; no video sourced). Then our exploded house diagram: roof-to-wall and wall-to-floor joints highlighted. Chip "THE JOINTS GAVE". Source line "NIST Finding 14".
-> Look at how these houses came apart. Mostly, it wasn't the boards that gave. It was the joints, where the roof meets the walls and the walls meet the floor.
+**Picture:** a NIST ground photograph of a wood-frame house with its roof and walls separated (figure to pick at sourcing; credit line checked; no video sourced). Then our exploded house diagram: roof-to-wall and wall-to-floor joints highlighted. Chip "THE JOINTS GAVE". Source line "NIST Finding 14". CLIP NEEDED: moving footage of a wood-frame house in the path with its roof and walls pulled apart (public domain FEMA or NOAA first; research/ names no video for this beat).
+> So why didn't more of these houses hold? Look at how they came apart, and you'll see it. Mostly, they gave at the joints, where the roof meets the walls and the walls meet the floor.
 
 **Rows:** [H30: failures predominantly at the connections]
 
