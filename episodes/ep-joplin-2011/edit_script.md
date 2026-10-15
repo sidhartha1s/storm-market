@@ -222,11 +222,11 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S7 · narration
 **Picture:** [RS] a second strip slides in under the siren strip, separate from it and in a different color: eighteen warning marks from 2005 to 2011, four of them ticked "verified". Chip "14 OF 18 · NO TORNADO". Then the last five years zoom in: twelve marks, one ticked. Chip "11 OF 12". Source line "NIST Finding 30 · national 2007 to 2011 average 74.7% (NIST)". The two strips never merge.
-> There's a second count, and it isn't the sirens. It's the tornado warnings from the NWS. From 2005 to 2011, Joplin got eighteen tornado warnings, and fourteen of them never came with a tornado. That's about the national average. In the last five years, it was eleven out of twelve.
+> What was crying wolf was the tornado warnings from the NWS. From 2005 to 2011, Joplin got eighteen of them, and fourteen never came with a tornado. That's about the national average. In the last five years, it was eleven out of twelve. Did people keep the warnings and the sirens apart?
 
 **Rows:** [S10, S12: 14 of 18, 2005 to 2011; national 74.7% on screen with NIST as its source, per the S10 CONFLICT] · [S11, S13: 11 of 12, 2007 to 2011] · [S14: a warning false alarm is an unverified warning]
 
-*([A1-Q2 paid]: the tornado warnings did have a false alarm problem.)*
+*([A1-Q2 paid]: the tornado warnings did have a false alarm problem. [A1-Q2b open]: did people keep the two apart? Paid in A1-S8.)*
 
 ### A1-S8 · narration
 **Picture:** the two strips side by side; a name card "Joplin-Jasper County emergency manager" over the gap between them. Chip "TWO DIFFERENT COUNTS". Source lines "NIST Sec. 4.3.4" and "NIST Finding 44 · Sec. 4.7.3".
