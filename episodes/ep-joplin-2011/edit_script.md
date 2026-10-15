@@ -720,7 +720,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### Z1-S1 · narration
 **Picture:** the calendar strip one last time: grey Monday ticks, four red marks; the warnings strip below it, separate. Chips "ONCE A YEAR SINCE 2007", then "THE FALSE ALARMS: WARNINGS". No comment card.
-> So did the tornado sirens lie? No. Outside that Monday test, Joplin's sirens went off about once a year since 2007, if that. The tornado warnings were a different count, and that's where the false alarms were.
+> So, did Joplin's tornado sirens lie? The record says they didn't. Outside the weekly test, they went off for a real storm about once a year since 2007. The tornado warnings were a different count, and that's where the false alarms were.
 
 **Rows:** [S2, S5] · [S10, S28]
 
