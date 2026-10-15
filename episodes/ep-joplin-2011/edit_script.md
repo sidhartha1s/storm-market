@@ -484,11 +484,11 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S4 · narration
 **Picture:** the floor plan: the fallen wall drawn resting on a row of cabinets, the D-shaped pocket lit. Chip "A D-SHAPED POCKET". Then three markers near the middle of the store, not in the refuge area, chip "3 LOST", source chip "location uncertain · likely near the center · NIST Sec. 1.2".
-> The wall came to rest on a row of cabinets, and it left a pocket of space shaped like a D. Three people were lost in that Walmart. Exactly where they were isn't certain, but they were most likely near the middle of the store.
+> The wall came to rest on a row of cabinets, and it left a pocket of space shaped like a D. Three people were lost in that Walmart. Exactly where they were isn't certain, but they were most likely near the middle of the store. And what about the Home Depot?
 
 **Rows:** [B10: D-shaped pocket of safety] · [B7: three lost, location uncertain; NIST Sec. 1.2, likely near the center, factcheck-A4-Z1 row A4-S4] · [B6: some protection for the 50 to 60]
 
-*([A4-Q1 paid].)*
+*([A4-Q1 paid]. [A4-Q2 open]: the Home Depot. Paid in A4-S5.)*
 
 ### A4-S5 · narration
 **Picture:** the comment card "what about that Home Depot? Think that'd be a bad spot?" (1,500 likes), then a NIST ground photograph of the Home Depot, panels down (credit line checked). Label "63 of 73 wall panels collapsed" (on screen, not spoken). Our floor plan: the training room at the back lit, the panels there falling outward; the front wall and the lumber entrance marked. Chips "35 IN THE TRAINING ROOM", then "8 LOST". Source line "8 per death certificates · 7 inside per survivors · lumber entrance and front wall per store management · NIST Sec. 4.6.2.1 · Sec. 1.2". CLIP NEEDED: moving footage of the Home Depot site with its wall panels down (public domain FEMA first; research/ names no clip for this beat).
