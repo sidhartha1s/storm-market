@@ -194,7 +194,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S3 · narration
 **Picture:** the RODALCO2007 card, its first and only appearance: "no one is paying any attention to the sirens going off" · RODALCO2007 · 3,000 likes · under "JOPLIN, MO, Tornado, 22 May 2011" (likes on the card, never spoken; no frame of that video). Beside it, the NWS assessment's page with "desensitized or complacent" underlined. Chip "NUMB TO SIRENS". Source line "NWS Assessment, Preface and Finding 2c".
-> You've probably read comments like this one under the old Joplin videos. A survey after the storm found much the same thing. Most of the people in it had gone numb to the tornado sirens, so for many of them the first siren just wasn't as believable anymore. But how often did those sirens actually go off?
+> You've probably read comments like this one under the old Joplin videos. A survey after the storm found much the same thing. Most of the people in it had gone numb to the tornado sirens. For many of them, the first siren just wasn't as believable anymore. But how often did those sirens actually go off?
 
 **Rows:** [angle.md: the comment, verbatim] · [S16: "desensitized or complacent"] · [S19: "initial siren activation has lost a degree of credibility"]
 
@@ -208,21 +208,21 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S5 · Paul on camera, one clip
 **Picture:** Paul on camera, full frame. No chip.
-> Stick with me, because what I'm about to explain is a big part of why Joplin heard rare tornado sirens as noise.
+> Stick with me, because what I'm about to explain is a big part of why Joplin tuned out sirens that rarely went off.
 
 **Rows:** (hook callback HC1, no row; "a big part of", per factcheck-A1-A3 row A1-S6. Moved ahead of the Finding 31 line per the acts grade, top 5 #1, so the question is answered straight after it is asked; the segment ids S5 and S6 swapped with it.)
 
 ### A1-S6 · narration
 **Picture:** the NIST page, Finding 31, the sentence underlined: "Despite public perception, no evidence was found of high false-alarm rates for Joplin's outdoor siren system." Chip "NO FALSE-ALARM PROBLEM". Source line "NIST NCSTAR 3 · Finding 31".
-> I checked that against the NIST report. Despite what people believed, it found no evidence that Joplin's tornado sirens had a false alarm problem. Then if the sirens weren't crying wolf, what was?
+> I checked that against the record. Despite what people believed, the investigators found no evidence that Joplin's tornado sirens had a false alarm problem. Then where did all the false alarms people remember come from?
 
 **Rows:** [S1: Finding 31] · [S15: siren false alarm defined as a sounding with no severe weather in Joplin]
 
-*([A1-Q1 paid]. [A1-Q2 open]: if not the sirens, what was crying wolf? Paid in A1-S7.)*
+*([A1-Q1 paid]. [A1-Q2 open]: where did the false alarms people remember come from? Paid in A1-S7.)*
 
 ### A1-S7 · narration
 **Picture:** [RS] a second strip slides in under the siren strip, separate from it and in a different color: eighteen warning marks from 2005 to 2011, four of them ticked "verified". Chip "14 OF 18 · NO TORNADO". Then the last five years zoom in: twelve marks, one ticked. Chip "11 OF 12". Source line "NIST Finding 30 · national 2007 to 2011 average 74.7% (NIST)". The two strips never merge.
-> What was crying wolf was the tornado warnings from the NWS. From 2005 to 2011, Joplin got eighteen of them, and fourteen never came with a tornado. That's about the national average. In the last five years, it was eleven out of twelve. Did people keep the warnings and the sirens apart?
+> They came from the tornado warnings the NWS put out. From 2005 to 2011, Joplin got eighteen of them, and fourteen never came with a tornado. That's about the national average. In the five years before the storm, it was eleven out of twelve. Did people keep the warnings and the sirens apart?
 
 **Rows:** [S10, S12: 14 of 18, 2005 to 2011; national 74.7% on screen with NIST as its source, per the S10 CONFLICT] · [S11, S13: 11 of 12, 2007 to 2011] · [S14: a warning false alarm is an unverified warning]
 
@@ -230,13 +230,13 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S8 · narration
 **Picture:** the two strips side by side; a name card "Joplin-Jasper County emergency manager" over the gap between them. Chip "TWO DIFFERENT COUNTS". Source lines "NIST Sec. 4.3.4" and "NIST Finding 44 · Sec. 4.7.3".
-> Joplin's emergency manager didn't sound the sirens for every one of those warnings, so a warning and a siren weren't the same event. But people thought both were crying wolf anyway, and that kind of distrust and confusion is one of the reasons people were slow to act that evening.
+> Joplin's emergency manager didn't sound the sirens for every one of those warnings, so a warning and a siren weren't the same event. But people thought both were crying wolf anyway. And the investigators count that kind of distrust and confusion as one reason people were slow to act that evening.
 
 **Rows:** [S8] · [S28: citizens perceived high false-alarm rates for both] · [S39, S40: distrust of or confusion about the emergency communications system, in the second factor]
 
 ### A1-S9 · narration
 **Picture:** a quote card: "the announcer and the weatherman that came on the TV seemed to say the track was, you know, mainly north of town" · "a Joplin native · NIST Interview 58". Beside it the comment card "The sad part is nobody knew what really was coming that day." (824 likes). Then the NIST sentence as on-screen text: "the media continued to report on storms said to be passing to the north and missing Joplin". Chip "TRACK: NORTH OF TOWN". Then the real clip, a friend saying "look at this": the live TV broadcast re-upload, YouTube FagzNHuI5JI (research/comment-beats.json; comments-for-writer.md "live TV broadcast re-upload"), a few seconds where the coverage talks about storms to the north, cut on an audio event. Transcribe first; station name, provenance row and Content ID risk checked at sourcing. If the transcript has no such moment: CLIP NEEDED: local TV coverage that afternoon saying the storms were north of Joplin.
-> Then there's what people were seeing on TV. One Joplin native told NIST the announcer and the weatherman seemed to be saying the storm was tracking north of town. Why were people in Joplin so ready to believe that?
+> Then there's what people were seeing on TV. One Joplin native said the announcer and the weatherman seemed to be saying the storm was tracking north of town. Why were people in Joplin so ready to believe that?
 
 **Rows:** [E12: media reported storms passing north] · [NIST Interview 58, factcheck-A1-A3 row A1-S9: TV only, "a Joplin native"]
 
@@ -244,7 +244,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S10 · narration
 **Picture:** our own map, an eighty-mile ring around Joplin. On "a hundred eighty-two" the ring fills with small dots; inside the city outline one dot, "May 5, 1971". Chips "1 IN THE CITY", then "182 WITHIN 80 MILES". Source line "NIST Finding 33". The NWS page with "protective bubble" underlined.
-> Because people there believed storms always blew over and missed Joplin, as if the town had a protective bubble around it. And you can see where that came from. Since 1950, the city itself had been hit by one tornado rated EF2 or stronger. Within eighty miles of Joplin, there'd been a hundred eighty-two.
+> A lot of people there believed storms always blew over and missed Joplin, as if the town had a protective bubble around it. And you can see where that came from. Since 1950, the city itself had been hit by one tornado rated EF2 or stronger. Within eighty miles of Joplin, there'd been a hundred eighty-two of that strength.
 
 **Rows:** [S23: "protective bubble"] · [S36: one EF-2 or greater in the city since 1950, 5 May 1971] · [S37: 182 within 80 miles] · [S38: NIST calls the immunity belief scientifically unfounded]
 
@@ -286,7 +286,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S3 · narration
 **Picture:** clock "5:11 PM". The siren ring pulses over the whole city; the civil-defense siren SFX, three seconds, under Paul. An arrow points west into Kansas: "funnel cloud reports · SE Kansas". Chip "FIRST SIREN · 3 MIN". Then the polygon in the north lights again. Source line "NWS Assessment, Sec. 3".
-> At five-eleven, Joplin's tornado sirens went off for three minutes, mostly because of funnel cloud reports over in southeast Kansas. Some people heard the sirens, then heard the warning was for the area to the north, and figured the sirens were meant for up there, too. What did people do next?
+> At five-eleven, Joplin's tornado sirens went off for three minutes, mostly because of funnel cloud reports over in southeast Kansas. Some people heard the warning was for the area to the north, and figured the sirens were meant for up there, too. What did people do next?
 
 **Rows:** [E6: 3 minutes] · [E8: funnel reports in SE Kansas] · [E8b: assumed it was for the area to the north]
 
@@ -337,8 +337,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Rows:** [E14] · [E15, E17: "almost exactly when the tornado entered the City", per factcheck-A1-A3 row A2-S9]
 
 ### A2-S10 · narration
-**Picture:** first the real clip, before Paul's voice comes in: the live TV broadcast re-upload, YouTube FagzNHuI5JI (research/comment-beats.json), 4 to 6 s of the moment the studio takes shelter while the sirens blare (the 3,800-like comment in comments-for-writer.md describes it), its own audio up, cut on an audio event. Transcribe first; a different cut from A1-S9's; station name, provenance row and Content ID risk checked at sourcing. Then the NWS page, Finding 2d (c), "non-routine second siren alert" underlined. Chip "SECOND SIREN". Then the NIST page, Finding 45, "hearing or seeing the tornado approaching" underlined. Source lines "NWS Assessment, Finding 2d" and "NIST Finding 45".
-> Joplin's rule was one sounding per alert. So a second one was out of the ordinary, and for a lot of people, that's what got them going. But the biggest push of all was seeing or hearing the tornado coming. And what did that second siren tell the people who heard it?
+**Picture:** first the real clip, before Paul's voice comes in: the live TV broadcast re-upload, YouTube FagzNHuI5JI (research/comment-beats.json), 4 to 6 s of the moment the studio takes shelter while the sirens blare (the 3,800-like comment in comments-for-writer.md describes it), its own audio up, cut on an audio event. Transcribe first; a different cut from A1-S9's; station name, provenance row and Content ID risk checked at sourcing. Then the NWS page, Finding 2d (c), "non-routine second siren alert" underlined. Chip "SECOND SIREN". Then the NIST page, Finding 45, "high-intensity cues, including hearing or seeing the tornado approaching or witnessing others' urgency" underlined. Source lines "NWS Assessment, Finding 2d" and "NIST Finding 45".
+> Joplin's rule was one sounding per alert. So a second one was out of the ordinary, and for a lot of people, that's what got them going. But what moved people most was something right in front of them, like hearing the tornado, finally seeing it, or watching others hurry. And what did that second siren tell the people who heard it?
 
 **Rows:** [E20: one sounding per alert] · [E19: the second siren raised awareness, prompted shelter] · [E37] · [E33: Finding 45, high-intensity cues]
 
@@ -383,7 +383,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 *([loop L4 closes].)*
 
 ### A3-S3 · narration
-**Picture:** [RS] dots light in house outlines across the residential area. Chip "59 LOST IN HOUSES". Running label (on screen, not spoken): "59 people · 51 homes · 54 lost in demolished homes · 50 in one-story homes". Source line "NIST Sec. 4.6.2.2 · Table 4-3".
+**Picture:** [RS] dots light in house outlines across the residential area. Chip "59 LOST IN HOUSES". Running label (on screen, not spoken): "59 people · 51 homes · 54 lost in demolished homes · 50 in one-story homes". Source line "NIST Sec. 4.6.2.2 · Table 4-3". CLIP NEEDED: aerial or street-level footage of the flattened one-story houses in the residential path (public domain FEMA or NOAA first; research/ names no clip for this beat).
 > Fifty-nine people were lost in single-family houses, and nearly all of them were in a house the tornado flattened. Some homes in the path did have a basement, though. Did any of the people the tornado took make it down there?
 
 **Rows:** [H9, H10, H11: 59 people, 51 homes; 54 of the 59 in demolished homes; 50 of the 59 in one-story homes; Table 4-3 base per the H25/H26 CONFLICT] · [H7: 3 of 59 had access to an underground level]
@@ -391,7 +391,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 *([cta-hinge planted early]: the question is answered after the ad.)*
 
 ### A3-S4 · narration
-**Picture:** a NIST ground photograph of a demolished apartment complex (figure to pick at sourcing; credit line checked). Twelve dots in three apartment outlines. Chip "12 IN APARTMENTS". Then a drawn staircase, neighbors under it. Source line "NIST Sec. 4.6.2.2 · Sec. 1.2".
+**Picture:** a NIST ground photograph of a demolished apartment complex (figure to pick at sourcing; credit line checked). Twelve dots in three apartment outlines. Chip "12 IN APARTMENTS". Then a drawn staircase, neighbors under it. Source line "NIST Sec. 4.6.2.2 · Sec. 1.2". CLIP NEEDED: footage of the wrecked wood-frame apartment complexes, Somerset first (public domain FEMA or NOAA first; research/ names no clip for this beat).
 > Twelve more people were lost in three apartment complexes. The buildings were mostly wood frame, there wasn't any protected space, and every one of those twelve was above ground. At the Somerset complex, one woman got out of her apartment and rode out the tornado under the building's staircase with her neighbors. So where were the people who lived through the worst of it?
 
 **Rows:** [H19: 12 in three complexes, all above ground] · [H20: the Somerset survivor]
@@ -430,14 +430,14 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A3-S9 · narration
 **Picture:** a drawn basement stair, lit, empty. Chip "2 OF 3 NOT DOWN THERE". Source chip "at least 2 of 3 · the third: circumstances unknown · NIST Sec. 4.6.2.2".
-> At least two of the three weren't in the basement when the tornado hit. Where the third person was, NIST couldn't say. And what about the people who did get down there?
+> At least two of the three weren't in the basement when the tornado hit. Where the third person was, the record doesn't say. And what about the people who did get down there?
 
 **Rows:** [H8] · [H22]
 
 *([loop cta-hinge closes]. [A3-Q3 open]: what about those who got down? Paid in A3-S10.)*
 
 ### A3-S10 · narration
-**Picture:** the master map: a pocket of early-1980s ranch houses lit, no dots in it. Chip "BASEMENTS HELD". Source lines "NIST Finding 46" and "NIST Sec. 1.2".
+**Picture:** the master map: a pocket of early-1980s ranch houses lit, no dots in it. Chip "BASEMENTS HELD". Source lines "NIST Finding 46" and "NIST Sec. 1.2". CLIP NEEDED: a Joplin survivor who rode it out in a basement, in their own voice, or footage of the damaged ranch-house neighborhood (FEMA survivor interview first, public domain; research/ names no clip for this beat).
 > In the flattened houses where people got down to the basement, nobody was lost. And one whole neighborhood of ranch houses with basements, built mostly in the early eighties, got hit hard, and nobody there was lost either.
 
 **Rows:** [H5: no fatalities in demolished detached homes where people took refuge in basements] · [H15: the ranch-home neighborhood]
@@ -459,7 +459,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Chapter card (copied from `structure.md`):**
 - **Purpose:** the refuge areas that existed, and why they did not hold; plus the one cellar that did.
 - **Question:** did the refuge areas protect the people inside them?
-- **Reveal:** NIST found no evidence the designated refuge areas helped. Walmart: fifty to sixty in the refuge area, the wall came in onto it, a D-shaped pocket, three lost, location uncertain. Home Depot: thirty five in the training room survived as the panels fell outward; eight lost there, and survivors' accounts put seven of them inside, walking along the front wall. Pizza Hut cooler, five lost; some discussed whether the second siren meant all clear. Dillon's cooler: thirty five, all survived. Stained Glass Theater: the only basement among the eight buildings, one person wide at the stairs. Two churches, seven lost. Then Macadoodles: twelve people twenty feet down in a concrete wine cellar, all walked out.
+- **Reveal:** NIST found no evidence the designated refuge areas helped. Walmart: fifty to sixty in the refuge area, the wall came in onto it, a D-shaped pocket, three lost, location uncertain. Home Depot: thirty five in the training room survived as the panels fell outward; eight lost there, and survivors' accounts put seven of them inside, walking along the front wall. Pizza Hut cooler, five lost; some discussed whether the second siren meant all clear. Dillon's cooler: thirty five, all survived. Stained Glass Theater: the only basement among the eight buildings, one person wide at the stairs. Two churches, seven lost. Then Macadoodles: twelve people twenty feet down in a concrete wine cellar, all came through.
 - **Visual event:** [RS] NIST ground photographs of the Walmart and Home Depot; the D-shaped pocket drawn over the Walmart floor plan; the Macadoodles cellar as a cross-section, twelve figures below the line. Counter visit 2: "INSIDE A BUILDING 102 of 135" over "BELOW GROUND, NONE FOUND", about 5 s.
 - **Exit hook:** "One building in the path was full of patients, some of whom needed help to move, and that evening its plan started when a nurse heard a tornado siren."
 - **Comments answered:** "what about that Home Depot? Think that'd be a bad spot?" (1,500 likes) with "Home Depot would NOT have been a good spot ... eight people died there." (1,100 likes).
@@ -468,21 +468,21 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S1 · narration
 **Picture:** the master map, the commercial strip at 20th Street and Range Line Road, refuge-area markers in the big stores; Paul's voice over it. Then CLIP NEEDED: moving footage of the 20th Street and Range Line Road stores after the tornado (public domain FEMA video first; a news pull only as a short insert, transcribed first; research/ names no clip for this beat).
-> Stick with me, because what I'm about to explain is a big part of why so many people who got inside still had nothing below them.
+> Stick with me, because what I'm about to explain is what most of the big stores had instead of a basement, and how it worked out.
 
-**Rows:** (hook callback HC2; wording per the acts grade, draft 9, top 5 #4, so it names the hook's claim and leaves L5 open (fact team to spot-check); "a big part of why" kept per factfix-verify residual flag) · [B1, B2, B3: few basements, refuge areas picked out, no evidence they changed outcomes]
+**Rows:** (hook callback HC2; leaves L5 open; wording per factcheck-pass3-A4 row 1, since no row gives a cause for the missing basements, "a big part of why" dropped) · [B1, B2, B3: few basements, refuge areas picked out, no evidence they changed outcomes]
 
 ### A4-S3 · narration
 **Picture:** our floor plan of the Walmart on Range Line Road, the layaway area at the back lit, then a NIST ground photograph of the Walmart (credit line checked; never an aerial marked "Used with permission"; no news pull). Chips "200 INSIDE", then "50 TO 60 AT THE BACK". Source line "NIST Sec. 1.2 · Sec. 4.6.2.1".
-> I read NIST's account of the big stores, starting with the Walmart on Range Line Road. There were about two hundred people inside, and staff sent fifty or sixty of them to the layaway area at the back. Then the tornado pushed the outside wall in, right onto that area. How did anyone back there make it out?
+> I went through the report on the big stores, starting with the Walmart on Range Line Road. There were about two hundred people inside, and staff sent fifty or sixty of them to the layaway area at the back. Then the tornado pushed the outside wall in, right onto that area. How did anyone back there make it out?
 
 **Rows:** [B9: about 200 inside] · [B5: Site-to-Store or layaway area] · [B6: 50 to 60 there; the wall collapsed inward onto the refuge area]
 
 *([A4-Q1 open]. Paid in A4-S4.)*
 
 ### A4-S4 · narration
-**Picture:** the floor plan: the fallen wall drawn resting on a row of cabinets, the D-shaped pocket lit. Chip "A D-SHAPED POCKET". Then three markers near the middle of the store, not in the refuge area, chip "3 LOST", source chip "location uncertain · likely near the center · NIST Sec. 1.2".
-> The wall came to rest on a row of cabinets, and it left a pocket of space shaped like a D. Three people were lost in that Walmart. Exactly where they were isn't certain, but they were most likely near the middle of the store. Would you have been any safer at the Home Depot?
+**Picture:** the floor plan: the fallen wall drawn resting on a set of cabinets, the D-shaped pocket lit. Chip "A D-SHAPED POCKET". Then three markers near the middle of the store, not in the refuge area, chip "3 LOST", source chip "location uncertain · likely near the center · NIST Sec. 1.2".
+> Look at where that wall ended up. It came to rest on a set of cabinets, and it left a pocket of space shaped like a D. Three people were lost in that Walmart. Exactly where they were isn't certain, but most likely near the middle of the store. Would you have been any safer at the Home Depot?
 
 **Rows:** [B10: D-shaped pocket of safety] · [B7: three lost, location uncertain; NIST Sec. 1.2, likely near the center, factcheck-A4-Z1 row A4-S4] · [B6: some protection for the 50 to 60]
 
@@ -490,21 +490,21 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S5 · narration
 **Picture:** the comment card "what about that Home Depot? Think that'd be a bad spot?" (1,500 likes), then a NIST ground photograph of the Home Depot, panels down (credit line checked). Label "63 of 73 wall panels collapsed" (on screen, not spoken). Our floor plan: the training room at the back lit, the panels there falling outward; the front wall and the lumber entrance marked. Chips "35 IN THE TRAINING ROOM", then "8 LOST". Source line "8 per death certificates · 7 inside per survivors · lumber entrance and front wall per store management · NIST Sec. 4.6.2.1 · Sec. 1.2". CLIP NEEDED: moving footage of the Home Depot site with its wall panels down (public domain FEMA first; research/ names no clip for this beat).
-> It depended on where you were standing. About thirty-five people sheltered in the training room at the back, and if you were in there, the concrete walls fell outward, away from you. Eight people were lost at that Home Depot. Most of them had just come in through the lumber entrance, and they were walking along the front wall when it came down. What was right in the middle, where the tornado's center passed between those two stores?
+> People ask about that store a lot. It depended on where you were standing. About thirty-five people sheltered in the training room at the back, and if you were in there, the concrete walls fell outward, away from you. Eight people were lost there. The store's managers said they'd just come in through the lumber entrance and were walking along the front wall when it came down. The tornado's center passed between those two stores, and very near a Pizza Hut. What did the people inside it do when the siren went again?
 
-**Rows:** [B11: approximately 35, panels collapsed outward] · [B14: 8 by death certificates, 7 inside by survivor interviews, per the CONFLICT] · [B12: store management's account] · [B13] · [B17: the center line between the two stores]
+**Rows:** [B11: approximately 35, panels collapsed outward] · [B14: 8 by death certificates, 7 inside by survivor interviews, per the CONFLICT] · [B12: store management's account, spoken as "the store's managers said"] · [B13] · [B17: the center line between the two stores, very near the Pizza Hut]
 
-*([A4-Q2 paid]: the Home Depot. [A4-Q2b open]: the spot between the stores. Paid in A4-S6.)*
+*([A4-Q2 paid]: the Home Depot. [A4-Q2b open]: what the Pizza Hut people did on the second siren. Paid in A4-S6, second sentence.)*
 
 ### A4-S6 · narration
 **Picture:** the master map: the tornado's center line drawn just north of 20th Street, between the two stores, passing near the Pizza Hut. Then a drawn cooler door. Chip "5 LOST". Source line "NIST Sec. 1.2 · Sec. 4.4.8".
-> The Pizza Hut was. When that second siren went off at five thirty-eight, some people in there talked about whether it meant all clear. Staff and customers got into the cooler. The building was demolished, and five people were lost. Was a cooler the wrong place to be, then?
+> That second siren went off at five thirty-eight. Some people in there talked about whether it meant all clear. Staff and customers got into the cooler. The building was demolished, and five people were lost. Was a cooler the wrong place to be, then?
 
 **Rows:** [B17] · [B18: five lost, two employees, three customers] · [B19: some discussed whether it meant all clear]
 
 ### A4-S7 · narration
 **Picture:** the map moves to 20th Street and Connecticut; a NIST ground photograph of the Dillon's grocery (credit line checked). A drawn produce cooler, thirty five figures. Chip "35 IN THE COOLER · ALL SURVIVED". Source line "NIST Sec. 1.2".
-> Not at the Dillon's grocery store, it wasn't. Thirty-five people there got into the produce cooler, and that building was demolished too. If you were in that cooler, you walked out with minor cuts and bruises at most. All thirty-five did. But what if your building had a basement?
+> At the Dillon's grocery store, thirty-five people got into the produce cooler, and that building was demolished too. All thirty-five survived, and if you were one of them, you came through with minor cuts and bruises at most. But what if your building had a basement?
 
 **Rows:** [B20]
 
@@ -512,15 +512,15 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S9 · narration
 **Picture:** a NIST ground photograph of the Stained Glass Theater (credit line checked). The full quote card, no ellipsis: "We have a strong building here and anyone who wants to stay is welcome to do so. We can all go down in the basement." (NIST Interview 121), then "we want you to get to the basement right now". Chip "56 INSIDE". Source line "NIST Sec. 4.4.3".
-> The Stained Glass Theater had one, the place where that actor didn't put much stock in the siren. Fifty-six people were inside. Right around the first siren, the director told everyone it was a strong building. Anyone who wanted to stay could, and they could all go down to the basement. Twenty-five minutes later, the director told everyone still there to get to the basement right now. How many of them got down there?
+> The Stained Glass Theater had one, the place where that actor didn't put much stock in the siren. Fifty-six people were inside. Right around the first siren, the director told everyone this. "We have a strong building here and anyone who wants to stay is welcome to do so. We can all go down in the basement." About twenty-five minutes later, the director told everyone still there to get to the basement right now. How many of them got down there?
 
 **Rows:** [B24: 56 inside] · [B26: the first announcement, around the first siren, full quote] · [B27: about 25 minutes later]
 
 *([A4-Q2c paid]. [A4-Q3 open]: how many got down? Paid in A4-S10.)*
 
 ### A4-S10 · narration
-**Picture:** a drawn stair, one person wide; figures on it, fifteen below the line. Three markers above it. Chips "STAIRS ONE PERSON WIDE", then "ABOUT 15 GOT DOWN". Source line "one interviewee · NIST footnote 153 · Sec. 4.6.2.1".
-> About fifteen of them did. The stairs down were only about one person wide. There's no evidence any of the three people lost ever made it to the basement, and the director was still at the top of the stairs when the building was hit.
+**Picture:** a drawn stair, one person wide; figures on it, fifteen below the line. Three markers above it. Chips "STAIRS ONE PERSON WIDE", then "56 INSIDE · ABOUT 15 GOT DOWN". Source line "one interviewee · NIST footnote 153 · Sec. 4.6.2.1".
+> The stairs down were only about one person wide. Someone who was there says about fifteen made it down. There's no evidence any of the three people lost were in the basement when the tornado hit. The director was still up at the top of the stairs at that moment.
 
 **Rows:** [B28] · [B29: about 15, one interviewee] · [B25, B31: no evidence any of those lost were in the basement] · [B30: the director at the top of the stairs]
 
@@ -535,8 +535,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 *([A4-Q3b open]: where were they? Paid in A4-S12.)*
 
 ### A4-S12 · narration
-**Picture:** our own text card, never the NIST page (its sentence carries a hard flag word): "In all of the demolished buildings, those lost or badly hurt were above ground · NIST Sec. 4.6.2.1". Chip "ALL ABOVE GROUND".
-> In every demolished building the investigators looked at, the people who were lost or badly hurt were above ground. Didn't anybody in that part of town get below ground?
+**Picture:** our own text card, never the NIST page (its sentence carries a hard flag word): "In all of the demolished buildings, those lost or badly hurt were above ground · NIST Sec. 4.6.2.1". Chip "ALL ABOVE GROUND · THE 8 BUSINESSES AND CHURCHES STUDIED".
+> I went back through every demolished business and church in that report. The people who were lost or badly hurt were all above ground. Besides that theater, did a whole group anywhere in that part of town get below ground?
 
 **Rows:** [B32] · [B4: no building type provided life-safety protection]
 
@@ -544,7 +544,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S13 · narration
 **Picture:** [RS] [VE] a NIST ground photograph of the demolished Macadoodles (credit line checked), then our cross-section: the store above, a concrete cellar twenty feet below, twelve figures below the line. Chip "12 BELOW GROUND · ALL OK". Source line "NIST Sec. 4.4.3".
-> One group did. At Macadoodles, the manager led six customers, one of them a baby, and six staff down into a concrete wine cellar about twenty feet deep. The building above them was demolished, and nobody down there got hurt.
+> Macadoodles had a concrete wine cellar about twenty feet deep. The manager led six customers, one of them a baby, and six staff down into it. The building above them was demolished, and nobody down there got hurt.
 
 **Rows:** [B34: six customers including a baby, six staff] · [B49: the manager led them down] · [B35: concrete, about 20 ft deep] · [B33: demolished, no injuries]
 
@@ -552,7 +552,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S14 · narration
 **Picture:** counter visit 2: the glass card top right, "INSIDE A BUILDING 102 of 135" over "BELOW GROUND, NONE FOUND", about 5 s, source line "NIST Table 4-3 · impact-related · Finding 46". Then St. John's outline lights on the master map. The bed drops out on the last word.
-> One building in the path was full of patients, some of whom needed help to move, and that evening its plan started when a nurse heard a tornado siren.
+> One building in the path was full of patients, and some of them needed help to move. Their plan started when a nurse confirmed the tornado sirens.
 
 **Rows:** [B45, H26, H19: 71 + 31 = 102, Table 4-3] · [C10: Condition Gray started when the head nurse verified the sirens] · [C8]
 
@@ -614,7 +614,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A5-S6 · narration
 **Picture:** the comment card "I was in the greenbrier nursing home when it happened." (193 likes). A NIST ground photograph of the Greenbriar site (credit line checked). Our drawing of a one-story building, the inner hallway lit. Chip "19 OF 95 LOST". Source line "NIST Sec. 1.2 · Sec. 4.4.4 · Sec. 4.6.2.2". On "buried in rubble" a source chip "media reports · CDC interviews · where the 19 were: not known (NIST)".
-> The part of the report I keep coming back to is the Greenbriar nursing home. One of you wrote that you were in there when it happened. The center of the tornado went right over it. Ninety-five people were inside, and nineteen were lost. The plan was to move residents into the inner hallway and close their room doors against flying glass. From what people told reporters and health investigators afterward, folks in that hallway were buried in rubble. Nobody can say for sure where in the building the nineteen were.
+> The part of the report I keep coming back to is the Greenbriar nursing home. The center of the tornado went right over it. One of you wrote that you were in there when it happened. Ninety-five people were inside, and nineteen were lost. The plan was to move residents into the inner hallway and close their room doors against flying glass. From what people told reporters and health investigators, folks in that hallway were buried in rubble. Nobody can say for sure where in the building the nineteen were.
 
 **Rows:** [C17: 19 of 95; "one-story building", walls not described, per the Greenbriar CONFLICT] · [C19] · [C20] · [C21]
 
@@ -642,7 +642,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A5-S10 · narration
 **Picture:** the NIST page, Finding 47, the three factors underlined one by one; then the NWS page, "elderly, infirm, or disabled". Chips "LESS WORD", "LESS HELP", "HARDER TO RECOVER". Source lines "NIST Finding 47" and "NWS Assessment, Finding 2d".
-> NIST doesn't say for sure, and I'd rather tell you that than guess. The warning may not have reached older people as fast. They might've had fewer people around to help. Or they couldn't take the hit, or recover from it. And older and disabled people need more time, or a hand, to get to shelter.
+> NIST doesn't say for sure, and I'd rather tell you that than guess. The warning may not have reached older people as fast. They might've had fewer people around to help. Or they might not have been able to take the hit, or recover from it. And older and disabled people often need more time, or a hand, to get to shelter.
 
 **Rows:** [C31] · [C37]
 
@@ -679,14 +679,14 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 *([loop L7 closes]; [loop L10 open]: does any code ask for them now? Paid in A6-S3 and A6-S4.)*
 
 ### A6-S2 · narration
-**Picture:** the comment card "By the way, Joplin is thriving as of now. They're rebuilding prettier buildings, preparing more public tornado shelters..." (3,600 likes). Our own drawing of a school safe room, made from the FEMA case study's description (no FEMA photograph exists on that page). Chips "14 SAFE ROOMS", then "250 MPH". Source line "FEMA case study, updated Jul 30, 2024". CLIP NEEDED: moving footage inside a Joplin school safe room (public domain FEMA first; research/ names only the FEMA case study page, which has no video).
-> One comment says Joplin is building more public tornado shelters, and it's partly right. Since 2011, the Joplin School District has built fourteen safe rooms, made to take winds up to two hundred fifty miles an hour. And if you live nearby with nowhere else to go, you can use them.
+**Picture:** the comment card "By the way, Joplin is thriving as of now. They're rebuilding prettier buildings, preparing more public tornado shelters..." (3,600 likes). Our own drawing of a school safe room, made from the FEMA case study's description (no FEMA photograph exists on that page). Chips "14 SAFE ROOMS", then "250 MPH", then "NEIGHBORS WITH NOWHERE ELSE MAY USE THEM · FEMA" (the scope and the source live on the chip, never spoken). Source line "FEMA case study, updated Jul 30, 2024". CLIP NEEDED: moving footage inside a Joplin school safe room (public domain FEMA first; research/ names only the FEMA case study page, which has no video).
+> One comment says Joplin is building more public tornado shelters, and it's right about the shelters. Since 2011, the Joplin School District has built fourteen safe rooms, made to take winds up to two hundred fifty miles an hour. They're school rooms, but if you live nearby and have nowhere else to go, you may use them.
 
 **Rows:** [FEMA case study "Schools in Joplin, Missouri stand up to tornadoes by building safe rooms" (updated 30 Jul 2024); FEMA release 20 Feb 2020; factcheck-acts row A6-S4 and factcheck-A4-Z1 row A6-S2]
 
 ### A6-S3 · narration
-**Picture:** our map of the United States: the parts of twenty-two states that hold the highest tornado zone fill in. Our own redrawn safe-room diagram (no P-361 figure cleared). Chips "ASCE 7-22", then "22 STATES · NEW SCHOOLS", then "MINIMUM SIZE · MAX WALKING DISTANCE" (moved off the spoken line). Source lines "ASCE 7-22 · NIST Impacts page" and "IBC Section 423 · FEMA Recovery Advisory 1, Feb 2023".
-> Part of the answer is yes. The engineering standard most building codes rely on now plans for tornado winds. And the model building code requires a storm shelter in new schools and emergency buildings in the worst tornado zone, which covers parts of twenty-two states. What about a new store, or a new apartment building?
+**Picture:** our map of the United States: the parts of twenty-two states that hold the highest tornado zone fill in. Our own redrawn safe-room diagram (no P-361 figure cleared). Chips "ASCE 7-22 · RISK CATEGORY III, IV · TORNADO-PRONE REGION", then "22 STATES · NEW SCHOOLS", then "MINIMUM SIZE · MAX WALKING DISTANCE" (moved off the spoken line). Source lines "ASCE 7-22 · NIST Impacts page" and "IBC Section 423 · FEMA Recovery Advisory 1, Feb 2023".
+> As for the codes, part of the answer is yes. The engineering standard most building codes rely on now plans for tornado winds, for higher-risk buildings where tornadoes hit most. And the model building code requires a storm shelter in new schools and emergency buildings in the worst tornado zone, which covers parts of twenty-two states. What about a new store or apartment building?
 
 **Rows:** [R12: ASCE 7-22] · [R13: parts of 22 states] · [R16: capacity and travel distance] · [FEMA Recovery Advisory 1, factcheck-acts row A6-S3]
 
@@ -694,7 +694,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A6-S4 · narration
 **Picture:** the comment card "I wonder why commercial buildings and residential homes like at 15:15 don't have mandatory shelters" (28 likes). The board: tile 7 half lit, "stores · apartments" left grey. Chip "STORES, APARTMENTS: NOTHING LISTED". Source line "FEMA Recovery Advisory 1 · NIST news, Jul 2024 · ICC 2024 IBC, 423.4".
-> In everything I read, nothing says they've got to have a storm shelter. And stores and homes are where most of the people inside were lost. What about the hospital?
+> In everything I read, nothing says they've got to have a storm shelter. And stores and homes are where most of the people inside were lost. And the hospital, what did they put in the windows of the new one?
 
 **Rows:** [FEMA, NIST, ICC summaries, factcheck-acts row A6-S3] · [T22: 59 percent residential, 41 percent non-residential of the 135; Table 4-3 rows]
 
@@ -702,13 +702,13 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A6-S5 · narration
 **Picture:** the comment card "Asked a nurse why the windows looked a little weird and she told me they were rated for 250mph winds" (482 likes). The NIST photograph of the old West Tower's fifth floor from A5, with a text card over it carrying Mercy's own words (no photograph of the new hospital): "a window system designed to withstand 250 mph winds · Mercy". Chip "DESIGNED FOR 250 MPH". Source line "mercy.net, Joplin tornado history".
-> Think back to those fifth-floor windows at St. John's. Mercy says the new hospital it opened in 2015 has a window system designed for two hundred fifty mile-an-hour winds. Did anything change with the tornado sirens?
+> Mercy, the health system that ran St. John's, says the new hospital it opened in 2015 has a window system designed for two hundred fifty mile-an-hour winds. Did anything change with the tornado sirens?
 
-**Rows:** [C15] · [mercy.net history page, factcheck-acts row A6-S5: a design claim, never "rated for", never "all windows"]
+**Rows:** [C15] · [mercy.net history page, factcheck-acts row A6-S5: a design claim, never "rated for", never "all windows"] · [Mercy ran St. John's: NIST NCSTAR 3 names it "Mercy St. John's Regional Medical Center"; not in factcheck-pass3, fact team to confirm]
 
 ### A6-S6 · narration
-**Picture:** our own drawn siren icon (no NOAA graphic cleared). Chips "NO NATIONAL STANDARD · 2011", then "STILL NONE AS OF 2018", source chip "NIST TN 2008"; the NWS siren FAQ on the source line with no date claim. Then the NWS page, Recommendation 2, underlined. Source line "NIST Finding 39 · NWS Assessment, Recommendation 2".
-> In 2011, there wasn't a national standard for how a town sounds its sirens, and there wasn't a national all-clear signal either. As of 2018, there still wasn't a standard. The NWS asked for something different: warnings in tiers, based on impact, and an out-of-the-ordinary warning saved for the violent tornadoes.
+**Picture:** our own drawn siren icon (no NOAA graphic cleared). Chips "NO NATIONAL STANDARD · 2011", then "STILL NONE AS OF 2018", source chip "NIST TN 2008"; the NWS siren FAQ on the source line with no date claim. Then the NWS page, Recommendation 2, underlined, chip "STRONG AND VIOLENT TORNADOES · NWS REC. 2". Source line "NIST Finding 39 · NWS Assessment, Recommendation 2".
+> In 2011, there wasn't a national standard for how a town sounds its sirens, and there wasn't a national all-clear signal either. The last federal report I could find, from 2018, still said there wasn't a siren standard. The NWS asked for something different: impact-based warnings, in tiers, and an out-of-the-ordinary warning for strong and violent tornadoes.
 
 **Rows:** [S34, R24: 2011] · [NIST TN 2008 (Aug 2018), factcheck-acts row A6-S6; NWS siren FAQ undated, per factcheck-A4-Z1 row A6-S6] · [R21, R22, R23]
 
@@ -733,8 +733,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Segments:**
 
 ### Z1-S1 · narration
-**Picture:** the calendar strip one last time: grey Monday ticks, four red marks; the warnings strip below it, separate. Chips "ONCE A YEAR SINCE 2007", then "THE FALSE ALARMS: WARNINGS". No comment card.
-> I checked the records, and Joplin's tornado sirens didn't lie. Outside the weekly test, they'd gone off for a real storm about once a year since 2007. The tornado warnings were a different count, and that's where the false alarms were. And the people indoors, what did they have below them?
+**Picture:** the calendar strip one last time: grey Monday ticks, four red marks; the warnings strip below it, separate. Chips "ONCE A YEAR SINCE 2007 · NIST FINDING 31", then "THE FALSE ALARMS: WARNINGS". No comment card.
+> I went through the findings, and Joplin's tornado sirens didn't lie. Outside the weekly test, they'd gone off for a real storm about once a year since 2007. The tornado warnings were a different count, and that's where the false alarms were. And the people indoors, what did they have below them?
 
 **Rows:** [S2, S5] · [S10, S28]
 
@@ -742,13 +742,13 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### Z1-S2 · narration
 **Picture:** [RS] the master map, all 135 dots, the empty below-ground line. Chips "135 INDOORS", "NONE FOUND BELOW GROUND", "8 IN 10: NO BASEMENT". Source lines "135 of 155 impact-related · NIST Finding 40", "no evidence any were underground · Finding 46", "82% of homes · no basement · Finding 20".
-> What most people in Joplin didn't have was anything below them. Eight in ten homes had no basement, and there wasn't a public shelter anywhere in the city or the county.
+> Most Joplin homes had no basement, and there wasn't a single public shelter anywhere in the city or the county.
 
 **Rows:** [H1: 82 percent lacked basements] · [H3, H4: no community shelter or safe room, city or county] · (T3 and H5 stay on screen only: the hook's numbers are not spoken a third time, per the acts grade Z1-S2)
 
 ### Z1-S3 · narration
 **Picture:** the recommendation board, tile 7 half lit. Chip "2027 BUILDING CODE". Source line "2027 International Building Code · ICC store page, Oct 2026".
-> The 2027 building code is coming out now. If you live where tornadoes hit, watch whether it asks for shelters in stores and apartment buildings.
+> The 2027 International Building Code comes out this fall. If you live where tornadoes hit, watch whether it asks for shelters in stores and apartment buildings.
 
 **Rows:** [ICC store page for the 2027 IBC, factcheck-acts row Z1-S3; factcheck-A4-Z1 row Z1-S3] [verify: re-check 2027 IBC shelter rules (Section 423, Group M and R) the week of render]
 
