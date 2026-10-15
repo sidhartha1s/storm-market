@@ -563,8 +563,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Segments:**
 
 ### A5-S1 · narration
-**Picture:** the FEMA still "St. John's Regional Medical Center is a total loss", 24 May 2011, credit "Jace Anderson/FEMA" (FEMA use guidelines checked before use; no news pull), then a NIST ground photograph of the towers (credit line checked). Chips "183 INSIDE", then "4 TIMES THE RATE". Source line "NIST Sec. 1.2".
-> This is St. John's Regional Medical Center. A hundred eighty-three patients and staff were inside that evening, at the hospital for about a hundred forty thousand people in the area. And one group in Joplin was lost at about four times the rate of people under sixty.
+**Picture:** the FEMA still "St. John's Regional Medical Center is a total loss", 24 May 2011, credit "Jace Anderson/FEMA" (FEMA use guidelines checked before use; no news pull), then a NIST ground photograph of the towers (credit line checked). Chips "183 INSIDE", then "HOSPITAL FOR 140,000", then "4 TIMES THE RATE". Source line "NIST Sec. 1.2".
+> This is St. John's Regional Medical Center. A hundred eighty-three patients and staff were inside that evening. And one group of people in Joplin was lost at about four times the rate of people under sixty.
 
 **Rows:** [C8: 183] · [C9: care for 140,000 area residents] · [C29: about 8 against 2 per thousand, so "about four times"; the comparison group is people under sixty]
 
