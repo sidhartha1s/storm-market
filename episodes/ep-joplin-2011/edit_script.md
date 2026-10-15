@@ -194,9 +194,11 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S3 · narration
 **Picture:** the RODALCO2007 card, its first and only appearance: "no one is paying any attention to the sirens going off" · RODALCO2007 · 3,000 likes · under "JOPLIN, MO, Tornado, 22 May 2011" (likes on the card, never spoken; no frame of that video). Beside it, the NWS assessment's page with "desensitized or complacent" underlined. Chip "NUMB TO SIRENS". Source line "NWS Assessment, Preface and Finding 2c".
-> You've probably seen comments like this one under the old Joplin videos. The NWS found something close to it. Most of the people it surveyed had gone numb to the tornado sirens, and the first siren had lost some of its credibility.
+> You've probably seen comments like this one under the old Joplin videos. The NWS found something close to it. Most of the people it surveyed had gone numb to the tornado sirens, and the first siren had lost some of its credibility. But how often did those sirens actually go off?
 
 **Rows:** [angle.md: the comment, verbatim] · [S16: "desensitized or complacent"] · [S19: "initial siren activation has lost a degree of credibility"]
+
+*([A1-Q1b open]: how often did they go off? Paid in A1-S4.)*
 
 ### A1-S4 · narration
 **Picture:** the channel's civil-defense siren SFX for one second, then the calendar strip 2007 to 2011: fifty two grey ticks a year, and the three red marks land together on "three times", each carrying its own label on screen, not spoken: "Jan 2007 · winds over 70 mph", "May 2008 · EF1 outside the city", "May 2009 · winds over 85 mph". Chips "52 TESTS A YEAR", then "3 REAL SOUNDINGS". Source line "dates per the county emergency manager · NIST Sec. 4.3.4".
