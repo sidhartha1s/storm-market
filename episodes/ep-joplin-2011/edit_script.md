@@ -180,7 +180,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S1 · narration
 **Picture:** the NWS assessment's own page (Finding 2b), each line underlined as Paul speaks it: "sirens are sounded even for thunderstorms", "all sirens mean is there is a little more water in the gutter", "bombarded with [sirens] so often that we don't pay attention". Source line "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2b". Then a NIST ground photograph of a Joplin street in the path (credit line checked). Low bed.
-> People in Joplin told the NWS that the tornado sirens went off even for thunderstorms. Some said all a siren meant was a little more water in the gutter. Others said they were bombarded so often, they stopped paying attention.
+> I went through what people in Joplin told the NWS afterward. They said the tornado sirens went off even for thunderstorms. Some said all a siren meant was a little more water in the gutter. Others said they'd been bombarded so often, they'd stopped paying attention.
 
 **Rows:** [S18] · [S18] · [S17]
 
