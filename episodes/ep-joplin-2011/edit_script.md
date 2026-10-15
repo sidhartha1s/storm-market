@@ -204,19 +204,19 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 **Rows:** [S4: about 52 a year] · [S6: 18 Jan 2007, winds over 70 mph; 10 May 2008, EF-1 outside the city limits] · [S7: 8 May 2009, winds over 85 mph; next on 22 May 2011]
 
-### A1-S5 · narration
-**Picture:** the NIST page, Finding 31, the sentence underlined: "Despite public perception, no evidence was found of high false-alarm rates for Joplin's outdoor siren system." Chip "NO FALSE-ALARM PROBLEM". Source line "NIST NCSTAR 3 · Finding 31".
-> NIST put it plainly. Despite what people believed, it found no evidence that Joplin's tornado sirens had a false alarm problem. So on how often the sirens sounded, the belief didn't hold up. On something else, it did. What was it?
-
-**Rows:** [S1: Finding 31] · [S15: siren false alarm defined as a sounding with no severe weather in Joplin]
-
-*([A1-Q1 paid]. [A1-Q2 open]: what did the belief get right? Paid in A1-S7.)*
-
-### A1-S6 · Paul on camera, one clip
+### A1-S5 · Paul on camera, one clip
 **Picture:** Paul on camera, full frame. No chip.
 > Stick with me, because what I'm about to explain is a big part of why Joplin heard rare tornado sirens as noise.
 
-**Rows:** (hook callback HC1, no row; "a big part of", per factcheck-A1-A3 row A1-S6)
+**Rows:** (hook callback HC1, no row; "a big part of", per factcheck-A1-A3 row A1-S6. Moved ahead of the Finding 31 line per the acts grade, top 5 #1, so the question is answered straight after it is asked; the segment ids S5 and S6 swapped with it.)
+
+### A1-S6 · narration
+**Picture:** the NIST page, Finding 31, the sentence underlined: "Despite public perception, no evidence was found of high false-alarm rates for Joplin's outdoor siren system." Chip "NO FALSE-ALARM PROBLEM". Source line "NIST NCSTAR 3 · Finding 31".
+> I checked that against the NIST report. Despite what people believed, it found no evidence that Joplin's tornado sirens had a false alarm problem. So if the sirens weren't crying wolf, what was?
+
+**Rows:** [S1: Finding 31] · [S15: siren false alarm defined as a sounding with no severe weather in Joplin]
+
+*([A1-Q1 paid]. [A1-Q2 open]: if not the sirens, what was crying wolf? Paid in A1-S7.)*
 
 ### A1-S7 · narration
 **Picture:** [RS] a second strip slides in under the siren strip, separate from it and in a different color: eighteen warning marks from 2005 to 2011, four of them ticked "verified". Chip "14 OF 18 · NO TORNADO". Then the last five years zoom in: twelve marks, one ticked. Chip "11 OF 12". Source line "NIST Finding 30 · national 2007 to 2011 average 74.7% (NIST)". The two strips never merge.
