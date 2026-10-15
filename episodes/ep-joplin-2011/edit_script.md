@@ -228,7 +228,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S8 · narration
 **Picture:** the two strips side by side; a name card "Joplin-Jasper County emergency manager" over the gap between them. Chip "TWO DIFFERENT COUNTS". Source lines "NIST Sec. 4.3.4" and "NIST Finding 44 · Sec. 4.7.3".
-> And Joplin's emergency manager didn't sound the sirens for every one of those warnings, so the sirens and the warnings were two different counts. People thought both were crying wolf anyway. NIST lists that kind of distrust and confusion among the reasons people were slow to act that evening.
+> So did people keep the two apart? Joplin's emergency manager didn't sound the sirens for every one of those warnings, so you can't add them together. But people thought both were crying wolf anyway, and that kind of distrust and confusion is one of the reasons people were slow to act that evening.
 
 **Rows:** [S8] · [S28: citizens perceived high false-alarm rates for both] · [S39, S40: distrust of or confusion about the emergency communications system, in the second factor]
 
