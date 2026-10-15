@@ -394,9 +394,11 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A3-S4 · narration
 **Picture:** a NIST ground photograph of a demolished apartment complex (figure to pick at sourcing; credit line checked). Twelve dots in three apartment outlines. Chip "12 IN APARTMENTS". Then a drawn staircase, neighbors under it. Source line "NIST Sec. 4.6.2.2 · Sec. 1.2".
-> Twelve more people were lost in three apartment complexes. The buildings were mostly wood frame, there wasn't any protected space, and every one of those twelve was above ground. At the Somerset complex, one woman got out of her apartment and rode out the tornado under the building's staircase with her neighbors.
+> Twelve more people were lost in three apartment complexes. The buildings were mostly wood frame, there wasn't any protected space, and every one of those twelve was above ground. At the Somerset complex, one woman got out of her apartment and rode out the tornado under the building's staircase with her neighbors. Who else came through in the worst of it?
 
 **Rows:** [H19: 12 in three complexes, all above ground] · [H20: the Somerset survivor]
+
+*([A3-Q1 open]: who came through? Paid in A3-S5.)*
 
 ### A3-S5 · narration
 **Picture:** the comment card "my step dad went to the center most closet in the house, threw everything out into the hallway" (1,600 likes). Then a tally: "27 survivors in the EF-4 zone · 11 basements · 1 crawl space · 15 closets, hallways, bathrooms". Chip "27 SURVIVORS". Source line "NIST Sec. 4.6.2.2". Then CLIP NEEDED: a Joplin survivor who rode it out in a closet, hallway or bathroom, telling it in their own voice (FEMA survivor interview first, public domain; research/ names no clip for this beat).
