@@ -326,7 +326,9 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S8 · narration
 **Picture:** the radar: NWS Assessment Appendix A, Figure 4 panel (G), KSGF 0.5 degree base reflectivity, valid 22 May 2011 22:34Z (5:34 pm CDT), credited "NOAA/NWS", no NWS logo and no third-party basemap. Clock "5:29 PM" then "5:34 PM". Chips "RAIN-WRAPPED", then "NO TORNADO EMERGENCY". The comment card "Joplin didn't receive a tornado emergency because of how fast it developed." (1,500 likes) slides in at the end. Source line "NWS Assessment, Finding 10 and the paragraph before Finding 8".
-> Could people at least see it coming? The storm wasn't giving them much to look at. The rotation tightened up from five twenty-nine, and by five thirty-four the tornado was on the ground, wrapped in rain. The NWS never put out a Tornado Emergency headline for Joplin itself. The tornado formed too fast, right at the edge of the city, and you couldn't tell how big it was until it was well into town.
+> The storm wasn't giving them much to look at. The rotation tightened up from five twenty-nine, and by five thirty-four the tornado was on the ground, wrapped in rain. The NWS never put out a Tornado Emergency headline for Joplin itself. The tornado formed too fast, right at the edge of the city, and you couldn't tell how big it was until it was well into town. What finally got people moving?
+
+*([A2-Q5 paid]. [A2-Q6 open]: what got people moving? Paid in A2-S10, after Paul's A2-S9.)*
 
 **Rows:** [E25: 5:29 to touchdown 5:34] · [E13] · [E32: rain-wrapped] · [NWS Assessment, paragraph before Finding 8, factcheck-acts row A2-S8]
 
