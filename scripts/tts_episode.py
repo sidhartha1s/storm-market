@@ -34,6 +34,7 @@ import sys
 import time
 from pathlib import Path
 
+import tts_clone
 import voice_tool
 
 REPO = Path(__file__).resolve().parent.parent
