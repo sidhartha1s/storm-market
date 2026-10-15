@@ -241,9 +241,12 @@ def synth_file(model, voice_state, voice_md5, sr, stream_audio_chunks, lines, ou
         gap = gap_after(lines, i)
         if gap:
             sil = seg_dir / f"gap_{int(gap * 1000)}ms.wav"
-            if not sil.exists():
-                subprocess.run([FFMPEG, "-y", "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono", "-t", str(gap),
-                                "-c:a", "pcm_s16le", str(sil)], capture_output=True, creationflags=NT_FLAGS)
+            if probe(sil) <= 0:
+                s = subprocess.run([FFMPEG, "-y", "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono", "-t", str(gap),
+                                    "-c:a", "pcm_s16le", str(sil)], capture_output=True, text=True,
+                                   creationflags=NT_FLAGS)
+                if s.returncode != 0 or probe(sil) <= 0:
+                    sys.exit(f"gap silence failed ({gap}s): {s.stderr}")
             parts.append(sil)
     seg_paths = parts
 
