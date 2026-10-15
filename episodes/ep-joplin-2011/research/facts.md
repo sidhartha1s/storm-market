@@ -400,7 +400,7 @@ CONFLICT: Total deaths. NIST: 161 (T1, base: Missouri State Police list; include
 CONFLICT: The 135 and its percent. Finding 40 and Sec. 1.3: 135 of 155 impact-related = 87 percent, "inside structures". Finding 9: 135 of 161 = 83.8 percent, "related to building failure". Rec. 8 justification: 83.8 percent "of these victims" (the 96 percent impact-related group). Same 135, different bases. Script: say "135 of the 155 who lost their lives to the tornado's impact" and attach 87 percent only to that base.
 CONFLICT: Residential share. Finding 40: 59 percent of the 135; Sec. 1.3: "over half (58 percent)" of the impact-related inside buildings incl. Greenbriar; Sec. 4.5.1: 57 percent of the 161; Finding 9: 74 (52.5 percent); Joplin Globe via NWS: 54 percent. Do not print any residential percentage without its base and source.
 CONFLICT: Table 4-3 sum. Printed rows add to 154 (T10, T11), not Finding 40's 155, because the Golden Corral death has no location (T12). Inside = 135 and outside = 19 add to 154; Finding 40's "135 of 155" leaves 20 not inside, including Golden Corral. A graphic built from Table 4-3 says "154" or uses the finding's figures only.
-CONFLICT: Outside deaths. Table 4-1 shows 20 outside (all causes, 161 base); Table 4-3 shows 19 (impact-related, 154 base, less the lightning-killed police officer). The 135 inside + 19 outside = 154; adding the 6 non-impact deaths and Golden Corral would not give 161 in a simple way, so use the table's own totals.
+CONFLICT: Outside deaths. Table 4-1 shows 20 outside (all causes, 161 base); Table 4-3 shows 19 (impact-related, 154 base, less the lightning-killed police officer). Use each table's own total with its base.
 
 ---
 
