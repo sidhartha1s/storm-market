@@ -214,7 +214,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S6 · narration
 **Picture:** the NIST page, Finding 31, the sentence underlined: "Despite public perception, no evidence was found of high false-alarm rates for Joplin's outdoor siren system." Chip "NO FALSE-ALARM PROBLEM". Source line "NIST NCSTAR 3 · Finding 31".
-> I checked that against the NIST report. Despite what people believed, it found no evidence that Joplin's tornado sirens had a false alarm problem. So if the sirens weren't crying wolf, what was?
+> I checked that against the NIST report. Despite what people believed, it found no evidence that Joplin's tornado sirens had a false alarm problem. Then if the sirens weren't crying wolf, what was?
 
 **Rows:** [S1: Finding 31] · [S15: siren false alarm defined as a sounding with no severe weather in Joplin]
 
