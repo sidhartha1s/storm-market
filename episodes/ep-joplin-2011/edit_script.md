@@ -514,7 +514,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S9 · narration
 **Picture:** a NIST ground photograph of the Stained Glass Theater (credit line checked). The full quote card, no ellipsis: "We have a strong building here and anyone who wants to stay is welcome to do so. We can all go down in the basement." (NIST Interview 121), then "we want you to get to the basement right now". Chip "56 INSIDE". Source line "NIST Sec. 4.4.3".
-> Remember the Stained Glass Theater, where that actor didn't put much stock in the siren? Fifty-six people were inside. Right around the first siren, the director told everyone it was a strong building. Anyone who wanted to stay could, and they could all go down to the basement. Twenty-five minutes later, the director told everyone still there to get to the basement right now. Did they make it?
+> The Stained Glass Theater had one. That's the place where the actor didn't put much stock in the siren. Fifty-six people were inside. Right around the first siren, the director told everyone it was a strong building. Anyone who wanted to stay could, and they could all go down to the basement. Twenty-five minutes later, the director told everyone still there to get to the basement right now. How many of them got down there?
 
 **Rows:** [B24: 56 inside] · [B26: the first announcement, around the first siren, full quote] · [B27: about 25 minutes later]
 
