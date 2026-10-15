@@ -120,7 +120,7 @@ NOTE: Siren count is 25 (S2, S29 and Sec. 1.2). The sources supplied here say no
 | E36 | A second NWS statement confirmed a tornado only at 5:39 p.m. | The first indication of a confirmed tornado was issued via another Severe Weather Statement at 539 pm CDT | NWS Assessment, Sec. 4 WFO Springfield Products and Services |
 | E37 | Most surveyed residents did not act until they got a second, non-routine confirmation. | The majority of surveyed Joplin residents did not take protective action until receiving and processing additional, credible confirmation of the threat and its magnitude from a non-routine trigger. | NWS Assessment, Finding #2d |
 
-CONFLICT: E1 (NWS Table 1) puts the tornado watch at 1:30 pm CDT (Tornado Watch #325, text in Sec. 3: "130 pm CDT"); E2 (NIST Sec. 1.2 and E.3) puts the watch at 3:00 p.m. NIST's 3:00 p.m. is also the time of the SPC moderate-risk statement (NIST Sec. 4.4). Use the NWS time for the watch.
+CONFLICT: E1 (NWS Table 1) puts the tornado watch at 1:30 pm CDT (Tornado Watch #325, "130 pm CDT" again in Secs. 4 and 5); E2 (NIST Sec. 1.2 and E.3) puts the watch at 3:00 p.m. NIST's 3:00 p.m. is also the time of the SPC moderate-risk statement (NIST Sec. 4.4). Use the NWS time for the watch.
 NOTE: 5:34 pm is the touchdown just southwest of the city limits; 5:38 pm is when the tornado entered the city and the second siren sounded. NIST Sec. 4.7 also says "which was at about 5:38 p.m." for the hit; keep the two apart.
 NOTE: In E13 the source text has a fraction sign (extracted as a garbled character) before "mile"; the quote skips it with " ... ". Check the PDF for the exact fraction.
 
