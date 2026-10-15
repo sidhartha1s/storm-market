@@ -402,11 +402,11 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A3-S5 · narration
 **Picture:** the comment card "my step dad went to the center most closet in the house, threw everything out into the hallway" (1,600 likes). Then a tally: "27 survivors in the EF-4 zone · 11 basements · 1 crawl space · 15 closets, hallways, bathrooms". Chip "27 SURVIVORS". Source line "NIST Sec. 4.6.2.2". Then CLIP NEEDED: a Joplin survivor who rode it out in a closet, hallway or bathroom, telling it in their own voice (FEMA survivor interview first, public domain; research/ names no clip for this beat).
-> So who came through? I looked at the people NIST talked to who'd survived in houses in the worst part of the path. Eleven of them had made it to a basement, and almost everyone else rode it out in a closet, a hallway or a bathroom.
+> I looked at the survivors NIST talked to from houses in the worst part of the path. Eleven of them had made it to a basement, and almost everyone else rode it out in a closet, a hallway or a bathroom. Why didn't more of those houses hold up?
 
 **Rows:** [H13: 11 of 27 in basements] · [NIST Sec. 4.6.2.2, one in a crawl space, factcheck-A1-A3 row A3-S5] · [H14: 15 in internal first-floor spaces]
 
-*([A3-Q1 open] and paid.)*
+*([A3-Q1 paid]. [A3-Q2 open]: why didn't the houses hold? Paid in A3-S6.)*
 
 ### A3-S6 · narration
 **Picture:** a NIST ground photograph of a wood-frame house with its roof and walls separated (figure to pick at sourcing; credit line checked; no video sourced). Then our exploded house diagram: roof-to-wall and wall-to-floor joints highlighted. Chip "THE JOINTS GAVE". Source line "NIST Finding 14". CLIP NEEDED: moving footage of a wood-frame house in the path with its roof and walls pulled apart (public domain FEMA or NOAA first; research/ names no video for this beat).
