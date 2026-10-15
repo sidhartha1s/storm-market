@@ -422,7 +422,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A3-S8 · Paul on camera, one clip
 **Picture:** Paul on camera, full frame. Chip on "seventy-one": "71 LOST AT HOME", source chip "NIST Sec. 4.6.2.2". Hold on his face for a beat after the last word.
-> Three of the seventy-one people lost at home had a basement they could get to, and they still didn't make it.
+> Three of the seventy-one people lost at home had a basement they could get to. And the tornado still took all three.
 
 **Rows:** [H22: only three of the 71 had access to basements]
 
