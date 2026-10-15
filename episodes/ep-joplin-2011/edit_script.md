@@ -294,7 +294,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S4 · narration
 **Picture:** a quote card over a NIST ground photograph (credit line checked): "The tornado sirens went off once, we walked outside and you couldn't really, didn't really see nothing then, and we went back in and finished eating." · "a survivor · NIST Interview 108". Chip "NOTHING TO SEE". Source line "NIST E.3: few environmental clues".
-> Some people looked outside, and there wasn't much to see. One survivor said they walked out after the sirens, didn't see anything, and went back in to finish eating.
+> Some people looked outside, and there wasn't much to see. One survivor told NIST they walked out after the sirens, didn't see anything, and went back in to finish eating.
 
 **Rows:** [E7: few environmental clues] · [E34: NIST Interview 108]
 
