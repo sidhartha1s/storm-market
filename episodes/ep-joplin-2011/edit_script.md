@@ -530,9 +530,11 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S11 · narration
 **Picture:** a NIST ground photograph of Harmony Heights Baptist (credit line checked), then the Full Gospel Church site. Chips "3 LOST", then "4 LOST". Source line "NIST Sec. 4.4.5 · 7 in churches per Table 4-1".
-> So what about the two churches that were in the path? At Harmony Heights Baptist, the second siren came just as off-duty firefighters' radios were talking about tornadoes, and the pastor sent people to safe places. Three women were lost there. At the Full Gospel Church, four people were lost.
+> Two churches were in the path too. At Harmony Heights Baptist, some off-duty firefighters had radios on, and the radios were talking about tornadoes just as the second siren went off. The pastor sent people to safe places. Three women were lost there, and four more at the Full Gospel Church. Reading about all these buildings, I kept looking for one thing: where were the people who didn't make it?
 
 **Rows:** [B37: second siren coincided with the radios; the pastor sent people to safety] · [B36: three women] · [B38] · [B39, B45: 3 and 4; 7 on the source line, per the B39/B50 CONFLICT]
+
+*([A4-Q3b open]: where were they? Paid in A4-S12.)*
 
 ### A4-S12 · narration
 **Picture:** our own text card, never the NIST page (its sentence carries a hard flag word): "In all of the demolished buildings, those lost or badly hurt were above ground · NIST Sec. 4.6.2.1". Chip "ALL ABOVE GROUND".
