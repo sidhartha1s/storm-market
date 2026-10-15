@@ -286,7 +286,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S3 · narration
 **Picture:** clock "5:11 PM". The siren ring pulses over the whole city; the civil-defense siren SFX, three seconds, under Paul. An arrow points west into Kansas: "funnel cloud reports · SE Kansas". Chip "FIRST SIREN · 3 MIN". Then the polygon in the north lights again. Source line "NWS Assessment, Sec. 3".
-> At five-eleven, Joplin's tornado sirens went off for three minutes, mostly because of funnel cloud reports over in southeast Kansas. People heard the sirens, heard that the warning was for the north side, and figured the sirens were for the north side too. So what did they do next?
+> At five-eleven, Joplin's tornado sirens went off for three minutes, mostly because of funnel cloud reports over in southeast Kansas. People heard the sirens, heard that the warning was for the north side, and figured the sirens were for the north side too. What did most of them do next?
 
 **Rows:** [E6: 3 minutes] · [E8: funnel reports in SE Kansas] · [E8b: assumed it was for the area to the north]
 
