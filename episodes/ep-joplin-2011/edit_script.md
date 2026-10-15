@@ -316,7 +316,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S7 · narration
 **Picture:** two comment cards side by side: "Residents of Joplin had plenty of warning time." (1,800 likes) and "even the best of technology wouldnt have helped alert the people on time" (2,500 likes). Between them a lead-time bar. Chips "17 MIN" on the first count, "23 MIN" on the second. Source lines "17 min · 5:17 warning to touchdown · NIST Sec. 2.2.2 · NWS Sec. 4", "23 min · first siren to touchdown" and "most did not act on a warning alone · NWS Assessment".
-> From the citywide warning, people had seventeen minutes before touchdown, and from the first siren, they had twenty-three. On paper, that's real lead time. But most people didn't act on a warning alone. They waited for something out of the ordinary. Could they at least see the tornado coming?
+> From the citywide warning, people had seventeen minutes before touchdown. From the first siren, they had twenty-three. On paper, that's real lead time. But most of the people surveyed afterward didn't act on a warning alone. They waited for something out of the ordinary. Could they at least see the tornado coming?
 
 **Rows:** [E21, E22: 17 min from TO.31; 23 min from the first siren] · [E37: most did not act until a non-routine trigger]
 
@@ -408,7 +408,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A3-S6 · narration
 **Picture:** a NIST ground photograph of a wood-frame house with its roof and walls separated (figure to pick at sourcing; credit line checked; no video sourced). Then our exploded house diagram: roof-to-wall and wall-to-floor joints highlighted. Chip "THE JOINTS GAVE". Source line "NIST Finding 14". CLIP NEEDED: moving footage of a wood-frame house in the path with its roof and walls pulled apart (public domain FEMA or NOAA first; research/ names no video for this beat).
-> Look at how they came apart, and you'll see it. Mostly, they gave at the joints, where the roof meets the walls and the walls meet the floor.
+> Look at how they came apart. Mostly, they gave at the joints, where the roof meets the walls and the walls meet the floor.
 
 **Rows:** [H30: failures predominantly at the connections]
 
@@ -620,7 +620,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A5-S7 · narration
 **Picture:** the map: a second nursing-home outline at the edge of the path, a pale wind-zone band labelled "EF-1". Chip "EF1 WINDS · 2 LOST". Then counter visit 3: the glass card top right, "INSIDE A BUILDING 135 of 135" over "BELOW GROUND, NONE FOUND", about 5 s, source line "NIST Table 4-3 · impact-related · Finding 46".
-> There was a second nursing home, Meadows Healthcare, where the winds were only EF1 strength, and two people there were still lost after the storm. How do you lose two people in EF1 winds?
+> There was a second nursing home, Meadows Healthcare, where the winds were only EF1. Two people there still lost their lives after the storm. How do you lose two people in EF1 winds?
 
 **Rows:** [C25: two deaths after the storm, timing not given per the Meadows CONFLICT] · [C26: EF-1 zone] · [C6, C23, T11: 102 + 12 + 19 + 2 = 135, Table 4-3]
 
