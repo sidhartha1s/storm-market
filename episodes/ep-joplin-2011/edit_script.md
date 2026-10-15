@@ -526,7 +526,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S12 · narration
 **Picture:** our own text card, never the NIST page (its sentence carries a hard flag word): "In all of the demolished buildings, those lost or badly hurt were above ground · NIST Sec. 4.6.2.1". Chip "ALL ABOVE GROUND".
-> In every demolished building NIST looked at, the people who were lost or badly hurt were above ground. So did anybody in that part of town get below ground?
+> In every demolished building the investigators looked at, the people who were lost or badly hurt were above ground. So did anybody in that part of town make it below ground?
 
 **Rows:** [B32] · [B4: no building type provided life-safety protection]
 
@@ -534,7 +534,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S13 · narration
 **Picture:** [RS] [VE] a NIST ground photograph of the demolished Macadoodles (credit line checked), then our cross-section: the store above, a concrete cellar twenty feet below, twelve figures below the line. Chip "12 BELOW GROUND · ALL OK". Source line "NIST Sec. 4.4.3".
-> Yes. At Macadoodles, a liquor store, the manager led six customers, one of them a baby, and six staff down into a concrete wine cellar about twenty feet deep. The building above them was demolished, and nobody got hurt.
+> One group did. At Macadoodles, the manager led six customers, one of them a baby, and six staff down into a concrete wine cellar about twenty feet deep. The building above them was demolished, and nobody down there got hurt.
 
 **Rows:** [B34: six customers including a baby, six staff] · [B49: the manager led them down] · [B35: concrete, about 20 ft deep] · [B33: demolished, no injuries]
 
