@@ -300,7 +300,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S5 · narration
 **Picture:** clock "5:17 PM". Polygon 31 draws over the whole city; "polygon 31" on screen only. The siren ring stays dark. Chip "WHOLE CITY · NO SIREN". Source line "NIST Sec. 1.2".
-> At five-seventeen, a new tornado warning covered the whole city. So did the sirens go off again? No. Most likely, that was because they had already gone off six minutes earlier.
+> At five-seventeen, a new tornado warning covered the whole city. Did the sirens go off again? They didn't, most likely because they'd already gone off six minutes earlier.
 
 **Rows:** [E9] · [E10: not activated again, probably because sounded 6 min earlier]
 
