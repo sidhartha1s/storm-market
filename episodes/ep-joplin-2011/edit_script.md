@@ -318,11 +318,11 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S7 · narration
 **Picture:** two comment cards side by side: "Residents of Joplin had plenty of warning time." (1,800 likes) and "even the best of technology wouldnt have helped alert the people on time" (2,500 likes). Between them a lead-time bar. Chips "17 MIN" on the first count, "23 MIN" on the second. Source lines "17 min · 5:17 warning to touchdown · NIST Sec. 2.2.2 · NWS Sec. 4", "23 min · first siren to touchdown" and "most did not act on a warning alone · NWS Assessment".
-> So how much warning did people in Joplin actually get? From the citywide warning, people had seventeen minutes before touchdown, and from the first siren, they had twenty-three. On paper, that's real lead time. But most people didn't act on a warning alone. They waited for something out of the ordinary.
+> From the citywide warning, people had seventeen minutes before touchdown, and from the first siren, they had twenty-three. On paper, that's real lead time. But most people didn't act on a warning alone. They waited for something out of the ordinary. Could they at least see the tornado coming?
 
 **Rows:** [E21, E22: 17 min from TO.31; 23 min from the first siren] · [E37: most did not act until a non-routine trigger]
 
-*([A2-Q3 open] and paid: how much warning. [A2-Q4 open]: what was the out-of-the-ordinary thing? Paid in A2-S10.)*
+*([A2-Q3 paid]. [A2-Q4 open]: what was the out-of-the-ordinary thing? Paid in A2-S10. [A2-Q5 open]: could they see it? Paid in A2-S8.)*
 
 ### A2-S8 · narration
 **Picture:** the radar: NWS Assessment Appendix A, Figure 4 panel (G), KSGF 0.5 degree base reflectivity, valid 22 May 2011 22:34Z (5:34 pm CDT), credited "NOAA/NWS", no NWS logo and no third-party basemap. Clock "5:29 PM" then "5:34 PM". Chips "RAIN-WRAPPED", then "NO TORNADO EMERGENCY". The comment card "Joplin didn't receive a tornado emergency because of how fast it developed." (1,500 likes) slides in at the end. Source line "NWS Assessment, Finding 10 and the paragraph before Finding 8".
