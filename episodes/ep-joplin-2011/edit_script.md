@@ -470,9 +470,9 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S1 · narration
 **Picture:** the master map, the commercial strip at 20th Street and Range Line Road, refuge-area markers in the big stores; Paul's voice over it. Then CLIP NEEDED: moving footage of the 20th Street and Range Line Road stores after the tornado (public domain FEMA video first; a news pull only as a short insert, transcribed first; research/ names no clip for this beat).
-> Stick with me, because what I'm about to explain is a big part of why the safe spots in Joplin's biggest stores weren't the protection people hoped for.
+> Stick with me, because what I'm about to explain is a big part of why so many people who got inside still had nothing below them.
 
-**Rows:** (hook callback HC2; wording per factcheck-A4-Z1 row A4-S1; "exactly why" softened to "a big part of why" to match A1-S5, per factfix-verify residual flag) · [B1, B2, B3: few basements, refuge areas picked out, no evidence they changed outcomes]
+**Rows:** (hook callback HC2; wording per the acts grade, draft 9, top 5 #4, so it names the hook's claim and leaves L5 open (fact team to spot-check); "a big part of why" kept per factfix-verify residual flag) · [B1, B2, B3: few basements, refuge areas picked out, no evidence they changed outcomes]
 
 ### A4-S3 · narration
 **Picture:** our floor plan of the Walmart on Range Line Road, the layaway area at the back lit, then a NIST ground photograph of the Walmart (credit line checked; never an aerial marked "Used with permission"; no news pull). Chips "200 INSIDE", then "50 TO 60 AT THE BACK". Source line "NIST Sec. 1.2 · Sec. 4.6.2.1".
