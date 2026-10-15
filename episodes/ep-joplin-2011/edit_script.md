@@ -579,8 +579,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 *([loop L6 closes].)*
 
 ### A5-S3 · narration
-**Picture:** the comment card "Being in the upper floors, if you couldn't get downstairs fast enough, your best course of action was to go to the midmost location..." (671 likes). Then a NIST ground photograph of the generator building (credit line checked). Chip "ABOUT 170 MPH", source chip "estimate · EF-4 range · NIST Sec. 4.6.2.1".
-> Then the doors blew open down those hallways, and people there remembered everything flying from one end of the hall to the other. NIST puts the wind on the hospital towers at around a hundred seventy miles an hour. The building with the backup generators was demolished.
+**Picture:** the comment card "Being in the upper floors, if you couldn't get downstairs fast enough, your best course of action was to go to the midmost location..." (671 likes). Then a NIST ground photograph of the generator building (credit line checked). Chip "ABOUT 170 MPH", source chip "estimate · EF-4 range · NIST Sec. 4.6.2.1". Then the real clip: the Weather Channel show re-upload, YouTube 6nX7J8_mZpE (research/comment-beats.json; its viewers talk about St. John's), a few seconds of the hospital towers after the storm if the transcript and frames have them; provenance row, chaser-footage check and Content ID risk at sourcing. If it has no usable St. John's shot: CLIP NEEDED: moving footage of the St. John's towers after the storm (public domain FEMA first).
+> Then the doors blew open down those hallways, and people there remembered everything flying from one end of the hall to the other. The wind on the hospital towers was around a hundred seventy miles an hour, and the building with the backup generators was demolished.
 
 **Rows:** [C12] · [C13: 170 mph estimate] · [C14: the generator building]
 
