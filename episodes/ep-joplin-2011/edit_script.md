@@ -308,11 +308,11 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S6 · narration
 **Picture:** on "six minutes earlier" the dark siren ring flashes back to the 5:11 ring, chip "6 MIN EARLIER", source chip "NIST Sec. 1.2". Then the NIST sentence as on-screen text over the master map, an arrow running north toward "Webb City · Carl Junction": "the media continued to report on storms said to be passing to the north and missing Joplin, or moving away from the City". Source line "NIST Sec. 1.2". Then, if the transcript has it, a 3 to 4 s cut of the live TV broadcast re-upload (YouTube FagzNHuI5JI) talking about storms to the north, a different cut from A1-S9's and A2-S10's; transcribe first, provenance row and Content ID risk checked at sourcing; if no such moment, the on-screen text carries it.
-> They didn't, most likely because they'd already gone off six minutes earlier. And the TV hadn't changed its story. If you had it on, the news was still talking about storms passing to the north, up toward Webb City and Carl Junction. How much warning did people in Joplin actually get, then?
+> Most likely that's because they'd already gone off six minutes earlier. And the media hadn't changed its story. The news was still saying the storms were passing to the north. Some people remember announcers talking about a tornado between Carl Junction and Webb City. How much warning did people in Joplin actually get, then?
 
-**Rows:** [E10: not activated again, probably because sounded 6 min earlier] · [E11: warning information before 5:17 was about a storm to the north, toward Webb City or Carl Junction] · [E12]
+**Rows:** [E10: not activated again, probably because sounded 6 min earlier] · [E11: warning information before 5:17 was about a storm to the north, toward Webb City or Carl Junction] · [E12: "the media", no outlet type] · [NIST L2059: announcers on a tornado between Carl Junction and Webb City, per factcheck-A1-A3]
 
-*([A2-Q2 paid]. [A2-Q3 open]: how much warning. Paid in A2-S7.)*
+*([A2-Q3 open]: how much warning. Paid in A2-S7.)*
 
 ### A2-S7 · narration
 **Picture:** two comment cards side by side: "Residents of Joplin had plenty of warning time." (1,800 likes) and "even the best of technology wouldnt have helped alert the people on time" (2,500 likes). Between them a lead-time bar. Chips "17 MIN" on the first count, "23 MIN" on the second. Source lines "17 min · 5:17 warning to touchdown · NIST Sec. 2.2.2 · NWS Sec. 4", "23 min · first siren to touchdown" and "most did not act on a warning alone · NWS Assessment".
@@ -400,7 +400,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A3-S5 · narration
 **Picture:** the comment card "my step dad went to the center most closet in the house, threw everything out into the hallway" (1,600 likes). Then a tally: "27 survivors in the EF-4 zone · 11 basements · 1 crawl space · 15 closets, hallways, bathrooms". Chip "27 SURVIVORS". Source line "NIST Sec. 4.6.2.2". Then CLIP NEEDED: a Joplin survivor who rode it out in a closet, hallway or bathroom, telling it in their own voice (FEMA survivor interview first, public domain; research/ names no clip for this beat).
-> I looked at the survivors NIST talked to from houses in the worst part of the path. Eleven of them had made it to a basement, and almost everyone else rode it out in a closet, a hallway or a bathroom. Why didn't more of those houses hold up?
+> I looked at the survivors the investigators talked to from houses in the worst part of the path. Of the twenty-seven, eleven had made it to a basement, and every one of them lived. Almost everyone else rode it out in a closet, a hallway or a bathroom. Why didn't more of those houses hold up?
 
 **Rows:** [H13: 11 of 27 in basements] · [NIST Sec. 4.6.2.2, one in a crawl space, factcheck-A1-A3 row A3-S5] · [H14: 15 in internal first-floor spaces]
 
@@ -598,7 +598,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A5-S4 · narration
 **Picture:** the comment card "the only tangible building standing was the hospital." (58 likes). Then the towers on the map, twelve dots, four marked "ICU". Chips "12 FROM THE STORM", then "7 LOST LATER, ELSEWHERE". Source line "12 impact-related · Finding 42 · Table 4-3 · 14 all causes · Table 4-1".
-> One comment says the hospital was the only building left standing. The towers did stay up, but they didn't protect everyone. Twelve people at St. John's were lost to that storm. Four of them had been in intensive care, and more than half were lost later, in other hospitals. Did the windows up there make any difference?
+> One comment says the hospital was the only building left standing. The towers did stay up, but they didn't protect everyone. Twelve people who'd been inside St. John's were lost to the storm itself. Four of them had been in intensive care. And more than half of the twelve were lost later, in other hospitals. What about the windows up there?
 
 **Rows:** [C1: Finding 42] · [C6: seven injured at SJRMC, died later at another hospital] · [C2, C7: 14 all causes, on screen only, per the hospital CONFLICT]
 
