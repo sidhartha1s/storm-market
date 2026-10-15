@@ -131,7 +131,8 @@ def resolve_tempo(cfg, slug):
 
 
 def sha1_text(text, tempo, voice_md5):
-    return hashlib.sha1(f"{text}\x1f{tempo}\x1f{voice_md5}".encode("utf-8")).hexdigest()
+    # tts_clone.PAUSES: a pause-policy change re-joins every segment (cached sentences are reused)
+    return hashlib.sha1(f"{text}\x1f{tempo}\x1f{voice_md5}\x1f{tts_clone.PAUSES}".encode("utf-8")).hexdigest()
 
 
 def ffprobe_duration(path, attempts=4, sleep_s=3):
