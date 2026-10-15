@@ -327,8 +327,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Rows:** [E25: 5:29 to touchdown 5:34] · [E13] · [E32: rain-wrapped] · [NWS Assessment, paragraph before Finding 8, factcheck-acts row A2-S8]
 
 ### A2-S9 · Paul on camera, one clip
-**Picture:** Paul on camera, full frame. Chip on "four minutes": "4 MIN AFTER TOUCHDOWN", source chip "NIST Finding 35". No clip: the cut lands on his last word.
-> At five thirty-eight, the tornado had touched down four minutes earlier and was just reaching the city when the tornado sirens went off again.
+**Picture:** Paul on camera, full frame. Chip on "four minutes": "4 MIN AFTER TOUCHDOWN", source chip "NIST Finding 35". The cut lands on his last word, straight into the real clip that opens A2-S10.
+> At five thirty-eight, the tornado's been on the ground for four minutes. It's just reaching the city, and that's when the tornado sirens go off again.
 
 **Rows:** [E14] · [E15, E17: "almost exactly when the tornado entered the City", per factcheck-A1-A3 row A2-S9]
 
