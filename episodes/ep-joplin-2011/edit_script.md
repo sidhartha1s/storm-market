@@ -342,7 +342,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S11 · narration
 **Picture:** the siren ring splits into two labels: "a worse warning" and "all clear". On "all-clear signal" a crossed-out icon, chip "NO ALL-CLEAR SIGNAL". Source line "NIST Sec. 4.7.1.2 · Sec. 4.3.1".
-> But not everybody heard the second siren the same way. Some people took it as a worse warning. Others took it as the all clear. And Joplin's sirens didn't even have an all-clear signal.
+> So what did that second siren mean? It depended on who you asked. Some people took it as a worse warning. Others took it as the all clear. And Joplin's sirens didn't even have an all-clear signal.
 
 **Rows:** [S25, S26] · [S33: no all-clear message by design]
 
