@@ -432,11 +432,11 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A3-S9 · narration
 **Picture:** a drawn basement stair, lit, empty. Chip "2 OF 3 NOT DOWN THERE". Source chip "at least 2 of 3 · the third: circumstances unknown · NIST Sec. 4.6.2.2".
-> At least two of the three weren't in the basement when the tornado hit. Where the third person was, NIST couldn't say.
+> At least two of the three weren't in the basement when the tornado hit. Where the third person was, NIST couldn't say. And what about the people who did get down there?
 
 **Rows:** [H8] · [H22]
 
-*([loop cta-hinge closes].)*
+*([loop cta-hinge closes]. [A3-Q3 open]: what about those who got down? Paid in A3-S10.)*
 
 ### A3-S10 · narration
 **Picture:** the master map: a pocket of early-1980s ranch houses lit, no dots in it. Chip "BASEMENTS HELD". Source lines "NIST Finding 46" and "NIST Sec. 1.2".
