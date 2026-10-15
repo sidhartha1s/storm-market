@@ -11,6 +11,11 @@ Newest first. New entries go at the top, under this line. Superseded lines point
   back. Not "one thirty-five": next to clock times it reads as 1:35.
 - **Rule 3:** source qualifiers ("in the investigators' count", "to its impact", "the investigators could place") go on
   the on-screen source line; the spoken line stays plain. The base stays exact on screen.
+- Owner, same day: "how many direct questions do you ask in the first 2mins or so ... how are u gonna guarantee that
+  the viewers do not leave the video, no MATTER WHAT." Draft 4 asked one, at 1:45.
+- **Rule 4:** from the hook's end to the end of the intro, a spoken question (or a line that plainly opens one) about
+  every 20 s, each paid within 45 s, one carried into Act 1. The grader fails any stretch over 30 s with no open
+  question; each segment carries its loop line.
 
 ## 10 Oct 26 - ep4-el-reno: the timeline was built from the voice files alone and lost what the script's picture notes ask for
 - Found at the last read before the draft, by the orchestrator, after every gate was green: the locked script stops the
