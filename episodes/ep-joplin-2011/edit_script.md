@@ -608,7 +608,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A5-S7 · narration
 **Picture:** the map: a second nursing-home outline at the edge of the path, a pale wind-zone band labelled "EF-1". Chip "EF1 WINDS · 2 LOST". Then counter visit 3: the glass card top right, "INSIDE A BUILDING 135 of 135" over "BELOW GROUND, NONE FOUND", about 5 s, source line "NIST Table 4-3 · impact-related · Finding 46".
-> There was a second nursing home, Meadows Healthcare, where the winds were only EF1 strength. Two people there were still lost after the storm. NIST's reading is that people who were already frail might not get through even a weaker hit.
+> There was a second nursing home, Meadows Healthcare, where the winds were only EF1 strength, and two people there were still lost after the storm. So how do you lose two people in winds that were only EF1? One possibility is that people who were already frail might not get through even a weaker hit.
 
 **Rows:** [C25: two deaths after the storm, timing not given per the Meadows CONFLICT] · [C26: EF-1 zone] · [C27] · [C6, C23, T11: 102 + 12 + 19 + 2 = 135, Table 4-3]
 
