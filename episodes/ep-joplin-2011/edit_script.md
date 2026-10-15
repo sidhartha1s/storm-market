@@ -186,7 +186,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S2 · narration
 **Picture:** a quote card over a NIST ground photograph of the Stained Glass Theater (credit line checked): "I didn't put much stock in that siren, because I'd heard them before, and 9 times out of 10, you hear the sirens but nothing really happens" · "an actor in the play · NIST Interview 120". On "three people" three small markers light on the theater's outline on the master map. Chip "3 LOST HERE".
-> NIST talked to an actor at the Stained Glass Theater who didn't put much stock in that siren. In the actor's own words, nine times out of ten, you hear the sirens and nothing really happens. Three people in that theater were lost. Were the sirens really crying wolf in Joplin, though?
+> One actor at the Stained Glass Theater didn't put much stock in that siren. In the actor's own words, nine times out of ten, you hear the sirens but nothing really happens. Three people in that theater were lost. Were the sirens really crying wolf in Joplin, though?
 
 **Rows:** [S24: NIST Interview 120, no gender given] · [B25: three lost at the theater]
 
@@ -301,15 +301,13 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 *([A2-Q1 paid].)*
 
 ### A2-S5 · narration
-**Picture:** clock "5:17 PM". Polygon 31 draws over the whole city; "polygon 31" on screen only. Chip "WHOLE CITY". The siren ring holds, unlit, on the question (the "NO SIREN" chip waits for the answer in A2-S6). Source line "NIST Sec. 1.2".
-> At five-seventeen, a new tornado warning covered the whole city. Did the sirens go off again?
+**Picture:** clock "5:17 PM". Polygon 31 draws over the whole city; "polygon 31" on screen only. Chip "WHOLE CITY". On "stayed quiet" the siren ring stays dark, chip "NO SIREN". Source line "NIST Sec. 1.2".
+> At five-seventeen, a new tornado warning covered the whole city, and this time the sirens stayed quiet.
 
-**Rows:** [E9]
-
-*([A2-Q2 open]. Paid in A2-S6.)*
+**Rows:** [E9] · [NIST Sec. 1.2: coverage area included the entire City of Joplin, factcheck-A1-A3 row A2-S5] · [E10: not activated again]
 
 ### A2-S6 · narration
-**Picture:** on "They didn't" the siren ring stays dark, chip "NO SIREN", source chip "NIST Sec. 1.2". Then the NIST sentence as on-screen text over the master map, an arrow running north toward "Webb City · Carl Junction": "the media continued to report on storms said to be passing to the north and missing Joplin, or moving away from the City". Source line "NIST Sec. 1.2". Then, if the transcript has it, a 3 to 4 s cut of the live TV broadcast re-upload (YouTube FagzNHuI5JI) talking about storms to the north, a different cut from A1-S9's and A2-S10's; transcribe first, provenance row and Content ID risk checked at sourcing; if no such moment, the on-screen text carries it.
+**Picture:** on "six minutes earlier" the dark siren ring flashes back to the 5:11 ring, chip "6 MIN EARLIER", source chip "NIST Sec. 1.2". Then the NIST sentence as on-screen text over the master map, an arrow running north toward "Webb City · Carl Junction": "the media continued to report on storms said to be passing to the north and missing Joplin, or moving away from the City". Source line "NIST Sec. 1.2". Then, if the transcript has it, a 3 to 4 s cut of the live TV broadcast re-upload (YouTube FagzNHuI5JI) talking about storms to the north, a different cut from A1-S9's and A2-S10's; transcribe first, provenance row and Content ID risk checked at sourcing; if no such moment, the on-screen text carries it.
 > They didn't, most likely because they'd already gone off six minutes earlier. And the TV hadn't changed its story. If you had it on, the news was still talking about storms passing to the north, up toward Webb City and Carl Junction. How much warning did people in Joplin actually get, then?
 
 **Rows:** [E10: not activated again, probably because sounded 6 min earlier] · [E11: warning information before 5:17 was about a storm to the north, toward Webb City or Carl Junction] · [E12]
@@ -415,8 +413,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Rows:** [H30: failures predominantly at the connections]
 
 ### A3-S7 · narration
-**Picture:** a NIST ground photograph of an in-home shelter standing in a destroyed house (figure to pick at sourcing; credit line checked). Chip "IN-HOME SHELTERS HELD". Source line "NIST Finding 23 · Sec. 1.2".
-> If you had a storm shelter built into your house, you came through. Hardly anybody had one.
+**Picture:** a NIST ground photograph of an in-home shelter standing in a destroyed house (figure to pick at sourcing; credit line checked). Chip "IN-HOME SHELTERS HELD". Source line "NIST Finding 23 · a few instances observed · Sec. 1.2". CLIP NEEDED: footage of an in-home shelter still standing in a flattened Joplin house (public domain FEMA or NOAA first; research/ names no clip for this beat).
+> Hardly anybody had a storm shelter built into their house. The few people on record who did came through in it.
 
 **Rows:** [H16: in-home shelters performed well] · [H18: very few had one; those who did survived]
 
