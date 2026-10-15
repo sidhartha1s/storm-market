@@ -371,18 +371,12 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Segments:**
 
 ### A3-S1 · narration
-**Picture:** our own cross-section of a one-story house on a crawl space, a figure in an interior bathroom, label "no basement · 82% of Joplin homes · NIST Finding 20". Chip "8 IN 10: NO BASEMENT". Source line "NIST Sec. 1.2".
-> For most families, the best spot was a closet, a hallway or a bathroom in the middle of the house. In eight of ten Joplin homes, there was no basement to go to.
+**Picture:** our own cross-section of a one-story house on a crawl space, a figure in an interior bathroom, label "no basement · 82% of Joplin homes · NIST Finding 20". Chip "8 IN 10: NO BASEMENT". Source line "NIST Sec. 1.2". Then the master map with no shelter icons anywhere, chip "NO PUBLIC SHELTER", source line "no community shelters or safe rooms · city or county · Finding 20" (the spoken A3-S2 line is cut per the acts grade: the viewer already heard it in I1-S1; the chip carries it).
+> For most families in Joplin, the best spot was a closet, a hallway or a bathroom in the middle of the house. Eight of ten homes there didn't have a basement to go to.
 
-**Rows:** [H2: interior bathrooms, closets, laundry rooms, hallways] · [H1: 82 percent lacked basements]
+**Rows:** [H2: interior bathrooms, closets, laundry rooms, hallways] · [H1: 82 percent lacked basements] · [H3, H4: on screen only]
 
 *([loop L4 closes].)*
-
-### A3-S2 · narration
-**Picture:** the master map with no shelter icons anywhere. Chip "NO PUBLIC SHELTER". Source line "no community shelters or safe rooms · city or county · Finding 20".
-> And there was no public shelter to run to. There was no community shelter and no safe room, not in the city and not in the county.
-
-**Rows:** [H3] · [H4]
 
 ### A3-S3 · narration
 **Picture:** [RS] dots light in house outlines across the residential area. Chip "59 LOST IN HOUSES". Running label (on screen, not spoken): "59 people · 51 homes · 54 lost in demolished homes · 50 in one-story homes". Source line "NIST Sec. 4.6.2.2 · Table 4-3".
