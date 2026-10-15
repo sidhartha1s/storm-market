@@ -272,7 +272,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S1 · narration
 **Picture:** [RS] the countdown begins: a clock top left on the master map, "1:30 PM", then "4:33 PM". Chips "TORNADO WATCH", then "NWS BRIEFING". Source line "NWS Assessment, Table 1 · NIST E.3".
-> Let's go back to that Sunday afternoon. At one-thirty, the SPC put out a tornado watch for southwest Missouri. At four thirty-three, the NWS office in Springfield briefed Joplin's emergency manager about storms to the west.
+> Let's go back to that Sunday afternoon. By one-thirty, the SPC had a tornado watch out for southwest Missouri, and by four thirty-three, the Springfield NWS office had briefed Joplin's emergency manager about storms to the west. So if you lived in Joplin, when did the tornado sirens first go off?
 
 **Rows:** [E1: 1:30 pm, NWS time, per the E1/E2 CONFLICT] · [E3: 4:33 pm briefing]
 
