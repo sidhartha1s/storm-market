@@ -202,7 +202,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S4 · narration
 **Picture:** the channel's civil-defense siren SFX for one second, then the calendar strip 2007 to 2011: fifty two grey ticks a year, and the three red marks land together on "three times", each carrying its own label on screen, not spoken: "Jan 2007 · winds over 70 mph", "May 2008 · EF1 outside the city", "May 2009 · winds over 85 mph". Chips "52 TESTS A YEAR", then "3 REAL SOUNDINGS". Source line "dates per the county emergency manager · NIST Sec. 4.3.4".
-> If you lived in Joplin, you heard them every week, because the test ran about fifty-two times a year. Outside that test, they went off for real three times from 2007 on: twice for strong winds, and once for an EF1 outside town. Then nothing, until May twenty-second, 2011.
+> In Joplin, the test sirens sounded about once a week. For a real storm, they went off three times from 2007 on: twice for strong winds, once for an EF1 outside town. Then nothing, until May twenty-second, 2011.
 
 **Rows:** [S4: about 52 a year] · [S6: 18 Jan 2007, winds over 70 mph; 10 May 2008, EF-1 outside the city limits] · [S7: 8 May 2009, winds over 85 mph; next on 22 May 2011]
 
@@ -438,7 +438,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A3-S10 · narration
 **Picture:** the master map: a pocket of early-1980s ranch houses lit, no dots in it. Chip "BASEMENTS HELD". Source lines "NIST Finding 46" and "NIST Sec. 1.2".
-> In the flattened houses where people got down to the basement, nobody was lost. And there's a whole neighborhood of early-eighties ranch houses with basements that got hit hard, and nobody there was lost either.
+> In the flattened houses where people got down to the basement, nobody was lost. And one whole neighborhood of ranch houses with basements, built mostly in the early eighties, got hit hard, and nobody there was lost either.
 
 **Rows:** [H5: no fatalities in demolished detached homes where people took refuge in basements] · [H15: the ranch-home neighborhood]
 
@@ -634,7 +634,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A5-S9 · narration
 **Picture:** [RS] [VE] our bar pair, 8 against 2 per thousand; then the hospital and nursing-home share drains out of the taller bar and the gap stays. Chip "THE GAP STAYS". Source line "NIST Finding 47".
-> For Meadows, NIST's answer is only a maybe: if you were already frail, even a weaker hit could be too much. Now, you might think the hospital and the nursing homes are pulling that age gap up. They aren't. NIST took out every life lost in the hospital and the nursing homes, and the gap didn't go away. Why were older people lost at that rate, then?
+> Back at Meadows, NIST's answer is only a maybe: if you were already frail, even a weaker hit could be too much. Now, you might think the hospital and the nursing homes explain that age gap. They don't. NIST took out every life lost in the hospital and the nursing homes, and the gap didn't go away. Why were older people lost at that rate, then?
 
 **Rows:** [C27: Meadows, one possibility, frail; pays the A5-S7 question] · [C30]
 
