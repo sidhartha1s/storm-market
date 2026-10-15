@@ -733,8 +733,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Rows:** [T3] · [H5] · [H1]
 
 ### Z1-S3 · narration
-**Picture:** the recommendation board, tile 7 half lit. Chip "2027 BUILDING CODE". Source line "ICC store page, Oct 2026".
-> The 2027 edition of the International Building Code is coming out now, and whether it widens the shelter rule is the thing to watch.
+**Picture:** the recommendation board, tile 7 half lit. Chip "2027 BUILDING CODE". Source line "2027 International Building Code · ICC store page, Oct 2026".
+> The 2027 building code is coming out now. If you live where tornadoes hit, watch whether it asks for shelters in stores and apartment buildings.
 
 **Rows:** [ICC store page for the 2027 IBC, factcheck-acts row Z1-S3; factcheck-A4-Z1 row Z1-S3] [verify: re-check 2027 IBC shelter rules (Section 423, Group M and R) the week of render]
 
