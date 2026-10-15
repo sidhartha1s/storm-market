@@ -13,7 +13,8 @@ Still unverified: siren activation records before 2007; whether a national siren
 - Yes: open on the 3,000-like comment; NIST slab thumbnail shown beside the other thumbnail candidates already discussed; El Reno pair (cross-links, one playlist) only once El Reno is live; the map march; viewer comments answered naturally throughout; 3 shorts ("0 below ground", "sirens once a year", "14 of 18 warnings").
 - His words on the comments: "naturally incorporate the comments/answer them throughout the video ... the video aint a comment review on joplin reaction channel, but a solid data analytics and proven thoughtcollector method / public interest analysis".
 - No: holding for the anniversary week; reuse of the old `episodes/ep1-joplin` (his words: "the old paul raymond is stale").
-- The counter: only now and then, never on screen for long or throughout ("every now and then (if you absolutely want) you can show the counter increasing"). Needs a mock before it is built.
+- The counter: only now and then, never on screen for long or throughout ("every now and then (if you absolutely want) you can show the counter increasing"). Mock shown on `joplin-angle.html`; he ticked "Use it like this" (saved 15 Oct 26, 15:43): a glass card top right, "INSIDE A BUILDING n of 135" over "BELOW GROUND 0", 3 visits of about 5 s at the end of the homes, stores and hospital acts (71, then the stores figure, then 135), never on screen otherwise.
+- Act order: on the same page he wrote "upto you." The agent's call: hook (the comment), sirens as belief vs record and the evening, homes, stores, churches and restaurants, hospital and nursing home with the age gap, what changed. Sirens come first so the viewer meets "once a year" before the 135.
 
 ## The opening comment (verbatim, pulled 15 Oct 26)
 RODALCO2007, "JOPLIN, MO, Tornado, 22 May 2011" (https://www.youtube.com/watch?v=CburjPYmSdo), 3,000 likes, 12 years ago:
