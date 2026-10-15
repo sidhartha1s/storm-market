@@ -680,7 +680,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A6-S4 · narration
 **Picture:** the comment card "I wonder why commercial buildings and residential homes like at 15:15 don't have mandatory shelters" (28 likes). The board: tile 7 half lit, "stores · apartments" left grey. Chip "STORES, APARTMENTS: NOTHING LISTED". Source line "FEMA Recovery Advisory 1 · NIST news, Jul 2024 · ICC 2024 IBC, 423.4".
-> For new stores and new apartment buildings, FEMA and NIST list no such requirement. And stores and homes are where most of the hundred thirty-five were lost.
+> So what about a new store, or a new apartment building? There's still no shelter rule for those on the list. And stores and homes are where most of the people inside were lost.
 
 **Rows:** [FEMA, NIST, ICC summaries, factcheck-acts row A6-S3] · [T22: 59 percent residential, 41 percent non-residential of the 135; Table 4-3 rows]
 
