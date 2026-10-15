@@ -7,6 +7,7 @@ text. All TTS/whisper/ffprobe calls are mocked — no paid API, no real audio, n
 """
 import hashlib
 import json
+import subprocess
 import sys
 import tempfile
 from pathlib import Path
