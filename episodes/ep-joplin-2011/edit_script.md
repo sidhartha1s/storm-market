@@ -461,8 +461,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Segments:**
 
 ### A4-S1 · narration
-**Picture:** the master map, the commercial strip at 20th Street and Range Line Road, refuge-area markers in the big stores; Paul's voice over it.
-> Stick with me, because what I'm about to explain is exactly why the safe spots in Joplin's biggest stores weren't the protection people hoped for.
+**Picture:** the master map, the commercial strip at 20th Street and Range Line Road, refuge-area markers in the big stores; Paul's voice over it. Then CLIP NEEDED: moving footage of the 20th Street and Range Line Road stores after the tornado (public domain FEMA video first; a news pull only as a short insert, transcribed first; research/ names no clip for this beat).
+> Stick with me, because what I'm about to explain is a big part of why the safe spots in Joplin's biggest stores weren't the protection people hoped for.
 
 **Rows:** (hook callback HC2; wording per factcheck-A4-Z1 row A4-S1) · [B1, B2, B3: few basements, refuge areas picked out, no evidence they changed outcomes]
 
