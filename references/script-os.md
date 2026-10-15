@@ -72,8 +72,9 @@ materially changes every 60–90 s (new evidence, place, number, person, mechani
 3. **Opening.** Sentence one is a number or a date. Inside 45 s one direct-address fact promise ("Inside twenty minutes
    you will know what a very strong El Niño did to your state the last two times"). No teaser, no "will history
    repeat", no comment ask before the closing CTA.
-4. **Address.** "You" = promise or stake only, ≤3 per 1,000 words after minute one; "we" = Americans / the country 2–3×
-   per script; replace half of "people" with the named group (retirees in mobile homes, night-shift nurses); never "I".
+4. **Address (owner 15 Oct 26, replaces the "never I" rule).** Paul talks as an old friend telling you what happened:
+   first person, "you" whenever it puts the viewer in the place, contractions; replace half of "people" with the named
+   group (retirees in mobile homes, night-shift nurses). Writer brief: `script-quickref.md` "Voice".
 5. **Authority.** One named researcher + institution + venue per mechanism chapter ("X said, and this is a direct
    quote"); agencies named on screen (CPC, NWS, USGS, EIA); "nobody knows" always in a source's mouth; fear only as a
    sourced fact, never a narrator adjective (terrible, cruel, mercifully).

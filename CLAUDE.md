@@ -111,7 +111,7 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 - Read the clip's `provenance.csv` row BEFORE wiring it. Era-mismatch or "backup only" notes disqualify it.
 - A REAL clip (broadcast, public domain, survivor) about every 45 to 60 s is the aim, not a hard rule (owner 4 Oct 26). The core audience saw these events live. Stock only fills between.
 - Storm-chaser and independent streamer footage: NEVER without a licence. Credit is not a licence. Never disguise a
-  source to slip unlicensed footage past detection. Grain or grade on footage you may legitimately use is fine.
+  source to slip unlicensed footage past detection. A grade on footage you may legitimately use is fine; no grain (DESIGN.md "Look: no grain").
 - No AI-generated witnesses, no fabricated quotes. Real quotes come from NWS assessments or news archives, shown as attributed text.
 
 ## Pipeline

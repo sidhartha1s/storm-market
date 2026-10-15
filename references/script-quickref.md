@@ -9,8 +9,14 @@ PR and say which one won.
 - Every act serves the angle. The fact every other video on the subject leads with is not the lead here; the block names it.
 - The hook, the open loops and the close all pay the angle. Do not drift back to the subject's default line.
 
-## The hook (owner 27 Sep 26 — supersedes any looser hook rule below)
-- **One sentence, 3–5 s.** Promise first: the payoff the title/thumbnail already made.
+## The hook (owner 27 Sep 26, opener rewritten 15 Oct 26 — supersedes any looser hook rule below)
+- **Open on the viewer's own belief, not a stranger's.** Ask the question the viewer answers in their head with what
+  they believe or would do ("Siren goes off. What do you do?"), give the answer they gave, then break it with the
+  record. A second contradiction follows at once (the double contradiction), so the viewer has invested before 8 s.
+  A rhetorical question nobody answers in their head is not an opener.
+- **Never open on someone else's words**: no viewer comment, other video, like count or "people say" in the hook.
+  The broken belief is the viewer's. Comments live inside acts as beliefs the record answers.
+- Promise first: the payoff the title/thumbnail already made lands inside the hook.
 - **Never pause on a fact that contradicts the title/thumbnail.** Bad: "The weather service called it EF3." then a
   pause. Good (owner-approved): "The weather service changed it to EF5, four months after they called it EF3." The
   promised fact leads; the contradiction rides inside the same sentence.
@@ -23,6 +29,9 @@ PR and say which one won.
 
 ## Hook tail, intro, chapters (owner 27 Sep 26)
 - **Tail, 5–15 s:** context plus ONE open curiosity gap — not the answer, not a list of what's coming.
+- **From the hook's end to the intro's end (owner 15 Oct 26):** an open question about every 20 s, each the one a
+  viewer would ask right then, each paid within 45 s, one carried into Act 1; never 30 s without an open question.
+  Vary the openers (not every question starts with "So"). Each segment carries its loop line.
 - Then **INTRO** (~to 1:10 on a mini, longer on a doc): the full WHAT — stakes, roster, claim — delivered as
   information. Everything after the intro is WHY/HOW, which is what the viewer stays for.
 - Then **CHAPTERS**: stakes order, not chronology. Every chapter changes what the viewer already understood; a
@@ -78,13 +87,20 @@ mechanism/analysis pair) and plants+pays a loop.
 ## Voice (45–75 US viewer) — `script-os.md` Voice rules + CLAUDE.md Voice
 - Median sentence 12–18 words; 10–15% run 25–35 words as fact-chains (and/then/which); one ≤4-word kicker per 150
   words. Write the long sentence — TTS splits it at commas, don't pre-shorten for that reason.
-- Sentence one of the SCRIPT is a number or date, unless the 27 Sep 26 hook rule above needs another opener (the hook rule wins).
-- "You" = promise/stake only, ≤3 per 1,000 words after minute one. "We" = Americans, 2–3× per script. Never "I".
+- Sentence one of the script follows the hook rule above (the viewer's belief), not a number or date.
+- **Register (owner 15 Oct 26): an old friend you have not seen in years, telling you what happened.** Paul speaks in
+  first person ("I read the whole report"), talks to "you" and puts the viewer in the place ("if you lived there, you
+  heard them every Monday"). Contractions wherever a person would use them. Target 9 of 10 on "a person talking to
+  you" (1 = a report read aloud); the writer scores every section and the grader checks it.
+- Weather terms stay as storm followers say them, never explained down: EF5, hook echo, wall cloud, tornado
+  warning, lead time, NWS, SPC, Fujita. One short gloss the first time a term is rare, never a lecture.
+- Spoken numbers the way a person says them ("a hundred thirty-five"), one count per sentence; source qualifiers
+  ("in the investigators' count", "impact-related") go on the on-screen source line, never in the spoken line.
 - One named researcher + institution per mechanism chapter; agencies named on screen; "nobody knows" in a source's mouth.
 - Flat declaratives for record/mechanism; the future in three sourced paths, never the narrator's guess.
 - A US state/region in the first 60 s; every foreign distance restated in feet/miles/°F/dollars + a US landmark.
 - Seams are time-stamps or place-stamps, never "to understand X you have to understand Y."
-- Keep technical terms, define in ≤12 words, reuse 3+ times. Every superlative gets a comparator and unit.
+- Technical terms per the Register line above; reuse them 3+ times. Every superlative gets a comparator and unit.
 - One object per segment; one named victim (age, job, sourced quote) per tragedy.
 - Close: fact + dated forward window, then the one signature line (DESIGN.md "Signature closing footnote", owner 4 Oct 26). No other aphorism, no mirrored callback.
 - TTS-safe: spell out ALL dates/times/numbers in narration (except years, dollars), no paired dashes, sentences

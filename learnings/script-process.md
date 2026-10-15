@@ -2,6 +2,18 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 15 Oct 26 - hooks lost the viewer in the first 8 s, and the narration read like a report
+- Owner: "8 secs is not an investment for the viewer - perfect time to skip"; "approach the audience ... like a
+  bestfriend you are meeting after 10-15 years gap"; on a hook built on a viewer comment: "why the fuck would u
+  refernece someother video directly on the fucking hook?"; on grain: "already motherfucker is AI, on top of that, u
+  want fucking grains?"
+- Measured: four shipped documentaries scored 3 to 4 of 10 on "a person talking to you"; their narration carried 0.4
+  to 1.4 contractions and 0 to 0.15 questions per 100 spoken words.
+- Rules now live in `references/script-quickref.md` (hook opener, question cadence, register, spoken numbers) and
+  `DESIGN.md` "Look: no grain". Pattern behind them: an opener works when the viewer answers it in their own head and
+  is then proved wrong, twice; anything said in someone else's words (a comment, "people say") gives the viewer
+  nothing to lose.
+
 ## 10 Oct 26 - ep4-el-reno: the timeline was built from the voice files alone and lost what the script's picture notes ask for
 - Found at the last read before the draft, by the orchestrator, after every gate was green: the locked script stops the
   voice on "kept recording" and gives the TV crew clip six seconds of its own sound; the timeline had no gap and the

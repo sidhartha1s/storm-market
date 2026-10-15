@@ -174,12 +174,11 @@ One palette and type file for the whole channel (colours, fonts, px tiers, TV-re
 CSS custom properties): `library/inhouse/snippets/tokens.md`. Swatch preview:
 `library/inhouse/snippets/brand-swatch.html`.
 
-## Look: grain layer
+## Look: no grain
 
-Every clip renders under a unified film layer: animated grain (SVG turbulence or canvas noise,
-JS-driven — never CSS @keyframes), subtle vignette, occasional drifting dust specks. Purpose:
-one filmic look that also hides stock/archive/AI seams. Reusable snippet `assets/styles/grain.js`
-— a snippet, not a scene template.
+No grain, noise, dust or film layer over anything (owner 15 Oct 26: grain on an AI presenter makes him look more
+fake and blocks a clean 4K upscale). Seams between stock, archive and AI are hidden by grade and cut choice, never by
+noise. A source that is already grainy (old film, night footage) stays as it is; nothing is added on top.
 
 ## Music
 
@@ -220,8 +219,7 @@ floors/ceilings; taste stays with the model.
   burned-in timestamps. Match the visual or use a neutral one. No asset means an honest designed card, never fabricated footage.
 - **Burned-in radar/satellite timestamps: map to the narration or
   crop/cut them out of frame** — cropping is a legitimate alternative to honest-labeling when
-  the clock itself isn't the story. Watch UTC-vs-local (NEXRAD burns UTC). Grain filter over
-  archive graphics as needed to unify the look.
+  the clock itself isn't the story. Watch UTC-vs-local (NEXRAD burns UTC). No grain filter ("Look: no grain").
 - **Mandatory self-audit before render: after authoring, re-walk every
   graphic/text/quote element as a viewer** — for each one ask: landing, idling, or minor fix?
   Table the verdicts (the "is it sitting for the egg to hatch" pass). Same pass re-checks clip
