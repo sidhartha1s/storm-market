@@ -603,6 +603,10 @@ check("tts_clone: a question gets room to land", _gaps[1] == 0.55, _gaps)
 check("tts_clone: a short kicker gets a beat before it, even after a question", _gaps[2] == 0.65, _gaps)
 check("tts_clone: a clause split inside one long sentence gets only a breath", _gaps[4] == 0.18, _gaps)
 check("tts_clone: no gap after the last line", _gaps[5] == 0.0, _gaps)
+_h = tts_episode.sha1_text("A line.", 0.94, "voice-a")
+_old_pauses, tts_clone.PAUSES = tts_clone.PAUSES, "a-new-pause-policy"
+check("tts_episode: a pause-policy change marks every segment stale", _h != tts_episode.sha1_text("A line.", 0.94, "voice-a"))
+tts_clone.PAUSES = _old_pauses
 
 # the edge trim must cut the model's lead/trail silence down to a few hundredths, and keep the speech
 with tempfile.TemporaryDirectory() as _td:
