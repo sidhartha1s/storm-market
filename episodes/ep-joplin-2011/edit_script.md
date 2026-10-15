@@ -476,7 +476,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S3 · narration
 **Picture:** our floor plan of the Walmart on Range Line Road, the layaway area at the back lit, then a NIST ground photograph of the Walmart (credit line checked; never an aerial marked "Used with permission"; no news pull). Chips "200 INSIDE", then "50 TO 60 AT THE BACK". Source line "NIST Sec. 1.2 · Sec. 4.6.2.1".
-> Take the Walmart on Range Line Road. There were about two hundred people inside, and staff sent fifty or sixty of them to the layaway area at the back. Then the tornado brought the outside wall down, inward, right onto that area. So how did anyone back there make it out?
+> Start with the Walmart on Range Line Road. There were about two hundred people inside, and staff sent fifty or sixty of them to the layaway area at the back. Then the tornado pushed the outside wall in, right onto that area. How did anyone back there make it out?
 
 **Rows:** [B9: about 200 inside] · [B5: Site-to-Store or layaway area] · [B6: 50 to 60 there; the wall collapsed inward onto the refuge area]
 
