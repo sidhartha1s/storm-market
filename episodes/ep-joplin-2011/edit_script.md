@@ -586,7 +586,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A5-S4 · narration
 **Picture:** the comment card "the only tangible building standing was the hospital." (58 likes). Then the towers on the map, twelve dots, four marked "ICU". Chips "12 FROM THE STORM", then "7 LOST LATER, ELSEWHERE". Source line "12 impact-related · Finding 42 · Table 4-3 · 14 all causes · Table 4-1".
-> One comment says the hospital was the only building left standing. The towers did stay up, but they didn't protect everyone inside. NIST counts twelve people lost to the storm's impact at St. John's, and four of them were intensive care patients. Seven of the twelve were lost later, in other hospitals.
+> One comment says the hospital was the only building left standing. The towers did stay up, but did they protect everyone inside? Twelve people at St. John's were lost to that storm, and four of them were in intensive care. Seven of the twelve were lost later, in other hospitals.
 
 **Rows:** [C1: Finding 42] · [C6: seven injured at SJRMC, died later at another hospital] · [C2, C7: 14 all causes, on screen only, per the hospital CONFLICT]
 
