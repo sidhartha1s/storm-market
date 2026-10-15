@@ -118,7 +118,7 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 
 ## Footage rules (claim-proof stack, never violate)
 - Spine: US government public domain (NOAA, NWS, NHC, FEMA, USGS, Coast Guard), Pexels and Pixabay, self-made radar and
-  map graphics, AI b-roll (nanobanana; `scripts/gen_ai_stills.py` is hardcoded to ep2). Courtesy credits in the description.
+  map graphics, AI b-roll (DeAPI via `scripts/gen_ai_stills.py`, hardcoded to ep2). Courtesy credits in the description.
 - 911 audio, FEMA survivor interviews and government hearings are the emotional layer: public domain, claim-free.
 - News footage: transcribe first, cut at the best moment. Keep pulls short and meaningful; anything held past 12 to
   15 s needs narration over it. Clips WITH their commentary audio are allowed, and the mix (voice alone, clip alone,

@@ -40,8 +40,7 @@ Newest first. New entries go at the top, under this line. Superseded lines point
   eyeball before wiring; the owner spotted it in the preview. Pexels API keys (all 3) are dead (403).
 - **Instagram via `yt-dlp --cookies-from-browser chrome` fails while Chrome is open** (cookie DB locked).
   Use a cookies.txt export or close Chrome first. No social clips in this cut.
-- **Gemini (nanobanana) free tier is exhausted** → thumbnail candidates come from real render frames
-  (`thumbs/frame-cand-*.png`) until a paid key exists.
+- **Thumbnail candidates come from real render frames** (`thumbs/frame-cand-*.png`) or our own map graphics; AI-composite thumbnails read as AI slop (owner, 2026-10-01).
 - **A worktree's clip pool dies with the worktree (2026-09-11, Krakatau #4):** `library/mini-storms/<event>/` media
   is gitignored, so `git worktree remove` deleted the 72-asset Krakatau pool the moment #3 shipped; only the clips
   already staged into `episodes/ms-krakatoa-1883/media/` (bc + _orig + stills) survived, and the #4 builder had to
