@@ -1,6 +1,7 @@
 ---
 name: mini-storms
-description: "Mini-storms — the fast lane of The Warning Hour (storm-market repo): 8–12 min seasonal / breaking / outlier videos — 8–12 min, stitched news + PD + social clips and punch-zoomed stills, narration, red emphasis text, BREAKING NEWS packaging, shipped in ≤3 h. Use the MOMENT the user asks for a quick / breaking / seasonal / outlier / news-style storm-market video (e.g. \"Krakatoa video\", \"Nepal floods quick one\", \"El Niño Texas warning\", \"seasonal video\", \"mini storm\", \"/mini-storms\"). NOT for the weekly documentary episodes — those are /storm-episode (same repo, same voice, different pace). Forked from storm-episode 2026-09-08; renamed from storm-breaking 2026-09-08 (owner)."
+description: >-
+  Lane of storm-episode: read storm-episode first. Fast 8-12 min storm-market videos (quick, breaking, seasonal, outlier, news-style), shipped in 3 h. NOT for weekly documentary episodes (use storm-episode).
 ---
 
 # mini-storms — the fast lane of The Warning Hour
@@ -66,8 +67,7 @@ Total ≈ 3 h 20 of work. The waits at the two owner gates sit outside the clock
 - **Title → hook carry (owner rule):** the hook (3–5 s, one sentence) pays off the title;
   the thumbnail phrase is said aloud inside the intro. Slightly dramatic, never false: every
   claim in title/hook must be in the script with a source.
-- **Thumbnail:** owner makes it. You deliver 3 AI still candidates (nanobanana;
-  `scripts/gen_ai_stills.py` is hardcoded to ep2) + the ≤4-word top-of-frame phrase + a red kicker word ("BREAKING NEWS",
+- **Thumbnail:** owner makes it. You deliver 3 candidates built from real render frames or our own map graphics (no AI-composite look, owner rule 2026-10-01) + the ≤4-word top-of-frame phrase + a red kicker word ("BREAKING NEWS",
   "WARNING", "IT'S HAPPENING"). Text lives in the TOP 25 % of the frame (TV impressions).
 - **Instant ROI:** the 8–12 ideas are each a viewer-actionable or viewer-relevant fact
   ("if you live in…", "by Thursday…", "this number changed"). Open loops: name the biggest one in
