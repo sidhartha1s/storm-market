@@ -1,6 +1,7 @@
 ---
 name: storm-episode
-description: Orchestration + freshness preflight for building a storm-market (The Warning Hour) YouTube documentary episode. Use this skill the MOMENT the user asks to make/plan/continue a storm-market video or episode (e.g. "let's make a storm market video", "plan ep5", "continue el reno", "fix ep4's hook"), mentions The Warning Hour, a disaster-documentary episode, or any work inside C:\Users\Sidhartha\Automation Projects\storm-market — BEFORE reading any repo doc or writing any file. The #1 failure it prevents is building from stale rules: repo docs are only trustworthy after the preflight below.
+description: >-
+  Use the MOMENT the user asks to make, plan or continue a storm-market (The Warning Hour) YouTube documentary episode, or touches the storm-market repo, BEFORE reading any repo doc. Runs the freshness preflight; repo docs are stale until it passes.
 ---
 
 # storm-episode — kickoff preflight + phase map
