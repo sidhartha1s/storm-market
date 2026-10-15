@@ -236,7 +236,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S9 · narration
 **Picture:** a quote card: "the announcer and the weatherman that came on the TV seemed to say the track was, you know, mainly north of town" · "a Joplin native · NIST Interview 58". Beside it the comment card "The sad part is nobody knew what really was coming that day." (824 likes). Then the NIST sentence as on-screen text: "the media continued to report on storms said to be passing to the north and missing Joplin". Chip "TRACK: NORTH OF TOWN". Then the real clip, a friend saying "look at this": the live TV broadcast re-upload, YouTube FagzNHuI5JI (research/comment-beats.json; comments-for-writer.md "live TV broadcast re-upload"), a few seconds where the coverage talks about storms to the north, cut on an audio event. Transcribe first; station name, provenance row and Content ID risk checked at sourcing. If the transcript has no such moment: CLIP NEEDED: local TV coverage that afternoon saying the storms were north of Joplin.
-> Then there's what people were seeing on TV. One Joplin native remembered the announcer and the weatherman seeming to say the storm was tracking north of town. So why were people in Joplin so ready to believe that?
+> Then there's what people were seeing on TV. One Joplin native told NIST the announcer and the weatherman seemed to be saying the storm was tracking north of town. Why were people in Joplin so ready to believe that?
 
 **Rows:** [E12: media reported storms passing north] · [NIST Interview 58, factcheck-A1-A3 row A1-S9: TV only, "a Joplin native"]
 
