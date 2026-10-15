@@ -630,7 +630,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A5-S10 · narration
 **Picture:** the NIST page, Finding 47, the three factors underlined one by one; then the NWS page, "elderly, infirm, or disabled". Chips "LESS WORD", "LESS HELP", "HARDER TO RECOVER". Source lines "NIST Finding 47" and "NWS Assessment, Finding 2d".
-> NIST doesn't say for sure. The warning may not have reached older people as fast. They may have had fewer people around to help. Or they just couldn't take the hit, or recover from it. The NWS adds that older and disabled people need more time, or a hand, to get to shelter.
+> NIST doesn't say for sure. The warning may not have reached older people as fast. They may've had fewer people around to help. Or their bodies couldn't take the hit, or recover from it. And older and disabled people need more time, or a hand, to get to shelter.
 
 **Rows:** [C31] · [C37]
 
