@@ -308,13 +308,13 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S6 · narration
 **Picture:** the NIST sentence as on-screen text over the master map, an arrow running north toward "Webb City · Carl Junction": "the media continued to report on storms said to be passing to the north and missing Joplin, or moving away from the City". Source line "NIST Sec. 1.2". No TV pull (none sourced).
-> And the news was still talking about storms passing to the north, up toward Webb City and Carl Junction.
+> And if you had the TV on, the news was still talking about storms passing to the north, up toward Webb City and Carl Junction.
 
 **Rows:** [E11: warning information before 5:17 was about a storm to the north, toward Webb City or Carl Junction] · [E12]
 
 ### A2-S7 · narration
-**Picture:** two comment cards side by side: "Residents of Joplin had plenty of warning time." (1,800 likes) and "even the best of technology wouldnt have helped alert the people on time" (2,500 likes). Between them a lead-time bar. Chips "17 MIN" on the first count, "23 MIN" on the second. Source lines "17 min · 5:17 warning to touchdown · NIST Sec. 2.2.2 · NWS Sec. 4" and "23 min · first siren to touchdown".
-> So how much warning did people in Joplin actually get? From the five-seventeen warning to touchdown, seventeen minutes. From the first siren to touchdown, twenty-three. On paper, that's real lead time. But the NWS found most people didn't act on a warning alone. They waited for something out of the ordinary.
+**Picture:** two comment cards side by side: "Residents of Joplin had plenty of warning time." (1,800 likes) and "even the best of technology wouldnt have helped alert the people on time" (2,500 likes). Between them a lead-time bar. Chips "17 MIN" on the first count, "23 MIN" on the second. Source lines "17 min · 5:17 warning to touchdown · NIST Sec. 2.2.2 · NWS Sec. 4", "23 min · first siren to touchdown" and "most did not act on a warning alone · NWS Assessment".
+> So how much warning did people in Joplin actually get? From the citywide warning, people had seventeen minutes before touchdown, and from the first siren, they had twenty-three. On paper, that's real lead time. But most people didn't act on a warning alone. They waited for something out of the ordinary.
 
 **Rows:** [E21, E22: 17 min from TO.31; 23 min from the first siren] · [E37: most did not act until a non-routine trigger]
 
@@ -322,7 +322,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S8 · narration
 **Picture:** the radar: NWS Assessment Appendix A, Figure 4 panel (G), KSGF 0.5 degree base reflectivity, valid 22 May 2011 22:34Z (5:34 pm CDT), credited "NOAA/NWS", no NWS logo and no third-party basemap. Clock "5:29 PM" then "5:34 PM". Chips "RAIN-WRAPPED", then "NO TORNADO EMERGENCY". The comment card "Joplin didn't receive a tornado emergency because of how fast it developed." (1,500 likes) slides in at the end. Source line "NWS Assessment, Finding 10 and the paragraph before Finding 8".
-> And the storm wasn't giving people much to look at. The rotation tightened up from five twenty-nine, and by five thirty-four the tornado was on the ground, wrapped in rain. The NWS never put out a Tornado Emergency headline for Joplin itself. The tornado formed too fast, right at the edge of the city, and how big it was didn't show until it was well into town.
+> Could people at least see it coming? The storm wasn't giving them much to look at. The rotation tightened up from five twenty-nine, and by five thirty-four the tornado was on the ground, wrapped in rain. The NWS never put out a Tornado Emergency headline for Joplin itself. The tornado formed too fast, right at the edge of the city, and you couldn't tell how big it was until it was well into town.
 
 **Rows:** [E25: 5:29 to touchdown 5:34] · [E13] · [E32: rain-wrapped] · [NWS Assessment, paragraph before Finding 8, factcheck-acts row A2-S8]
 
