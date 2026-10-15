@@ -199,8 +199,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Rows:** [angle.md: the comment, verbatim] · [S16: "desensitized or complacent"] · [S19: "initial siren activation has lost a degree of credibility"]
 
 ### A1-S4 · narration
-**Picture:** the channel's civil-defense siren SFX for one second, then the calendar strip 2007 to 2011: fifty two grey ticks a year, and the red marks land one by one as they are named. Chips "52 TESTS A YEAR", then "3 REAL SOUNDINGS". Source line "dates per the county emergency manager · NIST Sec. 4.3.4".
-> So let's count the times the sirens actually sounded. The weekly test ran about fifty-two times a year. The real soundings came in January 2007, for winds over seventy miles an hour. Then May 2008, for an EF1 tornado outside the city. Then May 2009, for winds over eighty-five. After that, nothing until May twenty-second, 2011.
+**Picture:** the channel's civil-defense siren SFX for one second, then the calendar strip 2007 to 2011: fifty two grey ticks a year, and the three red marks land together on "three times", each carrying its own label on screen, not spoken: "Jan 2007 · winds over 70 mph", "May 2008 · EF1 outside the city", "May 2009 · winds over 85 mph". Chips "52 TESTS A YEAR", then "3 REAL SOUNDINGS". Source line "dates per the county emergency manager · NIST Sec. 4.3.4".
+> So how often did those sirens actually go off? If you lived in Joplin, you heard them every week, because the test ran about fifty-two times a year. Outside that test, they went off for real three times from 2007 on: twice for strong winds, and once for an EF1 outside town. Then nothing, until May twenty-second, 2011.
 
 **Rows:** [S4: about 52 a year] · [S6: 18 Jan 2007, winds over 70 mph; 10 May 2008, EF-1 outside the city limits] · [S7: 8 May 2009, winds over 85 mph; next on 22 May 2011]
 
