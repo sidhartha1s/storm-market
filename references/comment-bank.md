@@ -37,6 +37,187 @@ references before 6 Oct 26 are not backfilled unless the owner asks.
 
 ## Entries, newest first
 
+_Joplin 2011 episode research, 15 Oct 26: four more reference videos for the locked angle (sirens: belief vs record; 135 indoors, 0 below ground), plus our own old upload. Beat list per comment: the episode's devq page._
+
+### "Joplin: The Worst-Case Tornado Scenario" (June First)
+https://www.youtube.com/watch?v=syfeDcNgmL0, uploaded 22 May 26.
+Pulled 15 Oct 26: 300 from the Top order and the 150 newest; 1,212,861 views and 16,388 likes that day.
+
+**Why it landed**
+- The top comment is a search-and-rescue account: "Im from Joplin. I was 19 when it hit, and worked search and rescue."
+  (3,100, 4 months ago). No beat: no data point answers it.
+- Viewers put themselves inside: "As soon as we closed the bathroom door, The Tornado was actively hitting our house."
+  (907, 4 months ago).
+- The fungus point is second-most liked: "So many healthcare providers are completely unaware of this risk." (1,500, 4
+  months ago).
+- Sirens as background noise: "I never once heard tornado sirens" (391, 4 months ago).
+  "Tornado siren fatigue was wide spread in 2011." (79, 4 months ago).
+
+**Corrections and pushback**
+- Hospital foundation, two comments disagree: "the hospital was not shifted off it's foundation" (4, 4 months ago),
+  against "the tornado rotated a part of the hospital 4 inches on its foundation." (2, 4 months ago). Verify before
+  scripting.
+- Death count: "I can’t believe the Joplin tornado, just one tornado, killed 161 people." (57, 4 months ago). Viewers
+  say 161; our impact-death figure is lower.
+- Store refuge: "every single person who chose to leave the stores instead of taking shelter died." (1,100, 4 months
+  ago). Unchecked; it cuts against the refuge-area point.
+- Street name: "that's Rangeline Road, one of the main streets in Joplin." (2, 4 months ago). Viewer says Rangeline
+  Road, not "20th street".
+- Butterfly people: "it was not butterflies, it was much worse." (3, 4 months ago).
+
+**The newest 150**
+- Still arriving with the toddler question: "DID THE TODDLER SURVIVE!?" (0, 2 weeks ago).
+- Weekly tests: "not testing your sirens weekly is a huge takeaway here" (0, 2 months ago).
+  "Testing an alarm once a week seems crazy to me." (0, 3 months ago).
+- Codes: "Hospitals and shops without reinforced rooms." (0, 2 weeks ago).
+- Basements: "wouldn't have BASEMENTS in tornado ally!" (0, 2 months ago).
+
+**What they add or ask for**
+- Shelters: "don't have mandatory shelters" (28, 4 months ago).
+- Sound: "can we as a group decide of no siren ambience" (0, 3 months ago).
+- Next topic: "Please do a video on the May 20th 2013 Moore OK EF5." (3, 4 months ago).
+
+**For our scripts**
+- Name one death count and say what it counts. "just one tornado, killed 161 people." (57, 4 months ago) will be quoted
+  back.
+- The hospital claims conflict. Check the source before the script takes a side:
+  "the hospital was not shifted off it's foundation" (4, 4 months ago).
+- The toddler and butterfly claims have no source in our list. They need one or they cut:
+  "A toddler had his skin peeled away from around his neck" (1,200, 4 months ago).
+- Keep the siren bed low under narration: "can we as a group decide of no siren ambience" (0, 3 months ago).
+
+### "The 2011 Joplin EF5 Tornado - The Deadliest American Tornado In Over 50 Years" (Alferia)
+https://www.youtube.com/watch?v=zMQd2F-GYiM, uploaded 14 Feb 24.
+Pulled 15 Oct 26: 300 from the Top order and the 150 newest; 297,953 views and 6,934 likes that day.
+
+**Why it landed**
+- Survivor at the store: "I was in the 15th st Walmart. I remember it so well and I have PTSD severe anxiety ..."
+  (415, 2 years ago).
+- The chaser: "This was the first time I saw a storm chaser cry when he realised how many people had been killed in this storm"
+  (1,000, 2 years ago).
+
+**Corrections and pushback**
+- Bettes: "is that he saw a dead body that was completely mangled" (18, 2 years ago).
+- Deadliest: "Well Joplin is not the US most deadly tornado as the most deadly tornado is the tri-state tornado in 1925 ..."
+  (2, 1 year ago).
+- Count: "Were the fatalities 158 or 161? You can find both data and it's confusing" (1, 2 years ago).
+
+**Sirens, warnings, basements (the most valuable)**
+- "There had been so many warnings in the years past, many people just no longer thought anything would happen."
+  (94, 2 years ago).
+- "We didnt think anything of the sirens because of how many we had that month." (0, 2 years ago).
+- "By the time the sirens went off it was already too late." (1, 2 years ago).
+- "If it's a false alarm? Great, that's a blessing!" (0, 2 years ago).
+- "Even you know it's real. If you can't get underground your in trouble." (1, 2 years ago).
+- "My mom ushered my older brother and I into our basement. My dad ran to our neighbors’ houses who we knew didn’t have basements"
+  (1, 2 years ago).
+- "we used to normally go to st. john’s since we didn’t have any shelter to go to" (3, 2 years ago).
+- "Nowadays, we have storm shelters that are designed to withstand a strong tornado such as Joplin."
+  (0, 2 years ago).
+- "It’s crazy to me how many people died despite taking the warning seriously and finding shelter."
+  (0, 2 years ago).
+
+**The newest 150** (149 viewer comments, 87 with 0 likes; 12 are months old, the rest a year or more)
+- "Why do you have the tornado graphic and the name of the tornado blurred out?" (1, 6 months ago).
+- "We have had 12 years of no EF5 which while good, disregards our ability to accurately determine windspeed."
+  (1, 1 year ago).
+
+**What they add or ask for**
+- "I think it would be a good idea to give a brief description of the stuff like cape and sheer" (15, 2 years ago).
+- "No mentions of the Butterfly People?" (6, 2 years ago).
+
+**For our scripts** (mine)
+- The siren belief is settled for viewers: "It was called the cry wolf factor." (94, 2 years ago). Answer it with the NIST figures.
+- The blur is a live question: "It doesn't protect the victims" (1, 6 months ago). Decide it on purpose.
+
+### "2011 Joplin EF5 Tornado: Unedited broadcast beginning 9 minutes before historic disaster" (Brad B)
+https://www.youtube.com/watch?v=FagzNHuI5JI, uploaded 22 May 23. Pulled 15 Oct 26: 300 from the Top order and
+the 150 newest; 1,636,849 views that day (likes hidden).
+
+**Why it landed**
+- Realisation on air: "You can hear the exact moment they realized how bad this actually was." (5,500, 3 years ago).
+- Sirens under the cutoff: "...while sirens blare makes it even more so." (3,800, 3 years ago).
+- The family in the house: "When the tornado hit we hid in our closet..." (267, 3 years ago).
+
+**Corrections and pushback**
+- Blame goes to the forecast:
+  "All the Joplin-area stations were relying on the National Weather Service..." (2,000, 3 years ago).
+- The warning belief: "Residents of Joplin had plenty of warning time." (1,800, 3 years ago). Answer it with the
+  siren times.
+- The lightning call:
+  "...said the 1st power flash could've been from a lightning strike. It was not." (888, 3 years ago).
+- Hospital time: "...struck St. John's Regional Medical Center at 5:41 PM." (26, 3 years ago). The poster adds
+  "I can't be sure of this". Check it against our touchdown time.
+- Speed disagrees: "...to monster tornado in about 2.2 secs." (23, 3 years ago), against
+  "Literally 34 seconds from funnel to over a mile wide" (8, 2 years ago). Settle it from tower-cam frames.
+- Death count disagrees: "It's terrible to think that 161 people are about to die." (14, 3 years ago), against
+  "...the loss of 158 (maybe 161) souls." (8, 2 years ago). The script must say which count it means.
+
+**The newest 150** (43 of the 150 have 0 likes; 47 also sit in the Top 300. The top one is pinned at 2,500 likes.)
+- Pinned belief: "even the best of technology wouldnt have helped alert the people on time" (2,500, 2 years ago).
+- Blame for the short notice: "Many blame local media (Weather) for the last minute notice." (423, 1 year ago).
+- Sirens, first-hand: "i was 9 and had sirens going off, pitch black at around four pm." (0, 2 years ago).
+- Basements: "If you're not underground." (0, 2 years ago).
+- Silent broadcast: "...the radar and EAS alert on the bottom without any kind of voice..." (0, 2 years ago).
+
+**What they add or ask for**
+- Timestamps: "I really wish there were timestamps on this video." (3, 3 years ago).
+- Other stations: "I wish somebody would upload KOAM's coverage of the tornado." (3, 2 years ago).
+- Questions: "Was a tornado Emergency issued?" (19, 1 year ago), and
+  "Not sure why they didn't look at the tower cam for their own visual confirmation sooner" (36, 3 years ago).
+
+**For our scripts**
+- Sirens and the broadcast carry it: "...while sirens blare makes it even more so." (3,800, 3 years ago). Give the
+  sirens their own beat.
+- The basement belief to answer: "her home didn’t really have a basement and she would have died..." (37, 3 years ago).
+
+### "Joplin 15 Years Later", Parts 1 and 2 (The Weather Channel)
+https://www.youtube.com/watch?v=4iGlOS8A0T4, uploaded 25 May 26 (Part 1)
+https://www.youtube.com/watch?v=Leg98FOyIN0, uploaded 26 May 26 (Part 2)
+Pulled 15 Oct 26: 90 comments in the Top order and 96 newest; 160,234 views that day (likes hidden), Part 1.
+Pulled 15 Oct 26: 36 comments in the Top order and 36 newest; 59,483 views that day (likes hidden), Part 2.
+
+**Why it landed**
+- The rebuild account is the most-liked Part 2 comment: "I was directly hit by this tornado, Living just across
+  from JHS. Catholic Charities helped us rebuild so we're still living here safe and sound." (59, 4 months ago).
+- Viewers credit the presenter: "I really appreciate that they actually had Mike Bettes on this versus just some
+  random narrator talking about it." (50, 4 months ago).
+- Part 1's most-liked comment is a chaser's account: "It was the first time I saw a professional storm chaser break
+  down sobbing after finding bodies and realizing how serious this was" (116, 4 months ago).
+
+**Corrections and pushback**
+- The hospital twist is the myth viewers call out: "It didn't rotate the hospital off it's foundation ..." (9, 4
+  months ago), and "the false myth about the hospital moving and twisting off its foundation? False." (0, 4 months ago).
+- The storm rating: "I say this absolute monster should have been categorized as an EF6." (10, 4 months ago).
+- The track start: "Sorry but, he's wrong about ground 0." (3, 4 months ago).
+- The timing: "It was 32 minutes not 38 minutes." (0, 3 months ago).
+
+**The newest**
+- "I can't fathom losing a quarter of my city." (1, 1 month ago).
+
+**What they add or ask for**
+- Series follow-up: "when is part 3?" (6, 4 months ago), and "Where is the rest of the show part 2, 3,4 etc?" (4, 4
+  months ago) under Part 1.
+- "Why didn't they issue a tornado emergency before the Joplin tornado hit the city?" (0, 4 months ago).
+- "With Joplin being situated in the old lead belt, was the soil turned up by the tornado have high levels of lead."
+  (1, 3 months ago).
+- "and see people building houses with wood, why , if your gona build, build something thing to withstand a tornado"
+  (0, 4 months ago).
+
+**For our scripts** (mine)
+- The hospital myth returns under both parts. The hospital beat must say what twisted and what did not move, in one
+  plain line, before the St. John's section.
+
+### "The Deadliest U.S. Tornado Since 1950 — Joplin, 2011" (Paul Raymond, our own old upload)
+https://www.youtube.com/watch?v=s--FjTUXU-w, uploaded 23 Aug 26. Pulled 15 Oct 26: 565 views and 11 likes that day.
+
+**What viewers said**
+- Nothing. The only 2 comments are ours (the pinned book link and "Do you know anyone who had experienced Joplin
+  tornado? Please comment the experience.", both 0 likes, 1 month ago). Zero viewer comments on 565 views.
+
+**For our scripts** (mine)
+- The new Joplin video gives viewers something to answer back to: it quotes their own comments from the videos above.
+
 _Next-topic review, 15 Oct 26 (Joplin, Missouri, 22 May 2011): reference videos for a candidate subject. The page summary per subject is in the research folder, not here._
 
 ### "The Worst Tornado Disaster in 70 years - The Joplin EF5" (Swegle Studios)
