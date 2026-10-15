@@ -498,7 +498,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A4-S7 · narration
 **Picture:** the map moves to 20th Street and Connecticut; a NIST ground photograph of the Dillon's grocery (credit line checked). A drawn produce cooler, thirty five figures. Chip "35 IN THE COOLER · ALL SURVIVED". Source line "NIST Sec. 1.2".
-> Over at the Dillon's grocery store, thirty-five people got into the produce cooler. The building was demolished, and all thirty-five of them survived, with at most minor cuts and bruises.
+> Not at the Dillon's grocery store. Thirty-five people there got into the produce cooler. The building was demolished, and all thirty-five of them survived, with at most minor cuts and bruises.
 
 **Rows:** [B20]
 
