@@ -393,8 +393,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Rows:** [H19: 12 in three complexes, all above ground] · [H20: the Somerset survivor]
 
 ### A3-S5 · narration
-**Picture:** the comment card "my step dad went to the center most closet in the house, threw everything out into the hallway" (1,600 likes). Then a tally: "27 survivors in the EF-4 zone · 11 basements · 1 crawl space · 15 closets, hallways, bathrooms". Chip "27 SURVIVORS". Source line "NIST Sec. 4.6.2.2".
-> So who came through? NIST talked to twenty-seven people who survived in houses in the worst part of the path. Eleven of them were in basements, and one was in a crawl space. The other fifteen rode it out in a closet, a hallway or a bathroom.
+**Picture:** the comment card "my step dad went to the center most closet in the house, threw everything out into the hallway" (1,600 likes). Then a tally: "27 survivors in the EF-4 zone · 11 basements · 1 crawl space · 15 closets, hallways, bathrooms". Chip "27 SURVIVORS". Source line "NIST Sec. 4.6.2.2". Then CLIP NEEDED: a Joplin survivor who rode it out in a closet, hallway or bathroom, telling it in their own voice (FEMA survivor interview first, public domain; research/ names no clip for this beat).
+> So who came through? I looked at the people NIST talked to who'd survived in houses in the worst part of the path. Eleven of them had made it to a basement, and almost everyone else rode it out in a closet, a hallway or a bathroom.
 
 **Rows:** [H13: 11 of 27 in basements] · [NIST Sec. 4.6.2.2, one in a crawl space, factcheck-A1-A3 row A3-S5] · [H14: 15 in internal first-floor spaces]
 
