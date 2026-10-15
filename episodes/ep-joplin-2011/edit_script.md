@@ -730,7 +730,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Picture:** [RS] the master map, all 135 dots, the empty below-ground line. Chips "135 INDOORS", "NONE FOUND BELOW GROUND", "8 IN 10: NO BASEMENT". Source lines "135 of 155 impact-related · NIST Finding 40", "no evidence any were underground · Finding 46", "82% of homes · no basement · Finding 20".
 > What most people in Joplin didn't have was anything below them. Eight in ten homes had no basement, and there wasn't a public shelter anywhere in the city or the county.
 
-**Rows:** [T3] · [H5] · [H1]
+**Rows:** [H1: 82 percent lacked basements] · [H3, H4: no community shelter or safe room, city or county] · (T3 and H5 stay on screen only: the hook's numbers are not spoken a third time, per the acts grade Z1-S2)
 
 ### Z1-S3 · narration
 **Picture:** the recommendation board, tile 7 half lit. Chip "2027 BUILDING CODE". Source line "2027 International Building Code · ICC store page, Oct 2026".
