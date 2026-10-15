@@ -227,6 +227,26 @@ def synth_file(model, voice_state, voice_md5, sr, stream_audio_chunks, lines, ou
     if failed:
         sys.exit(f"FAILED segments: {failed}")
 
+    # trim every clip's edge silence and interleave the designed gaps (gap_after); the cached
+    # segments stay untouched, so a gap change never re-voices anything
+    parts = []
+    for i, seg in enumerate(seg_paths):
+        trimmed = seg_dir / f"trim_{seg.name}"
+        t = subprocess.run([FFMPEG, "-y", "-i", str(seg), "-af", TRIM_EDGES, "-ar", "24000", "-ac", "1",
+                            "-c:a", "pcm_s16le", str(trimmed)], capture_output=True, text=True,
+                           creationflags=NT_FLAGS)
+        if t.returncode != 0 or probe(trimmed) <= 0:
+            sys.exit(f"edge trim failed for {seg.name}: {t.stderr}")
+        parts.append(trimmed)
+        gap = gap_after(lines, i)
+        if gap:
+            sil = seg_dir / f"gap_{int(gap * 1000)}ms.wav"
+            if not sil.exists():
+                subprocess.run([FFMPEG, "-y", "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono", "-t", str(gap),
+                                "-c:a", "pcm_s16le", str(sil)], capture_output=True, creationflags=NT_FLAGS)
+            parts.append(sil)
+    seg_paths = parts
+
     concat = seg_dir / "concat.txt"
     concat.write_text("".join(f"file '{p.name}'\n" for p in seg_paths))
     # -ar/-ac pinned (2026-07-17 mute-tail RCA): loudnorm internally resamples to 192kHz; without an
