@@ -660,7 +660,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A6-S1 · narration
 **Picture:** the recommendation board; tile 7 lifts out. The NIST page, Recommendation 7, underlined, including "located in tornado hazard areas". Then the NIST ground photograph of the Walmart refuge area from A4. Chip "RECOMMENDATION 7". Source line "NIST Sec. 5.2.2, Recommendation 7".
-> The one that matters most here is Recommendation seven. NIST asked for tornado shelters in new and existing apartment buildings, stores, schools and assembly buildings in tornado-prone areas, because the safe spots in the big stores didn't perform the way they needed to. So does any building code ask for those shelters now?
+> The one that matters most here is Recommendation seven. NIST asked for tornado shelters in apartment buildings, stores, schools and places where crowds gather, old and new, in tornado-prone areas. The safe spots in the big stores hadn't done the job they needed to. So does any building code ask for those shelters now?
 
 **Rows:** [R3: Recommendation 7, in tornado hazard areas] · [R4: inadequate performance of the best available refuge areas]
 
