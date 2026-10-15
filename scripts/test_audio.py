@@ -3,7 +3,8 @@ Covers: segment-parse heading boundary (notes never glue into narration), hard-f
 ambiguous/note blockquotes, manifest text-hash re-synthesis, 0-segment / unknown --only
 hard failure without touching manifest.json, word_budget counting the voiced text only,
 duration-based (not mtime-only) words.json staleness, and SRT caption alignment to script
-text. All TTS/whisper/ffprobe calls are mocked — no paid API, no real audio, no network.
+text. All TTS/whisper calls are mocked: no paid API, no network. The designed-pause checks run
+real ffmpeg/ffprobe on a synthetic clip.
 """
 import hashlib
 import json
@@ -595,7 +596,7 @@ check("tts_clone: the same sentence under the same voice keeps its cache stamp",
 
 # Designed pauses: the gap between voiced lines is chosen by what the line does, never the model's
 # edge silence (it was 0.87 s at every sentence end).
-_lines = ["A tornado siren goes off.", "What do you do?", "You get inside, right?", "Not one.",
+_lines = ["A tornado siren goes off.", "What do you do?", "You get inside, right?", '" Nobody got out.',
           "In 2011, a hundred thirty-five of the people", "were inside a building."]
 _gaps = [tts_clone.gap_after(_lines, i) for i in range(len(_lines))]
 check("tts_clone: a plain sentence end gets the short designed gap", _gaps[0] == 0.32, _gaps)
@@ -610,15 +611,16 @@ tts_clone.PAUSES = _old_pauses
 
 # the edge trim must cut the model's lead/trail silence down to a few hundredths, and keep the speech
 with tempfile.TemporaryDirectory() as _td:
-    _src, _out = Path(_td) / "seg.wav", Path(_td) / "trim.wav"
+    _src = Path(_td) / "seg.wav"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i",
                     "anullsrc=r=24000:cl=mono:d=0.45[a];sine=f=220:r=24000:d=1.0[b];anullsrc=r=24000:cl=mono:d=0.42[c];[a][b][c]concat=n=3:v=0:a=1",
                     str(_src)], check=True)
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(_src), "-af", tts_clone.TRIM_EDGES, str(_out)],
-                   check=True)
-    _trimmed = tts_clone.probe(_out)
+    _trimmed = tts_clone.probe(tts_clone.trim_and_pad(_src, 0.0))
+    _padded = tts_clone.probe(tts_clone.trim_and_pad(_src, 0.32))
 check("tts_clone: edge trim leaves the 1.0 s of speech plus under 0.12 s of silence",
       1.0 <= _trimmed <= 1.12, _trimmed)
+check("tts_clone: the designed gap is appended after the trimmed speech",
+      abs(_padded - _trimmed - 0.32) < 0.01, (_trimmed, _padded))
 
 # ---------------------------------------------------------------------------
 if fails:

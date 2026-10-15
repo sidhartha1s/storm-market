@@ -117,7 +117,7 @@ def gap_after(lines, i):
     cur = lines[i].rstrip()
     if not cur.endswith((".", "?", "!")):
         return 0.18     # a subsplit clause boundary inside one sentence: a comma-length breath
-    if len(lines[i + 1].split()) <= 3:
+    if sum(any(c.isalpha() for c in w) for w in lines[i + 1].split()) <= 3:  # a stray quote is not a word
         return 0.65     # a beat before a short kicker ("Not one.")
     if cur.endswith("?"):
         return 0.55     # let a question land
