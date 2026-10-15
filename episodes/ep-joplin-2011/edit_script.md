@@ -667,8 +667,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 *([loop L7 closes]; [loop L10 open]: does any code ask for them now? Paid in A6-S3 and A6-S4.)*
 
 ### A6-S2 · narration
-**Picture:** the comment card "By the way, Joplin is thriving as of now. They're rebuilding prettier buildings, preparing more public tornado shelters..." (3,600 likes). Our own drawing of a school safe room, made from the FEMA case study's description (no FEMA photograph exists on that page). Chips "14 SAFE ROOMS", then "250 MPH". Source line "FEMA case study, updated Jul 30, 2024".
-> One comment says Joplin is building more public tornado shelters, and the comment is partly right. Since 2011, the Joplin School District has built fourteen safe rooms, made to take winds up to two hundred fifty miles an hour, and neighbors with nowhere else to go can use them.
+**Picture:** the comment card "By the way, Joplin is thriving as of now. They're rebuilding prettier buildings, preparing more public tornado shelters..." (3,600 likes). Our own drawing of a school safe room, made from the FEMA case study's description (no FEMA photograph exists on that page). Chips "14 SAFE ROOMS", then "250 MPH". Source line "FEMA case study, updated Jul 30, 2024". CLIP NEEDED: moving footage inside a Joplin school safe room (public domain FEMA first; research/ names only the FEMA case study page, which has no video).
+> One comment says Joplin is building more public tornado shelters, and it's partly right. Since 2011, the Joplin School District has built fourteen safe rooms, made to take winds up to two hundred fifty miles an hour. And if you live nearby with nowhere else to go, you can use them.
 
 **Rows:** [FEMA case study "Schools in Joplin, Missouri stand up to tornadoes by building safe rooms" (updated 30 Jul 2024); FEMA release 20 Feb 2020; factcheck-acts row A6-S4 and factcheck-A4-Z1 row A6-S2]
 
