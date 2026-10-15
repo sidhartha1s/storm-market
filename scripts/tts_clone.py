@@ -100,6 +100,28 @@ def subsplit(sent):
     return final
 
 
+# Designed pauses (owner 15 Oct 26: "periods, commas have same mute length"). Each sentence is voiced
+# alone, so the gap between two of them used to be the model's own edge silence: measured 0.87 s at
+# EVERY sentence end (0.45 lead + 0.42 trail), whatever the sentence did. synth_file now trims each
+# clip's edges and puts this chosen gap between them instead. The owner picked these values by ear
+# on the Joplin hook (designed vs tight 0.28 s vs untouched 0.87 s).
+def gap_after(lines, i):
+    """Seconds of silence after lines[i]; 0 after the last line."""
+    if i == len(lines) - 1:
+        return 0.0
+    if not lines[i].rstrip().endswith((".", "?", "!")):
+        return 0.18     # a subsplit clause boundary inside one sentence: a comma-length breath
+    if len(lines[i + 1].split()) <= 3:
+        return 0.65     # a beat before a short kicker ("Not one.")
+    if lines[i].rstrip().endswith("?"):
+        return 0.55     # let a question land
+    return 0.32
+
+
+TRIM_EDGES = ("silenceremove=start_periods=1:start_threshold=-40dB:start_silence=0.03,areverse,"
+              "silenceremove=start_periods=1:start_threshold=-40dB:start_silence=0.06,areverse")
+
+
 def prepare_lines(text_file):
     """Text file -> the synth lines, with the prosody report printed before any synthesis."""
     orig = " ".join(Path(text_file).read_text(encoding="utf-8").split())
