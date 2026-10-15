@@ -278,7 +278,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S2 · narration
 **Picture:** clock "5:09 PM". Warning polygon 30 draws over western Jasper County, clipping the northeast corner of Joplin; "polygon 30" on screen only. Chip "WARNING · NE CORNER". Source line "NWS Table 1 · NIST Sec. 2.2.2".
-> Not with the first warning. At five-oh-nine, a tornado warning went out that only clipped the northeast corner of Joplin, and the storm behind it never made a tornado.
+> At five-oh-nine, a tornado warning went out, but it only clipped the northeast corner of Joplin, and the storm behind it never made a tornado.
 
 **Rows:** [E4] · [E5: the storm did not produce a tornado; only a small part of the city]
 
