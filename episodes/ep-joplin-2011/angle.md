@@ -36,7 +36,7 @@ RODALCO2007, "JOPLIN, MO, Tornado, 22 May 2011" (https://www.youtube.com/watch?v
 - "The sirens did not lie" is the record's side, not a verdict on the warning system. The NWS assessment found the first siren lost credibility; the script never says "the sirens were not the problem".
 - The two numbers are different sets: 14 of 18 is tornado warnings 2005 to 2011, "once a year" is siren activations since 2007. Never merge them into one figure.
 - Siren count: NIST says a 25-siren system; June First says 24; our old script said 28. Use NIST.
-- Deaths: 155 impact-related (NIST's base for the 135), 161 in NIST's executive summary, 158 direct plus 3 indirect in Storm Data. Each number is said with its base.
+- Deaths: 155 impact-related (NIST's base for the 135), 161 in NIST's executive summary, 158 direct plus 3 indirect in Storm Data. Each number is said with its base. NIST Table 4-3, counted row by row, sums to 154 (135 inside, 19 outside), one short of Finding 40's 155: a graphic built from the table says so or uses the finding's figures only.
 
 ## Already told by the top videos (caption check, 15 Oct 26)
 June First (syfeDcNgmL0) and Swegle (bDrvj83MNJY) captions, searched for indoor, 87, 135, basement, underground, below ground, once a year, 14 of 18, fourteen, false alarm, siren:
