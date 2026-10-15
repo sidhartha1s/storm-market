@@ -388,7 +388,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A3-S4 · narration
 **Picture:** a NIST ground photograph of a demolished apartment complex (figure to pick at sourcing; credit line checked). Twelve dots in three apartment outlines. Chip "12 IN APARTMENTS". Then a drawn staircase, neighbors under it. Source line "NIST Sec. 4.6.2.2 · Sec. 1.2".
-> Twelve more people were lost in three apartment complexes. The buildings were wood frame, there was no protected space, and every one of those twelve was above ground. At the Somerset complex, one woman got out of her apartment and rode out the tornado under the building's staircase with her neighbors.
+> Twelve more people were lost in three apartment complexes. The buildings were mostly wood frame, there wasn't any protected space, and every one of those twelve was above ground. At the Somerset complex, one woman got out of her apartment and rode out the tornado under the building's staircase with her neighbors.
 
 **Rows:** [H19: 12 in three complexes, all above ground] · [H20: the Somerset survivor]
 
