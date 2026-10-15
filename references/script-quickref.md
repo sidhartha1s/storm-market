@@ -92,6 +92,9 @@ mechanism/analysis pair) and plants+pays a loop.
   first person ("I read the whole report"), talks to "you" and puts the viewer in the place ("if you lived there, you
   heard them every Monday"). Contractions wherever a person would use them. Target 9 of 10 on "a person talking to
   you" (1 = a report read aloud); the writer scores every section and the grader checks it.
+- **Low cognitive load (owner 15 Oct 26: "Don't make them think. Don't fry their brains ... They will skip.")**: name
+  the thing in full ("a tornado siren goes off", not "siren goes off"), never drop articles or subjects for punch, never
+  a line the viewer has to decode. Put the key fact on screen as a 2 to 4 word chip while it is said.
 - Weather terms stay as storm followers say them, never explained down: EF5, hook echo, wall cloud, tornado
   warning, lead time, NWS, SPC, Fujita. One short gloss the first time a term is rare, never a lecture.
 - Spoken numbers the way a person says them ("a hundred thirty-five"), one count per sentence; source qualifiers
