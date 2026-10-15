@@ -601,8 +601,8 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 *([A5-Q1 paid]. Plants A6-S5.)*
 
 ### A5-S6 · narration
-**Picture:** the comment card "I was in the greenbrier nursing home when it happened." (193 likes). A NIST ground photograph of the Greenbriar site (credit line checked). Our drawing of a one-story building, the inner hallway lit. Chip "19 OF 95 LOST". Source line "NIST Sec. 1.2 · Sec. 4.4.4 · Sec. 4.6.2.2".
-> Then there's the Greenbriar nursing home. The center of the tornado went right over it. Ninety-five people were inside, and nineteen were lost. The plan was to move residents into the inner hallway and close their room doors against flying glass. Media reports and CDC interviews say people in that hallway were buried in rubble. NIST couldn't say where in the building the nineteen were.
+**Picture:** the comment card "I was in the greenbrier nursing home when it happened." (193 likes). A NIST ground photograph of the Greenbriar site (credit line checked). Our drawing of a one-story building, the inner hallway lit. Chip "19 OF 95 LOST". Source line "NIST Sec. 1.2 · Sec. 4.4.4 · Sec. 4.6.2.2". On "buried in rubble" a source chip "media reports · CDC interviews · where the 19 were: not known (NIST)".
+> Then there's the Greenbriar nursing home. The center of the tornado went right over it. Ninety-five people were inside, and nineteen were lost. The plan was to move residents into the inner hallway and close their room doors against flying glass. Accounts afterward say people in that hallway were buried in rubble.
 
 **Rows:** [C17: 19 of 95; "one-story building", walls not described, per the Greenbriar CONFLICT] · [C19] · [C20] · [C21]
 
