@@ -64,9 +64,9 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### T1-S1 · narration
 **Picture:** hard cut on the first word, never black: a NIST ground photograph of a flattened residential street in the EF-4 zone (NIST NCSTAR 3, figure to pick at sourcing; never an aerial marked "Used with permission"). The comment card from H1 shrinks to the top right corner and stays. On "one hundred sixty one" the number lands with the label "lives lost · NIST count (Missouri State Police list)". One bed swell, no siren.
-> The tornado that crossed Joplin, Missouri, that Sunday evening took one hundred sixty one lives, in the federal investigators' count.
+> The tornado took one hundred sixty one lives in Joplin, in the federal investigators' count.
 
-**Rows:** [B42: "that late Sunday afternoon"] · [T1: 161, base Missouri State Police list, NIST Finding 28]
+**Rows:** [T1: 161, base Missouri State Police list, NIST Finding 28]
 
 ### T1-S2 · narration
 **Picture:** our own master map of Joplin, first appearance: the six-mile damage path in grey. Dots light inside building outlines as the line is spoken; a thin line under the map, labelled "below ground", stays empty. Small source line: "NIST NCSTAR 3, Findings 40 and 46".
@@ -76,7 +76,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### T1-S3 · narration
 **Picture:** push in on the empty "below ground" line until it fills the width of the frame, then a cut to a NIST ground photograph of a single house slab with nothing beneath it (figure to pick at sourcing). Bed drops to near silence on the last word.
-> That zero has a reason, and it was built into Joplin's houses years before the storm.
+> That zero has a reason, built into Joplin's houses years before the storm.
 
 **Rows:** [H1: 82 percent of homes lacked basements] (the reason is paid in A3)
 
@@ -95,9 +95,9 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### I1-S2 · narration
 **Picture:** the master map again. A touchdown dot lands just southwest of the city limits with a clock "5:34 PM". The path draws west to east across the city as the second sentence runs, width shown as a band "up to 1 mile". Clock label "about 15 minutes in the city".
-> At five thirty four that evening, the tornado touched down just southwest of the city limits. It crossed six miles of Joplin in about fifteen minutes, up to a mile wide.
+> That Sunday, at five thirty four in the evening, the tornado touched down just southwest of the city limits. It crossed six miles of Joplin in about fifteen minutes, up to a mile wide.
 
-**Rows:** [E13] · [W3, W6, W8]
+**Rows:** [B42: "that late Sunday afternoon"; E13] · [W3, W6, W8]
 
 ### I1-S3 · narration
 **Picture:** the master map holds. Twenty five siren icons appear across the city, all at once. A calendar strip slides in under the map: one grey tick on every Monday, labelled "test · 10 AM · 1 minute".
@@ -118,30 +118,24 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Rows:** [S17]
 
 ### I1-S6 · narration
-**Picture:** back to the comment card (H1), full size, the line "stopping at fast food restaurants and stores like nothing is happening" underlined. Then the master map with three store and restaurant outlines lit on the commercial strip. Source line under it: "NWS Service Assessment, Finding 2d".
-> The comment saw people stopping at stores and fast food restaurants. The Weather Service found most of the businesses it interviewed had a plan for warnings and for sheltering people.
+**Picture:** the NIST report's cover (NIST NCSTAR 3, public domain), then a name card "NIST · National Institute of Standards and Technology · federal investigators". The master map returns and dots begin to land, one location type at a time, each with a small on-screen label (not spoken): houses, apartments, two big box stores, a phone store, a pizza restaurant, a lodge, a theater, two churches, a hospital, two nursing homes.
+> Investigators from the National Institute of Standards and Technology, called NIST, placed nearly every person lost to the tornado's impact, building by building.
 
-**Rows:** [angle.md, the comment] · [B44]
+**Rows:** [T9, T12: Table 4-3 places 154 of the 155 by location, so "nearly every one"] (labels: H26, B45, C6, C23, C25; B2 "big-box stores")
 
 ### I1-S7 · narration
-**Picture:** the NIST report's cover (NIST NCSTAR 3, public domain), then a name card "NIST · National Institute of Standards and Technology · federal investigators". The master map returns and dots begin to land, one location type at a time, with a small label for each type as it is named: houses, apartments, two big box stores, a phone store, a pizza restaurant, a lodge, a theater, two churches, a hospital, two nursing homes.
-> Investigators from the National Institute of Standards and Technology, called NIST, worked out where the people the tornado took had been. They placed them in houses and apartments, two big box stores, a phone store, a pizza restaurant, a lodge, a theater, two churches, a hospital and two nursing homes.
-
-**Rows:** [T9, T12: Table 4-3 places 154 by location] · [H26, B45, C6, C23, C25: the location rows; B2: "big-box stores"]
-
-### I1-S8 · narration
 **Picture:** [RS] [VE] the whole map lit: 135 dots inside building outlines, 19 outside in the street and in vehicles, and the empty "below ground" line under the map. On "one hundred thirty five" the figure lands large: "135 of 155 · inside a structure · NIST Finding 40". On "below ground" the figure "0" lands on the empty line, with "no evidence any were below ground · NIST Finding 46". Hold.
 > In Joplin the tornado found people indoors, in buildings with nothing below them. One hundred thirty five of the one hundred fifty five who lost their lives to its impact were inside a structure, and not one person the investigators could place was below ground.
 
 **Rows:** [claim, angle.md, first sentence, with the numbers spelled] · [T3: 135 of 155, Finding 40] · [H5, H6: Finding 46 and Sec. 4.6.2.2]
 
-### I1-S9 · narration
+### I1-S8 · narration
 **Picture:** the calendar strip from I1-S4 returns under the map, the grey Monday ticks dimmed and the red marks lit. Small label "outside the weekly test".
 > The town believed its sirens went off all the time; the records say about once a year.
 
 **Rows:** [claim, angle.md, second sentence] · [S3: residents believed in many false alarms; S2: about once a year]
 
-### I1-S10 · narration
+### I1-S9 · narration
 **Picture:** the Weather Service assessment's page again, now unmarked, held, a slow push in on the word "sirens". The bed drops out on the last word.
 > If the sirens were rare, where did all the time come from? The Weather Service asked the people of Joplin.
 

@@ -40,7 +40,7 @@
 - **Reveal:** once a year outside the Monday test (S2, S5); 135 of the 155 indoors, zero the investigators could place below ground (T3, H5, H6).
 - **Visual event:** Paul full frame; the comment card with its likes; the master map with 135 dots lighting inside building outlines and an empty "below ground" row.
 - **Exit hook:** "If the sirens were rare, where did all the time come from?" answered with "The Weather Service asked the people of Joplin."
-- **Rows:** S2, S5, S17, T1, T3, H5, H6, E13, W3, W6, X21, B44, angle.md (comment).
+- **Rows:** S2, S3, S5, S17, T1, T3, T4, T9, T12, H1, H5, H6, E13, W3, W6, W8, X21, B42, angle.md (comment).
 - **Comments answered:** RODALCO2007, 3,000 likes ("...no one is paying any attention to the sirens going off...").
 
 ### A1 · Sirens: belief against record (1:45 to 4:45)
@@ -99,7 +99,7 @@
 
 ### Z1 · Close (21:00 to 22:00)
 - **Purpose:** answer the dominant question in the last 30 to 60 s, a fact with a dated forward window, then the signature line.
-- **Question:** (answered) the sirens told the truth twice that evening; the buildings people went to had nothing below them.
+- **Question:** (answered) the siren record matched what NIST found, not what the town believed, and the buildings people went to had nothing below them.
 - **Reveal:** the record against the belief, one last time, then the forward window [verify: the next ICC code edition year and whether it changes shelter rules].
 - **Visual event:** the master map, all 135 dots, the empty below-ground row.
 - **Exit hook:** none (end card).
@@ -112,8 +112,8 @@
 
 | Loop | Kind | What it asks | Opens (where) | Closes (where) |
 |---|---|---|---|---|
-| L1 | episode | If the sirens did not lie, what failed the people who heard them? | H1-S1 (Paul, the comment against "once a year") | Z1 (the sirens sounded twice; the buildings had nothing below them) |
-| L2 | act | Where did "all the time" come from? | I1-S10 (exit question) | A1 (weekly test plus 14 of 18 unverified warnings, filed together as "sirens") |
+| L1 | episode | If the sirens did not lie, what failed the people who heard them? | H1-S1 (Paul, the comment against "once a year") | Z1 (the siren record against the belief; the buildings had nothing below them) |
+| L2 | act | Where did "all the time" come from? | I1-S9 (exit question) | A1 (weekly test plus 14 of 18 unverified warnings, filed together as "sirens") |
 | L3 | act | What did the second siren mean to those who heard it? | A1 exit | A2 (worse warning, or an all clear; no all-clear signal existed) with a callback in A4 (Pizza Hut) |
 | L4 | act | What was under the best place they had? | A2 exit | A3 (82 percent of homes had no basement; no public shelter) |
 | L5 | act | Did the refuge areas protect the people inside? | A3 exit | A4 (no evidence they did; Walmart wall, Home Depot front wall) |
@@ -122,6 +122,6 @@
 | L8 | tail gap | Why was the zero below ground built in years before the storm? | T1-S3 | A3 (82 percent no basements) |
 | cta-hinge | cta-hinge | Of the 71 lost at home, three had a basement they could reach: where were they? | A3, Paul line right before the ad (about 10:30) | A3, first words after the ad: "At least two of the three were not in it." |
 | HC1 | hook callback | "Stick with me, because what I'm about to explain is exactly why Joplin heard rare sirens as noise." | A1 opening | A1 (record shown) |
-| HC2 | hook callback | "Stick with me, because what I'm about to explain is exactly why nobody the tornado took could be placed below ground." | A4 opening | A4 (Macadoodles, the cellar that held) |
+| HC2 | hook callback | "Stick with me, because what I'm about to explain is exactly why not one person the investigators could place was below ground." | A4 opening | A4 (Macadoodles, the cellar that held) |
 
 Paul on camera besides the hook (5 at most, each about 26 words or fewer): A1 opening (HC1), A2 at five thirty eight, A3 before the ad (the hinge, 25 words or fewer), A5 at the age gap, Z1 before the signature line.
