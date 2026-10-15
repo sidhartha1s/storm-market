@@ -39,6 +39,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 - **The hook's sound:** the channel's civil-defense siren (`soundreality-civil-defense-siren-128262.mp3`), low and distant under Paul from 0:00 and cut dead on his last word, because the film is about whether that one sound was believed; it is the only sound that belongs in frame one, and no archive or broadcast audio plays in the hook.
 - Pictures: NIST's own ground photographs (never the GeoEye or Pictometry aerials marked "Used with permission"), the NOAA radar image, our own maps, timelines and counters, public domain FEMA and NOAA material. News pulls only as inserts inside acts, never in the hook. Storm-chaser footage never: the opening comment sits under a chase video, so the comment appears as a card only, never with a frame of that video.
 - A comment appears as an on-screen card with its likes and the video it sits under, verbatim, inside the acts only: never in the hook, never with a like count spoken. Narration answers it with a record; no segment reacts to it. The RODALCO2007 comment first appears in A1 (A1-S3).
+- Register (owner, 15 Oct 26; `references/script-quickref.md` "Voice" on the docs-voice-hook-grain branch): Paul is an old friend you haven't seen in years, telling you what happened. First person where true of a presenter reading the sources ("I went through the whole NIST report"), "you", contractions, storm terms as fans say them (EF5, NWS, hook echo), never explained down. Writer's score for T1 and I1 in this draft: see the hand-back.
 - Numbers are spoken the way an American says them at a kitchen table, spelled out for the voice: "a hundred thirty-five", "a hundred sixty-one", "twenty-five", never "one hundred thirty five of the one hundred fifty five". One count per sentence; where a ratio is needed, the plain share ("eighty-seven percent") or the screen carries the second number. Never "one thirty-five" (reads as a clock time). Years stay digits. (Owner, 15 Oct 26.)
 - Source qualifiers stay off the spoken line and go on the on-screen source line with the exact base and finding: "in the investigators' count", "who lost their lives to its impact", "not one person the investigators could place", "NIST found". The spoken line stays plain and never claims more than the source: "none below ground" means those the tornado took. The locked claim lives in the header and on screen; spoken, it is said plainly. (Owner, 15 Oct 26.)
 - No start times beyond `structure.md`'s plan; real times wait on the voice probe.
@@ -48,89 +49,118 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 ## H1 · Hook (0:00)
 
 ### H1-S1 · Paul on camera, one clip
-**Picture:** Paul on camera, full frame, frame one, said like a man who is tired of the myth. Popfig inside the first second, top left: "Joplin, Missouri · May 22, 2011". No comment card, no other video, no like count. On "dark clouds" a small chip: "many residents to the NWS · Finding 2b". On "once a year" a second chip under Paul: "outside the weekly test · at most · since 2007 · NIST Finding 31". Sound: the civil-defense siren, low and distant, cut on his last word. Cut out on that word.
-> Joplin residents said the sirens went off all the time, even for dark clouds, but outside a weekly test, those sirens sounded about once a year.
+**Picture:** Paul on camera, full frame, frame one, an old friend across the table, not a presenter. Popfig inside the first second, top left: "Joplin, Missouri · May 22, 2011". The civil-defense siren SFX starts on "Siren goes off" and drops under him at "What do you do?", cut dead on his last word. A beat after "right?" so the viewer answers in their head. On "a hundred thirty-five" a chip: "135 of 155 impact-related · inside a structure · NIST Finding 40". On "below ground" a second chip: "NIST found no evidence any were underground · Finding 46". No comment card, no other video, no like count. Cut out on his last word.
+> Okay. Siren goes off. What do you do? You get inside, right? In Joplin, a hundred thirty-five of the people that tornado took were indoors when it hit. And as far as the investigators could tell, not one of them was below ground.
 
-**Rows:** [S17: "Many noted ... hear sirens all the time and [sirens] go off for dark clouds", NWS Finding 2b] · [S5: weekly test] · [S2, S4: "once per year (at most)" since 2007, not including the weekly test]
+**Rows:** (the viewer's belief, no row) · [T3: 135 of 155, Finding 40] · [H5: Finding 46, "no evidence ... underground"]
 
-## H1 alternatives (the owner picks one; the pick above is H1-S1, 26 words; all comment-free; any pick keeps the H1-S1 chips so "at most", "since 2007" and "Finding 31" are on screen)
-- Alternative 1 (26 words): "Plenty of Joplin residents told the Weather Service the sirens went off all the time, but outside a weekly test, they sounded about once a year." Rows: S17, S5, S2. ("Plenty" matches the NWS "a large number of participants".)
-- Alternative 2 (24 words, the twist first): "More than eight in ten of the people the Joplin tornado took were already indoors, and investigators found no sign any were below ground." Rows: T3, T7, H5. Screen: "135 of 155 impact-related · Finding 40" and "no evidence any were underground · Finding 46". (Off the title, and the tail would need rewriting.)
-- Alternative 3 (25 words): "People in Joplin said they heard the sirens so often they quit listening, but outside a weekly test, those sirens sounded about once a year." Rows: S17 ("bombarded with [sirens] so often that we don't pay attention"), S16, S5, S2.
-- Why the pick (the grader's ship line, made true): the belief is in the residents' own words to the Weather Service, "all the time" sets up the direct contrast with "about once a year", "a weekly test" needs no explaining to a cold viewer, and "those sirens" keeps the pronoun off "dark clouds". "Joplin residents said" names who said it (many residents, NWS Finding 2b) instead of "Joplin swore" or an unnamed crowd. The hook never says the sirens were not the problem.
+*(Two breaks on the viewer's own answer: they were inside, and they still were not below ground. [Q0 open]: then what went wrong? Carried as the episode loop L1.)*
+
+## H1 alternatives (the owner picks one; the pick above is H1-S1, 43 words, one Paul clip)
+- Alternative 1 (38 words): "Tornado warning, sirens going. Where do you go? Inside, lowest floor, right? In Joplin, a hundred thirty-five of the people that tornado took were inside. And as far as the investigators could tell, not one was below ground." Rows: T3, H5. Same chips as H1-S1.
+- Alternative 2 (37 words): "Okay. Siren goes off. What do you do? Head for the basement, right? In Joplin, most homes didn't have one. And of the hundred thirty-five the tornado took indoors, investigators couldn't place a single one below ground." Rows: H1, T3, H5. Chips: "82% of homes · no basement · Finding 20", then the two H1-S1 chips. (Spends the basement answer that T1-S3 and I1-S1 pay.)
+- Why the pick: the owner's shape, kept. The viewer answers "go inside", hears they were right, and is broken twice inside 15 s. "Were indoors when it hit" replaces "did exactly that", because NIST places them inside a structure and does not say they went in because of the siren (many were already in church, in a store, at home).
 
 ---
 
-## T1 · Hook tail (0:08 planned)
+## T1 · Hook tail (0:15 planned)
 
 ### T1-S1 · narration
 **Picture:** hard cut on the first word, never black: a NIST ground photograph of a flattened residential street (NIST NCSTAR 3, figure to pick at sourcing; its caption must place it in Joplin's damage path; never an aerial marked "Used with permission"). On "a hundred sixty-one" the number lands: "161 lives lost". Source line: "NIST count, Missouri State Police list · Finding 28". One bed swell, no siren.
-> The tornado took a hundred sixty-one lives.
+> It was a Sunday evening, May twenty-second, 2011, down in southwest Missouri, and that tornado took a hundred sixty-one lives.
 
-**Rows:** [T1: 161, base Missouri State Police list, NIST Finding 28]
+**Rows:** [NIST Sec. 1.2: "On Sunday, May 22, 2011"; NIST Sec. 1.1: southwest Missouri] · [T1: 161, Finding 28]
 
 ### T1-S2 · narration
-**Picture:** our own master map of Joplin, first appearance: the six-mile damage path in grey. Dots light inside building outlines on the first sentence; a thin line under the map, labelled "below ground", stays empty on the second. Source lines: "135 of 155 impact-related · inside a structure · NIST Finding 40" and "NIST found no evidence any were underground · Finding 46".
-> Most of them were indoors when it hit, and the investigators found no sign any of them was below ground.
+**Picture:** our own master map of Joplin, first appearance. Two siren rings pulse over the city, stamped "5:11 PM" and "5:38 PM", source line "NWS timeline · 3 minutes each". On "twice" both rings flash.
+> You'd figure the sirens failed that evening, but they went off, twice.
 
-**Rows:** [T3, T7: 135 of 155 and 135 of 161, so "most" holds on both bases] · [H5: Finding 46, "no evidence ... underground"]
+**Rows:** [E6: 5:11 first siren] · [E14: 5:38 second siren] · [S27: two activations the same evening] (A2 says the second came after touchdown)
+
+*(Third break on the viewer's belief; holds L1 open.)*
 
 ### T1-S3 · narration
-**Picture:** push in on the empty "below ground" line, then cut to our own cross-section of a one-story house on a slab or crawl space (never drawn as a solid block), label "no basement · 82% of Joplin homes · NIST Finding 20". On "having one" a second, smaller cross-section with a basement slides in beside it, its stairs lit and empty. Bed drops to near silence on the last word.
-> Most homes in Joplin had no basement, and having one didn't always mean you were down in it.
+**Picture:** the master map, a thin line under it labelled "below ground", empty; push in on it until it fills the frame.
+> Then if the sirens worked and people were inside, why wasn't anybody below ground?
 
-**Rows:** [H1: 82 percent lacked basements] · [H22, H8: 3 of 71 had basement access, at least 2 not in it; B31, B33: the theater basement, the Macadoodles cellar] (no causal claim; plants the A3 hinge without spending the three-of-seventy-one count; basements that were used held, per Finding 46)
+**Rows:** (the question; no row)
 
-*([loop L8 open]: what happened where there was a basement. Closes in A3 (the three with basement access) and A4 (the theater stairs, the Macadoodles cellar).)*
+*([Q1 open]: why wasn't anybody below ground? Paid in I1-S1.)*
 
 *(no void: cut straight into the intro. No black hold, title card or disclaimer before 1:00.)*
 
 
-## I1 · Intro: the day, the place, the two numbers (0:20 planned)
+## I1 · Intro: the day, the place, the two numbers (0:24 planned)
 
 ### I1-S1 · narration
-**Picture:** our own map of the United States, pushing in to the four-state corner where Missouri, Kansas, Oklahoma and Arkansas touch, then to Joplin, label "Joplin, Missouri · population 50,150 · 2010 Census (via NIST)". A touchdown dot lands just southwest of the city limits with a clock "about 5:34 PM" and the source line "NWS timeline: approximate touchdown". The path draws west to east across the city on the second sentence, width shown as a band "up to 1 mile". Labels "6 miles in Joplin" on the path and "about 15 minutes in the city", source line "NIST Sec. 1.3" under both (the spoken line carries only the minutes; Act 2 never labels 5:38 to 5:50 as 15 minutes).
-> On Sunday evening, May twenty-second, 2011, a tornado touched down just outside Joplin, Missouri, a town of about fifty thousand. It cut across the city in about fifteen minutes.
+**Picture:** cut to our own cross-section of a one-story house on a slab or crawl space (never drawn as a solid block), label "no basement · 82% of Joplin homes · NIST Finding 20". Then the map with no shelter icons anywhere, label "no community shelters or safe rooms · city or county · Finding 20", city label "Joplin · population 50,150 · 2010 Census (via NIST)"; the path draws west to east with the labels "6 miles in Joplin" and "about 15 minutes in the city", source line "NIST Sec. 1.3" (on screen only). [CLIP 1, candidate, not sourced] under the first sentence: public domain FEMA or NWS video of a Joplin residential street in the path, muted, about 6 s; if none is found with a provenance row, NIST ground photographs instead. On "having a basement" a second, smaller cross-section with a basement slides in, its stairs lit and empty.
+> Because most Joplin homes didn't have a basement, about eight in ten of them. And there wasn't a single public shelter in a town of about fifty thousand. Even having a basement didn't always mean you were down in it.
 
-**Rows:** [NIST Sec. 1.2: "On Sunday, May 22, 2011"; E13: approximate touchdown, southwest of the city limits] · [X21: 50,150, so "fifty thousand" said round; NIST Sec. 1.1: southwest Missouri] · [W3, W8: six miles, about fifteen minutes] · [W3, W6: "as much as a mile wide", "up to a mile wide in some places"]
+**Rows:** [H1: 82 percent lacked basements] · [H3, H4: no community shelters or safe rooms; the city owned no public storm shelter] · [X21: 50,150] · [H22, H8: 3 of 71 had basement access, at least 2 not in it] (no causal claim; plants the A3 hinge without spending the three-of-seventy-one count)
+
+*([Q1 paid]: most homes had none, and no public shelter. [Q2 open]: who had a basement and wasn't down in it? Carried to A3-S8/S9.)*
 
 ### I1-S2 · narration
-**Picture:** the master map holds. Twenty five siren icons appear at once, placed from NIST Fig. 4-2: twenty three inside the city outline, one at Duenweg and one at the Village of Airport Drive, just outside it. Source line: "25 sirens in Joplin's outdoor system · 23 in the city · NIST Sec. 4.3.1". A calendar strip slides in under the map: a grey tick on Mondays, labelled "test · 10 AM · 1 minute · weather permitting".
-> Joplin's warning system ran twenty-five outdoor sirens, and the city tested them most Monday mornings.
+**Picture:** twenty five siren icons appear at once, placed from NIST Fig. 4-2: twenty three inside the city outline, one at Duenweg and one at the Village of Airport Drive. Source line: "25 sirens in Joplin's outdoor system · 23 in the city · NIST Sec. 4.3.1". A calendar strip slides in under the map: a grey tick on Mondays, labelled "test · 10 AM · 1 minute · weather permitting".
+> If you lived in Joplin, how often do you figure you heard those sirens? You could hear them most Monday mornings, because the city tested all twenty-five of them. But how often did they go off for real?
 
-**Rows:** [S2: 25-siren system; NIST Sec. 4.3.1: 23 in the city, 1 in Duenweg, 1 in Airport Drive] · [S5: Mondays, 10 a.m., 1 minute]
+**Rows:** [S2: 25-siren system; NIST Sec. 4.3.1: 23 in the city, 1 in Duenweg, 1 in Airport Drive] · [S5: Mondays, 10 a.m., 1 minute, weather permitting; S30: generally heard indoors as well as outside]
+
+*([Q2b open] and paid in this segment: most Mondays, the test. [Q3 open]: how often for real? Paid in I1-S3.)*
 
 ### I1-S3 · narration
 **Picture:** the calendar strip stretches to 2007 to 2011; the grey Monday ticks fill it. Three red marks stand out, one a year: January 18, 2007; May 10, 2008; May 8, 2009. Then a gap to May 22, 2011. Source line: "once a year at most since 2007 · NIST Finding 31 and Sec. 4.3.4, from the county emergency manager". No label calls them wind events.
-> Outside that test, they went off about once a year, if that.
+> About once a year, if that.
 
 **Rows:** [S2: Finding 31] · [S4, S6, S7: the rate and the dates, according to the Joplin-Jasper County emergency manager] (per the S9 CONFLICT: not called wind events)
 
+*([Q3 paid].)*
+
 ### I1-S4 · narration
-**Picture:** the Weather Service assessment's own page, the residents' words underlined as the narrator speaks: "hear sirens all the time and [sirens] go off for dark clouds". Source line "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2b". The narrator speaks the line; no actor's voice.
-> But plenty of people told the Weather Service the sirens went off all the time, even for dark clouds.
+**Picture:** the calendar strip holds; a name card slides in over it: "Joplin-Jasper County emergency manager". On "every tornado warning" a second, separate strip appears under the siren strip: the tornado warnings for 2007 to 2011 only (twelve marks, S13), not paired mark by mark with the sirens. Label "not every warning got a siren · NIST Sec. 4.3.4".
+> Why'd they go off so rarely? For one, Joplin's emergency manager didn't sound them for every tornado warning.
+
+**Rows:** [S4: the Joplin-Jasper County emergency manager] · [S8: "not sounding the sirens for every tornado warning ... based on other factors as well"] · [S13: 12 warnings in the five years before 22 May 2011, the strip only]
+
+*([Q4 open] and [Q4 paid] in this segment. The warnings strip plants A1-S7.)*
+
+### I1-S5 · narration
+**Picture:** the NWS assessment's own page, the residents' words underlined as Paul speaks: "hear sirens all the time and [sirens] go off for dark clouds". Source line "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2b". Paul speaks the line; no actor's voice.
+> But plenty of people there told the NWS those sirens went off all the time, even for dark clouds.
 
 **Rows:** [S17: "Many noted..."]
 
-### I1-S5 · narration
-**Picture:** the NIST report's cover (NIST NCSTAR 3, public domain), then a name card "NIST · National Institute of Standards and Technology · federal investigators". The master map returns and dots begin to land, one location type at a time, each with a small on-screen label (not spoken): houses, apartments, two big box stores, a phone store, a pizza restaurant, a lodge, a theater, two churches, a hospital, two nursing homes, and outside. Source line: "154 of 155 impact-related deaths placed · NIST Table 4-3".
-> Afterward, federal investigators found out where almost everyone the tornado took was when it hit.
-
-**Rows:** [T9, T12: Table 4-3 places 154 of the 155, so "almost every"] (labels: H26, B45, C6, C23, C25, T17; B2 "big-box stores")
+*(The belief is on the table; its question is held for I1-S9 so it carries into A1.)*
 
 ### I1-S6 · narration
-**Picture:** [RS] [VE] the whole map lit: 135 dots inside building outlines and 19 outside, 12 of them marked as in vehicles, with a small label "154 placed · 1 not placed · location unknown"; the empty "below ground" line under the map. On "a hundred thirty-five" the figure lands large: "135 of 155 impact-related · inside a structure · 87% · NIST Finding 40". On "below ground" the figure "0" lands on the empty line: "NIST found no evidence any were underground · Finding 46". Hold. The locked claim sits in the header; this line speaks it plainly, as the owner ordered on 15 Oct 26.
-> A hundred thirty-five of them were inside a building, and the investigators found no sign that any of them was in a basement, or anywhere below ground.
+**Picture:** [CLIP 2, candidate, not sourced] a news pull of the aftermath along 20th Street and Range Line Road, the heavily damaged big box stores and their collapsed walls, an insert inside the intro (never in the hook), transcribed in full before the cut is chosen, held under 12 s with Paul over it. Then the NIST report's cover (NIST NCSTAR 3, public domain) and a name card "NIST · National Institute of Standards and Technology · federal investigators". Source line: "154 of 155 impact-related deaths placed · NIST Table 4-3".
+> And where was everybody when it hit? I went through the whole NIST report, and the federal investigators tracked down almost every one of them.
+
+**Rows:** [T9, T12: Table 4-3 places 154 of the 155, so "almost every one"] · [B6, B9, B13: Walmart partial collapse, Home Depot wall panels, for the picture wording] · (clip: insert gate, transcript first, provenance row read; Content ID claim expected, segment must survive a claim) ("I went through the whole NIST report" kept pending the owner's answer)
+
+*([Q5 open]: where was everybody? Paid in I1-S7 and I1-S8.)*
+
+### I1-S7 · narration
+**Picture:** the master map returns and dots land one location type at a time, each with a small on-screen label as it is named: houses, apartments, two big box stores, a pizza restaurant, two churches, a hospital, two nursing homes; then the unspoken labels a phone store, a lodge, a theater, and outside.
+> They were at home, in apartments, in big box stores, a pizza place, churches, a hospital, nursing homes, and a few other spots.
+
+**Rows:** [H26: homes, apartments; B45: Walmart, Home Depot, Pizza Hut, Full Gospel, Harmony Heights; C6: St. John's; C23, C25: Greenbriar, Meadows; B2: "big-box stores"] (a partial list, hence "a few other spots"; the screen completes it from Table 4-3)
+
+### I1-S8 · narration
+**Picture:** [RS] [VE] the whole map lit: 135 dots inside building outlines and 19 outside, 12 of them marked as in vehicles, with a small label "154 placed · 1 not placed · location unknown"; the empty "below ground" line under the map. On "a hundred thirty-five" the figure lands large: "135 of 155 impact-related · inside a structure · 87% · NIST Finding 40". On "below ground" the figure "0" lands on the empty line: "NIST found no evidence any were underground · Finding 46". Hold. The locked claim sits in the header; this line speaks it plainly (owner, 15 Oct 26).
+> A hundred thirty-five of them were inside a building, and below ground, they couldn't find a single one.
 
 **Rows:** [claim, angle.md, spoken plain] · [T3: 135 of 155, Finding 40] · [T17: outside 19, 12 in vehicles; T12: one death with no known location] · [H5, H6: Finding 46 and Sec. 4.6.2.2]
 
-### I1-S7 · narration
-**Picture:** the calendar strip from I1-S3 returns under the map, the grey Monday ticks dimmed and the red marks lit, small label "outside the weekly test". Then the Weather Service assessment's page, unmarked, a slow push in on the word "sirens". Source line: "NWS assessment team · interviewed over 60 survivors". The bed drops out on the last word.
-> So if the sirens hardly ever went off for real, why did so many people think they never stopped? After the storm, the Weather Service interviewed more than sixty survivors.
+*([Q5 paid]: inside a building, none below ground. The hook's claim holds past 60 s.)*
 
-**Rows:** [S3: residents believed in many false alarms] · [X26: "interviewed over 60 survivors"; S16] (the exit question plus one affirming line)
+### I1-S9 · narration
+**Picture:** [CLIP 3, candidate, not sourced] public domain NWS or FEMA footage of the survey team in Joplin, muted under the voice; if none is found with a provenance row, NWS assessment photographs or figures instead. Then the calendar strip from I1-S3 returns, the grey Monday ticks dimmed and the red marks lit, small label "outside the weekly test", and the NWS assessment's page, a slow push in on the word "sirens". Source line: "NWS assessment team · interviewed over 60 survivors". The bed drops out on the last word.
+> So if those sirens hardly ever went off for real, why'd so many people think they never stopped? After the storm, the NWS interviewed more than sixty survivors, and plenty of them talked about the sirens.
 
-*([loop L2 open]: why people thought the sirens went off all the time. Closes in A1.)*
+**Rows:** [S3: residents believed in many false alarms] · [X26: "interviewed over 60 survivors"; S16, S17: "a large number of participants", "Many noted"] (the exit question plus one affirming line)
+
+*([Q6 open] = [loop L2 open]: why people thought the sirens went off all the time. Carried out of I1; paid in A1.)*
 
 *(blackout 0.7 s)*
 
@@ -143,7 +173,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 - **Question:** where did "all the time" come from, if the record says about once a year?
 - **Reveal:** the weekly one-minute Monday test (about fifty two a year) plus about one real sounding a year since 2007, three of them dated. The false alarms were real, in a different set: 14 of 18 tornado warnings from 2005 to 2011 had no verified tornado, in line with the national 74.7 percent, and 11 of 12 in the last five years. People heard warnings and tests and filed them all under "sirens". Plus the belief in a "protective bubble".
 - **Visual event:** [RS] a two-row calendar 2007 to 2011: fifty two grey test ticks a year against single red marks; a second, separate strip for the 18 warnings, 4 verified.
-- **Exit hook:** "On May twenty-second, the sirens went off twice, and people couldn't agree on what the second one meant."
+- **Exit hook:** "The second time Joplin's sirens went off that evening, people couldn't agree on what it meant."
 - **Comments answered:** RODALCO2007 ("no one is paying any attention to the sirens going off", 3,000 likes; its first and only card, at A1-S3); "The sad part is nobody knew what really was coming that day." (824 likes).
 
 **Planned segments:**
@@ -157,7 +187,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 - A1-S8 · narration · stakes: the sirens didn't sound for every warning, so the two were different counts, but people lumped them together; NIST says that distrust and confusion is one of two reasons people were slow to move that evening · S8, S28, S39, S40 · two strips side by side, never merged.
 - A1-S9 · graphic · no news pull (UNVERIFIED in factcheck-acts: no source names a clip or its rights holder): a NIST Interview 58 quote card, "the announcer and the weatherman ... seemed to say the track was ... mainly north of town" (NIST Ch. 4), with the comment card "The sad part is nobody knew what really was coming that day." (824 likes) beside it · E11, E12, NIST Interview 58 · quote card over the calendar strip.
 - A1-S10 · narration · the protective bubble: people said storms always split and missed Joplin; since 1950 the city itself had one EF-2 or stronger, while a hundred eighty-two hit within eighty miles (two sentences, one count each) · S23, S36, S37, S38 · our map, eighty-mile ring, a NIST ground photograph of the 2011 path over it.
-- A1-S11 · narration · exit hook: "On May twenty-second, the sirens went off twice, and people couldn't agree on what the second one meant." · S27 · map with two siren rings · [loop L2 closes] [loop L3 open].
+- A1-S11 · narration · exit hook (I1-S2 already said the sirens sounded twice, so this one spends only the meaning): "The second time Joplin's sirens went off that evening, people couldn't agree on what it meant." · S27 · map with two siren rings · [loop L2 closes] [loop L3 open].
 
 *(blackout 0.7 s)*
 
@@ -182,7 +212,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 - A2-S6 · graphic · no TV pull (UNVERIFIED in factcheck-acts): the NIST sentence as on-screen text, "the media continued to report on storms said to be passing to the north and missing Joplin, or moving away from the City", then the NIST Interview 58 quote card · E11, E12, NIST Interview 58 · NIST page. The "National Weather Service computer projections" comment card is cut: no source supports it.
 - A2-S7 · graphic · lead time, one number per sentence: seventeen minutes from the five-seventeen warning to touchdown; twenty-three from the first siren; the screen adds nineteen to the city line and NIST's "close to 20 min" · E21, E22, E23 · comment card "Residents of Joplin had plenty of warning time." (1,800 likes).
 - A2-S8 · narration · rotation from five twenty nine to touchdown at five thirty four, rain-wrapped, hard to see until close; then the safe line: "The Weather Service issued no Tornado Emergency headline for Joplin proper; the tornado formed fast on the city's edge and its size was not clear until it was well into the city." Never "no emergency was declared by anyone" · E25, E13, E32, NWS Assessment paragraph before Finding #8 and footnote 10 · NWS Assessment Appendix A, Figure 4 panel (G): KSGF 0.5 degree base reflectivity, valid 22 May 2011 22:34Z (5:34 pm CDT), credited "NOAA/NWS", no NWS logo and no third-party basemap; panel (H) storm-relative velocity at the same time if wanted; never NIST Fig. 2-7 as "NOAA" (factcheck-acts, A2 radar CONFIRMED) · comment card "Joplin didn't receive a tornado emergency because of how fast it developed." (1,500 likes), answered: the NWS gives the same reason.
-- A2-S9 · Paul · turning point: "Five thirty-eight. The tornado was already inside the city when the sirens went off a second time." (19 words; "4 minutes after touchdown · NIST Finding 35" on screen) · E14, E15 · Paul full frame.
+- A2-S9 · Paul · turning point, the second siren said as coming after touchdown: "Five thirty-eight. The tornado had touched down four minutes earlier and was already inside the city when the sirens went off again." (22 words; "4 minutes after touchdown · NIST Finding 35" on screen) · E14, E15 · Paul full frame.
 - A2-S10 · narration · the rule was one siren per alert, so the second one was out of the ordinary, and for most people that's what finally got them moving · E20, E19, E37 · assessment page.
 - A2-S11 · narration · what the second siren meant: some heard it as worse, some as the all clear, and the city had no all-clear signal at all · S25, S26, S33 · two labels on the siren ring · [loop L3 closes].
 - A2-S12 · narration · exit hook: "At five thirty-eight, most people went for the best spot they had. The investigators went back later and looked at what was underneath it." · H23 · map, the residential area lit · [loop L4 open].

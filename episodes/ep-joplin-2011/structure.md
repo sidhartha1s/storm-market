@@ -12,9 +12,9 @@
 
 | Section | What | Planned start to end (m:ss) | Planned length (s) |
 |---|---|---|---|
-| H1 | Hook, Paul on camera | 0:00 to 0:08 | 8 |
-| T1 | Hook tail | 0:08 to 0:20 | 12 |
-| I1 | Intro: the day, the place, the two numbers | 0:20 to 1:45 | 85 |
+| H1 | Hook, Paul on camera | 0:00 to 0:15 | 15 |
+| T1 | Hook tail | 0:15 to 0:24 | 9 |
+| I1 | Intro: the day, the place, the two numbers | 0:24 to 1:45 | 81 |
 | A1 | Sirens: belief against record | 1:45 to 4:45 | 180 |
 | A2 | The evening, five oh nine to five thirty eight | 4:45 to 7:45 | 180 |
 | A3 | Homes with nothing underneath (holds the book ad) | 7:45 to 11:15 | 210 |
@@ -35,11 +35,11 @@
 ## Chapter cards
 
 ### H1 + T1 + I1 · Hook, tail, intro (0:00 to 1:45)
-- **Purpose:** Paul says the myth in his own words (no comment, no other video, no like count) and breaks it with the record (once a year at most, outside the weekly test), give the toll and the twist inside 20 s, then the full WHAT.
+- **Purpose:** Paul, as an old friend, asks the viewer what they'd do when the siren goes off, agrees with their answer (get inside), then breaks it twice (a hundred thirty-five were indoors; none below ground the investigators could find); the tail breaks a third belief (the sirens did go off, twice), and the intro breaks the fourth (about once a year outside the weekly test, against "all the time"), with a question about every 20 s.
 - **Question:** if the sirens were rare, why did a town hear them as noise, and why was nobody the tornado took below ground?
 - **Reveal:** once a year at most outside the weekly test, NIST from the county emergency manager (S2, S4, S5); most of the 161 inside a building, then 135 of the 155 inside a structure and zero the investigators could place below ground (T4, T3, H5, H6); 82 percent of homes had no basement (H1).
 - **Visual event:** Paul full frame, no card; the master map with 135 dots inside building outlines, 19 outside (12 in vehicles), 1 not placed (location unknown), and an empty "below ground" row.
-- **Exit hook:** "So if the sirens hardly ever went off for real, why did so many people think they never stopped?" answered with "After the storm, the Weather Service interviewed more than sixty survivors, and here is what it heard about the sirens."
+- **Exit hook:** "So if those sirens hardly ever went off for real, why\'d so many people think they never stopped?" answered with "After the storm, the NWS interviewed more than sixty survivors, and plenty of them talked about the sirens."
 - **Rows:** S2, S3, S4, S5, S6, S7, S16, S17, T1, T3, T4, T9, T12, T17, H1, H5, H6, H8, H22, B31, B33, E13, W3, W6, W8, X21, X26.
 - **Comments answered:** none in the hook or intro (owner, 15 Oct 26: no other video in the hook); the RODALCO2007 card moves to A1.
 
@@ -48,7 +48,7 @@
 - **Question:** where did "all the time" come from, if the record says about once a year?
 - **Reveal:** the record: weekly one-minute Monday test (about fifty two a year) plus about one real sounding a year since 2007, three of them dated (S4, S6, S7). The false alarms were real, in a different set: 14 of 18 tornado warnings from 2005 to 2011 had no verified tornado, in line with the national 74.7 percent (S10, S12), and 11 of 12 in the last five years (S11, S13). People heard warnings and tests and filed them all under "sirens" (S28). Plus the belief in a "protective bubble" (S23, S36, S37, S38).
 - **Visual event:** [RS] a two-row calendar 2007 to 2011: fifty two grey test ticks a year against single red marks (18 Jan 2007, 10 May 2008, 8 May 2009, then 22 May 2011). A second, separate strip for the 18 warnings, 4 verified.
-- **Exit hook:** "On May twenty-second, the sirens went off twice, and people couldn't agree on what the second one meant."
+- **Exit hook:** "The second time Joplin's sirens went off that evening, people couldn't agree on what it meant."
 - **Rows:** S1 to S8, S10 to S19, S23, S24, S28, S36 to S38.
 - **Comments answered:** RODALCO2007 ("no one is paying any attention to the sirens going off", 3,000 likes; its first and only card, at A1-S3); "The sad part is nobody knew what really was coming that day." (824 likes).
 
@@ -112,14 +112,19 @@
 
 | Loop | Kind | What it asks | Opens (where) | Closes (where) |
 |---|---|---|---|---|
-| L1 | episode | If the sirens did not lie, what failed the people who heard them? | H1-S1 (Paul, the myth, "but", once a year) | Z1 (the siren record against the belief; the buildings had nothing below them) |
-| L2 | act | Why did people in Joplin think the sirens went off all the time? | I1-S7 (exit question) | A1 (weekly test plus 14 of 18 unverified warnings, filed together as "sirens") |
+| L1 | episode | If the sirens went off and people were inside, what went wrong? | H1-S1 (the viewer's own answer, broken twice), held by T1-S2 | Z1 (the siren record against the belief; the buildings had nothing below them) |
+| L2 (= Q6) | act | Why did people in Joplin think the sirens went off all the time? | I1-S9 (exit question) | A1 (weekly test plus 14 of 18 unverified warnings, filed together as "sirens") |
 | L3 | act | What did the second siren mean to those who heard it? | A1 exit | A2 (worse warning, or an all clear; no all-clear signal existed) with a callback in A4 (Pizza Hut) |
 | L4 | act | What was under the best place they had? | A2 exit | A3 (82 percent of homes had no basement; no public shelter) |
 | L5 | act | Did the refuge areas protect the people inside? | A3 exit | A4 (no evidence they did; Walmart wall, Home Depot front wall) |
 | L6 | act | What happens to a building whose plan waits for a siren? | A4 exit | A5 (Condition Gray, the head nurse likely heard only the second round) |
 | L7 | act | Did any of it change? | A5 exit | A6 (national code changes; what the sources do not show) |
-| L8 | tail gap | What happened where there was a basement? | T1-S3 | A3 (three of 71 had one, at least two not in it) and A4 (the theater stairs, the Macadoodles cellar) |
+| Q1 | micro | Then if the sirens worked and people were inside, why wasn't anybody below ground? | T1-S3 | I1-S1 (most homes had no basement; no public shelter) |
+| Q2 (was L8) | micro, carried | Who had a basement and wasn't down in it? ("Even having a basement didn't always mean you were down in it") | I1-S1 | A3-S8 tease, A3-S9 payoff (at least two of the three were not in it); A4 theater stairs |
+| Q3 | micro | How often did they go off for real? (after "how often do you figure you heard those sirens?", paid in the same segment) | I1-S2 | I1-S3 (about once a year, if that) |
+| Q4 | micro | Why'd they go off so rarely? | I1-S4 | I1-S4 (for one, Joplin's emergency manager did not sound them for every tornado warning) |
+| Q5 | micro | And where was everybody when it hit? | I1-S6 | I1-S7, I1-S8 (inside a building, none below ground) |
+| Q6 (= L2) | micro, carried | If those sirens hardly ever went off, why'd people think they never stopped? | I1-S9 | A1 |
 | cta-hinge | cta-hinge | Three of the 71 had a basement they could reach and still lost their lives: how? | planted A3-S3; tease A3-S8, Paul line right before the ad (about 10:30) | A3, first words after the ad: "At least two of the three were not in it." |
 | HC1 | hook callback | "Stick with me, because what I'm about to explain is exactly why Joplin heard rare sirens as noise." | A1-S6, before the warnings strip (about 3:15) | A1 (the warnings set shown) |
 | L9 | act plant | Which group lost their lives at four times the rate? | A5-S1 | A5-S9 (Finding 47) |
