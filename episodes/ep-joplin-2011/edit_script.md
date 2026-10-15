@@ -408,7 +408,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A3-S7 · narration
 **Picture:** a NIST ground photograph of an in-home shelter standing in a destroyed house (figure to pick at sourcing; credit line checked). Chip "IN-HOME SHELTERS HELD". Source line "NIST Finding 23 · Sec. 1.2".
-> The few people who had a storm shelter built into the house came through in it. Very few people had one.
+> If you had a storm shelter built into your house, you came through. Hardly anybody had one.
 
 **Rows:** [H16: in-home shelters performed well] · [H18: very few had one; those who did survived]
 
