@@ -118,6 +118,8 @@ per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > 
   rewrite the script, not move the CTA.
 - **Dips:** 1.0s black in, 1.0s black out (dramatic-punctuation tier). Hard cut into the payoff
   clip after the out-dip; the payoff clip is REAL footage, never a graphic.
+- **Voice of the ad:** converted once per narration-voice change, never per episode (owner 17 Oct 26): Chatterbox voice
+  conversion keeps the timing so the lips still fit, the result is a new versioned file in `assets/cta/` plus a config bump.
 - **Audio:** the CTA carries its own VO (`data-volume="1"`); narration is silent under it (lint
   overlap rule); score/SFX bed ducked ≥12 dB or out. Never within 60s of another audio-carrying
   insert (the "never two inserts back-to-back" rule). One exception: Paul's own on-camera line right before it
