@@ -222,7 +222,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A1-S7 · narration
 **Picture:** [RS] a second strip slides in under the siren strip, separate from it and in a different color: eighteen warning marks from 2005 to 2011, four of them ticked "verified". Chip "14 OF 18 · NO TORNADO". Then the last five years zoom in: twelve marks, one ticked. Chip "11 OF 12". Source line "NIST Finding 30 · national 2007 to 2011 average 74.7% (NIST)". The two strips never merge.
-> They came from the tornado warnings the NWS put out. From 2005 to 2011, Joplin got eighteen of them, and fourteen never came with a tornado. That's about the national average. In the five years before the storm, it was eleven out of twelve. Did people keep the warnings and the sirens apart?
+> They came from the tornado warnings. From 2005 to 2011, the NWS warned Joplin eighteen times. Fourteen of those times, no tornado was confirmed, and that's about the national average. In the five years right before the storm, it was eleven times out of twelve. Did people keep the warnings and the sirens apart?
 
 **Rows:** [S10, S12: 14 of 18, 2005 to 2011; national 74.7% on screen with NIST as its source, per the S10 CONFLICT] · [S11, S13: 11 of 12, 2007 to 2011] · [S14: a warning false alarm is an unverified warning]
 
@@ -274,7 +274,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A2-S1 · narration
 **Picture:** [RS] the countdown begins: a clock top left on the master map, "1:30 PM", then "4:33 PM". Chips "TORNADO WATCH", then "NWS BRIEFING". Source line "NWS Assessment, Table 1 · NIST E.3".
-> I went back through that Sunday afternoon. At one-thirty, the SPC put southwest Missouri under a tornado watch. By four thirty-three, the Springfield NWS office had already briefed Joplin's emergency manager about storms to the west. So why did the sirens wait until after five?
+> I went back through that Sunday afternoon. By one-thirty, you were already under a tornado watch. The SPC had put southwest Missouri under one. By four thirty-three, the Springfield NWS office had briefed Joplin's emergency manager about storms to the west. So why didn't the tornado sirens go off until after five?
 
 **Rows:** [E1: 1:30 pm, NWS time, per the E1/E2 CONFLICT] · [E3: 4:33 pm briefing]
 
@@ -430,11 +430,11 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A3-S9 · narration
 **Picture:** a drawn basement stair, lit, empty. Chip "2 OF 3 NOT DOWN THERE". Source chip "at least 2 of 3 · the third: circumstances unknown · NIST Sec. 4.6.2.2".
-> At least two of the three weren't in the basement when the tornado hit. Where the third person was, the record doesn't say. And what about the people who did get down there?
+> At least two of the three weren't down in the basement when the tornado hit. The record doesn't say where the third one was. But if your whole house came down on top of you, did a basement even help?
 
 **Rows:** [H8] · [H22]
 
-*([loop cta-hinge closes]. [A3-Q3 open]: what about those who got down? Paid in A3-S10.)*
+*([loop cta-hinge closes]. [A3-Q3 open]: did a basement even help? Paid in A3-S10.)*
 
 ### A3-S10 · narration
 **Picture:** the master map: a pocket of early-1980s ranch houses lit, no dots in it. Chip "BASEMENTS HELD". Source lines "NIST Finding 46" and "NIST Sec. 1.2". CLIP NEEDED: a Joplin survivor who rode it out in a basement, in their own voice, or footage of the damaged ranch-house neighborhood (FEMA survivor interview first, public domain; research/ names no clip for this beat).
@@ -598,7 +598,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A5-S4 · narration
 **Picture:** the comment card "the only tangible building standing was the hospital." (58 likes). Then the towers on the map, twelve dots, four marked "ICU". Chips "12 FROM THE STORM", then "7 LOST LATER, ELSEWHERE". Source line "12 impact-related · Finding 42 · Table 4-3 · 14 all causes · Table 4-1".
-> One comment says the hospital was the only building left standing. The towers did stay up, but they didn't protect everyone. Twelve people who'd been inside St. John's were lost to the storm itself. Four of them had been in intensive care. And more than half of the twelve were lost later, in other hospitals. What about the windows up there?
+> One comment says the hospital was the only building left standing. The towers did stay up, but they didn't protect everyone. The storm took twelve people who'd been inside St. John's. Four of them were in intensive care. Seven of the twelve were moved to other hospitals, and they were lost there, later. What about the windows up there?
 
 **Rows:** [C1: Finding 42] · [C6: seven injured at SJRMC, died later at another hospital] · [C2, C7: 14 all causes, on screen only, per the hospital CONFLICT]
 
@@ -694,7 +694,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A6-S4 · narration
 **Picture:** the comment card "I wonder why commercial buildings and residential homes like at 15:15 don't have mandatory shelters" (28 likes). The board: tile 7 half lit, "stores · apartments" left grey. Chip "STORES, APARTMENTS: NOTHING LISTED". Source line "FEMA Recovery Advisory 1 · NIST news, Jul 2024 · ICC 2024 IBC, 423.4".
-> In everything I read, nothing says they've got to have a storm shelter. And stores and homes are where most of the people inside were lost. And the hospital, what did they put in the windows of the new one?
+> In everything I read, nothing says they've got to have a storm shelter. And stores and homes are where most of the people inside were lost. Remember St. John's, the hospital that lost its windows? Mercy built a new one.
 
 **Rows:** [FEMA, NIST, ICC summaries, factcheck-acts row A6-S3] · [T22: 59 percent residential, 41 percent non-residential of the 135; Table 4-3 rows]
 
@@ -702,7 +702,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ### A6-S5 · narration
 **Picture:** the comment card "Asked a nurse why the windows looked a little weird and she told me they were rated for 250mph winds" (482 likes). The NIST photograph of the old West Tower's fifth floor from A5, with a text card over it carrying Mercy's own words (no photograph of the new hospital): "a window system designed to withstand 250 mph winds · Mercy". Chip "DESIGNED FOR 250 MPH". Source line "mercy.net, Joplin tornado history".
-> Mercy, the health system that ran St. John's, says the new hospital it opened in 2015 has a window system designed for two hundred fifty mile-an-hour winds. Did anything change with the tornado sirens?
+> Mercy says the new hospital, opened in 2015, has a window system designed for two hundred fifty mile-an-hour winds. Did anything change with the tornado sirens?
 
 **Rows:** [C15] · [mercy.net history page, factcheck-acts row A6-S5: a design claim, never "rated for", never "all windows"] · [Mercy ran St. John's: NIST NCSTAR 3 names it "Mercy St. John's Regional Medical Center"; not in factcheck-pass3, fact team to confirm]
 
@@ -733,18 +733,12 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Segments:**
 
 ### Z1-S1 · narration
-**Picture:** the calendar strip one last time: grey Monday ticks, four red marks; the warnings strip below it, separate. Chips "ONCE A YEAR SINCE 2007 · NIST FINDING 31", then "THE FALSE ALARMS: WARNINGS". No comment card.
-> I went through the findings, and Joplin's tornado sirens didn't lie. Outside the weekly test, they'd gone off for a real storm about once a year since 2007. The tornado warnings were a different count, and that's where the false alarms were. And the people indoors, what did they have below them?
+**Picture:** the calendar strip one last time: grey Monday ticks, four red marks; the warnings strip below it, separate. Chip "ONCE A YEAR SINCE 2007 · NIST FINDING 31". Then [RS] the master map, all 135 dots, the empty below-ground line. Chips "135 INDOORS", "NONE FOUND BELOW GROUND", "8 IN 10: NO BASEMENT". Source lines "135 of 155 impact-related · NIST Finding 40", "no evidence any were underground · Finding 46", "82% of homes · no basement · Finding 20". No comment card. A few seconds of real Joplin sound under the last sentence (siren ambience or the CCTV clip's room tone), editor's pick.
+> Joplin's tornado sirens weren't crying wolf. Outside the weekly test, they'd gone off for a real storm about once a year since 2007. That evening, most of the people the tornado took were inside, right where you'd have gone. But most Joplin homes had no basement, and there wasn't a single public shelter anywhere in the city or the county.
 
-**Rows:** [S2, S5] · [S10, S28]
+**Rows:** [S2, S5] · [T3: "most of the people the tornado took were inside" = 135 of 155 impact-related] · [H1: 82 percent lacked basements] · [H3, H4: no community shelter or safe room, city or county]
 
-*([loop L1 closes]. [Z1-Q1 open]: what was below them? Paid in Z1-S2.)*
-
-### Z1-S2 · narration
-**Picture:** [RS] the master map, all 135 dots, the empty below-ground line. Chips "135 INDOORS", "NONE FOUND BELOW GROUND", "8 IN 10: NO BASEMENT". Source lines "135 of 155 impact-related · NIST Finding 40", "no evidence any were underground · Finding 46", "82% of homes · no basement · Finding 20".
-> Most Joplin homes had no basement, and there wasn't a single public shelter anywhere in the city or the county.
-
-**Rows:** [H1: 82 percent lacked basements] · [H3, H4: no community shelter or safe room, city or county] · (T3 and H5 stay on screen only: the hook's numbers are not spoken a third time, per the acts grade Z1-S2)
+*([loop L1 closes]. One turn, no recap: S1 and S2 merged per the pass-4 Z1 grade, 16 Oct 26. The warnings-vs-sirens line is cut; the A1 distinction is already paid.)*
 
 ### Z1-S3 · narration
 **Picture:** the recommendation board, tile 7 half lit. Chip "2027 BUILDING CODE". Source line "2027 International Building Code · ICC store page, Oct 2026".
