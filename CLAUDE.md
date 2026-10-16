@@ -128,7 +128,7 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
    script waiting on the last act. The CTA hinge is named (segment before, segment after, estimated time). Owner
    signs off on story/register in parallel with the fact-check fan-out, not serially after it.
 2. TTS: `python3 scripts/tts_episode.py episodes/<slug>` makes per-segment wavs at the lane tempo plus words.json (faster-whisper) in one pass.
-3. Sourcing: the agent downloads everything itself, 2 to 3 frame-checked candidates per key beat. The owner confirms only `insert` clips.
+3. Sourcing: runs beside the script from the first Picture lines, one Haiku sourcer and one Sonnet verifier per act (skill phase 5), 2 to 3 frame-checked candidates per key beat. The owner confirms only `insert` clips.
 4. Compose `index.html` by hand as a hyperframes composition, one sub-composition per act, graphics library-first and built to
    `references/mg-quickref.md` (worked example: `library/inhouse/examples/joplin-stat-panel.html`). Assets in `media/`, CTA staged into `media/cta/`.
 5. Render: see "the render is the LAST step".
@@ -144,6 +144,9 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
    publish, commit, PR and merge the episode branch, then remove the worktree. `metadata.md` at publish: first URL
    is `channel.cta.first_link`, then the "book mentioned at mm:ss" line, no chapter marker at the CTA, category Education, type Overview.
 - Chunk a render only if a single render proves unstable.
+- Heavy local jobs run on the ZBook by default (owner 17 Oct 26): transcription, voice conversion, clip downloads and
+  frame extraction for sourcing. The ASUS GPU runs the owner's live dictation and its RAM is shared with his work; measured
+  on Joplin, one act's transcription ran 28 min+ unfinished on the ASUS while all 8 acts cut and converted on the ZBook in 19 min.
 
 ## HARD RULE: everything lives in this folder
 Owner 7 Oct 26: "i want all stuff related to storm market within the repo. exceptions, u gotta let me know."
