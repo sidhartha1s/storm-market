@@ -38,7 +38,8 @@ selection; cut at the transcript's action/emotion peak).
   `<video>` with neither `muted` nor `data-volume` (El Reno v3 shipped audible stock footage that way).
   Exactly one exception: `insert` segments, where the clip's audio IS the content.
 - **Every `insert` goes to the owner before it enters any render**: frames + ~10-word transcript
-  + source link, one message, wait for yes/no. No exceptions, no batching-through.
+  + source link, a yes/no for each insert. They sit on the checkpoint picks page together (owner 17 Oct 26), but each one
+  still needs its own yes before any render: no exceptions, no batching-through.
 - Narration is TTS'd **per segment** (separate wavs). Tempo is per lane (`config.yaml channel.tempo`,
   applied by `scripts/tts_episode.py`); the editor slows a key reveal with a `(tempo X)` tag on its heading (value and rule: CLAUDE.md "Voice"). Owner ear-check before ship covers it.
 - Ambience/music beds: PD/licensed only, ducked under narration, audible in holds.
