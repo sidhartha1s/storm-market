@@ -49,7 +49,9 @@ An owner correction or a measured surprise lands in its single home (`references
 - Shorts: planned, pilot pending the owner's go. No skill until about ten shorts stabilise.
 
 ## Owner gates: rules inherited from the owner's other channels (never claim or infer approval)
-- Design sign-off before paid spend or bulk sourcing. Paid API railguards per the global CLAUDE.md.
+- Design sign-off before paid spend or bulk sourcing. Paid API railguards per the global CLAUDE.md. Free candidate sourcing
+  (public domain and stock downloads, no spend, nothing licensed) is not bulk sourcing: it starts from each act's Picture
+  lines without waiting for the sign-off (owner 17 Oct 26, flow page f1). A paid or licensed buy still waits for it.
 - Every review cut is a DRAFT render at 98 % production quality: a full-quality cut at draft encode settings, never a
   placeholder. Post the absolute path in one line and PARK. His chat approval resumes. Full render only after that.
 - Studio preview cannot play 15 min media-heavy compositions in real time. Do not offer it for review.
@@ -128,7 +130,7 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
    script waiting on the last act. The CTA hinge is named (segment before, segment after, estimated time). Owner
    signs off on story/register in parallel with the fact-check fan-out, not serially after it.
 2. TTS: `python3 scripts/tts_episode.py episodes/<slug>` makes per-segment wavs at the lane tempo plus words.json (faster-whisper) in one pass.
-3. Sourcing: runs beside the script from the first Picture lines, one Haiku sourcer and one Sonnet verifier per act (skill phase 5), 2 to 3 frame-checked candidates per key beat. The owner confirms only `insert` clips.
+3. Sourcing: runs beside the script from the first Picture lines (lanes and roles: skill phase 5). The owner confirms only `insert` clips.
 4. Compose `index.html` by hand as a hyperframes composition, one sub-composition per act, graphics library-first and built to
    `references/mg-quickref.md` (worked example: `library/inhouse/examples/joplin-stat-panel.html`). Assets in `media/`, CTA staged into `media/cta/`.
 5. Render: see "the render is the LAST step".
@@ -145,7 +147,7 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
    is `channel.cta.first_link`, then the "book mentioned at mm:ss" line, no chapter marker at the CTA, category Education, type Overview.
 - Chunk a render only if a single render proves unstable.
 - Heavy local jobs run on the ZBook by default (owner 17 Oct 26): transcription, voice conversion, clip downloads and
-  frame extraction for sourcing. The ASUS GPU runs the owner's live dictation and its RAM is shared with his work; measured
+  frame extraction for sourcing, captures, gates and renders. Sourcing lanes pause while a render runs there (one heavy job at a time). The ASUS GPU runs the owner's live dictation and its RAM is shared with his work; measured
   on Joplin, one act's transcription ran 28 min+ unfinished on the ASUS while all 8 acts cut and converted on the ZBook in 19 min.
 
 ## HARD RULE: everything lives in this folder
