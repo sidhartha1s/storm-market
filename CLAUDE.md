@@ -8,11 +8,14 @@ files disagree, fix it in the same PR and say which one won.
 owner's instruction for the episode says something, that wins over any global default (subagent model, effort, review
 flow). The global file only fills what this repo leaves open. Read `ops/decisions.md` before choosing a model or a flow.
 
-**Chain of command for motion graphics.** Every subagent that builds, retimes, fixes, redesigns or verifies a graphic runs
-on Opus 5.5 at high effort or above (blind-judged Opus 43/50 vs Sonnet 26/50; Sonnet passes every gate with broken
-work). Sonnet is for shot logs, sourcing and read-only probes, never graphics. The builder never verifies its own work:
-the orchestrator reads a settled frame of every new or changed graphic over the footage it will sit on before any render.
-A fix goes back to an Opus builder, never to the model that made the defect. Gates passing is not verification.
+**Chain of command for motion graphics.** Split by depth (owner 16 Oct 26). The deep graphics, roughly the top 5 to 15
+of an episode (a map with the tornado path moving, zoom-ins and zoom-outs, multi-layer explainers), are built, retimed,
+fixed and redesigned by Opus 5.5 at high effort or above. Every other graphic (a stat card, a ringing doorbell, a label
+over footage) goes to Sonnet 5.5 at high effort with a full brief on `references/mg-brief-template.md`; a brief that
+leaves the builder guessing is the defect, since Nepal's thin Sonnet graphics came from thin briefs. The plan lists
+each graphic with its model. The builder never verifies its own work: the orchestrator reads a settled frame of every
+new or changed graphic over the footage it will sit on before any render. A Sonnet graphic that fails the read twice
+goes to Opus. Gates passing is not verification.
 
 | Need | Home |
 |---|---|
@@ -109,9 +112,12 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
   interleaved) is a per-cut editor decision. Expect Content ID revenue claims on these (claims are not strikes). Never
   build a segment that dies if claimed. Vary sources and chapters, never reuse a broadcast cut.
 - Read the clip's `provenance.csv` row BEFORE wiring it. Era-mismatch or "backup only" notes disqualify it.
-- A REAL clip (broadcast, public domain, survivor) about every 45 to 60 s is the aim, not a hard rule (owner 4 Oct 26). The core audience saw these events live. Stock only fills between.
+- REAL clips (broadcast, public domain, survivor) come in the way a friend telling the story stops and says "hang on, look
+  at this" and shows a video: wherever the story reaches a moment someone filmed, show the film. More real clips than
+  graphics alone, placed by judgment, never by a quota (owner 15 Oct 26; about every 45 to 60 s is a floor, not a target).
+  The core audience saw these events live. Stock only fills between.
 - Storm-chaser and independent streamer footage: NEVER without a licence. Credit is not a licence. Never disguise a
-  source to slip unlicensed footage past detection. Grain or grade on footage you may legitimately use is fine.
+  source to slip unlicensed footage past detection. A grade on footage you may legitimately use is fine; no grain (DESIGN.md "Look: no grain").
 - No AI-generated witnesses, no fabricated quotes. Real quotes come from NWS assessments or news archives, shown as attributed text.
 
 ## Pipeline
