@@ -102,6 +102,9 @@ Script method and hook wording live in `references/script-os.md` and `script-fra
 - TTS-safe text: spell out ALL dates, times and numbers, no paired dashes, sentences under 24 words, flowing connective sentences.
 - Homographs: list, senses and the probe-before-respelling rule live in `references/homographs.md`, gated by
   `scripts/homograph_scan.py` (in `run_gates.py`).
+- Retake bar (owner 18 Oct 26): retake a narration segment only when it is "absolutely bullshit and garbled" (nonsense
+  sounds, clicks) or has a "totally wrong pronunciation". A swapped word that keeps the meaning (you/we, in/and) stays:
+  "not a big deal ... it's fine. Go ahead." Flag the first two; never retake the third.
 
 ## Footage rules (claim-proof stack, never violate)
 - Spine: US government public domain (NOAA, NWS, NHC, FEMA, USGS, Coast Guard), Pexels and Pixabay, self-made radar and
