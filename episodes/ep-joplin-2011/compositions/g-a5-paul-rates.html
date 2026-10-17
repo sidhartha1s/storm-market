@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a5-paul-rates: A5-S8 overlay, host 921.507 for 7.24 s (nx-a5-s8 920.547 + "sixty" 0.96, clamped to Paul's line end 928.747).
+     Local t = a5-s8 words.json time - 0.96. Transparent root: Paul's full-frame clip (ins-paul-5) sits on a lower track for the whole host window;
+     the presenter circle is off. Two chips stacked in a left column beside Paul (left 96, tops 380 and 500), source chip under the second.
+     The rate spans line up on one x (fixed group width) so 8 and 2 compare at a glance. Column ends left of x 900; the Flow logo patch
+     (x 1692 to 1788, y 852 to 948) stays empty. If Paul's face is on the left of the real clip, mirror: swap left:96 for right:96 and set DIR = 1. */
+  #a5pr-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  /* floats carry the y drift so each element keeps its own entrance and exit tweens */
+  .a5pr-float { position:absolute; inset:auto; left:96px; }
+  #a5pr-c1float { top:380px; }
+  #a5pr-c2float { top:500px; }
+  #a5pr-srcfloat { top:604px; }
+  .a5pr-chip { position:relative; display:table; box-sizing:border-box; padding:16px 36px 16px 44px; border-radius:14px; overflow:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; white-space:nowrap; }
+  .a5pr-bar { position:absolute; inset:auto; left:0; top:0; bottom:0; width:8px; background:#d0121f; }
+  .a5pr-g, .a5pr-r { display:inline-block; font-family:Arial,sans-serif; font-weight:700; font-size:40px; line-height:48px; letter-spacing:1px;
+    text-shadow:0 2px 14px rgba(0,0,0,.7); vertical-align:top; }
+  .a5pr-g { width:300px; color:#c8d3e0; }
+  .a5pr-r { color:#f2f5f8; visibility:hidden; opacity:0; }
+  #a5pr-src { display:table; box-sizing:border-box; padding:8px 16px; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14);
+    font-family:Arial,sans-serif; font-weight:400; font-size:21px; line-height:26px; letter-spacing:.5px; color:#c8d3e0; white-space:nowrap;
+    visibility:hidden; opacity:0; }
+</style>
+<div id="a5pr-root" data-composition-id="g-a5-paul-rates" data-width="1920" data-height="1080">
+  <div id="a5pr-c1float" class="a5pr-float">
+    <div id="a5pr-c1" class="a5pr-chip">
+      <div class="a5pr-bar"></div>
+      <span id="a5pr-c1g" class="a5pr-g">60 AND OVER:</span><span id="a5pr-c1r" class="a5pr-r">8 IN 1,000</span>
+    </div>
+  </div>
+  <div id="a5pr-c2float" class="a5pr-float">
+    <div id="a5pr-c2" class="a5pr-chip">
+      <div class="a5pr-bar"></div>
+      <span id="a5pr-c2g" class="a5pr-g">UNDER 60:</span><span id="a5pr-c2r" class="a5pr-r">2 IN 1,000</span>
+    </div>
+  </div>
+  <div id="a5pr-srcfloat" class="a5pr-float">
+    <div id="a5pr-src">NIST Finding 47</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a5pr-";
+  const DIR = -1; /* exit slide direction: away from Paul's face (column on the left, so out to the left) */
+
+  /* "sixty" @0.96 (local 0.00): chip 1 group + source chip land together */
+  tl.fromTo(Q + "c1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0);
+  tl.fromTo(Q + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0);
+
+  /* "eight" @2.74 (local 1.78): chip 1 rate */
+  tl.fromTo(Q + "c1r", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.78);
+
+  /* "under" @6.08 (local 5.12): chip 2 with its group */
+  tl.fromTo(Q + "c2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.12);
+
+  /* "two." @7.40 (local 6.44): chip 2 rate */
+  tl.fromTo(Q + "c2r", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.44);
+
+  /* hold: slow float y +-4 px from each element's own landing to the exit, so the 3.34 s between the two rates is never still */
+  tl.fromTo(Q + "c1float", { y: 0 }, { y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 4, immediateRender: false }, 0.4);
+  tl.fromTo(Q + "srcfloat", { y: 0 }, { y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 4, immediateRender: false }, 0.4);
+  tl.fromTo(Q + "c2float", { y: 0 }, { y: -4, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 5.12);
+
+  /* exit: "two." ends @7.70 (local 6.74); the host ends at Paul's line end (local 7.24), so the exit runs 6.74 to 7.24 (0.5 s, not the brief's 0.6) */
+  tl.to([Q + "c1", Q + "c2", Q + "src"], { x: DIR * 60, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 6.74);
+
+  window.__timelines["g-a5-paul-rates"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
