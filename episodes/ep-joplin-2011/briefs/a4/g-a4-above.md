@@ -10,7 +10,7 @@ Open numbers: none.
 
 ## 0. What this graphic claims
 In every demolished building NIST studied in this section, the people lost or badly hurt were above ground. The eight
-businesses and churches it examined had one basement among them (the theater's), and no one lost was found in it.
+businesses and churches it examined had one basement among them (the theater's), and NIST found no evidence that anyone lost was in it.
 
 ## 1. SOURCE
 - B32 "In all of the demolished buildings, the persons killed or severely injured were located above ground." NIST Sec. 4.6.2.1.
