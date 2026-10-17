@@ -147,7 +147,7 @@ window.__timelines = window.__timelines || {};
   /* hold motion: chips float, dots pulse (scale 1 -> 1.08 on r, 1.2 s cycles, finite) */
   tl.to(P + "chip1", { y: -6, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 1.4);
   tl.to(P + "chip2", { y: -6, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 6.3);
-  for (let at = 1.5; at < 9.8; at += 1.2) {
+  for (let at = 1.9; at < 9.8; at += 1.2) {           /* after the last landing ends (0.88 + 11 x 0.05 + 0.35 = 1.78) */
     tl.to(dots, { attr: { r: 9.72 }, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, at);
   }
 
