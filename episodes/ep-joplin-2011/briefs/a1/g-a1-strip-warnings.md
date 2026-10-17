@@ -66,7 +66,7 @@ Reading of "the last five years zoom in": with no dates, the zoom is a **recount
 | source line 1 | "NIST Finding 30" | a1-s7 "18" 6.16 |
 | 4 verified fill + check; 14 dim to 55 % | "verified" | a1-s7 "Fourteen" 7.80 (fill 0.4 s), dim on "confirmed." 9.88 |
 | chip | "14 OF 18 · NO TORNADO" (S10) | a1-s7 "confirmed." 9.88 |
-| source line 2 (replaces 1) | "NIST Finding 30 · national 2007 to 2011 average 74.7% (NIST)" | a1-s7 "national" 11.62 |
+| source line 2 (replaces 1) | "NIST Finding 30 · national 2007 to 2011 average 74.7% (NIST)" (S10) | a1-s7 "national" 11.62 |
 | recount: 18-row folds (scaleY to 0, right to left, 0.4 s); row label swaps | "Tornado warnings · the 5 years before May 22, 2011" | a1-s7 "In" 13.00 (fold), label on "five" 13.32 |
 | 12 marks build | (none) | a1-s7 "five" 13.32, 0.03 s stagger (0.36 s) |
 | 1 verified fill; 11 dim | "verified" | a1-s7 "11" 15.34 |
