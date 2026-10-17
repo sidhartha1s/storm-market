@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a6-cmt-thriving: host 1001.587 to 1007.047 (5.46 s = a6-s2 "One" 0.46 to "Since" 5.92).
+     Local time = a6-s2 word time - 0.46 (nx-a6-s2 1001.127 + 0.46 = host start).
+     Overlay over the safe-room clip the editor mounts under the host (CLIP NEEDED, not yet in index.html). Root transparent: no ground.
+     COMMENT CARD base copied from g-a6-cmt-mandatory / g-a4-comment (glass surface, type, highlight bar, likes slot); only the width changes:
+     brief section 2 puts this card in the centre popup zone, left/right 260 px (1400 wide), centred on y 450 so it ends above the presenter circle (y 680).
+     Row 3 (video title) is not drawn: not released. Likes slot stays empty (N9: 3,600 is in comment-beats.json, not released). */
+  #a6t-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  #a6t-cardwrap { position:absolute; inset:auto; left:260px; right:260px; top:0; height:900px; display:flex; align-items:center; }
+  #a6t-card { position:relative; box-sizing:border-box; width:100%; min-height:240px; padding:36px 44px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); visibility:hidden; opacity:0; }
+  .a6t-meta { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2;
+    visibility:hidden; opacity:0; }
+  #a6t-r1 { width:fit-content; margin-bottom:20px; } /* box hugs the text so the quote glyph box never crosses it */
+  #a6t-r2 { font-size:40px; letter-spacing:0; line-height:1.25; color:#f2f5f8; }
+  #a6t-l1 { display:block; margin-bottom:6px; visibility:hidden; opacity:0; }
+  #a6t-l2 { display:block; margin-bottom:14px; visibility:hidden; opacity:0; }
+  #a6t-hl { position:relative; width:fit-content; padding-bottom:4px; }
+  #a6t-l3 { display:block; color:#d8a13a; visibility:hidden; opacity:0; }
+  /* highlight bar: Amber 1, 6 px, under the baseline of line 3 (outside the text box) */
+  #a6t-bar { position:absolute; inset:auto; left:0; right:0; bottom:-10px; height:6px; border-radius:3px; background:#d8a13a;
+    transform-origin:left center; visibility:hidden; opacity:0; }
+  /* big tier (>= 52): the quote glyph, top right of the card, clear of row 1 and the text lines */
+  #a6t-mark { position:absolute; inset:auto; right:40px; top:14px; font-family:Georgia,'Times New Roman',serif; font-size:104px; line-height:104px;
+    color:#d8a13a; visibility:hidden; opacity:0; }
+  #a6t-likes { height:30px; margin-top:12px; } /* reserved for the like count; empty until released (N9) */
+</style>
+<div id="a6t-root" data-composition-id="g-a6-cmt-thriving" data-width="1920" data-height="1080">
+  <div id="a6t-cardwrap">
+    <div id="a6t-card">
+      <div id="a6t-mark">&ldquo;</div>
+      <div id="a6t-r1" class="a6t-meta">YouTube comment</div>
+      <div id="a6t-r2" class="a6t-meta">
+        <span id="a6t-l1">By the way, Joplin is thriving as of now.</span>
+        <span id="a6t-l2">They’re rebuilding prettier buildings,</span>
+        <div id="a6t-hl"><span id="a6t-l3">preparing more public tornado shelters...</span><div id="a6t-bar"></div></div>
+      </div>
+      <div id="a6t-likes"></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a6t-";
+  /* r2 is a container: the row shows from its first line, the three lines reveal one by one */
+  tl.set(Q+"r2", { autoAlpha: 1 }, 0);
+
+  /* card in 0.00 to 0.60 on "One" a6-s2 0.46 */
+  tl.fromTo(Q+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0); /* ONE a6-s2 0.46 */
+  tl.fromTo(Q+"mark", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.1); /* ONE a6-s2 0.46 + 0.10 */
+  tl.fromTo(Q+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.1); /* ONE a6-s2 0.46 + 0.10 */
+  tl.fromTo(Q+"l1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.1); /* ONE a6-s2 0.46 + 0.10; line 1 shows as the card lands */
+  tl.fromTo(Q+"l2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.44); /* COMMENT a6-s2 0.90 */
+  tl.fromTo(Q+"l3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 2.28); /* PUBLIC a6-s2 2.74 */
+  tl.fromTo(Q+"bar", { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power2.out" }, 2.38); /* highlight draws under line 3, PUBLIC a6-s2 2.74 + 0.10 */
+
+  /* card float y +-4 px, finite: 0.60 to 3.60 */
+  tl.to(Q+"card", { y: 4, duration: 1, ease: "sine.inOut" }, 0.6);
+  tl.fromTo(Q+"card", { y: 4 }, { y: -4, duration: 2, ease: "sine.inOut", immediateRender: false }, 1.6);
+
+  /* exit 4.86 to 5.46: slide out left (the entrance side), last 0.6 s, ends on "Since" a6-s2 5.92; g-a6-saferoom takes the frame there */
+  tl.to(Q+"card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 4.86); /* SINCE a6-s2 5.92 - 0.6 */
+
+  window.__timelines["g-a6-cmt-thriving"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
