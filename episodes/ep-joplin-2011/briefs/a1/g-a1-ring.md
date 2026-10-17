@@ -63,7 +63,7 @@ like a speck inside a crowded ring.
 | radius line + label | "80 miles" (S37) | "80" 15.10 |
 | 181 dots pop (scale 0 to 1, seeded order, about 0.0045 s apart) | (none) | "182" 16.92, done by "of" 17.74 |
 | rail chip 2 | "182 WITHIN 80 MILES" (S37) | "of" 17.74 |
-| hold | | to 19.56. The dots twinkle in finite repeats (opacity 0.75 to 1, staggered). The whole map group drifts 6 px/s right to left from frame 0 to the end (about 65 px, so the ring stays inside x 96 to 1240). Cut on the host end |
+| hold | | to 19.56. The dots twinkle in finite repeats (opacity 0.75 to 1, staggered). The map group (state lines, outline, dots, ring, the map labels; never the eyebrow, rail chips or source line, which are HUD) drifts 6 px/s right to left from frame 0 to the end (about 65 px, so the ring stays inside x 96 to 1240). Cut on the host end |
 
 The last discrete beat is 17.74, followed by a 1.8 s hold. Gaps stay under 4 s.
 
