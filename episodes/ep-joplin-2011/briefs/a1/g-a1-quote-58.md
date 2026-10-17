@@ -32,7 +32,6 @@ beside it as a viewer's words: "nobody knew what really was coming that day."
 - Cite card B (the record), same box, replaces A:
   - "“the media continued to report on storms said to be passing to the north and missing Joplin …”" in Georgia italic 40 `#2a2622`, at most 4 lines.
   - Source "NIST NCSTAR 3 · Sec. 1.2" in Arial 700 22 `#6b6257`.
-  - Cite-card attribution may go to 16 px only under `tokens.md`'s named exception. Keep it at 22.
 - Comment card: Row 1 "YouTube comment" · Row 2 "“The sad part is nobody knew what really was coming that day.”" · Row 3 "under “JOPLIN, MO, Tornado, 22 May 2011”" · Row 4 likes, reserved and empty.
 - Chip: glass chip "TRACK: NORTH OF TOWN" in Arial Black 900 52 `#f2f5f8` (big tier). The glass surface over the dark ground is fine: it is the house chip.
 
