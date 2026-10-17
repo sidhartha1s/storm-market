@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a6-doc-rec7, A6-S1. NIST NCSTAR 3 printed p364 (PDF p428), Sec. 5.2.2 Recommendation 7, clause (b).
+     Host: nx-a6-s1 990.707 + 6.30 "NIST" = 997.007 = host data-start, so every cue below is the words.json time - 6.30. Host 11.5 s.
+     Page image: PDF page 428 clip x 64-548, y 270-520 pt, rendered at 3.5 px/pt (1694 x 875), shown at 1440 x 744 (2.9752 px/pt).
+     Underlines are SVG lines measured on the PDF glyph boxes: x = (pt - 64) * 2.9752 -/+ 4, y = (baseline - 270) * 2.9752 + 4 + 3 (6 px stroke).
+     Where two phrases abut on one line (U1 "existing" / U2 "multi-family", 2.6 pt of space) the inner ends take 1.5 px, not 4,
+     so the two bars stay two bars. Paper x 120-1560 at 1.06 reaches x 1596, so x >= 1600 stays clear. */
+  #g-a6-doc-rec7-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #r7-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #r7-paper { position:absolute; left:120px; top:200px; width:1440px; height:744px; background:#fff; overflow:hidden;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.14), 0 20px 60px rgba(0,0,0,0.5); }
+  #r7-img { position:absolute; left:0; top:0; width:1440px; height:744px;
+    -webkit-mask-image:linear-gradient(180deg, #000 0, #000 calc(100% - 80px), transparent 100%);
+    mask-image:linear-gradient(180deg, #000 0, #000 calc(100% - 80px), transparent 100%); }
+  #r7-ul { position:absolute; left:0; top:0; width:1440px; height:744px; overflow:hidden; }
+  .r7-bar { visibility:hidden; }
+  /* the zoom-through tile fill of g-a6-board-r7 (Diagram grey 2) holds frame 0, then the page resolves */
+  #r7-fill { position:absolute; inset:0; background:#2a3644; }
+  #r7-chip { position:absolute; left:96px; top:80px; height:56px; line-height:56px; padding:0 28px; box-sizing:border-box; white-space:nowrap;
+    font-family:Arial,sans-serif; font-weight:700; font-size:30px; letter-spacing:1px; color:#dfe7ee;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; visibility:hidden; opacity:0; }
+  #r7-src { position:absolute; left:96px; top:996px; height:24px; line-height:24px; white-space:nowrap;
+    font-family:Arial,sans-serif; font-weight:700; font-size:20px; color:#c8d3e0; visibility:hidden; opacity:0; }
+</style>
+<div id="g-a6-doc-rec7-root" data-composition-id="g-a6-doc-rec7" data-width="1920" data-height="1080">
+  <div id="r7-ground"></div>
+  <div id="r7-paper">
+    <img id="r7-img" src="media/candidates/a6/a6-s1_c4_nist-rec7-p364.png" alt="NIST NCSTAR 3, Joplin Tornado Investigation, printed page 364: Recommendation 7">
+    <svg id="r7-ul" viewBox="0 0 1440 744" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#d8a13a" stroke-width="6" stroke-linecap="butt">
+      <line class="r7-bar" id="r7-u1"  x1="1008.7" y1="236.8" x2="1236.2" y2="236.8" stroke-dasharray="229 229" stroke-dashoffset="229"/>
+      <line class="r7-bar" id="r7-u2a" x1="1241.0" y1="236.8" x2="1418.3" y2="236.8" stroke-dasharray="179 179" stroke-dashoffset="179"/>
+      <line class="r7-bar" id="r7-u2b" x1="19.9"   y1="278.6" x2="294.4"  y2="278.6" stroke-dasharray="276 276" stroke-dashoffset="276"/>
+      <line class="r7-bar" id="r7-u3"  x1="302.8"  y1="278.6" x2="578.8"  y2="278.6" stroke-dasharray="278 278" stroke-dashoffset="278"/>
+      <line class="r7-bar" id="r7-u4"  x1="587.6"  y1="278.6" x2="693.7"  y2="278.6" stroke-dasharray="108 108" stroke-dashoffset="108"/>
+      <line class="r7-bar" id="r7-u5"  x1="749.0"  y1="278.6" x2="1243.7" y2="278.6" stroke-dasharray="496 496" stroke-dashoffset="496"/>
+    </svg>
+  </div>
+  <div id="r7-fill"></div>
+  <div id="r7-chip">RECOMMENDATION 7</div>
+  <div id="r7-src">NIST Sec. 5.2.2, Recommendation 7</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const HOST = 11.5;
+  const tl = gsap.timeline({ paused: true });
+  const P = "#r7-";
+  /* push is centred on clause (b): origin x = card centre, y = the two underlined lines (card px 255) */
+  tl.set(P+"paper", { transformOrigin: "720px 255px", scale: 1, y: 40 }, 0);
+
+  /* NIST 6.30 - 6.30 = 0: tile fill lifts off, page settles, linear push 1.00 to 1.06 across the host */
+  tl.to(P+"fill", { autoAlpha: 0, duration: 0.3, ease: "power2.out" }, 0);
+  tl.to(P+"paper", { y: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.to(P+"paper", { scale: 1.06, duration: HOST, ease: "none" }, 0);
+
+  /* ASKED 6.76: chip and source line together */
+  tl.fromTo(P+"chip", { autoAlpha: 0, y: -26 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.46);
+  tl.fromTo(P+"src", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 0.46);
+
+  /* U2 APARTMENT 8.24: "multi-family" (line 1, 177 px) then wraps to "residential buildings" (line 2, 274 px), one pen speed over 0.5 s */
+  tl.set(P+"u2a", { autoAlpha: 1 }, 1.94);
+  tl.to(P+"u2a", { strokeDashoffset: 0, duration: 0.196, ease: "none" }, 1.94);
+  tl.set(P+"u2b", { autoAlpha: 1 }, 2.136);
+  tl.to(P+"u2b", { strokeDashoffset: 0, duration: 0.304, ease: "none" }, 2.136);
+
+  /* U3 STORES, 9.44 */
+  tl.set(P+"u3", { autoAlpha: 1 }, 3.14);
+  tl.to(P+"u3", { strokeDashoffset: 0, duration: 0.5, ease: "none" }, 3.14);
+
+  /* U4 SCHOOLS, 10.24 */
+  tl.set(P+"u4", { autoAlpha: 1 }, 3.94);
+  tl.to(P+"u4", { strokeDashoffset: 0, duration: 0.5, ease: "none" }, 3.94);
+
+  /* U5 PLACES 11.18 (where crowds gather) */
+  tl.set(P+"u5", { autoAlpha: 1 }, 4.88);
+  tl.to(P+"u5", { strokeDashoffset: 0, duration: 0.5, ease: "none" }, 4.88);
+
+  /* "tornado -prone areas" 12.92 (host 6.62): clause tail "located in tornado hazard areas" is N10, held, no underline; the push keeps moving */
+
+  /* U1 NEW 15.08 (That meant new buildings and existing ones.) */
+  tl.set(P+"u1", { autoAlpha: 1 }, 8.78);
+  tl.to(P+"u1", { strokeDashoffset: 0, duration: 0.5, ease: "none" }, 8.78);
+
+  /* exit 17.20 (host 10.90): page slides out, chip and source line fade with it; gone by 17.80 = Walmart photo */
+  tl.to(P+"paper", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 10.9);
+  tl.to([P+"chip", P+"src"], { autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 10.9);
+
+  window.__timelines["g-a6-doc-rec7"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
