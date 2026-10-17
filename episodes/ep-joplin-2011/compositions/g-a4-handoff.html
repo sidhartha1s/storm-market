@@ -111,9 +111,9 @@ window.__timelines = window.__timelines || {};
 
   /* WHEN a4-s14 5.34: the A4 outlines go out; St. John's footprint lights (pop 1.8 -> 1, 4 px stroke, .10 fill) */
   tl.to([P + "place-pizza-hut", P + "place-dillons", P + "place-pizza-hut-mk", P + "place-dillons-mk"],
-    { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, WHEN);
+    { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 5.34);
   tl.fromTo(P + "place-sjrmc", { autoAlpha: 0, scale: 1.8, svgOrigin: SJ },
-    { autoAlpha: 1, scale: 1, svgOrigin: SJ, duration: 0.45, ease: "power3.out" }, WHEN);
+    { autoAlpha: 1, scale: 1, svgOrigin: SJ, duration: 0.45, ease: "power3.out" }, 5.34);
 
   /* RING a4-s14 5.34: amber ring pulses, scale 1.00 -> 2.20, opacity 0.9 -> 0 over 1.2 s, staggered 0.4 s, finite repeats */
   tl.set(P + "pulses", { autoAlpha: 1 }, WHEN);
