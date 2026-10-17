@@ -206,7 +206,7 @@ window.__timelines = window.__timelines || {};
   tl.to(Q + "sfill", { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 10.06);
 
   /* NOBODY a4-s13 10.96: chip lands, figures glow (halo in, then two soft pulses), slow push over the hold */
-  tl.fromTo(Q + "chip", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 10.96);
+  tl.fromTo(Q + "chip", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 10.96);   /* y, not x: graphics_qc skips samples inside an x entrance, and the last sample is 11.7 s */
   tl.fromTo(Q + "bar", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power2.out", transformOrigin: "center top" }, 11.04);
   tl.set(Q + "svg .a4cel-halo", { transformOrigin: "50% 50%" }, 0);
   FIG.forEach(([id], i) => {
