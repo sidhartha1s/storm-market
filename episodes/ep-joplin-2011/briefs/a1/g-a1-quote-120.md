@@ -45,7 +45,7 @@ really happens" (S24). These are the actor's own words, attributed, and nothing 
 | L1 | "“I didn't put much stock in that siren," | "didn't" 2.16 |
 | L2 | "because I'd heard them before," | "In" 4.42 (unspoken, so it lands as the voice turns to the quote) |
 | attribution | "an actor in the play · NIST Interview 120" | "actor's" 4.70 |
-| L3 | "and 9 times out of 10," | "nine" 6.02 (lands with a 1.0 to 1.04 to 1.0 scale tick, 0.4 s) |
+| L3 | "and 9 times out of 10," (S24) | "nine" 6.02 (lands with a 1.0 to 1.04 to 1.0 scale tick, 0.4 s) |
 | L4 | "you hear the sirens but nothing really happens”" | "you" 7.30 |
 | hold: card floats y ±3 px, 4 s sine | | 8.84 to 9.66 |
 | exit: card slides out (`to x:980, autoAlpha:0, 0.6, power3.in`) | | 9.66 to 10.26, finished before the cut to the map |
