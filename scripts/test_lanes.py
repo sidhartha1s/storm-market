@@ -141,6 +141,12 @@ with tempfile.TemporaryDirectory() as tmp:
         check("hold rejects a blank reason", raises(lambda: lanes.main(["hold", e, "voice:intro", "--reason", " ", "--session", "S1"])))
         lanes.main(["start", e, "source:intro", "--session", "S2"])
         check("a write re-stamps the orchestrator (resume, fork)", json.loads((ep / "lanes.json").read_text())["orchestrator"] == "S2")
+        lanes.main(["end", e, "source:intro", "--session", "S2"])
+        check("end marks the lane stopped: READY again while its output is missing",
+              states(ep, lanes.load_ledger(ep))["source:intro"] == "READY")
+        lanes.main(["hold", e, "source:intro", "--reason", "owner", "--session", "S2"])
+        lanes.main(["unhold", e, "source:intro", "--session", "S2"])
+        check("unhold clears the hold", states(ep, lanes.load_ledger(ep))["source:intro"] == "READY")
         check("status exits 2 while a job is READY", lanes.main(["status", e]) == 2)
         lanes.main(["hold", e, "all", "--reason", "fixture", "--session", "S2"])
         check("status exits 0 once every ready job is held", lanes.main(["status", e]) == 0)
