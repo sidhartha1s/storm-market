@@ -744,6 +744,6 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Picture:** the recommendation board, tile 7 half lit. Chip "2027 BUILDING CODE". Source line "2027 International Building Code · ICC store page, Oct 2026".
 > The 2027 International Building Code comes out this fall. If you live where tornadoes hit, watch whether it asks for shelters in stores and apartment buildings.
 
-**Rows:** [ICC store page for the 2027 IBC, factcheck-acts row Z1-S3; factcheck-A4-Z1 row Z1-S3] [verify: re-check 2027 IBC shelter rules (Section 423, Group M and R) the week of render]
+**Rows:** [ICC store page for the 2027 IBC, factcheck-acts row Z1-S3; factcheck-A4-Z1 row Z1-S3] [CONFIRMED 18 Oct 26: ICC store page says the 2027 IBC is "available mid October" (pre-order, fetched 18 Oct); IBC Sec. 423 shelter mandates cover K-12 schools and critical emergency operations in the 250 mph zone since 2015, nothing for Group M or R (ICC Building Safety Journal, "why where when what and how for storm shelters"), and the ICC page lists no Group M/R shelter change, so "watch whether it asks" stands]
 
 ### Z1 signature line (not written here: DESIGN.md "Signature closing footnote"; Paul on camera, full frame)
