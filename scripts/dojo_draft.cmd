@@ -32,5 +32,5 @@ call "%~dp0render.cmd" %SLUG% draft
 exit /b %ERRORLEVEL%
 
 :refuse
-del /q "%REQ%"
+del /q "%REQ%" "%CHK%"
 exit /b 3
