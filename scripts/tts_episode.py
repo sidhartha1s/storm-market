@@ -85,13 +85,7 @@ def parse_segments(md: str):
     must hard-fail on 0, not skip loud.
     """
     segs = []
-    blocks = re.split(r"\n#{1,6} ", "\n" + md.replace("\r\n", "\n"))
-    for b in blocks[1:]:
-        header, _, rest = b.partition("\n")
-        m = re.match(SEG_ID, header)
-        if not m:
-            continue
-        sid = m.group(1).lower()
+    for sid, _, rest in segment_blocks(md):
         # Scan the WHOLE block (already heading-delimited, so this can never cross into a
         # later segment or section) for blockquote paragraphs — 'Visual:' notes sit BEFORE
         # the quote in some episodes (ep3-tristate, ep1-joplin) and AFTER it in others
