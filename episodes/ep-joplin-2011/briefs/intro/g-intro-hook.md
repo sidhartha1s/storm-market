@@ -12,7 +12,7 @@ underground (H5). The viewer's own answer ("get inside") was right, and still wa
 ## 1. SOURCE
 - T3 "Of the 155 impact-related fatalities, 135 (87 percent) involved persons who are known to have been located inside structures during the tornado." NIST Finding 40.
 - H5 "NIST found no evidence that any of those killed were located underground during the tornado." NIST Finding 46.
-- Date and place: "On Sunday, May 22, 2011" (NIST Sec. 1.2, quoted on the T1-S1 Rows line); Joplin, Missouri (T1 "the Joplin tornado").
+- Date and place: H3 "at the time of the May 22, 2011, Joplin tornado" (NIST Finding 20); Missouri: X21 / T1 (NIST, "Joplin, Missouri" in the report title, facts.md Sources).
 
 ## 2. DATUM, SCALE, ORIENTATION
 - Overlay on live footage of a face: nothing crosses Paul's face. Before building, read one frame of `ins-paul-1` at 1.0, 7.0 and 16.4 s
