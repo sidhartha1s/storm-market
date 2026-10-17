@@ -12,7 +12,8 @@
 
   /* floaters carry the y drift so the cards keep their own entrance and exit tweens */
   #q58-floatL { position:absolute; inset:auto; left:140px; top:240px; width:860px; height:600px; }
-  #q58-floatR { position:absolute; inset:auto; left:1080px; top:0; width:700px; height:1000px; display:flex; align-items:center; }
+  /* top -18 centres the card on y 482 so its bottom stays <= 660 (card is 346 px high; centred on 500 it ends at 673, inside the presenter zone x >= 1600, y >= 680 with float) */
+  #q58-floatR { position:absolute; inset:auto; left:1080px; top:-18px; width:700px; height:1000px; display:flex; align-items:center; }
 
   .q58-cite { position:absolute; inset:auto; left:0; top:0; width:860px; height:600px; box-sizing:border-box; border-radius:28px;
     background:rgba(232,222,200,.90); border:1px solid rgba(90,74,46,.35); box-shadow:0 30px 90px rgba(0,0,0,.55);
