@@ -111,7 +111,7 @@ window.__timelines = window.__timelines || {};
   logZoom(P + "cam", A, B - A, 1, Z, "power2.inOut");
   tl.to(P + "cam", { x: -35.7, y: 28, duration: B - A, ease: "power2.inOut" }, A);
   /* the base's path would sit south of both stores at this scale (CONFLICT in the header): fade it out inside the push */
-  tl.to(P + "l-path", { opacity: 0, duration: 1.4, ease: "power2.in" }, A + 0.3);
+  tl.to(P + "l-path", { opacity: 0, duration: 1.0, ease: "power1.inOut" }, A + 0.1);
   /* store outlines come in dim as the push lands */
   tl.to(P + "l-stores", { autoAlpha: 1, duration: 0.6, ease: "power1.out" }, B - 1.0);
   /* EXPLAIN 2.14: street labels once the camera has settled */
