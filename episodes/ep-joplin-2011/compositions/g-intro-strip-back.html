@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-intro-strip-back: I1-S9 first part, host 111.13 for 4.46 s (nx-i1-s9 111.13, so comp-local time = i1-s9 word start). Brief briefs/intro/g-intro-strip-back.md.
+     Base: the SIREN STRIP of g-intro-strip in its I1-S3 finished state (229 ticks, 4 red marks, date labels, gap bracket, row label, year labels),
+     every y baked at offset + 170 (the centred table of g-a1-strip-sirens: row label 384, date labels 470, red marks 526 to 614, ticks 550 to 590,
+     axis 610, years 652). Map, chip, name card and warnings row dropped. Frame 0 is the finished strip, no build-in. -->
+<template>
+<style>
+  #g-intro-strip-back-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .gsb-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gsb-hid { visibility:hidden; }
+  .gsb-row { font:700 26px Arial, sans-serif; letter-spacing:8px; fill:#93a3b2; }
+  .gsb-yr { font:700 26px Arial, sans-serif; letter-spacing:3px; fill:#93a3b2; text-anchor:middle; }
+  .gsb-date { font:700 30px Arial, sans-serif; fill:#f2f5f8; }
+  .gsb-out { font:700 26px Arial, sans-serif; letter-spacing:4px; fill:#e74c3c; }
+  .gsb-src { position:absolute; inset:auto; left:96px; top:990px; font:700 20px/20px Arial, sans-serif; color:#c8d3e0;
+    white-space:nowrap; visibility:hidden; }
+</style>
+<div id="g-intro-strip-back-root" data-composition-id="g-intro-strip-back" data-width="1920" data-height="1080" data-duration="4.46">
+  <svg class="gsb-svg" id="gsb-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <g id="gsb-fl">
+      <text class="gsb-row" x="200" y="384">Joplin's outdoor sirens</text>
+      <line x1="200" y1="610" x2="1720" y2="610" stroke="#93a3b2" stroke-opacity="0.6" stroke-width="2"/>
+      <path d="M200 610V622M544.2 610V622M889.3 610V622M1233.4 610V622M1577.6 610V622" stroke="#93a3b2" stroke-opacity="0.6" stroke-width="1"/>
+      <text class="gsb-yr" x="372.1" y="652">2007</text>
+      <text class="gsb-yr" x="716.7" y="652">2008</text>
+      <text class="gsb-yr" x="1061.4" y="652">2009</text>
+      <text class="gsb-yr" x="1405.5" y="652">2010</text>
+      <text class="gsb-yr" x="1648.8" y="652">2011</text>
+      <!-- 229 Monday test ticks, d built in the script from the date rule -->
+      <path id="gsb-ticks" d="" stroke="#93a3b2" stroke-width="2"/>
+      <!-- empty-gap bracket, 8 px inside the 2009 and 2011 marks -->
+      <line x1="1017" y1="536" x2="1702.6" y2="536" stroke="#e74c3c" stroke-opacity="0.7" stroke-width="3" stroke-dasharray="10 8"/>
+      <!-- red marks: lit halo behind, outer g pulses -->
+      <rect class="gsb-halo" x="205" y="518" width="22" height="104" rx="8" fill="#e74c3c" opacity="0"/>
+      <rect class="gsb-halo" x="655.7" y="518" width="22" height="104" rx="8" fill="#e74c3c" opacity="0"/>
+      <rect class="gsb-halo" x="998" y="518" width="22" height="104" rx="8" fill="#e74c3c" opacity="0"/>
+      <rect class="gsb-halo" x="1699.6" y="518" width="22" height="104" rx="8" fill="#e74c3c" opacity="0"/>
+      <g id="gsb-p07"><rect x="213" y="526" width="6" height="88" fill="#e74c3c"/></g>
+      <g id="gsb-p08"><rect x="663.7" y="526" width="6" height="88" fill="#e74c3c"/></g>
+      <g id="gsb-p09"><rect x="1006" y="526" width="6" height="88" fill="#e74c3c"/></g>
+      <g id="gsb-p11"><rect x="1707.6" y="526" width="6" height="88" fill="#e74c3c"/></g>
+      <text class="gsb-date" x="216" y="470">Jan 18, 2007</text>
+      <text class="gsb-date" x="666.7" y="470">May 10, 2008</text>
+      <text class="gsb-date" x="1009" y="470">May 8, 2009</text>
+      <text class="gsb-date" x="1730" y="470" text-anchor="end">May 22, 2011</text>
+    </g>
+    <!-- label sits on a fixed layer under the year labels, never rides the strip float -->
+    <text id="gsb-out" class="gsb-out gsb-hid" x="200" y="720">Outside the weekly test</text>
+  </svg>
+  <div id="gsb-src" class="gsb-src">Since 2007 &#183; NIST Finding 31</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#gsb-";
+  const END = 4.46;
+  const q = (sel) => Array.from(document.querySelectorAll(sel));
+
+  /* ticks: every Monday from 1 Jan 2007 (a Monday) to 16 May 2011, x = 200 + days x 1520/1612, band y 550 to 590 */
+  const D0 = Date.UTC(2007, 0, 1), LAST = Date.UTC(2011, 4, 16), DAY = 86400000, K = 1520 / 1612;
+  let d = "", n = 0;
+  for (let t = D0; t <= LAST; t += 7 * DAY) { d += "M" + (200 + (t - D0) / DAY * K).toFixed(2) + " 550V590"; n++; }
+  if (n !== 229) throw new Error("g-intro-strip-back: " + n + " ticks; brief says 229");
+  document.querySelector(P + "ticks").setAttribute("d", d);
+
+  const pulses = [P + "p07", P + "p08", P + "p09", P + "p11"];
+  const tl = gsap.timeline({ paused: true });
+
+  /* frame 0: finished strip, ticks at 70 % */
+  tl.set(P + "ticks", { opacity: 0.7 }, 0);
+
+  /* the strip floats 3 px over the whole 4.46 s: four half-cycles of END / 4, ends back at rest */
+  tl.to(P + "fl", { y: -3, duration: END / 4, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0);
+
+  /* SIRENS i1-s9 1.58: the comb of tests fades back 70 % -> 25 % */
+  tl.to(P + "ticks", { opacity: 0.25, duration: 0.6, ease: "power2.inOut" }, 1.58);
+
+  /* HARDLY i1-s9 2.02: marks pulse 1 -> 1.18 -> 1 (0.5 s, stagger 0.1) and stay lit; source line in */
+  tl.to(pulses, { scale: 1.18, transformOrigin: "50% 50%", duration: 0.25, ease: "power2.inOut", yoyo: true, repeat: 1, stagger: 0.1 }, 2.02);
+  tl.to(q(".gsb-halo"), { opacity: 0.3, duration: 0.3, ease: "power2.out", stagger: 0.1 }, 2.02);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.02);
+
+  /* REAL i1-s9 3.56: label in */
+  tl.fromTo(P + "out", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.56);
+
+  /* cut to CLIP 3 on the host end (4.46); the float carries the hold */
+  window.__timelines["g-intro-strip-back"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
