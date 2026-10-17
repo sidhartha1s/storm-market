@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a3-house-joints: A3-S6, the g-a3-house-section shell comes apart at its four connections (NIST Finding 14). SCHEMATIC.
+     Host 540.65 for 5.30 s; nx-a3-s6 starts 538.05, so local t = a3-s6 words.json time - 2.60.
+     Geometry is the base's (ground, grade line, foundation, floor, walls, roof with its ceiling line); partitions, tub, figure,
+     basement ghost and the "Ground" label are dropped (the label would sit on "Wall to floor"). Roof, each wall, floor: one rigid piece each.
+     Ring offsets below are computed from the brief's transforms (python3, rotation about each svgOrigin, y lift), not placed by eye:
+       roof underside at x 530 / 1390: (531.05, 340.00) / (1388.95, 280.00); wall top centre: (530.10, 362.61) / (1389.90, 362.61)
+       wall foot centre: (496.70, 600.27) / (1423.30, 600.27), i.e. 33.3 px outward
+       J1 gap mid (530.57, 351.30) = roof half (+0.52, -30.00) + wall half (+0.05, -18.70)
+       J2 gap mid (1389.43, 321.31) = roof half (-0.52, -60.00) + wall half (-0.05, -18.70)
+       J3 gap mid (513.35, 620.14) = (-16.65, -19.86); J4 gap mid (1406.65, 620.14) = (+16.65, -19.86)
+     A ring sits in two nested groups (roof half, wall half) so it follows the gap with the same ease as the pieces. */
+  #g-a3-house-joints-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #a3hj-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #a3hj-cam { position:absolute; inset:0; }
+  #a3hj-svg { position:absolute; inset:0; width:1920px; height:1080px; }
+  .a3hj-diaglabel { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  /* start-hidden in CSS as well as by the timeline (quickref "Motion and exits") */
+  .a3hj-hid { opacity:0; visibility:hidden; }
+
+  #a3hj-hud { position:absolute; inset:0; }
+  #a3hj-chipwrap { position:absolute; inset:auto; left:96px; top:96px; }
+  #a3hj-chip { position:relative; display:table; box-sizing:border-box; padding:18px 40px 18px 46px; border-radius:14px; overflow:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; }
+  #a3hj-bar { position:absolute; inset:auto; left:0; top:0; bottom:0; width:8px; background:#d0121f; }
+  #a3hj-gloss { position:absolute; inset:auto; top:0; bottom:0; left:-220px; width:140px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.22), rgba(255,255,255,0)); }
+  #a3hj-chiptext { position:relative; display:block; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:60px;
+    letter-spacing:1px; color:#f2f5f8; white-space:nowrap; text-shadow:0 2px 14px rgba(0,0,0,.7); }
+
+  #a3hj-srcwrap { position:absolute; inset:auto; left:96px; bottom:54px; }
+  #a3hj-src { display:table; box-sizing:border-box; padding:6px 14px; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14);
+    font-family:Arial,sans-serif; font-weight:400; font-size:20px; line-height:26px; letter-spacing:.5px; color:#c8d3e0; white-space:nowrap;
+    visibility:hidden; opacity:0; }
+</style>
+<div id="g-a3-house-joints-root" data-composition-id="g-a3-house-joints" data-width="1920" data-height="1080">
+  <div id="a3hj-bg"></div>
+  <div id="a3hj-cam">
+    <svg id="a3hj-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="a3hj-earthgrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2a3644"/><stop offset="1" stop-color="#04070c"/>
+        </linearGradient>
+      </defs>
+
+      <!-- ground, foundation, floor: never move; the assembled shell is on from frame 0 (cut from the NIST photo) -->
+      <rect id="a3hj-earth" x="0" y="660" width="1920" height="420" fill="url(#a3hj-earthgrad)"/>
+      <rect id="a3hj-found" x="520" y="660" width="880" height="40" fill="#4a5560"/>
+      <line id="a3hj-grade" x1="0" y1="660" x2="1920" y2="660" stroke="#93a3b2" stroke-width="2"/>
+      <rect id="a3hj-floor" x="520" y="640" width="880" height="20" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+
+      <!-- walls: one rigid piece each -->
+      <g id="a3hj-wallL"><rect x="520" y="400" width="20" height="240" fill="rgba(223,231,238,.06)" stroke="#dfe7ee" stroke-width="3"/></g>
+      <g id="a3hj-wallR"><rect x="1380" y="400" width="20" height="240" fill="rgba(223,231,238,.06)" stroke="#dfe7ee" stroke-width="3"/></g>
+
+      <!-- roof with its ceiling line: one rigid piece -->
+      <g id="a3hj-roof">
+        <polygon points="480,400 960,220 1440,400" fill="rgba(147,163,178,.10)" stroke="#93a3b2" stroke-width="3" stroke-linejoin="miter"/>
+        <line x1="520" y1="400" x2="1400" y2="400" stroke="#dfe7ee" stroke-width="3"/>
+      </g>
+
+      <!-- leaders: label end to ring edge, 1 px -->
+      <line id="a3hj-ldrroof" class="a3hj-hid" x1="462" y1="387" x2="506.2" y2="376.0" stroke="#93a3b2" stroke-width="1"/>
+      <line id="a3hj-ldrfloor" class="a3hj-hid" x1="462" y1="642" x2="490.3" y2="629.9" stroke="#93a3b2" stroke-width="1"/>
+      <text id="a3hj-lblroof" class="a3hj-diaglabel a3hj-hid" x="450" y="395" text-anchor="end">Roof to wall</text>
+      <text id="a3hj-lblfloor" class="a3hj-diaglabel a3hj-hid" x="450" y="650" text-anchor="end">Wall to floor</text>
+
+      <!-- joint rings: outer group follows the roof (J1, J2) or the wall (J3, J4), J1/J2 inner group follows the wall -->
+      <g id="a3hj-j1a"><g id="a3hj-j1b"><circle id="a3hj-j1" class="a3hj-ring a3hj-hid" cx="530" cy="400" r="22" fill="none" stroke="#c0392b" stroke-width="3"/></g></g>
+      <g id="a3hj-j2a"><g id="a3hj-j2b"><circle id="a3hj-j2" class="a3hj-ring a3hj-hid" cx="1390" cy="400" r="22" fill="none" stroke="#c0392b" stroke-width="3"/></g></g>
+      <g id="a3hj-j3a"><circle id="a3hj-j3" class="a3hj-ring a3hj-hid" cx="530" cy="640" r="22" fill="none" stroke="#c0392b" stroke-width="3"/></g>
+      <g id="a3hj-j4a"><circle id="a3hj-j4" class="a3hj-ring a3hj-hid" cx="1390" cy="640" r="22" fill="none" stroke="#c0392b" stroke-width="3"/></g>
+    </svg>
+  </div>
+
+  <div id="a3hj-hud">
+    <div id="a3hj-chipwrap">
+      <div id="a3hj-chip">
+        <div id="a3hj-bar"></div>
+        <div id="a3hj-gloss"></div>
+        <span id="a3hj-chiptext">THE JOINTS GAVE</span>
+      </div>
+    </div>
+    <div id="a3hj-srcwrap">
+      <div id="a3hj-src">NIST Finding 14</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a3hj-";
+  const root = document.getElementById("g-a3-house-joints-root");
+  /* stroke draw-on: dash = ceil(len) + 1, measured, never typed */
+  function draw(sel, at, dur, ease) {
+    root.querySelectorAll(sel).forEach(function (el, i) {
+      const len = Math.ceil(el.getTotalLength()) + 1;
+      tl.set(el, { strokeDasharray: len, strokeDashoffset: len }, 0);
+      tl.set(el, { autoAlpha: 1 }, at + i * 0.1);
+      tl.to(el, { strokeDashoffset: 0, duration: dur, ease: ease || "power2.inOut" }, at + i * 0.1);
+    });
+  }
+
+  /* transforms start in tl.set at 0 (svgOrigin only here, never in a deferred tween's from vars) */
+  tl.set(Q + "roof", { svgOrigin: "960 400", y: 0, rotation: 0 }, 0);
+  tl.set(Q + "wallL", { svgOrigin: "540 400", y: 0, rotation: 0 }, 0);
+  tl.set(Q + "wallR", { svgOrigin: "1380 400", y: 0, rotation: 0 }, 0);
+  tl.set([Q + "j1a", Q + "j1b", Q + "j2a", Q + "j2b", Q + "j3a", Q + "j4a"], { x: 0, y: 0 }, 0);
+  tl.set(Q + "j3", { svgOrigin: "530 640", scale: 1 }, 0);
+  tl.set(Q + "j4", { svgOrigin: "1390 640", scale: 1 }, 0);
+  tl.set(Q + "bar", { scaleY: 0, transformOrigin: "center top" }, 0);
+  tl.set(Q + "src", { x: -40 }, 0);
+  tl.set(Q + "chip", { x: -40 }, 0);
+  tl.set([Q + "lblroof", Q + "lblfloor", Q + "ldrroof", Q + "ldrfloor"], { x: -20 }, 0);
+
+  /* "mostly" @2.60 (local 0.00): assembled house is already on; source line in */
+  tl.to(Q + "src", { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0);
+
+  /* "gave" @3.20 (local 0.60): chip in, accent bar draws, one gloss sweep */
+  tl.to(Q + "chip", { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.6);
+  tl.to(Q + "bar", { scaleY: 1, duration: 0.45, ease: "power2.out" }, 0.65);
+  tl.fromTo(Q + "gloss", { x: 0 }, { x: 1100, duration: 0.6, ease: "power1.inOut" }, 0.9);
+
+  /* "joints," @3.80 (local 1.20): the four rings draw on, 0.4 s each, 0.1 s apart (J1, J2, J3, J4) */
+  draw(Q + "j1, " + Q + "j2, " + Q + "j3, " + Q + "j4", 1.2, 0.4);
+
+  /* "roof" @4.78 (local 2.18): roof lifts 90 px and tilts -4 deg (left eave drops, right rises); J1/J2 follow by half the roof's move at the ring */
+  tl.to(Q + "roof", { y: -90, rotation: -4, duration: 0.7, ease: "power3.out" }, 2.18);
+  tl.to(Q + "j1a", { x: 0.52, y: -30, duration: 0.7, ease: "power3.out" }, 2.18);
+  tl.to(Q + "j2a", { x: -0.52, y: -60, duration: 0.7, ease: "power3.out" }, 2.18);
+  /* "Roof to wall" label and leader after the roof settles (local 2.60) */
+  tl.to([Q + "lblroof", Q + "ldrroof"], { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.6);
+
+  /* "walls" @5.40 (local 2.80): walls lift 36 px and tilt 8 deg about the top inner corner, feet swing out 33 px; J1/J2 take the wall half, J3/J4 the whole gap */
+  tl.to(Q + "wallL", { y: -36, rotation: 8, duration: 0.7, ease: "power3.out" }, 2.8);
+  tl.to(Q + "wallR", { y: -36, rotation: -8, duration: 0.7, ease: "power3.out" }, 2.8);
+  tl.to([Q + "j1b", Q + "j2b"], { x: 0, y: -18.7, duration: 0.7, ease: "power3.out" }, 2.8);
+  tl.to(Q + "j3a", { x: -16.65, y: -19.86, duration: 0.7, ease: "power3.out" }, 2.8);
+  tl.to(Q + "j4a", { x: 16.65, y: -19.86, duration: 0.7, ease: "power3.out" }, 2.8);
+  /* the roof leader's tip rides J1 up with the walls (ring edge, label side) */
+  tl.to(Q + "ldrroof", { attr: { x2: 508.4, y2: 362.9 }, duration: 0.7, ease: "power3.out" }, 2.8);
+
+  /* hold: pieces drift (roof y +-3 px, walls +-1 deg), rings ride half of each move; ends at 4.90 where the fade starts */
+  tl.to(Q + "roof", { y: -93, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.9);
+  tl.to([Q + "j1a", Q + "j2a"], { y: "-=1.5", duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.9);
+  tl.to(Q + "wallL", { rotation: 9, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.5);
+  tl.to(Q + "wallR", { rotation: -9, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.5);
+  tl.to(Q + "j3a", { x: "-=2.06", y: "-=0.4", duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.5);
+  tl.to(Q + "j4a", { x: "+=2.06", y: "-=0.4", duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.5);
+
+  /* "floor." @6.90 (local 4.30): J3/J4 pulse 1 -> 1.3 -> 1, "Wall to floor" label and leader in */
+  tl.to([Q + "j3", Q + "j4"], { scale: 1.3, duration: 0.25, ease: "power2.out" }, 4.3);
+  tl.to([Q + "j3", Q + "j4"], { scale: 1, duration: 0.25, ease: "power2.in" }, 4.55);
+  tl.to([Q + "lblfloor", Q + "ldrfloor"], { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.3);
+
+  /* "floor." 6.90 + 1.0 = local 5.30 (host end): fade-through 0.4 s into the next picture */
+  tl.to([Q + "cam", Q + "hud", Q + "bg"], { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, 4.9);
+
+  window.__timelines["g-a3-house-joints"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
