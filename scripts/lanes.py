@@ -21,7 +21,8 @@ which jobs were launched and when they ended, and which are held.
 Launching (why: lanes sat dead for hours on an exhausted profile or a full ZBook). `start --cmd` runs one job's command
 itself, hidden and detached, on host local or zbook, with {cli} replaced by the profile (claudeN, the wrapper that sets
 CLAUDE_CONFIG_DIR), started in --cwd (default: this checkout; required on zbook) and all output sent to --log.
-It refuses a job already RUNNING or DONE. The three rules:
+It refuses a job already RUNNING or DONE, and an ssh drop during the launch is never a reason to launch again:
+the host is asked whether the lane's process runs, and one that cannot be read is recorded as RUNNING. The three rules:
   1. it first probes the profile (`claude -p 'reply with the single word ok' --model haiku` under its
      CLAUDE_CONFIG_DIR); any reply but "ok" (a limit, a logged-out profile, an error) moves it to the next
      ~/.claude-accounts/claude* profile. It never waits for a reset.
@@ -104,15 +105,31 @@ def free_gb(host):
         sys.exit(f"[lanes] FAIL: cannot read free memory on {host}: {out.strip()[-200:]}")
 
 
+def alive(host, log):
+    """True or False: a process whose command line holds log runs on host; None when the host cannot be read."""
+    code, out = ps(host, f"@(Get-CimInstance Win32_Process | Where-Object {{ $_.CommandLine -like {quote('*' + log + '*')} }}).Count",
+                   timeout=20)  # the query's own command line is encoded, so it never matches itself
+    return int(out.strip()) > 0 if code == 0 and out.strip().isdigit() else None
+
+
 def spawn(host, cmd, log, cwd):
-    """Start cmd in cwd on host hidden, as a WMI process (it outlives this call and the ssh session), output to log."""
+    """Start cmd in cwd on host hidden, as a WMI process (it outlives this call and the ssh session), output to log.
+    Exits only when the lane is known not to run: an ssh drop after a good launch started p4 twice (18 Oct 26)."""
     # shortcut: an unquoted ")" in cmd closes the ( ) group early; quote it ("Bash(rm:*)"), as every claude flag is
     line = f'cmd /s /c "({cmd}) > "{log}" 2>&1"'
     code, out = ps(host, "$si = New-CimInstance -ClassName Win32_ProcessStartup -ClientOnly -Property @{ShowWindow=[uint16]0}; "
                          "(Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments "
                          f"@{{CommandLine={quote(line)}; CurrentDirectory={quote(cwd)}; ProcessStartupInformation=$si}}).ReturnValue")
-    if code != 0 or out.strip() != "0":
+    if code == 0 and out.strip() == "0":
+        return
+    # the host answered and refused it; or ssh dropped mid-call, decided by what runs there, never by the drop alone
+    # shortcut: a Create still in flight when the host answers reads as not running; a ~1 s window, rare enough here
+    up = False if code == 0 else alive(host, log)
+    if up is False:
         sys.exit(f"[lanes] FAIL: launch on {host} failed: {out.strip()[-300:]}")
+    if up is None:
+        print(f"[lanes] WARN: ssh dropped while launching on {host} and the host cannot be read; recorded as RUNNING "
+              f"so it is never launched twice, and `status` reads its log ({out.strip()[-120:]})")
 
 
 def read_log(host, log):
