@@ -131,7 +131,7 @@ window.__timelines = window.__timelines || {};
     ["pt1", 586, 255, 66, 35, 0.55], ["pt2", 718, 255, 66, 35, 0.61], ["pt3", 850, 255, 66, 35, 0.67], ["pt4", 982, 255, 66, 35, 0.73], ["pt5", 1114, 255, 66, 35, 0.79]
   ];
   PC.forEach(([id, cx, cy, hx, hy, at]) => {
-    tl.set(Q + id, { x: cx, y: cy }, 0);
+    tl.set(Q + id, { x: cx, y: cy, transformOrigin: "50% 50%" }, 0);   /* SVG default pivot is the bbox corner; the pieces are drawn around their centre */
     tl.to(Q + id + " path", { strokeDashoffset: 0, duration: 0.23 + (hy > 100 ? 0.2 : 0) + (hx && hy ? 0.1 : 0), ease: "power2.inOut" }, at);
   });
   tl.to(Q + "sfill", { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 0.7);
