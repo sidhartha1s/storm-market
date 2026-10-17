@@ -25,6 +25,12 @@
   #b7-t7 .b7-n { left:0; top:0; width:180px; text-align:center; font-size:60px; line-height:68px; }
   #b7-ring { position:absolute; inset:0; box-sizing:border-box; border-radius:14px; border:1.6667px solid #d8a13a; opacity:0; }
 
+  /* source line, bottom-left, copied from the base (R1: NIST NCSTAR 3 E.5); on from frame 0 like the rest of the board. It is also the small-tier text
+     graphics_qc samples before the label lands (flat-type reads 0.4 s to duration - 1.0 s). The presenter circle owns x >= 1600, y >= 680. */
+  #b7-src { position:absolute; inset:auto; left:96px; bottom:54px; padding:5px 12px; border-radius:14px; font-family:Arial,sans-serif; font-size:19px;
+    letter-spacing:.5px; color:rgba(200,211,224,.75); background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14); }
+
   /* label: unscaled HUD, diagram label tier (tokens.md), Body light per the brief; inside the lifted tile (box y 356 to 644), centre y 572 */
   #b7-label { position:absolute; inset:auto; left:760px; top:560px; width:400px; text-align:center; font-family:Arial,sans-serif; font-weight:700; font-size:22px;
     line-height:24px; letter-spacing:3px; color:#dfe7ee; white-space:nowrap; visibility:hidden; opacity:0; }
