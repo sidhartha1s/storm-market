@@ -17,7 +17,7 @@
   .a5r-n { position:absolute; inset:auto; left:16px; top:16px; font-family:Arial,sans-serif; font-weight:700; font-size:30px; line-height:34px; color:#93a3b2; }
   /* soft light band, clipped to the grid; neutral white, so every tile stays grey */
   #a5r-sweepclip { position:absolute; inset:auto; left:0; top:0; width:792px; height:552px; overflow:hidden; pointer-events:none; }
-  #a5r-sweep { position:absolute; inset:auto; left:0; top:0; width:240px; height:552px;
+  #a5r-sweep { position:absolute; inset:auto; left:-240px; top:0; width:240px; height:552px; /* starts outside the clip; a time-0 set() showed the band on frame 0 */
     background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.10) 50%, rgba(255,255,255,0)); }
 
   /* chip: glass surface (cards.css .popup values), stacked 16 / RECOMMENDATIONS */
