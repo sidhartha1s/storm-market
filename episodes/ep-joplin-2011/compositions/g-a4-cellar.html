@@ -214,7 +214,10 @@ window.__timelines = window.__timelines || {};
     tl.fromTo(h, { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power2.out" }, 10.96 + i * 0.03);
     tl.to(h, { scale: 1.3, autoAlpha: 0.45, duration: 0.55, ease: "sine.inOut", yoyo: true, repeat: 1 }, 11.4 + (i % 4) * 0.05);
   });
-  tl.set(Q + "cam", { scale: 1 }, 0);   /* an identity transform from frame 0, so text anti-aliasing is the same whichever way a frame is reached */
+  /* an identity transform and an explicit opacity 1 from frame 0, so text anti-aliasing is the same whichever way a frame is reached
+     (a seek back from the exit left opacity:1 inline on these and shifted the SVG labels' anti-aliasing) */
+  tl.set(Q + "cam", { scale: 1, autoAlpha: 1 }, 0);
+  tl.set([Q + "ground", Q + "eyebrow"], { autoAlpha: 1 }, 0);
   tl.to(Q + "cam", { scale: 1.02, duration: END - 0.5 - 10.96, ease: "none" }, 10.96);
 
   /* exit, last 0.5 s: chip and source slide out left, the diagram and its ground fade through to the next picture */
