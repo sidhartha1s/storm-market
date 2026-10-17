@@ -45,8 +45,8 @@ Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
    A FAIL that ends "the next narration run downloads them" needs nothing.
 
 8. **Claim the episode:** `python3 scripts/lanes.py claim episodes/<slug>` (once per session, again after a resume).
-   The Stop hook `lane-gate.py` then refuses to end a turn while any of the episode's jobs is READY or STALE;
-   record each launch with `lanes.py start`, its end with `lanes.py end`, and an owner or machine wait with `lanes.py hold --reason`.
+   The Stop hook `lane-gate.py` then refuses to end a turn while any of the episode's jobs is READY, STALE or FAILED;
+   launch each claude lane with `lanes.py start --cmd` (the launch rules are in its docstring), record any other launch with `lanes.py start`, its end with `lanes.py end`, and an owner or machine wait with `lanes.py hold --reason`.
 
 Only after 1–8: plan the episode.
 
