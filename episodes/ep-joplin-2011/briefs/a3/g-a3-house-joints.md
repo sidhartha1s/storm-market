@@ -19,7 +19,7 @@ Joints: four rings, r 22 px, stroke `#c0392b` 3 px, no fill:
 - J3 (530, 640) and J4 (1390, 640): wall to floor.
 Exploded state:
 - Roof: y −90 px, rotation −4° (svgOrigin (960, 400)). J1/J2 ring centres follow the opening gap (midpoint between the wall top and the roof underside).
-- Walls: each lifts y −36 px and tilts 8° outward (left wall −8°, right wall +8°), pivot at its top inner corner (svgOrigin (540, 400) and (1380, 400)). J3/J4 ring centres follow the gap at the wall foot.
+- Walls: each lifts y −36 px and rotates 8° about its top inner corner (svgOrigin (540, 400) and (1380, 400)) so its FOOT swings outward, about 33 px (left wall foot moves left, right wall foot moves right; pick the sign that does this and assert the foot x at the end). J3/J4 ring centres follow the gap at the wall foot.
 - Floor and foundation never move.
 Labels (22 px diagram labels, `#93a3b2`, right-aligned, ending x 450): "Roof to wall" at y 395; "Wall to floor" at y 650. Leader line 1 px from each label to J1 / J3.
 Chip (glass popup-chip, left 96, top 96): "THE JOINTS GAVE" 52 px. Source line (glass source-label, left 96, baseline ≤ 1026, 20 px): "NIST Finding 14".
