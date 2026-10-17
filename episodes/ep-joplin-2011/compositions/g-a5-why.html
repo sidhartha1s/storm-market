@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a5-why: A5-S10, host 950.547 for 18.06 s (nx-a5-s10 950.547 + 0.00, clamped by g-a5-recs-board at 968.607). Local t = a5-s10 words.json time.
+     Full frame: this comp's own ground carries two page images, no footage under it. Page crops (4 px/pt renders of the report PDFs, displayed 1000 px wide at x 120):
+       a5-s10_c1 = NIST NCSTAR 3 Exec Summary E.4.2, Finding 47 paragraph (PDF page 55; crop x 146 to 545, y 505 to 636 pt; 2.506 px/pt)
+       a5-s10_c2 = NWS Joplin Service Assessment, Finding 2d sentence (PDF page 10 of the report; crop x 69 to 546, y 187 to 239 pt; 2.096 px/pt)
+     Underline coordinates are the PDF's own word boxes (baseline + 3.3 pt NIST, + 3.6 pt NWS) mapped through those scales, not placed by eye.
+     Each NIST factor runs over two printed lines, so it is two strokes drawn back to back: U1a/U1b, U2a/U2b, U3a/U3b. U1b and U2a share printed line 6.
+     Chip column right (left 1200, tops 300/410/520, ends y 600); nothing enters x >= 1600 with y >= 680. Source line bottom-left. */
+  #why-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #why-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  .why-slide { position:absolute; inset:auto; left:120px; top:196px; width:1000px; height:432px; visibility:hidden; opacity:0; }
+  .why-h { position:absolute; inset:auto; left:0; top:0; white-space:nowrap; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:60px;
+    color:#f2f5f8; text-shadow:0 2px 14px rgba(0,0,0,.7); }
+  .why-page { position:absolute; inset:auto; left:0; top:104px; width:1000px; background:#fff; box-shadow:0 0 0 1px rgba(255,255,255,.14), 0 18px 60px rgba(0,0,0,.6); }
+  #why-nist-page { height:328.3px; }
+  #why-nws-page { height:109px; }
+  .why-page img { position:absolute; inset:auto; left:0; top:0; width:100%; height:100%; display:block; filter:brightness(.93); }
+  .why-page svg { position:absolute; inset:auto; left:0; top:0; width:100%; height:100%; overflow:visible; }
+  .why-ul { fill:none; stroke:#d8a13a; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; visibility:hidden; }
+
+  .why-float { position:absolute; inset:auto; left:1200px; }
+  #why-c1float { top:300px; }
+  #why-c2float { top:410px; }
+  #why-c3float { top:520px; }
+  .why-chip { position:relative; display:table; box-sizing:border-box; padding:14px 36px 14px 44px; border-radius:14px; overflow:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; white-space:nowrap; }
+  .why-bar { position:absolute; inset:auto; left:0; top:0; bottom:0; width:8px; background:#d8a13a; }
+  .why-t { display:block; font-family:Arial,sans-serif; font-weight:700; font-size:40px; line-height:50px; letter-spacing:1px; color:#f2f5f8; text-shadow:0 2px 14px rgba(0,0,0,.7); }
+  .why-src { position:absolute; inset:auto; left:96px; bottom:54px; display:table; box-sizing:border-box; padding:8px 16px; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14);
+    font-family:Arial,sans-serif; font-weight:400; font-size:19px; line-height:24px; letter-spacing:.5px; color:rgba(200,211,224,.75); white-space:nowrap;
+    visibility:hidden; opacity:0; }
+</style>
+<div id="why-root" data-composition-id="g-a5-why" data-width="1920" data-height="1080">
+  <div id="why-ground"></div>
+
+  <div id="why-nist-slide" class="why-slide">
+    <div id="why-nist-h" class="why-h">NIST NCSTAR 3</div>
+    <div id="why-nist-page" class="why-page">
+      <img src="media/candidates/a5/a5-s10_c1_nist-f47-ncstar3-p55.png" alt="NIST NCSTAR 3 Finding 47 as printed">
+      <svg viewBox="0 0 1000 328.3" preserveAspectRatio="none">
+        <path id="why-u1a" class="why-ul" d="M756.4 215.2 C 773 213.6, 790 216.1, 806 214.4 S 836 215.9, 851.4 214.2"/>
+        <path id="why-u1b" class="why-ul" d="M18.5 250.4 C 90 248.6, 150 251.2, 215 249.6 S 330 251, 380 249.4 S 415 250.8, 430.6 249.6"/>
+        <path id="why-u2a" class="why-ul" d="M444.1 250.2 C 520 248.8, 590 251.0, 660 249.5 S 790 251.2, 850 249.6 S 905 250.6, 919.8 249.8"/>
+        <path id="why-u2b" class="why-ul" d="M18.5 285.2 C 50 283.8, 90 286.0, 120 284.4 S 140 285.2, 147.9 284.6"/>
+        <path id="why-u3a" class="why-ul" d="M184.7 285.3 C 290 283.7, 400 286.1, 510 284.5 S 700 286.0, 800 284.4 S 940 285.6, 972.9 284.7"/>
+        <path id="why-u3b" class="why-ul" d="M18.5 320.4 C 40 318.9, 70 321.1, 102 319.6"/>
+      </svg>
+    </div>
+  </div>
+
+  <div id="why-nws-slide" class="why-slide">
+    <div id="why-nws-h" class="why-h">NWS SERVICE ASSESSMENT</div>
+    <div id="why-nws-page" class="why-page">
+      <img src="media/candidates/a5/a5-s10_c2_nws-sa-f2d-p10.png" alt="NWS Service Assessment Finding 2d as printed">
+      <svg viewBox="0 0 1000 109" preserveAspectRatio="none">
+        <path id="why-u4" class="why-ul" d="M43.4 70.4 C 110 68.9, 190 71.1, 250 69.5 S 305 70.6, 317.6 69.8"/>
+      </svg>
+    </div>
+  </div>
+
+  <div id="why-c1float" class="why-float"><div id="why-c1" class="why-chip"><div class="why-bar"></div><span class="why-t">LESS WORD</span></div></div>
+  <div id="why-c2float" class="why-float"><div id="why-c2" class="why-chip"><div class="why-bar"></div><span class="why-t">LESS HELP</span></div></div>
+  <div id="why-c3float" class="why-float"><div id="why-c3" class="why-chip"><div class="why-bar"></div><span class="why-t">HARDER TO RECOVER</span></div></div>
+
+  <div id="why-src1" class="why-src">NIST Finding 47</div>
+  <div id="why-src2" class="why-src">NWS Assessment, Finding 2d</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#why-";
+
+  /* 0.00: NIST page, its heading and the source line land; the page push runs the whole NIST span so no 4 s still precedes the first underline */
+  tl.fromTo(Q + "nist-slide", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.fromTo(Q + "src1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0);
+  tl.to(Q + "nist-page", { scale: 1.03, duration: 13.2, ease: "none" }, 0);
+
+  /* underline draw: dash length measured from the path, never typed */
+  function draw(id, t, d) {
+    const el = document.querySelector(Q + id);
+    const L = Math.ceil(el.getTotalLength()) + 1;
+    tl.set(el, { strokeDasharray: L, autoAlpha: 1 }, t);
+    tl.fromTo(el, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: d, ease: "power2.inOut" }, t);
+  }
+
+  /* "warning"@4.50: underline 1 (info flow), two printed lines; "reached"@5.30: chip LESS WORD */
+  draw("u1a", 4.50, 0.20);
+  draw("u1b", 4.70, 0.60);
+  tl.fromTo(Q + "c1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.30);
+
+  /* "fewer"@7.74: underline 2 (social networks); "help,"@8.78: chip LESS HELP */
+  draw("u2a", 7.74, 0.62);
+  draw("u2b", 8.36, 0.40);
+  tl.fromTo(Q + "c2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.78);
+
+  /* "take"@10.86: underline 3 (withstand or recover); "recover"@11.72: chip HARDER TO RECOVER */
+  draw("u3a", 10.86, 0.66);
+  draw("u3b", 11.52, 0.20);
+  tl.fromTo(Q + "c3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.72);
+
+  /* hold: slow float y 4 px from each chip's landing to the swap (finite repeats) */
+  tl.fromTo(Q + "c1float", { y: 0 }, { y: -4, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 7, immediateRender: false }, 5.70);
+  tl.fromTo(Q + "c2float", { y: 0 }, { y: -4, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 9.18);
+  tl.fromTo(Q + "c3float", { y: 0 }, { y: -4, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 12.12);
+
+  /* "And"@13.20: swap. NIST page, chips and source line leave left on one ease and one travel (their spacing never changes); the NWS page follows from the right once the NIST page has cleared it */
+  tl.to([Q + "nist-slide", Q + "c1", Q + "c2", Q + "c3", Q + "src1"], { x: -980, autoAlpha: 0, duration: 0.42, ease: "power3.in" }, 13.20);
+  tl.fromTo([Q + "nws-slide", Q + "src2"], { x: 980 }, { x: 0, duration: 0.36, ease: "power3.out" }, 13.46);
+  tl.fromTo([Q + "nws-slide", Q + "src2"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power1.in" }, 13.52);
+  tl.to(Q + "nws-page", { scale: 1.03, duration: 4.26, ease: "none" }, 13.80);
+
+  /* "disabled"@13.78: underline "elderly, infirm, or disabled" */
+  draw("u4", 13.78, 0.72);
+
+  /* exit: fade-through, wav ends 17.76, host ends 18.06 (the brief's 18.36 is clamped by g-a5-recs-board) */
+  tl.to([Q + "nws-slide", Q + "src2"], { autoAlpha: 0, duration: 0.30, ease: "power1.inOut" }, 17.76);
+
+  window.__timelines["g-a5-why"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
