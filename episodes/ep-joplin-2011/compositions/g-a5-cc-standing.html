@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a5-cc-standing: A5-S4, host 856.987 to 863.587 (6.60 s = a5-s4 0.00 to 6.60). Local t = a5-s4 words.json time.
+     Overlay on the footage the orchestrator mounts under the host (not named, never a storm-chaser frame). Root transparent: no ground.
+     COMMENT CARD base copied from g-a5-cc-midmost / g-a5-cc-greenbrier (glass surface for footage): 760 wide, left 120, centred on y 500.
+     Quote is 53 characters, 2 lines at 40 px; the card is about 340 high, so its bottom stays near y 670 and x <= 880,
+     clear of the presenter zone (x >= 1600, y >= 680). Gone (autoAlpha 0) at 6.60, before the map's first dot ("12" a5-s4 7.48). */
+  #a5s-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  #a5s-cardwrap { position:absolute; inset:auto; left:120px; top:0; width:760px; height:1000px; display:flex; align-items:center; }
+  #a5s-card { position:relative; box-sizing:border-box; width:760px; min-height:240px; padding:36px 44px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); visibility:hidden; opacity:0; }
+  .a5s-meta { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2;
+    visibility:hidden; opacity:0; }
+  #a5s-r1 { width:fit-content; margin-bottom:20px; } /* box hugs the text so the quote glyph box never crosses it */
+  #a5s-r2 { font-size:40px; letter-spacing:0; line-height:1.25; color:#f2f5f8; margin-bottom:20px; }
+  #a5s-r2 span { display:block; visibility:hidden; opacity:0; }
+  /* big tier (>= 52): the quote glyph, top right of the card, clear of row 1 and the text lines */
+  #a5s-mark { position:absolute; inset:auto; right:40px; top:14px; font-family:Georgia,'Times New Roman',serif; font-size:104px; line-height:104px;
+    color:#d8a13a; visibility:hidden; opacity:0; }
+  #a5s-likes { height:30px; } /* reserved for the like count (58); stays empty until the orchestrator accepts the source (brief, Open numbers) */
+</style>
+<div id="a5s-root" data-composition-id="g-a5-cc-standing" data-width="1920" data-height="1080">
+  <div id="a5s-cardwrap">
+    <div id="a5s-card">
+      <div id="a5s-mark">&ldquo;</div>
+      <div id="a5s-r1" class="a5s-meta">YouTube comment</div>
+      <div id="a5s-r2" class="a5s-meta"><span id="a5s-l1">the only tangible building</span><span id="a5s-l2">standing was the hospital.</span></div>
+      <div id="a5s-r3" class="a5s-meta">under “Weather Channel show re-upload”</div>
+      <div id="a5s-likes"></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a5s-";
+  /* r2 is a container: the row shows from its first line, the two lines reveal one by one */
+  tl.set(Q+"r2", { autoAlpha: 1 }, 0);
+
+  /* card in 0.00 to 0.60 on "One" a5-s4 0.00 */
+  tl.fromTo(Q+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0); /* ONE a5-s4 0.00 */
+  tl.fromTo(Q+"mark", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.1); /* ONE a5-s4 0.00 + card start */
+  tl.fromTo(Q+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.1); /* ONE a5-s4 0.00 + card start */
+  /* quote fully in by "standing." 2.82 (l2 ends 2.76) */
+  tl.fromTo(Q+"l1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 1.28); /* THE a5-s4 1.28 */
+  tl.fromTo(Q+"l2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 2.36); /* BUILDING a5-s4 2.36 */
+  tl.fromTo(Q+"r3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 2.36); /* with the quote: BUILDING a5-s4 2.36 */
+
+  /* card float y +-4 px, finite: 0.60 to 6.00 */
+  tl.to(Q+"card", { y: 4, duration: 0.6, ease: "sine.inOut" }, 0.6);
+  tl.fromTo(Q+"card", { y: 4 }, { y: -4, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 1.6);
+
+  /* exit 6.00 to 6.60: slide out left (the entrance side), after "everyone." a5-s4 5.94; gone before the map's first dot, "12" 7.48 */
+  tl.to(Q+"card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.0); /* a5-s4 6.00 */
+
+  window.__timelines["g-a5-cc-standing"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
