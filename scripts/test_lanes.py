@@ -180,7 +180,7 @@ with tempfile.TemporaryDirectory() as tmp:
 
 
 # --- launch path: the three capacity rules, run by pytest or by this script ---
-LANE = ["--host", "zbook", "--cmd", "type b.md | {cli} -p --model opus", "--log", r"C:\x\lane.log"]
+LANE = ["--host", "zbook", "--cmd", "type b.md | {cli} -p --model opus", "--log", r"C:\x\lane.log", "--cwd", r"C:\wt"]
 LIMIT_LOG = '{"type":"result","is_error":true,"result":"You\'ve hit your session limit · resets 3pm"}'
 
 
@@ -196,7 +196,7 @@ def lane_episode(tmp):
 def fakes(answering, free=16.0, log=""):
     calls = {"probe": [], "spawn": []}
     lanes.probe = lambda host, p: calls["probe"].append(p) or p in answering
-    lanes.spawn = lambda host, cmd, log_path: calls["spawn"].append((host, cmd, log_path))
+    lanes.spawn = lambda host, cmd, log_path, cwd: calls["spawn"].append((host, cmd, log_path, cwd))
     lanes.free_gb = lambda host: free
     lanes.read_log = lambda host, path: log
     return calls
@@ -207,8 +207,10 @@ def test_rule1_start_skips_a_profile_that_does_not_answer(tmp_path):
     calls = fakes(answering={"claude5"})
     assert lanes.main(["start", str(ep), "source:a1", "--profile", "claude2", *LANE]) == 0
     assert calls["probe"] == ["claude2", "claude5"]
-    assert calls["spawn"] == [("zbook", "type b.md | claude5 -p --model opus", r"C:\x\lane.log")]
+    assert calls["spawn"] == [("zbook", "type b.md | claude5 -p --model opus", r"C:\x\lane.log", r"C:\wt")]
     assert lanes.load_ledger(ep)["jobs"]["source:a1"]["profile"] == "claude5"
+    calls = fakes(answering={"claude5"})
+    assert raises(lambda: lanes.main(["start", str(ep), "source:a1", *LANE])) and not calls["spawn"]  # already RUNNING
     calls = fakes(answering=set())
     assert raises(lambda: lanes.main(["start", str(ep), "voice:a1", *LANE])) and not calls["spawn"]
 
@@ -229,7 +231,7 @@ def test_rule2_start_refuses_low_memory_and_a_full_lane_count(tmp_path):
 def test_rule3_status_fails_a_limited_lane_and_relaunches_it(tmp_path):
     ep = lane_episode(tmp_path)
     run = {"started": time.time() - 60, "host": "zbook", "minutes": 60, "cmd": "type b.md | {cli} -p",
-           "log": r"C:\x\lane.log", "profile": "claude1"}
+           "log": r"C:\x\lane.log", "cwd": r"C:\wt", "profile": "claude1"}
     lanes.save_ledger(ep, {"jobs": {"source:a1": run}})
     calls = fakes(answering=set(), log=LIMIT_LOG)
     lanes.main(["status", str(ep)])
@@ -238,7 +240,7 @@ def test_rule3_status_fails_a_limited_lane_and_relaunches_it(tmp_path):
     calls = fakes(answering={"claude1", "claude5"}, log=LIMIT_LOG)
     lanes.main(["status", str(ep)])
     assert calls["probe"] == ["claude2", "claude5"]  # never back onto the profile that hit its limit
-    assert calls["spawn"] == [("zbook", "type b.md | claude5 -p", r"C:\x\lane.log")]
+    assert calls["spawn"] == [("zbook", "type b.md | claude5 -p", r"C:\x\lane.log", r"C:\wt")]
     new = lanes.load_ledger(ep)["jobs"]["source:a1"]
     assert new["profile"] == "claude5" and new["started"] > run["started"]
 

@@ -158,7 +158,8 @@ Owner 7 Oct 26: "i want all stuff related to storm market within the repo. excep
 - Exceptions on record: installed programs (Python with its packages such as pyyaml, faster-whisper and uv, Node and the npx
   cache that holds hyperframes, ffmpeg, Chrome, git, gh, yt-dlp); online accounts and their local logins (GitHub, Cloudflare
   for the site deploy, Gumroad CLI, YouTube, Flow); the skills' junction into `~/.claude/skills/` (the files are tracked
-  here); the Stop hook `~/.claude/hooks/lane-gate.py` (a harness hook; the job model it asks is `scripts/lanes.py`); stock-fetch keys in `~/.claude/.env`; ChatGPT image generation for thumbnails, driven by the webgen browser
+  here); the Stop hook `~/.claude/hooks/lane-gate.py` (a harness hook; the job model it asks is `scripts/lanes.py`); the Claude profiles `lanes.py` launches lanes on (`~/.claude-accounts/claude*`,
+  the `%USERPROFILE%\bin\claudeN.cmd` wrappers on both laptops) and the `zbook` ssh alias; stock-fetch keys in `~/.claude/.env`; ChatGPT image generation for thumbnails, driven by the webgen browser
   tool in `~/Automation Projects/webgen` (a separate project). What is still to move in: `ops/tasks.md`.
 
 ## HARD RULE: worktree isolation
