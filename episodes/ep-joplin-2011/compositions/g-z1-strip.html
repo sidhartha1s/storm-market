@@ -1,0 +1,113 @@
+<!--
+  g-z1-strip: z1-s1 "Joplin's" 0.00 to "That" 10.06, host 1128.767 for 10.26 s (opens 0.2 s before nx-z1-s1 1128.967: comp-local = word time + 0.20).
+  Brief briefs/z1/g-z1-strip.md. BASE: g-a1-strip-warnings in its finished state (end of a1-s8): SIREN STRIP at offset 0 + the 12-mark recount row,
+  all marks at full brightness, no rise, no chip, name card or source line. Ids renamed gsw- to gz1-. Geometry unchanged (px table in g-a1-strip-sirens.md 2 and g-a1-strip-warnings.md 2, 3).
+  Tally rows are an outcome count, NOT a time axis: marks 40 px wide, 64 px pitch, left x = 200 + 64 i, band y 670 to 740, 12-row x 200 to 944, verified mark 11 centre 924.
+  Claim: S2 (NIST Finding 31), S8, S28; the warnings row is S11, S13.
+-->
+<template>
+<style>
+  #g-z1-strip-root { position:absolute; inset:0; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #gz1-content { position:absolute; inset:0; }
+  #gz1-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gz1-row { font:700 26px Arial, sans-serif; letter-spacing:8px; fill:#93a3b2; }
+  .gz1-yr { font:700 26px Arial, sans-serif; letter-spacing:3px; fill:#93a3b2; text-anchor:middle; }
+  .gz1-date { font:700 30px Arial, sans-serif; fill:#f2f5f8; }
+  .gz1-cause { font:700 22px Arial, sans-serif; letter-spacing:3px; fill:#93a3b2; }
+  .gz1-tlab { font:700 26px Arial, sans-serif; letter-spacing:4px; fill:#d8a13a; }
+  .gz1-ver { font:700 22px Arial, sans-serif; letter-spacing:3px; fill:#d8a13a; text-anchor:middle; }
+  .gz1-hollow { fill:none; stroke:#d8a13a; stroke-width:3; }
+  .gz1-fill { fill:#d8a13a; }
+  .gz1-chk { fill:none; stroke:#04070c; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
+  .gz1-chipwrap { position:absolute; left:0; right:0; top:96px; height:70px; display:flex; justify-content:center; }
+  .gz1-chip { box-sizing:border-box; height:70px; padding:0 36px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:none; visibility:hidden;
+    font:700 30px/68px Arial, sans-serif; letter-spacing:1px; color:#dfe7ee; white-space:nowrap; }
+</style>
+<div id="g-z1-strip-root" data-composition-id="g-z1-strip" data-width="1920" data-height="1080">
+  <div id="gz1-content">
+  <svg id="gz1-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <!-- float (GSAP y) on strip and tally: one transform owner each; tally dim is opacity -->
+    <g id="gz1-strip">
+      <!-- SIREN STRIP base, finished state, offset 0 -->
+      <text class="gz1-row" x="200" y="214">Joplin's outdoor sirens</text>
+      <line x1="200" y1="440" x2="1720" y2="440" stroke="#93a3b2" stroke-opacity="0.6" stroke-width="2"/>
+      <path d="M200 440V452M544.2 440V452M889.3 440V452M1233.4 440V452M1577.6 440V452" stroke="#93a3b2" stroke-opacity="0.6" stroke-width="1"/>
+      <text class="gz1-yr" x="372.1" y="482">2007</text>
+      <text class="gz1-yr" x="716.7" y="482">2008</text>
+      <text class="gz1-yr" x="1061.4" y="482">2009</text>
+      <text class="gz1-yr" x="1405.5" y="482">2010</text>
+      <text class="gz1-yr" x="1648.8" y="482">2011</text>
+      <path id="gz1-ticks" d="" stroke="#93a3b2" stroke-opacity="0.7" stroke-width="2"/>
+      <line x1="1017" y1="366" x2="1702.6" y2="366" stroke="#e74c3c" stroke-opacity="0.7" stroke-width="3" stroke-dasharray="10 8"/>
+      <g id="gz1-p07"><rect x="213" y="356" width="6" height="88" fill="#e74c3c"/></g>
+      <g id="gz1-p08"><rect x="663.7" y="356" width="6" height="88" fill="#e74c3c"/></g>
+      <g id="gz1-p09"><rect x="1006" y="356" width="6" height="88" fill="#e74c3c"/></g>
+      <g id="gz1-p11"><rect x="1707.6" y="356" width="6" height="88" fill="#e74c3c"/></g>
+      <text class="gz1-date" x="216" y="300">Jan 2007</text>
+      <text class="gz1-cause" x="216" y="334">winds over 70 mph</text>
+      <text class="gz1-date" x="666.7" y="300">May 2008</text>
+      <text class="gz1-cause" x="666.7" y="334">EF1 outside the city</text>
+      <text class="gz1-date" x="1009" y="300">May 2009</text>
+      <text class="gz1-cause" x="1009" y="334">winds over 85 mph</text>
+      <text class="gz1-date" x="1730" y="300" text-anchor="end">May 22, 2011</text>
+    </g>
+
+    <!-- WARNINGS TALLY: amber, a count with no dates. 12 marks, mark 11 verified (fill + check) -->
+    <g id="gz1-tally">
+      <text class="gz1-tlab" x="200" y="640">Tornado warnings &#183; the 5 years before May 22, 2011</text>
+      <text class="gz1-ver" x="924" y="772">verified</text>
+      <rect class="gz1-hollow" x="201.5" y="671.5" width="37" height="67"/>
+      <rect class="gz1-hollow" x="265.5" y="671.5" width="37" height="67"/>
+      <rect class="gz1-hollow" x="329.5" y="671.5" width="37" height="67"/>
+      <rect class="gz1-hollow" x="393.5" y="671.5" width="37" height="67"/>
+      <rect class="gz1-hollow" x="457.5" y="671.5" width="37" height="67"/>
+      <rect class="gz1-hollow" x="521.5" y="671.5" width="37" height="67"/>
+      <rect class="gz1-hollow" x="585.5" y="671.5" width="37" height="67"/>
+      <rect class="gz1-hollow" x="649.5" y="671.5" width="37" height="67"/>
+      <rect class="gz1-hollow" x="713.5" y="671.5" width="37" height="67"/>
+      <rect class="gz1-hollow" x="777.5" y="671.5" width="37" height="67"/>
+      <rect class="gz1-hollow" x="841.5" y="671.5" width="37" height="67"/>
+      <g><rect class="gz1-hollow" x="905.5" y="671.5" width="37" height="67"/><rect class="gz1-fill" x="904" y="670" width="40" height="70"/><path class="gz1-chk" d="M914 706L922 716L935 694"/></g>
+    </g>
+  </svg>
+  <div class="gz1-chipwrap"><div class="gz1-chip" id="gz1-chip">ONCE A YEAR SINCE 2007 &#183; NIST FINDING 31</div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const P = "#gz1-";
+  /* siren ticks: every Monday from 1 Jan 2007 to 16 May 2011, x = 200 + days x 1520/1612 (same rule as g-a1-strip-sirens) */
+  const D0 = Date.UTC(2007, 0, 1), LAST = Date.UTC(2011, 4, 16), DAY = 86400000, K = 1520 / 1612;
+  let d = "", n = 0;
+  for (let t = D0; t <= LAST; t += 7 * DAY) { d += "M" + (200 + (t - D0) / DAY * K).toFixed(2) + " 380V420"; n++; }
+  if (n !== 229) throw new Error("g-z1-strip: " + n + " ticks, brief says 229");
+  document.querySelector(P + "ticks").setAttribute("d", d);
+
+  const T = 10.26;   /* host data-duration */
+  const tl = gsap.timeline({ paused: true });
+
+  /* FRAME 0: the finished a1 picture, no build-in. Float on both rows, 3 px, 4.1 s a cycle, to the host end (5 half cycles) */
+  tl.to([P + "strip", P + "tally"], { y: -3, duration: T / 5, ease: "sine.inOut", yoyo: true, repeat: 4 }, 0);
+
+  /* SIRENS z1-s1 0.84 = 1.04: warnings tally dims 100 to 40 % */
+  tl.to(P + "tally", { opacity: 0.4, duration: 0.5, ease: "power2.out" }, 1.04);
+
+  /* OUTSIDE z1-s1 3.42 = 3.62: test ticks dim 70 to 25 % (red marks, labels, bracket stay 100 %) */
+  tl.to(P + "ticks", { attr: { "stroke-opacity": 0.25 }, duration: 0.6, ease: "power2.out" }, 3.62);
+
+  /* REAL z1-s1 5.92 = 6.12: four red marks pulse 1 > 1.18 > 1 over 0.5 s, stagger 0.1, and stay lit */
+  tl.to([P + "p07", P + "p08", P + "p09", P + "p11"], { scale: 1.18, svgOrigin: (i) => ["216 400", "666.7 400", "1009 400", "1710.6 400"][i], duration: 0.25, ease: "power2.inOut", yoyo: true, repeat: 1, stagger: 0.1 }, 6.12);
+
+  /* ONCE z1-s1 6.96 = 7.16: chip in */
+  tl.fromTo(P + "chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.16);
+
+  /* EXIT: fade-through to the ground, 9.66 to 10.26 (z1-s1 9.46 to "That" 10.06; g-z1-map takes over on the cut) */
+  tl.to(P + "content", { opacity: 0, duration: 0.6, ease: "power2.in" }, T - 0.6);
+  window.__timelines["g-z1-strip"] = tl;
+})();
+</script>
+</template>
