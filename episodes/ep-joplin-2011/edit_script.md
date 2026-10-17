@@ -125,7 +125,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 *([Q4 open] and [Q4 paid] in this segment. The warnings strip plants A1-S7.)*
 
 ### I1-S5 · narration
-**Picture:** the NWS assessment's own page, the residents' words underlined as Paul speaks: "hear sirens all the time and [sirens] go off for dark clouds". Source line "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2b". Paul speaks the line; no actor's voice.
+**Picture:** the NWS assessment's own page, the residents' words underlined as Paul speaks: "hear sirens all the time and [sirens] go off for dark clouds". Source line "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2c". Paul speaks the line; no actor's voice.
 > But plenty of people there told the NWS those sirens went off all the time, even for dark clouds.
 
 **Rows:** [S17: "Many noted..."]
@@ -179,7 +179,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 **Segments:**
 
 ### A1-S1 · narration
-**Picture:** the NWS assessment's own page (Finding 2b), each line underlined as Paul speaks it: "sirens are sounded even for thunderstorms", "all sirens mean is there is a little more water in the gutter", "bombarded with [sirens] so often that we don't pay attention". Source line "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2b". Then a NIST ground photograph of a Joplin street in the path (credit line checked). Low bed.
+**Picture:** the NWS assessment's own page (printed p7, above Finding 2c), each line underlined as Paul speaks it: "sirens are sounded even for thunderstorms", "all sirens mean is there is a little more water in the gutter", "bombarded with [sirens] so often that we don't pay attention". Source line "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2c". Then a NIST ground photograph of a Joplin street in the path (credit line checked). Low bed.
 > Here's what people in Joplin said afterward. They said the tornado sirens went off even for thunderstorms. Some said all a siren meant was a little more water in the gutter. Others said they'd been bombarded so often, they'd stopped paying attention.
 
 **Rows:** [S18] · [S18] · [S17]
@@ -193,7 +193,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 *([A1-Q1 open]: did the sirens really cry wolf? Paid in A1-S5. Plants A4-S9.)*
 
 ### A1-S3 · narration
-**Picture:** the RODALCO2007 card, its first and only appearance: "no one is paying any attention to the sirens going off" · RODALCO2007 · 3,000 likes · under "JOPLIN, MO, Tornado, 22 May 2011" (likes on the card, never spoken; no frame of that video). Beside it, the NWS assessment's page with "desensitized or complacent" underlined. Chip "NUMB TO SIRENS". Source line "NWS Assessment, Preface and Finding 2c".
+**Picture:** the RODALCO2007 card, its first and only appearance: "no one is paying any attention to the sirens going off" · RODALCO2007 · 3,000 likes · under "JOPLIN, MO, Tornado, 22 May 2011" (likes on the card, never spoken; no frame of that video). Beside it, the NWS assessment's page with "desensitized or complacent" underlined. Chip "NUMB TO SIRENS". Source line "NWS Assessment, Executive Summary and Finding 2c".
 > You've probably read comments like this one under the old Joplin videos. A survey after the storm found much the same thing. Most of the people in it had gone numb to the tornado sirens. For many of them, the first siren just wasn't as believable anymore. But how often did those sirens actually go off?
 
 **Rows:** [angle.md: the comment, verbatim] · [S16: "desensitized or complacent"] · [S19: "initial siren activation has lost a degree of credibility"]
