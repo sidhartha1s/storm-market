@@ -40,8 +40,8 @@ The base's datum, scale and north. Camera: from the base's view push to St. John
 | chip `12 FROM THE STORM` | a5-s4 "12"@7.48 |
 | source line `12 impact-related · Finding 42 · Table 4-3 · 14 all causes · Table 4-1` | a5-s4 "12"@7.48 |
 | ICU bracket + label `ICU` | a5-s4 "Four"@10.12 |
-| arrow draws from the group of seven | a5-s4 "moved"@13.16 |
 | chip `7 LOST LATER, ELSEWHERE` (first chip stays, second stacks under it) | a5-s4 "Seven"@12.36 |
+| arrow draws from the group of seven | a5-s4 "moved"@13.16 |
 | seven dots turn hollow | a5-s4 "lost"@14.86 |
 | labels and chips fade, camera eases toward the West Tower side of the outline | a5-s4 "What"@16.46 to 18.00 |
 Motion: dot pulse (scale 1 -> 1.08, 1.2 s, finite repeats) after each landing so nothing idles 4 s.
