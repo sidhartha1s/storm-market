@@ -41,11 +41,20 @@ REPO = Path(__file__).resolve().parent.parent
 SEG_ID = r"([A-Z]\d+-S\d+[a-z]?)\b"  # segment id at the start of a heading, e.g. 'A3-S5'
 
 
+def segment_blocks(md: str):
+    """(segment id, heading line, body) for every heading whose text starts with a segment id. Splits on ANY
+    markdown heading, so a '## SECTION' boundary (and any note under it) never leaks into the previous segment."""
+    for b in re.split(r"\n#{1,6} ", "\n" + md.replace("\r\n", "\n"))[1:]:
+        header, _, rest = b.partition("\n")
+        m = re.match(SEG_ID, header)
+        if m:
+            yield m.group(1).lower(), header, rest
+
+
 def open_verify_ids(md: str):
     """Segment ids whose heading block (narration, Picture, Rows, notes) still carries an open [verify] marker.
     script-scaling.md "Section lock" counts every marker on the section, not only those in the spoken line."""
-    blocks = re.split(r"\n#{1,6} ", "\n" + md.replace("\r\n", "\n"))
-    return {m.group(1).lower() for b in blocks[1:] if (m := re.match(SEG_ID, b)) and "[verify" in b}
+    return {sid for sid, header, rest in segment_blocks(md) if "[verify" in header + rest}
 
 
 class SegmentParseError(Exception):
