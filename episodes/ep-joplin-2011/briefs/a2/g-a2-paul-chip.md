@@ -34,7 +34,7 @@ No scale. One glass card, lower-third anchor left 110, bottom 110.
 | a2-s9 · "minutes." · 3.52 | line 2 "NIST Finding 35" (0.3 s after line 1 begins) |
 | a2-s9 · "again." · 7.66 | exit fills the host's last 0.6 s; host ends at the cut |
 
-The host runs about 4.4 s from "four" to the end of "again.", so a gap of 4 s or more with nothing moving never fits; the float keeps it moving anyway.
+The float runs the whole hold, so the idle gate (4 s with nothing moving) cannot trip.
 
 ## 6 to 8
 As `references/mg-brief-template.md` §6, §7, §7a (item 7: one frame over Paul's clip), §8. File
