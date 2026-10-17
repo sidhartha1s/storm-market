@@ -132,23 +132,24 @@ window.__timelines = window.__timelines || {};
   const ID = "g-a2-map-close", P = "#a2mc-", M = "#a2mc-mm-";
   const D = 20.9;                                       /* host data-duration */
   const S10 = -14.62, S11 = 3.40, S12 = 12.90;          /* nx-a2-sN data-start - host 452.37 */
-  const CX = 874.1, CY = 505.7, ORG = CX + " " + CY;
+  const R0 = 419.9, R1 = 495.5;                         /* pulse grows the radius 1.18x (attr r: no transform origin, so seek order cannot shift it) */
   const PX = 1097.6, PY = 578.4;                        /* push origin: residential centroid on screen (calc.mjs) */
   const tl = gsap.timeline({ paused: true });
   const push = (k) => ({ attr: { transform: "translate(" + (PX * (1 - k)).toFixed(3) + "," + (PY * (1 - k)).toFixed(3) + ") scale(" + k + ")" } });
 
   /* camera still until "best" (labels sit on the HUD, never on a move); push(1) is the identity, so frame 0 needs no set */
   tl.set(P + "push", push(1), 0);
+  tl.set(M + "ring-a", { opacity: 1 }, 0);   /* the a2-s12 dim writes inline opacity; set it from 0 so both seek orders raster the ring alike */
   tl.set(P + "strike", { rotation: 45, scaleX: 0, transformOrigin: "left center" }, 0);
 
   /* AND a2-s10 14.62 = 0: ground up from frame 0 (CSS), under g-a2-doc-cues' exit */
-  /* SECOND a2-s10 15.18: ring A draws 0.4 s with its stamp; pulse (three copies, 1.2 s + 0.4 s rest, staggered 0.4 s) through a2-s11 */
+  /* SECOND a2-s10 15.18: ring A draws 0.4 s with its stamp; pulse (three copies, r x1.18 in 1.2 s + 0.4 s rest, staggered 0.4 s) through a2-s11 */
   tl.fromTo(M + "ring-a-c", { strokeDashoffset: 2640 }, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, S10 + 15.18);
   tl.fromTo(P + "stamp", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, S10 + 15.18 + 0.2);
   tl.set(M + "ring-a-pulses", { autoAlpha: 1 }, S10 + 15.58);
   for (let i = 1; i <= 3; i++) {
-    tl.fromTo(M + "ring-a-p" + i, { autoAlpha: 0.8, scale: 1, svgOrigin: ORG },
-      { autoAlpha: 0, scale: 1.18, svgOrigin: ORG, duration: 1.2, ease: "power1.out", repeat: 6, repeatDelay: 0.4, immediateRender: false },
+    tl.fromTo(M + "ring-a-p" + i, { autoAlpha: 0.8, attr: { r: R0 } },
+      { autoAlpha: 0, attr: { r: R1 }, duration: 1.2, ease: "power1.out", repeat: 6, repeatDelay: 0.4, immediateRender: false },
       S10 + 15.58 + (i - 1) * 0.4);
   }
   /* DEPENDED a2-s11 0.42: source line */
@@ -169,8 +170,8 @@ window.__timelines = window.__timelines || {};
   const OUT = S12 + 0.76;
   tl.to([P + "tag-w", P + "tag-e", P + "icon", P + "chip", P + "src"], { autoAlpha: 0, y: -20, duration: 0.5, ease: "power3.in" }, OUT);
   tl.to([P + "lead-w", P + "lead-e"], { strokeDashoffset: 141, duration: 0.5, ease: "power3.in" }, OUT);
-  tl.fromTo(M + "ring-a-p1", { autoAlpha: 0.8, scale: 1, svgOrigin: ORG },
-    { autoAlpha: 0, scale: 1.18, svgOrigin: ORG, duration: 1.2, ease: "power1.out", immediateRender: false }, OUT);
+  tl.fromTo(M + "ring-a-p1", { autoAlpha: 0.8, attr: { r: R0 } },
+    { autoAlpha: 0, attr: { r: R1 }, duration: 1.2, ease: "power1.out", immediateRender: false }, OUT);
   /* stamp leaves before the push (no text rides a move) */
   tl.to(P + "stamp", { autoAlpha: 0, y: -14, duration: 0.3, ease: "power3.in" }, S12 + 2.46 - 0.35);
 
