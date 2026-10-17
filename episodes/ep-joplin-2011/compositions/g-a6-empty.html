@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a6-empty, A6-S7. Overlay over c-a6-s7-jhs-auditorium (NIST NCSTAR 3 Fig 3-70, "View from north of the Joplin High School
+     Auditorium building", 1112.707 to 1118.707); the CCTV clip cuts in at 1118.707.
+     Host: nx-a6-s7 1106.707 + 9.76 "empty." = 1116.467 = host data-start, so every cue is the words.json time - 9.76. Host 2.6 s.
+     The credit's own cue ("Joplin" 7.50) falls 2.26 s before the host starts, so the credit enters with the chip at 0.
+     Cut at host 2.24 (1118.707): chip and credit are gone by then. Lower-left of the photo is brick wall and rubble, no sign or key wall. */
+  #g-a6-empty-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #ec-wrap { position:absolute; inset:0; }
+  #ec-chip { position:absolute; left:110px; bottom:110px; padding:18px 32px; box-sizing:border-box; white-space:nowrap;
+    font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:62px; color:#f2f5f8;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10);
+    visibility:hidden; opacity:0; }
+  #ec-credit { position:absolute; left:110px; bottom:60px; height:24px; line-height:24px; white-space:nowrap;
+    font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:0.5px; color:#c8d3e0;
+    text-shadow:0 2px 12px rgba(0,0,0,0.85); visibility:hidden; opacity:0; }
+</style>
+<div id="g-a6-empty-root" data-composition-id="g-a6-empty" data-width="1920" data-height="1080">
+  <div id="ec-wrap">
+    <div id="ec-chip">EMPTY THAT EVENING</div>
+    <div id="ec-credit">NIST NCSTAR 3, Fig 3-70 · US government work (NIST) public domain</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#ec-";
+
+  /* EMPTY 9.76 (host 0): chip slides in, credit with it */
+  tl.fromTo(P+"chip", { x: -40, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0);
+  tl.fromTo(P+"credit", { x: -40, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0);
+
+  /* hold: 4 px float to host end (the bed drops out on "empty.") */
+  tl.to(P+"wrap", { y: -4, duration: 2.2, ease: "sine.inOut" }, 0.4);
+
+  /* exit 1.64 to 2.24, the 0.6 s before the CCTV cut at host 2.24 (1118.707) */
+  tl.to([P+"chip", P+"credit"], { x: -600, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 1.64);
+
+  window.__timelines["g-a6-empty"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
