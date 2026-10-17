@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-intro-nist: I1-S6 second half, full-frame on the channel ground. Host data-start 89.03 = nx-i1-s6 84.75 + "missed" 4.28, so local t = i1-s6 word time - 4.28
+     ("missed" 0.00, "report," 0.22, "federal" 1.22, "almost" 2.80). Host runs 5.82 s to the seam; no exit, the scene cuts to g-intro-map-dots.
+     Presenter circle may stay on: nothing enters x >= 1600, y >= 680 (name card ends y 640). Cover scale 0.6014 = 860 / 1430. */
+  #nist-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  #nist-cover { position:absolute; inset:auto; left:220px; top:110px; width:664.5px; height:860px; border-radius:6px; display:block;
+    box-shadow:0 30px 70px rgba(0,0,0,.6); transform-origin:50% 50%; visibility:hidden; opacity:0; }
+
+  /* the group carries the +-3 px float so the card and its rows keep their own entrances */
+  #nist-grp { position:absolute; inset:0; }
+  #nist-card { position:absolute; inset:auto; left:1000px; top:380px; width:720px; height:260px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; }
+  #nist-bar { position:absolute; inset:auto; left:1018px; top:410px; width:4px; height:196px; border-radius:2px; background:#e8c56a;
+    transform-origin:50% 0%; visibility:hidden; opacity:0; }
+
+  .nist-row { position:absolute; inset:auto; left:1040px; white-space:nowrap; visibility:hidden; opacity:0; }
+  #nist-r1 { top:409px; height:72px; line-height:72px; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:64px; color:#f2f5f8; letter-spacing:2px; }
+  #nist-r2 { top:495px; height:32px; line-height:32px; font-family:Arial,sans-serif; font-weight:700; font-size:26px; color:#dfe7ee; }
+  #nist-r3 { top:575px; height:32px; line-height:32px; font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:26px; color:#e8c56a; }
+
+  #nist-src { position:absolute; inset:auto; left:96px; top:991px; height:24px; line-height:24px; white-space:nowrap;
+    font-family:Arial,sans-serif; font-weight:700; font-size:20px; letter-spacing:1px; color:#c8d3e0; visibility:hidden; opacity:0; }
+</style>
+<div id="nist-root" data-composition-id="g-intro-nist" data-width="1920" data-height="1080" data-duration="5.82">
+  <img id="nist-cover" src="media/candidates/intro/i1-s6_cover_nist-ncstar3.png" alt="NIST NCSTAR 3 cover">
+  <div id="nist-grp">
+    <div id="nist-card"></div>
+    <div id="nist-bar"></div>
+    <div class="nist-row" id="nist-r1">NIST</div>
+    <div class="nist-row" id="nist-r2">National Institute of Standards and Technology</div>
+    <div class="nist-row" id="nist-r3">Federal investigators</div>
+  </div>
+  <div id="nist-src">154 of 155 impact-related deaths placed · NIST Table 4-3</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+
+  /* missed i1-s6 4.28 (local 0.00): cover slides in, then drifts 1.00 -> 1.03 to the host end */
+  tl.fromTo("#nist-cover", { x: -120, rotation: -2, autoAlpha: 0 }, { x: 0, rotation: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0);
+  tl.to("#nist-cover", { scale: 1.03, duration: 5.22, ease: "none" }, 0.6);
+
+  /* report, i1-s6 4.50 (local 0.22): glass card and accent bar, then row 1 NIST */
+  tl.fromTo("#nist-card", { x: 60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 0.22);
+  tl.fromTo("#nist-bar", { scaleY: 0, autoAlpha: 0 }, { scaleY: 1, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.fromTo("#nist-r1", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0.22);
+  /* report, 4.50 + 0.4 (local 0.62): row 2 */
+  tl.fromTo("#nist-r2", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0.62);
+  /* federal i1-s6 5.50 (local 1.22): row 3 */
+  tl.fromTo("#nist-r3", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 1.22);
+  /* almost i1-s6 7.08 (local 2.80): source line */
+  tl.fromTo("#nist-src", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 2.8);
+
+  /* hold to 9.80 (local 5.52): the name card floats y +-3 px, finite yoyo */
+  tl.fromTo("#nist-grp", { y: 3 }, { y: -3, duration: 1.3, ease: "sine.inOut", repeat: 4, yoyo: true }, 0.62);
+
+  window.__timelines["g-intro-nist"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
