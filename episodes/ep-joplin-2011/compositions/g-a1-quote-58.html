@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a1-quote-58: A1-S9, host 0.00 to 12.02 (wav 11.72 + 0.3 s seam). Local time = a1-s9 words.json time.
+     Cite card A (the quote) and cite card B (the NIST record) share one box, x 140 to 1000, y 240 to 840.
+     Comment card = COMMENT CARD base from g-a1-numb (#a1n-card), width 700 here, no commenter name on record. */
+  #q58-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #q58-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  /* floaters carry the y drift so the cards keep their own entrance and exit tweens */
+  #q58-floatL { position:absolute; inset:auto; left:140px; top:240px; width:860px; height:600px; }
+  #q58-floatR { position:absolute; inset:auto; left:1080px; top:0; width:700px; height:1000px; display:flex; align-items:center; }
+
+  .q58-cite { position:absolute; inset:auto; left:0; top:0; width:860px; height:600px; box-sizing:border-box; border-radius:28px;
+    background:rgba(232,222,200,.90); border:1px solid rgba(90,74,46,.35); box-shadow:0 30px 90px rgba(0,0,0,.55);
+    visibility:hidden; opacity:0; }
+  .q58-qline { position:absolute; inset:auto; left:56px; width:748px; font-family:Georgia,'Times New Roman',serif; font-style:italic;
+    font-size:40px; line-height:50px; color:#2a2622; white-space:nowrap; visibility:hidden; opacity:0; }
+  .q58-qline em { font-style:italic; color:#8e2020; }
+  .q58-who { position:absolute; inset:auto; left:56px; top:410px; font-family:Arial,sans-serif; font-weight:700; font-size:22px;
+    line-height:26px; letter-spacing:3px; color:#6b6257; white-space:nowrap; visibility:hidden; opacity:0; }
+  #q58-q1 { top:150px; } #q58-q2 { top:200px; } #q58-q3 { top:250px; } #q58-q4 { top:300px; }
+  #q58-btext { position:absolute; inset:auto; left:56px; top:150px; width:748px; font-family:Georgia,'Times New Roman',serif; font-style:italic;
+    font-size:40px; line-height:50px; color:#2a2622; }
+
+  /* COMMENT CARD */
+  #q58-card { box-sizing:border-box; width:700px; min-height:240px; padding:36px 44px; border-radius:28px;
+    background:rgba(21,32,43,.92); border:1px solid rgba(255,255,255,.14); visibility:hidden; opacity:0; }
+  .q58-meta { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2;
+    visibility:hidden; opacity:0; }
+  #q58-r1 { margin-bottom:20px; }
+  #q58-r2 { font-size:40px; letter-spacing:0; line-height:1.25; color:#f2f5f8; margin-bottom:20px; }
+  #q58-likes { height:30px; } /* reserved for the like count; stays empty until the orchestrator confirms it */
+
+  /* chip: glass, top centre x 960, y 96 to 166 */
+  #q58-chipwrap { position:absolute; inset:auto; left:0; top:96px; width:1920px; height:70px; display:flex; justify-content:center; }
+  #q58-chip { box-sizing:border-box; height:70px; padding:0 40px; border-radius:28px; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px;
+    letter-spacing:2px; line-height:68px; color:#f2f5f8; white-space:nowrap; visibility:hidden; opacity:0; }
+</style>
+<div id="q58-root" data-composition-id="g-a1-quote-58" data-width="1920" data-height="1080">
+  <div id="q58-ground"></div>
+
+  <div id="q58-floatL">
+    <div id="q58-a" class="q58-cite">
+      <div id="q58-q1" class="q58-qline">“the announcer and the weatherman</div>
+      <div id="q58-q2" class="q58-qline">that came on the TV seemed to say</div>
+      <div id="q58-q3" class="q58-qline">the track was, you know,</div>
+      <div id="q58-q4" class="q58-qline">mainly <em>north of town</em>”</div>
+      <div id="q58-who" class="q58-who">a Joplin native · NIST interview</div>
+    </div>
+    <div id="q58-b" class="q58-cite">
+      <div id="q58-btext">“the media continued to report on storms said to be passing to the north and missing Joplin …”</div>
+      <div id="q58-bsrc" class="q58-who" style="visibility:visible;opacity:1;">NIST NCSTAR 3 · Sec. 1.2</div>
+    </div>
+  </div>
+
+  <div id="q58-floatR">
+    <div id="q58-card">
+      <div id="q58-r1" class="q58-meta">YouTube comment</div>
+      <div id="q58-r2" class="q58-meta">“The sad part is nobody knew what really was coming that day.”</div>
+      <div id="q58-r3" class="q58-meta">under “JOPLIN, MO, Tornado, 22 May 2011”</div>
+      <div id="q58-likes"></div>
+    </div>
+  </div>
+
+  <div id="q58-chipwrap"><div id="q58-chip">TRACK: NORTH OF TOWN</div></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#q58-";
+
+  /* ground is on from frame 0 (CSS). Card A in 0.00 to 0.70 on "Then," a1-s9 0.00, body empty */
+  tl.fromTo(Q+"a", { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0); /* THEN, a1-s9 0.00 */
+
+  /* floaters: y +-3 px, 4 s sine period, finite, 0.00 to 11.00 */
+  tl.to(Q+"floatL", { y: 3, duration: 1, ease: "sine.inOut" }, 0);
+  tl.fromTo(Q+"floatL", { y: 3 }, { y: -3, duration: 2, ease: "sine.inOut", yoyo: true, repeat: 4, immediateRender: false }, 1);
+  tl.to(Q+"floatR", { y: 3, duration: 1, ease: "sine.inOut" }, 0);
+  tl.fromTo(Q+"floatR", { y: 3 }, { y: -3, duration: 2, ease: "sine.inOut", yoyo: true, repeat: 4, immediateRender: false }, 1);
+
+  /* attribution, then the quote line by line on the voice */
+  tl.fromTo(Q+"who", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.22); /* ONE a1-s9 3.22 */
+  tl.fromTo(Q+"q1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.34); /* ANNOUNCER a1-s9 4.34 */
+  tl.fromTo(Q+"q2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.58); /* SEEMED a1-s9 5.58 */
+  tl.fromTo(Q+"q3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.92); /* TRACKING a1-s9 6.92 */
+  tl.fromTo(Q+"q4", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.34); /* NORTH a1-s9 7.34 */
+
+  /* comment card: panel in on "town." 7.90, rows 0.25 s apart from 8.54 (COMMENT CARD base timing) */
+  tl.fromTo(Q+"card", { x: 60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 7.9); /* TOWN. a1-s9 7.90 */
+  tl.fromTo(Q+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 8.54);
+  tl.fromTo(Q+"r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 8.79);
+  tl.fromTo(Q+"r3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 9.04);
+
+  /* card A out 9.16 to 9.66 on "Why" a1-s9 9.16. The fade is 0.24 s so A is under 15 % before B starts at 9.40 (never visible together) */
+  tl.to(Q+"a", { x: -980, duration: 0.5, ease: "power3.in" }, 9.16); /* WHY a1-s9 9.16 */
+  tl.to(Q+"a", { autoAlpha: 0, duration: 0.24, ease: "power1.out" }, 9.16);
+  tl.fromTo(Q+"b", { x: 60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 9.4);
+
+  /* chip on "Joplin" 9.84, lands on the record card */
+  tl.fromTo(Q+"chip", { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.84); /* JOPLIN a1-s9 9.84 */
+
+  /* exit 11.12 to 11.72, before the TV pull: cards left, comment card right, chip up */
+  tl.to(Q+"b", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 11.12);
+  tl.to(Q+"card", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 11.12);
+  tl.to(Q+"chip", { y: -60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 11.12);
+  /* ground holds through the 0.3 s seam to the host end 12.02 */
+  tl.set(Q+"ground", { autoAlpha: 1 }, 12.02);
+
+  window.__timelines["g-a1-quote-58"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
