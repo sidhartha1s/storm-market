@@ -23,24 +23,36 @@
      Open 2 (NIST Fig. 4-2) blocks the siren positions: l-sirens is empty. l-places: NAIP 2010 footprints, see the layer comment. -->
 <template>
 <style>
-  #g-intro-map-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+  #g-a1-theater-map-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
     background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .gim-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
-  .gim-stamp { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#f2f5f8; opacity:0; visibility:hidden; }
-  .gim-pulse { opacity:0; visibility:hidden; }
-  .gim-ringg { opacity:1; }
-  #g-intro-map-chip { position:absolute; inset:auto; right:96px; top:96px; height:70px; box-sizing:border-box; padding:0 22px;
-    display:flex; align-items:center; padding:0 18px; border-radius:20px; background:rgba(10,16,24,.55);
-    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
-    border:1px solid rgba(255,255,255,.14); opacity:0; visibility:hidden; }
-  #g-intro-map-chiptxt { font:900 52px/56px 'Arial Black', Arial, sans-serif; letter-spacing:-1px; color:#f2f5f8; white-space:nowrap; }
-  #g-intro-map-src { position:absolute; inset:auto; left:96px; top:990px; font:700 20px/20px Arial, sans-serif; color:#c8d3e0;
-    white-space:nowrap; opacity:0; visibility:hidden; }
-  #g-intro-map-hud { position:absolute; inset:auto; left:110px; top:486px; font:700 26px/26px Arial, sans-serif; letter-spacing:8px;
-    color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+  .gatm-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* base layers on from frame 0 (CSS beats the copied presentation attributes) */
+  #g-a1-theater-map-l-streets, #g-a1-theater-map-city-rest, #g-a1-theater-map-l-places { opacity:1; }
+  #g-a1-theater-map-city { stroke-dasharray:none; stroke-dashoffset:0; vector-effect:non-scaling-stroke; }
+  #g-a1-theater-map-l-path, #g-a1-theater-map-l-sirens, #g-a1-theater-map-l-ring, #g-a1-theater-map-l-below { display:none; }
+  /* places: the theater outline only (no markers, no other buildings) */
+  #g-a1-theater-map-l-places > g > * { display:none; }
+  #g-a1-theater-map-l-places #g-a1-theater-map-place-theater { display:inline; fill:#f2f5f8; fill-opacity:0; stroke:#f2f5f8;
+    stroke-opacity:1; stroke-width:1.5px; stroke-linejoin:round; }
+  .gatm-mk { fill:#e74c3c; stroke:#04070c; stroke-width:2px; opacity:0; }
+  #g-a1-theater-map-lead { fill:none; stroke:#f2f5f8; stroke-width:2px; stroke-linecap:round; opacity:0; }
+  /* 26 px = the master map's place-label size (g-intro-map-dots .gimd-lab) */
+  #g-a1-theater-map-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; fill:#f2f5f8; stroke:#05080c; stroke-width:6px;
+    stroke-linejoin:round; paint-order:stroke; opacity:0; visibility:hidden; }
+  /* chip: map-family glass chip (g-a5-map-sjrmc), number big tier, words mid tier; top centre, y 96 to 166 */
+  #g-a1-theater-map-chip { position:absolute; left:0; right:0; top:96px; margin:0 auto; width:max-content; height:70px;
+    box-sizing:border-box; padding:0 18px; display:flex; align-items:baseline; gap:14px; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  .gatm-num { font:900 52px/70px 'Arial Black', Arial, sans-serif; letter-spacing:-1px; }
+  .gatm-txt { font:700 30px/70px Arial, sans-serif; letter-spacing:0.5px; }
+  /* source line bottom-left, baseline ~1010 */
+  #g-a1-theater-map-src { position:absolute; left:96px; bottom:58px; padding:5px 12px; border-radius:14px; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14);
+    font:400 19px/24px Arial, sans-serif; letter-spacing:0.5px; color:rgba(200,211,224,.75); white-space:nowrap; opacity:0; visibility:hidden; }
 </style>
-<div id="g-intro-map-root" data-composition-id="g-intro-map" data-width="1920" data-height="1080" data-duration="11.8">
-  <svg class="gim-svg" viewBox="0 0 1920 1080">
+<div id="g-a1-theater-map-root" data-composition-id="g-a1-theater-map" data-width="1920" data-height="1080" data-duration="6">
+  <svg class="gatm-svg" viewBox="0 0 1920 1080">
     <defs>
       <!-- SIREN ICON: 28 px tall, origin at the pole foot; 2 px pole (16 px), horn head 14 px at the mouth, two sound arcs -->
       <g id="g-a1-theater-map-siren" fill="none" stroke="#f2f5f8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
