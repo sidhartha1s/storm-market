@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a5-tower-wind: A5-S3 overlay, host 847.147 for 6.84 s (nx-a5-s3 839.367 + "The" 7.78). Local t = a5-s3 words.json time - 7.78.
+     Transparent root over NIST Fig 3-20 (media/candidates/a5/a5-s3_c1_nist-generator-fig3-20.jpg, 1100 x 727), assumed cover-fit 1920 wide,
+     centred: frame x = raw x * 1.7455, frame y = raw y * 1.7455 - 94.5 (the photo is not mounted in index.html yet; re-check if the mount differs).
+     The two towers fill raw x 693 to 1100, so frame x 1210 to 1920, y 70 to 430; the flattened generator building is the rubble left of and below them.
+     The brief's centred-on-the-towers spot (x ~1536) would cover the towers and its 1500 limit lands over their left wing, so the chip hangs in the sky
+     left of the towers instead: right edge x 1170 (40 px clear of the tower wall at 1210), top 140. "Next to the towers, not over" (section 4) wins.
+     Nothing enters x >= 1600, y >= 680 (presenter circle); the chip's exit slide passes only through y 140 to 270. */
+  #a5tw-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  /* floats carry the y drift so each element keeps its own entrance and exit tweens */
+  .a5tw-float { position:absolute; inset:auto; }
+  #a5tw-chipfloat { right:750px; top:140px; }
+  #a5tw-srcfloat { left:96px; bottom:54px; }
+  #a5tw-chip { position:relative; display:table; margin-left:auto; box-sizing:border-box; padding:14px 36px 14px 44px; border-radius:14px; overflow:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; white-space:nowrap; }
+  #a5tw-bar { position:absolute; inset:auto; left:0; top:0; bottom:0; width:8px; background:#d8a13a; }
+  #a5tw-chiptxt { display:block; font-family:Arial,sans-serif; font-weight:700; font-size:40px; line-height:56px; letter-spacing:1px; color:#f2f5f8;
+    text-shadow:0 2px 14px rgba(0,0,0,.7); }
+  #a5tw-fine { display:block; margin-top:2px; font-family:Arial,sans-serif; font-weight:700; font-size:21px; line-height:28px; letter-spacing:.5px; color:#c8d3e0;
+    visibility:hidden; opacity:0; }
+  #a5tw-src { display:table; box-sizing:border-box; padding:8px 16px; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14);
+    font-family:Arial,sans-serif; font-weight:400; font-size:21px; line-height:26px; letter-spacing:.5px; color:#c8d3e0; white-space:nowrap;
+    visibility:hidden; opacity:0; }
+</style>
+<div id="a5tw-root" data-composition-id="g-a5-tower-wind" data-width="1920" data-height="1080">
+  <div id="a5tw-chipfloat" class="a5tw-float">
+    <div id="a5tw-chip">
+      <div id="a5tw-bar"></div>
+      <span id="a5tw-chiptxt">ABOUT 170 MPH</span>
+      <span id="a5tw-fine">estimate · EF-4 range · NIST Sec. 4.6.2.1</span>
+    </div>
+  </div>
+  <div id="a5tw-srcfloat" class="a5tw-float">
+    <div id="a5tw-src">NIST Sec. 4.6.2.1 · Sec. 1.2</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a5tw-";
+
+  /* "wind" @8.26 (local 0.48): source line lands */
+  tl.fromTo(Q + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.48);
+
+  /* "170" @9.82 (local 2.04): chip lands */
+  tl.fromTo(Q + "chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.04);
+
+  /* "miles" @10.50 (local 2.72): estimate line inside the chip */
+  tl.fromTo(Q + "fine", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.72);
+
+  /* hold: slow float y +-4 px; chip from 10.9 (local 3.12) to 14.0 (local 6.22), source line from its landing */
+  tl.fromTo(Q + "srcfloat", { y: 0 }, { y: -4, duration: 1.06, ease: "sine.inOut", yoyo: true, repeat: 4, immediateRender: false }, 0.88);
+  tl.fromTo(Q + "chipfloat", { y: 0 }, { y: -4, duration: 1.03, ease: "sine.inOut", yoyo: true, repeat: 2, immediateRender: false }, 3.12);
+
+  /* exit 14.02 to 14.62 (local 6.24 to 6.84): chip and source slide out, ending on "Did" where the real clip comes in */
+  tl.to([Q + "chip", Q + "src"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.24);
+
+  window.__timelines["g-a5-tower-wind"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
