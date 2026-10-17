@@ -38,7 +38,8 @@ Reading of "the last five years zoom in": with no dates, the zoom is a **recount
   no fill). Verified marks 14 to 17 (x 1096 to 1328, centre 1212) are filled amber with a dark check glyph (`#04070c`, 4 px stroke).
   A label "verified" (Arial 700 22 `#d8a13a` tracking 3) is centred at x 1212, baseline y 660, above that group. It must not touch the row label.
 - **12-row (recount):** the same pitch, mark i (0 to 11) left = 200 + 64·i, so x 200 to 944. Marks 0 to 10 are hollow, and mark 11 (x 904
-  to 944, centre 924) is filled with a check. The "verified" label moves to centre x 924.
+  to 944, centre 924) is filled with a check. The "verified" label moves under that mark: centre x 924, baseline y 772.
+  Above it, it would cross the longer recount row label, which runs to x 1050.
 - **Row labels:** "Tornado warnings for Joplin · 2005 to 2011", then on the recount "Tornado warnings · the 5 years before
   May 22, 2011", both Arial 700 26 `#d8a13a` tracking 4, left x 200, baseline y 640, right end ≤ 1050 so they stay clear of the "verified" label.
 - **Siren strip row label** "Joplin's outdoor sirens" (from the base) stays as is.
