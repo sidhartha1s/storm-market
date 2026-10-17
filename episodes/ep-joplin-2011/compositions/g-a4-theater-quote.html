@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a4-theater-quote: A4-S9, host 0.00 to 24.86 (wav 24.56 + 0.3 s seam). Local time = a4-s9 words.json time.
+     Copy of library/inhouse/quote-card.html retuned: beige cite card 1600 x 560 centred (x 160, y 260), q1 then q2 swap.
+     The card covers the presenter corner, so the circle is off for this window (brief section 2). */
+  #a4tq-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #a4tq-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #a4tq-grid { position:absolute; inset:auto; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  #a4tq-glow { position:absolute; inset:auto; left:-200px; top:80px; width:1300px; height:900px; border-radius:50%;
+    background:radial-gradient(ellipse, rgba(232,197,106,0.08), rgba(232,197,106,0) 70%); }
+
+  /* floater carries the y drift so the card keeps its own entrance and exit tweens */
+  #a4tq-float { position:absolute; inset:auto; left:160px; top:260px; width:1600px; height:560px; }
+  #a4tq-card { position:absolute; inset:auto; left:0; top:0; width:1600px; height:560px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55);
+    visibility:hidden; opacity:0; }
+  #a4tq-cbeam { position:absolute; inset:auto; top:0; left:0; width:260px; height:560px; background:linear-gradient(90deg, transparent, rgba(138,90,16,0.14), transparent); }
+
+  #a4tq-eyebrow { position:absolute; inset:auto; left:150px; top:62px; font-family:Arial,sans-serif; font-weight:700; font-size:22px; line-height:26px;
+    letter-spacing:6px; color:#2a2622; white-space:nowrap; visibility:hidden; opacity:0; }
+  #a4tq-count { position:absolute; inset:auto; right:90px; top:34px; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:72px; line-height:80px;
+    color:#8e2020; white-space:nowrap; visibility:hidden; opacity:0; }
+  #a4tq-mark { position:absolute; inset:auto; left:40px; top:112px; font-family:'AbrilFig',Georgia,serif; font-size:170px; line-height:170px; color:#8a5a10;
+    visibility:hidden; opacity:0; }
+
+  #a4tq-q1 { position:absolute; inset:auto; left:150px; top:158px; width:1360px; font-family:Georgia,'Times New Roman',serif; font-style:italic;
+    font-size:50px; line-height:68px; color:#2a2622; }
+  #a4tq-q1 span { display:block; white-space:nowrap; visibility:hidden; opacity:0; }
+  #a4tq-lead { position:absolute; inset:auto; left:150px; top:190px; font-family:Arial,sans-serif; font-weight:700; font-size:30px; line-height:40px;
+    letter-spacing:4px; color:#8e2020; white-space:nowrap; visibility:hidden; opacity:0; }
+  #a4tq-q2 { position:absolute; inset:auto; left:150px; top:254px; width:1360px; font-family:Georgia,'Times New Roman',serif; font-style:italic;
+    font-size:56px; line-height:72px; color:#2a2622; white-space:nowrap; visibility:hidden; opacity:0; }
+
+  #a4tq-rule { position:absolute; inset:auto; left:150px; top:396px; width:240px; height:3px; background:#8a5a10; }
+  #a4tq-attr { position:absolute; inset:auto; left:150px; top:420px; font-family:Arial,sans-serif; font-weight:700; font-size:22px; line-height:26px;
+    letter-spacing:3px; color:#6b6257; white-space:nowrap; }
+  #a4tq-attr span { display:inline-block; visibility:hidden; opacity:0; }
+  #a4tq-src { position:absolute; inset:auto; left:150px; top:494px; font-family:Arial,sans-serif; font-weight:700; font-size:19px; line-height:24px;
+    letter-spacing:3px; color:#6b6257; white-space:nowrap; visibility:hidden; opacity:0; }
+</style>
+<div id="a4tq-root" data-composition-id="g-a4-theater-quote" data-width="1920" data-height="1080">
+  <div id="a4tq-ground"></div>
+  <div id="a4tq-grid"></div>
+  <div id="a4tq-glow"></div>
+  <div id="a4tq-float">
+    <div id="a4tq-card">
+      <div id="a4tq-cbeam"></div>
+      <div id="a4tq-eyebrow">STAINED GLASS THEATER</div>
+      <div id="a4tq-count">56 INSIDE</div>
+      <div id="a4tq-mark">&ldquo;</div>
+      <div id="a4tq-q1"><span id="a4tq-a1">We have a strong building here</span> <span id="a4tq-a2">and anyone who wants to stay is welcome to do so.</span> <span id="a4tq-a3">We can all go down in the basement.&rdquo;</span></div>
+      <div id="a4tq-lead">ABOUT 25 MINUTES LATER</div>
+      <div id="a4tq-q2">&ldquo;we want you to get to the basement right now&rdquo;</div>
+      <div id="a4tq-rule"></div>
+      <div id="a4tq-attr"><span id="a4tq-who">the theater director</span> <span id="a4tq-ref">&middot; NIST Interview 121</span></div>
+      <div id="a4tq-src">NIST Sec. 4.4.3</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.set("#a4tq-rule", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient, whole window (24.86) */
+  tl.fromTo("#a4tq-grid", { x: 0 }, { x: 240, duration: 24.86, ease: "none" }, 0);
+  tl.fromTo("#a4tq-glow", { x: 0, y: 0 }, { x: 900, y: 100, duration: 24.86, ease: "none" }, 0);
+  tl.fromTo("#a4tq-cbeam", { x: -260 }, { x: 1600, duration: 3.0, ease: "none", repeat: 7 }, 0.3);
+  tl.to("#a4tq-float", { y: -6, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0);
+
+  /* THE a4-s9 0.00: card in; STAINED a4-s9 0.80: eyebrow */
+  tl.fromTo("#a4tq-card", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0);
+  tl.fromTo("#a4tq-eyebrow", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.8);
+
+  /* 56 a4-s9 5.58 */
+  tl.fromTo("#a4tq-count", { autoAlpha: 0, scale: 0.85, transformOrigin: "100% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 5.58);
+
+  /* RIGHT a4-s9 7.80: quote mark; DIRECTOR a4-s9 9.28: attribution and rule */
+  tl.fromTo("#a4tq-mark", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 7.8);
+  tl.fromTo("#a4tq-who", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 9.28);
+  tl.fromTo("#a4tq-ref", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 9.5);
+  tl.to("#a4tq-rule", { scaleX: 1, duration: 0.8, ease: "power2.out" }, 9.28);
+  tl.fromTo("#a4tq-src", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 9.8);
+
+  /* q1, phrase by phrase: WE a4-s9 11.04, AND a4-s9 12.84, WE a4-s9 15.52 */
+  tl.fromTo("#a4tq-a1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 11.04);
+  tl.fromTo("#a4tq-a2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 12.84);
+  tl.fromTo("#a4tq-a3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 15.52);
+
+  /* ABOUT a4-s9 17.78: q1 lifts out (0.2 s so it is gone before the lead line is visible); 25 a4-s9 17.94: lead line in */
+  tl.to("#a4tq-q1", { autoAlpha: 0, y: -30, duration: 0.2, ease: "power2.in" }, 17.78);
+  tl.fromTo("#a4tq-lead", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 17.94);
+
+  /* GET a4-s9 20.70: q2 in, attribution pulses */
+  tl.fromTo("#a4tq-q2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 20.7);
+  tl.fromTo("#a4tq-who", { scale: 1 }, { scale: 1.08, transformOrigin: "0% 50%", duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 20.9);
+
+  /* exit: card out 24.01 to 24.56 (THERE? a4-s9 23.96 + 0.6), ground holds through the seam to 24.86 */
+  tl.to("#a4tq-card", { x: 1100, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 24.01);
+  tl.set("#a4tq-ground", { autoAlpha: 1 }, 24.86);
+
+  window.__timelines["g-a4-theater-quote"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
