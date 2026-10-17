@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a3-apartments: A3-S4, host 506.25 for 13.12 s (nx-a3-s4 498.29; "every" 7.96 -> "it?" 20.48 + 0.6).
+     Brief briefs/a3/g-a3-apartments.md. Comp-local t = a3-s4 word time - 7.96 (nx-a3-s4 498.29 - host 506.25).
+     PART A: the BASEMAP block of g-a3-map-homes (itself the g-intro-map block), copied verbatim with ids re-prefixed
+       g-a3-map-homes- -> g-a3-apartments- (no geography added), held at map-homes' end framing: scale Z 4.46,
+       translate(-3064.35, -2042.31) = TXB - D/2 with D = 6 px/s x 7.78 s, then the same 6 px/s drift left.
+       The 59 house dots (houses.py table, pasted) stay at .35. Open: no sourced place for the three complexes or the
+       split of the 12, so the three outlines sit at schematic spots and the 12 dots sit in a tray (2 x 6), never inside
+       an outline. Spots computed by script from the base data at the end framing (screen px at host 0): inside the
+       damage path and the city limits, >= 22 px from the path edge, >= 38 px from every house centre:
+       O1 (524,544), O2 (976,432), O3 (1232,492); tray centred (880,790), dot pitch 17 px (7 px dots, 10 px gaps).
+     PART B: schematic elevation, not to scale. Grade y 760. Brief conflicts (section 4 wins), reported in the receipt:
+       neighbours at x 1184 / 1218 and her at 1256 (brief 1170 / 1210 / 1250): a 60 px figure at 1170 would cut the lower
+       flight (headroom there is 50 px); neighbours enter with scale from the feet, not y 12 -> 0 (that starts below grade);
+       breathing is scaleY from the feet, not y +-2 (+2 is below grade); "Somerset complex" is 30 px (the gate needs a
+       mid tier); "Schematic · not to scale" rides inside the source chip (at y 990 it would sit on the chip). -->
+<template>
+<style>
+  #g-a3-apartments-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .gaap-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gaap-part { position:absolute; inset:0; }
+  #g-a3-apartments-partb { opacity:0; visibility:hidden; }
+  #g-a3-apartments-drawcam { position:absolute; inset:0; }
+  /* base layers on from frame 0 (CSS beats the copied presentation attributes) */
+  #g-a3-apartments-l-streets, #g-a3-apartments-l-path, #g-a3-apartments-city-rest { opacity:1; }
+  #g-a3-apartments-city, #g-a3-apartments-track { stroke-dasharray:none; stroke-dashoffset:0; vector-effect:non-scaling-stroke; }
+  #g-a3-apartments-l-ring, #g-a3-apartments-l-sirens, #g-a3-apartments-l-places, #g-a3-apartments-l-below { display:none; }
+  #g-a3-apartments-houses { opacity:.35; }
+  .gaap-hout { fill:#06090d; fill-opacity:0.78; stroke:#dfe7ee; stroke-width:1.5; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
+  .gaap-hdot { fill:#c0392b; }
+  .gaap-apt { fill:#06090d; fill-opacity:0.85; stroke:#dfe7ee; stroke-width:2; stroke-linejoin:miter; }
+  .gaap-tdot { fill:#c0392b; opacity:0; }
+  #g-a3-apartments-tray { opacity:0; visibility:hidden; }
+
+  .gaap-chip { position:absolute; left:96px; top:96px; height:70px; box-sizing:border-box; padding:0 18px;
+    display:flex; align-items:center; border-radius:20px; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); opacity:0; visibility:hidden; }
+  .gaap-chiptxt { font:900 52px/56px 'Arial Black', Arial, sans-serif; letter-spacing:-1px; color:#f2f5f8; white-space:nowrap; }
+  .gaap-src { position:absolute; left:96px; top:988px; height:38px; box-sizing:border-box; padding:0 16px;
+    display:flex; align-items:center; gap:18px; border-radius:12px; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); font:700 20px/38px Arial, sans-serif; color:#c8d3e0; white-space:nowrap; }
+  #g-a3-apartments-schem { font:700 19px/38px Arial, sans-serif; color:#93a3b2; }
+
+  .gaap-diaglabel { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .gaap-title { font-family:Arial, sans-serif; font-weight:700; font-size:30px; letter-spacing:1px; fill:#dfe7ee; }
+  .gaap-hid { opacity:0; visibility:hidden; }
+  .gaap-wall { fill:none; stroke:#dfe7ee; stroke-width:3; stroke-linejoin:miter; }
+  .gaap-stair { fill:none; stroke:#93a3b2; stroke-width:3; stroke-linejoin:miter; stroke-linecap:square; }
+</style>
+<div id="g-a3-apartments-root" data-composition-id="g-a3-apartments" data-width="1920" data-height="1080" data-duration="13.12">
+
+  <!-- ================= PART A: the map ================= -->
+  <div id="g-a3-apartments-parta" class="gaap-part">
+  <svg class="gaap-svg" viewBox="0 0 1920 1080">
+    <g id="g-a3-apartments-cam">
+      <!--BASEMAP-PASTE-->
+      <g id="g-a3-apartments-houses"></g>
+    </g>
+    <!-- screen-space layer at the fixed scale Z; it drifts with the camera (translate only) -->
+    <g id="g-a3-apartments-ov">
+      <rect id="g-a3-apartments-apt1" class="gaap-apt" x="504" y="531" width="40" height="26"/>
+      <rect id="g-a3-apartments-apt2" class="gaap-apt" x="956" y="419" width="40" height="26"/>
+      <rect id="g-a3-apartments-apt3" class="gaap-apt" x="1212" y="479" width="40" height="26"/>
+      <g id="g-a3-apartments-tray">
+        <rect x="820" y="765" width="120" height="50" rx="12" fill="rgba(10,16,24,.72)" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/>
+      </g>
+      <g id="g-a3-apartments-tdots">
+        <circle class="gaap-tdot" cx="837.5" cy="781.5" r="3.5"/><circle class="gaap-tdot" cx="854.5" cy="781.5" r="3.5"/>
+        <circle class="gaap-tdot" cx="871.5" cy="781.5" r="3.5"/><circle class="gaap-tdot" cx="888.5" cy="781.5" r="3.5"/>
+        <circle class="gaap-tdot" cx="905.5" cy="781.5" r="3.5"/><circle class="gaap-tdot" cx="922.5" cy="781.5" r="3.5"/>
+        <circle class="gaap-tdot" cx="837.5" cy="798.5" r="3.5"/><circle class="gaap-tdot" cx="854.5" cy="798.5" r="3.5"/>
+        <circle class="gaap-tdot" cx="871.5" cy="798.5" r="3.5"/><circle class="gaap-tdot" cx="888.5" cy="798.5" r="3.5"/>
+        <circle class="gaap-tdot" cx="905.5" cy="798.5" r="3.5"/><circle class="gaap-tdot" cx="922.5" cy="798.5" r="3.5"/>
+      </g>
+    </g>
+  </svg>
+  </div>
+
+  <!-- ================= PART B: the drawing (schematic, not to scale) ================= -->
+  <div id="g-a3-apartments-partb" class="gaap-part">
+  <div id="g-a3-apartments-drawcam">
+  <svg class="gaap-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="g-a3-apartments-earthgrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a3644"/><stop offset="1" stop-color="#04070c"/>
+      </linearGradient>
+      <!-- crouched figure, side view, facing right, feet on (0,0): back high at the rear, head tucked low at the front -->
+      <g id="g-a3-apartments-crouch">
+        <path d="M-12,0 H13 V-6 C13,-18 10,-26 4,-30 C2,-46 -4,-58 -10,-58 C-16,-58 -17,-42 -15,-26 C-14,-14 -14,-6 -12,0 Z" fill="#d8a13a"/>
+        <circle cx="8" cy="-36" r="8" fill="#d8a13a"/>
+        <path d="M-6,-48 Q8,-52 14,-40" fill="none" stroke="#1a1710" stroke-width="8" stroke-linecap="round"/>
+        <path d="M-6,-48 Q8,-52 14,-40" fill="none" stroke="#d8a13a" stroke-width="5" stroke-linecap="round"/>
+      </g>
+    </defs>
+
+    <!-- DATUM: on with Part B -->
+    <rect id="g-a3-apartments-earth" x="-40" y="760" width="2000" height="360" fill="url(#g-a3-apartments-earthgrad)"/>
+    <line id="g-a3-apartments-grade" x1="-40" y1="760" x2="1960" y2="760" stroke="#93a3b2" stroke-width="2"/>
+
+    <!-- building: two-storey garden-style block x 360-1560, floors 610-760 and 460-610, roof line 440 -->
+    <rect id="g-a3-apartments-bfill" class="gaap-hid" x="360" y="440" width="1200" height="320" fill="rgba(223,231,238,.05)"/>
+    <rect id="g-a3-apartments-bay" class="gaap-hid" x="1100" y="460" width="200" height="300" fill="rgba(4,7,12,.55)"/>
+    <rect id="g-a3-apartments-roof" class="gaap-wall gaap-draw gaap-hid" x="360" y="440" width="1200" height="20"/>
+    <path id="g-a3-apartments-walls" class="gaap-wall gaap-draw gaap-hid" d="M360,460 V760 M1560,460 V760"/>
+    <path id="g-a3-apartments-floor" class="gaap-wall gaap-draw gaap-hid" d="M360,610 H1100 M1300,610 H1560"/>
+    <path id="g-a3-apartments-doors" class="gaap-wall gaap-draw gaap-hid" d="M538,760 V676 H582 V760 M798,760 V676 H842 V760 M1408,760 V676 H1452 V760"/>
+    <path id="g-a3-apartments-wins" class="gaap-wall gaap-draw gaap-hid" d="M655,650 H725 V694 H655 Z M915,650 H985 V694 H915 Z M525,512 H595 V556 H525 Z M785,512 H855 V556 H785 Z M1015,512 H1065 V556 H1015 Z"/>
+    <!-- stair bay x 1100-1300: lower flight (1110,760) -> (1290,610), upper (1290,610) -> (1110,460), treads every 18 px.
+         Under the lower flight: triangle (1110,760) - (1290,760) - (1290,610), left empty for the figures. -->
+    <path id="g-a3-apartments-stair" class="gaap-stair gaap-draw gaap-hid"
+      d="M1110,760 L1290,610 M1110,760 v-15 h18 v-15 h18 v-15 h18 v-15 h18 v-15 h18 v-15 h18 v-15 h18 v-15 h18 v-15 h18 v-15 h18 h10
+         M1290,610 L1110,460 M1290,610 v-15 h-18 v-15 h-18 v-15 h-18 v-15 h-18 v-15 h-18 v-15 h-18 v-15 h-18 v-15 h-18 v-15 h-18 v-15 h-18"/>
+
+    <!-- figures: amber, 60 px crouched; feet on grade y 760 -->
+    <g id="g-a3-apartments-n1" class="gaap-hid"><g id="g-a3-apartments-n1b">
+      <g transform="translate(1184,760) scale(-1,1)"><use href="#g-a3-apartments-crouch"/></g>
+    </g></g>
+    <g id="g-a3-apartments-n2" class="gaap-hid"><g id="g-a3-apartments-n2b">
+      <g transform="translate(1218,760) scale(-1,1)"><use href="#g-a3-apartments-crouch"/></g>
+    </g></g>
+    <g id="g-a3-apartments-her" class="gaap-hid"><g id="g-a3-apartments-herbob"><g id="g-a3-apartments-herb">
+      <g transform="translate(560,760)"><use href="#g-a3-apartments-crouch"/></g>
+    </g></g></g>
+
+    <text id="g-a3-apartments-lbl-somerset" class="gaap-title gaap-hid" x="960" y="410" text-anchor="middle">Somerset complex</text>
+    <text id="g-a3-apartments-lbl-stair" class="gaap-diaglabel gaap-hid" x="1330" y="560">Staircase</text>
+  </svg>
+  </div>
+  </div>
+
+  <!-- ================= HUD ================= -->
+  <div id="g-a3-apartments-chip" class="gaap-chip"><span id="g-a3-apartments-chip-t" class="gaap-chiptxt">12 IN APARTMENTS</span></div>
+  <div id="g-a3-apartments-src" class="gaap-src"><span id="g-a3-apartments-src-t">NIST Sec. 4.6.2.2 · Sec. 1.2</span><span id="g-a3-apartments-schem">Schematic · not to scale</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a3-apartments", P = "#g-a3-apartments-", NS = "http://www.w3.org/2000/svg";
+  const END = 13.12;
+  const root = document.getElementById("g-a3-apartments-root");
+  /* g-a3-map-homes houses.py table (seed 20110522), pasted: [x, y, dots] in map units; glyph and dot layout as there */
+  const HOUSES = /*HOUSES-PASTE*/[];
+  const Z = 4.46, TXE = -3064.35, TYE = -2042.31, DRIFT = 6; /* map-homes end framing; px/s, content moves left */
+  const GLYPH = [[-11, 10], [11, 10], [11, -1], [0, -11], [-11, -1]];
+  const DOTS = { 1: [[0, 4]], 2: [[-5, 4], [5, 4]], 3: [[-5, 4], [5, 4], [0, -3.5]] };
+  const tl = gsap.timeline({ paused: true });
+
+  const layer = document.getElementById("g-a3-apartments-houses");
+  HOUSES.forEach(function (h) {
+    const p = document.createElementNS(NS, "path");
+    p.setAttribute("class", "gaap-hout");
+    p.setAttribute("d", "M" + GLYPH.map(function (q) { return (h[0] + q[0] / Z).toFixed(3) + "," + (h[1] + q[1] / Z).toFixed(3); }).join(" L") + " Z");
+    layer.appendChild(p);
+    DOTS[h[2]].forEach(function (q) {
+      const c = document.createElementNS(NS, "circle");
+      c.setAttribute("class", "gaap-hdot");
+      c.setAttribute("cx", (h[0] + q[0] / Z).toFixed(3));
+      c.setAttribute("cy", (h[1] + q[1] / Z).toFixed(3));
+      c.setAttribute("r", (3.5 / Z).toFixed(4));
+      layer.appendChild(c);
+    });
+  });
+
+  /* camera: a pure function of comp time (any seek order lands the same frame) */
+  const camEl = document.getElementById("g-a3-apartments-cam"), ovEl = document.getElementById("g-a3-apartments-ov");
+  function camAt(t) {
+    const d = DRIFT * t;
+    camEl.setAttribute("transform", "translate(" + (TXE - d).toFixed(2) + "," + TYE + ") scale(" + Z + ")");
+    ovEl.setAttribute("transform", "translate(" + (-d).toFixed(2) + ",0)");
+  }
+  camAt(0);
+  tl.to({ t: 0 }, { t: 1, duration: 3.9, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
+
+  /* stroke draw-on: dash = ceil(len) + 1, measured, never typed */
+  function draw(sel, at, dur) {
+    root.querySelectorAll(sel).forEach(function (el) {
+      const len = Math.ceil(el.getTotalLength()) + 1;
+      tl.set(el, { strokeDasharray: len, strokeDashoffset: len }, 0);
+      tl.set(el, { autoAlpha: 1 }, at);
+      tl.to(el, { strokeDashoffset: 0, duration: dur, ease: "power2.inOut" }, at);
+    });
+  }
+
+  /* transforms start in set() at 0 */
+  tl.set([P + "n1", P + "n2"], { scale: 0.85 }, 0);
+  tl.set(P + "n1", { svgOrigin: "1184 760" }, 0);
+  tl.set(P + "n2", { svgOrigin: "1218 760" }, 0);
+  tl.set(P + "her", { x: 0 }, 0);
+  tl.set(P + "drawcam", { scale: 1, transformOrigin: "960px 600px" }, 0);
+
+  /* ---- PART A ---- */
+  /* "every" @7.96 (local 0.00): the three outlines draw on, 0.4 s; the tray settles in under them */
+  draw(P + "apt1, " + P + "apt2, " + P + "apt3", 0, 0.4);
+  tl.fromTo(P + "tray", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.3);
+  /* "twelve" @8.70 (local 0.74): 12 dots light, stagger 0.05 s; chip in */
+  const tdots = root.querySelectorAll(".gaap-tdot");
+  tdots.forEach(function (c, i) {
+    tl.fromTo(c, { opacity: 0, attr: { r: 0 } }, { opacity: 1, attr: { r: 3.5 }, duration: 0.3, ease: "back.out(2)" }, 0.74 + i * 0.05);
+  });
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.74);
+  /* "above" @9.40 (local 1.44): the 12 pulse once, r x1.4 and back */
+  tl.to(tdots, { attr: { r: 4.9 }, duration: 0.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.44);
+  /* hold: the tray dots blip in two groups, 1.0 s apart (the camera keeps its 6 px/s drift) */
+  tl.to(Array.prototype.slice.call(tdots, 0, 6), { attr: { r: 4.3 }, duration: 0.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.3);
+  tl.to(Array.prototype.slice.call(tdots, 6), { attr: { r: 4.3 }, duration: 0.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.9);
+
+  /* "At" @11.36 (local 3.40): chip out 0.6 s; fade-through 0.5 s to the drawing (3.40 -> 3.90) */
+  tl.to(P + "chip", { autoAlpha: 0, x: -60, duration: 0.6, ease: "power3.in" }, 3.4);
+  tl.to(P + "parta", { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 3.4);
+  tl.fromTo(P + "partb", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power1.out" }, 3.6);
+
+  /* ---- PART B ---- */
+  /* "Somerset" @11.70 (local 3.74): building strokes draw on 0.8 s; label @12.40 (local 4.44) */
+  draw(P + "roof, " + P + "walls, " + P + "floor, " + P + "stair", 3.74, 0.8);
+  draw(P + "doors, " + P + "wins", 3.94, 0.6);
+  tl.fromTo([P + "bfill", P + "bay"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 4.1);
+  tl.fromTo(P + "lbl-somerset", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.44);
+
+  /* "out" @13.42 (local 5.46): she appears at the door x 560; walks east on y 760, 2.6 s, arriving on "staircase" @16.14 (local 8.18) */
+  tl.fromTo(P + "her", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.25, ease: "power1.out" }, 5.46);
+  tl.to(P + "her", { x: 696, duration: 2.6, ease: "power1.inOut" }, 5.58); /* 560 -> 1256 */
+  /* gait: up-only bob (feet never below the grade line), 20 halves end at y 0 */
+  tl.to(P + "herbob", { y: -3, duration: 0.13, ease: "sine.inOut", yoyo: true, repeat: 19 }, 5.58);
+
+  /* "staircase" @16.14 (local 8.18): stair strokes brighten; label in */
+  tl.to(P + "stair", { attr: { stroke: "#f2f5f8" }, duration: 0.4, ease: "power2.out" }, 8.18);
+  tl.fromTo(P + "lbl-stair", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 8.18);
+
+  /* "neighbors." @16.98 (local 9.02): two neighbours in, 0.4 s, 0.15 s apart, grown from the feet */
+  tl.fromTo(P + "n1", { autoAlpha: 0, scale: 0.85, svgOrigin: "1184 760" }, { autoAlpha: 1, scale: 1, svgOrigin: "1184 760", duration: 0.4, ease: "back.out(1.6)" }, 9.02);
+  tl.fromTo(P + "n2", { autoAlpha: 0, scale: 0.85, svgOrigin: "1218 760" }, { autoAlpha: 1, scale: 1, svgOrigin: "1218 760", duration: 0.4, ease: "back.out(1.6)" }, 9.17);
+
+  /* 17.0 (local 9.04) -> end: the three breathe from the feet (backs rise ~2 px), slow push 1.00 -> 1.04 */
+  tl.to(P + "herb", { scaleY: 1.035, svgOrigin: "560 760", duration: 0.75, ease: "sine.inOut", yoyo: true, repeat: 3 }, 9.04);
+  tl.to(P + "n1b", { scaleY: 1.035, svgOrigin: "1184 760", duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, 9.6);
+  tl.to(P + "n2b", { scaleY: 1.035, svgOrigin: "1218 760", duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 3 }, 9.75);
+  tl.to(P + "drawcam", { scale: 1.04, transformOrigin: "960px 600px", duration: END - 9.04, ease: "none" }, 9.04);
+
+  /* exits, last 0.6 s (local 12.52): labels lift out, source chip slides out; the drawing holds to the cut */
+  tl.to([P + "lbl-somerset", P + "lbl-stair"], { autoAlpha: 0, y: -10, duration: 0.5, ease: "power3.in" }, 12.52);
+  tl.to(P + "src", { autoAlpha: 0, x: -60, duration: 0.5, ease: "power3.in" }, 12.52);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
