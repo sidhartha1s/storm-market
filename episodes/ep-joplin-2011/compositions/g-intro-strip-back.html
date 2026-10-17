@@ -12,12 +12,18 @@
     background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
   .gsb-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
   .gsb-hid { visibility:hidden; }
+  #gsb-ticks { opacity:0.7; }
   .gsb-row { font:700 26px Arial, sans-serif; letter-spacing:8px; fill:#93a3b2; }
   .gsb-yr { font:700 26px Arial, sans-serif; letter-spacing:3px; fill:#93a3b2; text-anchor:middle; }
   .gsb-date { font:700 30px Arial, sans-serif; fill:#f2f5f8; }
   .gsb-out { font:700 26px Arial, sans-serif; letter-spacing:4px; fill:#e74c3c; }
   .gsb-src { position:absolute; inset:auto; left:96px; top:990px; font:700 20px/20px Arial, sans-serif; color:#c8d3e0;
     white-space:nowrap; visibility:hidden; }
+  .gsb-chipwrap { position:absolute; inset:auto; left:0; right:0; top:96px; height:70px; display:flex; justify-content:center; }
+  #gsb-chip { box-sizing:border-box; height:70px; padding:0 36px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:none; visibility:hidden;
+    font:900 52px/68px 'Arial Black', Arial, sans-serif; letter-spacing:2px; color:#f2f5f8; white-space:nowrap; }
 </style>
 <div id="g-intro-strip-back-root" data-composition-id="g-intro-strip-back" data-width="1920" data-height="1080" data-duration="4.46">
   <svg class="gsb-svg" id="gsb-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
@@ -51,6 +57,7 @@
     <!-- label sits on a fixed layer under the year labels, never rides the strip float -->
     <text id="gsb-out" class="gsb-out gsb-hid" x="200" y="720">Outside the weekly test</text>
   </svg>
+  <div class="gsb-chipwrap"><div id="gsb-chip">ABOUT ONCE A YEAR</div></div>
   <div id="gsb-src" class="gsb-src">Since 2007 &#183; NIST Finding 31</div>
 </div>
 <script>
@@ -79,9 +86,10 @@ window.__timelines = window.__timelines || {};
   /* SIRENS i1-s9 1.58: the comb of tests fades back 70 % -> 25 % */
   tl.to(P + "ticks", { opacity: 0.25, duration: 0.6, ease: "power2.inOut" }, 1.58);
 
-  /* HARDLY i1-s9 2.02: marks pulse 1 -> 1.18 -> 1 (0.5 s, stagger 0.1) and stay lit; source line in */
+  /* HARDLY i1-s9 2.02: marks pulse 1 -> 1.18 -> 1 (0.5 s, stagger 0.1) and stay lit; source line in; chip (the S2 claim, wording as g-intro-strip) in */
   tl.to(pulses, { scale: 1.18, transformOrigin: "50% 50%", duration: 0.25, ease: "power2.inOut", yoyo: true, repeat: 1, stagger: 0.1 }, 2.02);
   tl.to(q(".gsb-halo"), { opacity: 0.3, duration: 0.3, ease: "power2.out", stagger: 0.1 }, 2.02);
+  tl.fromTo(P + "chip", { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.02);
   tl.fromTo(P + "src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.02);
 
   /* REAL i1-s9 3.56: label in */
