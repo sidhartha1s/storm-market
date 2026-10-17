@@ -8,10 +8,13 @@ REM Exit codes: 2 no request, 3 request refused, 4 no such episode, else render.
 setlocal EnableExtensions DisableDelayedExpansion
 set "REQ=%LOCALAPPDATA%\dojo-ops\render-request.txt"
 if not exist "%REQ%" exit /b 2
-REM Exactly one line, and every line is 1+ of A-Z a-z 0-9 _ - (letters spelled out: findstr's [A-Z]
+REM findstr by full path: with Git on PATH, a bare find or findstr can resolve to the GNU tools (a bare
+REM find hung the test, 18 Oct 2026).
+set "FINDSTR=%SystemRoot%\System32\findstr.exe"
+REM At most one line, and every line is 1+ of A-Z a-z 0-9 _ - (letters spelled out: findstr's [A-Z]
 REM also matches accented letters). /v /x lists lines that do NOT match whole; any such line refuses.
-for /f %%n in ('find /c /v "" ^< "%REQ%"') do if not "%%n"=="1" goto :refuse
-findstr /r /v /x /c:"[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-][ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-]*" "%REQ%" >nul && goto :refuse
+"%FINDSTR%" /n "^" "%REQ%" | "%FINDSTR%" /b /c:"2:" >nul && goto :refuse
+"%FINDSTR%" /r /v /x /c:"[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-][ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-]*" "%REQ%" >nul && goto :refuse
 set "SLUG="
 set /p SLUG=<"%REQ%"
 del /q "%REQ%"
