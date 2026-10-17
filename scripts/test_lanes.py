@@ -109,7 +109,11 @@ with tempfile.TemporaryDirectory() as tmp:
 
     # CLI round trip: claim, start, hold, status exit code
     e = str(ep)
-    check("claim without a session id fails", _ := True)
+    try:
+        lanes.main(["claim", e, "--session", ""])
+        check("claim without a session id fails", False)
+    except SystemExit:
+        check("claim without a session id fails", not (ep / "lanes.json").exists())
     check("claim records the session", lanes.main(["claim", e, "--session", "S1"]) == 0
           and json.loads((ep / "lanes.json").read_text())["orchestrator"] == "S1")
     try:
