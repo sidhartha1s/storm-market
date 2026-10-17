@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a3-shelter-chip: A3-S7 overlay, host 533.05 to 537.85 (4.80 s). Local t = a3-s7 words.json time - 1.82 ("shelter").
+     Transparent root: the NIST in-home-shelter photo/clip sits on a lower track for the whole host window.
+     Chip left 96 / bottom 150, source line left 96 / bottom 54; x >= 1600, y >= 680 stays empty (presenter circle). */
+  #a3sc-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  /* floats carry the y drift so each element keeps its own entrance and exit tweens */
+  #a3sc-chipfloat { position:absolute; inset:auto; left:96px; bottom:150px; }
+  #a3sc-chip { position:relative; display:table; box-sizing:border-box; padding:18px 40px 18px 46px; border-radius:14px; overflow:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; }
+  #a3sc-bar { position:absolute; inset:auto; left:0; top:0; bottom:0; width:8px; background:#d8a13a; }
+  #a3sc-gloss { position:absolute; inset:auto; top:0; bottom:0; left:-220px; width:140px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.22), rgba(255,255,255,0)); }
+  #a3sc-text { position:relative; display:block; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:60px;
+    letter-spacing:1px; color:#f2f5f8; white-space:nowrap; text-shadow:0 2px 14px rgba(0,0,0,.7); }
+
+  #a3sc-srcfloat { position:absolute; inset:auto; left:96px; bottom:54px; }
+  #a3sc-src { display:table; box-sizing:border-box; padding:8px 16px; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14);
+    font-family:Arial,sans-serif; font-weight:400; font-size:20px; line-height:26px; letter-spacing:.5px; color:#c8d3e0; white-space:nowrap;
+    visibility:hidden; opacity:0; }
+</style>
+<div id="a3sc-root" data-composition-id="g-a3-shelter-chip" data-width="1920" data-height="1080">
+  <div id="a3sc-chipfloat">
+    <div id="a3sc-chip">
+      <div id="a3sc-bar"></div>
+      <div id="a3sc-gloss"></div>
+      <span id="a3sc-text">IN-HOME SHELTERS HELD</span>
+    </div>
+  </div>
+  <div id="a3sc-srcfloat">
+    <div id="a3sc-src">NIST Finding 23 &middot; a few instances observed &middot; Sec. 1.2</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a3sc-";
+  tl.set(Q + "bar", { scaleY: 0, transformOrigin: "center top" }, 0);
+
+  /* SHELTER @1.82 (local 0.00): source line in */
+  tl.fromTo(Q + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0);
+
+  /* CAME @4.98 (local 3.16): chip in from the left, accent bar draws, one gloss sweep a3-s7 5.30 to 5.90 (local 3.48 to 4.08) */
+  tl.fromTo(Q + "chip", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 3.16);
+  tl.to(Q + "bar", { scaleY: 1, duration: 0.45, ease: "power2.out" }, 3.2);
+  tl.fromTo(Q + "gloss", { x: 0 }, { x: 1100, duration: 0.6, ease: "power1.inOut" }, 3.48);
+
+  /* hold: both float, y +-3 px, finite repeats (source 0.4 to 4.4, chip 3.16 to 4.66) */
+  tl.fromTo(Q + "srcfloat", { y: 0 }, { y: -3, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 0.4);
+  tl.fromTo(Q + "chipfloat", { y: 0 }, { y: -3, duration: 0.75, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 3.16);
+
+  /* exit: last 0.6 s (a3-s7 6.00 to 6.60, local 4.20 to 4.80), slid out left from the left-anchored chip */
+  tl.to(Q + "chip", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 4.2);
+  tl.to(Q + "src", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 4.2);
+
+  window.__timelines["g-a3-shelter-chip"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
