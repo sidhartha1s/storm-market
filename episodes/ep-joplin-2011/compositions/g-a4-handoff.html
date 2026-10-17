@@ -83,14 +83,16 @@
   <g id="a4h-ring-b" class="gim-ringg"><circle id="a4h-ring-b-c" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" stroke-dasharray="2791" stroke-dashoffset="2791"/><g id="a4h-ring-b-pulses" class="gim-pulse"><circle id="a4h-ring-b-p1" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/><circle id="a4h-ring-b-p2" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/><circle id="a4h-ring-b-p3" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/></g></g>
 </g>
 <g id="a4h-l-below"><path id="a4h-below" d="M200,880 L1500,880" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="1301" stroke-dashoffset="1301"/><text id="a4h-below-lab" x="200" y="864" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#93a3b2" opacity="0" visibility="hidden">Below ground</text></g><!--/BASEMAP-->
-      <!-- ring stamps: each 20 px clear of ring B's largest pulse (523.8 px), so no pulse copy ever crosses a stamp -->
-      <text id="g-intro-map-stamp-a" class="gim-stamp" x="363.1" y="714" text-anchor="end">5:11 PM</text>
-      <text id="g-intro-map-stamp-b" class="gim-stamp" x="1385.1" y="714">5:38 PM</text>
+      <!-- ring pulse on St. John's: three copies of one amber ring, off until 5.34 (CSS-hidden group switched on by a set) -->
+      <g id="a4h-pulses" class="a4h-pulse">
+        <circle id="a4h-p1" cx="800.55" cy="559.15" r="14" fill="none" stroke="#d8a13a" stroke-width="4" vector-effect="non-scaling-stroke"/>
+        <circle id="a4h-p2" cx="800.55" cy="559.15" r="14" fill="none" stroke="#d8a13a" stroke-width="4" vector-effect="non-scaling-stroke"/>
+        <circle id="a4h-p3" cx="800.55" cy="559.15" r="14" fill="none" stroke="#d8a13a" stroke-width="4" vector-effect="non-scaling-stroke"/>
+      </g>
     </g>
+    <!-- fixed layer: St. John's stays at screen (798.96, 559.34) through the push, so the label sits 64 px left of it -->
+    <text id="a4h-lab" x="735" y="568.3" text-anchor="end">ST. JOHN'S</text>
   </svg>
-  <div id="g-intro-map-chip"><span id="g-intro-map-chiptxt">SOUNDED TWICE</span></div>
-  <div id="g-intro-map-src">NWS timeline · 3 minutes each</div>
-  <div id="g-intro-map-hud">Below ground</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
