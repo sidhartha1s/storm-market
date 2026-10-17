@@ -103,7 +103,7 @@ window.__timelines = window.__timelines || {};
   const ROW = 557; /* hallway row y 560 -3, so the +-3 float spans 557 to 563 */
 
   tl.set(Q + "cam", { scale: 1, transformOrigin: "800px 560px" }, 0);
-  BEDS.forEach(function (b, i) { tl.set(Q + "bed" + i, { x: b[0], y: b[1], rotation: 90 }, 0); });
+  BEDS.forEach(function (b, i) { tl.set(Q + "bed" + i, { x: b[0], y: b[1], rotation: 90, transformOrigin: "50% 50%" }, 0); }); /* GSAP's SVG default origin is the bbox corner, which swung the rotated bed 70 px off its room centre */
   tl.set(Q + "label", { y: 0 }, 0);
 
   /* camera: slow push 1.00 -> 1.04 from frame 0 to 20.20, then "What" a5-s2 20.20: push to 1.25 until 22.76 (under 1.5x, so plain scale) */
