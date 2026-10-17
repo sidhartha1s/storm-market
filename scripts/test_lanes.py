@@ -257,9 +257,8 @@ def limited_lane(tmp):
 def test_status_launches_nothing_even_with_a_limited_lane(tmp_path):
     ep, run = limited_lane(tmp_path)
     calls = fakes(answering={"claude1", "claude2", "claude5"}, log=LIMIT_LOG)
-    lanes.main(["status", str(ep)])
-    lanes.main(["status", str(ep), "--json"])
-    assert not calls["probe"] and not calls["spawn"] and lanes.load_ledger(ep)["jobs"]["source:a1"] == run
+    assert lanes.main(["status", str(ep)]) == 2 and lanes.main(["status", str(ep), "--json"]) == 2
+    assert not (ep / "lanes.json.lock").exists() and not calls["probe"] and not calls["spawn"] and lanes.load_ledger(ep)["jobs"]["source:a1"] == run
 
 
 def test_relaunch_backs_off_while_another_holds_the_lock(tmp_path):
@@ -268,6 +267,9 @@ def test_relaunch_backs_off_while_another_holds_the_lock(tmp_path):
     lock = ep / "lanes.json.lock"
     lock.touch()
     assert lanes.main(["relaunch", str(ep)]) == 0 and not calls["spawn"] and lock.exists()
+    lanes.LOCK_WAIT_S = 0  # a start meanwhile must not write the ledger it read before the holder saved
+    assert raises(lambda: lanes.main(["start", str(ep), "words:a1", *LANE])) and not calls["spawn"]
+    assert lanes.load_ledger(ep)["jobs"] == {"source:a1": run}
     old = time.time() - lanes.LOCK_MIN * 60 - 1
     os.utime(lock, (old, old))  # a dead relaunch's lock is taken over
     assert lanes.main(["relaunch", str(ep)]) == 0 and len(calls["spawn"]) == 1 and not lock.exists()
