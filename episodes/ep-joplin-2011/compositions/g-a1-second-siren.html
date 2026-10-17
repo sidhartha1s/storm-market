@@ -13,8 +13,23 @@
        cannot hold: ring 2's stroke is 24 px outside ring 1's, so a label 20 px off ring 1 would sit under ring 2; section 4 item 4 wins (builder-reported conflict).
      Pulse: three copies of ring 2, 1.2 s each, staggered 0.4 s from "time" 1.16; repeat per copy = floor((5.88 - start) / 1.2) - 1 = 2, 2, 2 (3 cycles each, ending 4.76, 5.16, 5.56). -->
 <template>
-@@STYLE@@
-<div id="a1ss-root" data-composition-id="g-a1-second-siren" data-width="1920" data-height="1080" data-duration="80.9">
+<style>
+  #a1ss-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #a1ss-content { position:absolute; inset:0; }
+  .a1ss-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* base layers on from frame 0 (CSS beats the copied presentation attributes) */
+  #a1ss-mm-l-streets, #a1ss-mm-city-rest { opacity:1; }
+  #a1ss-mm-city { stroke-dashoffset:0; fill-opacity:0.03; }
+  #a1ss-mm-l-path, #a1ss-mm-l-places, #a1ss-mm-l-below { display:none; }
+  #a1ss-mm-l-sirens { opacity:0.7; }
+  /* rings and labels wait at opacity 0; ring 1's drawn stroke and the pulse copies are hidden here too, never only by a time-0 set */
+  #a1ss-ring1, #a1ss-ring2, .a1ss-pc, .a1ss-lab { opacity:0; visibility:hidden; }
+  .a1ss-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px;
+    stroke:#05080c; stroke-width:6px; stroke-linejoin:round; paint-order:stroke; }
+  #a1ss-black { position:absolute; inset:0; background:#000; opacity:0; visibility:hidden; }
+</style>
+<div id="a1ss-root" data-composition-id="g-a1-second-siren" data-width="1920" data-height="1080" data-duration="5.88">
  <div id="a1ss-content">
   <svg class="a1ss-svg" viewBox="0 0 1920 1080">
     <g id="a1ss-pan">
