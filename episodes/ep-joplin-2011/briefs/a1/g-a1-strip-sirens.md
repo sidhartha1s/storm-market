@@ -63,7 +63,7 @@ four lone red marks and one long empty stretch.
 | ground, axis, year labels, row label | "2007" "2008" "2009" "2010" "2011" · "Joplin's outdoor sirens" | frame 0. Axis draws left to right 0.00 to 0.70 (strokeDashoffset); labels rise 0.20 to 0.70 |
 | test ticks | (none) | "test" 1.46: reveal left to right, finished on "week." 2.98 (0.0066 s per tick, or one clip-rect sweep) |
 | chip 1 | "ABOUT 52 TESTS A YEAR" (S4) | "week." 2.98 |
-| marks 2007, 2008, 2009 + labels | "Jan 2007" / "winds over 70 mph" · "May 2008" / "EF1 outside the city" · "May 2009" / "winds over 85 mph" | "three" 5.18: the three marks scaleY 0 to 1 from the baseline together (0.35 s, back.out), the labels rise 0.15 s after |
+| marks 2007, 2008, 2009 + labels | "Jan 2007" / "winds over 70 mph" (S6) · "May 2008" / "EF1 outside the city" (S6) · "May 2009" / "winds over 85 mph" (S7) | "three" 5.18: the three marks scaleY 0 to 1 from the baseline together (0.35 s, back.out), the labels rise 0.15 s after |
 | chip 2 (replaces chip 1) | "3 REAL SOUNDINGS" (S6, S7) | "times" 5.46: chip 1 out (0.3 s), chip 2 in |
 | source line | "dates per the county emergency manager · NIST Sec. 4.3.4" | "three" 5.18 |
 | pulse 2007 + 2009 | (none) | "Twice" 7.80: marks scale 1 to 1.18 to 1 (0.5 s), labels brighten to `#f2f5f8` |
