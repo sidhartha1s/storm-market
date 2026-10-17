@@ -64,10 +64,10 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(Q + "mark", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 0.2);
   tl.to(Q + "rule", { scaleX: 1, duration: 0.8, ease: "power2.out" }, 0.4);
 
-  /* line 1 phrase by phrase, 0.48 to 1.80 (local 0.00 to 1.32): I 0.48, looked 0.92, the 1.24 */
-  tl.fromTo(Q + "a1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.4); /* I a3-s5 0.48 */
-  tl.fromTo(Q + "a2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.44); /* LOOKED a3-s5 0.92 */
-  tl.fromTo(Q + "a3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.76); /* THE a3-s5 1.24 */
+  /* line 1 phrase by phrase across a3-s5 0.48 to 1.80 (local 0.00 to 1.32), three even beats */
+  tl.fromTo(Q + "a1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.3); /* I a3-s5 0.48 + card settle */
+  tl.fromTo(Q + "a2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.62); /* LOOKED a3-s5 0.92 to AT 1.06 */
+  tl.fromTo(Q + "a3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.98); /* THE a3-s5 1.24 */
 
   /* line 2: INVESTIGATORS @2.02 (local 1.54), two phrases */
   tl.fromTo(Q + "b1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.54); /* INVESTIGATORS a3-s5 2.02 */
