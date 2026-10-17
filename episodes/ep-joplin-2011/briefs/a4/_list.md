@@ -76,7 +76,9 @@ Numbers: `research/facts.md` rows only. Cues: `audio/<seg>.words.json`.
   (`media/candidates/a4/candidates.md`); the NOAA aerials are centred on a geocoded address and the building is not
   confirmed. `g-a4-20th` and `g-a4-theater-quote` are designed full frame so they need no photo; `g-a4-churches` and
   `g-a4-cellar`'s opening still need the owner's call on the stand-ins.
-- **A4-S10 director:** B30 and B46 suggest the director is one of the theater's three, but no row says so; the stair head
-  figure is drawn neutral, not as a loss marker.
+- **A4-S10 director:** no row says in words that the director is one of the theater's three. It follows from B24 (she was
+  one of the 56 inside), B25 (three occupants lost their lives from injuries as the tornado struck) and B30 (she was
+  fatally injured there), so `g-a4-stairs` draws her as one of the three red figures, at the stair head. The narration
+  does not say she died; the picture does. The orchestrator may keep that figure white instead.
 - **A4-S12 "the 8 businesses and churches":** B31 says "the eight buildings discussed in this section"; the chip names them
   businesses and churches, which matches the eight in B45 only if the Elks Lodge and the theater count as businesses (B47 counts the Elks Lodge as one).
