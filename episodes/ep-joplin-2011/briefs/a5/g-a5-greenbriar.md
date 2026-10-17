@@ -49,7 +49,6 @@ Plan view, one storey, no compass on screen. Drawing area x 180 to 1440, y 220 t
 | source chip `media reports · CDC interviews · where the 19 were: not known (NIST)` | a5-s6 "buried"@23.06 |
 | slow pull-out 1.06 -> 1.00 on the drawing (labels on the HUD layer, not riding it) | a5-s6 "Nobody"@24.60 to 27.48 |
 | exit: fade-through to the next shot | 27.48 to 28.08 |
-Motion between 17.8 and 23.0: rubble-free hallway glow breathes plus a slow push 1.00 -> 1.06 from 18.0 to 23.0, so no 4 s still.
-Note: the chip shows "19" and the source chip "19" at once; neither is a 3-character digit string, so overlap_check dup-fact does not fire; the frame read decides whether it reads as one fact.
+Motion: 10.20 to 12.38 the source line enters at 10.38 and floats; 17.8 to 23.0 a slow push 1.00 -> 1.06 on the drawing; no 4 s still anywhere.
 
 §6 to §8: `references/mg-brief-template.md`; shared rules `_list.md`.
