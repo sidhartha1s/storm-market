@@ -68,7 +68,7 @@ window.__timelines = window.__timelines || {};
     "#sr-arc2": [0.4, 1.6, 2.8, 4.0, 5.65, 7.3, 8.95, 10.6, 12.25, 13.9],                /* 4 synced, then gap 0.45 */
     "#sr-arc3": [0.8, 2.0, 3.2, 4.4, 5.9, 7.4, 8.9, 10.4, 11.9, 13.4]                    /* 4 synced, then gap 0.30 */
   };
-  Object.entries(STARTS).forEach(([arc, starts]) => starts.forEach((t, k) =>
+  Object.entries(STARTS).forEach(([arc, starts]) => starts.forEach((t) =>
     tl.fromTo(arc, FROM, { ...PULSE, immediateRender: t === 0 }, t)));
 
   /* STANDARD s6 2.54 (host 3.66): chip 1 and the source line slide in */
