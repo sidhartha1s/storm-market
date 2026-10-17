@@ -80,7 +80,6 @@ window.__timelines = window.__timelines || {};
     end: 12.18
   };
   const tl = gsap.timeline({ paused: true });
-  const q = function (s) { return gsap.utils.toArray(P + "draw " + s); };
 
   /* Since @5.92: ground and shell draw on (0.8 s) */
   [document.querySelector(P + "ground"), document.querySelector(P + "shell"), document.querySelector(P + "house")].forEach(function (p) {
