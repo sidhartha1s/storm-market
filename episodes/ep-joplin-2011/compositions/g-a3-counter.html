@@ -1,0 +1,65 @@
+<!--
+  g-a3-counter: a3-s11, host 596.067 for 4.9 s (nx-a3-s11 data-start 596.067 = host data-start, so comp-local = a3-s11.words.json word time).
+  Brief briefs/a3/g-a3-counter.md. BASE of the toll counter: visits 2 (a4) and 3 (a5) copy this file and change only the
+  from/to values and the source line, so every value below is its own text leaf (#a3c-n, #a3c-of, #a3c-none, #a3c-src) and the
+  count target is the one CNT_TO constant. Claim: 71 of the 135 lost inside a building were at home (H26, T11); none found below ground (H5, H6).
+  Overlay: glass card top right (right 96, top 96, width 640), clear of x >= 1600, y >= 680; footage under it is mounted in index.html.
+-->
+<template>
+<style>
+  #g-a3-counter-root { position:absolute; inset:0; overflow:hidden; }
+  #a3c-card { position:absolute; inset:auto; right:96px; top:96px; width:640px; box-sizing:border-box; padding:36px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:none; visibility:hidden; }
+  .a3c-lab { display:block; font:700 20px/24px Arial, sans-serif; letter-spacing:6px; color:#c8d3e0; white-space:nowrap; visibility:hidden; }
+  #a3c-count { display:block; margin-top:4px; line-height:96px; white-space:nowrap; }
+  #a3c-n { display:inline-block; width:2ch; text-align:right; font:700 84px/96px 'Courier New', monospace; color:#e74c3c; visibility:hidden; }
+  #a3c-of { display:inline-block; white-space:pre; font:700 30px/96px Arial, sans-serif; color:#dfe7ee; visibility:hidden; }
+  #a3c-div { display:block; height:1px; margin:20px 0; background:rgba(255,255,255,.14); visibility:hidden; }
+  #a3c-row2 { display:block; visibility:hidden; }
+  #a3c-none { display:block; margin-top:4px; font:900 52px/60px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; }
+  #a3c-src { display:block; margin-top:20px; font:700 19px/24px Arial, sans-serif; color:#c8d3e0; white-space:nowrap; visibility:hidden; }
+</style>
+<div id="g-a3-counter-root" data-composition-id="g-a3-counter" data-width="1920" data-height="1080">
+  <div id="a3c-card">
+    <span class="a3c-lab" id="a3c-lab1">INSIDE A BUILDING</span>
+    <div id="a3c-count"><span id="a3c-n">0</span><span id="a3c-of"> of 135</span></div>
+    <div id="a3c-div"></div>
+    <div id="a3c-row2">
+      <span class="a3c-lab" id="a3c-lab2" style="visibility:inherit">BELOW GROUND</span>
+      <span id="a3c-none">NONE FOUND</span>
+    </div>
+    <span id="a3c-src">NIST Table 4-3 &middot; impact-related &middot; Finding 46</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#a3c-";
+  const CNT_TO = 71; /* H26 Table 4-3: homes 59 + apartments 12 */
+  /* MOST a3-s11 0.00: card in, 0.7 s */
+  tl.fromTo(P+"card", {x:660, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.7, ease:"power3.out"}, 0);
+  tl.fromTo(P+"lab1", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 0.3);
+  /* OF a3-s11 0.46 (count opens 0.40): 0 -> 71 by 1.60, then " of 135" in with it */
+  tl.set(P+"n", {autoAlpha:1}, 0.4);
+  tl.fromTo(P+"of", {autoAlpha:0, x:-12}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 0.4);
+  const cnt = {v:0};
+  tl.to(cnt, {v:CNT_TO, duration:1.2, ease:"power4.out", onUpdate:function() {
+    const el = document.getElementById("a3c-n"); if (el) el.textContent = Math.round(cnt.v);
+  }}, 0.4);
+  /* divider draws 1.70 */
+  tl.fromTo(P+"div", {scaleX:0, autoAlpha:0, transformOrigin:"left center"}, {scaleX:1, autoAlpha:1, duration:0.5, ease:"power3.out"}, 1.7);
+  /* DIDN'T, a3-s11 2.26: row 2 in, NONE FOUND settles 1.06 -> 1 */
+  tl.fromTo(P+"row2", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 2.26);
+  tl.fromTo(P+"none", {scale:1.06, transformOrigin:"left center"}, {scale:1, duration:0.4, ease:"power3.out"}, 2.26);
+  /* source line 2.80 */
+  tl.fromTo(P+"src", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4}, 2.8);
+  /* hold 2.8 to 4.3: card floats y 0 > -3 > 0 */
+  tl.to(P+"card", {y:-3, duration:0.75, ease:"sine.inOut", yoyo:true, repeat:1}, 2.8);
+  /* COVER, a3-s11 4.20: exit 0.6 s from 4.30, gone at the host end 4.90 */
+  tl.to(P+"card", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 4.3);
+  window.__timelines["g-a3-counter"] = tl;
+})();
+</script>
+</template>
