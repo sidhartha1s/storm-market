@@ -56,7 +56,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#sr-icon", { scale: 0.8, autoAlpha: 0.4, transformOrigin: "640px 500px" }, { scale: 1, autoAlpha: 1, transformOrigin: "640px 500px", duration: 0.5, ease: "back.out(1.7)" }, 0);
   tl.to("#sr-icon", { y: -4, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0.5);
 
-  /* ARCS: ripple in turn, 1.2 s each, 0.4 s apart (a6-s6 "In" 0.00 keeps them going): four synced pulses per arc from 0.4 s apart, then, from
+  /* ARCS: ripple in turn, 1.2 s each, 0.4 s apart (a6-s6 "In" 0.00 keeps them going): four synced pulses per arc, then, from
      DESYNC s6 "sounds" 3.78 (host 4.90), each arc waits its own fixed 0.15 / 0.45 / 0.30 s between pulses ("no one pattern").
      One proxy tween writes all three arcs from a pure function of time, so a seek in any order draws the same frame. */
   const PULSE = 1.2;
