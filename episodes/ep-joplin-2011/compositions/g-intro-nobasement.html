@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-intro-nobasement: I1-S1, host 42.85 for 11.34 s (nx-i1-s1 39.33 + "about" 3.52; to wav end 53.89, seam 54.19).
+     Brief briefs/intro/g-intro-nobasement.md. Comp-local time = i1-s1 word start - 3.52.
+     Scene A: the a3 HOUSE block (g-a3-house-section, ids re-prefixed a3hs- -> gnb-h-), walls, floor, ceiling, roof, foundation band;
+       no figure, partitions, room fill or tub (brief §3). Push 1.00 -> 1.03 about (960,540): "No basement" baseline 996 and
+       "Ground" x 146 stay inside the 96 / 54 px text-safe margin at 1.03.
+     Scene B: the MASTER MAP BASEMAP block from g-intro-map, copied verbatim with ids re-prefixed g-master-map- -> gnb-mm-
+       (one-shot content-blind rename, not committed). Layers: grid, city, streets on; path hidden until its draw; sirens, places,
+       ring and below-ground line hidden (brief §4.2: no shelter icon, marker or dot).
+     Inset: the same house at 0.55 in a glass card x 1120-1760, y 150-650: translate(-208,-75) scale(.55) in card space puts the
+       roof's x 480 at card x 56 and its apex y 220 at card y 46 (960 x .55 = 528 px wide; basement rect 560,720,800,240 -> 100,321,440,132). -->
+<template>
+<style>
+  #g-intro-nobasement-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .gnb-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gnb-scene { position:absolute; inset:0; }
+  .gnb-hid { opacity:0; visibility:hidden; }
+  .gnb-diaglabel { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .gnb-ghostlabel { font-family:Arial, sans-serif; font-weight:700; font-size:30px; letter-spacing:1px; fill:#dfe7ee; }
+
+  /* map scene: layers on from the scene's first frame (CSS beats the copied presentation attributes) */
+  #gnb-map { opacity:0; visibility:hidden; }
+  #gnb-mm-city { stroke-dashoffset:0; fill-opacity:.03; }
+  #gnb-mm-city-rest, #gnb-mm-l-streets { opacity:1; }
+  #gnb-mm-l-sirens, #gnb-mm-l-places, #gnb-mm-l-ring, #gnb-mm-l-below { display:none; }
+  .gnb-city { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#f2f5f8; }
+  .gnb-pop { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+
+  #gnb-scan { position:absolute; inset:auto; left:0; top:200px; width:62px; height:570px;
+    background:linear-gradient(90deg, rgba(127,178,229,0) 0, rgba(127,178,229,.22) 60px, rgba(127,178,229,.5) 60px, rgba(127,178,229,.5) 62px); }
+
+  /* glass: tokens.md "Surfaces" */
+  .gnb-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); }
+  .gnb-topzone { position:absolute; inset:auto; left:0; right:0; top:96px; height:70px; display:flex; justify-content:center; }
+  #gnb-chip { position:relative; height:70px; box-sizing:border-box; padding:7px 34px 7px 40px; border-radius:20px; overflow:hidden;
+    box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10); }
+  #gnb-bar { position:absolute; inset:auto; left:0; top:0; bottom:0; width:8px; background:#d0121f; }
+  #gnb-gloss { position:absolute; inset:auto; top:0; bottom:0; left:-220px; width:140px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.22), rgba(255,255,255,0)); }
+  #gnb-chiptxt { position:relative; display:block; font:900 52px/56px 'Arial Black', Arial, sans-serif; letter-spacing:1px; color:#f2f5f8;
+    white-space:nowrap; text-shadow:0 2px 14px rgba(0,0,0,.7); }
+  #gnb-shelter { height:70px; box-sizing:border-box; padding:0 30px; border-radius:20px; display:flex; align-items:center; }
+  #gnb-sheltertxt { font:700 30px/36px Arial, sans-serif; color:#f2f5f8; white-space:nowrap; }
+
+  .gnb-pathlab { position:absolute; inset:auto; box-sizing:border-box; height:48px; padding:0 20px; border-radius:16px; display:flex; align-items:center; }
+  .gnb-pathlab span { font:700 26px/30px Arial, sans-serif; letter-spacing:2px; color:#f2f5f8; white-space:nowrap; }
+
+  .gnb-src { position:absolute; inset:auto; left:96px; top:992px; font:700 20px/20px Arial, sans-serif; color:#c8d3e0; white-space:nowrap; }
+
+  #gnb-card { position:absolute; inset:auto; left:1120px; top:150px; width:640px; height:500px; box-sizing:border-box; border-radius:28px; overflow:hidden; }
+  #gnb-cardsvg { position:absolute; left:0; top:0; width:640px; height:500px; }
+  #gnb-baselab { position:absolute; inset:auto; left:116px; top:329px; font:700 22px/22px Arial, sans-serif; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+</style>
+<div id="g-intro-nobasement-root" data-composition-id="g-intro-nobasement" data-width="1920" data-height="1080" data-duration="11.34">
+
+  <!-- SCENE A: house section, no basement -->
+  <div id="gnb-house" class="gnb-scene">
+    <svg id="gnb-hsvg" class="gnb-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gnb-h-earthgrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2a3644"/><stop offset="1" stop-color="#04070c"/>
+        </linearGradient>
+        <mask id="gnb-h-ghostmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+          <rect id="gnb-h-ghostdraw" x="560" y="720" width="800" height="240" fill="none" stroke="#ffffff" stroke-width="10"/>
+        </mask>
+      </defs>
+      <!-- DATUM: on from frame 0 -->
+      <rect id="gnb-h-earth" x="0" y="660" width="1920" height="420" fill="url(#gnb-h-earthgrad)"/>
+      <!--HOUSE: g-a3-house-section geometry (a3 brief §3); figure, partitions, room and tub left out (brief §3 "No figure") -->
+      <rect id="gnb-h-found" class="gnb-hid" x="520" y="660" width="880" height="40" fill="#4a5560"/>
+      <line id="gnb-h-grade" x1="0" y1="660" x2="1920" y2="660" stroke="#93a3b2" stroke-width="2"/>
+      <text id="gnb-h-groundlabel" class="gnb-diaglabel" x="146" y="646">Ground</text>
+      <polygon id="gnb-h-rooffill" class="gnb-hid" points="480,400 960,220 1440,400" fill="rgba(147,163,178,.10)"/>
+      <polygon id="gnb-h-roof" class="gnb-hid" points="480,400 960,220 1440,400" fill="none" stroke="#93a3b2" stroke-width="3" stroke-linejoin="miter"/>
+      <g id="gnb-h-wallfills" class="gnb-hid" fill="rgba(223,231,238,.06)">
+        <rect x="520" y="400" width="20" height="240"/>
+        <rect x="1380" y="400" width="20" height="240"/>
+      </g>
+      <g fill="none" stroke="#dfe7ee" stroke-width="3">
+        <rect id="gnb-h-wallL" class="gnb-hid" x="520" y="400" width="20" height="240"/>
+        <rect id="gnb-h-wallR" class="gnb-hid" x="1380" y="400" width="20" height="240"/>
+        <rect id="gnb-h-floor" class="gnb-hid" x="520" y="640" width="880" height="20"/>
+        <line id="gnb-h-ceil" class="gnb-hid" x1="520" y1="400" x2="1400" y2="400"/>
+      </g>
+      <!--/HOUSE-->
+      <!-- basement ghost: dashed, empty, drawn on through the mask -->
+      <g id="gnb-h-ghost" class="gnb-hid">
+        <rect x="560" y="720" width="800" height="240" fill="none" stroke="#93a3b2" stroke-opacity=".6" stroke-width="3"
+          stroke-dasharray="14 10" mask="url(#gnb-h-ghostmask)"/>
+      </g>
+      <text id="gnb-h-ghostlabel" class="gnb-ghostlabel gnb-hid" x="960" y="996" text-anchor="middle">No basement</text>
+    </svg>
+  </div>
+
+  <!-- SCENE B: master map -->
+  <div id="gnb-map" class="gnb-scene">
+    <svg id="gnb-msvg" class="gnb-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="gnb-mm-cam">
+<!--BASEMAP-SPLICE-->
+        <!-- city label: outside the outline's north-west, right edge x 740 (outline there is at y >= 433, 50+ px clear) -->
+        <text id="gnb-cityname" class="gnb-city gnb-hid" x="740" y="340" text-anchor="end">Joplin</text>
+        <text id="gnb-citypop" class="gnb-pop gnb-hid" x="740" y="374" text-anchor="end">Population 50,150</text>
+      </g>
+    </svg>
+    <div id="gnb-scan" class="gnb-hid"></div>
+    <div id="gnb-lab1" class="gnb-pathlab gnb-glass gnb-hid"><span id="gnb-lab1txt">6 miles in Joplin</span></div>
+    <div id="gnb-lab2" class="gnb-pathlab gnb-glass gnb-hid"><span id="gnb-lab2txt">About 15 minutes in the city</span></div>
+  </div>
+
+  <!-- INSET: house with a basement, stair lit, nobody in it -->
+  <div id="gnb-card" class="gnb-glass gnb-hid">
+    <svg id="gnb-cardsvg" viewBox="0 0 640 500" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gnb-i-earthgrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2a3644"/><stop offset="1" stop-color="#04070c"/>
+        </linearGradient>
+      </defs>
+      <g transform="translate(-208,-75) scale(0.55)">
+        <rect x="378" y="660" width="1164" height="280" fill="url(#gnb-i-earthgrad)" opacity=".85"/>
+        <line x1="378" y1="660" x2="1542" y2="660" stroke="#93a3b2" stroke-width="2" vector-effect="non-scaling-stroke"/>
+        <polygon points="480,400 960,220 1440,400" fill="rgba(147,163,178,.10)" stroke="#93a3b2" stroke-width="3" stroke-linejoin="miter" vector-effect="non-scaling-stroke"/>
+        <g fill="rgba(223,231,238,.06)" stroke="#dfe7ee" stroke-width="3" vector-effect="non-scaling-stroke">
+          <rect x="520" y="400" width="20" height="240" vector-effect="non-scaling-stroke"/>
+          <rect x="1380" y="400" width="20" height="240" vector-effect="non-scaling-stroke"/>
+          <rect x="520" y="640" width="880" height="20" fill="none" vector-effect="non-scaling-stroke"/>
+          <line x1="520" y1="400" x2="1400" y2="400" vector-effect="non-scaling-stroke"/>
+        </g>
+        <!-- real basement at the a3 ghost's rect: solid 2 px, lit fill fades up on "basement" -->
+        <rect id="gnb-i-lit" class="gnb-hid" x="560" y="720" width="800" height="240" fill="rgba(216,161,58,.18)"/>
+        <rect x="560" y="720" width="800" height="240" fill="none" stroke="#dfe7ee" stroke-width="2" vector-effect="non-scaling-stroke"/>
+        <!-- stair: 6 risers of 50 from the floor's right third (x 1340, y 660) down to the basement floor (y 960) -->
+        <path id="gnb-i-stair" d="M1340,660 H1320 V710 H1280 V760 H1240 V810 H1200 V860 H1160 V910 H1120 V960 H1080" fill="none"
+          stroke="#d8a13a" stroke-width="3" stroke-linejoin="miter" vector-effect="non-scaling-stroke"/>
+        <path id="gnb-i-pulse" class="gnb-hid" d="M1340,660 H1320 V710 H1280 V760 H1240 V810 H1200 V860 H1160 V910 H1120 V960 H1080" fill="none"
+          stroke="#f5d98b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+      </g>
+    </svg>
+    <div id="gnb-baselab" class="gnb-hid">Basement</div>
+  </div>
+
+  <!-- HUD: one top-centre element at a time; source lines bottom-left -->
+  <div class="gnb-topzone">
+    <div id="gnb-chip" class="gnb-glass gnb-hid"><div id="gnb-bar"></div><div id="gnb-gloss"></div><span id="gnb-chiptxt">8 IN 10: NO BASEMENT</span></div>
+  </div>
+  <div class="gnb-topzone">
+    <div id="gnb-shelter" class="gnb-glass gnb-hid"><span id="gnb-sheltertxt">No community shelters or safe rooms · city or county</span></div>
+  </div>
+  <div id="gnb-src1" class="gnb-src gnb-hid">82% of Joplin homes · NIST Finding 20</div>
+  <div id="gnb-src2" class="gnb-src gnb-hid">NIST Finding 20</div>
+  <div id="gnb-src3" class="gnb-src gnb-hid">NIST Sec. 1.1 · Sec. 1.3</div>
+  <div id="gnb-src4" class="gnb-src gnb-hid">NIST Sec. 4.6.2.2</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-intro-nobasement", P = "#gnb-", H = "#gnb-h-", M = "#gnb-mm-";
+  const root = document.getElementById("g-intro-nobasement-root");
+  const tl = gsap.timeline({ paused: true });
+  /* stroke draw-on: dash = ceil(len) + 1, measured, never typed */
+  function draw(sel, at, dur, ease) {
+    root.querySelectorAll(sel).forEach(function (el) {
+      const len = Math.ceil(el.getTotalLength()) + 1;
+      tl.set(el, { strokeDasharray: len, strokeDashoffset: len }, 0);
+      tl.set(el, { autoAlpha: 1 }, at);
+      tl.to(el, { strokeDashoffset: 0, duration: dur, ease: ease || "power2.inOut" }, at);
+    });
+  }
+  const swapIn = (sel, at) => tl.fromTo(sel, { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, at);
+  const swapOut = (sel, at) => tl.to(sel, { autoAlpha: 0, duration: 0.15, ease: "power1.in" }, at);
+
+  /* ---- frame 0: ground, grade line and "Ground" on; transforms start here ---- */
+  tl.set(P + "bar", { scaleY: 0, transformOrigin: "center top" }, 0);
+  tl.set(P + "card", { x: 660 }, 0);
+
+  /* SCENE A push 1.00 -> 1.03 about the frame centre, linear, to the fade-through */
+  tl.to(P + "hsvg", { scale: 1.03, transformOrigin: "960px 540px", duration: 2.82, ease: "none" }, 0);
+
+  /* ABOUT i1-s1 3.52 (0.00): house draws, walls 0.5 s then roof 0.3 s */
+  tl.to(H + "found", { autoAlpha: 1, duration: 0.4 }, 0);
+  draw(H + "wallL, " + H + "wallR, " + H + "floor, " + H + "ceil", 0, 0.5);
+  tl.to(H + "wallfills", { autoAlpha: 1, duration: 0.3 }, 0.3);
+  draw(H + "roof", 0.5, 0.3);
+  tl.to(H + "rooffill", { autoAlpha: 1, duration: 0.3 }, 0.6);
+
+  /* 8 i1-s1 3.62 (0.10): chip in, accent bar draws, one gloss sweep */
+  tl.fromTo(P + "chip", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.10);
+  tl.to(P + "bar", { scaleY: 1, duration: 0.45, ease: "power2.out" }, 0.15);
+  tl.fromTo(P + "gloss", { x: 0 }, { x: 1100, duration: 0.6, ease: "power1.inOut" }, 0.40);
+
+  /* NONE. i1-s1 4.62 (1.10): ghost dashes draw on 0.8 s, label; source line at +0.2 */
+  tl.set(H + "ghost", { autoAlpha: 1 }, 1.10);
+  draw(H + "ghostdraw", 1.10, 0.8, "power1.inOut");
+  tl.fromTo(H + "ghostlabel", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.30);
+  tl.fromTo(P + "src1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.30);
+
+  /* AND i1-s1 6.14 (2.62): chip out, source out, fade-through 0.4 s to the map */
+  tl.to(P + "chip", { autoAlpha: 0, y: -20, duration: 0.3, ease: "power3.in" }, 2.62);
+  swapOut(P + "src1", 2.62);
+  tl.to(P + "house", { autoAlpha: 0, duration: 0.2, ease: "power1.in" }, 2.62);
+  tl.to(P + "map", { autoAlpha: 1, duration: 0.2, ease: "power1.out" }, 2.82);
+
+  /* SINGLE i1-s1 6.74 -> 8.00 (3.22 -> 4.48): scan sweeps x 200 -> 1500, finds nothing */
+  tl.set(P + "scan", { autoAlpha: 1, x: 140 }, 3.22);
+  tl.to(P + "scan", { x: 1440, duration: 1.26, ease: "none" }, 3.22);
+  tl.to(P + "scan", { autoAlpha: 0, duration: 0.15, ease: "none" }, 4.48);
+
+  /* SHELTER i1-s1 7.40 (3.88): shelter label, source line */
+  tl.fromTo(P + "shelter", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.88);
+  swapIn(P + "src2", 3.88);
+
+  /* TOWN i1-s1 8.08 (4.56): "Joplin"; 50 i1-s1 8.68 (5.16): population line */
+  tl.fromTo(P + "cityname", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.56);
+  tl.fromTo(P + "citypop", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.16);
+
+  /* ,000. i1-s1 9.10 (5.58): shelter label out; path polygon in 0.3 s, centre line draws W to E 1.3 s; source swaps */
+  tl.to(P + "shelter", { autoAlpha: 0, y: -16, duration: 0.3, ease: "power3.in" }, 5.58);
+  swapOut(P + "src2", 5.58);
+  swapIn(P + "src3", 5.73);
+  tl.to(M + "l-path", { opacity: 1, duration: 0.3, ease: "power1.out" }, 5.58);
+  tl.fromTo(M + "track", { strokeDashoffset: 1036 }, { strokeDashoffset: 0, duration: 1.3, ease: "power1.inOut" }, 5.58);
+
+  /* 9.90 / 10.30 unspoken (6.38 / 6.78): path labels, after the draw has left the city */
+  tl.fromTo(P + "lab1", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.38);
+  tl.fromTo(P + "lab2", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.78);
+
+  /* EVEN i1-s1 10.62 + 0.3 (7.40): path labels out 0.3 s */
+  tl.to([P + "lab1", P + "lab2"], { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 7.40);
+
+  /* HAD i1-s1 11.34 (7.82): inset card slides in, map dims to 40 %, source swaps; map drifts +1 % to the host end */
+  tl.set(P + "card", { autoAlpha: 1 }, 7.82);
+  tl.to(P + "card", { x: 0, duration: 0.7, ease: "power3.out" }, 7.82);
+  tl.to(P + "map", { opacity: 0.4, duration: 0.5, ease: "power1.out" }, 7.82);
+  tl.to(P + "map", { scale: 1.01, transformOrigin: "960px 540px", duration: 11.34 - 7.82, ease: "none" }, 7.82);
+  swapOut(P + "src3", 7.82);
+  swapIn(P + "src4", 7.97);
+
+  /* BASEMENT i1-s1 11.66 (8.14): basement lit, label */
+  tl.to(P + "i-lit", { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 8.14);
+  tl.fromTo(P + "baselab", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.14);
+
+  /* DOWN i1-s1 12.64 (9.12): a soft light pulse runs down the stair, 0.6 s */
+  (function () {
+    const el = root.querySelector(P + "i-pulse");
+    const len = Math.ceil(el.getTotalLength()) + 1, seg = 40;
+    tl.set(el, { strokeDasharray: seg + " " + (len + seg), strokeDashoffset: seg }, 0);
+    tl.set(el, { autoAlpha: 1 }, 9.12);
+    tl.to(el, { strokeDashoffset: -len, duration: 0.6, ease: "power1.in" }, 9.12);
+    tl.set(el, { autoAlpha: 0 }, 9.72);
+  })();
+
+  /* hold to the host end (14.56 + seam = 11.34): card floats y 0 -> -3 -> 0, two cycles; cut on the host end */
+  tl.to(P + "card", { y: -3, duration: 0.68, ease: "sine.inOut", yoyo: true, repeat: 3 }, 8.60);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
