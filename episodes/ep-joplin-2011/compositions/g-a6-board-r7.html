@@ -94,6 +94,7 @@ window.__timelines = window.__timelines || {};
   /* zoom-through from 6.00 (a6-s1 5.80) to 6.50 (a6-s1 6.30 "NIST"): label and numeral out by 6.15 (a6-s1 5.95), before they reach the safe edge */
   tl.to(Q+"label", { autoAlpha: 0, duration: 0.15, ease: "power2.in" }, 6.0);
   tl.to(Q+"n7", { autoAlpha: 0, duration: 0.15, ease: "power2.in" }, 6.0);
+  tl.to(Q+"src", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 6.0);
   const zoom = { t: 0 };
   tl.to(zoom, { t: 1, duration: 0.5, ease: "none", onUpdate: function () { gsap.set(Q+"t7", { scale: logLerp(2.4, 14, zoom.t) }); } }, 6.0);
 
