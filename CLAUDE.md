@@ -188,7 +188,7 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
 - Every MG builder's brief carries `references/mg-quickref.md` BEFORE the build, so the draft is never the first place a collision shows up.
 - Do not start a render while any builder is still editing. No live subagent, quiet `git status`, then launch.
 - One heavy job at a time; `scripts/render_busy.py` guards it. No gates, Playwright or subagent browsers beside a render.
-- Render only with `scripts\render.cmd <slug> <draft|full> [out-basename]`. Default 3 workers; full renders on this box
+- Render only with `scripts\render.cmd <slug> <draft|full> [out-basename]`. The dojo-ops dashboard starts a draft only through `scripts\dojo_draft.cmd` (no arguments: it reads and re-checks the slug dojo-ops wrote to `%LOCALAPPDATA%\dojo-ops\render-request.txt`, sets 2 workers, then calls render.cmd; test `python3 scripts/test_dojo_draft.py`). Default 3 workers; full renders on this box
   set `RENDER_WORKERS=2` in a per-episode wrapper (`scripts/<ep>_full_task.cmd`). `RENDER_CRF=20` gives a smaller single pass. Planning numbers: a 17 min draft took 36 min, a 28 min full took about 75 min at 2 workers.
 - Launch hidden through a scheduled task: `schtasks /create ... /tr "wscript.exe <abs>\scripts\run_hidden.vbs cmd.exe /c
   <abs>\scripts\<task>.cmd"` then `/run`. A harness background job is reaped at low RAM, and `Start-Process` dies with its tool call.
