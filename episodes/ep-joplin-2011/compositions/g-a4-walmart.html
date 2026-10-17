@@ -232,11 +232,11 @@ window.__timelines = window.__timelines || {};
   });
 
   /* EXACTLY a4-s4 10.04: source chip */
-  tl.fromTo(Q + "lsrc", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, S4 + 10.04);
-  tl.fromTo(Q + "lsrc .a4wm-bar", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power2.out", transformOrigin: "center top" }, S4 + 10.12);
+  tl.fromTo(Q + "lsrc", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 28.74);
+  tl.fromTo(Q + "lsrc .a4wm-bar", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power2.out", transformOrigin: "center top" }, 28.82);
 
   /* hold: slow camera drift 1.00 to 1.02 on the drawing layer (the HUD text stays put); chip wrappers float 3 px */
-  tl.to(Q + "cam", { scale: 1.02, duration: END - 0.6 - S4, ease: "none" }, S4);
+  tl.to(Q + "cam", { scale: 1.02, duration: 17.08, ease: "none" }, 18.7);
   const FL = (id, at, dur) => tl.to(Q + id, { y: -3, duration: dur, ease: "sine.inOut", yoyo: true, repeat: Math.floor((END - 0.7 - at) / dur) - 1 }, at);
   FL("r1float", 6.2, 0.75); FL("r2float", 8.4, 0.75);
   FL("pfloat", S4 + 7.3, 0.75); FL("lfloat", S4 + 8.4, 0.75); FL("sfloat", S4 + 10.6, 0.75); FL("srcfloat", 3.8, 1.0);
