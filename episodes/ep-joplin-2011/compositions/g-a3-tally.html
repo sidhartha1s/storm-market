@@ -1,0 +1,187 @@
+<!--
+  g-a3-tally: a3-s5, host 510.49 for 12.18 s (nx-a3-s5 data-start 504.71, so comp-local = a3-s5.words.json word time - 5.78).
+  Brief briefs/a3/g-a3-tally.md. Claim: of the 27 survivors NIST spoke with (single-family homes, EF-4 zone), 11 were in basements and
+  15 in first-floor interior spaces: 3 closet or laundry, 5 hallway, 7 bathroom (H13, H14). 27 - 11 - 15 = 1 pip stays in the grid, grey, unlabelled
+  (its place is open: no "crawl space" anywhere in this file).
+  Full-frame: sky and earth on from frame 0 (grade line y 620). Pip id a3t-pRC = grid row R (0-2), column C (0-8).
+  Pip assignment (11 + 3 + 5 + 7 + 1 = 27): basement = columns 0-3 minus p23; closet = column 4; hallway = column 5 + p06, p16;
+  bathroom = p26, column 7, column 8; grey = p23. Pips are placed by travel, so the x tween leads (power3.out) and the y tween follows
+  (power2.inOut): no pip crosses a label that is already visible, and each bin's label lands after its last pip has passed the label row.
+-->
+<template>
+<style>
+  #g-a3-tally-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; }
+  #a3t-ground, #a3t-lines, #a3t-labels, #a3t-pips { position:absolute; inset:0; }
+  #a3t-sky { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #a3t-earth { position:absolute; inset:auto; left:0; top:620px; width:1920px; height:460px; background:linear-gradient(180deg, #2a3644 0%, #04070c 100%); }
+  #a3t-lines { width:1920px; height:1080px; }
+  .a3t-bin { fill:none; stroke:#93a3b2; stroke-width:2; visibility:hidden; }
+  #a3t-bfill { fill:rgba(4,7,12,.5); visibility:hidden; opacity:0; }
+  .a3t-pip { position:absolute; inset:auto; width:36px; height:48px; color:#d8a13a; fill:currentColor; visibility:hidden; }
+  .a3t-lab { position:absolute; inset:auto; white-space:nowrap; visibility:hidden; }
+  #a3t-ground-lab { left:110px; top:585px; font:700 22px/24px Arial, sans-serif; letter-spacing:3px; color:#93a3b2; visibility:visible; }
+  #a3t-eyebrow { left:96px; top:200px; font:700 22px/26px Arial, sans-serif; letter-spacing:6px; color:#93a3b2; }
+  #a3t-n11 { left:890px; top:691px; font:900 52px/56px 'Arial Black', Arial, sans-serif; color:#f2f5f8; }
+  #a3t-basement { left:890px; top:755px; font:700 30px/34px Arial, sans-serif; color:#dfe7ee; }
+  .a3t-binlab { top:433px; font:700 22px/26px Arial, sans-serif; color:#93a3b2; }
+  #a3t-l-closet { left:940px; } #a3t-l-hall { left:1220px; } #a3t-l-bath { left:1500px; }
+  #a3t-l-group { left:940px; top:381px; font:700 30px/34px Arial, sans-serif; color:#dfe7ee; }
+  #a3t-chip { position:absolute; inset:auto; left:96px; top:96px; box-sizing:border-box; padding:14px 30px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:28px; box-shadow:none; visibility:hidden; }
+  #a3t-chip-t { display:block; font:900 52px/60px 'Arial Black', Arial, sans-serif; letter-spacing:2px; color:#f2f5f8; white-space:nowrap; }
+  #a3t-src { position:absolute; inset:auto; left:96px; bottom:54px; box-sizing:border-box; padding:8px 18px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:28px; box-shadow:none; }
+  #a3t-src-t { display:block; font:700 20px/24px Arial, sans-serif; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-a3-tally-root" data-composition-id="g-a3-tally" data-width="1920" data-height="1080">
+  <svg width="0" height="0" style="position:absolute"><symbol id="a3t-person" viewBox="0 0 36 48"><circle cx="18" cy="11" r="10"/><path d="M3 48 V36 Q3 24 18 24 Q33 24 33 36 V48 Z"/></symbol></svg>
+  <div id="a3t-ground"><div id="a3t-sky"></div><div id="a3t-earth"></div></div>
+  <svg id="a3t-lines" viewBox="0 0 1920 1080">
+    <line id="a3t-grade" x1="0" y1="620" x2="1920" y2="620" stroke="#93a3b2" stroke-width="2"/>
+    <rect id="a3t-bfill" x="300" y="660" width="560" height="240"/>
+    <rect class="a3t-bin" id="a3t-bin-base" x="300" y="660" width="560" height="240"/>
+    <rect class="a3t-bin" id="a3t-bin-closet" x="940" y="470" width="260" height="120"/>
+    <rect class="a3t-bin" id="a3t-bin-hall" x="1220" y="470" width="260" height="120"/>
+    <rect class="a3t-bin" id="a3t-bin-bath" x="1500" y="470" width="260" height="120"/>
+  </svg>
+  <div id="a3t-labels">
+    <div class="a3t-lab" id="a3t-ground-lab">Ground</div>
+    <div class="a3t-lab" id="a3t-eyebrow">EF-4 zone &middot; single-family homes</div>
+    <div class="a3t-lab" id="a3t-n11">0</div>
+    <div class="a3t-lab" id="a3t-basement">Basement</div>
+    <div class="a3t-lab a3t-binlab" id="a3t-l-closet">Closet, laundry &middot; 3</div>
+    <div class="a3t-lab a3t-binlab" id="a3t-l-hall">Hallway &middot; 5</div>
+    <div class="a3t-lab a3t-binlab" id="a3t-l-bath">Bathroom &middot; 7</div>
+    <div class="a3t-lab" id="a3t-l-group">Inside, first floor &middot; 15</div>
+  </div>
+  <div id="a3t-pips">
+    <svg class="a3t-pip" id="a3t-p00" viewBox="0 0 36 48" style="left:708px;top:150px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p01" viewBox="0 0 36 48" style="left:764px;top:150px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p02" viewBox="0 0 36 48" style="left:820px;top:150px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p03" viewBox="0 0 36 48" style="left:876px;top:150px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p04" viewBox="0 0 36 48" style="left:932px;top:150px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p05" viewBox="0 0 36 48" style="left:988px;top:150px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p06" viewBox="0 0 36 48" style="left:1044px;top:150px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p07" viewBox="0 0 36 48" style="left:1100px;top:150px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p08" viewBox="0 0 36 48" style="left:1156px;top:150px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p10" viewBox="0 0 36 48" style="left:708px;top:214px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p11" viewBox="0 0 36 48" style="left:764px;top:214px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p12" viewBox="0 0 36 48" style="left:820px;top:214px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p13" viewBox="0 0 36 48" style="left:876px;top:214px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p14" viewBox="0 0 36 48" style="left:932px;top:214px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p15" viewBox="0 0 36 48" style="left:988px;top:214px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p16" viewBox="0 0 36 48" style="left:1044px;top:214px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p17" viewBox="0 0 36 48" style="left:1100px;top:214px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p18" viewBox="0 0 36 48" style="left:1156px;top:214px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p20" viewBox="0 0 36 48" style="left:708px;top:278px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p21" viewBox="0 0 36 48" style="left:764px;top:278px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p22" viewBox="0 0 36 48" style="left:820px;top:278px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p23" viewBox="0 0 36 48" style="left:876px;top:278px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p24" viewBox="0 0 36 48" style="left:932px;top:278px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p25" viewBox="0 0 36 48" style="left:988px;top:278px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p26" viewBox="0 0 36 48" style="left:1044px;top:278px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p27" viewBox="0 0 36 48" style="left:1100px;top:278px"><use href="#a3t-person"/></svg>
+    <svg class="a3t-pip" id="a3t-p28" viewBox="0 0 36 48" style="left:1156px;top:278px"><use href="#a3t-person"/></svg>
+  </div>
+  <div id="a3t-chip"><span id="a3t-chip-t">27 SURVIVORS</span></div>
+  <div id="a3t-src"><span id="a3t-src-t">NIST Sec. 4.6.2.2</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#a3t-";
+  const EXIT = 11.4;            /* "up?" a3-s5 17.16 -> local 11.38; exit 0.6 s, gone 12.0, host ends 12.18 */
+  const BREATH = 1.3;           /* one-way breathing tween, y +-2 about the pip's resting top */
+  const PITCH = 56, GRID_X = 708, GRID_TOPS = [150, 214, 278];
+  const sel = c => P + "p" + c;
+  const startOf = c => [GRID_X + PITCH * +c[1], GRID_TOPS[+c[0]]];
+
+  /* pip assignment: every grid slot appears once (11 + 3 + 5 + 7 + 1 grey = 27) */
+  const BASEMENT = ["00","10","20","01","11","21","02","12","22","03","13"];
+  const CLOSET   = ["04","14","24"];
+  const HALL     = ["05","15","25","06","16"];
+  const BATH     = ["26","07","17","27","08","18","28"];
+  const GREY     = "23";
+  const ALL = ["00","01","02","03","04","05","06","07","08","10","11","12","13","14","15","16","17","18","20","21","22","23","24","25","26","27","28"];
+
+  /* bin slots: rows of m pips centred in a box of width w, nominal tops per row; resting top = nominal - 2 (breath is +-2 about it) */
+  function slots(x0, w, counts, tops, pitch) {
+    const out = [];
+    counts.forEach(function(m, r) {
+      const x = x0 + (w - ((m - 1) * pitch + 36)) / 2;
+      for (let j = 0; j < m; j++) out.push([x + j * pitch, tops[r] - 2]);
+    });
+    return out;
+  }
+  /* travel: x leads (power3.out), y follows (power2.inOut); the pip then breathes until the exit */
+  function sort(codes, sl, t0, dur, stag, fullAlphaOnLand) {
+    codes.forEach(function(c, i) {
+      const el = sel(c), s = startOf(c), d = sl[i];
+      const at = t0 + i * stag, land = at + dur;
+      tl.to(el, {x: d[0] - s[0], duration: dur, ease: "power3.out"}, at);
+      tl.to(el, {y: d[1] - s[1], duration: dur, ease: "power2.inOut"}, at);
+      if (fullAlphaOnLand) tl.to(el, {autoAlpha: 1, duration: 0.3, ease: "power2.out"}, land - 0.3);
+      const b0 = land + 0.05 + (i % 4) * 0.17;
+      const n = Math.max(1, Math.floor((EXIT - b0) / BREATH));
+      tl.to(el, {y: d[1] + 4 - s[1], duration: BREATH, ease: "sine.inOut", yoyo: true, repeat: n - 1}, b0);
+    });
+  }
+  /* box outline draws on (dash length = ceil(perimeter) + 1) */
+  function drawBin(id, w, h, at) {
+    const L = Math.ceil(2 * (w + h)) + 1;
+    tl.set(P + id, {strokeDasharray: L, strokeDashoffset: L}, 0);
+    tl.to(P + id, {autoAlpha: 1, duration: 0.01}, at);
+    tl.to(P + id, {strokeDashoffset: 0, duration: 0.6, ease: "power2.out"}, at);
+  }
+  function labelIn(id, at) {
+    tl.fromTo(P + id, {autoAlpha: 0, y: 16}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out"}, at);
+  }
+
+  /* "27," a3-s5 6.00 -> local 0.22: 27 pips pop in (all in by 1.1), chip and eyebrow in */
+  ALL.forEach(function(c, i) {
+    tl.fromTo(sel(c), {scale: 0.6, autoAlpha: 0}, {scale: 1, autoAlpha: 0.55, duration: 0.3, ease: "back.out(2)"}, 0.22 + i * 0.02);
+  });
+  tl.fromTo(P + "chip", {autoAlpha: 0, x: -40}, {autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out"}, 0.22);
+  labelIn("eyebrow", 0.35);
+
+  /* "11" 7.10 -> 1.32: 11 pips travel below the grade line; bin draws; count 0 -> 11 lands with "Basement" at 8.0 -> 2.22 */
+  tl.fromTo(P + "bfill", {autoAlpha: 0}, {autoAlpha: 1, duration: 0.6, ease: "power2.out"}, 1.32);
+  drawBin("bin-base", 560, 240, 1.32);
+  sort(BASEMENT, slots(300, 560, [6, 5], [710, 800], 80), 1.32, 0.9, 0.04, false);
+  tl.set(P + "n11", {autoAlpha: 1}, 1.32);
+  const cnt = {v: 0};
+  tl.to(cnt, {v: 11, duration: 0.9, ease: "power4.out", onUpdate: function() { document.getElementById("a3t-n11").textContent = Math.round(cnt.v); }}, 1.32);
+  labelIn("basement", 2.22);
+
+  /* "lived." 9.72 -> 3.94: the 11 go full amber 2, one pulse */
+  const BASE_EL = BASEMENT.map(sel);
+  tl.to(BASE_EL, {autoAlpha: 1, color: "#e8c56a", duration: 0.3, ease: "power2.out"}, 3.94);
+  tl.to(BASE_EL, {scale: 1.18, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1}, 3.94);
+
+  /* "closet," 12.74 -> 6.96: box, 3 pips (land by 7.64), label once the last pip is past the label row */
+  drawBin("bin-closet", 260, 120, 6.96);
+  sort(CLOSET, slots(940, 260, [2, 1], [484, 536], 56), 6.96, 0.6, 0.04, true);
+  labelIn("l-closet", 7.6);
+  /* "hallway," 13.50 -> 7.72: box, 5 pips (land by 8.48), label 8.4 */
+  drawBin("bin-hall", 260, 120, 7.72);
+  sort(HALL, slots(1220, 260, [3, 2], [484, 536], 56), 7.72, 0.6, 0.04, true);
+  labelIn("l-hall", 8.4);
+  /* "bathroom." 14.28 -> 8.50: box, 7 pips (land by 9.34), label 9.3; 14.68 -> 8.90 group label in, the last grid pip greys */
+  drawBin("bin-bath", 260, 120, 8.5);
+  sort(BATH, slots(1500, 260, [4, 3], [484, 536], 56), 8.5, 0.6, 0.04, true);
+  labelIn("l-bath", 9.3);
+  labelIn("l-group", 8.9);
+  tl.to(sel(GREY), {color: "#4a5560", autoAlpha: 1, duration: 0.4, ease: "power2.out"}, 8.9);
+
+  /* "up?" 17.16 -> 11.38: chip and source out, labels, pips and ground fade through (0.6 s) */
+  tl.to(P + "chip", {x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, EXIT);
+  tl.to(P + "src", {x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, EXIT);
+  tl.to([P + "labels", P + "pips", P + "lines", P + "ground"], {autoAlpha: 0, duration: 0.6, ease: "power2.in"}, EXIT);
+  tl.set(P + "ground", {autoAlpha: 0}, 12.18);
+  window.__timelines["g-a3-tally"] = tl;
+})();
+</script>
+</template>
