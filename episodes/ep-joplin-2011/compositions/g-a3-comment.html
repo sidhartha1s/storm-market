@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a3-comment: A3-S5 opening, host 505.19 to 510.49 (5.30 s). Local t = a3-s5 words.json time - 0.48.
+     Beige cite card (library/inhouse/quote-card.html layout) over the channel ground, ground on from frame 0.
+     Card x 120 to 1680, y 260 to 660: bottom stays above y 680 so the presenter circle zone (x >= 1600, y >= 680) is clear, drift included. */
+  #a3c-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #a3c-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #a3c-grid { position:absolute; inset:auto; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  #a3c-glow { position:absolute; inset:auto; left:-200px; top:80px; width:1300px; height:900px; border-radius:50%;
+    background:radial-gradient(ellipse, rgba(232,197,106,.08), rgba(232,197,106,0) 70%); }
+
+  /* float carries the y drift so the card keeps its own entrance and exit tweens */
+  #a3c-float { position:absolute; inset:auto; left:120px; top:260px; width:1560px; height:400px; }
+  #a3c-card { position:absolute; inset:auto; left:0; top:0; width:1560px; height:400px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background:rgba(232,222,200,.90); border:1px solid rgba(90,74,46,.35); box-shadow:0 30px 90px rgba(0,0,0,.55);
+    visibility:hidden; opacity:0; }
+  #a3c-cbeam { position:absolute; inset:auto; top:0; bottom:0; left:0; width:260px; background:linear-gradient(90deg, transparent, rgba(138,90,16,.14), transparent); }
+  #a3c-mark { position:absolute; inset:auto; left:40px; top:24px; font-family:'AbrilFig',Georgia,serif; font-size:170px; line-height:170px; color:#8a5a10;
+    visibility:hidden; opacity:0; }
+  .a3c-q { position:absolute; inset:auto; left:170px; font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:54px; line-height:72px;
+    color:#1c1a17; white-space:nowrap; }
+  .a3c-q span { display:inline-block; visibility:hidden; opacity:0; }
+  #a3c-q1 { top:64px; } #a3c-q2 { top:148px; }
+  #a3c-rule { position:absolute; inset:auto; left:170px; top:276px; width:240px; height:3px; background:#8a5a10; }
+  #a3c-attr { position:absolute; inset:auto; left:170px; top:304px; font-family:Arial,sans-serif; font-weight:700; font-size:26px; line-height:32px;
+    letter-spacing:2px; color:#6b6257; white-space:nowrap; visibility:hidden; opacity:0; }
+</style>
+<div id="a3c-root" data-composition-id="g-a3-comment" data-width="1920" data-height="1080">
+  <div id="a3c-ground"></div>
+  <div id="a3c-grid"></div>
+  <div id="a3c-glow"></div>
+  <div id="a3c-float">
+    <div id="a3c-card">
+      <div id="a3c-cbeam"></div>
+      <div id="a3c-mark">&ldquo;</div>
+      <div id="a3c-q1" class="a3c-q"><span id="a3c-a1">my step dad</span> <span id="a3c-a2">went to the center most closet</span> <span id="a3c-a3">in the house,</span></div>
+      <div id="a3c-q2" class="a3c-q"><span id="a3c-b1">threw everything</span> <span id="a3c-b2">out into the hallway</span></div>
+      <div id="a3c-rule"></div>
+      <div id="a3c-attr">Viewer comment &middot; Swegle documentary, YouTube</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 5.3; /* host 505.19 to 510.49 = a3-s5 0.48 to 5.78 ("I" to "Of") */
+  const Q = "#a3c-";
+  tl.set(Q + "rule", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient, whole window (ground stays on to the host end) */
+  tl.fromTo(Q + "grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(Q + "glow", { x: 0, y: 0 }, { x: 900, y: 100, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(Q + "cbeam", { x: -260 }, { x: 1600, duration: 3.0, ease: "none", repeat: 1 }, 0.3);
+
+  /* I @0.48 (local 0.00): card in, mark, rule */
+  tl.fromTo(Q + "card", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0);
+  tl.fromTo(Q + "mark", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 0.2);
+  tl.to(Q + "rule", { scaleX: 1, duration: 0.8, ease: "power2.out" }, 0.4);
+
+  /* line 1 phrase by phrase, 0.48 to 1.80 (local 0.00 to 1.32): I 0.48, looked 0.92, the 1.24 */
+  tl.fromTo(Q + "a1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.4); /* I a3-s5 0.48 */
+  tl.fromTo(Q + "a2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.44); /* LOOKED a3-s5 0.92 */
+  tl.fromTo(Q + "a3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.76); /* THE a3-s5 1.24 */
+
+  /* line 2: INVESTIGATORS @2.02 (local 1.54), two phrases */
+  tl.fromTo(Q + "b1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.54); /* INVESTIGATORS a3-s5 2.02 */
+  tl.fromTo(Q + "b2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.98); /* TALKED a3-s5 2.46 */
+
+  /* FROM @3.10 (local 2.62): attribution in */
+  tl.fromTo(Q + "attr", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.62); /* FROM a3-s5 3.10 */
+
+  /* hold: slow drift of the card on its float wrapper, 1.0 to 4.7 */
+  tl.fromTo(Q + "float", { y: 0 }, { y: -8, duration: 1.85, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 1.0);
+
+  /* exit 4.70 to 5.30 (a3-s5 5.18 to 5.78); g-a3-tally takes over on "Of" */
+  tl.to(Q + "card", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 4.7);
+
+  window.__timelines["g-a3-comment"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
