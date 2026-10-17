@@ -41,9 +41,11 @@ REPO = Path(__file__).resolve().parent.parent
 SEG_ID = r"([A-Z]\d+-S\d+[a-z]?)\b"  # segment id at the start of a heading, e.g. 'A3-S5'
 
 
-def has_open_verify(text):
-    """A segment cannot lock while its text still carries an open [verify] marker (script-scaling.md "Section lock")."""
-    return "[verify" in text
+def open_verify_ids(md: str):
+    """Segment ids whose heading block (narration, Picture, Rows, notes) still carries an open [verify] marker.
+    script-scaling.md "Section lock" counts every marker on the section, not only those in the spoken line."""
+    blocks = re.split(r"\n#{1,6} ", "\n" + md.replace("\r\n", "\n"))
+    return {m.group(1).lower() for b in blocks[1:] if (m := re.match(SEG_ID, b)) and "[verify" in b}
 
 
 class SegmentParseError(Exception):
