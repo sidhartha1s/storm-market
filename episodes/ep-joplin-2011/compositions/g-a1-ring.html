@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1-ring: A1-S10 second half, host 278.65 for 11.1 s (nx-a1-s10 269.89 + "Since" 8.76; wav end 19.56 + 0.3 s seam). Brief briefs/a1/g-a1-ring.md.
+     Cue clock: comp-local = a1-s10 word start - 8.76.
+     Scale: 4.95 px/mi, not the brief's 5.0 (ring r 396.0, inside its 400 +-4). Reason: the TIGER 2010 Joplin city outline is 35.62 sq mi
+       (the brief's 30 sq mi is NIST's "roughly"); at 5.0 its equal-area radius is 16.84, outside the 15.5 +-1.2 of section 4 truth 2, at 4.95 it is 16.68.
+       Section 3's 750 px2 +-15 % band (<= 862.5) is not met either way (874.1 px2 emitted); section 4 wins.
+     Datum: equirectangular, x scaled by cos 37.08 (the MASTER MAP base datum), centre = area centroid of the TIGER outline (-94.5020, 37.0777) at (720, 560).
+     State lines: Natural Earth 50m admin-1 (library/inhouse/master-map-us-canada.html #mastermap-us subpaths AR, KS, MO, OK), each vertex
+       un-projected from the exemplar's x = 3841*(lon+97.576), y = -5585*(lat-46.6213) and re-projected at this datum (the exemplar's x scale is cos 46.6, not cos 37).
+     Outline, state lines and the 181 dot positions: pasted in by a one-shot content-blind splice from a scratch calc (never committed); dots are a seeded
+       dart-throwing Poisson-disc fill, seed 1971, r <= 388, min spacing 14, centre >= 14 px from the outline, clear of the label boxes and the radius line.
+     Deviation from brief: the "Joplin" label sits below the outline (x 702, baseline 622), not left of it. The outline's west edge touches the
+       Kansas/Missouri line at x 688.3, so a label right-aligned at 690 would sit on that line, and above-right it would sit on the radius line. -->
+<template>
+<style>
+  #a1ring-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #a1ring-ground { position:absolute; inset:auto; left:0; top:0; width:1920px; height:1080px;
+    background:radial-gradient(ellipse at 38% 50%, #0b1016 0%, #030507 78%); }
+  .a1ring-svg { position:absolute; inset:auto; left:0; top:0; width:1920px; height:1080px; }
+
+  .a1ring-st { fill:#0b1016; fill-opacity:0.7; stroke:#2a3644; stroke-width:2px; stroke-linejoin:round; }
+  .a1ring-lab { font-family:Arial,sans-serif; font-weight:700; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .a1ring-stlab { font-size:19px; letter-spacing:2px; fill:#93a3b2; }
+  #a1ring-city { fill:#f2f5f8; fill-opacity:0.10; fill-rule:evenodd; stroke:#f2f5f8; stroke-width:2px; stroke-linejoin:round; }
+  #a1ring-joplin { font-size:26px; fill:#f2f5f8; }
+  #a1ring-ring { fill:none; stroke:#7fb2e5; stroke-width:3px; opacity:0; visibility:hidden; }
+  #a1ring-rad { fill:none; stroke:#7fb2e5; stroke-width:2px; stroke-linecap:round; opacity:0; visibility:hidden; }
+  #a1ring-rlab { font-size:26px; fill:#7fb2e5; opacity:0; visibility:hidden; }
+  .a1ring-dot { fill:#c0392b; fill-opacity:0.9; opacity:0; visibility:hidden; }
+  #a1ring-d71 { fill:#e74c3c; opacity:0; visibility:hidden; }
+  #a1ring-may { font-size:22px; fill:#f2f5f8; opacity:0; visibility:hidden; }
+
+  /* HUD: fixed, never rides the drift */
+  #a1ring-eb { font-size:22px; letter-spacing:6px; fill:#93a3b2; opacity:0; visibility:hidden; }
+  #a1ring-src { font-size:20px; fill:#c8d3e0; opacity:0; visibility:hidden; }
+  .a1ring-chip { position:absolute; inset:auto; left:1240px; height:60px; box-sizing:border-box; padding:0 26px; display:flex; align-items:center;
+    border-radius:28px; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; visibility:hidden; opacity:0; }
+  .a1ring-chip span { font:700 26px/56px Arial,sans-serif; letter-spacing:1px; color:#dfe7ee; }
+  .a1ring-chip b { font:900 52px/56px 'Arial Black',Arial,sans-serif; letter-spacing:0; color:#e74c3c; margin-right:8px; }
+  #a1ring-chip1 { top:350px; }
+  #a1ring-chip2 { top:450px; }
+</style>
+<div id="a1ring-root" data-composition-id="g-a1-ring" data-width="1920" data-height="1080">
+  <div id="a1ring-ground"></div>
+
+  <svg class="a1ring-svg" viewBox="0 0 1920 1080">
+    <g id="a1ring-map">
+      <path id="a1ring-st-ks" class="a1ring-st" d="@@KS_D@@"/>
+      <path id="a1ring-st-mo" class="a1ring-st" d="@@MO_D@@"/>
+      <path id="a1ring-st-ok" class="a1ring-st" d="@@OK_D@@"/>
+      <path id="a1ring-st-ar" class="a1ring-st" d="@@AR_D@@"/>
+      <text id="a1ring-stl-ks" class="a1ring-lab a1ring-stlab" x="170" y="420">Kansas</text>
+      <text id="a1ring-stl-ok" class="a1ring-lab a1ring-stlab" x="170" y="800">Oklahoma</text>
+      <text id="a1ring-stl-mo" class="a1ring-lab a1ring-stlab" x="1150" y="640">Missouri</text>
+      <text id="a1ring-stl-ar" class="a1ring-lab a1ring-stlab" x="1000" y="900">Arkansas</text>
+
+      <path id="a1ring-city" d="@@CITY_D@@"/>
+      <path id="a1ring-ring" d="M720,164 A396,396 0 1 1 720,956 A396,396 0 1 1 720,164"/>
+      <line id="a1ring-rad" x1="720" y1="560" x2="1000" y2="280"/>
+
+      <g id="a1ring-dg0"></g><g id="a1ring-dg1"></g><g id="a1ring-dg2"></g><g id="a1ring-dg3"></g><g id="a1ring-dg4"></g><g id="a1ring-dg5"></g>
+      <circle id="a1ring-d71" cx="720" cy="560" r="5"/>
+
+      <text id="a1ring-joplin" class="a1ring-lab" x="702" y="622">Joplin</text>
+      <text id="a1ring-may" class="a1ring-lab" x="758" y="552">May 5, 1971</text>
+      <text id="a1ring-rlab" class="a1ring-lab" text-anchor="end" x="843" y="403">80 miles</text>
+    </g>
+  </svg>
+
+  <svg class="a1ring-svg" viewBox="0 0 1920 1080">
+    <text id="a1ring-eb" class="a1ring-lab" x="120" y="110">EF2 or stronger · since 1950</text>
+    <text id="a1ring-src" class="a1ring-lab" x="96" y="1010">NIST Finding 33 · dot positions illustrative</text>
+  </svg>
+
+  <div id="a1ring-chip1" class="a1ring-chip"><span><b>1</b> IN THE CITY</span></div>
+  <div id="a1ring-chip2" class="a1ring-chip"><span><b>182</b> WITHIN 80 MILES</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a1ring-";
+  const NS = "http://www.w3.org/2000/svg";
+
+  /* 181 dots, shuffled with seed 1971 = pop order; dot i joins twinkle group i % 6 */
+  const DOTS = @@DOTS@@;
+  const dotEls = DOTS.map(function(p, i) {
+    const c = document.createElementNS(NS, "circle");
+    c.setAttribute("id", "a1ring-d" + String(i).padStart(3, "0"));
+    c.setAttribute("class", "a1ring-dot");
+    c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); c.setAttribute("r", 4);
+    document.getElementById("a1ring-dg" + (i % 6)).appendChild(c);
+    return c;
+  });
+
+  const ring = document.getElementById("a1ring-ring");
+  const rad = document.getElementById("a1ring-rad");
+  const RL = Math.ceil(ring.getTotalLength()) + 1;
+  const LL = Math.ceil(rad.getTotalLength()) + 1;
+  tl.set(ring, { strokeDasharray: RL, strokeDashoffset: RL }, 0);
+  tl.set(rad, { strokeDasharray: LL, strokeDashoffset: LL }, 0);
+
+  /* map drift, 6 px/s right to left, frame 0 to the host end 11.1 */
+  tl.to(Q+"map", { x: -66.6, duration: 11.1, ease: "none" }, 0);
+
+  /* EYEBROW "1950," a1-s10 8.94; source line follows it */
+  tl.fromTo(Q+"eb", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.18);
+  tl.fromTo(Q+"src", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.35);
+
+  /* CITY a1-s10 9.98: outline brightens, stroke 3 px, fill 18 % */
+  tl.to(Q+"city", { strokeWidth: 3, fillOpacity: 0.18, duration: 0.5, ease: "power2.out" }, 1.22);
+
+  /* ONE a1-s10 11.28: city dot drops; TORNADO 11.76: its label */
+  tl.fromTo(Q+"d71", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(1.7)" }, 2.52);
+  tl.fromTo(Q+"may", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 3.0);
+
+  /* STRONGER. a1-s10 13.76: chip 1 */
+  tl.fromTo(Q+"chip1", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 5.0);
+
+  /* WITHIN a1-s10 14.86 to MILES 15.44: ring draws clockwise from 12 o'clock */
+  tl.set(ring, { autoAlpha: 1 }, 6.1);
+  tl.fromTo(ring, { strokeDashoffset: RL }, { strokeDashoffset: 0, duration: 0.58, ease: "power1.inOut" }, 6.1);
+
+  /* 80 a1-s10 15.10: radius line and its label */
+  tl.set(rad, { autoAlpha: 1 }, 6.34);
+  tl.fromTo(rad, { strokeDashoffset: LL }, { strokeDashoffset: 0, duration: 0.4, ease: "power1.out" }, 6.34);
+  tl.fromTo(Q+"rlab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 6.34);
+
+  /* 182 a1-s10 16.92 to OF 17.74: 181 dots pop, 0.0038 s apart, last one starts 8.848 and lands by 8.98 */
+  dotEls.forEach(function(c, i) {
+    const o = DOTS[i][0] + " " + DOTS[i][1];
+    tl.fromTo(c, { autoAlpha: 0, scale: 0, svgOrigin: o }, { autoAlpha: 1, scale: 1, svgOrigin: o, duration: 0.13, ease: "back.out(2)" }, 8.16 + i * 0.0038);
+  });
+
+  /* OF a1-s10 17.74: chip 2 */
+  tl.fromTo(Q+"chip2", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 8.98);
+
+  /* hold to the host end: dots twinkle 1 to 0.75, six groups 0.13 s apart, 4 legs of 0.3 s each */
+  for (let g = 0; g < 6; g++) {
+    tl.to(Q+"dg" + g, { opacity: 0.75, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3 }, 9.1 + g * 0.13);
+  }
+
+  window.__timelines["g-a1-ring"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
