@@ -62,8 +62,6 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const Q = "#a5r-";
 
-  tl.set(Q+"sweep", { x: -240 }, 0);
-
   /* tiles land on "16" a5-s11 0.86, stagger 0.04 s from tile 1 (tile 16 starts 1.46) */
   for (let n = 1; n <= 16; n++) {
     tl.fromTo(Q+"t"+n, { scale: 0.8, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0.86 + (n - 1) * 0.04); /* 16 a5-s11 0.86 */
