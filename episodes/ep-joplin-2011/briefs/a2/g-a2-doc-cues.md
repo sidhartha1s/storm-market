@@ -8,7 +8,8 @@ this comp: (1) the NWS Service Assessment page carrying Finding #2d item (c); (2
 missing, report; never retype a page.
 **Before it:** the live TV clip (FagzNHuI5JI, 4 to 6 s, own audio) opens a2-s10 before the narration; this host starts
 on the narration's first word, after the clip.
-**After it:** g-a2-map-close starts on a2-s10 "second" @15.18; this comp exits from "And" @14.62.
+**After it:** g-a2-map-close's host starts on a2-s10 "And" @14.62 on a lower track, its map ground already up; this
+comp exits over it from "And" @14.62. Ground under the paper card: tokens.md canvas radial gradient.
 **Cue clock:** `segment offset + word start`; offset = a2-s10 narration `data-start` minus host `data-start`.
 Corner circle stays on: nothing enters x >= 1600, y >= 680.
 
