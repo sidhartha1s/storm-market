@@ -242,7 +242,15 @@
   <!-- A2-S4 (335.71-345.47): NIST ground photograph under g-a2-quote-108; it must sit above the countdown (track 3 cutaway). -->
   <!-- g-a2-quote-108: start nx-a2-s4 335.71 + 2.76 "see." = 338.47; end nx-a2-s4 335.71 + 8.14 "went" + 1.0 = 344.85 -->
   <div id="host-a2-quote-108" data-composition-id="g-a2-quote-108" data-composition-src="compositions/g-a2-quote-108.html" data-start="338.47" data-duration="6.38" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- A2-S4 (mounts-intro-a2-v2.html): host-a2-quote-108 338.47-344.85 = 6.38 s, two abutting 3.19 s stills on track 3 over the countdown, split at 341.66.
+       A = NIST Fig 3-115 (credit "NIST NCSTAR 3"), B = USACE debris pile (credit USACE). Punches on 338.47 and 341.66. -->
+  <section class="clip still-wrap" id="c-a2-s4-a" data-start="338.47" data-duration="3.19" data-track-index="3" data-overlap-ok="cutaway over g-a2-countdown (track 2) under g-a2-quote-108"><img id="kb-a2-s4-a" src="media/candidates/a2/a2-s4_c3_nist-fig3-115-house-roof-gone-x4.png" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-s4-b" data-start="341.66" data-duration="3.19" data-track-index="3" data-overlap-ok="cutaway over g-a2-countdown (track 2) under g-a2-quote-108"><img id="kb-a2-s4-b" src="media/candidates/intro/t1-s1_c3_usace-debris-two-houses-x4.png" alt=""></section>
   <!-- A2-S6: optional 3 to 4 s live TV cut (FagzNHuI5JI) on track 3 over g-a2-countdown, a different cut from A1-S9's and A2-S10's. -->
+  <!-- A2-S6 INSERT (owner yes, picks page 17 Oct 26 18:45, A2-S6_ksn): last 4.0 s of the countdown narration, 353.15 + 18.0 - 4.0 = 367.15. KSN / NBC re-upload FagzNHuI5JI,
+       source 329.4-333.4 ("The storm does continue to move off to the east northeast."), the span next to A1-S9's 338.0-347.0 so the cut never repeats it.
+       MUTED, narration runs under it; graded; 2nd use of the file. The 40-minute file must be cut into media/clips before the render. -->
+  <video id="v-a2-s6-ksn" class="graded crop-ksn" src="media/candidates/a1/a1-s9_lead_ksn-broadcast-unvetted.mp4" data-start="367.15" data-duration="4.0" data-media-start="329.4" data-track-index="3" data-overlap-ok="TV cutaway over g-a2-countdown" data-callback="different span of the KSN broadcast used at A1-S9: where the storm was said to be heading" data-still-ok="live broadcast radar map" muted></video>
   <!-- g-a2-lead-time: start nx-a2-s7 371.45 + 0.00 = 371.45; end nx-a2-s7 371.45 + 12.54 "didn't" + 1.0 = 384.99 -->
   <div id="host-a2-lead-time" data-composition-id="g-a2-lead-time" data-composition-src="compositions/g-a2-lead-time.html" data-start="371.45" data-duration="13.54" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A2-S7 tail (384.99-390.71, "Could they at least see the tornado coming?"): picture not named. -->
