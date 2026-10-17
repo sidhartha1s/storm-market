@@ -1,0 +1,217 @@
+<!--
+  g-a1-strip-warnings: a1-s7 + a1-s8, host 210.59 for 38.28 s (run through the seam to 248.87).
+  nx-a1-s7 data-start 210.59 = host start, so a1-s7 words are comp-local as written. nx-a1-s8 data-start 231.21, so a1-s8 words = word time + 20.62.
+  Brief briefs/a1/g-a1-strip-warnings.md. BASE: SIREN STRIP copied from g-a1-strip-sirens in its finished state, at offset 0 (it rises from +170 over 0.00 to 0.60).
+  Tally rows are an outcome count, NOT a time axis: marks 40 px wide, 64 px pitch, left x = 200 + 64 i, band y 670 to 740 (python3, 18 Oct 26).
+  18-row x 200 to 1328 (verified marks 14 to 17, group centre 1212). 12-row x 200 to 944 (verified mark 11, centre 924).
+  Claim: S10 to S13 (NIST Finding 30, Sec. 4.3.4), S8, S28, S40. 74.7 % always printed with "national" and "(NIST)".
+-->
+<template>
+<style>
+  #g-a1-strip-warnings-root { position:absolute; inset:0; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #gsw-content { position:absolute; inset:0; }
+  #gsw-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gsw-row { font:700 26px Arial, sans-serif; letter-spacing:8px; fill:#93a3b2; }
+  .gsw-yr { font:700 26px Arial, sans-serif; letter-spacing:3px; fill:#93a3b2; text-anchor:middle; }
+  .gsw-date { font:700 30px Arial, sans-serif; fill:#f2f5f8; }
+  .gsw-cause { font:700 22px Arial, sans-serif; letter-spacing:3px; fill:#93a3b2; }
+  .gsw-tlab { font:700 26px Arial, sans-serif; letter-spacing:4px; fill:#d8a13a; }
+  .gsw-ver { font:700 22px Arial, sans-serif; letter-spacing:3px; fill:#d8a13a; text-anchor:middle; }
+  .gsw-src { font:700 20px Arial, sans-serif; fill:#c8d3e0; }
+  .gsw-hid { visibility:hidden; }
+  .gsw-hollow { fill:none; stroke:#d8a13a; stroke-width:3; }
+  .gsw-chk { fill:none; stroke:#04070c; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:40; stroke-dashoffset:40; visibility:hidden; }
+  .gsw-fill { fill:#d8a13a; visibility:hidden; }
+  .gsw-chipwrap { position:absolute; left:0; right:0; top:96px; height:70px; display:flex; justify-content:center; }
+  .gsw-chip { box-sizing:border-box; height:70px; padding:0 36px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:none; visibility:hidden;
+    font:900 52px/68px 'Arial Black', Arial, sans-serif; letter-spacing:2px; color:#f2f5f8; white-space:nowrap; }
+  #gsw-namewrap { position:absolute; left:0; right:0; top:521px; height:62px; display:flex; justify-content:center; }
+  #gsw-name { box-sizing:border-box; height:62px; padding:0 36px; border-radius:24px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); visibility:hidden;
+    font:700 30px/60px Arial, sans-serif; color:#f2f5f8; white-space:nowrap; }
+</style>
+<div id="g-a1-strip-warnings-root" data-composition-id="g-a1-strip-warnings" data-width="1920" data-height="1080">
+  <div id="gsw-content">
+  <svg id="gsw-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <!-- rise (GSAP y, +170 to 0) > dim (GSAP opacity) > strip (GSAP float): one transform owner each -->
+    <g id="gsw-rise"><g id="gsw-dim"><g id="gsw-strip">
+      <!-- SIREN STRIP base, finished state, offset 0 -->
+      <text class="gsw-row" x="200" y="214">Joplin's outdoor sirens</text>
+      <line x1="200" y1="440" x2="1720" y2="440" stroke="#93a3b2" stroke-opacity="0.6" stroke-width="2"/>
+      <path d="M200 440V452M544.2 440V452M889.3 440V452M1233.4 440V452M1577.6 440V452" stroke="#93a3b2" stroke-opacity="0.6" stroke-width="1"/>
+      <text class="gsw-yr" x="372.1" y="482">2007</text>
+      <text class="gsw-yr" x="716.7" y="482">2008</text>
+      <text class="gsw-yr" x="1061.4" y="482">2009</text>
+      <text class="gsw-yr" x="1405.5" y="482">2010</text>
+      <text class="gsw-yr" x="1648.8" y="482">2011</text>
+      <path id="gsw-ticks" d="" stroke="#93a3b2" stroke-opacity="0.7" stroke-width="2"/>
+      <line x1="1017" y1="366" x2="1702.6" y2="366" stroke="#e74c3c" stroke-opacity="0.7" stroke-width="3" stroke-dasharray="10 8"/>
+      <g id="gsw-p07"><rect x="213" y="356" width="6" height="88" fill="#e74c3c"/></g>
+      <g id="gsw-p08"><rect x="663.7" y="356" width="6" height="88" fill="#e74c3c"/></g>
+      <g id="gsw-p09"><rect x="1006" y="356" width="6" height="88" fill="#e74c3c"/></g>
+      <g id="gsw-p11"><rect x="1707.6" y="356" width="6" height="88" fill="#e74c3c"/></g>
+      <text class="gsw-date" x="216" y="300">Jan 2007</text>
+      <text class="gsw-cause" x="216" y="334">winds over 70 mph</text>
+      <text class="gsw-date" x="666.7" y="300">May 2008</text>
+      <text class="gsw-cause" x="666.7" y="334">EF1 outside the city</text>
+      <text class="gsw-date" x="1009" y="300">May 2009</text>
+      <text class="gsw-cause" x="1009" y="334">winds over 85 mph</text>
+      <text class="gsw-date" x="1730" y="300" text-anchor="end">May 22, 2011</text>
+    </g></g></g>
+
+    <!-- WARNINGS TALLY: amber, a count with no dates -->
+    <g id="gsw-tally">
+      <text id="gsw-lab18" class="gsw-tlab gsw-hid" x="200" y="640">Tornado warnings for Joplin &#183; 2005 to 2011</text>
+      <text id="gsw-lab12" class="gsw-tlab gsw-hid" x="200" y="640">Tornado warnings &#183; the 5 years before May 22, 2011</text>
+      <text id="gsw-ver18" class="gsw-ver gsw-hid" x="1212" y="660">verified</text>
+      <text id="gsw-ver12" class="gsw-ver gsw-hid" x="924" y="772">verified</text>
+      <!-- 18-row: marks 0 to 13 hollow, 14 to 17 verified (outline + fill + check) -->
+      <g id="gsw-row18">
+        <rect id="gsw-a00" class="gsw-hollow gsw-hid" x="201.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-a01" class="gsw-hollow gsw-hid" x="265.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-a02" class="gsw-hollow gsw-hid" x="329.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-a03" class="gsw-hollow gsw-hid" x="393.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-a04" class="gsw-hollow gsw-hid" x="457.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-a05" class="gsw-hollow gsw-hid" x="521.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-a06" class="gsw-hollow gsw-hid" x="585.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-a07" class="gsw-hollow gsw-hid" x="649.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-a08" class="gsw-hollow gsw-hid" x="713.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-a09" class="gsw-hollow gsw-hid" x="777.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-a10" class="gsw-hollow gsw-hid" x="841.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-a11" class="gsw-hollow gsw-hid" x="905.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-a12" class="gsw-hollow gsw-hid" x="969.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-a13" class="gsw-hollow gsw-hid" x="1033.5" y="671.5" width="37" height="67"/>
+        <g id="gsw-a14" class="gsw-hid"><rect class="gsw-hollow" x="1097.5" y="671.5" width="37" height="67"/><rect class="gsw-fill gsw-fa" x="1096" y="670" width="40" height="70"/><path class="gsw-chk gsw-ca" d="M1106 706L1114 716L1127 694"/></g>
+        <g id="gsw-a15" class="gsw-hid"><rect class="gsw-hollow" x="1161.5" y="671.5" width="37" height="67"/><rect class="gsw-fill gsw-fa" x="1160" y="670" width="40" height="70"/><path class="gsw-chk gsw-ca" d="M1170 706L1178 716L1191 694"/></g>
+        <g id="gsw-a16" class="gsw-hid"><rect class="gsw-hollow" x="1225.5" y="671.5" width="37" height="67"/><rect class="gsw-fill gsw-fa" x="1224" y="670" width="40" height="70"/><path class="gsw-chk gsw-ca" d="M1234 706L1242 716L1255 694"/></g>
+        <g id="gsw-a17" class="gsw-hid"><rect class="gsw-hollow" x="1289.5" y="671.5" width="37" height="67"/><rect class="gsw-fill gsw-fa" x="1288" y="670" width="40" height="70"/><path class="gsw-chk gsw-ca" d="M1298 706L1306 716L1319 694"/></g>
+      </g>
+      <!-- 12-row recount: marks 0 to 10 hollow, 11 verified -->
+      <g id="gsw-row12">
+        <rect id="gsw-b00" class="gsw-hollow gsw-hid" x="201.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-b01" class="gsw-hollow gsw-hid" x="265.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-b02" class="gsw-hollow gsw-hid" x="329.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-b03" class="gsw-hollow gsw-hid" x="393.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-b04" class="gsw-hollow gsw-hid" x="457.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-b05" class="gsw-hollow gsw-hid" x="521.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-b06" class="gsw-hollow gsw-hid" x="585.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-b07" class="gsw-hollow gsw-hid" x="649.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-b08" class="gsw-hollow gsw-hid" x="713.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-b09" class="gsw-hollow gsw-hid" x="777.5" y="671.5" width="37" height="67"/>
+        <rect id="gsw-b10" class="gsw-hollow gsw-hid" x="841.5" y="671.5" width="37" height="67"/>
+        <g id="gsw-b11" class="gsw-hid"><rect class="gsw-hollow" x="905.5" y="671.5" width="37" height="67"/><rect id="gsw-fb" class="gsw-fill" x="904" y="670" width="40" height="70"/><path id="gsw-cb" class="gsw-chk" d="M914 706L922 716L935 694"/></g>
+      </g>
+    </g>
+
+    <text id="gsw-src1" class="gsw-src gsw-hid" x="96" y="1010">NIST Finding 30</text>
+    <text id="gsw-src2" class="gsw-src gsw-hid" x="96" y="1010">NIST Finding 30 &#183; national 2007 to 2011 average 74.7% (NIST)</text>
+    <text id="gsw-src3" class="gsw-src gsw-hid" x="96" y="1010">NIST Sec. 4.3.4</text>
+    <text id="gsw-src4" class="gsw-src gsw-hid" x="96" y="1010">NIST Finding 44 &#183; Sec. 4.7.3</text>
+  </svg>
+  <div class="gsw-chipwrap"><div class="gsw-chip" id="gsw-chip1">14 OF 18 &#183; NO TORNADO</div></div>
+  <div class="gsw-chipwrap"><div class="gsw-chip" id="gsw-chip2">11 OF 12</div></div>
+  <div class="gsw-chipwrap"><div class="gsw-chip" id="gsw-chip3">TWO DIFFERENT COUNTS</div></div>
+  <div id="gsw-namewrap"><div id="gsw-name">Joplin-Jasper County emergency manager</div></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const P = "#gsw-";
+  /* siren ticks: every Monday from 1 Jan 2007 to 16 May 2011, x = 200 + days x 1520/1612 (same rule as g-a1-strip-sirens) */
+  const D0 = Date.UTC(2007, 0, 1), LAST = Date.UTC(2011, 4, 16), DAY = 86400000, K = 1520 / 1612;
+  let d = "", n = 0;
+  for (let t = D0; t <= LAST; t += 7 * DAY) { d += "M" + (200 + (t - D0) / DAY * K).toFixed(2) + " 380V420"; n++; }
+  if (n !== 229) throw new Error("g-a1-strip-warnings: " + n + " ticks, brief says 229");
+  document.querySelector(P + "ticks").setAttribute("d", d);
+
+  const ids = (c, k) => Array.from({ length: k }, (_, i) => P + c + String(i).padStart(2, "0"));
+  const A = ids("a", 18), B = ids("b", 12);
+  const aHollow = A.slice(0, 14), aVer = A.slice(14), bHollow = B.slice(0, 11), bVer = P + "b11";
+  const cx = i => 200 + 64 * i + 20;              /* mark centre x */
+  const orA = i => cx(i) + " 740", orB = i => cx(i) + " 740";   /* rise origin = mark bottom */
+  const fillA = aVer.map(s => s + " .gsw-fa"), chkA = aVer.map(s => s + " .gsw-ca");
+  const FILL_OR = i => cx(14 + i) + " 740";
+  const T = 38.28;
+
+  const tl = gsap.timeline({ paused: true });
+  /* start state */
+  tl.set(P + "rise", { y: 170 }, 0);
+  tl.set([...A, ...B], { scaleY: 0, svgOrigin: i => "0 740" }, 0);
+  tl.set(fillA, { scaleY: 0 }, 0);
+
+  /* FRAME 0: siren strip rises +170 to 0 (0.00 to 0.60); float on both rows runs to the host end (3 px, about 4 s a cycle) */
+  tl.to(P + "rise", { y: 0, duration: 0.6, ease: "power2.out" }, 0);
+  const half = (T - 0.6) / 19;
+  tl.to([P + "strip", P + "tally"], { y: -3, duration: half, ease: "sine.inOut", yoyo: true, repeat: 18 }, 0.6);
+
+  /* FROM a1-s7 2.64: warnings row label */
+  tl.fromTo(P + "lab18", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.64);
+
+  /* 18 a1-s7 6.16: 18 marks build left to right, 0.03 s stagger; source line 1; siren strip dims to 85 % */
+  tl.fromTo(A, { scaleY: 0, autoAlpha: 0, svgOrigin: (i) => orA(i) }, { scaleY: 1, autoAlpha: 1, svgOrigin: (i) => orA(i), duration: 0.3, ease: "back.out(1.4)", stagger: 0.03 }, 6.16);
+  tl.fromTo(P + "src1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.16);
+  tl.to(P + "dim", { opacity: 0.85, duration: 0.4, ease: "power2.out" }, 6.16);
+
+  /* FOURTEEN a1-s7 7.80: 4 verified fill from the bottom 0.4 s, checks draw after; "verified" label */
+  tl.fromTo(fillA, { scaleY: 0, autoAlpha: 0, svgOrigin: (i) => FILL_OR(i) }, { scaleY: 1, autoAlpha: 1, svgOrigin: (i) => FILL_OR(i), duration: 0.4, ease: "power2.out" }, 7.8);
+  tl.fromTo(chkA, { autoAlpha: 0, strokeDashoffset: 40 }, { autoAlpha: 1, strokeDashoffset: 0, duration: 0.3, ease: "power2.out", stagger: 0.05 }, 8.1);
+  tl.fromTo(P + "ver18", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.8);
+
+  /* CONFIRMED. a1-s7 9.88: 14 unverified dim to 55 %; chip 14 OF 18 */
+  tl.to(aHollow, { opacity: 0.55, duration: 0.4, ease: "power2.out" }, 9.88);
+  tl.fromTo(P + "chip1", { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.88);
+
+  /* NATIONAL a1-s7 11.62: source line 2 replaces 1 (out 0.2 s before, in on the word) */
+  tl.to(P + "src1", { autoAlpha: 0, y: -10, duration: 0.2, ease: "power3.in" }, 11.42);
+  tl.fromTo(P + "src2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.62);
+
+  /* IN a1-s7 13.00: 18-row folds right to left (13.00 to 13.32, done before the 12-row starts), label out, "verified" out */
+  tl.to(A, { scaleY: 0, autoAlpha: 0, duration: 0.14, ease: "power2.in", stagger: { each: 0.0106, from: "end" } }, 13.0);
+  tl.to([P + "lab18", P + "ver18"], { autoAlpha: 0, y: -10, duration: 0.25, ease: "power3.in" }, 13.0);
+  /* FIVE a1-s7 13.32: recount label, 12 marks build, 0.03 s stagger */
+  tl.fromTo(P + "lab12", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 13.32);
+  tl.fromTo(B, { scaleY: 0, autoAlpha: 0, svgOrigin: (i) => orB(i) }, { scaleY: 1, autoAlpha: 1, svgOrigin: (i) => orB(i), duration: 0.3, ease: "back.out(1.4)", stagger: 0.03 }, 13.32);
+
+  /* 11 a1-s7 15.34: mark 11 fills + check, 11 dim to 55 %, "verified" under it */
+  tl.fromTo(P + "fb", { scaleY: 0, autoAlpha: 0, svgOrigin: "924 740" }, { scaleY: 1, autoAlpha: 1, svgOrigin: "924 740", duration: 0.4, ease: "power2.out" }, 15.34);
+  tl.fromTo(P + "cb", { autoAlpha: 0, strokeDashoffset: 40 }, { autoAlpha: 1, strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 15.64);
+  tl.to(bHollow, { opacity: 0.55, duration: 0.4, ease: "power2.out" }, 15.34);
+  tl.fromTo(P + "ver12", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 15.34);
+
+  /* 12. a1-s7 16.34: chip 11 OF 12 replaces chip 1 (chip 1 out 0.25 s before so the new one lands on the word) */
+  tl.to(P + "chip1", { autoAlpha: 0, y: -24, duration: 0.25, ease: "power3.in" }, 16.09);
+  tl.fromTo(P + "chip2", { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 16.34);
+
+  /* SIRENS a1-s7 19.08: both rows at full brightness (siren strip 85 to 100 %, the 11 hollow marks 55 to 100 %) */
+  tl.to(P + "dim", { opacity: 1, duration: 0.4, ease: "power2.out" }, 19.08);
+  tl.to(bHollow, { opacity: 1, duration: 0.4, ease: "power2.out" }, 19.08);
+
+  /* a1-s8 starts at 20.62. EMERGENCY a1-s8 1.00 = 21.62: name card in, source line 3 replaces 2 */
+  tl.fromTo(P + "name", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 21.62);
+  tl.to(P + "src2", { autoAlpha: 0, y: -10, duration: 0.2, ease: "power3.in" }, 21.42);
+  tl.fromTo(P + "src3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 21.62);
+
+  /* SAME a1-s8 6.72 = 27.34: chip TWO DIFFERENT COUNTS replaces chip 2 */
+  tl.to(P + "chip2", { autoAlpha: 0, y: -24, duration: 0.25, ease: "power3.in" }, 27.09);
+  tl.fromTo(P + "chip3", { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 27.34);
+
+  /* BOTH a1-s8 8.46 = 29.08: both rows pulse once, marks 1 > 1.12 > 1 over 0.5 s (siren red marks + the 12 recount marks) */
+  tl.to([P + "p07", P + "p08", P + "p09", P + "p11"], { scale: 1.12, svgOrigin: (i) => ["216 400", "666.7 400", "1009 400", "1710.6 400"][i], duration: 0.25, ease: "power2.inOut", yoyo: true, repeat: 1 }, 29.08);
+  tl.to(B, { scale: 1.12, svgOrigin: (i) => cx(i) + " 705", duration: 0.25, ease: "power2.inOut", yoyo: true, repeat: 1 }, 29.08);
+
+  /* AND a1-s8 10.80 = 31.42: name card out. INVESTIGATORS a1-s8 11.10 = 31.72: source line 4 replaces 3 */
+  tl.to(P + "name", { autoAlpha: 0, y: 24, duration: 0.4, ease: "power3.in" }, 31.42);
+  tl.to(P + "src3", { autoAlpha: 0, y: -10, duration: 0.2, ease: "power3.in" }, 31.52);
+  tl.fromTo(P + "src4", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 31.72);
+
+  /* EXIT: a1-s8 wav ends 37.98; the last 0.6 s fades everything through to the ground (next comp is a full-frame cite card) */
+  tl.to(P + "content", { opacity: 0, duration: 0.6, ease: "power2.in" }, 37.68);
+  window.__timelines["g-a1-strip-warnings"] = tl;
+})();
+</script>
+</template>
