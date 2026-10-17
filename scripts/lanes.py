@@ -11,7 +11,7 @@ which jobs were launched and when they ended, and which are held.
 
   python3 scripts/lanes.py claim  episodes/<slug>            # this Claude session orchestrates the episode
   python3 scripts/lanes.py start  episodes/<slug> verify:a4 brief:a4 [--host zbook] [--minutes 60]   # records lanes run elsewhere
-  python3 scripts/lanes.py start  episodes/<slug> brief:a4 --host zbook --cmd "type b.md | {cli} -p --model opus" --log <path on that host> [--profile claude2]
+  python3 scripts/lanes.py start  episodes/<slug> brief:a4 --host zbook --cmd "type b.md | {cli} -p --model opus" --log <path on zbook> --cwd <zbook checkout> [--profile claude2]
   python3 scripts/lanes.py end    episodes/<slug> verify:a4   # the lane stopped (its output may still need syncing back)
   python3 scripts/lanes.py hold   episodes/<slug> source:z1|all --reason "z1 media sits in the a6 folder"
   python3 scripts/lanes.py unhold episodes/<slug> source:z1
@@ -19,7 +19,8 @@ which jobs were launched and when they ended, and which are held.
 
 Launching (why: lanes sat dead for hours on an exhausted profile or a full ZBook). `start --cmd` runs one job's command
 itself, hidden and detached, on host local or zbook, with {cli} replaced by the profile (claudeN, the wrapper that sets
-CLAUDE_CONFIG_DIR) and all output sent to --log. The three rules:
+CLAUDE_CONFIG_DIR), started in --cwd (default: this checkout; required on zbook) and all output sent to --log.
+It refuses a job already RUNNING or DONE. The three rules:
   1. it first probes the profile (`claude -p ok --model haiku` under its CLAUDE_CONFIG_DIR); on a limit, an is_error
      reply or a logged-out profile it probes the next ~/.claude-accounts/claude* profile. It never waits for a reset.
   2. every start refuses while the host has MIN_FREE_GB or less free, or MAX_LANES lanes are already RUNNING
@@ -83,7 +84,8 @@ def quote(s):
 def probe(host, profile):
     """Rule 1: True only if the profile answers; a limit, an is_error reply, a logged-out profile or an error is False."""
     code, out = ps(host, f'$env:CLAUDE_CONFIG_DIR = "$HOME\\.claude-accounts\\{profile}"; '
-                         '& "$HOME\\.local\\bin\\claude.exe" -p ok --model haiku --output-format json')
+                         '& "$HOME\\.local\\bin\\claude.exe" -p ok --model haiku --output-format json',
+                   timeout=30)  # the Stop hook gives status 120 s, and a relaunch may probe several profiles
     return code == 0 and '"is_error":false' in out.replace(" ", "") and not LIMIT.search(out)
 
 
@@ -95,13 +97,13 @@ def free_gb(host):
         sys.exit(f"[lanes] FAIL: cannot read free memory on {host}: {out.strip()[-200:]}")
 
 
-def spawn(host, cmd, log):
-    """Start cmd on host hidden, as a WMI process (it outlives this call and the ssh session), output to log."""
+def spawn(host, cmd, log, cwd):
+    """Start cmd in cwd on host hidden, as a WMI process (it outlives this call and the ssh session), output to log."""
     # shortcut: an unquoted ")" in cmd closes the ( ) group early; quote it ("Bash(rm:*)"), as every claude flag is
     line = f'cmd /s /c "({cmd}) > "{log}" 2>&1"'
     code, out = ps(host, "$si = New-CimInstance -ClassName Win32_ProcessStartup -ClientOnly -Property @{ShowWindow=[uint16]0}; "
                          "(Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments "
-                         f"@{{CommandLine={quote(line)}; ProcessStartupInformation=$si}}).ReturnValue")
+                         f"@{{CommandLine={quote(line)}; CurrentDirectory={quote(cwd)}; ProcessStartupInformation=$si}}).ReturnValue")
     if code != 0 or out.strip() != "0":
         sys.exit(f"[lanes] FAIL: launch on {host} failed: {out.strip()[-300:]}")
 
@@ -132,7 +134,7 @@ def launch(run, order):
     """Rule 1: run the lane on the first profile in order that answers; its ledger entry, or None if none answers."""
     for p in order:
         if probe(run["host"], p):
-            spawn(run["host"], run["cmd"].replace("{cli}", p), run["log"])
+            spawn(run["host"], run["cmd"].replace("{cli}", p), run["log"], run["cwd"])
             return dict(run, profile=p)
     return None
 
@@ -242,6 +244,7 @@ def main(argv=None):
     ap.add_argument("--cmd", dest="lane_cmd", help="start: the lane's command, {cli} where the profile goes")
     ap.add_argument("--log", help="start --cmd: the lane's log path on its host")
     ap.add_argument("--profile", help="start --cmd: the profile to try first")
+    ap.add_argument("--cwd", help="start --cmd: the lane's working folder on its host (default: this checkout, local only)")
     ap.add_argument("--minutes", type=int, default=DEFAULT_MIN)
     ap.add_argument("--reason", default="")
     ap.add_argument("--session", default=os.environ.get("CLAUDE_CODE_SESSION_ID"))
@@ -298,15 +301,19 @@ def main(argv=None):
             sys.exit(f"[lanes] FAIL: unknown job(s) {unknown}; `status` lists the real names")
         if a.cmd == "hold" and not a.reason.strip():
             sys.exit("[lanes] FAIL: hold needs --reason; it shows in every status")
-        if a.lane_cmd and (a.cmd != "start" or len(a.jobs) != 1 or not a.log or "{cli}" not in a.lane_cmd):
-            sys.exit("[lanes] FAIL: --cmd is for start with one job, a --log, and {cli} where the profile goes")
+        if a.lane_cmd and (a.cmd != "start" or len(a.jobs) != 1 or not a.log or "{cli}" not in a.lane_cmd
+                           or not (a.cwd or a.host == "local")):
+            sys.exit("[lanes] FAIL: --cmd is for start with one job, a --log, {cli} where the profile goes, and --cwd off local")
+        busy = [s["job"] for s in states if s["job"] in a.jobs and s["state"] in ("RUNNING", "DONE")]
+        if a.lane_cmd and busy:
+            sys.exit(f"[lanes] FAIL: {busy[0]} is already RUNNING or DONE; a second launch would double it")
         if a.cmd == "start":
             why = gate(states, a.host)
             if why:
                 sys.exit(f"[lanes] FAIL: not starting: {why}")
             run = {"started": now, "host": a.host, "minutes": a.minutes}
             if a.lane_cmd:
-                run = launch(dict(run, cmd=a.lane_cmd, log=a.log), profile_order(a.profile))
+                run = launch(dict(run, cmd=a.lane_cmd, log=a.log, cwd=a.cwd or str(SCRIPTS.parent)), profile_order(a.profile))
                 if not run:
                     sys.exit(f"[lanes] FAIL: no profile in {ACCOUNTS} answers on {a.host}")
     if a.cmd == "claim":
