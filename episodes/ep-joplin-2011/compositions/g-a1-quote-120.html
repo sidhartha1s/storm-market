@@ -1,0 +1,64 @@
+<!--
+  g-a1-quote-120: a1-s2, host 140.85 for 10.26 s (a1-s2 0.00 to "Three" 10.26). Brief briefs/a1/g-a1-quote-120.md.
+  Overlay: glass quote card over the NOAA NGS aerial of the 26th St site (24 May 2011 flight, public domain; mounted in index.html, not here).
+  Host starts at the segment start, so every cue below is the a1-s2.words.json time unchanged.
+  Quote verbatim from S24 (NIST NCSTAR 3, Sec. 4.4.3, Interview 120), split at the commas only; no pronoun for the actor.
+  Card: left 200, right 1560 (width 1360), top 500, padding 44, height from content (about 400, bottom under 940); clear of x >= 1600, y >= 680.
+-->
+<template>
+<style>
+  #quote120-root { position:absolute; inset:0; overflow:hidden; }
+  #quote120-card { position:absolute; inset:auto; left:200px; top:500px; width:1360px; box-sizing:border-box; padding:44px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:28px; box-shadow:none; visibility:hidden; }
+  #quote120-eyebrow { display:block; margin-bottom:22px; font:700 22px/26px Arial, sans-serif; letter-spacing:6px; color:#93a3b2;
+    white-space:nowrap; visibility:hidden; }
+  .quote120-line { display:block; font-family:Georgia, 'Times New Roman', serif; font-style:italic; color:#f2f5f8;
+    line-height:1.25; white-space:nowrap; visibility:hidden; }
+  #quote120-l1, #quote120-l2, #quote120-l4 { font-size:38px; }
+  #quote120-l3 { font-size:56px; color:#d8a13a; }
+  #quote120-attr { display:block; margin-top:24px; font:italic 26px/1.2 Georgia, 'Times New Roman', serif; color:#d8a13a;
+    white-space:nowrap; visibility:hidden; }
+</style>
+<div id="quote120-root" data-composition-id="g-a1-quote-120" data-width="1920" data-height="1080">
+  <div id="quote120-card">
+    <span id="quote120-eyebrow">Stained Glass Theater</span>
+    <span class="quote120-line" id="quote120-l1">&ldquo;I didn't put much stock in that siren,</span>
+    <span class="quote120-line" id="quote120-l2">because I'd heard them before,</span>
+    <span class="quote120-line" id="quote120-l3">and 9 times out of 10,</span>
+    <span class="quote120-line" id="quote120-l4">you hear the sirens but nothing really happens&rdquo;</span>
+    <span id="quote120-attr">an actor in the play &middot; NIST Interview 120</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#quote120-";
+  const row = (id, at) => tl.fromTo(P+id, {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, at);
+  tl.set(P+"l3", {scale:1, transformOrigin:"0% 50%"}, 0);
+  /* ONE a1-s2 0.00: card in */
+  tl.fromTo(P+"card", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.7, ease:"power3.out"}, 0);
+  /* STAINED a1-s2 1.28 */
+  row("eyebrow", 1.28);
+  /* DIDN'T a1-s2 2.16 */
+  row("l1", 2.16);
+  /* IN a1-s2 4.42 (unspoken: lands as the voice turns to the quote) */
+  row("l2", 4.42);
+  /* ACTOR'S a1-s2 4.70 */
+  row("attr", 4.70);
+  /* NINE a1-s2 6.02: the emphasis line lands with a 1.0 > 1.04 > 1.0 tick */
+  row("l3", 6.02);
+  tl.to(P+"l3", {scale:1.04, duration:0.2, ease:"power2.out", yoyo:true, repeat:1}, 6.02);
+  /* YOU a1-s2 7.30 */
+  row("l4", 7.30);
+  /* HAPPENS a1-s2 8.84 to 9.66: hold, card floats */
+  tl.to(P+"card", {y:-3, duration:0.2, ease:"sine.inOut"}, 8.84);
+  tl.to(P+"card", {y:3, duration:0.42, ease:"sine.inOut"}, 9.04);
+  tl.to(P+"card", {y:0, duration:0.2, ease:"sine.inOut"}, 9.46);
+  /* THREE a1-s2 10.26: cut to g-a1-theater-map; card slides out 9.66 to 10.26 */
+  tl.to(P+"card", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 9.66);
+  window.__timelines["g-a1-quote-120"] = tl;
+})();
+</script>
+</template>
