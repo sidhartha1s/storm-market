@@ -97,73 +97,37 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  const ID = "g-intro-map", P = "#g-intro-map-", M = "#a4h-";
-  const S3 = 6.26; /* nx-t1-s3 33.79 - host 27.53 */
-  const CX = 874.1, CY = 505.7, ORG = CX + " " + CY;
+  const ID = "g-a4-handoff", P = "#a4h-";
+  const WHEN = 5.34, END = 7.8; /* a4-s14 "when" 5.34; host 7.80 */
+  const SJ = "800.55 559.15";   /* St. John's marker centre, base px */
   const tl = gsap.timeline({ paused: true });
   /* camera: the transform attribute of the cam group, tweened as a string (svgOrigin drifts on an already-scaled group) */
   const cam = (tx, ty, s) => ({ attr: { transform: "translate(" + tx + "," + ty + ") scale(" + s + ")" } });
 
-  /* ---- frame 0: ground + grid on; everything else waits hidden (CSS + set) ---- */
+  /* frame 0: city framing, ground on at 0.7 (CSS); the A4 outlines sit dim at 0.85 x the 0.6 marker stroke = 0.51 */
   tl.set(P + "cam", cam(0, 0, 1), 0);
-  tl.set(M + "l-streets", { opacity: 0 }, 0);
 
-  /* map drift through T1-S2: scale 1.00 -> 1.02 about the comp centre, ease none */
-  tl.to(P + "cam", Object.assign(cam(-19.2, -10.8, 1.02), { duration: 5.96, ease: "none" }), 0);
+  /* DRIFT a4-s14 0.00 -> WHEN 5.34: scale 1.00 -> 1.01 about the comp centre (translate (1-s) x (960, 540)), ease none */
+  tl.to(P + "cam", Object.assign(cam(-9.6, -5.4, 1.01), { duration: WHEN, ease: "none" }), 0);
 
-  /* YOU t1-s2 0.00 -> JOPLIN'S 1.22: city outline draws, streets fade in 0.40 to 1.20 */
-  tl.fromTo(M + "city", { strokeDashoffset: 4170 }, { strokeDashoffset: 0, duration: 1.22, ease: "power2.inOut" }, 0);
-  tl.fromTo(M + "city", { attr: { "fill-opacity": 0 } }, { attr: { "fill-opacity": 0.03 }, duration: 0.5, ease: "none" }, 0.9);
-  tl.fromTo(M + "city-rest", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "none" }, 0.9);
-  tl.fromTo(M + "l-streets", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power1.out" }, 0.4);
+  /* WHEN a4-s14 5.34: the A4 outlines go out; St. John's footprint lights (pop 1.8 -> 1, 4 px stroke, .10 fill) */
+  tl.to([P + "place-pizza-hut", P + "place-dillons", P + "place-pizza-hut-mk", P + "place-dillons-mk"],
+    { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, WHEN);
+  tl.fromTo(P + "place-sjrmc", { autoAlpha: 0, scale: 1.8, svgOrigin: SJ },
+    { autoAlpha: 1, scale: 1, svgOrigin: SJ, duration: 0.45, ease: "power3.out" }, WHEN);
 
-  /* pulses: three expanding copies, scale 1.00 -> 1.18, opacity 0.8 -> 0 over 1.2 s, staggered 0.4 s, finite repeats */
-  const pulse = (ring, at, reps) => {
-    /* the copies sit in a CSS-hidden group switched on here: a deferred fromTo renders its from vars (0.8) when seeked back
-       before its start, and the set reverts the group to hidden in both seek orders */
-    tl.set(M + ring + "-pulses", { autoAlpha: 1 }, at);
-    for (let i = 1; i <= 3; i++) {
-      tl.fromTo(M + ring + "-p" + i, { autoAlpha: 0.8, scale: 1, svgOrigin: ORG },
-        { autoAlpha: 0, scale: 1.18, svgOrigin: ORG, duration: 1.2, ease: "power1.out", repeat: reps, immediateRender: false }, at + (i - 1) * 0.4);
-    }
-  };
+  /* RING a4-s14 5.34: amber ring pulses, scale 1.00 -> 2.20, opacity 0.9 -> 0 over 1.2 s, staggered 0.4 s, finite repeats */
+  tl.set(P + "pulses", { autoAlpha: 1 }, WHEN);
+  for (let i = 1; i <= 3; i++) {
+    tl.fromTo(P + "p" + i, { autoAlpha: 0.9, scale: 1, svgOrigin: SJ },
+      { autoAlpha: 0, scale: 2.2, svgOrigin: SJ, duration: 1.2, ease: "power1.out", repeat: 1, immediateRender: false }, WHEN + (i - 1) * 0.4);
+  }
 
-  /* SIRENS t1-s2 2.02: ring A draws 0.4 s, stamp 5:11 PM, pulse starts */
-  tl.fromTo(M + "ring-a-c", { strokeDashoffset: 2640 }, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 2.02);
-  tl.fromTo(P + "stamp-a", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.22);
-  pulse("ring-a", 2.42, 2);
+  /* LABEL a4-s14 5.34 ("when"): ST. JOHN'S slides in from the left, 0.4 s */
+  tl.fromTo(P + "lab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, WHEN);
 
-  /* DIDN'T. t1-s2 4.00: ring B draws, stamp 5:38 PM, pulse starts; source line at +0.2 */
-  tl.fromTo(M + "ring-b-c", { strokeDashoffset: 2791 }, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 4.0);
-  tl.fromTo(P + "stamp-b", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 4.2);
-  pulse("ring-b", 4.4, 1);
-  tl.fromTo(P + "src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 4.2);
-
-  /* THEY t1-s2 4.64: chip SOUNDED TWICE (top right: top centre sits under ring A and both rings' pulses) */
-  tl.fromTo(P + "chip", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.64);
-
-  /* TWICE. t1-s2 5.02: both rings flash, stroke 4 -> 8 -> 4 px over 0.4 s */
-  tl.fromTo([M + "ring-a-c", M + "ring-b-c"], { attr: { "stroke-width": 4 } },
-    { attr: { "stroke-width": 8 }, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 5.02);
-
-  /* THEN, t1-s3 0.00: chip, stamps, source out 0.4 s; rings fade 0.6 s; below-ground line draws L to R 0.8 s, label rises */
-  tl.to(P + "chip", { x: 600, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, S3);
-  tl.to([P + "stamp-a", P + "stamp-b", P + "src"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, S3);
-  tl.to([M + "ring-a", M + "ring-b"], { opacity: 0, duration: 0.6, ease: "power2.out" }, S3); /* out-eased: mostly gone before the line reaches the rings */
-  tl.fromTo(M + "below", { strokeDashoffset: 1301 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, S3);
-  tl.fromTo(M + "below-lab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, S3 + 0.35);
-
-  /* WHY t1-s3 3.14 - 0.15: line label out before the push starts (no text rides the push) */
-  tl.to(M + "below-lab", { autoAlpha: 0, duration: 0.15, ease: "none" }, S3 + 2.99);
-
-  /* WHY 3.14 -> 4.30: push onto the line, scale 1.3292 (1728/1300), line centre (850, 880) -> (960, 540): line spans x 96 to 1824 */
-  tl.to(P + "cam", Object.assign(cam(-169.85, -629.72, 1.329231), { duration: 1.16, ease: "power2.inOut" }), S3 + 3.14);
-
-  /* BASEMENT? t1-s3 4.40: HUD label in (fixed layer, enters after the push settles) */
-  tl.fromTo(P + "hud", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, S3 + 4.4);
-
-  /* hold to the host end: scale creeps 1.3292 -> 1.345 about the line centre, ease none; cut to CLIP 1 on the host end */
-  tl.to(P + "cam", Object.assign(cam(-183.25, -643.6, 1.345), { duration: 11.8 - (S3 + 4.3), ease: "none" }), S3 + 4.3);
+  /* PUSH a4-s14 5.34 -> host end 7.80 (past "sirens." 6.88, cut to the blackout while it still moves): linear 1.01 -> 1.40, St. John's pinned */
+  tl.to(P + "cam", Object.assign(cam(-321.81, -223.47, 1.4), { duration: END - WHEN, ease: "none" }), WHEN);
 
   window.__timelines[ID] = tl;
 })();
