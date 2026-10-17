@@ -97,6 +97,7 @@ def free_gb(host):
 
 def spawn(host, cmd, log):
     """Start cmd on host hidden, as a WMI process (it outlives this call and the ssh session), output to log."""
+    # shortcut: an unquoted ")" in cmd closes the ( ) group early; quote it ("Bash(rm:*)"), as every claude flag is
     line = f'cmd /s /c "({cmd}) > "{log}" 2>&1"'
     code, out = ps(host, "$si = New-CimInstance -ClassName Win32_ProcessStartup -ClientOnly -Property @{ShowWindow=[uint16]0}; "
                          "(Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments "
