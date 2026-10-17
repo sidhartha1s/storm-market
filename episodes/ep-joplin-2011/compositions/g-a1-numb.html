@@ -74,7 +74,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(Q+"r3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 1.14);
   /* card float y +-4 px, 4 s sine period, finite: 0.60 to 17.60 */
   tl.to(Q+"card", { y: 4, duration: 1, ease: "sine.inOut" }, 0.6);
-  tl.fromTo(Q+"card", { y: 4 }, { y: -4, duration: 2, ease: "sine.inOut", yoyo: true, repeat: 7 }, 1.6);
+  tl.fromTo(Q+"card", { y: 4 }, { y: -4, duration: 2, ease: "sine.inOut", yoyo: true, repeat: 7, immediateRender: false }, 1.6);
 
   /* page + source line in on "A" a1-s3 4.80 */
   tl.fromTo(Q+"page", { x: 60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 4.8);
