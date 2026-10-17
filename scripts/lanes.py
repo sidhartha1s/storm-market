@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Episode job ledger: which jobs are DONE, RUNNING, BLOCKED, HELD, or READY to launch right now.
+"""Episode job ledger: which jobs are DONE, RUNNING, FAILED, BLOCKED, HELD, or READY to launch right now.
 
 Why: the orchestrator ran episode jobs one after another and waited, while other jobs had every input on disk.
 The Stop hook `~/.claude/hooks/lane-gate.py` runs `status --json` for every episode this session claimed and
@@ -73,7 +73,7 @@ def ps(host, script, timeout=90):
                            stdin=subprocess.DEVNULL, timeout=timeout)
     except subprocess.TimeoutExpired:
         return 124, f"timed out after {timeout}s"
-    return r.returncode, r.stdout + r.stderr
+    return r.returncode, r.stdout if r.returncode == 0 else r.stdout + r.stderr  # stderr carries CLIXML progress noise
 
 
 def quote(s):
