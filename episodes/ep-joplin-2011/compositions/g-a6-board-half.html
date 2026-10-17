@@ -17,6 +17,9 @@
   .bh-tile { position:absolute; box-sizing:border-box; width:180px; height:120px; border-radius:14px; background:#2a3644; border:1px solid #4a5560; }
   .bh-n { position:absolute; inset:auto; left:16px; top:16px; font-family:Arial,sans-serif; font-weight:700; font-size:30px; line-height:34px; color:#93a3b2; }
 
+  /* numerals of tiles 8, 11, 12 sit under the opaque lifted tile (box x 744 to 1176, y 356 to 644); hidden so the sub-rows never share pixels with them */
+  #bh-t8 .bh-n, #bh-t11 .bh-n, #bh-t12 .bh-n { visibility:hidden; }
+
   /* lifted tile 7: box x 744 to 1176, y 356 to 644 */
   #bh-lift { position:absolute; inset:0; }
   #bh-t7 { position:absolute; inset:auto; left:744px; top:356px; width:432px; height:288px; border-radius:34px; background:#2a3644; }
