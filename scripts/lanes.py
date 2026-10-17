@@ -27,8 +27,10 @@ It refuses a job already RUNNING or DONE. The three rules:
      ~/.claude-accounts/claude* profile. It never waits for a reset.
   2. every start refuses while the host has MIN_FREE_GB or less free, or MAX_LANES lanes are already RUNNING
   3. a running lane whose log tail says it hit a limit is FAILED (blocking). `status` only reports it, since the Stop
-     hook calls status; `relaunch` moves it to the next profile that answers, under <ep>/lanes.json.lock (created
-     exclusively; one older than LOCK_MIN minutes belongs to a dead relaunch and is taken over)
+     hook calls status; `relaunch` moves it to the next profile that answers, and backs off if another lanes.py
+     holds the lock
+Every command but status reads and writes the ledger only while holding <ep>/lanes.json.lock (created exclusively; a
+write waits up to LOCK_WAIT_S for it; one older than LOCK_MIN minutes belongs to a dead holder and is taken over).
 
 Groups: one per segment prefix (a1 = A1-S*), except H1, T1 and I1, which form `intro`. Jobs per group g:
   voice:g   every segment of g is locked (no open [verify] in its heading block) and has audio/<id>.wav, and
@@ -64,7 +66,8 @@ MIN_FREE_GB = 4     # a lane never starts on a host with this much free memory o
 MAX_LANES = 4       # ...or while this many lanes are RUNNING
 ACCOUNTS = Path.home() / ".claude-accounts"
 LIMIT = re.compile(r"hit your (\w+ )?limit|session limit|usage limit reached", re.I)
-LOCK_MIN = 10      # a relaunch lock older than this is a dead holder's
+LOCK_MIN = 10      # a ledger lock older than this is a dead holder's
+LOCK_WAIT_S = 120  # a ledger write waits this long for the lock before it gives up
 
 
 def ps(host, script, timeout=90):
@@ -114,7 +117,8 @@ def spawn(host, cmd, log, cwd):
 
 def read_log(host, log):
     """The last lines of a lane's log ("" before it exists), or None when the host cannot be read."""
-    code, out = ps(host, f"$p = {quote(log)}; if (Test-Path -LiteralPath $p) {{ Get-Content -Tail 5 -LiteralPath $p }}")
+    code, out = ps(host, f"$p = {quote(log)}; if (Test-Path -LiteralPath $p) {{ Get-Content -Tail 5 -LiteralPath $p }}",
+                   timeout=20)  # status runs under the Stop hook's 120 s
     return out if code == 0 else None
 
 
@@ -144,10 +148,19 @@ def take_lock(lock, now):
             try:
                 if now - lock.stat().st_mtime < LOCK_MIN * 60:
                     return False
-                os.remove(lock)  # the holder died without releasing it
+                dead = lock.with_name(f"{lock.name}.{os.getpid()}.stale")
+                os.replace(lock, dead)  # the holder died: only one taker wins this rename, so two never both hold it
+                os.remove(dead)
             except FileNotFoundError:
-                pass  # its holder released it meanwhile: try again
+                pass  # its holder released it, or another taker won the rename: try again
     return False
+
+
+def release(lock):
+    try:
+        os.remove(lock)
+    except FileNotFoundError:
+        pass  # a run past LOCK_MIN was taken over; the taker owns the lock now
 
 
 def launch(run, order):
@@ -273,34 +286,9 @@ def main(argv=None):
     ep = Path(a.episode).resolve()
     if not (ep / "edit_script.md").exists():
         sys.exit(f"[lanes] FAIL: {ep / 'edit_script.md'} not found")
-    ledger = load_ledger(ep)
-    now = time.time()
-
-    if a.cmd == "relaunch":  # rule 3: a FAILED lane moves to the next profile that answers, never waits for a reset
-        lock = ep / "lanes.json.lock"
-        if not take_lock(lock, now):
-            print(f"[lanes] relaunch {ep.name}: another relaunch holds {lock}; backing off")
-            return 0
-        try:
-            ledger = load_ledger(ep)  # re-read under the lock, so a relaunch that just finished is seen
-            states = job_states(ep, ledger, now)
-            left = 0
-            for s in (s for s in states if s["state"] == "FAILED"):
-                run = ledger["jobs"][s["job"]]
-                why = gate(states, run["host"])
-                new = None if why else launch(dict(run, started=now), profile_order(run.get("profile"), skip=run.get("profile")))
-                if new:
-                    ledger["jobs"][s["job"]] = new
-                    s["state"] = "RUNNING"
-                    save_ledger(ep, ledger)  # saved per lane, so a later failure never forgets a launched one
-                left += not new
-                print(f"[lanes] relaunch {s['job']}: {'on ' + new['profile'] if new else 'not relaunched: ' + (why or 'no other profile answers')}")
-        finally:
-            os.remove(lock)
-        return 2 if left else 0
-
-    if a.cmd == "status":
-        states = job_states(ep, ledger, now)
+    if a.cmd == "status":  # read-only and lock-free: the Stop hook calls it
+        ledger = load_ledger(ep)
+        states = job_states(ep, ledger, time.time())
         if a.json:
             print(json.dumps({"orchestrator": ledger.get("orchestrator"), "jobs": states,
                               "blocking": [f"{s['state']} {s['job']}" + (f" ({s['note']})" if s["note"] else "")
@@ -309,6 +297,41 @@ def main(argv=None):
             for s in states:
                 print(f"{s['state']:8} {s['job']:28} {s['note']}")
         return 2 if any(s["state"] in BLOCKING for s in states) else 0
+
+    lock = ep / "lanes.json.lock"  # every ledger write holds it, so two writers never lose each other's update
+    deadline = time.time() + (0 if a.cmd == "relaunch" else LOCK_WAIT_S)
+    while not take_lock(lock, time.time()):
+        if time.time() >= deadline:
+            if a.cmd == "relaunch":
+                print(f"[lanes] relaunch {ep.name}: another lanes.py holds {lock}; backing off")
+                return 0
+            sys.exit(f"[lanes] FAIL: another lanes.py held {lock} for {LOCK_WAIT_S} s; retry")
+        time.sleep(1)
+    try:
+        return write(a, ep, lock)
+    finally:
+        release(lock)
+
+
+def write(a, ep, lock):
+    """Every command but status, run while holding lock; the ledger is read here, under it."""
+    ledger = load_ledger(ep)
+    now = time.time()
+    if a.cmd == "relaunch":  # rule 3: a FAILED lane moves to the next profile that answers, never waits for a reset
+        states = job_states(ep, ledger, now)
+        left = 0
+        for s in (s for s in states if s["state"] == "FAILED"):
+            run = ledger["jobs"][s["job"]]
+            why = gate(states, run["host"])
+            new = None if why else launch(dict(run, started=now), profile_order(run.get("profile"), skip=run.get("profile")))
+            os.utime(lock)  # still alive: a long relaunch is never taken over
+            if new:
+                ledger["jobs"][s["job"]] = new
+                s["state"] = "RUNNING"
+                save_ledger(ep, ledger)  # saved per lane, so a later failure never forgets a launched one
+            left += not new
+            print(f"[lanes] relaunch {s['job']}: {'on ' + new['profile'] if new else 'not relaunched: ' + (why or 'no other profile answers')}")
+        return 2 if left else 0
 
     if a.cmd == "claim":
         # the Stop hook runs the lanes.py of the episode's own checkout; claiming from another checkout would leave it none
