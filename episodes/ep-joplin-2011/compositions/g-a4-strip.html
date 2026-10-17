@@ -113,7 +113,7 @@ window.__timelines = window.__timelines || {};
   /* store outlines come in dim as the push lands */
   tl.to(P + "l-stores", { autoAlpha: 1, duration: 0.6, ease: "power1.out" }, B - 1.0);
   /* EXPLAIN 2.14: street labels once the camera has settled */
-  tl.fromTo([P + "st-20th", P + "st-rl"], { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.15 }, B + 0.2);
+  tl.fromTo([P + "lab-20th", P + "lab-rl"], { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.15 }, B + 0.2);
   /* MOST a4-s1 3.02: outlines brighten (4 px, .10 fill) */
   tl.to([P + "wal-box", P + "hd-box"], { strokeOpacity: 1, strokeWidth: 4, fillOpacity: 0.10, duration: 0.45, ease: "power2.out" }, LEAD + 3.02);
   /* BIG a4-s1 3.68: Walmart marker + label */
