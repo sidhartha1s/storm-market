@@ -26,11 +26,13 @@ had just come in through the lumber entrance and were walking parallel to the fr
 - Training room: box x 300 to 540, y 200 to 330, against the back wall; label "TRAINING ROOM" (diagram-label tier)
   inside the plan just below it at y 360. Fill amber `#d8a13a` at 0.35 once lit.
 - 35 dots (8 px `#dfe7ee`, seeded positions) inside the training room, 12 px clear of its walls, with a ±3 px float.
-- Back panels by the training room: the back-wall segment x 300 to 540 drawn as 4 panel slabs, each 60 x 14, crimson
-  `#8e2020`. They fall OUTWARD: each `rotation 0 → -90` about its outer edge on the wall line (`svgOrigin` at the slab's
-  wall-line end), so each ends lying above y 200, outside the store, never over the room.
-- Front wall: the bottom-edge segment x 300 to 1220 drawn as panel slabs (60 x 14, a 4 px gap between them). On the cue
-  they fall INWARD, each ending inside the store just above y 800, over the walking path.
+- Panels in plan, same device as `g-a4-walmart`'s slab: a standing panel is its wall line; a fallen panel is a crimson
+  `#8e2020` rectangle (0.7) the panel's schematic height (80 px) long, lying on the side it fell to, grown by
+  `scaleY 0 → 1` from the wall line.
+- Back panels by the training room: 4 panels, each 60 px wide, x 300 to 540. They fall OUTWARD: each rectangle spans
+  y 120 to 200 (`transformOrigin: "bottom"`), outside the store, never over the room.
+- Front wall: 13 panels, 60 px wide with 4 px gaps, from x 300 (13 × 64 − 4 = 828 px, so x 300 to 1128, computed by
+  script). On the cue they fall INWARD: each rectangle spans y 720 to 800 (`transformOrigin: "bottom"`), over the path.
 - Lumber entrance: a 60 px gap marker at the front wall's right end, x 1160 to 1220, label "LUMBER ENTRANCE" below the
   front wall at y 880 (schematic place: no row puts the entrance on a side, §4.4).
 - Walking path: an amber dashed arrow from the entrance gap running left, parallel to the front wall and 40 px inside
