@@ -1,0 +1,115 @@
+<!--
+  g-a2-doc-cues: a2-s10, host 422.75 for 14.62 s (= nx-a2-s10 start, so comp-local time = a2-s10.words.json word start).
+  Brief briefs/a2/g-a2-doc-cues.md. Two sourced PDF renders on a paper card: NWS Assessment Finding 2d (c), then NIST Finding 45.
+  Pages: media/candidates/a2/a2-s10-nwspage_c2_nws-finding2d-crop.png (1529x527), a2-s10-nistpage_c1_nist-finding45-crop-p357.png (1566x353),
+  windowed by CSS (overflow:hidden) to the paragraph; multiply-blended onto the #f4f0e6 stock. Never retyped.
+  Scale 0.90 on both (cap height 23 px in the render = 20.7 px on screen, x-height ~14.5). Padding: NWS 27 x 44, NIST 22.5 x 56.
+  Word boxes (src px, measured by column gaps in the line band; baseline = last row above 40 % ink density):
+    NWS line 7  "non-routine second siren alert"  x 1026 to 1460, baseline 429
+    NIST line 1 "high-intensity cues,"             x 1098 to 1364, baseline 196
+    NIST line 2 "including hearing"                x   69 to  303, baseline 239   | "or seeing the tornado approaching" x 314 to 768 | "or witnessing others' urgency" x 779 to 1175
+  Underline = src box x 0.90 + card padding; top = baseline + 4 px; 0.25 s per 300 px.
+  Push origin x is clamped to frame x 1400 (in-card 1070) so the card's right edge peaks at 1597.6 < 1600 (corner circle).
+  Host ends 14.62 = the "And" cue, so the exit runs 14.02 to 14.62 inside the host window.
+-->
+<template>
+<style>
+  #a2dc-root { position:absolute; inset:0; overflow:hidden; }
+  #a2dc-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .a2dc-page { position:absolute; inset:auto; left:330px; width:1260px; visibility:hidden; }
+  .a2dc-card { position:absolute; inset:auto; left:0; top:0; width:1260px; box-sizing:border-box; background:#f4f0e6;
+    border:1px solid rgba(0,0,0,.25); }
+  .a2dc-win { position:absolute; inset:auto; overflow:hidden; }
+  .a2dc-win img { position:absolute; inset:auto; display:block; mix-blend-mode:multiply; }
+  .a2dc-ul { position:absolute; inset:auto; height:6px; background:#d8a13a; visibility:hidden; }
+  #a2dc-p1 { top:281px; height:517px; }
+  #a2dc-c1 { height:517px; }
+  #a2dc-w1 { left:27px; top:44px; width:1206px; height:429px; }
+  #a2dc-i1 { left:-117px; top:-18px; width:1376.1px; }
+  #a2dc-u1 { left:833.4px; top:416.1px; width:390.6px; }
+  #a2dc-p2 { top:358px; height:364px; }
+  #a2dc-c2 { height:364px; }
+  #a2dc-w2 { left:22.5px; top:56px; width:1215px; height:252px; }
+  #a2dc-i2 { left:-54px; top:-23.4px; width:1409.4px; }
+  #a2dc-u2a { left:956.7px; top:213px; width:239.4px; }
+  #a2dc-u2b { left:30.6px; top:251.7px; width:210.6px; }
+  #a2dc-u2c { left:251.1px; top:251.7px; width:408.6px; }
+  #a2dc-u2d { left:669.6px; top:251.7px; width:356.4px; }
+  #a2dc-chip { position:absolute; inset:auto; left:96px; top:54px; box-sizing:border-box; padding:20px 30px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:28px; visibility:hidden; }
+  #a2dc-chip span { display:block; font:900 52px/60px 'Arial Black', Arial, sans-serif; letter-spacing:2px; color:#f2f5f8; white-space:nowrap; }
+  .a2dc-src { position:absolute; inset:auto; right:96px; top:54px; box-sizing:border-box; padding:14px 26px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:28px; visibility:hidden; }
+  .a2dc-src span { display:block; font:700 20px/24px Arial, sans-serif; letter-spacing:3px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="a2dc-root" data-composition-id="g-a2-doc-cues" data-width="1920" data-height="1080">
+  <div id="a2dc-ground"></div>
+  <div id="a2dc-p1" class="a2dc-page">
+    <div id="a2dc-c1" class="a2dc-card">
+      <div id="a2dc-w1" class="a2dc-win"><img id="a2dc-i1" src="media/candidates/a2/a2-s10-nwspage_c2_nws-finding2d-crop.png" alt=""></div>
+      <div id="a2dc-u1" class="a2dc-ul"></div>
+    </div>
+  </div>
+  <div id="a2dc-p2" class="a2dc-page">
+    <div id="a2dc-c2" class="a2dc-card">
+      <div id="a2dc-w2" class="a2dc-win"><img id="a2dc-i2" src="media/candidates/a2/a2-s10-nistpage_c1_nist-finding45-crop-p357.png" alt=""></div>
+      <div id="a2dc-u2a" class="a2dc-ul"></div>
+      <div id="a2dc-u2b" class="a2dc-ul"></div>
+      <div id="a2dc-u2c" class="a2dc-ul"></div>
+      <div id="a2dc-u2d" class="a2dc-ul"></div>
+    </div>
+  </div>
+  <div id="a2dc-chip"><span>SECOND SIREN</span></div>
+  <div id="a2dc-src1" class="a2dc-src"><span>NWS Assessment, Finding 2d</span></div>
+  <div id="a2dc-src2" class="a2dc-src"><span>NIST Finding 45</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#a2dc-";
+  const draw = (id, at, dur) => {
+    tl.set(P+id, {autoAlpha:1}, at);
+    tl.to(P+id, {scaleX:1, duration:dur, ease:"none"}, at);
+  };
+  tl.set([P+"u1", P+"u2a", P+"u2b", P+"u2c", P+"u2d"], {scaleX:0, transformOrigin:"left center"}, 0);
+  tl.set(P+"c1", {transformOrigin:"1070px 404.9px"}, 0);
+  tl.set(P+"c2", {transformOrigin:"1070px 229.7px"}, 0);
+  tl.set([P+"p2", P+"src2"], {x:980, autoAlpha:0}, 0);
+  tl.set(P+"chip", {x:-40, autoAlpha:0}, 0);
+
+  /* JOPLIN'S a2-s10 0.00: page 1 (NWS) in, source line with it */
+  tl.fromTo(P+"p1", {autoAlpha:0, x:980}, {autoAlpha:1, x:0, duration:0.7, ease:"power3.out"}, 0);
+  tl.fromTo(P+"src1", {autoAlpha:0, x:980}, {autoAlpha:1, x:0, duration:0.7, ease:"power3.out"}, 0);
+  /* page push 1.00 to 1.04, ease none, through page 1's hold and its exit */
+  tl.to(P+"c1", {scale:1.04, duration:8.12, ease:"none"}, 0);
+
+  /* SECOND @3.04: underline "non-routine second siren alert" (390.6 px = 0.326 s) */
+  draw("u1", 3.04, 0.326);
+
+  /* ORDINARY, @4.10: chip */
+  tl.to(P+"chip", {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 4.10);
+
+  /* BUT @7.52: page swap. page 1, its chip and source line out; page 2 (NIST) in; its source line lands on it */
+  tl.to([P+"p1", P+"chip", P+"src1"], {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 7.52);
+  tl.to(P+"p2", {x:0, autoAlpha:1, duration:0.7, ease:"power3.out"}, 7.52);
+  tl.to(P+"src2", {x:0, autoAlpha:1, duration:0.4, ease:"power3.out"}, 7.95);
+  /* page push 1.00 to 1.04 through page 2's hold and its exit */
+  tl.to(P+"c2", {scale:1.04, duration:7.1, ease:"none"}, 7.52);
+
+  /* HEARING @10.72: stroke 1 "high-intensity cues, including hearing": line 1 then line 2 (0.20 s, 0.175 s) */
+  draw("u2a", 10.72, 0.2);
+  draw("u2b", 10.92, 0.175);
+  /* SEEING @12.18: stroke 2 "or seeing the tornado approaching" (408.6 px = 0.341 s) */
+  draw("u2c", 12.18, 0.341);
+  /* WATCHING @12.88: stroke 3 "or witnessing others' urgency" (356.4 px = 0.297 s) */
+  draw("u2d", 12.88, 0.297);
+
+  /* AND @14.62 is the host end: exit 0.6 s, page 2 and its source line out, host ends with it */
+  tl.to([P+"p2", P+"src2"], {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 14.02);
+  window.__timelines["g-a2-doc-cues"] = tl;
+})();
+</script>
+</template>
