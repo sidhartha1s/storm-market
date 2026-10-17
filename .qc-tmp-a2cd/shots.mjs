@@ -89,7 +89,7 @@ const cues = [S1 + 3.02, S1 + 5.14, S1 + 10.8, S1 + 14.12, S2 + 1.28, S2 + 5.04,
   S5 + 0.76, S5 + 3.6, S5 + 5.76, S5 + 6.26, S6 + 2.42, S6 + 4.5, S6 + 8.22, S6 + 8.78, S6 + 12.68].map(t => +(t + 0.6).toFixed(2));
 const fwd = {};
 await open();
-for (const t of cues) fwd[t] = md5(await shot(t));
+for (const t of cues) fwd[t] = md5(await shot(t, `sf_${t}.png`));
 await open();
 const bad = [];
 for (const t of cues) { await shot(0); await shot(D - 0.01); const h = md5(await shot(t, `sb_${t}.png`)); if (h !== fwd[t]) bad.push(t); }
