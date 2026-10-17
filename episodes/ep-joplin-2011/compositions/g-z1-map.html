@@ -100,41 +100,81 @@
 <!--/DOTS-->
     </g>
   </svg>
-  <div id="g-z1-map-chip">MOST WERE INDOORS</div>
-  <div id="g-z1-map-src">NIST Finding 40</div>
+  <div id="g-z1-map-chip1" class="gzm-chip">135 INDOORS</div>
+  <div id="g-z1-map-chip2" class="gzm-chip">NONE FOUND BELOW GROUND</div>
+  <div id="g-z1-map-chip3" class="gzm-chip">8 IN 10: NO BASEMENT</div>
+  <div id="g-z1-map-src1" class="gzm-src">135 of 155 impact-related · NIST Finding 40</div>
+  <div id="g-z1-map-src2" class="gzm-src">no evidence any of those killed were underground · NIST Finding 46</div>
+  <div id="g-z1-map-src3" class="gzm-src">82% of homes · no basement · NIST Finding 20</div>
+  <div id="g-z1-map-hud">Below ground</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-z1-map", P = "#g-z1-map-";
-  const END = 5.0;
+  const END = 13.16; /* host: "That" 10.06 to the z1-s1 wav end 22.92, plus the 0.30 s seam to the z1-s3 slot */
+  const CX = 874.1, CY = 505.7; /* map centre = city outline area centroid (g-intro-map header) */
   const tl = gsap.timeline({ paused: true });
   const cam = (tx, ty, s) => ({ attr: { transform: "translate(" + tx + "," + ty + ") scale(" + s + ")" } });
   const q = (sel) => Array.from(document.querySelectorAll(sel));
   const inside = q(P + "homes .gzm-dot").concat(q(P + "apts .gzm-dot"));
   const outside = q(P + "outside .gzm-dot").concat(q(P + "outside .gzm-ring"));
+  const f = (d) => Math.hypot(+d.getAttribute("cx") - CX, +d.getAttribute("cy") - CY);
+  const fMax = Math.max.apply(null, inside.concat(outside).map(f));
+  const chipIn = (n, at) => {
+    tl.fromTo(P + "chip" + n, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, at);
+    tl.fromTo(P + "src" + n, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, at);
+  };
+  const chipOut = (n, at, dur) => tl.to([P + "chip" + n, P + "src" + n], { autoAlpha: 0, duration: dur, ease: "power2.in" }, at);
 
-  /* MAP IN host 0.0 (cut from the CCTV clip): lit state from frame 0; pull-out 1.00 -> 0.96 about the frame centre, linear, whole host */
+  /* frame 0, "That" 10.06 (0.00): base framing, empty below-ground line with its label; dots hidden */
   tl.set(P + "cam", cam(0, 0, 1), 0);
-  tl.to(P + "cam", Object.assign(cam(38.4, 21.6, 0.96), { duration: END, ease: "none" }), 0);
+  tl.set(inside.concat(outside), { autoAlpha: 0, scale: 0, transformOrigin: "50% 50%" }, 0);
 
-  /* DIM host 0.3: the 19 outside dots and their vehicle rings to 0.3 over 0.6 s */
-  tl.to(outside, { opacity: 0.3, duration: 0.6, ease: "power2.inOut" }, 0.3);
+  /* STAMP "evening," 10.24 (0.18): each dot 0.4 s, delay 0 to 0.4 s by distance from the map centre (0.8 s total);
+     the 19 outside dots and their vehicle rings land with them at 0.3 */
+  inside.forEach((d) => tl.fromTo(d, { autoAlpha: 0, scale: 0 },
+    { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.4, ease: "back.out(2)" }, 0.18 + 0.4 * f(d) / fMax));
+  outside.forEach((d) => tl.fromTo(d, { autoAlpha: 0, scale: 0 },
+    { autoAlpha: 0.3, scale: 1, transformOrigin: "50% 50%", duration: 0.4, ease: "back.out(2)" }, 0.18 + 0.4 * f(d) / fMax));
 
-  /* BREATHE host 0.0 to 4.4: inside dots r 3.5 -> 4.025 (scale 1.15) -> 3.5, 1.6 s a breath, two breaths each,
-     delay 0 to 0.8 s by distance from the dot cloud's centre, so the last breath ends by 4.0 */
-  const cx = inside.reduce((s, d) => s + +d.getAttribute("cx"), 0) / inside.length;
-  const cy = inside.reduce((s, d) => s + +d.getAttribute("cy"), 0) / inside.length;
-  const dist = inside.map((d) => Math.hypot(+d.getAttribute("cx") - cx, +d.getAttribute("cy") - cy));
-  const dMax = Math.max.apply(null, dist);
-  inside.forEach((d, i) => tl.to(d, { attr: { r: 4.025 }, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.8 * dist[i] / dMax));
+  /* BREATHE from the stamp to the host end: inside dots r 3.5 -> 4.025 (scale 1.15) -> 3.5, 1.6 s a breath, 7 breaths,
+     delay 0 to 0.8 s by distance; on attr r so it never fights the stamp/pulse transform; last breath ends by 12.98 */
+  inside.forEach((d) => tl.fromTo(d, { attr: { r: 3.5 } },
+    { attr: { r: 4.025 }, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 13, immediateRender: false }, 0.98 + 0.8 * f(d) / fMax));
 
-  /* CHIP + SOURCE host 1.0 */
-  tl.fromTo(P + "chip", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.0);
-  tl.fromTo(P + "src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.1);
+  /* CHIP 1 + SOURCE 1 "most" 11.28 (1.22) */
+  chipIn(1, 1.22);
 
-  /* BLACKOUT host 4.4 to 5.0: the whole comp fades to the timeline's dark ground; bo-7 follows at the host end */
-  tl.to(P + "root", { autoAlpha: 0, duration: 0.6, ease: "power1.in" }, 4.4);
+  /* PULSE "inside," 12.98 (2.92): all inside dots scale 1 -> 1.25 -> 1, 0.5 s */
+  tl.fromTo(inside, { scale: 1 },
+    { scale: 1.25, transformOrigin: "50% 50%", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 2.92);
+
+  /* base line label out before the push starts (text never rides a move) */
+  tl.to(P + "below-lab", { autoAlpha: 0, duration: 0.15, ease: "none" }, 3.71);
+
+  /* "right?" 13.92 (3.86): chip 1 + source 1 out; push 0.8 s to 4.66, line centre (850,880) -> (960,540), line x 96 to 1824 */
+  chipOut(1, 3.86, 0.3);
+  tl.to(P + "cam", Object.assign(cam(-169.85, -629.72, 1.329231), { duration: 0.8, ease: "power2.inOut" }), 3.86);
+
+  /* "gone." 14.76 (4.70): HUD label (fixed layer, after the push settles), chip 2 + source 2 */
+  tl.fromTo(P + "hud", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.7);
+  chipIn(2, 4.7);
+
+  /* "basement," 17.52 (7.46): chip 2 + source 2 clear by 7.46, then chip 3 + source 3 (one chip at a time) */
+  chipOut(2, 7.21, 0.25);
+  chipIn(3, 7.46);
+
+  /* "there" 18.80 (8.74): HUD label out 0.3 s, then pull-out 2.0 s back to the base framing (power2.inOut, under 1.5x) */
+  tl.to(P + "hud", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 8.44);
+  tl.to(P + "cam", Object.assign(cam(0, 0, 1), { duration: 2.0, ease: "power2.inOut" }), 8.74);
+
+  /* hold drift to the host end: scale 1.00 -> 0.985 about the comp centre, ease none */
+  tl.to(P + "cam", Object.assign(cam(14.4, 8.1, 0.985), { duration: END - 10.74, ease: "none" }), 10.74);
+
+  /* "city" 21.36 (11.30): city outline lift, stroke opacity 70 % -> 100 %, 0.5 s, holds; cut to g-z1-board on the host end */
+  tl.fromTo([P + "city", P + "city-rest"], { attr: { "stroke-opacity": 0.7 } },
+    { attr: { "stroke-opacity": 1 }, duration: 0.5, ease: "power2.out", immediateRender: false }, 11.3);
 
   window.__timelines[ID] = tl;
 })();
