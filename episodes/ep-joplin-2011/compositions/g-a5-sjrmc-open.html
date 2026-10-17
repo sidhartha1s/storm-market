@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a5-sjrmc-open: A5-S1 overlay, host 807.367 for 9.24 s (nx-a5-s1 804.567 + "183" 2.80, ends 12.04).
+     Local t = a5-s1 words.json time - 2.80. Transparent root: the FEMA still (to "and" 6.02, local 3.22) and then the NIST East Tower
+     photo sit on a lower track for the whole host window. One chip at a time, centred on x 960, top 760 (brief section 3); source line
+     bottom-left (presenter circle owns x >= 1600, y >= 680). Chip numerals run 56 px so the comp has a big tier (graphics_qc flat-type);
+     the label words stay at the brief's 40 px. */
+  #a5so-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  /* floats carry the y drift so each chip keeps its own entrance and exit tweens */
+  .a5so-float { position:absolute; inset:auto; left:0; right:0; top:760px; text-align:center; }
+  .a5so-chip { position:relative; display:inline-block; box-sizing:border-box; padding:18px 34px 18px 42px; border-radius:14px; overflow:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; white-space:nowrap; }
+  .a5so-bar { position:absolute; inset:auto; left:0; top:0; bottom:0; width:8px; background:#d0121f; }
+  .a5so-n, .a5so-t { display:inline-block; font-family:Arial,sans-serif; font-weight:700; letter-spacing:1px; line-height:56px;
+    text-shadow:0 2px 14px rgba(0,0,0,.7); vertical-align:baseline; }
+  .a5so-n { font-size:56px; color:#f2f5f8; }
+  .a5so-t { font-size:40px; color:#f2f5f8; }
+  #a5so-srcfloat { position:absolute; inset:auto; left:96px; bottom:54px; }
+  #a5so-src { display:table; box-sizing:border-box; padding:8px 16px; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14);
+    font-family:Arial,sans-serif; font-weight:400; font-size:21px; line-height:26px; letter-spacing:.5px; color:#c8d3e0; white-space:nowrap;
+    visibility:hidden; opacity:0; }
+</style>
+<div id="a5so-root" data-composition-id="g-a5-sjrmc-open" data-width="1920" data-height="1080">
+  <div id="a5so-c1float" class="a5so-float">
+    <div id="a5so-c1" class="a5so-chip"><div class="a5so-bar"></div><span class="a5so-n">183</span> <span class="a5so-t">INSIDE</span></div>
+  </div>
+  <div id="a5so-c2float" class="a5so-float">
+    <div id="a5so-c2" class="a5so-chip"><div class="a5so-bar"></div><span class="a5so-t">HOSPITAL FOR</span> <span class="a5so-n">140,000</span></div>
+  </div>
+  <div id="a5so-c3float" class="a5so-float">
+    <div id="a5so-c3" class="a5so-chip"><div class="a5so-bar"></div><span class="a5so-n">4</span> <span class="a5so-t">TIMES THE RATE</span></div>
+  </div>
+  <div id="a5so-srcfloat">
+    <div id="a5so-src">NIST Sec. 1.2</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a5so-";
+  const IN = { autoAlpha: 0, y: 24 };
+  const IN_TO = { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" };
+
+  /* "183" @2.80 (local 0.00): chip 1 + source line */
+  tl.fromTo(Q + "c1", IN, IN_TO, 0);
+  tl.fromTo(Q + "src", IN, IN_TO, 0);
+
+  /* "evening," @5.16 (local 2.36): chip 1 slides out. 0.22 s, not 0.6, so it is gone (autoAlpha 0) before chip 2 starts at local 2.60 */
+  tl.to(Q + "c1", { x: 980, autoAlpha: 0, duration: 0.22, ease: "power3.in" }, 2.36);
+
+  /* 5.36 + 0.04 (local 2.60), no spoken trigger: chip 2 */
+  tl.fromTo(Q + "c2", IN, IN_TO, 2.6);
+
+  /* "four" @8.52 (local 5.72): chip 2 leaves 0.22 s ahead of the word, chip 3 lands on it */
+  tl.to(Q + "c2", { x: 980, autoAlpha: 0, duration: 0.22, ease: "power3.in" }, 5.5);
+  tl.fromTo(Q + "c3", IN, IN_TO, 5.72);
+
+  /* hold: slow float y 0 to -4 on each chip's own float, from its landing to its exit; source line floats to the host end */
+  tl.fromTo(Q + "c1float", { y: 0 }, { y: -4, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 0.4);
+  tl.fromTo(Q + "c2float", { y: 0 }, { y: -4, duration: 1.25, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 3.0);
+  tl.fromTo(Q + "c3float", { y: 0 }, { y: -4, duration: 1.27, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 6.1);
+  tl.fromTo(Q + "srcfloat", { y: 0 }, { y: -4, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false }, 0.4);
+
+  /* exit: wav end 11.44 (local 8.64) to 12.04 (local 9.24) */
+  tl.to([Q + "c3", Q + "src"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 8.64);
+
+  window.__timelines["g-a5-sjrmc-open"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
