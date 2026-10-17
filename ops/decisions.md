@@ -6,6 +6,7 @@ line that names the one it replaces.
 
 | date | decision | by | why |
 |---|---|---|---|
+| 18 Oct 26 | The dojo-ops dashboard may start and stop a Storm draft (never a full render) through `scripts/dojo_draft.cmd`, 2 workers | owner (dojo-ops devq round 3: Storm only, your own render.cmd, 2 workers; "ok" to add the wrapper) | one button on the private dashboard instead of a terminal; the episode name comes from outside this repo, so it is re-checked here |
 | 16 Oct 26 | Graphics split by depth: Opus 5.5 builds the deep top 5 to 15 (moving tornado-path maps, zooms); Sonnet 5.5 at high effort builds the rest from a full brief, reviewed by the frame read; replaces the 29 Sep 26 all-Opus row | owner | "60 Opuses that's a lot of cost ... nowadays your motion graphics are not that deep"; roles: CLAUDE.md "Chain of command for motion graphics" |
 | 29 Sep 26 | All graphics build, retime, fix, redesign and verify run on Opus 5.5; decides the 24 Sep 26 "Fresh hand-built MGs: Opus, not Sonnet (proposed)" row | owner | ep-nepal ran 15 of 16 graphics writers on Sonnet and shipped thinner graphics at 2.6x Enderlin's output tokens (`learnings/mg.md` 29 Sep 26); roles: CLAUDE.md "Chain of command for motion graphics" |
 | 26 Sep 26 | Presenter circle (Paul) keeps its corner keep-out while shown; he is not shown in motion-graphics-only scenes | owner | "That's just a distraction at that point. at least for now." (`references/mg-quickref.md` "Frame and safe zones") |
