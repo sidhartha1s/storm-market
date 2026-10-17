@@ -76,19 +76,19 @@
         <line id="a3hs-ceil" class="a3hs-draw a3hs-hid" x1="520" y1="400" x2="1400" y2="400"/>
         <rect id="a3hs-partL" class="a3hs-draw a3hs-hid" x="800" y="400" width="12" height="240"/>
         <rect id="a3hs-partR" class="a3hs-draw a3hs-hid" x="1108" y="400" width="12" height="240"/>
-        <path id="a3hs-tub" class="a3hs-draw a3hs-hid" d="M830 604 H900 V628 Q900 640 888 640 H842 Q830 640 830 628 Z" stroke-linejoin="round"/>
+        <path id="a3hs-tub" class="a3hs-draw a3hs-hid" d="M822 604 H892 V628 Q892 640 880 640 H834 Q822 640 822 628 Z" stroke-linejoin="round"/>
       </g>
 
       <!-- figure: kneeling, sat back on the heels, head down, arm over the back of the neck, facing left;
-           bbox about x 902-1016, y 540-640, shins on the floor top y 640 -->
+           bbox about x 910-1024, y 540-640; tub x 822-892 (brief 830-900, moved 8 px for a gap to the head), shins on the floor top y 640 -->
       <g id="a3hs-figdrop" class="a3hs-hid">
         <g id="a3hs-figbreath" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path id="a3hs-figshin" d="M952 630 L1006 630" stroke="#d8a13a" stroke-width="20"/>
-          <path id="a3hs-figthigh" d="M992 606 L952 626" stroke="#d8a13a" stroke-width="24"/>
-          <path id="a3hs-figback" d="M992 604 Q972 512 946 590" stroke="#d8a13a" stroke-width="30"/>
-          <circle id="a3hs-fighead" cx="917" cy="612" r="15" fill="#d8a13a"/>
-          <path id="a3hs-figarmgap" d="M950 584 Q926 580 910 598" stroke="#1a1710" stroke-width="19"/>
-          <path id="a3hs-figarm" d="M950 584 Q926 580 910 598" stroke="#d8a13a" stroke-width="12"/>
+          <path id="a3hs-figshin" d="M960 630 L1014 630" stroke="#d8a13a" stroke-width="20"/>
+          <path id="a3hs-figthigh" d="M1000 606 L960 626" stroke="#d8a13a" stroke-width="24"/>
+          <path id="a3hs-figback" d="M1000 604 Q980 512 954 590" stroke="#d8a13a" stroke-width="30"/>
+          <circle id="a3hs-fighead" cx="925" cy="612" r="15" fill="#d8a13a"/>
+          <path id="a3hs-figarmgap" d="M958 584 Q934 580 918 598" stroke="#1a1710" stroke-width="19"/>
+          <path id="a3hs-figarm" d="M958 584 Q934 580 918 598" stroke="#d8a13a" stroke-width="12"/>
         </g>
       </g>
       <!--/HOUSE-->
@@ -133,6 +133,7 @@ window.__timelines = window.__timelines || {};
 
   tl.set(Q + "bar", { scaleY: 0, transformOrigin: "center top" }, 0);
   tl.set(Q + "figdrop", { y: -40 }, 0);
+  tl.set(Q + "figbreath", { scaleY: 1, svgOrigin: "971 640" }, 0);
 
   /* whole comp: slow push 1.00 -> 1.06, linear, from frame 0 to host end */
   tl.to(Q + "cam", { scale: 1.06, transformOrigin: "960px 540px", duration: 10.58, ease: "none" }, 0);
@@ -155,7 +156,7 @@ window.__timelines = window.__timelines || {};
   /* "middle" @5.60 (local 5.80): figure drops in */
   tl.to(Q + "figdrop", { y: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 5.8);
   /* breath through the hold: scaleY from the feet, the back rises ~3 px, feet stay on the floor (4 legs of 0.8 s) */
-  tl.to(Q + "figbreath", { scaleY: 1.028, svgOrigin: "963 640", duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, 6.3);
+  tl.to(Q + "figbreath", { scaleY: 1.028, svgOrigin: "971 640", duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, 6.3);
 
   /* "Eight" @7.36 (local 7.56): chip in, accent bar draws, one gloss sweep */
   tl.fromTo(Q + "chip", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 7.56);
