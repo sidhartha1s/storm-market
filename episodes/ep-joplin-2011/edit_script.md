@@ -4,7 +4,7 @@ Lane: documentary (`/storm-episode`). Built on the angle the owner locked on 15 
 
 ## A. Header
 - **Title (owner, verbatim):** Joplin 2011: The Sirens Did Not Lie
-- **Target runtime:** planned at 22:00 (`structure.md`; the owner has not set it) until `word_budget.py` sizes it from a probe at the shipping tempo.
+- **Target runtime:** about 19:00 (owner, 17 Oct 26: "keep ~19 min"). Measured on the 77 shipped Paul segments: 182.8 wpm, 3295 words, predicted 19:01.
 - **Claim (locked, copied):** In Joplin the tornado found people indoors, in buildings with nothing below them: 135 of the 155 who lost their lives to its impact were inside a structure, and not one person the investigators could place was below ground. The town believed its sirens went off all the time; the records say about once a year.
 - **Dominant question:** the viewer keeps watching to find out why the people of Joplin, most of them indoors and many doing what they were told, had nothing below them, and how a town whose sirens sounded about once a year came to hear them as noise.
 - **Architecture:** detective, with a countdown inside it. NIST's investigators are the detectives; one master map of Joplin is the case board, walked location by location. Act 2 runs as a countdown from five oh nine to five thirty eight.
