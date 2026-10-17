@@ -58,7 +58,9 @@ window.__timelines = window.__timelines || {};
 
   /* ARCS: ripple in turn, 1.2 s each, 0.4 s apart (a6-s6 "In" 0.00 keeps them going): four synced pulses per arc, then, from
      DESYNC s6 "sounds" 3.78 (host 4.90), each arc waits its own fixed 0.15 / 0.45 / 0.30 s between pulses ("no one pattern"). Every pulse ends by host 15.68. */
-  /* A repeat on these tweens does not update under a suppressed-events seek, so each pulse is its own tween. */
+  /* Seek-safe on purpose (measured with the runtime's seek, both orders): a `repeat` tween does not update under a suppressed-events seek, so
+     each pulse is its own tween; and opacity, never autoAlpha, because a deferred autoAlpha tween reads the hidden host's inherited
+     visibility as its start and leaves the element hidden after a rewind. */
   const PULSE = { scale: 1.05, opacity: 0, transformOrigin: MOUTH, duration: 1.2, ease: "power1.out" };
   const FROM = { scale: 0.9, opacity: 0.9, transformOrigin: MOUTH };
   const STARTS = {
