@@ -27,7 +27,7 @@ picture plants the question only. The split into "a worse warning" against "all 
 - **Ring 1 (first sounding):** stroke 3 px, the SIREN RING colour at 40 %, dashed 12/10, static. Label "First siren" in
   Arial 700 26 `#93a3b2`, outside the ring at 200° (left), 20 px clear of the stroke.
 - **Ring 2 (second sounding):** stroke 4 px, the SIREN RING colour at 100 %, solid. The pulse is three expanding copies of
-  ring 2, each going from scale 1.00 to 1.18 and from opacity 0.8 to 0 over 1.2 s, staggered 0.4 s, `repeat` finite (4 cycles, no `repeat:-1`), `svgOrigin`
+  ring 2, each going from scale 1.00 to 1.18 and from opacity 0.8 to 0 over 1.2 s, staggered 0.4 s, `repeat` finite (never `repeat:-1`), `svgOrigin`
   at the ring centre in both from and to vars. Label "Second siren" in Arial 700 26 `#f2f5f8`, outside the ring at 340° (right),
   20 px clear of the pulse's largest radius (r + 24) × 1.18.
 - No chip, no source line (the Picture line asks for none). Rows S26 and S27 are paid in A2, which carries their source lines.
