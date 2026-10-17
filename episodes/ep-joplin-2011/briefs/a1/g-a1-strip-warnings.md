@@ -61,7 +61,7 @@ Reading of "the last five years zoom in": with no dates, the zoom is a **recount
 | element | text | cue |
 |---|---|---|
 | siren strip (finished state) rises to offset 0 | base text | a1-s7 frame 0, 0.00 to 0.60 |
-| warnings row label | "Tornado warnings for Joplin · 2005 to 2011" | a1-s7 "From" 2.64 |
+| warnings row label | "Tornado warnings for Joplin · 2005 to 2011" (S10) | a1-s7 "From" 2.64 |
 | 18 marks build left to right | (none) | a1-s7 "18" 6.16, 0.03 s stagger (0.54 s), scaleY 0 to 1 from the bottom |
 | source line 1 | "NIST Finding 30" | a1-s7 "18" 6.16 |
 | 4 verified fill + check; 14 dim to 55 % | "verified" | a1-s7 "Fourteen" 7.80 (fill 0.4 s), dim on "confirmed." 9.88 |
