@@ -37,7 +37,7 @@ goes to Opus. Gates passing is not verification.
 | Measured gotchas, newest first | `learnings/` (`README.md` says which file serves which job): read yours before building |
 | Pins, paths, CTA file and window | `config.yaml` |
 | Open tooling and pipeline work; dated decisions (read both at session start, update the same session) | `ops/tasks.md`, `ops/decisions.md` |
-| Which episode jobs are ready, running, held or done, and the Stop gate that blocks an idle ready job | `scripts/lanes.py` (job model in its docstring), hook `~/.claude/hooks/lane-gate.py` |
+| Which episode jobs are ready, running, held or done, the Stop gate that blocks an idle ready job, and the lane launcher (profile probe, free-memory and lane-count gate, relaunch after a limit) | `scripts/lanes.py` (job model in its docstring), hook `~/.claude/hooks/lane-gate.py` |
 
 An owner correction or a measured surprise lands in its single home (`references/mg-quickref.md`, a gate, or the right
 `learnings/` file) the same session.
