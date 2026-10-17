@@ -205,6 +205,7 @@ window.__timelines = window.__timelines || {};
   /* NOBODY a4-s13 10.96: chip lands, figures glow (halo in, then two soft pulses), slow push over the hold */
   tl.fromTo(Q + "chip", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 10.96);
   tl.fromTo(Q + "bar", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power2.out", transformOrigin: "center top" }, 11.04);
+  tl.set(Q + "svg .a4cel-halo", { transformOrigin: "50% 50%" }, 0);
   FIG.forEach(([id], i) => {
     const h = Q + id + " .a4cel-halo";
     tl.fromTo(h, { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power2.out" }, 10.96 + i * 0.03);
