@@ -11,10 +11,16 @@ if not exist "%REQ%" exit /b 2
 REM findstr by full path: with Git on PATH, a bare find or findstr can resolve to the GNU tools (a bare
 REM find hung the test, 18 Oct 2026).
 set "FINDSTR=%SystemRoot%\System32\findstr.exe"
-REM At most one line, and every line is 1+ of A-Z a-z 0-9 _ - (letters spelled out: findstr's [A-Z]
-REM also matches accented letters). /v /x lists lines that do NOT match whole; any such line refuses.
-"%FINDSTR%" /n "^" "%REQ%" | "%FINDSTR%" /b /c:"2:" >nul && goto :refuse
-"%FINDSTR%" /r /v /x /c:"[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-][ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-]*" "%REQ%" >nul && goto :refuse
+REM The checks run on a copy that ends in CRLF: findstr /x never matches a last line with no line end,
+REM and dojo-ops writes the slug without one. type copies the bytes without parsing them.
+set "CHK=%REQ%.chk"
+>"%CHK%" type "%REQ%"
+>>"%CHK%" echo(
+REM Exactly one line, and it is 1+ of A-Z a-z 0-9 _ - (letters spelled out: findstr's [A-Z] also
+REM matches accented letters). /v /x lists lines that do NOT match whole; any such line refuses.
+"%FINDSTR%" /n "^" "%CHK%" | "%FINDSTR%" /b /c:"2:" >nul && goto :refuse
+"%FINDSTR%" /r /v /x /c:"[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-][ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-]*" "%CHK%" >nul && goto :refuse
+del /q "%CHK%"
 set "SLUG="
 set /p SLUG=<"%REQ%"
 del /q "%REQ%"
