@@ -141,8 +141,8 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   /* start state */
   tl.set(P + "rise", { y: 170 }, 0);
-  tl.set([...A, ...B], { scaleY: 0, svgOrigin: i => "0 740" }, 0);
-  tl.set(fillA, { scaleY: 0 }, 0);
+  tl.set(A, { scaleY: 0, svgOrigin: (i) => orA(i) }, 0);
+  tl.set(B, { scaleY: 0, svgOrigin: (i) => orB(i) }, 0);
 
   /* FRAME 0: siren strip rises +170 to 0 (0.00 to 0.60); float on both rows runs to the host end (3 px, about 4 s a cycle) */
   tl.to(P + "rise", { y: 0, duration: 0.6, ease: "power2.out" }, 0);
