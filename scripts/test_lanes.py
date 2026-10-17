@@ -13,6 +13,14 @@ S = Path(__file__).resolve().parent
 sys.path.insert(0, str(S))
 import lanes  # noqa: E402
 
+
+def never(*a):
+    raise AssertionError(f"a test reached a real host call {a}")
+
+
+# no test ever probes claude, reads a host or launches a lane: each test that needs one installs its own fake
+lanes.probe = lanes.spawn = lanes.read_log = never
+lanes.free_gb = lambda host: 64.0
 FAILS = []
 SCRIPT = """# fixture
 ### H1-S1 · narration
