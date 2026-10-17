@@ -41,6 +41,11 @@ REPO = Path(__file__).resolve().parent.parent
 SEG_ID = r"([A-Z]\d+-S\d+[a-z]?)\b"  # segment id at the start of a heading, e.g. 'A3-S5'
 
 
+def has_open_verify(text):
+    """A segment cannot lock while its text still carries an open [verify] marker (script-scaling.md "Section lock")."""
+    return "[verify" in text
+
+
 class SegmentParseError(Exception):
     """A segment's markdown doesn't parse unambiguously into narration text."""
 
