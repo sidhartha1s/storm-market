@@ -69,7 +69,7 @@ window.__timelines = window.__timelines || {};
   const logLerp = (a, b, t) => Math.exp(Math.log(a) + (Math.log(b) - Math.log(a)) * t); /* helpers.js logLerpScale */
 
   /* tile 7's numeral rests top-left at the base's 30 px: scale 0.5 about its top centre, x -65.65 puts the glyph centre at 16 + 8.35 (7 is 16.7 px wide at 30 px) */
-  /* gsap.set at build, not tl.set at 0: the first seek to 0 does not render a time-0 set, so frame 0 showed the numeral at 60 px (read 29 Oct... 18 Oct 26) */
+  /* gsap.set at build, not tl.set at 0: the first seek to 0 does not render a time-0 set, so frame 0 showed the numeral at 60 px (frame read, 18 Oct 26) */
   gsap.set(Q+"n7", { transformOrigin: "50% 0%", scale: 0.5, x: -65.65, y: 16 });
 
   /* board holds with a slow 6 px float from 0.00 "Of", back to rest at 4.60 before the lift */
