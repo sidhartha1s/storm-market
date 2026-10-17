@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a1-numb: A1-S3, host 0.00 to 18.22 (wav 17.92 + 0.3 s seam). Local time = a1-s3 words.json time.
+     Defines the COMMENT CARD base (#a1n-card); copies change only the three row texts.
+     Page crop (script-computed): source crop x 150..475, y 1190..1569 of the 1347x1743 page, scale S = 600/325 = 1.8462,
+     so the box 600x700 shows it unstretched. Phrase "desensitized or complacent" = src x 159..443, baseline y 1330.5. */
+  #a1n-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #a1n-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  /* COMMENT CARD base: 760 wide, left 120, centred on y 500 by the 1000 px high wrap */
+  #a1n-cardwrap { position:absolute; inset:auto; left:120px; top:0; width:760px; height:1000px; display:flex; align-items:center; }
+  #a1n-card { box-sizing:border-box; width:760px; min-height:240px; padding:36px 44px; border-radius:28px;
+    background:rgba(21,32,43,0.92); border:1px solid rgba(255,255,255,0.14); visibility:hidden; opacity:0; }
+  .a1n-meta { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2;
+    visibility:hidden; opacity:0; }
+  #a1n-r1 { margin-bottom:20px; }
+  #a1n-r2 { font-size:40px; letter-spacing:0; line-height:1.25; color:#f2f5f8; margin-bottom:20px; }
+  #a1n-likes { height:30px; } /* reserved for the like count; stays empty until the orchestrator confirms it */
+
+  /* page half */
+  #a1n-page { position:absolute; inset:auto; left:960px; top:200px; width:600px; height:700px; overflow:hidden;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.14), 0 20px 60px rgba(0,0,0,0.5); background:#f2f2f0; visibility:hidden; opacity:0; }
+  #a1n-pagein { position:absolute; inset:auto; left:0; top:0; width:600px; height:700px; }
+  #a1n-img { position:absolute; inset:auto; left:-276.923px; top:-2196.923px; width:2486.769px; height:3217.846px; }
+  #a1n-bar { position:absolute; inset:auto; left:16.615px; top:273.385px; width:524.308px; height:6px; background:#d8a13a; visibility:hidden; }
+
+  /* chip: glass, top centre x 960, y 96 to 166 */
+  #a1n-chipwrap { position:absolute; inset:auto; left:0; top:96px; width:1920px; height:70px; display:flex; justify-content:center; }
+  #a1n-chip { box-sizing:border-box; height:70px; padding:0 40px; border-radius:28px; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px;
+    letter-spacing:2px; line-height:68px; color:#f2f5f8; white-space:nowrap; visibility:hidden; opacity:0; }
+
+  #a1n-src { position:absolute; inset:auto; left:96px; top:990px; font-family:Arial,sans-serif; font-weight:700; font-size:20px;
+    line-height:24px; color:#c8d3e0; white-space:nowrap; visibility:hidden; opacity:0; }
+</style>
+<div id="a1n-root" data-composition-id="g-a1-numb" data-width="1920" data-height="1080">
+  <div id="a1n-ground"></div>
+
+  <div id="a1n-cardwrap">
+    <div id="a1n-card">
+      <div id="a1n-r1" class="a1n-meta">YouTube comment · RODALCO2007</div>
+      <div id="a1n-r2" class="a1n-meta">“… no one is paying any attention to the sirens going off. …”</div>
+      <div id="a1n-r3" class="a1n-meta">under “JOPLIN, MO, Tornado, 22 May 2011”</div>
+      <div id="a1n-likes"></div>
+    </div>
+  </div>
+
+  <div id="a1n-page">
+    <div id="a1n-pagein">
+      <img id="a1n-img" src="media/candidates/a1/a1-s3_c1_nws-p4-preface-desensitized.jpg" alt="">
+      <div id="a1n-bar"></div>
+    </div>
+  </div>
+
+  <div id="a1n-chipwrap"><div id="a1n-chip">NUMB TO SIRENS</div></div>
+  <div id="a1n-src">NWS Assessment, Preface and Finding 2c</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a1n-";
+  tl.set(Q+"bar", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* comment card: panel in 0.00 to 0.60, rows 0.25 s apart from "You've" a1-s3 0.64 */
+  tl.fromTo(Q+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0);
+  tl.fromTo(Q+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.64); /* YOU'VE a1-s3 0.64 */
+  tl.fromTo(Q+"r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.89);
+  tl.fromTo(Q+"r3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 1.14);
+  /* card float y +-4 px, 4 s sine period, finite: 0.60 to 17.60 */
+  tl.to(Q+"card", { y: 4, duration: 1, ease: "sine.inOut" }, 0.6);
+  tl.fromTo(Q+"card", { y: 4 }, { y: -4, duration: 2, ease: "sine.inOut", yoyo: true, repeat: 7 }, 1.6);
+
+  /* page + source line in on "A" a1-s3 4.80 */
+  tl.fromTo(Q+"page", { x: 60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 4.8);
+  tl.fromTo(Q+"src", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.8);
+  /* page slow push 1.00 to 1.03, 4.80 to 17.92 (inner layer carries the bar, so the underline stays on the phrase) */
+  tl.to(Q+"pagein", { scale: 1.03, duration: 13.12, ease: "none" }, 4.8);
+
+  /* underline draws "gone" 8.90 to "sirens." 10.04 */
+  tl.set(Q+"bar", { autoAlpha: 1 }, 8.9);
+  tl.fromTo(Q+"bar", { scaleX: 0 }, { scaleX: 1, duration: 1.14, ease: "power1.inOut" }, 8.9); /* GONE a1-s3 8.90 */
+  /* chip on "sirens." 10.04 */
+  tl.fromTo(Q+"chip", { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.04); /* SIRENS. a1-s3 10.04 */
+
+  /* exit, the last 0.6 s of the wav: card and source line left, page right, chip up */
+  tl.to(Q+"card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.32);
+  tl.to(Q+"src", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.32);
+  tl.to(Q+"page", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.32);
+  tl.to(Q+"chip", { y: -60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.32);
+  /* ground holds through the 0.3 s seam to the host end 18.22 */
+  tl.set(Q+"ground", { autoAlpha: 1 }, 18.22);
+
+  window.__timelines["g-a1-numb"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
