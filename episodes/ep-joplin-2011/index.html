@@ -529,6 +529,67 @@
 <script>
 window.__timelines = window.__timelines || {};
 window.__timelines["ep-joplin-2011"] = gsap.timeline({ paused: true });
+const tl = window.__timelines["ep-joplin-2011"];
+// Quick punch on a still (owner 17 Oct 26: no slow Ken Burns): fast in to s, hold, ease back to 1.0 from at + 1.1. Positions are absolute composition seconds.
+function punch(sel, at, s = 1.10) {
+  tl.fromTo(sel, { scale: 1.0 }, { scale: s, duration: 0.30, ease: "power4.out" }, at);
+  tl.to(sel, { scale: 1.0, duration: 0.45, ease: "power2.inOut" }, at + 1.1);
+}
+/* INTRO */
+punch("#kb-t1-s1-a", 17.71, 1.10);
+punch("#kb-t1-s1-b", 23.46, 1.08);
+punch("#kb-t1-s1-b", 25.03, 1.12);
+/* A1: the theater push onto the NOAA flight, handed to g-a1-theater-map on the B framing */
+tl.fromTo("#kb-a1-s2-a", { scale: 1.0, x: 0, y: 0, transformOrigin: "center" }, { scale: 1.35, x: -20, y: -20, duration: 0.40, ease: "power4.out" }, 140.85);
+tl.fromTo("#kb-a1-s2-b", { scale: 1.0, x: 0, y: 0, transformOrigin: "center" }, { scale: 1.60, x: 120, y: -72, duration: 0.60, ease: "power3.inOut" }, 150.51);
+/* A2 */
+punch("#kb-a2-s1", 287.53, 1.10);
+punch("#kb-a2-s4-a", 338.47, 1.10);
+punch("#kb-a2-s4-b", 341.66, 1.08);
+/* A3 */
+punch("#kb-a3-s6-c1", 522.67, 1.12);
+punch("#kb-a3-s6-c2", 524.29, 1.12);
+punch("#kb-a3-s7-c3", 530.95, 1.12);
+punch("#kb-a3-s7-c1", 533.05, 1.14);
+punch("#kb-a3-s7-c2", 536.21, 1.12);
+/* A4 */
+punch("#kb-a4-s5-c1", 647.747, 1.12);
+punch("#kb-a4-s5-c1", 649.367, 1.22);
+punch("#kb-a4-s7-c1", 702.367, 1.14);
+punch("#kb-a4-s7-c1", 704.167, 1.24);
+punch("#kb-a4-s9-c2", 709.127, 1.18);
+punch("#kb-a4-s11-c3", 751.107, 1.14);
+punch("#kb-a4-s11-c1", 760.427, 1.14);
+punch("#kb-a4-s11-c4", 763.427, 1.14);
+punch("#kb-a4-s11-c2", 766.427, 1.14);
+/* A5: cut punches at the default 1.10, beat punches 1.06. A beat that would land before the cut punch has settled (at + 1.55) is left out. */
+punch("#kb-a5-s1-fema-total-loss", 804.367);
+punch("#kb-a5-s1-fema-total-loss", 807.367, 1.06);
+punch("#kb-a5-s1-east-tower", 810.367);
+punch("#kb-a5-s1-east-tower", 813.087, 1.06);
+punch("#kb-a5-s3-east-tower-low", 839.667);
+punch("#kb-a5-s3-statue", 843.667);
+punch("#kb-a5-s3-statue", 845.387, 1.06);
+punch("#kb-a5-s3-generator", 847.987);
+punch("#kb-a5-s3-tower-ruins", 853.987);
+punch("#kb-a5-s3-tower-ruins", 857.587, 1.06);
+punch("#kb-a5-s4-west-tower", 859.987);
+punch("#kb-a5-s6-greenbriar-east", 881.587);
+punch("#kb-a5-s6-greenbriar-east", 885.107, 1.06);
+punch("#kb-a5-s6-greenbriar-close", 886.887);
+punch("#kb-a5-s6-greenbriar-wall", 892.187);
+/* A6 */
+punch("#kb-a6-s1-walmart-entrance", 993.507);
+punch("#kb-a6-s3-walgreens-reopens", 1039.767);
+punch("#kb-a6-s4-west-tower-north", 1051.507);
+punch("#kb-a6-s4-west-tower-north", 1053.487, 1.06);
+punch("#kb-a6-s5-mercy-hospital", 1056.267);
+punch("#kb-a6-s5-mercy-hospital", 1058.507, 1.06);
+punch("#kb-a6-s5-east-tower-old", 1061.067);
+punch("#kb-a6-s5-east-tower-old", 1064.487, 1.06);
+punch("#kb-a6-s7-jhs-gym", 1091.707);
+punch("#kb-a6-s7-jhs-gym", 1094.867, 1.06);
+punch("#kb-a6-s7-jhs-auditorium", 1097.707);
 </script>
 </body>
 </html>
