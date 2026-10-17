@@ -55,7 +55,7 @@ like a speck inside a crowded ring.
 | element | text | cue |
 |---|---|---|
 | ground, state lines, city outline, "Joplin" | "Joplin" | frame 0 (a1-s10 "Since" 8.76), at scale 1.00. The first move is the eyebrow, and the map drift (hold row) runs for the whole host |
-| eyebrow | "EF2 or stronger · since 1950" | "1950," 8.94 |
+| eyebrow | "EF2 or stronger · since 1950" (S36, S37) | "1950," 8.94 |
 | city outline brightens (stroke to 3 px, fill to 18 %) | (none) | "city" 9.98 |
 | city dot drops in (y −30 to 0, back.out) + label | "May 5, 1971" (S36) | "one" 11.28, label on "tornado" 11.76 |
 | rail chip 1 | "1 IN THE CITY" (S36) | "stronger." 13.76 |
