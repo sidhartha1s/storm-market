@@ -72,7 +72,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(Q + "srcfloat", { y: 0 }, { y: -4, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false }, 0.4);
 
   /* exit: wav end 11.44 (local 8.64) to 12.04 (local 9.24) */
-  tl.to([Q + "c3", Q + "src"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 8.64);
+  tl.to(Q + "c3", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 8.64);
+  tl.to(Q + "src", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 8.64); /* left, so it never crosses the chip leaving right */
 
   window.__timelines["g-a5-sjrmc-open"] = tl;
 })();
