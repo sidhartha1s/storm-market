@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a5-recs-board: A5-S11, host start a5-s11 0.00. Local t = a5-s11 words.json time. BASE that A6 copies: tile n = NIST Recommendation n,
+     positions are left = col*204, top = row*144 inside the grid (tile 7 = row 2 col 3, tile 8 = row 2 col 4, tile 13 = row 4 col 1).
+     Each tile's right half is empty for A6's tick. Full frame, ground on from frame 0. */
+  #a5r-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #a5r-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  /* grid 792 x 552 at left 380, top 250 (x 380 to 1172, y 250 to 802) */
+  #a5r-grid { position:absolute; inset:auto; left:380px; top:250px; width:792px; height:552px; }
+  .a5r-tile { position:absolute; box-sizing:border-box; width:180px; height:120px; border-radius:14px; background:#2a3644; border:1px solid #4a5560;
+    visibility:hidden; opacity:0; }
+  .a5r-n { position:absolute; inset:auto; left:16px; top:16px; font-family:Arial,sans-serif; font-weight:700; font-size:30px; line-height:34px; color:#93a3b2; }
+  /* soft light band, clipped to the grid; neutral white, so every tile stays grey */
+  #a5r-sweepclip { position:absolute; inset:auto; left:0; top:0; width:792px; height:552px; overflow:hidden; pointer-events:none; }
+  #a5r-sweep { position:absolute; inset:auto; left:0; top:0; width:240px; height:552px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.10) 50%, rgba(255,255,255,0)); }
+
+  /* chip: glass surface (cards.css .popup values), stacked 16 / RECOMMENDATIONS */
+  #a5r-chip { position:absolute; inset:auto; left:1220px; top:250px; box-sizing:border-box; padding:14px 30px 18px; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45); visibility:hidden; opacity:0; }
+  #a5r-chip-n { display:block; font-family:Arial,sans-serif; font-weight:700; font-size:84px; line-height:88px; color:#f2f5f8; letter-spacing:1px; }
+  #a5r-chip-l { display:block; font-family:Arial,sans-serif; font-weight:700; font-size:40px; line-height:46px; color:#f2f5f8; letter-spacing:1px; white-space:nowrap; }
+
+  /* source line, bottom-left (the presenter circle owns x >= 1600, y >= 680) */
+  #a5r-src { position:absolute; inset:auto; left:96px; bottom:54px; padding:5px 12px; border-radius:14px; font-family:Arial,sans-serif; font-size:19px;
+    letter-spacing:.5px; color:rgba(200,211,224,.75); background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14); visibility:hidden; opacity:0; }
+</style>
+<div id="a5r-root" data-composition-id="g-a5-recs-board" data-width="1920" data-height="1080">
+  <div id="a5r-ground"></div>
+  <div id="a5r-grid">
+    <div class="a5r-tile" id="a5r-t1"  style="left:0px;top:0px"><span class="a5r-n">1</span></div>
+    <div class="a5r-tile" id="a5r-t2"  style="left:204px;top:0px"><span class="a5r-n">2</span></div>
+    <div class="a5r-tile" id="a5r-t3"  style="left:408px;top:0px"><span class="a5r-n">3</span></div>
+    <div class="a5r-tile" id="a5r-t4"  style="left:612px;top:0px"><span class="a5r-n">4</span></div>
+    <div class="a5r-tile" id="a5r-t5"  style="left:0px;top:144px"><span class="a5r-n">5</span></div>
+    <div class="a5r-tile" id="a5r-t6"  style="left:204px;top:144px"><span class="a5r-n">6</span></div>
+    <div class="a5r-tile" id="a5r-t7"  style="left:408px;top:144px"><span class="a5r-n">7</span></div>
+    <div class="a5r-tile" id="a5r-t8"  style="left:612px;top:144px"><span class="a5r-n">8</span></div>
+    <div class="a5r-tile" id="a5r-t9"  style="left:0px;top:288px"><span class="a5r-n">9</span></div>
+    <div class="a5r-tile" id="a5r-t10" style="left:204px;top:288px"><span class="a5r-n">10</span></div>
+    <div class="a5r-tile" id="a5r-t11" style="left:408px;top:288px"><span class="a5r-n">11</span></div>
+    <div class="a5r-tile" id="a5r-t12" style="left:612px;top:288px"><span class="a5r-n">12</span></div>
+    <div class="a5r-tile" id="a5r-t13" style="left:0px;top:432px"><span class="a5r-n">13</span></div>
+    <div class="a5r-tile" id="a5r-t14" style="left:204px;top:432px"><span class="a5r-n">14</span></div>
+    <div class="a5r-tile" id="a5r-t15" style="left:408px;top:432px"><span class="a5r-n">15</span></div>
+    <div class="a5r-tile" id="a5r-t16" style="left:612px;top:432px"><span class="a5r-n">16</span></div>
+    <div id="a5r-sweepclip"><div id="a5r-sweep"></div></div>
+  </div>
+  <div id="a5r-chip"><span id="a5r-chip-n">16</span><span id="a5r-chip-l">RECOMMENDATIONS</span></div>
+  <div id="a5r-src">NIST NCSTAR 3 &middot; E.5</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a5r-";
+
+  tl.set(Q+"sweep", { x: -240 }, 0);
+
+  /* tiles land on "16" a5-s11 0.86, stagger 0.04 s from tile 1 (tile 16 starts 1.46) */
+  for (let n = 1; n <= 16; n++) {
+    tl.fromTo(Q+"t"+n, { scale: 0.8, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0.86 + (n - 1) * 0.04); /* 16 a5-s11 0.86 */
+  }
+
+  /* chip and source line on "recommendations" a5-s11 1.34 */
+  tl.fromTo(Q+"chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.34); /* RECOMMENDATIONS a5-s11 1.34 */
+  tl.fromTo(Q+"src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.34); /* RECOMMENDATIONS a5-s11 1.34 */
+
+  /* slow float after landing, finite: grid and chip drift 1.5 to 6.2 / 1.74 to 6.14 */
+  tl.fromTo(Q+"grid", { y: 0 }, { y: -5, duration: 2.35, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 1.5);
+  tl.fromTo(Q+"chip", { y: 0 }, { y: -4, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 1.74);
+
+  /* light sweep across the grid 3.74 to 6.14: "Some" a5-s11 3.74 to the end of "didn't." 6.10 */
+  tl.to(Q+"sweep", { x: 792, duration: 2.4, ease: "sine.inOut" }, 3.74); /* SOME a5-s11 3.74 */
+
+  /* exit 6.20 to 6.80, fade-through to the A6 chapter blackout: chip slides out, grid eases back, ground and source line fade */
+  tl.to(Q+"chip", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.2); /* a5-s11 6.20 */
+  tl.to(Q+"grid", { scale: 0.96, autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 6.2);
+  tl.to(Q+"src", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 6.2);
+  tl.to(Q+"ground", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 6.2);
+
+  window.__timelines["g-a5-recs-board"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
