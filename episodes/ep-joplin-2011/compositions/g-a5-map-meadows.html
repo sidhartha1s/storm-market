@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5-map-meadows: A5-S7, host = nx-a5-s7 + 0.00 for 11.08 s (wav 10.48 + 0.60). Brief briefs/a5/g-a5-map-meadows.md.
+     Comp-local time = a5-s7 word start. g-a5-counter3 (glass card right 96, top 96, 640 wide) sits on an upper track from 6.28.
+     Base: the g-intro-map BASEMAP block, copied verbatim with ids re-prefixed g-master-map- -> g-a5-map-meadows- (no geography added);
+       grid, city, streets, path on from frame 0 (CSS); sirens, places (empty, Open 2 / Open 4), ring and below-ground line off.
+       Track and main city outline get non-scaling strokes (CSS) so the 12x camera keeps them at 2 px.
+     TRACE (one-shot, uncommitted, numbers pasted): NIST NCSTAR 3 Fig 4-23 (p. 302) and Fig 4-24 (p. 304) at 300 dpi, georeferenced on
+       TIGER 2010 roads (Main St, Range Line, McClelland, MO-249 for x; 7th, 20th, 26th, 32nd and I-44 for y; ~210 px/mi) with the base's
+       own projector (media/g-intro-map/geo.py frame()). Meadows = the green-circle centroid of Fig 4-23; EF-1 = the green runs of Fig 4-24
+       (north and south strips), edges smoothed over 9 samples.
+       The base track (NWS Fig 1) runs 29 to 46 px (0.6 to 1.0 mi) SOUTH of NIST's centre track over x 760-1000, so absolute NIST
+       positions would put Meadows north of the drawn path. Both layers are therefore placed RELATIVE TO THE TRACK: each point keeps its
+       signed normal offset from NIST's track and is re-hung on the base track at the same x. Meadows: 0.46 mi south of the track
+       (Fig 4-23), inside Fig 4-24's EF-1 green at its outer edge; the outline is centred on the band's mid-line at that x (4.2 px, 0.09 mi,
+       inside the traced point) so the whole outline sits in the band: centre (787.8, 618.6), base path south edge 623.6, track 601.9.
+     Camera: from the St. John's / Greenbriar midpoint (811.6, 598.8; same transfer) at 15x, centred, pan and pull to Meadows at 12x,
+       Meadows at screen (760, 540). Outline 92 x 50 px, dots 44 px apart, r 7 px, band edge 2 px: all at 1/12 in map units.
+     Screen at 12x: outline x 714-806, y 515-565; EF-1 south band at x 712: y 497-601, at x 808: y 478-584; path edge y 600; track y 340.
+     No date or day count anywhere (C25 timing CONFLICT). No mph (EF-1 range not in facts.md). -->
+<template>
+<style>
+  #g-a5-map-meadows-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .gamm-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* base layers on from frame 0 (CSS beats the copied presentation attributes) */
+  #g-a5-map-meadows-l-streets, #g-a5-map-meadows-l-path, #g-a5-map-meadows-city-rest { opacity:1; }
+  #g-a5-map-meadows-city, #g-a5-map-meadows-track { stroke-dasharray:none; stroke-dashoffset:0; vector-effect:non-scaling-stroke; }
+  #g-a5-map-meadows-l-ring, #g-a5-map-meadows-l-sirens, #g-a5-map-meadows-l-places, #g-a5-map-meadows-l-below { display:none; }
+  .gamm-band { fill:#7fb2e5; fill-opacity:0.18; stroke:#7fb2e5; stroke-opacity:0.5; stroke-width:2; stroke-linejoin:round;
+    vector-effect:non-scaling-stroke; opacity:0; }
+  /* shimmer: dashes in map units (1.5 / 2.5 = 18 / 30 px at 12x), stroke 2 px at 12x */
+  .gamm-shim { fill:none; stroke:#7fb2e5; stroke-opacity:0.9; stroke-width:0.1667; stroke-dasharray:1.5 2.5; stroke-linejoin:round; opacity:0; }
+  /* building outline: g-a3-map-homes house style; dim until lit */
+  #g-a5-map-meadows-out { fill:#06090d; fill-opacity:0.78; stroke:#dfe7ee; stroke-width:1.5; stroke-linejoin:round;
+    vector-effect:non-scaling-stroke; opacity:0.35; }
+  .gamm-dot { fill:#c0392b; opacity:0; }
+  .gamm-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; stroke:#05080c; stroke-width:6px; stroke-linejoin:round;
+    paint-order:stroke; opacity:0; visibility:hidden; }
+  #g-a5-map-meadows-name { fill:#93a3b2; }
+  #g-a5-map-meadows-ef1 { fill:#7fb2e5; }
+  /* chip: map-family glass chip; glass clipped to the text so far (Arial Black 52, -1 ls: "EF1 WINDS" 309, " · 2 LOST" 248) */
+  #g-a5-map-meadows-chip { position:absolute; left:1000px; top:596px; height:70px; box-sizing:border-box; padding:0 18px;
+    display:flex; align-items:center; border-radius:14px; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); font:900 52px/56px 'Arial Black', Arial, sans-serif; letter-spacing:-1px; color:#f2f5f8;
+    white-space:pre; clip-path:inset(0px 248px 0px 0px round 14px); opacity:0; visibility:hidden; }
+  #g-a5-map-meadows-c2 { opacity:0; visibility:hidden; }
+  #g-a5-map-meadows-src { position:absolute; left:96px; bottom:54px; padding:5px 12px; border-radius:14px; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14);
+    font:400 19px/24px Arial, sans-serif; letter-spacing:0.5px; color:rgba(200,211,224,.75); white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-map-meadows-root" data-composition-id="g-a5-map-meadows" data-width="1920" data-height="1080" data-duration="11.08">
+  <svg class="gamm-svg" viewBox="0 0 1920 1080">
+    <g id="g-a5-map-meadows-cam">
+<!--BASEMAP-PLACEHOLDER-->
+      <!-- EF-1 polygon (Fig 4-24 green), north and south strips, under the outline -->
+      <path id="g-a5-map-meadows-band-n" class="gamm-band" d="__BAND_N__"/>
+      <path id="g-a5-map-meadows-band-s" class="gamm-band" d="__BAND_S__"/>
+      <path id="g-a5-map-meadows-shim-n" class="gamm-shim" d="__BAND_N__"/>
+      <path id="g-a5-map-meadows-shim-s" class="gamm-shim" d="__BAND_S__"/>
+      <!-- Meadows Healthcare: 92 x 50 px at 12x, centred (787.8, 618.6); 2 dots 44 px apart -->
+      <rect id="g-a5-map-meadows-out" x="783.967" y="616.517" width="7.667" height="4.167" rx="0.25"/>
+      <circle id="g-a5-map-meadows-d1" class="gamm-dot" cx="785.967" cy="618.6" r="0.5833"/>
+      <circle id="g-a5-map-meadows-d2" class="gamm-dot" cx="789.633" cy="618.6" r="0.5833"/>
+    </g>
+    <!-- HUD labels, screen space at the settled 12x camera (they enter after the move ends at 1.78) -->
+    <text id="g-a5-map-meadows-name" class="gamm-lab" x="696" y="548" text-anchor="end">Meadows Healthcare</text>
+    <text id="g-a5-map-meadows-ef1" class="gamm-lab" x="940" y="524">EF-1</text>
+  </svg>
+  <div id="g-a5-map-meadows-chip"><span id="g-a5-map-meadows-c1">EF1 WINDS</span><span id="g-a5-map-meadows-c2"> · 2 LOST</span></div>
+  <div id="g-a5-map-meadows-src">NIST Sec. 1.3 · Sec. 4.4.12 · Finding 41</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a5-map-meadows", P = "#g-a5-map-meadows-";
+  const END = 11.08;
+  const Z0 = 15, Z1 = 12;
+  const C0 = [811.6, 598.8], M = [787.8, 618.6];  /* St. John's / Greenbriar midpoint -> Meadows (map units) */
+  const A0 = [960, 540], A1 = [760, 540];          /* where each sits on screen */
+  const MOVE0 = 0.60, MOVE1 = 1.78;                /* SECOND a5-s7 0.60 -> HOME, 1.18 + 0.6 */
+  const R = 7 / Z1;
+  const tl = gsap.timeline({ paused: true });
+
+  /* camera: a pure function of comp time (log zoom, focus and anchor lerp), so any seek order lands the same frame */
+  const camEl = document.getElementById("g-a5-map-meadows-cam");
+  const ease = gsap.parseEase("power2.inOut");
+  function camAt(t) {
+    const u = ease(Math.max(0, Math.min(1, (t - MOVE0) / (MOVE1 - MOVE0))));
+    const s = Math.exp(Math.log(Z0) + (Math.log(Z1) - Math.log(Z0)) * u);
+    const fx = C0[0] + (M[0] - C0[0]) * u, fy = C0[1] + (M[1] - C0[1]) * u;
+    const ax = A0[0] + (A1[0] - A0[0]) * u, ay = A0[1] + (A1[1] - A0[1]) * u;
+    camEl.setAttribute("transform", "translate(" + (ax - fx * s).toFixed(2) + "," + (ay - fy * s).toFixed(2) + ") scale(" + s.toFixed(5) + ")");
+  }
+  camAt(0);
+  tl.to({ t: 0 }, { t: 1, duration: END, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
+
+  /* MEADOWS a5-s7 1.84: outline lights, name label, source line */
+  tl.fromTo(P + "out", { opacity: 0.35 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 1.84);
+  tl.fromTo(P + "name", { autoAlpha: 0, x: 14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.84);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.84);
+
+  /* EF1. a5-s7 3.38: band fades in under the outline, its label, chip span 1 */
+  tl.fromTo([P + "band-n", P + "band-s"], { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 3.38);
+  tl.fromTo(P + "ef1", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.5);
+  tl.fromTo(P + "chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.38);
+
+  /* TWO a5-s7 4.76: 2 dots land, chip span 2 (glass grows to the new text end, then the words) */
+  tl.fromTo([P + "d1", P + "d2"], { opacity: 0, attr: { r: 0 } }, { opacity: 1, attr: { r: R }, duration: 0.35, ease: "back.out(2)", stagger: 0.12 }, 4.76);
+  tl.fromTo(P + "chip", { clipPath: "inset(0px 248px 0px 0px round 14px)" },
+    { clipPath: "inset(0px 0px 0px 0px round 14px)", duration: 0.4, ease: "power3.out" }, 4.76);
+  tl.fromTo(P + "c2", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 4.8);
+
+  /* hold: chip floats, dots blip 1.2 s apart */
+  tl.to(P + "chip", { y: -6, duration: 1.25, ease: "sine.inOut", yoyo: true, repeat: 3 }, 5.3);
+  for (let at = 5.5; at < 10.4; at += 1.2) {
+    tl.to([P + "d1", P + "d2"], { attr: { r: R * 1.35 }, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 1 }, at);
+  }
+
+  /* LIVES a5-s7 6.28: source line exits (the counter card carries its own); band edge shimmer crawls under the counter's hold */
+  tl.to(P + "src", { autoAlpha: 0, y: 10, duration: 0.3, ease: "power3.in" }, 6.28);
+  tl.fromTo([P + "shim-n", P + "shim-s"], { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 6.28);
+  tl.fromTo([P + "shim-n", P + "shim-s"], { strokeDashoffset: 0 }, { strokeDashoffset: -12, duration: 4.2, ease: "none" }, 6.28);
+
+  /* wav end 10.48: chip slides out; the map holds to the cut into Paul's clip (A5-S8) */
+  tl.to(P + "chip", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 10.48);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
