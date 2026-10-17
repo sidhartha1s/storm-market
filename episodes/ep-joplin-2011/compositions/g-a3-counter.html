@@ -45,9 +45,8 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"n", {autoAlpha:1}, 0.4);
   tl.fromTo(P+"of", {autoAlpha:0, x:-12}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 0.4);
   const cnt = {v:0};
-  tl.to(cnt, {v:CNT_TO, duration:1.2, ease:"power4.out", onUpdate:function() {
-    const el = document.getElementById("a3c-n"); if (el) el.textContent = Math.round(cnt.v);
-  }}, 0.4);
+  const writeCount = function() { document.getElementById("a3c-n").textContent = Math.round(cnt.v); };
+  tl.to(cnt, {v:CNT_TO, duration:1.2, ease:"power4.out", onUpdate:writeCount}, 0.4);
   /* divider draws 1.70 */
   tl.fromTo(P+"div", {scaleX:0, autoAlpha:0, transformOrigin:"left center"}, {scaleX:1, autoAlpha:1, duration:0.5, ease:"power3.out"}, 1.7);
   /* DIDN'T, a3-s11 2.26: row 2 in, NONE FOUND settles 1.06 -> 1 */
