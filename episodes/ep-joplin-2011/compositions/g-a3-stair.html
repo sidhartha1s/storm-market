@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a3-stair: A3-S9, host 571.587 to 582.827 (11.24 s). nx-a3-s9 starts with the host, so local t = a3-s9 words.json time.
+     BLOCKED on the base: compositions/g-a3-house-section.html is not built, so ground, grade line, house floor (with the
+     x 1120-1250 stair opening), walls, roof and the 8.28 collapse are NOT drawn here. Only what does not need the base:
+     basement, stair, bulb + glow, chips, push, exit. The base block drops into #a3st-cam under #a3st-svg's first child. */
+  #g-a3-stair-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #a3st-cam { position:absolute; inset:0; }
+  #a3st-svg { position:absolute; inset:0; width:1920px; height:1080px; }
+
+  #a3st-chipfloat { position:absolute; inset:auto; left:96px; top:96px; }
+  #a3st-chip { position:relative; display:table; box-sizing:border-box; padding:18px 40px 18px 46px; border-radius:14px; overflow:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; }
+  #a3st-bar { position:absolute; inset:auto; left:0; top:0; bottom:0; width:8px; background:#d8a13a; }
+  #a3st-gloss { position:absolute; inset:auto; top:0; bottom:0; left:-220px; width:140px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.22), rgba(255,255,255,0)); }
+  #a3st-text { position:relative; display:block; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:60px;
+    letter-spacing:1px; color:#f2f5f8; white-space:nowrap; text-shadow:0 2px 14px rgba(0,0,0,.7); }
+
+  #a3st-srcfloat { position:absolute; inset:auto; left:96px; bottom:54px; }
+  #a3st-src { display:table; box-sizing:border-box; padding:6px 16px; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14);
+    visibility:hidden; opacity:0; }
+  .a3st-srcline { display:block; font-family:Arial,sans-serif; font-weight:400; font-size:20px; line-height:26px; letter-spacing:.5px;
+    color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-a3-stair-root" data-composition-id="g-a3-stair" data-width="1920" data-height="1080">
+  <div id="a3st-cam">
+    <svg id="a3st-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="a3st-glowgrad" gradientUnits="userSpaceOnUse" cx="800" cy="690" r="260">
+          <stop offset="0" stop-color="#f5d98b" stop-opacity="1"/>
+          <stop offset="1" stop-color="#f5d98b" stop-opacity="0"/>
+        </radialGradient>
+        <clipPath id="a3st-clip"><rect x="560" y="660" width="800" height="300"/></clipPath>
+      </defs>
+
+      <!-- basement: interior, then the three structure strokes (walls x 540-560 / 1360-1380, floor y 960-980) -->
+      <rect id="a3st-interior" x="560" y="660" width="800" height="300" fill="rgba(74,85,96,.25)"/>
+      <g id="a3st-glow" clip-path="url(#a3st-clip)" opacity="0">
+        <circle id="a3st-glowdisc" cx="800" cy="690" r="260" fill="url(#a3st-glowgrad)"/>
+      </g>
+
+      <!-- stair: 8 steps, run 30, rise 37.5, from (1250,660) to (1010,960) -->
+      <g id="a3st-stair" fill="none" stroke-linejoin="miter" stroke-linecap="square">
+        <path id="a3st-t0" d="M1250 660 H1220 V697.5" stroke="#4a5560" stroke-width="2"/>
+        <path id="a3st-t1" d="M1220 697.5 H1190 V735" stroke="#4a5560" stroke-width="2"/>
+        <path id="a3st-t2" d="M1190 735 H1160 V772.5" stroke="#4a5560" stroke-width="2"/>
+        <path id="a3st-t3" d="M1160 772.5 H1130 V810" stroke="#4a5560" stroke-width="2"/>
+        <path id="a3st-t4" d="M1130 810 H1100 V847.5" stroke="#4a5560" stroke-width="2"/>
+        <path id="a3st-t5" d="M1100 847.5 H1070 V885" stroke="#4a5560" stroke-width="2"/>
+        <path id="a3st-t6" d="M1070 885 H1040 V922.5" stroke="#4a5560" stroke-width="2"/>
+        <path id="a3st-t7" d="M1040 922.5 H1010 V960" stroke="#4a5560" stroke-width="2"/>
+      </g>
+
+      <g id="a3st-struct" fill="none" stroke="#4a5560" stroke-width="4">
+        <rect x="540" y="660" width="20" height="300"/>
+        <rect x="1360" y="660" width="20" height="300"/>
+        <rect x="540" y="960" width="840" height="20"/>
+      </g>
+
+      <!-- bulb on its cord from the floor underside (y 660) -->
+      <g id="a3st-bulbg" opacity="0">
+        <line x1="800" y1="660" x2="800" y2="685" stroke="#93a3b2" stroke-width="2"/>
+        <circle id="a3st-bulb" cx="800" cy="690" r="5" fill="#f5d98b"/>
+      </g>
+    </svg>
+  </div>
+
+  <div id="a3st-chipfloat">
+    <div id="a3st-chip">
+      <div id="a3st-bar"></div>
+      <div id="a3st-gloss"></div>
+      <span id="a3st-text">2 OF 3 NOT DOWN THERE</span>
+    </div>
+  </div>
+  <div id="a3st-srcfloat">
+    <div id="a3st-src">
+      <div class="a3st-srcline">At least 2 of 3 &middot; the third:</div>
+      <div class="a3st-srcline">circumstances unknown &middot; NIST Sec. 4.6.2.2</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a3st-";
+  const END = 11.24;
+
+  tl.set(Q + "cam", { scale: 1, transformOrigin: "960px 700px" }, 0);
+  tl.set(Q + "bar", { scaleY: 0, transformOrigin: "center top" }, 0);
+
+  /* AT @0.00: slow push 1.00 to 1.05, linear, origin (960,700), whole window */
+  tl.to(Q + "cam", { scale: 1.05, duration: END, ease: "none" }, 0);
+
+  /* AT @0.00: light fades up 0.0 to 0.8 (glow to .35, bulb and cord in) */
+  tl.to(Q + "glow", { opacity: 0.35, duration: 0.8, ease: "power2.out" }, 0);
+  tl.to(Q + "bulbg", { opacity: 1, duration: 0.8, ease: "power2.out" }, 0);
+
+  /* TWO @0.96: chip in from the left, accent bar draws, one gloss sweep */
+  tl.fromTo(Q + "chip", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.96);
+  tl.to(Q + "bar", { scaleY: 1, duration: 0.45, ease: "power2.out" }, 1.0);
+  tl.fromTo(Q + "gloss", { x: 0 }, { x: 1100, duration: 0.6, ease: "power1.inOut" }, 1.3);
+
+  /* 1.40: source chip in */
+  tl.fromTo(Q + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.4);
+
+  /* 1.5 to 7.1: glow breathes .30 to .38 (1.4 s, 4 legs) */
+  tl.fromTo(Q + "glow", { opacity: 0.3 }, { opacity: 0.38, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 1.5);
+
+  /* BASEMENT @2.48: treads light up top to bottom, stagger 0.06 (flash warm, settle to the stair stroke) */
+  for (let i = 0; i < 8; i++) {
+    const at = 2.48 + i * 0.06;
+    tl.to(Q + "t" + i, { stroke: "#f5d98b", attr: { "stroke-width": 5 }, duration: 0.12, ease: "power2.out" }, at);
+    tl.to(Q + "t" + i, { stroke: "#dfe7ee", attr: { "stroke-width": 2 }, duration: 0.3, ease: "power2.inOut" }, at + 0.12);
+  }
+
+  /* BASEMENT @9.90: glow pulses once .35 to .5 to .35 */
+  tl.to(Q + "glow", { opacity: 0.5, duration: 0.3, ease: "power2.out" }, 9.9);
+  tl.to(Q + "glow", { opacity: 0.35, duration: 0.5, ease: "power2.inOut" }, 10.2);
+
+  /* chips float +-3 px through the holds */
+  tl.fromTo(Q + "chipfloat", { y: 0 }, { y: -3, duration: 0.75, ease: "sine.inOut", yoyo: true, repeat: 11, immediateRender: false }, 0.96);
+  tl.fromTo(Q + "srcfloat", { y: 0 }, { y: -3, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 7, immediateRender: false }, 1.4);
+
+  /* exit, last 0.6 s: chips slide out left, picture fades through to the next */
+  tl.to(Q + "chip", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6);
+  tl.to(Q + "src", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6);
+  tl.to(Q + "cam", { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, END - 0.4);
+
+  window.__timelines["g-a3-stair"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
