@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a3-house-section: A3-S1, BASE of the a3 house family (g-a3-house-joints, g-a3-stair copy the <!--HOUSE--> block).
+     Host 458.97 for 10.58 s; nx-a3-s1 starts 459.17, so local t = a3-s1 words.json time + 0.20.
+     Schematic, not to scale. Foundation band is neutral and unlabelled (crawl space open, brief "Open").
+     Push 1.00 -> 1.06 about (960,540): "Ground" sits at x 146 and "No basement" at baseline 996 so both stay inside the
+     96 / 54 px text-safe margin at scale 1.06 (brief 110 and 1004 would leave it). Chip and source line are HUD, outside the push. */
+  #g-a3-house-section-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #a3hs-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #a3hs-cam { position:absolute; inset:0; }
+  #a3hs-svg { position:absolute; inset:0; width:1920px; height:1080px; }
+  .a3hs-diaglabel { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
+  .a3hs-ghostlabel { font-family:Arial,sans-serif; font-weight:700; font-size:30px; letter-spacing:1px; fill:#dfe7ee; }
+  /* start-hidden in CSS as well as by the timeline (quickref "Motion and exits") */
+  .a3hs-hid { opacity:0; visibility:hidden; }
+
+  #a3hs-hud { position:absolute; inset:0; }
+  #a3hs-chipwrap { position:absolute; inset:auto; left:96px; top:96px; }
+  #a3hs-chip { position:relative; display:table; box-sizing:border-box; padding:18px 40px 18px 46px; border-radius:14px; overflow:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; }
+  #a3hs-bar { position:absolute; inset:auto; left:0; top:0; bottom:0; width:8px; background:#d0121f; }
+  #a3hs-gloss { position:absolute; inset:auto; top:0; bottom:0; left:-220px; width:140px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.22), rgba(255,255,255,0)); }
+  #a3hs-chiptext { position:relative; display:block; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:60px;
+    letter-spacing:1px; color:#f2f5f8; white-space:nowrap; text-shadow:0 2px 14px rgba(0,0,0,.7); }
+
+  #a3hs-srcwrap { position:absolute; inset:auto; left:96px; bottom:54px; }
+  #a3hs-src { display:table; box-sizing:border-box; padding:6px 14px; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14);
+    font-family:Arial,sans-serif; font-weight:400; font-size:20px; line-height:26px; letter-spacing:.5px; color:#c8d3e0; white-space:nowrap;
+    visibility:hidden; opacity:0; }
+</style>
+<div id="g-a3-house-section-root" data-composition-id="g-a3-house-section" data-width="1920" data-height="1080">
+  <div id="a3hs-bg"></div>
+  <div id="a3hs-cam">
+    <svg id="a3hs-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="a3hs-earthgrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2a3644"/><stop offset="1" stop-color="#04070c"/>
+        </linearGradient>
+        <mask id="a3hs-ghostmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+          <rect id="a3hs-ghostdraw" x="560" y="720" width="800" height="240" fill="none" stroke="#ffffff" stroke-width="10"/>
+        </mask>
+      </defs>
+
+      <!-- DATUM: on from frame 0 -->
+      <rect id="a3hs-earth" x="0" y="660" width="1920" height="420" fill="url(#a3hs-earthgrad)"/>
+
+      <!--HOUSE: g-a3-house-section geometry (brief §3), copied verbatim by the family -->
+      <rect id="a3hs-found" class="a3hs-hid" x="520" y="660" width="880" height="40" fill="#4a5560"/>
+      <line id="a3hs-grade" x1="0" y1="660" x2="1920" y2="660" stroke="#93a3b2" stroke-width="2"/>
+      <text id="a3hs-groundlabel" class="a3hs-diaglabel" x="146" y="646">Ground</text>
+
+      <polygon id="a3hs-rooffill" class="a3hs-hid" points="480,400 960,220 1440,400" fill="rgba(147,163,178,.10)"/>
+      <polygon id="a3hs-roof" class="a3hs-hid" points="480,400 960,220 1440,400" fill="none" stroke="#93a3b2" stroke-width="3" stroke-linejoin="miter"/>
+      <rect id="a3hs-room" class="a3hs-hid" x="812" y="400" width="296" height="240" fill="rgba(216,161,58,.12)"/>
+      <g id="a3hs-wallfills" class="a3hs-hid" fill="rgba(223,231,238,.06)">
+        <rect x="520" y="400" width="20" height="240"/>
+        <rect x="1380" y="400" width="20" height="240"/>
+      </g>
+      <g id="a3hs-partfills" class="a3hs-hid" fill="rgba(223,231,238,.06)">
+        <rect x="800" y="400" width="12" height="240"/>
+        <rect x="1108" y="400" width="12" height="240"/>
+      </g>
+      <g fill="none" stroke="#dfe7ee" stroke-width="3">
+        <rect id="a3hs-wallL" class="a3hs-draw a3hs-hid" x="520" y="400" width="20" height="240"/>
+        <rect id="a3hs-wallR" class="a3hs-draw a3hs-hid" x="1380" y="400" width="20" height="240"/>
+        <rect id="a3hs-floor" class="a3hs-draw a3hs-hid" x="520" y="640" width="880" height="20"/>
+        <line id="a3hs-ceil" class="a3hs-draw a3hs-hid" x1="520" y1="400" x2="1400" y2="400"/>
+        <rect id="a3hs-partL" class="a3hs-draw a3hs-hid" x="800" y="400" width="12" height="240"/>
+        <rect id="a3hs-partR" class="a3hs-draw a3hs-hid" x="1108" y="400" width="12" height="240"/>
+        <path id="a3hs-tub" class="a3hs-draw a3hs-hid" d="M830 604 H900 V628 Q900 640 888 640 H842 Q830 640 830 628 Z" stroke-linejoin="round"/>
+      </g>
+
+      <!-- figure: crouched, head down, hands over the neck, facing left; bbox x 912-1015, y 532-640 -->
+      <g id="a3hs-figdrop" class="a3hs-hid">
+        <g id="a3hs-figbreath">
+          <path id="a3hs-figbody" d="M1015 640 H951 C939 640 935 622 943 608 C951 582 963 538 987 534 C1007 530 1017 556 1015 586 Z" fill="#d8a13a"/>
+          <circle id="a3hs-fighead" cx="929" cy="618" r="17" fill="#d8a13a" stroke="#0b1016" stroke-width="4"/>
+          <path id="a3hs-figarm" d="M957 594 C947 590 933 592 921 602" fill="none" stroke="#0b1016" stroke-width="16" stroke-linecap="round"/>
+          <path id="a3hs-figarm2" d="M957 594 C947 590 933 592 921 602" fill="none" stroke="#d8a13a" stroke-width="9" stroke-linecap="round"/>
+        </g>
+      </g>
+      <!--/HOUSE-->
+
+      <!-- basement ghost: dashed, empty, drawn on through the mask -->
+      <g id="a3hs-ghost" class="a3hs-hid">
+        <rect x="560" y="720" width="800" height="240" fill="none" stroke="#93a3b2" stroke-opacity=".6" stroke-width="3"
+          stroke-dasharray="14 10" mask="url(#a3hs-ghostmask)"/>
+      </g>
+      <text id="a3hs-ghostlabel" class="a3hs-ghostlabel a3hs-hid" x="960" y="996" text-anchor="middle">No basement</text>
+    </svg>
+  </div>
+
+  <div id="a3hs-hud">
+    <div id="a3hs-chipwrap">
+      <div id="a3hs-chip">
+        <div id="a3hs-bar"></div>
+        <div id="a3hs-gloss"></div>
+        <span id="a3hs-chiptext">8 IN 10: NO BASEMENT</span>
+      </div>
+    </div>
+    <div id="a3hs-srcwrap">
+      <div id="a3hs-src">82% of Joplin homes · NIST Finding 20 · Sec. 1.2</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a3hs-";
+  const root = document.getElementById("g-a3-house-section-root");
+  /* stroke draw-on: dash = ceil(len) + 1, measured, never typed */
+  function draw(sel, at, dur, ease) {
+    root.querySelectorAll(sel).forEach(function (el) {
+      const len = Math.ceil(el.getTotalLength()) + 1;
+      tl.set(el, { strokeDasharray: len, strokeDashoffset: len }, 0);
+      tl.set(el, { autoAlpha: 1 }, at);
+      tl.to(el, { strokeDashoffset: 0, duration: dur, ease: ease || "power2.inOut" }, at);
+    });
+  }
+
+  tl.set(Q + "bar", { scaleY: 0, transformOrigin: "center top" }, 0);
+  tl.set(Q + "figdrop", { y: -40 }, 0);
+
+  /* whole comp: slow push 1.00 -> 1.06, linear, from frame 0 to host end */
+  tl.to(Q + "cam", { scale: 1.06, transformOrigin: "960px 540px", duration: 10.58, ease: "none" }, 0);
+
+  /* "For" @0.00 (local 0.20): house draws on; walls 0.20-1.20, roof 1.00-1.60 */
+  tl.to(Q + "found", { autoAlpha: 1, duration: 0.6 }, 0.2);
+  draw(Q + "wallL, " + Q + "wallR, " + Q + "floor, " + Q + "ceil", 0.2, 1.0);
+  tl.to(Q + "wallfills", { autoAlpha: 1, duration: 0.5 }, 0.7);
+  draw(Q + "roof", 1.0, 0.6);
+  tl.to(Q + "rooffill", { autoAlpha: 1, duration: 0.4 }, 1.2);
+
+  /* "closet" @3.20 (local 3.40): the two interior partitions draw on */
+  draw(Q + "partL, " + Q + "partR", 3.4, 0.5);
+  tl.to(Q + "partfills", { autoAlpha: 1, duration: 0.3 }, 3.6);
+
+  /* "bathroom" @4.98 (local 5.18): middle room fills, tub draws on */
+  tl.to(Q + "room", { autoAlpha: 1, duration: 0.4 }, 5.18);
+  draw(Q + "tub", 5.18, 0.5);
+
+  /* "middle" @5.60 (local 5.80): figure drops in */
+  tl.to(Q + "figdrop", { y: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 5.8);
+  /* breath through the hold: scaleY from the feet, the back rises ~3 px, feet stay on the floor (4 legs of 0.8 s) */
+  tl.to(Q + "figbreath", { scaleY: 1.028, svgOrigin: "963 640", duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, 6.3);
+
+  /* "Eight" @7.36 (local 7.56): chip in, accent bar draws, one gloss sweep */
+  tl.fromTo(Q + "chip", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 7.56);
+  tl.to(Q + "bar", { scaleY: 1, duration: 0.45, ease: "power2.out" }, 7.61);
+  tl.fromTo(Q + "gloss", { x: 0 }, { x: 1100, duration: 0.6, ease: "power1.inOut" }, 7.86);
+
+  /* "basement" @8.98 (local 9.18): ghost dashes draw on 0.8 s; label and source line @9.40 (local 9.60) */
+  tl.set(Q + "ghost", { autoAlpha: 1 }, 9.18);
+  draw(Q + "ghostdraw", 9.18, 0.8, "power1.inOut");
+  tl.fromTo(Q + "ghostlabel", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.6);
+  tl.fromTo(Q + "src", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 9.6);
+
+  /* "to." 9.58 + 0.8 = local 10.58 (host end): fade-through 0.4 s into g-a3-map-homes */
+  tl.to([Q + "cam", Q + "hud", Q + "bg"], { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, 10.18);
+
+  window.__timelines["g-a3-house-section"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
