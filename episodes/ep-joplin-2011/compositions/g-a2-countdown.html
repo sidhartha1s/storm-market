@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a2-countdown: A2-S1 to A2-S6 (A2-S4 covered by g-a2-quote-108), host 290.55 for 80.9 s. Brief briefs/a2/g-a2-countdown.md.
+     Cue clock: comp-local = (nx-a2-sN data-start - host 290.55) + word start: S1 -3.02, S2 18.76, S3 28.34, S5 55.22, S6 62.60.
+     Base: the g-intro-map BASEMAP block, copied verbatim with ids re-prefixed g-master-map- -> a2cd-mm- and classes gim- -> a2cd-;
+       grid, streets and city on from frame 0 (CSS); damage path off (5:09 to 5:17 is before touchdown); sirens, places, ring B, below-ground off.
+       Ring A (r 419.9, centroid 874.1 505.7) is the siren ring: lit = its draw + pulse; dark = a2cd-ringdark; flashback = ring A at 50 % + stamp.
+     Added geometry, projected through the base projector (media/g-intro-map/geo.py frame().P, one-shot, uncommitted):
+       MO-KS state line = TIGER 2010 "State Line Rd" median lon -94.617937 -> map x 579.5; west arrow 725 -> 180 at the centroid y.
+       Webb City / Carl Junction pins = TIGER 2010 place internal points (78118: 961.6, 303.5; 11368: 772.3, 230.6): the base's
+       place layer is empty (Open 4), so the pins come from the same TIGER file the base's city outline uses (reported, orchestrator call).
+       North arrow: two legs from the main north edge (the outline's finger at x 850-900 sits between the pins), 0 outline crossings.
+     BLOCKED (open numbers): polygon 30 and polygon 31 vertices are not supplied, so neither polygon, its label, the NE-corner
+       brighten nor the "north," relight is drawn; their cue slots are kept as comments in the timeline. -->
+<template>
+<style>
+  #a2cd-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #a2cd-content { position:absolute; inset:0; }
+  .a2cd-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* base layers on from frame 0 (CSS beats the copied presentation attributes) */
+  #a2cd-mm-l-streets, #a2cd-mm-city-rest { opacity:1; }
+  #a2cd-mm-city { stroke-dashoffset:0; fill-opacity:0.03; }
+  #a2cd-mm-l-path, #a2cd-mm-l-sirens, #a2cd-mm-l-places, #a2cd-mm-ring-b, #a2cd-mm-l-below { display:none; }
+  .a2cd-pulse { opacity:0; visibility:hidden; }
+  .a2cd-ringg { opacity:1; }
+  #a2cd-ringdark, #a2cd-stamp, .a2cd-arw, .a2cd-lab, .a2cd-pin { opacity:0; visibility:hidden; }
+  #a2cd-stamp { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#f2f5f8; }
+  .a2cd-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; fill:#dfe7ee;
+    stroke:#05080c; stroke-width:6px; stroke-linejoin:round; paint-order:stroke; }
+  .a2cd-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; }
+  /* clock card: 420 wide, not the brief's 380: "5:09" 196 px + PM/CDT 52 px from card x 140 ends at 398 (measured, Arial Black 84) */
+  #a2cd-clock { position:absolute; inset:auto; left:96px; top:54px; width:420px; height:150px; border-radius:28px; overflow:hidden;
+    opacity:0; visibility:hidden; }
+  #a2cd-dial { position:absolute; left:0; top:0; width:420px; height:150px; }
+  .a2cd-tg { position:absolute; left:140px; top:0; height:150px; display:flex; align-items:center; white-space:nowrap;
+    opacity:0; visibility:hidden; }
+  .a2cd-tt { font:900 84px/84px 'Arial Black', Arial, sans-serif; color:#f2f5f8; }
+  .a2cd-ampm { display:flex; flex-direction:column; margin-left:10px; padding-top:6px; }
+  .a2cd-pm { font:700 30px/30px Arial, sans-serif; color:#dfe7ee; }
+  .a2cd-cdt { font:700 20px/20px Arial, sans-serif; letter-spacing:4px; color:#93a3b2; margin-top:4px; }
+  .a2cd-chip { position:absolute; inset:auto; left:110px; bottom:110px; padding:18px 28px; border-radius:20px; white-space:nowrap;
+    opacity:0; visibility:hidden; }
+  .a2cd-chiptxt { font:900 40px/48px 'Arial Black', Arial, sans-serif; letter-spacing:2px; color:#f2f5f8; }
+  .a2cd-src { position:absolute; inset:auto; right:96px; top:54px; padding:10px 18px; border-radius:16px; white-space:nowrap;
+    opacity:0; visibility:hidden; }
+  .a2cd-srctxt { font:700 20px/20px Arial, sans-serif; letter-spacing:2px; color:#c8d3e0; }
+  #a2cd-cite { position:absolute; inset:auto; left:140px; top:690px; width:1040px; height:270px; box-sizing:border-box;
+    padding:36px 52px; border-radius:18px; background:rgba(232,222,200,.90); box-shadow:0 18px 40px rgba(0,0,0,.35);
+    opacity:0; visibility:hidden; }
+  .a2cd-q { font:italic 400 34px/46px Georgia, 'Times New Roman', serif; color:#2a2622; white-space:nowrap; opacity:0; visibility:hidden; }
+  #a2cd-attr { font:700 20px/20px Arial, sans-serif; letter-spacing:2px; color:#6b6257; margin-top:18px; opacity:0; visibility:hidden; }
+</style>
+<div id="a2cd-root" data-composition-id="g-a2-countdown" data-width="1920" data-height="1080" data-duration="80.9">
+ <div id="a2cd-content">
+  <svg class="a2cd-svg" viewBox="0 0 1920 1080">
+    <g id="a2cd-pan">
+    <g id="a2cd-cam">
+<!--BASEMAP-SPLICE-->
+      <!-- dark state of the base ring: same centre and radius, #4a5560 3 px, dash 10/8, no pulse -->
+      <circle id="a2cd-ringdark" cx="874.1" cy="505.7" r="419.9" fill="none" stroke="#4a5560" stroke-width="3" stroke-dasharray="10 8"/>
+      <!-- flashback stamp: the base's 5:11 PM stamp position (g-intro-map stamp-a) -->
+      <text id="a2cd-stamp" x="363.1" y="714" text-anchor="end">5:11 PM</text>
+      <!-- arrow west: city west edge at the centroid y (x 731) to 399.5 px west of the state line (579.5); head 22 px -->
+      <g id="a2cd-west" class="a2cd-arw">
+        <path id="a2cd-west-shaft" d="M725.0,505.7 L202.0,505.7" fill="none" stroke="#e8c56a" stroke-width="5" stroke-linecap="round" stroke-dasharray="524" stroke-dashoffset="524"/>
+        <path id="a2cd-west-head" d="M202.0,494.7 L180.0,505.7 L202.0,516.7 Z" fill="#e8c56a"/>
+      </g>
+      <!-- label inside Kansas, end at map x 427.8 = screen 540 at s 1.0175 + pan 120: 27 px clear of ring A (x 455.0 at y 480) -->
+      <text id="a2cd-west-lab" class="a2cd-lab" x="427.8" y="482" text-anchor="end">Funnel cloud reports · SE Kansas</text>
+      <!-- arrow north: two legs, each from the main north edge to its pin, head tip 10 px short of the pin centre -->
+      <g id="a2cd-north" class="a2cd-arw">
+        <path id="a2cd-carl-shaft" d="M800.0,394.0 L777.6,262.1" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-dasharray="135" stroke-dashoffset="135"/>
+        <path id="a2cd-carl-head" d="M788.5,260.3 L774.0,240.5 L766.8,264.0 Z" fill="#dfe7ee"/>
+        <path id="a2cd-webb-shaft" d="M925.0,351.0 L942.1,328.8" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round" stroke-dasharray="29" stroke-dashoffset="29"/>
+        <path id="a2cd-webb-head" d="M950.8,335.6 L955.5,311.4 L933.4,322.1 Z" fill="#dfe7ee"/>
+      </g>
+      <!-- pins: the base's location-marker glyph (14 x 14, rx 3), full white for a named place -->
+      <rect id="a2cd-pin-carl" class="a2cd-pin" x="765.3" y="223.6" width="14" height="14" rx="3" fill="#f2f5f8" fill-opacity="0.25" stroke="#f2f5f8" stroke-width="2"/>
+      <rect id="a2cd-pin-webb" class="a2cd-pin" x="954.6" y="296.5" width="14" height="14" rx="3" fill="#f2f5f8" fill-opacity="0.25" stroke="#f2f5f8" stroke-width="2"/>
+      <!-- label above both pins: glyph top y 167 is 21 px inside ring A (x 1122 there), clear of the outline's finger tip (y 200) -->
+      <text id="a2cd-north-lab" class="a2cd-lab" x="786" y="186">Webb City · Carl Junction</text>
+    </g>
+    </g>
+  </svg>
+
+  <!-- HUD: fixed, never rides the camera -->
+  <div id="a2cd-clock" class="a2cd-glass">
+    <svg id="a2cd-dial" viewBox="0 0 420 150">
+      <circle cx="78" cy="75" r="40" fill="none" stroke="#dfe7ee" stroke-opacity="0.85" stroke-width="3"/>
+      <path d="M78,39 L78,45 M114,75 L108,75 M78,111 L78,105 M42,75 L48,75" stroke="#93a3b2" stroke-width="3" stroke-linecap="round"/>
+      <line id="a2cd-hand" x1="78" y1="75" x2="78" y2="39" stroke="#f2f5f8" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="78" cy="75" r="5" fill="#e8c56a"/>
+    </svg>
+    <div id="a2cd-t130" class="a2cd-tg"><span class="a2cd-tt">1:30</span><div class="a2cd-ampm"><span class="a2cd-pm">PM</span><span class="a2cd-cdt">CDT</span></div></div>
+    <div id="a2cd-t433" class="a2cd-tg"><span class="a2cd-tt">4:33</span><div class="a2cd-ampm"><span class="a2cd-pm">PM</span><span class="a2cd-cdt">CDT</span></div></div>
+    <div id="a2cd-t509" class="a2cd-tg"><span class="a2cd-tt">5:09</span><div class="a2cd-ampm"><span class="a2cd-pm">PM</span><span class="a2cd-cdt">CDT</span></div></div>
+    <div id="a2cd-t511" class="a2cd-tg"><span class="a2cd-tt">5:11</span><div class="a2cd-ampm"><span class="a2cd-pm">PM</span><span class="a2cd-cdt">CDT</span></div></div>
+    <div id="a2cd-t517" class="a2cd-tg"><span class="a2cd-tt">5:17</span><div class="a2cd-ampm"><span class="a2cd-pm">PM</span><span class="a2cd-cdt">CDT</span></div></div>
+  </div>
+
+  <div id="a2cd-src1" class="a2cd-src a2cd-glass"><span class="a2cd-srctxt">NWS Assessment, Table 1</span></div>
+  <div id="a2cd-src2" class="a2cd-src a2cd-glass"><span class="a2cd-srctxt">NIST E.3</span></div>
+  <div id="a2cd-src3" class="a2cd-src a2cd-glass"><span class="a2cd-srctxt">NWS Table 1 · NIST Sec. 2.2.2</span></div>
+  <div id="a2cd-src4" class="a2cd-src a2cd-glass"><span class="a2cd-srctxt">NWS Assessment, Sec. 3</span></div>
+  <div id="a2cd-src5" class="a2cd-src a2cd-glass"><span class="a2cd-srctxt">NIST Sec. 1.2</span></div>
+
+  <div id="a2cd-chip1" class="a2cd-chip a2cd-glass"><span class="a2cd-chiptxt">TORNADO WATCH</span></div>
+  <div id="a2cd-chip2" class="a2cd-chip a2cd-glass"><span class="a2cd-chiptxt">NWS BRIEFING</span></div>
+  <div id="a2cd-chip3" class="a2cd-chip a2cd-glass"><span class="a2cd-chiptxt">WARNING · NE CORNER</span></div>
+  <div id="a2cd-chip4" class="a2cd-chip a2cd-glass"><span class="a2cd-chiptxt">FIRST SIREN · 3 MIN</span></div>
+  <div id="a2cd-chip5" class="a2cd-chip a2cd-glass"><span class="a2cd-chiptxt">WHOLE CITY</span></div>
+  <div id="a2cd-chip6" class="a2cd-chip a2cd-glass"><span class="a2cd-chiptxt">NO SIREN</span></div>
+  <div id="a2cd-chip7" class="a2cd-chip a2cd-glass"><span class="a2cd-chiptxt">6 MIN EARLIER</span></div>
+
+  <!-- cite card: E12 verbatim, cut mid-sentence so the first word stays lowercase -->
+  <div id="a2cd-cite">
+    <div id="a2cd-q1" class="a2cd-q">“the media continued to report on storms</div>
+    <div id="a2cd-q2" class="a2cd-q">said to be passing to the north</div>
+    <div id="a2cd-q3" class="a2cd-q">and missing Joplin, or moving away from the City.”</div>
+    <div id="a2cd-attr">NIST NCSTAR 3, Sec. 1.2</div>
+  </div>
+ </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a2-countdown", P = "#a2cd-", M = "#a2cd-mm-";
+  const D = 80.9;                                       /* host data-duration */
+  const S1 = -3.02, S2 = 18.76, S3 = 28.34, S5 = 55.22, S6 = 62.60;  /* nx-a2-sN data-start - host 290.55 */
+  const CX = 874.1, CY = 505.7, ORG = CX + " " + CY;
+  const tl = gsap.timeline({ paused: true });
+  /* camera: inner group scales about the city centroid (one drift, ease none); outer group pans (attr strings, as the base) */
+  const cam = (s) => ({ attr: { transform: "translate(" + (CX * (1 - s)).toFixed(3) + "," + (CY * (1 - s)).toFixed(3) + ") scale(" + s + ")" } });
+  const pan = (x, y) => ({ attr: { transform: "translate(" + x + "," + y + ")" } });
+
+  tl.set(P + "cam", cam(1), 0);
+  tl.set(P + "pan", pan(0, 0), 0);
+  tl.to(P + "cam", Object.assign(cam(1.04), { duration: D, ease: "none" }), 0);
+
+  /* clock hand: 360 deg per 12 s for the whole host (tip 18.8 px/s), the comp's always-moving element */
+  tl.fromTo(P + "hand", { rotation: 0, svgOrigin: "78 75" }, { rotation: 360 * D / 12, svgOrigin: "78 75", duration: D, ease: "none" }, 0);
+
+  /* swaps: the old leaf leaves 0.25 s (clock) / 0.2 s (chip, source) before the cue, so two never show at once */
+  const timeIn = (id, at) => tl.fromTo(P + id, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, at);
+  const timeOut = (id, at) => tl.to(P + id, { autoAlpha: 0, y: -40, duration: 0.45, ease: "power3.out" }, at);
+  const chipIn = (id, at) => tl.fromTo(P + id, { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, at);
+  const chipOut = (id, at) => tl.to(P + id, { autoAlpha: 0, y: -20, duration: 0.3, ease: "power3.out" }, at);
+  const roll = (from, to, at) => { timeOut(from, at - 0.25); timeIn(to, at); };
+  const srcSwap = (from, to, at) => { chipOut(from, at - 0.2); chipIn(to, at); };
+  const chipSwap = (from, to, at) => { chipOut(from, at - 0.2); chipIn(to, at); };
+
+  /* I a2-s1 0.00 (before the host) / 1 a2-s1 3.02 = 0: map up, clock card in, 1:30 PM, source line */
+  tl.fromTo(P + "clock", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0);
+  timeIn("t130", S1 + 3.02 + 0.15);
+  chipIn("src1", S1 + 3.02 + 0.15);
+  /* TORNADO a2-s1 5.14 */
+  chipIn("chip1", S1 + 5.14);
+  /* 4 a2-s1 10.80: 4:33 PM, source NIST E.3 */
+  roll("t130", "t433", S1 + 10.80);
+  srcSwap("src1", "src2", S1 + 10.80);
+  /* BRIEFED a2-s1 14.12 */
+  chipSwap("chip1", "chip2", S1 + 14.12);
+
+  /* 509, a2-s2 1.28: 5:09 PM, source, chip out */
+  roll("t433", "t509", S2 + 1.28);
+  srcSwap("src2", "src3", S2 + 1.28);
+  chipOut("chip2", S2 + 1.28);
+  /* WARNING a2-s2 2.50: polygon 30 draws + "polygon 30" label: BLOCKED, vertices not supplied */
+  /* CORNER a2-s2 5.04: overlap brighten BLOCKED (no polygon); chip in */
+  chipIn("chip3", S2 + 5.04);
+
+  /* 5 a2-s3 0.92: 5:11 PM, source, chip out; pan 120 px toward Kansas, settled before any map text */
+  roll("t509", "t511", S3 + 0.92);
+  srcSwap("src3", "src4", S3 + 0.92);
+  chipOut("chip3", S3 + 0.92);
+  tl.to(P + "pan", Object.assign(pan(120, 0), { duration: 2.0, ease: "power2.inOut" }), S3 + 0.92);
+
+  /* SIRENS a2-s3 2.98: ring A draws 0.4 s, pulse (three copies, 1.2 s, staggered 0.4 s, repeat 1: done at S3 6.58, before the Kansas label) */
+  tl.fromTo(M + "ring-a-c", { strokeDashoffset: 2640 }, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, S3 + 2.98);
+  tl.set(M + "ring-a-pulses", { autoAlpha: 1 }, S3 + 3.38);
+  for (let i = 1; i <= 3; i++) {
+    tl.fromTo(M + "ring-a-p" + i, { autoAlpha: 0.8, scale: 1, svgOrigin: ORG },
+      { autoAlpha: 0, scale: 1.18, svgOrigin: ORG, duration: 1.2, ease: "power1.out", repeat: 1, immediateRender: false }, S3 + 3.38 + (i - 1) * 0.4);
+  }
+  /* THREE a2-s3 3.86 */
+  chipIn("chip4", S3 + 3.86);
+  /* FUNNEL a2-s3 5.66: arrow west draws 0.7 s, head lands with the shaft */
+  tl.set(P + "west", { autoAlpha: 1 }, S3 + 5.66);
+  tl.fromTo(P + "west-shaft", { strokeDashoffset: 524 }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, S3 + 5.66);
+  tl.fromTo(P + "west-head", { autoAlpha: 0, scale: 0.4, svgOrigin: "180 505.7" }, { autoAlpha: 1, scale: 1, svgOrigin: "180 505.7", duration: 0.25, ease: "back.out(2)" }, S3 + 6.2);
+  /* SOUTHEAST a2-s3 6.96 */
+  tl.fromTo(P + "west-lab", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, S3 + 6.96);
+  /* NORTH, a2-s3 10.92: polygon 30 relight BLOCKED (no polygon); arrow and label fade out */
+  tl.to([P + "west", P + "west-lab"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, S3 + 10.92);
+
+  /* a2-s4: under g-a2-quote-108 and the NIST photograph; drift and dial only, no state change */
+
+  /* 5 a2-s5 0.76: 5:17 PM, source NIST Sec. 1.2, chip out; the 5:11 ring has ended (3 min), fades */
+  roll("t511", "t517", S5 + 0.76);
+  srcSwap("src4", "src5", S5 + 0.76);
+  chipOut("chip4", S5 + 0.76);
+  tl.to(M + "ring-a", { opacity: 0, duration: 0.5, ease: "power2.out" }, S5 + 0.76);
+  /* WARNING a2-s5 2.70: polygon 31 draws, polygon 30 dims to 40 %, "polygon 31" label: BLOCKED, vertices not supplied */
+  /* WHOLE a2-s5 3.60 */
+  chipIn("chip5", S5 + 3.60);
+  /* SIRENS a2-s5 5.76: ring in its dark state */
+  tl.fromTo(P + "ringdark", { autoAlpha: 0, scale: 1.03, svgOrigin: ORG }, { autoAlpha: 1, scale: 1, svgOrigin: ORG, duration: 0.5, ease: "power3.out" }, S5 + 5.76);
+  /* QUIET. a2-s5 6.26: NO SIREN replaces WHOLE CITY */
+  chipSwap("chip5", "chip6", S5 + 6.26);
+
+  /* SIX a2-s6 2.42: flashback, ring A at 50 % + stamp 5:11 PM twice (0.3 s on, 0.3 s off), back to dark; chip 6 MIN EARLIER */
+  const F = S6 + 2.42;
+  [0, 0.6].forEach((o) => {
+    tl.to(M + "ring-a", { opacity: 0.5, duration: 0.06, ease: "none" }, F + o);
+    tl.to(P + "stamp", { autoAlpha: 0.8, duration: 0.06, ease: "none" }, F + o);
+    tl.to(P + "ringdark", { autoAlpha: 0, duration: 0.06, ease: "none" }, F + o);
+    tl.to(M + "ring-a", { opacity: 0, duration: 0.06, ease: "none" }, F + o + 0.3);
+    tl.to(P + "stamp", { autoAlpha: 0, duration: 0.06, ease: "none" }, F + o + 0.3);
+    tl.to(P + "ringdark", { autoAlpha: 1, duration: 0.06, ease: "none" }, F + o + 0.3);
+  });
+  chipSwap("chip6", "chip7", F);
+
+  /* MEDIA a2-s6 4.50: chip out first (its slot sits inside the cite card's box), source line hides, cite card in, line 1;
+     pan 90 px toward the north, settled before the pins and the label */
+  chipOut("chip7", S6 + 4.50 - 0.32);
+  chipOut("src5", S6 + 4.50);
+  tl.fromTo(P + "cite", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, S6 + 4.50);
+  tl.fromTo(P + "q1", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, S6 + 4.65);
+  tl.to(P + "pan", Object.assign(pan(120, 90), { duration: 2.0, ease: "power2.inOut" }), S6 + 4.50);
+  /* PASSING a2-s6 8.22: line 2; arrow north draws (both legs 0.6 s), heads, then the pins */
+  tl.fromTo(P + "q2", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, S6 + 8.22);
+  tl.set(P + "north", { autoAlpha: 1 }, S6 + 8.22);
+  tl.fromTo(P + "carl-shaft", { strokeDashoffset: 135 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, S6 + 8.22);
+  tl.fromTo(P + "webb-shaft", { strokeDashoffset: 29 }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, S6 + 8.22);
+  tl.fromTo(P + "carl-head", { autoAlpha: 0, scale: 0.4, svgOrigin: "774 240.5" }, { autoAlpha: 1, scale: 1, svgOrigin: "774 240.5", duration: 0.25, ease: "back.out(2)" }, S6 + 8.7);
+  tl.fromTo(P + "webb-head", { autoAlpha: 0, scale: 0.4, svgOrigin: "955.5 311.4" }, { autoAlpha: 1, scale: 1, svgOrigin: "955.5 311.4", duration: 0.25, ease: "back.out(2)" }, S6 + 8.42);
+  tl.fromTo([P + "pin-carl", P + "pin-webb"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, S6 + 8.9);
+  /* NORTH. a2-s6 8.78: line 3, then the attribution */
+  tl.fromTo(P + "q3", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, S6 + 8.78);
+  tl.fromTo(P + "attr", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, S6 + 9.3);
+  /* CARL a2-s6 12.68 */
+  tl.fromTo(P + "north-lab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, S6 + 12.68);
+
+  /* HOW a2-s6 14.20: hold with drift; exit = fade-through to g-a2-lead-time's ground over the host's last 0.6 s (ground stays) */
+  tl.to(P + "content", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, D - 0.6);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
