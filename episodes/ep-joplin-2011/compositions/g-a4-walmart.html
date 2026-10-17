@@ -243,8 +243,8 @@ window.__timelines = window.__timelines || {};
 
   /* exit, last 0.6 s: chips and source slide out left, the whole picture fades through to black */
   ["pk", "lost", "lsrc", "src"].forEach(id => tl.to(Q + id, { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6));
-  tl.to(Q + "sch", { autoAlpha: 0, duration: 0.5, ease: "power1.in" }, END - 0.5);
-  tl.to(Q + "black", { autoAlpha: 1, duration: 0.6, ease: "power1.in" }, END - 0.6);
+  tl.to(Q + "sch", { autoAlpha: 0, duration: 0.5, ease: "power1.in" }, 35.88);
+  tl.to(Q + "black", { autoAlpha: 1, duration: 0.6, ease: "power1.in" }, 35.78);
 
   window.__timelines["g-a4-walmart"] = tl;
 })();
