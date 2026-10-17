@@ -135,8 +135,6 @@ window.__timelines = window.__timelines || {};
   const CX = 874.1, CY = 505.7, ORG = CX + " " + CY;
   const PX = 1097.6, PY = 578.4;                        /* push origin: residential centroid on screen (calc.mjs) */
   const tl = gsap.timeline({ paused: true });
-  const cam = (s) => ({ attr: { transform: "translate(" + (CX * (1 - s)).toFixed(3) + "," + (CY * (1 - s)).toFixed(3) + ") scale(" + s + ")" } });
-  const pan = (x, y) => ({ attr: { transform: "translate(" + x + "," + y + ")" } });
   const push = (k) => ({ attr: { transform: "translate(" + (PX * (1 - k)).toFixed(3) + "," + (PY * (1 - k)).toFixed(3) + ") scale(" + k + ")" } });
 
   /* camera still until "best" (labels sit on the HUD, never on a move); push(1) is the identity, so frame 0 needs no set */
