@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a1-gutter, A1-S1. NWS Assessment page (printed p7), three resident phrases underlined on the voice.
+     Host: nx-a1-s1 126.51 - host 126.31 = 0.20, so every cue below is the words.json time + 0.20.
+     Page image crop: source x 135-1225, y 700-1340 fills the 1260 x 740 box (S0 = 1260/1090).
+     Camera = scale P about the box's top-left plus x/y; bars live inside the camera so they ride with the glyphs. */
+  #g-a1-gutter-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a1-gutter-page { position:absolute; left:300px; top:200px; width:1260px; height:740px; box-sizing:border-box;
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 20px 60px rgba(0,0,0,0.5); background:#f4f0e6; }
+  #g-a1-gutter-view { position:absolute; inset:0; overflow:hidden;
+    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%);
+    mask-image:linear-gradient(180deg, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%); }
+  #g-a1-gutter-cam { position:absolute; left:0; top:0; width:1260px; height:740px; }
+  #g-a1-gutter-img { position:absolute; left:-156.06px; top:-809.17px; width:1557.08px; height:2014.84px; }
+  .g-a1-gutter-bar { position:absolute; background:#d8a13a; visibility:hidden; opacity:0; }
+  /* bar boxes: x from first to last glyph +-2 px on screen, top 6 px under the line's lowest ink (descenders), 6 px thick,
+     all at camera scale P = 1.45 (local = screen / P). Glyph edges measured on the source image. */
+  #g-a1-gutter-u1  { left:296.86px; top:237.64px; width:516.01px; height:4.14px; }
+  #g-a1-gutter-u2a { left:906.05px; top:237.64px; width:307.93px; height:4.14px; }
+  #g-a1-gutter-u2b { left:26.36px;  top:278.10px; width:379.60px; height:4.14px; }
+  #g-a1-gutter-u3  { left:85.32px;  top:197.18px; width:739.11px; height:4.14px; }
+  #g-a1-gutter-src { position:absolute; left:96px; top:990px; height:24px; line-height:24px; white-space:nowrap;
+    font-family:Arial,sans-serif; font-weight:700; font-size:20px; color:#c8d3e0; visibility:hidden; opacity:0; }
+</style>
+<div id="g-a1-gutter-root" data-composition-id="g-a1-gutter" data-width="1920" data-height="1080">
+  <div id="g-a1-gutter-page">
+    <div id="g-a1-gutter-view">
+      <div id="g-a1-gutter-cam">
+        <img id="g-a1-gutter-img" src="media/candidates/a1/a1-s1_c1_nws-p13-finding2b-quotes.jpg" alt="NWS Central Region Service Assessment, Joplin, 2011, printed page 7: residents' quoted words about the sirens">
+        <div class="g-a1-gutter-bar" id="g-a1-gutter-u1"></div>
+        <div class="g-a1-gutter-bar" id="g-a1-gutter-u2a"></div>
+        <div class="g-a1-gutter-bar" id="g-a1-gutter-u2b"></div>
+        <div class="g-a1-gutter-bar" id="g-a1-gutter-u3"></div>
+      </div>
+    </div>
+  </div>
+  <div id="g-a1-gutter-src">NWS Central Region Service Assessment, Joplin, 2011 · Finding 2b</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a1-gutter-";
+  const SCALE = 1.45;
+  /* camera x/y put the phrase's source-pixel centre on the box centre (630, 370):
+     x = 630 - SCALE*(cx-135)*S0, y = 370 - SCALE*(cy-700)*S0, S0 = 1260/1090. */
+  const C1  = { x: -173.71, y: 51.53 };  // U1 centre (614.5, 890)
+  const C2A = { x: -752.82, y: 51.53 };  // U2 first line, right end (960, 890), clamped so the box stays on the page
+  const C2B = { x: 185.82,  y: -7.13 };  // U2 second line (400, 925)
+  const C3  = { x: -28.73,  y: 110.2 };  // U3 centre (528, 855)
+
+  tl.set(P+"cam", { transformOrigin: "0 0", x: 0, y: 0, scale: 1 }, 0);
+  tl.set([P+"u1", P+"u2a", P+"u2b", P+"u3"], { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* SAID a1-s1 1.34 + 0.20 */
+  tl.fromTo(P+"src", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 1.54);
+
+  /* THEY a1-s1 2.86 + 0.20: push to U1, settled before EVEN */
+  tl.to(P+"cam", { x: C1.x, y: C1.y, scale: SCALE, duration: 1.5, ease: "power2.inOut" }, 3.06);
+  /* EVEN a1-s1 4.56 to thunderstorms 5.04 + 0.5, + 0.20 */
+  tl.set(P+"u1", { autoAlpha: 1 }, 4.76);
+  tl.to(P+"u1", { scaleX: 1, duration: 0.98, ease: "none" }, 4.76);
+
+  /* SOME a1-s1 6.48 + 0.20: slide to the right end of U2's first line */
+  tl.to(P+"cam", { x: C2A.x, y: C2A.y, duration: 1.3, ease: "power2.inOut" }, 6.68);
+  /* ALL a1-s1 6.86 + 0.20 to the line wrap at A LITTLE 8.02 + 0.20 */
+  tl.set(P+"u2a", { autoAlpha: 1 }, 7.06);
+  tl.to(P+"u2a", { scaleX: 1, duration: 1.08, ease: "none" }, 7.06);
+  /* line wrap: camera returns to the left margin for "a little more water in the gutter" */
+  tl.to(P+"cam", { x: C2B.x, y: C2B.y, duration: 0.9, ease: "power2.inOut" }, 8.0);
+  /* A LITTLE a1-s1 8.02 + 0.20 to gutter 9.04 + 0.3, + 0.20 */
+  tl.set(P+"u2b", { autoAlpha: 1 }, 8.24);
+  tl.to(P+"u2b", { scaleX: 1, duration: 1.3, ease: "none" }, 8.24);
+
+  /* OTHERS a1-s1 10.16 + 0.20: slide to U3 */
+  tl.to(P+"cam", { x: C3.x, y: C3.y, duration: 1.0, ease: "power2.inOut" }, 10.36);
+  /* BOMBARDED a1-s1 10.86 + 0.20 to attention 13.04 + 0.3, + 0.20 */
+  tl.set(P+"u3", { autoAlpha: 1 }, 11.06);
+  tl.to(P+"u3", { scaleX: 1, duration: 2.48, ease: "none" }, 11.06);
+
+  /* exit: attention. end 13.44 + 0.20 to host end 14.24, page fades through to the ground */
+  tl.to(P+"page", { y: -16, autoAlpha: 0, duration: 0.6, ease: "power1.in" }, 13.64);
+  tl.to(P+"src", { autoAlpha: 0, duration: 0.6, ease: "power1.in" }, 13.64);
+
+  window.__timelines["g-a1-gutter"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
