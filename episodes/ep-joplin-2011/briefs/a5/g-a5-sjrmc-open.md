@@ -1,7 +1,7 @@
 # g-a5-sjrmc-open · A5-S1 · STANDARD (Sonnet 5.5, high)
 
 Open numbers: none. Ambiguity: "HOSPITAL FOR 140,000" is on the Picture line but not in the narration (see §5).
-Overlay, root transparent. Host start a5-s1 "St."@0.54 is too early for text; **host start = a5-s1 "183"@2.80**, duration 9.24 s (ends at wav end 11.44 + 0.60 exit).
+Overlay, root transparent. **Host start = a5-s1 "183"@2.80** (first mark), duration 9.24 s (ends at wav end 11.44 + 0.60 exit).
 Under it (lower track, the whole window): `media/candidates/a5/a5-s1_c1_fema-total-loss.jpg` (FEMA, Jace Anderson, 24 May 2011) until a5-s1 "and"@6.02, then `a5-s1_c6_nist-east-tower-fig3-14.jpg` (NIST Fig 3-14). The cut point is the orchestrator's; this brief assumes 6.02.
 
 ## 0. Claim
