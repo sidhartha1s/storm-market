@@ -6,7 +6,7 @@
    ep5/ep2). All of these assume a paused `gsap.timeline()` in scope as `tl`.
    ============================================================================ */
 
-/* ---- Ken Burns helper: every still moves (ep6). Call once per still with its
+/* ---- still motion helper: every still moves; use for a quick punch zoom on the beat, not a slow Ken Burns drift (DESIGN.md "Footage motion"). Call once per still with its
    timeline offset `at` (seconds) and duration `dur`; from/to scale + x/y in px. ---- */
 function kb(sel, at, dur, fromScale, toScale, fromX, toX, fromY, toY) {
   tl.fromTo(sel, { scale: fromScale, x: fromX, y: fromY },

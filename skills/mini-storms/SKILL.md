@@ -123,7 +123,7 @@ Priority order, per clip:
    9:16 clips are mounted centre in a blurred, darkened copy of themselves + vignette, with an
    on-screen `@handle` credit in the lower-left for the clip's whole duration (Stefan Burns
    convention: "TikTok @ghiefebri"). ALWAYS narrated over, never the source audio alone.
-6. Stills with motion: slow pan / push (3–6 % over the hold) via WAAPI; never a static still >4 s.
+6. Stills with motion: a quick punch zoom in/out, pop or overlay on the narration beat, never a slow pan/push; never a static still >4 s (DESIGN.md "Footage motion").
 - **Storm-chaser / independent videographer footage: still NEVER without a licence.** Credit ≠
   licence. Social clips of the actual event from bystanders are the target, not chasers' reels.
 - Similar-looking is fine: rain, ash, floodwater from anywhere as b-roll; only the CLAIMED
