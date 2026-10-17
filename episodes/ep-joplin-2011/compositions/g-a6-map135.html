@@ -91,100 +91,43 @@
   </g>
 </g>
 <!--/DOTS-->
-      <!-- type labels: script-placed (dots.py), outside the path by >= 10 px, >= 16 px from every dot edge -->
-      <text id="g-intro-map-dots-lab-homes" class="gimd-lab" x="668" y="568">Homes</text>
-      <text id="g-intro-map-dots-lab-apts" class="gimd-lab" x="1029" y="544">Apartments</text>
-      <text id="g-intro-map-dots-lab-out" class="gimd-lab" x="893" y="639">Outside</text>
-      <!-- placed label raised 20 px from the brief's 820: ink 784-804 clears "FOUND NO SIGN" (ink top 824) by 20 px -->
-      <text id="g-intro-map-dots-placed" class="gimd-note" x="200" y="800">154 placed · 1 not placed · location unknown</text>
-      <!-- "FOUND NO SIGN" (577 px wide) centred on the brief's x 850 would overlap its text at x 920, and the path crosses the line
-           from x ~1405, so: ink x 401-979 (clear of "Below ground", ends x 377), ink bottom 1 px under baseline 871 = 872 on the line -->
-      <text id="g-intro-map-dots-nosign" x="690" y="871" text-anchor="middle">FOUND NO SIGN</text>
-      <!-- its source text beside it in two lines that both sit above the line, ending x 1328 -->
-      <text id="g-intro-map-dots-nosign-t1" class="gimd-note" x="1002" y="840">NIST found no evidence any</text>
-      <text id="g-intro-map-dots-nosign-t2" class="gimd-note" x="1002" y="868">were underground · Finding 46</text>
     </g>
   </svg>
-  <div id="g-intro-map-dots-src">Positions schematic · NIST Table 4-3, 154 placed</div>
-  <div id="g-intro-map-dots-rail">
-    <div id="g-intro-map-dots-n">0</div>
-    <div id="g-intro-map-dots-r1" class="gimd-row">of 155 impact-related</div>
-    <div id="g-intro-map-dots-r2" class="gimd-row">Inside a structure</div>
-    <div id="g-intro-map-dots-r3" class="gimd-row">87% · NIST Finding 40</div>
-  </div>
+  <div id="g-a6-map135-chip">MOST WERE INDOORS</div>
+  <div id="g-a6-map135-src">NIST Finding 40</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  const ID = "g-intro-map-dots", P = "#g-intro-map-dots-";
-  const S8 = 9.86; /* nx-i1-s8 104.71 - host 94.85 */
-  const END = 16.28;
+  const ID = "g-a6-map135", P = "#g-a6-map135-";
+  const END = 5.0;
   const tl = gsap.timeline({ paused: true });
   const cam = (tx, ty, s) => ({ attr: { transform: "translate(" + tx + "," + ty + ") scale(" + s + ")" } });
   const q = (sel) => Array.from(document.querySelectorAll(sel));
-  const homes = q(P + "homes .gimd-dot"), apts = q(P + "apts .gimd-dot");
-  const outDots = q(P + "outside .gimd-dot"), rings = q(P + "outside .gimd-ring");
-  const inside = homes.concat(apts);
-  const land = (dots, at, stagger) => tl.fromTo(dots, { opacity: 0, attr: { r: 0 } },
-    { opacity: 0.8, attr: { r: 3.5 }, duration: 0.3, ease: "back.out(2)", stagger: stagger }, at);
-  const labIn = (el, at) => tl.fromTo(el, { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, at);
+  const inside = q(P + "homes .gam-dot").concat(q(P + "apts .gam-dot"));
+  const outside = q(P + "outside .gam-dot").concat(q(P + "outside .gam-ring"));
 
-  /* frame 0: base map, no dots. Drift scale 1.00 -> 1.01 about the comp centre over the host, ease none */
+  /* MAP IN host 0.0 (cut from the CCTV clip): lit state from frame 0; pull-out 1.00 -> 0.96 about the frame centre, linear, whole host */
   tl.set(P + "cam", cam(0, 0, 1), 0);
-  tl.to(P + "cam", Object.assign(cam(-9.6, -5.4, 1.01), { duration: END, ease: "none" }), 0);
+  tl.to(P + "cam", Object.assign(cam(38.4, 21.6, 0.96), { duration: END, ease: "none" }), 0);
 
-  /* THEY i1-s7 0.00 + 0.3: source line */
-  tl.fromTo(P + "src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.3);
+  /* DIM host 0.3: the 19 outside dots and their vehicle rings to 0.3 over 0.6 s */
+  tl.to(outside, { opacity: 0.3, duration: 0.6, ease: "power2.inOut" }, 0.3);
 
-  /* HOME, i1-s7 0.90: 59 home dots, stagger 0.01; label; label gone by 1.53 (APARTMENTS 1.68 - 0.15) */
-  land(homes, 0.9, 0.01);
-  labIn(P + "lab-homes", 0.9);
-  tl.to(P + "lab-homes", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 1.33);
+  /* BREATHE host 0.0 to 4.4: inside dots r 3.5 -> 4.025 (scale 1.15) -> 3.5, 1.6 s a breath, two breaths each,
+     delay 0 to 0.8 s by distance from the dot cloud's centre, so the last breath ends by 4.0 */
+  const cx = inside.reduce((s, d) => s + +d.getAttribute("cx"), 0) / inside.length;
+  const cy = inside.reduce((s, d) => s + +d.getAttribute("cy"), 0) / inside.length;
+  const dist = inside.map((d) => Math.hypot(+d.getAttribute("cx") - cx, +d.getAttribute("cy") - cy));
+  const dMax = Math.max.apply(null, dist);
+  inside.forEach((d, i) => tl.to(d, { attr: { r: 4.025 }, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.8 * dist[i] / dMax));
 
-  /* APARTMENTS, i1-s7 1.68: 12 dots; label; gone by 2.73 (BIG 2.88 - 0.15) */
-  land(apts, 1.68, 0.03);
-  labIn(P + "lab-apts", 1.68);
-  tl.to(P + "lab-apts", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 2.53);
+  /* CHIP + SOURCE host 1.0 */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.0);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.1);
 
-  /* BLOCKED (Open 4), no positions: BIG i1-s7 2.88 Walmart 3 + Home Depot 8 "Big box stores"; PIZZA 4.14 Pizza Hut 5 "Pizza restaurant";
-     CHURCHES, 5.14 Full Gospel 4 + Harmony Heights 3 "Churches"; HOSPITAL, 6.00 SJRMC 12 "Hospital"; NURSING 7.06 Greenbriar 19 +
-     Meadows 2 "Nursing homes"; FEW 8.16 AT&T 1, Elks 4, Stained Glass 3 + "Phone store" "Lodge" "Theater" (share the Outside window) */
-
-  /* SPOTS. i1-s7 8.48: 19 outside dots + 12 vehicle rings; label holds to 135 */
-  land(outDots, 8.48, 0.02);
-  tl.fromTo(rings, { opacity: 0, attr: { r: 0 } }, { opacity: 0.9, attr: { r: 7 }, duration: 0.35, ease: "back.out(2)", stagger: 0.03 }, 8.56);
-  labIn(P + "lab-out", 8.48);
-
-  /* 135 i1-s8 0.00: labels out 0.3; lit state (inside full + one pulse, outside to 50 %, rings stay); rail card in, count-up */
-  tl.to(P + "lab-out", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, S8);
-  tl.to(inside, { opacity: 1, duration: 0.3, ease: "power2.out" }, S8);
-  tl.to(inside, { attr: { r: 5 }, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, S8 + 0.1);
-  tl.to(outDots, { opacity: 0.5, duration: 0.3, ease: "power2.out" }, S8);
-  tl.fromTo(P + "rail", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, S8);
-  const cnt = { v: 0 };
-  tl.to(cnt, { v: 135, duration: 0.7, ease: "power4.out", onUpdate: function () {
-    const el = document.getElementById("g-intro-map-dots-n"); if (el) el.textContent = Math.round(cnt.v);
-  } }, S8);
-  ["r1", "r2", "r3"].forEach((r, i) => tl.fromTo(P + r, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, S8 + 0.7 + i * 0.3));
-
-  /* BUILDING, i1-s8 2.12: placed label */
-  tl.fromTo(P + "placed", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S8 + 2.12);
-
-  /* INVESTIGATORS i1-s8 3.00: below-ground line draws L to R 0.8 s, its label rises */
-  tl.fromTo(P + "below", { strokeDashoffset: 1301 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, S8 + 3.0);
-  tl.fromTo(P + "below-lab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, S8 + 3.35);
-
-  /* BELOW i1-s8 5.20: "FOUND NO SIGN" drops onto the line, then its source text */
-  tl.fromTo(P + "nosign", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "back.out(1.2)" }, S8 + 5.2);
-  tl.fromTo(P + "nosign-t1", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S8 + 5.3);
-  tl.fromTo(P + "nosign-t2", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S8 + 5.4);
-
-  /* hold: inside dots blip in small groups every 1.2 s; rail floats y +-3 px; cut on the host end */
-  for (let k = 0; k < 5; k++) {
-    tl.to(inside.filter((_, i) => i % 9 === (k * 4) % 9), { attr: { r: 5 }, duration: 0.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, S8 + 0.94 + k * 1.2);
-  }
-  tl.to(P + "rail", { y: 3, duration: 0.55, ease: "sine.out" }, S8 + 0.74);
-  tl.fromTo(P + "rail", { y: 3 }, { y: -3, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, S8 + 1.29);
+  /* BLACKOUT host 4.4 to 5.0: the whole comp fades to the timeline's dark ground; bo-7 follows at the host end */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.6, ease: "power1.in" }, 4.4);
 
   window.__timelines[ID] = tl;
 })();
