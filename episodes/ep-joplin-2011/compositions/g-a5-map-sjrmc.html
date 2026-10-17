@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5-map-sjrmc: A5-S4, host = nx-a5-s4 + 6.60 for 12.00 s (wav 18.00 + 0.60). Brief briefs/a5/g-a5-map-sjrmc.md.
+     Comp-local time = a5-s4 word start - 6.60. Full-frame map; g-a5-cc-standing exits at the host start.
+     Base: the g-intro-map BASEMAP block, copied verbatim from g-a5-map-meadows with ids re-prefixed (no geography added);
+       grid, city, streets, path on from frame 0 (CSS); sirens, places (empty, Open 4), ring and below-ground line off.
+     ST. JOHN'S (base has none, Open 4; traced the g-a5-map-meadows way, one-shot, uncommitted, numbers pasted): NIST NCSTAR 3
+       Fig 4-23 (p. 302) at 300 dpi, H-icon centroid (864.0, 1827.6) fig px, NIST track y 1779.0 at that x, so 48.6 px = 0.23 mi
+       SOUTH of NIST's track. x from the Meadows transfer (fig 819.3 -> map 787.8, 0.2089 map px per fig px, the scale that
+       reproduces Meadows' St. John's / Greenbriar midpoint 811.6); y re-hung on the base track (599.5 at x 797.1) + 10.2.
+       St. John's centre (797.1, 609.7): inside the base path (south edge ~621.5 at that x). Greenbriar from the same transfer
+       lands at (828.9, 585.9), midpoint (813.0, 597.8) against Meadows' 811.6, 598.8.
+     Outline: SCHEMATIC footprint 12 x 6.92 map px (lit state of A4-S14: 4 px #f2f5f8, fill .10). Camera: logZoom 1x -> 43.33x
+       so it spans 520 px, centre at screen (760, 520). Overlay (dots, bracket, arrow, labels) is authored in screen px at that
+       settled camera and carried by the camera ratio, so it rides the closing move.
+     Dots: 4 x 3 grid, 44 px pitch, centred (760, 520): cols 694 738 782 826, rows 476 520 564. Row 1 = 4 ICU (solid);
+       row 2 col 1 = the fifth solid; the other 7 turn hollow. 12 - 7 = 5 >= 4 (C1, C5/C6). -->
+<template>
+<style>
+  #g-a5-map-sjrmc-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .gams-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* base layers on from frame 0 (CSS beats the copied presentation attributes) */
+  #g-a5-map-sjrmc-l-streets, #g-a5-map-sjrmc-l-path, #g-a5-map-sjrmc-city-rest { opacity:1; }
+  #g-a5-map-sjrmc-city, #g-a5-map-sjrmc-track { stroke-dasharray:none; stroke-dashoffset:0; vector-effect:non-scaling-stroke; }
+  #g-a5-map-sjrmc-l-streets path, #g-a5-map-sjrmc-l-city path, #g-a5-map-sjrmc-l-path path { vector-effect:non-scaling-stroke; }
+  #g-a5-map-sjrmc-l-ring, #g-a5-map-sjrmc-l-sirens, #g-a5-map-sjrmc-l-places, #g-a5-map-sjrmc-l-below { display:none; }
+  /* St. John's, lit (the state A4-S14 ends on) */
+  #g-a5-map-sjrmc-out { fill:#f2f5f8; fill-opacity:0.10; stroke:#f2f5f8; stroke-width:4; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
+  .gams-dot { fill:#c0392b; fill-opacity:1; stroke:#c0392b; stroke-width:0; opacity:0; }
+  .gams-line { fill:none; stroke:#93a3b2; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+  .gams-lab { font-family:Arial, sans-serif; font-weight:700; stroke:#05080c; stroke-width:6px; stroke-linejoin:round;
+    paint-order:stroke; opacity:0; visibility:hidden; }
+  /* 26 px = the master map's place-label size; 22 px = diagram label */
+  #g-a5-map-sjrmc-name { fill:#93a3b2; font-size:26px; }
+  #g-a5-map-sjrmc-icu { fill:#93a3b2; font-size:22px; }
+  #g-a5-map-sjrmc-brk, #g-a5-map-sjrmc-arr, #g-a5-map-sjrmc-arrh { opacity:0; }
+  /* chips: map-family glass chip (g-a5-map-meadows), number in the big tier, words in the mid tier so both fit left of 1600 */
+  .gams-chip { position:absolute; left:1080px; height:70px; box-sizing:border-box; padding:0 18px; display:flex; align-items:baseline;
+    gap:14px; border-radius:14px; background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14); color:#f2f5f8; white-space:nowrap;
+    opacity:0; visibility:hidden; }
+  #g-a5-map-sjrmc-chip1 { top:300px; }
+  #g-a5-map-sjrmc-chip2 { top:400px; }
+  .gams-num { font:900 52px/70px 'Arial Black', Arial, sans-serif; letter-spacing:-1px; }
+  .gams-txt { font:700 30px/70px Arial, sans-serif; letter-spacing:0.5px; }
+  #g-a5-map-sjrmc-src { position:absolute; left:96px; bottom:54px; padding:5px 12px; border-radius:14px; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14);
+    font:400 19px/24px Arial, sans-serif; letter-spacing:0.5px; color:rgba(200,211,224,.75); white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-map-sjrmc-root" data-composition-id="g-a5-map-sjrmc" data-width="1920" data-height="1080" data-duration="12">
+  <svg class="gams-svg" viewBox="0 0 1920 1080">
+    <g id="g-a5-map-sjrmc-cam">
+<!--BASEMAP-SLOT-->
+      <!-- St. John's Regional Medical Center: 12 x 6.92 map px centred (797.1, 609.7) -->
+      <rect id="g-a5-map-sjrmc-out" x="791.1" y="606.239" width="12" height="6.923" rx="0.25"/>
+    </g>
+    <!-- overlay, screen px at the settled camera (43.33x, St. John's at 760, 520); carried by the camera ratio -->
+    <g id="g-a5-map-sjrmc-ov">
+      <circle id="g-a5-map-sjrmc-d1" class="gams-dot" cx="694" cy="476" r="9"/>
+      <circle id="g-a5-map-sjrmc-d2" class="gams-dot" cx="738" cy="476" r="9"/>
+      <circle id="g-a5-map-sjrmc-d3" class="gams-dot" cx="782" cy="476" r="9"/>
+      <circle id="g-a5-map-sjrmc-d4" class="gams-dot" cx="826" cy="476" r="9"/>
+      <circle id="g-a5-map-sjrmc-d5" class="gams-dot" cx="694" cy="520" r="9"/>
+      <circle id="g-a5-map-sjrmc-d6" class="gams-dot gams-later" cx="738" cy="520" r="9"/>
+      <circle id="g-a5-map-sjrmc-d7" class="gams-dot gams-later" cx="782" cy="520" r="9"/>
+      <circle id="g-a5-map-sjrmc-d8" class="gams-dot gams-later" cx="826" cy="520" r="9"/>
+      <circle id="g-a5-map-sjrmc-d9" class="gams-dot gams-later" cx="694" cy="564" r="9"/>
+      <circle id="g-a5-map-sjrmc-d10" class="gams-dot gams-later" cx="738" cy="564" r="9"/>
+      <circle id="g-a5-map-sjrmc-d11" class="gams-dot gams-later" cx="782" cy="564" r="9"/>
+      <circle id="g-a5-map-sjrmc-d12" class="gams-dot gams-later" cx="826" cy="564" r="9"/>
+      <!-- ICU bracket over row 1 (dots 685..835) -->
+      <path id="g-a5-map-sjrmc-brk" class="gams-line" d="M678,462 L678,450 L842,450 L842,462"/>
+      <!-- the seven: rows 2-3, east edge 835; arrow 120 px east, no destination -->
+      <path id="g-a5-map-sjrmc-arr" class="gams-line" d="M851,542 L971,542"/>
+      <path id="g-a5-map-sjrmc-arrh" class="gams-line" d="M959,533 L971,542 L959,551"/>
+      <text id="g-a5-map-sjrmc-icu" class="gams-lab" x="760" y="436" text-anchor="middle">ICU</text>
+      <text id="g-a5-map-sjrmc-name" class="gams-lab" x="500" y="354">St. John's</text>
+    </g>
+  </svg>
+  <div id="g-a5-map-sjrmc-chip1" class="gams-chip"><span class="gams-num">12</span><span class="gams-txt">FROM THE STORM</span></div>
+  <div id="g-a5-map-sjrmc-chip2" class="gams-chip"><span class="gams-num">7</span><span class="gams-txt">LOST LATER, ELSEWHERE</span></div>
+  <div id="g-a5-map-sjrmc-src">12 impact-related · Finding 42 · Table 4-3 · 14 all causes · Table 4-1</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a5-map-sjrmc", P = "#g-a5-map-sjrmc-";
+  const END = 12.0;
+  const SJ = [797.1, 609.7];                       /* St. John's centre, map px */
+  const Z1 = 43.333, Z2 = Z1 * 1.25;               /* settled (520 px outline), closing push */
+  const S1 = [760, 520];                           /* St. John's on screen once settled */
+  const W2 = [SJ[0] - 3.5, SJ[1]], S2 = [960, 560]; /* closing move: the West Tower side of the outline toward centre */
+  const PUSH0 = 0, PUSH1 = 0.68;                   /* host start -> "took"@7.28 */
+  const OUT0 = 10.0, OUT1 = 11.40;                 /* "What"@16.46 (+0.14, after the labels clear) -> wav end 18.00 */
+  const tl = gsap.timeline({ paused: true });
+
+  /* camera: a pure function of comp time (log zoom, the point held and its screen spot lerp), so any seek order lands the same frame */
+  const camEl = document.getElementById("g-a5-map-sjrmc-cam"), ovEl = document.getElementById("g-a5-map-sjrmc-ov");
+  const ease = gsap.parseEase("power2.inOut");
+  const lerp = (a, b, u) => a + (b - a) * u;
+  function camAt(t) {
+    let z, fx, fy, sx, sy;
+    if (t < OUT0) {
+      const u = ease(Math.max(0, Math.min(1, (t - PUSH0) / (PUSH1 - PUSH0))));
+      z = Math.exp(Math.log(Z1) * u);              /* 1x (base view, identity) -> Z1 */
+      fx = SJ[0]; fy = SJ[1]; sx = lerp(SJ[0], S1[0], u); sy = lerp(SJ[1], S1[1], u);
+    } else {
+      const u = ease(Math.min(1, (t - OUT0) / (OUT1 - OUT0)));
+      z = Math.exp(lerp(Math.log(Z1), Math.log(Z2), u));
+      fx = lerp(SJ[0], W2[0], u); fy = lerp(SJ[1], W2[1], u); sx = lerp(S1[0], S2[0], u); sy = lerp(S1[1], S2[1], u);
+    }
+    const tx = sx - fx * z, ty = sy - fy * z;
+    camEl.setAttribute("transform", "translate(" + tx.toFixed(2) + "," + ty.toFixed(2) + ") scale(" + z.toFixed(5) + ")");
+    /* overlay point p (screen at settled cam) = map SJ + (p - S1) / Z1 */
+    const k = z / Z1;
+    ovEl.setAttribute("transform", "translate(" + (tx + SJ[0] * z - S1[0] * k).toFixed(2) + "," + (ty + SJ[1] * z - S1[1] * k).toFixed(2) + ") scale(" + k.toFixed(5) + ")");
+  }
+  camAt(0);
+  tl.to({ t: 0 }, { t: 1, duration: END, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
+
+  const dots = [];
+  for (let i = 1; i <= 12; i++) dots.push(P + "d" + i);
+  const later = dots.slice(5);                     /* d6..d12: the seven */
+
+  /* 12 a5-s4 7.48: dots land (stagger 0.05), chip 1, source line */
+  tl.fromTo(dots, { opacity: 0, attr: { r: 0 } }, { opacity: 1, attr: { r: 9 }, duration: 0.35, ease: "back.out(2)", stagger: 0.05 }, 0.88);
+  tl.fromTo(P + "chip1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.88);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.88);
+  /* ST. a5-s4 8.86: name label */
+  tl.fromTo(P + "name", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.26);
+
+  /* FOUR a5-s4 10.12: ICU bracket draws, its label */
+  tl.fromTo(P + "brk", { opacity: 0, strokeDasharray: 186, strokeDashoffset: 186 }, { opacity: 1, strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 3.52);
+  tl.fromTo(P + "icu", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 3.62);
+
+  /* SEVEN a5-s4 12.36: chip 2 stacks under chip 1 */
+  tl.fromTo(P + "chip2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.76);
+  /* MOVED a5-s4 13.16: arrow draws east from the seven, head at its end */
+  tl.fromTo(P + "arr", { opacity: 0, strokeDasharray: 121, strokeDashoffset: 121 }, { opacity: 1, strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 6.56);
+  tl.fromTo(P + "arrh", { opacity: 0, x: -8 }, { opacity: 1, x: 0, duration: 0.2, ease: "power2.out" }, 6.98);
+  /* LOST a5-s4 14.86: the seven turn hollow (fill out, 3 px ring in), still inside the outline */
+  tl.fromTo(later, { attr: { "fill-opacity": 1, "stroke-width": 0 } }, { attr: { "fill-opacity": 0, "stroke-width": 3 }, duration: 0.4, ease: "power2.inOut", stagger: 0.05 }, 8.26);
+
+  /* hold motion: chips float, dots pulse (scale 1 -> 1.08 on r, 1.2 s cycles, finite) */
+  tl.to(P + "chip1", { y: -6, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 1.4);
+  tl.to(P + "chip2", { y: -6, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 6.3);
+  for (let at = 1.5; at < 9.8; at += 1.2) {
+    tl.to(dots, { attr: { r: 9.72 }, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, at);
+  }
+
+  /* WHAT a5-s4 16.46: labels and chips leave, then the camera eases toward the West Tower side */
+  tl.to([P + "icu", P + "name"], { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 9.86);
+  tl.to([P + "brk"], { opacity: 0, duration: 0.3, ease: "power2.in" }, 9.86);
+  tl.to(P + "src", { autoAlpha: 0, y: 10, duration: 0.3, ease: "power3.in" }, 9.86);
+  tl.to([P + "chip1", P + "chip2"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in", stagger: 0.08 }, 9.86);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
