@@ -72,7 +72,14 @@ const truth = await page.evaluate(() => {
   tl.seek(0, false);
   res.frame0VisibleDots = [...document.querySelectorAll(P + 'dots circle')].filter(c => +getComputedStyle(c).opacity > 0).length;
   tl.seek(16.2, false);
-  res.rail = [...document.querySelectorAll('#g-intro-map-dots-rail > div')].map(d => d.textContent);
+  // truth 4: every visible element whose box touches the below-ground line band (line y 880 +- 10)
+  const ly = document.querySelector(P + 'below').getBoundingClientRect().top;
+  res.onLine = [...document.querySelectorAll('#g-intro-map-dots-root text, #g-intro-map-dots-root circle, #g-intro-map-dots-root div')].filter(e => {
+    const b = e.getBoundingClientRect(); return b.width && b.bottom >= ly - 10 && b.top <= ly + 10 && b.left < 1500 && b.right > 200 && +getComputedStyle(e).opacity > 0.01 && getComputedStyle(e).visibility !== 'hidden';
+  }).map(e => (e.id || e.tagName) + ':' + e.textContent.slice(0, 40));
+  res.zeroGlyphs = [...document.querySelectorAll('#g-intro-map-dots-root svg text')].filter(e => /^\s*0\s*$/.test(e.textContent)).length;
+  res.lineY = ly;
+  res.rail =[...document.querySelectorAll('#g-intro-map-dots-rail > div')].map(d => d.textContent);
   // presenter corner: any visible text/box at x >= 1600 and y >= 680
   res.corner = [...document.querySelectorAll('#g-intro-map-dots-root text, #g-intro-map-dots-root div, #g-intro-map-dots-root circle')].filter(e => {
     const b = e.getBoundingClientRect(); return b.width && b.right > 1600 && b.bottom > 680 && +getComputedStyle(e).opacity > 0.01;
