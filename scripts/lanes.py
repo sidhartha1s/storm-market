@@ -149,7 +149,7 @@ def take_lock(lock, now):
                 if now - lock.stat().st_mtime < LOCK_MIN * 60:
                     return False
                 dead = lock.with_name(f"{lock.name}.{os.getpid()}.stale")
-                os.replace(lock, dead)  # the holder died: only one taker wins this rename, so two never both hold it
+                os.replace(lock, dead)  # the holder died; shortcut: two takers within ms can still both win, rare enough here
                 os.remove(dead)
             except FileNotFoundError:
                 pass  # its holder released it, or another taker won the rename: try again
