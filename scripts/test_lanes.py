@@ -20,7 +20,7 @@ def never(*a):
 
 
 # no test ever probes claude, reads a host or launches a lane: each test that needs one installs its own fake
-REAL_PROBE = lanes.probe
+REAL_PROBE, REAL_SPAWN = lanes.probe, lanes.spawn
 lanes.probe = lanes.spawn = lanes.read_log = never
 lanes.free_gb = lambda host: 64.0
 FAILS = []
@@ -233,6 +233,25 @@ def test_rule1_start_skips_a_profile_that_does_not_answer(tmp_path):
     assert raises(lambda: lanes.main(["start", str(ep), "voice:a1", *LANE])) and not calls["spawn"]
 
 
+def test_an_ssh_drop_after_a_good_launch_never_launches_twice(tmp_path):
+    """p4 ran twice on 18 Oct 26: ssh dropped after the Create had run, and the launcher retried."""
+    drop = (255, "Read from remote host 100.102.121.75: Connection reset by peer")
+    for i, (asked, recorded) in enumerate((((0, "1\n"), True), (drop, True), ((0, "0\n"), False))):
+        ep, creates = lane_episode(tmp_path / str(i)), []
+
+        def ps(host, script, timeout=90):
+            if "-MethodName Create" in script:
+                creates.append(host)
+                return drop  # the Create ran on the host, then the session dropped before its reply
+            return asked  # the liveness query: lane seen running, host unreadable, lane not running
+        fakes(answering={"claude2"})
+        lanes.spawn, lanes.ps = REAL_SPAWN, ps
+        assert raises(lambda: lanes.main(["start", str(ep), "source:a1", *LANE])) != recorded
+        assert ("source:a1" in lanes.load_ledger(ep).get("jobs", {})) == recorded
+        if recorded:  # a second start, the retry that doubled p4, refuses before any Create
+            assert raises(lambda: lanes.main(["start", str(ep), "source:a1", *LANE])) and creates == ["zbook"]
+
+
 def test_rule2_start_refuses_low_memory_and_a_full_lane_count(tmp_path):
     ep = lane_episode(tmp_path)
     calls = fakes(answering={"claude1"}, free=lanes.MIN_FREE_GB)
@@ -291,6 +310,7 @@ def test_rule3_relaunch_moves_a_limited_lane_to_the_next_profile(tmp_path):
 
 if __name__ == "__main__":
     for t in (test_rule1_start_skips_a_profile_that_does_not_answer,
+              test_an_ssh_drop_after_a_good_launch_never_launches_twice,
               test_rule2_start_refuses_low_memory_and_a_full_lane_count,
               test_status_launches_nothing_even_with_a_limited_lane,
               test_relaunch_backs_off_while_another_holds_the_lock,
