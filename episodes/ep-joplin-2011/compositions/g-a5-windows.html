@@ -13,8 +13,9 @@
      Nothing enters x >= 1600, y >= 680 (presenter circle). */
   #a5w-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
   #a5w-svg { position:absolute; inset:0; width:1920px; height:1080px; overflow:visible; }
-  #a5w-hl { fill:none; stroke:#d8a13a; stroke-width:3; visibility:hidden; filter:drop-shadow(0 0 8px rgba(216,161,58,.7)); }
-  #a5w-br { fill:none; stroke:#c0392b; stroke-width:3; stroke-linejoin:miter; visibility:hidden; }
+  /* dark halo first: amber and red alone wash out against the pale concrete slabs */
+  #a5w-hl { fill:none; stroke:#d8a13a; stroke-width:3; visibility:hidden; filter:drop-shadow(0 0 2px rgba(0,0,0,.85)) drop-shadow(0 0 8px rgba(216,161,58,.7)); }
+  #a5w-br { fill:none; stroke:#c0392b; stroke-width:3; stroke-linejoin:miter; visibility:hidden; filter:drop-shadow(0 0 2px rgba(0,0,0,.85)); }
 
   /* floats carry the y drift so each element keeps its own entrance and exit tweens */
   .a5w-float { position:absolute; inset:auto; }
