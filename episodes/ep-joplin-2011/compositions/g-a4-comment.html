@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a4-comment: A4-S5, host 647.747 to 651.887 (4.14 s = a4-s5 0.00 to "standing." 3.54 + 0.6 s exit). Local time = a4-s5 words.json time.
+     Overlay on the NIST Home Depot photo (c1, mounted under the host by the orchestrator). Root transparent: no ground.
+     COMMENT CARD base copied from g-a1-numb (#a1n-card): 760 wide, left 120, centred on y 500; only the text and the surface change.
+     Surface = glass card (tokens.md) because it sits over a photo; the base's opaque panel is for the dark ground.
+     Card is about 300 high, so its bottom stays near y 650, above the presenter zone (x >= 1600, y >= 680). */
+  #a4c-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  #a4c-cardwrap { position:absolute; inset:auto; left:120px; top:0; width:760px; height:1000px; display:flex; align-items:center; }
+  #a4c-card { box-sizing:border-box; width:760px; min-height:240px; padding:36px 44px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); visibility:hidden; opacity:0; }
+  .a4c-meta { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2;
+    visibility:hidden; opacity:0; }
+  #a4c-r1 { margin-bottom:20px; }
+  #a4c-r2 { font-size:40px; letter-spacing:0; line-height:1.25; color:#f2f5f8; margin-bottom:20px; }
+  #a4c-r2 span { display:inline-block; visibility:hidden; opacity:0; }
+  #a4c-likes { height:30px; } /* reserved for the like count; stays empty until the orchestrator confirms it (Open 2) */
+</style>
+<div id="a4c-root" data-composition-id="g-a4-comment" data-width="1920" data-height="1080">
+  <div id="a4c-cardwrap">
+    <div id="a4c-card">
+      <div id="a4c-r1" class="a4c-meta">YouTube comment</div>
+      <div id="a4c-r2" class="a4c-meta"><span id="a4c-l1">“what about that Home Depot?</span> <span id="a4c-l2">Think that'd be a bad spot?”</span></div>
+      <div id="a4c-r3" class="a4c-meta">under “JOPLIN, MO, Tornado, 22 May 2011”</div>
+      <div id="a4c-likes"></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a4c-";
+  /* r2 is a container: the row shows from its first line, the two lines reveal one by one */
+  tl.set(Q+"r2", { autoAlpha: 1 }, 0);
+
+  /* card in 0.00 to 0.60 on "People" a4-s5 0.00 */
+  tl.fromTo(Q+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0); /* PEOPLE a4-s5 0.00 */
+  tl.fromTo(Q+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.2); /* PEOPLE a4-s5 0.00 + card settle */
+  tl.fromTo(Q+"l1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.64); /* ASK a4-s5 0.64 */
+  tl.fromTo(Q+"l2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 1.26); /* STORE a4-s5 1.26, whole comment on screen by LOT. 1.62 */
+  tl.fromTo(Q+"r3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 1.62); /* LOT. a4-s5 1.62 */
+
+  /* card float y +-4 px, 4 s sine period, finite: 0.60 to 3.60 */
+  tl.to(Q+"card", { y: 4, duration: 1, ease: "sine.inOut" }, 0.6);
+  tl.fromTo(Q+"card", { y: 4 }, { y: -4, duration: 2, ease: "sine.inOut", immediateRender: false }, 1.6);
+
+  /* exit 3.54 to 4.14: slide out left (the entrance side) on "standing." a4-s5 3.54; clear before the plan cut at "About" 4.56 */
+  tl.to(Q+"card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 3.54); /* STANDING. a4-s5 3.54 */
+
+  window.__timelines["g-a4-comment"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
