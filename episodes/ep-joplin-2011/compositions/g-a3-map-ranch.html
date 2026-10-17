@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a3-map-ranch: A3-S10 + A3-S11, host 597.827 for 20.08 s (opens on the g-a3-stair end; ends nx-a3-s11 "was." 6.08 + 1.0, clamped to bo-4).
+     Brief briefs/a3/g-a3-map-ranch.md. Comp-local = a3-s10 word + 0.22 (nx-a3-s10 598.047 - host 597.827); a3-s11 word + 13.24 (611.067 - 597.827).
+     Base: the g-intro-map BASEMAP block, copied verbatim from g-a3-map-homes with ids re-prefixed g-a3-map-homes- -> g-a3-map-ranch-
+       (no geography added); grid, city, streets, path on from frame 0 (CSS); sirens, places, ring and below-ground line off.
+     DOTS: the 59 house dots at the exact g-a3-map-homes positions (HOUSES + DOTS offsets at its Z 4.46), at .30, r 2.5 at the city view.
+       BLOCKED: the 12 apartment dots (g-a3-apartments is not built; its positions do not exist yet).
+     POCKET: BLOCKED (H15 gives no place; the orchestrator supplies the outline). #g-a3-map-ranch-l-pocket stays empty, and with it the push
+       toward the pocket (a3-s10 5.74 "neighborhood"), fill (7.06), label (8.70), hatch (10.08) and the pulse (11.06), so no pull-back either.
+     STRIP: media/g-a3-map-ranch/geo.py (numbers only). 20th St x Range Line at (935.7, 532.0). The building layer is BLOCKED (Open 4, no
+       research/map-positions.md), so the Walmart-to-Home Depot extent is not known: the strip is 20th St within 0.25 mi (11.5 px at
+       46.132 px/mi) of Range Line, 23.3 px long, until that layer lands.
+       CONFLICT with B17: in the base the track crosses Range Line at y 562.4, 30.4 px (0.66 mi) SOUTH of 20th St, and 20th St lies just
+       outside the path's north edge (path spans y 539-588 there). B17 puts the centre just north of 20th. The base's path, not this comp, decides it.
+     CAMERA: city view, a 6 px/s drift left for the whole host (no push while the pocket is blocked). -->
+<template>
+<style>
+  #g-a3-map-ranch-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .gamr-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* base layers on from frame 0 (CSS beats the copied presentation attributes) */
+  #g-a3-map-ranch-l-streets, #g-a3-map-ranch-l-path, #g-a3-map-ranch-city-rest { opacity:1; }
+  #g-a3-map-ranch-city, #g-a3-map-ranch-track { stroke-dasharray:none; stroke-dashoffset:0; }
+  #g-a3-map-ranch-l-ring, #g-a3-map-ranch-l-sirens, #g-a3-map-ranch-l-places, #g-a3-map-ranch-l-below { display:none; }
+  .gamr-dot { fill:#c0392b; opacity:0.3; }
+  .gamr-strip { fill:none; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:25; stroke-dashoffset:25; }
+  #g-a3-map-ranch-strip-halo { stroke:#f5d98b; stroke-width:16; opacity:0.35; filter:url(#g-a3-map-ranch-blur); }
+  #g-a3-map-ranch-strip { stroke:#f5d98b; stroke-width:6; opacity:0.8; }
+  #g-a3-map-ranch-strip-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#93a3b2;
+    stroke:#05080b; stroke-width:6; stroke-linejoin:round; paint-order:stroke; opacity:0; visibility:hidden; }
+  .gamr-chip { position:absolute; left:96px; top:96px; height:70px; box-sizing:border-box; padding:0 18px;
+    display:flex; align-items:center; border-radius:20px; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); opacity:0; visibility:hidden; }
+  .gamr-chiptxt { font:900 52px/56px 'Arial Black', Arial, sans-serif; letter-spacing:-1px; color:#f2f5f8; white-space:nowrap; }
+  .gamr-src { position:absolute; left:96px; top:988px; height:38px; box-sizing:border-box; padding:0 16px;
+    display:flex; align-items:center; border-radius:12px; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); font:700 20px/38px Arial, sans-serif; color:#c8d3e0; white-space:nowrap;
+    opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-map-ranch-root" data-composition-id="g-a3-map-ranch" data-width="1920" data-height="1080" data-duration="20.08">
+  <svg class="gamr-svg" viewBox="0 0 1920 1080">
+    <defs><filter id="g-a3-map-ranch-blur" x="-50%" y="-200%" width="200%" height="500%"><feGaussianBlur stdDeviation="4"/></filter></defs>
+    <g id="g-a3-map-ranch-cam">
+@@BASEMAP@@
+      <g id="g-a3-map-ranch-dots"></g>
+      <g id="g-a3-map-ranch-l-pocket"><!-- BLOCKED: pocket outline, fill, 45-degree hatch and label from the orchestrator's source --></g>
+      <path id="g-a3-map-ranch-strip-halo" class="gamr-strip" d="M924.1,532.4 L933.8,532.5 L938.2,531.3 L947.2,531.5"/>
+      <path id="g-a3-map-ranch-strip" class="gamr-strip" d="M924.1,532.4 L933.8,532.5 L938.2,531.3 L947.2,531.5"/>
+      <text id="g-a3-map-ranch-strip-lab" x="959" y="520">20th Street &amp; Range Line Road</text>
+    </g>
+  </svg>
+  <div id="g-a3-map-ranch-chip" class="gamr-chip"><span id="g-a3-map-ranch-chip-t" class="gamr-chiptxt">BASEMENTS HELD</span></div>
+  <div id="g-a3-map-ranch-src" class="gamr-src"><span id="g-a3-map-ranch-src-t">NIST Finding 46 · Sec. 1.2</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a3-map-ranch", P = "#g-a3-map-ranch-", NS = "http://www.w3.org/2000/svg";
+  const S10 = 0.22;  /* nx-a3-s10 598.047 - host 597.827 */
+  const S11 = 13.24; /* nx-a3-s11 611.067 - host 597.827 */
+  const END = 20.08;
+  /* g-a3-map-homes houses.py: [x, y, dots] in map units; dot offsets in px at its push Z = 4.46 (positions unchanged here) */
+  const HOUSES = [[723.77,608.69,1],[735.08,603.87,1],[736.57,594.67,1],[785.07,592.88,2],[792.37,583.62,1],[798.74,588.53,1],[800.81,611.7,1],[810.01,615.41,1],[814.93,588.16,1],[815.8,575.93,1],[817.9,603.2,1],[828.92,566.86,1],[831.91,600.36,1],[832.95,581.6,1],[836.6,571.66,2],[838.6,591.2,1],[841.39,580.54,1],[845.52,598.94,1],[848.49,575.33,1],[851.26,567.3,1],[857.93,603.74,2],[859.04,571.92,1],[865.7,576.08,2],[867.75,585.51,2],[868.19,565.54,1],[881.97,549.77,1],[882.57,594.11,1],[889.95,580.3,1],[893.92,567.78,1],[895.07,557.22,1],[896.82,549.5,1],[900.74,542.8,1],[906.3,565.06,1],[912.02,572.29,1],[914.54,547.66,1],[916.26,557.35,1],[922.14,570.87,1],[930.66,564.83,1],[935.72,552.97,1],[938.14,569.25,1],[948.69,577.81,1],[949.11,561.98,1],[957.68,584.04,2],[966.15,583.13,1],[969.67,553.88,1],[977.45,587.13,3],[986.25,569.98,1],[987.36,582.5,1],[997.37,564.62,1],[1008.22,572.49,1],[1020.18,575.12,1]];
+  const ZH = 4.46, R = 2.5;
+  const DOTS = { 1: [[0, 4]], 2: [[-5, 4], [5, 4]], 3: [[-5, 4], [5, 4], [0, -3.5]] };
+  const tl = gsap.timeline({ paused: true });
+
+  /* dots: shapes only, no text */
+  const layer = document.getElementById("g-a3-map-ranch-dots");
+  const dots = [];
+  HOUSES.forEach(function (h) {
+    DOTS[h[2]].forEach(function (q) {
+      const c = document.createElementNS(NS, "circle");
+      c.setAttribute("class", "gamr-dot");
+      c.setAttribute("cx", (h[0] + q[0] / ZH).toFixed(3));
+      c.setAttribute("cy", (h[1] + q[1] / ZH).toFixed(3));
+      c.setAttribute("r", R);
+      layer.appendChild(c);
+      dots.push(c);
+    });
+  });
+
+  /* camera: the city view from frame 0, drifting left 6 px/s for the whole host */
+  tl.to(P + "cam", { x: -6 * END, duration: END, ease: "none" }, 0);
+
+  /* AND a3-s10 5.10: source line in (the city view and dots are on from frame 0) */
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, S10 + 5.10);
+  /* NOBODY a3-s10 11.06: chip in */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, S10 + 11.06);
+  /* a3-s10 end 12.34 -> MOST a3-s11 0.00: chip out 0.4 s, gone by 13.10, before the counter card enters at 13.24 */
+  tl.to(P + "chip", { autoAlpha: 0, x: -60, duration: 0.4, ease: "power3.in" }, S11 - 0.54);
+  /* STORES a3-s11 0.88: strip glow draws east along 20th Street, 0.8 s, no label yet */
+  tl.to([P + "strip-halo", P + "strip"], { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, S11 + 0.88);
+  /* STAFF a3-s11 5.12: strip label in (the counter exits at 18.14) */
+  tl.fromTo(P + "strip-lab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, S11 + 5.12);
+
+  /* holds: dots blip in small groups (r x1.5 and back) 1.2 s apart; the strip halo breathes once it is drawn */
+  for (let k = 0, at = 0.6; at < END - 0.6; k++, at += 1.2) {
+    tl.to(dots.filter(function (d, i) { return i % 6 === k % 6; }), { attr: { r: R * 1.5 }, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 1 }, at);
+  }
+  tl.to(P + "strip-halo", { opacity: 0.6, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, S11 + 1.8);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
