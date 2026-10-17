@@ -50,6 +50,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"of", {autoAlpha:0, x:-12}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 0.3);
   const cnt = {v:CNT_FROM};
   const writeCount = function() { document.getElementById("a5c-n").textContent = Math.round(cnt.v); };
+  tl.to(cnt, {v:CNT_FROM, duration:0.3, onUpdate:writeCount}, 0); /* a seek back to 0 rewrites 102 (the 135 stays otherwise) */
   tl.to(cnt, {v:CNT_TO, duration:0.9, ease:"power3.out", onUpdate:writeCount}, 0.3);
   /* divider draws 1.30, ends as row 2 arrives */
   tl.fromTo(P+"div", {scaleX:0, autoAlpha:0, transformOrigin:"left center"}, {scaleX:1, autoAlpha:1, duration:0.5, ease:"power3.out"}, 1.3);
