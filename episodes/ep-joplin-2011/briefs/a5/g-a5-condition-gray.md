@@ -20,7 +20,7 @@ Plan view, north unspecified (no compass on screen). Plan rectangle 1200 x 520 p
 - Beds: 6 bed icons (rounded rect 90 x 44 px, `#dfe7ee` at 0.85) start inside rooms 2, 4, 6 (top) and 3, 5, 7 (bottom), centred in their rooms; end in the hallway in one row at y 560, x = 300, 470, 640, 810, 980, 1150 (+-10 px).
 - Clock: top-left zone, left 96, top 96, the A2 countdown clock's look (Courier New 700, as the A2 clock brief sets it).
 - Label "Condition Gray": diagram label 26 to 30 px `#d8a13a` right of the hallway's west end at x 220, y 448 (just above the hallway, not over a wall line).
-- Chip + source chip: right column, left 1440 is too close to the corner; put the chip at left 960, top 870, centred, inside y <= 1026.
+- Chip + its source chip: centred on x 960, top 860, the pair ending above y 1026 and clear of the bottom-left source line.
 - Nothing at x >= 1600, y >= 680.
 
 ## 4. Must be true in the picture
