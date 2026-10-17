@@ -44,6 +44,11 @@ class DojoDraft(unittest.TestCase):
         self.assertEqual(self.called.read_text().strip(), "args=[ep-good_1 draft] workers=[2]")
         self.assertFalse(self.req.exists())
 
+    def test_trailing_cr_is_dropped_by_set_p(self):
+        # findstr reads "ep-good_1\r" as one CR-ended line; set /p drops the CR, so render.cmd gets the clean slug.
+        self.assertEqual(self.run_wrapper(b"ep-good_1\r"), 0)
+        self.assertEqual(self.called.read_text().strip(), "args=[ep-good_1 draft] workers=[2]")
+
     def test_leading_dash_is_only_a_folder_name(self):
         self.assertEqual(self.run_wrapper(b"-dash"), 0)
         self.assertEqual(self.called.read_text().strip(), "args=[-dash draft] workers=[2]")
