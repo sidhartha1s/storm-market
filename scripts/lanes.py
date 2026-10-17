@@ -3,18 +3,28 @@
 
 Why: the orchestrator ran episode jobs one after another and waited, while other jobs had every input on disk.
 The Stop hook `~/.claude/hooks/lane-gate.py` runs `status --json` for every episode this session claimed and
-refuses to end the turn while any job is READY or STALE. HOLD (with a reason, lapsing after HOLD_H) is the only
+refuses to end the turn while any job is READY, STALE or FAILED. HOLD (with a reason, lapsing after HOLD_H) is the only
 way past it.
 
 State comes from disk; `<ep>/lanes.json` (gitignored) adds only what disk cannot show: which session orchestrates,
 which jobs were launched and when they ended, and which are held.
 
   python3 scripts/lanes.py claim  episodes/<slug>            # this Claude session orchestrates the episode
-  python3 scripts/lanes.py start  episodes/<slug> verify:a4 brief:a4 [--host zbook] [--minutes 60]
+  python3 scripts/lanes.py start  episodes/<slug> verify:a4 brief:a4 [--host zbook] [--minutes 60]   # records lanes run elsewhere
+  python3 scripts/lanes.py start  episodes/<slug> brief:a4 --host zbook --cmd "type b.md | {cli} -p --model opus" --log <path on that host> [--profile claude2]
   python3 scripts/lanes.py end    episodes/<slug> verify:a4   # the lane stopped (its output may still need syncing back)
   python3 scripts/lanes.py hold   episodes/<slug> source:z1|all --reason "z1 media sits in the a6 folder"
   python3 scripts/lanes.py unhold episodes/<slug> source:z1
-  python3 scripts/lanes.py status episodes/<slug> [--json]   # exit 2 while any job is READY or STALE
+  python3 scripts/lanes.py status episodes/<slug> [--json]   # exit 2 while any job is READY, STALE or FAILED
+
+Launching (why: lanes sat dead for hours on an exhausted profile or a full ZBook). `start --cmd` runs one job's command
+itself, hidden and detached, on host local or zbook, with {cli} replaced by the profile (claudeN, the wrapper that sets
+CLAUDE_CONFIG_DIR) and all output sent to --log. The three rules:
+  1. it first probes the profile (`claude -p ok --model haiku` under its CLAUDE_CONFIG_DIR); on a limit, an is_error
+     reply or a logged-out profile it probes the next ~/.claude-accounts/claude* profile. It never waits for a reset.
+  2. every start refuses while the host has MIN_FREE_GB or less free, or MAX_LANES lanes are already RUNNING
+  3. a running lane whose log tail says it hit a limit is FAILED (blocking); `status` relaunches it on the next
+     profile that answers
 
 Groups: one per segment prefix (a1 = A1-S*), except H1, T1 and I1, which form `intro`. Jobs per group g:
   voice:g   every segment of g is locked (no open [verify] in its heading block) and has audio/<id>.wav, and
@@ -27,9 +37,12 @@ Groups: one per segment prefix (a1 = A1-S*), except H1, T1 and I1, which form `i
   build:<comp>  compositions/<comp>.html, one per briefs/<g>/<comp>.md (needs voice:g and words:g DONE)
 """
 import argparse
+import base64
 import csv
 import json
 import os
+import re
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -41,7 +54,86 @@ from tts_episode import open_verify_ids, parse_segments  # noqa: E402
 INTRO = {"h1", "t1", "i1"}
 HOLD_H = 3          # a hold lapses after this many hours, so a wait is re-decided, never forgotten
 DEFAULT_MIN = 60    # a lane with no end recorded this many minutes after its start is presumed dead (STALE)
-BLOCKING = ("READY", "STALE")
+BLOCKING = ("READY", "STALE", "FAILED")
+HOSTS = ("local", "zbook")
+MIN_FREE_GB = 4     # a lane never starts on a host with this much free memory or less
+MAX_LANES = 4       # ...or while this many lanes are RUNNING
+ACCOUNTS = Path.home() / ".claude-accounts"
+LIMIT = re.compile(r"hit your (\w+ )?limit|session limit|usage limit reached", re.I)
+
+
+def ps(host, script, timeout=90):
+    """(exit code, output) of a PowerShell script on host: the one place that knows how to reach a host."""
+    argv = ["powershell", "-NoProfile", "-NonInteractive", "-EncodedCommand",
+            base64.b64encode(script.encode("utf-16-le")).decode()]  # encoded, so no quoting has to survive ssh and cmd
+    if host != "local":
+        argv = ["ssh", "-n", "-o", "ConnectTimeout=15", host, " ".join(argv)]
+    try:
+        r = subprocess.run(argv, capture_output=True, text=True, encoding="utf-8", errors="replace",
+                           stdin=subprocess.DEVNULL, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return 124, f"timed out after {timeout}s"
+    return r.returncode, r.stdout + r.stderr
+
+
+def quote(s):
+    return "'" + s.replace("'", "''") + "'"  # a PowerShell literal string
+
+
+def probe(host, profile):
+    """Rule 1: True only if the profile answers; a limit, an is_error reply, a logged-out profile or an error is False."""
+    code, out = ps(host, f'$env:CLAUDE_CONFIG_DIR = "$HOME\\.claude-accounts\\{profile}"; '
+                         '& "$HOME\\.local\\bin\\claude.exe" -p ok --model haiku --output-format json')
+    return code == 0 and '"is_error":false' in out.replace(" ", "") and not LIMIT.search(out)
+
+
+def free_gb(host):
+    code, out = ps(host, "[math]::Round((Get-CimInstance Win32_OperatingSystem).FreePhysicalMemory/1MB,1)")
+    try:
+        return float(out.strip())
+    except ValueError:
+        sys.exit(f"[lanes] FAIL: cannot read free memory on {host}: {out.strip()[-200:]}")
+
+
+def spawn(host, cmd, log):
+    """Start cmd on host hidden, as a WMI process (it outlives this call and the ssh session), output to log."""
+    line = f'cmd /s /c "({cmd}) > "{log}" 2>&1"'
+    code, out = ps(host, "$si = New-CimInstance -ClassName Win32_ProcessStartup -ClientOnly -Property @{ShowWindow=[uint16]0}; "
+                         "(Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments "
+                         f"@{{CommandLine={quote(line)}; ProcessStartupInformation=$si}}).ReturnValue")
+    if code != 0 or out.strip() != "0":
+        sys.exit(f"[lanes] FAIL: launch on {host} failed: {out.strip()[-300:]}")
+
+
+def read_log(host, log):
+    """The last lines of a lane's log ("" before it exists), or None when the host cannot be read."""
+    code, out = ps(host, f"$p = {quote(log)}; if (Test-Path -LiteralPath $p) {{ Get-Content -Tail 5 -LiteralPath $p }}")
+    return out if code == 0 else None
+
+
+def profile_order(first=None, skip=None):
+    """~/.claude-accounts/claude* names, starting at first, without skip."""
+    names = sorted(p.name for p in ACCOUNTS.glob("claude*") if p.is_dir())
+    i = names.index(first) if first in names else 0
+    return [n for n in names[i:] + names[:i] if n != skip]
+
+
+def gate(states, host):
+    """Rule 2: why a lane may not start on host now, or None."""
+    running = sum(s["state"] == "RUNNING" for s in states)
+    if running >= MAX_LANES:
+        return f"{running} lanes already RUNNING (cap {MAX_LANES})"
+    gb = free_gb(host)
+    return f"{host} has {gb} GB free (needs more than {MIN_FREE_GB})" if gb <= MIN_FREE_GB else None
+
+
+def launch(run, order):
+    """Rule 1: run the lane on the first profile in order that answers; its ledger entry, or None if none answers."""
+    for p in order:
+        if probe(run["host"], p):
+            spawn(run["host"], run["cmd"].replace("{cli}", p), run["log"])
+            return dict(run, profile=p)
+    return None
 
 
 def load_ledger(ep):
@@ -107,7 +199,8 @@ def job_table(ep):
 
 
 def job_states(ep, ledger, now=None):
-    """[{job, state, note}], state by first match: DONE > HELD > BLOCKED > RUNNING > STALE > READY."""
+    """[{job, state, note}], state by first match: DONE > HELD > BLOCKED > FAILED > RUNNING > STALE > READY.
+    Reads the log tail of every launched lane still running, on its host."""
     now = time.time() if now is None else now
     runs, holds = ledger.get("jobs", {}), ledger.get("holds", {})
     out = []
@@ -124,6 +217,11 @@ def job_states(ep, ledger, now=None):
             stale = now - run["started"] >= run.get("minutes", DEFAULT_MIN) * 60
             state = "STALE" if stale else "RUNNING"
             note = f"on {run.get('host', '?')} since {time.strftime('%H:%M', time.localtime(run['started']))}"
+            log = read_log(run["host"], run["log"]) if run.get("log") else ""
+            if log is None:
+                note += " (its log is unreadable)"
+            elif LIMIT.search(log):
+                state, note = "FAILED", f"{run.get('profile')} hit its limit on {run['host']}"
         else:
             state = "READY"
             if run.get("ended"):
@@ -139,7 +237,10 @@ def main(argv=None):
     ap.add_argument("cmd", choices=["claim", "start", "end", "hold", "unhold", "status"])
     ap.add_argument("episode")
     ap.add_argument("jobs", nargs="*")
-    ap.add_argument("--host", default="local")
+    ap.add_argument("--host", default="local", choices=HOSTS)
+    ap.add_argument("--cmd", dest="lane_cmd", help="start: the lane's command, {cli} where the profile goes")
+    ap.add_argument("--log", help="start --cmd: the lane's log path on its host")
+    ap.add_argument("--profile", help="start --cmd: the profile to try first")
     ap.add_argument("--minutes", type=int, default=DEFAULT_MIN)
     ap.add_argument("--reason", default="")
     ap.add_argument("--session", default=os.environ.get("CLAUDE_CODE_SESSION_ID"))
@@ -153,6 +254,18 @@ def main(argv=None):
 
     if a.cmd == "status":
         states = job_states(ep, ledger, now)
+        failed = [s for s in states if s["state"] == "FAILED"]
+        for s in failed:  # rule 3: relaunch now on the next profile that answers, never wait for a reset
+            run = ledger["jobs"][s["job"]]
+            why = gate(states, run["host"])
+            new = None if why else launch(dict(run, started=now), profile_order(run.get("profile"), skip=run.get("profile")))
+            if new:
+                ledger["jobs"][s["job"]] = new
+                s.update(state="RUNNING", note=f"relaunched on {new['profile']}: {s['note']}")
+            else:
+                s["note"] += f"; not relaunched: {why or 'no other profile answers'}"
+        if failed:
+            save_ledger(ep, ledger)
         if a.json:
             print(json.dumps({"orchestrator": ledger.get("orchestrator"), "jobs": states,
                               "blocking": [f"{s['state']} {s['job']}" + (f" ({s['note']})" if s["note"] else "")
@@ -184,11 +297,22 @@ def main(argv=None):
             sys.exit(f"[lanes] FAIL: unknown job(s) {unknown}; `status` lists the real names")
         if a.cmd == "hold" and not a.reason.strip():
             sys.exit("[lanes] FAIL: hold needs --reason; it shows in every status")
+        if a.lane_cmd and (a.cmd != "start" or len(a.jobs) != 1 or not a.log or "{cli}" not in a.lane_cmd):
+            sys.exit("[lanes] FAIL: --cmd is for start with one job, a --log, and {cli} where the profile goes")
+        if a.cmd == "start":
+            why = gate(states, a.host)
+            if why:
+                sys.exit(f"[lanes] FAIL: not starting: {why}")
+            run = {"started": now, "host": a.host, "minutes": a.minutes}
+            if a.lane_cmd:
+                run = launch(dict(run, cmd=a.lane_cmd, log=a.log), profile_order(a.profile))
+                if not run:
+                    sys.exit(f"[lanes] FAIL: no profile in {ACCOUNTS} answers on {a.host}")
     if a.cmd == "claim":
         ledger["orchestrator"] = a.session  # only claim stamps it, so a sibling session's start/end never takes the gate
     for job in a.jobs:
         if a.cmd == "start":
-            ledger.setdefault("jobs", {})[job] = {"started": now, "host": a.host, "minutes": a.minutes}
+            ledger.setdefault("jobs", {})[job] = dict(run)
         elif a.cmd == "end":
             ledger.setdefault("jobs", {}).setdefault(job, {"started": now, "host": a.host})["ended"] = now
         elif a.cmd == "hold":
