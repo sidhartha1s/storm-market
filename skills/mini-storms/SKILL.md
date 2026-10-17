@@ -1,6 +1,6 @@
 ---
 name: mini-storms
-description: "Mini-storms — the fast lane of The Warning Hour (storm-market repo): 8–12 min seasonal / breaking / outlier videos — 8–12 min, stitched news + PD + social clips and Ken-Burns stills, narration, red emphasis text, BREAKING NEWS packaging, shipped in ≤3 h. Use the MOMENT the user asks for a quick / breaking / seasonal / outlier / news-style storm-market video (e.g. \"Krakatoa video\", \"Nepal floods quick one\", \"El Niño Texas warning\", \"seasonal video\", \"mini storm\", \"/mini-storms\"). NOT for the weekly documentary episodes — those are /storm-episode (same repo, same voice, different pace). Forked from storm-episode 2026-09-08; renamed from storm-breaking 2026-09-08 (owner)."
+description: "Mini-storms — the fast lane of The Warning Hour (storm-market repo): 8–12 min seasonal / breaking / outlier videos — 8–12 min, stitched news + PD + social clips and punch-zoomed stills, narration, red emphasis text, BREAKING NEWS packaging, shipped in ≤3 h. Use the MOMENT the user asks for a quick / breaking / seasonal / outlier / news-style storm-market video (e.g. \"Krakatoa video\", \"Nepal floods quick one\", \"El Niño Texas warning\", \"seasonal video\", \"mini storm\", \"/mini-storms\"). NOT for the weekly documentary episodes — those are /storm-episode (same repo, same voice, different pace). Forked from storm-episode 2026-09-08; renamed from storm-breaking 2026-09-08 (owner)."
 ---
 
 # mini-storms — the fast lane of The Warning Hour
