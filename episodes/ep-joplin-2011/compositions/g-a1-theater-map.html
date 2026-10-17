@@ -136,7 +136,8 @@ window.__timelines = window.__timelines || {};
   tl.to({ t: 0 }, { t: 1, duration: END, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
 
   /* THREE a1-s2 10.30: outline highlights during the push (stroke 1.5 -> 3 px, fill 0 -> .14) */
-  tl.to(P + "place-theater", { strokeWidth: 3, fillOpacity: 0.14, duration: PUSH1, ease: "power2.inOut" }, 0);
+  /* fromTo with the CSS values as from: renders the same frame 0 on a fresh page and after a seek back (a to() did not) */
+  tl.fromTo(P + "place-theater", { strokeWidth: 1.5, fillOpacity: 0 }, { strokeWidth: 3, fillOpacity: 0.14, duration: PUSH1, ease: "power2.inOut" }, 0);
 
   /* THEATER a1-s2 11.14: push has landed; 3 markers pop 0.12 s apart, leader draws, label */
   const mks = [P + "mk1", P + "mk2", P + "mk3"];
