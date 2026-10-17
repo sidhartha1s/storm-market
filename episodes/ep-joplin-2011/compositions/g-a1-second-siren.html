@@ -23,8 +23,8 @@
   #a1ss-mm-city { stroke-dashoffset:0; fill-opacity:0.03; }
   #a1ss-mm-l-path, #a1ss-mm-l-places, #a1ss-mm-l-below { display:none; }
   #a1ss-mm-l-sirens { opacity:0.7; }
-  /* rings and labels wait at opacity 0; ring 1's drawn stroke and the pulse copies are hidden here too, never only by a time-0 set */
-  #a1ss-ring1, #a1ss-ring2, .a1ss-pc, .a1ss-lab { opacity:0; visibility:hidden; }
+  /* both rings start undrawn by their dash offsets (ring 1 through its mask); pulse copies and labels wait hidden here, never only by a time-0 set */
+  .a1ss-pc, .a1ss-lab { opacity:0; visibility:hidden; }
   .a1ss-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px;
     stroke:#05080c; stroke-width:6px; stroke-linejoin:round; paint-order:stroke; }
   #a1ss-black { position:absolute; inset:0; background:#000; opacity:0; visibility:hidden; }
