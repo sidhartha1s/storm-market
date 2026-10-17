@@ -25,6 +25,8 @@
   /* base layers on from frame 0 (CSS beats the copied presentation attributes) */
   #a4s-l-streets, #a4s-l-path, #a4s-city-rest { opacity:1; }
   #a4s-city, #a4s-track { stroke-dasharray:none; stroke-dashoffset:0; }
+  /* the base's city and path strokes are in map units: at 34x they are 50 px bars, so they keep their screen width (no geography moves) */
+  #a4s-city, #a4s-city-rest, #a4s-track, #a4s-path { vector-effect:non-scaling-stroke; }
   #a4s-l-ring, #a4s-l-sirens, #a4s-l-places, #a4s-l-below { display:none; }
   /* strip lit: A3-S11's glow along 20th St, fixed screen width at every zoom */
   .a4s-strip { fill:none; stroke:#f5d98b; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
