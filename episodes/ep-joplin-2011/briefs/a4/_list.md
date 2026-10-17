@@ -66,9 +66,11 @@ Numbers: `research/facts.md` rows only. Cues: `audio/<seg>.words.json`.
 ## What the Picture lines leave open (the orchestrator decides; each brief follows the reading stated in it)
 - **A4-S1 clip window:** the map holds to "basement," 5.24, then the Range Line corridor clip has "and" 5.88 to the wav end
   7.32 plus the gap before A4-S3: under 2 s unless that gap is long.
-- **A4-S5 order:** comment card, photo, plan, then the Home Depot aerial clip on "The tornado center passed" 21.80 to the end.
-  The centre line itself waits for A4-S6 as the Picture lines place it. Alternative: start `g-a4-20th` at a4-s5 "The" 21.80
-  so the line draws on "passed" 22.88, and cut the clip to the plan's tail.
+- **A4-S5 order and the panel label:** the photo has only a4-s5 0.00 to "About" 4.56 before the plan, too short for both the
+  comment card and the "63 of 73" label. Reading taken: the comment card sits over the photo; the label moves onto the Home
+  Depot site aerial (the Picture line's CLIP NEEDED) from "The tornado center passed" 21.80. The centre line itself waits
+  for A4-S6 as the Picture lines place it. Alternative: start `g-a4-20th` at a4-s5 "The" 21.80 so the line draws on
+  "passed" 22.88, and put the label back on the photo with a shorter comment hold.
 - **A4-S4 markers:** the Picture line asks for three markers "near the middle of the store"; held back (Open 1).
 - **A4-S7, S9, S11, S13 photos:** no lawful ground photo exists of Dillon's, the theater, either church or Macadoodles
   (`media/candidates/a4/candidates.md`); the NOAA aerials are centred on a geocoded address and the building is not
