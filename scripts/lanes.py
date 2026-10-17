@@ -66,7 +66,7 @@ def ps(host, script, timeout=90):
     """(exit code, output) of a PowerShell script on host: the one place that knows how to reach a host."""
     argv = ["powershell", "-NoProfile", "-NonInteractive", "-EncodedCommand",
             base64.b64encode(script.encode("utf-16-le")).decode()]  # encoded, so no quoting has to survive ssh and cmd
-    if host != "local":
+    if host != "local":  # shortcut: the remote shell caps a line at 8191 chars (about a 2,500-char script)
         argv = ["ssh", "-n", "-o", "ConnectTimeout=15", host, " ".join(argv)]
     try:
         r = subprocess.run(argv, capture_output=True, text=True, encoding="utf-8", errors="replace",
