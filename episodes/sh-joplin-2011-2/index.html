@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, height=1920">
+  <title>Sirens: About Once a Year. The Warning Hour short (sh-joplin-2011-2, 17 Oct 26)</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #04070c; }
+    video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .clip { position: absolute; inset: 0; }
+    .still { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+
+    /* one card at a time, top zone above the picture band: one big line, one small support line */
+    .quotecard { position: absolute; left: 60px; width: 840px; top: 250px; z-index: 6; box-sizing: border-box; padding: 38px 44px 40px;
+      background: rgba(10,16,24,0.62); backdrop-filter: blur(18px) saturate(1.15); -webkit-backdrop-filter: blur(18px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.14); border-left: 8px solid #d0121f; border-radius: 26px; box-shadow: 0 14px 48px rgba(0,0,0,0.45); }
+    .quotecard .q { font-family: 'Arial Black', Arial, sans-serif; font-size: 76px; line-height: 1.06; color: #f4f0e8; }
+    .quotecard .q.num { font-family: 'AbrilFig', Georgia, serif; font-size: 120px; line-height: 1.02; color: #e2202e; letter-spacing: 0.02em; }
+    .quotecard .lab { margin-top: 18px; font-family: Georgia, serif; font-style: italic; font-size: 40px; line-height: 1.2; color: #e6d8bf; }
+    .hid { opacity: 0; visibility: hidden; }
+
+    /* siren calendar: one row per year, 52 grey ticks = the weekly tests, red = a real-storm sounding */
+    .calcard { position: absolute; left: 60px; width: 840px; top: 700px; z-index: 5; box-sizing: border-box; padding: 40px 44px 30px;
+      background: rgba(10,16,24,0.7); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 26px; box-shadow: 0 14px 48px rgba(0,0,0,0.45); }
+    .calcard .row { position: relative; display: flex; align-items: center; height: 58px; margin-bottom: 26px; }
+    .calcard .yr { width: 120px; font-family: 'Arial Black', Arial, sans-serif; font-size: 32px; color: #c8d3e0; letter-spacing: 1px; }
+    .calcard .strip { position: relative; width: 620px; height: 44px; transform-origin: left center;
+      background: repeating-linear-gradient(90deg, rgba(214,224,234,0.55) 0 4px, transparent 4px 11.92px); }
+    .calcard .strip.part { width: 242px; }
+    .calcard .mk { position: absolute; top: -12px; width: 10px; height: 68px; margin-left: -5px; background: #e2202e; border-radius: 3px;
+      box-shadow: 0 0 14px rgba(226,32,46,0.8); transform-origin: center bottom; opacity: 0; }
+
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 48%, transparent 58%, rgba(0,0,0,0.5) 100%); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="sh-joplin-2011-2" data-start="0.0" data-width="1080" data-height="1920" data-duration="31.8" data-fps="30">
+
+  <!-- ============ NARRATION: parent ep-joplin-2011 wavs (s2-s1 = z1-s1 to 9.26 s, s2-s2 = a1-s4, s2-s3 = i1-s5) ============ -->
+  <audio id="nx-s2s1" src="audio/s2-s1.wav" data-start="0.0" data-duration="9.26" data-volume="1"></audio>
+  <audio id="nx-s2s2" src="audio/s2-s2.wav" data-start="9.6" data-duration="14.64" data-volume="1"></audio>
+  <audio id="nx-s2s3" src="audio/s2-s3.wav" data-start="24.3" data-duration="6.2" data-volume="1"></audio>
+
+  <!-- ============ BED + SIREN (siren under "Joplin's tornado sirens weren't crying wolf") ============ -->
+  <audio id="sx-bed" src="media/bed-rumble.mp3" data-bed="" data-start="0.0" data-duration="31.8" data-volume="0.13"></audio>
+  <audio id="sx-siren" src="media/siren-waver.ogg" data-bed="" data-start="0.0" data-duration="3.3" data-media-start="2" data-volume="0.16"></audio>
+
+  <!-- ============ TRACK 1: pictures (pre-framed 1080x1920: blurred fill + the picture as a centred band) ============ -->
+  <video id="vx-1-rangeline" src="media/aerial-rangeline.mp4" data-start="0.0" data-duration="3.42" data-media-start="0" data-track-index="1" muted></video>
+  <video id="vx-2-complexes" src="media/aerial-complexes.mp4" data-start="3.42" data-duration="3.54" data-media-start="0" data-track-index="1" muted></video>
+  <video id="vx-3-path" src="media/aerial-path-wide.mp4" data-start="6.96" data-duration="4.1" data-media-start="6" data-track-index="1" muted></video>
+  <video id="vx-4-flattened" src="media/aerial-flattened.mp4" data-start="11.06" data-duration="6.34" data-media-start="2" data-track-index="1" muted></video>
+  <video id="vx-5-tarp" src="media/aerial-tarp.mp4" data-start="17.4" data-duration="6.9" data-media-start="0" data-track-index="1" muted></video>
+  <section class="clip" id="c-6-nwsp13" data-start="24.3" data-duration="3.64" data-track-index="1"><img class="still" id="kb-6" src="media/nws-p13.jpg" alt=""></section>
+  <section class="clip" id="c-7-flattened" data-start="27.94" data-duration="3.86" data-track-index="1"><img class="still" id="kb-7" src="media/usace-flattened.jpg" alt=""></section>
+
+  <!-- ============ CARDS (track 3; each start = the spoken word in the cut words.json) ============ -->
+  <!-- hook, frame 1 is the thumbnail; line 1 says it (facts S2), holds to the first cut seam -->
+  <section class="clip" id="p-c0" data-start="0.0" data-duration="9.6" data-track-index="3">
+    <div class="quotecard" id="c0"><div class="q" id="c0-q">SIRENS: ABOUT ONCE A YEAR</div><div class="lab" id="c0-l">Joplin, Missouri, 2007 to 2011</div></div>
+  </section>
+  <!-- "test" 9.6 + 1.46 = 11.06 to "three" 9.6 + 5.18 = 14.78 (facts S2, S4) -->
+  <section class="clip" id="p-c1" data-start="11.06" data-duration="3.72" data-track-index="3">
+    <div class="quotecard hid" id="c1"><div class="q" id="c1-q">52 TESTS A YEAR</div><div class="lab" id="c1-l">one minute, every week</div></div>
+  </section>
+  <!-- "three" @14.78 to "May" 9.6 + 12.84 = 22.44 (facts S6, S7) -->
+  <section class="clip" id="p-c2" data-start="14.78" data-duration="7.66" data-track-index="3">
+    <div class="quotecard hid" id="c2"><div class="q" id="c2-q">3 REAL STORMS</div><div class="lab" id="c2-l">Jan 2007, May 2008, May 2009</div></div>
+  </section>
+  <!-- "May" @22.44 to the seam 24.3 -->
+  <section class="clip" id="p-c3" data-start="22.44" data-duration="1.86" data-track-index="3">
+    <div class="quotecard hid" id="c3"><div class="q num" id="c3-q">MAY 22, 2011</div><div class="lab" id="c3-l">the next time they sounded</div></div>
+  </section>
+  <!-- "told" 24.3 + 1.62 = 25.92 to the voice end 30.5 -->
+  <section class="clip" id="p-c4" data-start="25.92" data-duration="4.58" data-track-index="3">
+    <div class="quotecard hid" id="c4"><div class="q" id="c4-q">"ALL THE TIME"</div><div class="lab" id="c4-l">what people told the NWS</div></div>
+  </section>
+  <!-- loop-safe close: the hook again, held to the last frame -->
+  <section class="clip" id="p-c5" data-start="30.5" data-duration="1.3" data-track-index="3">
+    <div class="quotecard hid" id="c5"><div class="q" id="c5-q">SIRENS: ABOUT ONCE A YEAR</div><div class="lab" id="c5-l">Joplin, Missouri, 2007 to 2011</div></div>
+  </section>
+
+  <!-- ============ SIREN CALENDAR (track 4, over the band): "test" @11.06 to the seam 24.3 ============ -->
+  <!-- marks by day of year: 18 Jan 2007 = 4.7 %, 10 May 2008 = 35.8 %, 8 May 2009 = 35.1 %; the 2011 row stops at 22 May (100 % of its 39 % strip) -->
+  <section class="clip" id="p-cal" data-start="11.06" data-duration="13.24" data-track-index="4">
+    <div class="calcard hid" id="cal">
+      <div class="row"><span class="yr" id="yr-07">2007</span><div class="strip" id="st-07"><i class="mk" id="mk-07" style="left:4.7%"></i></div></div>
+      <div class="row"><span class="yr" id="yr-08">2008</span><div class="strip" id="st-08"><i class="mk" id="mk-08" style="left:35.8%"></i></div></div>
+      <div class="row"><span class="yr" id="yr-09">2009</span><div class="strip" id="st-09"><i class="mk" id="mk-09" style="left:35.1%"></i></div></div>
+      <div class="row"><span class="yr" id="yr-10">2010</span><div class="strip" id="st-10"></div></div>
+      <div class="row"><span class="yr" id="yr-11">2011</span><div class="strip part" id="st-11"><i class="mk" id="mk-11" style="left:100%"></i></div></div>
+    </div>
+  </section>
+
+  <div id="vignette"></div>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+
+  // stills: slow push for the whole window
+  for (const [id, at, dur] of [["#kb-6", 24.3, 3.64], ["#kb-7", 27.94, 3.86]]) {
+    tl.to(id, { scale: 1.05, duration: dur, ease: "none" }, at);
+  }
+
+  // hook card: on screen at frame 1, drifts, leaves at the seam
+  tl.to("#c0", { y: -10, duration: 9.0, ease: "none" }, 0);
+  tl.to("#c0", { y: -22, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, 9.35);
+
+  const cards = [["#c1", 11.06, 3.72], ["#c2", 14.78, 7.66], ["#c3", 22.44, 1.86], ["#c4", 25.92, 4.58]];
+  for (const [id, at, dur] of cards) {
+    tl.fromTo(id, { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, at);
+    tl.fromTo(id + "-l", { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power2.out" }, at + 0.18);
+    tl.to(id, { y: -8, duration: dur - 0.65, ease: "none" }, at + 0.4);
+    tl.to(id, { y: -22, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, at + dur - 0.25);
+  }
+  tl.fromTo("#c3-q", { scale: 0.7 }, { scale: 1, duration: 0.35, ease: "back.out(2)", transformOrigin: "left center" }, 22.44);
+
+  // calendar: card in on "test", each year's test ticks draw left to right
+  tl.fromTo("#cal", { y: 60, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 11.06);
+  ["#st-07", "#st-08", "#st-09", "#st-10", "#st-11"].forEach((id, i) => {
+    tl.fromTo(id, { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 11.3 + i * 0.14);
+  });
+  // "three" @14.78: the three real soundings, one by one
+  ["#mk-07", "#mk-08", "#mk-09"].forEach((id, i) => {
+    tl.fromTo(id, { scaleY: 0, autoAlpha: 0 }, { scaleY: 1, autoAlpha: 1, duration: 0.35, ease: "back.out(2.4)" }, 14.78 + i * 0.3);
+  });
+  // "Then nothing" @21.24 to "May" @22.44: the slow hold drifts; May 22, 2011 lands on "May"
+  tl.to("#cal", { y: -12, duration: 10.4, ease: "none" }, 11.51);
+  tl.fromTo("#mk-11", { scaleY: 0, autoAlpha: 0 }, { scaleY: 1.15, autoAlpha: 1, duration: 0.4, ease: "back.out(3)" }, 22.44);
+  tl.to("#cal", { y: 80, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 23.9);
+
+  // close: the hook returns and holds
+  tl.fromTo("#c5", { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 30.5);
+  tl.to("#c5", { y: -4, duration: 0.95, ease: "none" }, 30.85);
+
+  window.__timelines["sh-joplin-2011-2"] = tl;
+})();
+</script>
+</body>
+</html>
