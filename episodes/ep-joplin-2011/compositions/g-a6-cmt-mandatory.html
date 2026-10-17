@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a6-cmt-mandatory: host 1039.767 to 1044.527 (4.76 s = a6-s3 "What" 20.54 to a6-s4 "nothing" 1.68). One host spans the segment join.
+     Local time: a6-s3 word time - 20.54; a6-s4 word time + 3.08 (nx-a6-s4 1042.847 - host 1039.767).
+     Overlay over footage the editor mounts under the host (Joplin store or apartment street, not yet in index.html). Root transparent: no ground.
+     COMMENT CARD base copied from g-a4-comment (glass surface, 760 wide, left 120, centred on y 500); only the text and the highlight change.
+     Row 3 ("under ...") is not drawn: the brief gives two lines only and the comment's video title is not on record.
+     Likes slot stays empty (N9: 28 is in comment-beats.json, not released). */
+  #a6m-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  #a6m-cardwrap { position:absolute; inset:auto; left:120px; top:0; width:760px; height:1000px; display:flex; align-items:center; }
+  #a6m-card { position:relative; box-sizing:border-box; width:760px; min-height:240px; padding:36px 44px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); visibility:hidden; opacity:0; }
+  .a6m-meta { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2;
+    visibility:hidden; opacity:0; }
+  #a6m-r1 { width:fit-content; margin-bottom:20px; } /* box hugs the text so the quote glyph box never crosses it */
+  #a6m-r2 { font-size:40px; letter-spacing:0; line-height:1.25; color:#f2f5f8; }
+  #a6m-l1 { display:block; margin-bottom:14px; visibility:hidden; opacity:0; }
+  #a6m-hl { position:relative; width:fit-content; padding-bottom:4px; }
+  #a6m-l2 { display:block; color:#d8a13a; visibility:hidden; opacity:0; }
+  /* highlight bar: Amber 1, 6 px, under the baseline of line 2 (outside the text box) */
+  #a6m-bar { position:absolute; inset:auto; left:0; right:0; bottom:-10px; height:6px; border-radius:3px; background:#d8a13a;
+    transform-origin:left center; visibility:hidden; opacity:0; }
+  /* big tier (>= 52): the quote glyph, top right of the card, clear of row 1 and the text lines */
+  #a6m-mark { position:absolute; inset:auto; right:40px; top:14px; font-family:Georgia,'Times New Roman',serif; font-size:104px; line-height:104px;
+    color:#d8a13a; visibility:hidden; opacity:0; }
+  #a6m-likes { height:30px; margin-top:12px; } /* reserved for the like count; empty until released (N9) */
+</style>
+<div id="a6m-root" data-composition-id="g-a6-cmt-mandatory" data-width="1920" data-height="1080">
+  <div id="a6m-cardwrap">
+    <div id="a6m-card">
+      <div id="a6m-mark">&ldquo;</div>
+      <div id="a6m-r1" class="a6m-meta">YouTube comment</div>
+      <div id="a6m-r2" class="a6m-meta">
+        <span id="a6m-l1">I wonder why commercial buildings and residential homes like at 15:15</span>
+        <div id="a6m-hl"><span id="a6m-l2">don't have mandatory shelters</span><div id="a6m-bar"></div></div>
+      </div>
+      <div id="a6m-likes"></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a6m-";
+  /* r2 is a container: the row shows from its first line, the two lines reveal one by one */
+  tl.set(Q+"r2", { autoAlpha: 1 }, 0);
+
+  /* card in 0.00 to 0.60 on "What" a6-s3 20.54 */
+  tl.fromTo(Q+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0); /* WHAT a6-s3 20.54 */
+  tl.fromTo(Q+"mark", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.2); /* WHAT a6-s3 20.54 + card settle */
+  tl.fromTo(Q+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.2); /* WHAT a6-s3 20.54 + card settle */
+  tl.fromTo(Q+"l1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.25); /* WHAT a6-s3 20.54 + 0.25 stagger; line 1 is spoken "What about a new" 20.54 to 21.58 */
+  tl.fromTo(Q+"l2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 1.04); /* STORE a6-s3 21.58 */
+  tl.fromTo(Q+"bar", { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.14); /* highlight draws under line 2, STORE a6-s3 21.58 + 0.10 */
+
+  /* card float y +-4 px, 4 s sine period, finite: 0.60 to 3.60 */
+  tl.to(Q+"card", { y: 4, duration: 1, ease: "sine.inOut" }, 0.6);
+  tl.fromTo(Q+"card", { y: 4 }, { y: -4, duration: 2, ease: "sine.inOut", immediateRender: false }, 1.6);
+
+  /* exit 4.16 to 4.76: slide out left (the entrance side), last 0.6 s, ends on "nothing" a6-s4 1.68; board-half takes the frame at 4.76 */
+  tl.to(Q+"card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 4.16); /* NOTHING a6-s4 1.68 - 0.6 */
+
+  window.__timelines["g-a6-cmt-mandatory"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
