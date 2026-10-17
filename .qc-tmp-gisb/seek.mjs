@@ -29,6 +29,12 @@ async function run(order) {
 const fwd = await run(times);
 const back = await run([...times].reverse());
 let bad = 0;
-for (const t of times) { if (fwd[t] !== back[t]) { bad++; console.log('MISMATCH at', t); } }
+for (const t of times) {
+  if (fwd[t] === back[t]) continue;
+  bad++;
+  const a = fwd[t].split('\n'), c = back[t].split('\n');
+  console.log('MISMATCH at', t);
+  a.forEach((l, i) => { if (l !== c[i]) console.log('  fwd ', l, '| back', c[i]); });
+}
 console.log('seek-order mismatches:', bad, 'of', times.length);
 await b.close();
