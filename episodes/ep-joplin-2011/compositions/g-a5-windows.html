@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a5-windows: A5-S5 overlay, host 876.147 for 6.14 s (nx-a5-s5 875.287 + "fifth" 0.86). Local t = a5-s5 words.json time - 0.86.
+     Transparent root over NIST Fig 3-10 (West Tower south side), mounted cover-fit 1920 wide: frame y = raw y * 2.0513 - 60.
+     Measured on the printed page (media/candidates/a5/_work/pg/p162-162.jpg): NIST's yellow oval spans raw y 277 to 374, frame y 508 to 708,
+     slab above the fifth-floor windows to slab below. Row profile of the raw photo: slab 510-547, intact windows 553-646, slab 652-689,
+     broken row 695-790, slab 793-833. Outline = the oval's band on the left wing only, y 512 to 700 (within 10 px of the oval), x 24 to 820.
+     Bracket sits on the slab under the broken row (y 806, ticks up to 792), x 120 to 700; the brief's 775 would run through the broken windows.
+     Nothing enters x >= 1600, y >= 680 (presenter circle). */
+  #a5w-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #a5w-svg { position:absolute; inset:0; width:1920px; height:1080px; overflow:visible; }
+  #a5w-hl { fill:none; stroke:#d8a13a; stroke-width:3; visibility:hidden; filter:drop-shadow(0 0 8px rgba(216,161,58,.7)); }
+  #a5w-br { fill:none; stroke:#c0392b; stroke-width:3; stroke-linejoin:miter; visibility:hidden; }
+
+  /* floats carry the y drift so each element keeps its own entrance and exit tweens */
+  .a5w-float { position:absolute; inset:auto; }
+  #a5w-chipfloat { left:0; right:0; top:140px; }
+  #a5w-srcfloat { left:96px; bottom:54px; }
+  #a5w-chip { position:relative; display:table; margin:0 auto; box-sizing:border-box; padding:16px 36px 16px 44px; border-radius:14px; overflow:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; white-space:nowrap; }
+  #a5w-bar { position:absolute; inset:auto; left:0; top:0; bottom:0; width:8px; background:#d8a13a; }
+  #a5w-chiptxt { display:block; font-family:Arial,sans-serif; font-weight:700; font-size:40px; line-height:56px; letter-spacing:1px; color:#f2f5f8;
+    text-shadow:0 2px 14px rgba(0,0,0,.7); }
+  #a5w-src { display:table; box-sizing:border-box; padding:8px 16px; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14);
+    font-family:Arial,sans-serif; font-weight:400; font-size:21px; line-height:26px; letter-spacing:.5px; color:#c8d3e0; white-space:nowrap;
+    visibility:hidden; opacity:0; }
+</style>
+<div id="a5w-root" data-composition-id="g-a5-windows" data-width="1920" data-height="1080">
+  <svg id="a5w-svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <rect id="a5w-hl" x="24" y="512" width="796" height="188" rx="14" ry="14"/>
+    <path id="a5w-br" d="M120 792 V806 H700 V792"/>
+  </svg>
+  <div id="a5w-chipfloat" class="a5w-float">
+    <div id="a5w-chip">
+      <div id="a5w-bar"></div>
+      <span id="a5w-chiptxt">IMPACT WINDOWS HELD</span>
+    </div>
+  </div>
+  <div id="a5w-srcfloat" class="a5w-float">
+    <div id="a5w-src">NIST Finding 18</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a5w-";
+  const hl = document.querySelector(Q + "hl"), br = document.querySelector(Q + "br");
+  const hlLen = Math.ceil(hl.getTotalLength()) + 1, brLen = Math.ceil(br.getTotalLength()) + 1;
+  tl.set([hl, br], { strokeDasharray: hlLen + " " + hlLen }, 0);
+  tl.set(br, { strokeDasharray: brLen + " " + brLen }, 0);
+  tl.set(hl, { strokeDashoffset: hlLen, autoAlpha: 1 }, 0);
+  tl.set(br, { strokeDashoffset: brLen, autoAlpha: 1 }, 0);
+
+  /* "fifth" @0.86 (local 0.00): amber outline draws on (0.6 s), source line lands */
+  tl.to(hl, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 0);
+  tl.fromTo(Q + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0);
+
+  /* outline glow breathes from the end of the draw to the exit (segment 1.5 to 6.4 = local 0.64 to 5.54): 4 legs of 1.2 s */
+  tl.fromTo(hl, { strokeOpacity: 0.75 }, { strokeOpacity: 1, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 0.64);
+
+  /* "held." @3.30 (local 2.44): chip */
+  tl.fromTo(Q + "chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.44);
+
+  /* "regular" @4.84 (local 3.98): red bracket draws (0.5 s) */
+  tl.to(br, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 3.98);
+
+  /* hold: slow float y +-4 px from each element's landing to the exit */
+  tl.fromTo(Q + "srcfloat", { y: 0 }, { y: -4, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 4, immediateRender: false }, 0.4);
+  tl.fromTo(Q + "chipfloat", { y: 0 }, { y: -4, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 2, immediateRender: false }, 2.84);
+
+  /* exit, segment 6.40 to 7.00 = local 5.54 to 6.14: chip and source slide out, the strokes fade through */
+  tl.to([Q + "chip", Q + "src"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 5.54);
+  tl.to([hl, br], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 5.54);
+
+  window.__timelines["g-a5-windows"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
