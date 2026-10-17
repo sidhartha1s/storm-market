@@ -2,10 +2,18 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-intro-map: T1-S2 + T1-S3, host 27.53 for 11.80 s (to nx-t1-s3 33.79 + wav 5.24 = 39.03, seam 39.33). Brief briefs/intro/g-intro-map.md.
-     Comp-local time: t1-s2 word start + 0.00; t1-s3 word start + 6.26 (nx-t1-s3 33.79 - host 27.53).
-     MASTER MAP base: the BASEMAP block below. Later map comps copy it verbatim and toggle its layers.
-     Geometry (one-shot, uncommitted: media/g-intro-map/geo.py -> basemap.json, pasted in by a content-blind transform):
+<!-- g-a4-handoff: A4-S14, host = nx-a4-s14 data-start 810.867 for 7.80 s (wav end 7.34; counter card g-a4-counter sits over its first 4.66 s).
+     Brief briefs/a4/g-a4-handoff.md. Comp-local time = a4-s14 word start (nx-a4-s14 data-start 810.867 - host 810.867 = 0.00).
+     Cues, audio/a4-s14.words.json: WHEN 5.34 (St. John's lights, ring, label, push starts), last word "sirens." 6.88.
+     Base: the g-intro-map BASEMAP block, copied verbatim, ids re-prefixed g-master-map- -> a4h- (no geography added).
+     Open numbers: none drawn.
+     Camera = the cam group's transform. Frame 0 to 5.34: drift scale 1.00 -> 1.01 about the comp centre. 5.34 to 7.80: linear push
+     1.01 -> 1.40 with St. John's fixed on screen at (798.96, 559.34): translate = c0 - s * (800.55, 559.15), end (-321.81, -223.47).
+       The label is on a fixed layer beside the building (never rides the push); the building does not move, the map grows round it.
+     Places in the base layer: St. John's (a4h-place-sjrmc, NAIP 2010 footprint) lights; the Pizza Hut and Dillon's outlines show dim under
+     the counter (the only A4 buildings the base carries: it has no Walmart, Home Depot, church or Macadoodles outline) and go out at 5.34.
+     Base path layer stays off: at x 800 the base path's north edge is y 576, St. John's sits at y 557 to 562, 0.4 mi north of it (flagged, receipt).
+     Master map geometry notes (from g-intro-map, kept verbatim):
        datum: equirectangular, x scaled by cos(37.08); city outline = TIGER/Line 2010 place 2937592 "Joplin city" (16 rings);
        s = 46.132 px/mi (outline bbox 11.74 x 12.36 mi fitted in x 200-1500, y 200-770, centred);
        centroid (area) = (874.1, 505.7); largest centroid-to-vertex 395.9 px; ring A r = 419.9, ring B r = 443.9;
