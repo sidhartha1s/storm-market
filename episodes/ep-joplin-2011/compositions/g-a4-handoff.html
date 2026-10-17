@@ -23,24 +23,28 @@
      Open 2 (NIST Fig. 4-2) blocks the siren positions: l-sirens is empty. l-places: NAIP 2010 footprints, see the layer comment. -->
 <template>
 <style>
-  #g-intro-map-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+  #a4h-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
     background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  .gim-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
-  .gim-stamp { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#f2f5f8; opacity:0; visibility:hidden; }
-  .gim-pulse { opacity:0; visibility:hidden; }
-  .gim-ringg { opacity:1; }
-  #g-intro-map-chip { position:absolute; inset:auto; right:96px; top:96px; height:70px; box-sizing:border-box; padding:0 22px;
-    display:flex; align-items:center; padding:0 18px; border-radius:20px; background:rgba(10,16,24,.55);
-    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
-    border:1px solid rgba(255,255,255,.14); opacity:0; visibility:hidden; }
-  #g-intro-map-chiptxt { font:900 52px/56px 'Arial Black', Arial, sans-serif; letter-spacing:-1px; color:#f2f5f8; white-space:nowrap; }
-  #g-intro-map-src { position:absolute; inset:auto; left:96px; top:990px; font:700 20px/20px Arial, sans-serif; color:#c8d3e0;
-    white-space:nowrap; opacity:0; visibility:hidden; }
-  #g-intro-map-hud { position:absolute; inset:auto; left:110px; top:486px; font:700 26px/26px Arial, sans-serif; letter-spacing:8px;
-    color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4h-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* ground at 0.7 brightness from frame 0 (CSS beats the copied presentation attributes) */
+  #a4h-l-grid, #a4h-l-streets, #a4h-l-city { opacity:0.7; }
+  #a4h-city-rest { opacity:1; }
+  #a4h-city { stroke-dasharray:none; stroke-dashoffset:0; fill-opacity:0.03; vector-effect:non-scaling-stroke; }
+  #a4h-l-path, #a4h-l-sirens, #a4h-l-ring, #a4h-l-below { display:none; }
+  /* places: only St. John's (hidden until 5.34) and the two A4 outlines the base carries (dim, until 5.34) */
+  #a4h-l-places { opacity:1; }
+  #a4h-l-places > g > * { display:none; }
+  #a4h-l-places #a4h-place-pizza-hut, #a4h-l-places #a4h-place-dillons,
+  #a4h-l-places #a4h-place-pizza-hut-mk, #a4h-l-places #a4h-place-dillons-mk { display:inline; opacity:0.85; }
+  #a4h-l-places #a4h-place-sjrmc { display:inline; fill:rgba(242,245,248,.10); stroke:#f2f5f8; stroke-opacity:1; stroke-width:4px;
+    stroke-linejoin:round; opacity:0; visibility:hidden; }
+  .a4h-pulse { opacity:0; visibility:hidden; }
+  /* 26 px = the master map's place-label size; fixed layer, halo so streets under it never cut the letters */
+  #a4h-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:3px; fill:#f2f5f8; stroke:#05080c;
+    stroke-width:6px; stroke-linejoin:round; paint-order:stroke; opacity:0; visibility:hidden; }
 </style>
-<div id="g-intro-map-root" data-composition-id="g-intro-map" data-width="1920" data-height="1080" data-duration="11.8">
-  <svg class="gim-svg" viewBox="0 0 1920 1080">
+<div id="a4h-root" data-composition-id="g-a4-handoff" data-width="1920" data-height="1080" data-duration="7.8">
+  <svg class="a4h-svg" viewBox="0 0 1920 1080">
     <defs>
       <!-- SIREN ICON: 28 px tall, origin at the pole foot; 2 px pole (16 px), horn head 14 px at the mouth, two sound arcs -->
       <g id="a4h-siren" fill="none" stroke="#f2f5f8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
