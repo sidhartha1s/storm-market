@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a6-board-r7: A6-S1. Host data-start 997.177, nx-a6-s1 starts 997.377, so host-local t = a6-s1 words.json time + 0.20 (the board opens 0.2 s early on the
+     bo-6 end). Host 6.5 s = "NIST" 6.30 + 0.20. Full frame, ground on from frame 0, no footage beneath.
+     BASE = g-a5-recs-board (copied, not redrawn): grid left 380 top 250, tile 180 x 120, pitch 204 x 144, numerals Arial 700 30 at left 16 top 16.
+     A5's tile px win over the brief's 300 x 170 (brief header), so every brief figure is rescaled by the tile ratio and the s4 relations hold:
+     tile 7 = row 2 col 3, box x 788 to 968, y 394 to 514, centre (878, 454). Lift to centre (960, 500): dx +82, dy +46, scale 2.4 = 432 x 288
+     (box x 744 to 1176, y 356 to 644), the same lifted state g-a6-board-half starts from. Tile 7 IS the base tile 7, scaled by GSAP;
+     its 1 px grey border grows with it, so the 4 px Amber 1 border is a child ring authored 4/2.4 px and faded in.
+     Exit: logZoom 2.4 -> 14 around (960, 500). At 14 the tile is 2520 x 1680, so its fill covers the frame (the brief's 6 gives 1080 x 720 and cannot);
+     g-a6-doc-rec7 frame 0 is the same #2a3644 fill. Nothing sits in x >= 1600, y >= 680 (grid right edge 1172, lifted tile bottom 644). */
+  #g-a6-board-r7-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #b7-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  #b7-board { position:absolute; inset:0; }
+  #b7-grid { position:absolute; inset:auto; left:380px; top:250px; width:792px; height:552px; }
+  .b7-tile { position:absolute; box-sizing:border-box; width:180px; height:120px; border-radius:14px; background:#2a3644; border:1px solid #4a5560; }
+  .b7-n { position:absolute; inset:auto; left:16px; top:16px; font-family:Arial,sans-serif; font-weight:700; font-size:30px; line-height:34px; color:#93a3b2; }
+
+  /* tile 7: numeral authored at 60 px (big tier), scaled to the base's 30 px at rest and back to 60 x 2.4 = 144 px lifted */
+  #b7-t7 .b7-n { left:0; top:0; width:180px; text-align:center; font-size:60px; line-height:68px; }
+  #b7-ring { position:absolute; inset:0; box-sizing:border-box; border-radius:14px; border:1.6667px solid #d8a13a; opacity:0; }
+
+  /* label: unscaled HUD, diagram label tier (tokens.md), Body light per the brief; inside the lifted tile (box y 356 to 644), centre y 572 */
+  #b7-label { position:absolute; inset:auto; left:760px; top:560px; width:400px; text-align:center; font-family:Arial,sans-serif; font-weight:700; font-size:22px;
+    line-height:24px; letter-spacing:3px; color:#dfe7ee; white-space:nowrap; visibility:hidden; opacity:0; }
+</style>
+<div id="g-a6-board-r7-root" data-composition-id="g-a6-board-r7" data-width="1920" data-height="1080">
+  <div id="b7-ground"></div>
+  <div id="b7-board">
+    <div id="b7-grid">
+      <div class="b7-tile" id="b7-t1"  style="left:0px;top:0px"><span class="b7-n">1</span></div>
+      <div class="b7-tile" id="b7-t2"  style="left:204px;top:0px"><span class="b7-n">2</span></div>
+      <div class="b7-tile" id="b7-t3"  style="left:408px;top:0px"><span class="b7-n">3</span></div>
+      <div class="b7-tile" id="b7-t4"  style="left:612px;top:0px"><span class="b7-n">4</span></div>
+      <div class="b7-tile" id="b7-t5"  style="left:0px;top:144px"><span class="b7-n">5</span></div>
+      <div class="b7-tile" id="b7-t6"  style="left:204px;top:144px"><span class="b7-n">6</span></div>
+      <div class="b7-tile" id="b7-t8"  style="left:612px;top:144px"><span class="b7-n">8</span></div>
+      <div class="b7-tile" id="b7-t9"  style="left:0px;top:288px"><span class="b7-n">9</span></div>
+      <div class="b7-tile" id="b7-t10" style="left:204px;top:288px"><span class="b7-n">10</span></div>
+      <div class="b7-tile" id="b7-t11" style="left:408px;top:288px"><span class="b7-n">11</span></div>
+      <div class="b7-tile" id="b7-t12" style="left:612px;top:288px"><span class="b7-n">12</span></div>
+      <div class="b7-tile" id="b7-t13" style="left:0px;top:432px"><span class="b7-n">13</span></div>
+      <div class="b7-tile" id="b7-t14" style="left:204px;top:432px"><span class="b7-n">14</span></div>
+      <div class="b7-tile" id="b7-t15" style="left:408px;top:432px"><span class="b7-n">15</span></div>
+      <div class="b7-tile" id="b7-t16" style="left:612px;top:432px"><span class="b7-n">16</span></div>
+      <!-- last child, so the lifted tile stacks over its neighbours -->
+      <div class="b7-tile" id="b7-t7" style="left:408px;top:144px"><span class="b7-n" id="b7-n7">7</span><div id="b7-ring"></div></div>
+    </div>
+  </div>
+  <div id="b7-label">TORNADO SHELTERS</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#b7-";
+  const logLerp = (a, b, t) => Math.exp(Math.log(a) + (Math.log(b) - Math.log(a)) * t); /* helpers.js logLerpScale */
+
+  /* tile 7's numeral rests top-left at the base's 30 px: scale 0.5 about its top centre, x -65.65 puts the glyph centre at 16 + 8.35 (7 is 16.7 px wide at 30 px) */
+  tl.set(Q+"n7", { transformOrigin: "50% 0%", scale: 0.5, x: -65.65, y: 16 }, 0);
+
+  /* board holds with a slow 6 px float from 0.00 "Of", back to rest at 4.60 before the lift */
+  tl.to(Q+"board", { y: -6, duration: 2.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+
+  /* all 16 tiles pulse once on "16" a6-s1 1.20 (host 1.40), stagger 0.03 */
+  for (let n = 1; n <= 16; n++) {
+    tl.to(Q+"t"+n, { scale: 1.04, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 1.4 + (n - 1) * 0.03); /* 16 1.20 */
+  }
+
+  /* lift on "Recommendation" a6-s1 4.44 (host 4.64), landed by "7." 5.20 (host 5.40): tile 7 to centre (960, 500) at 2.4x, the other 15 dim to .25 at .96 */
+  tl.to(Q+"t7", { x: 82, y: 46, scale: 2.4, duration: 0.76, ease: "power3.out" }, 4.64); /* RECOMMENDATION 4.44 */
+  tl.to(Q+"ring", { opacity: 1, duration: 0.5, ease: "power2.out" }, 4.64);
+  tl.to(Q+"n7", { x: 0, y: 8, scale: 1, duration: 0.76, ease: "power3.out" }, 4.64);
+  const others = [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16].map(n => Q+"t"+n);
+  tl.to(others, { opacity: 0.25, scale: 0.96, duration: 0.6, ease: "power2.out" }, 4.64);
+  /* numerals of 8, 11, 12 end up under the opaque lifted tile and the label: out before the tile reaches them */
+  tl.to([Q+"t8 .b7-n", Q+"t11 .b7-n", Q+"t12 .b7-n"], { autoAlpha: 0, duration: 0.3, ease: "power2.out" }, 4.64);
+
+  /* label on "7." a6-s1 5.20 (host 5.40) */
+  tl.fromTo(Q+"label", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.4); /* 7. 5.20 */
+
+  /* zoom-through from 6.00 (a6-s1 5.80) to 6.50 (a6-s1 6.30 "NIST"): label and numeral out by 6.15 (a6-s1 5.95), before they reach the safe edge */
+  tl.to(Q+"label", { autoAlpha: 0, duration: 0.15, ease: "power2.in" }, 6.0);
+  tl.to(Q+"n7", { autoAlpha: 0, duration: 0.15, ease: "power2.in" }, 6.0);
+  const zoom = { t: 0 };
+  tl.to(zoom, { t: 1, duration: 0.5, ease: "none", onUpdate: function () { gsap.set(Q+"t7", { scale: logLerp(2.4, 14, zoom.t) }); } }, 6.0);
+
+  window.__timelines["g-a6-board-r7"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
