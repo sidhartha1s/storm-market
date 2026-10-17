@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-intro-161: T1-S1 overlay on the USACE flattened-street still. Host data-start 25.03 = nx-t1-s1 17.71 + "161" 7.32, so local t = t1-s1 word time - 7.32
+     ("161" 0.00, "lives." 0.78). Host runs 2.5 s, to the t1-s2 start. Transparent root; popfig mid-screen, no card behind it (owner 16 Aug 26).
+     Nothing enters the presenter corner (x >= 1600, y >= 680). AbrilFig needs episodes/<slug>/fonts/AbrilFatface-Regular.ttf. */
+  @font-face { font-family:'AbrilFig'; src:url('fonts/AbrilFatface-Regular.ttf'); }
+  #i161-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  /* the group carries the y drift so the big line and the sub keep their own entrance tweens */
+  #i161-grp { position:absolute; inset:0; }
+  #i161-big { position:absolute; inset:auto; left:0; right:0; top:438px; height:150px; padding-left:6px; box-sizing:border-box; text-align:center; white-space:nowrap;
+    font-family:'AbrilFig',Georgia,serif; font-size:150px; line-height:150px; letter-spacing:.04em; color:#d0121f; transform-origin:center;
+    text-shadow:0 0 18px rgba(0,0,0,.95), 0 0 60px rgba(120,0,0,.55), 0 6px 26px rgba(0,0,0,.9), 0 2px 4px #000; visibility:hidden; opacity:0; }
+  #i161-sub { position:absolute; inset:auto; left:0; right:0; top:590px; height:50px; padding-left:4px; box-sizing:border-box; text-align:center; white-space:nowrap;
+    font-family:Arial,sans-serif; font-weight:700; font-size:44px; line-height:50px; letter-spacing:4px; color:#f2f5f8;
+    text-shadow:0 0 14px rgba(0,0,0,.95), 0 3px 10px #000; visibility:hidden; opacity:0; }
+
+  #i161-src { position:absolute; inset:auto; left:96px; top:966px; height:52px; padding:0 24px; box-sizing:border-box; white-space:nowrap; border-radius:28px;
+    font-family:Arial,sans-serif; font-weight:700; font-size:20px; line-height:52px; letter-spacing:2px; color:#c8d3e0;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; }
+</style>
+<div id="i161-root" data-composition-id="g-intro-161" data-width="1920" data-height="1080">
+  <div id="i161-grp">
+    <div id="i161-big">161</div>
+    <div id="i161-sub">Lives lost</div>
+  </div>
+  <div id="i161-src">NIST count, Missouri State Police list · Finding 28</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+
+  /* 161 t1-s1 7.32 (local 0.00): the number lands, back.out from 0.6 */
+  tl.fromTo("#i161-big", { scale: 0.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(1.7)" }, 0);
+  /* 161 t1-s1 7.32 + 0.30: source chip */
+  tl.fromTo("#i161-src", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0.3);
+  /* lives. t1-s1 8.10 (local 0.78): sub rises in */
+  tl.fromTo("#i161-sub", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0.78);
+  /* the group drifts up 6 px from the landing to the host end (2.5 s); no exit, the scene cuts to g-intro-map */
+  tl.to("#i161-grp", { y: -6, duration: 2.1, ease: "none" }, 0.4);
+
+  window.__timelines["g-intro-161"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
