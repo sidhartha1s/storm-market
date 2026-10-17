@@ -92,6 +92,6 @@ await open();
 for (const t of cues) fwd[t] = md5(await shot(t));
 await open();
 const bad = [];
-for (const t of cues) { await shot(0); await shot(D - 0.01); const h = md5(await shot(t)); if (h !== fwd[t]) bad.push(t); }
+for (const t of cues) { await shot(0); await shot(D - 0.01); const h = md5(await shot(t, `sb_${t}.png`)); if (h !== fwd[t]) bad.push(t); }
 console.log('seek-order mismatches', bad, 'of', cues.length, 'page errors', errs);
 await browser.close();
