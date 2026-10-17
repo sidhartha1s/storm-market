@@ -4,6 +4,7 @@ Builds throwaway episode fixtures in a temp dir. Each case proves a job reaches 
 a READY job that reads DONE, or a dead lane that reads RUNNING, is exactly the idle-lane failure this guards.
 """
 import json
+import os
 import sys
 import tempfile
 import time
@@ -19,6 +20,7 @@ def never(*a):
 
 
 # no test ever probes claude, reads a host or launches a lane: each test that needs one installs its own fake
+REAL_PROBE = lanes.probe
 lanes.probe = lanes.spawn = lanes.read_log = never
 lanes.free_gb = lambda host: 64.0
 FAILS = []
@@ -181,6 +183,9 @@ with tempfile.TemporaryDirectory() as tmp:
 
 # --- launch path: the three capacity rules, run by pytest or by this script ---
 LANE = ["--host", "zbook", "--cmd", "type b.md | {cli} -p --model opus", "--log", r"C:\x\lane.log", "--cwd", r"C:\wt"]
+# real probe replies, captured on the ZBook 18 Oct 26 02:08 by `claude -p 'reply with the single word ok' --model haiku`
+CLAUDE1_REPLY = "You've hit your session limit · resets 4:10am (Asia/Kolkata)"
+CLAUDE2_REPLY = "ok"
 LIMIT_LOG = '{"type":"result","is_error":true,"result":"You\'ve hit your session limit · resets 3pm"}'
 
 
@@ -202,13 +207,26 @@ def fakes(answering, free=16.0, log=""):
     return calls
 
 
+def real_probe_replying(replies):
+    """The real probe parser, fed the captured reply of the profile named in its script (exit 0 even on a limit)."""
+    asked = []
+
+    def ps(host, script, timeout=90):
+        p = next(p for p in replies if f"claude-accounts\\{p}" in script)
+        asked.append(p)
+        return 0, replies[p] + "\n"
+    lanes.probe, lanes.ps = REAL_PROBE, ps
+    return asked
+
+
 def test_rule1_start_skips_a_profile_that_does_not_answer(tmp_path):
     ep = lane_episode(tmp_path)
-    calls = fakes(answering={"claude5"})
-    assert lanes.main(["start", str(ep), "source:a1", "--profile", "claude2", *LANE]) == 0
-    assert calls["probe"] == ["claude2", "claude5"]
-    assert calls["spawn"] == [("zbook", "type b.md | claude5 -p --model opus", r"C:\x\lane.log", r"C:\wt")]
-    assert lanes.load_ledger(ep)["jobs"]["source:a1"]["profile"] == "claude5"
+    calls = fakes(answering=set())
+    asked = real_probe_replying({"claude1": CLAUDE1_REPLY, "claude2": CLAUDE2_REPLY, "claude5": CLAUDE2_REPLY})
+    assert lanes.main(["start", str(ep), "source:a1", "--profile", "claude1", *LANE]) == 0
+    assert asked == ["claude1", "claude2"]
+    assert calls["spawn"] == [("zbook", "type b.md | claude2 -p --model opus", r"C:\x\lane.log", r"C:\wt")]
+    assert lanes.load_ledger(ep)["jobs"]["source:a1"]["profile"] == "claude2"
     calls = fakes(answering={"claude5"})
     assert raises(lambda: lanes.main(["start", str(ep), "source:a1", *LANE])) and not calls["spawn"]  # already RUNNING
     calls = fakes(answering=set())
@@ -228,17 +246,41 @@ def test_rule2_start_refuses_low_memory_and_a_full_lane_count(tmp_path):
     assert lanes.main(["start", str(ep), "words:a1", *LANE]) == 0 and len(calls["spawn"]) == 1
 
 
-def test_rule3_status_fails_a_limited_lane_and_relaunches_it(tmp_path):
-    ep = lane_episode(tmp_path)
+def limited_lane(tmp):
+    ep = lane_episode(tmp)
     run = {"started": time.time() - 60, "host": "zbook", "minutes": 60, "cmd": "type b.md | {cli} -p",
            "log": r"C:\x\lane.log", "cwd": r"C:\wt", "profile": "claude1"}
     lanes.save_ledger(ep, {"jobs": {"source:a1": run}})
+    return ep, run
+
+
+def test_status_launches_nothing_even_with_a_limited_lane(tmp_path):
+    ep, run = limited_lane(tmp_path)
+    calls = fakes(answering={"claude1", "claude2", "claude5"}, log=LIMIT_LOG)
+    lanes.main(["status", str(ep)])
+    lanes.main(["status", str(ep), "--json"])
+    assert not calls["probe"] and not calls["spawn"] and lanes.load_ledger(ep)["jobs"]["source:a1"] == run
+
+
+def test_relaunch_backs_off_while_another_holds_the_lock(tmp_path):
+    ep, run = limited_lane(tmp_path)
+    calls = fakes(answering={"claude2"}, log=LIMIT_LOG)
+    lock = ep / "lanes.json.lock"
+    lock.touch()
+    assert lanes.main(["relaunch", str(ep)]) == 0 and not calls["spawn"] and lock.exists()
+    old = time.time() - lanes.LOCK_MIN * 60 - 1
+    os.utime(lock, (old, old))  # a dead relaunch's lock is taken over
+    assert lanes.main(["relaunch", str(ep)]) == 0 and len(calls["spawn"]) == 1 and not lock.exists()
+
+
+def test_rule3_relaunch_moves_a_limited_lane_to_the_next_profile(tmp_path):
+    ep, run = limited_lane(tmp_path)
     calls = fakes(answering=set(), log=LIMIT_LOG)
-    lanes.main(["status", str(ep)])
     st = {s["job"]: s["state"] for s in lanes.job_states(ep, lanes.load_ledger(ep))}
-    assert st["source:a1"] == "FAILED" and "FAILED" in lanes.BLOCKING and not calls["spawn"]
+    assert st["source:a1"] == "FAILED" and "FAILED" in lanes.BLOCKING
+    assert lanes.main(["relaunch", str(ep)]) == 2 and not calls["spawn"]  # nobody answers: it stays FAILED
     calls = fakes(answering={"claude1", "claude5"}, log=LIMIT_LOG)
-    lanes.main(["status", str(ep)])
+    assert lanes.main(["relaunch", str(ep)]) == 0
     assert calls["probe"] == ["claude2", "claude5"]  # never back onto the profile that hit its limit
     assert calls["spawn"] == [("zbook", "type b.md | claude5 -p", r"C:\x\lane.log", r"C:\wt")]
     new = lanes.load_ledger(ep)["jobs"]["source:a1"]
@@ -248,7 +290,9 @@ def test_rule3_status_fails_a_limited_lane_and_relaunches_it(tmp_path):
 if __name__ == "__main__":
     for t in (test_rule1_start_skips_a_profile_that_does_not_answer,
               test_rule2_start_refuses_low_memory_and_a_full_lane_count,
-              test_rule3_status_fails_a_limited_lane_and_relaunches_it):
+              test_status_launches_nothing_even_with_a_limited_lane,
+              test_relaunch_backs_off_while_another_holds_the_lock,
+              test_rule3_relaunch_moves_a_limited_lane_to_the_next_profile):
         with tempfile.TemporaryDirectory() as d:
             try:
                 t(Path(d))
