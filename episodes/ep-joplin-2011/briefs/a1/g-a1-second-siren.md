@@ -45,7 +45,7 @@ picture plants the question only. The split into "a worse warning" against "all 
 | ring 1 draws (strokeDashoffset, 0.5 s) + label | "First siren" | "The" 0.50 |
 | ring 2 draws + label; pulse begins | "Second siren" | "second" 0.94 (draw 0.4 s), pulse from "time" 1.16 |
 | ring 2 brightens once (stroke to 6 px and back, 0.4 s) | (none) | "agree" 4.52 |
-| hold to the blackout | | to 5.88. The pulse keeps running (4 cycles of 1.2 s = 4.8 s from 1.16, ending 5.96, so trim the last cycle to end at 5.88). The final 0.3 s fades to black into the chapter blackout |
+| hold to the blackout | | to 5.88. The pulse runs from 1.16 to 5.88. Compute the finite repeat count per copy by script so that no copy runs past 5.88, and state it in the receipt. The final 0.3 s fades to black into the chapter blackout |
 
 ## 6 to 8
 `references/mg-brief-template.md` §6, §7, §7a (all seven; item 4: `svgOrigin` in both vars), §8.
