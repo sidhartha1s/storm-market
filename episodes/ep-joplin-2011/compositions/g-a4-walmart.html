@@ -193,18 +193,18 @@ window.__timelines = window.__timelines || {};
   tl.to(Q + "frontg", { x: -389, y: -182, duration: 2.8, ease: "power3.inOut" }, 15.4);
 
   /* LOOK a4-s4 0.00: section line A-A draws on the reduced plan through the band; its title */
-  tl.to(Q + "secl", { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, S4);
-  tl.fromTo(Q + "stitle", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, S4 + 0.1);
+  tl.to(Q + "secl", { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, 18.7);
+  tl.fromTo(Q + "stitle", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 18.8);
 
   /* WHERE a4-s4 0.86: floor, interior shading, wall (vertical), cabinets */
-  tl.to(Q + "floor", { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, S4 + 0.86);
-  tl.to(Q + "sfill", { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, S4 + 0.96);
-  tl.fromTo(Q + "sin", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, S4 + 1.3);
-  tl.fromTo(Q + "sout", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, S4 + 1.3);
-  tl.to(Q + "wall", { autoAlpha: 1, scaleY: 1, duration: 0.6, ease: "power2.out" }, S4 + 1.2);
-  tl.to(Q + "cab", { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, S4 + 1.3);
-  tl.to(Q + "cabf", { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, S4 + 1.5);
-  tl.to(Q + "cabd", { autoAlpha: 0.7, duration: 0.4, ease: "power1.out" }, S4 + 1.6);
+  tl.to(Q + "floor", { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, 19.56);
+  tl.to(Q + "sfill", { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 19.66);
+  tl.fromTo(Q + "sin", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 20.0);
+  tl.fromTo(Q + "sout", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 20.0);
+  tl.to(Q + "wall", { autoAlpha: 1, scaleY: 1, duration: 0.6, ease: "power2.out" }, 19.9);
+  tl.to(Q + "cab", { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, 20.0);
+  tl.to(Q + "cabf", { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 20.2);
+  tl.to(Q + "cabd", { autoAlpha: 0.7, duration: 0.4, ease: "power1.out" }, 20.3);
 
   /* CAME a4-s4 2.60 to REST 2.90: the wall pivots on the floor (1500, 600) and lands on the cabinet top, free end (1159.6, 482.8).
      The brief's 17.8 degrees puts the slab through the cabinet's top right corner, so it rests at 19 (rotation -71): end y 482.8 inside the 490 +- 10 band. */
