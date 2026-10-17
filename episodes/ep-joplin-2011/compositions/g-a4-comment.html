@@ -46,6 +46,7 @@ window.__timelines = window.__timelines || {};
 
   /* card in 0.00 to 0.60 on "People" a4-s5 0.00 */
   tl.fromTo(Q+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0); /* PEOPLE a4-s5 0.00 */
+  tl.fromTo(Q+"mark", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.2); /* PEOPLE a4-s5 0.00 + card settle */
   tl.fromTo(Q+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.2); /* PEOPLE a4-s5 0.00 + card settle */
   tl.fromTo(Q+"l1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.64); /* ASK a4-s5 0.64 */
   tl.fromTo(Q+"l2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 1.26); /* STORE a4-s5 1.26, whole comment on screen by LOT. 1.62 */
