@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a4-churches: A4-S11 overlay, host 761.727 to 770.527 (8.80 s). Local t = a4-s11 words.json time - 13.44 ("Three").
+     Transparent root: the church-site stills (Harmony Heights, cut at a4-s11 "and" 15.14 = local 1.70, then Full Gospel) sit on a lower track.
+     Card left 96 / top 680, 520 x 260, lower-left only; x >= 1600, y >= 680 stays empty (presenter circle). */
+  #a4ch-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  /* the float carries the 3 px drift so the card keeps its own entrance and exit tweens */
+  #a4ch-float { position:absolute; inset:auto; left:96px; top:680px; width:520px; height:260px; }
+  #a4ch-card { position:absolute; inset:auto; left:0; top:0; width:520px; height:260px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; }
+  #a4ch-bar { position:absolute; inset:auto; left:0; top:0; bottom:0; width:8px; background:#c0392b; }
+  #a4ch-gloss { position:absolute; inset:auto; top:0; bottom:0; left:-220px; width:140px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.18), rgba(255,255,255,0)); }
+
+  .a4ch-fig { position:absolute; inset:auto; left:44px; top:24px; display:block; white-space:nowrap;
+    font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:84px; line-height:92px; letter-spacing:1px; color:#e74c3c;
+    text-shadow:0 2px 14px rgba(0,0,0,.7); visibility:hidden; opacity:0; }
+  .a4ch-lab { position:absolute; inset:auto; left:46px; top:124px; display:block; white-space:nowrap;
+    font-family:Arial,sans-serif; font-weight:700; font-size:19px; line-height:24px; letter-spacing:4px; color:#93a3b2;
+    visibility:hidden; opacity:0; }
+  #a4ch-rule { position:absolute; inset:auto; left:46px; right:36px; top:182px; height:1px; background:rgba(255,255,255,.18); visibility:hidden; opacity:0; }
+  #a4ch-src { position:absolute; inset:auto; left:46px; top:196px; display:block; white-space:nowrap;
+    font-family:Arial,sans-serif; font-weight:400; font-size:19px; line-height:26px; letter-spacing:.2px; color:#c8d3e0;
+    visibility:hidden; opacity:0; }
+</style>
+<div id="a4ch-root" data-composition-id="g-a4-churches" data-width="1920" data-height="1080">
+  <div id="a4ch-float">
+    <div id="a4ch-card">
+      <div id="a4ch-bar"></div>
+      <div id="a4ch-gloss"></div>
+      <span class="a4ch-fig" id="a4ch-fig3">3 LOST</span>
+      <span class="a4ch-lab" id="a4ch-lab3">HARMONY HEIGHTS BAPTIST</span>
+      <span class="a4ch-fig" id="a4ch-fig4">4 LOST</span>
+      <span class="a4ch-lab" id="a4ch-lab4">FULL GOSPEL CHURCH</span>
+      <div id="a4ch-rule"></div>
+      <span id="a4ch-src">NIST Sec. 4.4.5 &middot; 7 in churches per Table 4-1</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a4ch-";
+  tl.set(Q + "bar", { scaleY: 0, transformOrigin: "center top" }, 0);
+
+  /* THREE a4-s11 13.44 (local 0.00): card slides in with "3 LOST" */
+  tl.fromTo(Q + "card", { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 0);
+  tl.to(Q + "bar", { scaleY: 1, duration: 0.45, ease: "power2.out" }, 0.3);
+  tl.fromTo(Q + "fig3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.1);
+  tl.fromTo(Q + "gloss", { x: 0 }, { x: 800, duration: 0.6, ease: "power1.inOut" }, 0.5);
+
+  /* WOMEN a4-s11 13.64 (local 0.20): Harmony Heights label */
+  tl.fromTo(Q + "lab3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.2);
+
+  /* the cut to the Full Gospel still is at "and" 15.14 (local 1.70): "3 LOST" and its label lift out first, gone by the cut */
+  tl.to(Q + "fig3", { y: -30, autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 1.4);
+  tl.to(Q + "lab3", { y: -30, autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 1.4);
+
+  /* FOUR a4-s11 15.46 (local 2.02): "4 LOST" rises in, its label with it */
+  tl.fromTo(Q + "fig4", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.02);
+  tl.fromTo(Q + "lab4", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.12);
+  tl.fromTo(Q + "gloss", { x: 0 }, { x: 800, duration: 0.6, ease: "power1.inOut" }, 2.1);
+
+  /* CHURCH. a4-s11 16.60 (local 3.16): source line, with its rule */
+  tl.fromTo(Q + "rule", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.16);
+  tl.fromTo(Q + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.2);
+
+  /* hold: the card floats y +-3 px, finite repeats (0.7 to 7.9) */
+  tl.fromTo(Q + "float", { y: 0 }, { y: -3, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false }, 0.7);
+
+  /* exit: last 0.6 s, from "it?" a4-s11 21.64 (local 8.20) to host end 8.80 */
+  tl.to(Q + "card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 8.2);
+
+  window.__timelines["g-a4-churches"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
