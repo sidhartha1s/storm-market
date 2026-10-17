@@ -10,18 +10,20 @@ const ep = join(R, 'episodes/ep-joplin-2011');
 const out = join(R, '.qc-tmp-gimd/png');
 mkdirSync(out, { recursive: true });
 const page0 = stageComp(ep, join(ep, 'compositions/g-intro-map-dots.html'), hostCss(readFileSync(join(ep, 'index.html'), 'utf8')), '_gimd_');
-const browser = await chromium.launch({ executablePath: chromiumExecutable(), args: ['--allow-file-access-from-files'] });
+const browser = await chromium.launch({ executablePath: chromiumExecutable(), args: ['--allow-file-access-from-files', '--disable-gpu'] });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
 const errs = [];
 page.on('pageerror', e => errs.push(String(e)));
-const open = async () => { await page.goto(pathToFileURL(page0).href); await page.waitForFunction(() => window.__timelines && window.__timelines['g-intro-map-dots']); };
-const seek = (t) => page.evaluate(t => window.__timelines['g-intro-map-dots'].seek(t, false), t);
+page.on('console', m => console.log('console:', m.text()));
+const open = async () => { await page.goto(pathToFileURL(page0).href); console.log('errs', errs, await page.evaluate(() => typeof gsap + ' ' + Object.keys(window.__timelines || {}))); await page.waitForFunction(() => !!(window.__timelines && window.__timelines['g-intro-map-dots'])); };
+const seek = (t) => page.evaluate(t => { window.__timelines['g-intro-map-dots'].seek(t, false); }, t);
 const shot = async (t, name) => { await seek(t); return page.screenshot({ path: name ? join(out, name) : undefined }); };
 const md5 = b => createHash('md5').update(b).digest('hex');
 await open();
 console.log('duration', await page.evaluate(() => window.__timelines['g-intro-map-dots'].duration()));
 for (const t of [0, 0.042, 1.3, 2.3, 9.2, 11.6, 13.9, 15.7, 16.2]) await shot(t, `t${t.toFixed(2)}.png`);
 
+if (process.env.ONLY_FRAMES) { await browser.close(); process.exit(0); }
 // section 4 checks
 const truth = await page.evaluate(() => {
   const tl = window.__timelines['g-intro-map-dots'];
@@ -44,7 +46,7 @@ const truth = await page.evaluate(() => {
     if (b.bottom >= lineY - 1) res.dotsOnOrUnderLine++;
   }
   // labels: at their visible time, distance to every dot edge and whether any box corner/edge sample lies in the path
-  const labelAt = { 'lab-homes': 1.3, 'lab-apts': 2.3, 'lab-out': 9.2, placed: 16.2, 'zero-t1': 16.2, 'zero-t2': 16.2, zero: 16.2 };
+  const labelAt = { 'lab-homes': 1.3, 'lab-apts': 2.3, 'lab-out': 9.2, placed: 16.2, 'nosign-t1': 16.2, 'nosign-t2': 16.2, nosign: 16.2, 'below-lab': 16.2 };
   res.labels = {};
   for (const [id, t] of Object.entries(labelAt)) {
     tl.seek(t, false);
