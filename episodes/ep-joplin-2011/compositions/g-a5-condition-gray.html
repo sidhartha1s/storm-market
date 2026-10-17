@@ -92,7 +92,14 @@ window.__timelines = window.__timelines || {};
   /* stroke draw-on: dash = ceil(len) + 1, measured, never typed */
   function draw(id, at, dur, ease) {
     const el = root.querySelector(Q + id);
-    const len = Math.ceil(el.getTotalLength()) + 1;
+    /* the dash pattern restarts on every subpath, so the dash is the longest subpath (a whole-path length would finish each piece in the first few percent) */
+    const probe = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    const pieces = el.tagName === "path" ? el.getAttribute("d").split("M").filter(Boolean).map(function (s) { return "M" + s; }) : [null];
+    const len = Math.ceil(Math.max.apply(null, pieces.map(function (s) {
+      if (!s) return el.getTotalLength();
+      probe.setAttribute("d", s);
+      return probe.getTotalLength();
+    }))) + 1;
     tl.set(el, { strokeDasharray: len, strokeDashoffset: len }, 0);
     tl.set(el, { autoAlpha: 1 }, at);
     tl.to(el, { strokeDashoffset: 0, duration: dur, ease: ease || "power2.inOut" }, at);
@@ -105,7 +112,7 @@ window.__timelines = window.__timelines || {};
 
   tl.set(Q + "cam", { scale: 1, transformOrigin: "800px 560px" }, 0);
   BEDS.forEach(function (b, i) { tl.set(Q + "bed" + i, { x: b[0], y: b[1], rotation: 90, transformOrigin: "50% 50%" }, 0); }); /* GSAP's SVG default origin is the bbox corner, which swung the rotated bed 70 px off its room centre */
-  tl.set(Q + "label", { y: 0 }, 0);
+  tl.set([Q + "label1", Q + "label2"], { y: 0 }, 0);
 
   /* camera: slow push 1.00 -> 1.04 from frame 0 to 20.20, then "What" a5-s2 20.20: push to 1.25 until 22.76 (under 1.5x, so plain scale) */
   tl.to(Q + "cam", { scale: 1.04, duration: 20.2, ease: "none" }, 0);
@@ -124,7 +131,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(Q + "schem", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.3);
 
   /* "Condition" a5-s2 2.60: label, source line */
-  tl.fromTo(Q + "label", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.6);
+  tl.fromTo([Q + "label1", Q + "label2"], { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.6);
   tl.fromTo(Q + "src", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 2.6);
 
   /* "sirens" a5-s2 5.82: hallway band brightens #2a3644 -> #5a768f over 0.6 s */
@@ -150,7 +157,7 @@ window.__timelines = window.__timelines || {};
   /* before the push (20.20): chip and fine line slide out left (the right exit would cross the presenter corner), clock and label fade; HUD never rides the move */
   tl.to([Q + "chip", Q + "fine"], { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 19.55);
   tl.to(Q + "clock", { x: -40, autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 19.65);
-  tl.to([Q + "label", Q + "schem"], { autoAlpha: 0, duration: 0.5, ease: "power1.in" }, 19.65);
+  tl.to([Q + "label1", Q + "label2", Q + "schem"], { autoAlpha: 0, duration: 0.5, ease: "power1.in" }, 19.65);
 
   window.__timelines["g-a5-condition-gray"] = tl;
 })();
