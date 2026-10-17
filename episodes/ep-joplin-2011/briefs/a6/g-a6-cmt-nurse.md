@@ -5,7 +5,7 @@ Base: the comment card first used at A1-S3 (`briefs/a1/`). Copy it.
 Overlay: glass card over the NIST photograph of the old West Tower's fifth floor (the A5-S5 still, reused; its mount needs `data-callback`). The photo runs from s4 8.66 to s5 end. Read the card over the photo: the card must not cover the intact fifth-floor windows the photo exists to show; if the centre zone covers them, use the base's lower placement.
 
 ## 0. Claim
-A viewer says a nurse told her the windows were rated for 250 mph. (A quoted belief; s5 corrects "rated" to Mercy's own "designed".)
+A viewer says a nurse told them the windows were rated for 250 mph. (A quoted belief; s5 corrects "rated" to Mercy's own "designed".)
 
 ## 1. Source
 `research/comment-beats.json`, vid syfeDcNgmL0, act codes-rebuild: "Asked a nurse why the windows looked a little weird and she told me they were rated for 250mph winds". Verbatim. The "250mph" inside the quote is the commenter's words, not a figure we claim; it is shown only as part of the verbatim quote and never as a chip or popfig.
