@@ -178,6 +178,24 @@
   <!-- I1-S1 (39.33): CLIP 1, PD FEMA or NWS video of a Joplin residential street in the path, muted, about 6 s, under the first sentence; else NIST ground photographs. -->
   <!-- I1-S6 (84.75): CLIP 2, news pull of the 20th Street / Range Line Road big-box aftermath, insert inside the intro, transcribed first, under 12 s, Paul over it. -->
   <!-- I1-S9 (111.13): CLIP 3, PD NWS or FEMA footage of the survey team in Joplin, muted under the voice; else NWS assessment photographs. -->
+  <!-- INTRO FOOTAGE (mounts-intro-a2-v2.html, 17 Oct 26). Stills are <stem>-x4.png (upscales made on the ZBook). -->
+  <!-- GAP: H1-S1 (0.00-17.56), picture = ins-paul-1 (Paul full frame, track 1), not recorded yet. Mount when it exists:
+       video id="ins-paul-1" data-start="0" data-duration="17.56" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="his exact words".
+       host-intro-hook (track 4, 0 to 16.9) has no footage under it until then. -->
+  <!-- T1-S1: Paul's last word 17.56 to host-intro-map 27.53 = 9.97 s, two stills. A 17.56 + 5.90 = 23.46 (NIST NCSTAR 3 Fig 4-14, object-position keeps the bell tower);
+       B 23.46 to 27.53 = 4.07 s (USACE flattened neighborhood, credit USACE), under host-intro-161 25.03-27.53. Punches on 17.71, 23.46 and "161" 25.03. -->
+  <section class="clip still-wrap" id="c-t1-s1-a" data-start="17.56" data-duration="5.90" data-track-index="1"><img id="kb-t1-s1-a" src="media/candidates/intro/t1-s1_c4_nist-fig4-14-demolished-home-x4.png" style="object-position: 50% 30%" alt=""></section>
+  <section class="clip still-wrap" id="c-t1-s1-b" data-start="23.46" data-duration="4.07" data-track-index="1"><img id="kb-t1-s1-b" src="media/candidates/intro/t1-s1_c1_usace-flattened-neighborhood-x4.png" alt=""></section>
+  <!-- I1-S1 CLIP 1: 39.33 to host-intro-nobasement 42.85 = 3.52 s. DVIDS 116445 (public domain) aerial of the residential path, source 0.0-3.52, muted; crop-dvids hides the burned-in credit. -->
+  <video id="v-i1-s1-clip1" class="crop-dvids" src="media/candidates/intro/i1-s1_c1_dvids-aerial-residential-a.mp4" data-start="39.33" data-duration="3.52" data-media-start="0" data-track-index="1" muted></video>
+  <!-- I1-S6 CLIP 2, INSERT (owner yes, picks page 17 Oct 26 18:45, I1-S6_kshb41): 84.75 to host-intro-nist 89.03 = 4.28 s. KSHB 41 / NBC Action News Kansas City,
+       YouTube QFhOkxL37EQ, 480x360, source 0.3-4.58 (narration only: "saws, jackhammers, even blow torches to break up huge slabs of concrete"), claim risk HIGH.
+       Muted, Paul's narration over it; graded; crop-kshb removes bug, ticker, time and temperature (about 5.8x, soft). On screen say "big box store", never a store name.
+       The DVIDS big-box clip this replaces moves to the A2-S7 tail. -->
+  <video id="v-i1-s6-news" class="graded crop-kshb" src="media/candidates/intro/i1-s6_c1_kshb41-home-depot-rubble-insert.mp4" data-start="84.75" data-duration="4.28" data-media-start="0.3" data-track-index="1" muted></video>
+  <!-- I1-S9 CLIP 3: host-intro-strip-back end 115.59 to host-intro-page-survivors 118.59 = 3.00 s. DVIDS 116445 clip B (public domain), a different pass from I1-S1's,
+       source 3.0-6.0, muted. No survey-team footage exists (NWS, FEMA, DVIDS searched). -->
+  <video id="v-i1-s9-clip3" class="crop-dvids" src="media/candidates/intro/i1-s1_c2_dvids-aerial-residential-b.mp4" data-start="115.59" data-duration="3.00" data-media-start="3.0" data-track-index="1" muted></video>
 
   <!-- ============ A1 · SIRENS: BELIEF AGAINST RECORD (126.31-286.63) ============ -->
   <!-- g-a1-gutter: start nx-a1-s1 126.51 + 0.00 = 126.51, opened 0.2 s early at the bo-1 end 126.31 (act opener); end nx-a1-s1 126.51 + wav 14.04 = 140.55 -->
