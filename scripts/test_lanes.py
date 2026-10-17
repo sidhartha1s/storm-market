@@ -178,6 +178,82 @@ with tempfile.TemporaryDirectory() as tmp:
         import shutil
         shutil.rmtree(fx, ignore_errors=True)
 
+
+# --- launch path: the three capacity rules, run by pytest or by this script ---
+LANE = ["--host", "zbook", "--cmd", "type b.md | {cli} -p --model opus", "--log", r"C:\x\lane.log"]
+LIMIT_LOG = '{"type":"result","is_error":true,"result":"You\'ve hit your session limit · resets 3pm"}'
+
+
+def lane_episode(tmp):
+    ep = Path(tmp) / "ep"
+    touch(ep / "edit_script.md", SCRIPT)
+    lanes.ACCOUNTS = Path(tmp) / "accounts"
+    for p in ("claude1", "claude2", "claude5", "design"):  # design is no claude* profile: never probed
+        (lanes.ACCOUNTS / p).mkdir(parents=True)
+    return ep
+
+
+def fakes(answering, free=16.0, log=""):
+    calls = {"probe": [], "spawn": []}
+    lanes.probe = lambda host, p: calls["probe"].append(p) or p in answering
+    lanes.spawn = lambda host, cmd, log_path: calls["spawn"].append((host, cmd, log_path))
+    lanes.free_gb = lambda host: free
+    lanes.read_log = lambda host, path: log
+    return calls
+
+
+def test_rule1_start_skips_a_profile_that_does_not_answer(tmp_path):
+    ep = lane_episode(tmp_path)
+    calls = fakes(answering={"claude5"})
+    assert lanes.main(["start", str(ep), "source:a1", "--profile", "claude2", *LANE]) == 0
+    assert calls["probe"] == ["claude2", "claude5"]
+    assert calls["spawn"] == [("zbook", "type b.md | claude5 -p --model opus", r"C:\x\lane.log")]
+    assert lanes.load_ledger(ep)["jobs"]["source:a1"]["profile"] == "claude5"
+    calls = fakes(answering=set())
+    assert raises(lambda: lanes.main(["start", str(ep), "voice:a1", *LANE])) and not calls["spawn"]
+
+
+def test_rule2_start_refuses_low_memory_and_a_full_lane_count(tmp_path):
+    ep = lane_episode(tmp_path)
+    calls = fakes(answering={"claude1"}, free=lanes.MIN_FREE_GB)
+    assert raises(lambda: lanes.main(["start", str(ep), "source:a1", *LANE])) and not calls["spawn"]
+    now = time.time()
+    four = ("source:a1", "source:intro", "voice:a1", "voice:intro")
+    lanes.save_ledger(ep, {"jobs": {j: {"started": now, "host": "zbook"} for j in four}})
+    calls = fakes(answering={"claude1"}, free=lanes.MIN_FREE_GB + 0.1)
+    assert raises(lambda: lanes.main(["start", str(ep), "words:a1", *LANE])) and not calls["spawn"]
+    lanes.save_ledger(ep, {"jobs": {j: {"started": now, "host": "zbook"} for j in four[:3]}})
+    assert lanes.main(["start", str(ep), "words:a1", *LANE]) == 0 and len(calls["spawn"]) == 1
+
+
+def test_rule3_status_fails_a_limited_lane_and_relaunches_it(tmp_path):
+    ep = lane_episode(tmp_path)
+    run = {"started": time.time() - 60, "host": "zbook", "minutes": 60, "cmd": "type b.md | {cli} -p",
+           "log": r"C:\x\lane.log", "profile": "claude1"}
+    lanes.save_ledger(ep, {"jobs": {"source:a1": run}})
+    calls = fakes(answering=set(), log=LIMIT_LOG)
+    lanes.main(["status", str(ep)])
+    st = {s["job"]: s["state"] for s in lanes.job_states(ep, lanes.load_ledger(ep))}
+    assert st["source:a1"] == "FAILED" and "FAILED" in lanes.BLOCKING and not calls["spawn"]
+    calls = fakes(answering={"claude1", "claude5"}, log=LIMIT_LOG)
+    lanes.main(["status", str(ep)])
+    assert calls["probe"] == ["claude2", "claude5"]  # never back onto the profile that hit its limit
+    assert calls["spawn"] == [("zbook", "type b.md | claude5 -p", r"C:\x\lane.log")]
+    new = lanes.load_ledger(ep)["jobs"]["source:a1"]
+    assert new["profile"] == "claude5" and new["started"] > run["started"]
+
+
+if __name__ == "__main__":
+    for t in (test_rule1_start_skips_a_profile_that_does_not_answer,
+              test_rule2_start_refuses_low_memory_and_a_full_lane_count,
+              test_rule3_status_fails_a_limited_lane_and_relaunches_it):
+        with tempfile.TemporaryDirectory() as d:
+            try:
+                t(Path(d))
+                check(t.__name__, True)
+            except AssertionError:
+                check(t.__name__, False)
+
 if FAILS:
     sys.exit(f"[test_lanes] FAIL: {FAILS}")
 print("[test_lanes] all checks passed")
