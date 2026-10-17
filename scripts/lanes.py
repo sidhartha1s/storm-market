@@ -15,17 +15,20 @@ which jobs were launched and when they ended, and which are held.
   python3 scripts/lanes.py end    episodes/<slug> verify:a4   # the lane stopped (its output may still need syncing back)
   python3 scripts/lanes.py hold   episodes/<slug> source:z1|all --reason "z1 media sits in the a6 folder"
   python3 scripts/lanes.py unhold episodes/<slug> source:z1
-  python3 scripts/lanes.py status episodes/<slug> [--json]   # exit 2 while any job is READY, STALE or FAILED
+  python3 scripts/lanes.py status episodes/<slug> [--json]   # exit 2 while any job is READY, STALE or FAILED; read-only
+  python3 scripts/lanes.py relaunch episodes/<slug>          # put every FAILED lane on the next profile that answers
 
 Launching (why: lanes sat dead for hours on an exhausted profile or a full ZBook). `start --cmd` runs one job's command
 itself, hidden and detached, on host local or zbook, with {cli} replaced by the profile (claudeN, the wrapper that sets
 CLAUDE_CONFIG_DIR), started in --cwd (default: this checkout; required on zbook) and all output sent to --log.
 It refuses a job already RUNNING or DONE. The three rules:
-  1. it first probes the profile (`claude -p ok --model haiku` under its CLAUDE_CONFIG_DIR); on a limit, an is_error
-     reply or a logged-out profile it probes the next ~/.claude-accounts/claude* profile. It never waits for a reset.
+  1. it first probes the profile (`claude -p 'reply with the single word ok' --model haiku` under its
+     CLAUDE_CONFIG_DIR); any reply but "ok" (a limit, a logged-out profile, an error) moves it to the next
+     ~/.claude-accounts/claude* profile. It never waits for a reset.
   2. every start refuses while the host has MIN_FREE_GB or less free, or MAX_LANES lanes are already RUNNING
-  3. a running lane whose log tail says it hit a limit is FAILED (blocking); `status` relaunches it on the next
-     profile that answers
+  3. a running lane whose log tail says it hit a limit is FAILED (blocking). `status` only reports it, since the Stop
+     hook calls status; `relaunch` moves it to the next profile that answers, under <ep>/lanes.json.lock (created
+     exclusively; one older than LOCK_MIN minutes belongs to a dead relaunch and is taken over)
 
 Groups: one per segment prefix (a1 = A1-S*), except H1, T1 and I1, which form `intro`. Jobs per group g:
   voice:g   every segment of g is locked (no open [verify] in its heading block) and has audio/<id>.wav, and
@@ -61,6 +64,7 @@ MIN_FREE_GB = 4     # a lane never starts on a host with this much free memory o
 MAX_LANES = 4       # ...or while this many lanes are RUNNING
 ACCOUNTS = Path.home() / ".claude-accounts"
 LIMIT = re.compile(r"hit your (\w+ )?limit|session limit|usage limit reached", re.I)
+LOCK_MIN = 10      # a relaunch lock older than this is a dead holder's
 
 
 def ps(host, script, timeout=90):
@@ -82,11 +86,11 @@ def quote(s):
 
 
 def probe(host, profile):
-    """Rule 1: True only if the profile answers; a limit, an is_error reply, a logged-out profile or an error is False."""
+    """Rule 1: True only if the profile replies "ok"; a limit, a logged-out profile or an error is False."""
     code, out = ps(host, f'$env:CLAUDE_CONFIG_DIR = "$HOME\\.claude-accounts\\{profile}"; '
-                         '& "$HOME\\.local\\bin\\claude.exe" -p ok --model haiku --output-format json',
-                   timeout=30)  # the Stop hook gives status 120 s, and a relaunch may probe several profiles
-    return code == 0 and '"is_error":false' in out.replace(" ", "") and not LIMIT.search(out)
+                         '& "$HOME\\.local\\bin\\claude.exe" -p \'reply with the single word ok\' --model haiku',
+                   timeout=30)  # a relaunch may probe several profiles in a row
+    return code == 0 and out.strip().strip(".").lower() == "ok"
 
 
 def free_gb(host):
@@ -128,6 +132,22 @@ def gate(states, host):
         return f"{running} lanes already RUNNING (cap {MAX_LANES})"
     gb = free_gb(host)
     return f"{host} has {gb} GB free (needs more than {MIN_FREE_GB})" if gb <= MIN_FREE_GB else None
+
+
+def take_lock(lock, now):
+    """True once this process holds lock, created exclusively; a lock older than LOCK_MIN is taken over."""
+    for _ in range(2):
+        try:
+            os.close(os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY))
+            return True
+        except FileExistsError:
+            try:
+                if now - lock.stat().st_mtime < LOCK_MIN * 60:
+                    return False
+                os.remove(lock)  # the holder died without releasing it
+            except FileNotFoundError:
+                pass  # its holder released it meanwhile: try again
+    return False
 
 
 def launch(run, order):
@@ -224,7 +244,7 @@ def job_states(ep, ledger, now=None):
             if log is None:
                 note += " (its log is unreadable)"
             elif LIMIT.search(log):
-                state, note = "FAILED", f"{run.get('profile')} hit its limit on {run['host']}"
+                state, note = "FAILED", f"{run.get('profile')} hit its limit on {run['host']}: run `lanes.py relaunch`"
         else:
             state = "READY"
             if run.get("ended"):
@@ -237,7 +257,7 @@ def job_states(ep, ledger, now=None):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("cmd", choices=["claim", "start", "end", "hold", "unhold", "status"])
+    ap.add_argument("cmd", choices=["claim", "start", "end", "hold", "unhold", "status", "relaunch"])
     ap.add_argument("episode")
     ap.add_argument("jobs", nargs="*")
     ap.add_argument("--host", default="local", choices=HOSTS)
@@ -256,20 +276,31 @@ def main(argv=None):
     ledger = load_ledger(ep)
     now = time.time()
 
+    if a.cmd == "relaunch":  # rule 3: a FAILED lane moves to the next profile that answers, never waits for a reset
+        lock = ep / "lanes.json.lock"
+        if not take_lock(lock, now):
+            print(f"[lanes] relaunch {ep.name}: another relaunch holds {lock}; backing off")
+            return 0
+        try:
+            ledger = load_ledger(ep)  # re-read under the lock, so a relaunch that just finished is seen
+            states = job_states(ep, ledger, now)
+            left = 0
+            for s in (s for s in states if s["state"] == "FAILED"):
+                run = ledger["jobs"][s["job"]]
+                why = gate(states, run["host"])
+                new = None if why else launch(dict(run, started=now), profile_order(run.get("profile"), skip=run.get("profile")))
+                if new:
+                    ledger["jobs"][s["job"]] = new
+                    s["state"] = "RUNNING"
+                    save_ledger(ep, ledger)  # saved per lane, so a later failure never forgets a launched one
+                left += not new
+                print(f"[lanes] relaunch {s['job']}: {'on ' + new['profile'] if new else 'not relaunched: ' + (why or 'no other profile answers')}")
+        finally:
+            os.remove(lock)
+        return 2 if left else 0
+
     if a.cmd == "status":
         states = job_states(ep, ledger, now)
-        failed = [s for s in states if s["state"] == "FAILED"]
-        for s in failed:  # rule 3: relaunch now on the next profile that answers, never wait for a reset
-            run = ledger["jobs"][s["job"]]
-            why = gate(states, run["host"])
-            new = None if why else launch(dict(run, started=now), profile_order(run.get("profile"), skip=run.get("profile")))
-            if new:
-                ledger["jobs"][s["job"]] = new
-                s.update(state="RUNNING", note=f"relaunched on {new['profile']}: {s['note']}")
-            else:
-                s["note"] += f"; not relaunched: {why or 'no other profile answers'}"
-        if failed:
-            save_ledger(ep, ledger)
         if a.json:
             print(json.dumps({"orchestrator": ledger.get("orchestrator"), "jobs": states,
                               "blocking": [f"{s['state']} {s['job']}" + (f" ({s['note']})" if s["note"] else "")
