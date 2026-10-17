@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a5-cc-greenbrier: A5-S6, host 889.587 to 892.287 (2.70 s = a5-s6 "One" 7.60 to 10.30). Local t = a5-s6 words.json time - 7.60.
+     Overlay on the NIST Greenbriar photo (a5-s6_c1, mounted under the host by the orchestrator). Root transparent: no ground.
+     COMMENT CARD base copied from g-a1-numb (via g-a4-comment's glass surface for photos): 760 wide, left 120, centred on y 500.
+     Card is about 340 high, so its bottom stays near y 670, above the presenter zone (x >= 1600, y >= 680). */
+  #a5g-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  #a5g-cardwrap { position:absolute; inset:auto; left:120px; top:0; width:760px; height:1000px; display:flex; align-items:center; }
+  #a5g-card { position:relative; box-sizing:border-box; width:760px; min-height:240px; padding:36px 44px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); visibility:hidden; opacity:0; }
+  .a5g-meta { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2;
+    visibility:hidden; opacity:0; }
+  #a5g-r1 { width:fit-content; margin-bottom:20px; } /* box hugs the text so the quote glyph box never crosses it */
+  #a5g-r2 { font-size:40px; letter-spacing:0; line-height:1.25; color:#f2f5f8; margin-bottom:20px; }
+  #a5g-r2 span { display:inline-block; visibility:hidden; opacity:0; }
+  /* big tier (>= 52): the quote glyph, top right of the card, clear of row 1 and the text lines */
+  #a5g-mark { position:absolute; inset:auto; right:40px; top:14px; font-family:Georgia,'Times New Roman',serif; font-size:104px; line-height:104px;
+    color:#d8a13a; visibility:hidden; opacity:0; }
+  #a5g-likes { height:30px; } /* reserved for the like count (193); stays empty until the orchestrator accepts the source (Open 1) */
+</style>
+<div id="a5g-root" data-composition-id="g-a5-cc-greenbrier" data-width="1920" data-height="1080">
+  <div id="a5g-cardwrap">
+    <div id="a5g-card">
+      <div id="a5g-mark">&ldquo;</div>
+      <div id="a5g-r1" class="a5g-meta">YouTube comment</div>
+      <div id="a5g-r2" class="a5g-meta"><span id="a5g-l1">I was in the greenbrier nursing home</span> <span id="a5g-l2">when it happened.</span></div>
+      <div id="a5g-r3" class="a5g-meta">under “Swegle documentary”</div>
+      <div id="a5g-likes"></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a5g-";
+  /* r2 is a container: the row shows from its first line, the two lines reveal one by one */
+  tl.set(Q+"r2", { autoAlpha: 1 }, 0);
+
+  /* card in 0.00 to 0.60 on "One" a5-s6 7.60 */
+  tl.fromTo(Q+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0); /* ONE a5-s6 7.60 */
+  tl.fromTo(Q+"mark", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.1); /* ONE a5-s6 7.60 + card start */
+  tl.fromTo(Q+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.1); /* ONE a5-s6 7.60 + card start */
+  tl.fromTo(Q+"l1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.26); /* YOU a5-s6 7.86 */
+  tl.fromTo(Q+"r3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.56); /* THAT a5-s6 8.16 */
+  tl.fromTo(Q+"l2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 1.04); /* IN a5-s6 8.64; whole comment on screen by HAPPENED. 9.16 (local 1.56) */
+
+  /* card float y +-4 px, finite: 0.60 to 2.10 */
+  tl.to(Q+"card", { y: 4, duration: 0.6, ease: "sine.inOut" }, 0.6);
+  tl.fromTo(Q+"card", { y: 4 }, { y: -4, duration: 0.9, ease: "sine.inOut", immediateRender: false }, 1.2);
+
+  /* exit 2.10 to 2.70: slide out left (the entrance side) from a5-s6 9.70; clear at the host end, the chip "19 OF 95 LOST" is 0.15 at 10.38 */
+  tl.to(Q+"card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 2.1); /* a5-s6 9.70 */
+
+  window.__timelines["g-a5-cc-greenbrier"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
