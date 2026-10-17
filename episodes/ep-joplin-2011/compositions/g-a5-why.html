@@ -81,9 +81,7 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const Q = "#why-";
 
-  /* 0.00: NIST page, its heading and the source line land; the page push runs the whole NIST span so no 4 s still precedes the first underline */
-  tl.fromTo(Q + "nist-slide", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
-  tl.fromTo(Q + "src1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0);
+  /* 0.00: NIST page, its heading and the source line are on from frame 0 (no empty ground after the cut); the page push runs the whole NIST span so no 4 s still precedes the first underline */
   tl.to(Q + "nist-page", { scale: 1.03, duration: 13.2, ease: "none" }, 0);
 
   /* underline draw: dash length measured from the path, never typed */
