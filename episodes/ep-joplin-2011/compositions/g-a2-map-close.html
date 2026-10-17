@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a2-map-close: A2-S10 tail, A2-S11, A2-S12, host 452.37 for 20.9 s. Brief briefs/a2/g-a2-map-close.md.
+     Cue clock: comp-local = (nx-a2-sN data-start - host 452.37) + word start: S10 -14.62, S11 3.40, S12 12.90.
+     Base: the g-intro-map BASEMAP block, copied verbatim from g-a2-countdown with ids re-prefixed a2cd-mm- -> a2mc-mm- and classes
+       a2cd- -> a2mc-; grid, streets and city on from frame 0 (CSS); path, sirens, places, ring B off; ring A is the siren ring (lit state).
+     Residential layer: the base family has no residential blocks; the brief names the I1-S8 dots by location type as that layer, so the
+       homes (59) and apartments (12) groups are copied verbatim from g-intro-map-dots (positions from media/g-intro-map-dots/dots.py,
+       schematic, inside the damage path), recoloured #d8a13a at 70 % fill. Outside/vehicle dots are not residential and are not copied.
+     Numbers (.qc-tmp-a2mc/calc.mjs, one-shot, uncommitted): camera 0.64 about the centroid 874.1 505.7, pan 75.9 -35.7 (centroid on screen
+       950 470), so ring A is r 268.7 on screen, west edge 681.3, east edge 1218.7; leaders 140 px out to 541.3 and 1358.7 at y 470.
+       Push 1.00 -> 1.12 about the residential centroid's screen point 1097.6 578.4; after it the below-ground line runs 449.1 -> 1380.9
+       at y 725.3 and the lowest dot edge sits at 713.0 (line empty). Strokes in user units: ring 6.25 (4 px), line 2.79 (2 px at 1.12).
+     BLOCKED (open numbers): the 5:34 touchdown dot is not drawn (E13 fraction garbled). -->
+<template>
+<style>
+  #a2mc-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .a2mc-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* base layers on from frame 0 (CSS beats the copied presentation attributes) */
+  #a2mc-mm-l-streets, #a2mc-mm-city-rest { opacity:1; }
+  #a2mc-mm-city { stroke-dashoffset:0; fill-opacity:0.03; }
+  #a2mc-mm-l-path, #a2mc-mm-l-sirens, #a2mc-mm-l-places, #a2mc-mm-ring-b { display:none; }
+  #a2mc-mm-ring-a-c { stroke-width:6.25px; }
+  #a2mc-mm-below { stroke-width:2.79px; }
+  .a2mc-pulse { opacity:0; visibility:hidden; }
+  .a2mc-ringg { opacity:1; }
+  /* residential layer: hidden until "best"; r scaled so a dot reads 3.5 px at camera 0.64 */
+  .a2mc-dot { fill:#d8a13a; fill-opacity:0.7; r:5.47px; opacity:0; visibility:hidden; }
+  /* HUD: fixed, never rides the camera */
+  .a2mc-lead { fill:none; stroke:#dfe7ee; stroke-width:3; stroke-linecap:round; stroke-dasharray:141; stroke-dashoffset:141; }
+  #a2mc-stamp { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#f2f5f8;
+    stroke:#05080c; stroke-width:6px; stroke-linejoin:round; paint-order:stroke; opacity:0; visibility:hidden; }
+  #a2mc-below-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2;
+    stroke:#05080c; stroke-width:6px; stroke-linejoin:round; paint-order:stroke; opacity:0; visibility:hidden; }
+  .a2mc-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; }
+  .a2mc-tag { position:absolute; inset:auto; top:428px; height:84px; padding:18px 28px; border-radius:20px; white-space:nowrap;
+    opacity:0; visibility:hidden; }
+  #a2mc-tag-w { right:1378.7px; }
+  #a2mc-tag-e { left:1358.7px; }
+  .a2mc-tagtxt { font:900 40px/48px 'Arial Black', Arial, sans-serif; color:#f2f5f8; }
+  #a2mc-icon { position:absolute; inset:auto; left:1386.7px; top:530px; width:56px; height:56px; opacity:0; visibility:hidden; }
+  #a2mc-horn { position:absolute; left:0; top:0; width:56px; height:56px; }
+  #a2mc-strike { position:absolute; left:0; top:-2.5px; width:79.2px; height:5px; background:#e74c3c; border-radius:2.5px; }
+  .a2mc-chip { position:absolute; inset:auto; left:110px; bottom:110px; padding:18px 28px; border-radius:20px; white-space:nowrap;
+    opacity:0; visibility:hidden; }
+  .a2mc-chiptxt { font:900 40px/48px 'Arial Black', Arial, sans-serif; letter-spacing:2px; color:#f2f5f8; }
+  .a2mc-src { position:absolute; inset:auto; right:96px; top:54px; padding:10px 18px; border-radius:16px; white-space:nowrap;
+    opacity:0; visibility:hidden; }
+  .a2mc-srctxt { font:700 20px/20px Arial, sans-serif; letter-spacing:2px; color:#c8d3e0; }
+</style>
+<div id="a2mc-root" data-composition-id="g-a2-map-close" data-width="1920" data-height="1080" data-duration="20.9">
+  <svg class="a2mc-svg" viewBox="0 0 1920 1080">
+    <g id="a2mc-push">
+    <g id="a2mc-pan">
+    <g id="a2mc-cam">
+<!--SPLICE:BASEMAP-->
+<!--SPLICE:DOTS-->
+    </g>
+    </g>
+    </g>
+  </svg>
+
+  <!-- HUD: fixed, never rides the camera; every position from calc.mjs -->
+  <svg class="a2mc-svg" viewBox="0 0 1920 1080">
+    <path id="a2mc-lead-w" class="a2mc-lead" d="M681.3,470 L541.3,470"/>
+    <path id="a2mc-lead-e" class="a2mc-lead" d="M1218.7,470 L1358.7,470"/>
+    <!-- stamp inside ring A at its bottom (glyph bottom 20 px above the ring at 738.7): pulses only grow outward, so it is never under one -->
+    <text id="a2mc-stamp" x="950" y="718" text-anchor="middle">5:38 PM</text>
+    <!-- at the below-ground line's left end after the push (449.1, 725.3), 16 px above it as the base label sits -->
+    <text id="a2mc-below-lab" x="449" y="709">Below ground</text>
+  </svg>
+
+  <div id="a2mc-tag-w" class="a2mc-tag a2mc-glass"><span class="a2mc-tagtxt">A worse warning</span></div>
+  <div id="a2mc-tag-e" class="a2mc-tag a2mc-glass"><span class="a2mc-tagtxt">All clear</span></div>
+
+  <!-- crossed siren: horn glyph (mount, bell, two sound arcs), the strike runs corner to corner through it -->
+  <div id="a2mc-icon">
+    <svg id="a2mc-horn" viewBox="0 0 56 56">
+      <path d="M8,22 L18,22 L38,10 L38,46 L18,34 L8,34 Z" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M18,22 L18,34 M12,34 L14,44 L20,44 L19,35" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M44,22 Q48,28 44,34 M49,17 Q55,28 49,39" fill="none" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <div id="a2mc-strike"></div>
+  </div>
+
+  <div id="a2mc-chip" class="a2mc-chip a2mc-glass"><span class="a2mc-chiptxt">NO ALL-CLEAR SIGNAL</span></div>
+  <div id="a2mc-src" class="a2mc-src a2mc-glass"><span class="a2mc-srctxt">NIST Sec. 4.7.1.2 · Sec. 4.3.1</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a2-map-close", P = "#a2mc-", M = "#a2mc-mm-";
+  const D = 20.9;                                       /* host data-duration */
+  const S10 = -14.62, S11 = 3.40, S12 = 12.90;          /* nx-a2-sN data-start - host 452.37 */
+  const CX = 874.1, CY = 505.7, ORG = CX + " " + CY;
+  const PX = 1097.6, PY = 578.4;                        /* push origin: residential centroid on screen (calc.mjs) */
+  const tl = gsap.timeline({ paused: true });
+  const cam = (s) => ({ attr: { transform: "translate(" + (CX * (1 - s)).toFixed(3) + "," + (CY * (1 - s)).toFixed(3) + ") scale(" + s + ")" } });
+  const pan = (x, y) => ({ attr: { transform: "translate(" + x + "," + y + ")" } });
+  const push = (k) => ({ attr: { transform: "translate(" + (PX * (1 - k)).toFixed(3) + "," + (PY * (1 - k)).toFixed(3) + ") scale(" + k + ")" } });
+
+  /* camera still until "best" (labels sit on the HUD, never on a move) */
+  tl.set(P + "cam", cam(0.64), 0);
+  tl.set(P + "pan", pan(75.9, -35.7), 0);
+  tl.set(P + "push", push(1), 0);
+  tl.set(P + "strike", { rotation: 45, scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* AND a2-s10 14.62 = 0: ground up from frame 0 (CSS), under g-a2-doc-cues' exit */
+  /* SECOND a2-s10 15.18: ring A draws 0.4 s with its stamp; pulse (three copies, 1.2 s + 0.4 s rest, staggered 0.4 s) through a2-s11 */
+  tl.fromTo(M + "ring-a-c", { strokeDashoffset: 2640 }, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, S10 + 15.18);
+  tl.fromTo(P + "stamp", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, S10 + 15.18 + 0.2);
+  tl.set(M + "ring-a-pulses", { autoAlpha: 1 }, S10 + 15.58);
+  for (let i = 1; i <= 3; i++) {
+    tl.fromTo(M + "ring-a-p" + i, { autoAlpha: 0.8, scale: 1, svgOrigin: ORG },
+      { autoAlpha: 0, scale: 1.18, svgOrigin: ORG, duration: 1.2, ease: "power1.out", repeat: 6, repeatDelay: 0.4, immediateRender: false },
+      S10 + 15.58 + (i - 1) * 0.4);
+  }
+  /* DEPENDED a2-s11 0.42: source line */
+  tl.fromTo(P + "src", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, S11 + 0.42);
+  /* WORSE a2-s11 3.02: west leader draws 0.35 s, chip lands at its end */
+  tl.fromTo(P + "lead-w", { strokeDashoffset: 141 }, { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, S11 + 3.02);
+  tl.fromTo(P + "tag-w", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, S11 + 3.02 + 0.2);
+  /* ALL a2-s11 5.02: east leader, chip "All clear" */
+  tl.fromTo(P + "lead-e", { strokeDashoffset: 141 }, { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, S11 + 5.02);
+  tl.fromTo(P + "tag-e", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, S11 + 5.02 + 0.2);
+  /* ALL a2-s11 8.02: crossed siren icon in, strike draws corner to corner 0.35 s */
+  tl.fromTo(P + "icon", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, S11 + 8.02);
+  tl.to(P + "strike", { scaleX: 1, duration: 0.35, ease: "power2.out" }, S11 + 8.02 + 0.15);
+  /* SIGNAL. a2-s11 8.48: chip */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, S11 + 8.48);
+
+  /* 538, a2-s12 0.76: labels, icon, chip and source exit 0.5 s; leaders retract; ring pulses once more */
+  const OUT = S12 + 0.76;
+  tl.to([P + "tag-w", P + "tag-e", P + "icon", P + "chip", P + "src"], { autoAlpha: 0, y: -20, duration: 0.5, ease: "power3.in" }, OUT);
+  tl.to([P + "lead-w", P + "lead-e"], { strokeDashoffset: 141, duration: 0.5, ease: "power3.in" }, OUT);
+  tl.fromTo(M + "ring-a-p1", { autoAlpha: 0.8, scale: 1, svgOrigin: ORG },
+    { autoAlpha: 0, scale: 1.18, svgOrigin: ORG, duration: 1.2, ease: "power1.out", immediateRender: false }, OUT);
+  /* stamp leaves before the push (no text rides a move) */
+  tl.to(P + "stamp", { autoAlpha: 0, y: -14, duration: 0.3, ease: "power3.in" }, S12 + 2.46 - 0.35);
+
+  /* BEST a2-s12 2.46: residential dots light west to east (0.05 s steps, 0.6 s total); push 1.00 -> 1.12, ending 1.0 s before host end */
+  const dots = Array.from(document.querySelectorAll("#a2mc-res .a2mc-dot"));
+  const xs = dots.map((d) => +d.getAttribute("cx")), x0 = Math.min(...xs), x1 = Math.max(...xs);
+  dots.forEach((d, i) => {
+    const step = Math.min(10, Math.floor(11 * (xs[i] - x0) / (x1 - x0)));
+    tl.fromTo(d, { autoAlpha: 0, scale: 0.3, transformOrigin: "50% 50%" },
+      { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.1, ease: "back.out(2)" }, S12 + 2.46 + step * 0.05);
+  });
+  tl.to(P + "push", Object.assign(push(1.12), { duration: (D - 1.0) - (S12 + 2.46), ease: "power2.inOut" }), S12 + 2.46);
+  /* UNDERNEATH a2-s12 6.36: below-ground line draws L to R 0.8 s, label rises (HUD, at the line's end-of-push position) */
+  tl.fromTo(M + "below", { strokeDashoffset: 1301 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, S12 + 6.36);
+  tl.fromTo(P + "below-lab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, S12 + 6.36 + 0.35);
+  /* SPOT. a2-s12 7.22: hold on the finished state, drift only; the editor's chapter blackout follows */
+  tl.to(P + "push", Object.assign(push(1.125), { duration: 1.0, ease: "none" }), D - 1.0);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
