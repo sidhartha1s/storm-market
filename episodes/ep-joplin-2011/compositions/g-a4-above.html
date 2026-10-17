@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a4-above: A4-S12 overlay, host 774.727 to 782.607 (7.88 s). Local t = a4-s12 words.json time - 3.90 ("The").
+     Transparent root: the Range Line corridor aerial (orchestrator's mount, whole host window) sits on a lower track.
+     Card left 140 / top 300 / width 1140 (brief s3 says 1160; s4 truth 4 wins: right edge 1280 = start of the right third).
+     Text left = card-left + 64; presenter corner (x >= 1600, y >= 680) stays empty. */
+  #a4ab-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  /* the float carries the 3 px drift so the card keeps its own entrance and exit tweens */
+  #a4ab-float { position:absolute; inset:auto; left:140px; top:300px; width:1140px; }
+  #a4ab-card { position:relative; inset:auto; width:1140px; box-sizing:border-box; padding:52px 56px 50px 64px; border-radius:28px; overflow:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 30px 90px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; }
+  #a4ab-bar { position:absolute; inset:auto; left:0; top:0; bottom:0; width:8px; background:#c0392b; }
+  #a4ab-gloss { position:absolute; inset:auto; top:0; bottom:0; left:-220px; width:140px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.14), rgba(255,255,255,0)); }
+
+  .a4ab-line { position:relative; inset:auto; display:block; white-space:nowrap;
+    font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:68px; color:#f2f5f8;
+    text-shadow:0 2px 14px rgba(0,0,0,.7); visibility:hidden; opacity:0; }
+  #a4ab-src { position:relative; inset:auto; display:block; white-space:nowrap; margin-top:16px;
+    font-family:Arial,sans-serif; font-weight:400; font-size:20px; line-height:28px; letter-spacing:.2px; color:#c8d3e0;
+    visibility:hidden; opacity:0; }
+  #a4ab-rule { position:relative; inset:auto; display:block; height:1px; margin:22px 0 22px 0; background:rgba(255,255,255,.18); visibility:hidden; opacity:0; }
+  #a4ab-chip { position:relative; inset:auto; display:block; width:1020px; text-wrap:balance;
+    font-family:Arial,sans-serif; font-weight:700; font-size:30px; line-height:42px; letter-spacing:1px; color:#d8a13a;
+    visibility:hidden; opacity:0; }
+</style>
+<div id="a4ab-root" data-composition-id="g-a4-above" data-width="1920" data-height="1080">
+  <div id="a4ab-float">
+    <div id="a4ab-card">
+      <div id="a4ab-bar"></div>
+      <div id="a4ab-gloss"></div>
+      <span class="a4ab-line" id="a4ab-l1">In all of the demolished buildings,</span>
+      <span class="a4ab-line" id="a4ab-l2">those lost or badly hurt</span>
+      <span class="a4ab-line" id="a4ab-l3">were above ground</span>
+      <span id="a4ab-src">NIST Sec. 4.6.2.1</span>
+      <span id="a4ab-rule"></span>
+      <span id="a4ab-chip">ALL ABOVE GROUND &middot; THE 8 BUSINESSES AND CHURCHES STUDIED</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a4ab-";
+  tl.set(Q + "bar", { scaleY: 0, transformOrigin: "center top" }, 0);
+
+  /* THE a4-s12 3.90 (local 0.00): card rises in, line 1 with it */
+  tl.fromTo(Q + "card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.to(Q + "bar", { scaleY: 1, duration: 0.45, ease: "power2.out" }, 0.2);
+  tl.fromTo(Q + "l1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0);
+  tl.fromTo(Q + "gloss", { x: 0 }, { x: 1400, duration: 0.8, ease: "power1.inOut" }, 0.3);
+
+  /* PEOPLE a4-s12 4.12 (local 0.22): line 2 */
+  tl.fromTo(Q + "l2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.22);
+
+  /* ABOVE a4-s12 6.12 (local 2.22): line 3 */
+  tl.fromTo(Q + "l3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.22);
+
+  /* a4-s12 6.32 (local 2.42): source line */
+  tl.fromTo(Q + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.42);
+
+  /* BESIDES a4-s12 7.66 (local 3.76): chip, after the sentence has landed, with its rule */
+  tl.fromTo(Q + "rule", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.76);
+  tl.fromTo(Q + "chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.8);
+  tl.fromTo(Q + "gloss", { x: 0 }, { x: 1400, duration: 0.8, ease: "power1.inOut" }, 3.8);
+
+  /* hold: the card floats y +-3 px, finite repeats (0.5 to 7.7) */
+  tl.fromTo(Q + "float", { y: 0 }, { y: -3, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false }, 0.5);
+
+  /* exit: last 0.6 s, from GROUND? a4-s12 11.18 (local 7.28) to host end 7.88 */
+  tl.to(Q + "card", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 7.28);
+
+  window.__timelines["g-a4-above"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
