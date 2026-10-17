@@ -39,7 +39,7 @@ Plan view, one storey, no compass on screen. Drawing area x 180 to 1440, y 220 t
 ## 5. Panel text and cues
 | element (exact text) | cue |
 |---|---|
-| chip `19 OF 95 LOST`: `95` part first, then the `19 OF` part fills in front (pre-authored spans, autoAlpha) | `95` part at a5-s6 "Ninety"@10.38; `19 OF ... LOST` at "nineteen"@12.38 |
+| chip `19 OF 95 LOST` (whole chip; the number lands on the spoken 19) | a5-s6 "nineteen"@12.38 |
 | source line `NIST Sec. 1.2 · Sec. 4.4.4 · Sec. 4.6.2.2` | a5-s6 "Ninety"@10.38 |
 | drawing ground in, walls draw on (strokeDashoffset 1.0 s) | a5-s6 "The"@13.94 |
 | hallway lit | a5-s6 "inner"@15.42 |
