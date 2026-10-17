@@ -128,7 +128,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "lab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.34);
 
   /* PUSH a4-s14 5.34 -> host end 7.80 (past "sirens." 6.88, cut to the blackout while it still moves): linear 1.01 -> 1.40, St. John's pinned */
-  tl.to(P + "cam", Object.assign(cam(-321.81, -223.47, 1.4), { duration: END - WHEN, ease: "none" }), WHEN);
+  tl.to(P + "cam", Object.assign(cam(-321.81, -223.47, 1.4), { duration: 2.46, ease: "none" }), 5.34);
 
   window.__timelines[ID] = tl;
 })();
