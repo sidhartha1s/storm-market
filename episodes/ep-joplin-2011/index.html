@@ -25,6 +25,16 @@
     .clip { position: absolute; inset: 0; }
     .blackout { position: absolute; inset: 0; background: #000; }
     .hold, .act { position: absolute; inset: 0; pointer-events: none; }
+    .still-wrap { position: absolute; inset: 0; overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .bridge { background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }   /* dark bridge, tokens.md canvas, never flat black */
+    video.graded { filter: saturate(0.88) contrast(1.06) brightness(0.94); }               /* Nepal's grade, broadcast and news clips only */
+    video.crop-dvids { transform: scale(1.18); transform-origin: 50% 0%; }   /* DVIDS 116445 640x360: burned-in lower third at y 318-345 leaves the frame */
+    video.crop-kshb  { transform: scale(1.45); transform-origin: 0% 10%; }   /* KSHB: bug (x 79-92 %, y 72-86 %) and ticker (> 88 %) leave the frame */
+    video.crop-ksn   { transform: scale(1.15); transform-origin: 50% 20%; }  /* KSN: drops the lower crawl and the black side bars; the KSN logos stay */
+    video.crop-fema  { transform: scale(1.1);  transform-origin: 0% 0%; }    /* FEMA bug bottom right leaves the frame */
+    video.crop-koam  { transform: scale(1.35); transform-origin: 50% 0%; }   /* KOAM: headline, bug and ticker in the bottom 22 %; the top 74 % shows */
+    video.crop-kmbc  { transform: scale(1.25); transform-origin: 0% 0%; }    /* KMBC: bug at x 78-94 %, y 80-90 % leaves the frame */
   </style>
 </head>
 <body>
