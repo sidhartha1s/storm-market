@@ -67,3 +67,6 @@ episodes/*/audio/**/_segments/
 
 # builder scratch (one-shot probes, patches); never pipeline
 scripts/_*
+
+# episode job ledger (per machine, per session; scripts/lanes.py)
+episodes/*/lanes.json*

@@ -75,13 +75,14 @@ def job_table(ep):
         groups.setdefault(group_of(sid), []).append((sid, text))
     table = []
     for g, members in groups.items():
+        held_back = sorted(sid for sid, _ in members if sid in unlocked)
         locked = [(sid, text) for sid, text in members if sid not in unlocked]
         audio = ep / "audio"
         voiced = bool(locked) and all((audio / f"{s}.wav").exists() and (audio / f"{s}.txt").exists()
                                       and (audio / f"{s}.txt").read_text(encoding="utf-8").strip() == t.strip()
                                       for s, t in locked)
         words = voiced and all((audio / f"{s}.words.json").exists() for s, _ in locked)
-        note = "open [verify]: " + ", ".join(sorted(s for s, _ in members if s in unlocked)) if len(locked) < len(members) else ""
+        note = f"open [verify]: {', '.join(held_back)}" if held_back else ""
         table.append((f"voice:{g}", voiced, bool(locked), note))
         table.append((f"words:{g}", words, voiced, note))
         cand = ep / "media" / "candidates" / g
@@ -149,7 +150,9 @@ def main(argv=None):
     if a.cmd == "status":
         states = job_states(ep, ledger, now)
         if a.json:
-            print(json.dumps({"orchestrator": ledger.get("orchestrator"), "jobs": states}))
+            print(json.dumps({"orchestrator": ledger.get("orchestrator"), "jobs": states,
+                              "blocking": [f"{s['state']} {s['job']}" + (f" ({s['note']})" if s["note"] else "")
+                                           for s in states if s["state"] in BLOCKING]}))
         else:
             for s in states:
                 print(f"{s['state']:8} {s['job']:28} {s['note']}")

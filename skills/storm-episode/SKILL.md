@@ -44,7 +44,11 @@ Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
    script, voice reference, model login) before scripting toward TTS, and tell the owner if it is the login.
    A FAIL that ends "the next narration run downloads them" needs nothing.
 
-Only after 1–7: plan the episode.
+8. **Claim the episode:** `python3 scripts/lanes.py claim episodes/<slug>` (once per session, again after a resume).
+   The Stop hook `lane-gate.py` then refuses to end a turn while any of the episode's jobs is READY or STALE;
+   record each launch with `lanes.py start`, its end with `lanes.py end`, and an owner or machine wait with `lanes.py hold --reason`.
+
+Only after 1–8: plan the episode.
 
 ## Phase map (each phase's substance lives in the repo docs — follow the pointer)
 

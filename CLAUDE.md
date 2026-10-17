@@ -37,6 +37,7 @@ goes to Opus. Gates passing is not verification.
 | Measured gotchas, newest first | `learnings/` (`README.md` says which file serves which job): read yours before building |
 | Pins, paths, CTA file and window | `config.yaml` |
 | Open tooling and pipeline work; dated decisions (read both at session start, update the same session) | `ops/tasks.md`, `ops/decisions.md` |
+| Which episode jobs are ready, running, held or done, and the Stop gate that blocks an idle ready job | `scripts/lanes.py` (job model in its docstring), hook `~/.claude/hooks/lane-gate.py` |
 
 An owner correction or a measured surprise lands in its single home (`references/mg-quickref.md`, a gate, or the right
 `learnings/` file) the same session.
@@ -154,7 +155,7 @@ Owner 7 Oct 26: "i want all stuff related to storm market within the repo. excep
 - Exceptions on record: installed programs (Python with its packages such as pyyaml, faster-whisper and uv, Node and the npx
   cache that holds hyperframes, ffmpeg, Chrome, git, gh, yt-dlp); online accounts and their local logins (GitHub, Cloudflare
   for the site deploy, Gumroad CLI, YouTube, Flow); the skills' junction into `~/.claude/skills/` (the files are tracked
-  here); stock-fetch keys in `~/.claude/.env`; ChatGPT image generation for thumbnails, driven by the webgen browser
+  here); the Stop hook `~/.claude/hooks/lane-gate.py` (a harness hook; the job model it asks is `scripts/lanes.py`); stock-fetch keys in `~/.claude/.env`; ChatGPT image generation for thumbnails, driven by the webgen browser
   tool in `~/Automation Projects/webgen` (a separate project). What is still to move in: `ops/tasks.md`.
 
 ## HARD RULE: worktree isolation
