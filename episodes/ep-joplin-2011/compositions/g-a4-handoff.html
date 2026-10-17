@@ -107,7 +107,7 @@ window.__timelines = window.__timelines || {};
   tl.set(P + "cam", cam(0, 0, 1), 0);
 
   /* DRIFT a4-s14 0.00 -> WHEN 5.34: scale 1.00 -> 1.01 about the comp centre (translate (1-s) x (960, 540)), ease none */
-  tl.to(P + "cam", Object.assign(cam(-9.6, -5.4, 1.01), { duration: WHEN, ease: "none" }), 0);
+  tl.to(P + "cam", Object.assign(cam(-9.6, -5.4, 1.01), { duration: 5.34, ease: "none" }), 0);
 
   /* WHEN a4-s14 5.34: the A4 outlines go out; St. John's footprint lights (pop 1.8 -> 1, 4 px stroke, .10 fill) */
   tl.to([P + "place-pizza-hut", P + "place-dillons", P + "place-pizza-hut-mk", P + "place-dillons-mk"],
