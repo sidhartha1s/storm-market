@@ -1,0 +1,41 @@
+<!--
+  g-a2-paul-chip: a2-s9, host 417.21 for 5.24 s (the "four" mark to Paul's last word, host end 422.45 = the cut into a2-s10). Brief briefs/a2/g-a2-paul-chip.md.
+  Overlay: one glass chip over Paul full frame (ins-paul-3, mounted in index.html, not here; it takes the nx-a2-s9 slot at 413.93 exactly).
+  Comp-local time = (413.93 - 417.21) + the a2-s9.words.json word start = word start - 3.28.
+  Chip: left 110, bottom 110, padding 20 x 30; clear of x >= 1600 and of the logo at (1740, 900). Claim: E15, 4 minutes after touchdown.
+-->
+<template>
+<style>
+  #a2pc-root { position:absolute; inset:0; overflow:hidden; }
+  #a2pc-card { position:absolute; inset:auto; left:110px; bottom:110px; box-sizing:border-box; padding:20px 30px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:28px; box-shadow:none; visibility:hidden; }
+  #a2pc-l1 { display:block; font:900 52px/60px 'Arial Black', Arial, sans-serif; letter-spacing:2px; color:#f2f5f8;
+    white-space:nowrap; visibility:hidden; }
+  #a2pc-l2 { display:block; margin-top:6px; font:700 20px/24px Arial, sans-serif; letter-spacing:3px; color:#c8d3e0;
+    white-space:nowrap; visibility:hidden; }
+</style>
+<div id="a2pc-root" data-composition-id="g-a2-paul-chip" data-width="1920" data-height="1080">
+  <div id="a2pc-card">
+    <span id="a2pc-l1">4 MIN AFTER TOUCHDOWN</span>
+    <span id="a2pc-l2">NIST Finding 35</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#a2pc-";
+  /* FOUR a2-s9 3.28 -> local 0.00: card in, line 1 */
+  tl.fromTo(P+"card", {autoAlpha:0, x:-40}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 0);
+  tl.fromTo(P+"l1", {autoAlpha:0, x:-40}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 0);
+  /* MINUTES. a2-s9 3.52 -> local 0.24; line 2 follows line 1 by 0.3 s (brief) */
+  tl.fromTo(P+"l2", {autoAlpha:0, x:-40}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 0.3);
+  /* hold 0.4 to 4.64: card floats y 0 > -5 > 0 */
+  tl.to(P+"card", {y:-5, duration:2.12, ease:"sine.inOut", yoyo:true, repeat:1}, 0.4);
+  /* AGAIN. a2-s9 7.66 -> local 4.38; exit fills the host's last 0.6 s, host ends 5.24 at the cut */
+  tl.to(P+"card", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 4.64);
+  window.__timelines["g-a2-paul-chip"] = tl;
+})();
+</script>
+</template>
