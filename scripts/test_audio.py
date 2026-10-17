@@ -421,6 +421,17 @@ with tempfile.TemporaryDirectory() as d:
         check("tts_episode: open [verify] marker exits non-zero", e.code not in (0, None), e.code)
     check("tts_episode: open [verify] marker never reaches synth",
           calls["synth"] == [], calls["synth"])
+    # the same marker on the segment's Rows line, outside the spoken text, still keeps it from TTS
+    ep_rows = make_episode(tmp, SCRIPT_ONE_SEG.replace("Visual: something.", "**Rows:** [verify: re-check the source]"),
+                           voice_ref, name="ep_rows_verify")
+    install_mocks()
+    sys.argv = ["tts_episode.py", str(ep_rows)]
+    try:
+        tts_episode.main()
+        check("tts_episode: [verify] on the Rows line exits non-zero", False, "main() returned")
+    except SystemExit as e:
+        check("tts_episode: [verify] on the Rows line exits non-zero", e.code not in (0, None), e.code)
+    check("tts_episode: [verify] on the Rows line never reaches synth", calls["synth"] == [], calls["synth"])
 
     # 7c. a CLEAN segment with no open marker still passes (sanity check the guard isn't
     #     flagging every segment).
