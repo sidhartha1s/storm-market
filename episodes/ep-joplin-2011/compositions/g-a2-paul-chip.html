@@ -30,10 +30,12 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"card", {autoAlpha:0, x:-40}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 0);
   /* MINUTES. a2-s9 3.52 -> local 0.24; line 2 follows line 1 by 0.3 s (brief) */
   tl.fromTo(P+"l2", {autoAlpha:0, x:-40}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 0.3);
-  /* hold 0.4 to 4.64: card floats y 0 > -5 > 0 */
-  tl.to(P+"card", {y:-5, duration:2.12, ease:"sine.inOut", yoyo:true, repeat:1}, 0.4);
-  /* AGAIN. a2-s9 7.66 -> local 4.38; exit fills the host's last 0.6 s, host ends 5.24 at the cut */
-  tl.to(P+"card", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 4.64);
+  /* hold 0.4 to 4.38: card floats y 0 > -5 > 0 */
+  tl.to(P+"card", {y:-5, duration:1.99, ease:"sine.inOut", yoyo:true, repeat:1}, 0.4);
+  /* AGAIN. a2-s9 7.66 -> local 4.38; exit 0.6 s on the word, gone by 4.98 so truth 3 holds at host end - 0.1 (a power3.in exit
+     ending on the host end still shows the card at 0.5 opacity there); host ends 5.24 at the cut */
+  tl.to(P+"card", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 4.38);
+  tl.set(P+"card", {autoAlpha:0}, 5.24);
   window.__timelines["g-a2-paul-chip"] = tl;
 })();
 </script>
