@@ -2,10 +2,18 @@
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
-<!-- g-intro-map: T1-S2 + T1-S3, host 27.53 for 11.80 s (to nx-t1-s3 33.79 + wav 5.24 = 39.03, seam 39.33). Brief briefs/intro/g-intro-map.md.
-     Comp-local time: t1-s2 word start + 0.00; t1-s3 word start + 6.26 (nx-t1-s3 33.79 - host 27.53).
-     MASTER MAP base: the BASEMAP block below. Later map comps copy it verbatim and toggle its layers.
-     Geometry (one-shot, uncommitted: media/g-intro-map/geo.py -> basemap.json, pasted in by a content-blind transform):
+<!-- g-a1-theater-map: A1-S2 tail, host = nx-a1-s2 140.85 + 10.26 "Three" = 151.11 for 6.00 s (wav end 15.96 + the 0.3 s seam).
+     Brief briefs/a1/g-a1-theater-map.md. Comp-local time = a1-s2 word start - 10.26; words from audio/a1-s2-v2.words.json (the
+     mounted wav): Three 10.30, theater 11.14, lost. 11.66, Were 12.96 (the brief's 11.16 / 11.64 are the v1 wav's).
+     Base: the g-intro-map BASEMAP block, copied verbatim, ids re-prefixed g-master-map- -> g-a1-theater-map- (no geography added).
+       On from frame 0: grid, streets, city (the T1-S2 city view). Places: only g-master-map-place-theater (NAIP 2010
+       m_3709460_se_15_1_20100604), bbox x 805.64-806.26, y 554.80-555.80, centroid (805.95, 555.30). Path, track, sirens, rings,
+       below-ground line off: at x 805.95 the base path spans y 572.2 to 619.8, so the theater sits 0.37 mi north of it (flagged).
+     Camera: log zoom 1x -> 150x (outline 93 x 150 px on screen, long side >= 90), centroid (805.95, 555.30) -> screen (900, 540).
+     Overlay (markers, leader, label) authored in screen px at the settled camera and carried by the camera ratio, so it rides the drift.
+       Markers r 9 + 2 px keyline at x 874 / 900 / 926, y 540: 9 px clear of the outline (x 853.5-946.5, y 465-615) each side.
+       26th St (base st-26th) crosses at screen y ~365; the label sits at y ~436-462, right of x 970: clear of street, outline, markers.
+     Master map geometry notes (from g-intro-map, kept verbatim):
        datum: equirectangular, x scaled by cos(37.08); city outline = TIGER/Line 2010 place 2937592 "Joplin city" (16 rings);
        s = 46.132 px/mi (outline bbox 11.74 x 12.36 mi fitted in x 200-1500, y 200-770, centred);
        centroid (area) = (874.1, 505.7); largest centroid-to-vertex 395.9 px; ring A r = 419.9, ring B r = 443.9;
