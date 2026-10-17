@@ -11,19 +11,19 @@
      about the mouth; at scale 1.05 the 380 arc reaches x 1030.7 (< 1040, chips start 1060).
      N8 (open): chip 2 (left 1060, centre y 500) and source chip 3 (y 560) are NOT in the DOM; release cue is the a6-s6 word at 10.44 (host 11.56). */
   #g-a6-siren-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
-  #sr-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 40% 50%, #0b1016, #030507 78%); }
+  #sr-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 40% 50%, #15202b, #04070a 78%); }
   #sr-stage, #sr-arcs { position:absolute; inset:0; }
   .sr-box { position:absolute; inset:0; width:1920px; height:1080px; }
   #sr-arcs path { fill:none; stroke:#dfe7ee; stroke-width:4; stroke-linecap:round; }
-  .sr-arc { opacity:0; visibility:hidden; }
+  .sr-arc { opacity:0; }
   #sr-icon { opacity:.4; }
   .sr-chip { position:absolute; inset:auto; left:1060px; top:384px; height:72px; padding:0 28px; box-sizing:border-box; display:flex; align-items:center;
     white-space:nowrap; font:700 30px/72px Arial,sans-serif; letter-spacing:1px; color:#dfe7ee;
     background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,.14); border-radius:28px; box-shadow:0 30px 90px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.10);
-    opacity:0; visibility:hidden; }
+    opacity:0; }
   #sr-src { position:absolute; inset:auto; left:96px; bottom:60px; font:700 20px/22px Arial,sans-serif; letter-spacing:.5px; color:#c8d3e0;
-    white-space:nowrap; opacity:0; visibility:hidden; }
+    white-space:nowrap; opacity:0; }
 </style>
 <div id="g-a6-siren-root" data-composition-id="g-a6-siren" data-width="1920" data-height="1080">
   <div id="sr-ground"></div>
@@ -52,40 +52,32 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const MOUTH = "629.7px 410px";
 
-  /* SIRENS? s5 9.86 (host 0): icon pops in, arcs start; icon holds a 4 px float to the exit */
-  tl.fromTo("#sr-icon", { scale: 0.8, autoAlpha: 0.4, transformOrigin: "640px 500px" }, { scale: 1, autoAlpha: 1, transformOrigin: "640px 500px", duration: 0.5, ease: "back.out(1.7)" }, 0);
-  tl.to("#sr-icon", { y: -4, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0.5);
+  /* SIRENS? s5 9.86 (host 0): icon pops in, arcs start; icon drifts up 6 px to the exit */
+  tl.fromTo("#sr-icon", { scale: 0.8, opacity: 0.4, transformOrigin: "640px 500px" }, { scale: 1, opacity: 1, transformOrigin: "640px 500px", duration: 0.5, ease: "back.out(1.7)" }, 0);
+  tl.fromTo("#sr-icon", { y: 0 }, { y: -6, duration: 14, ease: "sine.inOut", immediateRender: false }, 0.5);
 
   /* ARCS: ripple in turn, 1.2 s each, 0.4 s apart (a6-s6 "In" 0.00 keeps them going): four synced pulses per arc, then, from
-     DESYNC s6 "sounds" 3.78 (host 4.90), each arc waits its own fixed 0.15 / 0.45 / 0.30 s between pulses ("no one pattern").
-     One proxy tween writes all three arcs from a pure function of time, so a seek in any order draws the same frame. */
-  const PULSE = 1.2;
-  const TRAIN = [ /* first start, synced pulses, then jittered start, gap, pulses (every pulse ends by host 15.68) */
-    { el: "#sr-arc1", s1: 0.0, n1: 4, s2: 4.95, gap: 0.15, n2: 8 },
-    { el: "#sr-arc2", s1: 0.4, n1: 4, s2: 5.65, gap: 0.45, n2: 6 },
-    { el: "#sr-arc3", s1: 0.8, n1: 4, s2: 5.90, gap: 0.30, n2: 6 }
-  ];
-  const arcState = (a, t) => {
-    let u = -1;
-    if (t >= a.s1 && t < a.s1 + a.n1 * PULSE) u = ((t - a.s1) % PULSE) / PULSE;
-    else if (t >= a.s2 && t < a.s2 + a.n2 * (PULSE + a.gap)) { const k = (t - a.s2) % (PULSE + a.gap); u = k < PULSE ? k / PULSE : -1; }
-    const e = 1 - (1 - Math.max(u, 0)) * (1 - Math.max(u, 0)); /* power1.out */
-    return u < 0 ? { autoAlpha: 0, scale: 1.05 } : { autoAlpha: 0.9 * (1 - e), scale: 0.9 + 0.15 * e };
+     DESYNC s6 "sounds" 3.78 (host 4.90), each arc waits its own fixed 0.15 / 0.45 / 0.30 s between pulses ("no one pattern"). Every pulse ends by host 15.68. */
+  /* A repeat on these tweens does not update under a suppressed-events seek, so each pulse is its own tween. */
+  const PULSE = { scale: 1.05, opacity: 0, transformOrigin: MOUTH, duration: 1.2, ease: "power1.out" };
+  const FROM = { scale: 0.9, opacity: 0.9, transformOrigin: MOUTH };
+  const STARTS = {
+    "#sr-arc1": [0, 1.2, 2.4, 3.6, 4.95, 6.3, 7.65, 9.0, 10.35, 11.7, 13.05, 14.4],      /* 4 synced, then gap 0.15 */
+    "#sr-arc2": [0.4, 1.6, 2.8, 4.0, 5.65, 7.3, 8.95, 10.6, 12.25, 13.9],                /* 4 synced, then gap 0.45 */
+    "#sr-arc3": [0.8, 2.0, 3.2, 4.4, 5.9, 7.4, 8.9, 10.4, 11.9, 13.4]                    /* 4 synced, then gap 0.30 */
   };
-  const drawArcs = (t) => TRAIN.forEach((a) => gsap.set(a.el, Object.assign({ transformOrigin: MOUTH }, arcState(a, t))));
-  drawArcs(0);
-  const clock = { t: 0 };
-  tl.to(clock, { t: 15.68, duration: 15.68, ease: "none", onUpdate: () => drawArcs(clock.t) }, 0);
+  Object.entries(STARTS).forEach(([arc, starts]) => starts.forEach((t, k) =>
+    tl.fromTo(arc, FROM, { ...PULSE, immediateRender: t === 0 }, t)));
 
   /* STANDARD s6 2.54 (host 3.66): chip 1 and the source line slide in */
-  tl.fromTo("#sr-chip1", { x: 60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 3.66);
-  tl.fromTo("#sr-src", { x: -40, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 3.66);
+  tl.fromTo("#sr-chip1", { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 3.66);
+  tl.fromTo("#sr-src", { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 3.66);
 
   /* ALL s6 6.40 (host 7.52): arcs dim to 0.4, no all-clear chip */
-  tl.to("#sr-arcs", { autoAlpha: 0.4, duration: 0.5, ease: "power2.out" }, 7.52);
+  tl.fromTo("#sr-arcs", { opacity: 1 }, { opacity: 0.4, duration: 0.5, ease: "power2.out", immediateRender: false }, 7.52);
 
   /* EXIT s6 13.96 (host 15.08) to "The" 14.56 (host 15.68): icon, arcs, chip and source line slide out */
-  tl.to(["#sr-stage", "#sr-chip1", "#sr-src"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 15.08);
+  tl.fromTo(["#sr-stage", "#sr-chip1", "#sr-src"], { x: 0, opacity: 1 }, { x: 980, opacity: 0, duration: 0.6, ease: "power3.in", immediateRender: false }, 15.08);
 
   window.__timelines["g-a6-siren"] = tl;
 })();
