@@ -1,0 +1,131 @@
+<!--
+  g-a1-strip-sirens: a1-s4, host 175.33 for 14.64 s (nx-a1-s4 data-start 175.33 = host data-start, so comp-local = a1-s4.words.json word time).
+  Brief briefs/a1/g-a1-strip-sirens.md. BASE: SIREN STRIP (offset-0 table in the brief §2 and §3; g-a1-strip-warnings and the intro strip copy it).
+  Full frame on the channel ground. Strip group sits at +170 px in y for this comp only (#gss-offset); the copies open at 0.
+  Scale: 1 Jan 2007 at x 200 to 1 Jun 2011 at x 1720 = 1612 days, 1520/1612 px a day (python3, 17 Oct 26).
+  Marks x (same rule): 18 Jan 2007 216.0, 10 May 2008 666.7, 8 May 2009 1009.0, 22 May 2011 1710.6. Mondays 1 Jan 2007 to 16 May 2011 = 229 ticks, built below.
+  Claim: S4 to S7, NIST Sec. 4.3.4; no label calls the soundings wind events as a group (S9 CONFLICT).
+-->
+<template>
+<style>
+  #g-a1-strip-sirens-root { position:absolute; inset:0; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #gss-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gss-row { font:700 26px Arial, sans-serif; letter-spacing:8px; fill:#93a3b2; }
+  .gss-yr { font:700 26px Arial, sans-serif; letter-spacing:3px; fill:#93a3b2; text-anchor:middle; }
+  .gss-date { font:700 30px Arial, sans-serif; fill:#f2f5f8; }
+  .gss-cause { font:700 22px Arial, sans-serif; letter-spacing:3px; fill:#93a3b2; }
+  .gss-src { font:700 20px Arial, sans-serif; fill:#c8d3e0; }
+  .gss-hid { visibility:hidden; }
+  #gss-axis { stroke-dasharray:1521; stroke-dashoffset:1521; }
+  .gss-chipwrap { position:absolute; inset:auto; left:0; right:0; top:96px; height:70px; display:flex; justify-content:center; }
+  .gss-chip { box-sizing:border-box; height:70px; padding:0 36px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:none; visibility:hidden;
+    font:900 52px/68px 'Arial Black', Arial, sans-serif; letter-spacing:2px; color:#f2f5f8; white-space:nowrap; }
+</style>
+<div id="g-a1-strip-sirens-root" data-composition-id="g-a1-strip-sirens" data-width="1920" data-height="1080">
+  <svg id="gss-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <clipPath id="gss-tickclip"><rect id="gss-tickclip-r" x="196" y="370" width="0" height="60"/></clipPath>
+      <clipPath id="gss-brclip"><rect id="gss-brclip-r" x="1015" y="358" width="0" height="16"/></clipPath>
+    </defs>
+    <!-- static +170 offset for this comp (block y 370 to 660); never tweened -->
+    <g id="gss-offset" transform="translate(0 170)">
+      <g id="gss-strip">
+        <text id="gss-rowlab" class="gss-row" x="200" y="214">Joplin's outdoor sirens</text>
+        <!-- axis + year boundaries + year labels -->
+        <line id="gss-axis" x1="200" y1="440" x2="1720" y2="440" stroke="#93a3b2" stroke-opacity="0.6" stroke-width="2"/>
+        <g id="gss-years" class="gss-hid">
+          <path d="M200 440V452M544.2 440V452M889.3 440V452M1233.4 440V452M1577.6 440V452" stroke="#93a3b2" stroke-opacity="0.6" stroke-width="1"/>
+          <text class="gss-yr" x="372.1" y="482">2007</text>
+          <text class="gss-yr" x="716.7" y="482">2008</text>
+          <text class="gss-yr" x="1061.4" y="482">2009</text>
+          <text class="gss-yr" x="1405.5" y="482">2010</text>
+          <text class="gss-yr" x="1648.8" y="482">2011</text>
+        </g>
+        <!-- 229 Monday test ticks, d built in the script from the date rule -->
+        <path id="gss-ticks" d="" stroke="#93a3b2" stroke-opacity="0.7" stroke-width="2" clip-path="url(#gss-tickclip)"/>
+        <!-- empty-gap bracket: 8 px inside the 2009 and 2011 marks -->
+        <line id="gss-bracket" x1="1017" y1="366" x2="1702.6" y2="366" stroke="#e74c3c" stroke-opacity="0.7" stroke-width="3" stroke-dasharray="10 8" clip-path="url(#gss-brclip)"/>
+        <!-- red marks: outer g pulses, inner rect rises -->
+        <g id="gss-p07"><rect id="gss-m07" class="gss-hid" x="213" y="356" width="6" height="88" fill="#e74c3c"/></g>
+        <g id="gss-p08"><rect id="gss-m08" class="gss-hid" x="663.7" y="356" width="6" height="88" fill="#e74c3c"/></g>
+        <g id="gss-p09"><rect id="gss-m09" class="gss-hid" x="1006" y="356" width="6" height="88" fill="#e74c3c"/></g>
+        <g id="gss-p11"><rect id="gss-m11" class="gss-hid" x="1707.6" y="356" width="6" height="88" fill="#e74c3c"/></g>
+        <!-- mark labels -->
+        <g id="gss-l07" class="gss-hid">
+          <text class="gss-date" x="216" y="300">Jan 2007</text>
+          <text id="gss-c07" class="gss-cause" x="216" y="334">winds over 70 mph</text>
+        </g>
+        <g id="gss-l08" class="gss-hid">
+          <text class="gss-date" x="666.7" y="300">May 2008</text>
+          <text id="gss-c08" class="gss-cause" x="666.7" y="334">EF1 outside the city</text>
+        </g>
+        <g id="gss-l09" class="gss-hid">
+          <text class="gss-date" x="1009" y="300">May 2009</text>
+          <text id="gss-c09" class="gss-cause" x="1009" y="334">winds over 85 mph</text>
+        </g>
+        <g id="gss-l11" class="gss-hid">
+          <text class="gss-date" x="1730" y="300" text-anchor="end">May 22, 2011</text>
+        </g>
+      </g>
+    </g>
+    <text id="gss-src" class="gss-src gss-hid" x="96" y="1010">dates per the county emergency manager &#183; NIST Sec. 4.3.4</text>
+  </svg>
+  <div class="gss-chipwrap"><div class="gss-chip" id="gss-chip1">ABOUT 52 TESTS A YEAR</div></div>
+  <div class="gss-chipwrap"><div class="gss-chip" id="gss-chip2">3 REAL SOUNDINGS</div></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const P = "#gss-";
+  /* ticks: every Monday from 1 Jan 2007 (a Monday) to 16 May 2011, x = 200 + days x 1520/1612 */
+  const D0 = Date.UTC(2007, 0, 1), LAST = Date.UTC(2011, 4, 16), DAY = 86400000, K = 1520 / 1612;
+  let d = "", n = 0;
+  for (let t = D0; t <= LAST; t += 7 * DAY) { d += "M" + (200 + (t - D0) / DAY * K).toFixed(2) + " 380V420"; n++; }
+  if (n !== 229) throw new Error("g-a1-strip-sirens: " + n + " ticks, brief says 229");
+  document.querySelector(P + "ticks").setAttribute("d", d);
+
+  const tl = gsap.timeline({ paused: true });
+  const marks3 = [P+"m07", P+"m08", P+"m09"];
+  tl.set([...marks3, P+"m11"], { scaleY: 0, transformOrigin: "50% 100%" }, 0);
+
+  /* frame 0: axis draws 0.00 to 0.70, year labels rise 0.20 to 0.70 */
+  tl.to(P+"axis", { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 0);
+  tl.fromTo(P+"years", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+  /* hold float, whole strip: 3 px up and down, about 4 s a cycle, to the host end */
+  tl.to(P+"strip", { y: -3, duration: 14.64 / 7, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0);
+
+  /* TEST a1-s4 1.46: ticks sweep left to right, done on WEEK. 2.98 */
+  tl.to(P+"tickclip-r", { attr: { width: 1514 }, duration: 1.52, ease: "none" }, 1.46);
+  /* WEEK. a1-s4 2.98: chip 1 in */
+  tl.fromTo(P+"chip1", { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.98);
+
+  /* THREE a1-s4 5.18: three marks rise together, labels 0.15 s after, source line */
+  tl.fromTo(marks3, { scaleY: 0, autoAlpha: 0 }, { scaleY: 1, autoAlpha: 1, duration: 0.35, ease: "back.out(1.7)" }, 5.18);
+  tl.fromTo([P+"l07", P+"l08", P+"l09"], { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.33);
+  tl.fromTo(P+"src", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.18);
+  /* TIMES a1-s4 5.46: chip 1 out 0.3 s, then chip 2 in (one chip at a time) */
+  tl.to(P+"chip1", { autoAlpha: 0, y: -24, duration: 0.3, ease: "power3.in" }, 5.46);
+  tl.fromTo(P+"chip2", { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.76);
+  /* chip 2 drifts to the host end */
+  tl.to(P+"chip2", { x: -10, duration: 14.64 - 6.16, ease: "sine.inOut" }, 6.16);
+
+  /* TWICE a1-s4 7.80: 2007 + 2009 pulse 1 > 1.18 > 1, their cause lines brighten */
+  tl.to([P+"p07", P+"p09"], { scale: 1.18, transformOrigin: "50% 50%", duration: 0.25, ease: "power2.inOut", yoyo: true, repeat: 1 }, 7.8);
+  tl.to([P+"c07", P+"c09"], { fill: "#f2f5f8", duration: 0.3 }, 7.8);
+  /* ONCE a1-s4 9.44: 2008 pulse */
+  tl.to(P+"p08", { scale: 1.18, transformOrigin: "50% 50%", duration: 0.25, ease: "power2.inOut", yoyo: true, repeat: 1 }, 9.44);
+  tl.to(P+"c08", { fill: "#f2f5f8", duration: 0.3 }, 9.44);
+
+  /* NOTHING, a1-s4 11.80: gap bracket draws left to right, 0.70 s */
+  tl.to(P+"brclip-r", { attr: { width: 690 }, duration: 0.7, ease: "power1.inOut" }, 11.8);
+  /* MAY a1-s4 12.84: 2011 mark rises alone; 22, 13.02: its label */
+  tl.fromTo(P+"m11", { scaleY: 0, autoAlpha: 0 }, { scaleY: 1, autoAlpha: 1, duration: 0.35, ease: "back.out(1.7)" }, 12.84);
+  tl.fromTo(P+"l11", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 13.02);
+  /* hold to 14.64, cut on the host end (full-frame scene) */
+  window.__timelines["g-a1-strip-sirens"] = tl;
+})();
+</script>
+</template>
