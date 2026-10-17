@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a6-siren, A6-S5/S6. Full-frame graphic, cuts in from the West Tower photograph at "sirens?" and cuts out to g-a6-doc-nwsrec2.
+     Host data-start 1081.127 = nx-a6-s5 1071.267 + 9.86. s5 words: cue - 9.86. s6 words (nx-a6-s6 1082.247): cue + 1.12 (s6 word time + 1.12).
+     Host 15.68: ends at nx-a6-s6 + 14.56 "The" = 1096.807.
+     Numbers (python, shared): glyph scale 360/28 = 12.857, pole foot (565.4, 680), horn mouth (629.7, 410); arcs radius 220/300/380 span +-40 deg
+     about the mouth; at scale 1.05 the 380 arc reaches x 1030.7 (< 1040, chips start 1060).
+     N8 (open): chip 2 (left 1060, centre y 500) and source chip 3 (y 560) are NOT in the DOM; release cue is a6-s6 "2018," (host 11.56). */
+  #g-a6-siren-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #sr-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 40% 50%, #0b1016, #030507 78%); }
+  #sr-svg { position:absolute; inset:0; width:1920px; height:1080px; }
+  .sr-chip { position:absolute; inset:auto; left:1060px; top:384px; height:72px; padding:0 28px; box-sizing:border-box; display:flex; align-items:center;
+    white-space:nowrap; font:700 30px/72px Arial,sans-serif; letter-spacing:1px; color:#dfe7ee;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:28px; box-shadow:0 30px 90px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.10);
+    opacity:0; visibility:hidden; }
+  #sr-src { position:absolute; inset:auto; left:96px; bottom:60px; font:700 20px/22px Arial,sans-serif; letter-spacing:.5px; color:#c8d3e0;
+    white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a6-siren-root" data-composition-id="g-a6-siren" data-width="1920" data-height="1080">
+  <div id="sr-ground"></div>
+  <svg id="sr-svg" viewBox="0 0 1920 1080">
+    <g id="sr-stage">
+      <g id="sr-arcs" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linecap="round">
+        <path id="sr-arc1" d="M798.2,268.6 A220,220 0 0 1 798.2,551.4" opacity="0"/>
+        <path id="sr-arc2" d="M859.5,217.2 A300,300 0 0 1 859.5,602.8" opacity="0"/>
+        <path id="sr-arc3" d="M920.8,165.7 A380,380 0 0 1 920.8,654.3" opacity="0"/>
+      </g>
+      <g id="sr-icon" opacity="0.4">
+        <!-- SIREN ICON: copied from g-intro-map (28 px tall glyph, origin at the pole foot), enlarged to 360 px: static scale on the inner group, GSAP moves the outer one -->
+        <g transform="translate(565.4 680) scale(12.857)" fill="none" stroke="#f2f5f8" stroke-width="0.45" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M0,0 L0,-16"/>
+          <path d="M-3,-19 L5,-14 L5,-28 L-3,-23 Z"/>
+          <path d="M8.5,-24.5 A5,5 0 0 1 8.5,-17.5"/>
+          <path d="M11.5,-28 A9.5,9.5 0 0 1 11.5,-14"/>
+        </g>
+      </g>
+    </g>
+  </svg>
+  <div id="sr-chip1" class="sr-chip">NO NATIONAL STANDARD &#183; 2011</div>
+  <div id="sr-src">NIST Finding 39</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const MOUTH = "629.7 410";
+  const ARC = ["#sr-arc1", "#sr-arc2", "#sr-arc3"];
+
+  /* SIRENS? s5 9.86 (host 0): icon pops in, arcs start; icon holds a 4 px float to the exit */
+  tl.fromTo("#sr-icon", { scale: 0.8, autoAlpha: 0.4, svgOrigin: "640 500" }, { scale: 1, autoAlpha: 1, svgOrigin: "640 500", duration: 0.5, ease: "back.out(1.7)" }, 0);
+  tl.to("#sr-icon", { y: -4, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0.5);
+
+  /* ARCS: ripple in turn, 1.2 s each, 0.4 s apart (a6-s6 "In" 0.00 keeps them going). Four synced pulses each, then the jittered ones */
+  ARC.forEach((a, i) => {
+    tl.fromTo(a, { scale: 0.9, autoAlpha: 0.9, svgOrigin: MOUTH }, { scale: 1.05, autoAlpha: 0, svgOrigin: MOUTH, duration: 1.2, ease: "power1.out", repeat: 3, repeatDelay: 0 }, 0.4 * i);
+  });
+  /* DESYNC s6 "sounds" 3.78 (host 4.90): each arc waits its own fixed 0.15 / 0.45 / 0.30 s between pulses ("no one pattern") */
+  tl.fromTo("#sr-arc1", { scale: 0.9, autoAlpha: 0.9, svgOrigin: MOUTH }, { scale: 1.05, autoAlpha: 0, svgOrigin: MOUTH, duration: 1.2, ease: "power1.out", repeat: 7, repeatDelay: 0.15 }, 4.95);
+  tl.fromTo("#sr-arc2", { scale: 0.9, autoAlpha: 0.9, svgOrigin: MOUTH }, { scale: 1.05, autoAlpha: 0, svgOrigin: MOUTH, duration: 1.2, ease: "power1.out", repeat: 5, repeatDelay: 0.45 }, 5.65);
+  tl.fromTo("#sr-arc3", { scale: 0.9, autoAlpha: 0.9, svgOrigin: MOUTH }, { scale: 1.05, autoAlpha: 0, svgOrigin: MOUTH, duration: 1.2, ease: "power1.out", repeat: 5, repeatDelay: 0.30 }, 5.9);
+
+  /* STANDARD s6 2.54 (host 3.66): chip 1 and the source line slide in */
+  tl.fromTo("#sr-chip1", { x: 60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 3.66);
+  tl.fromTo("#sr-src", { x: -40, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 3.66);
+
+  /* ALL s6 6.40 (host 7.52): arcs dim to 0.4, no all-clear chip */
+  tl.to("#sr-arcs", { autoAlpha: 0.4, duration: 0.5, ease: "power2.out" }, 7.52);
+
+  /* EXIT s6 13.96 (host 15.08) to "The" 14.56 (host 15.68): icon, arcs, chip and source line slide out */
+  tl.to(["#sr-stage", "#sr-chip1", "#sr-src"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 15.08);
+
+  window.__timelines["g-a6-siren"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
