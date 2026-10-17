@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-intro-map: T1-S2 + T1-S3, host 27.53 for 11.80 s (to nx-t1-s3 33.79 + wav 5.24 = 39.03, seam 39.33). Brief briefs/intro/g-intro-map.md.
+     Comp-local time: t1-s2 word start + 0.00; t1-s3 word start + 6.26 (nx-t1-s3 33.79 - host 27.53).
+     MASTER MAP base: the BASEMAP block below. Later map comps copy it verbatim and toggle its layers.
+     Geometry (one-shot, uncommitted: media/g-intro-map/geo.py -> basemap.json, pasted in by a content-blind transform):
+       datum: equirectangular, x scaled by cos(37.08); city outline = TIGER/Line 2010 place 2937592 "Joplin city" (16 rings);
+       s = 46.132 px/mi (outline bbox 11.74 x 12.36 mi fitted in x 200-1500, y 200-770, centred);
+       centroid (area) = (874.1, 505.7); largest centroid-to-vertex 395.9 px; ring A r = 419.9, ring B r = 443.9;
+       streets = TIGER 2010 roads, Jasper 29097 + Newton 29145 (S1100/S1200 + the named streets);
+       damage path = NWS Assessment Figure 1, georeferenced on MO-43, Range Line, MO-249, US-71 (residuals <= 0.067 mi) and the
+       I-44 east leg; centre line 22.43 mi (NWS 22.1), width capped at 0.95 mi (W3, W5, W7), track length 1036 px.
+     Open 2 (NIST Fig. 4-2) blocks the siren positions: l-sirens is empty. Open 4 (research/map-positions.md) blocks l-places: empty. -->
+<template>
+<style>
+  #g-intro-map-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .gim-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gim-stamp { font-family:Arial, sans-serif; font-weight:700; font-size:30px; fill:#f2f5f8; opacity:0; visibility:hidden; }
+  .gim-pulse { opacity:0; visibility:hidden; }
+  .gim-ringg { opacity:1; }
+  #g-intro-map-chip { position:absolute; inset:auto; right:96px; top:96px; height:70px; box-sizing:border-box; padding:0 22px;
+    display:flex; align-items:center; border-radius:20px; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); opacity:0; visibility:hidden; }
+  #g-intro-map-chiptxt { font:900 52px/56px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; }
+  #g-intro-map-src { position:absolute; inset:auto; left:96px; top:990px; font:700 20px/20px Arial, sans-serif; color:#c8d3e0;
+    white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-intro-map-hud { position:absolute; inset:auto; left:110px; top:486px; font:700 26px/26px Arial, sans-serif; letter-spacing:8px;
+    color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-intro-map-root" data-composition-id="g-intro-map" data-width="1920" data-height="1080" data-duration="11.8">
+  <svg class="gim-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <!-- SIREN ICON: 28 px tall, origin at the pole foot; 2 px pole (16 px), horn head 14 px at the mouth, two sound arcs -->
+      <g id="g-master-map-siren" fill="none" stroke="#f2f5f8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0,0 L0,-16"/>
+        <path d="M-3,-19 L5,-14 L5,-28 L-3,-23 Z"/>
+        <path d="M8.5,-24.5 A5,5 0 0 1 8.5,-17.5"/>
+        <path d="M11.5,-28 A9.5,9.5 0 0 1 11.5,-14"/>
+      </g>
+      <!-- LOCATION MARKER: 14 x 14 rounded square, centred on its point -->
+      <rect id="g-master-map-place" x="-7" y="-7" width="14" height="14" rx="3" fill="none" stroke="#dfe7ee" stroke-opacity="0.6" stroke-width="1.5"/>
+    </defs>
+    <g id="g-intro-map-cam">
+      <!--BASEMAP:g-master-map--><g id="g-master-map-l-grid"><path d="@@D_GRID@@" fill="none" stroke="#5a768f" stroke-opacity="0.13" stroke-width="1" vector-effect="non-scaling-stroke"/></g>
+<g id="g-master-map-l-streets" opacity="0" fill="none" stroke="#4a5560" stroke-width="1.5" vector-effect="non-scaling-stroke"><path d="@@D_STREETS@@" vector-effect="non-scaling-stroke"/><path id="g-master-map-st-range-line" d="@@ST_range-line@@" vector-effect="non-scaling-stroke"/><path id="g-master-map-st-main" d="@@ST_main@@" vector-effect="non-scaling-stroke"/><path id="g-master-map-st-schifferdecker" d="@@ST_schifferdecker@@" vector-effect="non-scaling-stroke"/><path id="g-master-map-st-7th" d="@@ST_7th@@" vector-effect="non-scaling-stroke"/><path id="g-master-map-st-20th" d="@@ST_20th@@" vector-effect="non-scaling-stroke"/><path id="g-master-map-st-26th" d="@@ST_26th@@" vector-effect="non-scaling-stroke"/><path id="g-master-map-st-32nd" d="@@ST_32nd@@" vector-effect="non-scaling-stroke"/><path id="g-master-map-st-connecticut" d="@@ST_connecticut@@" vector-effect="non-scaling-stroke"/><path id="g-master-map-st-i44" d="@@ST_i44@@" stroke-width="3" vector-effect="non-scaling-stroke"/></g>
+<g id="g-master-map-l-city"><path id="g-master-map-city" d="@@D_CITY@@" fill="#f2f5f8" fill-opacity="0" stroke="#f2f5f8" stroke-opacity="0.7" stroke-width="2" stroke-linejoin="round" stroke-dasharray="4170" stroke-dashoffset="4170" vector-effect="non-scaling-stroke"/><path id="g-master-map-city-rest" d="@@D_CITY_REST@@" fill="#f2f5f8" fill-opacity="0.03" stroke="#f2f5f8" stroke-opacity="0.7" stroke-width="2" stroke-linejoin="round" opacity="0" vector-effect="non-scaling-stroke"/></g>
+<g id="g-master-map-l-path" opacity="0"><path id="g-master-map-path" d="@@D_PATH@@" fill="#c0392b" fill-opacity="0.22" stroke="#c0392b" stroke-opacity="0.6" stroke-width="1" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><path id="g-master-map-track" d="@@D_TRACK@@" fill="none" stroke="#f2f5f8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1036" stroke-dashoffset="1036" vector-effect="non-scaling-stroke"/></g>
+<g id="g-master-map-l-sirens" opacity="0"><!-- BLOCKED (Open 2): 25 <use href="#g-master-map-siren"> traced from NIST NCSTAR 3 Fig. 4-2 --></g>
+<g id="g-master-map-l-places" opacity="0"><!-- BLOCKED (Open 4): one <use href="#g-master-map-place"> per research/map-positions.md row --></g>
+<g id="g-master-map-l-ring">
+  <g id="g-master-map-ring-a" class="gim-ringg"><circle id="g-master-map-ring-a-c" cx="874.1" cy="505.7" r="419.9" fill="none" stroke="#e74c3c" stroke-width="4" stroke-dasharray="2640" stroke-dashoffset="2640" vector-effect="non-scaling-stroke"/><circle id="g-master-map-ring-a-p1" class="gim-pulse" cx="874.1" cy="505.7" r="419.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/><circle id="g-master-map-ring-a-p2" class="gim-pulse" cx="874.1" cy="505.7" r="419.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/><circle id="g-master-map-ring-a-p3" class="gim-pulse" cx="874.1" cy="505.7" r="419.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/></g>
+  <g id="g-master-map-ring-b" class="gim-ringg"><circle id="g-master-map-ring-b-c" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" stroke-dasharray="2791" stroke-dashoffset="2791" vector-effect="non-scaling-stroke"/><circle id="g-master-map-ring-b-p1" class="gim-pulse" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/><circle id="g-master-map-ring-b-p2" class="gim-pulse" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/><circle id="g-master-map-ring-b-p3" class="gim-pulse" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/></g>
+</g>
+<g id="g-master-map-l-below"><path id="g-master-map-below" d="M200,880 L1500,880" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="1301" stroke-dashoffset="1301" vector-effect="non-scaling-stroke"/><text id="g-master-map-below-lab" x="200" y="864" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#93a3b2" opacity="0" visibility="hidden">Below ground</text></g><!--/BASEMAP-->
+      <!-- ring stamps: each 20 px clear of ring B's largest pulse (523.8 px), so no pulse copy ever crosses a stamp -->
+      <text id="g-intro-map-stamp-a" class="gim-stamp" x="363.1" y="714" text-anchor="end">5:11 PM</text>
+      <text id="g-intro-map-stamp-b" class="gim-stamp" x="1385.1" y="714">5:38 PM</text>
+    </g>
+  </svg>
+  <div id="g-intro-map-chip"><span id="g-intro-map-chiptxt">SOUNDED TWICE</span></div>
+  <div id="g-intro-map-src">NWS timeline · 3 minutes each</div>
+  <div id="g-intro-map-hud">Below ground</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-intro-map", P = "#g-intro-map-", M = "#g-master-map-";
+  const S3 = 6.26; /* nx-t1-s3 33.79 - host 27.53 */
+  const CX = 874.1, CY = 505.7, ORG = CX + " " + CY;
+  const tl = gsap.timeline({ paused: true });
+  /* camera: the transform attribute of the cam group, tweened as a string (svgOrigin drifts on an already-scaled group) */
+  const cam = (tx, ty, s) => ({ attr: { transform: "translate(" + tx + "," + ty + ") scale(" + s + ")" } });
+
+  /* ---- frame 0: ground + grid on; everything else waits hidden (CSS + set) ---- */
+  tl.set(P + "cam", cam(0, 0, 1), 0);
+  tl.set(M + "l-streets", { opacity: 0 }, 0);
+
+  /* map drift through T1-S2: scale 1.00 -> 1.02 about the comp centre, ease none */
+  tl.to(P + "cam", Object.assign(cam(-19.2, -10.8, 1.02), { duration: 5.96, ease: "none" }), 0);
+
+  /* YOU t1-s2 0.00 -> JOPLIN'S 1.22: city outline draws, streets fade in 0.40 to 1.20 */
+  tl.fromTo(M + "city", { strokeDashoffset: 4170 }, { strokeDashoffset: 0, duration: 1.22, ease: "power2.inOut" }, 0);
+  tl.fromTo(M + "city", { attr: { "fill-opacity": 0 } }, { attr: { "fill-opacity": 0.03 }, duration: 0.5, ease: "none" }, 0.9);
+  tl.fromTo(M + "city-rest", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "none" }, 0.9);
+  tl.fromTo(M + "l-streets", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power1.out" }, 0.4);
+
+  /* pulses: three expanding copies, scale 1.00 -> 1.18, opacity 0.8 -> 0 over 1.2 s, staggered 0.4 s, finite repeats */
+  const pulse = (ring, at, reps) => {
+    for (let i = 1; i <= 3; i++) {
+      tl.fromTo(M + ring + "-p" + i, { autoAlpha: 0.8, scale: 1, svgOrigin: ORG },
+        { autoAlpha: 0, scale: 1.18, svgOrigin: ORG, duration: 1.2, ease: "power1.out", repeat: reps, immediateRender: false }, at + (i - 1) * 0.4);
+    }
+  };
+
+  /* SIRENS t1-s2 2.02: ring A draws 0.4 s, stamp 5:11 PM, pulse starts */
+  tl.fromTo(M + "ring-a-c", { strokeDashoffset: 2640 }, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 2.02);
+  tl.fromTo(P + "stamp-a", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.22);
+  pulse("ring-a", 2.42, 2);
+
+  /* DIDN'T. t1-s2 4.00: ring B draws, stamp 5:38 PM, pulse starts; source line at +0.2 */
+  tl.fromTo(M + "ring-b-c", { strokeDashoffset: 2791 }, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 4.0);
+  tl.fromTo(P + "stamp-b", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 4.2);
+  pulse("ring-b", 4.4, 1);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 4.2);
+
+  /* THEY t1-s2 4.64: chip SOUNDED TWICE (top right: top centre sits under ring A and both rings' pulses) */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.64);
+
+  /* TWICE. t1-s2 5.02: both rings flash, stroke 4 -> 8 -> 4 px over 0.4 s */
+  tl.fromTo([M + "ring-a-c", M + "ring-b-c"], { attr: { "stroke-width": 4 } },
+    { attr: { "stroke-width": 8 }, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 5.02);
+
+  /* THEN, t1-s3 0.00: chip, stamps, source out 0.4 s; rings fade 0.6 s; below-ground line draws L to R 0.8 s, label rises */
+  tl.to(P + "chip", { x: 600, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, S3);
+  tl.to([P + "stamp-a", P + "stamp-b", P + "src"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, S3);
+  tl.to([M + "ring-a", M + "ring-b"], { opacity: 0, duration: 0.6, ease: "power2.in" }, S3);
+  tl.fromTo(M + "below", { strokeDashoffset: 1301 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, S3);
+  tl.fromTo(M + "below-lab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, S3 + 0.35);
+
+  /* WHY t1-s3 3.14 - 0.15: line label out before the push starts (no text rides the push) */
+  tl.to(M + "below-lab", { autoAlpha: 0, duration: 0.15, ease: "none" }, S3 + 2.99);
+
+  /* WHY 3.14 -> 4.30: push onto the line, scale 1.3292 (1728/1300), line centre (850, 880) -> (960, 540): line spans x 96 to 1824 */
+  tl.to(P + "cam", Object.assign(cam(-169.85, -629.72, 1.329231), { duration: 1.16, ease: "power2.inOut" }), S3 + 3.14);
+
+  /* BASEMENT? t1-s3 4.40: HUD label in (fixed layer, enters after the push settles) */
+  tl.fromTo(P + "hud", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, S3 + 4.4);
+
+  /* hold to the host end: scale creeps 1.3292 -> 1.345 about the line centre, ease none; cut to CLIP 1 on the host end */
+  tl.to(P + "cam", Object.assign(cam(-183.25, -643.6, 1.345), { duration: 11.8 - (S3 + 4.3), ease: "none" }), S3 + 4.3);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
