@@ -1,0 +1,266 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a4-stairs: A4-S10, host 733.987 to 748.167 (14.18 s). nx-a4-s10 starts with the host, so local t = a4-s10 words.json time.
+     Full-frame cross-section on its own ground: ground line (BELOW-GROUND LINE style: #93a3b2, 2 px, "Below ground" 22 px),
+     hall, basement, 8-step stair, 56 figures (15 walk down, 41 stay), width inset. SCHEMATIC, NOT TO SCALE (Open 4). */
+  #g-a4-stairs-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #a4sti-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #a4sti-cam { position:absolute; inset:0; }
+  #a4sti-svg { position:absolute; inset:0; width:1920px; height:1080px; }
+  .a4sti-hid { opacity:0; visibility:hidden; }
+
+  /* chip 1 is 52 px (headline tier) where the brief says 36: graphics_qc flat-type needs a tier at 52 or above, and the text list has no other big text */
+  #a4sti-chip1float { position:absolute; inset:auto; left:96px; top:99px; }
+  #a4sti-chip2float { position:absolute; inset:auto; left:96px; top:168px; }
+  .a4sti-chip { position:relative; display:table; box-sizing:border-box; padding:3px 22px 3px 28px; border-radius:12px; overflow:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; }
+  .a4sti-bar { position:absolute; inset:auto; left:0; top:0; bottom:0; width:8px; background:#d8a13a; }
+  .a4sti-chiptext { position:relative; display:block; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:36px; line-height:38px;
+    letter-spacing:1px; color:#f2f5f8; white-space:nowrap; text-shadow:0 2px 14px rgba(0,0,0,.7); }
+
+  #a4sti-srcfloat { position:absolute; inset:auto; left:96px; bottom:54px; }
+  #a4sti-src { display:table; box-sizing:border-box; padding:6px 12px; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); visibility:hidden; opacity:0; }
+  #a4sti-srcline { display:block; font-family:Arial,sans-serif; font-weight:400; font-size:20px; line-height:26px; letter-spacing:0;
+    color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-a4-stairs-root" data-composition-id="g-a4-stairs" data-width="1920" data-height="1080">
+  <div id="a4sti-ground"></div>
+  <div id="a4sti-cam">
+    <svg id="a4sti-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- person glyph 14 x 30, origin at the feet (0,0) -->
+        <g id="a4sti-glyph"><circle cx="0" cy="-25.5" r="4.5"/><path d="M-7 -9.5 V-17 Q-7 -20 -4 -20 H4 Q7 -20 7 -17 V-9.5 H4.5 V0 H1 V-9 H-1 V0 H-4.5 V-9.5 Z"/></g>
+      </defs>
+
+      <!-- interiors, then the strokes that draw on -->
+      <rect id="a4sti-hallfill" class="a4sti-hid" x="200" y="260" width="1200" height="300" fill="rgba(74,85,96,.14)"/>
+      <rect id="a4sti-basefill" class="a4sti-hid" x="760" y="560" width="600" height="340" fill="rgba(42,54,68,.45)"/>
+      <path id="a4sti-wedge" class="a4sti-hid" d="M760 560 H787.5 V602.5 H815 V645 H842.5 V687.5 H870 V730 H897.5 V772.5 H925 V815 H952.5 V857.5 H980 V900 H760 Z" fill="#2a3644"/>
+
+      <path id="a4sti-hall" d="M200 560 V260 H1400 V560" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="1801" stroke-dashoffset="1801"/>
+      <path id="a4sti-base" d="M760 560 V900 H1360 V560" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="1281" stroke-dashoffset="1281"/>
+      <path id="a4sti-stair" d="M760 560 H787.5 V602.5 H815 V645 H842.5 V687.5 H870 V730 H897.5 V772.5 H925 V815 H952.5 V857.5 H980 V900" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="561" stroke-dashoffset="561"/>
+      <path id="a4sti-gl" d="M160 560 L1500 560" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="1341" stroke-dashoffset="1341"/>
+      <text id="a4sti-glab" class="a4sti-hid" x="160" y="592" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#93a3b2">Below ground</text>
+      <text id="a4sti-sch" class="a4sti-hid" x="96" y="244" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#93a3b2">SCHEMATIC &#183; NOT TO SCALE</text>
+
+      <!-- 56 figures: crowd first, walkers over it, the director last (walkers pass behind her) -->
+      <g id="a4sti-crowd" fill="#dfe7ee">
+        <g id="a4sti-c01" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c02" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c03" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c04" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c05" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c06" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c07" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c08" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c09" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c10" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c11" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c12" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c13" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c14" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c15" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c16" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c17" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c18" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c19" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c20" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c21" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c22" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c23" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c24" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c25" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c26" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c27" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c28" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c29" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c30" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c31" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c32" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c33" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c34" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c35" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c36" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c37" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c38" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c39" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-c40" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+      </g>
+      <g id="a4sti-walk" fill="#dfe7ee">
+        <g id="a4sti-w00" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-w01" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-w02" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-w03" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-w04" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-w05" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-w06" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-w07" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-w08" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-w09" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-w10" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-w11" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-w12" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-w13" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+        <g id="a4sti-w14" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+      </g>
+      <g id="a4sti-dir">
+        <g id="a4sti-d" class="a4sti-f a4sti-hid"><g class="a4sti-fl"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+      </g>
+
+      <!-- THE DIRECTOR: label above the hall side of the stair head, leader down to her head (feet y 560, head top y 530) -->
+      <text id="a4sti-dirlab" class="a4sti-hid" x="752" y="488" text-anchor="end" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#93a3b2">THE DIRECTOR</text>
+      <path id="a4sti-dirline" d="M746 498 V524" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="27" stroke-dashoffset="27"/>
+
+      <!-- width inset: front view of the stair mouth, opening 34 px wide, one figure filling it -->
+      <g id="a4sti-inset">
+        <rect id="a4sti-iwall" class="a4sti-hid" x="1430" y="260" width="150" height="260" fill="#2a3644"/>
+        <rect id="a4sti-islot" class="a4sti-hid" x="1488" y="380" width="34" height="120" fill="#04070c" stroke="#93a3b2" stroke-width="1.5"/>
+        <rect id="a4sti-iframe" x="1430" y="260" width="150" height="260" fill="none" stroke="#5a768f" stroke-width="3" stroke-dasharray="821" stroke-dashoffset="821"/>
+        <path id="a4sti-idim" d="M1488 354 V366 M1488 360 H1522 M1522 354 V366" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="59" stroke-dashoffset="59"/>
+      </g>
+      <g id="a4sti-ifig" class="a4sti-hid"><g transform="translate(1505 500) scale(2.3)"><use href="#a4sti-glyph" fill="#dfe7ee"/></g></g>
+      <text id="a4sti-ilab" class="a4sti-hid" x="1430" y="548" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#93a3b2">ONE PERSON WIDE</text>
+    </svg>
+  </div>
+
+  <div id="a4sti-chip1float">
+    <div id="a4sti-chip1" class="a4sti-chip"><div class="a4sti-bar"></div><span class="a4sti-chiptext">STAIRS ONE PERSON WIDE</span></div>
+  </div>
+  <div id="a4sti-chip2float">
+    <div id="a4sti-chip2" class="a4sti-chip"><div class="a4sti-bar"></div><span class="a4sti-chiptext">56 INSIDE &#183; ABOUT 15 GOT DOWN</span></div>
+  </div>
+  <div id="a4sti-srcfloat">
+    <div id="a4sti-src"><span id="a4sti-srcline">one interviewee &#183; NIST footnote 153 &#183; Sec. 4.6.2.1</span></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a4sti-";
+  const END = 14.18;
+
+  /* [id, x, y] in entrance order. Computed (seeded, inline python3, 17 Oct 26): 15 walkers w00-w14 (queue w00-w06 listed
+     at their pre-shuffle x), 40 crowd c01-c40, director d. 15 + 40 + 1 = 56. Reds: d, c03, c20. */
+  const FIG = [
+    ["w12", 411, 546], ["c26", 1221, 560], ["c24", 1192, 532], ["c22", 1169, 546], ["c39", 1354, 560], ["c40", 1366, 546],
+    ["c37", 1337, 546], ["w14", 354, 546], ["d", 746, 560], ["w04", 614, 560], ["c15", 1092, 560], ["w07", 556, 546],
+    ["c28", 1234, 546], ["c13", 1069, 546], ["c17", 1119, 560], ["w13", 382, 546], ["c08", 297, 546], ["c06", 240, 546],
+    ["c12", 1052, 560], ["w03", 636, 560], ["c19", 1134, 546], ["w09", 497, 546], ["c29", 1250, 560], ["c16", 1107, 546],
+    ["w02", 658, 560], ["c01", 226, 560], ["c31", 1273, 546], ["c07", 268, 546], ["c20", 1151, 560], ["c02", 254, 560],
+    ["c35", 1319, 560], ["c21", 1158, 532], ["c36", 1321, 532], ["c09", 325, 546], ["c04", 311, 560], ["c27", 1224, 532],
+    ["c32", 1283, 560], ["c10", 1024, 560], ["w06", 570, 560], ["c33", 1294, 532], ["c34", 1305, 546], ["w00", 702, 560],
+    ["w11", 440, 546], ["c18", 1124, 532], ["c30", 1260, 532], ["w05", 592, 560], ["c25", 1204, 546], ["w01", 680, 560],
+    ["c38", 1354, 532], ["c23", 1191, 560], ["c05", 338, 560], ["c03", 283, 560], ["c14", 1092, 532], ["c11", 1037, 546],
+    ["w08", 528, 546], ["w10", 468, 546]
+  ];
+
+  /* ground and the cross-section draw: ground line, hall, basement, stair (BELOW-GROUND LINE style) */
+  /* THE a4-s10 0.00 to DOWN 0.86 */
+  tl.to(Q + "gl", { strokeDashoffset: 0, duration: 0.86, ease: "power2.inOut" }, 0);
+  tl.to(Q + "hall", { strokeDashoffset: 0, duration: 0.86, ease: "power2.inOut" }, 0);
+  tl.to(Q + "base", { strokeDashoffset: 0, duration: 0.86, ease: "power2.inOut" }, 0);
+  tl.to(Q + "stair", { strokeDashoffset: 0, duration: 0.86, ease: "power2.inOut" }, 0);
+  tl.to(Q + "hallfill", { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 0.36);
+  tl.to(Q + "basefill", { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 0.36);
+  tl.to(Q + "wedge", { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 0.36);
+  tl.fromTo(Q + "glab", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.7);
+  tl.fromTo(Q + "sch", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.3);
+
+  /* STAIRS a4-s10 0.60: 56 figures in, stagger 0.02 (last one lands at 2.0) */
+  FIG.forEach(([id, x, y], i) => {
+    tl.set(Q + id, { x: x, y: y }, 0);
+    tl.fromTo(Q + id, { autoAlpha: 0, y: y - 14 }, { autoAlpha: 1, y: y, duration: 0.3, ease: "power3.out" }, 0.6 + i * 0.02);
+  });
+
+  /* ONE a4-s10 1.82: chip 1, width inset (frame draws, wall and slot in, figure rises, dimension ticks), its label */
+  tl.fromTo(Q + "chip1", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.82);
+  tl.fromTo(Q + "chip1 .a4sti-bar", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power2.out", transformOrigin: "center top" }, 1.9);
+  tl.to(Q + "iframe", { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, 1.82);
+  tl.to(Q + "iwall", { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 2.0);
+  tl.to(Q + "islot", { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 2.2);
+  tl.fromTo(Q + "ifig", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 2.4);
+  tl.to(Q + "idim", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 2.6);
+  tl.fromTo(Q + "ilab", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 2.4);
+
+  /* SOMEONE a4-s10 3.88: the queue shuffles forward one place (22 px) */
+  const QX = [724, 702, 680, 658, 636, 614, 592];
+  QX.forEach((x, k) => {
+    tl.to(Q + "w0" + k, { x: x, duration: 0.5, ease: "power2.inOut" }, 3.88 + k * 0.03);
+  });
+
+  /* 15 a4-s10 5.04: chip 2, source line; the 15 walk down single file.
+     Stair entry (head point W0) every 0.12 s from 5.04 plus the queue front's 0.19 s walk to the head; 8 legs of 0.2 s, one per step. */
+  tl.fromTo(Q + "chip2", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 5.04);
+  tl.fromTo(Q + "chip2 .a4sti-bar", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power2.out", transformOrigin: "center top" }, 5.12);
+  tl.fromTo(Q + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.3);
+
+  const V = 260, LEG = 0.2, GAP = 0.12, HEAD = 773.75, FRONT = 560;
+  const W = [];
+  for (let i = 1; i <= 7; i++) W.push([HEAD + 27.5 * i, FRONT + 42.5 * i]);
+  W.push([1000, 900]);                                              /* W1..W7 tread centres, W8 basement floor */
+  const WX0 = [724, 702, 680, 658, 636, 614, 592, 556, 528, 497, 468, 440, 411, 382, 354];   /* x before the floor walk */
+  const WY0 = [560, 560, 560, 560, 560, 560, 560, 546, 546, 546, 546, 546, 546, 546, 546];
+  const BX = [1244, 1208, 1172, 1136, 1100, 1064, 1028, 1262, 1226, 1190, 1154, 1118, 1082, 1046, 1010];  /* basement: back row y 884, front row y 900 */
+  const E0 = 5.04 + (HEAD - WX0[0]) / V;
+  for (let k = 0; k < 15; k++) {
+    const id = Q + "w" + (k < 10 ? "0" : "") + k;
+    const e = E0 + k * GAP;                                         /* head point W0 */
+    const fl = (HEAD - WX0[k]) / V;
+    tl.to(id, { x: HEAD, y: FRONT, duration: fl, ease: "none" }, e - fl);
+    for (let i = 0; i < 8; i++) tl.to(id, { x: W[i][0], y: W[i][1], duration: LEG, ease: "none" }, e + i * LEG);
+    const by = k < 7 ? 884 : 900;
+    const bd = Math.max(0.05, (Math.abs(1000 - BX[k]) + (900 - by)) / V);
+    tl.to(id, { x: BX[k], y: by, duration: bd, ease: "none" }, e + 8 * LEG);
+  }
+
+  /* THREE a4-s10 8.14: three figures turn red (director, one at each side of the hall), a hop each */
+  [["d", 746, 560], ["c20", 1151, 560], ["c03", 283, 560]].forEach(([id, x, y], j) => {
+    const at = 8.14 + j * 0.1;
+    tl.to(Q + id + " use", { fill: "#c0392b", duration: 0.4, ease: "power2.out" }, at);
+    tl.to(Q + id, { y: y - 8, duration: 0.16, ease: "power2.out" }, at);
+    tl.to(Q + id, { y: y, duration: 0.3, ease: "bounce.out" }, at + 0.16);
+  });
+
+  /* BASEMENT a4-s10 9.30: basement outline pulses once, nothing red inside */
+  tl.to(Q + "base", { stroke: "#7fb2e5", attr: { "stroke-width": 7 }, duration: 0.25, ease: "power2.out" }, 9.3);
+  tl.to(Q + "base", { stroke: "#5a768f", attr: { "stroke-width": 3 }, duration: 0.5, ease: "power2.inOut" }, 9.55);
+  tl.to(Q + "basefill", { opacity: 0.6, duration: 0.25, ease: "power2.out" }, 9.3);
+  tl.to(Q + "basefill", { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 9.55);
+
+  /* DIRECTOR a4-s10 11.34: label drops in, leader draws to her head */
+  tl.fromTo(Q + "dirlab", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.34);
+  tl.to(Q + "dirline", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 11.5);
+
+  /* hold: every figure floats 2 px, from the end of the entrance to the exit */
+  FIG.forEach(([id], i) => {
+    const dur = 0.9 + (i % 5) * 0.07, at = 2.0 + (i % 7) * 0.13;
+    const legs = Math.floor((END - 0.7 - at) / dur);
+    tl.to(Q + id + " .a4sti-fl", { y: -2, duration: dur, ease: "sine.inOut", yoyo: true, repeat: legs - 1 }, at);
+  });
+  tl.to(Q + "chip1float", { y: -3, duration: 0.75, ease: "sine.inOut", yoyo: true, repeat: 15 }, 2.4);
+  tl.to(Q + "chip2float", { y: -3, duration: 0.75, ease: "sine.inOut", yoyo: true, repeat: 11 }, 5.6);
+  tl.to(Q + "srcfloat", { y: -3, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 7 }, 5.8);
+
+  /* exit, last 0.6 s: chips and source slide out left, the diagram and its ground fade through to the next picture */
+  tl.to(Q + "chip1", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6);
+  tl.to(Q + "chip2", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6);
+  tl.to(Q + "src", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6);
+  tl.to(Q + "cam", { autoAlpha: 0, duration: 0.5, ease: "power1.in" }, END - 0.5);
+  tl.to(Q + "ground", { autoAlpha: 0, duration: 0.5, ease: "power1.in" }, END - 0.5);
+
+  window.__timelines["g-a4-stairs"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
