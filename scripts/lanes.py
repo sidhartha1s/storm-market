@@ -17,8 +17,9 @@ which jobs were launched and when they ended, and which are held.
   python3 scripts/lanes.py status episodes/<slug> [--json]   # exit 2 while any job is READY or STALE
 
 Groups: one per segment prefix (a1 = A1-S*), except H1, T1 and I1, which form `intro`. Jobs per group g:
-  voice:g   every locked segment of g (no open [verify] in its heading block) has audio/<id>.wav, and
-            audio/<id>.txt equals its script text (an edited line is not voiced until re-synthesised)
+  voice:g   every segment of g is locked (no open [verify] in its heading block) and has audio/<id>.wav, and
+            audio/<id>.txt equals its script text (an edited line is not voiced until re-synthesised);
+            BLOCKED once the locked ones are voiced and an open one remains
   words:g   ...and audio/<id>.words.json
   source:g  media/candidates/<g>/provenance.csv plus the sourcer's report (sourcer.md or candidates.md)
   verify:g  every provenance.csv row has a "verified" value, and no row has more fields than the header
@@ -78,13 +79,16 @@ def job_table(ep):
         held_back = sorted(sid for sid, _ in members if sid in unlocked)
         locked = [(sid, text) for sid, text in members if sid not in unlocked]
         audio = ep / "audio"
-        voiced = bool(locked) and all((audio / f"{s}.wav").exists() and (audio / f"{s}.txt").exists()
-                                      and (audio / f"{s}.txt").read_text(encoding="utf-8").strip() == t.strip()
-                                      for s, t in locked)
-        words = voiced and all((audio / f"{s}.words.json").exists() for s, _ in locked)
+        locked_voiced = bool(locked) and all((audio / f"{s}.wav").exists() and (audio / f"{s}.txt").exists()
+                                             and (audio / f"{s}.txt").read_text(encoding="utf-8").strip() == t.strip()
+                                             for s, t in locked)
+        locked_words = locked_voiced and all((audio / f"{s}.words.json").exists() for s, _ in locked)
+        # a group is DONE only with every segment voiced (script-scaling.md "Section lock"); while one is still open,
+        # its locked segments can be worked (READY), and once they are, the job waits on the open one (BLOCKED)
+        voiced, words = locked_voiced and not held_back, locked_words and not held_back
         note = f"open [verify]: {', '.join(held_back)}" if held_back else ""
-        table.append((f"voice:{g}", voiced, bool(locked), note))
-        table.append((f"words:{g}", words, voiced, note))
+        table.append((f"voice:{g}", voiced, bool(locked) and not locked_voiced, note))
+        table.append((f"words:{g}", words, locked_voiced and not locked_words, note))
         cand = ep / "media" / "candidates" / g
         prov = cand / "provenance.csv"
         sourced = prov.exists() and ((cand / "sourcer.md").exists() or (cand / "candidates.md").exists())
@@ -109,7 +113,7 @@ def job_states(ep, ledger, now=None):
     out = []
     for job, done, inputs_ok, note in job_table(ep):
         run, hold = runs.get(job, {}), holds.get(job)
-        live_hold = hold and now < hold["until"]
+        live_hold = hold and now < hold["at"] + HOLD_H * 3600
         if done:
             state = "DONE"
         elif live_hold:
@@ -162,6 +166,8 @@ def main(argv=None):
         # the Stop hook runs the lanes.py of the episode's own checkout; claiming from another checkout would leave it none
         if SCRIPTS.parent not in ep.parents:
             sys.exit(f"[lanes] FAIL: run the lanes.py inside {ep}'s own checkout (merge main into its branch first)")
+        if ".worktrees" not in ep.parts:
+            sys.exit(f"[lanes] FAIL: {ep} is not in a worktree; the Stop hook reads only .worktrees/*/episodes/*/lanes.json")
         if not a.session:
             sys.exit("[lanes] FAIL: no session id (CLAUDE_CODE_SESSION_ID unset); pass --session")
     elif not a.jobs:
@@ -169,6 +175,8 @@ def main(argv=None):
     else:
         states = job_states(ep, ledger, now)
         known = {s["job"] for s in states}
+        if a.cmd == "start" and not 0 < a.minutes <= HOLD_H * 60:
+            sys.exit(f"[lanes] FAIL: --minutes must be 1 to {HOLD_H * 60}; a longer lane is held with a reason instead")
         if a.jobs == ["all"] and a.cmd == "hold":
             a.jobs = [s["job"] for s in states if s["state"] in BLOCKING]
         unknown = sorted(set(a.jobs) - known)
@@ -176,15 +184,15 @@ def main(argv=None):
             sys.exit(f"[lanes] FAIL: unknown job(s) {unknown}; `status` lists the real names")
         if a.cmd == "hold" and not a.reason.strip():
             sys.exit("[lanes] FAIL: hold needs --reason; it shows in every status")
-    if a.session:
-        ledger["orchestrator"] = a.session  # every write re-stamps it, so a resumed or forked session keeps the gate
+    if a.cmd == "claim":
+        ledger["orchestrator"] = a.session  # only claim stamps it, so a sibling session's start/end never takes the gate
     for job in a.jobs:
         if a.cmd == "start":
             ledger.setdefault("jobs", {})[job] = {"started": now, "host": a.host, "minutes": a.minutes}
         elif a.cmd == "end":
             ledger.setdefault("jobs", {}).setdefault(job, {"started": now, "host": a.host})["ended"] = now
         elif a.cmd == "hold":
-            ledger.setdefault("holds", {})[job] = {"reason": a.reason.strip(), "until": now + HOLD_H * 3600}
+            ledger.setdefault("holds", {})[job] = {"reason": a.reason.strip(), "at": now}
         elif a.cmd == "unhold":
             ledger.get("holds", {}).pop(job, None)
     save_ledger(ep, ledger)

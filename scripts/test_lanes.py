@@ -65,9 +65,10 @@ def raises(fn):
 
 
 with tempfile.TemporaryDirectory() as tmp:
-    ep = S.parent / "episodes" / "_test-lanes-fixture"  # inside this checkout, so `claim` accepts it
-    if ep.exists():
-        sys.exit(f"[test_lanes] FAIL: {ep} already exists; remove it by hand")
+    fx = S.parent / ".worktrees" / "_test-lanes-fixture"  # inside this checkout and a .worktrees dir, so `claim` accepts it
+    ep = fx / "episodes" / "ep-fx"
+    if fx.exists():
+        sys.exit(f"[test_lanes] FAIL: {fx} already exists; remove it by hand")
     try:
         touch(ep / "edit_script.md", SCRIPT)
         st = states(ep)
@@ -84,10 +85,18 @@ with tempfile.TemporaryDirectory() as tmp:
         check("wav voiced from an edited line is not DONE", states(ep)["voice:a1"] == "READY")
         touch(ep / "audio" / "a1-s1.txt", "Act one line.")
         st = states(ep)
-        check("a [verify] on the Rows line keeps that segment out; voice DONE without it", st["voice:a1"] == "DONE")
+        check("a [verify] on the Rows line keeps a group from DONE: voice BLOCKED once the rest is voiced",
+              st["voice:a1"] == "BLOCKED" and "a1-s2" in next(x["note"] for x in lanes.job_states(ep, {}) if x["job"] == "voice:a1"))
         check("words READY once the locked wavs exist", st["words:a1"] == "READY")
         touch(ep / "audio" / "a1-s1.words.json", "[]")
-        check("brief READY once voice+words DONE", states(ep)["brief:a1"] == "READY")
+        st = states(ep)
+        check("open segment: words BLOCKED and brief BLOCKED (no graphic on an unlocked section)",
+              st["words:a1"] == "BLOCKED" and st["brief:a1"] == "BLOCKED")
+        touch(ep / "edit_script.md", SCRIPT.replace("[verify: source]", "checked"))
+        check("the [verify] resolved: voice READY for the newly locked segment", states(ep)["voice:a1"] == "READY")
+        voice(ep, "a1-s2", "A claim we still check.")
+        st = states(ep)
+        check("brief READY once voice+words DONE", st["voice:a1"] == "DONE" and st["brief:a1"] == "READY")
 
         cand = ep / "media" / "candidates" / "a1"
         touch(cand / "provenance.csv", "file,source_url,license\nx.jpg,u,PD\n")
@@ -125,9 +134,9 @@ with tempfile.TemporaryDirectory() as tmp:
         run["jobs"]["brief:intro"]["ended"] = now
         check("ended, output not here: READY again (a limit hit or an unsynced lane never hides)",
               states(ep, run, now)["brief:intro"] == "READY")
-        run["holds"] = {"brief:intro": {"reason": "owner gate", "until": now + 60}}
+        run["holds"] = {"brief:intro": {"reason": "owner gate", "at": now}}
         check("live hold wins over READY", states(ep, run, now)["brief:intro"] == "HELD")
-        check("a hold lapses: READY again", states(ep, run, now + 61)["brief:intro"] == "READY")
+        check("a hold lapses after HOLD_H: READY again", states(ep, run, now + lanes.HOLD_H * 3600)["brief:intro"] == "READY")
 
         e = str(ep)
         check("claim without a session id fails", raises(lambda: lanes.main(["claim", e, "--session", ""]))
@@ -135,12 +144,19 @@ with tempfile.TemporaryDirectory() as tmp:
         outside = Path(tmp) / "episodes" / "ep-out"
         touch(outside / "edit_script.md", SCRIPT)
         check("claim refuses an episode outside this checkout", raises(lambda: lanes.main(["claim", str(outside), "--session", "S1"])))
+        real, lanes.SCRIPTS = lanes.SCRIPTS, Path(tmp) / "scripts"  # pretend tmp is a main checkout
+        check("claim refuses an episode outside .worktrees (the hook never reads it)",
+              raises(lambda: lanes.main(["claim", str(outside), "--session", "S1"])) and not (outside / "lanes.json").exists())
+        lanes.SCRIPTS = real
         check("claim records the session", lanes.main(["claim", e, "--session", "S1"]) == 0
               and json.loads((ep / "lanes.json").read_text())["orchestrator"] == "S1")
         check("start rejects an unknown job", raises(lambda: lanes.main(["start", e, "brief:nope", "--session", "S1"])))
+        check("start rejects --minutes past HOLD_H (a lane cannot read RUNNING for days)",
+              raises(lambda: lanes.main(["start", e, "source:intro", "--minutes", str(lanes.HOLD_H * 60 + 1), "--session", "S1"])))
         check("hold rejects a blank reason", raises(lambda: lanes.main(["hold", e, "voice:intro", "--reason", " ", "--session", "S1"])))
         lanes.main(["start", e, "source:intro", "--session", "S2"])
-        check("a write re-stamps the orchestrator (resume, fork)", json.loads((ep / "lanes.json").read_text())["orchestrator"] == "S2")
+        check("only claim stamps the orchestrator: a sibling's start never takes the gate",
+              json.loads((ep / "lanes.json").read_text())["orchestrator"] == "S1")
         lanes.main(["end", e, "source:intro", "--session", "S2"])
         check("end marks the lane stopped: READY again while its output is missing",
               states(ep, lanes.load_ledger(ep))["source:intro"] == "READY")
@@ -152,7 +168,7 @@ with tempfile.TemporaryDirectory() as tmp:
         check("status exits 0 once every ready job is held", lanes.main(["status", e]) == 0)
     finally:
         import shutil
-        shutil.rmtree(ep, ignore_errors=True)
+        shutil.rmtree(fx, ignore_errors=True)
 
 if FAILS:
     sys.exit(f"[test_lanes] FAIL: {FAILS}")
