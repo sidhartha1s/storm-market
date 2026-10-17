@@ -40,7 +40,7 @@ gutter", and came so often they stopped paying attention (S18, S17). These are t
 ## 5. PANEL TEXT (exact) and CUES (a1-s1)
 | element | text | cue |
 |---|---|---|
-| ground + page (already in place, settling from scale 1.02 to 1.00 over 0.8 s with a plain `to()`) + source line | "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2b" | frame 0. The source line rises on "said" 1.34 |
+| ground + page (in place at scale 1.00 on frame 0; the first move is the drift below) + source line | "NWS Central Region Service Assessment, Joplin, 2011 · Finding 2b" | frame 0. The source line rises on "said" 1.34 |
 | slow drift toward U1 (page y −20 px over 3 s) | | "They" 2.86 |
 | U1 draws | | "even" 4.56 to "thunderstorms." 5.04 + 0.5 s |
 | drift toward U2 | | "Some" 6.48 |
