@@ -139,9 +139,7 @@ window.__timelines = window.__timelines || {};
   const pan = (x, y) => ({ attr: { transform: "translate(" + x + "," + y + ")" } });
   const push = (k) => ({ attr: { transform: "translate(" + (PX * (1 - k)).toFixed(3) + "," + (PY * (1 - k)).toFixed(3) + ") scale(" + k + ")" } });
 
-  /* camera still until "best" (labels sit on the HUD, never on a move) */
-  tl.set(P + "cam", cam(0.64), 0);
-  tl.set(P + "pan", pan(75.9, -35.7), 0);
+  /* camera still until "best" (labels sit on the HUD, never on a move); push(1) is the identity, so frame 0 needs no set */
   tl.set(P + "push", push(1), 0);
   tl.set(P + "strike", { rotation: 45, scaleX: 0, transformOrigin: "left center" }, 0);
 
