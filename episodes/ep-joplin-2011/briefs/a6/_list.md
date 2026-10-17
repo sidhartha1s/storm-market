@@ -14,7 +14,7 @@ Briefs follow `references/mg-brief-template.md`; every builder also gets `refere
 | N6 | "IBC Section 423", "423.4", "2024 IBC", "Feb 2023" (FEMA Recovery Advisory 1), "Jul 2024" (NIST news) | g-a6-usmap, g-a6-board-half source lines | not in facts.md Sources |
 | N7 | Mercy "250 mph" window system, "2015" | g-a6-mercy card and chip (all its text) | mercy.net, no facts.md row |
 | N8 | "2018", "NIST TN 2008" | g-a6-siren chips | NIST TN 2008, no facts.md row |
-| N9 | Like counts 3,600 / 28 / 482 | the three comment cards | verbatim in `research/comment-beats.json`, not facts.md. Orchestrator may rule comment-beats.json the record for comment cards and release them |
+| N9 | Like counts 3,600 / 28 / 482 | the three comment cards | verbatim in `research/comment-beats.json`, not facts.md. Orchestrator may rule comment-beats.json the record for comment cards and release them. The digits inside two quotes ("15:15", "250mph") are verbatim comment text, not claims, and are kept in the quotes under that same ruling |
 | N10 | Text "located in tornado hazard areas" (not a number) | g-a6-doc-rec7 underline | past the 50-word R3 quote; check on the page render |
 
 ## Bases reused from other acts (same base composition, never redrawn; ids per that act's `_list.md`)
