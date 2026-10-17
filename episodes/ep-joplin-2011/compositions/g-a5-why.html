@@ -116,7 +116,7 @@ window.__timelines = window.__timelines || {};
   /* "And"@13.20: swap. NIST page, chips and source line leave left on one ease and one travel (their spacing never changes); the NWS page follows from the right once the NIST page has cleared it */
   tl.to([Q + "nist-slide", Q + "c1", Q + "c2", Q + "c3", Q + "src1"], { x: -980, autoAlpha: 0, duration: 0.42, ease: "power3.in" }, 13.20);
   tl.fromTo([Q + "nws-slide", Q + "src2"], { x: 980 }, { x: 0, duration: 0.36, ease: "power3.out" }, 13.46);
-  tl.fromTo([Q + "nws-slide", Q + "src2"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power1.in" }, 13.52);
+  tl.fromTo([Q + "nws-slide", Q + "src2"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.25, ease: "power1.in" }, 13.60);
   tl.to(Q + "nws-page", { scale: 1.03, duration: 4.26, ease: "none" }, 13.80);
 
   /* "disabled"@13.78: underline "elderly, infirm, or disabled" */
