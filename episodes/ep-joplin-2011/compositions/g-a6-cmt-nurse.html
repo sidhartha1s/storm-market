@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a6-cmt-nurse: host 1066.507 to 1075.067 (8.56 s = a6-s4 "Remember" 8.66 to a6-s5 "has" 3.80). One host spans the segment join.
+     Local time: a6-s4 word time - 8.66; a6-s5 word time + 4.76 (nx-a6-s5 1071.267 - host 1066.507).
+     Overlay over the NIST West Tower fifth-floor photograph (c-a6-s4-west-tower-north 1066.507, then c-a6-s5-mercy-hospital 1071.267 in index.html).
+     Root transparent: no ground.
+     COMMENT CARD base copied from g-a6-cmt-thriving / g-a6-cmt-mandatory (glass surface, type, quote glyph, likes slot). Placement: the base's lower
+     placement, because the centre popup zone (y 450) would sit on the intact fifth-floor windows (photo y 100 to 640) the picture is there to show.
+     The card spans x 120 to 1420 and y about 740 to 1006: over the brick wall, pipe and rubble, clear of the presenter circle (x >= 1600, y >= 680).
+     No highlight bar (brief section 3: the narration corrects "rated" to "designed"). Row 3 (video title) not drawn: not released.
+     Likes slot stays empty (N9: 482 is in comment-beats.json, not released). "250mph" is the commenter's verbatim word, never a chip or popfig. */
+  #a6n-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  #a6n-cardwrap { position:absolute; inset:auto; left:120px; width:1300px; bottom:74px; }
+  #a6n-card { position:relative; box-sizing:border-box; width:100%; min-height:200px; padding:36px 44px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); visibility:hidden; opacity:0; }
+  .a6n-meta { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2;
+    visibility:hidden; opacity:0; }
+  #a6n-r1 { width:fit-content; margin-bottom:20px; } /* box hugs the text so the quote glyph box never crosses it */
+  #a6n-r2 { font-size:40px; letter-spacing:0; line-height:1.25; color:#f2f5f8; }
+  #a6n-l1 { display:block; margin-bottom:6px; visibility:hidden; opacity:0; }
+  #a6n-l2 { display:block; visibility:hidden; opacity:0; }
+  /* big tier (>= 52): the quote glyph, top right of the card, clear of row 1 and the text lines */
+  #a6n-mark { position:absolute; inset:auto; right:40px; top:14px; font-family:Georgia,'Times New Roman',serif; font-size:104px; line-height:104px;
+    color:#d8a13a; visibility:hidden; opacity:0; }
+  #a6n-likes { height:30px; margin-top:12px; } /* reserved for the like count; empty until released (N9) */
+</style>
+<div id="a6n-root" data-composition-id="g-a6-cmt-nurse" data-width="1920" data-height="1080">
+  <div id="a6n-cardwrap">
+    <div id="a6n-card">
+      <div id="a6n-mark">&ldquo;</div>
+      <div id="a6n-r1" class="a6n-meta">YouTube comment</div>
+      <div id="a6n-r2" class="a6n-meta">
+        <span id="a6n-l1">Asked a nurse why the windows looked a little weird</span>
+        <span id="a6n-l2">and she told me they were rated for 250mph winds</span>
+      </div>
+      <div id="a6n-likes"></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a6n-";
+  /* r2 is a container: the row shows from its first line, the two lines reveal one by one */
+  tl.set(Q+"r2", { autoAlpha: 1 }, 0);
+
+  /* card in 0.00 to 0.60 on "Remember" a6-s4 8.66 */
+  tl.fromTo(Q+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0); /* REMEMBER a6-s4 8.66 */
+  tl.fromTo(Q+"mark", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.1); /* REMEMBER a6-s4 8.66 + 0.10 */
+  tl.fromTo(Q+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.1); /* REMEMBER a6-s4 8.66 + 0.10 */
+  tl.fromTo(Q+"l1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.1); /* REMEMBER a6-s4 8.66 + 0.10; line 1 shows as the card lands */
+  tl.fromTo(Q+"l2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 1.98); /* WINDOWS? a6-s4 10.64 */
+
+  /* card float y +-4 px, finite, 0.60 to 7.60: carries the whole hold through "Mercy" a6-s5 0.00 (host 4.76) */
+  tl.to(Q+"card", { y: 4, duration: 1, ease: "sine.inOut" }, 0.6);
+  tl.fromTo(Q+"card", { y: 4 }, { y: -4, duration: 2, ease: "sine.inOut", repeat: 2, yoyo: true, immediateRender: false }, 1.6);
+
+  /* exit 7.96 to 8.56: slide out left (the entrance side), last 0.6 s, ends on "has" a6-s5 3.80; g-a6-mercy takes the frame at 8.56 */
+  tl.to(Q+"card", { x: -1500, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 7.96); /* HAS a6-s5 3.80 - 0.6 */
+
+  window.__timelines["g-a6-cmt-nurse"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
