@@ -98,8 +98,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-a4-handoff", P = "#a4h-";
-  const WHEN = 5.34, END = 7.8; /* a4-s14 "when" 5.34; host 7.80 */
-  const SJ = "800.55 559.15";   /* St. John's marker centre, base px */
+  const SJ = "800.55 559.15";   /* St. John's marker centre, base px; times below are literals (a4-s14 "when" 5.34, host end 7.80) so sweep check 7 reads them */
   const tl = gsap.timeline({ paused: true });
   /* camera: the transform attribute of the cam group, tweened as a string (svgOrigin drifts on an already-scaled group) */
   const cam = (tx, ty, s) => ({ attr: { transform: "translate(" + tx + "," + ty + ") scale(" + s + ")" } });
