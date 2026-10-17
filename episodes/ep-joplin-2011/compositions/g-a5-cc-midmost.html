@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a5-cc-midmost: A5-S3, host 839.367 to 846.867 (7.50 s = a5-s3 0.00 to 7.50). Local t = a5-s3 words.json time.
+     Overlay on the footage the orchestrator mounts under the host (never a storm-chaser frame). Root transparent: no ground.
+     COMMENT CARD base copied from g-a5-cc-greenbrier (glass surface for footage, from g-a1-numb's geometry): 760 wide, left 120, centred on y 500.
+     Quote is 125 characters, so it runs 4 to 5 lines at 40 px (the base says at most 3 for a 40-char comment); the card grows to about 450 high,
+     so its bottom stays near y 725 and x <= 880, clear of the presenter zone (x >= 1600, y >= 680). */
+  #a5m-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  #a5m-cardwrap { position:absolute; inset:auto; left:120px; top:0; width:760px; height:1000px; display:flex; align-items:center; }
+  #a5m-card { position:relative; box-sizing:border-box; width:760px; min-height:240px; padding:36px 44px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); visibility:hidden; opacity:0; }
+  .a5m-meta { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2;
+    visibility:hidden; opacity:0; }
+  #a5m-r1 { width:fit-content; margin-bottom:20px; } /* box hugs the text so the quote glyph box never crosses it */
+  #a5m-r2 { font-size:40px; letter-spacing:0; line-height:1.25; color:#f2f5f8; margin-bottom:20px; }
+  #a5m-r2 span { display:inline-block; visibility:hidden; opacity:0; }
+  /* big tier (>= 52): the quote glyph, top right of the card, clear of row 1 and the text lines */
+  #a5m-mark { position:absolute; inset:auto; right:40px; top:14px; font-family:Georgia,'Times New Roman',serif; font-size:104px; line-height:104px;
+    color:#d8a13a; visibility:hidden; opacity:0; }
+  #a5m-likes { height:30px; } /* reserved for the like count (671); stays empty until the orchestrator accepts the source (brief Open numbers) */
+</style>
+<div id="a5m-root" data-composition-id="g-a5-cc-midmost" data-width="1920" data-height="1080">
+  <div id="a5m-cardwrap">
+    <div id="a5m-card">
+      <div id="a5m-mark">&ldquo;</div>
+      <div id="a5m-r1" class="a5m-meta">YouTube comment</div>
+      <div id="a5m-r2" class="a5m-meta"><span id="a5m-l1">Being in the upper floors, if you couldn't get downstairs fast enough,</span> <span id="a5m-l2">your best course of action was to go to the midmost location...</span></div>
+      <div id="a5m-r3" class="a5m-meta">under “June First documentary”</div>
+      <div id="a5m-likes"></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a5m-";
+  /* r2 is a container: the row shows from its first line, the two halves reveal one by one */
+  tl.set(Q+"r2", { autoAlpha: 1 }, 0);
+
+  /* card in 0.00 to 0.60 on "Then" a5-s3 0.00 */
+  tl.fromTo(Q+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0); /* THEN a5-s3 0.00 */
+  tl.fromTo(Q+"mark", { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.1); /* THEN a5-s3 0.00 + card start */
+  tl.fromTo(Q+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.1); /* THEN a5-s3 0.00 + card start */
+  tl.fromTo(Q+"l1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.9); /* DOORS a5-s3 0.90 */
+  tl.fromTo(Q+"l2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 1.36); /* OPEN a5-s3 1.36, whole quote on screen by 1.76, before HALLWAYS, 2.10 */
+  tl.fromTo(Q+"r3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 1.9); /* THOSE a5-s3 1.88 */
+
+  /* card float y +-4 px, finite: 0.60 to 6.90 */
+  tl.to(Q+"card", { y: 4, duration: 0.6, ease: "sine.inOut" }, 0.6);
+  tl.fromTo(Q+"card", { y: 4 }, { y: -4, duration: 2.65, ease: "sine.inOut", yoyo: true, repeat: 1, immediateRender: false }, 1.6);
+
+  /* exit 6.90 to 7.50: slide out left (the entrance side), after "other." a5-s3 6.02; clear before "The" 7.78 */
+  tl.to(Q+"card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.9); /* a5-s3 6.90 */
+
+  window.__timelines["g-a5-cc-midmost"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
