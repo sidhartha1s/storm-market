@@ -42,8 +42,8 @@ This is the first time a location's losses land on the master map in A1.
 | element | text | cue |
 |---|---|---|
 | base map at city framing | base text | frame 0 (a1-s2 "Three" 10.26) |
-| push-in to the theater; outline highlights | "Stained Glass Theater" | "Three" 10.26 to "lost." 11.64 (1.38 s, power2.inOut); label on "theater" 11.16 |
-| 3 markers pop (scale 0 to 1, back.out, 0.12 s apart) | (none) | "people" 10.54 + 0.6 s settle, i.e. as the push lands on "theater" 11.16 (the markers must sit still when they appear) |
+| push-in to the theater; outline highlights | (none) | "Three" 10.26 to "theater" 11.16 (0.90 s, power2.inOut) |
+| 3 markers pop (scale 0 to 1, back.out, 0.12 s apart) + label | "Stained Glass Theater" | "theater" 11.16, after the push has landed (the markers must sit still when they appear) |
 | chip | "3 LOST HERE" (B25) | "lost." 11.64 |
 | source line | "NIST NCSTAR 3 · Sec. 1.2" | "lost." 11.64 |
 | hold | | "Were" 12.96 to 15.96. The markers pulse in finite repeats (scale 1 to 1.15, 1.2 s period) and the map drifts 6 px/s. Cut on the host end |
