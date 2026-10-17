@@ -242,7 +242,8 @@ def main():
     # marker on it is resolved. TTS is the mechanical backstop for that rule: never voice a
     # segment that still carries one, whether it's in the --only set or the whole script.
     selected = [(sid, text) for sid, text in segs if not only or sid in only]
-    unresolved = sorted(sid for sid, text in selected if "[verify" in text)
+    open_ids = open_verify_ids(script_md)  # a marker anywhere on the segment, not only in the spoken line
+    unresolved = sorted(sid for sid, _ in selected if sid in open_ids)
     if unresolved:
         sys.exit(f"[tts_episode] FAIL — {len(unresolved)} segment(s) still carry an open "
                  f"[verify] marker, not TTS-safe: {unresolved} (script-scaling.md 'Script "
