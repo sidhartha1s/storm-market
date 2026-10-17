@@ -42,7 +42,7 @@ labels at x 708, centre lines y 426 (APARTMENTS), 488 (STORES), 550 (SCHOOLS), 6
 | (chip HELD, Z1) | ("2027 BUILDING CODE") | "Code" (first sentence), OPEN |
 | STORES pulse | | "stores", OPEN |
 | APARTMENTS pulse | | "apartment", OPEN |
-| hold, then fade-through | | wav end − 0.0 to wav end + 0.6, OPEN |
+| hold, then fade-through | | wav end to wav end + 0.6, OPEN |
 Once the cue times exist, check the longest gap with no new tween is under 4 s; the float carries the hold.
 When Z1 clears, the chip lands on the word "2027" as whisper spells it (digits), glass chip centred x 960, y 96 to 166 (clear of the tile top 296).
 
