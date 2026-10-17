@@ -12,7 +12,7 @@ the owner approves the NOAA stand-in aerial, the orchestrator mounts it as a cut
 ## 0. What this graphic claims
 The tornado's centre passed just north of 20th Street, between the Walmart and the Home Depot and very near the Pizza
 Hut. At the Pizza Hut, staff and customers got into the cooler; the building was demolished and five people were lost.
-West along 20th Street at Connecticut, 35 people got into the Dillon's produce cooler; that building was demolished too,
+Along 20th Street at Connecticut, 35 people got into the Dillon's produce cooler; that building was demolished too,
 and all 35 survived.
 
 ## 1. SOURCE
