@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a6-map135: after the CCTV slot, host 1123.067 for 5.0 s, no narration (cues host-local). Brief briefs/a6/g-a6-map135.md.
+     Base: the BASEMAP + DOTS blocks of g-intro-map-dots (its I1-S8 lit state), copied verbatim with ids re-prefixed
+       g-intro-map-dots- -> g-a6-map135- and classes gimd-/gim- -> gam- (no dot added, moved or removed).
+     Kept from the lit state: grid, city, streets, path, dots, the drawn below-ground line and its label. Left out: the rail card,
+       "154 placed" note and "FOUND NO SIGN" (numbers and labels that are not the base's own; brief §3 "no number on screen").
+     BLOCKED (base Open 4): research/map-positions.md does not exist, so the base draws 71 of the 135 inside dots (59 homes + 12 apartments);
+       the 64 named-building dots and their outlines arrive when the base gets them. Outside 19 (12 with vehicle rings) are all drawn. -->
+<template>
+<style>
+  #g-a6-map135-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .gam-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* lit state on from frame 0 (CSS beats the copied presentation attributes) */
+  #g-a6-map135-l-streets, #g-a6-map135-l-path, #g-a6-map135-city-rest { opacity:1; }
+  #g-a6-map135-city, #g-a6-map135-track, #g-a6-map135-below { stroke-dashoffset:0; }
+  #g-a6-map135-below-lab { opacity:1; visibility:visible; }
+  #g-a6-map135-l-ring, #g-a6-map135-l-sirens, #g-a6-map135-l-places { display:none; }
+  .gam-dot { fill:#c0392b; opacity:1; }
+  #g-a6-map135-outside .gam-dot { opacity:0.5; }
+  .gam-ring { fill:none; stroke:#dfe7ee; stroke-width:2; opacity:0.9; }
+  /* glass chip, row-value tier */
+  #g-a6-map135-chip { position:absolute; left:96px; top:80px; padding:16px 28px; box-sizing:border-box; white-space:nowrap;
+    font:700 30px/36px Arial, sans-serif; letter-spacing:1px; color:#dfe7ee;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:28px; opacity:0; visibility:hidden; }
+  #g-a6-map135-src { position:absolute; left:96px; bottom:60px; font:700 20px/20px Arial, sans-serif; color:#c8d3e0;
+    white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a6-map135-root" data-composition-id="g-a6-map135" data-width="1920" data-height="1080" data-duration="5.0">
+  <svg class="gam-svg" viewBox="0 0 1920 1080">
+    <g id="g-a6-map135-cam">
+<!--BASE-COPY-->
+    </g>
+  </svg>
+  <div id="g-a6-map135-chip">MOST WERE INDOORS</div>
+  <div id="g-a6-map135-src">NIST Finding 40</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a6-map135", P = "#g-a6-map135-";
+  const END = 5.0;
+  const tl = gsap.timeline({ paused: true });
+  const cam = (tx, ty, s) => ({ attr: { transform: "translate(" + tx + "," + ty + ") scale(" + s + ")" } });
+  const q = (sel) => Array.from(document.querySelectorAll(sel));
+  const inside = q(P + "homes .gam-dot").concat(q(P + "apts .gam-dot"));
+  const outside = q(P + "outside .gam-dot").concat(q(P + "outside .gam-ring"));
+
+  /* MAP IN host 0.0 (cut from the CCTV clip): lit state from frame 0; pull-out 1.00 -> 0.96 about the frame centre, linear, whole host */
+  tl.set(P + "cam", cam(0, 0, 1), 0);
+  tl.to(P + "cam", Object.assign(cam(38.4, 21.6, 0.96), { duration: END, ease: "none" }), 0);
+
+  /* DIM host 0.3: the 19 outside dots (and their vehicle rings) to 0.3 over 0.6 s */
+  tl.to(outside, { opacity: 0.3, duration: 0.6, ease: "power2.inOut" }, 0.3);
+
+  /* BREATHE host 0.0 to 4.4: inside dots r 3.5 -> 4.025 (scale 1.15) -> 3.5, 1.6 s a breath, two breaths each,
+     delay 0 to 0.8 s by distance from the dot cloud's centre (last breath ends by 4.0) */
+  const cx = inside.reduce((s, d) => s + +d.getAttribute("cx"), 0) / inside.length;
+  const cy = inside.reduce((s, d) => s + +d.getAttribute("cy"), 0) / inside.length;
+  const dist = inside.map((d) => Math.hypot(+d.getAttribute("cx") - cx, +d.getAttribute("cy") - cy));
+  const dMax = Math.max.apply(null, dist);
+  inside.forEach((d, i) => tl.to(d, { attr: { r: 4.025 }, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.8 * dist[i] / dMax));
+
+  /* CHIP + SOURCE host 1.0 */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.0);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.1);
+
+  /* BLACKOUT host 4.4 to 5.0: whole comp fades to the timeline's black ground, bo-7 follows at host end */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.6, ease: "power1.in" }, 4.4);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
