@@ -29,7 +29,7 @@ const keys = { '00-frame0': 0, '01-130': S1 + 6, '02-433': S1 + 15, '03-509-ne':
   '07-517-whole': S5 + 4.5, '08-dark-nosiren': S5 + 7, '09-flash-on': S6 + 2.6, '10-6min': S6 + 3.8, '11-cite1': S6 + 6, '12-cite3-north': S6 + 10.5,
   '13-carl-lab': S6 + 14, '14-exit': D - 0.3 };
 for (const [n, t] of Object.entries(keys)) await shot(t, n + `_${t.toFixed(2)}s.png`);
-if (!process.env.NO_TILES) for (let t = 0, i = 0; t <= D; t += 3, i++) await page.screenshot({ path: join(out, 'tiles', `t${String(i).padStart(3, '0')}.png`), scale: 'css' }, await seek(t));
+if (!process.env.NO_TILES) for (let t = 0, i = 0; t <= D; t += 3, i++) await shot(t, join('tiles', `t${String(i).padStart(3, '0')}.png`));
 
 const truth = await page.evaluate(([id, D, S5, S6]) => {
   const tl = window.__timelines[id];
