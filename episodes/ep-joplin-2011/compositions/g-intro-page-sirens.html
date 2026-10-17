@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-intro-page-sirens: I1-S5, the PAGE UNDERLINE base (g-intro-page-survivors, g-a1-gutter, g-a1-numb, g-a1-finding31, g-a1-bubble-page copy it).
+     Host data-start 78.25 = nx-i1-s5 start, so local t = i1-s5 word time. Host 6.5 s: wav end 6.20, seam to 6.50. The scene cuts (no exit).
+     Numbers (python from the native boxes, 18 Oct 26): crop native x 118..988, y 596..746, scale 1.85, card 1609.5 x 277.5 at left 155.25, top 361.25
+     (centre 960, 500). img 2044.25 x 2645.5 at (-218.3, -1102.6) inside the clip box. Quote band native y 663..683 lands at y 485.2..522.2;
+     next line's tops at native 692 (y 538.85). Bar 6 px tall, centre y 529.6 (top 526.6): 4.4 px under the descenders, 6.2 px above the next line.
+     Bar x from the glyph edges of the pixel scan: "hear" first ink col 413, "time" last ink col 612 (edge 613); "and" first ink col 619,
+     "clouds" last ink col 913 (edge 914, before the comma): bar 1 x 701.0 to 1071.0, bar 2 x 1082.1 to 1627.85.
+     Push 1.00 to 1.04 about (960, 500): card x 123.06 to 1796.94, y 355.7 to 644.3, inside the text-safe frame; bottom clear of the presenter circle (680). */
+  #ps-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  #ps-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  /* the group carries the push; origin is the card centre in frame pixels (the group is the whole frame) */
+  #ps-grp { position:absolute; inset:0; transform-origin:960px 500px; }
+
+  #ps-card { position:absolute; inset:auto; left:155.25px; top:361.25px; width:1609.5px; height:277.5px; overflow:hidden; border-radius:6px;
+    box-shadow:0 24px 60px rgba(0,0,0,.55); background:#ffffff; visibility:hidden; opacity:0; }
+  #ps-img { position:absolute; inset:auto; left:-218.3px; top:-1102.6px; width:2044.25px; height:2645.5px; max-width:none; display:block; }
+
+  /* soft wash over every line but the quote line (card-local: above 0..120.25, below 160.95..277.5), so the quote line is the brightest */
+  #ps-wash { position:absolute; inset:0; visibility:hidden; opacity:0; }
+  #ps-wash-a { position:absolute; inset:auto; left:0; top:0; width:1609.5px; height:120.25px; background:rgba(4,7,12,.35); }
+  #ps-wash-b { position:absolute; inset:auto; left:0; top:160.95px; width:1609.5px; height:116.55px; background:rgba(4,7,12,.35); }
+
+  .ps-bar { position:absolute; inset:auto; top:526.6px; height:6px; border-radius:3px; background:#e74c3c; transform-origin:left center; visibility:hidden; opacity:0; }
+  #ps-bar1 { left:701.0px; width:370.0px; }
+  #ps-bar2 { left:1082.1px; width:545.75px; }
+
+  #ps-src { position:absolute; inset:auto; left:96px; top:991px; height:24px; white-space:nowrap;
+    font-family:Arial,sans-serif; font-weight:700; font-size:20px; line-height:24px; letter-spacing:1px; color:#c8d3e0; visibility:hidden; opacity:0; }
+</style>
+<div id="ps-root" data-composition-id="g-intro-page-sirens" data-width="1920" data-height="1080" data-duration="6.5">
+  <div id="ps-ground"></div>
+  <div id="ps-grp">
+    <div id="ps-card">
+      <img id="ps-img" src="media/candidates/intro/i1-s5_c1_nws-assessment-p13-sirens-quote.png" alt="NWS Central Region Service Assessment, Joplin, 2011, page 7">
+      <div id="ps-wash"><div id="ps-wash-a"></div><div id="ps-wash-b"></div></div>
+    </div>
+    <div class="ps-bar" id="ps-bar1"></div>
+    <div class="ps-bar" id="ps-bar2"></div>
+  </div>
+  <div id="ps-src">NWS Central Region Service Assessment, Joplin, 2011 · Finding 2c</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+
+  /* BUT i1-s5 0.00: the card rises in */
+  tl.fromTo("#ps-card", { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 0);
+  /* BUT i1-s5 0.00: the push starts and runs to the host end, no easing (a move from rest is a to) */
+  tl.to("#ps-grp", { scale: 1.04, duration: 6.5, ease: "none" }, 0);
+  /* BUT i1-s5 0.00 + 0.3: source line */
+  tl.fromTo("#ps-src", { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0.3);
+
+  tl.set(".ps-bar", { scaleX: 0 }, 0);
+  /* SIRENS i1-s5 2.86: bar 1 draws under "hear sirens all the time", lands on "time," 4.08 + 0.2 */
+  tl.fromTo("#ps-bar1", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.05, ease: "none" }, 2.86);
+  tl.to("#ps-bar1", { scaleX: 1, duration: 1.42, ease: "power1.inOut" }, 2.86);
+  /* SIRENS i1-s5 2.86: the wash over the other lines */
+  tl.fromTo("#ps-wash", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 2.86);
+  /* EVEN i1-s5 4.60: bar 2 draws under "and [sirens] go off for dark clouds" */
+  tl.fromTo("#ps-bar2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.05, ease: "none" }, 4.6);
+  tl.to("#ps-bar2", { scaleX: 1, duration: 0.6, ease: "power2.out" }, 4.6);
+
+  window.__timelines["g-intro-page-sirens"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
