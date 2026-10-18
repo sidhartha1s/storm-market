@@ -218,72 +218,94 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  const ID = "g-intro-map", P = "#g-intro-map-", M = "#a420-";
-  const S3 = 6.26; /* nx-t1-s3 33.79 - host 27.53 */
-  const CX = 874.1, CY = 505.7, ORG = CX + " " + CY;
+  const ID = "g-a4-20th", P = "#a420-";
+  const S7 = 15.70;  /* nx-a4-s7 714.497 - host 698.797 */
+  const END = 31.0;
   const tl = gsap.timeline({ paused: true });
-  /* camera: the transform attribute of the cam group, tweened as a string (svgOrigin drifts on an already-scaled group) */
-  const cam = (tx, ty, s) => ({ attr: { transform: "translate(" + tx + "," + ty + ") scale(" + s + ")" } });
+  /* camera: the cam group's transform attribute, tweened as a string (numbers from the header) */
+  const cam = (tx, ty, s, v) => Object.assign({ attr: { transform: "translate(" + tx + "," + ty + ") scale(" + s + ")" } }, v || {});
 
-  /* ---- frame 0: ground + grid on; everything else waits hidden (CSS + set) ---- */
-  tl.set(P + "cam", cam(0, 0, 1), 0);
-  tl.set(M + "l-streets", { opacity: 0 }, 0);
+  /* ---- frame 0: g-a4-strip's end framing, ground + store boxes on ---- */
+  tl.set(P + "cam", cam(-31231.94, -17708.88, 34.34), 0);
+  tl.set(P + "door", { scaleX: 0.14, svgOrigin: "1280 387" }, 0);  /* door open, hinge on the left jamb */
+  tl.to(P + "cam", cam(-31392.80, -17799.68, 34.5117, { duration: 3.42, ease: "none" }), 0);
 
-  /* map drift through T1-S2: scale 1.00 -> 1.02 about the comp centre, ease none */
-  tl.to(P + "cam", Object.assign(cam(-19.2, -10.8, 1.02), { duration: 5.96, ease: "none" }), 0);
+  /* THAT a4-s6 0.56 -> 538. 2.04: centre line draws west to east */
+  tl.fromTo(P + "track", { strokeDashoffset: 674.82 }, { strokeDashoffset: 614.20, duration: 1.48, ease: "power1.inOut" }, 0.56);
+  /* 538. 2.04: TORNADO CENTER */
+  tl.fromTo(P + "lab-tc", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.04);
 
-  /* YOU t1-s2 0.00 -> JOPLIN'S 1.22: city outline draws, streets fade in 0.40 to 1.20 */
-  tl.fromTo(M + "city", { strokeDashoffset: 4170 }, { strokeDashoffset: 0, duration: 1.22, ease: "power2.inOut" }, 0);
-  tl.fromTo(M + "city", { attr: { "fill-opacity": 0 } }, { attr: { "fill-opacity": 0.03 }, duration: 0.5, ease: "none" }, 0.9);
-  tl.fromTo(M + "city-rest", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "none" }, 0.9);
-  tl.fromTo(M + "l-streets", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power1.out" }, 0.4);
+  /* SOME 3.42: Pizza Hut lights + label; slow push +4 % about it to STAFF 7.02 */
+  tl.fromTo(P + "ph-lit", { autoAlpha: 0, scale: 1.8, svgOrigin: "936.85 528.85" },
+    { autoAlpha: 1, scale: 1, svgOrigin: "936.85 528.85", duration: 0.5, ease: "back.out(1.6)" }, 3.42);
+  tl.fromTo(P + "lab-ph", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.62);
+  tl.to(P + "cam", cam(-32518.80, -18435.31, 35.7136, { duration: 3.60, ease: "power1.inOut" }), 3.42);
 
-  /* pulses: three expanding copies, scale 1.00 -> 1.18, opacity 0.8 -> 0 over 1.2 s, staggered 0.4 s, finite repeats */
-  const pulse = (ring, at, reps) => {
-    /* the copies sit in a CSS-hidden group switched on here: a deferred fromTo renders its from vars (0.8) when seeked back
-       before its start, and the set reverts the group to hidden in both seek orders */
-    tl.set(M + ring + "-pulses", { autoAlpha: 1 }, at);
-    for (let i = 1; i <= 3; i++) {
-      tl.fromTo(M + ring + "-p" + i, { autoAlpha: 0.8, scale: 1, svgOrigin: ORG },
-        { autoAlpha: 0, scale: 1.18, svgOrigin: ORG, duration: 1.2, ease: "power1.out", repeat: reps, immediateRender: false }, at + (i - 1) * 0.4);
-    }
-  };
+  /* STAFF 7.02: leader draws, inset in with the door open, source line */
+  tl.fromTo(P + "ph-lead", { autoAlpha: 0, strokeDashoffset: 225 }, { autoAlpha: 1, strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 7.02);
+  tl.fromTo(P + "ph-inset", { autoAlpha: 0, scale: 0.9, svgOrigin: "1370 350" },
+    { autoAlpha: 1, scale: 1, svgOrigin: "1370 350", duration: 0.45, ease: "power3.out" }, 7.02);
+  tl.fromTo(P + "src1", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 7.02);
+  /* COOLER. 8.20: door swings shut from its hinge */
+  tl.to(P + "door", { scaleX: 1, svgOrigin: "1280 387", duration: 0.5, ease: "power2.in" }, 8.20);
 
-  /* SIRENS t1-s2 2.02: ring A draws 0.4 s, stamp 5:11 PM, pulse starts */
-  tl.fromTo(M + "ring-a-c", { strokeDashoffset: 2640 }, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 2.02);
-  tl.fromTo(P + "stamp-a", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.22);
-  pulse("ring-a", 2.42, 2);
-  /* DIDN'T. t1-s2 4.00: ring B draws, stamp 5:38 PM, pulse starts; source line at +0.2 */
-  tl.fromTo(M + "ring-b-c", { strokeDashoffset: 2791 }, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 4.0);
-  tl.fromTo(P + "stamp-b", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 4.2);
-  pulse("ring-b", 4.4, 1);
-  tl.fromTo(P + "src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 4.2);
+  /* DEMOLISHED 9.78: the walls drift apart (6-14 px, fixed directions), fill drops out. [id, dx, dy, rot, origin] in map units */
+  const ph = [["s1", -0.168, -0.252, -7, "936.85 528.63"], ["s2", 0.224, -0.084, 9, "937.36 528.85"],
+              ["s3", 0.112, 0.308, -5, "936.85 529.07"], ["s4", -0.280, 0.140, 6, "936.34 528.85"]];
+  ph.forEach(s => tl.to(P + "ph-" + s[0], { x: s[1], y: s[2], rotation: s[3], svgOrigin: s[4], duration: 0.7, ease: "power2.out" }, 9.78));
+  tl.to(P + "ph-fill", { fillOpacity: 0, duration: 0.4, ease: "power1.out" }, 9.78);
+  /* FIVE 10.90: 5 LOST */
+  tl.fromTo(P + "chip1", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 10.90);
+  /* hold: the inset and its leader end float 3 px (six legs, back at rest) */
+  tl.to(P + "ph-float", { y: -3, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 7.50);
+  tl.to(P + "ph-lead", { attr: { y2: 473 }, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 7.50);
 
-  /* THEY t1-s2 4.64: chip SOUNDED TWICE (top right: top centre sits under ring A and both rings' pulses) */
-  tl.fromTo(P + "chip", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.64);
+  /* a4-s7 0.00 -> AT 0.46: inset, leader, chip and the HUD labels leave before the pan */
+  tl.to(P + "ph-inset", { x: 60, autoAlpha: 0, duration: 0.42, ease: "power3.in" }, S7);
+  tl.to(P + "ph-lead", { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, S7);
+  tl.to(P + "chip1", { x: -60, autoAlpha: 0, duration: 0.42, ease: "power3.in" }, S7);
+  tl.to([P + "lab-tc", P + "lab-ph", P + "lab-20a", P + "lab-rl"], { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, S7);
 
-  /* TWICE. t1-s2 5.02: both rings flash, stroke 4 -> 8 -> 4 px over 0.4 s */
-  tl.fromTo([M + "ring-a-c", M + "ring-b-c"], { attr: { "stroke-width": 4 } },
-    { attr: { "stroke-width": 8 }, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 5.02);
+  /* AT a4-s7 0.46 -> STORE, 1.60: pan west along 20th St to the Connecticut junction */
+  tl.to(P + "cam", cam(-31202.60, -18444.64, 35.7136, { duration: 1.14, ease: "power3.out" }), S7 + 0.46);
+  /* DILLON'S 1.04: outline lights (on screen by then), label settles by STORE, 1.60 */
+  tl.fromTo(P + "dl-lit", { autoAlpha: 0, scale: 1.8, svgOrigin: "880.43 535.89" },
+    { autoAlpha: 1, scale: 1, svgOrigin: "880.43 535.89", duration: 0.5, ease: "back.out(1.6)" }, S7 + 1.04);
+  tl.fromTo(P + "lab-dl", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, S7 + 1.24);
+  tl.fromTo([P + "lab-ct", P + "lab-20c"], { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.15 }, S7 + 1.60);
+  /* STORE, 1.60 -> fade: slow push +3 % about the Dillon's */
+  tl.to(P + "cam", cam(-32145.90, -19018.79, 36.7850, { duration: END - 0.6 - (S7 + 1.60), ease: "none" }), S7 + 1.60);
 
-  /* THEN, t1-s3 0.00: chip, stamps, source out 0.4 s; rings fade 0.6 s; below-ground line draws L to R 0.8 s, label rises */
-  tl.to(P + "chip", { x: 600, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, S3);
-  tl.to([P + "stamp-a", P + "stamp-b", P + "src"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, S3);
-  tl.to([M + "ring-a", M + "ring-b"], { opacity: 0, duration: 0.6, ease: "power2.out" }, S3); /* out-eased: mostly gone before the line reaches the rings */
-  tl.fromTo(M + "below", { strokeDashoffset: 1301 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, S3);
-  tl.fromTo(M + "below-lab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, S3 + 0.35);
+  /* 35 a4-s7 2.46: leader + inset */
+  tl.fromTo(P + "dl-lead", { autoAlpha: 0, strokeDashoffset: 913 }, { autoAlpha: 1, strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, S7 + 2.46);
+  tl.fromTo(P + "dl-inset", { autoAlpha: 0, scale: 0.9, svgOrigin: "1370 350" },
+    { autoAlpha: 1, scale: 1, svgOrigin: "1370 350", duration: 0.45, ease: "power3.out" }, S7 + 2.46);
+  /* GOT 2.96 -> COOLER, 3.86: the 35 file in through the door gap, deepest spot first */
+  const DX = 1548, DY = 432;
+  const figs = Array.from(document.querySelectorAll(P + "figs use"))
+    .map(el => ({ el, x: +el.getAttribute("x"), y: +el.getAttribute("y") }))
+    .sort((a, b) => Math.hypot(b.x - DX, b.y - DY) - Math.hypot(a.x - DX, a.y - DY));
+  const step = (3.86 - 2.96 - 0.4) / (figs.length - 1);
+  figs.forEach((f, k) => tl.fromTo(f.el, { autoAlpha: 0, attr: { x: DX, y: DY } },
+    { autoAlpha: 1, attr: { x: f.x, y: f.y }, duration: 0.4, ease: "power2.out" }, S7 + 2.96 + k * step));
 
-  /* WHY t1-s3 3.14 - 0.15: line label out before the push starts (no text rides the push) */
-  tl.to(M + "below-lab", { autoAlpha: 0, duration: 0.15, ease: "none" }, S3 + 2.99);
+  /* DEMOLISHED a4-s7 5.28: Dillon's walls drift apart; the cooler box in the inset never breaks */
+  const dl = [["s1", -0.083, -0.332, -6, "880.225 535.085"], ["s2", 0.305, -0.055, 8, "881.46 535.975"],
+              ["s3", 0.139, 0.249, -9, "880.79 536.88"], ["s4", -0.222, 0.166, 7, "879.555 536.13"],
+              ["s5", -0.194, -0.028, -4, "878.99 535.24"]];
+  dl.forEach(s => tl.to(P + "dl-" + s[0], { x: s[1], y: s[2], rotation: s[3], svgOrigin: s[4], duration: 0.7, ease: "power2.out" }, S7 + 5.28));
+  tl.to(P + "dl-fill", { fillOpacity: 0, duration: 0.4, ease: "power1.out" }, S7 + 5.28);
 
-  /* WHY 3.14 -> 4.30: push onto the line, scale 1.3292 (1728/1300), line centre (850, 880) -> (960, 540): line spans x 96 to 1824 */
-  tl.to(P + "cam", Object.assign(cam(-169.85, -629.72, 1.329231), { duration: 1.16, ease: "power2.inOut" }), S3 + 3.14);
+  /* ALL a4-s7 6.70: chip, source line switches */
+  tl.fromTo(P + "chip2", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, S7 + 6.70);
+  tl.to(P + "src1", { autoAlpha: 0, duration: 0.25, ease: "power1.in" }, S7 + 6.70);
+  tl.fromTo(P + "src2", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, S7 + 6.80);
 
-  /* BASEMENT? t1-s3 4.40: HUD label in (fixed layer, enters after the push settles) */
-  tl.fromTo(P + "hud", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, S3 + 4.4);
+  /* hold: figures float 2.5 px in a rolling wave by id (finite repeats, all back at rest by 30.76) */
+  tl.to(P + "figs use", { y: -2.5, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 11, stagger: 0.04 }, S7 + 4.10);
 
-  /* hold to the host end: scale creeps 1.3292 -> 1.345 about the line centre, ease none; cut to CLIP 1 on the host end */
-  tl.to(P + "cam", Object.assign(cam(-183.25, -643.6, 1.345), { duration: 11.8 - (S3 + 4.3), ease: "none" }), S3 + 4.3);
+  /* fade-through over the last 0.6 s */
+  tl.to(P + "stage", { autoAlpha: 0, duration: 0.6, ease: "power1.in" }, END - 0.6);
 
   window.__timelines[ID] = tl;
 })();
