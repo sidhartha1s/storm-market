@@ -509,8 +509,8 @@ with tempfile.TemporaryDirectory() as d:
     for f in S.glob("*.py"):
         (root / "scripts" / f.name).write_bytes(f.read_bytes())
     cfg = (S.parent / "config.yaml").read_text(encoding="utf-8")
-    real = re.search(r"voice_ref_md5: ([0-9a-f]{32})", cfg).group(1)
-    cta_line = re.search(r"\n    voice_ref_md5: [0-9a-f]{32}", cfg)
+    real = _re.search(r"voice_ref_md5: ([0-9a-f]{32})", cfg).group(1)
+    cta_line = _re.search(r"\n    voice_ref_md5: [0-9a-f]{32}", cfg)
     check("config: channel.cta carries voice_ref_md5", cta_line is not None, "no CTA voice_ref_md5 line")
     if cta_line:
         bad = cfg[:cta_line.start()] + "\n    voice_ref_md5: " + "0" * 32 + cfg[cta_line.end():]
