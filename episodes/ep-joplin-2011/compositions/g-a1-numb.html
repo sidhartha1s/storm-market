@@ -6,8 +6,11 @@
 <style>
   /* g-a1-numb: A1-S3, host 0.00 to 18.22 (wav 17.92 + 0.3 s seam). Local time = a1-s3 words.json time.
      Defines the COMMENT CARD base (#a1n-card); copies change only the three row texts.
-     Page crop (script-computed): source crop x 150..475, y 1190..1569 of the 1347x1743 page, scale S = 600/325 = 1.8462,
-     so the box 600x700 shows it unstretched. Phrase "desensitized or complacent" = src x 159..443, baseline y 1330.5. */
+     Page crop (measured on the 1347x1743 page): the "The reasons for doing so..." paragraph only, 6 whole lines at src
+     y 1209..1401, x 159..1182. Scale S = 0.85 (body about 23 px, caps 15 px): the 924x209 box shows src x 127..1214,
+     y 1182..1428 unstretched; both edges sit in paragraph gaps (neighbour ink ends 1175, starts 1440). The push only scales up
+     from the text centre, so no new src enters and the line is 896 px wide in 924 at full push: no word cut in any frame.
+     Phrase "desensitized or complacent" = src x 159..443, baseline y 1331.5. Caps stay under the brief's 28 px: whole lines cap S. */
   #a1n-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
   #a1n-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
 
@@ -22,11 +25,11 @@
   #a1n-likes { height:30px; } /* reserved for the like count; stays empty until the orchestrator confirms it */
 
   /* page half */
-  #a1n-page { position:absolute; inset:auto; left:960px; top:200px; width:600px; height:700px; overflow:hidden;
+  #a1n-page { position:absolute; inset:auto; left:960px; top:230px; width:600px; height:540px; overflow:hidden;
     box-shadow:0 0 0 1px rgba(255,255,255,0.14), 0 20px 60px rgba(0,0,0,0.5); background:#f2f2f0; visibility:hidden; opacity:0; }
-  #a1n-pagein { position:absolute; inset:auto; left:0; top:0; width:600px; height:700px; }
-  #a1n-img { position:absolute; inset:auto; left:-276.923px; top:-2196.923px; width:2486.769px; height:3217.846px; }
-  #a1n-bar { position:absolute; inset:auto; left:16.615px; top:273.385px; width:524.308px; height:6px; background:#d8a13a; visibility:hidden; }
+  #a1n-pagein { position:absolute; inset:auto; left:0; top:0; width:600px; height:540px; }
+  #a1n-img { position:absolute; inset:auto; left:-68.75px; top:-414.43px; width:740.85px; height:958.65px; }
+  #a1n-bar { position:absolute; inset:auto; left:16.5px; top:320.4px; width:160.6px; height:3px; background:#d8a13a; visibility:hidden; }
 
   /* chip: glass, top centre x 960, y 96 to 166 */
   #a1n-chipwrap { position:absolute; inset:auto; left:0; top:96px; width:1920px; height:70px; display:flex; justify-content:center; }
@@ -58,7 +61,7 @@
   </div>
 
   <div id="a1n-chipwrap"><div id="a1n-chip">NUMB TO SIRENS</div></div>
-  <div id="a1n-src">NWS Assessment, Preface and Finding 2c</div>
+  <div id="a1n-src">NWS Assessment, Executive Summary and Finding 2c</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
@@ -66,6 +69,7 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const Q = "#a1n-";
   tl.set(Q+"bar", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(Q+"pagein", { transformOrigin: "50% 0%" }, 0);
 
   /* comment card: panel in 0.00 to 0.60, rows 0.25 s apart from "You've" a1-s3 0.64 */
   tl.fromTo(Q+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0);
