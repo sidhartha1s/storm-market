@@ -39,8 +39,8 @@ $d = Get-ChildItem -LiteralPath $env:TEMP -Directory -Filter '""" + MARK + r"""-
 
 KILL = r"""Add-Type -Namespace W -Name N -MemberDefinition '[DllImport("ntdll.dll")] public static extern int NtResumeProcess(IntPtr h);
 [DllImport("kernel32.dll")] public static extern IntPtr OpenProcess(uint a, bool i, int p); [DllImport("kernel32.dll")] public static extern bool CloseHandle(IntPtr h);'
-$now = @{}; Get-CimInstance Win32_Process -Filter "Name='chrome.exe'" | ForEach-Object { $now[[int]$_.ProcessId] = $_.CreationDate.ToFileTimeUtc() }
-$n = 0; foreach ($t in @(TARGETS)) { $id = $t[0]; if ($now[$id] -ne $t[1]) { continue }
+$alive = @{}; Get-CimInstance Win32_Process -Filter "Name='chrome.exe'" | ForEach-Object { $alive[[int]$_.ProcessId] = $_.CreationDate.ToFileTimeUtc() }
+$a = @(TARGETS); $n = 0; for ($k = 0; $k -lt $a.Count; $k += 2) { $id = [int]$a[$k]; if ($alive[$id] -ne $a[$k + 1]) { continue }
   $h = [W.N]::OpenProcess(0x0800, $false, $id); if ($h -ne [IntPtr]::Zero) { [void][W.N]::NtResumeProcess($h); [void][W.N]::CloseHandle($h) }
   Stop-Process -Id $id -Force -ErrorAction SilentlyContinue; $n++ }
 $n"""
@@ -85,8 +85,8 @@ def reap(host, apply):
         return f"[reap_chrome] {host}: would kill {len(targets)} orphan chrome, delete {len(dirs)} profiles (dry run; --apply does it)"
     killed = deleted = 0
     for i in range(0, len(targets), CHUNK):
-        arr = ", ".join(f"@({pid}, {created})" for pid, created in targets[i:i + CHUNK])
-        code, out = ps(host, KILL.replace("TARGETS", arr + ("," if len(targets[i:i + CHUNK]) == 1 else "")), timeout=60)
+        pairs = ", ".join(f"{pid}, {created}" for pid, created in targets[i:i + CHUNK])  # flat: pid, start time, ...
+        code, out = ps(host, KILL.replace("TARGETS", pairs), timeout=60)
         killed += int(out.strip()) if code == 0 and out.strip().isdigit() else 0
     for i in range(0, len(dirs), CHUNK):
         code, out = ps(host, DELETE.replace("NAMES", ", ".join(quote(d) for d in dirs[i:i + CHUNK])), timeout=60)
