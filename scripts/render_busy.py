@@ -43,12 +43,7 @@ MIN_FREE_GB = float(os.environ.get("RENDER_MIN_FREE_GB", need_gb(1)))
 
 def workers_that_fit(requested, free):
     """Most workers from `requested` down to 1 whose RAM need fits `free` GB; 0 under MIN_FREE_GB."""
-    if free < MIN_FREE_GB:
-        return 0
-    for n in range(requested, 1, -1):
-        if free >= need_gb(n):
-            return n
-    return 1
+    return next((n for n in range(requested, 0, -1) if free >= max(need_gb(n), MIN_FREE_GB)), 0)
 
 
 def ps(cmd):
