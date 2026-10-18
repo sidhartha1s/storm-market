@@ -339,7 +339,8 @@ C. **Audio slots longer than their file are silently truncated (compile WARN, no
    file length when the shortfall is a natural tail.
 
 D. **schtasks tasks do NOT start on battery by default** — a /run leaves them "Queued"
-   forever. After /create, always:
+   forever. In the one-line launch recipe (CLAUDE.md "Launch hidden"), `/run /i` ignores the constraint. Otherwise,
+   after /create:
    `Set-ScheduledTask -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries
    -DontStopIfGoingOnBatteries)`. Battery also power-throttles extract/encode — plug in
    for renders.
