@@ -15,9 +15,10 @@ set "FIND=%SystemRoot%\System32\find.exe"
 set "FINDSTR=%SystemRoot%\System32\findstr.exe"
 REM Check and read one copy, so the bytes checked are the bytes used. The copy ends in CRLF: findstr /x
 REM never matches a last line with no line end, and dojo-ops writes the slug without one.
+REM No space before || after echo(: it would be written into the copy.
 set "CHK=%REQ%.chk"
 >"%CHK%" type "%REQ%" || goto :refuse
->>"%CHK%" echo( || goto :refuse
+>>"%CHK%" echo(|| goto :refuse
 del /q "%REQ%"
 REM Exactly one line, and it is 1+ of A-Z a-z 0-9 _ - (letters spelled out: findstr's [A-Z] also
 REM matches accented letters).

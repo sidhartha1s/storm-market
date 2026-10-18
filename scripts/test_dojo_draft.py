@@ -32,6 +32,7 @@ class DojoDraft(unittest.TestCase):
         shutil.rmtree(self.root, ignore_errors=True)
 
     def run_wrapper(self, request: bytes | None) -> int:
+        self.called.unlink(missing_ok=True)
         if request is not None:
             self.req.write_bytes(request)
         env = {**os.environ, "LOCALAPPDATA": str(self.lad)}
@@ -39,19 +40,14 @@ class DojoDraft(unittest.TestCase):
         return subprocess.run(["cmd.exe", "/d", "/c", str(self.root / "scripts" / "dojo_draft.cmd")], env=env,
                               capture_output=True, timeout=30).returncode
 
-    def test_good_slug_reaches_render_cmd(self):
-        self.assertEqual(self.run_wrapper(b"ep-good_1"), 0)
-        self.assertEqual(self.called.read_text().strip(), "args=[ep-good_1 draft] workers=[2]")
-        self.assertFalse(self.req.exists())
-
-    def test_trailing_cr_is_dropped_by_set_p(self):
-        # findstr reads "ep-good_1\r" as one CR-ended line; set /p drops the CR, so render.cmd gets the clean slug.
-        self.assertEqual(self.run_wrapper(b"ep-good_1\r"), 0)
-        self.assertEqual(self.called.read_text().strip(), "args=[ep-good_1 draft] workers=[2]")
-
-    def test_leading_dash_is_only_a_folder_name(self):
-        self.assertEqual(self.run_wrapper(b"-dash"), 0)
-        self.assertEqual(self.called.read_text().strip(), "args=[-dash draft] workers=[2]")
+    def test_good_slugs_reach_render_cmd(self):
+        # A trailing CR is dropped by set /p; a leading dash is only a folder name.
+        for request, slug in ((b"ep-good_1", "ep-good_1"), (b"ep-good_1\r", "ep-good_1"), (b"-dash", "-dash")):
+            with self.subTest(request=request):
+                self.assertEqual(self.run_wrapper(request), 0)
+                self.assertEqual(self.called.read_text().strip(), f"args=[{slug} draft] workers=[2]")
+                self.assertFalse(self.req.exists())
+                self.assertFalse(Path(str(self.req) + ".chk").exists())
 
     def test_bad_requests_never_reach_render_cmd(self):
         bad = [b"", b"ep good", b"ep&calc", b"ep|x", b'ep"x', b"ep%PATH%", b"ep^x", b"..\\ep-good_1", b"ep/x",
@@ -59,10 +55,23 @@ class DojoDraft(unittest.TestCase):
                b"ep-good_1\x00", b"ep(x)", b"ep!x", b"ep<x", b"ep>x", b"ep-good_1\n"]
         for request in bad:
             with self.subTest(request=request):
-                self.called.unlink(missing_ok=True)
                 self.assertEqual(self.run_wrapper(request), 3)
                 self.assertFalse(self.called.exists())
                 self.assertFalse(self.req.exists())
+
+    def test_a_check_that_cannot_run_refuses(self):
+        # Opus review 18 Oct 2026: a directory on the .chk name made the old checks fail open.
+        chk = Path(str(self.req) + ".chk")
+        chk.mkdir()
+        (chk / "keep.txt").write_text("x")
+        self.assertEqual(self.run_wrapper(b"x\\..\\ep-good_1"), 3)
+        self.assertFalse(self.called.exists())
+        self.assertTrue((chk / "keep.txt").exists())
+
+    def test_overlong_line_never_reaches_render_cmd(self):
+        # set /p keeps 1023 bytes; the cut name must never reach render.cmd.
+        self.assertIn(self.run_wrapper(b"a" * 9000), (3, 4))
+        self.assertFalse(self.called.exists())
 
     def test_no_request_and_unknown_episode(self):
         self.assertEqual(self.run_wrapper(None), 2)
