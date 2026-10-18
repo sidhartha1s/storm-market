@@ -113,14 +113,107 @@
   <g id="a420-ring-b" class="gim-ringg"><circle id="a420-ring-b-c" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" stroke-dasharray="2791" stroke-dashoffset="2791"/><g id="a420-ring-b-pulses" class="gim-pulse"><circle id="a420-ring-b-p1" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/><circle id="a420-ring-b-p2" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/><circle id="a420-ring-b-p3" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/></g></g>
 </g>
 <g id="a420-l-below"><path id="a420-below" d="M200,880 L1500,880" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="1301" stroke-dashoffset="1301"/><text id="a420-below-lab" x="200" y="864" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#93a3b2" opacity="0" visibility="hidden">Below ground</text></g><!--/BASEMAP-->
-      <!-- ring stamps: each 20 px clear of ring B's largest pulse (523.8 px), so no pulse copy ever crosses a stamp -->
-      <text id="g-intro-map-stamp-a" class="gim-stamp" x="363.1" y="714" text-anchor="end">5:11 PM</text>
-      <text id="g-intro-map-stamp-b" class="gim-stamp" x="1385.1" y="714">5:38 PM</text>
+      <g id="a420-l-stores">
+        <rect id="a420-wal-box" class="a420-box" x="944.272" y="521.075" width="2.534" height="5.006"/>
+        <rect id="a420-hd-box" class="a420-box" x="941.354" y="531.851" width="2.184" height="4.106"/>
+      </g>
+      <!-- PIZZA HUT, base place-pizza-hut vertices: fill + 4 walls -->
+      <g id="a420-ph-lit">
+        <path id="a420-ph-fill" class="a420-fill" d="M936.34,528.63 L937.36,528.63 L937.36,529.07 L936.34,529.07 Z"/>
+        <line id="a420-ph-s1" class="a420-seg" x1="936.34" y1="528.63" x2="937.36" y2="528.63"/>
+        <line id="a420-ph-s2" class="a420-seg" x1="937.36" y1="528.63" x2="937.36" y2="529.07"/>
+        <line id="a420-ph-s3" class="a420-seg" x1="937.36" y1="529.07" x2="936.34" y2="529.07"/>
+        <line id="a420-ph-s4" class="a420-seg" x1="936.34" y1="529.07" x2="936.34" y2="528.63"/>
+      </g>
+      <!-- DILLON'S, base place-dillons vertices: fill + 5 walls -->
+      <g id="a420-dl-lit">
+        <path id="a420-dl-fill" class="a420-fill" d="M878.99,535.10 L881.46,535.07 L881.46,536.88 L880.12,536.88 L878.99,535.38 Z"/>
+        <line id="a420-dl-s1" class="a420-seg" x1="878.99" y1="535.10" x2="881.46" y2="535.07"/>
+        <line id="a420-dl-s2" class="a420-seg" x1="881.46" y1="535.07" x2="881.46" y2="536.88"/>
+        <line id="a420-dl-s3" class="a420-seg" x1="881.46" y1="536.88" x2="880.12" y2="536.88"/>
+        <line id="a420-dl-s4" class="a420-seg" x1="880.12" y1="536.88" x2="878.99" y2="535.38"/>
+        <line id="a420-dl-s5" class="a420-seg" x1="878.99" y1="535.38" x2="878.99" y2="535.10"/>
+      </g>
+    </g>
+
+    <!-- HUD, framing A/B (Pizza Hut beat) -->
+    <text id="a420-lab-tc" class="a420-lab" x="330" y="420">TORNADO CENTER</text>
+    <text id="a420-lab-20a" class="a420-lab a420-st" x="560" y="550">20TH ST</text>
+    <text id="a420-lab-rl" class="a420-lab a420-st" text-anchor="end" x="878" y="340">RANGE LINE RD</text>
+    <text id="a420-lab-ph" class="a420-lab" x="921" y="498">PIZZA HUT</text>
+    <line id="a420-ph-lead" class="a420-lead" x1="958" y1="452" x2="1180" y2="476" stroke-dasharray="225" stroke-dashoffset="225"/>
+    <g id="a420-ph-inset" class="a420-inset"><g id="a420-ph-float">
+      <rect class="a420-inbg" x="1180" y="160" width="380" height="380"/>
+      <text id="a420-ph-cooler" class="a420-intx" x="1370" y="206" text-anchor="middle">COOLER</text>
+      <!-- frame 220 x 300, door 180 x 270 on the floor, hinges on the left jamb -->
+      <rect x="1260" y="222" width="220" height="300" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+      <rect x="1280" y="252" width="180" height="270" fill="#04070a"/>
+      <path d="M1292,300 L1448,300 M1292,370 L1448,370 M1292,440 L1448,440" stroke="#2a3644" stroke-width="2"/>
+      <g id="a420-door">
+        <rect x="1280" y="252" width="180" height="270" fill="#2a3644" stroke="#93a3b2" stroke-width="2"/>
+        <rect x="1296" y="268" width="148" height="238" fill="none" stroke="#4a5560" stroke-width="2"/>
+        <rect x="1432" y="322" width="10" height="136" rx="5" fill="#dfe7ee"/>
+      </g>
+      <rect x="1274" y="282" width="12" height="26" rx="2" fill="#93a3b2"/>
+      <rect x="1274" y="466" width="12" height="26" rx="2" fill="#93a3b2"/>
+    </g></g>
+
+    <!-- HUD, framing C/D (Dillon's beat) -->
+    <text id="a420-lab-ct" class="a420-lab a420-st" x="745" y="380">CONNECTICUT AVE</text>
+    <text id="a420-lab-20c" class="a420-lab a420-st" x="860" y="544">20TH ST</text>
+    <text id="a420-lab-dl" class="a420-lab" x="189" y="765">DILLON'S</text>
+    <line id="a420-dl-lead" class="a420-lead" x1="277" y1="665" x2="1180" y2="540" stroke-dasharray="913" stroke-dashoffset="913"/>
+    <g id="a420-dl-inset" class="a420-inset">
+      <rect class="a420-inbg" x="1180" y="160" width="380" height="380"/>
+      <text id="a420-dl-cooler" class="a420-intx" x="1370" y="222" text-anchor="middle">PRODUCE COOLER</text>
+      <!-- room 320 x 220 (x 1210-1530, y 262-482), door gap in the right wall y 418-476 -->
+      <rect x="1210" y="262" width="320" height="220" fill="#0b1016"/>
+      <path class="a420-wall" d="M1530,418 L1530,262 L1210,262 L1210,482 L1530,482 L1530,476"/>
+      <!-- 35 figures, 7 x 5 at 40 px pitch from (1243, 277) -->
+      <g id="a420-figs">
+        <use id="a420-f01" class="a420-fig" href="#a420-person" x="1243" y="277"/>
+        <use id="a420-f02" class="a420-fig" href="#a420-person" x="1283" y="277"/>
+        <use id="a420-f03" class="a420-fig" href="#a420-person" x="1323" y="277"/>
+        <use id="a420-f04" class="a420-fig" href="#a420-person" x="1363" y="277"/>
+        <use id="a420-f05" class="a420-fig" href="#a420-person" x="1403" y="277"/>
+        <use id="a420-f06" class="a420-fig" href="#a420-person" x="1443" y="277"/>
+        <use id="a420-f07" class="a420-fig" href="#a420-person" x="1483" y="277"/>
+        <use id="a420-f08" class="a420-fig" href="#a420-person" x="1243" y="317"/>
+        <use id="a420-f09" class="a420-fig" href="#a420-person" x="1283" y="317"/>
+        <use id="a420-f10" class="a420-fig" href="#a420-person" x="1323" y="317"/>
+        <use id="a420-f11" class="a420-fig" href="#a420-person" x="1363" y="317"/>
+        <use id="a420-f12" class="a420-fig" href="#a420-person" x="1403" y="317"/>
+        <use id="a420-f13" class="a420-fig" href="#a420-person" x="1443" y="317"/>
+        <use id="a420-f14" class="a420-fig" href="#a420-person" x="1483" y="317"/>
+        <use id="a420-f15" class="a420-fig" href="#a420-person" x="1243" y="357"/>
+        <use id="a420-f16" class="a420-fig" href="#a420-person" x="1283" y="357"/>
+        <use id="a420-f17" class="a420-fig" href="#a420-person" x="1323" y="357"/>
+        <use id="a420-f18" class="a420-fig" href="#a420-person" x="1363" y="357"/>
+        <use id="a420-f19" class="a420-fig" href="#a420-person" x="1403" y="357"/>
+        <use id="a420-f20" class="a420-fig" href="#a420-person" x="1443" y="357"/>
+        <use id="a420-f21" class="a420-fig" href="#a420-person" x="1483" y="357"/>
+        <use id="a420-f22" class="a420-fig" href="#a420-person" x="1243" y="397"/>
+        <use id="a420-f23" class="a420-fig" href="#a420-person" x="1283" y="397"/>
+        <use id="a420-f24" class="a420-fig" href="#a420-person" x="1323" y="397"/>
+        <use id="a420-f25" class="a420-fig" href="#a420-person" x="1363" y="397"/>
+        <use id="a420-f26" class="a420-fig" href="#a420-person" x="1403" y="397"/>
+        <use id="a420-f27" class="a420-fig" href="#a420-person" x="1443" y="397"/>
+        <use id="a420-f28" class="a420-fig" href="#a420-person" x="1483" y="397"/>
+        <use id="a420-f29" class="a420-fig" href="#a420-person" x="1243" y="437"/>
+        <use id="a420-f30" class="a420-fig" href="#a420-person" x="1283" y="437"/>
+        <use id="a420-f31" class="a420-fig" href="#a420-person" x="1323" y="437"/>
+        <use id="a420-f32" class="a420-fig" href="#a420-person" x="1363" y="437"/>
+        <use id="a420-f33" class="a420-fig" href="#a420-person" x="1403" y="437"/>
+        <use id="a420-f34" class="a420-fig" href="#a420-person" x="1443" y="437"/>
+        <use id="a420-f35" class="a420-fig" href="#a420-person" x="1483" y="437"/>
+      </g>
     </g>
   </svg>
-  <div id="g-intro-map-chip"><span id="g-intro-map-chiptxt">SOUNDED TWICE</span></div>
-  <div id="g-intro-map-src">NWS timeline · 3 minutes each</div>
-  <div id="g-intro-map-hud">Below ground</div>
+  <div id="a420-chip1" class="a420-chip"><span id="a420-chip1-t">5 LOST</span></div>
+  <div id="a420-chip2" class="a420-chip"><span id="a420-chip2-t">35 IN THE COOLER · ALL SURVIVED</span></div>
+  <div id="a420-src1" class="a420-src"><span id="a420-src1-t">NIST Sec. 1.2 · Sec. 4.4.8</span></div>
+  <div id="a420-src2" class="a420-src"><span id="a420-src2-t">NIST Sec. 1.2</span></div>
+ </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
