@@ -162,7 +162,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(Q + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.3);
   tl.fromTo(Q + "backg", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 3.42);
   tl.fromTo(Q + "frontg", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 3.42);
-  tl.fromTo(Q + "sch", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 3.42);
+  /* brief section 4 truth 7 wins over the cue table: SCHEMATIC shows whenever the plan is on, so it enters with the outline at 0.00 */
+  tl.fromTo(Q + "sch", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0);
 
   /* 200 a4-s3 5.74: row 1 (the dots pop in above) */
   tl.fromTo(Q + "r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.74);
