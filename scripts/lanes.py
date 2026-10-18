@@ -26,13 +26,13 @@ the host is asked whether the lane's process runs, and one that cannot be read i
   1. it first probes the profile (`claude -p 'reply with the single word ok' --model haiku` under its
      CLAUDE_CONFIG_DIR); any reply but "ok" (a limit, a logged-out profile, an error) moves it to the next
      ~/.claude-accounts/claude* profile. It never waits for a reset.
-  2. every start refuses while the host has MIN_FREE_GB or less free, or MAX_LANES lanes are already RUNNING
-     (the cap by free RAM), and a builder lane (BROWSER_JOBS: it runs the Chromium gates) while BROWSER_MAX_LANES run
+  2. every start refuses while the host has MIN_FREE_GB or less free (the cap by free RAM), or MAX_LANES lanes are
+     already RUNNING; a builder lane (BROWSER_JOB: it runs the Chromium gates) also while BROWSER_MAX_RUNNING run
   3. a running lane whose log tail says it hit a limit is FAILED (blocking). `status` only reports it, since the Stop
      hook calls status; `relaunch` moves it to the next profile that answers, and backs off if another lanes.py
      holds the lock
-Every launch first reaps orphan Playwright Chromes on its host (scripts/reap_chrome.py --apply), and so does every
-`end`, after the lane. Every command but status reads and writes the ledger only while holding <ep>/lanes.json.lock (created exclusively; a
+Before a launch and after an `end`, the lane's host is reaped of orphan Playwright Chromes (scripts/reap_chrome.py --apply).
+Every command but status reads and writes the ledger only while holding <ep>/lanes.json.lock (created exclusively; a
 write waits up to LOCK_WAIT_S for it; one older than LOCK_MIN minutes belongs to a dead holder and is taken over).
 
 Groups: one per segment prefix (a1 = A1-S*), except H1, T1 and I1, which form `intro`. Jobs per group g:
@@ -65,10 +65,10 @@ HOLD_H = 3          # a hold lapses after this many hours, so a wait is re-decid
 DEFAULT_MIN = 60    # a lane with no end recorded this many minutes after its start is presumed dead (STALE)
 BLOCKING = ("READY", "STALE", "FAILED")
 HOSTS = ("local", "zbook")
-MIN_FREE_GB = 4     # a lane never starts on a host with this much free memory or less: the cap by free RAM
+MIN_FREE_GB = 4     # a lane never starts on a host with this much free memory or less
 MAX_LANES = 4       # ...or while this many lanes are RUNNING
-BROWSER_JOBS = ("build:",)  # a builder lane runs the Chromium gates on its comps (references/mg-brief-template.md "Gates")
-BROWSER_MAX_LANES = 3       # ...and one of those never starts while this many run: lanes with gates flooded the ZBook (18 Oct 26)
+BROWSER_JOB = "build:"     # a builder lane runs the Chromium gates on its comps (references/mg-brief-template.md "Gates")
+BROWSER_MAX_RUNNING = 3    # ...and never starts while this many lanes run: lanes with gates flooded the ZBook (18 Oct 26)
 ACCOUNTS = Path.home() / ".claude-accounts"
 LIMIT = re.compile(r"hit your (\w+ )?limit|session limit|usage limit reached", re.I)
 LOCK_MIN = 10      # a ledger lock older than this is a dead holder's
@@ -142,9 +142,9 @@ def gate(states, host, jobs):
     if running >= MAX_LANES:
         return f"{running} lanes already RUNNING (cap {MAX_LANES})"
     # shortcut: counts this episode's lanes only, not another episode's on the same host; upgrade if two episodes share the ZBook
-    browser = [j for j in jobs if j.startswith(BROWSER_JOBS)]
-    if browser and running >= BROWSER_MAX_LANES:
-        return f"{browser[0]} runs browser gates and {running} lanes are RUNNING (browser cap {BROWSER_MAX_LANES})"
+    browser = next((j for j in jobs if j.startswith(BROWSER_JOB)), None)
+    if browser and running >= BROWSER_MAX_RUNNING:
+        return f"{browser} runs browser gates and {running} lanes are RUNNING (browser cap {BROWSER_MAX_RUNNING})"
     gb = free_gb(host)
     return f"{host} has {gb} GB free (needs more than {MIN_FREE_GB})" if gb <= MIN_FREE_GB else None
 
@@ -184,7 +184,6 @@ def reap_on(host):
 
 def launch(run, order):
     """Rule 1: run the lane on the first profile in order that answers; its ledger entry, or None if none answers."""
-    reap_on(run["host"])
     for p in order:
         if probe(run["host"], p):
             spawn(run["host"], run["cmd"].replace("{cli}", p), run["log"], run["cwd"])
@@ -320,6 +319,8 @@ def main(argv=None):
                 print(f"{s['state']:8} {s['job']:28} {s['note']}")
         return 2 if any(s["state"] in BLOCKING for s in states) else 0
 
+    if a.cmd == "start" and a.lane_cmd:
+        reap_on(a.host)  # before the lock: a slow host never holds up another lanes.py
     lock = ep / "lanes.json.lock"  # every ledger write holds it, so two writers never lose each other's update
     deadline = time.time() + (0 if a.cmd == "relaunch" else LOCK_WAIT_S)
     while not take_lock(lock, time.time()):
@@ -330,9 +331,14 @@ def main(argv=None):
             sys.exit(f"[lanes] FAIL: another lanes.py held {lock} for {LOCK_WAIT_S} s; retry")
         time.sleep(1)
     try:
-        return write(a, ep, lock)
+        code = write(a, ep, lock)
     finally:
         release(lock)
+    if a.cmd == "end":  # after the lane, outside the lock
+        jobs = load_ledger(ep).get("jobs", {})
+        for host in sorted({jobs[j]["host"] for j in a.jobs if j in jobs}):
+            reap_on(host)
+    return code
 
 
 def write(a, ep, lock):
@@ -341,6 +347,8 @@ def write(a, ep, lock):
     now = time.time()
     if a.cmd == "relaunch":  # rule 3: a FAILED lane moves to the next profile that answers, never waits for a reset
         states = job_states(ep, ledger, now)
+        for host in sorted({ledger["jobs"][s["job"]]["host"] for s in states if s["state"] == "FAILED"}):
+            reap_on(host)  # once per host, before its lanes move
         left = 0
         for s in (s for s in states if s["state"] == "FAILED"):
             run = ledger["jobs"][s["job"]]
@@ -405,9 +413,6 @@ def write(a, ep, lock):
             ledger.get("holds", {}).pop(job, None)
     save_ledger(ep, ledger)
     print(f"[lanes] {a.cmd} {ep.name}: {', '.join(a.jobs) or 'session ' + str(a.session)}")
-    if a.cmd == "end":
-        for host in sorted({ledger["jobs"][job]["host"] for job in a.jobs}):
-            reap_on(host)
     return 0
 
 

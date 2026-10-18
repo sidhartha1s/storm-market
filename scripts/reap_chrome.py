@@ -43,17 +43,18 @@ $alive = @{}; Get-CimInstance Win32_Process -Filter "Name='chrome.exe'" | ForEac
 $a = @(TARGETS); $n = 0; for ($k = 0; $k -lt $a.Count; $k += 2) { $id = [int]$a[$k]; if ($alive[$id] -ne $a[$k + 1]) { continue }
   $h = [W.N]::OpenProcess(0x0800, $false, $id); if ($h -ne [IntPtr]::Zero) { [void][W.N]::NtResumeProcess($h); [void][W.N]::CloseHandle($h) }
   Stop-Process -Id $id -Force -ErrorAction SilentlyContinue; $n++ }
-$n"""
+Start-Sleep -Seconds 1; $n"""
 
-DELETE = r"""Start-Sleep -Seconds 1; $n = 0; foreach ($d in @(NAMES)) { $p = Join-Path $env:TEMP $d
+DELETE = r"""$n = 0; foreach ($d in @(NAMES)) { $p = Join-Path $env:TEMP $d
   Remove-Item -LiteralPath $p -Recurse -Force -ErrorAction SilentlyContinue; if (-not (Test-Path -LiteralPath $p)) { $n++ } }
 $n"""
 
 
-def select(procs, dirs, now, min_age_min=PROFILE_MIN_AGE_MIN):
+def select(procs, dirs, now):
     """(chromes to kill as [(pid, created)], profile dir names to delete) from one host reading. Pure."""
     by_pid = {p["pid"]: p for p in procs}
-    chrome = [p for p in procs if (p["name"] or "").lower() == "chrome.exe" and p["session"] == 0]
+    every_chrome = [p for p in procs if (p["name"] or "").lower() == "chrome.exe"]
+    chrome = [p for p in every_chrome if p["session"] == 0]
 
     def orphan(p):
         parent = by_pid.get(p["ppid"])
@@ -67,10 +68,19 @@ def select(procs, dirs, now, min_age_min=PROFILE_MIN_AGE_MIN):
         grew = bool(below)
     named = lambda ps_: {n.lower() for p in ps_ for n in PROFILE.findall(p["cmd"] or "")}
     reaped = named(p for p in chrome if p["pid"] in kill)
-    live = named(p for p in procs if (p["name"] or "").lower() == "chrome.exe" and p["pid"] not in kill)
-    old = lambda d: (now - d["created"]) / 1e7 >= min_age_min * 60  # FILETIME: 100 ns ticks
+    live = named(p for p in every_chrome if p["pid"] not in kill)
+    old = lambda d: (now - d["created"]) / 1e7 >= PROFILE_MIN_AGE_MIN * 60  # FILETIME: 100 ns ticks
     gone = [d["name"] for d in dirs if d["name"].lower() not in live and (d["name"].lower() in reaped or old(d))]
     return sorted((p["pid"], p["created"]) for p in chrome if p["pid"] in kill), sorted(gone)
+
+
+def run_chunked(host, script, slot, items):
+    """Run script on host once per CHUNK items put in its slot; the sum of the counts it prints."""
+    done = 0
+    for i in range(0, len(items), CHUNK):
+        code, out = ps(host, script.replace(slot, ", ".join(items[i:i + CHUNK])), timeout=60)
+        done += int(out.strip()) if code == 0 and out.strip().isdigit() else 0
+    return done
 
 
 def reap(host, apply):
@@ -83,14 +93,8 @@ def reap(host, apply):
     targets, dirs = select(reading["procs"], [d for d in reading["dirs"] if d], reading["now"])  # @($null) is one null
     if not apply:
         return f"[reap_chrome] {host}: would kill {len(targets)} orphan chrome, delete {len(dirs)} profiles (dry run; --apply does it)"
-    killed = deleted = 0
-    for i in range(0, len(targets), CHUNK):
-        pairs = ", ".join(f"{pid}, {created}" for pid, created in targets[i:i + CHUNK])  # flat: pid, start time, ...
-        code, out = ps(host, KILL.replace("TARGETS", pairs), timeout=60)
-        killed += int(out.strip()) if code == 0 and out.strip().isdigit() else 0
-    for i in range(0, len(dirs), CHUNK):
-        code, out = ps(host, DELETE.replace("NAMES", ", ".join(quote(d) for d in dirs[i:i + CHUNK])), timeout=60)
-        deleted += int(out.strip()) if code == 0 and out.strip().isdigit() else 0
+    killed = run_chunked(host, KILL, "TARGETS", [f"{pid}, {created}" for pid, created in targets])  # flat pid, start time
+    deleted = run_chunked(host, DELETE, "NAMES", [quote(d) for d in dirs])
     return f"[reap_chrome] {host}: killed {killed} of {len(targets)} orphan chrome, deleted {deleted} of {len(dirs)} profiles"
 
 

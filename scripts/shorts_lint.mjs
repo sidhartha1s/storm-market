@@ -11,7 +11,7 @@ import { launchGate } from './playwright_env.mjs';
 import { readFileSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { pathToFileURL } from 'node:url';
-const SHORTS_LINT_DEADLINE_S = 120;  // ends itself (browser closed, exit 124) before a caller has to kill node; 24x its 5 s on sh-hawaii-lowell-1 (ASUS, 18 Oct 26)
+const SHORTS_LINT_DEADLINE_S = 120;  // launchGate deadline: 24x its 5 s on sh-hawaii-lowell-1 (ASUS, 18 Oct 26)
 
 const ep = resolve(process.argv[2]);
 const html = readFileSync(join(ep, 'index.html'), 'utf-8');
@@ -24,7 +24,7 @@ const SAFE = { top: 220, bottom: H - 420, railX: W - 150, railY: 900, tol: 24 };
 
 const findings = [];
 let registered = false;
-const browser = await launchGate('shorts_lint', SHORTS_LINT_DEADLINE_S, { args: [] });
+const browser = await launchGate('shorts_lint', SHORTS_LINT_DEADLINE_S);
 try {
   const page = await browser.newPage({ viewport: { width: W, height: H } });
   await page.goto(pathToFileURL(join(ep, 'index.html')).href, { waitUntil: 'load' });

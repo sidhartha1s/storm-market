@@ -15,7 +15,7 @@ import { launchGate } from './playwright_env.mjs';
 import fs from 'fs';
 import path from 'path';
 import { hostCss, stageComp } from './stage_comp.mjs';
-const OVERLAP_CHECK_DEADLINE_S = 540;  // ends itself (browser closed, exit 124) before a caller has to kill node; about 6x its 83 s on 52-comp ep-enderlin-2025 (ASUS, 18 Oct 26), under the 600 s Bash-tool cap
+const OVERLAP_CHECK_DEADLINE_S = 540;  // launchGate deadline: about 6x its 83 s on 52-comp ep-enderlin-2025 (ASUS, 18 Oct 26), under the 600 s Bash-tool cap
 
 const STEP = 0.5;
 const AREA_FRAC = 0.25;   // heavy overlap = garble; line-box touches of stacked title/subtitle are fine

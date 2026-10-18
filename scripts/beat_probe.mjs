@@ -6,7 +6,7 @@ import { launchGate } from './playwright_env.mjs';
 import { readFileSync } from 'fs';
 import { join, resolve } from 'path';
 import { hostCss, motionSpans, stageComp } from './stage_comp.mjs';
-const BEAT_PROBE_DEADLINE_S = 240;  // ends itself (browser closed, exit 124) before a caller has to kill node; about 8x its 29 s on 52-comp ep-enderlin-2025 (ASUS, 18 Oct 26)
+const BEAT_PROBE_DEADLINE_S = 240;  // launchGate deadline: about 8x its 29 s on 52-comp ep-enderlin-2025 (ASUS, 18 Oct 26)
 
 const ep = resolve(process.argv[2]);
 const HOST_CSS = hostCss(readFileSync(join(ep, 'index.html'), 'utf8'));

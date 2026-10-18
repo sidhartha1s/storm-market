@@ -55,7 +55,7 @@ process.on('SIGINT', () => process.exit(130));
 
 process.env.QC_LIGHT = '1';                       // playwright_env -> render_busy.py --light
 const { launchGate } = await import('./playwright_env.mjs');
-const FREEZE_SCAN_DEADLINE_S = 540;  // ends itself (browser closed, exit 124) before a caller has to kill node; 12 s for 2 comps on br-elnino-california (ASUS, 18 Oct 26); a full mini is longer, so the 600 s Bash-tool cap less a margin
+const FREEZE_SCAN_DEADLINE_S = 540;  // launchGate deadline: 12 s for 2 comps on br-elnino-california (ASUS, 18 Oct 26); a full mini is longer, so the 600 s Bash-tool cap less a margin
 
 let html = readFileSync(join(ep, 'index.html'), 'utf8');
 const attr = (tag, name) => { const m = new RegExp(`\\b${name}="([^"]*)"`).exec(tag); return m ? m[1] : null; };
@@ -179,8 +179,8 @@ try {
   }
 } finally {
   await browser.close();
+  rmSync(TMP, { recursive: true, force: true });
 }
-rmSync(TMP, { recursive: true, force: true });
 
 console.log('');
 if (pageErrors.length) console.log(`   (page errors on the mounted episode: ${[...new Set(pageErrors)].slice(0, 3).join(' | ')})`);

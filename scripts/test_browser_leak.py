@@ -14,6 +14,8 @@ import time
 from pathlib import Path
 
 S = Path(__file__).resolve().parent
+sys.path.insert(0, str(S))
+from host_ps import ps, quote  # noqa: E402
 FAILS = []
 
 
@@ -25,11 +27,9 @@ def check(name, cond, detail=""):
 
 def chromes_naming(folder):
     """chrome.exe processes whose command line holds folder (read-only CIM query)."""
-    q = ("@(Get-CimInstance Win32_Process -Filter \"Name='chrome.exe'\" | Where-Object { $_.CommandLine -and "
-         f"$_.CommandLine.Contains('{folder}') }}).Count")
-    out = subprocess.run(["powershell", "-NoProfile", "-NonInteractive", "-Command", q],
-                         capture_output=True, text=True).stdout.strip()
-    return int(out) if out.isdigit() else -1
+    code, out = ps("local", "@(Get-CimInstance Win32_Process -Filter \"Name='chrome.exe'\" | Where-Object { $_.CommandLine "
+                            f"-and $_.CommandLine.Contains({quote(str(folder))}) }}).Count", timeout=30)
+    return int(out.strip()) if code == 0 and out.strip().isdigit() else -1
 
 
 def run_node(args, temp, timeout):

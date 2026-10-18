@@ -7,7 +7,7 @@ import { launchGate } from './playwright_env.mjs';
 import { readFileSync, readdirSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, resolve } from 'path';
 import { CANVAS_RENDERER, hostCss, motionSpans, stageComp } from './stage_comp.mjs';
-const GRAPHICS_QC_DEADLINE_S = 360;  // ends itself (browser closed, exit 124) before a caller has to kill node; about 8x its 42 s on 52-comp ep-enderlin-2025 (ASUS, 18 Oct 26)
+const GRAPHICS_QC_DEADLINE_S = 360;  // launchGate deadline: about 8x its 42 s on 52-comp ep-enderlin-2025 (ASUS, 18 Oct 26)
 
 const ep = resolve(process.argv[2] || 'episodes/ep3-tristate');
 const TMP = join(ep, '.qc-tmp');

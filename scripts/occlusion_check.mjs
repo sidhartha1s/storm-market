@@ -8,7 +8,7 @@ import { launchGate } from './playwright_env.mjs';
 import { readFileSync, unlinkSync } from 'fs';
 import { join, resolve } from 'path';
 import { hostCss, stageComp } from './stage_comp.mjs';
-const OCCLUSION_CHECK_DEADLINE_S = 180;  // ends itself (browser closed, exit 124) before a caller has to kill node; about 7x its 27 s on 52-comp ep-enderlin-2025 (ASUS, 18 Oct 26)
+const OCCLUSION_CHECK_DEADLINE_S = 180;  // launchGate deadline: about 7x its 27 s on 52-comp ep-enderlin-2025 (ASUS, 18 Oct 26)
 
 const ep = resolve(process.argv[2] || '.');   // usage: node scripts/occlusion_check.mjs <episode dir>
 const idx = readFileSync(join(ep, 'index.html'), 'utf-8');

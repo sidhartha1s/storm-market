@@ -5,7 +5,7 @@ import { launchGate } from './playwright_env.mjs';
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { hostCss } from './stage_comp.mjs';
-const BLANK_SCAN_DEADLINE_S = 180;  // ends itself (browser closed, exit 124) before a caller has to kill node; about 8x the 22 s run on 52-comp ep-enderlin-2025 (ASUS, 18 Oct 26)
+const BLANK_SCAN_DEADLINE_S = 180;  // launchGate deadline: about 8x the 22 s run on 52-comp ep-enderlin-2025 (ASUS, 18 Oct 26)
 
 const ep = process.argv[2];
 const STEP = 0.25;
