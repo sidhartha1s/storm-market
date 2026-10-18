@@ -80,7 +80,7 @@ def reap(host, apply):
         reading = json.loads(out)
     except ValueError:
         raise RuntimeError(f"cannot read processes on {host} (exit {code}): {out.strip()[-200:]}")
-    targets, dirs = select(reading["procs"], reading["dirs"], reading["now"])
+    targets, dirs = select(reading["procs"], [d for d in reading["dirs"] if d], reading["now"])  # @($null) is one null
     if not apply:
         return f"[reap_chrome] {host}: would kill {len(targets)} orphan chrome, delete {len(dirs)} profiles (dry run; --apply does it)"
     killed = deleted = 0
