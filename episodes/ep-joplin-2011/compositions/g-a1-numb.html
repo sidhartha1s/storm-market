@@ -70,7 +70,7 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const Q = "#a1n-";
   tl.set(Q+"bar", { scaleX: 0, transformOrigin: "left center" }, 0);
-  tl.set(Q+"pagein", { transformOrigin: "50% 0%" }, 0);
+  tl.set(Q+"pagein", { transformOrigin: "50% 50%" }, 0);
 
   /* comment card: panel in 0.00 to 0.60, rows 0.25 s apart from "You've" a1-s3 0.64 */
   tl.fromTo(Q+"card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0);
