@@ -145,8 +145,8 @@ def gate(states, host, jobs):
     # shortcut: counts this episode's lanes only, not another episode's on the same host; upgrade if two episodes share the ZBook
     builders = [j for j in jobs if j.startswith(BROWSER_JOB)] + [s["job"] for s in states
                                                                   if s["state"] == "RUNNING" and s["job"].startswith(BROWSER_JOB)]
-    if builders and running + 1 >= BROWSER_MAX_LIVE:
-        return f"{builders[0]} runs browser gates and {running + 1} lanes would be live (browser cap: under {BROWSER_MAX_LIVE})"
+    if builders and running + len(jobs) >= BROWSER_MAX_LIVE:
+        return f"{builders[0]} runs browser gates and {running + len(jobs)} lanes would be live (browser cap: under {BROWSER_MAX_LIVE})"
     gb = free_gb(host)
     return f"{host} has {gb} GB free (needs more than {MIN_FREE_GB})" if gb <= MIN_FREE_GB else None
 
