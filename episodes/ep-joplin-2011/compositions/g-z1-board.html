@@ -121,9 +121,8 @@ window.__timelines = window.__timelines || {};
   tl.to(Q+"m1", { scale: 1.15, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 9.64);        /* APARTMENT 9.64 */
   tl.to(Q+"l1", { color: "#f2f5f8", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 9.64);
 
-  /* hold on "buildings." (ends 10.36), then fade-through to the ground 10.54 to 11.14 */
+  /* hold on "buildings." (ends 10.36), then everything fades through to the bare ground 10.54 to 11.14; the cut to ins-paul-6 follows */
   tl.to([Q+"lift", Q+"grid", Q+"chip", Q+"src-icc", Q+"src-nist"], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 10.54);
-  tl.to(Q+"ground", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 10.54);
 
   window.__timelines["g-z1-board"] = tl;
 })();
