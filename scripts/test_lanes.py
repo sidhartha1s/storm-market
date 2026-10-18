@@ -297,7 +297,13 @@ def test_browser_lane_refused_while_three_lanes_run(tmp_path):
     assert raises(lambda: lanes.main(["start", str(ep), "build:g-a1-map", *LANE])) and not calls["spawn"]
     assert lanes.main(["start", str(ep), "words:a1", *LANE]) == 0 and len(calls["spawn"]) == 1  # no browser: up to MAX_LANES
     lanes.save_ledger(ep, {"jobs": {j: {"started": now, "host": "zbook"} for j in three[:2]}})
+    assert raises(lambda: lanes.main(["start", str(ep), "build:g-a1-map", *LANE]))  # it would be the third live lane
+    lanes.save_ledger(ep, {"jobs": {j: {"started": now, "host": "zbook"} for j in three[:1]}})
     assert lanes.main(["start", str(ep), "build:g-a1-map", *LANE]) == 0 and len(calls["spawn"]) == 2
+    # a RUNNING builder holds the cap for every other start too (the fixture's builder reads BLOCKED, so states are given)
+    run = lambda *jobs: [{"job": j, "state": "RUNNING"} for j in jobs]
+    assert lanes.gate(run("build:g-a1-map", "source:a1"), "zbook", ["words:a1"])
+    assert lanes.gate(run("build:g-a1-map"), "zbook", ["words:a1"]) is None
 
 
 def test_free_ram_caps_lanes_on_the_host_reading(tmp_path):

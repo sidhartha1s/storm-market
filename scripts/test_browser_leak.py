@@ -81,7 +81,7 @@ try {{
 }} finally {{ await browser.close(); }}
 """, encoding="utf-8")
     code, out, secs = run_node([str(hang)], temp, 90)
-    check("a hung gate exits non-zero at its deadline", code not in (0, None) and "deadline" in out, f"exit {code}: {out[-300:]}")
+    check("a hung gate exits 124 at its deadline (never 1, a gate verdict)", code == 124 and "deadline" in out, f"exit {code}: {out[-300:]}")
     check("a hung gate ends within 30 s of a 3 s deadline", secs < 30, f"{secs:.0f} s")
     check("a hung gate leaves no chrome running", chromes_naming(temp) == 0)
     check("a hung gate leaves no temp profile", not leftovers(temp), str(leftovers(temp)))

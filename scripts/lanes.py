@@ -27,7 +27,8 @@ the host is asked whether the lane's process runs, and one that cannot be read i
      CLAUDE_CONFIG_DIR); any reply but "ok" (a limit, a logged-out profile, an error) moves it to the next
      ~/.claude-accounts/claude* profile. It never waits for a reset.
   2. every start refuses while the host has MIN_FREE_GB or less free (the cap by free RAM), or MAX_LANES lanes are
-     already RUNNING; a builder lane (BROWSER_JOB: it runs the Chromium gates) also while BROWSER_MAX_RUNNING run
+     already RUNNING; while a builder lane (BROWSER_JOB: it runs the Chromium gates) runs or would start, no start
+     may make BROWSER_MAX_LIVE lanes live
   3. a running lane whose log tail says it hit a limit is FAILED (blocking). `status` only reports it, since the Stop
      hook calls status; `relaunch` moves it to the next profile that answers, and backs off if another lanes.py
      holds the lock
@@ -68,7 +69,7 @@ HOSTS = ("local", "zbook")
 MIN_FREE_GB = 4     # a lane never starts on a host with this much free memory or less
 MAX_LANES = 4       # ...or while this many lanes are RUNNING
 BROWSER_JOB = "build:"     # a builder lane runs the Chromium gates on its comps (references/mg-brief-template.md "Gates")
-BROWSER_MAX_RUNNING = 3    # ...and never starts while this many lanes run: lanes with gates flooded the ZBook (18 Oct 26)
+BROWSER_MAX_LIVE = 3       # no browser gate while this many lanes are live: lanes with gates flooded the ZBook (18 Oct 26)
 ACCOUNTS = Path.home() / ".claude-accounts"
 LIMIT = re.compile(r"hit your (\w+ )?limit|session limit|usage limit reached", re.I)
 LOCK_MIN = 10      # a ledger lock older than this is a dead holder's
@@ -142,9 +143,10 @@ def gate(states, host, jobs):
     if running >= MAX_LANES:
         return f"{running} lanes already RUNNING (cap {MAX_LANES})"
     # shortcut: counts this episode's lanes only, not another episode's on the same host; upgrade if two episodes share the ZBook
-    browser = next((j for j in jobs if j.startswith(BROWSER_JOB)), None)
-    if browser and running >= BROWSER_MAX_RUNNING:
-        return f"{browser} runs browser gates and {running} lanes are RUNNING (browser cap {BROWSER_MAX_RUNNING})"
+    builders = [j for j in jobs if j.startswith(BROWSER_JOB)] + [s["job"] for s in states
+                                                                  if s["state"] == "RUNNING" and s["job"].startswith(BROWSER_JOB)]
+    if builders and running + 1 >= BROWSER_MAX_LIVE:
+        return f"{builders[0]} runs browser gates and {running + 1} lanes would be live (browser cap: under {BROWSER_MAX_LIVE})"
     gb = free_gb(host)
     return f"{host} has {gb} GB free (needs more than {MIN_FREE_GB})" if gb <= MIN_FREE_GB else None
 
@@ -321,6 +323,10 @@ def main(argv=None):
 
     if a.cmd == "start" and a.lane_cmd:
         reap_on(a.host)  # before the lock: a slow host never holds up another lanes.py
+    if a.cmd == "relaunch":
+        ledger = load_ledger(ep)
+        for host in sorted({ledger["jobs"][s["job"]]["host"] for s in job_states(ep, ledger) if s["state"] == "FAILED"}):
+            reap_on(host)
     lock = ep / "lanes.json.lock"  # every ledger write holds it, so two writers never lose each other's update
     deadline = time.time() + (0 if a.cmd == "relaunch" else LOCK_WAIT_S)
     while not take_lock(lock, time.time()):
@@ -347,8 +353,6 @@ def write(a, ep, lock):
     now = time.time()
     if a.cmd == "relaunch":  # rule 3: a FAILED lane moves to the next profile that answers, never waits for a reset
         states = job_states(ep, ledger, now)
-        for host in sorted({ledger["jobs"][s["job"]]["host"] for s in states if s["state"] == "FAILED"}):
-            reap_on(host)  # once per host, before its lanes move
         left = 0
         for s in (s for s in states if s["state"] == "FAILED"):
             run = ledger["jobs"][s["job"]]

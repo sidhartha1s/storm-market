@@ -65,6 +65,7 @@ export async function launchGate(name, deadlineS) {
   const browser = await chromium.launch({ executablePath: chromiumExecutable(), args: ['--allow-file-access-from-files'] });
   const timer = setTimeout(() => {
     console.log(`[${name}] FAIL: passed its ${deadlineS} s deadline; browser closed, nothing concluded`);
+    process.on('exit', () => { process.exitCode = 124; });  // the gate's rejected call may end node with 1, a gate verdict
     browser.close().finally(() => process.exit(124));
   }, deadlineS * 1000);
   browser.on('disconnected', () => clearTimeout(timer));

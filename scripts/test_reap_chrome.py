@@ -55,7 +55,9 @@ procs = [
     # a session-0 chrome whose parent is a live non-chrome process: spared even with an orphan above it
     proc(701, 300, 22 * MIN, cmd="chrome.exe --type=utility"),
 ]
-dirs = [d(P1, 2), d(P2, 120), d(P3, 5), d(P4, 120),
+# a live headless-shell browser (playwright-cli, MCP) uses the same profile prefix: its dir is in use
+procs.append(proc(801, 300, 23 * MIN, name="chrome-headless-shell.exe", session=1, profile="playwright_chromiumdev_profile-Hs34yz"))
+dirs = [d(P1, 2), d(P2, 120), d(P3, 5), d(P4, 120), d("playwright_chromiumdev_profile-Hs34yz", 120),
         d("playwright_chromiumdev_profile-Qr90st", 120),   # nobody names it, 2 h old: leftover of a killed gate
         d("playwright_chromiumdev_profile-Uv12wx", 3)]     # nobody names it yet, 3 min old: a gate still launching
 
@@ -74,6 +76,7 @@ check("each kill carries its start time, so a reused pid is checked again at kil
 check("a reaped Chrome's profile is deleted even when young", P1 in gone and P3 in gone)
 check("a live gate's profile is kept even when old", P2 not in gone)
 check("a profile named by a desktop-session Chrome is kept", P4 not in gone)
+check("a profile named by a live chrome-headless-shell.exe is kept", "playwright_chromiumdev_profile-Hs34yz" not in gone)
 check("an unnamed old leftover profile is deleted", "playwright_chromiumdev_profile-Qr90st" in gone)
 check("an unnamed young profile is kept (its gate may be launching)", "playwright_chromiumdev_profile-Uv12wx" not in gone)
 check("nothing to reap on a clean host", select([proc(4, 0, 0, name="System")], [], NOW) == ([], []))

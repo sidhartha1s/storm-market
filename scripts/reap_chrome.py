@@ -9,7 +9,8 @@ What it touches, and nothing else:
   - chrome.exe in session 0 (where WMI-launched lanes run; the owner's own browsers live in his desktop session) whose
     command line holds playwright_chromiumdev_profile and whose parent is dead: no process has its parent's pid, or
     the one that has it started later (a reused pid). Plus every session-0 chrome.exe below such a root.
-  - %TEMP% profile dirs named by a reaped Chrome, and ones no live Chrome names that are PROFILE_MIN_AGE_MIN old
+  - %TEMP% profile dirs named by a reaped Chrome, and ones no live process names (chrome-headless-shell.exe and msedge.exe
+    use the same playwright_chromiumdev_profile-* names) that are PROFILE_MIN_AGE_MIN old
     (a gate starting now has made its dir and not yet its Chrome).
 Each pid is checked again right before the kill (still chrome.exe, same start time), so a pid reused meanwhile is spared.
 
@@ -32,7 +33,7 @@ CHUNK = 25                # items per host call: an ssh command line caps near a
 
 LIST = r"""$p = Get-CimInstance Win32_Process | ForEach-Object { [pscustomobject]@{ pid = $_.ProcessId; ppid = $_.ParentProcessId;
   session = $_.SessionId; name = $_.Name; created = $(if ($_.CreationDate) { $_.CreationDate.ToFileTimeUtc() } else { 0 });
-  cmd = $(if ($_.Name -eq 'chrome.exe') { $_.CommandLine }) } }
+  cmd = $(if ($_.Name -eq 'chrome.exe' -or ($_.CommandLine -and $_.CommandLine.Contains('""" + MARK + r"""'))) { $_.CommandLine }) } }
 $d = Get-ChildItem -LiteralPath $env:TEMP -Directory -Filter '""" + MARK + r"""-*' -ErrorAction SilentlyContinue |
   ForEach-Object { [pscustomobject]@{ name = $_.Name; created = $_.CreationTimeUtc.ToFileTimeUtc() } }
 @{ procs = @($p); dirs = @($d); now = [DateTime]::UtcNow.ToFileTimeUtc() } | ConvertTo-Json -Depth 3 -Compress"""
@@ -43,7 +44,9 @@ $alive = @{}; Get-CimInstance Win32_Process -Filter "Name='chrome.exe'" | ForEac
 $a = @(TARGETS); $n = 0; for ($k = 0; $k -lt $a.Count; $k += 2) { $id = [int]$a[$k]; if ($alive[$id] -ne $a[$k + 1]) { continue }
   $h = [W.N]::OpenProcess(0x0800, $false, $id); if ($h -ne [IntPtr]::Zero) { [void][W.N]::NtResumeProcess($h); [void][W.N]::CloseHandle($h) }
   Stop-Process -Id $id -Force -ErrorAction SilentlyContinue; $n++ }
-Start-Sleep -Seconds 1; $n"""
+Start-Sleep -Seconds 1; Get-CimInstance Win32_Process -Filter "Name='chrome.exe'" | ForEach-Object {
+  for ($k = 0; $k -lt $a.Count; $k += 2) { if ($_.ProcessId -eq $a[$k] -and $_.CreationDate.ToFileTimeUtc() -eq $a[$k + 1]) { $n-- } } }
+$n"""
 
 DELETE = r"""$n = 0; foreach ($d in @(NAMES)) { $p = Join-Path $env:TEMP $d
   Remove-Item -LiteralPath $p -Recurse -Force -ErrorAction SilentlyContinue; if (-not (Test-Path -LiteralPath $p)) { $n++ } }
@@ -68,7 +71,7 @@ def select(procs, dirs, now):
         grew = bool(below)
     named = lambda ps_: {n.lower() for p in ps_ for n in PROFILE.findall(p["cmd"] or "")}
     reaped = named(p for p in chrome if p["pid"] in kill)
-    live = named(p for p in every_chrome if p["pid"] not in kill)
+    live = named(p for p in procs if p["pid"] not in kill)  # any browser: headless shell and msedge use the same dir names
     old = lambda d: (now - d["created"]) / 1e7 >= PROFILE_MIN_AGE_MIN * 60  # FILETIME: 100 ns ticks
     gone = [d["name"] for d in dirs if d["name"].lower() not in live and (d["name"].lower() in reaped or old(d))]
     return sorted((p["pid"], p["created"]) for p in chrome if p["pid"] in kill), sorted(gone)
