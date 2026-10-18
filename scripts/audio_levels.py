@@ -43,6 +43,27 @@ def file_mean_db(p):
     m = re.search(r"mean_volume: (-?[\d.]+) dB", out)
     return float(m.group(1)) if m else None
 
+def tail_burst(p, tail_s=0.6, win_s=0.01):
+    """(peak dB, silence gap s) when the file ends in a loud run after silence, else None."""
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-sseof", f"-{tail_s}", "-i", str(p), "-map", "0:a:0",
+                          "-ac", "1", "-ar", "24000", "-f", "s16le", "-"], capture_output=True).stdout
+    s = array.array("h", raw[: len(raw) // 2 * 2])
+    w = int(24000 * win_s)
+    db = []
+    for i in range(0, len(s) - w + 1, w):
+        ms = sum(v * v for v in s[i:i + w]) / w
+        db.append(10 * math.log10(ms / 32768 ** 2) if ms else -180.0)
+    k = len(db)
+    while k and db[k - 1] > -40:
+        k -= 1
+    if k == len(db):
+        return None  # last window is quiet: a normal ending
+    gap = 0
+    while k - gap - 1 >= 0 and db[k - gap - 1] < -55:
+        gap += 1
+    return (max(db[k:]), gap * win_s) if gap * win_s >= 0.1 else None
+
+
 els = []
 for m in re.finditer(r"<(audio|video)\b([^>]*)>", html):
     kind, attrs = m.group(1), m.group(2)
