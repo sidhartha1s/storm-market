@@ -57,7 +57,11 @@ window.__timelines = window.__timelines || {};
 
   /* SIRENS? s5 9.86 (host 0): icon pops in, arcs start; icon drifts up 6 px to the exit */
   tl.fromTo("#sr-icon", { scale: 0.8, opacity: 0.4, transformOrigin: "640px 500px" }, { scale: 1, opacity: 1, transformOrigin: "640px 500px", duration: 0.5, ease: "back.out(1.7)" }, 0);
-  tl.fromTo("#sr-icon", { y: 0 }, { y: -6, duration: 14, ease: "sine.inOut", immediateRender: false }, 0.5);
+  tl.fromTo("#sr-icon", { y: 0, scale: 1 }, { y: -6, scale: 1.03, duration: 14, ease: "sine.inOut", immediateRender: false }, 0.5);
+
+  /* GLOW: one breath per 1.2 s (up 0.6, down 0.6) from host 0 to 15.0, one tween each (seek-safe, same reason as the arcs) */
+  for (let t = 0, i = 0; t < 15; t += 0.6, i++)
+    tl.fromTo("#sr-glow", { opacity: i % 2 ? 1 : 0.25 }, { opacity: i % 2 ? 0.25 : 1, duration: 0.6, ease: "sine.inOut", immediateRender: t === 0 }, t);
 
   /* ARCS: ripple in turn, 1.2 s each, 0.4 s apart (a6-s6 "In" 0.00 keeps them going): four synced pulses per arc, then, from
      DESYNC s6 "sounds" 3.78 (host 4.90), each arc waits its own fixed 0.15 / 0.45 / 0.30 s between pulses ("no one pattern"). Every pulse ends by host 15.68. */
