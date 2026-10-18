@@ -2,6 +2,23 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 18 Oct 26: orphan Playwright Chromes froze the ZBook
+
+1. Measured on the ZBook: 94 frozen orphan Playwright Chromes in session 0 (parent node dead, every thread Suspended,
+   2.8 GB commit), 285 `%TEMP%\playwright_chromiumdev_profile-*` dirs (1.2 GB), and 150 to 420 chrome.exe starts a minute
+   while gates ran. New ssh logins reset while session 0 was flooded. Source: the seven browser gates, with node
+   hard-killed mid-gate (tool timeouts, lane stops, ssh teardown).
+2. Measured on the ASUS before the fix: `graphics_qc.mjs` on an episode with no compositions exits 1 right after its
+   launch, and Playwright's exit hook kills the Chrome but leaves its temp profile (`scripts/test_browser_leak.py`).
+3. Rule: a gate opens Chromium only through `launchGate()` in `scripts/playwright_env.mjs` and closes it in a
+   `finally`; each gate names its `<GATE>_DEADLINE_S` (measured runtime and why in the line), past which it closes the
+   browser and exits 124 by itself. Give a gate a tool timeout above its deadline, never below. No `process.exit`
+   between launch and close.
+4. Rule: `scripts/reap_chrome.py` (dry run unless `--apply`) resumes, then kills, session-0 Playwright Chromes whose
+   parent is dead, and deletes their profiles plus unnamed ones older than 30 min. `lanes.py` runs it on the lane's
+   host before every launch and after every `end`. `lanes.py` refuses a builder lane (the one that runs browser gates)
+   while 3 lanes run, and every lane at `MIN_FREE_GB` (4) or less free on the host.
+
 ## 12 Oct 26: verify_render judged every draft as a final
 
 1. Measured on a real 113 s draft: `FAIL: fps 15 != composition 30fps (a draft mastered by mistake?)`, exit non-zero.
