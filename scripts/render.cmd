@@ -82,9 +82,13 @@ if errorlevel 1 (
   echo %ERRORLEVEL% > "render_%MODE%_done.marker"
   exit /b %ERRORLEVEL%
 )
-REM GPU pin (dedicated GPU, not the Intel iGPU — owner 2026-09-15) + the 4 GB RAM floor. Both
-REM existed only as a "run this by hand first" instruction until now; nothing called --launch.
-"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_busy.py" --launch >> "%PREFLIGHT_LOG%" 2>&1
+REM GPU pin (dedicated GPU, not the Intel iGPU — owner 2026-09-15) + the worker count that fits free
+REM RAM. RENDER_WORKERS is the request (fps30 workers use more memory than draft; default 3 as tested
+REM for draft); render_busy lowers it to what fits (owner 18 Oct 26: fewer workers beats waiting),
+REM writes it to render_%MODE%.workers, and refuses only when 1 worker does not fit.
+if not defined RENDER_WORKERS set RENDER_WORKERS=3
+del /q "render_%MODE%.workers" 2>nul
+"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_busy.py" --launch "render_%MODE%.workers" >> "%PREFLIGHT_LOG%" 2>&1
 if errorlevel 1 (
   echo RENDER_BUSY REFUSED exit %ERRORLEVEL% — see %CD%\%PREFLIGHT_LOG%
   type "%PREFLIGHT_LOG%"
