@@ -311,6 +311,26 @@ with tempfile.TemporaryDirectory() as d:
     check("audio_levels: an audio id that is neither nx-/ins- nor data-bed FAILs as unclassified",
           "mystery-1" in out and "unclassified" in out, out)
 
+# audio_levels.py — a narration wav that ends in a burst after silence FAILs; a clean ending passes
+with tempfile.TemporaryDirectory() as d:
+    ep = Path(d)
+    (ep / "audio").mkdir()
+    lav = {"clean": "sine=f=220:r=24000:d=2.0,afade=t=out:st=1.6:d=0.3,apad=pad_dur=0.4",
+           "burst": "sine=f=220:r=24000:d=2.0[s];anullsrc=r=24000:cl=mono:d=0.3[q];"
+                    "anoisesrc=r=24000:a=0.6:d=0.08[n];[s][q][n]concat=n=3:v=0:a=1"}
+    for name, graph in lav.items():
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-filter_complex", graph, "-ac", "1",
+                        str(ep / "audio" / f"{name}.wav")], check=True)
+    (ep / "index.html").write_text(
+        '<audio id="nx-a1-s1" src="audio/clean.wav" data-start="0" data-duration="2.4" data-volume="1"></audio>\n'
+        '<audio id="nx-a1-s2" src="audio/burst.wav" data-start="3" data-duration="2.38" data-volume="1"></audio>\n',
+        encoding="utf-8")
+    code, out = run("audio_levels.py", ep)
+    check("audio_levels: a narration wav ending in a burst after silence FAILs",
+          code == 1 and "nx-a1-s2: ends in a" in out, out)
+    check("audio_levels: a narration wav that fades to silence is not flagged as a burst",
+          "nx-a1-s1: ends in a" not in out, out)
+
 # ===================================================================================
 # 6. lint_timeline.py — unmuted b-roll gate, narration-vs-wav gate, bounded CTA gap
 # ===================================================================================
@@ -451,8 +471,8 @@ with tempfile.TemporaryDirectory() as d:
     stub_dir = Path(d) / "scripts"
     stub_dir.mkdir()
     order_log = Path(d) / "order.log"
-    names = ["sweep_episode.py", "lint_timeline.py", "beat_density.py", "media_budget.py",
-             "audio_levels.py"]
+    names = ["render_preflight.py", "sweep_episode.py", "lint_timeline.py", "narration_picture_check.py",
+             "flag_words.py", "homograph_scan.py", "beat_density.py", "media_budget.py", "audio_levels.py"]
     for i, name in enumerate(names):
         fail_here = (name == "lint_timeline.py")
         (stub_dir / name).write_text(
@@ -471,7 +491,7 @@ with tempfile.TemporaryDirectory() as d:
                        capture_output=True, text=True)
     ran = order_log.read_text(encoding="utf-8").splitlines() if order_log.exists() else []
     check("run_gates: stops at the first failing gate (lint_timeline.py), never reaches later gates",
-          ran == ["sweep_episode.py", "lint_timeline.py"], f"ran={ran}\n{r.stdout}{r.stderr}")
+          ran == ["render_preflight.py", "sweep_episode.py", "lint_timeline.py"], f"ran={ran}\n{r.stdout}{r.stderr}")
     check("run_gates: exits non-zero when a gate fails", r.returncode == 1, f"(exit {r.returncode})")
     check("run_gates: names the failing gate", "lint_timeline.py" in r.stdout, r.stdout[-300:])
 
