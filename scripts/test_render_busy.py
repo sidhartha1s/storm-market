@@ -66,6 +66,19 @@ check("2.0 GB free -> refusal states the GB numbers", "2.0 GB free" in out and "
 code, out, n = launch(6.0, 3)
 check("6.0 GB free, request 3 -> 3 workers (need 5.14 GB)", (code, n) == (0, "3"), f"code={code} n={n} out={out!r}")
 
+code, out, n = launch(4.2, 3)
+check("4.2 GB free, request 3 -> 2 workers with [FALLBACK] 3 -> 2",
+      (code, n) == (0, "2") and "[FALLBACK] fewer workers: 3 -> 2, 4.2 GB free" in out, f"code={code} n={n} out={out!r}")
+
+render_busy.MIN_FREE_GB = 1.5  # what RENDER_MIN_FREE_GB=1.5 sets (scripts/nepal_full_task.cmd)
+code, out, n = launch(2.0, 1)
+check("RENDER_MIN_FREE_GB=1.5 override: 2.0 GB free, request 1 -> 1 worker", (code, n) == (0, "1"), f"code={code} n={n} out={out!r}")
+render_busy.MIN_FREE_GB = 4.5
+code, out, n = launch(4.0, 2)
+check("RENDER_MIN_FREE_GB=4.5 override is the floor for any launch: 4.0 GB, request 2 -> exit 3",
+      (code, n) == (3, None), f"code={code} n={n} out={out!r}")
+render_busy.MIN_FREE_GB = render_busy.need_gb(1)
+
 # render.cmd plumbing: run its own lines from the RENDER_WORKERS default through `set /p`, with
 # render_busy.py swapped for a stub that runs the real main() at 3.3 GB free, and echo what npx would get.
 render_cmd = (S / "render.cmd").read_text(encoding="utf-8").splitlines()
