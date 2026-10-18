@@ -279,6 +279,8 @@ def job_states(ep, ledger, now=None):
                 note += " (its log is unreadable)"
             elif LIMIT.search(log):
                 state, note = "FAILED", f"{run.get('profile')} hit its limit on {run['host']}: run `lanes.py relaunch`"
+            elif log == NO_LOG and now - run["started"] >= NO_LOG_MIN * 60:
+                state, note = "FAILED", f"its log never appeared on {run['host']}: the launch did not run; run `lanes.py relaunch`"
         else:
             state = "READY"
             if run.get("ended"):
