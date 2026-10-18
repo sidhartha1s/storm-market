@@ -44,18 +44,17 @@ Groups: one per segment prefix (a1 = A1-S*), except H1, T1 and I1, which form `i
   build:<comp>  compositions/<comp>.html, one per briefs/<g>/<comp>.md (needs voice:g and words:g DONE)
 """
 import argparse
-import base64
 import csv
 import json
 import os
 import re
-import subprocess
 import sys
 import time
 from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPTS))
+from host_ps import ps, quote  # noqa: E402
 from tts_episode import open_verify_ids, parse_segments  # noqa: E402
 
 INTRO = {"h1", "t1", "i1"}
@@ -71,24 +70,6 @@ LOCK_MIN = 10      # a ledger lock older than this is a dead holder's
 LOCK_WAIT_S = 120  # a ledger write waits this long for the lock before it gives up
 NO_LOG = "[lanes: no log]"  # read_log's answer for a log that does not exist; the launch redirect creates it at once
 NO_LOG_MIN = 5     # a RUNNING lane with no log this many minutes after its start never ran (an unconfirmed launch)
-
-
-def ps(host, script, timeout=90):
-    """(exit code, output) of a PowerShell script on host: the one place that knows how to reach a host."""
-    argv = ["powershell", "-NoProfile", "-NonInteractive", "-EncodedCommand",
-            base64.b64encode(script.encode("utf-16-le")).decode()]  # encoded, so no quoting has to survive ssh and cmd
-    if host != "local":  # shortcut: the remote shell caps a line at 8191 chars (about a 2,500-char script)
-        argv = ["ssh", "-n", "-o", "ConnectTimeout=15", host, " ".join(argv)]
-    try:
-        r = subprocess.run(argv, capture_output=True, text=True, encoding="utf-8", errors="replace",
-                           stdin=subprocess.DEVNULL, timeout=timeout)
-    except subprocess.TimeoutExpired:
-        return 124, f"timed out after {timeout}s"
-    return r.returncode, r.stdout if r.returncode == 0 else r.stdout + r.stderr  # stderr carries CLIXML progress noise
-
-
-def quote(s):
-    return "'" + s.replace("'", "''") + "'"  # a PowerShell literal string
 
 
 def probe(host, profile):
