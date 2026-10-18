@@ -7,6 +7,7 @@ that sat refused for 34 minutes, then stalled on 2 workers."""
 import contextlib
 import io
 import os
+import subprocess
 import sys
 import tempfile
 from pathlib import Path
@@ -76,10 +77,11 @@ with tempfile.TemporaryDirectory() as d:
                     "render_busy.free_gb = lambda: 3.3\nrender_busy.live_renders = lambda: []\n"
                     "render_busy.pin_chrome_to_dedicated_gpu = lambda: None\nrender_busy.main()\n", encoding="utf-8")
     block = "\r\n".join(render_cmd[start:end + 1]).replace('"%~dp0render_busy.py"', f'"{stub}"')
-    (Path(d) / "dry.cmd").write_text("@echo off\r\nset MODE=draft\r\nset PREFLIGHT_LOG=pre.log\r\n" + block
-                                     + "\r\necho WORKERS=%RENDER_WORKERS%\r\n", encoding="utf-8")
+    dry = Path(d) / "dry.cmd"
+    dry.write_text("@echo off\nset MODE=draft\nset PREFLIGHT_LOG=pre.log\n" + block
+                   + "\necho WORKERS=%RENDER_WORKERS%\n", encoding="utf-8")
     env = {**os.environ, "RENDER_WORKERS": "2"}
-    r = __import__("subprocess").run(["cmd", "/c", "dry.cmd"], cwd=d, capture_output=True, text=True, env=env)
+    r = subprocess.run(["cmd", "/c", str(dry)], cwd=d, capture_output=True, text=True, env=env)
     log = (Path(d) / "pre.log").read_text(encoding="utf-8", errors="replace")
     print(f"  render.cmd dry run echoed: {r.stdout.strip()!r}; log: {log.strip()!r}")
     check("render.cmd dry run: request 2 at 3.3 GB free -> --workers gets 1", r.stdout.strip() == "WORKERS=1",
