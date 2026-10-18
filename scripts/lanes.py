@@ -107,7 +107,8 @@ def free_gb(host):
 
 def alive(host, log):
     """True or False: a process whose command line holds log runs on host; None when the host cannot be read."""
-    code, out = ps(host, f"@(Get-CimInstance Win32_Process | Where-Object {{ $_.CommandLine -like {quote('*' + log + '*')} }}).Count",
+    # Contains, not -like: a "[" in the path is a wildcard to -like, and a running lane would read as dead
+    code, out = ps(host, f"@(Get-CimInstance Win32_Process | Where-Object {{ $_.CommandLine -and $_.CommandLine.Contains({quote(log)}) }}).Count",
                    timeout=20)  # the query's own command line is encoded, so it never matches itself
     return int(out.strip()) > 0 if code == 0 and out.strip().isdigit() else None
 
