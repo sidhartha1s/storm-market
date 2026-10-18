@@ -26,6 +26,10 @@ set "LINES="
 for /f %%n in ('""%FIND%" /c /v "" < "%CHK%""') do set "LINES=%%n"
 if not "%LINES%"=="1" goto :refuse
 "%FINDSTR%" /r /x /c:"[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-][ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-]*" "%CHK%" >nul || goto :refuse
+REM /x stops at a CR inside the line, so also refuse any other byte (errorlevel 0 found one, 2 failed).
+"%FINDSTR%" /r /c:"[^ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-]" "%CHK%" >nul
+if not errorlevel 1 goto :refuse
+if errorlevel 2 goto :refuse
 set "SLUG="
 set /p SLUG=<"%CHK%"
 del /q "%CHK%"
