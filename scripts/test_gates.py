@@ -515,9 +515,7 @@ with tempfile.TemporaryDirectory() as d:
     if cta_line:
         bad = cfg[:cta_line.start()] + "\n    voice_ref_md5: " + "0" * 32 + cfg[cta_line.end():]
         (root / "config.yaml").write_text(bad, encoding="utf-8")
-        ep = root / "episodes" / "ep-test"
-        ep.mkdir(parents=True)
-        (ep / "index.html").write_text("<html></html>", encoding="utf-8")
+        ep = S.parent / "episodes" / "ep-nepal-floods-2026"   # a tracked episode, so sweep reaches its CTA block
         r = subprocess.run([sys.executable, str(root / "scripts" / "sweep_episode.py"), str(ep)],
                            capture_output=True, text=True)
         check("sweep_episode: a CTA voiced from another reference FAILs (voice_ref_md5 mismatch)",
