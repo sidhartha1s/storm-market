@@ -105,7 +105,8 @@ PAUL_CLIPS = 6
 
 
 def _mounts(html):
-    return [(tag.lower(), dict(ATTR.findall(attrs))) for tag, attrs in TAG.findall(html)]
+    live = re.sub(r"<!--.*?-->", "", html, flags=re.S)  # a commented-out mount is not mounted
+    return [(tag.lower(), dict(ATTR.findall(attrs))) for tag, attrs in TAG.findall(live)]
 
 
 def _window(attrs):
