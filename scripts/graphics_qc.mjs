@@ -3,12 +3,12 @@
  * sweep structurally cannot find (text collision, empty containers, crop loss, idle gaps).
  * Usage: node scripts/graphics_qc.mjs episodes/<slug>
  * Exit 0 = pass. Exit 1 = defects found (printed, grouped by composition). */
-import { chromium, chromiumExecutable } from './playwright_env.mjs';
+import { launchGate } from './playwright_env.mjs';
 import { readFileSync, readdirSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, resolve } from 'path';
 import { CANVAS_RENDERER, hostCss, motionSpans, stageComp } from './stage_comp.mjs';
+const GRAPHICS_QC_DEADLINE_S = 360;  // ends itself (browser closed, exit 124) before a caller has to kill node; about 8x its 42 s on 52-comp ep-enderlin-2025 (ASUS, 18 Oct 26)
 
-const EXECUTABLE = chromiumExecutable();
 const ep = resolve(process.argv[2] || 'episodes/ep3-tristate');
 const TMP = join(ep, '.qc-tmp');
 if (!existsSync(TMP)) mkdirSync(TMP, { recursive: true });
@@ -213,103 +213,104 @@ for (const m of INDEX_HTML.matchAll(/<[a-z]+\b[^>]*\bdata-composition-src="compo
   if (!isNaN(dur)) HOSTS[m[1]] = Math.max(HOSTS[m[1]] || 0, dur);
 }
 
-const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
-const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
-page.on('pageerror', e => add('RUNTIME', 'js-error', String(e).slice(0, 200)));
-
 const compDir = join(ep, 'compositions');
 const files = existsSync(compDir) ? readdirSync(compDir).filter(f => f.endsWith('.html')) : [];
 if (!files.length) { console.error('[graphics_qc] no compositions/ dir — graphics must be sub-comps (references/mg-quickref.md File contract)'); process.exit(1); }
+const browser = await launchGate('graphics_qc', GRAPHICS_QC_DEADLINE_S);
+try {
+  const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+  page.on('pageerror', e => add('RUNTIME', 'js-error', String(e).slice(0, 200)));
 
-for (const f of files) {
-  const name = f.replace('.html', '');
-  const url = 'file:///' + stageComp(ep, join(compDir, f), HOST_CSS).replace(/\\/g, '/');
-  await page.goto(url, { waitUntil: 'load' });
-  await page.waitForTimeout(120);
-  const probe = await page.evaluate(PROBE);
-  if (probe.error) { add(name, 'no-timeline', probe.error); continue; }
-  DURS[name] = +probe.duration.toFixed(2);
+  for (const f of files) {
+    const name = f.replace('.html', '');
+    const url = 'file:///' + stageComp(ep, join(compDir, f), HOST_CSS).replace(/\\/g, '/');
+    await page.goto(url, { waitUntil: 'load' });
+    await page.waitForTimeout(120);
+    const probe = await page.evaluate(PROBE);
+    if (probe.error) { add(name, 'no-timeline', probe.error); continue; }
+    DURS[name] = +probe.duration.toFixed(2);
 
-  /* --- host window: references/mg-quickref.md (File contract, Motion and exits) requires the comp to outlast the window it's mounted for,
-     or the panel freezes/vanishes before the cut instead of sliding out on it. --- */
-  const hostDur = HOSTS[name];
-  if (hostDur != null && probe.duration < hostDur - 0.05)
-    add(name, 'short-duration', `timeline ${probe.duration.toFixed(2)}s ends before its host window ${hostDur.toFixed(2)}s — ${(hostDur - probe.duration).toFixed(2)}s frozen tail before the cut (mg-quickref File contract)`);
-  const windowEnd = Math.max(probe.duration, hostDur || 0);
-  /* frames come from what is ON SCREEN: a comp cut by a shorter host (g-plane: 50 s timeline in a
-     28.9 s host) must never be sampled after its host window ends, or the reader judges another graphic */
-  FRAMES[name] = settleFrames(probe.tweens, hostDur ?? probe.duration);
+    /* --- host window: references/mg-quickref.md (File contract, Motion and exits) requires the comp to outlast the window it's mounted for,
+       or the panel freezes/vanishes before the cut instead of sliding out on it. --- */
+    const hostDur = HOSTS[name];
+    if (hostDur != null && probe.duration < hostDur - 0.05)
+      add(name, 'short-duration', `timeline ${probe.duration.toFixed(2)}s ends before its host window ${hostDur.toFixed(2)}s — ${(hostDur - probe.duration).toFixed(2)}s frozen tail before the cut (mg-quickref File contract)`);
+    const windowEnd = Math.max(probe.duration, hostDur || 0);
+    /* frames come from what is ON SCREEN: a comp cut by a shorter host (g-plane: 50 s timeline in a
+       28.9 s host) must never be sampled after its host window ends, or the reader judges another graphic */
+    FRAMES[name] = settleFrames(probe.tweens, hostDur ?? probe.duration);
 
-  /* --- motion vocabulary --- */
-  const kinetic = probe.tweens.filter(t => t.props.some(p => ['scale','scaleX','scaleY','x','y','rotation','width','strokeDashoffset','attr','canvas-render'].includes(p)));
-  const reveals = probe.tweens.filter(t => t.props.some(p => ['autoAlpha','opacity'].includes(p)));
-  if (kinetic.length === 0) add(name, 'fade-only', `${reveals.length} fades, 0 kinetic tweens — mg-quickref Motion`);
-  else if (reveals.length > 2 && kinetic.length < reveals.length / 2)
-    add(name, 'thin-motion', `${kinetic.length} kinetic vs ${reveals.length} fades (need ≥1 per 2)`);
-  /* deferred: needs coverage from the measure pass (set below) */
-  const punchy = probe.tweens.filter(t => /power[34]|back|elastic|expo/.test(t.ease)).length;
-  if (probe.tweens.length >= 6 && punchy === 0) add(name, 'limp-easing', 'no power3/power4 easing anywhere — mg-quickref Motion');
+    /* --- motion vocabulary --- */
+    const kinetic = probe.tweens.filter(t => t.props.some(p => ['scale','scaleX','scaleY','x','y','rotation','width','strokeDashoffset','attr','canvas-render'].includes(p)));
+    const reveals = probe.tweens.filter(t => t.props.some(p => ['autoAlpha','opacity'].includes(p)));
+    if (kinetic.length === 0) add(name, 'fade-only', `${reveals.length} fades, 0 kinetic tweens — mg-quickref Motion`);
+    else if (reveals.length > 2 && kinetic.length < reveals.length / 2)
+      add(name, 'thin-motion', `${kinetic.length} kinetic vs ${reveals.length} fades (need ≥1 per 2)`);
+    /* deferred: needs coverage from the measure pass (set below) */
+    const punchy = probe.tweens.filter(t => /power[34]|back|elastic|expo/.test(t.ease)).length;
+    if (probe.tweens.length >= 6 && punchy === 0) add(name, 'limp-easing', 'no power3/power4 easing anywhere — mg-quickref Motion');
 
-  /* --- stillness: the same spans as beat_density (stage_comp.mjs motionSpans; a {} clock is not
-     motion), walked from the end of motion to the next start, over what is ON SCREEN (the host
-     window, or the timeline when unmounted). --- */
-  const beats = probe.beats.filter(b => b <= windowEnd + 0.01);
-  const idleEnd = hostDur ?? probe.duration;
-  // ponytail: rule 3 samples at most 600 s; an unmounted repeat:-1 comp is covered by rule 1 anyway
-  const spans = (await page.evaluate(`(() => { const tl = window.__timelines[${JSON.stringify(probe.id)}]; return ${motionSpans(Math.min(idleEnd, 600))}; })()`))
-    .sort((a, b) => a[0] - b[0]);
-  let still = 0, frozen = 0;
-  const idle = (a, b) => {
-    if (b - a < MAX_IDLE) return;
-    frozen += b - a;
-    add(name, 'idle', `${(b - a).toFixed(1)}s frozen at ${a.toFixed(1)}s–${b.toFixed(1)}s (nothing in motion) — mg-quickref Motion`);
-  };
-  for (const [s, e] of spans) {
-    if (s >= idleEnd) break;
-    idle(still, s);
-    still = Math.max(still, e);
+    /* --- stillness: the same spans as beat_density (stage_comp.mjs motionSpans; a {} clock is not
+       motion), walked from the end of motion to the next start, over what is ON SCREEN (the host
+       window, or the timeline when unmounted). --- */
+    const beats = probe.beats.filter(b => b <= windowEnd + 0.01);
+    const idleEnd = hostDur ?? probe.duration;
+    // ponytail: rule 3 samples at most 600 s; an unmounted repeat:-1 comp is covered by rule 1 anyway
+    const spans = (await page.evaluate(`(() => { const tl = window.__timelines[${JSON.stringify(probe.id)}]; return ${motionSpans(Math.min(idleEnd, 600))}; })()`))
+      .sort((a, b) => a[0] - b[0]);
+    let still = 0, frozen = 0;
+    const idle = (a, b) => {
+      if (b - a < MAX_IDLE) return;
+      frozen += b - a;
+      add(name, 'idle', `${(b - a).toFixed(1)}s frozen at ${a.toFixed(1)}s–${b.toFixed(1)}s (nothing in motion) — mg-quickref Motion`);
+    };
+    for (const [s, e] of spans) {
+      if (s >= idleEnd) break;
+      idle(still, s);
+      still = Math.max(still, e);
+    }
+    idle(still, idleEnd);
+    const idleFrac = frozen / idleEnd;
+
+    /* --- geometry + typography at every beat and each midpoint --- */
+    const samples = [...new Set(beats.flatMap((b, i) => [b + 0.35, i < beats.length - 1 ? (b + beats[i+1]) / 2 : b + 0.9]))]
+      .filter(t => t >= 0.4 && t <= probe.duration - 1.0)
+      /* entry/exit slides intentionally park elements off-frame; don't audit geometry mid-slide */
+      .filter(t => !probe.tweens.some(tw => tw.props.includes('x') && tw.dur <= 1.2 &&
+                   tw.start - 0.15 <= t && t <= tw.start + tw.dur + 0.35));
+    const seenOverlap = new Set(), seenCrop = new Set(), seenOob = new Set(), seenEmpty = new Set(), seenBroken = new Set();
+    let tierMax = 0, maxCoverage = 0, maxTextNodes = 0; const elemSamples = []; let gradAny = false;
+    for (const t of samples) {
+      const m = await page.evaluate(`${MEASURE.replace(/SAFEPAD/g, SAFE.pad).replace(/CROPFAIL/g, CROP_LOSS_FAIL)}(${t})`);
+      tierMax = Math.max(tierMax, m.tierCount);
+      maxCoverage = Math.max(maxCoverage, m.coverage || 0);
+      maxTextNodes = Math.max(maxTextNodes, m.textNodes || 0);
+      elemSamples.push(m.elements || 0); gradAny = gradAny || !!m.gradient;
+      for (const o of m.texts) { const k = o.a + '|' + o.b; if (!seenOverlap.has(k)) { seenOverlap.add(k); add(name, 'text-collision', `"${o.a}" ⨯ "${o.b}" (${o.overlapPct}% at ${t.toFixed(1)}s)`); } }
+      for (const o of m.oob) { const k = o.text; if (!seenOob.has(k)) { seenOob.add(k); add(name, 'out-of-frame', `"${o.text}" at x${o.x} y${o.y} → ${o.right}×${o.bottom} (${t.toFixed(1)}s)`); } }
+      for (const c of m.crops) { if (!seenCrop.has(c.src)) { seenCrop.add(c.src); add(name, 'bad-crop', `${c.src} loses ${c.lost}% (source ${c.srcAspect}:1 in ${c.boxAspect}:1 box)`); } }
+      for (const e of m.empty) { if (!seenEmpty.has(e)) { seenEmpty.add(e); add(name, 'empty-container', `${e} visible but empty (first at ${t.toFixed(1)}s)`); } }
+      for (const b of m.broken) { if (!seenBroken.has(b)) { seenBroken.add(b); add(name, 'broken-image', `${b} failed to load (naturalWidth 0) — staged-path 404, not a crop/empty defect (${t.toFixed(1)}s)`); } }
+    }
+    if (tierMax < 3 && maxTextNodes >= 4)
+      add(name, 'flat-type', `only ${tierMax} type tier(s) across ${maxTextNodes} text elements — mg-quickref Type tiers`);
+    if (maxCoverage >= 0.9 && probe.duration > 20 && !probe.tweens.some(t => t.dur >= 8))
+      add(name, 'no-continuous-motion', `full-frame ${probe.duration.toFixed(0)}s graphic (${(maxCoverage*100).toFixed(0)}% opaque), longest tween ${Math.max(...probe.tweens.map(t=>t.dur)).toFixed(1)}s; see references/mg-quickref.md "Motion and exits". Either animate something continuously or let a moving photo carry it (ep2 panels cover ~43%).`);
+    const avgElems = elemSamples.length ? elemSamples.reduce((a,b)=>a+b,0)/elemSamples.length : 0;
+    const kineticRatio = probe.tweens.length ? kinetic.length / probe.tweens.length : 0;
+    const flags = [];
+    if (!gradAny) flags.push('flat background');
+    if (tierMax < 3) flags.push(`${tierMax} type tier(s)`);
+    if (kineticRatio < 0.25) flags.push(`${(kineticRatio*100).toFixed(0)}% kinetic tweens`);
+    if (avgElems < 12) flags.push(`${avgElems.toFixed(0)} elements on screen`);
+    if (idleFrac > 0.6) flags.push(`${(idleFrac*100).toFixed(0)}% frozen`);
+    if (flags.length >= 3)
+      add(name, 'undesigned', `${flags.join(' · ')} — reads as a wireframe, not a designed card (mg-quickref)`);
+    if (process.env.QC_STATS) console.log(`  [stats] ${name}: dur ${probe.duration.toFixed(0)}s cover ${maxCoverage} elems ${avgElems.toFixed(0)} tiers ${tierMax} kinetic ${(kineticRatio*100).toFixed(0)}% idle ${(idleFrac*100).toFixed(0)}% grad ${gradAny}`);
   }
-  idle(still, idleEnd);
-  const idleFrac = frozen / idleEnd;
-
-  /* --- geometry + typography at every beat and each midpoint --- */
-  const samples = [...new Set(beats.flatMap((b, i) => [b + 0.35, i < beats.length - 1 ? (b + beats[i+1]) / 2 : b + 0.9]))]
-    .filter(t => t >= 0.4 && t <= probe.duration - 1.0)
-    /* entry/exit slides intentionally park elements off-frame; don't audit geometry mid-slide */
-    .filter(t => !probe.tweens.some(tw => tw.props.includes('x') && tw.dur <= 1.2 &&
-                 tw.start - 0.15 <= t && t <= tw.start + tw.dur + 0.35));
-  const seenOverlap = new Set(), seenCrop = new Set(), seenOob = new Set(), seenEmpty = new Set(), seenBroken = new Set();
-  let tierMax = 0, maxCoverage = 0, maxTextNodes = 0; const elemSamples = []; let gradAny = false;
-  for (const t of samples) {
-    const m = await page.evaluate(`${MEASURE.replace(/SAFEPAD/g, SAFE.pad).replace(/CROPFAIL/g, CROP_LOSS_FAIL)}(${t})`);
-    tierMax = Math.max(tierMax, m.tierCount);
-    maxCoverage = Math.max(maxCoverage, m.coverage || 0);
-    maxTextNodes = Math.max(maxTextNodes, m.textNodes || 0);
-    elemSamples.push(m.elements || 0); gradAny = gradAny || !!m.gradient;
-    for (const o of m.texts) { const k = o.a + '|' + o.b; if (!seenOverlap.has(k)) { seenOverlap.add(k); add(name, 'text-collision', `"${o.a}" ⨯ "${o.b}" (${o.overlapPct}% at ${t.toFixed(1)}s)`); } }
-    for (const o of m.oob) { const k = o.text; if (!seenOob.has(k)) { seenOob.add(k); add(name, 'out-of-frame', `"${o.text}" at x${o.x} y${o.y} → ${o.right}×${o.bottom} (${t.toFixed(1)}s)`); } }
-    for (const c of m.crops) { if (!seenCrop.has(c.src)) { seenCrop.add(c.src); add(name, 'bad-crop', `${c.src} loses ${c.lost}% (source ${c.srcAspect}:1 in ${c.boxAspect}:1 box)`); } }
-    for (const e of m.empty) { if (!seenEmpty.has(e)) { seenEmpty.add(e); add(name, 'empty-container', `${e} visible but empty (first at ${t.toFixed(1)}s)`); } }
-    for (const b of m.broken) { if (!seenBroken.has(b)) { seenBroken.add(b); add(name, 'broken-image', `${b} failed to load (naturalWidth 0) — staged-path 404, not a crop/empty defect (${t.toFixed(1)}s)`); } }
-  }
-  if (tierMax < 3 && maxTextNodes >= 4)
-    add(name, 'flat-type', `only ${tierMax} type tier(s) across ${maxTextNodes} text elements — mg-quickref Type tiers`);
-  if (maxCoverage >= 0.9 && probe.duration > 20 && !probe.tweens.some(t => t.dur >= 8))
-    add(name, 'no-continuous-motion', `full-frame ${probe.duration.toFixed(0)}s graphic (${(maxCoverage*100).toFixed(0)}% opaque), longest tween ${Math.max(...probe.tweens.map(t=>t.dur)).toFixed(1)}s; see references/mg-quickref.md "Motion and exits". Either animate something continuously or let a moving photo carry it (ep2 panels cover ~43%).`);
-  const avgElems = elemSamples.length ? elemSamples.reduce((a,b)=>a+b,0)/elemSamples.length : 0;
-  const kineticRatio = probe.tweens.length ? kinetic.length / probe.tweens.length : 0;
-  const flags = [];
-  if (!gradAny) flags.push('flat background');
-  if (tierMax < 3) flags.push(`${tierMax} type tier(s)`);
-  if (kineticRatio < 0.25) flags.push(`${(kineticRatio*100).toFixed(0)}% kinetic tweens`);
-  if (avgElems < 12) flags.push(`${avgElems.toFixed(0)} elements on screen`);
-  if (idleFrac > 0.6) flags.push(`${(idleFrac*100).toFixed(0)}% frozen`);
-  if (flags.length >= 3)
-    add(name, 'undesigned', `${flags.join(' · ')} — reads as a wireframe, not a designed card (mg-quickref)`);
-  if (process.env.QC_STATS) console.log(`  [stats] ${name}: dur ${probe.duration.toFixed(0)}s cover ${maxCoverage} elems ${avgElems.toFixed(0)} tiers ${tierMax} kinetic ${(kineticRatio*100).toFixed(0)}% idle ${(idleFrac*100).toFixed(0)}% grad ${gradAny}`);
+} finally {
+  await browser.close();
 }
-
-await browser.close();
 
 /* publish measured composition durations so the episode builder can cut away from a
    graphic the moment it finishes instead of parking on a dead frame */

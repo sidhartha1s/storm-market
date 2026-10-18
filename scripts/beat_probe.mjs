@@ -2,10 +2,11 @@
  * Usage: node scripts/beat_probe.mjs <episode-dir> <comp-id>=<host window s> ...
  * Last stdout line: JSON { "<comp-id>": { "spans": [[start, end], ...] } | { "error": "..." } }.
  * Each comp is staged like graphics_qc stages it; what counts as motion is stage_comp.mjs motionSpans. */
-import { chromium, chromiumExecutable } from './playwright_env.mjs';
+import { launchGate } from './playwright_env.mjs';
 import { readFileSync } from 'fs';
 import { join, resolve } from 'path';
 import { hostCss, motionSpans, stageComp } from './stage_comp.mjs';
+const BEAT_PROBE_DEADLINE_S = 240;  // ends itself (browser closed, exit 124) before a caller has to kill node; about 8x its 29 s on 52-comp ep-enderlin-2025 (ASUS, 18 Oct 26)
 
 const ep = resolve(process.argv[2]);
 const HOST_CSS = hostCss(readFileSync(join(ep, 'index.html'), 'utf8'));
@@ -16,14 +17,17 @@ const PROBE = (win) => `(() => {
   return { spans: ${motionSpans(win)} };
 })()`;
 
-const browser = await chromium.launch({ executablePath: chromiumExecutable(), args: ['--allow-file-access-from-files'] });
-const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
 const out = {};
-for (const arg of process.argv.slice(3)) {
-  const [id, win] = [arg.slice(0, arg.lastIndexOf('=')), +arg.slice(arg.lastIndexOf('=') + 1)];
-  await page.goto('file:///' + stageComp(ep, join(ep, 'compositions', id + '.html'), HOST_CSS, 'beat-').replace(/\\/g, '/'), { waitUntil: 'load' });
-  await page.waitForTimeout(120);
-  out[id] = await page.evaluate(PROBE(win)).catch(e => ({ error: String(e).split('\n')[0].slice(0, 200) }));
+const browser = await launchGate('beat_probe', BEAT_PROBE_DEADLINE_S);
+try {
+  const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+  for (const arg of process.argv.slice(3)) {
+    const [id, win] = [arg.slice(0, arg.lastIndexOf('=')), +arg.slice(arg.lastIndexOf('=') + 1)];
+    await page.goto('file:///' + stageComp(ep, join(ep, 'compositions', id + '.html'), HOST_CSS, 'beat-').replace(/\\/g, '/'), { waitUntil: 'load' });
+    await page.waitForTimeout(120);
+    out[id] = await page.evaluate(PROBE(win)).catch(e => ({ error: String(e).split('\n')[0].slice(0, 200) }));
+  }
+} finally {
+  await browser.close();
 }
-await browser.close();
 console.log(JSON.stringify(out));

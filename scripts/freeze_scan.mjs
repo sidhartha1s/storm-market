@@ -54,7 +54,8 @@ process.on('exit', unlock);
 process.on('SIGINT', () => process.exit(130));
 
 process.env.QC_LIGHT = '1';                       // playwright_env -> render_busy.py --light
-const { chromium, chromiumExecutable } = await import('./playwright_env.mjs');
+const { launchGate } = await import('./playwright_env.mjs');
+const FREEZE_SCAN_DEADLINE_S = 540;  // ends itself (browser closed, exit 124) before a caller has to kill node; 12 s for 2 comps on br-elnino-california (ASUS, 18 Oct 26); a full mini is longer, so the 600 s Bash-tool cap less a margin
 
 let html = readFileSync(join(ep, 'index.html'), 'utf8');
 const attr = (tag, name) => { const m = new RegExp(`\\b${name}="([^"]*)"`).exec(tag); return m ? m[1] : null; };
@@ -94,88 +95,91 @@ mkdirSync(SHEETS, { recursive: true });
 const staged = join(TMP, '_episode.html');
 writeFileSync(staged, html, 'utf8');
 
-const browser = await chromium.launch({ executablePath: chromiumExecutable(), args: ['--allow-file-access-from-files'] });
-const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 0.5 });
-const pageErrors = [];
-page.on('pageerror', e => pageErrors.push(String(e.message).slice(0, 160)));
-await page.goto('file:///' + staged.replace(/\\/g, '/'), { waitUntil: 'load' });
-await page.waitForTimeout(300);
-
-const missing = await page.evaluate((names) => {
-  document.documentElement.style.background = '#000';
-  for (const tl of Object.values(window.__timelines || {})) tl.pause();
-  /* track order is paint order when the author set no z-index */
-  for (const e of document.querySelectorAll('[data-track-index]')) {
-    if (getComputedStyle(e).zIndex === 'auto') { e.style.zIndex = e.dataset.trackIndex; if (getComputedStyle(e).position === 'static') e.style.position = 'absolute'; }
-  }
-  for (const e of document.querySelectorAll('[data-composition-src]')) { e.style.position = 'absolute'; e.style.inset = '0'; }
-  window.__fzClips = [...document.querySelectorAll('[data-start][data-duration]')].filter(e => e.id !== 'root' && !e.parentElement.closest('[data-composition-src]') || e.hasAttribute('data-composition-src'))
-    .map(e => ({ e, s: parseFloat(e.dataset.start), d: parseFloat(e.dataset.duration), comp: e.dataset.compositionId && e.hasAttribute('data-composition-src') ? e.dataset.compositionId : null }));
-  window.__fzSeek = (t) => {
-    for (const c of window.__fzClips) {
-      const on = t >= c.s - 1e-6 && t < c.s + c.d;
-      c.e.style.display = on ? '' : 'none';
-      if (on && c.comp && window.__timelines[c.comp]) window.__timelines[c.comp].seek(Math.max(0, t - c.s), false);
-    }
-    const host = Object.keys(window.__timelines).find(k => !window.__fzClips.some(c => c.comp === k));
-    if (host) window.__timelines[host].seek(t, false);          // events ON: the render plays callbacks too
-  };
-  return names.filter(n => !window.__timelines || !window.__timelines[n]);
-}, scanned.map(c => c.name));
-
-const findings = missing.map(n => [n, 'no timeline registered on the mounted page' + (pageErrors.length ? ` (page error: ${pageErrors[0]})` : '')]);
-const fmt = (t) => `${Math.floor(t / 60)}:${(t % 60).toFixed(1).padStart(4, '0')}`;
-const fps = (1 / STEP).toString();
+const pageErrors = [], findings = [];
 let aborted = false;
+const browser = await launchGate('freeze_scan', FREEZE_SCAN_DEADLINE_S);
+try {
+  const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 0.5 });
+  page.on('pageerror', e => pageErrors.push(String(e.message).slice(0, 160)));
+  await page.goto('file:///' + staged.replace(/\\/g, '/'), { waitUntil: 'load' });
+  await page.waitForTimeout(300);
 
-for (const c of scanned.filter(c => !missing.includes(c.name))) {
-  const dir = join(TMP, c.name);
-  mkdirSync(dir, { recursive: true });
-  let n = 0;
-  const hasContent = [];
-  for (let t = 0; t <= c.dur + 1e-6; t += STEP) {
-    if (n % 20 === 0 && freemem() / 2 ** 30 < ABORT_FREE_GB) { aborted = true; break; }
-    await page.evaluate((tt) => new Promise(res => { window.__fzSeek(tt); requestAnimationFrame(() => requestAnimationFrame(res)); }), c.start + t);
-    await page.screenshot({ path: join(dir, `f_${String(n).padStart(5, '0')}.jpg`), type: 'jpeg', quality: 72 });
-    hasContent.push(await page.evaluate(() => [...document.querySelectorAll('body *')].some(e => {
-      if (/^(SCRIPT|STYLE|TEMPLATE|VIDEO|AUDIO)$/.test(e.tagName) || /drift|bgplate|grain/.test(e.id + ' ' + e.className)) return false;
-      if (!(e.children.length === 0 && e.textContent.trim()) && !/^(IMG|CANVAS)$/.test(e.tagName) && !e.closest('svg')) return false;
-      let o = 1;
-      for (let p = e; p; p = p.parentElement) { const cs = getComputedStyle(p); if (cs.display === 'none' || cs.visibility === 'hidden') return false; o *= parseFloat(cs.opacity); }
-      const r = e.getBoundingClientRect();
-      return o > 0.06 && r.width > 1 && r.height > 1 && r.bottom > 0 && r.top < 1080 && r.right > 0 && r.left < 1920;
-    })));
-    n += 1;
-  }
-  if (aborted) break;
-
-  const fd = spawnSync('ffmpeg', ['-v', 'info', '-framerate', fps, '-i', join(dir, 'f_%05d.jpg'),
-    '-vf', `freezedetect=n=0.003:d=${HOLD}`, '-f', 'null', '-'], { encoding: 'utf8' });
-  if (fd.status !== 0) { findings.push([c.name, `ffmpeg freezedetect failed (exit ${fd.status})`]); continue; }
-  const log = (fd.stderr || '') + (fd.stdout || '');
-  const starts = [...log.matchAll(/freeze_start: ([\d.]+)/g)].map(m => parseFloat(m[1]));
-  const ends = [...log.matchAll(/freeze_end: ([\d.]+)/g)].map(m => parseFloat(m[1]));
-  const holds = starts.map((s, i) => [s, ends[i] ?? c.dur]);
-  let real = 0;
-  for (const [s, e] of holds) {
-    const i0 = Math.round(s / STEP), i1 = Math.min(n - 1, Math.round(e / STEP));
-    const empty = hasContent.slice(i0, i1 + 1).every(v => !v);
-    if (empty && overFootage(c.start + s, c.start + e)) {
-      console.log(`   (exempt) ${c.name} ${s.toFixed(1)}-${e.toFixed(1)}s: nothing mounted over index.html footage`);
-      continue;
+  const missing = await page.evaluate((names) => {
+    document.documentElement.style.background = '#000';
+    for (const tl of Object.values(window.__timelines || {})) tl.pause();
+    /* track order is paint order when the author set no z-index */
+    for (const e of document.querySelectorAll('[data-track-index]')) {
+      if (getComputedStyle(e).zIndex === 'auto') { e.style.zIndex = e.dataset.trackIndex; if (getComputedStyle(e).position === 'static') e.style.position = 'absolute'; }
     }
-    real += 1;
-    findings.push([c.name, `static ${s.toFixed(1)}-${e.toFixed(1)}s comp-local (${(e - s).toFixed(1)}s) = ${fmt(c.start + s)}-${fmt(c.start + e)} in the episode${empty ? ' - NOTHING on screen and no footage under it' : ''}`]);
-  }
+    for (const e of document.querySelectorAll('[data-composition-src]')) { e.style.position = 'absolute'; e.style.inset = '0'; }
+    window.__fzClips = [...document.querySelectorAll('[data-start][data-duration]')].filter(e => e.id !== 'root' && !e.parentElement.closest('[data-composition-src]') || e.hasAttribute('data-composition-src'))
+      .map(e => ({ e, s: parseFloat(e.dataset.start), d: parseFloat(e.dataset.duration), comp: e.dataset.compositionId && e.hasAttribute('data-composition-src') ? e.dataset.compositionId : null }));
+    window.__fzSeek = (t) => {
+      for (const c of window.__fzClips) {
+        const on = t >= c.s - 1e-6 && t < c.s + c.d;
+        c.e.style.display = on ? '' : 'none';
+        if (on && c.comp && window.__timelines[c.comp]) window.__timelines[c.comp].seek(Math.max(0, t - c.s), false);
+      }
+      const host = Object.keys(window.__timelines).find(k => !window.__fzClips.some(c => c.comp === k));
+      if (host) window.__timelines[host].seek(t, false);          // events ON: the render plays callbacks too
+    };
+    return names.filter(n => !window.__timelines || !window.__timelines[n]);
+  }, scanned.map(c => c.name));
 
-  const every = Math.max(1, Math.round(3 / STEP));
-  const rows = Math.ceil(Math.ceil(n / every) / 6);
-  spawnSync('ffmpeg', ['-y', '-v', 'error', '-framerate', fps, '-i', join(dir, 'f_%05d.jpg'),
-    '-vf', `select='not(mod(n\\,${every}))',scale=480:-1,tile=6x${rows}:color=0x505050`,
-    '-frames:v', '1', '-q:v', '4', join(SHEETS, `${c.name}_${Math.floor(c.start)}s.jpg`)], { encoding: 'utf8' });
-  console.log(`${c.name.padEnd(24)} ${fmt(c.start).padStart(7)}  dur ${c.dur.toFixed(1).padStart(6)}s  frames ${String(n).padStart(4)}  holds>=${HOLD}s: ${real}`);
+  findings.push(...missing.map(n => [n, 'no timeline registered on the mounted page' + (pageErrors.length ? ` (page error: ${pageErrors[0]})` : '')]));
+  const fmt = (t) => `${Math.floor(t / 60)}:${(t % 60).toFixed(1).padStart(4, '0')}`;
+  const fps = (1 / STEP).toString();
+
+  for (const c of scanned.filter(c => !missing.includes(c.name))) {
+    const dir = join(TMP, c.name);
+    mkdirSync(dir, { recursive: true });
+    let n = 0;
+    const hasContent = [];
+    for (let t = 0; t <= c.dur + 1e-6; t += STEP) {
+      if (n % 20 === 0 && freemem() / 2 ** 30 < ABORT_FREE_GB) { aborted = true; break; }
+      await page.evaluate((tt) => new Promise(res => { window.__fzSeek(tt); requestAnimationFrame(() => requestAnimationFrame(res)); }), c.start + t);
+      await page.screenshot({ path: join(dir, `f_${String(n).padStart(5, '0')}.jpg`), type: 'jpeg', quality: 72 });
+      hasContent.push(await page.evaluate(() => [...document.querySelectorAll('body *')].some(e => {
+        if (/^(SCRIPT|STYLE|TEMPLATE|VIDEO|AUDIO)$/.test(e.tagName) || /drift|bgplate|grain/.test(e.id + ' ' + e.className)) return false;
+        if (!(e.children.length === 0 && e.textContent.trim()) && !/^(IMG|CANVAS)$/.test(e.tagName) && !e.closest('svg')) return false;
+        let o = 1;
+        for (let p = e; p; p = p.parentElement) { const cs = getComputedStyle(p); if (cs.display === 'none' || cs.visibility === 'hidden') return false; o *= parseFloat(cs.opacity); }
+        const r = e.getBoundingClientRect();
+        return o > 0.06 && r.width > 1 && r.height > 1 && r.bottom > 0 && r.top < 1080 && r.right > 0 && r.left < 1920;
+      })));
+      n += 1;
+    }
+    if (aborted) break;
+
+    const fd = spawnSync('ffmpeg', ['-v', 'info', '-framerate', fps, '-i', join(dir, 'f_%05d.jpg'),
+      '-vf', `freezedetect=n=0.003:d=${HOLD}`, '-f', 'null', '-'], { encoding: 'utf8' });
+    if (fd.status !== 0) { findings.push([c.name, `ffmpeg freezedetect failed (exit ${fd.status})`]); continue; }
+    const log = (fd.stderr || '') + (fd.stdout || '');
+    const starts = [...log.matchAll(/freeze_start: ([\d.]+)/g)].map(m => parseFloat(m[1]));
+    const ends = [...log.matchAll(/freeze_end: ([\d.]+)/g)].map(m => parseFloat(m[1]));
+    const holds = starts.map((s, i) => [s, ends[i] ?? c.dur]);
+    let real = 0;
+    for (const [s, e] of holds) {
+      const i0 = Math.round(s / STEP), i1 = Math.min(n - 1, Math.round(e / STEP));
+      const empty = hasContent.slice(i0, i1 + 1).every(v => !v);
+      if (empty && overFootage(c.start + s, c.start + e)) {
+        console.log(`   (exempt) ${c.name} ${s.toFixed(1)}-${e.toFixed(1)}s: nothing mounted over index.html footage`);
+        continue;
+      }
+      real += 1;
+      findings.push([c.name, `static ${s.toFixed(1)}-${e.toFixed(1)}s comp-local (${(e - s).toFixed(1)}s) = ${fmt(c.start + s)}-${fmt(c.start + e)} in the episode${empty ? ' - NOTHING on screen and no footage under it' : ''}`]);
+    }
+
+    const every = Math.max(1, Math.round(3 / STEP));
+    const rows = Math.ceil(Math.ceil(n / every) / 6);
+    spawnSync('ffmpeg', ['-y', '-v', 'error', '-framerate', fps, '-i', join(dir, 'f_%05d.jpg'),
+      '-vf', `select='not(mod(n\\,${every}))',scale=480:-1,tile=6x${rows}:color=0x505050`,
+      '-frames:v', '1', '-q:v', '4', join(SHEETS, `${c.name}_${Math.floor(c.start)}s.jpg`)], { encoding: 'utf8' });
+    console.log(`${c.name.padEnd(24)} ${fmt(c.start).padStart(7)}  dur ${c.dur.toFixed(1).padStart(6)}s  frames ${String(n).padStart(4)}  holds>=${HOLD}s: ${real}`);
+  }
+} finally {
+  await browser.close();
 }
-await browser.close();
 rmSync(TMP, { recursive: true, force: true });
 
 console.log('');
