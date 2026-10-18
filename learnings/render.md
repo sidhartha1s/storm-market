@@ -393,7 +393,7 @@ when the harness killed the task — the CHILD TREE dies too, a few minutes late
 keeps heartbeating briefly, which reads as "survived" and isn't). `Start-Process` was already
 known-fatal (ep3 attempt 11). The reliable launcher on this box is a one-shot **Windows
 scheduled task** (the bare `cmd /c` action below is superseded by `scripts/run_hidden.vbs`, 2026-08-21): `schtasks /create /tn ep5draft /tr "cmd /c cd /d <worktree> &&
-scripts\render.cmd <slug> draft" /sc once /st 23:59 /f && schtasks /run /tn ep5draft` —
+scripts\render.cmd <slug> draft" /sc once /st 23:59 /f && schtasks /run /tn ep5draft && schtasks /delete /tn ep5draft /f` —
 fully detached, survives the session. Watch it with a log-mtime stall monitor (>10 min
 silent = dead), never with a process-name count (MCP daemons match loose filters).
 
