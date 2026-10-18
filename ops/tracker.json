@@ -662,6 +662,66 @@
    "bucket": "nepal",
    "owner": "director",
    "due": "01 Oct 26"
+  },
+  {
+   "slug": "ep-mayfield-2021",
+   "lane": "doc",
+   "bucket": "tornado",
+   "title": "The Night Shift Was Told to Stay (Mayfield 2021)",
+   "owner": "director",
+   "due": "28 Oct 26",
+   "phase": "idea",
+   "status": "todo",
+   "note": "E9 PICK (next doc after the slate); 10 Dec 2021 Quad-State EF4, 57 dead, 165.7 mi (NWS Paducah); ships before the 10 Dec anniversary; card in ops/slate-tornado-docs.md",
+   "updated": "19 Oct 26 12:00"
+  },
+  {
+   "slug": "ep-moore-1999",
+   "lane": "doc",
+   "bucket": "tornado",
+   "title": "The Strongest Winds Ever Measured Hit a City (Moore 1999)",
+   "owner": "director",
+   "due": "04 Nov 26",
+   "phase": "idea",
+   "status": "todo",
+   "note": "candidate (unscheduled); 3 May 1999 Bridge Creek-Moore F5, 36 direct dead, DOW 318 mph (NWS Norman); top rival 7.65M views; ops/slate-tornado-docs.md",
+   "updated": "19 Oct 26 12:00"
+  },
+  {
+   "slug": "ep-jarrell-1997",
+   "lane": "doc",
+   "bucket": "tornado",
+   "title": "The Tornado That Scoured the Earth Bare (Jarrell 1997)",
+   "owner": "director",
+   "due": "11 Nov 26",
+   "phase": "idea",
+   "status": "todo",
+   "note": "candidate (unscheduled); 27 May 1997 F5, 27 dead in Double Creek (NWS Austin/San Antonio); top rival 2.20M views; ops/slate-tornado-docs.md",
+   "updated": "19 Oct 26 12:00"
+  },
+  {
+   "slug": "ep-greensburg-2007",
+   "lane": "doc",
+   "bucket": "tornado",
+   "title": "The First Tornado Ever Rated EF5 (Greensburg 2007)",
+   "owner": "director",
+   "due": "18 Nov 26",
+   "phase": "idea",
+   "status": "todo",
+   "note": "candidate (unscheduled); 4 May 2007 first EF5, 11 dead (NWS Wichita); top rival 4.43M views; ops/slate-tornado-docs.md",
+   "updated": "19 Oct 26 12:00"
+  },
+  {
+   "slug": "ep-rolling-fork-2023",
+   "lane": "doc",
+   "bucket": "tornado",
+   "title": "Rolling Fork 2023: The Deadliest Delta Tornado Since 1971",
+   "owner": "director",
+   "due": "25 Nov 26",
+   "phase": "idea",
+   "status": "todo",
+   "note": "candidate (unscheduled); 24 Mar 2023 EF4, 17 dead (NWS Jackson); top rival 2.84M views; ops/slate-tornado-docs.md",
+   "updated": "19 Oct 26 12:00"
   }
  ]
 }

@@ -216,7 +216,7 @@ Owner, 19 Oct 26: next doc, "something recent within the last 30 years". Picked 
   outbreak `[verify]`, FEMA photo library `[verify]`, local broadcaster clips (licence).
 - **Competition:** TornadoTRX "2021 Tri-State Tornado" 4.75M, Celton Henderson "MAYFIELD" 1.49M, Alferia 0.50M,
   60 Minutes 0.48M (yt-dlp, 19 Oct 26). Crowded, so the angle is the factory and the clock, not the storm.
-- **Packaging:** "Mayfield 2021: The Night Shift Was Told to Stay" (FRE 103.7, 47 chars; the claim must clear
+- **Packaging (draft; the angle is not locked, so per `references/packaging-rules.md` these wait for the owner's angle lock):** "Mayfield 2021: The Night Shift Was Told to Stay" (FRE 103.7, 47 chars; the claim must clear
   the fact sheet first, else use the next) / "Mayfield 2021: The Warning Came. They Stayed at Work." (FRE 100.4)
   / "Mayfield 2021: The Warning Came. The Shift Stayed. 9 Died." (FRE 102.8). Thumb: School A, colour Mayfield
   courthouse or factory plate, "MAYFIELD / 2021".
