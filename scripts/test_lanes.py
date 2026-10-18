@@ -236,6 +236,8 @@ def test_rule1_start_skips_a_profile_that_does_not_answer(tmp_path):
 def test_an_ssh_drop_after_a_good_launch_never_launches_twice(tmp_path):
     """p4 ran twice on 18 Oct 26: ssh dropped after the Create had run, and the launcher retried."""
     drop = (255, "Read from remote host 100.102.121.75: Connection reset by peer")
+    log = r"C:\x\lane[a1].log"  # "[" is a wildcard to PowerShell's -like: such a query reads a running lane as dead
+    lane = LANE[:5] + [log] + LANE[6:]
     for i, (asked, recorded) in enumerate((((0, "1\n"), True), (drop, True), ((0, "0\n"), False))):
         ep, creates = lane_episode(tmp_path / str(i)), []
 
@@ -243,13 +245,30 @@ def test_an_ssh_drop_after_a_good_launch_never_launches_twice(tmp_path):
             if "-MethodName Create" in script:
                 creates.append(host)
                 return drop  # the Create ran on the host, then the session dropped before its reply
-            return asked  # the liveness query: lane seen running, host unreadable, lane not running
+            # the liveness query: lane seen running, host unreadable, lane not running; only a literal match finds it
+            return asked if f".Contains({lanes.quote(log)})" in script else (0, "0\n")
         fakes(answering={"claude2"})
         lanes.spawn, lanes.ps = REAL_SPAWN, ps
-        assert raises(lambda: lanes.main(["start", str(ep), "source:a1", *LANE])) != recorded
+        assert raises(lambda: lanes.main(["start", str(ep), "source:a1", *lane])) != recorded
         assert ("source:a1" in lanes.load_ledger(ep).get("jobs", {})) == recorded
         if recorded:  # a second start, the retry that doubled p4, refuses before any Create
-            assert raises(lambda: lanes.main(["start", str(ep), "source:a1", *LANE])) and creates == ["zbook"]
+            assert raises(lambda: lanes.main(["start", str(ep), "source:a1", *lane])) and creates == ["zbook"]
+
+    # local has no ssh to drop, and a query there would find the lanes.py process itself: a failed Create is a FAIL
+    ep = lane_episode(tmp_path / "local")
+    lanes.ps = lambda host, script, timeout=90: (124, "timed out after 90s") if "-MethodName Create" in script else never(script)
+    assert raises(lambda: lanes.main(["start", str(ep), "source:a1", "--cmd", "{cli} -p", "--log", log]))
+    assert "source:a1" not in lanes.load_ledger(ep).get("jobs", {})
+
+
+def test_a_recorded_launch_whose_log_never_appears_fails(tmp_path):
+    """the host-unreadable case records RUNNING; a lane that never started must not sit RUNNING until STALE"""
+    ep = lane_episode(tmp_path)
+    fakes(answering=set(), log=lanes.NO_LOG)
+    for minutes_ago, state in ((1, "RUNNING"), (lanes.NO_LOG_MIN + 1, "FAILED")):
+        run = {"started": time.time() - minutes_ago * 60, "host": "zbook", "minutes": 60, "log": r"C:\x\lane.log"}
+        st = {s["job"]: s["state"] for s in lanes.job_states(ep, {"jobs": {"source:a1": run}})}
+        assert st["source:a1"] == state, (minutes_ago, st["source:a1"])
 
 
 def test_rule2_start_refuses_low_memory_and_a_full_lane_count(tmp_path):
