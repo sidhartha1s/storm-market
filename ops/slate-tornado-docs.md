@@ -195,6 +195,49 @@ Per episode, 12 to 16 designed graphics, library first (`library/catalog-index.j
 - **Packaging:** "The Forgotten Palm Sunday: 380 Dead in 1920" / "Three Palm Sundays, One Corridor" /
   "America's Deadliest Palm Sunday Was Not 1965".
 
+### E9 · Mayfield and the Quad-State tornado (10 December 2021) · target 28 Oct 26 · added 19 Oct 26
+Owner, 19 Oct 26: next doc, "something recent within the last 30 years". Picked from five uncovered US events
+1996 to 2026 (table below). Facts with a URL were read on that page on 19 Oct 26; the rest stay `[verify]`.
+- **Dominant question:** the warning was out for hours; why did 57 people still die along one track, nine of
+  them `[verify]` inside a candle factory that kept its night shift working?
+- **Architecture:** Countdown 60 % (8:49 pm to 11:47 pm CST, Cayce to Mayfield to Dawson Springs, 165.7 miles)
+  + Detective 40 % (what the factory workers were told, and what the lawsuits and the state safety findings
+  say `[verify]`).
+- **Spikes:** EF4, 190 mph, 165.7 mile path, 1.13 miles wide, 57 dead, 508 to 533 injured (NWS Paducah); a
+  December night tornado; 24 dead in Graves County; the courthouse and the Mayfield Consumer Products candle
+  factory destroyed; a train derailed near Earlington; the worker who live-streamed from under the rubble
+  (Kyanna Parsons-Perez `[verify]`).
+- **US stake:** night tornadoes in the cold season, and whether a workplace has to let you leave for shelter.
+- **MGs:** g-master-map (the 165.7 mile track drawn in by clock time), g-clock (8:49 pm to 11:47 pm), g-person
+  (the factory worker, one Dawson Springs family), g-radar (Paducah NEXRAD), g-scale (vs Joplin and Tri-State
+  path length), g-then-now (night and December tornado warnings then vs now).
+- **Sources (PD spine):** NWS Paducah event page with survey photos and NOAA/NASA before-and-after satellite
+  imagery (https://www.weather.gov/pah/December-10th-11th-2021-Tornado), NWS service assessment of the
+  outbreak `[verify]`, FEMA photo library `[verify]`, local broadcaster clips (licence).
+- **Competition:** TornadoTRX "2021 Tri-State Tornado" 4.75M, Celton Henderson "MAYFIELD" 1.49M, Alferia 0.50M,
+  60 Minutes 0.48M (yt-dlp, 19 Oct 26). Crowded, so the angle is the factory and the clock, not the storm.
+- **Packaging:** "Mayfield 2021: The Night Shift Was Told to Stay" (FRE 103.7, 47 chars; the claim must clear
+  the fact sheet first, else use the next) / "Mayfield 2021: The Warning Came. They Stayed at Work." (FRE 100.4)
+  / "Mayfield 2021: The Warning Came. The Shift Stayed. 9 Died." (FRE 102.8). Thumb: School A, colour Mayfield
+  courthouse or factory plate, "MAYFIELD / 2021".
+- **Why this one:** most deaths of the five (57), the only one with a December anniversary inside the next
+  eight weeks (search demand rises before 10 Dec), a named workplace story no top rival leads with, and an
+  NWS page with PD survey photos and satellite plates.
+
+| event | year | deaths | top rival views (yt-dlp 19 Oct 26) | PD footage / source |
+|---|---|---|---|---|
+| Mayfield / Quad-State EF4 (pick) | 2021 | 57 (NWS Paducah) | 4,748,712 TornadoTRX | NWS PAH survey photos, NOAA/NASA satellite |
+| Bridge Creek-Moore F5 | 1999 | 36 direct (NWS Norman) | 7,650,202 TornadoTRX | NWS OUN event page, KML paths, overpass study |
+| Jarrell F5 | 1997 | 27 (NWS Austin/San Antonio) | 2,202,118 weatherbox studios | NWS EWX page, 1997 service assessment PDF |
+| Greensburg EF5 | 2007 | 11 (NWS Wichita) | 4,426,056 Celton Henderson | NWS DDC five-year page and photos |
+| Rolling Fork EF4 | 2023 | 17 (NWS Jackson) | 2,839,679 Freddy McKinney | NWS JAN pages; survey photos `[verify]` |
+
+Candidates kept as tracker cards (idea, unscheduled): Moore 1999 (the DOW 318 mph reading and the overpass
+deaths, https://www.weather.gov/oun/events-19990503, https://www.weather.gov/oun/safety-overpass), Jarrell
+1997 ("the earth was scoured bare", https://www.weather.gov/ewx/wxevent-19970527), Greensburg 2007 (first EF5,
+https://www.weather.gov/ict/toptenkstors), Rolling Fork 2023 (deadliest Mississippi Delta tornado since 1971,
+https://www.weather.gov/jan/swpw_tornadoes).
+
 ### E0 · El Reno, Oklahoma (31 May 2013) · replan
 - **State:** v3 draft (26:08) rendered 30 Aug in worktree `ep4-el-reno-v3`, hook v2 preview 31 Aug, full static
   suite green, three weeks parked on owner review.
