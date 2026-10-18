@@ -115,6 +115,10 @@ for kind, eid, src, v, is_bed, mean, eff in rows:
     if eid.startswith("nx-"):
         if abs(d) > 3.0:
             fails.append(f"{eid}: narration {d:+.1f} dB off reference")
+        burst = tail_burst(ep / src)
+        if burst:
+            fails.append(f"{eid}: ends in a {burst[0]:.0f} dB burst after {burst[1]:.2f} s of silence ({src}); "
+                         f"write a -v2 copy with the burst silenced, same length")
     elif eid.startswith("ins-"):
         if abs(d) > 2.5:
             fails.append(f"{eid}: insert {d:+.1f} dB vs narration (fix the FILE gain, attr vol is {v})")
