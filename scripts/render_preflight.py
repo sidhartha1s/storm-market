@@ -93,7 +93,98 @@ def busy_refusal():
     return None
 
 
+# --- layer parity: a documentary renders only with every layer the owner already asked for ---
+# The Joplin draft (18 Oct 26) went to render with 0 corner-circle mounts and no music bed while
+# both shipped documentaries had them. Owner: "it should be fucking checked before you fucking fire render".
+
+DOC_SLUG = "ep-"
+TAG = re.compile(r'<(audio|video)\b((?:[^>"]|"[^"]*")*)>', re.I)
+ATTR = re.compile(r'([\w-]+)(?:="([^"]*)")?')
+BED_COVER_MIN = 0.80
+PAUL_CLIPS = 6
+
+
+def _mounts(html):
+    return [(tag.lower(), dict(ATTR.findall(attrs))) for tag, attrs in TAG.findall(html)]
+
+
+def _window(attrs):
+    start = float(attrs["data-start"])
+    return start, start + float(attrs["data-duration"])
+
+
+def _circle_gap(mounts):
+    if not any(t == "video" and "pip" in a.get("class", "").split() for t, a in mounts):
+        return '0 <video class="pip"> mounts'
+
+
+def _bed_gap(mounts):
+    # A bed is how Palm Sunday and El Reno mount it: data-bed plus "bed" in the id (sx-bed-a1,
+    # sx-mus-bed-a). Swells and hits also carry data-bed, so the attribute alone is not a bed.
+    beds = sorted(_window(a) for t, a in mounts
+                  if t == "audio" and "data-bed" in a and "bed" in a.get("id", "").split("-"))
+    if not beds:
+        return "0 bed <audio> mounts (data-bed with 'bed' in the id)"
+    narration = [_window(a) for t, a in mounts if t == "audio" and a.get("id", "").startswith("nx-")]
+    if not narration:
+        return "no nx- narration to measure the bed against"
+    lo, hi = min(s for s, _ in narration), max(e for _, e in narration)
+    covered, edge = 0.0, lo
+    for start, end in beds:
+        start, end = max(start, edge), min(end, hi)
+        if end > start:
+            covered, edge = covered + end - start, end
+    share = covered / (hi - lo)
+    if share < BED_COVER_MIN:
+        return f"beds cover {share:.0%} of the narration span {lo:.1f}-{hi:.1f} s, need {BED_COVER_MIN:.0%}"
+
+
+def _paul_gap(mounts):
+    clips = {a["id"] for t, a in mounts
+             if t == "video" and re.fullmatch(r"ins-paul-\d+", a.get("id", ""))}
+    if len(clips) < PAUL_CLIPS:
+        return f'{len(clips)} <video id="ins-paul-<n>"> mounts, need {PAUL_CLIPS}'
+
+
+LAYERS = (
+    ("presenter corner circle", _circle_gap,
+     "mg-quickref.md 'Corner circle': Paul's face speaking the narration, on through the whole "
+     "documentary wherever the corner is free"),
+    ("music bed", _bed_gap,
+     "CLAUDE.md 'Sound': one bed across the episode plus swells at script peaks (about every "
+     "45 to 60 s) is the default"),
+    ("Paul full-frame clips", _paul_gap,
+     "mg-quickref.md 'Paul on screen': Full frame (Flow/Omni), about 1 min: 6 clips of 10 s"),
+)
+
+
+def missing_layers(slug, html):
+    """(layer, finding, rule) for every owner-asked layer the timeline lacks; [] outside documentaries."""
+    if not slug.startswith(DOC_SLUG):
+        return []
+    mounts = _mounts(html)
+    return [(name, gap, rule) for name, check, rule in LAYERS if (gap := check(mounts))]
+
+
+def layer_refusal(episode):
+    """None if every layer is mounted, else the exit code preflight should use."""
+    missing = missing_layers(episode.name, (episode / "index.html").read_text(encoding="utf-8"))
+    if not missing:
+        print("[layers] OK: circle, bed and Paul's clips are mounted.")
+        return None
+    for name, gap, rule in missing:
+        print(f"[layers] MISSING {name}: {gap}. Rule: {rule}", file=sys.stderr)
+    return 6
+
+
 def main():
+    episode = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.cwd()
+    rc = layer_refusal(episode)
+    if rc:
+        print("[preflight] REFUSING TO RENDER: a layer the owner already asked for is missing.",
+              file=sys.stderr)
+        sys.exit(rc)
+
     rc = busy_refusal()
     if rc:
         print("[preflight] A render that starts here fails at video_extract with "
