@@ -115,6 +115,7 @@ def _window(attrs):
 
 
 def _circle_gap(mounts):
+    # same window rule as circle_cut.windows (pip class + pip-w id), so the gate and the cutter agree
     if not any(t == "video" and "pip" in a.get("class", "").split() and a.get("id", "").startswith("pip-w")
                for t, a in mounts):
         return '0 <video id="pip-w<n>" class="pip"> mounts'
