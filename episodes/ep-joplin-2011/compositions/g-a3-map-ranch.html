@@ -10,11 +10,11 @@
        BLOCKED: the 12 apartment dots (g-a3-apartments is not built; its positions do not exist yet).
      POCKET: BLOCKED (H15 gives no place; the orchestrator supplies the outline). #g-a3-map-ranch-l-pocket stays empty, and with it the push
        toward the pocket (a3-s10 5.74 "neighborhood"), fill (7.06), label (8.70), hatch (10.08) and the pulse (11.06), so no pull-back either.
-     STRIP: media/g-a3-map-ranch/geo.py (numbers only). 20th St x Range Line at (935.7, 532.0). The building layer is BLOCKED (Open 4, no
-       research/map-positions.md), so the Walmart-to-Home Depot extent is not known: the strip is 20th St within 0.25 mi (11.5 px at
-       46.132 px/mi) of Range Line, 23.3 px long, until that layer lands.
-       CONFLICT with B17: in the base the track crosses Range Line at y 562.4, 30.4 px (0.66 mi) SOUTH of 20th St, and 20th St lies just
-       outside the path's north edge (path spans y 539-588 there). B17 puts the centre just north of 20th. The base's path, not this comp, decides it.
+     BASE PATH: l-path re-copied verbatim from g-intro-map (re-traced 18 Oct 26, FAIL 2) after FAIL 1 on this comp: the old copy had the track
+       at y 562.4 at Range Line, 30 px south of 20th St. Now the track is y 528.6 there, 3.4 px north of 20th St (y 532.0), path y 513.7-549.8 (B17).
+     STRIP: media/g-a3-map-ranch/geo.py (numbers only). 20th St x Range Line at (935.7, 532.0). The base's places layer has no Walmart or
+       Home Depot (NIST Sec. 4.4 names only Pizza Hut, Dillons, Somerset, theater, SJRMC), so the Walmart-to-Home Depot extent is still not
+       known: the strip is 20th St within 0.5 mi (23.1 px at 46.132 px/mi) of Range Line, 46.2 px long, wholly inside the path band.
      CAMERA: city view, a 6 px/s drift left for the whole host (no push while the pocket is blocked). -->
 <template>
 <style>
