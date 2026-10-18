@@ -158,21 +158,22 @@ window.__timelines = window.__timelines || {};
   tl.to(Q + "glow", { opacity: 0.5, duration: 0.3, ease: "power2.out" }, 9.9);
   tl.to(Q + "glow", { opacity: 0.35, duration: 0.5, ease: "power2.inOut" }, 10.2);
 
-  /* CAME @8.28: house comes down 0.6 s, power2.in. Walls fall inward about their foot to 80 deg (tips rest y 578-598, feet
-     y <= 640); roof falls 185 with 6 deg about its base centre, lowest corner y 636.2. Floor, basement, stair, light stay put.
+  /* CAME @8.28: house comes down 0.6 s, power2.in. Walls fall inward about their foot to 88 deg (lying on the floor, y 611-640;
+     the brief's 80 deg left the right wall's tip poking through the roof); roof falls 172 with 6 deg about its base centre,
+     lowest corner y 622.2, resting on the debris. Floor, basement, stair, light stay put.
      Settle bounce from 8.9: pieces lift a little and drop back, always above y 640. */
   tl.set(Q + "wallL", { rotation: 0, svgOrigin: "540 640" }, 0);
   tl.set(Q + "wallR", { rotation: 0, svgOrigin: "1380 640" }, 0);
   tl.set(Q + "roofg", { rotation: 0, y: 0, svgOrigin: "960 400" }, 0);
-  tl.to(Q + "wallL", { rotation: 80, duration: 0.6, ease: "power2.in" }, 8.28);
-  tl.to(Q + "wallR", { rotation: -80, duration: 0.6, ease: "power2.in" }, 8.28);
-  tl.to(Q + "roofg", { rotation: 6, y: 185, duration: 0.6, ease: "power2.in" }, 8.28);
-  tl.to(Q + "wallL", { rotation: 74, duration: 0.15, ease: "power2.out" }, 8.9);
-  tl.to(Q + "wallR", { rotation: -74, duration: 0.15, ease: "power2.out" }, 8.9);
-  tl.to(Q + "roofg", { y: 175, duration: 0.15, ease: "power2.out" }, 8.9);
-  tl.to(Q + "wallL", { rotation: 80, duration: 0.25, ease: "power2.in" }, 9.05);
-  tl.to(Q + "wallR", { rotation: -80, duration: 0.25, ease: "power2.in" }, 9.05);
-  tl.to(Q + "roofg", { y: 185, duration: 0.25, ease: "power2.in" }, 9.05);
+  tl.to(Q + "wallL", { rotation: 88, duration: 0.6, ease: "power2.in" }, 8.28);
+  tl.to(Q + "wallR", { rotation: -88, duration: 0.6, ease: "power2.in" }, 8.28);
+  tl.to(Q + "roofg", { rotation: 6, y: 172, duration: 0.6, ease: "power2.in" }, 8.28);
+  tl.to(Q + "wallL", { rotation: 82, duration: 0.15, ease: "power2.out" }, 8.9);
+  tl.to(Q + "wallR", { rotation: -82, duration: 0.15, ease: "power2.out" }, 8.9);
+  tl.to(Q + "roofg", { y: 162, duration: 0.15, ease: "power2.out" }, 8.9);
+  tl.to(Q + "wallL", { rotation: 88, duration: 0.25, ease: "power2.in" }, 9.05);
+  tl.to(Q + "wallR", { rotation: -88, duration: 0.25, ease: "power2.in" }, 9.05);
+  tl.to(Q + "roofg", { y: 172, duration: 0.25, ease: "power2.in" }, 9.05);
 
   /* chips float +-3 px through the holds */
   tl.fromTo(Q + "chipfloat", { y: 0 }, { y: -3, duration: 0.75, ease: "sine.inOut", yoyo: true, repeat: 11, immediateRender: false }, 0.96);
