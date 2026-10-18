@@ -121,6 +121,11 @@ if not cta:
     sys.exit("config.yaml has no channel.cta block — the CTA contract needs it (DESIGN.md)")
 cta_name = Path(cta["file"]).name
 cta_bad = []
+# The CTA speaks in the narrator's voice: its audio is made from the same voice reference.
+_voice_md5 = (_cfg.get("external") or {}).get("voice_ref_md5")
+if cta.get("voice_ref_md5") != _voice_md5:
+    cta_bad.append(f"CTA voice_ref_md5 {cta.get('voice_ref_md5')} != external.voice_ref_md5 {_voice_md5}: "
+                   "the CTA is in another voice; re-voice it as a new versioned asset (assets/cta/README.md)")
 _slug = ep.resolve().name
 _cta_applies = bool(re.match(r"(ep\d*-|ms-)", _slug)) and _slug not in (cta.get("exempt") or [])
 _cta_window = (cta.get("window_by_slug") or {}).get(_slug) or (cta["window_ms"] if _slug.startswith("ms-") else cta["window"])   # news lane ~90 % (owner 17 Sep 26); per-episode owner placements in window_by_slug
