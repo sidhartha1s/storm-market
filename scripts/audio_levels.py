@@ -26,6 +26,7 @@ Checks (effective dB = file mean_volume + 20*log10(data-volume)):
 Usage: python3 scripts/audio_levels.py episodes/<slug>
 Exit 0 = pass. Exit 1 = level defects, do not build the mixdown yet.
 """
+import array
 import math
 import re
 import statistics
