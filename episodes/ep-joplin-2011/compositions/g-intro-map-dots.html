@@ -29,7 +29,7 @@
   .gimd-note { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#c8d3e0;
     stroke:#05080c; stroke-width:6px; stroke-linejoin:round; paint-order:stroke; opacity:0; visibility:hidden; }
   #g-intro-map-dots-placed { letter-spacing:3px; fill:#93a3b2; }
-  #g-intro-map-dots-zero { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:96px; fill:#f2f5f8;
+  #g-intro-map-dots-nosign { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; fill:#f2f5f8;
     opacity:0; visibility:hidden; }
   #g-intro-map-dots-src { position:absolute; inset:auto; left:96px; top:993px; font:700 20px/20px Arial, sans-serif; color:#c8d3e0;
     white-space:nowrap; opacity:0; visibility:hidden; }
@@ -56,7 +56,7 @@
   <g id="g-intro-map-dots-ring-a" class="gim-ringg"><circle id="g-intro-map-dots-ring-a-c" cx="874.1" cy="505.7" r="419.9" fill="none" stroke="#e74c3c" stroke-width="4" stroke-dasharray="2640" stroke-dashoffset="2640"/><g id="g-intro-map-dots-ring-a-pulses" class="gim-pulse"><circle id="g-intro-map-dots-ring-a-p1" cx="874.1" cy="505.7" r="419.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/><circle id="g-intro-map-dots-ring-a-p2" cx="874.1" cy="505.7" r="419.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/><circle id="g-intro-map-dots-ring-a-p3" cx="874.1" cy="505.7" r="419.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/></g></g>
   <g id="g-intro-map-dots-ring-b" class="gim-ringg"><circle id="g-intro-map-dots-ring-b-c" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" stroke-dasharray="2791" stroke-dashoffset="2791"/><g id="g-intro-map-dots-ring-b-pulses" class="gim-pulse"><circle id="g-intro-map-dots-ring-b-p1" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/><circle id="g-intro-map-dots-ring-b-p2" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/><circle id="g-intro-map-dots-ring-b-p3" cx="874.1" cy="505.7" r="443.9" fill="none" stroke="#e74c3c" stroke-width="4" vector-effect="non-scaling-stroke"/></g></g>
 </g>
-<g id="g-intro-map-dots-l-below"><path id="g-intro-map-dots-below" d="M200,880 L1500,880" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="1301" stroke-dashoffset="1301"/><text id="g-intro-map-dots-below-lab" x="200" y="864" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#93a3b2" opacity="0" visibility="hidden">Below ground</text></g><!--/BASEMAP-->
+<g id="g-intro-map-dots-l-below"><path id="g-intro-map-dots-below" d="M200,880 L1400,880" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="1201" stroke-dashoffset="1201"/><text id="g-intro-map-dots-below-lab" x="200" y="864" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#93a3b2" opacity="0" visibility="hidden">Below ground</text></g><!--/BASEMAP-->
 <!--DOTS:g-intro-map-dots-->
 <g id="g-intro-map-dots-dots">
   <!-- Homes (detached) 59 · H26 · schematic -->
@@ -108,12 +108,14 @@
       <text id="g-intro-map-dots-lab-homes" class="gimd-lab" x="668" y="568">Homes</text>
       <text id="g-intro-map-dots-lab-apts" class="gimd-lab" x="1029" y="544">Apartments</text>
       <text id="g-intro-map-dots-lab-out" class="gimd-lab" x="893" y="639">Outside</text>
-      <text id="g-intro-map-dots-placed" class="gimd-note" x="200" y="820">154 placed · 1 not placed · location unknown</text>
-      <!-- "0" sits on the line: ink bottom 1 px under the baseline, so baseline 871 puts the glyph bottom at 872 -->
-      <text id="g-intro-map-dots-zero" x="850" y="871" text-anchor="middle">0</text>
-      <!-- the one-line text (610 px from x 920) ran into the path's east end at x 1420; split, main line ends at x 1384 -->
-      <text id="g-intro-map-dots-zero-t1" class="gimd-note" x="900" y="868">NIST found no evidence any were underground</text>
-      <text id="g-intro-map-dots-zero-t2" class="gimd-note" x="900" y="904">Finding 46</text>
+      <!-- placed label raised 20 px from the brief's 820: ink 784-804 clears "FOUND NO SIGN" (ink top 824) by 20 px -->
+      <text id="g-intro-map-dots-placed" class="gimd-note" x="200" y="800">154 placed · 1 not placed · location unknown</text>
+      <!-- "FOUND NO SIGN" (577 px wide) centred on the brief's x 850 would overlap its text at x 920, and the path crosses the line
+           from x ~1405, so: ink x 401-979 (clear of "Below ground", ends x 377), ink bottom 1 px under baseline 871 = 872 on the line -->
+      <text id="g-intro-map-dots-nosign" x="690" y="871" text-anchor="middle">FOUND NO SIGN</text>
+      <!-- its source text beside it in two lines that both sit above the line, ending x 1328 -->
+      <text id="g-intro-map-dots-nosign-t1" class="gimd-note" x="1002" y="840">NIST found no evidence any</text>
+      <text id="g-intro-map-dots-nosign-t2" class="gimd-note" x="1002" y="868">were underground · Finding 46</text>
     </g>
   </svg>
   <div id="g-intro-map-dots-src">Positions schematic · NIST Table 4-3, 154 placed</div>
@@ -185,10 +187,10 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "below", { strokeDashoffset: 1301 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, S8 + 3.0);
   tl.fromTo(P + "below-lab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, S8 + 3.35);
 
-  /* BELOW i1-s8 5.20: "0" drops onto the line, then its source text */
-  tl.fromTo(P + "zero", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "back.out(1.2)" }, S8 + 5.2);
-  tl.fromTo(P + "zero-t1", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S8 + 5.3);
-  tl.fromTo(P + "zero-t2", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S8 + 5.4);
+  /* BELOW i1-s8 5.20: "FOUND NO SIGN" drops onto the line, then its source text */
+  tl.fromTo(P + "nosign", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "back.out(1.2)" }, S8 + 5.2);
+  tl.fromTo(P + "nosign-t1", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S8 + 5.3);
+  tl.fromTo(P + "nosign-t2", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S8 + 5.4);
 
   /* hold: inside dots blip in small groups every 1.2 s; rail floats y +-3 px; cut on the host end */
   for (let k = 0; k < 5; k++) {
