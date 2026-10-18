@@ -120,12 +120,13 @@ def _circle_gap(mounts):
 
 
 def _bed_gap(mounts):
-    # A bed is how Palm Sunday and El Reno mount it: data-bed plus "bed" in the id (sx-bed-a1,
-    # sx-mus-bed-a). Swells and hits also carry data-bed, so the attribute alone is not a bed.
+    # A bed is how the shipped episodes mount it: data-bed plus "bed" or "mus" in the id (Palm Sunday
+    # sx-bed-a1, El Reno sx-mus-bed-a, 1974 sx-mus-a1). Swells and hits also carry data-bed, so the
+    # attribute alone is not a bed.
     beds = sorted(_window(a) for t, a in mounts
-                  if t == "audio" and "data-bed" in a and "bed" in a.get("id", "").split("-"))
+                  if t == "audio" and "data-bed" in a and {"bed", "mus"} & set(a.get("id", "").split("-")))
     if not beds:
-        return "0 bed <audio> mounts (data-bed with 'bed' in the id)"
+        return "0 bed <audio> mounts (data-bed with 'bed' or 'mus' in the id)"
     narration = [_window(a) for t, a in mounts if t == "audio" and a.get("id", "").startswith("nx-")]
     if not narration:
         return "no nx- narration to measure the bed against"
