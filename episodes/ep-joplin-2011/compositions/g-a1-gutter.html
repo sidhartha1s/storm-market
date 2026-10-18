@@ -16,14 +16,16 @@
     -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%);
     mask-image:linear-gradient(180deg, transparent 0, #000 36px, #000 calc(100% - 36px), transparent 100%); }
   #g-a1-gutter-cam { position:absolute; left:0; top:0; width:1260px; height:740px; }
-  #g-a1-gutter-img { position:absolute; left:-156.06px; top:-809.17px; width:1557.08px; height:2014.84px; }
+  #a1-gutter-img { position:absolute; left:-156.06px; top:-809.17px; width:1557.08px; height:2014.84px; }
   .g-a1-gutter-bar { position:absolute; background:#d8a13a; visibility:hidden; opacity:0; }
-  /* bar boxes: x from first to last glyph +-2 px on screen, top 6 px under the line's lowest ink (descenders), 6 px thick,
-     all at camera scale P = 1.45 (local = screen / P). Glyph edges measured on the source image. */
-  #g-a1-gutter-u1  { left:296.86px; top:237.64px; width:516.01px; height:4.14px; }
-  #g-a1-gutter-u2a { left:906.05px; top:237.64px; width:307.93px; height:4.14px; }
-  #g-a1-gutter-u2b { left:26.36px;  top:278.10px; width:379.60px; height:4.14px; }
-  #g-a1-gutter-u3  { left:85.32px;  top:197.18px; width:739.11px; height:4.14px; }
+  /* bar boxes at camera scale 1 (no zoom, so no word is cut): x from first to last glyph +-2 px, 6 px thick, local = (src - 135, src - 700) * S0.
+     Glyph edges measured on the source image (ink columns/rows at threshold 150): U1 s393..836, U2a a920..1183, U2b a159..484, U3 b210..846.
+     Bar top = lowest ink of the phrase + 6 px (U1, U2a, U2b). U3 sits 4 px under its brackets and descenders: the next line's
+     ascenders start 12.7 px below them, so a 6 px gap would leave 0.8 px to the line under (gap above 4, gap below 2.8). */
+  #g-a1-gutter-u1  { left:296.24px; top:232.57px; width:517.25px; height:6px; }
+  #g-a1-gutter-u2a { left:905.43px; top:232.57px; width:309.17px; height:6px; }
+  #g-a1-gutter-u2b { left:25.74px;  top:279.96px; width:380.84px; height:6px; }
+  #g-a1-gutter-u3  { left:84.70px;  top:197.05px; width:740.35px; height:6px; }
   #g-a1-gutter-src { position:absolute; left:96px; top:990px; height:24px; line-height:24px; white-space:nowrap;
     font-family:Arial,sans-serif; font-weight:700; font-size:20px; color:#c8d3e0; visibility:hidden; opacity:0; }
 </style>
@@ -31,7 +33,7 @@
   <div id="g-a1-gutter-page">
     <div id="g-a1-gutter-view">
       <div id="g-a1-gutter-cam">
-        <img id="g-a1-gutter-img" src="media/candidates/a1/a1-s1_c1_nws-p13-finding2b-quotes.jpg" alt="NWS Central Region Service Assessment, Joplin, 2011, printed page 7: residents' quoted words about the sirens">
+        <img id="a1-gutter-img" src="media/candidates/a1/a1-s1_c1_nws-p13-finding2b-quotes.jpg" alt="NWS Central Region Service Assessment, Joplin, 2011, printed page 7: residents' quoted words about the sirens">
         <div class="g-a1-gutter-bar" id="g-a1-gutter-u1"></div>
         <div class="g-a1-gutter-bar" id="g-a1-gutter-u2a"></div>
         <div class="g-a1-gutter-bar" id="g-a1-gutter-u2b"></div>
@@ -39,7 +41,7 @@
       </div>
     </div>
   </div>
-  <div id="g-a1-gutter-src">NWS Central Region Service Assessment, Joplin, 2011 · Finding 2b</div>
+  <div id="g-a1-gutter-src">NWS Central Region Service Assessment, Joplin, 2011 · Finding 2c</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
