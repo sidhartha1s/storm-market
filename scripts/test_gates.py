@@ -501,6 +501,28 @@ with tempfile.TemporaryDirectory() as d:
           result is False and len(_ns["probe_failed"]) == 1 and "frame extract raised" in _ns["probe_failed"][0][1],
           f"result={result} probe_failed={_ns['probe_failed']}")
 
+# sweep_episode.py — a CTA made from another voice reference than the narrator's FAILs.
+# sweep reads config.yaml next to its scripts/ dir, so run a copy beside a config with a wrong CTA md5.
+with tempfile.TemporaryDirectory() as d:
+    root = Path(d)
+    (root / "scripts").mkdir()
+    for f in S.glob("*.py"):
+        (root / "scripts" / f.name).write_bytes(f.read_bytes())
+    cfg = (S.parent / "config.yaml").read_text(encoding="utf-8")
+    real = re.search(r"voice_ref_md5: ([0-9a-f]{32})", cfg).group(1)
+    cta_line = re.search(r"\n    voice_ref_md5: [0-9a-f]{32}", cfg)
+    check("config: channel.cta carries voice_ref_md5", cta_line is not None, "no CTA voice_ref_md5 line")
+    if cta_line:
+        bad = cfg[:cta_line.start()] + "\n    voice_ref_md5: " + "0" * 32 + cfg[cta_line.end():]
+        (root / "config.yaml").write_text(bad, encoding="utf-8")
+        ep = root / "episodes" / "ep-test"
+        ep.mkdir(parents=True)
+        (ep / "index.html").write_text("<html></html>", encoding="utf-8")
+        r = subprocess.run([sys.executable, str(root / "scripts" / "sweep_episode.py"), str(ep)],
+                           capture_output=True, text=True)
+        check("sweep_episode: a CTA voiced from another reference FAILs (voice_ref_md5 mismatch)",
+              f"!= external.voice_ref_md5 {real}" in r.stdout + r.stderr, (r.stdout + r.stderr)[-600:])
+
 print()
 if FAILS:
     print(f"test_gates: {len(FAILS)} FAILED: {FAILS}")
