@@ -47,6 +47,11 @@
         <clipPath id="a3st-clip"><rect x="560" y="660" width="800" height="300"/></clipPath>
       </defs>
 
+      <!-- DATUM: earth below the grade line y 660, on from frame 0 -->
+      <rect id="a3st-earth" x="0" y="660" width="1920" height="420" fill="url(#a3st-earthgrad)"/>
+      <line id="a3st-grade" x1="0" y1="660" x2="1920" y2="660" stroke="#93a3b2" stroke-width="2"/>
+      <text id="a3st-groundlabel" class="a3st-diaglabel" x="146" y="646">Ground</text>
+
       <!-- basement: interior, then the three structure strokes (walls x 540-560 / 1360-1380, floor y 960-980) -->
       <rect id="a3st-interior" x="560" y="660" width="800" height="300" fill="rgba(74,85,96,.25)"/>
       <g id="a3st-glow" clip-path="url(#a3st-clip)" opacity="0">
