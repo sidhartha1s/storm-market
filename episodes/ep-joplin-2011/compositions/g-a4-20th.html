@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a4-20th: A4-S6 + A4-S7, host 698.797 for 31.0 s (nx-a4-s6 698.797, nx-a4-s7 714.497; ends a4-s7 "basement?" 14.12 + 0.8 = 30.62, runs 0.38 s on
+       to g-a4-theater-quote at 729.797). Brief briefs/a4/g-a4-20th.md. Comp-local time = a4-s6 word start + 0.00; a4-s7 word start + 15.70.
+     Base: the g-intro-map BASEMAP block (re-traced 18 Oct 26), copied verbatim with ids re-prefixed g-master-map- -> a420- (no geography added).
+       Layers on: grid, streets, city, the centre line (a420-track, NIST Fig. 2-24); off: the damage band, rings, sirens, places, below-ground line.
+       Pizza Hut and Dillon's outlines below reuse the base's l-places vertices (NAIP 2010 traces); the Walmart and Home Depot boxes are g-a4-strip's.
+     NUMBERS (one-shot python, not committed): 20th x Range Line (935.7, 532.0) as in g-a4-strip; 20th x Connecticut = intersection of the base's
+       st-connecticut (894.6,491.4)-(892.0,572.4) with st-20th (843.3,531.7)-(933.8,532.5) = (893.29, 532.14).
+       Centre line: y 528.60 from x 901.7 to 949.3, i.e. 3.4 units (0.07 mi) north of 20th St; Walmart box bottom 526.08, Home Depot box top 531.85,
+       Pizza Hut north wall 528.63 (the line runs along it). Track length 876.89 (dash 878); drawn W to E from len 203.18 (x 905, off frame west)
+       to len 263.80 (x 965.6, off frame east): offsets 674.82 -> 614.20.
+     CAMERA (attr transform, s px per map unit):
+       A  frame 0 = g-a4-strip's end framing, s 34.34 (34 x 1.01), junction at (900, 560): translate(-31231.94,-17708.88)
+       A2 SOME 3.42, +0.5 % drift about the Pizza Hut (939.5, 451.8): translate(-31392.80,-17799.68) scale(34.5117)
+       B  STAFF 7.02, +4 % about the Pizza Hut: translate(-32518.80,-18435.31) scale(35.7136)
+       C  STORE, 1.60, flat pan along 20th St (1316 px = 0.69 frame widths, under 1.5: no logZoom), Connecticut junction at (700, 560):
+          translate(-31202.60,-18444.64) scale(35.7136); Dillon's centroid (880.43, 535.89) at (240.7, 693.9)
+       D  fade start, +3 % about the Dillon's: translate(-32145.90,-19018.79) scale(36.7850)
+     At B: Pizza Hut x 921.3-957.7 y 444.0-459.7; Walmart x 1204.6-1295.1 y 174.2-352.9 (under the inset while it is on); Home Depot x 1100.3-1178.3
+       y 559.0-705.6; centre line y 442.9. At C: Dillon's x 189.3-277.5 y 664.6-729.3; Connecticut x 706 at y 380.
+     Leaders: Pizza Hut (958,452) -> inset (1180,476), length 223.29 (dash 225); Dillon's (277,665) -> inset (1180,540), length 911.61 (dash 913).
+     Street labels 20TH ST / RANGE LINE RD / CONNECTICUT AVE are HUD text outside the brief's text list (the strip's end frame carries the first two;
+       the third shows where the pan lands, §4.4). The orchestrator may drop them. -->
+<template>
+<style>
+  #a420-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #a420-stage { position:absolute; inset:0; }
+  .a420-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* base layers on from frame 0 (CSS beats the copied presentation attributes) */
+  #a420-l-streets, #a420-city-rest, #a420-l-path { opacity:1; }
+  #a420-city { stroke-dasharray:none; stroke-dashoffset:0; }
+  #a420-city, #a420-city-rest { vector-effect:non-scaling-stroke; }
+  #a420-path, #a420-l-ring, #a420-l-sirens, #a420-l-places, #a420-l-below { display:none; }
+  /* the three streets the scene names, a step brighter than the rest of the grid */
+  #a420-st-20th, #a420-st-range-line, #a420-st-connecticut { stroke:#93a3b2; stroke-opacity:0.55; stroke-width:2.5; }
+  /* centre line: 5 px at s 34.34 in map units (dashes in map units, so no non-scaling stroke) */
+  #a420-track { stroke:#e74c3c; stroke-width:0.1456px; stroke-dasharray:878; stroke-dashoffset:674.82; }
+  /* Walmart and Home Depot: context at 0.6 */
+  .a420-box { stroke:#f2f5f8; stroke-opacity:0.6; stroke-width:3; fill:#f2f5f8; fill-opacity:0.06; vector-effect:non-scaling-stroke; }
+  /* lit buildings: fill + wall segments (the segments are the outline, so "demolished" is the same strokes drifting) */
+  .a420-fill { fill:#f2f5f8; fill-opacity:0.10; stroke:none; }
+  .a420-seg { fill:none; stroke:#f2f5f8; stroke-width:4; stroke-linecap:square; vector-effect:non-scaling-stroke; }
+  #a420-ph-lit, #a420-dl-lit { opacity:0; visibility:hidden; }
+  .a420-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#f2f5f8;
+    stroke:#05080b; stroke-width:6; stroke-linejoin:round; paint-order:stroke; opacity:0; visibility:hidden; }
+  .a420-st { fill:#93a3b2; }
+  #a420-lab-tc { fill:#e74c3c; }
+  #a420-lab-20a, #a420-lab-rl { opacity:1; visibility:visible; }
+  .a420-lead { fill:none; stroke:#93a3b2; stroke-width:2; opacity:0; visibility:hidden; }
+  .a420-inset { opacity:0; visibility:hidden; }
+  .a420-inbg { fill:#15202b; stroke:#93a3b2; stroke-width:2; }
+  .a420-intx { font-family:Arial, sans-serif; font-weight:700; font-size:28px; letter-spacing:4px; fill:#dfe7ee; }
+  .a420-wall { fill:none; stroke:#93a3b2; stroke-width:3; stroke-linecap:square; }
+  .a420-fig { fill:#dfe7ee; opacity:0; visibility:hidden; }
+  .a420-chip { position:absolute; left:96px; box-sizing:border-box; padding:0 26px; display:flex; align-items:center;
+    border-radius:20px; background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); white-space:nowrap; opacity:0; visibility:hidden; }
+  #a420-chip1 { top:842px; height:96px; }
+  #a420-chip1-t { font:900 72px/80px 'Arial Black', Arial, sans-serif; letter-spacing:-1px; color:#e74c3c; }
+  #a420-chip2 { top:856px; height:70px; }
+  #a420-chip2-t { font:900 40px/48px 'Arial Black', Arial, sans-serif; color:#f2f5f8; }
+  .a420-src { position:absolute; left:96px; top:988px; height:38px; box-sizing:border-box; padding:0 16px;
+    display:flex; align-items:center; border-radius:12px; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); font:700 20px/38px Arial, sans-serif; color:#c8d3e0; white-space:nowrap;
+    opacity:0; visibility:hidden; }
+</style>
+<div id="a420-root" data-composition-id="g-a4-20th" data-width="1920" data-height="1080" data-duration="31.0">
+ <div id="a420-stage">
+  <svg class="a420-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <!-- the base's two icons (re-prefixed); their layers stay off here -->
+      <g id="a420-siren" fill="none" stroke="#f2f5f8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M0,0 L0,-16"/>
+        <path d="M-3,-19 L5,-14 L5,-28 L-3,-23 Z"/>
+        <path d="M8.5,-24.5 A5,5 0 0 1 8.5,-17.5"/>
+        <path d="M11.5,-28 A9.5,9.5 0 0 1 11.5,-14"/>
+      </g>
+      <rect id="a420-place" x="-7" y="-7" width="14" height="14" rx="3" fill="none" stroke="#dfe7ee" stroke-opacity="0.6" stroke-width="1.5"/>
+      <!-- PERSON: 14 x 30, origin top-left: head r 5, rounded body -->
+      <g id="a420-person"><circle cx="7" cy="5" r="5"/><path d="M1,30 L1,16 Q1,11 7,11 Q13,11 13,16 L13,30 Z"/></g>
+    </defs>
+    <g id="a420-cam">
+<!--BASEMAP-INSERT-->
+      <g id="a420-l-stores">
+        <rect id="a420-wal-box" class="a420-box" x="944.272" y="521.075" width="2.534" height="5.006"/>
+        <rect id="a420-hd-box" class="a420-box" x="941.354" y="531.851" width="2.184" height="4.106"/>
+      </g>
+      <!-- PIZZA HUT, base place-pizza-hut vertices: fill + 4 walls -->
+      <g id="a420-ph-lit">
+        <path id="a420-ph-fill" class="a420-fill" d="M936.34,528.63 L937.36,528.63 L937.36,529.07 L936.34,529.07 Z"/>
+        <line id="a420-ph-s1" class="a420-seg" x1="936.34" y1="528.63" x2="937.36" y2="528.63"/>
+        <line id="a420-ph-s2" class="a420-seg" x1="937.36" y1="528.63" x2="937.36" y2="529.07"/>
+        <line id="a420-ph-s3" class="a420-seg" x1="937.36" y1="529.07" x2="936.34" y2="529.07"/>
+        <line id="a420-ph-s4" class="a420-seg" x1="936.34" y1="529.07" x2="936.34" y2="528.63"/>
+      </g>
+      <!-- DILLON'S, base place-dillons vertices: fill + 5 walls -->
+      <g id="a420-dl-lit">
+        <path id="a420-dl-fill" class="a420-fill" d="M878.99,535.10 L881.46,535.07 L881.46,536.88 L880.12,536.88 L878.99,535.38 Z"/>
+        <line id="a420-dl-s1" class="a420-seg" x1="878.99" y1="535.10" x2="881.46" y2="535.07"/>
+        <line id="a420-dl-s2" class="a420-seg" x1="881.46" y1="535.07" x2="881.46" y2="536.88"/>
+        <line id="a420-dl-s3" class="a420-seg" x1="881.46" y1="536.88" x2="880.12" y2="536.88"/>
+        <line id="a420-dl-s4" class="a420-seg" x1="880.12" y1="536.88" x2="878.99" y2="535.38"/>
+        <line id="a420-dl-s5" class="a420-seg" x1="878.99" y1="535.38" x2="878.99" y2="535.10"/>
+      </g>
+    </g>
+
+    <!-- HUD, framing A/B (Pizza Hut beat) -->
+    <text id="a420-lab-tc" class="a420-lab" x="330" y="420">TORNADO CENTER</text>
+    <text id="a420-lab-20a" class="a420-lab a420-st" x="560" y="550">20TH ST</text>
+    <text id="a420-lab-rl" class="a420-lab a420-st" text-anchor="end" x="878" y="340">RANGE LINE RD</text>
+    <text id="a420-lab-ph" class="a420-lab" x="921" y="498">PIZZA HUT</text>
+    <line id="a420-ph-lead" class="a420-lead" x1="958" y1="452" x2="1180" y2="476" stroke-dasharray="225" stroke-dashoffset="225"/>
+    <g id="a420-ph-inset" class="a420-inset"><g id="a420-ph-float">
+      <rect class="a420-inbg" x="1180" y="160" width="380" height="380"/>
+      <text id="a420-ph-cooler" class="a420-intx" x="1370" y="206" text-anchor="middle">COOLER</text>
+      <!-- frame 220 x 300, door 180 x 270 on the floor, hinges on the left jamb -->
+      <rect x="1260" y="222" width="220" height="300" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+      <rect x="1280" y="252" width="180" height="270" fill="#04070a"/>
+      <path d="M1292,300 L1448,300 M1292,370 L1448,370 M1292,440 L1448,440" stroke="#2a3644" stroke-width="2"/>
+      <g id="a420-door">
+        <rect x="1280" y="252" width="180" height="270" fill="#2a3644" stroke="#93a3b2" stroke-width="2"/>
+        <rect x="1296" y="268" width="148" height="238" fill="none" stroke="#4a5560" stroke-width="2"/>
+        <rect x="1432" y="322" width="10" height="136" rx="5" fill="#dfe7ee"/>
+      </g>
+      <rect x="1274" y="282" width="12" height="26" rx="2" fill="#93a3b2"/>
+      <rect x="1274" y="466" width="12" height="26" rx="2" fill="#93a3b2"/>
+    </g></g>
+
+    <!-- HUD, framing C/D (Dillon's beat) -->
+    <text id="a420-lab-ct" class="a420-lab a420-st" x="745" y="380">CONNECTICUT AVE</text>
+    <text id="a420-lab-20c" class="a420-lab a420-st" x="860" y="544">20TH ST</text>
+    <text id="a420-lab-dl" class="a420-lab" x="189" y="765">DILLON'S</text>
+    <line id="a420-dl-lead" class="a420-lead" x1="277" y1="665" x2="1180" y2="540" stroke-dasharray="913" stroke-dashoffset="913"/>
+    <g id="a420-dl-inset" class="a420-inset">
+      <rect class="a420-inbg" x="1180" y="160" width="380" height="380"/>
+      <text id="a420-dl-cooler" class="a420-intx" x="1370" y="222" text-anchor="middle">PRODUCE COOLER</text>
+      <!-- room 320 x 220 (x 1210-1530, y 262-482), door gap in the right wall y 418-476 -->
+      <rect x="1210" y="262" width="320" height="220" fill="#0b1016"/>
+      <path class="a420-wall" d="M1530,418 L1530,262 L1210,262 L1210,482 L1530,482 L1530,476"/>
+      <!-- 35 figures, 7 x 5 at 40 px pitch from (1243, 277) -->
+      <g id="a420-figs">
+        <use id="a420-f01" class="a420-fig" href="#a420-person" x="1243" y="277"/>
+        <use id="a420-f02" class="a420-fig" href="#a420-person" x="1283" y="277"/>
+        <use id="a420-f03" class="a420-fig" href="#a420-person" x="1323" y="277"/>
+        <use id="a420-f04" class="a420-fig" href="#a420-person" x="1363" y="277"/>
+        <use id="a420-f05" class="a420-fig" href="#a420-person" x="1403" y="277"/>
+        <use id="a420-f06" class="a420-fig" href="#a420-person" x="1443" y="277"/>
+        <use id="a420-f07" class="a420-fig" href="#a420-person" x="1483" y="277"/>
+        <use id="a420-f08" class="a420-fig" href="#a420-person" x="1243" y="317"/>
+        <use id="a420-f09" class="a420-fig" href="#a420-person" x="1283" y="317"/>
+        <use id="a420-f10" class="a420-fig" href="#a420-person" x="1323" y="317"/>
+        <use id="a420-f11" class="a420-fig" href="#a420-person" x="1363" y="317"/>
+        <use id="a420-f12" class="a420-fig" href="#a420-person" x="1403" y="317"/>
+        <use id="a420-f13" class="a420-fig" href="#a420-person" x="1443" y="317"/>
+        <use id="a420-f14" class="a420-fig" href="#a420-person" x="1483" y="317"/>
+        <use id="a420-f15" class="a420-fig" href="#a420-person" x="1243" y="357"/>
+        <use id="a420-f16" class="a420-fig" href="#a420-person" x="1283" y="357"/>
+        <use id="a420-f17" class="a420-fig" href="#a420-person" x="1323" y="357"/>
+        <use id="a420-f18" class="a420-fig" href="#a420-person" x="1363" y="357"/>
+        <use id="a420-f19" class="a420-fig" href="#a420-person" x="1403" y="357"/>
+        <use id="a420-f20" class="a420-fig" href="#a420-person" x="1443" y="357"/>
+        <use id="a420-f21" class="a420-fig" href="#a420-person" x="1483" y="357"/>
+        <use id="a420-f22" class="a420-fig" href="#a420-person" x="1243" y="397"/>
+        <use id="a420-f23" class="a420-fig" href="#a420-person" x="1283" y="397"/>
+        <use id="a420-f24" class="a420-fig" href="#a420-person" x="1323" y="397"/>
+        <use id="a420-f25" class="a420-fig" href="#a420-person" x="1363" y="397"/>
+        <use id="a420-f26" class="a420-fig" href="#a420-person" x="1403" y="397"/>
+        <use id="a420-f27" class="a420-fig" href="#a420-person" x="1443" y="397"/>
+        <use id="a420-f28" class="a420-fig" href="#a420-person" x="1483" y="397"/>
+        <use id="a420-f29" class="a420-fig" href="#a420-person" x="1243" y="437"/>
+        <use id="a420-f30" class="a420-fig" href="#a420-person" x="1283" y="437"/>
+        <use id="a420-f31" class="a420-fig" href="#a420-person" x="1323" y="437"/>
+        <use id="a420-f32" class="a420-fig" href="#a420-person" x="1363" y="437"/>
+        <use id="a420-f33" class="a420-fig" href="#a420-person" x="1403" y="437"/>
+        <use id="a420-f34" class="a420-fig" href="#a420-person" x="1443" y="437"/>
+        <use id="a420-f35" class="a420-fig" href="#a420-person" x="1483" y="437"/>
+      </g>
+    </g>
+  </svg>
+  <div id="a420-chip1" class="a420-chip"><span id="a420-chip1-t">5 LOST</span></div>
+  <div id="a420-chip2" class="a420-chip"><span id="a420-chip2-t">35 IN THE COOLER · ALL SURVIVED</span></div>
+  <div id="a420-src1" class="a420-src"><span id="a420-src1-t">NIST Sec. 1.2 · Sec. 4.4.8</span></div>
+  <div id="a420-src2" class="a420-src"><span id="a420-src2-t">NIST Sec. 1.2</span></div>
+ </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a4-20th", P = "#a420-";
+  const S7 = 15.70;  /* nx-a4-s7 714.497 - host 698.797 */
+  const END = 31.0;
+  const tl = gsap.timeline({ paused: true });
+  /* camera: the cam group's transform attribute, tweened as a string (numbers from the header) */
+  const cam = (tx, ty, s, v) => Object.assign({ attr: { transform: "translate(" + tx + "," + ty + ") scale(" + s + ")" } }, v || {});
+
+  /* ---- frame 0: g-a4-strip's end framing, ground + store boxes on ---- */
+  tl.set(P + "cam", cam(-31231.94, -17708.88, 34.34), 0);
+  tl.set(P + "door", { scaleX: 0.14, svgOrigin: "1280 387" }, 0);  /* door open, hinge on the left jamb */
+  tl.to(P + "cam", cam(-31392.80, -17799.68, 34.5117, { duration: 3.42, ease: "none" }), 0);
+
+  /* THAT a4-s6 0.56 -> 538. 2.04: centre line draws west to east */
+  tl.fromTo(P + "track", { strokeDashoffset: 674.82 }, { strokeDashoffset: 614.20, duration: 1.48, ease: "power1.inOut" }, 0.56);
+  /* 538. 2.04: TORNADO CENTER */
+  tl.fromTo(P + "lab-tc", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.04);
+
+  /* SOME 3.42: Pizza Hut lights + label; slow push +4 % about it to STAFF 7.02 */
+  tl.fromTo(P + "ph-lit", { autoAlpha: 0, scale: 1.8, svgOrigin: "936.85 528.85" },
+    { autoAlpha: 1, scale: 1, svgOrigin: "936.85 528.85", duration: 0.5, ease: "back.out(1.6)" }, 3.42);
+  tl.fromTo(P + "lab-ph", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.62);
+  tl.to(P + "cam", cam(-32518.80, -18435.31, 35.7136, { duration: 3.60, ease: "power1.inOut" }), 3.42);
+
+  /* STAFF 7.02: leader draws, inset in with the door open, source line */
+  tl.fromTo(P + "ph-lead", { autoAlpha: 0, strokeDashoffset: 225 }, { autoAlpha: 1, strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 7.02);
+  tl.fromTo(P + "ph-inset", { autoAlpha: 0, scale: 0.9, svgOrigin: "1370 350" },
+    { autoAlpha: 1, scale: 1, svgOrigin: "1370 350", duration: 0.45, ease: "power3.out" }, 7.02);
+  tl.fromTo(P + "src1", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 7.02);
+  /* COOLER. 8.20: door swings shut from its hinge */
+  tl.to(P + "door", { scaleX: 1, svgOrigin: "1280 387", duration: 0.5, ease: "power2.in" }, 8.20);
+
+  /* DEMOLISHED 9.78: the walls drift apart (6-14 px, fixed directions), fill drops out. [id, dx, dy, rot, origin] in map units */
+  const ph = [["s1", -0.168, -0.252, -7, "936.85 528.63"], ["s2", 0.224, -0.084, 9, "937.36 528.85"],
+              ["s3", 0.112, 0.308, -5, "936.85 529.07"], ["s4", -0.280, 0.140, 6, "936.34 528.85"]];
+  ph.forEach(s => tl.to(P + "ph-" + s[0], { x: s[1], y: s[2], rotation: s[3], svgOrigin: s[4], duration: 0.7, ease: "power2.out" }, 9.78));
+  tl.to(P + "ph-fill", { fillOpacity: 0, duration: 0.4, ease: "power1.out" }, 9.78);
+  /* FIVE 10.90: 5 LOST */
+  tl.fromTo(P + "chip1", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 10.90);
+  /* hold: the inset and its leader end float 3 px (six legs, back at rest) */
+  tl.to(P + "ph-float", { y: -3, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 7.50);
+  tl.to(P + "ph-lead", { attr: { y2: 473 }, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 7.50);
+
+  /* a4-s7 0.00 -> AT 0.46: inset, leader, chip and the HUD labels leave before the pan */
+  tl.to(P + "ph-inset", { x: 60, autoAlpha: 0, duration: 0.42, ease: "power3.in" }, S7);
+  tl.to(P + "ph-lead", { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, S7);
+  tl.to(P + "chip1", { x: -60, autoAlpha: 0, duration: 0.42, ease: "power3.in" }, S7);
+  tl.to([P + "lab-tc", P + "lab-ph", P + "lab-20a", P + "lab-rl"], { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, S7);
+
+  /* AT a4-s7 0.46 -> STORE, 1.60: pan west along 20th St to the Connecticut junction */
+  tl.to(P + "cam", cam(-31202.60, -18444.64, 35.7136, { duration: 1.14, ease: "power3.out" }), S7 + 0.46);
+  /* DILLON'S 1.04: outline lights (on screen by then), label settles by STORE, 1.60 */
+  tl.fromTo(P + "dl-lit", { autoAlpha: 0, scale: 1.8, svgOrigin: "880.43 535.89" },
+    { autoAlpha: 1, scale: 1, svgOrigin: "880.43 535.89", duration: 0.5, ease: "back.out(1.6)" }, S7 + 1.04);
+  tl.fromTo(P + "lab-dl", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, S7 + 1.24);
+  tl.fromTo([P + "lab-ct", P + "lab-20c"], { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.15 }, S7 + 1.60);
+  /* STORE, 1.60 -> fade: slow push +3 % about the Dillon's */
+  tl.to(P + "cam", cam(-32145.90, -19018.79, 36.7850, { duration: END - 0.6 - (S7 + 1.60), ease: "none" }), S7 + 1.60);
+
+  /* 35 a4-s7 2.46: leader + inset */
+  tl.fromTo(P + "dl-lead", { autoAlpha: 0, strokeDashoffset: 913 }, { autoAlpha: 1, strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, S7 + 2.46);
+  tl.fromTo(P + "dl-inset", { autoAlpha: 0, scale: 0.9, svgOrigin: "1370 350" },
+    { autoAlpha: 1, scale: 1, svgOrigin: "1370 350", duration: 0.45, ease: "power3.out" }, S7 + 2.46);
+  /* GOT 2.96 -> COOLER, 3.86: the 35 file in through the door gap, deepest spot first */
+  const DX = 1548, DY = 432;
+  const figs = Array.from(document.querySelectorAll(P + "figs use"))
+    .map(el => ({ el, x: +el.getAttribute("x"), y: +el.getAttribute("y") }))
+    .sort((a, b) => Math.hypot(b.x - DX, b.y - DY) - Math.hypot(a.x - DX, a.y - DY));
+  const step = (3.86 - 2.96 - 0.4) / (figs.length - 1);
+  figs.forEach((f, k) => tl.fromTo(f.el, { autoAlpha: 0, attr: { x: DX, y: DY } },
+    { autoAlpha: 1, attr: { x: f.x, y: f.y }, duration: 0.4, ease: "power2.out" }, S7 + 2.96 + k * step));
+
+  /* DEMOLISHED a4-s7 5.28: Dillon's walls drift apart; the cooler box in the inset never breaks */
+  const dl = [["s1", -0.083, -0.332, -6, "880.225 535.085"], ["s2", 0.305, -0.055, 8, "881.46 535.975"],
+              ["s3", 0.139, 0.249, -9, "880.79 536.88"], ["s4", -0.222, 0.166, 7, "879.555 536.13"],
+              ["s5", -0.194, -0.028, -4, "878.99 535.24"]];
+  dl.forEach(s => tl.to(P + "dl-" + s[0], { x: s[1], y: s[2], rotation: s[3], svgOrigin: s[4], duration: 0.7, ease: "power2.out" }, S7 + 5.28));
+  tl.to(P + "dl-fill", { fillOpacity: 0, duration: 0.4, ease: "power1.out" }, S7 + 5.28);
+
+  /* ALL a4-s7 6.70: chip, source line switches */
+  tl.fromTo(P + "chip2", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, S7 + 6.70);
+  tl.to(P + "src1", { autoAlpha: 0, duration: 0.25, ease: "power1.in" }, S7 + 6.70);
+  tl.fromTo(P + "src2", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, S7 + 6.80);
+
+  /* hold: figures float 2.5 px in a rolling wave (finite repeats, all back at rest by 30.76) */
+  tl.to(figs.map(f => f.el).sort((a, b) => a.id < b.id ? -1 : 1), { y: -2.5, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 11, stagger: 0.04 }, S7 + 4.10);
+
+  /* fade-through over the last 0.6 s */
+  tl.to(P + "stage", { autoAlpha: 0, duration: 0.6, ease: "power1.in" }, END - 0.6);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
