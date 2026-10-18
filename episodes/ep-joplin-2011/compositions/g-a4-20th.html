@@ -306,7 +306,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "src2", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, S7 + 6.80);
 
   /* hold: figures float 2.5 px in a rolling wave by id (finite repeats, all back at rest by 30.76) */
-  tl.to(P + "figs use", { y: -2.5, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 11, stagger: 0.04 }, S7 + 4.10);
+  /* repeat lives in the stagger: a top-level repeat replays the whole staggered group (2.16 s a cycle) and ran the timeline to 45.72 s */
+  tl.to(P + "figs use", { y: -2.5, duration: 0.8, ease: "sine.inOut", stagger: { each: 0.04, repeat: 11, yoyo: true } }, S7 + 4.10);
 
   /* fade-through over the last 0.6 s */
   tl.to(P + "stage", { autoAlpha: 0, duration: 0.6, ease: "power1.in" }, END - 0.6);
