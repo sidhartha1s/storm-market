@@ -131,14 +131,14 @@ def spawn(host, cmd, log, cwd):
         sys.exit(f"[lanes] FAIL: launch on {host} failed: {out.strip()[-300:]}")
     if up is None:
         print(f"[lanes] WARN: ssh dropped while launching on {host} and the host cannot be read; recorded as RUNNING "
-              f"so it is never launched twice, and `status` reads its log ({out.strip()[-120:]})")
+              f"so it is never launched twice; `status` calls it FAILED if its log never appears ({out.strip()[-120:]})")
 
 
 def read_log(host, log):
-    """The last lines of a lane's log ("" before it exists), or None when the host cannot be read."""
-    code, out = ps(host, f"$p = {quote(log)}; if (Test-Path -LiteralPath $p) {{ Get-Content -Tail 5 -LiteralPath $p }}",
+    """The last lines of a lane's log, NO_LOG when it does not exist, or None when the host cannot be read."""
+    code, out = ps(host, f"$p = {quote(log)}; if (Test-Path -LiteralPath $p) {{ Get-Content -Tail 5 -LiteralPath $p }} else {{ '{NO_LOG}' }}",
                    timeout=20)  # status runs under the Stop hook's 120 s
-    return out if code == 0 else None
+    return out.strip() if code == 0 else None
 
 
 def profile_order(first=None, skip=None):
