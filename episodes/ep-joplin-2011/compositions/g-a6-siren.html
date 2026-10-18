@@ -13,6 +13,8 @@
   #g-a6-siren-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
   #sr-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 40% 50%, #15202b, #04070a 78%); }
   #sr-stage, #sr-arcs { position:absolute; inset:0; }
+  /* soft halo at the horn mouth, breathes with the arcs: big-area motion so the hold never reads static; fades out by x 1050, clear of the chips */
+  #sr-glow { position:absolute; inset:0; opacity:0; background:radial-gradient(circle 420px at 629.7px 410px, rgba(120,170,220,.30), rgba(120,170,220,0)); }
   .sr-box { position:absolute; inset:0; width:1920px; height:1080px; }
   #sr-arcs path { fill:none; stroke:#dfe7ee; stroke-width:4; stroke-linecap:round; }
   .sr-arc { opacity:0; }
