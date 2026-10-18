@@ -197,7 +197,6 @@ def main():
     # The asset check is part of preflight so it cannot be skipped by launching a render
     # directly: the render script calls this file and stops on a non-zero exit.
     here = Path(__file__).resolve().parent
-    episode = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.cwd()
     rc = version_check(here.parent)
     if rc:
         print("[preflight] REFUSING TO RENDER — version pin is not trustworthy (see above).",
