@@ -25,11 +25,12 @@
   #a1n-likes { height:30px; } /* reserved for the like count; stays empty until the orchestrator confirms it */
 
   /* page half */
-  #a1n-page { position:absolute; inset:auto; left:960px; top:230px; width:600px; height:540px; overflow:hidden;
-    box-shadow:0 0 0 1px rgba(255,255,255,0.14), 0 20px 60px rgba(0,0,0,0.5); background:#f2f2f0; visibility:hidden; opacity:0; }
-  #a1n-pagein { position:absolute; inset:auto; left:0; top:0; width:600px; height:540px; }
-  #a1n-img { position:absolute; inset:auto; left:-68.75px; top:-414.43px; width:740.85px; height:958.65px; }
-  #a1n-bar { position:absolute; inset:auto; left:16.5px; top:320.4px; width:160.6px; height:3px; background:#d8a13a; visibility:hidden; }
+  /* page half: x 900..1824, centred on the card's y 500, clear of the presenter corner (bottom 605 < 680) */
+  #a1n-page { position:absolute; inset:auto; left:900px; top:395.5px; width:924px; height:209px; overflow:hidden;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.14), 0 20px 60px rgba(0,0,0,0.5); background:#ffffff; visibility:hidden; opacity:0; }
+  #a1n-pagein { position:absolute; inset:auto; left:0; top:0; width:924px; height:209px; }
+  #a1n-img { position:absolute; inset:auto; left:-107.925px; top:-1004.7px; width:1144.95px; height:1481.55px; }
+  #a1n-bar { position:absolute; inset:auto; left:27.2px; top:133.1px; width:241.4px; height:6px; background:#d8a13a; visibility:hidden; }
 
   /* chip: glass, top centre x 960, y 96 to 166 */
   #a1n-chipwrap { position:absolute; inset:auto; left:0; top:96px; width:1920px; height:70px; display:flex; justify-content:center; }
