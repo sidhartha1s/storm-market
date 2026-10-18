@@ -4,11 +4,12 @@
 <body>
 <template>
 <style>
-  /* g-a3-stair: A3-S9, host 571.587 to 582.827 (11.24 s). nx-a3-s9 starts with the host, so local t = a3-s9 words.json time.
-     BLOCKED on the base: compositions/g-a3-house-section.html is not built, so ground, grade line, house floor (with the
-     x 1120-1250 stair opening), walls, roof and the 8.28 collapse are NOT drawn here. Only what does not need the base:
-     basement, stair, bulb + glow, chips, push, exit. The base block drops into #a3st-cam under #a3st-svg's first child. */
+  /* g-a3-stair: A3-S9, host data-start 592.257 for 11.24 s (index.html). nx-a3-s9 starts with the host, so local t = a3-s9 words.json time.
+     House above the basement copies g-a3-house-section's geometry (earth, grade line, floor, walls, roof) minus partitions, tub,
+     figure, ghost and foundation band; the floor has the x 1120-1250 stair opening. Schematic, not to scale. */
   #g-a3-stair-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #a3st-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .a3st-diaglabel { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2; }
   #a3st-cam { position:absolute; inset:0; }
   #a3st-svg { position:absolute; inset:0; width:1920px; height:1080px; }
 
@@ -24,11 +25,11 @@
     letter-spacing:1px; color:#f2f5f8; white-space:nowrap; text-shadow:0 2px 14px rgba(0,0,0,.7); }
 
   #a3st-srcfloat { position:absolute; inset:auto; left:96px; bottom:54px; }
-  #a3st-src { display:table; box-sizing:border-box; padding:6px 16px; border-radius:14px;
+  #a3st-src { display:table; box-sizing:border-box; padding:6px 12px; border-radius:14px;
     background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,.14);
     visibility:hidden; opacity:0; }
-  .a3st-srcline { display:block; font-family:Arial,sans-serif; font-weight:400; font-size:20px; line-height:26px; letter-spacing:.5px;
+  .a3st-srcline { display:block; font-family:Arial,sans-serif; font-weight:400; font-size:20px; line-height:26px; letter-spacing:0;
     color:#c8d3e0; white-space:nowrap; }
 </style>
 <div id="g-a3-stair-root" data-composition-id="g-a3-stair" data-width="1920" data-height="1080">
