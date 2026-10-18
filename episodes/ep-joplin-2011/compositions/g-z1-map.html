@@ -30,6 +30,9 @@
     box-sizing:border-box; white-space:nowrap; font:700 30px/36px Arial, sans-serif; letter-spacing:1px; color:#dfe7ee;
     background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,.14); border-radius:28px; opacity:0; visibility:hidden; }
+  /* chips 2 and 3 live in the pushed framing, where the map fills y 53 to 510 across x 600 to 1861 (frame read FAIL 1):
+     left on the source line's x 96, clear of streets, city, path and dots in every camera state they show in */
+  #g-z1-map-chip2, #g-z1-map-chip3 { left:96px; right:auto; margin:0; }
   /* source line x 96, baseline 1010 */
   .gzm-src { position:absolute; left:96px; top:993px; font:700 20px/20px Arial, sans-serif; color:#c8d3e0;
     white-space:nowrap; opacity:0; visibility:hidden; }
