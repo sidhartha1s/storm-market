@@ -1,6 +1,6 @@
 ---
 name: mini-storms
-description: "Mini-storms — the fast lane of The Warning Hour (storm-market repo): 8–12 min seasonal / breaking / outlier videos — 8–12 min, stitched news + PD + social clips and Ken-Burns stills, narration, red emphasis text, BREAKING NEWS packaging, shipped in ≤3 h. Use the MOMENT the user asks for a quick / breaking / seasonal / outlier / news-style storm-market video (e.g. \"Krakatoa video\", \"Nepal floods quick one\", \"El Niño Texas warning\", \"seasonal video\", \"mini storm\", \"/mini-storms\"). NOT for the weekly documentary episodes — those are /storm-episode (same repo, same voice, different pace). Forked from storm-episode 2026-09-08; renamed from storm-breaking 2026-09-08 (owner)."
+description: "Mini-storms — the fast lane of The Warning Hour (storm-market repo): 8–12 min seasonal / breaking / outlier videos — 8–12 min, stitched news + PD + social clips and punch-zoomed stills, narration, red emphasis text, BREAKING NEWS packaging, shipped in ≤3 h. Use the MOMENT the user asks for a quick / breaking / seasonal / outlier / news-style storm-market video (e.g. \"Krakatoa video\", \"Nepal floods quick one\", \"El Niño Texas warning\", \"seasonal video\", \"mini storm\", \"/mini-storms\"). NOT for the weekly documentary episodes — those are /storm-episode (same repo, same voice, different pace). Forked from storm-episode 2026-09-08; renamed from storm-breaking 2026-09-08 (owner)."
 ---
 
 # mini-storms — the fast lane of The Warning Hour
@@ -123,7 +123,7 @@ Priority order, per clip:
    9:16 clips are mounted centre in a blurred, darkened copy of themselves + vignette, with an
    on-screen `@handle` credit in the lower-left for the clip's whole duration (Stefan Burns
    convention: "TikTok @ghiefebri"). ALWAYS narrated over, never the source audio alone.
-6. Stills with motion: slow pan / push (3–6 % over the hold) via WAAPI; never a static still >4 s.
+6. Stills with motion: a quick punch zoom in/out, pop or overlay on the narration beat, never a slow pan/push; never a static still >4 s (DESIGN.md "Footage motion").
 - **Storm-chaser / independent videographer footage: still NEVER without a licence.** Credit ≠
   licence. Social clips of the actual event from bystanders are the target, not chasers' reels.
 - Similar-looking is fine: rain, ash, floodwater from anywhere as b-roll; only the CLAIMED

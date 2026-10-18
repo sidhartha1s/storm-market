@@ -12,7 +12,7 @@ CLAUDE.md already said "don't run other heavy sessions during a final render". T
 makes it a gate instead of a sentence, because the failure costs 10 minutes and looks
 like an asset problem.
 
-Exits non-zero (and says what to close) if the box is not quiet enough to render.
+Exits non-zero (and says why, in GB) if the box is not quiet enough to render; it never asks the owner to close his apps.
 
 It also enforces two things that were written as prose rules and therefore forgotten:
 the media budget (media_budget.py) and the version pin. "Remember to run npm view"
@@ -87,13 +87,110 @@ def busy_refusal():
     if free < render_busy.MIN_FREE_GB:
         print(f"[preflight] REFUSING TO RENDER — {free:.1f} GB free, need "
               f"{render_busy.MIN_FREE_GB:g} GB so the render keeps headroom (owner "
-              "2026-09-11). Close a browser or wait.", file=sys.stderr)
+              "2026-09-11). Wait for memory to free or render on the other box; never ask the owner to close his apps.", file=sys.stderr)
         return 2
     print(f"[preflight] OK — no render alive, {free:.1f} GB free.")
     return None
 
 
+# --- layer parity: a documentary renders only with every layer the owner already asked for ---
+# The Joplin draft (18 Oct 26) went to render with 0 corner-circle mounts and no music bed while
+# both shipped documentaries had them. Owner: "it should be fucking checked before you fucking fire render".
+
+DOC_SLUG = "ep-"
+TAG = re.compile(r'<(audio|video)\b((?:[^>"]|"[^"]*")*)>', re.I)
+ATTR = re.compile(r'([\w-]+)(?:="([^"]*)")?')
+BED_COVER_MIN = 0.80
+PAUL_CLIPS = 6
+
+
+def _mounts(html):
+    live = re.sub(r"<!--.*?-->", "", html, flags=re.S)  # a commented-out mount is not mounted
+    return [(tag.lower(), dict(ATTR.findall(attrs))) for tag, attrs in TAG.findall(live)]
+
+
+def _window(attrs):
+    start = float(attrs["data-start"])
+    return start, start + float(attrs["data-duration"])
+
+
+def _circle_gap(mounts):
+    # same window rule as circle_cut.windows (pip class + pip-w id), so the gate and the cutter agree
+    if not any(t == "video" and "pip" in a.get("class", "").split() and a.get("id", "").startswith("pip-w")
+               for t, a in mounts):
+        return '0 <video id="pip-w<n>" class="pip"> mounts'
+
+
+def _bed_gap(mounts):
+    # A bed is how the shipped episodes mount it: data-bed plus "bed" or "mus" in the id (Palm Sunday
+    # sx-bed-a1, El Reno sx-mus-bed-a, 1974 sx-mus-a1). Swells and hits also carry data-bed, so the
+    # attribute alone is not a bed.
+    beds = sorted(_window(a) for t, a in mounts
+                  if t == "audio" and "data-bed" in a and {"bed", "mus"} & set(a.get("id", "").split("-")))
+    if not beds:
+        return "0 bed <audio> mounts (data-bed with 'bed' or 'mus' in the id)"
+    narration = [_window(a) for t, a in mounts if t == "audio" and re.match(r"nx-(?!ins)", a.get("id", ""))]  # same narration rule as lint_timeline / circle_audio
+    if not narration:
+        return "no nx- narration to measure the bed against"
+    lo, hi = min(s for s, _ in narration), max(e for _, e in narration)
+    covered, edge = 0.0, lo
+    for start, end in beds:
+        start, end = max(start, edge), min(end, hi)
+        if end > start:
+            covered, edge = covered + end - start, end
+    share = covered / (hi - lo)
+    if share < BED_COVER_MIN:
+        return f"beds cover {share:.0%} of the narration span {lo:.1f}-{hi:.1f} s, need {BED_COVER_MIN:.0%}"
+
+
+def _paul_gap(mounts):
+    clips = {a["id"] for t, a in mounts
+             if t == "video" and re.fullmatch(r"ins-paul-\d+", a.get("id", ""))}
+    if len(clips) < PAUL_CLIPS:
+        return f'{len(clips)} <video id="ins-paul-<n>"> mounts, need {PAUL_CLIPS}'
+
+
+LAYERS = (
+    ("presenter corner circle", _circle_gap,
+     "mg-quickref.md 'Corner circle': Paul's face speaking the narration, on through the whole "
+     "documentary wherever the corner is free"),
+    ("music bed", _bed_gap,
+     "CLAUDE.md 'Sound': one bed across the episode plus swells at script peaks (about every "
+     "45 to 60 s) is the default"),
+    ("Paul full-frame clips", _paul_gap,
+     "mg-quickref.md 'Paul on screen': Full frame (Flow/Omni), about 1 min: 6 clips of 10 s"),
+)
+
+
+def missing_layers(slug, html):
+    """(layer, finding, rule) for every owner-asked layer the timeline lacks; [] outside documentaries."""
+    if not slug.startswith(DOC_SLUG):
+        return []
+    mounts = _mounts(html)
+    return [(name, gap, rule) for name, check, rule in LAYERS if (gap := check(mounts))]
+
+
+def layer_refusal(episode):
+    """None if every layer is mounted, else the exit code preflight should use."""
+    missing = missing_layers(episode.name, (episode / "index.html").read_text(encoding="utf-8"))
+    if not missing:
+        print("[layers] OK: circle, bed and Paul's clips are mounted.")
+        return None
+    for name, gap, rule in missing:
+        print(f"[layers] MISSING {name}: {gap}. Rule: {rule}", file=sys.stderr)
+    return 6
+
+
 def main():
+    episode = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.cwd()
+    rc = layer_refusal(episode)
+    if "--layers" in sys.argv[2:]:  # run_gates.py runs only this check, so a missing layer shows before render.cmd
+        sys.exit(rc or 0)
+    if rc:
+        print("[preflight] REFUSING TO RENDER: a layer the owner already asked for is missing.",
+              file=sys.stderr)
+        sys.exit(rc)
+
     rc = busy_refusal()
     if rc:
         print("[preflight] A render that starts here fails at video_extract with "
@@ -106,7 +203,6 @@ def main():
     # The asset check is part of preflight so it cannot be skipped by launching a render
     # directly: the render script calls this file and stops on a non-zero exit.
     here = Path(__file__).resolve().parent
-    episode = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.cwd()
     rc = version_check(here.parent)
     if rc:
         print("[preflight] REFUSING TO RENDER — version pin is not trustworthy (see above).",

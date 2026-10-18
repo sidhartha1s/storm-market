@@ -82,9 +82,13 @@ if errorlevel 1 (
   echo %ERRORLEVEL% > "render_%MODE%_done.marker"
   exit /b %ERRORLEVEL%
 )
-REM GPU pin (dedicated GPU, not the Intel iGPU — owner 2026-09-15) + the 4 GB RAM floor. Both
-REM existed only as a "run this by hand first" instruction until now; nothing called --launch.
-"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_busy.py" --launch >> "%PREFLIGHT_LOG%" 2>&1
+REM GPU pin (dedicated GPU, not the Intel iGPU — owner 2026-09-15) + the worker count that fits free
+REM RAM. RENDER_WORKERS is the request (fps30 workers use more memory than draft; default 3 as tested
+REM for draft); render_busy lowers it to what fits (owner 18 Oct 26: fewer workers beats waiting),
+REM writes it to render_%MODE%.workers, and refuses only when 1 worker does not fit.
+if not defined RENDER_WORKERS set RENDER_WORKERS=3
+del /q "render_%MODE%.workers" 2>nul
+"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_busy.py" --launch "render_%MODE%.workers" >> "%PREFLIGHT_LOG%" 2>&1
 if errorlevel 1 (
   echo RENDER_BUSY REFUSED exit %ERRORLEVEL% — see %CD%\%PREFLIGHT_LOG%
   type "%PREFLIGHT_LOG%"
@@ -97,9 +101,8 @@ REM audio. Sweep them before every render — a render dir must contain exactly 
 del /q _*_tmp.html 2>nul
 set PRODUCER_PAGE_NAVIGATION_TIMEOUT_MS=120000
 set PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000
-REM worker count is tunable for RAM-tight full renders (fps30 workers use more memory than
-REM draft); default 3 as tested for draft, drop to 2 on a low-free-RAM box. Set RENDER_WORKERS.
-if not defined RENDER_WORKERS set RENDER_WORKERS=3
+REM RENDER_BUSY_OK=1 skips render_busy, so no .workers file: the request stands.
+if exist "render_%MODE%.workers" set /p RENDER_WORKERS=<"render_%MODE%.workers"
 echo %_FPS% > "render_%MODE%.fps"
 call npx hyperframes@0.8.149 render . --gpu --browser-gpu --experimental-fast-capture=true %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
 set RC=%ERRORLEVEL%

@@ -13,7 +13,7 @@ The rest of the grammar is inline in `index.html` (copy from `episodes/br-elnino
 
 - **popfig** (red Abril figure, ≤3 words, top 38 %): `.popfig .pf-big` CSS from ep6 + `pop(sel, at, hold)` (slam in 0.35 s, fade-up out).
 - **data chip** (bottom-left running stat): `.chip` glass pill above the bug strip; `chipSet(text, at)`.
-- **still-kenburns**: `<section class="clip still-wrap"><img>` + `kb(sel, at, dur, s0, s1, x0, x1, y0, y1)`; 3–6 % over the hold, never a static still >4 s.
+- **still-kenburns**: `<section class="clip still-wrap"><img>` + `kb(sel, at, dur, s0, s1, x0, x1, y0, y1)`; use it for a quick punch zoom in/out on the narration beat (short dur, bigger s0→s1), never a slow 3–6 % drift over the hold (DESIGN.md "Footage motion").
 - **vertical-embed-credit**: `<section class="clip still-wrap contain-wrap">` holding a blurred cover copy (`img.blurfill` / `video.blurfill`) under the contained 9:16 clip, plus `.credit` lower-left `@handle · platform` for the clip's whole duration.
 - **overlay-vignette**: `#vignette`, `#grade` (cold steel soft-light). The `#grain` canvas (`grain.js`, `filmLayer`) is retired: no grain on new work (DESIGN.md "Look: no grain"); shipped episodes keep theirs.
 - **data-feed hold**: a labelled PD loop (`.srclab` "SOURCE: NOAA CPC") held 20–40 s with a slow push; one every 2–3 min.
