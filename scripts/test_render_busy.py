@@ -76,7 +76,7 @@ with tempfile.TemporaryDirectory() as d:
     stub.write_text(f"import sys\nsys.path.insert(0, {str(S)!r})\nimport render_busy\n"
                     "render_busy.free_gb = lambda: 3.3\nrender_busy.live_renders = lambda: []\n"
                     "render_busy.pin_chrome_to_dedicated_gpu = lambda: None\nrender_busy.main()\n", encoding="utf-8")
-    block = "\r\n".join(render_cmd[start:end + 1]).replace('"%~dp0render_busy.py"', f'"{stub}"')
+    block = "\n".join(render_cmd[start:end + 1]).replace('"%~dp0render_busy.py"', f'"{stub}"')
     dry = Path(d) / "dry.cmd"
     dry.write_text("@echo off\nset MODE=draft\nset PREFLIGHT_LOG=pre.log\n" + block
                    + "\necho WORKERS=%RENDER_WORKERS%\n", encoding="utf-8")
