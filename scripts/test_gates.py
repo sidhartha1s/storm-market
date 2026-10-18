@@ -491,7 +491,7 @@ with tempfile.TemporaryDirectory() as d:
                        capture_output=True, text=True)
     ran = order_log.read_text(encoding="utf-8").splitlines() if order_log.exists() else []
     check("run_gates: stops at the first failing gate (lint_timeline.py), never reaches later gates",
-          ran == ["sweep_episode.py", "lint_timeline.py"], f"ran={ran}\n{r.stdout}{r.stderr}")
+          ran == ["render_preflight.py", "sweep_episode.py", "lint_timeline.py"], f"ran={ran}\n{r.stdout}{r.stderr}")
     check("run_gates: exits non-zero when a gate fails", r.returncode == 1, f"(exit {r.returncode})")
     check("run_gates: names the failing gate", "lint_timeline.py" in r.stdout, r.stdout[-300:])
 
