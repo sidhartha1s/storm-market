@@ -1,0 +1,74 @@
+<!--
+  g-a2-quote-108: a2-s4, host 338.47 for 6.38 s ("see." mark to "went" + 1.0 s; host end 344.85). Brief briefs/a2/g-a2-quote-108.md.
+  Overlay: glass quote card, chip and source line over a NIST ground photograph (mounted in index.html on a lower track, not here).
+  Comp-local time = (335.71 - 338.47) + the a2-s4.words.json word start = word start - 2.76.
+  Quote = NIST Interview 108 (E34) verbatim in three lines; source line = E7 (NIST E.3). Card x 160 to 1520, y 600 to 960, clear of x >= 1600, y >= 680.
+-->
+<template>
+<style>
+  #a2q-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  /* chip top-left, source pill top-right: glass, 54 px from the top, 96 px from the sides */
+  .a2q-glass { position:absolute; inset:auto; box-sizing:border-box; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:28px; box-shadow:none; visibility:hidden; opacity:0; }
+  #a2q-chip { left:96px; top:54px; padding:0 36px; height:76px; font:900 52px/74px 'Arial Black', Arial, sans-serif;
+    letter-spacing:2px; color:#f2f5f8; white-space:nowrap; }
+  #a2q-src { right:96px; top:54px; padding:0 30px; height:52px; font:700 20px/50px Arial, sans-serif;
+    letter-spacing:1px; color:#c8d3e0; white-space:nowrap; }
+
+  /* floater carries the y drift so the card keeps its own entrance and exit tweens */
+  #a2q-float { position:absolute; inset:auto; left:160px; top:600px; width:1360px; height:360px; }
+  #a2q-card { position:absolute; inset:auto; left:0; top:0; width:1360px; height:360px; padding:40px 56px; display:flex;
+    flex-direction:column; justify-content:center; }
+  .a2q-line { display:block; height:52px; font:italic 40px/52px Georgia,'Times New Roman',serif; color:#f2f5f8;
+    white-space:nowrap; visibility:hidden; opacity:0; }
+  #a2q-who { display:block; margin-top:28px; font:700 22px/26px Arial, sans-serif; letter-spacing:2px; color:#d8a13a;
+    white-space:nowrap; visibility:hidden; opacity:0; }
+</style>
+<div id="a2q-root" data-composition-id="g-a2-quote-108" data-width="1920" data-height="1080">
+  <div id="a2q-chip" class="a2q-glass">NOTHING TO SEE</div>
+  <div id="a2q-src" class="a2q-glass">NIST E.3: few environmental clues</div>
+  <div id="a2q-float">
+    <div id="a2q-card" class="a2q-glass">
+      <span id="a2q-p1" class="a2q-line">The tornado sirens went off once, we walked outside</span>
+      <span id="a2q-p2" class="a2q-line">and you couldn't really, didn't really see nothing then,</span>
+      <span id="a2q-p3" class="a2q-line">and we went back in and finished eating.</span>
+      <span id="a2q-who">A survivor · NIST Interview 108</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#a2q-";
+
+  /* SEE. a2-s4 2.76 -> local 0.00: chip and source line drop in */
+  tl.fromTo(Q+"chip", {autoAlpha:0, y:-24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0);
+  tl.fromTo(Q+"src", {autoAlpha:0, y:-24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.15);
+
+  /* ONE a2-s4 3.76 -> local 1.00: card in, attribution on it */
+  tl.fromTo(Q+"card", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 1);
+  tl.fromTo(Q+"who", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.2);
+  /* hold: card floats y 0 > -6 > 0 from 1.00 to the exit at 5.78 */
+  tl.to(Q+"float", {y:-6, duration:2.39, ease:"sine.inOut", yoyo:true, repeat:1}, 1);
+
+  /* quote line by line on the voice */
+  tl.fromTo(Q+"p1", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.6); /* WALKED a2-s4 5.36 */
+  tl.fromTo(Q+"p2", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.24); /* DIDN'T a2-s4 7.00 */
+  tl.fromTo(Q+"p3", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 5.38); /* WENT a2-s4 8.14 */
+
+  /* exit in the host's last 0.6 s (host end 6.38): slide 0.6 s power3.in, fade over the last 0.5 s so nothing is left at the cut */
+  tl.to(Q+"card", {x:980, duration:0.6, ease:"power3.in"}, 5.78);
+  tl.to(Q+"card", {autoAlpha:0, duration:0.5, ease:"power1.inOut"}, 5.88);
+  tl.to(Q+"chip", {x:-980, duration:0.6, ease:"power3.in"}, 5.78);
+  tl.to(Q+"chip", {autoAlpha:0, duration:0.5, ease:"power1.inOut"}, 5.88);
+  tl.to(Q+"src", {x:980, duration:0.6, ease:"power3.in"}, 5.78);
+  tl.to(Q+"src", {autoAlpha:0, duration:0.5, ease:"power1.inOut"}, 5.88);
+  tl.set(Q+"card", {autoAlpha:0}, 6.38);
+
+  window.__timelines["g-a2-quote-108"] = tl;
+})();
+</script>
+</template>

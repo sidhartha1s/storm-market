@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-intro-hook: H1-S1 cold open, host 0.00 to 19.10 (local t = clip time to 7.60, then h1-s1-tail time + 7.60).
+     Transparent root over Paul's full-frame clip (ins-paul-1). Cues come from ins-paul-1's own word times and the tail wav. Popfig top left, glance chip + source chip centre-left, one chip at a time.
+     Nothing in the logo spot (centre 1740, 900, 96 px). AbrilFig needs episodes/<slug>/fonts/AbrilFatface-Regular.ttf. */
+  @font-face { font-family:'AbrilFig'; src:url('fonts/AbrilFatface-Regular.ttf'); }
+  #ih-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+
+  /* popfig: no card behind it (owner 16 Aug 26), text-shadow copied from the ep6 exemplar */
+  #ih-pop { position:absolute; inset:auto; left:110px; top:90px; white-space:nowrap; transform-origin:left top; visibility:hidden; opacity:0; }
+  #ih-pop-big { display:block; height:150px; font-family:'AbrilFig',Georgia,serif; font-size:150px; line-height:150px; letter-spacing:.04em; color:#d0121f;
+    text-shadow:0 0 18px rgba(0,0,0,.95), 0 0 60px rgba(120,0,0,.55), 0 6px 26px rgba(0,0,0,.9), 0 2px 4px #000; }
+  #ih-pop-sub { display:block; margin:10px 0 0 6px; font-family:Arial,sans-serif; font-weight:700; font-size:40px; line-height:46px; letter-spacing:1px; color:#f2f5f8;
+    text-shadow:0 0 14px rgba(0,0,0,.95), 0 3px 10px #000; }
+
+  /* floats carry the y drift so each chip keeps its own entrance and exit tweens */
+  .ih-float { position:absolute; inset:auto; left:110px; }
+  .ih-glass { box-sizing:border-box; white-space:nowrap; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+    visibility:hidden; opacity:0; }
+  .ih-glance { height:110px; padding:0 40px; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:64px; line-height:110px; color:#f2f5f8;
+    text-shadow:0 2px 14px rgba(0,0,0,.7); }
+  .ih-source { height:52px; padding:0 24px; font-family:Arial,sans-serif; font-weight:700; font-size:22px; line-height:52px; letter-spacing:2px; color:#c8d3e0; }
+  .ih-glanceF { top:440px; }
+  .ih-sourceF { top:572px; }
+</style>
+<div id="ih-root" data-composition-id="g-intro-hook" data-width="1920" data-height="1080">
+  <div id="ih-pop">
+    <span id="ih-pop-big">May 22, 2011</span>
+    <span id="ih-pop-sub">Joplin, Missouri</span>
+  </div>
+
+  <div id="ih-c1f" class="ih-float ih-glanceF"><div id="ih-c1" class="ih-glass ih-glance">TORNADO SIREN</div></div>
+
+  <div id="ih-c2f" class="ih-float ih-glanceF"><div id="ih-c2" class="ih-glass ih-glance">135 INDOORS</div></div>
+  <div id="ih-s2f" class="ih-float ih-sourceF"><div id="ih-s2" class="ih-glass ih-source">135 of 155 impact-related · inside a structure · NIST Finding 40</div></div>
+
+  <div id="ih-c3f" class="ih-float ih-glanceF"><div id="ih-c3" class="ih-glass ih-glance">NONE FOUND BELOW GROUND</div></div>
+  <div id="ih-s3f" class="ih-float ih-sourceF"><div id="ih-s3" class="ih-glass ih-source">No evidence any of the lives lost were underground · NIST Finding 46</div></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  /* cue times: ins-paul-1 words.json (0 to 7.60) for chip 1, h1-s1-tail words.json + 7.60 for chips 2 and 3 */
+  const tl = gsap.timeline({ paused: true });
+
+  /* OKAY 0.00: popfig arrives, in by 0.35 */
+  tl.fromTo("#ih-pop", { scale: 0.82, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "back.out(1.6)" }, 0);
+  /* GOES 2.86: popfig slides out, gone by 3.16, before TORNADO SIREN (3.06 + 0.4) is fully in */
+  tl.to("#ih-pop", { x: -700, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 2.86);
+
+  /* OFF. 3.06: glance chip 1, out on YOU 6.20; float is 4 legs of 0.78 s, back at y 0 for the exit */
+  tl.fromTo("#ih-c1", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 3.06);
+  tl.fromTo("#ih-c1f", { y: 0 }, { y: -3, duration: 0.78, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 3.06);
+  tl.to("#ih-c1", { x: -700, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 6.2);
+
+  /* 135 9.10: glance chip 2. Its source chip starts 9.15, not at OF 9.58 (brief 5): brief 4 truth 3 wants it under the chip right away */
+  tl.fromTo("#ih-c2", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 9.1);
+  tl.fromTo("#ih-s2", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 9.15);
+  tl.fromTo("#ih-c2f", { y: 0 }, { y: -3, duration: 1.22, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 9.1);
+  tl.fromTo("#ih-s2f", { y: 0 }, { y: -3, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 9.15);
+  /* AND 13.98: chip 2 and its source chip out together; 0.5 s (brief 3 says 0.4) so the empty span to BELOW 18.46 is 3.98 s, under the 4.0 s idle gate */
+  tl.to("#ih-c2", { x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 13.98);
+  tl.to("#ih-s2", { x: -700, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 13.98);
+
+  /* BELOW 18.46: glance chip 3 and source chip 3 together (brief 5 staggers the source 0.15; truth 3 says never without it). They ride the 19.10 cut, no exit. */
+  tl.fromTo("#ih-c3", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 18.46);
+  tl.fromTo("#ih-s3", { x: -80, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 18.51);
+  tl.to("#ih-c3f", { y: -3, duration: 0.64, ease: "sine.inOut" }, 18.46);
+  tl.to("#ih-s3f", { y: -3, duration: 0.59, ease: "sine.inOut" }, 18.51);
+
+  window.__timelines["g-intro-hook"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

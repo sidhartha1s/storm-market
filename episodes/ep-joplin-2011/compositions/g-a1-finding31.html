@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a1-finding31: A1-S6, host = a1-s6 0.00 to 13.26 (wav 12.96 + seam), local time = a1-s6 time.
+     Page crop numbers (scale 1.78: capitals 16 px in the scan -> 28.5 px on screen):
+     window = scan x 326..1191, y 1013..1162 -> Finding 31 only; Finding 30 ends at scan y 997, Finding 32 starts at 1183. */
+  #g-a1-finding31-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #f31-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #f31-paper { position:absolute; left:140px; top:201px; width:1640px; height:470px; background:#fff; overflow:hidden;
+    border:1px solid rgba(255,255,255,0.14); box-sizing:border-box; box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    opacity:0; visibility:hidden; }
+  #f31-win { position:absolute; left:50px; top:98px; width:1540px; height:265px; overflow:hidden; }
+  #f31-img { position:absolute; left:-580.3px; top:-1803.1px; width:2397.7px; height:3102.5px; }
+  .f31-bar { position:absolute; height:6px; border-radius:3px; background:#d8a13a; }
+  #f31-bar1 { left:65.6px; top:169.9px; width:456.6px; }
+  #f31-bar2 { left:531.9px; top:169.9px; width:397.8px; }
+  #f31-bar3a { left:937.8px; top:169.9px; width:638.1px; }
+  #f31-bar3b { left:65.6px; top:225px; width:397.8px; }
+  #f31-chipwrap { position:absolute; left:0; top:96px; width:1920px; height:70px; display:flex; justify-content:center; }
+  #f31-chip { height:70px; line-height:70px; padding:0 40px; box-sizing:border-box; white-space:nowrap;
+    font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; letter-spacing:2px; color:#f2f5f8;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden; }
+  #f31-src { position:absolute; left:96px; top:993px; line-height:20px; white-space:nowrap;
+    font-family:Arial,sans-serif; font-weight:700; font-size:20px; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a1-finding31-root" data-composition-id="g-a1-finding31" data-width="1920" data-height="1080">
+  <div id="f31-ground"></div>
+  <div id="f31-paper">
+    <div id="f31-win"><img id="f31-img" src="media/candidates/a1/a1-s6_c1_nist-exec-summary-finding31.jpg" alt="NIST NCSTAR 3 Executive Summary, Finding 31"></div>
+    <div class="f31-bar" id="f31-bar1"></div>
+    <div class="f31-bar" id="f31-bar2"></div>
+    <div class="f31-bar" id="f31-bar3a"></div>
+    <div class="f31-bar" id="f31-bar3b"></div>
+  </div>
+  <div id="f31-chipwrap"><div id="f31-chip">NO FALSE-ALARM PROBLEM</div></div>
+  <div id="f31-src">NIST NCSTAR 3 &middot; Finding 31</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const HOST = 13.26; /* a1-s6 wav 12.96 + seam 0.30 */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#f31-";
+  /* ground drifts the whole host window (also holds the timeline to the host end through the seam) */
+  tl.to(P+"ground", { scale: 1.03, duration: HOST, ease: "none" }, 0);
+  /* page in on frame 0 */
+  tl.fromTo(P+"paper", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0);
+  /* RECORD a1-s6 1.60: source line rises */
+  tl.fromTo(P+"src", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.6);
+  /* slow push 0.60 to 12.96, continuous */
+  tl.to(P+"paper", { scale: 1.03, duration: 12.36, ease: "none" }, 0.6);
+  /* stroke 1 DESPITE a1-s6 2.68 to BELIEVED 3.24 + 0.4 */
+  tl.fromTo(P+"bar1", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.96, ease: "power1.inOut" }, 2.68);
+  /* stroke 2 NO a1-s6 5.34 to EVIDENCE 5.74 + 0.4 */
+  tl.fromTo(P+"bar2", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.8, ease: "power1.inOut" }, 5.34);
+  /* stroke 3 JOPLIN'S a1-s6 6.46 to PROBLEM. 8.74 + 0.3 = 9.04, one bar per line at one pen speed (638 + 398 px) */
+  tl.fromTo(P+"bar3a", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 1.59, ease: "none" }, 6.46);
+  tl.fromTo(P+"bar3b", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.99, ease: "none" }, 8.05);
+  /* chip PROBLEM. a1-s6 8.74 */
+  tl.fromTo(P+"chip", { autoAlpha: 0, y: -26 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 8.74);
+  /* exit 12.36 to 12.96: page, chip and source line fade through to the ground */
+  tl.to([P+"paper", P+"chip", P+"src"], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 12.36);
+  window.__timelines["g-a1-finding31"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a6-board-half: A6-S4, host start a6-s4 1.68, so local t = a6-s4 words.json time - 1.68. Full frame, ground on from frame 0.
+     Frame 0 = the lifted state of g-a6-board-r7 (not built yet, so reproduced here from g-a5-recs-board's own geometry; A5 tile 180 x 120 wins
+     over the r7 brief's 300 x 170): grid left 380 top 250, pitch 204 x 144, tile 7 = row 2 col 3 (box x 788 to 968, y 394 to 514).
+     Lifted tile 7 = 2.4x: 432 x 288, centre (960, 500), box x 744 to 1176, y 356 to 644. The other 15 tiles sit at 0.25 opacity, scale 0.96.
+     The lifted tile is drawn at screen size in #bh-lift (no scale tween), so no label rides a scale. Four rows pitch 56, centres y 416 472 528 584. */
+  #bh-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #bh-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  #bh-board { position:absolute; inset:0; }
+  #bh-grid { position:absolute; inset:auto; left:380px; top:250px; width:792px; height:552px; opacity:.25; }
+  .bh-tile { position:absolute; box-sizing:border-box; width:180px; height:120px; border-radius:14px; background:#2a3644; border:1px solid #4a5560; transform:scale(.96); }  /* lifted state: scale in CSS, so frame 0 is right on a first seek */
+  .bh-n { position:absolute; inset:auto; left:16px; top:16px; font-family:Arial,sans-serif; font-weight:700; font-size:30px; line-height:34px; color:#93a3b2; }
+
+  /* numerals of tiles 8, 11, 12 sit under the opaque lifted tile (box x 744 to 1176, y 356 to 644); hidden so the sub-rows never share pixels with them */
+  #bh-t8 .bh-n, #bh-t11 .bh-n, #bh-t12 .bh-n { visibility:hidden; }
+
+  /* lifted tile 7: box x 744 to 1176, y 356 to 644 */
+  #bh-lift { position:absolute; inset:0; }
+  #bh-t7 { position:absolute; inset:auto; left:744px; top:356px; width:432px; height:288px; border-radius:34px; background:#2a3644; }
+  #bh-border { position:absolute; inset:auto; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  #bh-num { position:absolute; inset:auto; left:1064px; top:372px; width:80px; text-align:right; font-family:Arial,sans-serif; font-weight:700; font-size:72px; line-height:80px; color:#93a3b2; }
+  .bh-row { position:absolute; inset:auto; left:780px; height:28px; width:300px; visibility:hidden; opacity:0; }
+  .bh-mark { position:absolute; inset:auto; left:0; top:0; width:28px; height:28px; }
+  .bh-lab { position:absolute; inset:auto; left:48px; top:0; font-family:Arial,sans-serif; font-weight:700; font-size:30px; line-height:28px; letter-spacing:1px; white-space:nowrap; color:#93a3b2; }
+
+  /* chip: glass surface, row-value tier, centre (960, 790) */
+  #bh-chip { position:absolute; inset:auto; left:560px; top:752px; width:800px; height:76px; box-sizing:border-box; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45); visibility:hidden; opacity:0; }
+  #bh-chip-t { position:absolute; inset:auto; left:0; right:0; top:0; bottom:0; text-align:center; font-family:Arial,sans-serif; font-weight:700; font-size:30px;
+    line-height:74px; letter-spacing:1px; color:#f2f5f8; white-space:nowrap; }
+
+  /* source line, bottom-left (the presenter circle owns x >= 1600, y >= 680) */
+  #bh-src { position:absolute; inset:auto; left:96px; bottom:60px; padding:5px 12px; border-radius:14px; font-family:Arial,sans-serif; font-size:20px;
+    letter-spacing:.5px; color:#c8d3e0; background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14); visibility:hidden; opacity:0; }
+</style>
+<div id="bh-root" data-composition-id="g-a6-board-half" data-width="1920" data-height="1080">
+  <div id="bh-ground"></div>
+  <div id="bh-board">
+    <div id="bh-grid">
+      <div class="bh-tile" id="bh-t1"  style="left:0px;top:0px"><span class="bh-n">1</span></div>
+      <div class="bh-tile" id="bh-t2"  style="left:204px;top:0px"><span class="bh-n">2</span></div>
+      <div class="bh-tile" id="bh-t3"  style="left:408px;top:0px"><span class="bh-n">3</span></div>
+      <div class="bh-tile" id="bh-t4"  style="left:612px;top:0px"><span class="bh-n">4</span></div>
+      <div class="bh-tile" id="bh-t5"  style="left:0px;top:144px"><span class="bh-n">5</span></div>
+      <div class="bh-tile" id="bh-t6"  style="left:204px;top:144px"><span class="bh-n">6</span></div>
+      <div class="bh-tile" id="bh-t8"  style="left:612px;top:144px"><span class="bh-n">8</span></div>
+      <div class="bh-tile" id="bh-t9"  style="left:0px;top:288px"><span class="bh-n">9</span></div>
+      <div class="bh-tile" id="bh-t10" style="left:204px;top:288px"><span class="bh-n">10</span></div>
+      <div class="bh-tile" id="bh-t11" style="left:408px;top:288px"><span class="bh-n">11</span></div>
+      <div class="bh-tile" id="bh-t12" style="left:612px;top:288px"><span class="bh-n">12</span></div>
+      <div class="bh-tile" id="bh-t13" style="left:0px;top:432px"><span class="bh-n">13</span></div>
+      <div class="bh-tile" id="bh-t14" style="left:204px;top:432px"><span class="bh-n">14</span></div>
+      <div class="bh-tile" id="bh-t15" style="left:408px;top:432px"><span class="bh-n">15</span></div>
+      <div class="bh-tile" id="bh-t16" style="left:612px;top:432px"><span class="bh-n">16</span></div>
+    </div>
+    <div id="bh-lift">
+      <div id="bh-t7"></div>
+      <!-- half lit: two 4 px border paths, left half Amber 1, right half Diagram grey 1 (Diagram grey 2 is the tile fill, so it would not show) -->
+      <svg id="bh-border" viewBox="0 0 1920 1080">
+        <path id="bh-b-left"  d="M960 358 H778 A32 32 0 0 0 746 390 V610 A32 32 0 0 0 778 642 H960" fill="none" stroke="#d8a13a" stroke-width="4"/>
+        <path id="bh-b-right" d="M960 358 H1142 A32 32 0 0 1 1174 390 V610 A32 32 0 0 1 1142 642 H960" fill="none" stroke="#4a5560" stroke-width="4"/>
+      </svg>
+      <span id="bh-num">7</span>
+      <div class="bh-row" id="bh-r1" style="top:402px">
+        <svg class="bh-mark" id="bh-m1" viewBox="0 0 28 28"><rect x="1.5" y="1.5" width="25" height="25" rx="5" fill="#2a3644" stroke="#4a5560" stroke-width="3"/></svg>
+        <span class="bh-lab" id="bh-l1">APARTMENTS</span>
+      </div>
+      <div class="bh-row" id="bh-r2" style="top:458px">
+        <svg class="bh-mark" id="bh-m2" viewBox="0 0 28 28"><rect x="1.5" y="1.5" width="25" height="25" rx="5" fill="#2a3644" stroke="#4a5560" stroke-width="3"/></svg>
+        <span class="bh-lab" id="bh-l2">STORES</span>
+      </div>
+      <div class="bh-row" id="bh-r3" style="top:514px">
+        <svg class="bh-mark" id="bh-m3" viewBox="0 0 28 28">
+          <rect x="1.5" y="1.5" width="25" height="25" rx="5" fill="#2a3644" stroke="#4a5560" stroke-width="3"/>
+          <rect id="bh-m3-fill" x="0" y="0" width="28" height="28" rx="6" fill="#d8a13a" opacity="0"/>
+          <path id="bh-m3-tick" d="M7 14 L12 19 L21 9" fill="none" stroke="#04070c" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="22" stroke-dashoffset="22"/>
+        </svg>
+        <span class="bh-lab" id="bh-l3">SCHOOLS</span>
+      </div>
+      <div class="bh-row" id="bh-r4" style="top:570px">
+        <svg class="bh-mark" id="bh-m4" viewBox="0 0 28 28"><rect x="1.5" y="1.5" width="25" height="25" rx="5" fill="#2a3644" stroke="#4a5560" stroke-width="3"/></svg>
+        <span class="bh-lab" id="bh-l4">ASSEMBLY</span>
+      </div>
+    </div>
+  </div>
+  <div id="bh-chip"><span id="bh-chip-t">STORES, APARTMENTS: NOTHING LISTED</span></div>
+  <div id="bh-src">NIST Impacts page</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#bh-";
+
+  tl.set(Q+"m3-fill", { transformOrigin: "50% 50%", scale: 1 }, 0);
+  tl.set([Q+"m1", Q+"m2", Q+"m3", Q+"m4"], { transformOrigin: "50% 50%" }, 0);
+
+  /* four sub-rows land on "nothing" a6-s4 1.68 (local 0.00), stagger 0.15, R3 order: apartments, stores, schools, assembly */
+  tl.fromTo(Q+"r1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0);    /* NOTHING 1.68 */
+  tl.fromTo(Q+"r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.15);
+  tl.fromTo(Q+"r3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.3);
+  tl.fromTo(Q+"r4", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.45);
+
+  /* SCHOOLS mark fills and ticks: cue "says" 1.88 (local 0.20), but the SCHOOLS row is not on screen until it lands at 0.30, so the fill starts at 0.45 */
+  tl.fromTo(Q+"m3-fill", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 0.45); /* SAYS 1.88 */
+  tl.to(Q+"m3-tick", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 0.55);
+  tl.to(Q+"l3", { color: "#f2f5f8", duration: 0.3, ease: "power2.out" }, 0.45);
+
+  /* chip and source line on "storm" 3.14 (local 1.46) */
+  tl.fromTo(Q+"chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.46); /* STORM 3.14 */
+  tl.fromTo(Q+"src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.46);  /* STORM 3.14 */
+
+  /* STORES mark pulses on "stores" 4.30 (local 2.62), APARTMENTS mark on "homes" 4.76 (local 3.08); ASSEMBLY never pulses */
+  tl.to(Q+"m2", { scale: 1.15, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 2.62); /* STORES 4.30 */
+  tl.to(Q+"m1", { scale: 1.15, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 3.08); /* HOMES 4.76 */
+
+  /* hold with float (6 px) from 0.85 to 6.35; chip floats 4 px from 1.9 to 6.3 */
+  tl.to(Q+"board", { y: -6, duration: 2.75, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.85);
+  tl.to(Q+"chip", { y: -4, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.9);
+
+  /* exit 8.06 to 8.66 (local 6.38 to 6.98): tile and chip slide out, board, ground and source fade, onto the West Tower photograph */
+  tl.to(Q+"lift", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.38);  /* ends before REMEMBER 8.66 */
+  tl.to(Q+"chip", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.38);
+  tl.to(Q+"grid", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 6.38);
+  tl.to(Q+"src", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 6.38);
+  tl.to(Q+"ground", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 6.38);
+
+  window.__timelines["g-a6-board-half"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
