@@ -118,6 +118,10 @@ window.__timelines = window.__timelines || {};
     tl.to(l, { strokeDashoffset: ph - 58 * 17, duration: CUES.end - CUES.winds, ease: "none" }, CUES.winds);
   });
 
+  /* camera push 2.5 % about the room's base from winds to the cut: the thin dashes alone read as a freeze (freeze_scan 18 Oct);
+     at 1.025 the arrow tails reach x 1576, clear of the presenter corner (x >= 1600) */
+  tl.to(P + "cam", { scale: 1.025, svgOrigin: "900 820", duration: CUES.end - CUES.winds, ease: "sine.inOut" }, CUES.winds);
+
   /* live @14.68: house draws */
   tl.to(P + "house", { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, CUES.live);
 
