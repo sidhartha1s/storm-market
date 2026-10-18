@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-z1-board: Z1-S3, host start = nx-z1-s3 start (1158.857), so local t = z1-s3 words.json time. Full frame, ground on from frame 0.
+     Frame 0 = the held state of g-a6-board-half (copied, geometry unchanged): grid left 380 top 250, pitch 204 x 144, tile 7 = row 2 col 3.
+     Lifted tile 7 = 2.4x at centre (960, 500): box x 744 to 1176, y 356 to 644. The other 15 tiles sit at 0.25 opacity, scale 0.96.
+     The lifted tile is drawn at screen size in #bz-lift (no scale tween), so no label rides a scale. Four rows pitch 56. */
+  #bz-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #bz-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  #bz-board { position:absolute; inset:0; }
+  #bz-grid { position:absolute; inset:auto; left:380px; top:250px; width:792px; height:552px; opacity:.25; }
+  .bz-tile { position:absolute; box-sizing:border-box; width:180px; height:120px; border-radius:14px; background:#2a3644; border:1px solid #4a5560; transform:scale(.96); }
+  .bz-n { position:absolute; inset:auto; left:16px; top:16px; font-family:Arial,sans-serif; font-weight:700; font-size:30px; line-height:34px; color:#93a3b2; }
+
+  /* numerals of tiles 8, 11, 12 sit under the opaque lifted tile; hidden so the sub-rows never share pixels with them */
+  #bz-t8 .bz-n, #bz-t11 .bz-n, #bz-t12 .bz-n { visibility:hidden; }
+
+  /* lifted tile 7: box x 744 to 1176, y 356 to 644 */
+  #bz-lift { position:absolute; inset:0; }
+  #bz-t7 { position:absolute; inset:auto; left:744px; top:356px; width:432px; height:288px; border-radius:34px; background:#2a3644; }
+  #bz-border { position:absolute; inset:auto; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  #bz-num { position:absolute; inset:auto; left:1064px; top:372px; width:80px; text-align:right; font-family:Arial,sans-serif; font-weight:700; font-size:72px; line-height:80px; color:#93a3b2; }
+  .bz-row { position:absolute; inset:auto; left:780px; height:28px; width:300px; }
+  .bz-mark { position:absolute; inset:auto; left:0; top:0; width:28px; height:28px; }
+  .bz-lab { position:absolute; inset:auto; left:48px; top:0; font-family:Arial,sans-serif; font-weight:700; font-size:30px; line-height:28px; letter-spacing:1px; white-space:nowrap; color:#93a3b2; }
+
+  /* chip: glass surface, row-value tier, centre x 960, y 96 to 166 (tile top is 356) */
+  #bz-chip { position:absolute; inset:auto; left:660px; top:96px; width:600px; height:70px; box-sizing:border-box; border-radius:14px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-shadow:0 10px 40px rgba(0,0,0,.45); visibility:hidden; opacity:0; }
+  #bz-chip-t { position:absolute; inset:auto; left:0; right:0; top:0; bottom:0; text-align:center; font-family:Arial,sans-serif; font-weight:700; font-size:30px;
+    line-height:68px; letter-spacing:1px; color:#f2f5f8; white-space:nowrap; }
+
+  /* source lines, bottom-left (the presenter circle owns x >= 1600, y >= 680); NIST at the base position, ICC stacked above it */
+  .bz-src { position:absolute; inset:auto; left:96px; box-sizing:border-box; padding:5px 12px; border-radius:14px; font-family:Arial,sans-serif; font-weight:700; font-size:20px; line-height:24px;
+    letter-spacing:.5px; color:#c8d3e0; background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14); white-space:nowrap; }
+  #bz-src-nist { bottom:60px; }
+  #bz-src-icc { bottom:100px; visibility:hidden; opacity:0; }
+</style>
+<div id="bz-root" data-composition-id="g-z1-board" data-width="1920" data-height="1080">
+  <div id="bz-ground"></div>
+  <div id="bz-board">
+    <div id="bz-grid">
+      <div class="bz-tile" id="bz-t1"  style="left:0px;top:0px"><span class="bz-n">1</span></div>
+      <div class="bz-tile" id="bz-t2"  style="left:204px;top:0px"><span class="bz-n">2</span></div>
+      <div class="bz-tile" id="bz-t3"  style="left:408px;top:0px"><span class="bz-n">3</span></div>
+      <div class="bz-tile" id="bz-t4"  style="left:612px;top:0px"><span class="bz-n">4</span></div>
+      <div class="bz-tile" id="bz-t5"  style="left:0px;top:144px"><span class="bz-n">5</span></div>
+      <div class="bz-tile" id="bz-t6"  style="left:204px;top:144px"><span class="bz-n">6</span></div>
+      <div class="bz-tile" id="bz-t8"  style="left:612px;top:144px"><span class="bz-n">8</span></div>
+      <div class="bz-tile" id="bz-t9"  style="left:0px;top:288px"><span class="bz-n">9</span></div>
+      <div class="bz-tile" id="bz-t10" style="left:204px;top:288px"><span class="bz-n">10</span></div>
+      <div class="bz-tile" id="bz-t11" style="left:408px;top:288px"><span class="bz-n">11</span></div>
+      <div class="bz-tile" id="bz-t12" style="left:612px;top:288px"><span class="bz-n">12</span></div>
+      <div class="bz-tile" id="bz-t13" style="left:0px;top:432px"><span class="bz-n">13</span></div>
+      <div class="bz-tile" id="bz-t14" style="left:204px;top:432px"><span class="bz-n">14</span></div>
+      <div class="bz-tile" id="bz-t15" style="left:408px;top:432px"><span class="bz-n">15</span></div>
+      <div class="bz-tile" id="bz-t16" style="left:612px;top:432px"><span class="bz-n">16</span></div>
+    </div>
+    <div id="bz-lift">
+      <div id="bz-t7"></div>
+      <!-- half lit: two 4 px border paths, left half Amber 1, right half Diagram grey 1; the right half is the open half and lifts on "tornadoes" -->
+      <svg id="bz-border" viewBox="0 0 1920 1080">
+        <path id="bz-b-left"  d="M960 358 H778 A32 32 0 0 0 746 390 V610 A32 32 0 0 0 778 642 H960" fill="none" stroke="#d8a13a" stroke-width="4"/>
+        <path id="bz-b-right" d="M960 358 H1142 A32 32 0 0 1 1174 390 V610 A32 32 0 0 1 1142 642 H960" fill="none" stroke="#4a5560" stroke-width="4"/>
+      </svg>
+      <span id="bz-num">7</span>
+      <div class="bz-row" id="bz-r1" style="top:402px">
+        <svg class="bz-mark" id="bz-m1" viewBox="0 0 28 28"><rect x="1.5" y="1.5" width="25" height="25" rx="5" fill="#2a3644" stroke="#4a5560" stroke-width="3"/></svg>
+        <span class="bz-lab" id="bz-l1">APARTMENTS</span>
+      </div>
+      <div class="bz-row" id="bz-r2" style="top:458px">
+        <svg class="bz-mark" id="bz-m2" viewBox="0 0 28 28"><rect x="1.5" y="1.5" width="25" height="25" rx="5" fill="#2a3644" stroke="#4a5560" stroke-width="3"/></svg>
+        <span class="bz-lab" id="bz-l2">STORES</span>
+      </div>
+      <div class="bz-row" id="bz-r3" style="top:514px">
+        <svg class="bz-mark" id="bz-m3" viewBox="0 0 28 28">
+          <rect x="1.5" y="1.5" width="25" height="25" rx="5" fill="#2a3644" stroke="#4a5560" stroke-width="3"/>
+          <rect x="0" y="0" width="28" height="28" rx="6" fill="#d8a13a"/>
+          <path d="M7 14 L12 19 L21 9" fill="none" stroke="#04070c" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="bz-lab" id="bz-l3" style="color:#f2f5f8">SCHOOLS</span>
+      </div>
+      <div class="bz-row" id="bz-r4" style="top:570px">
+        <svg class="bz-mark" id="bz-m4" viewBox="0 0 28 28"><rect x="1.5" y="1.5" width="25" height="25" rx="5" fill="#2a3644" stroke="#4a5560" stroke-width="3"/></svg>
+        <span class="bz-lab" id="bz-l4">ASSEMBLY</span>
+      </div>
+    </div>
+  </div>
+  <div id="bz-chip"><span id="bz-chip-t">2027 BUILDING CODE</span></div>
+  <div class="bz-src" id="bz-src-icc">2027 International Building Code · ICC store page, Oct 2026</div>
+  <div class="bz-src" id="bz-src-nist">NIST Impacts page</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#bz-";
+
+  tl.set([Q+"m1", Q+"m2"], { transformOrigin: "50% 50%" }, 0);
+
+  /* frame 0 is the held state, complete; float starts on the cut (4 s each way, whole host) */
+  tl.to(Q+"board", { y: -6, duration: 4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+  tl.to(Q+"chip", { y: -4, duration: 4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.72);
+
+  /* chip and ICC source line land on "2027" z1-s3 0.32 */
+  tl.fromTo(Q+"chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.32);      /* 2027 0.32 */
+  tl.fromTo(Q+"src-icc", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.32);  /* 2027 0.32 */
+
+  /* the open half of tile 7's border lifts on "tornadoes" 5.58 and holds */
+  tl.to(Q+"b-right", { stroke: "#c8d3e0", duration: 0.5, ease: "power2.out" }, 5.58);  /* TORNADOES 5.58 */
+
+  /* STORES mark + label pulse on "stores" 8.76, APARTMENTS on "apartment" 9.64; both return to grey, nothing ticks */
+  tl.to(Q+"m2", { scale: 1.15, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 8.76);        /* STORES 8.76 */
+  tl.to(Q+"l2", { color: "#f2f5f8", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 8.76);
+  tl.to(Q+"m1", { scale: 1.15, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 9.64);        /* APARTMENT 9.64 */
+  tl.to(Q+"l1", { color: "#f2f5f8", duration: 0.25, ease: "power2.out", yoyo: true, repeat: 1 }, 9.64);
+
+  /* hold on "buildings." (ends 10.36), then fade-through to the ground 10.54 to 11.14 */
+  tl.to([Q+"lift", Q+"grid", Q+"chip", Q+"src-icc", Q+"src-nist"], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 10.54);
+  tl.to(Q+"ground", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 10.54);
+
+  window.__timelines["g-z1-board"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
