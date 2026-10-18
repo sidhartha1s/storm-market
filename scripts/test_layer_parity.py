@@ -55,6 +55,13 @@ circle_commented = re.sub(r'(<video class="pip"[^>]*></video>)', r"<!-- \1 -->",
 check("Palm Sunday with every circle mount commented out refuses naming the circle",
       circle_commented.count("<!-- <video class=\"pip\"") == 11
       and run("ep-palm-sunday-1965", circle_commented) == (6, ["presenter corner circle"]))
+mus_bed = re.sub(r'id="sx-bed', 'id="sx-mus', palm)
+check("a bed mounted as sx-mus-* (1974 style) counts as the bed",
+      mus_bed.count('id="sx-mus') == 8 and run("ep-palm-sunday-1965", mus_bed) == (None, []))
+no_paul = re.sub(r'\s*<video id="ins-paul-\d+"[^>]*></video>', "", palm)
+check("Palm Sunday without Paul's clips refuses naming them",
+      palm.count('id="ins-paul-') == 6 and no_paul.count('id="ins-paul-') == 0
+      and run("ep-palm-sunday-1965", no_paul) == (6, ["Paul full-frame clips"]))
 check("a mini (ms-) is out of scope", run("ms-palm-sunday", no_bed) == (None, []))
 
 if FAILS:
