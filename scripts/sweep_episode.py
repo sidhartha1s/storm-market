@@ -123,7 +123,7 @@ cta_name = Path(cta["file"]).name
 cta_bad = []
 # The CTA speaks in the narrator's voice: its audio is made from the same voice reference.
 _voice_md5 = (_cfg.get("external") or {}).get("voice_ref_md5")
-if cta.get("voice_ref_md5") != _voice_md5:
+if not cta.get("voice_ref_md5") or cta.get("voice_ref_md5") != _voice_md5:
     cta_bad.append(f"CTA voice_ref_md5 {cta.get('voice_ref_md5')} != external.voice_ref_md5 {_voice_md5}: "
                    "the CTA is in another voice; re-voice it as a new versioned asset (assets/cta/README.md)")
 _slug = ep.resolve().name
