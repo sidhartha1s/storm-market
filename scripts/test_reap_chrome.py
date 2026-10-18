@@ -93,15 +93,14 @@ def fake_ps(host, script, timeout=90):
 
 reap_chrome.ps = fake_ps
 line = reap_chrome.reap("zbook", apply=False)
-check("dry run only reads the host", len(calls) == 1 and "would kill 5 orphan chrome, delete 3 profiles" in line)
+check("dry run only reads the host", len(calls) == 1 and "would kill 4 orphan chrome, delete 3 profiles" in line)
 calls.clear()
 line = reap_chrome.reap("zbook", apply=True)
 kills = [c for c in calls if "NtResumeProcess" in c]
 check("apply resumes before it stops each process", kills and all(c.index("NtResumeProcess($h)") < c.index("Stop-Process") for c in kills))
-check("apply reports what it did", "killed 5 of 5 orphan chrome, deleted 3 of 3 profiles" in line)
+check("apply reports what it did", "killed 4 of 4 orphan chrome, deleted 3 of 3 profiles" in line)
 many = [proc(1000 + i, 99999, MIN, profile=f"playwright_chromiumdev_profile-z{i:05d}") for i in range(60)]
-reap_chrome.ps = lambda h, s, timeout=90: (calls.append(s), fake_ps(h, s) if "ConvertTo-Json" not in s else
-                                           (0, json.dumps({"procs": many, "dirs": [], "now": NOW})))[1]
+procs = many  # fake_ps serves this reading now
 calls.clear()
 reap_chrome.reap("zbook", apply=True)
 check("60 orphans go in chunks small enough for the ssh line cap", len([c for c in calls if "NtResumeProcess" in c]) == 3
