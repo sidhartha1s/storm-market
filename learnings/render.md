@@ -2,6 +2,18 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 18 Oct 26: a browser job beside running lanes kills the ZBook's ssh
+
+1. Measured twice on ep-joplin-2011. At 15:11, 3 builder lanes plus a 63-frame `hyperframes snapshot` were running. At 15:34,
+   2 lanes plus the node browser gates (`blank_scan`, `overlap_check`, `occlusion_check`) were running. Both times every
+   new ssh session failed: ping and port 22 answered and the key was accepted (`Authenticated ... using "publickey"`), but
+   the server reset the connection at `Entering interactive session`. Windows OpenSSH could not spawn the session process
+   while the box was under memory pressure, with free RAM read at 4.6 GB just before the first drop. The lanes kept running
+   detached; only the controller lost the box for 10 minutes or more.
+2. Rule: on the box that runs lanes, never start a headless-browser job (snapshot, `graphics_qc`, the `.mjs` scans,
+   `run_gates`, a render) while a lane is live. Run it after the lanes end, or on the other laptop with its media. The
+   launch check in `scripts/lanes.py` should refuse the pairing (follow-up).
+
 ## 12 Oct 26: verify_render judged every draft as a final
 
 1. Measured on a real 113 s draft: `FAIL: fps 15 != composition 30fps (a draft mastered by mistake?)`, exit non-zero.
