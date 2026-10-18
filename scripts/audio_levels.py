@@ -18,6 +18,10 @@ Checks (effective dB = file mean_volume + 20*log10(data-volume)):
      WARN if above narration ref (clip audio shouting over voice).
   5. Any other audible <audio> (no nx-/ins- id and no data-bed attribute) is an
      unclassified element = FAIL — tag it data-bed or use the nx-/ins- convention.
+  6. Narration (nx-*) ending in a burst: a loud run (> -40 dB) in the file's last
+     0.6 s that follows 0.1 s or more of silence (< -55 dB) = FAIL. TTS sometimes
+     appends a full-band click after the last word; it plays as a split second of
+     static at the line's end. Fix: a -v2 copy with the burst silenced, same length.
 
 Usage: python3 scripts/audio_levels.py episodes/<slug>
 Exit 0 = pass. Exit 1 = level defects, do not build the mixdown yet.
