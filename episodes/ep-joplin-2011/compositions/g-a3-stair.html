@@ -81,6 +81,27 @@
         <line x1="800" y1="660" x2="800" y2="685" stroke="#93a3b2" stroke-width="2"/>
         <circle id="a3st-bulb" cx="800" cy="690" r="5" fill="#f5d98b"/>
       </g>
+
+      <!-- HOUSE (g-a3-house-section geometry): floor y 640-660 with the stair opening x 1120-1250 cut out; it never moves -->
+      <g id="a3st-floor" fill="none" stroke="#dfe7ee" stroke-width="3">
+        <rect x="520" y="640" width="600" height="20"/>
+        <rect x="1250" y="640" width="150" height="20"/>
+      </g>
+      <!-- walls y 400-640 at x 520-540 / 1380-1400: each falls inward about its foot -->
+      <g id="a3st-wallL">
+        <rect x="520" y="400" width="20" height="240" fill="rgba(223,231,238,.06)"/>
+        <rect x="520" y="400" width="20" height="240" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+      </g>
+      <g id="a3st-wallR">
+        <rect x="1380" y="400" width="20" height="240" fill="rgba(223,231,238,.06)"/>
+        <rect x="1380" y="400" width="20" height="240" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+      </g>
+      <!-- roof (480,400)-(960,220)-(1440,400) with its ceiling line -->
+      <g id="a3st-roofg">
+        <polygon points="480,400 960,220 1440,400" fill="rgba(147,163,178,.10)"/>
+        <polygon points="480,400 960,220 1440,400" fill="none" stroke="#93a3b2" stroke-width="3" stroke-linejoin="miter"/>
+        <line x1="520" y1="400" x2="1400" y2="400" stroke="#dfe7ee" stroke-width="3"/>
+      </g>
     </svg>
   </div>
 
