@@ -95,7 +95,7 @@ window.__timelines = window.__timelines || {};
 
   /* School @7.64 */
   tl.set(P + "lb-school", { autoAlpha: 0, y: 10 }, 0);
-  tl.to(P + "lb-school", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.school);
+  tl.to(P + "lb-school", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.5);   /* with the shell, not on "School": the shell held empty for 1.7 s in draft-v1 */
 
   /* built @8.40: the room rises from the ground line */
   tl.set(P + "room", { autoAlpha: 0, scaleY: 0, svgOrigin: "900 820" }, 0);
@@ -120,6 +120,7 @@ window.__timelines = window.__timelines || {};
 
   /* camera push 2.5 % about the room's base from winds to the cut: the thin dashes alone read as a freeze (freeze_scan 18 Oct);
      at 1.025 the arrow tails reach x 1576, clear of the presenter corner (x >= 1600) */
+  tl.to(P + "cam", { scale: 1.01, svgOrigin: "900 820", duration: CUES.winds, ease: "none" }, 0);   /* slow push from frame 0, so the opening never sits still */
   tl.to(P + "cam", { scale: 1.025, svgOrigin: "900 820", duration: CUES.end - CUES.winds, ease: "sine.inOut" }, CUES.winds);
 
   /* live @14.68: house draws */

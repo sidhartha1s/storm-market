@@ -157,11 +157,11 @@ window.__timelines = window.__timelines || {};
   /* frame 0: ground on, outline starts to draw. I a4-s3 0.00 to STORES 1.96 */
   tl.to(Q + "pout", { strokeDashoffset: 0, duration: 1.96, ease: "power1.inOut" }, 0);
 
-  /* WALMART a4-s3 3.12: eyebrow + source line; ON a4-s3 3.42: BACK, FRONT */
+  /* WALMART a4-s3 3.12: eyebrow. Source line and BACK, FRONT enter with the outline at 0.5 / 0.6, so the plan never holds empty (draft-v1 read, 18 Oct 26) */
   tl.fromTo(Q + "eye", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.12);
-  tl.fromTo(Q + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.3);
-  tl.fromTo(Q + "backg", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 3.42);
-  tl.fromTo(Q + "frontg", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 3.42);
+  tl.fromTo(Q + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.5);
+  tl.fromTo(Q + "backg", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.6);
+  tl.fromTo(Q + "frontg", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.6);
   /* brief section 4 truth 7 wins over the cue table: SCHEMATIC shows whenever the plan is on, so it enters with the outline at 0.00 */
   tl.fromTo(Q + "sch", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0);
 

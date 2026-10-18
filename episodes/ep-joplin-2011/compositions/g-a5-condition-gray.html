@@ -121,14 +121,14 @@ window.__timelines = window.__timelines || {};
   /* clock hand: 360 deg per 12 s for the whole host, the comp's always-moving element once the card is in */
   tl.fromTo(Q + "hand", { rotation: 0, svgOrigin: "78 75" }, { rotation: 360 * 23.36 / 12, svgOrigin: "78 75", duration: 23.36, ease: "none" }, 0);
 
-  /* "hospital" a5-s2 1.54: outer wall 1.2 s, rooms and hallway walls 0.2 s later; fills ease in under them */
-  draw("outer", 1.54, 1.2);
-  draw("wallsT", 1.74, 1.2);
-  draw("wallsB", 1.74, 1.2);
-  tl.to([Q + "roomsT", Q + "roomsB", Q + "hallfill"], { autoAlpha: 1, duration: 0.7, ease: "power1.out" }, 2.0);
+  /* the plan draws from frame 0 and is up by "hospital" a5-s2 1.54 (draft-v1 held an empty frame to 2.1 s): outer wall 1.2 s, walls 0.2 s later */
+  draw("outer", 0, 1.2);
+  draw("wallsT", 0.2, 1.2);
+  draw("wallsB", 0.2, 1.2);
+  tl.to([Q + "roomsT", Q + "roomsB", Q + "hallfill"], { autoAlpha: 1, duration: 0.7, ease: "power1.out" }, 0.6);
   /* beds fade in over their rooms with the plan, 0.1 s apart */
-  BEDS.forEach(function (b, i) { tl.fromTo(Q + "bed" + i, { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 2.1 + 0.1 * i); });
-  tl.fromTo(Q + "schem", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.3);
+  BEDS.forEach(function (b, i) { tl.fromTo(Q + "bed" + i, { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 0.7 + 0.1 * i); });
+  tl.fromTo(Q + "schem", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.5);
 
   /* "Condition" a5-s2 2.60: label, source line */
   tl.fromTo([Q + "label1", Q + "label2"], { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.6);
