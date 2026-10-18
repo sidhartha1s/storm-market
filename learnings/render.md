@@ -10,6 +10,11 @@ Newest first. New entries go at the top, under this line. Superseded lines point
    the server reset the connection at `Entering interactive session`. Windows OpenSSH could not spawn the session process
    while the box was under memory pressure, with free RAM read at 4.6 GB just before the first drop. The lanes kept running
    detached; only the controller lost the box for 10 minutes or more.
+   Root cause, measured by another session the same day: 94 orphan Playwright Chrome processes were frozen (parent node
+   dead, every thread Suspended, unkillable, 2.8 GB), plus 285 leftover `playwright_chromiumdev_profile` dirs (1.2 GB).
+   Chrome starts ran at 150 to 420 a minute while lanes and hand-run gates overlapped, and new ssh logins failed 74 of 75
+   between 15:34 and 15:41. The gates leak because they exit without closing the browser: `graphics_qc.mjs:222` exits right
+   after launch, and none of the 7 `.mjs` gates closes the browser in a `finally`.
 2. Rule: on the box that runs lanes, never start a headless-browser job (snapshot, `graphics_qc`, the `.mjs` scans,
    `run_gates`, a render) while a lane is live. Run it after the lanes end, or on the other laptop with its media. The
    launch check in `scripts/lanes.py` should refuse the pairing (follow-up).
