@@ -101,9 +101,8 @@ REM audio. Sweep them before every render — a render dir must contain exactly 
 del /q _*_tmp.html 2>nul
 set PRODUCER_PAGE_NAVIGATION_TIMEOUT_MS=120000
 set PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000
-REM worker count is tunable for RAM-tight full renders (fps30 workers use more memory than
-REM draft); default 3 as tested for draft, drop to 2 on a low-free-RAM box. Set RENDER_WORKERS.
-if not defined RENDER_WORKERS set RENDER_WORKERS=3
+REM RENDER_BUSY_OK=1 skips render_busy, so no .workers file: the request stands.
+if exist "render_%MODE%.workers" set /p RENDER_WORKERS=<"render_%MODE%.workers"
 echo %_FPS% > "render_%MODE%.fps"
 call npx hyperframes@0.8.149 render . --gpu --browser-gpu --experimental-fast-capture=true %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
 set RC=%ERRORLEVEL%
