@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<!-- ep-palm-sunday-1965 · The Warning Hour · full timeline: the approved hook and intro (preview v1), then acts one to six and the close (12 Oct 26). Script: edit_script.md; angle: angle.md (owner-locked).
+     Written by hand. Times come from the wav lengths, audio/*.words.json and a silence scan of every wav:
+     - Paul speaks H1-S1 on camera (ins-paul-1, his own sound, no narration under it; audio/h1-s1.wav is not mounted). His sound ends
+       at 9.71 s of the clip, so the clip is cut at 9.72 and the toll graphic starts on that frame, never on black.
+     - Every narration wav opens with 0.17 to 0.55 s of silence and closes with 0.24 to 0.44 s of it (silencedetect at -35 dB), and
+       words.json writes 0.00 for the first word. So a first word is timed from the scan, every other word from words.json.
+     - Gaps: the first wav starts 0.15 s after Paul's clip ends. After that, the silence from the last sound of one segment to the first
+       sound of the next is the land time the graphic's brief names (1.0 s; 0.8 s after I1-S2; 1.2 s after I1-S3; 1.5 s after I1-S6
+       and I1-S9), and 0.8 s inside a graphic that runs across segments. The wavs are placed to give that silence, never more than
+       0.75 s apart (lint allows 0.8 s), which holds the gap after I1-S9 to 1.33 s. T1-S2 to T1-S3 is set by hand to 0.65 s between
+       wavs: the eight rows need 1.57 s after "list" before "State" is read.
+     - Every graphic host starts on the first sound of its first segment and ends where the next one starts. Two follow their briefs
+       instead: g-t1s1-toll starts on the cut from Paul (0.58 s before "Two"), and g-t1s3-list starts on the word "list" of T1-S2
+       (match cut out of g-t1s2-warning).
+     - Every graphic in this set is full frame with its own ground (mg_specs/00-design-sheet.md section 3), so no still is mounted here.
+     - The hook, tail and intro end on the 0.7 s blackout after I1-S10 (113.18). They are the owner-approved preview v1: left as rendered.
+     ACTS ONE TO SIX AND THE CLOSE (113.18 to 1184.66), laid out 12 Oct 26 from the wavs, by the same rules, and retimed the same day
+     to Paul's real clips:
+     - 108 narration wavs, 69 graphic hosts (the 68 of mg_specs/acts-plan.md section 2, names never changed, and g-z1s4b-book for the
+       new line Z1-S4b), five Paul clips (ins-paul-2 to 6), seven training film cuts under their compositions (the operations room
+       returns, as the cut a14-05b, under g-a4s01-eyes for 3.15 s on the cut out of the book ad's dip), five act blackouts of
+       0.7 s, the book ad with its 1.0 s dips. Every start and length is listed in mg_specs/timeline-map.md.
+     - Gaps: 1.0 s from the last sound of one graphic's voice to the first sound of the next graphic's; 0.8 s inside a graphic that
+       runs across segments; wavs never under 0.05 s or over 0.75 s apart. No graphic's land time is named yet, so none is longer.
+     - Act seam: the last graphic ends 1.0 s after its last sound, 0.7 s of black, and the next act's first sound lands on the cut out
+       of black. A3 has no chapter blackout: it ends on Paul's tease, the ad's dip-in follows his last word, and A4-S1 pays the
+       tease on the cut out of the dip-out (DESIGN.md "CTA contract"). The ad starts at 636.44, 0.5372 of the total.
+     - Paul's clips: each starts 1.0 s after the last sound before it (on the cut out of black for Z1-S1) and is cut where his
+       sound ends, as ins-paul-1 is (silencedetect on each 10 s file: 9.67, 9.23, 9.50, 9.35 and 9.71 s). The next wav starts 0.15 s
+       after the cut, as in the hook. He starts speaking 0.2 to 0.6 s into each clip. The narrator wavs of A1-S14, A3-S18, A4-S7,
+       A5-S13 and Z1-S1 are not mounted.
+     - Film cuts sit on track 1 under their composition (track 2), in the 4:3 window; they have no audio stream and are muted.
+     - The video ends 4.0 s after the last sound of Z1-S5, over the title card. Sound for the acts and the close is in the second SOUND block:
+       the hook's bed carried on (one file an act, 0.13), 19 swells and seven match-cut sounds.
+     PRESENTER CIRCLE: on from the cut out of Paul's opening clip (9.72) to the blackout (112.48), window 1 (owner 13 Oct 26, on draft v1:
+     "there is no paul's circle video in the first two minutes. Why?"): face on track 7, ring on track 9, as references/mg-quickref.md
+     "Corner circle". Off through Paul's clip (0 to 9.72) and the blackout. Every graphic keeps x >= 1600, y >= 680 free for it.
+     From 113.18 it is mounted in ten more windows (the PRESENTER CIRCLE block; mg_specs/pip-windows.md, windows 2 to 11). -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Who Stopped the Palm Sunday 1965 Tornado Warning? · The Warning Hour</title>
+  <script src="gsap.min.js"></script>
+  <script src="grain.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    /* ---- Abril figure popup (channel device: red, text-shadow, 3 words or fewer, never over a map comp) ---- */
+    @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+    .popfig { position: absolute; left: 200px; right: 300px; top: 36%; text-align: center; z-index: 6; white-space: nowrap; transform-origin: center; isolation: isolate; }
+    .popfig .pf-big { display: block; font-family: 'AbrilFig', Georgia, serif; font-size: 150px; color: #d0121f; letter-spacing: 0.04em;
+      text-shadow: 0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+    .popfig .pf-sub { display: block; margin-top: 12px; font-family: 'Arial Black', Arial, sans-serif; font-weight: 900; font-size: 38px; color: #f4f0e8;
+      letter-spacing: 0.3em; -webkit-text-stroke: 1px rgba(0,0,0,0.85); paint-order: stroke fill;
+      text-shadow: 0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+    .popfig::before { content: ''; position: absolute; left: 14%; right: 14%; top: -90px; bottom: -70px; z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.32) 40%, rgba(0,0,0,0) 72%); }
+    /* the date label sits on Paul's shirt, below his chin (his face runs from y 70 to 570 in this clip), so frame one is his face */
+    .popfig.pf-chest { top: 61%; }
+    /* ---- training film cut under a composition's 4:3 window (mg_specs/acts-plan.md rule 15: x 480 to 1440, y 150 to 870, the 640 x 480 cut at 1.5x);
+            geometry is !important so the renderer's video{inset:0} cannot win ---- */
+    .filmwin { position: absolute !important; inset: auto !important; left: 480px !important; top: 150px !important;
+      width: 960px !important; height: 720px !important; object-fit: cover !important; }
+    /* film under hosts: a film window paints below its graphic host, whatever their order in the file and however the player places a
+       host. #root is made its own stacking context and every film sits at z-index -1 inside it: above the root's ground, below every
+       host, and below the overlays (6), the vignette (90), the grain and the dust as before. A film is also below the other track 1
+       pictures, and none of them shares a second with a film. The hook and intro have no film and no rule here names their elements. */
+    #root { isolation: isolate; }
+    .filmwin { z-index: -1 !important; }
+    /* ---- presenter circle (references/mg-quickref.md "Corner circle"; the CSS of references/mini-storms/FORMAT.md "Presenter circle" as ep4-el-reno
+            mounts it): a bare timed video whose geometry is !important, and a separate timed section for the ring. In the stacking above:
+            film -1, hosts and pictures, overlays 6, the face 8, its ring 9, then the vignette 90, the grain 91 and the dust 92 over it ---- */
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
+    /* ---- glass chip over Paul's clip (the county label of mg_specs/00-design-sheet.md section 9: our label, on glass) ---- */
+    .ovchip { position: absolute; left: 96px; top: 54px; height: 46px; padding: 0 22px; box-sizing: border-box; background: rgba(10,16,24,0.55);
+      backdrop-filter: blur(18px) saturate(1.15); border: 1px solid rgba(255,255,255,0.14); border-radius: 23px;
+      font: 700 26px Arial, sans-serif; color: #dfe7ee; white-space: nowrap; line-height: 44px; z-index: 6; }
+    /* ---- film layer ---- */
+    #vignette { position: absolute; inset: 0; pointer-events: none; z-index: 90; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(0,0,0,0.5) 100%); }
+    #grain { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 91; opacity: 0.10; mix-blend-mode: overlay; }
+    .dust { position: absolute; z-index: 92; pointer-events: none; border-radius: 50%; background: rgba(255,255,255,0.32); filter: blur(1.2px); }
+    /* text edges grey in every frame: Chrome draws subpixel (colour-fringed) text on a layer it knows is opaque and grey text elsewhere,
+       so labels flipped as a moving layer crossed the frame. will-change: transform on the root turns subpixel text off for everything inside it */
+    #root { will-change: transform; }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="ep-palm-sunday-1965" data-start="0" data-width="1920" data-height="1080" data-duration="1184.66" data-fps="30">
+
+  <!-- ============ PAUL ON CAMERA (his own sound; frame one of the video) ============ -->
+  <video id="ins-paul-1" src="media/paul/ins-paul-1/ins-paul-1-v2.mp4" data-start="0" data-duration="9.72" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="City police in one county heard troopers report a tornado and told nobody until one hit. Weather Bureau warnings went to offices and stations, not homes."></video>
+
+  <!-- ============ NARRATION (15 segments; Paul's line H1-S1 is his clip above) ============ -->
+  <!-- hook tail: first words at 10.30, 14.18, 22.66, 29.90, 33.65 -->
+  <audio id="nx-t1-s1" src="audio/t1-s1.wav" data-start="9.87" data-duration="3.764" data-volume="1"></audio>
+  <audio id="nx-t1-s2" src="audio/t1-s2.wav" data-start="13.83" data-duration="7.976" data-volume="1"></audio>
+  <audio id="nx-t1-s3" src="audio/t1-s3.wav" data-start="22.46" data-duration="6.956" data-volume="1"></audio>
+  <audio id="nx-t1-s4" src="audio/t1-s4.wav" data-start="29.49" data-duration="3.593" data-volume="1"></audio>
+  <audio id="nx-t1-s5" src="audio/t1-s5.wav" data-start="33.13" data-duration="3.877" data-volume="1"></audio>
+  <!-- intro: no void, "April" is spoken at 37.60, 1.0 s after the question's last sound -->
+  <audio id="nx-i1-s1" src="audio/i1-s1.wav" data-start="37.40" data-duration="9.423" data-volume="1"></audio>
+  <audio id="nx-i1-s2" src="audio/i1-s2.wav" data-start="47.17" data-duration="10.614" data-volume="1"></audio>
+  <audio id="nx-i1-s3" src="audio/i1-s3.wav" data-start="58.04" data-duration="8.061" data-volume="1"></audio>
+  <audio id="nx-i1-s4" src="audio/i1-s4.wav" data-start="66.70" data-duration="9.593" data-volume="1"></audio>
+  <audio id="nx-i1-s5" src="audio/i1-s5.wav" data-start="76.75" data-duration="4.189" data-volume="1"></audio>
+  <audio id="nx-i1-s6" src="audio/i1-s6.wav" data-start="81.40" data-duration="5.296" data-volume="1"></audio>
+  <audio id="nx-i1-s7" src="audio/i1-s7.wav" data-start="87.33" data-duration="6.658" data-volume="1"></audio>
+  <audio id="nx-i1-s8" src="audio/i1-s8.wav" data-start="94.04" data-duration="5.211" data-volume="1"></audio>
+  <audio id="nx-i1-s9" src="audio/i1-s9.wav" data-start="99.63" data-duration="8.657" data-volume="1"></audio>
+  <audio id="nx-i1-s10" src="audio/i1-s10.wav" data-start="109.04" data-duration="2.742" data-volume="1"></audio>
+
+  <!-- ============ GRAPHIC HOSTS (track 2; one comp per brief in mg_specs, each full frame with its own ground) ============ -->
+  <!-- 01 · T1-S1: the toll over the Dunlap and Alto photographs. Starts on the cut from Paul; "Two hundred seventy one" is spoken at 10.30 -->
+  <div id="host-t1s1-toll" data-composition-id="g-t1s1-toll" data-composition-src="compositions/g-t1s1-toll.html" data-start="9.72" data-duration="4.46" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 02 · T1-S2: the clock, the warning page, the telephone. Ends on the word "list" at 21.07 -->
+  <div id="host-t1s2-warning" data-composition-id="g-t1s2-warning" data-composition-src="compositions/g-t1s2-warning.html" data-start="14.18" data-duration="6.89" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 03 · T1-S3, T1-S4, T1-S5: the telephone list, the blank row, the family. From "list" in T1-S2 to 1.0 s after the question's last sound -->
+  <div id="host-t1s3-list" data-composition-id="g-t1s3-list" data-composition-src="compositions/g-t1s3-list.html" data-start="21.07" data-duration="16.53" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 04 · I1-S1: the house in the sun, the living room -->
+  <div id="host-i1s1-house" data-composition-id="g-i1s1-house" data-composition-src="compositions/g-i1s1-house.html" data-start="37.60" data-duration="9.98" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 05 · I1-S2: the South Bend area, the name card, the station's card -->
+  <div id="host-i1s2-station" data-composition-id="g-i1s2-station" data-composition-src="compositions/g-i1s2-station.html" data-start="47.58" data-duration="10.63" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 06 · I1-S3: back to the show, a clear sky, the study's sentence -->
+  <div id="host-i1s3-cloud" data-composition-id="g-i1s3-cloud" data-composition-src="compositions/g-i1s3-cloud.html" data-start="58.21" data-duration="8.74" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 07 · I1-S4: six states, then 11:45 AM in Kansas City -->
+  <div id="host-i1s4-states" data-composition-id="g-i1s4-states" data-composition-src="compositions/g-i1s4-states.html" data-start="66.95" data-duration="10.07" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 08 · I1-S5: the stations' row and the ON AIR lamp -->
+  <div id="host-i1s5-onair" data-composition-id="g-i1s5-onair" data-composition-src="compositions/g-i1s5-onair.html" data-start="77.02" data-duration="4.64" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 09 · I1-S6: the study's sentence about police headquarters (one Indiana county) -->
+  <div id="host-i1s6-page" data-composition-id="g-i1s6-page" data-composition-src="compositions/g-i1s6-page.html" data-start="81.66" data-duration="6.22" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 10 · I1-S7, I1-S8: the sheriff's two sentences (a different county), then the television -->
+  <div id="host-i1s7-sheriff" data-composition-id="g-i1s7-sheriff" data-composition-src="compositions/g-i1s7-sheriff.html" data-start="87.88" data-duration="12.09" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 11 · I1-S9: the whole chain, and the desk where the light stops -->
+  <div id="host-i1s9-chain" data-composition-id="g-i1s9-chain" data-composition-src="compositions/g-i1s9-chain.html" data-start="99.97" data-duration="9.32" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- 12 · I1-S10: the list once more. Ends 1.0 s after the last sound of "nobody?", on the cut to black -->
+  <div id="host-i1s10-list" data-composition-id="g-i1s10-list" data-composition-src="compositions/g-i1s10-list.html" data-start="109.29" data-duration="3.19" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ BLACKOUT (the script's 0.7 s after the intro's last line; this cut ends on it) ============ -->
+  <section class="clip blackout" id="bo-i1" data-start="112.48" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- ################ ACTS ONE TO SIX AND THE CLOSE (laid out by hand, 12 Oct 26; rules in the comment at the top of the file) ################ -->
+
+  <!-- ============ A1 · They saw it coming (113.18 to 289.16; blackout to 289.86) ============ -->
+  <!-- narration: 18 segments; A1-S14 is Paul's clip ins-paul-2 -->
+  <audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="112.87" data-duration="9.423" data-volume="1"></audio>
+  <audio id="nx-a1-s2" src="audio/a1-s2.wav" data-start="122.68" data-duration="9.167" data-volume="1"></audio>
+  <audio id="nx-a1-s3" src="audio/a1-s3.wav" data-start="131.96" data-duration="10.870" data-volume="1"></audio>
+  <audio id="nx-a1-s4" src="audio/a1-s4.wav" data-start="143.28" data-duration="9.508" data-volume="1"></audio>
+  <audio id="nx-a1-s5" src="audio/a1-s5.wav" data-start="153.03" data-duration="8.827" data-volume="1"></audio>
+  <audio id="nx-a1-s6" src="audio/a1-s6.wav" data-start="162.07" data-duration="7.252" data-volume="1"></audio>
+  <audio id="nx-a1-s7" src="audio/a1-s7.wav" data-start="169.65" data-duration="12.232" data-volume="1"></audio>
+  <audio id="nx-a1-s8" src="audio/a1-s8.wav" data-start="181.93" data-duration="13.508" data-volume="1"></audio>
+  <audio id="nx-a1-s9" src="audio/a1-s9.wav" data-start="195.92" data-duration="8.614" data-volume="1"></audio>
+  <audio id="nx-a1-s10" src="audio/a1-s10.wav" data-start="204.62" data-duration="9.423" data-volume="1"></audio>
+  <audio id="nx-a1-s11" src="audio/a1-s11.wav" data-start="214.10" data-duration="6.700" data-volume="1"></audio>
+  <audio id="nx-a1-s12" src="audio/a1-s12.wav" data-start="220.88" data-duration="5.934" data-volume="1"></audio>
+  <audio id="nx-a1-s13" src="audio/a1-s13.wav" data-start="227.03" data-duration="5.381" data-volume="1"></audio>
+  <audio id="nx-a1-s15" src="audio/a1-s15.wav" data-start="242.92" data-duration="12.317" data-volume="1"></audio>
+  <audio id="nx-a1-s16" src="audio/a1-s16.wav" data-start="255.42" data-duration="11.168" data-volume="1"></audio>
+  <audio id="nx-a1-s17" src="audio/a1-s17.wav" data-start="266.68" data-duration="10.104" data-volume="1"></audio>
+  <audio id="nx-a1-s18" src="audio/a1-s18.wav" data-start="277.07" data-duration="8.401" data-volume="1"></audio>
+  <audio id="nx-a1-s19" src="audio/a1-s19.wav" data-start="285.52" data-duration="3.082" data-volume="1"></audio>
+  <!-- graphic hosts (track 2): 10 compositions -->
+  <div id="host-a1s01-kc" data-composition-id="g-a1s01-kc" data-composition-src="compositions/g-a1s01-kc.html" data-start="113.18" data-duration="9.75" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A1-S1; starts on the cut out of black -->
+  <div id="host-a1s02-strip" data-composition-id="g-a1s02-strip" data-composition-src="compositions/g-a1s02-strip.html" data-start="122.93" data-duration="20.56" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A1-S2, A1-S3 -->
+  <div id="host-a1s04-wire" data-composition-id="g-a1s04-wire" data-composition-src="compositions/g-a1s04-wire.html" data-start="143.49" data-duration="9.94" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A1-S4 -->
+  <div id="host-a1s05-clocks" data-composition-id="g-a1s05-clocks" data-composition-src="compositions/g-a1s05-clocks.html" data-start="153.43" data-duration="9.13" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A1-S5 -->
+  <div id="host-a1s06-low" data-composition-id="g-a1s06-low" data-composition-src="compositions/g-a1s06-low.html" data-start="162.56" data-duration="7.51" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A1-S6 -->
+  <div id="host-a1s07-tracks" data-composition-id="g-a1s07-tracks" data-composition-src="compositions/g-a1s07-tracks.html" data-start="170.07" data-duration="26.08" data-track-index="2" data-width="1920" data-height="1080" data-callback="the track map returns from the intro: here it shows how long one storm ran and how many counties it crossed"></div>  <!-- A1-S7, A1-S8; second use of media/stills/b7-tornado-track-map.jpg, the first is inside g-i1s4-states -->
+  <div id="host-a1s09-forecasts" data-composition-id="g-a1s09-forecasts" data-composition-src="compositions/g-a1s09-forecasts.html" data-start="196.15" data-duration="31.20" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A1-S9 to A1-S12 -->
+  <div id="host-a1s13-chain" data-composition-id="g-a1s13-chain" data-composition-src="compositions/g-a1s13-chain.html" data-start="227.35" data-duration="5.75" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A1-S13 -->
+  <div id="host-a1s15-offices" data-composition-id="g-a1s15-offices" data-composition-src="compositions/g-a1s15-offices.html" data-start="242.77" data-duration="34.71" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A1-S15 to A1-S17; starts on the cut from Paul -->
+  <div id="host-a1s18-list" data-composition-id="g-a1s18-list" data-composition-src="compositions/g-a1s18-list.html" data-start="277.48" data-duration="11.68" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A1-S18, A1-S19 -->
+  <!-- Paul on camera, A1-S14 (his own sound; cut where his sound ends, 9.67 s into the 10 s clip) -->
+  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2.mp4" data-start="233.10" data-duration="9.67" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="At five twenty, no tornado had touched Indiana, and the forecast was already out. Getting it from an office into a house was somebody else's job."></video>
+  <!-- film under g-a1s15-offices, shown through its 4:3 window: the operations room for A1-S15, then the announcer from "That left" until "A few stations" (264.24) -->
+  <video id="v-a1s15-room" class="filmwin" src="media/films/cuts/a14-05-operations-room.mp4" data-start="242.77" data-duration="12.99" data-media-start="0" data-track-index="1" data-hold-ok="the composition dims the window on 'Many' and lifts 'inaction' over it" muted></video>
+  <video id="v-a1s16-announcer" class="filmwin" src="media/films/cuts/a14-09-announcer.mp4" data-start="255.76" data-duration="9.44" data-media-start="0" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-a1" data-start="289.16" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- ============ A2 · One message, one telephone list (289.86 to 479.97; blackout to 480.67) ============ -->
+  <!-- narration: 21 segments -->
+  <audio id="nx-a2-s1" src="audio/a2-s1.wav" data-start="289.44" data-duration="8.997" data-volume="1"></audio>
+  <audio id="nx-a2-s2" src="audio/a2-s2.wav" data-start="298.51" data-duration="7.295" data-volume="1"></audio>
+  <audio id="nx-a2-s3" src="audio/a2-s3.wav" data-start="306.27" data-duration="5.977" data-volume="1"></audio>
+  <audio id="nx-a2-s4" src="audio/a2-s4.wav" data-start="312.40" data-duration="7.678" data-volume="1"></audio>
+  <audio id="nx-a2-s5" src="audio/a2-s5.wav" data-start="320.33" data-duration="7.422" data-volume="1"></audio>
+  <audio id="nx-a2-s6" src="audio/a2-s6.wav" data-start="328.00" data-duration="11.721" data-volume="1"></audio>
+  <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="339.91" data-duration="5.551" data-volume="1"></audio>
+  <audio id="nx-a2-s8" src="audio/a2-s8.wav" data-start="345.64" data-duration="6.530" data-volume="1"></audio>
+  <audio id="nx-a2-s9" src="audio/a2-s9.wav" data-start="352.51" data-duration="12.955" data-volume="1"></audio>
+  <audio id="nx-a2-s10" src="audio/a2-s10.wav" data-start="365.53" data-duration="5.381" data-volume="1"></audio>
+  <audio id="nx-a2-s11" src="audio/a2-s11.wav" data-start="371.45" data-duration="7.976" data-volume="1"></audio>
+  <audio id="nx-a2-s12" src="audio/a2-s12.wav" data-start="379.59" data-duration="8.742" data-volume="1"></audio>
+  <audio id="nx-a2-s13" src="audio/a2-s13.wav" data-start="388.57" data-duration="5.296" data-volume="1"></audio>
+  <audio id="nx-a2-s14" src="audio/a2-s14.wav" data-start="394.31" data-duration="9.933" data-volume="1"></audio>
+  <audio id="nx-a2-s15" src="audio/a2-s15.wav" data-start="404.57" data-duration="10.614" data-volume="1"></audio>
+  <audio id="nx-a2-s16" src="audio/a2-s16.wav" data-start="415.58" data-duration="15.039" data-volume="1"></audio>
+  <audio id="nx-a2-s17" src="audio/a2-s17.wav" data-start="430.80" data-duration="13.125" data-volume="1"></audio>
+  <audio id="nx-a2-s18" src="audio/a2-s18.wav" data-start="444.04" data-duration="5.551" data-volume="1"></audio>
+  <audio id="nx-a2-s19" src="audio/a2-s19.wav" data-start="450.03" data-duration="12.061" data-volume="1"></audio>
+  <audio id="nx-a2-s20" src="audio/a2-s20.wav" data-start="462.49" data-duration="7.720" data-volume="1"></audio>
+  <audio id="nx-a2-s21" src="audio/a2-s21.wav" data-start="470.32" data-duration="8.997" data-volume="1"></audio>
+  <!-- graphic hosts (track 2): 13 compositions -->
+  <div id="host-a2s01-radar" data-composition-id="g-a2s01-radar" data-composition-src="compositions/g-a2s01-radar.html" data-start="289.86" data-duration="16.69" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A2-S1, A2-S2; starts on the cut out of black -->
+  <div id="host-a2s03-chain" data-composition-id="g-a2s03-chain" data-composition-src="compositions/g-a2s03-chain.html" data-start="306.55" data-duration="21.92" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A2-S3 to A2-S5 -->
+  <div id="host-a2s06-headstart" data-composition-id="g-a2s06-headstart" data-composition-src="compositions/g-a2s06-headstart.html" data-start="328.47" data-duration="17.66" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A2-S6, A2-S7 -->
+  <div id="host-a2s08-first" data-composition-id="g-a2s08-first" data-composition-src="compositions/g-a2s08-first.html" data-start="346.13" data-duration="6.69" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A2-S8 -->
+  <div id="host-a2s09-countya" data-composition-id="g-a2s09-countya" data-composition-src="compositions/g-a2s09-countya.html" data-start="352.82" data-duration="18.79" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A2-S9, A2-S10 -->
+  <div id="host-a2s11-backup" data-composition-id="g-a2s11-backup" data-composition-src="compositions/g-a2s11-backup.html" data-start="371.61" data-duration="22.96" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A2-S11 to A2-S13 -->
+  <div id="host-a2s14-six" data-composition-id="g-a2s14-six" data-composition-src="compositions/g-a2s14-six.html" data-start="394.57" data-duration="10.39" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A2-S14 -->
+  <div id="host-a2s15-old" data-composition-id="g-a2s15-old" data-composition-src="compositions/g-a2s15-old.html" data-start="404.96" data-duration="10.91" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A2-S15 -->
+  <div id="host-a2s16-huffman" data-composition-id="g-a2s16-huffman" data-composition-src="compositions/g-a2s16-huffman.html" data-start="415.87" data-duration="15.43" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A2-S16 -->
+  <div id="host-a2s17-funnels" data-composition-id="g-a2s17-funnels" data-composition-src="compositions/g-a2s17-funnels.html" data-start="431.30" data-duration="18.96" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A2-S17, A2-S18 -->
+  <div id="host-a2s19-log" data-composition-id="g-a2s19-log" data-composition-src="compositions/g-a2s19-log.html" data-start="450.26" data-duration="12.55" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A2-S19 -->
+  <div id="host-a2s20-front" data-composition-id="g-a2s20-front" data-composition-src="compositions/g-a2s20-front.html" data-start="462.81" data-duration="8.07" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A2-S20 -->
+  <div id="host-a2s21-list" data-composition-id="g-a2s21-list" data-composition-src="compositions/g-a2s21-list.html" data-start="470.88" data-duration="9.09" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A2-S21 -->
+  <!-- film under g-a2s03-chain: the telephone operators, from the first word of A2-S4 until the list takes the frame on "office after office" (318.38) -->
+  <video id="v-a2s4-operators" class="filmwin" src="media/films/cuts/a14-13-operators.mp4" data-start="312.69" data-duration="7.84" data-media-start="0" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-a2" data-start="479.97" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- ============ A3 · The wires (480.67 to 635.44, ending on Paul's tease; no chapter blackout here, the book ad's dips follow) ============ -->
+  <!-- narration: 17 segments; A3-S18 is Paul's clip ins-paul-3 -->
+  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="480.12" data-duration="6.743" data-volume="1"></audio>
+  <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="487.12" data-duration="7.507" data-volume="1"></audio>
+  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="494.74" data-duration="4.019" data-volume="1"></audio>
+  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="499.01" data-duration="8.742" data-volume="1"></audio>
+  <audio id="nx-a3-s5" src="audio/a3-s5.wav" data-start="508.00" data-duration="11.891" data-volume="1"></audio>
+  <audio id="nx-a3-s6" src="audio/a3-s6.wav" data-start="520.19" data-duration="7.635" data-volume="1"></audio>
+  <audio id="nx-a3-s7" src="audio/a3-s7.wav" data-start="527.88" data-duration="11.466" data-volume="1"></audio>
+  <audio id="nx-a3-s8" src="audio/a3-s8.wav" data-start="539.55" data-duration="5.381" data-volume="1"></audio>
+  <audio id="nx-a3-s9" src="audio/a3-s9.wav" data-start="545.11" data-duration="10.104" data-volume="1"></audio>
+  <audio id="nx-a3-s10" src="audio/a3-s10.wav" data-start="555.51" data-duration="11.125" data-volume="1"></audio>
+  <audio id="nx-a3-s11" src="audio/a3-s11.wav" data-start="566.91" data-duration="12.402" data-volume="1"></audio>
+  <audio id="nx-a3-s12" src="audio/a3-s12.wav" data-start="579.80" data-duration="7.039" data-volume="1"></audio>
+  <audio id="nx-a3-s13" src="audio/a3-s13.wav" data-start="587.42" data-duration="8.912" data-volume="1"></audio>
+  <audio id="nx-a3-s14" src="audio/a3-s14.wav" data-start="596.62" data-duration="11.551" data-volume="1"></audio>
+  <audio id="nx-a3-s15" src="audio/a3-s15.wav" data-start="608.52" data-duration="6.317" data-volume="1"></audio>
+  <audio id="nx-a3-s16" src="audio/a3-s16.wav" data-start="615.02" data-duration="5.977" data-volume="1"></audio>
+  <audio id="nx-a3-s17" src="audio/a3-s17.wav" data-start="621.29" data-duration="4.274" data-volume="1"></audio>
+  <!-- graphic hosts (track 2): 10 compositions -->
+  <div id="host-a3s01-message" data-composition-id="g-a3s01-message" data-composition-src="compositions/g-a3s01-message.html" data-start="480.67" data-duration="18.73" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A3-S1 to A3-S3; starts on the cut out of black -->
+  <div id="host-a3s04-links" data-composition-id="g-a3s04-links" data-composition-src="compositions/g-a3s04-links.html" data-start="499.40" data-duration="9.07" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A3-S4 -->
+  <div id="host-a3s05-bremen" data-composition-id="g-a3s05-bremen" data-composition-src="compositions/g-a3s05-bremen.html" data-start="508.47" data-duration="19.92" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A3-S5, A3-S6 -->
+  <div id="host-a3s07-calls" data-composition-id="g-a3s07-calls" data-composition-src="compositions/g-a3s07-calls.html" data-start="528.39" data-duration="17.24" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A3-S7, A3-S8 -->
+  <div id="host-a3s09-jam" data-composition-id="g-a3s09-jam" data-composition-src="compositions/g-a3s09-jam.html" data-start="545.63" data-duration="10.26" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A3-S9 -->
+  <div id="host-a3s10-towers" data-composition-id="g-a3s10-towers" data-composition-src="compositions/g-a3s10-towers.html" data-start="555.89" data-duration="11.47" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A3-S10 -->
+  <div id="host-a3s11-onoff" data-composition-id="g-a3s11-onoff" data-composition-src="compositions/g-a3s11-onoff.html" data-start="567.36" data-duration="12.69" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A3-S11 -->
+  <div id="host-a3s12-seven" data-composition-id="g-a3s12-seven" data-composition-src="compositions/g-a3s12-seven.html" data-start="580.05" data-duration="7.59" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A3-S12 -->
+  <div id="host-a3s13-battery" data-composition-id="g-a3s13-battery" data-composition-src="compositions/g-a3s13-battery.html" data-start="587.64" data-duration="21.23" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A3-S13, A3-S14 -->
+  <div id="host-a3s15-desks" data-composition-id="g-a3s15-desks" data-composition-src="compositions/g-a3s15-desks.html" data-start="608.87" data-duration="17.34" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A3-S15 to A3-S17 -->
+  <!-- film under g-a3s07-calls: the desk telephone, from the first word of A3-S7; the composition covers it from "People" (532.58) -->
+  <video id="v-a3s7-telephone" class="filmwin" src="media/films/cuts/a14-10-desk-telephone.mp4" data-start="528.39" data-duration="11.41" data-media-start="0" data-track-index="1" muted></video>
+  <!-- Paul on camera, A3-S18, the tease before the book ad; cut on his last word, where his sound ends 9.23 s into the 10 s clip -->
+  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3.mp4" data-start="626.21" data-duration="9.23" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="One county still had working radios. At about seven fifteen, its civil defense director learned where a tornado was. What did he do?"></video>
+
+  <!-- ============ BOOK AD (config.yaml channel.cta: between the tease, Paul's "What did he do?", and its payoff, A4-S1; 1.0 s black in and out) ============ -->
+  <section class="clip blackout" id="bo-cta-in" data-start="635.44" data-duration="1.0" data-track-index="1"></section>
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v7-oct10.mp4" data-start="636.44" data-duration="24.417" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+  <section class="clip blackout" id="bo-cta-out" data-start="660.86" data-duration="0.99" data-track-index="1"></section>
+
+  <!-- ============ A4 · The desk where it stopped (661.85 to 813.81; blackout to 814.51) ============ -->
+  <!-- narration: 15 segments; A4-S7 is Paul's clip ins-paul-4 -->
+  <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="661.54" data-duration="6.402" data-volume="1"></audio>
+  <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="668.16" data-duration="10.018" data-volume="1"></audio>
+  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="678.40" data-duration="4.530" data-volume="1"></audio>
+  <audio id="nx-a4-s4" src="audio/a4-s4.wav" data-start="683.08" data-duration="8.997" data-volume="1"></audio>
+  <audio id="nx-a4-s5" src="audio/a4-s5.wav" data-start="692.13" data-duration="8.061" data-volume="1"></audio>
+  <audio id="nx-a4-s6" src="audio/a4-s6.wav" data-start="700.72" data-duration="4.679" data-volume="1"></audio>
+  <audio id="nx-a4-s8" src="audio/a4-s8.wav" data-start="715.80" data-duration="10.316" data-volume="1"></audio>
+  <audio id="nx-a4-s9" src="audio/a4-s9.wav" data-start="726.32" data-duration="8.316" data-volume="1"></audio>
+  <audio id="nx-a4-s10" src="audio/a4-s10.wav" data-start="734.69" data-duration="13.296" data-volume="1"></audio>
+  <audio id="nx-a4-s11" src="audio/a4-s11.wav" data-start="748.27" data-duration="10.529" data-volume="1"></audio>
+  <audio id="nx-a4-s12" src="audio/a4-s12.wav" data-start="758.86" data-duration="11.466" data-volume="1"></audio>
+  <audio id="nx-a4-s13" src="audio/a4-s13.wav" data-start="770.67" data-duration="13.721" data-volume="1"></audio>
+  <audio id="nx-a4-s14" src="audio/a4-s14.wav" data-start="784.88" data-duration="8.061" data-volume="1"></audio>
+  <audio id="nx-a4-s15" src="audio/a4-s15.wav" data-start="793.21" data-duration="9.678" data-volume="1"></audio>
+  <audio id="nx-a4-s16" src="audio/a4-s16.wav" data-start="803.29" data-duration="9.848" data-volume="1"></audio>
+  <!-- graphic hosts (track 2): 10 compositions -->
+  <div id="host-a4s01-eyes" data-composition-id="g-a4s01-eyes" data-composition-src="compositions/g-a4s01-eyes.html" data-start="661.85" data-duration="6.71" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A4-S1; the payoff, on the cut out of the ad's dip -->
+  <div id="host-a4s02-countyb" data-composition-id="g-a4s02-countyb" data-composition-src="compositions/g-a4s02-countyb.html" data-start="668.56" data-duration="32.43" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A4-S2 to A4-S5 -->
+  <div id="host-a4s06-died" data-composition-id="g-a4s06-died" data-composition-src="compositions/g-a4s06-died.html" data-start="700.99" data-duration="5.16" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A4-S6 -->
+  <div id="host-a4s08-chief" data-composition-id="g-a4s08-chief" data-composition-src="compositions/g-a4s08-chief.html" data-start="715.65" data-duration="11.18" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A4-S8; starts on the cut from Paul -->
+  <div id="host-a4s09-clock" data-composition-id="g-a4s09-clock" data-composition-src="compositions/g-a4s09-clock.html" data-start="726.83" data-duration="21.86" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A4-S9, A4-S10 -->
+  <div id="host-a4s11-farend" data-composition-id="g-a4s11-farend" data-composition-src="compositions/g-a4s11-farend.html" data-start="748.69" data-duration="22.43" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A4-S11, A4-S12 -->
+  <div id="host-a4s13-duty" data-composition-id="g-a4s13-duty" data-composition-src="compositions/g-a4s13-duty.html" data-start="771.12" data-duration="13.98" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A4-S13 -->
+  <div id="host-a4s14-eight" data-composition-id="g-a4s14-eight" data-composition-src="compositions/g-a4s14-eight.html" data-start="785.10" data-duration="8.48" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A4-S14 -->
+  <div id="host-a4s15-chain" data-composition-id="g-a4s15-chain" data-composition-src="compositions/g-a4s15-chain.html" data-start="793.58" data-duration="9.92" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A4-S15 -->
+  <div id="host-a4s16-fortwayne" data-composition-id="g-a4s16-fortwayne" data-composition-src="compositions/g-a4s16-fortwayne.html" data-start="803.50" data-duration="10.31" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A4-S16 -->
+  <!-- film under g-a4s01-eyes, for that composition's first 3.15 s, on the hard cut out of the book ad's dip: the payoff cut is real footage (DESIGN.md "CTA contract"); the page comes on at word 9, "in". The operations room again, its own file now: a14-05b is seconds 20.0 to 24.0 of the same shot, cut to a file of its own (4.004 s) because a clip mounted from the middle of a file shows one frame, then black (learnings/render.md); the first 12.99 s of the shot are at 242.77 -->
+  <video id="v-a4s1-room" class="filmwin" src="media/films/cuts/a14-05b-operations-room-wide.mp4" data-start="661.85" data-duration="3.15" data-media-start="0" data-track-index="1" data-callback="payoff cut after the book ad: real footage" muted></video>
+  <!-- Paul on camera, A4-S7 (cut where his sound ends, 9.50 s into the 10 s clip), with the script's chip "County B" for the whole clip (ov-chip-countyb, in OVERLAYS) -->
+  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4.mp4" data-start="706.15" data-duration="9.50" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="The study calls it County B. It's a second county and a second police desk. They had the tornado's location, and apparently told no other office."></video>
+  <section class="clip blackout" id="bo-a4" data-start="813.81" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- ============ A5 · Warnings for storms already gone (814.51 to 1007.38; blackout to 1008.08) ============ -->
+  <!-- narration: 20 segments; A5-S13 is Paul's clip ins-paul-5 -->
+  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="814.08" data-duration="8.316" data-volume="1"></audio>
+  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="822.57" data-duration="10.870" data-volume="1"></audio>
+  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="833.49" data-duration="11.976" data-volume="1"></audio>
+  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="846.18" data-duration="12.827" data-volume="1"></audio>
+  <audio id="nx-a5-s5" src="audio/a5-s5.wav" data-start="859.27" data-duration="4.870" data-volume="1"></audio>
+  <audio id="nx-a5-s6" src="audio/a5-s6.wav" data-start="864.45" data-duration="15.763" data-volume="1"></audio>
+  <audio id="nx-a5-s7" src="audio/a5-s7.wav" data-start="880.63" data-duration="9.763" data-volume="1"></audio>
+  <audio id="nx-a5-s8" src="audio/a5-s8.wav" data-start="890.82" data-duration="9.210" data-volume="1"></audio>
+  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="900.27" data-duration="5.806" data-volume="1"></audio>
+  <audio id="nx-a5-s10" src="audio/a5-s10.wav" data-start="906.48" data-duration="8.571" data-volume="1"></audio>
+  <audio id="nx-a5-s11" src="audio/a5-s11.wav" data-start="915.10" data-duration="8.997" data-volume="1"></audio>
+  <audio id="nx-a5-s12" src="audio/a5-s12.wav" data-start="924.40" data-duration="7.720" data-volume="1"></audio>
+  <audio id="nx-a5-s14" src="audio/a5-s14.wav" data-start="942.26" data-duration="5.385" data-volume="1"></audio>
+  <audio id="nx-a5-s15" src="audio/a5-s15.wav" data-start="948.26" data-duration="6.997" data-volume="1"></audio>
+  <audio id="nx-a5-s16" src="audio/a5-s16.wav" data-start="955.53" data-duration="12.657" data-volume="1"></audio>
+  <audio id="nx-a5-s17" src="audio/a5-s17.wav" data-start="968.26" data-duration="6.232" data-volume="1"></audio>
+  <audio id="nx-a5-s18" src="audio/a5-s18.wav" data-start="975.24" data-duration="9.593" data-volume="1"></audio>
+  <audio id="nx-a5-s19" src="audio/a5-s19.wav" data-start="984.88" data-duration="9.933" data-volume="1"></audio>
+  <audio id="nx-a5-s20" src="audio/a5-s20.wav" data-start="995.16" data-duration="8.912" data-volume="1"></audio>
+  <audio id="nx-a5-s21" src="audio/a5-s21.wav" data-start="1004.33" data-duration="2.402" data-volume="1"></audio>
+  <!-- graphic hosts (track 2): 13 compositions -->
+  <div id="host-a5s01-radar" data-composition-id="g-a5s01-radar" data-composition-src="compositions/g-a5s01-radar.html" data-start="814.51" data-duration="31.67" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A5-S1 to A5-S3; starts on the cut out of black -->
+  <div id="host-a5s04-berne" data-composition-id="g-a5s04-berne" data-composition-src="compositions/g-a5s04-berne.html" data-start="846.18" data-duration="18.70" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A5-S4, A5-S5 -->
+  <div id="host-a5s06-hold" data-composition-id="g-a5s06-hold" data-composition-src="compositions/g-a5s06-hold.html" data-start="864.88" data-duration="15.98" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A5-S6 -->
+  <div id="host-a5s07-marion" data-composition-id="g-a5s07-marion" data-composition-src="compositions/g-a5s07-marion.html" data-start="880.86" data-duration="19.90" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A5-S7, A5-S8 -->
+  <div id="host-a5s09-alto" data-composition-id="g-a5s09-alto" data-composition-src="compositions/g-a5s09-alto.html" data-start="900.76" data-duration="5.99" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A5-S9 -->
+  <div id="host-a5s10-alert" data-composition-id="g-a5s10-alert" data-composition-src="compositions/g-a5s10-alert.html" data-start="906.75" data-duration="17.99" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A5-S10, A5-S11 -->
+  <div id="host-a5s12-spotters" data-composition-id="g-a5s12-spotters" data-composition-src="compositions/g-a5s12-spotters.html" data-start="924.74" data-duration="8.02" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A5-S12 -->
+  <div id="host-a5s14-noissue" data-composition-id="g-a5s14-noissue" data-composition-src="compositions/g-a5s14-noissue.html" data-start="942.11" data-duration="6.15" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A5-S14; starts on the cut from Paul -->
+  <div id="host-a5s15-dark" data-composition-id="g-a5s15-dark" data-composition-src="compositions/g-a5s15-dark.html" data-start="948.26" data-duration="7.71" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A5-S15 -->
+  <div id="host-a5s16-toledo" data-composition-id="g-a5s16-toledo" data-composition-src="compositions/g-a5s16-toledo.html" data-start="955.97" data-duration="19.27" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A5-S16, A5-S17 -->
+  <div id="host-a5s18-curran" data-composition-id="g-a5s18-curran" data-composition-src="compositions/g-a5s18-curran.html" data-start="975.24" data-duration="20.33" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A5-S18, A5-S19 -->
+  <div id="host-a5s20-team" data-composition-id="g-a5s20-team" data-composition-src="compositions/g-a5s20-team.html" data-start="995.57" data-duration="9.19" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A5-S20 -->
+  <div id="host-a5s21-end" data-composition-id="g-a5s21-end" data-composition-src="compositions/g-a5s21-end.html" data-start="1004.76" data-duration="2.62" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A5-S21 -->
+  <!-- film under g-a5s10-alert: a telephone call, from the first word of A5-S11 for the file's whole 4.17 s; the first sentence ends at 917.06 -->
+  <video id="v-a5s11-call" class="filmwin" src="media/films/cuts/a14-08-telephone-call.mp4" data-start="915.58" data-duration="4.17" data-media-start="0" data-track-index="1" muted></video>
+  <!-- Paul on camera, A5-S13 (cut where his sound ends, 9.35 s into the 10 s clip) -->
+  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5.mp4" data-start="932.76" data-duration="9.35" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="The office warning those towns then lost its own power. For one full hour that night, that office sent out nothing at all."></video>
+  <section class="clip blackout" id="bo-a5" data-start="1007.38" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- ============ A6 · What they fixed, and what they didn't (1008.08 to 1125.22; blackout to 1125.92) ============ -->
+  <!-- narration: 12 segments -->
+  <audio id="nx-a6-s1" src="audio/a6-s1.wav" data-start="1007.69" data-duration="7.593" data-volume="1"></audio>
+  <audio id="nx-a6-s2" src="audio/a6-s2.wav" data-start="1015.49" data-duration="9.933" data-volume="1"></audio>
+  <audio id="nx-a6-s3" src="audio/a6-s3.wav" data-start="1025.74" data-duration="7.805" data-volume="1"></audio>
+  <audio id="nx-a6-s4" src="audio/a6-s4.wav" data-start="1033.60" data-duration="9.252" data-volume="1"></audio>
+  <audio id="nx-a6-s5" src="audio/a6-s5.wav" data-start="1043.30" data-duration="8.486" data-volume="1"></audio>
+  <audio id="nx-a6-s6" src="audio/a6-s6.wav" data-start="1051.88" data-duration="8.018" data-volume="1"></audio>
+  <audio id="nx-a6-s7" src="audio/a6-s7.wav" data-start="1060.23" data-duration="12.061" data-volume="1"></audio>
+  <audio id="nx-a6-s8" src="audio/a6-s8.wav" data-start="1072.71" data-duration="12.317" data-volume="1"></audio>
+  <audio id="nx-a6-s9" src="audio/a6-s9.wav" data-start="1085.48" data-duration="8.997" data-volume="1"></audio>
+  <audio id="nx-a6-s10" src="audio/a6-s10.wav" data-start="1094.97" data-duration="13.338" data-volume="1"></audio>
+  <audio id="nx-a6-s11" src="audio/a6-s11.wav" data-start="1108.72" data-duration="4.955" data-volume="1"></audio>
+  <audio id="nx-a6-s12" src="audio/a6-s12.wav" data-start="1113.73" data-duration="10.870" data-volume="1"></audio>
+  <!-- graphic hosts (track 2): 9 compositions -->
+  <div id="host-a6s01-recs" data-composition-id="g-a6s01-recs" data-composition-src="compositions/g-a6s01-recs.html" data-start="1008.08" data-duration="7.92" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A6-S1; starts on the cut out of black -->
+  <div id="host-a6s02-floorplan" data-composition-id="g-a6s02-floorplan" data-composition-src="compositions/g-a6s02-floorplan.html" data-start="1016.00" data-duration="10.15" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A6-S2 -->
+  <div id="host-a6s03-announcer" data-composition-id="g-a6s03-announcer" data-composition-src="compositions/g-a6s03-announcer.html" data-start="1026.15" data-duration="17.47" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A6-S3, A6-S4 -->
+  <div id="host-a6s05-wires" data-composition-id="g-a6s05-wires" data-composition-src="compositions/g-a6s05-wires.html" data-start="1043.62" data-duration="16.94" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A6-S5, A6-S6 -->
+  <div id="host-a6s07-power" data-composition-id="g-a6s07-power" data-composition-src="compositions/g-a6s07-power.html" data-start="1060.56" data-duration="12.44" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A6-S7 -->
+  <div id="host-a6s08-spotters" data-composition-id="g-a6s08-spotters" data-composition-src="compositions/g-a6s08-spotters.html" data-start="1073.00" data-duration="12.71" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A6-S8 -->
+  <div id="host-a6s09-third" data-composition-id="g-a6s09-third" data-composition-src="compositions/g-a6s09-third.html" data-start="1085.71" data-duration="9.47" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A6-S9 -->
+  <div id="host-a6s10-watch" data-composition-id="g-a6s10-watch" data-composition-src="compositions/g-a6s10-watch.html" data-start="1095.18" data-duration="13.79" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A6-S10 -->
+  <div id="host-a6s11-sirens" data-composition-id="g-a6s11-sirens" data-composition-src="compositions/g-a6s11-sirens.html" data-start="1108.97" data-duration="16.25" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- A6-S11, A6-S12 -->
+  <!-- film under g-a6s11-sirens: the siren horn, silent, from the first word of A6-S12 to the end of the composition; the first sentence ends at 1118.17 -->
+  <video id="v-a6s12-horn" class="filmwin" src="media/films/cuts/a14-01-siren-horn.mp4" data-start="1114.32" data-duration="10.90" data-media-start="0" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-a6" data-start="1125.22" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- ============ Z1 · Close (1125.92 to 1184.66, the end of the video: the title card holds 4.0 s after its last sound) ============ -->
+  <!-- Paul on camera, Z1-S1, on the cut out of black (cut where his sound ends, 9.71 s into the 10 s clip) -->
+  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6.mp4" data-start="1125.92" data-duration="9.71" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="When the forecast went out, the offices typically said telling the public was the stations' job. Backing the stations up was nobody's job."></video>
+  <!-- narration: 5 segments; Z1-S4b is the book line, first sound 1163.12, 1.0 s after the drill line's last sound -->
+  <audio id="nx-z1-s2" src="audio/z1-s2.wav" data-start="1135.78" data-duration="9.338" data-volume="1"></audio>
+  <audio id="nx-z1-s3" src="audio/z1-s3.wav" data-start="1145.19" data-duration="10.104" data-volume="1"></audio>
+  <audio id="nx-z1-s4" src="audio/z1-s4.wav" data-start="1155.70" data-duration="6.743" data-volume="1"></audio>
+  <audio id="nx-z1-s4b" src="audio/z1-s4b.wav" data-start="1162.68" data-duration="6.062" data-volume="1"></audio>
+  <audio id="nx-z1-s5" src="audio/z1-s5.wav" data-start="1169.12" data-duration="11.891" data-volume="1"></audio>
+  <!-- graphic hosts (track 2): 4 compositions -->
+  <div id="host-z1s02-row" data-composition-id="g-z1s02-row" data-composition-src="compositions/g-z1s02-row.html" data-start="1135.63" data-duration="20.39" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- Z1-S2, Z1-S3; starts on the cut from Paul -->
+  <div id="host-z1s04-drill" data-composition-id="g-z1s04-drill" data-composition-src="compositions/g-z1s04-drill.html" data-start="1156.02" data-duration="7.10" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- Z1-S4 -->
+  <div id="host-z1s4b-book" data-composition-id="g-z1s4b-book" data-composition-src="compositions/g-z1s4b-book.html" data-start="1163.12" data-duration="6.31" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- Z1-S4b; the book cover with one line under it -->
+  <div id="host-z1s05-title" data-composition-id="g-z1s05-title" data-composition-src="compositions/g-z1s05-title.html" data-start="1169.43" data-duration="15.23" data-track-index="2" data-width="1920" data-height="1080"></div>  <!-- Z1-S5; the outro: its last sound is at 1180.66, then the 4.0 s hold -->
+
+  <!-- ============ PRESENTER CIRCLE (owner 10 Oct 26: whole episode, "except CTA part and omni areas"; face track 7, ring track 9) ============ -->
+  <!-- Paul's face speaking the narration (FlashHead, made on the ZBook; one file a window, mounted from its first frame, muted). Windows 1 to
+       11 of mg_specs/pip-windows.md: on from the cut out of his opening clip to the title card, wherever he is not full frame. Off in his
+       six full-frame clips, the book ad and its dips, the six blackouts and under the title card. Window 1 (owner 13 Oct 26) holds the
+       face's first frame for 0.16 s: the face file starts with the narration at 9.87, the cut is at 9.72. After the ad it comes on with
+       g-a4s02-countyb (668.56): the face file has no face before the first line after the ad. Every graphic keeps x >= 1600, y >= 680
+       clear for it. -->
+  <video class="pip" id="pip-w1" src="media/pip/paul-w1.mp4" data-start="9.72" data-duration="102.76" data-media-start="0" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w1" data-start="9.72" data-duration="102.76" data-track-index="9"><div class="pipring"></div></section>
+  <video class="pip" id="pip-w2" src="media/pip/paul-w2.mp4" data-start="113.18" data-duration="119.92" data-media-start="0" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w2" data-start="113.18" data-duration="119.92" data-track-index="9"><div class="pipring"></div></section>
+  <video class="pip" id="pip-w3" src="media/pip/paul-w3.mp4" data-start="242.77" data-duration="46.39" data-media-start="0" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w3" data-start="242.77" data-duration="46.39" data-track-index="9"><div class="pipring"></div></section>
+  <video class="pip" id="pip-w4" src="media/pip/paul-w4.mp4" data-start="289.86" data-duration="190.11" data-media-start="0" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w4" data-start="289.86" data-duration="190.11" data-track-index="9"><div class="pipring"></div></section>
+  <video class="pip" id="pip-w5" src="media/pip/paul-w5.mp4" data-start="480.67" data-duration="145.54" data-media-start="0" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w5" data-start="480.67" data-duration="145.54" data-track-index="9"><div class="pipring"></div></section>
+  <video class="pip" id="pip-w6" src="media/pip/paul-w6.mp4" data-start="668.56" data-duration="37.59" data-media-start="0" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w6" data-start="668.56" data-duration="37.59" data-track-index="9"><div class="pipring"></div></section>
+  <video class="pip" id="pip-w7" src="media/pip/paul-w7.mp4" data-start="715.65" data-duration="98.16" data-media-start="0" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w7" data-start="715.65" data-duration="98.16" data-track-index="9"><div class="pipring"></div></section>
+  <video class="pip" id="pip-w8" src="media/pip/paul-w8.mp4" data-start="814.51" data-duration="118.25" data-media-start="0" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w8" data-start="814.51" data-duration="118.25" data-track-index="9"><div class="pipring"></div></section>
+  <video class="pip" id="pip-w9" src="media/pip/paul-w9.mp4" data-start="942.11" data-duration="65.27" data-media-start="0" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w9" data-start="942.11" data-duration="65.27" data-track-index="9"><div class="pipring"></div></section>
+  <video class="pip" id="pip-w10" src="media/pip/paul-w10.mp4" data-start="1008.08" data-duration="117.14" data-media-start="0" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w10" data-start="1008.08" data-duration="117.14" data-track-index="9"><div class="pipring"></div></section>
+  <video class="pip" id="pip-w11" src="media/pip/paul-w11.mp4" data-start="1135.63" data-duration="33.80" data-media-start="0" data-track-index="7" muted></video>
+  <section class="clip" id="pip-ring-w11" data-start="1135.63" data-duration="33.80" data-track-index="9"><div class="pipring"></div></section>
+
+  <!-- ============ OVERLAYS (each wrapped in a timed section) ============ -->
+  <!-- date and place inside the first second, over Paul's clip (the one text allowed on him); gone at 3.5, six seconds before his clip ends -->
+  <section id="ov-pf-date" data-start="0.4" data-duration="3.2" data-track-index="6">
+    <div class="popfig pf-chest" id="pf-date"><span class="pf-big">April 11, 1965</span><span class="pf-sub">one Indiana county</span></div>
+  </section>
+  <!-- A4-S7: the script's chip "County B" for the whole of Paul's clip ins-paul-4 (same window as the clip) -->
+  <section id="ov-chip-countyb" data-start="706.15" data-duration="9.50" data-track-index="6">
+    <div class="ovchip" id="chip-countyb">County B</div>
+  </section>
+
+  <!-- ============ SOUND (choices and reasons: edit_script.md "Sound, hook and intro") ============
+       No siren: this story is a warning that did not travel. One low bed from 0:00; it fades over 0.3 s from the start of "nobody?"
+       (110.94), so the intro's last word ends in silence. The swell ends on the last sound of the toll line (13.19).
+       The ring starts on "It", the first word of T1-S2's second sentence. One key strike on each of the four rows read aloud in T1-S3. -->
+  <audio id="sx-bed" src="media/sfx/bed-hook-intro.mp3" data-bed="" data-start="0" data-duration="111.24" data-volume="0.13"></audio>
+  <audio id="sx-swell-toll" src="media/sfx/swell-toll.wav" data-bed="" data-start="8.19" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-ring" src="media/sfx/telephone-ring.wav" data-bed="" data-start="19.17" data-duration="1.88" data-volume="0.3"></audio>
+  <audio id="sx-key-state" src="media/sfx/key-strike.wav" data-bed="" data-start="22.66" data-duration="0.22" data-volume="0.35"></audio>
+  <audio id="sx-key-sheriffs" src="media/sfx/key-strike.wav" data-bed="" data-start="24.34" data-duration="0.22" data-volume="0.35"></audio>
+  <audio id="sx-key-city" src="media/sfx/key-strike.wav" data-bed="" data-start="25.6" data-duration="0.22" data-volume="0.35"></audio>
+  <audio id="sx-key-named" src="media/sfx/key-strike.wav" data-bed="" data-start="26.96" data-duration="0.22" data-volume="0.35"></audio>
+
+  <!-- ============ SOUND, ACTS ONE TO SIX AND THE CLOSE (12 Oct 26; the hook and intro's manner, carried on) ============
+       THE BED: the hook's own bed carried on, one file an act, each mounted 0.13. Same source (assets/sfx/deapi/score-act1-darkambient.mp3, from
+       18 s in, looped on itself with a 6 s crossfade) and the same levelling as media/sfx/bed-hook-intro.mp3; every file's mean is -20.0 to
+       -20.6 dB against the hook bed's -20.0. Each fades in over 0.4 s on the cut out of black. Each fades out over the 1.0 s between an
+       act's last sound and its blackout, so every blackout is silent. The A3 bed runs under Paul's tease and is out by the book ad's dip
+       (635.44): nothing of ours sounds under the dips or the ad (636.44 to 660.86). The bed comes back on the cut to the film at 661.85.
+       Under each of Paul's five clips the bed is 3 dB down inside the file (0.5 s ramps before and after the clip), so it is never louder
+       there than the hook's bed is under ins-paul-1. The close's bed fades out over the 4.0 s end hold. -->
+  <audio id="sx-bed-a1" src="media/sfx/bed-a1.mp3" data-bed="" data-start="113.18" data-duration="175.98" data-volume="0.13"></audio>
+  <audio id="sx-bed-a2" src="media/sfx/bed-a2.mp3" data-bed="" data-start="289.86" data-duration="190.11" data-volume="0.13"></audio>
+  <audio id="sx-bed-a3" src="media/sfx/bed-a3.mp3" data-bed="" data-start="480.67" data-duration="154.77" data-volume="0.13"></audio>
+  <audio id="sx-bed-a4" src="media/sfx/bed-a4.mp3" data-bed="" data-start="661.85" data-duration="151.96" data-volume="0.13"></audio>
+  <audio id="sx-bed-a5" src="media/sfx/bed-a5.mp3" data-bed="" data-start="814.51" data-duration="192.87" data-volume="0.13"></audio>
+  <audio id="sx-bed-a6" src="media/sfx/bed-a6.mp3" data-bed="" data-start="1008.08" data-duration="117.14" data-volume="0.13"></audio>
+  <audio id="sx-bed-z1" src="media/sfx/bed-z1.mp3" data-bed="" data-start="1125.92" data-duration="58.74" data-volume="0.13"></audio>
+  <!-- SWELLS: the hook's swell (media/sfx/swell-toll.wav, 5.0 s) at the hook's 0.4, one on a line the act turns on, 40 to 65 s apart inside an
+       act. Each ENDS on the last sound of its line, as the toll swell does, so each starts 5.0 s before that. None under Paul, the dips, the
+       ad or an act's last line: an act ends on the bed's fade alone, as the intro ends. Ends: 161.56 "the clock to watch", 226.35
+       "remember Fort Wayne", 266.25 "never passed it on at all", 311.88 "somebody else's telephone line", 351.81 "Ten people did not survive
+       it", 403.96 "first started touching down", 443.60 "Fourteen people lost their lives", 494.31 "impossible to keep track", 544.62 "the
+       poor observer", 607.87 "for three days", 705.16 "died with the police", 740.73 "We didn't have any warning at all, the sheriff said",
+       784.09 "as its job", 863.87 "12 minutes left in Indiana", 905.74 "25 lives lost", 967.89 "18 people there lost their lives", 1042.63
+       "broke in four more places", 1084.73 "SkyWarn", 1144.73 "stopped on a police desk". -->
+  <audio id="sx-swell-a1s5" src="media/sfx/swell-toll.wav" data-bed="" data-start="156.56" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a1s12" src="media/sfx/swell-toll.wav" data-bed="" data-start="221.35" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a1s16" src="media/sfx/swell-toll.wav" data-bed="" data-start="261.25" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a2s3" src="media/sfx/swell-toll.wav" data-bed="" data-start="306.88" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a2s8" src="media/sfx/swell-toll.wav" data-bed="" data-start="346.81" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a2s14" src="media/sfx/swell-toll.wav" data-bed="" data-start="398.96" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a2s17" src="media/sfx/swell-toll.wav" data-bed="" data-start="438.60" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a3s2" src="media/sfx/swell-toll.wav" data-bed="" data-start="489.31" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a3s8" src="media/sfx/swell-toll.wav" data-bed="" data-start="539.62" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a3s14" src="media/sfx/swell-toll.wav" data-bed="" data-start="602.87" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a4s6" src="media/sfx/swell-toll.wav" data-bed="" data-start="700.16" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a4s10" src="media/sfx/swell-toll.wav" data-bed="" data-start="735.73" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a4s13" src="media/sfx/swell-toll.wav" data-bed="" data-start="779.09" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a5s5" src="media/sfx/swell-toll.wav" data-bed="" data-start="858.87" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a5s9" src="media/sfx/swell-toll.wav" data-bed="" data-start="900.74" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a5s16" src="media/sfx/swell-toll.wav" data-bed="" data-start="962.89" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a6s4" src="media/sfx/swell-toll.wav" data-bed="" data-start="1037.63" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-a6s8" src="media/sfx/swell-toll.wav" data-bed="" data-start="1079.73" data-duration="5" data-volume="0.4"></audio>
+  <audio id="sx-swell-z1s2" src="media/sfx/swell-toll.wav" data-bed="" data-start="1139.73" data-duration="5" data-volume="0.4"></audio>
+  <!-- MATCH-CUT SOUNDS: seven, each starting on the frame its picture moves (composition start + the cue time in that composition's brief),
+       never on the word. A teletype burst (media/sfx/teletype-burst.wav, 0.85 s, ten key strikes a second, 0.3) where a typed message
+       comes on: the amber wash on "typed out" in g-a1s04-wire, and the typed quote strip in g-a5s06-hold. The hook's key strike (0.35) as
+       each of the three typed sighting cards starts to rise in g-a2s19-log. The hook's telephone ring (0.3) where a telephone is the
+       picture: as the ring arcs start to pulse in g-a3s07-calls, and on the hard cut to the telephone film in g-a5s10-alert. -->
+  <audio id="sx-tty-a1s4" src="media/sfx/teletype-burst.wav" data-bed="" data-start="151.72" data-duration="0.85" data-volume="0.3"></audio>
+  <audio id="sx-key-a2s19-1" src="media/sfx/key-strike.wav" data-bed="" data-start="456.37" data-duration="0.22" data-volume="0.35"></audio>
+  <audio id="sx-key-a2s19-2" src="media/sfx/key-strike.wav" data-bed="" data-start="458.15" data-duration="0.22" data-volume="0.35"></audio>
+  <audio id="sx-key-a2s19-3" src="media/sfx/key-strike.wav" data-bed="" data-start="459.93" data-duration="0.22" data-volume="0.35"></audio>
+  <audio id="sx-ring-a3s7" src="media/sfx/telephone-ring.wav" data-bed="" data-start="533.92" data-duration="1.88" data-volume="0.3"></audio>
+  <audio id="sx-tty-a5s6" src="media/sfx/teletype-burst.wav" data-bed="" data-start="866.87" data-duration="0.85" data-volume="0.3"></audio>
+  <audio id="sx-ring-a5s11" src="media/sfx/telephone-ring.wav" data-bed="" data-start="915.58" data-duration="1.88" data-volume="0.3"></audio>
+
+  <!-- ============ FILM LAYER ============ -->
+  <div id="vignette"></div>
+  <canvas id="grain" width="480" height="270"></canvas>
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 1184.66;
+  function pop(sel, at, hold) {
+    tl.fromTo(sel, { scale: 2.2, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.35, ease: "power4.in" }, at);
+    tl.to(sel, { autoAlpha: 0, y: -26, duration: 0.28, ease: "power2.in" }, at + hold - 0.28);
+  }
+
+  /* ---- popfig: the date and place land inside the first second, as Paul says "in one county" (0.56 to 1.36) ---- */
+  pop("#pf-date", 0.5, 3.0);
+
+  filmLayer(tl, DUR);
+  /* ---- the dust ends with the picture: the closing title (host-z1s05-title, at 1169.43) fades to black over its own 14.03 to 15.08 s.
+          The six specks fade over the same seconds and are off after them, so the last frames are black in every pixel. filmLayer
+          owns each speck's opacity, x and y, so the fade rides on the filter, which filmLayer never touches ---- */
+  const TITLE = 1169.43;
+  tl.fromTo(".dust", { filter: "blur(1.2px) opacity(1)" }, { filter: "blur(1.2px) opacity(0)", duration: 15.08 - 14.03, ease: "none", immediateRender: false }, TITLE + 14.03);
+  tl.set(".dust", { display: "none" }, TITLE + 15.08);
+  window.__timelines["ep-palm-sunday-1965"] = tl;
+})();
+</script>
+</body>
+</html>
