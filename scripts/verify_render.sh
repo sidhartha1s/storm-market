@@ -19,7 +19,7 @@ PROBES=$(grep -ao 'browserGpuMode probe.*' "$LOG" 2>/dev/null | cut -c1-160)
 echo "${PROBES:-no probe line in $LOG}"
 # one probe line per capture worker; every one of them must name NVIDIA
 if [ -z "$PROBES" ] || printf '%s\n' "$PROBES" | grep -qv NVIDIA; then
-  echo "FAIL: a capture worker did not run on the NVIDIA GPU (run scripts/render_busy.py --launch to pin, then re-render)"; exit 2
+  echo "FAIL: a capture worker did not run on the NVIDIA GPU (re-render through scripts/render.cmd: it re-pins on every launch)"; exit 2
 fi
 
 echo
