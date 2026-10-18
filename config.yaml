@@ -36,7 +36,7 @@ channel:
     sh-: 0.99                     # shorts — references/shorts/PLAN.md "Pace" (owner 16 Sep 26: 1.16 on the old voice, same ratio)
   cta:                            # MUST-KEEP in every episode (owner order 2026-08-30) — DESIGN.md "CTA contract"
     file: assets/cta/paul-storm-ready-v8-oct19.mp4    # md5 66e1a8b2c8fc5ebe2c3675b599a8dada (19 Oct 26: v7 re-voiced in the narrator voice, Chatterbox VC to external.voice_ref, timing kept; picture stream copied from v7; QR opens /yt/?src=qr; 1080p24); swap = NEW versioned file + bump here, never overwrite; the old file leaves assets/cta/
-    duration: 24.417              # the picture stream (586 frames at 24 fps); the audio stream ends with it (24.416 s)
+    duration: 24.417              # the picture stream (586 frames at 24 fps); the audio stream ends at 24.401 s
     transcript: assets/cta/paul-storm-ready-v8-oct19.txt
     voice_ref_md5: ff03c38fefe26dc0b7adb08ea165f167   # the voice reference the CTA audio was made from; sweep_episode.py fails when it differs from external.voice_ref_md5
     exempt:                       # shipped BEFORE the contract (2026-08-30) — never extended; demo-* dirs skip by having no epN prefix
