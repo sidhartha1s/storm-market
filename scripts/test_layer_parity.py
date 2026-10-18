@@ -51,6 +51,10 @@ check("Palm Sunday with only its 111 s hook bed refuses on coverage",
       hook_bed_only.count('id="sx-bed') == 1
       and render_preflight.missing_layers("ep-palm-sunday-1965", hook_bed_only)[0][:2]
       == ("music bed", "beds cover 9% of the narration span 9.9-1181.0 s, need 80%"))
+circle_commented = re.sub(r'(<video class="pip"[^>]*></video>)', r"<!-- \1 -->", palm)
+check("Palm Sunday with every circle mount commented out refuses naming the circle",
+      circle_commented.count("<!-- <video class=\"pip\"") == 11
+      and run("ep-palm-sunday-1965", circle_commented) == (6, ["presenter corner circle"]))
 check("a mini (ms-) is out of scope", run("ms-palm-sunday", no_bed) == (None, []))
 
 if FAILS:
