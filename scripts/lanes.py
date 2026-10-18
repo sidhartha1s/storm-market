@@ -27,10 +27,12 @@ the host is asked whether the lane's process runs, and one that cannot be read i
      CLAUDE_CONFIG_DIR); any reply but "ok" (a limit, a logged-out profile, an error) moves it to the next
      ~/.claude-accounts/claude* profile. It never waits for a reset.
   2. every start refuses while the host has MIN_FREE_GB or less free, or MAX_LANES lanes are already RUNNING
+     (the cap by free RAM), and a builder lane (BROWSER_JOBS: it runs the Chromium gates) while BROWSER_MAX_LANES run
   3. a running lane whose log tail says it hit a limit is FAILED (blocking). `status` only reports it, since the Stop
      hook calls status; `relaunch` moves it to the next profile that answers, and backs off if another lanes.py
      holds the lock
-Every command but status reads and writes the ledger only while holding <ep>/lanes.json.lock (created exclusively; a
+Every launch first reaps orphan Playwright Chromes on its host (scripts/reap_chrome.py --apply), and so does every
+`end`, after the lane. Every command but status reads and writes the ledger only while holding <ep>/lanes.json.lock (created exclusively; a
 write waits up to LOCK_WAIT_S for it; one older than LOCK_MIN minutes belongs to a dead holder and is taken over).
 
 Groups: one per segment prefix (a1 = A1-S*), except H1, T1 and I1, which form `intro`. Jobs per group g:
@@ -55,6 +57,7 @@ from pathlib import Path
 SCRIPTS = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPTS))
 from host_ps import ps, quote  # noqa: E402
+from reap_chrome import reap  # noqa: E402
 from tts_episode import open_verify_ids, parse_segments  # noqa: E402
 
 INTRO = {"h1", "t1", "i1"}
@@ -62,8 +65,10 @@ HOLD_H = 3          # a hold lapses after this many hours, so a wait is re-decid
 DEFAULT_MIN = 60    # a lane with no end recorded this many minutes after its start is presumed dead (STALE)
 BLOCKING = ("READY", "STALE", "FAILED")
 HOSTS = ("local", "zbook")
-MIN_FREE_GB = 4     # a lane never starts on a host with this much free memory or less
+MIN_FREE_GB = 4     # a lane never starts on a host with this much free memory or less: the cap by free RAM
 MAX_LANES = 4       # ...or while this many lanes are RUNNING
+BROWSER_JOBS = ("build:",)  # a builder lane runs the Chromium gates on its comps (references/mg-brief-template.md "Gates")
+BROWSER_MAX_LANES = 3       # ...and one of those never starts while this many run: lanes with gates flooded the ZBook (18 Oct 26)
 ACCOUNTS = Path.home() / ".claude-accounts"
 LIMIT = re.compile(r"hit your (\w+ )?limit|session limit|usage limit reached", re.I)
 LOCK_MIN = 10      # a ledger lock older than this is a dead holder's
@@ -131,11 +136,15 @@ def profile_order(first=None, skip=None):
     return [n for n in names[i:] + names[:i] if n != skip]
 
 
-def gate(states, host):
-    """Rule 2: why a lane may not start on host now, or None."""
+def gate(states, host, jobs):
+    """Rule 2: why the lanes of jobs may not start on host now, or None."""
     running = sum(s["state"] == "RUNNING" for s in states)
     if running >= MAX_LANES:
         return f"{running} lanes already RUNNING (cap {MAX_LANES})"
+    # shortcut: counts this episode's lanes only, not another episode's on the same host; upgrade if two episodes share the ZBook
+    browser = [j for j in jobs if j.startswith(BROWSER_JOBS)]
+    if browser and running >= BROWSER_MAX_LANES:
+        return f"{browser[0]} runs browser gates and {running} lanes are RUNNING (browser cap {BROWSER_MAX_LANES})"
     gb = free_gb(host)
     return f"{host} has {gb} GB free (needs more than {MIN_FREE_GB})" if gb <= MIN_FREE_GB else None
 
@@ -165,8 +174,17 @@ def release(lock):
         pass  # a run past LOCK_MIN was taken over; the taker owns the lock now
 
 
+def reap_on(host):
+    """Kill orphan Playwright Chromes and their profiles on host (scripts/reap_chrome.py), before and after every lane."""
+    try:
+        print(reap(host, apply=True))
+    except RuntimeError as e:  # the lane itself does not need the reaper; the host stays as it was
+        print(f"[lanes] [FALLBACK] no reap on {host}: {e}")
+
+
 def launch(run, order):
     """Rule 1: run the lane on the first profile in order that answers; its ledger entry, or None if none answers."""
+    reap_on(run["host"])
     for p in order:
         if probe(run["host"], p):
             spawn(run["host"], run["cmd"].replace("{cli}", p), run["log"], run["cwd"])
@@ -326,7 +344,7 @@ def write(a, ep, lock):
         left = 0
         for s in (s for s in states if s["state"] == "FAILED"):
             run = ledger["jobs"][s["job"]]
-            why = gate(states, run["host"])
+            why = gate(states, run["host"], [s["job"]])
             new = None if why else launch(dict(run, started=now), profile_order(run.get("profile"), skip=run.get("profile")))
             os.utime(lock)  # still alive: a long relaunch is never taken over
             if new:
@@ -366,7 +384,7 @@ def write(a, ep, lock):
         if a.lane_cmd and busy:
             sys.exit(f"[lanes] FAIL: {busy[0]} is already RUNNING or DONE; a second launch would double it")
         if a.cmd == "start":
-            why = gate(states, a.host)
+            why = gate(states, a.host, a.jobs)
             if why:
                 sys.exit(f"[lanes] FAIL: not starting: {why}")
             run = {"started": now, "host": a.host, "minutes": a.minutes}
@@ -387,6 +405,9 @@ def write(a, ep, lock):
             ledger.get("holds", {}).pop(job, None)
     save_ledger(ep, ledger)
     print(f"[lanes] {a.cmd} {ep.name}: {', '.join(a.jobs) or 'session ' + str(a.session)}")
+    if a.cmd == "end":
+        for host in sorted({ledger["jobs"][job]["host"] for job in a.jobs}):
+            reap_on(host)
     return 0
 
 

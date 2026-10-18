@@ -22,6 +22,7 @@ def never(*a):
 # no test ever probes claude, reads a host or launches a lane: each test that needs one installs its own fake
 REAL_PROBE, REAL_SPAWN = lanes.probe, lanes.spawn
 lanes.probe = lanes.spawn = lanes.read_log = never
+lanes.reap = lambda host, apply: "[reap_chrome] fake: no test reaps a real host"
 lanes.free_gb = lambda host: 64.0
 FAILS = []
 SCRIPT = """# fixture
@@ -199,9 +200,10 @@ def lane_episode(tmp):
 
 
 def fakes(answering, free=16.0, log=""):
-    calls = {"probe": [], "spawn": []}
+    calls = {"probe": [], "spawn": [], "order": []}
     lanes.probe = lambda host, p: calls["probe"].append(p) or p in answering
-    lanes.spawn = lambda host, cmd, log_path, cwd: calls["spawn"].append((host, cmd, log_path, cwd))
+    lanes.spawn = lambda host, cmd, log_path, cwd: calls["spawn"].append((host, cmd, log_path, cwd)) or calls["order"].append("spawn")
+    lanes.reap = lambda host, apply: calls["order"].append(f"reap {host} {apply}") or "[reap_chrome] fake"
     lanes.free_gb = lambda host: free
     lanes.read_log = lambda host, path: log
     return calls
@@ -284,6 +286,43 @@ def test_rule2_start_refuses_low_memory_and_a_full_lane_count(tmp_path):
     assert lanes.main(["start", str(ep), "words:a1", *LANE]) == 0 and len(calls["spawn"]) == 1
 
 
+def test_browser_lane_refused_while_three_lanes_run(tmp_path):
+    """18 Oct 26: lanes running Chromium gates side by side flooded the ZBook's session 0"""
+    ep = lane_episode(tmp_path)
+    touch(ep / "briefs" / "a1" / "g-a1-map.md")  # makes job build:g-a1-map, a builder lane that runs the browser gates
+    now = time.time()
+    three = ("source:a1", "source:intro", "voice:a1")
+    lanes.save_ledger(ep, {"jobs": {j: {"started": now, "host": "zbook"} for j in three}})
+    calls = fakes(answering={"claude1"}, free=64.0)  # RAM is no reason here
+    assert raises(lambda: lanes.main(["start", str(ep), "build:g-a1-map", *LANE])) and not calls["spawn"]
+    assert lanes.main(["start", str(ep), "words:a1", *LANE]) == 0 and len(calls["spawn"]) == 1  # no browser: up to MAX_LANES
+    lanes.save_ledger(ep, {"jobs": {j: {"started": now, "host": "zbook"} for j in three[:2]}})
+    assert lanes.main(["start", str(ep), "build:g-a1-map", *LANE]) == 0 and len(calls["spawn"]) == 2
+
+
+def test_free_ram_caps_lanes_on_the_host_reading(tmp_path):
+    """the cap by free RAM is MIN_FREE_GB on the host's own reading, whatever the lane count"""
+    ep = lane_episode(tmp_path)
+    for free, starts in ((lanes.MIN_FREE_GB - 1, False), (lanes.MIN_FREE_GB, False), (lanes.MIN_FREE_GB + 0.5, True)):
+        calls = fakes(answering={"claude1"}, free=free)
+        lanes.save_ledger(ep, {})
+        assert raises(lambda: lanes.main(["start", str(ep), "source:a1", *LANE])) != starts and bool(calls["spawn"]) == starts, free
+
+
+def test_reaper_runs_on_the_lane_host_before_launch_and_after_end(tmp_path):
+    ep = lane_episode(tmp_path)
+    calls = fakes(answering={"claude1"})
+    assert lanes.main(["start", str(ep), "source:a1", *LANE]) == 0
+    assert calls["order"] == ["reap zbook True", "spawn"]
+    assert lanes.main(["end", str(ep), "source:a1"]) == 0  # --host defaults to local; the lane ran on zbook
+    assert calls["order"][-1] == "reap zbook True"
+
+    def down(host, apply):
+        raise RuntimeError("cannot read processes on zbook (exit 255): Connection reset by peer")
+    lanes.reap = down  # an unreadable host never blocks the lane: [FALLBACK], then the launch
+    assert lanes.main(["start", str(ep), "voice:a1", *LANE]) == 0 and len(calls["spawn"]) == 2
+
+
 def limited_lane(tmp):
     ep = lane_episode(tmp)
     run = {"started": time.time() - 60, "host": "zbook", "minutes": 60, "cmd": "type b.md | {cli} -p",
@@ -332,6 +371,9 @@ if __name__ == "__main__":
               test_an_ssh_drop_after_a_good_launch_never_launches_twice,
               test_a_recorded_launch_whose_log_never_appears_fails,
               test_rule2_start_refuses_low_memory_and_a_full_lane_count,
+              test_browser_lane_refused_while_three_lanes_run,
+              test_free_ram_caps_lanes_on_the_host_reading,
+              test_reaper_runs_on_the_lane_host_before_launch_and_after_end,
               test_status_launches_nothing_even_with_a_limited_lane,
               test_relaunch_backs_off_while_another_holds_the_lock,
               test_rule3_relaunch_moves_a_limited_lane_to_the_next_profile):
