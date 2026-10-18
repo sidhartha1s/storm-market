@@ -59,6 +59,9 @@ def tail_burst(p, tail_s=0.6, win_s=0.01):
         k -= 1
     if k == len(db):
         return None  # last window is quiet: a normal ending
+    for _ in range(3):  # step back over the burst's attack (windows between -55 and -40 dB)
+        if k and -55 <= db[k - 1] <= -40:
+            k -= 1
     gap = 0
     while k - gap - 1 >= 0 and db[k - gap - 1] < -55:
         gap += 1

@@ -317,7 +317,7 @@ with tempfile.TemporaryDirectory() as d:
     (ep / "audio").mkdir()
     lav = {"clean": "sine=f=220:r=24000:d=2.0,afade=t=out:st=1.6:d=0.3,apad=pad_dur=0.4",
            "burst": "sine=f=220:r=24000:d=2.0[s];anullsrc=r=24000:cl=mono:d=0.3[q];"
-                    "anoisesrc=r=24000:a=0.6:d=0.08[n];[s][q][n]concat=n=3:v=0:a=1"}
+                    "anoisesrc=r=24000:a=0.6:d=0.08,afade=t=in:d=0.03[n];[s][q][n]concat=n=3:v=0:a=1"}  # ramped attack, like the real TTS bursts
     for name, graph in lav.items():
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-filter_complex", graph, "-ac", "1",
                         str(ep / "audio" / f"{name}.wav")], check=True)
