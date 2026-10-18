@@ -69,6 +69,8 @@ ACCOUNTS = Path.home() / ".claude-accounts"
 LIMIT = re.compile(r"hit your (\w+ )?limit|session limit|usage limit reached", re.I)
 LOCK_MIN = 10      # a ledger lock older than this is a dead holder's
 LOCK_WAIT_S = 120  # a ledger write waits this long for the lock before it gives up
+NO_LOG = "[lanes: no log]"  # read_log's answer for a log that does not exist; the launch redirect creates it at once
+NO_LOG_MIN = 5     # a RUNNING lane with no log this many minutes after its start never ran (an unconfirmed launch)
 
 
 def ps(host, script, timeout=90):
