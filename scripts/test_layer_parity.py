@@ -46,6 +46,11 @@ check("Palm Sunday stripped of its 8 bed mounts",
       palm.count('id="sx-bed') == 8 and no_bed.count('id="sx-bed') == 0)
 check("Palm Sunday without its bed refuses naming the bed",
       run("ep-palm-sunday-1965", no_bed) == (6, ["music bed"]))
+hook_bed_only = re.sub(r'\s*<audio id="sx-bed-[az]\d[^>]*></audio>', "", palm)
+check("Palm Sunday with only its 111 s hook bed refuses on coverage",
+      hook_bed_only.count('id="sx-bed') == 1
+      and render_preflight.missing_layers("ep-palm-sunday-1965", hook_bed_only)[0][:2]
+      == ("music bed", "beds cover 9% of the narration span 9.9-1176.8 s, need 80%"))
 check("a mini (ms-) is out of scope", run("ms-palm-sunday", no_bed) == (None, []))
 
 if FAILS:
