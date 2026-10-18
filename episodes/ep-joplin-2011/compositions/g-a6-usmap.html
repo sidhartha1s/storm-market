@@ -145,6 +145,9 @@ window.__timelines = window.__timelines || {};
   tl.to(states, { strokeDashoffset: 0, duration: 1.2, ease: "power2.inOut" }, CUES.as);
   tl.to(states, { fillOpacity: 1, duration: 0.8, ease: "power1.out" }, CUES.as + 0.5);
   tl.to(P + "cam", { scale: 1.12, duration: CUES.fade - CUES.as, ease: "none" }, CUES.as);
+  /* uniform drift under the push: near (680, 540) the push alone moves sub-pixel, so 8-16.5 s read static (freeze_scan 18 Oct);
+     upward so the west coast stays at x >= 53 and the east coast clear of the inset column (x 1300) */
+  tl.to(P + "cam", { y: -40, duration: CUES.fade - CUES.as, ease: "none" }, CUES.as);
 
   /* engineering @4.02: chip 1 and the source line */
   tl.fromTo(P + "chip1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUES.engineering);
