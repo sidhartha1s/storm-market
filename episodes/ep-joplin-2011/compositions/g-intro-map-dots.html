@@ -184,7 +184,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "placed", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S8 + 2.12);
 
   /* INVESTIGATORS i1-s8 3.00: below-ground line draws L to R 0.8 s, its label rises */
-  tl.fromTo(P + "below", { strokeDashoffset: 1301 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, S8 + 3.0);
+  /* line ends x 1400, west of the path tail (path's south edge crosses y 880 at x 1453; frame-read FAIL 1, 18 Oct) */
+  tl.fromTo(P + "below", { strokeDashoffset: 1201 }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, S8 + 3.0);
   tl.fromTo(P + "below-lab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, S8 + 3.35);
 
   /* BELOW i1-s8 5.20: "FOUND NO SIGN" drops onto the line, then its source text */
