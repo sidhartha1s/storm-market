@@ -56,3 +56,16 @@ export function chromiumExecutable() {
 }
 
 export const chromium = (await import(playwrightCoreUrl())).chromium;
+
+/* The one way a gate opens Chromium. The gate closes it in a finally; if the gate overruns deadlineS this closes it
+   and exits 124 itself. Why: node hard-killed mid-gate (tool timeouts, lane stops, ssh teardown) left 94 frozen orphan
+   Chromes and 285 temp profiles on the ZBook (18 Oct 26); a gate that ends itself never needs killing from outside. */
+export async function launchGate(name, deadlineS, options = {}) {
+  const browser = await chromium.launch({ executablePath: chromiumExecutable(), args: ['--allow-file-access-from-files'], ...options });
+  const timer = setTimeout(() => {
+    console.log(`[${name}] FAIL: passed its ${deadlineS} s deadline; browser closed, nothing concluded`);
+    browser.close().finally(() => process.exit(124));
+  }, deadlineS * 1000);
+  browser.on('disconnected', () => clearTimeout(timer));
+  return browser;
+}
