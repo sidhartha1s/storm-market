@@ -12,7 +12,7 @@ CLAUDE.md already said "don't run other heavy sessions during a final render". T
 makes it a gate instead of a sentence, because the failure costs 10 minutes and looks
 like an asset problem.
 
-Exits non-zero (and says what to close) if the box is not quiet enough to render.
+Exits non-zero (and says why, in GB) if the box is not quiet enough to render; it never asks the owner to close his apps.
 
 It also enforces two things that were written as prose rules and therefore forgotten:
 the media budget (media_budget.py) and the version pin. "Remember to run npm view"
@@ -87,7 +87,7 @@ def busy_refusal():
     if free < render_busy.MIN_FREE_GB:
         print(f"[preflight] REFUSING TO RENDER — {free:.1f} GB free, need "
               f"{render_busy.MIN_FREE_GB:g} GB so the render keeps headroom (owner "
-              "2026-09-11). Close a browser or wait.", file=sys.stderr)
+              "2026-09-11). Wait for memory to free or render on the other box; never ask the owner to close his apps.", file=sys.stderr)
         return 2
     print(f"[preflight] OK — no render alive, {free:.1f} GB free.")
     return None
