@@ -16,8 +16,10 @@ Newest first. New entries go at the top, under this line. Superseded lines point
    between 15:34 and 15:41. The gates leak because they exit without closing the browser: `graphics_qc.mjs:222` exits right
    after launch, and none of the 7 `.mjs` gates closes the browser in a `finally`.
 2. Rule: on the box that runs lanes, never start a headless-browser job (snapshot, `graphics_qc`, the `.mjs` scans,
-   `run_gates`, a render) while a lane is live. Run it after the lanes end, or on the other laptop with its media. The
-   launch check in `scripts/lanes.py` should refuse the pairing (follow-up).
+   `run_gates`, a render) while 3 or more lanes are live, and never hard-kill a node gate mid-run (the gate times itself
+   out and closes its browser). Run `~/.claude/scripts/zbook-unfreeze-chrome.ps1` before and after each lane and
+   delete orphan temp profiles. Follow-ups: `try/finally browser.close()` in the 7 `.mjs` gates, and a launch check in
+   `scripts/lanes.py` that refuses the pairing.
 
 ## 12 Oct 26: verify_render judged every draft as a final
 
