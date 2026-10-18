@@ -51,7 +51,8 @@
     stroke:#05080b; stroke-width:6; stroke-linejoin:round; paint-order:stroke; opacity:0; visibility:hidden; }
   .a420-st { fill:#93a3b2; }
   #a420-lab-tc { fill:#e74c3c; }
-  #a420-lab-20a, #a420-lab-rl { opacity:1; visibility:visible; }
+  /* inherit, never visible: the host is hidden by visibility outside its window, and an explicit visible child leaks through it */
+  #a420-lab-20a, #a420-lab-rl { opacity:1; visibility:inherit; }
   .a420-lead { fill:none; stroke:#93a3b2; stroke-width:2; opacity:0; visibility:hidden; }
   .a420-inset { opacity:0; visibility:hidden; }
   .a420-inbg { fill:#15202b; stroke:#93a3b2; stroke-width:2; }
