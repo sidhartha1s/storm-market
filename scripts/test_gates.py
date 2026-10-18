@@ -354,6 +354,26 @@ with tempfile.TemporaryDirectory() as d:
     check("audio_levels: an audio id that is neither nx-/ins- nor data-bed FAILs as unclassified",
           "mystery-1" in out and "unclassified" in out, out)
 
+# audio_levels.py — a narration wav that ends in a burst after silence FAILs; a clean ending passes
+with tempfile.TemporaryDirectory() as d:
+    ep = Path(d)
+    (ep / "audio").mkdir()
+    lav = {"clean": "sine=f=220:r=24000:d=2.0,afade=t=out:st=1.6:d=0.3,apad=pad_dur=0.4",
+           "burst": "sine=f=220:r=24000:d=2.0[s];anullsrc=r=24000:cl=mono:d=0.3[q];"
+                    "anoisesrc=r=24000:a=0.6:d=0.08[n];[s][q][n]concat=n=3:v=0:a=1"}
+    for name, graph in lav.items():
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-filter_complex", graph, "-ac", "1",
+                        str(ep / "audio" / f"{name}.wav")], check=True)
+    (ep / "index.html").write_text(
+        '<audio id="nx-a1-s1" src="audio/clean.wav" data-start="0" data-duration="2.4" data-volume="1"></audio>\n'
+        '<audio id="nx-a1-s2" src="audio/burst.wav" data-start="3" data-duration="2.38" data-volume="1"></audio>\n',
+        encoding="utf-8")
+    code, out = run("audio_levels.py", ep)
+    check("audio_levels: a narration wav ending in a burst after silence FAILs",
+          code == 1 and "nx-a1-s2: ends in a" in out, out)
+    check("audio_levels: a narration wav that fades to silence is not flagged as a burst",
+          "nx-a1-s1: ends in a" not in out, out)
+
 # ===================================================================================
 # 6. lint_timeline.py — unmuted b-roll gate, narration-vs-wav gate, bounded CTA gap
 # ===================================================================================
