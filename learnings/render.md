@@ -160,7 +160,8 @@ ep4-el-reno draft, 1333.38 s, 20001 frames at 15 fps, 3 workers: compile 20.2 s,
    whole cmd/npx/chrome tree: the 05:28 attempt died 35 min in with the log frozen at 25 % and nine orphan
    chromes. `schtasks /create ... /tr "wscript.exe <abs>\scripts\run_hidden.vbs cmd.exe /c <abs>\scripts\<task>.cmd"`
    plus `/run` (with `MSYS2_ARG_CONV_EXCL='*'` under Git Bash) is the only launcher; the `/tr` string has a
-   261-char cap, so the per-episode wrapper `.cmd` (workers, overrides) keeps it short. Delete the task after.
+   261-char cap, so the per-episode wrapper `.cmd` (workers, overrides) keeps it short. Delete the task right after
+   `/run` returns, in the same command (recipe: CLAUDE.md "Launch hidden"); deleting after the job ends is too late.
 3. **Draft timing on this box at 0.8.41, streaming, 2 workers:** 15 885 frames in about 13 min (frame 600 at
    06:08, complete 06:21), 186 MB at crf 32 / 15 fps. Two workers, not three, when free RAM is under 5 GB.
 4. **A render preflight refusal for `ffprobe spawns in 0.40s` is a load reading, not a binary problem**, when
