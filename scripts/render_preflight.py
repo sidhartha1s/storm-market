@@ -115,8 +115,9 @@ def _window(attrs):
 
 
 def _circle_gap(mounts):
-    if not any(t == "video" and "pip" in a.get("class", "").split() for t, a in mounts):
-        return '0 <video class="pip"> mounts'
+    if not any(t == "video" and "pip" in a.get("class", "").split() and a.get("id", "").startswith("pip-w")
+               for t, a in mounts):
+        return '0 <video id="pip-w<n>" class="pip"> mounts'
 
 
 def _bed_gap(mounts):
@@ -127,7 +128,7 @@ def _bed_gap(mounts):
                   if t == "audio" and "data-bed" in a and {"bed", "mus"} & set(a.get("id", "").split("-")))
     if not beds:
         return "0 bed <audio> mounts (data-bed with 'bed' or 'mus' in the id)"
-    narration = [_window(a) for t, a in mounts if t == "audio" and a.get("id", "").startswith("nx-")]
+    narration = [_window(a) for t, a in mounts if t == "audio" and re.match(r"nx-(?!ins)", a.get("id", ""))]  # same narration rule as lint_timeline / circle_audio
     if not narration:
         return "no nx- narration to measure the bed against"
     lo, hi = min(s for s, _ in narration), max(e for _, e in narration)
@@ -182,6 +183,8 @@ def layer_refusal(episode):
 def main():
     episode = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.cwd()
     rc = layer_refusal(episode)
+    if "--layers" in sys.argv[2:]:  # run_gates.py runs only this check, so a missing layer shows before render.cmd
+        sys.exit(rc or 0)
     if rc:
         print("[preflight] REFUSING TO RENDER: a layer the owner already asked for is missing.",
               file=sys.stderr)
