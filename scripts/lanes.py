@@ -122,7 +122,7 @@ def spawn(host, cmd, log, cwd):
                          f"@{{CommandLine={quote(line)}; CurrentDirectory={quote(cwd)}; ProcessStartupInformation=$si}}).ReturnValue")
     if code == 0 and out.strip() == "0":
         return
-    # the host answered and refused it; or ssh dropped mid-call, decided by what runs there, never by the drop alone
+    # code 0: the host answered and refused it. Else ssh dropped mid-call and the Create may have run: ask the host
     # shortcut: a Create still in flight when the host answers reads as not running; a ~1 s window, rare enough here
     up = False if code == 0 else alive(host, log)
     if up is False:
