@@ -129,7 +129,7 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const states = gsap.utils.toArray(P + "states path");
 
-  tl.set(P + "cam", { scale: 1, svgOrigin: "680 540" }, 0);
+  tl.set(P + "cam", { scale: 1, x: 0, y: 0, svgOrigin: "680 540" }, 0);
   tl.set(P + "states", { autoAlpha: 1 }, 0);
   states.forEach(function (p) {
     const L = Math.ceil(p.getTotalLength()) + 1;
