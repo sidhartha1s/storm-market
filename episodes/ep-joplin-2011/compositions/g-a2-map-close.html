@@ -154,6 +154,9 @@ window.__timelines = window.__timelines || {};
       { autoAlpha: 0, attr: { r: R1 }, duration: 1.2, ease: "power1.out", repeat: 6, repeatDelay: 0.4, immediateRender: false },
       S10 + 15.58 + (i - 1) * 0.4);
   }
+  /* map float until the push: down 24 px and back (vertical, so the HUD leaders stay on ring A's sides within 1 px); back at identity on "best" */
+  tl.set(P + "float", { attr: { transform: "translate(0,0)" } }, 0);
+  tl.to(P + "float", { attr: { transform: "translate(0,24)" }, duration: ((S12 + 2.46) - (S10 + 15.58)) / 2, ease: "sine.inOut", yoyo: true, repeat: 1 }, S10 + 15.58);
   /* DEPENDED a2-s11 0.42: source line */
   tl.fromTo(P + "src", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, S11 + 0.42);
   /* WORSE a2-s11 3.02: west leader draws 0.35 s, chip lands at its end */
