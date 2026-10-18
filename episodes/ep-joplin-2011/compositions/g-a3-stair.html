@@ -181,7 +181,7 @@ window.__timelines = window.__timelines || {};
   /* exit, last 0.6 s: chips slide out left, picture fades through to the next */
   tl.to(Q + "chip", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6);
   tl.to(Q + "src", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, END - 0.6);
-  tl.to(Q + "cam", { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, END - 0.4);
+  tl.to([Q + "cam", Q + "bg"], { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, END - 0.4);
 
   window.__timelines["g-a3-stair"] = tl;
 })();
