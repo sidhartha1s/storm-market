@@ -2,7 +2,7 @@ episodes/*/media/
 episodes/*/narration.wav
 episodes/*/renders/
 *.mp4
-# the channel CTA is a tracked asset (owner order 2026-08-30) - the only mp4 in git
+# the channel CTA (owner order 2026-08-30) and the end ask (owner 19 Oct 26) are tracked assets - the only mp4s in git
 !assets/cta/*.mp4
 !assets/end-ask/*.mp4
 .env

@@ -150,24 +150,42 @@ def ask_check(out):
 
 
 _ASK = yaml.safe_load((Path(__file__).resolve().parent.parent / "config.yaml").read_text(encoding="utf-8"))["channel"]["end_ask"]
-with tempfile.TemporaryDirectory() as d:
-    # an ep- documentary without Paul's end ask FAILs; with both config clips staged back to back near the end it PASSes
-    ep_ask = make_ep(Path(d) / "ep-ask-test")
-    code, out = run("sweep_episode.py", ep_ask)
-    check("sweep_episode: an ep- episode without the end ask FAILs it", ask_check(out).startswith("FAIL"), ask_check(out) or out[-400:])
-    (ep_ask / "media" / "end-ask").mkdir()
-    t, vids = 0.5, ""
-    for f in _ASK["files"]:
+
+
+def ask_ep(d, start_back=20.0, gap=0.0, vol="1", dur_off=0.0, flip=False, mount=True):
+    """A 60.5 s ep- episode with the config end-ask clips staged and mounted from total - start_back."""
+    ep = make_ep(Path(d) / "ep-ask-test", nx_dur=60.0, nx_wav_secs=60.0)
+    if not mount:
+        return ep
+    (ep / "media" / "end-ask").mkdir()
+    t, vids = 60.5 - start_back, ""
+    for i, f in enumerate(_ASK["files"]):
         src = Path(__file__).resolve().parent.parent / f["file"]
-        (ep_ask / "media" / "end-ask" / src.name).write_bytes(src.read_bytes())
-        vids += (f'<video id="ins-ask-{src.stem[-1]}" src="media/end-ask/{src.name}" data-start="{t}" data-duration="{f["duration"]}" '
-                 f'data-track-index="2" data-volume="1" data-srt-label="ask"></video>\n')
-        t += f["duration"]
-    html = (ep_ask / "index.html").read_text(encoding="utf-8")
-    (ep_ask / "index.html").write_text(html.replace("</section>", vids + "</section>"), encoding="utf-8")
-    code, out = run("sweep_episode.py", ep_ask)
-    check("sweep_episode: the end ask staged from config, back to back near the end, PASSes", ask_check(out).startswith("PASS"),
-          ask_check(out) or out[-400:])
+        data = bytearray(src.read_bytes())
+        if flip and i == 1:
+            data[-1] ^= 1
+        (ep / "media" / "end-ask" / src.name).write_bytes(bytes(data))
+        vids += (f'<video id="ins-ask-{i}" src="media/end-ask/{src.name}" data-start="{t:.3f}" data-duration="{f["duration"] + dur_off}" '
+                 f'data-track-index="2" data-volume="{vol}" data-srt-label="ask"></video>\n')
+        t += f["duration"] + gap
+    html = (ep / "index.html").read_text(encoding="utf-8")
+    (ep / "index.html").write_text(html.replace("</section>", vids + "</section>"), encoding="utf-8")
+    return ep
+
+
+for label, kw, want in [
+    ("an ep- episode without the end ask FAILs it", dict(mount=False), "FAIL"),
+    ("the end ask staged from config, back to back in the last 30 s, PASSes", {}, "PASS"),
+    ("an end ask starting 40 s before the end FAILs (last_s)", dict(start_back=40.0), "FAIL"),
+    ("a 1 s gap between the two clips FAILs (back to back)", dict(gap=1.0), "FAIL"),
+    ("a staged clip one byte off the asset FAILs (md5)", dict(flip=True), "FAIL"),
+    ('data-volume="0.5" on the clips FAILs', dict(vol="0.5"), "FAIL"),
+    ("a data-duration 0.2 s off config FAILs", dict(dur_off=0.2), "FAIL"),
+    ("an end ask that runs past the episode end FAILs", dict(start_back=10.0), "FAIL"),
+]:
+    with tempfile.TemporaryDirectory() as d:
+        code, out = run("sweep_episode.py", ask_ep(d, **kw))
+        check(f"sweep_episode: {label}", ask_check(out).startswith(want), ask_check(out) or out[-400:])
 
 with tempfile.TemporaryDirectory() as d:
     # data-duration (1.0) doesn't match the real wav (2.0s) -> freshness gate must FAIL, and the
