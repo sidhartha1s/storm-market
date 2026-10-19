@@ -4,6 +4,7 @@ episodes/*/renders/
 *.mp4
 # the channel CTA is a tracked asset (owner order 2026-08-30) - the only mp4 in git
 !assets/cta/*.mp4
+!assets/end-ask/*.mp4
 .env
 # the voice venv and model files live in the MAIN checkout (scripts/voice_tool.py)
 .venv-pocket/

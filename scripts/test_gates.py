@@ -11,6 +11,7 @@ import sys
 import tempfile
 import wave
 from pathlib import Path
+import yaml
 
 S = Path(__file__).resolve().parent
 FAILS = []
