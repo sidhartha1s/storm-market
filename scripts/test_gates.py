@@ -360,6 +360,17 @@ for slug, label, extra, want in (
     ("ep-cap", 'data-caption-ok="reason" on a wordless sound passes',
      RADIO.format("ins-radio", ' data-caption-ok="siren, no words"'), False),
     ("ms-cap", "the caption rule stays off for an ms- mini", RADIO.format("ins-radio", ""), False),
+    ("ep-cap", "an uncaptioned radio with no data-volume FAILs (hyperframes plays it at 1.0)",
+     '<audio id="ins-radio" src="media/r.wav" data-start="3" data-duration="2"></audio>', True),
+    ("ep-cap", "a studio-saved tag (data-hf-id before id) still matches its caption",
+     RADIO.format("ins-radio", "").replace("<audio ", '<audio data-hf-id="hf-a1" ') + CAP.format(3, 2), False),
+    ("ep-cap", "studio-saved narration (data-hf-id before id) is not an outside voice",
+     RADIO.format("nx-a9", "").replace("<audio ", '<audio data-hf-id="hf-a2" '), False),
+    ("ep-cap", "an uncaptioned unmuted video FAILs",
+     '<video id="v-news" src="media/r.wav" data-start="3" data-duration="2" data-track-index="2"></video>', True),
+    ("ep-cap", "a muted video is not a voice",
+     '<video id="v-news" src="media/r.wav" data-start="3" data-duration="2" data-track-index="2" muted></video>', False),
+    ("ep-cap", "Paul's own clip is not an outside voice", RADIO.format("ins-paul-1", ""), False),
 ):
     with tempfile.TemporaryDirectory() as d:
         (Path(d) / slug).mkdir()
