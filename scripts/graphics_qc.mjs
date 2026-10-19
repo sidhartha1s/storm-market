@@ -212,6 +212,8 @@ for (const m of INDEX_HTML.matchAll(/<[a-z]+\b[^>]*\bdata-composition-src="compo
   const dur = parseFloat((/\bdata-duration="([\d.]+)"/.exec(m[0]) || [])[1]);
   if (!isNaN(dur)) HOSTS[m[1]] = Math.max(HOSTS[m[1]] || 0, dur);
 }
+// a running caption (host carries data-caption-for, mg-quickref "Outside voices") is one reading target in one size by design
+const CAPTIONS = new Set([...INDEX_HTML.matchAll(/<[a-z]+\b[^>]*\bdata-composition-src="compositions\/([^"]+)\.html"[^>]*\bdata-caption-for="[^"]+"[^>]*>/g)].map(m => m[1]));
 
 const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
@@ -292,7 +294,7 @@ for (const f of files) {
     for (const e of m.empty) { if (!seenEmpty.has(e)) { seenEmpty.add(e); add(name, 'empty-container', `${e} visible but empty (first at ${t.toFixed(1)}s)`); } }
     for (const b of m.broken) { if (!seenBroken.has(b)) { seenBroken.add(b); add(name, 'broken-image', `${b} failed to load (naturalWidth 0) — staged-path 404, not a crop/empty defect (${t.toFixed(1)}s)`); } }
   }
-  if (tierMax < 3 && maxTextNodes >= 4)
+  if (tierMax < 3 && maxTextNodes >= 4 && !CAPTIONS.has(name))
     add(name, 'flat-type', `only ${tierMax} type tier(s) across ${maxTextNodes} text elements — mg-quickref Type tiers`);
   if (maxCoverage >= 0.9 && probe.duration > 20 && !probe.tweens.some(t => t.dur >= 8))
     add(name, 'no-continuous-motion', `full-frame ${probe.duration.toFixed(0)}s graphic (${(maxCoverage*100).toFixed(0)}% opaque), longest tween ${Math.max(...probe.tweens.map(t=>t.dur)).toFixed(1)}s; see references/mg-quickref.md "Motion and exits". Either animate something continuously or let a moving photo carry it (ep2 panels cover ~43%).`);
