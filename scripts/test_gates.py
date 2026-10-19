@@ -347,26 +347,26 @@ with tempfile.TemporaryDirectory() as d:
           code == 1 and "unmuted b-roll" in out, out)
 
 # outside voices (owner 20 Oct 26, Joplin radio): a radio insert at 3-5 s needs a caption host over its whole window
-RADIO = '<audio id="ins-radio" src="media/r.wav" data-start="3" data-duration="2" data-volume="1"{}></audio>'
+RADIO = '<audio id="{}" src="media/r.wav" data-start="3" data-duration="2" data-volume="1"{}></audio>'
 CAP = '<div id="host-cap" data-composition-id="g-cap" data-start="{}" data-duration="{}" data-caption-for="ins-radio"></div>'
-for label, extra, want in (
-    ("an uncaptioned radio insert FAILs", RADIO.format(""), True),
-    ("a caption host over the whole radio window passes", RADIO.format("") + CAP.format(3, 2), False),
-    ("a caption that ends 1 s before the radio does FAILs (sound outlasting its picture)", RADIO.format("") + CAP.format(3, 1), True),
-    ('data-caption-ok="reason" on a wordless sound passes', RADIO.format(' data-caption-ok="siren, no words"'), False),
+for slug, label, extra, want in (
+    ("ep-cap", "an uncaptioned radio insert FAILs", RADIO.format("ins-radio", ""), True),
+    ("ep-cap", "an uncaptioned nx-ins insert FAILs (only nx- without ins is narration)", RADIO.format("nx-ins1", ""), True),
+    ("ep-cap", "a caption host over the whole radio window passes", RADIO.format("ins-radio", "") + CAP.format(3, 2), False),
+    ("ep-cap", "a caption that ends 1 s before the radio does FAILs (sound outlasting its picture)",
+     RADIO.format("ins-radio", "") + CAP.format(3, 1), True),
+    ("ep-cap", "a commented-out caption host does not count",
+     RADIO.format("ins-radio", "") + "<!--" + CAP.format(3, 2) + "-->", True),
+    ("ep-cap", 'data-caption-ok="reason" on a wordless sound passes',
+     RADIO.format("ins-radio", ' data-caption-ok="siren, no words"'), False),
+    ("ms-cap", "the caption rule stays off for an ms- mini", RADIO.format("ins-radio", ""), False),
 ):
     with tempfile.TemporaryDirectory() as d:
-        (Path(d) / "ep-cap").mkdir()
-        ep = make_lint_ep(Path(d) / "ep-cap", extra_video=extra)
+        (Path(d) / slug).mkdir()
+        ep = make_lint_ep(Path(d) / slug, extra_video=extra)
         write_wav(ep / "media" / "r.wav", 2.0)
         code, out = run("lint_timeline.py", ep)
         check(f"lint_timeline: {label}", ("outside voice without a caption" in out) == want, out)
-with tempfile.TemporaryDirectory() as d:
-    (Path(d) / "ms-cap").mkdir()
-    ep = make_lint_ep(Path(d) / "ms-cap", extra_video=RADIO.format(""))
-    write_wav(ep / "media" / "r.wav", 2.0)
-    code, out = run("lint_timeline.py", ep)
-    check("lint_timeline: the caption rule stays off for an ms- mini", "outside voice" not in out, out)
 
 with tempfile.TemporaryDirectory() as d:
     v = '<video src="media/broll.mp4" data-start="0" data-duration="2" data-track-index="1" muted></video>'

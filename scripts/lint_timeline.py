@@ -137,14 +137,17 @@ def main():
         def num(tag, attr):
             m = re.search(rf'{attr}="([\d.]+)"', tag)
             return float(m.group(1)) if m else None
+        live = re.sub(r"<!--.*?-->", "", html, flags=re.S)   # a commented-out tag is not mounted
         caps = [(m.group(1), num(m.group(0), "data-start"), num(m.group(0), "data-duration"))
-                for m in re.finditer(r'<div\b[^>]*data-caption-for="([^"]+)"[^>]*>', html)]
-        for m in re.finditer(r'<(audio|video)\b[^>]*>', html):
+                for m in re.finditer(r'<div\b[^>]*data-caption-for="([^"]+)"[^>]*>', live)]
+        for m in re.finditer(r'<(audio|video)\b[^>]*>', live):
             a = m.group(0)
             idm = re.search(r'\bid="([^"]+)"', a)
             vid = idm.group(1) if idm else ""
             s, d = num(a, "data-start"), num(a, "data-duration")
-            not_voice = vid.startswith(("nx-", "ins-paul", "ins-cta", "sx-")) or "data-bed" in a or "data-caption-ok=" in a
+            # narration is nx- but not nx-ins (circle_audio.py, build_srt.py, sweep_episode.py); every sx- bed carries data-bed
+            not_voice = (re.match(r"nx-(?!ins)", vid) or vid.startswith(("ins-paul", "ins-cta"))
+                         or "data-bed" in a or "data-caption-ok=" in a)
             silent = not num(a, "data-volume") or (m.group(1) == "video" and 'data-has-audio="true"' not in a)
             if not_voice or silent or s is None or d is None:
                 continue
