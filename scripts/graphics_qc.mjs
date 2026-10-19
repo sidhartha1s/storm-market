@@ -213,7 +213,7 @@ for (const m of INDEX_HTML.matchAll(/<[a-z]+\b[^>]*\bdata-composition-src="compo
   if (!isNaN(dur)) HOSTS[m[1]] = Math.max(HOSTS[m[1]] || 0, dur);
 }
 // a running caption (host carries data-caption-for, mg-quickref "Outside voices") is one reading target in one size by design
-const CAPTIONS = new Set([...INDEX_HTML.matchAll(/<[a-z]+\b[^>]*\bdata-composition-src="compositions\/([^"]+)\.html"[^>]*\bdata-caption-for="[^"]+"[^>]*>/g)].map(m => m[1]));
+const CAPTIONS = new Set([...INDEX_HTML.matchAll(/<[a-z]+\b(?=[^>]*\bdata-caption-for="[^"]+")[^>]*\bdata-composition-src="compositions\/([^"]+)\.html"[^>]*>/g)].map(m => m[1]));
 
 const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
