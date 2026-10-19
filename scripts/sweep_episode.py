@@ -168,6 +168,33 @@ if cm and _cta_applies:
 if _cta_applies:
     report("CTA present + placed (config channel.cta)", cta_bad)
 
+# 5d-2. Paul's end ask (owner 19 Oct 26): the config channel.end_ask clips, staged unchanged, back to back, near the end.
+ask = (_cfg.get("channel") or {}).get("end_ask") or {}
+if ask and _slug.startswith("ep-") and _slug not in (ask.get("exempt") or []):
+    ask_bad, prev_end = [], None
+    for i, f in enumerate(ask["files"]):
+        name = Path(f["file"]).name
+        m = re.search(r'<video\b[^>]*src="([^"]*' + re.escape(name) + r')"[^>]*>', h)
+        if not m:
+            ask_bad.append(f"no <video> whose src ends in {name} (config channel.end_ask)")
+            continue
+        a = m.group(0)
+        s = float(re.search(r'data-start="([\d.]+)"', a).group(1))
+        d = float(re.search(r'data-duration="([\d.]+)"', a).group(1))
+        if abs(d - f["duration"]) > 0.05:
+            ask_bad.append(f"{name}: data-duration {d} != config {f['duration']}")
+        if i == 0 and s < total - ask["last_s"]:
+            ask_bad.append(f"{name} starts at {s}s, more than {ask['last_s']} s before the end ({total}s)")
+        if prev_end is not None and abs(s - prev_end) > 0.05:
+            ask_bad.append(f"{name} starts at {s}s, not straight after the previous clip ({prev_end:.3f}s)")
+        prev_end = s + d
+        if not re.search(r'data-volume="1(?:\.0+)?"', a) or 'data-srt-label="' not in a:
+            ask_bad.append(f'{name} needs data-volume="1" and a data-srt-label')
+        staged, asset = ep / m.group(1), Path(__file__).resolve().parent.parent / f["file"]
+        if not staged.exists() or hashlib.md5(staged.read_bytes()).hexdigest() != hashlib.md5(asset.read_bytes()).hexdigest():
+            ask_bad.append(f"staged {m.group(1)} missing or differs from {f['file']} (md5)")
+    report("End ask present + placed (config channel.end_ask)", ask_bad)
+
 # 5e. every <video> declares its audio (El Reno v3 post-mortem, 20 Sep 26): hyperframes plays a video's
 # track unless the element is `muted`, and audio_levels.py used to skip videos with no data-volume as
 # "muted by convention" — so stock footage mounted with neither was audible in the mix and no gate saw it.
