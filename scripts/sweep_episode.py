@@ -170,7 +170,9 @@ if _cta_applies:
 
 # 5d-2. Paul's end ask (owner 19 Oct 26): the config channel.end_ask clips, staged unchanged, back to back, near the end.
 ask = (_cfg.get("channel") or {}).get("end_ask") or {}
-if ask and _slug.startswith("ep-") and _slug not in (ask.get("exempt") or []):
+if ask and not (re.match(r"ep\d*-", _slug) and _slug not in (ask.get("exempt") or [])):
+    print(f"SKIP End ask present + placed — {_slug} is exempt (built before 19 Oct 26) or not an epN documentary")
+elif ask:
     ask_bad, prev_end = [], None
     for i, f in enumerate(ask["files"]):
         name = Path(f["file"]).name
@@ -179,8 +181,11 @@ if ask and _slug.startswith("ep-") and _slug not in (ask.get("exempt") or []):
             ask_bad.append(f"no <video> whose src ends in {name} (config channel.end_ask)")
             continue
         a = m.group(0)
-        s = float(re.search(r'data-start="([\d.]+)"', a).group(1))
-        d = float(re.search(r'data-duration="([\d.]+)"', a).group(1))
+        st, du = re.search(r'data-start="([\d.]+)"', a), re.search(r'data-duration="([\d.]+)"', a)
+        if not (st and du):
+            ask_bad.append(f"{name} lacks data-start / data-duration")
+            continue
+        s, d = float(st.group(1)), float(du.group(1))
         if abs(d - f["duration"]) > 0.05:
             ask_bad.append(f"{name}: data-duration {d} != config {f['duration']}")
         if i == 0 and s < total - ask["last_s"]:
@@ -193,6 +198,8 @@ if ask and _slug.startswith("ep-") and _slug not in (ask.get("exempt") or []):
         staged, asset = ep / m.group(1), Path(__file__).resolve().parent.parent / f["file"]
         if not staged.exists() or hashlib.md5(staged.read_bytes()).hexdigest() != hashlib.md5(asset.read_bytes()).hexdigest():
             ask_bad.append(f"staged {m.group(1)} missing or differs from {f['file']} (md5)")
+    if prev_end is not None and prev_end > total + 0.05:
+        ask_bad.append(f"the ask ends at {prev_end:.3f}s, after the episode ends ({total}s)")
     report("End ask present + placed (config channel.end_ask)", ask_bad)
 
 # 5e. every <video> declares its audio (El Reno v3 post-mortem, 20 Sep 26): hyperframes plays a video's
