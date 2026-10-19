@@ -135,6 +135,14 @@ per-episode copy of the rule, never a hand-edited path. Shape: **hook > story > 
   data-duration="<channel.cta.duration>" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="<channel.cta.srt_label>">`
   with a 1.0s blackout element before and after on the picture track.
 
+### End ask (every ep- documentary from Joplin on)
+Paul thanks the viewers who stayed and asks for a like, a subscribe, a comment and the checklist (owner 19 Oct 26: "wire them
+to the videos for future"). The two clips in `config.yaml channel.end_ask` (files and README in `assets/end-ask/`) play back
+to back, full frame, right before Paul's signature line and the close card. They carry their own voice (`data-volume="1"`,
+`data-srt-label` with their words); narration and the circle are off under them; the close bed runs on under them. Stage each
+file unchanged into `media/end-ask/` (sweep md5-checks it) and mount it with the config duration, the first one inside the
+last `channel.end_ask.last_s` seconds. Episodes built before 19 Oct 26 are in `channel.end_ask.exempt`.
+
 ### Broadcast-clip rehook cadence
 Core audience is 40–70+ — they watched these events on live TV; real broadcast/news/PD/survivor
 clips are the nostalgia rehook, stock footage only fills between them. **A real clip lands as the beat needs
