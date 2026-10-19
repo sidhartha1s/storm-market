@@ -139,16 +139,18 @@ def main():
             return float(m.group(1)) if m else None
         live = re.sub(r"<!--.*?-->", "", html, flags=re.S)   # a commented-out tag is not mounted
         caps = [(m.group(1), num(m.group(0), "data-start"), num(m.group(0), "data-duration"))
-                for m in re.finditer(r'<div\b[^>]*data-caption-for="([^"]+)"[^>]*>', live)]
+                for m in re.finditer(r'<[a-z]+\b[^>]*\bdata-caption-for="([^"]+)"[^>]*>', live)]
         for m in re.finditer(r'<(audio|video)\b[^>]*>', live):
             a = m.group(0)
-            idm = re.search(r'\bid="([^"]+)"', a)
+            idm = re.search(r'\sid="([^"]+)"', a)   # \s: hyperframes stamps data-hf-id="hf-..." before the real id
             vid = idm.group(1) if idm else ""
             s, d = num(a, "data-start"), num(a, "data-duration")
             # narration is nx- but not nx-ins (circle_audio.py, build_srt.py, sweep_episode.py); every sx- bed carries data-bed
             not_voice = (re.match(r"nx-(?!ins)", vid) or vid.startswith(("ins-paul", "ins-cta"))
                          or "data-bed" in a or "data-caption-ok=" in a)
-            silent = not num(a, "data-volume") or (m.group(1) == "video" and 'data-has-audio="true"' not in a)
+            # audible as audio_levels.py reads it: data-volume defaults to 1.0; a video is silent only when muted
+            vol = num(a, "data-volume")
+            silent = (vol is not None and vol <= 0) or (m.group(1) == "video" and re.search(r"\smuted(?=[\s>/=]|$)", a))
             if not_voice or silent or s is None or d is None:
                 continue
             e = s + d
