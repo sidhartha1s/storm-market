@@ -346,15 +346,19 @@ with tempfile.TemporaryDirectory() as d:
     check("lint_timeline: FAILs unmuted track-1 video with no data-has-audio (FORMAT.md:57)",
           code == 1 and "unmuted b-roll" in out, out)
 
-for pip_dur, want in ((2.5, False), (8.0, True)):
+# narration a1 covers 0-2 s. Every passing case would FAIL if the voice were ignored (Joplin pip-w16: 12.8 s of still face)
+for label, pip_start, pip_dur, nx2_start, want in (
+    ("a circle 3.5s past the last line passes", 0, 5.5, None, False),
+    ("a circle 6.0s past the last line FAILs", 0, 8.0, None, True),
+    ("a circle starting mid-line, 3.5s past it, passes", 1.0, 4.5, None, False),
+    ("a 5.0s silence between two lines under one circle FAILs", 0, 9.0, 7.0, True),
+):
     with tempfile.TemporaryDirectory() as d:
-        # narration covers 0-2 s: a circle to 2.5 s is a seam, a circle to 8 s is 6 s of Paul's still face (Joplin pip-w16)
-        v = f'<video class="pip" id="pip-w01" src="media/pip.mp4" data-start="0" data-duration="{pip_dur}" data-track-index="7" muted></video>'
-        ep = make_lint_ep(Path(d), extra_video=v)
+        v = f'<video class="pip" id="pip-w01" src="media/pip.mp4" data-start="{pip_start}" data-duration="{pip_dur}" data-track-index="7" muted></video>'
+        ep = make_lint_ep(Path(d), extra_video=v, nx2_dur=None if nx2_start is None else 2.0, nx2_start=nx2_start)
         (ep / "media" / "pip.mp4").write_bytes(b"0")
         code, out = run("lint_timeline.py", ep)
-        check(f"lint_timeline: a circle {pip_dur - 2:.1f}s past the last line {'FAILs' if want else 'passes'}",
-              ("presenter circle on with no voice" in out) == want, out)
+        check(f"lint_timeline: {label}", ("presenter circle on with no voice" in out) == want, out)
 
 with tempfile.TemporaryDirectory() as d:
     v = '<video src="media/broll.mp4" data-start="0" data-duration="2" data-track-index="1" muted></video>'
