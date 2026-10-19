@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a1-ksn-cap: running caption for the KSN broadcast clip (host 264.43, v-a1-s9-ksn). Transparent except an opaque bottom band, y 860 to 1080, that
+     hides the broadcast's own "Tornado Warning / town" text and county minimap (both below y 950 in the composite frames).
+     Words are comp-local seconds from briefs/cap/caption-words.json (verbatim). Chunk (2 lines) appears at its first word; each word goes
+     45 % to 100 % at its own start; the next chunk replaces it at its first word; the last chunk stays to the end (9.0 s). No source label. */
+  #g-a1-ksn-cap-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial,sans-serif; }
+  #k1-band { position:absolute; left:0; right:0; top:860px; height:220px; background:linear-gradient(180deg,#0b1016 0%,#04070c 100%); border-top:1px solid rgba(255,255,255,0.14); box-sizing:border-box; }
+  .k1-chunk { position:absolute; left:96px; right:96px; display:flex; flex-direction:column; justify-content:center; align-items:center; visibility:hidden; opacity:0; }
+  .k1-ln { white-space:nowrap; text-align:center; font-family:Arial,sans-serif; font-weight:700; font-size:56px; line-height:68px; color:#f2f5f8; }
+  .k1-w { opacity:0.45; }
+  .k1-chunk { top:884px; height:136px; }
+</style>
+<div id="g-a1-ksn-cap-root" data-composition-id="g-a1-ksn-cap" data-width="1920" data-height="1080" data-type-ok="running caption: one size so the eye reads the words, nothing else on the band">
+  <div id="k1-band"></div>
+  <div id="k1-caps">
+    <div class="k1-chunk" id="k1-c0">
+      <div class="k1-ln"><span class="k1-w" id="k1-w0">and</span> <span class="k1-w" id="k1-w1">that's</span> <span class="k1-w" id="k1-w2">why</span> <span class="k1-w" id="k1-w3">earlier</span> <span class="k1-w" id="k1-w4">on</span> <span class="k1-w" id="k1-w5">in</span> <span class="k1-w" id="k1-w6">the</span> <span class="k1-w" id="k1-w7">evening</span></div>
+      <div class="k1-ln"><span class="k1-w" id="k1-w8">it</span> <span class="k1-w" id="k1-w9">looked</span> <span class="k1-w" id="k1-w10">like</span> <span class="k1-w" id="k1-w11">this</span></div>
+    </div>
+    <div class="k1-chunk" id="k1-c1">
+      <div class="k1-ln"><span class="k1-w" id="k1-w12">was</span> <span class="k1-w" id="k1-w13">going</span> <span class="k1-w" id="k1-w14">to</span> <span class="k1-w" id="k1-w15">stay</span> <span class="k1-w" id="k1-w16">off</span> <span class="k1-w" id="k1-w17">to</span> <span class="k1-w" id="k1-w18">the</span> <span class="k1-w" id="k1-w19">north</span></div>
+      <div class="k1-ln"><span class="k1-w" id="k1-w20">of</span> <span class="k1-w" id="k1-w21">the</span> <span class="k1-w" id="k1-w22">Joplin</span> <span class="k1-w" id="k1-w23">area,</span></div>
+    </div>
+    <div class="k1-chunk" id="k1-c2">
+      <div class="k1-ln"><span class="k1-w" id="k1-w24">but</span> <span class="k1-w" id="k1-w25">it</span> <span class="k1-w" id="k1-w26">is</span> <span class="k1-w" id="k1-w27">kind</span> <span class="k1-w" id="k1-w28">of</span> <span class="k1-w" id="k1-w29">making</span> <span class="k1-w" id="k1-w30">its</span> <span class="k1-w" id="k1-w31">way</span></div>
+      <div class="k1-ln"><span class="k1-w" id="k1-w32">now</span> <span class="k1-w" id="k1-w33">into</span> <span class="k1-w" id="k1-w34">southwestern</span> <span class="k1-w" id="k1-w35">Missouri.</span></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.to({}, { duration: 9.0 }, 0); /* clock: sets the timeline length to the host window */
+  /* chunk 0 @0.00: and that's why earlier on in the evening it looked like this */
+  tl.fromTo("#k1-c0", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.18, ease: "power3.out" }, 0.00);
+  tl.to("#k1-w0", { opacity: 1, duration: 0.1, ease: "power3.out" }, 0.00); /* and */
+  tl.to("#k1-w1", { opacity: 1, duration: 0.1, ease: "power3.out" }, 0.30); /* that's */
+  tl.to("#k1-w2", { opacity: 1, duration: 0.1, ease: "power3.out" }, 0.60); /* why */
+  tl.to("#k1-w3", { opacity: 1, duration: 0.1, ease: "power3.out" }, 0.90); /* earlier */
+  tl.to("#k1-w4", { opacity: 1, duration: 0.1, ease: "power3.out" }, 1.64); /* on */
+  tl.to("#k1-w5", { opacity: 1, duration: 0.1, ease: "power3.out" }, 1.92); /* in */
+  tl.to("#k1-w6", { opacity: 1, duration: 0.1, ease: "power3.out" }, 2.00); /* the */
+  tl.to("#k1-w7", { opacity: 1, duration: 0.1, ease: "power3.out" }, 2.08); /* evening */
+  tl.to("#k1-w8", { opacity: 1, duration: 0.1, ease: "power3.out" }, 2.30); /* it */
+  tl.to("#k1-w9", { opacity: 1, duration: 0.1, ease: "power3.out" }, 2.46); /* looked */
+  tl.to("#k1-w10", { opacity: 1, duration: 0.1, ease: "power3.out" }, 2.72); /* like */
+  tl.to("#k1-w11", { opacity: 1, duration: 0.1, ease: "power3.out" }, 2.96); /* this */
+  tl.set("#k1-c0", { autoAlpha: 0 }, 3.12);
+  /* chunk 1 @3.12: was going to stay off to the north of the Joplin area, */
+  tl.fromTo("#k1-c1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.18, ease: "power3.out" }, 3.12);
+  tl.to("#k1-w12", { opacity: 1, duration: 0.1, ease: "power3.out" }, 3.12); /* was */
+  tl.to("#k1-w13", { opacity: 1, duration: 0.1, ease: "power3.out" }, 3.26); /* going */
+  tl.to("#k1-w14", { opacity: 1, duration: 0.1, ease: "power3.out" }, 3.36); /* to */
+  tl.to("#k1-w15", { opacity: 1, duration: 0.1, ease: "power3.out" }, 3.46); /* stay */
+  tl.to("#k1-w16", { opacity: 1, duration: 0.1, ease: "power3.out" }, 3.70); /* off */
+  tl.to("#k1-w17", { opacity: 1, duration: 0.1, ease: "power3.out" }, 3.84); /* to */
+  tl.to("#k1-w18", { opacity: 1, duration: 0.1, ease: "power3.out" }, 3.96); /* the */
+  tl.to("#k1-w19", { opacity: 1, duration: 0.1, ease: "power3.out" }, 4.10); /* north */
+  tl.to("#k1-w20", { opacity: 1, duration: 0.1, ease: "power3.out" }, 4.32); /* of */
+  tl.to("#k1-w21", { opacity: 1, duration: 0.1, ease: "power3.out" }, 4.48); /* the */
+  tl.to("#k1-w22", { opacity: 1, duration: 0.1, ease: "power3.out" }, 4.64); /* Joplin */
+  tl.to("#k1-w23", { opacity: 1, duration: 0.1, ease: "power3.out" }, 5.00); /* area, */
+  tl.set("#k1-c1", { autoAlpha: 0 }, 5.34);
+  /* chunk 2 @5.34: but it is kind of making its way now into southwestern Missouri. */
+  tl.fromTo("#k1-c2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.18, ease: "power3.out" }, 5.34);
+  tl.to("#k1-w24", { opacity: 1, duration: 0.1, ease: "power3.out" }, 5.34); /* but */
+  tl.to("#k1-w25", { opacity: 1, duration: 0.1, ease: "power3.out" }, 5.62); /* it */
+  tl.to("#k1-w26", { opacity: 1, duration: 0.1, ease: "power3.out" }, 5.74); /* is */
+  tl.to("#k1-w27", { opacity: 1, duration: 0.1, ease: "power3.out" }, 5.98); /* kind */
+  tl.to("#k1-w28", { opacity: 1, duration: 0.1, ease: "power3.out" }, 6.16); /* of */
+  tl.to("#k1-w29", { opacity: 1, duration: 0.1, ease: "power3.out" }, 6.26); /* making */
+  tl.to("#k1-w30", { opacity: 1, duration: 0.1, ease: "power3.out" }, 6.50); /* its */
+  tl.to("#k1-w31", { opacity: 1, duration: 0.1, ease: "power3.out" }, 6.74); /* way */
+  tl.to("#k1-w32", { opacity: 1, duration: 0.1, ease: "power3.out" }, 6.94); /* now */
+  tl.to("#k1-w33", { opacity: 1, duration: 0.1, ease: "power3.out" }, 7.30); /* into */
+  tl.to("#k1-w34", { opacity: 1, duration: 0.1, ease: "power3.out" }, 7.78); /* southwestern */
+  tl.to("#k1-w35", { opacity: 1, duration: 0.1, ease: "power3.out" }, 8.22); /* Missouri. */
+  window.__timelines["g-a1-ksn-cap"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
