@@ -547,7 +547,9 @@
   <!-- Z1-S1 sound INSERT (owner yes, picks page 17 Oct 26 18:45, Z1-S1_radio): Jasper County law enforcement radio, archive.org, CC BY 3.0 US, mark6, source 161-168
        ("multiple entrapment issues", no personal names), under the last sentence "But" 1113.967 + 15.88 = 1129.847 to the wav end 1136.887 (7.04 s). Volume 0.2 (ambience
        ceiling); ebur128 per 15 s window before the render. data-bed keeps it a bed for lint check 3. Credit "Jasper County law enforcement radio archive, mark6, archive.org, CC BY 3.0 US". -->
-  <audio id="sx-z1-jasper-radio" src="media/candidates/a6/z1-s1_c1_jasper-county-radio-1742.mp3" data-bed="" data-start="1151.517" data-duration="7.04" data-media-start="161" data-volume="0.2" data-callback="the one stretch of real Joplin sound, under the close"></audio>
+  <!-- The dispatch radio sat under nx-z1-s1 (two voices at once, owner 19 Oct 26: "audio is wired wrong"); it now plays alone
+       in the silent hold-a6 over the CCTV and the 135 map, at insert level (file -17.5 dB over this stretch, x0.88 = narration ref) -->
+  <audio id="ins-a6-jasper-radio" src="media/candidates/a6/z1-s1_c1_jasper-county-radio-1742.mp3" data-start="1125.377" data-duration="7.04" data-media-start="161" data-volume="0.88" data-callback="the one stretch of real Joplin sound, in the hold after the school"></audio>
   <!-- Score bed (18 Oct 26, draft-v1 had none): one dark-ambient score across the episode, assets/sfx/deapi/score-act1-darkambient.mp3
        (mean -19.3 dB) self-crossfaded and cut per act with baked 1 s in / 0.8 s out fades, offsets continuous so it never restarts.
        Each act's bed ends on that act's last narration wav ("the bed drops out on the last word"), a3 stops for the CTA dip.
