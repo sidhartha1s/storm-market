@@ -127,6 +127,26 @@ def main():
             continue
         findings.append(f"narration gap {gap:.1f}s at {e1:.1f}-{s2:.1f}s (max 0.8s outside the CTA)")
 
+    # The presenter circle is Paul's face speaking the narration: with no voice under it the face sits still
+    # (owner 19 Oct 26, Joplin draft: "its on mute, paul is frozen"; pip-w16 ran 12.8 s past its last line).
+    for m in re.finditer(r'<video\b[^>]*class="[^"]*\bpip\b[^"]*"[^>]*>', html):
+        st, du = re.search(r'data-start="([\d.]+)"', m.group(0)), re.search(r'data-duration="([\d.]+)"', m.group(0))
+        if not (st and du):
+            continue
+        ws, we = float(st.group(1)), float(st.group(1)) + float(du.group(1))
+        cursor, longest = ws, (0.0, ws)
+        for vs, ve in voice:
+            if ve <= cursor or vs >= we:
+                continue
+            if vs - cursor > longest[0]:
+                longest = (vs - cursor, cursor)
+            cursor = max(cursor, ve)
+        if we - cursor > longest[0]:
+            longest = (we - cursor, cursor)
+        if longest[0] > 4.0:
+            findings.append(f"presenter circle on with no voice for {longest[0]:.1f}s from {longest[1]:.1f}s "
+                            f"(max 4.0s): end the pip window with the line")
+
     for src in re.findall(r'<script[^>]*src="([^"]+)"', html):
         if not src.startswith("http") and not (ep / src).exists():
             findings.append(f"missing script: {src}")
