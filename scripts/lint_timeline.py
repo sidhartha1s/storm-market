@@ -13,6 +13,9 @@ Checks episodes/<slug>/index.html:
   5. CADENCE REPORT (owner 2026-07-23: pacing = AI judgment, NEVER code-enforced): shots over
      baseline (stills >7s, videos >12s) are PRINTED as a report for the editor-agent to reason
      over — they never fail the lint. Graphics sections (id containing -clip) exempt.
+  7. OUTSIDE VOICES (owner 2026-10-20): in an epN documentary every audible non-narrator element
+     (radio, 911, broadcast sound) has a data-caption-for host covering its whole window, or
+     data-caption-ok="reason" when it has no words. config.yaml channel.voice_captions.exempt lists shipped episodes.
 
 Usage: python3 scripts/lint_timeline.py episodes/<slug>
 Exit 0 clean, 1 findings (loud).
