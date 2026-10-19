@@ -130,27 +130,27 @@ def main():
             continue
         findings.append(f"narration gap {gap:.1f}s at {e1:.1f}-{s2:.1f}s (max 0.8s outside the CTA)")
 
-    # OUTSIDE VOICES (owner 20 Oct 26, Joplin dispatch radio: "not audible ... add a running caption"; its sound also
-    # outlasted its picture): in an epN documentary every audible non-narrator element (ins- audio, video with its own
-    # sound) sits under a host with data-caption-for="<its id>" covering its whole window. data-caption-ok="reason"
-    # exempts sound with no words. Paul's clips and the CTA are clean TTS and go to the SRT, so they are not outside voices.
+    # OUTSIDE VOICES: check 7 in the docstring. Paul's clips and the CTA are clean TTS in the SRT, not outside voices.
     slug = ep.resolve().name
-    if re.match(r"ep\d*-", slug) and slug not in (((_cfg.get("channel") or {}).get("voice_captions") or {}).get("exempt") or []):
-        caps = {}
-        for m in re.finditer(r'<div\b[^>]*data-caption-for="([^"]+)"[^>]*>', html):
-            cs, cd = re.search(r'data-start="([\d.]+)"', m.group(0)), re.search(r'data-duration="([\d.]+)"', m.group(0))
-            if cs and cd:
-                caps.setdefault(m.group(1), []).append((float(cs.group(1)), float(cs.group(1)) + float(cd.group(1))))
+    exempt = ((_cfg.get("channel") or {}).get("voice_captions") or {}).get("exempt") or []
+    if re.match(r"ep\d*-", slug) and slug not in exempt:
+        def num(tag, attr):
+            m = re.search(rf'{attr}="([\d.]+)"', tag)
+            return float(m.group(1)) if m else None
+        caps = [(m.group(1), num(m.group(0), "data-start"), num(m.group(0), "data-duration"))
+                for m in re.finditer(r'<div\b[^>]*data-caption-for="([^"]+)"[^>]*>', html)]
         for m in re.finditer(r'<(audio|video)\b[^>]*>', html):
             a = m.group(0)
-            vid = (re.search(r'\bid="([^"]+)"', a) or [None, ""])[1]
-            vol, vs, vd = (re.search(rf'{k}="([\d.]+)"', a) for k in ("data-volume", "data-start", "data-duration"))
-            if (not vol or float(vol.group(1)) == 0 or not vs or not vd or "data-bed" in a or "data-caption-ok=" in a
-                    or vid.startswith(("nx-", "ins-paul", "ins-cta", "sx-"))
-                    or (m.group(1) == "video" and 'data-has-audio="true"' not in a)):
+            idm = re.search(r'\bid="([^"]+)"', a)
+            vid = idm.group(1) if idm else ""
+            s, d = num(a, "data-start"), num(a, "data-duration")
+            not_voice = vid.startswith(("nx-", "ins-paul", "ins-cta", "sx-")) or "data-bed" in a or "data-caption-ok=" in a
+            silent = not num(a, "data-volume") or (m.group(1) == "video" and 'data-has-audio="true"' not in a)
+            if not_voice or silent or s is None or d is None:
                 continue
-            s, e = float(vs.group(1)), float(vs.group(1)) + float(vd.group(1))
-            if not any(cs <= s + 0.05 and ce >= e - 0.05 for cs, ce in caps.get(vid, [])):
+            e = s + d
+            if not any(c == vid and cs is not None and cd is not None and cs <= s + 0.05 and cs + cd >= e - 0.05
+                       for c, cs, cd in caps):
                 findings.append(f"outside voice without a caption over its whole window: {vid or a[:80]} ({s:.2f}-{e:.2f}s); "
                                 f"mount a host with data-caption-for=\"{vid}\" from its first to its last frame "
                                 f"(mg-quickref \"Outside voices\"), or data-caption-ok=\"reason\" when it has no words")
