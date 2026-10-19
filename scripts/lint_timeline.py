@@ -13,6 +13,8 @@ Checks episodes/<slug>/index.html:
   5. CADENCE REPORT (owner 2026-07-23: pacing = AI judgment, NEVER code-enforced): shots over
      baseline (stills >7s, videos >12s) are PRINTED as a report for the editor-agent to reason
      over — they never fail the lint. Graphics sections (id containing -clip) exempt.
+  6. PRESENTER CIRCLE (owner 2026-10-19, Joplin): a <video class="pip"> window holding more than
+     4.0 s with no voice (narration or a voiced clip) FAILs: Paul's face sits frozen in silence.
 
 Usage: python3 scripts/lint_timeline.py episodes/<slug>
 Exit 0 clean, 1 findings (loud).
