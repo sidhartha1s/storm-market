@@ -2,6 +2,26 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 20 Oct 26 - ep-joplin-2011: the finalised audio of the tail (dispatch radio, holds, end ask)
+
+- **Owner:** "2:09 - 2:19 its on mute, paul is frozen", "2:37 - audio is wired wrong", then on the fix: the radio
+  "doesn't sound really well ... the sound is staying longer than the visual ... it's not audible".
+- **Measured causes:** (1) a hold "silent by design" (the act bed ended on the last narration word) played 10.8 s of
+  dead air; (2) the dispatch radio sat under narration (two voices at once); (3) moved into the hold, it ran 2.68 s past
+  its CCTV picture into the next graphic; (4) Whisper read it at avg logprob -0.23, the same as clear broadcast speech
+  (-0.25), yet a person could not follow it; (5) the first bed extension looped a stretch with a -60 dB lull, so the map
+  at the end of the hold still sat at -79 dB.
+- **What shipped, and the rule each became:**
+  - A hold carries the act bed through to the blackout. Measure the bed per second across the whole hold after any loop
+    or crossfade; a lull in the source loop shows up as dead air (bed-a6-v3 loops source 75 to 101.2 s, min -31 dB).
+  - An outside voice (radio, 911, scanner, news sound) plays alone, at insert level (whole-file mean within 2.5 dB of the
+    narration reference, `audio_levels.py`), under its own picture that starts and ends with it, with a word-timed running
+    caption: `references/mg-quickref.md` "Outside voices", gated by `lint_timeline.py` check 7. Whisper confidence never
+    stands in for "a person can follow it".
+  - Never stack an outside voice under narration.
+  - Paul's end ask is a channel asset (`config.yaml channel.end_ask`, `assets/end-ask/`), level matched to the narration
+    (-18.6 dB mean), in the narrator voice; the CTA is the narrator voice too (`assets/cta/README.md`).
+
 ## 12 Oct 26 - ep-palm-sunday-1965: a voice conversion after TTS leaves every words.json stale, and the transcriber moves words on the new voice
 
 - **What happened:** `tts_episode.py` wrote each words.json from the TTS wav. The conversion to the owner's voice then
