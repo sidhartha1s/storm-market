@@ -7,7 +7,7 @@ his sheet and every word spelled right in the demos of 8 Oct 26. A slot's "e.g."
 the same slot name used twice takes the same text. Words Paul or the headline must show go in single quotes.
 
 Every prompt attaches two images and names them in the text:
-- **img1** is always `assets/paul/paul-sheet-v2.jpg` (Paul's character sheet).
+- **img1** is always `assets/paul/paul-sheet-c.png` (Paul's character sheet, the owner's option C; `assets/paul/README.md`).
 - **img2** is one real photograph, frame or official map of the event. Never an AI storm scene.
 
 ## Field Notes (Paul beside a hand-drawn diagram on cream paper)
