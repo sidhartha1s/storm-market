@@ -1,0 +1,2122 @@
+Service Assessment
+May 2013 Oklahoma Tornadoes and Flash Flooding
+
+U.S. DEPARTMENT OF COMMERCE
+National Oceanic and Atmospheric Administration
+National Weather Service
+Silver Spring, Maryland
+Cover Photograph:
+Clockwise, photo by Paul Hellstern, The Oklahoman, copyright 2013, used with permission;
+photo by Gabe Garfield, used with permission; photo by Chris Calvert, used with permission;
+photo by Jeff Snyder, used with permission.
+
+                                                            ii
+Service Assessment
+May 2013 Oklahoma Tornadoes and Flash Flooding
+
+March 2014
+
+National Weather Service
+Louis W. Uccellini, Assistant Administrator for Weather Services
+
+                                                       iii
+                                   Preface
+
+    A series of tornadoes and associated weather hazards impacted the metropolitan area of
+Oklahoma City, OK, on May 19, 20, and 31, 2013, resulting in 47 direct fatalities, hundreds of
+injuries, and billions of dollars in property damage. This event presents a unique learning
+opportunity with regard to forecast and warning operations, post-storm data acquisition,
+dissemination services, interactions with the media, public response, and safety awareness
+information.
+
+    Due to the significance of this event, the National Oceanic and Atmospheric Administration’s
+National Weather Service formed a Service Assessment Team to evaluate the National Weather
+Service’s performance before and during the event. The findings and recommendations from this
+assessment will improve the quality of National Weather Service products and services and
+increase awareness related to severe thunderstorms and flash flooding. The ultimate goal of this
+report is to help the National Weather Service better perform its mission of protecting life and
+property and enhancing the national economy.
+
+                                                      Louis W. Uccellini
+                                                      Assistant Administrator
+                                                        for Weather Services
+                                                      March 2014
+
+                                                            iv
+             Table of Contents
+
+                                Page
+
+1. Introduction......................................................................................................................... 1
+    1.1. NWS Mission............................................................................................................ 1
+    1.2. Purpose of Assessment Report.................................................................................. 1
+    1.3. Methodology ............................................................................................................. 1
+
+2. Event Overview .................................................................................................................. 3
+    2.1. May 19, 2013 ............................................................................................................ 3
+    2.2. May 20, 2013 ............................................................................................................ 4
+    2.3. May 31, 2013 ............................................................................................................ 5
+
+3. NWS/SPC: Facts, Findings, Recommendations, and Best Practices................................. 7
+    3.1. WFO Services ........................................................................................................... 7
+    3.2. SPC Services............................................................................................................. 9
+    3.3. Flash Flooding ........................................................................................................ 10
+    3.4. Social Media ........................................................................................................... 15
+    3.5. EF Tornado Rating Scale ........................................................................................ 21
+    3.6. Rapid Evaluation of Service Activities and Performance (RESAP)....................... 24
+    3.7. Message Consistency: Responsibility for Message Consistency and IWTs ........... 25
+    3.8. Working with the Media ......................................................................................... 25
+    3.9. Storm Chasing......................................................................................................... 27
+
+4. Societal Impacts: Facts, Findings, and Recommendations .............................................. 31
+    4.1. Emergency Planning: Collaborative Preparedness ................................................. 31
+    4.2. Emergency Planning: Cultural Issues in Oklahoma .............................................. 34
+    4.3. Risk Communication: Sheltering and Pets ............................................................ 36
+    4.4. Risk Communication: Sirens ................................................................................. 37
+    4.5. Crisis Communication: Non-English Speaking Public.......................................... 38
+    4.6. Crisis Communication: Social Media .................................................................... 40
+    4.7. Recovery ................................................................................................................. 41
+
+Appendices
+
+Appendix A:  Acronyms ...................................................................................................... A-1
+Appendix B:  Findings, Recommendations, & Best Practices ............................................ B-1
+Appendix C:  Direct Tornado and Flash Flood Fatalities .................................................... C-1
+Appendix D:  List of Interviewed Subjects for Public Response Research ....................... D-1
+Appendix E:  References ...................................................................................................... E-1
+
+             v
+            Figures
+
+                     Page
+
+Figure 1:   Weather summary chart valid at 7 p.m. on May 19. Source: SPC .......................... 4
+Figure 2:   Weather summary chart valid at 3 p.m. on May 20. Source: SPC .......................... 5
+Figure 3:   Weather summary chart valid at 7 p.m. on May 31. Source: SPC .......................... 6
+Figure 4:   Moore, OK, preliminary tornado GIS track. Source: WFO Norman ...................... 8
+Figure 5:   Flash Flood Warning issued 7:13 p.m., May 31, valid through 11:15 p.m.
+Figure 6:   Source: WFO Norman ............................................................................................ 11
+            Observed precipitation in inches for central Oklahoma valid from 7 a.m., May
+Figure 7:   31, to 7 a.m., June 1. Source: Advanced Hydrologic Prediction Service display
+Figure 8:   produced by the Arkansas-Red Basin River Forecast Center (ABRFC) ................. 11
+Figure 9:   WPC Day 2 Excessive Rainfall Outlook issued at 12:55 a.m., May 30, valid
+Figure 10:  7:00 a.m., May 31, through 7:00 a.m., June 1, 2013. Source: WPC .................... 13
+Figure 11:  WPC Day 1 Excessive Rainfall Outlook issued at 12:44 a.m., May 31, valid
+            from 7:00 a.m., May 31 through 7:00 a.m., June 1. Source: WPC ....................... 14
+Figure 12:  Graphic accompanying WPC Mesoscale Precipitation Discussion issued at 4:21
+            p.m., May 31, valid from 4:21 p.m. through 9:20 p.m., May 31. Source: WPC... 14
+Figure 13:  WFO Norman Facebook message from 7:52 a.m. on May 20 discussing timing
+            for possible tornadoes. Source: WFO Norman...................................................... 15
+Figure 14:  A Facebook message from a local resident on how the reader used messages
+            from WFO Norman during the tornadic events of mid-May. Source: WFO
+Figure 15:  Norman .................................................................................................................... 15
+            Twitter followers normalized by county warning area population (A) and by
+Figure 16:  total number of followers (B) as of August 2013. Source: Todd Foisy, Dustin
+Figure 17:  Jordan, WFO Caribou, and Jason Straub, WFO Brownsville ................................ 16
+Figure 18:  Facebook total “likes” (top graphic) and normalized by county warning area
+            population (bottom graphic), as of August 2013. Source: Todd Foisy and
+Figure 19:  Dustin Jordan from WFO Caribou, and Jason Straub, WFO Brownsville ............. 17
+Figure 20:  WFO Norman Graphicast image discussing expected storm development during
+            the afternoon of May 20. Graphicast issued 11:00 a.m., May 20. Source: WFO
+            Norman .................................................................................................................... 18
+            WFO Norman Graphicast image discussing expected tornado timing potential
+            during the afternoon of May 31. Graphicast issued 10:29 a.m., May 31.
+            Source: WFO Norman ............................................................................................ 19
+            Green represents a watch or warning during that hour of the day for WFO
+            Norman. Source: WFO Norman............................................................................. 20
+            Red dots indicate Spotter Network reported locations of storm chasers. Source:
+            RadarScope, WDT, Inc. ........................................................................................... 28
+            Analysis from Gabe Garfield showing “visible vs. actual” tornado width. Red
+            markers approximate visible tornado width and blue markers approximate actual
+            width of the tornadic circulation. Source: Skip Talbot .......................................... 29
+            Visible vs. RaxPol derived El Reno tornado width. Source: Gabe Garfield ........ 29
+            Estimate of the El Reno tornado speed. Source: Gabe Garfield and Jeff Snyder . 30
+
+            vi
+                     Service Assessment Team
+
+The team consisted of the following individuals:
+
+Paul Suffern         Team Lead, Senior Meteorologist, National Transportation Safety Board,
+Kenneth Harding      Washington, DC
+Dr. Vankita Brown    NWS Technical Lead, Meteorologist in Charge, Weather Forecast Office
+Jim Keeney           (WFO) Topeka, KS
+Keith Stammer        Social Scientist, NWS Office of Climate, Water, and Weather Services
+Jim Stefkovich       (OCWWS), Performance Branch, Silver Spring, MD
+                     Warning Coordination Meteorologist, Central Region Headquarters,
+                     Kansas City, MO
+                     Director, Jasper County Emergency Management, Joplin, MO
+                     Meteorologist in Charge, WFO Birmingham, AL
+
+Other Valuable Contributors:
+
+Dr. Laura Myers      Research Scientist, University of Alabama, Tuscaloosa, AL
+Jennifer Henderson   Social Scientist and Ph.D. Student, Virginia Tech, Blacksburg, VA
+William Bunting      Chief, Operations Branch, Storm Prediction Center, Norman, OK
+Christopher Strager  Acting Director, OCWWS, Silver Spring, MD
+Douglas C. Young     Chief, OCWWS Performance Branch, Silver Spring, MD
+Salvatore Romano     Evaluation Meteorologist, OCWWS Performance Branch, Silver Spring, MD
+Beth McNulty         Forensic Meteorologist, OCWWS Performance Branch, Silver Spring, MD
+Brent MacAloney      Meteorologist, OCWWS Performance Branch, Silver Spring, MD
+Maureen O’Leary      Public Affairs Specialist, NOAA Office of Public Affairs
+Melody Magnus        Technical Editor, Innovim, Inc., OCWWS, Silver Spring, MD
+
+                                                  vii
+                          Executive Summary
+
+    From May 19 to May 31, 2013, a series of devastating weather events affected the area in and
+around Oklahoma City. Although this report focuses on three specific days, May 19, 20, and 31,
+the entire period was characterized by an active weather pattern and multiple tornadoes across
+several National Weather Service (NWS) Weather Forecast Offices’ (WFO) areas of
+responsibility. The historic flash flooding that occurred in Oklahoma City on May 31 is also of
+note. This flash flooding caused more fatalities than the tornadoes on that day. In all, there were
+47 direct weather fatalities in the WFO Norman County Warning Area during these 13 days in
+May.
+
+    NWS formed a Service Assessment Team to evaluate NWS performance and to undertake a
+detailed social science review to examine the effectiveness of messaging and the behavior of the
+public in each severe weather event. The team concentrated its efforts primarily on counties and
+cities affected by the strongest tornadoes during this period. NWS also conducted a complete
+review of the operations of WFO Norman and the Storm Prediction Center. After the events on
+May 20 and May 31, NWS Southern Region Operational Services Division conducted a Rapid
+Evaluation of Service Activities and Performance (RESAP). Several of the RESAP findings
+were incorporated into this report.
+
+    During the events assessed in this report, WFO Norman performed well above the NWS’s
+2013 goals for national tornado and flash flood under the Government Performance
+Requirements Act. From May 19 to May 31, WFO Norman issued 55 tornado warnings and
+hundreds of statements and social media posts, with overall tornado accuracy (Probability of
+Detection) of 0.87, False Alarm Rate of 0.54, and an average lead time of nearly 21 minutes.
+The flash flooding performance was also above NWS goals, with a Probability of Detection of
+0.91, False Alarm Rate of 0.50, and a lead time of 84 minutes.
+
+    Despite the WFO’s excellent performance and the Storm Prediction Center’s accurate long-
+term outlooks, the last event on May 31 created anxiety among some in the public. When
+considering the public response to each of these three tornado events and the flash flooding
+event, the team needed to look at the overall timeline. Public response to the warnings on May
+31 was definitely affected by the events on May 19 and 20. The flash flooding on May 31
+caused more fatalities than the tornadoes that day, yet the public was largely unaware of the
+threat, in spite of several NWS products and extensive outreach efforts, webinars, and social
+media posts. Much of the information contained in Section 4 of this report discusses the public’s
+response and suggests that performance metrics such as Probability of Detection and lead time
+do not tell the entire story. Messages concerning event severity and safety actions from the
+weather enterprise were not consistent. In some cases, these messages directly contradicted each
+other. Many of the people receiving these differing messages were unsure how to respond.
+
+    A significant section of this report concentrates on the use of social media. NWS is steadily
+increasing its visibility on social media sites such as Facebook and Twitter. Direct feedback
+from state and local partners, media, and the public reinforced the lifesaving nature of this
+information dissemination method. WFO Norman is one of the leaders in social media presence
+
+                                                           viii
+among WFOs. This information flow directly led to lives saved. Other WFOs are encouraged to
+emulate this level of effort, based on this service assessment’s findings and recommendations.
+
+    The team submitted 26 findings to address NWS performance, outreach, and safety
+programs. In addition, the team identified seven best practices. The appendices support this
+report with the following resources:
+ Appendix A: Acronyms
+ Appendix B: Findings, Recommendations & Best Practices
+ Appendix C: Direct Tornado and Flash Flood Fatalities
+ Appendix D: List of Interviewed Subjects for Public Response Research
+ Appendix E: References
+
+                                                            ix
+                    Service Assessment Report
+
+1. Introduction
+
+    1.1. NWS Mission
+
+    The National Weather Service (NWS) provides weather, hydrologic, and climate forecasts
+and warnings for the United States, its territories, adjacent waters, and ocean areas for the
+protection of life and property and the enhancement of the national economy. NWS data and
+products form a national information database and infrastructure, which can be used by other
+governmental agencies, the private sector, the public, and the global community.
+
+    1.2. Purpose of Assessment Report
+
+    The NWS may conduct service assessments of significant weather-related events that result
+in one or more of the following: multiple fatalities; numerous injuries requiring hospitalization;
+significant impact on the economy of a large area or population; extensive national public
+interest or media coverage; or an unusual level of attention to NWS operations (performance of
+systems or adequacy of warnings, watches, and forecasts) by media, the emergency management
+(EM) community, or elected officials. Service assessments evaluate the NWS performance and
+ensure the effectiveness of NWS products and services in meeting its mission. The goal of
+service assessments is to better protect life and property by implementing recommendations and
+best practices that improve NWS products and services.
+
+    This document presents findings and recommendations related to NWS performance during
+the central Oklahoma tornadoes of May 19 and 20, and the tornadoes and flooding on May 31,
+2013. This outbreak of severe weather resulted in 47 direct fatalities and caused billions of
+dollars in damage to central Oklahoma.
+
+    The objectives of this assessment are to identify significant findings and to develop
+recommendations and best practices related to NWS effectiveness in the following key areas:
+
+ Timeliness, quality, accuracy, and usefulness of NWS forecasts and warnings
+ Internal and external coordination and collaboration
+ Forecasting and warning procedures at Weather Forecast Office (WFO) Norman, OK
+ Social science-related issues and public response
+
+    1.3. Methodology
+
+    The NWS formed an assessment team on July 2, 2013, consisting of two employees from
+WFOs and one each from the NWS Central Region Headquarters office, NWS Headquarters
+(NWSH), EM community, and the National Transportation Safety Board. The 6-member team
+completed the following:
+
+                                                            1
+ Performed onsite evaluations, July 14-19, 2013
+ Conducted interviews with staff from WFO Norman and the Storm Prediction Center (SPC),
+
+    which shared primary responsibility for providing watches, warnings, forecasts, and decision
+    support for EMs, media, and the general public for this event
+ Interviewed members of the media, EM community, and the public to assess services
+    provided by the NWS
+ Collected data from WFO Norman, the SPC, and other NWS offices to obtain a complete
+    record of the event and to determine if any facts, findings, recommendations, or best
+    practices pertained to these offices
+ Evaluated products and services provided by WFO Norman and the SPC
+ Developed and agreed upon significant findings and recommendations to improve NWS
+    products and services
+
+    Social science consultants performed on-scene evaluations July 21–25, 2013, and provided
+their conclusions to the assessment team. The consultants used a qualitative method approach to
+study the public response. Interviews were conducted with EMs, media personnel, and the
+public from the impacted areas. (See Appendix D for a list of people interviewed for the public
+response assessment.) The social scientists used pre-validated questions to guide the interviews.
+
+    The team used a customized social science methodology to assess the public’s response. The
+team was particularly interested in how the NWS contributes to hazard resiliency in the areas of
+decision support, operational procedures, collaboration, and communication. The resilience of a
+community, with respect to potential severe weather events, is determined by the degree to which
+it has obtained necessary resources and its ability to organize itself prior to and during a severe
+weather event. Social scientists were included in this analysis of resiliency evaluation because
+they use the same techniques as the natural sciences to study society and human behavior. In this
+case, the assessment team analyzed the systemic networks and collaborations in the weather
+warning process and the efficacy of communication processes used to send and receive
+messages, especially during each of the three severe weather events.
+
+    Social science methodologies used for this service assessment include pre-validated,
+triangulated field interviews, descriptive survey analysis, focus group facilitation, analysis of
+existing data, and qualitative observations. These methods were used to study the behavior and
+actions of emergency planning professionals, including EMs, first responders, the media,
+government officials, and weather professionals. In addition, the same methods were used to
+study members of the public, to understand how they received warnings, and what actions they
+took. All of these data were then analyzed using a systems approach to understand the social
+structure that produces and communicates weather warnings to the public. This social structure
+then assumes it has effectively warned and protected a community.
+
+    After a series of internal reviews, a service assessment is signed by the Service Assessment
+Team Charter’s Executive Sponsor (e.g., Assistant Administrator for Weather Services, National
+Oceanic and Atmospheric Administration’s [NOAA] Administrator) and released to the public.
+
+                                                            2
+2. Event Overview
+    2.1. May 19, 2013
+
+    The evolution of the weather pattern through May 18 set the stage for the more intense
+tornadoes that affected central Oklahoma during the afternoon and evening of May 19. On
+May 19, abundant, low-level moisture was drawn northward across the Southern Plains resulting
+in a strongly unstable environment. At the same time, a dry line progressed eastward to near the
+I-35 corridor in central Oklahoma. Isolated thunderstorms developed by mid-afternoon as strong
+surface heating occurred in the moist air mass east of the dry line and a jet streak aloft
+approached Oklahoma from the west (Figure 1). The result was an environment increasingly
+favorable for supercell thunderstorms, with tornadoes forming across central Oklahoma into
+southern and eastern Kansas. NWS confirmed this environmental assessment using special
+rawinsonde launches from Norman and Lamont, OK, just before 1 p.m. Central Daylight Time.1
+
+    The storms in Kansas tended to interfere with one another soon after storm initiation; as a
+result, most of the tornadoes were relatively brief. Farther south into central Oklahoma, the
+storms remained discrete for a longer time. Observations from the NWS Twin Lakes WSR-88D
+radar site showed rapidly strengthening low-level winds and resultant vertical wind shear soon
+after the initial supercell developed near Edmond, OK. Mesonet data in central Oklahoma
+showed this strengthening wind shear appeared to be tied to a commensurate increase in surface
+winds and falling pressure as of 4 p.m. The first central Oklahoma supercell produced a
+damaging tornado in Edmond, followed by a long-lived tornado with up to EF3 damage near the
+towns of Carney and Wellston, OK. The initial supercell weakened and stopped producing
+tornadoes as the storm moved east of the corridor of stronger instability and vertical wind shear.
+A second supercell formed over east Norman and went on to produce another long-lived tornado
+with EF4 damage near Shawnee. Like its predecessor, the Shawnee tornadic storm weakened as
+it moved east of the stronger instability corridor.
+
+    1 All times referenced through the remainder of the document are in Central Daylight Time
+unless otherwise identified.
+
+                                                            3
+Figure 1: Weather summary chart valid at 7 p.m. on May 19, showing a synoptic setup for
+             severe weather. Source: SPC
+
+    2.2. May 20, 2013
+
+    A second consecutive day of severe thunderstorms affected central Oklahoma on May 20,
+beginning between 2 p.m. and 3 p.m. The strongly unstable environment from the previous day
+remained, largely owing to a lack of overnight or early day thunderstorms. The larger-scale
+weather pattern was similar to the prior day, with the most focused area of vertical wind shear
+and instability occurring in midafternoon along the I-44 corridor from central Oklahoma to
+southwest Missouri (Figure 2). This was verified by the special midday rawinsonde launch from
+WFO Norman.
+
+    Thunderstorms developed during the early afternoon along the stalled frontal boundary in
+central Oklahoma and along the dry line into south central Oklahoma. The Moore, OK, tornadic
+supercell formed immediately northeast of the intersection of the dry line and the stalled front.
+The supercell appeared to move along the front during the time of rapid storm intensification
+leading up to tornado formation, as verified by radar and Oklahoma mesonet data. The Moore
+supercell produced a single damaging tornado in a heavily populated area, while the other storms
+to the south and to the northeast produced only short-lived and weak tornadoes. Like the prior
+day, storm interactions and the relatively narrow corridor of the most favorable conditions tended
+to limit the time window and spatial extent of the tornado threat. The Moore storm was the only
+supercell that moved along the front without immediate interference from other storms. As a
+result, it experienced the most favorable environment for storm-scale rotation resulting in the
+Moore tornado being the most intense and long-lived tornado of the day.
+
+                                                            4
+Figure 2: Weather summary chart valid at 3 p.m. on May 20, showing a synoptic setup for
+severe weather. Source: SPC
+
+    2.3. May 31, 2013
+
+    A weather pattern similar to the May 19–20 sequence developed again at the end of May
+(Figure 3). Like the previous event on May 20, the intersection of a slow-moving front and a
+dry line provided the impetus for severe thunderstorm development in central Oklahoma by late
+Friday afternoon on May 31. By 5 p.m., the Oklahoma mesonet data confirmed a zone of
+enhanced low-level southeasterly winds feeding into the boundary intersection where the initial
+supercells developed, just to the west of El Reno, OK. Additionally, high surface dew point
+temperatures in the mid-70s (°F) and very unstable temperature lapse rates resulted in strong to
+extreme instability, as evidenced by the special rawinsonde launched from WFO Norman shortly
+before 1 p.m. The observed environment was supportive of supercells capable of producing
+intense tornadoes and giant hail.
+
+    The first supercell formed near 5 p.m. and moved generally eastward to the El Reno vicinity
+by 6 p.m. This long-lived, intense tornado remained mostly in open country during its life cycle,
+which reduced overall damage and loss of life compared to the May 20 event. As on both
+May 19 and 20, storm interactions and a relatively narrow corridor for the most favorable
+conditions limited the spatial extent of the most serious tornado risk. However, regeneration of
+severe thunderstorms moving along a similar path from west to east resulted in 8–11 inches of
+rain in just a few hours, and serious flash flooding across the Oklahoma City, OK, metropolitan
+area.
+
+                                                            5
+Figure 3: Weather summary chart valid at 7 p.m. on May 31, showing a synoptic setup for
+             severe weather. Source: SPC
+
+                                                            6
+ 3. NWS/SPC: Facts, Findings, Recommendations, and Best Practices
+
+    3.1. WFO Services
+
+    WFO Norman experienced two consecutive days of severe weather in mid-May. On Sunday
+evening, May 19, an EF4 tornado struck near Shawnee, OK, and on Monday, May 20, an EF5
+tornado struck Moore, OK. Eleven days later, on Friday, May 31, an EF3 tornado then struck
+El Reno, OK.
+
+    The WFO was well prepared for these events. The SPC severe weather outlooks were
+distributed to NWS partners and the public as many as 6 days in advance. WFO Norman’s
+management staff gathered early on May 20 to coordinate and plan the communication of the
+message of the day. This meeting was held early in the day to ensure the message was refined
+before storms developed. For all three events, WFO staff provided information to EMs and the
+public via a number of communications channels including social media. Additionally, the WFO
+also provided Impact-Based Decision Support Services, and these services included briefings to
+EMs before and during the events, a proactive effort to disseminate Geographic Information
+System (GIS)-formatted, estimated damage paths, and support to the recovery efforts at the
+Incident Command Post.
+
+    In addition, as one member of the WFO Norman staff noted, the office’s success
+communicating during these events was a result of best practices it had put in place long
+before 2013.
+
+    “Our success was due to many years of planning and practice and the relationships we’ve
+built through collaborations like meetings, drills, and exercises. These relationships weren’t built
+overnight or the day of a tornado outbreak. It came through our StormReady presentations,
+weather talks and briefings, and EM events. It takes lots of hard work, like getting ready for a
+football game.”
+
+    A traditional suite of forecast model data (e.g., North American Mesoscale Model [NAM],
+Global Forecast System [GFS]) is broadcast over the Satellite Broadcast Network (SBN) to the
+Advanced Weather Interactive Processing System (AWIPS) in the WFOs. These forecast models
+do not include the High Resolution Rapid Refresh (HRRR) and other high-resolution convective
+allowing models (CAM). However, during the tornado events, WFO Norman staff found the
+HRRR model and other CAM extremely valuable forecast decision aids. The WFO Norman
+staff found that some of the most valuable derived model fields available from the HRRR and the
+local models were the hourly output of reflectivity and updraft helicity. WFO staff used these
+derived model fields to enhance wording and make more specific time references to the
+approaching threats in their products. In the near-term forecasts, the HRRR model derived fields
+of convective elements proved more useful than the traditional suite of model fields delivered
+over the SBN. The traditional suite of forecast model data uses a large amount of the SBN’s
+bandwidth resulting in very little bandwidth being available for delivery of the external model
+data. WFO Norman had difficulty getting some local model data quickly because of the
+communications limitations.
+
+                                                            7
+Finding 1: The HRRR model and other CAM availability in AWIPS is limited and competes for
+bandwidth with larger-scale model data. WFOs operate on high spatial and temporal resolutions
+when providing decision support services.
+Recommendation 1: WFOs need the capability to ingest preferred high-resolution model data
+during critical times.
+
+    WFO Norman produced GIS products showing a preliminary estimate of the likely tornado
+track, which the office made available while the tornado was in progress in Moore, OK
+(Figure 4). The Meteorologist in Charge (MIC), serving as the radar interpreter, worked with
+the Information Technology Officer (ITO) to use a prototype local application on AWIPS II, the
+AWIPS’s next-generation software, to generate the GIS files on AWIPS. The GIS files were
+emailed to the EMs in affected regions and to the Southern Region Regional Operations Center
+(SR ROC) and posted on social media. WFO Norman used all available radar data and other
+information to draw potential damage paths. The local application allowed the meteorologists to
+select points, scan-by-scan, to identify where a tornado was located. This process includes
+forecaster interpretation in the analysis loop and is different and separate from the rotation tracks
+products available from the National Severe Storms Laboratory (NSSL). The Federal
+Emergency Management Agency (FEMA) Director noted these products are “extremely
+valuable” when integrated into FEMA’s GIS applications. These preliminary tracks allowed
+FEMA to identify the impacted areas and determine resources that might be needed for the
+recovery as much as 3–4 hours before resources were requested.
+
+Figure 4: Moore, OK, preliminary tornado GIS track. Source: WFO Norman
+
+                                                            8
+Best Practice: WFO Norman promptly provided EMs GIS information showing likely damage
+areas while tornadoes were still in progress.
+
+Fact: These GIS products saved FEMA 3–4 hours of response time and helped FEMA staff
+determine the need for additional urban search and rescue teams before local EMs formally
+requested this assistance.
+
+Fact: The SR ROC saw the tornado track as an image on the WFO Norman Facebook page and
+provided the graphic to FEMA Region VI, which used it to plot the potential damage track in a
+GIS viewer. FEMA expressed a desire to also have the data in GIS format in the future.
+
+Finding 2: NWS GIS products allowed many NWS partners (e.g., FEMA) to respond faster to
+demands for rapid information and decision support services. Currently, only WFOs using
+AWIPS II and a locally-developed application can create GIS products for possible tornado
+tracks while the tornado event is ongoing. Once NWS deploys AWIPS II to all its offices, GIS
+products should be provided consistently.
+
+Recommendation 2: WFOs should be provided with the capability and procedures to create
+GIS products for possible tornado tracks in near real-time.
+
+Finding 3: NWS partners want GIS tornado track information and other pertinent data.
+Currently, not all NWS offices are equipped to provide this information.
+
+Recommendation 3: All NWS offices should use the Damage Assessment Toolkit (DAT) to
+provide damage survey information to partners in a consistent GIS-accessible format.
+
+Finding 4: Not all offices have enough easily portable devices with geolocation to enable the
+direct entry of data taken in the field during the storm survey into the DAT. Consequently, some
+NWS personnel are choosing to install the DAT app on their personal mobile devices to facilitate
+the use of the DAT.
+
+Recommendation 4: NWS should supply all WFOs with appropriate hardware, including
+computer tablets, with the Global Positioning System or other geolocation services, to facilitate
+the collection of survey information using the DAT software.
+
+    3.2. SPC Services
+
+    SPC first emailed a heads-up to the NOAA/NWS FEMA liaison on May 13 regarding the
+potential severe weather threat for May 17-19. On May 15, SPC sent an update to the
+NOAA/NWS FEMA liaison.
+
+    SPC conducted briefings with the FEMA National Watch Center and affected FEMA regional
+offices on Friday, May 17, for the forecast period May 18-20; on May 29, for the forecast period
+May 29-31; and on May 31, to update expectations for that day.
+
+                                                            9
+    During the briefings, the SPC Operations Branch Chief provided an overview of categorical
+and probabilistic outlooks along with impacts, timing, and confidence in the forecasts. The
+briefings were followed up with summary notes sent from the FEMA liaison to the FEMA email
+distribution list. The SPC Director emailed NWS Leadership to provide updates on the content
+of FEMA briefings.
+
+    The SPC Operations Branch Chief and the SPC Director sent the FEMA briefings and heads-
+up emails to the Senior Director for Response/National Security Staff at the White House. The
+first heads-up email was sent on the morning of May 17, 2013, and mentioned the potential for a
+multi-day severe weather threat that included tornadoes.
+
+    SPC discussed the multi-day, severe weather potential with NOAA/NWS Legislative Affairs,
+on May 17. Legislative Affairs used this information to brief key legislative staff of affected
+states on Capitol Hill. Follow-up phone calls were held to refine forecasted impacts, as needed.
+
+    The SPC Facebook page was used to update followers on the severe weather threat. The SPC
+Facebook post gained 5,581 “likes” from May 17 to June 2. During 2013, the average 2-week
+increase in “likes” was 1070. SPC first mentioned the threat on May 13 and highlighted a
+prolonged period of severe weather using both text and SPC Outlook graphics. Subsequent
+postings included information from damage assessments conducted by WFO Norman, from radar
+imagery, and from historical perspectives.
+
+    3.3. Flash Flooding
+
+    The flash flooding that occurred in Oklahoma County, OK, during the evening of May 31
+and early morning of June 1 resulted in 13 fatalities, including 12 people in Oklahoma City. This
+was the deadliest flooding event ever for Oklahoma City. It was also the deadliest flooding event
+in the state since the May 26–27, 1984, flash flood in Tulsa, when 14 people perished. This
+event was also the deadliest flash flood in the WFO Norman forecast area since April 3–4, 1934,
+when 17 people were killed by a flash flood along the Washita River near Hammon, OK.
+
+    Multiple severe weather threats on May 31 created a complex warning environment for WFO
+Norman. (The public’s reaction to the warnings is further discussed in Section 4.0). WFO
+Norman performed well during the crisis communication stage for this event. The office
+contacted multiple partners about outlooks and warnings and ample lead time was provided for
+people to prepare for the tornado and the flooding. Members of the public interviewed indicated
+they were well warned for the tornado, but not for the flash flooding. They received the
+warnings for the tornado from multiple sources, but not the flash flood warnings. No members
+of the public interviewed were aware of a flash flood warning on May 31. They felt television
+weather broadcasters chose to focus on the tornadoes and not the flash flooding. In fact, those
+interviewed indicated the flash flooding was a surprise and they did not know how to respond to
+the dual warning. They knew what to do for a tornado or for a flash flood, but not for both at the
+same time. The surprise element of the flash flooding made the public feel less confident about
+its safety plans.
+
+    One woman reported that she and seven other people, including family, friends, and four
+pets, were sheltered in a small underground cellar that started filling with water. “We stayed in
+
+                                                           10
+there until the water got too high,” she said. “We just hoped the tornado was over by that
+point.” When asked if she received the flash flood warning, she said, “No.” Her first clue that
+flooding was a problem was the water in her cellar.
+
+    WFO Norman first mentioned the flash flood threat in a Hazardous Weather Outlook on
+Wednesday, May 29, at 11:49 a.m., and included the flood threat in all subsequent outlooks
+issued up to the event and in social media outlets. WFO Norman issued the first Flash Flood
+Watch for the event at 12:20 p.m. on Thursday, May 30. When the storm continued to produce
+heavy rain, WFO Norman issued a Flash Flood Warning at 7:13 p.m. on Friday, May 31
+(Figure 5), and received the first flooding report at 8:00 p.m. Total rainfall amounts were as
+high as 7–8 inches in parts of the warned area (Figure 6). WFO Norman also held webinars with
+EMs on May 30 and 31, sent emails to EMs, created Graphicasts, produced YouTube Severe
+Weather Updates, and posted Twitter and Facebook entries at various times through May 31.
+
+Figure 5: Flash Flood Warning issued 7:13 p.m., May 31, valid through 11:15 p.m. Source:
+             WFO Norman
+
+    Figure 6: Observed precipitation, in inches, for central Oklahoma valid from 7 a.m.,
+May 31, to 7 a.m., June 1. Source: Advanced Hydrologic Prediction Service display produced
+by the Arkansas-Red Basin River Forecast Center (ABRFC)
+
+                                                           11
+Fact: At 1 p.m. on May 31, WFO Norman tweeted, “TORNADO SAFETY: If you choose to flee
+in your car, plan for and anticipate traffic jams and blocked roads, hail, heavy rain and
+flooding.”
+
+Fact: At 7:49 p.m. on May 31, WFO Norman Tweeted, “SERIOUS FLASH FLOODING
+THREAT over the [Oklahoma City] OKC metro! Do not drive into areas where water covers the
+road!!”
+
+Finding 5: The NWS warned the public about the flash flooding threat, but much of the public
+did not get that warning. WFO Norman used social media and other dissemination methods
+before and during the flash flooding in the morning and afternoon of May 31.
+
+Recommendation 5: The NWS needs to develop warning protocol when there are multiple
+severe weather elements in the warning so that each element of the warning is weighted based on
+its urgency and severity. This protocol should include wording on how the public should prepare
+and respond to multiple, simultaneous dangers such as tornadoes and flooding.
+
+Finding 6: Interviews with the public indicated the broadcast media focused on the tornadoes
+and not the flooding during the May 31 event.
+
+Recommendation 6: The NWS needs to provide specific educational material to the broadcast
+media partners on how to manage warning dissemination for multiple severe weather hazards.
+
+    In addition to WFO Norman flash flooding products and local guidance, the Weather
+Prediction Center (WPC) issued several national and regional flash flooding guidance products
+to provide situational awareness in the days leading up to the May 31 event. WPC provides an
+“Excessive Rainfall Outlook” to highlight flash flood threats through the next three days. The
+first outlook covering the day and time of the flash flooding was issued at 2:24 a.m. on
+Wednesday, May 29. Oklahoma City was on the southwestern edge of a slight risk area. The
+outlook issued at 12:55 a.m., May 30, continued to have Oklahoma City on the edge of a slight
+risk area, but added a moderate risk area over northeastern Oklahoma and southwestern MO
+(Figure 7). By 12:44 a.m., May 31, both the slight and moderate level areas were extended to
+the southwest deeper into Oklahoma with Oklahoma City in the moderate risk area (Figure 8).
+This year, the function of providing short term (0–6 hours) Mesoscale Precipitation Discussions
+(MPD) was transferred to WPC from SPC. These discussions focus on mesoscale features that
+could produce flash flooding over the next few hours.
+
+Fact: WPC issued their first of four MPDs for the Oklahoma City area at 4:21 p.m., May 31
+(Figure 9).
+
+                                                           12
+Figure 7: WPC Day 2 Excessive Rainfall Outlook issued at 12:55 a.m., May 30, valid
+             7:00 a.m., May 31, through 7:00 a.m., June 1, 2013. Source: WPC
+
+                                                           13
+Figure 8: WPC Day 1 Excessive Rainfall Outlook issued at 12:44 a.m., May 31, valid from
+             7:00 a.m., May 31 through 7:00 a.m., June 1. Source: WPC
+
+ Figure 9: Graphic accompanying WPC Mesoscale Precipitation Discussion issued at 4:21 p.m.,
+              May 31, valid from 4:21 p.m. through 9:20 p.m., May 31. Source: WPC
+                                                            14
+    3.4. Social Media
+
+    WFO Norman provided an aggressive social media presence before and during the severe
+weather events. WFO Norman forecasters see great value in social media as a means to establish
+and strengthen relationships within communities. Social media provides the WFO the ability to
+interact directly with the public and offer calm, direct advice (Figure 10). National WFO social
+media statistics show WFO Norman’s social media efforts have paid off. Feedback from social
+media users show this information to be particularly valuable (Figure 11). Many social media
+updates are shared. For example, National Public Radio Station KGOU in Norman routinely
+links the WFO’s YouTube and PowerPoint briefings to its KGOU websites, retweets the WFO
+messages often, and replays briefing sound bites on air.
+
+Figure 10: WFO Norman Facebook message from 7:52 a.m. on May 20 discussing timing for
+               possible tornadoes. Source: WFO Norman
+
+Figure 11: A Facebook message from a local resident on how the reader used messages from
+               WFO Norman during the tornadic events of mid-May. Source: WFO Norman
+                                                           15
+    WFO Norman is one of the top NWS offices in social media engagement (Figures 12–13).
+
+Figure 12: Twitter followers normalized by county warning area population (A) and by total
+               number of followers (B) as of August 2013. Source: Todd Foisy, Dustin Jordan,
+               WFO Caribou, and Jason Straub, WFO Brownsville
+                                                           16
+                                                              A
+
+                                                             B
+
+Figure 13: Facebook total “likes” (top graphic) and normalized by county warning area
+              population (bottom graphic), as of August 2013. Source: Todd Foisy and Dustin
+              Jordan from WFO Caribou, and Jason Straub, WFO Brownsville
+                                                           17
+    The severe weather events in May 2013 captured the attention of many more people through
+social media than previous WFO Norman events. WFO Norman Twitter followers for the month
+of April totaled 13,771. By the end of May, the number of WFO Norman followers increased
+nearly 85 percent to 25,459. Similarly, Facebook “likes” for April totaled 32,629; by the end of
+May, that number increased to 51,153. In addition, the number of YouTube WFO Norman
+subscribers increased by 420 in May.
+
+    WFO Norman dedicated one staff member to update social media outlets during this event;
+this is its typical response to most medium and high-end events. The YouTube video that WFO
+Norman released at about 11:30 a.m. on the Monday before the Moore tornado can be seen at:
+
+http://www.youtube.com/watch?v=9Q7iUn9YfWA&feature=c4-overview&list=UUacncsbh_AhMe-CUmEMzmTg
+
+The video was praised by many partners and media for its accurate description of the day’s
+threats, including the potential for storms to impact school dismissal during the afternoon. WFO
+Norman posted the video on its YouTube channel, shared it via its Twitter and Facebook pages,
+linked it from the WFO’s web page, and emailed it to its mailing list of nearly 400 partners.
+
+    Partners also praised the expected storm development Graphicasts featured in the WFO’s
+webinar and posted on social media and webpage. Several EMs and other partners specifically
+mentioned these graphics as a tool that increased their confidence about the timing and location
+of the thunderstorms and tornadoes, and prompted action (Figures 14–15).
+
+Figure 14: WFO Norman Graphicast image discussing expected storm development during the
+              afternoon of May 20. Graphicast issued 11:00 a.m., May 20. Source: WFO
+              Norman
+
+                                                           18
+Figure 15: WFO Norman Graphicast image discussing expected tornado timing potential
+              during the afternoon of May 31. Graphicast issued 10:29 a.m., May 31.
+              Source: WFO Norman
+
+    WFO Norman conducts a weekly webinar on Mondays at 10 a.m. for its partners. In
+addition, WFO Norman often conducts teleconferences and webinars on an ad hoc basis for
+significant threats. WFO Norman forecasters focus on interpreting what to expect based on SPC
+and other guidance. Typically, the webinars are recorded and a version is posted on YouTube,
+Twitter, and Facebook. The webinar on May 20 included hospital and school administrators.
+EMs commented after the event that they could tell this was a dangerous event by the tone and
+demeanor of the WFO Norman WCM during the weekly webinar in contrast to routine webinars.
+This tone was in contrast to some of the other voices in the media that may have been
+downplaying the risk that day.
+
+    The Safety Director for the Moore Medical Center, Shane Cohea, provided the following
+comment via email to the WCM: “Simply put you saved lives and we took the information you
+provided days before and the webinar May 20 as serious as anyone in Oklahoma! I read
+between the lines when others were downgrading the prediction for the day and you had a
+different opinion.”
+
+Best Practice: WFO Norman offers weekly calls to its core partners, which leads to greater
+understanding and awareness of severe weather days.
+
+    The WFO Norman staff member who handles social media varies based on experience,
+interest, and knowledge. For the bulk of this WFO Norman severe weather event, the WCM
+provided social media updates initially and then handed off the responsibility to the social media
+focal point. The WFO’s social media message is becoming more and more critical as another
+confirmation source of warnings to the public and NWS partners.
+
+                                                           19
+Best Practice: WFO Norman dedicated staff resources to collect and provide social media
+content. On an event-by-event basis, the office team edits the content of the social media posts
+to increase effectiveness. For example, WFO Norman did not provide the hourly, short-term text
+weather discussion in order to provide more emphasis in social media.
+Best Practice: WFO Norman includes time stamps in Twitter entries to reduce confusion when
+information is retweeted.
+Partners have lauded WFO Norman for their proactive approach to social media engagement.
+Concern was expressed that this service may not be maintained during service backup events.
+Finding 7: Social media is not currently an integral part of NWS service backup operations.
+Recommendation 7: The NWS should make social media an integral part of service backup
+operations.
+
+    The staff at WFO Norman dealt with numerous severe weather events in a 2-week period
+(Figure 16), not just the three high-impact events. Each severe weather event in central
+Oklahoma resulted in significant physical and emotional stress on the staff. One Senior
+Forecaster responsible for warnings said:
+"When you're making decisions with life and death consequences, knowing that it is very likely
+some will die regardless of your actions, it's a heavy emotional burden to bear.” Within a few
+weeks after the events ended, a representative from the Employee Assistance Program (EAP)
+was brought into the office for group counseling. A forecaster in the WFO said, “EAP got the
+ball rolling. Now we can all talk about it on shift.”
+
+Figure 16: Green represents a watch or warning during that hour of the day for WFO Norman.
+              Source: WFO Norman
+                                                           20
+Finding 8: Even though NWS has long-standing policy emphasizing EAP use at impacted
+offices, some NWS staff members, including management, are currently ill-equipped to both
+understand and deal with emotional issues resulting from high-impact events.
+
+Recommendation 8: NWS management should receive regular refreshers on the importance of
+offering EAP support after major events.
+
+    3.5. EF Tornado Rating Scale
+
+    The NWS adopted the Enhanced Fujita (EF) Scale in 2007. The EF Scale measures the
+amount of damage a tornado causes to human-engineered structures. Wind speeds are then
+inferred and estimated based on an understanding of wind loads and expected failure points;
+however, NWS needs additional damage indicators as new observation data sources become
+available. Research and new sources of data have increased the ability to assess wind speeds
+within tornadoes and the resultant damage via damage indicators.
+
+    The EF-Scale Steering Committee, an ad hoc group consisting of Federal, State, University,
+and private weather enterprise experts representing many disciplines, has several proposals to
+refine the EF Scale and its use (Edwards et al., 2013). NWS employee participation on this
+committee is voluntary and not currently part of any employee’s assigned duties.
+
+    The Wind Science and Engineering Center at Texas Tech University served as the original
+source for rating tornadoes using the EF Scale. The document proposing the change from the
+Fujita Scale to the Enhanced Fujita Scale states, “...The technology of portable Doppler radar
+should also be a part of the EF Scale process, either as a direct measurement, when available, or
+as a means of validating the wind speeds estimated by the experts.”
+
+    The issue of measurements compatibility is significant. Winds measured by mobile radars at
+various heights above ground level (agl) are potentially not the same strength as the winds
+causing damage near the surface. According to Dr. Josh Wurman, Center for Severe Weather
+Research, it is not currently possible to derive near-surface wind speeds based on winds at some
+elevation aloft. Tornadoes form in several ways from different storm types; not all tornadoes
+have the same wind distribution.
+
+Fact: The science is currently incomplete on the specific wind speed variations within tornadic
+circulations. Scientists have not determined how sampled winds above 10 meters relate to winds
+at 10 meters, the standard height at which wind observations are made.
+
+    NWS conducted detailed ground surveys of tornado damage on May 20, 21, and 31. Local
+tornado experts in the Norman vicinity, including personnel from WFO Norman, NSSL, Warning
+Decision Training Branch (WDTB), SPC, and the University of Oklahoma (OU), as well as
+noted tornado damage expert Tim Marshall performed the ground surveys. NWSI 10-1604,
+Post-Storm Data Acquisition, recommends NWS consider forming a Quick Response Team
+(QRT) to augment WFO efforts at rating tornadoes potentially greater than EF3. WFO Norman
+had the advantage of using local experts as volunteers to form a QRT, but other WFOs may not
+have local expertise readily available.
+
+                                                           21
+    Using these additional experts in the survey process allowed the remaining WFO staff to
+provide decision support services for the recovery effort and to prepare for continued severe
+weather. Had these experts not been readily available, the surveying process would have been
+greatly delayed and support to ongoing recovery and forecast of future severe weather could
+have been compromised.
+
+Finding 9: The local availability of wind damage/tornado experts to help assess multiple
+tornadoes, and confirm damage greater than EF3, was extremely beneficial to WFO Norman, the
+SR ROC, and NWSH. These wind damage/tornado experts volunteered to perform the role of a
+QRT without incurring any expenses to the NWS.
+
+Recommendation 9: The NWS should continue to preserve and support the QRT concept by (1)
+ensuring funds are made available for future QRTs, and (2) updating NWSI 10-1604 Post-Storm
+Data Acquisition to include more specific and standardized procedures for forming (including
+required training) and activating a QRT.
+
+    Based on damage indicators, the Shawnee tornado was assigned an EF4 rating and the Moore
+tornado was assigned an EF5 rating. The El Reno tornado, with only EF3 damage found during
+the survey, was assigned a preliminary rating of EF5. This rating of EF5 was based on two
+mobile research radars (i.e., University of Oklahoma’s Rapid-scan X-band Polarimetric Radar
+(RaXpol), and Doppler on Wheels) that sampled winds at higher wind speeds than the damage
+indicators would allow the team to infer. There was precedent for using such radar data to
+modify the EF-Scale ratings of at least six other tornadoes. These tornado events, which
+occurred at different WFOs, had been given a higher EF-Scale rating than the damage indicators
+would suggest after mobile radar data were made available. The Assessment Team believes that
+based on past precedent it was reasonable for WFO Norman to give the El Reno tornado a
+preliminary EF5 rating.
+
+Fact: Within the El Reno tornadic circulation, the Doppler on Wheels radar sampled winds
+slightly above 250 mph approximately 375 feet agl and the OU RaXpol radar sampled winds in
+excess of 290 mph approximately 500 feet agl.
+
+Fact: WFO Norman upgraded the EF-Scale rating on the El Reno tornado from EF3 to EF5
+after consultation with numerous NSSL experts and the University of Oklahoma School of
+Meteorology. The El Reno tornado’s width was calculated based on the diameter of EF0 winds
+sampled by RaXpol.
+
+    Dr. Louis Uccellini, in a policy memo dated June 6, 2013, stated, “Directive NWSI 10-1604,
+Post-Storm Data Acquisition, requires us to use the EF Scale, which is an impact-based rating
+assigned to a tornado after extensive investigation of the damage it caused. EF ratings are
+determined by observed damage rather than measured wind because we have no consistent way
+to measure wind speed for every tornado that occurs. Adhering to NWSI 10-1604 ensures we
+continue to use consistent methodology throughout the country for assigning EF ratings.”
+Dr. Uccellini continued by stating that an update to NWSI 10-1604 will give the option to
+include these data in the narrative of tornado summaries.
+
+                                                           22
+    While much attention is given to the EF-Scale rating and expected wind speeds, traditional
+storm survey techniques are often limited by the lack of damage indicators, particularly over
+sparse terrain. A large, violent tornado producing no damage over open country would be rated
+an EF0. Often, the strongest winds in a tornado may not impact a damage indicator, or a damage
+indicator could be destroyed by winds much slower than occurred during the event being
+evaluated.
+
+    It is the Service Assessment team’s opinion that when there is a discrepancy between
+observed ground damage and other storm information (e.g., portable radar measurements), then
+the additional data should be communicated in the official NWS Storm Data publication.
+
+Finding 10: NWSI 10-1604, Post-Storm Data Acquisition, NWSI 10-1605, Storm Data
+Preparation, and the training NWS staff receives to rate tornadoes does not specifically address
+using data other than observed damage indicators.
+
+Recommendation 10: NWSI 10-1604, Post-Storm Data Acquisition, should be updated to
+allow for additional information based on high-confidence remotely sensed data, when available.
+This additional rating, for example a “Doppler On Wheels sampled winds 250 mph at 300 feet
+agl,” should be included as a searchable feature in the NWS’s Storm Data database.
+
+Finding 11: At least six other tornadoes from previous events across several WFOs were
+assigned a higher EF-Scale rating than the damage indicators suggested after NWS was able to
+evaluate mobile radar data.
+
+Recommendation 11: All historical storms with an EF-Scale rating augmented by high-
+confidence remotely sensed data should be reassessed, and if appropriate, updated with this
+additional information once the NWS publishes the updated NWSI 10-1604, Post-Storm Data
+Acquisition.
+
+    NWSI 10-1605, Storm Data Preparation, along with the National Climatic Data Center
+Storm Events Database , and the SPC Warning Coordination Meteorologist (WCM) web page
+contain mostly text-based data on tornado tracks. Some specific track information is available
+on the SPC page for larger events, but most tornadoes are reported with a starting point, ending
+point, and a narrative section to describe movement. The NWS Damage Assessment Toolkit
+(DAT) provides storm survey teams with the ability to survey, report, and display storm damage
+information internally and, once quality controlled, with partners and the public. Once the
+update to NWSI 10-1604 is approved, WFOs will be required to report storm assessment survey
+results to the DAT web editor. At that time, NWS staff should have access to this GIS-based
+tornado track information.
+
+Fact: The NWS Storm Data publication and National Climatic Data Center database describe
+tornadoes with a starting and ending point even though many tornadoes do not move in a straight
+line. In the May 31, 2013, El Reno example, a start and stop point completely misses the
+important specifics of the path and imply the tornado moved through areas it bypassed.
+
+                                                           23
+Finding 12: NWS Storm Data does not accurately reflect actual tornado tracks. Tornadoes are
+entered with a start and stop latitude/longitude, but NWS Storm Data does not preserve the actual
+path. WFOs are required to use the DAT website to report tornado tracks.
+
+Recommendation 12: The official NWS StormDat Program should include a GIS-based
+tornado track that utilizes the DAT or GIS map track information to depict where the tornado
+occurred.
+
+    3.6. Rapid Evaluation of Service Activities and Performance (RESAP)
+
+    After the tornadic events of May 19–20, Southern Region Headquarters Operational Services
+Division organized a Rapid Evaluation of Service Activities and Performance (RESAP), known
+as a “hotwash” team, led by Southern Region Headquarters with input from WFO Norman, SPC,
+Eastern Region Headquarters, the NWS Warning Decision Training Branch, and NWSH. This
+hotwash team was established to learn from the tornadic and other hazardous weather events and
+establish new best practices and findings for other WFOs. This team created a weather summary
+of the May 19 and 20 tornadic events and interviewed key WFO Norman staff to better
+understand the timeline of events, find successful procedures and work practices, and
+recommend needed changes. The team met again after the May 31 event and included a member
+of this Assessment Team. Some of the best practices and findings, of national relevance,
+identified in the hotwash are included in this report. WFO Norman praised this rapid review
+method because the hotwash team was less formal than a national team. This Assessment Team
+believes the hotwash method was successful in quickly identifying best practices and
+recommendations; however, it cannot replace a national assessment team for larger events.
+
+Best Practice: SR successfully employed a Rapid Evaluation of Service Activities and
+Performance team to review event services within the region.
+
+    After the tornadic events of May 19 and 20, WFO Norman provided onsite weather support
+to the Incident Command Post (ICP) to aid the recovery effort. The onsite forecaster provided
+support similar to what an Incident Meteorologist provides. ICP staff had difficulty identifying
+the onsite WFO Norman forecaster in the crowded ICP because that person was not wearing
+NOAA/NWS logoed apparel. In addition, when making damage surveys of the affected and
+damaged areas, the lack of NOAA/NWS-logoed apparel reduced staff effectiveness and delayed
+entry into damaged areas.
+
+Finding 13: The lack of NOAA/NWS-logoed apparel reduced staff effectiveness while
+obtaining information from the public.
+
+Recommendation 13: NWS should provide appropriately logoed apparel to employees in the
+field after an event, including employees providing onsite decision support services and
+conducting damage surveys.
+
+                                                           24
+    3.7. Message Consistency: Responsibility for Message Consistency and IWTs
+
+    One theme that emerged is the issue of responsibility: which elements of the weather
+enterprise—including EMs, news media, and NWS forecasters, and others—are responsible for
+issuing advice to the public. Identifying the responsible elements of the weather enterprise is
+important to ensure the public understands how to prepare, and what warning format and content
+best communicates potentially life-saving information.
+
+    Many groups interviewed for the assessment mentioned several elements of these storms that
+were atypical, leading members of these groups to react in equally atypical ways. (See Section 4,
+Societal Impacts.)
+
+    WFO Norman recommended the use of helmets in safety messages over social media during
+the events and in severe weather preparedness handouts as a routine outreach effort. The SPC
+Tornado Frequently Asked Questions web page also references helmets as a safety measure.
+Recent studies after other large tornado events (Alabama, 2011) have indicated as many as 50
+percent of the injuries and many deaths involve head trauma. The University of Alabama Injury
+Control Research Center offers practical advice and recommendations on including helmets as
+part of tornado preparedness. Early results from the University of Alabama Injury Control
+Research Center indicate helmets could help save lives. The inclusion of helmets as a safety
+device is still a matter of ongoing research.
+
+Finding 14: The need to include helmets as a safety device during severe weather is still being
+researched. Early results from the University of Alabama Injury Control Research Center
+indicate helmets could help save lives and reduce head injuries.
+
+Recommendation 14: The NWS should closely monitor research on helmets as safety devices
+during severe weather. If these recommendations are adopted as valid, the NWS should develop
+safety recommendations and preparedness efforts to include helmets with routine and emergency
+communications about tornado safety.
+
+    3.8. Working with the Media
+
+    Communication flow is a challenge with today’s social media and 24-hour news
+environment. The WFO Norman WCM, SPC management, and the NOAA Public Affairs
+Officer (PAO) in Norman have considerable experience working with the media before, during,
+and after widespread severe weather events of national interest.
+
+    SPC and NOAA PAO have a severe weather communication plan, which assisted rapid
+development of an effective media plan during the May 19, 20, and 31 tornado events. During
+these tornado events and with the expected high demand of media requests, WFO Norman
+initially became overwhelmed. To meet the high demand of media requests during the May 19,
+20, and 31 tornado events, the PAO, WFO Norman, and SPC worked together to prioritize media
+inquiries—national, local, international, radio, TV, and internet outlets. Interview requests from
+reporters in the impacted areas and national media were handled by WFO Norman and SPC.
+International media inquiries were especially high after the Moore tornado. WFO Norman and
+
+                                                           25
+PAO enlisted help from the SR ROC to handle these international media inquiries and WFO
+Norman appreciated the ability to offload the international media requests to the SR ROC.
+
+    WFO Norman, SPC, SR ROC, and NWSH provided more than 100 interviews to national,
+regional, local, and international media. Interview topics ranged from real-time updates on
+evolving severe weather potential to historical perspectives on the tornadoes and the extent to
+which climate change may have played a role.
+
+Best Practice: The SPC and SR ROC, in coordination with the PAO and WFO Norman,
+responded to most of the national and international media requests, allowing WFO Norman to
+focus on select national and all local media requests and decision support services.
+
+Finding 15: During the May 19, 20, and 31 tornado events, WFO Norman received a high
+demand for media requests. WFO Norman coordinated with the PAO, SPC, and the SR ROC to
+prioritize media inquiries, sending international requests to SR ROC and national media requests
+to SPC.
+
+Recommendation 15: NWS should develop national, regional, and local plans on how to
+prioritize media inquiries and identify internal local and regional resources to meet press
+demands during significant severe weather events. The ROCs could be used to help standardize
+these plans.
+
+    Before and during the tornado events, WFO Norman and SPC used information from
+outlooks, watches, and warnings as talking points with the media. After the tornado, WFO
+Norman, the NOAA PAO, and SPC developed media talking points using facts about forecast
+products, lead times, special services provided by the WFO, description and maps of the storms’
+paths, and relevant historical data. These talking points were distributed to the people doing
+interviews in the WFO, SPC, and SRH, and provided to the NWS Operations Center. The
+talking points helped ensure a consistent and timely message from NWS to its partners and the
+public. These talking points were used for media requests and for social media posts. However,
+several key individuals and groups did not receive the talking points, such as Emergency
+Response Specialists at the FEMA Region VI Response Coordination Center and MICs from
+WFOs outside of the affected areas. In the future, these groups should also receive talking points
+to ensure a consistent message across the NWS.
+
+    The NWS does not provide guidance on how to develop talking points for weather events.
+Guidance should be provided and should include who is responsible for writing and approving
+the talking points and who can modify them as weather conditions and the environment change.
+Spokespeople should use consistent messaging when speaking to the media.
+
+Finding 16: Before, during, and after the tornado events, WFO Norman, SPC, and the NOAA
+PAO developed and distributed talking points that were widely used. These talking points were a
+valuable tool.
+
+Recommendation 16: NWS ROCs, in consultation with the NOAA PAO, should develop
+regional and local procedures for the development of talking points during significant weather
+
+                                                           26
+events to help ensure a consistent media message and distribute to ROCs, NWSOC, and the
+NWS Communications Office.
+
+    While WFO Norman and SPC have a long history and experience working with the media
+after large events, the Assessment Team believes it would be beneficial for the NWS to develop
+or make available media training for all NWS employees who speak to the media regularly.
+
+Finding 17: Media interest and interview requests are frequent after significant events, and
+NWS employees need to be able to interact confidently with the media.
+
+Recommendation 17: NWS should develop and make media training mandatory for those
+NWS employees who speak with the media to help ensure a consistent media message across the
+NWS.
+
+3.9.  Storm Chasing
+
+    Storm chasing is a popular activity among some professional meteorologists and amateur
+weather enthusiasts. Typically, there are numerous storm chasers, some of whom are NWS
+Skywarn spotters, to observe many Great Plains tornadoes. Both spotters and storm chasers
+provide critical information to local law enforcement and NWS offices about the storms they are
+observing. The popularity of storm chasing has increased across the country. Storm chasers
+have documented “chaser convergence” (an assembly of vehicles, consisting of both chasers and
+residents, centered on a storm) in the past, especially in larger populated areas. Many storm
+chasers allow their position to be monitored by broadcasting their Global Positioning System
+coordinates to websites such as Spotternetwork.org (Figure 17). These positions, along with
+severe weather reports from storm chasers, are then displayed on computers. NWS offices can
+access these displays and reports and often call storm chasers to seek ground-truth information.
+
+    Three experienced storm chasers associated with past NOAA research projects were killed by
+the El Reno tornado and other chasers were injured. The three chasers killed, part of a research
+group called TWISTEX, were considered some of the most experienced and safety-minded
+chasers within the storm chaser community. Additionally, an amateur storm chaser that left his
+nearby home was killed. All eight of the direct tornado fatalities on May 31, 2013, were in
+vehicles, four of whom were involved in storm chasing. None of the individuals were
+functioning under a NOAA-sponsored research project at the time.
+
+                     27
+                                   .
+
+Figure 17: Red dots indicate Spotter Network-reported locations of storm chasers. Source:
+              RadarScope, WDT, Inc.
+
+    It does not appear that traffic was a factor in the deaths of the TWISTEX storm chasers.
+Dan Robinson, a storm chaser, was directly ahead of the vehicle with the TWISTEX crew. In his
+post-storm chase account he wrote: “At this point at 6:19:25 p.m., the white Chevy Cobalt
+occupied by the TWISTEX crew was immediately behind me. Other than the TWISTEX Cobalt
+and a red pickup truck parked along Highway 81, there were no other vehicles in our
+immediate vicinity. In other words, chaser traffic was a non-factor at our location.” Dan
+Robinson’s video account of his experience is on YouTube at the following URL:
+http://www.youtube.com/watch?v=MxgU1QcFMJM.
+
+    An excellent overview of the events surrounding the death of the three chasers was produced
+by Skip Talbot, an experienced storm chaser. This video is provided with Talbot’s permission at
+the following URL: http://www.youtube.com/watch?v=jVTs55W3Iag.
+
+    Several storm chasers reported the visually-deceiving nature of the El Reno storm and its
+apparent width. Data received, and used with permission, from a chaser compares the visible
+width of the tornado condensation funnels to the actual width based on RaxPol. Although the
+tornadic circulation was evident on radar, many chasers did not realize they were in, or as close
+to, the large circulation. During the time of rapid intensification, the forward motion of the
+circulation increased from approximately 35 mph to more than 50 mph. This speed increase,
+combined with a sharp left turn and intense inflow winds, made driving away from the tornado
+difficult (Figures 18–20).
+
+                                                           28
+Figure 18: Analysis from Gabe Garfield showing “visible vs. actual” tornado width. Red
+              markers approximate visible tornado width and blue markers approximate actual
+              width of the tornadic circulation. Source: Skip Talbot
+
+Figure 19: Visible vs. RaxPol-derived El Reno tornado width. Source: Gabe Garfield
+                                                           29
+Figure 20: Estimate of the El Reno tornado speed. Source: Gabe Garfield and Jeff Snyder
+Fact: On May 31, all eight of the direct tornado fatalities occurred in vehicles. Four of those
+killed were engaged in storm chasing.
+Finding 18: Although none of the storm chasers who died were acting as a NWS Skywarn
+spotter, such storm chasers provide the NWS with storm reports.
+Recommendation 18: During the next routine Skywarn training sessions, WCMs should
+reinforce spotter safety and the rules outlined in NWSI 10-1807, The Skywarn® Weather Spotter
+Program. These safety rules should then be reinforced in all future Skywarn training sessions.
+
+                                                           30
+4. Societal Impacts: Facts, Findings, and Recommendations
+
+    The social science analysis is organized to provide a 3-part guide to understand responses to
+NWS activities before, during, and after these tornadoes.
+
+ Part 1: The severe weather emergency planning phase of the event includes all NWS and
+    partner efforts to prepare the public for tornadoes prior to each tornado. This phase includes
+    emergency planning and risk communication activities: those messages designed to increase
+    awareness of the timing of weather events, of possible weather types and severity, and of
+    appropriate preparation measures.
+
+ Part 2: Crisis response communication is any messaging activity during the onset of the
+    severe weather event, including warnings and directions on what action to take immediately.
+
+ Part 3: Severe weather recovery includes activities after the events that help the public
+    respond to the severe weather impacts and to restore capabilities as quickly as possible.
+
+    The role of the NWS and its partners is critical. EMs, media representatives such as
+broadcast meteorologists, hospital administrators, and other public officials all play a vital role.
+The relationships between the NWS and these partners are also highlighted.
+
+    4.1. Emergency Planning: Collaborative Preparedness
+
+    Responsibility emerged as a major theme from the social impacts assessment. Specific
+questions include the following:
+
+ Which elements of the weather enterprise are responsible for ensuring that the advice given
+    to a specific public audience matches earlier preparedness information?
+
+ Should the public expect that the advice they receive during a severe weather event will
+    reflect pre-event preparedness information?
+
+ Will the warnings the public needs to save their lives be presented in a language and format
+    they understand?
+
+    Many groups interviewed mentioned several elements of these storms were atypical of past
+events. In particular, the unusual nature of the storms and circumstances on May 31 led many to
+react in equally atypical ways.
+
+    Most of those interviewed thought the events of May 19 and 20 were more typical of what
+people have come to expect of the weather and the weather enterprise in Oklahoma.
+Notifications from the NWS went out days ahead of these events, so EMs and the media felt they
+had sufficient time to enact their organizational plans. Further, members of the public noted they
+had heard about severe weather at least 24 hours ahead of time and were more aware of the
+impending hazardous weather than they had been in the past. When asked about their response
+to warnings on these 2 days, most people said they had adequate time to take shelter and did so.
+In fact, because the tornado on May 20 was similar to other events in terms of its early afternoon
+timing and the nature of the forecast discussions about the heightened potential severity, some
+people thought they had time to drive out of the path of the storm.
+
+                                                           31
+    Likewise, EMs said they had sufficient time to enact their organizational plans, including
+those for several area hospitals. These plans allowed the facilities enough time to shelter not
+only their own patients and employees but also those members of the public who took shelter
+there, many with their pets. Even many of those who tragically lost their lives on May 19 and 20
+had taken actions corresponding to the plans they had practiced.
+
+    Planning for sheltering needs was raised by many of the respondents interviewed. The
+messaging by the NWS and the broadcast media for the May 19 and May 20 events indicated
+people should take shelter underground, if possible. Interviews with the public indicated that in
+the May 20 event some people did evacuate ahead of the storms. The respondents indicated that
+they know to get into a shelter or away from a storm and that if they cannot shelter, they should
+drive away. However, they also know they need lead time to take these actions and that they
+should only drive away from a tornado if they can see where the tornadoes are located. Public
+respondents indicated that they know not to try to evacuate in the dark.
+
+    This response suggests that even during storms as destructive as the May 20 event, local
+residents enacted their emergency plans and survived above ground in predetermined shelters.
+Shelters ranged from interior closets and bathrooms to safe rooms. Underground shelters or
+underground cellars, where available, were also used successfully. People relied on the
+familiarity of the messages they had heard from forecasters and EMs, as well as the consistency
+of their own individual and family plans. Confidence in emergency plans is central to
+preparedness. The respondents are confident because they have frequent reason to practice their
+severe storms plans. Most of the respondents appear to be prepared for strong tornadoes given
+the frequency of tornado threats in the area.
+
+    On May 31, slow moving storms around rush hour, and the context of recent events, resulted
+in confusion, frustration, and, sadly, more fatalities. Large numbers of people acted in ways that
+differed significantly from their typical safety plans due to increased, uncharacteristic fear
+following the May 20 event. Many people indicated they were actually ashamed of the actions
+they took, such as evacuating rather than seeking shelter, and said they should have known
+better. Many respondents, from forecasters to members of the public, talked about how “weird”
+the day was, and how “strangely” the storms behaved and moved in unexpected directions. The
+movement of the storms, the geographic location of the storms, and flash flooding seemed to set
+the stage for an atypical severe weather day.
+
+    The public felt the fear induced by the May 20 event led people to take actions on May 31
+they would not normally take. During the May 31 event, the NWS, EM, and media gave similar
+messages about sheltering. There were also messages that people should evacuate if they could
+not get underground. Respondents noted this message is not new and had been given in the past,
+especially during times of larger and more destructive tornadoes. Many members of the public,
+as well as some EMs and other weather-savvy experts, mentioned that, given the fear they felt
+after the storms on May 19–20, this advice to evacuate overrode their typical emergency plans
+and advice about sheltering in place. The NWS and its partners cannot assume the public will
+respond appropriately when two major events occur close together. The fear induced from the
+first event may cause people to respond in unanticipated ways. The atypical response of many
+
+                                                           32
+residents evacuating from the tornadoes rather than following shelter plans led to the traffic jams
+and accidents on May 31.
+
+    An example of the phenomena occurred in 2005 in Houston, TX, in anticipation of Hurricane
+Rita. Hurricane Rita approached the Texas coast a few weeks after Hurricane Katrina devastated
+Mississippi and Louisiana. When evacuations were suggested for what was being forecast as a
+potential Category 5 hurricane, Houston area residents fled in panic, something they would not
+likely have done had they not just witnessed the devastation from Hurricane Katrina.
+
+    In addition, the May 31 storms occurred on a Friday around rush hour when many residents
+were already in vehicles. People followed atypical media advice to immediately drive south as
+storms were bearing down on Oklahoma City.
+
+    Some weather warning professionals heightened public anxiety by telling listeners they
+would be unable to survive if not underground, but only a few actually included calls to action.
+When presented with impact-based warnings, it is critical that the NWS provide appropriate calls
+to action and sheltering advice. People questioned their emergency plans, and searched for
+advice about what actions to take. Driving south was one of the main pieces of advice offered in
+the context of this enhanced language. As one tornado survivor said, “People knew not to get in
+cars; it should have kicked-in when they touched their door handle: No. Shelter in place. But
+the fear took over. Especially if you had a weatherman you’ve trusted all your life tell you to get
+in your car and drive. So many did.”
+
+    Other partners of the weather enterprise urged listeners to stay calm in spite of the potential
+for tornadoes. For example, emails sent from one EM to hospital leadership asked questions that
+urged groups to activate their organizational plans while keeping calm and focused:
+
+    “SCHOOLS AND BUSINESSES, please take a look at your plans this morning! Do you have
+    a way to know that weather is forming and may be a threat? Do you have places identified
+    as to where to seek refuge? All this said, please just be prepared—not scared.”
+
+    This approach, combining reminders about the need to stay focused and composed while
+encouraging people to review the plans that they had already practiced, led to decisions that
+saved lives.
+
+    It seems the weather-warning official’s tone and approach to notify people about severe
+weather can shape whether the public follows their own emergency plans or abandons them in
+the face of contrary advice. When a complicated situation occurs, such as the May 31 tornadoes
+and flash flooding, people experience a nuanced layering of reactions and emotions. What is
+rational in the moment is not as simple as hearing a warning and taking shelter. This is how
+expert communities have defined rationality during a tornado warning. In research by Silva,
+Jenkins-Smith, Ripberger, Herron, Carlson, and James (unpublished because it is in preparation)
+over 3,000 respondents in the most tornado-prone regions of the country, including Oklahoma,
+were asked directly about driving away from a tornado. For “moderate” through “severe”
+tornado warnings, only 7 percent of respondents said they would “drive away”; however, when
+the warning level rises to “devastating” or “incredible,” the percentages increased to 14.5 percent
+
+                                                           33
+and 18.3 percent, respectively. These preliminary findings suggest that very high-severity storms
+may cause a significant change in public response. These findings should be considered in the
+context of the complex matrix that constitutes a warning paradigm. It should be noted that
+neither wording nor warnings alone result in individuals’ decisions to take protective actions, but
+rather warnings coupled with other salient variables, particularly that of experience, propel
+people into action. As reported in the NWS Central Region Service Assessment for the Joplin,
+Missouri, tornado of May 22, 2011 (released in July 2011), which can be found at:
+http://www.nws.noaa.gov/os/assessments/pdfs/Joplin_tornado.pdf
+“Previous experiences with tornadoes were shown to have an influence in the way residents
+perceived their risk and responded to the warnings.”
+
+    The weather enterprise should collaborate more closely on their risk communication planning
+for severe weather. They should coordinate these plans with the public to ensure a clear and
+consistent action plan that will most effectively save lives. After the May tornadoes, to assist in
+this effort, the Oklahoma Governor’s office held a meeting with the chief meteorologists from
+the Oklahoma City and Tulsa TV stations, and NWS personnel. The meeting was led by the
+Oklahoma Department of Emergency Management to develop better messaging and response in
+complex situations, such as the May 31 event. This meeting was an example of the Integrated
+Warning Team (IWT) approach to problem solving. IWT meetings have been supported across
+many WFO areas of responsibility and have generally strengthened relationships among
+members.
+
+Fact: Many people from all levels of the weather enterprise and several different stakeholders
+cited the unusual nature of the storms on May 31 as one reason for following advice to drive
+south during an active severe weather event.
+
+Finding 19: The weather enterprise did not present a uniform message concerning safety and
+shelter actions, nor was the flash flooding threat uniformly broadcast.
+
+Recommendation 19: The NWS should develop common hazardous weather resources, tips,
+and advice, such as a website, to facilitate IWTs year-round. WFOs should alternately host and
+participate in these IWT workshops with their local weather enterprise partners, including health
+and aging services, local indigenous populations, military installations, and other previously
+overlooked partners.
+
+Best Practice: Emergency managers cited as important to their preparation for severe weather
+those messages from administrators that encouraged them to remain calm and enact their
+emergency plans. These reminders helped them focus on tasks they had practiced before the
+event and allowed them to stay composed and effective during the event itself.
+
+    4.2. Emergency Planning: Cultural Issues in Oklahoma
+
+    Nearly everyone interviewed mentioned the competitive nature of weather media coverage in
+Oklahoma, which many people described as “hyped” or “overblown.” Still, many members of
+the public described their news sources as “trusted,” noting forecaster accuracy and the ability to
+“get it right.” Similarly, many broadcast professionals noted the unusually weather-savvy nature
+
+                                                           34
+of the public in their awareness of and planning for severe weather. For example, when
+surveyed, it was common to find the public understood specific tornado terminology, such as
+supercells, noted the EF-Scale ratings of historical tornadoes, and referred to sheltering best
+practices, such as “shelter in place” and “interior most rooms.” As one local media professional
+noted, “This is such a weather town. We don’t ‘dumb down’ our weather talk. We’re free to
+discuss weather terms like supercells, the different models, and whether or not they’re in
+agreement. There’s a lot of pressure to get it right.”
+
+    On the other hand, the frequency of tornado events in Oklahoma can lead people to take
+some warnings for granted. One tornado survivor said: “You’re weather aware but become
+numb to weather, accustomed to it. Not a good thing. You don’t have that sense of urgency. We
+certainly didn’t have it on May 20.”
+
+    It would seem the nature of weather awareness itself is different for populations across the
+country and the same population after recent severe weather. One tornado can prime people’s
+emotional responses and fears for the next event, as the May 20 event did for the May 31 storms.
+This awareness is flexible and context-dependent, sometimes even seeming to disappear in a
+jolting event like the May 20 tornado. People may need to use the emergency plans they have
+put in place and, hopefully, practiced enough times that it becomes routine. This ability to call
+upon near-intuitive levels of preparedness, however, only works if it is consistent with the advice
+and information coming from expert sources. This near-intuitive type of preparedness was
+illustrated in the 9-11 terrorist attacks in 2001 at the offices of Morgan Stanley. For many years,
+employees had been trained regularly on how to evacuate from the offices if a disaster should
+occur. On 9-11, the employees of Morgan Stanley did not panic as they enacted their evacuation
+plan, which saved most of the company’s personnel when the building collapsed. Knowing the
+plan means having the confidence to take action and eliminating confusion about what you
+should do.
+
+    Discussions with members of the public revealed how they planned and prepared with the
+assistance of the NWS, broadcast meteorologists, and EMs. One way of thinking about how a
+community can prepare for an event is to consider how a community plans and practices for
+specific disasters at different societal levels, from individuals and families, to cities and towns.
+If families have a plan of action in place, for example, and this plan is reinforced by various
+sources all conveying the same advice, then the likelihood that people will take actions that
+match their plans increases. On a broader level, EMs developing consistent plans and advice
+increases the success of community plans. This also means people at all levels come to expect
+and rely on predictable advice and responses from each other and from expert sources. When
+families and communities expect severe weather to play out in typical ways and receive advice to
+repeat previous safety messages, they will likely execute their emergency plans in predictable
+ways, such as taking shelter, seeking additional information, and evacuating their homes when
+necessary.
+
+    One key aspect of preparing for severe weather, then, is building relationships between
+different expert sectors and public groups. The NWS has done an exceptional job of
+coordinating with EMs in Oklahoma, and, in recent years, that close coordination has expanded
+to include other partners in the health care, school administrator, military, higher education, and
+
+                                                           35
+public safety communities. All of these groups received email updates and were well
+represented in the severe weather briefings provided by WFO Norman leading up to all the
+tornado events.
+
+    EMs and emergency personnel indicated they had received the NWS briefings either directly
+or indirectly from WFO Norman, as well as information through NWSChat in the days leading
+up to the May 19 event. They expected this information and perceived it had been timely and
+accurate. The public in the region are well-educated about the threats of severe weather,
+especially tornadoes, and generally, know where to take shelter. During EF4 and EF5 strength
+tornadoes, however, the public appeared to question the efficacy of their safe plans for tornadoes.
+
+    NWS needs to partner with the rest of the weather enterprise to increase educational efforts
+directed toward specific protective actions for future events. The NWS and its partners need to
+determine what the suggested protective actions should be for EF4 and EF5 tornado events. This
+consensus then needs to be provided to the public through continuous education outreach
+activities by the NWS, broadcast media, EMs, and other emergency planners.
+
+Finding 20: State, county, and city EMs received emails announcing special NWS severe
+weather briefings directly from WFO Norman. This coordination with key partners is critical to
+the success of the integrated warning system.
+
+Recommendation 20: The NWS should strongly encourage its core partners (i.e., members of
+the EM community; Federal, state, and local governments; and members of the media) to
+become more involved in IWTs to better enable them to serve the public.
+
+Finding 21: The NWS educational outreach activities concerning sheltering in place have not
+fully reached the public in regard to safety plans for tornadoes.
+
+Recommendation 21: The IWTs should develop educational outreach activities about
+protective actions in complex events such as sheltering in place during violent tornadoes and
+multiple hazards, including flash flooding.
+
+    4.3. Risk Communication: Sheltering and Pets
+
+    Populations differ in their response to risk communication, including how people decide to
+take shelter from severe weather. EMs interviewed acknowledged the lack of public shelters and
+the complicated nature of opening buildings to the public. Some EMs cited the fear that people
+would leave their homes close to a tornadic event and get caught in their cars, which is much
+more dangerous than sheltering in most homes. Other EMs were concerned about their ability to
+shelter large numbers of residents in communities lacking private safe rooms and underground
+shelters. Members of the public mentioned the most common places for shelters included an
+interior bathroom or closet, a basement, or a friend’s basement, and a community shelter or
+neighbor’s shelter. Less commonly mentioned were public buildings such as churches, schools,
+and government offices.
+
+                                                           36
+    Complicating the issue of sheltering is the increasing desire for families to shelter with their
+pets. Pets created a significant planning problem for the public and institutions in responding to
+calls for action. These events included numerous stories of people showing up at hospitals,
+office buildings, schools, and even their place of employment with their pets, demonstrating the
+importance of considering pets in shelter plans and weather warnings. As many EMs noted, they
+will not turn people needing shelter away, so accommodating pets creates a hazard for places
+such as hospitals, both for patients and staff, as well as for the people who have come there to
+shelter.
+
+    As studies conducted on hurricane evacuations have noted, people are much more likely to
+take life-saving actions if they know about and are directed to options that allow them to assure
+their pets will be safe. Although the timeframe for offering sheltering options for pets is
+significantly shortened for tornadoes, partners should explore options for people who take pets
+with them to public buildings. This planning should be done ahead of the crisis and with
+sufficient notice for the public to be aware of alternatives and options. A crisis is not the time to
+communicate new advice and information, but rather to implement plans already in place.
+
+Fact: Numerous people interviewed, both EMs and members of the public, indicated an increase
+in the number of people taking shelter with their pets.
+
+Fact: Public buildings, such as hospitals, were overwhelmed by the number of people taking
+shelter with their pets.
+
+Most public places will not turn people away just because they have pets. This can create
+complicated and potentially dangerous situations when animals are not restrained or are confined
+with people in medically sterile facilities, such as hospitals.
+
+Finding 22: Hospitals have found themselves overwhelmed with people seeking shelter,
+including people with pets. Hospitals have attempted to initiate risk communication to help
+people understand that they need to control pets when they seek shelter. This risk
+communication does not appear to have been effective because people continue to bring pets and
+not control them. During the May 31 event, even more people than usual sought shelter in the
+hospitals so contiguous events may lead to more of a problem than usual.
+
+Recommendation 22: The NWS should work with EMs and the broadcast media to include pet
+preparations and shelter alternatives in their risk communication.
+
+    4.4. Risk Communication: Sirens
+
+    Several EMs and members of the public mentioned sirens as a main alerting system for
+severe weather. EMs in the WFO Norman area have agreed to test sirens on Saturdays at noon.
+Some public groups have been informed that a siren sound means, “seek further information.”
+The EM for Moore said a siren also means, “take shelter.” Thus, the interpretation of the siren
+means different things to EMs, different public groups, or even people across different
+jurisdictions. This finding is consistent across several NWS service assessment reports (i.e.,
+Historic Derecho, 2012; Joplin, 2011; Historic Tornadoes, 2011; Super Tuesday, 2008; and
+
+                                                           37
+Mother’s Day, 2008). Research about sirens is mixed. Some experts suggest sirens should not
+be used since they cause confusion if they are not heard during an event or if they are heard but
+are not followed up with a standardized means of communicating, “all’s clear.” Other experts
+suggest that sirens are one of many important ways people receive weather warnings, especially
+when they are outdoors and away from traditional delivery methods, such as television or NOAA
+Weather Radio All Hazards. The latter fact was substantiated by conversations with residents
+who mentioned hearing the sirens on both May 20 and May 31 and stated it was one of the
+warnings that convinced them to take shelter.
+
+Fact: WFO Norman has engaged major central Oklahoma cities for the past several years on
+siren policies.
+
+Finding 23: Local siren policies differ. Members of different public groups interpret sirens
+differently. Some people respond by seeking more information while others assume a threat is
+immediate and take shelter. There seems to be no standard policy to help people understand an
+“all’s clear” after a siren warning. WFO Norman has provided advice to major central Oklahoma
+cities for the past several years on siren policies.
+
+Recommendation 23: Consistent with other assessments, this team supports recommendation
+Number 4 in the Central Region Service Assessment, Joplin, Missouri Tornado – May 22, 2011,
+only in that the NWS should provide advice to local EMs to develop or update siren policies and
+procedures. “The NWS should collaborate with partners throughout the weather enterprise to
+provide a better coordinated weather message. Guidance should be developed to assist partners
+in the development of local warning system and siren strategies that work in conjunction with
+NWS warnings rather than independent of them.”
+
+    4.5. Crisis Communication: Non-English Speaking Public
+
+     Oklahoma City has a large Hispanic and Latino population, many of whom do not speak
+English. Hispanics are one of the fastest growing populations in the United States. According to
+the U.S. Census Bureau, 12 percent of people in the United States speak Spanish at home. This
+group is a significant demographic. Among those killed during the May 31 tornado and ensuing
+flooding was a Guatemalan family whose primary language was Spanish. In interviews with
+EMs and broadcast meteorologists, they acknowledged that there are insufficient forecast and
+warning resources for those who do not speak English.
+
+    Only a few radio and television stations broadcast in Spanish, and, of those that do, few if
+any employ meteorologists. Most of these stations rely on NWS information. For example,
+WFO Norman’s staff noted they often are interviewed by Telemundo, a Spanish network, and
+that the media company will come to the WFO to ask for on-air explanations of forecasts. While
+there is a relationship between the NWS and Spanish language media outlets, it needs to be
+strengthened. It is a one-way communication flow to the Spanish media that then translates for
+its clientele. Additionally, the Spanish media market is small in the Oklahoma City area.
+Depending on media outlets to translate and transmit vital message does not take into account
+problems these stations may face during the event. In this case, one Spanish media source had to
+take shelter and go off the air.
+
+                                                           38
+    In many locations, local NWS warning products are only available in English, including
+NOAA Weather Radio All Hazards, the most fundamental mechanism for getting weather
+warnings. Broadcast meteorologists and EMs acknowledge the gap. No one group is
+responsible for translating forecasts for members of any non-English speaking group; instead,
+each group mentioned others as responsible for translating warnings.
+
+    With easy access to online translation tools it would seem a simple issue to translate English
+words into Spanish; however, cultural differences in interpreting words can cause problems. For
+example, Telemundo noted that the phrase “tornado emergency” does not mean anything
+different than “tornado warning” in Spanish-speaking communities and so meaningful
+distinctions between an average tornado and a catastrophic one are lost. Thus, crisis
+communication for non-English speakers relies on Spanish-speaking sources such as Telemundo.
+
+    Hospital administrators affected by the May tornadoes noted a marked increase in the number
+of Spanish-speaking individuals taking shelter at their facilities during severe weather.
+Administrators noted entire families sought shelter and that one person generally translated for
+the group. A hypothesis for the number of non-English speaking people in these spaces is that
+hospitals, like churches, are synonymous with safety, refuge, and accessibility.
+
+    The NWS should enhance partnerships with non-English speaking partners such as Spanish
+media outlets, churches, and civic organizations to integrate them into the weather enterprise and
+to develop solutions for reaching their non-English speaking clientele. IWTs could be the
+foundation for including these partners in the planning process.
+
+    After the severe weather events in Oklahoma, Telemundo mentioned how well FEMA and
+other government agencies were received by the Spanish-speaking population because those
+agencies had Spanish-speaking representatives able to explain the help they were providing.
+Telemundo said a Spanish-speaking representative is much more effective than using an
+interpreter, because the Spanish-speaking population can relate better to someone speaking their
+language directly rather than through a translator.
+
+Fact: Hospitals have seen an increase in the number of Spanish-speaking families who do not
+speak English taking shelter in their facilities during severe weather.
+
+Fact: There are only a few sources of Spanish-language forecasts and warnings. This is a
+reason why people who speak primarily Spanish were negatively affected during the May
+tornadoes. This gap is true for speakers of many other languages, such as Vietnamese, of which
+there is also a significant population in Oklahoma.
+
+    The May 2013 Oklahoma Tornadoes and Flash Flooding Service Assessment Team reaffirms
+Finding and Recommendation 71 of the Hurricane Irene, August 21–30, 2011 service assessment
+for the NWS to develop a comprehensive program to address the informational needs of the
+growing Spanish language community during high-impact events. “This program should include
+a cadre of mobile, decision support meteorologists/hydrologists who are not only Spanish
+speakers, but are trained to deal with local and national media and local decision makers. This
+
+                                                           39
+trained group should be available for deployment in decision support roles as needed, providing
+interviews and translation for social media sites such as Facebook.”
+
+A few NWS offices, such as WFO Brownsville, have already successfully included images and
+other non-verbal forms of communication to their warnings and related products. Details on
+Brownsville program are available online at the following URL:
+http://www.publicaffairs.noaa.gov/releases2006/mar06/noaa06-r213.html.
+
+Finding 24: The NWS cannot consistently provide specialized language services for all non-
+English speaking entities. Images and other non-verbal forms of communication should be
+added to the products and information exchange.
+
+Recommendation 24a: The NWS, working with the entire weather enterprise, should initiate
+risk communication for non-English speakers and other underrepresented groups. This should
+include the incorporation of images and other non-verbal forms of communication to NWS
+warning products and information exchange. Outreach to organizations that work with these
+populations can help design risk communication strategies to meet the needs of these
+populations.
+
+Recommendation 24b: The NWS should establish a procedure for local non-English speaking
+decision support services before, during, and after severe weather events.
+
+    4.6. Crisis Communication: Social Media
+
+    Social media has become increasingly important in the warning process. Social media serves
+as an important and reliable communication medium during active weather events, especially
+when other traditional media forms, such as television, fail because of power outages. WFOs
+should have plans that determine who will monitor, push, and pull information to different
+partners and public groups.
+
+    Many forecasters, EMs, and media personnel acknowledged the importance of social media
+to their jobs, especially for collecting storm reports and photographs of damage. Most admitted,
+however, that social media communications is largely one-way and they do not have time or
+resources to build a two-way rapport. Further, during severe weather events, EMs and the media
+noted they have insufficient staff to manage communications and so only minimally use
+Facebook or Twitter. One EM, for example, said she was so swamped by the May 31 tornadoes
+she decided not to push any social media information. She cited a Red Cross survey suggesting
+it can take up to an hour to respond to social media requests during an emergency, and so rather
+than have to abandon people in the middle of an event, she opted not to engage. She pointed out,
+“You can’t just auto-tweet or leave social media and then come back to it during an event. You
+need consistent monitoring so you don’t miss a request or a need.” Thus, social media was
+underused as a communication tool.
+
+    Of those that did use social media, best practices included the use of common and familiar
+hashtags on Twitter, which stay uniform across weather events (e.g., #okwx) and those that are
+developed for specific events by public groups and professionals alike. Further, some EMs noted
+
+                                                           40
+that social media pushed both good information and misinformation. The misinformation
+sometimes originated from other sources, such as television, and then was redistributed over
+social media. Misinformation about recovery efforts tended to originate within social media.
+
+    WFO Norman performed exceptionally during the crisis communication stage. The office
+reached multiple partners with outlooks and provided significant lead-time for preparation
+activities. The public indicated it was well-warned for all events, with the exception of the flash
+flooding on May 31. WFO Norman also has an aggressive social media policy, pushing out
+warnings and forecasts and sharing damage information. The office was able to push out a
+remarkable number of warnings and details about impacts, as well as respond to the different
+requests and issues raised by constituents. WFO Norman built a relationship with social media
+users before the event by soliciting information and answering concerns and offering useful
+information. This strategy is key to success with this communication platform. Social media is a
+two-way relationship, one built over time and by listening as much as advising.
+
+Most of the residents surveyed said they use social media applications on their cell phones to get
+warning and forecast information. Many of these applications were specific to local news
+stations.
+
+Finding 25: NWS partners indicated there was limited time and a lack of personnel to engage in
+two-way, social media communication. They monitored the communication from the public,
+looking for message distortion, but they did not return communications because they felt they
+could not do so consistently given the gravity of the events and a lack of social media experts on
+staff. During these events, WFO Norman dedicated staff members to providing social media
+updates.
+
+Recommendation 25a: All NWS offices should designate a function to build relationships on
+social media prior to severe weather and send out relevant, real-time information on multiple
+social media platforms during severe weather.
+
+Recommendation 25b: For those offices without a social media-savvy presence, NWS should
+invest in training that highlights best practices.
+
+    4.7. Recovery
+
+    Survey participants stated that WFO Norman was extremely effective communicating via
+social media on recovery issues and helping people understand weather conditions and recovery
+activities as the recovery was initiated on May 19–20, and in the period between the May 20 and
+May 31 events.
+
+Finding 26: Given that the May 31 event was atypical, the recovery period after the May 20
+event could have been used by all members of the weather enterprise to help prepare the
+population for the next significant storm. As the May 31 event unfolded, social media could
+have been used to help prepare for abnormal responses to the atypical event. This event occurred
+in the late afternoon and early evening and the storm was moving in a manner that was not
+typical for storms in this location. It was producing a significant amount of rain and moving
+
+                                                           41
+very slowly. WFO Norman highlighted this information before and during the events, but a
+more consistent message would have been presented if all in the weather enterprise had followed
+suit.
+Recommendation 26: The NWS, along with its weather enterprise partners, should reinforce
+common safety messages to the public during initial recovery after each event to highlight what
+worked well and what did not in the event.
+
+                                                           42
+          Appendix A: Acronyms
+
+AGL       Above ground level
+AWIPS     Advanced Weather Interactive Processing System
+AWIPS II  AWIPS’s next-generation software
+CAM       Convective Allowing Models
+EAP       Employee Assistance Program
+DAT       Damage Assessment Toolkit
+EM        Emergency Manager or Management
+EF        Enhanced Fujita (Scale)
+EOC       Emergency Operations Center
+FEMA      Federal Emergency Management Agency
+GFS       Global Forecast System
+GIS       Geographic Information System
+IBW       Impact Based Warnings
+ICP       Incident Command Post
+ITO       Information Technology Officer
+IWT       Integrated Warning Team
+HRRR      High Resolution Rapid Refresh model
+MIC       Meteorologist in Charge
+MPD       Mesoscale Precipitation Discussion
+MPH       miles per hour
+NAM       North American Mesoscale Model
+NWSOC     National Weather Service Operations Center
+NOAA      National Oceanic and Atmospheric Administration
+NSSL      National Severe Storms Lab
+NWS       National Weather Service
+NWSI      NWS Instruction
+NWSH      National Weather Service Headquarters
+OCWWS     Office of Climate, Water, and Weather Services
+OUN       WFO Norman, OK
+PAO       NOAA Public Affairs Officer
+QRT       Quick Response Team
+RaxPol    Rapid-Scanning X-band Polarimetric Doppler
+RESAP     Rapid Evaluation of Service Activities and Performance
+ROC       Regional Operations Center
+SBN       Satellite Broadcast Network
+SPC       Storm Prediction Center
+SR ROC    Southern Region Regional Operations Center
+WDTB      Warning Decision Training Branch
+WCM       Warning Coordination Meteorologist
+WFO       Weather Forecast Office
+WPC       Weather Prediction Center
+WSR-88D   Weather Surveillance Radar, 1988 Doppler
+
+          A-1
+Appendix B: Findings, Recommendations, & Best Practices
+
+Definitions
+
+ Best Practice – An activity or procedure that has produced outstanding results during a
+ particular situation that could be used to improve effectiveness and/or efficiency throughout the
+ organization in similar situations.
+
+ Fact – A statement that describes something important learned from the assessment for which no
+ action is necessary. Facts are not numbered, but may begin to justify the need for a
+ recommendation.
+
+ Finding – A statement that describes something important learned from the assessment for which
+ an action may be necessary. Findings are numbered in ascending order and are associated with a
+ specific recommendation or action.
+
+ Recommendation – A specific course of action, which should improve NWS operations and
+ services, based on an associated finding. Not all recommendations may be achievable but they
+ are important to document. If the affected office(s) and OCWWS determine a recommendation
+ will likely improve NWS operations and services, and it is achievable, the recommendation will
+ likely become an action. Recommendations should be clear, specific, and measurable.
+
+Findings and Recommendations
+
+ Finding 1: The HRRR model and other CAM availability in AWIPS is limited and competes for
+ bandwidth with larger-scale model data. WFOs operate on high spatial and temporal resolutions
+ when providing decision support services.
+
+ Recommendation 1: WFOs need the capability to ingest preferred high-resolution model data
+ during critical times.
+
+ Finding 2: NWS GIS products allowed many NWS partners (e.g., FEMA) to respond faster to
+ demands for rapid information and decision support services. Currently, only WFOs using
+ AWIPS II and a locally-developed application can create GIS products for possible tornado
+ tracks while the tornado event is ongoing. Once NWS deploys AWIPS II to all its offices, GIS
+ products should be provided consistently.
+
+ Recommendation 2: WFOs should be provided with the capability and procedures to create
+ GIS products for possible tornado tracks in near real-time.
+
+ Finding 3: NWS partners want GIS tornado track information and other pertinent data.
+ Currently, not all NWS offices are equipped to provide this information.
+
+ Recommendation 3: All NWS offices should use the Damage Assessment Toolkit (DAT) to
+ provide damage survey information to partners in a consistent GIS-accessible format.
+
+                                                            B-1
+Finding 4: Not all offices have enough easily portable devices with geolocation to enable the
+direct entry of data taken in the field during the storm survey into the DAT. Consequently, some
+NWS personnel are choosing to install the DAT app on their personal mobile devices to facilitate
+the use of the DAT.
+
+Recommendation 4: NWS should supply all WFOs with appropriate hardware, including
+computer tablets, with the Global Positioning System or other geolocation services, to facilitate
+the collection of survey information using the DAT software.
+
+Finding 5: The NWS warned the public about the flash flooding threat, but much of the public
+did not get that warning. WFO Norman used social media and other dissemination methods
+before and during the flash flooding in the morning and afternoon of May 31.
+
+Recommendation 5: The NWS needs to develop warning protocol when there are multiple
+severe weather elements in the warning so that each element of the warning is weighted based on
+its urgency and severity. This protocol should include wording on how the public should prepare
+and respond to multiple, simultaneous dangers such as tornadoes and flooding.
+
+Finding 6: Interviews with the public indicated the broadcast media focused on the tornadoes
+and not the flooding during the May 31 event.
+
+Recommendation 6: The NWS needs to provide specific educational material to the broadcast
+media partners on how to manage warning dissemination for multiple severe weather hazards.
+
+Finding 7: Social media is not currently an integral part of NWS service backup operations.
+
+Recommendation 7: The NWS should make social media an integral part of service backup
+operations.
+
+Finding 8: Even though NWS has long-standing policy emphasizing EAP use at impacted
+offices, some NWS staff members, including management, are currently ill-equipped to both
+understand and deal with emotional issues resulting from high-impact events.
+
+Recommendation 8: NWS management should receive regular refreshers on the importance of
+offering EAP support after major events.
+
+Finding 9: The local availability of wind damage/tornado experts to help assess multiple
+tornadoes, and confirm damage greater than EF3, was extremely beneficial to WFO Norman, the
+SR ROC, and NWSH. These wind damage/tornado experts volunteered to perform the role of a
+QRT without incurring any expenses to the NWS.
+
+Recommendation 9: The NWS should continue to preserve and support the QRT concept by (1)
+ensuring funds are made available for future QRTs, and (2) updating NWSI 10-1604 Post-Storm
+Data Acquisition to include more specific and standardized procedures for forming (including
+required training) and activating a QRT.
+
+                                                           B-2
+Finding 10: NWSI 10-1604, Post-Storm Data Acquisition, NWSI 10-1605, Storm Data
+Preparation, and the training NWS staff receives to rate tornadoes does not specifically address
+using data other than observed damage indicators.
+
+Recommendation 10: NWSI 10-1604, Post-Storm Data Acquisition, should be updated to
+allow for additional information based on high-confidence remotely sensed data, when available.
+This additional rating, for example a “Doppler On Wheels sampled winds 250 mph at 300 feet
+agl,” should be included as a searchable feature in the NWS’s Storm Data database.
+
+Finding 11: At least six other tornadoes from previous events across several WFOs were
+assigned a higher EF-Scale rating than the damage indicators suggested after NWS was able to
+evaluate mobile radar data.
+
+Recommendation 11: All historical storms with an EF-Scale rating augmented by high-
+confidence remotely sensed data should be reassessed, and if appropriate, updated with this
+additional information once the NWS publishes the updated NWSI 10-1604, Post-Storm Data
+Acquisition.
+
+Finding 12: NWS Storm Data does not accurately reflect actual tornado tracks. Tornadoes are
+entered with a start and stop latitude/longitude, but NWS Storm Data does not preserve the actual
+path. WFOs are required to use the DAT website to report tornado tracks.
+
+Recommendation 12: The official NWS StormDat Program should include a GIS-based
+tornado track that utilizes the DAT or GIS map track information to depict where the tornado
+occurred.
+
+Finding 13: The lack of NOAA/NWS-logoed apparel reduced staff effectiveness while
+obtaining information from the public.
+
+Recommendation 13: NWS should provide appropriately logoed apparel to employees in the
+field after an event, including employees providing onsite decision support services and
+conducting damage surveys.
+
+Finding 14: The need to include helmets as a safety device during severe weather is still being
+researched. Early results from the University of Alabama Injury Control Research Center
+indicate helmets could help save lives and reduce head injuries.
+
+Recommendation 14: The NWS should closely monitor research on helmets as safety devices
+during severe weather. If these recommendations are adopted as valid, the NWS should develop
+safety recommendations to include helmets with routine and emergency communications about
+tornado safety.
+
+Finding 15: During the May 19, 20, and 31 tornado events, WFO Norman received a high
+demand for media requests. WFO Norman coordinated with the PAO, SPC, and the SR ROC to
+prioritize media inquiries, sending international requests to SR ROC and national media requests
+
+                                                           B-3
+to SPC.
+
+Recommendation 15: NWS should develop national, regional, and local plans on how to
+prioritize media inquiries and identify internal local and regional resources to meet press
+demands during significant severe weather events. The ROCs could be used to help standardize
+these plans.
+
+Finding 16: Before, during, and after the tornado events, WFO Norman, SPC, and the NOAA
+PAO developed and distributed talking points that were widely used. These talking points were a
+valuable tool.
+
+Recommendation 16: NWS ROCs, in consultation with the NOAA PAO, should develop
+regional and local procedures for the development of talking points during significant weather
+events to help ensure a consistent media message and distribute to ROCs, NWSOC, and the
+NWS Communications Office.
+
+Finding 17: Media interest and interview requests are frequent after significant events, and
+NWS employees need to be able to interact confidently with the media.
+
+Recommendation 17: NWS should develop and make media training mandatory for those
+NWS employees who speak with the media to help ensure a consistent media message across the
+NWS.
+
+Finding 18: Although none of the storm chasers who died were acting as a NWS Skywarn
+spotter, such storm chasers provide the NWS with storm reports.
+
+Recommendation 18: During the next routine Skywarn training sessions, WCMs should
+reinforce spotter safety and the rules outlined in NWSI 10-1807, The Skywarn® Weather Spotter
+Program. These safety rules should then be reinforced in all future Skywarn training sessions.
+
+Finding 19: The weather enterprise did not present a uniform message concerning safety and
+shelter actions, nor was the flash flooding threat uniformly broadcast.
+
+Recommendation 19: The NWS should develop common hazardous weather resources, tips,
+and advice, such as a website, to facilitate IWTs year-round. WFOs should alternately host and
+participate in these IWT workshops with their local weather enterprise partners, including health
+and aging services, local indigenous populations, military installations, and other previously
+overlooked partners.
+
+Finding 20: State, county, and city EMs received emails announcing special NWS severe
+weather briefings directly from WFO Norman. This coordination with key partners is critical to
+the success of the integrated warning system.
+
+Recommendation 20: The NWS should strongly encourage its core partners (i.e., members of
+the EM community; Federal, state, and local governments; and members of the media) to
+become more involved in IWTs to better enable them to serve the public.
+
+                                                           B-4
+Finding 21: The NWS educational outreach activities concerning sheltering in place have not
+fully reached the public in regard to safety plans for tornadoes.
+
+Recommendation 21: The IWTs should develop educational outreach activities about
+protective actions in complex events such as sheltering in place during violent tornadoes and
+multiple hazards, including flash flooding.
+
+Finding 22: Hospitals have found themselves overwhelmed with people seeking shelter,
+including people with pets. Hospitals have attempted to initiate risk communication to help
+people understand that they need to control pets when they seek shelter. This risk
+communication does not appear to have been effective because people continue to bring pets and
+not control them. During the May 31 event, even more people than usual sought shelter in the
+hospitals so contiguous events may lead to more of a problem than usual.
+
+Recommendation 22: The NWS should work with EMs and the broadcast media to include pet
+preparations and shelter alternatives in their risk communication.
+
+Finding 23: Local siren policies differ. Members of different public groups interpret sirens
+differently. Some people respond by seeking more information while others assume a threat is
+immediate and take shelter. There seems to be no standard policy to help people understand an
+“all’s clear” after a siren warning. WFO Norman has provided advice to major central Oklahoma
+cities for the past several years on siren policies.
+
+Recommendation 23: Consistent with other assessments, this team supports recommendation
+Number 4 in the Central Region Service Assessment, Joplin, Missouri Tornado – May 22, 2011,
+only in that the NWS should provide advice to local EMs to develop or update siren policies and
+procedures. “The NWS should collaborate with partners throughout the weather enterprise to
+provide a better coordinated weather message. Guidance should be developed to assist partners
+in the development of local warning system and siren strategies that work in conjunction with
+NWS warnings rather than independent of them.”
+
+Finding 24: The NWS cannot consistently provide specialized language services for all non-
+English speaking entities. Images and other non-verbal forms of communication should be
+added to the products and information exchange.
+
+Recommendation 24a: The NWS, working with the entire weather enterprise, should initiate
+risk communication for non-English speakers and other underrepresented groups. This should
+include the incorporation of images and other non-verbal forms of communication to NWS
+warning products and information exchange. Outreach to organizations that work with these
+populations can help design risk communication strategies to meet the needs of these
+populations.
+
+Recommendation 24b: The NWS should establish a procedure for local non-English speaking
+decision support services before, during, and after severe weather events.
+
+                                                           B-5
+Finding 25: NWS partners indicated there was limited time and a lack of personnel to engage in
+two-way, social media communication. They monitored the communication from the public,
+looking for message distortion, but they did not return communications because they felt they
+could not do so consistently given the gravity of the events and a lack of social media experts on
+staff. During these events, WFO Norman dedicated staff members to providing social media
+updates.
+Recommendation 25a: All NWS offices should designate a function to build relationships on
+social media prior to severe weather and send out relevant, real-time information on multiple
+social media platforms during severe weather.
+Recommendation 25b: For those offices without a social media-savvy presence, NWS should
+invest in training that highlights best practices.
+Finding 26: Given that the May 31 event was atypical, the recovery period after the May 20
+event could have been used by all members of the weather enterprise to help prepare the
+population for the next significant storm. As the May 31 event unfolded, social media could
+have been used to help prepare for abnormal responses to the atypical event. This event occurred
+in the late afternoon and early evening and the storm was moving in a manner that was not
+typical for storms in this location. It was producing a significant amount of rain and moving
+very slowly. WFO Norman highlighted this information before and during the events, but a more
+consistent message would have been presented if all in the weather enterprise had followed suit.
+Recommendation 26: The NWS, along with its weather enterprise partners, should reinforce
+common safety messages to the public during initial recovery after each event to highlight what
+worked well and what did not in the event.
+
+                                                           B-6
+Best Practices
+
+Best Practice: WFO Norman promptly provided EMs GIS information showing likely damage
+areas while tornadoes were still in progress.
+Best Practice: WFO Norman offers weekly calls to its core partners, which leads to greater
+understanding and awareness of severe weather days.
+Best Practice: WFO Norman dedicated staff resources to collect and provide social media
+content. On an event-by-event basis, the office team edits the content of the social media posts
+to increase effectiveness. For example, WFO Norman did not provide the hourly, short-term text
+weather discussion in order to provide more emphasis in social media.
+Best Practice: WFO Norman includes time stamps in Twitter entries to reduce confusion when
+information is retweeted.
+Best Practice: SR successfully employed a Rapid Evaluation of Service Activities and
+Performance team to review event services within the region.
+Best Practice: The SPC and SR ROC, in coordination with the PAO and WFO Norman,
+responded to most of the national and international media requests, allowing WFO Norman to
+focus on select national and all local media requests and decision support services.
+Best Practice: Emergency managers cited as important to their preparation for severe weather
+those messages from administrators that encouraged them to remain calm and enact their
+emergency plans. These reminders helped them focus on tasks they had practiced before the
+event and allowed them to stay composed and effective during the event itself.
+
+                                                           B-7
+Appendix C: Direct Tornado and Flash Flood Fatalities
+
+DATE    SEX AGE LOCATION/CIRCUMSTANCES
+May 19
+May 19  M  79 Mobile home
+May 20
+May 20  M  76 Vehicle
+May 20
+May 20  F  29 Sheltering at convenience store
+May 20
+May 20  M 4 months Sheltering at convenience store
+May 20
+May 20  F  49 Sheltering at convenience store
+May 20
+May 20  F  38 Sheltering in home, closet
+May 20
+May 20  F  45 Sheltering in home, closet
+May 20
+May 20  M  46 Sheltering in home, closet
+May 20
+May 20  F  40 Sheltering in home, closet
+May 20
+May 20  F  70 Sheltering in home, closet
+May 20
+May 20  M  54 Home
+May 20
+May 20  F  7 Sheltering in home, bathtub
+May 20
+May 20  F  4 Sheltering in home, bathtub
+
+May 31  M  65 Sheltering in home, bathtub
+May 31
+May 31  F  49 Sheltering in home, closet
+May 31
+May 31  M  39 Sheltering in home
+May 31
+May 31  M  63 Sheltering in business
+May 31
+        F  90 Sheltering in home
+
+        F  51 Sheltering in home
+
+        M  8 Plaza Towers Elementary School
+
+        F  9 Plaza Towers Elementary School
+
+        M  9 Plaza Towers Elementary School
+
+        F  9 Plaza Towers Elementary School
+
+        F  9 Plaza Towers Elementary School
+
+        F  9 Plaza Towers Elementary School
+
+        M  9 Plaza Towers Elementary School
+
+           Vehicle, driving from El Reno to
+
+        M  67 Chickasha
+
+        M  35 Vehicle, storm chasing
+
+        F  26 Vehicle, parked along I-40
+
+        M  17 days Vehicle, parked along I-40
+
+        M  32 Vehicle
+
+        M  55 Vehicle, storm chasing
+
+        M  24 Vehicle, storm chasing
+
+        M  45 Vehicle, storm chasing
+
+           C-1
+May 31 M          65  Vehicle, flash flood
+May 31 M           8  sheltering in drainage ditch - flash flood
+May 31 M           4  Sheltering in drainage ditch, flash flood
+May 31 M          33  Sheltering in drainage ditch, flash flood
+May 31 F          34  Sheltering in drainage ditch, flash flood
+May 31 M           4  Sheltering in drainage ditch, flash flood
+May 31 F           7  Sheltering in drainage ditch, flash flood
+May 31 F          34  Sheltering in drainage ditch, flash flood
+May 31 M          21  Sheltering in drainage ditch, flash flood
+May 31 F           3  Sheltering in drainage ditch, flash flood
+May 31 F           4  Sheltering in drainage ditch, flash flood
+May 31 M           3  Sheltering in drainage ditch, flash flood
+May 31 F  5 months    Sheltering in drainage ditch, flash flood
+
+                      C-2
+            Appendix D: List of Interviewed Subjects
+                    for Public Response Research
+
+ Shane Cohea, Manager of Safety Services and Emergency Preparedness, Norman Regional
+    Health Care System
+
+ Don Lynch, Emergency Manager, Shawnee, Oklahoma
+ Gayland Kitch, Director of Emergency Management, City of Moore, Oklahoma
+ Putnam Reiter, EOC Manager, Oklahoma Department of Emergency Management
+ Keli Cain, Public Information Officer, Oklahoma Department of Emergency Management
+ Kurt Gwartney, National Public Radio, KGOU, Norman, Oklahoma
+ Frank Barnes, Emergency Manager, Oklahoma City Emergency Management
+ Julie Robberson, Executive Secretary, Norman Regional Health Care System
+Qualitative Public Interviews
+Interviewed 30+ people from counties impacted by all three tornado events
+ Tuesday, July 23, 2013, interviews with concert attendees and concert venue personnel, Rock
+
+    for Oklahoma Tornado Benefit Concert, Chesapeake Arena, Oklahoma City, OK
+ July 21-25, 2013, random interviews with members of the public
+
+                                                           D-1
+                       Appendix E: References
+
+Bodine, David J,. M. D. Kumjian, R. D. Palmer, P.L. Heinselman, and A.V. Ryzhkov, 2013:
+Tornado Damage Estimation Using Polarimetric Radar. Weather Forecasting, 28, 139-158.
+Edwards, R., J.G. Ladue, J.T. Ferree, K. Scharfenberg, C. Maier, and W. L. Coulbourne, 2013:
+Tornado Intensity Estimation - Past, Present, and Future. BAMS, 94, 641- 653.
+Kuligowski, E.D., L.T. Phan, M. L. Levitan, and D.P. Jorgensen, 2013: Preliminary
+Reconnaissance of the May 20, 2013, Newcastle-Moore Tornado in Oklahoma. National Institute
+of Standards and Technology Special Publication 1164.
+LaDue, J.G., K. L. Ortega, B. R. Smith, G. J. Stumpf, and D. M. Kingfield, 2012: A Comparison
+of High Resolution Tornado Surveys to Doppler Radar Observed Vortex Parameters: 2011-2012
+Case Studies. Preprints, 26th Conf. Severe Local Storms, Nashville TN, Amer. Meteor. Soc., 6.3).
+Silva, C. L., H. C. Jenkins-Smith, P. Spicer, and P. J. Lamb, in preparation: Utilization of Real-
+Time Social Media Data in Severe Weather Events: A Proposal to Evaluate the Prospects of
+Social Media Data Use for Severe Weather Forecasting, Communication, and Post-Event
+Assessments.
+Smith, B.T., R.L. Thompson, H.E. Brooks, A.R. Dean, and K.L. Elmore, 2012: Diagnosis of
+Conditional Maximum Tornado Probabilities. Preprints, 26th Conference Severe Local Storms,
+Nashville, TN, Amer. Meteor. Soc., P2.2.
+Toth, M., R.J. Trapp, J. Wurman, and K.A. Kosiba, 2013: Comparison of Mobile-Radar
+Measurements of Tornado Intensity with Corresponding WSR-88D Measurements. Weather
+Forecasting, 28, 418-426
+Wurman, J., Koshiba, K., Robinson, R., and T. Marshall, 2013: The Role of Multiple Vortex
+Tornado Structure in Causing Storm Researcher Fatalities. BAMS, in press.
+
+                                                           E-1
+

@@ -135,62 +135,62 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 ## A1 · Four forty-seven
 
 ### A1-S1 — narration
-**Picture:** Self-made clock face from I1-S3 holds at 4:47 PM, second hand ticking; cut to a self-made map of Comanche, Caddo and Grady Counties lighting up on the word "Counties", chip "FIRST TORNADO WARNING · 4:47 PM". On "four minutes later" a pin drops outside Medicine Park, chip "FIRST TORNADO · 4:51 PM". Source line: "NWS Service Assessment, Aug 1999, p8, App. C". [VE] [RS] [Q]
-> At four forty-seven that afternoon, the weather service office in Norman sent out its first tornado warning of the day, for Comanche, Caddo and Grady Counties. Four minutes later, the first tornado of the day touched down outside Medicine Park. The warning got there first. And that head start had been building since breakfast.
+**Picture:** Self-made clock face from I1-S3 holds at 4:47 PM, second hand ticking; cut to a self-made map of Comanche, Caddo and Grady Counties lighting up on the word "Counties", chip "FIRST TORNADO WARNING · 4:47 PM". On "four minutes later" a pin drops outside Medicine Park, chip "FIRST TORNADO · 4:51 PM". On "Bridge Creek" and "Moore", two countdown chips appear: "BRIDGE CREEK · 2 HR" and "MOORE · 2 HR 35 MIN". Source line: "NWS Service Assessment, Aug 1999, p8, App. C; Speheger et al. 2002, Table 2". [VE] [RS] [Q]
+> At four forty-seven that afternoon, the weather service office in Norman sent out its first tornado warning of the day, for Comanche, Caddo and Grady Counties. Four minutes later, the first tornado of the day touched down outside Medicine Park. The warning got there first. It was a Monday. Bridge Creek was two hours from its turn, and Moore was about two and a half. The head start for those towns had been building since breakfast.
 
 *register: 9/10*
 
 ### A1-S2 — narration
-**Picture:** Self-made risk ladder graphic, three rungs "SLIGHT · MODERATE · HIGH", the marker climbing one rung per sentence; time chips "6:30 AM" (NWS Norman outlook) then "11:15 AM" (SPC). GOES-8 satellite image (Service Assessment photo, US gov) faded behind. Source line: "NWS Service Assessment, Aug 1999, p7, p9". [VE] [Q]
-> I went through that day's forecasts in order. At six thirty in the morning, Norman's outlook only called for a slight risk of severe storms, and it still told emergency managers and spotters to stay alert. By eleven fifteen, the Storm Prediction Center had moved its outlook up to a moderate risk. If you had a radio on at work, it kept getting worse.
+**Picture:** Self-made risk ladder graphic, three rungs "SLIGHT · MODERATE · HIGH", the marker climbing one rung per sentence; time chips "6:30 AM" (NWS Norman outlook) then "LATE MORNING" (SPC). GOES-8 satellite image (Service Assessment photo, US gov) faded behind. Source line: "NWS Service Assessment, Aug 1999, p7, p9". [VE] [Q]
+> I went through that day's forecasts in order. Early that morning, at six thirty, Norman's outlook only called for a slight risk of severe storms. Even so, it told emergency managers and spotters to stay ready. Late that morning, the Storm Prediction Center moved its outlook up to a moderate risk. If you had a radio on at work, it kept getting worse.
 
 *register: 9/10*
 
 ### A1-S3 — narration
-**Picture:** Risk ladder marker hits "HIGH", chip "3:49 PM"; hard cut on "tornado watch" to a self-made watch box over central Oklahoma, chip "TORNADO WATCH #195 · 4:30 PM", text card "HAIL TO 3 INCHES". Source line: "NWS Service Assessment, Aug 1999, p9, App. C". [RS] [VE]
-> Then at three forty-nine, the Storm Prediction Center went to high risk, the top of its scale [verify: high risk was the SPC's highest outlook category in 1999]. At four thirty, a tornado watch went up for the whole evening. It talked about tornadoes, and hail up to three inches across. Seventeen minutes later came that first warning.
+**Picture:** Risk ladder marker hits "HIGH", chip "3:49 PM"; hard cut on "tornado watch" to a self-made watch box over central Oklahoma, chip "TORNADO WATCH #195 · 4:30 PM", text card "HAIL TO 3 INCHES". Real-clip slot: an Oklahoma City TV weather cut-in from that afternoon, May 3, 1999, if a licensable archive copy exists (source TBD by the sourcing lane). Source line: "NWS Service Assessment, Aug 1999, p9, App. C". [RS] [VE]
+> Then at three forty-nine, the Storm Prediction Center went to high risk, the top of its scale. Forty-one minutes after that, a tornado watch went up for the whole evening. It talked about tornadoes, and hail up to three inches across. Seventeen minutes later came that first warning.
 
 *register: 8/10*
 
 ### A1-S4 — narration
-**Picture:** Service Assessment page with the drill sentence highlighted (NWS, SA p11/p23), slow push; agency chip "NWS NORMAN". Then the WDSS display image (wdss.jpg, NSSL May 3 page) as the "desk" image. [HUMAN] [Q]
-> The part of the report I keep coming back to is a drill. Just before May third, the Norman office ran a severe weather exercise. The pretend storm in it was a violent tornado coming at Oklahoma City. So the forecasters at those desks had already worked a night like this one, as practice. That evening, they worked the real one.
+**Picture:** Service Assessment page with the drill sentence highlighted (NWS, SA p23), slow push; agency chip "NWS NORMAN". Then the WDSS display image (wdss.jpg, NSSL May 3 page) as the "desk" image. [HUMAN] [Q]
+> One page of the report surprised me. Just before May third, the Norman office ran a severe weather exercise. The pretend storm in it was a violent tornado coming at Oklahoma City. So the forecasters at those desks had already written warnings for a storm like this one, as practice. That evening, they wrote them for real.
 
 *register: 9/10*
 
 ### A1-S5 — narration
-**Picture:** Self-made counter "32 SPOTTER CLASSES · 3 MONTHS"; then a self-made phone-line icon cutting out on "dropping out", chip "PHONES DOWN · 6:30 PM"; then a self-made radio-wave graphic with a tally climbing to "75 REPORTS". Source line: "NWS Service Assessment, Aug 1999, p11, p20". [VE] [RS]
-> They weren't working alone. Over the three months before, Norman taught thirty-two classes for storm spotters. That paid off once the storms came, because from six thirty that evening, the office's phone lines kept dropping out. Seventy-five severe weather reports still made it in over amateur radio.
+**Picture:** Self-made counter "32 SPOTTER CLASSES · 3 MONTHS"; then a self-made spotter silhouette at a roadside under a storm base, phone to ear, chip "STORM SPOTTERS". Source line: "NWS Service Assessment, Aug 1999, p11". [VE] [RS]
+> They weren't working alone. Over the three months before, Norman taught thirty-two classes for storm spotters, the people who stand under a storm and phone in what they see.
 
 *register: 9/10*
 
 ### A1-S6 — narration
-**Picture:** Self-made mock of a city water-bill envelope with a "TORNADO SAFETY" insert sliding out (no real bill shown), chip "MOORE · 2 MONTHS BEFORE"; then a self-made TV frame with a cable-override banner reading "NWS WARNING". Source line: "NWS Service Assessment, Aug 1999, p11, p21". [VE] [HUMAN] [Q]
-> Up the road in Moore, the city had done its own homework. If you lived there that spring, a tornado safety insert came folded into your water bill, two months before the storm. And that night, Moore's emergency manager used the cable TV override to play the weather service warnings right over whatever you were watching.
+**Picture:** Self-made mock of a city water-bill envelope with a "TORNADO SAFETY" insert sliding out (no real bill shown), chip "MOORE · 2 MONTHS BEFORE"; then a self-made TV frame whose speaker icon pulses with sound waves while the picture stays on a generic program (audio-only override, no on-screen banner), chip "CABLE OVERRIDE · AUDIO". Source line: "NWS Service Assessment, Aug 1999, p11, p21". [VE] [HUMAN] [Q]
+> Up the road in Moore, the city had done its own homework. If you lived there that spring, a tornado safety insert came folded into your water bill, two months before the storm. And that night, Moore's emergency manager used the cable TV override, so whatever channel you were watching, you heard the weather service warnings over it.
 
 *register: 9/10*
 
 ### A1-S7 — narration
-**Picture:** Service Assessment p10, the 5:41 p.m. Short Term Forecast text, the capital-letters line "EXERCISE YOUR TORNADO SAFETY PROCEDURES!" lifted onto a self-made text card; chip "5:41 PM · OKC METRO". On the last sentence, a self-made timeline bar stretches from 5:41 to "7:22 PM · MOORE". Source line: "NWS Service Assessment, Aug 1999, p10; Speheger et al. 2002". [RS] [VE] [Q]
-> At five forty-one, Norman sent a short-term forecast to the whole Oklahoma City metro. The storms were moving its way. The bulletin said it in capital letters: exercise your tornado safety procedures. That went out more than an hour and a half before the tornado reached Moore.
+**Picture:** Service Assessment p10, the 5:41 p.m. Short Term Forecast text, the capital-letters line "EXERCISE YOUR TORNADO SAFETY PROCEDURES!" lifted onto a self-made text card; chip "5:41 PM · OKC METRO". On the last sentence, a self-made timeline bar stretches from 5:41 to "7:22 PM · MOORE". Real-clip slot: Oklahoma City TV coverage from the early evening of May 3, 1999 (source TBD by the sourcing lane). Source line: "NWS Service Assessment, Aug 1999, p10; Speheger et al. 2002". [RS] [VE] [Q]
+> Norman's next bulletin went out at five forty-one, a short-term forecast for the whole Oklahoma City metro. The storms were moving its way. The bulletin said it in capital letters: exercise your tornado safety procedures. That went out more than an hour and a half before the tornado reached Moore.
 
 *register: 9/10*
 
 ### A1-S8 — narration
-**Picture:** Self-made Grady County map: pin "SOUTH OF VERDEN · 5:52 PM", then a second pin "CHICKASHA AIRPORT · 6:12 PM", each tagged with its survey ID (A6, A8) on the source line. Source line: "Speheger et al. 2002, Table 1; NWS Service Assessment, App. C". Note for the fact pass: the Service Assessment (p2) calls the 5:52 tornado the early stage of the F5; the survey (Speheger Table 1) makes it a separate tornado and starts the F5 at 6:26. The line follows the survey and names it as the survey's finding. [VE] [Q]
-> At five fifty-two, a tornado reached Grady County, south of Verden. The survey teams later counted it as a separate tornado from the big one. Another one came down at the Chickasha airport a little after six ten. The same storm kept making them, one after another.
+**Picture:** Self-made Grady County map: pin "SOUTH OF VERDEN · 5:52 PM", then a second pin "CHICKASHA AIRPORT · 6:16 PM", each tagged with its survey ID (A6, A8) on the source line. Source line: "Speheger et al. 2002, Table 1; NWS Service Assessment, App. C". Note for the fact pass: the Service Assessment (p2) calls the 5:52 tornado the early stage of the F5; the survey (Speheger Table 1) makes it a separate tornado and starts the F5 at 6:26. The line follows the survey and names it as the survey's finding. [VE] [Q]
+> Eleven minutes later, a tornado reached Grady County, south of Verden. That was sixty-five minutes after Grady's first warning. The survey teams later counted it as a separate tornado from the big one. Another one came down at the Chickasha airport at about six sixteen. The storm kept making them, one after another.
 
 *register: 8/10*
 
 ### A1-S9 — narration
 **Picture:** **Paul on camera:** full frame, the one line, at the turn from preparation to the tornado. Popfig "6:26 PM · NEAR AMBER". [RS] [VE]
-> At six twenty-six, near Amber, the same storm dropped its ninth tornado. By then, Grady County's first warning was over an hour and a half old.
+> At six twenty-six, near Amber, the same storm dropped its ninth tornado. This one would stay on the ground for about eighty minutes.
 
 *register: 9/10*
 
 ### A1-S10 — narration
 **Picture:** Self-made map from the NWS Norman damage-path KML: the track starts its first inch at Amber, chip "F5 · 6:26 PM"; the camera slides ahead along the line to a dot labelled "BRIDGE CREEK", chip "21 MIN AWAY". Hold on the dot, room tone only. Source line: "Speheger et al. 2002, Tables 1 and 2". [Q] [loop L1 open] [loop E restated]
-> From there, Bridge Creek was about twenty minutes up the path. The warning had done its part, and done it early. What it couldn't change was what people there had to get into when the tornado arrived. So what was standing in Bridge Creek that evening?
+> From there, Bridge Creek was about twenty minutes up the path. Now it came down to what people there could get into when the tornado arrived. What was standing in Bridge Creek that evening?
 
 *register: 9/10*
 
@@ -199,68 +199,62 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 ## A2 · Bridge Creek
 
 ### A2-S1 — narration
-**Picture:** Self-made map from the NWS Norman damage-path KML: the track draws from Amber to Bridge Creek, clock chip "ABOUT 6:50 PM", then the A9 photo near Bridge Creek (Erin Maxwell, NWS, NWS Norman event page). Labels "WILLOW LAKE ADDITION · SOUTHERN HILLS ADDITION · BRIDGE CREEK ESTATES" pop on the map. Source line: "Speheger et al. 2002 (6:47 PM); FEMA 342 (6:55 PM); NWS Storm Data, May 1999". [loop L1 closes] [VE] [Q]
-> About twenty minutes after it touched down near Amber, the tornado reached Bridge Creek. It was about six fifty. Bridge Creek had no city hall and no city limits. It was a spread of neighborhoods out in Grady County, and in the three that took the worst of it, most of the homes were mobile homes. So what does an F5 do to a place built like that?
+**Picture:** Self-made map from the NWS Norman damage-path KML: the track draws from Amber to Bridge Creek, clock chip "ABOUT 6:50 PM", then the A9 photo near Bridge Creek (Erin Maxwell, NWS, NWS Norman event page). Labels "WILLOW LAKE ADDITION · SOUTHERN HILLS ADDITION · BRIDGE CREEK ESTATES" pop on the map. Source line: "Speheger et al. 2002 (6:47 PM); FEMA 342 (6:55 PM); NWS Storm Data, May 1999; Doswell and Brooks 2002". [loop L1 closes] [VE] [Q]
+> About twenty-five minutes after it touched down near Amber, the tornado reached Bridge Creek. It was about six fifty in the evening. Bridge Creek wasn't a town at all. It was an unincorporated community out in Grady County, a spread of neighborhoods, and in the three that took the worst of it, most of the homes were mobile homes. What does an F5 do to a place built like that?
 
 *register: 9/10*
 
 ### A2-S2 — narration
 **Picture:** Service Assessment photo, Bridge Creek ground view of the mud swath and wooden debris (William Lerner, NWS). Chips one per sentence: "2 SLABS · SWEPT CLEAN", "ABOUT 12 CARS · 1/4 MILE", "1 INCH OF ASPHALT · PEELED". Source line: "NWS Storm Data, May 1999; NWS Norman event page". [RS] [VE] [PAY]
-> In Willow Lake Addition, two houses were swept clean off their concrete slabs. About a dozen cars were carried a quarter of a mile. The wind peeled an inch of asphalt right off the road. That's the damage that earned this tornado its F5, and Bridge Creek is one of only a few places along the whole path where the survey teams found it.
+> In Willow Lake Addition, two houses were swept clean off their concrete slabs. About a dozen cars were carried a quarter of a mile. The wind peeled an inch of asphalt right off the road. Damage like that is part of what earned this tornado its F5, and Bridge Creek is one of only a few places along the whole path where the survey teams found it.
 
 *register: 9/10*
 
 ### A2-S3 — narration
-**Picture:** Self-made graphic (not the AMS-copyrighted Wurman Figure 1): a radar-truck icon beside the track at Bridge Creek, a beam sweeping the funnel, clock chip "6:54 PM", then the readout "ABOUT 302 MPH · ± 11" at "ABOUT 100 FT UP". Source line: "Wurman et al. 2007, BAMS". [RS] [VE] [Q]
-> And right then, somebody was measuring it. A research radar on a truck, the Doppler on Wheels, had this tornado in its beam. It was reading the wind about a hundred feet above the ground. At six fifty-four, over Bridge Creek, it read about three hundred two miles an hour, give or take eleven. Joshua Wurman's team [verify: first name "Joshua"; fact sheet has only "Wurman"] published that figure in 2007.
+**Picture:** Self-made graphic (not the AMS-copyrighted Wurman Figure 1): a radar-truck icon beside the track at Bridge Creek, a beam sweeping the funnel, clock chip "6:54 PM", then the readout "ABOUT 302 MPH · ± 11" at "ABOUT 100 FT UP". On the last sentence a small second chip "318 MPH · ANNOUNCED 1999" sits beside it. Source lines: "Wurman et al. 2007, BAMS" and "NWS Norman event page, FAQ". [RS] [VE] [Q] [PAY]
+> And right then, somebody was measuring it. A research radar on a truck, the Doppler on Wheels, had this tornado in its beam. It was reading the wind about a hundred feet above the ground. At six fifty-four, over Bridge Creek, it read about three hundred two miles an hour, give or take eleven. Joshua Wurman's team published that figure in 2007, a little under the three hundred eighteen announced in 1999.
 
-*register: 8/10*
+*register: 9/10*
 
 ### A2-S4 — narration
-**Picture:** Hold the readout; "302" slides aside and a second chip "318 MPH · ANNOUNCED 1999" appears beside it, with the NWS Norman line set as attributed text: "maximum speed actually may be less than 318 mph". Source lines: "NWS Norman event page, FAQ" and "Wurman et al. 2007". [Q] [PAY]
-> You may have heard a bigger number, three hundred eighteen. That's the figure the radar team announced back in 1999. Even then, the weather service office in Norman wrote that the real top speed might turn out lower, though likely still above three hundred.
+**Picture:** FEMA 342 photos of failed mobile-home tie-downs and an overturned chassis (FEMA BPAT, check each credit line when pulling); chip "ANCHOR STRAPS · BROKEN". Then a self-made graphic: a 14 by 60 ft chassis outline sliding across a plain stretch of the damage path (no town marked), chip "ABOUT 200 YARDS". Source line: "FEMA 342, p4-34 and p4-35; Doswell and Brooks 2002". [VE] [Q]
+> Now put a mobile home in that wind. Picture a long, light box sitting up on a steel frame. Some of those homes were anchored, and it didn't save them. FEMA's building engineers found anchor straps that had broken. Near that same tornado, one chassis, fourteen feet by sixty, ended up about two hundred yards from where it had stood.
 
 *register: 9/10*
 
 ### A2-S5 — narration
-**Picture:** FEMA 342 photos of failed mobile-home tie-downs and an overturned chassis (FEMA BPAT, check each credit line when pulling); chip "STRAPS SNAPPED · ANCHORS PULLED OUT". Then a self-made graphic: a 14 by 60 ft chassis outline sliding across the Bridge Creek map, chip "ABOUT 200 YARDS". Source line: "FEMA 342, p4-34; Doswell and Brooks 2002". [VE] [Q]
-> Now put a mobile home in that wind. Some of those homes out there were anchored down the way they're supposed to be, and it didn't save them. FEMA's building engineers found straps that broke and anchors that pulled out of the ground. One chassis, fourteen feet by sixty, ended up about two hundred yards from where it had stood.
-
-*register: 9/10*
-
-### A2-S6 — narration
-**Picture:** Self-made graphic: two rows of house icons. Top row "MOBILE HOMES HIT · MORE THAN 1 LIFE LOST PER 10"; bottom row "HOUSES HIT · UNDER 1 PER 200". Then the NWS Norman damage-path map, Bridge Creek lit, chip "THE ONLY CLUSTER OF MOBILE HOMES ON THE PATH". Source lines: "Brooks and Doswell 2002" and "Doswell and Brooks 2002". [RS] [VE] [PAY]
-> Two researchers at the National Severe Storms Laboratory ran the numbers for that night. For every ten mobile homes the tornado hit, more than one person lost their life. In houses, it was under one in every two hundred. And Bridge Creek was the only place on the whole path with a real cluster of mobile homes.
+**Picture:** Self-made graphic: two rows of house icons. Top row "MOBILE HOMES HIT · MORE THAN 1 LIFE LOST PER 10 (ESTIMATE)"; bottom row "HOUSES HIT · UNDER 1 PER 200 (ESTIMATE)". Then the NWS Norman damage-path map, Bridge Creek lit, chip "THE ONLY CLUSTER OF MOBILE HOMES ON THE PATH". Source lines: "Brooks and Doswell 2002" and "Doswell and Brooks 2002". [RS] [VE] [PAY]
+> Two researchers at the National Severe Storms Laboratory worked out the odds for that night. By their estimate, for every ten mobile homes the tornado hit, more than one person lost their life. In houses, it was under one in every two hundred. And Bridge Creek was the only place on the whole path with a real cluster of mobile homes.
 
 *register: 8/10*
 
-### A2-S7 — narration
+### A2-S6 — narration
 **Picture:** FEMA 342 photo of a house reduced to its concrete slab (FEMA BPAT, check the credit line); chip "SLABS · BASEMENTS RARE". Then a self-made cutaway: a basement with a concrete ceiling, chip "SHELTER ONLY WITH A CONCRETE CEILING". Source lines: "FEMA 342, §3.3 and §6.2.1.1; Doswell and Brooks 2002". [Q] [PAY]
-> Then why not just get in the basement? Most of them didn't have one. In the Oklahoma damage areas, homes sat on concrete slabs, and basements were rare. The wet clay soil there makes them hard to dig and keep dry [verify: clay soil as the reason basements are rare; FEMA 342 and Doswell and Brooks 2002 only say basements are uncommon]. And FEMA adds a catch. A basement only counts as a shelter if it has a concrete ceiling over it.
+> Most of those families had no basement to run to. In the Oklahoma damage areas, homes sat on concrete slabs, and basements were rare. For most families out here, the safest room they had was still above ground. Researchers tie that to the soil types and the water table there. And FEMA adds a catch. A basement only counts as a shelter if it has a concrete ceiling over it.
+
+*register: 9/10*
+
+### A2-S7 — narration
+**Picture:** The self-made cellar-door graphic from the hook returns, door held open, over the self-made Grady County map with no town marked; then the NOAA Report June 1999 page (Keli Tarp, NOAA) with the Turner paragraph highlighted. Chips "DARRELL TURNER" then "35 PEOPLE · 1 CELLAR · ALL LIVED". Source lines: "NOAA Report, June 1999, p2; NWS Service Assessment, p22". Bed swell under the last sentence. [HUMAN] [RS] [VE] [PAY]
+> Some families in Grady County did have a place below ground. Darrell Turner heard the weather service warnings on a local TV station. He went down into his brother's storm cellar with his family and his neighbors, thirty-five people in all. The tornado pulled the cellar door open and destroyed their house. Every one of them came up alive.
 
 *register: 9/10*
 
 ### A2-S8 — narration
-**Picture:** The self-made cellar-door graphic from the hook returns, door held open, over the self-made Grady County map with no town marked; then the NOAA Report June 1999 page (Keli Tarp, NOAA) with the Turner paragraph highlighted. Chips "DARRELL TURNER" then "35 PEOPLE · 1 CELLAR · ALL LIVED". Source lines: "NOAA Report, June 1999, p2; NWS Service Assessment, p22". Bed swell under the last sentence. [HUMAN] [RS] [VE] [PAY]
-> Some families in Grady County did have a place below ground. Darrell Turner heard the weather service warnings on the local TV news. He went down into his brother's storm cellar with his family and his neighbors, thirty-five people in all. The tornado pulled the cellar door open and destroyed their house. Every one of them came up alive.
+**Picture:** Service Assessment photo, Bridge Creek ground view (William Lerner, NWS), slow push; chip "GRADY COUNTY DEPUTY · ON SCENE OF THE WORST DAMAGE". Source line: "NWS Service Assessment, p22". Bed drops to room tone on the last sentence. [HUMAN] [Q]
+> The warnings did their part out here, too. A Grady County deputy sheriff had posted himself near the path. He gave emergency care at some of the worst of the destruction. For the cellar and the mobile homes in the same community, the warning was the same. What each one was built to take decided who climbed out.
 
 *register: 9/10*
 
 ### A2-S9 — narration
-**Picture:** Service Assessment photo, Bridge Creek ground view (William Lerner, NWS), slow push; chip "GRADY COUNTY DEPUTY · FIRST ON SCENE". Source line: "NWS Service Assessment, p22". Bed drops to room tone on the last sentence. [HUMAN] [Q]
-> The warnings did their part out here, too. A Grady County deputy sheriff had been sent ahead to wait near the path, so he was the first one to reach the worst of the damage. For the cellar and for the mobile home down the road, the warning was the same. What each place was built to take decided the rest.
-
-*register: 9/10*
-
-### A2-S10 — narration
 **Picture:** **Paul on camera:** full frame, the cta-hinge tease, room tone only. Cut straight to the CTA on his last word. [loop L2 open = cta-hinge] [Q]
-> Minutes after the tornado left Bridge Creek, a forecaster in Norman typed two words no warning had ever carried.
+> Minutes after the tornado tore through Bridge Creek, a forecaster in Norman typed two words no warning had ever carried.
 
 *register: 9/10*
 
 *act exit: hold — Paul's tease cuts straight into the CTA, and A3-S1 pays it on the alert tone, so no blackout sits between the tease and its payoff.*
 
-*(CTA: `config.yaml channel.cta`, 24.0 s, between A2-S10 and A3-S1)*
+*(CTA: `config.yaml channel.cta`, 24.0 s, between the last A2 segment and A3-S1)*
 
 ## A3 · Tornado Emergency
 
@@ -277,38 +271,38 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 *register: 8/10*
 
 ### A3-S3 — narration
-**Picture:** Self-made graphic: a kitchen-counter weather radio, its alert light blinking as the 1050 Hz tone sounds once (ffmpeg). Chip "TONE-ALERTED BY HAND". Source line: "NWS Service Assessment, p15, p17-18". [Q] [VE] [RS]
-> So why would two more words matter, when warnings had been going out since four forty-seven? A follow-up statement like this doesn't normally set off the alarm on a weather radio. This one did. If you had a NOAA Weather Radio in your kitchen, it sounded, and the forecasters had to trigger it by hand.
+**Picture:** Self-made graphic: a home weather radio, its alert light blinking as the 1050 Hz tone sounds once (ffmpeg). Chip "24 OF 48 STATEMENTS TONE-ALERTED BY HAND". Source line: "NWS Service Assessment, p15, p17-18". [Q] [VE] [RS]
+> Why would two more words matter, when warnings had been going out since four forty-seven? Most follow-up statements don't set off the alarm on a weather radio. That night, Norman's forecasters set it off by hand for twenty-four of their forty-eight statements. This one was among them. If you had a NOAA Weather Radio at home, it sounded.
 
 *register: 9/10*
 
 ### A3-S4 — narration
-**Picture:** Self-made graphic: a desk phone with a "NO SERVICE" chip, then a ham-radio handset icon and chip "75 REPORTS BY AMATEUR RADIO". Then the Travis Smith radar loop (travissmith-outbreak-800.gif, NWS Norman event page). Source lines: "NWS Service Assessment, p11, p20"; "NPR, 21 May 2013". [HUMAN] [PAY]
-> They did it with their own phones failing. From six thirty until at least midnight, phone service at the Norman office kept cutting out, and storm reports came in over amateur radio. TV and radio stations picked up the phrase and repeated it. Scott Curl, a senior forecaster there, later told NPR they were trying anything they could to get people's attention [verify: NPR 2013 is a secondary source; that Curl was on shift on 3 May].
+**Picture:** Self-made graphic: the desk phone from A1-S5 with its "NO SERVICE" chip, brief. Then the Travis Smith radar loop (travissmith-outbreak-800.gif, NWS Norman event page) under the on-screen words "TORNADO EMERGENCY" repeating across self-made, unbranded TV and radio tiles. Source lines: "NWS Service Assessment, p15"; "NWS Norman, May 3 1999 event page". [HUMAN] [PAY]
+> They did it while their own phone lines were still dropping out. The office wanted a message that would grab attention and show people this was different from a normal warning. Media outlets picked up the phrase and repeated it.
 
 *register: 9/10*
 
 ### A3-S5 — narration
 **Picture:** The Service Assessment cover, then page 15 with the sentence highlighted and set as attributed on-screen text. Chip "PROMPTED NUMEROUS RESIDENTS TO ACTION". [Q] [PAY]
-> Did it work? When I read the weather service's report, this is the line I stopped on. The phrase was credited with adding the emphasis that prompted numerous residents to action. In plain words, a lot of people heard it and moved.
+> When I read the weather service's report on that night, this is the line I stopped on. It credits the phrase with adding the emphasis that prompted numerous residents to action. For a careful federal report, that's a lot of credit to give two words.
 
 *register: 9/10*
 
 ### A3-S6 — narration
-**Picture:** KTLX radar image at 7:18 p.m. (Service Assessment photo, NWS). Self-made graphic: two helicopter icons tracking the KML path; a generic self-made street-list box (no station branding, no copied layout) ticking arrival times. Source line: "NWS Service Assessment, p23". [VE] [RS] [Q]
-> And people could see it coming. Two TV news helicopters flew alongside the tornado. One station put a box on screen with street names, and the time the tornado would reach each one. If you lived in Moore, you could look for your own street on that list.
+**Picture:** KTLX radar image at 7:18 p.m. (Service Assessment image, credit NOAA/NSSL). Self-made graphic: two helicopter icons tracking the KML path; a generic self-made street-list box (no station branding, no copied layout) ticking arrival times. Source line: "NWS Service Assessment, p23". [VE] [RS] [Q]
+> And people could see it coming. Two TV news helicopters flew alongside the tornado. One station put a box on screen with street names, and about when the tornado would reach each one. If you lived in Moore, you could look for your own street on that list.
 
 *register: 9/10*
 
 ### A3-S7 — narration
 **Picture:** Self-made graphic: a blank TV screen with the words "GET OUT OF THE PATH" and the station name withheld (a grey bar). Then the KML map with small car icons moving sideways off the track. Source line: "NWS Service Assessment, p11, p22". [Q] [loop L3 open]
-> One station urged people to get out of the tornado's path. The weather service's report doesn't name that station, so I won't either. It does say that advice was one of the reasons many people fled. Many got in their cars and drove out of its way. So why does the same report tell you not to do it?
+> One station urged people to get out of the tornado's path. The weather service's report doesn't name that station, so I won't either. It does say that advice was one of the reasons many people fled. Many got in their cars and drove out of its way. Why, then, does the same report tell you not to do it?
 
 *register: 9/10*
 
 ### A3-S8 — narration
-**Picture:** Service Assessment page 11, the sentence set as attributed on-screen text with both halves on one card: "not recommended" left, "but was effective in this particular event" right. Chips "LONG LEAD TIME" and "INTENSITY AND LONGEVITY". Then the car icons from S7 stop on an open road graphic. [PAY] [loop L3 closes]
-> The report answers that in the same sentence. Fleeing a tornado, it says, is not recommended but was effective in this particular event. It worked because the warnings came so early, and because this tornado was so violent and lasted so long. Take away that lead time and the live pictures, and you're in a car on an open road when it arrives.
+**Picture:** Service Assessment page 11, the two adjacent sentences set as attributed on-screen text on one card: "not recommended" left, "effective in this particular event" right. Chips "LONG LEAD TIME" and "INTENSITY AND LONGEVITY". Then the car icons from S7 stop on an open road graphic. [PAY] [loop L3 closes]
+> The report answers that right away. Fleeing a tornado, it says, is not recommended. The report adds, right after that, that it was effective in this particular event. It worked because the warnings came so early, and because this tornado was so violent and lasted so long. Take away that lead time and the live pictures, and you're in a car on an open road when it arrives.
 
 *register: 8/10*
 
@@ -320,7 +314,7 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### A3-S10 — narration
 **Picture:** NWS Norman overpass talk photos (Dan Miller, NWS; never the Associated Press photo in that talk) of a highway overpass; self-made KML map with two pins, "SHIELDS BLVD, MOORE" and "I-44, NEWCASTLE". Source line: "NWS Service Assessment, Finding 10, p23; NWS Norman overpass talk, 1999". [VE] [HUMAN]
-> Some people on the road that night stopped under highway overpasses instead. About a dozen crowded under the one at Shields Boulevard in Moore. One woman there lost her life, and nearly everyone else under it was badly hurt. Another woman, under an overpass on Interstate forty-four near Newcastle, didn't survive either.
+> Others on the road stopped under highway overpasses, and two women lost their lives there, one in Moore and one near Newcastle. Nearly everyone else under the Moore overpass was badly hurt.
 
 *register: 8/10*
 
@@ -335,56 +329,56 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 ## A4 · Moore
 
 ### A4-S1 — narration
-**Picture:** Out of the CTA on a hard cut: Service Assessment photo of total destruction in Moore (Curtis Carey, NOAA/NWS PA, SA p13 area), chip "MOORE · 5 LIVES" lands on the first word. Then the self-made damage-path map from the NWS Norman KML, zoomed to the Moore city limits, chip "2,000+ IN THE PATH". Source line: "City of Moore estimate, via NWS Norman overpass talk". [PAY] [loop L5 closes] [loop E closes, first half] [RS] [VE] [Q]
-> Five. Out of more than two thousand people in the tornado's path inside the city of Moore, five lost their lives. That number comes from Moore's own emergency managers. Three of the five were inside well-built buildings. The other two were caught outside, and one of them was under the Shields Boulevard overpass. So where was everybody else when it came through?
+**Picture:** Out of the A3 chapter blackout on a hard cut: Service Assessment photo of total destruction in Moore (Curtis Carey, NOAA/NWS PA, SA p8), chip "MOORE · 5 LIVES" lands on the first word. Then the self-made damage-path map from the NWS Norman KML, zoomed to the Moore city limits, chip "3 OF 5 · INSIDE WELL-BUILT BUILDINGS". Source line: "Moore Emergency Management, via NWS Norman overpass talk, slide 21". [PAY] [loop L5 closes] [loop E closes, first half] [RS] [VE] [Q]
+> Five. Inside the city of Moore, five people lost their lives that night. Moore's emergency managers counted three of the five inside well-built buildings. For a town with that many people in the path, five is a number worth stopping on. Where was everybody else when it came through?
 
 *register: 9/10*
 
 ### A4-S2 — narration
-**Picture:** Self-made map pin "WESTMOORE HIGH · ABOUT 100 YD FROM THE TORNADO" on the damage-path map; then a FEMA 342 BPAT photo of Westmoore High (FEMA 342 section 6.2.2; check the credit line when pulling), else self-made floor-plan graphic of a central locker core and a stairwell, figures moving inward. Source line: "NWS Service Assessment, p23; FEMA 342". [HUMAN] [VE]
-> Here's one place they were. Westmoore High School sat about a hundred yards from the tornado, and that evening it was holding an awards ceremony. Several hundred students and parents were in the building. The assistant principal ushered everyone into the interior hallways and bathrooms. Others went into a reinforced stairwell.
+**Picture:** Self-made map pin "WESTMOORE HIGH · WITHIN 100 YD OF THE TORNADO" on the damage-path map; then a FEMA 342 BPAT photo of Westmoore High (FEMA 342 section 6.2.2; check the credit line when pulling), else self-made floor-plan graphic of a central locker core and a stairwell, figures moving inward. Source line: "NWS Service Assessment, p23; FEMA 342". [HUMAN] [VE]
+> One place they were was Westmoore High School. It sat within a hundred yards of the tornado, and that evening it was holding an awards ceremony. Several hundred students and parents were in the building. The assistant principal ushered the guests into the interior hallways and bathrooms. Others went into a reinforced stairwell.
 
 *register: 8/10*
 
 ### A4-S3 — narration
-**Picture:** FEMA 342 photo of the Westmoore gym with its roof gone (FEMA BPAT; check credit), chip "GYM ROOF GONE · NOBODY HURT". Then self-made corridor diagram: a hallway with a strip of high windows along the top, chip "KELLY · CORRIDOR CAME DOWN". Source line: "FEMA 342, section 6.2.2; NWS Service Assessment, p12". [RS] [PAY] [Q]
-> The tornado tore the roof off the gym, and nobody in that school was hurt. If your grandkids went to school in Moore, you'll want this part. Three nearby schools had picked hallways with windows high along the walls. At Kelly [verify: Kelly is an elementary school], that hallway came down. School was already out for the day, and FEMA's engineers wrote that, had it been used, numerous people would've been hurt or lost.
+**Picture:** FEMA 342 photo of the Westmoore gym with its roof gone (FEMA BPAT; check credit), chip "GYM ROOF GONE · NOBODY HURT". Then self-made corridor diagram: a hallway with a strip of high windows along the top, chip "KELLY ELEMENTARY · CORRIDOR CAME DOWN". Source line: "FEMA 342, section 6.2.2, p6-25; NWS Service Assessment, p12". [RS] [PAY] [Q]
+> The tornado tore the roof off the gym, and nobody in that school was hurt. Three other schools in Moore had picked shelter hallways with windows high along the walls. At Kelly Elementary, that hallway came down. School was already out for the day, so the corridor stood empty. FEMA's engineers wrote that, had it been in use, it would have hurt many children.
 
 *register: 9/10*
 
 ### A4-S4 — narration
 **Picture:** NOAA Report, June 1999, photo of the Millhouse hallway (Joseph Schaefer, NOAA; US gov work), slow push on the standing walls. Chip "30 MIN WARNING · ALL SAFE". Source line: "NOAA Report, June 1999, p2 to p3". [HUMAN] [RS] [VE]
-> Now a house in Moore. Captain John Millhouse worked at the office that keeps the NEXRAD radars running, and he had about thirty minutes of warning. He got his wife, their kids, aged six and two, the cat and the dog into the center hallway of their home. When it passed, the walls around that hallway were about all that was left. Every one of them was fine.
+> Now a house in Moore. Captain John Millhouse worked at the office that supports the NEXRAD radars, and he had about thirty minutes of warning. He got his wife, their kids, aged six and two, the cat and the dog into the center hallway of their home. When it passed, the walls around that hallway were about all that was left. Every one of them was fine.
 
 *register: 9/10*
 
 ### A4-S5 — narration
-**Picture:** NWS Norman overpass talk photo of the single interior room left in violent damage (Dan Miller, NWS; NOT the Associated Press photo in the same talk), chip "1 ROOM LEFT · 7 WALKED OUT". Source line: "NWS Norman, Miller et al., Oct 1999". [PAY] [VE] [Q]
-> Maybe you've heard that only the people underground made it through that night. The Millhouses say otherwise, and they weren't the only ones. A weather service talk afterward showed a single inside room, the only piece of a house still standing. Seven people walked out of it with minor injuries. So what about the people in houses who didn't make it?
+**Picture:** NWS Norman overpass talk photo of the single interior room left in violent damage (credit as printed in the talk's caption; the Dan Miller credit is unconfirmed, so do not print it; NOT the Associated Press photo in the same talk), chip "1 ROOM LEFT · 7 WALKED OUT". Source line: "NWS Norman overpass talk, Oct 1999". [PAY] [VE] [Q]
+> Maybe you've heard that only the people underground made it through that night. The Millhouses' hallway says otherwise, and it wasn't the only one. A weather service talk afterward showed a single inside room, the only piece of a house still standing. Seven people walked out of it with minor injuries. What about the people in houses who didn't make it?
 
 *register: 9/10*
 
 ### A4-S6 — narration
-**Picture:** **Paul on camera:** full frame, turning point of the act. Room tone, bed dips under him. Chip "19 OF 36 · INSIDE HOUSES" after he says it. Source line: "Brooks, NSSL death list". [Q]
+**Picture:** **Paul on camera:** full frame, turning point of the act. Room tone, bed dips under him. Chip "19 OF 36 · INSIDE HOUSES" after he says it. Source line: "Brooks, NSSL list of lives lost". [Q]
 > Here's the harder half, and I won't skip it. Nineteen of the thirty-six were inside their houses. Some were doing exactly what they'd been taught.
 
 *register: 9/10*
 
 ### A4-S7 — narration
-**Picture:** Self-made graphic built from the Brooks NSSL death list: one card per line said, white type on the channel glass card, no names (the source gives none): "DEL CITY · 75 · BATHTUB", "30 · BATHTUB", "36 · BATHROOM · CAR THROUGH THE ROOF", "BRIDGE CREEK · UNDER THE STAIRS · 3 WEEKS OLD". Over the NSSL damage photo of a flattened home (damage2.jpg, NSSL May 3 page). Score drops out; room tone only. Source line: "Brooks, NSSL death list, 1999". [HUMAN] [RS]
+**Picture:** Self-made graphic built from the Brooks NSSL death list: one card per line said, white type on the channel glass card, no names (the source gives none): "DEL CITY · 75 · BATHTUB", "30 · BATHTUB", "36 · BATHROOM · CAR THROUGH THE ROOF", "BRIDGE CREEK · UNDER THE STAIRS · 3 WEEKS OLD". Over the NSSL damage photo of a flattened home (damage2.jpg, NSSL May 3 page). Score drops out; room tone only. Source line: "Brooks, NSSL list of lives lost, 1999". [HUMAN] [RS]
 > This part of the list is hard to read. In Del City, someone seventy-five years old was in a bathtub. Somewhere else on the path, a thirty-year-old was in a bathtub too. A thirty-six-year-old was in the bathroom of a two-story house when a car fell through the roof. At Bridge Creek, two people were under a staircase. One of them was three weeks old.
 
 *register: 9/10*
 
 ### A4-S8 — narration
-**Picture:** Self-made bar chart from FEMA 342 section 6.2.1.2, three bars drawn one per sentence: "BATHROOM 81%", "CLOSET 75%", "KITCHEN 16%", header "89 ROOMS LEFT STANDING". Then a FEMA 342 BPAT core-remnant photo (check credit). Source line: "FEMA 342, pp. 6-20 to 6-22". [VE] [PAY] [Q]
-> So were those the wrong rooms? FEMA sent a team down the center of the track to find out. Where the houses were gone, they studied eighty-nine rooms still standing. An inside bathroom was part of what stood eighty-one percent of the time. A closet, seventy-five percent. The kitchen, only sixteen. They counted rooms, though, not who was inside them.
+**Picture:** Self-made bar chart from FEMA 342 section 6.2.1.2, three bars drawn one per sentence: "BATHROOM 81%", "CLOSET 75%", "KITCHEN ~16%", header "89 WALL CLUSTERS LEFT STANDING". Then a FEMA 342 BPAT core-remnant photo (check credit). Source line: "FEMA 342, pp. 6-20 to 6-22". [VE] [PAY] [Q]
+> Were those the wrong rooms? FEMA sent a team down the center of the track to find out. Where the houses were gone, they studied eighty-nine standing clusters of inside walls. An inside bathroom was part of what stood eighty-one percent of the time. A closet, seventy-five percent. The kitchen, roughly sixteen. They counted rooms, though, not who was inside them.
 
 *register: 8/10*
 
 ### A4-S9 — narration
-**Picture:** NSSL damage photos of slabs and stripped lots (damage1.jpg, damage3.jpg, NSSL May 3 page), slow push; attributed text card: "Doswell and Brooks, 2002: at F4 and F5 damage, no interior walls were left; survival was a matter of luck without adequate shelter" (paraphrase, marked as such). Source line: "Doswell and Brooks, Weather and Forecasting, 2002". [PAY] [VE]
-> So the bathroom was the right call, most of the time. Two researchers who studied this storm, Doswell and Brooks at the National Severe Storms Laboratory [verify: both authors' affiliation in 2002], wrote down the rest of it. Where the damage reached F4 or F5, there were no inside walls left at all. There, they wrote, whether you lived came down to luck, unless you could get to a real shelter.
+**Picture:** NSSL damage photos of slabs and stripped lots (damage1.jpg, damage3.jpg, NSSL May 3 page), slow push; attributed text card: "Doswell and Brooks, 2002: by the Fujita scale's definition, F4 and F5 damage leaves no interior walls; there, living is a matter of luck without adequate shelter" (paraphrase, marked as such). Source line: "Doswell and Brooks, Weather and Forecasting, 2002, p615". [PAY] [VE]
+> The bathroom was the right call, most of the time. Two researchers who studied this storm, Doswell and Brooks of the National Severe Storms Laboratory, wrote down the rest of it. By the Fujita scale's own definition, where damage reaches F4 or F5, no inside walls are left. There, they wrote, living is a matter of luck unless you can reach adequate shelter.
 
 *register: 8/10*
 
@@ -399,20 +393,20 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 ## A5 · What changed
 
 ### A5-S1 — narration
-**Picture:** Self-made graphic: an age axis from zero to ninety-four built from the Brooks NSSL list of lives lost, one dot per life lost; the dots fall away to leave an empty band, chip "AGES 5 TO 23 · NONE". Source line: "Brooks, NSSL list; Brooks and Doswell 2002". [RS] [VE] [Q]
-> I went down the list of everyone who lost their life that night, and I sorted it by age. There's a hole in the middle of it. Not one person aged five through twenty-three lost their life. Harold Brooks and Chuck Doswell [verify: first names; fact sheet has only "H. Brooks" and "C. Doswell"], at the National Severe Storms Laboratory, worked out the odds of a gap like that by chance. It's under one in three thousand.
+**Picture:** Self-made graphic: an age axis from zero to ninety-four built from the Brooks NSSL list of the thirty-six direct losses, one dot per life lost; the dots fall away to leave an empty band, chip "DIRECT LOSSES · AGES 5 TO 23 · NONE". Source line: "Brooks, NSSL list; Brooks and Doswell 2002". [RS] [VE] [Q]
+> I went down the list of the thirty-six people the tornado took directly that night, and I sorted it by age. There's a hole in the middle of it. Not one of them was aged five through twenty-three. Harold Brooks and Charles Doswell, at the National Severe Storms Laboratory, worked out the odds of a gap like that by chance. It's under one in three thousand.
 
 *register: 9/10*
 
 ### A5-S2 — narration
 **Picture:** NSSL May 3 page damage photo of a flattened neighbourhood (damage1.jpg, NSSL), slow push; chip "1,800 STUDENTS · HOMES HIT" then "NONE LOST". Source line: "Moore Public Schools, via Brooks and Doswell 2002". [PAY] [HUMAN] [Q]
-> So why did the kids come through better than anyone? Brooks and Doswell point to school. Two weeks later, about seven in ten junior high students in one survey said they'd learned tornado safety in class. At one school, that lesson came the Friday before. In Moore, about eighteen hundred students lived in houses that were badly damaged or gone, and none of them lost their life.
+> The kids came through better than anyone, and Brooks and Doswell think the safety lessons at school helped. Two weeks later, about seven in ten junior high students in one informal survey said they'd learned tornado safety in class. At one school, that lesson came the Friday before. In Moore, about eighteen hundred students lived in houses that were badly damaged or gone, and none of them lost their life. The two authors are careful to say they can't prove the lessons did it.
 
 *register: 9/10*
 
 ### A5-S3 — narration
-**Picture:** Self-made graphic: two bars beside a short bar of thirty-six, labelled "ESTIMATE · BROOKS 1999: ABOUT 700" and "ESTIMATE · BROOKS AND DOSWELL 2002: ABOUT 540 (CRUDE)"; both bars hatched to read as estimates, the thirty-six bar solid. Source lines: "NOAA Report, June 1999" and "Brooks and Doswell 2002". [VE] [PAY] [Q]
-> Here's the question I kept asking myself: without the warnings and the drills, how many would it have been? Nobody can count lives that weren't lost, so this part is an estimate, and there are two of them. In 1999, Brooks figured about seven hundred. His later paper with Doswell called its own number crude, about five hundred forty, using the odds people faced in tornadoes before 1925.
+**Picture:** Self-made graphic: two bars beside a short bar of thirty-six, labelled "ESTIMATE · NO WARNINGS · BROOKS 1999: ABOUT 700" and "ESTIMATE · ALL SAFETY EFFORTS · BROOKS AND DOSWELL 2002: ABOUT 540 (CRUDE)"; both bars hatched to read as estimates, the thirty-six bar solid. Source lines: "NOAA Report, June 1999" and "Brooks and Doswell 2002". [VE] [PAY] [Q]
+> Nobody can count the lives the warnings saved, but two estimates tried. In 1999, Brooks figured that without the warnings, about seven hundred people would have lost their lives. His later paper with Doswell called its own number crude, about five hundred forty, using the odds people faced in tornadoes before 1925. That one counts every safety effort of the day together.
 
 *register: 8/10*
 
@@ -424,25 +418,25 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### A5-S5 — narration
 **Picture:** NOAA Report June 1999 page (Keli Tarp, NOAA), the Dennis McCarthy quote set as attributed text: "...some people just didn't have the type of shelter needed to survive this magnitude of storm..." Then FEMA 342 Figure 6-3, the insulated-concrete-form safe room near Bridge Creek (FEMA BPAT photo; check the credit line when pulling), chip "F5 EDGE · LIGHT DEBRIS MARKS ONLY". Source lines: "NOAA Report, June 1999, p3" and "FEMA 342, Fig 6-3; Doswell and Brooks 2002". [loop L4 closes] [PAY] [VE] [RS]
-> Dennis McCarthy ran the weather service office in Norman. That June, he said some people just didn't have the type of shelter needed to survive this magnitude of storm. He meant a reinforced safe room, or a place underground. Near Bridge Creek, on the edge of the F5 damage, somebody had built the first kind. Its concrete walls took a few hits from light debris, and that was all.
+> Dennis McCarthy ran the weather service office in Norman. That June, he said some people just didn't have the type of shelter needed to survive this magnitude of storm. He meant a reinforced safe room, or a place underground. Near Bridge Creek, on the edge of the F-five damage, somebody had built the first kind. Its concrete walls took a few hits from light debris, and that was all.
 
 *register: 9/10*
 
 ### A5-S6 — narration
-**Picture:** NWS Norman Tornado Emergency graphic (tornadoemergency600.jpg, NWS Norman event page), then a self-made timeline "1999 · NORMAN, ONE NIGHT" to "2014 · 46 OFFICES" [verify date and count]; then the NSSL aerial of the path (John Jarboe, NWS). [VE] [Q]
-> Two things from that night outlasted it. The phrase forecasters in Norman made up on the spot became the weather service's own. In 2014, it went into the official warnings at forty-six offices [verify: 2014 and 46 offices, only in the Wolff et al. preprint; NWSI 10-511 not opened]. And Oklahoma started helping families pay for safe rooms of their own [verify: Oklahoma safe-room rebate program, start year, how many built].
+**Picture:** NWS Norman Tornado Emergency graphic (tornadoemergency600.jpg, NWS Norman event page), then a self-made timeline "1999 · NORMAN, ONE NIGHT" to "2014 · 46 OFFICES TEST IT" to "2017 · EVERY LOWER-48 OFFICE"; source lines "NWS SCN 17-46; NWSI 10-511"; then chip "OKLAHOMA · FIRST SAFE-ROOM REBATE IN THE US", source line "Oklahoma Emergency Management"; then the NSSL aerial of the path (John Jarboe, NWS). [VE] [Q]
+> Two things from that night outlasted it. The phrase forecasters in Norman used, tornado emergency, became the weather service's own. Forty-six offices tested it in 2014, and on May tenth, 2017, it went into warnings at every office in the lower forty-eight. And after the tornado, Oklahoma started the country's first program to help families pay for safe rooms of their own.
 
 *register: 8/10*
 
 ### A5-S7 — narration
 **Picture:** NSSL aerial of the path through Newcastle, Moore and Oklahoma City (John Jarboe, NWS), slow pull back; chip "ABOUT 1 IN 1,000 YEARS · ANY ONE SQUARE MILE". Source line: "Doswell and Brooks 2002"; then a self-made chip "MAY 3, 2027 · 28 YEARS". [PAY]
-> For any one square mile of central Oklahoma, Doswell and Brooks put the odds of a storm like that at about once in a thousand years. Next May third makes twenty-eight years since it crossed Bridge Creek and Moore. Before then, find the room in your house you'd go to, or the cellar down the road that'd take you in.
+> For any one square mile of central Oklahoma, Doswell and Brooks put a storm like that at about once in a thousand years. Next May third makes twenty-eight years since it crossed Bridge Creek and Moore. Before then, find the room in your house you'd go to, or the cellar down the road that'd take you in.
 
 *register: 9/10*
 
 ### A5-S8 — narration
 **Picture:** Channel title card (The Warning Hour), held; the signature closing line (DESIGN.md "Signature closing footnote") plays over it, no recap. Bed resolves under the last word.
-> Tornadoes don't ask permission. But they do send warnings. Learn where your room is, so when one comes, you already know where to go. This was The Warning Hour.
+> Tornadoes don't ask permission. But they do send warnings. Learn what yours sounds like, so when it comes, you already know what to do. This was The Warning Hour.
 
 *register: 9/10*
 
