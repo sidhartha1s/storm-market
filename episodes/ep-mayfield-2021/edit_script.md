@@ -99,7 +99,7 @@ I1-S4), Q4 "what did the St. Louis office write" (I1-S4 to I1-S5). L1 is asked a
 *[Q1 open: what had they seen]*
 
 ### I1-S2 — narration
-**Picture:** the SPC Day 4-8 outlook archive text, 3:20 AM CST Fri 3 Dec, the Day 8 line lit (one beat only; the countdown is A2's). Then Army Corps or Kentucky Guard photo of the factory site; chip "about 110 inside" (Gov. Beshear and company spokesman, via AP and KSL, Dec 2021).
+**Picture:** the SPC Day 4-8 outlook archive text, 3:20 AM CST Fri 3 Dec, the Day 8 line lit (one beat only; the countdown is A2's). Then our own locator map: western Kentucky, Mayfield pin, zoom to the candle-factory pin; chip "about 110 inside" (Gov. Beshear and company spokesman, via AP and KSL, Dec 2021). No second public-domain factory photo exists (DVIDS search, 22 Oct 26), so the one factory still stays H1-S2's.
 > A week ahead, the Storm Prediction Center had already named that Friday for severe storms. That night, about a hundred ten people were at work inside the candle factory in Mayfield. The review says a forecast like this one was harder to get across, and it says why.
 
 *[Q1 closes]* *[Q2 open: why it was harder]*
