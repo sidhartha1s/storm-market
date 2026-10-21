@@ -12,7 +12,8 @@ const T = [0, 0.033, 1.18, 1.7, 2.56, 3.12, 3.62, 4.2, 4.5, 4.68, 5.1];
 
 const browser = await chromium.launch({ executablePath: chromiumExecutable(), args: ['--allow-file-access-from-files'] });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
-await page.goto('file:///' + file.replace(/ /g, '%20'));
+page.on('console',m=>console.log('console:',m.text()));page.on('pageerror',e=>console.log('pageerror:',e.message));
+await page.goto('file:///' + file.replaceAll('\\', '/'));
 await page.waitForFunction(() => window.__timelines && window.__timelines['g-i1-2']);
 await page.waitForTimeout(500);
 const seek = t => page.evaluate(t => { window.__timelines['g-i1-2'].seek(t, false); }, t);
