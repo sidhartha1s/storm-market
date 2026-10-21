@@ -14,7 +14,7 @@ shown), I1-S5, I1-S7, I1-S10 (not shown). Facts: `research/facts-national.md` (N
 - **Target runtime:** about 20 min (owner, `camille_len` = "20", 22 Oct 26). 4 acts of 3 to 6 min plus hook, intro, CTA and close.
   `word_budget.py` has not run: it needs two probe wavs at the shipping tempo, and this round has no TTS. Planning pace: Joplin's
   measured 182.8 wpm on the Paul clone, so about 3,300 narration words for 20 min.
-- **Claim (pending lock, copied from `angle.md`):** Camille's Virginia flood still is not closed: fifty-seven years later the state is asking for help to name eight people recovered from the Rockfish River, and about thirty-two more from Nelson County were never found at all.
+- **Claim (locked, copied from `angle.md`):** Camille's Virginia flood still is not closed: fifty-seven years later the state is asking for help to name eight people recovered from the Rockfish River, and about thirty-two more from Nelson County were never found at all.
 - **Dominant question:** the viewer keeps watching to find out how one night of rain took people so completely that Virginia is
   still trying to put names to them fifty-seven years later.
 - **Architecture:** detective. The 1969 count is the case file: it starts with 101 missing and works down to the people nobody
