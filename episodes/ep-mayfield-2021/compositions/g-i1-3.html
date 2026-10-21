@@ -1,0 +1,48 @@
+<template>
+<style>
+  /* g-i1-3 · I1-S2 second beat · glass chip "about 110 inside" (box left 110, bottom 150) + credit line (left 110, bottom 64) over the factory-lot still.
+     Overlay, no ground. Family base: g-h1-2 (chip + source line). Nothing past x 1560, nothing at x >= 1600 (presenter-circle corner stays free). */
+  #g-i1-3-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #g-i1-3-float { position:absolute; inset:0; width:1920px; height:1080px; }
+  .g-i1-3-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-i1-3-chip { position:absolute; left:110px; bottom:150px; padding:18px 30px; border-radius:28px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:64px; letter-spacing:1px; color:#dfe7ee; }
+  #g-i1-3-chip b { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; letter-spacing:0; color:#f2f5f8; }
+  #g-i1-3-src { position:absolute; left:110px; bottom:64px; max-width:1300px; padding:10px 20px; border-radius:18px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:24px; letter-spacing:0; color:#c8d3e0; }
+</style>
+<div id="g-i1-3-root" data-composition-id="g-i1-3" data-width="1920" data-height="1080">
+  <div id="g-i1-3-float">
+    <div class="g-i1-3-glass" id="g-i1-3-chip">about <b>110</b> inside</div>
+    <div class="g-i1-3-glass" id="g-i1-3-src">Gov. Beshear and company spokesman, via AP and KSL, Dec 2021</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 4.26;            /* host window: "110" (i1-s2 6.24 = ep 58.907) -> "The review says" (9.90 = 62.567) + 0.6 s exit = 63.167 */
+  const CUE_CHIP = 0;          /* 110 @6.24 in i1-s2.words.json (host-local 0) */
+  const CUE_SRC = 0;           /* credit line enters with the chip (brief section 5 row 2) */
+  const CUE_OUT = 3.66;        /* The @9.90 in i1-s2.words.json = host-local 3.66; slides out left, lands inside the host */
+
+  tl.set(["#g-i1-3-chip", "#g-i1-3-src"], { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set("#g-i1-3-float", { scale: 1, y: 0, transformOrigin: "110px 1016px" }, 0);
+
+  /* ambient 0.5 % float over the whole window */
+  tl.to("#g-i1-3-float", { scale: 1.005, y: -4, duration: DUR, ease: "none" }, 0);
+
+  /* CHIP @0.00 ("110" 6.24): slides up 24 px and settles */
+  tl.fromTo("#g-i1-3-chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_CHIP);
+  /* CREDIT LINE @0.00 with the chip */
+  tl.fromTo("#g-i1-3-src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_SRC);
+
+  /* OUT @3.66 ("The review says"): both slide left and finish inside the host (3.66 + 0.56 = 4.22 of 4.26) */
+  tl.to("#g-i1-3-chip", { x: -800, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, CUE_OUT);
+  tl.to("#g-i1-3-src", { x: -1300, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, CUE_OUT);
+
+  window.__timelines["g-i1-3"] = tl;
+})();
+</script>
+</template>
