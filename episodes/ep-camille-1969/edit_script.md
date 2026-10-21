@@ -11,7 +11,7 @@ shown), I1-S5, I1-S7, I1-S10 (not shown). Facts: `research/facts-national.md` (N
 
 ## A. Header
 - **Title:** none yet. Packaging follows the angle lock (`references/angle.md` order of work).
-- **Target runtime:** not set. Proposed about 20 min (4 acts of 3 to 6 min plus hook, intro, CTA and close); the owner confirms it.
+- **Target runtime:** about 20 min (owner, `camille_len` = "20", 22 Oct 26). 4 acts of 3 to 6 min plus hook, intro, CTA and close.
   `word_budget.py` has not run: it needs two probe wavs at the shipping tempo, and this round has no TTS. Planning pace: Joplin's
   measured 182.8 wpm on the Paul clone, so about 3,300 narration words for 20 min.
 - **Claim (pending lock, copied from `angle.md`):** Camille's Virginia flood still is not closed: fifty-seven years later the state is asking for help to name eight people recovered from the Rockfish River, and about thirty-two more from Nelson County were never found at all.
