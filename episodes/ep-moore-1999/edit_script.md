@@ -148,7 +148,7 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### A1-S3 — narration
 **Picture:** Risk ladder marker hits "HIGH", chip "3:49 PM"; hard cut on "tornado watch" to a self-made watch box over central Oklahoma, chip "TORNADO WATCH #195 · 4:30 PM", text card "HAIL TO 3 INCHES". Real-clip slot: an Oklahoma City TV weather cut-in from that afternoon, May 3, 1999, if a licensable archive copy exists (source TBD by the sourcing lane). Source line: "NWS Service Assessment, Aug 1999, p9, App. C". [RS] [VE]
-> Then at three forty-nine, the Storm Prediction Center went to high risk, the top of its scale. Forty-one minutes after that, a tornado watch went up for the whole evening. It talked about tornadoes, and hail up to three inches across. Seventeen minutes later came that first warning.
+> Then at three forty-nine, the Storm Prediction Center went to high risk, the top of its scale. Forty-one minutes after that, a tornado watch went up for the whole evening. It warned of tornadoes, and of hail up to three inches across, about the size of a baseball. Seventeen minutes later came that first warning.
 
 *register: 8/10*
 
@@ -166,7 +166,7 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### A1-S6 — narration
 **Picture:** Self-made mock of a city water-bill envelope with a "TORNADO SAFETY" insert sliding out (no real bill shown), chip "MOORE · 2 MONTHS BEFORE"; then a self-made TV frame whose speaker icon pulses with sound waves while the picture stays on a generic program (audio-only override, no on-screen banner), chip "CABLE OVERRIDE · AUDIO". Source line: "NWS Service Assessment, Aug 1999, p11, p21". [VE] [HUMAN] [Q]
-> Up the road in Moore, the city had done its own homework. If you lived there that spring, a tornado safety insert came folded into your water bill, two months before the storm. And that night, Moore's emergency manager used the cable TV override, so whatever channel you were watching, you heard the weather service warnings over it.
+> But a warning only helps if people hear it. Up the road in Moore, the city had done its own homework. If you lived there that spring, a tornado safety insert came folded into your water bill, two months before the storm. And that night, Moore's emergency manager used the cable TV override, so whatever channel you were watching, you heard the weather service warnings over it.
 
 *register: 9/10*
 
@@ -178,7 +178,7 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### A1-S8 — narration
 **Picture:** Self-made Grady County map: pin "SOUTH OF VERDEN · 5:52 PM", then a second pin "CHICKASHA AIRPORT · 6:16 PM", each tagged with its survey ID (A6, A8) on the source line. Source line: "Speheger et al. 2002, Table 1; NWS Service Assessment, App. C". Note for the fact pass: the Service Assessment (p2) calls the 5:52 tornado the early stage of the F5; the survey (Speheger Table 1) makes it a separate tornado and starts the F5 at 6:26. The line follows the survey and names it as the survey's finding. [VE] [Q]
-> Eleven minutes later, a tornado reached Grady County, south of Verden. That was sixty-five minutes after Grady's first warning. The survey teams later counted it as a separate tornado from the big one. Another one came down at the Chickasha airport at about six sixteen. The storm kept making them, one after another.
+> Eleven minutes later, a tornado reached Grady County, south of Verden. That's where Grady's sixty-five minutes ended. The survey teams later counted it as a separate tornado from the big one. Another one came down at the Chickasha airport at about six sixteen. The storm kept making them, one after another.
 
 *register: 8/10*
 
@@ -429,12 +429,30 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 *register: 8/10*
 
 ### A5-S7 — narration
+**Picture:** Cover of the NWS Service Assessment "May 2013 Oklahoma Tornadoes and Flash Flooding", then its Figure 4, the WFO Norman preliminary GIS track through Moore, laid over the self-made 1999 KML path so the two lines cross; chip "MAY 20, 2013 · MOORE · EF5". Then chips one per sentence: "HEARD A DAY AHEAD", "CLOSETS · BATHROOMS · SAFE ROOMS · CELLARS". Source line: "NWS Service Assessment, May 2013 Oklahoma Tornadoes, p7, p31, p32". [RS] [VE] [PAY]
+> Fourteen years later, the test came back. On May twentieth, 2013, an EF5 tornado went through Moore again. Afterward, the weather service sent a team to ask people what they did. Most said they'd heard about the storms at least a day ahead, and that they had time to take shelter. So they did. They went into the interior closets, bathrooms, safe rooms and cellars they'd picked out long before. The report says they survived above ground in shelters they'd chosen ahead of time, because they'd practiced so often.
+
+*register: 9/10*
+
+### A5-S8 — narration
+**Picture:** Self-made date card "MAY 31, 2013 · FRIDAY · RUSH HOUR" over a self-made Oklahoma City metro map; then WFO Norman's 1 p.m. tweet set as attributed text: "TORNADO SAFETY: If you choose to flee in your car, plan for and anticipate traffic jams and blocked roads, hail, heavy rain and flooding." Then the car icons from A3 return, now packed nose to tail on the southbound lines of the map, chip "DRIVE SOUTH". Source line: "NWS Service Assessment, May 2013, p7, p11, p32, p33". [Q] [VE] [RS] [loop L3 echoed]
+> Then came May thirty-first, eleven days later. Slow storms crept toward Oklahoma City on a Friday, right around rush hour, when a lot of people were already in their cars. Some weather voices on the air told people they wouldn't survive unless they were underground. Driving south became one of the main pieces of advice that evening. It's the same advice that one station gave in 1999, the one I asked you not to copy. This time, huge numbers of people took it at once, and the roads jammed. At one that afternoon, the weather office in Norman had posted a warning about exactly that.
+
+*register: 9/10*
+
+### A5-S9 — narration
+**Picture:** The survivor's words set as attributed text on the channel glass card: "People knew not to get in cars; it should have kicked-in when they touched their door handle: No. Shelter in place. But the fear took over." (tornado survivor, quoted in the NWS Service Assessment, May 2013, p33). Then a self-made chip "MAY 31 · 8 OF 8 · IN VEHICLES" over the map's stalled car icons; then a single card "26 · 17 DAYS OLD · PARKED ALONG I-40", no names. Score drops out, room tone. Source line: "NWS Service Assessment, May 2013, p30, p32, p33, App. C p C-1". [HUMAN] [PAY] [loop L3 closes again]
+> One survivor told the team that people knew not to get in their cars. It should have kicked in the moment they touched the door handle. But the fear took over, especially when a weatherman they'd trusted all their lives told them to drive. On May thirty-first, every person the tornadoes took directly was in a vehicle, eight in all. Four of them were storm chasers. Two were a woman of twenty-six and a baby seventeen days old, in a car parked along Interstate forty. Later, many people told the team they were ashamed they'd fled instead of sheltering.
+
+*register: 9/10*
+
+### A5-S10 — narration
 **Picture:** NSSL aerial of the path through Newcastle, Moore and Oklahoma City (John Jarboe, NWS), slow pull back; chip "ABOUT 1 IN 1,000 YEARS · ANY ONE SQUARE MILE". Source line: "Doswell and Brooks 2002"; then a self-made chip "MAY 3, 2027 · 28 YEARS". [PAY]
 > For any one square mile of central Oklahoma, Doswell and Brooks put a storm like that at about once in a thousand years. Next May third makes twenty-eight years since it crossed Bridge Creek and Moore. Before then, find the room in your house you'd go to, or the cellar down the road that'd take you in.
 
 *register: 9/10*
 
-### A5-S8 — narration
+### A5-S11 — narration
 **Picture:** Channel title card (The Warning Hour), held; the signature closing line (DESIGN.md "Signature closing footnote") plays over it, no recap. Bed resolves under the last word.
 > Tornadoes don't ask permission. But they do send warnings. Learn what yours sounds like, so when it comes, you already know what to do. This was The Warning Hour.
 
