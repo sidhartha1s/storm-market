@@ -1,7 +1,7 @@
 # ep-mayfield-2021 · edit_script.md (TTS segment format)
 
 Lane: documentary (`/storm-episode`).
-Status: DRAFT hook+intro for owner gate; acts are cards only. Fix round 1 (21 Oct 26): H1, T1 and I1 rewritten from
+Status: DRAFT hook+intro for owner gate; acts are cards only. Fix rounds 1 and 2 (21 to 22 Oct 26): H1, T1 and I1 rewritten from `research/grade-hook-intro-v2.tsv`,
 `research/grade-hook-intro.tsv` and `research/fc-slice-a/b/c.tsv`. A1 to A5 and Z1 are chapter cards, no narration yet.
 Nothing here goes to TTS until its section locks (markers resolved, owner approval, hook passes the grader).
 
@@ -55,7 +55,7 @@ Z1 can pay (Recommendation 6, the Illinois 2025 law, Kentucky, whether NWS publi
 | Loop | Question the viewer holds | Planted | Paid |
 |---|---|---|---|
 | E1 (episode) | Almost five years on, has anyone written the advice those buildings never had? | I1-S6 `[loop E1 open]` (set up by H1-S2) | Z1: Recommendation 6, the Illinois 2025 law, Kentucky, NWS materials `[loop E1 closes]` |
-| L1 (A1) | Both buildings had a warning first. What happened between the warning and the hit? | T1-S1, carried by I1-S7 (more than twenty minutes, the megaphone) | A1 `[loop L1 closes]` |
+| L1 (A1) | Both buildings had a warning first. What happened between the warning and the hit? | T1-S1, asked aloud ("What happened inside in those minutes"), carried by I1-S7 (more than twenty minutes, the megaphone teased; the cage held for A1) | A1 `[loop L1 closes]` |
 | L2 (A2) | If the forecast was on the map for a week, how much did each office say, and when? | A1 exit (P1) | A2: the countdown and Finding 3a, "established playbooks" `[loop L2 closes]` |
 | L3 (A3) | How does December, at night, make a tornado that stays down for a hundred sixty-five miles? | A2 exit: Memphis wrote "well into the 70s" for a December Friday | A3 explainer `[loop L3 closes]` |
 | cta-hinge | What went wrong at the weather office as the storm reached Mayfield? | A3-S9 tease (P3) | A3-S10, first sentence: "The power went out." |
@@ -63,8 +63,8 @@ Z1 can pay (Recommendation 6, the Illinois 2025 law, Kentucky, whether NWS publi
 | L5 (A5) | When the inspectors came, what rule could they measure a shelter plan against? | A4 exit | A5: "OSHA does not have a standard that requires severe weather emergency plans" `[loop L5 closes]` |
 
 Intro micro-loops (each paid inside 45 s, L1 carried into Act 1): Q1 "what had the forecasters seen" (I1-S1 to I1-S2),
-Q2 "why was it hard to get people to act" (I1-S2 to I1-S3), Q3 "which two buildings" (I1-S3 to I1-S4), Q4 "what did
-the St. Louis office find" (I1-S4 to I1-S5). No "why December" loop in the intro: A3 owns it.
+Q2 "why was the forecast harder to get across" (I1-S2 to I1-S3), Q3 "what is a million square feet like" (I1-S3 to
+I1-S4), Q4 "what did the St. Louis office write" (I1-S4 to I1-S5). L1 is asked aloud in T1. No "why December" loop in the intro: A3 owns it.
 
 ---
 
@@ -75,64 +75,64 @@ the St. Louis office find" (I1-S4 to I1-S5). No "why December" loop in the intro
 > A tornado warning goes off at work. What do you do? You go where they tell you. Somebody planned for it.
 
 ### H1-S2 — narration
-**Picture:** hard cut on the siren swell to the DVIDS/FEMA still of the candle factory site (dvidshub.net/image/7018049, image only, never its caption), slow push. On-screen quote, verbatim: "a gap in NWS safety outreach and resources related to buildings with large footprints, such as warehouses" · Service Assessment, Finding 6.
-> Afterward, the Weather Service's own review found a gap in its safety advice for buildings as big as warehouses.
+**Picture:** hard cut on the siren swell to the DVIDS/FEMA still of the candle factory site (dvidshub.net/image/7018049, image only, never its caption), slow push. Chip "14 lives · 2 workplaces". Source line: "6 at Edwardsville (House Oversight; OSHA) · 8 at the factory: Mayfield Consumer Products and AP, 14 Dec 2021".
+> One Friday night in December, fourteen people lost their lives at two workplaces.
 
 ### H1-S3 — narration
-**Picture:** our own NEXRAD Level II replot of the supercell at night (mid-action). Then the SPC Day 4-8 outlook archive text, 3:20 AM CST Fri 3 Dec, the Day 8 line lit. Stamp "RIGHT" lands on "right". Chip "a week ahead".
-> And the forecast was right. A week ahead, the Storm Prediction Center had flagged that Friday in December.
+**Picture:** our own NEXRAD Level II replot of the supercell at night (mid-action). On-screen quote over it, verbatim: "a gap in NWS safety outreach and resources related to buildings with large footprints, such as warehouses" · Service Assessment, Finding 6. Stamp "RIGHT" lands on "right".
+> The Weather Service's own review found a gap in its safety advice for buildings as big as warehouses. And the forecast was right.
 
 
 ## T1 · Hook tail (0:20)
 
 ### T1-S1 — narration
-**Picture:** our own NEXRAD replot of the Edwardsville storm with the 8:06 PM tornado warning polygon over Madison County (SA p28), then map pins on Edwardsville, Illinois and Mayfield, Kentucky. Chip "14 lives · 2 workplaces". Drone bed takes over from the siren.
-> Two workplaces were hit that night, one in Illinois and one in Kentucky. Fourteen people lost their lives inside them. Both had a tornado warning first. [verify: official coroner or state count for the candle factory unread; 8 is the company spokesperson (KSL, 14 Dec 2021) and AP]
+**Picture:** no radar here: a plain map with the two tornado warning polygons alone, 8:06 PM over Madison County, Illinois (SA p28) and 9:05 PM over Graves County, Kentucky (SA p29), pins on Edwardsville and Mayfield; then a Kentucky Guard still of Mayfield. Drone bed takes over from the siren.
+> One was an Amazon delivery station in Edwardsville, Illinois. The other was a candle factory in Mayfield, Kentucky. Both got a tornado warning before the tornado arrived. What happened inside in those minutes is the first thing I looked up.
 
 *[loop L1 open]* *(no void: straight into the intro, the line stays in the hook's scene)*
 
 
-## I1 · Intro: the whole picture (0:30)
+## I1 · Intro: the whole picture (0:35)
 
 ### I1-S1 — narration
-**Picture:** NASA MODIS image of the long track, then our own map drawn from SA Appendix C as seventy-one tracks draw in (no state count on screen). Chips "71 tornadoes", "89 lives", then "1953 · 38" beside "2021 · 89". Source line: "NWS Service Assessment, p4 · since 1950".
-> From Friday evening into Saturday, the Weather Service confirmed seventy-one tornadoes, and eighty-nine people lost their lives. It's the deadliest December tornado event on record since nineteen fifty. The one it passed hit Vicksburg, Mississippi, in nineteen fifty-three, and took thirty-eight lives. The people whose job is to see that coming had seen it.
+**Picture:** NASA MODIS image of the long track, then our own map drawn from SA Appendix C as seventy-one tracks draw in (no state count on screen). Chips "71 tornadoes", "89 lives", then "1953 · 38" beside "2021 · 89". Source line: "NWS Service Assessment, p4: deadliest December tornado event on record since 1950".
+> From Friday evening into Saturday, the Weather Service confirmed seventy-one tornadoes, and eighty-nine people lost their lives. Since nineteen fifty, no December tornado outbreak has taken more lives. The old record was thirty-eight lives, in Vicksburg, Mississippi, in nineteen fifty-three. And the people whose job is to see that coming had seen it.
 
 *[Q1 open: what had they seen]*
 
 ### I1-S2 — narration
-**Picture:** SPC Day 1 outlook archive page, 10:18 AM CST Fri 10 Dec, the Moderate Risk map; chip "sent 12 min early". A clock hand ticks back twelve minutes.
-> The Friday before, the Storm Prediction Center first mentioned severe storms for that day. That week, the forecast kept getting stronger. On the Friday itself, a lead forecaster there sent the morning outlook out twelve minutes early, to get the word out faster. Getting people to act on it was harder, and the review says why.
+**Picture:** the SPC Day 4-8 outlook archive text, 3:20 AM CST Fri 3 Dec, the Day 8 line lit (one beat only; the countdown is A2's). Then Army Corps or Kentucky Guard photo of the factory site; chip "about 110 inside" (Spectrum News).
+> A week ahead, the Storm Prediction Center had already named that Friday for severe storms. That night, about a hundred ten people were at work inside the candle factory in Mayfield. The review says a forecast like this one was harder to get across, and it says why.
 
 *[Q1 closes]* *[Q2 open: why it was harder]*
 
 ### I1-S3 — narration
-**Picture:** NASA VIIRS night-lights over western Kentucky, before and after. Chip "after sunset" (SA p6).
-> Many people don't connect December with tornadoes, and these storms were forecast for after sunset. If you've lived in western Kentucky, you know December is coat weather. And that Friday night, two big buildings still had people at work inside them.
+**Picture:** NASA VIIRS night-lights over western Kentucky, before and after. Chip "after sunset" (SA p6). Then our own Edwardsville building outline (labelled illustrative) growing to its full size.
+> The storms were forecast for after sunset, in December. If you've lived in western Kentucky, you know December is coat weather. And the building in Edwardsville covered more than a million square feet.
 
-*[Q2 closes]* *[Q3 open: which buildings]*
+*[Q2 closes]* *[Q3 open: what a building that size is like inside]*
 
 ### I1-S4 — narration
-**Picture:** our own Edwardsville building outline (labelled illustrative) with chip "1.1 million sq ft"; then Kentucky Guard and Army Corps photos of Mayfield; chips "6 lives" and "about 110 inside · 8 lives".
-> One was an Amazon delivery station in Edwardsville, Illinois, more than a million square feet. Six people working there lost their lives. The other was a candle factory in Mayfield, Kentucky, with about a hundred ten people inside. Eight of them lost their lives. [verify: official coroner or state count unread; 8 is the company spokesperson and AP] Afterward, the weather office in St. Louis, the one covering Edwardsville, wrote down what it found missing.
+**Picture:** the outline fills with football fields laid end to end; chip "6 lives". Then a Mayfield survey photo (NWS Paducah); chip "8 lives" with source line "Mayfield Consumer Products and AP, 14 Dec 2021".
+> That's about nineteen football fields under one roof. [verify: 1.1 million sq ft as about nineteen football fields, end zones included] Six people working there lost their lives. At the candle factory, eight did. Afterward, the weather office in St. Louis, the one covering Edwardsville, wrote down what nobody had told buildings like that.
 
-*[Q3 closes]* *[Q4 open: what St. Louis found]*
+*[Q3 closes]* *[Q4 open: what St. Louis wrote]*
 
 ### I1-S5 — narration
-**Picture:** the WFO St. Louis after-action words as on-screen text, verbatim with the ellipsis marked, building line by line, attributed "WFO St. Louis after-action review, quoted in the Service Assessment, p33-34".
-> Its after-action review says there were no official weather service or OSHA recommendations for sheltering at work. There was no guidance on what types of warnings to shelter for, and no different shelters for businesses with large warehouse construction.
+**Picture:** the WFO St. Louis after-action words as on-screen text, verbatim with the ellipsis marked, attributed "WFO St. Louis after-action review, quoted in the Service Assessment, p33-34". Paul's voice says it plainly; the card carries the exact words.
+> That office wrote that nobody, not the weather service and not OSHA, had told businesses where to shelter people at work. Nobody had said which warnings to shelter for, or what a big warehouse needs.
 
 *[Q4 closes]*
 
 ### I1-S6 — narration
-**Picture:** a real picture between the two text screens: NWS Paducah survey photo of Mayfield, slow push; then the claim on a clean card.
-> The forecast was right days ahead, and nobody had told big workplaces what to do. Almost five years on, I went looking for whether anyone has written that advice since.
+**Picture:** a real picture between the text screens: NWS Paducah survey photo of Mayfield, slow push; then the claim on a clean card.
+> The forecast was right days ahead, and nobody had told big workplaces what to do. Almost five years on, I went to find out if anyone has written that advice since.
 
 *[loop E1 open]*
 
 ### I1-S7 — narration
-**Picture:** back to our Edwardsville map; the EF3 track meets the building outline. Clock chips "8:06 PM warning" and "8:27 PM" (SA p28, p29). An outline of a megaphone behind a cage, drawn, then chapter blackout into A1.
-> Edwardsville came first. At about eight twenty-seven that night, the tornado hit the delivery station, and the tornado warning had been out for more than twenty minutes. OSHA's letter lists a megaphone: the one meant to start the shelter plan was locked in a cage.
+**Picture:** back to our Edwardsville map; the EF3 track meets the building outline. Clock chips "8:06 PM warning" and "8:27 PM" (SA p28, p29). A drawn megaphone, alone, then chapter blackout into A1 (the cage is A1's reveal).
+> Edwardsville came first. At about eight twenty-seven, the tornado hit the delivery station, and the warning had been out for more than twenty minutes. The first thing OSHA's letter lists is a megaphone, and where it was that night.
 
 *[loop L1 carried into A1]* *(chapter blackout, hand-placed)*
 
@@ -153,7 +153,7 @@ Stakes order, not chronology. Each act changes what the viewer understood. Every
 ## A2 · The week the forecast held (about 5:30 to 9:00)
 - **Purpose:** prove the first half of the Claim on the record. The forecast was right days ahead.
 - **Question:** if it was on the map for a week, how much did each office say, and when? (L2)
-- **Reveal:** the full countdown, on one weekday clock: SPC Day 8 text the Friday before (3 Dec, no risk area, Finding 1); ECMWF Extreme Forecast Index flagged it at Day 7 (SA p45); Memphis on Monday 3:36 PM, the front "Friday/Saturday" that "could be another severe weather threat", repeated in three later issuances (say where Memphis's area is); WFO Paducah's first partner call that Monday (SA p14); Slight on Wednesday 2:15 AM, about 60 hours before the first reports; Enhanced on Thursday with a 10 % tornado and a hatched area; Moderate on Friday 10:18 AM, 15 % hatched (the "twelve minutes early" beat is already spent in I1-S2: here only the risk map); Tornado Watch 552 at 3:00 PM (first of eleven), 6 h 25 min before Mayfield; Watch 553 at 5:20 PM, about 3 hours before Edwardsville. The twist: Finding 3a, some offices waited until Day 1 or 2 "in part due to established playbooks"; Recommendation 3, say what you know when you know it (SA p15). One named forecaster, sourced [verify: named forecaster and quote].
+- **Reveal:** the full countdown, on one weekday clock: SPC Day 8 text the Friday before (3 Dec, no risk area, Finding 1); ECMWF Extreme Forecast Index flagged it at Day 7 (SA p45); Memphis on Monday 3:36 PM, the front "Friday/Saturday" that "could be another severe weather threat", repeated in three later issuances (say where Memphis's area is); WFO Paducah's first partner call that Monday (SA p14); Slight on Wednesday 2:15 AM, about 60 hours before the first reports; Enhanced on Thursday with a 10 % tornado and a hatched area; Moderate on Friday 10:18 AM, 15 % hatched sent twelve minutes early "to get the word out" (SA p7; moved here from the intro in fix round 2, never confused with warning lead time on screen); Tornado Watch 552 at 3:00 PM (first of eleven), 6 h 25 min before Mayfield; Watch 553 at 5:20 PM, about 3 hours before Edwardsville. The twist: Finding 3a, some offices waited until Day 1 or 2 "in part due to established playbooks"; Recommendation 3, say what you know when you know it (SA p15). One named forecaster, sourced [verify: named forecaster and quote].
 - **Visual event:** [RS] the countdown clock with each product stamping onto a growing risk map; [RS] Finding 3a as attributed text.
 - **Exit hook:** P2 on camera. Then the Memphis line "Friday we should be well into the 70s" back on screen: seventy degrees, in December. `[loop L3 open]`
 
@@ -168,7 +168,7 @@ Stakes order, not chronology. Each act changes what the viewer understood. Every
 ## A4 · The candle factory (about 13:15 to 17:15)
 - **Purpose:** Arc 2, the bigger loss: the same correct forecast, the strongest warning there is, and still no weather-service guidance for a building that big.
 - **Question:** the factory had a warning at nine-oh-five; what reached the people inside? (L4)
-- **Reveal:** Graves County tornado warning 9:05 PM; the tornado reached Mayfield at about 9:26 PM (NWS Paducah event page), the same minute as the Tornado Emergency for Mayfield, with the county emergency manager called directly (SA p29, p47). The lead is the twenty-one minutes from the 9:05 warning (SA p47: "In the twenty-one minutes between these tornado warnings"), never a lead from the 9:26 Emergency. About 110 people inside (Spectrum News); eight lost their lives [verify: official count, Graves County coroner or Kentucky state; 8 is the company spokesperson (KSL) and AP; never state 6 or 9, never show the DVIDS caption]; the Graves County toll of 24 and 57 on the whole track (NWS Paducah event page). Night shift for seasonal orders [verify: unverified in the fact sheet]. One named person, age, job, sourced quote [verify: none in the fact sheet]. Never the Facebook Live from under the rubble, never chaser or drone aerials. Firing-threat claims only as allegations, attributed: at least five workers told NBC News supervisors warned they would be fired for leaving; the company spokesman called the claims "absolutely untrue". Both sentences together, or neither. Escalation: disturbing, then personal.
+- **Reveal:** Graves County tornado warning 9:05 PM; the tornado reached Mayfield at about 9:26 PM (NWS Paducah event page), the same minute as the Tornado Emergency for Mayfield, with the county emergency manager called directly (SA p29, p47). The lead is the twenty-one minutes from the 9:05 warning (SA p47: "In the twenty-one minutes between these tornado warnings"), never a lead from the 9:26 Emergency. About 110 people inside (Spectrum News); eight lost their lives (CONFIRMED with attribution: Mayfield Consumer Products and AP, 14 Dec 2021, on a source line; never state 6 or 9, never show the DVIDS caption); the Graves County toll of 24 and 57 on the whole track (NWS Paducah event page). Night shift for seasonal orders [verify: unverified in the fact sheet]. One named person, age, job, sourced quote [verify: none in the fact sheet]. Never the Facebook Live from under the rubble, never chaser or drone aerials. Firing-threat claims only as allegations, attributed: at least five workers told NBC News supervisors warned they would be fired for leaving; the company spokesman called the claims "absolutely untrue". Both sentences together, or neither. Escalation: disturbing, then personal.
 - **Visual event:** [RS] P4 on camera; DVIDS/FEMA candle-factory gallery stills (images only); Kentucky Guard and Army Corps Mayfield photos; NWS Paducah survey photos.
 - **Exit hook:** then the inspectors came, and they needed a rule to measure a shelter plan against. `[loop L5 open]`
 
@@ -194,17 +194,20 @@ Stakes order, not chronology. Each act changes what the viewer understood. Every
 - Runtime band 21 to 24 min proposed (reason in the header); acts sized to it.
 - Fix round 1: hook cut to three short segments; sentence two breaks "Somebody planned for it" with the review's gap, then "The forecast was right", anchored to the Storm Prediction Center (it covered both towns), not Memphis.
 - Fix 4: E1 re-aimed to "has anyone written that advice since?"; Finding 6's gap is said in the hook, the St. Louis words in I1-S5, and Z1 pays with Recommendation 6 and the Illinois law.
-- Toll moved into T1 ("two workplaces ... fourteen ... inside them", the binding wording); the six and eight split stays once, in I1-S4, with the human stake (about a hundred ten inside).
-- Outlook ladder cut from the intro: one human line (the outlook sent twelve minutes early); Memphis kept for A2 only.
-- One clock: weekdays ("the Friday before", "that week", "the Friday itself"). Year left to the popfig in the hook.
+- Fix round 2: the loss is H1-S2 ("fourteen people lost their lives at two workplaces"), then the gap and "the forecast was right" in H1-S3; the SPC week-ahead line moved to I1-S2 as Q1's payoff, said once. T1 names the two buildings and asks L1 aloud; no toll repeat.
+- Factory count resolved as CONFIRMED with attribution (coordinator, fix round 2): 8 per Mayfield Consumer Products (KSL) and AP, 14 Dec 2021, on a source line wherever it is said. No inline marker on it.
+- I1-S2 carries the human stake (about a hundred ten at work inside the factory) instead of the outlook timing; "twelve minutes early" moved to the A2 card; "kept getting stronger" left to P2.
+- I1-S5 said plainly in the St. Louis office's mouth; the exact words are on the card only. "still" dropped from I1-S3; the cage held for A1.
+- One new marker: the football-field comparator in I1-S4 (human scale the grader asked for).
+- One clock: weekdays ("a week ahead", "that Friday", "that night"). Year left to the popfig in the hook.
 - No state count anywhere; "more than twenty minutes" for Edwardsville everywhere; "no reinforced storm shelter".
 - Firing-threat allegations kept out of H1, T1 and I1; they sit in A4 only, attributed, with the denial.
 - Hook avoids both rival openings: no cold open on the candle factory as an event (the DVIDS still sits under the review's line), and no "warning is no longer the problem" framing; the gap is the guidance.
 - Siren under the hook only; drone bed from T1. Years spoken as words.
 - Loop and question tags sit on their own lines after each quote so TTS never voices them; `[verify]` markers sit inline.
-- Rationed devices in the open: "If you've lived in western Kentucky, you know" (I1-S3), first person "I went looking" (I1-S6). Two used.
+- Rationed devices in the open: "If you've lived in western Kentucky, you know" (I1-S3), first person "I went to find out" (I1-S6), "the first thing I looked up" (T1). Three used, the cap for a 20 min script: the acts use none of these three again.
 
 ## Self-scores ("a person talking to you", 1 to 10)
-- H1: 8. Question, answer, then two plain breaks; "Afterward" carries the turn without a date.
-- T1: 8. Plain and short; the gap is one line.
-- I1: 8. The product ladder is gone; S5 is a quoted review and reads as one, which S6's first-person line pulls back.
+- H1: 8. Question, answer, then the loss and the gap in plain words.
+- T1: 8. Names the buildings and asks the question in first person.
+- I1: 8. S5 now sounds like Paul telling you what the office wrote; S1 still carries a record line.
