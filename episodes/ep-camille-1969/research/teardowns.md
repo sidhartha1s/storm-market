@@ -108,7 +108,7 @@ over it. The captions never name the speaker; viewers name him as Trooper (Ed) T
   The "32" here is the only place in these videos where that number appears; it is a speaker's estimate, not an official figure.
 
 ## Extra. "HURRICANE CAMILLE - 'A Lady Called Camille' | FULL Documentary" (Bright Enlightenment)
-https://www.youtube.com/watch?v=J49V7gQyaxU . Channel 47,200 subscribers. The 1969 civil-defense film (English captions read as a translation: "320 km per hour").
+https://www.youtube.com/watch?v=J49V7gQyaxU . Channel 47,200 subscribers. Appears to be the 1969 civil-defense film (a commenter thanks the "Office of Civil Defense"; the English captions read as a translation: "320 km per hour"). Source of the film not checked.
 - **Lead (0:00):** "It began before dawn, early Sunday morning." The film's own frame is the civil defense directors Wade and Julia Guice.
 - **Minutes on Virginia vs coast:** Virginia 11:30 to 15:00 (about 3.5 min, 13 %), plus about 30 s of clean-up in Virginia at 19:30.
 - **Numbers stated:** "More than 27 inches in less than 6 hours"; "A rainy night in the mountains has cost 106 lives. More than 75 are still missing. Almost as
