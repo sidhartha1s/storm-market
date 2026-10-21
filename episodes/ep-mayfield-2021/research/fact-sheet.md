@@ -11,6 +11,8 @@ https://www.weather.gov/media/publications/assessments/NWS_Joint_Regional_Servic
 ## Toll and scale
 - 71 tornadoes, eight states, 89 direct tornado fatalities; "the deadliest December tornado event on record since
   1950", passing Vicksburg, Mississippi, 5 Dec 1953 (38). SA p4 (re-read) [F01-F05]. No indirect count in the SA.
+  Never say a state count: SA p4 says eight, its own Appendix C (p59-61) lists ten state codes (fc-slice-b.tsv).
+  The 71 ran from Friday evening into Saturday (Bowling Green 1:09 AM Sat), so not "that Friday, seventy-one".
 - Long-track tornado: EF4, 190 mph, 165.6 miles, from near Woodland Mills, Tennessee, 8:49 PM CST to Falls of Rough,
   Kentucky, 11:47 PM CST; the longest tracked December tornado on record. SA p3, p4, p59 [F06, F19]. Max width 1.13
   miles, 57 deaths on this tornado, 508 to 533 injured, 24 deaths in Graves County: NWS Paducah event page [F19b, F19c].
