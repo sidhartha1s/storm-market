@@ -77,7 +77,7 @@ the 27 inches near the "probable maximum" as the headline fact; the Raines broth
 reference video has, it is current (the appeal is open now), and 2 and 3 give it its mechanism and science acts. It keeps the half of
 the ticked line that holds ("some were never found") and drops the half the sources break ("the deadliest part").
 
-## Angle (pending the owner's lock on candidate 1)
+## Angle (locked by the owner, 22 Oct 26: "cand1", his saved answer `camille_angle` in C:\Users\Sidhartha\.claude\scratch\devq-retention\answers-eps-gates.json, saved_at "22 Oct 26 02:01:13", on eps-gates.html #camille, which showed: "Camille's Virginia flood still is not closed: 57 years later the state is asking for help to name eight victims, and 33 more were never found. Arcs: the mountains came down (most died of injuries, not drowning); the rain was already on paper (a 1956 maximum-rain study).")
 Claim: Camille's Virginia flood still is not closed: fifty-seven years later the state is asking for help to name eight people the flood took in Nelson County, and thirty-three more from Nelson County were never found at all.
 Spine / arcs: 1 is the spine; 2 (the mountainsides came down, blunt-force injuries) and 3 (the rain was already on paper) are arcs; 4 is one line of context.
 Source: VDH appeal (29News/WVIR 31 Aug 2026; WJLA); USGS OFR 70-51 pp. 1, 7, 22; USGS PP 804 abstract; USGS WSP 2030 p. 147; NWS Jackson Camille page.
