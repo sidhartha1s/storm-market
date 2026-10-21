@@ -473,21 +473,21 @@ I1-S4), Q4 "what did the St. Louis office write" (I1-S4 to I1-S5). L1 is asked a
 *[note: the pathogens standard keeps its short name in voice and on screen; its full name carries a hard flag word]*
 
 ### A5-S7 — narration
-**Picture:** "CONTESTED" stamps onto each of the seven ledger lines in turn. Then a DVIDS/FEMA candle-factory gallery still, wide, a different frame from 7018049 (the gallery's only use in A5).
+**Picture:** "CONTESTED" stamps onto each of the seven ledger lines in turn. Then the FEMA Mayfield courthouse still (candidates/a5 S7_c3), wide; no second candle-factory frame exists and 7018049 stays A4's.
 > The company contested all seven. A citation is the state's allegation, and a contested one isn't settled. At the time, the case was open, and the violations could still be changed, removed or added. I looked for how it ended, and in everything I read through twenty twenty six, I couldn't find a final outcome.
 
 *[VE] "contested" stamped on each line*
 *[Q open: did the courts decide anything]*
 
 ### A5-S8 — narration
-**Picture:** a Kentucky National Guard video of debris clearing in Mayfield (ky.ng.mil video 825642), narrated over. No unit, credit or date on screen until the page is read and its public-domain status confirmed. Date chips "Mar 2023 · federal court" and "Jun 18, 2026 · Ky. Court of Appeals"; the claims are not named on screen.
+**Picture:** a Kentucky National Guard video of debris clearing (DVIDS 825642, 36 to 58 s), narrated over. It was filmed in Dawson Springs, not Mayfield: no place name on screen. No unit, credit or date on screen until the page is read and its public-domain status confirmed. Date chips "Mar 2023 · federal court" and "Jun 18, 2026 · Ky. Court of Appeals"; the claims are not named on screen.
 > Former workers have sued the company. So far, the rulings are about procedure. A federal judge sorted out which claims could go ahead in March twenty twenty three. Then in June twenty twenty six, Kentucky's Court of Appeals sent one case back for trial. For the workers who sued, there's still no ruling on the night itself.
 
 *[Q closes]* *[real clip moment: Kentucky Guard video; footage status to confirm before locking]*
 *[HUMAN: the workers who sued, unnamed by choice; no supervisor named, no allegation content]*
 
 ### A5-S9 — narration
-**Picture:** the Service Assessment cover (weather.gov PDF, public domain), slow push, then chapter blackout, hand-placed, into Z1.
+**Picture:** the Service Assessment title as our own text card (title, office names, date from the cover); never the cover image, which carries a FOX 2 aerial. Slow push, then chapter blackout, hand-placed, into Z1.
 > The weather service wrote that gap down itself, in its own review of that night. What I wanted to know next was whether anyone has filled it since.
 
 *[loop E1 still open, paid in Z1]* *(chapter blackout, hand-placed)*
