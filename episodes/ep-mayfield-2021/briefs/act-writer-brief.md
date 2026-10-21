@@ -1,5 +1,12 @@
 # Act writer brief: ep-mayfield-2021 (one writer per act, 22 Oct 26)
 
+Goal: the act's narration for the Mayfield 2021 documentary on the locked angle "the forecast was right days ahead, and nobody had told big workplaces what to do".
+Stop rule: 40 minutes, then report what you have.
+Already accepted: the angle (angle.md); the hook and intro text H1, T1, I1; the act order and cards; runtime 21-24 min.
+Never touch: every file except episodes\ep-mayfield-2021\drafts\<ACT>.md; no deletes; no cd in Bash; no settings, hooks, CLAUDE.md, skills or memory.
+Done = drafts\<ACT>.md exists and the parse_segments command in "Done" below prints its segment count and word total.
+Output: final message, text, at most 1,500 characters, shape as in "Output" below.
+
 Project: C:\Users\Sidhartha\Automation Projects\storm-market\.claude\worktrees\ep-mayfield-2021-a6d084 — "The Warning Hour",
 narrated US weather-disaster documentaries (narrator Paul, US English, viewers 45-75 who saw these events live). Rules: its CLAUDE.md.
 You are the script WRITER for ONE act. You report to the orchestrator session only, never to the owner.
