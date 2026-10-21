@@ -48,7 +48,7 @@ of the principle beside it. Never reuse its words or its sentence pattern in a s
 - No fluff before it: sentence one IS the payoff, in the chosen shape.
   Delete-test: cut sentence one — if the hook still works, it was fluff.
 - No roadmap phrases ("one more thing before", "in the next twenty minutes"): they read as delay. Exception (owner 4 Oct 26): a hook callback that names the hook's claim ("Stick with me, because what I'm about to explain is exactly why <the hook's claim>.") is allowed, several times through the video, e.g. at act seams (home: `script-scaling.md` "open-loop registry"). Runtime roadmaps stay banned.
-- Cold open (DESIGN.md): frame one is Paul on camera speaking the hook line (documentaries; the hook sentence only, nothing added to fill his clip), then mid-action footage, never black. The first line starts at 0:00 — no broadcast,
+- Cold open (DESIGN.md): frame one is Paul on camera speaking the hook line (documentaries; the one sentence above comes first, then he keeps speaking the next line or two of the tail so his clip carries about 22 to 26 words: owner 11 Oct 26, a clip costs the same at 12 words or 30, "12 is just too low"), then mid-action footage, never black. The first line starts at 0:00 — no broadcast,
   radio or archive audio in the hook (bad audio quality loses viewers before the hook finishes). Date/place popfig
   inside the first second. Every cut lands ON an audio event, never mid-sentence.
 
@@ -181,7 +181,7 @@ alternative by default, for example "lost their lives" (owner 9 Oct 26); the tab
   IT locks, without waiting for later acts.
 - Every audio-carrying insert is transcribed in full before cut selection; cut chosen at the transcript's peak.
 - Paul on camera (documentaries; `references/mg-quickref.md` "Paul on screen"): besides the hook sentence, mark up to 5 lines
-  he speaks full frame, each at most about 26 words (one 10 s clip). They sit at turning points, where the story changes
+  he speaks full frame, each about 22 to 26 words (one 10 s clip, filled: a short line wastes the clip). They sit at turning points, where the story changes
   direction, and one of them is the `cta-hinge` tease right before the CTA (that one keeps the hinge's 25-word cap below).
 
 ## CTA hinge (must-keep every episode from ep4 on) — DESIGN.md "CTA contract"
