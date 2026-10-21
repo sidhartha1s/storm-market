@@ -17,7 +17,7 @@ design review) before any paid generation:
 | Type | Audio | Visual | Notes |
 |---|---|---|---|
 | `narration` | its own TTS wav | b-roll/stills/graphics cut on word timestamps | text written TTS-safe |
-| `hold` | ambience/music bed, plus any outside sound (radio, 911, footage sound) laid over its picture; no narration | 4 s of bed alone at most | the breathing room; use after emotional payoffs, before act turns |
+| `hold` | ambience/music bed, plus any outside sound (radio, 911, footage sound) laid over its picture; no narration; 4 s of bed alone at most | one clip just sits, 3-10s | the breathing room; use after emotional payoffs, before act turns |
 | `insert` | the clip's OWN audio | interview / TV news / radio / 911 call | OWNER CONFIRMS every insert before it enters a render |
 | `graphic` | optional VO | radar loop / map / timeline animation | self-made from NEXRAD/data = zero claim risk |
 
