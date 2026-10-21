@@ -34,6 +34,8 @@ channel:
                                    # (8 Oct 26), so 1.10 x 168 / 197 = 0.94, about 185 wpm on that passage.
   tempo_by_prefix:                 # per-lane override, matched against the episode slug's prefix
     sh-: 0.99                     # shorts — references/shorts/PLAN.md "Pace" (owner 16 Sep 26: 1.16 on the old voice, same ratio)
+  voice_captions:                 # owner 20-21 Oct 26: epN documentaries caption every outside voice and allow no hold over 4 s of bed alone (lint_timeline checks 7 and 8)
+    exempt: [ep-nepal-floods-2026, ep1-joplin, ep2-2011-super-outbreak, ep5-california-2018, ep6-katrina-2005]   # shipped before the rules; never extended
   cta:                            # MUST-KEEP in every episode (owner order 2026-08-30) — DESIGN.md "CTA contract"
     file: assets/cta/paul-storm-ready-v9-oct20.mp4    # md5 bba0b9f3289d0de3797dbfbd1017e3d8 (owner 20 Oct 26 "go v5": new Paul shots from the locked sheets, no zoom, logo over the watermark, narrator voice via Chatterbox VC; QR opens /yt/?src=qr; 1080p24); swap = NEW versioned file + bump here, never overwrite; the old file leaves assets/cta/
     duration: 24.042              # the picture stream (577 frames at 24 fps); the audio stream is trimmed to end with it
