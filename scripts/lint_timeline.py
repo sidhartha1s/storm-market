@@ -113,12 +113,14 @@ def main():
         if re.search(r'data-volume="1(?:\.0+)?"', m.group(0))]
     voice = sorted((s, s + d) for s, d in ((float(a), float(b)) for a, b in paul_lines +
                    re.findall(r'<audio\b[^>]*id="nx-(?!ins)[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)))
-    # audible non-narrator sound that carries a pause: ins- audio (radio, 911) and unmuted footage, never a bed or the CTA
+    # audible sound other than narration, a bed or the CTA carries a pause: radio, 911, broadcast footage, swells
     outside = sorted(
         (float(s), float(s) + float(d)) for tag, s, d in re.findall(
             r'(<(?:audio|video)\b[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"[^>]*>)', html)
-        if re.search(r'\sid="ins-(?!cta|paul)', tag) and not re.search(r'data-volume="0(?:\.0+)?"', tag)
-        and not re.search(r"\smuted(?=[\s>/=]|$)", tag))
+        if not re.search(r'\sid="(?:nx-(?!ins)|ins-cta)', tag) and "data-bed" not in tag and "cta/" not in tag
+        and not re.search(r'data-volume="0(?:\.0+)?"', tag) and not re.search(r"\smuted(?=[\s>/=]|$)", tag))
+    _shipped = ((_cfg.get("channel") or {}).get("voice_captions") or {}).get("exempt") or []
+    dead_air_applies = bool(re.match(r"ep\d*-", ep.resolve().name)) and ep.resolve().name not in _shipped
     structure = [(float(a), float(a) + float(b)) for a, b in re.findall(
         r'<section\b[^>]*class="[^"]*\b(?:blackout|hold)\b[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)]
     for (s1, e1), (s2, e2) in zip(voice, voice[1:]):
