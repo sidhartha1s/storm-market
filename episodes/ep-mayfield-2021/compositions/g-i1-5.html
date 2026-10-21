@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #g-i1-5-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#dfe7ee; background:transparent; }
+  #g-i1-5-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  #g-i1-5-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-i1-5-tile { opacity:0; visibility:hidden; }
+  /* outline caption: HUD, never scaled; second half waits at opacity 0 so the line never reflows */
+  #g-i1-5-cap { position:absolute; left:485px; top:186px; width:670px; text-align:center; white-space:nowrap;
+    font-weight:700; font-size:26px; letter-spacing:2px; color:#c8d3e0; }
+  #g-i1-5-cap-b { display:inline-block; color:#f2f5f8; opacity:0; visibility:hidden; }
+  /* right rail x 1270-1560 */
+  #g-i1-5-count { position:absolute; left:1270px; top:372px; width:290px; font-family:'Courier New',monospace; font-weight:700;
+    font-size:84px; line-height:1; color:#e8c56a; opacity:0; visibility:hidden; }
+  #g-i1-5-countlab { position:absolute; left:1270px; top:470px; width:290px; font-weight:700; font-size:20px; letter-spacing:6px;
+    color:#c8d3e0; opacity:0; visibility:hidden; }
+  #g-i1-5-reftile { position:absolute; left:1270px; top:520px; width:224px; height:100px; opacity:0; visibility:hidden; }
+  #g-i1-5-chip { position:absolute; left:110px; top:836px; padding:16px 32px; box-sizing:border-box; white-space:nowrap;
+    font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:1.15; color:#f2f5f8;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14);
+    border-left:6px solid #c0392b; border-radius:28px; opacity:0; visibility:hidden; }
+</style>
+<div id="g-i1-5-root" data-composition-id="g-i1-5" data-width="1920" data-height="1080">
+  <div id="g-i1-5-ground"></div>
+  <svg id="g-i1-5-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="g-i1-5-hatch" patternUnits="userSpaceOnUse" width="12" height="12" patternTransform="rotate(45)">
+        <rect x="0" y="0" width="12" height="12" fill="#5a768f" fill-opacity="0.18"/>
+        <line x1="0" y1="0" x2="0" y2="12" stroke="#5a768f" stroke-opacity="0.85" stroke-width="5"/>
+      </pattern>
+    </defs>
+    <g id="g-i1-5-exitg">
+      <g id="g-i1-5-floatg">
+        <!-- 360 x 160 ft fields at 0.62 px/ft = 223.2 x 99.2 px; outline 1,080 x 1,019 ft = 669.6 x 631.78 px, top-left (485.2, 244.11) -->
+        <g id="g-i1-5-tiles">
+          <rect class="g-i1-5-tile" x="485.2" y="244.11" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="708.4" y="244.11" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="931.6" y="244.11" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="485.2" y="343.31" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="708.4" y="343.31" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="931.6" y="343.31" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="485.2" y="442.51" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="708.4" y="442.51" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="931.6" y="442.51" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="485.2" y="541.71" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="708.4" y="541.71" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="931.6" y="541.71" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="485.2" y="640.91" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="708.4" y="640.91" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="931.6" y="640.91" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="485.2" y="740.11" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="708.4" y="740.11" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <rect class="g-i1-5-tile" x="931.6" y="740.11" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#04070c" stroke-width="2"/>
+          <!-- 19th: the last 59 ft strip, 1,080 x 59 ft = 1.106 fields, hatched -->
+          <rect class="g-i1-5-tile" id="g-i1-5-strip" x="485.2" y="839.31" width="669.6" height="36.58" fill="url(#g-i1-5-hatch)" stroke="#04070c" stroke-width="2"/>
+        </g>
+        <!-- outline starts at scale 0.2 about (820, 560) in its own attributes, so frame 0 is right before any set() -->
+        <rect id="g-i1-5-outline" x="753.04" y="496.82" width="133.92" height="126.36" fill="none" stroke="#dfe7ee" stroke-width="4"/>
+      </g>
+    </g>
+  </svg>
+  <div id="g-i1-5-cap"><span id="g-i1-5-cap-a">Illustrative outline</span><span id="g-i1-5-cap-b">&nbsp;&middot; 1.1 million sq ft</span></div>
+  <div id="g-i1-5-count">1</div>
+  <div id="g-i1-5-countlab">football fields</div>
+  <div id="g-i1-5-reftile"><svg width="224" height="100" viewBox="0 0 224 100" xmlns="http://www.w3.org/2000/svg"><rect x="0.4" y="0.4" width="223.2" height="99.2" fill="#5a768f" fill-opacity="0.55" stroke="#dfe7ee" stroke-opacity="0.5" stroke-width="2"/></svg></div>
+  <div id="g-i1-5-chip">6 lives</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-i1-5-";
+  const tl = gsap.timeline({ paused: true });
+  // host data-start 76.265 = i1-s3 "building" @9.04; comp-local cues below
+  const CX = 820, CY = 560, W = 669.6, H = 631.78;
+  const outline = document.querySelector(P + "outline");
+
+  tl.set([P + "cap-b", P + "count", P + "countlab", P + "reftile", P + "chip", ".g-i1-5-tile"], { autoAlpha: 0 }, 0);
+
+  // grow 0.2 -> 1.0 about the centre: a 5x move, so log-interpolated (mg-quickref logZoom rule), 1.2 s
+  const z = { t: 0 };
+  tl.fromTo(z, { t: 0 }, { t: 1, duration: 1.2, ease: "power2.out", onUpdate: function () {
+    const s = 0.2 * Math.pow(5, z.t);
+    outline.setAttribute("x", CX - W * s / 2); outline.setAttribute("y", CY - H * s / 2);
+    outline.setAttribute("width", W * s); outline.setAttribute("height", H * s);
+  } }, 0);
+
+  // slow float for the whole window (8 px, 1.2 s legs)
+  tl.to(P + "floatg", { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0.6);
+
+  /* A MILLION @1.86 (i1-s3 10.90) */
+  tl.fromTo(P + "cap-b", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 1.86);
+  tl.fromTo(P + "reftile", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 1.86);
+
+  /* 19 @3.567 (i1-s4 0.42) */
+  const tiles = gsap.utils.toArray(".g-i1-5-tile");
+  tiles.forEach(function (t, i) {
+    tl.fromTo(t, { autoAlpha: 0, y: -14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out" }, 3.567 + i * 0.05);
+  });
+  tl.fromTo(P + "count", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 3.567);
+  tl.fromTo(P + "countlab", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.667);
+  const cnt = { v: 1 };
+  const countEl = document.querySelector(P + "count");
+  tl.fromTo(cnt, { v: 1 }, { v: 19, duration: 1.4, ease: "power3.out", onUpdate: function () {
+    countEl.textContent = Math.round(cnt.v);
+  } }, 3.567);
+
+  /* SIX @6.307 (i1-s4 3.16) */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 6.307);
+
+  /* AT THE CANDLE FACTORY @8.827 (i1-s4 5.68): everything slides out, ground fades through to the still beneath; host ends 9.427 */
+  tl.to(P + "chip", { x: -520, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 8.827);
+  tl.to([P + "count", P + "countlab", P + "reftile"], { x: 520, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 8.827);
+  tl.to(P + "cap", { y: -60, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 8.827);
+  tl.to(P + "exitg", { scale: 1.12, svgOrigin: "820 560", autoAlpha: 0, duration: 0.55, ease: "power2.in" }, 8.827);
+  tl.to(P + "ground", { autoAlpha: 0, duration: 0.55, ease: "power1.in" }, 8.827);
+
+  window.__timelines["g-i1-5"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
