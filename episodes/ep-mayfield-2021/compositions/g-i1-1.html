@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-i1-1 · I1-S1 · our own outbreak map: the 71 surveyed tracks draw in start-time order, rail '71 · tornadoes', '89 · lives',
+  then '1953 · 38' beside '2021 · 89' on one scale; source line. Brief: briefs/mg/g-i1-1.md. Map family (base g-t1-1: land
+  #0b1016, state line #4a5a6c 2 px, state-name style, scan line, vignette, glass, source line).
+  Projection (master-map header): X = 3841*(lon+97.576), Y = -5585*(lat-46.6213).
+  CAMERA: screen x = X*0.017037 + 288.44, y = Y*0.017037 - 401.72 (65.44 px per degree of longitude, 95.15 of latitude).
+  The 71 tracks span lon -93.387..-83.799, lat 32.436..41.433 -> x 562.6..1190.0, y 92.0..948.0, left of the rail.
+  Pull-out 1.0 -> 0.9 linear about 876.3, 520.0 (the track box centre): the tracks end in x 593.9..1158.6, y 134.8..905.2.
+  Frame at 1.0: lon -101.98..-72.64, lat 31.05..42.40.
+  BASEMAP: the master map is clipped at 35.0 N (its Natural Earth paths end at Y 64905), and the outbreak reaches 32.44 N, so
+  the land is us-atlas states-10m (ep-enderlin-2025/vendor/b2-conus-states.svg, Albers 29.5/45.5, lon0 -96; fit back to lon/lat
+  from its own town dots, residual 0.07-0.23 px), put through the same projection and camera.
+  Every geometry number lives in compositions/data/g-i1-1/map.js, written by .qc-tmp/g-i1-1-calc/prj.py from
+  research/geo/tornado_tracks_dat.geojson (71 LineStrings, NWS Damage Assessment Toolkit). Each track draws over
+  0.3 s + 1.0 s x (its length / 165.6 mi), starting 0.2 s + 4.6 s x (its start minute / 927): all 71 drawn by 5.2 s.
+  State names: boxes checked by prj.py, clear of every track by 17.6 px or more and of every state line by 5.1 px or more.
+  Bars: 1 px = 4 lives: 38 -> 152 px, 89 -> 356 px (2.342 = 89 / 38).
+-->
+<template>
+<style>
+  #g-i1-1-root { position:absolute; inset:0; overflow:hidden; background:#04070a; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .g-i1-1-world { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-i1-1-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-i1-1-land { fill:#0b1016; stroke:#4a5a6c; stroke-width:2px; stroke-linejoin:round; }
+  .g-i1-1-trk { fill:none; stroke:#e74c3c; stroke-linecap:round; stroke-linejoin:round; visibility:hidden; }
+  .g-i1-1-state { font-family:Arial, sans-serif; font-size:22px; font-weight:700; letter-spacing:6px; fill:#93a3b2; fill-opacity:0.55; }
+  .g-i1-1-vig { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 50%, rgba(3,5,7,0) 52%, rgba(3,5,7,0.6) 100%); }
+  .g-i1-1-scan { position:absolute; left:0; top:20px; width:1920px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .g-i1-1-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; opacity:0; visibility:hidden; }
+  .g-i1-1-rail { position:absolute; left:1304px; top:120px; width:520px; height:354px; box-sizing:border-box; border-radius:28px; }
+  .g-i1-1-row { position:absolute; left:40px; top:36px; height:84px; display:flex; align-items:baseline; opacity:0; visibility:hidden; }
+  .g-i1-1-num { font-family:'Courier New', monospace; font-size:84px; font-weight:700; line-height:84px; color:#e74c3c; }
+  .g-i1-1-lab { margin-left:18px; font-size:30px; font-weight:700; line-height:30px; letter-spacing:1px; color:#dfe7ee; }
+  .g-i1-1-bar { position:absolute; left:40px; width:440px; height:74px; opacity:0; visibility:hidden; }
+  .g-i1-1-btxt { position:absolute; left:0; top:0; font-size:30px; font-weight:700; line-height:30px; letter-spacing:1px; color:#dfe7ee; }
+  .g-i1-1-bfill { position:absolute; left:0; top:46px; height:22px; border-radius:3px; }
+  .g-i1-1-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; font-size:19px; font-weight:700; line-height:19px;
+    letter-spacing:1px; color:#c8d3e0; }
+</style>
+<div id="g-i1-1-root" data-composition-id="g-i1-1" data-width="1920" data-height="1080" data-duration="18.661">
+  <div class="g-i1-1-world" id="g-i1-1-world">
+    <svg class="g-i1-1-svg" viewBox="0 0 1920 1080">
+      <path id="g-i1-1-land" class="g-i1-1-land" d=""/>
+      <!-- state names, label tier, each clear of every track and state line (prj.py box check) -->
+      <g class="g-i1-1-state" text-anchor="middle">
+        <text id="g-i1-1-st-mo" x="623.9" y="394.8">MISSOURI</text>
+        <text id="g-i1-1-st-ar" x="623.9" y="727.9">ARKANSAS</text>
+        <text id="g-i1-1-st-il" x="830.0" y="142.7">ILLINOIS</text>
+        <text id="g-i1-1-st-ky" x="1176.8" y="399.6">KENTUCKY</text>
+        <text id="g-i1-1-st-tn" x="1117.9" y="632.7">TENNESSEE</text>
+        <text id="g-i1-1-st-al" x="1000.2" y="846.8">ALABAMA</text>
+      </g>
+      <g id="g-i1-1-tracks"></g>
+    </svg>
+    <div class="g-i1-1-scan" id="g-i1-1-scan"></div>
+  </div>
+  <div class="g-i1-1-vig"></div>
+  <!-- map rail: the numbers live here, never a popfig over the map -->
+  <div class="g-i1-1-glass g-i1-1-rail" id="g-i1-1-rail">
+    <div class="g-i1-1-row" id="g-i1-1-r71"><span class="g-i1-1-num" id="g-i1-1-n71">71</span><span class="g-i1-1-lab" id="g-i1-1-l71">· tornadoes</span></div>
+    <div class="g-i1-1-row" id="g-i1-1-r89" style="top:156px;"><span class="g-i1-1-num" id="g-i1-1-n89">89</span><span class="g-i1-1-lab" id="g-i1-1-l89">· lives</span></div>
+    <div class="g-i1-1-bar" id="g-i1-1-b53" style="top:156px;"><div class="g-i1-1-btxt" id="g-i1-1-t53">1953 · 38</div><div class="g-i1-1-bfill" id="g-i1-1-f53" style="width:152px; background:#5a768f;"></div></div>
+    <div class="g-i1-1-bar" id="g-i1-1-b21" style="top:252px;"><div class="g-i1-1-btxt" id="g-i1-1-t21">2021 · 89</div><div class="g-i1-1-bfill" id="g-i1-1-f21" style="width:356px; background:#e74c3c;"></div></div>
+  </div>
+  <div class="g-i1-1-glass g-i1-1-src" id="g-i1-1-src">NWS Service Assessment, p4: deadliest December tornado event on record since 1950</div>
+</div>
+<script src="compositions/data/g-i1-1/map.js"></script>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-i1-1-";
+  const DUR = 18.661;
+  const D = window.__gI11;
+  /* cues: audio/i1-s1.words.json, comp-local = i1-s1 time - 2.04 (host 34.006, nx-i1-s1 at 31.966) */
+  const C = {
+    t71: 1.02,    /* 71 @3.06 */
+    l89: 2.72,    /* 89 @4.76 */
+    since: 5.28,  /* Since 1950 @7.32 ('1950,'; 'Since' @7.14) */
+    b38: 10.62,   /* 38 @12.66 */
+    b21: 14.06,   /* 1953, @16.10 */
+    seen: 18.12   /* had seen it @20.16 ('it.'): rail out, fade-through to the next page */
+  };
+  const tl = gsap.timeline({ paused: true });
+
+  /* land and tracks from the data file (geometry only, projected by prj.py) */
+  document.querySelector(P + "land").setAttribute("d", D.land);
+  const g = document.querySelector(P + "tracks");
+  const NS = "http://www.w3.org/2000/svg";
+  const lastM = D.tracks[D.tracks.length - 1].m;
+  D.tracks.forEach(function (t, i) {
+    const p = document.createElementNS(NS, "path");
+    p.setAttribute("id", "g-i1-1-trk-" + i);
+    p.setAttribute("class", "g-i1-1-trk");
+    p.setAttribute("d", t.d);
+    p.style.strokeWidth = t.w + "px";
+    g.appendChild(p);
+  });
+
+  /* ambient: the camera pulls out 1.0 -> 0.9 linear, a scan line, both for the whole window */
+  tl.set(P + "world", { scale: 1, transformOrigin: "876.3px 520px" }, 0);
+  tl.to(P + "world", { scale: 0.9, duration: DUR, ease: "none" }, 0);
+  tl.set(P + "scan", { y: 0 }, 0);
+  tl.to(P + "scan", { y: 1020, duration: DUR, ease: "none" }, 0);
+
+  /* the 71 tracks draw in start-time order (Fri 4:12 PM to Sat 7:39 AM CST), all done by 5.2 s */
+  D.tracks.forEach(function (t, i) {
+    const sel = P + "trk-" + i;
+    const L = Math.ceil(document.querySelector(sel).getTotalLength()) + 1;
+    const at = 0.2 + 4.6 * (t.m / lastM);
+    const dur = 0.3 + 1.0 * (t.mi / 165.6);
+    tl.set(sel, { strokeDasharray: L, strokeDashoffset: L, visibility: "hidden" }, 0);
+    tl.set(sel, { visibility: "visible" }, at);
+    tl.fromTo(sel, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: dur, ease: "none" }, at);
+  });
+
+  /* rail: panel in on '71', rows on their words */
+  tl.fromTo(P + "rail", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, C.t71);
+  tl.fromTo(P + "r71", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.t71 + 0.15);
+  tl.fromTo(P + "r89", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.l89);
+  /* '89 · lives' leaves up on 'Since 1950', long before '2021 · 89' (one 89 per frame) */
+  tl.to(P + "r89", { autoAlpha: 0, y: -30, duration: 0.35, ease: "power2.in" }, C.since);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.since);
+
+  /* comparison on one scale, 1 px = 4 lives */
+  function bar(k, f, at) {
+    tl.fromTo(P + k, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, at);
+    tl.set(P + f, { scaleX: 0, transformOrigin: "left center" }, 0);
+    tl.to(P + f, { scaleX: 1, duration: 0.5, ease: "power3.out" }, at + 0.1);
+  }
+  bar("b53", "f53", C.b38);
+  bar("b21", "f21", C.b21);
+
+  /* exit: the rail slides out, then a fade-through to the next page */
+  tl.to(P + "rail", { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, C.seen - 0.06);
+  tl.fromTo(P + "root", { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.48, ease: "power2.in" }, C.seen);
+
+  window.__timelines["g-i1-1"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
