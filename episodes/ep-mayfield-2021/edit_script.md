@@ -87,7 +87,7 @@ I1-S4), Q4 "what did the St. Louis office write" (I1-S4 to I1-S5). L1 is asked a
 
 ### T1-S1 — narration
 **Picture:** no radar here: a plain map with the two tornado warning polygons alone, 8:06 PM over Madison County, Illinois (SA p28) and 9:05 PM over Graves County, Kentucky (SA p29), pins on Edwardsville and Mayfield; then a Kentucky Guard still of Mayfield. Drone bed takes over from the siren.
-> One was an Amazon delivery station in Edwardsville, Illinois. The other was a candle factory in Mayfield, Kentucky. Both got a tornado warning before the tornado arrived. What happened inside in those minutes is the first thing I looked up.
+> One of those workplaces was an Amazon delivery station in Edwardsville, Illinois. The other was a candle factory in Mayfield, Kentucky. Both got a tornado warning before the tornado arrived. What happened inside in those minutes is the first thing I looked up.
 
 *[loop L1 open]* *(no void: straight into the intro, the line stays in the hook's scene)*
 
