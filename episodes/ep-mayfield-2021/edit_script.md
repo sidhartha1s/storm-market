@@ -114,7 +114,7 @@ I1-S4), Q4 "what did the St. Louis office write" (I1-S4 to I1-S5). L1 is asked a
 
 ### I1-S4 — narration
 **Picture:** the outline fills with football fields laid end to end; chip "6 lives". Then a Mayfield survey photo (NWS Paducah); chip "8 lives" with source line "Mayfield Consumer Products and AP, 14 Dec 2021".
-> That's about nineteen football fields under one roof. Six people working there lost their lives. At the candle factory, eight did. Afterward, the weather office in St. Louis, the one covering Edwardsville, wrote down what nobody had told buildings like that.
+> That's about nineteen football fields under one roof. Six people working there lost their lives. At the candle factory, eight did. Afterward, the weather office in St. Louis, the one covering Edwardsville, wrote down what had been missing.
 
 *[Q3 closes]* *[Q4 open: what St. Louis wrote]*
 
