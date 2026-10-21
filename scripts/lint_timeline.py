@@ -156,6 +156,27 @@ def main():
                    re.findall(r'<audio\b[^>]*id="nx-(?!ins)[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)))
     structure = [(float(a), float(a) + float(b)) for a, b in re.findall(
         r'<section\b[^>]*class="[^"]*\b(?:blackout|hold)\b[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)]
+
+    # OUTSIDE VOICES and DEAD AIR: checks 7 and 8 in the docstring, epN documentaries not yet shipped.
+    slug = ep.resolve().name
+    voice_rules = bool(re.match(r"ep\d*-", slug)) and slug not in (
+        ((_cfg.get("channel") or {}).get("voice_captions") or {}).get("exempt") or [])
+    live = re.sub(r"<!--.*?-->", "", html, flags=re.S)   # a commented-out tag is not mounted
+    sounds = [(m.group(0), outside_voice(m.group(0))) for m in re.finditer(r"<(?:audio|video)\b[^>]*>", live)]
+    outside = sorted((s, e) for _, v in sounds if v for _, s, e in [v])
+    if voice_rules:
+        caps = [(m.group(1), _num(m.group(0), "data-start"), _num(m.group(0), "data-duration"))
+                for m in re.finditer(r'<[a-z]+\b[^>]*\bdata-caption-for="([^"]+)"[^>]*>', live)]
+        for tag, v in sounds:
+            if not v or "data-caption-ok=" in tag:
+                continue
+            vid, s, e = v
+            if not any(c == vid and cs is not None and cd is not None and cs <= s + 0.05 and cs + cd >= e - 0.05
+                       for c, cs, cd in caps):
+                findings.append(f"outside voice without a caption over its whole window: {vid or tag[:80]} ({s:.2f}-{e:.2f}s); "
+                                f"mount a host with data-caption-for=\"{vid}\" from its first to its last frame "
+                                f"(mg-quickref \"Outside voices\"), or data-caption-ok=\"reason\" when it has no words")
+
     for (s1, e1), (s2, e2) in zip(voice, voice[1:]):
         gap = s2 - e1
         if gap <= 0.8:
