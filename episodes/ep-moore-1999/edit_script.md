@@ -123,6 +123,6 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### I1-S3 — narration
 **Picture:** NSSL May 3 page damage photos (damage1 to damage6.jpg, NSSL), Bridge Creek first, then Moore and Del City; chips "BRIDGE CREEK · 12" then "THE OTHER 24". Source line: "Brooks, NSSL death list; NWS Storm Data". End on a self-made clock face reading 4:47 PM, siren-free room tone. [PAY] [Q] [loop: question carried into A1]
-> Twelve of them were at Bridge Creek, out in Grady County, and most of those were in mobile homes. The other twenty-four were spread along the rest of the path, most of them inside houses. Here's the part I keep coming back to. Grady County's first tornado warning went out an hour and thirty-nine minutes before this tornado even touched down. How forecasters got that far ahead of a tornado that didn't exist yet starts with one warning. Four forty-seven.
+> Twelve of them were at Bridge Creek, out in Grady County, and most of those were in mobile homes. The other twenty-four were spread along the rest of the path, most of them inside houses. The number I keep coming back to is this one. Grady County's first tornado warning went out an hour and thirty-nine minutes before this tornado even touched down. How forecasters got that far ahead of a tornado that didn't exist yet starts with one warning. Four forty-seven.
 
 *register: 9/10*
