@@ -259,7 +259,11 @@ floors/ceilings; taste stays with the model.
 - Hook: Paul speaks the hook line on camera from 0:00, then the narrator continues over motion; no archive audio in the hook (see "Cold-open hook contract").
 - After an emotional payoff: hold 2-4s, ambience up, then cut hard to the next act. Declare each hold with an
   empty marker `<section class="clip hold" id="hold-N" data-start="X" data-duration="3.0" data-track-index="8"></section>`;
-  `lint_timeline.py` sanctions a narration gap only inside a blackout, a declared hold, or the CTA (ep-1974, 21 Sep 26).
+  `lint_timeline.py` sanctions a narration gap only inside a blackout, a declared hold, or the CTA (ep-1974, 21 Sep 26),
+  and inside a blackout or hold allows at most 4 s where nothing but a bed plays (owner 21 Oct 26, Joplin: an 18 s hold
+  played 6 s of muted CCTV, a 7 s radio, then 6 s of map under the bed alone; "it doesn't make any sense"). Any audible
+  sound that is not narration, a bed or the CTA counts as carrying the hold, words or not: an unmuted clip, a radio, a
+  siren. A muted clip or a bed does not. Real sound plays OVER the picture it belongs to, never after it.
 - **Chapter blackout (documentary breath — ep1/ep2 device, MANDATORY ep4+):** between acts,
   and on a key beat, cut to a full BLACK. It resets the eye and is what makes ep1/ep2 read like
   a documentary. **Duration table: 0.6–0.9s = chapter break · 1.0–1.3s = dramatic punctuation ·
