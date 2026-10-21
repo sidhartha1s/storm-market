@@ -1,0 +1,86 @@
+<template>
+<style>
+  /* g-i1-4 · I1-S3 first beat · NASA VIIRS night lights, 3 Dec (before) -> 12 Dec (after) as a left-to-right wipe, chip "after sunset".
+     Full-frame, own ground from frame 0. Plates are the two 1280 x 853 NASA files drawn at 2.0x (2560 x 1706), window x 120-1080, y 0-540 of the source
+     (Memphis, Nashville and the Kentucky border country in frame); both plates use identical geometry, registration measured by script (see receipt).
+     The whole camera (plates + wipe + edge) pushes 1.00 -> 1.04 over the host; labels, chip and credit sit on a fixed HUD layer.
+     Wipe mask: #g-i1-4-wipe starts parked off-frame left by CSS (left -1920) and moves by x; its inner layer counter-moves so the after plate stays registered. */
+  #g-i1-4-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-i1-4-cam { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; }
+  .g-i1-4-plate { position:absolute; left:-240px; top:0; width:2560px; height:1706px; }
+  #g-i1-4-wipe { position:absolute; left:-1920px; top:0; width:1920px; height:1080px; overflow:hidden; }
+  #g-i1-4-after { position:absolute; left:1920px; top:0; width:1920px; height:1080px; overflow:hidden; }
+  #g-i1-4-after .g-i1-4-plate { left:-240px; }
+  #g-i1-4-edge { position:absolute; left:1918px; top:0; width:2px; height:1080px; background:#f2f5f8; box-shadow:0 0 18px rgba(0,0,0,.7); }
+  .g-i1-4-glass { position:absolute; background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; white-space:nowrap; opacity:0; visibility:hidden; }
+  .g-i1-4-tag { left:110px; top:70px; padding:8px 20px; border-radius:16px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:28px;
+    letter-spacing:0; color:#93a3b2; }
+  #g-i1-4-chip { left:110px; bottom:150px; padding:18px 30px; border-radius:28px; font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:40px;
+    letter-spacing:1px; color:#dfe7ee; }
+  #g-i1-4-src { left:110px; bottom:64px; max-width:1300px; padding:10px 20px; border-radius:18px; font-family:Arial, sans-serif; font-weight:700; font-size:19px;
+    line-height:24px; letter-spacing:0; color:#c8d3e0; }
+</style>
+<div id="g-i1-4-root" data-composition-id="g-i1-4" data-width="1920" data-height="1080" data-type-ok="two-tier chip over footage">
+  <div id="g-i1-4-cam">
+    <img class="g-i1-4-plate" id="g-i1-4-before" src="media/candidates/intro/i1-s3_c2_nasa-viirs-3dec-baseline.jpg" alt="">
+    <div id="g-i1-4-wipe">
+      <div id="g-i1-4-after">
+        <img class="g-i1-4-plate" id="g-i1-4-after-img" src="media/candidates/intro/i1-s3_c1_nasa-viirs-12dec-blackout.jpg" alt="">
+      </div>
+      <div id="g-i1-4-edge"></div>
+    </div>
+  </div>
+  <div class="g-i1-4-glass g-i1-4-tag" id="g-i1-4-d3">Dec. 3</div>
+  <div class="g-i1-4-glass g-i1-4-tag" id="g-i1-4-d12">Dec. 12</div>
+  <div class="g-i1-4-glass" id="g-i1-4-chip">after sunset</div>
+  <div class="g-i1-4-glass" id="g-i1-4-src">NASA Earth Observatory &middot; VIIRS</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 9.04;            /* host window: cut into I1-S3 (ep 67.225) -> the building outline (ep 76.265) */
+  const CUE_CHIP = 1.42;       /* after @1.42 in i1-s3.words.json */
+  const WIPE_AT = 2.36;        /* December @2.36; sweep runs 2.0 s to 4.36 */
+  const WIPE_LEN = 2.0;
+  const D12_AT = 3.0;          /* edge is past x 390 by then, so the label never enters under the line */
+  const OUT_AT = 8.44;         /* host end - 0.6 s */
+
+  tl.set("#g-i1-4-cam", { scale: 1, transformOrigin: "50% 50%" }, 0);
+  tl.set("#g-i1-4-wipe", { x: 0 }, 0);
+  tl.set("#g-i1-4-after", { x: 0 }, 0);
+  tl.set("#g-i1-4-edge", { autoAlpha: 1 }, 0);
+  tl.set(["#g-i1-4-d3", "#g-i1-4-d12", "#g-i1-4-chip", "#g-i1-4-src"], { autoAlpha: 0, x: 0, y: 24 }, 0);
+
+  /* camera: slow push over the whole window (kept running to the cut) */
+  tl.to("#g-i1-4-cam", { scale: 1.04, duration: DUR, ease: "none" }, 0);
+
+  /* PLATE @0.00: label "Dec. 3" and the credit come in with the before plate */
+  tl.fromTo("#g-i1-4-d3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.fromTo("#g-i1-4-src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.15);
+
+  /* CHIP @1.42 ("after sunset") */
+  tl.fromTo("#g-i1-4-chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_CHIP);
+
+  /* "Dec. 3" slides out before the edge reaches it */
+  tl.to("#g-i1-4-d3", { x: -400, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, 2.0);
+
+  /* WIPE @2.36 ("December"): edge sweeps left to right in 2.0 s; the after plate counter-moves so it stays registered */
+  tl.to("#g-i1-4-wipe", { x: 1920, duration: WIPE_LEN, ease: "power2.inOut" }, WIPE_AT);
+  tl.to("#g-i1-4-after", { x: -1920, duration: WIPE_LEN, ease: "power2.inOut" }, WIPE_AT);
+  tl.to("#g-i1-4-edge", { autoAlpha: 0, duration: 0.2, ease: "power1.out" }, WIPE_AT + WIPE_LEN - 0.2);
+
+  /* "Dec. 12" with the wipe, once the edge is well past its box */
+  tl.fromTo("#g-i1-4-d12", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, D12_AT);
+
+  /* OUT @8.44: chip, label and credit slide out left and finish inside the host; the plates run on to the cut */
+  tl.to("#g-i1-4-chip", { x: -800, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, OUT_AT);
+  tl.to("#g-i1-4-d12", { x: -800, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, OUT_AT);
+  tl.to("#g-i1-4-src", { x: -1300, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, OUT_AT);
+
+  window.__timelines["g-i1-4"] = tl;
+})();
+</script>
+</template>
