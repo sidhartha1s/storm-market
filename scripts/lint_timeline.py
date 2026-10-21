@@ -16,6 +16,8 @@ Checks episodes/<slug>/index.html:
   7. OUTSIDE VOICES (owner 2026-10-20): in an epN documentary every audible non-narrator element
      (radio, 911, broadcast sound) has a data-caption-for host covering its whole window, or
      data-caption-ok="reason" when it has no words. config.yaml channel.voice_captions.exempt lists shipped episodes.
+  8. DEAD AIR (owner 2026-10-21): inside a blackout or declared hold of an epN documentary, at most MAX_QUIET (4 s)
+     may pass with no narration, Paul line or audible outside sound; a bed alone does not count. Same exempt list.
 
 Usage: python3 scripts/lint_timeline.py episodes/<slug>
 Exit 0 clean, 1 findings (loud).
