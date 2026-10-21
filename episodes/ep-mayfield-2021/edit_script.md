@@ -120,7 +120,7 @@ I1-S4), Q4 "what did the St. Louis office write" (I1-S4 to I1-S5). L1 is asked a
 
 ### I1-S5 — narration
 **Picture:** the WFO St. Louis after-action words as on-screen text, verbatim with the ellipsis marked, attributed "WFO St. Louis after-action review, quoted in the Service Assessment, p33-34". Paul's voice says it plainly; the card carries the exact words.
-> That office wrote that there was no advice, from the weather service or from OSHA, on where to shelter people at work. Not which warnings to shelter for, and not what a big warehouse needs.
+> That office wrote that there was no advice, from the weather service or from OSHA, on where to shelter people at work. There was nothing on which warnings to shelter for, or on what a big warehouse needs.
 
 *[Q4 closes]*
 
