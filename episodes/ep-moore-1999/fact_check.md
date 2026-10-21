@@ -79,3 +79,9 @@ Corrections were applied by the writer in the fix round, not by the checkers.
 - S8 Turner CONFIRMED (NOAA Report p2), heard warnings "on a local TV station"; door "pulled open"; Grady County only.
 - S9 CORRECTED: deputy positioned himself near the path and gave emergency care at some of the worst destruction (SA p22); chip "ON SCENE OF THE WORST DAMAGE"; no "down the road" (no proximity source).
 - S10 CORRECTED: "Minutes after the tornado tore through Bridge Creek"; "two words no warning had carried" CONFIRMED (NWS Norman "first warning of its kind").
+
+### A5-S7..S9, May 2013 (PARTIAL: no cuts, 8 fixes; source `research/nws-sa-2013-oklahoma-tornadoes.txt`, printed page numbers)
+- S7 CORRECTED: "Many said they'd heard ... at least twenty-four hours ahead" (SA p31 "members of the public", not "most"); chip "AT LEAST 24 HOURS AHEAD". "Most ... adequate time" CONFIRMED (p31).
+- S7 CORRECTED: "people followed plans they'd practiced, and survived in shelters chosen ahead of time" (p32; SA's "above ground" clashes with cellars; "because" was about confidence).
+- S8 CORRECTED: "Some weather professionals told listeners" (p33, never "on the air"); "that day" (no "evening"); "a cousin of the advice" (1999 was "get out of the path", not drive south); "large numbers ... took it"; 1 p.m. tweet is p12 and a "caution".
+- S9 CORRECTED: "One survivor said"; "in a vehicle". Quote verbatim (p33); 8 direct, all in vehicles, 4 chasers (p30); 26 and 17 days, I-40 (App C p C-1); ashamed of evacuating (p32) CONFIRMED.
