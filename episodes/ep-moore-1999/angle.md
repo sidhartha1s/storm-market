@@ -18,4 +18,13 @@ Still unverified: "best-warned on record" as a superlative (needs a source or so
 - **Tornado Emergency 6:57 p.m.** confirmed (SA p10, p15, Appendix C "1857 SVS"); "25 minutes before the tornado entered those areas" is the SA's own wording (p15).
 - **35 in one cellar** confirmed (SA p22, Grady County, "an area with primarily mobile homes").
 - **TV station** confirmed and unnamed (SA p11): its statement "was cited as one of the reasons many people fled the path of the tornado"; the SA adds fleeing "is not recommended but was effective in this particular event". The script must carry both halves.
-- **New fact that sharpens the spine**: 19 of the 36 were inside houses, 2 of them under a staircase at Bridge Creek. A house above ground was not a shelter from this tornado; a hole in the ground was.
+- **New fact that sharpens the spine**: 19 of the 36 were inside houses, 2 of them under a staircase at Bridge Creek.
+
+## Second pass (21 Oct 26, research fan-out, `research/fact-sheet.md`)
+- **The Tornado Emergency came after Bridge Creek.** Bridge Creek was hit 6:47 to 6:55 p.m. (Speheger 2002 Table 2; FEMA 342 p2-9); the 6:57 statement was aimed at Moore and south Oklahoma City, which the tornado reached at 7:22. The pivot stays; the script must not imply the statement reached Bridge Creek.
+- **The 65 minutes** is the SA's figure for Grady County, measured from the 4:47 p.m. first warning to the storm's first tornado in Grady County at 5:52 p.m. (SA p9, App C). It is not proven for Bridge Creek itself. Spoken scope: "the first county in its path".
+- **Mobile homes: sources split 9 / 10 / 11** (Storm Data 9, Brooks list 10, Brooks and Doswell 2002 and FEMA 342 11). Bridge Creek lost 12 (Storm Data, Brooks list). The script says "twelve at Bridge Creek, most of them in mobile homes", which every source supports; the Claim line's "10" stays as the Brooks figure only on the source line.
+- **"Best-warned on record" has no source.** The SA calls the 32-minute average "remarkable"; the national average then was 10 to 15 minutes (Wurman 2007). The script says the numbers, not the superlative.
+- **Houses: careful wording.** Moore's emergency managers counted over 2,000 people in the path in Moore and 5 deaths (NWS Norman overpass talk); FEMA found interior bathrooms in 81 % of the rooms left standing. The spine is "below ground or a built shelter, versus everything else", never "houses were not shelters".
+- **Wind**: 135 ± 5 m/s, about 302 mph (Wurman 2007); 318 mph was the 1999 announcement. Still ruled out as the lead.
+- None of these change the meaning of the Claim, so the lock stands; the coordinator is told what moved.
