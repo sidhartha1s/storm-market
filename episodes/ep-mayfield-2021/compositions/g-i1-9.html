@@ -154,8 +154,9 @@ window.__timelines = window.__timelines || {};
   /* the meet: outline flashes red (stroke only, no transform), impact ring, then track B runs on to the DAT end */
   tl.fromTo(P + "outline", { attr: { stroke: "#dfe7ee" } }, { attr: { stroke: "#e74c3c" }, duration: 0.12, ease: "none" }, C.meet);
   tl.fromTo(P + "outline", { attr: { stroke: "#e74c3c" } }, { attr: { stroke: "#dfe7ee" }, duration: 0.8, ease: "power1.out", immediateRender: false }, C.meet + 0.12);
+  tl.set(P + "hit", { autoAlpha: 0, scale: 1, svgOrigin: "439.9 712.2" }, 0);
   tl.fromTo(P + "hit", { autoAlpha: 0.9, scale: 1, svgOrigin: "439.9 712.2" },
-    { autoAlpha: 0, scale: 4, svgOrigin: "439.9 712.2", duration: 0.7, ease: "power2.out" }, C.meet);
+    { autoAlpha: 0, scale: 4, svgOrigin: "439.9 712.2", duration: 0.7, ease: "power2.out", immediateRender: false }, C.meet);
   tl.set(tb, { strokeDasharray: LB, strokeDashoffset: LB, visibility: "hidden" }, 0);
   tl.set(tb, { visibility: "visible" }, C.meet + 0.15);
   tl.fromTo(tb, { strokeDashoffset: LB }, { strokeDashoffset: 0, duration: 1.1, ease: "power1.out" }, C.meet + 0.15);
