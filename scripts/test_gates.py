@@ -423,6 +423,61 @@ for label, pip_start, pip_dur, nx2_start, want in (
         code, out = run("lint_timeline.py", ep)
         check(f"lint_timeline: {label}", ("presenter circle on with no voice" in out) == want, out)
 
+# outside voices (owner 20 Oct 26, Joplin radio): a radio insert at 3-5 s needs a caption host over its whole window
+RADIO = '<audio id="{}" src="media/r.wav" data-start="3" data-duration="2" data-volume="1"{}></audio>'
+CAP = '<div id="host-cap" data-composition-id="g-cap" data-start="{}" data-duration="{}" data-caption-for="ins-radio"></div>'
+for slug, label, extra, want in (
+    ("ep-cap", "an uncaptioned radio insert FAILs", RADIO.format("ins-radio", ""), True),
+    ("ep-cap", "an uncaptioned nx-ins insert FAILs (only nx- without ins is narration)", RADIO.format("nx-ins1", ""), True),
+    ("ep-cap", "a caption host over the whole radio window passes", RADIO.format("ins-radio", "") + CAP.format(3, 2), False),
+    ("ep-cap", "a caption that ends 1 s before the radio does FAILs (sound outlasting its picture)",
+     RADIO.format("ins-radio", "") + CAP.format(3, 1), True),
+    ("ep-cap", "a commented-out caption host does not count",
+     RADIO.format("ins-radio", "") + "<!--" + CAP.format(3, 2) + "-->", True),
+    ("ep-cap", 'data-caption-ok="reason" on a wordless sound passes',
+     RADIO.format("ins-radio", ' data-caption-ok="siren, no words"'), False),
+    ("ms-cap", "the caption rule stays off for an ms- mini", RADIO.format("ins-radio", ""), False),
+    ("ep1-joplin", "the caption rule stays off for a shipped episode (config exempt list)", RADIO.format("ins-radio", ""), False),
+    ("ep-cap", "an uncaptioned radio with no data-volume FAILs (hyperframes plays it at 1.0)",
+     '<audio id="ins-radio" src="media/r.wav" data-start="3" data-duration="2"></audio>', True),
+    ("ep-cap", "a studio-saved tag (data-hf-id before id) still matches its caption",
+     RADIO.format("ins-radio", "").replace("<audio ", '<audio data-hf-id="hf-a1" ') + CAP.format(3, 2), False),
+    ("ep-cap", "studio-saved narration (data-hf-id before id) is not an outside voice",
+     RADIO.format("nx-a9", "").replace("<audio ", '<audio data-hf-id="hf-a2" '), False),
+    ("ep-cap", "an uncaptioned unmuted video FAILs",
+     '<video id="v-news" src="media/r.wav" data-start="3" data-duration="2" data-track-index="2"></video>', True),
+    ("ep-cap", "a muted video is not a voice",
+     '<video id="v-news" src="media/r.wav" data-start="3" data-duration="2" data-track-index="2" muted></video>', False),
+    ("ep-cap", "Paul's own clip is not an outside voice", RADIO.format("ins-paul-1", ""), False),
+):
+    with tempfile.TemporaryDirectory() as d:
+        (Path(d) / slug).mkdir()
+        ep = make_lint_ep(Path(d) / slug, extra_video=extra)
+        write_wav(ep / "media" / "r.wav", 2.0)
+        code, out = run("lint_timeline.py", ep)
+        check(f"lint_timeline: {label}", ("outside voice without a caption" in out) == want, out)
+
+# dead air (owner 21 Oct 26, Joplin): a declared hold sanctions a pause of at most 4 s with no voice of any kind.
+# The radio carries data-caption-ok: a wordless outside sound still carries a hold (the same outside_voice test as captions)
+HOLD = '<section class="clip hold" id="hold-1" data-start="2" data-duration="{}" data-track-index="8"></section>'
+RAD = '<audio id="ins-radio" src="media/r.wav" data-start="{}" data-duration="2" data-volume="1" data-caption-ok="test"></audio>'
+for slug, label, nx2, extra, want in (
+    ("ep-air", "a 3 s hold passes", 5.0, HOLD.format(3), False),
+    ("ep-air", "a 7 s hold with nothing in it FAILs", 9.0, HOLD.format(7), True),
+    ("ep-air", "a 7 s hold carried by a radio in its middle passes (2.5 s quiet either side)", 9.0, HOLD.format(7) + RAD.format(4.5), False),
+    ("ep-air", "a radio at the start of a 9 s hold leaves 5 s of dead air after it and FAILs", 11.0, HOLD.format(9) + RAD.format(2), True),
+    ("ep-air", "a muted clip does not carry a hold", 9.0, HOLD.format(7) + RAD.format(4.5).replace("<audio", "<video").replace("></audio>", " muted></video>"), True),
+    ("ep-air", "a bed does not carry a hold", 9.0, HOLD.format(7) + RAD.format(4.5).replace("<audio", "<audio data-bed"), True),
+    ("ep-air", "a commented-out radio does not carry a hold", 9.0, HOLD.format(7) + "<!--" + RAD.format(4.5) + "-->", True),
+    ("ep1-joplin", "a shipped episode is exempt", 9.0, HOLD.format(7), False),
+):
+    with tempfile.TemporaryDirectory() as d:
+        (Path(d) / slug).mkdir()
+        ep = make_lint_ep(Path(d) / slug, extra_video=extra, nx2_dur=2.0, nx2_start=nx2)
+        write_wav(ep / "media" / "r.wav", 2.0)
+        code, out = run("lint_timeline.py", ep)
+        check(f"lint_timeline: {label}", ("dead air" in out) == want and "narration gap" not in out, out)
+
 with tempfile.TemporaryDirectory() as d:
     v = '<video src="media/broll.mp4" data-start="0" data-duration="2" data-track-index="1" muted></video>'
     ep = make_lint_ep(Path(d), extra_video=v)
