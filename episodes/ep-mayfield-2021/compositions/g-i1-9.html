@@ -169,17 +169,18 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "c827", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.t827);
   tl.fromTo(P + "src", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.t827 + 0.3);
 
-  /* track A: west to east, ends on the west wall */
-  const ta = document.querySelector(P + "trka"), tb = document.querySelector(P + "trkb");
-  const LA = len(ta), LB = len(tb);
-  tl.set(ta, { strokeDasharray: LA, strokeDashoffset: LA, visibility: "hidden" }, 0);
-  tl.set(ta, { visibility: "visible" }, C.hit);
-  tl.fromTo(ta, { strokeDashoffset: LA }, { strokeDashoffset: 0, duration: C.meet - C.hit, ease: "power1.in" }, C.hit);
+  /* track: draws west to east during the zoom, its head reaches the west wall at 4.92 (283.4 px of path), then runs
+     on through the building and out to the DAT end */
+  const LT = len(trk), LW = LT - 283.4;
+  tl.set(trk, { strokeDasharray: LT, strokeDashoffset: LT, visibility: "hidden" }, 0);
+  tl.set(trk, { visibility: "visible" }, C.hit);
+  tl.fromTo(trk, { strokeDashoffset: LT }, { strokeDashoffset: LW, duration: C.meet - C.hit, ease: "power1.in" }, C.hit);
+  tl.fromTo(trk, { strokeDashoffset: LW }, { strokeDashoffset: 0, duration: 1.6, ease: "power1.out", immediateRender: false }, C.meet);
 
-  /* outline grows in about its centre, caption under it */
+  /* outline grows in about its centre on DELIVERY; its caption waits for the camera to settle (HUD text never rides the zoom) */
   tl.fromTo(P + "outline", { autoAlpha: 0, scale: 0.2, svgOrigin: "463.29 712.24" },
     { autoAlpha: 1, scale: 1, svgOrigin: "463.29 712.24", duration: 0.45, ease: "power2.out" }, C.bldg);
-  tl.fromTo(P + "cap", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.bldg + 0.15);
+  tl.fromTo(P + "cap", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, C.meet);
 
   /* the meet: outline flashes red (stroke only, no transform), impact ring, then track B runs on to the DAT end */
   tl.fromTo(P + "outline", { attr: { stroke: "#dfe7ee" } }, { attr: { stroke: "#e74c3c" }, duration: 0.12, ease: "none" }, C.meet);
