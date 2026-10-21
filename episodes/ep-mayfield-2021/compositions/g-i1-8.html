@@ -10,9 +10,9 @@
     border:1px solid rgba(255,255,255,.14); }
   .g-i1-8-line { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:64px; letter-spacing:0; }
   #g-i1-8-l1 { color:#f2f5f8; }
-  #g-i1-8-l2 { margin-top:12px; color:#d8a13a; opacity:0.12; } /* ghost until 'nobody': the card shows its structure from entry */
+  #g-i1-8-l2 { max-width:1000px; margin-top:12px; color:#d8a13a; opacity:0.12; } /* ghost until 'nobody': the card shows its structure from entry */
 </style>
-<div id="g-i1-8-root" data-composition-id="g-i1-8" data-width="1920" data-height="1080" data-type-ok="claim card over footage: two lines, one size, by design">
+<div id="g-i1-8-root" data-composition-id="g-i1-8" data-width="1920" data-height="1080">
   <div id="g-i1-8-float">
     <div id="g-i1-8-card">
       <span class="g-i1-8-line" id="g-i1-8-l1">The forecast was right days ahead.</span>
@@ -37,7 +37,6 @@ window.__timelines = window.__timelines || {};
   tl.to("#g-i1-8-float", { y: -8, duration: DUR, ease: "none" }, 0);
 
   /* LINE 1 @0.00 ("right days ahead" 0.72): card in from y 24 */
-  /* power3.out per brief */
   tl.fromTo("#g-i1-8-card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_L1);
   /* LINE 2 @1.42 ("nobody" 2.14) */
   tl.to("#g-i1-8-l2", { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, CUE_L2);
