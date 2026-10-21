@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-i1-9 · I1-S7 · back to the Edwardsville map: the EF3 track meets the building outline, clock chips 8:27 PM and 8:06 PM,
+  then the drawn megaphone alone; the root fades to black for the hand-placed blackout bo-1 (126.408).
+  Brief: briefs/mg/g-i1-9.md. Map family (base g-t1-1: pin, glass chip, source line, scan, vignette, 2 % drift).
+  Building family (base g-i1-5: outline stroke and caption style). Megaphone: first drawing of the megaphone family
+  (g-a1-1 is not built yet; drawn to g-a1-1's spec: bell, handle, trigger, 4 px #dfe7ee, 360 px tall, alone).
+  Basemap: the Illinois subpath of g-t1-1 (Natural Earth 50m, master-map-us-canada.html), verbatim, basemap units.
+  Projection (master-map header): X = 3841*(lon+97.576), Y = -5585*(lat-46.6213).
+  LOCAL CAMERA: screen x = X*3.2 - 92203.610, y = Y*3.2 - 139687.916 (DAT track start at x 200, the mid-latitude of the track
+  start and the Edwardsville point at y 560); frame lon -90.0744..-89.9182, lat 38.7448..38.8053. Every point below was
+  projected by .qc-tmp/g-i1-9-calc/proj.py from:
+    research/geo/tornado_tracks_named.geojson  "Edwardsville IL" EF3, 32 DAT vertices, start (-90.0581, 38.7571) -> 200.0, 861.8,
+                                               end (-89.9856, 38.7811) -> 1091.1, 431.9
+    research/geo/places.geojson                Edwardsville (-89.988605, 38.790835) -> 1054.6, 258.2
+                                               Amazon delivery station geocode (-90.038614, 38.775157), approximate to the frontage
+    research/geo/warnings.geojson              LSX TO.W.0051, 8:06 PM CST: the whole frame lies inside it (no edge in view)
+  OUTLINE: west wall at the geocode longitude (x 439.91); the geocode point sits 0.00973 deg (1,083 m) north of the DAT track
+  there, and the DAT survey says the track struck the warehouse's west walls, so the outline is centred north-south on the
+  track (lat 38.76543, y 712.2). Real size 1,080 x 1,019 ft at 0.04329 px/ft (x) and 0.04908 px/ft (y) = 46.75 x 50.01 px.
+  The track is drawn up to the west wall (entry 439.9, 712.2) and on from the east wall (exit 486.7, 693.5); never inside.
+-->
+<template>
+<style>
+  #g-i1-9-root { position:absolute; inset:0; overflow:hidden; background:#04070a; font-family:Arial, sans-serif; color:#f2f5f8; }
+  #g-i1-9-ground { position:absolute; left:0; top:0; width:1920px; height:1080px; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .g-i1-9-world { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-i1-9-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-i1-9-vig { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 50%, rgba(3,5,7,0) 52%, rgba(3,5,7,0.6) 100%); }
+  .g-i1-9-scan { position:absolute; left:0; top:20px; width:1920px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .g-i1-9-trk { fill:none; stroke:#e74c3c; stroke-width:6px; stroke-linecap:round; stroke-linejoin:round; visibility:hidden; }
+  .g-i1-9-dot { position:absolute; width:14px; height:14px; border-radius:50%; background:#f2f5f8; border:2px solid #04070c;
+    opacity:0; visibility:hidden; }
+  .g-i1-9-ring { position:absolute; width:14px; height:14px; border-radius:50%; border:2px solid #f2f5f8; box-sizing:content-box;
+    visibility:hidden; }
+  .g-i1-9-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; opacity:0; visibility:hidden; }
+  .g-i1-9-pinlab { position:absolute; padding:10px 14px; border-radius:12px; font-size:26px; font-weight:700; line-height:26px; color:#f2f5f8; }
+  /* outline caption: building-family style (g-i1-5), plain on the ground */
+  #g-i1-9-cap { position:absolute; left:446px; top:752px; white-space:nowrap; font-weight:700; font-size:26px; line-height:30px;
+    letter-spacing:2px; color:#c8d3e0; opacity:0; visibility:hidden; }
+  /* map rail: x 1304-1824 (right 96), top 120; stays clear of the presenter corner (bottom 317 < 680) */
+  .g-i1-9-chip { position:absolute; left:1304px; width:520px; box-sizing:border-box; border-radius:18px; }
+  #g-i1-9-c806 { top:120px; padding:16px 24px; font-size:30px; font-weight:700; line-height:30px; color:#dfe7ee; }
+  #g-i1-9-c806 b { color:#e8c56a; font-weight:700; }
+  #g-i1-9-c827 { top:202px; padding:14px 24px; font-family:'Courier New', monospace; font-size:84px; font-weight:700; line-height:84px; color:#e8c56a; }
+  .g-i1-9-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; font-size:19px; font-weight:700; line-height:19px;
+    letter-spacing:1px; color:#c8d3e0; }
+  .g-i1-9-meg { fill:none; stroke:#dfe7ee; stroke-width:4px; stroke-linecap:round; stroke-linejoin:round; visibility:hidden; }
+</style>
+<div id="g-i1-9-root" data-composition-id="g-i1-9" data-width="1920" data-height="1080" data-duration="11.737">
+  <div id="g-i1-9-ground"></div>
+  <div class="g-i1-9-world" id="g-i1-9-world">
+    <svg class="g-i1-9-svg" viewBox="0 0 1920 1080">
+      <!-- BASEMAP: Illinois subpath of mastermap-us (via g-t1-1), verbatim, basemap units; the whole frame is Illinois land -->
+      <g transform="translate(-92203.61,-139687.916) scale(3.2)">
+        <path id="g-i1-9-il" fill="#0b1016" stroke="#2a3644" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M23757,34762 L23744,33983 L23956,33607 L24432,33352 L24866,32792 L25258,31927 L25435,31308 L25397,30934 L25253,30580 L25003,30245 L24943,29829 L25074,29334 L25494,29018 L26203,28883 L26846,28632 L27422,28265 L27765,27865 L27873,27432 L28039,27094 L28263,26854 L28421,26460 L28514,25913 L28525,25510 L28456,25250 L28204,24950 L27768,24610 L27523,24290 L27467,23991 L27238,23669 L26835,23326 L26601,22945 L37503,23034 L37559,24629 L37809,25187 L37954,25339 L38310,26597 L38620,27330 L38575,40471 L38398,40644 L38275,40938 L38260,41485 L38136,41623 L38196,41969 L38586,43074 L38634,43616 L38589,44004 L38380,44356 L38180,45119 L38008,45425 L37798,45526 L37611,45809 L37445,46276 L37269,46502 L37083,46488 L36946,46574 L36857,46758 L36868,46952 L36979,47156 L36943,47344 L36758,47517 L36819,47651 L36681,47817 L36610,48076 L36618,48504 L36554,48718 L36431,48727 L36415,48845 L36620,49329 L36286,49828 L36242,50269 L36368,50751 L36050,51140 L35286,51438 L34881,51700 L34836,51928 L35067,53062 L34970,53241 L34424,53120 L33430,52699 L32763,52713 L32423,53163 L32306,53503 L32348,53779 L31894,53288 L31820,53340 L31842,53608 L31785,53668 L31589,53537 L31350,53163 L31070,52547 L31009,52057 L31166,51693 L31166,51310 L30930,50518 L30930,50135 L30546,49562 L29779,48797 L29215,48326 L28854,48147 L28433,47764 L27951,47178 L27694,46730 L27663,46420 L27883,45593 L28592,43578 L28584,43421 L28254,43136 L27264,42855 L26883,43070 L26551,42635 L26268,41550 L25568,40404 L24452,39198 L23804,38380 L23623,37947 L23332,36435 L23339,35718 L23561,34861 L23757,34762 Z"/>
+      </g>
+      <!-- LSX TO.W.0051 issuance polygon, 8:06 PM CST, screen px (edges all off frame: the whole view is inside the warning) -->
+      <path id="g-i1-9-lsx" fill="#e74c3c" fill-opacity="0" stroke="none" d="M300.0,2596.4 L-1297.9,2596.4 L-1297.9,3132.6 L-5968.6,4919.8 L-5231.1,-2050.3 L-4616.5,-2943.9 L-5108.2,-2943.9 L-4862.3,-4909.8 L2758.2,-8841.6 L4847.7,988.0 L300.0,2596.4 Z"/>
+      <!-- DAT track, split at the outline: A = start to the west wall, B = east wall to the end -->
+      <path id="g-i1-9-trka" class="g-i1-9-trk" d="M200.0,861.8 L217.1,853.8 L262.2,831.6 L286.7,815.2 L330.8,783.2 L408.2,730.0 L439.9,712.2"/>
+      <path id="g-i1-9-trkb" class="g-i1-9-trk" d="M486.7,693.5 L488.8,692.7 L507.7,683.4 L528.5,674.0 L542.6,666.5 L550.2,663.0 L558.1,657.3 L566.4,651.5 L579.9,644.2 L602.6,631.2 L610.3,626.8 L629.1,615.3 L687.8,586.3 L726.5,568.5 L789.0,545.0 L830.0,527.7 L871.9,504.1 L885.5,497.9 L904.0,489.7 L924.8,481.2 L946.6,472.5 L988.2,456.9 L1016.6,447.6 L1034.2,443.0 L1065.8,436.0 L1091.1,431.9"/>
+      <!-- impact ring at the west-wall entry point -->
+      <circle id="g-i1-9-hit" cx="439.9" cy="712.2" r="8" fill="none" stroke="#e74c3c" stroke-width="3" vector-effect="non-scaling-stroke" opacity="0" visibility="hidden"/>
+      <!-- building outline, real size; scaled in about its centre (463.29, 712.24) -->
+      <rect id="g-i1-9-outline" x="439.91" y="687.23" width="46.75" height="50.01" fill="none" stroke="#dfe7ee" stroke-width="4" vector-effect="non-scaling-stroke" opacity="0" visibility="hidden"/>
+    </svg>
+    <!-- Edwardsville pin: 14 px dot + 2 px ring centred on the projected place point (1054.6, 258.2) -->
+    <div class="g-i1-9-ring" id="g-i1-9-edw-ring" style="left:1045.6px; top:249.2px;"></div>
+    <div class="g-i1-9-dot" id="g-i1-9-edw-dot" style="left:1045.6px; top:249.2px;"></div>
+    <div class="g-i1-9-glass g-i1-9-pinlab" id="g-i1-9-edw-lab" style="left:1086px; top:235px;">Edwardsville</div>
+    <div id="g-i1-9-cap">Illustrative outline</div>
+  </div>
+  <div class="g-i1-9-scan" id="g-i1-9-scan"></div>
+  <div class="g-i1-9-vig"></div>
+  <!-- map rail: 8:06 PM on top, 8:27 PM under it (8:27 enters first, its slot is fixed) -->
+  <div class="g-i1-9-glass g-i1-9-chip" id="g-i1-9-c806"><b>8:06 PM</b> · warning</div>
+  <div class="g-i1-9-glass g-i1-9-chip" id="g-i1-9-c827">8:27 PM</div>
+  <div class="g-i1-9-glass g-i1-9-src" id="g-i1-9-src">Track: NWS Damage Assessment Toolkit · Warning: NWS St. Louis, via Iowa Environmental Mesonet · Times: NWS Service Assessment</div>
+  <!-- megaphone: bell, body, pistol grip, trigger; 446 x 360 px, box x 740-1186, y 360-720, centre (963, 540) -->
+  <svg class="g-i1-9-svg" viewBox="0 0 1920 1080">
+    <g id="g-i1-9-megg">
+      <path class="g-i1-9-meg" d="M754,460 A14,30 0 1,0 754,520 A14,30 0 1,0 754,460 Z"/>
+      <path class="g-i1-9-meg" d="M754,460 L844,460 M754,520 L844,520"/>
+      <path class="g-i1-9-meg" d="M844,456 L844,524 M844,456 L1156,360 M844,524 L1156,620"/>
+      <path class="g-i1-9-meg" d="M1156,360 A30,130 0 1,0 1156,620 A30,130 0 1,0 1156,360 Z"/>
+      <path class="g-i1-9-meg" style="stroke:#93a3b2; stroke-width:2px;" d="M1156,386 A18,104 0 1,0 1156,594 A18,104 0 1,0 1156,386 Z"/>
+      <path class="g-i1-9-meg" d="M870,520 L910,520 L886,712 Q884,720 874,720 L848,720 Q838,720 840,710 Z"/>
+      <path class="g-i1-9-meg" d="M922,520 C944,560 930,604 896,612"/>
+      <path class="g-i1-9-meg" d="M906,540 Q920,556 909,580"/>
+      <path class="g-i1-9-meg" style="stroke-width:3px;" d="M853,640 L893,640 M849,664 L890,664 M845,688 L887,688"/>
+    </g>
+  </svg>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-i1-9-";
+  const DUR = 11.737;
+  /* cues: audio/i1-s7.words.json; host data-start 114.671 = i1-s7 0.00, so comp-local = segment time */
+  const C = {
+    edw: 0.0,      /* EDWARDSVILLE @0.00 */
+    t827: 1.98,    /* 8 .27 @1.98 */
+    hit: 3.72,     /* HIT @3.72: track A draws 1.2 s, meets the west wall at 4.92 ("station" ends 4.92) */
+    bldg: 4.18,    /* DELIVERY @4.18: the outline */
+    meet: 4.92,
+    warn: 5.60,    /* WARNING @5.60 ("warning had been out") */
+    meg: 9.78,     /* MEGAPHONE @9.78: the map fades through, the drawing starts at 9.98 */
+    out: 11.137    /* root fades to black, done at the host end 11.737; blackout bo-1 follows */
+  };
+  const tl = gsap.timeline({ paused: true });
+  const len = (el) => Math.ceil(el.getTotalLength()) + 1;
+
+  /* ambient: 2 % camera drift (origin by the pin label so it never drifts into the rail), scan line 104 px/s */
+  tl.set(P + "world", { scale: 1, transformOrigin: "1200px 300px" }, 0);
+  tl.to(P + "world", { scale: 1.02, duration: C.meg + 0.5, ease: "none" }, 0);
+  tl.set(P + "scan", { y: 0 }, 0);
+  tl.to(P + "scan", { y: 1020, duration: C.meg, ease: "none" }, 0);
+
+  /* Edwardsville pin; pulse ring every 1.2 s until the map leaves */
+  tl.fromTo(P + "edw-dot", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, C.edw);
+  tl.fromTo(P + "edw-lab", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.edw + 0.2);
+  tl.set(P + "edw-ring", { visibility: "hidden", scale: 1, opacity: 0.9 }, 0);
+  tl.set(P + "edw-ring", { visibility: "visible" }, C.edw + 0.2);
+  tl.fromTo(P + "edw-ring", { scale: 1, opacity: 0.9 }, { scale: 3, opacity: 0, duration: 1.0, ease: "power2.out", repeat: 7, repeatDelay: 0.2 }, C.edw + 0.2);
+
+  /* 8:27 PM clock chip */
+  tl.fromTo(P + "c827", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.t827);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.t827 + 0.3);
+
+  /* track A: west to east, ends on the west wall */
+  const ta = document.querySelector(P + "trka"), tb = document.querySelector(P + "trkb");
+  const LA = len(ta), LB = len(tb);
+  tl.set(ta, { strokeDasharray: LA, strokeDashoffset: LA, visibility: "hidden" }, 0);
+  tl.set(ta, { visibility: "visible" }, C.hit);
+  tl.fromTo(ta, { strokeDashoffset: LA }, { strokeDashoffset: 0, duration: C.meet - C.hit, ease: "power1.in" }, C.hit);
+
+  /* outline grows in about its centre, caption under it */
+  tl.fromTo(P + "outline", { autoAlpha: 0, scale: 0.2, svgOrigin: "463.29 712.24" },
+    { autoAlpha: 1, scale: 1, svgOrigin: "463.29 712.24", duration: 0.45, ease: "power2.out" }, C.bldg);
+  tl.fromTo(P + "cap", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.bldg + 0.15);
+
+  /* the meet: outline flashes red (stroke only, no transform), impact ring, then track B runs on to the DAT end */
+  tl.fromTo(P + "outline", { attr: { stroke: "#dfe7ee" } }, { attr: { stroke: "#e74c3c" }, duration: 0.12, ease: "none" }, C.meet);
+  tl.fromTo(P + "outline", { attr: { stroke: "#e74c3c" } }, { attr: { stroke: "#dfe7ee" }, duration: 0.8, ease: "power1.out", immediateRender: false }, C.meet + 0.12);
+  tl.fromTo(P + "hit", { autoAlpha: 0.9, scale: 1, svgOrigin: "439.9 712.2" },
+    { autoAlpha: 0, scale: 4, svgOrigin: "439.9 712.2", duration: 0.7, ease: "power2.out" }, C.meet);
+  tl.set(tb, { strokeDasharray: LB, strokeDashoffset: LB, visibility: "hidden" }, 0);
+  tl.set(tb, { visibility: "visible" }, C.meet + 0.15);
+  tl.fromTo(tb, { strokeDashoffset: LB }, { strokeDashoffset: 0, duration: 1.1, ease: "power1.out" }, C.meet + 0.15);
+
+  /* 8:06 PM warning chip above the clock; the warning area tints the map (the whole view is inside it) */
+  tl.fromTo(P + "c806", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.warn);
+  tl.fromTo(P + "lsx", { attr: { "fill-opacity": 0 } }, { attr: { "fill-opacity": 0.12 }, duration: 0.6, ease: "power1.out" }, C.warn);
+
+  /* MEGAPHONE: the map fades through, rail and source slide out */
+  tl.fromTo(P + "world", { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, C.meg);
+  tl.fromTo(P + "scan", { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, C.meg);
+  tl.to([P + "c806", P + "c827"], { x: 640, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, C.meg);
+  tl.to(P + "src", { x: -400, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, C.meg);
+
+  /* the drawing, line by line, then a 1 % breath */
+  const parts = gsap.utils.toArray(".g-i1-9-meg");
+  parts.forEach(function (el, i) {
+    const L = len(el);
+    tl.set(el, { strokeDasharray: L, strokeDashoffset: L, visibility: "hidden" }, 0);
+    tl.set(el, { visibility: "visible" }, C.meg + 0.2 + i * 0.06);
+    tl.fromTo(el, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, C.meg + 0.2 + i * 0.06);
+  });
+  tl.fromTo(P + "megg", { scale: 1, svgOrigin: "963 540" }, { scale: 1.01, svgOrigin: "963 540", duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, C.meg + 0.5);
+
+  /* fade to black at the host end */
+  tl.fromTo(P + "root", { autoAlpha: 1 }, { autoAlpha: 0, duration: DUR - C.out, ease: "power2.in" }, C.out);
+
+  window.__timelines["g-i1-9"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
