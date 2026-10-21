@@ -195,7 +195,8 @@ window.__timelines = window.__timelines || {};
   /* MEGAPHONE: the map fades through, rail and source slide out */
   tl.fromTo(P + "world", { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, C.meg);
   tl.fromTo(P + "scan", { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, C.meg);
-  tl.to([P + "c806", P + "c827"], { x: 640, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, C.meg);
+  tl.to([P + "c806", P + "c827"], { x: -640, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, C.meg);
+  tl.to(P + "cap", { x: -400, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, C.meg);
   tl.to(P + "src", { x: -400, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, C.meg);
 
   /* the drawing, line by line, then a 1 % breath */
