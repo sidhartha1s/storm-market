@@ -1,8 +1,11 @@
 # ep-camille-1969 · edit_script.md (draft 5, 22 Oct 26: H1, T1 and I1 in full prose; grader PASS 8 of 10 on draft 4, its fixes taken; acts as briefs only)
 
-Lane: documentary (`/storm-episode`). Built on candidate 1 in `angle.md`, which waits for the owner's lock: the ticked line's
-"deadliest part" broke on the sources and its twist is spent by two 2026 videos (`angle.md` "What the fact pass did"). If he
-picks another candidate, H1, T1 and I1 are thrown away, not adapted. Facts: `research/facts-national.md` (N rows),
+Lane: documentary (`/storm-episode`). Built on candidate 1 in `angle.md`, locked by the owner on 22 Oct 26 with arcs 2 and 3.
+**Owner sign-off (22 Oct 26):** `camille_hook` = "yes" and `camille_len` = "20" in
+C:\Users\Sidhartha\.claude\scratch\devq-retention\answers-eps-gates.json (saved_at "22 Oct 26 02:01:13"), on eps-gates.html #camille.
+That page showed H1 and T1 in full, and I1 abridged with "...". **LOCKED:** H1-S1, T1-S1, T1-S2, and the I1 lines the page showed
+word for word: I1-S6, I1-S8, I1-S9. **Not yet locked** (not shown in full, waiting on his yes): I1-S1, I1-S2, I1-S3, I1-S4 (partly
+shown), I1-S5, I1-S7, I1-S10 (not shown). Facts: `research/facts-national.md` (N rows),
 `research/facts-virginia-flood.md` (V rows), `research/facts-toll-people.md` (P rows); viewer comments:
 `references/comment-bank.md` (the seven Camille entries, 21 Oct 26). Status: DRAFT, phases 0 to 3 only (no TTS, no sourcing, no render).
 
