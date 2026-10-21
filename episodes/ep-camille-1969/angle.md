@@ -27,8 +27,7 @@ documentary slot, where Camille 1969 was the recommended default over Helene 202
   people whose remains were recovered around the Rockfish River after the flood (29News/WVIR and WJLA, both read raw on 21 Oct 26).
   No competitor video carries it.
 
-So the meaning moved. Per `references/angle.md` "A changed meaning needs a new lock", candidate 1 below waits for the owner's
-words. The hook and intro in `edit_script.md` are drafted on candidate 1 so the gate can run in one pass; if he picks another,
+So the meaning moved, and the owner locked candidate 1 on 22 Oct 26 (block at the end of this file). The hook and intro in `edit_script.md` are drafted on candidate 1 so the gate can run in one pass; if he picks another,
 they are thrown away, not adapted.
 
 ## Candidates (references/angle.md method, 21 Oct 26)
