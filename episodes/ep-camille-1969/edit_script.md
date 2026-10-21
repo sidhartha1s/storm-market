@@ -497,7 +497,7 @@ card's read time. Chapter blackout follows.
 
 ### A2-S11 · narration
 **Picture:** beige cite card: "almost none of the dead showed evidence of drowning · USGS Professional Paper 804 (1973), on the findings of Dr. J. H. Gamble of Lovingston". Glance chip "MULTIPLE FRACTURES". Then LVA aerial of the Lovingston access road with debris and wrecked vehicles (footage V05), slow push.
-> Dr. J. H. Gamble of Lovingston was in charge of identifying and examining the people who died. What he found, again and again, was multiple fractures, from the rock and timber the creek was carrying.
+> Dr. J. H. Gamble of Lovingston was in charge of identifying and examining the people who were lost. What he found, again and again, was multiple fractures, from the rock and timber the creek was carrying.
 
 **Rows:** [V34; factcheck-A2 S9: PP 804 p. 16, Gamble "found that almost none of the dead showed evidence of drowning"; "multiple fractures ... from rocks and trees and so forth" (Simpson and Simpson 1970 via PP 804, paraphrased, not quoted aloud)]
 *([Q1 paid] in full: the slopes let go, the creeks surged with rock and timber, and the people caught in them were struck by it. Open: who were they? Paid in S18 to S18, the Huffmans, Harvey and Sissy.)*
