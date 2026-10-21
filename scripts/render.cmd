@@ -104,7 +104,7 @@ set PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000
 REM RENDER_BUSY_OK=1 skips render_busy, so no .workers file: the request stands.
 if exist "render_%MODE%.workers" set /p RENDER_WORKERS=<"render_%MODE%.workers"
 echo %_FPS% > "render_%MODE%.fps"
-call npx hyperframes@0.8.149 render . --gpu --browser-gpu --experimental-fast-capture=true %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
+call npx hyperframes@0.8.185 render . --gpu --browser-gpu --experimental-fast-capture=true %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
 set RC=%ERRORLEVEL%
 echo %RC% > "render_%MODE%_done.marker"
 exit /b %RC%
