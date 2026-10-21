@@ -187,14 +187,10 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "outline", { attr: { stroke: "#e74c3c" } }, { attr: { stroke: "#dfe7ee" }, duration: 0.8, ease: "power1.out", immediateRender: false }, C.meet + 0.12);
   tl.set(P + "hit", { autoAlpha: 0, scale: 1, svgOrigin: "439.9 712.2" }, 0);
   tl.fromTo(P + "hit", { autoAlpha: 0.9, scale: 1, svgOrigin: "439.9 712.2" },
-    { autoAlpha: 0, scale: 4, svgOrigin: "439.9 712.2", duration: 0.7, ease: "power2.out", immediateRender: false }, C.meet);
-  tl.set(tb, { strokeDasharray: LB, strokeDashoffset: LB, visibility: "hidden" }, 0);
-  tl.set(tb, { visibility: "visible" }, C.meet + 0.15);
-  tl.fromTo(tb, { strokeDashoffset: LB }, { strokeDashoffset: 0, duration: 1.1, ease: "power1.out" }, C.meet + 0.15);
+    { autoAlpha: 0, scale: 2, svgOrigin: "439.9 712.2", duration: 0.7, ease: "power2.out", immediateRender: false }, C.meet);
 
-  /* 8:06 PM warning chip above the clock; the warning area tints the map (the whole view is inside it) */
-  tl.fromTo(P + "c806", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.warn);
-  tl.fromTo(P + "lsx", { attr: { "fill-opacity": 0 } }, { attr: { "fill-opacity": 0.12 }, duration: 0.6, ease: "power1.out" }, C.warn);
+  /* 8:06 PM warning chip, the slot above 8:27 (the whole view is inside the 8:06 polygon, so no wash: the chip carries it) */
+  tl.fromTo(P + "c806", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.warn);
 
   /* MEGAPHONE: the map fades through, rail and source slide out */
   tl.fromTo(P + "world", { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, C.meg);
