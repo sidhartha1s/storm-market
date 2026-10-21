@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!-- ep-mayfield-2021 · The Warning Hour · assembly v1, section 1 of the cut (22 Oct 26): H1, T1, I1 through the chapter blackout into A1.
+     Script: edit_script.md (H1, T1, I1 owner-locked 22 Oct 26). Narration starts = cumulative wav durations (audio/manifest.json) + 0.30 s seams;
+     Paul's hook clip stands in for H1-S1 (no narrator wav under it). I1 -> A1: 0.8 s chapter blackout from the end of i1-s7; A1's voice
+     starts 0.2 s after it (127.408). Every host window is resolved from audio/<seg>.words.json (cue in a comment, episode seconds).
+     SOUND (reasoned in edit_script.md "Hook sound"): this story IS a warning, so the civil-defence siren runs low under Paul from 0:00
+     (0.10: the source sits about 10 dB, 5.7 dB above the narrator, so 0.10 puts it about 14 dB under), swells to 0.18 under H1-S2, drops back
+     under H1-S3 and hands over to the drone at T1. One bed from T1: the industrial pulse drone (owner Pixabay pack), its fade-out tail cut and
+     the 1-25 s body self-crossfaded to 134 s (media/sfx/drone-loop.mp3, mean -14.6 dB, 1 s windows -16.4 to -13.2 dB, no lull) at 0.13.
+     Swells (0.4) END on the peak lines: "And the forecast was right." / "had seen it." / "what to do."
+     Stills are public-domain government work (DVIDS/FEMA, Kentucky Guard, NWS, NWS Service Assessment): no grade (CLAUDE.md "Grading").
+     No grain, no film layer (DESIGN.md "Look: no grain"). -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Mayfield 2021 · The Warning Hour</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .hold { position: absolute; inset: 0; pointer-events: none; }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="ep-mayfield-2021" data-start="0" data-width="1920" data-height="1080" data-duration="127.208" data-fps="30">
+
+  <!-- ============ NARRATION (H1-S1 is Paul's own line on ins-paul-1, so no nx-h1-s1) ============ -->
+  <audio id="nx-h1-s2" src="audio/h1-s2.wav" data-start="6.161" data-duration="4.455" data-volume="1"></audio>
+  <audio id="nx-h1-s3" src="audio/h1-s3.wav" data-start="10.916" data-duration="7.187" data-volume="1"></audio>
+  <audio id="nx-t1-s1" src="audio/t1-s1.wav" data-start="18.403" data-duration="13.263" data-volume="1"></audio>
+  <audio id="nx-i1-s1" src="audio/i1-s1.wav" data-start="31.966" data-duration="20.401" data-volume="1"></audio>
+  <audio id="nx-i1-s2" src="audio/i1-s2.wav" data-start="52.667" data-duration="14.258" data-volume="1"></audio>
+  <audio id="nx-i1-s3" src="audio/i1-s3.wav" data-start="67.225" data-duration="11.887" data-volume="1"></audio>
+  <audio id="nx-i1-s4" src="audio/i1-s4.wav" data-start="79.412" data-duration="13.9" data-volume="1"></audio>
+  <audio id="nx-i1-s5" src="audio/i1-s5.wav" data-start="93.612" data-duration="11.154" data-volume="1"></audio>
+  <audio id="nx-i1-s6" src="audio/i1-s6.wav" data-start="105.066" data-duration="9.305" data-volume="1"></audio>
+  <audio id="nx-i1-s7" src="audio/i1-s7.wav" data-start="114.671" data-duration="11.737" data-volume="1"></audio>
+
+  <!-- ============ SOUND (narration above every bed: score 0.13, ambience <= 0.20) ============ -->
+  <audio id="sx-siren-hook" src="media/sfx/soundreality-civil-defense-siren-128262.mp3" data-bed="" data-start="0" data-duration="5.861" data-volume="0.1"></audio>
+  <audio id="sx-siren-swell" src="media/sfx/soundreality-civil-defense-siren-128262.mp3" data-bed="" data-start="5.861" data-media-start="5.861" data-duration="5.055" data-volume="0.18" data-callback="the same siren run, swelling on the cut into H1-S2"></audio>
+  <audio id="sx-siren-tail" src="media/sfx/soundreality-civil-defense-siren-128262.mp3" data-bed="" data-start="10.916" data-media-start="10.916" data-duration="7.487" data-volume="0.1" data-callback="the same siren run, back down under H1-S3 until the drone takes over"></audio>
+  <audio id="sx-bed-drone" src="media/sfx/drone-loop.mp3" data-bed="" data-start="18.403" data-duration="108.805" data-volume="0.13"></audio>
+  <audio id="sx-swell-01" src="media/sfx/sfx-swell.wav" data-bed="" data-start="12.956" data-duration="5" data-volume="0.4"></audio>   <!-- ends 17.956 on "right." (h1-s3 7.04) -->
+  <audio id="sx-swell-02" src="media/sfx/sfx-swell.wav" data-bed="" data-start="47.286" data-duration="5" data-volume="0.4" data-callback="second swell, on the next peak line"></audio>   <!-- ends 52.286 on "seen it." (i1-s1 20.32) -->
+  <audio id="sx-swell-03" src="media/sfx/sfx-swell.wav" data-bed="" data-start="104.446" data-duration="5" data-volume="0.4" data-callback="third swell, on the claim"></audio>   <!-- ends 109.446 on "what to do." (i1-s6 4.38) -->
+
+  <!-- ============ STRUCTURE: chapter blackout I1 -> A1 (hand-placed, 0.8 s = chapter break) ============ -->
+  <section class="clip blackout" id="bo-1" data-start="126.408" data-duration="0.8" data-track-index="1"></section>
+
+  <!-- ============ H1 · HOOK (0-18.403) ============ -->
+  <!-- Paul, frame one, his own voice. STAND-IN: duration is the narrator wav audio/h1-s1.wav (5.861 s); retime when the clip lands
+       (cut it when he stops speaking, never fill it to 10 s). -->
+  <video id="ins-paul-1" src="media/paul/ins-paul-1/ins-paul-1.mp4" data-start="0" data-duration="5.861" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="A tornado warning goes off at work. What do you do? You go where they tell you. Somebody planned for it."></video>
+  <!-- popfig "Dec. 10, 2021": clip start + 0.2; out on "What do you do?" (h1-s1 2.04) + 0.6 exit = 2.64 -->
+  <div id="host-g-h1-1" data-composition-id="g-h1-1" data-composition-src="compositions/g-h1-1.html" data-start="0.2" data-duration="2.44" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- H1-S2: hard cut on the siren swell to the cleared factory lot (DVIDS 7018049, Liz Roll/FEMA, image only), slow push -->
+  <section class="clip still-wrap" id="v-h1-factory" data-start="5.861" data-duration="5.055" data-track-index="1"><img id="v-h1-factory-img" src="media/stills/h1-s2-factory-site.jpg" alt=""></section>
+  <!-- chip "14 lives" on "14" (h1-s2 1.74 = 7.901); source line +0.6; runs to the cut at 10.916 -->
+  <div id="host-g-h1-2" data-composition-id="g-h1-2" data-composition-src="compositions/g-h1-2.html" data-start="7.901" data-duration="3.015" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+  <!-- H1-S3: own NEXRAD replot is the picture from the cut (10.916); quote from "gap" (13.116); RIGHT on "right." (h1-s3 6.76 = 17.676)
+       + 1.6 = 19.276, so the replot runs 0.87 s into T1 before the map takes over -->
+  <div id="host-g-h1-3" data-composition-id="g-h1-3" data-composition-src="compositions/g-h1-3.html" data-start="10.916" data-duration="8.36" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- ============ T1 · HOOK TAIL (18.403-31.666) ============ -->
+  <!-- warning-polygon map: Edwardsville @21.343, Mayfield @24.403, "tornado warning" @26.443, second chip @27.043; + 1.6 = 28.643 -->
+  <div id="host-g-t1-1" data-composition-id="g-t1-1" data-composition-src="compositions/g-t1-1.html" data-start="19.276" data-duration="9.367" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- Kentucky Guard at the Mayfield fairgrounds (DVIDS 6986587), under "What happened inside in those minutes" (@28.823) -->
+  <section class="clip still-wrap" id="v-t1-guard" data-start="28.643" data-duration="3.323" data-track-index="1"><img id="v-t1-guard-img" src="media/stills/t1-s1-guard-fairgrounds.jpg" alt=""></section>
+
+  <!-- ============ I1 · INTRO: THE WHOLE PICTURE (31.966-126.408) ============ -->
+  <!-- I1-S1: NWS Paducah track timeline under "From Friday evening into Saturday", then our outbreak map from "the Weather Service" (@34.006);
+       71 @35.026, 89 @36.726, "Since 1950" @39.286, 38 @44.626, 1953 @48.066; held to the SPC page at 52.667 -->
+  <section class="clip still-wrap" id="v-i1-track" data-start="31.966" data-duration="2.04" data-track-index="1"><img id="v-i1-track-img" src="media/stills/i1-s1-nws-track-timeline.png" alt=""></section>
+  <div id="host-g-i1-1" data-composition-id="g-i1-1" data-composition-src="compositions/g-i1-1.html" data-start="34.006" data-duration="18.661" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- I1-S2: SPC Day 4-8 page from the cut (header @53.847, lit band @55.227), one beat, out on "That night" (@57.847).
+       BLOCKED upstream (picks.tsv): the 3 Dec Day 8 table says "No Risk Areas Forecast"; the line needs a reword or another issue. -->
+  <div id="host-g-i1-2" data-composition-id="g-i1-2" data-composition-src="compositions/g-i1-2.html" data-start="52.667" data-duration="5.18" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- factory lot again, a tight crop on the tanks and tanker (picks.tsv: the only factory still; gallery-10 is a house) -->
+  <section class="clip still-wrap" id="v-i1-factory" data-start="57.847" data-duration="5.32" data-track-index="1" data-callback="the only factory-site still, re-cropped tight on the tanks and the crumpled tanker under 'about 110 inside' (H1-S2 showed the whole lot)"><img id="v-i1-factory-img" src="media/stills/h1-s2-factory-site.jpg" alt=""></section>
+  <!-- chip "about 110 inside" on "110" (i1-s2 6.24 = 58.907); out on "The review says" (62.567) + 0.6 -->
+  <div id="host-g-i1-3" data-composition-id="g-i1-3" data-composition-src="compositions/g-i1-3.html" data-start="58.907" data-duration="4.26" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- the review itself (Service Assessment p33, Figure 20: the night's tornado warning polygons) under "The review says ... and it says why" -->
+  <section class="clip still-wrap" id="v-i1-sa-p33" data-start="63.167" data-duration="4.058" data-track-index="1"><img id="v-i1-sa-p33-img" src="media/stills/i1-s2-sa-p33-fig20.png" alt=""></section>
+
+  <!-- I1-S3: VIIRS before/after from the cut ("after sunset" @68.645), until the outline grows on "the building in Edwardsville" (@76.265) -->
+  <div id="host-g-i1-4" data-composition-id="g-i1-4" data-composition-src="compositions/g-i1-4.html" data-start="67.225" data-duration="9.04" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- I1-S3 last beat + I1-S4 first beat: outline @76.265, "a million square feet" @78.125, 19 @79.832, "Six people" @82.572,
+       out on "At the candle factory" (@85.092) + 0.6 = 85.692 -->
+  <div id="host-g-i1-5" data-composition-id="g-i1-5" data-composition-src="compositions/g-i1-5.html" data-start="76.265" data-duration="9.427" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- I1-S4: Mayfield downtown aerial (NWS Paducah survey) from "At the candle factory"; chip "8 lives" on "eight did" (@86.432),
+       source line +0.4; cut on "in St. Louis" (@88.852) -->
+  <section class="clip still-wrap" id="v-i1-graves1" data-start="85.092" data-duration="3.76" data-track-index="1"><img id="v-i1-graves1-img" src="media/stills/i1-s4-graves1-aerial.jpg" alt=""></section>
+  <div id="host-g-i1-6" data-composition-id="g-i1-6" data-composition-src="compositions/g-i1-6.html" data-start="86.432" data-duration="2.42" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- the St. Louis office's own radar of Edwardsville (NWS LSX event page, KLSX 4-panel) under "the weather office in Saint Louis ... wrote down what had been missing" -->
+  <section class="clip still-wrap" id="v-i1-klsx" data-start="88.852" data-duration="4.76" data-track-index="1"><img id="v-i1-klsx-img" src="media/stills/i1-s4-klsx-edwardsville-radar.png" alt=""></section>
+
+  <!-- I1-S5: the St. Louis after-action words, attribution on "That office wrote" (@93.612); phrases @98.532, @100.792, @103.292; + 1.6, held to I1-S6 -->
+  <div id="host-g-i1-7" data-composition-id="g-i1-7" data-composition-src="compositions/g-i1-7.html" data-start="93.612" data-duration="11.454" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+  <!-- I1-S6: downtown Mayfield street (NWS Paducah survey, Graves 3), slow push; claim card "right days ahead" @105.786,
+       "nobody" @107.206, out on "Almost five years on" (@109.806) + 0.6 -->
+  <section class="clip still-wrap" id="v-i1-graves3" data-start="105.066" data-duration="5.34" data-track-index="1"><img id="v-i1-graves3-img" src="media/stills/i1-s6-graves3-street.jpg" alt=""></section>
+  <div id="host-g-i1-8" data-composition-id="g-i1-8" data-composition-src="compositions/g-i1-8.html" data-start="105.786" data-duration="4.62" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- the Service Assessment's Recommendation 6 (p34: materials with basic tornado safety guidelines for large facilities) under
+       "I went to find out if anyone has written that advice since" -->
+  <section class="clip still-wrap" id="v-i1-sa-p34" data-start="110.406" data-duration="4.265" data-track-index="1"><img id="v-i1-sa-p34-img" src="media/stills/i1-s6-sa-p34-rec6.png" alt=""></section>
+
+  <!-- I1-S7: Edwardsville map from "Edwardsville came first" (@114.671); 8:27 @116.651, "warning had been out" @120.271,
+       megaphone @124.451 (+ 1.6 = 126.05); held to the end of the line (126.408), then the blackout -->
+  <div id="host-g-i1-9" data-composition-id="g-i1-9" data-composition-src="compositions/g-i1-9.html" data-start="114.671" data-duration="11.737" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+</div>
+
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  // a still lands on a quick punch (1.12 -> 1), then keeps a small push so it never sits (DESIGN.md "Footage motion")
+  function punch(sel, at, dur, origin) {
+    tl.fromTo(sel, { scale: 1.12, transformOrigin: origin }, { scale: 1, duration: 0.45, ease: "power3.out" }, at);
+    tl.to(sel, { scale: 1.04, duration: dur - 0.45, ease: "none" }, at + 0.45);
+  }
+  // the two pushes the locked Picture lines ask for (H1-S2, I1-S6)
+  function push(sel, at, dur, s0, s1, origin) {
+    tl.fromTo(sel, { scale: s0, transformOrigin: origin }, { scale: s1, duration: dur, ease: "power1.inOut" }, at);
+  }
+
+  push("#v-h1-factory-img", 5.861, 5.055, 1.0, 1.1, "62% 48%");
+  punch("#v-t1-guard-img", 28.643, 3.323, "50% 50%");
+  punch("#v-i1-track-img", 31.966, 2.04, "50% 50%");
+  push("#v-i1-factory-img", 57.847, 5.32, 1.5, 1.6, "85% 48%");   // tight on the tanks and tanker: a different crop from H1-S2
+  punch("#v-i1-sa-p33-img", 63.167, 4.058, "50% 40%");
+  punch("#v-i1-graves1-img", 85.092, 3.76, "50% 50%");
+  punch("#v-i1-klsx-img", 88.852, 4.76, "50% 50%");
+  push("#v-i1-graves3-img", 105.066, 5.34, 1.0, 1.1, "55% 50%");
+  push("#v-i1-sa-p34-img", 110.406, 4.265, 1.0, 1.08, "50% 43%");   // toward Recommendation 6; every line stays whole at 1.08
+
+  window.__timelines["ep-mayfield-2021"] = tl;
+})();
+</script>
+</body>
+</html>
