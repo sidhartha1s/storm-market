@@ -143,7 +143,7 @@ def main():
                 if oe > t and os_ < s2:
                     quiet, t = max(quiet, min(os_, s2) - t), max(t, oe)
             quiet = max(quiet, s2 - t)
-            if quiet > MAX_QUIET:
+            if dead_air_applies and quiet > MAX_QUIET:
                 findings.append(f"dead air {quiet:.1f}s inside the pause at {e1:.1f}-{s2:.1f}s: no narration, Paul or outside "
                                 f"voice for over {MAX_QUIET}s (DESIGN.md hold); lay an outside voice over it or shorten the hold")
             continue
