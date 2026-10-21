@@ -387,7 +387,7 @@ for slug, label, nx2, extra, want in (
     ("ep-air", "a 7 s hold with nothing in it FAILs", 9.0, HOLD.format(7), True),
     ("ep-air", "a 7 s hold carried by a radio in its middle passes (2.5 s quiet either side)", 9.0, HOLD.format(7) + RAD.format(4.5), False),
     ("ep-air", "a radio at the start of a 9 s hold leaves 5 s of dead air after it and FAILs", 11.0, HOLD.format(9) + RAD.format(2), True),
-    ("ep-air", "a muted clip does not carry a hold", 9.0, HOLD.format(7) + RAD.format(4.5).replace("<audio", "<video").replace("</audio>", " muted</video>"), True),
+    ("ep-air", "a muted clip does not carry a hold", 9.0, HOLD.format(7) + RAD.format(4.5).replace("<audio", "<video").replace("></audio>", " muted></video>"), True),
     ("ep1-joplin", "a shipped episode is exempt", 9.0, HOLD.format(7), False),
 ):
     with tempfile.TemporaryDirectory() as d:
