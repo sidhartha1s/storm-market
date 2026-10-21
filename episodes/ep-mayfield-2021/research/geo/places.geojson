@@ -1,0 +1,181 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Mayfield",
+    "state": "KY",
+    "kind": "place",
+    "source": "US Census Bureau 2021 Gazetteer, places (internal point), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2021_Gazetteer/2021_Gaz_place_national.zip"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -88.644491,
+     36.737459
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Edwardsville",
+    "state": "IL",
+    "kind": "place",
+    "source": "US Census Bureau 2021 Gazetteer, places (internal point), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2021_Gazetteer/2021_Gaz_place_national.zip"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -89.988605,
+     38.790835
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Woodland Mills",
+    "state": "TN",
+    "kind": "place",
+    "source": "US Census Bureau 2021 Gazetteer, places (internal point), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2021_Gazetteer/2021_Gaz_place_national.zip"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -89.110423,
+     36.476652
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Bay",
+    "state": "AR",
+    "kind": "place",
+    "source": "US Census Bureau 2021 Gazetteer, places (internal point), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2021_Gazetteer/2021_Gaz_place_national.zip"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -90.552143,
+     35.746057
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Samburg",
+    "state": "TN",
+    "kind": "place",
+    "source": "US Census Bureau 2021 Gazetteer, places (internal point), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2021_Gazetteer/2021_Gaz_place_national.zip"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -89.352448,
+     36.381703
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Dawson Springs",
+    "state": "KY",
+    "kind": "place",
+    "source": "US Census Bureau 2021 Gazetteer, places (internal point), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2021_Gazetteer/2021_Gaz_place_national.zip"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -87.688598,
+     37.17424
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Memphis",
+    "state": "TN",
+    "kind": "place",
+    "source": "US Census Bureau 2021 Gazetteer, places (internal point), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2021_Gazetteer/2021_Gaz_place_national.zip"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -89.967455,
+     35.109026
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Paducah",
+    "state": "KY",
+    "kind": "place",
+    "source": "US Census Bureau 2021 Gazetteer, places (internal point), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2021_Gazetteer/2021_Gaz_place_national.zip"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -88.644477,
+     37.070892
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "St. Louis",
+    "state": "MO",
+    "kind": "place",
+    "source": "US Census Bureau 2021 Gazetteer, places (internal point), https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2021_Gazetteer/2021_Gaz_place_national.zip"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -90.244582,
+     38.635699
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Falls of Rough",
+    "state": "KY",
+    "kind": "place",
+    "source": "USGS GNIS (gaz_id 507976) via https://carto.nationalmap.gov/arcgis/rest/services/geonames/MapServer/3"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -86.5488763669602,
+     37.59006142641167
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Amazon delivery station, 3077 Gateway Commerce Dr S",
+    "state": "IL",
+    "kind": "building",
+    "source": "US Census Bureau geocoder (Public_AR_Current, address-range interpolation, approximate to the street frontage), address per St. Louis Public Radio 26 Aug 2022"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -90.03861421884,
+     38.77515659022
+    ]
+   }
+  }
+ ]
+}
