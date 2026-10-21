@@ -21,7 +21,7 @@
   #g-i1-5-chip { position:absolute; left:110px; top:836px; padding:16px 32px; box-sizing:border-box; white-space:nowrap;
     font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:1.15; color:#f2f5f8;
     background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14);
-    border-left:6px solid #c0392b; border-radius:28px; opacity:0; visibility:hidden; }
+    border-radius:28px; opacity:0; visibility:hidden; }
 </style>
 <div id="g-i1-5-root" data-composition-id="g-i1-5" data-width="1920" data-height="1080">
   <div id="g-i1-5-ground"></div>
@@ -88,7 +88,7 @@ window.__timelines = window.__timelines || {};
   } }, 0);
 
   // slow float for the whole window (8 px, 1.2 s legs)
-  tl.to(P + "floatg", { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0.6);
+  tl.to(P + "floatg", { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0.6);
 
   /* A MILLION @1.86 (i1-s3 10.90) */
   tl.fromTo(P + "cap-b", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 1.86);
