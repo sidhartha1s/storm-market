@@ -2,8 +2,11 @@
 
 Lane: documentary (`/storm-episode`). Angle: `angle.md` (owner lock 21 Oct 26, wording tightened by two fact passes).
 Research: `research/fact-sheet.md` (primary sources, every line cited), `research/teardowns.md` (6 competitor videos +
-viewer asks). Status: structure + act briefs by the orchestrator; hook, tail and intro written; acts 1 to 5 NOT
-written yet (next round, one writer per act). Nothing here is locked (`references/script-scaling.md` "Section lock").
+viewer asks). Status (22 Oct 26): structure + act briefs by the orchestrator; hook, tail and intro written, fact-checked
+(`fact_check.md`, all claims CONFIRMED or corrected, 0 open `[verify]`) and graded three times by fresh Opus graders:
+6/10, 7/10, 7/10 (lock bar 8). The last grader's three fixes are applied and not re-graded. Acts 1 to 5 NOT written
+yet (next round, one writer per act). Nothing is locked (`references/script-scaling.md` "Section lock"): the hook
+needs the owner's sign-off and a grade of 8.
 
 ## Runtime and shape
 - Target: about 20 min (proposal; the owner sets length per episode). 5 acts of 3 to 4.5 min plus hook/intro
@@ -26,7 +29,7 @@ Weather Radio alert tone (1050 Hz, self-made with ffmpeg: zero claim risk) marks
 | id | planted | paid | line |
 |---|---|---|---|
 | E | H1 (hook) | A4 + A5 | warning worked, 36 still lost → where they were |
-| L0 | T1 (tail) | A2 | the cellar door the tornado pulled open: did they live? (hook says yes; HOW is A2) |
+| L0 | T1 (tail) | I1-S2 | how thirty-five people got into one cellar in time: one number on a clock, paid by Grady's sixty-five minutes; the living-room TV (NOAA Report 1999) stays an A2 rehook |
 | L1 | A1 end | A2 | the tornado formed at 6:26 near Amber, Bridge Creek next: what was standing there |
 | L2 | A2 end | A3 | the warning everyone remembers had not been written yet when Bridge Creek was hit |
 | L3 | A3 (TV station) | A3 end / A4 | "get out of its path": it worked that night, and why it was luck |
@@ -83,19 +86,19 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### H1-S1 — narration
 **Picture:** **Paul on camera:** full frame at 0:00, the one hook sentence, nothing added. Civil-defence siren fades up under him. Popfig "OKLAHOMA · MAY 3, 1999" inside the first second. [HOOK] [Q] [loop E open]
-> With a tornado warning up to an hour ahead, you'd make it, wouldn't you?
+> If you're warned in time, you'll make it, won't you?
 
 *register: 9/10*
 
 ### H1-S2 — narration
 **Picture:** Hard cut on "didn't" to the A9 photo near Bridge Creek (Erin Maxwell, NWS, NWS Norman event page), chip "36 LIVES". Cut on "all did" to the self-made cellar-door graphic over a self-made Grady County map (no public-domain photo of the cellar is in the inventory); the siren stops dead on that cut. Chip "35 IN ONE CELLAR · ALL LIVED". Source line: "NWS Service Assessment, Aug 1999, p22". [RS] [VE] [HUMAN] [PAY]
-> Thirty-six people along this tornado's path didn't. Thirty-five people in one storm cellar all did.
+> Thirty-six people in its path didn't. Thirty-five people in one storm cellar all did.
 
 *register: 9/10*
 
 ### H1-S3 — narration
 **Picture:** Hold the cellar-door graphic, Grady County highlighted on the map; then the Service Assessment cover (NWS, "Oklahoma/Southern Kansas Tornado Outbreak of May 3, 1999"), pages turning; then the aerial of the path through Newcastle, Moore and Oklahoma City (John Jarboe, NWS, NSSL May 3 page). [Q]
-> That cellar was in Grady County, Oklahoma, the same county where twelve people didn't survive. The F5 pulled the cellar door open. I've read the weather service's report on that night, every page, and the warning did its job. Where each person was when the tornado got there decided who came home.
+> That cellar was in Grady County, Oklahoma, where the tornado hit first. I've read the weather service's report on that night, every page. The warning did its job. Where each person was when the tornado got there decided who came home.
 
 *register: 9/10*
 
@@ -103,7 +106,7 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### T1-S1 — narration
 **Picture:** NWS Norman outbreak map, zoom to Grady County; the self-made cellar-door graphic returns, door held open, hold on it. [Q] [loop L0 open]
-> That cellar sat in an area of mostly mobile homes, in the F5's path. How thirty-five family members and neighbors got down into it in time starts with something you probably have in your living room.
+> That cellar sat among mostly mobile homes, and the F5 pulled its door open. How thirty-five people got down there in time starts with one number on a clock.
 
 *register: 9/10*
 
@@ -111,18 +114,18 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### I1-S1 — narration
 **Picture:** Self-made map from the NWS Norman damage-path KML: the track draws from Amber to Midwest City as the towns are named, clock chip "6:26 PM" to "7:48 PM", chip "F5 · 1 MILE WIDE". Then the KTLX radar image at 7:18 p.m. (Service Assessment photo). [VE] [Q]
-> May third, 1999, central Oklahoma. If you lived along this line, your evening changed at six twenty-six, when the tornado touched down near Amber, in Grady County. It ran about thirty-seven miles, through Bridge Creek, Moore, south Oklahoma City and Del City. It came apart in Midwest City at about seven forty-eight. At its widest it was a mile across, and the survey teams rated it an F5. Every county along that line got its own warning, and when I lined up the times, they weren't what I expected.
+> May third, 1999, central Oklahoma. If you lived along this line, your evening changed at six twenty-six, when the tornado touched down near Amber, in Grady County. It ran about thirty-seven miles, through Bridge Creek, Moore, south Oklahoma City and Del City. It came apart in Midwest City at about seven forty-eight. At its widest it was a mile across, and the survey teams rated it an F5. Every county along that line got its own warning. So how much time did each one actually get?
 
 *register: 9/10*
 
 ### I1-S2 — narration
 **Picture:** Self-made lead-time bars, one bar per sentence, from Service Assessment p9 (Grady 65, McClain 18, Cleveland 31, Oklahoma 13 min), then one bar "32 MIN AVERAGE" beside a grey band "TYPICAL US WARNING: 10 TO 15 MIN". Source lines: "NWS Service Assessment, Aug 1999" and "Wurman et al. 2007" on the grey band. [RS] [VE] [PAY] [Q]
-> In Grady County, from the first warning to the first tornado there, it was sixty-five minutes. McClain County got eighteen minutes. Cleveland County, where Moore is, got thirty-one. Oklahoma County got thirteen. Across those four counties, the first warning came an average of thirty-two minutes ahead. A typical tornado warning in this country gives you ten to fifteen. And still, thirty-six people along that path lost their lives.
+> In Grady County, from the first warning to the first tornado there, it was sixty-five minutes. McClain County, next door, got eighteen minutes. Cleveland County, where Moore is, got thirty-one. Oklahoma County, last in line, got thirteen. Across those four counties, the first warning came an average of thirty-two minutes ahead. A typical tornado warning in this country gives you ten to fifteen.
 
 *register: 8/10*
 
 ### I1-S3 — narration
 **Picture:** NSSL May 3 page damage photos (damage1 to damage6.jpg, NSSL), Bridge Creek first, then Moore and Del City; chips "BRIDGE CREEK · 12" then "THE OTHER 24". Source line: "Brooks, NSSL death list; NWS Storm Data". End on a self-made clock face reading 4:47 PM, siren-free room tone. [PAY] [Q] [loop: question carried into A1]
-> Twelve of them were at Bridge Creek, most of those in mobile homes. The other twenty-four were spread along the rest of the path, most of them inside houses. The warnings that day went out early, and the first one came before this storm had made a single tornado. How the forecasters in Norman got that far ahead starts with one clock. Four forty-seven.
+> Of the thirty-six people who lost their lives, twelve were at Bridge Creek, most of them in mobile homes. The other twenty-four were spread along the rest of the path, most of them inside houses. The warnings that day went out early, and the first one came before this storm had made a single tornado. How the forecasters in Norman got that far ahead goes back to four forty-seven that afternoon.
 
 *register: 9/10*
