@@ -196,7 +196,7 @@ I1-S4), Q4 "what did the St. Louis office write" (I1-S4 to I1-S5). L1 is asked a
 *[real clip moment: the building after the tornado, news pull]*
 
 ### A1-S11 — narration
-**Picture:** the AP lines as attributed text, "AP, 28 Apr 2022"; OSHA's letter item 3 lit (evacuation maps). Then OSHA's recommendation shown whole: "All audible warning devices and locations of the device should be clearly identified in the severe weather emergency plan and readily accessible." · OSHA Chicago release. The drawn megaphone returns behind its cage.
+**Picture:** the AP lines as attributed text, "AP, 28 Apr 2022"; OSHA's letter item 3 lit (evacuation maps). Then OSHA's recommendation shown whole: "All audible warning devices, as well as the location of the device(s), should be clearly identified within the severe weather emergency plan and readily accessible." · OSHA hazard alert letter to Amazon, Apr 2022 (candidates/a1 a1-s11_c1). The drawn megaphone returns behind its cage.
 > The AP reported the written plan did not specifically identify where the shelter was. OSHA's letter adds that evacuation maps posted at the site showed it. The AP also reported that some workers couldn't remember ever doing a severe weather drill.
 
 ### A1-S12 — narration
