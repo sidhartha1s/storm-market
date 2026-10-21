@@ -94,9 +94,12 @@ https://www.weather.gov/media/publications/assessments/NWS_Joint_Regional_Servic
   safety guidelines for large facilities." Finding 6 itself says "gap", not "no guidance".
 - OSHA: "OSHA does not have a standard that requires severe weather emergency plans but recommends them" (OSHA release
   26 Apr 2022) [G1].
-- What changed: Illinois Warehouse Tornado Preparedness Act (HB 2987, signed Aug 2025): every warehouse needs a
-  tornado plan, new warehouses a designated refuge area (St. Louis Public Radio) [G3]. No Kentucky law or OSHA rule
-  found (absence unverified) [G4]. Whether NWS has since published the Recommendation 6 materials: unverified.
+- What changed: Illinois Warehouse Tornado Preparedness Act (HB 2987, Public Act 104-0262, Aug 2025): every warehouse
+  operator must write a tornado plan, in force on enactment, existing warehouses 120 days to file it with the local fire
+  department; new warehouses must be designed to protect occupants from tornadoes. Corrected by `fc-Z1.tsv` (22 Oct 26):
+  no "designated refuge area" in the statute, and the 1 Jan 2027 date is only the inspectors' ICC-certification rule [G3].
+  Not found: a Kentucky workplace tornado law (SB 11 of 2026 is a home safe-room rebate), an OSHA rule, a national NWS
+  large-facility guide for Recommendation 6 (`fc-Z1.tsv`, places searched listed there) [G4].
 
 ## Footage (licence risk flagged early)
 - Public-domain spine per beat (SAFE-PD rows): forecast 13, Edwardsville 5, Mayfield factory 5, Mayfield town 14,

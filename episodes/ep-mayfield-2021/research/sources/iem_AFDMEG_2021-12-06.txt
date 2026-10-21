@@ -1,0 +1,736 @@
+
+265 
+FXUS64 KMEG 070535
+AFDMEG
+
+Area Forecast Discussion
+National Weather Service Memphis TN
+1135 PM CST Mon Dec 6 2021
+
+.UPDATE...
+
+See 06Z aviation discussion below.
+
+&&
+
+.PREV UPDATE.../issued 924 PM CST Mon Dec 6 2021/ 
+
+At 9 pm temperatures were in the 30s across the Midsouth with
+Union City, TN being the coldest location at 30 degrees. Skies 
+are clear with dew points in the low to mid 20s. Morning lows 
+should be below freezing across most of the midsouth ranging from 
+the mid 20s to low 30s. Highs will be mostly in the 40s tomorrow 
+with plenty of sunshine.
+
+30
+
+&&
+
+.DISCUSSION... /issued 546 PM CST Mon Dec 6 2021/ 
+
+After a busy night/morning across the region a much cooler and
+clear night is expected across the Mid South. Drier air has moved
+in and temperatures tonight will drop into the upper 20s and lower
+30s. WE will have these cooler temps for Tuesday, but that will
+quickly moderate into the 50s on Wednesday and close to 70 by
+Thursday. Deep return flow from the gulf will help get us back
+warm and ushering in moist air into the region by Thursday. Friday
+we should be well into the 70s with some warm air advection
+showers possible. Guidance points to a front moving through the
+region sometime in the Friday/Saturday time frame. This looks like
+it could be another severe weather threat. We will have to watch
+this over the next several days to monitor the trends and
+evolution of this system. Dry conditions should be in place for 
+Sunday, with upstream ridging set to move into the Midsouth early 
+next week. 
+
+&&
+
+.AVIATION...
+
+06Z TAFs 
+
+VFR conditions prevail at all sites through 00Z. TUP may see some
+MVFR CIGs move in by the end of the TAF cycle but VFR CIGs will 
+prevail everywhere else through the period. Northeasterly winds 
+around 5-10kt will become light and variable by the evening. 
+
+CAD
+
+&&
+
+.MEG WATCHES/WARNINGS/ADVISORIES...
+AR...None.
+MO...None.
+MS...None.
+TN...None.
+&&
+
+$$
+
+
+
+448 
+FXUS64 KMEG 070324
+AFDMEG
+
+Area Forecast Discussion
+National Weather Service Memphis TN
+924 PM CST Mon Dec 6 2021
+
+.UPDATE...Evening Update.
+
+&&
+
+.DISCUSSION...
+
+At 9 pm temperatures were in the 30s across the Midsouth with
+Union City, TN being the coldest location at 30 degrees. Skies 
+are clear with dew points in the low to mid 20s. Morning lows 
+should be below freezing across most of the midsouth ranging from 
+the mid 20s to low 30s. Highs will be mostly in the 40s tomorrow 
+with plenty of sunshine.
+
+30
+
+&&
+
+.PREV DISCUSSION... /issued 546 PM CST Mon Dec 6 2021/ 
+
+After a busy night/morning across the region a much cooler and
+clear night is expected across the Mid South. Drier air has moved
+in and temperatures tonight will drop into the upper 20s and lower
+30s. WE will have these cooler temps for Tuesday, but that will
+quickly moderate into the 50s on Wednesday and close to 70 by
+Thursday. Deep return flow from the gulf will help get us back
+warm and ushering in moist air into the region by Thursday. Friday
+we should be well into the 70s with some warm air advection
+showers possible. Guidance points to a front moving through the
+region sometime in the Friday/Saturday time frame. This looks like
+it could be another severe weather threat. We will have to watch
+this over the next several days to monitor the trends and
+evolution of this system. Dry conditions should be in place for 
+Sunday, with upstream ridging set to move into the Midsouth early 
+next week. 
+
+&&
+
+.AVIATION...
+
+VFR conditions prevail through the period at all sites. North to
+northeasterly winds around 5-10kt will veer and become easterly 
+by tomorrow morning. 
+
+CAD
+
+&&
+
+.MEG WATCHES/WARNINGS/ADVISORIES...
+AR...None.
+MO...None.
+MS...None.
+TN...None.
+&&
+
+$$
+
+
+
+116 
+FXUS64 KMEG 062346
+AFDMEG
+
+Area Forecast Discussion
+National Weather Service Memphis TN
+546 PM CST Mon Dec 6 2021
+
+.UPDATE...
+
+See 00Z aviation discussion below. 
+
+&&
+
+.DISCUSSION...
+
+After a busy night/morning across the region a much cooler and
+clear night is expected across the Mid South. Drier air has moved
+in and temperatures tonight will drop into the upper 20s and lower
+30s. WE will have these cooler temps for Tuesday, but that will
+quickly moderate into the 50s on Wednesday and close to 70 by
+Thursday. Deep return flow from the gulf will help get us back
+warm and ushering in moist air into the region by Thursday. Friday
+we should be well into the 70s with some warm air advection
+showers possible. Guidance points to a front moving through the
+region sometime in the Friday/Saturday time frame. This looks like
+it could be another severe weather threat. We will have to watch
+this over the next several days to monitor the trends and
+evolution of this system. Dry conditions should be in place for 
+Sunday, with upstream ridging set to move into the Midsouth early 
+next week. 
+
+&&
+
+.AVIATION...
+
+VFR conditions prevail through the period at all sites. North to
+northeasterly winds around 5-10kt will veer and become easterly 
+by tomorrow morning. 
+
+CAD
+
+&&
+
+.MEG WATCHES/WARNINGS/ADVISORIES...
+AR...None.
+MO...None.
+MS...None.
+TN...None.
+&&
+
+$$
+
+
+
+127 
+FXUS64 KMEG 062136
+AFDMEG
+
+Area Forecast Discussion
+National Weather Service Memphis TN
+336 PM CST Mon Dec 6 2021
+
+.DISCUSSION...
+After a busy night/morning across the region a much cooler and
+clear night is expected across the Mid South. Drier air has moved
+in and temperatures tonight will drop into the upper 20s and lower
+30s. WE will have these cooler temps for Tuesday, but that will
+quickly moderate into the 50s on Wednesday and close to 70 by
+Thursday. Deep return flow from the gulf will help get us back
+warm and ushering in moist air into the region by Thursday. Friday
+we should be well into the 70s with some warm air advection
+showers possible. Guidance points to a front moving through the
+region sometime in the Friday/Saturday time frame. This looks like
+it could be another severe weather threat. We will have to watch
+this over the next several days to monitor the trends and
+evolution of this system. Dry conditions should be in place for 
+Sunday, with upstream ridging set to move into the Midsouth early 
+next week. 
+
+&&
+
+.AVIATION...
+MVFR conds will hang around TUP for a couple more hours before 
+clearing out. The rest of the TAF sites will remain VFR through 
+the period. North winds will remain strong around 15 to 20 kts 
+this afternoon with gusts as high as 25 kts. Winds will diminish 
+after sundown to less than 8 kts from the northeast. 
+
+AC3
+
+
+&&
+
+.MEG WATCHES/WARNINGS/ADVISORIES...
+AR...None.
+MO...None.
+MS...None.
+TN...None.
+&&
+
+$$
+
+
+
+031 
+FXUS64 KMEG 061750
+AFDMEG
+
+Area Forecast Discussion
+National Weather Service Memphis TN
+1150 AM CST Mon Dec 6 2021
+
+.UPDATE...
+
+See the 18Z aviation discussion below. 
+
+&&
+
+.PREV DISCUSSION... /issued 502 AM CST Mon Dec 6 2021/ 
+
+DISCUSSION... /issued 439 AM CST Mon Dec 6 2021/ 
+
+Cool, dry and seasonal early December weather will prevail across
+the Midsouth through midweek, following this morning's cold 
+frontal passage. Strong northerly winds will lighten overnight, 
+but probably not go completely calm, as surface high pressure 
+settles into Illinois. These light winds and dry air (lower to mid
+20s dewpoints), should preclude fog/freezing fog formation late 
+tonight. 
+
+Fast zonal flow aloft will prevail until a weak upper trof passage
+early Wednesday morning. This feature should pass through the 
+area dry, given the lack of return flow moisture in the Midsouth. 
+Main impact would be an increase in midlevel clouds.
+
+Zonal flow an low amplitude ridging will prevail Thursday and
+Friday, with strengthening low level return flow. Milder overnight
+lows will accompany increased surface dewpoints. A few showers
+will also be possible, aided by warm advection.
+
+A progressive longwave trof remains on track to pass from the
+plains into the MS River valley on Saturday. This feature will
+bring our next appreciable rain chances, and perhaps a few strong
+storms. Dry conditions should for Sunday, with upstream ridging 
+set to move into the Midsouth early next week. 
+
+PWB
+
+&&
+
+.AVIATION...
+18Z TAF Set 
+
+MVFR conds will hang around TUP for a couple more hours before 
+clearing out. The rest of the TAF sites will remain VFR through 
+the period. North winds will remain strong around 15 to 20 kts 
+this afternoon with gusts as high as 25 kts. Winds will diminish 
+after sundown to less than 8 kts from the northeast. 
+
+AC3
+
+&&
+
+.MEG WATCHES/WARNINGS/ADVISORIES...
+AR...None.
+MO...None.
+MS...None.
+TN...None.
+&&
+
+$$
+
+
+
+881 
+FXUS64 KMEG 061102
+AFDMEG
+
+Area Forecast Discussion
+National Weather Service Memphis TN
+502 AM CST Mon Dec 6 2021
+
+.DISCUSSION... /issued 439 AM CST Mon Dec 6 2021/ 
+
+Cool, dry and seasonal early December weather will prevail across
+the Midsouth through midweek, following this morning's cold 
+frontal passage. Strong northerly winds will lighten overnight, 
+but probably not go completely calm, as surface high pressure 
+settles into Illinois. These light winds and dry air (lower to mid
+20s dewpoints), should preclude fog/freezing fog formation late 
+tonight. 
+
+Fast zonal flow aloft will prevail until a weak upper trof passage
+early Wednesday morning. This feature should pass through the 
+area dry, given the lack of return flow moisture in the Midsouth. 
+Main impact would be an increase in midlevel clouds.
+
+Zonal flow an low amplitude ridging will prevail Thursday and
+Friday, with strengthening low level return flow. Milder overnight
+lows will accompany increased surface dewpoints. A few showers
+will also be possible, aided by warm advection.
+
+A progressive longwave trof remains on track to pass from the
+plains into the MS River valley on Saturday. This feature will
+bring our next appreciable rain chances, and perhaps a few strong
+storms. Dry conditions should for Sunday, with upstream ridging 
+set to move into the Midsouth early next week. 
+
+PWB
+
+&&
+
+.AVIATION...
+
+12Z TAF Set 
+
+Convection along and ahead of a cold front will continue to sink
+southeastward across the Mid-South this morning. IFR/MVFR
+conditions will occur with the convection. Expect conditions to
+improve to VFR pretty quickly behind the front. Gusty Northerly
+winds will occur behind the front as well. Expect speeds sustained
+at 12-16 KTS with gusts up to 25 KTS. Speeds will begin to
+diminish around sunset as the direction begins to shift to the NE. 
+
+KRM
+
+&&
+
+
+
+&&
+
+.MEG WATCHES/WARNINGS/ADVISORIES...
+AR...None.
+MO...None.
+MS...None.
+TN...None.
+&&
+
+$$
+
+
+
+510 
+FXUS64 KMEG 061039
+AFDMEG
+
+Area Forecast Discussion
+National Weather Service Memphis TN
+439 AM CST Mon Dec 6 2021
+
+.DISCUSSION...
+Cool, dry and seasonal early December weather will prevail across
+the Midsouth through midweek, following this morning's cold
+frontal passage. Strong northerly winds will lighten overnight,
+but probably not go comletely calm, as surface high pressure 
+settles into Illinois. These light winds and dry air (lower to 
+mid 20s dewpoints), should preclude fog/freezing fog formation 
+late tonight. 
+
+Fast zonal flow aloft will prevail until a weak upper trof passage
+early Wednesday morning. This feature should pass through the 
+area dry, given the lack of return flow moisture in the Midsouth. 
+Main impact would be an increase in midlevel clouds.
+
+Zonal flow an low amplitude ridging will prevail Thursday and
+Friday, with strengthening low level return flow. Milder overnight
+lows will accompany increased surface dewpoints. A few showers
+will also be possible, aided by warm advection.
+
+A progressive longwave trof remains on track to pass from the
+plains into the MS River valley on Saturday. This feature will
+bring our next appreciable rain chances, and perhaps a few strong
+storms. Dry conditions should for Sunday, with upstream ridging 
+set to move into the Midsouth early next week. 
+
+PWB
+
+&&
+
+.AVIATION...
+06Z TAFs
+
+Pre-frontal showers are pushing across the CWA this evening. The 
+main line of storms, IFR CIGs, and reduced VSBYs (3-4SM) is fast-
+moving and approaching from the west. The line will reach JBR by
+08Z, MEM and MKL by 09Z, and TUP by 11Z. Carried VCTS at all sites
+except TUP which I capped at VCSH due to the line weakening as it
+gets farther south and east. Winds ahead of the front will be 
+strong and southwesterly around 15-20kt, gusting to up to 25kt as 
+the line of storms passes. Winds behind the front will also be 
+strong, but N/NW around 15kt with higher gusts possible. A few 
+showers and low clouds may linger post-FROPA for a few hours, 
+especially at TUP. VFR conditions return by the morning and winds
+calm down to NE around 10kt.
+
+CAD
+
+
+&&
+
+.MEG WATCHES/WARNINGS/ADVISORIES...
+AR...None.
+MO...None.
+MS...None.
+TN...None.
+&&
+
+$$
+
+
+
+243 
+FXUS64 KMEG 060547
+AFDMEG
+
+Area Forecast Discussion
+National Weather Service Memphis TN
+1147 PM CST Sun Dec 5 2021
+
+.UPDATE...
+
+See 06Z aviation discussion below.
+
+&&
+
+.PREV UPDATE... /issued 921 PM CST Sun Dec 5 2021/ 
+
+Updated to include a Severe Thunderstorm watch for portions of
+northeast Arkansas, the Missouri Bootheel and far northwest
+Tennessee. A line of thunderstorms has recently developed along a
+cold front stretching from northwest Oklahoma into southeast
+Missouri. Ample moisture in in place featuring PW's around 1.3
+inches and dew points in the low to middle 60s and resulting in 
+CAPE in the 1000 to 1500 range. 0-6kt shear of 40-50kt to our 
+west should gradually shift across northern portions of the 
+Midsouth over the next several hours. Supercellular or quasi-
+supercellular thunderstorms may result in damaging wind with a 
+slightly less threat of hail. 0-1 km shear between 225 and 
+250m^2/s^2 on the LZK 00z sounding suggest tornadoes cannot be 
+ruled out. Tornadoes would be most likely with any storms that 
+develop out ahead of the main line. 
+
+Additional watches may be needed farther south later tonight. 
+
+30
+
+&& 
+
+.DISCUSSION... /issued 603 PM CST Sun Dec 5 2021/ 
+
+Showers and a few storms have been ongoing this afternoon across
+the Mid South. We expect a lull in the action for the next few
+hours before a cold front starts to move into the region later on
+tonight. The Storm Prediction Center continues to carry a Slight
+Risk for severe weather tonight into Monday morning for a large
+portion of the forecast area. We expect showers and storms to
+develop sometime after 10 PM this evening along that front as it
+moves south. The biggest question still remains is if any
+convection will really take advantage of the kinematics that this
+system would provide if storms can become surface based. Looking
+at the soundings this afternoon an inversion is still being shown
+for portions of the area as the best convection moves through.
+That's not to say that this will be a non event, but there is a
+conditional component to this event. The shear will not be a
+problem and helicity will begin to pile up along the front as
+well...embedded within the convection. This would point to a QLCS
+type event with bowing lines and segments that could produce 
+damaging winds and a few tornadoes if it is able to take advantage
+of the atmosphere in place. The best chances to see severe 
+weather look to be mainly north of I-40 and as the system moves in
+the profiles become less favorable for deeper convection. The 
+good news is that this system should be out of the area after 10 
+AM...and we will clear out for the afternoon and evening hours. 
+The active pattern continues through the week. The next impulse 
+looks to move through by mid week. As of now it looks like most of
+the precip will be off to the south and east of the area. Have 
+maintained some light POPs during that time frame as well. 
+Southwesterly flow aloft will develop late in the week, with 
+deeper moisture return and warm advection showers possible by 
+Friday...and another system bringing the chance of some 
+thunderstorms again by Saturday. 
+
+&&
+
+.AVIATION...
+
+06Z TAFs
+
+Pre-frontal showers are pushing across the CWA this evening. The 
+main line of storms, IFR CIGs, and reduced VSBYs (3-4SM) is fast-
+moving and approaching from the west. The line will reach JBR by
+08Z, MEM and MKL by 09Z, and TUP by 11Z. Carried VCTS at all sites
+except TUP which I capped at VCSH due to the line weakening as it
+gets farther south and east. Winds ahead of the front will be 
+strong and southwesterly around 15-20kt, gusting to up to 25kt as 
+the line of storms passes. Winds behind the front will also be 
+strong, but N/NW around 15kt with higher gusts possible. A few 
+showers and low clouds may linger post-FROPA for a few hours, 
+especially at TUP. VFR conditions return by the morning and winds
+calm down to NE around 10kt.
+
+CAD
+
+&&
+
+.MEG WATCHES/WARNINGS/ADVISORIES...
+AR...None.
+MO...None.
+MS...None.
+TN...None.
+&&
+
+$$
+
+
+
+315 
+FXUS64 KMEG 060321
+AFDMEG
+
+Area Forecast Discussion
+National Weather Service Memphis TN
+921 PM CST Sun Dec 5 2021
+
+.UPDATE...Evening Update. 
+
+&&
+
+.DISCUSSION...
+
+Updated to include a Severe Thunderstorm watch for portions of
+northeast Arkansas, the Missouri Bootheel and far northwest
+Tennessee. A line of thunderstorms has recently developed along a
+cold front stretching from northwest Oklahoma into southeast
+Missouri. Ample moisture in in place featuring PW's around 1.3
+inches and dew points in the low to middle 60s and resulting in 
+CAPE in the 1000 to 1500 range. 0-6kt shear of 40-50kt to our 
+west should gradually shift across northern portions of the 
+Midsouth over the next several hours. Supercellular or quasi-
+supercellular thunderstorms may result in damaging wind with a 
+slightly less threat of hail. 0-1 km shear between 225 and 
+250m^2/s^2 on the LZK 00z sounding suggest tornadoes cannot be 
+ruled out. Tornadoes would be most likely with any storms that 
+develop out ahead of the main line. 
+
+Additional watches may be needed farther south later tonight. 
+
+30
+
+&&
+
+.PREV DISCUSSION... /issued 603 PM CST Sun Dec 5 2021/ 
+
+Showers and a few storms have been ongoing this afternoon across
+the Mid South. We expect a lull in the action for the next few
+hours before a cold front starts to move into the region later on
+tonight. The Storm Prediction Center continues to carry a Slight
+Risk for severe weather tonight into Monday morning for a large
+portion of the forecast area. We expect showers and storms to
+develop sometime after 10 PM this evening along that front as it
+moves south. The biggest question still remains is if any
+convection will really take advantage of the kinematics that this
+system would provide if storms can become surface based. Looking
+at the soundings this afternoon an inversion is still being shown
+for portions of the area as the best convection moves through.
+That's not to say that this will be a non event, but there is a
+conditional component to this event. The shear will not be a
+problem and helicity will begin to pile up along the front as
+well...embedded within the convection. This would point to a QLCS
+type event with bowing lines and segments that could produce 
+damaging winds and a few tornadoes if it is able to take advantage
+of the atmosphere in place. The best chances to see severe 
+weather look to be mainly north of I-40 and as the system moves in
+the profiles become less favorable for deeper convection. The 
+good news is that this system should be out of the area after 10 
+AM...and we will clear out for the afternoon and evening hours. 
+The active pattern continues through the week. The next impulse 
+looks to move through by mid week. As of now it looks like most of
+the precip will be off to the south and east of the area. Have 
+maintained some light POPs during that time frame as well. 
+Southwesterly flow aloft will develop late in the week, with 
+deeper moisture return and warm advection showers possible by 
+Friday...and another system bringing the chance of some 
+thunderstorms again by Saturday. 
+
+&&
+
+.AVIATION...00Z TAFs
+
+Showers and isolated storms dot the area ahead of an approaching
+cold front this evening. Looks like timing for the main event of
+stronger storms, lower CIGs (IFR to MVFR), and reduced VSBYs 
+(4SM) will be between 7 and 10Z for the three northern sites; 
+closer to 11Z for TUP. Carried VCTS at all sites except TUP 
+overnight due to multiple waves of isolated pockets of storms. The
+structure of the line should weaken the farther south and east it
+gets. Winds ahead of the front will be southwesterly around 
+10-15kt, gusting to up to 25kt as the winds shift to the north 
+with the front. Post-FROPA, VFR conditions return and winds settle
+into the N/NW around 10-15kt with intermittent higher gusts 
+possible. 
+
+CAD
+
+&&
+
+.MEG WATCHES/WARNINGS/ADVISORIES...
+AR...None.
+MO...None.
+MS...None.
+TN...None.
+&&
+
+$$
+
+
+
+312 
+FXUS64 KMEG 060003
+AFDMEG
+
+Area Forecast Discussion
+National Weather Service Memphis TN
+603 PM CST Sun Dec 5 2021
+
+.UPDATE...
+
+See 00Z aviation discussion below.
+
+&&
+
+.DISCUSSION.../issued 357 PM CST Sun Dec 5 2021/ 
+
+Showers and a few storms have been ongoing this afternoon across
+the Mid South. We expect a lull in the action for the next few
+hours before a cold front starts to move into the region later on
+tonight. The Storm Prediction Center continues to carry a Slight
+Risk for severe weather tonight into Monday morning for a large
+portion of the forecast area. We expect showers and storms to
+develop sometime after 10 PM this evening along that front as it
+moves south. The biggest question still remains is if any
+convection will really take advantage of the kinematics that this
+system would provide if storms can become surface based. Looking
+at the soundings this afternoon an inversion is still being shown
+for portions of the area as the best convection moves through.
+That's not to say that this will be a non event, but there is a
+conditional component to this event. The shear will not be a
+problem and helicity will begin to pile up along the front as
+well...embedded within the convection. This would point to a QLCS
+type event with bowing lines and segments that could produce 
+damaging winds and a few tornadoes if it is able to take advantage
+of the atmosphere in place. The best chances to see severe 
+weather look to be mainly north of I-40 and as the system moves in
+the profiles become less favorable for deeper convection. The 
+good news is that this system should be out of the area after 10 
+AM...and we will clear out for the afternoon and evening hours. 
+The active pattern continues through the week. The next impulse 
+looks to move through by mid week. As of now it looks like most of
+the precip will be off to the south and east of the area. Have 
+maintained some light POPs during that time frame as well. 
+Southwesterly flow aloft will develop late in the week, with 
+deeper moisture return and warm advection showers possible by 
+Friday...and another system bringing the chance of some 
+thunderstorms again by Saturday. 
+
+.AVIATION...
+
+00Z TAFs
+
+Showers and isolated storms dot the area ahead of an approaching
+cold front this evening. Looks like timing for the main event of
+stronger storms, lower CIGs (IFR to MVFR), and reduced VSBYs 
+(4SM) will be between 7 and 10Z for the three northern sites; 
+closer to 11Z for TUP. Carried VCTS at all sites except TUP 
+overnight due to multiple waves of isolated pockets of storms. The
+structure of the line should weaken the farther south and east it
+gets. Winds ahead of the front will be southwesterly around 
+10-15kt, gusting to up to 25kt as the winds shift to the north 
+with the front. Post-FROPA, VFR conditions return and winds settle
+into the N/NW around 10-15kt with intermittent higher gusts 
+possible. 
+
+CAD
+
+&&
+
+.MEG WATCHES/WARNINGS/ADVISORIES...
+AR...None.
+MO...None.
+MS...None.
+TN...None.
+&&
+
+$$
+
+

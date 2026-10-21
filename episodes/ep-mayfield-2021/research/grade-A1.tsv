@@ -1,0 +1,25 @@
+section	axis_or_item	score_or_issue	quote	fix
+A1	new info	4	OSHA's letter puts it first on the list	Cage, safe room, 90 vs 150, contractors, HAL are all new; S13 repeats I1-S2 (week ahead) and I1-S4 (nineteen football fields)
+A1	curiosity	3	Its walls were tilt-up concrete panels	S4 to S6 run about 30 s on facts with no open question; tie the wind bars to a gap (will the walls hold?) without a rhetorical question
+A1	stakes	4	Six people working at the building lost their lives.	No named person (HUMAN slot open); one sourced name, age, job moves this to 5
+A1	visual change	4	S10 text card, S11 text card, S12 Paul, S13 archive text	S10 to S13 is about 40 s of text and talking head; put the GMA building pull or the radar loop under S10 or S11
+A1	payoff	3	They went where they were sent, a bathroom on the south side of the building	L1 closes on where they went, never on what happened there; add the sourced consequence (that part of the building came down) tagged [verify]
+A1	exit hook	2	And the Storm Prediction Center had been writing about that Friday for a week.	Repeats I1-S2 nearly word for word, so no new gap; plant L2's real question (how much each office said, and when)
+A1	register (person talking to you)	7/10	The AP reported that the written plan never named where the shelter was.	First person only in S1; 'you' only in S8, S9; S10 to S12 read as a report. Writer's self-score 8 is high by 1
+A1	lock bar	FAIL	exit hook 2	No axis may be under 3
+A1-S13	humanise: summary tag / recap	banned shape	So the warning went out in time, and the plan met the minimum.	Cut the sentence (recap of the act)
+A1-S13	humanise: fragment + blame tilt	issue	Minimal guidelines, for a building the size of nineteen football fields.	Cut: fragment, repeats I1-S4, and the sneer at the size reads as blaming the company (angle legal care)
+A1-S2	clock-time register (learnings script-process 2026-09-20 rule 1)	issue	A tornado watch had been up since twenty past five, about three hours ahead. At six minutes past eight	A tornado watch had been up since five twenty PM, about three hours ahead. At eight oh six PM,
+A1-S4	clock-time register (same rule)	issue	Earlier that evening, at a quarter to eight,	Earlier that evening, at seven forty-five,
+A1-S6	low cognitive load: unit dropped	issue	with winds of a hundred fifty	with winds of a hundred fifty miles an hour
+A1-S11	register: jargon list	issue	Put site-specific information in the plan.	Say where the shelter is, in writing, for this building.
+A1-S4	wording	minor	The building they were warning had no reinforced storm shelter.	The building in their warning had no reinforced storm shelter.
+A1-S1	overclaim check	flag for fact-checker	That night, nobody could reach it.	Confirm OSHA or AP says it was unreachable that night; else 'OSHA's letter says it was locked in a cage'
+A1-S12	P1 table drift	issue	OSHA said Amazon's severe weather procedures met minimal federal safety guidelines for storm sheltering.	Draft wording is the fc-slice-c line; sync the Paul on camera table P1 in edit_script.md
+A1	humanise scan	0 banned words, 0 banned phrases, 0 em dashes, 0 questions	mass casualty incident (S7)	Soft word 'casualty' sits inside the responder quote: fine, keep once
+A1	rationed devices	1 aside	I had to read that line twice.	Within budget
+A1	loop check: opens on I1-S7 megaphone	PASS	The megaphone was locked in a cage.	none
+A1	loop check: L1 close	PASS (weak)	[loop L1 closes] at S9	see payoff fix
+A1	loop check: L2 plant	FAIL (repeat)	had been writing about that Friday for a week	And it had been in the forecast for a week. The review found some offices waited until the last day or two to say how bad it could be. [verify: Finding 3a wording, SA p15]
+A1	long sentences	0 over 24 words; max 22 (S4)		none
+A1	narration words	477 (verify text excluded)		none

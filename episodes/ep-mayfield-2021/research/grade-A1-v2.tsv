@@ -1,0 +1,18 @@
+section	axis_or_item	score_or_issue	quote	fix
+A1	new info	4	The tornado reached the delivery station at about eight twenty-seven, more than twenty minutes later.	S3 and S1 restate I1-S7 (8:27, more than twenty minutes, megaphone listed first); rest is new (cage, safe room, tilt-up, 90 vs 150, contractors, north vs south restroom, HAL)
+A1	curiosity	3	A tornado watch had been up since five twenty PM	S2 micro-loop "how long did they have" was already paid by I1-S7, so it is dead; S6 gap line helps; S4 to S6 still facts in a row
+A1	stakes	4	Five were delivery contractors, people who deliver packages to doors, maybe to yours.	HUMAN slot still open; one sourced name, age, job moves this to 5
+A1	visual change	4	GMA / ABC News pull under S10	Fixed from v1; S11 to S14 still text, drawn megaphone, Paul, archive text (about 35 s)
+A1	payoff	4	OSHA's letter says the designated tornado shelter was the restroom on the north side.	L1 now closes on a real turn (south room vs north designated); v1 consequence line not added, not required
+A1	exit hook	4	It gives a reason, and I didn't expect it.	Plants L2 without repeating I1; S14 sentence 2 is filler (see fix)
+A1	register (person talking to you)	8/10	WGN Radio and FOX 2 reported that an emergency responder called in a mass casualty incident.	S7 and S11 still read as reports; writer self-score 9 is high by 1
+A1	lock bar	PASS	lowest axis 3 (curiosity)	none
+A1-S1/S3	repeat of I1-S7	issue	It was the device meant to start the shelter plan, and the letter puts it first on the list.	S1: It was the device meant to start the shelter plan. S3: Twenty minutes is long enough to walk from one end of almost any building to the other.
+A1-S10	year unclear + first person contradicted by S11 (AP)	issue	In April, OSHA sent Amazon what it calls a Hazard Alert Letter. ... I read the letter itself.	The next April, OSHA sent Amazon what it calls a Hazard Alert Letter. (cut "I read the letter itself.")
+A1-S14	fluff + implied blame on WFO St. Louis	issue	The Weather Service's own review found something about that. Some of its offices waited until the last day or two to say how bad it could be.	The Weather Service's own review found that some offices across the outbreak waited until the last day or two to say how bad it could be.
+A1-S12	rationed devices	minor	You know which device I'm thinking of.	Second wink-aside in the act after S1 "I had to read that line twice"; quickref caps rationed devices at 3 per script. Keep one of the two, editor call
+A1-S4	blame check	PASS (watch)	The people writing the warning had a safe room.	Sourced and not a blame line; keep the two facts side by side, no adjective
+A1-S9	blame check	PASS (watch)	Managers had been telling people to get to a restroom.	Sourced (OSHA letter); no sentence says anyone went to the wrong room: keep it that way
+A1	v1 issues remaining	HUMAN slot open; S4 to S6 curiosity partly; report register in S7, S11		Fixed from v1: exit repeat, S13 recap and fragment, clock times, S6 unit, S11 jargon, S4 wording, S1 overclaim, P1 sync, visual run
+A1	humanise scan	0 questions, 0 em dashes, max sentence 20 words	Earlier that evening, at seven forty-five, the staff at that same weather office had gone into their own safe room.	none
+A1	narration words	519 (lines starting "> ")		none

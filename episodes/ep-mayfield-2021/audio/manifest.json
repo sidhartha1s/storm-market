@@ -1,0 +1,79 @@
+{
+ "h1-s1": {
+  "wav": "audio/h1-s1.wav",
+  "duration": 5.861,
+  "words": 21,
+  "text_hash": "701b375e37baee4753f80d0a4a5dfcca5045826c",
+  "tempo": 0.94
+ },
+ "h1-s2": {
+  "wav": "audio/h1-s2.wav",
+  "duration": 4.455,
+  "words": 13,
+  "text_hash": "c2423e3d24b73634c583ea575bde522452cbc36e",
+  "tempo": 0.94
+ },
+ "h1-s3": {
+  "wav": "audio/h1-s3.wav",
+  "duration": 7.187,
+  "words": 23,
+  "text_hash": "a2230145ed2557adef40cbd9017e84714b1719cf",
+  "tempo": 0.94
+ },
+ "t1-s1": {
+  "wav": "audio/t1-s1.wav",
+  "duration": 13.263,
+  "words": 43,
+  "text_hash": "c5e59e3910d4e97e8a0450e4ce062e8c33dd5a44",
+  "tempo": 0.94
+ },
+ "i1-s1": {
+  "wav": "audio/i1-s1.wav",
+  "duration": 20.401,
+  "words": 53,
+  "text_hash": "38a7bd5bdcfbf389e46f278ba8f882c246ef401e",
+  "tempo": 0.94
+ },
+ "i1-s2": {
+  "wav": "audio/i1-s2.wav",
+  "duration": 14.258,
+  "words": 48,
+  "text_hash": "d912d3914c1d8b256c69cf389745104c5ba62e1c",
+  "tempo": 0.94
+ },
+ "i1-s3": {
+  "wav": "audio/i1-s3.wav",
+  "duration": 11.887,
+  "words": 36,
+  "text_hash": "21e40c00c4a5a2c5efe06f8c9e7c0edd85488c2b",
+  "tempo": 0.94
+ },
+ "i1-s4": {
+  "wav": "audio/i1-s4.wav",
+  "duration": 13.9,
+  "words": 38,
+  "text_hash": "4c817d39a331390e38ea120b7cdde81325940a4d",
+  "tempo": 0.94
+ },
+ "i1-s5": {
+  "wav": "audio/i1-s5.wav",
+  "duration": 11.154,
+  "words": 38,
+  "text_hash": "295a9c7ff15e7cde14972f61200a0ff1a766ae29",
+  "tempo": 0.94
+ },
+ "i1-s6": {
+  "wav": "audio/i1-s6.wav",
+  "duration": 9.305,
+  "words": 31,
+  "text_hash": "da04ca6760bfc879ae7e3fc3abc7b3ced66cd1ad",
+  "tempo": 0.94
+ },
+ "i1-s7": {
+  "wav": "audio/i1-s7.wav",
+  "duration": 11.737,
+  "words": 39,
+  "text_hash": "8c9c0da974c5d236ddc154013edb2d5f3e7d036d",
+  "tempo": 0.94
+ }
+}

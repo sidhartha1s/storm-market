@@ -1,0 +1,18 @@
+section	axis_or_item	score_or_issue	quote	fix
+Z1	axis:new_info	3	S1-S3 restate the gap already said in H1-S3 and I1-S5; new = page numbers, Rec 6, IL law, absences	Cut S1 sentence 3 and S3's list; spend the time on Kentucky stakes
+Z1	axis:curiosity	3	S1-S3 open no new question (viewer already knows the gap); S4 'Then I checked what has changed since' is the only fresh pull	Fix 3 tightens S1-S3 so S4 arrives ~12 s sooner
+Z1	axis:stakes	3	Kentucky's eight and the ~110 at work never return in the close; only Edwardsville's six (S5)	Fix 2: name the eight in S6
+Z1	axis:visual_change	3	S1-S3 are ~40 s of document cards back to back (PDF p33, Finding 6, Rec 6, St. Louis card); S9 shelter-sign stock unsourced	Put the Guard clip (S4) earlier or under S3; source S9 sign clip
+Z1	axis:payoff	4	E1 paid honestly: IL yes, KY none found, NWS materials none found. Rests on 3 open absence [verify] tags	If any absence fails fact-check, rewrite S6/S7 before lock
+Z1	axis:exit_hook	4	End ask before signature per DESIGN.md; signature warm; practical beat S9 lands well	Fix 5 for the echo
+Z1	register	7	S2/S3 read as document; S6 inversion 'The materials Recommendation six asked for, I couldn't find published'; 'In Illinois, the law did.' needs decoding	Fix 4; 'In Illinois, the law changed.'
+Z1-S7	recap/mirrored callback	FAIL	The forecast was right days ahead. The review asked for basic tornado safety guidelines for large facilities, and Illinois now makes warehouses write a tornado plan.	Fix 1: replace P5 with 'Almost five years on, one of the two states makes warehouses plan for tornadoes. From the Weather Service, the advice is still the general kind.' (26 words); cut S8 narration, keep its picture
+Z1-S8	overclaim	issue	one of those two states has written the advice down	Illinois mandates employer plans; the state wrote no guidelines. Fix 1 removes the line
+Z1-S6	stakes	issue	In Kentucky, I couldn't find a new law on tornado plans or shelters at work	Fix 2: 'In Kentucky, where eight people lost their lives at the factory, I couldn't find a new law on tornado plans or shelters at work.' (23 words)
+Z1-S1/S3	repetition	issue	It was a gap in the safety material they could hand a business with a building that big. / That's what the St. Louis office said was missing: where to shelter people at work, which warnings to shelter for, and what a warehouse needs.	Fix 3: cut S1 sentence 3; S3 last sentence becomes 'That's the advice the St. Louis office said was missing.'
+Z1-S6	humanise: inversion + 'couldn't find' x4 across S6-S8	issue	The materials Recommendation six asked for, I couldn't find published	Fix 4: 'And I couldn't find the materials Recommendation six asked for.'
+Z1-S9/S11	humanise: echo 'already know', 'know...know', 'days ahead' x3 in 60 s	issue	so your feet already know the way / Know where you'd go when yours comes, at home and at work, so you already know what to do.	Fix 5: S9 'so your feet know the way.' S11 'Learn where you'd go when yours sounds, at home and at work, so when it comes, you already know what to do.'
+Z1	dominant question in last 30-60 s	yes	S8 ends ~47 s before the end (S9 ~18 s + end ask 15.5 s + S11 ~14 s); with Fix 1 the answer moves to P5 at ~60 s	Keep S9 short so P5 stays inside 60 s
+Z1	blame/legal	clean	No company blamed; absence claims framed as 'I couldn't find'	none
+Z1	warm not fearful	yes	S9 'on a calm day' practical beat; signature preparedness	none
+Z1	verdict	PASS (axes) conditional on Fix 1	no axis under 3; recap check fails at S7	Apply Fix 1 before lock
