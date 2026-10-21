@@ -3,8 +3,8 @@
 Lane: documentary (`/storm-episode`). Angle: `angle.md` (owner lock 21 Oct 26, wording tightened by two fact passes).
 Research: `research/fact-sheet.md` (primary sources, every line cited), `research/teardowns.md` (6 competitor videos +
 viewer asks). Status (22 Oct 26): structure + act briefs by the orchestrator; hook, tail and intro written, fact-checked
-(`fact_check.md`, all claims CONFIRMED or corrected, 0 open `[verify]`) and graded three times by fresh Opus graders:
-6/10, 7/10, 7/10 (lock bar 8). The last grader's three fixes are applied and not re-graded. Acts 1 to 5 NOT written
+(`fact_check.md`, all claims CONFIRMED or corrected, 0 open `[verify]`) and graded four times by fresh Opus graders:
+6/10, 7/10, 7/10, 8/10 (lock bar 8, cleared 22 Oct 26). The 8/10 grader's three wording fixes are applied. Acts 1 to 5 NOT written
 yet (next round, one writer per act). Nothing is locked (`references/script-scaling.md` "Section lock"): the hook
 needs the owner's sign-off and a grade of 8.
 
@@ -92,7 +92,7 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### H1-S2 — narration
 **Picture:** Hard cut on "didn't" to the A9 photo near Bridge Creek (Erin Maxwell, NWS, NWS Norman event page), chip "36 LIVES". Cut on "all did" to the self-made cellar-door graphic over a self-made Grady County map (no public-domain photo of the cellar is in the inventory); the siren stops dead on that cut. Chip "35 IN ONE CELLAR · ALL LIVED". Source line: "NWS Service Assessment, Aug 1999, p22". [RS] [VE] [HUMAN] [PAY]
-> Thirty-six people in its path didn't. Thirty-five people in one storm cellar all did.
+> Thirty-six people in that tornado's path didn't. Thirty-five people in one storm cellar all did.
 
 *register: 9/10*
 
@@ -106,7 +106,7 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### T1-S1 — narration
 **Picture:** NWS Norman outbreak map, zoom to Grady County; the self-made cellar-door graphic returns, door held open, hold on it. [Q] [loop L0 open]
-> That cellar sat among mostly mobile homes, and the F5 pulled its door open. How thirty-five people got down there in time starts with one number on a clock.
+> The cellar sat in a neighborhood of mostly mobile homes, and the F5 pulled its door open. How thirty-five people got down there in time starts with one number on a clock.
 
 *register: 9/10*
 
@@ -114,7 +114,7 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### I1-S1 — narration
 **Picture:** Self-made map from the NWS Norman damage-path KML: the track draws from Amber to Midwest City as the towns are named, clock chip "6:26 PM" to "7:48 PM", chip "F5 · 1 MILE WIDE". Then the KTLX radar image at 7:18 p.m. (Service Assessment photo). [VE] [Q]
-> May third, 1999, central Oklahoma. If you lived along this line, your evening changed at six twenty-six, when the tornado touched down near Amber, in Grady County. It ran about thirty-seven miles, through Bridge Creek, Moore, south Oklahoma City and Del City. It came apart in Midwest City at about seven forty-eight. At its widest it was a mile across, and the survey teams rated it an F5. Every county along that line got its own warning. So how much time did each one actually get?
+> May third, 1999, central Oklahoma. At six twenty-six that evening, the tornado touched down near Amber, in Grady County. It ran about thirty-seven miles, through Bridge Creek, Moore, south Oklahoma City and Del City. It came apart in Midwest City at about seven forty-eight. At its widest it was a mile across, and the survey teams rated it an F5. Every county along that line got its own warning. So how much time did each one actually get?
 
 *register: 9/10*
 
@@ -126,6 +126,6 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### I1-S3 — narration
 **Picture:** NSSL May 3 page damage photos (damage1 to damage6.jpg, NSSL), Bridge Creek first, then Moore and Del City; chips "BRIDGE CREEK · 12" then "THE OTHER 24". Source line: "Brooks, NSSL death list; NWS Storm Data". End on a self-made clock face reading 4:47 PM, siren-free room tone. [PAY] [Q] [loop: question carried into A1]
-> Of the thirty-six people who lost their lives, twelve were at Bridge Creek, most of them in mobile homes. The other twenty-four were spread along the rest of the path, most of them inside houses. The warnings that day went out early, and the first one came before this storm had made a single tornado. How the forecasters in Norman got that far ahead goes back to four forty-seven that afternoon.
+> Of the thirty-six people who lost their lives, twelve were at Bridge Creek, most of them in mobile homes. The other twenty-four were spread along the rest of the path, most of them inside houses. The warnings that day went out early, and the first one came before this storm had made a single tornado. Then why did twelve people at Bridge Creek still not make it? The answer starts in Norman, at four forty-seven that afternoon.
 
 *register: 9/10*
