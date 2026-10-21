@@ -127,6 +127,16 @@ def main():
                 findings.append(f"CTA dip-out {s2 - ce2:.1f}s at {ce2:.1f}-{s2:.1f}s exceeds config dip_out {dip_out}s")
             continue
         if any(bs < s2 and be > e1 for bs, be in structure):
+            # a blackout or hold sanctions the pause, not dead air: at most MAX_QUIET s with no voice at all
+            # (owner 21 Oct 26, Joplin: a 18.4 s hold left 6 s of map and 6 s of muted CCTV under the bed alone)
+            t, quiet = e1, 0.0
+            for os_, oe in outside:
+                if oe > t and os_ < s2:
+                    quiet, t = max(quiet, min(os_, s2) - t), max(t, oe)
+            quiet = max(quiet, s2 - t)
+            if quiet > MAX_QUIET:
+                findings.append(f"dead air {quiet:.1f}s inside the pause at {e1:.1f}-{s2:.1f}s: no narration, Paul or outside "
+                                f"voice for over {MAX_QUIET}s (DESIGN.md hold); lay an outside voice over it or shorten the hold")
             continue
         findings.append(f"narration gap {gap:.1f}s at {e1:.1f}-{s2:.1f}s (max 0.8s outside the CTA)")
 
