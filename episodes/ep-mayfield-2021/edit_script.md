@@ -108,7 +108,7 @@ I1-S4), Q4 "what did the St. Louis office write" (I1-S4 to I1-S5). L1 is asked a
 
 ### I1-S3 — narration
 **Picture:** NASA VIIRS night-lights over western Kentucky, before and after. Chip "after sunset" (SA p6). Then our own Edwardsville building outline (labelled illustrative) growing to its full size.
-> The storms were forecast for after sunset, in December. If you've lived in western Kentucky, you know December is coat weather. And the building in Edwardsville covered more than a million square feet.
+> The storms were forecast for after sunset, in December. If you've lived in western Kentucky, you know December is coat weather, not tornado weather. And the building in Edwardsville covered more than a million square feet.
 
 *[Q2 closes]* *[Q3 open: what a building that size is like inside]*
 
