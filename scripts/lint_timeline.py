@@ -38,6 +38,43 @@ _banned = Path(__file__).resolve().parent.parent / "assets/sfx/BANNED.md5"
 if not _banned.exists():
     sys.exit(f"[lint_timeline] FAIL: {_banned} is missing; the banned-audio check cannot run (restore it from git, never skip it)")
 BANNED = {l.split()[0]: l.split()[1] for l in _banned.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")}
+MAX_QUIET = 4.0  # longest stretch with no voice of any kind inside a blackout or hold (DESIGN.md "hold", owner 21 Oct 26)
+
+
+def _num(tag, attr):
+    m = re.search(rf'{attr}="([\d.]+)"', tag)
+    return float(m.group(1)) if m else None
+
+
+def outside_voice(tag):
+    """(id, start, end) when an <audio>/<video> tag plays audible sound other than the narrator, Paul, the CTA or a bed;
+    else None. The one test for checks 7 and 8."""
+    idm = re.search(r'\sid="([^"]+)"', tag)   # \s: hyperframes stamps data-hf-id="hf-..." before the real id
+    vid = idm.group(1) if idm else ""
+    s, d = _num(tag, "data-start"), _num(tag, "data-duration")
+    # narration is nx- but not nx-ins (circle_audio.py, build_srt.py, sweep_episode.py); every sx- bed carries data-bed
+    if (re.match(r"nx-(?!ins)", vid) or vid.startswith(("ins-paul", "ins-cta")) or "data-bed" in tag
+            or re.search(r'src="[^"]*cta/', tag) or s is None or d is None):
+        return None
+    # audible as audio_levels.py reads it: data-volume defaults to 1.0; a video is silent only when muted
+    vol = _num(tag, "data-volume")
+    if (vol is not None and vol <= 0) or (tag.startswith("<video") and re.search(r"\smuted(?=[\s>/=]|$)", tag)):
+        return None
+    return vid, s, s + d
+
+
+def longest_gap(spans, ws, we):
+    """(length, start) of the longest stretch of [ws, we] that no span in the sorted list covers."""
+    cursor, longest = ws, (0.0, ws)
+    for vs, ve in spans:
+        if ve <= cursor or vs >= we:
+            continue
+        if vs - cursor > longest[0]:
+            longest = (vs - cursor, cursor)
+        cursor = max(cursor, ve)
+    if we - cursor > longest[0]:
+        longest = (we - cursor, cursor)
+    return longest
 
 
 def main():
