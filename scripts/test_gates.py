@@ -379,6 +379,24 @@ for slug, label, extra, want in (
         code, out = run("lint_timeline.py", ep)
         check(f"lint_timeline: {label}", ("outside voice without a caption" in out) == want, out)
 
+# dead air (owner 21 Oct 26, Joplin): a declared hold sanctions a pause of at most 4 s with no voice of any kind
+HOLD = '<section class="clip hold" id="hold-1" data-start="2" data-duration="{}" data-track-index="8"></section>'
+RAD = '<audio id="ins-radio" src="media/r.wav" data-start="{}" data-duration="2" data-volume="1" data-caption-ok="test"></audio>'
+for slug, label, nx2, extra, want in (
+    ("ep-air", "a 3 s hold passes", 5.0, HOLD.format(3), False),
+    ("ep-air", "a 7 s hold with nothing in it FAILs", 9.0, HOLD.format(7), True),
+    ("ep-air", "a 7 s hold carried by a radio in its middle passes (2.5 s quiet either side)", 9.0, HOLD.format(7) + RAD.format(4.5), False),
+    ("ep-air", "a radio at the start of a 9 s hold leaves 5 s of dead air after it and FAILs", 11.0, HOLD.format(9) + RAD.format(2), True),
+    ("ep-air", "a muted clip does not carry a hold", 9.0, HOLD.format(7) + RAD.format(4.5).replace("<audio", "<video").replace("</audio>", " muted</video>"), True),
+    ("ep1-joplin", "a shipped episode is exempt", 9.0, HOLD.format(7), False),
+):
+    with tempfile.TemporaryDirectory() as d:
+        (Path(d) / slug).mkdir()
+        ep = make_lint_ep(Path(d) / slug, extra_video=extra, nx2_dur=2.0, nx2_start=nx2)
+        write_wav(ep / "media" / "r.wav", 2.0)
+        code, out = run("lint_timeline.py", ep)
+        check(f"lint_timeline: {label}", ("dead air" in out) == want and "narration gap" not in out, out)
+
 with tempfile.TemporaryDirectory() as d:
     v = '<video src="media/broll.mp4" data-start="0" data-duration="2" data-track-index="1" muted></video>'
     ep = make_lint_ep(Path(d), extra_video=v)
