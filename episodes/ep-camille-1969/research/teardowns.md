@@ -35,7 +35,7 @@ https://www.youtube.com/watch?v=mOLSKRBhcGM . Channel 2,020 subscribers. A Unive
 film re-posted on the director's own channel.
 - **Lead:** NOT QUOTABLE. The video has no captions and no auto-captions (`yt-dlp --list-subs`: "has no automatic captions", "has no subtitles"),
   and no media may be downloaded. The first two chapter titles, from the video's own chapter list, are "Living with the Gulf" (0:00) and
-  "Unprecedented intensity" (0:00). The description opens: "one of the most powerful storms ever to strike the Mississippi Gulf Coast".
+  "Unprecedented intensity" (within the first minute). The description says it covers "one of the most powerful storms ever to strike the Mississippi Gulf Coast".
 - **Minutes on Virginia vs coast:** 0 vs 56, from the 18 chapter titles (none names Virginia, Nelson County or inland flooding) and the
   description (no "Virginia", no "Nelson"). The most-liked "you missed Virginia" comment (127 likes) confirms it. Treat as UNVERIFIED
   until the film is watched.
