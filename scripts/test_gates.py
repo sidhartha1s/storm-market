@@ -457,7 +457,7 @@ for slug, label, extra, want in (
         code, out = run("lint_timeline.py", ep)
         check(f"lint_timeline: {label}", ("outside voice without a caption" in out) == want, out)
 
-# dead air (owner 21 Oct 26, Joplin): a declared hold sanctions a pause of at most 4 s with no voice of any kind.
+# dead air (owner 21 Oct 26, Joplin): a declared hold sanctions a pause of at most 4 s with nothing but a bed playing.
 # The radio carries data-caption-ok: a wordless outside sound still carries a hold (the same outside_voice test as captions)
 HOLD = '<section class="clip hold" id="hold-1" data-start="2" data-duration="{}" data-track-index="8"></section>'
 RAD = '<audio id="ins-radio" src="media/r.wav" data-start="{}" data-duration="2" data-volume="1" data-caption-ok="test"></audio>'
