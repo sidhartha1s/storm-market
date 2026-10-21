@@ -30,7 +30,7 @@ Drafts, edit_script.md, angle.md, facts-*.md untouched.
 | A4-S11 | CORRECTED (last sentence overstates "has to") |
 | Z1 | no spoken line changed; card numbers 84/33/8 RAW-confirmed; one cue flag |
 
-CONFIRMED count: 15 spoken blocks (A1-S15, A2-S10, A2-S11, A2-S12, A3-S8, A3-S9, A3-S13, A4-S1, A4-S3, A4-S5, A4-S6, A4-S7, A4-S8, A4-S9, plus Z1 no-change note not counted). CORRECTED: 6 (A1-S11, A1-S13, A2-S2, A4-S2, A4-S10, A4-S11). UNVERIFIED: 0.
+CONFIRMED count: 14 spoken blocks (A1-S15, A2-S10, A2-S11, A2-S12, A3-S8, A3-S9, A3-S13, A4-S1, A4-S3, A4-S5, A4-S6, A4-S7, A4-S8, A4-S9; Z1 has no spoken change). CORRECTED: 6 (A1-S11, A1-S13, A2-S2, A4-S2, A4-S10, A4-S11). UNVERIFIED: 0.
 
 ---
 
