@@ -17,6 +17,8 @@ repo today, so those specific words still ship imperfect. This still removes pur
 mis-hears, which are the majority of the mismatch.
 
 Usage: python3 scripts/build_srt.py episodes/<slug> <out-basename>
+       python3 scripts/build_srt.py episodes/<slug> --check   (validate inputs only, write nothing;
+       run_gates.py runs this before render so a missing .txt or label fails there, not at master)
 """
 import difflib
 import json
@@ -80,6 +82,8 @@ def ts(t):
 def main():
     ep = Path(sys.argv[1])
     out_base = sys.argv[2]
+    check = out_base == "--check"
+    errors = []  # every missing input, not just the first: one re-voice pass can leave many
     html = (ep / "index.html").read_text(encoding="utf-8")
 
     cues = []
@@ -97,17 +101,20 @@ def main():
         if not (st and du):
             continue
         if not lab:
-            sys.exit(f"insert audio has no data-srt-label (SRT caption text): {ins.group(0)[:120]}")
+            errors.append(f"insert audio has no data-srt-label (SRT caption text): {ins.group(0)[:120]}")
+            continue
         s = float(st.group(1))
         cues.append((s + 0.4, s + float(du.group(1)) - 0.2, lab.group(1)))
 
     for m in re.finditer(r'<audio [^>]*?id="nx-(?!ins)[^"]*" src="(audio/[^"]+)\.wav" data-start="([\d.]+)"', html):
         wj = ep / f"{m.group(1)}.words.json"
-        if not wj.exists():
-            sys.exit(f"missing words.json: {wj}")
         txt_path = ep / f"{m.group(1)}.txt"
+        if not wj.exists():
+            errors.append(f"missing words.json: {wj}")
         if not txt_path.exists():
-            sys.exit(f"missing script text for caption alignment: {txt_path}")
+            errors.append(f"missing script text for caption alignment: {txt_path}")
+        if not (wj.exists() and txt_path.exists()):
+            continue
         off = float(m.group(2))
         words = json.loads(wj.read_text(encoding="utf-8"))
         if isinstance(words, dict):
@@ -128,9 +135,14 @@ def main():
         if line:
             cues.append((start, end, " ".join(line)))
 
+    if errors:
+        sys.exit("\n".join(errors))
     if not cues:
         sys.exit(f"no narration <audio id=\"nx-*\"> tags found in {ep}/index.html — "
                  "episode doesn't follow the nx-* audio naming convention (see DESIGN.md)")
+    if check:
+        print(f"build_srt --check OK: {len(cues)} cues, every narration .txt/.words.json and insert label present")
+        return
     cues.sort()
     out = ep / "renders" / f"{out_base}.srt"
     with out.open("w", encoding="utf-8") as f:

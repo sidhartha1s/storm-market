@@ -9,7 +9,7 @@ Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or t
 | # | task | PR | status |
 |---|---|---|---|
 | 1 | pin_ritual matches the JSON `"enabled":true` streaming-gate line, so the pin can bump again | #99 | done |
-| 2 | verify_render: black/freeze exempt only in declared blackouts and CTA dips; silence also in holds and the CTA body | #95 | done |
+| 2 | verify_render: black/freeze exempt only in declared blackouts and CTA dips; silence also in holds, the CTA body and the closing 4 s end card (owner 21 Oct 26) | #95 | done |
 | 3 | tts_episode writes `<id>.txt` only after synthesis succeeds | #96 | done |
 | 4 | comp_consts.fold evaluates arithmetic with `ast` (`10 - 2 + 3` = 11) | #100 | done |
 | 5 | narration_picture_check warns loudly when nothing on screen is archival | #97 | done |

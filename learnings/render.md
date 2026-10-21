@@ -301,7 +301,7 @@ short is not) and bump on identical metrics.
   gradients (`?` rows: same-track overlap, adjacent duplicate, asset reuse, media exists) and on
   stills >6s that the lint pacing report already lists; lint is the hard gate. `verify_render`
   exempts black and freeze only inside declared blackout sections and the CTA dips (silence also in
-  holds and the CTA body); a dark card that sits still anywhere else, holds included, is a real defect.
+  holds, the CTA body and the closing 4 s end card, owner 21 Oct 26); a dark card that sits still anywhere else, holds included, is a real defect.
 
 ## No visible windows, ever (owner 2026-08-21)
 - schtasks interactive tasks pop a cmd window on the desktop. ALL scheduled/background
