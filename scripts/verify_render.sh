@@ -107,7 +107,7 @@ fi
 
 echo
 echo "=== black (1.5s+), silence (2s+) and freeze (6s+) spans: FAIL only outside a declared ==="
-echo "=== blackout section or CTA dip (silence: also holds and the CTA body) ==="
+echo "=== blackout section or CTA dip (silence: also holds, the CTA body, the end card) ==="
 # Owner's duration table (CLAUDE.md "Chapter blackout"): 1.5s+ of black is dead air, a bug. A
 # declared <section class="blackout"> (bo-void, bo-close) and the CTA dips are black, silent and
 # still on purpose, so black/freeze/silence inside them are exempt. A declared hold and the CTA body
@@ -133,6 +133,8 @@ def sections(cls):
         r'[^>]*data-duration="([\d.]+)"', html)]
 picture_ok = sections("blackout")                 # black and freeze allowed only here
 quiet_ok = picture_ok + sections("hold")          # silence also allowed in holds and the CTA
+END_CARD_S = 4.0  # owner 21 Oct 26: the bed fades out under the closing end card, silence there is not dead air
+quiet_ok.append((vid_dur - END_CARD_S, vid_dur))  # silence only: black/freeze rules unchanged
 
 cta = re.search(r'<video\b[^>]*src="[^"]*cta/[^"]*"[^>]*>', html)
 if cta:
