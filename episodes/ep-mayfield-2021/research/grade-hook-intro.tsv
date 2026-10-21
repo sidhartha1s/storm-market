@@ -1,0 +1,50 @@
+section	axis_or_item	score_or_issue	quote	fix
+H1	hook_score	6/10, confidence 75%	(whole H1, 79 words, about 28 s)	Lock bar is 8. Moves to 8+ with fixes 1 and 2: break the viewer's belief inside 8 s and give "that big" a referent.
+H1	new_info	4	"fourteen people lost their lives at work, in Illinois and in Kentucky"	Toll plus forecast plus guidance gap, all fresh; no top video leads with workplace plus forecast (teardowns.tsv: WhiteWeather opens on the factory but no lead time, no guidance).
+H1	curiosity	4	"You go where they tell you. Somebody planned for this."	Strong viewer-belief opener; keep.
+H1	stakes	4	"fourteen people lost their lives at work"	Keep.
+H1	visual_change	5	Paul, NEXRAD replot, AFD highlight, DVIDS still	Four distinct pictures in 28 s; keep.
+H1	payoff	3	"And no official guidance existed for where to shelter in a building that big."	The break of "Somebody planned for this" arrives last, about 20 s in, and lands flat. Move it up (fix 1).
+H1	exit_hook	3	"a building that big"	E1 is implied, never felt: no big building has been named yet, so "that big" points at nothing. Name the size (fix 2).
+H1	rule: double contradiction before 8 s	FAIL	S1 ends about 8 s; first contradiction (forecast right) at about 17 s, second (no guidance) at about 25 s	Sentence two must break "Somebody planned for this" directly (they did what you would do and lost their lives at work); the forecast-was-right line follows at once.
+H1	rule: hook length	issue	H1 79 words, T1 starts 0:28	Quickref: hook 3 to 5 s then a 5 to 15 s tail. Merge S3 and S4 into one sentence or move S3 into T1.
+H1	overclaim / legal	issue	"And no official guidance existed for where to shelter in a building that big."	Flat narrator claim is broader than the source (WFO St. Louis: no official recommendations for sheltering at work; FEMA and OSHA publish general materials). Say it in the office's mouth in the voice track, not only on the chip.
+H1	precision	issue	"a forecaster in Memphis had written that Friday could be another severe weather threat. The forecast was right."	Memphis's discussion covers the Memphis area, not Edwardsville (St. Louis) or Mayfield (Paducah). Name the region it covered or use the SPC line (a week out, whole region). Fact-checkers to confirm the framing.
+H1	cognitive load	issue	"could be another severe weather threat"	"another" begs "another after what?" Drop it in narration; keep it on the highlighted AFD page.
+H1	register	issue	"On a Friday night in December, twenty twenty one, fourteen people"	Year wedged between commas reads like a dateline. Year to the popfig only, or to the end of the sentence.
+T1	new_info	4	"The Amazon building in Edwardsville, Illinois got about twenty-five minutes, and it had no storm shelter."	Keep.
+T1	curiosity	4	"Where people went in those minutes is the first thing I looked up."	Good single gap; keep.
+T1	stakes	4	"it had no storm shelter"	Keep.
+T1	visual_change	3	our own map, track drawing to an outline	Only a drawn outline, no real picture. Add one real still (Edwardsville aerial) if one exists, or a radar beat.
+T1	payoff	3	"That night the warnings went out, too."	"too" is vague. Fold into the next sentence with the minutes.
+T1	exit_hook	4	"Where people went in those minutes"	Keep; L1 carried to A1 is allowed.
+T1	cognitive load	issue	"got about twenty-five minutes"	Twenty-five minutes of what? Say "about twenty-five minutes of warning".
+T1	repetition	issue	"about twenty-five minutes" (T1-S1, I1-S7, chip)	Said twice in about 100 s plus the chip. Cut from I1-S7; keep only 8:27 PM there.
+I1	new_info	3	"On Monday afternoon, the Memphis office wrote that Friday could be another severe weather threat."	Repeats H1-S3 almost word for word; the 6 plus 8 split repeats the hook's 14; "December" three times in S1. Cut repeats.
+I1	curiosity	3	"What the word didn't come with was instructions for a building like these two."	Questions open and close on cadence, but S3 and S4 spend A2's countdown and S5 and S6 spend Z1's Finding 6 (fixes 3 and 4).
+I1	stakes	3	"The weather service's own report says the timing made it harder."	Sag from S1 (5) to S3 (2): a two-point drop breaks the tension rule (never more than one point).
+I1	visual_change	4	MODIS, VIIRS before/after, SPC sequence, SA pages	Good spread; S5 and S6 are two text screens back to back; put a picture between.
+I1	payoff	4	"The forecast was right days ahead, and nobody had told big workplaces what to do."	Claim stated verbatim as required; keep.
+I1	exit_hook	4	"Inside, the story of those minutes starts with a megaphone."	Concrete object tease; keep.
+I1	stakes_curve	H1 2,4,4,4 / T1 4 / I1 5,3,2,3,3,4,4	per segment, 1 to 5	Fast rise, peak at I1-S1, sag S2 to S5 (about 1:00 to 1:50), recover at S6 and S7. Fill the sag with a human-scale stake (about 110 inside the factory, a named worker) instead of product names.
+I1	open-loop gap	issue	"And it happened in December." / Q1 paid in S2	Q1 "why December" is not honestly paid: S2 says why December made it harder for people, not why December made tornadoes, and it duplicates L3 (A3). Re-aim Q1 or cut the line.
+I1	open-loop gap	issue	E1 vs I1-S5, I1-S6	E1 asks who was supposed to tell big buildings; the intro already answers with Finding 6 and the St. Louis words, leaving Z1 only Rec 6 and the Illinois law. Re-aim E1 to "has anyone written that page since" or hold the Finding 6 detail for Z1.
+I1	open-loop gap	issue	I1-S3, I1-S4 vs A2 card	A2's reveal is the countdown; the intro already gives Day 8, Memphis, Slight, Moderate and "twelve minutes early". A2 opens with nothing new but Finding 3a.
+I1	register	issue	"It was the deadliest December tornado event on record since nineteen fifty."	Report wording; superlative without comparator. Plain line plus a comparator; "since 1950" to the source line.
+I1	register	issue	"By Wednesday there was a Slight Risk on the map ... By Friday morning it was a Moderate Risk, sent out twelve minutes early to get the word out."	Product ladder reads as a report (writer's self-score agrees). One human line here; ladder to A2.
+I1	register	issue	"What the word didn't come with was instructions for a building like these two."	Inverted, slow to decode; "a building like these two" is ungrammatical. Plain subject-verb order.
+I1	register	issue	"the timing made it harder"	Harder for what? Name it (harder to take seriously, harder to hear).
+I1	cognitive load	issue	"On December third ... for the tenth. That was eight days out ... On Monday afternoon"	Mixes dates, day counts and weekdays (four days, a week, eight days). Pick weekdays or dates, not both.
+I1	register	issue	"for buildings with large footprints, like warehouses"	Report term in the voice; plain words in voice ("really big buildings, like warehouses"), "large footprints" on the attributed card.
+I1	fluff	D	"And it happened in December."	"December" said one sentence earlier; cut.
+I1	fluff	D	"On Monday afternoon, the Memphis office wrote that Friday could be another severe weather threat."	Exact repeat of H1-S3; cut.
+T1	fluff	C	"That night the warnings went out, too."	Compress into the next sentence.
+I1	fluff	C	"and the warning had been out about twenty-five minutes"	Third time; cut.
+ALL	humanise / flag words	PASS	no banned words, no em dashes, no hard flag words; "lost their lives" used; one rhetorical question ("What do you do?") is the allowed viewer-belief opener	none
+ALL	TTS sentence length	PASS	longest 22 words (I1-S7)	none
+ALL	rank	1	H1-S2 "On a Friday night in December, twenty twenty one, fourteen people lost their lives at work"	Make sentence two the direct break of "Somebody planned for this", inside 8 s; then "The forecast was right" as the second contradiction.
+ALL	rank	2	H1-S4 "And no official guidance existed for where to shelter in a building that big."	Name the size and put the words in the weather service office's mouth, spoken; fixes referent, flatness and overclaim.
+ALL	rank	3	I1-S3 and I1-S4 (countdown ladder)	Collapse to one line (the forecast got louder every day that week); keep the ladder for A2; removes the Memphis repeat.
+ALL	rank	4	I1-S5 "It found a gap in its own safety outreach for buildings with large footprints, like warehouses."	Keep the claim line; hold the Finding 6 detail for Z1, or re-aim E1 to "has anyone written that page since".
+ALL	rank	5	I1-S1 "It was the deadliest December tornado event on record since nineteen fifty." + "And it happened in December."	Plain superlative with comparator; cut the closing December line; re-aim Q1 so it is honestly paid.
+ALL	rank	6	H1-S3 "a forecaster in Memphis had written that Friday could be another severe weather threat"	Say what the Memphis line covered (or use SPC's week-out line) so "The forecast was right" holds for both towns; drop "another".
