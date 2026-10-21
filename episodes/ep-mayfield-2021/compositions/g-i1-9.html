@@ -43,13 +43,15 @@
     border:1px solid rgba(255,255,255,0.14); white-space:nowrap; opacity:0; visibility:hidden; }
   .g-i1-9-pinlab { position:absolute; padding:10px 14px; border-radius:12px; font-size:26px; font-weight:700; line-height:26px; color:#f2f5f8; }
   /* outline caption: building-family style (g-i1-5), plain on the ground */
-  #g-i1-9-cap { position:absolute; left:446px; top:752px; white-space:nowrap; font-weight:700; font-size:26px; line-height:30px;
+  /* right edge 520, 16 px left of the outline; top 465 is above the scan line from 4.92 on (scan y >= 632 then) */
+  #g-i1-9-cap { position:absolute; left:150px; top:465px; width:370px; text-align:right; white-space:nowrap; font-weight:700; font-size:26px; line-height:30px;
     letter-spacing:2px; color:#c8d3e0; opacity:0; visibility:hidden; }
-  /* map rail: x 1304-1824 (right 96), top 120; stays clear of the presenter corner (bottom 317 < 680) */
-  .g-i1-9-chip { position:absolute; left:1304px; width:520px; box-sizing:border-box; border-radius:18px; }
-  #g-i1-9-c806 { top:120px; padding:16px 24px; font-size:30px; font-weight:700; line-height:30px; color:#dfe7ee; }
-  #g-i1-9-c806 b { color:#e8c56a; font-weight:700; }
-  #g-i1-9-c827 { top:202px; padding:14px 24px; font-family:'Courier New', monospace; font-size:84px; font-weight:700; line-height:84px; color:#e8c56a; }
+  /* clock chips, top-left (x 96-616): at the zoomed framing the track runs up to the top-right corner, so the rail sits left of it */
+  .g-i1-9-chip { position:absolute; left:96px; width:520px; box-sizing:border-box; border-radius:18px; padding:16px 24px;
+    font-size:30px; font-weight:700; line-height:30px; color:#dfe7ee; }
+  .g-i1-9-chip b { color:#e8c56a; font-weight:700; }
+  #g-i1-9-c806 { top:120px; }
+  #g-i1-9-c827 { top:196px; }
   .g-i1-9-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; font-size:19px; font-weight:700; line-height:19px;
     letter-spacing:1px; color:#c8d3e0; }
   .g-i1-9-meg { fill:none; stroke:#dfe7ee; stroke-width:4px; stroke-linecap:round; stroke-linejoin:round; visibility:hidden; }
