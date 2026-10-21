@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-h1-3 · H1-S3 · our own KPAH NEXRAD Level II replot of the Mayfield storm, the Finding 6 quote on a beige cite card, RIGHT stamp.
+  RADAR FAMILY BASE: g-a1-6, g-a3-6, g-a2-9 copy the plate, HUD (station + scan clock), legend, credit and stamp styles.
+  Brief: briefs/mg/g-h1-3.md. Frames: media/radar/g-h1-3/ (replot.py by the orchestrator; sidecar extent.json).
+  Projection (extent.json, NOT the brief's extent): x = (lon+89.8601)/2.2202*1920, y = (37.3-lat)/1.0*1080, north up.
+    Check: KPAH (-88.77194, 37.06833) -> 941.0, 250.2 = the radar hole in every frame.
+    Mayfield (-88.644491, 36.737459, research/geo/places.geojson) -> 1051.2, 607.5 (dot centre).
+  FRAME -> COMP TIME (each clock label = extent.json label_cst of the frame on screen; clock flips at each crossfade's midpoint):
+    KPAH_20211211_031104Z  9:11 PM CST  0.00-1.90
+    KPAH_20211211_031759Z  9:17 PM CST  1.90-3.95
+    KPAH_20211211_032349Z  9:23 PM CST  3.95-5.85
+    KPAH_20211211_032939Z  9:29 PM CST  5.85-8.36
+  Cues: audio/h1-s3.words.json (host data-start 10.916 = narration start, so comp time = h1-s3 time).
+-->
+<template>
+<style>
+  #g-h1-3-root { position:absolute; inset:0; overflow:hidden; background:#04070c; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .g-h1-3-plate { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-h1-3-frame { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; }
+  .g-h1-3-late { opacity:0; visibility:hidden; }
+  .g-h1-3-vig { position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 50%, rgba(3,5,7,0) 55%, rgba(3,5,7,0.55) 100%); }
+  .g-h1-3-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; }
+  /* pin, map-family style (g-t1-1) */
+  .g-h1-3-dot { position:absolute; left:1042px; top:598px; width:14px; height:14px; border-radius:50%; background:#f2f5f8; border:2px solid #04070c;
+    opacity:0; visibility:hidden; }
+  .g-h1-3-ring { position:absolute; left:1042px; top:598px; width:14px; height:14px; border-radius:50%; border:2px solid #f2f5f8; box-sizing:content-box;
+    opacity:0; visibility:hidden; }
+  .g-h1-3-pinlab { position:absolute; left:1076px; top:584px; padding:10px 14px; border-radius:12px; font-size:26px; font-weight:700; line-height:26px;
+    color:#f2f5f8; opacity:0; visibility:hidden; }
+  /* HUD: station label and scan clock, top-left */
+  .g-h1-3-hud { position:absolute; left:94px; top:56px; width:420px; height:126px; box-sizing:border-box; border-radius:16px; opacity:0; visibility:hidden; }
+  .g-h1-3-station { position:absolute; left:110px; top:70px; font-size:22px; font-weight:700; line-height:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  .g-h1-3-clock { position:absolute; left:110px; top:106px; font-family:'Courier New', monospace; font-size:52px; font-weight:700; line-height:56px;
+    color:#e8c56a; white-space:nowrap; }
+  .g-h1-3-hid { opacity:0; visibility:hidden; }
+  /* legend, bottom-right outside the circle corner (x 1180-1560, y 990-1026) */
+  .g-h1-3-legend { position:absolute; left:1170px; top:982px; width:400px; height:52px; box-sizing:border-box; border-radius:12px; opacity:0; visibility:hidden; }
+  .g-h1-3-bar { position:absolute; left:1240px; top:992px; width:320px; height:10px; border-radius:2px;
+    background:linear-gradient(90deg, #019ff4 0%, #019ff4 7.7%, #0300f4 7.7%, #0300f4 15.4%, #02fd02 15.4%, #02fd02 23.1%, #01c501 23.1%, #01c501 30.8%,
+      #008e00 30.8%, #008e00 38.5%, #fdf802 38.5%, #fdf802 46.2%, #e5bc00 46.2%, #e5bc00 53.8%, #fd9500 53.8%, #fd9500 61.5%, #fd0000 61.5%, #fd0000 69.2%,
+      #d40000 69.2%, #d40000 76.9%, #bc0000 76.9%, #bc0000 84.6%, #f800fd 84.6%, #f800fd 92.3%, #9854c6 92.3%, #9854c6 100%); }
+  .g-h1-3-lab { position:absolute; font-size:19px; font-weight:700; line-height:19px; color:#c8d3e0; white-space:nowrap; }
+  /* source credit, bottom-left */
+  .g-h1-3-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; font-size:19px; font-weight:700; line-height:19px;
+    letter-spacing:1px; color:#c8d3e0; opacity:0; visibility:hidden; }
+  /* beige cite card: centred, x 324-1596 (clear of the presenter corner x >= 1600), y 430-770 */
+  .g-h1-3-card { position:absolute; left:324px; top:430px; width:1272px; height:340px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
+  .g-h1-3-cbeam { position:absolute; top:0; bottom:0; left:0; width:260px; background:linear-gradient(90deg, transparent, rgba(138,90,16,0.14), transparent); }
+  .g-h1-3-line { position:absolute; left:64px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:48px; line-height:62px;
+    color:#1c1a17; white-space:nowrap; }
+  .g-h1-3-line span { display:inline-block; opacity:0; visibility:hidden; }
+  .g-h1-3-rule { position:absolute; left:64px; top:262px; width:240px; height:3px; background:#8a5a10; }
+  .g-h1-3-attr { position:absolute; left:64px; top:280px; font-size:26px; font-weight:700; line-height:30px; letter-spacing:2px; color:#5a4a2e;
+    white-space:nowrap; opacity:0; visibility:hidden; }
+  /* RIGHT stamp, centred (960, 250); box y 193-307, clear of the card top (430) */
+  .g-h1-3-swrap { position:absolute; left:0; top:193px; width:1920px; height:114px; display:flex; justify-content:center; }
+  .g-h1-3-stamp { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; line-height:84px; letter-spacing:4px;
+    background:#8e2020; color:#f4f0e8; padding:14px 34px 16px; box-shadow:0 14px 50px rgba(0,0,0,0.6); opacity:0; visibility:hidden; }
+</style>
+<div id="g-h1-3-root" data-composition-id="g-h1-3" data-width="1920" data-height="1080" data-duration="8.36">
+  <div class="g-h1-3-plate" id="g-h1-3-plate">
+    <img class="g-h1-3-frame" id="g-h1-3-f1" src="media/radar/g-h1-3/KPAH_20211211_031104Z.png" alt="">
+    <img class="g-h1-3-frame g-h1-3-late" id="g-h1-3-f2" src="media/radar/g-h1-3/KPAH_20211211_031759Z.png" alt="">
+    <img class="g-h1-3-frame g-h1-3-late" id="g-h1-3-f3" src="media/radar/g-h1-3/KPAH_20211211_032349Z.png" alt="">
+    <img class="g-h1-3-frame g-h1-3-late" id="g-h1-3-f4" src="media/radar/g-h1-3/KPAH_20211211_032939Z.png" alt="">
+    <div class="g-h1-3-ring" id="g-h1-3-ring"></div>
+    <div class="g-h1-3-dot" id="g-h1-3-dot"></div>
+    <div class="g-h1-3-pinlab g-h1-3-glass" id="g-h1-3-pinlab">Mayfield, KY</div>
+  </div>
+  <div class="g-h1-3-vig"></div>
+
+  <div class="g-h1-3-hud g-h1-3-glass" id="g-h1-3-hud"></div>
+  <div class="g-h1-3-station g-h1-3-hid" id="g-h1-3-station">KPAH PADUCAH · DEC 10, 2021</div>
+  <div class="g-h1-3-clock g-h1-3-hid" id="g-h1-3-c1">9:11 PM CST</div>
+  <div class="g-h1-3-clock g-h1-3-hid" id="g-h1-3-c2">9:17 PM CST</div>
+  <div class="g-h1-3-clock g-h1-3-hid" id="g-h1-3-c3">9:23 PM CST</div>
+  <div class="g-h1-3-clock g-h1-3-hid" id="g-h1-3-c4">9:29 PM CST</div>
+
+  <div class="g-h1-3-legend g-h1-3-glass" id="g-h1-3-legend"></div>
+  <div class="g-h1-3-bar g-h1-3-hid" id="g-h1-3-bar"></div>
+  <div class="g-h1-3-lab g-h1-3-hid" id="g-h1-3-l-unit" style="left:1184px; top:997px;">dBZ</div>
+  <div class="g-h1-3-lab g-h1-3-hid" id="g-h1-3-l10" style="left:1240px; top:1007px;">10</div>
+  <div class="g-h1-3-lab g-h1-3-hid" id="g-h1-3-l30" style="left:1328px; top:1007px;">30</div>
+  <div class="g-h1-3-lab g-h1-3-hid" id="g-h1-3-l50" style="left:1427px; top:1007px;">50</div>
+  <div class="g-h1-3-lab g-h1-3-hid" id="g-h1-3-l70" style="left:1525px; top:1007px;">70</div>
+
+  <div class="g-h1-3-src g-h1-3-glass" id="g-h1-3-src">Radar: NOAA NEXRAD Level II, KPAH 0.5° reflectivity · our replot</div>
+
+  <div class="g-h1-3-card" id="g-h1-3-card">
+    <div class="g-h1-3-cbeam" id="g-h1-3-cbeam"></div>
+    <div class="g-h1-3-line" style="top:36px;"><span id="g-h1-3-p1">&ldquo;a gap</span> <span id="g-h1-3-p2">in NWS safety outreach and resources</span></div>
+    <div class="g-h1-3-line" style="top:98px;"><span id="g-h1-3-p3">related to buildings with large footprints,</span></div>
+    <div class="g-h1-3-line" style="top:160px;"><span id="g-h1-3-p4">such as warehouses&rdquo;</span></div>
+    <div class="g-h1-3-rule" id="g-h1-3-rule"></div>
+    <div class="g-h1-3-attr" id="g-h1-3-attr">Service Assessment, Finding 6</div>
+  </div>
+
+  <div class="g-h1-3-swrap"><div class="g-h1-3-stamp" id="g-h1-3-stamp">RIGHT</div></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 8.36;
+  const P = "#g-h1-3-";
+  tl.set([P+"f2", P+"f3", P+"f4", P+"dot", P+"ring", P+"pinlab", P+"hud", P+"station", P+"c1", P+"c2", P+"c3", P+"c4", P+"legend", P+"bar",
+    P+"l-unit", P+"l10", P+"l30", P+"l50", P+"l70", P+"src", P+"card", P+"p1", P+"p2", P+"p3", P+"p4", P+"attr", P+"stamp"], { autoAlpha: 0 }, 0);
+  tl.set(P+"plate", { scale: 1, transformOrigin: "50% 50%" }, 0);
+  tl.set(P+"rule", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P+"stamp", { scale: 2.4, rotation: -3 }, 0);
+
+  /* replot push, whole window (1.00 -> 1.06, linear: under 1.5x) */
+  tl.to(P+"plate", { scale: 1.06, duration: DUR, ease: "none" }, 0);
+
+  /* the storm's own scans advance: 0.4 s dissolve centred on each flip (frame map in the header) */
+  tl.fromTo(P+"f2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "none" }, 1.70);
+  tl.fromTo(P+"f3", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "none" }, 3.75);
+  tl.fromTo(P+"f4", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "none" }, 5.65);
+
+  /* HUD and legend from the cut */
+  tl.fromTo(P+"hud", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+  tl.fromTo(P+"station", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+  tl.fromTo(P+"c1", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.12);
+  tl.fromTo(P+"legend", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.25);
+  tl.fromTo(P+"bar", { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, transformOrigin: "left center", duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.fromTo([P+"l-unit", P+"l10", P+"l30", P+"l50", P+"l70"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", stagger: 0.05 }, 0.35);
+  tl.fromTo(P+"src", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.35);
+
+  /* scan clock: the old time is gone before the new one shows (never two clocks at once) */
+  tl.to(P+"c1", { autoAlpha: 0, y: -10, duration: 0.12, ease: "power2.in" }, 1.78);
+  tl.fromTo(P+"c2", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.22, ease: "power3.out" }, 1.90);
+  tl.to(P+"c2", { autoAlpha: 0, y: -10, duration: 0.12, ease: "power2.in" }, 3.83);
+  tl.fromTo(P+"c3", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.22, ease: "power3.out" }, 3.95);
+  tl.to(P+"c3", { autoAlpha: 0, y: -10, duration: 0.12, ease: "power2.in" }, 5.73);
+  tl.fromTo(P+"c4", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.22, ease: "power3.out" }, 5.85);
+
+  /* Mayfield pin while the storm is clear, out before the card rises over it */
+  tl.fromTo(P+"dot", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.5)" }, 0.5);
+  tl.fromTo(P+"ring", { autoAlpha: 0.9, scale: 1 }, { autoAlpha: 0, scale: 3.4, duration: 0.6, ease: "power2.out", repeat: 1 }, 0.6);
+  tl.fromTo(P+"pinlab", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 0.7);
+  tl.to(P+"pinlab", { autoAlpha: 0, x: 20, duration: 0.3, ease: "power2.in" }, 1.75);
+  tl.to(P+"dot", { autoAlpha: 0, scale: 0, duration: 0.3, ease: "power2.in" }, 1.75);
+
+  /* GAP @2.20: card slides up, quote phrase by phrase on the voice */
+  tl.fromTo(P+"card", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.20);
+  tl.fromTo(P+"cbeam", { x: -260 }, { x: 1272, duration: 2.6, ease: "none", repeat: 1 }, 2.45);
+  tl.fromTo(P+"p1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.25);   /* gap @2.20 */
+  tl.fromTo(P+"p2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.76);   /* safety @2.76 */
+  tl.fromTo(P+"p3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 3.66);   /* buildings @3.66 */
+  tl.fromTo(P+"p4", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 4.62);   /* warehouses @4.62 */
+  tl.to(P+"rule", { scaleX: 1, duration: 0.6, ease: "power2.out" }, 4.62);
+  tl.fromTo(P+"attr", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 4.72);
+  tl.to(P+"card", { y: -8, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, 5.1);
+
+  /* RIGHT @6.76: the stamp slams down above the card, the card takes the hit */
+  tl.to(P+"stamp", { autoAlpha: 1, scale: 1, duration: 0.24, ease: "power4.in" }, 6.76);
+  tl.to(P+"card", { y: 6, duration: 0.07, ease: "power2.out", yoyo: true, repeat: 1 }, 7.0);
+
+  /* exit: card and stamp slide out inside the host; the replot and its HUD run to the cut */
+  tl.to(P+"stamp", { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 7.76);
+  tl.to(P+"card", { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 7.80);
+
+  window.__timelines["g-h1-3"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
