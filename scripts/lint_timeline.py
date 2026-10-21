@@ -205,16 +205,8 @@ def main():
         st, du = re.search(r'data-start="([\d.]+)"', m.group(0)), re.search(r'data-duration="([\d.]+)"', m.group(0))
         if not (st and du):
             continue
-        ws, we = float(st.group(1)), float(st.group(1)) + float(du.group(1))
-        cursor, longest = ws, (0.0, ws)
-        for vs, ve in voice:
-            if ve <= cursor or vs >= we:
-                continue
-            if vs - cursor > longest[0]:
-                longest = (vs - cursor, cursor)
-            cursor = max(cursor, ve)
-        if we - cursor > longest[0]:
-            longest = (we - cursor, cursor)
+        ws = float(st.group(1))
+        longest = longest_gap(voice, ws, ws + float(du.group(1)))
         if longest[0] > 4.0:
             findings.append(f"presenter circle on with no voice for {longest[0]:.1f}s from {longest[1]:.1f}s "
                             f"(max 4.0s): end the pip window with the line")
