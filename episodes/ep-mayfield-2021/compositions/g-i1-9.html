@@ -125,11 +125,37 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const len = (el) => Math.ceil(el.getTotalLength()) + 1;
 
-  /* ambient: 2 % camera drift (origin by the pin label so it never drifts into the rail), scan line 104 px/s */
-  tl.set(P + "world", { scale: 1, transformOrigin: "1200px 300px" }, 0);
-  tl.to(P + "world", { scale: 1.02, duration: C.meg + 0.5, ease: "none" }, 0);
+  /* CAMERA (clamp from references/editing-patterns/ep6-glass-panel-camera-clamp.html, camAt):
+     focus = the outline centre (463.29, 712.24). 0-3.72 wide, 2 % drift about the focus; HIT 3.72-4.92 one log zoom
+     1.02 -> 7 (power2.inOut) carrying the focus to screen (700, 640); then a 2 % drift to the map exit.
+     At z 7 the outline is 327 x 350 px (screen x 536-864, y 465-815). The camera is a pure function of comp time,
+     driven by one linear proxy, so any seek lands on the same frame. Line widths are divided by z to stay 6 / 3 px. */
+  const FX = 463.29, FY = 712.24, Z1 = 1.02, Z2 = 7, TX = 700, TY = 640, ZEND = C.meg + 0.5;
+  const zoomEase = gsap.parseEase("power2.inOut");
+  function camAt(px, py, z, sx, sy) {
+    return { x: Math.min(0, Math.max(1920 - 1920 * z, sx - px * z)), y: Math.min(0, Math.max(1080 - 1080 * z, sy - py * z)) };
+  }
+  const world = document.querySelector(P + "world");
+  const trk = document.querySelector(P + "trk");
+  const ghosts = gsap.utils.toArray(".g-i1-9-ghost");
+  function cam(T) {
+    let z, sx = FX, sy = FY;
+    if (T < C.hit) z = Math.pow(Z1, T / C.hit);
+    else if (T < C.meet) {
+      const u = zoomEase((T - C.hit) / (C.meet - C.hit));
+      z = Z1 * Math.pow(Z2 / Z1, u); sx = FX + (TX - FX) * u; sy = FY + (TY - FY) * u;
+    } else { z = Z2 * Math.pow(1.02, Math.min(1, (T - C.meet) / (ZEND - C.meet))); sx = TX; sy = TY; }
+    const c = camAt(FX, FY, z, sx, sy);
+    gsap.set(world, { x: c.x, y: c.y, scale: z });
+    gsap.set(trk, { strokeWidth: 6 / z });
+    gsap.set(ghosts, { strokeWidth: 3 / z, strokeDasharray: (6 / z) + " " + (8 / z) });
+  }
+  tl.set(world, { transformOrigin: "0px 0px", x: 0, y: 0, scale: 1 }, 0);
+  const camT = { t: 0 };
+  tl.fromTo(camT, { t: 0 }, { t: ZEND, duration: ZEND, ease: "none", onUpdate: function () { cam(camT.t); } }, 0);
+  /* scan line y 300 -> 960 (67 px/s): above the source line, and below the caption (top 465) once the caption is up at 4.92 (scan 632) */
   tl.set(P + "scan", { y: 0 }, 0);
-  tl.to(P + "scan", { y: 1020, duration: C.meg, ease: "none" }, 0);
+  tl.to(P + "scan", { y: 660, duration: C.meg, ease: "none" }, 0);
 
   /* Edwardsville pin; pulse ring every 1.2 s until the map leaves */
   tl.fromTo(P + "edw-dot", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, C.edw);
