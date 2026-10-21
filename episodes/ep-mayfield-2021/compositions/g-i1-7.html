@@ -1,0 +1,69 @@
+<template>
+<style>
+  /* g-i1-7 · I1-S5 · WFO St. Louis after-action words as a beige cite card on its own ground (quote-card family) */
+  #g-i1-7-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-i1-7-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .g-i1-7-glow { position:absolute; left:-200px; top:80px; width:1300px; height:900px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(232,197,106,0.08), rgba(232,197,106,0) 70%); }
+  /* card: left 260, right edge 1600 (keeps the presenter-circle corner x >= 1600 free), centred on y 540 */
+  .g-i1-7-float { position:absolute; left:260px; top:0; width:1340px; height:1080px; display:flex; align-items:center; }
+  .g-i1-7-card { width:1340px; box-sizing:border-box; padding:64px 80px; border-radius:28px; opacity:0;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .g-i1-7-q { font-family: Georgia, 'Times New Roman', serif; font-style:italic; font-size:52px; line-height:1.25; color:#2a2622; }
+  .g-i1-7-ph { display:block; margin-top:8px; opacity:0; visibility:hidden; }
+  .g-i1-7-ph:first-child { margin-top:0; }
+  .g-i1-7-attr { margin-top:40px; display:flex; align-items:baseline; white-space:nowrap; }
+  .g-i1-7-who { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:3px; color:#6b6257; opacity:0; visibility:hidden; }
+  .g-i1-7-src { font-family:Arial, sans-serif; font-weight:700; font-size:19px; letter-spacing:3px; color:#6b6257; opacity:0; visibility:hidden; }
+</style>
+<div id="g-i1-7-root" data-composition-id="g-i1-7" data-width="1920" data-height="1080">
+  <div class="g-i1-7-grid" id="g-i1-7-grid"></div>
+  <div class="g-i1-7-glow" id="g-i1-7-glow"></div>
+  <div class="g-i1-7-float" id="g-i1-7-float">
+    <div class="g-i1-7-card" id="g-i1-7-card">
+      <div class="g-i1-7-q" id="g-i1-7-q">
+        <span class="g-i1-7-ph" id="g-i1-7-p1">&ldquo;&hellip; (no official NWS/Occupational Safety &amp; Health Administration (OSHA) recommendations for severe weather sheltering guidelines in the workplace,</span>
+        <span class="g-i1-7-ph" id="g-i1-7-p2">no guidance on what types of warnings to shelter for,</span>
+        <span class="g-i1-7-ph" id="g-i1-7-p3">no differentiation in shelters for businesses with large warehouse construction, etc.)&rdquo;</span>
+      </div>
+      <div class="g-i1-7-attr" id="g-i1-7-attr"><span class="g-i1-7-who" id="g-i1-7-who">WFO St. Louis after-action review</span><span class="g-i1-7-src" id="g-i1-7-src">, quoted in the Service Assessment, p33-34</span></div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 11.454;
+
+  tl.set(["#g-i1-7-card", "#g-i1-7-p1", "#g-i1-7-p2", "#g-i1-7-p3", "#g-i1-7-who", "#g-i1-7-src"], { autoAlpha: 0 }, 0);
+
+  /* ambient, whole window (grid 21 px/s) */
+  tl.fromTo("#g-i1-7-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#g-i1-7-glow", { x: 0, y: 0 }, { x: 900, y: 100, duration: DUR, ease: "none" }, 0);
+
+  /* THAT OFFICE WROTE @0.00: card in from y 24, attribution follows the voice */
+  tl.fromTo("#g-i1-7-card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0);
+  tl.fromTo("#g-i1-7-who", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.3);
+  tl.fromTo("#g-i1-7-src", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.55);
+
+  /* slow whole-card float over the window (own wrapper, so it never fights the card's entry or exit) */
+  tl.fromTo("#g-i1-7-float", { y: 0 }, { y: -8, duration: DUR, ease: "none", immediateRender: false }, 0);
+
+  /* SHELTER PEOPLE AT WORK @4.92 ("shelter" 4.92, "at work" 5.72-6.04) */
+  tl.fromTo("#g-i1-7-p1", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.92);
+  /* WHICH WARNINGS @7.18 ("which" 7.18, "warnings" 7.36) */
+  tl.fromTo("#g-i1-7-p2", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.18);
+  /* BIG WAREHOUSE @9.68 ("big" 9.68, "warehouse" 9.98) */
+  tl.fromTo("#g-i1-7-p3", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.68);
+
+  /* exit: last word "needs." ends 10.84; card slides out and finishes at the host end */
+  tl.to("#g-i1-7-card", { x: 1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 10.854);
+
+  window.__timelines["g-i1-7"] = tl;
+})();
+</script>
+</template>
