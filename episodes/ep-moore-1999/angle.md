@@ -1,7 +1,8 @@
 # ep-moore-1999: angle
 
 ## Angle (locked by the owner, 21 Oct 26: ticked "Make it" on the devq topic card)
-Claim: One of the best-warned tornadoes on record still took 36 lives, so on May 3, 1999 it came down to where people sheltered, not to the warning.
+Claim: The warning on May 3, 1999 worked, and the tornado still took 36 lives, so it came down to where people sheltered, not to the warning.
+(Owner's card wording: "the best tornado warning ever issued still left 36 dead". "Best ever" has no source, so the Claim says "worked" and the script says the lead times.)
 Spine / arcs:
 - Spine: the warning worked; where people sheltered decided who lived.
 - Pivot: the first "Tornado Emergency", issued at 6:57 p.m., 25 minutes before the tornado entered Moore and south Oklahoma City.
