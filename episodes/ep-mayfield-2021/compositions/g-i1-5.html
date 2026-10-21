@@ -106,7 +106,7 @@ window.__timelines = window.__timelines || {};
   const cnt = { v: 1 };
   const countEl = document.querySelector(P + "count");
   tl.fromTo(cnt, { v: 1 }, { v: 19, duration: 1.4, ease: "power3.out", onUpdate: function () {
-    countEl.textContent = Math.round(cnt.v);
+    countEl.textContent = Math.floor(cnt.v + 1e-6);
   } }, 3.567);
 
   /* SIX @6.307 (i1-s4 3.16) */
