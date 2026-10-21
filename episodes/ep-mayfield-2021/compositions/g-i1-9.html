@@ -157,15 +157,16 @@ window.__timelines = window.__timelines || {};
   tl.set(P + "scan", { y: 0 }, 0);
   tl.to(P + "scan", { y: 660, duration: C.meg, ease: "none" }, 0);
 
-  /* Edwardsville pin; pulse ring every 1.2 s until the map leaves */
+  /* Edwardsville pin; pulse ring every 1.2 s; the whole pin fades out before the zoom carries it off frame */
   tl.fromTo(P + "edw-dot", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, C.edw);
   tl.fromTo(P + "edw-lab", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.edw + 0.2);
   tl.set(P + "edw-ring", { visibility: "hidden", scale: 1, opacity: 0.9 }, 0);
   tl.set(P + "edw-ring", { visibility: "visible" }, C.edw + 0.2);
-  tl.fromTo(P + "edw-ring", { scale: 1, opacity: 0.9 }, { scale: 3, opacity: 0, duration: 1.0, ease: "power2.out", repeat: 7, repeatDelay: 0.2 }, C.edw + 0.2);
+  tl.fromTo(P + "edw-ring", { scale: 1, opacity: 0.9 }, { scale: 3, opacity: 0, duration: 1.0, ease: "power2.out", repeat: 2, repeatDelay: 0.2 }, C.edw + 0.2);
+  tl.fromTo(P + "pin", { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, C.hit - 0.3);
 
-  /* 8:27 PM clock chip */
-  tl.fromTo(P + "c827", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.t827);
+  /* 8:27 PM clock chip (lower slot; 8:06 fills the slot above it at WARNING) */
+  tl.fromTo(P + "c827", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.t827);
   tl.fromTo(P + "src", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.t827 + 0.3);
 
   /* track A: west to east, ends on the west wall */
