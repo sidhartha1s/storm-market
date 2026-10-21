@@ -343,7 +343,7 @@ an entire house float by." · Warren Raines · WDBJ7, 12 Aug 2019.
 **Picture:** the map, close on Route 56 beside the Raines square: a cluster of small figures moves along the road on foot, the Tye's blue
 line widening toward them. Chip "ON FOOT · ROUTE 56". Then the figures thin to two dots, each beside a small tree symbol; neither tree is
 labelled with a name.
-> They set out along Route fifty-six. When they first stepped out, the water was maybe six or eight inches deep. That didn't last. Somewhere along that road, Warren grabbed hold of a limb, and Carl found a tree of his own.
+> They set out along Route fifty-six. From the window, the water around the house had looked to be maybe six or eight inches deep. That didn't last. Somewhere along that road, Warren grabbed hold of a limb, and Carl found a tree of his own.
 
 **Rows:** [factcheck-A1 S10/S11: C-VILLE RAW "the refugees took to Route 56"; WDBJ7 RAW water outside "maybe six or eight inches deep"; WDBJ7 RAW "Warren was hanging onto a nearby limb"; WTKR RAW "rescuers in boats pluck the brothers from two trees"]
 *(No tree is assigned to a brother beyond Warren's limb; no "willow".)*
@@ -360,7 +360,7 @@ side, never as a Tye tributary.
 ### A1-S13 · narration
 **Picture:** LVA aerial V01 (Massies Mill after the flood), the Tye's channel traced in thin blue over it. Chip "≈ 70,000 CU FT / SECOND".
 Source line "USGS Open-File Report 70-51 · Tye River at Massies Mill, slope-area measurement".
-> Right at Massies Mill, the USGS later worked out the Tye's peak from the marks the water left behind. It came to about seventy thousand cubic feet of water every second. That's from a valley that drains only about sixty-six square miles.
+> Near Massies Mill, the USGS later worked out the Tye's peak from the marks the water left behind. It came to about seventy thousand cubic feet of water every second. That's from a valley that drains only about sixty-six square miles.
 
 **Rows:** [V20: OFR 70-51 station record, Tye River at Massies Mill, "Discharge 70,000 cfs Aug. 20 from slope-area measurement", drainage 66 sq mi] · [factcheck-A1 S13: "the Tye at Massies Mill site gives 70,000 cfs, slope-area"]
 
@@ -435,7 +435,7 @@ card's read time. Chapter blackout follows.
 
 ### A2-S2 · narration
 **Picture:** our Davis Creek map holds; the small house icons in the hollows sit dark, no lights in the windows. The rain bed thickens. Place label "Huffman's Hollow" sits beside the Davis Creek label as text only, no pin (the source gives no exact spot).
-> Many of the families up those hollows were asleep by then. The floods and the slides caught them that way, along Davis Creek and over in Huffman's Hollow.
+> Along Davis Creek, and over in Huffman's Hollow, the flooding took residents by surprise.
 
 **Rows:** [P13 RAW: Encyclopedia Virginia, "flooding along Davis Creek and Huffman's Hollow surprised residents in rural communities"] · [P14 RAW: Encyclopedia Virginia, "leaving floods and landslides to trap residents as they slept"]
 *(Story beat added for runtime, 22 Oct 26: who was in the hollows before the ground moved. No count.)*
@@ -668,7 +668,7 @@ No age on screen. Ages in narration come only from the 2019 News & Advance list 
 
 ### A4-S2 · narration (added)
 **Picture:** three quick screens, each held about two seconds, slow push: a VDH social-media post about the eight (as shown in the CBS19 story); a NamUs case page. Then a lower third over the last: "Public awareness is often the key that unlocks cases like this." Lara Newell · Virginia Department of Health, August 2026.
-> Within days it was on the local TV news, and in October public radio picked it up. The office and the health department put the eight back in front of the public. They shared posts on social media asking for help. Their descriptions went into NamUs, the National Missing and Unidentified Persons System. In the notice, Newell is quoted saying that public awareness is often the key that unlocks cases like this.
+> Within days it was on the local TV news, and in October public radio picked it up. The office and the health department put the eight back in front of the public. They shared posts on social media asking for help. News stories carried a description of each of the eight, taken from their files in the National Missing and Unidentified Persons System, called NamUs. In the notice, Newell is quoted saying that public awareness is often the key that unlocks cases like this.
 **Rows:** [factcheck-A4 S2 replacement line: WSET 27 Aug, 29News 31 Aug, WHRO 13 Oct 2026, all RAW] · [factcheck-A4 S1: CBS19 RAW "the Office of the Medical Examiner and the Virginia Department of Health have shared social media posts asking for help"] · [factcheck-A4 finding 3 and list section: NamUs descriptions and found dates, via CBS19 RAW] · [factcheck-A4 S13: VDH RAW "Public awareness is often the key that unlocks cases like this."]
 *(Newell quote 1 of 2. The second sits in A4-S12, nine segments later.)*
 
@@ -713,12 +713,12 @@ No age on screen. Ages in narration come only from the 2019 News & Advance list 
 
 ### A4-S10 · narration
 **Picture:** the map keeps widening down the James, past the Nelson County line, into Fluvanna County. One last small marker, chip "above Bremo · Fluvanna County". [VE] four of the eight markers turn amber one by one; glance chip "4 OF THE 8: CHILDREN OR TEENS", source line "WHRO, October 13, 2026". Score drops out under the last sentence. [RS]
-> Above the Bremo power plant, down the James in Fluvanna County, a girl of six to eight. Four of the eight were children or teenagers. Four kids, and nobody has named them.
+> Down the James, above the Bremo power plant in Fluvanna County, a girl of six to eight. Four of the eight were children or teenagers. Four kids, and nobody has named them.
 **Rows:** [factcheck-A4 S8: N&A RAW "Female, about 6 to 8 years old, found above the Bremo Power Plant"; Bremo Bluff is in Fluvanna County (Wiki-Bremo RAW)] · [factcheck-A4 S9: WHRO RAW "four children possibly between 6 and 19"]
 
 ### A4-S11 · narration (1969 sentences added)
 **Picture:** no card. Our Nelson County map, the eight markers lit; small chips pop beside them one at a time as each is said: "autopsy, 1969", "dental charts", "cremated", "no DNA test". Source line under the map: "WHRO, October 13, 2026 · WSET, August 27, 2026". [VE] the markers dim on the last line.
-> The work on them started that same year. Public radio reported that autopsies were done on all eight in 1969, and that they included dental charting. The same report says most of the 1969 case file is about the office putting procedures in place to work an event that size. The remains have since been cremated, which leaves investigators with paper: the autopsy results and the dental records. Investigators told 29News that's what they're using now to try to identify the eight. Because of the cremation, DNA testing isn't possible. So the name has to come from someone who remembers.
+> The work on them started that same year. Public radio reported that autopsies were done on all eight in 1969, and that they included dental charting. The same report says most of the 1969 case file is about the office putting procedures in place to work an event that size. The remains have since been cremated, which leaves investigators with paper: the autopsy results and the dental records. Investigators told 29News that's what they're using now to try to identify the eight. Because of the cremation, DNA testing isn't possible. So a name will most likely come from someone who remembers.
 **Rows:** [factcheck-A4 S11 and S12: WHRO RAW "Autopsies were conducted on the eight unknown people the year of the storm ... the procedure included creating dental charting"; WHRO RAW the case file is mostly "putting ... procedures into place to work in an event of this magnitude"] · [factcheck-A4 S12: 29N RAW "The recovered remains have since been cremated, and investigators say that they are now using autopsy and dental records to try to identify the individuals", WSET RAW "autopsy results and postmortem dental records"; WHRO RAW "making DNA testing impossible"]
 *(Open: who remembers, and how would a memory become a name? Paid in A4-S12 to A4-S15.)*
 
