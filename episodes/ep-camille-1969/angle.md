@@ -78,8 +78,9 @@ reference video has, it is current (the appeal is open now), and 2 and 3 give it
 the ticked line that holds ("some were never found") and drops the half the sources break ("the deadliest part").
 
 ## Angle (pending the owner's lock on candidate 1)
-Claim: Camille's Virginia flood still is not closed: fifty-seven years later the state is asking for help to name eight people recovered from the Rockfish River, and about thirty-two more from Nelson County were never found at all.
+Claim: Camille's Virginia flood still is not closed: fifty-seven years later the state is asking for help to name eight people the flood took in Nelson County, and thirty-three more from Nelson County were never found at all.
 Spine / arcs: 1 is the spine; 2 (the mountainsides came down, blunt-force injuries) and 3 (the rain was already on paper) are arcs; 4 is one line of context.
 Source: VDH appeal (29News/WVIR 31 Aug 2026; WJLA); USGS OFR 70-51 pp. 1, 7, 22; USGS PP 804 abstract; USGS WSP 2030 p. 147; NWS Jackson Camille page.
 Ruled out as the lead: Mississippi landfall with the records; the Category 5 scale; the Richelieu party; "the deadliest part was in Virginia, with no warning"; the 27 inches near the probable maximum as the headline; the Raines brothers as the entry point.
-Still unverified: the final never-found number (32 vs 33 vs 37); the VDH release text (news copies only); eight victims vs the seven described by age; any Virginia warning time.
+Still unverified: a 1969 primary for the never-found count (33 rests on the 2019 list); any Virginia warning time.
+Wording tightened by fact-check A (21 Oct 26, same meaning): "recovered from the Rockfish River" became "in Nelson County" (one of the eight was over the Albemarle line, two on the James); "about thirty-two" became "thirty-three" (2019 list, 84 + 33 + 8 = 125).
