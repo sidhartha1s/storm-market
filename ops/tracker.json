@@ -667,13 +667,13 @@
    "slug": "ep-mayfield-2021",
    "lane": "doc",
    "bucket": "tornado",
-   "title": "The Night Shift Was Told to Stay (Mayfield 2021)",
+   "title": "Mayfield 2021 (title waits for packaging; the old working title rested on an allegation)",
    "owner": "director",
    "due": "28 Oct 26",
-   "phase": "idea",
-   "status": "todo",
-   "note": "E9 PICK (next doc after the slate); 10 Dec 2021 Quad-State EF4, 57 dead, 165.7 mi (NWS Paducah); ships before the 10 Dec anniversary; card in ops/slate-tornado-docs.md",
-   "updated": "19 Oct 26 12:00"
+   "phase": "script",
+   "status": "doing",
+   "note": "Angle locked 21 Oct 26 (devq tick): the forecast was right days ahead, and nobody had told big workplaces what to do (episodes/ep-mayfield-2021/angle.md). Fact sheet, teardowns, hook+intro draft done; parked at the owner gate for hook+intro sign-off. 89 direct, 71 tornadoes, long track 165.6 mi EF4 (NWS SA)",
+   "updated": "22 Oct 26 00:00"
   },
   {
    "slug": "ep-moore-1999",
