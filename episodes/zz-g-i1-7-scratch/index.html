@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- scratch stage for g-i1-7 only: same head, same host line and times as episodes/ep-mayfield-2021/index.html; the other comps are not built yet -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>g-i1-7 scratch</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .hold { position: absolute; inset: 0; pointer-events: none; }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="zz-g-i1-7-scratch" data-start="0" data-width="1920" data-height="1080" data-duration="127.208" data-fps="30">
+  <audio id="nx-i1-s5" src="audio/i1-s5.wav" data-start="93.612" data-duration="11.154" data-volume="1"></audio>
+  <div id="host-g-i1-7" data-composition-id="g-i1-7" data-composition-src="compositions/g-i1-7.html" data-start="93.612" data-duration="11.454" data-track-index="2" data-width="1920" data-height="1080"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  window.__timelines["zz-g-i1-7-scratch"] = tl;
+})();
+</script>
+</body>
+</html>
