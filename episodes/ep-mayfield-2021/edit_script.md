@@ -99,7 +99,7 @@ I1-S4), Q4 "what did the St. Louis office write" (I1-S4 to I1-S5). L1 is asked a
 *[Q1 open: what had they seen]*
 
 ### I1-S2 — narration
-**Picture:** the SPC Day 4-8 outlook archive text, 3:20 AM CST Fri 3 Dec, the Day 8 line lit (one beat only; the countdown is A2's). Then Army Corps or Kentucky Guard photo of the factory site; chip "about 110 inside" (Spectrum News).
+**Picture:** the SPC Day 4-8 outlook archive text, 3:20 AM CST Fri 3 Dec, the Day 8 line lit (one beat only; the countdown is A2's). Then Army Corps or Kentucky Guard photo of the factory site; chip "about 110 inside" (Gov. Beshear and company spokesman, via AP and KSL, Dec 2021).
 > A week ahead, the Storm Prediction Center had already named that Friday for severe storms. That night, about a hundred ten people were at work inside the candle factory in Mayfield. The review says a forecast like this one was harder to get across, and it says why.
 
 *[Q1 closes]* *[Q2 open: why it was harder]*
@@ -345,7 +345,7 @@ I1-S4), Q4 "what did the St. Louis office write" (I1-S4 to I1-S5). L1 is asked a
 *[loop cta-hinge closes: first sentence]* *(the 9:26 Tornado Emergency is left to A4 and P4)*
 
 ### A3-S11 — narration
-**Picture:** rewind effect on our own track map back to 9:05 PM; the Graves County tornado warning polygon (SA p29) lights, the tornado marker in Fulton and Hickman counties, never drawn at the Graves County line and never captioned "entering Graves County" (fc-A3: Cayce 9:01 PM, Hickman County 9:06 PM, Mayfield 9:26 PM). Pin on the candle factory; chip "about 110 inside" (company spokesman, via Spectrum News). Chapter blackout into A4, hand-placed.
+**Picture:** rewind effect on our own track map back to 9:05 PM; the Graves County tornado warning polygon (SA p29) lights, the tornado marker in Fulton and Hickman counties, never drawn at the Graves County line and never captioned "entering Graves County" (fc-A3: Cayce 9:01 PM, Hickman County 9:06 PM, Mayfield 9:26 PM). Pin on the candle factory; chip "about 110 inside" (Gov. Beshear and company spokesman, via AP and KSL, Dec 2021). Chapter blackout into A4, hand-placed.
 > Nine oh five, twenty-one minutes earlier. Paducah had warned Graves County about a tornado already on the ground. At that minute, the tornado was still crossing Fulton and Hickman counties, to the southwest. The company says about a hundred ten people were inside the candle factory that night. What reached them?
 
 *[loop L4 open]* *(chapter-exit question; no affirming line)* *(chapter blackout, hand-placed)*
@@ -371,7 +371,7 @@ I1-S4), Q4 "what did the St. Louis office write" (I1-S4 to I1-S5). L1 is asked a
 *[HUMAN] (Saxton's own published words only; never tied to the A4-S10 allegation)*
 
 ### A4-S4 — narration
-**Picture:** the Service Assessment cover and pages (A01, SAFE-PD); our own MG: a search of the review's text types "candle" and returns "0 results". Chips "75 pages", "Mayfield: 17 mentions" (fc-A4 text search).
+**Picture:** the Service Assessment pages (A01, SAFE-PD), never its cover image, which carries a FOX 2 aerial; our own MG: a search of the review's text types "candle" and returns "0 results". Chips "75 pages", "Mayfield: 17 mentions" (fc-A4 text search).
 > I wanted to know what reached the people on that floor in those minutes. So I searched the Weather Service's own review of that night. It runs seventy-five pages. It never mentions the candle factory. Not once. The word Mayfield shows up seventeen times.
 
 *[RS] [VE] the search returning zero (if challenged: the text of the review, all 75 pages)*
@@ -395,7 +395,7 @@ I1-S4), Q4 "what did the St. Louis office write" (I1-S4 to I1-S5). L1 is asked a
 > Through that weekend, rescue crews worked through the wreckage of the factory, looking for anyone still alive. Eight of the people inside did not survive. The company's spokesman said the count would stand at eight.
 
 ### A4-S9 — narration
-**Picture:** real clip: Kentucky Guard debris-clearing video in Mayfield (T12; no credit printed until its page is opened), then NWS Paducah Graves County survey photos (T01). Chips "24 · Graves County", "57 · one tornado", "500+ hurt" (NWS Paducah event page); "most in the Paducah office's history" (Service Assessment, p30).
+**Picture:** NWS Paducah Graves County survey photos (T01) and a FEMA Mayfield still; never the Guard video DVIDS 825642 here, which was filmed in Dawson Springs and would sit under Graves County chips. Chips "24 · Graves County", "57 · one tornado", "500+ hurt" (NWS Paducah event page); "most in the Paducah office's history" (Service Assessment, p30).
 > Across Graves County, twenty-four people lost their lives. Along the whole track of that one tornado, the toll reached fifty-seven, and more than five hundred were hurt. The Weather Service's review says it was the most lives lost in the Paducah office's history.
 
 ### A4-S10 — narration

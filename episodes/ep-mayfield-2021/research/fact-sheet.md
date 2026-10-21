@@ -69,7 +69,7 @@ https://www.weather.gov/media/publications/assessments/NWS_Joint_Regional_Servic
 - Mayfield Consumer Products candle factory, Mayfield, Kentucky: 8 lost their lives (AP, 14 Dec 2021) [D2]. Other
   counts exist: 9 (Hop Town Chronicle, WPSD, DVIDS caption) and 6 (an OSHA accident-summary text). `[verify]` before
   any line: an official count (Graves County coroner or Kentucky state) is still unread.
-- About 110 people were inside that night (Spectrum News) [W1]. Night shift for seasonal orders: unverified [W2].
+- About 110 people were inside that night: Gov. Beshear (AP, 12 Dec 2021) and the company spokesman's figures, 102 accounted for plus 8 (KSL, 14 Dec 2021). Credit those on screen, not Spectrum (fc-A4 row A4-S3) [W1]. Night shift for seasonal orders: unverified [W2].
 - Kentucky's state OSHA program (Labor Cabinet; Kentucky is a state-plan state) cited the plant in 2022: 7 serious
   violations, $40,000 proposed: exit routes (1), emergency action plans (2), bloodborne pathogens (4). The company
   contested all seven; no outcome found through 2026 (Hop Town Chronicle 22 Aug 2022; LEX18) [R1-R6]. Say "cited" and
