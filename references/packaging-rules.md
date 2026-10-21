@@ -10,9 +10,12 @@ refutation, showrunner synthesis). Read with `yt-packaging` before any title or 
 - The title states the episode's script concept (`script-os.md` rule 1), never the bare topic.
 - A checkable fact beats an adjective: "Four EF5 Tornadoes in One Day" passed both seniors; superlative adjectives,
   ALL CAPS and "you won't believe" shapes did not.
-- **Flesch reading ease 100 or more** (owner 23 Sep 26): one-syllable words, one clause per sentence, numbers as
-  digits. `python3 scripts/title_fre.py "<title>" ...` prints the score; 85 to 99 is a rewrite, under 85 is out.
-  "The 12-Year EF5 Drought Was a Lie" scores 114; "The Day America Had 7 F5 Tornadoes - 1974 Super Outbreak" scores 53.
+- **Punchy and plain, with no reading-ease score to hit** (owner 11 Oct 26, on six Palm Sunday 1965 titles written to
+  the floor of 100: "title suggestionns are really poor, maybe because u are trying to achieve the readability rating
+  thing, maybe remove that. keep them punchy still. not asking u to write an essay tho."). The floor of 23 Sep 26 is
+  withdrawn: chasing it produced stiff one-syllable sentences ("The Police Knew. The Town Did Not."). Write the title
+  the way a person would say it, short, with the concrete noun or the real quote in it.
+  `python3 scripts/title_fre.py "<title>" ...` still prints a score for reference; no title is rewritten or dropped for it.
 - **Negative beats neutral beats positive** (1of10 media, 23 Sep 26: 11 % of titles are negative and they draw 22 % more
   median views). When brainstorming, list the anger, controversy, humour and joy shapes first; a true negative claim
   ("lie", "broken", "wrong", "nobody") beats a neutral description, as long as the film pays it in
