@@ -114,9 +114,8 @@ window.__timelines = window.__timelines || {};
     tl.set(P + k + "-ring", { visibility: "visible" }, at + 0.2);
     tl.fromTo(P + k + "-ring", { scale: 1, opacity: 0.9 }, { scale: 3, opacity: 0, duration: 1.0, ease: "power2.out", repeat: pulses, repeatDelay: 0.2 }, at + 0.2);
   }
-  /* coordinator ruling 22 Oct 26: both pins land in the first second (frame coverage); polygons and chips stay on their cues */
-  pin("edw", C.edwPin, 6);   /* 7 pulses, 0.4-8.6 */
-  pin("may", C.mayPin, 6);   /* 7 pulses, 0.8-9.0 */
+  pin("edw", C.edwPin, 5);   /* 6 pulses, 2.267-9.267 */
+  pin("may", C.mayPin, 2);   /* 3 pulses, 5.327-8.727 */
 
   /* polygons: edge draws 0.8 s, fill fades to .28; the time chip sits off the north edge */
   function poly(k, chip, at) {
