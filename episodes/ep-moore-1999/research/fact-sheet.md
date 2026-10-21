@@ -35,7 +35,7 @@ Source file key (all in this folder):
 - 4:47 p.m.: first tornado warning of the event (Comanche, Grady, Caddo Counties) | SA p8, App C p C-2 (1647) | CONFIRMED
 - 4:51 p.m.: first tornado of the event, 7 mi ENE of Medicine Park (A1) | SA App C p C-2; SPEHEGER Table 1 (2151 UTC) | CONFIRMED
 - 5:41 p.m.: Short Term Forecast (NOW) for the OKC metro: storms moving toward the metro, "EXERCISE YOUR TORNADO SAFETY PROCEDURES!" | SA p10 | CONFIRMED
-- 5:52 p.m.: first tornado in Grady County, 4 mi south of Verden (earlier tornado of the same storm, not A9) | SA p2, App C p C-2 | CONFIRMED
+- 5:52 p.m.: first tornado in Grady County, 4 mi south of Verden; SA p2 calls it the early stage of the eventual F5, but by the survey the A9 tornado began at 6:26 and the 5:46-6:10 tornado was A6 | SA p2, App C p C-2; SPEHEGER Table 1 | CONFIRMED (SA wording differs from survey)
 - 5:46 to 6:10 p.m.: A6 (F3) tornado, Caddo/Grady, ends 2.5 mi WNW of downtown Chickasha | SPEHEGER Table 1 (2246-2310 UTC) | CONFIRMED
 - 6:12 to 6:21 p.m.: A8 (F2) tornado at Chickasha airport, 4 mi, 500 yd | SPEHEGER Table 1 (2312-2321 UTC) | CONFIRMED
 
@@ -94,7 +94,7 @@ Source file key (all in this folder):
 - 36 direct deaths, A9 tornado (Oklahoma State Dept of Health); plus 5 indirect | STORMDATA p10-11; OUN-PAGE; B&D02 abstract p354; WURMAN07 | CONFIRMED
 - Indirect 5: 2 heart attacks (I1, I3), a third heart attack (I5), candle fire (I2, 23), wheelchair dropped down stairs (I4, 79) | BROOKS-LIST | CONFIRMED. B&D02 p355 also cites "at least two" heart attacks, a fall getting into a shelter, a candle fire
 - 36 split by place (BROOKS-LIST): 3 apartment (Emerald Springs), 2 business (trucking company), 10 mobile home (all Bridge Creek, M1-M10), 2 under overpasses (O1 Shields, O2 I-44), 19 permanent homes (P1-P19) | CONFIRMED (3+2+10+2+19 = 36)
-- By county (STORMDATA, 1/4 of rows read by hand): Grady 12 (injuries 39, $90M), McClain 1 (F40 outside = I-44 overpass woman), Cleveland 11 (293 injured, $450M), Oklahoma 12 (234 injured, $450M) | CONFIRMED (12+1+11+12 = 36)
+- By county (STORMDATA A9 rows, CST times): Grady 12 killed (39 injured, $90M, 1726-1800 CST, 15 mi); McClain 1 killed (F40, outside = I-44 overpass woman; 17 injured, $10M, 1800-1812 CST, 5 mi); Cleveland 11 (293 injured, $450M, 1812-1830, 10 mi); Oklahoma 12 (234 injured, $450M, 1830-1848, 7 mi) | STORMDATA p3-5 | CONFIRMED (deaths 12+1+11+12 = 36; injuries 39+17+293+234 = 583; damage $1.0B; length 15+5+10+7 = 37 mi)
 - Bridge Creek: "Twelve persons died in Bridge Creek, nine in mobile homes"; deaths and most injuries in Willow Lake Addition, Southern Hills Addition, Bridge Creek Estates "consisting mostly of mobile homes" | STORMDATA p10; OUN-PAGE | CONFIRMED
 - Bridge Creek: BROOKS-LIST has 10 mobile home + 2 under a staircase (P2, P3) = 12 | CONFIRMED (the 9 vs 10 gap is one 44-year-old woman: STORMDATA codes her "PH" permanent home, BROOKS-LIST M2 mobile home)
 - Bridge Creek: FEMA342 "11 deaths were reported ... most ... taking refuge in manufactured housing" p4-34; D&B02 p616 "11 of the 36 fatalities" in the Bridge Creek manufactured homes; B&D02 p354 "11 occurred in mobile homes" | CONFIRMED (they say 11; see disagreements)
@@ -124,7 +124,7 @@ Source file key (all in this folder):
 - 35 people in one Grady County storm cellar, all survived; cellar door pulled open; mobile homes destroyed; neighbourhood "primarily mobile homes" | SA p22 | CONFIRMED
 - Same story with a name: Darrell Turner and 34 family members and neighbours sheltered in his brother's storm cellar in Grady County after hearing NWS warnings on local TV; the F5 pulled the door off, destroyed their house, everyone survived; "In the same community, eleven others lost their lives." | NOAAREPORT p2 | CONFIRMED (US gov, public domain text)
 - NWS Norman meteorologist-in-charge Dennis McCarthy, June 1999: "...some people just didn't have the type of shelter needed to survive this magnitude of storm--such as a reinforced safe room or underground facility." | NOAAREPORT p3 | CONFIRMED (quote, attributed)
-- FEMA: "the best means to reduce loss of life ... is to take refuge in specifically designed tornado shelters"; shelters are "the only means of providing individuals with near absolute protection" | FEMA342 exec summary p xvi, p7-? (7.3) | CONFIRMED
+- FEMA: "the best means to reduce loss of life ... is to take refuge in specifically designed tornado shelters"; shelters are "the only means of providing individuals with near absolute protection" | FEMA342 exec summary p xvi; §7.3 | CONFIRMED
 - FEMA: both aboveground in-residence shelters and belowground shelters "were successfully utilized ... and were responsible for saving many lives" | FEMA342 §6.1.1 p6-1 | CONFIRMED
 - Safe rooms built to FEMA recommendations: "no casualties occurred in them"; one on the outskirts of F4 damage in Midwest City, another on the periphery of F5 damage near Bridge Creek (an insulated-concrete-form shelter, "damage limited to light missile impacts") | D&B02 p614-615; FEMA342 Fig 6-3 | CONFIRMED
 - Few shelters existed: "relatively few tornado shelters found within the paths"; below-ground ones had door problems (plywood in metal skin, sliding bolt); BPAT: "Few successes were observed"; successes = engineered shelters | D&B02 p614; FEMA342 exec summary p xvi | CONFIRMED

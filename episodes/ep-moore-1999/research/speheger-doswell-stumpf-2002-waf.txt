@@ -1,0 +1,776 @@
+362                                    WEATHER AND FORECASTING        VOLUME 17
+
+        The Tornadoes of 3 May 1999: Event Verification in Central Oklahoma
+                                            and Related Issues
+
+                                                   DOUGLAS A. SPEHEGER
+
+                                          National Weather Service Forecast Office, Norman, Oklahoma
+
+                                                 CHARLES A. DOSWELL III*
+
+                                              National Severe Storms Laboratory, Norman, Oklahoma
+
+                                                     GREGORY J. STUMPF
+
+     National Severe Storms Laboratory, and Cooperative Institute for Mesoscale Meteorological Studies, Norman, Oklahoma
+
+                                       (Manuscript received 5 March 2001, in final form 14 August 2001)
+
+                                                                          ABSTRACT
+               The tornado events of 3 May 1999 within the county warning area of the Norman, Oklahoma, office of the
+            National Weather Service are reviewed, emphasizing the challenges associated with obtaining accurate infor-
+            mation about the existence, timing, location, and intensity of individual tornadoes. Accurate documentation of
+            tornado and other hazardous weather events is critical to research, is needed for operational assessments, and
+            is important for developing hazard mitigation strategies. The situation following this major event was unusual
+            because of the high concentration of meteorologists in the area, relative to most parts of the United States. As
+            a result of this relative abundance of resources, it is likely that these tornadoes were reasonably well documented.
+            Despite this unique situation in central Oklahoma, it is argued that this event also provides evidence of a national
+            need for a rapid-response scientific and engineering survey team to provide documentation of major hazardous
+            weather events before cleanup destroys important evidence.
+
+1. Introduction                                                          The magnitude of this event required special attention
+                                                                      to document as many of the tornadoes as possible. We
+   During the late afternoon and evening of 3 May 1999,               present the results of the documentation effort for events
+an outbreak of severe thunderstorms and tornadoes oc-                 within the NWS Norman CWA. Data from numerous
+curred across Oklahoma and southern Kansas. This out-                 sources were used to create a composite of information
+break affected the Oklahoma City, Oklahoma, and                       for each tornado. The data we present represent our best
+Wichita, Kansas, metropolitan areas with several violent              effort at incorporating all of the data that were available
+tornadoes (F4-F5; see Fujita 1971). Sixty-two torna-                  to the NWS Forecast Office in Norman.
+does occurred in Oklahoma and southern Kansas on 3
+May (through 0500 UTC 4 May), 58 of which struck                         In section 2, we provide some background informa-
+in central Oklahoma within the county warning area                    tion about the events of 3 May 1999. Section 3 discusses
+(CWA) of the National Weather Service (NWS) office                    the methodology associated with documenting the
+in Norman, Oklahoma. The outbreak then continued into                 events, and section 4 presents a number of important
+the early morning hours of 4 May in eastern Oklahoma,                 issues regarding documentation of the details of the out-
+producing 4 more tornadoes, for an overall total of 66                break. Section 5 presents a detailed analysis of tornado
+tornadoes in Oklahoma and Kansas through 0900 UTC                     A9, the violent tornado that received the greatest atten-
+4 May.                                                                tion, and section 6 provides discussion and offers con-
+                                                                      clusions about the documentation of major tornado out-
+   * Current affiliation: Cooperative Institute for Mesoscale Meteo-  breaks.
+rological Studies, Norman, Oklahoma.
+                                                                      2. Background
+   Corresponding author address: Douglas Speheger, National
+Weather Service, 1200 Westheimer Dr., Room 101, Norman, OK               Fifty-eight tornadoes were documented to have
+73069-7902.                                                           touched down in 16 countries of the NWS Norman CWA
+E-mail: doug.speheger@noaa.gov                                        (Fig. 1) within less than 8 h. These tornadoes are doc-
+
+ 2002 American Meteorological Society
+
+                                                                      Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+JUNE 2002  SPEHEGER ET AL.                                                                                  363
+
+           FIG. 1. Map of the OK portion of the Norman CWA (shown in gray) and the locations of Figs. 3-7.
+
+umented in Table 1 and displayed in Fig. 2. Of these,       signed identifier A9--the ninth tornado produced from
+16 were ``significant'' tornadoes (Grazulis 1993), that     supercell A.
+is, rated F2 or greater on the Fujita (1971) intensity
+rating scale. This total includes an F5 tornado that        3. Methodology
+moved through the rural community of Bridge Creek,
+the southern portion of Oklahoma City, and the                 The lead author was given the task of compiling the
+Oklahoma City suburbs of Moore, Del City, and Mid-          surveys, videos, spotter reports, e-mail reports, and oth-
+west City. Two other violent (F4) tornadoes also oc-        er sources of information to produce a listing of those
+curred in central Oklahoma, one striking the town of        tornadoes that struck within the NWS Norman CWA.
+Dover and another moving through rural Logan County         Information about each tornado from each source was
+before hitting the town of Mulhall. Thirteen additional     cross-referenced to every other source to create a com-
+tornadoes were rated as F2 or F3 events.                    posite of the events using all of the available data. Radar
+                                                            data from the Twin Lakes (KTLX), Frederick (KFDR),
+   Available radar data revealed that eight supercell       and Vance Air Force Base (KVNX) WSR-88D radars
+thunderstorms produced this outbreak of tornadoes           in Oklahoma and the Federal Aviation Administration
+across the NWS Norman CWA. Each of these storms             (FAA) Terminal Doppler Weather Radar (TDWR) near
+was given a letter identifier from A to I, based on the     Will Rogers World Airport in Oklahoma City were also
+chronological order of the first echo of the storm as seen  used to reconcile available information regarding times
+from the Twin Lakes, Oklahoma, Weather Surveillance         and locations of the events. Analysis from the Doppler
+Radar-1988 Doppler (WSR-88D) 0.5 reflectivity scan.         on Wheels1 (hereinafter DOW) Project research radar
+However, the identifier F was not used, to avoid con-       also was used in some locations, as were two indepen-
+fusion with Fujita-scale ratings. The tornadoes produced    dent series of aerial photographs.
+from each supercell thunderstorm were then given that
+storm's identifier and a number assigned to each tornado       1 At the time of writing, information regarding this project was
+in sequence from that supercell. For example, the F5        available online at http://aaron.ou.edu/xband.
+Bridge Creek-Oklahoma City-Moore tornado was as-
+
+                                                            Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+364                                 WEATHER AND FORECASTING                                                   VOLUME 17
+
+                                TABLE 1. Times and locations of tornadoes [yd is yards (0.914 m)].
+
+Tornado          Time and date  Length Width F-scale            Counties                            Location  Primary
+                      (UTC)      (mi) (yd) rating                                                             source*
+1) A1                                                 Comanche
+2) A2    2151-2152 3 May        0.5 25 F0             Comanche                7 mi ENE of Medicine Park       RC
+3) A3    2155 3 May                                   Caddo                   3 mi W of Elgin                 R
+         2220-2235 3 May        0.1 25 F0                                     3 mi E of Apache to 2 mi NE of  SMV
+
+                                6   100 F3                                       Stecker                      VRC
+                                                                              3 mi NW of Cyril                R
+4) A4    2226 3 May             0.1 25 F0             Caddo                   3 mi S of Roosevelt             RP
+5) B1    2236 3 May                                   Kiowa                   2 mi S of Anadarko              SMV
+6) A5    2238 3 May             0.1 25 F0             Caddo                   2 mi WSW of Laverty to 2.5 mi
+7) A6    2246-2310 3 May                              Caddo/Grady                                             MV
+                                0.1 25 F0                                        WNW of downtown Chickasha    SMV
+                                                                              5 mi W of downtown Chickasha
+                                9   880 F3                                    2.5 mi NW of downtown Chicka-   VC
+                                                                                                              SMV
+8) A7    2307-2308 3 May        1   75 F0 Grady                                  sha to 4 mi NNE of downtown
+9) A8    2312-2321 3 May                                                         Chickasha                    SMV
+                                4   500 F2 Grady                              12 mi WNW of Apache
+                                                                              2 mi SSW of Amber to SW         RC(S)
+10) B2   2320-2324 3 May        2   25 F0             Caddo                      Oklahoma City to Moore to    S
+11) A9   3 May 2326-0048 4 May                        Grady/McClain/Cleve-       Del City to Midwest City
+                                37 1760 F5                                    8 mi S of Fort Cobb to 1 mi W   P
+                                                         land/Oklahoma           of Washita                   V
+12) B3 2338-2359 3 May          7   150 F1                                    5 mi W of Anadarko              RC(S)
+                                                      Caddo                   1.5 mi W of Okarche to 4 mi N
+13) B4   2356 3 May             0.1 25 F0                                        of Okarche                   RC(S)
+14) C1   3 May 2358-0007 4 May                        Caddo                   Okarche                         RD
+                                4   100 F0            Canadian/Kingfisher     Rural north Newcastle
+                                                                              4 mi NNW of Anadarko to 5 mi    RC(S)
+15) C2   0000 4 May             0.1 25 F0             Canadian/Kingfisher        NNW of Anadarko
+16) A10  0010 4 May                                   McClain                 4 mi ESE of Gracemont           VC(S)
+17) B5   0012-0013 4 May        0.2 20 F0             Caddo                   Southeast Oklahoma City (near
+                                                                                 SE 80th St. and Sooner Rd.)  SV
+                                1   25 F0             Caddo                   9 mi E of Gracemont to 10 mi
+                                                      Oklahoma                   ENE of Gracemont             SV
+18) B6 0020 4 May               0.1 25 F0                                     8 mi WSW of Minco to 6 mi
+19) A11 0031-0032 4 May         0.5 60 F0             Caddo                      WSW of Minco                 SV
+                                                                              5 mi S of Cogar to 1 mi E of
+20) B7 0034-0035 4 May          0.5 25 F0             Grady                      Cogar                        C
+                                                                              5 mi W of Minco to 4 mi NW of   VC
+21) B8 0037-0040 4 May          2   300 F1            Caddo                      Minco                        SV
+                                                                              3 mi SW of Choctaw to Choctaw
+22) B9 0037-0048 4 May          5   50 F1             Grady                      to 4 mi SE of Jones          VC
+                                                                              5 mi SW of Minco                VC
+23) B10 0047-0100 4 May         4   60 F1             Oklahoma                2.5 mi WNW of Union City
+                                                                              4 mi ESE of Jones to 3 mi E of  SV
+24) A12 0053-0107 4 May         7   220 F2            Grady                      Jones
+                                                      Canadian                2 mi NNE of Union City          R
+25) B11  0055 4 May             0.1 50 F1             Oklahoma                4 mi NNE of Union City to 5 mi  V
+26) B12  0103 4 May                                                              NNE of Union City            SV
+27) A13  0109-0115 4 May        0.1 25 F0             Canadian                3.5 mi ENE of Jones to 6 mi NE
+                                                      Canadian                   of Jones                     S
+                                2   50 F0                                     3 mi W of Geary
+                                                      Oklahoma                3 mi ESE of El Reno             S
+28) B13 0113-0114 4 May         0.75 100 F0                                   3 mi NNE of Geary to 7 mi S of
+29) B14 0116-0118 4 May                               Blaine                     Omega                        SV
+                                1   75 F0             Canadian                6 mi WNW of Yukon to 3 mi W
+                                                      Canadian/Blaine/           of Piedmont                  S
+30) A14 0117-0125 4 May         3   50 F1                                     1 mi N of Etowah to Pink to 2
+                                                        Kingfisher               mi NNE of Pink               V
+31) E1   0121 4 May             0.1 25 F0             Canadian                7 mi S of Omega to 7 mi NW of   S
+32) B15  0125 4 May                                                              Kingfisher
+33) E2   0129-0141 4 May        0.1 25 F0             Cleveland/Pottawatomie  1.5 mi W of Piedmont to 6 mi    V
+                                                                                 NNW of Piedmont              S
+                                9   150 F1            Kingfisher              6 mi W of Kingfisher
+                                                                              4 mi N of Piedmont to 4 mi NW
+34) B16 0134-0146 4 May         6   150 F1            Canadian/Kingfisher        of Cashion
+                                                                              6 mi WNW of Kingfisher
+35) D1 0134-0152 4 May          9   30 F1             Kingfisher              2 mi N of Bethel Acres to 7 mi
+                                                      Canadian/Kingfisher        E of McLoud
+36) E3 0141-0206 4 May          12  450 F3
+                                                      Kingfisher
+37) B17 0148-0200 4 May         8   200 F2            Pottawatomie
+
+38) E4 0155-0156 4 May          0.5 50 F0
+39) B18 0158-0222 4 May
+                                10  150 F1
+
+40) E5   0203 4 May             0.1 25 F0
+41) D2   0205-0220 4 May
+                                7   250 F2
+
+                                                                          Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+JUNE 2002                             SPEHEGER ET AL.                                                            365
+
+                                      TABLE 1. (Continued)
+
+Tornado            Time and date  Length Width F-scale            Counties           Location               Primary
+42) B19                 (UTC)      (mi) (yd) rating     Logan                                               source*
+
+           0210-0212 4 May        1   100 F1                                 2 mi SSE of Cashion to 1 mi SE S
+
+                                                                             of Cashion
+
+43) E6 0210-0238 4 May            15  880 F4 Kingfisher                      4 mi SSW of Dover to Dover to SV
+
+                                                                             7 mi ESE of Hennessey
+
+44) D3 0220-0245 4 May            11  100 F1 Pottawatomie/Lincoln            6 mi NNW of downtown Shaw- S
+
+                                                                             nee to Meeker to 4 mi NE of
+
+                                                                             Meeker
+
+45) H1 0222-0224 4 May             0.8 50 F0            Kingfisher           2 mi ESE of Omega              C
+46) B20 0225-0345 4 May           39 1760 F4            Logan/Payne/Noble
+                                                                             3 mi SW of Cimarron City to    SRC
+                                                        Kingfisher
+                                                                             Mulhall to 3 mi ENE of Perry
+                                                        Kingfisher
+47) E7 0230-0237 4 May            4   440 F1            Canadian             3 mi NE of Dover to 4 mi SE of S
+                                                        Kingfisher
+                                                        Canadian/Kingfisher  Hennessey
+
+48) H2     0250 4 May             0.2 30 F0             Lincoln/Creek        3 mi NW of Dover               VS
+49) G1     0256-0258 4 May
+50) H3     0257-0302 4 May        1   50 F0                                  Southwest edge of El Reno      VS
+51) G2     0303-0337 4 May
+                                  1   150 F2                                 1 mi ESE of Hennessey          SVC
+
+                                  22  350 F3                                 1 mi NNE of El Reno to 8 mi SE S
+
+                                                                             of Kingfisher
+
+52) D4 0310-0348 4 May            15  750 F3                                 3 mi NNE Sparks to Davenport S
+
+                                                                             to Stroud to 1 mi S of Stroud
+
+                                                                             Lake
+
+53) H4     0318-0328 4 May        8   440 F2            Logan/Garfield       3 mi SW of Marshall to 5 mi NE (S)
+
+54) I1     0328-0330 4 May                              Major                of Marshall
+55) G3     0338-0344 4 May                              Kingfisher/Logan
+                                  1   200 F1                                 6 mi S of Ringwood             D
+56) G4     0340-0341 4 May                              Kingfisher
+57) G5     0356-0418 4 May        3   150 F0            Logan                2 mi SW of Cashion to 0.5 mi N S
+
+58) G6     0433-0436 4 May                              Logan                of Cashion
+
+                                  0.5 50 F0                                  8 mi E of Kingfisher           S
+
+                                  13  880 F3                                 2.5 mi S of Crescent to 4 mi SW SR
+
+                                                                             of Mulhall
+
+                                  2   440 F2                                 3 mi SSW of Mulhall to 2 mi S S
+
+                                                                             of Mulhall
+
+  * S, NWS survey; (S), an emergency manager or other non-NWS survey; M, research meteorologist report; R, report from spotter, law
+enforcement, or emergency management; C, storm-chaser report; V, video; P, photograph; D, nonsurveyed damage.
+
+   Damage paths of 32 tornadoes were surveyed by Na-         and 4 October 1998 gave the authors valuable experi-
+tional Oceanic and Atmospheric Administration                ence in this process of compositing tornado reports from
+(NOAA) ground survey teams, and one additional tor-          multiple sources and familiarized us with the sources
+nado was surveyed in detail by the local emergency           of error that typically arise with reports from the various
+manager (see Table 1). Based on these surveys, high-         sources. For example, conflicting information (espe-
+resolution maps of tornado paths were produced (Figs.        cially with regard to time and location) is commonly
+3-7). An additional five tornadoes were surveyed by a        found among different sources (Witt et al. 1998). The
+representative of a local television station, and, although  times of some final-tallied events (e.g., in Storm Data)
+they were not of the same level of geographic detail as      have occasionally been listed as the time that the report
+the NOAA surveys, they provided valuable information         was entered into a log or the time when a spotter called
+of the tornadoes in Caddo County where NOAA surveys          in a report, rather than the actual time of the event.
+were not conducted and are included in Fig. 3.               Sometimes the times have been converted incorrectly
+                                                             from several time zone standards (e.g., standard time vs
+   The damage paths for the other 20 tornadoes were          daylight time). Times shown on one video tape can be
+estimated as accurately as was possible, based on video      as much as 10 min different from those on another video
+evidence and on reports from spotters, research mete-        of the same event. Many observers also can misjudge the
+orologists, and storm chasers. The accuracy of these         distance to the tornado, or report the observer's location
+paths is dependent on the amount of detail in the reports,   rather than the tornado's location. In these cases, we tried
+the number of independent reports for the same event,        to determine, to the best of our ability, any obvious errors
+and the specific evidence that was available. Many of        in the report (e.g., a clock on a video camera that was
+these tornadoes, especially those that occurred in day-      set incorrectly). Most of the differences among sources
+light hours, had numerous independent reports that al-       were relatively minor once the errors were identified.
+lowed a good triangulation of reported locations. The        Nevertheless, several iterations were necessary to create
+estimated locations of tornadoes that were not surveyed      the best composite of the times and locations. We estimate
+are also included in Figs. 3-7, and the caption identifies   that the times listed in Table 1 have a margin of error of
+which paths are estimated.                                   1 min in most cases, and 3 min in the worst cases.
+
+   Recent Oklahoma tornado outbreaks on 13 June 1998
+
+                                                                            Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+366  WEATHER AND FORECASTING                               VOLUME 17
+
+     FIG. 2. Map of tornado paths in central OK on 3 May 1999 (Map by S. Kruckenberg of the NWS Forecast Office in Norman.)
+
+Estimates of times were also made of the tornado move-     after the event (January 2001). One of the ground survey
+ment into cities and counties along the tornado paths and  teams initially indicated that tornado B20 had dissipated
+are documented in Table 2.                                 1 mi northeast of Mulhall, with a second tornado, orig-
+                                                           inally labeled B21, developing approximately 3 mi
+   As described above, not all tornadoes of this outbreak  northeast of Mulhall and moving to near Perry in Noble
+could be surveyed in detail, mainly owing to the large     County. High-resolution, low-elevation radar data from
+number of tornadoes and the long paths of some through     the DOWs and an account of the lead scientist associated
+metropolitan areas and other populated areas. Further-     with the field team provided substantial evidence that
+more, ground surveys information was not always the        tornado B21 most likely was a continuation of tornado
+best source of information. In three different cases,      B20 rather than a separate tornado (J. Wurman 2001,
+ground surveys that showed two tornadoes with an ap-       personal communication). Therefore, the paths origi-
+parent discontinuity in damage could be combined into      nally labeled B20 and B21 were combined into a single
+one tornado on the basis of eyewitness or video evi-       tornado path (Fig. 7).
+dence. There conversely was one case of a ground sur-
+vey showing one tornado that was broken into two dis-         On several occasions, a supercell storm was produc-
+tinct tornadoes (A6 and A8) based on eyewitness de-        ing more than one tornado at the same time. This was
+scriptions and video evidence of tornado evolution and     especially evident with storm B, for which both an oc-
+thunderstorm wind damage between tornado damage            cluding mesocyclone and a recently developed meso-
+paths (Fig. 3).                                            cyclone were producing simultaneous tornadoes. There
+                                                           were also four satellite tornadoes documented during
+   One of these changes occurred as late as 20 months
+
+                                                           Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+JUNE 2002  SPEHEGER ET AL.                                  367
+
+FIG. 3. Paths of tornadoes in Caddo and Grady Counties on 3 May 1999. Locations of tornadoes A4, A5, A7, B4, B5, B6, B7, and B11
+                                                                              are estimated.
+
+this outbreak (A7, A10, E4, and E5) rotating around a       cessive tornadoes. A violent F4 tornado (tornado B20)
+larger tornado. Although from the same mesocyclone          moved through Logan County between 0225 and 0320
+and rotating around the other tornado, these tornadoes      UTC 4 May [2125-2220 central daylight time (CDT) 3
+were not part of a typical ``multiple-vortex'' configu-     May]. Approximately 1 h later, another tornado (tornado
+ration and appeared to be independent. Therefore, these     G5) moved through central Logan County, occasionally
+satellite tornadoes were assigned their own identifiers.    overlapping the damage path from the previous tornado
+                                                            (Fig. 7). Real-time reports from spotters were used to
+   With the extreme magnitude of the event, it is also      attempt to distinguish between the two damage paths,
+entirely possible that some tornadoes were not observed     when possible.
+or documented. For example, there was some evidence
+to suggest that an additional ``satellite'' tornado oc-     4. Issues
+curred with storm E in Kingfisher County; however,
+there was insufficient evidence to give a time or location     As a major tornado outbreak, there is a need to obtain
+of this event, and it was not included. This almost cer-    detailed information for this event. That is, by careful
+tainly would have been rated as F0 intensity. It is pos-    study, we can learn important lessons for recognizing
+sible that other, similar events were missed.               and handling events like this one in the future [e.g., as
+                                                            in Doswell and Brooks (2002)]. Although the 3 May
+   Ground surveys were also hampered in at least one
+case because of overlapping damage paths from suc-
+
+                                                            Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+368  WEATHER AND FORECASTING                                                           VOLUME 17
+
+     FIG. 4. Paths of tornadoes in the Oklahoma City metropolitan area on 3 May 1999.
+
+1999 tornado outbreak in Oklahoma and Kansas pre-            ten available to participate in postevent surveys. Nu-
+sented many problems in conducting surveys and com-          merous NOAA meteorologists [from the NWS Forecast
+piling the tornado information, in other ways the oc-        Office, the NWS Warning Decision Training Branch,
+currence of most of the tornadoes within the NWS Nor-        the Next-Generation Radar (NEXRAD) Radar Opera-
+man CWA was fortuitous, as we will show.                     tions Center, the National Severe Storms Laboratory,
+                                                             and the Storm Prediction Center] and individuals from
+   Because of the redevelopment of severe thunder-           other agencies were available for ground surveys. Thus,
+storms and tornadic storms in the morning hours of 4         it was possible to dispatch eight ground surveys teams
+May, much of the NWS Norman staff needed to remain           with a total of 18 meteorologists on 4 May, with the
+at the office to address the ongoing severe weather, field-  highest-priority areas being the locations of particularly
+ing the many calls from emergency management and             damaging tornadoes or fatalities. Storm chasers from
+media personnel and the public about the previous even-      the media, local meteorologists from the University of
+ing's tornadoes and handling normal forecasting re-          Oklahoma and the NOAA agencies represented in cen-
+sponsibilities. Only two members of the NWS Norman           tral Oklahoma, and independent chasers followed these
+staff were able to conduct ground surveys on 4 May.          storms and made their video, chase logs, and reports
+For this particular outbreak, however, there were nu-        available to the NWS. These reports were valuable, be-
+merous resources that would not be available had the         cause many tornadoes would not have been documented
+outbreak been somewhere else. Central Oklahoma is            without such sources.
+known to have one of the greatest concentrations of
+severe-storm meteorologists in the world. The Univer-           The magnitude of the outbreak also brought engineers
+sity of Oklahoma is renowned for its severe weather          from Texas Tech University and the Federal Emergency
+meteorology program, and enthusiastic students are of-       Management Agency to central Oklahoma during the
+
+                                                             Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+JUNE 2002  SPEHEGER ET AL.  369
+
+           FIG. 5. Paths of tornadoes in Pottawatomie and Lincoln Counties on 3 May 1999.
+                                                                                             Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+370  WEATHER AND FORECASTING                            VOLUME 17
+
+FIG. 6. Paths of tornadoes in Canadian and Kingfisher Counties on 3 May 1999. Locations of tornadoes B12, B13, B14, B15, E1, E4, and
+                                                                             H1 are estimated.
+
+days following the event. Information from their sur-   able for an overflight on 7 May) were made available
+veys also was available within the following months     to the NWS within the weeks and months after the out-
+(see BPAT 1999; Marshall 2002). Aerial photographs      break, which helped to fine-tune tornado paths.
+from the private sector and from a team of U.S. Air
+Force pilots (who coincidentally happened to be avail-     Despite the relatively favorable local circumstances,
+                                                        it was still difficult to coordinate all the resources needed
+
+                                                        Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+JUNE 2002  SPEHEGER ET AL.                                                                                           371
+
+FIG. 7. Paths of tornadoes in Logan, Payne, and Noble Counties on 3 May 1999. Location of tornado B19 is estimated.
+
+for the detailed scientific investigation that an outbreak  that valuable evidence would be gone. For instance, no
+of this magnitude should be given. The sheer number         formal aerial survey with meteorologists was conducted
+of tornadoes, the extent of the area affected by the        on 4 May, and the earliest ground surveys of portions
+storms, and the relatively remote locations for some of     of the damaged area were begun on 4-5 May. Within
+the tornadoes made it impossible to do everything that      a few hours of the tornadoes in any given location,
+needed to be done before cleanup proceeded to the point     cleanup of damaged areas was already removing or hid-
+
+                                                            Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+372                                         WEATHER AND FORECASTING  VOLUME 17
+
+TABLE 2. Times of tornado strikes at selected cities and locales.  of individual tornadoes) ever to occur in Oklahoma,
+                  Local daylight time is UTC  5 h.                 some events in the past may have possibly equaled or
+                                                                   exceeded it. For example, despite the large number of
+                   Locale                      Time                spotters, chasers, and research meteorologists watching
+                                               (UTC) Tornado       the storms on this day, there were 10 tornadoes (17%)
+                                                                   that were included based on a single video, photograph,
+3 May                                          2252 A6             or report. Most of these tornadoes produced no known
+                                               2316 A8             damage and were rated F0, although two reportedly pro-
+   Tornado A6 moves into Grady County          2328 A9             duced minor damage and were rated F1 based on the
+   Chickasha airport                           2347 A9             descriptions of damage.2 The relatively large number of
+   Southeast edge of Amber                                         these tornadoes reported by only one source suggests
+   Bridge Creek                                                    that tornadoes from this outbreak in the Norman CWA
+                                                                   were quite possibly undocumented or unreported, even
+4 May                                                              though the resources available clearly were able to doc-
+                                                                   ument a number of tornadoes that likely would have
+Okarche                                        0000 C1             been unreported in the past. Meteorologists from the
+                                                                   National Weather Service also made numerous phone
+Tornado A9 moves into McClain County           0000 A9             calls to local officials along the storms' paths to mini-
+                                                                   mize the possibility of any unreported damaging tor-
+Newcastle (near Interstate 44 and State High-                      nadoes, so any unreported tornadoes would likely have
+                                                                   been weak and had minimal effect on life and property.3
+     way 76)                                   0002 A9
+                                                                      The tornado ratings using the Fujita scale are also
+Newcastle (near Interstate 44 and State High-                      subject to some uncertainty. First, the F scale was de-
+                                                                   signed to be a wind speed scale but, owing to the ab-
+     way 37)                                   0009 A9             sence of tornado-scale wind speed observations, Fujita
+                                                                   nevertheless attempted to relate observable tornado
+Oklahoma City (southwest city limits at Cana-                      damage (primarily that done to ``well-built'' frame
+                                                                   homes) to wind speeds falling within the ranges of the
+     dian River and Cleveland County line)     0012 A9             proposed F scale. This effort to infer wind speeds from
+                                                                   damage is replete with problems and was never ``cali-
+Moore (west city limits)                       0022 A9             brated'' in an objective way. The putative damage-wind
+                                                                   speed relation is especially dubious over the upper part
+Moore (Interstate 35 and Shields Blvd.)        0027 A9             of the wind speed range. Second, in areas where there
+                                                                   are no structures or even tall vegetation (about which
+Oklahoma City (city limits at Eastern Ave.) 0029 A9                the standard F-scale rating criteria offer no clear guid-
+                                                                   ance) on the ground to receive damage (e.g., the treeless
+Oklahoma City (SE 89th St. and Oklahoma                            High Plains of the United States), it is virtually certain
+                                                                   that strong and violent tornadoes are usually assigned
+     County line)                              0030 A9             ratings lower than their actual intensity, since they inflict
+                                                                   no damage. Third, the reported F scale of a tornado is
+Del City (city limits at SE 44th St.)          0038 A9             the subjectively determined maximum damage intensity
+                                                                   along the entire path of the tornado, and the observed
+Tinker AFB (northwest corner of base)          0040 A9             damage is below this maximum strength along the large
+                                                                   majority of any tornado's path.
+Midwest City (city limits at SE 29th St. and
+                                                                      Our examination of the various data collected from
+     Sooner Rd.)                               0041 A9             this event (and others) suggests that defining what is or
+                                                                   is not a separate tornado is not as easy as it might seem.
+Choctaw (downtown; crossing NE 23rd St.) 0100 A12                  Tornadoes are notably unsteady phenomena, the inten-
+                                                                   sity and appearance of which can vary rapidly no matter
+Tornado E2 moves into Blaine County            0135 E2             what observational tool is being used (e.g., Doppler
+                                                                   radar or visual observation). For example, Davies et al.
+Tornado E2 moves into Kingfisher County        0137 E2
+                                                                      2 We also point out that the rating associated with events docu-
+Tornado D1 moves into Pottawatomie County 0141 D1                  mented by a single source is always open to some argument. If these
+                                                                   events were given a careful survey, validated by several sources, the
+Pink                                           0149 D1             ratings might change.
+
+Tornado B17 moves into Kingfisher County 0200 B17                     3 Because most tornadoes are weak, this is a reasonable assump-
+                                                                   tion, but is still subject to uncertainty in specific cases.
+Tornado B18 moves into Kingfisher County 0201 B18
+
+Shawnee (Clarks Heights Addition near Inter-
+
+     state 40 and U.S. Highway 177)            0211 D2
+
+Dover                                          0220 E6
+
+Tornado D3 moves into Lincoln County           0228 D3
+
+Cimarron City                                  0233 B20
+
+Meeker                                         0233 D3
+
+Mulhall                                        0308 B20
+
+Davenport                                      0320 D4
+
+Tornado B20 moves into Payne County            0320 B20
+
+Tornado H4 moves into Garfield County          0324 H4
+
+Interstate 35 at EW60 Rd. bridge               0325 B20
+
+Tornado G2 moves into Kingfisher County        0327 G2
+
+Tornado B20 moves into Noble County            0327 B20
+
+Stroud (west city limits)                      0333 D4
+
+Stroud (Tanger outlet mall)                    0338 D4
+
+Tornado G3 moves into Logan County             0344 G3
+
+Tornado D4 moves into Creek County             0346 D4
+
+ing evidence of the events. Although the survey teams
+did as much as they could, many areas of damage were
+not surveyed at all, especially areas in Caddo County
+affected by storm B and much of the area affected by
+storms E and H. Only the tornado families from storms
+D and G were surveyed completely.
+
+   Events of this magnitude may have happened in the
+area in the past, but without the resources currently
+available in the region, many tornadoes from those past
+events probably went undocumented. That is, even
+though this event was by far the largest documented
+outbreak of tornadoes (in terms of the absolute number
+
+                                                                   Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+JUNE 2002  SPEHEGER ET AL.                                             373
+
+(1994) have shown that the visible condensation funnel                 the damage estimates in areas that were inaccessible by
+can dissipate and then re-form, even as surface damage                 vehicle or foot.
+continues. In a converse way, surface damage can be
+interrupted for a variety of reasons, even as the vortex                  On days following 4 May 1999, the surveys contin-
+is clearly continuing. Even with video evidence, it is                 ued, but with the emphasis on gaining more detailed
+sometimes difficult to define when a tornado actually                  information on the damage path. Some of the previously
+begins or ends. The existence of satellite tornadoes is                inaccessible areas became accessible and were sur-
+not widely known, and confusion with multivortex tor-                  veyed. In addition, several high-detail datasets were col-
+nadoes is possible. In our documentation of this event,                lected and made available to the NOAA survey teams.
+we have provided a solution to the complex data that                   A series of high-resolution aerial photographs from the
+represents one possible interpretation of the event. Oth-              private sector and the U.S. Air Force became available,
+ers are possible.4                                                     as did a house-by-house survey of damage intensity
+                                                                       from Texas Tech University engineers in portions of the
+5. Tornado A9--The Bridge Creek-Oklahoma                               Oklahoma City metropolitan area. Numerous storm-
+   City-Moore tornado                                                  chaser videos were provided as time passed, allowing,
+                                                                       in some instances, multiple views of the tornado from
+   The most damaging tornado of this outbreak was tor-                 a variety of viewing angles. High-resolution WSR-88D
+nado A9--the F5 tornado that struck the community of                   and TDWR radar data from the Oklahoma City met-
+Bridge Creek and the cities of Oklahoma City, Moore,                   ropolitan sites were also analyzed. The video and radar
+Del City, and Midwest City. Because of the infamy and                  data enabled the surveyors to determine the times at
+degree of damage, special attention was given this tor-                which the tornado crossed certain points along its path.
+nado. A high-resolution map with F-scale (Fujita 1971)                 The photography, video, and radar data were carefully
+contouring was the outcome of the integration of a va-                 examined and were used to fine-tune the detail of the
+riety of survey data sources (Fig. 8).                                 survey, and they helped to add data to those areas not
+                                                                       accessible from the ground.
+   The initial ground survey, conducted on the first day
+after the event, was focused on documenting location,                     Some of the aspects from the damage survey of tor-
+width, length, and the maximum F-scale damage-inten-                   nado A9 and storm-chaser videos are noted. The early
+sity rating of this tornado, primarily for information for             portion of the damage path was particularly wide--near-
+a short-fused media press release deadline. In addition,               ly 1.5 km in diameter--as it passed through the Bridge
+the ground survey teams determined a broad spatial es-                 Creek community in rural Grady County. The wide tor-
+timate of the F-scale damage-intensity rating of the tor-              nado paralleled Interstate 44 (the H. E. Bailey Turnpike).
+nado at various locations along the path that were ac-                 The vortex then began to narrow to less than about 200-
+cessible by vehicle and foot via passable roads. The                   300 m wide as it struck an overpass on the turnpike
+damage suveys were carefully conducted using the                       (where a woman unfortunately lost her life seeking ref-
+guidelines recommended in Bunting and Smith (1993).                    uge). The tornado remained narrow from this location
+                                                                       northeastward to the Canadian River. The tornado wid-
+   Three NOAA teams were dispatched on 4 May 1999                      ened again (600-800 m) as it entered the densely pop-
+to conduct ground surveys in various sections of this                  ulated areas of the Oklahoma City metropolitan area but
+tornado's path. One team surveyed the Grady and                        never attained the extreme pathwidth noted earlier. As
+McClain Counties portion of the path; a second team                    the low-level mesocyclone core occluded, the tornado
+surveyed the path in Cleveland County and a portion                    finally curved to the left before dissipating in Midwest
+of Oklahoma County south of Interstate Highway 240.                    City. This occlusion process is similar to that described
+The third team surveyed damage in Oklahoma County                      by Burgess et al. (1993).
+north of Interstate 240. Ground teams were constrained
+by time and daylight, debris blockage, and areas still                    The aerial photography (Fig. 10) showed evidence of
+off-limits because of natural gas leaks and other hazards.             a convergent centerline of the tornado debris field as
+The survey teams were generally limited by the nego-                   evidenced by a narrow litter line on which debris was
+tiable roadways, so the initial strategy was to mark,                  deposited and near which the vectors of the vegetation
+along each road, a subjective estimate of a change in F                damage on either side are directed toward the centerline
+scale. Figure 9 shows some of the handwritten notes                    (Davies-Jones et al. 1978). Also observed were a num-
+from one of the survey teams depicting this process.                   ber of oscillations and kinks in the path. For example,
+After the first day of surveying, an estimate of the F-                prior to tornado A9 crossing the Canadian River from
+scale contours was developed by ``connecting the dots''                McClain County to Cleveland County, several videos
+from the information gathered along the passable road-                 revealed that a small satellite vortex (depicted as tornado
+ways. This first version of the survey inferred some of                A10 in the 4th panel of Fig. 8) developed and rotated
+                                                                       counterclockwise around the back side of the main vor-
+   4 At the time of writing, some informal discussion of the problems  tex. Associated with the location of this satellite vortex
+with defining what is a tornado was available online at http://        and as evidenced by the aerial photography and storm-
+www.nssl.noaa.gov/doswell/atornado/atornado.html.                      chaser video, the surveyors found a ``wobble'' in the
+                                                                       damage path that might have resulted from this inter-
+
+                                                                       Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+374  WEATHER AND FORECASTING  VOLUME 17
+
+     FIG. 8. High-resolution track of tornado A9. See Fig. 10 for aerial photography of area in inset A (third panel).
+          See Fig. 11 for aerial photography and house-by-house F-scale ratings for area in inset B (fifth panel).
+
+                                                                                                             Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+JUNE 2002  SPEHEGER ET AL.  375
+
+           FIG. 8. (Continued)
+                                                Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+376  WEATHER AND FORECASTING  VOLUME 17
+
+     FIG. 8. (Continued)
+                                          Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+JUNE 2002  SPEHEGER ET AL.                                   377
+
+FIG. 9. Scanned image of handwritten notes on a map used during the initial field assessment of Tornado A9 (image is scanned from
+                                                      materials provided by G. Stumpf and J. LaDue).
+
+action. Another wobble was discovered along the path         of the size of the areas affected by the individual F
+of the tornado just north of the Canadian River in Cleve-    scales (Table 3). The digitized data for tornado A9 and
+land County, where aerial photographs and storm-chaser       for the entire outbreak have also proven invaluable in
+video revealed that, for a short time, the tornado actually  a variety of scientific and socioeconomic applications.
+had a small westward component to its motion (see Fig.       Burgess et al. (2002) have related the tornado locations,
+8, 4th panel).                                               times, and intensities to high-resolution data obtained
+                                                             from mobile X-band Doppler radars (Wurman et al.
+   An independent engineering assessment team from           1997) to understand better the radar sampling issues
+Texas Tech University conducted house-by-house sur-          associated with the detection of tornadoes and the com-
+veys of damage to single-family residences in portions       plex flow fields surrounding them. Yuan et al. (2002)
+of the Oklahoma City metropolitan area (Marshall             used remote sensing techniques and a GIS to compare
+2002). High-detail mapping of damage made available          the F-scale contours with high-resolution, multispectral
+from the Oklahoma City Department of Public Works            satellite data, with the hope that the satellite data could
+provided additional detail of this tornado path. These       be used to supplement ground surveys where verifica-
+additional, very high resolution data allowed for even       tion is problematic. Rae and Stefkovich (2000) trans-
+finer tuning of the detail of the path and F-scale damage    posed the central Oklahoma digital tornado path data
+contours in those areas (Fig. 11).                           over the Dallas-Fort Worth metroplex. Using an urban
+                                                             GIS containing information about appraisal records,
+   All of these combined data sources made possible the      land use classifications, demographic data, employment
+detailed F-scale mapping of tornado A9 shown in Fig.         centers, building locations, and traffic flow, they were
+8. These maps were digitized in a geographic infor-
+mation system (GIS), which allowed for the calculation
+
+                                                             Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+378  WEATHER AND FORECASTING                                 VOLUME 17
+
+FIG. 10. Aerial photography near Bridge Creek (inset A in Fig. 8). The F-scale contours are overlaid. Dashed line indicates convergent
+                  centerline of tornado path. Dotted line shows Interstate 44. (Photography courtesy of the U.S. Air Force.)
+
+able to assess the potential social and economic impact      of knowledgeable personnel and time to reconcile pos-
+of a similar outbreak of tornadoes over another major        sibly conflicting and often-confusing multiple sources
+metropolitan area in ``Tornado Alley.''                      of information. The importance of making this substan-
+                                                             tial investment of resources is manifest in 1) verification
+6. Discussion and conclusions                                of severe weather outlooks, watches, warnings, and the
+                                                             various tools and guidance available to forecasters in
+   When major tornado outbreaks occur and cause sub-         making their decisions (e.g., signatures in radar data),
+stantial damage and casualties, society stands to gain       to have an accurate picture of events, and 2) severe
+valuable new information if a careful scientific and en-     weather research, which requires an accurate historical
+gineering survey of the events can be done. To develop       record of events.
+as accurate a final postevent analysis of the actual events
+as possible, considerable resources are needed in terms         The 3 May 1999 tornado event and the lessons learned
+                                                             from the verification of the tornado information can
+
+                                                             Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+JUNE 2002                     SPEHEGER ET AL.                     379
+
+FIG. 11. Aerial photography of the Eastlake housing subdivision (inset B in Fig. 8). House-by-house F-scale ratings are indicated, and F-
+                                        scale contours are overlaid. (Photography courtesy of the U.S. Air Force.)
+
+serve as an example for future events. We recognize that          given instead of the tornado location. Several iterations
+not everyone has the same level of resources as was               may be necessary in any of these steps to come to some
+available in central Oklahoma for the 3 May 1999 event,           kind of best conclusion about the events, given all the
+so our recommendations for improving storm event                  information available. Storm spotters and storm chasers,
+analysis are presented in decreasing order of priority.           as well as any other eyewitnesses, should be inter-
+That is, as resources permit, more and more of the fol-           viewed, and the storm chasers' video and logs should
+lowing steps can be done. At the very least, regardless           be reviewed.
+of resource shortages, meteorologists should replay any
+available radar data and compare the data with the real-             The meteorologist should then survey the damage in
+time reports to try to match tornado beginning and end-           the field (preferably using survey teams). It is highly
+ing times with radar signatures. Unless damage locations          recommended that the survey teams follow the guide-
+are known independently, radar can be used to correct             lines for conducting windstorm damage surveys rec-
+locations if it is suspected that the spotter's location was      ommended in Bunting and Smith (1993). Going back
+                                                                  for resurveys as new information becomes available is
+TABLE 3. The combined area of the five F-scale contour intervals  a desirable option. It is clear that, when resources per-
+                                   for Fig. 8.                    mit, aerial surveys should be conducted; Civil Air Pa-
+                                                                  trol, law enforcement, television stations, military
+F-scale interval  Area (km2)                                      sources, or private volunteers may be willing to do this
+                                                                  without charge. Surveyors should try to document as
+   F0/F1-F5          49.47                                        wide an area as possible, to detect previously unreported
+   F2-F5             31.44                                        events, and should use video and still imagery to record
+   F3-F5             19.18                                        the event(s) observed from the air. Air surveys can be
+   F4-F5                                                          followed up with additional ground surveys. For the
+   F5                  6.36                                       maximum level of detail, surveyors should obtain ac-
+                       0.87
+
+                                                                  Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+380  WEATHER AND FORECASTING                                 VOLUME 17
+
+curate neighborhood maps and do a house-by-house             to be able to do so. Therefore, when a major tornado
+damage assessment.                                           event catches widespread attention, it behooves the sci-
+                                                             entific and engineering communities to use that situation
+   At the time of this event, there was no ``fast-re-        to provide maximum documentation efforts, perhaps a
+sponse'' team (or set of teams) formally funded and set      handful of times each year (depending on what actually
+up to conduct an organized and detailed scientific study.    happens in any given year). Our hope is that our sci-
+There still is no such team (or teams) as this is being      entific and engineering communities can collaborate to
+written. Scientific surveys of major events were done        find the means to document in detail at least these most
+in the 1970s and 1980s by a team led by T. Fujita, but       noteworthy events every year.
+no such team is now operating. Engineering surveys
+have been conducted by teams from Texas Tech Uni-               Acknowledgments. Many people contributed infor-
+versity (among others) for several decades, but these        mation vital to the documentation of these tornadoes.
+are not the equivalent to a scientific study. The death      Among them are Mike Branick, David Floyd, and John-
+of Dr. Fujita has left a large void in this regard, and our  ny Roberts (NWS/Norman); Don Burgess, John Ferree,
+scientific community has yet to fill that void (McDonald     Mark Fresch, Jim LaDue, Bob Lee, Mike Magsig, Liz
+2001). The absence of a fast-response team was keenly        Quoetone, Major Scott Saul, Andy Wood, and Dave
+felt during the aftermath of this event. Valuable infor-     Zittel of the Operational Support Facility (now the NWS
+mation is being lost, along with the opportunities to        Warning Decision Training Branch and the NEXRAD
+learn new insights about how to forecast and handle          Radar Operations Center); Mark Darrow and Jack Hales
+these devastating tornado outbreaks. Depending on the        of the Storm Prediction Center (SPC); Christina Han-
+specific meteorological and geographic circumstances         non, Carl Hane, Janelle Janish, and Terry Schuur of the
+associated with each outbreak, each major event can          National Severe Storms Laboratory (NSSL); Mark Hill
+raise new issues and allow scientists to gain new in-        (KWTV); Mike Honigsburg (Garfield County Emer-
+sights. Without the resources to study these events with     gency Management); David Ewoldt and R. J. Evans;
+scientific rigor, each outbreak now represents lost op-      and the three authors, who all conducted and contributed
+portunities.                                                 to ground surveys. Tim Marshall (Haag Engineering)
+                                                             provided additional detailed ground-survey-based sin-
+   Because the storms of 3 May 1999 happened to occur        gle-family residence Fujita-scale determinations. Mister
+in a region that had a large concentration of severe-        J. C. Reiss and the Oklahoma City Department of Public
+storm meteorologists, it was possible to recruit a large     Works contributed detailed GIS damage maps for
+survey team at little or no cost. The voluntary contri-      Oklahoma City, Moore, and Midwest City. Doug Crow-
+bution of so many technically educated and trained per-      ley (NWS/Amarillo, Texas) and John Jarboe (NWS/
+sons would simply not be possible in most parts of the       FAA Academy) conducted an aerial survey. The U.S.
+nation. Minimal travel costs were involved, because of       Air Force conducted a second aerial survey with high-
+the proximity of the volunteers to the event. Such fa-       resolution photographic equipment and contributed the
+vorable circumstances are unlikely to be found for the       images used in Figs. 10 and 11. Videos were provided
+next major tornado outbreak.                                 by Shane Adams, Roger Edwards, Don Fleming, Jim
+                                                             LaDue, Jeff Piotrowski, Robert Satkus, Rich Thompson,
+   As we learn more about tornado outbreaks, it is ob-       and two of the authors (Doswell and Stumpf ). Further
+vious that we are seeing a growth in the number of           information was provided by Mike Armstrong, Harold
+reported tornadoes during such events. Comparable            Brooks, Keith Brown, Stan Collier, Todd Crawford, Bri-
+storm systems as recently as 20 years ago simply would       an Crumpler, Scott Currens, David Ewoldt, John Finch,
+not have been given the same level of scrutiny, in part      John Hammond, Tim Marshall, Renee McPherson, Tom
+because of the improvement in observational capability       Pastrano, Randy Peppler, Erik Rasmussen, Dan Skoff,
+(as represented, for instance, by the WSR-88D radar          David Sohl, Herb Stein, Joshua Wurman, and Daphne
+network) and in part because of the growth of interest       Zaras. Countless local and state officials and severe
+in storms and storm chasing in central Oklahoma. The         weather spotters were also invaluable in the documen-
+proliferation of inexpensive consumer video equipment        tation of these events, for the warning operations, which
+has meant that some sort of visual record is available       kept numerous people safe during this outbreak, and for
+for many events. This has the implication that our ar-       providing additional information to individual damage
+chive of tornado data is being affected by the changing      survey reports that were used in this compilation. Steve
+``landscape'' associated with the growth of knowledge        Kruckenberg's (NWS/Norman, Oklahoma) help in de-
+about severe thunderstorms. In some sense, comparisons       veloping the map shown in Fig. 2, based on information
+of recent events with those of the past are becoming         by the lead author, is gratefully acknowledged. We owe
+increasingly difficult (Brooks and Doswell 2002).            thanks to Scott Rae of the Department of Research and
+                                                             Information Services, North Central Texas Council of
+   Nevertheless, it seems obvious that we should be          Governments, for converting the analog tornado path
+working as hard as possible to take advantage of any         data (and the F-scale contours) to a digital GIS format.
+situation that can improve our ability to provide detailed
+documentation of major tornado events. Although it
+would be ideal to apply the same resources to every
+tornado event, it is obvious that we are unlikely ever
+
+                                                             Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+JUNE 2002  SPEHEGER ET AL.                                             381
+
+Last, we thank the anonymous reviewers and the editors                 Davies-Jones, R. P., D. W. Burgess, L. R. Lemon, and D. Purcell,
+for their constructive comments, which substantially im-                     1978: Interpretation of surface marks and debris patterns from
+proved the paper.                                                            the 24 May 1973 Union City, Oklahoma tornado. Mon. Wea.
+                                                                             Rev., 106, 12-21.
+                                 REFERENCES
+                                                                       Doswell, C. A., III, and H. E. Brooks, 2002: Lessons learned from
+BPAT, 1999: Midwest tornadoes of May 3, 1999: Observations, rec-             the damage produced by the tornadoes of 3 May 1999. Wea.
+      ommendations, and technical guidance. FEMA 342, Federal                Forecasting, 17, 611-618.
+      Emergency Management Agency, Mitigation Directorate, Wash-
+      ington, DC, 195 pp.                                              Fujita, T. T., 1971: Proposed characterization of tornadoes and hur-
+                                                                             ricanes by area and intensity. SMRP Paper 91, Dept. of Geo-
+Brooks, H. E., and C. A. Doswell III, 2002: Deaths in the 3 May              physical Science, University of Chicago, Chicago, IL, 42 pp.
+      1999 Oklahoma City tornado from a historical perspective. Wea.
+      Forecasting, 17, 354-361.                                        Grazulis, T. P., 1993: Significant Tornadoes 1680-1991. Environ-
+                                                                             mental Films, 1326 pp.
+Bunting, W. F., and B. E. Smith, 1993: A guide for conducting con-
+      vective windstorm surveys. NOAA Tech. Memo. NWS SR146,           Marshall, T. P., 2002: Tornado damage survey at Moore, Oklahoma.
+      Scientific Services Division, Southern Region, Fort Worth, TX,         Wea. Forecasting, 17, 582-598.
+      44 pp.
+                                                                       McDonald, J. R., 2001: T. Theodore Fujita: His contribution to tor-
+Burgess, D. W., R. J. Donaldson, and P. R. Desrochers, 1993: Tornado         nado knowledge through damage documentation and the Fujita
+      detection and warning by radar. The Tornado: Its Structure, Dy-        scale. Bull. Amer. Meteor. Soc., 82, 63-72.
+      namics, Prediction, and Hazards, Geophys. Monogr., No. 79,
+      Amer. Geophys. Union, 203-221.                                   Rae, S., and J. Stefkovich, 2000: The tornado damage risk assessment
+                                                                             predicting the impact of a big outbreak in Dallas-Fort Worth,
+----, M. A. Magsig, J. Wurman, D. C. Dowell, and Y. Richardson,              Texas. Preprints, 20th Conf. on Severe Local Storms, Orlando,
+      2002: Radar observations of the 3 May 1999 Oklahoma City               FL, Amer. Meteor. Soc., 295-296.
+      tornado. Wea. Forecasting, 17, 456-471.
+                                                                       Witt, A., M. D. Eilts, G. J. Stumpf, E. D. Mitchell, J. T. Johnson,
+Davies, J. M., C. A. Doswell III, D. W. Burgess, and J. F. Weaver,           and K. W. Thomas, 1998: Evaluating the performance of WSR-
+      1994: Some noteworthy aspects of the Hesston, Kansas, tornado          88D severe storm detection algorithms. Wea. Forecasting, 13,
+      family of 13 March 1990. Bull. Amer. Meteor. Soc., 75, 1007-           513-518.
+      1017.
+                                                                       Wurman J., J. M. Straka, E. N. Rasmussen, M. Randall, and A. Zahrai,
+                                                                             1997: Design and deployment of a portable, pencil-beam, pulsed,
+                                                                             3-cm Doppler radar. J. Atmos. Oceanic Technol., 14, 1502-1512.
+
+                                                                       Yuan, M., M. Dickens-Micozzi, and M. A. Magsig, 2002: Analysis
+                                                                             of tornado damage tracks from the 3 May tornado outbreak using
+                                                                             multispectral satellite imagery. Wea. Forecasting, 17, 382-398.
+
+                                                                       Unauthenticated | Downloaded 03/11/24 11:36 PM UTC
+

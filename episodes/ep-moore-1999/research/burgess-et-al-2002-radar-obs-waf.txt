@@ -1,0 +1,723 @@
+456                                    WEATHER AND FORECASTING       VOLUME 17
+
+               Radar Observations of the 3 May 1999 Oklahoma City Tornado
+
+                                                       DONALD W. BURGESS
+
+                                                 National Severe Storms Laboratory, Norman, Oklahoma
+
+                                                       MICHAEL A. MAGSIG
+
+     Cooperative Institute for Mesoscale Meteorological Studies and NWS Warning Decision Training Branch, Norman, Oklahoma
+
+                                                         JOSHUA WURMAN
+
+                                       School of Meteorology, The University of Oklahoma, Norman, Oklahoma
+
+                                                        DAVID C. DOWELL*
+
+        National Severe Storms Laboratory and Cooperative Institute for Mesoscale Meteorological Studies, Norman, Oklahoma
+
+                                                       YVETTE RICHARDSON
+
+                                       School of Meteorology, The University of Oklahoma, Norman, Oklahoma
+
+                                       (Manuscript received 23 March 2001, in final form 14 December 2001)
+
+                                                                             ABSTRACT
+                  The 3 May 1999 Oklahoma City storm is unique from a weather radar perspective because a long-track violent
+               tornado passed within close range of several Doppler radars, because a detailed damage survey was conducted
+               immediately after the event, and because high-quality visual observations of the tornado were available. The
+               tornado passed relatively close (15-60 km) to two fixed-location Doppler radars: the National Weather Service
+               Weather Surveillance Radar-1988 Doppler (WSR-88D) at Twin Lakes (KTLX) and the Radar Operations Center
+               WSR-88D test radar at Norman (KCRI). Two mobile Doppler on Wheels (DOW) radars also observed the tornado
+               at very close range (3-8 km). The data from DOW2 are nearly continuous for a substantial portion of the
+               tornado's life and provide detailed information on the high-resolution velocity field in and around the tornado.
+               These data permit good estimates of tornado rotational velocity and diameter. The data also allow comparison
+               with tornado damage survey estimates of damage/intensity and with visual observations of tornado size. Further,
+               one can compare the high-resolution DOW data to the lower-resolution WSR-88D observations to determine
+               how much tornado information is lost because of the broader beamwidth (longer range) and longer gate length
+               of the WSR-88Ds. Results of the study will be useful in determining how better to interpret future WSR-88D
+               observations of near-range tornadoes, including any possible real-time estimation of tornado intensity and evo-
+               lution.
+
+1. Introduction                                                      were available. Having multiple radars at close range
+                                                                     to a large tornado affords an opportunity to investigate
+   The 3 May 1999 Oklahoma City, Oklahoma, storm                     1) the structure and evolution of the tornado and the
+is unique from a weather radar perspective because a                 rotational flows surrounding it, 2) the relationship of the
+long-track violent tornado passed within close range of              radar signatures to tornado damage/intensity, and 3) ra-
+several Doppler radars, because a detailed damage sur-               dar sampling issues associated with tornadoes and the
+vey was conducted immediately after the event, and                   complex flow within which they are embedded.
+because high-quality visual observations of the tornado
+                                                                        With the availability of such a rich dataset and with
+   * Current affiliation: National Center for Atmospheric Research,  many important scientific questions to pursue, we plan
+Boulder, Colorado.                                                   a series of articles on this case. This paper examines
+                                                                     the evolution of reflectivity and velocity signatures of
+   Corresponding author address: Donald W. Burgess, National Se-     the tornado and discusses issues associated with radar
+vere Storms Laboratory, 1313 Halley Circle, Norman, OK 73069.        sampling of the small scales. Other papers envisioned
+E-mail: donald.burgess@noaa.gov                                      for the future will examine the larger scales of rotation
+                                                                     and storm dynamics and the comparison between de-
+
+ 2002 American Meteorological Society
+
+                                                                     Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+JUNE 2002  BURGESS ET AL.                                  457
+
+tailed radar and photogrammetric analyses. Another top-    near Bridge Creek) as it turned more northerly, striking
+ic that will be left to a later paper is the maximum wind  southeast Oklahoma City, Del City, and Midwest City,
+speed produced by the Oklahoma City tornado. The           Oklahoma. The tornado dissipated at 0047 after trav-
+maximum wind speed likely occurred during the early        eling 61 km in 80 min. The latter one-third of the track
+portion of the tornado's life. This paper will emphasize   (after 0017) was primarily through urbanized neigh-
+the middle portion of the tornado's life when radar ob-    borhoods with many houses and other structures (public
+servations are most complete and when the damage sur-      and commercial buildings). Damage to those structures,
+vey F-scale estimates are most reliable.                   with known building codes, gave the most accuracy in
+                                                           estimating the F-scale rating.
+   Section 2 of this paper is a short summary of the
+tornado track. Section 3 presents a discussion of the      3. Doppler radar observations
+Doppler radar observations that were collected on 3 May
+1999. Section 4 describes the Oklahoma City tornado        a. WSR-88D data
+reflectivity signatures seen by the radars. Section 5 de-
+scribes the Oklahoma City tornado velocity signatures         The use of fixed-location Doppler radars in detecting
+seen by the radars. Section 6 discusses issues associated  tornadoes and the circulations surrounding them dates
+with the velocity signatures and suggests possible ways    back to the 1950s and early 1960s [see Donaldson
+to use the signatures in estimation of tornado strength    (1990) for a summary]. Burgess et al. (1993) more re-
+and evolution and in tornado warnings. Section 7 sum-      cently summarized techniques and limitations of de-
+marizes our conclusions.                                   tecting tornadoes with Doppler radar. The Next-Gen-
+                                                           eration Doppler Radar (NEXRAD) program and the
+2. Tornado track                                           Weather Surveillance Radar-1988 Doppler (WSR-88D)
+                                                           network, currently used by the NWS to issue warnings,
+   For several days, beginning on the morning of 4 May     are documented by Crum and Alberty (1993).
+1999, as many as seven damage survey teams from the
+Norman meteorological community and Texas Tech                Important operating characteristics of the WSR-88Ds
+University completed a careful documentation of dam-       are given in Table 1. Scans of the Oklahoma City tor-
+age from the Oklahoma City tornado, including esti-        nado were available from two radars: the central
+mation of F-scale intensities (Fujita 1971). Three of the  Oklahoma operational WSR-88D (KTLX) located about
+teams were from Texas Tech University, and a summary       8 mi northeast of Norman, and the ROC test WSR-88D
+of their surveys is given by Gardner et al. (2000) and     (KCRI) located in north Norman. WSR-88D Level-II
+Marshall (2002). The other four survey teams were from     data were analyzed with the WSR-88D Algorithm Test-
+the Norman meteorological community [the Norman            ing and Display System (WATADS; NSSL 2000), which
+National Weather Service (NWS) Forecast Office, the        featured an automatic dealiasing algorithm. In general,
+National Severe Storms Laboratory (NSSL), the Storm        improperly dealiased data were not a problem during
+Prediction Center, and the NEXRAD Radar Operations         the analysis. Spectrum-width data were used as data
+Center (ROC)]. The Texas Tech surveys and the Norman       quality indicators. Velocities from sample volumes with
+community surveys were combined to produce a de-           very large spectrum width (indicative of poor mean ve-
+tailed contour map of F-scale ratings for the Oklahoma     locity estimation) were not used in the analysis.
+City tornado (Fig. 1). Times along the path were cal-
+culated from known damage times and radar positions           During its lifetime, the tornado was 17-59 km (9-32
+of tornado signatures. The high quality of the damage      n mi) from KTLX and KCRI. Lowest elevation angle
+survey allowed F-scale increments to be further sub-       (0.5) beam centerline heights were 300 m-1 km (1000-
+divided. For example, in later figures, stronger F2, F3,   3300 ft) AGL. The KTLX radar, which was operated in
+and F4 damage will be given F2.5, F3.5, and F4.5 des-      volume coverage pattern (VCP) 11 (scans at elevation
+ignations.                                                 angles up to 19.5 with updates every 5 min), collected
+                                                           data continuously during the tornado. The KCRI radar,
+   The Oklahoma City tornado was the ninth in a series     which was operating in a test mode with an azimuthal
+of 14 tornadoes produced by supercell A of the outbreak    sampling interval of 0.5 (Brown and Wood 2000) did
+[see Speheger et al. (2002) for a mapping of all tor-      not collect data continuously. Complete time-height his-
+nadoes in the outbreak]. Tornado 9, the Oklahoma City      tories of the KTLX reflectivity and velocity signatures
+tornado, began near Amber, Oklahoma, at 2326:30 (all       were obtained. These signatures were compared with
+times are UTC; a start time of 2327 has been arbitrarily   those in the KCRI data. Because the radar depictions
+chosen). It traveled northeast, growing wide and intense,  are similar, only limited KCRI data will be presented.
+and striking Bridge Creek, Oklahoma, about 2350 (Fig.
+1). The tornado narrowed and weakened between 0005         b. DOW data
+and 0015 before again widening somewhat and regain-
+ing intensity as it struck southwest Oklahoma City and        The use of mobile Doppler radars to detect and to
+Moore, Oklahoma, between 0020 and 0030. The tornado        study tornadoes and surrounding circulations began dur-
+remained intense (but not nearly as wide as it had been    ing the late 1980s. The first mobile Doppler radar to be
+
+                                                           Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+458  WEATHER AND FORECASTING                                                    VOLUME 17
+
+FIG. 1. Oklahoma City tornado damage track. Time and velocity difference (Delta-V; m s 1) for KTLX WSR-88D tornado cyclone
+          signature is marked. KTLX WSR-88D hook echo at selected times is inserted. Location of KTLX radar is marked.
+
+used in tornado probing was a 3-cm continuous-wave       tornadic storm and tornado research were the Doppler
+Doppler radar (Bluestein et al. 1993). The first 3-mm,   on Wheels (DOWs; Wurman et al. 1996, 1997). Wurman
+mobile, pulsed-Doppler radar to be used in tornado re-   and Gill (2000, hereinafter WG) recently published the
+search was described by Bluestein et al. (1995). Recent  first finescale observational study of most of the life
+3-mm radar measurements for a tornado with supercell     cycle of a tornado (near Dimmit, Texas, on 2 June 1995),
+A that preceded the Oklahoma City tornado on 3 May       using a DOW. The DOWs currently are being used to
+were reported by Bluestein and Pazmany (2000). The       study another of the 3 May tornadoes--the Mulhall,
+first 3-cm, mobile, pulsed-Doppler radars to be used in  Oklahoma, tornado (Wurman 2002).
+
+     TABLE 1. WSR-88D and DOW radar characteristics.
+
+                         Parameter                         WSR-88D      DOW
+
+     Wavelength                                          10 cm       3 cm
+     Transmitted peak power                              750 kW      250 kW
+     Nyquist velocity                                    34 m s1     21 m s1
+     Stationary beamwidth                                0.95        0.93
+     Rotating (effective) beamwidth                      1.25        1.07
+     Azimuthal sample interval                           1.0         0.5
+     Range gate spacing (velocity/reflectivity)          250 m/l km  50 m/50 m
+     Elevation angles                                    0.5-19.5    0.5-18
+     Data interval                                       5 min       1 min
+     Range to tornado                                    17-59 km    3-8 km
+     Low beam height                                     300 m-1 km  50-150 m
+
+                                                                     Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+JUNE 2002  BURGESS ET AL.                                   459
+
+   Important operating characteristics of the DOWs on       dar sampling issues associated with detection of torna-
+3 May are given in Table 1. DOW data used in this           does by WSR-88Ds can be studied in this context.
+paper were analyzed with Solo (Oye et al. 1995). Solo
+is software to edit and to display radar data in polar      c. Radar sampling of tornadoes
+format. It was developed at the National Center for At-
+mospheric Research (NCAR). No automatic dealiasing             Three radar sampling issues are especially relevant
+algorithm was used. DOW pulse repetition frequencies        to our study of the Oklahoma City tornado: 1) the size
+(PRFs) gave a Nyquist velocity measurement interval         and location of the tornado relative to the size and spatial
+of 21.3 m s1. Because wind speeds in and around             distribution of the radar pulse volumes (Brown et al.
+the tornado greatly exceeded the measurement interval,      1978; Burgess et al. 1993; Wood and Brown 1997), 2)
+many velocity measurements were aliased. Manual de-         centrifuging of radar scatterers by the tornado (WG;
+aliasing was employed to calculate DOW-measured ve-         Dowell et al. 2001), and 3) differential power weighting
+locities in the tornado. DOW reflectivities were not com-   of the velocity spectrum in regions with strong reflec-
+pletely calibrated and may have had errors because of       tivity gradients (Bluestein et al. 1993). In most obser-
+receiver saturation when close to a high-reflectivity fea-  vations of tornadoes, such as those collected by the
+ture. In similar fashion to WSR-88D analysis, DOW           KTLX radar in the Oklahoma City storm, the vortex
+spectrum-width data were used as data quality indica-       core is narrower than the effective radar beamwidth.
+tors. Velocity estimates with very large spectrum widths    The signature of the tornado in the radar data thus de-
+were not used in the DOW analysis.                          pends greatly on the characteristics of the flow sur-
+                                                            rounding the core and on the positions of the radar
+   Two DOWs (DOW2 and DOW3) observed the tor-               beams relative to the vortex center (Brown et al. 1978;
+nado during its lifetime at very close range (3-8 km).      Wood and Brown 1997). In contrast, in the scans at very
+Data from DOW2 were nearly continuous and contained         close range to the Oklahoma City tornado by the DOW,
+sector scans with elevation angles to 18 (1-min volume      the tornado core spans several adjacent radar beams.
+updates) for a substantial portion of the tornado's life.   From a few 100 m AGL upward, tornadoes are typically
+The time period of 0000-0033 UTC, a subset of the           associated with a minimum in reflectivity (often called
+tornado's lifetime and shorter than the analysis period     an eye) in high-resolution radar scans (e.g., Fig. 2).
+for the WSR-88D data, was selected for intensive study.     Centrifuging of radar scatterers probably explains the
+Both DOWs were moving almost all of the time during         minimum in reflectivity within the tornado core (WG;
+the analysis period to keep up with the tornado. This       Dowell et al. 2001). When centripetal accelerations are
+movement added complexity to the analysis. Some,            large, the motion of radar targets such as precipitation
+mostly lower, elevation angles were blocked by nearby       and debris may differ significantly from the air motion.
+buildings, trees, and terrain. Derived heights for indi-
+cated elevations were incorrect if the vehicles were mov-      Dowell et al. (2001) estimated the magnitude of the
+ing uphill or downhill. Indicated beam heights were also    difference between the scatterer motion and the air mo-
+incorrect for uneven/tilted road surfaces on which the      tion (i.e., the measurement error) in a simple one-di-
+pedestal was not level. Continuity of signatures was        mensional model; the prescribed air motion in the sim-
+used to detect and to exclude data associated with in-      ulation is that of a Rankine combined vortex. Radar
+correctly indicated elevation angles. Some subjectivity     scatterers within the vortex move outward relative to
+was necessary in both the velocity dealiasing and in the    the air. Furthermore, because the radar targets pass
+correction of elevation angles. Although a number of        quickly through the region of strongest tangential winds
+data points were removed, some residual error may still     at the edge of the core, the drag force exerted on the
+be contained within the dataset. Time-height histories      targets by the air does not have time to accelerate the
+of reflectivity and velocity signatures were made for       targets to the peak air speed. Radar measurements of
+DOW2 and checked against the intervals when DOW3            scatterer motion at the edge of the vortex core are thus
+data were available. DOW3 data did include 1 min            overestimates of radial air velocity and underestimates
+(0012-0013) of dual-PRF data collection (Nyquist mea-       of tangential air speed. The magnitude of the measure-
+surement interval of 79 m s1). Because DOW3 data            ment error as a result of centrifuging in the one-dimen-
+(including the dual-PRF segment) appear to be consis-       sional model depends on the characteristics of the scat-
+tent with the DOW2 data, all DOW figures and results        terer, the diameter of the vortex core, and the magnitude
+shown in this paper will be from DOW2.                      of the maximum tangential wind. Because weak-echo
+                                                            ``eyes'' in DOW observations of tornadoes typically
+   Having a complete time-height history of the reflec-     form within preexisting regions of relatively high re-
+tivity and velocity signatures from KTLX and a sub-         flectivity that are connected to the main storm echo, we
+stantial time period of time-height history from DOW2       believe that the dominant scatterers in most DOW scans
+affords an opportunity to investigate how the radar sig-    of tornadoes are precipitation (rain and/or hail). How-
+natures relate to tornado existence, strength, and damage.  ever, some tornadoes, such as the Oklahoma City tor-
+It is also possible to compare the high-resolution DOW2     nado, generate such a large quantity of debris that this
+signatures to the lower-resolution KTLX signatures. Ra-     kind of scatterer may dominate at low levels. Using the
+
+                                                            Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+460  WEATHER AND FORECASTING                                 VOLUME 17
+
+     FIG. 2. DOW radar overview. (left) Velocity and (right) reflectivity for three times and elevations. Time (UTC) and
+                                                    elevation angle are marked in each panel.
+
+referenced method, we estimated the measurement error        (Lewellen 1993)], centrifuging removes scatterers from
+of the maximum tangential wind speed for this case.          the vortex core and produces a high-reflectivity ring well
+The error may be as little as 4%, if the dominant scat-      outside the radius of maximum tangential wind (Dowell
+terers were small raindrops, or as large as 40%, if the      et al. 2001). For a broad radar beam straddling the edge
+dominant scatterers were hail and/or large pieces of         of the core, the power-weighted mean velocity would
+dense debris. However, because the cusp in the tangen-       be biased by the slower scatterer speeds in the high-
+tial velocity profile at the edge of the Rankine vortex      reflectivity ring outside the radius of maximum winds.
+in the simulation may be unrealistically sharp, the results  Thus, centrifuging indirectly contributes to further un-
+should be considered as an upper bound on the mag-           derestimation of the peak wind speeds in the tornado.
+nitude of the measurement error.
+                                                             4. Reflectivity signatures
+   Nonuniformity of the reflectivity distribution within
+the tornado (Bluestein et al. 1993) may further hinder       a. WSR-88D sampling
+the ability of the radar to resolve the velocity structure
+of the tornado. When radial air motions are weak [e.g.,         A well-defined hook was present with the supercell
+in that portion of the tornado above the surface layer       and had been in existence for 1.5 h at the time of the
+
+                                                             Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+JUNE 2002  BURGESS ET AL.                                   461
+
+beginning of the Oklahoma City tornado (see Fig. 1          sponsible for the high radar reflectivity within the vortex
+insets for close-ups of the hook area and Fig. 3 for a      core near the surface.
+wider view of the echo at selected times). Throughout
+the tornado's life, the hook featured a prominent ``knob''     At heights near 300 m, the diameter of the minimum
+that defined the location of the tornado and surrounding    in reflectivity associated with the tornado was less than
+flow. Figure 4 is a time-height depiction of the maxi-      100 m; at higher heights, its diameter was larger. Near
+mum reflectivity in the knob and in the echo area above     the top of some DOW VCPs (1.5 km ARL), the di-
+the top of the knob. Higher reflectivities in the knob      ameter of the minimum increased to over 500 m. The
+(55 dBZ) began near 2350 (near the time Bridge Creek        velocity data (next section) indicate that the tornado
+was struck), extended up to heights above 2 km above        diameter increased with height. The diameter of the re-
+radar level (ARL), and continued until the beginning of     flectivity minimum corresponds well with the diameter
+the weakening period about 0005. The higher reflectiv-      of the maximum tornado velocity. The eye feature aloft,
+ities in the knob began again just after 0015, grew up-     at times, had minimum values that were more than 40
+ward, and continued through the rest of the tornado's       dB lower than the surrounding high-reflectivity annulus
+life. During the period of the latter reflectivity maxi-    (Fig. 5). The eye's sharp reflectivity gradients (20-40
+mum, the tornado traveled almost exclusively through        dB over a few hundred meters of horizontal distance)
+populated areas (the Oklahoma City metropolitan area),      imply potential sampling problems associated with dif-
+with large amounts of debris being generated. The sec-      ferential power weighting within the beam (section 3c).
+ond knob maximum was more reflective (70 dBZ) and
+extended to higher heights (at least 4 km) in comparison    5. Velocity signatures
+with the first maximum. In fact, the 70-dBZ values were
+10 dBZ higher than the reflectivities present anywhere      a. WSR-88D sampling
+else in the storm during the same period (see Fig. 3 for
+a broader view of storm reflectivity).                         The traditional tornado proxy of strong and localized
+                                                            velocity difference in radar sample volumes at the same
+   The knob feature has long been seen in association       range and adjacent azimuths (tornadic vortex signature:
+with tornado-bearing hook echoes (Garrett and Rockney       TVS; Burgess et al. 1993) does not apply in the
+1962) and has been related to tornadic velocity signa-      Oklahoma City tornado case. This was because the max-
+tures (Lemon et al. 1982). We postulate that the local-     imum velocity difference in the tornado vicinity was
+ized reflectivity maximum in the knob of the hook em-       separated across several azimuths (see Fig. 3 velocity
+anates from large amounts of debris being lofted by the     insets). By taking the maximum velocity difference
+tornado. Tornado debris lofting to high heights and its     across a horizontal distance of less than 1.85 km, a
+subsequent long-distance transport have been discussed      small-scale couplet was identified and will be referred
+previously (Magsig and Snow 1998). The current ob-          to as a tornado cyclone signature (TCS). The term tor-
+servations extend the analysis to the interior of the       nado cyclone has been applied previously to circulations
+storm. All this suggests that the existence of very large   larger than the tornado as inferred from tornado damage
+reflectivity in the knob of the hook can be used to infer   patterns (Agee et al. 1976) or resulting from numerical
+that a tornado is present and is inflicting significant     model studies (Wicker and Wilhelmson 1993). The TCS
+amounts of damage to structures.                            at low elevation angles, for which the radar beam height
+                                                            was less than 1 km ARL, corresponded relatively well
+b. DOW sampling                                             to tornado location, and the trend in its magnitude was
+                                                            similar to that of the tornado F scale (Fig. 1 plotted
+   Because the DOWs were very close to the tornado,         values, and Fig. 6). The TCS velocity difference (called
+the radar data depict the hook echo in great detail (Fig.   Delta-V) rapidly exceeded 45 m s1 as the tornado
+2). At some intermediate elevation angles in the WSR-       formed and stayed large (near 70 m s1) during the time
+88D data (not shown), there was evidence of a minimum       period when the tornado was at F5 intensity (2345-2350
+or eye of weaker reflectivity, which was surrounded by      and near 2355; Fig. 6). Delta-V lessened to below 50
+an annulus of much stronger reflectivity. This signature    m s1 as the intensity dropped to F2. Delta-V quickly
+was easily seen in the DOW data as the center of the        increased again and stayed strong (70-85 m s1) during
+tornado (see Fig. 2) and has been reported previously       the rest of the life of the tornado as the intensity returned
+(WG). It appears the eye may also be indicative of the      to F5 (0020-0023 and near 0026) and strong F4. The
+absence of significant multiple vortices (Wurman 2002).     latter peak was during the tornado's passage through the
+Figure 5 is a time-height history of the reflectivity def-  southern and southeast portions of the metropolitan area.
+icit within the eye feature as detected by DOW2. Ob-        Delta-V values remained large and tornado intensity re-
+servations below 300 m AGL typically did not indicate       mained high until the last 2 or 3 min of the tornado's
+an eye. Concentration of scatterers by horizontal con-      life, when the tornado weakened rapidly.
+vergence in the vortex surface layer and generation of
+new scatterers at the surface (i.e., debris) may be re-        A time-height section of TCS Delta-V (Fig. 7) reveals
+                                                            that values were already somewhat large before tornado
+                                                            formation (greater than 40 m s1) but were stronger aloft
+
+                                                            Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+462  WEATHER AND FORECASTING  VOLUME 17
+
+        FIG. 3. (left) The 0.5 KTLX WSR-88D reflectivity and (right) storm-relative velocity for three times during the
+     Oklahoma City tornado. Inset in upper-right portion of velocity images is magnified view of rotation signature region.
+
+                                                                                                                Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+JUNE 2002  BURGESS ET AL.                                            463
+
+                                                                     FIG. 6. Graph of KTLX WSR-88D tornado cyclone Delta-V (m
+                                                                                 s1) in lowest kilometer and F-scale rating.
+
+   FIG. 4. Time-height diagram of KTLX WSR-88D maximum re-           ``cone of silence'' produced when the storm approached
+flectivity in and above the hook echo. The ``cone of silence'' that  the radar and the highest elevation angle (19.5) inter-
+vertically limits data collection is marked.                         sected the circulation at heights lower than 5 km ARL.
+                                                                     Although the column of very large Delta-Vs was deep,
+and weaker near the ground. Very large values (greater               the highest Delta-V values (greater than 75 m s1) were
+than 45 m s1) formed through a deep column as the                    found at the lowest elevation angles.
+tornado formed (2327). The large Delta-V values con-
+tinued until about 0000; maximum values remained at                     Tornado cyclone diameter (Fig. 8) as estimated by
+heights below 2.5 km ARL. Strengthening occurred                     KTLX is greatly affected by range to the tornado: largest
+again about 0015, and a deeper column of very large                  near the beginning when the tornado was farthest from
+Delta-Vs continued until rapid weakening at tornado                  the radar, and smallest near the end when the tornado
+end. Measurement of the vertical extent of the second                was closest to the radar. Low-level TCS diameters were
+maximum of high Delta-V values is limited by the radar               larger than diameters aloft. The decreasing diameter
+                                                                     with height is inconsistent with numerical vortex models
+
+           FIG. 5. Time-height plot of DOW magnitude of tornado eye. Plotted value is reflectivity in the
+                                       annulus minus reflectivity in the center of the eye.
+
+                                                                                                       Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+464  WEATHER AND FORECASTING                                                                                  VOLUME 17
+
+                                                             TABLE 2. Calculation of DOW low-level (LL) tornado wind speed.
+
+   FIG. 7. Time-height plot of KTLX WSR-88D tornado cyclone  Time   Height (m)     LL        LL      Tornado    LL
+                                      Delta-V.               (UTC)              Delta-V  rotational  motion   tornado
+                                                                          85    (m s1)   velocity    (m s1)
+(Lewellen 1993), which would suggest that tornado and         0000        87              (m s1)               wind
+TCS diameters would increase with height. DOW ob-             0001        98      135                  13.7    speed
+servations (section 5b) indicate increasing tornado di-       0002      101       135       67.5       13.7   (m s1)
+ameter with height.                                           0004        93      127       67.5       13.7
+                                                              0005        83      126       63.5       13.7      81
+b. DOW sampling                                               0006        84      126       63         13.1      81
+   The DOW data from 0000 to 0033 have been analyzed          0007        88      136       63         13.1      77
+                                                              0008        73      116       68         13.1      77
+in several ways. The first analysis is of the highest         0009        64                58         13.1      76
+ground-relative velocity close to the ground (height          0010        71        96      48         13.1      81
+                                                              0012        81        98      49         13.1      71
+                                                              0013        84      100       50         11.3      61
+                                                              0014        84        92      46         11.3      62
+                                                              0017        65        89      44.5       11.3      63
+                                                              0018        75        89      44.5       11.8      57
+                                                              0019      143       117       58.5       11.8      56
+                                                              0020      133       121       60.5       11.8      56
+                                                              0021        59      125       62.5       11.3      70
+                                                              0022        52      124       62         11.3      72
+                                                              0023      112       157       78.5       11.3      74
+                                                              0024      107       159       79.5       11.3      73
+                                                              0026        50      168       84         11.3      90
+                                                              0027        67      157       78.5       12.1      91
+                                                              0032                136       68         12.1      95
+                                                                                  116       58         14.7      90
+                                                                                  143       71.5                 80
+                                                                                                                 70
+                                                                                                                 86
+
+                                                             150 m ARL). The velocity is derived by using Delta-
+                                                             V to estimate rotational velocity and adding vortex mo-
+                                                             tion (see Table 2). Vortex motion was determined from
+                                                             WSR-88D data. Good low-level tornado wind speed
+                                                             estimates were not obtained for all low-level scans be-
+                                                             cause of DOW movement and blockage by objects along
+                                                             the road. The trend in the tornado speed estimates is
+                                                             similar to that in the F-scale estimates (Fig. 9), and the
+                                                             results do not seem to be biased by height within the
+                                                             50-150-m interval. At the beginning of the analysis
+                                                             period (near 0000), the wind speed is relatively strong
+                                                             (near 80 m s1) when F4 damage was occurring. As the
+
+FIG. 8. Time-height plot of KTLX WSR-88D tornado cyclone     FIG. 9. Graph of DOW low-level tornado ground-relative wind
+                                  diameter.                             speed, height of estimate, and F-scale rating.
+
+                                                                    Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+JUNE 2002              BURGESS ET AL.                                                                       465
+
+   Rating  TABLE 3. Wind speed estimates and damage descriptions of Fujita-scale categories (Fujita 1971).
+     F0
+     F1    Wind speed                                                        Description
+     F2      (m s1)
+     F3      18-32     Light damage: some damage to chimneys and TV antennas; twigs broken off trees; some shallow
+     F4      33-50        rooted trees pushed over
+     F5      51-70
+                       Moderate damage: surface peeled off roofs, windows broken; light/unanchored mobile homes pushed
+             71-92        or overturned; some trees uprooted or snapped; moving automobiles pushed off road
+
+             93-116    Considerable damage: roofs torn off frame houses, leaving strong upright walls; weak buildings de-
+                          molished; mobile homes destroyed; large trees snapped or uprooted; railroad boxcars pushed over;
+            117-142       light-object missiles generated; automobiles blown off road
+
+                       Severe damage: roofs and some walls torn off frame homes; rural buildings completely demolished;
+                          trains overturned; steel frame warehouse/hanger structures destroyed; cars lifted off the ground;
+                          most trees in a forest uprooted, snapped, or leveled
+
+                       Devastating damage: whole frame homes leveled, leaving piles of debris; steel structures badly dam-
+                          aged; trees debarked by small flying debris; cars and trains thrown some distance or rolled consid-
+                          erable distance; large missiles generated
+
+                       Incredible damage: whole frame homes leveled, no debris left on foundation; steel-reinforced concrete
+                          structures badly damaged; automobile-sized missiles generated; incredible phenomena can occur
+
+F-scale estimate weakens to F2 (just after 0010), wind         merical simulations indicates that the strongest tangen-
+speeds decrease to below 60 m s1. As strengthening             tial winds in tornadoes tend to occur within a surface
+to F5 occurs (near 0020), the wind speeds increase to          layer; this layer, in which interaction of the vortex with
+over 90 m s1. As weakening to F3.5 occurs (near 0028),         the ground results in strong radial inflow, may be shal-
+the wind speed estimates drop to about 70 m s1. As             lower than 100 m for strong tornadoes (Lewellen 1993).
+the F-scale rating strengthens again to F4.5, the wind         Photogrammetric analyses of tornadoes (Hoecker 1960;
+speed estimates increase to over 85 m s1.                      Golden and Purcell 1977) have also indicated maximum
+                                                               wind speeds below 70 m AGL. The DOW sampled the
+   All of the wind speed estimates are lower than those        winds at 50 m ARL and higher. Because the lowest scans
+associated with the Fujita scale (Table 3). It is tempting     by the DOW did not indicate significantly more radial
+to suggest that these observations support recent con-         inflow than in the scans aloft, we speculate that the
+clusions by McDonald (2001) and Marshall (2002) that           boundary layer in the Oklahoma City tornado was too
+the wind speeds associated with the higher F numbers           shallow to be sampled by the DOW. A third consider-
+are too high. However, a number of factors make the            ation in the evaluation of the maximum wind speeds in
+comparison difficult. The Fujita scale associates damage       the Oklahoma City tornado is that radar scatterers tend
+with the fastest 0.25 mi of wind at 10-m height. There-        to attain maximum tangential speeds that are less than
+fore, winds discussed by McDonald and Marshall apply           the maximum air tangential speeds (section 3b). Last,
+to different heights and different wind averaging times/       radar estimates of wind speeds are power-weighted
+distances than do the radar observations. DOW winds            means within a volume; regions of strong wind speeds
+are collected in a small fraction of a second and do not       that are small and/or are within low reflectivity may not
+equate to averaging over 0.25 mi or several seconds.           be resolved.
+Second, it is possible that the highest wind speeds were
+below the beam heights of the DOW. Evidence in nu-                To aid in the comparison of the DOW data with the
+                                                               WSR-88D data, average low-level Delta-V values in the
+FIG. 10. DOW low-level and average Delta-V (m s1) and F-scale  DOW data have been calculated (Fig. 10). The aver-
+                                       rating.                 aging is over a vertical layer centered on the height of
+                                                               the low-level WSR-88D beam and having a layer width
+                                                               comparable to the 1 WSR-88D vertical beamwidth; this
+                                                               is called the average Delta-V. The estimates of Delta-
+                                                               V at the lowest DOW level (Table 2) have also been
+                                                               included in Fig. 10. The trends in Delta-V are similar
+                                                               to those in the F-scale ratings. The two Delta-V curves
+                                                               are similar because of the vertical continuity of Delta-
+                                                               V values. Because the maximum Delta-V is almost al-
+                                                               ways at the lowest level, the average Delta-V is almost
+                                                               always smaller than the low-level Delta-V. One excep-
+                                                               tion is at 0020 when the average Delta-V is larger than
+                                                               the low-level Delta-V at a time when the F scale is
+                                                               increasing. This could result from a low-level estimate
+                                                               that is too small because of undetected beam misalign-
+
+                                                               Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+466  WEATHER AND FORECASTING                                VOLUME 17
+
+     FIG. 11. Time-height plot of DOW Delta-V.
+
+ment or incorrect dealiasing, or it could result from some  period (0000-0005), there is a relatively tall column of
+natural phenomenon that caused the maximum to be            stronger Delta-V. The 0008-0015 weakening of Delta-
+elevated for a brief interval.                              V is seen to occur at all levels. Strengthening of Delta-
+                                                            V after 0015 is again throughout the column, but the
+   Height-time plots of DOW Delta-V (Fig. 11) and           vertical extent of large values is not quite as high as for
+Delta-V diameter (Fig. 12) have also been analyzed.         the earlier peak. The low-level maximum in Delta-V
+Delta-V is largest in the lowest 300 m ARL, and values      (0021-0024) is easily seen in the plot. The shorter-pe-
+drop by as much as 50% at heights of 1500 m and higher.     riod weakening (0027-0030) is also seen, as well as the
+The DOW tornado signature is still clearly defined aloft,   increasing trend at the end of the analysis (0033).
+but it has a lower wind speed. Early in the analysis
+
+     FIG. 12. Time-height plot of DOW tornado signature diameter (distance between locations of
+                                     maximum inbound and outbound velocity).
+
+                                                                                                Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+JUNE 2002  BURGESS ET AL.                                          467
+
+   FIG. 13. Comparison of WSR-88D Delta-V, DOW low-level Delta-    (0010-0015). The sharp increases in DOW Delta-Vs
+V, DOW average Delta-V, and F-scale rating. WSR-88D Delta-V        between 0014 and 0021 are seen only as gradual in-
+values (5-min intervals) have been linearly interpolated to 1-min  creases that began earlier. The peak in DOW average
+increments for plotting purposes.                                  Delta-V at 0021 and the peak in low-level Delta-V at
+                                                                   0023 compare well with the WSR-88D Delta-V peak at
+   In agreement with expansion of the eye feature with             0022. The WSR-88D minimum at 0028 compares well
+height (discussed previously), Delta-V diameter of the             with the DOW minima at about the same time, but the
+tornado is generally narrower near the ground and wider            sharp DOW decreases are not seen. The DOW Delta-
+aloft (Fig. 12). Tornado diameter was wider at the be-             V increases that occur from 0029 until the end of the
+ginning of the analysis (0000), with values of about 300           data have trends that are comparable to the WSR-88D
+m near the ground and greater than 500 m aloft. The                Delta-V increases that occur during the same period. It
+low-level diameter decreased to less than 200 m by                 is interesting to note that the maximum WSR-88D Del-
+about 0005 and stayed that narrow until just after 0015            ta-V within the DOW analysis period is the last point
+when diameter widening and strengthening wind speeds               (0033 and 0034). The WSR-88D curve is trending to-
+occurred. The upper-level diameter also decreased to               ward the overall peak value (85 m s1) that occurred at
+less than 200 m for a short interval (0011-0014). At               0038. The observation that stronger velocities were re-
+the time of the peak low-level wind speeds (0020-                  corded after 0033 as compared with the likely real peak
+0024), the low-level diameter was 200-300 m and the                at 0022-0024 is perhaps related to the tornado's distance
+diameter aloft was again wider than 400 m. At the time             from KTLX. That distance was 22 km at 0022, but had
+of the last strengthening of wind speeds (0032-0033),              dropped to 16 km by 0038.
+the low-level diameter had narrowed to about 200 m,
+but the diameter aloft was still wider than 400 m.                    There are some general agreements between WSR-
+                                                                   88D TCS diameter (Fig. 8) and DOW tornado signature
+6. Discussion of velocity signatures                               diameter (Fig. 12). During the period of the DOW anal-
+                                                                   ysis, low-level diameters are qualitatively similar: TCS
+a. Comparison of WSR-88D and DOW data                              and tornado diameters were wider near the beginning
+                                                                   of the analysis (0000); both diameters narrowed after
+   This dataset provides a unique opportunity to com-              0005, before widening again about 0010 (KTLX) and
+pare tornado wind estimates from two radars (Fig. 13):             0015 (DOW). Some narrowing in both occurred during
+a fixed-location operational radar, at what would be con-          the period of maximum intensity (0020-0025), and wid-
+sidered close range to the tornado, and a mobile radar,            ening of both occurred (0025-0029) before the decrease
+driving at very close range to the tornado. As was shown           in diameter at the end of the analysis. The qualitative
+in the last section, the DOW low-level and average Del-            agreement between TCS and DOW diameter is less at
+ta-Vs are comparable to each other (the low-level Delta-           the highest heights of the DOW data (1.5-2.5 km). In
+V generally being larger) and are consistent with chang-           a quantitative sense, the TCS diameters do not compare
+es in the F-scale rating. The WSR-88D Delta-V curve                well with DOW estimates of tornado diameter. DOW
+is 25-50 m s1 less in magnitude and much smoother                  tornado diameters were more narrow near the ground
+than the DOW curves, not depicting well the DOW                    and broader aloft; TCS diameters show the opposite
+maxima and minima, or changes in F-scale estimates                 trend with height. In general, TCS diameters are 3-5
+(Fig. 13). Although there is general agreement between             times as wide as DOW tornado diameters near the
+the WSR-88D Delta-V and F scale, the detailed changes              ground, but only about 2 times as wide aloft. Reasons
+are not detected well. The sharp decrease in DOW Delta-            for the diameter ratio differences with height between
+Vs observed between 0006 and 0008 is seen only as a                the two radars are not understood but are likely related
+gradual weakening. The WSR-88D Delta-V minimum                     to sampling issues.
+at 0008 is improperly placed in time when compared
+with the DOW minima and the minimum in F scale                        The comparison of observations suggests that the 3
+                                                                   May WSR-88D signatures are useful in a qualitative
+                                                                   sense; the data may be used to suggest that the tornado
+                                                                   might be weaker or stronger at certain times during its
+                                                                   life, or that the overall circulation diameter might be
+                                                                   widening or narrowing. It does not appear that the 3
+                                                                   May WSR-88D signatures are useful in a quantitative
+                                                                   sense; the data may not be used to suggest that the wind
+                                                                   speeds are in a certain range. The utility of the WSR-
+                                                                   88D for evaluating changes in tornado intensity is also
+                                                                   limited by the 5-min time between updates. The DOW
+                                                                   observations indicate significant fluctuations in tornado
+                                                                   intensity over shorter timescales.
+
+                                                                   Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+468  WEATHER AND FORECASTING                                 VOLUME 17
+
+b. WSR-88D sampling issues                                   a comparison of the full F0-F1 damage width at 0027
+                                                             with the Doppler velocity signature (Fig. 16) shows that
+   The difficulty in relating close-range gate-to-gate       the width of all damage (larger than the peak wind di-
+WSR-88D velocity differences to the tornado merits fur-      ameter) is about 1.5 beamwidths wide. The factors men-
+ther discussion. The traditional TVS gate-to-gate sig-       tioned here strongly suggest that the peak winds will
+nature was absent for most KTLX and KCRI scans. One          be poorly sampled and underestimated, just as was ob-
+of the possible reasons for the lack of a typical gate-to-   served.
+gate signature is that, at close range, the large diameter
+of the tornado might produce a signature spread across       7. Summary
+several azimuths. To check this possibility and to define
+better the velocity field in and around the tornado, the        Operational WSR-88D signatures in reflectivity and
+DOW data were examined. Comparison of DOW data               velocity have been shown to be useful in detecting and
+with KTLX and KCRI data for two times (Fig. 14)              tracking the 3 May Oklahoma City tornado. The data
+indicates that the tornado diameter is significantly small-  revealed a reflectivity signature with large dBZ values
+er than the WSR-88D Delta-V signature. This result           associated with debris. Such reflectivity signatures,
+holds even when taking into account the possibility that     when present in the knob of the hook, and when the
+sampling of the tornado vortex along its centerline could    signature is over a region in which much debris may
+produce a signature spread across three azimuths instead     be produced, can be used to infer the presence of a
+of two.                                                      damaging tornado. The 3 May WSR-88D velocity sig-
+                                                             natures appeared to be on a scale slightly larger than
+   Some of the DOW data, particularly at 0013, indicate      the tornado and were related to the strength of the flow
+that there is a second well-defined signature (pair of       surrounding the tornado. Called a tornado cyclone, the
+velocity peaks) that is larger than the tornado (Fig. 14).   observed signature depicted tornado location well and
+The WSR-88D signature is really a sum of the tornado         gave some qualitative idea of tornado strength.
+and the larger circulation. It may be that the WSR-88D
+returns are more related to the flow surrounding the            Mobile radar observations, such as those taken at very
+tornado than the tornado itselt. If this is correct, the     close range to the 3 May Oklahoma City tornado by the
+strength of the surrounding flow must be somewhat well       DOWs, are very useful in measuring tornado charac-
+correlated to the tornado strength to produce the gen-       teristics such as peak wind speed and diameter. Despite
+erally good comparisons between the WSR-88D TCS              potential problems associated with a moving vehicle
+and the tornado.                                             (beam blockage and antenna not level) and data reduc-
+                                                             tion (subjective dealiasing of massively folded veloci-
+   The velocity signatures shown in Fig. 14 can be com-      ties), DOW tornado diameter and wind speed estimates
+pared with images of the tornado taken at approximately      compare very well with diameter estimates and trends
+the same times as the Doppler scans. Figure 15 shows         in damage/intensity ratings obtained separately from a
+the visual appearance of the tornado at the two com-         detailed damage survey. During the DOW analysis in-
+parison times, 0012 and 0028. Surveys were conducted         terval (0000-0033 UTC), the tornado weakened from
+after the event using damage survey maps, a digital          peaks that occurred before the analysis interval,
+compass, and a global positioning system to determine        strengthened to a peak at which F5 intensity/damage
+the azimuth of selected objects in the image, the height     was reported, again weakened slightly, and then
+of these objects, and the distances to the objects and       strengthened again toward another intensity peak that
+the tornado from the photo site. The heights of the ob-      was beyond the analysis interval. Estimates of peak tor-
+jects were projected to the range of the tornado, and the    nado wind speed (50-150 m above radar level) were
+width of the condensation funnel was computed from           about 95 m s1. Although very strong, the wind speed
+the resulting image distance-to-actual distance scale.       was less than has been proposed for F5 intensity. This
+Figure 15 (left) displays an image of the tornado at         suggests that the Fujita scale F4 and F5 wind speed
+approximately 0012. In agreement with DOW estimates          estimates may be too high for typical examples of home
+of a smaller vortex at 0013 (peak wind diameter of just      construction. However, the DOWs may not have sam-
+over 100 m), the condensation funnel/debris cloud ap-        pled the peak winds because larger debris, not traveling
+pears to be relatively narrow (180 m). Also in agreement     as fast as the wind, may dominate the returns and be-
+with DOW estimates of a bigger vortex at 0027 (peak          cause the peak winds may be below the 50-150-m
+wind diameter of 250-300 m), the condensation funnel/        heights. More data collection, perhaps with narrow-
+debris cloud (Fig. 15, right) appears to be much wider       beam millimeter-wavelength radars, will be necessary
+at 0028 (340 m) than at 0012.                                to resolve the wind field within the lower 100 m of
+                                                             tornadoes. Solutions to sampling problems like the dom-
+   Figure 15 includes depictions of the DOW and WSR-         inance of radar returns from large debris traveling at
+88D beamwidths. These comparisons would suggest              less than the actual air motion will need to be found.
+that, even for a close-range tornado (e.g., the 20-km        Comparison of current wind speed estimates (including
+distance between KTLX and the tornado at 0027), the          time-height sections) with numerically simulated tor-
+1 WSR-88D beamwidth (and the 1.25 effective beam-
+width) is larger than the diameter of peak winds. In fact,
+
+                                                             Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+JUNE 2002  BURGESS ET AL.  469
+
+   FIG. 14. Comparison of WSR-88D velocity (KTLX and KCRI) and DOW velocity for two different times (0012 and 0024/0027). White
+circles are estimates of tornado diameter from the DOW. The centers of WSR-88D radar beams are 100-300 m ARL; the centers of DOW
+radar beams are 50-150 m ARL.
+
+                                                                                                                            Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+470  WEATHER AND FORECASTING                                   VOLUME 17
+
+   FIG. 15. Tornado images at two times: (left) 0012 and (right) 0028 UTC. Tornado images courtesy of KFOR-TV, Channel 4, Oklahoma
+City. Images are scaled. Vertical placement of radar beams (assumed to be 1) is determined by height of lowest elevation angle at correct
+range to tornado. Horizontal placement of radar beams is arbitrary. At 0012 UTC, DOW (KTLX WSR-988D) range to tornado was 4.1 km
+
+(28.0 km). At 0028 UTC, DOW (KTLX WSR-88D) range to tornado was 3.3 km (20.0 km).
+
+nado-like vortices may also give better estimates of peak      probability of a tornado forming or existing. It is un-
+wind speed.                                                    likely that current sampling limitations will allow ab-
+                                                               solute confirmation of a tornado or determination of
+   It has been shown that the WSR-88D has significant          specific tornado intensity or changes in tornado inten-
+problems in sampling a close-range tornado such as the         sity. These conclusions are true for velocity signatures
+3 May tornado; even a large tornado at close range is          at close range (60 km) and become even more pro-
+smaller than the size of the radar beam. It was docu-          nounced as range increases.
+mented that wind speed changes and damage/intensity
+changes were not resolved well. As a result, it is difficult      The full understanding of tornado velocity signatures
+to suggest that WSR-88D tornado cyclone signatures             remains elusive. We anticipate that collaboration be-
+can be used to infer tornado wind speed and damage/            tween University of Oklahoma and NSSL scientists,
+intensity changes. The best use of the WSR-88D, when           along with other researchers, will produce additional
+a TCS or a TVS is present, is to suggest an enhanced           datasets and provide new understanding of the WSR-
+                                                               88D signatures. As this collaboration occurs, it will lead
+                                                               to enhancement of WSR-88D signature utility in the
+                                                               warning decision-making process.
+
+                                                                  Acknowledgments. We gratefully acknowledge Greg
+                                                               Stumpf for developing the F-scale contour map and May
+                                                               Yuan for help with preparation of several figures. We
+                                                               thank the many people who aided in radar data collec-
+                                                               tion and processing and participated in the tornado dam-
+                                                               age survey. We also thank television station KFOR,
+                                                               Channel 4, for use of two of their tornado images. The
+                                                               DOWs are a collaboration between OU and NCAR and
+                                                               are supported by NSF and ONR.
+
+FIG. 16. KTLX WSR-88D velocity signature at 0027 UTC overlain                                   REFERENCES
+                          by tornado damage track.
+                                                               Agee, E. M., J. T. Snow, and P. R. Clare, 1976: Multiple vortex
+                                                                     features in the tornado cyclone and the occurrence of tornado
+                                                                     families. Mon. Wea. Rev., 104, 552-563.
+
+                                                               Bluestein, H. B., and A. L. Pazmany, 2000: Observations of tornadoes
+                                                                     and other convective phenomena with a mobile 3-mm wave-
+                                                                     length, Doppler radar: The spring 1999 field experiment. Bull.
+                                                                     Amer. Meteor. Soc., 81, 2939-2951.
+
+                                                               Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+JUNE 2002  BURGESS ET AL.                                              471
+
+----, W. P. Unruh, J. G. LaDue, H. Stein, and D. Speheger, 1993:       Hoecker, W. H., Jr., 1960: Wind speed and air flow pattern in the
+      Doppler radar wind spectra of supercell tornadoes. Mon. Wea.           Dallas tornado of April 2, 1957. Mon. Wea. Rev., 88, 167-180.
+      Rev., 121, 2200-2221.
+                                                                       Lemon, L. R., D. W. Burgess, and L. D. Hennington, 1982: A tornado
+----, A. L. Pazmany, J. C. Galloway, and R. E. McIntosh, 1995:               extending to great heights as revealed by Doppler radar. Pre-
+      Studies of the substructure of severe convective storms using a        prints, 12th Conf. on Severe Local Storms, San Antonio, TX,
+      mobile 3-mm wavelength Doppler radar. Bull. Amer. Meteor.              Amer. Meteor. Soc., 430-432.
+      Soc., 76, 2155-2169.
+                                                                       Lewellen, W. S., 1993: Tornado vortex theory. The Tornado: Its Struc-
+Brown, R. A., and V. T. Wood, 2000: Enhanced detection of tornadoes          ture, Dynamics, Prediction, and Hazards, Geophys. Monogr.,
+      on 3 May 1999 using prototype fine-resolution WSR-88D mea-             No. 79, Amer. Geophys. Union, 19-39.
+      surements. Preprints, 20th Conf . on Severe Local Storms, Or-
+      lando, FL, Amer. Meteor. Soc., 40-43.                            Magsig, M. A., and J. T. Snow, 1998: Long-distance debris transport
+                                                                             by tornadic thunderstorms. Part I: The 7 May 1995 supercell
+----, L. R. Lemon, and D. W. Burgess, 1978: Tornado detection by             thunderstorm. Mon. Wea. Rev., 126, 1430-1449.
+      pulsed Doppler radar. Mon. Wea. Rev., 106, 29-38.
+                                                                       Marshall, T. P., 2002: Tornado damage survey at Moore, Oklahoma.
+Burgess, D. W., R. J. Donaldson Jr., and P. R. Desrochers, 1993:             Wea. Forecasting, 17, 582-598.
+      Tornado detection and warning by radar. The Tornado: Its Struc-
+      ture, Dynamics, Prediction, and Hazards, Geophys. Monogr.,       McDonald, J. R., 2001: Theodore Fujita: His contribution to tornado
+      No. 79, Amer. Geophys. Union, 203-221.                                 knowledge through damage documentation and the Fujita scale.
+                                                                             Bull. Amer. Meteor. Soc., 82, 63-72.
+Crum, T. D., and R. L. Alberty, 1993: The WSR-88D and the WSR-
+      88D Operational Support Facility. Bull. Amer. Meteor. Soc., 74,  NSSL, 2000: WATADS (WSR-88D Algorithm Testing and Display
+      1669-1687.                                                             System) reference guide for version 10.2. 200 pp. [Available
+                                                                             from National Severe Storms Laboratory, 1313 Halley Circle,
+Donaldson, R. J., Jr., 1990: Foundations of severe storm detection           Norman, OK 73069.]
+      by radar. Radar in Meteorology, D. Atlas, Ed., Amer. Meteor.
+      Soc., 115-121.                                                   Oye, R., C. Mueller, and S. Smith, 1995: Software for radar trans-
+                                                                             lation, visualization, editing, and interpolation. Preprints, 27th
+Dowell, D. C., J. Wurman, and L. J. Wicker, 2001: Centrifuging of            Conf . on Radar Meteorology, Vail, CO, Amer. Meteor. Soc.,
+      scatterers in tornadoes. Preprints, 30th Conf. on Radar Meteo-         359-361.
+      rology, Munich, Germany, Amer. Meteor. Soc., 307-309.
+                                                                       Speheger, D. A., C. A. Doswell III, and G. J. Stumpf, 2002: The
+Fujita, T. T., 1971: Proposed characterization of tornadoes and hur-         tornadoes of 3 May 1999: Event verification in central Oklahoma
+      ricanes by area and intensity. SMRP Research Paper 91, Uni-            and related issues. Wea. Forecasting, 17, 362-381.
+      versity of Chicago, Chicago, IL, 42 pp. [Available from Wind
+      Engineering Research Center, Box 41023, Lubbock, TX 79409.]      Wicker, L. J., and R. B. Wilhelmson, 1993: Numerical simulation of
+                                                                             tornadogenesis within a supercell thunderstorm. The Tornado:
+Gardner, A., K. C. Mehta, L. J. Tanner, Z. Zhou, M. Conder, R.               Its Structure, Dynamics, Prediction, and Hazards, Geophys.
+      Howard, M. S. Martinez, and S. Weinbeck, 2000: The tornadoes           Monogr., No. 79, Amer. Geophys. Union, 75-88.
+      of Oklahoma City of May 3, 1999. Wind Science and Engi-
+      neering Research Center Rep., Texas Tech University, Lubbock,    Wood, V. T., and R. A. Brown, 1997: Effects of radar sampling on
+      TX, 38 pp. [Available from Wind Engineering Research Center,           single-Doppler velocity signatures of mesocyclones and torna-
+      Box 41023, Lubbock, TX 79409.]                                         does. Wea. Forecasting, 12, 928-938.
+
+Garrett, R. A., and V. D. Rockney, 1962: Tornadoes in northeastern     Wurman, J., 2002: The multiple-vortex structure of tornado. Wea
+      Kansas, May 19, 1960. Mon. Wea. Rev., 90, 231-240.                     Forecasting, 17, 473-505.
+
+Golden, J. H., and D. Purcell, 1977: Photogrammetric velocities of     ----, and S. Gill, 2000: Finescale radar observations of the Dimmit,
+      the Great Bend, Kansas tornado of 30 August 1974: Accelera-            Texas (2 June 1995), tornado. Mon. Wea. Rev., 128, 2135-2164.
+      tions and asymmetries. Mon. Wea. Rev., 105, 485-492.
+                                                                       ----, J. M. Straka, and E. N. Rasmussen, 1996: Fine-scale Doppler
+                                                                             radar observations of tornadoes. Science, 272, 1774-1777.
+
+                                                                       ----, ----, ----, M. Randall, and A. Zahari, 1997: Design and
+                                                                             deployment of a portable, pencil-beam, pulsed, 3-cm Doppler
+                                                                             radar. J. Atmos. Oceanic Technol., 14, 1502-1512.
+
+                                                                       Unauthenticated | Downloaded 03/11/24 10:42 PM UTC
+

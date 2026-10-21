@@ -1,0 +1,1611 @@
+Service Assessment
+
+Oklahoma/Southern Kansas
+Tornado Outbreak of May 3, 1999
+
+U.S. DEPARTMENT OF COMMERCE
+National Oceanic and Atmospheric Administration
+National Weather Service
+Silver Spring, Maryland
+Cover: Supercell thunderstorms generated killer tornadoes in a swath from west-central
+Oklahoma through southern Kansas. Visible satellite imagery from Geostationary Operational
+Environmental Satellite-8, 6:45 p.m. Central Daylight Time (CDT), May 3, 1999. (Courtesy of
+the National Oceanic and Atmospheric Administration (NOAA)/National Environmental Satellite,
+Data and Information Service)
+Service Assessment
+
+Oklahoma/Southern Kansas
+Tornado Outbreak of May 3, 1999
+
+August 1999
+
+U.S. DEPARTMENT OF COMMERCE
+William M. Daley, Secretary
+National Oceanic and Atmospheric Administration
+D. James Baker, Administrator
+National Weather Service
+John J. Kelly, Jr., Assistant Administrator
+                              Preface
+
+      On May 3, 1999, one of the largest tornado outbreaks in history struck west-central
+Oklahoma and southern Kansas, killing 48 people, leaving thousands homeless and resulting in
+over $1 billion in property damage. Due to the magnitude of this event, the National Weather
+Service (NWS) conducted a Service Assessment to examine the effectiveness of NWS warnings
+and other services in minimizing loss of life and injuries.
+
+      Service Assessments are critical to the ongoing efforts of the NWS to improve the quality
+and timeliness of our warning services. Successful procedures are highlighted and shared with
+other offices; shortcomings are identified and resolved. This review process ensures that NWS
+forecast techniques, products and services will continue to evolve and improve.
+
+                                                    l Assistant Administrator for
+                                                         Weather Services
+                                                       August 1999
+
+                                                          ii
+                        Table of Contents
+
+                                                                                                                Page
+Preface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ii
+Acronyms and Abbreviations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . iv
+Service Assessment Team . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . vi
+Event Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+Synoptic Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+Facts, Findings and Recommendations - Part 1
+
+      Oklahoma and Southern Kansas Outbreak Combined . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+Oklahoma Outbreak Summary
+
+      NWSFO Norman, Oklahoma . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+Facts, Findings and Recommendations - Part 2
+
+      Oklahoma Outbreak . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+Southern Kansas Outbreak Summary
+
+      NWSO Wichita, Kansas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+Facts, Findings and Recommendations - Part 3
+
+      Southern Kansas Outbreak . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+Practices to Emulate . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+Appendix A Fujita Tornado Intensity Scale . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . A-1
+Appendix B Event Statistics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . B-1
+Appendix C Oklahoma/Southern Kansas Tornado Outbreak of May 3, 1999
+
+                      NWSFO Norman Chronological Product Highlights . . . . . . . . . . . . . . . . C-1
+Appendix D Oklahoma/Southern Kansas Tornado Outbreak of May 3, 1999
+
+                      NWSO Wichita Chronological Product Log . . . . . . . . . . . . . . . . . . . . . . . D-1
+
+                                                          iii
+          Acronyms and Abbreviations
+
+AFB       Air Force Base
+AFOS      Automation of Field Operations and Services
+APO       AWIPS Program Office
+AWIPS     Advanced Weather Interactive Processing System
+CAP       Civil Air Patrol
+CAPE      Convective Available Potential Energy
+CDT       Central Daylight Time
+CRS       Console Replacement System
+CWA       County Warning Area
+EAS       Emergency Alert System
+EMWIN     Emergency Managers Weather Information Network
+EOC       Emergency Operations Center
+FOS       Family of Services
+HWO       Hazardous Weather Outlook (Product Identifier)
+KICT      Wichita, Kansas, WSR-88D
+KTLX      Twin Lakes, Oklahoma, WSR-88D (metropolitan Oklahoma City radar)
+LDAD      Local Data Acquisition and Dissemination
+LSR       Local Storm Report (Product Identifier)
+MIC       Meteorologist in Charge
+MSD       Meteorological Services Division (National Weather Service)
+NAWAS     National Warning System
+NCF       Network Control Facility
+NEXRAD    Next Generation Radar
+NIDS      NEXRAD Information Dissemination Service
+NOAA      National Oceanic and Atmospheric Administration
+NOW       Short Term Forecast (Product Identifier)
+NSSL      National Severe Storms Laboratory
+NWR       NOAA Weather Radio
+NWS       National Weather Service
+NWSFO     NEXRAD Weather Service Forecast Office
+NWSO      NEXRAD Weather Service Office
+NWWS      NOAA Weather Wire Service
+OCS       Oklahoma Climatological Survey
+OK-FIRST  Oklahoma’s First-response Information Resource System using
+          Telecommunications
+ORDA      Open systems Radar Data Acquisition
+ORPG      Open systems Radar Product Generator
+OSF       Operational Support Facility (National Weather Service)
+OSO       Office of Systems Operations (National Weather Service)
+
+          iv
+PC       Personal Computer
+PNS      Public Information Statement
+PUP      Principal User Processor
+RUC II   Rapid Update Cycle version II
+SAME     Specific Area Message Encoder
+SEL      Severe Thunderstorm or Tornado Watch (Product Identifier)
+SKYWARN  Term for Storm Spotter Network
+SOO      Science and Operations Officer
+SPC      Storm Prediction Center (National Weather Service)
+SPS      Special Weather Statement (Product Identifier)
+SRH      Southern Region Headquarters (National Weather Service)
+SVR      Severe Thunderstorm Warning (Product Identifier)
+SVS      Severe Weather Statement (Product Identifier)
+SWO      Severe Weather Outlook (Product Identifier)
+TOR      Tornado Warning (Product Identifier)
+TPMS     Transition Power Maintenance System
+WarnGen  Warning Generation (AWIPS software)
+WCM      Warning Coordination Meteorologist
+WDSS     Warning Decision Support System
+WISEII   Warning and Interactive Statement Editor, version II
+WSOM     Weather Service Operations Manual
+WSR-88D  Weather Surveillance Radar-1988 Doppler (NEXRAD)
+ZFP      Zone Forecast Product (Product Identifier)
+
+         v
+                Service Assessment Team
+
+      The Service Assessment Team was activated on May 4, 1999. Team members traveled to
+the Next Generation Radar (NEXRAD) Weather Service Forecast Office (NWSFO) Norman,
+Oklahoma, on May 5 and left on May 10. A team meeting and an overview of the event was held
+on May 5 with representatives from NWSFO Norman, Storm Prediction Center (SPC),
+Operational Support Facility (OSF) and National Severe Storms Laboratory (NSSL) in
+attendance. At that time it was learned that the emergency manager representative selected for
+the team was unable to participate. Four team members were designated to begin the Service
+Assessment in Oklahoma while the fifth was assigned to perform the Service Assessment in
+southern Kansas. To assist the team member in Kansas, the team leader and NWSFO Norman
+Meteorologist in Charge (MIC) coordinated with the OSF and selected an OSF individual to help
+with the Kansas Service Assessment. Before leaving Oklahoma, the team completed the first
+draft of the report. After completion of the field work, the team continued to gather information
+and collaborate on the findings before preparation of the final version of this Service Assessment.
+
+The team was comprised of the following individuals:
+
+Ken Mielke      Team Leader, MIC, NWSFO Great Falls, Montana
+
+Craig Edwards   MIC, NWSFO Minneapolis, Minnesota
+
+Mike Foster     Science and Operations Officer (SOO), NWSFO Fort Worth, Texas
+
+Larry Vannozzi  Warning Coordination Meteorologist (WCM), NWSFO Lubbock,
+                Texas
+
+Curtis Carey    Southern Region Headquarters (SRH), Public Affairs Officer, Fort
+                Worth, Texas
+
+Other valuable contributors include:
+
+Gayland Kitch   Director, Emergency Management and Communications, Moore,
+                Oklahoma
+
+Dan Carey       Safety and Emergency Management Director, Cleveland County,
+                Oklahoma
+
+Randall Duncan  Emergency Management Director, Sedgwick County, Kansas
+
+John Ferree     OSF/Training Branch, Norman, Oklahoma (assisted the team with the
+                southern Kansas Service Assessment and the writing of this report)
+
+                                      vi
+Dennis Walts    NWS Headquarters, AWIPS Program Office (APO), Boulder,
+                Colorado
+
+William Lerner  NWS Headquarters, Office of Meteorology, Silver Spring, Maryland
+
+Linda Kremkau   NWS Headquarters, Office of Meteorology, Silver Spring, Maryland
+
+Robert Saffle   NWS Headquarters, Office of Systems Development, Silver Spring,
+                Maryland
+
+Jerry Stephens  NWS Headquarters, Office of Systems Operations (OSO), Silver
+                Spring, Maryland
+
+      The Service Assessment Team also acknowledges the valuable information provided by the
+staffs at NWSFO Norman, Oklahoma; NEXRAD Weather Service Office (NWSO) Wichita,
+Kansas; and the SPC.
+
+               The tornado, which hit Moore/Oklahoma City, Oklahoma, is shown here
+               near Amber, Oklahoma, at 6:30 p.m. CDT, May 3, 1999. (Photograph
+               courtesy of the Oklahoma Climatological Survey)
+
+                                                       vii
+Radar reflectivity image from the Twin Lakes, Oklahoma, WSR-88D radar at
+7:18 p.m. CDT, May 3, 1999, shows several severe thunderstorms in west-central
+Oklahoma and southern Kansas. (Courtesy of NOAA/NSSL)
+
+                                              viii
+                         Event Overview
+
+      A large part of the central United States was hit by a significant outbreak of tornadoes and
+other severe weather on May 3 and 4, 1999. From the afternoon of May 3 through the evening of
+May 4, there was an outbreak of tornadoes from southwest Texas through southeast South
+Dakota. The most devastating part of this outbreak occurred during the late afternoon and
+evening of May 3 over Oklahoma and southern Kansas (Figure 1).
+
+      Between 6:23 p.m. and 7:50 p.m. CDT1 on Monday evening, May 3, a long-track, violent
+tornado traveled from near Chickasha, Oklahoma, to just east of Oklahoma City, Oklahoma.
+Along its path this tornado produced areas of F5 (see Appendix A, Fujita Tornado Intensity
+Scale) damage to both rural sections of central Oklahoma as well as densely populated areas of
+Oklahoma City and its suburbs. In the wake of this single tornado, 38 people were left dead and
+several hundred injured. There were 4 additional fatalities outside the Oklahoma metropolitan
+area as a result of other tornadoes that afternoon and evening. Soon thereafter, between
+8:30 p.m. and 9 p.m., another violent tornado, rated F4 intensity, plowed through Haysville in
+suburban Wichita, Kansas. This tornado was responsible for 6 deaths and 150 injuries. While
+these two tornadoes received the greatest attention, they were just two of a rare and significant
+outbreak of violent tornadoes. Over 70 tornadoes, many of them rated F3 or stronger, were
+spawned by a dozen supercell thunderstorms across Oklahoma and southern Kansas. In
+Oklahoma, 16 counties were declared disaster areas with $1 billion in damage; in Kansas, there
+was $145 million in damage and one county was declared a disaster area. What was unusual
+about this event was not just the number of tornadoes but the number of violent tornadoes. Event
+statistics are given in Appendix B.
+
+      The outbreak began around 4 p.m., May 3, when a thunderstorm developed near Lawton,
+Oklahoma. The storm became severe in a short time and became tornadic before 5 p.m. Moving
+northeastward, this storm later produced the F5 tornado that devastated parts of Bridge Creek,
+Oklahoma City, Moore, Del City and Midwest City. A second storm formed west of the Lawton
+storm and soon became tornadic. By early evening, these storms and several others were cutting
+a swath through central and north-central Oklahoma, with each storm producing one or more
+violent tornadoes. Additional storms formed over extreme northern Oklahoma. These storms
+soon crossed into southern Kansas and produced the tornadoes that struck Wichita.
+
+      Oklahoma City and its suburbs have been struck by numerous tornadoes over the years,
+most recently on June 13, 1998. Moore was hit by a tornado on October 4, 1998; the May 3,
+1999, tornado crossed portions of Moore that were struck just 6 months earlier. The May 3
+tornado was the first F5 tornado to strike Oklahoma City; F4 tornadoes have been reported in the
+city seven times before. With 38 fatalities, the May 3, 1999, tornado was the most deadly in
+
+         1 All times listed in this Service Assessment are CDT.
+
+                                                          1
+Oklahoma City metropolitan area history; the previous most deadly tornado occurred on June 12,
+1942, when 35 people were killed.
+
+      Wichita, Kansas, also has been struck by several tornadoes over the years. The most recent
+violent tornado to strike the city was on April 26, 1991, when the large tornado which devastated
+Andover, Kansas, killed 4 people in the southern part of the Wichita metropolitan area. The
+May 3, 1999, tornado, with 6 fatalities, was the most deadly for Wichita and Sedgwick County.
+
+      The Norman NWSFO issued the first severe thunderstorm warning (SVR) of the event at
+4:15 p.m. and the first tornado warning at 4:47 p.m. for the storm near Lawton, Oklahoma. This
+storm moved northeastward and struck Oklahoma City about an hour later. By 5:52 p.m., the
+early stage of this eventual F5 tornado was 4 miles south of Verden, moving to the northwest side
+of Chickasha at 6:19 p.m. and south of Amber at 6:26 p.m (see Figure 1). The Norman NWSFO
+continued issuing effective warnings, short term forecasts (NOWs) and severe weather statements
+(SVSs). Also by this time, Oklahoma City media outlets were running continuous live coverage
+of the tornado with live helicopter and ground-level video. All warnings, forecasts and statements
+were disseminated over the NOAA Weather Wire Service (NWWS), the NOAA Weather Radio
+(NWR), the Family of Services (FOS), the Emergency Alert System (EAS), the National Warning
+System (NAWAS), and the local amateur radio network. The wide coverage of the event by the
+National Weather Service and media outlets, the long lead time of National Weather Service
+warnings, and the high state of tornado preparedness of Oklahoma residents are credited with
+saving many lives.
+
+      The Wichita NWSO provided an accurate warning on the development of a violent tornado
+that first struck the town of Haysville and moved due north into heavily populated areas of
+southern Wichita. The warning, based on a radar signature, received wide dissemination on
+NWWS, local television and radio, NWR, EAS and NAWAS. The warning prompted the
+activation of the siren system and initiated an all-channel cable override for Wichita. Residents
+followed severe weather safety plans and took cover in the lowest levels of houses or apartments,
+saving many lives.
+
+                                                          2
+Figure 1. Approximate damage paths and highest Fujita scale ratings for tornadoes which occurred
+during the May 3, 1999, outbreak in west-central Oklahoma and southern Kansas. (Courtesy of
+Steve Kruckenberg and Douglas Speheger, NWSFO Norman, Oklahoma)
+
+                                                      3
+Aerial view of the Moore/Oklahoma City, Oklahoma, May 3, 1999, tornado path. The
+dark mud trail shows the path of the tornado in the middle foreground and center of
+the picture. Interstate Highway 44 is visible in the lower right through the center of
+the picture. (Photograph courtesy of John Jarboe, NWS Coordinator, Federal Aviation
+Administration Academy, Oklahoma City, Oklahoma)
+
+Ground view of the Moore/Oklahoma City, Oklahoma, May 3, 1999, tornado path.
+View is looking northeast towards Oklahoma City from the Bridge Creek Community
+in Grady County, Oklahoma. Note swath of reddish brown earth extending to the
+horizon where the tornado pulled grass and other vegetation from the ground.
+(Photograph courtesy of William Lerner, NWS Headquarters)
+
+                                           4
+                       Synoptic Overview
+
+      Many elements of a classical Great Plains severe weather outbreak were in place during the
+afternoon and evening of May 3, 1999. The synoptic-scale pattern was characterized by a large-
+scale middle and upper tropospheric trough over the western United States and a downstream
+ridge to the east (Figure 2). There was a strong upper-level jet stream on the west side of the
+trough with wind speeds greater than 130 knots over the west coast of the United States. Moving
+through the synoptic-scale trough were several smaller scale short waves, the most important of
+which was located along the New Mexico/Texas border by late afternoon. At the surface, a low
+pressure center was located along the Wyoming/Colorado border and a low pressure trough
+extended southward along the lee of the Rockies. In response to the approaching jet stream and
+short wave, several atmospheric adjustments took place over the Plains. The surface low and lee
+trough deepened throughout the afternoon. This caused surface winds ahead of the dryline to
+strengthen and a strong low-level, southerly jet stream developed from northwest Texas into
+Oklahoma. As a result of the strengthening surface trough and low-level jet, deep low-level
+moisture streamed northward into Oklahoma and Kansas. As surface heating proceeded through
+the afternoon, mixing of the shallow moisture over southwest Texas moved the dryline to near the
+western Oklahoma border. At the same time, the lapse rates in the mid-troposphere over Kansas
+and Oklahoma were steepening, owing to the effects of the approaching upper-level jet and short
+wave. These factors contributed to the development of the large atmospheric instability and
+vertical wind shear profiles favorable for the development of supercell thunderstorms.
+
+      With an atmosphere conducive to the development of supercell thunderstorms, the last
+element necessary was a triggering mechanism. By late afternoon, two bulges developed along
+the dryline; one located southwest of Wichita Falls, Texas, and a second near Woodward,
+Oklahoma. In addition, a pool of cooler, drier air over central Oklahoma resulted in a mesoscale
+boundary, oriented from southwest Oklahoma to south-central Oklahoma, separating the cooler
+air from the very warm, moist air which was streaming northward across western Oklahoma. The
+presence of the dryline bulges and the mesoscale boundary led to prolonged enhanced moisture
+convergence which resulted in explosive thunderstorm development over southwest Oklahoma by
+late afternoon and northwest Oklahoma to south-central Kansas by early evening.
+
+                                                          5
+Figure 2. Significant features associated with the May 3, 1999, tornado outbreak. Depicted are the
+4 p.m. CDT positions of the upper-level and low-level jets, the dryline, surface winds, and a mesoscale
+boundary in southwest Oklahoma. The shaded area is where the Convective Available Potential Energy
+(CAPE) exceeded 3000 Joules Kg-1. (Courtesy of Mike Foster and Jason Jordan, NWSFO Ft. Worth,
+Texas)
+
+                                                          6
+   Facts, Findings and Recommendations - Part 1
+Oklahoma and Southern Kansas Outbreak Combined
+
+National Centers for Environmental Prediction Guidance, Products
+and Services
+
+FACT:              The 11:15 a.m., May 3, 1999, SPC Day 1 Severe Weather Outlook
+                   (SWO) was upgraded to a moderate risk for severe thunderstorms in the
+                   Oklahoma/Kansas outbreak area based on 7 a.m. soundings, midday
+                   profiler observations and Rapid Update Cycle II (RUC II) forecasts of
+                   instability and shear.
+
+FACT:              The SPC began an Experimental Probabilistic Outlook in the spring of
+                   1999. The forecast is made available on the SPC Forecast Products Web
+                   Page. The Experimental Probabilistic Outlook issued at 3 p.m. for
+                   Oklahoma and southern Kansas highlighted a significant chance for F2 or
+                   greater tornadoes.
+
+Finding 1:         From mid-morning to mid-afternoon on May 3, 1-hour, 250-meter
+                   interval vertical wind profiles from the profiler at Tucumcari, New
+                   Mexico, showed a descending and strengthening jet approaching
+                   Oklahoma. The jet was deeper, stronger and lower in the atmosphere
+                   than forecasts from numerical models and favored development of
+                   supercells. It was profiler data that led SPC forecasters to upgrade the
+                   SWO from moderate to high risk for severe weather in the outbreak area
+                   and caused F2 or stronger tornadoes to be highlighted in the
+                   Experimental Probabilistic Outlook (see FACT above). In the opinion of
+                   the Service Assessment Team, without profiler data, SPC forecasters
+                   would not have upgraded from moderate to high risk. Also, the state of
+                   readiness of NWS offices, emergency managers, and the media in the
+                   severe weather outbreak area would not have been as high. The profiler
+                   network is “experimental” and not funded by the NWS.
+
+Recommendation 1:  The NWS should make a decision on how to support the existing profiler
+                   network so that the current data suite becomes a reliable, operational
+                   data source.
+
+FACT:              Tornado Watch #195 for western and central Oklahoma, including
+                   Oklahoma City, was issued at 4:30 p.m., valid 4:45 p.m. to 10 p.m. The
+                   first severe thunderstorm warning was issued by NWSFO Norman at
+
+                   7
+FACT:  4:15 p.m. Based on Weather Surveillance Radar-1988 Doppler (WSR-
+       88D) radar signatures, the first tornado warning followed at 4:47 p.m.
+
+       Tornado Watch #200 for Kansas, including Wichita, was issued at
+       7:21 p.m., valid from 7:30 p.m. until 12 midnight. NWSO Wichita issued
+       its first tornado warning at 7:38 p.m. (Sumner County), a severe
+       thunderstorm warning for Sedgwick County at 7:49 p.m., and a tornado
+       warning for Sedgwick County at 8:16 p.m.
+
+       Total destruction of a residential area in Moore, Oklahoma, as an F5 tornado ripped
+       through this city during the evening of May 3, 1999. (Photograph courtesy of Curtis
+       Carey, NOAA/NWS Public Affairs)
+
+                                                   8
+               Oklahoma Outbreak Summary
+                 NWSFO Norman, Oklahoma
+
+Summary of Warning and Forecast Services
+
+      The potential for severe weather in Oklahoma was reflected in National Weather Service
+forecast products as much as 36 hours prior to the outbreak. The May 2 SPC Day 2 SWO (valid
+May 3) and the May 3 Day 1 SWO predicted a slight risk for severe weather. At 6:30 a.m. on
+May 3, NWSFO Norman issued a Thunderstorm Outlook, noting a slight risk of severe storms in
+western and central Oklahoma that afternoon and night. It mentioned the increasing low-level
+moisture, dryline and approaching upper-level low pressure trough would combine to cause a
+threat of hail, damaging winds and isolated tornadoes. It also cautioned emergency managers and
+spotter groups to be prepared for possible activation in the afternoon.
+
+      Forecasts later that day advertised an increasing possibility of severe storms. The 11 a.m.
+SPC Day 1 Outlook upgraded much of the eventual outbreak area to a moderate risk, as did the
+12:30 p.m. Thunderstorm Outlook issued by NWSFO Norman. The increasing risk was further
+reflected when the 3:49 p.m. SPC Day 1 Outlook upgraded the risk once again— this time to a
+high risk.
+
+      The Norman NWSFO issued the first severe thunderstorm warning (SVR) of this event at
+4:15 p.m. Soon after, the SPC issued Tornado Watch #195 for western and central Oklahoma,
+valid from 4:45 p.m. until 10 p.m. The first tornado warning was issued at 4:47 p.m. About
+10 hours later, after the main part of this event concluded, NWSFO Norman had issued
+70 tornado warnings and 46 severe thunderstorm warnings for 32 of the 56 counties within its
+county warning area (CWA) (see product chronology highlights in Appendix C).
+
+      The Norman Office of the National Weather Service was very successful in giving the public
+significant advance warning of the individual tornadoes. They achieved a remarkable
+32-minute lead-time average for the first tornado warning issued in each of the Oklahoma City
+metropolitan area counties that was affected by the F5 tornado. Warnings for this Oklahoma City
+F5 tornado, which hit Grady, McClain, Cleveland and Oklahoma Counties, were issued with lead
+times of 65, 18, 31 and 13 minutes, respectively.
+
+      These excellent lead times were a function of several factors. These included very good
+severe weather knowledge and radar interpretation skills, modernized National Weather Service
+equipment (especially the WSR-88D and the Advanced Weather Interactive Processing System
+[AWIPS]), a well-trained and widespread spotter network and the long-lived nature of several of
+the tornadoes. Another factor, cited by the NWSFO staff, was the use of “sectorized” warning
+operations. The use of multiple AWIPS workstations, all with the same data and capabilities,
+permitted forecasters to divide warning responsibility by geographic area. This geographic
+division of responsibility improved efficiency and warning strategy during this widespread
+
+                                                          9
+outbreak. The NSSL-developed Warning Decision Support System (WDSS) software also
+proved to be a useful tool during this event.
+
+      In addition to its excellent National Weather Service warnings, NWSFO Norman kept the
+public informed with numerous SVSs, NOWs and Local Storm Reports (LSRs). During the most
+active period of this event (4 p.m. until midnight), they issued 48 concise SVSs, 9 NOWs and
+14 LSRs.
+
+      At 5:41 p.m., a NOW was issued alerting the Oklahoma City metropolitan area of severe
+thunderstorms and possible tornadoes. In part, this NOW read,
+
+      SEVERE THUNDERSTORMS...SOME PRODUCING TORNADOES...WILL
+      MOVE NORTHEAST ACROSS PORTIONS OF SOUTHWEST AND CENTRAL
+      OKLAHOMA THROUGH 6:30 PM.
+
+This NOW went on to state,
+
+      THE STORMS WILL BE MOVING TOWARD THE OKLAHOMA CITY
+      METROPOLITAN AREA. IN ADDITION TO VERY LARGE HAIL AND
+      DAMAGING WINDS...THESE STORMS MAY ALSO CONTINUE TO PRODUCE
+      TORNADOES. IF YOU ARE IN THE PATH OF THE THUNDERSTORMS...
+      EXERCISE YOUR TORNADO SAFETY PROCEDURES!
+
+      To heighten awareness of the severity of the situation, the office alarmed several SVSs on
+NWR and issued an effective SVS at 6:57 p.m. that included the words “TORNADO
+EMERGENCY” in the headline. Following is a portion of that SVS:
+
+      ...TORNADO EMERGENCY IN SOUTH OKLAHOMA CITY METRO
+      AREA...
+
+      AT 657 P.M .CDT...A LARGE TORNADO WAS MOVING ALONG
+      INTERSTATE 44 WEST OF NEWCASTLE. ON ITS PRESENT PATH...THIS
+      LARGE DAMAGING TORNADO WILL ENTER SOUTHWEST SECTIONS
+      OF THE OKLAHOMA CITY METRO AREA BETWEEN 715 P.M. AND
+      730 P.M. PERSONS IN MOORE AND SOUTH OKLAHOMA CITY SHOULD
+      TAKE IMMEDIATE TORNADO PRECAUTIONS!
+
+      THIS IS AN EXTREMELY DANGEROUS AND LIFE THREATENING
+      SITUATION.
+
+      All NWS warnings, forecasts and statements were disseminated via the NWWS, NWR,
+FOS, EAS, NAWAS, the local amateur radio network, and the Emergency Managers Weather
+Information Network (EMWIN). NWS information was also disseminated by local television and
+radio stations, as well as through the Internet and OK-FIRST (Oklahoma’s First-response
+Information Resource System using Telecommunications).
+
+                                                         10
+      Two situations developed that could have impacted NWS warning services, but did not,
+thanks to a competent staff and pre-existing agreements. First, a number of warnings were not
+automatically sent through the Console Replacement System (CRS) to the NWR. Of the
+72 warnings that were issued within NWR listening areas, 14 (19 percent) had to be done
+manually with only slight delays. The causes of most of the malfunctions were traced back to
+software issues with CRS/Airwave/Bubble (Airwave and Bubble are product formatting software
+which serve as an interface between AWIPS and CRS). Fixes for some of these problems were
+tested just days after the outbreak.
+
+      Second, telephone service, including cellular, was intermittent (at best) from around
+6:30 p.m. until midnight— the duration of most of the outbreak. As the main tornadic storm
+approached NWSFO Norman, staff members used NAWAS to contact surrounding NWS offices
+to coordinate possible back-up support. Despite the lack of consistent phone service, numerous
+severe weather reports continued to flow into the NWSFO thanks to spotters, amateur radio
+operators and NAWAS.
+
+Public Response
+
+      The fact that casualties were low (compared to the many thousands that were affected by
+the main Oklahoma City tornado) is, in large part, attributable to the effective response of the
+public to early National Weather Service severe weather warnings. To help enhance public
+response, the Norman NWSFO has conducted an aggressive preparedness campaign for years in
+Oklahoma. Within the 3 months prior to the outbreak, 32 spotter training classes were held. In
+the 5-month period leading up to the outbreak, the office hosted 9 tours, conducted 4 safety
+presentations, participated in 3 televised safety shows and presented 2 safety displays (information
+booths) within its CWA. The office also has been active in the state’s annual severe weather
+awareness week.
+
+      Oklahoma City radio and television stations also played a crucial role that led to effective
+public response. They rapidly communicated National Weather Service warnings and gave hours
+of live coverage of spotter reports, aerial video and ground-level video of the tornadoes. Using
+the cable television override capability, the Moore City Emergency Manager broadcast NWS
+warnings (audio only) to the community. Many radio stations provided simulcasts of the live
+telecasts from the three primary television stations, as the main tornado approached the Oklahoma
+City metropolitan area. One television station urged people to get out of the path of this
+destructive tornado. This statement was cited as one of the reasons many people fled the path of
+the tornado, only to return to damaged or demolished property. It should be noted that fleeing a
+tornado is not recommended but was effective in this particular event due to lengthy National
+Weather Service warning lead times, as well as the tornado’s intensity and longevity.
+
+                                                         11
+Post-Storm Feedback
+
+      Positive feedback after the outbreak was overwhelming. Local and national news coverage
+often mentioned the advance warning provided by the National Weather Service and live video
+coverage by Oklahoma City television stations. Interviews with a number of local radio stations
+indicated the NWR information was very helpful in their efforts to alert the public. After the
+event, NWSFO Norman issued a series of informative Public Information Statements (PNSs) on
+May 4 and 5. These statements provided considerable detail regarding tornado paths, preliminary
+intensities and comparisons to previous Oklahoma City tornadic events. In addition, NWSFO
+Norman, as well as the SPC and NSSL, posted photographs, preliminary tornado tracks, storm
+time lines and informative summaries on their Web pages which served as a source of information
+for the media and other users.
+
+      Emergency managers were pleased with the severe weather information supplied by various
+National Weather Service dissemination systems. Of special note was the Oklahoma
+Climatological Survey’s (OCS) OK-FIRST, which emergency managers cited as a valuable tool
+during the outbreak. A large Oklahoma City business called the Norman NWSFO after the
+outbreak to express thanks for assistance in updating the company’s safety plan prior to this
+event. Unlike the company’s previous plan, the new plan instructed employees to seek shelter at
+that location rather than to drive away. Since the tornado passed close to this business, this
+change in the plan may have saved lives and prevented injuries.
+
+      The Norman NWSFO developed excellent working relationships with local emergency
+managers. The strong partnerships eased the communication process during the severe weather
+outbreak and also enabled NWS officials to gain access to the damaged areas to conduct surveys.
+Many of the severely damaged areas remained barricaded by the National Guard and/or local law
+enforcement until at least May 9, 1999.
+
+Summary
+
+      This was a unique event. Despite the large number of tornadoes in the NWSFO Norman
+CWA and the tremendous devastation in residential areas, casualties were minimal for several
+reasons.
+
+     < One very large tornado caused most of the damage and casualties.
+     < National Weather Service tornado warnings were issued with long lead times.
+     < There were live, on-the-scene broadcasts of the tornado on the local Oklahoma City
+
+             television stations well before it reached the densely populated metropolitan area.
+
+     < The main tornado struck in late afternoon and early evening after schools were out and
+
+             most commuter traffic had reached its destination.
+
+                                                         12
+     < Residents were well-versed in tornado safety precautions due to extensive training and
+
+             outreach by the National Weather Service, local news media and emergency
+             management agencies.
+Had this tornado struck during the late nighttime hours, even with the long National Weather
+Service tornado warning lead times, the number of casualties could have been much higher.
+      In summary, the public was very well served by the National Weather Service in Norman
+prior to and during this significant event. Effective warnings and follow-up statements minimized
+loss of life and property.
+
+              An F5 tornado wrapped a large 4-wheel drive pickup around a utility pole, stripping
+              off most of the truck’s sheet metal. (Photograph courtesy of Curtis Carey,
+              NOAA/NWS Public Affairs)
+
+                                                         13
+F5 damage to a home in Moore, Cleveland County, Oklahoma, May 3, 1999. Note most debris has been
+blown away. (Photograph copyright 1999. The Oklahoma Publishing Co.)
+
+                 Wooden projectiles driven into the ground by the tornado on the west side of
+                 Oklahoma City, Oklahoma, May 3, 1999. Note different directions of impact.
+                 (Photograph courtesy of William Lerner, NWS Headquarters)
+
+                                                         14
+Facts, Findings and Recommendations - Part 2
+                 Oklahoma Outbreak
+
+Local Office Warning and Forecast Service
+
+FACT:  At 12:30 p.m., May 3, a Thunderstorm Outlook was issued by NWSFO
+       Norman upgrading the western half of Oklahoma to a moderate risk of
+       severe thunderstorms. It noted the likelihood for some supercell
+       thunderstorms and isolated tornadoes. Emergency managers and spotter
+       groups were encouraged to be ready for possible activation later that
+       afternoon.
+
+FACT:  During the main part of this severe weather episode (4 p.m., May 3, until
+       2 a.m., May 4), NWSFO Norman issued 116 warnings (70 tornado
+       warnings; 46 severe thunderstorm warnings). In the Oklahoma City
+       metropolitan area, the average lead time for the first tornado, in each
+       county warned, was 32 minutes. NWSFO Norman’s average lead time
+       for all tornado warnings issued during this event was 18 minutes.
+
+FACT:  At 6:57 p.m., NWSFO Norman issued a uniquely worded SVS
+       (headlined “TORNADO EMERGENCY IN SOUTH OKLAHOMA
+       CITY METRO AREA”) which heightened awareness of this serious
+       situation. It urged people in Moore and south Oklahoma City to take
+       immediate tornado precautions (25 minutes before the tornado entered
+       those areas). This SVS was formatted with the Specific Area Message
+       Encoder (SAME) information and was tone-alerted on NWR. The
+       phrase was picked up by media outlets and credited with adding the
+       emphasis that prompted numerous residents to action.
+
+FACT:  Two members of the OSF assisted with the operations of the Norman
+       NWSFO Principal User Processor (PUP) during the event and provided
+       helpful feedback/analysis to the operational forecasters.
+
+       15
+Systems
+
+Weather Surveillance Radar-1988 Doppler (WSR-88D)
+
+FACT:       Most radar-based tornado warning decisions at NWSFO Norman were
+            made using the base reflectivity, storm relative velocity and Vertically
+            Integrated Liquid products from the WSR-88D.
+
+FACT:       One communications equipment malfunction (resulting in the loss of one
+            volume scan) occurred with the Twin Lakes WSR-88D (KTLX) radar
+            during the tornado event. The OSF Hotline staff (in the same building)
+            came to the NWSFO to reset the WSR-88D. The forecast office staff did
+            not have to become involved in problem resolution. That level of service
+            is not available at other NWS field offices.
+
+FACT:       This Service Assessment focuses on the Oklahoma City and Wichita area
+            tornadoes. However, it is noteworthy that, within this severe
+            thunderstorm and tornado outbreak area on May 3, NWSO Wichita and
+            NWSFO Tulsa were able to provide effective warning services during
+            this event through the use of nearby WSR-88Ds. This is a testimony to
+            the effectiveness of the redundant WSR-88D coverage (mainly east of the
+            Rockies) and the back-up procedures employed by these two offices.
+
+Finding 2:  The NWSFO Tulsa WSR-88D gearbox malfunctioned and dropped into
+            the azimuth electrical harness on May 2 at 10 a.m. Depot maintenance
+            was dispatched from OSF within 4 hours and brought the system up
+            24 hours later.
+
+Recommendation 2: Once the gearbox problem is determined, the OSF should implement
+                             appropriate maintenance procedures and/or fixes at all WSR-88D sites.
+
+Warning Decision Support System (WDSS)
+
+FACT:       The NSSL-developed WDSS provided useful information to the warning
+            staff at NWSFO Norman during the outbreak. WDSS offers access to
+            the full wide-band suite of reflectivity and velocity data, improved
+            algorithm guidance, and dynamic tables which rank storms according to
+            algorithm-derived severe weather threats.
+
+            16
+Finding 3:         WDSS severe storm cell tables and trend displays focused the
+                   forecasters’attention on those storms that could require warning.
+                   WDSS displays of full resolution velocity products were confidence
+                   builders for tornado warning decisions. WDSS also incorporates
+                   advanced versions of the NSSL mesocyclone detection and tornado
+                   detection algorithms. The NEXRAD Open systems Radar Product
+                   Generator (ORPG) is required to implement advanced algorithms and to
+                   provide high resolution products to AWIPS for these WDSS capabilities.
+                   The NEXRAD Open systems Radar Data Acquisition (ORDA) will
+                   provide improved base data (e.g., high resolution reflectivity, better
+                   anomalous propagation suppression).
+
+Recommendation 3:  The National Weather Service should give high priority to the ORPG and
+                   ORDA projects and to the incorporation of high resolution WSR-88D
+                   data in the AWIPS Build 5.X series.
+
+NOAA Weather Radio (NWR) / Console Replacement System (CRS)
+Performance
+
+FACT:              The CRS automated voice was used by NWSFO Norman during the
+                   event. CRS proved to be beneficial overall, as many statements and
+                   warnings reached the public faster than would have been possible via
+                   manual recordings.
+
+FACT:              Despite the speed advantage provided by CRS, there were some adverse
+                   occurrences. In NWSFO Norman’s NWR coverage areas, 14 warnings
+                   (19 percent of the warnings broadcast) required manual transmission
+                   through the CRS Emergency Override. Quick action by the NWS
+                   enabled these warnings to be broadcast with delays of less than
+                   60 seconds.
+
+FACT:              Fourteen warnings were not automatically broadcast due to software
+                   problems. CRS’s Airwave formatter did not accept warnings with three
+                   bullets of information (compared to the “typical” four-bullet format
+                   referenced in Operations Manual Letter 1-98). CRS did not accept
+                   warnings that contained the “&” symbol (signifying a severe weather
+                   report) if that symbol was positioned before the latitude/longitude
+                   coordinates in WarnGen-created warnings; this symbol caused Airwave
+                   to lock up. Two warnings were not automatically broadcast due to the
+                   “Active/Inactive” bug (products flagged as neither active nor inactive,
+                   thus are not broadcast). Also, a software problem occurred with
+                   Bubble’s communication with CRS (the “escape-a” bug).
+
+                   17
+            The first two problems listed above were fixed by field personnel within
+            days of the outbreak. The third was fixed with a patch from
+            CommPower (a work-a-round was available on the NWS CRS Home
+            Page 2 days after the outbreak). The fourth problem remains unsolved as
+            of this writing.
+
+FACT:       To heighten awareness, 24 of the 48 SVS products issued during this
+            event were broadcast using the warning alert tone. Because most SVS
+            products are not tone-alerted, these urgent SVSs required manual
+            intervention. CRS’s Airwave formatter, along with AWIPS’s WarnGen
+            software, do not have the capability to produce both non-tone-alerted
+            and tone-alerted SVS products.
+
+Finding 4:  Various CRS formatters in field offices provide a useful service but do
+            not satisfy the needs of all offices. In addition, there are operational
+            problems associated with most of these formatters. There is a need for
+            standardized CRS formatter software to provide an efficient, reliable
+            interface between AWIPS and CRS. Earlier this year, NWS regional
+            representatives provided OSO a set of field requirements for a universal
+            CRS formatter.
+
+Recommendation 4a: OSO should establish a schedule for the development and implementation
+                             of universal, AWIPS-based, and nationally supported formatters for
+                             CRS.
+
+Recommendation 4b: In the interim, OSO should establish a national forum to collect and
+                             publicize improvements and fixes that have been made to the CRS
+                             formatters currently in use.
+
+AWIPS Performance
+
+FACT:       AWIPS was critical to the success of this event. It would have been
+            impossible to duplicate the number of successful warnings and lead times
+            and to keep track of the large number of severe storms with a mixture of
+            PUPs, PCs and Automation of Field Operations and Services (AFOS)
+            systems.
+
+Finding 5:  All warnings at NWSFO Norman were generated with WarnGen
+            (AWIPS Build 4.1.1); the staff invested substantial effort during the
+            months prior to the event, customizing preformats for warnings and
+            SVSs, which included the generation of detailed city boundary
+            backgrounds.
+
+                   18
+Recommendation 5: NWS regions should ensure that all forecast offices customize warning
+                             preformats and generate city boundary backgrounds for their CWAs.
+
+Finding 6:         AWIPS pixel replication zoom distortion led forecasters to supplement
+                   WSR-88D velocity data with alternate display systems (e.g., WDSS).
+                   AWIPS Build 4.2 provides non-distorted magnification but requires more
+                   time to display the product. Substantial improvement in performance will
+                   not be possible with the existing AWIPS hardware.
+
+Recommendation 6a: For the near term Build 5 time frame, the AWIPS Program Office (APO)
+                             should make modifications that result in more rapid display of non-
+                             distorted magnified products within the existing AWIPS framework.
+
+Recommendation 6b: For the long term, the APO should evaluate what improvements in
+                             display time could be achieved for non-distorted magnification of WSR-
+                             88D products as AWIPS hardware and software evolve.
+
+Finding 7:         The Norman NWSFO accessed, via the Internet, data sets not available
+                   through AWIPS and helped forecasters focus on the convective initiation
+                   over southwest Oklahoma. These included:
+
+                   < Advanced Regional Prediction System model output from the Center
+                       for the Analysis and Prediction of Storms at the University of
+                       Oklahoma,
+
+                   < RUC II model output, and
+                   < the Oklahoma mesoscale network.
+
+                   Methods for ingesting data sets into AWIPS, via Local Data Acquisition
+                   and Dissemination (LDAD), have been implemented at a few forecast
+                   offices but are not widely known or documented.
+
+Recommendation 7:  The APO should provide to the Regions for distribution to field offices
+                   documentation and procedures for using LDAD to ingest data sets not
+                   available through AWIPS.
+
+FACT:              The Norman NWSFO SOO alerted the Network Control Facility (NCF)
+                   at 5 p.m. and requested enhanced monitoring. The NCF opened a
+                   remote terminal session into Norman and was ready for problem
+                   resolution. When one of the radar data streams stopped coming into the
+                   AWIPS, the SOO notified NCF personnel who promptly performed a
+                   modem reset. This was the only modem reset required during this event.
+
+FACT:              The AWIPS program that sends data to AFOS failed once and delayed
+                   one warning by 30 seconds. Because this process fails often at NWSFO
+
+                   19
+            Norman, the SOO anticipated this and had a remote terminal window
+            open and ready to run “startAFOS.”
+
+Finding 8:  AWIPS performed very well during this event. However, two
+            interruptions of AWIPS processes (e.g., AWIPS to AFOS
+            communication and WSR-88D to AWIPS communication) led to delays
+            in product receipt and transmission. An additional delay was caused by
+            having to contact the NCF. Also, a potential AWIPS point of failure,
+            with respect to contacting the NCF, is possible when phone lines are
+            unavailable, as was often the case at NWSFO Norman during this event.
+
+Recommendation 8: The APO should develop a method to allow local restart of basic AWIPS
+                             processes, saving valuable time during severe weather events.
+
+Internal and External Coordination
+
+FACT:       The Norman NWSFO’s strong partnership with the amateur radio
+            community in central and western Oklahoma proved very valuable on
+            May 3. Amateur radio information played a crucial role in the warning
+            process and in subsequent follow-up information (SVSs and LSRs).
+            Seventy-five severe event reports were received via the amateur radio
+            network. The office’s amateur radios were of even greater importance
+            that night since its phone service was often interrupted for several hours
+            (6:30 p.m. until at least midnight).
+
+FACT:       Amateur radio repeaters helped keep the Norman NWSFO in contact
+            with spotters and Emergency Operations Centers (EOCs) throughout the
+            far reaching counties in its CWA. This was critical for these outlying
+            communities because local TV coverage was focused on the Oklahoma
+            City metropolitan area F5 tornado.
+
+FACT:       Post-storm visibility with the media was very positive. Local and
+            national news coverage focused on the advance warning provided by the
+            National Weather Service and the extensive live video coverage by the
+            Oklahoma City TV stations. NWS Headquarters, SRH, NWSFO
+            Norman, SPC, OSF and NSSL all participated in interviews following the
+            event. There were over 200 media contacts following this event.
+            Pro-active efforts by NOAA Public Affairs included:
+
+            < Press conference by NWSFO Norman, the SPC, OSF and NSSL on
+                May 4, 1999.
+
+            < Press conference in Washington, DC, by NOAA Administrator
+                D. James Baker and NWS Deputy Director John Jones.
+
+            20
+FACT:          < Several press releases and media advisories.
+FACT:          < A multitude of pro-active interviews with local reporters. Coverage
+
+FACT:              included stories in several major newspapers and news magazines
+                   plus interviews and related coverage by the major television
+                   networks.
+
+               Soon after the live broadcast of the Presidential visit to the city on
+               May 8, 1999, a TV newscaster from the Oklahoma City NBC affiliate,
+               KFOR, thanked the National Weather Service for the advance warning.
+
+               The Moore Emergency Manager included a severe weather awareness
+               insert in the city’s water bills to residents during severe weather
+               awareness week (held 2 months prior to the tornado). The insert gave
+               specific instructions on what the residents should do in the event of a
+               tornado. The Norman NWSFO gave technical assistance to the
+               emergency manager on this project.
+
+               A large Oklahoma City area telecommunications company called
+               NWSFO Norman after the tornado to express thanks for their assistance
+               in updating the company’s severe weather safety plan, completed prior to
+               the tornado. The new plan instructed employees not to travel home
+               during a tornado for safety reasons. This was a significant change from
+               the previous plan, which allowed employees to go home. The new plan
+               may have saved lives since the F5 tornado passed within 1 mile of the
+               company.
+
+Dissemination  Interviews with several Oklahoma City radio stations (KNOR, KOMA,
+               KQCV, KTOK, KATT, KYIS, KCYI, KNTL and WWLS) indicated that
+FACT:          NWR information was used often in their operations during the outbreak.
+               One general manager said that he was “grateful” for the NWR service,
+FACT:          while another station’s official said that his station “lives and dies by”
+               NWR.
+
+               CRS voice quality was not a major issue in this event, at least with the
+               limited number of customers interviewed. During the event, some
+               stations played the actual NWR automated voice on the air, although one
+               radio station’s general manager acknowledged that they did not air the
+               actual broadcast due to CRS’s “poor voice quality.” In the weeks
+               following the event, NWSFO Norman received some voice quality
+               complaints from the public.
+
+               21
+FACT:              The Deputy Director of the Oklahoma Civil Emergency Management
+                   agency stated EMWIN provided prompt information to the emergency
+                   managers during this event. He further stated EMWIN is one of the most
+                   valuable emergency management tools to come along in many years.
+
+FACT:              Local emergency management officials cited the OK-FIRST system as a
+                   very helpful weather information tool. The OK-FIRST system includes
+                   Internet access to real-time WSR-88D radar data plus all NWS text
+                   products. This system was developed by the Oklahoma Climatological
+                   Survey. The Norman NWSFO staff and OSF Training Branch assisted
+                   the OCS in its extensive training of OK-FIRST users.
+
+Finding 9:         In addition to the NWS text products, such as warnings and follow-up
+                   statements, real-time radar data was available to some emergency
+                   managers via OK-FIRST. These radar data provided valuable
+                   information on storm structure, location and track of the storms. A basic
+                   set of WSR-88D products will soon be available (in Build 4.3) on the
+                   AWIPS Satellite Broadcast Network. However, these products cannot
+                   be made available outside the NWS until the NEXRAD Information
+                   Dissemination Service (NIDS) contract expires.
+
+Recommendation 9:  The APO should devise a method that can be implemented, once the
+                   NIDS vendor contract expires, whereby partners and customers can
+                   access a basic set of radar products in real-time.
+
+Response           The ample National Weather Service warning lead times and live local
+                   TV coverage allowed many individuals to escape the path of this tornado
+FACT:              (from their homes) via automobile.
+FACT:
+                   A Grady County resident living in an area with primarily mobile homes
+FACT:              credited advance National Weather Service warnings with saving many
+                   lives in his neighborhood. The early warning gave his family time to
+                   gather neighbors into his storm cellar. Thirty-five people crammed into
+                   the cellar. The winds from the F5 tornado pulled the cellar door open,
+                   but all survived. Their mobile homes were destroyed.
+
+                   Citing advance National Weather Service warnings, a Grady County
+                   Deputy Sheriff was able to pre-position himself close to the projected
+                   path of the tornado to immediately deploy into the stricken area after it
+                   passed. As a result, he was on the scene of some of the worst
+                   destruction in his county and delivered emergency care to casualties.
+
+                                               22
+FACT:        An award ceremony at West Moore High School could have ended in
+             disaster without the quick thinking of the school’s assistant principal.
+             The assistant school principal ushered the participants and guests into the
+             interior hallways and bathrooms. The roof of the gym was ripped off by
+             the tornado. There were no fatalities at the school.
+
+FACT:        Using National Weather Service warnings and radar information, as well
+             as their own radars, TV stations in Oklahoma City are credited with
+             helping save many lives. TV coverage of the Oklahoma City metro area
+             F5 tornado is regarded as an extraordinary event. Two news helicopters
+             flew adjacent to the tornado reporting the location and path to the public.
+             One station simultaneously showed a text box on the screen with
+             projected street names the tornado would hit and approximate time the
+             tornado would reach a particular site.
+
+Finding 10:  Two deaths were attributed to individuals seeking shelter under highway
+             overpasses during this event. There were also reports of people who
+             were severely injured after seeking shelter under overpasses.
+
+Recommendation 10: NOAA Public Affairs, with assistance from the Office of Meteorology,
+                             should update tornado safety brochures with statements which warn
+                             against seeking shelter under overpasses during a tornadic event.
+
+Training     The Norman NWSFO staff completed a severe weather drill just prior to
+             the May 3, 1999, outbreak. One part of the drill was a scenario which
+FACT:        simulated a violent tornado approaching Oklahoma City. Each forecaster
+             was required to write appropriate warnings and NOWs for such an event.
+
+             23
+Management Procedures
+
+FACT:  The Norman NWSFO has encouraged and nurtured a productive
+       partnership with the local agencies, the University of Oklahoma and the
+       public to assist in weather-related scenarios. Early in the morning on
+       May 4 following the tornado outbreak, there were enough qualified
+       volunteers (including volunteers from all local NOAA components) to
+       assemble nine storm survey teams. These quality surveys were posted on
+       the NWSFO Norman Home Page soon after the event. This was very
+       helpful to the Service Assessment Team. Although such a rapid and
+       thorough survey cannot be expected at other offices in the country, it
+       does point to the importance of being prepared for a quick response.
+
+       Devastating tornado damage in the small community of Haysville, south of Wichita,
+       Kansas. (Photograph courtesy of John Ogren, NWSO Wichita, Kansas)
+
+                                                   24
+           Southern Kansas Outbreak Summary
+                    NWSO Wichita, Kansas
+
+      A destructive tornado moved through south-central Kansas on the evening of May 3, 1999
+(see Figure 1). The hardest hit area extended from Haysville northward into the southern sections
+of Wichita. NWSO Wichita provided accurate information on the tornado as it developed in
+northern Sumner County and moved north into Sedgwick County. As the tornado tracked
+towards the southern sections of the city of Wichita, it veered to the northeast, sparing a strike on
+the center of the city.
+
+Summary of Warning and Forecast Services
+
+      Early in the day, the operational staff was aware that there was potential for severe
+thunderstorms on Monday evening, May 3. The SPC included the area in a slight risk for severe
+thunderstorms in the 7 a.m. Day 1 SWO. Following the 11:15 a.m. Day 1 SWO, elevating the
+potential to a moderate risk, NWSO Wichita issued a Hazardous Weather Outlook (HWO) at
+12:18 p.m. for the potential of severe thunderstorms and the possibility of isolated tornadoes. At
+3:49 p.m., the SPC upgraded the Day 1 SWO to indicate the high risk for severe thunderstorms in
+central Oklahoma and central Kansas.
+
+      A NOW was issued at 4:12 p.m., announcing the expected development of thunderstorms
+between 5 p.m. and 7 p.m. stating,
+
+      “SOME OF THE THUNDERSTORMS WILL BE SEVERE...PRODUCING LARGE
+      HAIL AND DAMAGING WINDS. ISOLATED TORNADOES ARE ALSO
+      POSSIBLE.”
+
+Another NOW was issued at 6:38 p.m. indicating,
+
+      “THUNDERSTORMS WILL DEVELOP RAPIDLY THIS EVENING.... NOW IS
+      THE TIME TO REVIEW YOUR SEVERE WEATHER SAFETY PLANS.”
+
+      Thunderstorms developed rapidly over south-central Kansas between 6:45 p.m. and 7 p.m.
+The shift supervisor called to request SKYWARN activation around 7 p.m. At 7:17 p.m., NWSO
+Wichita issued a severe thunderstorm warning for Harper County, based on the potential for large
+hail, as indicated by the WSR-88D. The SPC issued Tornado Watch #200 at 7:21 p.m., valid
+from 7:30 p.m. to midnight.
+
+      At 7:19 p.m., the Wichita WSR-88D malfunctioned. The shift supervisor initiated
+immediate remedial actions by calling the OSF Hotline. Next, he attempted to correct the failure
+by working with the OSF from the Radar Data Acquisition site. In the intervening time, the other
+
+                                                         25
+forecaster initiated a dial back-up to the Vance Air Force Base (AFB) radar to ingest imagery on
+the PUP. At 7:38 p.m., the Vance AFB WSR-88D indicated strong rotation in Sumner County,
+and a tornado warning was issued by NWSO Wichita valid until 8:15 p.m. for northern Sumner
+County.
+
+      Since NWSO Wichita was dialed into the Vance AFB WSR-88D via the PUP, radar
+imagery was not available on AWIPS. The full capability of WarnGen, the AWIPS-resident
+warning generation tool, cannot be realized without current radar imagery. Therefore, the staff
+used the back-up PC-resident software (Warning and Interactive Statement Editor, version II
+[WISEII]) to issue severe weather warnings. It should be noted that AWIPS Build 4.2, which
+will be installed at all NWS offices this summer, will have a continuous dial capability to nearby
+radars allowing forecasters to use the full capability of WarnGen if the primary WSR-88D should
+malfunction.
+
+      A severe thunderstorm warning was issued for Sedgwick County at 7:49 p.m. based on a
+spotter report of dime-size hail at 7:45 p.m. near Haysville. The storm later produced golfball-
+size hail in the city of Wichita. Based on radar data from the Vance AFB WSR-88D, which
+depicted a dramatic increase in the rotational velocities within the mesocyclone, NWSO Wichita
+issued a tornado warning for northern Sumner County and southeast Sedgwick County at
+8:16 p.m., valid until 9:20 p.m. The warning was corrected 2 minutes later to indicate the
+warning was for northern Sumner and eastern Sedgwick County. The tornado warning was
+relayed from NWSO Wichita to the Sedgwick County EOC at 8:17 p.m. The 911 dispatcher
+activated the siren system and initiated an all-channel cable override for Wichita.
+
+      A tornado entered Sedgwick County moving north at 30 mph from Sumner County.
+Damage was rated at F1 as it crossed into Sedgwick County about 8:30 p.m. Around 8:35 p.m.,
+the tornado struck the town of Haysville with F2 to F3 intensity. An isolated section in north
+Haysville suffered F4 damage.
+
+      An SVS issued at 8:33 p.m. read,
+
+      “TRAINED SPOTTERS AND RADAR INDICATED A TORNADO ON THE
+      GROUND NEAR PECK ON THE SUMNER/SEDGWICK COUNTY LINE. THIS
+      TORNADO WILL PASS THE KANSAS TURNPIKE JUST SOUTH OF
+      HAYSVILLE AT ANY TIME.”
+
+      Another SVS issued at 8:46 p.m. asserted,
+
+      “AT 8:43 P.M. ...DOPPLER RADAR INDICATED A TORNADO ENTERING
+      SOUTH WICHITA...FROM THE HAYSVILLE AREA. ...A TORNADO WAS
+      REPORTED IN HAYSVILLE WITH STRUCTURAL DAMAGE AROUND
+      8:35 P.M. PERSONS IN WICHITA SHOULD TAKE SHELTER IMMEDIATELY.”
+
+      As the tornado turned to the northeast, it moved across the southern sections of the city of
+Wichita. The SVS issued at 8:52 p.m. noted,
+
+                                                         26
+      “TRAINED WEATHER SPOTTERS REPORTED DAMAGE FROM A TORNADO
+      AT MACARTHUR AND SENECA ROAD. THIS DANGEROUS STORM WILL
+      CONTINUE TO MOVE NORTH AT 30 MPH THROUGH THE MIDDLE OF
+      WICHITA.”
+
+      From the damage path and reports from spotters, the tornado lifted about 8:53 p.m. in
+eastern Sedgwick County. A chronology of the products issued by NWSO Wichita and the SPC
+is given in Appendix D.
+
+Public Response
+
+      Warnings and statements, disseminated by the National Weather Service via the NWWS,
+FOS and NWR, were relayed by the local radio and television stations. Extensive coverage on
+local television and radio allowed for widespread awareness of the approaching tornado. On-site
+interviews were conducted in Haysville where the tornado did considerable damage. Those
+interviewed said the warnings were very good, stating that the siren lead time was 10 to
+15 minutes. Residents followed severe weather safety plans and took cover in the lowest levels of
+the houses or apartments. Several had time to invite neighbors to their basements. No fatalities
+occurred in automobiles. There were no reports of travelers seeking shelter under overpasses.
+
+      Additional interviews with those affected by the storm indicated that radio station KFDI
+provided effective weather information of the approaching tornado. A telephone interview was
+conducted with a reporter from KFDI AM/FM radio in Wichita who commented that the products
+and services from the National Weather Service were timely. He believed that the report of the
+tornado in Sumner County at 7:40 p.m. elevated the awareness of the station and the listeners.
+
+Post-Storm Feedback
+
+      The Sedgwick County Emergency Management team cited several National Weather
+Service products as being valuable in preparing the county emergency staff for this tornado event.
+These included the Day 1 and Day 2 SWOs from the SPC and the HWO issued at
+12:18 p.m. by NWSO Wichita. The NOW issued by NWSO Wichita at 4:12 p.m., predicting the
+expected development of thunderstorms between 5 p.m. and 7 p.m. with the potential for isolated
+tornadoes, heightened awareness. Also, the tornado warning for Sumner County at 7:38 p.m.
+elevated public awareness of the tornado potential for the Wichita area, enhancing the
+effectiveness of the response to the 8:16 p.m. tornado warning for southeast Sedgwick County.
+
+      Just before the issuance of the tornado watch around 7:15 p.m., the Sedgwick County
+Communication Officer initiated spotter activation. The county EOC monitors the weather
+warnings and forecasts through EMWIN. Two other video monitors are used to view cable
+television delivery of radar imagery on Cable TV channels 51 and 52. The county EOC also has a
+Data Transmission Network and NWR with the SAME feature.
+
+                                                         27
+      The Sedgwick County EOC has the lead responsibility for siren activation in Wichita. The
+county EOC is co-located with the 911 Dispatch. There is a direct line between NWSO Wichita
+and the communication center. Sirens were activated upon receipt of the tornado warning at
+8:17 p.m. The county EOC staff was very complimentary of the relationship with the NWSO and
+the services provided during this event.
+
+      The WCM began the first field survey of damage in Sedgwick County Tuesday afternoon,
+May 4. An aerial assessment was made by the WCM during a fly-over of the damage path in a
+police helicopter. From the aerial survey, it was determined that portions of the damage track
+were category F4. A lead forecaster from Wichita conducted a ground survey of damage in
+Sumner County on Wednesday, May 5. A ground survey of the damage in Sedgwick County was
+conducted by the WCM and a member of the Service Assessment Team on Friday, May 7. By
+that time, the damaged area was contaminated by removal of debris and bulldozing efforts.
+
+      To reduce the influx of media inquiries, the WCM prepared a well-worded PNS Tuesday
+morning, May 4, listing pertinent details of the previous evening’s event. This PNS was released
+at 9:30 a.m. and was deemed valuable in minimizing follow-up interviews from the media.
+
+      A follow-up press release was issued by the WCM at 4 p.m. as a PNS on Tuesday, May 4.
+In this release, the WCM announced the damage was assessed as category F4. The press release
+contained pertinent information on the damage path and the timetable of warnings and statements
+issued by NWSO Wichita. On May 6, NWSO Wichita posted a tornado track map on its Web
+page.
+
+      Interviews were conducted with the staffs of all three major TV network affiliations
+(KAKE-TV10 ABC, KWCH-TV12 CBS, KSNW-TV3 NBC) in Wichita. These television
+stations indicated that NWSO Wichita performed an excellent service with effective warnings and
+statements. All three TV stations broke into programming after the issuance of the 7:38 p.m.
+tornado warning for Sumner County. Continuous on-air television coverage began in the 8:16 to
+8:22 p.m. time frame and continued for 1 ½ hours.
+
+      As was the case in the Oklahoma City area, effective warnings and follow-up statements by
+NWSO Wichita served the public very well during this event. It is noteworthy that these services
+were provided despite the malfunction of the Wichita WSR-88D, about 1 hour before the event.
+The NWSO Wichita staff is commended for their proficiency in using back-up procedures.
+
+                                                         28
+Facts, Findings and Recommendations - Part 3
+             Southern Kansas Outbreak
+
+Local Office Warning and Forecast Service
+
+FACT:    NWSO Wichita issued two NOWs at 4:12 p.m. and 6:38 p.m., predicting
+         the potential for severe thunderstorms and the possibility of isolated
+         tornadoes.
+
+FACT:    The initial tornado warning for southeast Sedgwick County was issued at
+         8:16 p.m, with a lead time of 14 minutes. This warning was corrected 2
+         minutes later to include eastern Sedgwick County. SVSs issued at 8:33
+         p.m., 8:46 p.m. and 8:52 p.m. contained information on the tornado’s
+         location or damage, as reported by spotters in Sedgwick County.
+
+Systems  The NWSO Wichita WSR-88D radar (KICT) failed at 7:19 p.m. The
+         Wichita electronic technician replaced a trigger amplifier and two shorted
+FACT:    backswing diodes in the modulator. The radar was brought back on-line
+         at about 10:15 p.m. The failure does not appear to be associated with
+FACT:    any specific action on the part of the radar operator (e.g., power source
+         change, or Volume Coverage Pattern change). However, these
+         components could weaken over time due to power transfers and surges.
+         The OSF is in the process of installing Transition Power Maintenance
+         Systems (TPMSs) at all WSR-88D sites, which will ease power
+         transitions and surges. The NWSO Wichita WSR-88D TPMS
+         installation is scheduled for the year 2000.
+
+         Two of the local television stations have their own local radars, in
+         addition to the NIDS products, such as the composite radar imagery from
+         Weather Services Incorporated. The other station had continuous NIDS
+         access to the Vance AFB WSR-88D via a NIDS vendor. Most of the
+         time, this station’s meteorologist displays the Vance AFB radar data
+         when storms are close to the KICT radar. All television stations said
+         they were able to communicate the threat of the approaching tornado
+         despite the outage of the Wichita WSR-88D.
+
+Internal and External Coordination
+
+                                                         29
+FACT:          NWSO Wichita has developed a strong working relationship with the
+               SKYWARN program and has expanded it within the amateur radio
+               community. This partnership resulted in the prompt and accurate
+               communication of tornado and damage reports throughout the event.
+
+Finding 11:    When NWSO Wichita began receiving detailed locations of tornado
+               damage (i.e., street addresses), personnel were not readily equipped to
+               identify the location, since they did not have a local city map. The only
+               map of Wichita was in the Yellow Pages of the phone directory.
+
+Recommendation 11: NWS Regions should ensure that offices have up-to-date, detailed maps
+                             for the larger metropolitan areas in their CWA to track significant
+                             weather movement and damage reports.
+
+Dissemination  The sirens were activated by the 911 dispatcher through the Sedgwick
+               County EOC upon receipt of the NWS warning at 8:17 p.m. Lead time
+FACT:          on the siren alert to residents in the tornado’s path ranged from
+               approximately 12 minutes (Haysville) to 20 minutes (south Wichita).
+FACT:
+FACT:          The 911 dispatchers disseminated the warning via the All-Channel
+               Override of the Cable Television at 8:18 p.m. to warn television viewers
+               who were not tuned to the local Wichita TV stations.
+
+               Wichita is home to Weather Data Incorporated which had several clients
+               in both Oklahoma and Kansas affected by this event. Using WSR-88D
+               data obtained via NIDS and other data sets, including National Weather
+               Service warnings, the Weather Data Incorporated forecasters
+               disseminated several warnings to their clients. Mike Smith, President of
+               Weather Data Incorporated, cited this event as a good example where the
+               “public-private partnership worked well.”
+
+Response       All those interviewed in the damaged areas commented that they had
+               heard the National Weather Service warnings before the tornado struck.
+FACT:          Citizens were clear on the information of the approaching tornado and
+               followed recommended safety measures.
+
+               30
+FACT:                Employees of Norland Plastics in Haysville were warned via NWR.
+                     Eighty-five employees were directed by the supervisor to the
+                     designated shelter area in the basement. None were injured, although
+                     the building was heavily damaged.
+
+FACT:                Monthly community tornado drills proved beneficial. Thirteen clients
+                     of a residential facility for disabled adults moved to the bath tubs and
+                     covered themselves. None were injured, although their homes, built on
+                     concrete slabs, were almost destroyed.
+
+FACT:                Since the Wichita area Civil Air Patrol (CAP) does not have access to
+                     aircraft for aerial storm surveys, the WCM arranged for an aerial
+                     helicopter survey with the Wichita police. Note: A National
+                     Memorandum of Understanding between the CAP and the Office of the
+                     Federal Coordinator for Meteorological Services and Supporting
+                     Research for support of aerial storm surveys, already exists (August
+                     1997) for those NWS offices with active CAP units in their area.
+
+Finding 12:          On May 4, the day after the event, a ground survey in Sedgwick and
+                     Sumner Counties could not be done due to more severe weather. An
+                     aerial survey was conducted in Sedgwick County on May 4, and a
+                     ground survey was completed in Sumner County on May 5. Weather
+                     Service Operations Manual (WSOM) Chapter J-02, section 4.3.3, reads
+                     in part: “[It] is the responsibility of the local Meteorologist in Charge
+                     or their designated representative to go to the site, survey the damage,
+                     and obtain overflight capabilities....”
+
+Recommendation 12a:  Regions should reemphasize the requirement contained in WSOM
+                     Chapter J-02, section 4.3.3, that NWS offices should conduct ground
+                     surveys as soon as practical after a severe weather event where there
+                     are fatalities, a large number of injuries or significant damage.
+
+Recommendation 12b:  NWS Regional Meteorological Services Divisions (MSDs) should
+                     establish procedures to perform prompt post-storm surveys at forecast
+                     offices needing assistance from nearby forecast offices or the regional
+                     headquarters.
+
+                     31
+Training
+
+FACT:        Proficiency in back-up procedures was critical to the smooth transition
+             of the warning program once the radar failed. In late February and
+             March, the NWSO Wichita staff completed proficiency checks on
+             WarnGen, WISEII, transfer power, calling NCF and use of CRS.
+
+Finding 13:  The National Weather Service Wichita forecasters were skilled in using
+             the back-up dial-in feature of the PUP to access radar imagery from the
+             Vance AFB WSR-88D.
+
+Recommendation 13: NWS Regional MSDs should ensure that office drills include
+                               proficiency checks in using the back-up dial-in feature of the PUP.
+
+Supporting Activities
+
+FACT:        Sedgwick County Emergency Management, in cooperation with the
+             local NWS office, conducted 21 separate spotter training/public safety
+             programs from March 1 to April 8 for over 1,000 participants. The
+             NWSO Wichita WCM conducted two of the sessions and had earlier
+             trained the Sedgwick County Deputy Director to provide the other
+             training seminars.
+
+FACT:        Within 24 hours of the event, two separate press releases were issued
+             as PNSs at 9:30 a.m. and 4 p.m, May 4, by the NWSO Wichita WCM.
+             These press releases were valuable in reducing the need for media
+             interviews and communicated the information on the tornado’s intensity
+             and the timeliness of NWS products.
+
+                       32
+                          Practices to Emulate
+
+      The Service Assessment Team identified practices at NWSFO Norman and NWSO Wichita
+that were particularly effective and which other field office managers may wish to emulate. Those
+practices having widespread applicability were also identified as Recommendations earlier in this
+Service Assessment.
+
+Sectorization of Warning Operations:      During the height of the tornado outbreak, NWSFO
+                                          Norman divided warning responsibility by geographical
+                                          area, using multiple AWIPS workstations. This
+                                          geographical division of responsibility improved efficiency
+                                          and warning strategy and is recommended during a
+                                          widespread outbreak of severe weather.
+
+AWIPS Map Customization:                  NWSFO Norman created AWIPS map background
+                                          boundaries for the major metropolitan areas within its
+                                          CWA. As a result, forecasters were able to generate
+                                          warnings faster and provide more detail in their warning
+                                          products. (See Recommendation 5)
+
+Tone-alerted SVSs:                        Typically, SVSs are not tone-alerted. However, during this
+                                          widespread tornado outbreak, NWSFO Norman forecasters
+                                          tone-alerted 24 of 48 SVSs which helped maintain a high
+                                          level of public awareness.
+
+Familiarization with Back-up Procedures:  Demonstrated proficiency in using WSR-88D dial back-up
+                                          procedures was included in NWSO Wichita’s spring drill.
+                                          This proved valuable, as their primary radar malfunctioned
+                                          just prior to this event. (See Recommendation 13)
+
+                                          33
+                      Appendix A
+          Fujita Tornado Intensity Scale2
+
+The Fujita Tornado Intensity Scale is a scale of wind damage intensity which wind speeds are
+inferred from an analysis of wind damage.
+
+Category  Definition and Effect
+F0
+F1        Gale tornado (40-72 mph): Light damage. Some damage to chimneys;
+F2        break branches off trees; push over shallow-rooted trees; damage sign boards.
+F3
+F4        Moderate tornado (73-112 mph): Moderate damage. The lower limit is
+F5        the beginning of hurricane wind speed; peel surface off roofs; mobile homes
+          pushed off foundations or overturned; moving autos pushed off the roads.
+
+          Significant tornado (113-157 mph): Considerable damage. Roofs torn off
+          frame houses; mobile homes demolished; boxcars pushed over; large trees
+          snapped or uprooted; light-object missiles generated.
+
+          Severe tornado (158-206 mph): Severe damage. Roofs and some walls
+          torn off well-constructed houses; trains overturned; most trees in forest
+          uprooted; heavy cars lifted off ground and thrown.
+
+          Devastating tornado (207-260 mph): Devastating damage. Well-
+          constructed houses leveled; structure with weak foundation blown off some
+          distance; cars thrown and large missiles generated.
+
+          Incredible tornado (261-318 mph): Incredible damage. Strong frame
+          houses lifted off foundations and carried considerable distance to disintegrate;
+          automobile-sized missiles fly through the air in excess of 100 yards; trees
+          debarked; steel-reinforced structures badly damaged; incredible phenomena
+          will occur.
+
+2 From J. Atmos. Sci., August, 1981, p. 1517-1519
+                                               A-1
+  Appendix B
+
+Event Statistics#
+
+   May 3-4, 1999
+    4 p.m.-3 a.m.
+
+                        `       NWSFO Norman        NWSO Wichita
+                                      CWA                CWA
+# Tornadoes
+# Tornado Warnings                         57 *                3
+Avg Lead Time for All Tornado              70                  7
+Warnings                                   18 min             11 min
+# Severe Thunderstorm Warnings
+Fatalities                              46               4
+Injuries                                42               6
+Homes Destroyed                        795            150
+Homes Damaged                        3,315          1,114
+Schools Destroyed                    4,722          2,272
+Businesses Destroyed                      2              2
+Businesses Damaged                     164             72
+Damage Cost                             90             38
+                                        $1 billion  $145 million
+
+# Most of the data in this table was provided by the May 14 Daily Oklahoman; Sedgwick
+County, Kansas, Emergency Management; American Red Cross; and the Oklahoma
+Department of Civil Emergency Management.
+
+* 65 tornadoes in all of Oklahoma during this event period.
+
+                                B-1
+                     Appendix C
+
+                  Oklahoma/Southern Kansas
+                       Tornado Outbreak
+                          of May 3, 1999
+
+                               NWSFO Norman
+                     Chronological Product Highlights
+
+Valid Time    Product Issued Area/Counties Affected                     Remarks
+   (CDT)     or Severe Report
+                                                     Slight risk of severe storms
+1204 5/2/99  SWODY2  Most of Oklahoma
+0055 5/3/99                                          Slight risk of severe storms late this
+0430         SWODY1  Most of Oklahoma                afternoon and tonight
+0630
+             ZFP     NWSFO Norman CWA                Severe storms possible later today and/or
+1115                                                 tonight for most zones
+1230         SPS     NWSFO Norman CWA
+1549                                                 Slight risk of severe storms this
+1523         SWODY1  Most of Oklahoma                afternoon and tonight; isolated tornadoes
+1600         SPS                                     possible
+1615-1700    SWODY1  NWSFO Norman CWA
+             SWOMCD                                  Part of the Slight risk area upgraded to
+             ZFP     Western/Central                 Moderate risk
+             SVR     Oklahoma
+                     Western/Central                 Moderate risk of severe storms later this
+                     Oklahoma                        afternoon through tonight
+                     NWSFO Norman CWA
+                                                     Part of the Moderate risk area upgraded
+                     Comanche Co.                    to High risk
+
+                                                     Increasing threat of supercells near the
+                                                     dryline late afternoon and evening
+
+                                                     “Some thunderstorms may be severe”
+                                                     mentioned in most zones for tonight
+
+                                                     First warning of the event issued
+
+                     C-1
+1620  HAIL        Lawton (in Comanche        First severe occurrence (1-inch diameter
+1645  SEL5        Co.)                       hail) of this event
+                  Western/Central
+1647-1730 TOR     Oklahoma                   Tornado Watch #195 issued; “tornadoes,
+                                             hail to 3 inches, and wind gusts to 80
+1651  TORNADO     Comanche, Grady, and       mph possible”
+                  Caddo Counties
+1713  SOFTBALL-   7 miles east-northeast of  First tornado warning of the event issued
+                  Medicine Park
+      SIZED HAIL  (Comanche Co.)             Spotters report first tornado of this event
+                  5 miles north of Altus     (near I-44)
+1741  NOW         (Jackson Co.)
+                  Oklahoma City Metro        Spotters report the first occurrence of
+1752  TORNADO     Area                       very large hail of this event
+                  Grady Co.
+1830  NOW                                    Potential for tornadoes to move into the
+                  NWSFO Norman CWA           area that evening
+1840-1930 TOR
+                  Cleveland and McClain      First tornado in Grady County (4 miles
+1858  TORNADO     Co.                        south of Verden)
+                  McClain Co.
+1857  SVS                                    Ongoing tornadic storms detailed for
+                  Oklahoma City Metro        some counties; rest of area informed that
+1859  SEL8        Area                       “threat for tornadoes will continue to be
+                                             high through the evening”
+                  Central Oklahoma
+                                             First tornado warning that was issued for
+                                             these counties
+
+                                             First tornado in McClain County (along
+                                             Interstate 44 west of Newcastle)
+
+                                             Headlined, “...Tornado Emergency in
+                                             South Oklahoma City Metro Area...”
+                                             Predicts large damaging tornado will
+                                             enter southwest metro area between
+                                             7:15-7:30 p.m. “Persons in Moore and
+                                             south Oklahoma City should take
+                                             immediate tornado precautions!”
+
+                                             Tornado Watch #198 replaced #195;
+                                             “particularly dangerous situation with
+                                             destructive tornadoes possible”
+
+                  C-2
+1911  TORNADO  Cleveland Co.        First tornado in Cleveland County
+                                    (crossed South Canadian River near SW
+1917-2000 TOR  Oklahoma Co.         149th Street)
+               City of Moore
+1925  TORNADO  Oklahoma Co.         First tornado warning that was issued for
+                                    this county
+1930  TORNADO  Oklahoma City Metro
+               Area                 Tornado moved through Moore
+1931  SVS
+               Oklahoma Co.         First tornado in Oklahoma County
+1934  TORNADO                       (entered southern part of county east of
+                                    Interstate 35)
+
+                                    Headlined, “...Large Damaging Tornado
+                                    Moving Through Oklahoma City
+                                    Metro...” Also states, “Persons in
+                                    southeast Oklahoma City and Midwest
+                                    City are in danger!”
+
+                                    Tornado near Tinker Air Force Base
+
+NOTE: This table reflects only the highlights of the Oklahoma chronology. It lists some of the key statements,
+watches, warnings and severe reports but does not attempt to recreate all of the products that were issued and all
+the reports received during this extended tornado outbreak.
+
+               C-3
+                        Appendix D
+
+                   Oklahoma/Southern Kansas
+                        Tornado Outbreak
+                           of May 3, 1999
+
+                               NWSO Wichita
+                        Chronological Product Log
+
+Valid Time     Product   Area/Counties                     Remarks
+   (CDT)         Type        Affected
+                                         Slight risk of severe storms
+1204 5/2/99  SWODY2     Eastern Kansas   Slight risk of severe storms
+                        Eastern 2/3
+0055 5/3/99  SWODY1     Kansas           Upgraded to moderate risk
+                        Southern Kansas  Highlighted threat of hail, damaging
+1115         SWODY1     NWSO Wichita     winds, and isolated tornadoes
+1218-0000    SPS        CWA              Upgraded to high risk
+                        Southern Kansas  Forecast rapid storm development
+1549         SWODY1     Sumner and       between 1700-1900
+1612-1900    NOW        Sedgwick
+                        Counties         Forecast rapid storm development
+1836-2100 NOW           Sumner,          between 1900-2100
+                        Sedgwick and
+1917-2000 SVR           Harper Counties  18SW Anthony radar indicated hail up
+                        Harper Co.       to 1 inch and winds over 55 mph
+1921         SEL0                        Tornado Watch #200 1930-midnight
+1938-2015    TOR        Central Kansas   Radar indicated strong rotation 2E of
+                        N Sumner Co.     Mayfield
+1944         SVS                         Tornado 1N of Mayfield
+                        N Sumner Co.     Hail near Haysville
+1949-2050 SVR           Sedgwick Co.
+
+                        D-1
+2002  SVS      N Sumner Co.     Tornado 3NW of Wellington
+               Sedgwick Co.     Hail in downtown Wichita
+2004  SVS      SE Sedgwick and  Tornado 4NW Wellington, strong
+               N Sumner         rotation 2NE Wichita. Reissue for N
+2016-2120 TOR  Counties         Sumner 1 min after previous TOR
+                                expired
+2016-2120 TOR  E Sedgwick and   Corrected warning to include all of east
+               N Sumner         Sedgwick County
+2023-2230 NOW  Counties
+               NWSO Wichita     Forecast of continued development of
+2029  SVS      CWA              severe storms with large hail, damaging
+                                winds, and isolated tornadoes possible
+2033  SVS      Sedgwick Co.     Strong rotation near Kechi quarter
+                                sized hail near Andale
+2046  SVS      E Sedgwick and   Tornado near Peck, possible tornado
+               N Sumner         7NW Wellington
+2047-2150 SVR  Counties
+               E Sedgwick Co.   Tornado entering S Wichita
+2052  SVS                       1st mention of Wichita being in path
+               W Sedgwick Co.   Warning re-issuance— radar indicated
+2059-2200 TOR                   severe storm near Anness
+               E Sedgwick Co.   Tornado moving through middle of
+2107  SVS                       Wichita
+               W Butler Co.     Radar indicated strong rotation near
+2111  SVS                       Andover
+               W Sedgwick Co.   Radar indicated severe storm near
+2116  SVS                       Anness
+               W Butler Co.     Radar indicated tornado near Rosehill
+2121  SVS      E Sedgwick and   Allow warning to expire at 2120
+               N Sumner
+2129-2215 SVR  Counties         Tornado 1SW Augusta
+               W Butler Co.     Nickel sized hail near Perth
+               Sumner Co.
+
+               D-2
+2130-2300 NOW  NWSO Wichita    Severe storms to continue developing
+               CWA             near and E of Anthony/Wichita/Marion
+2132  SVS      W Sedgwick Co.
+               Butler Co.      Warning canceled
+2137-2225 TOR
+               Butler Co.      Radar indicated strong rotation 10NE
+2145  SVS      Sumner Co.      and 8SW El Dorado
+
+2151  SVS      Butler Co.      Tornado NE of El Dorado
+               Sumner Co.
+2201  SVS      Butler Co.      Radar indicated severe near Dalton and
+               NWSO Wichita    Oxford
+2209  SVS      CWA
+                               Wall cloud N of El Dorado Lake
+2211  SVS
+                               Warning canceled
+2227  SPS
+                               Warning canceled
+
+                               HWO indicating continued potential for
+                               storms overnight
+
+               D-3
+

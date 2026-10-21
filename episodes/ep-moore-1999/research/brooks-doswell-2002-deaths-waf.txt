@@ -1,0 +1,414 @@
+354                                    WEATHER AND FORECASTING        VOLUME 17
+
+     Deaths in the 3 May 1999 Oklahoma City Tornado from a Historical Perspective
+
+                                   HAROLD E. BROOKS AND CHARLES A. DOSWELL III*
+
+                                              NOAA/National Severe Storms Laboratory, Norman, Oklahoma
+
+                                            (Manuscript received 5 February 2001, in final form 6 July 2001)
+
+                                                                              ABSTRACT
+
+                   The 3 May 1999 Oklahoma City tornado was the deadliest in the United States in over 20 years, with 36
+                direct fatalities. To understand how this event fits into the historical context, the record of tornado deaths in the
+                United States has been examined. Almost 20 000 deaths have been reported associated with more than 3600
+                tornadoes in the United States since 1680. A cursory examination of the record shows a break in 1875. Prior
+                to then, it is likely that many killer tornadoes failed to be reported. When the death toll is normalized by
+                population, a near-constant rate of death is apparent until about 1925, when a sharp fall begins. The rate was
+                about 1.8 people per million population in 1925 and was less than 0.12 people per million by 2000. The decrease
+                in fatalities has resulted from two primary causes: a decrease in the number of killer tornadoes and a decrease
+                in the number of fatalities in the most deadly tornadoes. Current death rates for mobile home residents, however,
+                are still nearly what the overall national rate was prior to 1925 and are about 20 times the rate of site-built
+                home residents. The increase in the fraction of the U.S. population living in mobile homes has important
+                implications for future reductions in the death toll.
+
+1. Introduction                                                       ita Falls, Texas, tornado killed 42 (see Table 1 for a
+                                                                      record of the most fatalities in a single U.S. tornado
+   Tornadoes are a hazard to life and property every-                 going backward in time from the end of 2000). The total
+where, including in the United States. A recent analysis              number of direct fatalities in the outbreak was 46, the
+of historical changes in damage associated with major                 most in the United States since the Ohio-Pennsylvania
+tornadoes has shown that, if the damage amounts are                   outbreak of 31 May 1985 killed 76. Of the 36 fatalities
+adjusted for wealth of the country, there is no clear long-           in the Oklahoma City tornado, 11 occurred in mobile
+term trend in the damage caused by the most damaging                  homes, and 18 of the 46 deaths caused by tornadoes in
+tornadoes (Brooks and Doswell 2001). In this follow-                  the outbreak were mobile home residents. As we will
+up work, we examine the question of changes in the                    discuss later, the problem of mobile home safety is the
+record of tornado deaths in the United States, focusing               biggest obstacle to reduction of tornado deaths in the
+primarily on the annual number of deaths, killer tor-                 United States.
+nadoes, and fatalities per tornado. As is the case with
+the damage dataset, there are issues involved in the use              2. The dataset and concerns
+of the data that must be addressed. After discussing
+those issues, we will look at the long-term record in an                 The primary dataset to be used is that of Grazulis
+effort to determine changes through time. We will close               (1993, hereinafter G93, 1995), listing tornadoes with
+by considering possible future trends in tornado fatal-               fatalities up through 1995. From 1996 to 2000, the re-
+ities.                                                                cords are those collected by the National Oceanic and
+                                                                      Atmospheric Administration Storm Prediction Center
+   These considerations provide a background for un-                  (SPC 2001). According to G93, the first death from a
+derstanding the fatalities in the 3 May 1999 tornado                  tornado in the United States was recorded in 1680 in
+outbreak. The particular tornado that hit the metropol-               Cambridge, Massachusetts. Tornado fatalities were re-
+itan Oklahoma City area directly killed 36 people, the                ported infrequently over the following two centuries,
+most in the United States since the 10 April 1979 Wich-               and tornadoes with at least 10 fatalities were reported
+                                                                      very rarely. From 1680 to 1874, only four tornadoes
+   * Current affiliation: Cooperative Institute for Mesoscale Meteo-  that caused at least 10 deaths were recorded. In contrast,
+rological Studies, The University of Oklahoma, Norman, Oklahoma.      seven were recorded in the decade that followed. As a
+                                                                      result, the primary emphasis of this paper is on the
+   Corresponding author address: Harold E. Brooks, NOAA/NSSL,         period of 1875-2000. Along with the apparent break in
+1313 Halley Circle, Norman, OK 73069.                                 the number of tornadoes with at least 10 fatalities, an-
+E-mail: brooks@nssl.noaa.gov
+
+ 2002 American Meteorological Society
+JUNE 2002                             BROOKS AND DOSWELL                  355
+
+  TABLE 1. Most fatalities in a single tornado in the United States
+going back in time from the end of 2000. Location is most prominent
+site or sites hit by tornado.
+
+     Date               Location      Deaths                              FIG. 1. Killer tornadoes per year in the United States, 1800-2000.
+
+16 Dec 2000  Englewood, AL               11
+3 May 1999   Oklahoma City, OK           36
+10 Apr 1979  Wichita Falls, TX           42
+21 Feb 1971  Cary-Pugh City, MS          58
+25 May 1955  Blackwell, OK-Udall, KS     80
+9 Jun 1953   Worcester, MA               94
+8 Jun 1953   Flint, MI                 115
+9 Apr 1947   Woodward, OK              181
+6 Apr 1936   Gainesville, GA           203
+5 Apr 1936   Tupelo, MS                216
+18 Mar 1925  Tristate (MO-IL-IN)       695
+
+other reason for concentrating on the period beginning                    path, a third died in a fall trying to get into a storm
+in 1875 is clear when the number of killer tornadoes1                     shelter outside of the tornado's exact path, and another
+per year is considered (Fig. 1). In 1875, a large increase                died when candles, lit after his electrical power had gone
+in the number of reports in the record occurred, with                     off because of the tornado, caught his residence on fire
+30 killer tornadoes in that year alone. The sudden in-                    (Brown et al. 2002). The traditional National Weather
+crease in reports is likely due to the work of John Park                  Service procedure has been to consider only the direct
+Finley (Galway 1985), who began his work in collecting                    fatalities, but determining that information, particularly
+tornado reports in the late 1870s.                                        early in the record, is impossible. There is no way to
+                                                                          know how many of the deaths within the record are
+   It seems plausible, given the abrupt change in the                     indirect, so there is a possible problem of inhomogeneity
+number of killer tornadoes, that many killer tornadoes                    in the dataset.
+prior to 1875 went unreported. Given the rapid change
+in demographics in the United States in the nineteenth                    3. General features of the record
+century, it is extremely difficult to estimate the amount
+of underreporting. Even since then, it is likely that some                   The number of deaths per year caused by tornadoes
+killer tornadoes have gone unreported, although under-                    has generally been much less in the last quarter of the
+reporting is probably less of a problem since 1875.                       twentieth century than it was previously (Fig. 2). In
+                                                                          particular, the number of deaths in the ``big years'' has
+   The number of deaths caused by individual tornadoes                    dropped dramatically. From 1975 to 2000, only twice
+is not always known well, particularly for earlier tor-                   did as many as 100 tornado deaths occur in a year (1984
+nadoes. G93 reports that possible deaths of slaves in the                 and 1998). In contrast, that number occurred 54 times
+1840 Natchez, Mississippi, tornado are not recorded,                      from 1875 to 1974, including every year from 1916
+nor are deaths on boats in the Mississippi River in the                   through 1927. The 1910s through the middle 1930s, in
+1896 Saint Louis-East Saint Louis tornado. The latter                     fact, represent a period of very high fatalities, as shown
+event also provides evidence of conflicting numbers of                    by the smoothed curve in Fig. 2. From 1912 to 1936,
+deaths from different sources. G93 lists the number of                    the mean annual death toll was 260, almost 5 times as
+deaths in Saint Louis as 137 and East Saint Louis as                      many as in 1976-2000, when the mean was 54. The
+118, consistent with Curzon (1896), who published a                       medians for the two periods were 179 and 44, respec-
+book on the tornado within 2 weeks of the event. The                      tively, indicating that the means are somewhat unrep-
+East Saint Louis Journal newspaper (Cook and Reed                         resentative, having been influenced by a few extreme
+2001) listed 128 deaths in East Saint Louis 4 days after                  events on the high end.
+the tornado, and Williams (1999) lists 140 dead in Saint
+Louis, giving a total of 268. We will use the G93 num-                       The decrease in death toll is even more apparent when
+bers throughout, with the caution that the exact number                   the rate of death is normalized by the population of the
+of deaths in many events cannot be known.                                 United States, available from the U.S. Census Bureau2
+                                                                          (Fig. 3). Prior to 1925, the smoothed rate was relatively
+   Another problem involves determining precisely
+which deaths are tornado related. In the case of the 3                       2 All population figures in this paper were taken from U.S. Census
+May 1999 Oklahoma City tornado, 36 people were                            Bureau Web site (http://www.census.gov/). The population figures
+killed directly by the tornado (e.g., hit by debris or                    used for Fig. 3 were the 1 July annual estimates from 1900 to 1999
+thrown long distances), but several others could be                       (http://www.census.gov/population/estimates/nation/popclock-
+viewed as indirect deaths. For instance, at least two                     est.txt). Prior to 1900, population was assumed to increase linearly
+people died of heart attacks in the vicinity of the damage                between the decennial censuses. For 2000, the change from 1998 to
+                                                                          1999 was added to the 1999 figures.
+   1 A killer tornado is any tornado that causes one or more fatalities.
+356  WEATHER AND FORECASTING                                         VOLUME 17
+
+   FIG. 2. Deaths per year in tornadoes in the United States, 1875-     FIG. 3. Death rate per million people per year in the United States,
+2000. The light line with dots shows raw values. The heavy line      1875-2000. The thin line with dots is the raw rate, the curved thick
+shows the smoothed values. The smoother consists of finding the      line is the death rate, filtered by three-point median and five-point
+median of three consecutive values and then applying a running mean  running mean filter, and the straight solid lines are least squares fits
+over five medians.                                                   to the filtered death rate for 1875-1925 and 1925-2000. Dashed lines
+                                                                     are estimates of 10th and 90th percentile death rates from 1925 to
+constant, showing a slight increase from about 1.6 to                2000.
+1.8 per million. Since that time, however, the rate has
+decreased substantially, to a little over 0.11 per million,          the perception of what is a big year for tornado deaths.
+roughly 1/15th of the long-term average prior to 1925.               Lines estimating the 90th percentile death rate from
+Many factors, including the beginnings of tornado fore-              1925 to 2000 have been constructed to be parallel to
+casting, improved communications, spotter networks,                  the mean value (Fig. 3). Multiplying the values of the
+and changes in construction, likely have been involved               90th percentile by the population in 1925 and 2000 gives
+in this decrease [see Doswell et al. (1999) for more                 estimated values of 475 and 80 deaths per year at those
+discussion]. There is no simple way to deconvolve the                two times. From this perspective, the 1998 national
+possible contributions from all those factors, so we do              death toll of 130 was just as far above the expected
+not assign a relative importance to any of them in par-              number of deaths as the 1925 national death toll of 794
+ticular. To put the change into perspective, however, a              (most of which came from the single ``Tri-state'' tor-
+death rate of 1.8 per million people per year would have             nado). In fact, the 10th percentile value in 1925 is 61,
+resulted in approximately 500 deaths in 2000, as com-                so that a rare low death toll 75 years ago is almost as
+pared with the actual number of 40. Another way of                   big as a rare high death toll now.
+looking at this change is to consider the impact on the
+death toll associated with the Oklahoma City tornado.                   We cannot identify the underlying social and scientific
+A crude estimate of the death rate prior to the changes              reasons behind the decline in tornado deaths, but we
+that occurred in 1925 can be obtained via multiplying                can at least attempt to describe from a statistical per-
+the death toll by the change in the rate. Such an estimate           spective how the decrease has occurred. First, the num-
+applied to Oklahoma City gives a death toll of 540,                  ber of killer tornadoes is, in general, less than it was
+implying that the efforts (intentional or unintentional)             75 yr ago (see Fig. 1). The median number of killer
+to improve tornado safety saved over 500 lives on 3                  tornadoes per year from 1976 to 2000 was 17 and the
+May 1999. Large caveats obviously must be associated                 maximum was 33. In contrast, the median from 1912
+with such an estimate, but it is of the same order as the            to 1936 was 39 and the minimum was 17.
+estimate of 700 deaths based on the changes in the his-
+torical ratio of deaths to amount of damage in tornadoes                Arguably more important than the number of killer
+(Doswell et al. 1999; Brooks and Doswell 2001).                      tornadoes, the number of deaths from individual ``high-
+                                                                     death'' tornadoes has decreased. This fact can be seen
+   A long-term decrease in the tornado death rate also               in at least two different ways. First, we can define a
+means that the notion of an ``average'' tornado death                high-death tornado and examine how that definition
+toll is somewhat difficult to define. Taking a standard              changes with time. For direct comparison to the 3 May
+climatological period of 30 years makes little sense,                1999 tornado, we could first consider the frequency of
+given the presence of such a strong trend. A more rea-               tornadoes associated with at least 36 deaths. Recall that
+sonable approach might be to look at the expected value              the Oklahoma City tornado was the first tornado in over
+of the trend at whatever point on the time series is of              20 years to have such a large death toll. In the 1920s
+interest. In 2000, with the value of 0.12 per million and            and 1930s, 20 such tornadoes occurred. What was once
+a population of almost 280 million, the expected death               an annual occurrence had not occurred for 20 years prior
+toll would be about 34, one-half of the 30-yr mean value             to 3 May 1999.
+of 68. The decrease in the death toll also has changed
+                                                                        The use of the Oklahoma City death toll to set an
+                                                                     arbitrary threshold for high death tolls is not completely
+JUNE 2002  BROOKS AND DOSWELL                                            357
+
+   FIG. 4. Deaths in 95th percentile tornadoes. The thin line with dots   FIG. 5. Days between days with at least one 10-fatality tornado
+shows the raw value for 5-yr period, centered on plotted year. The       (return period). Points are plotted at the second date of each pair.
+heavy line shows the result of using a three-point median and 11-yr
+running mean.
+
+satisfactory. Changes in the threshold could give dif-                   4. The mobile home problem
+ferent impressions and the results would be sensitive to
+the threshold. A simple, objective definition of a high-                    An increase of the death rate for mobile home resi-
+death tornado is to take all killer tornadoes within a 5-                dents in tornadoes was dramatically apparent in the
+yr window and find the 95th percentile of the death tolls                Oklahoma City tornado. Eleven of the deaths occurred
+associated with those tornadoes (Fig. 4). Smoothing the                  in mobile homes, but less than 100 mobile homes were
+95th percentile value with a 3-point median filter, fol-                 damaged by the tornado, in comparison with several
+lowed by an 11-point running mean, shows that it has                     thousand permanent homes. Specific figures for the
+dropped from 20-25 during the period of 1900-70 down                     number of people in each kind of housing are not avail-
+to about 10-15 since 1975.                                               able for the damaged structures, but a conservative es-
+                                                                         timate is that the death rate in mobile homes was more
+   A second illustration of this is the return period of                 than one person per 10 units while the death rate in
+any particular value of the number of deaths in a single                 permanent homes was less than one person per 200
+tornado. By return period, we mean the time between                      units. Thus, the risk to mobile home residents was at
+two events of the same magnitude. As an example, we                      least 20 times as great as the risk to permanent home
+have calculated how many days there were between two                     residents in the Oklahoma City tornado.
+days with at least one 10-death tornado on them since
+1875 as a function of time (Fig. 5). There are a total of                   We can compare the Oklahoma City tornado with
+259 days with at least one 10-death tornado in that time                 other tornadoes to see whether this increased risk holds
+period. Prior to 1958, return periods of less than 10 days               true and to see what kind of changes have been occur-
+were common. Since then, the fewest days between 10-                     ring. Since 1975, the National Weather Service has sep-
+death tornado days has been 19 (between the Hall Coun-                   arated out tornado fatalities associated with mobile
+ty, Georgia, 12-fatality tornado on 20 March 1998 and                    homes. Data for other fatality locations (permanent3
+the Birmingham, Alabama, 32-fatality tornado on 8                        homes, other buildings, vehicles, outdoors) are available
+April 1998).                                                             online from the Storm Prediction Center (http://
+                                                                         www.spc.noaa.gov/climo/), starting with 1985 (Table
+   We can compare the return period for 10-death tor-                    2). The fraction of deaths occurring in mobile homes
+nadoes to the population of the United States. By                        has been increasing since 1975 (Fig. 7). Using a Ken-
+smoothing the return periods with a strong 5-point me-                   dall's tau test (Press et al. 1992), the increase is statis-
+dian and 19-point running mean, a shortening of the                      tically significant at the 95% confidence level. From
+return period is apparent prior to 1925 with a length-                   1976 to 1980, 24% of tornado deaths were in mobile
+ening of the period since then (Fig. 6). In the absence                  homes. That fraction increased to 34% in 1986-90 and
+of mitigation efforts, it might be expected that the return              to 50% from 1996 to 2000.
+period would have an inverse relationship to population.
+During the period before 1925, this is roughly true.                        To understand the increase, we need to look at the
+Since then, however, as population has continued to                      changing demographics of the United States. The Cen-
+increase, the return period has increased. Again, we can-                sus Bureau carries out a housing survey with the de-
+not identify exactly why, but it seems likely that im-                   cennial census to determine the number of different
+proved forecasting, communications, spotter networks,
+and construction have provided significant mitigation of                    3 Definitions are not universally accepted. ``Permanent'' homes are
+the life-threatening consequences of tornadoes.                          often referred to as ``site built'' and ``mobile homes'' are often re-
+                                                                         ferred to as ``manufactured housing.''
+358  WEATHER AND FORECASTING                                                                 VOLUME 17
+
+                                                                          TABLE 2. Annual tornado deaths by type of housing in the United
+                                                                        States, 1975-2000. Total is the total number of deaths, mobile is the
+                                                                        number of mobile home deaths, and permanent is number of per-
+                                                                        manent (``site built'') housing deaths.
+
+   FIG. 6. Smoothed 10-fatality tornado return period (5-point median,  Year  Total  Mobile  Permanent
+19-point running mean) in days (dots with solid line) as compared
+with 5 billion divided by U.S. population (dashed line).                1975   60      13         --
+                                                                        1976   44      18         --
+kinds of housing units in use in the United States.4 The                1977   43                 --
+mobile home fraction of housing units in the United                     1978   53        7        --
+States has increased significantly since 1950 (Table 3).                1979   84      15         --
+If one assumes the number of people in different kinds                  1980   28                 --
+of housing is the same for each kind of unit, that means                1981   24        9        --
+that 10 times as many people lived in mobile homes in                   1982   64      11         --
+1990 as in 1950. We can use these data to calculate the                 1983   34      14         --
+rate of fatalities in each kind of housing per million                  1984  122      20         --
+people, in a way similar to Fig. 3. For simplicity, we                  1985   94      20         40
+have assumed that the fraction of housing units changed                 1986   15      43          3
+linearly between the years the housing surveys were                     1987   59      28          7
+done and that the increase from 1980 to 1990 continued                  1988   32                  6
+after 1990. The rate of death in mobile homes is dra-                   1989   48        7         8
+matically higher than in permanent homes (Fig. 8). The                  1990   53      24         11
+mean (median) annual death rate from 1975 to 2000 in                    1991   39      21          3
+mobile homes was 1.23 (1.19) per million per year,                      1992   39      12         18
+whereas the mean (median) rate from 1985 to 2000 in                     1993   33                  6
+permanent housing was 0.06 (0.04) per million per year.                 1994   68        7        14
+In short, the death rate is approximately 20 times as                   1995   30      20         15
+high in mobile homes as in in permanent homes, and                      1996   25      20
+the mobile home rate is about 70% of the rate for the                   1997   67      13          8
+total U.S. population prior to 1925. The 20-times-greater               1998  130      26         23
+death rate for mobile home residents since 1985 is con-                 1999   93                 40
+sistent with the estimate we derived earlier for the                    2000   40        8        35
+Oklahoma City tornado.                                                                 14
+                                                                                       30          4
+   There are no statistically significant trends in the rate                           65
+of deaths over the time period of record for mobile home                               39
+or permanent home residents, based on Kendall's tau                                    31
+test. The increase in the fraction of deaths occurring in
+mobile homes is a result of the increasing fraction of                  death rate in mobile homes occurred each year since
+the population of the United States living in mobile                    1960. Further assuming that the mobile home population
+homes.                                                                  will continue to increase as it has, we can estimate the
+                                                                        number of deaths in mobile homes in the future. Taking
+   The effect of the increasing population in mobile                    that number and dividing it by the total U.S. population
+homes is important for the number of deaths in torna-                   gives a death rate for the total U.S. population if all
+does nationally and may be especially serious in the                    deaths outside of mobile homes were eliminated. We
+future. We can make a simple model of the effect of                     can compare the model death rate to the long-term trend
+mobile homes by using the population in mobile homes                    seen in Fig. 3 (Fig. 9). The mobile home rate is ap-
+that underlies Fig. 8 and by assuming that the average                  proaching the long-term overall trend and, in fact, will
+                                                                        soon pass it. The raw data after 1990 in Fig. 3 could
+   4 The results of the 2000 housing survey were not available as of    be interpreted as showing that the long-term decline has
+March 2002.                                                             stopped and that the death rate has leveled off, although
+                                                                        it is too early to be sure of this change. Thus, the increase
+                                                                        in mobile home residency may have reversed the ap-
+                                                                        proximately 70-year-long trend of decreasing death rates
+                                                                        in tornadoes. Only time will tell what the trend will be
+                                                                        or if efforts to target this vulnerable population will help
+                                                                        to reduce deaths.
+
+                                                                           The increase in mobile homes as housing has been
+                                                                        particularly large in the southeastern United States (Fig.
+                                                                        10). Given that this part of the United States gets a large
+                                                                        number of tornadoes and that many of them happen
+                                                                        overnight when getting messages to people is particu-
+                                                                        larly difficult, as shown by the tornadoes in Orlando,
+                                                                        Florida (1998), Hall County, Georgia (1998), and Cam-
+                                                                        illa, Georgia (2000), this is an area of great concern.
+                                                                        Improvements in the accuracy and lead time of forecasts
+                                                                        and warnings may have little effect on decreasing deaths
+JUNE 2002          BROOKS AND DOSWELL                                   359
+
+   FIG. 7. Fraction of total deaths occurring in mobile homes, 1975-       FIG. 8. Death rate per million people per year in the United States
+2000. Thin line with solid dots is for individual years and thick line  for mobile home residents (1975-2000, solid dots) and permanent
+with open dots is for 5-yr average, with points plotted at the center   home residents (1985-2000, open dots).
+of each period.
+
+if the problem of mobile home deaths cannot be ad-                      unable to resolve the affected housing), but information
+dressed. The issues associated with mobile home deaths                  is available from one subset of the damage track. Of-
+are clearly nonmeteorological, involving construction                   ficials of the Moore Public Schools, whose district in-
+practices, availability of adequate shelters, availability              cludes much of the damage track in south Oklahoma
+of alternate housing, and the ability to communicate                    City and Moore, estimated that there were approxi-
+warning information to residents. Realistic solutions lie               mately 1800 students from their schools that lived in
+far beyond the scope of meteorology.                                    houses that were either seriously damaged or destroyed
+                                                                        by the tornado (S. Couch 1999, personal communica-
+5. The Oklahoma City tornado: The possible role                         tion). Thus, it seems unlikely that the tornado prefer-
+   of education                                                         entially traveled through a region of few students. Only
+                                                                        6 of the 1800 Moore students were hospitalized, and
+   One of the more intriguing aspects of the demograph-                 none were killed.
+ics of fatalities associated with the Oklahoma City tor-
+nado is the absence of any deaths from the age of 5                        Another possible reason for this gap is education of
+through 23 years old. If we compare this to the average                 the students. An informal survey of 130 junior high
+distribution of deaths from other tornadoes in the 1990s,               school students in two of the Moore schools with the
+the gap is striking (Fig. 11). If we assume that the 1990s              largest numbers of damaged structures, conducted 2
+distribution represents the typical distribution of deaths              weeks after the tornado, indicated that approximately
+by age associated with tornadoes, we can estimate how                   85% of the students took some precautionary actions
+likely it is that the gap associated with the Oklahoma                  (e.g., going into an interior bathroom or closet). Of
+City tornado would occur by chance. To do so, we ran-                   those, all but one sought shelter in locations recom-
+domly select 36 ages from the distribution associated                   mended by National Weather Service guidance. Seventy
+with the 1990s, and repeat for a large number of trials.                percent of the students surveyed indicated that they had
+The result is that the probability of such a gap is less
+than 1 in 3000.
+
+   There are many possible reasons for the gap. One is
+that there were few residents of damaged structures in
+that age range. We do not have complete demographic
+information on the residents of the damaged houses
+(note that data on the level of census tracts would be
+
+  TABLE 3. Percentage of housing units in the United States broken
+down by mobile and permanent housing from U.S. Census Bureau
+decennial housing survey.
+
+1950       Mobile  Permanent                                               FIG. 9. Long-term trend in tornado death rate in the United States,
+1960                                                                    based on 1925-2000, extrapolated out to 2020 (solid line), and death
+1970         0.7      99.3                                              rate from model based on mean annual death rate in mobile homes,
+1980         1.3      98.7                                              assuming no deaths occur except in mobile homes and that historical
+1990         3.1      96.9                                              increase in fraction of U.S. population living in mobile homes will
+             5.1      94.9                                              continue (dashed line).
+             7.2      92.8
+360  WEATHER AND FORECASTING                                           VOLUME 17
+
+   FIG. 10. Fraction of total housing units that are mobile homes,        FIG. 11. Deaths associated with the Oklahoma City tornado (open
+based on U.S. Census Bureau decennial survey of housing. South-        bars) and average number in age group per 36 fatalities in other
+eastern states, including AR, LA, MS, AL, GA, FL, TN, NC, and SC       tornadoes in 1990s (black bars). Label 0-5 indicates from birth to
+(solid line with open dots); central plains states, including OK, KS,  5th birthday, 5-10 from 5th birthday to 10th birthday, etc.
+and NE (dashed line with triangles); and rest of the United States
+(solid line with solid dots) are shown.                                that they are an increasingly large component of the
+                                                                       overall death toll. One-half of all fatalities from 1996
+learned tornado safety precautions as part of their ed-                to 2000 occurred in mobile homes, more than 2 times
+ucation at school (S. Couch and K. Parrish 1999, per-                  the fraction 20 years earlier. It seems likely that the
+sonal communication). At one of the schools, tornado                   fraction of deaths in mobile homes will continue to in-
+safety had been covered as part of the eighth-grade earth              crease. Efforts to improve safety practices and com-
+science classes on the Friday before the tornado hit on                munication of forecast and warning information for this
+Monday. Although we cannot prove a causal relation-                    group will be especially important in the future, if the
+ship, it is plausible to suggest that education of school              long-term decrease in tornado fatalities in the United
+children was a strong contributor to the absence of fa-                States is going to continue.
+talities among that age group.
+                                                                          Based on the absence of fatalities among school-aged
+6. Summary                                                             children in the Oklahoma City tornado and the results
+                                                                       from a survey of junior high school students in the
+   More than 18 000 people died in tornadoes in the                    affected area, it seems likely that the education of chil-
+United States from 1875 to 2000. The rate of death has                 dren is an important aspect in promoting tornado safety.
+been decreasing since 1925 from about 1.8 per million                  If we are going to expect people to take appropriate
+per year to 0.12 per million per year. This has resulted               actions when tornado warnings are issued, it is imper-
+both from fewer killer tornadoes and from a decrease                   ative that they know what those actions should be. Con-
+in the number of deaths in the largest-fatality tornadoes.             veying information about safety actions during ``call-
+What used to be considered a relatively common number                  to-action'' statements as part of a tornado warning may
+of fatalities, both from the perspective of a single tor-              not provide much help, if people have not considered
+nado and annual death tolls, is now an extremely large                 what they are going to do prior to the issuance of the
+number. The 3 May 1999 Oklahoma City tornado was                       warning. Encouraging and assisting schools in the safety
+the largest death toll in over 20 years. However, the                  education seems to be a relatively low-cost and, poten-
+direct toll of 36 lives would have been a common num-                  tially, high-return approach to lowering tornado deaths.
+ber in the 1920s and 1930s. Simple estimates of the
+total death toll that would have occurred in Oklahoma                     Acknowledgments. We thank Tom Grazulis for pro-
+City, without the meteorological and sociological                      viding an electronic form of his database. Also, dis-
+changes that led to the long-term decrease in death tolls,             cussions and information from Debra Combs of the U.S.
+give values on the order of 500 or more. We cannot                     Centers for Disease Control and Prevention and Pam
+determine the importance of the various factors that                   Archer of the Oklahoma State Department of Health
+have helped the decrease, so we cannot isolate the im-                 were helpful, particularly in illuminating the problem
+portance of forecasting or any other particular activity               of indirect fatalities. Steve Couch of Moore Central Ju-
+contributing to the overall reduction.                                 nior High School and Kate Parrish of Highland West
+                                                                       Junior High School carried out the survey of students
+   There remains one particularly vulnerable group of                  and provided information about the demographics of
+people in the United States, residents of mobile homes.                damaged housing in the Moore Public School District.
+The rate of death for mobile home residents is relatively              The anonymous reviewers provided helpful suggestions
+close to the pre-1925 values in the United States. The                 for improving the presentation.
+increase in use of mobile homes for housing has meant
+JUNE 2002  BROOKS AND DOSWELL                                          361
+
+                                 REFERENCES                                  spotting and public awareness since the first tornado forecasts
+                                                                             of 1948. Wea. Forecasting, 14, 544-557.
+Brooks, H. E., and C. A. Doswell III, 2001: Normalized damage from     Galway, J. G., 1985: J. P. Finley: The first severe storms forecaster.
+      major tornadoes in the United States: 1896-1999. Wea. Fore-            Bull. Amer. Meteor. Soc., 66, 1389-1395.
+      casting, 16, 168-176.                                            Grazulis, T. P., 1993: Significant Tornadoes, 1680-1991. Environ-
+                                                                             mental Films, 1326 pp.
+Brown, S., P. Archer, E. Kruger, and S. Mallonee, 2001: Tornado-       ----, 1995: Significant Tornadoes. Update, 1992-1995. Environ-
+      related deaths and injuries in Oklahoma due to the 3 May 1999          mental Films, 118 pp.
+      tornadoes. Wea. Forecasting, 17, 343-353.                        Press, W. H., W. A. Teukolsky, W. T. Vetterling, and B. P. Flannery,
+                                                                             1992: Numerical Recipes in FORTRAN. The Art of Scientific
+Cook, S., and S. Reed, cited 2001: List of tornado dead and injured.         Computing. 2d ed. Cambridge University Press, 963 pp.
+      [Available online at http://www.iltrails.org/stclair/tor3.htm.]  SPC, cited 2001: Climatological data. [Available online at http://
+                                                                             www.spc.noaa.gov/climo/.]
+Curzon, J., Ed.,1896: The Great Cyclone at St. Louis and East St.      Williams, S. K., cited 1999: Listing of known dead of St. Louis from
+      Louis, May 27, 1896. Cyclone Publishing Company, 422 pp.               the cyclone. [Available online at http://www.rootsweb.com/
+      [Republished 1997 by Southern Illinois University Press, 422           mocstlou/cyclone.htm.]
+      pp.]
+
+Doswell, C. A., III, A. R. Moller, and H. E. Brooks, 1999: Storm
+

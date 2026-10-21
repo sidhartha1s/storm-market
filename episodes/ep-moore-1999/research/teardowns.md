@@ -26,9 +26,9 @@ Not used: Underworld "39 Minutes of Terror - The Strongest Tornado in History" (
 
 **Lead fact:** "the strongest tornado ever recorded" over live Dan Anderson footage, then Oklahoma's six-year luck streak running out.
 
-**Structure:** 0:00 cold open (Anderson footage). 0:18 the luck streak and the forecast models that missed. 2:26 sponsor read (NordVPN), 3:23 back. 3:23 high risk at 3:49 p.m., first storm on radar. ~4:40 first tornadoes, F3s near Chickasha, chasers Val and Amy Castor. 6:36 Mike Duncan at the Amber overpass, the tornado forms. ~9:00 wedge, Dewey Edwards Drive. 10:26 Bridge Creek ("almost every single structure impacted was a mobile home"), Crago family, baby found (10:55). 12:00 Red Rock Road, truck wrapped on a pole. 14:00 DOW trucks. 14:19 first Tornado Emergency, 6:57 p.m., text quoted. 16:10 stationary over an I-44 overpass, "330 MPH", Kathleen Walton killed. 17:35 Tammy Hogan under another overpass. 18:26 Canadian River. 21:03 Moore: East Lake Estates, Emerald Springs, Highland Park. 23:25 Mike Morgan pleading "we plead with you". 25:27 mobile home park missed, Del City, Tinker missed. 27:04 "over 36 people" dead, 500+ injured. 27:48 helicopter "the whole neighborhood is gone". 28:30 Mulhall.
+**Structure:** 0:00 cold open (Anderson footage). 0:18 the luck streak and the forecast models that missed. 2:26 sponsor read (NordVPN), 3:23 back. 3:23 high risk at 3:49 p.m., first storm on radar. ~4:40 first tornadoes, two F3s, chasers Val and Amy Castor. 6:36 Mike Duncan at the Amber overpass, the tornado forms. ~9:00 wedge, Dewey Edwards Drive. 10:26 Bridge Creek ("almost every single structure impacted was a mobile home"), Crago family, baby found (10:55). 12:00 Red Rock Road, truck wrapped on a pole. 14:00 DOW trucks. 14:19 first Tornado Emergency, 6:57 p.m., text quoted. 16:10 stationary over an I-44 overpass, "330 MPH", Kathleen Walton killed. 17:35 Tammy Hogan under another overpass. 18:26 Canadian River. 21:03 Moore: East Lake Estates, Emerald Springs, Highland Park. 23:25 TV meteorologist (unnamed in the captions) pleading "we plead with you". 25:27 mobile home park missed, Del City, Tinker missed. 27:04 "over 36 people" dead, 500+ injured. 27:48 helicopter "the whole neighborhood is gone". 28:30 Mulhall.
 
-**Facts used:** Tornado Emergency yes (14:19, quotes the SVS). Mobile homes yes, Bridge Creek and a Moore park. TV station telling people to flee yes (Mike Morgan, 23:25). Overpass yes, two families with names (the longest overpass telling of the six). Speed: "330 MPH". Cellar: no. Lead times: no.
+**Facts used:** Tornado Emergency yes (14:19, quotes the SVS). Mobile homes yes, Bridge Creek and a Moore park. TV station telling people to flee yes (the pleading meteorologist, 23:25). Overpass yes, two families with names (the longest overpass telling of the six). Speed: "330 MPH". Cellar: no. Lead times: no.
 
 **Errors vs the NWS Service Assessment:**
 - "gusts in excess of 330 MPH" (16:10): the DOW reading is 301 mph, plus or minus 20; 330 is wrong. A top comment repeats it: "'Gusts in excess of 330 MPH meaning the Tornado now has the Strongest winds ever measured, on plandt Earth' Gave me chills" (1,000).
@@ -53,8 +53,7 @@ Not used: Underworld "39 Minutes of Terror - The Strongest Tornado in History" (
 **Errors vs the SA:**
 - "at 6:40 p.m. the big twister hit the neighborhood of Moore" (20:13): the SA time line has it crossing the Canadian River about 7:11 p.m. and moving through Moore from about 7:17.
 - "44 fatalities" (47:04): SA gives 38 for this tornado (48 for the whole outbreak).
-- "318 miles an hour" (17:15, 46:05 style): DOW figure is 301 plus or minus 20.
-- Says the tornado reached Chickasha as an F2 at 5:30 p.m.; the SA has this storm's first tornadoes earlier and the F5 tornado starting 6:23.
+- "318 miles an hour" (17:15): DOW figure is 301 plus or minus 20.
 
 ---
 
@@ -65,7 +64,7 @@ Not used: Underworld "39 Minutes of Terror - The Strongest Tornado in History" (
 
 **Lead fact:** an ordinary morning and a forecast that was uncertain (title claims strongest of all time).
 
-**Structure:** 0:05 morning and forecast, slight risk to high risk. 2:04 storms, first warning 4:47 p.m. 3:29 the supercell, F3s near Sterling and Cement. 4:05 Bridge Creek, "301 miles per hour" (4:37). 5:00 Mike Morgan's "we plead with you" clip. 6:11 rain-wrapped, TV and helicopter. 6:41 first Tornado Emergency "shortly before 7 PM". 6:56 overpass motorists, one woman killed. 7:57 Moore, 17 dead there. 8:29 ballpark and Westmoore High sheltered. 9:44 36 killed, 583 injured, $1.2 billion. 10:16 "the death toll could have easily been much higher" without warnings. 11:01 safe rooms built after (6,000+). 11:55 lessons: overpasses, early warning, community.
+**Structure:** 0:05 morning and forecast, slight risk to high risk. 2:04 storms, first warning 4:47 p.m. 3:29 the supercell, two F3s in Caddo and Grady counties. 4:05 Bridge Creek, "301 miles per hour" (4:37). 5:00 a TV meteorologist pleading, "we plead with you" (clip). 6:11 rain-wrapped, TV and helicopter. 6:41 first Tornado Emergency "shortly before 7 PM". 6:56 overpass motorists, one woman killed. 7:57 Moore, 17 dead there. 8:29 ballpark and Westmoore High sheltered. 9:44 36 killed, 583 injured, $1.2 billion. 10:16 "the death toll could have easily been much higher" without warnings. 11:01 safe rooms built after (6,000+). 11:55 lessons: overpasses, early warning, community.
 
 **Facts used:** Tornado Emergency yes (6:41, 12:53 "likely saved dozens more"). Warning saved lives: yes, twice (10:16, 12:53), as an epilogue not the spine. Overpass yes (a full lesson). TV yes. Mobile homes no. Cellar no. Lead times no.
 
@@ -80,7 +79,7 @@ Not used: Underworld "39 Minutes of Terror - The Strongest Tornado in History" (
 
 **Lead fact:** survival decisions as a quiz ("Where do you hide?") over chaser and TV audio.
 
-**Structure:** 0:00 quiz hook. 0:57 typical morning. 1:13 Gary England and Doppler. 3:30 Val and Amy Castor. 4:56 mesonet student. 8:14 giant tornado with satellite. 11:42 quiz: driving toward an overpass ("one of the most dangerous things to do"). 13:55 Chickasha 6:20 p.m. 15:44 Gary England: "for the first time ever I said you need to be below ground level to survive"; 16:22 "mobile homes will not survive this". 17:26 Bridge Creek, 6:50. 17:58 families flee Moore. 20:11 Westmoore High, 7:20. 23:41 hit. 27:30 aftermath, rescue, city manager quiz. 41:21 numbers. 44:45 quiz: storm cellar "safest and most practical". 46:05 "318 miles an hour". 48:20 "thousands of lives were saved".
+**Structure:** 0:00 quiz hook. 0:57 typical morning. 1:13 Gary England and Doppler. 3:30 Val and Amy Castor. 4:56 mesonet student. 8:14 giant tornado with satellite. 11:42 quiz: driving toward an overpass ("one of the most dangerous things to do"). 13:55 Chickasha 6:20 p.m. 15:44 Gary England: "for the first time ever I said you need to be below ground level to survive"; 16:22 "mobile homes will not survive this". 17:26 Bridge Creek, 6:50. 17:58 families flee Moore. 20:11 Westmoore High, 7:20. 23:41 hit. 27:30 aftermath, rescue, city manager quiz. 43:35 numbers (675 injured, nearly 45 dead). 44:45 quiz: storm cellar "safest and most practical". 46:05 "318 miles an hour". 48:20 "thousands of lives were saved".
 
 **Facts used:** Below-ground warning from the TV meteorologist, central (15:44 to 16:38). "Mobile homes will not survive this" (16:22, Gary England's words). Storm cellar as the lesson (44:59). Overpass as a quiz item. Tornado Emergency: not mentioned at all. Lead times: none. Mobile-home deaths, the 35-person cellar: no.
 
@@ -102,7 +101,6 @@ Not used: Underworld "39 Minutes of Terror - The Strongest Tornado in History" (
 **Errors vs the SA:**
 - "36 deaths with five indirect": the SA has 38. The "12 in Bridge Creek, nine in mobile homes" figure is not in the SA text; the angle uses 10 (check the source; the two are not the same).
 - "first tornado emergency ever issued in recorded history": the SA calls the 6:57 p.m. SVS "uniquely worded" and does not say "first ever".
-- Touchdown "6:23 p.m. southwest of Amber": the SA gives 6:23 for the tornado near Chickasha and 6:26 south of Amber.
 
 ---
 
@@ -124,13 +122,13 @@ Not used: Underworld "39 Minutes of Terror - The Strongest Tornado in History" (
 ## What every video leads with
 
 All six open on one of three things, none of them the warning:
-1. The record wind and the monster: TornadoTRX ("the strongest tornado ever recorded"), History in the Dark ("the strongest tornado ever recorded in terms of wind speed"), Alferia (301 mph by 1:17), Overcast (title). Four of six put 301 mph, 318 mph or 330 mph in the first 90 seconds or the title.
+1. The record wind and the monster: TornadoTRX ("the strongest tornado ever recorded"), History in the Dark ("the strongest tornado ever recorded in terms of wind speed"), Alferia (301 mph by 1:17), Overcast (title). Four of six lead with "strongest ever" in the hook or title (TornadoTRX, History in the Dark, Alferia, Overcast); a wind figure (300, 301, 318 or 330 mph) is in the first 90 seconds of two (History in the Dark, Alferia).
 2. Footage and eyewitness: TornadoTRX (Dan Anderson live), SLICE (chaser and TV audio).
 3. A morning that felt ordinary and a forecast that missed: Overcast, SLICE, TornadoTRX (the luck streak).
 
 Wonder is the one outlier: a human-rescue spine whose hook says "underground is the only safe place to survive an f5".
 
-The Tornado Emergency appears in four of six (TornadoTRX, Overcast, Alferia, History in the Dark, and only as a statement in Wonder), always as a plot beat at 6:57 p.m. or in the second half. No video gives the lead-time numbers (65, 18, 31 and 13 minutes by county; 32-minute average). The overpass story is in five of six and is the most-told lesson. The warning-worked point shows up only as an epilogue (SLICE 48:20, History in the Dark 13:06, Overcast 10:16 and 12:53).
+The Tornado Emergency appears in five of six (TornadoTRX, Overcast, Alferia, History in the Dark, and as a statement in Wonder; SLICE never mentions it), always as a plot beat at 6:57 p.m. or in the second half. No video gives the lead-time numbers (65, 18, 31 and 13 minutes by county; 32-minute average). The overpass story is in five of six and is the most-told lesson. The warning-worked point shows up only as an epilogue (SLICE 48:20, History in the Dark 13:06, Overcast 10:16 and 12:53).
 
 Does any video already lead with our angle? No. Closest are Wonder (hook: "underground is the only safe place to survive an f5"; survivors and shelter; ends on a cellar) and History in the Dark (11:26: the Tornado Emergency "probably saved quite a few lives"). Neither argues "the warning worked and yet people died, so it came down to where they were".
 
@@ -141,7 +139,7 @@ Does any video already lead with our angle? No. Closest are Wonder (hook: "under
 - The Tornado Emergency's wording choice as the cause of action. Only TornadoTRX quotes the text; no video says the NWS alarmed it on NOAA Weather Radio and that the media phrase was "credited with adding the emphasis that prompted numerous residents to action" (SA).
 - Bridge Creek mobile-home deaths set against the cellar, as a pair (Alferia has the 9-of-12 count alone; TornadoTRX says "almost every single structure ... was a mobile home" without counts).
 - Why the death toll was 36 to 38 and not hundreds, backed by a source (SA: "casualties could have been much higher" at night). Videos assert "thousands saved" (SLICE) or "600" (History in the Dark) with no source.
-- West Moore High: roughly 600 in an award ceremony, sheltered in interior hallways, no deaths (SA); only Overcast and SLICE touch it.
+- West Moore High: an award ceremony, everyone ushered into interior hallways and bathrooms by the assistant principal, no deaths (SA); Overcast, SLICE and Alferia touch it, none credits the assistant principal's decision.
 
 ## Viewer asks that our angle can answer
 

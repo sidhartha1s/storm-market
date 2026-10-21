@@ -898,3 +898,222 @@ Teardown: `references/teardowns/2026-10-03-titanic-mirage.md`.
   (here in a few 0-like comments).
 - A concept title needs one fact the enthusiast has not heard, or the comments keep saying so for months.
 - A wrong technical detail draws a liked correction (633 here). The storm audience watched these events live.
+
+_Moore 1999 (Bridge Creek-Moore) episode research, 21 Oct 26: six reference videos for the locked angle (the warning worked, yet 36 died; it came down to where people sheltered). Teardowns: `episodes/ep-moore-1999/research/teardowns.md`._
+
+### "Bridge Creek - The Strongest Tornado Ever Recorded" (TornadoTRX)
+https://www.youtube.com/watch?v=D71vI6sxYjg, uploaded 21 Oct 24.
+Pulled 21 Oct 26: 300 from the Top order and the 150 newest; 7,663,664 views and 110,918 likes that day.
+
+**Why it landed**
+- The baby found by the deputy is the most-liked comment: "That video of the officer finding the baby is INCREDIBLE, even crazier that she survived at all" (17,000, 1 year ago).
+- The warning itself, felt from the viewer's chair: "i cant even imagine how terrifying it must be to be watching the news, hearing the reporter saying "tornado emergency" and then looking outside to see that monster. terrifying." (11,000, 1 year ago). "23:27 is so bone chilling when even the weather man is PLEADING for you to take cover" (4,000, 1 year ago).
+- Naming the dead: "I'm so glad you told the story of Kathleen sheilding her son. The vast majority of documentaries never mention the names of victims." (3,300, 1 year ago).
+- Bridge Creek given its own time: "Thank you for not just including Bridge Creek as a footnote when documenting this storm. Every other channel just says 'it hit bridge creek and did a lot of damage' and then spends the other 99% of the time talking about the moore destruction." (1,800, 1 year ago).
+- Tone: "A lot of tornado YouTubers seem a bit distasteful, but your videos don’t seem exploitative or disrespectful to those who’ve died." (2,400, 1 year ago).
+
+**Corrections and pushback**
+- Wind speed, quoted as a chill: ""Gusts in excess of 330 MPH meaning the Tornado now has the Strongest winds ever measured, on plandt Earth" Gave me chills 16:13" (1,000, 1 year ago). Later: "Actually the winds were 321 mph not 330+ mph" (0, 3 weeks ago). Three numbers (301, 321, 330) are in circulation.
+- The baby footage: "Officer and the baby is so fake dude thats from a different baby" (1, 1 day ago). Unchecked.
+- Overpass: "So... overpass no bueno?" (136, 1 year ago); "Never hide under an overpass" (0, 7 days ago).
+- Shelter advice, opposite view: "The tornado emergency should not tell you to take coverage. It should tell you to get in your vehicle and get the hell out of the way as fast as you possibly can" (1, 1 month ago).
+
+**Warnings, shelters, mobile homes (the most valuable)**
+- The word "WILL": "I appreciate that in the Tornado Emergency ( 14:50 ) meteorologists used the word WILL... "This large damaging tornado WILL enter southwest sections of OKC". If I were to receive that warning I'd listen 100 times out of 100. ... That one word, and the decision to invent tornado emergencies probably saved lives." (59, 1 year ago).
+- Family plan with no shelter of their own: "we ran over to our neighbors house into their storm shelter since this was the tornado plan we had in place since we didn't have a shelter of our own" (2,600, 1 year ago).
+- A law: "There should be a law, that in areas of tornado alley, every community should have a storm shelter to hold hundreds of people, or every home should have small ones." (89, 1 year ago).
+- "Many survivors recall how the tornado also destroyed the storm shelters. Absurd." (10, 1 year ago).
+- Trailers: "The Feds should pay for community shelters for trailer park camps. A large underground shelter for the residents who live there. Those poor people don't have a chance when tornadoes show up." (0, 2 months ago). "Mobile home magnet" (0, 3 weeks ago).
+- Locals who took it seriously only twice: "Normally when the sirens go off, they go out on their balcony and watch. There have been only two times in the last 40 years they took shelter.. 1999 & 2013 Moore tornadoes." (4, 1 year ago).
+
+**The newest 150**
+- Still arriving with the next topic: "bro needs to do joplin" (0, 1 hour ago).
+- Ads: "the most annoying thing is ads every 2mins - 3 mins" (0, 6 days ago); "Too many ads. Quick halfway through." (0, 2 weeks ago).
+- A neglect charge: "25:31 until 26:33 you completely stopped caring about the civilians and only about the military and the workers." (0, 2 weeks ago).
+
+**What they add or ask for**
+- Eyewitness fragments: "I'm from Oklahoma City and I am under the bridge where Mike Duncan was filming with a friend that day" (790, 1 year ago); "I graduated school with Levi Walton in wagoner Oklahoma. ... His mom died under the overpass" (760, 1 year ago).
+- Next video: "I really hope we get a dedicated video to Joplin soon." (14, 1 year ago).
+
+**For our scripts**
+- Give Bridge Creek its own beat, and name the people who died there: "Thank you for not just including Bridge Creek as a footnote" (1,800, 1 year ago).
+- Say what the 6:57 p.m. warning said and why: the viewers quote its words, and "WILL" (59) is the detail they notice.
+- The wind speed is a liability: three numbers are in the comments. State the source and margin or leave it out.
+- The baby-found footage is the emotional peak for viewers (17,000) but has an authenticity challenge (1). Check before use.
+
+### "The Survivors of The Deadly 1999 Oklahoma Tornado Outbreak | Critical Rescue" (Wonder)
+https://www.youtube.com/watch?v=VCSViN6un-M, uploaded 19 Mar 20.
+Pulled 21 Oct 26: 300 from the Top order and the 150 newest; 2,221,487 views and 20,947 likes that day.
+
+**Why it landed**
+- Shelter is the reaction, from the first comment: "I would think having underground shelter in Oklahoma would be like having air conditioning in Florida. A necessity! Except way more important !" (1,400, 6 years ago).
+- Rescuers praised: "Paramedics are a different breed. Hats off to Steve Swoyer." (572, 6 years ago).
+- Gary England: "Gary England is an Oklahoma hero. His warnings have saved thousands of lives." (155, 3 years ago).
+- The mother's choice: "The mother who risked her life to save her son by letting go of her husband’s grip so he could use all his strength to hold their son, that’s the truest love of a mother." (147, 2 years ago).
+
+**Corrections and pushback**
+- A missing story: "As this storm was approaching, it went thru a little community called bridgecreek, and a toddler was found alive, in a tree. Surprised this documentary didn’t mention that. But it happened." (1,200, 6 years ago). The tree claim is unsourced; other tellings have the baby found in a field.
+- Basements: "for those commenting on the basement thing, the soil in this area is really clay rich and wet and it makes basements impractical and sometimes dangerous. It's not uncommon to have community underground shelters, or special built tornado shelters in garages." (181, 5 years ago).
+- Not all residents ignorant: "Depicting OK residents as ignorant angers me." (0, 5 months ago).
+- Wind speed: "This particular tornado had the fastest wind speed ever recorded on Earth 302 mile per hour the second fastest is the El Reno tornado" (237, 6 years ago).
+
+**Shelters and the warning (the most valuable)**
+- Mandatory shelters: "It should be mandatory that EVERY home have a storm shelter in that area!" (922, 6 years ago). "I think it should be mandatory in every state that has tornadoes that they have a safe room and homes apartments businesses you name there should be an underground safety place to go for anyone and everyone in my opinion" (452, 6 years ago). "These new houses being built, should have a mandatory basement." (124, 6 years ago).
+- After 1999: "when the town rebuilt from 1999 devastation, a lot more storm cellars were built." (530, 6 years ago).
+- A neighbor takes people in after the TV warning: "She said, "The news said we need to be underground to survive this. Get your family, get your pets, and come with us." ... There were about 20 people in there as well." (323, 2 years ago).
+- "We were fortunate to be in a friends underground shelter." (292, 2 years ago).
+- Bridge Creek cellar, newest: "Lived in Bridge Creek when it came through, had 4 families and pets in my cellar. Seeing the wrath after opening my cellar door was truly life altering." (0, 5 months ago).
+
+**The newest 150**
+- Still arriving: "Shocking how many people don't pay attention to the weather warnings" (1, 5 months ago); "I don't understand why all these houses don't have basements!" (0, 8 months ago).
+- NWS funding: "Trump cutting funds from noaa and national weather service is something that will be devastating if this was to occur again" (0, 1 month ago).
+- Gary England: "Gary England 1939-2025. He made his mark on Oklahoma." (1, 2 months ago).
+
+**What they add or ask for**
+- Where did the homeless go: "I wish they would tell us how they handled the fact that all these people went homeless at once." (0, 6 months ago).
+
+**For our scripts**
+- This audience reads the story as "shelter or die": 1,400, 922 and 452 likes. Our angle meets them where they are; the clay-soil point (181) is the answer to "why no basements" and needs a source check.
+- The "news said we need to be underground" account (323) is the same pattern as our SA cellar story: a warning heard, neighbors gathered, a shelter reached.
+- Cut the toddler-in-a-tree claim unless sourced.
+- Keep NWS funding politics out; one 0-like comment, but another video drew the same.
+
+### "The Strongest Tornado of All Time | 1999 Bridge Creek-Moore F5" (Overcast)
+https://www.youtube.com/watch?v=t9SOaDKDn38, uploaded 19 Feb 23.
+Pulled 21 Oct 26: 300 from the Top order and the 150 newest; 1,465,389 views and 21,730 likes that day.
+
+**Why it landed**
+- First-hand: "I witnessed this tornado with my own eyes at 5 years old. I was also a first responder to the May 20th, 2013 Moore tornado ... I was one of the first few people on scene at Plaza Towers elementary roughly 12 minutes after the tornado passed." (3,100, 3 years ago).
+- Craft over polish: "I watched 10 minutes expecting this channel to have close to 1 million subscribers ... There's nothing flashy about the production value here" (582, 3 years ago); "What I really enjoy about your videos is that you’re not gleeful." (86, 3 years ago).
+- A mile wide: "These things being a mile wide always fascinated me." (574, 3 years ago).
+
+**Corrections and pushback**
+- The channel's own pinned list of corrections: "Some Minor corrections pointed out by viewers: 8:37 - The Oklahoma City Blazers actually competed at the Myriad/Cox Convention Center in 1999, not the Ford Center. 10:10 - The last tornado to ever be given an F5 rating actually occurred 8 years later in Elie, Manitoba." (241, 3 years ago). Another viewer repeats the Elie point (78, 3 years ago).
+- Wording: "There is a significant distinction between "in recorded history" and "of all time."" (33, 3 years ago); "Strongest RECORDED" (0, 8 months ago).
+- Overpass is not clear cut: "The overpass as a shelter isn't that clear cut. Remember that the deadliest thing in a tornado is the not the wind, but what the wind is throwing around." (4, 3 years ago).
+- Music: "I think it would really improve your videos to avoid the random dance music like 5:00 the tornados speak for themselves" (0, 1 year ago).
+
+**Warnings, shelters, cellars (the most valuable)**
+- The most-liked cellar number: "My grandparents home in Midwest City was hit. They had 28 people stuffed inside there tornado cellar." (734, 3 years ago).
+- Schools and shelters: "It's wild how many people that live in this area don't have storm shelters or basements. ... it should be mandated in a state and federal level to have adequate storm shelter space." (243, 3 years ago).
+- The warning worked, in a viewer's words: "36 people dying from a storm is very sad. But, only 36 people? That's a testimony to the warnings" (2, 3 years ago). "How terrified everyone had to be. So sad for those lost. I’m glad the weather forecasters could give early warnings!" (2, 3 years ago).
+- Local TV: "You really cannot overestimate how important the local TV meteorologists are in Oklahoma in accurately predicting and covering tornados." (94, 3 years ago).
+- At the ballpark: "I was working at the Bricktown Ballpark as a ticket taker. I remember when we were told to let people in to get underground or we could have dead bodies all over downtown." (1, 3 years ago).
+- A buyer's reaction: "I live in Moore, just had my shelter installed this week." (4, 3 years ago).
+
+**The newest 150**
+- NWS funding: "Welp…death tolls will rise now. tRump admin stripped national weather service funding to basically nothing. Something Oklahomans voted for! Good work!" (0, 7 days ago).
+- A clip misattributed: "Says Gary England while showing a clip of Mike Morgan." (0, 1 year ago).
+- Ask: "To build any houses without storm shelters where these things happen is ridiculous" (0, 1 year ago).
+
+**What they add or ask for**
+- Footage: "i've been looking for the footage of the horse paralyzed in fear with its body locked with the tornado a few miles away in the background" (0, 1 year ago).
+- Next topic: "Pls upload more tornado videos" (0, 1 year ago).
+
+**For our scripts**
+- A wrong detail draws a pinned correction (241 likes). Check every name and venue, here the Blazers venue and the last F5.
+- The "only 36 died, a testimony to the warnings" idea is already in viewers' heads (2 likes), unsourced. Our SA figures give it a source.
+- Keep music off the narration: "the tornados speak for themselves".
+
+### "May 3, 1999: The F5 That Hit Oklahoma City | SLICE EARTH | FULL DOC" (SLICE Earth)
+https://www.youtube.com/watch?v=spPlQ0MDa_8, uploaded 23 Apr 26.
+Pulled 21 Oct 26: 245 from the Top order (all it returned) and the 150 newest; 539,770 views and 5,106 likes that day.
+
+**Why it landed**
+- Gary England died in 2025 and the audience came to say so: "RIP Gary England! 1939–2025" (383, 5 months ago); "Gary you will never be forgotten. Thank you for your service to the Oklahoma." (94, 5 months ago); "Every Okie has Gary England to thank for saving tens of thousands of lives." (10, 3 months ago).
+- Calm voice: "He never really got excited, always seemed calm, and his voice was so reassuring that everything would be okay." (26, 5 months ago).
+- New to them: "This documentary is fantastic. I've watched so many documentaries on this tragedy and half of this stuff wasn't even mentioned" (47, 5 months ago).
+- The families who fled: "That family that loaded the kids the dogs and hamsters ❤❤ didn’t forget the lil babies 🐹" (21, 5 months ago).
+
+**Corrections and pushback**
+- Tornado intensity: "F6 doesn't exist. It only goes to F5." (8, 5 months ago); "There are rumors that a Doppler on Wheels had measured winds of 321 mph in the vortex" (9, 5 months ago).
+- Moore vs OKC: "Moore Ok while yes, a suburb of OKC, it is also a separate city from OKC with its own police/fire and emergency services." (4, 5 months ago).
+- Thumbnail: "Thumbnail with stovepipe and satellite tornado was not the one that went into Moore. Technically this was a prior tornado." (0, 9 days ago).
+- The advice itself: "I know what Gary England said. He said that unless you could get into an underground bunker, you probably wouldn't make it. While that is generally true, there were people who survived without being underground." (1, 5 months ago). "Above ground shelters work quite well, even against tornadoes of this strength. I wish people would stop with this idea that shelters have to be underground." (0, 12 days ago).
+
+**Warnings and shelters (the most valuable)**
+- "Scary thing is very few of us have basements or shelters. More have shelters now, but we don’t have nearly enough." (55, 5 months ago).
+- "It’s nuts to me that schools, businesses, and homes in tornado alley aren’t mandated to have basements." (24, 5 months ago).
+- The warning moved people: "I never have (or ever will) forget hearing the warning that anything other than getting underground was not good enough. It was the only time my family ever got in our van and fled from a tornado." (23, 5 months ago); "I saw Gary England on TV saying if anyone along the path of this tornado is above ground will die. That was the first time that I decided to go into a shelter along with my young family." (15, 5 months ago).
+- A mobile-home family elsewhere: "My family and I lived in a mobile home that was within the area where the Canadian River intersect with I44. So when the tornado crossed the Canadian River, our mobile home took a direct hit. ... we were safe." (1, 4 months ago).
+- A shelter that moved: "it lifted our storm shelter and dropped it. We were trapped for days." (5, 5 months ago).
+- Leaving worked: "Their decision to leave their neighborhood ABSOLUTELY SAVED THEIR LIVES" (0, 1 month ago).
+
+**The newest 150**
+- "No sirens?!?! In Oklahoma?!?!" (0, 1 month ago).
+- "What happened to Gary England" (0, 2 weeks ago).
+- "Yeah, but it’s a tornado rips your house from the foundations you have nothing. Stop spending your money on houses that the wolf can blow down and build a basement and live under" (0, 1 month ago).
+
+**What they add or ask for**
+- A thank-you to the chasers: "Thank you so much, married couple storm chasers. So many lives saved bc of y'all" (0, 2 weeks ago).
+
+**For our scripts**
+- The audience's hero is the TV meteorologist, and the warning-worked point lands (383, 94, 23, 15). Say what he and the NWS did, in order.
+- "Underground or you die" is quoted back as Gary England's line. "unless you could get into an underground bunker" is challenged (1); our SA cellar example is the evidence.
+- Siren question: "No sirens?!?! In Oklahoma?!?!" (0). Check what the SA says about sirens before the script says anything.
+
+### "May 3, 1999: The Worst Tornado Outbreak In Oklahoma's History - A Retrospective & Analysis" (Alferia)
+https://www.youtube.com/watch?v=dZmygBCJf8c, uploaded 18 Apr 23.
+Pulled 21 Oct 26: 300 from the Top order and the 150 newest; 464,466 views and 9,611 likes that day.
+
+**Why it landed**
+- The name alone: "It's always amazing to me when you can be in a weather-community discussion and literally reference a tornado just by the name. Moore, Joplin, Xenia, etc." (471, 3 years ago).
+- The record: "To this day, this is the strongest and most violent F5 tornado on record in U.S. history and that'll never be surpassed... The fastest wind speeds recorded at 301 mph on Earth" (683, 3 years ago).
+- Why it matters to the field: "this tornado was a game changer in many ways ... how it forced meteorologists to re evaluate the tornado public safety protocol(most notably being the reliability of overpasses as shelter)" (329, 3 years ago).
+- The baby: "That video of baby aliah being found will always make me smile." (242, 3 years ago).
+
+**Corrections and pushback**
+- The creator's pinned update on the wind record: "UPDATE (6/22/2024): Today NBC News put out an article with the DOW putting out a Tweet saying the Greenfield Tornado from last month had recorded winds of 309-318mph" (394, 3 years ago, pinned). Newest: "Actually it was 321 mph. it was confirmed recently." (0, 1 month ago).
+- 318 mph: "When the tornado crossed over I35, there were three radar trucks from the NWS that triangulated and measured 318mph winds. That's why everyone says 318mph winds." (33, 3 years ago).
+- Indirect deaths: "Fyi the 5 indirect deaths were people who took their own lives after the grief of losing their loved ones afterwards." (0, 1 year ago). Unchecked; another video says some were heart attacks.
+- Study dispute: "That report by phan was not very well done. There infact were anchor bolts and they only studied the damage to 10 foundations." (0, 5 months ago).
+
+**Shelters, overpasses, mobile homes (the most valuable)**
+- Bridge Creek storm shelter: "A relative of mine actually lived in Bridge Creek at the time. ... He said that the tornado would’ve certainly killed him if he didn’t have a storm shelter. The center of the tornado went right over his house reducing it to a slab" (129, 3 years ago).
+- The overpass victim: "I remember hearing about that woman being blown out from under a freeway overpass and it took over a week to find her disemboweled body." (124, 3 years ago).
+- A call: "I wish that all over passes had tornado shelters of some kind for motorists" (0, 1 year ago).
+- Survival in a closet: "With the closet they were sheltering in and a single other wall left standing, ... it seems impossible to survive such a monster" (46, 3 years ago).
+
+**The newest 150**
+- Music: "This would be way more enjoyable if the background music was gone." (0, 8 months ago); "the droning of the background music is off putting." (0, 1 year ago).
+- "move the town at this point" (1, 6 months ago); "I feel they shouldn't let people live out there." (3, 1 year ago).
+- "Whats with all of the blurred footage in this video?" (0, 1 year ago).
+
+**What they add or ask for**
+- Next topics: "Mulhaul is such an underrated tornado that needs to be talked about." (59, 3 years ago); "You should make a video breaking down the El Reno tornado from 31st May, Of 2013 please" (3, 3 years ago).
+
+**For our scripts**
+- The creator's own pinned correction (394) shows the wind number moves; any figure we use needs a source and a margin.
+- This is the only video with Bridge Creek mobile-home counts. Its "12 died, nine in mobile homes" does not match our 10; verify against the NWS damage survey before the script uses either.
+- "Overpasses as shelter" is the field's lesson (329). Our angle should acknowledge it in one line, not retell it.
+
+### "The Most Powerful Tornado in History | The 1999 Bridge Creek-Moore Tornado" (History in the Dark)
+https://www.youtube.com/watch?v=cyuc0KaLH0k, uploaded 23 May 24.
+Pulled 21 Oct 26: 235 from the Top order (all it returned) and the 150 newest; 136,290 views and 3,035 likes that day.
+
+**Why it landed**
+- A rating argument: "If this happens today they would rate it a EF4 and say 170 mph winds" (328, 2 years ago).
+- Trauma and cost of living there: "We didn't have a shelter. I begged my mom for us to move after that. She said we couldn't afford it." (189, 2 years ago).
+- Warning ladder explained well: "Your explanation of the Watch, Warning, and Emergency is peak. 10/10 would use to explain to school kids, no changes necessary." (5, 1 year ago); a viewer's own version: "I favor the "Taco" analogy when discussing Tornado warnings. Tornado Watch = Taco Watch." (15, 2 years ago).
+
+**Corrections and pushback**
+- Wind speed: "The winds are up to debate, it’s within the margin of 300 to 320 mph" (53, 2 years ago); "The highest wind speed recorded in this tornado was not 301 MPH but 321 MPH." (0, 1 year ago); "With them re analyzing the data it's now 321 instead of 301" (0, 1 day ago).
+- Costliest: "The costliest tornado in us history was not the Tuscaloosa tornado but rather the joplin missouri tornado that same year" (22, 2 years ago).
+- Locomotive point: "Locomotives are chunks of mostly steel that weigh 400k+ pounds compared to a 36k pound box car" (15, 2 years ago).
+
+**Warnings and shelters (the most valuable)**
+- The TV line as the reason to flee: "We fled because Gary England, the famous news reporter that saved a lot of people said if you couldn’t get underground, you were gonna die so we decided to outrun it." (10, 1 year ago).
+- Opposite advice: "If a twister that big is heading for your home or anywhere in your town, don't seek shelter or the bathtub, or the hallway. Instead, get into your vehicle and leave the area." (8, 2 years ago).
+- Complacency anecdote, newest: "I was mowing (south of okc) my yard. My nephew was staying the night he ran out and told me there was a tornado. I asked him to keep me informed as where it was headed and kept mowin" (0, 1 year ago).
+- "I bet many people sought shelter when that destructive F5 tornado hit." (9, 2 years ago).
+
+**The newest 150**
+- Wind-speed corrections, again: "With them re analyzing the data it's now 321 instead of 301" (0, 1 day ago).
+- A mood: "300 mph is almost half the SPEED OF SOUND imagine THAT coming at a regular house" (1, 7 months ago).
+
+**What they add or ask for**
+- Next: "Would you consider doing the 1997 Jarrell F5 next?" (36, 2 years ago); "I guess you will have to review the 2013 sequel" (7, 2 years ago).
+
+**For our scripts**
+- The video's claim that the Tornado Emergency "probably saved quite a few lives" is not disputed by any of the 235 comments pulled (word match on "emergency", read). Our angle goes one step further.
+- Viewers keep arguing the wind speed and the rating (328, 53), another reason to keep both out of the lead.
