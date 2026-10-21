@@ -112,6 +112,12 @@ def main():
         if re.search(r'data-volume="1(?:\.0+)?"', m.group(0))]
     voice = sorted((s, s + d) for s, d in ((float(a), float(b)) for a, b in paul_lines +
                    re.findall(r'<audio\b[^>]*id="nx-(?!ins)[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)))
+    # audible non-narrator sound that carries a pause: ins- audio (radio, 911) and unmuted footage, never a bed or the CTA
+    outside = sorted(
+        (float(s), float(s) + float(d)) for tag, s, d in re.findall(
+            r'(<(?:audio|video)\b[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"[^>]*>)', html)
+        if re.search(r'\sid="ins-(?!cta|paul)', tag) and not re.search(r'data-volume="0(?:\.0+)?"', tag)
+        and not re.search(r"\smuted(?=[\s>/=]|$)", tag))
     structure = [(float(a), float(a) + float(b)) for a, b in re.findall(
         r'<section\b[^>]*class="[^"]*\b(?:blackout|hold)\b[^"]*"[^>]*data-start="([\d.]+)"[^>]*data-duration="([\d.]+)"', html)]
     for (s1, e1), (s2, e2) in zip(voice, voice[1:]):
