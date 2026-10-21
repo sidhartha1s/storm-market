@@ -38,7 +38,7 @@ _banned = Path(__file__).resolve().parent.parent / "assets/sfx/BANNED.md5"
 if not _banned.exists():
     sys.exit(f"[lint_timeline] FAIL: {_banned} is missing; the banned-audio check cannot run (restore it from git, never skip it)")
 BANNED = {l.split()[0]: l.split()[1] for l in _banned.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")}
-MAX_QUIET = 4.0  # longest stretch with no voice of any kind inside a blackout or hold (DESIGN.md "hold", owner 21 Oct 26)
+MAX_QUIET = 4.0  # longest stretch with nothing but a bed playing inside a blackout or hold (DESIGN.md "hold", owner 21 Oct 26)
 
 
 def _num(tag, attr):
@@ -163,7 +163,7 @@ def main():
         ((_cfg.get("channel") or {}).get("voice_captions") or {}).get("exempt") or [])
     live = re.sub(r"<!--.*?-->", "", html, flags=re.S)   # a commented-out tag is not mounted
     sounds = [(m.group(0), outside_voice(m.group(0))) for m in re.finditer(r"<(?:audio|video)\b[^>]*>", live)]
-    outside = sorted((s, e) for _, v in sounds if v for _, s, e in [v])
+    outside = sorted(v[1:] for _, v in sounds if v)
     if voice_rules:
         caps = [(m.group(1), _num(m.group(0), "data-start"), _num(m.group(0), "data-duration"))
                 for m in re.finditer(r'<[a-z]+\b[^>]*\bdata-caption-for="([^"]+)"[^>]*>', live)]
