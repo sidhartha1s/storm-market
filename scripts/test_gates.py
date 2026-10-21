@@ -521,6 +521,56 @@ with tempfile.TemporaryDirectory() as d:
         check("sweep_episode: a CTA voiced from another reference FAILs (voice_ref_md5 mismatch)",
               f"!= external.voice_ref_md5 {real}" in r.stdout + r.stderr, (r.stdout + r.stderr)[-600:])
 
+# ===================================================================================
+# 10. verify_render.sh silence classifier: the closing end card (last 4 s) may be silent
+# (owner 21 Oct 26: Joplin's final failed on silence 1194.33-1196.54 under its 4 s end card).
+# Runs the real heredoc out of verify_render.sh so the test cannot drift from what ships.
+# ===================================================================================
+def spans_check(sh_src, ep, vid_dur, silence_raw, black_raw="", freeze_raw=""):
+    block = next(b.split("\nPYEOF", 1)[0] for b in sh_src.replace("\r\n", "\n").split("<<'PYEOF'\n")[1:]
+                 if "silence" in b.split("\nPYEOF", 1)[0])
+    r = subprocess.run([sys.executable, "-", str(ep), str(vid_dur), black_raw, silence_raw, freeze_raw],
+                       input=block, capture_output=True, text=True)
+    return r.returncode, r.stdout + r.stderr
+
+
+_vr = (S / "verify_render.sh").read_text(encoding="utf-8")
+with tempfile.TemporaryDirectory() as d:
+    (Path(d) / "index.html").write_text(
+        '<div id="root" data-duration="1196.522"><div id="host-z1-close" data-start="1192.522" '
+        'data-duration="4"></div></div>', encoding="utf-8")
+    code, out = spans_check(_vr, d, 1196.522, "silence_start: 1194.33\nsilence_end: 1196.54")
+    check("verify_render: silence under the closing end card is OK (Joplin 1194.33-1196.54)", code == 0, out)
+    code, out = spans_check(_vr, d, 1196.522, "silence_start: 1184.0\nsilence_end: 1186.5")
+    check("verify_render: a 2.5 s silence ending 10 s before the end still FAILs", code == 1 and "1184.00s" in out, out)
+    code, out = spans_check(_vr, d, 1196.522, "", black_raw="black_start: 1194.0\nblack_end: 1196.5")
+    check("verify_render: black over the end card still FAILs (silence-only allowance)", code == 1, out)
+
+# ===================================================================================
+# 11. build_srt.py --check: same input validation as a build, writes nothing, names every gap;
+# run_gates.py runs it right after lint_timeline.py so a gap fails before render, not at master.
+# ===================================================================================
+with tempfile.TemporaryDirectory() as d:
+    ep = Path(d)
+    (ep / "audio").mkdir()
+    (ep / "index.html").write_text(
+        '<audio id="nx-a1" src="audio/a1-v2.wav" data-start="0.0"></audio>\n'
+        '<audio id="nx-ins1" src="audio/radio.wav" data-start="5" data-duration="3" data-srt-label="[radio]"></audio>\n',
+        encoding="utf-8")
+    (ep / "audio" / "a1-v2.words.json").write_text('[{"word": "Hello", "start": 0.1, "end": 0.5}]', encoding="utf-8")
+    (ep / "audio" / "a1-v2.txt").write_text("Hello", encoding="utf-8")
+    code, out = run("build_srt.py", ep, "--check")
+    check("build_srt --check: complete inputs pass and write no SRT", code == 0 and not (ep / "renders").exists(), out)
+    (ep / "audio" / "a1-v2.txt").rename(ep / "audio" / "a1-v2.txt.off")
+    html = (ep / "index.html").read_text(encoding="utf-8")
+    (ep / "index.html").write_text(html.replace(' data-srt-label="[radio]"', ""), encoding="utf-8")
+    code, out = run("build_srt.py", ep, "--check")
+    check("build_srt --check: names both the missing -v2.txt and the unlabeled insert",
+          code == 1 and "a1-v2.txt" in out and "no data-srt-label" in out, out)
+_rg = (S / "run_gates.py").read_text(encoding="utf-8")
+check("run_gates: build_srt.py --check runs right after lint_timeline.py",
+      _rg.index('"lint_timeline.py",') < _rg.index('"build_srt.py --check"') < _rg.index('"narration_picture_check.py"'))
+
 print()
 if FAILS:
     print(f"test_gates: {len(FAILS)} FAILED: {FAILS}")
