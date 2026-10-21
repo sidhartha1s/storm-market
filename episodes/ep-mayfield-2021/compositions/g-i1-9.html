@@ -149,6 +149,8 @@ window.__timelines = window.__timelines || {};
     const c = camAt(FX, FY, z, sx, sy);
     gsap.set(world, { x: c.x, y: c.y, scale: z });
     gsap.set(trk, { strokeWidth: 6 / z });
+    gsap.set(outl, { strokeWidth: 4 / z });   /* vector-effect does not see the world div's CSS scale */
+    gsap.set(hit, { strokeWidth: 3 / z });
     gsap.set(ghosts, { strokeWidth: 3 / z, strokeDasharray: (6 / z) + " " + (8 / z) });
   }
   tl.set(world, { transformOrigin: "0px 0px", x: 0, y: 0, scale: 1 }, 0);
