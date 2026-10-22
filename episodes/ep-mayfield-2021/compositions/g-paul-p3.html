@@ -1,0 +1,35 @@
+<template>
+<style>
+  /* g-paul-p3 · A3-S9 · PLACEHOLDER for Paul's full-frame clip P3, the CTA-hinge tease (not generated yet, 22 Oct 26); narrator wav
+     nx-a3-s9 carries the line, then the 1.0 s dip and the book ad. Same build as g-paul-p1. Swap for <video id="ins-paul-4">. */
+  #g-paul-p3-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:#04070c; font-family:Arial, sans-serif; }
+  #g-paul-p3-bg { position:absolute; inset:-40px; background:url("media/stills/paul-slot-placeholder.jpg") center/cover no-repeat; filter:blur(14px) brightness(.45); }
+  #g-paul-p3-card { position:absolute; left:260px; top:300px; width:1340px; box-sizing:border-box; padding:48px 72px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,.14);
+    opacity:0; visibility:hidden; }
+  #g-paul-p3-eyebrow { display:block; font-size:24px; line-height:30px; font-weight:700; color:#d8a13a; letter-spacing:2px; }
+  #g-paul-p3-line { display:block; margin-top:18px; font-family:Georgia, 'Times New Roman', serif; font-size:52px; line-height:64px; color:#f2f5f8; }
+  #g-paul-p3-tag { display:block; margin-top:22px; font-size:30px; line-height:36px; font-weight:700; color:#93a3b2; }
+</style>
+<div id="g-paul-p3-root" data-composition-id="g-paul-p3" data-width="1920" data-height="1080">
+  <div id="g-paul-p3-bg"></div>
+  <div id="g-paul-p3-card">
+    <span id="g-paul-p3-eyebrow">PAUL ON CAMERA · CLIP PENDING</span>
+    <span id="g-paul-p3-line">“Right as the storm reached Mayfield, the weather office watching it ran into a problem of its own.”</span>
+    <span id="g-paul-p3-tag">P3 · narrator voice stands in</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 4.769;  /* host = nx-a3-s9 (593.745 + 4.769) */
+  tl.set("#g-paul-p3-bg", { scale: 1 }, 0);
+  tl.set("#g-paul-p3-card", { autoAlpha: 0, y: 24 }, 0);
+  tl.to("#g-paul-p3-bg", { scale: 1.06, duration: DUR, ease: "none" }, 0);
+  tl.to("#g-paul-p3-card", { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+  tl.to("#g-paul-p3-card", { y: -10, duration: DUR - 0.5, ease: "none" }, 0.5);
+  window.__timelines["g-paul-p3"] = tl;
+})();
+</script>
+</template>
