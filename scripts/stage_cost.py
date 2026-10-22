@@ -71,6 +71,14 @@ def stages(ep):
                        "cmd": [sys.executable, "scripts/transcribe_episode.py", f"episodes/{tmp.name}"],
                        "what": "word timing for those 2 wavs (faster-whisper)"},
         "gates": {"cmd": [sys.executable, "scripts/run_gates.py", f"episodes/{slug}"], "what": "every pre-render gate"},
+        # the suite stops at the first red gate, so a shipped episode that predates a rule hides the cost of the rest:
+        # gate:<name> stages run each gate on its own and record its cost whatever it exits
+        **{f"gate:{g}": {"cmd": [sys.executable, f"scripts/{g}", f"episodes/{slug}"] + (["--check"] if g == "build_srt.py" else []),
+                         "what": f"one gate, {g}"} for g in ("render_preflight.py", "sweep_episode.py", "lint_timeline.py", "build_srt.py",
+                                                            "narration_picture_check.py", "flag_words.py", "homograph_scan.py", "beat_density.py",
+                                                            "media_budget.py", "audio_levels.py")},
+        **{f"gate:{g}": {"cmd": ["node", f"scripts/{g}", str(ep.resolve())], "what": f"one gate, {g}"}
+           for g in ("blank_scan.mjs", "overlap_check.mjs", "occlusion_check.mjs")},
         "snapshot": {"cmd": ["npx", f"hyperframes@{PIN}", "snapshot", f"episodes/{slug}", "--at", "60,120,180",
                              "--no-end", "--describe", "false", "-o", str(snap_out)], "what": "3 settle frames (headless Chromium)"},
         "render": {"cmd": ["cmd", "/c", str(ROOT / "scripts" / "render.cmd"), slug, "draft", "measure-draft"],
