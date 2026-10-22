@@ -87,7 +87,7 @@
         <line id="gct-mh" x1="0" y1="0" x2="0" y2="-30" stroke="#f2f5f8" stroke-width="3" stroke-linecap="round"/>
         <circle r="4" fill="#e8c56a"/>
       </g></g>
-      <g id="gct-streaks"><line x1="0" y1="250" x2="260" y2="236" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-opacity="0.35"/><line x1="0" y1="330" x2="180" y2="316" stroke="#dfe7ee" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.28"/><line x1="0" y1="420" x2="320" y2="406" stroke="#dfe7ee" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.32"/><line x1="0" y1="505" x2="220" y2="491" stroke="#dfe7ee" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.25"/><line x1="0" y1="590" x2="300" y2="576" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-opacity="0.3"/><line x1="0" y1="690" x2="200" y2="676" stroke="#dfe7ee" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.26"/><line x1="0" y1="780" x2="340" y2="766" stroke="#dfe7ee" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.3"/><line x1="0" y1="870" x2="240" y2="856" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-opacity="0.24"/><line x1="0" y1="380" x2="150" y2="366" stroke="#dfe7ee" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.22"/><line x1="0" y1="640" x2="280" y2="626" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-opacity="0.28"/></g>
+      <g id="gct-streaks"><line x1="0" y1="250" x2="260" y2="236" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-opacity="0.35"/><line x1="0" y1="455" x2="180" y2="441" stroke="#dfe7ee" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.28"/><line x1="0" y1="420" x2="320" y2="406" stroke="#dfe7ee" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.32"/><line x1="0" y1="505" x2="220" y2="491" stroke="#dfe7ee" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.25"/><line x1="0" y1="590" x2="300" y2="576" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-opacity="0.3"/><line x1="0" y1="690" x2="200" y2="676" stroke="#dfe7ee" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.26"/><line x1="0" y1="780" x2="340" y2="766" stroke="#dfe7ee" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.3"/><line x1="0" y1="870" x2="240" y2="856" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-opacity="0.24"/><line x1="0" y1="405" x2="150" y2="391" stroke="#dfe7ee" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.22"/><line x1="0" y1="640" x2="280" y2="626" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-opacity="0.28"/></g>
     </svg>
   </div></div>
   <div class="gct-vig"></div>
@@ -180,7 +180,7 @@ window.__timelines = window.__timelines || {};
   const llen = Math.ceil(Math.hypot(1184 - east[0] - 6, 345 - east[1])) + 1;
 
   /* clock beside the cellar, east of the collar on the ground; ticks drawn once */
-  const ck = P(ow + 4.2, DY + 1.5, 0);
+  const ck = P(ow + 8.5, DY - 4.5, 0);
   $('gct-clockpos').setAttribute('transform', `translate(${ck[0].toFixed(1)},${ck[1].toFixed(1)})`);
   let td = ''; for (let i = 0; i < 12; i++) { const a = i * Math.PI / 6, c = Math.cos(a), n = Math.sin(a);
     td += `M${(c * 30).toFixed(1)},${(n * 30).toFixed(1)}L${(c * 36).toFixed(1)},${(n * 36).toFixed(1)}`; }
@@ -241,7 +241,7 @@ window.__timelines = window.__timelines || {};
   tl.to(['#gct-lab', '#gct-lead'], { autoAlpha: 0, y: -16, duration: 0.3, ease: 'power3.in' }, 5.6);
   tl.to('#gct-src', { autoAlpha: 0, y: -30, duration: 0.3, ease: 'power3.in' }, 5.65);
   const z = { t: 0 };
-  tl.fromTo(z, { t: 0 }, { t: 1, duration: 0.601, ease: 'power2.in',
+  tl.to(z, { t: 1, duration: 0.601, ease: 'power2.in',   /* a to(): a fromTo would render its onUpdate at build time */
     onUpdate: () => gsap.set('#gct-cam', { scale: 1.04 * Math.pow(9 / 1.04, z.t) }) }, 6.0);
   tl.to('#gct-glow', { opacity: 0.25, duration: 0.5, ease: 'power1.in' }, 6.05);
   tl.to('#gct-dark', { autoAlpha: 1, duration: 0.25, ease: 'power1.in' }, 6.35);
