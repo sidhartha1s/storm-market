@@ -157,6 +157,10 @@ with tempfile.TemporaryDirectory() as tmp:
         real, lanes.SCRIPTS = lanes.SCRIPTS, Path(tmp) / "scripts"  # pretend tmp is a main checkout
         check("claim refuses an episode outside .worktrees (the hook never reads it)",
               raises(lambda: lanes.main(["claim", str(outside), "--session", "S1"])) and not (outside / "lanes.json").exists())
+        app_wt = Path(tmp) / ".claude" / "worktrees" / "ep-x-1a2b3c" / "episodes" / "ep-x"
+        touch(app_wt / "edit_script.md", SCRIPT)
+        check("claim accepts the desktop app's .claude/worktrees/<task>-<hash> path (22 Oct 26: three episodes ran ungated)",
+              lanes.main(["claim", str(app_wt), "--session", "S1"]) == 0 and (app_wt / "lanes.json").exists())
         lanes.SCRIPTS = real
         check("claim records the session", lanes.main(["claim", e, "--session", "S1"]) == 0
               and json.loads((ep / "lanes.json").read_text())["orchestrator"] == "S1")
