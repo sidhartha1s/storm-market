@@ -84,8 +84,8 @@ window.__timelines = window.__timelines || {};
        APPROXIMATE: an address-range interpolation along the street (range 100-198), not a surveyed building point. Label as "approximate" in every note. */
   const MAY = [34305.926, 55201.252], FAC = [34232.379, 55277.839];
   const KYN = [3841 * (-87.9 + 97.576), -5585 * (37.35 - 46.6213)];   /* KENTUCKY name anchor: lon -87.9, lat 37.35, inside the state */
-  const AX = 930, AY = 590;              /* the factory point stays here on screen for the whole window */
-  const S0 = 0.075, SA = S0 * 1.08, SE = 0.75;
+  const AX = 850, AY = 729;              /* the factory point stays here on screen for the whole window; at SE the city (363 units tall) is 635 px = 59 % of the frame */
+  const S0 = 0.075, SA = S0 * 1.08, SE = 1.75;
 
   /* camera: pure function of comp-local time, so a seek in either order lands the same frame */
   function scaleAt(t) {
