@@ -12,7 +12,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from e2e import is_tool_crash  # noqa: E402
+from e2e import is_tool_crash, run  # noqa: E402
 
 FAILS = []
 
@@ -55,6 +55,16 @@ check("graphics_qc js-error FAIL (a composition's own JS error) is not a crash",
 check("uncaught Node exception IS flagged as a crash", is_tool_crash(NODE_CRASH_OUTPUT))
 check("a Python traceback is flagged as a crash",
       is_tool_crash("Traceback (most recent call last):\n  File x\nValueError: boom"))
+
+# a test that hangs AND leaves a grandchild holding stdout: the timeout must still return on time
+import time  # noqa: E402
+HANG = ("import subprocess, sys, time; subprocess.Popen([sys.executable, '-c', 'import time; time.sleep(40)']); "
+        "time.sleep(40)")
+t0 = time.time()
+code, out = run([sys.executable, "-c", HANG], timeout=2)
+took = time.time() - t0
+check(f"timeout returns within a few seconds even with a grandchild holding the pipe ({took:.1f}s, code {code})",
+      code is None and took < 15 and "timed out" in out)
 
 if FAILS:
     print(f"\n{len(FAILS)} check(s) failed: {FAILS}")

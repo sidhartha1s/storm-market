@@ -35,13 +35,22 @@ def is_tool_crash(out):
 
 
 def run(cmd, timeout, cwd=None):
-    """A hung tool is a failure, never a suite that waits forever: timeout returns exit code None."""
+    """A hung tool is a failure, never a suite that waits forever: timeout returns exit code None.
+
+    The whole process tree is killed on timeout: subprocess.run kills only the direct child, and a node or Chrome
+    grandchild keeping the pipe open then holds this suite until it exits (22 Oct 26: 2 h 35 on a 600 s timeout)."""
+    p = subprocess.Popen(cmd, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
+                         encoding="utf-8", errors="replace")
     try:
-        r = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, encoding="utf-8",
-                           errors="replace", timeout=timeout)
+        out, _ = p.communicate(timeout=timeout)
     except subprocess.TimeoutExpired:
-        return None, f"(timed out after {timeout}s)"
-    return r.returncode, r.stdout + r.stderr
+        if sys.platform == "win32":
+            subprocess.run(["taskkill", "/T", "/F", "/PID", str(p.pid)], capture_output=True)
+        else:
+            p.kill()
+        p.communicate()
+        return None, f"(timed out after {timeout}s; process tree killed)"
+    return p.returncode, out
 
 
 def main():
