@@ -21,7 +21,8 @@ new exe path, so the pin is re-asserted on every launch, never once by hand.
 render when at least LIGHT_MIN_FREE_GB (default 2) is free, so composers can test a fix without
 queueing behind a 15-minute draft (owner 17 Sep 26). The full browser gates stay exclusive.
 
-Exit 0 = clear. Exit 3 = a render is running, or (with --launch) not even 1 worker fits.
+Exit 0 = clear. Exit 3 = a render is running, a gate's browser would leave under GATE_MIN_FREE_GB, or (with --launch)
+not even 1 worker fits.
 RENDER_BUSY_OK=1 overrides, for the case where the render itself is the thing being tested.
 """
 import ctypes
