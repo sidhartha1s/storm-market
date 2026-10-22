@@ -34,7 +34,8 @@
     background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
   .g-i1-1-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); white-space:nowrap; opacity:0; visibility:hidden; }
-  .g-i1-1-rail { position:absolute; left:1304px; top:120px; width:520px; height:354px; box-sizing:border-box; border-radius:28px; }
+  .g-i1-1-rail { position:absolute; left:1304px; top:120px; width:520px; height:354px; box-sizing:border-box; border-radius:28px;
+    clip-path:inset(0px 0px 198px 0px round 28px); } /* the panel shows only the rows it holds: 156 / 276 / 260 / 354 px */
   .g-i1-1-row { position:absolute; left:40px; top:36px; height:84px; display:flex; align-items:baseline; opacity:0; visibility:hidden; }
   .g-i1-1-num { font-family:'Courier New', monospace; font-size:84px; font-weight:700; line-height:84px; color:#e74c3c; }
   .g-i1-1-lab { margin-left:18px; font-size:30px; font-weight:700; line-height:30px; letter-spacing:1px; color:#dfe7ee; }
