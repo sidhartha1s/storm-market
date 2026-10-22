@@ -138,6 +138,14 @@ window.__timelines = window.__timelines || {};
   bar("b53", "f53", C.b38);
   bar("b21", "f21", C.b21);
 
+  /* the glass is sized to its rows: it grows with '89 lives', shrinks once that row has left, grows with each bar */
+  const clip = function (b) { return "inset(0px 0px " + b + "px 0px round 28px)"; };
+  tl.set(P + "rail", { clipPath: clip(198) }, 0);
+  tl.fromTo(P + "rail", { clipPath: clip(198) }, { clipPath: clip(78), duration: 0.4, ease: "power3.out", immediateRender: false }, C.l89);
+  tl.fromTo(P + "rail", { clipPath: clip(78) }, { clipPath: clip(198), duration: 0.4, ease: "power3.inOut", immediateRender: false }, C.since + 0.4);
+  tl.fromTo(P + "rail", { clipPath: clip(198) }, { clipPath: clip(94), duration: 0.4, ease: "power3.out", immediateRender: false }, C.b38);
+  tl.fromTo(P + "rail", { clipPath: clip(94) }, { clipPath: clip(0), duration: 0.4, ease: "power3.out", immediateRender: false }, C.b21);
+
   /* exit: the rail slides out, then a fade-through to the next page */
   tl.to(P + "rail", { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, C.seen - 0.06);
   tl.fromTo(P + "root", { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.48, ease: "power2.in" }, C.seen);
