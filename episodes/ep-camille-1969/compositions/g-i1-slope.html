@@ -33,6 +33,15 @@
       <clipPath id="gi1slope-clipground">
         <path d="M0,262 L300,220 L500,280 L560,310 Q710,401 860,460 L900,480 L1300,620 Q1312,640 1330,640 L1345,670 L1385,670 L1400,640 L1920,640 L1920,1080 L0,1080 Z"/>
       </clipPath>
+      <pattern id="gi1slope-rock" width="36" height="28" patternUnits="userSpaceOnUse">
+        <path d="M4,6 L16,6 M22,20 L34,20 M2,20 L8,14 M26,8 L30,2" fill="none" stroke="#2a3644" stroke-width="2" stroke-linecap="round"/>
+      </pattern>
+      <linearGradient id="gi1slope-rockfade" x1="0" y1="0" x2="1920" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#fff"/><stop offset="0.66" stop-color="#fff"/><stop offset="0.81" stop-color="#000"/>
+      </linearGradient>
+      <mask id="gi1slope-rockmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <rect x="0" y="0" width="1920" height="1080" fill="url(#gi1slope-rockfade)"/>
+      </mask>
       <mask id="gi1slope-rainmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
         <rect x="0" y="0" width="1920" height="1080" fill="#fff"/>
         <rect x="1090" y="350" width="700" height="140" fill="#000"/>
@@ -48,6 +57,8 @@
       <g clip-path="url(#gi1slope-clipground)">
         <!-- soil band, 24 px under the surface (a 48 px stroke clipped to the ground) -->
         <path id="gi1slope-band" d="M0,262 L300,220 L500,280 L560,310 Q710,401 860,460 L900,480 L1300,620 Q1312,640 1330,640" fill="none" stroke-width="48" stroke-linejoin="round" style="stroke:#6b6257"/>
+        <!-- bedrock under the soil (unlabelled texture, faded out before the presenter corner x 1600) -->
+        <path d="M0,330 L300,290 L900,560 L1300,700 L1920,720 L1920,1080 L0,1080 Z" fill="url(#gi1slope-rock)" mask="url(#gi1slope-rockmask)"/>
         <!-- faint bedrock strata -->
         <path d="M0,330 L300,290 L900,560 L1300,700 L1920,720 M0,420 L300,380 L900,660 L1300,800 L1920,820" fill="none" stroke="#2a3644" stroke-width="2" stroke-dasharray="14 12"/>
       </g>
