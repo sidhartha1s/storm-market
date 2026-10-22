@@ -729,7 +729,7 @@ No age on screen. Ages in narration come only from the 2019 News & Advance list 
 *(Newell quote 2 of 2.)*
 
 ### A4-S13 · narration
-**Picture:** LVA ground photograph from the V13 set, U.S. 29 or a Nelson County road after the flood [verify: pick the frame from V13], slow push. Glance chip "62 TO 74 TODAY".
+**Picture:** LVA ground photograph from the V13 set, U.S. 29 or a Nelson County road after the flood (frame picked at compose from media/src/V13), slow push. Glance chip "62 TO 74 TODAY".
 > Medical records from a missing person could be checked against what the investigators have. That needs someone who knows which person to look for, and somebody who was a kid in 1969 is in their sixties or seventies now.
 **Rows:** [factcheck-A4 S14: WSET RAW "medical records from a missing person could be compared with the information investigators have"] (arithmetic: ages 5 to 17 in 1969 are 62 to 74 in 2026)
 
@@ -762,7 +762,7 @@ No age on screen. Ages in narration come only from the 2019 News & Advance list 
 **Picture:** LVA aerial of the Rockfish River lowlands (footage V08), slow push; our map draws the Rockfish running down into the James. Eight small unlabelled markers, six along the Rockfish and two on the James (one of them above the Rockfish mouth), no ages. On "three headings" the list's three headings type on as a card: "The dead · The missing · The unidentified" with 84, 33 and 8 beside them, source line "News & Advance, Aug 10, 2019 (Oakland-Nelson County Museum of History)". Chip "8 STILL UNNAMED" on the last line. Source line "Virginia Department of Health · August 2026 · WHRO, 13 Oct 2026".
 > The water carried people down into the Rockfish and the James, some of them miles from where they went in. Eight of them are still waiting for a name.
 
-**Rows:** [factcheck-A3.md S4, CONFIRMED: Ginger Raines found about two weeks later, 20 miles away] · [factcheck-A item 1, RAW count: 125 = 84 under "The dead" + 33 under "The missing" + 8 under "The unidentified"; factcheck-A4 N&A: list dated Aug 10, 2019, "Information courtesy of Oakland-Nelson County Museum of History"] · [factcheck-A item 3: the 1969 list's find places, six unidentified from the Rockfish, two from the James] · [factcheck-A item 3, factcheck-Z1 S3: VDH media update 28 Aug 2026, eight still unidentified, CONFIRMED as of 22 Oct 2026; WHRO 13 Oct 2026] · [verify: re-read VDH page on publish day]
+**Rows:** [factcheck-A3.md S4, CONFIRMED: Ginger Raines found about two weeks later, 20 miles away] · [factcheck-A item 1, RAW count: 125 = 84 under "The dead" + 33 under "The missing" + 8 under "The unidentified"; factcheck-A4 N&A: list dated Aug 10, 2019, "Information courtesy of Oakland-Nelson County Museum of History"] · [factcheck-A item 3: the 1969 list's find places, six unidentified from the Rockfish, two from the James] · [factcheck-A item 3, factcheck-Z1 S3: VDH media update 28 Aug 2026, eight still unidentified, CONFIRMED as of 22 Oct 2026; WHRO 13 Oct 2026] · (publish-day check: re-read the VDH appeal page; listed in metadata.md)
 
 *([L1 closes] honestly: the names are still open, and the line says so.)*
 
