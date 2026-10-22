@@ -133,6 +133,7 @@ window.__timelines = window.__timelines || {};
   /* detail comes in with the zoom: county lines, then the Mayfield city limits */
   tl.fromTo(P + "counties", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 2.5);
   tl.fromTo(P + "city", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 2.7);
+  tl.fromTo(P + "roads", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 2.8);
 
   /* chip @1.06 on "110", credit line with it */
   tl.fromTo(P + "chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.chip);
