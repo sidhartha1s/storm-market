@@ -5,6 +5,7 @@ a READY job that reads DONE, or a dead lane that reads RUNNING, is exactly the i
 """
 import json
 import os
+import shutil
 import sys
 import tempfile
 import time
