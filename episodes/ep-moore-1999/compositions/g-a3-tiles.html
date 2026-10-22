@@ -1,0 +1,89 @@
+<template>
+<!-- g-a3-tiles · ep-moore-1999 · A3-S4 · desk phone (NO SERVICE), then the phrase over the Travis Smith radar loop, then
+     self-made unbranded TV and radio tiles repeating it. Host 537.405 to 548.93 (11.525 s, to the England insert), track 2.
+     Local s = a3-s4 word time (a3-s4 starts 537.405).
+     Cues: "dropping out" 1.84 (NO SERVICE); "The office" 2.98 (radar ground); "grab attention" 4.54 (TORNADO EMERGENCY stamp);
+     "normal warning" 7.36 (grey TORNADO WARNING tag beneath); "Media outlets" 8.68 (tiles 1-4 at 8.68/9.00/9.38/9.70);
+     "repeated" 10.54 (tiles pulse). Radar: media/stills/oun-travissmith-outbreak-800.gif (NWS Norman page; Travis Smith, NSSL/CIMMS). -->
+<style>
+  #g-a3-tiles-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; background:radial-gradient(ellipse at 50% 50%, #121921 0%, #04070c 78%); }
+  #g-a3-tiles-radar { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; opacity:0; visibility:hidden; }
+  #g-a3-tiles-rimg { position:absolute; left:0; top:-300px; width:1920px; height:2304px; object-fit:cover; filter:brightness(0.55) saturate(1.1); }
+  #g-a3-tiles-rshade { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 50%, rgba(4,7,12,0.2) 30%, rgba(4,7,12,0.8) 100%); }
+  .gat-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gat-chip { position:absolute; padding:14px 36px 16px; box-sizing:border-box; border-radius:28px; background:rgba(10,16,24,0.62);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+    font-family:"Arial Black", Arial, sans-serif; font-weight:900; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a3-tiles-nos { left:1060px; top:420px; font-size:60px; line-height:1.1; color:#e74c3c; }
+  #g-a3-tiles-stamp { left:960px; top:400px; font-size:96px; line-height:1.05; color:#f2f5f8; background:rgba(160,20,28,0.88); border-color:rgba(255,120,120,0.4); }
+  #g-a3-tiles-norm { left:960px; top:560px; font-family:Arial, sans-serif; font-weight:700; font-size:40px; letter-spacing:3px; color:#93a3b2; }
+  .gat-tile { position:absolute; width:620px; height:330px; box-sizing:border-box; border-radius:18px; border:6px solid #2b333c; background:#0b1015;
+    box-shadow:0 20px 60px rgba(0,0,0,0.6); overflow:hidden; opacity:0; visibility:hidden; }
+  .gat-scr { position:absolute; inset:14px; border-radius:8px; background:linear-gradient(160deg, #1b2733 0%, #0c1218 100%); }
+  .gat-bar { position:absolute; left:14px; right:14px; bottom:14px; height:96px; background:rgba(170,20,30,0.92); }
+  .gat-tt { position:absolute; left:40px; bottom:40px; font-family:"Arial Black", Arial, sans-serif; font-weight:900; font-size:44px; line-height:48px; color:#f2f5f8; white-space:nowrap; }
+  .gat-kind { position:absolute; left:40px; top:34px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #g-a3-tiles-t1 { left:130px; top:90px; }
+  #g-a3-tiles-t2 { left:1170px; top:90px; }
+  #g-a3-tiles-t3 { left:130px; top:500px; }
+  #g-a3-tiles-t4 { left:830px; top:500px; width:620px; }
+  .gat-src { position:absolute; left:110px; bottom:60px; padding:10px 24px 11px; border-radius:24px; background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14);
+    font-size:21px; line-height:26px; font-weight:700; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a3-tiles-phone { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-tiles-root" data-composition-id="g-a3-tiles" data-width="1920" data-height="1080" data-duration="11.525">
+  <div id="g-a3-tiles-radar"><img id="g-a3-tiles-rimg" src="media/stills/oun-travissmith-outbreak-800.gif" data-crop-ok="radar loop zoomed on its own storm field; the frame border and legend are not the content" alt=""><div id="g-a3-tiles-rshade"></div></div>
+  <svg class="gat-svg" viewBox="0 0 1920 1080">
+    <g id="g-a3-tiles-phone">
+      <rect id="g-a3-tiles-pbody" x="420" y="520" width="520" height="260" rx="36" fill="#1d252e" stroke="#3a4652" stroke-width="4"/>
+      <path id="g-a3-tiles-hand" d="M400,470 Q420,380 680,380 Q940,380 960,470 L900,500 Q880,450 680,450 Q480,450 460,500 Z" fill="#26303a" stroke="#45515d" stroke-width="4"/>
+      <g id="g-a3-tiles-keys" fill="#33404c">
+        <rect x="560" y="580" width="60" height="36" rx="6"/><rect x="650" y="580" width="60" height="36" rx="6"/><rect x="740" y="580" width="60" height="36" rx="6"/>
+        <rect x="560" y="632" width="60" height="36" rx="6"/><rect x="650" y="632" width="60" height="36" rx="6"/><rect x="740" y="632" width="60" height="36" rx="6"/>
+        <rect x="560" y="684" width="60" height="36" rx="6"/><rect x="650" y="684" width="60" height="36" rx="6"/><rect x="740" y="684" width="60" height="36" rx="6"/>
+      </g>
+      <line id="g-a3-tiles-cut" x1="380" y1="340" x2="980" y2="820" stroke="#e74c3c" stroke-width="10" stroke-linecap="round"/>
+    </g>
+  </svg>
+  <div class="gat-chip" id="g-a3-tiles-nos">NO SERVICE</div>
+  <div class="gat-chip" id="g-a3-tiles-stamp">TORNADO EMERGENCY</div>
+  <div class="gat-chip" id="g-a3-tiles-norm">NOT A NORMAL TORNADO WARNING</div>
+  <div class="gat-tile" id="g-a3-tiles-t1"><div class="gat-scr"></div><div class="gat-kind" id="g-a3-tiles-k1">TV &middot; LIVE</div><div class="gat-bar"></div><div class="gat-tt" id="g-a3-tiles-x1">TORNADO EMERGENCY</div></div>
+  <div class="gat-tile" id="g-a3-tiles-t2"><div class="gat-scr"></div><div class="gat-kind" id="g-a3-tiles-k2">TV &middot; BULLETIN</div><div class="gat-bar"></div><div class="gat-tt" id="g-a3-tiles-x2">TORNADO EMERGENCY</div></div>
+  <div class="gat-tile" id="g-a3-tiles-t3"><div class="gat-scr"></div><div class="gat-kind" id="g-a3-tiles-k3">RADIO</div><div class="gat-bar"></div><div class="gat-tt" id="g-a3-tiles-x3">TORNADO EMERGENCY</div></div>
+  <div class="gat-tile" id="g-a3-tiles-t4"><div class="gat-scr"></div><div class="gat-kind" id="g-a3-tiles-k4">TV &middot; CRAWL</div><div class="gat-bar"></div><div class="gat-tt" id="g-a3-tiles-x4">TORNADO EMERGENCY</div></div>
+  <div class="gat-src" id="g-a3-tiles-src">NWS Service Assessment, p15 &middot; NWS Norman, May 3 1999 event page &middot; radar: Travis Smith, NSSL</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a3-tiles-", DUR = 11.525;
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "radar", P + "nos", P + "stamp", P + "norm", P + "src", P + "t1", P + "t2", P + "t3", P + "t4", P + "phone"], { autoAlpha: 0 }, 0);
+  tl.set(P + "cut", { strokeDasharray: 770, strokeDashoffset: 770 }, 0);
+  /* 0: the desk phone; "dropping out" @1.84 -> struck through, NO SERVICE */
+  tl.fromTo(P + "phone", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0);
+  tl.to(P + "hand", { y: -14, duration: 0.12, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0.5);
+  tl.to(P + "cut", { strokeDashoffset: 0, duration: 0.35, ease: "power3.out" }, 1.84);
+  tl.fromTo(P + "nos", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.84);
+  tl.to([P + "phone", P + "nos"], { autoAlpha: 0, x: -200, duration: 0.4, ease: "power3.in" }, 2.7);
+  /* "The office" @2.98: the radar loop ground, slow push */
+  tl.fromTo(P + "radar", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 2.9);
+  tl.fromTo(P + "rimg", { scale: 1.0, y: 0 }, { scale: 1.12, y: -60, duration: DUR - 2.9, ease: "none" }, 2.9);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 3.2);
+  /* "grab attention" @4.54: the stamp slams in, centred */
+  tl.fromTo(P + "stamp", { autoAlpha: 0, scale: 1.5, xPercent: -50, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, xPercent: -50, duration: 0.3, ease: "power4.out" }, 4.54);
+  tl.to(P + "stamp", { scale: 1.03, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 4.9);
+  /* "normal warning" @7.36: the grey tag under it */
+  tl.fromTo(P + "norm", { autoAlpha: 0, y: 24, xPercent: -50 }, { autoAlpha: 1, y: 0, xPercent: -50, duration: 0.4, ease: "power3.out" }, 7.36);
+  tl.to([P + "stamp", P + "norm"], { autoAlpha: 0, y: -40, duration: 0.35, ease: "power3.in" }, 8.35);
+  /* "Media outlets" @8.68: four unbranded tiles, one per beat */
+  [["t1", 8.68], ["t2", 9.00], ["t3", 9.38], ["t4", 9.70]].forEach(([t, at]) =>
+    tl.fromTo(P + t, { autoAlpha: 0, scale: 0.8, y: 40 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(1.6)" }, at));
+  /* "repeated" @10.54: the crawl bars pulse in turn */
+  ["x1", "x2", "x3", "x4"].forEach((x, i) => tl.fromTo(P + x, { x: 0 }, { x: 12, duration: 0.15, ease: "sine.inOut", yoyo: true, repeat: 1 }, 10.54 + i * 0.12));
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines["g-a3-tiles"] = tl;
+})();
+</script>
+</template>

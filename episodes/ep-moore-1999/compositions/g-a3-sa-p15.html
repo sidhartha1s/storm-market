@@ -1,0 +1,62 @@
+<template>
+<!-- g-a3-sa-p15 · ep-moore-1999 · A3-S5 · NWS Service Assessment printed p15 (media/stills/sa/sa-page-pdf25-p15-tornado-emergency.png,
+     1700 x 2200, NOAA/NWS, public domain). Host 561.33 to 575.255 (13.925 s), track 2, full frame.
+     Local s = a3-s5 word time + 0.30 (a3-s5 starts 561.63; the host starts at the insert's end 561.33).
+     Crop: source x 180-1520 (the text column 200-1490 plus margin, whole lines at both ends of the move), scale 1.12.
+     Cues: "report" 1.12 -> 1.42 (page title); "this is the line" 2.68 -> 2.98 (the page rolls to the 6:57 FACT);
+     "credits the phrase" 4.84 -> 5.14 (highlight sweeps the sentence, 3 lines); "prompted" 7.18 -> 7.48 (chip + attribution). -->
+<style>
+  #g-a3-sa-p15-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; background:radial-gradient(ellipse at 50% 40%, #151c25 0%, #04070c 80%); }
+  #g-a3-sa-p15-box { position:absolute; left:210px; top:110px; width:1500px; height:448px; overflow:hidden; background:#fbfaf6; border-radius:6px;
+    box-shadow:0 30px 80px rgba(0,0,0,0.65); opacity:0; visibility:hidden; }
+  #g-a3-sa-p15-page { position:absolute; left:-201.6px; top:0; width:1904px; height:2464px; }
+  #g-a3-sa-p15-img { position:absolute; left:0; top:0; width:1904px; height:2464px; }
+  .gsp-hl { position:absolute; background:rgba(245,194,90,0.55); mix-blend-mode:multiply; transform-origin:left center; }
+  .gsp-chip { position:absolute; left:210px; top:640px; padding:18px 40px 20px; box-sizing:border-box; border-radius:28px; background:rgba(10,16,24,0.62);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+    font-family:"Arial Black", Arial, sans-serif; font-weight:900; font-size:56px; line-height:1.1; color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  .gsp-att { position:absolute; left:214px; top:770px; font-family:Georgia, "Times New Roman", serif; font-style:italic; font-size:34px; line-height:42px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  .gsp-src { position:absolute; left:214px; top:836px; font-size:21px; line-height:26px; font-weight:700; letter-spacing:1px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-sa-p15-root" data-composition-id="g-a3-sa-p15" data-width="1920" data-height="1080" data-duration="13.925">
+  <div id="g-a3-sa-p15-box">
+    <div id="g-a3-sa-p15-page">
+      <img id="g-a3-sa-p15-img" src="media/stills/sa/sa-page-pdf25-p15-tornado-emergency.png" data-crop-ok="document page shown as a crop of whole text lines that drifts down the page" alt="">
+      <div class="gsp-hl" id="g-a3-sa-p15-h1" style="left:1434px; top:1445px; width:236px; height:48px;"></div>
+      <div class="gsp-hl" id="g-a3-sa-p15-h2" style="left:582px; top:1496px; width:1088px; height:48px;"></div>
+      <div class="gsp-hl" id="g-a3-sa-p15-h3" style="left:582px; top:1546px; width:808px; height:48px;"></div>
+    </div>
+  </div>
+  <div class="gsp-chip" id="g-a3-sa-p15-chip">PROMPTED NUMEROUS RESIDENTS TO ACTION</div>
+  <div class="gsp-att" id="g-a3-sa-p15-att">the phrase, as the weather service's own report credits it</div>
+  <div class="gsp-src" id="g-a3-sa-p15-src">NWS Service Assessment, Aug 1999, p15</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a3-sa-p15-", DUR = 13.925;
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "box", P + "chip", P + "att", P + "src"], { autoAlpha: 0 }, 0);
+  tl.set([P + "h1", P + "h2", P + "h3"], { scaleX: 0 }, 0);
+  tl.set(P + "page", { y: -170 }, 0);
+  /* 0: the page title block (source y 150-550), sliding up slowly */
+  tl.fromTo(P + "box", { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.to(P + "page", { y: -260, duration: 2.6, ease: "none" }, 0.3);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.42);
+  /* "this is the line" @2.98: the page rolls to the 6:57 FACT (source y 1040-1440) */
+  tl.to(P + "page", { y: -1164.8, duration: 1.0, ease: "power3.inOut" }, 2.98);
+  tl.to(P + "page", { y: -1200, duration: DUR - 4.0, ease: "none" }, 4.0);
+  /* "credits the phrase" @5.14: the highlight sweeps the sentence line by line */
+  tl.to(P + "h1", { scaleX: 1, duration: 0.35, ease: "power2.out" }, 5.14);
+  tl.to(P + "h2", { scaleX: 1, duration: 0.9, ease: "power1.inOut" }, 5.5);
+  tl.to(P + "h3", { scaleX: 1, duration: 0.7, ease: "power1.inOut" }, 6.42);
+  /* "prompted" @7.48: chip and attribution; the src line moves under them */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -140 }, { autoAlpha: 1, x: 0, duration: 0.55, ease: "power3.out" }, 7.48);
+  tl.fromTo(P + "att", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.9);
+  tl.to(P + "chip", { y: -6, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 8.1);
+  tl.to([P + "chip", P + "att", P + "src"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 13.2);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines["g-a3-sa-p15"] = tl;
+})();
+</script>
+</template>

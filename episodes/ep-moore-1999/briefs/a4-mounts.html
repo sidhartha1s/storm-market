@@ -1,0 +1,62 @@
+<!-- ============ A4 · Moore (act editor fragment, 22 Oct 26) ============
+     Covers 661.699 (bo-3 end) to 847.146 (bo-4). Narration nx-a4-s1..s10 untouched. Left EMPTY of picture: ins-a4-street
+     736.897-741.163 (mounted; only its caption host is added here, track 4).
+     Coverage, track 1/2, back to back:
+       661.699-666.700 cut-a4-s1 | 666.700-670.950 sa-018 | 670.950-685.760 g-a4-map | 685.760-699.900 g-a4-westmoore
+       699.900-715.927 g-a4-corridor | 715.927-736.897 g-a4-millhouse | [736.897-741.163 ins-a4-street]
+       741.163-745.220 sa-024-001 | 745.220-760.747 g-a4-room | 760.747-768.896 g-a4-houses (PROVISIONAL until ins-paul-5)
+       768.896-789.486 g-a4-lives | 789.486-811.920 g-a4-walls | 811.920-817.300 nssl-damage1 | 817.300-822.340 nssl-damage3
+       822.340-834.880 g-a4-quote | 834.880-839.420 g-a4-wallsr | 839.420-847.146 g-a4-mappull -->
+
+<!-- A4-S1: hard cut out of bo-3 (661.699) onto KWTV Moore ground footage, muted; "5" @ 661.899 + 0.00 -->
+<video id="v-a4-s1-kwtv" class="graded" src="media/clips/cuts/cut-a4-s1.mp4" data-start="661.699" data-duration="5.001" data-media-start="0" data-track-index="1" muted></video>
+<!-- A4-S1: SA p8 Moore photo (Curtis Carey, NOAA/NWS PA); "Moore's emergency managers" @ 661.899 + 4.90 = 666.80, cut 0.1 s ahead -->
+<section class="clip still-wrap" id="c-a4-s1-moore" data-start="666.7" data-duration="4.25" data-track-index="1" data-callback="I1-S3 showed Moore at 92.685; A4 returns to the same street as the act about Moore opens"><img id="kb-a4-s1-moore" src="media/stills/sa/sa-018-000.png" alt="" data-callback="I1-S3 showed Moore at 92.685; A4 returns to it"></section>
+<!-- overlay over both: MOORE · 5 LIVES @ 661.899 + 0.00; 3 OF 5 @ "three" 661.899 + 6.34 = 668.24 -->
+<div id="host-a4-s1chips" data-composition-id="g-a4-s1chips" data-composition-src="compositions/g-a4-s1chips.html" data-start="661.699" data-duration="9.25" data-track-index="4" data-width="1920" data-height="1080"></div>
+
+<!-- A4-S1 "For a town" @ 661.899 + 9.16 = 671.06 (map from 670.95) through A4-S2 "Several hundred" @ 677.982 + 7.78 = 685.76 -->
+<div id="host-a4-map" data-composition-id="g-a4-map" data-composition-src="compositions/g-a4-map.html" data-start="670.95" data-duration="14.81" data-track-index="2" data-width="1920" data-height="1080"></div>
+<!-- A4-S2 "Several hundred" 685.76 to A4-S3 "Three other schools" @ 695.884 + 4.20 = 700.08 (from 699.90) -->
+<div id="host-a4-westmoore" data-composition-id="g-a4-westmoore" data-composition-src="compositions/g-a4-westmoore.html" data-start="685.76" data-duration="14.14" data-track-index="2" data-width="1920" data-height="1080"></div>
+<!-- A4-S3 699.90 to A4-S4 start 715.927 -->
+<div id="host-a4-corridor" data-composition-id="g-a4-corridor" data-composition-src="compositions/g-a4-corridor.html" data-start="699.9" data-duration="16.027" data-track-index="2" data-width="1920" data-height="1080"></div>
+<!-- A4-S4 715.927 to ins-a4-street 736.897 -->
+<div id="host-a4-millhouse" data-composition-id="g-a4-millhouse" data-composition-src="compositions/g-a4-millhouse.html" data-start="715.927" data-duration="20.97" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+<!-- ins-a4-street 736.897-741.163 (already mounted): running caption, words from faster-whisper on cut-a4-s5.mp4 -->
+<div id="host-a4-cap-street" data-composition-id="g-a4-cap-street" data-composition-src="compositions/g-a4-cap-street.html" data-start="736.897" data-duration="4.266" data-track-index="4" data-width="1920" data-height="1080" data-caption-for="ins-a4-street"></div>
+
+<!-- A4-S5: insert end 741.163 to "The Millhouses' hallway" @ 741.463 + 3.76 = 745.22; SA p24 debris ground view (William Lerner, NWS HQ) -->
+<section class="clip still-wrap" id="c-a4-s5-debris" data-start="741.163" data-duration="4.057" data-track-index="1"><img id="kb-a4-s5-debris" src="media/stills/sa/sa-024-001.png" alt=""></section>
+<!-- A4-S5 745.22 to A4-S6 start 760.747 -->
+<div id="host-a4-room" data-composition-id="g-a4-room" data-composition-src="compositions/g-a4-room.html" data-start="745.22" data-duration="15.527" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+<!-- A4-S6 760.747 to A4-S7 768.896. PROVISIONAL until ins-paul-5: Paul's slot covered while his clips are on hold;
+     "19" @ 760.747 + 2.68 = 763.43. Remove this host when ins-paul-5 is mounted (the chip then rides over Paul). -->
+<div id="host-a4-houses" data-composition-id="g-a4-houses" data-composition-src="compositions/g-a4-houses.html" data-start="760.747" data-duration="8.149" data-track-index="2" data-width="1920" data-height="1080"></div>
+<!-- A4-S7 768.896 to A4-S8 789.486 -->
+<div id="host-a4-lives" data-composition-id="g-a4-lives" data-composition-src="compositions/g-a4-lives.html" data-start="768.896" data-duration="20.59" data-track-index="2" data-width="1920" data-height="1080"></div>
+<!-- A4-S8 789.486 to A4-S9 811.92 -->
+<div id="host-a4-walls" data-composition-id="g-a4-walls" data-composition-src="compositions/g-a4-walls.html" data-start="789.486" data-duration="22.434" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+<!-- A4-S9 811.92: NSSL May 3 damage photos, slow push; "Doswell and Brooks" @ 811.92 + 5.42 = 817.34 (cut at 817.30) -->
+<section class="clip still-wrap" id="c-a4-s9-slab" data-start="811.92" data-duration="5.38" data-track-index="1"><img id="kb-a4-s9-slab" src="media/stills/nssl-damage1.jpg" alt=""></section>
+<section class="clip still-wrap" id="c-a4-s9-debris" data-start="817.3" data-duration="5.04" data-track-index="1"><img id="kb-a4-s9-debris" src="media/stills/nssl-damage3.jpg" alt=""></section>
+<!-- "By the Fujita" @ 811.92 + 10.42 = 822.34 to A4-S10 834.88 -->
+<div id="host-a4-quote" data-composition-id="g-a4-quote" data-composition-src="compositions/g-a4-quote.html" data-start="822.34" data-duration="12.54" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+<!-- A4-S10 834.88: bars return; "But on this same path" @ 834.88 + 4.54 = 839.42: pull back to the whole track until bo-4 847.146 -->
+<div id="host-a4-wallsr" data-composition-id="g-a4-wallsr" data-composition-src="compositions/g-a4-wallsr.html" data-start="834.88" data-duration="4.54" data-track-index="2" data-width="1920" data-height="1080"></div>
+<div id="host-a4-mappull" data-composition-id="g-a4-mappull" data-composition-src="compositions/g-a4-mappull.html" data-start="839.42" data-duration="7.726" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+<!-- A4 punches (append to the punch() list in index.html's script):
+punch("#kb-a4-s1-moore", 666.70, 1.10);
+punch("#kb-a4-s1-moore", 668.24, 1.06);     /* "three" */
+punch("#kb-a4-s5-debris", 741.163, 1.08);
+punch("#kb-a4-s5-debris", 742.82, 1.06);    /* "people underground" */
+punch("#kb-a4-s9-slab", 811.92, 1.08);
+punch("#kb-a4-s9-slab", 815.04, 1.06);      /* "Two researchers" */
+punch("#kb-a4-s9-debris", 817.30, 1.08);
+punch("#kb-a4-s9-debris", 820.26, 1.06);    /* "wrote down the rest" */
+-->

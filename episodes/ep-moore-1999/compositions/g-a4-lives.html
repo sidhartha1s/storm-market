@@ -1,0 +1,65 @@
+<template>
+<!-- g-a4-lives · ep-moore-1999 · A4-S7, track 2, full frame, host 768.896 for 20.59 s (to 789.486).
+     Four glass cards from the Brooks NSSL list of lives lost, one per line said, no names (the source gives none), no faces.
+     Under them: NSSL May 3 page photo of a flattened home (nssl-damage2.jpg), dimmed, slow push.
+     Cues local = abs - 768.896: "Del City" @2.28; "75" @3.40; "bathtub" @5.00; "30" @7.76; "bathtub" @8.84; "36" @10.28;
+     "bathroom" @11.68; "car fell" @13.66; "Bridge Creek" @15.46; "under a staircase" @17.32/@17.70; "three weeks" @19.36; out 20.59. -->
+<style>
+  #g-a4-lives-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; background:#04070c; }
+  .a4l-bg { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; filter:saturate(0.7) brightness(0.62); }
+  .a4l-shade { position:absolute; inset:0; background:linear-gradient(90deg, rgba(4,7,12,0.82) 0%, rgba(4,7,12,0.55) 55%, rgba(4,7,12,0.2) 100%); }
+  .a4l-card { position:absolute; left:96px; display:flex; align-items:baseline; gap:0; padding:14px 34px 16px; border-radius:24px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4l-n { font-family:'Courier New', monospace; font-weight:700; font-size:64px; line-height:72px; color:#f2f5f8; }
+  .a4l-t { font-weight:700; font-size:38px; line-height:44px; letter-spacing:2px; color:#f2f5f8; }
+  .a4l-seg { opacity:0; visibility:hidden; }
+  .a4l-src { position:absolute; left:96px; top:90px; font-weight:700; font-size:20px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-lives-root" data-composition-id="g-a4-lives" data-width="1920" data-height="1080" data-duration="20.59">
+  <img class="a4l-bg" id="a4l-photo" src="media/stills/nssl-damage2.jpg" alt="">
+  <div class="a4l-shade" id="g-a4-lives-shade"></div>
+  <div class="a4l-src" id="g-a4-lives-src">Brooks, NSSL list of lives lost, 1999 · Photo: NOAA/NSSL</div>
+  <div class="a4l-card" id="g-a4-lives-c1" style="top:200px">
+    <span class="a4l-t a4l-seg" id="g-a4-lives-c1a">DEL CITY ·&nbsp;</span><span class="a4l-n a4l-seg" id="g-a4-lives-c1b">75</span><span class="a4l-t a4l-seg" id="g-a4-lives-c1c">&nbsp;· BATHTUB</span>
+  </div>
+  <div class="a4l-card" id="g-a4-lives-c2" style="top:350px">
+    <span class="a4l-n a4l-seg" id="g-a4-lives-c2a">30</span><span class="a4l-t a4l-seg" id="g-a4-lives-c2b">&nbsp;· BATHTUB</span>
+  </div>
+  <div class="a4l-card" id="g-a4-lives-c3" style="top:500px">
+    <span class="a4l-n a4l-seg" id="g-a4-lives-c3a">36</span><span class="a4l-t a4l-seg" id="g-a4-lives-c3b">&nbsp;· BATHROOM</span><span class="a4l-t a4l-seg" id="g-a4-lives-c3c">&nbsp;· CAR THROUGH THE ROOF</span>
+  </div>
+  <div class="a4l-card" id="g-a4-lives-c4" style="top:650px">
+    <span class="a4l-t a4l-seg" id="g-a4-lives-c4a">BRIDGE CREEK</span><span class="a4l-t a4l-seg" id="g-a4-lives-c4b">&nbsp;· UNDER THE STAIRS ·&nbsp;</span><span class="a4l-n a4l-seg" id="g-a4-lives-c4c">3 WEEKS OLD</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a4-lives", P = "#g-a4-lives-", DUR = 20.59;
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "src", P + "c1", P + "c2", P + "c3", P + "c4", ".a4l-seg"], { autoAlpha: 0 }, 0);
+  tl.set("#a4l-photo", { scale: 1 }, 0);
+  /* ambient: slow push on the photo */
+  tl.to("#a4l-photo", { scale: 1.12, transformOrigin: "60% 55%", duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.62);
+  const card = (c, t) => tl.fromTo(P + c, { autoAlpha: 0, x: -90 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, t);
+  const seg = (s, t) => tl.fromTo(P + s, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, t);
+  /* card 1: DEL CITY @2.28 · 75 @3.40 · BATHTUB @5.00 */
+  card("c1", 2.28); seg("c1a", 2.28); seg("c1b", 3.40); seg("c1c", 5.00);
+  /* card 2: 30 @7.76 · BATHTUB @8.84 */
+  card("c2", 7.76); seg("c2a", 7.76); seg("c2b", 8.84);
+  /* card 3: 36 @10.28 · BATHROOM @11.68 · CAR THROUGH THE ROOF @13.66 */
+  card("c3", 10.28); seg("c3a", 10.28); seg("c3b", 11.68); seg("c3c", 13.66);
+  /* card 4: BRIDGE CREEK @15.46 · UNDER THE STAIRS @17.32 · 3 WEEKS OLD @19.36 */
+  card("c4", 15.46); seg("c4a", 15.46); seg("c4b", 17.32); seg("c4c", 19.36);
+  /* earlier cards step back as each new one lands; a slow float keeps the stack alive */
+  tl.to(P + "c1", { opacity: 0.6, duration: 0.5, ease: "power2.out" }, 7.76);
+  tl.to(P + "c2", { opacity: 0.6, duration: 0.5, ease: "power2.out" }, 10.28);
+  tl.to(P + "c3", { opacity: 0.6, duration: 0.5, ease: "power2.out" }, 15.46);
+  tl.to([P + "c1", P + "c2", P + "c3", P + "c4"], { y: -6, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 5.6);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>

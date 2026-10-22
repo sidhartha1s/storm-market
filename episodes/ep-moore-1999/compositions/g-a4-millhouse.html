@@ -1,0 +1,86 @@
+<template>
+<!-- g-a4-millhouse · ep-moore-1999 · A4-S4, track 2, full frame, host 715.927 for 20.97 s (to the insert at 736.897).
+     NOAA Report June 1999 p2 photo (noaa-millhouse-hallway.png, 344 x 248, "Joseph Schaefer/NOAA") shown inset on a designed
+     card, never full frame. Numbers: 30 MIN only (Picture line chip "30 MIN WARNING · ALL SAFE").
+     Cues local = abs - 715.927: "Captain John Millhouse" @1.66; "30 minutes" @6.44; "He got" @8.06; "wife" @8.46; "kids" @9.18;
+     "six" @10.24; "two" @10.84; "cat" @11.64; "dog" @12.16; "center hallway" @13.10; "walls" @15.94; "Every one" @18.88; out 20.97. -->
+<style>
+  #g-a4-millhouse-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 40% 50%, #0d141c 0%, #04070a 76%); }
+  .a4m-title { position:absolute; left:120px; top:150px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; letter-spacing:1px; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4m-frame { position:absolute; left:120px; top:250px; width:760px; height:548px; overflow:hidden; border:2px solid rgba(255,255,255,0.22);
+    box-shadow:0 18px 50px rgba(0,0,0,0.6); background:#0b1016; opacity:0; visibility:hidden; }
+  .a4m-img { position:absolute; left:0; top:0; width:760px; height:548px; object-fit:cover; }
+  .a4m-cred { position:absolute; left:120px; top:816px; font-weight:700; font-size:20px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4m-hl { position:absolute; left:360px; top:380px; width:250px; height:380px; border:4px solid #e8c56a; border-radius:6px; box-sizing:border-box; opacity:0; visibility:hidden; }
+  .a4m-hlt { position:absolute; left:360px; top:330px; font-weight:700; font-size:28px; letter-spacing:3px; color:#e8c56a; white-space:nowrap;
+    text-shadow:0 2px 8px rgba(0,0,0,0.9); opacity:0; visibility:hidden; }
+  .a4m-warn { position:absolute; left:980px; top:270px; display:flex; align-items:baseline; gap:20px; opacity:0; visibility:hidden; }
+  .a4m-num { font-family:'Courier New', monospace; font-weight:700; font-size:150px; line-height:1; color:#e74c3c; }
+  .a4m-unit { font-weight:700; font-size:40px; letter-spacing:4px; color:#dfe7ee; white-space:nowrap; }
+  .a4m-tile { position:absolute; top:500px; width:118px; height:118px; border-radius:20px; background:rgba(21,32,43,0.9); border:2px solid #46586b;
+    box-sizing:border-box; display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; }
+  .a4m-tt { font-weight:700; font-size:24px; letter-spacing:2px; color:#dfe7ee; }
+  .a4m-safe { position:absolute; left:980px; top:680px; padding:12px 34px 14px; border-radius:28px; background:rgba(10,16,24,0.62);
+    border:1px solid rgba(127,178,229,0.6); font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:1.1; color:#7fb2e5;
+    white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4m-src { position:absolute; left:120px; top:990px; font-weight:700; font-size:20px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4m-scan { position:absolute; left:0; top:0; width:1920px; height:2px; background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.22), rgba(127,178,229,0)); }
+</style>
+<div id="g-a4-millhouse-root" data-composition-id="g-a4-millhouse" data-width="1920" data-height="1080" data-duration="20.97">
+  <div class="a4m-scan" id="g-a4-millhouse-scan"></div>
+  <div class="a4m-title" id="g-a4-millhouse-title">CAPT. JOHN MILLHOUSE · MOORE</div>
+  <div class="a4m-frame" id="g-a4-millhouse-frame"><img class="a4m-img" id="a4m-photo" src="media/stills/noaa-millhouse-hallway.png" alt=""></div>
+  <div class="a4m-hl" id="g-a4-millhouse-hl"></div>
+  <div class="a4m-hlt" id="g-a4-millhouse-hlt">CENTER HALLWAY</div>
+  <div class="a4m-cred" id="g-a4-millhouse-cred">Photo: Joseph Schaefer/NOAA</div>
+  <div class="a4m-warn" id="g-a4-millhouse-warn"><span class="a4m-num" id="g-a4-millhouse-num">30</span><span class="a4m-unit" id="g-a4-millhouse-unit">MIN WARNING</span></div>
+  <div class="a4m-tile" id="g-a4-millhouse-t0" style="left:980px"><span class="a4m-tt" id="g-a4-millhouse-tt0">JOHN</span></div>
+  <div class="a4m-tile" id="g-a4-millhouse-t1" style="left:1112px"><span class="a4m-tt" id="g-a4-millhouse-tt1">WIFE</span></div>
+  <div class="a4m-tile" id="g-a4-millhouse-t2" style="left:1244px"><span class="a4m-tt" id="g-a4-millhouse-tt2">KID</span></div>
+  <div class="a4m-tile" id="g-a4-millhouse-t3" style="left:1376px"><span class="a4m-tt" id="g-a4-millhouse-tt3">KID</span></div>
+  <div class="a4m-tile" id="g-a4-millhouse-t4" style="left:1508px"><span class="a4m-tt" id="g-a4-millhouse-tt4">CAT</span></div>
+  <div class="a4m-tile" id="g-a4-millhouse-t5" style="left:1640px"><span class="a4m-tt" id="g-a4-millhouse-tt5">DOG</span></div>
+  <div class="a4m-safe" id="g-a4-millhouse-safe">ALL SAFE</div>
+  <div class="a4m-src" id="g-a4-millhouse-src">NOAA Report, June 1999, p2 to p3</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a4-millhouse", P = "#g-a4-millhouse-", DUR = 20.97;
+  const tl = gsap.timeline({ paused: true });
+  const T = [0, 1, 2, 3, 4, 5].map(i => P + "t" + i);
+  tl.set([P + "title", P + "frame", P + "cred", P + "hl", P + "hlt", P + "warn", P + "safe", P + "src"].concat(T), { autoAlpha: 0 }, 0);
+  tl.set("#a4m-photo", { scale: 1 }, 0);
+  /* ambient */
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: DUR / 2, ease: "none", repeat: 1, yoyo: true }, 0);
+  tl.to("#a4m-photo", { scale: 1.06, transformOrigin: "50% 45%", duration: 15.9, ease: "none" }, 0);
+  /* 0.00 "Now a house in Moore": the photo card lands */
+  tl.fromTo(P + "frame", { autoAlpha: 0, x: -80 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.0);
+  tl.fromTo(P + "cred", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 0.4);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.6);
+  /* "Captain John Millhouse" @1.66 */
+  tl.fromTo(P + "title", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.66);
+  /* "30 minutes" @6.44: count-up, fast then slow into 30 */
+  tl.fromTo(P + "warn", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 6.44);
+  const n = document.querySelector(P + "num"), cnt = { v: 1 };
+  tl.to(cnt, { v: 30, duration: 0.9, ease: "power4.out", onUpdate: () => { n.textContent = String(Math.round(cnt.v)); } }, 6.44);
+  /* family tiles on their words */
+  [8.06, 8.46, 10.24, 10.84, 11.64, 12.16].forEach((t, i) =>
+    tl.fromTo(T[i], { autoAlpha: 0, y: 40, scale: 0.7 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)" }, t));
+  /* "center hallway" @13.10: the hallway is outlined on the photo */
+  tl.fromTo(P + "hl", { autoAlpha: 0, scale: 1.15 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 13.10);
+  tl.fromTo(P + "hlt", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 13.20);
+  tl.to(T, { x: 0, y: -6, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: 0.08 }, 13.4);
+  /* "the walls around that hallway" @15.94: push in on the standing walls */
+  tl.to([P + "hl", P + "hlt"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 15.80);
+  tl.to("#a4m-photo", { scale: 1.22, transformOrigin: "50% 45%", duration: 3.0, ease: "power2.inOut" }, 15.94);
+  /* "Every one of them" @18.88: tiles turn safe-blue, ALL SAFE */
+  tl.to(T, { borderColor: "#7fb2e5", duration: 0.3, stagger: 0.06, ease: "power2.out" }, 18.88);
+  tl.fromTo(P + "safe", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "back.out(1.6)" }, 19.00);
+  tl.to(P + "safe", { y: -6, duration: 1.4, ease: "sine.inOut" }, 19.5);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>

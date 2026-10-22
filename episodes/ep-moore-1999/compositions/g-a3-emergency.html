@@ -1,0 +1,47 @@
+<template>
+<!-- g-a3-emergency · ep-moore-1999 · A3-S1 · host 487.713 to 491.873 (4.16 s), track 2, full frame.
+     Local s = episode s - 487.713. a3-s1 starts 485.413, so local = a3-s1 word time - 2.30.
+     Cues: "went" 2.30 -> 0 (card slams in, after the 2.3 s Chopper 4 open); "657" 4.46 -> 2.16 (chip 6:57 PM).
+     Image: media/stills/oun-tornadoemergency600.jpg (NWS Norman event page graphic, public domain, credit NWS Norman). -->
+<style>
+  #g-a3-emergency-root { position:absolute; inset:0; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 80%); font-family:Arial, sans-serif; }
+  #g-a3-emergency-blur { position:absolute; left:-60px; top:-60px; width:2040px; height:1200px; object-fit:cover; filter:blur(38px) brightness(0.45) saturate(1.1); opacity:0.9; }
+  #g-a3-emergency-card { position:absolute; left:480px; top:150px; width:960px; height:720px; box-sizing:border-box; border:2px solid rgba(255,255,255,0.18);
+    box-shadow:0 30px 80px rgba(0,0,0,0.7); overflow:hidden; opacity:0; visibility:hidden; }
+  #g-a3-emergency-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .gae-chip { position:absolute; left:110px; top:80px; padding:14px 36px 16px; box-sizing:border-box; border-radius:28px; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:60px; line-height:1.1; color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  .gae-src { position:absolute; left:110px; bottom:70px; padding:10px 24px 11px; border-radius:24px; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.14);
+    font-size:21px; line-height:26px; font-weight:700; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  .gae-cred { position:absolute; left:480px; top:884px; font-size:30px; font-weight:700; letter-spacing:4px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-emergency-root" data-composition-id="g-a3-emergency" data-width="1920" data-height="1080" data-duration="4.16">
+  <img id="g-a3-emergency-blur" src="media/stills/oun-tornadoemergency600.jpg" data-crop-ok="blurred copy of the whole graphic behind the whole graphic" alt="">
+  <div id="g-a3-emergency-card"><img id="g-a3-emergency-img" src="media/stills/oun-tornadoemergency600.jpg" alt=""></div>
+  <div class="gae-cred" id="g-a3-emergency-cred">NWS NORMAN</div>
+  <div class="gae-chip" id="g-a3-emergency-chip">6:57 PM</div>
+  <div class="gae-src" id="g-a3-emergency-src">NWS Service Assessment, Aug 1999, p10, p15</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a3-emergency-";
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "card", P + "chip", P + "src", P + "cred"], { autoAlpha: 0 }, 0);
+  tl.set(P + "card", { scale: 1.35, transformOrigin: "50% 50%" }, 0);
+  /* "went" @2.30 (local 0): the card slams in */
+  tl.to(P + "card", { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 0);
+  tl.fromTo(P + "blur", { scale: 1.0 }, { scale: 1.08, duration: 4.16, ease: "none" }, 0);
+  tl.to(P + "card", { scale: 1.05, duration: 3.6, ease: "none" }, 0.4);
+  tl.fromTo(P + "cred", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.45);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.6);
+  /* "657" @4.46 (local 2.16): chip */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -140 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.16);
+  tl.to(P + "chip", { y: -6, duration: 1.4, ease: "sine.inOut" }, 2.66);
+  tl.to({}, { duration: 4.16 }, 0);
+  window.__timelines["g-a3-emergency"] = tl;
+})();
+</script>
+</template>

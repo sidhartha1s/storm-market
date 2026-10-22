@@ -1,0 +1,76 @@
+<template>
+<!--
+  g-a5-te-timeline · ep-moore-1999 · A5-S6 · host 953.016 to 963.516 (10.50 s), track 2, full frame. Builder: Opus.
+  Pattern of library/inhouse/event-timeline.html (rail, node, year, label, travelling marker), rebuilt for three nodes.
+  Facts (fact_check.md A5-S6): 46 offices tested it in 2014; operational in every lower-48 office 10 May 2017
+  (NWS SCN 17-46); written into NWSI 10-511. Node text from the Picture line.
+  Cues = local seconds = nx-a5-s6 word time - 5.94 (host start 953.016).
+-->
+<style>
+  #g-a5-te-timeline-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .ga5t-eb { position:absolute; left:96px; top:64px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; line-height:1; white-space:nowrap; }
+  .ga5t-hl { position:absolute; left:96px; top:98px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:60px; color:#e74c3c; line-height:1; white-space:nowrap; }
+  .ga5t-rail { position:absolute; left:260px; top:520px; width:1400px; height:4px; background:#2a3644; }
+  .ga5t-fill { position:absolute; left:260px; top:520px; width:1400px; height:4px; background:linear-gradient(90deg,#8e2020,#e74c3c); }
+  .ga5t-node { position:absolute; top:504px; width:36px; height:36px; margin-left:-18px; border-radius:50%; box-sizing:border-box;
+    border:4px solid #e74c3c; background:#0b1016; }
+  .ga5t-yr { position:absolute; top:396px; width:400px; margin-left:-200px; text-align:center; font-family:'Courier New', monospace; font-weight:700;
+    font-size:76px; color:#f2f5f8; line-height:1; }
+  .ga5t-lab { position:absolute; top:578px; width:420px; margin-left:-210px; text-align:center; font-size:30px; font-weight:700; letter-spacing:2px;
+    color:#dfe7ee; line-height:40px; }
+  .ga5t-src { position:absolute; left:96px; top:974px; font-size:20px; letter-spacing:1px; color:#c8d3e0; font-weight:700; line-height:1; white-space:nowrap; }
+  .ga5t-pulse { position:absolute; top:494px; width:56px; height:56px; margin-left:-28px; border-radius:50%; border:3px solid #e74c3c; box-sizing:border-box; }
+  #ga5t-eb, #ga5t-hl, .ga5t-node, .ga5t-yr, .ga5t-lab, #ga5t-src, #ga5t-pulse { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-te-timeline-root" data-composition-id="g-a5-te-timeline" data-width="1920" data-height="1080" data-duration="10.5">
+  <div class="ga5t-eb" id="ga5t-eb">THE PHRASE FROM NORMAN</div>
+  <div class="ga5t-hl" id="ga5t-hl">TORNADO EMERGENCY</div>
+  <div class="ga5t-rail" id="ga5t-rail"></div>
+  <div class="ga5t-fill" id="ga5t-fill"></div>
+  <div class="ga5t-node" id="ga5t-n1" style="left:360px"></div>
+  <div class="ga5t-node" id="ga5t-n2" style="left:960px"></div>
+  <div class="ga5t-node" id="ga5t-n3" style="left:1560px"></div>
+  <div class="ga5t-pulse" id="ga5t-pulse" style="left:360px"></div>
+  <div class="ga5t-yr" id="ga5t-y1" style="left:360px">1999</div>
+  <div class="ga5t-yr" id="ga5t-y2" style="left:960px">2014</div>
+  <div class="ga5t-yr" id="ga5t-y3" style="left:1560px">2017</div>
+  <div class="ga5t-lab" id="ga5t-l1" style="left:360px">NORMAN,<br>ONE NIGHT</div>
+  <div class="ga5t-lab" id="ga5t-l2" style="left:960px">46 OFFICES<br>TEST IT</div>
+  <div class="ga5t-lab" id="ga5t-l3" style="left:1500px">EVERY LOWER-48<br>OFFICE</div>
+  <div class="ga5t-src" id="ga5t-src">NWS SCN 17-46; NWSI 10-511</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#ga5t-";
+  const tl = gsap.timeline({ paused: true });
+  tl.set(P + "fill", { scaleX: 0, transformOrigin: "left center" }, 0);
+  /* "became the weather service's own" @0.30: headline, 1999 node */
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
+  tl.fromTo(P + "hl", { autoAlpha: 0, scale: 1.12 }, { autoAlpha: 1, scale: 1, transformOrigin: "left center", duration: 0.45, ease: "power3.out" }, 0.15);
+  tl.fromTo(P + "n1", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(3)" }, 0.30);
+  tl.fromTo([P + "y1", P + "l1"], { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.1 }, 0.40);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.80);
+  tl.to(P + "fill", { scaleX: 0.05, duration: 1.6, ease: "power1.out" }, 0.40);
+  /* "46 offices" @2.38, "2014" @4.04 */
+  tl.to(P + "fill", { scaleX: 0.5, duration: 1.4, ease: "power2.inOut" }, 2.38);
+  tl.fromTo(P + "n2", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(3)" }, 3.70);
+  tl.fromTo(P + "l2", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.38);
+  tl.fromTo(P + "y2", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.04);
+  /* "May 10, 2017" @5.48 to 6.08; "every office" @8.40 */
+  tl.to(P + "fill", { scaleX: 0.93, duration: 1.2, ease: "power2.inOut" }, 5.20);
+  tl.fromTo(P + "n3", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(3)" }, 6.08);
+  tl.fromTo(P + "y3", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.08);
+  tl.fromTo(P + "l3", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.40);
+  /* the live node pulses: 1999, then 2014, then 2017 */
+  tl.set(P + "pulse", { autoAlpha: 1 }, 0.4);
+  tl.fromTo(P + "pulse", { scale: 0.7, opacity: 0.9 }, { scale: 1.6, opacity: 0, duration: 1.0, ease: "power2.out", repeat: 9, immediateRender: false }, 0.4);
+  tl.set(P + "pulse", { left: 960 }, 3.70);
+  tl.set(P + "pulse", { left: 1560 }, 6.08);
+  tl.to(P + "l3", { y: -6, duration: 1.0, ease: "sine.inOut", repeat: 1, yoyo: true }, 8.8);
+  tl.to({}, { duration: 10.5 }, 0);
+  window.__timelines["g-a5-te-timeline"] = tl;
+})();
+</script>
+</template>
