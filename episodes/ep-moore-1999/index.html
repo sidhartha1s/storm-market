@@ -83,6 +83,95 @@
   <!-- clock lands on 4:47 at "447" 86.205 + 19.00 = 105.205 -->
   <div id="host-clock-i1" data-composition-id="g-clock-i1" data-composition-src="compositions/g-clock-i1.html" data-start="104.605" data-duration="2.277" data-track-index="2" data-width="1920" data-height="1080"></div>
 
+  <!-- ============ ACTS: narration, structure, Paul, CTA, inserts, end ask (22 Oct 26) ============
+       Arithmetic (manifest durations, 0.30 s seams; ~/.claude/scratch/moore-timeline.txt): A1 voice 107.782 (bo-1 end + 0.2).
+       Holds: A1-S10 "Hold on the dot, room tone only" 3.0 s; A2-S8 deputy beat 3.0 s ("Bed drops to room tone").
+       Inserts (owner "moore all clips yes", coordinator transcript line 78534): KWTV Newcastle live after A2-S3 (10.033 s),
+       KWTV Gary England shelter plea after A3-S4 (12.4 s, 63.5 s after the CTA end), KFOR "everybody's out in the street"
+       after A4-S4 (4.266 s). CTA 460.371 / 1111.052 = 0.4144 of runtime, inside [0.40, 0.60].
+       Paul: ins-paul-2 at A1-S9 (source 0.95-10.0). A2-S9, A3-S9, A4-S6, A5-S4 play their TTS wav until ins-paul-3..6
+       land; each clip then takes its nx slot (same start, its nx audio removed). -->
+  <audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="107.782" data-duration="24.294" data-volume="1"></audio>
+  <audio id="nx-a1-s2" src="audio/a1-s2.wav" data-start="132.376" data-duration="21.248" data-volume="1"></audio>
+  <audio id="nx-a1-s3" src="audio/a1-s3.wav" data-start="153.924" data-duration="18.066" data-volume="1"></audio>
+  <audio id="nx-a1-s4" src="audio/a1-s4.wav" data-start="172.29" data-duration="18.407" data-volume="1"></audio>
+  <audio id="nx-a1-s5" src="audio/a1-s5.wav" data-start="190.997" data-duration="9.831" data-volume="1"></audio>
+  <audio id="nx-a1-s6" src="audio/a1-s6.wav" data-start="201.128" data-duration="20.405" data-volume="1"></audio>
+  <audio id="nx-a1-s7" src="audio/a1-s7.wav" data-start="221.833" data-duration="16.506" data-volume="1"></audio>
+  <audio id="nx-a1-s8" src="audio/a1-s8.wav" data-start="238.639" data-duration="17.124" data-volume="1"></audio>
+  <audio id="nx-a1-s10" src="audio/a1-s10.wav" data-start="265.413" data-duration="9.245" data-volume="1"></audio>
+  <audio id="nx-a2-s1" src="audio/a2-s1.wav" data-start="278.558" data-duration="20.614" data-volume="1"></audio>
+  <audio id="nx-a2-s2" src="audio/a2-s2.wav" data-start="299.472" data-duration="19.488" data-volume="1"></audio>
+  <audio id="nx-a2-s3" src="audio/a2-s3.wav" data-start="319.26" data-duration="24.388" data-volume="1"></audio>
+  <audio id="nx-a2-s4" src="audio/a2-s4.wav" data-start="354.281" data-duration="19.046" data-volume="1"></audio>
+  <audio id="nx-a2-s5" src="audio/a2-s5.wav" data-start="373.627" data-duration="18.651" data-volume="1"></audio>
+  <audio id="nx-a2-s6" src="audio/a2-s6.wav" data-start="392.578" data-duration="22.417" data-volume="1"></audio>
+  <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="415.295" data-duration="17.678" data-volume="1"></audio>
+  <audio id="nx-a2-s8" src="audio/a2-s8.wav" data-start="433.273" data-duration="16.136" data-volume="1"></audio>
+  <audio id="nx-a2-s9" src="audio/a2-s9.wav" data-start="452.709" data-duration="6.662" data-volume="1"></audio>
+  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="485.413" data-duration="15.248" data-volume="1"></audio>
+  <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="500.961" data-duration="17.673" data-volume="1"></audio>
+  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="518.934" data-duration="18.171" data-volume="1"></audio>
+  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="537.405" data-duration="11.225" data-volume="1"></audio>
+  <audio id="nx-a3-s5" src="audio/a3-s5.wav" data-start="561.63" data-duration="13.325" data-volume="1"></audio>
+  <audio id="nx-a3-s6" src="audio/a3-s6.wav" data-start="575.255" data-duration="13.403" data-volume="1"></audio>
+  <audio id="nx-a3-s7" src="audio/a3-s7.wav" data-start="588.958" data-duration="16.782" data-volume="1"></audio>
+  <audio id="nx-a3-s8" src="audio/a3-s8.wav" data-start="606.04" data-duration="20.638" data-volume="1"></audio>
+  <audio id="nx-a3-s9" src="audio/a3-s9.wav" data-start="626.978" data-duration="8.134" data-volume="1"></audio>
+  <audio id="nx-a3-s10" src="audio/a3-s10.wav" data-start="635.412" data-duration="10.571" data-volume="1"></audio>
+  <audio id="nx-a3-s11" src="audio/a3-s11.wav" data-start="646.283" data-duration="14.716" data-volume="1"></audio>
+  <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="661.899" data-duration="15.783" data-volume="1"></audio>
+  <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="677.982" data-duration="17.602" data-volume="1"></audio>
+  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="695.884" data-duration="19.743" data-volume="1"></audio>
+  <audio id="nx-a4-s4" src="audio/a4-s4.wav" data-start="715.927" data-duration="20.67" data-volume="1"></audio>
+  <audio id="nx-a4-s5" src="audio/a4-s5.wav" data-start="741.463" data-duration="18.984" data-volume="1"></audio>
+  <audio id="nx-a4-s6" src="audio/a4-s6.wav" data-start="760.747" data-duration="7.849" data-volume="1"></audio>
+  <audio id="nx-a4-s7" src="audio/a4-s7.wav" data-start="768.896" data-duration="20.29" data-volume="1"></audio>
+  <audio id="nx-a4-s8" src="audio/a4-s8.wav" data-start="789.486" data-duration="22.134" data-volume="1"></audio>
+  <audio id="nx-a4-s9" src="audio/a4-s9.wav" data-start="811.92" data-duration="22.66" data-volume="1"></audio>
+  <audio id="nx-a4-s10" src="audio/a4-s10.wav" data-start="834.88" data-duration="12.266" data-volume="1"></audio>
+  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="848.046" data-duration="19.644" data-volume="1"></audio>
+  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="867.99" data-duration="26.338" data-volume="1"></audio>
+  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="894.628" data-duration="22.128" data-volume="1"></audio>
+  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="917.056" data-duration="7.398" data-volume="1"></audio>
+  <audio id="nx-a5-s5" src="audio/a5-s5.wav" data-start="924.754" data-duration="22.022" data-volume="1"></audio>
+  <audio id="nx-a5-s6" src="audio/a5-s6.wav" data-start="947.076" data-duration="22.395" data-volume="1"></audio>
+  <audio id="nx-a5-s7" src="audio/a5-s7.wav" data-start="969.771" data-duration="30.342" data-volume="1"></audio>
+  <audio id="nx-a5-s8" src="audio/a5-s8.wav" data-start="1000.413" data-duration="33.699" data-volume="1"></audio>
+  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="1034.412" data-duration="29.519" data-volume="1"></audio>
+  <audio id="nx-a5-s10" src="audio/a5-s10.wav" data-start="1064.231" data-duration="17.023" data-volume="1"></audio>
+  <audio id="nx-a5-s11" src="audio/a5-s11.wav" data-start="1097.454" data-duration="9.598" data-volume="1"></audio>
+
+  <section class="clip act" id="act-a1" data-start="107.582" data-duration="170.076" data-track-index="0"></section>
+  <section class="clip act" id="act-a2" data-start="278.358" data-duration="182.013" data-track-index="0"></section>
+  <section class="clip act" id="act-a3" data-start="485.413" data-duration="175.586" data-track-index="0"></section>
+  <section class="clip act" id="act-a4" data-start="661.699" data-duration="185.447" data-track-index="0"></section>
+  <section class="clip act" id="act-a5" data-start="847.846" data-duration="263.206" data-track-index="0"></section>
+  <section class="clip hold" id="hold-a1-s10" data-start="274.658" data-duration="3.0" data-track-index="8"></section>
+  <section class="clip blackout" id="bo-2" data-start="277.658" data-duration="0.7" data-track-index="1"></section>
+  <section class="clip hold" id="hold-a2-s8" data-start="449.409" data-duration="3.0" data-track-index="8"></section>
+  <section class="clip blackout" id="bo-cta-in" data-start="459.371" data-duration="1" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-cta-out" data-start="484.413" data-duration="1" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-3" data-start="660.999" data-duration="0.7" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-4" data-start="847.146" data-duration="0.7" data-track-index="1"></section>
+  <section class="clip hold" id="hold-ins-a2" data-start="343.948" data-duration="10.033" data-track-index="8"></section>
+  <section class="clip hold" id="hold-ins-a3" data-start="548.93" data-duration="12.4" data-track-index="8"></section>
+  <section class="clip hold" id="hold-ins-a4" data-start="736.897" data-duration="4.266" data-track-index="8"></section>
+
+  <!-- Paul A1-S9 (ins-paul-2, Flow, logo over the mark): "At six twenty-six, near Amber ..." -->
+  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2.mp4" data-start="256.063" data-duration="9.05" data-media-start="0.95" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="At six twenty-six, near Amber, the same storm dropped its ninth tornado. This one would stay on the ground for about eighty minutes."></video>
+  <!-- CTA (config channel.cta, staged media/cta/, md5 bba0b9f3...) -->
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v9-oct20.mp4" data-start="460.371" data-duration="24.042" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+  <!-- INSERTS, own audio, graded, captions per mg-quickref "Outside voices" (hosts g-cap-*) -->
+  <video id="ins-a2-newcastle" class="graded" src="media/clips/cuts/cut-a2-s1_s2.mp4" data-start="343.948" data-duration="10.033" data-media-start="0" data-track-index="1" data-volume="0.9" data-has-audio="true" data-srt-label="[KWTV NEWS 9, LIVE] It's probably a half a mile to a quarter of a mile wide. It's still very, very strong. It looks like it's in the northeastern parts of Newcastle, very near the river."></video>
+  <video id="ins-a3-england" class="graded" src="media/clips/cuts/cut-a3-s1_s4.mp4" data-start="548.93" data-duration="12.4" data-media-start="0" data-track-index="1" data-volume="0.9" data-has-audio="true" data-srt-label="[KWTV NEWS 9, LIVE] You know, if you have a cellar, basement, that's the best. But if you don't have that, get as many pillows and blankets as you can, get in the bathtub. Get between the stool and the wall."></video>
+  <video id="ins-a4-street" class="graded" src="media/clips/cuts/cut-a4-s5.mp4" data-start="736.897" data-duration="4.266" data-media-start="0" data-track-index="1" data-volume="0.9" data-has-audio="true" data-srt-label="[KFOR NEWS 4] Everybody's out in the street now."></video>
+  <!-- END ASK (config channel.end_ask, staged media/end-ask/), then Paul's signature line A5-S11 over the title card -->
+  <video id="ins-endask-a" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="1081.654" data-duration="9.083" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
+  <video id="ins-endask-b" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="1090.737" data-duration="6.417" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
+
+  <!-- ACT PICTURE: footage + graphic hosts per act, pasted from briefs/<act>-mounts.html after review -->
+
 </div>
 <script>
 window.__timelines = window.__timelines || {};
