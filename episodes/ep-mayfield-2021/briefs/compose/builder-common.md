@@ -52,7 +52,7 @@ build the honest neutral alternative (a designed card or a neutral still) and li
 - `python3 scripts/lint_timeline.py episodes/ep-mayfield-2021` and `python3 scripts/sweep_episode.py episodes/ep-mayfield-2021`: no
   finding that names your ids or your time range (other acts may still be unbuilt: ignore findings outside your range).
 - `node scripts/overlap_check.mjs episodes/ep-mayfield-2021`, `node scripts/blank_scan.mjs <absolute episode dir>`,
-  `node scripts/beat_density.mjs episodes/ep-mayfield-2021` if present: nothing in your range.
+  `python3 scripts/beat_density.py episodes/ep-mayfield-2021`: nothing in your range.
 - Frames: `npx hyperframes@0.8.185 snapshot episodes/ep-mayfield-2021 --at <t1>,<t2>,... --no-end --describe false -o
   episodes/ep-mayfield-2021/.qc-tmp/<act>-frames` at a settled moment of each new graphic over its real picture. Look at them.
   Fix what you see (cut-off text, a label over the wrong thing, empty frame). The orchestrator re-reads frames independently.
