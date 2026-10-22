@@ -150,7 +150,7 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
    publish, commit, PR and merge the episode branch, then remove the worktree. `metadata.md` at publish: first URL
    is `channel.cta.first_link`, then the "book mentioned at mm:ss" line, no chapter marker at the CTA, category Education, type Overview.
 - Chunk a render only if a single render proves unstable.
-- Heavy local jobs run on the ZBook by default (owner 17 Oct 26): transcription, voice conversion, clip downloads and
+- Heavy local jobs run on the ZBook by default (owner 17 Oct 26): TTS, transcription, voice conversion, clip downloads and
   frame extraction for sourcing, captures, gates and renders. Sourcing lanes pause while a render runs there (one heavy job at a time). The ASUS GPU runs the owner's live dictation and its RAM is shared with his work; measured
   on Joplin, one act's transcription ran 28 min+ unfinished on the ASUS while all 8 acts cut and converted on the ZBook in 19 min.
 
