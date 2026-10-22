@@ -338,10 +338,13 @@ def main(argv=None):
 
 def in_worktree(ep):
     """True when the episode sits in a linked git worktree (any location: git decides, not a path list)."""
-    r = subprocess.run(["git", "-C", str(ep), "rev-parse", "--git-dir", "--git-common-dir"], capture_output=True, text=True)
+    # --path-format=absolute: from a subdirectory of the main checkout git prints the common dir relative (../.git),
+    # which would read as "different" and let an episode in the main checkout claim (git 2.31+, both laptops 2.55)
+    r = subprocess.run(["git", "-C", str(ep), "rev-parse", "--path-format=absolute", "--git-dir", "--git-common-dir"],
+                       capture_output=True, text=True)
     if r.returncode:
         return False
-    git_dir, common = r.stdout.splitlines()  # paths may hold spaces
+    git_dir, common = r.stdout.splitlines()
     return git_dir != common
 
 
