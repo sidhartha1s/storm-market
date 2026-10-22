@@ -39,6 +39,9 @@ def need_gb(workers):
 
 
 MIN_FREE_GB = float(os.environ.get("RENDER_MIN_FREE_GB", need_gb(1)))
+# a gate's own headless Chromium (~300 MB) still needs the owner's 1 GB headroom left after it: several builders
+# capturing at once took the box to 0.5 GB and a 55 min stall (22 Oct 26); the old check passed them all
+GATE_MIN_FREE_GB = 1.5
 
 
 def workers_that_fit(requested, free):
