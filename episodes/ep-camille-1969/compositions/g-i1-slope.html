@@ -152,14 +152,16 @@ window.__timelines = window.__timelines || {};
     if (p[0] >= 890) knock.push([g, p[0]]);
   });
 
-  /* trees riding the strip: outer g moved by GSAP (x, y), inner g tilted */
+  /* trees riding the strip: a static wrap at the rest position (so frame 0 is right before any seek),
+     a mover g that GSAP offsets by (state - rest), and the tree g that tilts about its base */
   const ride = document.querySelector(P + "ride"), riders = [];
   for (let i = 0; i < 12; i++) {
-    const o = document.createElementNS(NS, "g"); o.setAttribute("id", "gi1slope-r" + i); ride.appendChild(o);
+    const w = document.createElementNS(NS, "g"); w.setAttribute("transform", "translate(" + T.A[i][0] + "," + T.A[i][1] + ")"); ride.appendChild(w);
+    const o = document.createElementNS(NS, "g"); o.setAttribute("id", "gi1slope-r" + i); w.appendChild(o);
     const g = tree(o, "gi1slope-rt" + i); riders.push([o, g]);
-    tl.set(o, { x: T.A[i][0], y: T.A[i][1] }, 0);
-    tl.set(g, { rotation: 0, svgOrigin: "0 0" }, 0);
   }
+  /* offset of state k from rest, for rider i */
+  const dx = (k, i) => +(T[k][i][0] - T.A[i][0]).toFixed(1), dy = (k, i) => +(T[k][i][1] - T.A[i][1]).toFixed(1);
 
   /* the house: a light on in the hollow */
   tl.fromTo(P + "window", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, CUES.light);
