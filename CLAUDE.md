@@ -169,7 +169,8 @@ Owner 7 Oct 26: "i want all stuff related to storm market within the repo. excep
 
 ## HARD RULE: worktree isolation
 Never build or edit in the main checkout; parallel sessions share it. First action of any session: `git worktree list`
-and `git status`. Before the first write: `git worktree add .worktrees/<task> -b <branch> origin/main`.
+and `git status`. Before the first write: `git worktree add .worktrees/<task> -b <branch> origin/main`. A session the
+desktop app started with its own worktree already sits in `.claude/worktrees/<task>-<hash>`; the lane gate accepts both.
 
 ## HARD RULE: the pin stays current
 The owner runs the latest hyperframes (upstream ships fixes daily). Episode kickoff runs `python3 scripts/pin_ritual.py
