@@ -360,8 +360,8 @@ def write(a, ep, lock):
         # the Stop hook runs the lanes.py of the episode's own checkout; claiming from another checkout would leave it none
         if SCRIPTS.parent not in ep.parents:
             sys.exit(f"[lanes] FAIL: run the lanes.py inside {ep}'s own checkout (merge main into its branch first)")
-        if ".worktrees" not in ep.parts:
-            sys.exit(f"[lanes] FAIL: {ep} is not in a worktree; the Stop hook reads only .worktrees/*/episodes/*/lanes.json")
+        if not in_worktree(ep):
+            sys.exit(f"[lanes] FAIL: {ep} is not in a worktree; the Stop hook reads only .worktrees/*/ and .claude/worktrees/*/ ledgers")
         if not a.session:
             sys.exit("[lanes] FAIL: no session id (CLAUDE_CODE_SESSION_ID unset); pass --session")
     elif not a.jobs:
