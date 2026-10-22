@@ -2,7 +2,7 @@
 <style>
   /* g-i1-3 · I1-S2 second beat · FULL-FRAME locator map (replaces the factory-still overlay; old file: compositions/_old/g-i1-3-overlay.html).
      Family base: g-t1-1 (ground #0b1016 on #04070a, line #4a5a6c, state-name style, pin + label glass, projection X=3841*(lon+97.576), Y=-5585*(lat-46.6213)).
-     Own camera: screen = (X*s + tx, Y*s + ty); the candle-factory point stays fixed at screen (930, 590) while s log-zooms 0.081 -> 1.3 (16x) over comp-local 1.4..3.4. */
+     Own camera: screen = (X*s + tx, Y*s + ty); the candle-factory point stays fixed at screen (930, 590) while s log-zooms 0.081 -> 0.75 (9x) over comp-local 1.4..3.4. */
   #g-i1-3-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:#04070a; font-family:Arial, sans-serif; color:#f2f5f8; }
   #g-i1-3-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
   #g-i1-3-vig { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none;
@@ -17,6 +17,7 @@
   .g-i1-3-ring { position:absolute; left:-9px; top:-9px; width:18px; height:18px; box-sizing:border-box; border-radius:50%; border:2px solid #f2f5f8;
     opacity:0; visibility:hidden; }
   .g-i1-3-lead { position:absolute; top:-1px; width:42px; height:2px; background:#dfe7ee; opacity:0; visibility:hidden; }
+  #g-i1-3-roads { visibility:hidden; opacity:0; }
   .g-i1-3-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,.14); box-sizing:border-box; white-space:nowrap; opacity:0; visibility:hidden; }
   .g-i1-3-pinlab { position:absolute; top:-23px; padding:10px 14px; border-radius:12px; font-size:26px; font-weight:700; line-height:26px; color:#f2f5f8; }
@@ -82,12 +83,12 @@ window.__timelines = window.__timelines || {};
   const MAY = [34305.926, 55201.252], FAC = [34232.379, 55277.839];
   const KYN = [3841 * (-87.9 + 97.576), -5585 * (37.35 - 46.6213)];   /* KENTUCKY name anchor: lon -87.9, lat 37.35, inside the state */
   const AX = 930, AY = 590;              /* the factory point stays here on screen for the whole window */
-  const S0 = 0.075, SA = S0 * 1.08, SE = 1.3;
+  const S0 = 0.075, SA = S0 * 1.08, SE = 0.75;
 
   /* camera: pure function of comp-local time, so a seek in either order lands the same frame */
   function scaleAt(t) {
     if (t <= C.zoomA) return S0 * Math.pow(1.08, t / C.zoomA);                       /* slow push on the wide view */
-    if (t <= C.zoomB) {                                                              /* log zoom 0.081 -> 1.3, power2.inOut */
+    if (t <= C.zoomB) {                                                              /* log zoom 0.081 -> 0.75, power2.inOut */
       const p = (t - C.zoomA) / (C.zoomB - C.zoomA);
       const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
       return SA * Math.pow(SE / SA, e);
@@ -103,6 +104,7 @@ window.__timelines = window.__timelines || {};
     gsap.set(P + "fac", { x: AX, y: AY });
     gsap.set(P + "ky", { x: KYN[0] * s + tx, y: KYN[1] * s + ty });
   }
+  function tick() { render(cam.t); }
   render(0);
 
   const tl = gsap.timeline({ paused: true });
@@ -111,7 +113,7 @@ window.__timelines = window.__timelines || {};
           P + "chip", P + "src"], { autoAlpha: 0 }, 0);
 
   /* camera + ambient: one tween over the whole window drives render(); a scan line crosses the frame at 190 px/s */
-  tl.fromTo(cam, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: function () { render(cam.t); } }, 0);
+  tl.fromTo(cam, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: tick }, 0);
   tl.set(P + "scan", { y: 0 }, 0);
   tl.to(P + "scan", { y: 1020, duration: DUR, ease: "none" }, 0);
 
@@ -123,7 +125,7 @@ window.__timelines = window.__timelines || {};
   tl.set(P + "may-ring", { autoAlpha: 1 }, 0.65);
   tl.fromTo(P + "may-ring", { scale: 1, opacity: 0.9 }, { scale: 3, opacity: 0, duration: 1.0, ease: "power2.out", repeat: 1, repeatDelay: 0.2 }, 0.65);   /* 0.65-2.85 */
   tl.set(P + "may-ring", { autoAlpha: 1 }, C.may2);
-  tl.fromTo(P + "may-ring", { scale: 1, opacity: 0.9 }, { scale: 3, opacity: 0, duration: 1.0, ease: "power2.out", repeat: 1, repeatDelay: 0.2 }, C.may2);   /* MAYFIELD @3.84 */
+  tl.fromTo(P + "may-ring", { scale: 1, opacity: 0.9 }, { scale: 3, opacity: 0, duration: 1.0, ease: "power2.out" }, C.may2);   /* MAYFIELD @3.84, one pulse */
   tl.to(P + "ky-name", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 1.3);   /* gone before the zoom takes it past the margin */
 
   /* detail comes in with the zoom: county lines, then the Mayfield city limits */
