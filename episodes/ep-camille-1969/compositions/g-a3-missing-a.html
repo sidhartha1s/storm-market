@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a3-missing-a: A3-S5. Two columns, KNOWN LOST (stays blank, no dead count is spoken) and MISSING (counts to 100+).
+     Comp time 0 = first word of A3-S5. Built clean so g-a3-missing-b can copy it. Corner x >= 1600, y >= 680 empty. */
+  #am-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  #am-scan { position:absolute; left:0; top:0; width:3px; height:1080px; opacity:0.5; pointer-events:none;
+    background:linear-gradient(180deg, rgba(127,178,229,0), rgba(127,178,229,0.35) 50%, rgba(127,178,229,0)); }
+  .am-grid { position:absolute; left:0; right:0; height:1px; background:rgba(120,150,180,0.10); }
+  .am-panel { position:absolute; top:250px; width:520px; height:400px; box-sizing:border-box; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  #am-pl { left:380px; } #am-pr { left:1020px; }
+  .am-head { position:absolute; left:0; right:0; top:44px; text-align:center; font-weight:700; font-size:34px; letter-spacing:8px; color:#93a3b2; }
+  .am-rule { position:absolute; left:60px; right:60px; top:110px; height:3px; background:#5a768f; opacity:0.6; transform-origin:left center; }
+  #am-pr .am-rule { background:#c0392b; opacity:0.9; }
+  .am-slot { position:absolute; left:50px; top:160px; width:420px; height:190px; box-sizing:border-box; border:3px dashed #2f3f4f; border-radius:18px; }
+  #am-val { position:absolute; left:0; right:0; top:164px; text-align:center; opacity:0; visibility:hidden;
+    font-family:'Courier New',monospace; font-weight:700; font-size:150px; line-height:180px; color:#e74c3c; }
+  #am-stamp { position:absolute; left:96px; top:96px; padding:14px 28px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:20px; font-weight:700; font-size:30px; letter-spacing:2px; color:#f5d98b; }
+  #am-src { position:absolute; left:96px; bottom:54px; font-weight:700; font-size:22px; letter-spacing:1px; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="am-root" data-composition-id="g-a3-missing-a" data-width="1920" data-height="1080">
+  <div class="am-grid" style="top:180px"></div>
+  <div class="am-grid" style="top:430px"></div>
+  <div class="am-grid" style="top:700px"></div>
+  <div class="am-grid" style="top:900px"></div>
+  <div id="am-scan"></div>
+  <div id="am-stamp">Aug 22, 1969</div>
+  <div class="am-panel" id="am-pl">
+    <div class="am-head" id="am-hl">KNOWN LOST</div>
+    <div class="am-rule" id="am-rl"></div>
+    <div class="am-slot" id="am-sl"></div>
+  </div>
+  <div class="am-panel" id="am-pr">
+    <div class="am-head" id="am-hr">MISSING</div>
+    <div class="am-rule" id="am-rr"></div>
+    <div class="am-slot" id="am-sr"></div>
+    <div id="am-val">0</div>
+  </div>
+  <div id="am-src">Associated Press, Aug 22, 1969 (The Pontiac Press, p. 1)</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 10.0;
+  /* CUE-PENDING all cues are ESTIMATES (no audio/a3-s5.words.json yet): "count" 0.36 · "Friday" 4.45 · "Associated" 6.08 · "hundred" 7.59 · "missing" ends ~8.9 */
+  tl.set(["#am-pl", "#am-pr", "#am-stamp", "#am-src", "#am-val"], { autoAlpha: 0 }, 0);
+  tl.set([".am-rule"], { scaleX: 0 }, 0);
+
+  tl.fromTo("#am-scan", { x: -40 }, { x: 1960, duration: DUR, ease: "none" }, 0);
+  /* columns land on "count" @0.36; headers hold, rules draw */
+  tl.fromTo("#am-pl", { autoAlpha: 0, x: -140 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.3);
+  tl.fromTo("#am-pr", { autoAlpha: 0, x: 140 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.45);
+  tl.to(".am-rule", { scaleX: 1, duration: 0.6, ease: "power3.out", stagger: { each: 0.15 } }, 0.9);
+  /* the empty slots wait: dashed outline pulses (the left one never fills) */
+  tl.fromTo(["#am-sl", "#am-sr"], { opacity: 0.35 }, { opacity: 1, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1.2);
+  tl.fromTo("#am-sl", { opacity: 0.35 }, { opacity: 1, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3 }, 8.4);
+  /* stamp on "Friday" @4.45 */
+  tl.fromTo("#am-stamp", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 4.45);
+  /* source on "Associated" @6.08 */
+  tl.fromTo("#am-src", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 6.08);
+  /* MISSING counts to 100+ on "a hundred" @7.59 */
+  const cnt = { v: 0 };
+  tl.to("#am-sr", { autoAlpha: 0, duration: 0.2 }, 7.45);
+  tl.set("#am-val", { autoAlpha: 1 }, 7.55);
+  tl.to(cnt, { v: 100, duration: 1.0, ease: "power3.out", onUpdate: () => {
+    document.querySelector("#am-val").textContent = cnt.v >= 99.5 ? "100+" : Math.round(cnt.v);
+  } }, 7.59);
+  tl.fromTo("#am-val", { scale: 1.12 }, { scale: 1, duration: 0.45, ease: "back.out(2)" }, 8.5);
+  /* float so the hold keeps moving */
+  tl.fromTo(["#am-pl", "#am-pr"], { y: 0 }, { y: -6, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 6.6);
+  /* exit, last 0.6 s */
+  tl.to("#am-pl", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.4);
+  tl.to("#am-pr", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.4);
+  tl.to(["#am-stamp", "#am-src"], { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.4);
+  window.__timelines["g-a3-missing-a"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
