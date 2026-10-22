@@ -10,7 +10,9 @@ locked words are the text he saw). Runtime: owner picked 20 min (`moore_len`, sa
 rounds 2 and 2b, 0 open `[verify]`) plus grade (`acts/grader-round1.md`, A1 re-graded): the owner dropped the per-act
 sign-off on 22 Oct 26 11:39 ("i dont thinks its highly necessary for me to have thhis 'check acts' gate anymore. i
 thought you were gonna share the preview", relayed by the coordinator, who is changing script-scaling.md condition (b)
-to match). His next look is the draft preview.
+to match). His next look is the draft preview. **Insert clips: all 9 approved** by the owner in his own words, "moore all
+clips yes." (coordinator session transcript `ce354226-...jsonl` line 78534, type user, 2026-10-22T06:28:10.777Z, uuid
+ab66a843-618c-4d34-8862-6c3f44e81348). Cuts: `C:\Users\Sidhartha\.claude\scratch\moore-cuts\cuts.tsv`.
 
 ## Runtime and shape
 - Target: about 20 min (proposal; the owner sets length per episode). 5 acts of 3 to 4.5 min plus hook/intro
