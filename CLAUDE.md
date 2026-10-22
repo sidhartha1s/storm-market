@@ -206,7 +206,7 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
   <abs>\scripts\run_hidden.vbs cmd.exe /c <abs>\scripts\<task>.cmd" /sc once /st 23:59 /f && schtasks /run /i /tn <T> &&
   schtasks /delete /tn <T> /f`. A one-time trigger stays armed after `/run` and fires a second copy at its `/st` time; the
   started job survives the delete. `/i` ignores the on-battery constraint, which would otherwise leave the run queued
-  and then deleted unstarted. The `schtasks-once` hook in `~/.claude/hooks` blocks a create without the delete.
+  and then deleted unstarted. The `schtasks-once` hook in `~/.claude/hooks` blocks a create without the delete. In the `.cmd` use the full `...\Python312\python.exe`, never bare `python3` (cmd resolves the Store stub, exit 9009).
   A harness background job is reaped at low RAM, and `Start-Process` dies with its tool call.
 - Read the log for `streaming-encode gate ... enabled:true`. Without it a long composition captures to disk and fills it.
 - Liveness is judged by command line (`Get-CimInstance Win32_Process | Where CommandLine -like '*hyperframes*'`), never by process count.

@@ -96,7 +96,7 @@ script anywhere. Fixed:
 A section (hook+intro first, then each act) **locks** only when ALL of:
 - (a) its `[verify]` markers are all resolved (CONFIRMED / CORRECTED / cut, none open);
 - (b) its independent grade passed (bar: `learnings/script-process.md` "independent grade on every script");
-- (c) for the hook+intro only, the owner has **explicitly** approved it in chat or on his devq page; silence is
+- (c) for the hook+intro only, the owner has **explicitly** approved it in chat or on his devq page (a side session reads his Save file itself: `ops/decisions.md` 22 Oct 26); silence is
   never approval (SKILL.md "never infer").
 
 Acts need no owner sign-off (owner 22 Oct 26: "i dont thinks its highly necessary for me to have thhis 'check

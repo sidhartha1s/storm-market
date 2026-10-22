@@ -2,6 +2,14 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 22 Oct 26: three episodes on one ASUS stalled it; heavy work was on the wrong laptop
+
+Three episode sessions (Moore, Mayfield, Camille) ran in parallel from desktop-app worktrees. Measured from their transcripts:
+1. **All three TTS runs started on the ASUS** (11:50 to 12:04 IST) against CLAUDE.md "Heavy local jobs". Moore's run had done 1 of 51 segments after 35 min at about 3 GB free; moved to the ZBook it finished in about 25 min. Two runs hung on the `python3` Store stub inside a hidden task (CLAUDE.md launch recipe now says the full path).
+2. **60 snapshots and 239 gate commands ran on the ASUS, 0 over `ssh zbook`**, beside each other: 0.7 GB free at 13:25, 2.4 GB with 6 headless browsers at 17:51, then a 55 min stall (17:58 to 18:55). `render_busy.py` now refuses under `GATE_MIN_FREE_GB` (1.5 GB) free; every .mjs gate runs it through `playwright_env.mjs`, and `scripts/snapshot.py` is the one snapshot entry point and runs it too.
+3. **The lane gate never saw the episodes.** The app puts a session's worktree in `.claude/worktrees/<slug>-<hash>`; `lanes.py` and the Stop hook accepted only `.worktrees/`, so no episode was claimed. Both now ask git (`rev-parse --git-common-dir`, `worktree list`), so any linked worktree counts.
+4. Hook time per tool call rose from 0.7 s to 3.2 to 9.3 s from 11:00 with 48 to 64 Claude processes alive; an app restart at 19:20 brought it back.
+
 ## 22 Oct 26: pin 0.8.149 to 0.8.185 before Moore 1999, Mayfield 2021 and Camille 1969
 1. Ritual on demo-pin (hidden task on the ASUS, exit 0): duration 24.000/24.000 s, black 0/0, RMS -21.602708/-21.602708
    dB, workers 2/2, SSIM 0.9936, video-region SSIM 0.9977. Bumped clean. Full-frame SSIM is a little under the last
@@ -123,7 +131,7 @@ ep4-el-reno draft, 1333.38 s, 20001 frames at 15 fps, 3 workers: compile 20.2 s,
    `index.html`) on 4. Both are static guesses: the snapshot frames and the draft show the root styles and the font
    applied. `npx hyperframes@X lint <episode> --verbose` lists them; it also flags `_blank_tmp.html` as a second root
    until `render.cmd` deletes it.
-8. `.venv-pocket` is not on the ZBook and `.models` is partial, so voice work stays on the ASUS. A render needs neither.
+8. TTS and voice work run on the ZBook (CLAUDE.md "Heavy local jobs"; the venv is there since 22 Oct 26). A render needs neither the venv nor the models.
 
 ## 10 Oct 26: pin 0.8.114 to 0.8.143 before El Reno's first render; a real episode's frames as the second A/B
 
