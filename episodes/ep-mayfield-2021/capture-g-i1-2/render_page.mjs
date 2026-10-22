@@ -5,10 +5,10 @@ import { writeFileSync } from 'fs';
 
 const EP = 'C:/Users/Sidhartha/Automation Projects/storm-market/.claude/worktrees/ep-mayfield-2021-a6d084/episodes/ep-mayfield-2021';
 const SRC = `file:///${EP.replace(/ /g, '%20')}/media/candidates/intro/i1-s2_c1_spc-day4-8-outlook-3dec.html`;
-const OUT = `${EP}/media/stills/i1-s2-spc-day4-8-page.png`;
+const OUT = `${EP}/media/stills/i1-s2-spc-day4-8-page-v2.png`;
 const BW = 1240, BH = 780;
 const PITCH_TARGET = Number(process.env.PITCH || 19.4);   // px between lines in the 1920 x 1080 frame
-const TOP_PAD = 12;
+const TOP_PAD = 6;
 
 const browser = await chromium.launch({ executablePath: chromiumExecutable(), args: ['--allow-file-access-from-files'] });
 const page = await browser.newPage({ viewport: { width: BW, height: BH }, deviceScaleFactor: 1 });
@@ -24,7 +24,7 @@ const geo = await page.evaluate(({ BW, BH, PITCH_TARGET, TOP_PAD }) => {
   const iFirst = lines.findIndex(l => l.includes('Day 4-8 Convective Outlook'));
   const iHdr = lines.findIndex(l => l.includes('0320 AM CST Fri Dec 03 2021'));
   const iLit = lines.findIndex(l => l.includes('Day 8/Friday'));
-  const iLast = iLit;  // the crop ends on the lit line (the glass strip sits below it)
+  const iLast = iLit + 1;  // the crop ends on the second lit line (the glass strip sits below it)
   // measure each wanted line with a Range
   const rect = i => { const r = document.createRange(); const s = starts[i] + lines[i].search(/\S/); r.setStart(text, s); r.setEnd(text, starts[i] + lines[i].trimEnd().length); const b = r.getBoundingClientRect(); return { l: b.left, r: b.right, t: b.top, b: b.bottom }; };
   const a = rect(iFirst), b = rect(iFirst + 1);
@@ -38,6 +38,8 @@ const geo = await page.evaluate(({ BW, BH, PITCH_TARGET, TOP_PAD }) => {
   const lit0 = rect(iLit);
   const preBox0 = pre.getBoundingClientRect();
   const hdr0 = rect(iHdr), last0 = rect(iLast);
+  const rect2 = (i, endStr) => { const r = document.createRange(); r.setStart(text, starts[i] + lines[i].search(/\S/)); r.setEnd(text, starts[i] + lines[i].indexOf(endStr) + endStr.length); const b = r.getBoundingClientRect(); return { l: b.left, r: b.right, t: b.top, b: b.bottom }; };
+  const lit2_0 = rect2(iLast, 'convection.');
   const tx = (BW / s - colW) / 2 - minL;             // centre the text column
   const ty = -lineTop0 + TOP_PAD / s;                // first kept line sits TOP_PAD px from the top
   document.documentElement.style.cssText = 'background:transparent';
@@ -55,7 +57,7 @@ const geo = await page.evaluate(({ BW, BH, PITCH_TARGET, TOP_PAD }) => {
   clone.style.left = (preBox0.left + window.scrollX) + 'px'; clone.style.top = (preBox0.top + window.scrollY) + 'px';
   const font = getComputedStyle(pre).fontFamily + ' ' + getComputedStyle(pre).fontSize;
   const out = (q) => ({ l: (q.l + tx) * s, r: (q.r + tx) * s, t: (q.t + ty) * s, b: (q.b + ty) * s });
-  return { s, pitch0, font, iFirst, iHdr, iLit, iLast, litText: lines[iLit].trim(), hdrText: lines[iHdr].trim(), lastText: lines[iLast].trim(), colW_px: colW * s, lit: out(lit0), hdr: out(hdr0), first: out(a), lastLine: out(last0) };
+  return { s, pitch0, font, iFirst, iHdr, iLit, iLast, litText: lines[iLit].trim(), hdrText: lines[iHdr].trim(), lastText: lines[iLast].trim(), colW_px: colW * s, lit: out(lit0), hdr: out(hdr0), lit2: out(lit2_0), line2Text: lines[iLast].trim(), first: out(a), lastLine: out(last0) };
 }, { BW, BH, PITCH_TARGET, TOP_PAD });
 
 await page.waitForTimeout(300);

@@ -24,8 +24,8 @@ def simplify(pts, tol):  # Douglas-Peucker on px points
     return simplify(pts[:i + 2], tol)[:-1] + simplify(pts[i + 1:], tol)
 def ring_d(ring, tol=None):
     pts = [px(*c) for c in ring]
-    if tol: pts = simplify(pts, tol)
     if pts[0] == pts[-1]: pts = pts[:-1]
+    if tol: h = len(pts) // 2; pts = simplify(pts[:h + 1], tol)[:-1] + simplify(pts[h:] + [pts[0]], tol)[:-1]
     return 'M' + ' L'.join('%.1f,%.1f' % p for p in pts) + ' Z', pts
 
 lines = {}
