@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- ep-moore-1999 · The Warning Hour · hand-authored on ep-joplin-2011's layout (22 Oct 26).
+     Script: edit_script.md (H1/T1/I1 and A1-A5 locked). Narration wavs and durations: audio/manifest.json.
+     Timing rules (Joplin's): next narration = previous wav end + 0.30 s seam; act seams = 0.7 s chapter blackout from the
+     last word, next voice 0.2 s after it; CTA hinge A2-S9 (Paul) -> A3-S1 with 1.0 s dips; Paul's on-camera lines are
+     ins-paul-N clips with their own audio, no narration under them.
+     Picture: footage on track 1, full-frame graphics on track 2, overlays on track 4, circle on 7/9, holds on 8.
+     INTRO arithmetic: ins-paul-1 0-2.75 (source 1.45-4.20, his line); h1-s2 2.90 + 4.895 = 7.795; h1-s3 8.095 + 13.156 =
+     21.251; t1-s1 21.551 + 8.921 = 30.472; i1-s1 30.772 + 30.603 = 61.375; i1-s2 61.675 + 24.23 = 85.905;
+     i1-s3 86.205 + 20.677 = 106.882; bo-1 106.882 + 0.7. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Moore 1999 · The Warning Hour</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .hold, .act { position: absolute; inset: 0; pointer-events: none; }
+    .still-wrap { position: absolute; inset: 0; overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    #root > [data-composition-id] { position: absolute; inset: 0; }
+    #root > [data-track-index="1"] { z-index: 1; }  #root > [data-track-index="2"] { z-index: 2; }
+    #root > [data-track-index="3"] { z-index: 3; }  #root > [data-track-index="4"] { z-index: 4; }
+    #root > [data-track-index="5"] { z-index: 5; }  #root > [data-track-index="6"] { z-index: 6; }
+    #root > [data-track-index="7"] { z-index: 7; }  #root > [data-track-index="8"] { z-index: 8; }
+    video.graded { filter: saturate(0.88) contrast(1.06) brightness(0.94); }   /* broadcast clips only */
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="ep-moore-1999" data-start="0" data-width="1920" data-height="1080" data-duration="107.582" data-fps="30">
+
+  <!-- ============ NARRATION ============ -->
+  <audio id="nx-h1-s2" src="audio/h1-s2.wav" data-start="2.9" data-duration="4.895" data-volume="1"></audio>
+  <audio id="nx-h1-s3" src="audio/h1-s3.wav" data-start="8.095" data-duration="13.156" data-volume="1"></audio>
+  <audio id="nx-t1-s1" src="audio/t1-s1.wav" data-start="21.551" data-duration="8.921" data-volume="1"></audio>
+  <audio id="nx-i1-s1" src="audio/i1-s1.wav" data-start="30.772" data-duration="30.603" data-volume="1"></audio>
+  <audio id="nx-i1-s2" src="audio/i1-s2.wav" data-start="61.675" data-duration="24.23" data-volume="1"></audio>
+  <audio id="nx-i1-s3" src="audio/i1-s3.wav" data-start="86.205" data-duration="20.677" data-volume="1"></audio>
+
+  <!-- ============ STRUCTURE ============ -->
+  <section class="clip act" id="act-intro" data-start="0" data-duration="106.882" data-track-index="0"></section>
+  <section class="clip blackout" id="bo-1" data-start="106.882" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- ============ INTRO · H1 / T1 / I1 ============ -->
+  <!-- H1-S1: Paul full frame from frame one, his hook line only (source 1.45-4.20; speech 1.63-4.02 by silencedetect) -->
+  <video id="ins-paul-1" src="media/paul/ins-paul-1/ins-paul-1.mp4" data-start="0" data-duration="2.75" data-media-start="1.45" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="If you're warned in time, you'll make it, won't you?"></video>
+  <!-- popfig over Paul, then "36 LIVES" over the A9 photo: h1-s2 "36" 2.90 -->
+  <div id="host-hook-overlay" data-composition-id="g-hook-overlay" data-composition-src="compositions/g-hook-overlay.html" data-start="0" data-duration="7.0" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- H1-S2: hard cut on "didn't"-line start to the A9 photo (Erin Maxwell, NWS), 2.75 to "all did" 2.90 + 4.10 = 7.00 -->
+  <section class="clip still-wrap" id="c-h1-s2-a9" data-start="2.75" data-duration="4.25" data-track-index="1"><img id="kb-h1-s2-a9" src="media/stills/oun-tornado_a9_1280.png" style="object-position: 50% 40%" alt=""></section>
+  <!-- g-cellar-h1: "all did" 7.00 to h1-s3 "I've" 8.095 + 4.40 = 12.495 -->
+  <div id="host-cellar-h1" data-composition-id="g-cellar-h1" data-composition-src="compositions/g-cellar-h1.html" data-start="7.0" data-duration="5.495" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- H1-S3: the SA cover ("I've read ... every page") 12.495 to "The warning" 8.095 + 8.02 = 16.115 -->
+  <section class="clip still-wrap" id="c-h1-s3-sa" data-start="12.495" data-duration="3.62" data-track-index="1"><img id="kb-h1-s3-sa" src="media/stills/sa/sa-page-pdf01-cover.png" style="object-position: 50% 12%" alt=""></section>
+  <!-- H1-S3 tail: NSSL aerial of the path (John Jarboe, NWS) 16.115 to t1-s1 21.551 -->
+  <section class="clip still-wrap" id="c-h1-s3-aerial" data-start="16.115" data-duration="5.436" data-track-index="1"><img id="kb-h1-s3-aerial" src="media/stills/nssl-aerial.jpg" alt=""></section>
+  <!-- T1-S1: NWS Norman outbreak map 21.551 to "and the F5" 21.551 + 2.62 = 24.171 -->
+  <section class="clip still-wrap" id="c-t1-s1-map" data-start="21.551" data-duration="2.62" data-track-index="1"><img id="kb-t1-s1-map" src="media/stills/oun-outbreak.png" style="object-fit: contain; background: #04070c" alt=""></section>
+  <!-- g-cellar-t1: 24.171 to i1-s1 30.772 -->
+  <div id="host-cellar-t1" data-composition-id="g-cellar-t1" data-composition-src="compositions/g-cellar-t1.html" data-start="24.171" data-duration="6.601" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- I1-S1: path map, I1 variant (built on g-path-map), 30.772 to "So how much" 30.772 + 28.14 = 58.912 -->
+  <div id="host-path-i1" data-composition-id="g-path-i1" data-composition-src="compositions/g-path-i1.html" data-start="30.772" data-duration="28.14" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- I1-S1 tail: KTLX radar 7:18 p.m. (SA image, NOAA/NSSL) 58.912 to i1-s2 61.675 -->
+  <section class="clip still-wrap" id="c-i1-s1-ktlx" data-start="58.912" data-duration="2.763" data-track-index="1"><img id="kb-i1-s1-ktlx" src="media/stills/sa/sa-010-000.png" style="object-fit: contain; background: #04070c" alt=""></section>
+  <!-- I1-S2: lead-time bars, 61.675 to i1-s3 86.205 -->
+  <div id="host-leadtime" data-composition-id="g-leadtime" data-composition-src="compositions/g-leadtime.html" data-start="61.675" data-duration="24.53" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- I1-S3 stills: Bridge Creek ground (SA, Lerner) 86.205-92.685; Moore destruction (SA p8) 92.685-97.205;
+       4 p.m. set-up chart (SA) 97.205 ("The warnings") to 101.805; WDSS display (NSSL) 101.805 to the clock 104.605 -->
+  <section class="clip still-wrap" id="c-i1-s3-bc" data-start="86.205" data-duration="6.48" data-track-index="1"><img id="kb-i1-s3-bc" src="media/stills/sa/sa-014-001.png" alt=""></section>
+  <section class="clip still-wrap" id="c-i1-s3-moore" data-start="92.685" data-duration="4.52" data-track-index="1"><img id="kb-i1-s3-moore" src="media/stills/sa/sa-018-000.png" alt=""></section>
+  <section class="clip still-wrap" id="c-i1-s3-setup" data-start="97.205" data-duration="4.6" data-track-index="1"><img id="kb-i1-s3-setup" src="media/stills/sa/sa-016-000.png" style="object-fit: contain; background: #04070c" alt=""></section>
+  <section class="clip still-wrap" id="c-i1-s3-wdss" data-start="101.805" data-duration="2.8" data-track-index="1"><img id="kb-i1-s3-wdss" src="media/stills/nssl-wdss.jpg" alt=""></section>
+  <div id="host-i1s3-chips" data-composition-id="g-i1s3-chips" data-composition-src="compositions/g-i1s3-chips.html" data-start="86.205" data-duration="10.795" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <!-- clock lands on 4:47 at "447" 86.205 + 19.00 = 105.205 -->
+  <div id="host-clock-i1" data-composition-id="g-clock-i1" data-composition-src="compositions/g-clock-i1.html" data-start="104.605" data-duration="2.277" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+window.__timelines["ep-moore-1999"] = gsap.timeline({ paused: true });
+const tl = window.__timelines["ep-moore-1999"];
+// Quick punch on a still (Joplin's helper): fast in to s, hold, ease back from at + 1.1. Absolute seconds.
+function punch(sel, at, s = 1.10) {
+  tl.fromTo(sel, { scale: 1.0 }, { scale: s, duration: 0.30, ease: "power4.out" }, at);
+  tl.to(sel, { scale: 1.0, duration: 0.45, ease: "power2.inOut" }, at + 1.1);
+}
+/* INTRO */
+punch("#kb-h1-s2-a9", 2.75, 1.08);
+punch("#kb-h1-s2-a9", 4.30, 1.06);          /* "didn't" */
+punch("#kb-h1-s3-sa", 12.495, 1.08);
+punch("#kb-h1-s3-aerial", 16.115, 1.10);
+punch("#kb-h1-s3-aerial", 19.935, 1.06);    /* "decided" */
+punch("#kb-t1-s1-map", 21.551, 1.12);
+punch("#kb-i1-s1-ktlx", 58.912, 1.08);
+punch("#kb-i1-s3-bc", 86.205, 1.10);
+punch("#kb-i1-s3-bc", 89.025, 1.06);        /* "12" */
+punch("#kb-i1-s3-moore", 92.685, 1.10);
+punch("#kb-i1-s3-moore", 95.745, 1.06);     /* "houses" */
+punch("#kb-i1-s3-setup", 97.205, 1.08);
+punch("#kb-i1-s3-setup", 99.865, 1.06);     /* "before" */
+punch("#kb-i1-s3-wdss", 101.805, 1.08);
+tl.set({}, {}, 107.582);
+</script>
+</body>
+</html>
