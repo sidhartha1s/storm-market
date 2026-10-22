@@ -122,8 +122,8 @@ window.__timelines = window.__timelines || {};
   /* opening: state name, then the Mayfield pin and its label */
   tl.fromTo(P + "ky-name", { autoAlpha: 0, scale: 0.94 }, { autoAlpha: 1, scale: 1, duration: 0.6, ease: "power2.out" }, 0.15);
   tl.fromTo(P + "may-dot", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, 0.45);
-  tl.fromTo(P + "may-lead", { autoAlpha: 0, scaleX: 0, transformOrigin: "100% 50%" }, { autoAlpha: 1, scaleX: 1, transformOrigin: "100% 50%", duration: 0.3, ease: "power2.out" }, 0.55);
-  tl.fromTo(P + "may-lab", { autoAlpha: 0, scale: 0.9, transformOrigin: "100% 50%" }, { autoAlpha: 1, scale: 1, transformOrigin: "100% 50%", duration: 0.4, ease: "power3.out" }, 0.65);
+  tl.fromTo(P + "may-lead", { autoAlpha: 0, scaleY: 0, transformOrigin: "50% 100%" }, { autoAlpha: 1, scaleY: 1, transformOrigin: "50% 100%", duration: 0.3, ease: "power2.out" }, 0.55);
+  tl.fromTo(P + "may-lab", { autoAlpha: 0, scale: 0.9, transformOrigin: "50% 100%" }, { autoAlpha: 1, scale: 1, transformOrigin: "50% 100%", duration: 0.4, ease: "power3.out" }, 0.65);
   tl.set(P + "may-ring", { autoAlpha: 1 }, 0.65);
   tl.fromTo(P + "may-ring", { scale: 1, opacity: 0.9 }, { scale: 3, opacity: 0, duration: 1.0, ease: "power2.out", repeat: 1, repeatDelay: 0.2 }, 0.65);   /* 0.65-2.85 */
   tl.set(P + "may-ring", { autoAlpha: 1 }, C.may2);
