@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a2-houses: A2-S13 to S15 (Davis Creek: 25 houses, 2 left; 27 lost, 22 missing; 52; Huffman 18).
+     Comp time 0 = first word of A2-S13. Full-frame BG gradient; the dim creek and contour lines are a SCHEMATIC
+     ground (no real geography, no labels). If g-a2-hollows is mounted beneath instead, drop #ah-ground + #ah-map.
+     Presenter corner x >= 1600, y >= 680 stays empty. */
+  #ah-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8; }
+  #ah-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  #ah-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ah-cont { fill:none; stroke:#2f3f4f; stroke-width:1.5; opacity:0.55; }
+  #ah-creek { fill:none; stroke:#5a768f; stroke-width:4; stroke-linecap:round; opacity:0; }
+  #ah-creek2 { fill:none; stroke:#7fb2e5; stroke-width:7; stroke-linecap:round; opacity:0; }
+  #ah-hollow { fill:none; stroke:#5a768f; stroke-width:2; stroke-dasharray:10 10; opacity:0; }
+  .ah-h { fill:#c8d3e0; opacity:0; }
+  #ah-scan { position:absolute; left:0; top:0; width:3px; height:1080px; opacity:0.5; pointer-events:none;
+    background:linear-gradient(180deg, rgba(127,178,229,0), rgba(127,178,229,0.35) 50%, rgba(127,178,229,0)); }
+  .ah-chip { position:absolute; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px;
+    box-sizing:border-box; text-align:center; }
+  #ah-two { left:700px; top:610px; width:520px; height:96px; padding-top:12px; opacity:0; visibility:hidden;
+    font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:60px; line-height:72px; color:#d8a13a; }
+  .ah-cn { position:absolute; top:150px; width:460px; text-align:center; opacity:0; visibility:hidden; }
+  #ah-cn1 { left:360px; } #ah-cn2 { left:1100px; }
+  .ah-val { font-family:'Courier New',monospace; font-weight:700; font-size:132px; line-height:140px; color:#e74c3c; }
+  .ah-lab { font-weight:700; font-size:26px; letter-spacing:6px; color:#c8d3e0; margin-top:6px; }
+  #ah-t52 { position:absolute; left:0; right:0; top:210px; text-align:center; opacity:0; visibility:hidden;
+    font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:88px; line-height:100px; color:#f2f5f8; }
+  #ah-huff { left:640px; top:360px; width:640px; height:120px; padding-top:20px; opacity:0; visibility:hidden;
+    font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:64px; line-height:80px; color:#d8a13a; }
+  .ah-src { position:absolute; left:96px; bottom:54px; font-weight:700; font-size:22px; letter-spacing:1px; color:#c8d3e0;
+    opacity:0; visibility:hidden; }
+</style>
+<div id="ah-root" data-composition-id="g-a2-houses" data-width="1920" data-height="1080">
+  <div id="ah-ground"></div>
+  <svg id="ah-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <symbol id="ah-hs" viewBox="0 0 36 36">
+        <polygon points="3,18 18,4 33,18"/>
+        <rect x="7" y="17" width="22" height="16"/>
+        <rect x="15" y="23" width="6" height="10" style="fill:#04070c"/>
+      </symbol>
+    </defs>
+    <g id="ah-map">
+      <path class="ah-cont" d="M-40 300 C 300 220, 620 380, 980 300 S 1560 180, 1960 280"/>
+      <path class="ah-cont" d="M-40 420 C 360 340, 700 500, 1020 420 S 1580 320, 1960 400"/>
+      <path class="ah-cont" d="M-40 760 C 300 700, 700 840, 1060 760 S 1560 700, 1960 780"/>
+      <path class="ah-cont" d="M-40 960 C 360 900, 760 1020, 1100 960 S 1560 900, 1960 980"/>
+      <path id="ah-creek" d="M120 880 C 420 800, 640 960, 900 870 S 1340 770, 1580 830"/>
+      <path id="ah-creek2" d="M120 880 C 420 800, 640 960, 900 870 S 1340 770, 1580 830"/>
+      <ellipse id="ah-hollow" cx="960" cy="538" rx="630" ry="112"/>
+    </g>
+    <g id="ah-houses">
+    <use id="ah-h01" class="ah-h" href="#ah-hs" x="366" y="520" width="36" height="36"/>
+    <use id="ah-h02" class="ah-h" href="#ah-hs" x="414" y="520" width="36" height="36"/>
+    <use id="ah-h03" class="ah-h" href="#ah-hs" x="462" y="520" width="36" height="36"/>
+    <use id="ah-h04" class="ah-h" href="#ah-hs" x="510" y="520" width="36" height="36"/>
+    <use id="ah-h05" class="ah-h" href="#ah-hs" x="558" y="520" width="36" height="36"/>
+    <use id="ah-h06" class="ah-h" href="#ah-hs" x="606" y="520" width="36" height="36"/>
+    <use id="ah-h07" class="ah-h" href="#ah-hs" x="654" y="520" width="36" height="36"/>
+    <use id="ah-h08" class="ah-h" href="#ah-hs" x="702" y="520" width="36" height="36"/>
+    <use id="ah-h09" class="ah-h" href="#ah-hs" x="750" y="520" width="36" height="36"/>
+    <use id="ah-h10" class="ah-h" href="#ah-hs" x="798" y="520" width="36" height="36"/>
+    <use id="ah-h11" class="ah-h" href="#ah-hs" x="846" y="520" width="36" height="36"/>
+    <use id="ah-h12" class="ah-h" href="#ah-hs" x="894" y="520" width="36" height="36"/>
+    <use id="ah-h13" class="ah-h" href="#ah-hs" x="942" y="520" width="36" height="36"/>
+    <use id="ah-h14" class="ah-h" href="#ah-hs" x="990" y="520" width="36" height="36"/>
+    <use id="ah-h15" class="ah-h" href="#ah-hs" x="1038" y="520" width="36" height="36"/>
+    <use id="ah-h16" class="ah-h" href="#ah-hs" x="1086" y="520" width="36" height="36"/>
+    <use id="ah-h17" class="ah-h" href="#ah-hs" x="1134" y="520" width="36" height="36"/>
+    <use id="ah-h18" class="ah-h" href="#ah-hs" x="1182" y="520" width="36" height="36"/>
+    <use id="ah-h19" class="ah-h" href="#ah-hs" x="1230" y="520" width="36" height="36"/>
+    <use id="ah-h20" class="ah-h" href="#ah-hs" x="1278" y="520" width="36" height="36"/>
+    <use id="ah-h21" class="ah-h" href="#ah-hs" x="1326" y="520" width="36" height="36"/>
+    <use id="ah-h22" class="ah-h" href="#ah-hs" x="1374" y="520" width="36" height="36"/>
+    <use id="ah-h23" class="ah-h" href="#ah-hs" x="1422" y="520" width="36" height="36"/>
+    <use id="ah-h24" class="ah-h" href="#ah-hs" x="1470" y="520" width="36" height="36"/>
+    <use id="ah-h25" class="ah-h" href="#ah-hs" x="1518" y="520" width="36" height="36"/>
+    </g>
+  </svg>
+  <div id="ah-scan"></div>
+  <div class="ah-chip" id="ah-two">2 OF 25</div>
+  <div class="ah-cn" id="ah-cn1"><div class="ah-val" id="ah-v27">0</div><div class="ah-lab" id="ah-l27">CONFIRMED LOST</div></div>
+  <div class="ah-cn" id="ah-cn2"><div class="ah-val" id="ah-v22">0</div><div class="ah-lab" id="ah-l22">MISSING</div></div>
+  <div id="ah-t52">Davis Creek &middot; 52</div>
+  <div class="ah-chip" id="ah-huff">Huffman &middot; 18</div>
+  <div class="ah-src" id="ah-src1">Davis Creek community &middot; USGS Open-File Report 70-51</div>
+  <div class="ah-src" id="ah-src2">News &amp; Advance list, 2019 (Oakland Museum), counted; WDBJ and C-VILLE 2019</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 18.4;
+  /* CUE-PENDING all cues below are ESTIMATES (no audio/a2-s13..s15.words.json yet): S13 starts 0, S14 at 5.9, S15 at 12.4 */
+  const creekLen = Math.ceil(document.querySelector("#ah-creek").getTotalLength()) + 1;
+  gsap.set(["#ah-creek", "#ah-creek2"], { strokeDasharray: creekLen, strokeDashoffset: creekLen });
+  tl.set("#ah-creek", { autoAlpha: 0.7 }, 0);
+  tl.set("#ah-creek2", { autoAlpha: 0 }, 0);
+  tl.set(["#ah-two", "#ah-cn1", "#ah-cn2", "#ah-t52", "#ah-huff", "#ah-src1", "#ah-src2"], { autoAlpha: 0 }, 0);
+  tl.set(".ah-h", { autoAlpha: 0 }, 0);
+
+  /* ambient: a scan line crossing the whole comp, ~107 px/s */
+  tl.fromTo("#ah-scan", { x: -40 }, { x: 1960, duration: DUR, ease: "none" }, 0);
+  /* S13: the creek draws in, the hollow rings, then 25 houses */
+  tl.to("#ah-creek", { strokeDashoffset: 0, duration: 2.4, ease: "power2.out" }, 0.2);
+  tl.to("#ah-hollow", { autoAlpha: 0.8, duration: 0.5 }, 1.8); /* hollows @1.89 */
+  tl.fromTo("#ah-hollow", { scale: 0.7, svgOrigin: "960 538" }, { scale: 1, svgOrigin: "960 538", duration: 0.7, ease: "power3.out" }, 1.85);
+  tl.fromTo(".ah-h", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "back.out(1.6)", stagger: { each: 0.03 } }, 2.6); /* twenty-five @2.63 */
+  /* 23 fade one by one; the last fade lands on "two" @4.77; houses 09 and 18 stay */
+  tl.to(["#ah-h03","#ah-h21","#ah-h12","#ah-h06","#ah-h24","#ah-h15","#ah-h01","#ah-h19","#ah-h10","#ah-h05","#ah-h23","#ah-h14",
+         "#ah-h08","#ah-h25","#ah-h17","#ah-h02","#ah-h20","#ah-h11","#ah-h07","#ah-h22","#ah-h13","#ah-h04","#ah-h16"],
+        { autoAlpha: 0, y: 16, duration: 0.3, ease: "power2.in", stagger: { each: 0.04 } }, 4.0);
+  tl.to(["#ah-h09", "#ah-h18"], { fill: "#d8a13a", duration: 0.4 }, 4.75); /* two @4.77 */
+  tl.fromTo("#ah-two", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 4.77);
+
+  /* S14 (+5.9): 27 on "twenty-seven" @7.36, 22 on "Twenty-two" @10.46 */
+  tl.fromTo("#ah-cn1", { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 7.2);
+  const c27 = { v: 0 };
+  tl.to(c27, { v: 27, duration: 0.9, ease: "power3.out", onUpdate: () => { document.querySelector("#ah-v27").textContent = Math.round(c27.v); } }, 7.36);
+  tl.fromTo("#ah-src1", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 7.6);
+  tl.fromTo("#ah-cn2", { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 10.3);
+  const c22 = { v: 0 };
+  tl.to(c22, { v: 22, duration: 0.9, ease: "power3.out", onUpdate: () => { document.querySelector("#ah-v22").textContent = Math.round(c22.v); } }, 10.46);
+
+  /* S15 (+12.4): counters clear, one line along the creek, 52 on "about fifty" @14.84, Huffman on "Eighteen" @16.06 */
+  tl.to("#ah-cn1", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 12.0);
+  tl.to("#ah-cn2", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 12.0);
+  tl.to(["#ah-two", "#ah-h09", "#ah-h18", "#ah-hollow"], { autoAlpha: 0, y: -30, duration: 0.5, ease: "power3.in" }, 12.0);
+  tl.to("#ah-src1", { autoAlpha: 0, x: -60, duration: 0.4, ease: "power3.in" }, 12.2);
+  tl.to("#ah-creek2", { autoAlpha: 0.95, duration: 0.3 }, 13.7);
+  tl.to("#ah-creek2", { strokeDashoffset: 0, duration: 1.6, ease: "power2.inOut" }, 13.8); /* Creek @13.87 */
+  tl.fromTo("#ah-t52", { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 14.84);
+  tl.fromTo("#ah-src2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 14.9);
+  tl.fromTo("#ah-huff", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 16.06);
+
+  /* exit, last 0.6 s */
+  tl.to(["#ah-t52", "#ah-huff"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.8);
+  tl.to("#ah-src2", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.8);
+  tl.to(["#ah-creek", "#ah-creek2"], { autoAlpha: 0, duration: 0.6 }, 17.8);
+  window.__timelines["g-a2-houses"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
