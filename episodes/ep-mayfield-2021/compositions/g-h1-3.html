@@ -32,7 +32,10 @@
     opacity:0; visibility:hidden; }
   .g-h1-3-ring { position:absolute; left:1042px; top:598px; width:14px; height:14px; border-radius:50%; border:2px solid #f2f5f8; box-sizing:content-box;
     opacity:0; visibility:hidden; }
-  .g-h1-3-pinlab { position:absolute; left:1076px; top:584px; padding:10px 14px; border-radius:12px; font-size:26px; font-weight:700; line-height:26px;
+  .g-h1-3-lead { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .g-h1-3-lead line { stroke:#dfe7ee; stroke-opacity:0.85; stroke-width:1.5px; stroke-linecap:round; stroke-dasharray:60; stroke-dashoffset:60; }
+  /* label down-right of the dot, off the debris tip (9:29 at about 1066, 592) and the hook (9:23 at about 985, 645) */
+  .g-h1-3-pinlab { position:absolute; left:1108px; top:632px; padding:10px 14px; border-radius:12px; font-size:26px; font-weight:700; line-height:26px;
     color:#f2f5f8; opacity:0; visibility:hidden; }
   /* HUD: station label and scan clock, top-left */
   .g-h1-3-hud { position:absolute; left:94px; top:56px; width:536px; height:126px; box-sizing:border-box; border-radius:16px; opacity:0; visibility:hidden; }
@@ -50,18 +53,18 @@
   /* source credit, bottom-left */
   .g-h1-3-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; font-size:19px; font-weight:700; line-height:19px;
     letter-spacing:1px; color:#c8d3e0; opacity:0; visibility:hidden; }
-  /* beige cite card: centred, x 324-1596 (clear of the presenter corner x >= 1600), y 430-770 */
-  .g-h1-3-card { position:absolute; left:324px; top:430px; width:1272px; height:340px; box-sizing:border-box; border-radius:28px; overflow:hidden;
-    background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
+  /* opaque beige cite card in the band above the storm: x 324-1596 (clear of the presenter corner), y 306-562 */
+  .g-h1-3-card { position:absolute; left:324px; top:306px; width:1272px; height:256px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background:rgb(232,222,200); border:1px solid rgba(90,74,46,0.35); box-shadow:0 24px 60px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
   .g-h1-3-cbeam { position:absolute; top:0; bottom:0; left:0; width:260px; background:linear-gradient(90deg, transparent, rgba(138,90,16,0.14), transparent); }
-  .g-h1-3-line { position:absolute; left:64px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:48px; line-height:62px;
+  .g-h1-3-line { position:absolute; left:64px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:40px; line-height:50px;
     color:#1c1a17; white-space:nowrap; }
   .g-h1-3-line span { display:inline-block; opacity:0; visibility:hidden; }
-  .g-h1-3-rule { position:absolute; left:64px; top:262px; width:240px; height:3px; background:#8a5a10; }
-  .g-h1-3-attr { position:absolute; left:64px; top:280px; font-size:26px; font-weight:700; line-height:30px; letter-spacing:2px; color:#5a4a2e;
+  .g-h1-3-rule { position:absolute; left:64px; top:188px; width:240px; height:3px; background:#8a5a10; }
+  .g-h1-3-attr { position:absolute; left:64px; top:200px; font-size:26px; font-weight:700; line-height:30px; letter-spacing:2px; color:#5a4a2e;
     white-space:nowrap; opacity:0; visibility:hidden; }
-  /* RIGHT stamp, centred (960, 250); box y 193-307, clear of the card top (430) */
-  .g-h1-3-swrap { position:absolute; left:0; top:193px; width:1920px; height:114px; display:flex; justify-content:center; }
+  /* RIGHT stamp, centred (960, 235); box y 178-292 (168-302 rotated), clear of the card top (306) */
+  .g-h1-3-swrap { position:absolute; left:0; top:178px; width:1920px; height:114px; display:flex; justify-content:center; }
   .g-h1-3-stamp { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; line-height:84px; letter-spacing:4px;
     background:#8e2020; color:#f4f0e8; padding:14px 34px 16px; box-shadow:0 14px 50px rgba(0,0,0,0.6); opacity:0; visibility:hidden; }
 </style>
@@ -71,6 +74,7 @@
     <div class="g-h1-3-frame g-h1-3-late" id="g-h1-3-f2"><img src="media/radar/g-h1-3/KPAH_20211211_031759Z.png" alt=""></div>
     <div class="g-h1-3-frame g-h1-3-late" id="g-h1-3-f3"><img src="media/radar/g-h1-3/KPAH_20211211_032349Z.png" alt=""></div>
     <div class="g-h1-3-frame g-h1-3-late" id="g-h1-3-f4"><img src="media/radar/g-h1-3/KPAH_20211211_032939Z.png" alt=""></div>
+    <svg class="g-h1-3-lead" viewBox="0 0 1920 1080"><line id="g-h1-3-lead" x1="1060.2" y1="613.9" x2="1108" y2="648"/></svg>
     <div class="g-h1-3-ring" id="g-h1-3-ring"></div>
     <div class="g-h1-3-dot" id="g-h1-3-dot"></div>
     <div class="g-h1-3-pinlab g-h1-3-glass" id="g-h1-3-pinlab">Mayfield, KY</div>
@@ -96,9 +100,9 @@
 
   <div class="g-h1-3-card" id="g-h1-3-card">
     <div class="g-h1-3-cbeam" id="g-h1-3-cbeam"></div>
-    <div class="g-h1-3-line" style="top:36px;"><span id="g-h1-3-p1">&ldquo;a gap</span> <span id="g-h1-3-p2">in NWS safety outreach and resources</span></div>
-    <div class="g-h1-3-line" style="top:98px;"><span id="g-h1-3-p3">related to buildings with large footprints,</span></div>
-    <div class="g-h1-3-line" style="top:160px;"><span id="g-h1-3-p4">such as warehouses&rdquo;</span></div>
+    <div class="g-h1-3-line" style="top:24px;"><span id="g-h1-3-p1">&ldquo;a gap</span> <span id="g-h1-3-p2">in NWS safety outreach and resources</span></div>
+    <div class="g-h1-3-line" style="top:74px;"><span id="g-h1-3-p3">related to buildings with large footprints,</span></div>
+    <div class="g-h1-3-line" style="top:124px;"><span id="g-h1-3-p4">such as warehouses&rdquo;</span></div>
     <div class="g-h1-3-rule" id="g-h1-3-rule"></div>
     <div class="g-h1-3-attr" id="g-h1-3-attr">Service Assessment, Finding 6</div>
   </div>
@@ -142,17 +146,16 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"c3", { autoAlpha: 0, y: -10, duration: 0.12, ease: "power2.in" }, 5.73);
   tl.fromTo(P+"c4", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.22, ease: "power3.out" }, 5.85);
 
-  /* Mayfield pin while the storm is clear, out before the card rises over it */
+  /* Mayfield pin, on to the cut: the card sits above it */
   tl.fromTo(P+"dot", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.5)" }, 0.5);
   tl.set(P+"ring", { autoAlpha: 0.9, scale: 1 }, 0.6);   /* a set, so a backward seek restores the hidden ring */
-  /* ring tops out at scale 2.4 (radius 21.6 px, right edge x 1073.6) so it never reaches the label (left edge 1076) */
+  /* ring tops out at scale 2.4 (radius 21.6 px, right edge x 1073.6) so it never reaches the label (left edge 1108) */
   tl.to(P+"ring", { autoAlpha: 0, scale: 2.4, duration: 0.6, ease: "power2.out", repeat: 1 }, 0.6);
+  tl.to(P+"lead", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 0.62);
   tl.fromTo(P+"pinlab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.7);
-  tl.to(P+"pinlab", { autoAlpha: 0, x: 20, duration: 0.3, ease: "power2.in" }, 1.75);
-  tl.to(P+"dot", { autoAlpha: 0, scale: 0, duration: 0.3, ease: "power2.in" }, 1.75);
 
-  /* GAP @2.20: card slides up, quote phrase by phrase on the voice */
-  tl.fromTo(P+"card", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.20);
+  /* GAP @2.20: card slides up (from y +20: bottom 582, above the dot), quote phrase by phrase on the voice */
+  tl.fromTo(P+"card", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.20);
   tl.fromTo(P+"cbeam", { x: -260 }, { x: 1272, duration: 2.6, ease: "none", repeat: 1 }, 2.45);
   tl.fromTo(P+"p1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.25);   /* gap @2.20 */
   tl.fromTo(P+"p2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.76);   /* safety @2.76 */
