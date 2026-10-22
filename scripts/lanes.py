@@ -63,6 +63,13 @@ HOLD_H = 3          # a hold lapses after this many hours, so a wait is re-decid
 DEFAULT_MIN = 60    # a lane with no end recorded this many minutes after its start is presumed dead (STALE)
 BLOCKING = ("READY", "STALE", "FAILED")
 HOSTS = ("local", "zbook")
+def in_worktree(ep):
+    # .worktrees/<task> is the repo convention; .claude/worktrees/<task>-<hash> is where the desktop app puts a session's
+    # worktree. Three episodes ran outside the lane gate for a day because only the first was accepted (22 Oct 26).
+    parts = ep.parts
+    return ".worktrees" in parts or any(parts[i] == ".claude" and parts[i + 1] == "worktrees" for i in range(len(parts) - 1))
+
+
 MIN_FREE_GB = 4     # a lane never starts on a host with this much free memory or less
 MAX_LANES = 4       # ...or while this many lanes are RUNNING
 ACCOUNTS = Path.home() / ".claude-accounts"
