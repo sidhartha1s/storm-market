@@ -113,8 +113,10 @@ def main():
         for l in live:
             print("   ", l[:160])
         sys.exit(3)
-    # the RAM floor protects a RENDER about to start (--launch); a gate's single headless Chromium (~300 MB) only needs 'no render alive'
     free = free_gb()
+    if "--launch" not in sys.argv and free < GATE_MIN_FREE_GB:
+        print(f"[render_busy] REFUSING — {free:.1f} GB free, a gate's browser needs {GATE_MIN_FREE_GB:g} GB; wait for the other captures to finish")
+        sys.exit(3)
     if "--launch" in sys.argv:
         requested = int(os.environ["RENDER_WORKERS"])  # render.cmd sets the default
         n = workers_that_fit(requested, free)
