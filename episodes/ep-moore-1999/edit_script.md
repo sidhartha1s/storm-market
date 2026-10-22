@@ -6,7 +6,11 @@ viewer asks). Status (22 Oct 26): structure + act briefs by the orchestrator; ho
 (`fact_check.md`, all claims CONFIRMED or corrected, 0 open `[verify]`) and graded four times by fresh Opus graders:
 6/10, 7/10, 7/10, 8/10 (lock bar 8, cleared 22 Oct 26 on the text below). **H1, T1 and I1 are LOCKED** (`references/script-scaling.md` "Section lock": markers 0, grade 8/10, owner
 sign-off "yes" on `moore_hook`, devq page eps-gates.html, saved 22 Oct 26 02:01:13, relayed by the coordinator; the
-locked words are the text he saw). Runtime: owner picked 20 min (`moore_len`, same save). Acts 1 to 5: next.
+locked words are the text he saw). Runtime: owner picked 20 min (`moore_len`, same save). **Acts A1 to A5 are LOCKED** on fact-check (`fact_check.md`
+rounds 2 and 2b, 0 open `[verify]`) plus grade (`acts/grader-round1.md`, A1 re-graded): the owner dropped the per-act
+sign-off on 22 Oct 26 11:39 ("i dont thinks its highly necessary for me to have thhis 'check acts' gate anymore. i
+thought you were gonna share the preview", relayed by the coordinator, who is changing script-scaling.md condition (b)
+to match). His next look is the draft preview.
 
 ## Runtime and shape
 - Target: about 20 min (proposal; the owner sets length per episode). 5 acts of 3 to 4.5 min plus hook/intro
