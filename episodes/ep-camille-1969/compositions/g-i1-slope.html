@@ -192,7 +192,7 @@ window.__timelines = window.__timelines || {};
     tl.fromTo(g, { rotation: T.B[i][2], svgOrigin: "0 0" }, { rotation: T.C[i][2], svgOrigin: "0 0", duration: D2, ease: "none" }, L2);
     /* the hold on C while the voice reaches "down the creek": the load creeps on, trees keep leaning */
     tl.fromTo(g, { rotation: T.C[i][2], svgOrigin: "0 0" }, { rotation: T.C[i][2] + 6, svgOrigin: "0 0", duration: D3, ease: "sine.inOut" }, L3);
-    tl.fromTo(o, { x: T.C[i][0], y: T.C[i][1] }, { x: T.D[i][0], y: T.D[i][1], duration: D4, ease: "power2.out" }, L4);
+    tl.fromTo(o, { x: dx("C", i), y: dy("C", i) }, { x: dx("D", i), y: dy("D", i), duration: D4, ease: "power2.out" }, L4);
     tl.fromTo(g, { rotation: T.C[i][2] + 6, svgOrigin: "0 0" }, { rotation: T.D[i][2], svgOrigin: "0 0", duration: D4, ease: "power2.out" }, L4);
   });
   /* the strip's leading edge passes x 860 -> 1056 over leg 1, 1056 -> 1336 over leg 2: a standing tree goes down as it arrives */
