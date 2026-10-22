@@ -73,6 +73,7 @@ stop at the first one that works. Every row runs alone (one heavy job at a time)
 - `master_deliverables.py` has no frame-rate check, so a draft verified as `draft` can be mastered; add a check that the file matches the composition's `data-fps`.
 - optimize_clips fits instead of covers, so landscape sources in shorts get upscaled.
 - Remaining minors from the Opus re-review journal (13 total), triaged when a PR touches that file.
+- Opus review of #209 (22 Oct 26): the free-RAM check is point-in-time, so N builders reading 1.6 GB free in the same second all pass; a count slot (the atomic lock file `freeze_scan.mjs` already uses) would cap headless browsers. `GATE_MIN_FREE_GB` restates the 1.0 GB headroom `need_gb()` owns: one `HEADROOM_GB` for both. `optimize_clips.py` gets the gate's browser-worded refusal.
 
 ## Housekeeping
 - e2e test episode fails sweep first, so 8 of 9 gates never run in e2e: pick or build a test episode that passes sweep.
