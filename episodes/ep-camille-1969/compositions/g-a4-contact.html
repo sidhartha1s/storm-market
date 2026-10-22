@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a4-contact: A4-S15. OVERLAY comp: transparent root; a dim scrim (#ac-scrim) fades in over whatever sits beneath, and the card lifts in over it.
+     Beneath must be the eight-marker map (g-a4-eight / g-a4-open final state) on a lower track for the whole host window, else the scrim sits on black.
+     Comp time 0 = first word of A4-S15 ("If you remember"). Card 1140 x 340 at x 390, y 370: corner x >= 1600, y >= 680 empty. Hold >= 4 s. */
+  #ac-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8; background:transparent; }
+  #ac-scrim { position:absolute; inset:0; background:rgba(3,5,8,0.62); opacity:0; }
+  #ac-card { position:absolute; left:390px; top:370px; width:1140px; height:340px; box-sizing:border-box; overflow:hidden; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; box-shadow:0 30px 90px rgba(0,0,0,0.55); text-align:center; }
+  #ac-beam { position:absolute; left:-220px; top:0; width:220px; height:340px; pointer-events:none;
+    background:linear-gradient(90deg, transparent, rgba(127,178,229,0.14), transparent); }
+  #ac-env { position:absolute; left:530px; top:30px; width:80px; height:60px; opacity:0; }
+  #ac-env rect { fill:none; stroke:#93a3b2; stroke-width:3; }
+  #ac-env path { fill:none; stroke:#93a3b2; stroke-width:3; stroke-linejoin:round; }
+  #ac-title { position:absolute; left:50px; right:50px; top:106px; font-weight:700; font-size:40px; line-height:50px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #ac-rule { position:absolute; left:380px; width:380px; top:226px; height:2px; background:#d8a13a; transform-origin:center center; opacity:0; }
+  #ac-mail { position:absolute; left:0; right:0; top:244px; font-family:'Courier New',monospace; font-weight:700; font-size:56px; line-height:66px; color:#e8c56a; opacity:0; visibility:hidden; }
+  .ac-tick { position:absolute; width:26px; height:26px; border-color:#d8a13a; border-style:solid; border-width:0; opacity:0; }
+  #ac-t1 { left:22px; top:22px; border-left-width:3px; border-top-width:3px; }
+  #ac-t2 { right:22px; top:22px; border-right-width:3px; border-top-width:3px; }
+  #ac-t3 { left:22px; bottom:22px; border-left-width:3px; border-bottom-width:3px; }
+  #ac-t4 { right:22px; bottom:22px; border-right-width:3px; border-bottom-width:3px; }
+</style>
+<div id="ac-root" data-composition-id="g-a4-contact" data-width="1920" data-height="1080">
+  <div id="ac-scrim"></div>
+  <div id="ac-card">
+    <div id="ac-beam"></div>
+    <div class="ac-tick" id="ac-t1"></div><div class="ac-tick" id="ac-t2"></div><div class="ac-tick" id="ac-t3"></div><div class="ac-tick" id="ac-t4"></div>
+    <svg id="ac-env" viewBox="0 0 80 60"><rect x="2" y="2" width="76" height="56" rx="6"/><path d="M4 8 L40 36 L76 8"/></svg>
+    <div id="ac-title">Office of the Chief Medical Examiner, Central District</div>
+    <div id="ac-rule"></div>
+    <div id="ac-mail">OCME_CENT@vdh.virginia.gov</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 8.4;
+  /* CUE-PENDING all cues are ESTIMATES (no audio/a4-s15.words.json yet): "If you remember" 0.0 to 0.36 · last word ends ~7.2 */
+  tl.set(["#ac-card", "#ac-title", "#ac-mail"], { autoAlpha: 0 }, 0);
+  tl.set(["#ac-rule"], { scaleX: 0 }, 0);
+
+  tl.to("#ac-scrim", { opacity: 1, duration: 0.8, ease: "power2.out" }, 0);
+  /* lifts in on "If you remember" */
+  tl.fromTo("#ac-card", { autoAlpha: 0, y: 80, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.7, ease: "power3.out" }, 0.1);
+  tl.to(".ac-tick", { opacity: 1, duration: 0.4 }, 0.6);
+  tl.fromTo("#ac-env", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.5);
+  tl.fromTo("#ac-title", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.8);
+  tl.to("#ac-rule", { opacity: 1, scaleX: 1, duration: 0.6, ease: "power3.out" }, 1.4);
+  tl.fromTo("#ac-mail", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.6);
+  /* gentle float and a slow light beam, so the >= 4 s hold keeps moving */
+  tl.fromTo("#ac-beam", { x: 0 }, { x: 1360, duration: 2.4, ease: "none", repeat: 2 }, 1.0);
+  tl.fromTo("#ac-card", { y: 0 }, { y: -8, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1.2);
+  /* exit, last 0.6 s */
+  tl.to("#ac-card", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 7.8);
+  tl.to("#ac-scrim", { opacity: 0, duration: 0.6, ease: "power2.in" }, 7.8);
+  window.__timelines["g-a4-contact"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
