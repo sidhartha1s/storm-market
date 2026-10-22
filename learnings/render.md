@@ -2,6 +2,22 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 22 Oct 26: pin 0.8.149 to 0.8.185 before Moore 1999, Mayfield 2021 and Camille 1969
+1. Ritual on demo-pin (hidden task on the ASUS, exit 0): duration 24.000/24.000 s, black 0/0, RMS -21.602708/-21.602708
+   dB, workers 2/2, SSIM 0.9936, video-region SSIM 0.9977. Bumped clean. Full-frame SSIM is a little under the last
+   bump (0.9948); the ritual's own thresholds passed it.
+2. 35 releases in range (0.8.150 to 0.8.185; there is no 0.8.182), all notes read on the upstream GitHub releases.
+   The ones that can change a render: 0.8.150 (a root `data-fx-chain` now processes the whole mix: no episode uses
+   one; replaced video frames stop holding memory), 0.8.151 (JPEG capture no longer adds colour noise to graded
+   footage), 0.8.152 (each render writes run state into the project's `.hyperframes/`: now gitignored), 0.8.156 (VFR
+   video sampled by timestamp, no freeze on FFmpeg 8; audio mix inputs no longer padded), 0.8.164 (authored audio mix
+   order kept; an ffmpeg failure keeps its last line), 0.8.170 (long renders encode audio in parallel segments),
+   0.8.175 (local fonts embedded as they are), 0.8.178 (renders use the Chrome hyperframes pinned), 0.8.180 (multi-
+   worker renders no longer fail now and then on an empty frame). The one breaking change (0.8.156, inspector agent
+   tools removed) is outside the render path.
+3. demo-pin (one tone, one 4 s clip) cannot see the parallel audio encode or the mix-order change on a long episode:
+   read the first draft's audio levels against its mixdown before calling it good.
+
 ## 18 Oct 26: render_busy picks the worker count that fits instead of refusing
 
 - Measured on the ASUS, live 1-worker draft (hyperframes 0.8.149, 1920x1080, 15 fps): render tree working set 1.6 GB

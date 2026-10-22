@@ -95,11 +95,13 @@ script anywhere. Fixed:
 
 A section (hook+intro first, then each act) **locks** only when ALL of:
 - (a) its `[verify]` markers are all resolved (CONFIRMED / CORRECTED / cut, none open);
-- (b) the owner has **explicitly** approved that section in chat — silence is never approval
-  (SKILL.md "never infer"); a section with no owner reply yet is NOT locked, no matter how
-  clean its fan-out came back;
-- (c) for the hook section only, the separate skeptic-reviewer's grade also passed (bar itself
-  lives in `learnings/script-process.md` "independent grade on every script", not here).
+- (b) its independent grade passed (bar: `learnings/script-process.md` "independent grade on every script");
+- (c) for the hook+intro only, the owner has **explicitly** approved it in chat or on his devq page; silence is
+  never approval (SKILL.md "never infer").
+
+Acts need no owner sign-off (owner 22 Oct 26: "i dont thinks its highly necessary for me to have thhis 'check
+acts' gate anymore. i thought you were gonna share the preview"). His next look after the hook+intro is the
+draft preview, with Paul's Flow clips in it.
 
 A locked section goes to TTS/compose immediately — it does not wait for later acts' fan-out to
 finish. A locked section never reopens for a later section's fact-check; a cross-section
