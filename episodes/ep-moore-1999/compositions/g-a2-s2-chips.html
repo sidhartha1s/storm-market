@@ -1,0 +1,51 @@
+<template>
+<!--
+  g-a2-s2-chips · ep-moore-1999 · A2-S2, host 299.472 for 19.788 s (to nx-a2-s3 319.26), track 4, transparent overlay.
+  Under it (track 1): nssl-damage2 slab, nssl-damage4 cars, sa-014-001 Bridge Creek ground (Lerner), sa-013-000 NWS path map.
+  One glass chip per sentence, lower left (corner x>=1600, y>=680 stays empty); source line top right.
+  Cues: audio/a2-s2.words.json (local = words s): two @1.68, About @5.02, peeled @8.22, Damage @11.36.
+-->
+<style>
+  #g-a2-s2-chips-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; }
+  .a2c-chip { position:absolute; inset:auto; left:110px; bottom:110px; display:flex; align-items:baseline; gap:22px; padding:12px 38px 14px 32px;
+    box-sizing:border-box; border-radius:28px; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .a2c-n { font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:92px; color:#e74c3c; white-space:nowrap; }
+  .a2c-l { font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:36px; letter-spacing:5px; color:#dfe7ee; white-space:nowrap; }
+  .a2c-src { position:absolute; inset:auto; right:110px; top:70px; padding:11px 26px 12px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .a2c-srct { font-family:Arial, sans-serif; font-weight:700; font-size:21px; line-height:26px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-a2-s2-chips-root" data-composition-id="g-a2-s2-chips" data-width="1920" data-height="1080" data-duration="19.788">
+  <div class="a2c-chip" id="g-a2-s2-chips-c1"><span class="a2c-n" id="g-a2-s2-chips-n1">2</span><span class="a2c-l" id="g-a2-s2-chips-l1">SLABS · SWEPT CLEAN</span></div>
+  <div class="a2c-chip" id="g-a2-s2-chips-c2"><span class="a2c-l" id="g-a2-s2-chips-p2">ABOUT</span><span class="a2c-n" id="g-a2-s2-chips-n2">12</span><span class="a2c-l" id="g-a2-s2-chips-l2">CARS · 1/4 MILE</span></div>
+  <div class="a2c-chip" id="g-a2-s2-chips-c3"><span class="a2c-n" id="g-a2-s2-chips-n3">1</span><span class="a2c-l" id="g-a2-s2-chips-l3">INCH OF ASPHALT · PEELED</span></div>
+  <div class="a2c-src" id="g-a2-s2-chips-src"><span class="a2c-srct" id="g-a2-s2-chips-srct">NWS Storm Data, May 1999; NWS Norman event page</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a2-s2-chips-";
+  const DUR = 19.788;
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "c1", P + "c2", P + "c3", P + "src"], { autoAlpha: 0, x: 0, y: 0 }, 0);
+  /* source line in with the first sentence, then a slow float for the whole window */
+  tl.fromTo(P + "src", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.to(P + "src", { y: -8, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0.8);
+  /* chip in: slide from the left; out: slide down-left before the next */
+  const chip = (k, tin, tout) => {
+    tl.fromTo(P + k, { autoAlpha: 0, x: -70 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, tin);
+    tl.to(P + k, { y: -6, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, tin + 0.5);
+    tl.to(P + k, { autoAlpha: 0, x: -120, duration: 0.35, ease: "power3.in" }, tout);
+  };
+  chip("c1", 1.68, 4.60);   /* two @1.68 */
+  chip("c2", 5.02, 7.80);   /* About @5.02 */
+  chip("c3", 8.22, 13.30);  /* peeled @8.22; out before the map still at 13.94 */
+  tl.fromTo(P + "n3", { scale: 1 }, { scale: 1.12, duration: 0.2, ease: "sine.out", yoyo: true, repeat: 1, transformOrigin: "50% 60%" }, 8.76);  /* inch @8.76 */
+  tl.to(P + "src", { autoAlpha: 0, x: 120, duration: 0.5, ease: "power3.in" }, DUR - 0.6);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines["g-a2-s2-chips"] = tl;
+})();
+</script>
+</template>
