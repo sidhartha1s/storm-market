@@ -306,18 +306,9 @@ window.__timelines = window.__timelines || {};
   tl.to(".a3l-bar-c", { autoAlpha: 1, scaleX: 1, duration: 0.45, ease: "power3.out", stagger: 0.04 }, C.nineteen + 0.9);
   tl.to(P+"s1", { autoAlpha: 0, y: 12, duration: 0.3, ease: "power2.in" }, C.nineteen + 0.9);
   tl.fromTo(P+"s2", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, C.nineteen + 1.2);
-  tl.to(P+"page", { y: 900 - 0.5 * 5170 - 40, duration: C.more - (C.nineteen + 1.3), ease: "none" }, C.nineteen + 1.3);
 
-  // S14: card out, zoom back in and scroll to The unidentified (divider at window y 40)
+  // S14: card out, the page zooms back in onto The unidentified (pageAt)
   tl.to(P+"card", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.more - 0.6);
-  const z2 = { t: 0 };
-  tl.to(z2, { t: 1, duration: 1.8, ease: "power2.inOut", onUpdate: function () {
-    const s = Math.exp(Math.log(0.5) * (1 - z2.t));
-    const y0 = 900 - 0.5 * 5170 - 40, y1 = -4840;
-    // fixed page point between the two states keeps the move a single smooth push
-    const pf = (y1 - y0) / (0.5 - 1), sf = y0 + 0.5 * pf;
-    gsap.set(P+"page", { scale: s, y: sf - s * pf });
-  } }, C.more);
   tl.to([P+"h2",P+"t2"], { autoAlpha: 0, y: -40, duration: 0.35, ease: "power2.in" }, C.more + 1.0);
   tl.to(P+"h3", { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.more + 1.35);
   tl.to(P+"s2", { autoAlpha: 0, y: 12, duration: 0.3, ease: "power2.in" }, C.more + 0.4);
