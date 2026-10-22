@@ -140,7 +140,7 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### A1-S1 — narration
 **Picture:** Self-made clock face from I1-S3 holds at 4:47 PM, second hand ticking; cut to a self-made map of Comanche, Caddo and Grady Counties lighting up on the word "Counties", chip "FIRST TORNADO WARNING · 4:47 PM". On "four minutes later" a pin drops outside Medicine Park, chip "FIRST TORNADO · 4:51 PM". On "Bridge Creek" and "Moore", two countdown chips appear: "BRIDGE CREEK · 2 HR" and "MOORE · 2 HR 35 MIN". Source line: "NWS Service Assessment, Aug 1999, p8, App. C; Speheger et al. 2002, Table 2". [VE] [RS] [Q]
-> At four forty-seven that afternoon, the weather service office in Norman sent out its first tornado warning of the day, for Comanche, Caddo and Grady Counties. Four minutes later, the first tornado of the day touched down outside Medicine Park. The warning got there first. It was a Monday. Bridge Creek was two hours from its turn, and Moore was about two and a half. The head start for those towns had been building since breakfast.
+> At four forty-seven that afternoon, the weather service office in Norman sent out its first tornado warning of the day. It covered Comanche, Caddo and Grady Counties. Four minutes later, the first tornado of the day touched down outside Medicine Park. The warning got there first. It was a Monday. Bridge Creek was two hours from its turn, and Moore was about two and a half. The head start for those towns had been building since breakfast.
 
 *register: 9/10*
 
@@ -164,13 +164,13 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### A1-S5 — narration
 **Picture:** Self-made counter "32 SPOTTER CLASSES · 3 MONTHS"; then a self-made spotter silhouette at a roadside under a storm base, phone to ear, chip "STORM SPOTTERS". Source line: "NWS Service Assessment, Aug 1999, p11". [VE] [RS]
-> They weren't working alone. Over the three months before, Norman taught thirty-two classes for storm spotters, the people who stand under a storm and phone in what they see.
+> They weren't working alone. Over the three months before, Norman taught thirty-two classes for storm spotters. Those are the people who stand under a storm and phone in what they see.
 
 *register: 9/10*
 
 ### A1-S6 — narration
 **Picture:** Self-made mock of a city water-bill envelope with a "TORNADO SAFETY" insert sliding out (no real bill shown), chip "MOORE · 2 MONTHS BEFORE"; then a self-made TV frame whose speaker icon pulses with sound waves while the picture stays on a generic program (audio-only override, no on-screen banner), chip "CABLE OVERRIDE · AUDIO". Source line: "NWS Service Assessment, Aug 1999, p11, p21". [VE] [HUMAN] [Q]
-> But a warning only helps if people hear it. Up the road in Moore, the city had done its own homework. If you lived there that spring, a tornado safety insert came folded into your water bill, two months before the storm. And that night, Moore's emergency manager used the cable TV override, so whatever channel you were watching, you heard the weather service warnings over it.
+> But a warning only helps if people hear it. Up the road in Moore, the city had done its own homework. If you lived there that spring, a tornado safety insert came folded into your water bill, two months before the storm. And that night, Moore's emergency manager used the cable TV override. So whatever channel you were watching, you heard the weather service warnings over it.
 
 *register: 9/10*
 
@@ -204,13 +204,13 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### A2-S1 — narration
 **Picture:** Self-made map from the NWS Norman damage-path KML: the track draws from Amber to Bridge Creek, clock chip "ABOUT 6:50 PM", then the A9 photo near Bridge Creek (Erin Maxwell, NWS, NWS Norman event page). Labels "WILLOW LAKE ADDITION · SOUTHERN HILLS ADDITION · BRIDGE CREEK ESTATES" pop on the map. Source line: "Speheger et al. 2002 (6:47 PM); FEMA 342 (6:55 PM); NWS Storm Data, May 1999; Doswell and Brooks 2002". [loop L1 closes] [VE] [Q]
-> About twenty-five minutes after it touched down near Amber, the tornado reached Bridge Creek. It was about six fifty in the evening. Bridge Creek wasn't a town at all. It was an unincorporated community out in Grady County, a spread of neighborhoods, and in the three that took the worst of it, most of the homes were mobile homes. What does an F5 do to a place built like that?
+> About twenty-five minutes after it touched down near Amber, the tornado reached Bridge Creek. It was about six fifty in the evening. Bridge Creek wasn't a town at all. It was an unincorporated community out in Grady County, a spread of neighborhoods. In the three that took the worst of it, most of the homes were mobile homes. What does an F5 do to a place built like that?
 
 *register: 9/10*
 
 ### A2-S2 — narration
 **Picture:** Service Assessment photo, Bridge Creek ground view of the mud swath and wooden debris (William Lerner, NWS). Chips one per sentence: "2 SLABS · SWEPT CLEAN", "ABOUT 12 CARS · 1/4 MILE", "1 INCH OF ASPHALT · PEELED". Source line: "NWS Storm Data, May 1999; NWS Norman event page". [RS] [VE] [PAY]
-> In Willow Lake Addition, two houses were swept clean off their concrete slabs. About a dozen cars were carried a quarter of a mile. The wind peeled an inch of asphalt right off the road. Damage like that is part of what earned this tornado its F5, and Bridge Creek is one of only a few places along the whole path where the survey teams found it.
+> In Willow Lake Addition, two houses were swept clean off their concrete slabs. About a dozen cars were carried a quarter of a mile. The wind peeled an inch of asphalt right off the road. Damage like that is part of what earned this tornado its F5. Bridge Creek is one of only a few places along the whole path where the survey teams found it.
 
 *register: 9/10*
 
