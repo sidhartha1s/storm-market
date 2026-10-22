@@ -249,8 +249,38 @@ window.__timelines = window.__timelines || {};
   tl.set(".a3l-um", { autoAlpha: 0, scale: 0 }, 0);
   tl.set(".a3l-ut", { autoAlpha: 0, x: -16 }, 0);
 
-  // S12: slow scroll through The dead, 1500 px over 16.3 s (92 px/s)
-  tl.to(P+"page", { y: -1500, duration: 16.3, ease: "none" }, 0.3);
+  // The page camera is one pure function of time (seek-safe in any order). Stops are page arithmetic:
+  // missing divider 3420 at window top; Wood rows end 4840 -> window y 640; pull-out 1 -> 0.5 about page 5170 (screen 900);
+  // unidentified divider 4880 at window y 40.
+  const io2 = gsap.parseEase("power2.inOut"), io1 = gsap.parseEase("power1.inOut");
+  const lerp = (a, b, u) => a + (b - a) * u;
+  const clamp = (u) => Math.max(0, Math.min(1, u));
+  const span = (t, a, b) => clamp((t - a) / (b - a));
+  const yOut = 900 - 0.5 * 5170;                 // -1685, end of the pull-out
+  const yIn = -4840;                              // unidentified divider at window y 40
+  function pageAt(t) {
+    if (t < C.missing - 2.2) return { s: 1, y: lerp(0, -1500, span(t, 0.3, C.missing - 2.2)) };   // S12 slow scroll, 92 px/s
+    if (t < C.missing + 0.6) return { s: 1, y: lerp(-1500, -3420, io2(span(t, C.missing - 2.2, C.missing))) };
+    if (t < C.missing + 4.0) return { s: 1, y: lerp(-3420, -4200, io1(span(t, C.missing + 0.6, C.missing + 4.0))) };
+    if (t < C.nineteen) return { s: 1, y: lerp(-4200, -4270, span(t, C.missing + 4.0, C.nineteen)) };  // drift about 7 px/s
+    if (t < C.nineteen + 1.3) {                   // log zoom 1 -> 0.5, fixed point page 5170 / screen 900
+      const s = Math.exp(Math.log(0.5) * io2(span(t, C.nineteen, C.nineteen + 1.3)));
+      return { s: s, y: 900 - s * 5170 };
+    }
+    if (t < C.more) return { s: 0.5, y: lerp(yOut, yOut - 40, span(t, C.nineteen + 1.3, C.more)) };
+    if (t < C.more + 1.8) {                       // log zoom 0.5 -> 1 onto The unidentified
+      const y0 = yOut - 40, pf = (y0 - yIn) / 0.5, sf = y0 + 0.5 * pf;
+      const s = Math.exp(Math.log(0.5) * (1 - io2(span(t, C.more, C.more + 1.8))));
+      return { s: s, y: sf - s * pf };
+    }
+    if (t < C.eight + 2.2) return { s: 1, y: yIn };
+    return { s: 1, y: yIn - 6 * (t - (C.eight + 2.2)) };                                         // hold drift 6 px/s
+  }
+  const pg = { t: 0 };
+  tl.to(pg, { t: END, duration: END, ease: "none", onUpdate: function () {
+    const st = pageAt(pg.t);
+    gsap.set(P+"page", { y: st.y, scale: st.s });
+  } }, 0);
   // counter: names on the list, lands 125 on "125"
   tl.fromTo([P+"count",P+"clab"], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.n125 - 2.6);
   const cnt = { v: 1 };
