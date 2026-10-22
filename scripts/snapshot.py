@@ -7,6 +7,7 @@ it runs `render_busy.py` (exit 3 = wait, retry), reads the pin from config.yaml 
 
 Usage: python3 scripts/snapshot.py episodes/<slug> --at <t1>,<t2>,<t3> -o <dir> [more hyperframes snapshot args]
 """
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -29,7 +30,8 @@ def main(args):
     pin = parse_pin(SCRIPTS.parent)
     if not pin:
         sys.exit("[snapshot] FAIL: config.yaml has no hyperframes_version")
-    return subprocess.run(argv(pin, args), shell=sys.platform == "win32").returncode
+    cmd = argv(pin, args)
+    return subprocess.run([shutil.which("npx") or cmd[0], *cmd[1:]]).returncode
 
 
 if __name__ == "__main__":
