@@ -21,8 +21,7 @@ Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
    `git status -sb` + `git worktree list` — the main checkout is shared by parallel sessions;
    uncommitted changes there are someone else's work. Touch nothing in it.
 2. **Worktree BEFORE first write (hard rule, repo CLAUDE.md):**
-   `git worktree add .worktrees/<ep-slug> -b <branch> origin/main` (a session the desktop app started with its own
-   worktree is already in `.claude/worktrees/<ep-slug>-<hash>`; use that, the lane gate accepts both)
+   `git worktree add .worktrees/<ep-slug> -b <branch> origin/main`
    All episode work happens in that worktree. Full absolute paths in every message to the
    owner (worktrees make relative paths un-openable for him).
 3. **Read the rulebook FROM THE WORKTREE** (fresh main, in this order):

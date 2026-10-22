@@ -76,7 +76,9 @@ def raises(fn):
 
 
 with tempfile.TemporaryDirectory() as tmp:
-    fx = S.parent / ".worktrees" / "_test-lanes-fixture"  # inside this checkout and a .worktrees dir, so `claim` accepts it
+    if not lanes.in_worktree(S.parent):
+        sys.exit("[test_lanes] FAIL: run this from a linked worktree (repo rule); `claim` refuses the main checkout")
+    fx = S.parent / ".worktrees" / "_test-lanes-fixture"  # inside this linked worktree, so `claim` accepts it
     ep = fx / "episodes" / "ep-fx"
     if fx.exists():
         sys.exit(f"[test_lanes] FAIL: {fx} already exists; remove it by hand")
@@ -159,14 +161,10 @@ with tempfile.TemporaryDirectory() as tmp:
         check("claim refuses an episode outside .worktrees (the hook never reads it)",
               raises(lambda: lanes.main(["claim", str(outside), "--session", "S1"])) and not (outside / "lanes.json").exists())
         lanes.SCRIPTS = real
-        app_fx = S.parent / ".claude" / "worktrees" / "_test-lanes-fixture-1a2b3c"  # the desktop app's worktree shape
-        app_wt = app_fx / "episodes" / "ep-x"
+        app_wt = S.parent / ".claude" / "worktrees" / "_test-lanes-fixture-1a2b3c" / "episodes" / "ep-x"  # the desktop app's shape
         touch(app_wt / "edit_script.md", SCRIPT)
-        try:
-            check("claim accepts the desktop app's .claude/worktrees/<task>-<hash> path (22 Oct 26: three episodes ran ungated)",
-                  lanes.main(["claim", str(app_wt), "--session", "S1"]) == 0 and (app_wt / "lanes.json").exists())
-        finally:
-            shutil.rmtree(app_fx, ignore_errors=True)
+        check("claim accepts an episode under .claude/worktrees/<task>-<hash> (any linked worktree)",
+              lanes.main(["claim", str(app_wt), "--session", "S1"]) == 0 and (app_wt / "lanes.json").exists())
         check("claim records the session", lanes.main(["claim", e, "--session", "S1"]) == 0
               and json.loads((ep / "lanes.json").read_text())["orchestrator"] == "S1")
         check("start rejects an unknown job", raises(lambda: lanes.main(["start", e, "brief:nope", "--session", "S1"])))
@@ -186,8 +184,8 @@ with tempfile.TemporaryDirectory() as tmp:
         lanes.main(["hold", e, "all", "--reason", "fixture", "--session", "S2"])
         check("status exits 0 once every ready job is held", lanes.main(["status", e]) == 0)
     finally:
-        import shutil
         shutil.rmtree(fx, ignore_errors=True)
+        shutil.rmtree(S.parent / ".claude" / "worktrees" / "_test-lanes-fixture-1a2b3c", ignore_errors=True)
 
 
 # --- launch path: the three capacity rules, run by pytest or by this script ---

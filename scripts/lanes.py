@@ -63,13 +63,6 @@ HOLD_H = 3          # a hold lapses after this many hours, so a wait is re-decid
 DEFAULT_MIN = 60    # a lane with no end recorded this many minutes after its start is presumed dead (STALE)
 BLOCKING = ("READY", "STALE", "FAILED")
 HOSTS = ("local", "zbook")
-def in_worktree(ep):
-    # .worktrees/<task> is the repo convention; .claude/worktrees/<task>-<hash> is where the desktop app puts a session's
-    # worktree. Three episodes ran outside the lane gate for a day because only the first was accepted (22 Oct 26).
-    parts = ep.parts
-    return ".worktrees" in parts or any(parts[i] == ".claude" and parts[i + 1] == "worktrees" for i in range(len(parts) - 1))
-
-
 MIN_FREE_GB = 4     # a lane never starts on a host with this much free memory or less
 MAX_LANES = 4       # ...or while this many lanes are RUNNING
 ACCOUNTS = Path.home() / ".claude-accounts"
@@ -343,6 +336,15 @@ def main(argv=None):
         release(lock)
 
 
+def in_worktree(ep):
+    """True when the episode sits in a linked git worktree (any location: git decides, not a path list)."""
+    r = subprocess.run(["git", "-C", str(ep), "rev-parse", "--git-dir", "--git-common-dir"], capture_output=True, text=True)
+    if r.returncode:
+        return False
+    git_dir, common = r.stdout.splitlines()  # paths may hold spaces
+    return git_dir != common
+
+
 def write(a, ep, lock):
     """Every command but status, run while holding lock; the ledger is read here, under it."""
     ledger = load_ledger(ep)
@@ -368,7 +370,7 @@ def write(a, ep, lock):
         if SCRIPTS.parent not in ep.parents:
             sys.exit(f"[lanes] FAIL: run the lanes.py inside {ep}'s own checkout (merge main into its branch first)")
         if not in_worktree(ep):
-            sys.exit(f"[lanes] FAIL: {ep} is not in a worktree; the Stop hook reads only .worktrees/*/ and .claude/worktrees/*/ ledgers")
+            sys.exit(f"[lanes] FAIL: {ep} is not in a linked worktree (`git worktree list`); the Stop hook reads only worktree ledgers")
         if not a.session:
             sys.exit("[lanes] FAIL: no session id (CLAUDE_CODE_SESSION_ID unset); pass --session")
     elif not a.jobs:
