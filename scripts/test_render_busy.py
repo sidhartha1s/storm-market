@@ -48,6 +48,27 @@ def launch(free, requested):
         return code, buf.getvalue(), out_file.read_text() if out_file.exists() else None
 
 
+def plain(free):
+    """Run main() as a gate does (no --launch): return (exit code, stdout)."""
+    render_busy.free_gb = lambda: free
+    os.environ.pop("RENDER_BUSY_OK", None)
+    sys.argv = ["render_busy.py"]
+    buf, code = io.StringIO(), 0
+    with contextlib.redirect_stdout(buf):
+        try:
+            render_busy.main()
+        except SystemExit as e:
+            code = e.code
+    return code, buf.getvalue()
+
+
+code, out = plain(0.5)
+check("gate at 0.5 GB free (the 22 Oct stall) -> exit 3", code == 3, f"code={code} out={out!r}")
+check("gate refusal states the GB numbers, never close or quit", "0.5 GB free" in out and "1.5 GB" in out
+      and "close" not in out.lower() and "quit" not in out.lower(), out)
+code, out = plain(3.0)
+check("gate at 3.0 GB free -> OK", code == 0 and "OK" in out, f"code={code} out={out!r}")
+
 code, out, n = launch(4.2, 2)
 check("4.2 GB free, request 2 -> 2 workers", (code, n) == (0, "2"), f"code={code} n={n} out={out!r}")
 check("4.2 GB free, request 2 -> no [FALLBACK] line", "[FALLBACK]" not in out, out)
