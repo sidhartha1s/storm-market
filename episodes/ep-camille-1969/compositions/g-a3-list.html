@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-list (O10, A3-S12 to A3-S14). The 2019 News & Advance list of 125 names, typeset verbatim from the Wayback copy
+  (https://web.archive.org/web/20210807224023id_/https://newsadvance.com/news/local/article_fab7a328-62a9-5a8d-8ea9-4c6eb62939a6.html,
+  "Information courtesy of Oakland-Nelson County Museum of History"). Rows: name, age, place as printed (typos kept: "Holow",
+  "Huffman Jesse", "dark-completed"). Counts by script: The dead 84, The missing 33 (19 Davis Creek: 18 + 1 "Davis Creek area"),
+  The unidentified 8.
+  Geometry (page px, fixed row heights so every scroll stop is arithmetic): dead row n at 20 + (n-1)*40; missing divider 3420
+  (100 tall), missing row n at 3520 + (n-1)*40; unidentified divider 4880, unidentified row n at 4980 + (n-1)*70.
+  Window (clip box) x 200 to 1100, y 200 to 960, faded top and bottom so a row never shows cut at the edge.
+-->
+<template>
+<style>
+  #g-a3-list-root { position:absolute; inset:0; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial,sans-serif; color:#dfe7ee; }
+  .a3l-sheet { position:absolute; left:160px; top:186px; width:980px; height:788px; background:linear-gradient(180deg, #0b1016 0%, #04070a 100%); border:1px solid rgba(255,255,255,0.08); border-radius:12px; }
+  .a3l-win { position:absolute; left:200px; top:200px; width:900px; height:760px; overflow:hidden;
+    -webkit-mask-image:linear-gradient(180deg, transparent 0px, #000 64px, #000 696px, transparent 760px);
+    mask-image:linear-gradient(180deg, transparent 0px, #000 64px, #000 696px, transparent 760px); }
+  .a3l-page { position:absolute; left:0; top:0; width:900px; height:5600px; }
+  .a3l-r { position:absolute; left:24px; width:860px; height:40px; line-height:40px; white-space:nowrap; }
+  .a3l-n { font-family:Georgia,'Times New Roman',serif; font-size:28px; color:#dfe7ee; }
+  .a3l-a { font-family:Arial,sans-serif; font-weight:700; font-size:21px; color:#93a3b2; margin-left:10px; }
+  .a3l-p { font-family:Arial,sans-serif; font-weight:700; font-size:21px; color:#93a3b2; margin-left:8px; letter-spacing:0.5px; }
+  .a3l-bar { position:absolute; left:0; width:900px; height:40px; border-radius:4px; transform-origin:left center; opacity:0; visibility:hidden; }
+  .a3l-bar-w { background:rgba(216,161,58,0.22); border-left:4px solid #d8a13a; }
+  .a3l-bar-c { background:rgba(127,178,229,0.24); border-left:4px solid #7fb2e5; }
+  .a3l-div { position:absolute; left:24px; width:852px; height:2px; background:linear-gradient(90deg, #93a3b2 0%, rgba(147,163,178,0) 100%); }
+  .a3l-u { position:absolute; left:24px; width:840px; height:70px; }
+  .a3l-ut { position:absolute; left:40px; top:4px; width:790px; font-family:Georgia,'Times New Roman',serif; font-size:24px; line-height:30px; color:#dfe7ee; filter:blur(7px); opacity:0; visibility:hidden; }
+  .a3l-um { position:absolute; left:0; top:12px; width:16px; height:16px; border-radius:50%; background:#d8a13a; opacity:0; visibility:hidden; }
+  .a3l-head { position:absolute; left:200px; top:84px; height:80px; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:80px; color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a3l-tag { position:absolute; left:760px; top:104px; font-family:Arial,sans-serif; font-weight:700; font-size:30px; letter-spacing:1px; color:#d8a13a; opacity:0; visibility:hidden; }
+  .a3l-rail { position:absolute; left:1200px; top:60px; width:360px; }
+  #a3l-count { font-family:'Courier New',monospace; font-weight:700; font-size:84px; line-height:90px; color:#e74c3c; opacity:0; visibility:hidden; }
+  #a3l-clab { font-family:Arial,sans-serif; font-weight:700; font-size:20px; letter-spacing:6px; color:#c8d3e0; opacity:0; visibility:hidden; }
+  .a3l-src { position:absolute; left:200px; top:990px; width:1300px; font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  #a3l-card { position:absolute; left:1150px; top:240px; width:410px; box-sizing:border-box; padding:28px 30px 26px; background:rgba(232,222,200,0.90); border-radius:20px; opacity:0; visibility:hidden; }
+  #a3l-cq { font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:26px; line-height:36px; color:#2a2622; }
+  #a3l-ca { margin-top:16px; font-family:Arial,sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; color:#6b6257; }
+</style>
+<div id="g-a3-list-root" data-composition-id="g-a3-list" data-width="1920" data-height="1080">
+  <div class="a3l-sheet" id="a3l-sheet"></div>
+  <div class="a3l-win" id="a3l-win">
+    <div class="a3l-page" id="a3l-page">
+      <!-- The dead: 84 rows -->
+      <div class="a3l-r" style="top:20px"><span class="a3l-n">Bryant, Margaret Louise,</span><span class="a3l-a">18,</span><span class="a3l-p">Bryant</span></div>
+      <div class="a3l-r" style="top:60px"><span class="a3l-n">Bryant, Patricia Anne,</span><span class="a3l-a">14,</span><span class="a3l-p">Bryant</span></div>
+      <div class="a3l-r" style="top:100px"><span class="a3l-n">Bryant, Sara Grace Marshall,</span><span class="a3l-a">42,</span><span class="a3l-p">Bryant</span></div>
+      <div class="a3l-r" style="top:140px"><span class="a3l-n">Bryant, Frances Marshall,</span><span class="a3l-a">13,</span><span class="a3l-p">Bryant</span></div>
+      <div class="a3l-r" style="top:180px"><span class="a3l-n">Burnley, Barbara Louise,</span><span class="a3l-a">17,</span><span class="a3l-p">Davis Creek, from Buckingham</span></div>
+      <div class="a3l-r" style="top:220px"><span class="a3l-n">Burnley, Larry Wade,</span><span class="a3l-a">8 months,</span><span class="a3l-p">Norwood</span></div>
+      <div class="a3l-r" style="top:260px"><span class="a3l-n">Burnley, Wilbert Lee,</span><span class="a3l-a">11,</span><span class="a3l-p">Davis Creek, from Buckingham</span></div>
+      <div class="a3l-r" style="top:300px"><span class="a3l-n">Campbell, Kenneth Edward,</span><span class="a3l-a">2,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:340px"><span class="a3l-n">Campbell, Melissa Kaye,</span><span class="a3l-a">3 months,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:380px"><span class="a3l-n">Coles, Alice Smith,</span><span class="a3l-a">76,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:420px"><span class="a3l-n">Daugherty, Daisy,</span><span class="a3l-a">66,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:460px"><span class="a3l-n">Dellinger, Otis David,</span><span class="a3l-a">32,</span><span class="a3l-p">Woods Mill, from Lincolnton, North Carolina</span></div>
+      <div class="a3l-r" style="top:500px"><span class="a3l-n">Eheart, Michael Julius,</span><span class="a3l-a">6,</span><span class="a3l-p">Davis Creek, from Lovingston</span></div>
+      <div class="a3l-r" style="top:540px"><span class="a3l-n">Ewing, Hawes Edward,</span><span class="a3l-a">60,</span><span class="a3l-p">Wintergreen</span></div>
+      <div class="a3l-r" style="top:580px"><span class="a3l-n">Ewing, Elva Louise Hines,</span><span class="a3l-a">47,</span><span class="a3l-p">Wintergreen</span></div>
+      <div class="a3l-r" style="top:620px"><span class="a3l-n">Gibson, Linda Lee Huffman,</span><span class="a3l-a">22,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:660px"><span class="a3l-n">Gibson, Patricia Lynn,</span><span class="a3l-a">1,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:700px"><span class="a3l-n">Giles, Annie Texas Ponton,</span><span class="a3l-a">53,</span><span class="a3l-p">Polly Wright Cove</span></div>
+      <div class="a3l-r" style="top:740px"><span class="a3l-n">Giles, Sharon Cecilia,</span><span class="a3l-a">13,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:780px"><span class="a3l-n">Giles, Thomas Hope,</span><span class="a3l-a">46,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:820px"><span class="a3l-n">Gunter, Sylvia Gail,</span><span class="a3l-a">20,</span><span class="a3l-p">Norwood</span></div>
+      <div class="a3l-r" style="top:860px"><span class="a3l-n">Graves, Josephus Cecil,</span><span class="a3l-a">40,</span><span class="a3l-p">Ruckers Run, from Danville</span></div>
+      <div class="a3l-r" style="top:900px"><span class="a3l-n">Grooms, Christine Loving,</span><span class="a3l-a">20,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:940px"><span class="a3l-n">Hardy, Jabe Andrew,</span><span class="a3l-a">48,</span><span class="a3l-p">Woods Mill, from Danville</span></div>
+      <div class="a3l-r" style="top:980px"><span class="a3l-n">Herring, Almond Wesley,</span><span class="a3l-a">35,</span><span class="a3l-p">Woods Mill, from Crozet</span></div>
+      <div class="a3l-r" style="top:1020px"><span class="a3l-n">Hudson, Henry,</span><span class="a3l-a">68,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1060px"><span class="a3l-n">Huffman, Barbara Lou,</span><span class="a3l-a">2,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1100px"><span class="a3l-n">Huffman, Brenda Ann,</span><span class="a3l-a">19,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1140px"><span class="a3l-n">Huffman, David Wayne,</span><span class="a3l-a">11,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1180px"><span class="a3l-n">Huffman, Emma Virginia R.,</span><span class="a3l-a">46,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1220px"><span class="a3l-n">Huffman, Gloria Marie,</span><span class="a3l-a">18,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1260px"><span class="a3l-n">Huffman, Hazel Kidd,</span><span class="a3l-a">45,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1300px"><span class="a3l-n">Huffman, James Patrick, Jr.,</span><span class="a3l-a">22,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1340px"><span class="a3l-n">Huffman Jesse Lewis, Jr.,</span><span class="a3l-a">18 months,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1380px"><span class="a3l-n">Huffman Juanita Burnley,</span><span class="a3l-a">24,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1420px"><span class="a3l-n">Huffman, Lawrence Harvey,</span><span class="a3l-a">53,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1460px"><span class="a3l-n">Huffman, Lottie Beverly,</span><span class="a3l-a">30,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1500px"><span class="a3l-n">Huffman, Robert Lee,</span><span class="a3l-a">45,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1540px"><span class="a3l-n">Huffman, Roger Dale, Jr.,</span><span class="a3l-a">4,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1580px"><span class="a3l-n">Hughes, Pauline Wood,</span><span class="a3l-a">58,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:1620px"><span class="a3l-n">Johnson, Ora Teresa,</span><span class="a3l-a">15,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:1660px"><span class="a3l-n">Johnson, Virginia Oakcrum,</span><span class="a3l-a">49,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:1700px"><span class="a3l-n">Johnson, Walter Homer, Jr.,</span><span class="a3l-a">17,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1740px"><span class="a3l-n">Loving, Harold Eugene,</span><span class="a3l-a">4,</span><span class="a3l-p">Tyro</span></div>
+      <div class="a3l-r" style="top:1780px"><span class="a3l-n">Madison, Willie Harris,</span><span class="a3l-a">87,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:1820px"><span class="a3l-n">Martin, Alice Marie,</span><span class="a3l-a">12,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1860px"><span class="a3l-n">Martin, Mary Burnley,</span><span class="a3l-a">33,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1900px"><span class="a3l-n">Martin, Robert Lee,</span><span class="a3l-a">39,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:1940px"><span class="a3l-n">Oliver, Jeffery Wayne,</span><span class="a3l-a">3,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:1980px"><span class="a3l-n">Oliver, Regina Rene,</span><span class="a3l-a">5 months,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:2020px"><span class="a3l-n">Perry, Albert,</span><span class="a3l-a">50,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:2060px"><span class="a3l-n">Perry, Catherine Ann,</span><span class="a3l-a">14,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:2100px"><span class="a3l-n">Perry, Elizabeth Emma,</span><span class="a3l-a">37,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:2140px"><span class="a3l-n">Perry, John Thomas,</span><span class="a3l-a">30,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:2180px"><span class="a3l-n">Perry, Mary Frances,</span><span class="a3l-a">12,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:2220px"><span class="a3l-n">Raines, Carl Franklin, Sr.,</span><span class="a3l-a">52,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:2260px"><span class="a3l-n">Raines, Johanna Gordon,</span><span class="a3l-a">18,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:2300px"><span class="a3l-n">Raines, Shirley Gordon,</span><span class="a3l-a">42,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:2340px"><span class="a3l-n">Raines, Virginia Estelle,</span><span class="a3l-a">7,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:2380px"><span class="a3l-n">Raines, Walker Saunders,</span><span class="a3l-a">9,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:2420px"><span class="a3l-n">Ramsey, Robert Lee,</span><span class="a3l-a">35,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:2460px"><span class="a3l-n">Sanders, Henry Foster,</span><span class="a3l-a">47,</span><span class="a3l-p">Woods Mill, from Bessemer City, North Carolina</span></div>
+      <div class="a3l-r" style="top:2500px"><span class="a3l-n">Schur, Mary Catherine Martin,</span><span class="a3l-a">25,</span><span class="a3l-p">Duncan Hollow</span></div>
+      <div class="a3l-r" style="top:2540px"><span class="a3l-n">Seal, John Arthur, Jr.,</span><span class="a3l-a">40,</span><span class="a3l-p">Woods Mill, from Madison</span></div>
+      <div class="a3l-r" style="top:2580px"><span class="a3l-n">Simpson, Nora Ann,</span><span class="a3l-a">33,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:2620px"><span class="a3l-n">Simpson, Robert Elmo, Jr.,</span><span class="a3l-a">14,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:2660px"><span class="a3l-n">Simpson, Robert Elmo, Sr.,</span><span class="a3l-a">45,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:2700px"><span class="a3l-n">Sites, Betty Mawyer,</span><span class="a3l-a">54,</span><span class="a3l-p">Hickory Creek</span></div>
+      <div class="a3l-r" style="top:2740px"><span class="a3l-n">Sites, Luther Glenn,</span><span class="a3l-a">64,</span><span class="a3l-p">Hickory Creek</span></div>
+      <div class="a3l-r" style="top:2780px"><span class="a3l-n">Staton, Charles Ashby,</span><span class="a3l-a">67,</span><span class="a3l-p">Tyro</span></div>
+      <div class="a3l-r" style="top:2820px"><span class="a3l-n">Staton, Flossie Lawhorne,</span><span class="a3l-a">58,</span><span class="a3l-p">Tyro</span></div>
+      <div class="a3l-r" style="top:2860px"><span class="a3l-n">Staton, Linda Hope,</span><span class="a3l-a">19,</span><span class="a3l-p">Tyro</span></div>
+      <div class="a3l-r" style="top:2900px"><span class="a3l-n">Thompson, Edward (Buzz) Beaureguard,</span><span class="a3l-a">37,</span><span class="a3l-p">Edes Holow, from Piney River</span></div>
+      <div class="a3l-r" style="top:2940px"><span class="a3l-n">Thompson, Elizabeth Hamilton,</span><span class="a3l-a">75,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:2980px"><span class="a3l-n">Toms, Millie Conway,</span><span class="a3l-a">68,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:3020px"><span class="a3l-n">Turner, Mary Louise Giles,</span><span class="a3l-a">65,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:3060px"><span class="a3l-n">Wood, Mable Bishop,</span><span class="a3l-a">55,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:3100px"><span class="a3l-n">Wooten, Erma Forbes,</span><span class="a3l-a">61,</span><span class="a3l-p">Norwood</span></div>
+      <div class="a3l-r" style="top:3140px"><span class="a3l-n">Wooten, Harry Rexford, Sr.,</span><span class="a3l-a">68,</span><span class="a3l-p">Norwood</span></div>
+      <div class="a3l-r" style="top:3180px"><span class="a3l-n">Wright, Wrennie Harris,</span><span class="a3l-a">75,</span><span class="a3l-p">Wheelers Cove</span></div>
+      <div class="a3l-r" style="top:3220px"><span class="a3l-n">Zirkle, Audrey Lynn,</span><span class="a3l-a">17,</span><span class="a3l-p">Tyro</span></div>
+      <div class="a3l-r" style="top:3260px"><span class="a3l-n">Zirkle, Gary Stewart,</span><span class="a3l-a">16,</span><span class="a3l-p">Tyro</span></div>
+      <div class="a3l-r" style="top:3300px"><span class="a3l-n">Zirkle, Laurabelle Oliver,</span><span class="a3l-a">39,</span><span class="a3l-p">Tyro</span></div>
+      <div class="a3l-r" style="top:3340px"><span class="a3l-n">Zirkle, William Henry,</span><span class="a3l-a">49,</span><span class="a3l-p">Tyro</span></div>
+      <!-- The missing: divider at 3420, 33 rows from 3520. Highlight bars sit under their rows. -->
+      <div class="a3l-div" style="top:3469px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c02" style="top:3560px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c09" style="top:3840px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c10" style="top:3880px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c11" style="top:3920px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c12" style="top:3960px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c13" style="top:4000px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c14" style="top:4040px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c15" style="top:4080px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c16" style="top:4120px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c17" style="top:4160px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c19" style="top:4240px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c20" style="top:4280px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c21" style="top:4320px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c22" style="top:4360px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c23" style="top:4400px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c24" style="top:4440px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c25" style="top:4480px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c26" style="top:4520px"></div>
+      <div class="a3l-bar a3l-bar-c" id="a3l-c27" style="top:4560px"></div>
+      <div class="a3l-bar a3l-bar-w" id="a3l-w32" style="top:4760px"></div>
+      <div class="a3l-bar a3l-bar-w" id="a3l-w33" style="top:4800px"></div>
+      <div class="a3l-r" style="top:3520px"><span class="a3l-n">Burnley, Darrell Wayne,</span><span class="a3l-a">child,</span><span class="a3l-p">Norwood</span></div>
+      <div class="a3l-r" style="top:3560px"><span class="a3l-n">Burnley, Roosevelt,</span><span class="a3l-a">36,</span><span class="a3l-p">Davis Creek area</span></div>
+      <div class="a3l-r" style="top:3600px"><span class="a3l-n">Burnley, Tom, Jr.,</span><span class="a3l-a">33,</span><span class="a3l-p">Norwood</span></div>
+      <div class="a3l-r" style="top:3640px"><span class="a3l-n">Critzer, Hattie,</span><span class="a3l-a">75,</span><span class="a3l-p">Rockfish Station</span></div>
+      <div class="a3l-r" style="top:3680px"><span class="a3l-n">Carter, Carrie,</span><span class="a3l-a">72,</span><span class="a3l-p">Upper Hat Creek</span></div>
+      <div class="a3l-r" style="top:3720px"><span class="a3l-n">French, Emory,</span><span class="a3l-a">45,</span><span class="a3l-p">Edes Hollow</span></div>
+      <div class="a3l-r" style="top:3760px"><span class="a3l-n">Giles, George,</span><span class="a3l-p">Polly Wright Cove</span></div>
+      <div class="a3l-r" style="top:3800px"><span class="a3l-n">Gunter, Lisa Marie,</span><span class="a3l-a">4,</span><span class="a3l-p">Norwood</span></div>
+      <div class="a3l-r" style="top:3840px"><span class="a3l-n">Huffman, Annie Virginia Martin,</span><span class="a3l-a">44,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:3880px"><span class="a3l-n">Huffman, James Harvey,</span><span class="a3l-a">11,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:3920px"><span class="a3l-n">Huffman, Clyde Mitchell,</span><span class="a3l-a">16,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:3960px"><span class="a3l-n">Huffman, Roger Dale, Sr.,</span><span class="a3l-a">24,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:4000px"><span class="a3l-n">Huffman, Rebecca Lou O’Brien,</span><span class="a3l-a">19,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:4040px"><span class="a3l-n">Martin, Frannie Lee Tinnel Branch,</span><span class="a3l-a">48,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:4080px"><span class="a3l-n">Martin, George Washington,</span><span class="a3l-a">55,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:4120px"><span class="a3l-n">Martin, Mary Ann “Sissy,”</span><span class="a3l-a">10,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:4160px"><span class="a3l-n">Martin, Robert Lee, Jr.,</span><span class="a3l-a">7,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:4200px"><span class="a3l-n">Megginson, James A.,</span><span class="a3l-a">30,</span><span class="a3l-p">Duncan Hollow</span></div>
+      <div class="a3l-r" style="top:4240px"><span class="a3l-n">Perry, Betty Lee,</span><span class="a3l-a">12,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:4280px"><span class="a3l-n">Perry, Carolyn Sue,</span><span class="a3l-a">10,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:4320px"><span class="a3l-n">Perry, Edward,</span><span class="a3l-a">50,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:4360px"><span class="a3l-n">Perry, Nelson,</span><span class="a3l-a">60,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:4400px"><span class="a3l-n">Ramsey, Charles Henry,</span><span class="a3l-a">72,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:4440px"><span class="a3l-n">Simpson, Paul Edward,</span><span class="a3l-a">5,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:4480px"><span class="a3l-n">Simpson, Brenda Marie,</span><span class="a3l-a">9,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:4520px"><span class="a3l-n">Simpson, James Allan “Jimmy,”</span><span class="a3l-a">13,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:4560px"><span class="a3l-n">Simpson, Michael Lloyd “Mike,”</span><span class="a3l-a">10,</span><span class="a3l-p">Davis Creek</span></div>
+      <div class="a3l-r" style="top:4600px"><span class="a3l-n">Taylor, Dan Angus,</span><span class="a3l-a">48,</span><span class="a3l-p">Polly Wright Cove</span></div>
+      <div class="a3l-r" style="top:4640px"><span class="a3l-n">Taylor, Vernelle Harris,</span><span class="a3l-a">46,</span><span class="a3l-p">Polly Wright Cove</span></div>
+      <div class="a3l-r" style="top:4680px"><span class="a3l-n">Thompson, Bonnie Joann,</span><span class="a3l-a">11,</span><span class="a3l-p">Edes Hollow</span></div>
+      <div class="a3l-r" style="top:4720px"><span class="a3l-n">Waterman, John,</span><span class="a3l-a">19,</span><span class="a3l-p">Norwood</span></div>
+      <div class="a3l-r" style="top:4760px"><span class="a3l-n" id="a3l-wn32">Wood, Donna Fay,</span><span class="a3l-a">18,</span><span class="a3l-p">Massies Mill</span></div>
+      <div class="a3l-r" style="top:4800px"><span class="a3l-n" id="a3l-wn33">Wood, Gary,</span><span class="a3l-a">4,</span><span class="a3l-p">Massies Mill</span></div>
+      <!-- The unidentified: divider at 4880, 8 rows from 4980, 70 px each; text blurred, one amber marker per row -->
+      <div class="a3l-div" style="top:4929px"></div>
+      <div class="a3l-u" style="top:4980px"><div class="a3l-um" id="a3l-um1"></div><div class="a3l-ut" id="a3l-ut1">Female, about 70 years old, long, white hair, found at Buford Island between Howardsville and Wingina</div></div>
+      <div class="a3l-u" style="top:5050px"><div class="a3l-um" id="a3l-um2"></div><div class="a3l-ut" id="a3l-ut2">Female, 35 to 40 years old, well-groomed brown hair, found at Woods Mill</div></div>
+      <div class="a3l-u" style="top:5120px"><div class="a3l-um" id="a3l-um3"></div><div class="a3l-ut" id="a3l-ut3">Female, late 40s to early 50s, moderate-length brown, wavy hair, found one mile below Woods Mill</div></div>
+      <div class="a3l-u" style="top:5190px"><div class="a3l-um" id="a3l-um4"></div><div class="a3l-ut" id="a3l-ut4">Male, late 50s, stocky, dark-completed, partially bald, black hair, found on Albemarle shore at Howardsville</div></div>
+      <div class="a3l-u" style="top:5260px"><div class="a3l-um" id="a3l-um5"></div><div class="a3l-ut" id="a3l-ut5">Male, about 17, found below Schuyler</div></div>
+      <div class="a3l-u" style="top:5330px"><div class="a3l-um" id="a3l-um6"></div><div class="a3l-ut" id="a3l-ut6">Male, about 12 to 14 years old, found one-half mile below Southern Railroad bridge</div></div>
+      <div class="a3l-u" style="top:5400px"><div class="a3l-um" id="a3l-um7"></div><div class="a3l-ut" id="a3l-ut7">Female, about 10 years old, long, wavy blonde hair, found about two miles above Howardsville</div></div>
+      <div class="a3l-u" style="top:5470px"><div class="a3l-um" id="a3l-um8"></div><div class="a3l-ut" id="a3l-ut8">Female, about 6 to 8 years old, found above the Bremo Power Plant.</div></div>
+    </div>
+  </div>
+  <div class="a3l-head" id="a3l-h1">The dead</div>
+  <div class="a3l-head" id="a3l-h2">The missing</div>
+  <div class="a3l-head" id="a3l-h3">The unidentified</div>
+  <div class="a3l-tag" id="a3l-t1">84</div>
+  <div class="a3l-tag" id="a3l-t2">33</div>
+  <div class="a3l-tag" id="a3l-t3">8</div>
+  <div class="a3l-rail" id="a3l-rail">
+    <div id="a3l-count">1</div>
+    <div id="a3l-clab">NAMES ON THE LIST</div>
+  </div>
+  <div id="a3l-card">
+    <div id="a3l-cq">“Two of the Wood children—Donna Fay and Gary—were among the 33 people whose bodies were never recovered.”</div>
+    <div id="a3l-ca">C-VILLE Weekly, 2019</div>
+  </div>
+  <div class="a3l-src" id="a3l-s1">Nelson County · News &amp; Advance, 2019 (Oakland Museum list)</div>
+  <div class="a3l-src" id="a3l-s2">19 never found + 33 named under The dead = 52 · News &amp; Advance 2019 list; C-VILLE, WHSV 2019</div>
+  <div class="a3l-src" id="a3l-s3">News &amp; Advance, 2019 (Oakland Museum list)</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#a3l-";
+  const END = 59.5;
+  // CUE-PENDING: audio/a3-s12..s14.words.json not on disk. Comp 0 = A3-S12 first word; S13 est +17.3 s, S14 est +39.3 s
+  // (word counts at the measured 3.35 words/s). Every cue below is an estimate until the orchestrator retimes it.
+  const C = {
+    names: 3.6,    /* CUE-PENDING "names" (list of names) S12 */
+    n125: 8.9,     /* CUE-PENDING "125" S12 */
+    n84: 10.5,     /* CUE-PENDING "84" S12 */
+    missing: 18.8, /* CUE-PENDING "missing" S13 */
+    n33: 19.6,     /* CUE-PENDING "33" S13 */
+    donna: 23.1,   /* CUE-PENDING "Donna" S13 */
+    gary: 25.7,    /* CUE-PENDING "Gary" S13 */
+    neither: 27.1, /* CUE-PENDING "Neither" S13 */
+    nineteen: 33.1,/* CUE-PENDING "Nineteen" S13 */
+    more: 40.3,    /* CUE-PENDING "more" (one more heading) S14 */
+    eight: 42.6    /* CUE-PENDING "Eight" S14 */
+  };
+
+  // opening state
+  tl.set(P+"page", { y: 0, scale: 1, transformOrigin: "0px 0px" }, 0);
+  tl.set([P+"h1",P+"s1"], { autoAlpha: 1, y: 0 }, 0);
+  tl.set([P+"h2",P+"h3",P+"t1",P+"t2",P+"t3",P+"count",P+"clab",P+"card",P+"s2",P+"s3"], { autoAlpha: 0 }, 0);
+  tl.set([P+"h2",P+"h3"], { y: 40 }, 0);
+  tl.set([P+"t1",P+"t2",P+"t3"], { x: -24 }, 0);
+  tl.set(P+"card", { x: 520 }, 0);
+  tl.set(".a3l-bar", { autoAlpha: 0, scaleX: 0 }, 0);
+  tl.set(".a3l-um", { autoAlpha: 0, scale: 0 }, 0);
+  tl.set(".a3l-ut", { autoAlpha: 0, x: -16 }, 0);
+
+  // S12: slow scroll through The dead, 1500 px over 16.3 s (92 px/s)
+  tl.to(P+"page", { y: -1500, duration: 16.3, ease: "none" }, 0.3);
+  // counter: names on the list, lands 125 on "125"
+  tl.fromTo([P+"count",P+"clab"], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.n125 - 2.6);
+  const cnt = { v: 1 };
+  tl.to(cnt, { v: 125, duration: 2.6, ease: "power3.out",
+    onUpdate: function () { document.querySelector(P+"count").textContent = Math.round(cnt.v); } }, C.n125 - 2.6);
+  tl.fromTo(P+"rail", { y: 0 }, { y: -8, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 19 }, C.n125 + 0.2);
+  // 84: tag beside the heading, heading pulse
+  tl.to(P+"t1", { autoAlpha: 1, x: 0, duration: 0.45, ease: "back.out(2)" }, C.n84);
+  tl.fromTo(P+"h1", { scale: 1 }, { scale: 1.06, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "left center" }, C.n84);
+
+  // S13: riffle to The missing; heading swaps as the divider reaches the top
+  tl.to(P+"page", { y: -3420, duration: 2.2, ease: "power2.inOut" }, C.missing - 2.2);
+  tl.to([P+"h1",P+"t1"], { autoAlpha: 0, y: -40, duration: 0.35, ease: "power2.in" }, C.missing - 0.5);
+  tl.to(P+"h2", { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.missing - 0.15);
+  tl.to(P+"t2", { autoAlpha: 1, x: 0, duration: 0.45, ease: "back.out(2)" }, C.n33);
+  // down the missing to the Wood rows (rows 32-33 end at page 4840; bring them to window y 640)
+  tl.to(P+"page", { y: -4200, duration: 3.4, ease: "power1.inOut" }, C.missing + 0.6);
+  tl.to(P+"page", { y: -4270, duration: C.nineteen - (C.missing + 4.0), ease: "none" }, C.missing + 4.0);
+  tl.to(P+"w32", { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, C.donna);
+  tl.to(P+"wn32", { color: "#d8a13a", duration: 0.4, ease: "power1.out" }, C.donna);
+  tl.to(P+"w33", { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, C.gary);
+  tl.to(P+"wn33", { color: "#d8a13a", duration: 0.4, ease: "power1.out" }, C.gary);
+  // C-VILLE card on "Neither"
+  tl.to(P+"card", { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, C.neither);
+  tl.to(P+"card", { y: -10, duration: 2.0, ease: "sine.inOut", yoyo: true, repeat: 5 }, C.neither + 0.8);
+  // "Nineteen": pull out so the whole missing section fits (log zoom 1 -> 0.5 about page point 5170, screen y 900), 19 rows light
+  const z1 = { t: 0 };
+  tl.to(z1, { t: 1, duration: 1.3, ease: "power2.inOut", onUpdate: function () {
+    const s = Math.exp(Math.log(0.5) * z1.t);
+    gsap.set(P+"page", { scale: s, y: 900 - s * 5170 });
+  } }, C.nineteen);
+  tl.to(".a3l-bar-c", { autoAlpha: 1, scaleX: 1, duration: 0.45, ease: "power3.out", stagger: 0.04 }, C.nineteen + 0.9);
+  tl.to(P+"s1", { autoAlpha: 0, y: 12, duration: 0.3, ease: "power2.in" }, C.nineteen + 0.9);
+  tl.fromTo(P+"s2", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, C.nineteen + 1.2);
+  tl.to(P+"page", { y: 900 - 0.5 * 5170 - 40, duration: C.more - (C.nineteen + 1.3), ease: "none" }, C.nineteen + 1.3);
+
+  // S14: card out, zoom back in and scroll to The unidentified (divider at window y 40)
+  tl.to(P+"card", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.more - 0.6);
+  const z2 = { t: 0 };
+  tl.to(z2, { t: 1, duration: 1.8, ease: "power2.inOut", onUpdate: function () {
+    const s = Math.exp(Math.log(0.5) * (1 - z2.t));
+    const y0 = 900 - 0.5 * 5170 - 40, y1 = -4840;
+    // fixed page point between the two states keeps the move a single smooth push
+    const pf = (y1 - y0) / (0.5 - 1), sf = y0 + 0.5 * pf;
+    gsap.set(P+"page", { scale: s, y: sf - s * pf });
+  } }, C.more);
+  tl.to([P+"h2",P+"t2"], { autoAlpha: 0, y: -40, duration: 0.35, ease: "power2.in" }, C.more + 1.0);
+  tl.to(P+"h3", { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.more + 1.35);
+  tl.to(P+"s2", { autoAlpha: 0, y: 12, duration: 0.3, ease: "power2.in" }, C.more + 0.4);
+  tl.fromTo(P+"s3", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, C.more + 0.8);
+  // "Eight people": tag, then each blurred row and its marker
+  tl.to(P+"t3", { autoAlpha: 1, x: 0, duration: 0.45, ease: "back.out(2)" }, C.eight);
+  tl.to(".a3l-um", { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(3)", stagger: 0.22 }, C.eight + 0.2);
+  tl.to(".a3l-ut", { autoAlpha: 0.85, x: 0, duration: 0.45, ease: "power2.out", stagger: 0.22 }, C.eight + 0.2);
+  // hold: slow upward drift (6 px/s) and marker blips until the cut to bo-4
+  tl.to(P+"page", { y: -4840 - 6 * (END - (C.eight + 2.2)), duration: END - (C.eight + 2.2), ease: "none" }, C.eight + 2.2);
+  tl.to(".a3l-um", { scale: 1.35, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 11, stagger: 0.15 }, C.eight + 2.4);
+  tl.to(P+"h3", { y: -4, duration: 2.0, ease: "sine.inOut", yoyo: true, repeat: 3 }, C.eight + 2.4);
+
+  window.__timelines["g-a3-list"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
