@@ -106,7 +106,9 @@ def run_stage(name, st, log):
 
 def main():
     ep, out = Path(sys.argv[1]), Path(sys.argv[2])
-    wanted = sys.argv[sys.argv.index("--stages") + 1].split(",") if "--stages" in sys.argv else list(stages(ep))
+    # "+" works as a separator too (a comma splits cmd.exe arguments); "gates-each" is every gate:<name> stage
+    wanted = sys.argv[sys.argv.index("--stages") + 1].replace("+", ",").split(",") if "--stages" in sys.argv else list(stages(ep))
+    wanted = [n for w in wanted for n in ([k for k in stages(ep) if k.startswith("gate:")] if w == "gates-each" else [w])]
     out.parent.mkdir(parents=True, exist_ok=True)
     log = out.with_suffix(".log")
     gu, gm = gpu()
