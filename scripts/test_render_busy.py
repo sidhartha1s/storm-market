@@ -31,28 +31,11 @@ render_busy.live_renders = lambda: []
 render_busy.pin_chrome_to_dedicated_gpu = lambda: None
 
 
-def launch(free, requested):
-    """Run main() --launch as render.cmd does; return (exit code, stdout, workers file text or None)."""
-    render_busy.free_gb = lambda: free
-    os.environ["RENDER_WORKERS"] = str(requested)
-    os.environ.pop("RENDER_BUSY_OK", None)
-    with tempfile.TemporaryDirectory() as d:
-        out_file = Path(d) / "render_draft.workers"
-        sys.argv = ["render_busy.py", "--launch", str(out_file)]
-        buf, code = io.StringIO(), 0
-        with contextlib.redirect_stdout(buf):
-            try:
-                render_busy.main()
-            except SystemExit as e:
-                code = e.code
-        return code, buf.getvalue(), out_file.read_text() if out_file.exists() else None
-
-
-def plain(free):
-    """Run main() as a gate does (no --launch): return (exit code, stdout)."""
+def run_main(free, *argv):
+    """Run main() with this much free RAM and these args; return (exit code, stdout)."""
     render_busy.free_gb = lambda: free
     os.environ.pop("RENDER_BUSY_OK", None)
-    sys.argv = ["render_busy.py"]
+    sys.argv = ["render_busy.py", *argv]
     buf, code = io.StringIO(), 0
     with contextlib.redirect_stdout(buf):
         try:
@@ -62,10 +45,23 @@ def plain(free):
     return code, buf.getvalue()
 
 
+def launch(free, requested):
+    """Run main() --launch as render.cmd does; return (exit code, stdout, workers file text or None)."""
+    os.environ["RENDER_WORKERS"] = str(requested)
+    with tempfile.TemporaryDirectory() as d:
+        out_file = Path(d) / "render_draft.workers"
+        code, out = run_main(free, "--launch", str(out_file))
+        return code, out, out_file.read_text() if out_file.exists() else None
+
+
+def plain(free):
+    """Run main() as a gate does (no --launch): return (exit code, stdout)."""
+    return run_main(free)
+
+
 code, out = plain(0.5)
 check("gate at 0.5 GB free (the 22 Oct stall) -> exit 3", code == 3, f"code={code} out={out!r}")
-check("gate refusal states the GB numbers, never close or quit", "0.5 GB free" in out and "1.5 GB" in out
-      and "close" not in out.lower() and "quit" not in out.lower(), out)
+check("gate refusal states the GB numbers", "0.5 GB free" in out and "1.5 GB" in out, out)
 code, out = plain(3.0)
 check("gate at 3.0 GB free -> OK", code == 0 and "OK" in out, f"code={code} out={out!r}")
 

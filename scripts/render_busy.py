@@ -40,9 +40,7 @@ def need_gb(workers):
 
 
 MIN_FREE_GB = float(os.environ.get("RENDER_MIN_FREE_GB", need_gb(1)))
-# a gate's own headless Chromium (~300 MB) still needs the owner's 1 GB headroom left after it: several builders
-# capturing at once took the box to 0.5 GB and a 55 min stall (22 Oct 26); the old check passed them all
-GATE_MIN_FREE_GB = 1.5
+GATE_MIN_FREE_GB = 1.5  # a gate's headless Chromium (~300 MB) must leave the owner's 1 GB headroom
 
 
 def workers_that_fit(requested, free):
@@ -101,6 +99,10 @@ def free_gb():
 def main():
     if os.environ.get("RENDER_BUSY_OK") == "1":
         sys.exit(0)
+    if "--launch" not in sys.argv and "--light" not in sys.argv and free_gb() < GATE_MIN_FREE_GB:
+        # before the 4.6 s PowerShell render query: a thin-RAM refusal costs milliseconds, and it repeats while callers wait
+        print(f"[render_busy] REFUSING — {free_gb():.1f} GB free, a gate's browser needs {GATE_MIN_FREE_GB:g} GB; wait for the other captures to finish")
+        sys.exit(3)
     live = live_renders()
     if live and "--light" in sys.argv:
         free, floor = free_gb(), float(os.environ.get("LIGHT_MIN_FREE_GB", "2"))
@@ -115,9 +117,6 @@ def main():
             print("   ", l[:160])
         sys.exit(3)
     free = free_gb()
-    if "--launch" not in sys.argv and free < GATE_MIN_FREE_GB:
-        print(f"[render_busy] REFUSING — {free:.1f} GB free, a gate's browser needs {GATE_MIN_FREE_GB:g} GB; wait for the other captures to finish")
-        sys.exit(3)
     if "--launch" in sys.argv:
         requested = int(os.environ["RENDER_WORKERS"])  # render.cmd sets the default
         n = workers_that_fit(requested, free)

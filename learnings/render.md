@@ -2,12 +2,6 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
-## 22 Oct 26: a gate's browser now needs 1.5 GB free, not only "no render alive"
-- Three episodes composed at once on the ASUS: each builder's capture passed `render_busy.py` (its plain path checked
-  only for a live render), a capture ran at 0.5 GB free, and the box stalled 55 min at about 1 GB. Now the plain path
-  refuses under `GATE_MIN_FREE_GB` (1.5) with exit 3 and the GB numbers; `--launch` keeps its own worker floor.
-  Test: `python3 scripts/test_render_busy.py` replays the 0.5 GB case.
-
 ## 22 Oct 26: pin 0.8.149 to 0.8.185 before Moore 1999, Mayfield 2021 and Camille 1969
 1. Ritual on demo-pin (hidden task on the ASUS, exit 0): duration 24.000/24.000 s, black 0/0, RMS -21.602708/-21.602708
    dB, workers 2/2, SSIM 0.9936, video-region SSIM 0.9977. Bumped clean. Full-frame SSIM is a little under the last
