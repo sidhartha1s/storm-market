@@ -141,6 +141,23 @@
   <audio id="nx-a5-s10" src="audio/a5-s10.wav" data-start="1064.231" data-duration="17.023" data-volume="1"></audio>
   <audio id="nx-a5-s11" src="audio/a5-s11.wav" data-start="1097.454" data-duration="9.598" data-volume="1"></audio>
 
+  <!-- ============ SOUND (22 Oct 26). Hook: the civil-defence siren, because this story is a warning (DESIGN.md "hook's sound is
+       reasoned"): low under Paul and the narrator, cut dead on the cellar cut at 7.00. Beds: one DeAPI score per act (claim-free,
+       assets/sfx/deapi), volumes matched to the dark-ambient bed at 0.15 by mean loudness (unease/stormhybrid -17.8 dB -> 0.126,
+       urgent -16.3 -> 0.106, tension -11.5 -> 0.064, close -16.6 -> 0.112); out under the CTA and under each insert's own audio
+       (the bed resumes at its own media time after the hole). A3 opens out of the CTA on the NOAA Weather Radio tone (1050 Hz, ffmpeg). -->
+  <audio id="sx-siren-hook" src="media/sfx/soundreality-civil-defense-siren-128262.mp3" data-start="0" data-duration="7.0" data-volume="0.1"></audio>
+  <audio id="sx-bed-intro" src="media/sfx/score-act1-darkambient.mp3" data-start="7.0" data-duration="99.882" data-volume="0.15"></audio>
+  <audio id="sx-bed-a1" src="media/sfx/score-act2-unease.mp3" data-start="107.582" data-duration="170.076" data-volume="0.126"></audio>
+  <audio id="sx-bed-a2-a" src="media/sfx/score-act4-stormhybrid.mp3" data-start="278.358" data-duration="65.59" data-volume="0.126"></audio>
+  <audio id="sx-bed-a2-b" src="media/sfx/score-act4-stormhybrid.mp3" data-start="353.981" data-duration="105.39" data-media-start="75.623" data-volume="0.126"></audio>
+  <audio id="sx-alert-a3" src="media/sfx/nwr-alert-1050hz.wav" data-start="485.413" data-duration="1.2" data-volume="0.35"></audio>
+  <audio id="sx-bed-a3-a" src="media/sfx/score-act3-urgent.mp3" data-start="485.413" data-duration="63.517" data-volume="0.106"></audio>
+  <audio id="sx-bed-a3-b" src="media/sfx/score-act3-urgent.mp3" data-start="561.33" data-duration="99.669" data-media-start="75.917" data-volume="0.106"></audio>
+  <audio id="sx-bed-a4-a" src="media/sfx/score-act5-tension.mp3" data-start="661.699" data-duration="75.198" data-volume="0.064"></audio>
+  <audio id="sx-bed-a4-b" src="media/sfx/score-act5-tension.mp3" data-start="741.163" data-duration="105.983" data-media-start="79.464" data-volume="0.064"></audio>
+  <audio id="sx-bed-a5" src="media/sfx/score-act6-close.mp3" data-start="847.846" data-duration="263.206" data-volume="0.112"></audio>
+
   <section class="clip act" id="act-a1" data-start="107.582" data-duration="170.076" data-track-index="0"></section>
   <section class="clip act" id="act-a2" data-start="278.358" data-duration="182.013" data-track-index="0"></section>
   <section class="clip act" id="act-a3" data-start="485.413" data-duration="175.586" data-track-index="0"></section>
@@ -159,6 +176,8 @@
 
   <!-- Paul A1-S9 (ins-paul-2, Flow, logo over the mark): "At six twenty-six, near Amber ..." -->
   <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2.mp4" data-start="256.063" data-duration="9.05" data-media-start="0.95" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="At six twenty-six, near Amber, the same storm dropped its ninth tornado. This one would stay on the ground for about eighty minutes."></video>
+  <!-- Paul A2-S9 (ins-paul-3, cta-hinge tease, whisper word-exact; speech 1.99-8.44 s): source 1.85-8.512, takes the nx-a2-s9 slot -->
+  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3.mp4" data-start="452.709" data-duration="6.662" data-media-start="1.85" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Minutes after the tornado tore through Bridge Creek, a forecaster in Norman typed two words no warning had ever carried."></video>
   <!-- CTA (config channel.cta, staged media/cta/, md5 bba0b9f3...) -->
   <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v9-oct20.mp4" data-start="460.371" data-duration="24.042" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
   <!-- INSERTS, own audio, graded, captions per mg-quickref "Outside voices" (hosts g-cap-*) -->
