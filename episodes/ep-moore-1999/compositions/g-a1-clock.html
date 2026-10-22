@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1-clock · ep-moore-1999 · A1-S1 opening · host 107.582 to 114.32 (6.738 s), track 2, full frame.
+     Built from compositions/g-clock-i1.html (same dial, same 4:47 pose): the intro's clock comes back out of bo-1 and holds at 4:47,
+     the second hand ticking once a second. Local time = episode s minus 107.582.
+     Cues (audio/a1-s1.words.json, nx-a1-s1 107.782): "Norman" 3.62 + 0.200 = 3.82 -> eyebrow NWS NORMAN;
+     "tornado warning" 4.82 + 0.2 = 5.02 -> warning ring pulses red; 6.04 to 6.738 the dial pushes in hard and the map cuts in. -->
+<template>
+<style>
+  #g-a1-clock-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+  #g-a1-clock-stage { position:absolute; inset:0; }
+  .a1ck-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .a1ck-svg { position:absolute; inset:0; width:1920px; height:1080px; }
+  .a1ck-read { position:absolute; inset:auto; left:0; top:762px; width:1920px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:104px; line-height:116px; letter-spacing:4px; color:#f2f5f8; white-space:nowrap; }
+  .a1ck-eye { position:absolute; inset:auto; left:0; top:900px; width:1920px; text-align:center; font-family:Arial, sans-serif; font-weight:700;
+    font-size:30px; line-height:36px; letter-spacing:8px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a1-clock-root" data-composition-id="g-a1-clock" data-width="1920" data-height="1080" data-duration="6.738">
+  <div id="g-a1-clock-stage">
+    <div class="a1ck-ground" id="g-a1-clock-ground"></div>
+    <svg class="a1ck-svg" id="g-a1-clock-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <circle id="g-a1-clock-halo" cx="960" cy="450" r="284" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="2"/>
+      <circle id="g-a1-clock-warn" cx="960" cy="450" r="284" fill="none" stroke="#e74c3c" stroke-width="6" opacity="0"/>
+      <circle id="g-a1-clock-face" cx="960" cy="450" r="260" fill="rgba(11,16,22,0.88)" stroke="#93a3b2" stroke-width="4"/>
+      <circle id="g-a1-clock-tmin" cx="960" cy="450" r="232" fill="none" stroke="#5a768f" stroke-width="14" stroke-dasharray="3 21.294" stroke-dashoffset="1.5" transform="rotate(-90 960 450)"/>
+      <circle id="g-a1-clock-thr" cx="960" cy="450" r="228" fill="none" stroke="#dfe7ee" stroke-width="26" stroke-dasharray="6 113.38" stroke-dashoffset="3" transform="rotate(-90 960 450)"/>
+      <line id="g-a1-clock-hh" x1="960" y1="450" x2="960" y2="315" stroke="#f2f5f8" stroke-width="15" stroke-linecap="round"/>
+      <line id="g-a1-clock-mh" x1="960" y1="450" x2="960" y2="245" stroke="#f2f5f8" stroke-width="9" stroke-linecap="round"/>
+      <line id="g-a1-clock-sh" x1="960" y1="496" x2="960" y2="232" stroke="#e74c3c" stroke-width="4" stroke-linecap="round"/>
+      <circle id="g-a1-clock-hub" cx="960" cy="450" r="13" fill="#e74c3c"/>
+      <circle id="g-a1-clock-hubin" cx="960" cy="450" r="5" fill="#04070c"/>
+    </svg>
+    <div class="a1ck-read" id="g-a1-clock-read">4:47 PM</div>
+    <div class="a1ck-eye" id="g-a1-clock-eye">NWS NORMAN &middot; FIRST TORNADO WARNING</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a1-clock-";
+  const PIV = "960 450";
+  const DUR = 6.738;
+  const tl = gsap.timeline({ paused: true });
+  tl.set(P + "eye", { autoAlpha: 0 }, 0);
+  tl.set(P + "hh", { rotation: 143.5, svgOrigin: PIV }, 0);   /* 4:47: hour (4 + 47/60) * 30 */
+  tl.set(P + "mh", { rotation: 282, svgOrigin: PIV }, 0);     /* 47 * 6 */
+  tl.set(P + "sh", { rotation: 18, svgOrigin: PIV }, 0);      /* three ticks past, carried on from g-clock-i1 and the blackout */
+  tl.set(P + "warn", { svgOrigin: PIV, scale: 1 }, 0);
+  tl.set(P + "svg", { transformOrigin: "960px 450px", scale: 1.05 }, 0);
+  /* second hand: one 6 deg tick a second */
+  for (let i = 0; i < 6; i++) tl.to(P + "sh", { rotation: 24 + i * 6, duration: 0.12, ease: "back.out(2.5)" }, 0.5 + i);
+  /* slow push on the dial, carried on from the intro clock (it ended at 1.05) */
+  tl.to(P + "svg", { scale: 1.12, duration: 6.04, ease: "none" }, 0);
+  tl.to(P + "read", { y: -6, duration: 3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0);
+  /* "Norman" @3.82 */
+  tl.fromTo(P + "eye", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 3.82);
+  /* "tornado warning" @5.02: red ring pulses out of the dial */
+  tl.fromTo(P + "warn", { opacity: 0.95, scale: 1 }, { opacity: 0, scale: 1.35, duration: 0.9, ease: "power2.out" }, 5.02);
+  tl.to(P + "face", { attr: { stroke: "#e74c3c" }, duration: 0.3, ease: "power2.out" }, 5.02);
+  /* exit: hard push into the dial, cut to the county map */
+  tl.to(P + "svg", { scale: 1.9, duration: 0.7, ease: "power3.in" }, 6.04);
+  tl.to([P + "read", P + "eye"], { autoAlpha: 0, y: 30, duration: 0.4, ease: "power3.in" }, 6.04);
+  tl.to(P + "stage", { autoAlpha: 0, duration: 0.25, ease: "power2.in" }, 6.49);
+  tl.set({}, {}, DUR);
+  window.__timelines["g-a1-clock"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
