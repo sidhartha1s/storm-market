@@ -62,7 +62,7 @@ window.__timelines = window.__timelines || {};
   tl.to(".am-rule", { scaleX: 1, duration: 0.6, ease: "power3.out", stagger: { each: 0.15 } }, 0.9);
   /* the empty slots wait: dashed outline pulses (the left one never fills) */
   tl.fromTo(["#am-sl", "#am-sr"], { opacity: 0.35 }, { opacity: 1, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1.2);
-  tl.fromTo("#am-sl", { opacity: 0.35 }, { opacity: 1, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 3 }, 8.4);
+  tl.fromTo("#am-sl", { opacity: 0.35 }, { opacity: 1, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, 8.4);
   /* stamp on "Friday" @4.45 */
   tl.fromTo("#am-stamp", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 4.45);
   /* source on "Associated" @6.08 */
