@@ -1,0 +1,253 @@
+<template>
+<!--
+  g-cellar-t1 · ep-moore-1999 · host 24.171 to 30.772 (6.601 s), track 2, full frame. Brief: briefs/intro.md section B.
+  Claim: the F5 pulled the door of that Grady County cellar open; all 35 inside lived (NWS Service Assessment 1999 p22;
+  NOAA Report June 1999 p2). The 35 figure stays off here (said already in g-cellar-h1).
+  SCHEMATIC, NOT TO SCALE: the cellar door is an icon set in the county ground, never a specific house; no town or road.
+
+  GEOMETRY: Grady County (FIPS 40051) and its 7 neighbours from US Census cb_2018_us_county_500k, projected once by a
+  one-off script (not committed) to plane miles centred on Grady's centroid (97.8841 W, 35.0169 N; x east, y north,
+  equirectangular, x scaled by cos 35.02). The same pinhole camera below projects the map and the door, so both sit on
+  one ground plane seen 3/4 from above: pitch 38 deg, distance 58, focal 1200 px, centre (880, 545).
+  Door (schematic units on that plane): opening 12 x 13 at (0, -1), concrete collar 1.4 wide and 1.5 high, two steel
+  leaves hinged on the outer long sides, 6 steps going down north, amber glow from below.
+  Same base as g-cellar-h1 (copied, ids renamed). Here the two leaves are wrenched open about their hinges (they never
+  come off), debris and wind streaks, a clock icon beside the cellar, then a push into the stairwell.
+-->
+<style>
+  #g-cellar-t1-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .gct-cam { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gct-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .gct-corner { position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse 520px 440px at 1790px 940px, #04070c 0%, #04070c 52%, rgba(4,7,12,0) 100%); }
+  .gct-vig { position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 50%, rgba(3,5,7,0) 58%, rgba(3,5,7,0.6) 100%); }
+  .gct-lab { position:absolute; left:1196px; top:330px; font-family:Arial, sans-serif; font-weight:700; font-size:30px;
+    letter-spacing:5px; color:#e8c56a; line-height:1; white-space:nowrap;
+    text-shadow:0 0 6px #04070c, 0 0 14px #04070c; }
+  .gct-src { position:absolute; right:96px; top:84px; font-family:Arial, sans-serif; font-weight:700; font-size:20px;
+    letter-spacing:2px; color:#c8d3e0; line-height:1; white-space:nowrap; text-shadow:0 0 6px #04070c, 0 0 12px #04070c; }
+  #gct-debris rect, #gct-clock, #gct-streaks line { opacity:0; visibility:hidden; }
+  .gct-dark { position:absolute; inset:0; background:#020305; opacity:0; visibility:hidden; pointer-events:none; }
+</style>
+<div id="g-cellar-t1-root" data-composition-id="g-cellar-t1" data-width="1920" data-height="1080" data-duration="6.601">
+  <div class="gct-cam" id="gct-cam"><div class="gct-cam" id="gct-shake">
+    <svg class="gct-svg" viewBox="0 0 1920 1080">
+      <defs>
+        <radialGradient id="gct-glowg" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#f5d98b" stop-opacity="0.85"/>
+          <stop offset="45%" stop-color="#d8a13a" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#d8a13a" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="gct-leafg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#5d6a76"/><stop offset="100%" stop-color="#3a4550"/>
+        </linearGradient>
+        <linearGradient id="gct-wallg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2a3644"/><stop offset="100%" stop-color="#0b1016"/>
+        </linearGradient>
+        <clipPath id="gct-holeclip"><polygon id="gct-holecp" points="0,0 0,0 0,0"/></clipPath>
+        <filter id="gct-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+      </defs>
+      <g id="gct-map">
+        <path id="gct-c-Canadian" fill="#0d151d" stroke="#2a3644" stroke-width="2"/>
+        <path id="gct-c-Caddo" fill="#0d151d" stroke="#2a3644" stroke-width="2"/>
+        <path id="gct-c-Comanche" fill="#0d151d" stroke="#2a3644" stroke-width="2"/>
+        <path id="gct-c-Stephens" fill="#0d151d" stroke="#2a3644" stroke-width="2"/>
+        <path id="gct-c-Garvin" fill="#0d151d" stroke="#2a3644" stroke-width="2"/>
+        <path id="gct-c-McClain" fill="#0d151d" stroke="#2a3644" stroke-width="2"/>
+        <path id="gct-c-Cleveland" fill="#0d151d" stroke="#2a3644" stroke-width="2"/>
+        <path id="gct-c-Grady" fill="#121c26" stroke="#4a5560" stroke-width="3"/>
+        <path id="gct-gfill" fill="rgba(216,161,58,0.10)" stroke="none"/>
+        <path id="gct-glit" fill="none" stroke="#e8c56a" stroke-width="4" stroke-linejoin="round"/>
+        <line id="gct-lead" stroke="#e8c56a" stroke-width="2"/>
+      </g>
+      <g id="gct-door">
+        <ellipse id="gct-shadow" fill="#020305" opacity="0.7" filter="url(#gct-blur)"/>
+        <polygon id="gct-south" fill="#1c2733" stroke="#4a5560" stroke-width="1.5"/>
+        <path id="gct-ring" fill="#2f3c49" fill-rule="evenodd" stroke="#5a6774" stroke-width="1.5"/>
+        <g clip-path="url(#gct-holeclip)">
+          <polygon id="gct-floor" fill="#05080b"/>
+          <polygon id="gct-wallw" fill="url(#gct-wallg)"/>
+          <polygon id="gct-walle" fill="url(#gct-wallg)"/>
+          <polygon id="gct-walln" fill="#141d27"/>
+          <ellipse id="gct-glow" fill="url(#gct-glowg)"/>
+          <g id="gct-steps"></g>
+        </g>
+        <g id="gct-leafL"><polygon id="gct-lLface" stroke="#93a3b2" stroke-width="1.5" stroke-linejoin="round"/><polygon id="gct-lLedge" fill="#15202b"/><path id="gct-lLrib" fill="none" stroke="#2a3644" stroke-width="3"/></g>
+        <g id="gct-leafR"><polygon id="gct-lRface" stroke="#93a3b2" stroke-width="1.5" stroke-linejoin="round"/><polygon id="gct-lRedge" fill="#15202b"/><path id="gct-lRrib" fill="none" stroke="#2a3644" stroke-width="3"/></g>
+        <line id="gct-seam" stroke="#f5d98b" stroke-width="3" stroke-linecap="round"/>
+        <line id="gct-seamglow" stroke="#d8a13a" stroke-width="14" stroke-linecap="round" opacity="0.35" filter="url(#gct-blur)"/>
+      </g>
+      <g id="gct-debris"><rect width="22" height="7" rx="1.5" fill="#93a3b2"/><rect width="14" height="5" rx="1.5" fill="#5a6774"/><rect width="30" height="8" rx="1.5" fill="#c8b98a"/><rect width="12" height="12" rx="1.5" fill="#4a5560"/><rect width="26" height="6" rx="1.5" fill="#93a3b2"/><rect width="18" height="6" rx="1.5" fill="#6b6257"/><rect width="10" height="10" rx="1.5" fill="#5a6774"/><rect width="34" height="7" rx="1.5" fill="#c8b98a"/><rect width="16" height="5" rx="1.5" fill="#93a3b2"/><rect width="20" height="9" rx="1.5" fill="#4a5560"/><rect width="12" height="6" rx="1.5" fill="#c8b98a"/><rect width="28" height="6" rx="1.5" fill="#5a6774"/><rect width="14" height="14" rx="1.5" fill="#6b6257"/><rect width="24" height="5" rx="1.5" fill="#93a3b2"/><rect width="18" height="8" rx="1.5" fill="#4a5560"/><rect width="10" height="6" rx="1.5" fill="#c8b98a"/></g>
+      <g id="gct-clockpos"><g id="gct-clock">
+        <circle r="40" fill="#0b1016" stroke="#e8c56a" stroke-width="5"/>
+        <path id="gct-ticks" fill="none" stroke="#e8c56a" stroke-width="3"/>
+        <line id="gct-hh" x1="0" y1="0" x2="0" y2="-20" stroke="#f2f5f8" stroke-width="5" stroke-linecap="round"/>
+        <line id="gct-mh" x1="0" y1="0" x2="0" y2="-30" stroke="#f2f5f8" stroke-width="3" stroke-linecap="round"/>
+        <circle r="4" fill="#e8c56a"/>
+      </g></g>
+      <g id="gct-streaks"><line x1="0" y1="250" x2="260" y2="236" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-opacity="0.35"/><line x1="0" y1="330" x2="180" y2="316" stroke="#dfe7ee" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.28"/><line x1="0" y1="420" x2="320" y2="406" stroke="#dfe7ee" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.32"/><line x1="0" y1="505" x2="220" y2="491" stroke="#dfe7ee" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.25"/><line x1="0" y1="590" x2="300" y2="576" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-opacity="0.3"/><line x1="0" y1="690" x2="200" y2="676" stroke="#dfe7ee" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.26"/><line x1="0" y1="780" x2="340" y2="766" stroke="#dfe7ee" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.3"/><line x1="0" y1="870" x2="240" y2="856" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-opacity="0.24"/><line x1="0" y1="380" x2="150" y2="366" stroke="#dfe7ee" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.22"/><line x1="0" y1="640" x2="280" y2="626" stroke="#dfe7ee" stroke-width="2" stroke-linecap="round" stroke-opacity="0.28"/></g>
+    </svg>
+  </div></div>
+  <div class="gct-vig"></div>
+  <div class="gct-dark" id="gct-dark"></div>
+  <div class="gct-corner"></div>
+  <div class="gct-lab" id="gct-lab">GRADY COUNTY</div>
+  <div class="gct-src" id="gct-src">Source: NWS Service Assessment · NOAA report</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const $ = id => document.getElementById(id);
+  const GEO = {"Cleveland":[[12,22.1],[12.1,24.9],[42,24.9],[42,-6.1],[41.1,-5.9],[39,-6.1],[38.9,-5.3],[37.7,-5],[37,-5.9],[36.9,-5.2],[36.5,-4.8],[35.9,-4.7],[35.7,-4.9],[35.3,-4.9],[34.6,-3.7],[34.1,-3.9],[33.1,-3.6],[32.8,-4.3],[32.5,-4.4],[31.6,-4.3],[30.7,-3.7],[30.6,-2.9],[30.4,-2.4],[30.7,-1.6],[30.5,-1.3],[30.5,-0.8],[29.8,1.2],[30.3,2.7],[30,3.3],[30,4.1],[29.5,4.7],[28.1,4.5],[27.3,4.8],[27.4,5.3],[27.1,6.3],[27.4,7.5],[27,8.4],[25.6,8.8],[25.2,9.1],[25,9.9],[24.4,10.1],[24.1,10.6],[20.1,13.5],[19.4,13.6],[18.7,14.3],[18.2,15],[18.6,15.4],[18,15.9],[18.4,16],[18.1,16.2],[18.7,16.9],[18.5,18.8],[18.3,19],[17.1,19.7],[15.1,19.9],[13.1,21.9],[12,22.1]],"Canadian":[[-24.3,48.9],[11.9,49],[12,22],[11.2,21.9],[10.1,21.3],[9.4,21.5],[8.3,21.2],[6.5,22.7],[6.3,22.7],[6,22.1],[5.4,22.1],[5.3,21.8],[5,22.3],[4.4,22.4],[4.1,22.2],[4.1,21.9],[2.4,21.9],[1.5,22.6],[1.5,23.4],[1.2,23.8],[0.7,23.8],[0.6,23.4],[-0.1,23.4],[0,22.9],[-1,22.6],[-1.1,23.4],[-1.7,23.2],[-2.1,23.2],[-2.6,24],[-2.7,24.6],[-3.4,24.9],[-3.6,24.7],[-3.5,23.4],[-3.9,22.8],[-4.3,22.7],[-5.1,23.5],[-5.5,23.4],[-6.7,24],[-6.9,23.7],[-7.2,23.7],[-7.1,24.3],[-7.7,25],[-23.9,24.9],[-23.9,36.2],[-24,36.9],[-24.3,36.9],[-24.3,48.9]],"Comanche":[[-53.4,-35.2],[-53.4,-11.2],[-11.6,-11.2],[-11.6,-23.2],[-14.6,-23.2],[-14.6,-35.2],[-20.4,-35.2],[-20.4,-38.2],[-23.3,-38.2],[-23.3,-39.2],[-35.2,-39.2],[-35.2,-41.2],[-41.1,-41.2],[-41.1,-42.2],[-44.1,-42.2],[-44.1,-35.2],[-53.4,-35.2]],"Stephens":[[-14.6,-35.2],[-14.6,-23.2],[18.2,-23.2],[18.2,-50.3],[-14.4,-50.2],[-14.4,-35.2],[-14.6,-35.2]],"Garvin":[[12.2,-23.2],[12.2,-11.2],[53.9,-11.2],[53.9,-26.3],[42,-26.2],[42,-27.2],[38.8,-27.2],[39,-27.7],[38.9,-27.8],[38.9,-28.2],[39.3,-28.4],[39.3,-29],[40.2,-29.1],[40.6,-29.6],[40.2,-29.8],[40.4,-30.3],[40.8,-30.6],[40.2,-30.6],[40.1,-30.8],[40.4,-31.3],[41.2,-31.3],[40.8,-31.6],[41.2,-32.1],[40.8,-32.4],[41,-33.3],[40.7,-33.5],[41,-33.6],[41.2,-34.2],[41.9,-34.2],[41.4,-34.5],[41.9,-35],[41.9,-35.2],[18.2,-35.2],[18.2,-23.2],[12.2,-23.2]],"Caddo":[[-41.9,12.9],[-41.9,36.9],[-24,36.9],[-23.9,24.9],[-12,24.9],[-11.9,12.9],[-11.7,12.9],[-11.8,-11.2],[-41.7,-11.2],[-41.8,5.5],[-41.6,5.8],[-41.6,12.9],[-41.9,12.9]],"Grady":[[-12,24.9],[-7.7,25],[-7.1,24.3],[-7.2,23.7],[-6.9,23.7],[-6.7,24],[-5.5,23.4],[-5.1,23.5],[-4.3,22.7],[-4,22.7],[-3.7,23.2],[-3.5,23.9],[-3.6,24.7],[-3.2,24.9],[-2.7,24.6],[-2.6,24],[-2.1,23.2],[-1.7,23.2],[-1.1,23.4],[-1,22.6],[-0.2,22.8],[0,22.9],[-0.1,23.4],[0.6,23.4],[0.7,23.8],[1.1,23.9],[1.5,23.4],[1.7,22.4],[2.4,21.9],[4.1,21.9],[4.1,22.2],[4.4,22.4],[5,22.3],[5.3,21.8],[5.4,22.1],[6,22.1],[6.3,22.7],[6.5,22.7],[8.3,21.2],[9.4,21.5],[10.1,21.3],[11.2,21.9],[12,22],[12.2,-23.2],[-11.6,-23.2],[-11.6,-12.2],[-11.8,-9.7],[-11.7,12.9],[-11.9,12.9],[-12,24.9]],"McClain":[[12,22.1],[13.1,21.9],[15.1,19.9],[17.1,19.7],[18.3,19],[18.5,18.8],[18.7,16.9],[18.1,16.2],[18.4,16],[18,15.9],[18.6,15.4],[18.2,15],[18.7,14.3],[19.4,13.6],[20.1,13.5],[24.1,10.6],[24.4,10.1],[25,9.9],[25.2,9.1],[25.6,8.8],[27,8.4],[27.4,7.5],[27.1,6.3],[27.4,5.3],[27.3,4.8],[28.1,4.5],[29.5,4.7],[30.1,3.9],[30,3.3],[30.3,2.7],[29.8,1.2],[30.5,-0.8],[30.5,-1.3],[30.7,-1.6],[30.4,-2.2],[30.4,-2.6],[30.6,-2.9],[30.7,-3.7],[31.2,-4],[31.6,-4.3],[32.5,-4.4],[32.8,-4.3],[33.1,-3.6],[34.1,-3.9],[34.6,-3.7],[35.3,-4.9],[35.7,-4.9],[35.9,-4.7],[36.5,-4.8],[36.9,-5.2],[37,-5.9],[37.7,-5],[38.9,-5.3],[39,-6.1],[41.3,-5.9],[42.4,-6.4],[42.6,-6.3],[42.5,-5.8],[42.6,-5.7],[43.6,-5.7],[44.4,-6],[45.2,-5.9],[46,-6.7],[47.1,-6.6],[47.6,-7],[48.6,-7.2],[49.2,-7.6],[51,-6.6],[51.3,-6.3],[51.5,-5.7],[51.9,-5.7],[52.5,-4.5],[53.1,-4],[54,-3.6],[54,-11.2],[12.1,-11.2],[12,22.1]]};
+  /* camera: pinhole, pitch 38 deg down, looking north; one projection for map and door */
+  const PITCH = 38 * Math.PI / 180, DIST = 58, F = 1200, CX = 880, CY = 545;
+  const cp = Math.cos(PITCH), sp = Math.sin(PITCH), CAM = [0, -DIST * cp, DIST * sp];
+  const P = (x, y, z = 0) => {
+    const v0 = x - CAM[0], v1 = y - CAM[1], v2 = z - CAM[2];
+    const d = v1 * cp - v2 * sp, u = v1 * sp + v2 * cp;
+    return [CX + F * v0 / d, CY - F * u / d];
+  };
+  const pts = a => a.map(q => P(...q).map(n => n.toFixed(1)).join(',')).join(' ');
+  const dpath = a => 'M' + a.map(q => P(q[0], q[1]).map(n => n.toFixed(1)).join(',')).join('L') + 'Z';
+  for (const k of Object.keys(GEO)) $('gct-c-' + k).setAttribute('d', dpath(GEO[k]));
+  $('gct-glit').setAttribute('d', dpath(GEO.Grady));
+  $('gct-gfill').setAttribute('d', dpath(GEO.Grady));
+
+  /* door */
+  const W = 12, L = 13, DY = -1, C = 1.4, H = 1.5, T = 0.35, NS = 6, SH = 1.25;
+  const y0 = DY - L / 2, y1 = DY + L / 2, hw = W / 2, ow = hw + C;
+  const hole = [[-hw, y0, H], [hw, y0, H], [hw, y1, H], [-hw, y1, H]];
+  $('gct-holecp').setAttribute('points', pts(hole));
+  $('gct-south').setAttribute('points', pts([[-ow, y0 - C, 0], [ow, y0 - C, 0], [ow, y0 - C, H], [-ow, y0 - C, H]]));
+  const outer = [[-ow, y0 - C, H], [ow, y0 - C, H], [ow, y1 + C, H], [-ow, y1 + C, H]];
+  const ring = a => 'M' + a.map(q => P(...q).map(n => n.toFixed(1)).join(',')).join('L') + 'Z';
+  $('gct-ring').setAttribute('d', ring(outer) + ring(hole));
+  const zb = H - (NS + 1) * SH;
+  $('gct-floor').setAttribute('points', pts([[-hw, y0, zb], [hw, y0, zb], [hw, y1, zb], [-hw, y1, zb]]));
+  $('gct-wallw').setAttribute('points', pts([[-hw, y0, H], [-hw, y1, H], [-hw, y1, zb], [-hw, y0, zb]]));
+  $('gct-walle').setAttribute('points', pts([[hw, y0, H], [hw, y1, H], [hw, y1, zb], [hw, y0, zb]]));
+  $('gct-walln').setAttribute('points', pts([[-hw, y1, H], [hw, y1, H], [hw, y1, zb], [-hw, y1, zb]]));
+  const gc = P(0, y1 - 1.6, zb + 0.5), ge = P(hw * 0.9, y1 - 1.6, zb + 0.5);
+  const glow = $('gct-glow'); glow.setAttribute('cx', gc[0]); glow.setAttribute('cy', gc[1]);
+  glow.setAttribute('rx', (ge[0] - gc[0]) * 1.2); glow.setAttribute('ry', (ge[0] - gc[0]) * 0.55);
+  const tread = L / (NS + 1), sw = hw - 0.5, NSV = 'http://www.w3.org/2000/svg';
+  for (let k = NS - 1; k >= 0; k--) {             /* deepest first: nearer, higher steps paint over */
+    const ya = y0 + k * tread, yb = ya + tread, zt = H - (k + 1) * SH, zr = H - k * SH;
+    const tr = document.createElementNS(NSV, 'polygon');
+    tr.setAttribute('points', pts([[-sw, ya, zt], [sw, ya, zt], [sw, yb, zt], [-sw, yb, zt]]));
+    tr.setAttribute('fill', k % 2 ? '#2a3644' : '#33414f'); $('gct-steps').appendChild(tr);
+    const rs = document.createElementNS(NSV, 'polygon');
+    rs.setAttribute('points', pts([[-sw, ya, zr], [sw, ya, zr], [sw, ya, zt], [-sw, ya, zt]]));
+    rs.setAttribute('fill', '#121a23'); $('gct-steps').appendChild(rs);
+  }
+  const s0 = P(0, y0 + 0.2, H + 0.02), s1 = P(0, y1 - 0.2, H + 0.02);
+  for (const id of ['gct-seam', 'gct-seamglow']) {
+    const e = $(id); e.setAttribute('x1', s0[0]); e.setAttribute('y1', s0[1]); e.setAttribute('x2', s1[0]); e.setAttribute('y2', s1[1]);
+  }
+  const sc = P(0, DY, 0), sx = P(ow + 1.2, DY, 0), sy = P(0, y1 + C + 0.8, 0), sz = P(0, y0 - C - 0.8, 0);
+  const sh = $('gct-shadow'); sh.setAttribute('cx', sc[0]); sh.setAttribute('cy', (sy[1] + sz[1]) / 2);
+  sh.setAttribute('rx', sx[0] - sc[0]); sh.setAttribute('ry', (sz[1] - sy[1]) / 2);
+  /* a leaf at angle th (deg, 0 closed, 90 upright) hinged on its outer long side; s = -1 west leaf, +1 east leaf */
+  const camv = (x, y, z) => [CAM[0] - x, CAM[1] - y, CAM[2] - z];
+  function leaf(s, th, ids) {
+    const a = th * Math.PI / 180, c = Math.cos(a), n = Math.sin(a);
+    const at = (r, y, t) => [s * (hw - r * c) + s * t * n, y, H + r * n + t * c];   /* t: offset along the leaf normal */
+    const ya = y0 - 0.3, yb = y1 + 0.3;
+    const top = [at(0, ya, T), at(hw, ya, T), at(hw, yb, T), at(0, yb, T)];
+    const normal = [s * n, 0, c];
+    const v = camv(...at(hw / 2, DY, T)); const up = normal[0] * v[0] + normal[2] * v[2] > 0;
+    const face = up ? top : [at(0, ya, 0), at(hw, ya, 0), at(hw, yb, 0), at(0, yb, 0)];
+    $(ids[0]).setAttribute('points', pts(face));
+    $(ids[0]).setAttribute('fill', up ? 'url(#gct-leafg)' : '#1f2a35');
+    $(ids[1]).setAttribute('points', pts([at(hw, ya, 0), at(hw, yb, 0), at(hw, yb, T), at(hw, ya, T)]));
+    const tt = up ? T + 0.02 : -0.02;
+    let d = '';
+    for (const f of [0.22, 0.5, 0.78]) {
+      const y = ya + (yb - ya) * f, p0 = P(...at(0.5, y, tt)), p1 = P(...at(hw - 0.5, y, tt));
+      d += `M${p0[0].toFixed(1)},${p0[1].toFixed(1)}L${p1[0].toFixed(1)},${p1[1].toFixed(1)}`;
+    }
+    $(ids[2]).setAttribute('d', d);
+  }
+  leaf(-1, 0, ['gct-lLface', 'gct-lLedge', 'gct-lLrib']);
+  leaf(1, 0, ['gct-lRface', 'gct-lRedge', 'gct-lRrib']);
+  /* leader from the label to Grady's east edge */
+  const gp = GEO.Grady.map(q => P(q[0], q[1])).filter(q => q[1] > 330 && q[1] < 420);
+  const east = gp.reduce((m, q) => q[0] > m[0] ? q : m, [0, 0]);
+  const ld = $('gct-lead'); ld.setAttribute('x1', 1184); ld.setAttribute('y1', 345); ld.setAttribute('x2', east[0] + 6); ld.setAttribute('y2', east[1]);
+  const glen = Math.ceil($('gct-glit').getTotalLength()) + 1;
+  const llen = Math.ceil(Math.hypot(1184 - east[0] - 6, 345 - east[1])) + 1;
+
+  /* clock beside the cellar, east of the collar on the ground; ticks drawn once */
+  const ck = P(ow + 4.2, DY + 1.5, 0);
+  $('gct-clockpos').setAttribute('transform', `translate(${ck[0].toFixed(1)},${ck[1].toFixed(1)})`);
+  let td = ''; for (let i = 0; i < 12; i++) { const a = i * Math.PI / 6, c = Math.cos(a), n = Math.sin(a);
+    td += `M${(c * 30).toFixed(1)},${(n * 30).toFixed(1)}L${(c * 36).toFixed(1)},${(n * 36).toFixed(1)}`; }
+  $('gct-ticks').setAttribute('d', td);
+  const HOLE = P(0, DY + 1.5, H - 3 * SH);       /* push target: the stairwell, below the rim */
+  const RIM = P(0, DY, H);
+
+  const tl = gsap.timeline({ paused: true });
+  /* leaf angles (deg) live on a proxy; the timeline-level onUpdate redraws both leaves after every seek */
+  const A = { l: 0, r: 0 };
+  const draw = () => { leaf(-1, A.l, ['gct-lLface', 'gct-lLedge', 'gct-lLrib']); leaf(1, A.r, ['gct-lRface', 'gct-lRedge', 'gct-lRrib']); };
+  tl.eventCallback('onUpdate', draw);
+  tl.set('#gct-cam', { transformOrigin: HOLE[0].toFixed(1) + 'px ' + HOLE[1].toFixed(1) + 'px', scale: 1 }, 0);
+  tl.set('#gct-shake', { x: 0, y: 0 }, 0);
+  tl.set(['#gct-glit', '#gct-gfill', '#gct-lab', '#gct-src', '#gct-lead'], { autoAlpha: 1 }, 0);
+  tl.set('#gct-debris rect', { autoAlpha: 0, x: RIM[0] - 10, y: RIM[1] - 4, rotation: 0, transformOrigin: '50% 50%' }, 0);
+  tl.set('#gct-streaks line', { autoAlpha: 0, x: -420 }, 0);
+  tl.set('#gct-clock', { autoAlpha: 0, scale: 0.4, transformOrigin: '50% 50%' }, 0);
+  tl.set(['#gct-mh', '#gct-hh'], { rotation: 0, svgOrigin: '0 0' }, 0);
+  tl.set('#gct-dark', { autoAlpha: 0 }, 0);
+
+  /* hold drift for the whole window */
+  tl.to('#gct-cam', { scale: 1.04, duration: 6.0, ease: 'none' }, 0);
+  /* wind first: streaks race across from the start, the closed leaves rattle */
+  [0.15, 0.32, 0.5, 0.26, 0.6, 0.42, 0.08, 0.55, 0.36, 0.2].forEach((d, i) => {
+    const sel = `#gct-streaks line:nth-child(${i + 1})`;
+    tl.to(sel, { autoAlpha: 1, duration: 0.1, ease: 'none' }, d);
+    const sd = 0.62 + (i % 4) * 0.09;   /* finite repeats that end before the push at 6.0 */
+    tl.fromTo(sel, { x: -420 }, { x: 2200, duration: sd, ease: 'none', repeat: Math.floor((6.0 - d) / sd) - 1 }, d);
+  });
+  tl.to(A, { l: 3, r: 2.5, duration: 0.09, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 0.38);
+  tl.to('#gct-seamglow', { opacity: 0.9, duration: 0.18, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 0.38);
+
+  /* "pulled" @0.76 (t1-s1 3.38): both leaves wrenched open past upright, then held; they stay on their hinges */
+  tl.to(A, { l: 146, duration: 0.4, ease: 'power4.out' }, 0.76);
+  tl.to(A, { r: 140, duration: 0.42, ease: 'power4.out' }, 0.82);
+  tl.to(A, { l: 124, r: 120, duration: 0.55, ease: 'back.out(2.2)' }, 1.24);
+  tl.to(A, { l: 129, r: 114, duration: 0.34, ease: 'sine.inOut', yoyo: true, repeat: 11 }, 1.8);
+  tl.to(['#gct-seam', '#gct-seamglow'], { autoAlpha: 0, duration: 0.2, ease: 'power2.out' }, 0.8);
+  tl.fromTo('#gct-glow', { opacity: 0.55 }, { opacity: 1, duration: 0.6, ease: 'power2.out' }, 0.85);
+  tl.to('#gct-shake', { x: 11, y: -6, duration: 0.05, ease: 'none', yoyo: true, repeat: 7 }, 0.76);
+  /* debris burst out of the opening, carried up and east by the wind */
+  const rnd = (i, k) => { const v = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453; return v - Math.floor(v); };
+  document.querySelectorAll('#gct-debris rect').forEach((el, i) => {
+    const at = 0.8 + i * 0.035, dur = 1.1 + rnd(i, 1) * 0.7;
+    const dx = -260 + rnd(i, 2) * 980, dy = -(240 + rnd(i, 3) * 480);
+    tl.to(el, { autoAlpha: 1, duration: 0.06, ease: 'none' }, at);
+    tl.to(el, { x: RIM[0] - 10 + dx, y: RIM[1] - 4 + dy, rotation: (rnd(i, 4) - 0.5) * 900, duration: dur, ease: 'power2.out' }, at);
+    tl.to(el, { autoAlpha: 0, duration: 0.35, ease: 'power1.in' }, at + dur - 0.35);
+  });
+
+  /* "clock" @5.88 (t1-s1 8.50): a small clock fades in beside the cellar, hands running */
+  tl.to('#gct-clock', { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'back.out(2)' }, 5.88);
+  tl.to('#gct-mh', { rotation: 540, svgOrigin: '0 0', duration: 0.72, ease: 'none' }, 5.88);
+  tl.to('#gct-hh', { rotation: 45, svgOrigin: '0 0', duration: 0.72, ease: 'none' }, 5.88);
+
+  /* exit: HUD text leaves, then the camera pushes into the dark stairwell (log zoom 1.04 to 9) to the cut at 6.601 */
+  tl.to(['#gct-lab', '#gct-lead'], { autoAlpha: 0, y: -16, duration: 0.3, ease: 'power3.in' }, 5.6);
+  tl.to('#gct-src', { autoAlpha: 0, y: -30, duration: 0.3, ease: 'power3.in' }, 5.65);
+  const z = { t: 0 };
+  tl.fromTo(z, { t: 0 }, { t: 1, duration: 0.601, ease: 'power2.in',
+    onUpdate: () => gsap.set('#gct-cam', { scale: 1.04 * Math.pow(9 / 1.04, z.t) }) }, 6.0);
+  tl.to('#gct-glow', { opacity: 0.25, duration: 0.5, ease: 'power1.in' }, 6.05);
+  tl.to('#gct-dark', { autoAlpha: 1, duration: 0.25, ease: 'power1.in' }, 6.35);
+  draw();
+
+  window.__timelines['g-cellar-t1'] = tl;
+})();
+</script>
+</template>
