@@ -90,7 +90,7 @@ window.__timelines = window.__timelines || {};
   /* camera: pure function of comp-local time, so a seek in either order lands the same frame */
   function scaleAt(t) {
     if (t <= C.zoomA) return S0 * Math.pow(1.08, t / C.zoomA);                       /* slow push on the wide view */
-    if (t <= C.zoomB) {                                                              /* log zoom 0.081 -> 0.75, power2.inOut */
+    if (t <= C.zoomB) {                                                              /* log zoom 0.081 -> 1.75, power2.inOut */
       const p = (t - C.zoomA) / (C.zoomB - C.zoomA);
       const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
       return SA * Math.pow(SE / SA, e);
