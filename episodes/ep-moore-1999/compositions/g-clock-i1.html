@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-clock-i1 (E) · ep-moore-1999 · host 104.605 to 106.882 (2.277 s), track 2, full frame, room-tone moment: nothing but the clock.
+     Retuned from ep-enderlin-2025 g-clock (hands as lines on a svgOrigin pivot, red second hand), enlarged to a full-frame dial.
+     Local time = episode s minus 104.605. Cue (audio/i1-s3.words.json): "447" @19.00 = abs 105.205 = local 0.60: hands land on 4:47.
+     Start pose 3:00 (hour 90 deg, minute 0). 4:47 = minute 47*6 = 282 deg; hour (4 + 47/60)*30 = 143.5 deg.
+     Minute hand travels 1 h 47 min = 642 deg, hour hand 90 -> 143.5. A later g-clock-a1 (A1-S1) reuses this clock. -->
+<template>
+<style>
+  #g-clock-i1-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+  #g-clock-i1-stage { position:absolute; inset:0; }
+  .ck1-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ck1-svg { position:absolute; inset:0; width:1920px; height:1080px; }
+  .ck1-read { position:absolute; inset:auto; left:0; top:762px; width:1920px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:104px; line-height:116px; letter-spacing:4px; color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-clock-i1-root" data-composition-id="g-clock-i1" data-width="1920" data-height="1080" data-duration="2.277">
+  <div id="g-clock-i1-stage">
+    <div class="ck1-ground" id="g-clock-i1-ground"></div>
+    <svg class="ck1-svg" id="g-clock-i1-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <circle id="g-clock-i1-halo" cx="960" cy="450" r="284" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="2"/>
+      <circle id="g-clock-i1-face" cx="960" cy="450" r="260" fill="rgba(11,16,22,0.88)" stroke="#93a3b2" stroke-width="4"/>
+      <!-- 60 minute ticks (period 2*pi*232/60 = 24.294: dash 3, gap 21.294) and 12 hour ticks (period 2*pi*228/12 = 119.38: dash 6, gap 113.38) -->
+      <circle id="g-clock-i1-tmin" cx="960" cy="450" r="232" fill="none" stroke="#5a768f" stroke-width="14" stroke-dasharray="3 21.294" stroke-dashoffset="1.5" transform="rotate(-90 960 450)"/>
+      <circle id="g-clock-i1-thr" cx="960" cy="450" r="228" fill="none" stroke="#dfe7ee" stroke-width="26" stroke-dasharray="6 113.38" stroke-dashoffset="3" transform="rotate(-90 960 450)"/>
+      <line id="g-clock-i1-hh" x1="960" y1="450" x2="960" y2="315" stroke="#f2f5f8" stroke-width="15" stroke-linecap="round"/>
+      <line id="g-clock-i1-mh" x1="960" y1="450" x2="960" y2="245" stroke="#f2f5f8" stroke-width="9" stroke-linecap="round"/>
+      <line id="g-clock-i1-sh" x1="960" y1="496" x2="960" y2="232" stroke="#e74c3c" stroke-width="4" stroke-linecap="round"/>
+      <circle id="g-clock-i1-hub" cx="960" cy="450" r="13" fill="#e74c3c"/>
+      <circle id="g-clock-i1-hubin" cx="960" cy="450" r="5" fill="#04070c"/>
+    </svg>
+    <div class="ck1-read" id="g-clock-i1-read">4:47 PM</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-clock-i1-";
+  const PIV = "960 450";
+  const LAND = 0.60; /* "447" @19.00 -> 105.205 - 104.605 */
+  const tl = gsap.timeline({ paused: true });
+  tl.set(P + "read", { autoAlpha: 0 }, 0);
+  tl.set(P + "hh", { rotation: 90, svgOrigin: PIV }, 0);    /* 3:00 */
+  tl.set(P + "mh", { rotation: 0, svgOrigin: PIV }, 0);
+  tl.set(P + "sh", { rotation: 0, svgOrigin: PIV }, 0);
+  tl.set(P + "svg", { transformOrigin: "960px 450px" }, 0);
+
+  /* hands wind from 3:00 to 4:47 and land at 0.60 */
+  tl.to(P + "mh", { rotation: 642, duration: LAND, ease: "power3.out" }, 0);       /* 1 h 47 min = 642 deg */
+  tl.to(P + "hh", { rotation: 143.5, duration: LAND, ease: "power3.out" }, 0);
+  tl.to(P + "sh", { rotation: 1080, duration: LAND, ease: "power3.out" }, 0);      /* three turns, ends at 12 */
+  /* label under the dial lands with the hands */
+  tl.fromTo(P + "read", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, LAND);
+  /* second hand ticks: one 6 deg step a second after the landing */
+  tl.to(P + "sh", { rotation: 1086, duration: 0.12, ease: "back.out(2.5)" }, 1.10);
+  tl.to(P + "sh", { rotation: 1092, duration: 0.12, ease: "back.out(2.5)" }, 2.10);
+  /* slow push-in on the dial for the whole window (label stays fixed) */
+  tl.to(P + "svg", { scale: 1.05, duration: 2.277, ease: "sine.inOut" }, 0);
+  /* fade through to the chapter blackout */
+  tl.to(P + "stage", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 1.977);
+  tl.set({}, {}, 2.277);
+  window.__timelines["g-clock-i1"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
