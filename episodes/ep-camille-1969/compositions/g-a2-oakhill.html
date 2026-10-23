@@ -55,7 +55,9 @@ window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
   const S20 = 17.21;   /* A2-S20 start, comp time */
-  tl.set(["#ao-card1", "#ao-card2", "#ao-chip", "#ao-mark1", "#ao-src", "#ao-c2", "#ao-c3", "#ao-p1", "#ao-p2", "#ao-p3", "#ao-p4", "#ao-p5", "#ao-p6"], { autoAlpha: 0 }, 0);
+  tl.set(["#ao-card1", "#ao-card2", "#ao-chip", "#ao-mark1", "#ao-src", "#ao-c2", "#ao-c3"], { autoAlpha: 0 }, 0);
+  /* each card shows its whole quote dim on entry and each phrase lights on its cue, so a card is never half empty */
+  tl.set(["#ao-p1", "#ao-p2", "#ao-p3", "#ao-p4", "#ao-p5", "#ao-p6"], { autoAlpha: 0.35, y: 6 }, 0);
 
   /* source plate on "Thirty years later" @0.00 */
   tl.fromTo("#ao-src", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.1);
@@ -64,16 +66,17 @@ window.__timelines = window.__timelines || {};
   /* SCREEN 1: card in on "With a warning system" @5.66 */
   tl.fromTo("#ao-card1", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 5.5);
   tl.fromTo("#ao-mark1", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 5.8);
-  tl.fromTo("#ao-p1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 5.8);
-  tl.fromTo("#ao-p2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 9.6);
-  tl.fromTo("#ao-p3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 12.04);
+  tl.fromTo("#ao-p1", { autoAlpha: 0.35, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 5.8);
+  tl.fromTo("#ao-p2", { autoAlpha: 0.35, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 9.6);
+  tl.fromTo("#ao-p3", { autoAlpha: 0.35, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 12.04);
   tl.fromTo("#ao-card1", { y: 0 }, { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 5 }, 6.2);
-  /* screen 1 leaves left as screen 2 enters from the right on "to get to a building" @13.34 */
-  tl.to("#ao-card1", { x: -1100, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 13.2);
+  /* screen 1 leaves left, gone by 13.3, then screen 2 enters from the right on "to get to a building" @13.34
+     (the two no longer cross: screen 2's dim phrases would overlap screen 1's text mid-swap) */
+  tl.to("#ao-card1", { x: -1100, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 12.75);
   tl.fromTo("#ao-card2", { autoAlpha: 0, x: 1100 }, { autoAlpha: 1, x: 0, duration: 0.65, ease: "power3.out" }, 13.3);
-  tl.fromTo("#ao-p4", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 13.5);
-  tl.fromTo("#ao-p5", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 14.56);
-  tl.fromTo("#ao-p6", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 15.84);
+  tl.fromTo("#ao-p4", { autoAlpha: 0.35, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 13.5);
+  tl.fromTo("#ao-p5", { autoAlpha: 0.35, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 14.56);
+  tl.fromTo("#ao-p6", { autoAlpha: 0.35, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 15.84);
   tl.fromTo("#ao-card2", { y: 0 }, { y: -8, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 14.1);
   /* screen 2 and the source plate leave before the chip */
   tl.to(["#ao-card2", "#ao-src"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 16.5);
