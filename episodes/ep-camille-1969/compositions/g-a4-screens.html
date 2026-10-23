@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<!--
+  g-a4-screens: A4-S2 (voice 26.28 s, host 26.823 s, track 2, full-frame designed ground; comp time 0 = first word of A4-S2).
+  Two real page captures (media/src/W02_SCREENS, provenance.csv last two rows), then the Newell quote as a glass lower third.
+  Cues from audio/a4-s2.words.json: "Within" 0.00, "local TV news" 1.10-2.08, "public radio" 3.10, "health department" 5.86,
+  "social media" 9.98, "News stories carried" 12.10, "NamUs" (whisper "NAMU") 19.30, "In the notice" 20.20, "Newell" 21.40,
+  "public awareness" 22.62, "that unlocks cases like this" 24.56, "this." 25.96-26.28.
+
+  Geometry (python3 one-off, receipt): screen 1 = the whole 1920x1080 CBS19 capture at 0.6458 (1240 x 697.5), no crop, so
+  the card edge is the page edge and no word can be cut; the push scales the whole card, never the image inside it.
+  Screen 2 = NamUs capture cropped to x 280..1640, y 52..568 (1360 x 516) at 0.9118 (card 1240 x 470.5): ink spans x 295..1183,
+  so 15 px of page margin on the left and 457 px on the right; the bottom edge falls between the name fields' "--" (row 553)
+  and "Nickname/Alias" (row 581); the top edge sits below the site's nav bar (ink to row 49).
+  Corner x >= 1600, y >= 680 stays empty for the presenter circle (pip-w09): cards end x 1402 at full push, lower third x 1500.
+-->
+<style>
+  #g-a4-screens-root { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .a4sc-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .a4sc-glow { position:absolute; left:-200px; top:80px; width:1300px; height:900px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(127,178,229,0.07), rgba(127,178,229,0) 70%); }
+  .a4sc-group { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .a4sc-eyebrow { position:absolute; left:130px; font-weight:700; font-size:22px; line-height:26px; letter-spacing:6px;
+    color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+  /* glass bezel around a clipped page capture; the capture itself is never scaled inside its clip */
+  .a4sc-frame { position:absolute; left:118px; padding:12px; border-radius:26px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .a4sc-clip { position:relative; width:1240px; overflow:hidden; border-radius:14px; background:#ffffff; }
+  .a4sc-clip img { position:absolute; display:block; max-width:none; }
+  #a4sc-e1 { top:96px; }
+  #a4sc-f1 { top:148px; }
+  #a4sc-c1 { height:697.5px; }
+  #a4sc-i1 { left:0; top:0; width:1240px; height:697.5px; }
+  #a4sc-s2 { opacity:0; visibility:hidden; }
+  #a4sc-e2 { top:236px; opacity:1; visibility:inherit; }
+  #a4sc-f2 { top:288px; opacity:1; visibility:inherit; }
+  #a4sc-c2 { height:470.5px; }
+  #a4sc-i2 { left:-255.3px; top:-47.4px; width:1750.6px; height:984.7px; }
+  #a4sc-lt { position:absolute; left:96px; bottom:54px; width:1404px; height:240px; box-sizing:border-box; padding:30px 48px 32px 48px;
+    border-radius:28px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #a4sc-attr { font-weight:700; font-size:28px; line-height:36px; letter-spacing:1px; color:#d8a13a; white-space:nowrap; }
+  .a4sc-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:54px; line-height:66px; color:#f2f5f8;
+    white-space:nowrap; opacity:0; visibility:hidden; }
+  #a4sc-q1 { margin-top:10px; }
+</style>
+<div id="g-a4-screens-root" data-composition-id="g-a4-screens" data-width="1920" data-height="1080" data-duration="26.823">
+  <div class="a4sc-grid" id="a4sc-grid"></div>
+  <div class="a4sc-glow" id="a4sc-glow"></div>
+
+  <div class="a4sc-group" id="a4sc-s1">
+    <div class="a4sc-eyebrow" id="a4sc-e1">CBS19 &middot; AUGUST 27, 2026</div>
+    <div class="a4sc-frame" id="a4sc-f1"><div class="a4sc-clip" id="a4sc-c1"><img id="a4sc-i1" src="media/src/W02_SCREENS/cbs19-still-seeking-2026-08.png" alt=""></div></div>
+  </div>
+
+  <div class="a4sc-group" id="a4sc-s2">
+    <div class="a4sc-eyebrow" id="a4sc-e2">NAMUS &middot; CASE UP10817</div>
+    <div class="a4sc-frame" id="a4sc-f2"><div class="a4sc-clip" id="a4sc-c2"><img id="a4sc-i2" src="media/src/W02_SCREENS/namus-up10817-details.png" alt=""></div></div>
+  </div>
+
+  <div id="a4sc-lt">
+    <div id="a4sc-attr">Lara Newell &middot; Virginia Department of Health, August 2026</div>
+    <div class="a4sc-q" id="a4sc-q1">&ldquo;Public awareness is often the key</div>
+    <div class="a4sc-q" id="a4sc-q2">that unlocks cases like this.&rdquo;</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 26.85;
+  tl.set(["#a4sc-e1", "#a4sc-f1", "#a4sc-s2", "#a4sc-lt", "#a4sc-q1", "#a4sc-q2"], { autoAlpha: 0 }, 0);
+  tl.set("#a4sc-f1", { rotation: 1.2, scale: 1, x: 60, transformOrigin: "50% 50%" }, 0);
+  tl.set("#a4sc-f2", { rotation: -1, scale: 1, transformOrigin: "50% 50%" }, 0);
+  tl.set("#a4sc-e2", { scale: 1, transformOrigin: "0% 50%" }, 0);
+
+  /* ground, whole window */
+  tl.fromTo("#a4sc-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#a4sc-glow", { x: 0, y: 0 }, { x: 820, y: 90, duration: DUR, ease: "none" }, 0);
+
+  /* screen 1 rises with the sentence ("Within days" @0.00) and lands on "local TV news" @1.10 */
+  tl.fromTo("#a4sc-f1", { x: 60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0.4);
+  tl.fromTo("#a4sc-e1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.1);
+  /* slow push on the whole card, 4 %, through "public radio" @3.10 ... "social media" @9.98 */
+  tl.to("#a4sc-f1", { scale: 1.04, duration: 11.0, ease: "none" }, 1.1);
+  /* "News stories carried" @12.10: screen 1 slides out left */
+  tl.to("#a4sc-s1", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 12.1);
+
+  /* screen 2 in @12.60, eyebrow with it */
+  tl.fromTo("#a4sc-s2", { x: 60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 12.6);
+  tl.to("#a4sc-f2", { scale: 1.03, duration: 14.223, ease: "none" }, 12.6);
+  /* "NamUs" @19.30: eyebrow pulses once */
+  tl.to("#a4sc-e2", { scale: 1.08, duration: 0.2, ease: "power2.out" }, 19.3);
+  tl.to("#a4sc-e2", { scale: 1, duration: 0.3, ease: "power2.inOut" }, 19.5);
+  /* "In the notice" @20.20: screen 2 dims and lifts to make room for the lower third */
+  tl.to("#a4sc-s2", { autoAlpha: 0.55, y: -140, duration: 0.7, ease: "power3.inOut" }, 20.2);
+
+  /* "Newell" @21.40: lower third in, name line first */
+  tl.fromTo("#a4sc-lt", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 21.4);
+  /* "public awareness" @22.62 */
+  tl.fromTo("#a4sc-q1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 22.62);
+  /* "that unlocks cases like this" @24.56 */
+  tl.fromTo("#a4sc-q2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 24.56);
+  /* hold with a slight float; the next host cuts over at 26.823 */
+  tl.to("#a4sc-lt", { y: -6, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3 }, 22.0);
+
+  window.__timelines["g-a4-screens"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
