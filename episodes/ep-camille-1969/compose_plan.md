@@ -71,7 +71,7 @@ Estimated total: about 19:25 (1,163 s). Target 20 min (owner `camille_len`). `wo
   by the estimate.** Pre-CTA narration is 2,228 of 3,581 words (62 %). Keep every optional hold AFTER the CTA; blackouts before it
   at their 0.7 s floor. Measure after TTS; if still above 0.60, it is the owner's call (`window_by_slug`) or a pre-CTA trim. Risk 1.
 - After `bo-cta-out` the payoff opens on REAL footage, never a graphic (DESIGN.md CTA contract): A3-S7 opens on
-  `media/src/V13/Rescue_Mission_Planning_(7797540124).jpg` for about 2.5 s, then the counter comp `g-a3-missing-b` lands on "a hundred and nine".
+  `media/src/V10/Rescue_Mission_Briefing_(7797539862).jpg` for about 2.5 s, then the counter comp `g-a3-missing-b` lands on "a hundred and nine".
 - Narration silent under the CTA; bed ducked ≥ 12 dB or out; circle off. CTA is not a chapter boundary (no blackout of its own beyond the dips).
 - The `sweep_episode.py` WARN "another insert within 60s of the CTA" from `ins-paul-4` is expected (DESIGN.md exception).
 - metadata.md: `channel.cta.first_link` first URL, plus "📘 The book mentioned at mm:ss" line from the real CTA start.
@@ -173,8 +173,8 @@ Paths are under `episodes/ep-camille-1969/`. `LVA/x` = `media/src/V13/x` unless 
 | A1-S7 | 3:40 | (comp) | g-a1-phone (Sonnet, base copy) | phone ring (GAP 5) |
 | A1-S8 | 3:54 | (comp) | g-a1-wagon (Sonnet, base copy) | swell "eleven people" |
 | A1-S9 | 4:10 | ins-paul-2 (placeholder) | none | rain ducks under him |
-| A1-S10 | 4:18 | g-a1-flee (car stops) → `media/src/V03/Aerial_View_of_Tyro_(7797534024).jpg` (6 s) | g-a1-flee (Opus O5) · g-a1-cattle (Sonnet, glass quote over V03) | swell "engine flooded" |
-| A1-S11 | 4:32 | (comp) | g-a1-flee second host (Opus O5) | |
+| A1-S10 | 4:18 | g-a1-flee-a (car stops) → `media/src/V03/Aerial_View_of_Tyro_(7797534024).jpg` (6 s) | g-a1-flee-a (Opus O5) · g-a1-cattle (Sonnet, glass quote over V03) | swell "engine flooded" |
+| A1-S11 | 4:32 | (comp) | g-a1-flee-b (Opus O5) | |
 | A1-S12 | 4:46 | (comp) | g-a1-davis (Opus O1, pull-out, Davis Creek glows) | stamp "2:50 AM" + chip "POWER AND PHONES OUT" in rail |
 | A1-S13 | 4:59 | photo inside comp: `LVA/Massies_Mill_Bridge,_II_(7797542906).jpg` (aerial, Rt. 56 bridge over the Tye) | g-a1-peak (Sonnet) channel trace + chip | |
 | A1-S14 | 5:12 | (comp) | g-a1-hydro (Sonnet) | swell "eight times" |
@@ -212,7 +212,7 @@ Paths are under `episodes/ep-camille-1969/`. `LVA/x` = `media/src/V13/x` unless 
 | A3-S5 | 11:31 | (comp) | g-a3-missing-a (Sonnet) | |
 | A3-S6 | 11:40 | ins-paul-4 (placeholder) | none | chip "110+ MISSING · AUG 23 · AP" + src "Associated Press, Aug 23, 1969 (The Pontiac Press, p. 1)" over Paul (allowed: text over him) |
 | CTA | 11:48 | `bo-cta-in` 1.0 → `ins-cta-paul` 24.042 → `bo-cta-out` 1.0 | none | narration silent, bed out, circle off |
-| A3-S7 | 12:14 | `LVA/Rescue_Mission_Planning_(7797540124).jpg` → NO: used in A3-S3. Use `media/src/V10/Rescue_Mission_Briefing_(7797539862).jpg` (real, about 2.5 s) → comp | g-a3-missing-b (Sonnet) | swell "eighty-nine" |
+| A3-S7 | 12:14 | `media/src/V10/Rescue_Mission_Briefing_(7797539862).jpg` (real, about 2.5 s, hard cut after `bo-cta-out`) → comp | g-a3-missing-b (Sonnet) | swell "eighty-nine" |
 | A3-S8 | 12:29 | `LVA/Flood_Damage_East_of_Schuyler_(7797526964).jpg` → comp | g-a3-heli (Sonnet, cutoff base copy: helicopter over the Blue Ridge + AP beige card) | GAP 14: no helicopter photo |
 | A3-S9 | 12:49 | comp → `media/src/V12/Raging_Waters_of_the_James_(7797523300).jpg` (Richmond: no place label) | g-a3-ginger-b (Opus O9) | swell "twenty miles away". GAP 3: VCU reel V16 (moving water) preferred over V12 |
 | A3-S10 | 13:08 | (comp) | g-a3-nov13 (Sonnet) | |
@@ -241,7 +241,7 @@ Paths are under `episodes/ep-camille-1969/`. `LVA/x` = `media/src/V13/x` unless 
 | END-ASK | 19:39 | ins-paul-e1 → ins-paul-e2 | none | close bed; circle off |
 | Z1-S3 | 19:55 | (comp) | g-z1-close (Sonnet) | narration only, circle off; card ≤ 3 s past the last word |
 
-Segments mapped: 82 narration/Paul segments + the Harvey insert + CTA + END-ASK = 85 rows.
+Segments mapped: 86 script segments (H1 1, T1 2, I1 10, A1 19, A2 21, A3 14, A4 16, Z1 3) + the Harvey insert + CTA + END-ASK = 89 rows.
 
 ### 2.1 Shot ledger (files used more than once, or same-subject pairs)
 | File | Uses | Rule |
@@ -263,14 +263,14 @@ below. The builder never verifies its own work; the orchestrator reads a settled
 render. A Sonnet graphic that fails the read twice goes to Opus. Every builder's brief carries `references/mg-quickref.md` and
 `library/inhouse/snippets/tokens.md`.
 
-### 3.1 Opus (12 lanes, 21 comps)
+### 3.1 Opus (12 lanes, 24 comps incl. the unmounted base)
 | Lane | Comp(s) | Purpose (one line) | Start from |
 |---|---|---|---|
 | O1 | g-base-nelson (base, never mounted) → g-i1-tye, g-a1-river, g-a1-davis, g-a2-davis, g-a2-hollows | the episode's one Nelson County map: real county outline, Tye/Rockfish/James/Davis Creek, Rt. 56 and U.S. 29, camera pushes and pull-outs | `library/inhouse/master-map-us-canada.html` (projection, camera rig), `references/editing-patterns/ep3-map-route-fit.html`, `ep5-terrain-map.html` |
 | O2 | g-t1-track, g-i1-track | Camille's track from the Gulf to Virginia, push in to Nelson; landfall at Waveland; inland crawl losing its eye | `library/inhouse/master-map-us-canada.html` |
 | O3 | g-a1-synoptic | why it rained there: remnant over Kentucky at 8 PM, storm band from N/NW already over Virginia, center crosses near midnight, SE moist inflow | `master-map-us-canada.html` + `references/editing-patterns/ep2-met-explainer.html` |
 | O4 | g-a1-gauges | the gauge that overflowed at 11+, the bucket before 2 AM, the trash containers, two nearby readings 4× apart | `library/inhouse/numbers-rollup.html` + `quote-card.html` |
-| O5 | g-a1-flee (2 hosts: A1-S10 part, A1-S11) | the station wagon stops past the house as the Tye floods the road; on foot along Rt. 56; two dots by two trees | g-base-nelson + `library/inhouse/moves/demo.html` (camera rig) |
+| O5 | g-a1-flee-a (A1-S10 part), g-a1-flee-b (A1-S11) | the station wagon stops past the house as the Tye floods the road; on foot along Rt. 56; two dots by two trees | g-base-nelson + `library/inhouse/moves/demo.html` (camera rig) |
 | O6 | g-i1-slope, g-a2-mawyer, g-a2-anatomy, g-a2-surge, g-z1-night | the debris-avalanche cross-section family: a strip of soaked soil lets go, how it starts, where, what it does in the creek, the night it kept happening | `library/inhouse/radar-beam.html` (full-frame SVG physics diagram) |
 | O7 | g-a2-scar | a real PP 804 scar measured: width, length (football fields), depth, boulder vs pickup, the 40 sq mi zone south of Horseshoe Mountain | g-base-nelson + `library/inhouse/split-shared-scale.html` (scale objects) |
 | O8 | g-a3-cutoff | Nelson cut off: roads grey out, radio arc over the Blue Ridge to Augusta County, relayed to Richmond | g-base-nelson (pull-out) |
@@ -279,7 +279,7 @@ render. A Sonnet graphic that fails the read twice goes to Opus. Every builder's
 | O11 | g-a4-eight | the eight found and never named: U.S. 29, each find place on its river with a photo inset, down the James into Fluvanna, 4 of 8 children | g-base-nelson |
 | O12 | g-a2-harvey | the WDBJ Harvey bite made transformative: framed clip with her own audio, karaoke running caption, locator map, lower third | `git show 64330f03:episodes/ep-joplin-2011/compositions/g-a6-radio-cap.html` and `g-a1-ksn-cap.html` |
 
-### 3.2 Sonnet (33 comps)
+### 3.2 Sonnet (42 comps)
 | id | Seg | Purpose | Start from |
 |---|---|---|---|
 | g-t1-33 | T1-S1 | "33 never found" lands over the Massies Mill aerial | `references/editing-patterns/ep6-glasscard-popfig-bfmg.html` |
@@ -323,7 +323,7 @@ render. A Sonnet graphic that fails the read twice goes to Opus. Every builder's
 | g-a4-open | A4-S16 | map, 8 unlabelled markers, stamp "October 2026" | g-a4-eight copy |
 | g-z1-headings | Z1-S2 | Rockfish into the James, 8 markers (6 Rockfish, 2 James), then the three headings 84 · 33 · 8, chip | g-a4-eight copy |
 | g-z1-close | Z1-S3 | close card, THE WARNING HOUR, match-cut on the closing line | `library/inhouse/outro-brand.html` |
-(Count: 33 Sonnet comps, including the two missing-counter hosts and the family base.)
+(Count: 41 rows, 42 comps: g-a3-missing-a and -b share a row. The quote-card family base is g-a1-forecast.)
 
 ### 3.3 Build order and parallel lanes
 - **Wave 1, now (geometry needs no audio):** O1 base `g-base-nelson`; O2; O3; O6 family base (g-i1-slope); O10 (typeset the 125 rows);
@@ -343,6 +343,7 @@ render. A Sonnet graphic that fails the read twice goes to Opus. Every builder's
 ## Part 4 · Briefs
 
 ### 4.0 Shared contract for every brief (template §6 to §8, not restated per brief)
+- **MAP SCALE CHANGED (O1 built, 22 Oct 26 13:36, orchestrator-read):** k = 1480 px/deg lat, kx = 1170.1 px/deg lon, 1 mi = 21.45 px, 5 MI bar = 107.25 px. Formula below with these numbers wins. Place px for every map comp: `media/geo/nelson-px.json` (never re-project by hand). Base file: `compositions/g-base-nelson.html`, camera group `#g-base-nelson-cam`.
 - §6 CONTRACT: `references/mg-brief-template.md` §6 verbatim. File `compositions/<id>.html`, root `id="<id>-root"` (never `#root`),
   `data-composition-id="<id>"`, paused timeline at `window.__timelines["<id>"]`, ids prefixed with the comp suffix, root transparent
   unless the brief says full-frame ground. Type and motion: `references/mg-quickref.md` "Type tiers", "Motion and exits"; colours by
@@ -380,8 +381,8 @@ render. A Sonnet graphic that fails the read twice goes to Opus. Every builder's
   date/time stamp for every instance (Abril-style figure in the comp, since no index popfig may sit over a map).
   Instances (each its own file, copied from the base after the orchestrator's base read):
   - g-i1-tye (I1-S10, about 9.9 s): from the county view push west to the Tye at Massies Mill (zoom about 3×, logZoom), Tye line
-    brightens, rail stamp "Aug 19, 1969 · night", place label "Massies Mill". Exit = cut to the LVA still on "The first family" sentence end? No: the
-    photo comes on "With them that night"; comp ends there with a camera settle, not a hard vanish.
+    brightens, rail stamp "Aug 19, 1969 · night", place label "Massies Mill". The comp ends on "With them that night" with a camera settle (never a hard
+    vanish); the LVA still takes over there.
   - g-a1-river (A1-S1, about 8.8 s): Massies Mill close view (same zoom as g-i1-tye's end), Tye and Rt. 56 side by side, rail stamp
     big "Aug 19, 1969" sub "Tuesday · 7 PM · Massies Mill", rain texture (thin diagonal strokes, GSAP-driven, finite repeats) over the
     map, label "Tye River", "Rt. 56" land on their words.
@@ -460,14 +461,14 @@ render. A Sonnet graphic that fails the read twice goes to Opus. Every builder's
 - **5. Cues.** "eleven inches" jam; "overflowed" row 1; "before two" row 2; "sitting outside" three rows; "more than twenty" dot 1; "less
   than six" dot 2; "four separate times" chip; exit after "next hollow's".
 
-### O5 · g-a1-flee (hosts A1-S10 part and A1-S11) · Opus 5.5, high
+### O5 · g-a1-flee-a (A1-S10 part), g-a1-flee-b (A1-S11) · Opus 5.5, high
 - **0. Claim.** The station wagon backed out, passed the house and flooded out; eleven people went on foot along Rt. 56 in the dark;
   somewhere on that road Warren grabbed a limb and Carl found a tree of his own.
 - **1. Source.** factcheck-A1 marker 5 and S10/S11 (WDBJ, WTKR, C-VILLE RAW quotes in the script Rows).
 - **2. Datum.** Base-map close view of Massies Mill (g-a1-river's end framing). The house squares are the same positions as g-a1-home
   (shared numbers: copy them, never re-place). Label "approx." on the house squares is NOT used; positions stay schematic-small (12 px).
-- **3. Geometry.** Host 1 (A1-S10, first sentence only, about 4 s): car icon leaves the Raines square, passes the house by ≤ 1 square
-  width and stops dead as the Tye line widens over Rt. 56 (blue widens 3 → 14 px along a 120 px stretch). Host 2 (A1-S11): eleven small
+- **3. Geometry.** g-a1-flee-a (A1-S10, first sentence only, about 4 s): car icon leaves the Raines square, passes the house by ≤ 1 square
+  width and stops dead as the Tye line widens over Rt. 56 (blue widens 3 → 14 px along a 120 px stretch). g-a1-flee-b (A1-S11, copy of -a's end state): eleven small
   figures move along Rt. 56 (GSAP per-leg attr tweens, no MotionPath), the Tye widening toward them; chip "ON FOOT · RT. 56"; figures
   thin to two dots, each beside its own tree symbol; neither tree labelled.
 - **4. Must be true.** (1) Car stops just past the house, on Rt. 56. (2) Figures stay on the road line. (3) Two trees, two dots,
@@ -671,7 +672,7 @@ Exits: cards slide out (x:980, autoAlpha 0, 0.6 s, power3.in) in the last 0.6 s;
 - **g-a1-wagon** (A1-S8). Wood square lights on "Next door"; eleven small figures (4 from the Wood square join 7 at the Raines square)
   on "eleven people"; chip "11 IN ONE STATION WAGON"; glass quote "Next door neighbor asked if four of their kids could come with us." ·
   Warren Raines · interviewed 2009 · Radio IQ (WVTF), published 2019 on "Mr. Wood".
-- **g-a1-cattle** (A1-S10 after the flee host, overlay on `V03/Aerial_View_of_Tyro_(7797534024).jpg`). Glass quote "There was cattle
+- **g-a1-cattle** (A1-S10 after g-a1-flee-a, overlay on `V03/Aerial_View_of_Tyro_(7797534024).jpg`). Glass quote "There was cattle
   floating by, logs, automobiles. Even had an entire house float by." · Warren Raines · WDBJ7, 12 Aug 2019, on "carrying"; a faint
   lightning flicker (opacity pulses on a full-frame white layer at ≤ 0.15, 3 finite pulses).
 - **g-a1-peak** (A1-S13, full frame, photo `V13/Massies_Mill_Bridge,_II_(7797542906).jpg` inside the comp, punch-in). Trace the Tye's

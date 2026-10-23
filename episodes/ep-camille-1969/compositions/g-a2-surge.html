@@ -1,0 +1,272 @@
+<template>
+<!--
+  g-a2-surge (I1-S7) · O6 family base · Opus lane. compose_plan.md Part 4 "O6".
+  SCHEMATIC, NOT TO SCALE (soil depth exaggerated). Source: USGS PP 804 pp. 14 to 17; OFR 70-51 p. 41.
+  Profile (px): ridge (300,220) -> (500,280) 30 % -> (900,480) 50 % -> (1300,620) 35 % -> floor y 640 (1300 to 1700).
+  Creek notch x 1330 to 1400, 30 px deep. House x 1450 to 1560, 90 px tall. Dip 8 px deep along x 560 to 860.
+  Strip states A..D computed by scratch geom.py (arc length along the profile, 18 samples a side):
+    slope length 300->1300 = 1080.2 px; strip A s 231.2..611.7 = 380.5 px = 35.2 % of the slope (truth 1, <= 45 %);
+    strip top s 231.2 sits on the 50 % segment s 208.8..656.4 (truth 2). Thickness A 24, B 20, C 15 (thins, lengthens 381 -> 421 -> 471), D 18 piled in the creek.
+  Variants (wave 2) copy this file: ground, band, strip states, trees and house are the shared family geometry.
+-->
+<style>
+  #g-a2-surge-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial, sans-serif; }
+  .gas2-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gas2-hid { opacity:0; visibility:hidden; }
+  .gas2-lab { position:absolute; left:1120px; top:372px; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:52px; line-height:1; color:#f2f5f8; white-space:nowrap; }
+  .gas2-sub { position:absolute; left:1122px; top:438px; font-family:Georgia, 'Times New Roman', serif; font-style:italic;
+    font-size:26px; line-height:1; color:#d8a13a; white-space:nowrap; }
+  .gas2-tag { position:absolute; left:96px; top:1000px; font-family:Arial, sans-serif; font-weight:700; font-size:20px;
+    line-height:1; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+</style>
+<div id="g-a2-surge-root" data-composition-id="g-a2-surge" data-width="1920" data-height="1080" data-duration="24.177">
+  <svg class="gas2-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <linearGradient id="ga2srg-gground" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#15202b"/><stop offset="1" stop-color="#04070a"/>
+      </linearGradient>
+      <linearGradient id="ga2srg-gfar" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0b1016"/><stop offset="1" stop-color="#04070a"/>
+      </linearGradient>
+      <clipPath id="ga2srg-clipground">
+        <path d="M0,262 L300,220 L500,280 L560,310 Q710,401 860,460 L900,480 L1300,620 Q1312,640 1330,640 L1345,670 L1385,670 L1400,640 L1920,640 L1920,1080 L0,1080 Z"/>
+      </clipPath>
+      <pattern id="ga2srg-rock" width="36" height="28" patternUnits="userSpaceOnUse">
+        <path d="M4,6 L16,6 M22,20 L34,20 M2,20 L8,14 M26,8 L30,2" fill="none" stroke="#2a3644" stroke-width="2" stroke-linecap="round"/>
+      </pattern>
+      <linearGradient id="ga2srg-rockfade" x1="0" y1="0" x2="1920" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#fff"/><stop offset="0.66" stop-color="#fff"/><stop offset="0.81" stop-color="#000"/>
+      </linearGradient>
+      <mask id="ga2srg-rockmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <rect x="0" y="0" width="1920" height="1080" fill="url(#ga2srg-rockfade)"/>
+      </mask>
+      <mask id="ga2srg-rainmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <rect x="0" y="0" width="1920" height="1080" fill="#fff"/>
+        <rect x="1090" y="350" width="700" height="140" fill="#000"/>
+      </mask>
+    </defs>
+    <g id="ga2srg-scene">
+      <!-- far ridge behind the hollow -->
+      <path id="ga2srg-far" d="M0,330 C260,300 420,250 640,262 C800,270 900,320 980,380 C1060,440 1100,500 1160,520 C1300,560 1600,560 1920,566 L1920,1080 L0,1080 Z" fill="url(#ga2srg-gfar)" stroke="#2a3644" stroke-width="2"/>
+      <!-- rain (behind the near ground, kept off the label) -->
+      <g mask="url(#ga2srg-rainmask)"><g id="ga2srg-rain" stroke="#7fb2e5" stroke-opacity="0.28" stroke-width="2" stroke-linecap="round"></g></g>
+      <!-- near ground: the slope above the hollow -->
+      <path id="ga2srg-ground" d="M0,262 L300,220 L500,280 L560,310 Q710,401 860,460 L900,480 L1300,620 Q1312,640 1330,640 L1345,670 L1385,670 L1400,640 L1920,640 L1920,1080 L0,1080 Z" fill="url(#ga2srg-gground)"/>
+      <g clip-path="url(#ga2srg-clipground)">
+        <!-- soil band, 24 px under the surface (a 48 px stroke clipped to the ground) -->
+        <path id="ga2srg-band" d="M0,262 L300,220 L500,280 L560,310 Q710,401 860,460 L900,480 L1300,620 Q1312,640 1330,640" fill="none" stroke-width="48" stroke-linejoin="round" style="stroke:#6b6257"/>
+        <!-- bedrock under the soil (unlabelled texture, faded out before the presenter corner x 1600) -->
+        <path d="M0,330 L300,290 L900,560 L1300,700 L1920,720 L1920,1080 L0,1080 Z" fill="url(#ga2srg-rock)" mask="url(#ga2srg-rockmask)"/>
+        <!-- faint bedrock strata -->
+        <path d="M0,330 L300,290 L900,560 L1300,700 L1920,720 M0,420 L300,380 L900,660 L1300,800 L1920,820" fill="none" stroke="#2a3644" stroke-width="2" stroke-dasharray="14 12"/>
+      </g>
+      <!-- the scar left where the strip was (pale bare ground) -->
+      <path id="ga2srg-scar" class="gas2-hid" d="M520.0,290.0 L540.0,300.0 L560.0,310.0 L579.2,321.5 L598.5,332.9 L618.0,344.0 L637.5,354.9 L657.2,365.6 L677.0,376.1 L696.8,386.4 L716.8,396.4 L737.0,406.2 L757.2,415.8 L777.5,425.1 L798.0,434.2 L818.6,443.1 L839.2,451.7 L860.0,460.0 L855.2,472.3 L830.2,473.9 L809.2,465.2 L788.4,456.2 L767.6,447.0 L747.0,437.6 L726.6,427.9 L706.2,417.9 L686.0,407.7 L665.8,397.4 L645.8,386.7 L625.9,375.9 L606.2,364.9 L586.5,353.6 L567.0,342.2 L547.6,330.6 L529.3,321.5 L514.1,301.8 Z" fill="#c8b98a" fill-opacity="0.5"/>
+      <!-- creek in its notch -->
+      <path id="ga2srg-water" d="M1341,660 L1389,660 L1385,670 L1345,670 Z" style="fill:#5a768f"/>
+      <path id="ga2srg-ripple" d="M1343,663 L1387,663" fill="none" stroke="#7fb2e5" stroke-width="2" stroke-dasharray="8 6"/>
+      <!-- the surface line -->
+      <path id="ga2srg-surface" d="M0,262 L300,220 L500,280 L560,310 Q710,401 860,460 L900,480 L1300,620 Q1312,640 1330,640 L1345,670 L1385,670 L1400,640 L1920,640" fill="none" stroke="#5a768f" stroke-width="3" stroke-linejoin="round"/>
+      <!-- water running down the soaked surface -->
+      <path id="ga2srg-sheen" class="gas2-hid" d="M300,220 L500,280 L560,310 Q710,401 860,460 L900,480 L1300,620 Q1312,640 1330,640" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round" stroke-dasharray="18 26"/>
+      <!-- trees off the strip (some stand in the strip's path) -->
+      <g id="ga2srg-static"></g>
+      <!-- the house on the hollow floor -->
+      <g id="ga2srg-house">
+        <rect x="1460" y="590" width="90" height="50" fill="#2a3644" stroke="#93a3b2" stroke-width="2"/>
+        <path d="M1450,592 L1505,550 L1560,592 Z" fill="#4a5560" stroke="#93a3b2" stroke-width="2" stroke-linejoin="round"/>
+        <rect x="1474" y="604" width="20" height="18" fill="#04070a"/>
+        <rect x="1516" y="610" width="18" height="30" fill="#04070a"/>
+      </g>
+      <rect id="ga2srg-window" class="gas2-hid" x="1474" y="604" width="20" height="18" fill="#e8c56a"/>
+      <!-- the strip that lets go -->
+      <path id="ga2srg-strip" d="M520.0,290.0 L540.0,300.0 L560.0,310.0 L579.2,321.5 L598.5,332.9 L618.0,344.0 L637.5,354.9 L657.2,365.6 L677.0,376.1 L696.8,386.4 L716.8,396.4 L737.0,406.2 L757.2,415.8 L777.5,425.1 L798.0,434.2 L818.6,443.1 L839.2,451.7 L860.0,460.0 L855.2,472.3 L830.2,473.9 L809.2,465.2 L788.4,456.2 L767.6,447.0 L747.0,437.6 L726.6,427.9 L706.2,417.9 L686.0,407.7 L665.8,397.4 L645.8,386.7 L625.9,375.9 L606.2,364.9 L586.5,353.6 L567.0,342.2 L547.6,330.6 L529.3,321.5 L514.1,301.8 Z" stroke="#d8a13a" stroke-width="3" stroke-opacity="0" stroke-linejoin="round" style="fill:#6b6257"/>
+      <g id="ga2srg-ride"></g>
+      <!-- the crack at the strip's top -->
+      <path id="ga2srg-crack" d="M521,288 L516,296 L519,302 L511,311" fill="none" stroke="#d8a13a" stroke-width="3" stroke-linecap="round" stroke-dasharray="30" stroke-dashoffset="30"/>
+    </g>
+    <!-- HUD: leader from the label to the debris (fixed, never rides the push) -->
+    <path id="ga2srg-leader" class="gas2-hid" d="M1190,488 L1232,584" fill="none" stroke="#d8a13a" stroke-width="3" stroke-linecap="round" stroke-dasharray="106" stroke-dashoffset="106"/>
+  </svg>
+  <div class="gas2-lab gas2-hid" id="ga2srg-lab">Debris Avalanche</div>
+  <div class="gas2-sub gas2-hid" id="ga2srg-sub">USGS Professional Paper 804</div>
+  <div class="gas2-tag" id="ga2srg-tag">NOT TO SCALE</div>
+  <style>
+    #g-a2-surge-root .gas2-card { position:absolute; left:96px; top:54px; width:760px; box-sizing:border-box; padding:22px 28px 20px;
+      background:rgba(232,222,200,.90); border-radius:6px; }
+    #g-a2-surge-root .gas2-q { font:italic 26px/1.3 Georgia, 'Times New Roman', serif; color:#1b1712; }
+    #g-a2-surge-root .gas2-a { margin-top:12px; font:700 18px/1.3 Arial, sans-serif; color:#3a3226; letter-spacing:0.5px; }
+    #g-a2-surge-root .gas2-big { position:absolute; left:1290px; top:330px; font:900 52px/1 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; }
+    #g-a2-surge-root .gas2-sub { position:absolute; left:1292px; top:396px; font:italic 26px/1 Georgia, 'Times New Roman', serif; color:#d8a13a; white-space:nowrap; }
+    #g-a2-surge-root .gas2-src { position:absolute; left:96px; top:960px; font:700 19px/1 Arial, sans-serif; color:#c8d3e0; letter-spacing:1px; white-space:nowrap; }
+  </style>
+  <svg width="1920" height="1080" viewBox="0 0 1920 1080" style="position:absolute;left:0;top:0">
+    <defs>
+      <linearGradient id="ga2srg-fade" x1="0" y1="0" x2="1920" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#fff"/><stop offset="0.86" stop-color="#fff"/><stop offset="0.94" stop-color="#000"/>
+      </linearGradient>
+      <mask id="ga2srg-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <rect x="0" y="0" width="1920" height="1080" fill="url(#ga2srg-fade)"/>
+      </mask>
+    </defs>
+    <g mask="url(#ga2srg-mask)">
+      <!-- the surge: brown water, mud and rock running down the channel from the creek (x 1400) to the frame edge -->
+      <path id="ga2srg-body" d="M1385,640 L1385,600 Q1400,592 1420,596 L1800,596 L1800,640 Z" fill="#6b4f35" fill-opacity="0.92"/>
+      <path id="ga2srg-flow" d="M1400,606 H1800 M1400,620 H1800 M1400,632 H1800" fill="none" stroke="#c8b98a" stroke-opacity="0.55" stroke-width="2" stroke-dasharray="22 30"/>
+      <g id="ga2srg-timber"></g>
+    </g>
+    <!-- back-yard gauge staff (1180 to 1260, 300 to 600): 5 ft as 5 equal ticks of 60 px -->
+    <g id="ga2srg-staff">
+      <rect x="1196" y="300" width="48" height="300" fill="#0b1016" stroke="#93a3b2" stroke-width="2"/>
+      <rect id="ga2srg-fill" x="1198" y="300" width="44" height="300" fill="#6b4f35"/>
+      <path d="M1180,600 H1260 M1180,540 H1214 M1180,480 H1214 M1180,420 H1214 M1180,360 H1214 M1180,300 H1260" stroke="#dfe7ee" stroke-width="3"/>
+    </g>
+  </svg>
+  <div class="gas2-big gas2-hid" id="ga2srg-big">About 5 ft</div>
+  <div class="gas2-sub gas2-hid" id="ga2srg-gsub">in 20 min · Woods Mill</div>
+  <div class="gas2-src gas2-hid" id="ga2srg-src">USGS Professional Paper 804</div>
+  <div class="gas2-card gas2-hid" id="ga2srg-card">
+    <div class="gas2-q" id="ga2srg-q">“the streams rose higher and faster than anyone would have predicted, and left no time for those caught in their path to reach safety”</div>
+    <div class="gas2-a" id="ga2srg-a">Camp and Miller, USGS Open-File Report 70-51 (1970)</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a2-surge", P = "#ga2srg-", NS = "http://www.w3.org/2000/svg";
+  /* cues from audio/a2-s9.words.json (ends 13.42) and audio/a2-s10.words.json shifted by S10 (host start of A2-S10 minus A2-S9) */
+  const S10 = 13.977;  /* A2-S10 data-start 500.556 minus A2-S9 486.579 (index.html, 22 Oct 26) */
+  const CUES = {
+    creek: 1.00,      /* creek @1.00 (strip hits the creek) */
+    surge: 2.58,      /* surge @2.58 */
+    racing: 4.62,     /* racing @4.62 */
+    woods: 10.08,     /* Woods @10.08 (gauge) */
+    five: 12.10,      /* 5 @12.10 (staff climbs) */
+    twenty: 12.86,    /* 20 @12.86 */
+    streams: S10 + 3.02,  /* streams @3.02 in a2-s10 (card) */
+    safety: S10 + 8.96    /* safety @8.96 in a2-s10 */
+  };
+  const DUR = 24.177;  /* S10 + 10.2: a2-s10 ends 9.24 + about 1 s (update with S10) */
+  const WET = "#3b3430", DRY = "#6b6257";
+
+  /* strip states (geom.py, see header) */
+  const S = {
+    A: "M520.0,290.0 L540.0,300.0 L560.0,310.0 L579.2,321.5 L598.5,332.9 L618.0,344.0 L637.5,354.9 L657.2,365.6 L677.0,376.1 L696.8,386.4 L716.8,396.4 L737.0,406.2 L757.2,415.8 L777.5,425.1 L798.0,434.2 L818.6,443.1 L839.2,451.7 L860.0,460.0 L855.2,472.3 L830.2,473.9 L809.2,465.2 L788.4,456.2 L767.6,447.0 L747.0,437.6 L726.6,427.9 L706.2,417.9 L686.0,407.7 L665.8,397.4 L645.8,386.7 L625.9,375.9 L606.2,364.9 L586.5,353.6 L567.0,342.2 L547.6,330.6 L529.3,321.5 L514.1,301.8 Z",
+    B: "M668.9,371.9 L690.9,383.3 L712.9,394.5 L735.1,405.3 L757.5,415.9 L780.0,426.3 L802.6,436.3 L825.4,446.0 L848.3,455.3 L870.8,465.4 L892.9,476.5 L915.9,485.6 L939.3,493.7 L962.6,501.9 L986.0,510.1 L1009.3,518.3 L1032.7,526.4 L1056.0,534.6 L1052.4,545.0 L1026.0,545.3 L1002.7,537.1 L979.3,529.0 L956.0,520.8 L932.6,512.6 L909.3,504.4 L884.0,494.4 L861.9,483.3 L840.8,473.9 L817.6,464.4 L794.6,454.6 L771.8,444.5 L749.0,434.1 L726.5,423.4 L704.0,412.4 L681.7,401.1 L663.8,381.6 Z",
+    C: "M904.5,481.6 L930.6,490.7 L956.7,499.9 L982.8,509.0 L1009.0,518.1 L1035.1,527.3 L1061.2,536.4 L1087.3,545.6 L1113.5,554.7 L1139.6,563.9 L1165.7,573.0 L1191.8,582.1 L1218.0,591.3 L1244.1,600.4 L1270.2,609.6 L1296.3,618.7 L1316.5,636.8 L1336.1,652.2 L1328.7,655.9 L1309.1,649.8 L1291.4,632.9 L1265.3,623.7 L1239.1,614.6 L1213.0,605.4 L1186.9,596.3 L1160.8,587.2 L1134.6,578.0 L1108.5,568.9 L1082.4,559.7 L1056.3,550.6 L1030.1,541.4 L1004.0,532.3 L977.9,523.2 L951.8,514.0 L925.6,504.9 L901.7,489.4 Z",
+    D: "M1130.0,560.5 L1150.3,567.6 L1170.5,574.7 L1190.8,581.8 L1211.1,588.9 L1231.3,596.0 L1251.6,603.1 L1271.9,610.2 L1292.1,617.2 L1308.0,630.4 L1326.8,639.8 L1338.2,656.3 L1351.2,670.0 L1372.7,670.0 L1389.1,661.8 L1398.7,642.6 L1418.5,640.0 L1440.0,640.0 L1440.0,649.9 L1418.5,658.0 L1414.8,650.7 L1405.2,669.9 L1372.7,688.0 L1351.2,688.0 L1322.1,664.4 L1324.7,657.7 L1295.2,643.0 L1286.2,634.2 L1265.9,627.1 L1245.7,620.1 L1225.4,613.0 L1205.1,605.9 L1184.9,598.8 L1164.6,591.7 L1144.3,584.6 L1126.7,569.8 Z"
+  };
+  /* trees riding the strip: [x, y, tilt deg] per state (geom.py, same fraction along the strip) */
+  const T = {
+    A: [[534.2,297.1,0],[562.4,311.5,0],[589.7,327.7,0],[617.2,343.5,0],[644.9,358.9,0],[672.8,373.9,0],[701.0,388.5,0],[729.4,402.6,0],[758.0,416.2,0],[786.9,429.3,0],[816.0,442.0,0],[845.3,454.1,0]],
+    B: [[684.4,380.0,6],[715.7,395.8,-4],[747.2,411.1,9],[779.0,425.8,3],[811.1,439.9,-7],[843.5,453.4,11],[875.4,467.7,5],[907.2,482.5,-3],[940.2,494.1,8],[973.3,505.7,14],[1006.4,517.2,4],[1039.5,528.8,10]],
+    C: [[923.0,488.0,18],[960.0,501.0,10],[997.0,513.9,26],[1034.0,526.9,14],[1071.0,539.9,-6],[1108.0,552.8,30],[1145.0,565.8,22],[1182.1,578.7,8],[1219.1,591.7,34],[1256.1,604.6,40],[1293.1,617.6,16],[1324.1,639.4,28]],
+    D: [[1144.4,565.5,62],[1173.1,575.6,48],[1201.8,585.6,75],[1230.5,595.7,55],[1259.2,605.7,40],[1287.9,615.8,80],[1311.3,633.4,66],[1334.6,649.1,52],[1352.1,670.0,85],[1382.5,670.0,70],[1397.5,645.0,-58],[1424.8,640.0,-78]]
+  };
+  /* trees off the strip, on the profile surface (geom.py); x >= 890 stand in the strip's path */
+  const STATIC = [[330,229],[368,240.4],[406,251.8],[444,263.2],[482,274.6],[890,475],[930,490.5],[970,504.5],[1010,518.5],[1050,532.5],[1090,546.5],[1130,560.5],[1170,574.5],[1210,588.5],[1250,602.5]];
+
+  function tree(parent, id) {
+    const g = document.createElementNS(NS, "g"); g.setAttribute("id", id);
+    const t = document.createElementNS(NS, "path");
+    t.setAttribute("d", "M0,0 L0,-26"); t.setAttribute("stroke", "#4a5560"); t.setAttribute("stroke-width", "3"); t.setAttribute("stroke-linecap", "round");
+    const c = document.createElementNS(NS, "ellipse");
+    c.setAttribute("cx", "0"); c.setAttribute("cy", "-34"); c.setAttribute("rx", "10"); c.setAttribute("ry", "13");
+    c.setAttribute("fill", "#2a3644"); c.setAttribute("stroke", "#4a5560"); c.setAttribute("stroke-width", "2");
+    g.appendChild(t); g.appendChild(c); parent.appendChild(g); return g;
+  }
+
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "scar", P + "sheen", P + "window", P + "leader", P + "lab", P + "sub"], { autoAlpha: 0 }, 0);
+
+  /* whole window: slow push, rain, creek ripple */
+  /* (family slow push replaced by the pull-back below) */
+  const rain = document.querySelector(P + "rain");
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < 44; i++) {
+    const x0 = rnd() * 2000 + 40, y0 = rnd() * 240 - 240;
+    for (let k = 0; k < 6; k++) {
+      const l = document.createElementNS(NS, "line");
+      const x = x0 - 40 * k, y = y0 + 240 * k;
+      l.setAttribute("x1", x.toFixed(1)); l.setAttribute("y1", y.toFixed(1));
+      l.setAttribute("x2", (x - 7).toFixed(1)); l.setAttribute("y2", (y + 36).toFixed(1));
+      rain.appendChild(l);
+    }
+  }
+  tl.fromTo(rain, { x: 0, y: 0 }, { x: -40, y: 240, duration: 0.5, ease: "none", repeat: Math.ceil(DUR / 0.5) - 1 }, 0);
+  tl.fromTo(P + "ripple", { strokeDashoffset: 0 }, { strokeDashoffset: -28, duration: 0.7, ease: "none", repeat: Math.ceil(DUR / 0.7) - 1 }, 0);
+
+  /* static trees; the ones in the path go down as the tongue reaches them */
+  const st = document.querySelector(P + "static"), knock = [];
+  STATIC.forEach((p, i) => {
+    const wrap = document.createElementNS(NS, "g"); wrap.setAttribute("transform", "translate(" + p[0] + "," + p[1] + ")");
+    st.appendChild(wrap); const g = tree(wrap, "ga2srg-st" + i);
+    if (p[0] >= 890) knock.push([g, p[0]]);
+  });
+
+  /* trees riding the strip: a static wrap at the rest position (so frame 0 is right before any seek),
+     a mover g that GSAP offsets by (state - rest), and the tree g that tilts about its base */
+  const ride = document.querySelector(P + "ride"), riders = [];
+  for (let i = 0; i < 12; i++) {
+    const w = document.createElementNS(NS, "g"); w.setAttribute("transform", "translate(" + T.A[i][0] + "," + T.A[i][1] + ")"); ride.appendChild(w);
+    const o = document.createElementNS(NS, "g"); o.setAttribute("id", "ga2srg-r" + i); w.appendChild(o);
+    const g = tree(o, "ga2srg-rt" + i); riders.push([o, g]);
+  }
+  /* offset of state k from rest, for rider i */
+  const dx = (k, i) => +(T[k][i][0] - T.A[i][0]).toFixed(1), dy = (k, i) => +(T[k][i][1] - T.A[i][1]).toFixed(1);
+  /* PULL BACK to the hollow floor: the scene starts pushed in on the slope and eases out */
+  tl.fromTo(P + "scene", { scale: 1.18, svgOrigin: "1100 520" }, { scale: 1, svgOrigin: "1100 520", duration: 1.6, ease: "power2.inOut", immediateRender: true }, 0);
+  tl.set([P + "band", P + "strip"], { stroke: WET }, 0);
+  tl.set(P + "strip", { fill: WET, attr: { d: S.C, "stroke-opacity": 1 } }, 0);
+  tl.set(P + "scar", { autoAlpha: 1 }, 0);
+  riders.forEach(([o, g], i) => { tl.set(o, { x: dx("C", i), y: dy("C", i) }, 0); tl.set(g, { rotation: T.C[i][2], svgOrigin: "0 0" }, 0); });
+  knock.forEach(([g]) => tl.set(g, { autoAlpha: 0 }, 0));
+
+  /* CREEK: the load drops into the creek */
+  tl.to(P + "strip", { attr: { d: S.D }, duration: 0.7, ease: "power2.out" }, CUES.creek);
+  riders.forEach(([o, g], i) => {
+    tl.to(o, { x: dx("D", i), y: dy("D", i), duration: 0.7, ease: "power2.out" }, CUES.creek);
+    tl.to(g, { rotation: T.D[i][2], svgOrigin: "0 0", duration: 0.7, ease: "power2.out" }, CUES.creek);
+  });
+  tl.fromTo(P + "water", { attr: { d: "M1341,660 L1389,660 L1385,670 L1345,670 Z" }, fill: "#5a768f" },
+    { attr: { d: "M1330,641 L1400,641 L1385,670 L1345,670 Z" }, fill: "#6b4f35", duration: 0.5, ease: "power3.out" }, CUES.creek + 0.3);
+
+  /* SURGE: the brown wall runs down the channel (rightward), timber riding it */
+  tl.fromTo(P + "body", { scaleX: 0, svgOrigin: "1385 620" }, { scaleX: 1, svgOrigin: "1385 620", duration: 2.0, ease: "power2.in" }, CUES.surge);
+  const timber = document.querySelector(P + "timber"), logs = [];
+  for (let i = 0; i < 7; i++) {
+    const l = document.createElementNS(NS, "path");
+    l.setAttribute("d", "M-16,0 L16,0"); l.setAttribute("stroke", "#4a3a2a"); l.setAttribute("stroke-width", "5"); l.setAttribute("stroke-linecap", "round");
+    const w = document.createElementNS(NS, "g"); w.setAttribute("transform", "translate(1400," + (604 + (i % 3) * 11) + ")");
+    w.appendChild(l); timber.appendChild(w); logs.push(l);
+  }
+  /* flow speed: 1 lap of 420 px per 1.4 s while racing, then 0.4 x speed under the A2-S10 card */
+  const FAST = 1.4, SLOW = FAST / 0.4, lapsFast = Math.ceil((CUES.streams - 0.5 - CUES.racing) / FAST);
+  const tSlow = CUES.racing + lapsFast * FAST;
+  logs.forEach((l, i) => {
+    const off = i * FAST / 7;
+    tl.fromTo(l, { x: 0, rotation: i * 25, svgOrigin: "0 0", autoAlpha: 0 }, { x: 420, rotation: i * 25 + 140, svgOrigin: "0 0", autoAlpha: 1, duration: FAST, ease: "none", repeat: lapsFast - 1 }, CUES.racing + off);
+    tl.fromTo(l, { x: 0, rotation: i * 25, svgOrigin: "0 0" }, { x: 420, rotation: i * 25 + 140, svgOrigin: "0 0", duration: SLOW, ease: "none", repeat: Math.ceil((DUR - tSlow) / SLOW) }, tSlow + off);
+  });
+  tl.fromTo(P + "flow", { strokeDashoffset: 0, autoAlpha: 0 }, { strokeDashoffset: -52 * Math.round((tSlow - CUES.surge) / 0.35), autoAlpha: 1, duration: tSlow - CUES.surge, ease: "none" }, CUES.surge);
+  tl.fromTo(P + "flow", { strokeDashoffset: 0 }, { strokeDashoffset: -52 * Math.round((DUR - tSlow) / 0.875), duration: DUR - tSlow, ease: "none" }, tSlow);
+
+  /* WOODS MILL: the gauge staff, then the water climbs 5 ticks on "5 ... 20" */
+  tl.fromTo(P + "staff", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUES.woods);
+  tl.fromTo(P + "fill", { scaleY: 0, svgOrigin: "1220 600" }, { scaleY: 1, svgOrigin: "1220 600", duration: 1.6, ease: "power2.out" }, CUES.five);
+  tl.fromTo(P + "big", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, CUES.five + 0.1);
+  tl.fromTo(P + "gsub", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.twenty);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.twenty + 0.3);
+
+  /* A2-S10: gauge label leaves, the card comes in over the slowed surge */
+  tl.to([P + "big", P + "gsub"], { autoAlpha: 0, x: 40, duration: 0.4, ease: "power2.in" }, CUES.streams - 0.8);
+  tl.fromTo(P + "card", { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, CUES.streams - 0.4);
+  tl.to(P + "card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  tl.set({}, {}, DUR);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>

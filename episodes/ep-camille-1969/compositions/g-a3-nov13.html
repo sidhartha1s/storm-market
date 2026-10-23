@@ -23,6 +23,7 @@
   #nv-b2 { top:640px; width:312px; background:linear-gradient(90deg, #8e2020, #c0392b); }
   .nv-val { position:absolute; left:124px; opacity:0; visibility:hidden; white-space:nowrap; }
   #nv-v1 { top:500px; font-family:'Courier New',monospace; font-weight:700; font-size:84px; line-height:96px; color:#f2f5f8; }
+  #nv-v1b { top:500px; left:300px; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:60px; line-height:96px; color:#f2f5f8; }
   #nv-v2 { top:640px; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:60px; line-height:96px; color:#f2f5f8; }
   #nv-card { position:absolute; left:720px; top:790px; width:840px; height:200px; box-sizing:border-box; padding:34px 48px; opacity:0; visibility:hidden;
     background:rgba(232,222,200,0.90); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
@@ -44,6 +45,7 @@
   <div class="nv-bar" id="nv-b1"></div>
   <div class="nv-bar" id="nv-b2"></div>
   <div class="nv-val" id="nv-v1">0</div>
+  <div class="nv-val" id="nv-v1b">lost their lives</div>
   <div class="nv-val" id="nv-v2">39 still missing</div>
   <div id="nv-card"><div id="nv-q">&ldquo;thirty-nine missing and presumed dead&rdquo;</div><div id="nv-att">ENCYCLOPEDIA VIRGINIA &middot; TIMELINE</div></div>
   <div id="nv-src">USGS Open-File Report 70-51, p. 1</div>
@@ -56,10 +58,10 @@ window.__timelines = window.__timelines || {};
   /* CUE-PENDING all cues are ESTIMATES (no audio/a3-s10.words.json yet): "thirteenth" 0.54 · "hundred thirteen" 3.16 · "Thirty-nine" 5.87 · "Encyclopedia" 11.11 · last word ends ~13.98 */
   const vaLen = Math.ceil(document.querySelector("#nv-va").getTotalLength()) + 1;
   gsap.set("#nv-va", { strokeDasharray: vaLen, strokeDashoffset: vaLen });
-  tl.set(["#nv-valab", "#nv-stamp", "#nv-v1", "#nv-v2", "#nv-card", "#nv-src"], { autoAlpha: 0 }, 0);
+  tl.set(["#nv-valab", "#nv-stamp", "#nv-v1", "#nv-v1b", "#nv-v2", "#nv-card", "#nv-src"], { autoAlpha: 0 }, 0);
   tl.set(["#nv-b1", "#nv-b2"], { scaleX: 0 }, 0);
 
-  tl.fromTo("#nv-scan", { x: -40 }, { x: 1960, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#nv-scan", { x: -40 }, { x: 1560, duration: DUR, ease: "none" }, 0);
   /* outline draws on "By November" */
   tl.to("#nv-va", { autoAlpha: 1, duration: 0.3 }, 0.1);
   tl.to("#nv-va", { strokeDashoffset: 0, duration: 1.8, ease: "power2.inOut" }, 0.1);
@@ -72,6 +74,7 @@ window.__timelines = window.__timelines || {};
   /* bar 113 on "hundred thirteen" @3.16-3.5, 8 px per unit */
   const c113 = { v: 0 };
   tl.to("#nv-b1", { scaleX: 1, duration: 1.1, ease: "power3.out" }, 3.2);
+  tl.fromTo("#nv-v1b", { autoAlpha: 0, x: 0 }, { autoAlpha: 1, x: 904, duration: 1.1, ease: "power3.out" }, 3.2);
   tl.fromTo("#nv-v1", { autoAlpha: 0, x: 0 }, { autoAlpha: 1, x: 904, duration: 1.1, ease: "power3.out" }, 3.2);
   tl.to(c113, { v: 113, duration: 1.1, ease: "power3.out", onUpdate: () => { document.querySelector("#nv-v1").textContent = Math.round(c113.v); } }, 3.2);
   tl.fromTo("#nv-src", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 3.4);
@@ -83,7 +86,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#nv-card", { y: 0 }, { y: -6, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 11.8);
   /* exit, last 0.6 s */
   tl.to(["#nv-b1", "#nv-b2"], { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 14.3);
-  tl.to(["#nv-v1", "#nv-v2"], { y: 40, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 14.3);
+  tl.to(["#nv-v1", "#nv-v1b", "#nv-v2"], { y: 40, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 14.3);
   tl.to("#nv-card", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 14.3);
   tl.to(["#nv-stamp", "#nv-valab", "#nv-src", "#nv-va"], { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 14.3);
   window.__timelines["g-a3-nov13"] = tl;

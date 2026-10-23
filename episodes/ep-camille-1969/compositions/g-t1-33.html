@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-t1-33: T1-S1 (3.31 s), glass card over V13/Massies_Mill_Flooding_(7797529874).jpg (the host mounts the still beneath).
+     Comp time 0 = first word of T1-S1. Cues from audio/t1-s1.words.json: "33" @0.16, "never" @2.36.
+     Presenter corner x >= 1600, y >= 680 stays empty. */
+  #g-t1-33-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .t133-card { position:absolute; left:160px; top:330px; width:660px; height:430px; box-sizing:border-box; padding:34px 56px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; box-shadow:inset 0 1px 0 rgba(255,255,255,0.10); }
+  .t133-num { position:absolute; left:56px; top:6px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:290px; line-height:300px; color:#c0392b;
+    text-shadow:0 4px 30px rgba(0,0,0,0.55); letter-spacing:-4px; }
+  .t133-lab { position:absolute; left:60px; bottom:44px; font-family:Georgia, serif; font-style:italic; font-size:50px; line-height:56px; color:#f2f5f8; }
+  .t133-bar { position:absolute; left:60px; bottom:112px; width:200px; height:4px; background:#d8a13a; }
+  .t133-src { position:absolute; left:96px; bottom:54px; box-sizing:border-box; padding:12px 24px; font-weight:700; font-size:22px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:16px; }
+</style>
+<div id="g-t1-33-root" data-composition-id="g-t1-33" data-width="1920" data-height="1080" data-duration="3.31">
+  <div class="t133-card" id="t133-card">
+    <div class="t133-num" id="t133-num">33</div>
+    <div class="t133-bar" id="t133-bar"></div>
+    <div class="t133-lab" id="t133-lab">Never found</div>
+  </div>
+  <div class="t133-src" id="t133-src">Nelson County &middot; News &amp; Advance, 2019 (Oakland Museum list)</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#t133-card", "#t133-lab", "#t133-src"], { autoAlpha: 0 }, 0);
+  tl.set("#t133-bar", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* 33 @0.16: card pops */
+  tl.fromTo("#t133-card", { autoAlpha: 0, scale: 0.8, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 0.16);
+  tl.fromTo("#t133-src", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.5);
+  tl.to("#t133-bar", { scaleX: 1, duration: 0.6, ease: "power2.out" }, 0.9);
+  /* never @2.36: the label */
+  tl.fromTo("#t133-lab", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.36);
+  /* drift so the card never freezes */
+  tl.fromTo("#t133-card", { y: 0 }, { y: -10, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.7);
+  /* exit lands on the hard cut to T1-S2 */
+  tl.to(["#t133-card", "#t133-src"], { x: 980, autoAlpha: 0, duration: 0.36, ease: "power3.in" }, 2.95);
+  window.__timelines["g-t1-33"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

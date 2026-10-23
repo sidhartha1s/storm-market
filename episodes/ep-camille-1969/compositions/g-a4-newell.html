@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a4-newell: A4-S12 (voice 14.07 s), small verbatim glass lower third over V11/Scottsville_Aerial_View_(7797532376).jpg, then LVA/Rt._603_Flooding, then LVA/Traffic_on_I-95_after_Camille
+     (the host mounts the stills beneath; no place label on them). Comp time 0 = first word of A4-S12. Two lines max per screen, quote at 34 px in two screens.
+     Cues from audio/a4-s12.words.json: "Newell" 0.00 (name plate), "Quote," 5.36, "We" 6.16, "especially" 9.16, "We" 10.96, "knowledge" 12.86, "events." 13.50 (ends 14.07).
+     Host should run 14.6 s. Corner x >= 1600, y >= 680 empty (everything ends at x 1550). */
+  #g-a4-newell-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .an-glass { position:absolute; inset:auto; box-sizing:border-box; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:inset 0 1px 0 rgba(255,255,255,0.10); }
+  #an-plate { left:110px; bottom:110px; width:1440px; padding:24px 48px 22px 48px; border-radius:24px; }
+  #an-name { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:54px; line-height:62px; color:#f2f5f8; }
+  #an-title { margin-top:4px; font-weight:700; font-size:26px; line-height:34px; letter-spacing:1px; color:#d8a13a; }
+  #an-src { margin-top:4px; font-weight:700; font-size:22px; line-height:30px; letter-spacing:2px; color:#c8d3e0; }
+  #an-qa, #an-qb { left:110px; bottom:372px; width:1440px; padding:26px 48px 24px 48px; border-radius:24px; }
+  .an-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:34px; line-height:46px; color:#f2f5f8; }
+  .an-q span { display:inline-block; }
+</style>
+<div id="g-a4-newell-root" data-composition-id="g-a4-newell" data-width="1920" data-height="1080" data-duration="14.6">
+  <div class="an-glass" id="an-qa"><div class="an-q"><span id="an-a1">&ldquo;We just want to make sure that some of these older cases are highlighted,</span> <span id="an-a2">especially as time goes on,</span></div></div>
+  <div class="an-glass" id="an-qb"><div class="an-q"><span id="an-b1">we start losing the people</span> <span id="an-b2">who had historical knowledge of events.&rdquo;</span></div></div>
+  <div class="an-glass" id="an-plate">
+    <div id="an-name">Lara Newell</div>
+    <div id="an-title">Long-term unidentified coordinator, Office of the Chief Medical Examiner</div>
+    <div id="an-src">29News/WVIR, August 31, 2026</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#an-qa", "#an-qb", "#an-plate", "#an-a1", "#an-a2", "#an-b1", "#an-b2"], { autoAlpha: 0 }, 0);
+
+  /* name plate on "Newell" @0.00 */
+  tl.fromTo("#an-plate", { autoAlpha: 0, x: -120 }, { autoAlpha: 1, x: 0, duration: 0.55, ease: "power3.out" }, 0.1);
+  tl.fromTo("#an-plate", { y: 0 }, { y: -6, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0.8);
+  /* SCREEN A on "Quote," @5.36: card enters, phrases on the voice */
+  tl.fromTo("#an-qa", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 5.4);
+  tl.fromTo("#an-a1", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 6.16);
+  tl.fromTo("#an-a2", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 9.16);
+  tl.fromTo("#an-qa", { y: 0 }, { y: -6, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 6.2);
+  /* screen A leaves left as screen B enters on the second "We" @10.96 */
+  tl.to("#an-qa", { x: -1100, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 10.8);
+  tl.fromTo("#an-qb", { autoAlpha: 0, x: 1100 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 10.9);
+  tl.fromTo("#an-b1", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 10.96);
+  tl.fromTo("#an-b2", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 12.4);
+  tl.fromTo("#an-qb", { y: 0 }, { y: -6, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 11.6);
+  /* exit, last 0.6 s */
+  tl.to(["#an-qb", "#an-plate"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 14.0);
+  window.__timelines["g-a4-newell"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

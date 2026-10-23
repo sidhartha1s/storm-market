@@ -1,12 +1,18 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
 <!--
   g-a1-forecast: A1-S3, the QUOTE-CARD FAMILY BASE (full frame, beige cite card on BG gradient). Two cards in sequence:
   Halverson (card 1), McGinnis (card 2). Copy this file for every beige quote comp (rename the a1fc- prefix per copy).
   Family knobs: card enter fromTo y:40 -> 0 0.55 power3.out; mark pop back.out(2); phrase reveal fromTo y:14 -> 0 0.3 power3.out;
   card 1 exits LEFT as card 2 enters from the right; last card exits x:980 in the comp's last 0.6 s.
-  Corner x >= 1600, y >= 680 is empty: card bottom is y 660.
+  Corner x >= 1600, y >= 680 is empty: card right edge is x 1560.
+  FAMILY FIX (22 Oct 26, orchestrator read): no moving sheen/beam inside the beige card (it read as a dark crease at x 1050-1250); the card stays flat beige.
+  Motion comes from the grid drift, glow drift, phrase reveals and the card float.
   Comp time 0 = first word of A1-S3. Every cue below is estimated from the line (words.json not on disk yet): CUE-PENDING.
 -->
-<template>
 <style>
   #g-a1-forecast-root { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
     background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
@@ -15,22 +21,20 @@
     background-size: 120px 120px; }
   .a1fc-glow { position:absolute; left:-200px; top:80px; width:1300px; height:900px; border-radius:50%;
     background: radial-gradient(ellipse, rgba(232,197,106,0.08), rgba(232,197,106,0) 70%); }
-  .a1fc-card { position:absolute; left:160px; top:140px; width:1600px; height:520px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+  .a1fc-card { position:absolute; left:160px; top:240px; width:1400px; height:600px; box-sizing:border-box; border-radius:28px; overflow:hidden;
     background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
-  .a1fc-cbeam { position:absolute; top:0; bottom:0; left:0; width:260px; background:linear-gradient(90deg, transparent, rgba(138,90,16,0.14), transparent); }
   .a1fc-mark { position:absolute; left:40px; top:24px; font-family:'AbrilFig', Georgia, serif; font-size:170px; line-height:170px; color:#8a5a10; }
-  .a1fc-q { position:absolute; left:150px; right:90px; top:70px; font-family: Georgia, serif; font-style:italic; font-size:54px; line-height:72px; color:#1c1a17; }
+  .a1fc-q { position:absolute; left:150px; right:80px; top:86px; font-family: Georgia, serif; font-style:italic; font-size:64px; line-height:86px; color:#1c1a17; }
   .a1fc-q span { display:inline-block; }
-  .a1fc-rule { position:absolute; left:150px; bottom:134px; width:240px; height:3px; background:#8a5a10; }
-  .a1fc-who { position:absolute; left:150px; bottom:84px; font-weight:700; font-size:28px; letter-spacing:1px; color:#2a2622; white-space:nowrap; }
-  .a1fc-src { position:absolute; left:150px; bottom:42px; font-weight:700; font-size:22px; letter-spacing:2px; color:#5a4a2e; white-space:nowrap; }
+  .a1fc-rule { position:absolute; left:150px; bottom:158px; width:240px; height:3px; background:#8a5a10; }
+  .a1fc-who { position:absolute; left:150px; bottom:106px; font-weight:700; font-size:30px; letter-spacing:1px; color:#2a2622; white-space:nowrap; }
+  .a1fc-src { position:absolute; left:150px; bottom:60px; font-weight:700; font-size:24px; letter-spacing:2px; color:#5a4a2e; white-space:nowrap; }
 </style>
 <div id="g-a1-forecast-root" data-composition-id="g-a1-forecast" data-width="1920" data-height="1080" data-duration="12">
   <div class="a1fc-grid" id="a1fc-grid"></div>
   <div class="a1fc-glow" id="a1fc-glow"></div>
 
   <div class="a1fc-card" id="a1fc-card1">
-    <div class="a1fc-cbeam" id="a1fc-cbeam1"></div>
     <div class="a1fc-mark" id="a1fc-mark1">&ldquo;</div>
     <div class="a1fc-q" id="a1fc-q1"><span id="a1fc-a1">The weather bureau at the time simply stated</span> <span id="a1fc-a2">there will be showers tonight,</span> <span id="a1fc-a3">clearing in the morning.&rdquo;</span></div>
     <div class="a1fc-rule" id="a1fc-rule1"></div>
@@ -39,7 +43,6 @@
   </div>
 
   <div class="a1fc-card" id="a1fc-card2">
-    <div class="a1fc-cbeam" id="a1fc-cbeam2"></div>
     <div class="a1fc-mark" id="a1fc-mark2">&ldquo;</div>
     <div class="a1fc-q" id="a1fc-q2"><span id="a1fc-b1">11 o&rsquo;clock news that night,</span> <span id="a1fc-b2">weather report said rainy and cloudy.</span> <span id="a1fc-b3">Just go to bed, yeah.&rdquo;</span></div>
     <div class="a1fc-rule" id="a1fc-rule2"></div>
@@ -61,29 +64,27 @@ window.__timelines = window.__timelines || {};
   /* ambient, whole window */
   tl.fromTo("#a1fc-grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
   tl.fromTo("#a1fc-glow", { x: 0, y: 0 }, { x: 900, y: 100, duration: DUR, ease: "none" }, 0);
-  tl.fromTo("#a1fc-cbeam1", { x: -260 }, { x: 1600, duration: 3.0, ease: "none", repeat: 1 }, 2.8);
-  tl.fromTo("#a1fc-cbeam2", { x: -260 }, { x: 1600, duration: 3.0, ease: "none", repeat: 2 }, 5.6);
 
-  /* CARD 1 (Halverson): enters on "forecast" /* CUE-PENDING forecast @2.5 */ */
+  /* CARD 1 (Halverson): enters on "forecast" -- CUE-PENDING forecast @2.5 */
   tl.fromTo("#a1fc-card1", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 2.5);
   tl.fromTo("#a1fc-mark1", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 2.8);
   tl.fromTo("#a1fc-who1", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.9);
   tl.fromTo("#a1fc-src1", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 3.1);
   tl.to("#a1fc-rule1", { scaleX: 1, duration: 0.8, ease: "power2.out" }, 3.0);
-  /* phrases: "forecast was" @2.9, "showers" @3.3, "clearing in the morning" @4.3 */ /* CUE-PENDING showers */
+  /* phrases: "forecast was" @2.9, "showers" @3.3, "clearing in the morning" @4.3 -- CUE-PENDING showers */
   tl.fromTo("#a1fc-a1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 2.9);
   tl.fromTo("#a1fc-a2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 3.3);
   tl.fromTo("#a1fc-a3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 4.3);
   tl.fromTo("#a1fc-card1", { y: 0 }, { y: -8, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.4);
 
-  /* CARD 1 leaves LEFT as CARD 2 enters /* CUE-PENDING Bernard McGinnis @5.2 */ */
+  /* CARD 1 leaves LEFT as CARD 2 enters -- CUE-PENDING Bernard McGinnis @5.2 */
   tl.to("#a1fc-card1", { x: -1100, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 5.1);
   tl.fromTo("#a1fc-card2", { autoAlpha: 0, x: 1100 }, { autoAlpha: 1, x: 0, duration: 0.65, ease: "power3.out" }, 5.2);
   tl.fromTo("#a1fc-mark2", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 5.7);
   tl.fromTo("#a1fc-who2", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 5.8);
   tl.fromTo("#a1fc-src2", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 6.0);
   tl.to("#a1fc-rule2", { scaleX: 1, duration: 0.8, ease: "power2.out" }, 5.9);
-  /* phrases: "eleven o'clock news" @7.2, "Rainy and cloudy" @8.4, "so you went to bed" @10.2 */ /* CUE-PENDING eleven @7.2 */
+  /* phrases: "eleven o'clock news" @7.2, "Rainy and cloudy" @8.4, "so you went to bed" @10.2 -- CUE-PENDING eleven @7.2 */
   tl.fromTo("#a1fc-b1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 7.2);
   tl.fromTo("#a1fc-b2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 8.4);
   tl.fromTo("#a1fc-b3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 10.2);
@@ -95,3 +96,5 @@ window.__timelines = window.__timelines || {};
 })();
 </script>
 </template>
+</body>
+</html>

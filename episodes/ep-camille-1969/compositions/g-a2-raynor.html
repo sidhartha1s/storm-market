@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a2-raynor: A2-S12 (voice 16.41 s), glass quote over LVA/Debris_and_Damages_in_Nelson_(7797538826).jpg then LVA/Damaged_Belongings_in_Howardsville_(7797528010).jpg
+     (the host mounts both stills beneath). Comp time 0 = first word of A2-S12. Cues from audio/a2-s12.words.json: "Robert" 6.74, "Raynor" 7.04 (Whisper wrote "Rayner"),
+     "current" 8.72, "It" 9.82, "rings," 10.88, "high" 11.68, "gone." 15.94 (ends ~16.4). Host should run 16.9 s. Corner x >= 1600, y >= 680 empty. */
+  #g-a2-raynor-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .ar-wrap { position:absolute; inset:auto; left:160px; bottom:150px; width:1400px; display:flex; flex-direction:column; align-items:flex-start; gap:22px; }
+  .ar-card { position:relative; box-sizing:border-box; width:1400px; padding:40px 64px 36px 150px; border-radius:28px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:inset 0 1px 0 rgba(255,255,255,0.10); }
+  .ar-mark { position:absolute; left:42px; top:14px; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:150px; color:#d8a13a; }
+  .ar-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:52px; line-height:68px; color:#f2f5f8; }
+  .ar-q span { display:inline-block; }
+  .ar-rule { width:220px; height:3px; margin-top:24px; background:#d8a13a; }
+  .ar-who { margin-top:16px; font-weight:700; font-size:28px; line-height:36px; letter-spacing:1px; color:#d8a13a; }
+  .ar-srcp { position:absolute; left:96px; bottom:54px; box-sizing:border-box; padding:12px 24px; border-radius:16px; opacity:0; visibility:hidden; white-space:nowrap;
+    font-weight:700; font-size:22px; letter-spacing:2px; color:#c8d3e0;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+</style>
+<div id="g-a2-raynor-root" data-composition-id="g-a2-raynor" data-width="1920" data-height="1080" data-duration="16.9">
+  <div class="ar-wrap" id="ar-wrap">
+    <div class="ar-card" id="ar-card">
+      <div class="ar-mark" id="ar-mark">&ldquo;</div>
+      <div class="ar-q" id="ar-q"><span id="ar-p1">The current they had been in was so strong</span> <span id="ar-p2">that it had even taken off their rings,</span> <span id="ar-p3">high school rings and wedding rings.&rdquo;</span></div>
+      <div class="ar-rule" id="ar-rule"></div>
+      <div class="ar-who" id="ar-who">Dr. Robert Raynor</div>
+    </div>
+  </div>
+  <div class="ar-srcp" id="ar-src">Quoted by The News &amp; Advance in 2009; reprinted Aug 11, 2019</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#ar-card", "#ar-mark", "#ar-who", "#ar-src", "#ar-p1", "#ar-p2", "#ar-p3"], { autoAlpha: 0 }, 0);
+  tl.set("#ar-rule", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* card on "Robert Raynor" @6.74 */
+  tl.fromTo("#ar-card", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" }, 6.74);
+  tl.fromTo("#ar-mark", { autoAlpha: 0, scale: 1.6, y: -20 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 7.0);
+  tl.to("#ar-rule", { scaleX: 1, duration: 0.8, ease: "power2.out" }, 7.2);
+  tl.fromTo("#ar-who", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 7.1);
+  /* source plate on the first beat (also keeps the early window moving) */
+  tl.fromTo("#ar-src", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.fromTo("#ar-src", { y: 0 }, { y: -5, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 13 }, 1.0);
+  /* phrases on the voice: "how strong the current" 7.96-8.72 -> p1 · "It had even taken off their rings" 9.82 -> p2 · "high school rings" 11.68 -> p3 */
+  tl.fromTo("#ar-p1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 7.96);
+  tl.fromTo("#ar-p2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 9.82);
+  tl.fromTo("#ar-p3", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 11.68);
+  /* float through the hold */
+  tl.fromTo("#ar-card", { y: 0 }, { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 7 }, 7.5);
+  /* exit, last 0.6 s */
+  tl.to(["#ar-card", "#ar-src"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 16.3);
+  window.__timelines["g-a2-raynor"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

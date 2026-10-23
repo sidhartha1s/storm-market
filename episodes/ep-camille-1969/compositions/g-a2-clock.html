@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a2-clock: A2-S6 (voice 14.30 s). Full frame: dim SCHEMATIC hollows ground (same contours as g-a2-houses; no real geography, no labels), a slim timeline
+     (axis x 200 to 1400, y 820) and 13 slide marks. If g-a2-hollows is mounted beneath instead, drop #ack-ground + #ack-map.
+     Mark x (script, 150 px first gap x 0.88 each step, so spacing shrinks toward the right): 220, 370.0, 502.0, 618.2, 720.4, 810.3, 889.5, 959.2, 1020.5, 1074.4, 1121.9, 1163.6, 1200.4.
+     Mark 11 (x 1121.9) is the "about 4 AM" mark; marks 12 and 13 are the two after it.
+     Comp time 0 = first word of A2-S6. Cues from audio/a2-s6.words.json: "Floyd" 1.98, "three" 5.06, "People" 6.24, "four" 11.28, "after" 12.16, "mist" 13.88.
+     Presenter corner x >= 1600, y >= 680 stays empty. */
+  #g-a2-clock-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; }
+  #ack-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  #ack-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ack-cont { fill:none; stroke:#2f3f4f; stroke-width:1.5; opacity:0.45; }
+  #ack-creek { fill:none; stroke:#5a768f; stroke-width:4; stroke-linecap:round; opacity:0.5; }
+  #ack-hollow { fill:none; stroke:#5a768f; stroke-width:2; stroke-dasharray:10 10; opacity:0.5; }
+  #ack-axis { stroke:#5a768f; stroke-width:4; stroke-linecap:round; }
+  .ack-m { stroke:#d8a13a; stroke-width:6; stroke-linecap:round; }
+  .ack-d { fill:#d8a13a; }
+  .ack-ring { fill:none; stroke:#e8c56a; stroke-width:3; }
+  #ack-m11 { stroke:#e74c3c; } #ack-d11 { fill:#e74c3c; }
+  #ack-scan { position:absolute; left:0; top:0; width:3px; height:1080px; opacity:0.5; pointer-events:none;
+    background:linear-gradient(180deg, rgba(127,178,229,0), rgba(127,178,229,0.35) 50%, rgba(127,178,229,0)); }
+  .ack-glass { position:absolute; box-sizing:border-box; opacity:0; visibility:hidden; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #ack-chip { left:200px; top:590px; padding:16px 40px; border-radius:22px;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:66px; letter-spacing:3px; color:#d8a13a; }
+  #ack-stamp { left:830px; top:690px; padding:14px 28px; border-radius:20px;
+    font-weight:700; font-size:30px; line-height:38px; letter-spacing:2px; color:#f5d98b; }
+</style>
+<div id="g-a2-clock-root" data-composition-id="g-a2-clock" data-width="1920" data-height="1080" data-duration="14.8">
+  <div id="ack-ground"></div>
+  <div id="ack-scan"></div>
+  <svg id="ack-svg" viewBox="0 0 1920 1080">
+    <g id="ack-map">
+      <path class="ack-cont" d="M-40 300 C 300 220, 620 380, 980 300 S 1560 180, 1960 280"/>
+      <path class="ack-cont" d="M-40 420 C 360 340, 700 500, 1020 420 S 1580 320, 1960 400"/>
+      <path class="ack-cont" d="M-40 560 C 300 500, 700 640, 1060 560 S 1560 500, 1960 580"/>
+      <path class="ack-cont" d="M-40 960 C 360 900, 760 1020, 1100 960 S 1560 900, 1960 980"/>
+      <path id="ack-creek" d="M120 480 C 420 400, 640 560, 900 470 S 1340 370, 1580 430"/>
+      <ellipse id="ack-hollow" cx="960" cy="440" rx="630" ry="112"/>
+    </g>
+    <line id="ack-axis" x1="200" y1="820" x2="1400" y2="820"/>
+    <g id="ack-marks">
+      <circle class="ack-ring" id="ack-r1" cx="220" cy="820" r="10"/><line class="ack-m" id="ack-m1" x1="220" y1="790" x2="220" y2="850"/><circle class="ack-d" id="ack-d1" cx="220" cy="790" r="9"/>
+      <circle class="ack-ring" id="ack-r2" cx="370" cy="820" r="10"/><line class="ack-m" id="ack-m2" x1="370" y1="790" x2="370" y2="850"/><circle class="ack-d" id="ack-d2" cx="370" cy="790" r="9"/>
+      <circle class="ack-ring" id="ack-r3" cx="502" cy="820" r="10"/><line class="ack-m" id="ack-m3" x1="502" y1="790" x2="502" y2="850"/><circle class="ack-d" id="ack-d3" cx="502" cy="790" r="9"/>
+      <circle class="ack-ring" id="ack-r4" cx="618.2" cy="820" r="10"/><line class="ack-m" id="ack-m4" x1="618.2" y1="790" x2="618.2" y2="850"/><circle class="ack-d" id="ack-d4" cx="618.2" cy="790" r="9"/>
+      <circle class="ack-ring" id="ack-r5" cx="720.4" cy="820" r="10"/><line class="ack-m" id="ack-m5" x1="720.4" y1="790" x2="720.4" y2="850"/><circle class="ack-d" id="ack-d5" cx="720.4" cy="790" r="9"/>
+      <circle class="ack-ring" id="ack-r6" cx="810.3" cy="820" r="10"/><line class="ack-m" id="ack-m6" x1="810.3" y1="790" x2="810.3" y2="850"/><circle class="ack-d" id="ack-d6" cx="810.3" cy="790" r="9"/>
+      <circle class="ack-ring" id="ack-r7" cx="889.5" cy="820" r="10"/><line class="ack-m" id="ack-m7" x1="889.5" y1="790" x2="889.5" y2="850"/><circle class="ack-d" id="ack-d7" cx="889.5" cy="790" r="9"/>
+      <circle class="ack-ring" id="ack-r8" cx="959.2" cy="820" r="10"/><line class="ack-m" id="ack-m8" x1="959.2" y1="790" x2="959.2" y2="850"/><circle class="ack-d" id="ack-d8" cx="959.2" cy="790" r="9"/>
+      <circle class="ack-ring" id="ack-r9" cx="1020.5" cy="820" r="10"/><line class="ack-m" id="ack-m9" x1="1020.5" y1="790" x2="1020.5" y2="850"/><circle class="ack-d" id="ack-d9" cx="1020.5" cy="790" r="9"/>
+      <circle class="ack-ring" id="ack-r10" cx="1074.4" cy="820" r="10"/><line class="ack-m" id="ack-m10" x1="1074.4" y1="790" x2="1074.4" y2="850"/><circle class="ack-d" id="ack-d10" cx="1074.4" cy="790" r="9"/>
+      <circle class="ack-ring" id="ack-r11" cx="1121.9" cy="820" r="10"/><line class="ack-m" id="ack-m11" x1="1121.9" y1="790" x2="1121.9" y2="850"/><circle class="ack-d" id="ack-d11" cx="1121.9" cy="790" r="9"/>
+      <circle class="ack-ring" id="ack-r12" cx="1163.6" cy="820" r="10"/><line class="ack-m" id="ack-m12" x1="1163.6" y1="790" x2="1163.6" y2="850"/><circle class="ack-d" id="ack-d12" cx="1163.6" cy="790" r="9"/>
+      <circle class="ack-ring" id="ack-r13" cx="1200.4" cy="820" r="10"/><line class="ack-m" id="ack-m13" x1="1200.4" y1="790" x2="1200.4" y2="850"/><circle class="ack-d" id="ack-d13" cx="1200.4" cy="790" r="9"/>
+    </g>
+  </svg>
+  <div class="ack-glass" id="ack-chip">ABOUT 3 MINUTES</div>
+  <div class="ack-glass" id="ack-stamp">about 4 AM &middot; rain down to a mist</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 14.8;
+  /* mark drop times (s): Floyd's slide 2.2 3.5 4.6 · "People said ... more often" 6.5 7.4 7.9 8.4 8.8 9.1 9.4 · "four" 11.3 · after the mist, two more 12.9 13.5 */
+  const T = [2.2, 3.5, 4.6, 6.5, 7.4, 7.9, 8.4, 8.8, 9.1, 9.4, 11.3, 12.9, 13.5];
+  tl.set(["#ack-chip", "#ack-stamp"], { autoAlpha: 0 }, 0);
+  tl.set([".ack-m", ".ack-d", ".ack-ring"], { autoAlpha: 0 }, 0);
+  tl.set("#ack-axis", { attr: { x2: 200 } }, 0);
+
+  tl.fromTo("#ack-scan", { x: -40 }, { x: 1560, duration: DUR, ease: "none" }, 0);
+  /* axis draws on "B. R." and runs to "Floyd" */
+  tl.to("#ack-axis", { attr: { x2: 1400 }, duration: 1.9, ease: "power3.out" }, 0.1);
+  tl.fromTo("#ack-hollow", { opacity: 0.25 }, { opacity: 0.6, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0.2);
+  T.forEach((t, i) => {
+    const n = i + 1;
+    const cx = document.querySelector("#ack-r" + n).getAttribute("cx");
+    tl.set("#ack-m" + n, { svgOrigin: cx + " 850" }, 0);
+    tl.set("#ack-r" + n, { svgOrigin: cx + " 820" }, 0);
+    tl.fromTo("#ack-m" + n, { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 1, scaleY: 1, duration: 0.3, ease: "back.out(2)" }, t);
+    tl.fromTo("#ack-d" + n, { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, t);
+    tl.fromTo("#ack-r" + n, { autoAlpha: 0.9, scale: 1 }, { autoAlpha: 0, scale: 4, duration: 0.7, ease: "power2.out" }, t + 0.1);
+  });
+  /* chip on "three minutes" @5.06 */
+  tl.fromTo("#ack-chip", { autoAlpha: 0, scale: 0.8, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 5.06);
+  tl.to("#ack-chip", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.8);
+  /* stamp on "four in the morning" @11.28 */
+  tl.fromTo("#ack-stamp", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 11.28);
+  tl.fromTo("#ack-stamp", { y: 0 }, { y: -6, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 11.9);
+  /* exit, last 0.6 s */
+  tl.to("#ack-stamp", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 14.2);
+  tl.to(["#ack-marks", "#ack-axis"], { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 14.2);
+  window.__timelines["g-a2-clock"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

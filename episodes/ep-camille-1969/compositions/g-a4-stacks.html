@@ -24,10 +24,9 @@
   .as-t { position:absolute; opacity:0; visibility:hidden; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; white-space:nowrap; }
   #as-t33 { left:430px; top:440px; }
   #as-t8 { left:1000px; top:586px; }
-  #as-strip { position:absolute; left:1000px; top:872px; width:580px; height:62px; box-sizing:border-box; padding:13px 0; text-align:center; opacity:0; visibility:hidden;
+  #as-strip { position:absolute; left:1000px; top:828px; width:580px; height:62px; box-sizing:border-box; padding:13px 0; text-align:center; opacity:0; visibility:hidden;
     background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:20px; font-weight:700; font-size:30px; line-height:34px; letter-spacing:1px; color:#f5d98b; }
-  #as-range { position:absolute; left:1000px; top:850px; width:580px; height:3px; background:#7fb2e5; transform-origin:left center; opacity:0; }
   .as-src { position:absolute; left:96px; bottom:54px; font-weight:700; font-size:22px; letter-spacing:1px; color:#c8d3e0; opacity:0; visibility:hidden; }
 </style>
 <div id="as-root" data-composition-id="g-a4-stacks" data-width="1920" data-height="1080">
@@ -88,7 +87,6 @@
   <div class="as-t" id="as-t33">never found</div>
   <div class="as-n" id="as-n8">0</div>
   <div class="as-t" id="as-t8">found, never named</div>
-  <div id="as-range"></div>
   <div id="as-strip">found Aug 24 to Sept 6, 1969</div>
   <div class="as-src" id="as-src1">NamUs, via CBS19, August 2026</div>
   <div class="as-src" id="as-src2">Nelson County list &middot; News &amp; Advance, 2019</div>
@@ -101,9 +99,8 @@ window.__timelines = window.__timelines || {};
   /* CUE-PENDING all cues are ESTIMATES (no audio/a4-s3.words.json yet): "eight" 1.12 · "five and eighteen days" 2.13 · "thirty-three" 10.53 · "never found" 11.76 · last word ends ~12.7 */
   tl.set([".as-n", ".as-t", "#as-strip", ".as-src"], { autoAlpha: 0 }, 0);
   tl.set("#as-div", { scaleY: 0 }, 0);
-  tl.set("#as-range", { scaleX: 0 }, 0);
 
-  tl.fromTo("#as-scan", { x: -40 }, { x: 1960, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#as-scan", { x: -40 }, { x: 1560, duration: DUR, ease: "none" }, 0);
   tl.to("#as-base", { opacity: 1, duration: 0.5 }, 0.2);
   tl.to("#as-div", { opacity: 1, scaleY: 1, duration: 0.8, ease: "power2.out" }, 0.3);
 
@@ -114,7 +111,6 @@ window.__timelines = window.__timelines || {};
   tl.to(n8, { v: 8, duration: 0.7, ease: "power3.out", onUpdate: () => { document.querySelector("#as-n8").textContent = Math.round(n8.v); } }, 1.12);
   tl.fromTo("#as-t8", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.5);
   /* date strip on "five and eighteen days" @2.13 */
-  tl.to("#as-range", { opacity: 1, scaleX: 1, duration: 0.8, ease: "power3.out" }, 2.13);
   tl.fromTo("#as-strip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.3);
   tl.fromTo("#as-src1", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.6);
   /* the right stack breathes through the hold ("The water gave them back") */
@@ -131,7 +127,7 @@ window.__timelines = window.__timelines || {};
 
   /* exit, last 0.6 s */
   tl.to(["#as-n33", "#as-t33", "#as-gl"], { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 13.0);
-  tl.to(["#as-n8", "#as-t8", "#as-strip", "#as-range", "#as-gr"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 13.0);
+  tl.to(["#as-n8", "#as-t8", "#as-strip", "#as-gr"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 13.0);
   tl.to("#as-src2", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 13.0);
   window.__timelines["g-a4-stacks"] = tl;
 })();

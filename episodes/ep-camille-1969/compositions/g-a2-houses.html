@@ -21,7 +21,7 @@
   .ah-chip { position:absolute; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
     -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px;
     box-sizing:border-box; text-align:center; }
-  #ah-two { left:700px; top:610px; width:520px; height:96px; padding-top:12px; opacity:0; visibility:hidden;
+  #ah-two { left:700px; top:676px; width:520px; height:96px; padding-top:12px; opacity:0; visibility:hidden;
     font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:60px; line-height:72px; color:#d8a13a; }
   .ah-cn { position:absolute; top:150px; width:460px; text-align:center; opacity:0; visibility:hidden; }
   #ah-cn1 { left:360px; } #ah-cn2 { left:1100px; }
@@ -104,7 +104,7 @@ window.__timelines = window.__timelines || {};
   tl.set(".ah-h", { autoAlpha: 0 }, 0);
 
   /* ambient: a scan line crossing the whole comp, ~107 px/s */
-  tl.fromTo("#ah-scan", { x: -40 }, { x: 1960, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#ah-scan", { x: -40 }, { x: 1560, duration: DUR, ease: "none" }, 0);
   /* S13: the creek draws in, the hollow rings, then 25 houses */
   tl.to("#ah-creek", { strokeDashoffset: 0, duration: 2.4, ease: "power2.out" }, 0.2);
   tl.to("#ah-hollow", { autoAlpha: 0.8, duration: 0.5 }, 1.8); /* hollows @1.89 */

@@ -198,7 +198,7 @@
       <div class="a3l-u" style="top:5470px"><div class="a3l-um" id="a3l-um8"></div><div class="a3l-ut" id="a3l-ut8">Female, about 6 to 8 years old, found above the Bremo Power Plant.</div></div>
     </div>
   </div>
-  <div class="a3l-head" id="a3l-h1">The dead</div>
+  <div class="a3l-head" id="a3l-h1" style="opacity:1;visibility:visible">The dead</div>
   <div class="a3l-head" id="a3l-h2">The missing</div>
   <div class="a3l-head" id="a3l-h3">The unidentified</div>
   <div class="a3l-tag" id="a3l-t1">84</div>
@@ -212,8 +212,8 @@
     <div id="a3l-cq">“Two of the Wood children—Donna Fay and Gary—were among the 33 people whose bodies were never recovered.”</div>
     <div id="a3l-ca">C-VILLE Weekly, 2019</div>
   </div>
-  <div class="a3l-src" id="a3l-s1">Nelson County · News &amp; Advance, 2019 (Oakland Museum list)</div>
-  <div class="a3l-src" id="a3l-s2">19 never found + 33 named under The dead = 52 · News &amp; Advance 2019 list; C-VILLE, WHSV 2019</div>
+  <div class="a3l-src" id="a3l-s1" style="opacity:1;visibility:visible">Nelson County · News &amp; Advance, 2019 (Oakland Museum list)</div>
+  <div class="a3l-src" id="a3l-s2">Davis Creek: 33 found + 19 never found = 52 · News &amp; Advance 2019 list; C-VILLE, WHSV 2019</div>
   <div class="a3l-src" id="a3l-s3">News &amp; Advance, 2019 (Oakland Museum list)</div>
 </div>
 <script>
@@ -256,31 +256,37 @@ window.__timelines = window.__timelines || {};
   const lerp = (a, b, u) => a + (b - a) * u;
   const clamp = (u) => Math.max(0, Math.min(1, u));
   const span = (t, a, b) => clamp((t - a) / (b - a));
-  const yOut = 900 - 0.5 * 5170;                 // -1685, end of the pull-out
+  // pull-out end: scale 0.46 puts missing rows 1..33 (page 3520..4840) at window y 77..684, inside the fades (64 / 696)
+  const sOut = 0.46, yOut = -1542;
   const yIn = -4840;                              // unidentified divider at window y 40
+  // a log zoom between (s0,y0) and (s1,y1) about the one page point that maps to the same screen y in both states
+  function zoomAt(u, s0, y0, s1, y1) {
+    const pf = (y0 - y1) / (s1 - s0), sf = y0 + s0 * pf;
+    const s = Math.exp(Math.log(s0) + (Math.log(s1) - Math.log(s0)) * u);
+    return { s: s, y: sf - s * pf };
+  }
   function pageAt(t) {
     if (t < C.missing - 2.2) return { s: 1, y: lerp(0, -1500, span(t, 0.3, C.missing - 2.2)) };   // S12 slow scroll, 92 px/s
     if (t < C.missing + 0.6) return { s: 1, y: lerp(-1500, -3420, io2(span(t, C.missing - 2.2, C.missing))) };
     if (t < C.missing + 4.0) return { s: 1, y: lerp(-3420, -4200, io1(span(t, C.missing + 0.6, C.missing + 4.0))) };
     if (t < C.nineteen) return { s: 1, y: lerp(-4200, -4270, span(t, C.missing + 4.0, C.nineteen)) };  // drift about 7 px/s
-    if (t < C.nineteen + 1.3) {                   // log zoom 1 -> 0.5, fixed point page 5170 / screen 900
-      const s = Math.exp(Math.log(0.5) * io2(span(t, C.nineteen, C.nineteen + 1.3)));
-      return { s: s, y: 900 - s * 5170 };
-    }
-    if (t < C.more) return { s: 0.5, y: lerp(yOut, yOut - 40, span(t, C.nineteen + 1.3, C.more)) };
-    if (t < C.more + 1.8) {                       // log zoom 0.5 -> 1 onto The unidentified
-      const y0 = yOut - 40, pf = (y0 - yIn) / 0.5, sf = y0 + 0.5 * pf;
-      const s = Math.exp(Math.log(0.5) * (1 - io2(span(t, C.more, C.more + 1.8))));
-      return { s: s, y: sf - s * pf };
-    }
+    if (t < C.nineteen + 1.3) return zoomAt(io2(span(t, C.nineteen, C.nineteen + 1.3)), 1, -4270, sOut, yOut);  // pull out
+    if (t < C.more) return { s: sOut, y: yOut };  // held; the card float, rail float and bar stagger carry the motion
+    if (t < C.more + 1.8) return zoomAt(io2(span(t, C.more, C.more + 1.8)), sOut, yOut, 1, yIn);           // back in
     if (t < C.eight + 2.2) return { s: 1, y: yIn };
     return { s: 1, y: yIn - 6 * (t - (C.eight + 2.2)) };                                         // hold drift 6 px/s
   }
+  // rows scrolled past the window are hidden outright (the clip box hides them visually; this keeps them out of the DOM checks too)
+  const rows = Array.from(document.querySelectorAll("#a3l-page .a3l-r, #a3l-page .a3l-u")).map(el => [el, parseFloat(el.style.top), el.classList.contains("a3l-u") ? 70 : 40]);
   const pg = { t: 0 };
-  tl.to(pg, { t: END, duration: END, ease: "none", onUpdate: function () {
-    const st = pageAt(pg.t);
+  function placePage(t) {
+    const st = pageAt(t);
     gsap.set(P+"page", { y: st.y, scale: st.s });
-  } }, 0);
+    rows.forEach(r => { const top = st.y + st.s * r[1], bot = top + st.s * r[2];
+      r[0].style.visibility = (bot < 0 || top > 760) ? "hidden" : "visible"; });
+  }
+  tl.to(pg, { t: END, duration: END, ease: "none", onUpdate: function () { placePage(pg.t); } }, 0);
+  placePage(0);
   // counter: names on the list, lands 125 on "125"
   tl.fromTo([P+"count",P+"clab"], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.n125 - 2.6);
   const cnt = { v: 1 };
@@ -318,7 +324,7 @@ window.__timelines = window.__timelines || {};
   tl.to(".a3l-um", { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(3)", stagger: 0.22 }, C.eight + 0.2);
   tl.to(".a3l-ut", { autoAlpha: 0.85, x: 0, duration: 0.45, ease: "power2.out", stagger: 0.22 }, C.eight + 0.2);
   // hold: slow upward drift (6 px/s) and marker blips until the cut to bo-4
-  tl.to(".a3l-um", { scale: 1.35, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 11, stagger: 0.15 }, C.eight + 2.4);
+  tl.to(".a3l-um", { scale: 1.35, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 13 }, C.eight + 2.4);
   tl.to(P+"h3", { y: -4, duration: 2.0, ease: "sine.inOut", yoyo: true, repeat: 3 }, C.eight + 2.4);
 
   window.__timelines["g-a3-list"] = tl;
