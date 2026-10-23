@@ -38,17 +38,26 @@ print("test_flow_driver: 3 checks PASS")
 cc = open(os.path.join(HERE, "clip_check.py"), encoding="utf-8").read()
 ns2 = {}
 exec("import re" + chr(10) + cc[cc.index("ONES ="):cc.index("model = WhisperModel")], ns2)
-norm = ns2["norm"]
+norm, diff_words = ns2["norm"], ns2["diff_words"]
 line = "By Saturday, August twenty-third, more than a hundred and ten people were listed as missing in Virginia."
 heard = "By Saturday, August 23rd. More than 110 people were listed as missing in Virginia."
-want = norm(line)
-assert [w for w in want if w not in norm(heard, want)] == [], (want, norm(heard, want))
-assert [w for w in norm(heard, want) if w not in want] == [], norm(heard, want)
+assert diff_words(line, heard, heard) == ([], []), diff_words(line, heard, heard)
 assert norm("the 1999 outbreak", norm("the nineteen ninety nine outbreak")) == ["the", "nineteen", "ninety", "nine", "outbreak"]
-assert "houses" in [w for w in norm("inside their houses") if w not in norm("inside their house")], "a real word change still shows"
-line3 = norm("From Wednesday on, the forecast kept getting stronger, and it was right.")
-whole3 = norm("From Wednesday on the forecast kept getting stronger and it was right.", line3)
-island3 = norm("From Wednesday on, the forecast kept going. | getting stronger. | and it was right.", line3)
-assert [w for w in island3 if w not in line3 and w in whole3] == [], "an island-only extra is a cut artefact"
-assert [w for w in norm("it was not right", line3) if w not in line3] == ["not"], "a real extra heard in the whole clip still counts"
+assert diff_words("inside their house", "inside their houses", "inside their houses") == (["house"], ["houses"]), "a real word change still shows"
+line3 = "From Wednesday on, the forecast kept getting stronger, and it was right."
+whole3 = "From Wednesday on the forecast kept getting stronger and it was right."
+assert diff_words(line3, whole3, "From Wednesday on, the forecast kept going. | getting stronger. | and it was right.") == ([], []), "an island-only extra is a cut artefact"
+assert diff_words(line3, "From Wednesday on the forecast kept getting stronger and it was not right.", "the forecast kept getting stronger | and it was not right") == ([], ["not"]), "a real extra heard in both passes counts"
+assert diff_words(line3, "the forecast kept getting stronger and it was right", "From Wednesday on | and it was right") == ([], []), "a word one pass drops is not missing"
 print("test_flow_driver: clip_check number forms and island extras PASS")
+
+# the price check takes the exact quote only (review of PR 213: "130 credits?" passed for 30)
+quoted_price = ns["quoted_price"]
+assert quoted_price("Generate 2 videos for 30 credits?", 30)
+assert not quoted_price("Generate 2 videos for 130 credits?", 30)
+assert not quoted_price("Generate for 115 credits?", 15)
+assert not quoted_price("Generate for 1,015 credits?", 15)
+# a 1 px row jitter keeps the newest clip first
+jitter = [[1047, 224, ASB + ANCHOR, 802, 1292, 490], [538, 225, "https://flow-content.google/video/" + NEW, 293, 783, 490]]
+assert [t[2] for t in clips_above(grid_tiles(jitter), ANCHOR)] == [NEW]
+print("test_flow_driver: price quote and row jitter PASS")
