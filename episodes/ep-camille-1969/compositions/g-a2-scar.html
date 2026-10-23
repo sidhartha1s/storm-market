@@ -32,7 +32,7 @@
   #g-a2-scar-root .gas-patchsub { position:absolute; left:1042px; top:536px; font:italic 28px Georgia, 'Times New Roman', serif;
     color:#d8a13a; line-height:1; white-space:nowrap; }
 </style>
-<div id="g-a2-scar-root" data-composition-id="g-a2-scar" data-width="1920" data-height="1080" data-duration="25.7">
+<div id="g-a2-scar-root" data-composition-id="g-a2-scar" data-width="1920" data-height="1080" data-duration="25.3">
   <!-- ===== PART 1: photo + comparison ===== -->
   <div id="g-a2-scar-p1">
     <img id="g-a2-scar-photo" class="gas-photo" src="media/src/V23/pp804-p26-fig12a-crop-v2.jpg" alt="">
@@ -165,7 +165,7 @@ window.__timelines = window.__timelines || {};
     forty: 20.96,  /* 40 @20.96 */
     horse: 24.18   /* Horseshoe @24.18 */
   };
-  const DUR = 25.7;  /* last cue 24.18 + 0.5 land + 1 s settle */
+  const DUR = 25.3;  /* last cue 24.18 + 0.5 land + 0.6 s settle: host window 25.294 */
   const tl = gsap.timeline({ paused: true });
   const dash = (sel) => { const p = document.querySelector(sel); const L = Math.ceil(p.getTotalLength()) + 1;
     tl.set(p, { strokeDasharray: L + " " + L, strokeDashoffset: L }, 0); return L; };

@@ -97,7 +97,8 @@ window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
   const P = "#g-a1-hardrain-";
-  const DUR = 25.66, NS = "http://www.w3.org/2000/svg";
+  const DUR = 25.66;  /* own statement so the sweep folds DUR - x positions */
+  const NS = "http://www.w3.org/2000/svg";
   /* 46 rain strokes: fixed x by a fixed stride, each loops down the frame (finite repeats) */
   const rain = document.getElementById("ahard-rain"), drops = [];
   for (let j = 0; j < 46; j++) {

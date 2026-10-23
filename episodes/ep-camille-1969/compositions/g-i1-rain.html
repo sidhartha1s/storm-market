@@ -105,9 +105,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#i1r-card", { autoAlpha: 0, y: 40, scale: 1.08, transformOrigin: "50% 0%" }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 13.1);
   tl.fromTo("#i1r-chip", { autoAlpha: 0, scale: 1.12, transformOrigin: "0% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 13.4);
   tl.fromTo("#i1r-card", { y: 0 }, { y: -8, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, 13.8);
-  /* exit, last 0.6 s */
-  tl.to(["#i1r-page", "#i1r-card", "#i1r-chip", "#i1r-hl"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 15.4);
-  tl.to(["#i1r-cyl", "#i1r-glyph", "#i1r-clockring", "#i1r-ground", "#i1r-cnt", "#i1r-unit", "#i1r-clock", "#i1r-stamp", "#i1r-src"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 15.5);
+  /* no exit: host window 14.672 ends before the old exit (15.4); the scene cuts on its landed state, ground drift holds */
   window.__timelines["g-i1-rain"] = tl;
 })();
 </script>

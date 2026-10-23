@@ -21,7 +21,7 @@
   .gis-tag { position:absolute; left:96px; top:1000px; font-family:Arial, sans-serif; font-weight:700; font-size:20px;
     line-height:1; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
 </style>
-<div id="g-i1-slope-root" data-composition-id="g-i1-slope" data-width="1920" data-height="1080" data-duration="8.2">
+<div id="g-i1-slope-root" data-composition-id="g-i1-slope" data-width="1920" data-height="1080" data-duration="5.9">
   <svg class="gis-svg" viewBox="0 0 1920 1080">
     <defs>
       <linearGradient id="gi1slope-gground" x1="0" y1="0" x2="0" y2="1">
@@ -98,14 +98,14 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const ID = "g-i1-slope", P = "#gi1slope-", NS = "http://www.w3.org/2000/svg";
-  /* cues: audio/i1-s7.words.json not on disk yet; estimates from the measured 0.29 s/word pace of i1-s8 and t1-s2 */
+  /* cues from audio/i1-s7.words.json ("creek." ends 5.32); host window 5.832 */
   const CUES = {
-    light: 0.5,    /* lived @0.3 CUE-PENDING lived */
-    soaked: 2.9,   /* soaked @2.9 CUE-PENDING soaked */
-    letgo: 4.55,   /* let @4.55 CUE-PENDING let */
-    down: 6.85     /* down @6.85 CUE-PENDING down */
+    light: 0.3,    /* lived @0.26 */
+    soaked: 1.94,  /* soaked @1.94 */
+    letgo: 3.16,   /* let @3.16 */
+    down: 4.70     /* down @4.70 */
   };
-  const DUR = 8.2;  /* segment estimate ~7.7 s + 0.5 s land; set to max(host, last cue + tail) once words.json lands */
+  const DUR = 5.9;  /* "creek." ends 5.32 + a short settle; host window 5.832 */
   const WET = "#3b3430", DRY = "#6b6257";
 
   /* strip states (geom.py, see header) */

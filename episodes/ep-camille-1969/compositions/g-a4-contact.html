@@ -41,7 +41,7 @@
 window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 8.4;
+  const DUR = 8.0;  /* host window 7.967 */
   /* CUE-PENDING all cues are ESTIMATES (no audio/a4-s15.words.json yet): "If you remember" 0.0 to 0.36 · last word ends ~7.2 */
   tl.set(["#ac-card", "#ac-title", "#ac-mail"], { autoAlpha: 0 }, 0);
   tl.set(["#ac-rule"], { scaleX: 0 }, 0);
@@ -58,8 +58,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#ac-beam", { x: 0 }, { x: 1360, duration: 2.4, ease: "none", repeat: 2 }, 1.0);
   tl.fromTo("#ac-card", { y: 0 }, { y: -8, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1.2);
   /* exit, last 0.6 s */
-  tl.to("#ac-card", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 7.8);
-  tl.to("#ac-scrim", { opacity: 0, duration: 0.6, ease: "power2.in" }, 7.8);
+  tl.to("#ac-card", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 7.4);
+  tl.to("#ac-scrim", { opacity: 0, duration: 0.6, ease: "power2.in" }, 7.4);
   window.__timelines["g-a4-contact"] = tl;
 })();
 </script>

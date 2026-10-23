@@ -285,7 +285,7 @@ window.__timelines = window.__timelines || {};
     rows.forEach(r => { const top = st.y + st.s * r[1], bot = top + st.s * r[2];
       r[0].style.visibility = (bot < 0 || top > 760) ? "hidden" : "visible"; });
   }
-  tl.to(pg, { t: END, duration: END, ease: "none", onUpdate: function () { placePage(pg.t); } }, 0);
+  tl.to(pg, { t: END, duration: END, ease: "none", onUpdate: function () { placePage(pg.t) } }, 0);  // no ";" inside the call: sweep check 7 reads this position
   placePage(0);
   // counter: names on the list, lands 125 on "125"
   tl.fromTo([P+"count",P+"clab"], { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.n125 - 2.6);

@@ -103,9 +103,9 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const P = "#g-a2-davis-";
   /* A2-S1 first sentence, cues from audio/a2-s1.words.json. The comp ends where "That night" starts (@7.70) and the
-     V06 mudslide still takes over; duration 8.2 s, the camera still settling. Up from black: the map is on from frame 0. */
+     V06 mudslide still takes over; duration 7.9 s (host window), the camera still settling. Up from black: the map is on from frame 0. */
   const C = { davis: 0.62 /* Davis @0.62 */, woods: 1.44 /* Woods @1.44 */, hollows: 4.76 /* hollows @4.76 */, that: 7.70 /* That @7.70 */ };
-  const DUR = 8.2;
+  const DUR = 7.9;
   const PIV = "937 448"; /* middle of Davis Creek and its hollows (nelson-px.json davis_extent + NHD tributaries), the push pivot */
   function logZoom(sel, at, dur, from, to, ease) {   /* helpers.js log-space maths as a seek-safe scale tween */
     const base = gsap.parseEase(ease || "none");
