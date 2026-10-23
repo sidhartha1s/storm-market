@@ -123,11 +123,33 @@ def verdict(path):
     return clip_verdict(path, CFG, sys.argv[1])
 
 
+def quoted_price(quote, expect):
+    # the exact price only: "130 credits?" must not pass for 30 (review of PR 213, 23 Oct 26)
+    return re.search(rf"(?<![\d.,]){expect} credits\b", quote) is not None
+
+
+def main_checkout():
+    # The lock and the STOP file live in the MAIN checkout's scripts/flow: every worktree drives the same Chrome on
+    # port 9333, so a per-checkout lock let two drivers share one tab. A worktree's .git is a file "gitdir: <main>/.git/worktrees/<name>".
+    root = os.path.dirname(os.path.dirname(D))
+    dotgit = os.path.join(root, ".git")
+    if os.path.isfile(dotgit):
+        gitdir = open(dotgit).read().split(":", 1)[1].strip()
+        root = os.path.dirname(os.path.dirname(os.path.dirname(gitdir)))
+    return root
+
+
+RUN = os.path.join(main_checkout(), "scripts", "flow")
+os.makedirs(RUN, exist_ok=True)
+STOP = os.path.join(RUN, "STOP")
+DONE = os.path.join(OUT, "approved.done")  # crash-safe resume: a rerun of the same jobs.json skips these job names
+
+
 def take_lock():
     # One driver on the Flow tab at a time. 9 Oct 26: two drivers stopped with TaskStop lived on (only their shell
     # died), woke when the next clip landed and overwrote a finished clip with an empty file.
     import subprocess
-    lock = os.path.join(D, "driver.lock")
+    lock = os.path.join(RUN, "driver.lock")
     if os.path.exists(lock):
         pid = open(lock).read().strip()
         if pid and f'"{pid}"' in subprocess.run(["tasklist", "/FI", f"PID eq {pid}", "/FO", "CSV", "/NH"], capture_output=True, text=True).stdout:
