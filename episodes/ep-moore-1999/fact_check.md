@@ -56,6 +56,7 @@ Corrections were applied by the writer in the fix round, not by the checkers.
 - S3: 700 = NOAA Report estimate "without warnings" (not "warnings and drills"); 540 = B&D02 crude estimate at the pre-1925 death rate, credits all safety efforts.
 - S5 McCarthy quote exact (NOAA Report p3); Bridge Creek safe room, light debris, no casualties (D&B02 p615; FEMA 342 Fig 6-3).
 - S6 UNVERIFIED, CUT: "made up on the spot" (NPR only). CORRECTED: 46 offices tested it in 2014; operational in all lower-48 offices 10 May 2017 (weather.gov scn17-46A); written into NWSI 10-511 (weather.gov directive). Oklahoma started the country's first safe-room rebate program after that tornado (oklahoma.gov/oem safe-rooms page); counts cut (undated).
+  Re-checked 23 Oct 26 by a second checker against files now in research/: arXiv 2510.25011 l.22-23 (46 offices, 2014, IBW); SCN 17-46A (nws-scn17-46A-ibw-conus-may-10-2017.txt l.25-26, 'all the CONUS WFOs on May 10, 2017'); OK OEM page (okoem-safe-rooms-in-oklahoma.html, 'first safe room rebate program in the Nation'). Age gap 5-23 and 'under 1 in 3000' re-counted on brooks-okcdeath.txt (36 direct ages; youngest after 4 is 24): CONFIRMED. Comp source line corrected to SCN 17-46A.
 - S7 "roughly once in a thousand years" (D&B02 p617); 28 years in 2027 arithmetic.
 
 ### A4 (PARTIAL: wording fixes)
@@ -85,3 +86,7 @@ Corrections were applied by the writer in the fix round, not by the checkers.
 - S7 CORRECTED: "people followed plans they'd practiced, and survived in shelters chosen ahead of time" (p32; SA's "above ground" clashes with cellars; "because" was about confidence).
 - S8 CORRECTED: "Some weather professionals told listeners" (p33, never "on the air"); "that day" (no "evening"); "a cousin of the advice" (1999 was "get out of the path", not drive south); "large numbers ... took it"; 1 p.m. tweet is p12 and a "caution".
 - S9 CORRECTED: "One survivor said"; "in a vehicle". Quote verbatim (p33); 8 direct, all in vehicles, 4 chasers (p30); 26 and 17 days, I-40 (App C p C-1); ashamed of evacuating (p32) CONFIRMED.
+
+
+### Homograph probe (23 Oct 26, references/homographs.md: respell only by measurement)
+LPC formants (F1/F2 medians over the voiced core, 25 ms frames) on the final wavs for all 20 flagged occurrences (read x4, lives x7, live/lived x6, lead x1, wind x3): every one measures the sense the sentence needs. Past 'read' F1 436-523 Hz (h1-s3, a2-s3, a3-s5), present 'read' 232 Hz (a4-s7); noun 'lives' F1 p80 652-829 Hz (/aI/); 'lived' 334-451 Hz (/I/; a5-s2 vowel core 355-370 Hz, 60 ms, after the 'students' sibilant); 'live pictures' 736 Hz; 'lead time' 231/2306 Hz (/i:/); 'wind' 314-379 Hz (/I/). No respelling.
