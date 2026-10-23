@@ -104,6 +104,14 @@ def grid_tiles(raw):
     return [[x, y, (re.search(r"[0-9a-f]{8}-[0-9a-f-]{27}", src) or re.search(r"[^/]+$", src)).group(0)] for x, y, src, *_ in tiles]
 
 
+def to_grid(page):
+    # The project grid, where tiles are read. Clicking a tile now opens the clip in the scene editor
+    # (<project>/edit/<id>), which Escape does not leave; every later job then read 0 tiles (23 Oct 26, 10 jobs in a row).
+    if not page.url.startswith(PROJECT) or "/edit/" in page.url:
+        page.goto(PROJECT, wait_until="domcontentloaded")
+        page.wait_for_timeout(10000)
+
+
 def clips_above(tiles, anchor):
     # the tiles above the anchor clip (the top clip before the send) are the new ones; none when the anchor is out of view
     ids = [t[2] for t in tiles]
@@ -158,14 +166,13 @@ with sync_playwright() as p:
         browser = p.chromium.connect_over_cdp("http://127.0.0.1:9333")
     ctx = browser.contexts[0]
     page = next((pg for pg in ctx.pages if "flow.google.com" in pg.url), None) or ctx.pages[0]
-    page.bring_to_front()  # a background tab is not painted: page.screenshot hung 30 s on it (12 Oct 26, two Flow tabs open)
+    # never page.bring_to_front(): it pulled the Flow window over the owner's work on every job (owner 23 Oct 26,
+    # "disable tab focussing for chrome"). Screenshots are evidence only and may skip on an unpainted background tab.
     assert_responsive(page, 60000)
     spent = 0
     approved = 0
     try:
-        if not page.url.startswith(PROJECT):
-            page.goto(PROJECT, wait_until="domcontentloaded")
-            page.wait_for_timeout(10000)
+        to_grid(page)
         enter = page.get_by_text("Create with Google Flow", exact=True)
         if enter.count() and enter.first.is_visible():  # public page: enter the app in this same tab, as the owner does
             log("public page: entering Flow")
@@ -283,8 +290,9 @@ with sync_playwright() as p:
             shot(page, f"dl-{i + 1:02d}")
             log("saved", path, os.path.getsize(path), title)
             log(*verdict(path))
-            page.keyboard.press("Escape")  # back to the grid in the same page, never a reload
+            page.keyboard.press("Escape")
             page.wait_for_timeout(3000)
+            to_grid(page)
     except Exception as e:
         shot(page, "error")
         log("ERROR", repr(e)[:400])
