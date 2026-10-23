@@ -18,7 +18,6 @@
   .a4w-ct { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:52px; color:#f2f5f8; }
   .a4w-cs { font-weight:700; font-size:34px; line-height:40px; letter-spacing:2px; color:#7fb2e5; opacity:0; visibility:hidden; }
   .a4w-src { position:absolute; left:96px; top:134px; font-weight:700; font-size:20px; line-height:26px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
-  .a4w-scan { position:absolute; left:0; top:0; width:3px; height:1080px; background:linear-gradient(180deg, rgba(127,178,229,0), rgba(127,178,229,0.25), rgba(127,178,229,0)); }
   #g-a4-westmoore-labs text, #g-a4-westmoore-roof, #g-a4-westmoore-people circle { opacity:0; visibility:hidden; }
 </style>
 <div id="g-a4-westmoore-root" data-composition-id="g-a4-westmoore" data-width="1920" data-height="1080" data-duration="14.14">
@@ -47,14 +46,13 @@
       <g id="g-a4-westmoore-people" fill="#f2f5f8" stroke="#04070c" stroke-width="2"></g>
     </g>
     <g id="g-a4-westmoore-labs">
-      <text id="g-a4-westmoore-l-awards" class="a4w-lab" x="480" y="390" text-anchor="middle">AWARDS</text>
+      <text id="g-a4-westmoore-l-awards" class="a4w-lab" x="480" y="270" text-anchor="middle">AWARDS</text>
       <text id="g-a4-westmoore-l-hall" class="a4w-lab a4w-hot" x="340" y="592" text-anchor="start">INTERIOR HALLWAY</text>
       <text id="g-a4-westmoore-l-core" class="a4w-lab a4w-hot" x="930" y="430" text-anchor="middle">LOCKERS · BATHROOMS</text>
       <text id="g-a4-westmoore-l-stair" class="a4w-lab a4w-hot" x="945" y="305" text-anchor="end">STAIRWELL</text>
       <text id="g-a4-westmoore-l-gym" class="a4w-lab" x="1365" y="450" text-anchor="middle">GYM</text>
     </g>
   </svg>
-  <div class="a4w-scan" id="g-a4-westmoore-scan"></div>
   <div class="a4w-title" id="g-a4-westmoore-title">WESTMOORE HIGH</div>
   <div class="a4w-src" id="g-a4-westmoore-src">Schematic, not to scale · NWS Service Assessment, p23; FEMA 342</div>
   <div class="a4w-chip" id="g-a4-westmoore-chip"><span class="a4w-ct" id="g-a4-westmoore-ct">GYM ROOF GONE</span><span class="a4w-cs" id="g-a4-westmoore-cs">· NOBODY HURT</span></div>
@@ -70,7 +68,7 @@ window.__timelines = window.__timelines || {};
   for (let i = 0; i < 28; i++) {
     const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     c.setAttribute("id", "g-a4-westmoore-p" + i); c.setAttribute("r", "9");
-    const sx = 350 + rnd() * 260, sy = 260 + rnd() * 240;
+    const sx = 350 + rnd() * 260, sy = 300 + rnd() * 200;   /* below the AWARDS label (baseline 270) */
     let tx, ty;
     if (i < 4) { tx = 975 + rnd() * 150; ty = 250 + rnd() * 90; }               /* stairwell */
     else if (i < 12) { tx = 775 + rnd() * 310; ty = 450 + rnd() * 75; }        /* core: lockers, bathrooms */
@@ -85,10 +83,9 @@ window.__timelines = window.__timelines || {};
   tl.set(P + "people circle", { autoAlpha: 0 }, 0);
   tl.set(P + "roof", { x: 0, y: 0, rotation: 0 }, 0);
 
-  /* ambient: plan drifts, scan line sweeps */
+  /* ambient: plan drifts */
   tl.fromTo(P + "plan", { x: 0, y: 0 }, { x: -14, y: 6, duration: DUR, ease: "none" }, 0);
   tl.fromTo(P + "labs", { x: 0, y: 0 }, { x: -14, y: 6, duration: DUR, ease: "none" }, 0);
-  tl.fromTo(P + "scan", { x: 0 }, { x: 1917, duration: DUR, ease: "none" }, 0);
 
   /* 0.00 "Several hundred students and parents were in the building": plan draws, title, people in the awards room */
   tl.fromTo(P + "title", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.0);
