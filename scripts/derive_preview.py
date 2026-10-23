@@ -7,7 +7,7 @@ Writes <ep>/_preview_tmp.html and <ep>/_preview_tmp.html.json, prints "t0 t1 out
 
 Never writes index.html or compositions/*.html. Content-blind: reads only tag, id, the time attributes, whether
 data-composition-src is present, and byte spans; writes only time attributes, whole-element drops, the root's size
-and duration, and one fixed injected block. Both self-checks run on every call, so a derive that ever needs to know
+and duration, one stage wrapper div and one fixed injected script. Both self-checks run on every call, so a derive that ever needs to know
 what a beat means fails on its own output.
 """
 from __future__ import annotations
@@ -20,7 +20,7 @@ from typing import Literal
 
 PAGE = "_preview_tmp.html"            # render.cmd's `del /q _*_tmp.html` already sweeps it before every draft/full
 MANIFEST = PAGE + ".json"
-Height = Literal[360, 540, 720, 1080]  # 360 is the owner's ask; 1080 = window only, no zoom
+Height = Literal[360, 540, 720, 1080]  # 360 is the owner's ask; 1080 = window only, no stage wrapper
 
 # The time attributes the plan models. Any other time-like data-* on a timed element is a refusal, never a guess.
 MODELED = ("data-start", "data-end", "data-duration", "data-media-start", "data-playback-start")
@@ -116,16 +116,25 @@ def plan_preview(root: Root, timed: list[Timed], requested: Window, height: Heig
     """Interval arithmetic only, with w = (snap_t0(requested.t0), requested.t1):
     drop end <= w.t0 or start >= w.t1; kept elements shift data-start/data-end by -w.t0; MEDIA straddling w.t0
     gets start 0 and media-start += w.t0 - start; anything straddling w.t1 is cut to w.t1; root data-duration =
-    w.t1 - w.t0; height < 1080 sets root data-width = 1920*h/1080, data-height = h."""
+    w.t1 - w.t0; height < 1080 sets root data-width = 1920*h/1080, data-height = h and wraps the root's children
+    in stage_open(height)."""
     raise NotImplementedError
 
 
 def preview_block(comp_id: str, window: Window, height: Height) -> str:
-    """The one fixed block, first in <head>. Measured on demo-pin 23 Oct 26 (docs/design/preview-render.md):
-    <style>html{zoom:H/1080}</style> (omitted at 1080) and
+    """The fixed clock shim, first in <head> (window [14, 20] on demo-pin matched the whole render, 23 Oct 26):
     <script>window.__timelines = new Proxy({}, {set(o,k,v){ if(k===ID && v && !v.__hfPreview){
       const outer = gsap.timeline({paused:true}); outer.add(v.tweenFromTo(T0, T1, {ease:"none"}), 0);
-      outer.__hfPreview = true; v = outer; } o[k] = v; return true; }});</script>"""
+      outer.__hfPreview = true; v = outer; } o[k] = v; return true; }});</script>
+    Below 1080 the root's children are also wrapped in the stage div (see stage_open), never `html{zoom}`:
+    zoom drew only the top-left 213x120 px."""
+    raise NotImplementedError
+
+
+def stage_open(height: Height) -> str:
+    """'<div id="hf-preview-stage" style="position:absolute; left:0; top:0; width:1920px; height:1080px;
+    transform:scale(h/1080); transform-origin:0 0">', inserted right after the root's start tag and closed right
+    before its end tag. One wrapper, so GSAP's inline transforms on clips never meet it. Empty string at 1080."""
     raise NotImplementedError
 
 
