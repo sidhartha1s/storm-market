@@ -2,7 +2,7 @@
 <style>
   /* g-a1-12 · A1-S13 · source line under Paul (P1, full frame; today the orchestrator's placeholder card g-paul-p1):
      glass chip left 110, bottom 64, nothing else on him; clear of the Flow logo patch at (1740, 900). Chips family base g-h1-2.
-     Host data-start 267.705 = a1-s13 start ("OSHA said" @0.00, audio/a1-s13.words.json); window = the P1 slot, 4.366 s. */
+     Host data-start 267.705 = ins-paul-2 start (media 0.9; "OSHA" @0.41); window = his clip window, 5.646 s (23 Oct 26). */
   #g-a1-12-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
   #g-a1-12-src { position:absolute; left:110px; bottom:64px; max-width:1300px; padding:10px 20px; border-radius:18px; box-sizing:border-box; white-space:nowrap;
     background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
@@ -15,14 +15,14 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 4.366;
+  const DUR = 5.646;
   tl.set("#g-a1-12-src", { autoAlpha: 0, x: 0, y: 24 }, 0);
   /* OSHA SAID @0.00 */
   tl.fromTo("#g-a1-12-src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.05);
-  /* slow drift while held (the slot's last word "sheltering." ends 4.34) */
-  tl.to("#g-a1-12-src", { x: 12, duration: 3.2, ease: "none" }, 0.55);
+  /* slow drift while held (his last word "sheltering." ends 5.30) */
+  tl.to("#g-a1-12-src", { x: 12, duration: 4.5, ease: "none" }, 0.55);
   /* out, finished inside the host */
-  tl.to("#g-a1-12-src", { x: -1300, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 3.816);
+  tl.to("#g-a1-12-src", { x: -1300, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 5.096);
   window.__timelines["g-a1-12"] = tl;
 })();
 </script>

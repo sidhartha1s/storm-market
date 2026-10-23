@@ -160,7 +160,7 @@
   <audio id="nx-a1-s10" src="audio/a1-s10.wav" data-start="232.850" data-duration="9.94" data-volume="1"></audio>
   <audio id="nx-a1-s11" src="audio/a1-s11.wav" data-start="243.090" data-duration="13.874" data-volume="1"></audio>
   <audio id="nx-a1-s12" src="audio/a1-s12.wav" data-start="257.264" data-duration="10.141" data-volume="1"></audio>
-  <!-- a1-s13 = Paul slot P1 (nx-a1-s13 + host-g-paul-p1, orchestrator) -->
+  <!-- a1-s13 = Paul clip ins-paul-2 (267.705-273.351, mounted with the Paul clips below) -->
   <audio id="nx-a1-s14" src="audio/a1-s14.wav" data-start="273.651" data-duration="12.675" data-volume="1"></audio>
 
   <!-- A1-S1: out of blackout bo-1 (ends 128.008) the drawn megaphone alone; the cage door shuts on "locked" (a1-s1 5.08 = 133.288);
@@ -227,7 +227,7 @@
   <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="398.587" data-duration="20.721" data-volume="1"></audio>
   <audio id="nx-a2-s8" src="audio/a2-s8.wav" data-start="419.608" data-duration="13.226" data-volume="1"></audio>
   <audio id="nx-a2-s9" src="audio/a2-s9.wav" data-start="433.134" data-duration="8.616" data-volume="1"></audio>
-  <!-- a2-s10 = Paul slot P2 (nx-a2-s10 + host-g-paul-p2, orchestrator, 442.050-448.180) -->
+  <!-- a2-s10 = Paul clip ins-paul-3 (442.050-448.180, mounted with the Paul clips below) -->
   <audio id="nx-a2-s11" src="audio/a2-s11.wav" data-start="448.480" data-duration="17.368" data-volume="1"></audio>
 
   <!-- Countdown chip, top right, track 4, in three windows (hidden under the full-screen cards g-a2-6, g-a2-8 and under Paul):
@@ -276,7 +276,7 @@
 
   <!-- ==== A3 (builder) ==== -->
   <!-- A3 narration (timeline.md starts; data-duration = end - start = the wav length, floored to 1 ms: timeline.md's dur column carries an extra 0.8 s).
-       a3-s9 (P3) is the orchestrator's. -->
+       a3-s9 is Paul clip ins-paul-4 (597.892-604.742, mounted with the Paul clips below). -->
   <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="466.848" data-duration="12.481" data-volume="1"></audio>
   <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="479.630" data-duration="17.529" data-volume="1"></audio>
   <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="497.460" data-duration="19.794" data-volume="1"></audio>
@@ -319,7 +319,7 @@
        "about 110" @662.718; factory pin "candle" @664.578; fade to black for bo-a3-a4 (667.332) -->
   <div id="host-g-a3-9" data-composition-id="g-a3-9" data-composition-src="compositions/g-a3-9.html" data-start="650.116" data-duration="17.216" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- ==== /A3 ==== -->
-  <!-- CTA hinge: A3-S9 tease (P3) ends 604.742 -> 1.0 s dip -> the book ad (own VO) -> 1.0 s dip -> A3-S10 payoff "The power went out." at 630.984 -->
+  <!-- CTA hinge: A3-S9 tease (Paul, ins-paul-4) ends 604.742 -> 1.0 s dip -> the book ad (own VO) -> 1.0 s dip -> A3-S10 payoff "The power went out." at 630.984 -->
   <section class="clip blackout" id="bo-cta-in" data-start="604.742" data-duration="1.0" data-track-index="1"></section>
   <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v10-oct23.mp4" data-start="605.742" data-duration="24.042" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
   <section class="clip blackout" id="bo-cta-out" data-start="629.784" data-duration="1.0" data-track-index="1"></section>
@@ -327,8 +327,8 @@
 
   <!-- ==== A4 (builder) ==== -->
   <!-- A4 · The candle factory (668.332-865.811). Narration durations = timeline.md end - start (the wav length); the dur column there reads
-       +0.8 s on every row but a4-s1 and would overlap the next line. a4-s6 (Paul P4) is the orchestrator's. Picture runs 668.332 -> 743.507
-       and 752.967 (P4 card end) -> 865.811 with no gap. Reused stills carry data-callback; place-named text sits only over Mayfield files. -->
+       +0.8 s on every row but a4-s1 and would overlap the next line. a4-s6 is Paul clip ins-paul-5. Picture runs 668.332 -> 743.507
+       and 752.967 (ins-paul-5 end) -> 865.811 with no gap. Reused stills carry data-callback; place-named text sits only over Mayfield files. -->
   <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="668.332" data-duration="3.674" data-volume="1"></audio>
   <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="672.306" data-duration="17.784" data-volume="1"></audio>
   <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="690.390" data-duration="16.316" data-volume="1"></audio>
@@ -361,7 +361,7 @@
   <div id="host-g-a4-4" data-composition-id="g-a4-4" data-composition-src="compositions/g-a4-4.html" data-start="708.428" data-duration="13.932" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A4-S5: warning-lead timeline over Graves County; quote @722.360, 9:05 @724.340, 9:26 @727.360, 21 @728.860, 19 @736.120, Paducah @737.860 -->
   <div id="host-g-a4-5" data-composition-id="g-a4-5" data-composition-src="compositions/g-a4-5.html" data-start="722.360" data-duration="21.147" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <!-- A4-S6 (Paul P4 card, orchestrator): chip on "tornado emergency" (745.867), out inside the card -->
+  <!-- A4-S6 (Paul, ins-paul-5): chip on "the strongest words" (748.247), out inside his window -->
 
   <!-- A4-S7: the review's p4 from the P4 card end, KPAH 4-panel with the chip on "eight" (758.847), KPAH 9:27 PM under the quote ("called" 763.387) -->
   <section class="clip still-wrap" id="v-a4-sap4" data-start="752.967" data-duration="4.781" data-track-index="1"><img id="v-a4-sap4-img" src="media/stills/a4-s7-sa-p4-v2.png" alt=""></section>
@@ -459,7 +459,7 @@
 
   <!-- ==== Z1 (builder) ==== -->
   <!-- ============ Z1 · HAS ANYONE WRITTEN IT SINCE (1005.397-1154.559). Narration starts from briefs/compose/timeline.md; data-duration =
-       timeline.md's dur column. z1-s7 = Paul slot P5 (nx-z1-s7 + host-g-paul-p5, orchestrator); z1-s8 = picture-only hold; z1-s10 = the
+       timeline.md's dur column. z1-s7 = Paul clip ins-paul-6; z1-s8 = picture-only hold; z1-s10 = the
        end ask (ins-endask-a/b, orchestrator); nx-z1-s11 and host-g-z1-9 are mounted with the close (orchestrator). ============ -->
   <audio id="nx-z1-s1" src="audio/z1-s1.wav" data-start="1005.597" data-duration="7.164" data-volume="1"></audio>
   <audio id="nx-z1-s2" src="audio/z1-s2.wav" data-start="1013.061" data-duration="12.778" data-volume="1"></audio>
@@ -517,12 +517,14 @@
   <!-- ============ PAUL ON CAMERA, clips 2-6 (23 Oct 26): his full-frame clip carries the line, so no nx- narration under it and the
        circle stays off. Window = his speech end (ffmpeg silencedetect -40/-35 dB, or 0.1 s RMS where the room tone sits above -40) + 0.35 s look,
        never filled to 10 s; everything after each clip moved by (window - the narrator wav it replaced). ins-paul-2 starts at media 0.9
-       (1.31 s of silence before "OSHA"; 0.4 s lead like clip 1). Clip 4's and clip 5's words are the spoken ones (clip 5 rephrased, owner 17:10). -->
-  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2.mp4" data-start="267.705" data-duration="5.646" data-media-start="0.9" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="OSHA said the procedures met minimal federal safety guidelines for storm sheltering."></video>
-  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3.mp4" data-start="442.050" data-duration="6.130" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="From Wednesday on, the forecast kept getting stronger, and it was right."></video>
-  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4.mp4" data-start="597.892" data-duration="6.850" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Right as the storm reached Mayfield, the weather office watching it ran into a problem of its own."></video>
-  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5.mp4" data-start="743.507" data-duration="9.460" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="At nine twenty-six that night, the forecasters in Paducah reached for the strongest words they have, and they said Mayfield by name."></video>
-  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6.mp4" data-start="1099.484" data-duration="9.891" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Almost five years on, one of the two states makes warehouses plan for tornadoes. From the Weather Service, the advice is still the general kind."></video>
+       (1.31 s of silence before "OSHA"; 0.4 s lead like clip 1). Clip 5's words are the spoken ones (rephrased, owner 17:10). Files: ins-paul-<n>-v2.mp4 =
+       the logo'd clip with a gain pass to the narration level (volume +12.5/+13.0/+8.2/+9.8/+7.5 dB, alimiter 0.95, aac 192k; audio_levels on 23 Oct 26:
+       -12.5/-13.0/-8.2/-9.8/-7.5 dB vs narration before); the originals stay beside them. -->
+  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2-v2.mp4" data-start="267.705" data-duration="5.646" data-media-start="0.9" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="OSHA said the procedures met minimal federal safety guidelines for storm sheltering."></video>
+  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3-v2.mp4" data-start="442.050" data-duration="6.130" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="From Wednesday on, the forecast kept getting stronger, and it was right."></video>
+  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4-v2.mp4" data-start="597.892" data-duration="6.850" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Right as the storm reached Mayfield, the weather office watching it ran into a problem of its own."></video>
+  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5-v2.mp4" data-start="743.507" data-duration="9.460" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="At nine twenty-six that night, the forecasters in Paducah reached for the strongest words they have, and they said Mayfield by name."></video>
+  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6-v2.mp4" data-start="1099.484" data-duration="9.891" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Almost five years on, one of the two states makes warehouses plan for tornadoes. From the Weather Service, the advice is still the general kind."></video>
   <!-- paint order follows file order, not data-track-index (verifier, 23 Oct 26): an overlay host sits AFTER every lower-track element it covers -->
   <div id="host-g-a1-12" data-composition-id="g-a1-12" data-composition-src="compositions/g-a1-12.html" data-start="267.705" data-duration="5.646" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a4-6 lands on "the strongest words" (clip 5 at 4.74 = 748.247): the chip names the words he does not say; out inside his window -->
