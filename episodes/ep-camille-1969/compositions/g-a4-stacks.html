@@ -24,9 +24,11 @@
   .as-t { position:absolute; opacity:0; visibility:hidden; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; white-space:nowrap; }
   #as-t33 { left:430px; top:440px; }
   #as-t8 { left:1000px; top:586px; }
-  #as-strip { position:absolute; left:1000px; top:828px; width:580px; height:62px; box-sizing:border-box; padding:13px 0; text-align:center; opacity:0; visibility:hidden;
+  #as-strip { position:absolute; left:1000px; top:828px; width:580px; height:92px; box-sizing:border-box; padding:13px 0; text-align:center; opacity:0; visibility:hidden;
     background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:20px; font-weight:700; font-size:30px; line-height:34px; letter-spacing:1px; color:#f5d98b; }
+  /* the NamUs credit sits inside the strip it sources, so the two enter and leave together */
+  #as-src1 { margin-top:4px; font-size:20px; line-height:26px; color:#c8d3e0; white-space:nowrap; }
   .as-src { position:absolute; left:96px; bottom:54px; font-weight:700; font-size:22px; letter-spacing:1px; color:#c8d3e0; opacity:0; visibility:hidden; }
 </style>
 <div id="as-root" data-composition-id="g-a4-stacks" data-width="1920" data-height="1080">
@@ -87,8 +89,7 @@
   <div class="as-t" id="as-t33">never found</div>
   <div class="as-n" id="as-n8">0</div>
   <div class="as-t" id="as-t8">found, never named</div>
-  <div id="as-strip">found Aug 24 to Sept 6, 1969</div>
-  <div class="as-src" id="as-src1">NamUs, via CBS19, August 2026</div>
+  <div id="as-strip"><div id="as-date">found Aug 24 to Sept 6, 1969</div><div id="as-src1">NamUs, via CBS19, August 2026</div></div>
   <div class="as-src" id="as-src2">Nelson County list &middot; News &amp; Advance, 2019</div>
 </div>
 <script>
@@ -96,8 +97,8 @@ window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
   const DUR = 12.71;  /* host window 12.703 */
-  /* CUE-PENDING all cues are ESTIMATES (no audio/a4-s3.words.json yet): "eight" 1.12 · "five and eighteen days" 2.13 · "thirty-three" 10.53 · "never found" 11.76 · last word ends ~12.7 */
-  tl.set([".as-n", ".as-t", "#as-strip", ".as-src"], { autoAlpha: 0 }, 0);
+  /* cues from audio/a4-s3.words.json: "eight" 1.34 · "five" 2.36 · "33" 10.44 · "never found" 11.52 · last word ends 12.38 (stack cues within 0.3 s, kept) */
+  tl.set([".as-n", ".as-t", "#as-strip", "#as-src2"], { autoAlpha: 0 }, 0);
   tl.set("#as-div", { scaleY: 0 }, 0);
 
   tl.fromTo("#as-scan", { x: -40 }, { x: 1560, duration: DUR, ease: "none" }, 0);
@@ -110,15 +111,13 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#as-n8", { autoAlpha: 0, scale: 0.85 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 1.12);
   tl.to(n8, { v: 8, duration: 0.7, ease: "power3.out", onUpdate: () => { document.querySelector("#as-n8").textContent = Math.round(n8.v); } }, 1.12);
   tl.fromTo("#as-t8", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.5);
-  /* date strip on "five and eighteen days" @2.13 */
-  tl.fromTo("#as-strip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.3);
-  tl.fromTo("#as-src1", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.6);
+  /* date strip with its NamUs credit on "five" @2.36 */
+  tl.fromTo("#as-strip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.36);
   /* the right stack breathes through the hold ("The water gave them back") */
   tl.fromTo(".as-br", { y: 0 }, { y: -5, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 5, stagger: { each: 0.08 } }, 3.4);
 
   /* left stack: 33 blocks on "thirty-three" @10.53, label on "never found" @11.76 */
   const n33 = { v: 0 };
-  tl.to("#as-src1", { autoAlpha: 0, x: -60, duration: 0.4, ease: "power3.in" }, 10.1);
   tl.fromTo(".as-bl", { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.6)", stagger: { each: 0.03 } }, 10.2);
   tl.fromTo("#as-n33", { autoAlpha: 0, scale: 0.85 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 10.53);
   tl.to(n33, { v: 33, duration: 0.9, ease: "power3.out", onUpdate: () => { document.querySelector("#as-n33").textContent = Math.round(n33.v); } }, 10.53);
