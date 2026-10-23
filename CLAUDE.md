@@ -36,6 +36,7 @@ goes to Opus. Gates passing is not verification.
 | What viewers say under every reference video: the rule, the pull commands, the entries | `references/comment-bank.md` |
 | Measured gotchas, newest first | `learnings/` (`README.md` says which file serves which job): read yours before building |
 | Pins, paths, CTA file and window | `config.yaml` |
+| Paul's on-camera clips from Google Flow: the driver (`ad_gen.py <job dir>/jobs.json`, spends only on Flow's exact credit quote, `--after <clip id>` fetches without spending), the job checker, the one-at-a-time runner, the grid-reading test | `scripts/flow/` |
 | Open tooling and pipeline work; dated decisions (read both at session start, update the same session) | `ops/tasks.md`, `ops/decisions.md` |
 | Which episode jobs are ready, running, held or done, the Stop gate that blocks an idle ready job, and the lane launcher (profile probe, free-memory and lane-count gate, `relaunch` of a lane that hit a limit) | `scripts/lanes.py` (job model in its docstring), hook `~/.claude/hooks/lane-gate.py` |
 

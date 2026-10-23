@@ -75,3 +75,8 @@ episodes/*/lanes.json*
 
 # hyperframes >= 0.8.152 writes per-revision run state (history-id, render-outputs.json, video-state.json, artifacts/) into each project
 .hyperframes/
+
+# Flow driver runtime (scripts/flow/ad_gen.py): one-driver lock and its append log
+scripts/flow/driver.lock
+scripts/flow/log.txt
+scripts/flow/__pycache__/
