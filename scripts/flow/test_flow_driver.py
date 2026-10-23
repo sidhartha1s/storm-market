@@ -46,4 +46,9 @@ assert [w for w in want if w not in norm(heard, want)] == [], (want, norm(heard,
 assert [w for w in norm(heard, want) if w not in want] == [], norm(heard, want)
 assert norm("the 1999 outbreak", norm("the nineteen ninety nine outbreak")) == ["the", "nineteen", "ninety", "nine", "outbreak"]
 assert "houses" in [w for w in norm("inside their houses") if w not in norm("inside their house")], "a real word change still shows"
-print("test_flow_driver: clip_check number forms PASS")
+line3 = norm("From Wednesday on, the forecast kept getting stronger, and it was right.")
+whole3 = norm("From Wednesday on the forecast kept getting stronger and it was right.", line3)
+island3 = norm("From Wednesday on, the forecast kept going. | getting stronger. | and it was right.", line3)
+assert [w for w in island3 if w not in line3 and w in whole3] == [], "an island-only extra is a cut artefact"
+assert [w for w in norm("it was not right", line3) if w not in line3] == ["not"], "a real extra heard in the whole clip still counts"
+print("test_flow_driver: clip_check number forms and island extras PASS")
