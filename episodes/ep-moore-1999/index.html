@@ -56,8 +56,8 @@
 
   <!-- ============ INTRO · H1 / T1 / I1 ============ -->
   <!-- H1-S1: Paul full frame from frame one, his hook line only. -v2 (23 Oct 26) = source trimmed from 1.30 s (so media-start 0.15 = old 1.45; speech 1.63-4.02 by silencedetect) and +11.3 dB, limited at -1.5 dBFS, to the narration level (audio_levels.py) -->
-  <!-- 23 Oct 26: the retake (right room). Speech 1.10-3.58 s by a 10 ms envelope at -40 dB; source 1.00-3.93 (0.35 s look) -->
-  <video id="ins-paul-1" src="media/paul/ins-paul-1-retake/ins-paul-1.mp4" data-start="0" data-duration="2.93" data-media-start="1.0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="If you're warned in time, you'll make it, won't you?"></video>
+  <!-- 23 Oct 26: the retake (right room). Speech 1.10-3.58 s by a 10 ms envelope at -40 dB; source 1.00-3.93 (0.35 s look). -v3 = source 0.90-4.40 (so media-start 0.1 = 1.00) at +11.3 dB, alimiter 0.95: the window measures -15.7 dB against the -16.1 narration median (-v2, the whole 10 s file at +16.6 dB, read -12.6 dB in the window: hot, unused) -->
+  <video id="ins-paul-1" src="media/paul/ins-paul-1-retake/ins-paul-1-v3.mp4" data-start="0" data-duration="2.93" data-media-start="0.1" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="If you're warned in time, you'll make it, won't you?"></video>
   <!-- popfig over Paul, then "36 LIVES" over the A9 photo: h1-s2 "36" 2.90 -->
   <div id="host-hook-overlay" data-composition-id="g-hook-overlay" data-composition-src="compositions/g-hook-overlay.html" data-start="0" data-duration="7.18" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- H1-S2: hard cut on "didn't"-line start to the A9 photo (Erin Maxwell, NWS), 2.75 to "all did" 2.90 + 4.10 = 7.00 -->
@@ -178,19 +178,19 @@
   <section class="clip hold" id="hold-ins-a4" data-start="740.601" data-duration="4.266" data-track-index="8"></section>
 
   <!-- Paul A1-S9 (ins-paul-2, Flow, logo over the mark): "At six twenty-six, near Amber ..."; -v2 = +8.7 dB to the narration level (23 Oct 26) -->
-  <!-- 23 Oct 26: the retake (right room). Speech 0.74-9.29 s; source 0.62-9.67, fits the slot, nothing after it moves -->
-  <video id="ins-paul-2" src="media/paul/ins-paul-2-retake/ins-paul-2.mp4" data-start="256.243" data-duration="9.05" data-media-start="0.62" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="At six twenty-six, near Amber, the same storm dropped its ninth tornado. This one would stay on the ground for about eighty minutes."></video>
+  <!-- 23 Oct 26: the retake (right room). Speech 0.74-9.29 s; source 0.62-9.67, fits the slot, nothing after it moves; -v2 = +9.5 dB, alimiter 0.95 (window -15.5 dB) -->
+  <video id="ins-paul-2" src="media/paul/ins-paul-2-retake/ins-paul-2-v2.mp4" data-start="256.243" data-duration="9.05" data-media-start="0.62" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="At six twenty-six, near Amber, the same storm dropped its ninth tornado. This one would stay on the ground for about eighty minutes."></video>
   <!-- Paul A2-S9 (ins-paul-3, cta-hinge tease, whisper word-exact; speech 1.99-8.44 s): source 1.85-8.512, takes the nx-a2-s9 slot; -v2 = +10.0 dB to the narration level (23 Oct 26) -->
   <!-- 23 Oct 26: the retake (right room), line rephrased under the owner's 17:10 order (old wording in its jobs.json
-       line_before_rephrase). Speech 0.40-8.69 s; source 0.30-9.04; 2.078 s longer than the old slot, CTA and all after moved -->
-  <video id="ins-paul-3" src="media/paul/ins-paul-3-retake/ins-paul-3.mp4" data-start="452.889" data-duration="8.74" data-media-start="0.3" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Minutes after the tornado tore through Bridge Creek, two words went out from Norman that no warning had ever carried before."></video>
+       line_before_rephrase). Speech 0.40-8.69 s; source 0.30-9.04; 2.078 s longer than the old slot, CTA and all after moved; -v2 = +9.8 dB, alimiter 0.95 (window -15.4 dB) -->
+  <video id="ins-paul-3" src="media/paul/ins-paul-3-retake/ins-paul-3-v2.mp4" data-start="452.889" data-duration="8.74" data-media-start="0.3" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Minutes after the tornado tore through Bridge Creek, two words went out from Norman that no warning had ever carried before."></video>
   <!-- Paul A3-S9 (ins-paul-4, turning point, line rephrased under the owner's 17:10 order; old wording in its jobs.json
-       line_before_rephrase). Speech 0.19-9.53 s; source 0-9.88; takes the nx-a3-s9 slot, 1.446 s longer, all after moved -->
-  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4.mp4" data-start="629.236" data-duration="9.88" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="It worked that night. I wouldn't copy it. The people who came through best had already picked a safe spot, low and deep inside, and they went there early."></video>
-  <!-- Paul A4-S6 (ins-paul-5, the harder half). Speech 0.17-9.08 s; source 0-9.43; takes the nx-a4-s6 slot, 1.281 s longer -->
-  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5.mp4" data-start="764.451" data-duration="9.43" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Here's the harder half, and I won't skip it. Nineteen of the thirty-six were inside their houses. Some were doing exactly what they'd been taught."></video>
-  <!-- Paul A5-S4 (ins-paul-6, the thesis, loop E closes). Speech 0.20-8.64 s; source 0-8.99; takes the nx-a5-s4 slot, 1.292 s longer -->
-  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6.mp4" data-start="922.041" data-duration="8.99" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Every county on that path was warned before the tornado arrived. A warning tells you where to go. It can't build the room you go to."></video>
+       line_before_rephrase). Speech 0.19-9.53 s; source 0-9.88; takes the nx-a3-s9 slot, 1.446 s longer, all after moved; -v2 = +9.0 dB, alimiter 0.95 (window -15.8 dB) -->
+  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4-v2.mp4" data-start="629.236" data-duration="9.88" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="It worked that night. I wouldn't copy it. The people who came through best had already picked a safe spot, low and deep inside, and they went there early."></video>
+  <!-- Paul A4-S6 (ins-paul-5, the harder half). Speech 0.17-9.08 s; source 0-9.43; takes the nx-a4-s6 slot, 1.281 s longer; -v2 = +9.6 dB, alimiter 0.95 (window -16.1 dB) -->
+  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5-v2.mp4" data-start="764.451" data-duration="9.43" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Here's the harder half, and I won't skip it. Nineteen of the thirty-six were inside their houses. Some were doing exactly what they'd been taught."></video>
+  <!-- Paul A5-S4 (ins-paul-6, the thesis, loop E closes). Speech 0.20-8.64 s; source 0-8.99; takes the nx-a5-s4 slot, 1.292 s longer; -v2 = +10.0 dB, alimiter 0.95 (window -15.4 dB) -->
+  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6-v2.mp4" data-start="922.041" data-duration="8.99" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Every county on that path was warned before the tornado arrived. A warning tells you where to go. It can't build the room you go to."></video>
   <!-- CTA (config channel.cta, staged media/cta/, md5 bba0b9f3...) -->
   <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v10-oct23.mp4" data-start="462.629" data-duration="24.042" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
   <!-- INSERTS, own audio, graded, captions per mg-quickref "Outside voices" (hosts g-cap-*). -v2 files (23 Oct 26): +7.9 / +8.1 / +10.9 dB so each sits at the narration level under data-volume 0.9 (audio_levels.py), peaks limited at -1.5 dBFS -->
@@ -335,8 +335,8 @@
 
   <!-- ============ A3 · Tornado Emergency (act editor, 22 Oct 26) · picture 485.413 to bo-3 660.999 ============
        Word times: audio/a3-s<k>.words.json; abs = nx data-start + word start. Empty by design: ins-a3-england 548.93-561.33
-       (its own picture); its caption host g-a3-cap-england sits on track 4. A3-S9 626.978-635.112 is covered PROVISIONAL
-       until ins-paul-4 lands (coordinator 22 Oct 26). -->
+       (its own picture); its caption host g-a3-cap-england sits on track 4. A3-S9 is ins-paul-4 (23 Oct 26; the PROVISIONAL cover
+       of 22 Oct 26 is gone). -->
   <!-- A3-S1 open: muted KFOR Chopper 4 (new window s 9.0-12.2 of kfor-chopper4-tornado_s2100-2400.mp4, not in cuts.tsv), 485.413 to "went" 485.413 + 2.30 = 487.713 -->
   <video id="c-a3-s1-open" class="graded" src="media/clips/cuts/cut-a3-s1-open.mp4" data-start="487.671" data-duration="2.3" data-media-start="0" data-track-index="1" data-volume="0" muted></video>
   <!-- NWS Tornado Emergency graphic, "went" 487.713 to "The tornado" 485.413 + 6.46 = 491.873; chip 6:57 PM at "657" 485.413 + 4.46 -->
@@ -365,11 +365,7 @@
   <div id="host-a3-map-s7" data-composition-id="g-a3-map-s7" data-composition-src="compositions/g-a3-map-s7.html" data-start="602.036" data-duration="6.262" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A3-S8 SA p11 card, chips, open road: 606.04 to a3-s9 626.978 -->
   <div id="host-a3-sa-p11" data-composition-id="g-a3-sa-p11" data-composition-src="compositions/g-a3-sa-p11.html" data-start="608.298" data-duration="20.938" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <!-- PROVISIONAL until ins-paul-4: A3-S9 "It worked that night. Please don't copy it." muted KFOR live, SE 89th and I-35
-       (source s 217.5-222.3 of kfor-live-i35-tornado_s1840-2100.mp4, not in cuts.tsv), 626.978 to "get below" 626.978 + 4.56 = 631.538 -->
-  <video id="c-a3-s9-prov" class="graded" src="media/clips/cuts/cut-a3-s9-prov.mp4" data-start="629.236" data-duration="4.56" data-media-start="0" data-track-index="1" data-volume="0" muted></video>
-  <!-- PROVISIONAL until ins-paul-4: "interior room" the Millhouse hallway (NOAA Report June 1999, Joseph Schaefer/NOAA), 631.538 to a3-s10 635.412 -->
-  <section class="clip still-wrap" id="c-a3-s9-hall" data-start="633.796" data-duration="5.32" data-track-index="1"><img id="kb-a3-s9-hall" src="media/stills/noaa-millhouse-hallway.png" style="object-fit: contain; background: #04070c" alt=""></section>
+  <!-- A3-S9: ins-paul-4 (mounted with the other Paul clips), 629.236 to 639.116; circle off, nothing on top -->
   <!-- A3-S10 overpass photos + pins, A3-S11 6:57 / 25 MIN / 7:22: 635.412 to a3-s11 "The city's" 646.283 + 7.776 = 654.059 (cut sized to the I-35 clip) -->
   <div id="host-a3-map-s10" data-composition-id="g-a3-map-s10" data-composition-src="compositions/g-a3-map-s10.html" data-start="639.116" data-duration="18.647" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A3-S11 KFOR I-35 crossing in Moore (approved cut), muted, 654.059 to bo-3 660.999 (6.94 s, the whole cut) -->
@@ -383,7 +379,7 @@
      Coverage, track 1/2, back to back:
        661.699-666.700 cut-a4-s1 | 666.700-670.950 sa-018 | 670.950-685.760 g-a4-map | 685.760-699.900 g-a4-westmoore
        699.900-715.927 g-a4-corridor | 715.927-736.897 g-a4-millhouse | [736.897-741.163 ins-a4-street]
-       741.163-745.220 sa-024-001 | 745.220-760.747 g-a4-room | 760.747-768.896 g-a4-houses (PROVISIONAL until ins-paul-5)
+       741.163-745.220 sa-024-001 | 745.220-760.747 g-a4-room | 760.747-768.896 ins-paul-5 (23 Oct 26)
        768.896-789.486 g-a4-lives | 789.486-811.920 g-a4-walls | 811.920-817.300 nssl-damage1 | 817.300-822.340 nssl-damage3
        822.340-834.880 g-a4-quote | 834.880-839.420 g-a4-wallsr | 839.420-847.146 g-a4-mappull -->
 
@@ -411,9 +407,7 @@
 <!-- A4-S5 745.22 to A4-S6 start 760.747 -->
 <div id="host-a4-room" data-composition-id="g-a4-room" data-composition-src="compositions/g-a4-room.html" data-start="748.924" data-duration="15.527" data-track-index="2" data-width="1920" data-height="1080"></div>
 
-<!-- A4-S6 760.747 to A4-S7 768.896. PROVISIONAL until ins-paul-5: Paul's slot covered while his clips are on hold;
-     "19" @ 760.747 + 2.68 = 763.43. Remove this host when ins-paul-5 is mounted (the chip then rides over Paul). -->
-<div id="host-a4-houses" data-composition-id="g-a4-houses" data-composition-src="compositions/g-a4-houses.html" data-start="764.451" data-duration="9.43" data-track-index="2" data-width="1920" data-height="1080"></div>
+<!-- A4-S6: ins-paul-5 (mounted with the other Paul clips), 764.451 to 773.881. g-a4-houses and its "19 OF 36" chip came off with the provisional slot (a full-frame graphic; Paul is never composited over one). -->
 <!-- A4-S7 768.896 to A4-S8 789.486 -->
 <div id="host-a4-lives" data-composition-id="g-a4-lives" data-composition-src="compositions/g-a4-lives.html" data-start="773.881" data-duration="20.59" data-track-index="2" data-width="1920" data-height="1080"></div>
 <!-- A4-S8 789.486 to A4-S9 811.92 -->
@@ -453,11 +447,8 @@
   <!-- A5-S3: estimate bars, 894.628 to a5-s4 917.056 -->
   <div id="host-a5-estimates" data-composition-id="g-a5-estimates" data-composition-src="compositions/g-a5-estimates.html" data-start="899.613" data-duration="22.428" data-track-index="2" data-width="1920" data-height="1080"></div>
 
-  <!-- A5-S4: PROVISIONAL until ins-paul-6 (Paul clips 4 to 6 on hold; nx-a5-s4 TTS plays). The thesis line over two stills, no text.
-       SA 1999 damage-path map (sa-013-000, Kruckenberg and Speheger, NWS Norman) 917.056 to "A warning" 917.056 + 3.80 = 920.856;
-       damaged cars (nssl-damage4, NOAA/NSSL) 920.856 to a5-s5 924.754. When ins-paul-6 lands, delete these two and mount it at 917.056. -->
-  <section class="clip still-wrap" id="c-a5-s4-paths" data-start="922.041" data-duration="3.8" data-track-index="1" data-callback="PROVISIONAL slot until ins-paul-6: the A2-S2 damage-path map (313.4) returns under the thesis line, every county on that path"><img id="kb-a5-s4-paths" src="media/stills/sa/sa-013-000.png" style="object-position: 50% 80%" alt=""></section>
-  <section class="clip still-wrap" id="c-a5-s4-dmg4" data-start="925.841" data-duration="5.19" data-track-index="1" data-callback="PROVISIONAL slot until ins-paul-6: the A2-S2 cars (304.5) return on it cannot build the room you go to"><img id="kb-a5-s4-dmg4" src="media/stills/nssl-damage4.jpg" alt=""></section>
+
+  <!-- A5-S4: ins-paul-6 (mounted with the other Paul clips), 922.041 to 931.031 -->
 
   <!-- A5-S5: McCarthy quote on the NOAA Report page, 924.754 to "reinforced" region 924.754 + 9.80 = 934.554 -->
   <div id="host-a5-mccarthy" data-composition-id="g-a5-mccarthy" data-composition-src="compositions/g-a5-mccarthy.html" data-start="931.031" data-duration="9.8" data-track-index="2" data-width="1920" data-height="1080"></div>
@@ -506,66 +497,62 @@ function punch(sel, at, s = 1.10) {
   tl.to(sel, { scale: 1.0, duration: 0.45, ease: "power2.inOut" }, at + 1.1);
 }
 /* INTRO */
-punch("#kb-h1-s2-a9", 2.75, 1.08);
-punch("#kb-h1-s2-a9", 4.30, 1.06);          /* "didn't" */
-punch("#kb-h1-s3-sa", 12.495, 1.08);
-punch("#kb-h1-s3-aerial", 16.115, 1.10);
-punch("#kb-h1-s3-aerial", 19.935, 1.06);    /* "decided" */
-punch("#kb-t1-s1-map", 21.551, 1.12);
-punch("#kb-i1-s1-ktlx", 58.912, 1.08);
-punch("#kb-i1-s3-bc", 86.205, 1.10);
-punch("#kb-i1-s3-bc", 89.025, 1.06);        /* "12" */
-punch("#kb-i1-s3-moore", 91.885, 1.10);
-punch("#kb-i1-s3-moore", 95.745, 1.06);     /* "houses" */
-punch("#kb-i1-s3-setup", 97.205, 1.08);
-punch("#kb-i1-s3-setup", 99.865, 1.06);     /* "before" */
-punch("#kb-i1-s3-goes", 101.805, 1.08);
+punch("#kb-h1-s2-a9", 2.93, 1.08);
+punch("#kb-h1-s2-a9", 4.48, 1.06);          /* "didn't" */
+punch("#kb-h1-s3-sa", 12.675, 1.08);
+punch("#kb-h1-s3-aerial", 16.295, 1.10);
+punch("#kb-h1-s3-aerial", 20.115, 1.06);    /* "decided" */
+punch("#kb-t1-s1-map", 21.731, 1.12);
+punch("#kb-i1-s1-ktlx", 59.092, 1.08);
+punch("#kb-i1-s3-bc", 86.385, 1.10);
+punch("#kb-i1-s3-bc", 89.205, 1.06);        /* "12" */
+punch("#kb-i1-s3-moore", 92.065, 1.10);
+punch("#kb-i1-s3-moore", 95.925, 1.06);     /* "houses" */
+punch("#kb-i1-s3-setup", 97.385, 1.08);
+punch("#kb-i1-s3-setup", 100.045, 1.06);     /* "before" */
+punch("#kb-i1-s3-goes", 101.985, 1.08);
 /* A1 punches */
-punch("#kb-a1-s4-wdss", 188.85, 1.06);   /* "That evening" 16.56 + 172.29 */
+punch("#kb-a1-s4-wdss", 189.03, 1.06);   /* "That evening" 16.56 + 172.29 */
 /* A2 punches */
-punch("#kb-a2-s1-a9", 295.718, 1.08);
-punch("#kb-a2-s1-a9", 296.798, 1.06);        /* "What does" 278.558 + 18.24 */
-punch("#kb-a2-s2-slab", 299.472, 1.08);
-punch("#kb-a2-s2-slab", 301.152, 1.06);      /* "two" 299.472 + 1.68 */
-punch("#kb-a2-s2-cars", 304.492, 1.10);
-punch("#kb-a2-s2-cars", 305.652, 1.06);      /* "carried" 299.472 + 6.18 */
-punch("#kb-a2-s2-bc", 307.512, 1.08);
-punch("#kb-a2-s2-bc", 310.832, 1.06);        /* "Damage" 299.472 + 11.36 */
-punch("#kb-a2-s2-map", 313.412, 1.08);
-punch("#kb-a2-s2-map", 314.492, 1.06);       /* "Bridge Creek" 299.472 + 15.02 */
-punch("#kb-a2-s2-map", 317.39, 1.05);        /* "survey teams" 299.472 + 17.92 */
-punch("#kb-a2-s8-aerial", 433.273, 1.08);
-punch("#kb-a2-s8-aerial", 436.093, 1.06);    /* "deputy" 433.273 + 2.82 */
-punch("#kb-a2-s8-debris", 438.933, 1.10);
-punch("#kb-a2-s8-truck", 442.133, 1.08);
-punch("#kb-a2-s8-truck", 444.993, 1.05);     /* "same." 433.273 + 11.72 */
+punch("#kb-a2-s1-a9", 295.898, 1.08);
+punch("#kb-a2-s1-a9", 296.978, 1.06);        /* "What does" 278.558 + 18.24 */
+punch("#kb-a2-s2-slab", 299.652, 1.08);
+punch("#kb-a2-s2-slab", 301.332, 1.06);      /* "two" 299.472 + 1.68 */
+punch("#kb-a2-s2-cars", 304.672, 1.10);
+punch("#kb-a2-s2-cars", 305.832, 1.06);      /* "carried" 299.472 + 6.18 */
+punch("#kb-a2-s2-bc", 307.692, 1.08);
+punch("#kb-a2-s2-bc", 311.012, 1.06);        /* "Damage" 299.472 + 11.36 */
+punch("#kb-a2-s2-map", 313.592, 1.08);
+punch("#kb-a2-s2-map", 314.672, 1.06);       /* "Bridge Creek" 299.472 + 15.02 */
+punch("#kb-a2-s2-map", 317.57, 1.05);        /* "survey teams" 299.472 + 17.92 */
+punch("#kb-a2-s8-aerial", 433.453, 1.08);
+punch("#kb-a2-s8-aerial", 436.273, 1.06);    /* "deputy" 433.273 + 2.82 */
+punch("#kb-a2-s8-debris", 439.113, 1.10);
+punch("#kb-a2-s8-truck", 442.313, 1.08);
+punch("#kb-a2-s8-truck", 445.173, 1.05);     /* "same." 433.273 + 11.72 */
 /* A3 punches */
-punch("#kb-a3-s9-hall", 631.538, 1.08);   /* PROVISIONAL: "get below ground" */
-punch("#kb-a3-s9-hall", 632.998, 1.05);   /* PROVISIONAL: "interior" 626.978 + 6.02 */
 /* A4 punches */
-punch("#kb-a4-s1-moore", 666.70, 1.10);
-punch("#kb-a4-s1-moore", 668.24, 1.06);     /* "three" */
-punch("#kb-a4-s5-debris", 741.163, 1.08);
-punch("#kb-a4-s5-debris", 742.82, 1.06);    /* "people underground" */
-punch("#kb-a4-s9-slab", 811.92, 1.08);
-punch("#kb-a4-s9-slab", 815.04, 1.06);      /* "Two researchers" */
-punch("#kb-a4-s9-debris", 817.30, 1.08);
-punch("#kb-a4-s9-debris", 820.26, 1.06);    /* "wrote down the rest" */
+punch("#kb-a4-s1-moore", 670.404, 1.10);
+punch("#kb-a4-s1-moore", 671.944, 1.06);     /* "three" */
+punch("#kb-a4-s5-debris", 744.867, 1.08);
+punch("#kb-a4-s5-debris", 746.524, 1.06);    /* "people underground" */
+punch("#kb-a4-s9-slab", 816.905, 1.08);
+punch("#kb-a4-s9-slab", 820.025, 1.06);      /* "Two researchers" */
+punch("#kb-a4-s9-debris", 822.285, 1.08);
+punch("#kb-a4-s9-debris", 825.245, 1.06);    /* "wrote down the rest" */
 /* A5 punches */
-punch("#kb-a5-s2-moore", 875.89, 1.08);
-punch("#kb-a5-s2-dmg6", 880.87, 1.08);
-punch("#kb-a5-s2-dmg1", 884.13, 1.06);
-punch("#kb-a5-s2-dmg2", 890.13, 1.06);
-punch("#kb-a5-s4-paths", 917.056, 1.08);
-punch("#kb-a5-s4-dmg4", 920.856, 1.08);
-punch("#kb-a5-s6-te", 947.076, 1.08);
-punch("#kb-a5-s6-te", 951.996, 1.06);       /* "tornado emergency" */
-punch("#kb-a5-s6-aerial", 963.516, 1.08);
-punch("#kb-a5-s7-cover", 969.471, 1.06);
-punch("#kb-a5-s10-path", 1071.721, 1.08);
-punch("#kb-a5-s10-hall", 1077.231, 1.08);
-punch("#kb-a5-s10-hall", 1079.391, 1.06);   /* "cellar" 1064.231 + 15.24 */
-tl.set({}, {}, 1111.052);
+punch("#kb-a5-s2-moore", 880.875, 1.08);
+punch("#kb-a5-s2-dmg6", 885.855, 1.08);
+punch("#kb-a5-s2-dmg1", 889.115, 1.06);
+punch("#kb-a5-s2-dmg2", 895.115, 1.06);
+punch("#kb-a5-s6-te", 953.353, 1.08);
+punch("#kb-a5-s6-te", 958.273, 1.06);       /* "tornado emergency" */
+punch("#kb-a5-s6-aerial", 969.793, 1.08);
+punch("#kb-a5-s7-cover", 975.748, 1.06);
+punch("#kb-a5-s10-path", 1077.998, 1.08);
+punch("#kb-a5-s10-hall", 1083.508, 1.08);
+punch("#kb-a5-s10-hall", 1085.668, 1.06);   /* "cellar" 1064.231 + 15.24 */
+tl.set({}, {}, 1117.329);
 </script>
 </body>
 </html>

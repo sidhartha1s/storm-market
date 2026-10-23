@@ -24,7 +24,7 @@
     border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
   .hk-srct { font-family:Arial, sans-serif; font-weight:700; font-size:21px; line-height:26px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; }
 </style>
-<div id="g-hook-overlay-root" data-composition-id="g-hook-overlay" data-width="1920" data-height="1080" data-duration="7">
+<div id="g-hook-overlay-root" data-composition-id="g-hook-overlay" data-width="1920" data-height="1080" data-duration="7.18">
   <div class="hk-pop" id="g-hook-overlay-pop">
     <div class="hk-pf" id="g-hook-overlay-pf1">OKLAHOMA</div>
     <div class="hk-pf" id="g-hook-overlay-pf2">MAY 3, 1999</div>
@@ -39,7 +39,7 @@
 window.__timelines = window.__timelines || {};
 (function () {
   const P = "#g-hook-overlay-";
-  /* cues (briefs/intro.md A, h1-s2 start 2.90): popfig in 0.15 / out by 2.55; "36" @2.90 (h1-s2 0.00); chip + credit out by 6.85 */
+  /* cues (briefs/intro.md A; h1-s2 start 3.08 since the clip-1 retake, 23 Oct 26, was 2.90): popfig in 0.15 / out by 2.55; "36" @3.08 (h1-s2 0.00); chip + credit out by 7.03 */
   const tl = gsap.timeline({ paused: true });
   tl.set([P + "pf1", P + "pf2", P + "chip", P + "src"], { autoAlpha: 0 }, 0);
 
@@ -50,18 +50,18 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "pf1", { autoAlpha: 0, y: -46, duration: 0.4, ease: "power3.in" }, 2.10);
   tl.to(P + "pf2", { autoAlpha: 0, y: -46, duration: 0.4, ease: "power3.in" }, 2.15);
 
-  /* "36" @2.90: chip lands, count-up fast then slow into 36 */
-  tl.fromTo(P + "chip", { autoAlpha: 0, x: -140 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 2.90);
+  /* "36" @3.08: chip lands, count-up fast then slow into 36 */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -140 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 3.08);
   const n = document.querySelector(P + "n");
   const cnt = { v: 0 };
-  tl.to(cnt, { v: 36, duration: 0.8, ease: "power4.out", onUpdate: () => { n.textContent = String(Math.round(cnt.v)); } }, 2.90);
-  tl.to(P + "chip", { y: -7, duration: 3.0, ease: "sine.inOut" }, 3.50);
-  tl.fromTo(P + "src", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.90);
+  tl.to(cnt, { v: 36, duration: 0.8, ease: "power4.out", onUpdate: () => { n.textContent = String(Math.round(cnt.v)); } }, 3.08);
+  tl.to(P + "chip", { y: -7, duration: 3.0, ease: "sine.inOut" }, 3.68);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 3.08);
 
-  /* exits: slide out, done by 6.85 */
-  tl.to(P + "chip", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.25);
-  tl.to(P + "src", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.25);
-  tl.set({}, {}, 7.0);
+  /* exits: slide out, done by 7.03 */
+  tl.to(P + "chip", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.43);
+  tl.to(P + "src", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.43);
+  tl.set({}, {}, 7.18);
   window.__timelines["g-hook-overlay"] = tl;
 })();
 </script>
