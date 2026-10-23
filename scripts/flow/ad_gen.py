@@ -200,8 +200,12 @@ with sync_playwright() as p:
         log("top clip before", anchor, "mode", mode or "send")
         fails_before = failed_cards(page)
         expect = CFG["count"] * CFG["credits_per_video"]
-        for job in ([] if mode else CFG["jobs"]):
-            if os.path.exists(os.path.join(D, "STOP")):  # kill switch: `touch STOP` halts before the next spend
+        done = set(open(DONE, encoding="utf8").read().split()) if os.path.exists(DONE) else set()
+        todo = [j for j in CFG["jobs"] if j["name"] not in done] if not mode else []
+        log(f"plan: {len(todo)} jobs x {expect} credits = {len(todo) * expect}, budget {CFG['budget']}, already approved {sorted(done)}")
+        refused = 0
+        for job in todo:
+            if os.path.exists(STOP):  # kill switch: `touch STOP` (main checkout scripts/flow) halts before the next spend
                 log("STOP file, halting before", job["name"], "spent", spent)
                 break
             if spent + expect > CFG["budget"]:
