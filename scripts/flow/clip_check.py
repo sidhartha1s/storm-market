@@ -32,9 +32,28 @@ def forms(tok):
     return out
 
 
+ORDINAL = {"one": "first", "two": "second", "three": "third", "five": "fifth", "eight": "eighth", "nine": "ninth", "twelve": "twelfth"}
+
+
+def ordinal(n):
+    # "23rd" as the transcriber writes it, spoken "twenty third"
+    words = spell(n).split()
+    last = words[-1]
+    words[-1] = ORDINAL.get(last) or (last[:-1] + "ieth" if last.endswith("y") else last + "th")
+    return " ".join(words)
+
+
 def norm(text, want=None):
+    # Spoken and written numbers meet here: the transcriber writes "23rd" and "110" for a line that spells "twenty-third"
+    # and "a hundred and ten" (Camille clip 4, 23 Oct 26). "a hundred" is "one hundred"; the "and" inside a number is dropped,
+    # and so is every other "and": a swapped or dropped "and" keeps the meaning (owner retake bar, 18 Oct 26).
+    text = text.lower().replace("-", " ")
+    text = re.sub(r"\b(\d{1,4})(st|nd|rd|th)\b", lambda m: ordinal(int(m.group(1))), text)
+    text = re.sub(r"\ba (hundred|thousand)\b", r"one \1", text)
     toks = []
-    for t in re.sub(r"[^a-z0-9 ]", " ", text.lower().replace("-", " ")).split():
+    for t in re.sub(r"[^a-z0-9 ]", " ", text).split():
+        if t == "and":
+            continue
         if t.isdigit() and int(t) < 10000:
             fs = forms(t)
             t = next((f for f in fs if want and set(f.split()) <= set(want)), fs[0])

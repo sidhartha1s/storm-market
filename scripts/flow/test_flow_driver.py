@@ -33,3 +33,17 @@ assert [t[2] for t in clips_above(grid_tiles(narrow), ANCHOR)] == [NEW]
 # a clip beyond the agent panel is not a grid tile
 assert grid_tiles([[1500, 300, ASB + "x", 1340, 1830, 490]]) == []
 print("test_flow_driver: 3 checks PASS")
+
+# clip_check.py: spoken numbers against the transcriber's digits (recorded Camille clip 4, 23 Oct 26)
+cc = open(os.path.join(HERE, "clip_check.py"), encoding="utf-8").read()
+ns2 = {}
+exec("import re" + chr(10) + cc[cc.index("ONES ="):cc.index("model = WhisperModel")], ns2)
+norm = ns2["norm"]
+line = "By Saturday, August twenty-third, more than a hundred and ten people were listed as missing in Virginia."
+heard = "By Saturday, August 23rd. More than 110 people were listed as missing in Virginia."
+want = norm(line)
+assert [w for w in want if w not in norm(heard, want)] == [], (want, norm(heard, want))
+assert [w for w in norm(heard, want) if w not in want] == [], norm(heard, want)
+assert norm("the 1999 outbreak", norm("the nineteen ninety nine outbreak")) == ["the", "nineteen", "ninety", "nine", "outbreak"]
+assert "houses" in [w for w in norm("inside their houses") if w not in norm("inside their house")], "a real word change still shows"
+print("test_flow_driver: clip_check number forms PASS")
