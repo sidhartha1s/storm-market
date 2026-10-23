@@ -1,0 +1,84 @@
+<template>
+<style>
+  /* g-a4-9 · A4-S9 · RHS stat panel (ep2 anatomy, worked example library/inhouse/examples/joplin-stat-panel.html): rows "24 · Graves County",
+     counter "57 · one tornado" (Courier 84, opens on its first tick, lands on 57), "500+ hurt", closing line "most in the Paducah office's history",
+     source line. Overlay over Mayfield footage only (NWS Graves survey aerial, USACE crew on a cleared Mayfield lot, downtown Mayfield; no Guard
+     video). Text in the solid zone x >= 1270; content ends above y 660 (presenter-circle corner stays free). The 57 is the counter itself, so no
+     figure appears twice. */
+  #g-a4-9-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #g-a4-9-panel { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box; padding:90px 96px 0 170px;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0)); opacity:0; visibility:hidden; }
+  .g-a4-9-row { display:flex; align-items:baseline; gap:18px; opacity:0; visibility:hidden; }
+  .g-a4-9-val { font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:40px; color:#dfe7ee; white-space:nowrap; }
+  .g-a4-9-lab { font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:24px; letter-spacing:2px; color:#93a3b2; white-space:nowrap; }
+  #g-a4-9-r24 { margin-top:0; }
+  #g-a4-9-cnt { margin-top:34px; opacity:0; visibility:hidden; }
+  #g-a4-9-num { display:block; font-family:'Courier New', Courier, monospace; font-weight:700; font-size:84px; line-height:90px; color:#e74c3c; }
+  #g-a4-9-numlab { display:block; margin-top:2px; font-family:Arial, sans-serif; font-weight:700; font-size:20px; line-height:24px; letter-spacing:2px; color:#c8d3e0; }
+  #g-a4-9-r500 { margin-top:34px; }
+  #g-a4-9-bar { margin-top:30px; width:554px; height:2px; background:rgba(147,163,178,0.35); transform-origin:left center; visibility:hidden; }
+  #g-a4-9-close { margin-top:26px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px; line-height:34px; color:#d8a13a;
+    white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a4-9-src { margin-top:28px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:24px; color:#c8d3e0; white-space:nowrap;
+    opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-9-root" data-composition-id="g-a4-9" data-width="1920" data-height="1080">
+  <div id="g-a4-9-panel">
+    <div class="g-a4-9-row" id="g-a4-9-r24"><span class="g-a4-9-val" id="g-a4-9-v24">24</span><span class="g-a4-9-lab" id="g-a4-9-l24">Graves County</span></div>
+    <div id="g-a4-9-cnt"><span id="g-a4-9-num">1</span><span id="g-a4-9-numlab">one tornado</span></div>
+    <div class="g-a4-9-row" id="g-a4-9-r500"><span class="g-a4-9-val" id="g-a4-9-v500">500+</span><span class="g-a4-9-lab" id="g-a4-9-l500">hurt</span></div>
+    <div id="g-a4-9-bar"></div>
+    <div id="g-a4-9-close">most in the Paducah office's history</div>
+    <div id="g-a4-9-src">NWS Paducah event page; Service Assessment, p30</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-9-";
+  const DUR = 13.325;  /* host 773.688 ("24" @1.58 in a4-s9, seg start 772.108) -> 787.013 (a4-s10 start); host-local = a4-s9 time - 1.58 */
+  const C = {
+    r24: 0.15,         /* 24 PEOPLE @1.58 (ep 773.688); panel slides in from 0 */
+    c57: 5.18,         /* 57 @6.76 (ep 778.868) */
+    r500: 6.80,        /* MORE THAN 500 @8.06-8.38 (ep 780.488) */
+    close: 10.44,      /* MOST LIVES LOST @12.02 (ep 784.128) */
+    out: 12.725        /* host end - 0.6 */
+  };
+
+  tl.set(P + "panel", { autoAlpha: 0, x: 660 }, 0);
+  tl.fromTo(P + "panel", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 0);
+
+  tl.set([P + "r24", P + "r500", P + "cnt"], { autoAlpha: 0, y: 24 }, 0);
+  tl.fromTo(P + "r24", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.r24);
+  tl.set([P + "src"], { autoAlpha: 0, y: 14 }, 0);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.r24 + 0.6);
+
+  /* the whole panel content drifts up 8 px across the window, so nothing sits still between beats */
+  tl.to([P + "r24", P + "src"], { y: -8, duration: C.c57 - 0.8, ease: "none" }, 0.8);
+
+  /* 57 @5.18: counter opens on its first tick (1), fast then slow into 57 */
+  tl.fromTo(P + "cnt", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.c57);
+  const num = document.querySelector(P + "num");
+  const k = { v: 1 };
+  tl.fromTo(k, { v: 1 }, { v: 57, duration: 1.3, ease: "power3.out", onUpdate: () => { num.textContent = Math.round(k.v); } }, C.c57);
+
+  /* 500+ @6.80 */
+  tl.fromTo(P + "r500", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.r500);
+  tl.to([P + "cnt", P + "r500"], { y: -6, duration: C.close - C.r500 - 0.4, ease: "none" }, C.r500 + 0.4);
+
+  /* MOST LIVES LOST @10.44: rule draws, closing line */
+  tl.set(P + "bar", { scaleX: 0, visibility: "hidden" }, 0);
+  tl.set(P + "bar", { visibility: "visible" }, C.close);
+  tl.to(P + "bar", { scaleX: 1, duration: 0.5, ease: "power3.out" }, C.close);
+  tl.set(P + "close", { autoAlpha: 0, y: 24 }, 0);
+  tl.fromTo(P + "close", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.close + 0.15);
+  tl.to(P + "close", { y: -8, duration: C.out - C.close - 0.6, ease: "none" }, C.close + 0.6);
+
+  /* out */
+  tl.to(P + "panel", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.out);
+
+  window.__timelines["g-a4-9"] = tl;
+})();
+</script>
+</template>

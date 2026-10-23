@@ -1,0 +1,85 @@
+<!-- g-a5-2 · A5-S2 · the OSHA sentence (card 1, left) and the WFO St. Louis words (card 2, right), two separate beige cite cards,
+     never merged. "recommends" lifts and turns amber on "Recommends, not requires". Full frame, own ground.
+     Host 873.305 (a5-s2 start) -> 893.456 (a5-s3 start; retimed 23 Oct 26). Host-local times = a5-s2.words.json seconds. Cards stop at x 1560
+     (presenter-circle corner stays free). Type 40 px (both cards one size, as the brief asks), so the cards fit their columns. -->
+<template>
+<style>
+  #g-a5-2-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a5-2-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  .g-a5-2-col { position:absolute; top:0; height:1080px; display:flex; align-items:center; }
+  #g-a5-2-col1 { left:120px; width:780px; }
+  #g-a5-2-col2 { left:1020px; width:540px; }
+  .g-a5-2-card { width:100%; box-sizing:border-box; padding:48px 44px; border-radius:28px; opacity:0; visibility:hidden;
+    background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .g-a5-2-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:38px; line-height:48px; color:#2a2622; }
+  /* one phrase row per line, never wrapped (fix round 1, overlap_check): widest row at 38 px, PIL Georgia Italic, card 1 557 of 692 px inner, card 2 420 of 452 */
+  .g-a5-2-ph { display:block; height:48px; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a5-2-rec { display:inline-block; }
+  .g-a5-2-who { display:block; margin-top:36px; font-weight:700; font-size:26px; line-height:32px; letter-spacing:3px; color:#6b6257; opacity:0; visibility:hidden; }
+  .g-a5-2-src { display:block; margin-top:6px; font-weight:700; font-size:19px; line-height:24px; letter-spacing:2px; color:#6b6257; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-2-root" data-composition-id="g-a5-2" data-width="1920" data-height="1080"
+     data-type-ok="two cite cards: quote text and attribution are the two reading tiers by design, no headline">
+  <div class="g-a5-2-grid" id="g-a5-2-grid"></div>
+  <div class="g-a5-2-col" id="g-a5-2-col1">
+    <div class="g-a5-2-card" id="g-a5-2-card1">
+      <div class="g-a5-2-q"><div class="g-a5-2-ph" id="g-a5-2-a1">&ldquo;OSHA does not have a standard</div><div class="g-a5-2-ph" id="g-a5-2-a2a">that requires severe weather</div><div class="g-a5-2-ph" id="g-a5-2-a2b">emergency plans</div><div class="g-a5-2-ph" id="g-a5-2-a3">but <span id="g-a5-2-rec">recommends</span> them&rdquo;</div></div>
+      <span class="g-a5-2-who" id="g-a5-2-who1">OSHA news release</span>
+      <span class="g-a5-2-src" id="g-a5-2-src1">Chicago region, 26 Apr 2022</span>
+    </div>
+  </div>
+  <div class="g-a5-2-col" id="g-a5-2-col2">
+    <div class="g-a5-2-card" id="g-a5-2-card2">
+      <div class="g-a5-2-q"><div class="g-a5-2-ph" id="g-a5-2-b1a">&ldquo;The NWS has very little</div><div class="g-a5-2-ph" id="g-a5-2-b1b">outreach material</div><div class="g-a5-2-ph" id="g-a5-2-b2">to aid private companies</div><div class="g-a5-2-ph" id="g-a5-2-b3a">in developing their</div><div class="g-a5-2-ph" id="g-a5-2-b3b">severe weather plans&rdquo;</div></div>
+      <span class="g-a5-2-who" id="g-a5-2-who2">WFO St. Louis after-action review</span>
+      <span class="g-a5-2-src" id="g-a5-2-src2">quoted in the NWS Service Assessment, p33-34</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a5-2-";
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 20.151;
+  tl.set([P + "card1", P + "card2"], { autoAlpha: 0, x: 0, y: 30 }, 0);
+  tl.set([P + "who1", P + "src1", P + "who2", P + "src2"], { autoAlpha: 0, y: 14 }, 0);
+  tl.set([P + "a1", P + "a2a", P + "a2b", P + "a3", P + "b1a", P + "b1b", P + "b2", P + "b3a", P + "b3b"], { autoAlpha: 0 }, 0);
+  tl.set(P + "rec", { y: 0, color: "#2a2622" }, 0);
+  tl.set([P + "col1", P + "col2"], { y: 0 }, 0);
+
+  /* ambient: grid drift 12 px/s; each card column floats up 8 px over the window */
+  tl.fromTo(P + "grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.to([P + "col1", P + "col2"], { y: -8, duration: DUR, ease: "none" }, 0);
+
+  /* IN OSHA'S OWN WORDS @0.00 .. OSHA DOES NOT @1.825: card 1 with its first phrase, then its attribution */
+  tl.to(P + "card1", { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.825);
+  tl.to(P + "a1", { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 1.825);
+  tl.to(P + "who1", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.225);
+  tl.to(P + "src1", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.475);
+  /* THAT REQUIRES @2.965, BUT RECOMMENDS @5.515 */
+  tl.to([P + "a2a", P + "a2b"], { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 2.965);
+  tl.to(P + "a3", { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 5.515);
+  /* RECOMMENDS, NOT REQUIRES @7.255: the one word lifts and turns amber */
+  tl.to(P + "rec", { y: -8, color: "#d8a13a", duration: 0.45, ease: "back.out(2)" }, 7.255);
+  /* VERY LITTLE @14.395: card 2 beside it with its first phrase (unspoken phrases wait at opacity 0, so the card
+     enters on its words, not on "St. Louis" @10.36), then its attribution */
+  tl.to(P + "card2", { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 14.395);
+  tl.to([P + "b1a", P + "b1b"], { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 14.395);
+  tl.to(P + "who2", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.795);
+  tl.to(P + "src2", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 15.045);
+  /* TO AID @16.555, IN DEVELOPING @17.605 */
+  tl.to(P + "b2", { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 16.555);
+  tl.to([P + "b3a", P + "b3b"], { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 17.605);
+
+  /* exit after "plans." (19.15): both cards slide out, done at the host end */
+  tl.to(P + "card1", { x: -1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 19.551);
+  tl.to(P + "card2", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 19.551);
+
+  window.__timelines["g-a5-2"] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,59 @@
+<!-- g-a5-4 · A5-S4 · our Edwardsville building outline (copied from g-i1-5: 1,080 x 1,019 ft at 0.62 px/ft = 669.6 x 631.78 px, shown here
+     at 0.75 = 502.2 x 473.84 px, centred on x 960, top 150), still labelled illustrative, with the OSHA release's words as a glass chip
+     (left 110, bottom 150) and the source line (left 110, bottom 64). Full frame, own ground (the DAT recording was not made; the NWS
+     survey still before it is the plate). Host 915.236 ("met" @3.18 in a5-s4, segment start 912.056) -> 921.157 (a5-s5 start; retimed 23 Oct 26). -->
+<template>
+<style>
+  #g-a5-4-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a5-4-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a5-4-cap { position:absolute; left:660px; top:100px; width:600px; text-align:center; white-space:nowrap; font-weight:700; font-size:26px;
+    line-height:30px; letter-spacing:2px; color:#c8d3e0; opacity:0; visibility:hidden; }
+  .g-a5-4-glass { position:absolute; left:110px; white-space:nowrap; box-sizing:border-box; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); }
+  #g-a5-4-chip { bottom:150px; padding:18px 30px; border-radius:28px; font-weight:700; font-size:30px; line-height:40px; letter-spacing:1px; color:#dfe7ee; }
+  #g-a5-4-src { bottom:64px; padding:10px 20px; border-radius:18px; font-weight:700; font-size:19px; line-height:24px; color:#c8d3e0; }
+</style>
+<div id="g-a5-4-root" data-composition-id="g-a5-4" data-width="1920" data-height="1080" data-type-ok="two-tier chip over footage">
+  <svg id="g-a5-4-svg" viewBox="0 0 1920 1080">
+    <g id="g-a5-4-float">
+      <rect id="g-a5-4-fill" x="708.9" y="150" width="502.2" height="473.84" fill="#5a768f" fill-opacity="0.18"/>
+      <path id="g-a5-4-outline" d="M708.9,150 L1211.1,150 L1211.1,623.84 L708.9,623.84 Z" fill="none" stroke="#dfe7ee" stroke-width="4" stroke-linejoin="round"/>
+    </g>
+  </svg>
+  <div id="g-a5-4-cap">Illustrative outline</div>
+  <div class="g-a5-4-glass" id="g-a5-4-chip">&ldquo;met minimal federal safety guidelines for storm sheltering&rdquo;</div>
+  <div class="g-a5-4-glass" id="g-a5-4-src">OSHA news release, Chicago region, 26 Apr 2022</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a5-4-";
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 5.921;
+  const ol = document.querySelector(P + "outline");
+  const L = Math.ceil(ol.getTotalLength()) + 1;
+  tl.set(ol, { strokeDasharray: L, strokeDashoffset: L }, 0);
+  tl.set(P + "fill", { autoAlpha: 0 }, 0);
+  tl.set([P + "cap", P + "chip", P + "src"], { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set(P + "float", { y: 0 }, 0);
+
+  /* ambient float, whole window */
+  tl.to(P + "float", { y: -10, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0);
+  /* MET @0.00 (915.236): the outline draws, its caption, then the chip on the release's words */
+  tl.to(ol, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 0);
+  tl.to(P + "fill", { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 0.6);
+  tl.to(P + "cap", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.3);
+  tl.to(P + "chip", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+  tl.to(P + "src", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.6);
+
+  /* exit after "recommendation." (920.10): slides out, done at the host end (5.321 + 0.6 = 5.921) */
+  tl.to([P + "chip", P + "src"], { x: -1300, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 5.321);
+  tl.to(P + "cap", { y: -60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 5.321);
+  tl.to(P + "float", { scale: 1.1, svgOrigin: "960 387", autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 5.321);
+
+  window.__timelines["g-a5-4"] = tl;
+})();
+</script>
+</template>

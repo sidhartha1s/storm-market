@@ -1,0 +1,78 @@
+<!-- g-z1-1 · Z1-S1 · Service Assessment page 33, the first sentence of the "common theme" passage lit; the second sentence
+     (it carries a flag word) is never on screen. Full frame, own ground. Document-page family base g-i1-2.
+     Page: media/stills/z1-s1-sa-p33-passage.png = media/candidates/z1/S1_c1 (PDF p33 at 150 dpi, printed p33) cropped by ffmpeg to
+     x 120-1160, y 945-1204 (1040 x 259; ink x 151-1117 so every line is whole), and the tail "This was" of line 2 (page x >= 941,
+     y 1168-1204) painted white: nothing of the second sentence is in the file. Line 3 (page y 1209-1230) is outside the crop.
+     Sheet: crop scaled 1240/1040 = 1.1923 into the box x 340-1580, y 220-529 (308.8 px tall).
+     Lit bands, sheet px (word boxes measured on the page by a one-shot PIL scan, pad 4-5 px):
+       line 1 (page y 1142-1163), "a common theme ... gap in" page x 381-1083 -> left 306.4, top 232.5, w 846.6, h 31
+       line 2 (page y 1176-1197), "NWS ... footprints." page x 152-937      -> left 33.4,  top 273.0, w 945.5, h 31
+     The scanned lines are 25 px tall on screen (< 26), so the lit words are re-set as live text on a glass strip (y 590-788).
+     Times are host-local: host data-start 997.549 (blackout bo-a5-z1 ends) = z1-s1 0.00 - 0.200. -->
+<template>
+<style>
+  #g-z1-1-root { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-z1-1-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-z1-1-eyebrow { position:absolute; left:96px; top:70px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px;
+    letter-spacing:6px; text-transform:uppercase; color:#93a3b2; opacity:0; visibility:hidden; }
+  #g-z1-1-sheet { position:absolute; left:340px; top:220px; width:1240px; height:309px; background:#ffffff; overflow:hidden;
+    box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .g-z1-1-page { position:absolute; left:0; top:0; width:1240px; height:309px; }
+  .g-z1-1-band { position:absolute; height:31px; border-radius:3px; background:rgba(216,161,58,.45); mix-blend-mode:multiply; opacity:0; visibility:hidden; }
+  #g-z1-1-band1 { left:306.4px; top:232.5px; width:846.6px; }
+  #g-z1-1-band2 { left:33.4px; top:273px; width:945.5px; }
+  #g-z1-1-strip { position:absolute; left:360px; top:590px; width:1200px; height:198px; box-sizing:border-box; padding:24px 0; text-align:center;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:28px; opacity:0; visibility:hidden; }
+  #g-z1-1-quote { display:block; white-space:nowrap; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:40px; line-height:50px; color:#f2f5f8; }
+  #g-z1-1-source { position:absolute; left:96px; bottom:58px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:22px; color:#c8d3e0;
+    opacity:0; visibility:hidden; }
+</style>
+<div id="g-z1-1-root" data-composition-id="g-z1-1" data-width="1920" data-height="1080" data-type-ok="document page with one quote strip: two type tiers by design">
+  <div id="g-z1-1-stage">
+    <div id="g-z1-1-eyebrow">NWS Service Assessment &middot; December 10-11, 2021 outbreak</div>
+    <div id="g-z1-1-sheet">
+      <img class="g-z1-1-page" src="media/stills/z1-s1-sa-p33-passage.png" alt="">
+      <div id="g-z1-1-band1" class="g-z1-1-band"></div>
+      <div id="g-z1-1-band2" class="g-z1-1-band"></div>
+    </div>
+    <div id="g-z1-1-strip">
+      <span id="g-z1-1-quote">&hellip;a common theme was identified by WFOs in the post event<br>of a gap in NWS safety outreach materials or resources<br>for buildings with large footprints.</span>
+    </div>
+    <div id="g-z1-1-source">NWS Service Assessment, p33</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-z1-1-";
+  const DUR = 7.951;   /* 997.549 -> 1005.500: out before "34" (ep 1005.673), so p33 never sits under "page thirty-four" */
+  tl.set(P + "stage", { x: 0, autoAlpha: 1 }, 0);
+  tl.set(P + "sheet", { scale: 1, transformOrigin: "50% 60%" }, 0);
+  tl.set(P + "eyebrow", { autoAlpha: 0, x: -36 }, 0);
+  tl.set([P + "band1", P + "band2"], { autoAlpha: 0, scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P + "strip", { autoAlpha: 0, y: 40 }, 0);
+  tl.set(P + "source", { autoAlpha: 0, x: -12 }, 0);
+
+  // the page drifts in scale for the whole window (a 3 % push; the box clips, so no line below the crop ever shows)
+  tl.to(P + "sheet", { scale: 1.03, duration: DUR, ease: "none" }, 0);
+  /* source line with the page @0.20 */
+  tl.to(P + "source", { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.2);
+  /* REVIEW @1.48 (z1-s1 1.28 = ep 999.029) */
+  tl.to(P + "eyebrow", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.48);
+  /* A COMMON THEME @6.24 (z1-s1 "a" 6.04 = ep 1003.789): line 1 lights, the strip rises; line 2 follows */
+  tl.set(P + "band1", { autoAlpha: 1 }, 6.24);
+  tl.to(P + "band1", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 6.24);
+  tl.to(P + "strip", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 6.24);
+  tl.set(P + "band2", { autoAlpha: 1 }, 6.6);
+  tl.to(P + "band2", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 6.6);
+  // exit lands before the host end: page, labels and strip slide out together
+  tl.to(P + "stage", { x: -1200, duration: 0.55, ease: "power3.in" }, 7.351);
+  tl.to(P + "stage", { autoAlpha: 0, duration: 0.4, ease: "power1.out" }, 7.351);
+
+  window.__timelines["g-z1-1"] = tl;
+})();
+</script>
+</template>

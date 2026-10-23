@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-7 · A1-S8 · six marks, one by one; chips "5 delivery contractors", "1 in-house contractor", "contractors · 4 companies".
+  No faces, names or company names. Brief: briefs/mg/g-a1-7.md. Own ground. Marks: 64 px circles, row y 420, 140 px apart
+  x 610-1170 (marks 1-5) and mark 6 offset 40 px right at x 1350. Chips centred under the row, one at a time.
+  Host data-start 209.611 = a1-s8 start: comp-local = a1-s8 time (audio/a1-s8.words.json).
+-->
+<template>
+<style>
+  #g-a1-7-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  #g-a1-7-glow { position:absolute; left:460px; top:300px; width:1100px; height:240px; border-radius:50%;
+    background:radial-gradient(ellipse, rgba(200,211,224,0.10), rgba(200,211,224,0) 70%); opacity:0; visibility:hidden; }
+  .g-a1-7-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a1-7-mark { fill:#c8d3e0; fill-opacity:0.9; stroke:#dfe7ee; stroke-width:2; opacity:0; visibility:hidden; }
+  .g-a1-7-br { fill:none; stroke:#e8c56a; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; visibility:hidden; }
+  .g-a1-7-wrap { position:absolute; left:0; width:1920px; height:88px; display:flex; justify-content:center; }
+  .g-a1-7-chip { padding:12px 30px; border-radius:28px; box-sizing:border-box; white-space:nowrap; font-weight:700; font-size:30px; line-height:64px;
+    letter-spacing:1px; color:#dfe7ee; background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); opacity:0; visibility:hidden; }
+  .g-a1-7-chip b { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; letter-spacing:0; color:#f2f5f8; }
+  #g-a1-7-w1 { top:552px; }
+  #g-a1-7-w2 { top:656px; }
+  #g-a1-7-w3 { top:760px; }
+  #g-a1-7-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; white-space:nowrap; font-size:19px; font-weight:700; line-height:19px;
+    letter-spacing:1px; color:#c8d3e0; background:rgba(10,16,24,.55); border:1px solid rgba(255,255,255,.14); opacity:0; visibility:hidden; }
+</style>
+<div id="g-a1-7-root" data-composition-id="g-a1-7" data-width="1920" data-height="1080" data-duration="11.399">
+  <div id="g-a1-7-glow"></div>
+  <svg class="g-a1-7-svg" viewBox="0 0 1920 1080">
+    <circle class="g-a1-7-mark" cx="610" cy="420" r="32"/>
+    <circle class="g-a1-7-mark" cx="750" cy="420" r="32"/>
+    <circle class="g-a1-7-mark" cx="890" cy="420" r="32"/>
+    <circle class="g-a1-7-mark" cx="1030" cy="420" r="32"/>
+    <circle class="g-a1-7-mark" cx="1170" cy="420" r="32"/>
+    <circle class="g-a1-7-mark" cx="1350" cy="420" r="32"/>
+    <!-- brackets under marks 1-5 and under mark 6 -->
+    <path class="g-a1-7-br" id="g-a1-7-br5" d="M578,470 L578,486 L1202,486 L1202,470"/>
+    <path class="g-a1-7-br" id="g-a1-7-br1" d="M1318,470 L1318,486 L1382,486 L1382,470"/>
+  </svg>
+  <div class="g-a1-7-wrap" id="g-a1-7-w1"><div class="g-a1-7-chip" id="g-a1-7-c1"><b>5</b> delivery contractors</div></div>
+  <div class="g-a1-7-wrap" id="g-a1-7-w2"><div class="g-a1-7-chip" id="g-a1-7-c2"><b>1</b> in-house contractor</div></div>
+  <div class="g-a1-7-wrap" id="g-a1-7-w3"><div class="g-a1-7-chip" id="g-a1-7-c3">contractors &middot; <b>4</b> companies</div></div>
+  <div id="g-a1-7-src">OSHA Chicago release, 26 Apr 2022; House Oversight, 1 Apr 2022</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a1-7-";
+  const DUR = 11.399;
+  const C = { six: 0.0, five: 2.88, sixth: 8.32, comp: 9.12, out: 10.799 };
+  const tl = gsap.timeline({ paused: true });
+  const len = (el) => Math.ceil(el.getTotalLength()) + 1;
+
+  tl.set([P + "glow", P + "c1", P + "c2", P + "c3", P + "src", ".g-a1-7-mark"], { autoAlpha: 0 }, 0);
+
+  /* SIX PEOPLE @0.00: marks pop 0.5 s apart */
+  gsap.utils.toArray(".g-a1-7-mark").forEach(function (m, i) {
+    const cx = m.getAttribute("cx");
+    tl.fromTo(m, { autoAlpha: 0, scale: 0, svgOrigin: cx + " 420" }, { autoAlpha: 1, scale: 1, svgOrigin: cx + " 420", duration: 0.4, ease: "back.out(2.2)" }, C.six + i * 0.5);
+  });
+  /* breathing glow on the row: blips every 1.4 s to the exit */
+  tl.to(P + "glow", { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 0.3);
+  tl.fromTo(P + "glow", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1.08, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 13 }, 0.7);
+
+  /* FIVE WERE DELIVERY CONTRACTORS @2.88 */
+  const b5 = document.querySelector(P + "br5"), L5 = len(b5);
+  tl.set(b5, { strokeDasharray: L5, strokeDashoffset: L5, visibility: "visible" }, 0);
+  tl.to(b5, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, C.five);
+  tl.fromTo(P + "c1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.five);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.five + 0.4);
+
+  /* THE SIXTH @8.32 */
+  const b1 = document.querySelector(P + "br1"), L1 = len(b1);
+  tl.set(b1, { strokeDasharray: L1, strokeDashoffset: L1, visibility: "visible" }, 0);
+  tl.to(b1, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, C.sixth);
+  tl.fromTo(P + "c2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.sixth);
+  /* 0.8 s after the third chip's cue: four companies */
+  tl.fromTo(P + "c3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.comp);
+
+  /* exit, done at the host end */
+  tl.to([P + "c1", P + "c2", P + "c3"], { x: -900, autoAlpha: 0, duration: 0.6, ease: "power3.in", stagger: 0.03 }, C.out - 0.06);
+  tl.to(P + "src", { y: 40, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, C.out);
+  tl.to([".g-a1-7-mark", ".g-a1-7-br", P + "glow"], { y: -60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.out - 0.06);
+
+  window.__timelines["g-a1-7"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!-- g-a5-7 · A5-S8 · two glass date chips over the Kentucky Guard debris video (DVIDS 825642, filmed in Dawson Springs):
+     "Mar 2023 · federal court", then "Jun 18, 2026 · Ky. Court of Appeals" stacked 104 px above it. No place name, no claim named,
+     no ruling's winner (fc-A5 rows 25-27, facts-workplaces F5, F7). Overlay, no ground. Chip 1 left 110, bottom 150; chip 2 bottom 254;
+     nothing past x 1560. Host 978.377 ("in March" @7.00 in a5-s8, segment start 971.377) -> 989.368 (a5-s9 start).
+     Host-local t = a5-s8 word time - 7.00. -->
+<template>
+<style>
+  #g-a5-7-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #g-a5-7-float { position:absolute; inset:0; width:1920px; height:1080px; }
+  .g-a5-7-chip { position:absolute; left:110px; display:flex; align-items:baseline; padding:18px 30px; border-radius:28px; box-sizing:border-box;
+    white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); }
+  #g-a5-7-c1 { bottom:150px; }
+  #g-a5-7-c2 { bottom:254px; }
+  .g-a5-7-val { font-weight:700; font-size:30px; line-height:40px; letter-spacing:1px; color:#dfe7ee; }
+  .g-a5-7-lab { margin-left:18px; font-weight:700; font-size:20px; line-height:26px; letter-spacing:6px; color:#c8d3e0; }
+</style>
+<div id="g-a5-7-root" data-composition-id="g-a5-7" data-width="1920" data-height="1080" data-type-ok="two-tier chip over footage">
+  <div id="g-a5-7-float">
+    <div class="g-a5-7-chip" id="g-a5-7-c1"><span class="g-a5-7-val" id="g-a5-7-v1">Mar 2023</span><span class="g-a5-7-lab" id="g-a5-7-l1">&middot; federal court</span></div>
+    <div class="g-a5-7-chip" id="g-a5-7-c2"><span class="g-a5-7-val" id="g-a5-7-v2">Jun 18, 2026</span><span class="g-a5-7-lab" id="g-a5-7-l2">&middot; Ky. Court of Appeals</span></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a5-7-";
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 10.991;   /* 978.377 -> 989.368 */
+  tl.set([P + "c1", P + "c2"], { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set(P + "float", { y: 0 }, 0);
+
+  /* ambient: the chips float up 8 px over the window */
+  tl.to(P + "float", { y: -8, duration: DUR, ease: "none" }, 0);
+  /* IN MARCH 2023 @0.00 (978.377): the federal-court chip */
+  tl.to(P + "c1", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+  /* IN JUNE 2026 @2.08 (980.457): the appeals-court chip stacks above */
+  tl.to(P + "c2", { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.08);
+  /* SENT ONE CASE BACK FOR TRIAL @4.96 (983.337): the newer chip nudges right, the ruling just named */
+  tl.to(P + "c2", { x: 12, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 4.96);
+  /* NO RULING ON THE NIGHT ITSELF @9.40 (987.777): both chips dim a step */
+  tl.to([P + "c1", P + "c2"], { autoAlpha: 0.6, duration: 0.5, ease: "power1.inOut" }, 9.40);
+
+  /* exit: both slide out left, done at the host end (10.391 + 0.6 = 10.991) */
+  tl.to(P + "c2", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 10.391);
+  tl.to(P + "c1", { x: -1000, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 10.391);
+
+  window.__timelines["g-a5-7"] = tl;
+})();
+</script>
+</template>

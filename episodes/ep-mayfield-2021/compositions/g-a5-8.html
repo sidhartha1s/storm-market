@@ -1,0 +1,66 @@
+<!-- g-a5-8 · A5-S9 · the Service Assessment's title as our own beige text card, slow push, then the chapter blackout into Z1.
+     Text exactly as the cover prints it (research/sources/NWS_SA_Dec10-11_2021.pdf p1, read 23 Oct 26): "NWS Regional Service
+     Assessment" / "Central / Southern Region" / "December 10-11, 2021 Tornadoes" / "June 01, 2023". The cover image is never used
+     (its collage carries a FOX 2 aerial); no photo of any kind here. Full frame, own ground. Card 1400 wide, x 260-1660, centred on
+     y 540. Host 989.368 (a5-s9 start) -> 996.749 (blackout bo-a5-z1). Host-local t = a5-s9 word time. -->
+<template>
+<style>
+  #g-a5-8-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a5-8-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  #g-a5-8-wrap { position:absolute; left:260px; top:0; width:1400px; height:1080px; display:flex; align-items:center; }
+  #g-a5-8-card { width:1400px; box-sizing:border-box; padding:64px 80px; border-radius:28px; text-align:center; opacity:0; visibility:hidden;
+    background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  #g-a5-8-eye { display:block; font-weight:700; font-size:22px; line-height:28px; letter-spacing:6px; color:#6b6257; opacity:0; visibility:hidden; }
+  #g-a5-8-rule { width:120px; height:4px; margin:26px auto 28px; background:#d8a13a; border-radius:2px; }
+  #g-a5-8-title { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:62px; white-space:nowrap; color:#2a2622;
+    opacity:0; visibility:hidden; }
+  #g-a5-8-sub { display:block; margin-top:22px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:36px; line-height:44px;
+    color:#2a2622; opacity:0; visibility:hidden; }
+  #g-a5-8-date { display:block; margin-top:30px; font-weight:700; font-size:22px; line-height:28px; letter-spacing:4px; color:#6b6257;
+    opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-8-root" data-composition-id="g-a5-8" data-width="1920" data-height="1080">
+  <div class="g-a5-8-grid" id="g-a5-8-grid"></div>
+  <div id="g-a5-8-wrap">
+    <div id="g-a5-8-card">
+      <span id="g-a5-8-eye">NWS Regional Service Assessment</span>
+      <div id="g-a5-8-rule"></div>
+      <span id="g-a5-8-title">December 10-11, 2021 Tornadoes</span>
+      <span id="g-a5-8-sub">Central / Southern Region</span>
+      <span id="g-a5-8-date">June 01, 2023</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a5-8-";
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 7.381;   /* 989.368 -> 996.749 */
+  tl.set(P + "card", { autoAlpha: 0, y: 30 }, 0);
+  tl.set([P + "eye", P + "title", P + "sub", P + "date"], { autoAlpha: 0, y: 18 }, 0);
+  tl.set(P + "rule", { scaleX: 0, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "wrap", { scale: 1, transformOrigin: "50% 50%" }, 0);
+
+  /* ambient: grid drift; the card pushes 1.00 -> 1.04 across the window */
+  tl.fromTo(P + "grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.to(P + "wrap", { scale: 1.04, duration: DUR - 0.6, ease: "power1.inOut" }, 0);
+  /* THE WEATHER SERVICE WROTE @0.18: the card, its name and the title */
+  tl.to(P + "card", { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.18);
+  tl.to(P + "eye", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.38);
+  tl.to(P + "rule", { scaleX: 1, duration: 0.4, ease: "power2.out" }, 0.58);
+  tl.to(P + "title", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.68);
+  /* IN ITS OWN REVIEW @2.50: the offices and the date */
+  tl.to(P + "sub", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.50);
+  tl.to(P + "date", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.80);
+
+  /* exit after "filled it since" (996.19 = 6.82): the card fades down into the chapter blackout, done at the host end */
+  tl.to(P + "card", { autoAlpha: 0, y: -20, duration: 0.6, ease: "power2.in" }, DUR - 0.6);
+
+  window.__timelines["g-a5-8"] = tl;
+})();
+</script>
+</template>

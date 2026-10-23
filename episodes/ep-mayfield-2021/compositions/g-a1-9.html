@@ -1,0 +1,53 @@
+<template>
+<style>
+  /* g-a1-9 · A1-S10 · glass chips "Hazard Alert Letter", "no citation", "no penalty" stacked bottom-up at left 110 (bottoms 150, 254, 358)
+     + source line (left 110, bottom 64), over the OSHA letter stills (media/stills/a1-s10-hal-lh-v3.png, then a1-s10-hal-para-v2.png:
+     both keep their text in the top half, so the chips sit on empty ground below it). Chips family base g-h1-2. Overlay, no ground.
+     Nothing past x 1560. Host data-start 235.950 = a1-s10 "hazard" @3.10: comp-local = a1-s10 time - 3.10. */
+  #g-a1-9-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #g-a1-9-float { position:absolute; inset:0; width:1920px; height:1080px; }
+  .g-a1-9-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; white-space:nowrap; opacity:0; visibility:hidden; }
+  .g-a1-9-chip { position:absolute; left:110px; padding:18px 30px; border-radius:28px; font-weight:700; font-size:30px; line-height:36px;
+    letter-spacing:1px; color:#dfe7ee; }
+  #g-a1-9-c1 { bottom:150px; }
+  #g-a1-9-c2 { bottom:254px; }
+  #g-a1-9-c3 { bottom:358px; }
+  #g-a1-9-src { position:absolute; left:110px; bottom:64px; max-width:1300px; padding:10px 20px; border-radius:18px; font-weight:700; font-size:19px;
+    line-height:24px; color:#c8d3e0; }
+</style>
+<div id="g-a1-9-root" data-composition-id="g-a1-9" data-width="1920" data-height="1080" data-type-ok="two-tier chip over footage">
+  <div id="g-a1-9-float">
+    <div class="g-a1-9-glass g-a1-9-chip" id="g-a1-9-c1">Hazard Alert Letter</div>
+    <div class="g-a1-9-glass g-a1-9-chip" id="g-a1-9-c2">no citation</div>
+    <div class="g-a1-9-glass g-a1-9-chip" id="g-a1-9-c3">no penalty</div>
+    <div class="g-a1-9-glass" id="g-a1-9-src">AP, 28 Apr 2022; OSHA news release, 26 Apr 2022</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 7.74;
+  const P = "#g-a1-9-";
+  /* cues: audio/a1-s10.words.json */
+  const C = { hal: 0.0 /* HAZARD @3.10 */, cit: 4.98 /* NO CITATION @8.08 */, pen: 6.18 /* NO PENALTY @9.28 */, out: 7.14 };
+
+  tl.set([P + "c1", P + "c2", P + "c3", P + "src"], { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set(P + "float", { scale: 1, y: 0, transformOrigin: "110px 1016px" }, 0);
+  /* ambient 0.5 % float, whole window */
+  tl.to(P + "float", { scale: 1.005, y: -4, duration: DUR, ease: "none" }, 0);
+
+  tl.fromTo(P + "c1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.hal);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.hal + 0.4);
+  tl.fromTo(P + "c2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.cit);
+  tl.fromTo(P + "c3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.pen);
+
+  /* OUT: all slide left and finish inside the host */
+  tl.to([P + "c3", P + "c2", P + "c1"], { x: -800, autoAlpha: 0, duration: 0.55, ease: "power3.in", stagger: 0.02 }, C.out);
+  tl.to(P + "src", { x: -1300, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, C.out);
+
+  window.__timelines["g-a1-9"] = tl;
+})();
+</script>
+</template>

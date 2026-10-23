@@ -1,0 +1,100 @@
+<template>
+<style>
+  /* g-a3-4 · A3-S4 · NASA VIIRS night lights, 3 Dec 2021 (the I1 "before" plate, media/stills/a3-s4-viirs-dec3.jpg), SA p6 on a beige cite card
+     (fc-slice-b row 7, verbatim), then our dark map with two pins: Edwardsville and Mayfield. Brief: briefs/mg/g-a3-4.md. Full frame.
+     Edwardsville is off the top of the VIIRS frame (picks.tsv), so the pins land on our own base, media/maps/a3-s4-base.png
+     (Natural Earth 10m state lines, extent lon -93.744..-84.756, lat 35.7..39.7 at 1920 x 1080, .qc-tmp/a3-calc/calc.py):
+       Edwardsville (802.2, 245.5), Mayfield (1089.4, 799.9) on the base. The base pushes 1.00 -> 1.04 about (946, 523) from 6.9 to 13.0,
+       then rests; pins sit on the pushed positions p' = o + 1.04 (p - o): Edwardsville (796.5, 234.4), Mayfield (1095.1, 811.0).
+     Host 515.900 (after g-a3-3) -> 531.750 (15.85 s); times host-local (episode - 515.9). */
+  #g-a3-4-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; background:#04070c; }
+  .g-a3-4-plate { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a3-4-plate img { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; }
+  #g-a3-4-viirs img { object-position:50% 0%; }
+  #g-a3-4-map { opacity:0; visibility:hidden; }
+  .g-a3-4-vig { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse at 50% 50%, rgba(3,5,7,0) 55%, rgba(3,5,7,0.6) 100%); }
+  .g-a3-4-scan { position:absolute; left:0; top:0; width:2px; height:1080px; pointer-events:none;
+    background:linear-gradient(180deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); opacity:0; visibility:hidden; }
+  #g-a3-4-float { position:absolute; left:260px; top:160px; width:1400px; height:480px; }
+  #g-a3-4-card { position:absolute; left:0; top:0; width:1400px; box-sizing:border-box; padding:64px 80px; border-radius:28px; opacity:0; visibility:hidden;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .g-a3-4-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:52px; line-height:65px; color:#2a2622; white-space:nowrap; }
+  .g-a3-4-q span { display:inline-block; opacity:0; visibility:hidden; }
+  #g-a3-4-who { margin-top:40px; white-space:nowrap; font-weight:700; font-size:26px; line-height:30px; letter-spacing:3px; color:#6b6257; opacity:0; visibility:hidden; }
+  .g-a3-4-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a3-4-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; font-size:19px; font-weight:700; line-height:19px; letter-spacing:1px; color:#c8d3e0; }
+  .g-a3-4-dot { position:absolute; width:14px; height:14px; margin:-9px 0 0 -9px; border-radius:50%; background:#f2f5f8; border:2px solid #04070c; opacity:0; visibility:hidden; }
+  .g-a3-4-ring { position:absolute; width:14px; height:14px; margin:-9px 0 0 -9px; border-radius:50%; border:2px solid #f2f5f8; opacity:0; visibility:hidden; }
+  .g-a3-4-lab { position:absolute; padding:10px 14px; border-radius:12px; font-size:26px; font-weight:700; line-height:26px; color:#f2f5f8; }
+</style>
+<div id="g-a3-4-root" data-composition-id="g-a3-4" data-width="1920" data-height="1080">
+  <div class="g-a3-4-plate" id="g-a3-4-viirs"><img src="media/stills/a3-s4-viirs-dec3.jpg" alt=""></div>
+  <div class="g-a3-4-plate" id="g-a3-4-map"><img src="media/maps/a3-s4-base.png" alt=""></div>
+  <div class="g-a3-4-vig"></div>
+  <div class="g-a3-4-scan" id="g-a3-4-scan"></div>
+
+  <div class="g-a3-4-ring" id="g-a3-4-r-ed" style="left:796.5px; top:234.4px;"></div>
+  <div class="g-a3-4-dot" id="g-a3-4-d-ed" style="left:796.5px; top:234.4px;"></div>
+  <div class="g-a3-4-lab g-a3-4-glass" id="g-a3-4-l-ed" style="left:820px; top:211px;">Edwardsville</div>
+  <div class="g-a3-4-ring" id="g-a3-4-r-ma" style="left:1095.1px; top:811px;"></div>
+  <div class="g-a3-4-dot" id="g-a3-4-d-ma" style="left:1095.1px; top:811px;"></div>
+  <div class="g-a3-4-lab g-a3-4-glass" id="g-a3-4-l-ma" style="left:1119px; top:788px;">Mayfield</div>
+
+  <div id="g-a3-4-float">
+    <div id="g-a3-4-card">
+      <div class="g-a3-4-q"><span id="g-a3-4-p1">&ldquo;a time of year when many in the public,</span></div>
+      <div class="g-a3-4-q"><span id="g-a3-4-p2">and even our partners,</span></div>
+      <div class="g-a3-4-q"><span id="g-a3-4-p3">do not normally associate with a threat</span></div>
+      <div class="g-a3-4-q"><span id="g-a3-4-p4">for tornadic activity&rdquo;</span></div>
+      <div id="g-a3-4-who">NWS Service Assessment, p6</div>
+    </div>
+  </div>
+  <div class="g-a3-4-glass" id="g-a3-4-src">NASA Earth Observatory (Joshua Stevens) · VIIRS night lights, 3 Dec 2021</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a3-4-", DUR = 15.85;
+  tl.set([P + "viirs", P + "map"], { scale: 1, transformOrigin: "946px 523px" }, 0);
+  tl.set(P + "float", { y: 0 }, 0);
+  tl.set([P + "p1", P + "p2", P + "p3", P + "p4"], { autoAlpha: 0, y: 18 }, 0);   /* each line waits hidden, inside the frame */
+  /* the night plate drifts from the cut (linear, under 1.5x) */
+  tl.to(P + "viirs", { scale: 1.05, duration: 7.9, ease: "none" }, 0);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.2);
+  /* THE REVIEW SAYS @0.67 (ep 516.57): card + attribution */
+  tl.fromTo(P + "card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.67);
+  tl.fromTo(P + "who", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.97);
+  tl.to(P + "float", { y: -8, duration: 6.0, ease: "none" }, 0.67);
+  /* MANY @1.21 (ep 517.11) · EVEN @2.45 (ep 518.35) · DON'T CONNECT @4.33 (ep 520.23) */
+  [["p1", 1.21], ["p2", 2.45], ["p3", 4.33], ["p4", 4.73]].forEach(function (q) {
+    tl.fromTo(P + q[0], { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out", immediateRender: false }, q[1]);
+  });
+  /* A DECEMBER STORM AFTER DARK @6.71 (ep 522.61): the card lifts away, the night plate hands over to our dark map */
+  tl.to([P + "p1", P + "p2", P + "p3", P + "p4", P + "who"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 6.71);
+  tl.to(P + "card", { y: -60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.71);   /* card top 160 -> 100: never leaves the frame */
+  tl.to(P + "src", { autoAlpha: 0, y: 20, duration: 0.4, ease: "power2.in" }, 6.71);
+  tl.fromTo(P + "map", { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.0, ease: "power1.inOut" }, 6.9);
+  tl.to(P + "viirs", { autoAlpha: 0, duration: 1.0, ease: "power1.inOut" }, 6.9);
+  tl.to(P + "map", { scale: 1.04, duration: 6.1, ease: "power1.inOut" }, 6.9);
+  /* scan line sweeps the dark map west to east while nobody is watching (about 150 px/s) */
+  tl.set(P + "scan", { x: 0 }, 0);
+  tl.fromTo(P + "scan", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "none" }, 7.4);
+  tl.to(P + "scan", { x: 1918, duration: 7.85, ease: "none" }, 7.4);
+  /* IN EDWARDSVILLE @13.37 (ep 529.27) */
+  tl.fromTo(P + "d-ed", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.5)" }, 13.37);
+  tl.fromTo(P + "l-ed", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 13.5);
+  /* AND IN MAYFIELD @14.49 (ep 530.39) */
+  tl.fromTo(P + "d-ma", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.5)" }, 14.49);
+  tl.fromTo(P + "l-ma", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 14.62);
+  /* pulse rings until the exit */
+  tl.fromTo(P + "r-ed", { autoAlpha: 0.9, scale: 1 }, { autoAlpha: 0, scale: 3.2, duration: 1.1, ease: "power2.out" }, 13.45);
+  tl.fromTo(P + "r-ma", { autoAlpha: 0.9, scale: 1 }, { autoAlpha: 0, scale: 3.2, duration: 1.1, ease: "power2.out" }, 14.57);
+  /* exit (ep 531.15-531.75): pins and labels fade through, the map pushes on into g-a3-5's ground */
+  tl.to([P + "d-ed", P + "l-ed", P + "d-ma", P + "l-ma", P + "scan"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 15.25);   /* DUR - 0.6 */
+  tl.to(P + "map", { autoAlpha: 0, scale: 1.08, duration: 0.6, ease: "power2.in" }, 15.25);   /* DUR - 0.6 */
+  window.__timelines["g-a3-4"] = tl;
+})();
+</script>
+</template>

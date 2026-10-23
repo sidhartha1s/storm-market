@@ -1,0 +1,35 @@
+<!-- g-a2-1b · A2 countdown chip, window 2 of 3 (S6: the local TV pull and the Day 1 Moderate graphic g-a2-7, up to the full-screen
+     Paducah post g-a2-8). Same stamp as g-a2-1. Host 380.667 (a2-s6 start), 11.063 s; times host-local (episode - 380.667).
+     Cue: FRIDAY (MORNING) 381.11 (audio/a2-s6.words.json 0.44 + 380.667). -->
+<template>
+<style>
+  #g-a2-1b-root { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; pointer-events:none; }
+  #g-a2-1b-wrap { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a2-1b-st { position:absolute; right:96px; top:54px; height:96px; box-sizing:border-box; padding:14px 28px; white-space:nowrap;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:68px; letter-spacing:1px; color:#f4f0e8;
+    background:linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0) 60%), #8e2020; box-shadow:0 14px 50px rgba(0,0,0,0.6);
+    opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-1b-root" data-composition-id="g-a2-1b" data-width="1920" data-height="1080"
+     data-type-ok="countdown chip: one restamped value at a time, one size by design">
+  <div id="g-a2-1b-wrap">
+    <div class="g-a2-1b-st" id="g-a2-1b-s1">Friday morning</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a2-1b-", DUR = 11.063;
+  tl.set(P + "s1", { rotation: -3, transformOrigin: "50% 50%", x: 0 }, 0);
+  /* float for the whole window (6 x 1.6 s = 9.6 s) */
+  tl.fromTo(P + "wrap", { y: 0 }, { y: -6, duration: 1.6, ease: "sine.inOut", repeat: 5, yoyo: true }, 0);
+  /* FRIDAY MORNING @381.11 */
+  tl.fromTo(P + "s1", { autoAlpha: 0, scale: 1.25 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 0.443);
+  /* exit before the full-screen Paducah post (391.73) */
+  tl.to(P + "s1", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 10.463);   /* DUR - 0.6, literal for sweep check 7 */
+
+  window.__timelines["g-a2-1b"] = tl;
+})();
+</script>
+</template>

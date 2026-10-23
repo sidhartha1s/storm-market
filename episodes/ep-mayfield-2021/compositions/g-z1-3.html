@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-z1-3 · Z1-S4 · the US map: the camera pushes from the lower 48 to Illinois and Kentucky, Illinois lights up and is labelled
+  "Workplace tornado law" with the Act's name; the map rail carries the date and what the law requires. Kentucky is drawn (basemap)
+  but unlit and unlabelled here (g-z1-5 labels it). Map family base g-t1-1 (glass chip, source line, scan, vignette).
+  Brief: briefs/mg/g-z1-3.md. Facts: research/fc-Z1.tsv data rows 15-21 (Public Act 104-0262 / HB 2987, effective 8/15/2025;
+  "All operators of a warehouse ... shall prepare a tornado safety plan"; new warehouses: tornado life-safety equal to the code's most
+  onerous other extreme loading, row 19, never "designated refuge area"; no 2027 anywhere).
+  BASEMAP: media/maps/z1-us-basemap.svg (Natural Earth 50m admin-1 of library/inhouse/master-map-us-canada.html, basemap units,
+  viewBox -109177 -18870 234301 148002). Illinois = subpath 11 of that file's one path, copied verbatim (found by a point-in-polygon
+  test on three Illinois points, .qc-tmp/z1/proj.py). Projection (master-map header): X = 3841*(lon+97.576), Y = -5585*(lat-46.6213).
+  WORLD (final view, camera z = 1): screen = (600, 540) + (X - X(-87.0), Y - Y(39.74)) * 0.03 px per unit, so the img/svg box is
+  left -3893.98, top -1179.06, 7029.03 x 4440.06. Final view: Illinois x 81-540, y 75-1000 (area centroid 346.4, 485.1);
+  Kentucky x 318-1180, y 642-1083; nothing of either under the rail (x >= 1304).
+  CAMERA (proxy-driven, a pure function of comp time): start z0 = 0.258 with the lower-48 centre (lon -95.95, lat 36.95 ->
+  world -431.3, 1007.5) at screen (960, 540): lon -125..-66.9 and lat 24.5..49.4 fit 1741 x 1076 px. PUSH 1.40-3.40 (power2.inOut):
+  z log-interpolated 0.258 -> 1 (logZoom rule, 3.9x), focus world point and its screen target interpolated with the same u, to the
+  final view (focus 600, 540 -> screen 600, 540). Then a 2 % drift about (600, 540) to the exit. Labels live in the world (they ride
+  the 2 % drift only) and appear after the push has settled.
+  Times are host-local = z1-s4.words.json seconds (host data-start 1031.523 = z1-s4 start).
+-->
+<template>
+<style>
+  #g-z1-3-root { position:absolute; inset:0; overflow:hidden; background:#04070a; font-family:Arial, sans-serif; color:#f2f5f8; }
+  #g-z1-3-world { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-z1-3-base { position:absolute; left:-3893.98px; top:-1179.06px; width:7029.03px; height:4440.06px; }
+  .g-z1-3-vig { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 50%, rgba(3,5,7,0) 52%, rgba(3,5,7,0.6) 100%); }
+  .g-z1-3-scan { position:absolute; left:0; top:20px; width:1920px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .g-z1-3-st { position:absolute; white-space:nowrap; font-family:Arial, sans-serif; font-size:22px; font-weight:700; line-height:22px; letter-spacing:6px;
+    color:rgba(147,163,178,0.7); opacity:0; visibility:hidden; }
+  .g-z1-3-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-sizing:border-box; opacity:0; visibility:hidden; }
+  #g-z1-3-chip { position:absolute; left:130px; top:425px; width:380px; padding:14px 20px; border-radius:18px; text-align:center; }
+  #g-z1-3-law { display:block; white-space:nowrap; font-size:30px; font-weight:700; line-height:34px; color:#f2f5f8; }
+  #g-z1-3-act { display:block; margin-top:6px; font-size:22px; font-weight:700; line-height:26px; color:#e8c56a; opacity:0; visibility:hidden; }
+  #g-z1-3-rail { position:absolute; left:1304px; top:120px; width:520px; padding:28px 32px 30px; border-radius:28px; }
+  #g-z1-3-clock { display:block; white-space:nowrap; font-family:'Courier New', Courier, monospace; font-weight:700; font-size:84px; line-height:88px; color:#e8c56a; }
+  .g-z1-3-lab { display:block; font-size:19px; font-weight:700; line-height:24px; letter-spacing:3px; text-transform:uppercase; color:#93a3b2; }
+  .g-z1-3-row { margin-top:18px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .g-z1-3-val { display:block; margin-top:6px; font-size:30px; font-weight:700; line-height:36px; color:#dfe7ee; }
+  #g-z1-3-sub { display:block; margin-top:10px; font-size:20px; font-weight:700; line-height:26px; color:#c8d3e0; opacity:0; visibility:hidden; }
+  #g-z1-3-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; white-space:nowrap; font-size:19px; font-weight:700; line-height:19px;
+    letter-spacing:1px; color:#c8d3e0; }
+</style>
+<div id="g-z1-3-root" data-composition-id="g-z1-3" data-width="1920" data-height="1080" data-duration="23.503">
+  <div id="g-z1-3-world">
+    <img class="g-z1-3-base" src="media/maps/z1-us-basemap.svg" alt="">
+    <svg class="g-z1-3-base" viewBox="-109177 -18870 234301 148002">
+      <!-- Illinois, subpath 11 of z1-us-basemap.svg, verbatim -->
+      <path id="g-z1-3-il" fill="#d8a13a" fill-opacity="0" stroke="#e8c56a" stroke-opacity="0" stroke-width="83" stroke-linejoin="round" d="M23757,34762 L23744,33983 L23956,33607 L24432,33352 L24866,32792 L25258,31927 L25435,31308 L25397,30934 L25253,30580 L25003,30245 L24943,29829 L25074,29334 L25494,29018 L26203,28883 L26846,28632 L27422,28265 L27765,27865 L27873,27432 L28039,27094 L28263,26854 L28421,26460 L28514,25913 L28525,25510 L28456,25250 L28204,24950 L27768,24610 L27523,24290 L27467,23991 L27238,23669 L26835,23326 L26601,22945 L37503,23034 L37559,24629 L37809,25187 L37954,25339 L38310,26597 L38620,27330 L38575,40471 L38398,40644 L38275,40938 L38260,41485 L38136,41623 L38196,41969 L38586,43074 L38634,43616 L38589,44004 L38380,44356 L38180,45119 L38008,45425 L37798,45526 L37611,45809 L37445,46276 L37269,46502 L37083,46488 L36946,46574 L36857,46758 L36868,46952 L36979,47156 L36943,47344 L36758,47517 L36819,47651 L36681,47817 L36610,48076 L36618,48504 L36554,48718 L36431,48727 L36415,48845 L36620,49329 L36286,49828 L36242,50269 L36368,50751 L36050,51140 L35286,51438 L34881,51700 L34836,51928 L35067,53062 L34970,53241 L34424,53120 L33430,52699 L32763,52713 L32423,53163 L32306,53503 L32348,53779 L31894,53288 L31820,53340 L31842,53608 L31785,53668 L31589,53537 L31350,53163 L31070,52547 L31009,52057 L31166,51693 L31166,51310 L30930,50518 L30930,50135 L30546,49562 L29779,48797 L29215,48326 L28854,48147 L28433,47764 L27951,47178 L27694,46730 L27663,46420 L27883,45593 L28592,43578 L28584,43421 L28254,43136 L27264,42855 L26883,43070 L26551,42635 L26268,41550 L25568,40404 L24452,39198 L23804,38380 L23623,37947 L23332,36435 L23339,35718 L23561,34861 L23757,34762 Z"/>
+      <!-- the same outline, a wider glow stroke that pulses (no fill) -->
+      <path id="g-z1-3-ilpulse" fill="none" stroke="#e8c56a" stroke-opacity="0" stroke-width="200" stroke-linejoin="round" d="M23757,34762 L23744,33983 L23956,33607 L24432,33352 L24866,32792 L25258,31927 L25435,31308 L25397,30934 L25253,30580 L25003,30245 L24943,29829 L25074,29334 L25494,29018 L26203,28883 L26846,28632 L27422,28265 L27765,27865 L27873,27432 L28039,27094 L28263,26854 L28421,26460 L28514,25913 L28525,25510 L28456,25250 L28204,24950 L27768,24610 L27523,24290 L27467,23991 L27238,23669 L26835,23326 L26601,22945 L37503,23034 L37559,24629 L37809,25187 L37954,25339 L38310,26597 L38620,27330 L38575,40471 L38398,40644 L38275,40938 L38260,41485 L38136,41623 L38196,41969 L38586,43074 L38634,43616 L38589,44004 L38380,44356 L38180,45119 L38008,45425 L37798,45526 L37611,45809 L37445,46276 L37269,46502 L37083,46488 L36946,46574 L36857,46758 L36868,46952 L36979,47156 L36943,47344 L36758,47517 L36819,47651 L36681,47817 L36610,48076 L36618,48504 L36554,48718 L36431,48727 L36415,48845 L36620,49329 L36286,49828 L36242,50269 L36368,50751 L36050,51140 L35286,51438 L34881,51700 L34836,51928 L35067,53062 L34970,53241 L34424,53120 L33430,52699 L32763,52713 L32423,53163 L32306,53503 L32348,53779 L31894,53288 L31820,53340 L31842,53608 L31785,53668 L31589,53537 L31350,53163 L31070,52547 L31009,52057 L31166,51693 L31166,51310 L30930,50518 L30930,50135 L30546,49562 L29779,48797 L29215,48326 L28854,48147 L28433,47764 L27951,47178 L27694,46730 L27663,46420 L27883,45593 L28592,43578 L28584,43421 L28254,43136 L27264,42855 L26883,43070 L26551,42635 L26268,41550 L25568,40404 L24452,39198 L23804,38380 L23623,37947 L23332,36435 L23339,35718 L23561,34861 L23757,34762 Z"/>
+    </svg>
+    <!-- state names (label tier), each inside its state and clear of every line and of the chip: Illinois above the chip,
+         Indiana at lon -86.3 lat 40.6, Kentucky at its area centroid (797.5, 910.0) -->
+    <div class="g-z1-3-st" id="g-z1-3-st-il" style="left:250px; top:362px;">ILLINOIS</div>
+    <div class="g-z1-3-st" id="g-z1-3-st-in" style="left:628px; top:390px;">INDIANA</div>
+    <div class="g-z1-3-st" id="g-z1-3-st-ky" style="left:720px; top:899px;">KENTUCKY</div>
+    <!-- the law's chip on Illinois, centred on x 320 (area centroid 346 moved 26 px west so the chip clears the Indiana line) -->
+    <div class="g-z1-3-glass" id="g-z1-3-chip">
+      <span id="g-z1-3-law">Workplace tornado law</span>
+      <span id="g-z1-3-act">Warehouse Tornado Preparedness Act &middot; HB 2987</span>
+    </div>
+  </div>
+  <div class="g-z1-3-scan" id="g-z1-3-scan"></div>
+  <div class="g-z1-3-vig"></div>
+  <!-- map rail: the date and what the law requires (numbers live here, never a popfig over the map) -->
+  <div class="g-z1-3-glass" id="g-z1-3-rail">
+    <span id="g-z1-3-clock">AUG 2025</span>
+    <span class="g-z1-3-lab" id="g-z1-3-clocklab">Signed into law in Illinois</span>
+    <div class="g-z1-3-row" id="g-z1-3-row1">
+      <span class="g-z1-3-lab" id="g-z1-3-row1lab">Every warehouse operator</span>
+      <span class="g-z1-3-val" id="g-z1-3-row1val">Writes a tornado safety plan</span>
+    </div>
+    <div class="g-z1-3-row" id="g-z1-3-row2">
+      <span class="g-z1-3-lab" id="g-z1-3-row2lab">New warehouses</span>
+      <span class="g-z1-3-val" id="g-z1-3-row2val">Designed with tornadoes in mind</span>
+      <span id="g-z1-3-sub">As protected from a tornado as from the other extreme events the building code covers</span>
+    </div>
+  </div>
+  <div class="g-z1-3-glass" id="g-z1-3-src">Illinois Public Act 104-0262; St. Louis Public Radio, 22 Aug 2025</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-z1-3-";
+  const DUR = 23.503;   /* 1031.523 -> 1055.026 (z1-s5 and the NWS track map) */
+  /* cues: audio/z1-s4.words.json, comp-local = segment seconds */
+  const C = {
+    push: 1.40,     /* after "since." (1.38) */
+    il: 2.64,       /* ILLINOIS @2.64 (ep 1034.163): Illinois lights during the push's landing */
+    land: 3.40,     /* push settles */
+    law: 3.60,      /* THE LAW CHANGED: "law" @3.60 (ep 1035.123) */
+    aug: 4.94,      /* AUGUST @4.94 (ep 1036.463): rail + clock */
+    act: 7.72,      /* WAREHOUSE TORNADO PREPAREDNESS ACT @7.72 (ep 1039.243) */
+    every: 9.96,    /* EVERY WAREHOUSE OPERATOR @9.96 (ep 1041.483) */
+    newer: 14.12,   /* NEW WAREHOUSES @14.12 (ep 1045.643) */
+    prot: 18.76,    /* AS PROTECTED @18.76 (ep 1050.283); "covers." ends 22.94 */
+    exit: 22.90
+  };
+  const tl = gsap.timeline({ paused: true });
+  const world = document.querySelector(P + "world");
+
+  /* CAMERA: one linear proxy over the whole window; cam(T) is a pure function of comp time */
+  const Z0 = 0.258, FS = [-431.3, 1007.5], SS = [960, 540], FE = [600, 540], SE = [600, 540];
+  const pushEase = gsap.parseEase("power2.inOut");
+  function cam(T) {
+    let z, fx, fy, sx, sy;
+    if (T < C.push) { z = Z0 * Math.pow(1.01, T / C.push); fx = FS[0]; fy = FS[1]; sx = SS[0]; sy = SS[1]; }
+    else if (T < C.land) {
+      const u = pushEase((T - C.push) / (C.land - C.push));
+      z = Z0 * 1.01 * Math.pow(1 / (Z0 * 1.01), u);
+      fx = FS[0] + (FE[0] - FS[0]) * u; fy = FS[1] + (FE[1] - FS[1]) * u;
+      sx = SS[0] + (SE[0] - SS[0]) * u; sy = SS[1] + (SE[1] - SS[1]) * u;
+    } else { z = Math.pow(1.02, (T - C.land) / (DUR - C.land)); fx = FE[0]; fy = FE[1]; sx = SE[0]; sy = SE[1]; }
+    gsap.set(world, { x: sx - fx * z, y: sy - fy * z, scale: z });
+  }
+  tl.set(world, { transformOrigin: "0px 0px", x: SS[0] - FS[0] * Z0, y: SS[1] - FS[1] * Z0, scale: Z0 }, 0);
+  const camT = { t: 0 };
+  tl.fromTo(camT, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: function () { cam(camT.t); } }, 0);
+
+  /* scan line, whole window (43 px/s) */
+  tl.set(P + "scan", { y: 0 }, 0);
+  tl.to(P + "scan", { y: 1020, duration: DUR, ease: "none" }, 0);
+
+  /* ILLINOIS lights: fill and edge come up as the camera lands on it */
+  tl.fromTo(P + "il", { attr: { "fill-opacity": 0, "stroke-opacity": 0 } }, { attr: { "fill-opacity": 0.55, "stroke-opacity": 0.9 }, duration: 0.8, ease: "power2.out" }, C.il);
+  /* the edge glow pulses every 1.4 s from the label to the exit (13 pulses, 4.0-22.2) */
+  tl.fromTo(P + "ilpulse", { attr: { "stroke-opacity": 0 } }, { attr: { "stroke-opacity": 0.45 }, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 25 }, 4.0);
+
+  /* state names and the chip wait for the camera to settle (HUD rule: no text rides the push) */
+  tl.fromTo([P + "st-il", P + "st-in", P + "st-ky"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, C.land);
+  /* THE LAW CHANGED @3.60: chip with "Workplace tornado law" */
+  tl.fromTo(P + "chip", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.law);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.law + 0.3);
+  /* AUGUST @4.94: the rail slides in with the clock */
+  tl.fromTo(P + "rail", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, C.aug);
+  /* WAREHOUSE TORNADO PREPAREDNESS ACT @7.72: the Act's name under the chip's label */
+  tl.fromTo(P + "act", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.act);
+  /* EVERY WAREHOUSE OPERATOR @9.96 */
+  tl.fromTo(P + "row1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.every);
+  /* NEW WAREHOUSES @14.12 */
+  tl.fromTo(P + "row2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.newer);
+  /* AS PROTECTED @18.76 */
+  tl.fromTo(P + "sub", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.prot);
+
+  /* exit: rail slides out right, chip and source drop, the map fades through to the cut */
+  tl.to(P + "rail", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.exit);
+  tl.to([P + "chip", P + "src"], { autoAlpha: 0, duration: 0.45, ease: "power2.in" }, C.exit);
+  tl.to(P + "world", { autoAlpha: 0, duration: 0.55, ease: "power2.in" }, C.exit + 0.05);
+
+  window.__timelines["g-z1-3"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

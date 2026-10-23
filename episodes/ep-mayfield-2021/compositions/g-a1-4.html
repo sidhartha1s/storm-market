@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-4 · A1-S4 · beige cite card "staff sheltered 7:45 to 7:53 PM CST" (the Picture line's condensation of SA p26, no quote marks),
+  then our building outline beside a small drawn safe room: two subjects side by side, never merged.
+  Brief: briefs/mg/g-a1-4.md. Quote-card family (base g-i1-7) + building family (base g-i1-5: outline 669.6 x 631.78 at 0.45 =
+  301.3 x 284.3 centred (640, 650)). Safe room 220 x 160 centred (1290, 650), reinforced double wall (outer 6 px, inner 2 px).
+  Host data-start 156.039 = a1-s4 start, so comp-local = a1-s4 time (audio/a1-s4.words.json).
+-->
+<template>
+<style>
+  #g-a1-4-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a1-4-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  #g-a1-4-float { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a1-4-card { position:absolute; left:260px; top:150px; width:1400px; height:320px; box-sizing:border-box; padding:56px 80px; border-radius:28px;
+    background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
+  #g-a1-4-q { white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:64px; color:#2a2622; }
+  .g-a1-4-ph { display:block; width:max-content; opacity:0; visibility:hidden; }  /* one phrase per line: 52 px Arial Black would not fit one 1240 px line */
+  #g-a1-4-attr { margin-top:30px; white-space:nowrap; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#6b6257;
+    opacity:0; visibility:hidden; }
+  .g-a1-4-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a1-4-lab { position:absolute; text-align:center; white-space:nowrap; font-weight:700; font-size:26px; line-height:30px; letter-spacing:1px;
+    color:#c8d3e0; opacity:0; visibility:hidden; }
+  #g-a1-4-roomlab { left:990px; top:754px; width:600px; color:#f2f5f8; }
+  #g-a1-4-outlab { left:140px; top:814px; width:1000px; }
+</style>
+<div id="g-a1-4-root" data-composition-id="g-a1-4" data-width="1920" data-height="1080" data-duration="15.228">
+  <div class="g-a1-4-grid" id="g-a1-4-grid"></div>
+  <div id="g-a1-4-float">
+    <div id="g-a1-4-card">
+      <div id="g-a1-4-q"><span class="g-a1-4-ph" id="g-a1-4-p1">staff sheltered 7:45</span> <span class="g-a1-4-ph" id="g-a1-4-p2">to 7:53 PM CST</span></div>
+      <div id="g-a1-4-attr">NWS Service Assessment, p26; St. Louis Public Radio, 17 Apr 2022</div>
+    </div>
+    <svg class="g-a1-4-svg" viewBox="0 0 1920 1080">
+      <!-- outline, building family, 0.45 -->
+      <rect id="g-a1-4-outline" x="489.3" y="507.9" width="301.3" height="284.3" fill="none" stroke="#dfe7ee" stroke-width="4" opacity="0" visibility="hidden"/>
+      <!-- safe room: reinforced double wall -->
+      <g id="g-a1-4-room" opacity="0" visibility="hidden">
+        <rect x="1180" y="570" width="220" height="160" fill="#5a768f" fill-opacity="0.18" stroke="#dfe7ee" stroke-width="6"/>
+        <rect x="1192" y="582" width="196" height="136" fill="none" stroke="#93a3b2" stroke-width="2"/>
+        <path fill="none" stroke="#e8c56a" stroke-width="4" stroke-linecap="round" d="M1270,730 L1310,730"/>
+      </g>
+    </svg>
+    <div class="g-a1-4-lab" id="g-a1-4-roomlab">WFO St. Louis &middot; safe room</div>
+    <div class="g-a1-4-lab" id="g-a1-4-outlab">Illustrative outline &middot; no storm shelter built to withstand a tornado</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a1-4-";
+  const DUR = 15.228;
+  const C = { card: 0.0, t745: 1.38, t753: 7.16, room: 9.80, safe: 10.12, bldg: 11.30, none: 12.38, out: 14.628 };
+  const tl = gsap.timeline({ paused: true });
+
+  tl.set([P + "card", P + "p1", P + "p2", P + "attr", P + "outline", P + "room", P + "roomlab", P + "outlab"], { autoAlpha: 0 }, 0);
+
+  /* ambient: grid drift 16 px/s; whole layout floats up 8 px over the window */
+  tl.fromTo(P + "grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "float", { y: 0 }, { y: -8, duration: DUR, ease: "none" }, 0);
+
+  /* EARLIER THAT EVENING @0.00: card and attribution in */
+  tl.fromTo(P + "card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, C.card);
+  tl.fromTo(P + "attr", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.card + 0.4);
+  /* 7 .45 @1.38 */
+  tl.fromTo(P + "p1", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.t745);
+  /* 7 .53 @7.16 */
+  tl.fromTo(P + "p2", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.t753);
+  tl.to(P + "card", { scale: 1.015, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, C.t753);
+
+  /* HAD A SAFE ROOM @9.80: the room builds, wall then label */
+  tl.fromTo(P + "room", { autoAlpha: 0, scale: 0.6, svgOrigin: "1290 650" }, { autoAlpha: 1, scale: 1, svgOrigin: "1290 650", duration: 0.5, ease: "back.out(1.6)" }, C.room);
+  tl.fromTo(P + "roomlab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.safe);
+  /* THE BUILDING @11.30: the outline grows beside it */
+  tl.fromTo(P + "outline", { autoAlpha: 0, scale: 0.3, svgOrigin: "640 650" }, { autoAlpha: 1, scale: 1, svgOrigin: "640 650", duration: 0.6, ease: "power2.out" }, C.bldg);
+  /* NO STORM SHELTER @12.38 */
+  tl.fromTo(P + "outlab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.none);
+  tl.fromTo(P + "outline", { attr: { stroke: "#dfe7ee" } }, { attr: { stroke: "#e74c3c" }, duration: 0.4, ease: "power1.out", immediateRender: false }, C.none);
+
+  /* exit, done at the host end */
+  tl.to(P + "card", { x: 1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.out);
+  tl.to([P + "room", P + "roomlab"], { x: 700, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.out);
+  tl.to([P + "outline", P + "outlab"], { x: -900, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.out);
+
+  window.__timelines["g-a1-4"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

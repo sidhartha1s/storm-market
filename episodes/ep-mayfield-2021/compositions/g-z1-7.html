@@ -1,0 +1,46 @@
+<template>
+<style>
+  /* g-z1-7 · Z1-S7 (Paul slot P5) · two stacked glass chips under Paul: "Illinois: workplace tornado law" (box left 110, bottom 150), then
+     "Recommendation 6 materials: not found" 104 px above it (bottom 254). The brief's one-line text is 71 characters (> 52), so it is
+     split into two chips, Illinois first (brief section 4.1). Overlay, no ground; the chips sit low-left, clear of Paul's face (the P5
+     placeholder card sits at top 140) and of the Flow logo patch at (1740, 900). Facts: research/fc-Z1.tsv data rows 33-36 and 38-39
+     (Illinois plan law; the national Recommendation 6 materials not found). Family base: g-i1-6 / g-h1-2. Nothing past x 1560. */
+  #g-z1-7-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #g-z1-7-float { position:absolute; inset:0; width:1920px; height:1080px; }
+  .g-z1-7-chip { position:absolute; left:110px; padding:18px 30px; border-radius:28px; box-sizing:border-box; white-space:nowrap;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); opacity:0; visibility:hidden;
+    font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:34px; letter-spacing:1px; color:#dfe7ee; }
+  #g-z1-7-chip1 { bottom:150px; }
+  #g-z1-7-chip2 { bottom:254px; }
+</style>
+<div id="g-z1-7-root" data-composition-id="g-z1-7" data-width="1920" data-height="1080" data-type-ok="two-tier chip over footage">
+  <div id="g-z1-7-float">
+    <div class="g-z1-7-chip" id="g-z1-7-chip1">Illinois: workplace tornado law</div>
+    <div class="g-z1-7-chip" id="g-z1-7-chip2">Recommendation 6 materials: not found</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 6.566;           /* host window: "one of the two states" (z1-s7 1.62 = ep 1093.256) -> end of the P5 slot (ep 1099.822) */
+  const CUE_CHIP1 = 0;         /* ONE OF THE TWO STATES @1.62 (host-local 0) */
+  const CUE_CHIP2 = 3.24;      /* FROM THE WEATHER SERVICE @4.86 (ep 1096.496) */
+  const CUE_OUT = 5.966;       /* host end - 0.6 s ("kind." ends 1099.276) */
+
+  tl.set(["#g-z1-7-chip1", "#g-z1-7-chip2"], { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set("#g-z1-7-float", { scale: 1, y: 0, transformOrigin: "110px 1016px" }, 0);
+  /* ambient 1 % float over the whole window */
+  tl.to("#g-z1-7-float", { scale: 1.01, y: -6, duration: DUR, ease: "none" }, 0);
+
+  tl.fromTo("#g-z1-7-chip1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_CHIP1);
+  tl.fromTo("#g-z1-7-chip2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_CHIP2);
+
+  /* OUT: both slide left and finish inside the host */
+  tl.to(["#g-z1-7-chip2", "#g-z1-7-chip1"], { x: -1100, autoAlpha: 0, duration: 0.56, ease: "power3.in", stagger: 0.04 }, CUE_OUT - 0.04);
+
+  window.__timelines["g-z1-7"] = tl;
+})();
+</script>
+</template>

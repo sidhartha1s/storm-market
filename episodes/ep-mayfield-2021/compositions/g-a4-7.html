@@ -1,0 +1,52 @@
+<template>
+<style>
+  /* g-a4-7 · A4-S7 · chip "8 Tornado Emergencies that night" (lower-left, over the KPAH 4-panel), then the review's line as attributed text on a
+     glass quote card (left 260, right edge 1600) over the KPAH 9:27 PM reflectivity still. The card sits high (top 110, ends about y 370) so it
+     never covers the storm's core over Mayfield (frame y 520-750 on that still). Overlay, no ground: both radar stills run beneath (index.html A4).
+     Nothing past x 1600; nothing at x >= 1600, y >= 680. */
+  #g-a4-7-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  .g-a4-7-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; opacity:0; visibility:hidden; }
+  #g-a4-7-chip { position:absolute; left:110px; bottom:150px; max-width:1000px; padding:18px 30px; border-radius:28px; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:64px; letter-spacing:1px; color:#dfe7ee; }
+  #g-a4-7-chip b { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; letter-spacing:0; color:#f2f5f8; }
+  #g-a4-7-card { position:absolute; left:260px; top:110px; width:1340px; padding:40px 64px 36px; border-radius:28px; }
+  #g-a4-7-qt { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:52px; line-height:64px; color:#f2f5f8; }
+  #g-a4-7-qa { margin-top:20px; font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:30px; letter-spacing:3px; color:#d8a13a; white-space:nowrap; }
+</style>
+<div id="g-a4-7-root" data-composition-id="g-a4-7" data-width="1920" data-height="1080">
+  <div class="g-a4-7-glass" id="g-a4-7-chip"><b>8</b> Tornado Emergencies that night</div>
+  <div class="g-a4-7-glass" id="g-a4-7-card">
+    <div id="g-a4-7-qt">&ldquo;The outlooks, forecasts and warnings issued for this historic event ... were excellent.&rdquo;</div>
+    <div id="g-a4-7-qa">Service Assessment, p4</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 9.433;   /* host 750.999 ("eight" @5.58 in a4-s7, seg start 745.419) -> 760.432 (a4-s8 start) */
+  const C = {
+    chip: 0,           /* EIGHT TORNADO EMERGENCIES @5.58 (ep 750.999) */
+    chipOut: 3.70,     /* off before the cut to the 9:27 PM still (ep 754.7) */
+    quote: 4.54,       /* CALLED THE OUTLOOKS @10.12 (ep 755.539) */
+    out: 8.833         /* host end - 0.6; "excellent." ends @14.4 (ep 759.8) */
+  };
+
+  tl.set("#g-a4-7-chip", { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.fromTo("#g-a4-7-chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.chip);
+  tl.to("#g-a4-7-chip", { y: -6, duration: C.chipOut - 0.5, ease: "none" }, 0.5);
+  tl.to("#g-a4-7-chip", { x: -1000, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, C.chipOut);
+
+  tl.set("#g-a4-7-card", { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set(["#g-a4-7-qt", "#g-a4-7-qa"], { autoAlpha: 0, y: 14 }, 0);
+  tl.fromTo("#g-a4-7-card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.quote);
+  tl.fromTo("#g-a4-7-qt", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.quote + 0.1);
+  tl.fromTo("#g-a4-7-qa", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.quote + 0.5);
+  tl.to("#g-a4-7-card", { y: -8, duration: C.out - C.quote - 0.5, ease: "none" }, C.quote + 0.5);
+  tl.to("#g-a4-7-card", { x: 980, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, C.out);
+
+  window.__timelines["g-a4-7"] = tl;
+})();
+</script>
+</template>

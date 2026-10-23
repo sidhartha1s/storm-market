@@ -1,0 +1,64 @@
+<template>
+<style>
+  /* g-a3-3 · A3-S3 last beat · NWS Louisville AFD, 3:30 AM EST Thu 9 Dec 2021 (IEM archive, fc-A3 rows 13-14), caps as printed, beige cite card
+     (quote-card family g-i1-7 / g-a2-6). Brief: briefs/mg/g-a3-3.md. Full frame, own ground.
+     Host 508.653 ("By Thursday morning", a3-s3 14.54; g-a3-1 hands over here) -> 515.900 (7.247 s), held into "That's the part that matters"
+     so the four caps lines stay readable; times host-local (episode - 508.653).
+     Product dots dropped, quote marks kept around the exact words (brief section 4.1). Caps lines measured at Arial Black 52: max 1009 px of 1240. */
+  #g-a3-3-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a3-3-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px); background-size:120px 120px; }
+  .g-a3-3-glow { position:absolute; left:-200px; top:80px; width:1300px; height:900px; border-radius:50%; background: radial-gradient(ellipse, rgba(232,197,106,0.08), rgba(232,197,106,0) 70%); }
+  #g-a3-3-float { position:absolute; left:260px; top:290px; width:1400px; height:500px; }
+  #g-a3-3-card { position:absolute; left:0; top:0; width:1400px; box-sizing:border-box; padding:60px 80px 56px; border-radius:28px; opacity:0; visibility:hidden;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  .g-a3-3-q { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:64px; color:#2a2622; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a3-3-who { margin-top:36px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:30px; letter-spacing:3px; color:#6b6257; opacity:0; visibility:hidden; }
+  #g-a3-3-det { margin-top:8px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:22px; letter-spacing:1px; color:#6b6257; opacity:0; visibility:hidden; }
+  #g-a3-3-chip { position:absolute; left:110px; bottom:150px; padding:14px 30px; border-radius:28px; box-sizing:border-box; white-space:nowrap;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14);
+    font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:64px; letter-spacing:1px; color:#dfe7ee; opacity:0; visibility:hidden; }
+  #g-a3-3-chip b { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; letter-spacing:0; color:#f2f5f8; }
+</style>
+<div id="g-a3-3-root" data-composition-id="g-a3-3" data-width="1920" data-height="1080">
+  <div class="g-a3-3-grid" id="g-a3-3-grid"></div>
+  <div class="g-a3-3-glow" id="g-a3-3-glow"></div>
+  <div id="g-a3-3-float">
+    <div id="g-a3-3-card">
+      <div class="g-a3-3-q" id="g-a3-3-q1">&ldquo;SIGNIFICANT NIGHTTIME SEVERE</div>
+      <div class="g-a3-3-q" id="g-a3-3-q2">WEATHER EVENT EXPECTED LATE</div>
+      <div class="g-a3-3-q" id="g-a3-3-q3">FRIDAY NIGHT INTO THE EARLY</div>
+      <div class="g-a3-3-q" id="g-a3-3-q4">MORNING HOURS OF SATURDAY&rdquo;</div>
+      <div id="g-a3-3-who">NWS Louisville Area Forecast Discussion, 3:30 AM EST Thu 9 Dec 2021</div>
+      <div id="g-a3-3-det">via the Iowa Environmental Mesonet product archive</div>
+    </div>
+  </div>
+  <div id="g-a3-3-chip"><b>Thursday</b> · early morning</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a3-3-", DUR = 7.247;
+  tl.fromTo(P + "grid", { x: 0 }, { x: 170, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "glow", { x: 0, y: 0 }, { x: 520, y: 60, duration: DUR, ease: "none" }, 0);
+  tl.set(P + "float", { y: 0 }, 0);
+  tl.to(P + "float", { y: -8, duration: DUR, ease: "none" }, 0);
+  /* BY THURSDAY MORNING @0.00 (ep 508.65): chip + the card frame */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.fromTo(P + "card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+  /* THE LOUISVILLE OFFICE @0.96 (ep 509.61) */
+  tl.fromTo(P + "who", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.96);
+  tl.fromTo(P + "det", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.3);
+  /* SIGNIFICANT NIGHTTIME SEVERE WEATHER EVENT @2.90 (ep 511.55), the rest line by line under the voice */
+  [["q1", 2.90], ["q2", 3.36], ["q3", 3.82], ["q4", 4.28]].forEach(function (q) {
+    tl.fromTo(P + q[0], { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, q[1]);
+  });
+  /* exit: card slides right, chip left, done inside the host (ep 515.30-515.90) */
+  tl.to(P + "card", { x: 1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.627);   /* DUR - 0.62 */
+  tl.to(P + "chip", { x: -700, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.627);   /* DUR - 0.62 */
+  window.__timelines["g-a3-3"] = tl;
+})();
+</script>
+</template>

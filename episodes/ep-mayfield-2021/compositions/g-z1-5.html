@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-z1-5 · Z1-S6 map beat · the same map as g-z1-3's final view (Illinois lit, its "Workplace tornado law" chip on), the camera pans
+  south 30 % (324 px, linear-scale move, no zoom) to Kentucky: Kentucky outlined but unlit, labelled "no workplace tornado law found"
+  (fc-Z1 data row 28: an unlabelled dark Kentucky would read as "no tornado law"; Kentucky's 2026 SB 11 is a home safe-room rebate),
+  Mayfield pinned, the factory's source line; the rail lists what else was looked for and not found (fc-Z1 data rows 25-26, Z1-S6
+  narration: no new OSHA rule; no national large-facility guidelines, the materials Recommendation 6 asked for).
+  Variant of g-z1-3 (map family base g-t1-1). Same basemap, projection and world box as g-z1-3:
+  screen = (600, 540) + (X - X(-87.0), Y - Y(39.74)) * 0.03, X = 3841*(lon+97.576), Y = -5585*(lat-46.6213).
+  Kentucky = subpath 14 of media/maps/z1-us-basemap.svg, verbatim (point-in-polygon test, .qc-tmp/z1/proj.py).
+  Points (world px, before the pan; the pan lifts everything 324 px): Mayfield (-88.644491, 36.737459) -> 410.5, 1043.1;
+  Kentucky area centroid 797.5, 910.0, Kentucky spans x 432-1152 at y 935-964 (chip x 562-1032, y 940-990);
+  Illinois spans x 149-539 at y 600 ("ILLINOIS" x 250-407); Illinois chip x 130-510, y 425-545 (as g-z1-3).
+  CAMERA: z 1 until the pan; PAN 0.14-2.14 (power2.inOut) world y 0 -> -324; then a 2 % drift about screen (600, 540) to the exit.
+  Times are host-local = z1-s6.words.json seconds (host data-start 1068.650 = z1-s6 start).
+-->
+<template>
+<style>
+  #g-z1-5-root { position:absolute; inset:0; overflow:hidden; background:#04070a; font-family:Arial, sans-serif; color:#f2f5f8; }
+  #g-z1-5-world { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-z1-5-base { position:absolute; left:-3893.98px; top:-1179.06px; width:7029.03px; height:4440.06px; }
+  .g-z1-5-vig { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 50%, rgba(3,5,7,0) 52%, rgba(3,5,7,0.6) 100%); }
+  .g-z1-5-scan { position:absolute; left:0; top:20px; width:1920px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .g-z1-5-st { position:absolute; white-space:nowrap; font-family:Arial, sans-serif; font-size:22px; font-weight:700; line-height:22px; letter-spacing:6px;
+    color:rgba(147,163,178,0.7); }
+  .g-z1-5-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-sizing:border-box; }
+  .g-z1-5-hid { opacity:0; visibility:hidden; }
+  #g-z1-5-ilchip { position:absolute; left:130px; top:425px; width:380px; padding:14px 20px; border-radius:18px; text-align:center; }
+  #g-z1-5-law { display:block; white-space:nowrap; font-size:30px; font-weight:700; line-height:34px; color:#f2f5f8; }
+  #g-z1-5-act { display:block; margin-top:6px; font-size:22px; font-weight:700; line-height:26px; color:#e8c56a; }
+  #g-z1-5-kychip { position:absolute; left:562px; top:940px; width:470px; padding:11px 18px; border-radius:14px; text-align:center;
+    white-space:nowrap; font-size:26px; font-weight:700; line-height:28px; color:#f2f5f8; }
+  .g-z1-5-dot { position:absolute; width:14px; height:14px; border-radius:50%; background:#f2f5f8; border:2px solid #04070c; box-sizing:content-box; }
+  .g-z1-5-ring { position:absolute; width:14px; height:14px; border-radius:50%; border:2px solid #f2f5f8; box-sizing:content-box; }
+  #g-z1-5-maylab { position:absolute; left:432px; top:1029px; padding:10px 14px; border-radius:12px; white-space:nowrap; font-size:26px; font-weight:700; line-height:26px; color:#f2f5f8; }
+  #g-z1-5-rail { position:absolute; left:1304px; top:120px; width:520px; padding:26px 32px 28px; border-radius:28px; }
+  .g-z1-5-lab { display:block; font-size:19px; font-weight:700; line-height:24px; letter-spacing:3px; text-transform:uppercase; color:#93a3b2; }
+  .g-z1-5-row { opacity:0; visibility:hidden; }
+  #g-z1-5-rowB { margin-top:18px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.14); }
+  .g-z1-5-val { display:block; margin-top:6px; font-size:30px; font-weight:700; line-height:36px; color:#dfe7ee; }
+  #g-z1-5-sub { display:block; margin-top:10px; font-size:20px; font-weight:700; line-height:26px; color:#c8d3e0; }
+  #g-z1-5-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; white-space:nowrap; font-size:19px; font-weight:700; line-height:19px;
+    letter-spacing:1px; color:#c8d3e0; }
+</style>
+<div id="g-z1-5-root" data-composition-id="g-z1-5" data-width="1920" data-height="1080" data-duration="16.64"
+     data-type-ok="map labels and rail rows: one reading tier and the label tier by design; no figure or headline on this map">
+  <div id="g-z1-5-world">
+    <img class="g-z1-5-base" src="media/maps/z1-us-basemap.svg" alt="">
+    <svg class="g-z1-5-base" viewBox="-109177 -18870 234301 148002">
+      <!-- Illinois, lit (g-z1-3's end state), subpath 11 of z1-us-basemap.svg, verbatim -->
+      <path id="g-z1-5-il" fill="#d8a13a" fill-opacity="0.55" stroke="#e8c56a" stroke-opacity="0.9" stroke-width="83" stroke-linejoin="round" d="M23757,34762 L23744,33983 L23956,33607 L24432,33352 L24866,32792 L25258,31927 L25435,31308 L25397,30934 L25253,30580 L25003,30245 L24943,29829 L25074,29334 L25494,29018 L26203,28883 L26846,28632 L27422,28265 L27765,27865 L27873,27432 L28039,27094 L28263,26854 L28421,26460 L28514,25913 L28525,25510 L28456,25250 L28204,24950 L27768,24610 L27523,24290 L27467,23991 L27238,23669 L26835,23326 L26601,22945 L37503,23034 L37559,24629 L37809,25187 L37954,25339 L38310,26597 L38620,27330 L38575,40471 L38398,40644 L38275,40938 L38260,41485 L38136,41623 L38196,41969 L38586,43074 L38634,43616 L38589,44004 L38380,44356 L38180,45119 L38008,45425 L37798,45526 L37611,45809 L37445,46276 L37269,46502 L37083,46488 L36946,46574 L36857,46758 L36868,46952 L36979,47156 L36943,47344 L36758,47517 L36819,47651 L36681,47817 L36610,48076 L36618,48504 L36554,48718 L36431,48727 L36415,48845 L36620,49329 L36286,49828 L36242,50269 L36368,50751 L36050,51140 L35286,51438 L34881,51700 L34836,51928 L35067,53062 L34970,53241 L34424,53120 L33430,52699 L32763,52713 L32423,53163 L32306,53503 L32348,53779 L31894,53288 L31820,53340 L31842,53608 L31785,53668 L31589,53537 L31350,53163 L31070,52547 L31009,52057 L31166,51693 L31166,51310 L30930,50518 L30930,50135 L30546,49562 L29779,48797 L29215,48326 L28854,48147 L28433,47764 L27951,47178 L27694,46730 L27663,46420 L27883,45593 L28592,43578 L28584,43421 L28254,43136 L27264,42855 L26883,43070 L26551,42635 L26268,41550 L25568,40404 L24452,39198 L23804,38380 L23623,37947 L23332,36435 L23339,35718 L23561,34861 L23757,34762 Z"/>
+      <!-- Kentucky, outline only (unlit), subpath 14 of z1-us-basemap.svg, verbatim; 3 px at the final scale = 100 units -->
+      <path id="g-z1-5-ky" fill="none" stroke="#93a3b2" stroke-opacity="0" stroke-width="100" stroke-linejoin="round" d="M32306,53503 L32423,53163 L32763,52713 L33430,52699 L34424,53120 L34970,53241 L35067,53062 L34836,51928 L34881,51700 L35286,51438 L36050,51140 L36368,50751 L36242,50269 L36286,49828 L36500,49429 L36698,49265 L36879,49334 L37019,49301 L37118,49168 L37196,48636 L37666,48791 L37878,48711 L38013,48785 L38152,49082 L38259,48994 L38366,48397 L38466,48546 L38631,48588 L38866,48496 L39192,48577 L39818,48961 L40081,49238 L40263,49148 L40452,48784 L40740,48496 L41125,48283 L41505,48375 L41878,48770 L42162,48849 L42356,48613 L42543,47885 L42687,47805 L42741,47670 L42707,47479 L42813,47370 L43061,47342 L43075,47150 L43255,47235 L43435,47689 L43666,47946 L44066,48195 L44381,48237 L44613,48072 L44826,47642 L45021,46949 L45276,46557 L45592,46467 L45822,46210 L45966,45787 L46206,45447 L46543,45189 L46673,44818 L46596,44335 L46747,44073 L47126,44033 L47357,44089 L47652,44294 L48684,43852 L49070,43574 L49112,43300 L49044,43126 L48865,43051 L48827,42938 L48932,42785 L48936,42587 L48840,42343 L48929,42103 L49204,41867 L49430,41845 L49608,42037 L49862,42086 L50191,41991 L50494,42057 L50770,42286 L51030,42706 L51272,43318 L51710,43691 L52344,43826 L52806,44066 L53097,44412 L53337,44522 L53918,44241 L54217,44355 L54615,44646 L55205,44582 L55986,44162 L56446,44183 L56583,44644 L56915,45128 L57563,45802 L57606,46630 L57448,47133 L57455,47313 L57975,48242 L58015,48494 L58315,49109 L58751,49897 L59430,50548 L59961,50721 L58509,52077 L57209,52964 L57016,53466 L56632,53851 L56392,54258 L55818,54598 L55409,55062 L54385,55517 L53812,55675 L53181,56043 L42514,55607 L37399,55723 L37286,55550 L36412,55450 L36564,56023 L36554,56529 L31211,56527 L31414,56037 L31671,55880 L31957,56000 L32161,55826 L32443,54790 L32470,54229 L32306,53503 Z"/>
+    </svg>
+    <div class="g-z1-5-st" id="g-z1-5-st-il" style="left:250px; top:600px;">ILLINOIS</div>
+    <div class="g-z1-5-st" id="g-z1-5-st-in" style="left:628px; top:430px;">INDIANA</div>
+    <div class="g-z1-5-st" id="g-z1-5-st-ky" style="left:720px; top:899px;">KENTUCKY</div>
+    <div class="g-z1-5-glass" id="g-z1-5-ilchip">
+      <span id="g-z1-5-law">Workplace tornado law</span>
+      <span id="g-z1-5-act">Warehouse Tornado Preparedness Act &middot; HB 2987</span>
+    </div>
+    <div class="g-z1-5-glass g-z1-5-hid" id="g-z1-5-kychip">No workplace tornado law found</div>
+    <!-- Mayfield pin: 14 px dot + 2 px ring centred on the projected point (410.5, 1043.1); label 22 px right of the dot -->
+    <div class="g-z1-5-ring g-z1-5-hid" id="g-z1-5-may-ring" style="left:401.5px; top:1034.1px;"></div>
+    <div class="g-z1-5-dot g-z1-5-hid" id="g-z1-5-may-dot" style="left:401.5px; top:1034.1px;"></div>
+    <div class="g-z1-5-glass g-z1-5-hid" id="g-z1-5-maylab">Mayfield</div>
+  </div>
+  <div class="g-z1-5-scan" id="g-z1-5-scan"></div>
+  <div class="g-z1-5-vig"></div>
+  <div class="g-z1-5-glass g-z1-5-hid" id="g-z1-5-rail">
+    <div class="g-z1-5-row" id="g-z1-5-rowA">
+      <span class="g-z1-5-lab" id="g-z1-5-rowAlab">OSHA rule on tornado plans</span>
+      <span class="g-z1-5-val" id="g-z1-5-rowAval">No new rule found</span>
+    </div>
+    <div class="g-z1-5-row" id="g-z1-5-rowB">
+      <span class="g-z1-5-lab" id="g-z1-5-rowBlab">National guidelines, large facilities</span>
+      <span class="g-z1-5-val" id="g-z1-5-rowBval">Not found</span>
+      <span class="g-z1-5-hid" id="g-z1-5-sub">The materials Recommendation 6 asked for</span>
+    </div>
+  </div>
+  <div class="g-z1-5-glass g-z1-5-hid" id="g-z1-5-src">8 at the factory: Mayfield Consumer Products and AP, 14 Dec 2021</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-z1-5-";
+  const DUR = 16.64;    /* 1068.650 -> 1085.290 ("The Weather Service's general safety page": g-z1-6) */
+  /* cues: audio/z1-s6.words.json, comp-local = segment seconds */
+  const C = {
+    ky: 0.14,       /* KENTUCKY @0.14 (ep 1068.790): pan starts, outline comes up */
+    eight: 1.10,    /* WHERE EIGHT PEOPLE @1.10 (ep 1069.750): the factory's source line */
+    land: 2.14,     /* pan settles */
+    factory: 2.74,  /* FACTORY @2.74 (ep 1071.390): Mayfield pin */
+    nolaw: 3.56,    /* I COULDN'T FIND A NEW LAW ON TORNADO PLANS AT WORK: "I" @3.56 (ep 1072.210) */
+    osha: 7.06,     /* OSHA @7.06 (ep 1075.710) */
+    natl: 9.46,     /* NATIONAL @9.46 (ep 1078.110) */
+    rec6: 13.24,    /* RECOMMENDATION 6 @13.24 (ep 1081.890); "find." ends 1084.75 */
+    exit: 16.04
+  };
+  const tl = gsap.timeline({ paused: true });
+  const world = document.querySelector(P + "world");
+
+  /* CAMERA: pan south 324 px, then a 2 % drift about screen (600, 540); a pure function of comp time */
+  const PAN = 324, panEase = gsap.parseEase("power2.inOut");
+  function cam(T) {
+    let z = 1, oy = 0;
+    if (T >= C.ky && T < C.land) oy = PAN * panEase((T - C.ky) / (C.land - C.ky));
+    else if (T >= C.land) { oy = PAN; z = Math.pow(1.02, (T - C.land) / (DUR - C.land)); }
+    gsap.set(world, { x: 600 - 600 * z, y: 540 - (540 + oy) * z, scale: z });
+  }
+  tl.set(world, { transformOrigin: "0px 0px", x: 0, y: 0, scale: 1 }, 0);
+  const camT = { t: 0 };
+  tl.fromTo(camT, { t: 0 }, { t: DUR, duration: DUR, ease: "none", onUpdate: function () { cam(camT.t); } }, 0);
+
+  /* scan line, whole window */
+  tl.set(P + "scan", { y: 0 }, 0);
+  tl.to(P + "scan", { y: 1020, duration: DUR, ease: "none" }, 0);
+
+  /* KENTUCKY @0.14: its outline comes up (fill unchanged: unlit) */
+  tl.fromTo(P + "ky", { attr: { "stroke-opacity": 0 } }, { attr: { "stroke-opacity": 1 }, duration: 0.6, ease: "power2.out" }, C.ky);
+  /* WHERE EIGHT PEOPLE @1.10: the factory's source line */
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.eight);
+  /* FACTORY @2.74: Mayfield pin, pulse ring every 1.2 s (10 pulses, to 14.9) */
+  tl.fromTo(P + "may-dot", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.5)" }, C.factory);
+  tl.fromTo(P + "maylab", { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, C.factory + 0.2);
+  tl.set(P + "may-ring", { autoAlpha: 0, scale: 1 }, 0);
+  tl.fromTo(P + "may-ring", { autoAlpha: 0.9, scale: 1 }, { autoAlpha: 0, scale: 3, duration: 1.0, ease: "power2.out", repeat: 9, repeatDelay: 0.2, immediateRender: false }, C.factory + 0.2);
+  /* I COULDN'T FIND A NEW LAW ON TORNADO PLANS AT WORK @3.56: Kentucky's label */
+  tl.fromTo(P + "kychip", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.nolaw);
+  /* OSHA @7.06: rail in with its first row */
+  tl.fromTo(P + "rail", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, C.osha);
+  tl.fromTo(P + "rowA", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.osha + 0.2);
+  /* NATIONAL @9.46 */
+  tl.fromTo(P + "rowB", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.natl);
+  /* RECOMMENDATION 6 @13.24 */
+  tl.fromTo(P + "sub", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.rec6);
+
+  /* exit: rail out right, labels drop, the map fades through to the safety page */
+  tl.to(P + "rail", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.exit);
+  tl.to(P + "src", { autoAlpha: 0, duration: 0.45, ease: "power2.in" }, C.exit);
+  tl.to(P + "world", { autoAlpha: 0, duration: 0.55, ease: "power2.in" }, C.exit + 0.05);
+
+  window.__timelines["g-z1-5"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<template>
+<style>
+  /* g-a4-10 · A4-S10 · two attributed text cards, same size, one cut: card one the NBC allegation, card two the company spokesman's denial
+     (split-shared-scale family: two sides, never merged; quote-card styles from g-i1-7). Full frame, own ground. No worker names, no faces,
+     never Saxton. Both cards 780 x 500 (x 120-900 and 1020-1800, y 150-650): the right card ends above y 660, clear of the presenter circle.
+     One quote size on both cards (Georgia italic 40) by legal design, so the comp is two-tier on purpose (data-type-ok). */
+  #g-a4-10-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a4-10-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .g-a4-10-glow { position:absolute; left:-200px; top:80px; width:1300px; height:900px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(232,197,106,0.07), rgba(232,197,106,0) 70%); }
+  .g-a4-10-card { position:absolute; top:150px; width:780px; height:500px; box-sizing:border-box; padding:52px 60px; border-radius:28px;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
+  #g-a4-10-c1 { left:120px; }
+  #g-a4-10-c2 { left:1020px; }
+  .g-a4-10-q { font-family: Georgia, 'Times New Roman', serif; font-style:italic; font-size:40px; line-height:50px; color:#2a2622; }
+  .g-a4-10-ph { display:block; white-space:nowrap; opacity:0.12; } /* one phrase per row (widest, "supervisors warned employees", 553 px of the 660 px inner width, PIL Georgia italic 40) */
+  .g-a4-10-blk { display:block; white-space:normal; } /* denial card: two blocks; the long sentence wraps to 3 rows inside its own box */
+  .g-a4-10-who { display:block; margin-top:32px; font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:30px; letter-spacing:3px; color:#6b6257;
+    white-space:nowrap; opacity:0; visibility:hidden; }
+  .g-a4-10-src { display:block; margin-top:6px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:24px; letter-spacing:3px; color:#6b6257;
+    white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-10-root" data-composition-id="g-a4-10" data-width="1920" data-height="1080"
+     data-type-ok="allegation and denial set in one quote size so neither card is louder (legal: same size, same cut); attribution is the second tier">
+  <div class="g-a4-10-grid" id="g-a4-10-grid"></div>
+  <div class="g-a4-10-glow" id="g-a4-10-glow"></div>
+  <div class="g-a4-10-card" id="g-a4-10-c1">
+    <div class="g-a4-10-q"><span class="g-a4-10-ph" id="g-a4-10-p1">&ldquo;at least five workers said </span><span class="g-a4-10-ph" id="g-a4-10-p2">supervisors warned employees </span><span class="g-a4-10-ph" id="g-a4-10-p3">that they would be fired </span><span class="g-a4-10-ph" id="g-a4-10-p4">if they left their shifts early&rdquo;</span></div>
+    <span class="g-a4-10-who" id="g-a4-10-w1">NBC News,</span>
+    <span class="g-a4-10-src" id="g-a4-10-s1">13 Dec 2021</span>
+  </div>
+  <div class="g-a4-10-card" id="g-a4-10-c2">
+    <div class="g-a4-10-q"><span class="g-a4-10-ph g-a4-10-blk" id="g-a4-10-p5">&ldquo;It&rsquo;s absolutely untrue.&rdquo;</span><span class="g-a4-10-ph g-a4-10-blk" id="g-a4-10-p6">&ldquo;Employees can leave any time they want to leave and they can come back the next day.&rdquo;</span></div>
+    <span class="g-a4-10-who" id="g-a4-10-w2">Bob Ferguson, company spokesman,</span>
+    <span class="g-a4-10-src" id="g-a4-10-s2">NBC News, 13 Dec 2021</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-10-";
+  const DUR = 17.366;  /* host 787.013 (a4-s10 start) -> 804.379 (a4-s11 start); host-local = a4-s10 words.json time */
+  const C = {
+    p1: 0.00,          /* AT LEAST FIVE WORKERS @0.00 */
+    p2: 2.42,          /* SUPERVISORS @2.42 */
+    p3: 4.18,          /* THEY WOULD BE FIRED @4.18 */
+    p4: 5.08,          /* IF THEY LEFT @5.08 */
+    c2: 6.98,          /* THE COMPANY'S SPOKESMAN @6.98: card two enters, card one stays */
+    w2: 8.56,          /* BOB FERGUSON @8.56 */
+    p5: 10.94,         /* IT'S ABSOLUTELY UNTRUE @10.94 */
+    p6: 13.56,         /* EMPLOYEES CAN LEAVE @13.56 */
+    out: 16.766        /* host end - 0.6 */
+  };
+
+  /* ambient: grid 14 px/s, glow drift, both cards float up 8 px over the window */
+  tl.fromTo(P + "grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "glow", { x: 0, y: 0 }, { x: 900, y: 100, duration: DUR, ease: "none" }, 0);
+
+  tl.set([P + "c1", P + "c2"], { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set([P + "p1", P + "p2", P + "p3", P + "p4", P + "p5", P + "p6"], { autoAlpha: 0.12 }, 0);
+  tl.set([P + "w1", P + "s1", P + "w2", P + "s2"], { autoAlpha: 0, y: 14 }, 0);
+
+  /* CARD ONE @0: box in, the allegation phrase by phrase, attribution */
+  tl.fromTo(P + "c1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.p1);
+  tl.to(P + "p1", { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, C.p1 + 0.1);
+  tl.fromTo(P + "w1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.p1 + 0.4);
+  tl.fromTo(P + "s1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.p1 + 0.65);
+  tl.to(P + "p2", { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, C.p2);
+  tl.to(P + "p3", { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, C.p3);
+  tl.to(P + "p4", { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, C.p4);
+  tl.to(P + "c1", { y: -8, duration: C.out - 0.5, ease: "none" }, 0.5);
+
+  /* CARD TWO @6.98: same size, same type; the denial and the spokesman's words land on his voice */
+  tl.fromTo(P + "c2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.c2);
+  tl.fromTo(P + "w2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.w2);
+  tl.fromTo(P + "s2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.w2 + 0.25);
+  tl.to(P + "p5", { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, C.p5);
+  tl.to(P + "p6", { autoAlpha: 1, duration: 0.4, ease: "power3.out" }, C.p6);
+  tl.to(P + "c2", { y: -8, duration: C.out - C.c2 - 0.5, ease: "none" }, C.c2 + 0.5);
+
+  /* out: both cards leave together, card one left, card two right */
+  tl.to(P + "c1", { x: -1000, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, C.out);
+  tl.to(P + "c2", { x: 1000, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, C.out);
+
+  window.__timelines["g-a4-10"] = tl;
+})();
+</script>
+</template>

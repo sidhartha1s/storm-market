@@ -1,0 +1,105 @@
+<template>
+<style>
+  /* g-a4-13 · A4-S13 · three stamps drop onto one Mayfield timeline (look of g-a4-5): WATCH 3:00 PM, WARNING 9:05 PM, EMERGENCY 9:26 PM; the
+     St. Louis words above them first, as the voice says them first (plan.md). Full frame, own ground.
+     SCALE: 3:00 PM -> 9:30 PM = 390 min over x 260-1560 (1300 px, 3.333 px a minute; no clamp needed): 3:00 -> x 260.0, 9:05 (365 min) ->
+     x 1476.7, 9:26 (386 min) -> x 1546.7. Rail y 470. At true scale 9:05 and 9:26 sit 70 px apart, so the WARNING stamp stands above the rail
+     and the EMERGENCY stamp below it, each with a leader to its exact x. Quote strip y 760-880 (moved down from the brief's 640-760 so the
+     EMERGENCY stamp has room under the rail). Nothing at x >= 1600, y >= 680 (everything ends at x 1560). */
+  #g-a4-13-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a4-13-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  #g-a4-13-scan { position:absolute; left:0; top:20px; width:1920px; height:2px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  #g-a4-13-rail { position:absolute; left:260px; top:468px; width:1300px; height:4px; background:#93a3b2; visibility:hidden; }
+  #g-a4-13-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a4-13-lead { stroke:#f4f0e8; stroke-opacity:0.8; stroke-width:2px; visibility:hidden; }
+  .g-a4-13-tick { fill:#f4f0e8; visibility:hidden; }
+  .g-a4-13-stamp { position:absolute; box-sizing:border-box; padding:12px 24px 14px; border-radius:6px; background:#8e2020;
+    border:2px solid rgba(244,240,232,0.55); box-shadow:0 14px 40px rgba(0,0,0,0.55); white-space:nowrap; opacity:0; visibility:hidden; }
+  /* Arial Black 52 glyph box = 75 px (ascent 58 + descent 17, PIL): the value row is 76 px; the -3 deg stamp tilt adds up to 19 px of box
+     height on "EMERGENCY" (369 px wide), so the time row sits 22 px lower. Stamp = 164 px tall. */
+  .g-a4-13-val { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:76px; color:#f4f0e8; }
+  .g-a4-13-time { display:block; margin-top:22px; font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:36px; color:#f5d98b; }
+  #g-a4-13-sw { left:260px; top:280px; }
+  #g-a4-13-swa { right:443.3px; top:280px; text-align:right; }
+  #g-a4-13-se { right:373.3px; top:522px; text-align:right; }
+  #g-a4-13-quote { position:absolute; left:260px; top:760px; width:1300px; height:120px; box-sizing:border-box; padding:18px 40px; border-radius:20px;
+    background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 20px 60px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
+  #g-a4-13-qt { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:44px; line-height:52px; color:#2a2622; white-space:nowrap; }
+  #g-a4-13-qa { margin-top:6px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:22px; letter-spacing:3px; color:#6b6257; white-space:nowrap; }
+</style>
+<div id="g-a4-13-root" data-composition-id="g-a4-13" data-width="1920" data-height="1080">
+  <div class="g-a4-13-grid" id="g-a4-13-grid"></div>
+  <div id="g-a4-13-scan"></div>
+  <div id="g-a4-13-rail"></div>
+  <svg id="g-a4-13-svg" viewBox="0 0 1920 1080">
+    <line class="g-a4-13-lead" id="g-a4-13-lw" x1="261" y1="448" x2="261" y2="470"/>
+    <line class="g-a4-13-lead" id="g-a4-13-lwa" x1="1476.7" y1="448" x2="1476.7" y2="470"/>
+    <line class="g-a4-13-lead" id="g-a4-13-le" x1="1546.7" y1="470" x2="1546.7" y2="522"/>
+    <circle class="g-a4-13-tick" id="g-a4-13-tw" cx="261" cy="470" r="7"/>
+    <circle class="g-a4-13-tick" id="g-a4-13-twa" cx="1476.7" cy="470" r="7"/>
+    <circle class="g-a4-13-tick" id="g-a4-13-te" cx="1546.7" cy="470" r="7"/>
+  </svg>
+  <div class="g-a4-13-stamp" id="g-a4-13-sw"><span class="g-a4-13-val">WATCH</span><span class="g-a4-13-time">3:00 PM</span></div>
+  <div class="g-a4-13-stamp" id="g-a4-13-swa"><span class="g-a4-13-val">WARNING</span><span class="g-a4-13-time">9:05 PM</span></div>
+  <div class="g-a4-13-stamp" id="g-a4-13-se"><span class="g-a4-13-val">EMERGENCY</span><span class="g-a4-13-time">9:26 PM</span></div>
+  <div id="g-a4-13-quote">
+    <div id="g-a4-13-qt">&ldquo;no guidance on what types of warnings to shelter for&rdquo;</div>
+    <div id="g-a4-13-qa">WFO St. Louis after-action review, quoted in the Service Assessment, p34</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-13-";
+  const DUR = 10.492;  /* host 835.866 (a4-s13 start) -> 846.358 (a4-s14 start, the factory still); host-local = a4-s13 words.json time */
+  const C = {
+    rail: 0.20,        /* the rail draws as the line opens */
+    quote: 1.34,       /* NO GUIDANCE ON WHAT TYPES OF WARNINGS @1.34 (ep 837.206) */
+    watch: 5.76,       /* A WATCH AT 3 @5.76 (ep 841.626) */
+    warn: 6.92,        /* A WARNING AT 905 @6.92 (ep 842.786) */
+    emer: 8.52,        /* AN EMERGENCY AT 926 @8.52 (ep 844.386) */
+    out: 9.94          /* fade-through, done at the host end */
+  };
+
+  /* ambient: grid 23 px/s, scan line 97 px/s */
+  tl.fromTo(P + "grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.set(P + "scan", { y: 0 }, 0);
+  tl.to(P + "scan", { y: 1020, duration: DUR, ease: "none" }, 0);
+
+  /* rail */
+  tl.set(P + "rail", { scaleX: 0, transformOrigin: "left center", visibility: "hidden" }, 0);
+  tl.set(P + "rail", { visibility: "visible" }, C.rail);
+  tl.to(P + "rail", { scaleX: 1, duration: 0.8, ease: "power3.out" }, C.rail);
+
+  /* QUOTE @1.34 */
+  tl.set(P + "quote", { autoAlpha: 0, y: 24 }, 0);
+  tl.fromTo(P + "quote", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.quote);
+  tl.to(P + "quote", { y: -8, duration: C.out - C.quote - 0.5, ease: "none" }, C.quote + 0.5);
+
+  /* stamps: tick on the rail, leader draws, stamp lands (scale 1.25 -> 1, back.out), rotated -3 deg */
+  function stamp(k, at) {
+    tl.set(P + "s" + k, { autoAlpha: 0, scale: 1.25, rotation: -3 }, 0);
+    tl.fromTo(P + "s" + k, { autoAlpha: 0, scale: 1.25 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, at);
+    tl.set(P + "t" + k, { visibility: "hidden", scale: 0, transformOrigin: "50% 50%" }, 0);
+    tl.set(P + "t" + k, { visibility: "visible" }, at);
+    tl.to(P + "t" + k, { scale: 1, duration: 0.3, ease: "back.out(3)" }, at);
+    tl.set(P + "l" + k, { visibility: "hidden", scaleY: 0, transformOrigin: "50% 100%" }, 0);
+    tl.set(P + "l" + k, { visibility: "visible" }, at + 0.05);
+    tl.to(P + "l" + k, { scaleY: 1, duration: 0.25, ease: "power2.out" }, at + 0.05);
+  }
+  stamp("w", C.watch);
+  stamp("wa", C.warn);
+  stamp("e", C.emer);
+
+  /* out: fade-through to the factory still */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, C.out);
+
+  window.__timelines["g-a4-13"] = tl;
+})();
+</script>
+</template>

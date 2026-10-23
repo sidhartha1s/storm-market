@@ -1,0 +1,39 @@
+<template>
+<style>
+  /* g-a4-11 · A4-S11 · chip "rulings so far: not on the facts" (no source line in the brief; never says which side a ruling favoured).
+     Overlay, no ground: media/stills/t1-s1-guard-fairgrounds.jpg (Kentucky Guard at the Mayfield fairgrounds, DVIDS 6986587) beneath for the whole window.
+     Chip box left 110, bottom 150 (lower-third datum, family g-i1-6). Nothing past x 1560, nothing at x >= 1600, y >= 680. */
+  #g-a4-11-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #g-a4-11-float { position:absolute; inset:0; width:1920px; height:1080px; }
+  .g-a4-11-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); box-sizing:border-box; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a4-11-chip { position:absolute; left:110px; bottom:150px; max-width:1000px; padding:18px 30px; border-radius:28px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:64px; letter-spacing:1px; color:#dfe7ee; }
+</style>
+<div id="g-a4-11-root" data-composition-id="g-a4-11" data-width="1920" data-height="1080">
+  <div id="g-a4-11-float">
+    <div class="g-a4-11-glass" id="g-a4-11-chip">rulings so far: not on the facts</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 3.741;      /* host 810.259 ("never" @5.88 in a4-s11, seg start 804.379) -> 814.000 (the SA p33 page) */
+  const CUE_CHIP = 0;     /* NEVER ON WHAT HAPPENED THAT NIGHT @5.88 (ep 810.259) */
+  const CUE_OUT = 3.141;  /* host end - 0.6 */
+
+  tl.set("#g-a4-11-chip", { autoAlpha: 0, x: 0, y: 24 }, 0);
+  tl.set("#g-a4-11-float", { scale: 1, y: 0, transformOrigin: "110px 1016px" }, 0);
+  /* ambient float over the whole window */
+  tl.to("#g-a4-11-float", { scale: 1.006, y: -6, duration: DUR, ease: "none" }, 0);
+
+  tl.fromTo("#g-a4-11-chip", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, CUE_CHIP);
+
+  /* out: slides left and finishes inside the host */
+  tl.to("#g-a4-11-chip", { x: -1000, autoAlpha: 0, duration: 0.56, ease: "power3.in" }, CUE_OUT);
+
+  window.__timelines["g-a4-11"] = tl;
+})();
+</script>
+</template>

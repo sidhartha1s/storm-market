@@ -1,0 +1,114 @@
+<!-- g-z1-2 · Z1-S2 + Z1-S3 · Finding 6 as a beige cite card (verbatim, phrase by phrase on the voice, "a gap" stamped as it is read),
+     then Recommendation 6 slides up under it (verbatim, whole sentence). Full frame, own ground. Quote-card family base g-i1-7.
+     Text: research/fc-Z1.tsv data rows 7 and 9-11 (SA p34, read on the page render media/candidates/z1/S2_c1).
+     Cards x 260-1560 (the presenter-circle corner x >= 1600, y >= 680 stays free). Finding card from y 92, Recommendation card from y 540.
+     Host 1009.273 ("word" in z1-s2 = 4.06) -> 1028.191 (USACE clip). Host-local cue = episode second - 1009.273. -->
+<template>
+<style>
+  #g-z1-2-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-z1-2-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .g-z1-2-glow { position:absolute; left:-200px; top:80px; width:1300px; height:900px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(232,197,106,0.08), rgba(232,197,106,0) 70%); }
+  #g-z1-2-float { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-z1-2-card { position:absolute; left:260px; width:1300px; box-sizing:border-box; padding:48px 80px 44px; border-radius:28px; opacity:0; visibility:hidden;
+    background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  #g-z1-2-c1 { top:92px; }
+  #g-z1-2-c2 { top:540px; padding:40px 80px 40px; }
+  .g-z1-2-q { font-family: Georgia, 'Times New Roman', serif; font-style:italic; color:#2a2622; }
+  /* one phrase per row (overlap_check: wrapped inline phrases shared rows). Widths measured with PIL on georgiai.ttf:
+     Finding at 52 px: 757 / 895 / 969 / 495 px in an inner width of 1140; Recommendation at 40 px row 2 was 1420, so that card
+     drops to 30 px: 284 / 1065 / 340 / 274 / 752 px. Rows are blocks of fixed line-height, so their boxes only touch. */
+  #g-z1-2-q1 { font-size:52px; line-height:64px; }
+  #g-z1-2-q2 { font-size:30px; line-height:40px; }
+  .g-z1-2-row { display:block; height:64px; white-space:nowrap; }
+  #g-z1-2-q2 .g-z1-2-row { height:40px; }
+  .g-z1-2-ph { opacity:0; visibility:hidden; }
+  #g-z1-2-p1 { display:inline-block; }
+  #g-z1-2-gap { position:relative; display:inline-block; margin-left:0.25em; }
+  #g-z1-2-stamp { position:absolute; left:-4px; right:-4px; bottom:2px; height:6px; border-radius:3px; background:#c0392b; }
+  .g-z1-2-attr { margin-top:28px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:24px; line-height:30px; letter-spacing:3px; color:#6b6257;
+    opacity:0; visibility:hidden; }
+</style>
+<div id="g-z1-2-root" data-composition-id="g-z1-2" data-width="1920" data-height="1080">
+  <div class="g-z1-2-grid" id="g-z1-2-grid"></div>
+  <div class="g-z1-2-glow" id="g-z1-2-glow"></div>
+  <div id="g-z1-2-float">
+    <div class="g-z1-2-card" id="g-z1-2-c1">
+      <div class="g-z1-2-q" id="g-z1-2-q1">
+        <div class="g-z1-2-row"><span class="g-z1-2-ph" id="g-z1-2-p1">&ldquo;Multiple offices identified</span><span class="g-z1-2-ph" id="g-z1-2-gap">a gap<span id="g-z1-2-stamp"></span></span></div>
+        <div class="g-z1-2-row g-z1-2-ph" id="g-z1-2-p2">in NWS safety outreach and resources</div>
+        <div class="g-z1-2-row g-z1-2-ph" id="g-z1-2-p3">related to buildings with large footprints,</div>
+        <div class="g-z1-2-row g-z1-2-ph" id="g-z1-2-p4">such as warehouses.&rdquo;</div>
+      </div>
+      <div class="g-z1-2-attr" id="g-z1-2-a1">Service Assessment, Finding 6, p34</div>
+    </div>
+    <div class="g-z1-2-card" id="g-z1-2-c2">
+      <div class="g-z1-2-q" id="g-z1-2-q2">
+        <div class="g-z1-2-row g-z1-2-ph" id="g-z1-2-r1">&ldquo;Recommendation 6:</div>
+        <div class="g-z1-2-row g-z1-2-ph" id="g-z1-2-r2">The NWS HQ Analyze, Forecast, and Support Office&rsquo;s Severe Weather Program</div>
+        <div class="g-z1-2-row g-z1-2-ph" id="g-z1-2-r3">should work with experts</div>
+        <div class="g-z1-2-row g-z1-2-ph" id="g-z1-2-r4">to develop materials</div>
+        <div class="g-z1-2-row g-z1-2-ph" id="g-z1-2-r5">with basic tornado safety guidelines for large facilities.&rdquo;</div>
+      </div>
+      <div class="g-z1-2-attr" id="g-z1-2-a2">Service Assessment, Recommendation 6, p34</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-z1-2-";
+  const DUR = 18.918;
+  /* one phrase per row: each lands with a short rise */
+  const ph = (id, at) => tl.fromTo(P + id, { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, at);
+
+  tl.set([P + "c1", P + "c2", P + "a1", P + "a2"], { autoAlpha: 0 }, 0);
+  tl.set(P + "stamp", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P + "gap", { scale: 1, transformOrigin: "50% 70%" }, 0);
+
+  /* ambient, whole window: grid 13 px/s, glow drift, whole-card float y 0 -> -8 */
+  tl.fromTo(P + "grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "glow", { x: 0, y: 0 }, { x: 900, y: 100, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "float", { y: 0 }, { y: -8, duration: DUR, ease: "none" }, 0);
+
+  /* WORD FOR WORD @0.00 (z1-s2 "word" 4.06 = ep 1009.273): the Finding card and its attribution */
+  tl.fromTo(P + "c1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0);
+  tl.fromTo(P + "a1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.3);
+  /* MULTIPLE OFFICES @1.18 (5.24 = ep 1010.453) */
+  ph("p1", 1.18);
+  /* A GAP @2.64 (6.70 = ep 1011.913): the words land, pop 1.04 and the crimson stamp strikes under them */
+  ph("gap", 2.64);
+  tl.to(P + "gap", { scale: 1.04, duration: 0.18, ease: "power2.out" }, 2.9);
+  tl.to(P + "gap", { scale: 1, duration: 0.3, ease: "power2.inOut" }, 3.08);
+  tl.to(P + "stamp", { scaleX: 1, duration: 0.3, ease: "power3.out" }, 2.9);
+  /* IN NWS @3.12 (7.18 = ep 1012.393) */
+  ph("p2", 3.12);
+  /* RELATED @5.24 (9.30 = ep 1014.513) */
+  ph("p3", 5.24);
+  /* SUCH AS WAREHOUSES @7.52 (11.58 = ep 1016.793) */
+  ph("p4", 7.52);
+
+  /* RIGHT UNDER IT SITS RECOMMENDATION 6 @9.018 (z1-s3 0.00 = ep 1018.291): the second card slides up under the first */
+  tl.fromTo(P + "c2", { autoAlpha: 0, y: 200 }, { autoAlpha: 1, y: 0, duration: 0.7, ease: "power3.out" }, 9.018);
+  ph("r1", 9.3);
+  tl.fromTo(P + "a2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.6);
+  /* IT ASKS THE WEATHER SERVICE @11.66 (2.64 = ep 1020.931) */
+  ph("r2", 11.66);
+  /* WORK WITH EXPERTS @13.14 (4.12 = ep 1022.411) */
+  ph("r3", 13.14);
+  /* DEVELOP MATERIALS @14.30 (5.28 = ep 1023.571) */
+  ph("r4", 14.30);
+  /* WITH BASIC TORNADO SAFETY GUIDELINES @15.22 (6.20 = ep 1024.491); "facilities." ends 1027.591 */
+  ph("r5", 15.22);
+
+  /* exit: both cards slide out and finish at the host end (cut to the USACE clip under "That's the advice") */
+  tl.to([P + "c1", P + "c2"], { x: 1100, autoAlpha: 0, duration: 0.6, ease: "power3.in", stagger: 0.04 }, 18.27);
+
+  window.__timelines["g-z1-2"] = tl;
+})();
+</script>
+</template>

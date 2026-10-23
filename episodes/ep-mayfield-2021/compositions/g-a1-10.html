@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-10 · A1-S11 · AP line as attributed text on a beige cite card; OSHA's letter item 3 page below it with the evacuation-maps lines lit;
+  then the second AP line; the drawn megaphone returns, small, in its shut cage. Brief: briefs/mg/g-a1-10.md.
+  Quote-card family (base g-i1-7) + doc page (base g-i1-2) + megaphone family (base g-a1-1: drawing, cage, padlock).
+  Page: media/stills/a1-s11-hal-p2-item3.png (1256 x 289, the sourcer's crop of page 2, item 3) at 1.0, x 332-1588, y 540-829; text
+  column x 79-1227 whole. Lit lines measured on the PNG (PIL rows/word gaps): line 6 y 204-231, "Amazon" starts x 239 -> band x 233-1231;
+  line 7 y 239-266 x 129-580 -> band x 123-586. Lines are 28 px tall at 1080 (>= 26).
+  Call: the brief's 5th row (OSHA's recommendation shown whole on this segment's tail) is left to g-a1-11, which shows the same
+  words on their own cue: this segment's tail after "drill" is 0.4 s.
+  Host data-start 243.690 = a1-s11 0.60: comp-local = a1-s11 time - 0.60 (audio/a1-s11.words.json).
+-->
+<template>
+<style>
+  #g-a1-10-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .g-a1-10-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
+    background-size:120px 120px; }
+  .g-a1-10-card { position:absolute; box-sizing:border-box; padding:56px 80px; border-radius:28px; background:rgba(232,222,200,0.90);
+    border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
+  #g-a1-10-card1 { left:260px; top:150px; width:1400px; }
+  #g-a1-10-card2 { left:160px; top:330px; width:1060px; }
+  .g-a1-10-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:52px; line-height:65px; color:#2a2622; }
+  .g-a1-10-who { margin-top:32px; white-space:nowrap; font-weight:700; font-size:26px; line-height:30px; letter-spacing:3px; color:#6b6257; }
+  #g-a1-10-sheet { position:absolute; left:332px; top:540px; width:1256px; height:289px; background:#ffffff; overflow:hidden;
+    box-shadow:0 24px 70px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
+  #g-a1-10-sheet img { position:absolute; left:0; top:0; width:1256px; height:289px; }
+  .g-a1-10-band { position:absolute; border-radius:3px; background:rgba(216,161,58,.35); opacity:0; visibility:hidden; }
+  #g-a1-10-band1 { left:233px; top:200px; width:998px; height:35px; }
+  #g-a1-10-band2 { left:123px; top:235px; width:463px; height:35px; }
+  .g-a1-10-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* line widths doubled from g-a1-1: the drawing is shown at 0.3846, so 8 px reads as about 3 px */
+  .g-a1-10-meg { fill:none; stroke:#dfe7ee; stroke-width:8px; stroke-linecap:round; stroke-linejoin:round; }
+  #g-a1-10-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; white-space:nowrap; font-size:19px; font-weight:700; line-height:19px;
+    letter-spacing:1px; color:#c8d3e0; background:rgba(10,16,24,.55); border:1px solid rgba(255,255,255,.14); opacity:0; visibility:hidden; }
+</style>
+<div id="g-a1-10-root" data-composition-id="g-a1-10" data-width="1920" data-height="1080" data-duration="13.574">
+  <div class="g-a1-10-grid" id="g-a1-10-grid"></div>
+  <div class="g-a1-10-card" id="g-a1-10-card1">
+    <div class="g-a1-10-q" id="g-a1-10-q1">did not &ldquo;specifically identify&rdquo; the shelter&rsquo;s location</div>
+    <div class="g-a1-10-who" id="g-a1-10-who1">AP, 28 Apr 2022</div>
+  </div>
+  <div id="g-a1-10-sheet">
+    <img src="media/stills/a1-s11-hal-p2-item3.png" alt="">
+    <div class="g-a1-10-band" id="g-a1-10-band1"></div>
+    <div class="g-a1-10-band" id="g-a1-10-band2"></div>
+  </div>
+  <div class="g-a1-10-card" id="g-a1-10-card2">
+    <div class="g-a1-10-q" id="g-a1-10-q2">some employees couldn&rsquo;t recall ever participating in severe weather drills</div>
+    <div class="g-a1-10-who" id="g-a1-10-who2">AP, 28 Apr 2022</div>
+  </div>
+  <!-- the megaphone in its shut cage, 200 px (0.3846 of g-a1-1's 520 px cage), centred (1430, 530) -->
+  <svg class="g-a1-10-svg" viewBox="0 0 1920 1080">
+    <g transform="translate(1430,530) scale(0.3846) translate(-960,-560)">
+      <g id="g-a1-10-megg" opacity="0" visibility="hidden">
+        <g transform="translate(-3,20)">
+          <path class="g-a1-10-meg" d="M754,460 A14,30 0 1,0 754,520 A14,30 0 1,0 754,460 Z"/>
+          <path class="g-a1-10-meg" d="M754,460 L844,460 M754,520 L844,520"/>
+          <path class="g-a1-10-meg" d="M844,456 L844,524 M844,456 L1156,360 M844,524 L1156,620"/>
+          <path class="g-a1-10-meg" d="M1156,360 A30,130 0 1,0 1156,620 A30,130 0 1,0 1156,360 Z"/>
+          <path class="g-a1-10-meg" style="stroke:#93a3b2; stroke-width:4px;" d="M1156,386 A18,104 0 1,0 1156,594 A18,104 0 1,0 1156,386 Z"/>
+          <path class="g-a1-10-meg" d="M870,532 L840,710 Q838,720 848,720 L874,720 Q884,720 886,712 L910,544"/>
+          <path class="g-a1-10-meg" d="M922,548 C946,580 932,612 900,612"/>
+          <path class="g-a1-10-meg" d="M907.5,562 Q920,576 903,594"/>
+          <path class="g-a1-10-meg" style="stroke-width:6px;" d="M853,640 L893,640 M849,664 L890,664 M845,688 L887,688"/>
+        </g>
+        <rect x="700" y="300" width="520" height="520" fill="none" stroke="#93a3b2" stroke-width="5"/>
+        <path fill="none" stroke="#93a3b2" stroke-width="10" stroke-linecap="round" d="M690,300 L1230,300 M690,820 L1230,820"/>
+        <path fill="none" stroke="#93a3b2" stroke-width="5" d="M740,300 L740,820 M780,300 L780,820 M820,300 L820,820 M860,300 L860,820 M900,300 L900,820 M940,300 L940,820 M980,300 L980,820 M1020,300 L1020,820 M1060,300 L1060,820 M1100,300 L1100,820 M1140,300 L1140,820 M1180,300 L1180,820 M700,560 L1220,560"/>
+        <g transform="translate(1186,536)">
+          <path fill="none" stroke="#e8c56a" stroke-width="8" stroke-linecap="round" d="M13,24 L13,14 A11,11 0 0,1 35,14 L35,24"/>
+          <rect x="5" y="24" width="38" height="28" rx="4" fill="#0b1016" stroke="#e8c56a" stroke-width="8"/>
+        </g>
+      </g>
+    </g>
+  </svg>
+  <div id="g-a1-10-src">AP via Claims Journal &middot; OSHA Hazard Alert Letter to Amazon, item 3</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a1-10-";
+  const DUR = 13.574;
+  const C = {
+    did: 1.24,     /* DID NOT @1.84 */
+    evac: 5.60,    /* EVACUATION @6.20 */
+    swap: 10.10,   /* card 1 and the page leave before the second AP card ("some" @10.68) */
+    some: 10.70,   /* COULDN'T @11.30 */
+    meg: 11.57,    /* last 2 s: the megaphone in its cage */
+    out: 12.974    /* exit, done at the host end */
+  };
+  const tl = gsap.timeline({ paused: true });
+
+  tl.set([P + "card1", P + "card2", P + "who1", P + "who2", P + "sheet", P + "band1", P + "band2", P + "src", P + "megg"], { autoAlpha: 0 }, 0);
+  tl.set([P + "band1", P + "band2"], { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient grid drift 18 px/s, whole window */
+  tl.fromTo(P + "grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
+
+  /* DID NOT SPECIFICALLY IDENTIFY: card 1, attribution */
+  tl.fromTo(P + "card1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, C.did);
+  tl.fromTo(P + "who1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.did + 0.4);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.did + 0.6);
+  tl.to(P + "card1", { y: -8, duration: 4.0, ease: "none" }, C.did + 0.6);
+
+  /* EVACUATION MAPS: the letter's item 3 rises under the card, its two lines lit */
+  tl.fromTo(P + "sheet", { autoAlpha: 0, y: 120 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, C.evac);
+  tl.set(P + "band1", { autoAlpha: 1 }, C.evac + 0.5);
+  tl.to(P + "band1", { scaleX: 1, duration: 0.5, ease: "power2.out" }, C.evac + 0.5);
+  tl.set(P + "band2", { autoAlpha: 1 }, C.evac + 1.0);
+  tl.to(P + "band2", { scaleX: 1, duration: 0.4, ease: "power2.out" }, C.evac + 1.0);
+  tl.to(P + "sheet", { y: -10, duration: 3.0, ease: "none" }, C.evac + 0.6);
+
+  /* card 1 and the page leave; the second AP line comes in */
+  tl.to(P + "card1", { x: -1300, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, C.swap);
+  tl.to(P + "sheet", { x: -1300, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, C.swap + 0.05);
+  tl.fromTo(P + "card2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, C.some);
+  tl.fromTo(P + "who2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.some + 0.4);
+
+  /* the megaphone returns, shut in its cage */
+  tl.fromTo(P + "megg", { autoAlpha: 0, scale: 0.85, svgOrigin: "960 560" }, { autoAlpha: 1, scale: 1, svgOrigin: "960 560", duration: 0.5, ease: "power3.out" }, C.meg);
+
+  /* exit, done at the host end */
+  tl.to(P + "card2", { x: -1200, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.out);
+  tl.to(P + "megg", { scale: 1.1, svgOrigin: "960 560", autoAlpha: 0, duration: 0.6, ease: "power2.in" }, C.out);
+  tl.to(P + "src", { y: 40, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, C.out);
+
+  window.__timelines["g-a1-10"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

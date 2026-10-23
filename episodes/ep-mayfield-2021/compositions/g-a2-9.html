@@ -1,0 +1,113 @@
+<!-- g-a2-9 · A2-S7 · countdown map (family base g-a2-5: same camera, basemap, pins, rail). Watch outlines from research/geo/watches.geojson
+  (IEM spc_watch_outline, four-sided outlines), projected by .qc-tmp/a2/project_a2.py: 552 issued 21:00Z = 3:00 PM CST, contains Mayfield
+  (point-in-polygon true); 553 issued 23:20Z = 5:20 PM CST, contains Edwardsville (true). The Day 2 Enhanced area stays faint underneath (state
+  carried from g-a2-5). Lead times SA p9 (facts-nws F22, F15b). No NEXRAD replot layer: no Level II for the first cells (3-6 PM CST) is on disk.
+  Host 397.307 -> 418.328, 21.021 s; times host-local (episode - 397.307; round 3 timeline, episode seconds in the cue comment below
+  are round 2's, add 0.8). -->
+<template>
+<style>
+  #g-a2-9-root { position:absolute; inset:0; overflow:hidden; background:#04070a; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .g-a2-9-world { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a2-9-base { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a2-9-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a2-9-vig { position:absolute; left:0; top:0; width:1920px; height:1080px; pointer-events:none;
+    background:radial-gradient(ellipse at 40% 50%, rgba(3,5,7,0) 50%, rgba(3,5,7,0.65) 100%); }
+  .g-a2-9-scan { position:absolute; left:0; top:20px; width:1920px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .g-a2-9-state { font-family:Arial, sans-serif; font-size:22px; font-weight:700; letter-spacing:6px; fill:#93a3b2; fill-opacity:0.55; }
+  .g-a2-9-box { stroke:#e74c3c; stroke-width:3px; stroke-linejoin:round; visibility:hidden; }
+  .g-a2-9-dot { position:absolute; width:14px; height:14px; border-radius:50%; background:#f2f5f8; border:2px solid #04070c; }
+  .g-a2-9-ring { position:absolute; width:14px; height:14px; border-radius:50%; border:2px solid #f2f5f8; box-sizing:content-box; opacity:0; }
+  .g-a2-9-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; }
+  .g-a2-9-pinlab { position:absolute; padding:8px 12px; border-radius:12px; font-size:26px; font-weight:700; line-height:26px; color:#f2f5f8; }
+  #g-a2-9-rail { position:absolute; left:1224px; top:190px; width:600px; box-sizing:border-box; padding:22px 28px 14px; border-radius:28px; opacity:0; visibility:hidden; }
+  .g-a2-9-row { margin-bottom:16px; opacity:0; visibility:hidden; }
+  .g-a2-9-rl { font-size:19px; font-weight:700; line-height:22px; letter-spacing:3px; color:#93a3b2; }
+  .g-a2-9-rv { font-size:30px; font-weight:700; line-height:36px; color:#dfe7ee; }
+  .g-a2-9-rv b { color:#e74c3c; }
+  #g-a2-9-clockbox { position:relative; height:128px; }
+  .g-a2-9-clk { position:absolute; left:0; top:0; opacity:0; visibility:hidden; }
+  .g-a2-9-pre { font-size:30px; font-weight:700; line-height:34px; color:#c8d3e0; }
+  .g-a2-9-num { font-family:'Courier New', Courier, monospace; font-weight:700; font-size:84px; line-height:90px; color:#e8c56a; white-space:nowrap; }
+  .g-a2-9-src { position:absolute; left:96px; top:984px; padding:8px 14px; border-radius:10px; font-size:19px; font-weight:700; line-height:19px; letter-spacing:1px; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-9-root" data-composition-id="g-a2-9" data-width="1920" data-height="1080" data-duration="21.021">
+  <div class="g-a2-9-world" id="g-a2-9-world">
+    <img class="g-a2-9-base" src="media/stills/a2-countdown-basemap.svg" alt="">
+    <svg class="g-a2-9-svg" viewBox="0 0 1920 1080">
+      <g class="g-a2-9-state" text-anchor="middle">
+        <text x="478" y="323">MISSOURI</text>
+        <text x="731" y="145">ILLINOIS</text>
+        <text x="953" y="167">INDIANA</text>
+        <text x="1029" y="434">KENTUCKY</text>
+        <text x="945" y="612">TENNESSEE</text>
+        <text x="486" y="724">ARKANSAS</text>
+        <text x="692" y="946">MISSISSIPPI</text>
+      </g>
+      <path id="g-a2-9-enh" fill="#d8a13a" fill-opacity="0.16" stroke="#d8a13a" stroke-opacity="0.5" stroke-width="2" d="M997.9,463.2 L932.0,581.2 L817.2,714.8 L685.5,876.2 L614.2,924.1 L511.6,920.8 L476.4,872.9 L622.7,554.5 L756.7,367.4 L865.4,322.9 L944.3,325.1 L989.4,369.6 Z"/>
+      <path id="g-a2-9-w552" class="g-a2-9-box" fill="#e74c3c" fill-opacity="0" d="M375.3,802.8 L621.1,354.1 L902.9,354.1 L643.3,802.8 Z"/>
+      <path id="g-a2-9-w553" class="g-a2-9-box" fill="#e74c3c" fill-opacity="0" d="M770.4,53.4 L574.4,507.7 L353.1,507.7 L536.1,53.4 Z"/>
+    </svg>
+    <div class="g-a2-9-scan" id="g-a2-9-scan"></div>
+    <div class="g-a2-9-ring" id="g-a2-9-may-ring" style="left:764.2px; top:499.0px;"></div>
+    <div class="g-a2-9-dot" id="g-a2-9-may-dot" style="left:764.2px; top:499.0px;"></div>
+    <div class="g-a2-9-ring" id="g-a2-9-edw-ring" style="left:661.2px; top:270.4px;"></div>
+    <div class="g-a2-9-dot" id="g-a2-9-edw-dot" style="left:661.2px; top:270.4px;"></div>
+    <div class="g-a2-9-glass g-a2-9-pinlab" id="g-a2-9-may-lab" style="left:795px; top:490px;">Mayfield</div>
+    <div class="g-a2-9-glass g-a2-9-pinlab" id="g-a2-9-edw-lab" style="left:692px; top:258px;">Edwardsville</div>
+  </div>
+  <div class="g-a2-9-vig"></div>
+  <div class="g-a2-9-glass" id="g-a2-9-rail">
+    <div class="g-a2-9-row" id="g-a2-9-r1"><div class="g-a2-9-rl">FIRST TORNADO WATCH</div><div class="g-a2-9-rv"><b>Watch 552</b> &middot; 3:00 PM &middot; 1 of 11</div></div>
+    <div class="g-a2-9-row" id="g-a2-9-r2"><div class="g-a2-9-rl">SECOND WATCH</div><div class="g-a2-9-rv"><b>Watch 553</b> &middot; 5:20 PM</div></div>
+    <div id="g-a2-9-clockbox">
+      <div class="g-a2-9-clk" id="g-a2-9-k1"><div class="g-a2-9-pre">about &middot; to Mayfield</div><div class="g-a2-9-num">6 h 25 min</div></div>
+      <div class="g-a2-9-clk" id="g-a2-9-k2"><div class="g-a2-9-pre">about &middot; to Edwardsville</div><div class="g-a2-9-num">3 h</div></div>
+    </div>
+  </div>
+  <div class="g-a2-9-glass g-a2-9-src" id="g-a2-9-src">NWS Service Assessment, p9 &middot; watch outlines via Iowa Environmental Mesonet</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a2-9-", DUR = 21.021;
+  /* cues (episode s - 396.507): AT 3 @0.00 (396.51), FIRST TORNADO WATCH @1.60 (398.11), FIRST OF 11 @8.83 (405.33),
+     6 HOURS AND 25 MINUTES @10.74 (407.25), AT 5:20 @14.48 (410.99), SECOND WATCH @16.20 (412.71), ABOUT 3 HOURS @18.52 (415.03) */
+  const tl = gsap.timeline({ paused: true });
+  const len = (sel) => Math.ceil(document.querySelector(sel).getTotalLength()) + 1;
+  tl.set(P + "world", { scale: 1, transformOrigin: "640px 430px" }, 0);
+  tl.to(P + "world", { scale: 1.03, duration: DUR, ease: "none" }, 0);
+  tl.set(P + "scan", { y: 0 }, 0);
+  tl.to(P + "scan", { y: 1020, duration: DUR, ease: "none" }, 0);
+  [["may", 0.2], ["edw", 0.8]].forEach(([k, t]) =>
+    tl.fromTo(P + k + "-ring", { scale: 1, opacity: 0.9 }, { scale: 3, opacity: 0, duration: 1.0, ease: "power2.out", repeat: 16, repeatDelay: 0.2 }, t));
+  function box(k, at) {
+    const L = len(P + k);
+    tl.set(P + k, { strokeDasharray: L, strokeDashoffset: L, visibility: "hidden" }, 0);
+    tl.set(P + k, { visibility: "visible" }, at);
+    tl.fromTo(P + k, { strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, at);
+    tl.set(P + k, { strokeDasharray: "10 6", strokeDashoffset: 0 }, at + 0.85);
+    tl.fromTo(P + k, { attr: { "fill-opacity": 0 } }, { attr: { "fill-opacity": 0.12 }, duration: 0.4, ease: "power1.out" }, at + 0.5);
+  }
+  function row(k, at) { tl.fromTo(P + k, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, at); }
+
+  tl.fromTo(P + "rail", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 0.1);
+  box("w552", 1.6);
+  row("r1", 1.6);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.0);
+  /* 6 H 25 MIN @10.74: the clock lands */
+  tl.fromTo(P + "k1", { autoAlpha: 0, scale: 1.25 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 10.74);
+  /* AT 5:20 @14.48: second box, clock clears for the next figure */
+  box("w553", 14.48);
+  row("r2", 14.48);
+  tl.to(P + "k1", { y: -40, autoAlpha: 0, duration: 0.25, ease: "power2.in" }, 18.27);
+  tl.fromTo(P + "k2", { autoAlpha: 0, scale: 1.25 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 18.52);
+  /* exit: "hit." ends 20.61 (ep 417.11); hard cut to g-a2-10, which opens on this same map */
+  tl.to(P + "rail", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  tl.to(P + "src", { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, DUR - 0.6);
+
+  window.__timelines["g-a2-9"] = tl;
+})();
+</script>
+</template>
