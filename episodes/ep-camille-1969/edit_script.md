@@ -84,7 +84,7 @@ shown), I1-S5, I1-S7, I1-S10 (not shown). Facts: `research/facts-national.md` (N
 ## Act briefs (structure only; prose waits for the lock)
 > **ACT 1 — the night: Massies Mill and the Tye · about 4.5 min**
 > **Job:** put the viewer in Nelson County from about 7 p.m. on the 19th to daybreak: the rain, the river, one family.
-> **In / out:** a weather report for "showers, clearing in the morning" (P27, `[verify]`) → Warren Raines in a tree at daybreak (P31).
+> **In / out:** a meteorologist's reading of the forecast, "showers tonight, clearing in the morning" (Halverson, WVTF 23 Aug 2019, factcheck-A1 RAW; no 1969 forecast text on file) → Warren Raines in a tree at daybreak (P31).
 > **Loops:** plants "the Wood children" · pays Q5.
 > **Rehooks:** LVA aerial of Massies Mill; our rain-gauge counter climbing hour by hour; Warren Raines's own words on a card (WTKR 2019).
 > **Tempo + emotion:** slow build, one human story, banks the first emotion.
@@ -98,11 +98,11 @@ shown), I1-S5, I1-S7, I1-S10 (not shown). Facts: `research/facts-national.md` (N
 > **Tempo + emotion:** fast science, then a hold on Davis Creek.
 
 > **ACT 3 — the count that would not close · about 5 min (book ad inside, about the halfway mark)**
-> **Job:** the search and the count: the working numbers moving through August (trooper tape: 101 missing on the 24th, 88 on the
-> 26th, about 32 "probably never be found" by 1 Sep, all `[verify]` against a 1969 paper), the 13 Nov 1969 count (113 and 39), every
+> **Job:** the search and the count: the working numbers moving through August (AP: 109 missing on Sunday the 24th; UPI: 89 on Monday the 25th, factcheck-A3 A3/A4;
+> the trooper-tape 101 / 88 / "32 never found" figures were auto-captions only and are cut), the 13 Nov 1969 count (113 and 39, OFR 70-51 p. 1 CONFIRMED), every
 > later source a different number, and why.
 > **CTA hinge:** tease = last line before the ad (the list starts at a hundred and one) → CTA → payoff = first line after (where it went).
-> **Rehooks:** our counter; LVA recovery photographs; Ginger Raines found two weeks later, twenty miles away (WTKR, `[verify]`).
+> **Rehooks:** our counter; LVA recovery photographs; Ginger Raines found two weeks later, twenty miles away (WTKR 2 Sep 2019 RAW, CONFIRMED).
 > **Tempo + emotion:** detective pace, the Wood children paid here.
 
 > **ACT 4 — the eight · about 4 min**

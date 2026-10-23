@@ -217,6 +217,7 @@ window.__timelines = window.__timelines || {};
 
   /* PART 2: fade-through to the county map on "Those scars" */
   tl.to(P + "p1", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, C.scars - 0.5);
+  tl.to(P + "src1", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, C.scars - 0.5);
   tl.fromTo(P + "p2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, C.scars - 0.1);
   tl.fromTo(P + "cam", { scale: 1, svgOrigin: "895 498" }, { scale: 1.12, svgOrigin: "895 498", duration: DUR - C.scars, ease: "sine.inOut" }, C.scars);
   tl.fromTo(P + "l-nelson", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.scars + 0.3);

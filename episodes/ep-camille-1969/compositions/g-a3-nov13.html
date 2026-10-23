@@ -54,7 +54,7 @@
 window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
-  const DUR = 14.9;
+  const DUR = 15.1;
   /* CUE-PENDING all cues are ESTIMATES (no audio/a3-s10.words.json yet): "thirteenth" 0.54 · "hundred thirteen" 3.16 · "Thirty-nine" 5.87 · "Encyclopedia" 11.11 · last word ends ~13.98 */
   const vaLen = Math.ceil(document.querySelector("#nv-va").getTotalLength()) + 1;
   gsap.set("#nv-va", { strokeDasharray: vaLen, strokeDashoffset: vaLen });

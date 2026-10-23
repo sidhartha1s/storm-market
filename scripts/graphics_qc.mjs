@@ -169,6 +169,7 @@ const MEASURE = `((t) => {
   /* containers that are visible but hold nothing — a gradient/border IS content */
   for (const el of document.querySelectorAll('[id^="g-"], .panel, .spanel, .card')) {
     if (!vis(el) || el instanceof SVGElement) continue;
+    if (/^(IMG|VIDEO|CANVAS)$/.test(el.tagName)) continue;   // the element IS the picture (ep-camille g-a2-scar-photo: an <img> with a g- id read as an empty box)
     const r = el.getBoundingClientRect();
     const cs2 = getComputedStyle(el);
     const painted = cs2.backgroundImage !== 'none' || parseFloat(cs2.borderTopWidth) > 0 ||

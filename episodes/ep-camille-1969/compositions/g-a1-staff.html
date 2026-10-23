@@ -21,7 +21,7 @@
   .a1s-lab69 .u { font-family:Georgia, serif; font-style:italic; font-weight:400; font-size:34px; color:#f2f5f8; }
   .a1s-src { position:absolute; left:96px; bottom:56px; font-weight:700; font-size:21px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
 </style>
-<div id="g-a1-staff-root" data-composition-id="g-a1-staff" data-width="1920" data-height="1080" data-duration="6.4">
+<div id="g-a1-staff-root" data-composition-id="g-a1-staff" data-width="1920" data-height="1080" data-duration="7.4">
   <div class="a1s-water" id="a1s-water"></div>
   <div class="a1s-ripple" id="a1s-ripple"></div>
   <svg id="a1s-staff" style="position:absolute;left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080">
@@ -63,8 +63,8 @@ window.__timelines = window.__timelines || {};
   /* ambient: the water surface ripples the whole way */
   tl.fromTo("#a1s-ripple", { x: -80 }, { x: 80, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 2 }, 2.6);
   /* exit, last 0.6 s */
-  tl.to(["#a1s-lab44", "#a1s-lab69"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 5.8);
-  tl.to(["#a1s-water", "#a1s-ripple", "#a1s-staff", "#a1s-line44", "#a1s-line69", "#a1s-src"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 5.9);
+  tl.to(["#a1s-lab44", "#a1s-lab69"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.8);
+  tl.to(["#a1s-water", "#a1s-ripple", "#a1s-staff", "#a1s-line44", "#a1s-line69", "#a1s-src"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 6.9);
   window.__timelines["g-a1-staff"] = tl;
 })();
 </script>

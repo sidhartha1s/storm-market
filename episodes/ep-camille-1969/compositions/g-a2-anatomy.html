@@ -225,7 +225,8 @@ window.__timelines = window.__timelines || {};
   tl.set(P + "scene", { opacity: 0.35 }, 0);
   tl.fromTo(P + "title", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, CUES.garnett - 0.2);
   tl.to(P + "title", { y: -10, duration: CUES.paper - CUES.garnett, ease: "sine.inOut" }, CUES.garnett + 0.4);
-  tl.to(P + "title", { y: -700, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, CUES.paper + 0.4);
+  tl.to(P + "title", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, CUES.paper + 0.4);
+  tl.to(P + "title", { y: -700, duration: 0.6, ease: "power3.in" }, CUES.paper + 0.7); /* fade first: text never shows outside the frame */
   tl.to(P + "scene", { opacity: 1, duration: 0.8, ease: "power2.out" }, CUES.paper + 0.6);
   tl.fromTo(P + "src", { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, CUES.paper + 1.0);
 

@@ -24,7 +24,7 @@
     background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); }
 </style>
-<div id="g-a3-whitehead-root" data-composition-id="g-a3-whitehead" data-width="1920" data-height="1080" data-duration="12.5">
+<div id="g-a3-whitehead-root" data-composition-id="g-a3-whitehead" data-width="1920" data-height="1080" data-duration="17.2">
   <div class="aw-wrap" id="aw-wrap">
     <div class="aw-card" id="aw-card">
       <div class="aw-mark" id="aw-mark">&ldquo;</div>
@@ -49,13 +49,13 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#aw-who", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 7.6);
   /* source plate on "Dick Whitehead" @0.00 (also keeps the early window moving) */
   tl.fromTo("#aw-src", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.1);
-  tl.fromTo("#aw-src", { y: 0 }, { y: -5, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0.8);
+  tl.fromTo("#aw-src", { y: 0 }, { y: -5, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 13 }, 0.8);
   tl.fromTo("#aw-p1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 7.04);
   tl.fromTo("#aw-p2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 7.5);
   /* float through the hold */
-  tl.fromTo("#aw-card", { y: 0 }, { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3 }, 8.0);
+  tl.fromTo("#aw-card", { y: 0 }, { y: -8, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 7 }, 8.0);
   /* exit, last 0.6 s (before "Three of them" @12.40) */
-  tl.to(["#aw-card", "#aw-src"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 11.9);
+  tl.to(["#aw-card", "#aw-src"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 16.5);
   window.__timelines["g-a3-whitehead"] = tl;
 })();
 </script>
