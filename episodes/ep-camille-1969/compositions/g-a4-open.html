@@ -86,7 +86,8 @@ window.__timelines = window.__timelines || {};
   ALL.forEach(k => {
     const s0 = S0[k] || 1 / Z0;
     tl.set(P + "p-" + k, { scale: 1, transformOrigin: "50% 50%" }, 0);
-    tl.fromTo(P + "m-" + k, { scale: s0, transformOrigin: "50% 50%" }, { scale: s0 * Z0 / Z1, duration: DUR, ease: "none" }, 0);
+    tl.set(P + "m-" + k, { scale: s0, transformOrigin: "50% 50%" }, 0);
+    tl.to(P + "m-" + k, { scale: s0 * Z0 / Z1, duration: DUR, ease: "none" }, 0);
   });
   /* flow shimmer, downstream, the parent's rate (26 px/s) */
   tl.to(P + "flow path", { strokeDashoffset: -153.4, duration: DUR, ease: "none" }, 0);
