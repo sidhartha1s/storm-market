@@ -166,9 +166,10 @@ const MEASURE = `((t) => {
         out.texts.push({ a: a.text, b: b.text, overlapPct: +((area/small)*100).toFixed(0) });
     }
   }
-  /* containers that are visible but hold nothing — a gradient/border IS content */
+  /* containers that are visible but hold nothing — a gradient/border IS content. An <img> is content itself
+     (its descendants query finds nothing); a failed load is the broken-image rule's (ep-mayfield 23 Oct 26). */
   for (const el of document.querySelectorAll('[id^="g-"], .panel, .spanel, .card')) {
-    if (!vis(el) || el instanceof SVGElement) continue;
+    if (!vis(el) || el instanceof SVGElement || el.tagName === 'IMG') continue;
     const r = el.getBoundingClientRect();
     const cs2 = getComputedStyle(el);
     const painted = cs2.backgroundImage !== 'none' || parseFloat(cs2.borderTopWidth) > 0 ||
