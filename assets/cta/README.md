@@ -6,8 +6,8 @@ Deterministic gate: `scripts/sweep_episode.py` ("CTA present + placed"). SRT cue
 ## Current file
 | Field | Value |
 |---|---|
-| File | `paul-storm-ready-v9-oct20.mp4` (1920x1080 24 fps, h264/aac, **24.042 s** of picture (577 frames), audio stream 24.042 s, 9.4 MB) |
-| md5 | `bba0b9f3289d0de3797dbfbd1017e3d8` |
+| File | `paul-storm-ready-v10-oct23.mp4` (v9's picture; audio +3 dB, limiter -1 dBFS: mean -16.3 dB, -12.5 LUFS) (1920x1080 24 fps, h264/aac, **24.042 s** of picture (577 frames), audio stream 24.042 s, 9.4 MB) |
+| md5 | `5873b8fc2b7c0a503a679f295c0906fc` |
 | Transcript | `paul-storm-ready-v9-oct20.txt` (the words are v6-oct7's, unchanged; all of them read back from the asset with faster-whisper small) |
 | Voice | the narrator voice: each take's audio converted with Chatterbox VC to `config.yaml external.voice_ref` (`voice_ref_md5` in config), timing kept. -15.4 LUFS, -3.5 dBFS peak |
 | Picture | remade 20 Oct 26 (owner): Paul's on-camera shots 2 and 4 are new Omni takes made from `assets/paul/paul-sheet-c.png` and `assets/book/binder-sheet-v3.png`, downloaded at Flow's free 1080p upscale. No zoom (the old 15 % crop softened the face and read as AI); the channel logo `assets/brand/warning-hour-logo.png` covers the generator's watermark instead. Shot 3 is v8's take (Flow refused the remake twice) |
@@ -15,7 +15,9 @@ Deterministic gate: `scripts/sweep_episode.py` ("CTA present + placed"). SRT cue
 | QR | opens `https://www.paulraymond.online/yt/?src=qr` (decoded from the asset at 20 s and 23.8 s) |
 
 ## Version history
-- **v9-oct20** (2026-10-20): CURRENT. New Paul shots from the locked character and binder sheets, no zoom, logo over the watermark (owner: "go v5").
+- **v10-oct23** (2026-10-23): CURRENT. v9's picture, audio +3 dB (owner, devq 23 Oct: the ad sat 3.1 dB under Moore's and 3.2 dB under Camille's narration, gate tolerance 2.5). Limiter at -1 dBFS.
+- v9-oct20 (2026-10-20): retired 2026-10-23, picture reused by v10. Restore: `git show <sha>:assets/cta/paul-storm-ready-v9-oct20.mp4`.
+- v9-oct20 note: New Paul shots from the locked character and binder sheets, no zoom, logo over the watermark (owner: "go v5").
 - v8-oct19 (2026-10-19): v7 re-voiced in the narrator voice; picture unchanged. Retired 2026-10-20. Restore with `git show fa1de4a9:assets/cta/paul-storm-ready-v8-oct19.mp4 > paul-storm-ready-v8-oct19.mp4`.
 - v7-oct10 (2026-10-10): book ad v3 in the owner's own voice. Retired 2026-10-19. Restore with `git show f6e52149:assets/cta/paul-storm-ready-v7-oct10.mp4 > paul-storm-ready-v7-oct10.mp4`.
 - v6-oct7 (2026-10-07): book ad v3 in the cloned Flow voice: opens on the book cover and pages, then Paul on camera with the QR card, then a silent QR end card. Retired; removed from the tree 2026-10-10 (owner: the ad in his voice). Restore with `git show c4829acd:assets/cta/paul-storm-ready-v6-oct7.mp4 > paul-storm-ready-v6-oct7.mp4`.
