@@ -85,6 +85,19 @@ report("asset reuse <= 3", [(n, c) for n, c in uses.items() if c > 3],
 miss = [w["name"] for w in t1 if not (ep / w["name"]).exists()]
 report("media files exist", sorted(set(miss)))
 
+# ---- no animated GIF mounted (learnings/render.md A) -------------------------------
+# hyperframes transcodes every mounted .gif at compile with a 300 s hard limit; a 6.4 MB 94-frame radar GIF
+# killed the Moore rough cut (23 Oct 26) after the lesson was already written. Single-frame GIFs pass.
+gifs = []
+for f in [ep / "index.html"] + sorted((ep / "compositions").glob("*.html")):
+    for g in set(re.findall(r'src="([^"]+[.]gif)"', f.read_text(encoding="utf-8", errors="replace"))):
+        probe = subprocess.run(["ffprobe", "-v", "error", "-count_frames", "-select_streams", "v:0", "-show_entries",
+                                "stream=nb_read_frames", "-of", "csv=p=0", str(ep / g)], capture_output=True, text=True)
+        frames = probe.stdout.strip().split(",")[0] if probe.returncode == 0 else "?"
+        if frames == "?" or int(frames) > 1:
+            gifs.append((f.name, g, frames))
+report("no animated GIF mounted (convert to mp4 first)", gifs, lambda x: f"{x[0]}: {x[1]} ({x[2]} frames)")
+
 # 5b. duplicate element ids — hyperframes keys frame placement by id; a duplicate
 # renders one window BLACK while every attribute-level check passes (ep5 v1, 8s hole)
 ids = Counter(re.findall(r' id="([^"]+)"', h))
