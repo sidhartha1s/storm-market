@@ -27,9 +27,13 @@
     letter-spacing:1px; white-space:nowrap; line-height:1; }
   #g-a2-scar-root .gas-place { font:700 22px Arial, sans-serif; fill:#dfe7ee; letter-spacing:1px;
     paint-order:stroke; stroke:#05080c; stroke-width:4px; stroke-linejoin:round; }
-  #g-a2-scar-root .gas-patchlbl { position:absolute; left:1040px; top:470px; font:900 52px 'Arial Black', Arial, sans-serif;
+  /* glass plate under the patch label: at the end camera the label sat across a river loop and the county line */
+  #g-a2-scar-root .gas-pplate { position:absolute; left:1030px; top:452px; box-sizing:border-box; padding:16px 28px 18px; border-radius:20px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #g-a2-scar-root .gas-patchlbl { position:relative; font:900 52px 'Arial Black', Arial, sans-serif;
     color:#f2f5f8; line-height:1; white-space:nowrap; }
-  #g-a2-scar-root .gas-patchsub { position:absolute; left:1042px; top:536px; font:italic 28px Georgia, 'Times New Roman', serif;
+  #g-a2-scar-root .gas-patchsub { position:relative; margin-top:14px; margin-left:2px; font:italic 28px Georgia, 'Times New Roman', serif;
     color:#d8a13a; line-height:1; white-space:nowrap; }
 </style>
 <div id="g-a2-scar-root" data-composition-id="g-a2-scar" data-width="1920" data-height="1080" data-duration="25.3">
@@ -144,8 +148,10 @@
         <text class="gas-lbl" x="96" y="942">5 MI</text>
       </g>
     </svg>
-    <div class="gas-patchlbl gas-hid" id="g-a2-scar-plbl">About 40 sq mi</div>
-    <div class="gas-patchsub gas-hid" id="g-a2-scar-psub">most of the scars</div>
+    <div class="gas-pplate gas-hid" id="g-a2-scar-pplate">
+      <div class="gas-patchlbl gas-hid" id="g-a2-scar-plbl">About 40 sq mi</div>
+      <div class="gas-patchsub gas-hid" id="g-a2-scar-psub">most of the scars</div>
+    </div>
     <div class="gas-src" id="g-a2-scar-src2">USGS Open-File Report 70-51 · OFR 99-518</div>
   </div>
 </div>
@@ -227,6 +233,7 @@ window.__timelines = window.__timelines || {};
   /* FORTY: the patch grows from its centre, label beside */
   tl.fromTo(P + "patch", { autoAlpha: 0, scale: 0.2, svgOrigin: "895 498" }, { autoAlpha: 1, scale: 1, svgOrigin: "895 498", duration: 0.8, ease: "back.out(1.4)" }, C.forty);
   tl.fromTo(P + "ld-p", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, C.forty + 0.6);
+  tl.fromTo(P + "pplate", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, C.forty + 0.6);
   tl.fromTo(P + "plbl", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, C.forty + 0.7);
   tl.fromTo(P + "psub", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.forty + 1.1);
   tl.to(P + "patch", { attr: { "fill-opacity": 0.6 }, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, C.forty + 1.2);
