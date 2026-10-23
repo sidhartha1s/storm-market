@@ -254,7 +254,9 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### A2-S9 — narration
 **Picture:** **Paul on camera:** full frame, the cta-hinge tease, room tone only. Cut straight to the CTA on his last word. [loop L2 open = cta-hinge] [Q]
-> Minutes after the tornado tore through Bridge Creek, a forecaster in Norman typed two words no warning had ever carried.
+> Minutes after the tornado tore through Bridge Creek, two words went out from Norman that no warning had ever carried before.
+
+*rephrased 23 Oct 26 under the owner's 17:10 order "rephrase or use some other sentence/scene" (the line Paul speaks in the retake); was: "Minutes after the tornado tore through Bridge Creek, a forecaster in Norman typed two words no warning had ever carried."*
 
 *register: 9/10*
 
@@ -314,7 +316,9 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 
 ### A3-S9 — narration
 **Picture:** **Paul on camera:** full frame, the turning-point line, the bed ducked under him. [HUMAN]
-> It worked that night. Please don't copy it. When a warning comes for your town, get below ground or into an interior room, and stay put.
+> It worked that night. I wouldn't copy it. The people who came through best had already picked a safe spot, low and deep inside, and they went there early.
+
+*rephrased 23 Oct 26 under the owner's 17:10 order "rephrase or use some other sentence/scene" (the line Paul speaks in ins-paul-4); was: "It worked that night. Please don't copy it. When a warning comes for your town, get below ground or into an interior room, and stay put."*
 
 *register: 10/10*
 
