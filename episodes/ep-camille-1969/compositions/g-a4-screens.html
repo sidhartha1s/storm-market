@@ -15,7 +15,18 @@
   Screen 2 = NamUs capture cropped to x 280..1640, y 52..568 (1360 x 516) at 0.9118 (card 1240 x 470.5): ink spans x 295..1183,
   so 15 px of page margin on the left and 457 px on the right; the bottom edge falls between the name fields' "--" (row 553)
   and "Nickname/Alias" (row 581); the top edge sits below the site's nav bar (ink to row 49).
-  Corner x >= 1600, y >= 680 stays empty for the presenter circle (pip-w09): cards end x 1402 at full push, lower third x 1500.
+  Corner x >= 1600, y >= 680 stays empty for the presenter circle (pip-w09): cards end x 1417 at full push, lower third x 1500.
+
+  Brief section 4, how each truth is met:
+  (1) no word cut at a card edge: screen 1 shows the whole page width; screen 2's crop keeps every text line whole; both pushes scale the card, not the image.
+  (2) quote and attribution are typed verbatim (VDH raw text, Lara Newell, Virginia Department of Health, August 2026).
+  (3) no count, victim name or age in comp text; the NamUs crop shows only the "--" name fields.
+  (4) tiers: eyebrows 22 px (small), attribution 28 px (mid), quote 54 px (big).
+  (5) motion everywhere: grid and glow drift 0..26.85, push 1.10..12.10 and 12.60..26.823, slides, pulse, lift, float.
+  (6) ground (gradient + grid + glow) is CSS-visible from frame 0.
+  Deviations from the brief's cue list: screen 1 starts its rise at 0.40 ("Within days") and lands on "local TV news" @1.10, so the
+  open is not 1.1 s of bare ground; the lower third opens with the name line on "Newell" @21.40 instead of @25.96 ("this."), which
+  would leave the attribution 0.86 s before the cut.
 -->
 <style>
   #g-a4-screens-root { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8;
@@ -34,8 +45,8 @@
     border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
   .a4sc-clip { position:relative; width:1240px; overflow:hidden; border-radius:14px; background:#ffffff; }
   .a4sc-clip img { position:absolute; display:block; max-width:none; }
-  #a4sc-e1 { top:96px; }
-  #a4sc-f1 { top:148px; }
+  #a4sc-e1 { top:80px; }
+  #a4sc-f1 { top:152px; }
   #a4sc-c1 { height:697.5px; }
   #a4sc-i1 { left:0; top:0; width:1240px; height:697.5px; }
   #a4sc-s2 { opacity:0; visibility:hidden; }
