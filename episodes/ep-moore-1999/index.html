@@ -51,8 +51,8 @@
   <section class="clip blackout" id="bo-1" data-start="106.882" data-duration="0.7" data-track-index="1"></section>
 
   <!-- ============ INTRO · H1 / T1 / I1 ============ -->
-  <!-- H1-S1: Paul full frame from frame one, his hook line only (source 1.45-4.20; speech 1.63-4.02 by silencedetect) -->
-  <video id="ins-paul-1" src="media/paul/ins-paul-1/ins-paul-1.mp4" data-start="0" data-duration="2.75" data-media-start="1.45" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="If you're warned in time, you'll make it, won't you?"></video>
+  <!-- H1-S1: Paul full frame from frame one, his hook line only. -v2 (23 Oct 26) = source trimmed from 1.30 s (so media-start 0.15 = old 1.45; speech 1.63-4.02 by silencedetect) and +11.3 dB, limited at -1.5 dBFS, to the narration level (audio_levels.py) -->
+  <video id="ins-paul-1" src="media/paul/ins-paul-1/ins-paul-1-v2.mp4" data-start="0" data-duration="2.75" data-media-start="0.15" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="If you're warned in time, you'll make it, won't you?"></video>
   <!-- popfig over Paul, then "36 LIVES" over the A9 photo: h1-s2 "36" 2.90 -->
   <div id="host-hook-overlay" data-composition-id="g-hook-overlay" data-composition-src="compositions/g-hook-overlay.html" data-start="0" data-duration="7.0" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- H1-S2: hard cut on "didn't"-line start to the A9 photo (Erin Maxwell, NWS), 2.75 to "all did" 2.90 + 4.10 = 7.00 -->
@@ -73,12 +73,13 @@
   <section class="clip still-wrap" id="c-i1-s1-ktlx" data-start="58.912" data-duration="2.763" data-track-index="1"><img id="kb-i1-s1-ktlx" src="media/stills/sa/sa-010-000.png" style="object-fit: contain; background: #04070c" alt=""></section>
   <!-- I1-S2: lead-time bars, 61.675 to i1-s3 86.205 -->
   <div id="host-leadtime" data-composition-id="g-leadtime" data-composition-src="compositions/g-leadtime.html" data-start="61.675" data-duration="24.53" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <!-- I1-S3 stills: Bridge Creek ground (SA, Lerner) 86.205-92.685; Moore destruction (SA p8) 92.685-97.205;
-       4 p.m. set-up chart (SA) 97.205 ("The warnings") to 101.805; WDSS display (NSSL) 101.805 to the clock 104.605 -->
-  <section class="clip still-wrap" id="c-i1-s3-bc" data-start="86.205" data-duration="6.48" data-track-index="1"><img id="kb-i1-s3-bc" src="media/stills/sa/sa-014-001.png" alt=""></section>
-  <section class="clip still-wrap" id="c-i1-s3-moore" data-start="92.685" data-duration="4.52" data-track-index="1"><img id="kb-i1-s3-moore" src="media/stills/sa/sa-018-000.png" alt=""></section>
+  <!-- I1-S3 stills: Bridge Creek ground (SA, Lerner) 86.205-91.885 ("homes." 5.68, under the 6 s still cap); Moore destruction (SA p8) 91.885-97.205;
+       4 p.m. set-up chart (SA) 97.205 ("The warnings") to 101.805; GOES-8 satellite view of the storms (SA p1, NOAA) 101.805 to the clock 104.605
+       ("How the forecasters in Norman got that far ahead": the sky they read; the WDSS desk photo is A1-S4's at 185.05, its track-1 neighbour) -->
+  <section class="clip still-wrap" id="c-i1-s3-bc" data-start="86.205" data-duration="5.68" data-track-index="1"><img id="kb-i1-s3-bc" src="media/stills/sa/sa-014-001.png" alt=""></section>
+  <section class="clip still-wrap" id="c-i1-s3-moore" data-start="91.885" data-duration="5.32" data-track-index="1"><img id="kb-i1-s3-moore" src="media/stills/sa/sa-018-000.png" alt=""></section>
   <section class="clip still-wrap" id="c-i1-s3-setup" data-start="97.205" data-duration="4.6" data-track-index="1"><img id="kb-i1-s3-setup" src="media/stills/sa/sa-016-000.png" style="object-fit: contain; background: #04070c" alt=""></section>
-  <section class="clip still-wrap" id="c-i1-s3-wdss" data-start="101.805" data-duration="2.8" data-track-index="1"><img id="kb-i1-s3-wdss" src="media/stills/nssl-wdss.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-i1-s3-goes" data-start="101.805" data-duration="2.8" data-track-index="1"><img id="kb-i1-s3-goes" src="media/stills/sa/sa-001-002.png" style="object-position: 50% 35%" alt=""></section>
   <div id="host-i1s3-chips" data-composition-id="g-i1s3-chips" data-composition-src="compositions/g-i1s3-chips.html" data-start="86.205" data-duration="10.795" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- clock lands on 4:47 at "447" 86.205 + 19.00 = 105.205 -->
   <div id="host-clock-i1" data-composition-id="g-clock-i1" data-composition-src="compositions/g-clock-i1.html" data-start="104.605" data-duration="2.277" data-track-index="2" data-width="1920" data-height="1080"></div>
@@ -146,12 +147,12 @@
        assets/sfx/deapi), volumes matched to the dark-ambient bed at 0.15 by mean loudness (unease/stormhybrid -17.8 dB -> 0.126,
        urgent -16.3 -> 0.106, tension -11.5 -> 0.064, close -16.6 -> 0.112); out under the CTA and under each insert's own audio
        (the bed resumes at its own media time after the hole). A3 opens out of the CTA on the NOAA Weather Radio tone (1050 Hz, ffmpeg). -->
-  <audio id="sx-siren-hook" src="media/sfx/soundreality-civil-defense-siren-128262.mp3" data-start="0" data-duration="7.0" data-volume="0.1"></audio>
+  <audio id="sx-siren-hook" data-bed="" src="media/sfx/soundreality-civil-defense-siren-128262.mp3" data-start="0" data-duration="7.0" data-volume="0.1"></audio>
   <audio id="sx-bed-intro" data-bed="" src="media/sfx/score-act1-darkambient.mp3" data-start="7.0" data-duration="99.882" data-volume="0.15"></audio>
   <audio id="sx-bed-a1" data-bed="" src="media/sfx/score-act2-unease.mp3" data-start="107.582" data-duration="169.9" data-volume="0.126"></audio>
   <audio id="sx-bed-a2-a" data-bed="" src="media/sfx/score-act4-stormhybrid.mp3" data-start="278.358" data-duration="65.59" data-volume="0.126"></audio>
   <audio id="sx-bed-a2-b" data-bed="" src="media/sfx/score-act4-stormhybrid.mp3" data-start="353.981" data-duration="105.39" data-media-start="75.623" data-volume="0.126"></audio>
-  <audio id="sx-alert-a3" src="media/sfx/nwr-alert-1050hz.wav" data-start="485.413" data-duration="1.2" data-volume="0.35"></audio>
+  <audio id="sx-alert-a3" data-bed="" src="media/sfx/nwr-alert-1050hz.wav" data-start="485.413" data-duration="1.2" data-volume="0.35"></audio>
   <audio id="sx-bed-a3-a" data-bed="" src="media/sfx/score-act3-urgent.mp3" data-start="485.413" data-duration="63.517" data-volume="0.106"></audio>
   <audio id="sx-bed-a3-b" data-bed="" src="media/sfx/score-act3-urgent.mp3" data-start="561.33" data-duration="99.669" data-media-start="75.917" data-volume="0.106"></audio>
   <audio id="sx-bed-a4-a" data-bed="" src="media/sfx/score-act5-tension.mp3" data-start="661.699" data-duration="75.198" data-volume="0.064"></audio>
@@ -164,29 +165,30 @@
   <section class="clip act" id="act-a4" data-start="661.699" data-duration="185.447" data-track-index="0"></section>
   <section class="clip act" id="act-a5" data-start="847.846" data-duration="263.206" data-track-index="0"></section>
   <section class="clip hold" id="hold-a1-s10" data-start="274.658" data-duration="3.0" data-track-index="8"></section>
-  <section class="clip blackout" id="bo-2" data-start="277.658" data-duration="0.7" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-2" data-start="277.658" data-duration="0.9" data-track-index="1"></section>
   <section class="clip hold" id="hold-a2-s8" data-start="449.409" data-duration="3.0" data-track-index="8"></section>
   <section class="clip blackout" id="bo-cta-in" data-start="459.371" data-duration="1" data-track-index="1"></section>
   <section class="clip blackout" id="bo-cta-out" data-start="484.413" data-duration="1" data-track-index="1"></section>
   <section class="clip blackout" id="bo-3" data-start="660.999" data-duration="0.7" data-track-index="1"></section>
-  <section class="clip blackout" id="bo-4" data-start="847.146" data-duration="0.7" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-4" data-start="847.146" data-duration="0.9" data-track-index="1"></section>
   <section class="clip hold" id="hold-ins-a2" data-start="343.948" data-duration="10.033" data-track-index="8"></section>
   <section class="clip hold" id="hold-ins-a3" data-start="548.93" data-duration="12.4" data-track-index="8"></section>
   <section class="clip hold" id="hold-ins-a4" data-start="736.897" data-duration="4.266" data-track-index="8"></section>
 
-  <!-- Paul A1-S9 (ins-paul-2, Flow, logo over the mark): "At six twenty-six, near Amber ..." -->
-  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2.mp4" data-start="256.063" data-duration="9.05" data-media-start="0.95" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="At six twenty-six, near Amber, the same storm dropped its ninth tornado. This one would stay on the ground for about eighty minutes."></video>
-  <!-- Paul A2-S9 (ins-paul-3, cta-hinge tease, whisper word-exact; speech 1.99-8.44 s): source 1.85-8.512, takes the nx-a2-s9 slot -->
-  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3.mp4" data-start="452.709" data-duration="6.662" data-media-start="1.85" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Minutes after the tornado tore through Bridge Creek, a forecaster in Norman typed two words no warning had ever carried."></video>
+  <!-- Paul A1-S9 (ins-paul-2, Flow, logo over the mark): "At six twenty-six, near Amber ..."; -v2 = +8.7 dB to the narration level (23 Oct 26) -->
+  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2-v2.mp4" data-start="256.063" data-duration="9.05" data-media-start="0.95" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="At six twenty-six, near Amber, the same storm dropped its ninth tornado. This one would stay on the ground for about eighty minutes."></video>
+  <!-- Paul A2-S9 (ins-paul-3, cta-hinge tease, whisper word-exact; speech 1.99-8.44 s): source 1.85-8.512, takes the nx-a2-s9 slot; -v2 = +10.0 dB to the narration level (23 Oct 26) -->
+  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3-v2.mp4" data-start="452.709" data-duration="6.662" data-media-start="1.85" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Minutes after the tornado tore through Bridge Creek, a forecaster in Norman typed two words no warning had ever carried."></video>
   <!-- CTA (config channel.cta, staged media/cta/, md5 bba0b9f3...) -->
   <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v9-oct20.mp4" data-start="460.371" data-duration="24.042" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
-  <!-- INSERTS, own audio, graded, captions per mg-quickref "Outside voices" (hosts g-cap-*) -->
-  <video id="ins-a2-newcastle" class="graded" src="media/clips/cuts/cut-a2-s1_s2.mp4" data-start="343.948" data-duration="10.033" data-media-start="0" data-track-index="1" data-volume="0.9" data-has-audio="true" data-srt-label="[KWTV NEWS 9, LIVE] It's probably a half a mile to a quarter of a mile wide. It's still very, very strong. It looks like it's in the northeastern parts of Newcastle, very near the river."></video>
-  <video id="ins-a3-england" class="graded" src="media/clips/cuts/cut-a3-s1_s4.mp4" data-start="548.93" data-duration="12.4" data-media-start="0" data-track-index="1" data-volume="0.9" data-has-audio="true" data-srt-label="[KWTV NEWS 9, LIVE] You know, if you have a cellar, basement, that's the best. But if you don't have that, get as many pillows and blankets as you can, get in the bathtub. Get between the stool and the wall."></video>
-  <video id="ins-a4-street" class="graded" src="media/clips/cuts/cut-a4-s5.mp4" data-start="736.897" data-duration="4.266" data-media-start="0" data-track-index="1" data-volume="0.9" data-has-audio="true" data-srt-label="[KFOR NEWS 4] Everybody's out in the street now."></video>
-  <!-- END ASK (config channel.end_ask, staged media/end-ask/), then Paul's signature line A5-S11 over the title card -->
-  <video id="ins-endask-a" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="1081.654" data-duration="9.083" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
-  <video id="ins-endask-b" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="1090.737" data-duration="6.417" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
+  <!-- INSERTS, own audio, graded, captions per mg-quickref "Outside voices" (hosts g-cap-*). -v2 files (23 Oct 26): +7.9 / +8.1 / +10.9 dB so each sits at the narration level under data-volume 0.9 (audio_levels.py), peaks limited at -1.5 dBFS -->
+  <video id="ins-a2-newcastle" class="graded" src="media/clips/cuts/cut-a2-s1_s2-v2.mp4" data-start="343.948" data-duration="10.033" data-media-start="0" data-track-index="1" data-volume="0.9" data-has-audio="true" data-srt-label="[KWTV NEWS 9, LIVE] It's probably a half a mile to a quarter of a mile wide. It's still very, very strong. It looks like it's in the northeastern parts of Newcastle, very near the river."></video>
+  <video id="ins-a3-england" class="graded" src="media/clips/cuts/cut-a3-s1_s4-v2.mp4" data-start="548.93" data-duration="12.4" data-media-start="0" data-track-index="1" data-volume="0.9" data-has-audio="true" data-srt-label="[KWTV NEWS 9, LIVE] You know, if you have a cellar, basement, that's the best. But if you don't have that, get as many pillows and blankets as you can, get in the bathtub. Get between the stool and the wall."></video>
+  <video id="ins-a4-street" class="graded" src="media/clips/cuts/cut-a4-s5-v2.mp4" data-start="736.897" data-duration="4.266" data-media-start="0" data-track-index="1" data-volume="0.9" data-has-audio="true" data-srt-label="[KFOR NEWS 4] Everybody's out in the street now."></video>
+  <!-- END ASK (config channel.end_ask, staged media/end-ask/), then Paul's signature line A5-S11 over the title card.
+       ids ins-paul-e1/e2 as in ep-joplin-2011: his own on-camera voice, no caption, no narration hole (lint_timeline voice rule). -->
+  <video id="ins-paul-e1" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="1081.654" data-duration="9.083" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
+  <video id="ins-paul-e2" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="1090.737" data-duration="6.417" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
 
   <!-- PRESENTER CIRCLE: narration spans minus the hook, Paul's clips, inserts, every broadcast clip (station bug in the corner), CTA, end ask and close. Faces cut by circle_cut.py from media/circle/face-pass1 (@2.900) and face-pass2 (@485.413). -->
   <video id="pip-w1" class="pip" src="media/pip/paul-w1.mp4" data-start="7.0" data-duration="99.882" data-track-index="7" muted></video>
@@ -236,12 +238,12 @@
   <div id="host-a1-watch" data-composition-id="g-a1-watch" data-composition-src="compositions/g-a1-watch.html" data-start="161.56" data-duration="10.73" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A1-S4: SA p23 drill paragraph; 172.29 (nx-a1-s4) to 185.05 (after "forecasters" 10.80 + 172.29 = 183.09, line 4 lands) -->
   <div id="host-a1-drill" data-composition-id="g-a1-drill" data-composition-src="compositions/g-a1-drill.html" data-start="172.29" data-duration="12.76" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <!-- A1-S4: the WDSS desk image (NSSL, PD); 185.05 to 190.997 (nx-a1-s5) = 5.947 s; reused from I1-S3 by the Picture line -->
-  <section class="clip still-wrap" id="c-a1-s4-wdss" data-start="185.05" data-duration="5.947" data-track-index="1" data-callback="A1-S4 Picture line names wdss.jpg as the forecasters' desk; first shown 2.8 s in I1-S3"><img id="kb-a1-s4-wdss" src="media/stills/nssl-wdss.jpg" alt=""></section>
+  <!-- A1-S4: the WDSS desk image (NSSL, PD); 185.05 to 190.997 (nx-a1-s5) = 5.947 s; its only use (the I1-S3 slot took the GOES-8 still, 23 Oct 26) -->
+  <section class="clip still-wrap" id="c-a1-s4-wdss" data-start="185.05" data-duration="5.947" data-track-index="1"><img id="kb-a1-s4-wdss" src="media/stills/nssl-wdss.jpg" alt=""></section>
   <!-- A1-S5: counter + spotter; 190.997 (nx-a1-s5) to 201.128 (nx-a1-s6) -->
   <div id="host-a1-spotters" data-composition-id="g-a1-spotters" data-composition-src="compositions/g-a1-spotters.html" data-start="190.997" data-duration="10.131" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <!-- A1-S6: "a warning only helps if people hear it": stock storm base, no named place under it; 201.128 to 204.25 ("Moore" 3.122 + 201.128) -->
-  <video id="c-a1-s6-storm" src="media/stills/pixabay/pixabay-190331-DancingSky-1920x1080.mp4" data-start="201.128" data-duration="3.122" data-media-start="2" data-track-index="1" muted></video>
+  <!-- A1-S6: "a warning only helps if people hear it": stock storm base, no named place under it; 201.128 to 204.25 ("Moore" 3.122 + 201.128); -v2 = first 6.6 s with a silent track muxed (media_budget) -->
+  <video id="c-a1-s6-storm" src="media/stills/pixabay/pixabay-190331-DancingSky-1920x1080-v2.mp4" data-start="201.128" data-duration="3.122" data-media-start="2" data-track-index="1" muted></video>
   <!-- A1-S6: water-bill insert; 204.25 to 213.13 ("And that night" 12.002 + 201.128) -->
   <div id="host-a1-waterbill" data-composition-id="g-a1-waterbill" data-composition-src="compositions/g-a1-waterbill.html" data-start="204.25" data-duration="8.88" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A1-S6: cable override TV; 213.13 to 221.833 (nx-a1-s7) -->
@@ -335,8 +337,8 @@
   <div id="host-a3-cap-england" data-composition-id="g-a3-cap-england" data-composition-src="compositions/g-a3-cap-england.html" data-caption-for="ins-a3-england" data-start="548.93" data-duration="12.4" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- A3-S5 SA p15: insert end 561.33 to a3-s6 575.255 -->
   <div id="host-a3-sa-p15" data-composition-id="g-a3-sa-p15" data-composition-src="compositions/g-a3-sa-p15.html" data-start="561.33" data-duration="13.925" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <!-- A3-S6 Chopper 4 (approved cut), muted: 575.255 to "box" 575.255 + 6.08 = 581.335 -->
-  <video id="c-a3-s6" class="graded" src="media/clips/cuts/cut-a3-s6.mp4" data-start="575.255" data-duration="6.08" data-media-start="0" data-track-index="1" data-volume="0" muted></video>
+  <!-- A3-S6 Chopper 4 (approved cut), muted: 575.255 to "box" 575.255 + 6.08 = 581.335; -v2 = the first 7.6 s of the 14.4 s cut (media_budget: window + 1.5 s) -->
+  <video id="c-a3-s6" class="graded" src="media/clips/cuts/cut-a3-s6-v2.mp4" data-start="575.255" data-duration="6.08" data-media-start="0" data-track-index="1" data-volume="0" muted></video>
   <!-- helicopters + street list: 581.335 to a3-s7 588.958 -->
   <div id="host-a3-map-s6" data-composition-id="g-a3-map-s6" data-composition-src="compositions/g-a3-map-s6.html" data-start="581.335" data-duration="7.623" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A3-S7 blank TV: 588.958 to "Many got in their cars" 588.958 + 10.82 = 599.778 -->
@@ -399,9 +401,10 @@
 <!-- A4-S8 789.486 to A4-S9 811.92 -->
 <div id="host-a4-walls" data-composition-id="g-a4-walls" data-composition-src="compositions/g-a4-walls.html" data-start="789.486" data-duration="22.434" data-track-index="2" data-width="1920" data-height="1080"></div>
 
-<!-- A4-S9 811.92: NSSL May 3 damage photos, slow push; "Doswell and Brooks" @ 811.92 + 5.42 = 817.34 (cut at 817.30) -->
-<section class="clip still-wrap" id="c-a4-s9-slab" data-start="811.92" data-duration="5.38" data-track-index="1"><img id="kb-a4-s9-slab" src="media/stills/nssl-damage1.jpg" alt=""></section>
-<section class="clip still-wrap" id="c-a4-s9-debris" data-start="817.3" data-duration="5.04" data-track-index="1"><img id="kb-a4-s9-debris" src="media/stills/nssl-damage3.jpg" alt=""></section>
+<!-- A4-S9 811.92: NSSL May 3 damage photos, slow push; "Doswell and Brooks" @ 811.92 + 5.42 = 817.34 (cut at 817.30).
+     damage5 (car around a tree, portrait) is its only use; damage3 returns from the deputy's scene (438.9) as the researchers catalogue the same damage -->
+<section class="clip still-wrap" id="c-a4-s9-slab" data-start="811.92" data-duration="5.38" data-track-index="1"><img id="kb-a4-s9-slab" src="media/stills/nssl-damage5.jpg" style="object-position: 50% 40%" alt=""></section>
+<section class="clip still-wrap" id="c-a4-s9-debris" data-start="817.3" data-duration="5.04" data-track-index="1" data-callback="the debris field the deputy worked at 438.9 (A2-S8) returns as Doswell and Brooks write down what that damage means"><img id="kb-a4-s9-debris" src="media/stills/nssl-damage3.jpg" alt=""></section>
 <!-- "By the Fujita" @ 811.92 + 10.42 = 822.34 to A4-S10 834.88 -->
 <div id="host-a4-quote" data-composition-id="g-a4-quote" data-composition-src="compositions/g-a4-quote.html" data-start="822.34" data-duration="12.54" data-track-index="2" data-width="1920" data-height="1080"></div>
 
@@ -418,13 +421,13 @@
 
   <!-- A5-S2: KWTV ground view over flattened Moore (cut-a5-s2, muted, '9' bug top/bottom right stays uncovered), 867.99 + 7.9 = 875.89 -->
   <video id="v-a5-s2-kwtv" class="graded" src="media/clips/cuts/cut-a5-s2.mp4" data-start="867.99" data-duration="7.9" data-media-start="0" data-track-index="1" data-volume="0" muted></video>
-  <!-- NSSL debris (damage3, NOAA/NSSL) 875.89 to "At one school" 867.99 + 12.88 = 880.87 -->
-  <section class="clip still-wrap" id="c-a5-s2-dmg3" data-start="875.89" data-duration="4.98" data-track-index="1"><img id="kb-a5-s2-dmg3" src="media/stills/nssl-damage3.jpg" alt=""></section>
+  <!-- Westmoore High School, roof blown off the auditorium (FEMA 342 fig 5-14, PD) 875.89 to "At one school" 867.99 + 12.88 = 880.87: the school the lesson came from; 342 px native, cover-cropped -->
+  <section class="clip still-wrap" id="c-a5-s2-school" data-start="875.89" data-duration="4.98" data-track-index="1"><img id="kb-a5-s2-school" src="media/stills/fema342-fig5-14-westmoore-roof-off.png" alt=""></section>
   <!-- NSSL stripped tree (damage6, portrait, cover) 880.87 to "In Moore" 867.99 + 16.14 = 884.13 -->
   <section class="clip still-wrap" id="c-a5-s2-dmg6" data-start="880.87" data-duration="3.26" data-track-index="1"><img id="kb-a5-s2-dmg6" src="media/stills/nssl-damage6.jpg" style="object-position: 50% 45%" alt=""></section>
   <!-- NSSL flattened neighbourhood (damage1, the Picture line's photo) 884.13 to 890.13 (6.0 s), then destroyed home (damage2) to a5-s3 894.628 -->
-  <section class="clip still-wrap" id="c-a5-s2-dmg1" data-start="884.13" data-duration="6.0" data-track-index="1"><img id="kb-a5-s2-dmg1" src="media/stills/nssl-damage1.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a5-s2-dmg2" data-start="890.13" data-duration="4.498" data-track-index="1"><img id="kb-a5-s2-dmg2" src="media/stills/nssl-damage2.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s2-dmg1" data-start="884.13" data-duration="6.0" data-track-index="1" data-callback="the neighbourhood A2-S8 held on at 446.7 while the deputy's count began; it returns under the 1,800 students whose homes were hit"><img id="kb-a5-s2-dmg1" src="media/stills/nssl-damage1.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s2-dmg2" data-start="890.13" data-duration="4.498" data-track-index="1" data-callback="the swept slab from A2-S2 (299.5) returns on none of them lost their life: the same kind of house, a different outcome"><img id="kb-a5-s2-dmg2" src="media/stills/nssl-damage2.jpg" alt=""></section>
   <!-- chips over the two stills: "1,800" 867.99 + 17.30 = 885.29, "none" 867.99 + 21.66 = 889.65 -->
   <div id="host-a5-s2-chips" data-composition-id="g-a5-s2-chips" data-composition-src="compositions/g-a5-s2-chips.html" data-start="884.13" data-duration="10.498" data-track-index="4" data-width="1920" data-height="1080"></div>
 
@@ -434,8 +437,8 @@
   <!-- A5-S4: PROVISIONAL until ins-paul-6 (Paul clips 4 to 6 on hold; nx-a5-s4 TTS plays). The thesis line over two stills, no text.
        SA 1999 damage-path map (sa-013-000, Kruckenberg and Speheger, NWS Norman) 917.056 to "A warning" 917.056 + 3.80 = 920.856;
        damaged cars (nssl-damage4, NOAA/NSSL) 920.856 to a5-s5 924.754. When ins-paul-6 lands, delete these two and mount it at 917.056. -->
-  <section class="clip still-wrap" id="c-a5-s4-paths" data-start="917.056" data-duration="3.8" data-track-index="1"><img id="kb-a5-s4-paths" src="media/stills/sa/sa-013-000.png" style="object-position: 50% 80%" alt=""></section>
-  <section class="clip still-wrap" id="c-a5-s4-dmg4" data-start="920.856" data-duration="3.898" data-track-index="1"><img id="kb-a5-s4-dmg4" src="media/stills/nssl-damage4.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s4-paths" data-start="917.056" data-duration="3.8" data-track-index="1" data-callback="PROVISIONAL slot until ins-paul-6: the A2-S2 damage-path map (313.4) returns under the thesis line, every county on that path"><img id="kb-a5-s4-paths" src="media/stills/sa/sa-013-000.png" style="object-position: 50% 80%" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s4-dmg4" data-start="920.856" data-duration="3.898" data-track-index="1" data-callback="PROVISIONAL slot until ins-paul-6: the A2-S2 cars (304.5) return on it cannot build the room you go to"><img id="kb-a5-s4-dmg4" src="media/stills/nssl-damage4.jpg" alt=""></section>
 
   <!-- A5-S5: McCarthy quote on the NOAA Report page, 924.754 to "reinforced" region 924.754 + 9.80 = 934.554 -->
   <div id="host-a5-mccarthy" data-composition-id="g-a5-mccarthy" data-composition-src="compositions/g-a5-mccarthy.html" data-start="924.754" data-duration="9.8" data-track-index="2" data-width="1920" data-height="1080"></div>
@@ -493,11 +496,11 @@ punch("#kb-t1-s1-map", 21.551, 1.12);
 punch("#kb-i1-s1-ktlx", 58.912, 1.08);
 punch("#kb-i1-s3-bc", 86.205, 1.10);
 punch("#kb-i1-s3-bc", 89.025, 1.06);        /* "12" */
-punch("#kb-i1-s3-moore", 92.685, 1.10);
+punch("#kb-i1-s3-moore", 91.885, 1.10);
 punch("#kb-i1-s3-moore", 95.745, 1.06);     /* "houses" */
 punch("#kb-i1-s3-setup", 97.205, 1.08);
 punch("#kb-i1-s3-setup", 99.865, 1.06);     /* "before" */
-punch("#kb-i1-s3-wdss", 101.805, 1.08);
+punch("#kb-i1-s3-goes", 101.805, 1.08);
 /* A1 punches */
 punch("#kb-a1-s4-wdss", 188.85, 1.06);   /* "That evening" 16.56 + 172.29 */
 /* A2 punches */
@@ -530,7 +533,7 @@ punch("#kb-a4-s9-slab", 815.04, 1.06);      /* "Two researchers" */
 punch("#kb-a4-s9-debris", 817.30, 1.08);
 punch("#kb-a4-s9-debris", 820.26, 1.06);    /* "wrote down the rest" */
 /* A5 punches */
-punch("#kb-a5-s2-dmg3", 875.89, 1.08);
+punch("#kb-a5-s2-school", 875.89, 1.08);
 punch("#kb-a5-s2-dmg6", 880.87, 1.08);
 punch("#kb-a5-s2-dmg1", 884.13, 1.06);
 punch("#kb-a5-s2-dmg2", 890.13, 1.06);
