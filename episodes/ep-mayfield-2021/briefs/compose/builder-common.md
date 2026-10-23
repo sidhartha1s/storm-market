@@ -1,4 +1,6 @@
-# Act builder: common brief (ep-mayfield-2021, compose round 2, 22 Oct 26)
+# Act builder: common brief (ep-mayfield-2021, compose round 3, 23 Oct 26)
+
+Round 3 changes (23 Oct 26): every episode second in `briefs/compose/timeline.md` moved +0.800 s on 23 Oct 26 (Paul's hook clip runs to 6.661 s, not 5.861): use timeline.md as it is now. Builders are Opus. Checks are python-only (below): the owner forbids headless-browser batches on this laptop today; the orchestrator runs the node gates and the frame reads serially after you report.
 
 Project: `C:\Users\Sidhartha\Automation Projects\storm-market\.claude\worktrees\ep-mayfield-2021-a6d084` (storm-market worktree, branch
 `claude/ep-mayfield-2021-a6d084`; a narrated US tornado documentary built as a hyperframes HTML composition). Rules: that folder's
@@ -48,15 +50,15 @@ mount, runtime changes. Do not change any segment's start time: timeline.md is f
 build the honest neutral alternative (a designed card or a neutral still) and list it under "calls made".
 
 ## Checks you run (your files only; never a render, never `scripts/render.cmd`, never on the ZBook)
-- `node scripts/graphics_qc.mjs episodes/ep-mayfield-2021` : 0 errors on your comps.
-- `python3 scripts/lint_timeline.py episodes/ep-mayfield-2021` and `python3 scripts/sweep_episode.py episodes/ep-mayfield-2021`: no
-  finding that names your ids or your time range (other acts may still be unbuilt: ignore findings outside your range).
-- `node scripts/overlap_check.mjs episodes/ep-mayfield-2021`, `node scripts/blank_scan.mjs <absolute episode dir>`,
-  `python3 scripts/beat_density.py episodes/ep-mayfield-2021`: nothing in your range.
-- Frames: `npx hyperframes@0.8.185 snapshot episodes/ep-mayfield-2021 --at <t1>,<t2>,... --no-end --describe false -o
-  episodes/ep-mayfield-2021/.qc-tmp/<act>-frames` at a settled moment of each new graphic over its real picture. Look at them.
-  Fix what you see (cut-off text, a label over the wrong thing, empty frame). The orchestrator re-reads frames independently.
-  Snapshot is heavy: one at a time, batch your `--at` times into a few calls.
+- `python3 scripts/lint_timeline.py episodes/ep-mayfield-2021` and `python3 scripts/sweep_episode.py episodes/ep-mayfield-2021` (from the
+  worktree root, absolute episode path is fine): no finding that names your ids or your time range (other acts may still be unbuilt:
+  ignore findings outside your range). Run each at most three times; they take about a minute.
+- NO node gate (`graphics_qc.mjs`, `overlap_check.mjs`, `blank_scan.mjs`, `occlusion_check.mjs`, `beat_density.py`) and NO
+  `npx hyperframes snapshot`: each opens a headless Chromium and the laptop has about 2.8 GB RAM free with other sessions' gates running.
+  The orchestrator runs them after your report and sends fixes back. Instead, self-check each comp by reading it against
+  `references/mg-quickref.md` "File contract", "Motion and exits", "Gate-readable authoring" (positions explicit, no CSS keyframes,
+  no `#root`, three type tiers, something moving every 4 s, timeline >= host window, text inside 96/54 px margins).
+- One ffmpeg at a time; `-threads 2`.
 
 ## Never
 - rm, rmdir, `git rm`, delete files; list strays in your final message. Never `git commit`, `git stash`, `git checkout`, `git reset`.
@@ -65,8 +67,8 @@ build the honest neutral alternative (a designed card or a neutral still) and li
 - claim owner approval; pull facts from outside `research/`, the briefs and edit_script.md. On-screen quotes are verbatim.
 A denied call is final: report it. Decide small judgment calls yourself and list them under "calls made".
 
-Stop at the done check, at the first blocker, or after 150 min. Report what is finished and what is not.
-Done = every graphic in your list exists and passes graphics_qc; your act's narration is fully covered by picture with no gap;
+Stop at the done check, at the first blocker, or at the minute cap your act brief names. Report what is finished and what is not.
+Done = every graphic in your list exists and self-checks against the quick-ref; your act's narration is fully covered by picture with no gap;
 lint/sweep/overlap/blank show nothing in your range; you looked at a settled frame of each graphic.
 
 Return: final message is the result, text, at most 2,000 characters, to the orchestrator only (you never address the owner):
