@@ -1,0 +1,117 @@
+<template>
+<!-- g-a4-files (A4-S11). Host 1055.629 + 35.735 s; nx-a4-s11 starts at the same second (index.html), so comp-local = segment-local.
+     Opens on g-a4-eight's END frame (its host cuts at comp-local 77.198 of a 77.9 s timeline): camera = translate(960 540) scale(0.92031)
+     translate(-1090 -560), static here (no text rides a move). Parent's zoomTo(0.95 -> 0.92, 67.1 s, sine.inOut) is at p 0.935, ease 0.9896 there.
+     Markers as the parent leaves them: woods, woods1, howards, buford, sch, rr, h2 at scale 1.0866 (1/0.95 -> 1/0.92 tween at the same ease,
+     screen factor 1.00000: adults r 12, children r 9); bremo popped at 1/0.95 and left out of the drift, scale 1.05263 (screen r 8.72).
+     The four children/teens (sch, rr, h2, bremo) stay Amber 1 as the parent left them. U.S. 29 and the Norfolk Southern line stay drawn.
+     Flow shimmer continues from the parent's offset at its cut (-2030 * 77.198 / 77.9 = -2011.71) at the same 26.06 px/s.
+     Screen px of the eight (960 + (x - 1090) * z, 540 + (y - 560) * z): woods 871.3,404.0 · woods1 875.4,417.2 · howards 1059.9,557.4 ·
+     buford 1051.0,632.3 · sch 1011.5,482.7 · rr 952.0,472.4 · h2 1033.3,567.2 · bremo 1424.8,590.4.
+     Chip boxes from a python one-off over the parent's river, U.S. 29 and rail polylines (24 px Arial 700 widths, 44 px tall), never by eye:
+     autopsy (983,419)-(1185,463) beside sch, river 16.3 px, rail/U.S. 29 17.4 px, own marker 10.7 px; dental (1084,557)-(1276,601) beside
+     howards, river 15.2 px, marker 12.1 px; cremated (1074,636)-(1219,680) beside buford, river 15.2 px, marker 11.3 px; no DNA
+     (1346,629)-(1524,673) under bremo, river 13.4 px, marker 29.9 px. Chip-to-chip gaps 35 px or more. Halos peak at 1.8 x the marker r,
+     inside every chip clearance. Cues from audio/a4-s11.words.json. Timeline 35.8 s >= host 35.735 s. -->
+<style>
+  #g-a4-files-root { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial, sans-serif; }
+  #g-a4-files-root .a4f-svg { position:absolute; left:0; top:0; }
+  #g-a4-files-root .a4f-hide { opacity:0; visibility:hidden; }
+  #g-a4-files-root #a4f-flow path { stroke-dashoffset:-2011.71px; }
+  #g-a4-files-root .a4f-halo { fill:none; stroke-width:2; }
+  #g-a4-files-root .a4f-chip { position:absolute; white-space:nowrap; font:700 24px Arial, sans-serif; letter-spacing:1px; line-height:30px;
+    color:#f2f5f8; padding:6px 14px; border-radius:12px; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #g-a4-files-root .a4f-src { position:absolute; left:96px; top:990px; white-space:nowrap; font:700 20px Arial, sans-serif; letter-spacing:1px;
+    color:#c8d3e0; text-shadow:0 0 6px #05080c, 0 0 3px #05080c; }
+</style>
+<div id="g-a4-files-root" data-composition-id="g-a4-files" data-width="1920" data-height="1080"
+     data-type-ok="map labels: four marker chips one size by design plus one small source line">
+  <svg class="a4f-svg" id="a4f-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <!-- screen-space clip: the presenter corner x>=1600, y>=680 stays empty -->
+      <clipPath id="a4f-clip"><path d="M0,0 H1920 V680 H1600 V1080 H0 Z"/></clipPath>
+    </defs>
+    <g clip-path="url(#a4f-clip)">
+      <!-- g-a4-eight's end camera, static -->
+      <g transform="translate(960 540) scale(0.92031) translate(-1090 -560)">
+        <!-- neighbours, county, minor roads, U.S. 29, rail, rivers, flow (copied from g-a4-eight lines 56-67 and 69-84, ids renamed) -->
+@@PARENT 56-66@@
+@@PARENT 67 NSS@@
+@@PARENT 69 SHOW@@
+@@PARENT 70-84@@
+        <!-- the eight as the parent left them; halo rings sit under each marker -->
+        <g id="a4f-marks" fill="#f2f5f8" stroke="#05080c" stroke-width="3">
+          <g transform="translate(993.6 412.2) scale(1.0866)"><circle id="a4f-h-woods" class="a4f-halo a4f-hide" r="12" stroke="#f2f5f8"/><circle id="a4f-m-woods" r="12"/></g>
+          <g transform="translate(998.1 426.6) scale(1.0866)"><circle id="a4f-h-woods1" class="a4f-halo a4f-hide" r="12" stroke="#f2f5f8"/><circle id="a4f-m-woods1" r="12"/></g>
+          <g transform="translate(1198.6 578.9) scale(1.0866)"><circle id="a4f-h-howards" class="a4f-halo a4f-hide" r="12" stroke="#f2f5f8"/><circle id="a4f-m-howards" r="12"/></g>
+          <g transform="translate(1188.9 660.3) scale(1.0866)"><circle id="a4f-h-buford" class="a4f-halo a4f-hide" r="12" stroke="#f2f5f8"/><circle id="a4f-m-buford" r="12"/></g>
+          <g transform="translate(1146.0 497.7) scale(1.0866)"><circle id="a4f-h-sch" class="a4f-halo a4f-hide" r="9" stroke="#d8a13a"/><circle id="a4f-m-sch" r="9" fill="#d8a13a"/></g>
+          <g transform="translate(1081.3 486.6) scale(1.0866)"><circle id="a4f-h-rr" class="a4f-halo a4f-hide" r="9" stroke="#d8a13a"/><circle id="a4f-m-rr" r="9" fill="#d8a13a"/></g>
+          <g transform="translate(1169.7 589.6) scale(1.0866)"><circle id="a4f-h-h2" class="a4f-halo a4f-hide" r="9" stroke="#d8a13a"/><circle id="a4f-m-h2" r="9" fill="#d8a13a"/></g>
+          <g transform="translate(1595.1 614.8) scale(1.05263)"><circle id="a4f-h-bremo" class="a4f-halo a4f-hide" r="9" stroke="#d8a13a"/><circle id="a4f-m-bremo" r="9" fill="#d8a13a"/></g>
+        </g>
+      </g>
+    </g>
+  </svg>
+
+  <!-- chips (HUD, screen px; boxes in the header comment) -->
+  <div class="a4f-chip a4f-hide" id="a4f-c-autopsy" style="left:983px; top:419px;">autopsy, 1969</div>
+  <div class="a4f-chip a4f-hide" id="a4f-c-dental" style="left:1084px; top:557px;">dental charts</div>
+  <div class="a4f-chip a4f-hide" id="a4f-c-cremated" style="left:1074px; top:636px;">cremated</div>
+  <div class="a4f-chip a4f-hide" id="a4f-c-dna" style="left:1346px; top:629px;">no DNA test</div>
+  <div class="a4f-src a4f-hide" id="a4f-src">WHRO, October 13, 2026 &middot; WSET, August 27, 2026</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  /* downstream order; r = the marker's own radius (world units, the group scale makes it screen px) */
+  const HALOS = [["woods", 12], ["woods1", 12], ["rr", 9], ["sch", 9], ["h2", 9], ["howards", 12], ["buford", 12], ["bremo", 9]];
+
+  /* start states (chips and source also hidden in CSS); each chip grows from the side that faces its marker */
+  tl.set("#a4f-c-autopsy", { y: 10, scale: 0.85, transformOrigin: "left bottom" }, 0);
+  tl.set("#a4f-c-dental", { y: 10, scale: 0.85, transformOrigin: "left center" }, 0);
+  tl.set("#a4f-c-cremated", { y: 10, scale: 0.85, transformOrigin: "left center" }, 0);
+  tl.set("#a4f-c-dna", { y: 10, scale: 0.85, transformOrigin: "center top" }, 0);
+  tl.set("#a4f-src", { y: 6 }, 0);
+
+  /* whole-comp drift: flow shimmer continues from the parent's cut at 26.06 px/s */
+  tl.fromTo("#a4f-flow path", { strokeDashoffset: -2011.71 }, { strokeDashoffset: -2944.6, duration: 35.8, ease: "none" }, 0);
+
+  /* ambient: one marker ring every 1.2 s, cycling downstream, so no still gap anywhere */
+  for (let i = 0; i < 29; i++) {
+    const h = HALOS[i % 8], at = 0.6 + i * 1.2;
+    tl.set("#a4f-h-" + h[0], { attr: { r: h[1] }, autoAlpha: 0.7 }, at);
+    tl.to("#a4f-h-" + h[0], { attr: { r: h[1] * 1.8 }, autoAlpha: 0, duration: 1.1, ease: "power2.out" }, at);
+  }
+
+  /* autopsies @3.70: chip beside Schuyler, its marker beats; source line follows */
+  tl.to("#a4f-c-autopsy", { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)" }, 3.7);
+  tl.to("#a4f-m-sch", { attr: { r: 12 }, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 3.7);
+  tl.to("#a4f-c-autopsy", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 12 }, 4.15);
+  tl.to("#a4f-src", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.9);
+
+  /* dental (charting) @7.72: chip beside Howardsville */
+  tl.to("#a4f-c-dental", { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)" }, 7.72);
+  tl.to("#a4f-m-howards", { attr: { r: 16 }, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 7.72);
+  tl.to("#a4f-c-dental", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 10 }, 8.17);
+
+  /* cremated @17.16: chip beside Buford Island */
+  tl.to("#a4f-c-cremated", { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)" }, 17.16);
+  tl.to("#a4f-m-buford", { attr: { r: 16 }, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 17.16);
+  tl.to("#a4f-c-cremated", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 6 }, 17.61);
+
+  /* DNA (testing) @30.56: chip under Bremo */
+  tl.to("#a4f-c-dna", { autoAlpha: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)" }, 30.56);
+  tl.to("#a4f-m-bremo", { attr: { r: 12 }, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 30.56);
+  tl.to("#a4f-c-dna", { y: -4, duration: 2.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 31.01);
+
+  /* someone (who remembers) @34.24: the eight dim together; nothing else exits, the next host cuts over it */
+  tl.to("#a4f-marks", { opacity: 0.35, duration: 0.8, ease: "power2.inOut" }, 34.24);
+
+  window.__timelines["g-a4-files"] = tl;
+})();
+</script>
+</template>
