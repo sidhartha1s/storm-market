@@ -47,6 +47,8 @@ for m in re.finditer(r'<video\b([^>]*)>', h):
     dur = re.search(r'data-duration="([\d.]+)"', attrs)
     if not (src and dur):
         continue
+    if "/end-ask/" in src.group(1) or "/cta/" in src.group(1):
+        continue   # staged copies of config assets: sweep_episode checks their md5 against assets/, so they are never re-encoded (ep-camille 23 Oct 26)
     # data-media-start is the clip's in-point: the source must supply media_start + duration
     # seconds, or the trim below cuts off before the in-point plays (render-05: ep1/ep6
     # vx-warmend needs 8s + 13.1s = 21.1s, not 13.1s — --apply then wrote a 14.6s file).
