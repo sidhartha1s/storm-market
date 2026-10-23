@@ -118,7 +118,8 @@ window.__timelines = window.__timelines || {};
 
   /* left stack: 33 blocks on "thirty-three" @10.53, label on "never found" @11.76 */
   const n33 = { v: 0 };
-  tl.fromTo(".as-bl", { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.6)", stagger: { each: 0.03 } }, 10.2);
+  /* whole rows land together (rects are listed bottom row first, 3 per row) so the columns stay even; all 33 at full opacity by 10.2 + 10 x 0.05 + 0.35 = 11.05 */
+  tl.fromTo(".as-bl", { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.6)", stagger: (i) => Math.floor(i / 3) * 0.05 }, 10.2);
   tl.fromTo("#as-n33", { autoAlpha: 0, scale: 0.85 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(1.8)" }, 10.53);
   tl.to(n33, { v: 33, duration: 0.9, ease: "power3.out", onUpdate: () => { document.querySelector("#as-n33").textContent = Math.round(n33.v); } }, 10.53);
   tl.fromTo("#as-src2", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 10.6);
