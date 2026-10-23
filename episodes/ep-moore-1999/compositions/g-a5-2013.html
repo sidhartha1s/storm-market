@@ -94,7 +94,8 @@ window.__timelines = window.__timelines || {};
     acc += seg;
   }
   tl.fromTo(P + "c1b", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 3.88);
-  tl.fromTo(P + "t13", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.20);
+  /* track date lands as chip 1 (which names it) is gone @10.64: one instance per frame */
+  tl.fromTo(P + "t13", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.64);
   /* the crossing rings where the two paths meet */
   tl.fromTo(P + "x", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: "none" }, 3.40);
   tl.fromTo(P + "x", { attr: { r: 1.2 } }, { attr: { r: 4.2 }, duration: 1.4, ease: "power2.out", repeat: 16, immediateRender: false }, 3.40);

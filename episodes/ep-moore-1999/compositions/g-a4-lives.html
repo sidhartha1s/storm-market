@@ -57,8 +57,11 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "c1", { opacity: 0.6, duration: 0.5, ease: "power2.out" }, 7.76);
   tl.to(P + "c2", { opacity: 0.6, duration: 0.5, ease: "power2.out" }, 10.28);
   tl.to(P + "c3", { opacity: 0.6, duration: 0.5, ease: "power2.out" }, 15.46);
-  tl.to([P + "c1", P + "c2", P + "c3", P + "c4"], { y: -6, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 5.6);
-  tl.to({}, { duration: DUR }, 0);
+  /* float runs 5.6 to 20.0 (6 legs of 2.4 s, ends at rest) so the hold after "3 WEEKS OLD" @19.36 keeps drifting */
+  tl.to([P + "c1", P + "c2", P + "c3", P + "c4"], { y: -6, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 5 }, 5.6);
+  /* exit: the stack and the source line slide back out the way they came, the comp's last 0.55 s (20.04 to 20.59) */
+  tl.to([P + "src", P + "c1", P + "c2", P + "c3", P + "c4"], { x: -980, autoAlpha: 0, duration: 0.55, ease: "power3.in" }, 20.04);
+  tl.to({}, { duration: 20.59 }, 0);
   window.__timelines[ID] = tl;
 })();
 </script>
