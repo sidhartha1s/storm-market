@@ -649,6 +649,13 @@ card's read time. Chapter blackout follows.
 **Rows:** [factcheck-A3 S12: list raw, Wood rows under "The missing"; 19 of 33 rows Davis Creek (18) or Davis Creek area (1); 33 Davis Creek rows under "The dead"; 33 + 19 = 52 = C-VILLE and WHSV "52 people died at Davis Creek"] · [C-VILLE 14 Aug 2019, raw] · [factcheck-A3 S4: WTKR raw, Ginger found two weeks later; C-VILLE raw, Wood children never recovered]
 *([A1 loop paid]: what happened to Donna Fay and Gary. [HUMAN] [RS] [VE] the two rows turning amber, then the Davis Creek rows. Ages on screen only; I1-S10 said them.)*
 
+### A3-S13b · Paul on camera, one clip (ins-paul-6)
+**Picture:** Paul on camera, full frame, straight after A3-S13's last word; no narration under it, the bed stays low. Cut out 0.35 s after his last word, then A3-S14.
+> Same station wagon, same night. The Raines family got their little girl back. The Woods never got Donna Fay or Gary back.
+
+**Rows:** (presenter line, no new fact) · [factcheck-A1 marker 4: Radio IQ RAW, eleven in the Raines station wagon with four Wood children] · [factcheck-A3 S4: WTKR raw, Ginger found two weeks later; C-VILLE raw, Wood children never recovered]
+*(22 words. The sixth clip (render_preflight wants 6). The A1 loop's payoff lands on his face, not a list row: the turn from the found to the never found, before the unidentified. If the clip lands, the two sentences before it in A3-S13 ("The Raines family at least got Ginger back. The Wood family never got that day.") say the same thing and can go at the next TTS pass.)*
+
 ### A3-S14 · narration
 **Picture:** the scroll moves on to the last heading, "The unidentified". Eight rows, the text softened so no age or place reads; one small amber marker per row. Source line: "News & Advance, 2019 (Oakland Museum list)". Hold, then cut to the chapter blackout.
 > The list has one more heading, and it's the shortest. Eight people were found, and nobody could say who they were. Each one is written down the only way anyone could, as a guess at the age and the place they were found. Fifty-seven years on, can anyone still give them back their names?
