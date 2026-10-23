@@ -12,11 +12,11 @@ and the line in this file is updated first.
 | # | id | where | line (spoken verbatim) | words | status |
 |---|---|---|---|---|---|
 | 1 | ins-paul-1 | H1-S1, frame one | "A tornado warning goes off at work. What do you do? You go where they tell you. Somebody planned for it." | 21 | READY (H1 locked 22 Oct 26, owner devq save 02:01:13) |
-| 2 | ins-paul-2 | A1 exit (P1) | "OSHA said the procedures met minimal federal safety guidelines for storm sheltering." | 11 | WAIT: A1 not locked |
-| 3 | ins-paul-3 | A2 exit (P2) | "From Wednesday on, the forecast kept getting stronger, and it was right." | 13 | WAIT: A2 not locked |
-| 4 | ins-paul-4 | A3-S9, cta-hinge tease (P3) | "Right as the storm reached Mayfield, the weather office watching it ran into a problem of its own." | 18 | WAIT: A3 not locked |
-| 5 | ins-paul-5 | A4 (P4) | "At nine twenty-six, Paducah issued a Tornado Emergency, the Weather Service's highest alert, for Mayfield by name." | 17 | WAIT: A4 not locked |
-| 6 | ins-paul-6 | Z1 (P5) | "Almost five years on, one of the two states makes warehouses plan for tornadoes. From the Weather Service, the advice is still the general kind." | 26 | WAIT: Z1 not locked |
+| 2 | ins-paul-2 | A1 exit (P1) | "OSHA said the procedures met minimal federal safety guidelines for storm sheltering." | 11 | MOUNTED 23 Oct 26, window 5.646 s (media-start 0.9) |
+| 3 | ins-paul-3 | A2 exit (P2) | "From Wednesday on, the forecast kept getting stronger, and it was right." | 13 | MOUNTED 23 Oct 26, window 6.130 s |
+| 4 | ins-paul-4 | A3-S9, cta-hinge tease (P3) | "Right as the storm reached Mayfield, the weather office watching it ran into a problem of its own." | 18 | MOUNTED 23 Oct 26, window 6.850 s |
+| 5 | ins-paul-5 | A4 (P4) | "At nine twenty-six that night, the forecasters in Paducah reached for the strongest words they have, and they said Mayfield by name." (rephrased 23 Oct 26, owner 17:10; was "At nine twenty-six, Paducah issued a Tornado Emergency, the Weather Service's highest alert, for Mayfield by name.") | 22 | MOUNTED 23 Oct 26, window 9.460 s |
+| 6 | ins-paul-6 | Z1 (P5) | "Almost five years on, one of the two states makes warehouses plan for tornadoes. From the Weather Service, the advice is still the general kind." | 26 | MOUNTED 23 Oct 26, window 9.891 s |
 
 Shot direction for every clip (same look as the earlier episodes' Paul clips): Paul from the character sheet, seated or
 standing in a plain, warmly lit study, navy jacket and blue shirt, medium close-up, eye line to the lens, calm and serious,

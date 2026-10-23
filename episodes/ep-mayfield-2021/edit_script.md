@@ -42,7 +42,7 @@ Planned inside **A3** (the night the track ran), at about 11:30 of a 23 min cut 
 | P1 | A1 exit, the turn from building to forecast | "OSHA said the procedures met minimal federal safety guidelines for storm sheltering." |
 | P2 | A2 exit | "From Wednesday on, the forecast kept getting stronger, and it was right." |
 | P3 · cta-hinge tease | A3-S9, right before the CTA | "Right as the storm reached Mayfield, the weather office watching it ran into a problem of its own." (18 words) |
-| P4 | A4, the strongest warning there is | "At nine twenty-six, Paducah issued a Tornado Emergency, the Weather Service's highest alert, for Mayfield by name." |
+| P4 | A4, the strongest warning there is | "At nine twenty-six that night, the forecasters in Paducah reached for the strongest words they have, and they said Mayfield by name." (as spoken in ins-paul-5; rephrased under the owner's 23 Oct 26 17:10 order "rephrase or use some other sentence/scene") |
 | P5 | Z1, the answer to the dominant question | "Almost five years on, one of the two states makes warehouses plan for tornadoes. From the Weather Service, the advice is still the general kind." |
 
 ## Loop table
@@ -381,8 +381,8 @@ I1-S4), Q4 "what did the St. Louis office write" (I1-S4 to I1-S5). L1 is asked a
 > The review does keep the clock. The warning had said nine thirty, and the tornado came at about nine twenty-six. That's about twenty-one minutes from the warning to the tornado in town. Across the outbreak, the average lead time on a tornado warning was about nineteen minutes. Paducah's twenty-five warnings averaged about twenty. Mayfield's twenty-one minutes ran close to both.
 
 ### A4-S6 — narration
-**Picture:** (Paul on camera, P4), full frame. Chip "TORNADO EMERGENCY · 9:26 PM" lands on "Tornado Emergency".
-> At nine twenty-six, Paducah issued a Tornado Emergency, the Weather Service's highest alert, for Mayfield by name.
+**Picture:** (Paul on camera, P4, ins-paul-5), full frame. Chip "TORNADO EMERGENCY · 9:26 PM" lands on "the strongest words".
+> At nine twenty-six that night, the forecasters in Paducah reached for the strongest words they have, and they said Mayfield by name.
 
 *[RS] [VE] P4 on camera*
 
