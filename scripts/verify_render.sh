@@ -155,6 +155,17 @@ if cta:
         quiet_ok.append((cs - dip_in, cs + cd + dip_out))
 
 TOL = 0.5  # detector edges can land a touch outside the declared window
+def merged(windows):
+    # A declared hold that runs straight into the chapter blackout is one quiet stretch on purpose; the
+    # detector reports it as one span, so adjacent or overlapping windows are checked as one (Moore draft, 23 Oct 26).
+    out = []
+    for ws, we in sorted(windows):
+        if out and ws <= out[-1][1] + TOL:
+            out[-1] = (out[-1][0], max(out[-1][1], we))
+        else:
+            out.append((ws, we))
+    return out
+picture_ok, quiet_ok = merged(picture_ok), merged(quiet_ok)
 fail = False
 for kind, raw in raws.items():
     starts = [float(x) for x in re.findall(kind + r'_start:\s*([\d.]+)', raw)]
