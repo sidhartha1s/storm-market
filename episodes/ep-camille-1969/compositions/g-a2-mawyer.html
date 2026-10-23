@@ -94,7 +94,7 @@
   <div class="gam-sub gam-hid" id="ga2maw-sub">USGS Professional Paper 804</div>
   <div class="gam-tag" id="ga2maw-tag">NOT TO SCALE</div>
   <style>
-    #g-a2-mawyer-root .gam-card { position:absolute; left:96px; top:54px; width:760px; box-sizing:border-box; padding:22px 28px 20px;
+    #g-a2-mawyer-root .gam-card { position:absolute; left:1064px; top:54px; width:760px; box-sizing:border-box; padding:22px 28px 20px;
       background:rgba(232,222,200,.90); border-radius:6px; }
     #g-a2-mawyer-root .gam-q { font:italic 26px/1.3 Georgia, 'Times New Roman', serif; color:#1b1712; }
     #g-a2-mawyer-root .gam-a { margin-top:12px; font:700 18px/1.3 Arial, sans-serif; color:#3a3226; letter-spacing:0.5px; }
@@ -203,7 +203,7 @@ window.__timelines = window.__timelines || {};
   tl.to(bush, { rotation: 8, svgOrigin: "0 0", duration: 0.18, ease: "sine.inOut", yoyo: true, repeat: 3 }, CUES.bush + 0.5);
 
   /* the quote card */
-  tl.fromTo(P + "card", { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, CUES.said);
+  tl.fromTo(P + "card", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, CUES.said);
 
   /* OOZING: 6 px down the 50 % slope over 0.4 s (direction 400:200), then a 0.3 s hold */
   const cx = 5.4, cy = 2.7;
@@ -241,7 +241,7 @@ window.__timelines = window.__timelines || {};
   tl.to(bush, { rotation: -12, svgOrigin: "0 0", duration: 0.12, ease: "sine.inOut", yoyo: true, repeat: 3 }, L1);
 
   /* exit: the card slides out in the last 0.6 s */
-  tl.to(P + "card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  tl.to(P + "card", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
   tl.set({}, {}, DUR);
 
   window.__timelines[ID] = tl;
