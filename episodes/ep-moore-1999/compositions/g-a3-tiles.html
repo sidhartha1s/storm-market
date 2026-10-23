@@ -4,7 +4,7 @@
      Local s = a3-s4 word time (a3-s4 starts 537.405).
      Cues: "dropping out" 1.84 (NO SERVICE); "The office" 2.98 (radar ground); "grab attention" 4.54 (TORNADO EMERGENCY stamp);
      "normal warning" 7.36 (grey TORNADO WARNING tag beneath); "Media outlets" 8.68 (tiles 1-4 at 8.68/9.00/9.38/9.70);
-     "repeated" 10.54 (tiles pulse). Radar: media/stills/oun-travissmith-outbreak-800.gif (NWS Norman page; Travis Smith, NSSL/CIMMS). -->
+     "repeated" 10.54 (tiles pulse). Radar: media/stills/oun-travissmith-outbreak-800.mp4, the NWS Norman GIF looped twice to 18.8 s with a silent track (an animated GIF times out the compile, learnings/render.md A; Travis Smith, NSSL/CIMMS). -->
 <style>
   #g-a3-tiles-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; background:radial-gradient(ellipse at 50% 50%, #121921 0%, #04070c 78%); }
   #g-a3-tiles-radar { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; opacity:0; visibility:hidden; }
@@ -32,7 +32,7 @@
   #g-a3-tiles-phone { opacity:0; visibility:hidden; }
 </style>
 <div id="g-a3-tiles-root" data-composition-id="g-a3-tiles" data-width="1920" data-height="1080" data-duration="11.525">
-  <div id="g-a3-tiles-radar"><img id="i-a3-tiles-rimg" src="media/stills/oun-travissmith-outbreak-800.gif" data-crop-ok="radar loop zoomed on its own storm field; the frame border and legend are not the content" alt=""><div id="g-a3-tiles-rshade"></div></div>
+  <div id="g-a3-tiles-radar"><video id="i-a3-tiles-rimg" src="media/stills/oun-travissmith-outbreak-800.mp4" data-crop-ok="radar loop zoomed on its own storm field; the frame border and legend are not the content" muted playsinline></video><div id="g-a3-tiles-rshade"></div></div>
   <svg class="gat-svg" viewBox="0 0 1920 1080">
     <g id="g-a3-tiles-phone">
       <rect id="g-a3-tiles-pbody" x="420" y="520" width="520" height="260" rx="36" fill="#1d252e" stroke="#3a4652" stroke-width="4"/>
