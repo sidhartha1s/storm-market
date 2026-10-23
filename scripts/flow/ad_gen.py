@@ -239,12 +239,18 @@ with sync_playwright() as p:
                     break
             shot(page, f"{job['name']}-confirm")
             log("quote", job["name"], quote)
-            if not quote or f"{expect} credits" not in quote:
+            if not quote or not quoted_price(quote, expect):
                 log("NOT approved", job["name"], "expected", expect)
+                refused += 1
+                if refused >= 2:  # circuit breaker: two refusals in a row mean the page or the price changed, not the job
+                    log("two NOT approved in a row, halting")
+                    break
                 continue
+            refused = 0
             enabled_approves(page)[-1].click()
             spent += expect
             approved += 1
+            open(DONE, "a", encoding="utf8").write(job["name"] + "\n")
             log("approved", job["name"], "spent", spent)
             page.wait_for_timeout(8000)
 
