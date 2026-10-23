@@ -1,0 +1,131 @@
+<template>
+<!-- g-a4-list (A4-S4). Host 961.819 + 16.612 s; nx-a4-s4 starts at the same second (index.html), so comp-local = segment-local.
+     Copy of g-a4-eight's map (k 1480, kx 1170.1, 1 mi = 21.45 px; geometry media/geo/nelson-px.json via the parent's paths), held at
+     g-a4-eight's OPENING camera (zoom 1, pan centre 960,540 = identity), base dimmed to 0.45. Not g-i1-eight's s 0.9 camera: at 0.9 the
+     two Woods Mill markers sit at screen x 869-873, inside the card column (x 96-900); at zoom 1 every marker is at x >= 981.
+     The eight at g-a4-eight's world px (adults r 12, children r 9): woods (993.6,412.2), woods1 (998.1,426.6), howards (1198.6,578.9),
+     buford (1188.9,660.3), sch (1146.0,497.7), rr (1081.3,486.6), h2 (1169.7,589.6), bremo (1595.1,614.8). 6 on the Rockfish, 2 on the James.
+     River ticks: the marker's own river polyline (Rockfish, or James for buford and bremo), +/-28 px of arc about the marker's nearest
+     point (howards clipped at the Rockfish mouth), computed by a python one-off from the parent's paths, never by eye.
+     U.S. 29: the parent's TIGER path, faint, no label. Cues from audio/a4-s4.words.json. Timeline 16.65 s >= host 16.612 s. -->
+<style>
+  #g-a4-list-root { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial, sans-serif; }
+  #g-a4-list-root .a4l-svg { position:absolute; left:0; top:0; }
+  #g-a4-list-root .a4l-hide { opacity:0; visibility:hidden; }
+  #g-a4-list-root #a4l-us29 { stroke-opacity:0.6; }
+  #g-a4-list-root .a4l-card { position:absolute; left:96px; top:54px; width:804px; box-sizing:border-box; padding:26px 32px 24px;
+    background:rgba(232,222,200,0.90); border-radius:14px; box-shadow:0 18px 40px rgba(0,0,0,0.45); color:#2a2622; }
+  #g-a4-list-root .a4l-card-h { font:900 52px 'Arial Black', Arial, sans-serif; line-height:1.1; color:#2a2622; white-space:nowrap; }
+  #g-a4-list-root .a4l-rule { height:3px; margin:16px 0 14px; background:rgba(42,38,34,0.45); border-radius:2px; }
+  #g-a4-list-root .a4l-card-src { font:700 21px Arial, sans-serif; line-height:28px; letter-spacing:0.5px; color:#2a2622; }
+</style>
+<div id="g-a4-list-root" data-composition-id="g-a4-list" data-width="1920" data-height="1080">
+  <svg class="a4l-svg" id="a4l-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <!-- screen-space clip: the presenter corner x>=1600, y>=680 stays empty -->
+      <clipPath id="a4l-clip"><path d="M0,0 H1920 V680 H1600 V1080 H0 Z"/></clipPath>
+    </defs>
+    <g clip-path="url(#a4l-clip)">
+      <!-- dim base: neighbours, county, minor roads, rivers, flow shimmer (copied from g-a4-eight lines 56-66 and 70-84, ids renamed) -->
+      <g id="a4l-base" opacity="0.45">
+@@PARENT 56-66@@
+@@PARENT 70-84@@
+      </g>
+      <!-- U.S. 29 (the parent's path), drawn on "where they might have been going" -->
+@@PARENT 67 HIDE@@
+      <!-- river ticks: each marker's own river lights +/-28 px about it (downstream order) -->
+      <g fill="none" stroke="#7fb2e5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <path id="a4l-t-woods" class="a4l-hide" d="M995.6,392.9 L994.3,397.1 L998.1,401.4 L995.8,403.7 L994.0,403.8 L991.8,405.3 L989.4,410.2 L999.4,415.1 L1003.1,418.0 L1000.4,424.4 L998.0,426.4 L999.9,429.7 L1001.4,429.3 L1002.1,428.1"/>
+        <path id="a4l-t-woods1" class="a4l-hide" d="M990.2,408.5 L989.4,410.2 L999.4,415.1 L1003.1,418.0 L1000.4,424.4 L998.0,426.4 L999.9,429.7 L1001.4,429.3 L1003.1,426.5 L1004.9,427.2 L1002.7,435.7 L1011.5,436.6"/>
+        <path id="a4l-t-rr" class="a4l-hide" d="M1063.2,468.8 L1062.3,469.7 L1065.1,477.0 L1080.0,485.2 L1083.9,489.4 L1086.9,490.8 L1089.3,489.6 L1091.7,489.8 L1096.9,493.9 L1103.3,495.5 L1105.3,493.9"/>
+        <path id="a4l-t-sch" class="a4l-hide" d="M1120.2,496.4 L1122.2,496.8 L1130.4,500.6 L1135.8,499.3 L1141.4,500.0 L1143.1,497.7 L1149.0,497.7 L1150.5,503.8 L1156.0,508.6 L1153.9,510.8 L1150.3,511.2 L1147.8,513.0 L1146.9,514.4"/>
+        <path id="a4l-t-h2" class="a4l-hide" d="M1151.8,570.0 L1152.5,574.7 L1155.5,578.4 L1160.2,581.1 L1162.4,584.1 L1165.8,585.6 L1172.0,592.0 L1180.5,595.2 L1184.1,594.8 L1184.4,589.0 L1185.9,585.2 L1188.0,585.2"/>
+        <path id="a4l-t-howards" class="a4l-hide" d="M1180.9,595.2 L1184.1,594.8 L1184.4,589.0 L1185.9,585.2 L1188.9,585.2 L1192.0,581.3 L1200.9,580.0"/>
+        <path id="a4l-t-buford" class="a4l-hide" d="M1170.0,642.9 L1171.3,644.2 L1176.9,656.5 L1181.3,658.4 L1188.5,660.3 L1192.8,660.1 L1199.2,656.5 L1202.2,652.2 L1203.7,646.8 L1201.7,641.2"/>
+        <path id="a4l-t-bremo" class="a4l-hide" d="M1568.8,605.5 L1576.1,607.2 L1594.9,614.8 L1602.4,613.1 L1614.3,616.4 L1621.1,620.8"/>
+      </g>
+      <!-- the eight: adults r 12, children r 9 (zoom 1, so world px = screen px) -->
+      <g fill="#f2f5f8" stroke="#05080c" stroke-width="3">
+        <g transform="translate(993.6 412.2)"><circle id="a4l-m-woods" class="a4l-hide" r="12"/></g>
+        <g transform="translate(998.1 426.6)"><circle id="a4l-m-woods1" class="a4l-hide" r="12"/></g>
+        <g transform="translate(1198.6 578.9)"><circle id="a4l-m-howards" class="a4l-hide" r="12"/></g>
+        <g transform="translate(1188.9 660.3)"><circle id="a4l-m-buford" class="a4l-hide" r="12"/></g>
+        <g transform="translate(1146.0 497.7)"><circle id="a4l-m-sch" class="a4l-hide" r="9"/></g>
+        <g transform="translate(1081.3 486.6)"><circle id="a4l-m-rr" class="a4l-hide" r="9"/></g>
+        <g transform="translate(1169.7 589.6)"><circle id="a4l-m-h2" class="a4l-hide" r="9"/></g>
+        <g transform="translate(1595.1 614.8)"><circle id="a4l-m-bremo" class="a4l-hide" r="9"/></g>
+      </g>
+    </g>
+  </svg>
+
+  <!-- beige cite card (quoted source over a dark map), x 96 to 900, y 54 to about 245 -->
+  <div class="a4l-card a4l-hide" id="a4l-card">
+    <div class="a4l-card-h" id="a4l-card-h">The unidentified</div>
+    <div class="a4l-rule" id="a4l-rule"></div>
+    <div class="a4l-card-src a4l-hide" id="a4l-card-src">News &amp; Advance, August 10, 2019 &middot; information from the Oakland-Nelson County Museum of History</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const MARKS = ["#a4l-m-woods", "#a4l-m-woods1", "#a4l-m-rr", "#a4l-m-sch", "#a4l-m-h2", "#a4l-m-howards", "#a4l-m-buford", "#a4l-m-bremo"];
+  const TICKS = ["a4l-t-woods", "a4l-t-woods1", "a4l-t-rr", "a4l-t-sch", "a4l-t-h2", "a4l-t-howards", "a4l-t-buford", "a4l-t-bremo"];
+
+  /* start states (also hidden in CSS) */
+  tl.set(MARKS, { scale: 0, transformOrigin: "50% 50%" }, 0);
+  tl.set("#a4l-card", { x: -60, y: 0 }, 0);
+  tl.set("#a4l-rule", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set("#a4l-card-src", { y: 10 }, 0);
+  TICKS.forEach(id => { const p = document.getElementById(id), n = Math.ceil(p.getTotalLength()) + 1; tl.set(p, { strokeDasharray: n + " " + n, strokeDashoffset: n }, 0); });
+  const us = document.getElementById("a4l-us29"), UL = Math.ceil(us.getTotalLength()) + 1;
+  tl.set(us, { strokeDasharray: UL + " " + UL, strokeDashoffset: UL }, 0);
+
+  /* whole-comp drift: flow shimmer downstream at g-a4-eight's rate (2030 px / 77.9 s = 26.06 px/s) */
+  tl.fromTo("#a4l-flow path", { strokeDashoffset: 0 }, { strokeDashoffset: -433.9, duration: 16.65, ease: "none" }, 0);
+
+  /* list @1.42: the card slides in, its rule draws, then a slow float to the end */
+  tl.to("#a4l-card", { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 1.42);
+  tl.to("#a4l-rule", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 1.9);
+  tl.to("#a4l-card", { y: -6, duration: 3.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 2.1);
+  /* news (in advance) @4.38: the source line */
+  tl.to("#a4l-card-src", { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 4.38);
+
+  /* describes @9.46: the eight pop one by one, downstream order, 0.12 s apart */
+  tl.to("#a4l-m-woods", { scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(2.6)" }, 9.46);
+  tl.to("#a4l-m-woods1", { scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(2.6)" }, 9.58);
+  tl.to("#a4l-m-rr", { scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(2.6)" }, 9.7);
+  tl.to("#a4l-m-sch", { scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(2.6)" }, 9.82);
+  tl.to("#a4l-m-h2", { scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(2.6)" }, 9.94);
+  tl.to("#a4l-m-howards", { scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(2.6)" }, 10.06);
+  tl.to("#a4l-m-buford", { scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(2.6)" }, 10.18);
+  tl.to("#a4l-m-bremo", { scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(2.6)" }, 10.3);
+
+  /* where (they were found) @10.98: each marker's own river lights on either side of it */
+  tl.set("#a4l-t-woods", { autoAlpha: 1 }, 10.98);
+  tl.to("#a4l-t-woods", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 10.98);
+  tl.set("#a4l-t-woods1", { autoAlpha: 1 }, 11.04);
+  tl.to("#a4l-t-woods1", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 11.04);
+  tl.set("#a4l-t-rr", { autoAlpha: 1 }, 11.1);
+  tl.to("#a4l-t-rr", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 11.1);
+  tl.set("#a4l-t-sch", { autoAlpha: 1 }, 11.16);
+  tl.to("#a4l-t-sch", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 11.16);
+  tl.set("#a4l-t-h2", { autoAlpha: 1 }, 11.22);
+  tl.to("#a4l-t-h2", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 11.22);
+  tl.set("#a4l-t-howards", { autoAlpha: 1 }, 11.28);
+  tl.to("#a4l-t-howards", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 11.28);
+  tl.set("#a4l-t-buford", { autoAlpha: 1 }, 11.34);
+  tl.to("#a4l-t-buford", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 11.34);
+  tl.set("#a4l-t-bremo", { autoAlpha: 1 }, 11.4);
+  tl.to("#a4l-t-bremo", { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 11.4);
+
+  /* where (they might have been going) @12.96: U.S. 29 draws through the county, faint, no label */
+  tl.set("#a4l-us29", { autoAlpha: 1 }, 12.96);
+  tl.to("#a4l-us29", { strokeDashoffset: 0, duration: 1.6, ease: "power1.inOut" }, 12.96);
+
+  /* hold to 16.612 on the float and the flow; no exit: g-a4-eight cuts over it */
+  window.__timelines["g-a4-list"] = tl;
+})();
+</script>
+</template>
