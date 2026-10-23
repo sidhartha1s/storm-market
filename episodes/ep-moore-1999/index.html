@@ -147,16 +147,16 @@
        urgent -16.3 -> 0.106, tension -11.5 -> 0.064, close -16.6 -> 0.112); out under the CTA and under each insert's own audio
        (the bed resumes at its own media time after the hole). A3 opens out of the CTA on the NOAA Weather Radio tone (1050 Hz, ffmpeg). -->
   <audio id="sx-siren-hook" src="media/sfx/soundreality-civil-defense-siren-128262.mp3" data-start="0" data-duration="7.0" data-volume="0.1"></audio>
-  <audio id="sx-bed-intro" src="media/sfx/score-act1-darkambient.mp3" data-start="7.0" data-duration="99.882" data-volume="0.15"></audio>
-  <audio id="sx-bed-a1" src="media/sfx/score-act2-unease.mp3" data-start="107.582" data-duration="169.9" data-volume="0.126"></audio>
-  <audio id="sx-bed-a2-a" src="media/sfx/score-act4-stormhybrid.mp3" data-start="278.358" data-duration="65.59" data-volume="0.126"></audio>
-  <audio id="sx-bed-a2-b" src="media/sfx/score-act4-stormhybrid.mp3" data-start="353.981" data-duration="105.39" data-media-start="75.623" data-volume="0.126"></audio>
+  <audio id="sx-bed-intro" data-bed="" src="media/sfx/score-act1-darkambient.mp3" data-start="7.0" data-duration="99.882" data-volume="0.15"></audio>
+  <audio id="sx-bed-a1" data-bed="" src="media/sfx/score-act2-unease.mp3" data-start="107.582" data-duration="169.9" data-volume="0.126"></audio>
+  <audio id="sx-bed-a2-a" data-bed="" src="media/sfx/score-act4-stormhybrid.mp3" data-start="278.358" data-duration="65.59" data-volume="0.126"></audio>
+  <audio id="sx-bed-a2-b" data-bed="" src="media/sfx/score-act4-stormhybrid.mp3" data-start="353.981" data-duration="105.39" data-media-start="75.623" data-volume="0.126"></audio>
   <audio id="sx-alert-a3" src="media/sfx/nwr-alert-1050hz.wav" data-start="485.413" data-duration="1.2" data-volume="0.35"></audio>
-  <audio id="sx-bed-a3-a" src="media/sfx/score-act3-urgent.mp3" data-start="485.413" data-duration="63.517" data-volume="0.106"></audio>
-  <audio id="sx-bed-a3-b" src="media/sfx/score-act3-urgent.mp3" data-start="561.33" data-duration="99.669" data-media-start="75.917" data-volume="0.106"></audio>
-  <audio id="sx-bed-a4-a" src="media/sfx/score-act5-tension.mp3" data-start="661.699" data-duration="75.198" data-volume="0.064"></audio>
-  <audio id="sx-bed-a4-b" src="media/sfx/score-act5-tension.mp3" data-start="741.163" data-duration="105.983" data-media-start="79.464" data-volume="0.064"></audio>
-  <audio id="sx-bed-a5" src="media/sfx/score-act6-close.mp3" data-start="847.846" data-duration="263.206" data-volume="0.112"></audio>
+  <audio id="sx-bed-a3-a" data-bed="" src="media/sfx/score-act3-urgent.mp3" data-start="485.413" data-duration="63.517" data-volume="0.106"></audio>
+  <audio id="sx-bed-a3-b" data-bed="" src="media/sfx/score-act3-urgent.mp3" data-start="561.33" data-duration="99.669" data-media-start="75.917" data-volume="0.106"></audio>
+  <audio id="sx-bed-a4-a" data-bed="" src="media/sfx/score-act5-tension.mp3" data-start="661.699" data-duration="75.198" data-volume="0.064"></audio>
+  <audio id="sx-bed-a4-b" data-bed="" src="media/sfx/score-act5-tension.mp3" data-start="741.163" data-duration="105.983" data-media-start="79.464" data-volume="0.064"></audio>
+  <audio id="sx-bed-a5" data-bed="" src="media/sfx/score-act6-close.mp3" data-start="847.846" data-duration="263.206" data-volume="0.112"></audio>
 
   <section class="clip act" id="act-a1" data-start="107.582" data-duration="170.076" data-track-index="0"></section>
   <section class="clip act" id="act-a2" data-start="278.358" data-duration="182.013" data-track-index="0"></section>
@@ -187,6 +187,38 @@
   <!-- END ASK (config channel.end_ask, staged media/end-ask/), then Paul's signature line A5-S11 over the title card -->
   <video id="ins-endask-a" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="1081.654" data-duration="9.083" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
   <video id="ins-endask-b" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="1090.737" data-duration="6.417" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
+
+  <!-- PRESENTER CIRCLE: narration spans minus the hook, Paul's clips, inserts, every broadcast clip (station bug in the corner), CTA, end ask and close. Faces cut by circle_cut.py from media/circle/face-pass1 (@2.900) and face-pass2 (@485.413). -->
+  <video id="pip-w1" class="pip" src="media/pip/paul-w1.mp4" data-start="7.0" data-duration="99.882" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w1" data-start="7.0" data-duration="99.882" data-track-index="9"></section>
+  <video id="pip-w2" class="pip" src="media/pip/paul-w2.mp4" data-start="107.782" data-duration="144.818" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w2" data-start="107.782" data-duration="144.818" data-track-index="9"></section>
+  <video id="pip-w3" class="pip" src="media/pip/paul-w3.mp4" data-start="265.413" data-duration="9.245" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w3" data-start="265.413" data-duration="9.245" data-track-index="9"></section>
+  <video id="pip-w4" class="pip" src="media/pip/paul-w4.mp4" data-start="278.558" data-duration="65.09" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w4" data-start="278.558" data-duration="65.09" data-track-index="9"></section>
+  <video id="pip-w5" class="pip" src="media/pip/paul-w5.mp4" data-start="354.281" data-duration="95.128" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w5" data-start="354.281" data-duration="95.128" data-track-index="9"></section>
+  <video id="pip-w6" class="pip" src="media/pip/paul-w6.mp4" data-start="487.713" data-duration="31.221" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w6" data-start="487.713" data-duration="31.221" data-track-index="9"></section>
+  <video id="pip-w7" class="pip" src="media/pip/paul-w7.mp4" data-start="526.174" data-duration="22.456" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w7" data-start="526.174" data-duration="22.456" data-track-index="9"></section>
+  <video id="pip-w8" class="pip" src="media/pip/paul-w8.mp4" data-start="561.63" data-duration="13.625" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w8" data-start="561.63" data-duration="13.625" data-track-index="9"></section>
+  <video id="pip-w9" class="pip" src="media/pip/paul-w9.mp4" data-start="581.335" data-duration="45.643" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w9" data-start="581.335" data-duration="45.643" data-track-index="9"></section>
+  <video id="pip-w10" class="pip" src="media/pip/paul-w10.mp4" data-start="631.538" data-duration="22.521" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w10" data-start="631.538" data-duration="22.521" data-track-index="9"></section>
+  <video id="pip-w11" class="pip" src="media/pip/paul-w11.mp4" data-start="666.7" data-duration="69.897" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w11" data-start="666.7" data-duration="69.897" data-track-index="9"></section>
+  <video id="pip-w12" class="pip" src="media/pip/paul-w12.mp4" data-start="741.463" data-duration="105.683" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w12" data-start="741.463" data-duration="105.683" data-track-index="9"></section>
+  <video id="pip-w13" class="pip" src="media/pip/paul-w13.mp4" data-start="848.046" data-duration="19.944" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w13" data-start="848.046" data-duration="19.944" data-track-index="9"></section>
+  <video id="pip-w14" class="pip" src="media/pip/paul-w14.mp4" data-start="875.89" data-duration="188.341" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w14" data-start="875.89" data-duration="188.341" data-track-index="9"></section>
+  <video id="pip-w15" class="pip" src="media/pip/paul-w15.mp4" data-start="1071.721" data-duration="9.533" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w15" data-start="1071.721" data-duration="9.533" data-track-index="9"></section>
 
   <!-- ACT PICTURE: footage + graphic hosts per act, pasted from briefs/<act>-mounts.html after review -->
 <!-- ============ A1 · Four forty-seven · picture mounts (act editor, 22 Oct 26) ============
