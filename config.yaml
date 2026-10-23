@@ -37,9 +37,9 @@ channel:
   voice_captions:                 # owner 20-21 Oct 26: epN documentaries caption every outside voice and allow no hold over 4 s of bed alone (lint_timeline checks 7 and 8)
     exempt: [ep-nepal-floods-2026, ep1-joplin, ep2-2011-super-outbreak, ep5-california-2018, ep6-katrina-2005]   # shipped before the rules; never extended
   cta:                            # MUST-KEEP in every episode (owner order 2026-08-30) — DESIGN.md "CTA contract"
-    file: assets/cta/paul-storm-ready-v9-oct20.mp4    # md5 bba0b9f3289d0de3797dbfbd1017e3d8 (owner 20 Oct 26 "go v5": new Paul shots from the locked sheets, no zoom, logo over the watermark, narrator voice via Chatterbox VC; QR opens /yt/?src=qr; 1080p24); swap = NEW versioned file + bump here, never overwrite; the old file leaves assets/cta/
+    file: assets/cta/paul-storm-ready-v10-oct23.mp4    # md5 5873b8fc2b7c0a503a679f295c0906fc (owner 23 Oct 26 devq moore_cta=v2: v9's audio +3 dB with a -1 dBFS limiter, picture untouched, so the ad sits within 2.5 dB of a -16 dB narration; v9 was 20 Oct 26 "go v5": new Paul shots from the locked sheets, no zoom, logo over the watermark, narrator voice via Chatterbox VC; QR opens /yt/?src=qr; 1080p24); swap = NEW versioned file + bump here, never overwrite; the old file leaves assets/cta/
     duration: 24.042              # the picture stream (577 frames at 24 fps); the audio stream is trimmed to end with it
-    transcript: assets/cta/paul-storm-ready-v9-oct20.txt
+    transcript: assets/cta/paul-storm-ready-v10-oct23.txt
     voice_ref_md5: ff03c38fefe26dc0b7adb08ea165f167   # the voice reference the CTA audio was made from; sweep_episode.py fails when it differs from external.voice_ref_md5
     exempt:                       # shipped BEFORE the contract (2026-08-30) — never extended; demo-* dirs skip by having no epN prefix
       [ep1-joplin, ep2-2011-super-outbreak, ep3-tristate, ep5-california-2018, ep6-katrina-2005,
