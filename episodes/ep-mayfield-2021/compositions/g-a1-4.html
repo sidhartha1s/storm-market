@@ -17,7 +17,10 @@
     background-image:linear-gradient(rgba(147,163,178,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.05) 1px, transparent 1px);
     background-size:120px 120px; }
   #g-a1-4-float { position:absolute; left:0; top:0; width:1920px; height:1080px; }
-  #g-a1-4-card { position:absolute; left:260px; top:150px; width:1400px; height:320px; box-sizing:border-box; padding:56px 80px; border-radius:28px;
+  /* fix round 2: the card is sized to its text (56 + 2 x 64 + 30 + 26 + 56 = 296 px, y 150-446 at rest) and its wrapper holds it
+     centred on y 540 (+242 px) until the drawings arrive, then lifts it to rest */
+  #g-a1-4-cardpos { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a1-4-card { position:absolute; left:260px; top:150px; width:1400px; box-sizing:border-box; padding:56px 80px; border-radius:28px;
     background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
   #g-a1-4-q { white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:64px; color:#2a2622; }
   .g-a1-4-ph { display:block; width:max-content; opacity:0; visibility:hidden; }  /* one phrase per line: 52 px Arial Black would not fit one 1240 px line */
@@ -32,9 +35,11 @@
 <div id="g-a1-4-root" data-composition-id="g-a1-4" data-width="1920" data-height="1080" data-duration="15.228">
   <div class="g-a1-4-grid" id="g-a1-4-grid"></div>
   <div id="g-a1-4-float">
+    <div id="g-a1-4-cardpos">
     <div id="g-a1-4-card">
       <div id="g-a1-4-q"><span class="g-a1-4-ph" id="g-a1-4-p1">staff sheltered 7:45</span> <span class="g-a1-4-ph" id="g-a1-4-p2">to 7:53 PM CST</span></div>
       <div id="g-a1-4-attr">NWS Service Assessment, p26; St. Louis Public Radio, 17 Apr 2022</div>
+    </div>
     </div>
     <svg class="g-a1-4-svg" viewBox="0 0 1920 1080">
       <!-- outline, building family, 0.45 -->
@@ -60,6 +65,7 @@ window.__timelines = window.__timelines || {};
 
   tl.set([P + "card", P + "p1", P + "p2", P + "attr", P + "outline", P + "room", P + "roomlab", P + "outlab"], { autoAlpha: 0 }, 0);
 
+  tl.set(P + "cardpos", { y: 242 }, 0);   /* centred: card y 392-688 */
   /* ambient: grid drift 16 px/s; whole layout floats up 8 px over the window */
   tl.fromTo(P + "grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
   tl.fromTo(P + "float", { y: 0 }, { y: -8, duration: DUR, ease: "none" }, 0);
@@ -73,6 +79,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "p2", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.t753);
   tl.to(P + "card", { scale: 1.015, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1, transformOrigin: "50% 50%" }, C.t753);
 
+  /* the card lifts from centre to its rest slot just before the drawings (done 9.80) */
+  tl.to(P + "cardpos", { y: 0, duration: 0.6, ease: "power3.inOut" }, C.room - 0.6);
   /* HAD A SAFE ROOM @9.80: the room builds, wall then label */
   tl.fromTo(P + "room", { autoAlpha: 0, scale: 0.6, svgOrigin: "1290 650" }, { autoAlpha: 1, scale: 1, svgOrigin: "1290 650", duration: 0.5, ease: "back.out(1.6)" }, C.room);
   tl.fromTo(P + "roomlab", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.safe);

@@ -15,7 +15,10 @@
   #g-z1-2-float { position:absolute; left:0; top:0; width:1920px; height:1080px; }
   .g-z1-2-card { position:absolute; left:260px; width:1300px; box-sizing:border-box; padding:48px 80px 44px; border-radius:28px; opacity:0; visibility:hidden;
     background: rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
-  #g-z1-2-c1 { top:92px; }
+  /* the Finding card (406 px tall: 48 + 4 x 64 + 28 + 30 + 44) starts centred on y 540 (top 337) inside a lift wrapper, and lifts
+     245 px to rest at top 92 as Recommendation 6 slides up (g-a1-4 pattern) */
+  #g-z1-2-lift { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-z1-2-c1 { top:337px; }
   #g-z1-2-c2 { top:540px; padding:40px 80px 40px; }
   .g-z1-2-q { font-family: Georgia, 'Times New Roman', serif; font-style:italic; color:#2a2622; }
   /* one phrase per row (overlap_check: wrapped inline phrases shared rows). Widths measured with PIL on georgiai.ttf:
@@ -36,6 +39,7 @@
   <div class="g-z1-2-grid" id="g-z1-2-grid"></div>
   <div class="g-z1-2-glow" id="g-z1-2-glow"></div>
   <div id="g-z1-2-float">
+    <div id="g-z1-2-lift">
     <div class="g-z1-2-card" id="g-z1-2-c1">
       <div class="g-z1-2-q" id="g-z1-2-q1">
         <div class="g-z1-2-row"><span class="g-z1-2-ph" id="g-z1-2-p1">&ldquo;Multiple offices identified</span><span class="g-z1-2-ph" id="g-z1-2-gap">a gap<span id="g-z1-2-stamp"></span></span></div>
@@ -44,6 +48,7 @@
         <div class="g-z1-2-row g-z1-2-ph" id="g-z1-2-p4">such as warehouses.&rdquo;</div>
       </div>
       <div class="g-z1-2-attr" id="g-z1-2-a1">Service Assessment, Finding 6, p34</div>
+    </div>
     </div>
     <div class="g-z1-2-card" id="g-z1-2-c2">
       <div class="g-z1-2-q" id="g-z1-2-q2">
@@ -63,8 +68,9 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const P = "#g-z1-2-";
   const DUR = 18.918;
-  /* one phrase per row: each lands with a short rise */
-  const ph = (id, at) => tl.fromTo(P + id, { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, at);
+  /* one phrase per row: each waits as a 0.12 ghost from its card's entry (the card shows its whole text block, g-i1-7 pattern)
+     and lands at full strength with a short rise on its cue */
+  const ph = (id, at) => tl.fromTo(P + id, { autoAlpha: 0.12, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, at);
 
   tl.set([P + "c1", P + "c2", P + "a1", P + "a2"], { autoAlpha: 0 }, 0);
   tl.set(P + "stamp", { scaleX: 0, transformOrigin: "left center" }, 0);
@@ -94,6 +100,8 @@ window.__timelines = window.__timelines || {};
 
   /* RIGHT UNDER IT SITS RECOMMENDATION 6 @9.018 (z1-s3 0.00 = ep 1018.291): the second card slides up under the first */
   tl.fromTo(P + "c2", { autoAlpha: 0, y: 200 }, { autoAlpha: 1, y: 0, duration: 0.7, ease: "power3.out" }, 9.018);
+  /* the Finding card lifts from centre (top 337) to rest (top 92) over 0.6 s as the second card rises */
+  tl.fromTo(P + "lift", { y: 0 }, { y: -245, duration: 0.6, ease: "power3.inOut" }, 9.018);
   ph("r1", 9.3);
   tl.fromTo(P + "a2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.6);
   /* IT ASKS THE WEATHER SERVICE @11.66 (2.64 = ep 1020.931) */

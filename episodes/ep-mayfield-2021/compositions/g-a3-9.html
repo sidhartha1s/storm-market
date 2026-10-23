@@ -108,7 +108,7 @@ window.__timelines = window.__timelines || {};
     const t = Math.round(m.v), h = Math.floor(t / 60) - 12, mm = t % 60;
     clk.textContent = h + ":" + (mm < 10 ? "0" : "") + mm + " PM";
   } }, 0.1);
-  tl.fromTo(P + "rw", { autoAlpha: 1, x: 1920 }, { autoAlpha: 1, x: -10, duration: 1.2, ease: "power2.inOut" }, 0.1);
+  tl.fromTo(P + "rw", { autoAlpha: 1, x: 1920 }, { immediateRender: false, autoAlpha: 1, x: -10, duration: 1.2, ease: "power2.inOut" }, 0.1);
   tl.set(P + "rw", { autoAlpha: 0 }, 1.3);
   tl.fromTo(P + "clk", { scale: 1 }, { scale: 1.06, transformOrigin: "left center", duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 1.3);
 
@@ -118,7 +118,8 @@ window.__timelines = window.__timelines || {};
   /* ALREADY ON THE GROUND @4.78 (ep 649.47): the marker at the warning's 9:04 position, pulsing to the exit */
   tl.fromTo(P + "mk", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2.2)" }, 4.78);
   tl.fromTo(P + "mkc", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)" }, 4.85);
-  tl.fromTo(P + "mkr", { autoAlpha: 0.9, scale: 1.6 }, { autoAlpha: 0, scale: 4.2, duration: 1.1, ease: "power2.out", repeat: 9, repeatDelay: 0.1 }, 5.0);
+  tl.set(P + "mkr", { autoAlpha: 0.9, scale: 1.6 }, 5.0);   /* ring on at its pulse; a set reverts on a backward seek */
+  tl.to(P + "mkr", { autoAlpha: 0, scale: 4.2, duration: 1.1, ease: "power2.out", repeat: 9, repeatDelay: 0.1 }, 5.0);
   /* FULTON AND HICKMAN COUNTIES @9.02 (ep 653.71) */
   tl.fromTo(P + "fulton", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.02);
   tl.fromTo(P + "hickman", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.3);
@@ -129,7 +130,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "d-fac", { autoAlpha: 0, scale: 0, y: -30 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(2.2)" }, 14.46);
   tl.fromTo(P + "lead", { autoAlpha: 0, scaleX: 0, svgOrigin: "1142 616" }, { autoAlpha: 1, scaleX: 1, svgOrigin: "1142 616", duration: 0.35, ease: "power2.out" }, 14.6);
   tl.fromTo(P + "l-fac", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 14.75);
-  tl.fromTo(P + "r-fac", { autoAlpha: 0.9, scale: 1 }, { autoAlpha: 0, scale: 3.2, duration: 1.0, ease: "power2.out", repeat: 1, repeatDelay: 0.2 }, 14.7);
+  tl.set(P + "r-fac", { autoAlpha: 0.9, scale: 1 }, 14.7);   /* ring on at its pulse; a set reverts on a backward seek */
+  tl.to(P + "r-fac", { autoAlpha: 0, scale: 3.2, duration: 1.0, ease: "power2.out", repeat: 1, repeatDelay: 0.2 }, 14.7);
 
   /* WHAT REACHED THEM? (ep 661.03-661.55): fade-through to black, the chapter blackout follows at 661.904 */
   tl.to([P + "stage", P + "rail", P + "eb", P + "clk", P + "row", P + "cred", P + "src"], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 16.616);   /* DUR - 0.6 */

@@ -187,7 +187,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "l-wm", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 14.6);
   tl.set([P + "w1", P + "w2", P + "w3"], { transformOrigin: "50% 50%" }, 0);
   tl.fromTo([P + "w1", P + "w2", P + "w3"], { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)", stagger: 0.12 }, 14.8);
-  tl.fromTo(P + "r-wm", { autoAlpha: 0.9, scale: 1 }, { autoAlpha: 0, scale: 3.2, duration: 1.1, ease: "power2.out", repeat: 2, repeatDelay: 0.3 }, 14.6);
+  tl.set(P + "r-wm", { autoAlpha: 0.9, scale: 1 }, 14.6);   /* ring on at its pulse; a set reverts on a backward seek */
+  tl.to(P + "r-wm", { autoAlpha: 0, scale: 3.2, duration: 1.1, ease: "power2.out", repeat: 2, repeatDelay: 0.3 }, 14.6);
 
   /* IT STAYED DOWN @19.16 (ep 562.90): the replot hands over to the state-line base on the same projection */
   tl.fromTo(P + "base", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8, ease: "power1.inOut" }, 19.16);
@@ -217,7 +218,8 @@ window.__timelines = window.__timelines || {};
   /* MAYFIELD SAT RIGHT ON THAT LINE @28.64 (ep 572.38): the candle factory pin lands on the track (2.4 px off the nearest vertex) */
   tl.fromTo(P + "d-fac", { autoAlpha: 0, scale: 0, y: -40 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(2.2)" }, 28.64);
   tl.fromTo(P + "l-fac", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 28.8);
-  tl.fromTo(P + "r-fac", { autoAlpha: 0.9, scale: 1 }, { autoAlpha: 0, scale: 3.2, duration: 1.1, ease: "power2.out", repeat: 3, repeatDelay: 0.2 }, 28.8);
+  tl.set(P + "r-fac", { autoAlpha: 0.9, scale: 1 }, 28.8);   /* ring on at its pulse; a set reverts on a backward seek */
+  tl.to(P + "r-fac", { autoAlpha: 0, scale: 3.2, duration: 1.1, ease: "power2.out", repeat: 3, repeatDelay: 0.2 }, 28.8);
 
   /* exit: everything fades through to the ground while the base pushes in (ep 577.91-578.51) */
   tl.to(P + "stage", { scale: 1.04, autoAlpha: 0, transformOrigin: "868px 508px", duration: 0.6, ease: "power2.in" }, 34.172);   /* DUR - 0.6 */

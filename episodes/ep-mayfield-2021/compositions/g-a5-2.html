@@ -17,7 +17,11 @@
   .g-a5-2-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:38px; line-height:48px; color:#2a2622; }
   /* one phrase row per line, never wrapped (fix round 1, overlap_check): widest row at 38 px, PIL Georgia Italic, card 1 557 of 692 px inner, card 2 420 of 452 */
   .g-a5-2-ph { display:block; height:48px; white-space:nowrap; opacity:0; visibility:hidden; }
-  #g-a5-2-rec { display:inline-block; }
+  /* fix round 2: the last row is three leaf spans in an in-flow flex row on one baseline (no mixed text + element), so
+     "recommends" always sits between "but" and "them"; its lift is a transform on that span only */
+  #g-a5-2-a3 { display:flex; align-items:baseline; }
+  .g-a5-2-w { display:inline-block; white-space:nowrap; }
+  .g-a5-2-gap { margin-left:0.26em; }
   .g-a5-2-who { display:block; margin-top:36px; font-weight:700; font-size:26px; line-height:32px; letter-spacing:3px; color:#6b6257; opacity:0; visibility:hidden; }
   .g-a5-2-src { display:block; margin-top:6px; font-weight:700; font-size:19px; line-height:24px; letter-spacing:2px; color:#6b6257; opacity:0; visibility:hidden; }
 </style>
@@ -26,7 +30,7 @@
   <div class="g-a5-2-grid" id="g-a5-2-grid"></div>
   <div class="g-a5-2-col" id="g-a5-2-col1">
     <div class="g-a5-2-card" id="g-a5-2-card1">
-      <div class="g-a5-2-q"><div class="g-a5-2-ph" id="g-a5-2-a1">&ldquo;OSHA does not have a standard</div><div class="g-a5-2-ph" id="g-a5-2-a2a">that requires severe weather</div><div class="g-a5-2-ph" id="g-a5-2-a2b">emergency plans</div><div class="g-a5-2-ph" id="g-a5-2-a3">but <span id="g-a5-2-rec">recommends</span> them&rdquo;</div></div>
+      <div class="g-a5-2-q"><div class="g-a5-2-ph" id="g-a5-2-a1">&ldquo;OSHA does not have a standard</div><div class="g-a5-2-ph" id="g-a5-2-a2a">that requires severe weather</div><div class="g-a5-2-ph" id="g-a5-2-a2b">emergency plans</div><div class="g-a5-2-ph" id="g-a5-2-a3"><span class="g-a5-2-w" id="g-a5-2-but">but</span><span class="g-a5-2-w g-a5-2-gap" id="g-a5-2-rec">recommends</span><span class="g-a5-2-w g-a5-2-gap" id="g-a5-2-them">them&rdquo;</span></div></div>
       <span class="g-a5-2-who" id="g-a5-2-who1">OSHA news release</span>
       <span class="g-a5-2-src" id="g-a5-2-src1">Chicago region, 26 Apr 2022</span>
     </div>
@@ -50,6 +54,8 @@ window.__timelines = window.__timelines || {};
   tl.set([P + "a1", P + "a2a", P + "a2b", P + "a3", P + "b1a", P + "b1b", P + "b2", P + "b3a", P + "b3b"], { autoAlpha: 0 }, 0);
   tl.set(P + "rec", { y: 0, color: "#2a2622" }, 0);
   tl.set([P + "col1", P + "col2"], { y: 0 }, 0);
+  /* fix round 2: card 1 sits centred (col left 120 + 450 = 570, 780 wide, centre x 960) until card 2 lands */
+  tl.set(P + "col1", { x: 450 }, 0);
 
   /* ambient: grid drift 12 px/s; each card column floats up 8 px over the window */
   tl.fromTo(P + "grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
@@ -67,6 +73,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "rec", { y: -8, color: "#d8a13a", duration: 0.45, ease: "back.out(2)" }, 7.255);
   /* VERY LITTLE @14.395: card 2 beside it with its first phrase (unspoken phrases wait at opacity 0, so the card
      enters on its words, not on "St. Louis" @10.36), then its attribution */
+  tl.to(P + "col1", { x: 0, duration: 0.6, ease: "power3.inOut" }, 14.395);
   tl.to(P + "card2", { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 14.395);
   tl.to([P + "b1a", P + "b1b"], { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 14.395);
   tl.to(P + "who2", { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.795);

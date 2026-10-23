@@ -22,6 +22,9 @@
     background-size:120px 120px; }
   .g-a1-10-card { position:absolute; box-sizing:border-box; padding:56px 80px; border-radius:28px; background:rgba(232,222,200,0.90);
     border:1px solid rgba(90,74,46,0.35); box-shadow:0 30px 90px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
+  /* fix round 2: card 1 is one line (Georgia italic 52 measured 1162 px of 1240), 239 px tall, y 150-389 at rest; its wrapper holds it
+     centred on y 540 (+270 px) until the item-3 page arrives, then lifts it */
+  #g-a1-10-c1pos { position:absolute; left:0; top:0; width:1920px; height:1080px; }
   #g-a1-10-card1 { left:260px; top:150px; width:1400px; }
   #g-a1-10-card2 { left:160px; top:330px; width:1060px; }
   .g-a1-10-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:52px; line-height:65px; color:#2a2622; }
@@ -40,9 +43,11 @@
 </style>
 <div id="g-a1-10-root" data-composition-id="g-a1-10" data-width="1920" data-height="1080" data-duration="13.574">
   <div class="g-a1-10-grid" id="g-a1-10-grid"></div>
+  <div id="g-a1-10-c1pos">
   <div class="g-a1-10-card" id="g-a1-10-card1">
     <div class="g-a1-10-q" id="g-a1-10-q1">did not &ldquo;specifically identify&rdquo; the shelter&rsquo;s location</div>
     <div class="g-a1-10-who" id="g-a1-10-who1">AP, 28 Apr 2022</div>
+  </div>
   </div>
   <div id="g-a1-10-sheet">
     <img src="media/stills/a1-s11-hal-p2-item3.png" alt="">
@@ -98,6 +103,7 @@ window.__timelines = window.__timelines || {};
   tl.set([P + "card1", P + "card2", P + "who1", P + "who2", P + "sheet", P + "band1", P + "band2", P + "src", P + "megg"], { autoAlpha: 0 }, 0);
   tl.set([P + "band1", P + "band2"], { scaleX: 0, transformOrigin: "left center" }, 0);
 
+  tl.set(P + "c1pos", { y: 270 }, 0);   /* centred: card 1 y 420-659 */
   /* ambient grid drift 18 px/s, whole window */
   tl.fromTo(P + "grid", { x: 0 }, { x: 240, duration: DUR, ease: "none" }, 0);
 
@@ -107,6 +113,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "src", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.did + 0.6);
   tl.to(P + "card1", { y: -8, duration: 4.0, ease: "none" }, C.did + 0.6);
 
+  /* card 1 lifts from centre to its slot as the page comes in */
+  tl.to(P + "c1pos", { y: 0, duration: 0.6, ease: "power3.inOut" }, C.evac - 0.2);
   /* EVACUATION MAPS: the letter's item 3 rises under the card, its two lines lit */
   tl.fromTo(P + "sheet", { autoAlpha: 0, y: 120 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, C.evac);
   tl.set(P + "band1", { autoAlpha: 1 }, C.evac + 0.5);

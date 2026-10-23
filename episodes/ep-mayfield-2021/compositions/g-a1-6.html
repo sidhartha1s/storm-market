@@ -7,7 +7,8 @@
   layer shows the debris signature (the CC drop) ringed; chip 8:29 PM (the time NWS St. Louis saw debris, SA p28); attributed
   WGN Radio / FOX 2 report line. Radar family (base g-h1-3: plate, HUD, legend, credit). Brief: briefs/mg/g-a1-6.md.
   Frames: media/radar/g-a1-6/ (replot.py; sidecar extent.json). There is no 8:29 scan: the lowest-tilt scans are 8:21:26, 8:27:14 and
-  8:33:02 PM CST. The HUD prints each frame's own scan time; the 8:29 PM chip is the Service Assessment's time, not a scan label.
+  8:33:02 PM CST, and only the 8:33 scan shows the CC drop. Fix round 2 (verifier, 23 Oct 26): the per-scan time line is gone so one
+  time is on screen, the 8:29 PM chip (the Service Assessment's time, not a scan label).
   Projection (extent.json): x = (lon+90.40623)/0.91246*1920, y = (39.0-lat)/0.4*1080, north up.
     CC minimum near Edwardsville on the 8:33 scan (extent.json cc_min_within_20km...: 0.375 at -89.9997, 38.7857) -> 855.4, 578.6
     (the dark-blue CC hole in cc/KLSX_20211211_023302Z.png, checked by eye at about 865, 578). Edwardsville town point
@@ -31,9 +32,8 @@
   .g-a1-6-lab { position:absolute; padding:10px 14px; border-radius:12px; font-size:26px; font-weight:700; line-height:26px; color:#f2f5f8; }
   #g-a1-6-dlab { left:512px; top:556px; }
   #g-a1-6-elab { left:934px; top:556px; }
-  .g-a1-6-hud { position:absolute; left:94px; top:56px; width:536px; height:96px; box-sizing:border-box; border-radius:16px; }
+  .g-a1-6-hud { position:absolute; left:94px; top:56px; width:430px; height:52px; box-sizing:border-box; border-radius:16px; }
   #g-a1-6-station { position:absolute; left:110px; top:70px; font-size:22px; font-weight:700; line-height:22px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
-  .g-a1-6-scan { position:absolute; left:110px; top:104px; font-size:26px; font-weight:700; line-height:30px; color:#c8d3e0; white-space:nowrap; }
   #g-a1-6-chip { position:absolute; left:1504px; top:56px; width:320px; box-sizing:border-box; padding:14px 0; border-radius:16px; text-align:center;
     font-family:'Courier New', monospace; font-size:52px; font-weight:700; line-height:56px; color:#e8c56a; }
   .g-a1-6-legend { position:absolute; left:1170px; top:982px; width:400px; height:52px; box-sizing:border-box; border-radius:12px; }
@@ -65,9 +65,6 @@
 
   <div class="g-a1-6-hud g-a1-6-glass g-a1-6-hid" id="g-a1-6-hud"></div>
   <div class="g-a1-6-hid" id="g-a1-6-station">KLSX &middot; St. Louis radar</div>
-  <div class="g-a1-6-scan g-a1-6-hid" id="g-a1-6-s1">scan 8:21 PM CST</div>
-  <div class="g-a1-6-scan g-a1-6-hid" id="g-a1-6-s2">scan 8:27 PM CST</div>
-  <div class="g-a1-6-scan g-a1-6-hid" id="g-a1-6-s3">scan 8:33 PM CST</div>
   <div class="g-a1-6-glass g-a1-6-hid" id="g-a1-6-chip">8:29 PM</div>
 
   <div class="g-a1-6-legend g-a1-6-glass g-a1-6-hid" id="g-a1-6-legend"></div>
@@ -110,7 +107,7 @@ window.__timelines = window.__timelines || {};
     wgn: 6.10,      /* WGN @6.10 */
     out: 11.787     /* overlays slide out; the replot runs to the cut (host end 12.387) */
   };
-  tl.set([P+"f2", P+"f3", P+"cc", P+"ring", P+"dlab", P+"elab", P+"hud", P+"station", P+"s1", P+"s2", P+"s3", P+"chip", P+"legend", P+"zleg", P+"cleg", P+"src", P+"card"], { autoAlpha: 0 }, 0);
+  tl.set([P+"f2", P+"f3", P+"cc", P+"ring", P+"dlab", P+"elab", P+"hud", P+"station", P+"chip", P+"legend", P+"zleg", P+"cleg", P+"src", P+"card"], { autoAlpha: 0 }, 0);
   tl.set(P+"plate", { scale: 1, transformOrigin: "50% 50%" }, 0);
   tl.set(P+"ring", { scale: 0.6, transformOrigin: "50% 50%" }, 0);
 
@@ -120,7 +117,6 @@ window.__timelines = window.__timelines || {};
   /* HUD, legend, credit from the cut */
   tl.fromTo(P+"hud", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
   tl.fromTo(P+"station", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.05);
-  tl.fromTo(P+"s1", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.12);
   tl.fromTo(P+"legend", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.25);
   tl.fromTo(P+"zleg", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.3);
   tl.fromTo(P+"src", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.35);
@@ -130,11 +126,7 @@ window.__timelines = window.__timelines || {};
 
   /* the storm's own scans advance; the scan label flips with each (never two at once) */
   tl.fromTo(P+"f2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "none" }, C.f2);
-  tl.to(P+"s1", { autoAlpha: 0, y: -10, duration: 0.12, ease: "power2.in" }, C.f2 + 0.08);
-  tl.fromTo(P+"s2", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.22, ease: "power3.out" }, C.f2 + 0.2);
   tl.fromTo(P+"f3", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "none" }, C.f3);
-  tl.to(P+"s2", { autoAlpha: 0, y: -10, duration: 0.12, ease: "power2.in" }, C.f3 + 0.08);
-  tl.fromTo(P+"s3", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.22, ease: "power3.out" }, C.f3 + 0.2);
 
   /* SIGNS: the CC layer over the same 8:33 scan; the legend changes with it */
   tl.fromTo(P+"cc", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power1.inOut" }, C.signs);

@@ -35,9 +35,11 @@ window.__timelines = window.__timelines || {};
 (function () {
   const tl = gsap.timeline({ paused: true });
   const P = "#g-a2-7-", DUR = 7.96;
-  tl.set(P + "img", { scale: 1, transformOrigin: "58% 52%" }, 0);
-  /* the graphic pushes slowly toward the Moderate area for the whole window */
-  tl.to(P + "img", { scale: 1.08, duration: DUR, ease: "none" }, 0);
+  /* fix round 2: the whole GIF stays inside its box (815 x 555 at exactly 1.4x = 1141 x 777, no crop); the box itself drifts 2 %
+     from its left edge for the whole window (right edge 1237 -> 1260, clear of the rail at 1290) instead of a push that cut the
+     GIF's own legend, info block and NOAA logo */
+  tl.set(P + "frame", { scale: 1, transformOrigin: "0% 50%" }, 0);
+  tl.to(P + "frame", { scale: 1.02, duration: DUR, ease: "none" }, 0);
   tl.fromTo(P + "frame", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0);
   /* MODERATE RISK @0.00 (ep 382.97) */
   tl.fromTo(P + "c1", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.15);
