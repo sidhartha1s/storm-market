@@ -61,6 +61,16 @@ def norm(text, want=None):
     return toks
 
 
+def diff_words(line, whole, by_island):
+    # A word is missing only when BOTH passes miss it. An extra word counts only when both passes hear it, like a
+    # missing one: the island pass, cut at a silence, heard "kept going. getting stronger" where the whole clip and
+    # the line say "kept getting stronger" (Mayfield clip 3, 23 Oct 26).
+    want = norm(line)
+    missing = [w for w in want if w not in norm(whole, want) and w not in norm(by_island, want)]
+    extra = [w for w in norm(by_island, want) if w not in want and w in norm(whole, want)]
+    return missing, extra
+
+
 model = WhisperModel("small.en", device="cpu", compute_type="int8")
 segs, _ = model.transcribe(mp4, word_timestamps=True)
 words = [(w.word.strip(), round(w.start, 2), round(w.end, 2)) for s in segs for w in s.words]
