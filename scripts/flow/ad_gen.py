@@ -100,7 +100,8 @@ def grid_tiles(raw):
     # Keep tiles that start on screen, end before the agent panel (left 1330+ on the 1920 px driver window) and are wider
     # than a chat thumbnail. Row-major sort: on a wide window the grid is 2 columns and "newest first" runs across each
     # row; a right edge < 1080 dropped column 2 and hid a landed clip's anchor for 2 h (23 Oct 26).
-    tiles = sorted((t for t in raw if t[3] >= 0 and t[4] < 1320 and t[5] > 300), key=lambda t: (t[1], t[0]))
+    # rows are grouped to 50 px: a 1 px jitter in centre y put the anchor before a newer clip (review of PR 213)
+    tiles = sorted((t for t in raw if t[3] >= 0 and t[4] < 1320 and t[5] > 300), key=lambda t: (round(t[1] / 50), t[0]))
     return [[x, y, (re.search(r"[0-9a-f]{8}-[0-9a-f-]{27}", src) or re.search(r"[^/]+$", src)).group(0)] for x, y, src, *_ in tiles]
 
 
