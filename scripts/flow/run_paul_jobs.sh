@@ -9,8 +9,9 @@ for d in "$@"; do
   for try in $(seq 1 31); do
     echo "== $(date +%H:%M:%S) start $d"
     PYTHONUNBUFFERED=1 python3 "$HERE/ad_gen.py" "$d/jobs.json" > "$d/drv.log" 2>&1
+    rc=$?
     last="$(tail -1 "$d/drv.log")"
-    echo "== $(date +%H:%M:%S) exit $? $last"
+    echo "== $(date +%H:%M:%S) exit $rc $last"
     case "$last" in *"GB free, a Flow run needs"*) [ "$try" -lt 31 ] && sleep 60 && continue ;; esac
     break
   done

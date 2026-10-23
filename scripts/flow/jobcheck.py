@@ -23,8 +23,8 @@ MIN_FREE_GB = 1.5  # a Flow run on a laptop under this froze Chrome three times 
 
 
 def free_gb():
-    import sys
-    sys.path.insert(0, r"C:\Users\Sidhartha\Automation Projects\storm-market\scripts")
+    import os, sys
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # scripts/, this checkout
     from render_busy import free_gb as repo_free_gb
     return repo_free_gb()
 
@@ -63,9 +63,9 @@ def clip_verdict(path, cfg, jobs_path):
         problems.append(f"background off the start frame ({d:.1f} > 28)")
     line = job.get("line") or line_in_prompt(job["prompt"])
     if line:
-        import json, tempfile
+        import json
         here = os.path.dirname(os.path.abspath(__file__))
-        tmp = os.path.join(tempfile.gettempdir(), "clip-line.json")
+        tmp = os.path.splitext(path)[0] + ".line.json"  # beside the clip: one per lane, inside the repo
         json.dump({"jobs": [{"line": line}]}, open(tmp, "w", encoding="utf8"))
         words = subprocess.run([sys.executable, os.path.join(here, "clip_check.py"), tmp, path], capture_output=True, text=True)
         if words.returncode and not words.stdout.strip():  # the checker itself failed (missing file, no model): never read as a mismatch

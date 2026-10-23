@@ -27,7 +27,7 @@ assert [t[2][:8] for t in tiles] == ["6fa051dc", "ANqvLOYl", "ANqvLObC", "ANqvLO
 assert [t[2] for t in clips_above(tiles, ANCHOR)] == [NEW], clips_above(tiles, ANCHOR)
 
 # one column (the 1080 px window the driver ran on before): same answer
-narrow = [[x if x < 800 else x, y if x < 800 else y + 261, s, l if l < 800 else l - 509, r if l < 800 else r - 509, w] for x, y, s, l, r, w in raw]
+narrow = [[538, 224 + 261 * i, t[2], 293, 783, 490] for i, t in enumerate(raw[2:])] + raw[:2]  # one tile per row, same order
 assert [t[2] for t in clips_above(grid_tiles(narrow), ANCHOR)] == [NEW]
 
 # a clip beyond the agent panel is not a grid tile

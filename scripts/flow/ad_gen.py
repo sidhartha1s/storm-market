@@ -140,12 +140,6 @@ def main_checkout():
     return root
 
 
-RUN = os.path.join(main_checkout(), "scripts", "flow")
-os.makedirs(RUN, exist_ok=True)
-STOP = os.path.join(RUN, "STOP")
-DONE = os.path.join(OUT, "approved.done")  # crash-safe resume: a rerun of the same jobs.json skips these job names
-
-
 def take_lock():
     # One driver on the Flow tab at a time. 9 Oct 26: two drivers stopped with TaskStop lived on (only their shell
     # died), woke when the next clip landed and overwrote a finished clip with an empty file.
@@ -162,6 +156,12 @@ def take_lock():
 def failed_cards(page):
     # a refused or errored generation shows a "Failed" card (grid and chat) and never becomes a tile; Flow refunds it
     return [l.strip() for l in page.evaluate("() => document.body.innerText").splitlines()].count("Failed")
+
+
+RUN = os.path.join(main_checkout(), "scripts", "flow")
+os.makedirs(RUN, exist_ok=True)
+STOP = os.path.join(RUN, "STOP")
+DONE = os.path.join(OUT, "approved.done")  # crash-safe resume: a rerun of the same jobs.json skips these job names
 
 
 LOCK = take_lock()
