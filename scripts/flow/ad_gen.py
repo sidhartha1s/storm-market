@@ -216,7 +216,9 @@ with sync_playwright() as p:
             if clear.count():  # the input keeps the last job's attachments across sessions
                 clear.first.click()
                 page.wait_for_timeout(1000)
-            set_defaults(page, CFG["aspect"], CFG["count"], CFG.get("model"))
+            # the model is always set: Flow keeps the last pick as its default, and a Veo test left it on Veo 3.1 Lite,
+            # so the next Omni job was quoted 10 credits and refused by the price check (23 Oct 26, Moore retake 3)
+            set_defaults(page, CFG["aspect"], CFG["count"], CFG.get("model", "Omni 1.1 Flash"))
             shot(page, f"{job['name']}-newsession")
             for ing in [job["frame"]] + job.get("ingredients", []):
                 add_ingredient(page, ing)
