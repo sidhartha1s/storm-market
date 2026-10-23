@@ -1,0 +1,139 @@
+<template>
+<style>
+  #g-a3-heli-root { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); font-family:Arial, sans-serif; }
+  #g-a3-heli-root .ahl-world { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a3-heli-root .ahl-svg { position:absolute; left:0; top:0; }
+  #g-a3-heli-root .ahl-hide { opacity:0; visibility:hidden; }
+  #g-a3-heli-root .ahl-ridge { font:italic 24px Georgia, 'Times New Roman', serif; fill:#93a3b2;
+    paint-order:stroke; stroke:#05080c; stroke-width:4px; stroke-linejoin:round; }
+  #g-a3-heli-root .ahl-chip { position:absolute; inset:auto; right:96px; top:72px; padding:12px 26px 12px 22px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-left:6px solid #d8a13a; font:700 22px Arial, sans-serif;
+    color:#f2f5f8; letter-spacing:4px; line-height:1; white-space:nowrap; }
+  #g-a3-heli-root .ahl-card { position:absolute; inset:auto; left:96px; bottom:60px; box-sizing:border-box; padding:26px 34px 24px;
+    background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); border-radius:20px; box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  #g-a3-heli-root .ahl-cq { font:italic 56px Georgia, 'Times New Roman', serif; line-height:66px; color:#1c1a17; white-space:nowrap; }
+  #g-a3-heli-root .ahl-ca { margin-top:12px; font:700 26px Arial, sans-serif; line-height:32px; letter-spacing:1px; color:#5a4a2e; white-space:nowrap; }
+</style>
+<!-- Opening state = g-a3-cutoff's end frame. Base map copied verbatim from g-a3-cutoff.html (same projection: compose_plan 4.0,
+     k = 1480, origin lon -78.85 lat 37.76 at 960,540). Final camera of the parent: scale 0.44 centred on world (1412,628),
+     i.e. translate(338.72 263.68) scale(0.44). Roads in their cut state (#2a3644), cut marks shown, rivers off (parent faded them).
+     HUD points are that camera's screen positions of world points (script, media/geo/nelson-px.json):
+     Lovingston (935.6,540.2) -> (750.4,501.4); helicopter hovers 12 px above it at (750.4,489.4), inside the county.
+     Blue Ridge label: parent HUD (808,264) at scale 0.46 -> world (1081.6,28.0) -> (814.6,276.0) at 0.44.
+     Flight: straight line from (184.7,-76.3) (off-frame, NW, 45 deg) to (750.4,489.4); it crosses the crest line once at
+     (682.1,421.1), 25.5 % along the crest from its SW end (script check). The trail head follows the same ease and duration. -->
+<div id="g-a3-heli-root" data-composition-id="g-a3-heli" data-width="1920" data-height="1080">
+  <div class="ahl-world" id="g-a3-heli-world">
+  <svg class="ahl-svg" id="g-a3-heli-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <defs>
+      <clipPath id="g-a3-heli-clip"><path d="M0,0 H1920 V680 H1600 V1080 H0 Z"/></clipPath>
+      <mask id="g-a3-heli-trailmask" maskUnits="userSpaceOnUse" x="-200" y="-200" width="2320" height="1480">
+        <path id="g-a3-heli-trail-m" d="M184.7,-76.3 L750.4,489.4" stroke-dasharray="1000 1000" stroke-dashoffset="1000" fill="none" stroke="#fff" stroke-width="14"/>
+      </mask>
+    </defs>
+    <g clip-path="url(#g-a3-heli-clip)">
+      <g id="g-a3-heli-cam" transform="translate(338.72 263.68) scale(0.44)">
+        <g fill="none" stroke="#93a3b2" stroke-opacity="0.25" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke">
+@@NBR@@
+        </g>
+@@FILL@@
+        <!-- roads that leave the county, in the parent's cut state -->
+        <g id="g-a3-heli-roads" fill="none" stroke="#2a3644" stroke-opacity="1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+@@ROADS@@
+        </g>
+@@COUNTY@@
+@@CREST@@
+        <g id="g-a3-heli-marks" stroke="#c0392b" stroke-width="3.5" stroke-linecap="round"></g>
+      </g>
+      <!-- HUD (final-camera screen space) -->
+      <g id="g-a3-heli-hud">
+        <text id="g-a3-heli-l-ridge" class="ahl-ridge" x="814.6" y="276">Blue Ridge</text>
+        <path id="g-a3-heli-trail" d="M184.7,-76.3 L750.4,489.4" fill="none" stroke="#d8a13a" stroke-opacity="0.6" stroke-width="2.5"
+              stroke-dasharray="10 9" stroke-linecap="round" mask="url(#g-a3-heli-trailmask)"/>
+        <!-- helicopter, top view: nose on +x, turned to the 45 deg heading by the timeline -->
+        <g id="g-a3-heli-heli" class="ahl-hide">
+          <g id="g-a3-heli-bob">
+            <g id="g-a3-heli-body">
+              <line x1="-10" y1="0" x2="-30" y2="0" stroke="#d8a13a" stroke-width="3" stroke-linecap="round"/>
+              <line x1="-30" y1="-6" x2="-30" y2="6" stroke="#d8a13a" stroke-width="2.5" stroke-linecap="round"/>
+              <ellipse cx="0" cy="0" rx="13" ry="8" fill="#0b1016" stroke="#d8a13a" stroke-width="3"/>
+            </g>
+            <line id="g-a3-heli-rotor" x1="-22" y1="0" x2="22" y2="0" stroke="#e8c56a" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="0" cy="0" r="2.5" fill="#e8c56a"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+  </div>
+  <div class="ahl-chip ahl-hide" id="g-a3-heli-chip">IN BY HELICOPTER</div>
+  <div class="ahl-card ahl-hide" id="g-a3-heli-card">
+    <div class="ahl-cq" id="g-a3-heli-cq">Hit hardest was Nelson County</div>
+    <div class="ahl-ca ahl-hide" id="g-a3-heli-ca">Associated Press, Aug 23, 1969 (The Pontiac Press, p. 1)</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true, defaults: { immediateRender: false } });   // seek-order safe, as the parent
+  const P = "#g-a3-heli-";
+  const NS = "http://www.w3.org/2000/svg";
+  /* Host data-start 757.477 = nx-a3-s8 data-start 753.217 + 4.260, so comp time = a3-s8 words.json - 4.26.
+     helicopter @0.00, 36 hours @2.36, communications @3.62, Civil defense @5.24, Associated Press @6.68,
+     missing @8.70, water @9.88, hit hardest @12.24, It was Nelson @13.50 / Nelson @13.96, wav ends @14.22, host ends @14.811. */
+
+  // cut marks, copied from the parent in their end state (one X per road crossing of the county line, stage px)
+  const CROSS = {"us29": [[831.0, 694.0], [1097.9, 384.3]], "us250": [[950.9, 138.6]], "us60": [[886.8, 821.0], [986.4, 870.6]], "i64": [[978.6, 126.7]], "va151": [[752.5, 625.1]], "va6": [[1126.1, 443.7], [992.4, 156.7]], "va56": [[607.1, 353.7], [1113.0, 724.4]]};
+  const marks = document.querySelector(P + "marks");
+  Object.keys(CROSS).forEach(k => CROSS[k].forEach(([x, y], i) => {
+    const g = document.createElementNS(NS, "g");
+    g.setAttribute("id", "g-a3-heli-x-" + k + "-" + i);
+    [[-7, -7, 7, 7], [-7, 7, 7, -7]].forEach(([a, b, c, d]) => {
+      const l = document.createElementNS(NS, "line");
+      l.setAttribute("x1", x + a); l.setAttribute("y1", y + b); l.setAttribute("x2", x + c); l.setAttribute("y2", y + d);
+      g.appendChild(l);
+    });
+    marks.appendChild(g);
+  }));
+
+  // whole-scene drift (hold with a drift): slow push about the county centre, map and HUD together
+  tl.set(P + "world", { scale: 1, transformOrigin: "732px 480px" }, 0);
+  tl.to(P + "world", { scale: 1.03, duration: 15.0, ease: "none" }, 0);
+
+  // rotor spins for the whole window (one finite tween, 384 deg/s)
+  tl.set(P + "rotor", { rotation: 0, svgOrigin: "0 0" }, 0);
+  tl.to(P + "rotor", { rotation: 5760, duration: 15.0, ease: "none" }, 0);
+
+  // HELICOPTER @0.00: in from off-frame NW, over the Blue Ridge crest, to Lovingston by 3.5
+  tl.set(P + "body", { rotation: 45, svgOrigin: "0 0" }, 0);
+  tl.set(P + "heli", { x: 184.7, y: -76.3 }, 0);
+  tl.set(P + "heli", { autoAlpha: 1 }, 0);
+  tl.to(P + "heli", { x: 750.4, y: 489.4, duration: 3.5, ease: "power2.out" }, 0);
+  const tm = document.querySelector(P + "trail-m");
+  const TL = Math.ceil(tm.getTotalLength()) + 1;
+  tl.set(tm, { strokeDasharray: TL + " " + TL, strokeDashoffset: TL }, 0);
+  tl.to(tm, { strokeDashoffset: 0, duration: 3.5, ease: "power2.out" }, 0);
+  tl.fromTo(P + "trail", { strokeDashoffset: 0 }, { strokeDashoffset: -114, duration: 15.0, ease: "none" }, 0);
+  // hover: slight float from arrival to host end (10 half-cycles of 1.131 s)
+  tl.to(P + "bob", { y: -5, duration: 1.131, ease: "sine.inOut", yoyo: true, repeat: 9 }, 3.5);
+
+  // chip on "helicopter", out after "communications"
+  tl.set(P + "chip", { x: 60 }, 0);
+  tl.to(P + "chip", { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+  tl.to(P + "chip", { autoAlpha: 0, x: 80, duration: 0.5, ease: "power3.in" }, 4.0);
+
+  // HIT HARDEST @12.24: beige cite card, quote then source; it holds to the cut
+  tl.set(P + "card", { x: -60 }, 0);
+  tl.to(P + "card", { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 12.24);
+  tl.fromTo(P + "ca", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.6);
+
+  // NELSON @13.96: the county outline brightens once and settles back to grey
+  tl.to(P + "county", { stroke: "#f2f5f8", attr: { "stroke-width": 4 }, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 13.96);
+  tl.to(P + "fill", { attr: { "fill-opacity": 0.16 }, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 13.96);
+
+  window.__timelines["g-a3-heli"] = tl;
+})();
+</script>
+</template>
