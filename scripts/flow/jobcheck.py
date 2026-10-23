@@ -68,7 +68,9 @@ def clip_verdict(path, cfg, jobs_path):
         tmp = os.path.join(tempfile.gettempdir(), "clip-line.json")
         json.dump({"jobs": [{"line": line}]}, open(tmp, "w", encoding="utf8"))
         words = subprocess.run([sys.executable, os.path.join(here, "clip_check.py"), tmp, path], capture_output=True, text=True)
-        if words.returncode:
+        if words.returncode and not words.stdout.strip():  # the checker itself failed (missing file, no model): never read as a mismatch
+            problems.append("word check crashed: " + words.stderr.strip().splitlines()[-1][:160] if words.stderr.strip() else "word check crashed")
+        elif words.returncode:
             problems.append("words differ from the line")
     else:
         problems.append("no line found in the job, words unchecked")
