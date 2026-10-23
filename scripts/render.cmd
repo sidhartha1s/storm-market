@@ -35,6 +35,8 @@ if "%MODE%"=="draft" (
   set _CRF=32
   set _FPS=15
   if "%OUTBASE%"=="" set OUTBASE=%SLUG%-draft
+  REM RENDER_ROUGH=1: layers may be missing (owner rough-cut order 23 Oct 26); the file says so in its name
+  if defined RENDER_ROUGH if "%OUTBASE%"=="%SLUG%-draft" set OUTBASE=%SLUG%-rough
 ) else if "%MODE%"=="full" (
   set QUAL=standard
   set _CRF=16

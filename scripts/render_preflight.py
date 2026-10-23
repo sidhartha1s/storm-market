@@ -21,6 +21,7 @@ twelve failed renders precisely because nothing checked it.
 """
 import re
 import subprocess
+import os
 import sys
 from pathlib import Path
 
@@ -186,7 +187,11 @@ def main():
     rc = layer_refusal(episode)
     if "--layers" in sys.argv[2:]:  # run_gates.py runs only this check, so a missing layer shows before render.cmd
         sys.exit(rc or 0)
-    if rc:
+    if rc and os.environ.get("RENDER_ROUGH"):
+        # Owner 23 Oct 26 (devq rough_cut=yes): a rough cut may render before every layer is in, "black gaps and all".
+        # It is a look, never a review cut: render.cmd names it <slug>-rough and the layer rule still gates draft and full.
+        print("[ROUGH] layers missing (listed above); rendering a rough cut anyway on the owner's order", file=sys.stderr)
+    elif rc:
         print("[preflight] REFUSING TO RENDER: a layer the owner already asked for is missing.",
               file=sys.stderr)
         sys.exit(rc)
