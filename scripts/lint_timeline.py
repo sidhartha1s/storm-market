@@ -18,6 +18,8 @@ Checks episodes/<slug>/index.html:
   7. OUTSIDE VOICES (owner 2026-10-20): in an epN documentary every audible non-narrator element
      (radio, 911, broadcast sound) has a data-caption-for host covering its whole window, or
      data-caption-ok="reason" when it has no words. config.yaml channel.voice_captions.exempt lists shipped episodes.
+  9. STILL RESOLUTION (owner 2026-10-24, Moore draft): an <img> under media/stills narrower than
+     MIN_STILL_PX (1280) FAILs; AI-upscale it first (DESIGN.md "Footage motion").
   8. DEAD AIR (owner 2026-10-21): inside a blackout or declared hold of an epN documentary, at most MAX_QUIET (4 s)
      may pass with no narration, Paul line or audible outside sound (check 7's test, words or not); a bed alone
      does not count. Same exempt list.
@@ -39,6 +41,15 @@ if not _banned.exists():
     sys.exit(f"[lint_timeline] FAIL: {_banned} is missing; the banned-audio check cannot run (restore it from git, never skip it)")
 BANNED = {l.split()[0]: l.split()[1] for l in _banned.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")}
 MAX_QUIET = 4.0  # longest stretch with nothing but a bed playing inside a blackout or hold (DESIGN.md "hold", owner 21 Oct 26)
+
+
+MIN_STILL_PX = 1280  # owner 24 Oct 26, Moore draft: 28 of 32 stills under 1280 px rendered as grain; DESIGN.md "Footage motion"
+
+
+def still_width(path):
+    out = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width",
+                          "-of", "csv=p=0", str(path)], capture_output=True, text=True).stdout.strip()
+    return int(out) if out.isdigit() else 0
 
 
 def _num(tag, attr):
@@ -96,6 +107,10 @@ def main():
         if src and not src.group(1).startswith(("http", "data:")):
             if not (ep / src.group(1)).exists():
                 findings.append(f"missing file: {src.group(1)}")
+            elif kind == "img" and "/stills/" in src.group(1):
+                wpx = still_width(ep / src.group(1))
+                if wpx < MIN_STILL_PX:
+                    findings.append(f"low-res still: {src.group(1)} is {wpx} px wide, under {MIN_STILL_PX} (DESIGN.md: upscale blurry stills before use; owner 24 Oct 26)")
             elif kind == "audio" and hashlib.md5((ep / src.group(1)).read_bytes()).hexdigest() in BANNED:
                 findings.append(f"BANNED audio (assets/sfx/BANNED.md5): {src.group(1)} = {BANNED[hashlib.md5((ep / src.group(1)).read_bytes()).hexdigest()]}")
         start = re.search(r'data-start="([\d.]+)"', attrs)
