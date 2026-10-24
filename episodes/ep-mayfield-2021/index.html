@@ -3,7 +3,7 @@
      Script: edit_script.md (H1, T1, I1 owner-locked 22 Oct 26). Narration starts = cumulative wav durations (audio/manifest.json) + 0.30 s seams;
      Paul's hook clip stands in for H1-S1 (no narrator wav under it). I1 -> A1: 0.8 s chapter blackout from the end of i1-s7; A1's voice
      starts 0.2 s after it (128.208). Every host window is resolved from audio/<seg>.words.json (cue in a comment, episode seconds).
-     SOUND (reasoned in edit_script.md "Hook sound"): this story IS a warning, so the civil-defence siren runs low under Paul from 0:00
+     SOUND (reasoned in edit_script.md "Hook sound"): the civil-defence siren that ran under Paul from 0:00 was removed on 24 Oct 26 (owner, Moore draft: "can't even hear the narration ... no purpose"); the hook is dry
      (0.10: the source sits about 10 dB, 5.7 dB above the narrator, so 0.10 puts it about 14 dB under), swells to 0.18 under H1-S2, drops back
      under H1-S3 and hands over to the drone at T1. One bed from T1: the industrial pulse drone (owner Pixabay pack), its fade-out tail cut and
      the 1-25 s body self-crossfaded to 134 s (media/sfx/drone-loop.mp3, mean -14.6 dB, 1 s windows -16.4 to -13.2 dB, no lull) at 0.13.
@@ -33,6 +33,7 @@
   </style>
 </head>
 <body>
+<!-- 24 Oct 26: every ins-paul-N mounts its -v5eq file: the same take, EQ-matched to this episode's narration spectrum (owner, Moore draft: "the pitch is different, the overall thing is different"); 1-4 kHz and 4-8 kHz energy within about 0.5 dB of the narration median, loudness unchanged. -->
 <div id="root" data-composition-id="ep-mayfield-2021" data-start="0" data-width="1920" data-height="1080" data-duration="1154.559" data-fps="30">
 
   <!-- ============ NARRATION (H1-S1 is Paul's own line on ins-paul-1, so no nx-h1-s1) ============ -->
@@ -48,9 +49,6 @@
   <audio id="nx-i1-s7" src="audio/i1-s7.wav" data-start="115.471" data-duration="11.737" data-volume="1"></audio>
 
   <!-- ============ SOUND (narration above every bed: score 0.13, ambience <= 0.20) ============ -->
-  <audio id="sx-siren-hook" src="media/sfx/soundreality-civil-defense-siren-128262.mp3" data-bed="" data-start="0" data-duration="6.661" data-volume="0.1"></audio>
-  <audio id="sx-siren-swell" src="media/sfx/soundreality-civil-defense-siren-128262.mp3" data-bed="" data-start="6.661" data-media-start="6.661" data-duration="5.055" data-volume="0.18" data-callback="the same siren run, swelling on the cut into H1-S2"></audio>
-  <audio id="sx-siren-tail" src="media/sfx/soundreality-civil-defense-siren-128262.mp3" data-bed="" data-start="11.716" data-media-start="11.716" data-duration="7.487" data-volume="0.1" data-callback="the same siren run, back down under H1-S3 until the drone takes over"></audio>
   <audio id="sx-bed-drone" src="media/sfx/drone-loop.mp3" data-bed="" data-start="19.203" data-duration="108.805" data-volume="0.13"></audio>
   <audio id="sx-swell-01" src="media/sfx/sfx-swell.wav" data-bed="" data-start="13.756" data-duration="5" data-volume="0.4"></audio>   <!-- ends 18.756 on "right." (h1-s3 7.04) -->
   <audio id="sx-swell-02" src="media/sfx/sfx-swell.wav" data-bed="" data-start="48.086" data-duration="5" data-volume="0.4" data-callback="second swell, on the next peak line"></audio>   <!-- ends 53.086 on "seen it." (i1-s1 20.32) -->
@@ -85,11 +83,11 @@
   <!-- ============ H1 · HOOK (0-19.203) ============ -->
   <!-- Paul, frame one, his own voice (Omni clip, 10.005 s file). He stops speaking at 6.315 s (ffmpeg silencedetect -40 dB, 23 Oct 26):
        cut at 6.661 (0.35 s look), never filled to 10 s. File: ins-paul-1-v3.mp4 = the Flow download with the logo pass, +3.3 dB and a 0.95 limiter (audio_levels: -3.3 dB vs narration on 23 Oct 26); the original stays beside it. Everything after him moved +0.800 s from the 5.861 s stand-in on 23 Oct 26. -->
-  <video id="ins-paul-1" src="media/paul/ins-paul-1/ins-paul-1-v3.mp4" data-start="0" data-duration="6.661" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="A tornado warning goes off at work. What do you do? You go where they tell you. Somebody planned for it."></video>
+  <video id="ins-paul-1" src="media/paul/ins-paul-1/ins-paul-1-v5eq.mp4" data-start="0" data-duration="6.661" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="A tornado warning goes off at work. What do you do? You go where they tell you. Somebody planned for it."></video>
   <!-- popfig "Dec. 10, 2021": clip start + 0.2; out on "What do you do?" (h1-s1 2.04) + 0.6 exit = 2.64 -->
   <div id="host-g-h1-1" data-composition-id="g-h1-1" data-composition-src="compositions/g-h1-1.html" data-start="0.2" data-duration="2.44" data-track-index="4" data-width="1920" data-height="1080"></div>
 
-  <!-- H1-S2: hard cut on the siren swell to the cleared factory lot (DVIDS 7018049, Liz Roll/FEMA, image only), slow push -->
+  <!-- H1-S2: hard cut (was on the siren swell; siren removed 24 Oct 26) to the cleared factory lot (DVIDS 7018049, Liz Roll/FEMA, image only), slow push -->
   <section class="clip still-wrap" id="v-h1-factory" data-start="6.661" data-duration="5.055" data-track-index="1"><img id="v-h1-factory-img" src="media/stills/h1-s2-factory-site.jpg" alt=""></section>
   <!-- chip "14 lives" on "14" (h1-s2 1.74 = 8.701); source line +0.6; runs to the cut at 11.716 -->
   <div id="host-g-h1-2" data-composition-id="g-h1-2" data-composition-src="compositions/g-h1-2.html" data-start="8.701" data-duration="3.015" data-track-index="4" data-width="1920" data-height="1080"></div>
@@ -175,7 +173,7 @@
   <!-- A1-S2: NWS St. Louis track map (E01, weather.gov/lsx 12_10_2021, US gov work; 961 x 653, no upscaler on this box) from the segment start,
        then our warning map from "hours ahead" (a1-s2 3.10 = 140.737): 8:06 @142.057, Madison @147.157, Edwardsville @148.917;
        A1-S3: outline + clock from "reached" (a1-s3 0.42 = 151.393), 8:27 @153.313, "more than 20 minutes" @154.433; to A1-S4's start -->
-  <section class="clip still-wrap" id="v-a1-s2-track" data-start="137.637" data-duration="3.1" data-track-index="1"><img id="v-a1-s2-track-img" src="media/stills/a1-s2-nws-track-map.png" alt=""></section>
+  <section class="clip still-wrap" id="v-a1-s2-track" data-start="137.637" data-duration="3.1" data-track-index="1"><img id="v-a1-s2-track-img" src="media/stills/upscaled/a1-s2-nws-track-map.png" alt=""></section>
   <div id="host-g-a1-3" data-composition-id="g-a1-3" data-composition-src="compositions/g-a1-3.html" data-start="140.737" data-duration="15.302" data-track-index="2" data-width="1920" data-height="1080"></div>
 
   <!-- A1-S4: cite card 7:45 @157.419, 7:53 @163.199; safe room on "had a safe room" @165.839; outline @167.339; "no storm shelter" @168.419; to A1-S5 -->
@@ -493,7 +491,7 @@
   <!-- Z1-S5: NWS St. Louis Edwardsville track map (E01, US gov work; 961 x 653, no upscaler on this box) under "That bill followed the Edwardsville
        tornado and the six people ... at the delivery station" (to 1067.634 + 1 s); then a stock warehouse interior (Pixabay 208160, the sourcer's
        S9_c2, trimmed, video only) under "The plan rule took effect ... Existing warehouses had 120 days", chips on "took effect" (@1069.254) and "120" (@1072.734) -->
-  <section class="clip still-wrap" id="v-z1-track" data-start="1062.874" data-duration="5.76" data-track-index="1" data-callback="the NWS Edwardsville track map again (A1-S2), as the law that followed that tornado is named"><img id="v-z1-track-img" src="media/stills/a1-s2-nws-track-map.png" alt=""></section>
+  <section class="clip still-wrap" id="v-z1-track" data-start="1062.874" data-duration="5.76" data-track-index="1" data-callback="the NWS Edwardsville track map again (A1-S2), as the law that followed that tornado is named"><img id="v-z1-track-img" src="media/stills/upscaled/a1-s2-nws-track-map.png" alt=""></section>
   <video id="clip-z1-s5-racks" src="media/clips/z1-s5-warehouse-racks.mp4" data-start="1068.634" data-duration="7.864" data-media-start="0" data-track-index="1" muted></video>
   <div id="host-g-z1-4" data-composition-id="g-z1-4" data-composition-src="compositions/g-z1-4.html" data-start="1069.254" data-duration="7.244" data-track-index="4" data-width="1920" data-height="1080"></div>
 
@@ -524,11 +522,11 @@
        (1.31 s of silence before "OSHA"; 0.4 s lead like clip 1). Clip 5's words are the spoken ones (rephrased, owner 17:10). Files: ins-paul-<n>-v2.mp4 =
        the logo'd clip with a gain pass to the narration level (volume +12.5/+13.0/+8.2/+9.8/+7.5 dB, alimiter 0.95, aac 192k; audio_levels on 23 Oct 26:
        -12.5/-13.0/-8.2/-9.8/-7.5 dB vs narration before); the originals stay beside them. -->
-  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2-v2.mp4" data-start="267.705" data-duration="5.646" data-media-start="0.9" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="OSHA said the procedures met minimal federal safety guidelines for storm sheltering."></video>
-  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3-v2.mp4" data-start="442.050" data-duration="6.130" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="From Wednesday on, the forecast kept getting stronger, and it was right."></video>
-  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4-v2.mp4" data-start="597.892" data-duration="6.850" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Right as the storm reached Mayfield, the weather office watching it ran into a problem of its own."></video>
-  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5-v2.mp4" data-start="743.507" data-duration="9.460" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="At nine twenty-six that night, the forecasters in Paducah reached for the strongest words they have, and they said Mayfield by name."></video>
-  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6-v2.mp4" data-start="1099.484" data-duration="9.891" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Almost five years on, one of the two states makes warehouses plan for tornadoes. From the Weather Service, the advice is still the general kind."></video>
+  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2-v5eq.mp4" data-start="267.705" data-duration="5.646" data-media-start="0.9" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="OSHA said the procedures met minimal federal safety guidelines for storm sheltering."></video>
+  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3-v5eq.mp4" data-start="442.050" data-duration="6.130" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="From Wednesday on, the forecast kept getting stronger, and it was right."></video>
+  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4-v5eq.mp4" data-start="597.892" data-duration="6.850" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Right as the storm reached Mayfield, the weather office watching it ran into a problem of its own."></video>
+  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5-v5eq.mp4" data-start="743.507" data-duration="9.460" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="At nine twenty-six that night, the forecasters in Paducah reached for the strongest words they have, and they said Mayfield by name."></video>
+  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6-v5eq.mp4" data-start="1099.484" data-duration="9.891" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Almost five years on, one of the two states makes warehouses plan for tornadoes. From the Weather Service, the advice is still the general kind."></video>
   <!-- paint order follows file order, not data-track-index (verifier, 23 Oct 26): an overlay host sits AFTER every lower-track element it covers -->
   <div id="host-g-a1-12" data-composition-id="g-a1-12" data-composition-src="compositions/g-a1-12.html" data-start="267.705" data-duration="5.646" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a4-6 lands on "the strongest words" (clip 5 at 4.74 = 748.247): the chip names the words he does not say; out inside his window -->
