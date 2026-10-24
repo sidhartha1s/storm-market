@@ -122,7 +122,7 @@
   <audio id="nx-a3-s12" src="audio/a3-s12.wav" data-start="842.226" data-duration="17.61" data-volume="1"></audio>
   <audio id="nx-a3-s13" src="audio/a3-s13.wav" data-start="860.136" data-duration="21.638" data-volume="1"></audio>
   <!-- ins-paul-6 (A3-S13b, 24 Oct 26, owner's go "you can go for running Camille 6"): his last word ends 7.44 s into the clip, then a 0.35 s look; track 6 so the a3 list graphic (which spans the insert, held) sits under him; pip-w08, pip-ring-w08 and sx-bed-a3b split around him. Every time from 881.774 moved +7.8 (one-shot content-blind transform, not committed); g-a3-list cues more/eight and END moved +7.8. -->
-  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6-vc.mp4" data-start="881.774" data-duration="7.8" data-track-index="6" data-volume="1" data-has-audio="true" data-srt-label="Same station wagon, same night. The Raines family got their little girl back. The Woods never got Donna Fay or Gary back.">
+  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6-vc.mp4" data-start="881.774" data-duration="7.8" data-track-index="6" data-volume="1" data-has-audio="true" data-srt-label="Same station wagon, same night. The Raines family got their little girl back. The Woods never got Donna Fay or Gary back."></video>
   <audio id="nx-a3-s14" src="audio/a3-s14.wav" data-start="889.874" data-duration="16.413" data-volume="1"></audio>
   <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="909.787" data-duration="23.153" data-volume="1"></audio>
   <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="933.24" data-duration="26.523" data-volume="1"></audio>
@@ -444,6 +444,7 @@ window.__timelines["ep-camille-1969"] = gsap.timeline({ paused: true });
 const tl = window.__timelines["ep-camille-1969"];
 // Slow drift on every still (owner 24 Oct 26, Moore draft: the punch zooms "are dog shit ... Ken Burns was better"):
 // a 6% push over the still's own window, in on even stills and out on odd, linear so nothing snaps. Replaces 43 punch() calls.
+tl.to("#kb-a2-s21-b", { opacity: 0.15, duration: 4.5, ease: "power1.in" }, 625.032);
 document.querySelectorAll(".still-wrap").forEach((sec, i) => {
   const img = sec.querySelector("img"), t = +sec.dataset.start, d = +sec.dataset.duration;
   const from = i % 2 ? 1.06 : 1.0, to = i % 2 ? 1.0 : 1.06;
