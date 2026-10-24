@@ -53,6 +53,9 @@ sys.modules["librosa"] = librosa; sys.modules["librosa.filters"] = librosa.filte
 soundfile = types.ModuleType("soundfile"); soundfile.write = wav_write; sys.modules["soundfile"] = soundfile
 # api.py imports the TTS text front end (inflect, eng_to_ipa ...); the converter never calls it.
 ov_text = types.ModuleType("openvoice.text"); ov_text.text_to_sequence = None; sys.modules["openvoice.text"] = ov_text
+# the converter's enable_watermark=False kwarg crashes its base class (upstream bug); a wavmark stub whose model is
+# None makes add_watermark() a no-op instead.
+wavmark = types.ModuleType("wavmark"); wavmark.load_model = lambda: type("NoMark", (), {"to": lambda self, d: None})(); sys.modules["wavmark"] = wavmark
 sys.path.insert(0, OV_SRC)
 import torch  # noqa: E402
 from openvoice.api import ToneColorConverter  # noqa: E402
