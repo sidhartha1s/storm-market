@@ -72,7 +72,7 @@ def duration(path):
 
 
 def main(clips):
-    conv = ToneColorConverter(os.path.join(CKPT, "config.json"), device="cpu", enable_watermark=False)
+    conv = ToneColorConverter(os.path.join(CKPT, "config.json"), device="cpu")
     conv.load_ckpt(os.path.join(CKPT, "checkpoint.pth"))
     tgt = conv.extract_se([VOICE_REF])
     for clip in clips:
