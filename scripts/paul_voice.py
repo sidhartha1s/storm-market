@@ -51,6 +51,8 @@ librosa = types.ModuleType("librosa"); librosa.load = ff_load
 librosa.filters = types.ModuleType("librosa.filters"); librosa.filters.mel = lambda *a, **k: (_ for _ in ()).throw(RuntimeError("mel not stubbed"))
 sys.modules["librosa"] = librosa; sys.modules["librosa.filters"] = librosa.filters
 soundfile = types.ModuleType("soundfile"); soundfile.write = wav_write; sys.modules["soundfile"] = soundfile
+# api.py imports the TTS text front end (inflect, eng_to_ipa ...); the converter never calls it.
+ov_text = types.ModuleType("openvoice.text"); ov_text.text_to_sequence = None; sys.modules["openvoice.text"] = ov_text
 sys.path.insert(0, OV_SRC)
 import torch  # noqa: E402
 from openvoice.api import ToneColorConverter  # noqa: E402
