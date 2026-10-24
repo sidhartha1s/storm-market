@@ -144,12 +144,11 @@
   <audio id="nx-a5-s10" src="audio/a5-s10.wav" data-start="1070.508" data-duration="17.023" data-volume="1"></audio>
   <audio id="nx-a5-s11" src="audio/a5-s11.wav" data-start="1103.731" data-duration="9.598" data-volume="1"></audio>
 
-  <!-- ============ SOUND (22 Oct 26). Hook: the civil-defence siren, because this story is a warning (DESIGN.md "hook's sound is
-       reasoned"): low under Paul and the narrator, cut dead on the cellar cut at 7.00. Beds: one DeAPI score per act (claim-free,
+  <!-- ============ SOUND (22 Oct 26). Hook: no sound bed (owner 24 Oct 26: the siren "can't even hear the narration ... no purpose"; the
+       civil-defence siren tag was removed, DESIGN.md "hook's sound is reasoned" lets the hook stay dry). Beds: one DeAPI score per act (claim-free,
        assets/sfx/deapi), volumes matched to the dark-ambient bed at 0.15 by mean loudness (unease/stormhybrid -17.8 dB -> 0.126,
        urgent -16.3 -> 0.106, tension -11.5 -> 0.064, close -16.6 -> 0.112); out under the CTA and under each insert's own audio
        (the bed resumes at its own media time after the hole). A3 opens out of the CTA on the NOAA Weather Radio tone (1050 Hz, ffmpeg). -->
-  <audio id="sx-siren-hook" data-bed="" src="media/sfx/soundreality-civil-defense-siren-128262.mp3" data-start="0" data-duration="7.18" data-volume="0.1"></audio>
   <audio id="sx-bed-intro" data-bed="" src="media/sfx/score-act1-darkambient.mp3" data-start="7.18" data-duration="99.882" data-volume="0.15"></audio>
   <audio id="sx-bed-a1" data-bed="" src="media/sfx/score-act2-unease.mp3" data-start="107.762" data-duration="169.9" data-volume="0.126"></audio>
   <audio id="sx-bed-a2-a" data-bed="" src="media/sfx/score-act4-stormhybrid.mp3" data-start="278.538" data-duration="65.59" data-volume="0.126"></audio>
@@ -495,67 +494,13 @@
 window.__timelines = window.__timelines || {};
 window.__timelines["ep-moore-1999"] = gsap.timeline({ paused: true });
 const tl = window.__timelines["ep-moore-1999"];
-// Quick punch on a still (Joplin's helper): fast in to s, hold, ease back from at + 1.1. Absolute seconds.
-function punch(sel, at, s = 1.10) {
-  tl.fromTo(sel, { scale: 1.0 }, { scale: s, duration: 0.30, ease: "power4.out" }, at);
-  tl.to(sel, { scale: 1.0, duration: 0.45, ease: "power2.inOut" }, at + 1.1);
-}
-/* INTRO */
-punch("#kb-h1-s2-a9", 2.93, 1.08);
-punch("#kb-h1-s2-a9", 4.48, 1.06);          /* "didn't" */
-punch("#kb-h1-s3-sa", 12.675, 1.08);
-punch("#kb-h1-s3-aerial", 16.295, 1.10);
-punch("#kb-h1-s3-aerial", 20.115, 1.06);    /* "decided" */
-punch("#kb-t1-s1-map", 21.731, 1.12);
-punch("#kb-i1-s1-ktlx", 59.092, 1.08);
-punch("#kb-i1-s3-bc", 86.385, 1.10);
-punch("#kb-i1-s3-bc", 89.205, 1.06);        /* "12" */
-punch("#kb-i1-s3-moore", 92.065, 1.10);
-punch("#kb-i1-s3-moore", 95.925, 1.06);     /* "houses" */
-punch("#kb-i1-s3-setup", 97.385, 1.08);
-punch("#kb-i1-s3-setup", 100.045, 1.06);     /* "before" */
-punch("#kb-i1-s3-goes", 101.985, 1.08);
-/* A1 punches */
-punch("#kb-a1-s4-wdss", 189.03, 1.06);   /* "That evening" 16.56 + 172.29 */
-/* A2 punches */
-punch("#kb-a2-s1-a9", 295.898, 1.08);
-punch("#kb-a2-s1-a9", 296.978, 1.06);        /* "What does" 278.558 + 18.24 */
-punch("#kb-a2-s2-slab", 299.652, 1.08);
-punch("#kb-a2-s2-slab", 301.332, 1.06);      /* "two" 299.472 + 1.68 */
-punch("#kb-a2-s2-cars", 304.672, 1.10);
-punch("#kb-a2-s2-cars", 305.832, 1.06);      /* "carried" 299.472 + 6.18 */
-punch("#kb-a2-s2-bc", 307.692, 1.08);
-punch("#kb-a2-s2-bc", 311.012, 1.06);        /* "Damage" 299.472 + 11.36 */
-punch("#kb-a2-s2-map", 313.592, 1.08);
-punch("#kb-a2-s2-map", 314.672, 1.06);       /* "Bridge Creek" 299.472 + 15.02 */
-punch("#kb-a2-s2-map", 317.57, 1.05);        /* "survey teams" 299.472 + 17.92 */
-punch("#kb-a2-s8-aerial", 433.453, 1.08);
-punch("#kb-a2-s8-aerial", 436.273, 1.06);    /* "deputy" 433.273 + 2.82 */
-punch("#kb-a2-s8-debris", 439.113, 1.10);
-punch("#kb-a2-s8-truck", 442.313, 1.08);
-punch("#kb-a2-s8-truck", 445.173, 1.05);     /* "same." 433.273 + 11.72 */
-/* A3 punches */
-/* A4 punches */
-punch("#kb-a4-s1-moore", 670.404, 1.10);
-punch("#kb-a4-s1-moore", 671.944, 1.06);     /* "three" */
-punch("#kb-a4-s5-debris", 744.867, 1.08);
-punch("#kb-a4-s5-debris", 746.524, 1.06);    /* "people underground" */
-punch("#kb-a4-s9-slab", 816.905, 1.08);
-punch("#kb-a4-s9-slab", 820.025, 1.06);      /* "Two researchers" */
-punch("#kb-a4-s9-debris", 822.285, 1.08);
-punch("#kb-a4-s9-debris", 825.245, 1.06);    /* "wrote down the rest" */
-/* A5 punches */
-punch("#kb-a5-s2-moore", 880.875, 1.08);
-punch("#kb-a5-s2-dmg6", 885.855, 1.08);
-punch("#kb-a5-s2-dmg1", 889.115, 1.06);
-punch("#kb-a5-s2-dmg2", 895.115, 1.06);
-punch("#kb-a5-s6-te", 953.353, 1.08);
-punch("#kb-a5-s6-te", 958.273, 1.06);       /* "tornado emergency" */
-punch("#kb-a5-s6-aerial", 969.793, 1.08);
-punch("#kb-a5-s7-cover", 975.748, 1.06);
-punch("#kb-a5-s10-path", 1077.998, 1.08);
-punch("#kb-a5-s10-hall", 1083.508, 1.08);
-punch("#kb-a5-s10-hall", 1085.668, 1.06);   /* "cellar" 1064.231 + 15.24 */
+// Slow drift on every still (owner 24 Oct 26, Moore draft: the punch zooms "are dog shit ... Ken Burns was better"):
+// a 6% push over the still's own window, in on even stills and out on odd, linear so nothing snaps. Replaces 50 punch() calls.
+document.querySelectorAll(".still-wrap").forEach((sec, i) => {
+  const img = sec.querySelector("img"), t = +sec.dataset.start, d = +sec.dataset.duration;
+  const from = i % 2 ? 1.06 : 1.0, to = i % 2 ? 1.0 : 1.06;
+  tl.fromTo(img, { scale: from }, { scale: to, duration: d, ease: "none" }, t);
+});
 tl.set({}, {}, 1117.329);
 </script>
 </body>

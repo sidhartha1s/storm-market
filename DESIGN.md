@@ -243,8 +243,10 @@ floors/ceilings; taste stays with the model.
 - **Footage motion: everything on screen moves; slow Ken Burns is retired** (owner, 17 Oct 26:
   "whatever you are showing should be moving. Don't put a static image just like that sitting
   for a long time ... Ken Burns is old. We're not doing that anymore. People don't have attention
-  ... There could be pops, there could be overlays"). A still gets a quick punch zoom in/out, a
-  pop or an overlay on its narration beat, not a slow drift, and not overdone. A video with action
+  ... There could be pops, there could be overlays"). Revised by the owner on 24 Oct 26 after the Moore
+  draft ran 50 snap punches on low-res stills ("The zoom-ins are dog shit ... Ken Burns was better"):
+  a still gets ONE slow linear push or pull of about 6% over its whole window (no snap, no hold-and-
+  return), plus a pop or an overlay on its narration beat; never a punch zoom. A video with action
   beats any still. Blurry public-domain stills are AI-upscaled before use ("All these images ...
   are really blurry. So, all of them should be upskilled"). A static aerial with no action is not
   used unless it is the only picture for that beat.

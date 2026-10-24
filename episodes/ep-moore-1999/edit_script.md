@@ -27,7 +27,7 @@ ab66a843-618c-4d34-8862-6c3f44e81348). Cuts: `C:\Users\Sidhartha\.claude\scratch
   (Tornado Emergency, and the TV advice not to copy) → the place it did save (Moore, 2,000+ in the path) → what changed.
 
 ## Hook sound (DESIGN.md "Cold-open hook contract": reasoned per episode)
-This story IS a warning, so the civil-defence siren (`soundreality-civil-defense-siren-128262.mp3`) is earned here:
+Hook sound: none. The civil-defence siren was in the 23 Oct draft and the owner cut it on 24 Oct ("can't even hear the narration ... no purpose"). The line below is history, not an instruction:
 it fades up under Paul's line, ducks under the narrator, and stops dead on the cut to the cellar-door image. A NOAA
 Weather Radio alert tone (1050 Hz, self-made with ffmpeg: zero claim risk) marks the 6:57 statement in act 3.
 
@@ -93,7 +93,7 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 ## H1 · Hook
 
 ### H1-S1 — narration
-**Picture:** **Paul on camera:** full frame at 0:00, the one hook sentence, nothing added. Civil-defence siren fades up under him. Popfig "OKLAHOMA · MAY 3, 1999" inside the first second. [HOOK] [Q] [loop E open]
+**Picture:** **Paul on camera:** full frame at 0:00, the one hook sentence, nothing added. No sound bed under him (siren removed 24 Oct 26). Popfig "OKLAHOMA · MAY 3, 1999" inside the first second. [HOOK] [Q] [loop E open]
 > If you're warned in time, you'll make it, won't you?
 
 *register: 9/10*
