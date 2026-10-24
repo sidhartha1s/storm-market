@@ -30,6 +30,7 @@
       width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
     .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
       box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
+      video.graded { filter: saturate(0.88) contrast(1.06) brightness(0.94); }   /* broadcast clips only (one subtle grade, repo CLAUDE.md) */
   </style>
 </head>
 <body>
@@ -125,7 +126,7 @@
   <!-- I1-S4: Mayfield downtown aerial (NWS Paducah survey) from "At the candle factory"; chip "8 lives" on "eight did" (@87.232),
        source line +0.4; cut on "in St. Louis" (@89.652) -->
   <!-- still -> footage (24 Oct 26 recut): USACE Mayfield debris video (DVIDS 827619, PD) @57.40 s: wrecked metal building, crews beyond -->
-  <video id="clip-i1-graves1" src="media/clips/cut-i1-graves1-v3.mp4" data-start="85.892" data-duration="3.76" data-media-start="0" data-track-index="1" muted></video>
+  <video id="clip-i1-graves1" src="media/clips/cut-i1-graves1-v4.mp4" data-start="85.892" data-duration="3.76" data-media-start="0" data-track-index="1" muted></video>
   <div id="host-g-i1-6" data-composition-id="g-i1-6" data-composition-src="compositions/g-i1-6.html" data-start="87.232" data-duration="2.42" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- the St. Louis office's own radar of Edwardsville (NWS LSX event page, KLSX 4-panel) under "the weather office in Saint Louis ... wrote down what had been missing" -->
   <section class="clip still-wrap" id="v-i1-klsx" data-start="89.652" data-duration="4.76" data-track-index="1"><img id="v-i1-klsx-img" src="media/stills/i1-s4-klsx-edwardsville-radar.png" alt=""></section>
@@ -199,7 +200,7 @@
        letterhead (April 26, 2022) under "hazard alert letter" @235.950, the "I recommend that you voluntarily" paragraph from 238.000
        ("asking" @237.930, "voluntary" @239.310). Chips: "Hazard Alert Letter" @235.950, "No citation" @240.930, "no penalty" @242.130;
        the chip host runs to "The AP reported" (a1-s11 0.60 = 243.690) so the last chip is read before it slides out. -->
-  <video id="clip-a1-s10-gma" src="media/clips/a1-s10-gma-building.mp4" data-start="232.850" data-duration="2.102" data-media-start="0" data-track-index="1" muted></video>
+  <video id="clip-a1-s10-gma" class="graded" src="media/clips/a1-s10-gma-building.mp4" data-start="232.850" data-duration="2.102" data-media-start="0" data-track-index="1" muted></video>
   <section class="clip still-wrap" id="v-a1-s10-lh" data-start="234.952" data-duration="3.048" data-track-index="1"><img id="v-a1-s10-lh-img" src="media/stills/a1-s10-hal-lh-v3.png" alt=""></section>
   <section class="clip still-wrap" id="v-a1-s10-para" data-start="238.000" data-duration="5.69" data-track-index="1"><img id="v-a1-s10-para-img" src="media/stills/a1-s10-hal-para-v2.png" alt=""></section>
   <div id="host-g-a1-9" data-composition-id="g-a1-9" data-composition-src="compositions/g-a1-9.html" data-start="235.950" data-duration="7.74" data-track-index="4" data-width="1920" data-height="1080"></div>
@@ -253,7 +254,7 @@
 
   <!-- A2-S6: Friday-morning local TV pull (NewsChannel 5 Nashville, Friday 10 Dec 2021, provenance a2-s6_c4: NEWS-CLAIM-LIKELY, narrate over;
        already trimmed, muted) under "Then, on Friday morning, the Storm Prediction Center goes to a" to "moderate" (385.050) -->
-  <video id="clip-a2-s6-tv" src="media/clips/a2-s6-tv-friday-am.mp4" data-start="381.947" data-duration="3.103" data-media-start="0" data-track-index="1" muted></video>
+  <video id="clip-a2-s6-tv" class="graded" src="media/clips/a2-s6-tv-friday-am.mp4" data-start="381.947" data-duration="3.103" data-media-start="0" data-track-index="1" muted></video>
   <!-- the Day 1 Moderate graphic and chips: "moderate" @385.050, "level four of five" @386.190, "12 minutes" @388.590; to "A minute later" (393.010) -->
   <div id="host-g-a2-7" data-composition-id="g-a2-7" data-composition-src="compositions/g-a2-7.html" data-start="385.050" data-duration="7.960" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- the Paducah post, full screen: "Think about" @394.950, "Better to err" @396.670; to A2-S7 -->
@@ -355,7 +356,7 @@
   <!-- A4-S3: Mayfield pictures under Saxton's lines (no factory-by-day video exists; no face beneath his name). Name card on "Mark" (693.830),
        quote on "I can't believe" (705.170), card out at 703.0 -->
   <!-- still -> footage (24 Oct 26 recut): USACE Mayfield (DVIDS 827619, PD) @51.62 s: debris truck, then a grapple loading a branch pile -->
-  <video id="clip-a4-downtown" src="media/clips/cut-a4-downtown-v3.mp4" data-start="690.390" data-duration="5.438" data-media-start="0" data-track-index="1" muted></video>
+  <video id="clip-a4-downtown" src="media/clips/cut-a4-downtown-v4.mp4" data-start="690.390" data-duration="5.438" data-media-start="0" data-track-index="1" muted></video>
   <video id="v-a4-trucks" src="media/clips/a4-s3-usace-trucks.mp4" data-start="695.828" data-duration="3.667" data-track-index="1" muted></video>
   <section class="clip still-wrap" id="v-a4-house" data-start="699.495" data-duration="5.533" data-track-index="1"><img id="v-a4-house-img" src="media/stills/a4-s11-house.jpg" alt=""></section>
   <!-- still -> footage (24 Oct 26 recut): CBS pull (M06, narrated over, muted) @64.42 s: downtown Mayfield brick building in a debris field -->
@@ -381,7 +382,7 @@
 
   <!-- A4-S9: RHS panel from "24" (781.536) over Mayfield only: survey aerial, USACE crew on a cleared Mayfield lot, downtown Mayfield -->
   <!-- still -> footage (24 Oct 26 recut): USACE Mayfield (DVIDS 827619, PD) @34.51 s: grapple loads a truck, then the crew on a cleared lot; runs on into v-a4-crew (same shot, 40 s) -->
-  <video id="clip-a4-graves1" src="media/clips/cut-a4-graves1-v3.mp4" data-start="779.956" data-duration="5.492" data-media-start="0" data-track-index="1" muted></video>
+  <video id="clip-a4-graves1" src="media/clips/cut-a4-graves1-v4.mp4" data-start="779.956" data-duration="5.492" data-media-start="0" data-track-index="1" muted></video>
   <video id="v-a4-crew" src="media/clips/a4-s9-usace-crew.mp4" data-start="785.448" data-duration="4.5" data-track-index="1" muted></video>
   <section class="clip still-wrap" id="v-a4-downtown2" data-start="789.948" data-duration="4.913" data-track-index="1" data-callback="downtown Mayfield again, tighter, under the record toll"><img id="v-a4-downtown2-img" src="media/stills/a4-s3-downtown-debris.jpg" alt=""></section>
   <div id="host-g-a4-9" data-composition-id="g-a4-9" data-composition-src="compositions/g-a4-9.html" data-start="781.536" data-duration="13.325" data-track-index="4" data-width="1920" data-height="1080"></div>
