@@ -33,7 +33,7 @@
   </style>
 </head>
 <body>
-<!-- 24 Oct 26: every ins-paul-N mounts its -v5eq file: the same take, EQ-matched to this episode's narration spectrum (owner, Moore draft: "the pitch is different, the overall thing is different"); 1-4 kHz and 4-8 kHz energy within about 0.5 dB of the narration median, loudness unchanged. -->
+<!-- 24 Oct 26: every ins-paul-N mounts its -vc file: the same take with its audio converted to the narrator's cloned voice by scripts/paul_voice.py (OpenVoice tone colour, timing kept, lips in sync); the -v5eq EQ pass before it is superseded (owner, Moore draft: "the pitch is different, the overall thing is different"); 1-4 kHz and 4-8 kHz energy within about 0.5 dB of the narration median, loudness unchanged. -->
 <div id="root" data-composition-id="ep-mayfield-2021" data-start="0" data-width="1920" data-height="1080" data-duration="1154.559" data-fps="30">
 
   <!-- ============ NARRATION (H1-S1 is Paul's own line on ins-paul-1, so no nx-h1-s1) ============ -->
@@ -83,7 +83,7 @@
   <!-- ============ H1 · HOOK (0-19.203) ============ -->
   <!-- Paul, frame one, his own voice (Omni clip, 10.005 s file). He stops speaking at 6.315 s (ffmpeg silencedetect -40 dB, 23 Oct 26):
        cut at 6.661 (0.35 s look), never filled to 10 s. File: ins-paul-1-v3.mp4 = the Flow download with the logo pass, +3.3 dB and a 0.95 limiter (audio_levels: -3.3 dB vs narration on 23 Oct 26); the original stays beside it. Everything after him moved +0.800 s from the 5.861 s stand-in on 23 Oct 26. -->
-  <video id="ins-paul-1" src="media/paul/ins-paul-1/ins-paul-1-v5eq.mp4" data-start="0" data-duration="6.661" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="A tornado warning goes off at work. What do you do? You go where they tell you. Somebody planned for it."></video>
+  <video id="ins-paul-1" src="media/paul/ins-paul-1/ins-paul-1-vc.mp4" data-start="0" data-duration="6.661" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="A tornado warning goes off at work. What do you do? You go where they tell you. Somebody planned for it."></video>
   <!-- popfig "Dec. 10, 2021": clip start + 0.2; out on "What do you do?" (h1-s1 2.04) + 0.6 exit = 2.64 -->
   <div id="host-g-h1-1" data-composition-id="g-h1-1" data-composition-src="compositions/g-h1-1.html" data-start="0.2" data-duration="2.44" data-track-index="4" data-width="1920" data-height="1080"></div>
 
@@ -522,11 +522,11 @@
        (1.31 s of silence before "OSHA"; 0.4 s lead like clip 1). Clip 5's words are the spoken ones (rephrased, owner 17:10). Files: ins-paul-<n>-v2.mp4 =
        the logo'd clip with a gain pass to the narration level (volume +12.5/+13.0/+8.2/+9.8/+7.5 dB, alimiter 0.95, aac 192k; audio_levels on 23 Oct 26:
        -12.5/-13.0/-8.2/-9.8/-7.5 dB vs narration before); the originals stay beside them. -->
-  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2-v5eq.mp4" data-start="267.705" data-duration="5.646" data-media-start="0.9" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="OSHA said the procedures met minimal federal safety guidelines for storm sheltering."></video>
-  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3-v5eq.mp4" data-start="442.050" data-duration="6.130" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="From Wednesday on, the forecast kept getting stronger, and it was right."></video>
-  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4-v5eq.mp4" data-start="597.892" data-duration="6.850" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Right as the storm reached Mayfield, the weather office watching it ran into a problem of its own."></video>
-  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5-v5eq.mp4" data-start="743.507" data-duration="9.460" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="At nine twenty-six that night, the forecasters in Paducah reached for the strongest words they have, and they said Mayfield by name."></video>
-  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6-v5eq.mp4" data-start="1099.484" data-duration="9.891" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Almost five years on, one of the two states makes warehouses plan for tornadoes. From the Weather Service, the advice is still the general kind."></video>
+  <video id="ins-paul-2" src="media/paul/ins-paul-2/ins-paul-2-vc.mp4" data-start="267.705" data-duration="5.646" data-media-start="0.9" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="OSHA said the procedures met minimal federal safety guidelines for storm sheltering."></video>
+  <video id="ins-paul-3" src="media/paul/ins-paul-3/ins-paul-3-vc.mp4" data-start="442.050" data-duration="6.130" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="From Wednesday on, the forecast kept getting stronger, and it was right."></video>
+  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4-vc.mp4" data-start="597.892" data-duration="6.850" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Right as the storm reached Mayfield, the weather office watching it ran into a problem of its own."></video>
+  <video id="ins-paul-5" src="media/paul/ins-paul-5/ins-paul-5-vc.mp4" data-start="743.507" data-duration="9.460" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="At nine twenty-six that night, the forecasters in Paducah reached for the strongest words they have, and they said Mayfield by name."></video>
+  <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6-vc.mp4" data-start="1099.484" data-duration="9.891" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="Almost five years on, one of the two states makes warehouses plan for tornadoes. From the Weather Service, the advice is still the general kind."></video>
   <!-- paint order follows file order, not data-track-index (verifier, 23 Oct 26): an overlay host sits AFTER every lower-track element it covers -->
   <div id="host-g-a1-12" data-composition-id="g-a1-12" data-composition-src="compositions/g-a1-12.html" data-start="267.705" data-duration="5.646" data-track-index="4" data-width="1920" data-height="1080"></div>
   <!-- g-a4-6 lands on "the strongest words" (clip 5 at 4.74 = 748.247): the chip names the words he does not say; out inside his window -->
