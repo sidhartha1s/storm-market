@@ -56,7 +56,7 @@ selection; cut at the transcript's action/emotion peak).
    `<video>/<img>/<audio>` elements with `data-start`/`data-duration` in `index.html`.
    Cut points = word timestamps read by the model, chosen editorially. No placement.mjs port.
 3. Deterministic checks stay small: `scripts/lint_timeline.py` checks that every referenced file exists, every
-   window sits inside the composition, narration does not overlap inserts, no banned audio hash, and the repeat
+   window sits inside the composition, narration does not overlap inserts, no banned audio hash, every `<video>`/`<audio>` is closed (Camille draft 1 went black after an unclosed tag; test `python3 scripts/test_unclosed_media.py`), and the repeat
    rule. Everything judgment-shaped stays with the model.
 
 ## Sourcing — agent-executed, owner never downloads

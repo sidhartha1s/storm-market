@@ -21,6 +21,9 @@ Checks episodes/<slug>/index.html:
   8. DEAD AIR (owner 2026-10-21): inside a blackout or declared hold of an epN documentary, at most MAX_QUIET (4 s)
      may pass with no narration, Paul line or audible outside sound (check 7's test, words or not); a bed alone
      does not count. Same exempt list.
+  9. UNCLOSED MEDIA (Camille draft 1, 25 Oct 26): every <video>/<audio> in index.html and compositions/*.html is
+     closed before the next one opens. An unclosed tag makes every later element its child, so the render went black
+     after 625 s (fixed in 339244b6).
 
 Usage: python3 scripts/lint_timeline.py episodes/<slug>
 Exit 0 clean, 1 findings (loud).
@@ -77,6 +80,21 @@ def longest_gap(spans, ws, we):
     return longest
 
 
+MEDIA_TAG = re.compile(r'<(/?)(video|audio)\b((?:[^>"]|"[^"]*")*)>', re.I)
+
+
+def unclosed_media(html):
+    """ids (or the tag start) of every <video>/<audio> not closed before the next media tag opens."""
+    bad, open_tag = [], None
+    for m in MEDIA_TAG.finditer(re.sub(r"<!--.*?-->", "", html, flags=re.S)):
+        closing, kind = m.group(1), m.group(2).lower()
+        if open_tag and not (closing and kind == open_tag[0]):
+            bad.append(open_tag[1])
+        idm = re.search(r'\bid="([^"]*)"', m.group(3))
+        open_tag = None if closing else (kind, idm.group(1) if idm else m.group(0)[:80])
+    return bad + ([open_tag[1]] if open_tag else [])
+
+
 def main():
     ep = Path(sys.argv[1])
     html = (ep / "index.html").read_text(encoding="utf-8")
@@ -86,6 +104,9 @@ def main():
     if not m:
         sys.exit("no composition data-duration found")
     comp_dur = float(m.group(1))
+    for page in [ep / "index.html", *sorted((ep / "compositions").glob("*.html"))]:
+        for tag in unclosed_media(page.read_text(encoding="utf-8")):
+            findings.append(f"unclosed media tag in {page.relative_to(ep).as_posix()}: {tag} (close it before the next element)")
 
     tags = re.findall(r"<(video|img|audio|script)\b[^>]*>", html)
     elems = re.finditer(r'<(video|img|audio)\b([^>]*)>', html)
