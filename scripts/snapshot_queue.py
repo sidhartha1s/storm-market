@@ -20,6 +20,7 @@ import json
 import msvcrt
 import os
 import re
+import shutil
 import subprocess
 import sys
 import tarfile
@@ -32,6 +33,7 @@ sys.path.insert(0, str(SCRIPTS))
 from render_preflight import parse_pin  # noqa: E402
 
 ZBOOK_REPO = r"C:\Users\Sidhartha\Automation Projects\storm-market"
+SNAP_TIMEOUT = 600   # a 3-frame snapshot takes about a minute; ten times that is a hung Chrome
 ZBOOK_CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"  # Smart App Control blocks hyperframes' own shell (learnings/render.md 10 Oct 26, item 3)
 REF = re.compile(r"""(?:src|href)="([^"#?]+)"|url\(['"]?([^'")#?]+)""")
 
@@ -55,7 +57,9 @@ def submit(ep, at, label):
     job = f"{time.time_ns()}" + (f"-{label}" if label else "")   # 19 digits until 2286, so names sort oldest first
     (SPOOL / "pending").mkdir(parents=True, exist_ok=True)
     out = ep / ".qc-tmp" / "snapq" / job
-    (SPOOL / "pending" / f"{job}.json").write_text(json.dumps({"ep": str(ep), "at": times, "out": str(out)}), encoding="utf-8")
+    tmp = SPOOL / "pending" / f"{job}.json.tmp"   # the worker globs *.json, so it never reads a half-written job
+    tmp.write_text(json.dumps({"ep": str(ep), "at": times, "out": str(out)}), encoding="utf-8")
+    os.replace(tmp, tmp.with_suffix(""))
     print(f"[snapq] queued {job}: {len(times)} frame(s) -> {out}")
     print(f"[snapq] result: {SPOOL / 'done' / (job + '.json')}")
 
@@ -111,10 +115,28 @@ def snap_local(job, pin):
     gate = subprocess.run([sys.executable, str(SCRIPTS / "render_busy.py")])
     if gate.returncode:
         return gate.returncode, "render_busy refused"
-    cmd = ["npx", "--yes", f"hyperframes@{pin}", "snapshot", job["ep"], "--at", ",".join(map(str, job["at"])),
+    cmd = [shutil.which("npx") or "npx", "--yes", f"hyperframes@{pin}", "snapshot", job["ep"], "--at", ",".join(map(str, job["at"])),
            "--no-end", "--describe", "false", "-o", job["out"]]
-    r = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=900)  # npx is a .cmd on Windows
-    return r.returncode, (r.stdout + r.stderr)[-400:]
+    with tempfile.TemporaryFile("w+", encoding="utf-8", errors="replace") as log:   # a file, not a pipe: an orphan Chrome holding a pipe hangs the worker
+        p = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT, creationflags=subprocess.CREATE_NO_WINDOW)
+        try:
+            rc = p.wait(timeout=SNAP_TIMEOUT)
+        except subprocess.TimeoutExpired:
+            subprocess.run(["taskkill", "/T", "/F", "/PID", str(p.pid)], capture_output=True)   # the whole tree: npx, node, Chrome
+            p.wait()
+            rc = 1
+            log.write(f" | killed after {SNAP_TIMEOUT} s")
+        log.seek(0)
+        return rc, log.read()[-400:]
+
+
+KILL_REMOTE = ("powershell -NoProfile -Command \"Get-CimInstance Win32_Process | Where-Object { $_.Name -eq 'node.exe' -and "
+               "$_.CommandLine -like '*.snapq\\mirror*' } | ForEach-Object { taskkill /T /F /PID $_.ProcessId }\"")
+
+
+def kill_remote():
+    """Stop the node tree of any snapshot still running from the ZBook mirror (a timed-out job), so jobs never overlap."""
+    ssh(KILL_REMOTE, 120)
 
 
 def snap_zbook(job, pin, name):
@@ -122,8 +144,14 @@ def snap_zbook(job, pin, name):
     sent, total = ship(ep)
     mirror = rf"{ZBOOK_REPO}\.snapq\mirror\{ep.name}"
     rout = rf"{ZBOOK_REPO}\.snapq\out\{name}"
-    r = ssh(f'python "{ZBOOK_REPO}\\scripts\\render_busy.py" && set "HYPERFRAMES_BROWSER_PATH={ZBOOK_CHROME}" && '
-            f'npx --yes hyperframes@{pin} snapshot "{mirror}" --at {",".join(map(str, job["at"]))} --no-end --describe false -o "{rout}"', 900)
+    # `python`, not `python3`: on the ZBook python3 is the WindowsApps redirector that hung TTS jobs (22 Oct 26); python is Python312
+    try:
+        r = ssh(f'python "{ZBOOK_REPO}\\scripts\\render_busy.py" && set "HYPERFRAMES_BROWSER_PATH={ZBOOK_CHROME}" && '
+                f'npx --yes hyperframes@{pin} snapshot "{mirror}" --at {",".join(map(str, job["at"]))} --no-end --describe false -o "{rout}"',
+                SNAP_TIMEOUT)
+    except subprocess.TimeoutExpired:
+        kill_remote()
+        return 1, f"shipped {sent} of {total} files; killed after {SNAP_TIMEOUT} s"
     log = f"shipped {sent} of {total} files; " + (r.stdout + r.stderr)[-400:]
     if r.returncode:
         return r.returncode, log
@@ -142,14 +170,17 @@ def run(host):
     pin = parse_pin(SCRIPTS.parent)
     if not pin:
         sys.exit("[snapq] FAIL: config.yaml has no hyperframes_version")
+    if host == "zbook":
+        kill_remote()   # a worker that died mid-job leaves its Chrome behind
     while jobs := sorted((SPOOL / "pending").glob("*.json")):
         p = jobs[0]
-        job, t0 = json.loads(p.read_text(encoding="utf-8")), time.time()
-        try:
+        job, t0, pngs = {}, time.time(), []
+        try:   # any failure is this job's rc 1 in done/, never a dead worker with the bad job still first in line
+            job = json.loads(p.read_text(encoding="utf-8"))
             rc, log = snap_zbook(job, pin, p.stem) if host == "zbook" else snap_local(job, pin)
-        except (OSError, RuntimeError, subprocess.SubprocessError) as e:
+            pngs = sorted(str(f) for f in Path(job["out"]).glob("*.png")) if rc == 0 else []
+        except Exception as e:
             rc, log = 1, f"{type(e).__name__}: {e}"
-        pngs = sorted(str(f) for f in Path(job["out"]).glob("*.png")) if rc == 0 else []
         if rc == 0 and not pngs:
             rc, log = 1, log + " | exit 0 but no PNG written"
         (SPOOL / "done" / p.name).write_text(json.dumps({**job, "host": host, "rc": rc, "secs": round(time.time() - t0, 1),
