@@ -138,4 +138,4 @@ with tempfile.TemporaryDirectory() as d:
     rc, log = q.snap_zbook(job, "0.8.185", "J2")
     assert rc == 1 and "killed after" in log and calls[-1] == q.KILL_REMOTE, (rc, log, calls)
 
-print("snapshot_queue self-check PASS (no-browser submit, one job at a time, lock, empty-PNG fail, referenced-only delta ship)")
+print("snapshot_queue self-check PASS (no-browser submit, one job at a time, lock, empty-PNG fail, bad and raising jobs recorded, referenced-only delta ship, ZBook command, scp and timeout kill)")
