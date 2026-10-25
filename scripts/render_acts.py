@@ -190,13 +190,30 @@ def slice_html(html, fa, fb, fps):
     return out
 
 
+LOCAL_REF = re.compile(r'''(?:src|href|data-composition-src)=["']([^"'#:]+)["']|url\(["']?([^"')#:]+)''')
+
+
 def fingerprint(staged, ep, mode, fps):
+    """Everything that decides an act's pixels: the slice and every local file it or its mounts load, by content
+    (optimize_clips.py rewrites media in place, so a name alone is not enough)."""
     h = hashlib.sha256()
     for part in (mode, str(fps), os.environ.get("RENDER_CRF", ""), RENDER_CMD.read_bytes().decode("utf-8"), staged):
         h.update(part.encode("utf-8"))
-    for src in sorted(set(re.findall(r'data-composition-src="([^"]+)"', staged))):
-        h.update(src.encode("utf-8"))
-        h.update((ep / src).read_bytes())
+    seen, todo = set(), [(ep, staged)]
+    while todo:
+        base, text = todo.pop()
+        for m in LOCAL_REF.finditer(text):
+            path = (base / (m.group(1) or m.group(2)).strip()).resolve()
+            if path in seen or not path.is_file():
+                continue
+            seen.add(path)
+            if path.suffix in (".html", ".css"):
+                todo.append((path.parent, path.read_text(encoding="utf-8", errors="replace")))
+    for path in sorted(seen):
+        h.update(str(path.relative_to(ep.resolve()) if path.is_relative_to(ep.resolve()) else path).encode("utf-8"))
+        with open(path, "rb") as f:
+            for chunk in iter(lambda: f.read(1 << 20), b""):
+                h.update(chunk)
     return h.hexdigest()[:16]
 
 
