@@ -1,0 +1,1 @@
+[INFO] streaming-encode gate {"renderJobId":"2d7311ae-6d58-406b-8d57-94f15fb2dfdb","enabled":true,"reason":"parallel_forced","configFlag":true,"durationCapEnabled":false,"outputFormat":"mp4","workerCount":2,"durationSeconds":1117.329,"maxDurationSeconds":7200}
