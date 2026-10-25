@@ -157,19 +157,37 @@ def slice_html(html, fa, fb, fps):
         if any(d["start"] <= el["start"] < d["end"] for d in dropped):
             continue
         s, e = _span(el)
-        if el["tag"] == "audio" or (_needs_trim(el) and (e <= a or s >= a + dur)):
+        audio = el["tag"] == "audio"
+        # Audio stays (its sound is discarded): before capture hyperframes seeks the root timeline across every audio
+        # clip's window (discoverAudioVolumeAutomationFromTimeline, suppressed events), and that sweep is what leaves
+        # each graphic's timeline initialised and rewound in a single render. Audio after the act parks on the act's
+        # last frame, where the single render's sweep would pass every graphic of this act's end. Audio over before
+        # the act only rewinds what the sweep has not touched yet, so it goes.
+        if (audio and e <= a) or (not audio and _needs_trim(el) and (e <= a or s >= a + dur)):
             dropped.append(el)
             edits.append((el["start"], el["end"], ""))
             continue
-        if _needs_trim(el) and s < a:
+        if _needs_trim(el) and s < a and not audio:
             raise SystemExit(f"render_acts: #{el['attrs'].get('id')} starts before the act at {a:.3f} s; "
                              "that seam is not clean")
         # the runtime does not honour a negative data-start: an element over before the act parks past its end,
         # one running through the seam starts at 0 with the rest of its length
-        start = dur + 1 if e <= a else max(s - a, 0.0)
+        if audio and s >= a + dur:
+            start = dur - 1 / fps
+        else:
+            start = dur + 1 if e <= a else max(s - a, 0.0)
         tag = html[el["start"]:el["tag_end"]]
         if s < a < e and "data-duration" in el["attrs"]:
             tag = re.sub(r'\bdata-duration="[^"]*"', f'data-duration="{e - a!r}"', tag, count=1)
+        if audio and s < a:  # an audio running through the seam picks up where the act starts
+            media = float(el["attrs"].get("data-media-start", 0)) + a - s
+            tag = re.sub(r'\s*\bdata-media-start="[^"]*"', "", tag)
+            tag = re.sub(r"\s*/?>$", lambda m: f' data-media-start="{media!r}"' + m.group(0), tag, count=1)
+        if e <= a:  # a parked element must never paint, whatever time the page is seeked to before capture settles
+            if "style" in el["attrs"]:
+                tag = re.sub(r'\bstyle="([^"]*)"', lambda m: f'style="{m.group(1).rstrip("; ")}; display: none !important"', tag, count=1)
+            else:
+                tag = re.sub(r"\s*/?>$", lambda m: ' style="display: none !important"' + m.group(0), tag, count=1)
         new = re.sub(r'\bdata-start="[^"]*"', f'data-start="{start!r}" data-act-start="{start!r}" '
                      f'data-act-src-start="{el["attrs"]["data-start"]}"', tag, count=1)
         edits.append((el["start"], el["tag_end"], new))
