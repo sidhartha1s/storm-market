@@ -83,7 +83,7 @@ Loop: [Q] why the warm, snowless side sat north of the snow (rides on L1, paid i
 [src: 7] [src: 1] [src: 4]
 
 ### I1-S5 — narration
-> Most tellings of this storm leave out the coast, and Newark's gust wasn't even the strongest one.
+> And Newark's gust wasn't even the strongest one.
 
 Picture: the map slides right to the coast; gust ladder bars appear empty, Newark's 108 lit, the higher bars still blank [VE]
 Sound: bed holds under the line, then the chapter blackout.
