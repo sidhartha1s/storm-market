@@ -1,0 +1,70 @@
+<template>
+<!-- g-a4-quote · ep-moore-1999 · A4-S9 from "By the Fujita scale's own definition", track 2, full frame, host 822.34 for 12.54 s
+     (to 834.88). Attributed paraphrase, marked as such (Doswell and Brooks, Weather and Forecasting, 2002, p615): by the Fujita
+     scale's definition F4 and F5 damage leaves no interior walls; there, living is a matter of luck without adequate shelter.
+     Drawn as the F0-F5 scale with F4 and F5 lit, then a beige cite card (tokens.md) for the second half.
+     Cues local = abs - 822.34: "Fujita scale's" @0.26; "F4" @3.44; "F5" @4.32; "no inside walls are left" @5.38-6.38;
+     "There, they wrote" @7.18; "living is a matter of luck" @8.88-9.80; "adequate shelter" @11.20; out 12.54. -->
+<style>
+  #g-a4-quote-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 40%, #0b1016 0%, #030507 78%); }
+  .a4q-eb { position:absolute; left:96px; top:70px; font-weight:700; font-size:26px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4q-box { position:absolute; top:250px; width:230px; height:150px; border-radius:14px; background:#15202b; border:2px solid #46586b; box-sizing:border-box;
+    display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; }
+  .a4q-f { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; color:#dfe7ee; line-height:1; }
+  .a4q-walls { position:absolute; left:1210px; top:420px; width:470px; text-align:center; font-weight:700; font-size:30px; letter-spacing:3px; color:#e74c3c; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4q-card { position:absolute; left:240px; top:560px; width:1440px; padding:44px 60px 40px; box-sizing:border-box; border-radius:18px;
+    background:rgba(232,222,200,0.90); box-shadow:0 20px 60px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
+  .a4q-ln { display:block; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:56px; line-height:70px; color:#1a1410; opacity:0; visibility:hidden; }
+  .a4q-att { display:block; margin-top:22px; font-family:Arial, sans-serif; font-weight:700; font-size:24px; letter-spacing:2px; color:#4a3d2c; opacity:0; visibility:hidden; }
+  .a4q-src { position:absolute; left:96px; top:990px; font-weight:700; font-size:20px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4q-scan { position:absolute; left:0; top:0; width:1920px; height:2px; background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.22), rgba(127,178,229,0)); }
+</style>
+<div id="g-a4-quote-root" data-composition-id="g-a4-quote" data-width="1920" data-height="1080" data-duration="12.54">
+  <div class="a4q-scan" id="g-a4-quote-scan"></div>
+  <div class="a4q-eb" id="g-a4-quote-eb">FUJITA SCALE · BY DEFINITION</div>
+  <div class="a4q-box" id="g-a4-quote-k0" style="left:225px"><span class="a4q-f" id="g-a4-quote-f0">F0</span></div>
+  <div class="a4q-box" id="g-a4-quote-k1" style="left:470px"><span class="a4q-f" id="g-a4-quote-f1">F1</span></div>
+  <div class="a4q-box" id="g-a4-quote-k2" style="left:715px"><span class="a4q-f" id="g-a4-quote-f2">F2</span></div>
+  <div class="a4q-box" id="g-a4-quote-k3" style="left:960px"><span class="a4q-f" id="g-a4-quote-f3">F3</span></div>
+  <div class="a4q-box" id="g-a4-quote-k4" style="left:1205px"><span class="a4q-f" id="g-a4-quote-f4">F4</span></div>
+  <div class="a4q-box" id="g-a4-quote-k5" style="left:1450px"><span class="a4q-f" id="g-a4-quote-f5">F5</span></div>
+  <div class="a4q-walls" id="g-a4-quote-walls">NO INSIDE WALLS LEFT</div>
+  <div class="a4q-card" id="g-a4-quote-card">
+    <span class="a4q-ln" id="g-a4-quote-l1">There, living is a matter of luck</span>
+    <span class="a4q-ln" id="g-a4-quote-l2">without adequate shelter.</span>
+    <span class="a4q-att" id="g-a4-quote-att">DOSWELL AND BROOKS, 2002 · PARAPHRASE</span>
+  </div>
+  <div class="a4q-src" id="g-a4-quote-src">Doswell and Brooks, Weather and Forecasting, 2002, p615</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a4-quote", P = "#g-a4-quote-", DUR = 12.54;
+  const K = [0, 1, 2, 3, 4, 5].map(i => P + "k" + i);
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "eb", P + "walls", P + "card", P + "l1", P + "l2", P + "att", P + "src"].concat(K), { autoAlpha: 0 }, 0);
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: DUR / 2, ease: "none", repeat: 1, yoyo: true }, 0);
+  /* "Fujita scale's own definition" @0.26: the scale builds left to right */
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.26);
+  K.forEach((k, i) => tl.fromTo(k, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.8)" }, 0.40 + i * 0.12));
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.2);
+  /* "F4" @3.44, "F5" @4.32: lit red */
+  tl.to(P + "k4", { backgroundColor: "#8e2020", borderColor: "#e74c3c", scale: 1.06, duration: 0.3, ease: "power2.out" }, 3.44);
+  tl.to(P + "k5", { backgroundColor: "#8e2020", borderColor: "#e74c3c", scale: 1.06, duration: 0.3, ease: "power2.out" }, 4.32);
+  tl.to(K.slice(0, 4), { opacity: 0.4, duration: 0.5, ease: "power2.out" }, 4.32);
+  /* "no inside walls are left" @5.38 */
+  tl.fromTo(P + "walls", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.38);
+  tl.to([P + "k4", P + "k5"], { y: -6, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 5 }, 5.9);
+  /* "There, they wrote" @7.18: the cite card; lines on "living" @8.88 and "without/shelter" @11.20 */
+  tl.fromTo(P + "card", { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 7.18);
+  tl.fromTo(P + "att", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 7.50);
+  tl.fromTo(P + "l1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.88);
+  tl.fromTo(P + "l2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.60);
+  /* card holds 1.3 s after "shelter", then the whole scene fades into the bars */
+  tl.to([P + "card", P + "eb", P + "walls", P + "src"].concat(K), { autoAlpha: 0, duration: 0.45, ease: "power2.in" }, 12.05);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>

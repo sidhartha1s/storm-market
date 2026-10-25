@@ -221,4 +221,4 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
 ## Git
 All git and gh as `sidhartha1s`. Small PRs: `/simplify`, tests + E2E, then `code-reviewer` on Opus; merge only after the owner's OK; rebase-merge, docs sweep in the same PR. `python3`, never
 `python`. Node 22 or newer. Before opening and before merging any PR that touches `scripts/`, run
-`python3 scripts/e2e.py episodes/<slug>` on a live episode: every self-check green and no tool crash.
+`python3 scripts/e2e.py` (the pinned fixture `scripts/fixtures/e2e/ep-e2e-moore`; add `episodes/<slug>` for a live one): every self-check green and every run_gates gate run and PASS. A gate that fails or never runs fails e2e. It runs the browser gates, so not beside a render.
