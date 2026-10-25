@@ -123,15 +123,26 @@ document.querySelectorAll("[data-act-src-start]").forEach(function (el) {
   el.setAttribute("data-start", el.getAttribute("data-act-src-start")); });
 </script>
 """
-POST = """<script>/* render_acts: back to act time; the root timeline plays from the act's start */
+POST = """<script>/* render_acts: back to act time; the root timeline's children move to act time */
 document.querySelectorAll("[data-act-src-start]").forEach(function (el) {
   el.setAttribute("data-start", el.getAttribute("data-act-start")); });
 (function () {
-  var id = %(id)s, tl = window.__timelines && window.__timelines[id];
+  var A = %(a)r, tl = window.__timelines && window.__timelines[%(id)s];
   if (!tl) return;
-  var w = gsap.timeline({ paused: true });
-  w.add(tl.tweenFromTo(%(a)r, %(b)r, { duration: %(dur)r, ease: "none" }), 0);
-  window.__timelines[id] = w;
+  var kids = tl.getChildren(false, true, true), done = [], later = [];
+  kids.forEach(function (c) {
+    var s = c.startTime(), e = s + c.totalDuration();
+    if (s >= A) { later.push(c); return; }
+    tl.remove(c);
+    if (e <= A) { done.push(c); return; }
+    var d = gsap.timeline({ paused: true });  // spans the seam: play it from A on
+    d.add(c, 0);
+    tl.add(d.tweenFromTo(A - s, e - s, { duration: e - A, ease: "none" }), 0);
+  });
+  // GSAP shifts every child when one starts before 0, so finished ones apply their end state once, in order
+  done.sort(function (x, y) { return x.endTime() - y.endTime(); })
+      .forEach(function (c) { c.totalTime(c.totalDuration(), true); });
+  later.forEach(function (c) { c.startTime(c.startTime() - A); });
 })();
 </script>
 """
@@ -154,8 +165,13 @@ def slice_html(html, fa, fb, fps):
         if _needs_trim(el) and s < a:
             raise SystemExit(f"render_acts: #{el['attrs'].get('id')} starts before the act at {a:.3f} s; "
                              "that seam is not clean")
+        # the runtime does not honour a negative data-start: an element over before the act parks past its end,
+        # one running through the seam starts at 0 with the rest of its length
+        start = dur + 1 if e <= a else max(s - a, 0.0)
         tag = html[el["start"]:el["tag_end"]]
-        new = re.sub(r'\bdata-start="[^"]*"', f'data-start="{s - a!r}" data-act-start="{s - a!r}" '
+        if s < a < e and "data-duration" in el["attrs"]:
+            tag = re.sub(r'\bdata-duration="[^"]*"', f'data-duration="{e - a!r}"', tag, count=1)
+        new = re.sub(r'\bdata-start="[^"]*"', f'data-start="{start!r}" data-act-start="{start!r}" '
                      f'data-act-src-start="{el["attrs"]["data-start"]}"', tag, count=1)
         edits.append((el["start"], el["tag_end"], new))
     root = p.root
