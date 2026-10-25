@@ -1,7 +1,8 @@
 /* Code-level graphics QC. Loads each composition in headless Chromium, drives its GSAP
  * timeline, and asserts geometry/typography/motion from the DOM — the defects a frame
  * sweep structurally cannot find (text collision, empty containers, crop loss, idle gaps).
- * Usage: node scripts/graphics_qc.mjs episodes/<slug>
+ * Usage: node scripts/graphics_qc.mjs episodes/<slug> [<comp-id> ...]
+ * Comp ids scope the run to those graphics (a builder checking its own work); no ids = every comp (the pre-render gate).
  * Exit 0 = pass. Exit 1 = defects found (printed, grouped by composition). */
 import { chromium, chromiumExecutable } from './playwright_env.mjs';
 import { readFileSync, readdirSync, writeFileSync, existsSync, mkdirSync } from 'fs';
@@ -10,6 +11,7 @@ import { CANVAS_RENDERER, hostCss, motionSpans, stageComp } from './stage_comp.m
 
 const EXECUTABLE = chromiumExecutable();
 const ep = resolve(process.argv[2] || 'episodes/ep3-tristate');
+const ONLY = process.argv.slice(3);
 const TMP = join(ep, '.qc-tmp');
 if (!existsSync(TMP)) mkdirSync(TMP, { recursive: true });
 
@@ -72,7 +74,7 @@ const add = (comp, kind, msg, raw) => {
 const PROBE = `(() => {
   const R = { beats: [], tweens: [], type: [], eases: [] };
   const key = Object.keys(window.__timelines || {})[0];
-  const tl = window.__timelines[key];
+  const tl = (window.__timelines || {})[key];   // a comp that never sets window.__timelines is no-timeline, not a crash of every comp's run
   if (!tl) return { error: 'no timeline registered' };
   R.id = key;
   R.typeOk = document.querySelector('body [data-composition-id]')?.getAttribute('${EXEMPT['flat-type']}');
@@ -228,8 +230,12 @@ const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
 page.on('pageerror', e => add('RUNTIME', 'js-error', String(e).slice(0, 200)));
 
 const compDir = join(ep, 'compositions');
-const files = existsSync(compDir) ? readdirSync(compDir).filter(f => f.endsWith('.html')) : [];
-if (!files.length) { console.error('[graphics_qc] no compositions/ dir — graphics must be sub-comps (references/mg-quickref.md File contract)'); process.exit(1); }
+const all = existsSync(compDir) ? readdirSync(compDir).filter(f => f.endsWith('.html')) : [];
+if (!all.length) { console.error('[graphics_qc] no compositions/ dir — graphics must be sub-comps (references/mg-quickref.md File contract)'); process.exit(1); }
+const unknown = ONLY.filter(id => !all.includes(id + '.html'));
+if (unknown.length) { console.error(`[graphics_qc] no compositions/<id>.html for: ${unknown.join(', ')}`); process.exit(1); }
+const files = ONLY.length ? ONLY.map(id => id + '.html') : all;
+if (ONLY.length) console.log(`[graphics_qc] scoped to ${files.length} of ${all.length} compositions: ${ONLY.join(' ')} (not the pre-render gate)`);
 
 for (const f of files) {
   const name = f.replace('.html', '');
@@ -324,9 +330,12 @@ await browser.close();
 
 /* publish measured composition durations so the episode builder can cut away from a
    graphic the moment it finishes instead of parking on a dead frame */
-writeFileSync(join(compDir, '_durations.json'), JSON.stringify(DURS, null, 1), 'utf8');
+/* a scoped run updates only its own comps' entries, so the other builders' entries survive */
+// shortcut: read-then-write, so two scoped runs finishing in the same instant can drop one entry; the next run of that comp restores it
+const publish = (p, got) => writeFileSync(p, JSON.stringify(ONLY.length && existsSync(p) ? { ...JSON.parse(readFileSync(p, 'utf8')), ...got } : got, null, 1), 'utf8');
+publish(join(compDir, '_durations.json'), DURS);
 /* settle-frame times per composition, comp-local seconds; the pre-render snapshot step reads them (mg-quickref "Verify") */
-writeFileSync(join(TMP, 'frame_times.json'), JSON.stringify(FRAMES, null, 1), 'utf8');
+publish(join(TMP, 'frame_times.json'), FRAMES);
 
 /* ---------- report ---------- */
 const hard = defects.filter(d => d.hard), soft = defects.filter(d => !d.hard);
