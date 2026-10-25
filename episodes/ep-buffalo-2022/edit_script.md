@@ -22,8 +22,8 @@ Wind, not a siren: a self-made or licensed whiteout wind bed fades up under Paul
 | id | planted | paid | line |
 |---|---|---|---|
 | E | H1 (hook) | A3 + A5 | found outside, not at home → why they were out, and why nobody came |
-| L0 | T1 (tail) | I1 | (writer sets: the tail's one open gap, paid inside the intro) |
-| L1 | I1 end | A1 / A2 | carried into Act 1 (writer sets) |
+| L0 | T1 (T1-S1) | I1-S1 | how fast Friday morning turned → rain at 38°F before dawn, the whiteout at the airport at 8:39 a.m., the county driving ban at 9:30 a.m., fifty-one minutes apart |
+| L1 | I1 end (I1-S5) | A1 / A2 | "How does a forecast that early still end with eighteen people found outside, in the snow?" → A1 the forecast products, A2 Friday morning |
 | L2 | A2 end | A3-S1 | Friday 9:30 a.m.: the ban, and where the people already on the road were |
 | cta-hinge | A3 last seg | A4-S1 | tease (≤25 words, Paul full frame): the people who called for help were not the only ones stuck → CTA → payoff in A4-S1's first words (the plows and ambulances in the same drifts) |
 | L4 | A4 end | A5 | the seven who waited for an ambulance; and the people who stayed home |
@@ -61,59 +61,59 @@ Not written this round. Title rule: ≤52 chars, Name + Year in the first 40 (`r
 ## H1 · Hook
 
 ### H1-S1 — Paul on camera
-**Picture:** Paul full frame at 0:00 in a Santa hat, the one hook sentence. Popfig "BUFFALO, NY · DEC 23, 2022" inside the first second. Wind bed fades up under him. [HOOK] [Q] [loop E open]
-> A blizzard warning hits your town the week of Christmas, and you know the safest place to ride it out is home.
+**Picture:** Paul full frame at 0:00 in a Santa hat, the one hook clip (question, then the viewer's answer). Popfig "BUFFALO, NY · DEC 23, 2022" inside the first second (the date lives on screen, not in the spoken lines). Wind bed fades up under him. [HOOK] [Q] [loop E open]
+> A blizzard warning hits your town at Christmas. What do you do? You stay home.
+
+*register: 9/10*
+
+### H1-S2 — narration (the break)
+**Picture:** on the cut at "But": a 174th Attack Wing runway snowblower clearing I-90 in Buffalo, NY National Guard photo, DVIDS 7571852 (26 Dec 2022, courtesy photo), public domain. Wind drops to near silence on the cut. Chip "18 FOUND OUTSIDE". Source line: "Erie County Executive Mark Poloncarz, last reported count, via WIVB". Chip "+4 IN THEIR CARS" follows. [VE] [RS] [PAY]
+> But around Buffalo, the county counted forty-six people who lost their lives. [verify: Erie County count 46, Poloncarz via WIVB, secondary; three cases still pending on that page] Eighteen were found outside, in the snow, the biggest group of all. [verify: 18 found outside, the largest single category, Poloncarz via WIVB, secondary] Four more were found in their cars. [verify: 4 in vehicles, same count, secondary]
 
 *register: 8/10*
 
-### H1-S2 — narration
-**Picture:** cut on "Buffalo" to a snow-buried street of stalled cars: NY National Guard photo, DVIDS 7571852 (174th Attack Wing runway snowblower on I-90, Buffalo, 26 Dec 2022), public domain. Wind drops to near silence on the cut. Chip "18 FOUND OUTSIDE", then "+4 IN THEIR CARS". Source line: "Erie County Medical Examiner, final count, via WIVB". [VE] [RS] [PAY]
-> In Buffalo, New York, two days before Christmas in twenty twenty-two, the record says otherwise. Forty-six people lost their lives in Erie County, and the largest group of them, eighteen, were found outside, in the snow. [verify: final Erie County count 46, 18 found outside, Medical Examiner via WIVB, secondary] Four more were found in their cars. [verify: 4 in vehicles, same final count, secondary]
-
-*register: 8/10*
-
-### H1-S3 — narration
-**Picture:** NWS Buffalo forecast discussion text, typed on as a glass card, the phrase highlighted: "a once in a generation type of event". Source line: "NWS Buffalo Area Forecast Discussion, 4:51 a.m. Tue 20 Dec 2022 (IEM archive, FXUS61 KBUF 200951)". Chip "3 DAYS' WARNING". [VE] [RS] [Q]
-> And this storm did not sneak up on anybody. Three days before it hit, the weather service in Buffalo wrote that it was a once in a generation type of event.
-
-*register: 8/10*
-
-### H1-S4 — narration
-**Picture:** a Guard soldier knocking on a snowed-in front door: NY National Guard photo, DVIDS 7576030 (welfare checks, Buffalo, 30 Dec 2022), public domain. Slow push in. No chip. [HUMAN] [Q] (loop E stated aloud)
-> So I went looking for two things. Why were so many people out there in it, and why couldn't anybody get to them in time?
+### H1-S3 — narration (the second contradiction)
+**Picture:** NWS Buffalo forecast discussion text, typed on as a glass card, the original sentence verbatim with the phrase highlighted: "One could certainly describe this storm system as a once in a generation type of event." Source line: "NWS Buffalo Area Forecast Discussion, 4:51 a.m. Tue 20 Dec 2022 (IEM archive, FXUS61 KBUF 200951)". Chip "3 DAYS' WARNING". [VE] [RS] [Q]
+> And that storm didn't sneak up on anybody. Three days before it hit, the National Weather Service in Buffalo wrote that you could call it a once in a generation event.
 
 *register: 9/10*
 
 ## T1 · Hook tail
 
 ### T1-S1 — narration
-**Picture:** Buffalo Niagara International Airport weather station readout (self-made ASOS log card, rows ticking past: 7:24, 8:06, 8:39). Source line: "Buffalo airport ASOS observations, IEM archive". Chip "FRIDAY · DEC 23". [VE] [Q] [loop L0 open]
-> The forecast was right, and it was early. What went wrong that Friday morning came down to minutes, and the airport's own weather station logged every one of them.
+**Picture:** Buffalo Niagara International Airport weather station readout (self-made ASOS log card, rows ticking past: 7:24, 8:06, 8:39). Source line: "Buffalo airport ASOS observations, IEM archive". Chip "FRIDAY · DEC 23". [VE] [Q] [loop L0 open] (loop E stated aloud)
+> I wanted to know why so many of them were out in it. Part of the answer is how fast Friday morning turned, the day before Christmas Eve, and the airport's weather log shows it. [verify: fast turn, front 7:24 a.m. to quarter-mile whiteout 8:39 a.m. Fri 23 Dec, Buffalo airport ASOS]
 
-*register: 8/10*
+*register: 9/10*
 
 ## I1 · Intro
 
 ### I1-S1 — narration
-**Picture:** self-made map, Lake Erie to Buffalo, Erie County outlined, label "WESTERN NEW YORK". Then the ASOS card from T1 returns: "38°F · RAIN" at the pre-dawn rows, then "VIS 1/4 MI · 8:39 AM" lights up, then a red clock chip "DRIVING BAN · 9:30 AM". Source lines: "Buffalo airport ASOS, IEM archive"; "Erie County driving ban, WKBW". [VE] [RS] [PAY] [loop L0 closes]
-> Buffalo sits at the eastern end of Lake Erie, in western New York. [verify: Buffalo at the eastern end of Lake Erie] Before dawn on Friday, December twenty-third, it was raining at the airport, at about thirty-eight degrees. [verify: 23 Dec 2022 was a Friday, the last workday before Christmas weekend] By eight thirty-nine that morning, snow and wind had cut the visibility there to a quarter of a mile. Erie County's driving ban took effect at nine thirty. [verify: Erie County ban effective 9:30 a.m. Fri 23 Dec, WKBW, secondary] That's fifty-one minutes after the whiteout reached the airport.
+**Picture:** self-made map, Lake Erie to Buffalo, Erie County outlined, labels "LAKE ERIE" and "WESTERN NEW YORK" (the geography is on screen only). Then the ASOS card from T1 returns: "38°F · RAIN" at the pre-dawn rows, then "VIS 1/4 MI · 8:39 AM" lights up, then a red clock chip "DRIVING BAN · 9:30 AM". Source lines: "Buffalo airport ASOS, IEM archive"; "Erie County driving ban, WKBW". [VE] [RS] [PAY] [loop L0 closes]
+> Before dawn on Friday, December twenty-third, it was raining at the Buffalo airport, and it was about thirty-eight degrees. [verify: 23 Dec 2022 was a Friday, the last workday before Christmas weekend] By eight thirty-nine in the morning, snow and wind had cut the visibility there to a quarter of a mile. Erie County's driving ban took effect at nine thirty in the morning. [verify: Erie County ban effective 9:30 a.m. Fri 23 Dec, WKBW, secondary] That's fifty-one minutes after the whiteout hit.
 
 *register: 8/10*
 
 ### I1-S2 — narration
-**Picture:** DVIDS 7572837 (827th Engineer Co clearing snow to recover an AMR ambulance, Buffalo, 26 Dec 2022), public domain, held wide. Three stat chips stack one by one: "37 STRAIGHT HOURS", "51.9 IN AT THE AIRPORT", "GUSTS 69 MPH". Source lines: "NYS DHSES, 4 Aug 2023"; "NWS Buffalo PNS, 28 Dec 2022"; "Buffalo airport ASOS, IEM archive". [VE] [RS]
-> Fifty-one minutes doesn't sound like much. On the last workday before Christmas, it was enough to leave people on the road. Then the storm settled in. The state counted thirty-seven straight hours of blizzard conditions in Erie County. The airport measured fifty-one point nine inches of snow, and gusts there hit sixty-nine miles an hour.
+**Picture:** DVIDS 7572837 (827th Engineer Co clearing snow to recover an AMR ambulance, Buffalo, 26 Dec 2022, Eric Durr), public domain, held wide. Chips, one per sentence: "HUNDREDS STRANDED", then "GUSTS 69 MPH", then "37 STRAIGHT HOURS". Source lines: "Office of the Governor, 26 Dec 2022"; "NWS Buffalo Blizzard Warning, 22 Dec 2022"; "Buffalo airport ASOS, IEM archive"; "NYS DHSES, 4 Aug 2023". [VE] [RS] [Q]
+> During the storm, hundreds of drivers ended up stranded, the governor's office said. [verify: hundreds of motorists stranded, governor.ny.gov 26 Dec subheadline] The weather service's warning opened with the words blizzard conditions, before it gave any snow total. [verify: Blizzard Warning 22 Dec headline "Blizzard conditions expected", snow totals second, WSWBUF 220854] The airport's weather station logged gusts of sixty-nine miles an hour. [verify: peak gust 60 kt, about 69 mph, Buffalo airport ASOS 12:54 p.m. Fri 23 Dec] And the state counted thirty-seven straight hours of blizzard-like conditions in Erie County. [verify: 37 straight hours of blizzard-like conditions, NYS DHSES 4 Aug 2023] So when it finally let up, what did the crews find?
 
 *register: 8/10*
 
 ### I1-S3 — narration
-**Picture:** DVIDS 7576030 sequence (Guard welfare checks, Buffalo), public domain, over a running tally graphic that builds by date: 27 Dec "17 of 31", 28 Dec "17 of 37", 30 Dec "17 of 39", final "18 of 46", the "outside" bar the longest at every step. Source line: "Erie County counts via NPR/KAXE, AP, WBFO, WIVB". [VE] [RS] [Q] [PAY]
-> As the National Guard and the road crews dug the city out, they started finding people. Where they found them is the part that stopped me. I went through every county count that listed where people were found. [verify: outside was the largest category in every county count with a breakdown, 27 Dec to final, secondary] Outside, in the snow, was the largest group in every single one, more than anywhere else.
+**Picture:** a Guard soldier knocking at a front door during welfare checks: NY National Guard photo, DVIDS 7576030 (Buffalo, 30 Dec 2022, courtesy photo), public domain, portrait 1212x1804 cropped to 16:9. Then the self-made running tally graphic, full frame, building by date: 27 Dec "17 of 31", 28 Dec "17 of 37", 30 Dec "17 of 39", last reported "18 of 46" (no date, no "final"), the "outside" bar the longest at every step; Source line: "Erie County counts via NPR/KAXE, AP, WBFO, WIVB; last reported count, Poloncarz via WIVB". [VE] [RS] [PAY] [Q]
+> As the National Guard and the road crews dug the city out, they started finding people. And where were they? Eighteen of them were outside, in the snow, and four more in their cars. [verify: 18 found outside and 4 in vehicles, same count, secondary] Outside was the biggest group in every county count I could find. [verify: outside was the largest category in every county count with a breakdown, 27 Dec to the last reported count, secondary]
+
+*register: 8/10*
+
+### I1-S4 — narration
+**Picture:** self-made name card, text only, "ANNDEL TAYLOR · 22", over a licensed night-snow street (Pexels or Pixabay, no car or person identifiable). No family photo unless licensed. Chip "~6 MIN FROM HOME". Source line: "Her family, via CBS News / CNN, 28 Dec 2022". [HUMAN] [VE] [Q]
+> Anndel Taylor was twenty-two. Her family said she got stuck in her car that Friday, driving home from work, about six minutes from home. [verify: Anndel Taylor, 22, stranded in her car Fri 23 Dec driving home from work, about six minutes from home per her family, CBS/CNN wire 28 Dec 2022, six minutes single-source] She called nine one one, but crews couldn't get to her car. [verify: Taylor called 911 and emergency personnel were unable to reach the car, CBS/CNN wire 28 Dec 2022; Today/NBC]
 
 *register: 9/10*
 
-### I1-S4 — narration
+### I1-S5 — narration
 **Picture:** back to the NWS Buffalo forecast discussion card, now the earlier product: "very large and powerful storm system", 4:10 a.m. Sun 18 Dec 2022 (IEM archive, FXUS61 KBUF 180910). Chip "5 DAYS OUT". Slow fade toward the Act 1 blackout. [VE] [Q] [loop L1 open]
-> And the forecasters saw it coming even earlier than that. The weather service in Buffalo flagged this storm on the Sunday before, five days out. What they saw on their screens that week is where this starts.
+> And that once in a generation line wasn't the first sign. By the Sunday before, five days out, the weather service in Buffalo was calling it a very large and powerful storm system. [verify: AFD 4:10 a.m. Sun 18 Dec says "very large and powerful storm system", FXUS61 KBUF 180910; earlier mentions from Sat 17 Dec] How does a forecast that early still end with eighteen people found outside, in the snow?
 
-*register: 8/10*
+*register: 9/10*
