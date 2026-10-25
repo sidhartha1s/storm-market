@@ -31,6 +31,22 @@ HETERONYM_RESPELL = {
     "wind up": "wined up", "winds up": "wines up", "winding up": "wining up",
 }
 
+# Text pocket-TTS voices wrong, refused before synthesis (tts_episode.py). Camille 1969, 25 Oct 26: the sentence splitter
+# below cuts at every period, so "Dr. J. H. Gamble" became three one-word sentences with a pause after each, and
+# "August seventeenth, 1969." voiced as "nineteenth" and stopped. (pattern, fix the script writer applies)
+UNSAFE = [
+    (r"\d", "spell out every number, year and date (1969 -> nineteen sixty-nine, 17th -> seventeenth)"),
+    (r"\b(?:Dr|Mr|Mrs|Ms|Mx|St|Mt|Ft|Jr|Sr|Gen|Gov|Sen|Rep|Lt|Sgt|Capt|Col|Cpl|Prof|Rev|No|vs|etc|approx|Ave|Rd|Blvd|Co|Inc|Corp|Dept|Univ|Jan|Feb|Mar|Apr|Aug|Sept?|Oct|Nov|Dec)\.",
+     "write the abbreviation out (Dr. -> Doctor, Mrs. -> Missus, St. -> Saint or Street): its period splits the sentence"),
+    (r"(?<![A-Za-z])[A-Za-z]\.(?=\s*\S)", "write initials and dotted letters as words (J. H. -> Jay Aitch, U.S. -> U S, a.m. -> in the morning)"),
+    (r"[%$&@#/]", "write the symbol as a word (percent, dollars, and, at, number, or)"),
+]
+
+
+def unsafe_spans(text):
+    """[(matched text, fix)] for every piece of the spoken line pocket-TTS is known to voice wrong; [] when safe."""
+    return [(m.group(0), fix) for pat, fix in UNSAFE for m in re.finditer(pat, text)]
+
 
 def normalize_for_synth(raw):
     """SYNTH-ONLY text normalization (the on-disk script is never rewritten).
