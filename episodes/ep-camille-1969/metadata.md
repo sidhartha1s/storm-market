@@ -1,4 +1,4 @@
-# metadata.md — ep-camille-1969 (title TBD by owner; description, book time and chapters filled 25 Oct 26)
+# metadata.md: ep-camille-1969 (title TBD by owner; description, book time and chapters filled 25 Oct 26)
 
 Runtime 20:05 (1205.1 s). CTA (Paul, ad v10) at 714.83 s = 11:54, inside A3, no chapter marker there (DESIGN.md CTA contract).
 Master: `renders/ep-camille-1969-final-master.mp4` (final master 25 Oct 26 20:05). Timestamps below come from the act sections and chapter blackouts in `index.html`.
