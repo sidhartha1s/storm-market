@@ -406,7 +406,9 @@ if HAVE_FFMPEG:
             'data-height="240" data-duration="2.00" data-fps="25"></div>', encoding="utf-8")
         mk_clip(ep / "renders" / "pal-preview-v1.mp4", 15)
         mk_clip(ep / "renders" / "pal-24.mp4", 24)
-        NVIDIA, INTEL = "browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n", "browserGpuMode probe worker0 Intel(R) UHD Graphics\n"
+        ASK, GATE_OK = "   GPU: browser GPU (forced)\n", 'streaming-encode gate {"enabled":true,"reason":"single_worker"}\n'
+        NVIDIA = ASK + "browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n" + GATE_OK
+        INTEL = ASK + "browserGpuMode probe worker0 Intel(R) UHD Graphics\n" + GATE_OK
 
         # (label, clip, mode arg, recorded draft fps, expected exit code, text that must be in stdout).
         # The log of the mode under test is NVIDIA and the other one Intel, so a wrong log pick fails too.
