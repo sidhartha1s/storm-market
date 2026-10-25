@@ -211,7 +211,7 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
 - Read the log for `streaming-encode gate ... enabled:true`. Without it a long composition captures to disk and fills it.
 - Liveness is judged by command line (`Get-CimInstance Win32_Process | Where CommandLine -like '*hyperframes*'`), never by process count.
 - `ffprobe deadline` means slow, never corrupt. The deadline is 30 s and no env var raises it. Cap every source asset at
-  the composition's resolution: `media_budget.py` refuses the render otherwise, `optimize_clips.py <episode> --apply` fixes it.
+  the composition's resolution: `media_budget.py` refuses the render otherwise, `optimize_clips.py <episode> --apply` fixes it and never re-encodes the md5-pinned CTA or end-ask clips (test `python3 scripts/test_optimize_clips.py`).
 - Owner timestamps against an older cut are mapped by you, never sent back to him: `git show <sha>:episodes/<slug>/index.html`
   into a temp dir, then `clip_report.py` resolves them exactly.
 
