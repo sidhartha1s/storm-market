@@ -245,7 +245,9 @@ def _local_files(base, text):
 def fingerprint(staged, ep, mode, fps):
     """Everything that decides an act's pixels: the slice and every local file its own elements load, by content
     (optimize_clips.py rewrites media in place, so a name alone is not enough). What parked elements load counts
-    only through the hyperframes probe triggers it carries, so a fix in another act keeps this act reusable."""
+    only through the hyperframes probe triggers it carries, so a fix in another act keeps this act reusable.
+    shortcut: audio inside a parked sub-composition is neither moved to the act's edge nor hashed; no episode
+    mounts audio in a graphic today, revisit if one does."""
     h = hashlib.sha256()
     for part in (mode, str(fps), os.environ.get("RENDER_CRF", ""), RENDER_CMD.read_bytes().decode("utf-8"), staged):
         h.update(part.encode("utf-8"))
