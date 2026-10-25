@@ -57,7 +57,7 @@ Visual: NOAA 1900 weather map, Cuba to the Gulf, Havana pinned; popfig "BELEN OB
 
 ### H1-S5 — narration
 Visual: Library of Congress damage photograph, slow push; then the Monthly Weather Review page listing the warnings from Washington. Sound: low swell under the kicker. [loop E1 open] [Q]
-> He said it was safe. It was not. Washington sent Galveston warnings all that week. So I wanted to know why a warned city still went to bed on Friday night feeling safe [verify: Galveston residents not alarmed on Friday night, September 7, 1900].
+> He said it was safe. It was not. Washington sent Galveston warnings all that week. So I wanted to know why a warned city still went to bed on Friday night feeling safe [verify: Galveston residents not alarmed on the Friday night before landfall].
 
 ## HT · Hook tail
 ### T1-S1 — narration
