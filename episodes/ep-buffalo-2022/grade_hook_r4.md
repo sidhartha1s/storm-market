@@ -59,7 +59,7 @@ None under 3. Lowest: stakes and visual change, both at 3.
 
 ## Register, fluff, shapes, load, overclaims
 
-Register by segment (target 9): H1-S1 9, H1-S2 8, H1-S3 8.5, T1-S1 9, I1-S1 8, I1-S2 6.5, I1-S3 7, I1-S4 8.5, I1-S5 8. **Section average about 8, under target.** The drop is I1-S2 and I1-S3, which read like a report: no "you", no contractions in I1-S3 beyond none, list order.
+Register by segment (target 9): H1-S1 9, H1-S2 8, H1-S3 8.5, T1-S1 9, I1-S1 8, I1-S2 6.5, I1-S3 7, I1-S4 8.5, I1-S5 8. **Section average about 8, under target.** The drop is I1-S2 and I1-S3, which read like a report: no "you", no contractions in I1-S3, and I1-S2 runs in list order.
 
 - **Banned shape:** I1-S2 "led with wind and blowing snow, not with how much snow would fall": a reveal-flip ("X, not Y").
 - **List, not a chain:** I1-S2 has four facts (stranded, warning wording, gust, thirty-seven hours) with no but/because/so between them.
