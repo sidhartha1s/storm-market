@@ -172,6 +172,10 @@ styled = COMP.replace('id="kb-1"', 'id="kb-1" style="opacity: 0.9;"')
 check("act 2: an element over before the act can never paint (display none, its own style kept)",
       re.search(r'id="kb-1"[^>]*style="display: none !important"', a2)
       and re.search(r'style="opacity: 0.9; display: none !important"', ra.slice_html(styled, 300, 600, 30))
+      and re.search(r'style="font-family: &quot;Inter&quot;; display: none !important"',
+                    ra.slice_html(COMP.replace('id="kb-1"', 'id="kb-1" style="font-family: &quot;Inter&quot;"'), 300, 600, 30))
+      and re.search(r'id="kb-1" style="opacity:.5; display: none !important"',
+                    ra.slice_html(COMP.replace('id="kb-1"', 'id="kb-1" style=opacity:.5'), 300, 600, 30))
       and "display: none" not in re.search(r'<section[^>]*id="kb-1"[^>]*>', ra.slice_html(COMP, 0, 300, 30)).group(0))
 
 print(f"\n{'ALL PASS' if not FAILS else str(len(FAILS)) + ' FAILED'}")
