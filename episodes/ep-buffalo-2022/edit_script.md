@@ -79,7 +79,7 @@ Not written this round. Title rule: ≤52 chars, Name + Year in the first 40 (`r
 *register: 8/10*
 
 ### H1-S4 — narration
-**Picture:** a Guard soldier knocking on a snowed-in front door: NY National Guard photo, DVIDS 7576030 (welfare checks, Buffalo, 30 Dec 2022), public domain. Slow push in. No chip. [HUMAN] [Q] [loop E open]
+**Picture:** a Guard soldier knocking on a snowed-in front door: NY National Guard photo, DVIDS 7576030 (welfare checks, Buffalo, 30 Dec 2022), public domain. Slow push in. No chip. [HUMAN] [Q] (loop E stated aloud)
 > So I went looking for two things. Why were so many people out there in it, and why couldn't anybody get to them in time?
 
 *register: 9/10*
