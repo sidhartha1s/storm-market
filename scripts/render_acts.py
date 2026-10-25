@@ -185,7 +185,9 @@ def slice_html(html, fa, fb, fps):
             tag = re.sub(r"\s*/?>$", lambda m: f' data-media-start="{media!r}"' + m.group(0), tag, count=1)
         if e <= a:  # a parked element must never paint, whatever time the page is seeked to before capture settles
             if "style" in el["attrs"]:
-                tag = re.sub(r'\bstyle="([^"]*)"', lambda m: f'style="{m.group(1).rstrip("; ")}; display: none !important"', tag, count=1)
+                tag = re.sub(r"""\bstyle=(["'])(.*?)\1""",
+                             lambda m: f'style={m.group(1)}{m.group(2).rstrip("; ")}; display: none !important{m.group(1)}',
+                             tag, count=1)
             else:
                 tag = re.sub(r"\s*/?>$", lambda m: ' style="display: none !important"' + m.group(0), tag, count=1)
         new = re.sub(r'\bdata-start="[^"]*"', f'data-start="{start!r}" data-act-start="{start!r}" '
