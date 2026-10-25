@@ -45,7 +45,7 @@ Loop: none (the two-hazards turn as one picture the viewer holds; toll lands by 
 
 Picture: NWS Jackson KY surface chart for 25 Nov 1950 (19501125Surface.JPG), slow push; popfig "NEWARK, NJ · 108 MPH · SAT NOV 25, 1950 · STRONGEST EVER RECORDED THERE"; the low's L circled, the track not drawn yet [VE]
 Sound: wind bed holds, drops under the last sentence; no archive audio.
-Loop: [loop L1 open] how one storm pulled off both (paid in Act 3)
+Loop: [loop L1 open] the one move the storm made that explains both sides (paid in Act 3: "The low went northwest."; not revealed here)
 [src: 2] [src: 1]
 
 ## INTRO
