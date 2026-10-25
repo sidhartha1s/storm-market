@@ -67,11 +67,11 @@ Loop: [loop L2 closes] Coburn Creek; [loop L3 open] where the November record no
 [src: 1] [src: 5] [src: 6]
 
 ### I1-S3 — narration
-> That record was set in Bowling Green, Kentucky: minus seven degrees. Even Pensacola, Florida, dropped to twenty-two.
+> That town was Bowling Green, Kentucky, at minus seven degrees.
 
-Picture: self-made map of the Southeast, temperature pins dropping one by one: "BOWLING GREEN, KY -7°F (NOV RECORD)", "PENSACOLA, FL 22°F" [VE]
-Sound: bed; two soft ticks, one per pin, each on its city name.
-Loop: [loop L3 closes] Bowling Green, minus seven; then the cold on the Gulf Coast
+Picture: self-made map of the Southeast, one temperature pin drops: "BOWLING GREEN, KY -7°F (NOV RECORD)" [VE]
+Sound: bed; one soft tick on "Bowling Green".
+Loop: [loop L3 closes] Bowling Green, minus seven
 [src: 1] [src: 5]
 
 ### I1-S4 — narration
