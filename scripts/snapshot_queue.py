@@ -171,7 +171,10 @@ def run(host):
     if not pin:
         sys.exit("[snapq] FAIL: config.yaml has no hyperframes_version")
     if host == "zbook":
-        kill_remote()   # a worker that died mid-job leaves its Chrome behind
+        try:
+            kill_remote()   # a worker that died mid-job leaves its Chrome behind
+        except subprocess.TimeoutExpired:
+            print("[snapq] ZBook did not answer the cleanup call in 120 s; jobs will report their own ssh errors")
     while jobs := sorted((SPOOL / "pending").glob("*.json")):
         p = jobs[0]
         job, t0, pngs = {}, time.time(), []
