@@ -54,13 +54,15 @@ for m in re.finditer(r'<video\b([^>]*)>', h):
     need = (float(start.group(1)) if start else 0.0) + float(dur.group(1))
     used[src.group(1)] = max(used.get(src.group(1), 0.0), need)
 
-# The CTA insert is a provenance contract (config.yaml channel.cta, md5-checked by sweep_episode):
-# re-encoding it broke the md5 silently (jma-vs-nhc, 17 Sep 26). Never touch it.
+# The CTA insert and the end ask are provenance contracts (config.yaml channel.cta and channel.end_ask, md5-checked
+# by sweep_episode): re-encoding broke the md5 silently (CTA: jma-vs-nhc, 17 Sep 26; end ask: Camille and Mayfield,
+# 25 Oct 26). Never touch them.
 import yaml
-_cta = ((yaml.safe_load((Path(__file__).resolve().parent.parent / "config.yaml").read_text(encoding="utf-8"))
-         .get("channel") or {}).get("cta") or {}).get("file", "")
-for _k in [k for k in used if _cta and Path(k).name == Path(_cta).name]:
-    print(f"skip {_k}: CTA insert, md5 contract (config channel.cta.file)")
+_ch = yaml.safe_load((Path(__file__).resolve().parent.parent / "config.yaml").read_text(encoding="utf-8")).get("channel") or {}
+_pinned = {Path(f["file"]).name for f in [_ch.get("cta") or {}, *((_ch.get("end_ask") or {}).get("files") or [])]
+           if f.get("file")}
+for _k in [k for k in used if Path(k).name in _pinned]:
+    print(f"skip {_k}: md5 contract (config channel.cta / channel.end_ask)")
     del used[_k]
 
 orig_dir = ep / "media" / "_orig"
