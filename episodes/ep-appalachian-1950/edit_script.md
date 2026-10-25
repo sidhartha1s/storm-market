@@ -41,11 +41,11 @@ Loop: none (the two-hazards turn as one picture the viewer holds; toll lands by 
 [src: 1] [src: 4] [src: 11] [src: 5]
 
 ### H1-S3 — narration
-> That hundred eight mile an hour gust hit Newark, New Jersey, the strongest Newark ever recorded. And one move this storm made explains both of its sides.
+> That gust hit Newark, New Jersey, the strongest ever recorded there. To see how one storm did both, watch which way it went.
 
-Picture: NWS Jackson KY surface chart for 25 Nov 1950 (19501125Surface.JPG), slow push; popfig "NEWARK, NJ · 108 MPH · SAT NOV 25, 1950 · STRONGEST EVER RECORDED THERE"; the low's L circled, the track not drawn yet [VE]
+Picture: NWS Jackson KY surface chart for 25 Nov 1950 (19501125Surface.JPG), slow push, nothing circled, no track drawn; popfig "NEWARK, NJ · 108 MPH · SAT NOV 25, 1950 · STRONGEST EVER RECORDED THERE" [VE]
 Sound: wind bed holds, drops under the last sentence; no archive audio.
-Loop: [loop L1 open] the one move the storm made that explains both sides (paid in Act 3: "The low went northwest."; not revealed here)
+Loop: [loop L1 open] which way the storm went, and how that let one storm do both (paid in Act 3: "The low went northwest."; not revealed here)
 [src: 2] [src: 1]
 
 ## INTRO
