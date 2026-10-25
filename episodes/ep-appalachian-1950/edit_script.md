@@ -33,7 +33,7 @@ Loop: none (breaks the belief "that was a snowstorm"; both title numbers said al
 [src: 4] [src: 2]
 
 ### H1-S2 — narration
-> And Buffalo, two hundred miles north, the city you'd bet on for snow, didn't get any at all. It stayed above forty degrees.
+> And the same storm left Buffalo, two hundred miles north of Pittsburgh, in the forties with no snow at all.
 
 Picture: hard cut on "Buffalo" to a self-made locator map, Pittsburgh and Buffalo pinned with a 200-mile line between them; chips "PITTSBURGH: 27.4 IN" and "BUFFALO: 40s °F · NO SNOW" [VE] [RS]
 Sound: bed drops out for a beat under "didn't get any at all", then returns.
