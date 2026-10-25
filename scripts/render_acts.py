@@ -16,6 +16,7 @@ the older run's is taken from there instead of rendered. Output: renders/<out-ba
 """
 import hashlib
 import json
+import math
 import os
 import re
 import subprocess
@@ -100,6 +101,13 @@ def _needs_trim(el):
     return el["tag"] in MEDIA_TAGS or "data-composition-src" in el["attrs"]
 
 
+def _set_attr(tag, name, value):
+    """The start tag with attribute name set to value: replaced where it is, else added before the tag's close."""
+    pat = re.compile(r"""\s%s=(["']).*?\1""" % re.escape(name))
+    new = f' {name}="{value}"'
+    return pat.sub(lambda m: new, tag, count=1) if pat.search(tag) else re.sub(r"\s*/?>$", lambda m: new + m.group(0), tag, count=1)
+
+
 def plan_acts(html, fps):
     """Frame ranges [start, end) per act. A blackout's middle frame is a seam unless media or a host spans it."""
     p = _Timed(html)
@@ -148,48 +156,53 @@ document.querySelectorAll("[data-act-src-start]").forEach(function (el) {
 
 
 def slice_html(html, fa, fb, fps):
-    """index.html as a composition of frames [fa, fb): times shifted by fa/fps, media and hosts outside it dropped."""
+    """index.html as a composition of frames [fa, fb): times shifted by fa/fps, silent media and hosts outside it
+    dropped, audible media outside it parked on its edges, finished elements hidden."""
     p = _Timed(html)
     a, dur = fa / fps, (fb - fa) / fps
+    total = float(p.root["attrs"]["data-duration"])
     edits = []  # (start, end, replacement), applied back to front
     dropped = []
     for el in p.els:
         if any(d["start"] <= el["start"] < d["end"] for d in dropped):
             continue
         s, e = _span(el)
-        audio = el["tag"] == "audio"
-        # Audio stays (its sound is discarded): before capture hyperframes seeks the root timeline across every audio
-        # clip's window (discoverAudioVolumeAutomationFromTimeline, suppressed events), and that sweep is what leaves
-        # each graphic's timeline initialised and rewound in a single render. Audio after the act parks on the act's
-        # last frame, where the single render's sweep would pass every graphic of this act's end. Audio over before
-        # the act only rewinds what the sweep has not touched yet, so it goes.
-        if (audio and e <= a) or (not audio and _needs_trim(el) and (e <= a or s >= a + dur)):
+        # Audible media stays (its sound is discarded): before capture hyperframes sweeps the root timeline across
+        # every audible clip's window (discoverAudioVolumeAutomationFromTimeline: totalTime at 1/fps, events
+        # suppressed, then 0), and that sweep leaves every graphic's timeline initialised and rewound. Without it a JS
+        # clock shows its authored text and a lazy .to tween never records its start (PR 223 defects 1 and 2). Audible
+        # media outside the act parks, hidden, on the act's first or last frame: there the sweep rewinds or finishes
+        # this act's graphics as the single render's sweep does from before or after the act.
+        audible = el["tag"] == "audio" or (el["tag"] == "video" and "muted" not in el["attrs"]
+                                           and el["attrs"].get("data-has-audio", "true") == "true")
+        outside = e <= a or s >= a + dur
+        if _needs_trim(el) and outside and (not audible or s >= total):  # the sweep never reaches past the end
             dropped.append(el)
             edits.append((el["start"], el["end"], ""))
             continue
-        if _needs_trim(el) and s < a and not audio:
+        if _needs_trim(el) and s < a < e and el["tag"] != "audio":
             raise SystemExit(f"render_acts: #{el['attrs'].get('id')} starts before the act at {a:.3f} s; "
                              "that seam is not clean")
-        # the runtime does not honour a negative data-start: an element over before the act parks past its end,
-        # one running through the seam starts at 0 with the rest of its length
-        if audio and s >= a + dur:
-            start = dur - 1 / fps
-        else:
-            start = dur + 1 if e <= a else max(s - a, 0.0)
         tag = html[el["start"]:el["tag_end"]]
-        if s < a < e and "data-duration" in el["attrs"]:
-            tag = re.sub(r'\bdata-duration="[^"]*"', f'data-duration="{e - a!r}"', tag, count=1)
-        if audio and s < a:  # an audio running through the seam picks up where the act starts
-            media = float(el["attrs"].get("data-media-start", 0)) + a - s
-            tag = re.sub(r'\s*\bdata-media-start="[^"]*"', "", tag)
-            tag = re.sub(r"\s*/?>$", lambda m: f' data-media-start="{media!r}"' + m.group(0), tag, count=1)
-        if e <= a:  # a parked element must never paint, whatever time the page is seeked to before capture settles
-            if "style" in el["attrs"]:
-                tag = re.sub(r"""\bstyle=(["'])(.*?)\1""",
-                             lambda m: f'style={m.group(1)}{m.group(2).rstrip("; ")}; display: none !important{m.group(1)}',
-                             tag, count=1)
-            else:
-                tag = re.sub(r"\s*/?>$", lambda m: ' style="display: none !important"' + m.group(0), tag, count=1)
+        if _needs_trim(el) and outside:
+            start = 0.0 if e <= a else dur - 1 / fps
+            tag = _set_attr(tag, "data-duration", repr(1 / fps))
+        else:
+            # the runtime does not honour a negative data-start: an element over before the act parks past its end,
+            # one running through the seam starts at 0 with the rest of its length
+            start = dur + 1 if e <= a else max(s - a, 0.0)
+            if s < a < e and el["tag"] == "audio":
+                # starts on the sweep's first sample inside the act, so every sample lands where the single render's
+                # does; its sound moves with it
+                start = math.ceil((a - s) * fps - 1e-9) / fps + s - a
+                if start >= e - a:  # it ends before that sample: keep a real length, the sweep sees it at 0
+                    start = 0.0
+                tag = _set_attr(tag, "data-media-start", repr(float(el["attrs"].get("data-media-start", 0)) + a + start - s))
+            if s < a < e and "data-duration" in el["attrs"]:
+                tag = _set_attr(tag, "data-duration", repr(e - a - start))
+        if outside:  # parked: never paints, whatever time the page is at before capture settles (PR 223 defect 3)
+            css = el["attrs"].get("style", "").strip().rstrip(";")
+            tag = _set_attr(tag, "style", (css + "; " if css else "") + "display: none !important")
         new = re.sub(r'\bdata-start="[^"]*"', f'data-start="{start!r}" data-act-start="{start!r}" '
                      f'data-act-src-start="{el["attrs"]["data-start"]}"', tag, count=1)
         edits.append((el["start"], el["tag_end"], new))
