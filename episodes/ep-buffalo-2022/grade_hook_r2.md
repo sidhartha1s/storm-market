@@ -7,7 +7,7 @@ Timings: word counts measured by script (337 spoken words, `[verify]` markers st
 **Hook score: 6.5 / 10 · confidence 70 %**
 **NOT LOCK-READY**
 
-What would move it: land the break ("found outside") by about 8 s instead of about 15 s, put the second contradiction right behind it, and refill the cup after each payoff in the intro. Fixes 1 to 4 below should take it to 8 or more.
+What would move it: land the break ("found outside") at about 9 s instead of about 15 s, put the second contradiction right behind it, and refill the cup after each payoff in the intro. Fixes 1 to 4 below should take it to 8 or more.
 
 ## 2. Six axes (hook + tail + intro, 1 to 5)
 | axis | score | why |
@@ -39,12 +39,12 @@ None under 3. Curiosity sits at the floor.
 - **Structure-referring lines:** "I wanted to know two things" (mild). No runtime roadmap.
 
 ## 5. Ranked fixes (TTS-safe, facts already in the text only)
-1. **Land the break by about 8 s (H1-S2 sentence one).** Replace with:
-   > But in Buffalo, New York, more of the people who lost their lives were found outside, in the snow, than anywhere else.
-   (21 words; "outside" at about word 30 of the whole hook, about 12 s, and it is the Claim line's own wording.) If fix 5 is taken, the break lands near 10 s.
+1. **Land the break as early as Paul's clip allows (H1-S2 sentence one).** Paul's line alone is about 7 s, so "outside" must sit in the first few narrated words. Replace with:
+   > But in Buffalo, New York, outside in the snow is where they found the biggest group of the people who lost their lives.
+   (23 words; "outside" is word 6, about 9 s into the video instead of about 15 s. Same claim as the text's "largest group ... found outside".) With fix 5 the Paul line grows by 4 words and the break moves to about 11 s: take fix 5 only if the orchestrator values the question over those 2 s.
 2. **Put the second contradiction right behind the break.** Move H1-S3's first sentence up, contracted:
    > And that storm didn't sneak up on anybody.
-   Then the counts, then "once in a generation". Second contradiction moves from about 26 s to about 18 s.
+   Then the counts, then "once in a generation". Second contradiction moves from about 26 s to about 19 s.
 3. **One count per sentence, qualifier off the spoken line (H1-S2 sentence two).** Replace with:
    > That was eighteen of the forty-six people in Erie County.
    > Four more were found in their cars.
@@ -71,4 +71,4 @@ None under 3. Curiosity sits at the floor.
 10. **Cut "in twenty twenty-two"** from H1-S2 if fix 1 is not taken (date is on the popfig).
 11. **"own" to one use at most:** T1-S1 may keep "the airport's own weather station logged them"; drop it everywhere else.
 
-Hook structure after fixes 1, 2, 3, 5: belief question (about 8 s), break (about 17 s total), second contradiction (about 20 s), counts, "once in a generation", E stated, T1. That is still about 45 s before T1; if the orchestrator wants the 27 Sep 3 to 5 s hook plus 5 to 15 s tail literally, H1-S3 and H1-S4 become the tail and T1-S1 opens the intro.
+Hook structure after fixes 1, 2, 3, 5: belief line (about 7 s, or 9 s as a question), break (about 9 to 11 s), second contradiction (about 19 to 21 s), counts, "once in a generation", E stated, T1. That is still about 45 s before T1; if the orchestrator wants the 27 Sep 3 to 5 s hook plus 5 to 15 s tail literally, H1-S3 and H1-S4 become the tail and T1-S1 opens the intro.
