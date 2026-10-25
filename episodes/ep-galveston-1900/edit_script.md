@@ -39,13 +39,51 @@ Budget per `references/mg-quickref.md` "Paul on screen": 6 clips x 15 credits = 
 | cta-hinge: what Cline told Washington at three thirty | A3 last segment | A4-S1 |
 
 ## H · Hook (0:00)
-(writer: hook segments here)
+### H1-S1 — narration
+Visual: Paul full frame, on camera, the hook line only. Popfig inside the first second: "GALVESTON, TEXAS · SEPTEMBER 1900". Sound: wind and surf rising under the line. [HOOK] [Q] (the viewer answers: the weatherman)
+> A hurricane's coming for your town, and you get one person to tell you how bad it'll be, so who do you trust?
+
+### H1-S2 — narration
+Visual: Galveston Daily News, July 16, 1891, page 5, slow push to the line; chip "ABSURD DELUSION"; telegraph-key click on the reveal. Source line: Galveston Daily News, 16 July 1891. [RS] [VE] (contradiction one)
+> You'd trust the weatherman, and Galveston's weatherman had told the city in print that a storm seriously damaging Galveston was an absurd delusion.
+
+### H1-S3 — narration
+Visual: cut on the swell to the Library of Congress 1900 film of the ruins on Broadway, Galveston; chip "AT LEAST 6,000 LIVES". Source line: Isaac Cline, Monthly Weather Review, September 1900. [RS] [VE]
+> He wrote that in eighteen ninety-one, and nine years later, at least six thousand people there lost their lives in a few hours.
+
+### H1-S4 — narration
+Visual: NOAA 1900 weather map, Cuba to the Gulf, Havana pinned; popfig "BELEN OBSERVATORY, HAVANA"; chip "KEPT OFF THE TELEGRAPH". Source line: NOAA AOML, 2015. [RS] [VE] (contradiction two)
+> And in Havana, forecasters had said this storm was heading into the Gulf, but his own Weather Bureau kept them off the telegraph.
+
+### H1-S5 — narration
+Visual: Library of Congress damage photograph, slow push; then the Monthly Weather Review page listing the warnings from Washington. Sound: low swell under the kicker. [loop E1 open] [Q]
+> He said it was safe. It was not. Washington sent Galveston warnings all that week. So I wanted to know why a warned city still went to bed on Friday night feeling safe [verify: Galveston residents not alarmed on Friday night, September 7, 1900].
 
 ## HT · Hook tail
-(writer: hook tail segments here)
+### T1-S1 — narration
+Visual: self-made island elevation graphic of Galveston, sea level line rising to the island's top; chips "ABOUT 38,000 PEOPLE" and "HIGHEST POINT ABOUT 8.7 FT". Source line: Texas State Historical Association; National Park Service. [VE] [Q] q1 open (who was the man)
+> Galveston was an island city of about thirty-eight thousand people, and its highest ground stood less than nine feet above the sea. The man who'd written those words was the one whose job it was to warn it.
 
 ## I · Intro
-(writer: intro segments here)
+### I1-S1 — narration
+Visual: Monthly Weather Review, September 1900, the report's byline; lower-third "ISAAC CLINE · LOCAL FORECAST OFFICIAL, GALVESTON"; then "JOSEPH CLINE · OBSERVER". [PAY] q1 closes; [Q] q2 open (did anyone warn the city)
+> If you lived in Galveston in nineteen hundred, your weatherman was Isaac Cline. He was the senior Weather Bureau man on the island, there since about eighteen eighty-nine. His brother Joseph worked in the same office as an observer. The first thing I checked was whether anybody warned the city at all.
+
+### I1-S2 — narration
+Visual: Monthly Weather Review page, the warning dates highlighted one by one; chips "SEPT 4, 5, 6, 7, 8" then "STORM WARNING: SEPT 7" then "'MODERATE STORM'". Source line: Isaac Cline, Monthly Weather Review; Texas State Historical Association; Ohio State University, Origins. [PAY] q2 closes; [Q] q3 open (where was the storm all week)
+> Somebody did. Washington sent Galveston warning messages on the fourth, fifth, sixth, seventh and eighth of September. On the seventh, Galveston went under a storm warning. Even Friday's midday warning still called it a moderate storm. That sent me after the storm itself, and where it was all week.
+
+### I1-S3 — narration
+Visual: NOAA 1900 weather maps, September 2 to 8, stepped across Cuba; popfig "BELEN OBSERVATORY, HAVANA"; two arrows drawn from western Cuba: one northwest into the Gulf labelled "HAVANA", one curving northeast labelled "WASHINGTON". Lower-third "WILLIS MOORE · CHIEF, US WEATHER BUREAU". Source line: NOAA AOML, 2015. [PAY] q3 closes; [RS] [VE]; [Q] q4 open (which forecast was right)
+> It crossed Cuba on the fourth of September. In Havana, the Jesuit forecasters at Belen Observatory said it was moving northwest, into the Gulf of Mexico. The United States Weather Bureau, run from Washington by Willis Moore, expected it to curve away to the northeast.
+
+### I1-S4 — narration
+Visual: hold the two arrows; a telegraph line graphic carries only the Washington arrow's label; chip with NOAA's words "only its forecasts would be carried over the telegraph". Source line: NOAA AOML, 2015. [VE]; q4 still open
+> After the Spanish-American War, the Bureau had decreed that only its forecasts would be carried over the telegraph. So two forecasts pointed two different ways, and only one of them was allowed on the wire.
+
+### I1-S5 — narration
+Visual: NOAA map, the storm's track pushing northwest into the Gulf; chip "STEAMER LOUISIANA · SEPT 6"; then a slow return to the Galveston Daily News page of 1891, "ABSURD DELUSION" chip back on. Telegraph-key click on the last line. [PAY] q4 closes; [loop L-intro open] (carried into A1)
+> The storm went Havana's way. On the sixth, the steamer Louisiana passed right through its center, out in the middle of the Gulf. And waiting in Galveston was the same man who'd called a storm like this an absurd delusion. Which brings me back to that newspaper, and why a weatherman would ever write those words.
 
 ## Act briefs (text only, written before prose; `references/script-scaling.md` "Act brief")
 - **A1 · "An absurd delusion" (1891).** Purpose: show the belief was given to the city by its expert, in print. Question: why would a weatherman say that? Reveal: his reasoning (the shallow shelf and the low land to the north would spread the water). Visual: the 16 July 1891 Galveston Daily News page, the island elevation map (highest point about 8.7 ft). Exit hook: nine years later, the same man was in charge of warning the city.
