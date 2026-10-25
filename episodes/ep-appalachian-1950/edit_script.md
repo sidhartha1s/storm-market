@@ -79,7 +79,7 @@ Loop: [loop L3 closes] the cold reached Florida
 
 Picture: the self-made split map from H1-S2 returns and slides right to the coast; popfig "ALBANY, NY · 83 MPH · RAIN, NO SNOW"; for LaGuardia, flood footage SOURCE TBD (no 1950 newsreel located yet), fallback a self-made LaGuardia locator map, AI-image gap only if neither exists [VE] [RS]
 Sound: wind swell back up under "strongest wind", water texture under "LaGuardia" (library, not archive).
-Loop: [loop L4 open] (the line below carries it)
+Loop: none (L1 still open; L4 opens in the next segment)
 [src: 7] [src: 1]
 
 ### I1-S5 — narration
