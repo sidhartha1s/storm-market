@@ -106,7 +106,10 @@ mechanism/analysis pair) and plants+pays a loop.
 - Technical terms per the Register line above; reuse them 3+ times. Every superlative gets a comparator and unit.
 - One object per segment; one named victim (age, job, sourced quote) per tragedy.
 - Close: fact + dated forward window, then the one signature line (DESIGN.md "Signature closing footnote", owner 4 Oct 26). No other aphorism, no mirrored callback.
-- TTS-safe: spell out ALL dates/times/numbers in narration (except years, dollars), no paired dashes, sentences
+- TTS-safe: spell out ALL dates/times/numbers in narration, years and dollars included (nineteen sixty-nine; the
+  digits 1969 voiced as "nineteenth" and stopped, Camille 25 Oct 26). Write abbreviations and initials as words
+  (Doctor, Missus, Jay Aitch, You Ess): every period splits the sentence and leaves a pause. `tts_episode.py` refuses
+  a line that breaks this. No paired dashes, sentences
   under 24 words per TTS chunk (write the long fact-chain; the TTS layer splits it at commas), probe homographs
   before respelling (`references/homographs.md`).
 
