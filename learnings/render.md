@@ -2,6 +2,24 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 25 Oct 26: Camille and Mayfield finals (owner: "paul circle is a static fucking image", "it's not even my face")
+1. Both drafts shipped to the owner with the 23 Oct stand-in circle: `media/pip/pip-w*.mp4` were one still of
+   `assets/paul/circle-portrait-560.jpg` (a README beside them said so) and every gate passed, because the files existed.
+   A stand-in circle is a missing layer: run `circle_audio.py` + `circle_face.py` + `circle_cut.py` before any cut he
+   sees, or say in the same message that the circle is a still. Same night, Mayfield's hook clip was the 22 Oct take made
+   from a character sheet in a study (another face, another room) while clips 2 to 6 used the desk start frame: every
+   Paul clip in an episode comes from the same start frame (`assets/paul/paul-start-frame-omni-v2.png`).
+2. Full render at 2 workers: Moore (1117 s) streamed (`reason: parallel_forced`), Camille (1205 s) did not
+   (`enabled:false, reason: multi_worker`) and asked for 75.0 GB of frame storage with 71.5 GB free; it failed at
+   start. At 1 worker the gate is `enabled:true, reason: single_worker`. Read the gate line in the first 4 min of every
+   full render; with under 100 GB free, launch full renders at 1 worker.
+3. `optimize_clips.py --apply` re-encodes the staged end-ask clips, and `sweep_episode.py` then fails their md5 against
+   `assets/end-ask/`. Copy the two end-ask files back from `assets/end-ask/` after optimising (the originals also sit in
+   `media/_orig/`).
+4. The ZBook installed an OS upgrade and rebooted at 05:50 mid face pass (event 1074, TrustedInstaller); the pass died
+   without an exit line and the batch waited forever. After a reboot no one is logged on, so a `schtasks` interactive
+   task never starts: run the pass over `ssh -n zbook "<batch file>"` (session 0, no window) from a bash script.
+
 ## 22 Oct 26: pin 0.8.149 to 0.8.185 before Moore 1999, Mayfield 2021 and Camille 1969
 1. Ritual on demo-pin (hidden task on the ASUS, exit 0): duration 24.000/24.000 s, black 0/0, RMS -21.602708/-21.602708
    dB, workers 2/2, SSIM 0.9936, video-region SSIM 0.9977. Bumped clean. Full-frame SSIM is a little under the last
