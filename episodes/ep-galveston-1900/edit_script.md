@@ -62,7 +62,7 @@ Visual: Library of Congress damage photograph, slow push; then the Monthly Weath
 ## HT · Hook tail
 ### T1-S1 — narration
 Visual: self-made island elevation graphic of Galveston, sea level line rising to the island's top; chips "ABOUT 38,000 PEOPLE" and "HIGHEST POINT ABOUT 8.7 FT". Source line: Texas State Historical Association; National Park Service. [VE] [Q] q1 open (who was the man)
-> Galveston was an island city of about thirty-eight thousand people, and its highest ground stood less than nine feet above the sea. The man who'd written those words was the one whose job it was to warn it.
+> Galveston was an island city of about thirty-eight thousand people, and its highest ground stood less than nine feet above the sea. The man who wrote those words had the job of warning it.
 
 ## I · Intro
 ### I1-S1 — narration
@@ -71,7 +71,7 @@ Visual: Monthly Weather Review, September 1900, the report's byline; lower-third
 
 ### I1-S2 — narration
 Visual: Monthly Weather Review page, the warning dates highlighted one by one; chips "SEPT 4, 5, 6, 7, 8" then "STORM WARNING: SEPT 7" then "'MODERATE STORM'". Source line: Isaac Cline, Monthly Weather Review; Texas State Historical Association; Ohio State University, Origins. [PAY] q2 closes; [Q] q3 open (where was the storm all week)
-> Somebody did. Washington sent Galveston warning messages on the fourth, fifth, sixth, seventh and eighth of September. On the seventh, Galveston went under a storm warning. Even Friday's midday warning still called it a moderate storm. That sent me after the storm itself, and where it was all week.
+> Somebody did. Washington sent Galveston warning messages on the fourth, fifth, sixth, seventh and eighth of September. On the seventh, Galveston went under a storm warning. Even Friday's midday warning still called it a moderate storm. That sent me after the storm itself.
 
 ### I1-S3 — narration
 Visual: NOAA 1900 weather maps, September 2 to 8, stepped across Cuba; popfig "BELEN OBSERVATORY, HAVANA"; two arrows drawn from western Cuba: one northwest into the Gulf labelled "HAVANA", one curving northeast labelled "WASHINGTON". Lower-third "WILLIS MOORE · CHIEF, US WEATHER BUREAU". Source line: NOAA AOML, 2015. [PAY] q3 closes; [RS] [VE]; [Q] q4 open (which forecast was right)
@@ -83,7 +83,7 @@ Visual: hold the two arrows; a telegraph line graphic carries only the Washingto
 
 ### I1-S5 — narration
 Visual: NOAA map, the storm's track pushing northwest into the Gulf; chip "STEAMER LOUISIANA · SEPT 6"; then a slow return to the Galveston Daily News page of 1891, "ABSURD DELUSION" chip back on. Telegraph-key click on the last line. [PAY] q4 closes; [loop L-intro open] (carried into A1)
-> The storm went Havana's way. On the sixth, the steamer Louisiana passed right through its center, out in the middle of the Gulf. And waiting in Galveston was the same man who'd called a storm like this an absurd delusion. Which brings me back to that newspaper, and why a weatherman would ever write those words.
+> The storm went Havana's way. On the sixth, the steamer Louisiana passed through its center, in the middle of the Gulf. And waiting in Galveston was the same man who'd called a storm like this an absurd delusion. Which brings me back to that newspaper, and why a weatherman would ever write those words.
 
 ## Act briefs (text only, written before prose; `references/script-scaling.md` "Act brief")
 - **A1 · "An absurd delusion" (1891).** Purpose: show the belief was given to the city by its expert, in print. Question: why would a weatherman say that? Reveal: his reasoning (the shallow shelf and the low land to the north would spread the water). Visual: the 16 July 1891 Galveston Daily News page, the island elevation map (highest point about 8.7 ft). Exit hook: nine years later, the same man was in charge of warning the city.
