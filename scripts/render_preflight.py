@@ -152,7 +152,8 @@ def _paul_gap(mounts, _episode=None):
 
 # Camille and Mayfield rough cuts (23 Oct 26) shipped a still of circle-portrait-560.jpg as the circle (Camille
 # commit 0ab221e4 swapped them out). Measured over 20 s at 2 fps, 64x64 grey: the stand-in moves 0.01 levels a
-# frame on average, a real FlashHead face 5.4 to 6.3. Below this the circle is a still, whatever its file name.
+# frame on average, a real FlashHead face 3.8 to 6.3 (Joplin's pip clips 3.82 to 5.19). Below this the circle is a
+# still, whatever its file name.
 FACE_MOTION_MIN = 1.0
 FACE_SAMPLE = 64
 
