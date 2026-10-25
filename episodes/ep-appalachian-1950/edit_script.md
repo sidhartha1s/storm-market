@@ -41,7 +41,7 @@ Loop: none (the two-hazards turn as one picture the viewer holds; toll lands by 
 [src: 1] [src: 11] [src: 5]
 
 ### H1-S3 — narration
-> On the coast, that gust hit Newark, New Jersey. It was the strongest Newark ever recorded. One storm did both at once, and the weather map from that Saturday shows how.
+> That hundred eight mile an hour gust hit Newark, New Jersey, the strongest Newark ever recorded. And one move this storm made explains both of its sides.
 
 Picture: NWS Jackson KY surface chart for 25 Nov 1950 (19501125Surface.JPG), slow push; popfig "NEWARK, NJ · 108 MPH · SAT NOV 25, 1950 · STRONGEST EVER RECORDED THERE"; the low's L circled, the track not drawn yet [VE]
 Sound: wind bed holds, drops under the last sentence; no archive audio.
