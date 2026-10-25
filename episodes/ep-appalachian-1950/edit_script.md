@@ -81,7 +81,6 @@ Picture: back to the one-low map from H1-S2, now with pins; popfig "ALBANY, NY Â
 Sound: wind swell back up under "eighty-three"; bed drops out for a beat under "no snow at all", then returns.
 Loop: [Q] why the warm, snowless side sat north of the snow (rides on L1, paid in Act 3); belief and break inside the segment
 [src: 7] [src: 1] [src: 4]
-[src: 7] [src: 1]
 
 ### I1-S5 â€” narration
 > Most tellings of this storm leave out the coast, and Newark's gust wasn't even the strongest one.
