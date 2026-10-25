@@ -62,7 +62,7 @@ Not written this round. Title rule: ≤52 chars, Name + Year in the first 40 (`r
 
 ### H1-S1 — Paul on camera
 **Picture:** Paul full frame at 0:00 in a Santa hat, the one hook sentence. Popfig "BUFFALO, NY · DEC 23, 2022" inside the first second. Wind bed fades up under him. [HOOK] [Q] [loop E open]
-> A blizzard warning goes out for your town the week of Christmas, and you already know the safest place to ride it out is home.
+> A blizzard warning hits your town the week of Christmas, and you know the safest place to ride it out is home.
 
 *register: 8/10*
 
