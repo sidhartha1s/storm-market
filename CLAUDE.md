@@ -152,8 +152,10 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
    publish, commit, PR and merge the episode branch, then remove the worktree. `metadata.md` at publish: first URL
    is `channel.cta.first_link`, then the "book mentioned at mm:ss" line, no chapter marker at the CTA, category Education, type Overview.
 - Render by act (owner 26 Oct 26, sk_4): `python3 scripts/render_acts.py <slug> <draft|full> <basename> [--reuse <older-basename>]`,
-  launched hidden like a render. Seams are the middle frames of the chapter blackouts; each act renders muted through
-  render.cmd, one 1 fps pass gives the whole mix, and the acts are concatenated frame-exact. With `--reuse`, every act
+  launched hidden like a render. Seams are the middle frames of the chapter blackouts; each act's picture renders
+  through render.cmd (its sound is discarded), one 1 fps pass gives the whole mix, and the acts are concatenated
+  frame-exact. An act page keeps every element, parking what lies outside the act hidden, because hyperframes'
+  pre-capture probe sweep (which sets graphic state) depends on the whole page. With `--reuse`, every act
   whose staged slice and mounted graphics are unchanged is taken from the older run, so a fix re-renders only its act.
   `--plan` lists the seams. The act file is staged render input, never episode HTML (TRIPWIRE below).
 - Heavy local jobs run on the ZBook by default (owner 17 Oct 26): transcription, voice conversion, clip downloads and
