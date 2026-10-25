@@ -2,6 +2,17 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 26 Oct 26: the ZBook encoded on Intel QSV, unseen, for six episodes
+1. Measured: the ZBook's NVIDIA driver 595.95 offers NVENC API 13.0; ffmpeg 8.1.2 needs 13.1 (driver 610+). Its bench log
+   (`scratch/renderspeed/bench1/log_D_w4_ss_gpu.txt`) prints `[gpuEncoder] nvenc probe failed` and hyperframes 0.8.185
+   then takes the next encoder whose probe passes, without ever logging which (dist chunk `detectGpuEncoder`).
+2. The probe failure prints only under `HYPERFRAMES_DEBUG_GPU_PROBE=1`, so ASUS logs carry no encoder line at all.
+   The proof that does exist: ffmpeg writes the encoder into the mp4's video stream tag (`Lavc62.28.102 h264_nvenc`
+   on Camille's and Moore's ASUS renders). The rule and the check: CLAUDE.md "A render runs on what it asked for".
+3. Every episode render asks `--experimental-fast-capture=true` and every one falls back to screenshot capture
+   (Moore: mix-blend-mode; the bench: backdrop-filter). The check does not judge this one: it is hyperframes'
+   own logged fallback and would fail every render. Open item in ops/tasks.md.
+
 ## 22 Oct 26: pin 0.8.149 to 0.8.185 before Moore 1999, Mayfield 2021 and Camille 1969
 1. Ritual on demo-pin (hidden task on the ASUS, exit 0): duration 24.000/24.000 s, black 0/0, RMS -21.602708/-21.602708
    dB, workers 2/2, SSIM 0.9936, video-region SSIM 0.9977. Bumped clean. Full-frame SSIM is a little under the last

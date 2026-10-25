@@ -65,6 +65,9 @@ REM With --workers > 1 streaming also needs the parallel-capture router (cli.js 
 REM else the gate logs enabled:false and the render dies at 'Disk capture may need ~131 GB'.
 set HF_CAPTURE_PARALLEL_STREAM=true
 set DO_NOT_TRACK=1
+REM hyperframes picks its encoder silently; this prints each failed probe (nvenc on the ZBook's 595.95 driver)
+REM so stream_gate.py can stop a render that fell back to Intel QSV (Oct 26: six episodes did).
+set HYPERFRAMES_DEBUG_GPU_PROBE=1
 set HYPERFRAMES_FFPROBE_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffprobe.exe
 set HYPERFRAMES_FFMPEG_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffmpeg.exe
 REM Preflight gate (busy box / media budget / pin drift). CLAUDE.md has always
@@ -117,6 +120,15 @@ start "" /b "C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.e
 echo %_FPS% > "render_%MODE%.fps"
 call npx hyperframes@0.8.185 render . --gpu --browser-gpu --experimental-fast-capture=true %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
 set RC=%ERRORLEVEL%
+REM A render that ran on another encoder, an iGPU or a disk capture fails here, not in a viewer's eyes.
+if "%RC%"=="0" (
+  "C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0stream_gate.py" check "render_%MODE%.log" "renders\%OUTBASE%.mp4" >> "%PREFLIGHT_LOG%" 2>&1
+  if errorlevel 1 (
+    echo RENDER RAN ON A FALLBACK - see %CD%\%PREFLIGHT_LOG%
+    type "%PREFLIGHT_LOG%"
+    set RC=1
+  )
+)
 echo %RC% > "render_%MODE%_done.marker"
 exit /b %RC%
 
