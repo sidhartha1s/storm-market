@@ -131,9 +131,8 @@ def sweep_frames(comp, fa, fb, fps=30):
     wins = [(float(e["attrs"]["data-start"]), float(e["attrs"]["data-start"]) + float(e["attrs"]["data-duration"]))
             for e in p.els if e["tag"] == "audio"]
     host = next(e for e in p.els if e["attrs"].get("id") == "host-g")
-    m = re.search(r'id="root"[^>]*data-act-src-start|POST', comp)
-    act = "render_acts: back to act time" in comp
-    js = re.sub(r"</?script>(/\*.*?\*/)?", "", comp[comp.find("<script>/* render_acts: back"):comp.rfind("</script>") + 9]) if act else ""
+    post = comp.find("<script>/* render_acts: back")
+    js = re.sub(r"</?script>(/\*.*?\*/)?", "", comp[post:comp.rfind("</script>") + 9]) if post >= 0 else ""
     node = f"""
 const {{gsap}} = require({json.dumps(str(gsap))});
 global.gsap = gsap; global.window = {{ __timelines: {{}} }}; global.document = {{ querySelectorAll: () => [] }};
