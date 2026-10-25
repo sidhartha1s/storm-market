@@ -1,0 +1,13 @@
+{
+ "aspect": "16:9",
+ "count": 1,
+ "credits_per_video": 15,
+ "budget": 15,
+ "jobs": [
+  {
+   "name": "moore-ins-paul-1",
+   "frame": "C:/Users/Sidhartha/Automation Projects/storm-market/.claude/worktrees/ep-camille-1969-ba7be5/assets/paul/paul-sheet-c.png",
+   "prompt": "This is a history documentary about the May 3, 1999 Oklahoma tornado outbreak. @char1 sits at his desk and speaks straight to the camera. Medium shot, the camera does not move. Calm, deep, measured voice, natural small hand movement. He says exactly these words and nothing else: \"If you're warned in time, you'll make it, won't you?\" He stops speaking and holds his look at the camera. No music, no captions, no text on screen."
+  }
+ ]
+}

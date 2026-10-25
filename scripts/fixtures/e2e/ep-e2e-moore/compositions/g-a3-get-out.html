@@ -1,0 +1,55 @@
+<template>
+<!-- g-a3-get-out · ep-moore-1999 · A3-S7 · a blank, unbranded TV; the station's advice as text, its name withheld by a grey bar.
+     Host 588.958 to 599.778 (10.82 s), track 2, full frame. Local s = a3-s7 word time (a3-s7 starts 588.958).
+     Cues: "get out" 1.54 (GET OUT OF THE PATH types on); "doesn't name that station" 4.42 (grey bar sweeps over the name slot);
+     "one of the reasons many people fled" 8.46 (source line); out by 10.82 ("Many got in their cars"). Wording: SA p11
+     "urged people to get out of the path" (research/fact-sheet.md line 161). -->
+<style>
+  #g-a3-get-out-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; background:radial-gradient(ellipse at 50% 45%, #141b24 0%, #04070c 78%); }
+  #g-a3-get-out-tv { position:absolute; left:360px; top:130px; width:1200px; height:720px; box-sizing:border-box; border-radius:36px; border:16px solid #262e37;
+    background:#0a0f14; box-shadow:0 40px 100px rgba(0,0,0,0.7); overflow:hidden; opacity:0; visibility:hidden; }
+  #g-a3-get-out-scr { position:absolute; inset:0; background:linear-gradient(170deg, #1a2531 0%, #0b1117 100%); }
+  #g-a3-get-out-glare { position:absolute; left:-400px; top:0; width:300px; height:720px; background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.06), rgba(255,255,255,0)); }
+  .ggo-big { position:absolute; left:80px; top:240px; font-family:"Arial Black", Arial, sans-serif; font-weight:900; font-size:92px; line-height:1.0; color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  .ggo-sub { position:absolute; left:84px; top:150px; font-size:30px; font-weight:700; letter-spacing:4px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a3-get-out-slot { position:absolute; left:80px; top:470px; width:520px; height:64px; border-radius:8px; background:#5b6672; transform-origin:left center; }
+  .ggo-wh { position:absolute; left:640px; top:482px; font-size:34px; font-weight:700; letter-spacing:3px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  .ggo-src { position:absolute; left:110px; bottom:64px; padding:10px 24px 11px; border-radius:24px; background:rgba(10,16,24,0.55); border:1px solid rgba(255,255,255,0.14);
+    font-size:21px; line-height:26px; font-weight:700; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-get-out-root" data-composition-id="g-a3-get-out" data-width="1920" data-height="1080" data-duration="10.82">
+  <div id="g-a3-get-out-tv">
+    <div id="g-a3-get-out-scr"></div>
+    <div id="g-a3-get-out-glare"></div>
+    <div class="ggo-sub" id="g-a3-get-out-sub">ONE STATION, ON AIR</div>
+    <div class="ggo-big" id="g-a3-get-out-big">GET OUT OF THE PATH</div>
+    <div id="g-a3-get-out-slot"></div>
+    <div class="ggo-wh" id="g-a3-get-out-wh">STATION NOT NAMED</div>
+  </div>
+  <div class="ggo-src" id="g-a3-get-out-src">NWS Service Assessment, p11, p22</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a3-get-out-", DUR = 10.82;
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "tv", P + "big", P + "sub", P + "wh", P + "src"], { autoAlpha: 0 }, 0);
+  tl.set(P + "slot", { scaleX: 0 }, 0);
+  tl.fromTo(P + "tv", { autoAlpha: 0, scale: 0.92 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 0);
+  tl.to(P + "tv", { scale: 1.04, duration: DUR - 1.1, ease: "none" }, 0.5);
+  tl.fromTo(P + "glare", { x: 0 }, { x: 1900, duration: 3.2, ease: "none", repeat: 2 }, 0.2);
+  tl.fromTo(P + "sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.22);
+  /* "get out" @1.54 */
+  tl.fromTo(P + "big", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.54);
+  /* "doesn't name that station" @4.42: the grey bar sweeps over the name slot */
+  tl.to(P + "slot", { scaleX: 1, duration: 0.45, ease: "power3.out" }, 4.42);
+  tl.fromTo(P + "wh", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 4.9);
+  /* "one of the reasons" @8.46 */
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 8.46);
+  tl.to(P + "tv", { autoAlpha: 0, y: -60, duration: 0.5, ease: "power3.in" }, 10.3);
+  tl.to(P + "src", { autoAlpha: 0, x: -140, duration: 0.5, ease: "power3.in" }, 10.3);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines["g-a3-get-out"] = tl;
+})();
+</script>
+</template>

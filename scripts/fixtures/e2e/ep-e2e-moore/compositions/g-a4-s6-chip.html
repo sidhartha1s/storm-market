@@ -1,0 +1,56 @@
+<template>
+<!--
+  g-a4-s6-chip · ep-moore-1999 · A4-S6 chip "19 OF 36 · INSIDE HOUSES" (edit_script A4-S6 Picture line; was inside the parked
+  g-a4-houses), track 4, transparent overlay over ins-paul-5 (764.451 for 9.43 s, no media-start). He says it in this clip:
+  "Nineteen of the thirty-six were inside their houses." Host 767.891 ("19") for 5.5 s (to 773.391, 0.49 s before the clip ends).
+  Cues: media/paul/ins-paul-5/raw-01.words.json minus 3.44: "19" 0.00; "36" 4.12 -> 0.68; "inside their houses" 5.36 -> 1.92.
+  Glass chip top-left (shelf behind him, his face starts x ~820), two lines so it stays clear of his head; source chip top-right
+  over the monitors, as g-hook-overlay. Corner x>=1600, y>=680 and the logo at (1740, 900) left clear.
+-->
+<style>
+  #g-a4-s6-chip-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; }
+  .a46c-chip { position:absolute; inset:auto; left:96px; top:60px; padding:12px 38px 18px 32px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .a46c-row { display:flex; align-items:baseline; gap:18px; white-space:nowrap; }
+  .a46c-n { font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:92px; color:#e74c3c; }
+  .a46c-of { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:64px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  .a46c-cs { display:block; font-family:Arial, sans-serif; font-weight:700; font-size:32px; line-height:40px; letter-spacing:4px; color:#dfe7ee;
+    white-space:nowrap; opacity:0; visibility:hidden; }
+  .a46c-src { position:absolute; inset:auto; right:110px; top:70px; padding:11px 26px 12px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .a46c-srct { font-family:Arial, sans-serif; font-weight:700; font-size:21px; line-height:26px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-a4-s6-chip-root" data-composition-id="g-a4-s6-chip" data-width="1920" data-height="1080" data-duration="5.5">
+  <div class="a46c-chip" id="g-a4-s6-chip-c">
+    <div class="a46c-row" id="g-a4-s6-chip-row"><span class="a46c-n" id="g-a4-s6-chip-n">19</span><span class="a46c-of" id="g-a4-s6-chip-of">OF 36</span></div>
+    <span class="a46c-cs" id="g-a4-s6-chip-cs">INSIDE HOUSES</span>
+  </div>
+  <div class="a46c-src" id="g-a4-s6-chip-src"><span class="a46c-srct" id="g-a4-s6-chip-srct">Brooks, NSSL list of lives lost</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a4-s6-chip-";
+  const DUR = 5.5;
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "c", P + "of", P + "cs", P + "src"], { autoAlpha: 0, x: 0, y: 0 }, 0);
+  /* "19" @0.00: chip lands, count-up fast then slow into 19 */
+  tl.fromTo(P + "c", { autoAlpha: 0, x: -140 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0);
+  const n = document.querySelector(P + "n"), cnt = { v: 1 };
+  tl.fromTo(cnt, { v: 1 }, { v: 19, duration: 0.6, ease: "power3.out", immediateRender: false, onUpdate: () => { n.textContent = String(Math.round(cnt.v)); } }, 0);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+  /* "36" @0.68 */
+  tl.fromTo(P + "of", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.68);
+  /* "inside their houses" @1.92 */
+  tl.fromTo(P + "cs", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.92);
+  tl.to(P + "c", { y: -7, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 2 }, 0.6);
+  /* exits: slide out, done by 5.4 */
+  tl.to(P + "c", { x: -980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, DUR - 0.6);
+  tl.to(P + "src", { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, DUR - 0.6);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines["g-a4-s6-chip"] = tl;
+})();
+</script>
+</template>

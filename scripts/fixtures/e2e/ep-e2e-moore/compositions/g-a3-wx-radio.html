@@ -1,0 +1,86 @@
+<template>
+<!-- g-a3-wx-radio · ep-moore-1999 · A3-S3 · self-made home weather radio. Host 526.174 to 537.405 (11.231 s), track 2, full frame.
+     Local s = a3-s3 word time - 7.24 (a3-s3 starts 518.934; host starts on "alarm" 7.24).
+     Cues: "radio" 8.00 -> 0.76 (alert light blinks, waves); "24" 11.96 -> 4.72 (chip, 24 counts up; "48" 12.80 -> 5.56 lands);
+     "among them" 15.14 -> 7.90 (second blink); "sounded" 17.74 -> 10.50 (last blink). Chip text: edit_script A3-S3 Picture line. -->
+<style>
+  #g-a3-wx-radio-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 42% 50%, #141b24 0%, #05080c 75%); }
+  .gwr-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gwr-lab { font-family:Arial, sans-serif; font-weight:700; fill:#93a3b2; letter-spacing:3px; }
+  .gwr-lcd { font-family:"Courier New", monospace; font-weight:700; fill:#8fd19e; }
+  .gwr-chip { position:absolute; left:1000px; top:300px; width:760px; padding:26px 40px 30px; box-sizing:border-box; border-radius:28px; background:rgba(10,16,24,0.62);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .gwr-num { font-family:"Courier New", monospace; font-weight:700; font-size:120px; line-height:120px; color:#e74c3c; white-space:nowrap; }
+  .gwr-of { font-family:"Arial Black", Arial, sans-serif; font-weight:900; font-size:56px; line-height:64px; color:#f2f5f8; white-space:nowrap; }
+  .gwr-sub { font-family:Arial, sans-serif; font-weight:700; font-size:34px; line-height:44px; letter-spacing:3px; color:#dfe7ee; white-space:nowrap; margin-top:10px; }
+  .gwr-src { position:absolute; left:110px; bottom:64px; padding:10px 24px 11px; border-radius:24px; background:rgba(10,16,24,0.55); border:1px solid rgba(255,255,255,0.14);
+    font-size:21px; line-height:26px; font-weight:700; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a3-wx-radio-waves path { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-wx-radio-root" data-composition-id="g-a3-wx-radio" data-width="1920" data-height="1080" data-duration="11.231">
+  <svg class="gwr-svg" viewBox="0 0 1920 1080">
+    <g id="g-a3-wx-radio-unit">
+      <line id="g-a3-wx-radio-ant" x1="760" y1="420" x2="900" y2="210" stroke="#7d8a97" stroke-width="8" stroke-linecap="round"/>
+      <circle id="g-a3-wx-radio-antk" cx="900" cy="210" r="10" fill="#9aa7b4"/>
+      <rect id="g-a3-wx-radio-body" x="250" y="410" width="680" height="380" rx="40" fill="#1d252e" stroke="#3a4652" stroke-width="4"/>
+      <rect id="g-a3-wx-radio-face" x="290" y="450" width="600" height="300" rx="24" fill="#141a21"/>
+      <g id="g-a3-wx-radio-grille" fill="#2c3640">
+        <circle cx="420" cy="600" r="110" fill="#0e1318"/>
+        <circle cx="380" cy="560" r="8"/><circle cx="420" cy="560" r="8"/><circle cx="460" cy="560" r="8"/>
+        <circle cx="360" cy="600" r="8"/><circle cx="400" cy="600" r="8"/><circle cx="440" cy="600" r="8"/><circle cx="480" cy="600" r="8"/>
+        <circle cx="380" cy="640" r="8"/><circle cx="420" cy="640" r="8"/><circle cx="460" cy="640" r="8"/>
+      </g>
+      <rect id="g-a3-wx-radio-lcd" x="580" y="500" width="270" height="90" rx="10" fill="#1f3326" stroke="#2f4a37" stroke-width="3"/>
+      <text id="g-a3-wx-radio-lcdt" class="gwr-lcd" x="715" y="560" text-anchor="middle" font-size="40">WX ALERT</text>
+      <circle id="g-a3-wx-radio-ledhalo" cx="640" cy="670" r="40" fill="#ff3b30" opacity="0"/>
+      <circle id="g-a3-wx-radio-led" cx="640" cy="670" r="20" fill="#4a1512" stroke="#2a0b0a" stroke-width="3"/>
+      <text id="g-a3-wx-radio-alert" class="gwr-lab" x="680" y="680" font-size="28">ALERT</text>
+    </g>
+    <g id="g-a3-wx-radio-waves" fill="none" stroke="#f5c25a" stroke-width="6" stroke-linecap="round">
+      <path id="g-a3-wx-radio-w1" d="M960,520 A120,120 0 0 1 960,680"/>
+      <path id="g-a3-wx-radio-w2" d="M1000,480 A170,170 0 0 1 1000,720"/>
+      <path id="g-a3-wx-radio-w3" d="M1040,440 A220,220 0 0 1 1040,760"/>
+    </g>
+    <text id="g-a3-wx-radio-name" class="gwr-lab" x="590" y="870" text-anchor="middle" font-size="30">NOAA WEATHER RADIO</text>
+  </svg>
+  <div class="gwr-chip" id="g-a3-wx-radio-chip">
+    <div id="g-a3-wx-radio-row"><span class="gwr-num" id="g-a3-wx-radio-n1">1</span><span class="gwr-of" id="g-a3-wx-radio-of"> OF 48</span></div>
+    <div class="gwr-sub" id="g-a3-wx-radio-sub">STATEMENTS TONE-ALERTED BY HAND</div>
+  </div>
+  <div class="gwr-src" id="g-a3-wx-radio-src">NWS Service Assessment, p15, p17-18</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a3-wx-radio-", DUR = 11.231;
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "chip", P + "src", P + "waves path", P + "of", P + "sub"], { autoAlpha: 0 }, 0);
+  tl.set(P + "ledhalo", { opacity: 0 }, 0);
+  /* the radio settles in, slow float for the whole window */
+  tl.fromTo(P + "unit", { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 0);
+  tl.to(P + "unit", { y: -10, duration: 2.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.5);
+  tl.fromTo(P + "name", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.2);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.4);
+  /* alert: the LED blinks and the waves leave the speaker; one burst per cue */
+  const alert = (t, n) => {
+    tl.fromTo(P + "led", { attr: { fill: "#4a1512" } }, { attr: { fill: "#ff3b30" }, duration: 0.18, ease: "steps(1)", yoyo: true, repeat: n * 2 - 1, repeatDelay: 0.12, immediateRender: false }, t);
+    tl.fromTo(P + "ledhalo", { opacity: 0, scale: 0.6, svgOrigin: "640 670" }, { opacity: 0.45, scale: 1.4, duration: 0.3, ease: "power2.out", yoyo: true, repeat: n * 2 - 1, immediateRender: false }, t);
+    ["w1", "w2", "w3"].forEach((w, i) => tl.fromTo(P + w, { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 20, duration: 0.45, ease: "power2.out", yoyo: true, repeat: n * 2 - 1, immediateRender: false }, t + i * 0.12));
+  };
+  alert(0.76, 3);   /* "radio" @0.76 */
+  /* "24" @4.72: the chip lands, 24 counts up; "48" @5.56 */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 4.72);
+  const n1 = document.querySelector(P + "n1"), k = { v: 1 };
+  tl.to(k, { v: 24, duration: 0.8, ease: "power4.out", onUpdate: () => { n1.textContent = String(Math.round(k.v)); } }, 4.72);
+  tl.fromTo(P + "of", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 5.56);
+  tl.fromTo(P + "sub", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.9);
+  tl.to(P + "chip", { y: -8, duration: 2.0, ease: "sine.inOut", yoyo: true, repeat: 1 }, 6.4);
+  alert(7.90, 2);   /* "among them" @7.90 */
+  alert(10.50, 1);  /* "sounded" @10.50 */
+  tl.to(P + "chip", { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 10.70);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines["g-a3-wx-radio"] = tl;
+})();
+</script>
+</template>

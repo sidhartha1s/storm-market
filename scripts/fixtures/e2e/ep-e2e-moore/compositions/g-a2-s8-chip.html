@@ -1,0 +1,40 @@
+<template>
+<!--
+  g-a2-s8-chip · ep-moore-1999 · A2-S8, host 436.093 (nx-a2-s8 433.273 + "deputy" 2.82) for 6.04 s (to "For the" 442.133),
+  track 4, transparent overlay over sa-014-000 (aerial path, John Jarboe, NWS) then nssl-damage3 (NOAA/NSSL).
+  Lower-left glass chip, two lines; source line top right. Cues local = a2-s8 words minus 2.82: emergency care 5.92 -> 3.10.
+-->
+<style>
+  #g-a2-s8-chip-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; }
+  .a8c-chip { position:absolute; inset:auto; left:110px; bottom:110px; padding:16px 38px 18px 34px;
+    box-sizing:border-box; border-radius:28px; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .a8c-big { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  .a8c-mid { display:block; font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:1.3; letter-spacing:4px; color:#e8c56a; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a8c-src { position:absolute; inset:auto; right:110px; top:70px; padding:11px 26px 12px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .a8c-srct { font-family:Arial, sans-serif; font-weight:700; font-size:21px; line-height:26px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-a2-s8-chip-root" data-composition-id="g-a2-s8-chip" data-width="1920" data-height="1080" data-duration="6.04">
+  <div class="a8c-chip" id="g-a2-s8-chip-c"><span class="a8c-big" id="g-a2-s8-chip-big">GRADY COUNTY DEPUTY</span><span class="a8c-mid" id="g-a2-s8-chip-mid">ON SCENE OF THE WORST DAMAGE</span></div>
+  <div class="a8c-src" id="g-a2-s8-chip-src"><span class="a8c-srct" id="g-a2-s8-chip-srct">NWS Service Assessment, p22</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a2-s8-chip-";
+  const DUR = 6.04;
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "c", P + "mid", P + "src"], { autoAlpha: 0, x: 0, y: 0 }, 0);
+  tl.fromTo(P + "c", { autoAlpha: 0, x: -70 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0);           /* deputy @0 */
+  tl.fromTo(P + "src", { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+  tl.fromTo(P + "mid", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.10);       /* emergency care @3.10 */
+  tl.to(P + "c", { y: -6, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 2 }, 0.5);
+  tl.to(P + "c", { autoAlpha: 0, x: -140, duration: 0.5, ease: "power3.in" }, DUR - 0.6);
+  tl.to(P + "src", { autoAlpha: 0, x: 140, duration: 0.5, ease: "power3.in" }, DUR - 0.6);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines["g-a2-s8-chip"] = tl;
+})();
+</script>
+</template>

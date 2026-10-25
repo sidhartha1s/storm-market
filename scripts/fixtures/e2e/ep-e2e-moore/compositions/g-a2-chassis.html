@@ -1,0 +1,130 @@
+<template>
+<!--
+  g-a2-chassis · ep-moore-1999 · A2-S4, host 353.981 (end of ins-a2-newcastle) for 19.646 s to nx-a2-s5 373.627, track 2,
+  full frame. Self-made fallback for the FEMA 342 photos (no per-photo credit, not used). SCHEMATIC, NOT TO SCALE in
+  the side view; the top view keeps one scale (60 ft = 130 px, so 200 yards = 1300 px).
+  Claims (Picture line A2-S4): anchored homes, anchor straps broken (FEMA 342 p4-34/35); one chassis 14 x 60 ft about
+  200 yards from where it stood. No town marked.
+  Cues: audio/a2-s4.words.json + 0.30 (nx-a2-s4 starts 354.281, 0.30 s into this host).
+-->
+<style>
+  #g-a2-chassis-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .gch-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gch-corner { position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse 520px 440px at 1790px 940px, #04070c 0%, #04070c 45%, rgba(4,7,12,0) 100%); }
+  .gch-lab { font-family:Arial, sans-serif; font-weight:700; font-size:30px; letter-spacing:3px; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:6px; }
+  .gch-labA { fill:#e8c56a; }
+  .gch-chip { position:absolute; inset:auto; left:96px; top:60px; box-sizing:border-box; padding:16px 34px 18px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:1.1;
+    color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  .gch-src { position:absolute; inset:auto; left:96px; bottom:54px; font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px;
+    color:#c8d3e0; white-space:nowrap; text-shadow:0 0 6px #04070c, 0 0 12px #04070c; opacity:0; visibility:hidden; }
+  #g-a2-chassis-side, #g-a2-chassis-top, #g-a2-chassis-straps, #g-a2-chassis-svg text, #g-a2-chassis-streaks line { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-chassis-root" data-composition-id="g-a2-chassis" data-width="1920" data-height="1080" data-duration="19.646">
+  <svg class="gch-svg" id="g-a2-chassis-svg" viewBox="0 0 1920 1080">
+    <!-- SIDE VIEW: a long light box up on a steel frame, on piers -->
+    <g id="g-a2-chassis-side">
+      <rect x="0" y="760" width="1920" height="320" fill="#0b1016"/>
+      <path d="M0,760 L1920,760" stroke="#4a5560" stroke-width="3"/>
+      <g id="g-a2-chassis-home">
+        <rect x="480" y="520" width="960" height="160" rx="4" fill="#c8d3e0" fill-opacity="0.16" stroke="#dfe7ee" stroke-width="3"/>
+        <rect x="560" y="560" width="70" height="50" fill="none" stroke="#93a3b2" stroke-width="2"/>
+        <rect x="900" y="560" width="70" height="50" fill="none" stroke="#93a3b2" stroke-width="2"/>
+        <rect x="1240" y="560" width="70" height="50" fill="none" stroke="#93a3b2" stroke-width="2"/>
+        <rect x="1100" y="580" width="44" height="100" fill="none" stroke="#93a3b2" stroke-width="2"/>
+        <rect id="g-a2-chassis-frame" x="470" y="680" width="980" height="20" fill="#5a6774" stroke="#93a3b2" stroke-width="2"/>
+      </g>
+      <g fill="#2a3644" stroke="#4a5560" stroke-width="2">
+        <rect x="560" y="700" width="30" height="60"/><rect x="820" y="700" width="30" height="60"/>
+        <rect x="1080" y="700" width="30" height="60"/><rect x="1340" y="700" width="30" height="60"/>
+      </g>
+      <g id="g-a2-chassis-straps" stroke="#e8c56a" stroke-width="5" stroke-linecap="round">
+        <line id="g-a2-chassis-s1" x1="640" y1="700" x2="690" y2="760"/><line id="g-a2-chassis-s2" x1="900" y1="700" x2="950" y2="760"/>
+        <line id="g-a2-chassis-s3" x1="1160" y1="700" x2="1210" y2="760"/><line id="g-a2-chassis-s4" x1="1400" y1="700" x2="1450" y2="760"/>
+      </g>
+      <g fill="#e8c56a"><circle cx="690" cy="762" r="6"/><circle cx="950" cy="762" r="6"/><circle cx="1210" cy="762" r="6"/><circle cx="1450" cy="762" r="6"/></g>
+      <g id="g-a2-chassis-streaks" stroke="#dfe7ee" stroke-width="3" stroke-linecap="round" stroke-opacity="0.6">
+        <line x1="0" y1="430" x2="240" y2="424"/><line x1="0" y1="490" x2="180" y2="486"/><line x1="0" y1="600" x2="260" y2="592"/>
+        <line x1="0" y1="650" x2="200" y2="646"/><line x1="0" y1="380" x2="220" y2="374"/><line x1="0" y1="720" x2="160" y2="716"/>
+      </g>
+    </g>
+    <text id="g-a2-chassis-tframe" class="gch-lab" x="960" y="830" text-anchor="middle">STEEL FRAME</text>
+    <!-- TOP VIEW: a plain stretch of the damage path, no town; 60 ft = 130 px -->
+    <g id="g-a2-chassis-top">
+      <rect x="0" y="380" width="1920" height="240" fill="#121c26"/>
+      <path d="M0,380 L1920,380 M0,620 L1920,620" stroke="#4a5560" stroke-width="2" stroke-dasharray="12 10"/>
+      <rect id="g-a2-chassis-ghost" x="200" y="485" width="130" height="30" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="8 6"/>
+      <path id="g-a2-chassis-dist" d="M265,450 L1565,450 M265,436 L265,464 M1565,436 L1565,464" stroke="#e8c56a" stroke-width="3" fill="none"/>
+      <g id="g-a2-chassis-ch">
+        <rect x="200" y="485" width="130" height="30" fill="#c8d3e0" fill-opacity="0.25" stroke="#f2f5f8" stroke-width="3"/>
+        <path d="M206,493 L324,493 M206,507 L324,507" stroke="#93a3b2" stroke-width="3"/>
+      </g>
+    </g>
+    <text id="g-a2-chassis-tsize" class="gch-lab" x="265" y="580" text-anchor="middle">14 FT × 60 FT</text>
+    <text id="g-a2-chassis-tyd" class="gch-lab gch-labA" x="915" y="425" text-anchor="middle">ABOUT 200 YARDS</text>
+  </svg>
+  <div class="gch-corner"></div>
+  <div class="gch-chip" id="g-a2-chassis-chip">ANCHOR STRAPS · BROKEN</div>
+  <div class="gch-src" id="g-a2-chassis-src">FEMA 342, p4-34 and p4-35; Doswell and Brooks 2002 · Schematic</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a2-chassis-";
+  const DUR = 19.646;
+  const o = 0.30;  /* words.json -> local */
+  const C = { mobile: 0.52 + o, wind: 1.46 + o, picture: 2.46 + o, steel: 4.64 + o, anchored: 6.66 + o, anchor: 10.18 + o,
+    broken: 11.24 + o, near: 12.12 + o, chassis: 13.92 + o, f14: 14.86 + o, ended: 16.64 + o, y200: 17.24 + o };
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "side", P + "top", P + "straps", P + "tframe", P + "tsize", P + "tyd", P + "chip", P + "src", P + "streaks line"], { autoAlpha: 0 }, 0);
+  tl.set(P + "home", { x: 0, y: 0, rotation: 0, svgOrigin: "1440 700" }, 0);
+  tl.set(P + "ch", { x: 0 }, 0);
+  tl.set(P + "dist", { scaleX: 0, svgOrigin: "265 450" }, 0);
+
+  /* MOBILE HOME @0.82: the side view rises in */
+  tl.fromTo(P + "side", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.5);
+  /* WIND @1.76: streaks race across until the cut to the top view; the box rattles */
+  document.querySelectorAll(P + "streaks line").forEach((el, i) => {
+    const d = C.wind + i * 0.13, sd = 0.7 + (i % 3) * 0.12;
+    tl.to(el, { autoAlpha: 1, duration: 0.1, ease: "none" }, d);
+    tl.fromTo(el, { x: -300 }, { x: 2100, duration: sd, ease: "none", repeat: Math.floor((C.near - d) / sd) - 1 }, d);
+  });
+  tl.to(P + "home", { rotation: -0.6, duration: 0.12, ease: "sine.inOut", yoyo: true, repeat: 9 }, C.wind);
+  tl.fromTo(P + "home", { y: 0 }, { y: -10, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false }, 0.8);   /* the box lifts on its piers in the wind, 0.8 to 6.8 */
+  /* STEEL FRAME @4.94 */
+  tl.fromTo(P + "tframe", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.steel);
+  tl.fromTo(P + "frame", { attr: { "fill-opacity": 1 } }, { attr: { "fill-opacity": 0.4 }, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, C.steel);
+  /* ANCHORED @6.96: straps draw down to their ground anchors */
+  tl.to(P + "straps", { autoAlpha: 1, duration: 0.1, ease: "none" }, C.anchored);
+  ["s1", "s2", "s3", "s4"].forEach((s, i) => tl.fromTo(P + s, { scale: 0, svgOrigin: [640, 900, 1160, 1400][i] + " 700" }, { scale: 1, svgOrigin: [640, 900, 1160, 1400][i] + " 700", duration: 0.35, ease: "power3.out" }, C.anchored + i * 0.12));
+  tl.to(P + "tframe", { autoAlpha: 0, y: -10, duration: 0.3, ease: "power2.in" }, C.anchored);
+  tl.to(P + "home", { rotation: -1.4, duration: 0.1, ease: "sine.inOut", yoyo: true, repeat: 13 }, C.anchored + 0.5);
+  /* ANCHOR STRAPS @10.48: the chip; BROKEN @11.54: they snap red, the box lifts and tips */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.anchor);
+  ["s1", "s2", "s3", "s4"].forEach((s, i) => {
+    tl.to(P + s, { attr: { stroke: "#e74c3c" }, duration: 0.1, ease: "none" }, C.broken + i * 0.06);
+    tl.to(P + s, { scale: 0.45, rotation: -50, svgOrigin: [690, 950, 1210, 1450][i] + " 760", duration: 0.35, ease: "power3.out" }, C.broken + i * 0.06);
+  });
+  tl.to(P + "home", { y: -40, rotation: -5, svgOrigin: "1440 700", duration: 0.5, ease: "power3.out" }, C.broken + 0.15);
+  /* NEAR THAT SAME TORNADO @12.42: side view leaves, the top view of a plain stretch of the path comes in */
+  tl.to(P + "chip", { autoAlpha: 0, x: -140, duration: 0.4, ease: "power3.in" }, C.near - 0.2);
+  tl.to(P + "side", { autoAlpha: 0, y: -60, duration: 0.5, ease: "power3.in" }, C.near);
+  tl.fromTo(P + "top", { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, C.near + 0.4);
+  /* CHASSIS @14.22 pulses; 14 @15.16 the size label */
+  tl.fromTo(P + "ch", { scale: 1, svgOrigin: "265 500" }, { scale: 1.15, svgOrigin: "265 500", duration: 0.25, ease: "sine.out", yoyo: true, repeat: 1 }, C.chassis);
+  tl.fromTo(P + "tsize", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.f14);
+  /* ENDED UP @16.94: it slides about 200 yards; the bracket draws with it; 200 @17.54 the label */
+  tl.to(P + "tsize", { autoAlpha: 0, y: 10, duration: 0.3, ease: "power2.in" }, C.ended - 0.1);
+  tl.to(P + "ch", { x: 1300, rotation: 18, svgOrigin: "265 500", duration: 1.4, ease: "power2.inOut" }, C.ended);
+  tl.to(P + "dist", { scaleX: 1, svgOrigin: "265 450", duration: 1.4, ease: "power2.inOut" }, C.ended);
+  tl.fromTo(P + "tyd", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.y200);
+  tl.to(P + "top", { y: -6, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, C.y200 + 0.2);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines["g-a2-chassis"] = tl;
+})();
+</script>
+</template>

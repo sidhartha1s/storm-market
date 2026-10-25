@@ -1,0 +1,143 @@
+<template>
+<!--
+  g-leadtime · ep-moore-1999 · host 61.675 to 86.205 (24.53 s), track 2, full frame. Brief: briefs/intro.md section C.
+  Started from library/inhouse/ranked-bars.html (kept: rail + scaleX bar, counted readout, axis with ticks, staggered
+  row reveal, ambient motion); retuned to four county rows on one shared minutes axis.
+  Claim (NWS Service Assessment 1999 p9; Wurman et al. 2007 p31): lead time from the first warning to the first tornado
+  per county. Grady 65 min, McClain 18, Cleveland 31, Oklahoma 13; average about 32; a typical US warning 10 to 15 min.
+  SCALE: one axis, 0 to 70 min, 15 px per minute, origin x = 370 (70 min = x 1420). Bar widths = minutes x 15:
+  Grady 975, McClain 270, Cleveland 465, Oklahoma 195. Average line at 32 min = x 850. Grey band 10 to 15 min = x 520 to 595,
+  drawn over the empty rails and under the bars, so the 13 tip sits over it and the 18 tip just past it.
+  Cues are local seconds = i1-s2 word times (host 61.675 = local 0).
+-->
+<style>
+  #g-leadtime-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 46% 50%, #0d141c 0%, #04070a 76%); }
+  .glt-wrap { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .glt-eb { position:absolute; left:96px; top:64px; font-size:22px; letter-spacing:6px; color:#93a3b2; font-weight:700; line-height:1; }
+  .glt-hl { position:absolute; left:96px; top:96px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    color:#f2f5f8; line-height:1; letter-spacing:1px; }
+  .glt-nm { position:absolute; right:1580px; width:244px; text-align:right; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:30px; color:#f2f5f8; line-height:1; letter-spacing:1px; white-space:nowrap; }
+  .glt-rail { position:absolute; left:370px; width:1050px; height:56px; background:linear-gradient(180deg,#0f1922,#0a121a);
+    border:1px solid #1b2836; box-sizing:border-box; }
+  .glt-bar { position:absolute; left:370px; height:56px; background:linear-gradient(90deg,#33556f,#7fb2e5); }
+  .glt-num { position:absolute; right:420px; width:120px; text-align:right; font-family:'Courier New', monospace; font-weight:700;
+    font-size:64px; color:#dfe7ee; line-height:1; }
+  .glt-unit { position:absolute; left:1512px; font-family:Arial, sans-serif; font-weight:700; font-size:26px; color:#93a3b2;
+    letter-spacing:2px; line-height:1; }
+  .glt-band { position:absolute; left:520px; top:250px; width:75px; height:440px; background:rgba(147,163,178,0.20);
+    border-left:2px solid rgba(200,211,224,0.55); border-right:2px solid rgba(200,211,224,0.55); box-sizing:border-box; }
+  .glt-avg { position:absolute; left:849px; top:250px; width:0; height:440px; border-left:3px dashed #e8c56a; }
+  .glt-avglab { position:absolute; left:850px; top:196px; width:500px; margin-left:-250px; text-align:center;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; color:#e8c56a; line-height:1; letter-spacing:1px; }
+  .glt-axis { position:absolute; left:370px; top:690px; width:1050px; height:2px; background:linear-gradient(90deg,#2a3644,#46586b); }
+  .glt-tm { position:absolute; top:680px; width:2px; height:10px; background:#46586b; }
+  .glt-tk { position:absolute; top:702px; width:60px; margin-left:-30px; text-align:center; font-size:19px; letter-spacing:1px;
+    color:#93a3b2; font-weight:700; line-height:1; }
+  .glt-bandlab { position:absolute; left:520px; top:760px; font-family:Arial, sans-serif; font-weight:700; font-size:30px;
+    color:#c8d3e0; letter-spacing:2px; line-height:1; white-space:nowrap; }
+  .glt-src { position:absolute; left:96px; font-size:19px; letter-spacing:2px; color:#93a3b2; font-weight:700; line-height:1; white-space:nowrap; }
+  .glt-scan { position:absolute; left:0; top:250px; width:3px; height:440px;
+    background:linear-gradient(180deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  #glt-eb, #glt-hl, .glt-nm, .glt-bar, .glt-num, .glt-unit, #glt-band, #glt-avg, #glt-avglab, #glt-bandlab, .glt-src { opacity:0; visibility:hidden; }
+</style>
+<div id="g-leadtime-root" data-composition-id="g-leadtime" data-width="1920" data-height="1080" data-duration="24.53">
+  <div class="glt-wrap" id="glt-wrap">
+    <div class="glt-eb" id="glt-eb">FIRST WARNING TO FIRST TORNADO</div>
+    <div class="glt-hl" id="glt-hl">LEAD TIME BY COUNTY</div>
+
+    <div class="glt-rail" id="glt-rail1" style="top:270px"></div>
+    <div class="glt-rail" id="glt-rail2" style="top:380px"></div>
+    <div class="glt-rail" id="glt-rail3" style="top:490px"></div>
+    <div class="glt-rail" id="glt-rail4" style="top:600px"></div>
+    <div class="glt-band" id="glt-band"></div>
+
+    <div class="glt-bar" id="glt-bar1" style="top:270px; width:975px"></div>
+    <div class="glt-bar" id="glt-bar2" style="top:380px; width:270px"></div>
+    <div class="glt-bar" id="glt-bar3" style="top:490px; width:465px"></div>
+    <div class="glt-bar" id="glt-bar4" style="top:600px; width:195px"></div>
+
+    <div class="glt-nm" id="glt-nm1" style="top:283px">GRADY</div>
+    <div class="glt-nm" id="glt-nm2" style="top:393px">McCLAIN</div>
+    <div class="glt-nm" id="glt-nm3" style="top:503px">CLEVELAND</div>
+    <div class="glt-nm" id="glt-nm4" style="top:613px">OKLAHOMA</div>
+
+    <div class="glt-num" id="glt-n1" style="top:266px">65</div><div class="glt-unit" id="glt-u1" style="top:294px">MIN</div>
+    <div class="glt-num" id="glt-n2" style="top:376px">18</div><div class="glt-unit" id="glt-u2" style="top:404px">MIN</div>
+    <div class="glt-num" id="glt-n3" style="top:486px">31</div><div class="glt-unit" id="glt-u3" style="top:514px">MIN</div>
+    <div class="glt-num" id="glt-n4" style="top:596px">13</div><div class="glt-unit" id="glt-u4" style="top:624px">MIN</div>
+
+    <div class="glt-avg" id="glt-avg"></div>
+    <div class="glt-avglab" id="glt-avglab">32 MIN AVERAGE</div>
+
+    <div class="glt-axis" id="glt-axis"></div>
+    <div class="glt-tm" style="left:369px"></div><div class="glt-tm" style="left:519px"></div><div class="glt-tm" style="left:669px"></div>
+    <div class="glt-tm" style="left:819px"></div><div class="glt-tm" style="left:969px"></div><div class="glt-tm" style="left:1119px"></div>
+    <div class="glt-tm" style="left:1269px"></div><div class="glt-tm" style="left:1419px"></div>
+    <div class="glt-tk" id="glt-tk0" style="left:370px">0</div><div class="glt-tk" id="glt-tk1" style="left:520px">10</div>
+    <div class="glt-tk" id="glt-tk2" style="left:670px">20</div><div class="glt-tk" id="glt-tk3" style="left:820px">30</div>
+    <div class="glt-tk" id="glt-tk4" style="left:970px">40</div><div class="glt-tk" id="glt-tk5" style="left:1120px">50</div>
+    <div class="glt-tk" id="glt-tk6" style="left:1270px">60</div><div class="glt-tk" id="glt-tk7" style="left:1420px">70</div>
+
+    <div class="glt-bandlab" id="glt-bandlab">TYPICAL US WARNING: 10 TO 15 MIN</div>
+    <div class="glt-src" id="glt-src1" style="top:952px">NWS Service Assessment, Aug 1999</div>
+    <div class="glt-src" id="glt-src2" style="top:984px">Wurman et al. 2007</div>
+
+    <div class="glt-scan" id="glt-scan"></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = '#glt-';
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + 'bar1', P + 'bar2', P + 'bar3', P + 'bar4'], { scaleX: 0, transformOrigin: 'left center' }, 0);
+  tl.set(P + 'avg', { scaleY: 0, transformOrigin: 'center top' }, 0);
+  tl.set(P + 'band', { scaleX: 0, transformOrigin: 'left center' }, 0);
+  tl.set(P + 'scan', { x: 370 }, 0);
+  tl.set(P + 'wrap', { x: 0 }, 0);
+
+  /* ambient: a faint scan line sweeps the chart left to right for the whole window (finite repeats) */
+  tl.fromTo(P + 'scan', { x: 370 }, { x: 1420, duration: 5.8, ease: 'none', repeat: 3 }, 0.3);
+
+  /* rails and axis are the opening ground (on from frame 0); the masthead and ticks land under the first name */
+  tl.fromTo(P + 'eb', { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: 'power3.out' }, 0.02);
+  tl.fromTo(P + 'hl', { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power3.out' }, 0.10);
+  tl.fromTo('.glt-tk', { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: 'power3.out', stagger: 0.06 }, 0.60);
+  tl.fromTo(P + 'src1', { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: 'power3.out' }, 1.00);
+
+  /* one row per sentence: name on the county's word, bar and counter on the figure */
+  function row(i, nameAt, barAt, val) {
+    tl.fromTo(P + 'nm' + i, { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: 'power3.out' }, nameAt);
+    tl.set(P + 'bar' + i, { autoAlpha: 1 }, barAt);
+    tl.to(P + 'bar' + i, { scaleX: 1, duration: 1.0, ease: 'power3.out' }, barAt);
+    tl.fromTo([P + 'n' + i, P + 'u' + i], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12, ease: 'none' }, barAt);
+    tl.fromTo(P + 'u' + i, { y: 14 }, { y: 0, duration: 0.4, ease: 'power3.out' }, barAt + 0.1);
+    const o = { v: 1 }, el = document.getElementById('glt-n' + i);
+    tl.fromTo(o, { v: 1 }, { v: val, duration: 1.0, ease: 'power4.out',
+      onUpdate: () => { el.textContent = String(Math.round(o.v)); } }, barAt);
+  }
+  row(1, 0.16, 3.68, 65);     /* GRADY @0.16, "65" @3.68 */
+  row(2, 5.30, 7.08, 18);     /* MCCLAIN @5.30, "18" @7.08 */
+  row(3, 8.72, 11.04, 31);    /* CLEVELAND @8.72, "31" @11.04 */
+  row(4, 12.10, 14.66, 13);   /* OKLAHOMA @12.10, "13" @14.66 */
+
+  /* "32" @19.22: the average line drops through the rows, its label lands on top */
+  tl.to(P + 'avg', { scaleY: 1, duration: 0.6, ease: 'power3.out' }, 19.22);
+  tl.fromTo(P + 'avg', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.15, ease: 'none' }, 19.22);
+  tl.fromTo(P + 'avglab', { autoAlpha: 0, y: -22 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: 'power3.out' }, 19.30);
+
+  /* "10 to 15" band @20.82 on the same axis, label @23.12 */
+  tl.fromTo(P + 'band', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: 'none' }, 20.82);
+  tl.to(P + 'band', { scaleX: 1, duration: 0.5, ease: 'power3.out' }, 20.82);
+  tl.fromTo(P + 'src2', { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: 'power3.out' }, 21.10);
+  tl.fromTo(P + 'bandlab', { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: 'power3.out' }, 23.12);
+
+  /* exit: the whole chart slides out, ending on the cut at 24.53 */
+  tl.to(P + 'wrap', { x: -1400, autoAlpha: 0, duration: 0.6, ease: 'power3.in' }, 23.93);
+
+  window.__timelines['g-leadtime'] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,14 @@
+{
+ "aspect": "16:9",
+ "count": 1,
+ "credits_per_video": 15,
+ "budget": 15,
+ "jobs": [
+  {
+   "name": "moore-ins-paul-1-retake",
+   "frame": "C:/Users/Sidhartha/Automation Projects/storm-market/.claude/worktrees/ep-moore-1999-e7be0e/assets/paul/paul-start-frame-omni-v2.png",
+   "line": "If you're warned in time, you'll make it, won't you?",
+   "prompt": "This is a history documentary about the May 3, 1999 Oklahoma tornado outbreak. The man in the start frame sits at his desk, exactly as shown, and speaks straight to the camera. ONE full-width 16:9 video, a single take, no variations; never a split image, a collage or panels. Medium shot, the camera does not move, the room stays as in the start frame. Calm, deep, measured voice, natural small hand movement. He says exactly these words and nothing else: \"If you're warned in time, you'll make it, won't you?\" He stops speaking and holds his look at the camera. No music, no captions, no text on screen."
+  }
+ ]
+}

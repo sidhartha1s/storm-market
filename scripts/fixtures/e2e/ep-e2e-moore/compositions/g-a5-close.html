@@ -1,0 +1,55 @@
+<template>
+<!--
+  g-a5-close · ep-moore-1999 · A5-S11 · host 1097.154 to 1111.052 (13.898 s), track 2, full frame. Builder: Opus.
+  From library/inhouse/outro-brand.html (kept: THE / WARNING (amber) / HOUR wordmark, Georgia italic episode line, scale
+  pop on the spoken brand name, fade to black). Dropped the sample CTA tag (no recap). The card is up from the end ask's
+  last frame (1097.154) so no black gap; the signature line starts 1097.454 (local 0.30).
+  Brand name spoken "The Warning Hour" @8.70 of nx-a5-s11 = local 9.00.
+-->
+<style>
+  #g-a5-close-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .ga5c-sweep { position:absolute; left:460px; top:-40px; width:1000px; height:1000px; border-radius:50%;
+    background:conic-gradient(from 0deg, rgba(208,18,31,0.00) 0deg, rgba(208,18,31,0.16) 40deg, rgba(208,18,31,0.00) 80deg, rgba(208,18,31,0) 360deg); }
+  .ga5c-ring { position:absolute; left:460px; top:-40px; width:1000px; height:1000px; border-radius:50%; box-sizing:border-box; border:2px solid rgba(147,163,178,0.12); }
+  .ga5c-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .ga5c-twh { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:120px; color:#f2f5f8; letter-spacing:6px; line-height:1; white-space:nowrap; }
+  .ga5c-amber { color:#d8a13a; }
+  .ga5c-rule { width:720px; height:4px; margin-top:30px; background:linear-gradient(90deg, rgba(216,161,58,0), #d8a13a, rgba(216,161,58,0)); }
+  .ga5c-ep { font-family:Georgia, serif; font-style:italic; font-size:30px; color:#d8a13a; margin-top:26px; line-height:1; white-space:nowrap; }
+  .ga5c-fade { position:absolute; inset:0; background:#000; }
+  #ga5c-twh, #ga5c-ep, #ga5c-rule, #ga5c-fade { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-close-root" data-composition-id="g-a5-close" data-width="1920" data-height="1080" data-duration="13.898" data-type-ok="brand lockup by design: wordmark and episode line only, as library outro-brand.html">
+  <div class="ga5c-sweep" id="ga5c-sweep"></div>
+  <div class="ga5c-ring" id="ga5c-ring"></div>
+  <div class="ga5c-stage" id="ga5c-stage">
+    <div class="ga5c-twh" id="ga5c-twh">THE <span class="ga5c-amber" id="ga5c-amb">WARNING</span> HOUR</div>
+    <div class="ga5c-rule" id="ga5c-rule"></div>
+    <div class="ga5c-ep" id="ga5c-ep">Moore, Oklahoma &middot; May 3, 1999</div>
+  </div>
+  <div class="ga5c-fade" id="ga5c-fade"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#ga5c-";
+  const tl = gsap.timeline({ paused: true });
+  tl.set(P + "rule", { scaleX: 0 }, 0);
+  /* a slow radar sweep turns behind the card for the whole window */
+  tl.fromTo(P + "sweep", { rotation: 0 }, { rotation: 300, duration: 13.898, ease: "none" }, 0);
+  /* title card held under the signature line */
+  tl.fromTo(P + "twh", { autoAlpha: 0, scale: 1.06 }, { autoAlpha: 0.55, scale: 1, duration: 1.2, ease: "power2.out" }, 0.10);
+  tl.fromTo(P + "ep", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.7, ease: "power2.out" }, 1.30);
+  tl.to(P + "twh", { scale: 1.02, duration: 7.0, ease: "sine.inOut" }, 1.4);
+  /* "The Warning Hour" @9.00: the wordmark snaps to full strength, the rule draws */
+  tl.to(P + "twh", { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out" }, 9.00);
+  tl.set(P + "rule", { autoAlpha: 1 }, 9.10);
+  tl.to(P + "rule", { scaleX: 1, duration: 0.7, ease: "power3.out" }, 9.10);
+  /* bed resolves: fade to black over the last 1.4 s */
+  tl.fromTo(P + "fade", { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.4, ease: "power1.in" }, 12.40);
+  tl.to({}, { duration: 13.898 }, 0);
+  window.__timelines["g-a5-close"] = tl;
+})();
+</script>
+</template>
