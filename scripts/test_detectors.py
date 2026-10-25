@@ -487,3 +487,31 @@ got = _frames(_one_tween_comp(
     "tl.to('#z-card', { x: 2200, duration: 1.0 }, 2.0);\n"))
 assert all(0 <= t <= 9.95 for t in got) and got[0] >= 3.0, f'overlapping opening/exit: frames {got}'
 print('graphics_qc self-check PASS (settle frames from the tween schedule, not a fixed 3 s grid)')
+
+# Builders check their own graphics (22-23 Oct 26: 54 builder agents, 105 of 278 gate calls on hand-copied
+# private stage dirs, 196 piped through grep/tail to hide peers' comps). Two defects drove that:
+# (1) a peer comp that never sets window.__timelines crashed the whole run (Moore, 4 builders in 7 min,
+#     "Cannot read properties of undefined (reading 'undefined')" at graphics_qc.mjs:239), and
+# (2) the gate had no way to check only the comps a builder owns.
+# Old code (56b30c7a) must crash on (1) and ignore the scope in (2); the new code reports (1) as that
+# comp's no-timeline and checks only the named comps, keeping the other comps' frame_times entries.
+SCOPE_FILES = {**SETTLE_FILES, 'compositions/b-none.html':
+               '<!doctype html><html><body><template><div id="b-root">no timeline here</div></template></body></html>\n'}
+ep = _stage_ep(SCOPE_FILES)
+old_gq = old_rev('graphics_qc.mjs', '_old_gqc_scope_tmp.mjs', '56b30c7a')
+r_old = subprocess.run(['node', str(old_gq), str(ep), 'z'], capture_output=True, text=True, encoding='utf-8')
+old_gq.unlink()
+assert '[graphics_qc]' not in r_old.stdout and "reading 'undefined'" in r_old.stderr, \
+    f'old code should crash on the timeline-less peer comp: {r_old.stdout} {r_old.stderr}'
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True, encoding='utf-8')
+assert r.returncode == 1 and 'b-none' in r.stdout and 'ERROR [no-timeline]' in r.stdout and '2 compositions' in r.stdout, r.stdout + r.stderr
+ft = ep / '.qc-tmp' / 'frame_times.json'
+ft.write_text(json.dumps({'b-none': [{'t': 1.0}], 'z': []}), encoding='utf-8')
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep), 'z'], capture_output=True, text=True, encoding='utf-8')
+kept = json.loads(ft.read_text(encoding='utf-8'))
+assert 'b-none' not in r.stdout.split('scoped to')[1] and ' 1 compositions' in r.stdout, r.stdout + r.stderr
+assert kept['b-none'] == [{'t': 1.0}] and len(kept['z']) == 3, f'scoped run must update only z: {kept}'
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep), 'nope'], capture_output=True, text=True, encoding='utf-8')
+assert r.returncode == 1 and 'no compositions/<id>.html for: nope' in r.stderr, r.stdout + r.stderr
+shutil.rmtree(ep, ignore_errors=True)
+print('graphics_qc self-check PASS (comp-id scope keeps other comps\' entries; a timeline-less comp is its own no-timeline, not a crash)')
