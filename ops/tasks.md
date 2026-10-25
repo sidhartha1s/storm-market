@@ -8,7 +8,7 @@ Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or t
 ## Render runs on what it asked for (owner 26 Oct 26, ZBook QSV fallback)
 | # | task | PR | status |
 |---|---|---|---|
-| 1 | `stream_gate.py check`: fail a render whose encoder, capture GPU or streaming differs from the ask; watch stops it at the gate line | branch render-fallback-gate | review |
+| 1 | `stream_gate.py check`: fail a render whose encoder, capture GPU or streaming differs from the ask; watch stops it at the gate line. Until the ZBook driver is 610+, every ZBook render stops in its first minutes: do not relaunch there | branch render-fallback-gate | review |
 | 2 | every render asks `--experimental-fast-capture=true` and falls back to screenshot capture (mix-blend-mode, backdrop-filter): drop the flag or make comps eligible; the owner picks | | todo |
 
 ## Bug fixes from the Opus re-review of PRs #85-#91 (24 Sep 26)
