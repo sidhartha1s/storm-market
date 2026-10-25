@@ -201,14 +201,14 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
   clips; owner 18 Oct 26). Its `LAYERS` table is the list and holds the thresholds; `run_gates.py` runs it too.
 - One heavy job at a time; `scripts/render_busy.py` guards it. No gates, Playwright or subagent browsers beside a render.
 - Render only with `scripts\render.cmd <slug> <draft|full> [out-basename]`. The dojo-ops dashboard starts a draft only through `scripts\dojo_draft.cmd` (no arguments: it reads and re-checks the slug dojo-ops wrote to `%LOCALAPPDATA%\dojo-ops\render-request.txt`, sets 2 workers, then calls render.cmd; test `python3 scripts/test_dojo_draft.py`). Default 3 workers; full renders on this box
-  set `RENDER_WORKERS=2` in a per-episode wrapper (`scripts/<ep>_full_task.cmd`). `RENDER_CRF=20` gives a smaller single pass. Planning numbers: a 17 min draft took 36 min, a 28 min full took about 75 min at 2 workers.
+  set `RENDER_WORKERS=2` in a per-episode wrapper only with 100 GB free (else 1) (`scripts/<ep>_full_task.cmd`). `RENDER_CRF=20` gives a smaller single pass. Planning numbers: a 17 min draft took 36 min, a 28 min full took about 75 min at 2 workers.
 - Launch hidden through a scheduled task, deleted in the same command: `schtasks /create /tn <T> /tr "wscript.exe
   <abs>\scripts\run_hidden.vbs cmd.exe /c <abs>\scripts\<task>.cmd" /sc once /st 23:59 /f && schtasks /run /i /tn <T> &&
   schtasks /delete /tn <T> /f`. A one-time trigger stays armed after `/run` and fires a second copy at its `/st` time; the
   started job survives the delete. `/i` ignores the on-battery constraint, which would otherwise leave the run queued
   and then deleted unstarted. The `schtasks-once` hook in `~/.claude/hooks` blocks a create without the delete.
   A harness background job is reaped at low RAM, and `Start-Process` dies with its tool call.
-- Read the log for `streaming-encode gate ... enabled:true`. Without it a long composition captures to disk and fills it.
+- `streaming-encode gate ... enabled:true` must be in the log. Without it a long composition captures to disk and fills it (Camille full at 2 workers: `multi_worker`, 75 GB). `scripts/stream_gate.py`, called by render.cmd, refuses a full render at more than 1 worker with under 100 GB free and stops a render whose gate line says enabled:false or is missing 8 min in (test `python3 scripts/test_stream_gate.py`).
 - Liveness is judged by command line (`Get-CimInstance Win32_Process | Where CommandLine -like '*hyperframes*'`), never by process count.
 - `ffprobe deadline` means slow, never corrupt. The deadline is 30 s and no env var raises it. Cap every source asset at
   the composition's resolution: `media_budget.py` refuses the render otherwise, `optimize_clips.py <episode> --apply` fixes it.
