@@ -20,6 +20,7 @@ with tempfile.TemporaryDirectory() as d:
     ep = d / "episodes" / "ep-x"
     (ep / "compositions").mkdir(parents=True)
     (ep / "media" / "stills").mkdir(parents=True)
+    ep = ep.resolve()
     (ep / "index.html").write_text('<script src="gsap.min.js"></script><div data-composition-src="compositions/g-a.html"></div>'
                                    '<video src="media/clip.mp4"></video><img src="https://x.org/y.png">', encoding="utf-8")
     (ep / "gsap.min.js").write_text("//", encoding="utf-8")

@@ -52,7 +52,7 @@ def submit(ep, at, label):
     if not (ep / "index.html").is_file():
         sys.exit(f"[snapq] FAIL: no index.html in {ep}")
     times = [float(t) for t in at.split(",")]
-    job = time.strftime("%Y%m%d-%H%M%S-") + f"{time.perf_counter_ns() % 10**6:06d}" + (f"-{label}" if label else "")
+    job = f"{time.time_ns()}" + (f"-{label}" if label else "")   # 19 digits until 2286, so names sort oldest first
     (SPOOL / "pending").mkdir(parents=True, exist_ok=True)
     out = ep / ".qc-tmp" / "snapq" / job
     (SPOOL / "pending" / f"{job}.json").write_text(json.dumps({"ep": str(ep), "at": times, "out": str(out)}), encoding="utf-8")
@@ -62,6 +62,7 @@ def submit(ep, at, label):
 
 def referenced(ep):
     """index.html, everything under compositions/, and every file those pages name that exists in the episode."""
+    ep = ep.resolve()
     pages = [ep / "index.html", *sorted((ep / "compositions").glob("**/*"))] if (ep / "compositions").is_dir() else [ep / "index.html"]
     files = {p for p in pages if p.is_file()}
     for page in [p for p in files if p.suffix in (".html", ".css", ".js")]:
@@ -82,6 +83,7 @@ def ssh(cmd, timeout):
 
 def ship(ep):
     """Copy the referenced files that changed since the last ship (size + mtime) to the ZBook mirror."""
+    ep = ep.resolve()
     seen_p = SPOOL / "shipped" / f"{ep.name}.json"
     seen = json.loads(seen_p.read_text(encoding="utf-8")) if seen_p.exists() else {}
     now = {f.relative_to(ep).as_posix(): [f.stat().st_size, f.stat().st_mtime_ns] for f in referenced(ep)}

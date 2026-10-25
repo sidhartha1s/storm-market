@@ -25,6 +25,8 @@ __pycache__/
 .consumed/
 SESSION_LEDGER.md
 .worktrees/
+# snapshot queue spool, ZBook mirror and PNG staging (scripts/snapshot_queue.py)
+.snapq/
 .playwright-cli/
 
 # ebook build outputs — regenerable from manuscript + build scripts
