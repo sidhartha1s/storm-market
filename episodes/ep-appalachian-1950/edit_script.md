@@ -51,7 +51,7 @@ Loop: [loop L1 open] which way the storm went, and how that let one storm do bot
 ## INTRO
 
 ### I1-S1 — narration
-> I read the weather service reports. On the coast, water broke through the dikes at LaGuardia and ran onto the runways. Inland, Pittsburgh got twenty-seven point four inches, its biggest snowstorm on record. And that still wasn't the deepest snow.
+> I read the weather service reports. On the coast, water broke through the dikes at LaGuardia and ran onto the runways. Inland, Pittsburgh got over twenty-seven inches, its biggest snowstorm on record. And Pittsburgh wasn't even where the deepest snow fell.
 
 Picture: back to the one-low map from H1-S2; on "LaGuardia" the east side lights, flood footage SOURCE TBD (no 1950 newsreel located yet), fallback a self-made LaGuardia locator map, AI-image gap only if neither exists; on "Inland" the west side lights, NWS Pittsburgh snow records sheet, chip "27.4 IN · PITTSBURGH'S #1 STORM" [VE]
 Sound: water texture under "LaGuardia" (library, not archive); a soft riser ends on "deepest snow".
