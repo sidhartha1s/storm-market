@@ -90,6 +90,10 @@ Newest first. New entries go at the top, under this line. Superseded lines point
    `circle_face.py` keeps its whole last chunk.
 6. Launch a pass hidden like a render (`scripts\run_hidden.vbs`), one heavy job at a time on the box: the pass fills
    the card and RAM, so no render beside it.
+7. (26 Oct 26) With under about 5.6 GB free on the card, Windows spills the pass into shared memory and it runs about
+   10x slower (24 s per second of face) without failing. Over 4.5 s per second of face, measured on the last 20
+   chunks, `circle_face.py` prints one `[SLOW]` line with the rate and the processes on the card (at most once per 50
+   chunks) and keeps running: the operator frees the card or stops the pass.
 
 ## 10 Oct 26: first render on the ZBook (hostname Sidhartha, RTX A2000), driven from the ASUS over `ssh zbook`
 

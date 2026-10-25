@@ -34,8 +34,11 @@ if any(slow_line(i, 2.3, None, holders) for i in range(200)):
     fails.append("a normal 2.3 s rate alarmed")
 if slow_line(5, 24.0, None, holders):
     fails.append("alarmed before chunk 10 (start-up noise)")
-if "sys.exit" in src.split("def slow_line")[1].split("subprocess.run([\"ffmpeg\"")[0]:
-    fails.append("the chunk loop still exits on a slow rate")
+loop = src.split("for i, chunk in enumerate(chunks):")[1].split("# no -shortest")[0]
+if any(w in loop for w in ("sys.exit", "break", "return", "raise")):
+    fails.append("the chunk loop can stop on a slow rate")
+if "alarmed_at = i" not in loop:
+    fails.append("the chunk loop never records the alarm, so it would alarm every chunk")
 
 for f in fails:
     print("FAIL", f)

@@ -46,7 +46,11 @@ MAX_S_PER_FACE_S = 4.5
 
 def card_holders():
     """The processes on the card, as nvidia-smi lists them: what to close to free it."""
-    r = subprocess.run(["nvidia-smi", "--query-compute-apps=pid,process_name", "--format=csv,noheader"], capture_output=True, text=True)
+    try:  # the alarm must never stop the pass it reports on
+        r = subprocess.run(["nvidia-smi", "--query-compute-apps=pid,process_name", "--format=csv,noheader"],
+                           capture_output=True, text=True, timeout=10)
+    except (OSError, subprocess.TimeoutExpired) as e:
+        return f"(nvidia-smi failed: {e})"
     return r.stdout.strip() or "(nvidia-smi listed none)"
 
 
@@ -75,6 +79,7 @@ def main():
     heard = deque([0.0] * (rate * window_s), maxlen=rate * window_s)  # the model always hears the last window_s seconds
     t_ready = time.time()
     alarmed_at = None
+    recent = deque([t_ready], maxlen=21)  # chunk end times: the rate is the last 20 chunks', so a spill mid-pass shows
     print(f"start-up {t_ready - t_start:.1f} s | {len(chunks)} chunks of {keep} frames | audio {len(speech) / rate:.1f} s", flush=True)
 
     tmp = out[:-4] + "_tmp.mp4"  # picture only; the narration is muxed in below so a pass can be played and judged with its sound
@@ -84,7 +89,8 @@ def main():
             embedding = get_audio_embedding(pipeline, np.array(heard), window_s * fps - p["frame_num"], window_s * fps)
             for frame in run_pipeline(pipeline, embedding)[p["motion_frames_num"]:].cpu().numpy().astype(np.uint8):
                 writer.append_data(frame)
-            alarm = slow_line(i, (time.time() - t_ready) / ((i + 1) * keep / fps), alarmed_at)
+            recent.append(time.time())
+            alarm = slow_line(i, (recent[-1] - recent[0]) / ((len(recent) - 1) * keep / fps), alarmed_at)
             if alarm:
                 print(alarm, flush=True)
                 alarmed_at = i
