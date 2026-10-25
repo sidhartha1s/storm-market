@@ -114,6 +114,6 @@ Not written this round. Title rule: ≤52 chars, Name + Year in the first 40 (`r
 
 ### I1-S4 — narration
 **Picture:** back to the NWS Buffalo forecast discussion card, now the earlier product: "very large and powerful storm system", 4:10 a.m. Sun 18 Dec 2022 (IEM archive, FXUS61 KBUF 180910). Chip "5 DAYS OUT". Slow fade toward the Act 1 blackout. [VE] [Q] [loop L1 open]
-> And the forecasters saw it coming even earlier than that warning. The weather service in Buffalo flagged this storm on the Sunday before, five days out. What they saw on their screens that week is where this starts.
+> And the forecasters saw it coming even earlier than that. The weather service in Buffalo flagged this storm on the Sunday before, five days out. What they saw on their screens that week is where this starts.
 
 *register: 8/10*
