@@ -119,7 +119,9 @@ def watch(log, marker, out):
             verdict = "; ".join(fallbacks)
         if verdict != "pending":
             with out.open("a", encoding="utf-8") as f:
-                f.write(f"[stream_gate] STOPPING THE RENDER: {verdict}. Relaunch with RENDER_WORKERS=1.\n")
+                fix = ("Fix the [FALLBACK] cause (GPU driver, NVIDIA pin) before a relaunch" if "[FALLBACK]" in verdict
+                       else "Relaunch with RENDER_WORKERS=1")
+                f.write(f"[stream_gate] STOPPING THE RENDER: {verdict}. {fix}.\n")
             kill_renders()
             return 1
         time.sleep(10)
