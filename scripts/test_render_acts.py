@@ -111,5 +111,65 @@ out = subprocess.run(["node", "-e", node], capture_output=True, text=True)
 check("act root timeline: tweens land at act time (x/y/z at act 0,2,3,4 s)",
       out.stdout.strip() == "0/50/100 0/100/100 50/100/100 100/100/100")
 
+# Audio in the staged act (defects 1 and 2 of PR 223: a JS clock read 6:26 instead of 7:41, a county fill showed).
+SWEEP = COMP.replace('<audio id="nx-1" src="audio/a.wav" data-start="1" data-duration="5"></audio>',
+                     '<audio id="nx-1" src="audio/a.wav" data-start="1" data-duration="5"></audio>\n'
+                     '  <audio id="nx-2" src="audio/b.wav" data-start="11" data-duration="6"></audio>\n'
+                     '  <audio id="bed" src="audio/c.wav" data-start="8" data-duration="10" data-media-start="2"></audio>')
+a1, a2s = ra.slice_html(SWEEP, 0, 300, 30), ra.slice_html(SWEEP, 300, 600, 30)
+check("act 1: its audio stays at its time, audio after the act parks on the act's last frame",
+      re.search(r'id="nx-1"[^>]*data-start="1.0"', a1) and re.search(r'id="nx-2"[^>]*data-start="9.96666', a1))
+check("act 2: audio over before the act goes, audio through the seam starts at 0 with its media advanced",
+      'id="nx-1"' not in a2s and re.search(r'id="bed"[^>]*data-start="0.0"[^>]*data-duration="8.0"[^>]*data-media-start="4.0"', a2s))
+
+
+def sweep_frames(comp, fa, fb, fps=30):
+    """What a graphic's JS clock reads on each frame [fa, fb) of a render of comp: hyperframes' pre-capture audio
+    sweep (root totalTime over every audio window at 1/fps, suppressed, then 0), then one seek per frame."""
+    p = ra._Timed(comp)
+    dur = float(p.root["attrs"]["data-duration"])
+    wins = [(float(e["attrs"]["data-start"]), float(e["attrs"]["data-start"]) + float(e["attrs"]["data-duration"]))
+            for e in p.els if e["tag"] == "audio"]
+    host = next(e for e in p.els if e["attrs"].get("id") == "host-g")
+    m = re.search(r'id="root"[^>]*data-act-src-start|POST', comp)
+    act = "render_acts: back to act time" in comp
+    js = re.sub(r"</?script>(/\*.*?\*/)?", "", comp[comp.find("<script>/* render_acts: back"):comp.rfind("</script>") + 9]) if act else ""
+    node = f"""
+const {{gsap}} = require({json.dumps(str(gsap))});
+global.gsap = gsap; global.window = {{ __timelines: {{}} }}; global.document = {{ querySelectorAll: () => [] }};
+const root = gsap.timeline({{ paused: true }}); root.set({{}}, {{}}, 20); window.__timelines["ep-x"] = root;
+{js}
+const clk = {{ m: 0 }}; let text = "start"; const g = gsap.timeline({{ paused: true }});
+[[1, 0, 10], [2, 10, 20], [3, 20, 30]].forEach(([t, a, b]) => g.fromTo(clk, {{ m: a }}, {{ m: b, duration: 1, ease: "none",
+  immediateRender: false, onUpdate: () => {{ text = String(Math.floor(clk.m)); }} }}, t));
+root.add(g, {float(host["attrs"]["data-start"])});
+for (const [s, e] of {json.dumps(wins)}) {{
+  for (let t = Math.max(0, s); t <= Math.min({dur}, e) + 1e-6; t = Math.min({dur}, e, t + 1 / {fps})) {{
+    root.totalTime(t, true); if (t === Math.min({dur}, e)) break; }}
+}}
+root.totalTime(0, true);
+const out = [];
+for (let f = 0; f < {fb - fa}; f++) {{ root.totalTime(f / {fps}); out.push(text); }}
+console.log(out.join(","));
+"""
+    r = subprocess.run(["node", "-e", node], capture_output=True, text=True)
+    return r.stdout.strip().split(",") if r.returncode == 0 else [r.stderr]
+
+
+single = sweep_frames(SWEEP, 0, 600)
+staged = sweep_frames(a2s, 300, 600)
+check("act 2: a graphic's JS state on every frame matches the single render's (audio sweep kept)",
+      len(single) == 600 and staged == single[300:] and single[300] != "start")
+old = re.sub(r'\s*<audio[^>]*></audio>', "", a2s)  # the old staging: no audio, so no sweep
+check("act 2 without its audio diverges from the single render (the defect this guards)",
+      sweep_frames(old, 300, 600) != single[300:])
+
+# Defect 3 of PR 223: an element over before the act painted on act 2's first frames of one run.
+styled = COMP.replace('id="kb-1"', 'id="kb-1" style="opacity: 0.9;"')
+check("act 2: an element over before the act can never paint (display none, its own style kept)",
+      re.search(r'id="kb-1"[^>]*style="display: none !important"', a2)
+      and re.search(r'style="opacity: 0.9; display: none !important"', ra.slice_html(styled, 300, 600, 30))
+      and "display: none" not in ra.slice_html(COMP, 0, 300, 30))
+
 print(f"\n{'ALL PASS' if not FAILS else str(len(FAILS)) + ' FAILED'}")
 sys.exit(1 if FAILS else 0)
