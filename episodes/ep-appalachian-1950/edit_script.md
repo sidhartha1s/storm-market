@@ -67,10 +67,10 @@ Loop: [loop L2 closes] Coburn Creek; [loop L3 open] where the November record no
 [src: 1] [src: 5] [src: 6]
 
 ### I1-S3 — narration
-> That was Bowling Green, Kentucky, at minus seven degrees. Atlanta got down to three degrees. Even Pensacola, Florida, dropped to twenty-two.
+> That record was set in Bowling Green, Kentucky: minus seven degrees. Even Pensacola, Florida, dropped to twenty-two.
 
-Picture: self-made map of the Southeast, temperature pins dropping one by one: "BOWLING GREEN, KY -7°F (NOV RECORD)", "ATLANTA, GA 3°F", "PENSACOLA, FL 22°F" [VE]
-Sound: bed; three soft ticks, one per pin, each on its city name.
+Picture: self-made map of the Southeast, temperature pins dropping one by one: "BOWLING GREEN, KY -7°F (NOV RECORD)", "PENSACOLA, FL 22°F" [VE]
+Sound: bed; two soft ticks, one per pin, each on its city name.
 Loop: [loop L3 closes] Bowling Green, minus seven; then the cold on the Gulf Coast
 [src: 1] [src: 5]
 
