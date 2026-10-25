@@ -83,7 +83,7 @@ Loop: none (belief and break inside the segment; L1 still open)
 [src: 7] [src: 1]
 
 ### I1-S5 — narration
-> The coast is the half of this storm almost nobody remembers, and Newark's gust wasn't even the strongest one.
+> Most tellings of this storm leave out the coast, and Newark's gust wasn't even the strongest one.
 
 Picture: the split map slides right to the coast; gust ladder bars appear empty, Newark's 108 lit, the higher bars still blank [VE]
 Sound: bed holds under the line, then the chapter blackout.
