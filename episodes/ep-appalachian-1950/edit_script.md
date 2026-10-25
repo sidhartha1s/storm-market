@@ -51,12 +51,12 @@ Loop: [loop L1 open] the one move the storm made that explains both sides (paid 
 ## INTRO
 
 ### I1-S1 — narration
-> I read the weather service reports. A hundred sixty people lost their lives that Thanksgiving weekend. Pittsburgh got twenty-seven point four inches, its biggest snowstorm on record. And that still wasn't the deepest snow.
+> I read the weather service reports. On the coast, water broke through the dikes at LaGuardia and ran onto the runways. Inland, Pittsburgh got twenty-seven point four inches, its biggest snowstorm on record. And that still wasn't the deepest snow.
 
-Picture: calendar chip "THANKSGIVING WEEKEND · NOV 24-26, 1950"; toll on the on-screen source line only: "at least 160 lives lost · NCEI". On "twenty-seven point four": NWS Pittsburgh snow records sheet, chip "27.4 IN · PITTSBURGH'S #1 STORM" [VE]
-Sound: bed only, no hit on the toll; a soft riser ends on "deepest snow".
+Picture: back to the one-low map from H1-S2; on "LaGuardia" the east side lights, flood footage SOURCE TBD (no 1950 newsreel located yet), fallback a self-made LaGuardia locator map, AI-image gap only if neither exists; on "Inland" the west side lights, NWS Pittsburgh snow records sheet, chip "27.4 IN · PITTSBURGH'S #1 STORM" [VE]
+Sound: water texture under "LaGuardia" (library, not archive); a soft riser ends on "deepest snow".
 Loop: [loop L2 open] where the deepest snow fell
-[src: 5] [src: 4]
+[src: 1] [src: 4]
 
 ### I1-S2 — narration
 > The deepest was sixty-two inches at Coburn Creek, West Virginia. That's more than five feet of snow. And the cold behind the storm set a November record that nobody's broken since.
