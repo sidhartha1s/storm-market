@@ -103,8 +103,8 @@ def _needs_trim(el):
 
 def _set_attr(tag, name, value):
     """The start tag with attribute name set to value: replaced where it is, else added before the tag's close."""
-    pat = re.compile(r"""\s%s=(["']).*?\1""" % re.escape(name))
-    new = f' {name}="{value}"'
+    pat = re.compile(r"""\s%s=(?:(["']).*?\1|[^\s"'>]+)""" % re.escape(name), re.S)
+    new = f' {name}="{html_lib.escape(value)}"'  # HTMLParser hands values back unescaped
     return pat.sub(lambda m: new, tag, count=1) if pat.search(tag) else re.sub(r"\s*/?>$", lambda m: new + m.group(0), tag, count=1)
 
 
@@ -156,53 +156,48 @@ document.querySelectorAll("[data-act-src-start]").forEach(function (el) {
 
 
 def slice_html(html, fa, fb, fps):
-    """index.html as a composition of frames [fa, fb): times shifted by fa/fps, silent media and hosts outside it
-    dropped, audible media outside it parked on its edges, finished elements hidden."""
+    """index.html as a composition of frames [fa, fb): times shifted by fa/fps, everything outside it parked and
+    hidden (audible media on the act's edges)."""
     p = _Timed(html)
     a, dur = fa / fps, (fb - fa) / fps
     total = float(p.root["attrs"]["data-duration"])
     edits = []  # (start, end, replacement), applied back to front
-    dropped = []
     for el in p.els:
-        if any(d["start"] <= el["start"] < d["end"] for d in dropped):
-            continue
         s, e = _span(el)
-        # Audible media stays (its sound is discarded): before capture hyperframes sweeps the root timeline across
-        # every audible clip's window (discoverAudioVolumeAutomationFromTimeline: totalTime at 1/fps, events
-        # suppressed, then 0), and that sweep leaves every graphic's timeline initialised and rewound. Without it a JS
-        # clock shows its authored text and a lazy .to tween never records its start (PR 223 defects 1 and 2). Audible
-        # media outside the act parks, hidden, on the act's first or last frame: there the sweep rewinds or finishes
-        # this act's graphics as the single render's sweep does from before or after the act.
         audible = el["tag"] == "audio" or (el["tag"] == "video" and "muted" not in el["attrs"]
                                            and el["attrs"].get("data-has-audio", "true") == "true")
-        outside = e <= a or s >= a + dur
-        if _needs_trim(el) and outside and (not audible or s >= total):  # the sweep never reaches past the end
-            dropped.append(el)
-            edits.append((el["start"], el["end"], ""))
-            continue
         if _needs_trim(el) and s < a < e and el["tag"] != "audio":
             raise SystemExit(f"render_acts: #{el['attrs'].get('id')} starts before the act at {a:.3f} s; "
                              "that seam is not clean")
         tag = html[el["start"]:el["tag_end"]]
-        if _needs_trim(el) and outside:
-            start = 0.0 if e <= a else dur - 1 / fps
-            tag = _set_attr(tag, "data-duration", repr(1 / fps))
+        if e <= a or s >= a + dur:
+            # Nothing outside the act is dropped. hyperframes decides from the whole compiled page whether to open its
+            # browser probe (any media without data-start, scripted volume, ...), and the probe sweeps the root
+            # timeline (video visibility 0 to the end at 0.1 s, audio windows at 1/fps, events suppressed, then 0),
+            # leaving every graphic's timeline initialised and rewound. Dropping the sub-composition that triggers it
+            # (Moore: g-a3-tiles' radar video has no data-start) left graphics in their authored state: PR 223
+            # defects 1 and 2. Parked elements are hidden so they never paint (defect 3). Audible media parks on
+            # the act's first or last frame, where the audio sweep rewinds or finishes this act's graphics as the
+            # single render's sweep does from before or after the act.
+            if audible and s < total:
+                start = 0.0 if e <= a else dur - 1 / fps
+                tag = _set_attr(tag, "data-duration", repr(1 / fps))
+            else:  # the runtime does not honour a negative data-start: park past the act's end
+                start = dur + 1 if e <= a else s - a
+            css = el["attrs"].get("style", "").strip().rstrip(";")
+            tag = _set_attr(_set_attr(tag, "style", (css + "; " if css else "") + "display: none !important"),
+                            "data-act-parked", "")
         else:
-            # the runtime does not honour a negative data-start: an element over before the act parks past its end,
-            # one running through the seam starts at 0 with the rest of its length
-            start = dur + 1 if e <= a else max(s - a, 0.0)
-            if s < a < e and el["tag"] == "audio":
-                # starts on the sweep's first sample inside the act, so every sample lands where the single render's
-                # does; its sound moves with it
+            start = max(s - a, 0.0)  # one running through the seam starts at 0 with the rest of its length
+            if s < a and el["tag"] == "audio":
+                # starts on the audio sweep's first sample inside the act, so every sample lands where the single
+                # render's does; its sound moves with it
                 start = math.ceil((a - s) * fps - 1e-9) / fps + s - a
                 if start >= e - a:  # it ends before that sample: keep a real length, the sweep sees it at 0
                     start = 0.0
                 tag = _set_attr(tag, "data-media-start", repr(float(el["attrs"].get("data-media-start", 0)) + a + start - s))
-            if s < a < e and "data-duration" in el["attrs"]:
+            if s < a and "data-duration" in el["attrs"]:
                 tag = _set_attr(tag, "data-duration", repr(e - a - start))
-        if outside:  # parked: never paints, whatever time the page is at before capture settles (PR 223 defect 3)
-            css = el["attrs"].get("style", "").strip().rstrip(";")
-            tag = _set_attr(tag, "style", (css + "; " if css else "") + "display: none !important")
         new = re.sub(r'\bdata-start="[^"]*"', f'data-start="{start!r}" data-act-start="{start!r}" '
                      f'data-act-src-start="{el["attrs"]["data-start"]}"', tag, count=1)
         edits.append((el["start"], el["tag_end"], new))
@@ -224,13 +219,16 @@ def slice_html(html, fa, fb, fps):
 LOCAL_REF = re.compile(r'''(?:src|href|data-composition-src)=["']([^"'#:]+)["']|url\(["']?([^"')#:]+)''')
 
 
-def fingerprint(staged, ep, mode, fps):
-    """Everything that decides an act's pixels: the slice and every local file it or its mounts load, by content
-    (optimize_clips.py rewrites media in place, so a name alone is not enough)."""
-    h = hashlib.sha256()
-    for part in (mode, str(fps), os.environ.get("RENDER_CRF", ""), RENDER_CMD.read_bytes().decode("utf-8"), staged):
-        h.update(part.encode("utf-8"))
-    seen, todo = set(), [(ep, staged)]
+PARKED = re.compile(r"<[^>]*\sdata-act-parked=[^>]*>")
+# hyperframes' probeRequiresBrowser triggers that a sub-composition can carry (producer probeStage.ts)
+PROBE_TRIGGERS = (r"<(?:video|audio)\b(?![^>]*\sdata-start=)[^>]*>", r"\.\s*volume\s*=",
+                  r"\b(?:gsap|tl|timeline|tween)\s*\.\s*(?:to|fromTo|set)\s*\([\s\S]{0,2000}\bvolume\s*:",
+                  r"""\bcreateElement\s*\(\s*["'`](?:video|audio)["'`]\s*\)""", r"\bnew\s+(?:Audio|Video)\s*\(")
+
+
+def _local_files(base, text):
+    """Every local file text references, and the files those html/css files reference in turn."""
+    seen, todo = set(), [(base, text)]
     while todo:
         base, text = todo.pop()
         for m in LOCAL_REF.finditer(text):
@@ -240,11 +238,25 @@ def fingerprint(staged, ep, mode, fps):
             seen.add(path)
             if path.suffix in (".html", ".css"):
                 todo.append((path.parent, path.read_text(encoding="utf-8", errors="replace")))
-    for path in sorted(seen):
+    return seen
+
+
+def fingerprint(staged, ep, mode, fps):
+    """Everything that decides an act's pixels: the slice and every local file its own elements load, by content
+    (optimize_clips.py rewrites media in place, so a name alone is not enough). What parked elements load counts
+    only through the hyperframes probe triggers it carries, so a fix in another act keeps this act reusable."""
+    h = hashlib.sha256()
+    for part in (mode, str(fps), os.environ.get("RENDER_CRF", ""), RENDER_CMD.read_bytes().decode("utf-8"), staged):
+        h.update(part.encode("utf-8"))
+    own = _local_files(ep, PARKED.sub("", staged))
+    for path in sorted(own):
         h.update(str(path.relative_to(ep.resolve()) if path.is_relative_to(ep.resolve()) else path).encode("utf-8"))
         with open(path, "rb") as f:
             for chunk in iter(lambda: f.read(1 << 20), b""):
                 h.update(chunk)
+    parked = [x.read_text(encoding="utf-8", errors="replace") for x in _local_files(ep, "".join(PARKED.findall(staged)))
+              - own if x.suffix == ".html"]
+    h.update(repr([any(re.search(t, x) for x in parked) for t in PROBE_TRIGGERS]).encode("utf-8"))
     return h.hexdigest()[:16]
 
 
