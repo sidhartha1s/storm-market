@@ -28,7 +28,7 @@ MIN_FREE_GB_MULTI = 100  # learnings/render.md 25 Oct 26: Camille needed 75.0 GB
 WATCH_S = 480  # the gate line printed within the first 4 min of every measured full render; twice that
 GATE = re.compile(r"streaming-encode gate (\{.*?\})")
 ASKED = re.compile(r"GPU: (.+)")  # hyperframes' plan line: "encoder GPU" = --gpu, "browser GPU" = --browser-gpu
-BROWSER = re.compile(r"browserGpuMode probe .*")  # one per capture worker, names the WebGL renderer
+BROWSER = re.compile(r"browserGpuMode probe .*")  # names the WebGL renderer; one or more per render
 
 
 def launch_refusal(mode, workers, free_gb):
