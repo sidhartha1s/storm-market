@@ -34,7 +34,7 @@ Budget per `references/mg-quickref.md` "Paul on screen": 6 clips x 15 credits = 
 ## Loop registry (plant / pay)
 | Loop | Planted | Paid |
 |---|---|---|
-| E1 episode loop: why did Galveston feel safe on Friday night? | H1 | A6 close |
+| E1 episode loop: why did so few people leave a warned city? | H1 | A6 close |
 | L-intro: why would Galveston's own weatherman write that a storm seriously damaging the city was an absurd delusion? | intro (I1-S5) | A1 |
 | cta-hinge: what Cline told Washington at three thirty | A3 last segment | A4-S1 |
 
