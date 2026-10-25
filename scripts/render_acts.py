@@ -243,6 +243,7 @@ def main(argv):
         plan["acts"].append({"frames": [fa, fb], "fingerprint": fp, "file": path})
         (pieces / "plan.json").write_text(json.dumps(plan, indent=1))
     run_render(slug, mode, f"acts/{base}/audio", "index.html", {"RENDER_FPS": str(AUDIO_FPS)})
+    (ep / f"render_{mode}.fps").write_text(f"{fps}\n")  # verify_render.sh checks the output against this, not the 1 fps pass
     listing = pieces / "concat.txt"
     listing.write_text("".join(f"file '{Path(x['file']).as_posix()}'\n" for x in plan["acts"]))
     total = acts[-1][1]
