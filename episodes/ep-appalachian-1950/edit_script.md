@@ -41,7 +41,7 @@ Loop: none (second contradiction, lands inside about eight seconds)
 [src: 1]
 
 ### H1-S3 — narration
-> That gust on Saturday, November twenty-fifth, was the strongest Newark ever recorded. How one storm pulled off both is drawn on that Saturday's weather map.
+> That gust on November twenty-fifth, nineteen fifty, was the strongest Newark ever recorded. One storm buried one side in snow and hit the other with hurricane-force wind, and that Saturday's weather map shows how.
 
 Picture: NWS Jackson KY surface chart for 25 Nov 1950 (19501125Surface.JPG), slow push; popfig "NEWARK, NJ · SAT NOV 25, 1950 · STRONGEST EVER RECORDED THERE"; the low's L circled, the track not drawn yet [VE]
 Sound: wind bed holds, drops under the last sentence; no archive audio.
