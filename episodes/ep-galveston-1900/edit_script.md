@@ -1,6 +1,8 @@
 # ep-galveston-1900 · edit_script.md (TTS segment format)
 
-Status: DRAFT 4, hook + hook tail + intro only (phase 3 owner gate). Acts below are briefs, no prose yet.
+Status: DRAFT 5, hook + hook tail + intro only (phase 3 owner gate). Acts below are briefs, no prose yet.
+Gate state (26 Oct 26): fact-check fan-out rounds A to E (`research/factcheck-A.md` .. `factcheck-E.md`, run by checkers who are not the writer): 0 open `[verify]` markers; every CORRECTED line applied word for word; 0 UNVERIFIED lines left (the one UNVERIFIED claim, "went to bed on Friday night feeling safe", was cut). Skeptic grade (separate agent each round): hook 5, 6, 6, 6 of 10, so the hook does NOT lock yet (bar 8). Not yet locked, not yet owner-approved, no TTS.
+Open before anything goes on screen: one human look at the 1891 page scan (Portal to Texas History is bot-gated; the wording comes from the Wikimedia Commons transcription); the Library of Congress record for the Broadway ruins film (loc.gov returned 403).
 Angle: `episodes/ep-galveston-1900/angle.md` (owner lock, devq save 26 Oct 26 02:09:38, `t_galveston` "a3" + note).
 Research: `episodes/ep-galveston-1900/research/` (sources-cline.md, sources-cuba.md, teardowns.md, footage-inventory.md).
 
@@ -45,7 +47,7 @@ Visual: Paul full frame, on camera, the hook line only. Popfig inside the first 
 
 ### H1-S2 — narration
 Visual: Galveston Daily News, July 16, 1891, page 5, slow push to the line; chip "ABSURD DELUSION"; telegraph-key click on the reveal. Source line: Isaac Cline, Galveston Daily News, 16 July 1891. [RS] [VE] (contradiction one)
-> Galveston's weatherman called the fear of a storm seriously damaging his city an absurd delusion.
+> Galveston's weatherman said a storm seriously damaging the city was an absurd delusion.
 
 ### H1-S3 — narration
 Visual: cut on the swell to the Library of Congress 1900 film of the ruins on Broadway, Galveston; chip "AT LEAST 6,000 LIVES · CLINE'S OWN COUNT". Source line: Isaac Cline, Monthly Weather Review, September 1900. [RS] [VE] (contradiction two)
@@ -62,7 +64,7 @@ Visual: the Monthly Weather Review page listing the warnings from Washington, ch
 ## HT · Hook tail
 ### T1-S1 — narration
 Visual: self-made island elevation graphic of Galveston, sea level line rising to the island's top; chips "ABOUT 38,000 PEOPLE" and "HIGHEST POINT ABOUT 8.7 FT"; then cut to the NOAA 1900 weather map, Havana pinned, popfig "BELEN OBSERVATORY, HAVANA". Source line: Texas State Historical Association; National Park Service. [VE] [Q] q1 open (what did Havana see?)
-> Galveston was an island city of about thirty-eight thousand people, and its highest ground stood under nine feet. And in Havana, forecasters saw this storm heading somewhere Washington said it wouldn't go.
+> Galveston was an island city of about thirty-eight thousand people. Its highest ground was less than nine feet above the sea. And in Havana, forecasters saw this storm heading somewhere Washington said it wouldn't go.
 
 ## I · Intro
 ### I1-S1 — narration
@@ -87,7 +89,7 @@ Visual: the island elevation graphic again, the track line closing on the island
 
 ### I1-S6 — narration
 Visual: slow return to the Galveston Daily News page of 1891, popfig "JULY 16, 1891", "ABSURD DELUSION" chip back on. Telegraph-key click on the last line. [loop L-intro open] (carried into A1)
-> So why would the man now warning Galveston once have told the whole city, in print, that it was safe?
+> So why would the man running Galveston's weather office once have called a storm like this, in print, an absurd delusion?
 
 ## Act briefs (text only, written before prose; `references/script-scaling.md` "Act brief")
 - **A1 · "An absurd delusion" (1891).** Purpose: show the belief was given to the city by its expert, in print. Question: why would a weatherman say that? Reveal: his reasoning (the shallow shelf and the low land to the north would spread the water). Visual: the 16 July 1891 Galveston Daily News page, the island elevation map (highest point about 8.7 ft). Exit hook: nine years later, the same man was in charge of warning the city.
