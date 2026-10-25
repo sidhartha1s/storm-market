@@ -53,7 +53,10 @@ check("act 2: times shifted by the act start", 'id="v-a2" src="media/b.mp4" data
       and re.search(r'id="host-g"[^>]*data-start="2.0"', a2))
 check("act 2: media offset untouched for a clip inside the act", 'data-media-start="3"' in a2)
 check("act 2: authored scripts can read the original times", 'data-act-src-start="10.2"' in a2)
-check("act 2: plain elements outside the act stay (scripts may count them)", 'id="kb-1"' in a2)
+check("act 2: a plain element over before the act stays (scripts may count it), parked past the act's end",
+      re.search(r'id="kb-1" data-start="11.0"', a2))
+check("act 2: the blackout running through the seam starts at 0 with its remaining length",
+      re.search(r'id="bo-1" data-start="0.0" data-act-start="0.0" data-act-src-start="9.8" data-duration="0.1999', a2))
 check("act 2: root length is the act's frames", re.search(r'id="root"[^>]*data-duration="10.0"', a2))
 check("act 1 drops act 2's media and host", 'id="v-a2"' not in ra.slice_html(COMP, 0, 300, 30)
       and "host-g" not in ra.slice_html(COMP, 0, 300, 30))
@@ -86,23 +89,27 @@ with tempfile.TemporaryDirectory() as d:
           f1 == f1b and f1 != ra.fingerprint(a2, ep, "full", 30))
     check("fingerprint changes with mode", ra.fingerprint(a2, ep, "draft", 15) != ra.fingerprint(a2, ep, "full", 30))
 
-# The act's root timeline: a tween authored at absolute 12-14 s must be at its middle at act time 3 (act starts at 10).
-post = ra.POST % {"id": json.dumps("ep-x"), "a": 10.0, "b": 20.0, "dur": 10.0}
+# The act's root timeline (act starts at 10): a tween authored at 12-14 runs at act 2-4, one at 8-12 is half done at
+# act 0, and one over at 4 has left its end state.
+post = ra.POST % {"id": json.dumps("ep-x"), "a": 10.0}
 js = re.sub(r"</?script>(/\*.*?\*/)?", "", post)
 gsap = S.parent / "episodes" / "ep-1974-super-outbreak" / "gsap.min.js"
 node = f"""
 const {{gsap}} = require({json.dumps(str(gsap))});
 global.gsap = gsap; global.window = {{ __timelines: {{}} }}; global.document = {{ querySelectorAll: () => [] }};
-const o = {{ x: 0 }}; const tl = gsap.timeline({{ paused: true }});
-tl.fromTo(o, {{ x: 0 }}, {{ x: 100, duration: 2, ease: "none" }}, 12); window.__timelines["ep-x"] = tl;
+const o = {{ x: 0, y: 0, z: 0 }}; const tl = gsap.timeline({{ paused: true }});
+tl.fromTo(o, {{ x: 0 }}, {{ x: 100, duration: 2, ease: "none" }}, 12);
+tl.fromTo(o, {{ y: 0 }}, {{ y: 100, duration: 4, ease: "none" }}, 8);
+tl.fromTo(o, {{ z: 0 }}, {{ z: 100, duration: 2, ease: "none" }}, 2);
+tl.set({{}}, {{}}, 30); window.__timelines["ep-x"] = tl;
 {js}
-const w = window.__timelines["ep-x"]; const r = [];
-for (const t of [0, 2, 3, 4]) {{ w.totalTime(t, true); r.push(o.x); }}
-console.log(JSON.stringify(r));
+const r = [];
+for (const t of [0, 2, 3, 4]) {{ tl.totalTime(t, true); r.push([o.x, o.y, o.z].join("/")); }}
+console.log(r.join(" "));
 """
 out = subprocess.run(["node", "-e", node], capture_output=True, text=True)
-check("act root timeline plays from the act start (x at act 0/2/3/4 s = 0,0,50,100)",
-      out.stdout.strip() == "[0,0,50,100]")
+check("act root timeline: tweens land at act time (x/y/z at act 0,2,3,4 s)",
+      out.stdout.strip() == "0/50/100 0/100/100 50/100/100 100/100/100")
 
 print(f"\n{'ALL PASS' if not FAILS else str(len(FAILS)) + ' FAILED'}")
 sys.exit(1 if FAILS else 0)
