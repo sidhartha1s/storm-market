@@ -114,14 +114,14 @@ def _window(attrs):
     return start, start + float(attrs["data-duration"])
 
 
-def _circle_gap(mounts):
+def _circle_gap(mounts, _episode=None):
     # same window rule as circle_cut.windows (pip class + pip-w id), so the gate and the cutter agree
     if not any(t == "video" and "pip" in a.get("class", "").split() and a.get("id", "").startswith("pip-w")
                for t, a in mounts):
         return '0 <video id="pip-w<n>" class="pip"> mounts'
 
 
-def _bed_gap(mounts):
+def _bed_gap(mounts, _episode=None):
     # A bed is how the shipped episodes mount it: data-bed plus "bed" or "mus" in the id (Palm Sunday
     # sx-bed-a1, El Reno sx-mus-bed-a, 1974 sx-mus-a1). Swells and hits also carry data-bed, so the
     # attribute alone is not a bed.
@@ -143,11 +143,41 @@ def _bed_gap(mounts):
         return f"beds cover {share:.0%} of the narration span {lo:.1f}-{hi:.1f} s, need {BED_COVER_MIN:.0%}"
 
 
-def _paul_gap(mounts):
+def _paul_gap(mounts, _episode=None):
     clips = {a["id"] for t, a in mounts
              if t == "video" and re.fullmatch(r"ins-paul-\d+", a.get("id", ""))}
     if len(clips) < PAUL_CLIPS:
         return f'{len(clips)} <video id="ins-paul-<n>"> mounts, need {PAUL_CLIPS}'
+
+
+# Camille and Mayfield rough cuts (23 Oct 26) shipped a still of circle-portrait-560.jpg as the circle (Camille
+# commit 0ab221e4 swapped them out). Measured over 20 s at 2 fps, 64x64 grey: the stand-in moves 0.01 levels a
+# frame on average, a real FlashHead face 5.4 to 6.3. Below this the circle is a still, whatever its file name.
+FACE_MOTION_MIN = 1.0
+FACE_SAMPLE = 64
+
+
+def face_motion(path):
+    """Mean grey-level change between frames 0.5 s apart over the clip's first 20 s (0..255)."""
+    n = FACE_SAMPLE * FACE_SAMPLE
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), "-t", "20", "-vf",
+                          f"fps=2,scale={FACE_SAMPLE}:{FACE_SAMPLE},format=gray", "-f", "rawvideo", "-"],
+                         capture_output=True, check=True).stdout
+    frames = [raw[i:i + n] for i in range(0, len(raw) - n + 1, n)]
+    if len(frames) < 2:
+        return 0.0
+    return sum(sum(abs(a - b) for a, b in zip(x, y)) / n for x, y in zip(frames, frames[1:])) / (len(frames) - 1)
+
+
+def _frozen_gap(mounts, episode=None):
+    if episode is None:
+        return None
+    # a missing file is sweep_episode.py's finding, not this one
+    frozen = [f"{a['id']} ({m:.2f})" for t, a in mounts
+              if t == "video" and "pip" in a.get("class", "").split() and (episode / a.get("src", "")).is_file()
+              and (m := face_motion(episode / a["src"])) < FACE_MOTION_MIN]
+    if frozen:
+        return f"{len(frozen)} pip clip(s) barely move, need {FACE_MOTION_MIN:g}: " + ", ".join(frozen)
 
 
 LAYERS = (
@@ -159,22 +189,24 @@ LAYERS = (
      "45 to 60 s) is the default"),
     ("Paul full-frame clips", _paul_gap,
      "mg-quickref.md 'Paul on screen': Full frame (Flow/Omni), about 1 min: 6 clips of 10 s"),
+    ("moving presenter face", _frozen_gap,
+     "mg-quickref.md 'Corner circle': the circle is FlashHead's face speaking, never a still stand-in"),
 )
 
 
-def missing_layers(slug, html):
+def missing_layers(slug, html, episode=None):
     """(layer, finding, rule) for every owner-asked layer the timeline lacks; [] outside documentaries."""
     if not slug.startswith(DOC_SLUG):
         return []
     mounts = _mounts(html)
-    return [(name, gap, rule) for name, check, rule in LAYERS if (gap := check(mounts))]
+    return [(name, gap, rule) for name, check, rule in LAYERS if (gap := check(mounts, episode))]
 
 
 def layer_refusal(episode):
     """None if every layer is mounted, else the exit code preflight should use."""
-    missing = missing_layers(episode.name, (episode / "index.html").read_text(encoding="utf-8"))
+    missing = missing_layers(episode.name, (episode / "index.html").read_text(encoding="utf-8"), episode)
     if not missing:
-        print("[layers] OK: circle, bed and Paul's clips are mounted.")
+        print("[layers] OK: circle (moving), bed and Paul's clips are mounted.")
         return None
     for name, gap, rule in missing:
         print(f"[layers] MISSING {name}: {gap}. Rule: {rule}", file=sys.stderr)
