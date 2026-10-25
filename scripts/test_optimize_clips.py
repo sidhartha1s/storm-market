@@ -40,7 +40,7 @@ with tempfile.TemporaryDirectory() as tmp:
         'data-duration="6.417" data-track-index="1" data-volume="1" data-has-audio="true"></video>\n</div>\n',
         encoding="utf-8")
     r = subprocess.run([sys.executable, str(S / "optimize_clips.py"), str(ep)], capture_output=True, text=True)
-    plan = [l for l in r.stdout.splitlines() if l.endswith("s") and ".mp4" in l and not l.startswith("skip")]
+    plan = [l for l in r.stdout.splitlines() if l.split() and l.split()[0].endswith(".mp4")]  # rows over comp end in "<- over comp"
 
 check("dry run exits 0", r.returncode == 0)
 check("the stock clip is in the plan", any(l.startswith("stock-a.mp4") for l in plan))
