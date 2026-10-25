@@ -33,12 +33,12 @@ Loop: none (breaks the belief "that was a snowstorm" by word sixteen, "hit the c
 [src: 4] [src: 2]
 
 ### H1-S2 — narration
-> It was one storm with two sides: snow and record cold on the west, hurricane-force wind on the east. A hundred sixty people lost their lives that Thanksgiving weekend.
+> One storm, two sides: record snow and cold inland, hurricane-force wind on the coast. At least a hundred sixty people lost their lives in this storm.
 
-Picture: hard cut on "one storm" to ONE self-made map, no city names: a single low marked "L" in the middle; on "west" snow shading fills in left of the L with chip "SNOW + RECORD COLD"; on "east" wind arrows sweep in right of the L with chip "HURRICANE-FORCE WIND"; chip "SAT · NOV 25, 1950" holds on the map. On the toll the map dims and a calendar chip "THANKSGIVING WEEKEND · NOV 24-26, 1950" sits over it; toll on the on-screen source line only: "at least 160 lives lost · NCEI" [VE] [RS]
-Sound: a soft cold swell on "west", a wind swell on "east"; bed only, no hit on the toll.
+Picture: hard cut on "one storm" to ONE self-made map, no city names: a single low marked "L" in the middle; on "inland" snow shading fills in left of the L with chip "RECORD SNOW + COLD"; on "coast" wind arrows sweep in right of the L with chip "HURRICANE-FORCE WIND"; chip "SAT · NOV 25, 1950" holds on the map. On the toll the map dims; toll on the on-screen source line only: "at least 160 lives lost · NCEI" (no dates on the toll) [VE] [RS]
+Sound: a soft cold swell on "inland", a wind swell on "coast"; bed only, no hit on the toll.
 Loop: none (the two-hazards turn as one picture the viewer holds; toll lands by about 20 s)
-[src: 1] [src: 11] [src: 5]
+[src: 1] [src: 4] [src: 11] [src: 5]
 
 ### H1-S3 — narration
 > That hundred eight mile an hour gust hit Newark, New Jersey, the strongest Newark ever recorded. And one move this storm made explains both of its sides.
