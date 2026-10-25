@@ -64,7 +64,7 @@ def used_vs_asked(text, video_encoder=None):
         return ["[FALLBACK] no 'GPU:' line in the render log: what the render asked for is unknown"]
     asked, out = m.group(1), []
     if "encoder GPU" in asked:
-        if "[gpuEncoder] nvenc probe failed" in text:
+        if video_encoder is None and "[gpuEncoder] nvenc probe failed" in text:  # the file's tag, once read, wins
             out.append("[FALLBACK] encoder: --gpu asked, the nvenc probe failed, hyperframes encoded on another encoder")
         if video_encoder is not None and "nvenc" not in video_encoder:
             out.append(f"[FALLBACK] encoder: --gpu asked, the output was encoded by '{video_encoder}', not nvenc")
