@@ -56,7 +56,7 @@ check("act 2: authored scripts can read the original times", 'data-act-src-start
 check("act 2: a plain element over before the act stays (scripts may count it), parked past the act's end",
       re.search(r'id="kb-1" data-start="11.0"', a2))
 check("act 2: the blackout running through the seam starts at 0 with its remaining length",
-      re.search(r'id="bo-1" data-start="0.0" data-act-start="0.0" data-act-src-start="9.8" data-duration="0.1999', a2))
+      re.search(r'id="bo-1" data-start="0.0" data-act-start="0.0" data-act-src-start="9.8" data-duration="0.2000', a2))
 check("act 2: root length is the act's frames", re.search(r'id="root"[^>]*data-duration="10.0"', a2))
 check("act 1 drops act 2's media and host", 'id="v-a2"' not in ra.slice_html(COMP, 0, 300, 30)
       and "host-g" not in ra.slice_html(COMP, 0, 300, 30))

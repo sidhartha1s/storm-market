@@ -151,7 +151,11 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
    pre-master final, previews). Never delete the master. `metadata.md` stays tracked in the episode folder. After
    publish, commit, PR and merge the episode branch, then remove the worktree. `metadata.md` at publish: first URL
    is `channel.cta.first_link`, then the "book mentioned at mm:ss" line, no chapter marker at the CTA, category Education, type Overview.
-- Chunk a render only if a single render proves unstable.
+- Render by act (owner 26 Oct 26, sk_4): `python3 scripts/render_acts.py <slug> <draft|full> <basename> [--reuse <older-basename>]`,
+  launched hidden like a render. Seams are the middle frames of the chapter blackouts; each act renders muted through
+  render.cmd, one 1 fps pass gives the whole mix, and the acts are concatenated frame-exact. With `--reuse`, every act
+  whose staged slice and mounted graphics are unchanged is taken from the older run, so a fix re-renders only its act.
+  `--plan` lists the seams. The act file is staged render input, never episode HTML (TRIPWIRE below).
 - Heavy local jobs run on the ZBook by default (owner 17 Oct 26): transcription, voice conversion, clip downloads and
   frame extraction for sourcing, captures, gates and renders. Sourcing lanes pause while a render runs there (one heavy job at a time). The ASUS GPU runs the owner's live dictation and its RAM is shared with his work; measured
   on Joplin, one act's transcription ran 28 min+ unfinished on the ASUS while all 8 acts cut and converted on the ZBook in 19 min.

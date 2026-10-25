@@ -137,7 +137,7 @@ document.querySelectorAll("[data-act-src-start]").forEach(function (el) {
     if (e <= A) { done.push(c); return; }
     var d = gsap.timeline({ paused: true });  // spans the seam: play it from A on
     d.add(c, 0);
-    tl.add(d.tweenFromTo(A - s, e - s, { duration: e - A, ease: "none" }), 0);
+    tl.add(d.tweenFromTo(A - s, e - s, { duration: e - A, ease: "none", immediateRender: true }), 0);
   });
   // GSAP shifts every child when one starts before 0, so finished ones apply their end state once, in order
   done.sort(function (x, y) { return x.endTime() - y.endTime(); })
