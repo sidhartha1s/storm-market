@@ -7,7 +7,7 @@
 - angle (owner lock, 26 Oct 26, verdict "a2"): It wasn't one storm hazard but two at once: hurricane-force gusts on the East Coast on one side of the storm, record snow and cold inland on the other.
 - dominant question: how did one storm bury Pittsburgh in snow and hit the coast with hurricane-force wind on the same Saturday?
 - architecture: Explanation with a twist (two sides first, then the map that joins them)
-- status: hook and intro fix round 2 (grader fixes and fact verdicts applied), act prose not written. Every [verify: ...] goes to the fact-check fan-out.
+- status: hook and intro fix round 3 (break by word sixteen, places cut from the hook, one-map two-sides picture, Buffalo moved to I1-S4), act prose not written. Every [verify: ...] goes to the fact-check fan-out.
 
 ## Sources
 1. [src: 1] NWS Jackson KY https://www.weather.gov/jkl/appalachianstorm1950
@@ -25,25 +25,25 @@
 ## HOOK
 
 ### H1-S1 — paul (on camera)
-> You know this storm for two feet of snow on Pittsburgh. That same Saturday it hit Newark with a hundred eight mile an hour gust.
+> You know this storm for two feet of snow. That same weekend, it hit the coast with a hundred eight mile an hour gust.
 
-Picture: frame one is Paul on camera, full frame. Popfig inside the first second: "PITTSBURGH, PA · NOV 1950". Chips as each is said: "2 FEET OF SNOW" then "NEWARK, NJ · 108 MPH GUST" [VE] [HOOK]
+Picture: frame one is Paul on camera, full frame. Popfig inside the first second: "NOV 1950". Chips as each is said: "2 FEET OF SNOW" then "108 MPH GUST" [VE] [HOOK]
 Sound: line starts at 0:00; low cold wind bed only, no archive audio; a gust swell lands on "gust".
-Loop: none (breaks the belief "that was a snowstorm"; both title numbers said aloud)
+Loop: none (breaks the belief "that was a snowstorm" by word sixteen, "hit the coast"; both title numbers said aloud)
 [src: 4] [src: 2]
 
 ### H1-S2 — narration
-> And the same storm left Buffalo, two hundred miles north of Pittsburgh, in the forties with no snow at all.
+> It was one storm with two sides. The west side brought snow and record cold. The east side brought hurricane-force wind, and both hit on the same Saturday.
 
-Picture: hard cut on "Buffalo" to a self-made locator map, Pittsburgh and Buffalo pinned with a 200-mile line between them; chips "PITTSBURGH: 27.4 IN" and "BUFFALO: 40s °F · NO SNOW" [VE] [RS]
-Sound: bed drops out for a beat under "no snow at all", then returns.
-Loop: none (second contradiction: the warm side of the same storm)
-[src: 1]
+Picture: hard cut on "one storm" to ONE self-made map, no city names: a single low marked "L" in the middle; on "west side" snow shading fills in left of the L with chip "SNOW + RECORD COLD"; on "east side" wind arrows sweep in right of the L with chip "HURRICANE-FORCE WIND"; on "same Saturday" chip "SAT · NOV 25, 1950" [VE] [RS]
+Sound: bed drops for a beat after "two sides", a soft cold swell on "west side", a wind swell on "east side".
+Loop: none (the two-hazards turn as one picture the viewer holds)
+[src: 1] [src: 11] [src: 4] [src: 2]
 
 ### H1-S3 — narration
-> That gust on November twenty-fifth, nineteen fifty, was the strongest Newark ever recorded. One storm did both on the same day, and that Saturday's weather map shows how.
+> On the coast, that gust hit Newark, New Jersey. It was the strongest Newark ever recorded. One storm did both at once, and the weather map from that Saturday shows how.
 
-Picture: NWS Jackson KY surface chart for 25 Nov 1950 (19501125Surface.JPG), slow push; popfig "NEWARK, NJ · SAT NOV 25, 1950 · STRONGEST EVER RECORDED THERE"; the low's L circled, the track not drawn yet [VE]
+Picture: NWS Jackson KY surface chart for 25 Nov 1950 (19501125Surface.JPG), slow push; popfig "NEWARK, NJ · 108 MPH · SAT NOV 25, 1950 · STRONGEST EVER RECORDED THERE"; the low's L circled, the track not drawn yet [VE]
 Sound: wind bed holds, drops under the last sentence; no archive audio.
 Loop: [loop L1 open] how one storm pulled off both (paid in Act 3)
 [src: 2] [src: 1]
@@ -51,15 +51,15 @@ Loop: [loop L1 open] how one storm pulled off both (paid in Act 3)
 ## INTRO
 
 ### I1-S1 — narration
-> I read the weather service reports, and a hundred sixty people lost their lives that Thanksgiving weekend. Pittsburgh's twenty-seven point four inches was its biggest snowstorm on record, and it still wasn't the deepest snow.
+> I read the weather service reports. A hundred sixty people lost their lives that Thanksgiving weekend. Pittsburgh got twenty-seven point four inches, its biggest snowstorm on record. And that still wasn't the deepest snow.
 
 Picture: calendar chip "THANKSGIVING WEEKEND · NOV 24-26, 1950"; toll on the on-screen source line only: "at least 160 lives lost · NCEI". On "twenty-seven point four": NWS Pittsburgh snow records sheet, chip "27.4 IN · PITTSBURGH'S #1 STORM" [VE]
 Sound: bed only, no hit on the toll; a soft riser ends on "deepest snow".
 Loop: [loop L2 open] where the deepest snow fell
-[src: 5] [src: 1] [src: 4]
+[src: 5] [src: 4]
 
 ### I1-S2 — narration
-> The deepest was sixty-two inches at Coburn Creek, West Virginia. That's more than five feet. And the cold behind it set a November record that nobody's broken since.
+> The deepest was sixty-two inches at Coburn Creek, West Virginia. That's more than five feet of snow. And the cold behind the storm set a November record that nobody's broken since.
 
 Picture: NWS Jackson snow map (1950SnowStorm.jpg), push into West Virginia; popfig "COBURN CREEK, WV · 62 IN"; on the last clause the map tilts south [VE] [RS]
 Sound: bed; a low swell under "sixty-two inches".
@@ -67,7 +67,7 @@ Loop: [loop L2 closes] Coburn Creek; [loop L3 open] where the November record no
 [src: 1] [src: 5] [src: 6]
 
 ### I1-S3 — narration
-> That was Bowling Green, Kentucky, at minus seven degrees. Atlanta got down to three degrees, and even Pensacola, Florida, dropped to twenty-two.
+> That was Bowling Green, Kentucky, at minus seven degrees. Atlanta got down to three degrees. Even Pensacola, Florida, dropped to twenty-two.
 
 Picture: self-made map of the Southeast, temperature pins dropping one by one: "BOWLING GREEN, KY -7°F (NOV RECORD)", "ATLANTA, GA 3°F", "PENSACOLA, FL 22°F" [VE]
 Sound: bed; three soft ticks, one per pin, each on its city name.
@@ -75,18 +75,18 @@ Loop: [loop L3 closes] Bowling Green, minus seven; then the cold on the Gulf Coa
 [src: 1] [src: 5]
 
 ### I1-S4 — narration
-> With cold like that in Florida, you'd figure Albany, New York, got buried. It got rain, no snow, and an eighty-three mile an hour gust, the strongest ever recorded there. At LaGuardia, water broke through the dikes and ran onto the runways.
+> With cold like that in Florida, you'd figure upstate New York got buried. Albany got rain, no snow, and an eighty-three mile an hour gust, the strongest ever recorded there. Buffalo sat in the forties with no snow at all.
 
-Picture: self-made split map, snow shading inland on the left, wind arrows on the coast on the right, one low between them; popfig "ALBANY, NY · 83 MPH GUST · RAIN, NO SNOW"; for LaGuardia, flood footage SOURCE TBD (no 1950 newsreel located yet), fallback a self-made LaGuardia locator map, AI-image gap only if neither exists [VE] [RS]
-Sound: wind swell back up under "eighty-three", water texture under "LaGuardia" (library, not archive).
+Picture: back to the one-low map from H1-S2, now with pins; popfig "ALBANY, NY · 83 MPH GUST · RAIN, NO SNOW"; on "Buffalo" a pin with chip "BUFFALO: 40s °F · NO SNOW" and a 200-mile line down to Pittsburgh "27.4 IN" [VE] [RS]
+Sound: wind swell back up under "eighty-three"; bed drops out for a beat under "no snow at all", then returns.
 Loop: none (belief and break inside the segment; L1 still open)
 [src: 7] [src: 1]
 
 ### I1-S5 — narration
-> Most tellings of this storm leave out the coast, and Newark's gust wasn't even the strongest one.
+> At LaGuardia, water broke through the dikes and ran onto the runways. Most tellings of this storm leave out the coast, and Newark's gust wasn't even the strongest one.
 
-Picture: the split map slides right to the coast; gust ladder bars appear empty, Newark's 108 lit, the higher bars still blank [VE]
-Sound: bed holds under the line, then the chapter blackout.
+Picture: for LaGuardia, flood footage SOURCE TBD (no 1950 newsreel located yet), fallback a self-made LaGuardia locator map, AI-image gap only if neither exists; then the map slides right to the coast; gust ladder bars appear empty, Newark's 108 lit, the higher bars still blank [VE]
+Sound: water texture under "LaGuardia" (library, not archive); bed holds under the last line, then the chapter blackout.
 Loop: [loop L4 open] which gust beat Newark's (carried into Act 1, paid in Act 1)
 [src: 1]
 
