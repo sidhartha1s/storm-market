@@ -105,7 +105,7 @@ Loop: [loop L4 open] which gust beat Newark's (carried into Act 1, paid in Act 1
 
 | Id | What | Planted in | Paid in |
 |---|---|---|---|
-| L1 | How one storm pulled off both (episode loop; the old L4 merged into it) | H1-S3 | Act 3 opening payoff ("The low went northwest.") |
+| L1 | The one move the storm made that explains both sides (episode loop; the old L4 merged into it) | H1-S3 | Act 3 opening payoff ("The low went northwest.") |
 | L2 | Where the deepest snow fell, if not Pittsburgh | I1-S1 | I1-S2 |
 | L3 | Where the unbroken November record was set | I1-S2 | I1-S3 |
 | L4 | Which gust beat Newark's | I1-S5 | Act 1 (Bear Mountain one hundred forty) |
