@@ -255,7 +255,7 @@ def fingerprint(staged, ep, mode, fps):
             for chunk in iter(lambda: f.read(1 << 20), b""):
                 h.update(chunk)
     parked = [x.read_text(encoding="utf-8", errors="replace") for x in _local_files(ep, "".join(PARKED.findall(staged)))
-              - own if x.suffix == ".html"]
+              - own if x.suffix in (".html", ".js")]
     h.update(repr([any(re.search(t, x) for x in parked) for t in PROBE_TRIGGERS]).encode("utf-8"))
     return h.hexdigest()[:16]
 
