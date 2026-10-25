@@ -5,7 +5,10 @@ paul-sheet-c.png (the wrong face, owner 25 Oct 26), ins-paul-1-retake and ins-pa
 - Mayfield before 4e606b56 (clip 1 mounted from ins-paul-1/) must fail on differing frames.
 - Mayfield after 4e606b56 (clip 1 from ins-paul-1-retake/) must pass.
 - A clip with no jobs.json beside it must fail.
+- Palm Sunday's layout: clips 2 to 6 batched in one media/paul/acts-2-6/jobs.json (jobs named ins-paul-2..6, the real
+  names) with clip 1's own beside it, all from one frame, must pass.
 """
+import json
 import shutil
 import subprocess
 import sys
@@ -46,6 +49,20 @@ rc, out = run("ins-paul-1-retake")
 check("Mayfield after the retake passes", rc == 0 and "paul-start-frame-omni-v2.png" in out)
 rc, out = run("ins-paul-1-retake", with_jobs=False)
 check("a clip without jobs.json fails", rc == 1 and "ins-paul-1: no single start frame" in out)
+
+with tempfile.TemporaryDirectory() as tmp:  # Palm Sunday: one batch jobs.json for clips 2 to 6
+    ep = Path(tmp) / "ep-palm-sunday-1965"
+    paul = ep / "media" / "paul"
+    job = lambda n: {"name": f"ins-paul-{n}", "frame": "C:/x/media/paul/inputs/paul-desk-frame.jpg"}  # noqa: E731
+    (paul / "acts-2-6").mkdir(parents=True)
+    (paul / "acts-2-6" / "jobs.json").write_text(json.dumps({"jobs": [job(n) for n in range(2, 7)]}), encoding="utf-8")
+    for n in range(1, 7):
+        (paul / f"ins-paul-{n}").mkdir()
+    (paul / "ins-paul-1" / "jobs.json").write_text(json.dumps({"jobs": [job(1)]}), encoding="utf-8")
+    (ep / "index.html").write_text("\n".join(f'<video id="ins-paul-{n}" src="media/paul/ins-paul-{n}/ins-paul-{n}.mp4"></video>'
+                                             for n in range(1, 7)), encoding="utf-8")
+    r = subprocess.run([sys.executable, str(S / "paul_start_frame.py"), str(ep)], capture_output=True, text=True)
+check("Palm Sunday (clips 2 to 6 in one batch jobs.json) passes", r.returncode == 0 and "6 clip(s)" in r.stdout)
 
 if FAILS:
     sys.exit(f"{len(FAILS)} check(s) failed")
