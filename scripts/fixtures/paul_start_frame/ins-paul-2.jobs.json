@@ -1,0 +1,14 @@
+{
+ "aspect": "16:9",
+ "count": 1,
+ "credits_per_video": 15,
+ "budget": 15,
+ "jobs": [
+  {
+   "name": "mayfield-ins-paul-2",
+   "frame": "C:/Users/Sidhartha/Automation Projects/storm-market/.claude/worktrees/ep-mayfield-2021-a6d084/assets/paul/paul-start-frame-omni-v2.png",
+   "line": "OSHA said the procedures met minimal federal safety guidelines for storm sheltering.",
+   "prompt": "This is a history documentary about the December 10, 2021 Mayfield, Kentucky tornado. The man in the start frame sits at his desk, exactly as shown, and speaks straight to the camera. ONE full-width 16:9 video, a single take, no variations; never a split image, a collage or panels. Medium shot, the camera does not move, the room stays as in the start frame. Calm, deep, measured voice, natural small hand movement. He says exactly these words and nothing else: \"OSHA said the procedures met minimal federal safety guidelines for storm sheltering.\" He stops speaking and holds his look at the camera. No music, no captions, no text on screen."
+  }
+ ]
+}
