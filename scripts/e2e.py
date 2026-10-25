@@ -93,15 +93,16 @@ def main():
         code, out = run([sys.executable, str(SCRIPTS / "run_gates.py"), str(ep)], timeout=1800)
         verdict = next((l for l in out.splitlines() if l.startswith("RUN_GATES")), None)
         print(verdict or "(no RUN_GATES verdict line)")
-        if is_tool_crash(out) or verdict is None or code not in (0, 1):
+        crashed = is_tool_crash(out) or verdict is None or code not in (0, 1)
+        if crashed:
             bad.append(f"{ep.name}: run_gates crashed or gave no verdict (exit {code})")
-            print(out[-2500:])
         results = gate_results(out)
         for g, r in results.items():
             print(f"{r} {g}")
         not_passed = [g for g, r in results.items() if r != "PASS"]
         if not_passed:
             bad.append(f"{ep.name}: gates failed or not run: " + ", ".join(not_passed))
+        if crashed or not_passed:
             print(out[-2500:])
 
     print()
