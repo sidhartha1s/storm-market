@@ -7,7 +7,7 @@
 - angle (owner lock, 26 Oct 26, verdict "a2"): It wasn't one storm hazard but two at once: hurricane-force gusts on the East Coast on one side of the storm, record snow and cold inland on the other.
 - dominant question: how did one storm bury Pittsburgh in snow and hit the coast with hurricane-force wind on the same Saturday?
 - architecture: Explanation with a twist (two sides first, then the map that joins them)
-- status: hook and intro fix round 1 (grader fixes and fact verdicts applied), act prose not written. Every [verify: ...] goes to the fact-check fan-out.
+- status: hook and intro fix round 2 (grader fixes and fact verdicts applied), act prose not written. Every [verify: ...] goes to the fact-check fan-out.
 
 ## Sources
 1. [src: 1] NWS Jackson KY https://www.weather.gov/jkl/appalachianstorm1950
@@ -36,12 +36,12 @@ Loop: none (breaks the belief "that was a snowstorm"; both title numbers said al
 > And the same storm left Buffalo, two hundred miles north of Pittsburgh, in the forties with no snow at all.
 
 Picture: hard cut on "Buffalo" to a self-made locator map, Pittsburgh and Buffalo pinned with a 200-mile line between them; chips "PITTSBURGH: 27.4 IN" and "BUFFALO: 40s °F · NO SNOW" [VE] [RS]
-Sound: bed drops out for a beat under "didn't get any at all", then returns.
-Loop: none (second contradiction, lands inside about eight seconds)
+Sound: bed drops out for a beat under "no snow at all", then returns.
+Loop: none (second contradiction: the warm side of the same storm)
 [src: 1]
 
 ### H1-S3 — narration
-> That gust on November twenty-fifth, nineteen fifty, was the strongest Newark ever recorded. One storm buried one side in snow and hit the other with hurricane-force wind, and that Saturday's weather map shows how.
+> That gust on November twenty-fifth, nineteen fifty, was the strongest Newark ever recorded. One storm did both on the same day, and that Saturday's weather map shows how.
 
 Picture: NWS Jackson KY surface chart for 25 Nov 1950 (19501125Surface.JPG), slow push; popfig "NEWARK, NJ · SAT NOV 25, 1950 · STRONGEST EVER RECORDED THERE"; the low's L circled, the track not drawn yet [VE]
 Sound: wind bed holds, drops under the last sentence; no archive audio.
@@ -63,7 +63,7 @@ Loop: [loop L2 open] where the deepest snow fell
 
 Picture: NWS Jackson snow map (1950SnowStorm.jpg), push into West Virginia; popfig "COBURN CREEK, WV · 62 IN"; on the last clause the map tilts south [VE] [RS]
 Sound: bed; a low swell under "sixty-two inches".
-Loop: [loop L2 closes] Coburn Creek; [loop L3 open] how far south the cold went
+Loop: [loop L2 closes] Coburn Creek; [loop L3 open] where the November record nobody has broken was set
 [src: 1] [src: 5] [src: 6]
 
 ### I1-S3 — narration
@@ -71,7 +71,7 @@ Loop: [loop L2 closes] Coburn Creek; [loop L3 open] how far south the cold went
 
 Picture: self-made map of the Southeast, temperature pins dropping one by one: "BOWLING GREEN, KY -7°F (NOV RECORD)", "ATLANTA, GA 3°F", "PENSACOLA, FL 22°F" [VE]
 Sound: bed; three soft ticks, one per pin, each on its city name.
-Loop: [loop L3 closes] the cold reached Florida
+Loop: [loop L3 closes] Bowling Green, minus seven; then the cold on the Gulf Coast
 [src: 1] [src: 5]
 
 ### I1-S4 — narration
@@ -107,7 +107,7 @@ Loop: [loop L4 open] which gust beat Newark's (carried into Act 1, paid in Act 1
 |---|---|---|---|
 | L1 | How one storm pulled off both (episode loop; the old L4 merged into it) | H1-S3 | Act 3 opening payoff ("The low went northwest.") |
 | L2 | Where the deepest snow fell, if not Pittsburgh | I1-S1 | I1-S2 |
-| L3 | How far south the cold went | I1-S2 | I1-S3 |
+| L3 | Where the unbroken November record was set | I1-S2 | I1-S3 |
 | L4 | Which gust beat Newark's | I1-S5 | Act 1 (Bear Mountain one hundred forty) |
 | A1 | Columbus at ten degrees while Newark gusted | Act 1 exit | Act 2 |
 | cta-hinge | The one line on that Saturday map | Act 2 last segment | Act 3 first sentence |
