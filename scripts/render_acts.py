@@ -270,6 +270,10 @@ def main(argv):
             (ep / STAGE_NAME).write_text(staged, encoding="utf-8")
             run_render(slug, mode, f"acts/{base}/act{i:02d}", STAGE_NAME)
             path = str(pieces / f"act{i:02d}.mp4")
+            log = (ep / f"render_{mode}.log").read_text(encoding="utf-8", errors="replace")
+            (pieces / f"act{i:02d}.log").write_text(log, encoding="utf-8")  # the next render overwrites the episode log
+            if "NVIDIA" not in log:  # verify_render.sh's GPU check, which would otherwise see only the audio pass
+                raise SystemExit(f"render_acts: act{i:02d} did not render on the NVIDIA GPU; see {pieces / f'act{i:02d}.log'}")
         got = video_frames(path)
         if got != fb - fa:
             raise SystemExit(f"render_acts: act{i:02d} has {got} frames, expected {fb - fa}")
