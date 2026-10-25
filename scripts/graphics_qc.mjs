@@ -11,7 +11,7 @@ import { CANVAS_RENDERER, hostCss, motionSpans, stageComp } from './stage_comp.m
 
 const EXECUTABLE = chromiumExecutable();
 const ep = resolve(process.argv[2] || 'episodes/ep3-tristate');
-const ONLY = process.argv.slice(3);
+const ONLY = [...new Set(process.argv.slice(3))];
 const TMP = join(ep, '.qc-tmp');
 if (!existsSync(TMP)) mkdirSync(TMP, { recursive: true });
 
@@ -225,10 +225,6 @@ for (const m of INDEX_HTML.matchAll(/<[a-z]+\b[^>]*\bdata-composition-src="compo
   if (!isNaN(dur)) HOSTS[m[1]] = Math.max(HOSTS[m[1]] || 0, dur);
 }
 
-const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
-const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
-page.on('pageerror', e => add('RUNTIME', 'js-error', String(e).slice(0, 200)));
-
 const compDir = join(ep, 'compositions');
 const all = existsSync(compDir) ? readdirSync(compDir).filter(f => f.endsWith('.html')) : [];
 if (!all.length) { console.error('[graphics_qc] no compositions/ dir — graphics must be sub-comps (references/mg-quickref.md File contract)'); process.exit(1); }
@@ -236,6 +232,10 @@ const unknown = ONLY.filter(id => !all.includes(id + '.html'));
 if (unknown.length) { console.error(`[graphics_qc] no compositions/<id>.html for: ${unknown.join(', ')}`); process.exit(1); }
 const files = ONLY.length ? ONLY.map(id => id + '.html') : all;
 if (ONLY.length) console.log(`[graphics_qc] scoped to ${files.length} of ${all.length} compositions: ${ONLY.join(' ')} (not the pre-render gate)`);
+
+const browser = await chromium.launch({ executablePath: EXECUTABLE, args: ['--allow-file-access-from-files'] });
+const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+page.on('pageerror', e => add('RUNTIME', 'js-error', String(e).slice(0, 200)));
 
 for (const f of files) {
   const name = f.replace('.html', '');
@@ -332,7 +332,11 @@ await browser.close();
    graphic the moment it finishes instead of parking on a dead frame */
 /* a scoped run updates only its own comps' entries, so the other builders' entries survive */
 // shortcut: read-then-write, so two scoped runs finishing in the same instant can drop one entry; the next run of that comp restores it
-const publish = (p, got) => writeFileSync(p, JSON.stringify(ONLY.length && existsSync(p) ? { ...JSON.parse(readFileSync(p, 'utf8')), ...got } : got, null, 1), 'utf8');
+const publish = (p, got) => {
+  const old = ONLY.length && existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : {};
+  for (const id of ONLY) delete old[id];   // a scoped comp that now fails before measuring leaves no stale entry
+  writeFileSync(p, JSON.stringify({ ...old, ...got }, null, 1), 'utf8');
+};
 publish(join(compDir, '_durations.json'), DURS);
 /* settle-frame times per composition, comp-local seconds; the pre-render snapshot step reads them (mg-quickref "Verify") */
 publish(join(TMP, 'frame_times.json'), FRAMES);
