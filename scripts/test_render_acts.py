@@ -47,7 +47,8 @@ acts2, skipped2 = ra.plan_acts(spanned, 30)
 check("a video running through the blackout skips that seam", acts2 == [(0, 600)] and skipped2[0][2] == ["v-a2"])
 
 a2 = ra.slice_html(COMP, 300, 600, 30)
-check("act 2: narration audio dropped (sound comes from the one full pass)", "<audio" not in a2)
+check("act 2: narration over before the act parks, hidden, on the act's first frame",
+      re.search(r'id="nx-1"[^>]*data-start="0.0"[^>]*data-duration="0.0333[^>]*style="display: none !important"', a2))
 check("act 2: act 1's video dropped, its own video kept", 'id="v-a1"' not in a2 and 'id="v-a2"' in a2)
 check("act 2: times shifted by the act start", 'id="v-a2" src="media/b.mp4" data-start="0.1999999999999993"' in a2
       and re.search(r'id="host-g"[^>]*data-start="2.0"', a2))
@@ -111,57 +112,48 @@ out = subprocess.run(["node", "-e", node], capture_output=True, text=True)
 check("act root timeline: tweens land at act time (x/y/z at act 0,2,3,4 s)",
       out.stdout.strip() == "0/50/100 0/100/100 50/100/100 100/100/100")
 
-# Audio in the staged act (defects 1 and 2 of PR 223: a JS clock read 6:26 instead of 7:41, a county fill showed).
+# Audible media in the staged act (PR 223 defects 1 and 2: a JS clock read 6:26 where the single render read 7:41,
+# a county fill showed): hyperframes' pre-capture sweep must visit this act's graphics as in the single render.
 SWEEP = COMP.replace('<audio id="nx-1" src="audio/a.wav" data-start="1" data-duration="5"></audio>',
                      '<audio id="nx-1" src="audio/a.wav" data-start="1" data-duration="5"></audio>\n'
                      '  <audio id="nx-2" src="audio/b.wav" data-start="11" data-duration="6"></audio>\n'
-                     '  <audio id="bed" src="audio/c.wav" data-start="8" data-duration="10" data-media-start="2"></audio>')
+                     '  <audio id="bed" src="audio/c.wav" data-start="7.99" data-duration="10" data-media-start="2"></audio>')
 a1, a2s = ra.slice_html(SWEEP, 0, 300, 30), ra.slice_html(SWEEP, 300, 600, 30)
 check("act 1: its audio stays at its time, audio after the act parks on the act's last frame",
       re.search(r'id="nx-1"[^>]*data-start="1.0"', a1) and re.search(r'id="nx-2"[^>]*data-start="9.96666', a1))
-check("act 2: audio over before the act goes, audio through the seam starts at 0 with its media advanced",
-      'id="nx-1"' not in a2s and re.search(r'id="bed"[^>]*data-start="0.0"[^>]*data-duration="8.0"[^>]*data-media-start="4.0"', a2s))
+check("act 2: audio through the seam starts on its first sweep sample in the act, its media advanced with it",
+      re.search(r'id="bed"[^>]*data-start="0.0033333[^>]*data-duration="7.9866[^>]*data-media-start="4.0133', a2s))
 
 
-def sweep_frames(comp, fa, fb, fps=30):
-    """What a graphic's JS clock reads on each frame [fa, fb) of a render of comp: hyperframes' pre-capture audio
-    sweep (root totalTime over every audio window at 1/fps, suppressed, then 0), then one seek per frame."""
+def sweep(comp, fa, fps=30):
+    """Where hyperframes' pre-capture audio sweep (discoverAudioVolumeAutomationFromTimeline: every audible clip's
+    window in document order at 1/fps, clamped to the composition, then 0) puts host-g's timeline: its local times,
+    with before and after its span folded and repeats collapsed. Equal sequences leave equal GSAP state."""
     p = ra._Timed(comp)
     dur = float(p.root["attrs"]["data-duration"])
-    wins = [(float(e["attrs"]["data-start"]), float(e["attrs"]["data-start"]) + float(e["attrs"]["data-duration"]))
-            for e in p.els if e["tag"] == "audio"]
     host = next(e for e in p.els if e["attrs"].get("id") == "host-g")
-    post = comp.find("<script>/* render_acts: back")
-    js = re.sub(r"</?script>(/\*.*?\*/)?", "", comp[post:comp.rfind("</script>") + 9]) if post >= 0 else ""
-    node = f"""
-const {{gsap}} = require({json.dumps(str(gsap))});
-global.gsap = gsap; global.window = {{ __timelines: {{}} }}; global.document = {{ querySelectorAll: () => [] }};
-const root = gsap.timeline({{ paused: true }}); root.set({{}}, {{}}, 20); window.__timelines["ep-x"] = root;
-{js}
-const clk = {{ m: 0 }}; let text = "start"; const g = gsap.timeline({{ paused: true }});
-[[1, 0, 10], [2, 10, 20], [3, 20, 30]].forEach(([t, a, b]) => g.fromTo(clk, {{ m: a }}, {{ m: b, duration: 1, ease: "none",
-  immediateRender: false, onUpdate: () => {{ text = String(Math.floor(clk.m)); }} }}, t));
-root.add(g, {float(host["attrs"]["data-start"])});
-for (const [s, e] of {json.dumps(wins)}) {{
-  for (let t = Math.max(0, s); t <= Math.min({dur}, e) + 1e-6; t = Math.min({dur}, e, t + 1 / {fps})) {{
-    root.totalTime(t, true); if (t === Math.min({dur}, e)) break; }}
-}}
-root.totalTime(0, true);
-const out = [];
-for (let f = 0; f < {fb - fa}; f++) {{ root.totalTime(f / {fps}); out.push(text); }}
-console.log(out.join(","));
-"""
-    r = subprocess.run(["node", "-e", node], capture_output=True, text=True)
-    return r.stdout.strip().split(",") if r.returncode == 0 else [r.stderr]
+    h0, h1 = ra._span(host)
+    seq = []
+    for el in p.els:
+        if el["tag"] != "audio" and not (el["tag"] == "video" and "muted" not in el["attrs"]):
+            continue
+        s, e = ra._span(el)
+        t, end = max(0.0, s), min(dur, e)
+        while t <= end + 1e-6:
+            loc = round(t - h0, 6)
+            seq.append("before" if loc <= 0 else "after" if t >= h1 else loc)
+            if t == end:
+                break
+            t = min(end, t + 1 / fps)
+    seq.append("before")
+    return [x for i, x in enumerate(seq) if i == 0 or x != seq[i - 1]]
 
 
-single = sweep_frames(SWEEP, 0, 600)
-staged = sweep_frames(a2s, 300, 600)
-check("act 2: a graphic's JS state on every frame matches the single render's (audio sweep kept)",
-      len(single) == 600 and staged == single[300:] and single[300] != "start")
-old = re.sub(r'\s*<audio[^>]*></audio>', "", a2s)  # the old staging: no audio, so no sweep
-check("act 2 without its audio diverges from the single render (the defect this guards)",
-      sweep_frames(old, 300, 600) != single[300:])
+single = sweep(SWEEP, 0)
+check("act 2: the sweep visits its graphic at the same local times, in the same order, as in the single render",
+      sweep(a2s, 300) == single and "after" in single)
+old = re.sub(r'\s*<audio[^>]*></audio>', "", a2s)  # the old staging dropped all audio: no sweep at all
+check("act 2 without its audio is swept differently (the defect this guards)", sweep(old, 300) != single)
 
 # Defect 3 of PR 223: an element over before the act painted on act 2's first frames of one run.
 styled = COMP.replace('id="kb-1"', 'id="kb-1" style="opacity: 0.9;"')
