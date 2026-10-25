@@ -307,6 +307,12 @@ def main():
             txt_tmp.write_text(text, encoding="utf-8")
             stale_pairs.append((txt_tmp, raw_wav))
 
+    # Only segments about to be voiced: a shipped wav made before this check keeps its text.
+    bad = {t[0]: tts_clone.unsafe_spans(t[1]) for t in todo if t[11]}
+    bad = {sid: spans for sid, spans in bad.items() if spans}
+    if bad:
+        sys.exit("[tts_episode] FAIL - text pocket-TTS voices wrong; fix the line in edit_script.md:\n"
+                 + "\n".join(f"  {sid}: {s!r}: {fix}" for sid, spans in bad.items() for s, fix in spans))
     if stale_pairs:
         synth_native(stale_pairs, ext)
 
