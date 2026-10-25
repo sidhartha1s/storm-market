@@ -288,8 +288,10 @@ def main(argv):
                     "-i", str(pieces / "audio.mp4"), "-map", "0:v", "-map", "1:a", "-c", "copy",
                     "-t", repr(total / fps), "-movflags", "+faststart", str(out)], check=True)
     got = video_frames(out)
-    if got != total:
-        raise SystemExit(f"render_acts: {out.name} has {got} frames, expected {total}")
+    audio = float(subprocess.run(["ffprobe", "-v", "error", "-select_streams", "a:0", "-show_entries", "stream=duration",
+                                  "-of", "csv=p=0", str(out)], capture_output=True, text=True, check=True).stdout)
+    if got != total or audio < (total - 1) / fps:
+        raise SystemExit(f"render_acts: {out.name} has {got} frames and {audio:.3f} s of sound, expected {total} frames")
     print(f"OK {out} ({total} frames, {len(acts)} acts)")
 
 
