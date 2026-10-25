@@ -67,7 +67,6 @@ class _Timed(HTMLParser):
         if self.root is None and "data-composition-id" in a and "data-duration" in a:
             self.root = el
         elif self.root is not None and "data-start" in a:
-            el["parent"] = next((p for p in reversed(self.stack) if p in self.els), None)
             self.els.append(el)
         if tag not in VOID_TAGS:
             self.stack.append(el)
@@ -182,8 +181,7 @@ def slice_html(html, fa, fb, fps):
     if first_script < 0 or first_script > body_end:
         first_script = body_end
     edits.append((first_script, first_script, PRE))
-    edits.append((body_end, body_end, POST % {"id": json.dumps(root["attrs"]["data-composition-id"]),
-                                              "a": a, "b": a + dur, "dur": dur}))
+    edits.append((body_end, body_end, POST % {"id": json.dumps(root["attrs"]["data-composition-id"]), "a": a}))
     out = html
     for s, e, rep in sorted(edits, key=lambda x: (x[0], x[1]), reverse=True):
         out = out[:s] + rep + out[e:]

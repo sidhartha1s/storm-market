@@ -75,3 +75,4 @@ episodes/*/lanes.json*
 
 # hyperframes >= 0.8.152 writes per-revision run state (history-id, render-outputs.json, video-state.json, artifacts/) into each project
 .hyperframes/
+_act_tmp.html*
