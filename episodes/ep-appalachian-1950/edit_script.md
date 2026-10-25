@@ -75,7 +75,7 @@ Loop: [loop L3 closes] Bowling Green, minus seven
 [src: 1] [src: 5]
 
 ### I1-S4 — narration
-> So you'd figure upstate New York, way up north, got buried in snow. Albany got rain and an eighty-three mile an hour gust, the strongest ever recorded there. Buffalo sat in the forties with no snow at all, while Pittsburgh, to its south, got two feet.
+> So you'd figure Buffalo and Albany, way up north in New York, got buried in snow. Albany got rain and an eighty-three mile an hour gust, the strongest ever recorded there. Buffalo sat in the forties with no snow at all, while Pittsburgh, to its south, got more than two feet.
 
 Picture: back to the one-low map from H1-S2, now with pins; popfig "ALBANY, NY · 83 MPH GUST · RAIN, NO SNOW"; on "Buffalo" a pin with chip "BUFFALO: 40s °F · NO SNOW" and a 200-mile line down to Pittsburgh "27.4 IN" [VE] [RS]
 Sound: wind swell back up under "eighty-three"; bed drops out for a beat under "no snow at all", then returns.
