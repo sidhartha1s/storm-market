@@ -12,7 +12,7 @@ Research: `episodes/ep-galveston-1900/research/` (sources-cline.md, sources-cuba
 ## Runtime and structure
 - Target: about 20 to 24 minutes (to be confirmed by the owner; no word budget run yet: needs two probe TTS segments, and this round has no TTS).
 - Architecture: Detective (who told Galveston it was safe, and who said otherwise).
-- Dominant question: if the warnings existed, why did Galveston go to bed on Friday night thinking it was fine?
+- Dominant question: if the warnings existed, why did so few people leave a warned city?
 
 ## Hook sound (reasoned, DESIGN.md "Cold-open hook contract")
 No siren: this is not a tornado-siren story, and 1900 had none. The hook runs on wind and surf rising under Paul's line, a telegraph-key click on the 1891 newspaper reveal, and a low swell into the ruins film. No archive audio (none exists for 1900).
@@ -41,49 +41,53 @@ Budget per `references/mg-quickref.md` "Paul on screen": 6 clips x 15 credits = 
 ## H · Hook (0:00)
 ### H1-S1 — narration
 Visual: Paul full frame, on camera, the hook line only. Popfig inside the first second: "GALVESTON, TEXAS · SEPTEMBER 1900". Sound: wind and surf rising under the line. [HOOK] [Q] (the viewer answers: the weatherman)
-> A hurricane's coming for your town, and you get one person to tell you how bad it'll be, so who do you trust?
+> A hurricane's coming for your town. Who do you trust?
 
 ### H1-S2 — narration
 Visual: Galveston Daily News, July 16, 1891, page 5, slow push to the line; chip "ABSURD DELUSION"; telegraph-key click on the reveal. Source line: Galveston Daily News, 16 July 1891. [RS] [VE] (contradiction one)
-> You'd trust the weatherman, and Galveston's weatherman had told the city in print that a storm seriously damaging Galveston was an absurd delusion.
+> You'd trust your weatherman. Galveston's weatherman wrote that a storm seriously damaging the city was an absurd delusion.
 
 ### H1-S3 — narration
-Visual: cut on the swell to the Library of Congress 1900 film of the ruins on Broadway, Galveston; chip "AT LEAST 6,000 LIVES". Source line: Isaac Cline, Monthly Weather Review, September 1900. [RS] [VE]
-> He wrote that in eighteen ninety-one, and nine years later, at least six thousand people there lost their lives in a few hours.
+Visual: cut on the swell to the Library of Congress 1900 film of the ruins on Broadway, Galveston; chip "AT LEAST 6,000 LIVES · CLINE'S OWN COUNT". Source line: Isaac Cline, Monthly Weather Review, September 1900. [RS] [VE]
+> He wrote that in eighteen ninety-one. Nine years later, at least six thousand people there lost their lives in a few hours.
 
 ### H1-S4 — narration
-Visual: NOAA 1900 weather map, Cuba to the Gulf, Havana pinned; popfig "BELEN OBSERVATORY, HAVANA"; chip "KEPT OFF THE TELEGRAPH". Source line: NOAA AOML, 2015. [RS] [VE] (contradiction two)
-> And in Havana, forecasters had said this storm was heading into the Gulf, but his own Weather Bureau kept them off the telegraph.
+Visual: Library of Congress damage photograph, slow push; title words on screen "HE SAID IT WAS SAFE. IT WAS NOT."; then the Monthly Weather Review page listing the warnings from Washington, chip "WARNINGS · SEPT 4 TO 8". Source line: Isaac Cline, Monthly Weather Review, September 1900. [RS] [VE] (title promise; contradiction two)
+> He said it was safe. It was not. And Washington had warned the city five days running, from the fourth to the eighth of September.
 
 ### H1-S5 — narration
-Visual: Library of Congress damage photograph, slow push; then the Monthly Weather Review page listing the warnings from Washington. Sound: low swell under the kicker. [loop E1 open] [Q]
-> He said it was safe. It was not. Washington sent Galveston warnings all that week. So I wanted to know why a warned city still went to bed on Friday night feeling safe [verify: Galveston residents not alarmed on the Friday night before landfall].
+Visual: Galveston street photograph of 1900, slow push; chip "FEW HAD LEFT". Source line: National Park Service. Sound: low swell under the line. [loop E1 open] [Q]
+> So I wanted to know why so few people left a warned city.
 
 ## HT · Hook tail
 ### T1-S1 — narration
-Visual: self-made island elevation graphic of Galveston, sea level line rising to the island's top; chips "ABOUT 38,000 PEOPLE" and "HIGHEST POINT ABOUT 8.7 FT". Source line: Texas State Historical Association; National Park Service. [VE] [Q] q1 open (who was the man)
-> Galveston was an island city of about thirty-eight thousand people, and its highest ground stood less than nine feet above the sea. The man who wrote those words had the job of warning it.
+Visual: self-made island elevation graphic of Galveston, sea level line rising to the island's top; chips "ABOUT 38,000 PEOPLE" and "HIGHEST POINT ABOUT 8.7 FT"; then cut to the NOAA 1900 weather map, Havana pinned, popfig "BELEN OBSERVATORY, HAVANA", chip "ONLY BUREAU FORECASTS ON THE TELEGRAPH". Source line: Texas State Historical Association; National Park Service; NOAA AOML, 2015. [VE] [Q] q1 open (did Havana's forecast ever reach Galveston?)
+> Galveston was an island city of about thirty-eight thousand people, and its highest ground stood under nine feet. Havana forecasters said the storm was heading into the Gulf, but the Weather Bureau decreed only its forecasts would go by telegraph.
 
 ## I · Intro
 ### I1-S1 — narration
-Visual: Monthly Weather Review, September 1900, the report's byline; lower-third "ISAAC CLINE · LOCAL FORECAST OFFICIAL, GALVESTON"; then "JOSEPH CLINE · OBSERVER". [PAY] q1 closes; [Q] q2 open (did anyone warn the city)
-> If you lived in Galveston in nineteen hundred, your weatherman was Isaac Cline. He was the senior Weather Bureau man on the island, there since about eighteen eighty-nine. His brother Joseph worked in the same office as an observer. The first thing I checked was whether anybody warned the city at all.
+Visual: Monthly Weather Review, September 1900, the report's byline; lower-third "ISAAC CLINE · LOCAL FORECAST OFFICIAL, GALVESTON"; then NOAA 1900 weather maps, September 2 to 4, the storm stepping across Cuba. Source line: Isaac Cline, Monthly Weather Review; NOAA AOML, 2015. [VE]; q1 still open
+> If you lived in Galveston in nineteen hundred, your weatherman was Isaac Cline, the senior Weather Bureau man on the island. The storm he was watching crossed Cuba on the fourth of September.
 
 ### I1-S2 — narration
-Visual: Monthly Weather Review page, the warning dates highlighted one by one; chips "SEPT 4, 5, 6, 7, 8" then "STORM WARNING: SEPT 7" then "'MODERATE STORM'". Source line: Isaac Cline, Monthly Weather Review; Texas State Historical Association; Ohio State University, Origins. [PAY] q2 closes; [Q] q3 open (where was the storm all week)
-> Somebody did. Washington sent Galveston warning messages on the fourth, fifth, sixth, seventh and eighth of September. On the seventh, Galveston went under a storm warning. Even Friday's midday warning still called it a moderate storm. That sent me after the storm itself.
+Visual: two arrows drawn from western Cuba: one northwest into the Gulf labelled "HAVANA", one curving northeast labelled "WASHINGTON". Popfig "BELEN OBSERVATORY, HAVANA"; lower-third "WILLIS MOORE · CHIEF, US WEATHER BUREAU". Source line: NOAA AOML, 2015. [RS] [VE]; [Q] q2 open (which forecast was right?)
+> In Havana, the Jesuit forecasters at Belen Observatory said it was moving northwest, into the Gulf of Mexico. The Weather Bureau, run from Washington by Willis Moore, expected it to curve away to the northeast.
 
 ### I1-S3 — narration
-Visual: NOAA 1900 weather maps, September 2 to 8, stepped across Cuba; popfig "BELEN OBSERVATORY, HAVANA"; two arrows drawn from western Cuba: one northwest into the Gulf labelled "HAVANA", one curving northeast labelled "WASHINGTON". Lower-third "WILLIS MOORE · CHIEF, US WEATHER BUREAU". Source line: NOAA AOML, 2015. [PAY] q3 closes; [RS] [VE]; [Q] q4 open (which forecast was right)
-> It crossed Cuba on the fourth of September. In Havana, the Jesuit forecasters at Belen Observatory said it was moving northwest, into the Gulf of Mexico. The United States Weather Bureau, run from Washington by Willis Moore, expected it to curve away to the northeast.
+Visual: hold the two arrows; a telegraph line graphic carries only the Washington arrow's label; chip with NOAA's words "only its forecasts would be carried over the telegraph". Source line: NOAA AOML, 2015. [VE] [PAY] q1 closes; q2 still open
+> NOAA's own history says that after the Spanish-American War, the Bureau decreed that only its forecasts would go over the telegraph. Two forecasts pointed two ways, and by NOAA's account only the Weather Bureau's went out over the wires.
 
 ### I1-S4 — narration
-Visual: hold the two arrows; a telegraph line graphic carries only the Washington arrow's label; chip with NOAA's words "only its forecasts would be carried over the telegraph". Source line: NOAA AOML, 2015. [VE]; q4 still open
-> After the Spanish-American War, the Bureau had decreed that only its forecasts would be carried over the telegraph. So two forecasts pointed two different ways, and only one of them was allowed on the wire.
+Visual: NOAA map, the storm's track pushing northwest into the Gulf, the Washington arrow fading out; chip "STEAMER LOUISIANA · SEPT 6". Source line: Isaac Cline, Monthly Weather Review, September 1900. [RS] [VE] [PAY] q2 closes; [Q] q3 open (what was Galveston told as it came?)
+> The storm went Havana's way. On the sixth, the steamer Louisiana passed through its center, in the middle eastern part of the Gulf.
 
 ### I1-S5 — narration
-Visual: NOAA map, the storm's track pushing northwest into the Gulf; chip "STEAMER LOUISIANA · SEPT 6"; then a slow return to the Galveston Daily News page of 1891, "ABSURD DELUSION" chip back on. Telegraph-key click on the last line. [PAY] q4 closes; [loop L-intro open] (carried into A1)
-> The storm went Havana's way. On the sixth, the steamer Louisiana passed through its center, in the middle of the Gulf. And waiting in Galveston was the same man who'd called a storm like this an absurd delusion. Which brings me back to that newspaper, and why a weatherman would ever write those words.
+Visual: the island elevation graphic again, the track line closing on the island; chips "STORM WARNING: SEPT 7" then "'MODERATE STORM'". Source line: Texas State Historical Association; Ohio State University, Origins. [VE] [PAY] q3 closes
+> It kept coming northwest, toward an island under nine feet. On Friday the seventh, Galveston went under a storm warning, but even Friday's midday warning still called it a moderate storm.
+
+### I1-S6 — narration
+Visual: slow return to the Galveston Daily News page of 1891, "ABSURD DELUSION" chip back on. Telegraph-key click on the last line. [loop L-intro open] (carried into A1)
+> And waiting in Galveston was the same man who'd called a storm like this an absurd delusion. Why would a weatherman ever put those words in print?
 
 ## Act briefs (text only, written before prose; `references/script-scaling.md` "Act brief")
 - **A1 · "An absurd delusion" (1891).** Purpose: show the belief was given to the city by its expert, in print. Question: why would a weatherman say that? Reveal: his reasoning (the shallow shelf and the low land to the north would spread the water). Visual: the 16 July 1891 Galveston Daily News page, the island elevation map (highest point about 8.7 ft). Exit hook: nine years later, the same man was in charge of warning the city.
