@@ -25,7 +25,7 @@
 ## HOOK
 
 ### H1-S1 — paul (on camera)
-> You know this storm for two feet of snow. That same weekend, it hit the coast with a hundred eight mile an hour gust.
+> You know this storm for two feet of snow. While that snow fell, it also hit the coast with a hundred eight mile an hour gust.
 
 Picture: frame one is Paul on camera, full frame. Popfig inside the first second: "NOV 1950". Chips as each is said: "2 FEET OF SNOW" then "108 MPH GUST" [VE] [HOOK]
 Sound: line starts at 0:00; low cold wind bed only, no archive audio; a gust swell lands on "gust".
