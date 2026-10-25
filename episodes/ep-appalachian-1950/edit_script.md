@@ -75,7 +75,7 @@ Loop: [loop L3 closes] the cold reached Florida
 [src: 1] [src: 5]
 
 ### I1-S4 — narration
-> With cold like that in Florida, you'd figure Albany, New York got buried. It got rain, no snow, and an eighty-three mile an hour gust, its strongest ever. At LaGuardia, water broke through the dikes and ran onto the runways.
+> With cold like that in Florida, you'd figure Albany, New York, got buried. It got rain, no snow, and an eighty-three mile an hour gust, the strongest ever recorded there. At LaGuardia, water broke through the dikes and ran onto the runways.
 
 Picture: self-made split map, snow shading inland on the left, wind arrows on the coast on the right, one low between them; popfig "ALBANY, NY · 83 MPH GUST · RAIN, NO SNOW"; for LaGuardia, flood footage SOURCE TBD (no 1950 newsreel located yet), fallback a self-made LaGuardia locator map, AI-image gap only if neither exists [VE] [RS]
 Sound: wind swell back up under "eighty-three", water texture under "LaGuardia" (library, not archive).
