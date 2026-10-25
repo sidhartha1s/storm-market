@@ -5,6 +5,12 @@ Open work on the tooling, gates and pipeline. Episode slots live in `ops/tracker
 
 Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or the owner) · `done` (merged, main green) · `parked`.
 
+## Render runs on what it asked for (owner 26 Oct 26, ZBook QSV fallback)
+| # | task | PR | status |
+|---|---|---|---|
+| 1 | `stream_gate.py check`: fail a render whose encoder, capture GPU or streaming differs from the ask; watch stops it at the gate line | branch render-fallback-gate | review |
+| 2 | every render asks `--experimental-fast-capture=true` and falls back to screenshot capture (mix-blend-mode, backdrop-filter): drop the flag or make comps eligible; the owner picks | | todo |
+
 ## Bug fixes from the Opus re-review of PRs #85-#91 (24 Sep 26)
 | # | task | PR | status |
 |---|---|---|---|
