@@ -15,6 +15,7 @@ the older run's is taken from there instead of rendered. Output: renders/<out-ba
 --plan prints the seams and exits.
 """
 import hashlib
+import html as html_lib
 import json
 import math
 import os
