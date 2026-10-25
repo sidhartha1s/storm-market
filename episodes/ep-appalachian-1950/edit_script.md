@@ -7,7 +7,7 @@
 - angle (owner lock, 26 Oct 26, verdict "a2"): It wasn't one storm hazard but two at once: hurricane-force gusts on the East Coast on one side of the storm, record snow and cold inland on the other.
 - dominant question: how did one storm bury Pittsburgh in snow and hit the coast with hurricane-force wind on the same Saturday?
 - architecture: Explanation with a twist (two sides first, then the map that joins them)
-- status: hook and intro fix round 4 ("same weekend" fact fix, map-shows-how claim dropped, two-sides said once plus toll by about 20 s, new L1 wording, Atlanta cut, LaGuardia coast beat moved to I1-S1), act prose not written. Every [verify: ...] goes to the fact-check fan-out.
+- status: hook and intro fix round 5 (toll scoped to the whole storm, L1 claims only the track, nothing circled on the 25 Nov chart, Buffalo and Albany named, no claim about other tellings, inland/coast wording, Pensacola cut, decimal on chip only), act prose not written. Every [verify: ...] goes to the fact-check fan-out.
 
 ## Sources
 1. [src: 1] NWS Jackson KY https://www.weather.gov/jkl/appalachianstorm1950
