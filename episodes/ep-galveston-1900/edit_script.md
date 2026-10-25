@@ -45,7 +45,7 @@ Visual: Paul full frame, on camera, the hook line only. Popfig inside the first 
 
 ### H1-S2 — narration
 Visual: Galveston Daily News, July 16, 1891, page 5, slow push to the line; chip "ABSURD DELUSION"; telegraph-key click on the reveal. Source line: Isaac Cline, Galveston Daily News, 16 July 1891. [RS] [VE] (contradiction one)
-> Galveston's weatherman called the fear of a big storm wrecking his city an absurd delusion.
+> Galveston's weatherman called the fear of a storm seriously damaging his city an absurd delusion.
 
 ### H1-S3 — narration
 Visual: cut on the swell to the Library of Congress 1900 film of the ruins on Broadway, Galveston; chip "AT LEAST 6,000 LIVES · CLINE'S OWN COUNT". Source line: Isaac Cline, Monthly Weather Review, September 1900. [RS] [VE] (contradiction two)
