@@ -84,10 +84,10 @@ Loop: [Q] why the warm, snowless side sat north of the snow (rides on L1, paid i
 [src: 7] [src: 1]
 
 ### I1-S5 — narration
-> At LaGuardia, water broke through the dikes and ran onto the runways. Most tellings of this storm leave out the coast, and Newark's gust wasn't even the strongest one.
+> Most tellings of this storm leave out the coast, and Newark's gust wasn't even the strongest one.
 
-Picture: for LaGuardia, flood footage SOURCE TBD (no 1950 newsreel located yet), fallback a self-made LaGuardia locator map, AI-image gap only if neither exists; then the map slides right to the coast; gust ladder bars appear empty, Newark's 108 lit, the higher bars still blank [VE]
-Sound: water texture under "LaGuardia" (library, not archive); bed holds under the last line, then the chapter blackout.
+Picture: the map slides right to the coast; gust ladder bars appear empty, Newark's 108 lit, the higher bars still blank [VE]
+Sound: bed holds under the line, then the chapter blackout.
 Loop: [loop L4 open] which gust beat Newark's (carried into Act 1, paid in Act 1)
 [src: 1]
 
