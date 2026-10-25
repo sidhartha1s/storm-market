@@ -13,7 +13,9 @@ The fixture is Moore's shipped composition (ep-moore-1999) with every source shr
 16 kHz wav and 64 kbps audio (one-shot transform declared in its PR, never committed), the CTA swapped to
 config's file and narration lowered 0.8 dB so config's CTA sits inside audio_levels' insert band. It
 passes every gate on main. A rule change that fails it means the fixture is brought to the new rule in
-the same PR, never that e2e skips the gate.
+the same PR, never that e2e skips the gate. A plain git checkout writes x.wav before x.words.json
+(index order), which sweep's "words.json older than its wav" check needs; a copy that drops
+timestamps or a parallel checkout can break that.
 
 Usage: python3 scripts/e2e.py [episodes/<slug> ...]
 Exit 0 = all green. Exit 1 = a self-check failed, a tool crashed, or a gate failed or did not run.
