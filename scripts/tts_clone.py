@@ -36,7 +36,7 @@ HETERONYM_RESPELL = {
 # "August seventeenth, 1969." voiced as "nineteenth" and stopped. (pattern, fix the script writer applies)
 UNSAFE = [
     (r"\d", "spell out every number, year and date (1969 -> nineteen sixty-nine, 17th -> seventeenth)"),
-    (r"\b(?:Dr|Mr|Mrs|Ms|Mx|St|Mt|Ft|Jr|Sr|Gen|Gov|Sen|Rep|Lt|Sgt|Capt|Col|Cpl|Prof|Rev|No|vs|etc|approx|Ave|Rd|Blvd|Co|Inc|Corp|Dept|Univ|Jan|Feb|Mar|Apr|Aug|Sept?|Oct|Nov|Dec)\.",
+    (r"\b(?:Dr|Mr|Mrs|Ms|Mx|St|Mt|Ft|Jr|Sr|Gen|Gov|Sen|Rep|Lt|Sgt|Capt|Col|Cpl|Prof|Rev|vs|etc|approx|Ave|Rd|Blvd|Co|Inc|Corp|Dept|Univ|Jan|Feb|Mar|Apr|Aug|Sept?|Oct|Nov|Dec)\.",
      "write the abbreviation out (Dr. -> Doctor, Mrs. -> Missus, St. -> Saint or Street): its period splits the sentence"),
     (r"(?<![A-Za-z])[A-Za-z]\.(?=\s*\S)", "write initials and dotted letters as words (J. H. -> Jay Aitch, U.S. -> U S, a.m. -> in the morning)"),
     (r"[%$&@#/]", "write the symbol as a word (percent, dollars, and, at, number, or)"),
