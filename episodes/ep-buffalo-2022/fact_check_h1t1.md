@@ -1,0 +1,39 @@
+# Fact check: H1-S1..S4, T1-S1 (Buffalo 2022)
+
+Checked 26 Oct 2026. Research files: research/deaths.md (D), research/nws.md (N), research/response.md (R). Re-fetched this run: WIVB final-count page, both DVIDS pages, IEM AFD 200951, IEM ASOS for BUF 23 Dec.
+
+| id | claim | verdict | evidence | replacement (if CORRECTED) |
+|---|---|---|---|---|
+| H1-S1-a | Popfig "BUFFALO, NY · DEC 23, 2022" | CONFIRMED | N 2.2/2.3: onset 7:24-8:39 a.m. Fri 23 Dec; R line 12: warning effective Fri 23 Dec | |
+| H1-S1-b | "A blizzard warning hits your town the week of Christmas" | CONFIRMED | N 1.2: Blizzard Warning issued 3:54 a.m. Thu 22 Dec, effective 7 a.m. Fri 23 Dec | |
+| H1-S2-a | "two days before Christmas in twenty twenty-two" | CONFIRMED | 23 Dec is two days before 25 Dec; N 2.3 | |
+| H1-S2-b | Forty-six people lost their lives in Erie County | CONFIRMED (secondary) | WIVB (re-fetched): "bringing the total to 46 in Erie County and 47 total"; D line 15/21; WHEC agrees (D line 21). Breakdown sums: 18+12+7+4+4+1 = 46 | |
+| H1-S2-c | 18 found outside, largest group | CONFIRMED (secondary) | WIVB (re-fetched): "18 people were found outside in the snow, 12 died from no power or heat, seven ... delayed EMS, four people were found in vehicles, four ... snow-blowing or shoveling ... 3-year-old girl drowned". N 7.1/7.2: largest single category (39%), not a majority. Narration says "largest group", so OK. 17 outside held constant from 27 Dec to 30 Dec counts (D lines 11-13), several outlets (NPR/KAXE, AP, WBFO, WIVB) agree | |
+| H1-S2-d | 4 found in their cars | CONFIRMED (secondary) | WIVB: "four people were found in vehicles"; D line 15 | |
+| H1-S2-e | Source line "Erie County Medical Examiner, final count, via WIVB" | CORRECTED | WIVB attributes the breakdown to County Executive Poloncarz; the ME only confirmed the last three deaths. Same page: "three more blizzard-related cases are yet to be finalized", so "final" overstates (D line 22 also notes pending cases) | Source line: "Erie County Executive Mark Poloncarz, via WIVB". Narration may keep "the record" but avoid "final": e.g. "Forty-six people lost their lives in Erie County, by the county's own count." |
+| H1-S2-f | Chip "18 FOUND OUTSIDE" / "+4 IN THEIR CARS" | CONFIRMED | as H1-S2-c/d | |
+| H1-S2-g | Picture: "snow-buried street of stalled cars" = DVIDS 7571852 | CORRECTED (picture) | DVIDS 7571852 exists, public domain, Date Taken 12.26.2022, Buffalo. Caption: "Airmen assigned to the 174th Attack Wing us a runway clearing snowblower to remove snow from I-90 in Buffalo". It is a runway snowblower clearing I-90, NOT stalled cars on a street. Page title "Image 1 of 6"; licence line says "6 of 6" (page quirk). Caption has typos ("us", "Yotk"); do not copy. Photo credit "Courtesy photo" | Picture line: "cut on 'Buffalo' to a snowblower clearing I-90 in Buffalo: NY National Guard photo, DVIDS 7571852 (174th Attack Wing runway snowblower, 26 Dec 2022), public domain." Drop "stalled cars" unless a different image is chosen. |
+| H1-S2-h | "In Buffalo, New York ... the record says otherwise" (vs "safest place is home") | CONFIRMED as framing | Supported by 18 outside vs 12 no-heat/no-power at home, but N 7.2: indoor categories combined (12+7=19 plus others) exceed 18. Narration does not say "most", so OK. Do not extend to "most died outside" | |
+| H1-S3-a | NWS Buffalo wrote "a once in a generation type of event" | CONFIRMED text, wording hedged | IEM AFD FXUS61 KBUF 200951, "451 AM EST Tue Dec 20 2022" (re-fetched): "One could certainly describe this storm system as a once in a generation type of event." N 1.9 | Hedged original. Safer narration: "Three days before it hit, the weather service in Buffalo wrote that one could call it a once in a generation type of event." (cut: sentences under 24 words; this is 24, so use: "Three days before it hit, the Buffalo weather service wrote that you could call it a once in a generation event.") |
+| H1-S3-b | "Three days before it hit" | CONFIRMED | AFD 4:51 a.m. Tue 20 Dec to onset 7:24-8:06 a.m. Fri 23 Dec = 3 days (about 2 d 20 h to 8:39 a.m. whiteout; 3 days to 7 a.m. warning start). N 1.10 "3 days ahead". Acceptable rounding | |
+| H1-S3-c | Picture source line "4:51 a.m. Tue 20 Dec 2022 (IEM archive, FXUS61 KBUF 200951)" | CONFIRMED | same AFD header | |
+| H1-S3-d | "this storm did not sneak up on anybody" | CONFIRMED | N 1.8 (18 Dec AFD), 1.1 (watch 20 Dec 2:22 p.m.), 1.2 (warning 22 Dec 3:54 a.m., 27 h ahead) | |
+| H1-S3-e | Chip "3 DAYS' WARNING" | CONFIRMED | N 1.10. Note the formal Winter Storm Watch came 2 d 17 h before; chip refers to the AFD wording only, fine | |
+| H1-S4-a | DVIDS 7576030 welfare checks, Buffalo, 30 Dec 2022, public domain | CONFIRMED | Page fetched: "A New York Army National Guard Soldier knocks at a residence during welfare checks with residents in the City of Buffalo, New York, December 30, 2022". Date Taken 12.30.2022, PUBLIC DOMAIN, 1212x1804 (portrait, so the "slow push in" needs a crop). "Courtesy photo". Title "Image 1 of 8"; licence line "8 of 8" | |
+| H1-S4-b | "snowed-in front door" | CORRECTED (picture) | Caption says "knocks at a residence"; snow at the door not stated in the caption (image not visually inspected by me). Re-check by eye before calling it "snowed-in" | Picture line: "a Guard soldier knocking at a front door during welfare checks". |
+| H1-S4-c | Narration: "Why were so many people out there in it, and why couldn't anybody get to them in time?" | CONFIRMED as framing (no checkable fact) | Supported by D line 33 (Taylor: crews could not reach her), D line 41 (city impassable), D line 42 (two-thirds of snow equipment stuck) | |
+| T1-S1-a | "The forecast was right, and it was early." | CONFIRMED | N 1.8, 1.9; observed 51.9 in (N 4.1) exceeded forecast 2 to 3 feet (N 4.4); gusts 69 mph (N 3.1) vs 65 to 70 forecast | |
+| T1-S1-b | ASOS rows "7:24, 8:06, 8:39" | CONFIRMED (primary) | IEM ASOS BUF re-pulled: 07:24 wind 16 kt gust 21, -RA; 08:06 gust 52 kt, SN, vis 0.50; 08:39 vis 0.25, +SN BLSN, gust 58. N 2.2/2.3 | |
+| T1-S1-c | "the airport's own weather station logged every one of them" | CONFIRMED, soft | ASOS logs specials and hourlies (also 07:43, 07:54, 08:47 etc.); "every one" is rhetoric for "all the minutes". Harmless; optional trim | Optional: "...and the airport's own weather station logged them." |
+| T1-S1-d | "Friday morning", chip "FRIDAY · DEC 23" | CONFIRMED | 23 Dec 2022 was a Friday (N 2.2 "Fri 23 Dec") | |
+| T1-S1-e | "What went wrong ... came down to minutes" | CONFIRMED as framing | I1-S1 gives the 51-minute gap (8:39 whiteout to 9:30 ban); R line 14 (WKBW, secondary). Out of this slice's scope to re-verify the ban | |
+
+## TTS notes for the slice
+- No digits, no "killed/died/dead" in the narration lines. "lost their lives" is fine.
+- H1-S2 narration sentence 2 ("Forty-six people lost their lives in Erie County, and the largest group of them, eighteen, were found outside, in the snow.") is 24 words: at the limit. Suggested split: "Forty-six people lost their lives in Erie County. The largest group, eighteen, were found outside, in the snow."
+
+## Top flags for orchestrator
+1. Picture line H1-S2 says "stalled cars" but DVIDS 7571852 is a runway snowblower on I-90. Fix the picture line or pick another image.
+2. Source line "Medical Examiner, final count" is off: figures are Poloncarz's, and WIVB says three cases still pending. Use "Erie County Executive Poloncarz, via WIVB".
+3. "once in a generation" is hedged in the original ("One could certainly describe..."). Keep the card highlight verbatim; soften narration slightly.
+4. 46 / 18 / 4 breakdown is supported by one fetched page (WIVB) quoting Poloncarz, plus WHEC for the 46/47 total; earlier counts (NPR/KAXE, AP, WBFO) agree on 17 outside at 31, 37, 39. No primary erie.gov page was readable (D line 3). Acceptable as secondary.
