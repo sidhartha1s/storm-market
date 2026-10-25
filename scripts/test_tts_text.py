@@ -18,6 +18,8 @@ SAFE = [
     "late on the night of August seventeenth, nineteen sixty-nine. A hundred forty-three people lost their lives.",
     "Next door, Missus Wood used a wheelchair, and the Woods figured they'd take a chance.",
     "It's a small place on the Tye River, along Route fifty-six. Was it? No. Not one.",
+    "The roof held, but the walls didn't. Thirty-five people were inside.",  # Moore 1999 h1-s2: the "t." of a contraction is not an initial
+    "It won’t. Then the siren stopped.",
 ]
 
 fails = 0
