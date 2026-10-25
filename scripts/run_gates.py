@@ -45,7 +45,7 @@ GATES = [
 ]
 
 for name, cmd, cwd in GATES:
-    print(f"=== {name} ===")
+    print(f"\n=== {name} ===", flush=True)  # header before the gate's own output (e2e.gate_results reads it)
     r = subprocess.run(cmd, cwd=cwd)
     if r.returncode != 0:
         print(f"\nRUN_GATES FAIL - {name} exited {r.returncode}. Fix it, do not render.")
