@@ -37,6 +37,16 @@ from flash_head.inference import get_audio_embedding, get_base_data, get_infer_p
 
 PORTRAIT = Path(__file__).resolve().parents[1] / "assets" / "paul" / "circle-portrait-560.jpg"
 SEED = 42
+# The RTX A2000 has 8 GB. A pass holds about 5.6 GB; with less free, Windows spills it into shared system memory and it
+# runs about 10x slower (24 s per second of face instead of 2.0 to 2.3) without failing. The rate limit turns that into a stop;
+# free memory read before start-up is not a usable test (Windows reported 4.6 GB free while passes ran at full speed).
+MAX_S_PER_FACE_S = 4.5
+
+
+def card_holders():
+    """The processes on the card, as nvidia-smi lists them: what to close to free it."""
+    r = subprocess.run(["nvidia-smi", "--query-compute-apps=pid,process_name", "--format=csv,noheader"], capture_output=True, text=True)
+    return r.stdout.strip() or "(nvidia-smi listed none)"
 
 
 def main():
@@ -64,6 +74,10 @@ def main():
             embedding = get_audio_embedding(pipeline, np.array(heard), window_s * fps - p["frame_num"], window_s * fps)
             for frame in run_pipeline(pipeline, embedding)[p["motion_frames_num"]:].cpu().numpy().astype(np.uint8):
                 writer.append_data(frame)
+            rate = (time.time() - t_ready) / ((i + 1) * keep / fps)
+            if i >= 10 and rate > MAX_S_PER_FACE_S:
+                sys.exit(f"FAIL {rate:.1f} s per second of face after {i + 1} chunks (normal 2.0 to 2.3, limit {MAX_S_PER_FACE_S}): "
+                         f"the card is short of memory. On the card now: " + card_holders())
             if i % 50 == 0:
                 print(f"chunk {i}/{len(chunks) - 1} | {time.time() - t_ready:.0f} s | card peak {torch.cuda.max_memory_allocated() / 2**20:.0f} MiB", flush=True)
     # no -shortest: the picture keeps its whole last chunk, so it is never shorter than the wav it was made from
