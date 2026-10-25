@@ -51,7 +51,7 @@ Loop: [loop L1 open] how one storm pulled off both (paid in Act 3)
 ## INTRO
 
 ### I1-S1 — narration
-> That was Thanksgiving weekend, and at least a hundred sixty people lost their lives. Pittsburgh's twenty-seven point four inches was its biggest snowstorm on record, and it still wasn't the deepest snow.
+> I read the weather service reports, and a hundred sixty people lost their lives that Thanksgiving weekend. Pittsburgh's twenty-seven point four inches was its biggest snowstorm on record, and it still wasn't the deepest snow.
 
 Picture: calendar chip "THANKSGIVING WEEKEND · NOV 24-26, 1950"; toll on the on-screen source line only: "at least 160 lives lost · NCEI". On "twenty-seven point four": NWS Pittsburgh snow records sheet, chip "27.4 IN · PITTSBURGH'S #1 STORM" [VE]
 Sound: bed only, no hit on the toll; a soft riser ends on "deepest snow".
