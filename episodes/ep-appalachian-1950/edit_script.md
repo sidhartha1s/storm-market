@@ -59,7 +59,7 @@ Loop: [loop L2 open] where the deepest snow fell
 [src: 1] [src: 4]
 
 ### I1-S2 — narration
-> The deepest was sixty-two inches at Coburn Creek, West Virginia. That's more than five feet of snow. And the cold behind the storm set a November record that nobody's broken since.
+> The deepest snow fell at Coburn Creek, West Virginia: sixty-two inches. That's more than five feet. And behind the storm, one town set a November cold record that nobody's broken since.
 
 Picture: NWS Jackson snow map (1950SnowStorm.jpg), push into West Virginia; popfig "COBURN CREEK, WV · 62 IN"; on the last clause the map tilts south [VE] [RS]
 Sound: bed; a low swell under "sixty-two inches".
