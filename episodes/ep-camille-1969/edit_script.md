@@ -159,7 +159,7 @@ its rivers drawn in thin blue, labelled "Nelson County, Virginia". On "how" the 
 ### I1-S1 · narration
 **Picture:** ATS-III satellite still of Camille in the Gulf, 17 Aug 1969 (UW-Madison SSEC, "No copyright (U.S.)", footage row S04).
 Our map marks Waveland, Mississippi; popfig "Aug 17, 1969 · 11 PM". On the second sentence a bar builds: "Gulf Coast · 143 · NWS".
-> You probably know Camille from the Mississippi coast, where it came ashore late on the night of August seventeenth, 1969. A hundred forty-three people lost their lives on the Gulf Coast.
+> You probably know Camille from the Mississippi coast, where it came ashore late on the night of August seventeenth, nineteen sixty-nine. A hundred forty-three people lost their lives on the Gulf Coast.
 
 **Rows:** [N1: Waveland, 11 PM CDT] · [N14: 143 on the Gulf Coast]
 
@@ -319,7 +319,7 @@ survey team, reported in USGS Professional Paper 804".
 **Picture:** the Wood square next door lights; a line of small figures crosses from it to the Raines square. Chip "11 IN ONE STATION WAGON".
 Beige cite card: "Next door neighbor asked if four of their kids could come with us." · Warren Raines · interviewed 2009 · Radio IQ (WVTF),
 published 2019.
-> Next door, Mrs. Wood used a wheelchair, and the Woods figured they'd take a chance on riding it out. But Mr. Wood would feel better if his kids went with the Raines family. So eleven people piled into the family station wagon, a 1968 Ford, and tried to get out.
+> Next door, Missus Wood used a wheelchair, and the Woods figured they'd take a chance on riding it out. But Mister Wood would feel better if his kids went with the Raines family. So eleven people piled into the family station wagon, a nineteen sixty-eight Ford, and tried to get out.
 
 **Rows:** [factcheck-A1 marker 4: Radio IQ RAW, Warren "Next door neighbor asked if four of their kids could come with us. His wife was wheelchair-bound, and they figured they'd take a chance at riding it out, but he'd feel better if his kids came with us, so eleven of us got in the family station wagon"] · [factcheck-A1 S9: WDBJ7 "1968 Ford Ranch station wagon"]
 
@@ -442,7 +442,7 @@ card's read time. Chapter blackout follows.
 
 ### A2-S3 · narration
 **Picture:** beige cite card: "the ground started oozing slowly downhill for a fraction of a second, and then the entire section of the hillside suddenly slid quickly down the slope · S. O. Mawyer, Woods Mill, as reported by USGS Professional Paper 804 (1973)". Behind it, our cross-section of a wooded slope: the soil creeps a hair, holds, then a strip lets go. **[RS] [VE]** the strip breaks loose on "fast".
-> S. O. Mawyer of Woods Mill was nearly swept away by a small slide near his home. He saved himself by grabbing a bush just past its edge. He said the ground started oozing downhill, slowly, for a fraction of a second. Then that whole section of hillside slid down the slope, fast, with a loud noise.
+> Ess Oh Mawyer of Woods Mill was nearly swept away by a small slide near his home. He saved himself by grabbing a bush just past its edge. He said the ground started oozing downhill, slowly, for a fraction of a second. Then that whole section of hillside slid down the slope, fast, with a loud noise.
 
 **Rows:** [V31; factcheck-A2 S2: PP 804 p. 15, "almost swept away in a small avalanche near his home and only saved himself by grabbing a bush that was growing just beyond the slide border"] (the paper's report of what he said, not his recorded words)
 
@@ -462,7 +462,7 @@ card's read time. Chapter blackout follows.
 
 ### A2-S6 · narration
 **Picture:** a slim timeline under our map, small marks dropping on it as slides go, closer together toward the end, then two more after a popfig "about 4 AM · rain down to a mist". Glance chip "ABOUT 3 MINUTES" on Floyd.
-> B. R. Floyd of Lovingston figured the slide near his home went on for about three minutes. People said the slides came more often toward the end of the storm. And some were still coming at about four in the morning, after the rain had eased to a mist.
+> Bee Are Floyd of Lovingston figured the slide near his home went on for about three minutes. People said the slides came more often toward the end of the storm. And some were still coming at about four in the morning, after the rain had eased to a mist.
 
 **Rows:** [V31; factcheck-A2 S5: PP 804 pp. 15 to 16, Floyd; "the avalanching was more frequent toward the end of the storm"; slides at about 0400 on Aug 20]
 *(Open: why one slope and not the next? Paid in S7.)*
@@ -497,7 +497,7 @@ card's read time. Chapter blackout follows.
 
 ### A2-S11 · narration
 **Picture:** beige cite card: "almost none of the dead showed evidence of drowning · USGS Professional Paper 804 (1973), on the findings of Dr. J. H. Gamble of Lovingston". Glance chip "MULTIPLE FRACTURES". Then LVA aerial of the Lovingston access road with debris and wrecked vehicles (footage V05), slow push.
-> Dr. J. H. Gamble of Lovingston was in charge of identifying and examining the people who were lost. What he found, again and again, was multiple fractures, from the rock and timber the creek was carrying.
+> Doctor Jay Aitch Gamble of Lovingston was in charge of identifying and examining the people who were lost. What he found, again and again, was multiple fractures, from the rock and timber the creek was carrying.
 
 **Rows:** [V34; factcheck-A2 S9: PP 804 p. 16, Gamble "found that almost none of the dead showed evidence of drowning"; "multiple fractures ... from rocks and trees and so forth" (Simpson and Simpson 1970 via PP 804, paraphrased, not quoted aloud)]
 *([Q1 paid] in full: the slopes let go, the creeks surged with rock and timber, and the people caught in them were struck by it. Open: who were they? Paid in S18 to S18, the Huffmans, Harvey and Sissy.)*
@@ -692,7 +692,7 @@ No age on screen. Ages in narration come only from the 2019 News & Advance list 
 
 ### A4-S5 · narration
 **Picture:** the list card's closing lines highlight as they are said: "believed to be traveling on U.S. 29" and "believed to have been traveling together". Our map draws U.S. 29 through Nelson County as one thin line, running north and south out of the frame. [VE] [RS]
-> The adults, the list says, were believed to be traveling on U.S. Twenty-Nine when the floodwaters swept them away. The children, it says, were believed to be traveling together, because they had all eaten red beans shortly before the flood took them.
+> The adults, the list says, were believed to be traveling on You Ess Twenty-Nine when the floodwaters swept them away. The children, it says, were believed to be traveling together, because they had all eaten red beans shortly before the flood took them.
 **Rows:** [factcheck-A4 list section and factcheck-Z1 line 25: N&A RAW "the adults were believed to be traveling on U.S. 29 when they were swept away in the floodwaters. The children all were believed to have been traveling together since they had all eaten red beans shortly before they died."]
 *(Open from A4-S4 paid.)*
 
