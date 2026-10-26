@@ -78,7 +78,7 @@ https://www.weather.gov/nwr/special_needs | retrieved 2026-10-27»
 «FIG: illus-bed-shaker»
 
 **What this does not do:** neither path helps if nobody is awake to hear it. A phone face-down on a
-charger in another room and a radio in a cupboard are both decorative. Placement is the protection.
+charger in another room and a radio in a cabinet are both decorative. Placement is the protection.
 
 ---
 
@@ -150,7 +150,7 @@ coverage gaps in mountainous terrain. Check coverage for your address rather tha
 
 Three words, routinely understood backwards, and the whole trigger plan depends on them.
 
-A **watch** means conditions are favourable — be ready, and this is when you do the things that take
+A **watch** means conditions are favorable — be ready, and this is when you do the things that take
 time. Fuel the cars. Charge everything. Fill the containers. Bring in the furniture. Brace the garage
 door. **If you are in a manufactured home, a watch is when you leave**, not a warning.
 
@@ -385,7 +385,7 @@ a set of pre-committed thresholds with an action attached to each:
 >
 > When the house drops below our number — I call my driver, or 911 if nobody answers.
 
-Write between five and ten. Put it on the fridge and in the trashder. Read it once at the start of each
+Write between five and ten. Put it on the fridge and in the binder. Read it once at the start of each
 season.
 
 The mechanism is simple and it is why this works: it converts a judgment call made by a frightened

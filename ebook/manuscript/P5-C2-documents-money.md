@@ -120,7 +120,7 @@ every card fails, which is why Protection 98 exists in front of this one.
 
 Twenty minutes, phone in hand, narrating.
 
-Walk every room. Open every drawer, cupboard and closet, and say out loud what things are, roughly when
+Walk every room. Open every drawer, cabinet and closet, and say out loud what things are, roughly when
 you got them, and roughly what they cost. Do the garage, the basement, the shed, the loft. Open the
 wardrobe and pan slowly across the clothes. Film the contents of the freezer. Film the tools.
 
@@ -167,7 +167,7 @@ the inventory and the receipts, which is why the three protections are consecuti
 **Cost:** $0 · **Time:** 45 minutes · **Materials:** your declarations page
 · **Regions:** all five.
 
-Get the declarations page and find five things. Write them on the form in the trashder, because a
+Get the declarations page and find five things. Write them on the form in the binder, because a
 household that knows these five numbers behaves differently.
 
 **The dwelling limit**, and whether it is anywhere near what rebuilding actually costs now —

@@ -137,7 +137,7 @@ later. Identify the place, confirm it is accessible at night, and write the trig
 
 The decisions arrive in this order.
 
-**On a watch** — conditions are favourable, hours ahead. Charge everything. Bring in loose objects.
+**On a watch** — conditions are favorable, hours ahead. Charge everything. Bring in loose objects.
 Clear the safe room. Put the helmets and shoes in it. Fuel the car. If you are in a manufactured home,
 this is your trigger: go now, to the identified place. If you have plans that would leave you in a car
 or a public building this evening, change them.

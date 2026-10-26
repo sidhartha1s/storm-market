@@ -16,8 +16,8 @@ power for a week and without food for longer than anyone enjoys thinking about. 
 days, and the days are few.
 
 It is also the resource most likely to fail in ways people do not anticipate. The common assumption
-is that water fails by disappearing — taps run dry. In practice it fails four different ways, and
-three of them leave the taps working:
+is that water fails by disappearing — faucets run dry. In practice it fails four different ways, and
+three of them leave the faucets working:
 
 - **Pressure loss.** Pumping stations need power. High ground loses pressure first.
 - **Contamination with pressure intact.** A main break, a flood, or a treatment failure means water

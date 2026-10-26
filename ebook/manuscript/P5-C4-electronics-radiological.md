@@ -138,7 +138,7 @@ https://www.ecfr.gov/current/title-47/chapter-I/subchapter-D/part-95/subpart-B |
 https://www.ecfr.gov/current/title-47/chapter-I/subchapter-D/part-95/subpart-E | retrieved 2026-07-29»
 
 Two habits make them useful rather than decorative. **Agree a channel and a check-in time in advance**
-and write both on the form in the trashder, because a radio nobody has tuned to the same channel is two
+and write both on the form in the binder, because a radio nobody has tuned to the same channel is two
 paperweights. And **charge or fit fresh batteries when a watch is issued**, alongside everything else in
 Protection 117.
 

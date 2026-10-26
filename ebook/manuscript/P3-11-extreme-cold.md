@@ -131,11 +131,11 @@ houses flood.
 
 **On a hard freeze warning.**
 
-Insulate anything you have not got to. Disconnect hoses. Cover the outdoor spigots. Open the cupboard
+Insulate anything you have not got to. Disconnect hoses. Cover the outdoor spigots. Open the cabinet
 doors under sinks on exterior walls so household heat reaches the pipes. Set the thermostat no lower than
 about sixty-five and do not turn it down at night, which is exactly the wrong economy in this weather.
 
-**Drip the taps** — a slow, steady trickle from the taps furthest from where the water enters, and on any
+**Drip the faucets** — a slow, steady trickle from the faucets furthest from where the water enters, and on any
 run you know is exposed. Both hot and cold. The cost of the water is trivial against a burst pipe.
 
 Open the attic hatch a little if plumbing runs up there, and if you have a crawl space with pipes,
@@ -154,7 +154,7 @@ metabolism is heat, and people forget to eat when they are stressed and cold.
 door is open."
 
 **Then make the plumbing decision.** If the house is going to drop below freezing and you are staying with
-it, keep the taps dripping. **If you are leaving, shut the water main off and drain the system** — open
+it, keep the faucets dripping. **If you are leaving, shut the water main off and drain the system** — open
 every tap, flush the toilets, and drain the water heater if you can. It takes twenty minutes and it is the
 difference between coming home to a cold house and coming home to a ruined one.
 
@@ -162,10 +162,10 @@ difference between coming home to a cold house and coming home to a ruined one.
 Shivering that stops is a late and serious sign. Protection 63 covers rewarming, and the decision that
 matters is when to leave. Write the number down now: **if your warm room drops below 64°F (18°C), you
 leave** for a warming center, a relative or a hotel. That is the minimum indoor temperature the World
-Health Organization proposes for cold seasons. Go while everyone can still make decisions and drive.
+Health Organization proposes for cold seasons; if you are older or ill, ask your doctor whether you need it warmer. Go while everyone can still make decisions and drive.
 «SRC: World Health Organization, "WHO Housing and Health Guidelines: Executive Summary" (2018),
 WHO/CED/PHE/18.10 — strong recommendation that indoor housing temperatures be high enough to protect
-residents from the harmful health effects of cold; conditional recommendation that, for countries with
+residents from the harmful health effects of cold; within that same strong recommendation, for countries with
 temperate or colder climates, 18°C has been proposed as a safe and well-balanced indoor temperature to
 protect the health of general populations during cold seasons. |
 https://iris.who.int/server/api/core/bitstreams/8c4ab45e-2d28-4205-a467-1f81ae519a35/content |
@@ -233,7 +233,7 @@ the shops have it.
 | **The killers** | **Carbon monoxide**, then indoor hypothermia, then fires from heaters and thawing |
 | **The money** | Burst pipes, and the flood arrives **on the thaw**, running until someone shuts the main |
 | **Before** | Insulate exposed pipes · **label the water main** · warm room · rated sleeping bags · CO alarms in date |
-| **On a hard freeze** | Hoses off · cupboards open · thermostat up, not down at night · **drip the far taps** |
+| **On a hard freeze** | Hoses off · cabinets open · thermostat up, not down at night · **drip the far faucets** |
 | **If you leave** | **Water off and system drained.** Twenty minutes against a ruined house |
 | **Frozen pipe** | Tap open, warm from the tap end, hair dryer — **never a flame** |
 | **After** | Be there for the thaw · check the meter with everything off · dry the cavities, not just the floor |
