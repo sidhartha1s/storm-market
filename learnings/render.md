@@ -3,8 +3,10 @@
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
 ## 26 Oct 26: render.cmd no longer passes --experimental-fast-capture=true
-1. Measured on the ZBook, 90 s Joplin slice: with the flag, Windows falls back to screenshot capture, and above 1 worker
-   that turns streaming off (`enabled:false, multi_worker`), the slow disk path behind the 100 GB / 1-worker rule.
+1. Measured on the ZBook, 90 s Joplin slice: with the flag, capture fell back to screenshot and at 2 workers streaming
+   was off (`enabled:false, multi_worker`), the slow disk path behind the 100 GB / 1-worker rule. Moore (2 workers) and
+   the ZBook bench (4 workers) fell back to screenshot capture and still streamed (`parallel_forced`), so the fallback
+   does not turn streaming off by itself.
    Without the flag, 2 workers went from 5.56 to 3.68 s per output second and streamed (`parallel_forced`).
 2. Removed from `scripts/render.cmd`, `scripts/pin_ritual.py` (RENDER_FLAGS mirrors it) and `config.yaml`. `--gpu`,
    workers, crf and fps are unchanged. The 100 GB / 1-worker rule stays until a full render without the flag is measured.
