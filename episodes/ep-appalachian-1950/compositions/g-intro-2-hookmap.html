@@ -199,20 +199,11 @@ window.__timelines = window.__timelines || {};
   camAt(0);
 
   /* basemap paint order: coast under-stroke (half hidden by the fills), then fills with state lines */
-  const us = $("us"), ca = $("ca");
-  us.setAttribute("fill", "url(#ih2-landgrad)"); us.setAttribute("stroke", "#2a3644"); us.setAttribute("stroke-width", "1.2");
-  ca.setAttribute("fill", "#0e1620"); ca.setAttribute("stroke", "#2a3644"); ca.setAttribute("stroke-width", "1.2");
-  [ca, us].forEach(function (el, i) {
-    const u = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    u.setAttribute("href", "#" + el.id);
-    u.setAttribute("fill", "none"); u.setAttribute("stroke", "#4a5560"); u.setAttribute("stroke-width", "3.2");
-    camEl.insertBefore(u, camEl.firstChild);
-  });
-  /* a <use> inherits fill/stroke only where the path sets none: give the coast copies their own clone instead */
-  Array.prototype.slice.call(camEl.querySelectorAll("use")).forEach(function (u) {
-    const src = document.getElementById(u.getAttribute("href").slice(1)), cl = src.cloneNode(false);
-    cl.removeAttribute("id"); cl.setAttribute("fill", "none"); cl.setAttribute("stroke", "#4a5560"); cl.setAttribute("stroke-width", "3.2");
-    camEl.replaceChild(cl, u);
+  [$("ca"), $("us")].forEach(function (el) {
+    const coast = el.cloneNode(false);
+    coast.removeAttribute("id");
+    coast.setAttribute("fill", "none"); coast.setAttribute("stroke", "#4a5560"); coast.setAttribute("stroke-width", "3.2");
+    camEl.insertBefore(coast, camEl.firstChild);
   });
 
   const tl = gsap.timeline({ paused: true });
