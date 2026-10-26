@@ -68,6 +68,6 @@ Rows: factcheck intro-r1 Apply list ("Galveston was not left in the dark. Messag
 
 ### I1-S5 — narration
 **Picture:** slow return to the Galveston Daily News page of 1891, popfig "JULY 16, 1891", "ABSURD DELUSION" chip back on. Telegraph-key click on the last line. [Q] [loop L-intro open] (carried into A1)
-> Long before any of those messages, the city already had Cline's word, in print. Why would he once have called the fear of a storm like this an absurd delusion?
+> Long before any of those messages, the city had Cline's word, in print. Why would he once have called the fear of a storm like this an absurd delusion?
 
 Rows: sources-cline.md §1 and factcheck-E.md H1-S2 (Cline wrote the part of the 16 July 1891 article with "simply an absurd delusion"); factcheck-D.md I1-S6 ("a storm like this ... absurd delusion", CONFIRMED fair). Old "nine years earlier, from its own weatherman" and the "So" opener dropped (grade fix 8). Old I1-S5 (landfall and toll) removed: both now spoken in H1-S3 (grade fix 1).
