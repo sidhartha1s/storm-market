@@ -57,35 +57,35 @@ Rows: sources-cuba.md header ("Belen", "Gangoiti" and any Cuban ban appear nowhe
 Rows: sources-cuba.md §2 and factcheck-B.md I1-S4 (AOML: "Only the Weather Bureau prognostication was carried over the wires."); sources-cline.md §3 ("Among the lost was my wife").
 
 ## Option 3 · Hook shape: drop-in (2026-10-26)
-The record puts the warnings, the flags and Cline at the Gulf on the morning of the eighth, so the viewer can stand inside that Saturday before anyone explains anything.
+The record puts the storm warning and Cline at the Gulf on the morning of the eighth, so the viewer can stand inside that Saturday before anyone explains anything.
 
 ### H1-S1 — Paul on camera
 **Picture:** Paul full frame at 0:00; popfig "GALVESTON, TEXAS · SEPTEMBER 1900" inside the first second; the sound under him: gusting wind and a flag snapping on its rope, surf low behind it.
-> It's Saturday morning, the storm warning flags are up, and the man running your weather office once called this kind of storm an absurd delusion.
+> It's Saturday morning, the storm warning is flying, and the man who runs your weather office has driven to the Gulf to time the swells.
 
-Rows: sources-cline.md §3 (morning of 8 Sept, "with storm warning flying"); sources-cline.md §1 ("absurd delusion"; "a storm like this" accepted as fair, factcheck-C.md I1-S6).
+Rows: sources-cline.md §3 (morning of 8 Sept: "with storm warning flying"; "I drove to the Gulf, where I timed the swells").
 
 ### H1-S2 — narration
-**Picture:** the Monthly Weather Review line listing the warning messages, each date ticking on as a chip: "TUE 4 · WED 5 · THU 6 · FRI 7 · SAT 8". Source line: Isaac Cline, Monthly Weather Review, September 1900. [RS] [VE] (break one lands in the open: the city was warned)
-> Washington's warning messages started on Tuesday, and one has come in every day since.
+**Picture:** cut on a wave to the Galveston Daily News page of 1891, popfig "JULY 16, 1891", chip "ABSURD DELUSION"; telegraph-key click on the chip; lower-third "ISAAC CLINE · LOCAL FORECAST OFFICIAL, GALVESTON". Source line: Isaac Cline, Galveston Daily News, 16 July 1891. [RS] [VE] (break one)
+> Back in eighteen ninety-one, he wrote in the Galveston paper that a storm seriously damaging the city was an absurd delusion.
 
-Rows: sources-cline.md §3 and sources-cuba.md §3 ("Warning messages were received from the Central Office at Washington on September 4, 5, 6, 7, and 8"); 7 Sept 1900 was a Friday (factcheck-D.md I1-S5), so the fourth was a Tuesday.
+Rows: sources-cline.md §1 ("is simply an absurd delusion"; Cline wrote that part, factcheck-E.md H1-S2).
 
 ### H1-S3 — narration
-**Picture:** cut to the NOAA 1900 map, Havana pinned; popfig "BELEN OBSERVATORY, HAVANA"; a dark telegraph line runs from Havana and stops short of the coast; chip "ONLY BUREAU FORECASTS ON THE TELEGRAPH". Source line: NOAA AOML, 2015. [RS] [VE] (break two)
-> Down in Havana, the forecasters at Belen Observatory said this storm would move into the Gulf. NOAA says the Bureau decreed only its own forecasts could travel by telegraph.
+**Picture:** cut to the NOAA 1900 map, Havana pinned; popfig "BELEN OBSERVATORY, HAVANA"; one arrow northwest into the Gulf; a dark telegraph line runs from Havana and stops short of the coast; chip "ONLY BUREAU FORECASTS ON THE TELEGRAPH". Source line: NOAA AOML, 2015. [RS] [VE] (break two)
+> The forecasters at Belen Observatory in Havana had said this storm would move into the Gulf. NOAA says the Bureau decreed that only its own forecasts would go over the telegraph.
 
-Rows: sources-cuba.md §1 (Belen: northwest into the Gulf); sources-cuba.md §2 (the decree, in NOAA's words with spoken attribution, factcheck-A.md H1-S4 and factcheck-D.md I1-S3).
+Rows: sources-cuba.md §1 (Belen: northwest into the Gulf, undated in the source, so kept in the past and undated); sources-cuba.md §2 (the decree, in NOAA's words with spoken attribution, factcheck-D.md I1-S3).
 
 ### H1-S4 — narration
-**Picture:** Galveston beachfront photograph of 1900, slow push toward the water line; chip "HIGHEST POINT ABOUT 8.7 FT"; lower-third "ISAAC CLINE · LOCAL FORECAST OFFICIAL, GALVESTON". Source line: National Park Service; Isaac Cline, Monthly Weather Review, September 1900. [VE] [HUMAN] [loop E1 open]
-> This morning, Isaac Cline drove down to the Gulf and timed the swells. The highest ground on your island is less than nine feet above the sea.
+**Picture:** Galveston beachfront photograph of 1900, slow push toward the water line; chip "HIGHEST POINT ABOUT 8.7 FT". Source line: National Park Service. [VE] [loop E1 open]
+> Look around you. The highest ground on this island is less than nine feet above the sea.
 
-Rows: sources-cline.md §3 ("I drove to the Gulf, where I timed the swells", morning of 8 Sept); sources-cline.md §5 (highest point 8.7 ft, NPS).
+Rows: sources-cline.md §5 (highest point 8.7 ft, NPS).
 
 ## Word counts (Paul's line, counted word by word)
 - Option 1 · record: 25 words.
-- Option 2 · object: 26 words.
+- Option 2 · object: 24 words.
 - Option 3 · drop-in: 25 words.
 
 Open `[verify]` markers: 0. Footage note carried from research: the Library of Congress record for the Broadway ruins film (Option 1, H1-S4) and the 1891 page scan are still to be checked by a person before render; neither is a new fact.
