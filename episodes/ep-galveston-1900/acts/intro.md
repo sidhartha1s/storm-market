@@ -36,7 +36,7 @@ Rows: sources-cline.md §3 ("Among the lost was my wife, who never rose above th
 
 ### T1-S1 — narration
 **Picture:** hold one beat on the Monthly Weather Review page, then cut to the self-made island elevation graphic of Galveston, sea level line rising to the island's top; chips "ABOUT 38,000 PEOPLE" and "HIGHEST POINT ABOUT 8.7 FT"; last line over the same graphic, chip "WARNED" then "FEW HAD LEFT". Source line: Texas State Historical Association; National Park Service. [VE] [Q] [loop E1 open] (why did so few people leave a warned city?)
-> Galveston was an island city of about thirty-eight thousand people, and its highest ground was less than nine feet above the sea. The city had been warned. Still, few people left.
+> Galveston was an island city off the Texas coast, home to about thirty-eight thousand people. Its highest ground was less than nine feet above the sea. The city had been warned. Still, few people left.
 
 Rows: factcheck-A.md / factcheck-C.md / factcheck-D.md T1-S1 (TSHA "the city of 38,000 inhabitants"; NPS "the highest elevation on Galveston Island was 8.7 feet"); factcheck intro-r1 row 18 (TSHA "On the previous day Galveston had been placed under a storm warning"); factcheck-C.md and factcheck-D.md H1-S5 (NPS "comparatively few people had evacuated the city", chip FEW HAD LEFT CONFIRMED). E1 now spoken, not only tagged (grade fix 4).
 
