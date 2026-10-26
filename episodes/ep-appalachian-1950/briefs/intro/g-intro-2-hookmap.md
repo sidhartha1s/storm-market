@@ -56,7 +56,7 @@ Segment offsets (comp-local seconds; assumes 0.40 s gaps, replace with the real 
 Cues (segment-relative word time from `audio/<seg>.words.json`, comp time = SEG + t):
 - H1-S2 0.00 "That's": frame A on, Newark pin pulsing, "NEWARK" label and the "108 MPH" chip line ALREADY ON at frame 0 (carries Paul's number across the cut). Camera drifts in 2 % over 0-3.4. `/* THATS @0.00 */`
 - H1-S2 0.36 "hurricane": "HURRICANE FORCE" line in (`fromTo` autoAlpha 0, x -16 to 0, 0.35 s, power3.out). `/* HURRICANE @0.36 */`
-- H1-S2 2.06 "Inland,": Newark chip dims to 0.35; camera pull-out A to B starts (logZoom, 1.9 s, expo.inOut), arrives 3.96. `/* INLAND @2.06 */`
+- H1-S2 2.06 "Inland,": Newark chip exits (`to` x -30, autoAlpha 0, 0.4 s, power3.in; in frame B its box would sit at x 1140 to 1440 and collide with the Pittsburgh chip at x 750 to 1170, so it leaves rather than dims); camera pull-out A to B starts (logZoom, 1.9 s, expo.inOut), arrives 3.96. `/* INLAND @2.06 */`
 - H1-S2 4.02 "Pittsburgh": Pittsburgh ring + label in, white fill sweep starts, snowfall starts. `/* PITTSBURGH @4.02 */`
 - H1-S2 5.62 "two": chip "2+ FEET OF SNOW" in (`fromTo` autoAlpha 0, scale 0.9 to 1, 0.4 s, back.out(1.4)). `/* TWO FEET @5.62 */`
 - H1-S3 1.18 "at least": all chips to 0.35 (0.3 s); toll card in (`fromTo` y 40 to 0, autoAlpha, 0.5 s, power3.out), line "AT LEAST 160 LIVES LOST" with the source line 0.3 s after. `/* AT LEAST @1.18 */`  (the number lands in the voice at "160" 1.42; the card is fully opaque by 1.68)
