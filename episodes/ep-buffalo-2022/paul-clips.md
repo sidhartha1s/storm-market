@@ -1,6 +1,6 @@
 # ep-buffalo-2022 · Paul's six clips: what goes into Flow (26 Oct 26)
 
-Status: inputs only. Nothing is generated. The hook is a PROVISIONAL pick (Option 3 "missing"); these clips wait for the owner's hook confirmation and his go on the credits.
+Status: inputs only. Nothing is generated. The hook is NOT picked (owner 16:02); v1 "missing" is withdrawn and three new options sit in `hook_options-v2.md`. ins-paul-1 below is the withdrawn v1 line, kept only until he picks. The clips wait for his pick and his go on the credits.
 Prompt wording follows `references/mg-quickref.md` "Paul on screen" and the ep4-el-reno run (`paul-clips.md` there): read both before spending.
 
 ## How the run goes
@@ -12,6 +12,7 @@ Prompt wording follows `references/mg-quickref.md` "Paul on screen" and the ep4-
 ## Same for every clip
 - Mode: frames to video, ONE start frame for all six: @char1 at his desk wearing a Santa hat (owner: "santa paul is okay"). That frame does not exist yet; it is made from the book-ad desk frame and shown to the owner before any clip.
 - The character is called @char1 in the prompt, never by name.
+- No props, ever (owner, DEVQ 26 Oct 26 16:02, `hookpick_galveston`): "Instead of Paul holding it, you can show a snippet of it ... do the omni as it is" and "Even if Paul is referencing something, you can cross-reference or add another widget for showing that particular thing. On top of it. No need to stress Paul". Paul's hands stay empty in every clip; whatever he refers to (a page, a warning, a map) is an on-screen graphic beside him, built in `compositions/`.
 - Prompt body: `This is a history documentary about the December 2022 Buffalo blizzard. @char1 sits at his desk and speaks straight to the camera. Medium shot, the camera does not move. Calm, deep, measured voice, natural small hand movement. He says exactly these words and nothing else: "<LINE>" He stops speaking and holds his look at the camera. No music, no captions, no text on screen.`
 
 ## The six lines
