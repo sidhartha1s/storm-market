@@ -118,8 +118,8 @@ an out-of-area pharmacist can often help a displaced patient who has the list an
 does not.
 
 **If you take a blood thinner.** Put it on the list by name: warfarin, or whichever one you take. If
-you fall and hit your head while on it, get checked, even if you feel fine. Call your provider, or 911
-if no one answers. Also ask your doctor now: "If a long outage means I cannot get my blood test, what
+you fall and hit your head while on it, get checked, even if you feel fine. Call your provider.
+Also ask your doctor now: "If a long outage means I cannot get my blood test, what
 do I do?" Write the answer on the list.
 «SRC: MedlinePlus (US National Library of Medicine), "Taking warfarin" (n.d.) — contact your provider
 if you have a serious fall or if you hit your head, or have headache, dizziness or weakness; avoid
@@ -240,7 +240,7 @@ it as major.**
 
 **Minor burn, skin unbroken:** run **cool water** over it or soak it in a cool water bath — *not* ice
 water — and **keep it under water for 5 to 30 minutes.** Then cover with a dry sterile bandage or clean
-dressing, and protect it from pressure and friction. Remove jewellery and constricting clothing early,
+dressing, and protect it from pressure and friction. Remove jewelry and constricting clothing early,
 before swelling. Once it has cooled, moisturiser with aloe helps; if the skin is broken an ointment is
 preferred, because it stops the dressing sticking.
 

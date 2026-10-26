@@ -31,7 +31,7 @@ function) — nothing here is estimated or approximated for the sake of a nicer 
 Figures 14 on are the large-print set for older readers (senior review 2026-10-27): drawn
 in points (viewBox width 342 = the 4.76in content width, so 1 unit = 1pt at print size),
 system serif, nothing under 11pt. Figures 25-28 are the one exception to "no raster": they
-point at art/illustrations/<id>.png, and render_figure raises if that file is missing.
+point at art/illustrations/<id>.jpg, and render_figure raises if that file is missing.
 """
 from pathlib import Path
 
@@ -546,13 +546,14 @@ _BOX = (f'<span style="flex:0 0 auto;display:inline-block;width:13pt;height:13pt
 
 def _cutout(height_in, inner):
     """A dashed cut-line card, the D1/D8 pull-out shape."""
-    return (f'<div style="height:{height_in}in;box-sizing:border-box;overflow:hidden;'
+    # min-height, not height+overflow:hidden: a line that wraps grows the box (fitcheck sees it), never clips
+    return (f'<div style="min-height:{height_in}in;box-sizing:border-box;'
             f'border:2pt dashed {INK};padding:10pt 14pt;background:#fff;font-family:{SERIF};color:{INK}">'
             f'<div style="font-family:{SANS};font-size:11pt;color:{INK_MUTE}">&#9986; Cut along the dashed line</div>'
             f'{inner}</div>')
 
 
-def _hazard_card(number, hazard, source_file, bands):
+def _hazard_card(number, hazard, bands):
     """D1 — large-print checklist card. Every line paraphrases the chapter's own
     '## The one-page version' table (source_file); nothing is added beyond it."""
     colors = {"WATCH": AMBER, "WARNING": ALERT, "AFTER": INK_SOFT}
@@ -560,20 +561,21 @@ def _hazard_card(number, hazard, source_file, bands):
             f'<div style="font-size:12pt;color:{INK_SOFT}">Tick each box as you do it.</div>']
     for name, when, lines in bands:
         html.append(f'<div style="background:{colors[name]};color:#fff;font-size:16pt;font-weight:700;'
-                    f'padding:2pt 8pt;margin-top:9pt">{name} '
-                    f'<span style="font-size:13pt;font-weight:400">&mdash; {when}</span></div>')
+                    f'padding:2pt 8pt;margin-top:9pt">{name}'
+                    + (f' <span style="font-size:13pt;font-weight:400">&mdash; {when}</span>' if when else '')
+                    + '</div>')
         for ln in lines:
             html.append(f'<div style="display:flex;gap:9pt;font-size:14pt;line-height:1.28;margin-top:6pt">'
                         f'{_BOX}<span>{ln}</span></div>')
     return _figure(number, f"Cut-out card: the {hazard.lower()} chapter's one-page version in large print. "
-                   f"Keep it where you will see it.", _cutout(6.35, "".join(html)), large=True)
+                   f"Keep it where you will see it.", _cutout(6.6, "".join(html)), large=True)
 
 
 def fig_card_tornado():
-    return _hazard_card(14, "TORNADO", "P3-01-tornado.md", [
+    return _hazard_card(14, "TORNADO", [
         ("WATCH", "a tornado is possible", [
             "Charge phones and flashlights",
-            "Clear the safe room. Put helmets and shoes in it",
+            "Clear the safe room. Helmets and shoes in it",
             "Mobile home: <b>leave now</b>"]),
         ("WARNING", "a tornado is coming", [
             "<b>Go now. Do not wait to see it.</b>",
@@ -585,11 +587,11 @@ def fig_card_tornado():
             "No flames: flashlights only",
             "Blow the whistle for help",
             "Photograph before touching. Sign nothing"]),
-    ]).replace(" &mdash; </span>", "</span>")
+    ])
 
 
 def fig_card_hurricane():
-    return _hazard_card(15, "HURRICANE", "P3-02-hurricane-surge.md", [
+    return _hazard_card(15, "HURRICANE", [
         ("WATCH", "days before", [
             "Medicines, cash, fuel. Test the generator",
             "Window covers up. Bring loose things in",
@@ -604,30 +606,30 @@ def fig_card_hurricane():
             "Tap water unsafe until you are told otherwise",
             "Dry the house out fast",
             "Sign nothing"]),
-    ]).replace(" &mdash; </span>", "</span>")
+    ])
 
 
 def fig_card_wildfire():
-    return _hazard_card(16, "WILDFIRE", "P3-05-wildfire.md", [
+    return _hazard_card(16, "WILDFIRE", [
         ("WATCH", "Red Flag day", [
             "Fuel the car. Park it facing out",
             "Bags in the car",
             "Shoes and keys by the bed"]),
         ("WARNING", "fire is coming", [
-            "<b>Leave at the warning. Do not wait for the order</b>",
+            "<b>Leave at the warning, not the order</b>",
             "The roads work now. Go",
-            "Trapped in the car: big clear area, engine off, lights on",
-            "Stay inside the car, get low, cover up"]),
+            "Trapped in the car: park clear of brush",
+            "Windows shut. Lie low under wool. Call 911"]),
         ("AFTER", "", [
             "Ash is toxic. Never dry-sweep it",
             "Tap water may be unsafe",
             "Hot spots for weeks",
             "Heavy rain can bring mud: be ready to leave"]),
-    ]).replace(" &mdash; </span>", "</span>")
+    ])
 
 
 def fig_card_cold():
-    return _hazard_card(17, "EXTREME COLD", "P3-11-extreme-cold.md", [
+    return _hazard_card(17, "EXTREME COLD", [
         ("WATCH", "hard cold on the way", [
             "Wrap pipes. <b>Label the water main</b>",
             "Set up the warm room and sleeping bags",
@@ -699,9 +701,9 @@ def fig_weather_radio_setup():
     {_t(219, 52, "YOUR COUNTY CODE", size=12, weight=700, color=INK_SOFT, anchor="middle")}
     {_t(219, 76, "_ _ _ _ _ _", size=16, weight=700, anchor="middle")}
     {btn(124, 1, "SAME")}{btn(188, 2, "ALERT")}{btn(252, 3, "TEST")}
-    {step(222, 1, "Set your county code", ["Press MENU, then SAME. Type in your", "county's code. Now it wakes you only", "for your county."])}
-    {step(300, 2, "Set it to sound the alarm tone", ["Choose the tone alert, loud enough to", "wake you, not a quiet voice message."])}
-    {step(361, 3, "Test it every week", ["Press TEST. Change the batteries", "on a schedule."])}
+    {step(222, 1, "Set your county code", ["Press SAME. Type in your county's code.", "Now it wakes you only for your county."])}
+    {step(290, 2, "Set it to sound the alarm tone", ["Choose the tone alert, loud enough to", "wake you, not a quiet voice message."])}
+    {step(351, 3, "Test it", ["Press TEST. Change the batteries", "on a schedule."])}
     <rect x="4" y="404" width="334" height="82" stroke-width="2" style="fill:#fff;stroke:{AMBER}"/>
     {_t(14, 425, "Where to find your county code", size=14, weight=700, color=AMBER)}
     {_t(14, 445, "Online: weather.gov/nwr/counties", size=13)}
@@ -715,10 +717,10 @@ def fig_weather_radio_setup():
 
 
 def fig_battery_runtime():
-    """D2 / P61A — the method from P38 ('device wattage x hours, add margin'). The 40 W
+    """D2 / P61 — the method from P38 ('device wattage x hours, add margin'). The 60 W
     row is labelled an example; no device spec is asserted, and no margin number is given
     because the book states none."""
-    ex_w, ex_h = 40, 8
+    ex_w, ex_h = 60, 8  # same example as the P2-C6 CPAP paragraph
     ex_wh = ex_w * ex_h
 
     def box(x, w, top, bottom):
@@ -729,9 +731,9 @@ def fig_battery_runtime():
 
     body = f'''
     {_t(171, 20, "Will my battery run my machine?", size=17, weight=700, anchor="middle")}
-    {box(2, 92, "WATTS", ["from the label", "on the power brick"])}
+    {box(2, 92, "WATTS", ["on the power", "brick label"])}
     {_t(106, 82, "&#215;", size=26, weight=700, anchor="middle")}
-    {box(118, 92, "HOURS", ["you need it,", "e.g. hours asleep"])}
+    {box(118, 92, "HOURS", ["you need it", "running"])}
     {_t(222, 82, "=", size=26, weight=700, anchor="middle")}
     <rect x="234" y="34" width="106" height="78" rx="6" stroke-width="3" style="fill:{AMBER_BG};stroke:{AMBER}"/>
     {_t(287, 62, "WATT-", size=16, weight=700, color=AMBER, anchor="middle")}
@@ -755,16 +757,16 @@ def fig_battery_runtime():
 
 
 def fig_leave_early_no_car():
-    """D3 / P131 — the order of hurricane products, not their exact hours. Days come from
+    """D3 / P111 — the order of hurricane products, not their exact hours. Days come from
     the P3-02 one-page version (5 / 3 / 2 / 1 days); positions of ORDER and WARNING
     are schematic and the figure says so."""
     xs = [20 + i * 60.4 for i in range(6)]
     days = ["5 days", "4 days", "3 days", "2 days", "1 day", "landfall"]
     ticks = "".join(f'<line x1="{x:.1f}" y1="150" x2="{x:.1f}" y2="162" stroke-width="2.4" style="stroke:{INK}"/>'
-                    + _t(x, 180, d, size=12, anchor="end" if d == "landfall" else "middle",
-                         weight=700 if d == "landfall" else 400)
+                    + (_t(x, 180, d, size=12, anchor="middle") if d != "landfall"
+                       else _t(x + 10, 134, d, size=13, weight=700, anchor="end"))
                     for x, d in zip(xs, days))
-    xw, xo, xr = xs[3], xs[3] + 28, xs[4]
+    xw, xo, xr = xs[3], xs[3] + 22, xs[3] + 40  # watch at 2 days; order, warning schematic after it
     body = f'''
     {_arrow_defs("le-arrow", INK)}
     <rect x="{xs[0]:.1f}" y="140" width="{xw - xs[0]:.1f}" height="20" style="fill:{AMBER};fill-opacity:0.25"/>
@@ -780,20 +782,20 @@ def fig_leave_early_no_car():
     <circle cx="{xw:.1f}" cy="150" r="6" style="fill:{AMBER}"/>
     <line x1="{xo:.1f}" y1="150" x2="{xo:.1f}" y2="206" stroke-width="2.4" style="stroke:{ALERT}"/>
     <circle cx="{xo:.1f}" cy="150" r="5" style="fill:{ALERT}"/>
-    <rect x="4" y="206" width="334" height="62" rx="6" stroke-width="2.4" style="fill:#fff;stroke:{ALERT}"/>
-    {_t(14, 230, "ORDER", size=16, weight=700, color=ALERT)}
-    {_t(90, 230, "County transport starts.", size=14)}
-    {_t(90, 254, "May be too late.", size=14, weight=700, color=ALERT)}
-    <line x1="{xr:.1f}" y1="150" x2="{xr:.1f}" y2="284" stroke-width="2.4" style="stroke:{INK}"/>
+    <rect x="4" y="206" width="222" height="80" rx="6" stroke-width="2.4" style="fill:#fff;stroke:{ALERT}"/>
+    {_t(14, 228, "ORDER", size=16, weight=700, color=ALERT)}
+    {_t(14, 250, "County transport starts.", size=14)}
+    {_t(14, 272, "May be too late.", size=14, weight=700, color=ALERT)}
+    <line x1="{xr:.1f}" y1="150" x2="{xr:.1f}" y2="298" stroke-width="2.4" style="stroke:{INK}"/>
     <circle cx="{xr:.1f}" cy="150" r="5" style="fill:{INK}"/>
-    <rect x="4" y="284" width="334" height="40" rx="6" stroke-width="2" style="fill:#fff;stroke:{INK}"/>
-    {_t(14, 310, "WARNING", size=16, weight=700)}
-    {_t(110, 310, "Winds are close. Roads fill.", size=14)}
-    {_t(171, 350, "Exact days differ for every storm.", size=12, color=INK_MUTE, anchor="middle", italic=True)}
+    <rect x="4" y="298" width="334" height="40" rx="6" stroke-width="2" style="fill:#fff;stroke:{INK}"/>
+    {_t(14, 324, "WARNING", size=16, weight=700)}
+    {_t(110, 324, "Hurricane conditions expected.", size=14)}
+    {_t(171, 362, "Exact days differ for every storm.", size=12, color=INK_MUTE, anchor="middle", italic=True)}
     '''
     return _figure(21, "Without a car, your trigger is the watch, not the order. County "
                    "transport usually starts only after an order, which can be too late.",
-                   _psvg(4.95, "Hurricane timeline: leave at the watch; county transport starts at the order", body),
+                   _psvg(5.15, "Hurricane timeline: leave at the watch; county transport starts at the order", body),
                    large=True)
 
 
@@ -822,8 +824,8 @@ def fig_three_shelters():
     {_t(171, 422, "City shelter", size=14, weight=700, anchor="middle")}
     <!-- the trailer, center -->
     <rect x="96" y="196" width="150" height="50" stroke-width="2.6" style="fill:#fff;stroke:{INK}"/>
-    {_t(171, 226, "your home", size=13, color=INK_SOFT, anchor="middle")}
-    {_redx(171, 221, 30, 6)}
+    {_t(171, 188, "mobile home", size=13, weight=700, anchor="middle")}
+    {_redx(171, 221, 22, 6)}
     {_t(171, 276, "Stay in the trailer", size=15, weight=700, color=ALERT, anchor="middle")}
     <line x1="98" y1="271" x2="244" y2="271" stroke-width="2.4" style="stroke:{ALERT}"/>
     <!-- arrows -->
@@ -865,10 +867,11 @@ def fig_insulin_cooler():
     {_t(338, 24, "Thermometer", size=13, weight=700, color=ALERT, anchor="end")}
     {_t(338, 41, "inside", size=13, weight=700, color=ALERT, anchor="end")}
     <line x1="290" y1="46" x2="240" y2="112" stroke-width="1.6" style="stroke:{ALERT}"/>
-    {_t(171, 270, "Towel between the ice and the bag", size=13, weight=700, color=AMBER, anchor="middle")}
-    <line x1="171" y1="256" x2="171" y2="228" stroke-width="1.6" style="stroke:{AMBER}"/>
-    {_t(171, 290, "Insulin pens in a zip bag, in the middle", size=13, weight=700, anchor="middle")}
-    <line x1="120" y1="282" x2="130" y2="202" stroke-width="1.6" style="stroke:{INK}"/>
+    {_t(196, 24, "Towel", size=13, weight=700, color=AMBER, anchor="middle")}
+    {_t(196, 41, "layer", size=13, weight=700, color=AMBER, anchor="middle")}
+    <line x1="196" y1="46" x2="196" y2="100" stroke-width="1.6" style="stroke:{AMBER}"/>
+    {_t(171, 282, "Insulin pens in a zip bag, in the middle", size=13, weight=700, anchor="middle")}
+    <line x1="160" y1="202" x2="160" y2="266" stroke-width="1.6" style="stroke:{INK}"/>
     <!-- never: ice on pens -->
     <rect x="4" y="314" width="334" height="92" stroke-width="2.4" style="fill:#fff;stroke:{ALERT}"/>
     <rect x="24" y="332" width="40" height="40" rx="4" stroke-width="2.4" style="fill:{AMBER_BG};stroke:{INK}"/>
@@ -876,7 +879,7 @@ def fig_insulin_cooler():
     {_redx(86, 352, 30, 6)}
     {_t(172, 348, "Never let ice", size=16, weight=700, color=ALERT)}
     {_t(172, 370, "touch the pens.", size=16, weight=700, color=ALERT)}
-    {_t(172, 392, "Frozen insulin is spoiled.", size=13, color=INK_SOFT)}
+    {_t(172, 392, "Keep the towel between.", size=13, color=INK_SOFT)}
     '''
     return _figure(23, "How to pack the cooler: cold at the sides, a towel as a buffer, the pens "
                    "bagged in the middle where you can read the thermometer.",
@@ -887,53 +890,55 @@ def fig_insulin_cooler():
 def fig_generator_20ft():
     """D7 / P32 — CDC's 'more than 20 feet from any window, door or vent', quoted in P32.
     Drawn to scale: house 40 ft = 140 pt, so 20 ft = 70 pt around the whole outline."""
-    S = 3.5  # pt per foot
-    hx, hy, hw, hh = 101, 104, 140, 108          # house footprint
+    S = 3.5                                        # pt per foot
+    hx, hy, hw, hh = 101, 126, 140, 108            # house footprint (40 x ~31 ft)
+    gw = 62                                        # garage width
     c = 20 * S                                     # 20 ft clearance
+    gy = hy + hh + c + 20                          # generator top, outside the line
+    mx = hx + gw + (hw - gw) / 2                   # middle of the living part
     body = f'''
     {_arrow_defs("gn-arrow", INK)}
     <rect x="{hx - c}" y="{hy - c}" width="{hw + 2 * c}" height="{hh + 2 * c}" rx="{c}" stroke-width="2.6"
       stroke-dasharray="9,6" style="fill:{ALERT};fill-opacity:0.07;stroke:{ALERT}"/>
     <rect x="{hx}" y="{hy}" width="{hw}" height="{hh}" stroke-width="3" style="fill:#fff;stroke:{INK}"/>
-    <line x1="{hx + 50}" y1="{hy}" x2="{hx + 50}" y2="{hy + hh}" stroke-width="2" style="stroke:{INK}"/>
-    {_t(hx + 25, hy + 40, "GARAGE", size=11, weight=700, anchor="middle")}
-    {_redx(hx + 25, hy + 66, 16, 5)}
-    {_t(hx + 95, hy + 50, "HOUSE", size=14, weight=700, anchor="middle")}
+    <line x1="{hx + gw}" y1="{hy}" x2="{hx + gw}" y2="{hy + hh}" stroke-width="2" style="stroke:{INK}"/>
+    {_t(hx + gw / 2, hy + 24, "GARAGE", size=11, weight=700, anchor="middle")}
+    {_redx(hx + gw / 2, hy + 62, 20, 5)}
+    {_t(mx, hy + 34, "HOUSE", size=14, weight=700, anchor="middle")}
     <g stroke-width="6" style="stroke:{AMBER}">
-      <line x1="{hx + 70}" y1="{hy}" x2="{hx + 100}" y2="{hy}"/>
-      <line x1="{hx + hw}" y1="{hy + 30}" x2="{hx + hw}" y2="{hy + 58}"/>
-      <line x1="{hx + 108}" y1="{hy + hh}" x2="{hx + 130}" y2="{hy + hh}"/>
+      <line x1="{mx - 16}" y1="{hy}" x2="{mx + 16}" y2="{hy}"/>
+      <line x1="{hx + hw}" y1="{hy + 22}" x2="{hx + hw}" y2="{hy + 50}"/>
+      <line x1="{mx - 12}" y1="{hy + hh}" x2="{mx + 12}" y2="{hy + hh}"/>
     </g>
-    <rect x="{hx + hw - 4}" y="{hy + 76}" width="8" height="14" style="fill:{AMBER}"/>
-    {_t(hx + 92, hy + 72, "window", size=11, color=AMBER, anchor="middle")}
-    {_t(hx + 92, hy + 86, "door, vent", size=11, color=AMBER, anchor="middle")}
-    <line x1="{hx + hw}" y1="{hy + 44}" x2="{hx + hw + c}" y2="{hy + 44}" stroke-width="2.2" marker-end="url(#gn-arrow)" style="stroke:{INK}"/>
-    {_t(hx + hw + c / 2, hy + 36, "20 ft", size=16, weight=700, anchor="middle")}
-    <!-- generator outside the ring, cord back to the house -->
-    <rect x="262" y="{hy + hh + c + 22}" width="50" height="34" rx="4" stroke-width="2.6" style="fill:{AMBER_BG};stroke:{INK}"/>
-    {_t(287, {hy + hh + c + 44}, "GEN", size=13, weight=700, anchor="middle")}
-    <path d="M262 {hy + hh + c + 40} C 200 {hy + hh + c + 40}, 190 {hy + hh + 40}, {hx + 70} {hy + hh}" stroke-width="2.6"
+    <rect x="{hx + hw - 4}" y="{hy + 72}" width="8" height="14" style="fill:{AMBER}"/>
+    {_t(mx, hy + 62, "windows,", size=11, color=AMBER, anchor="middle")}
+    {_t(mx, hy + 76, "doors, vent", size=11, color=AMBER, anchor="middle")}
+    <line x1="{hx + hw + 4}" y1="{hy + 36}" x2="{hx + hw + c}" y2="{hy + 36}" stroke-width="2.2" marker-end="url(#gn-arrow)" style="stroke:{INK}"/>
+    {_t(hx + hw + c / 2, hy + 28, "20 ft", size=16, weight=700, anchor="middle")}
+    <rect x="262" y="{gy}" width="56" height="34" rx="4" stroke-width="2.6" style="fill:{AMBER_BG};stroke:{INK}"/>
+    {_t(290, gy + 22, "GEN", size=13, weight=700, anchor="middle")}
+    <path d="M262 {gy + 17} C 200 {gy + 17}, 190 {hy + hh + 40}, {mx - 30} {hy + hh}" stroke-width="2.6"
       stroke-dasharray="3,4" style="fill:none;stroke:{INK_SOFT}"/>
-    <line x1="312" y1="{hy + hh + c + 39}" x2="336" y2="{hy + hh + c + 39}" stroke-width="2.4" marker-end="url(#gn-arrow)" style="stroke:{INK}"/>
+    {_t(4, gy + 4, "cord to", size=12, color=INK_SOFT)}
+    {_t(4, gy + 20, "the house", size=12, color=INK_SOFT)}
     {_t(4, 20, "More than 20 feet from every window,", size=14, weight=700, color=ALERT)}
-    {_t(4, 38, "door and vent. Outside the dashed line.", size=14, weight=700, color=ALERT)}
-    {_t(4, {hy + hh + c + 34}, "cord to the house", size=12, color=INK_SOFT)}
-    {_t(4, {hy + hh + c + 76}, "Never in the garage, even with the door open.", size=13, weight=700, color=ALERT)}
-    {_t(4, {hy + hh + c + 94}, "Exhaust points away from the house.", size=13)}
+    {_t(4, 38, "door and vent: outside the dashed line.", size=14, weight=700, color=ALERT)}
+    {_t(4, gy + 58, "Never in the garage, even with the door open.", size=13, weight=700, color=ALERT)}
+    {_t(4, gy + 76, "Point the exhaust away from the house.", size=13)}
     '''
     return _figure(24, "Pick the spot now, in daylight. Outside the dashed line, exhaust "
                    "aimed away, and a battery CO alarm inside the house while it runs.",
-                   _psvg(5.3, "Top-down house and yard with a 20-foot clearance line; generator outside it; garage crossed out", body),
+                   _psvg(5.95, "Top-down house and yard with a 20-foot clearance line; generator outside it; garage crossed out", body),
                    large=True)
 
 
 def _illustration(fig_id, number, caption, height_in=3.4):
     """Raster illustration slot. src is relative to ebook/build/book.html, where the book
     renders. A missing PNG is a build error, never a silent skip."""
-    path = ART_DIR / f"{fig_id}.png"
+    path = ART_DIR / f"{fig_id}.jpg"
     if not path.is_file():
-        raise FileNotFoundError(f"«FIG: {fig_id}» needs {path} — the illustration PNG is missing.")
-    img = (f'<img src="art/illustrations/{fig_id}.png" alt="{caption}" '
+        raise FileNotFoundError(f"«FIG: {fig_id}» needs {path} — the illustration JPEG is missing.")
+    img = (f'<img src="art/illustrations/{fig_id}.jpg" alt="{caption}" '
            f'style="height:{height_in}in;width:auto;max-width:100%;object-fit:contain;margin:0 auto;display:block">')
     return _figure(number, caption, img, large=True, credit="")
 
@@ -955,6 +960,21 @@ _RENDERERS = {
     "hail-damage-tiers": fig_hail_damage_tiers,
     "radiological-zones": fig_radiological_zones,
     "disaster-timeline": fig_disaster_timeline,
+    "card-tornado": fig_card_tornado,
+    "card-hurricane": fig_card_hurricane,
+    "card-wildfire": fig_card_wildfire,
+    "card-cold": fig_card_cold,
+    "call-card": fig_call_card,
+    "weather-radio-setup": fig_weather_radio_setup,
+    "battery-runtime": fig_battery_runtime,
+    "leave-early-no-car": fig_leave_early_no_car,
+    "three-shelters": fig_three_shelters,
+    "insulin-cooler": fig_insulin_cooler,
+    "generator-20ft": fig_generator_20ft,
+    "illus-walker-porch": lambda: _illustration("illus-walker-porch", 25, "A driver who has agreed, out loud, to leave at the watch. Name a second one too."),
+    "illus-mobile-home": lambda: _illustration("illus-mobile-home", 26, "A manufactured home is not shelter from a tornado. Go before the warning."),
+    "illus-bed-shaker": lambda: _illustration("illus-bed-shaker", 27, "If your hearing aids come out at night, your alarm has to shake the bed."),
+    "illus-oxygen-car": lambda: _illustration("illus-oxygen-car", 28, "Tanks ride upright and secured. Know how many hours each lasts at your flow."),
 }
 
 FIGURES = [
@@ -986,6 +1006,36 @@ FIGURES = [
      "justification": "Two nested radii (10mi/50mi) around a point is a map relationship; most readers' first question — am I inside either ring — is answered by the shape, not the number."},
     {"id": "disaster-timeline", "number": 13, "file": "P1-C2-the-timeline.md", "protection": None,
      "justification": "The chapter's central claim is a magnitude mismatch (public attention vs. where the phases actually run long) that a table of equal-height rows visually denies — a log-scaled bar shows the true disproportion."},
+    {"id": "card-tornado", "number": 14, "file": "P3-01-tornado.md", "protection": None,
+     "justification": "D1. Older readers asked for a card they can cut out and tick: the one-page version in 14pt with tick boxes, by WATCH / WARNING / AFTER."},
+    {"id": "card-hurricane", "number": 15, "file": "P3-02-hurricane-surge.md", "protection": None,
+     "justification": "D1. The day-count table reorganised into the three moments a reader actually acts on, in large print with tick boxes."},
+    {"id": "card-wildfire", "number": 16, "file": "P3-05-wildfire.md", "protection": None,
+     "justification": "D1. 'Leave at the warning, not the order' is the line that saves lives; the card puts it in a red band at 14pt."},
+    {"id": "card-cold", "number": 17, "file": "P3-11-extreme-cold.md", "protection": None,
+     "justification": "D1. The pipe and CO steps as a tick list; cold has no single dramatic moment, so the card gives the sequence."},
+    {"id": "call-card", "number": 18, "file": "P0-front-matter.md", "protection": None,
+     "justification": "D8. The plan for a reader without a car is a list of people in order; a fill-in fridge card is the plan itself, not a description of it."},
+    {"id": "weather-radio-setup", "number": 19, "file": "P5-C1-warning-literacy.md", "protection": 87,
+     "justification": "D6. Programming SAME is the step people skip; three numbered buttons on a drawn radio map the prose onto the object in their hands."},
+    {"id": "battery-runtime", "number": 20, "file": "P2-C6-medical.md", "protection": 61,
+     "justification": "D2. The sizing rule is one multiplication; laid out as boxes with a labelled example, a reader can do it with their own label."},
+    {"id": "leave-early-no-car", "number": 21, "file": "P5-C3-evacuation.md", "protection": 111,
+     "justification": "D3. The danger is ordering: county transport comes after the order, which is after the watch. A timeline shows the gap a sentence hides."},
+    {"id": "three-shelters", "number": 22, "file": "P4-C2-places.md", "protection": None,
+     "justification": "D4. 'Three places, each with a drive time' becomes a map the reader fills in, with the trailer itself crossed out."},
+    {"id": "insulin-cooler", "number": 23, "file": "P2-C6-medical.md", "protection": 60,
+     "justification": "D5. Packing order (ice at the sides, towel, pens in the middle, never ice on pens) is spatial; a cutaway shows it at a glance."},
+    {"id": "generator-20ft", "number": 24, "file": "P2-C3-temperature-shelter.md", "protection": 32,
+     "justification": "D7. CDC's 20 feet from every window, door and vent is a line around the whole house, not one distance; drawn to scale it shows how far that is."},
+    {"id": "illus-walker-porch", "number": 25, "file": "P5-C3-evacuation.md", "protection": 111,
+     "justification": "I1. Older readers asked for pictures; the agreed-driver pickup shows the plan working, not the disaster."},
+    {"id": "illus-mobile-home", "number": 26, "file": "P4-C2-places.md", "protection": None,
+     "justification": "I2. A torn single-wide beside an intact brick house makes 'not shelter' undeniable."},
+    {"id": "illus-bed-shaker", "number": 27, "file": "P5-C1-warning-literacy.md", "protection": 85,
+     "justification": "R6. A sleeping reader without hearing aids cannot hear an alarm; the picture shows what the alternative device is."},
+    {"id": "illus-oxygen-car", "number": 28, "file": "P2-C6-medical.md", "protection": 61,
+     "justification": "R4. How tanks ride in a car is a physical arrangement; a picture shows upright and secured."},
 ]
 
 
@@ -997,8 +1047,20 @@ def render_figure(fig_id):
 
 
 if __name__ == "__main__":
-    # smoke test: every registered figure renders without raising
+    # smoke test: every registered figure renders. A missing illustration PNG is reported
+    # by path and fails the run; it is never counted as OK.
+    assert sorted(e["id"] for e in FIGURES) == sorted(_RENDERERS), "FIGURES and _RENDERERS disagree"
+    assert len({e["number"] for e in FIGURES}) == len(FIGURES), "duplicate figure number"
+    missing = []
     for entry in FIGURES:
-        html = render_figure(entry["id"])
+        try:
+            html = render_figure(entry["id"])
+        except FileNotFoundError as e:
+            missing.append(str(e))
+            print(f"MISSING  {entry['number']:>2}  {entry['id']}: {e}")
+            continue
         assert "<figure>" in html and "</figure>" in html, entry["id"]
+        print(f"OK       {entry['number']:>2}  {entry['id']}")
+    if missing:
+        raise SystemExit(f"FAIL — {len(missing)} of {len(FIGURES)} figures missing art.")
     print(f"OK — {len(FIGURES)} figures render.")

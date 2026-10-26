@@ -71,7 +71,7 @@ are addressed by the same work.
 
 **Evacuation is a road-capacity problem, and it fails early.** A community on one or two roads cannot
 move in twenty minutes what takes an hour to move on a normal day. Waiting for certainty means joining
-the queue at the worst moment, and cars in a queue in a fire is precisely the Paradise fatality pattern.
+the line at the worst moment, and cars in line in a fire is precisely the Paradise fatality pattern.
 
 Together, they set the two priorities: harden the house so embers cannot start it, and go absurdly
 early.
@@ -152,7 +152,7 @@ order.
 
 This is the single most important sentence in this playbook and it is worth being blunt about why: a
 warning means "be ready", an order means "go", and the difference between them is the difference between
-open roads and the Paradise queue. Nobody has ever regretted a wildfire evacuation that turned out to be
+open roads and the Paradise traffic jam. Nobody has ever regretted a wildfire evacuation that turned out to be
 unnecessary. Take the five-minute list, the people, the animals, the medication and the documents.
 
 **If you have thirty minutes and it is safe**, work the thirty-minute list and the shutdown sequence in
@@ -227,7 +227,7 @@ than a boil-water notice, because **boiling does not remove benzene.**
 Compounds (VOCs) After Wildfires" (2021). |
 https://www.epa.gov/system/files/documents/2021-09/addressing-contamination-of-drinking-water-distribution-systems-from-volatile-organic-compounds-after-wildfires_508.pdf | retrieved 2026-07-29»
 
-**Hot spots persist for weeks.** Stumps and root systems smoulder underground, and structures reignite.
+**Hot spots persist for weeks.** Stumps and root systems smolder underground, and structures reignite.
 Walk the property, watch for smoke, keep a hose or an extinguisher available.
 
 **Then the aftermath hazard specific to this playbook: burn-scar debris flow.** Fire changes the ground.
@@ -268,7 +268,7 @@ in the burn scar is bidding for the same builders and the same materials at once
 | **Highest value** | **Zone 0** — nothing combustible within five feet, and metal mesh on every vent |
 | **Red Flag** | Fuel and turn the cars around · bags in the car · shoes and keys by the bed |
 | **Warning** | **Leave at the warning, not the order.** The roads work now |
-| **Caught in a car** | Large clear area, engine off, lights on, low, covered, stay inside |
+| **Caught in a car** | Park clear of brush, windows and vents shut, lie low under a wool blanket, call 911 |
 | **After** | Ash is toxic — never dry-sweep · water may be unsafe · hot spots for weeks |
 | **For years after** | Burn-scar debris flow: rain becomes an evacuation question |
 | **Protections** | 49, 50, 52, 76, 77, 78, 91, 92, 95, 100, 106, 107, 108, 113, 114 |

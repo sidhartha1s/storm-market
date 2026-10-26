@@ -36,7 +36,12 @@ PAGE_TEMPLATE = '''<section class="page">
 def build():
     pages = []
     for entry in FIGURES:
-        figure_html = render_figure(entry["id"])
+        try:
+            figure_html = render_figure(entry["id"])
+        except FileNotFoundError as e:
+            # visible on the proof page and in the console; the book build itself still raises
+            print(f"MISSING ART: {e}")
+            figure_html = f'<p style="color:var(--alert);font-weight:700">MISSING ART: {html.escape(str(e))}</p>'
         pages.append(PAGE_TEMPLATE.format(
             fig_id=html.escape(entry["id"]),
             protection=html.escape(str(entry["protection"]) if entry["protection"] is not None else "—"),

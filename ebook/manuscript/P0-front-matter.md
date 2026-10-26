@@ -114,8 +114,8 @@ in a hurricane zone, a wildfire area or a mobile home, the blank is the *watch* 
 Warning*. It is not the evacuation order. If you do not drive, your driver must agree to the sentence
 out loud. *(trigger plan, 95)*
 
-**3. An alarm that wakes you.** Put a weather radio by the bed. If you have a flip phone or a landline,
-ask your county to put the landline on its emergency call list. If your hearing aids come out at
+**3. An alarm that wakes you.** Put a weather radio by the bed. Have a flip phone or a landline?
+Ask your county to put the landline on its emergency call list. If your hearing aids come out at
 night, add a bed-shaker or a flashing light. *(two alert paths, 85; county alerts, 86; weather radio,
 87)*
 
@@ -130,8 +130,8 @@ buffer, 59; medical summary, Form 2)*
 
 **7. A light, shoes and a whistle at the bed.** *(lighting, 43; whistle, go-bag, 107)*
 
-**8. Your "leave" number for a cold house,** written down where everyone can see it. *(the
-extreme-cold playbook in Part Three)*
+**8. Your "leave" number for a cold house: 64°F.** If your warmest room drops below it, you leave.
+Write it where everyone can see it. *(the extreme-cold playbook in Part Three)*
 
 Then fill in the card below and put it on the fridge.
 
@@ -147,13 +147,13 @@ to matter.
 Most of the start page is free. When you are ready to spend, buy in this order. Each price is the band
 this book prints in that protection. Prices move, so treat them as a guide, not a quote.
 
-**About $50 to start.**
+**With about $50.**
 
 - A weather radio with SAME *(87)*: $30–70.
 - Check the date on every carbon monoxide alarm you own *(47)*: free.
 - A medication list, copied twice *(Form 2)*: free.
 
-**About $150 more.**
+**With about $150, add these.**
 
 - A light for each bed, with spare batteries *(43)*: $20–70.
 - A new carbon monoxide alarm, if yours is past its date *(47)*: $20–45 each.
@@ -162,7 +162,7 @@ this book prints in that protection. Prices move, so treat them as a guide, not 
 - If you sleep without hearing aids, a bed-shaker or strobe for your alarms *(48)*. Ask the seller to
   confirm it works with your alarm.
 
-**About $500 more.**
+**With about $500, add these.**
 
 - A battery power station sized to your medical machine *(38)*: $80–1,500. The size of your machine
   decides where in that band you land.

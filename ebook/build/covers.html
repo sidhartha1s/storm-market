@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cover variants</title>
+<link rel="stylesheet" href="book.css">
+<style>
+  .page.cover { padding: 0; overflow: hidden; }
+  .cv { position: absolute; inset: 0; }
+  .cv svg { width: 100%; height: 100%; display: block; }
+  .txt { position: absolute; inset: 0.5in; display: flex; flex-direction: column; }
+  .txt h1 { font-size: 35pt; line-height: 1.0; letter-spacing: -.02em; margin-top: auto; }
+  .txt .sub { font-size: 11pt; margin-top: 11pt; line-height: 1.38; }
+  .txt .counts {
+    margin-top: 16pt; padding-top: 11pt;
+    font-family: var(--sans); font-size: 8pt; letter-spacing: .13em; text-transform: uppercase;
+  }
+  .txt .byline { margin-top: 16pt; font-family: var(--sans); font-size: 9.5pt; letter-spacing: .05em; }
+  .kicker {
+    font-family: var(--sans); font-size: 7.5pt; letter-spacing: .22em;
+    text-transform: uppercase; font-weight: 700;
+  }
+  /* A */
+  .a h1 { color: #fff; } .a .sub { color: #c3ccd6; } .a .counts { color: #93a0ad; border-top: 1pt solid #2b3846; }
+  .a .byline { color: #fff; } .a .kicker { color: #ffb01f; }
+  /* B */
+  .b h1 { color: #f7f2e8; } .b .sub { color: #cbbfa9; } .b .counts { color: #9d907a; border-top: 1pt solid #4a4131; }
+  .b .byline { color: #f7f2e8; } .b .kicker { color: #e8a33a; }
+  /* C */
+  .c h1 { color: #fff; } .c .sub { color: #d8cec4; } .c .counts { color: #a99e93; border-top: 1pt solid #46392f; }
+  .c .byline { color: #fff; } .c .kicker { color: #ffc65c; }
+</style>
+</head>
+<body>
+
+<!-- ============ A · NEXRAD reflectivity ============ -->
+<section class="page cover a">
+  <div class="cv">
+    <svg viewBox="0 0 576 864" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="aSky" cx="46%" cy="34%" r="78%">
+          <stop offset="0" stop-color="#16222f"/><stop offset="55%" stop-color="#0c141d"/>
+          <stop offset="100%" stop-color="#05080c"/>
+        </radialGradient>
+        <filter id="aWarp"><feTurbulence type="fractalNoise" baseFrequency="0.006 0.011" numOctaves="4" seed="7"/>
+          <feDisplacementMap in="SourceGraphic" scale="58" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="1.2"/></filter>
+        <linearGradient id="aFade" x1="0" y1="0.45" x2="0" y2="1">
+          <stop offset="0" stop-color="#05080c" stop-opacity="0"/>
+          <stop offset="0.62" stop-color="#05080c" stop-opacity="0.86"/>
+          <stop offset="1" stop-color="#05080c"/>
+        </linearGradient>
+      </defs>
+      <rect width="576" height="864" fill="url(#aSky)"/>
+      <g stroke="#22real" fill="none"></g>
+      <g stroke="#1d2b3a" stroke-width="1" fill="none" opacity=".85">
+        <circle cx="278" cy="322" r="92"/><circle cx="278" cy="322" r="164"/>
+        <circle cx="278" cy="322" r="236"/><circle cx="278" cy="322" r="308"/>
+        <line x1="278" y1="6" x2="278" y2="638"/><line x1="-34" y1="322" x2="590" y2="322"/>
+      </g>
+      <g filter="url(#aWarp)" opacity=".97">
+        <ellipse cx="278" cy="322" rx="248" ry="196" fill="#0e5f38"/>
+        <ellipse cx="272" cy="318" rx="204" ry="158" fill="#1f8f3c"/>
+        <ellipse cx="266" cy="314" rx="160" ry="122" fill="#5cb82b"/>
+        <ellipse cx="262" cy="310" rx="120" ry="90" fill="#d9d21c"/>
+        <ellipse cx="258" cy="306" rx="84" ry="62" fill="#f0a318"/>
+        <ellipse cx="254" cy="302" rx="52" ry="38" fill="#e0491d"/>
+        <ellipse cx="250" cy="298" rx="24" ry="17" fill="#c0197f"/>
+      </g>
+      <rect width="576" height="864" fill="url(#aFade)"/>
+      <g stroke="#ffb01f" stroke-width="2.2" fill="none" opacity=".95">
+        <path d="M40 690 h84"/>
+      </g>
+    </svg>
+  </div>
+  <div class="txt">
+    <div class="kicker">Storm Market Field Manual</div>
+    <h1>The Storm-Ready<br>Home</h1>
+    <div class="sub">What the survivors did differently — and the 130 things you can do before the next one.</div>
+    <div class="counts">130 protections · 23 hazards · 60 days · 5 regions</div>
+    <div class="byline">Joe Halloran</div>
+  </div>
+</section>
+
+<!-- ============ B · isobar spiral ============ -->
+<section class="page cover b">
+  <div class="cv">
+    <svg viewBox="0 0 576 864" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="bSky" cx="50%" cy="30%" r="80%">
+          <stop offset="0" stop-color="#241a10"/><stop offset="60%" stop-color="#14100b"/>
+          <stop offset="100%" stop-color="#0a0806"/>
+        </radialGradient>
+        <linearGradient id="bFade" x1="0" y1="0.4" x2="0" y2="0.92">
+          <stop offset="0" stop-color="#0a0806" stop-opacity="0"/>
+          <stop offset="1" stop-color="#0a0806"/>
+        </linearGradient>
+        <filter id="bSoft"><feTurbulence type="fractalNoise" baseFrequency="0.004 0.007" numOctaves="3" seed="19"/>
+          <feDisplacementMap in="SourceGraphic" scale="26" xChannelSelector="R" yChannelSelector="G"/></filter>
+      </defs>
+      <rect width="576" height="864" fill="url(#bSky)"/>
+      <g filter="url(#bSoft)" fill="none" stroke-linecap="round">
+        <g stroke="#8a6a2a" stroke-width="1.1" opacity=".55">
+          <circle cx="288" cy="300" r="298"/><circle cx="288" cy="300" r="272"/>
+          <circle cx="288" cy="300" r="246"/><circle cx="288" cy="300" r="220"/>
+        </g>
+        <g stroke="#c98a26" stroke-width="1.35" opacity=".8">
+          <circle cx="288" cy="300" r="194"/><circle cx="288" cy="300" r="170"/>
+          <circle cx="288" cy="300" r="146"/><circle cx="288" cy="300" r="124"/>
+        </g>
+        <g stroke="#eda63a" stroke-width="1.7" opacity=".95">
+          <circle cx="288" cy="300" r="102"/><circle cx="288" cy="300" r="82"/>
+          <circle cx="288" cy="300" r="63"/><circle cx="288" cy="300" r="46"/>
+        </g>
+        <g stroke="#ffd27a" stroke-width="2.1">
+          <circle cx="288" cy="300" r="31"/><circle cx="288" cy="300" r="18"/>
+        </g>
+      </g>
+      <circle cx="288" cy="300" r="5.5" fill="#fff3dd"/>
+      <rect width="576" height="864" fill="url(#bFade)"/>
+    </svg>
+  </div>
+  <div class="txt">
+    <div class="kicker">Storm Market Field Manual</div>
+    <h1>The Storm-Ready<br>Home</h1>
+    <div class="sub">What the survivors did differently — and the 130 things you can do before the next one.</div>
+    <div class="counts">130 protections · 23 hazards · 60 days · 5 regions</div>
+    <div class="byline">Joe Halloran</div>
+  </div>
+</section>
+
+<!-- ============ C · supercell horizon ============ -->
+<section class="page cover c">
+  <div class="cv">
+    <svg viewBox="0 0 576 864" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="cSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2a1a0d"/><stop offset="34%" stop-color="#7a3d10"/>
+          <stop offset="56%" stop-color="#d1791b"/><stop offset="70%" stop-color="#f0a63a"/>
+          <stop offset="82%" stop-color="#8a4a18"/><stop offset="100%" stop-color="#1a0f08"/>
+        </linearGradient>
+        <filter id="cCloud"><feTurbulence type="fractalNoise" baseFrequency="0.008 0.016" numOctaves="5" seed="42"/>
+          <feDisplacementMap in="SourceGraphic" scale="72" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="1.6"/></filter>
+        <linearGradient id="cScrim" x1="0" y1="0.5" x2="0" y2="1">
+          <stop offset="0" stop-color="#120a05" stop-opacity="0"/>
+          <stop offset="0.55" stop-color="#120a05" stop-opacity="0.9"/>
+          <stop offset="1" stop-color="#0d0704"/>
+        </linearGradient>
+      </defs>
+      <rect width="576" height="864" fill="url(#cSky)"/>
+      <g filter="url(#cCloud)">
+        <ellipse cx="300" cy="150" rx="330" ry="132" fill="#241408" opacity=".95"/>
+        <ellipse cx="200" cy="215" rx="250" ry="96" fill="#2e1a0a" opacity=".9"/>
+        <ellipse cx="400" cy="255" rx="230" ry="84" fill="#1d1006" opacity=".85"/>
+        <ellipse cx="288" cy="330" rx="300" ry="70" fill="#170d05" opacity=".7"/>
+      </g>
+      <path d="M262 300 c-14 46 -30 66 -46 96 c22 -6 34 -10 50 -14 c-16 52 -26 78 -40 118
+               c46 -46 92 -104 128 -160 c-24 6 -38 10 -56 14 c14 -40 22 -60 34 -94z"
+            fill="#ffe9b8" opacity=".92"/>
+      <rect y="430" width="576" height="434" fill="url(#cScrim)"/>
+      <path d="M0 470 c56 -14 96 6 150 2 c62 -4 92 -22 158 -16 c58 6 96 20 148 14 c48 -6 82 -16 120 -8 v402 H0z"
+            fill="#0b0603"/>
+      <g stroke="#3a2a18" stroke-width="1.6" opacity=".8" fill="none">
+        <path d="M96 470 v-16 m0 16 v10"/><path d="M300 456 v-14"/><path d="M470 468 v-18"/>
+      </g>
+    </svg>
+  </div>
+  <div class="txt">
+    <div class="kicker">Storm Market Field Manual</div>
+    <h1>The Storm-Ready<br>Home</h1>
+    <div class="sub">What the survivors did differently — and the 130 things you can do before the next one.</div>
+    <div class="counts">130 protections · 23 hazards · 60 days · 5 regions</div>
+    <div class="byline">Joe Halloran</div>
+  </div>
+</section>
+
+</body>
+</html>

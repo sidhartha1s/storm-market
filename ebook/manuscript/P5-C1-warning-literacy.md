@@ -55,7 +55,7 @@ https://www.fema.gov/emergency-managers/practitioners/integrated-public-alert-wa
 | retrieved 2026-10-27»
 Then call your county emergency office. Ask whether your landline is on its emergency call list. If it
 is not, sign it up (county alerts, 86). When the county sends its yearly test, check that your phone
-rang. Ask a relative to call you whenever an alert reaches them, and write that call into your trigger
+rang. Ask a relative to call you whenever an alert reaches them. Write that call into your trigger
 plan (95).
 
 **A weather radio may not tell you to evacuate.** It always carries the Weather Service's own weather
@@ -385,7 +385,7 @@ a set of pre-committed thresholds with an action attached to each:
 >
 > When the house drops below our number — I call my driver, or 911 if nobody answers.
 
-Write between five and ten. Put it on the fridge and in the binder. Read it once at the start of each
+Write between five and ten. Put it on the fridge and in the trashder. Read it once at the start of each
 season.
 
 The mechanism is simple and it is why this works: it converts a judgment call made by a frightened

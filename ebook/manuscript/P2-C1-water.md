@@ -48,7 +48,7 @@ Two weeks, not three days — and it is worth being exact about where each numbe
 they are not the same authority saying different things. **Ready.gov says one gallon per person per
 day "for several days."** That is the federal floor and it is written for the common case. **The
 two-week figure is state guidance from the places that expect help to be slow**: Oregon's Department
-of Emergency Management and Washington's Emergency Management Division both run a public programme
+of Emergency Management and Washington's Emergency Management Division both run a public program
 called **"Be 2 Weeks Ready,"** and both say plainly that after a large regional event the emergency
 system will be saturated and *you are the help until help arrives.*
 «SRC: Oregon Department of Emergency Management, "Be 2 Weeks Ready." |
@@ -148,7 +148,7 @@ The sequence matters and the order is not optional:
    contaminated main.
 3. **Open a hot tap** somewhere in the house to admit air. Without this the tank will barely drain.
 4. **Draw from the drain valve** at the base into a clean container. The first flow will be
-   discoloured with sediment; let it run clear.
+   discolored with sediment; let it run clear.
 5. **Do not refill or re-energize** until you know the supply is safe and the tank is full.
 
 Learn this on a calm afternoon, not by flashlight. Hang the hose and the wrench on the tank itself.
@@ -187,14 +187,14 @@ you want it — which is why the drought chapter treats storage rather than capt
 ### 6 · Choosing a filter that matches the threat
 
 **Prevents:** buying the wrong device and trusting it.
-**Cost:** $30–120 · **Time:** an hour of reading, once · **Materials:** a gravity or hollow-fibre
+**Cost:** $30–120 · **Time:** an hour of reading, once · **Materials:** a gravity or hollow-fiber
 filter · **Regions:** all five.
 
 Filters are the most misunderstood item in preparedness, because the word covers devices that do
 completely different things. What matters is the specific threat you are filtering for:
 
 - **Sediment and turbidity** — nearly anything works, including cloth pre-filtering.
-- **Bacteria and protozoa** — this is what a good hollow-fibre or ceramic filter is for, and it is
+- **Bacteria and protozoa** — this is what a good hollow-fiber or ceramic filter is for, and it is
   what most municipal contamination and most surface water requires.
 - **Viruses** — most portable filters do **not** remove viruses, because viruses are smaller than
   the pore size. This requires either a purifier rated for viruses or a chemical or thermal step.
@@ -226,20 +226,20 @@ tablets · **Regions:** all five.
 Chemical disinfection is the cheapest backstop there is, and the details are the whole protection.
 
 **Use only plain, unscented household bleach with sodium hypochlorite as the sole active
-ingredient.** Not scented. Not colour-safe. Not "splash-less". Not any product with added
+ingredient.** Not scented. Not color-safe. Not "splash-less". Not any product with added
 surfactants, thickeners, or fragrance. The additives are not treatable and some are toxic. Check the
 label for the concentration, because household bleach is sold at more than one strength and the dose
 depends on it.
 
 Bleach also degrades. An opened bottle loses potency over months, which means the bottle under your
-sink is not a reliable emergency supply. Purification tablets are more expensive per litre, do not
+sink is not a reliable emergency supply. Purification tablets are more expensive per liter, do not
 degrade nearly as fast, and are what belongs in a go-bag.
 
 **The ratio is not written from memory in this book.** The federal figure, for regular unscented
 household bleach containing **5.25 to 6.0 percent sodium hypochlorite**, is **one-eighth of a teaspoon
 per gallon** of water. Stir it, then **let it stand thirty minutes**. The water should then have a
-slight bleach odour — **if it does not, repeat the dose and stand another fifteen minutes, and if it
-still does not smell of chlorine, discard it and find another source.** Never use scented, colour-safe
+slight bleach odor — **if it does not, repeat the dose and stand another fifteen minutes, and if it
+still does not smell of chlorine, discard it and find another source.** Never use scented, color-safe
 or cleaner-added bleach, and do not substitute iodine or camping products whose only active ingredient
 is not sodium hypochlorite at those concentrations.
 «SRC: Ready.gov, "Water" — Water Treatment, Chlorination. https://www.ready.gov/water | retrieved 2026-07-29» It goes on the form in Part Six and on a
@@ -357,7 +357,7 @@ minute after the power fails. That minute is real and worth catching in a contai
 
 ---
 
-### 11 · Grey-water reuse under restriction
+### 11 · Gray-water reuse under restriction
 
 **Prevents:** wasting water that has one more job left in it.
 **Cost:** $0 · **Time:** none · **Materials:** a bucket
@@ -367,11 +367,11 @@ In a shortage, water gets used twice by design rather than by accident. Water th
 or hands flushes a toilet. Water that has boiled vegetables cools and goes on the garden. A bucket in
 the shower catches what runs while the water warms.
 
-Two limits. Do not store grey water — it grows bacteria quickly, so use it the same day. And keep
-water that has touched raw meat, soiled nappies, or cleaning chemicals out of the reuse chain
+Two limits. Do not store gray water — it grows bacteria quickly, so use it the same day. And keep
+water that has touched raw meat, soiled diapers, or cleaning chemicals out of the reuse chain
 entirely.
 
-**What this does not do:** grey water is never drinking water, never washes food, and is not for
+**What this does not do:** gray water is never drinking water, never washes food, and is not for
 anyone with a compromised immune system.
 
 ---

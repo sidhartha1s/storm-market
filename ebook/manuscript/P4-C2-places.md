@@ -33,7 +33,7 @@ month.
 
 **So the plan for an owner is: do the free and cheap things now, and keep a written list of what to demand
 next time a contractor is on the property for any reason.** That list is worth thousands of dollars and it
-costs nothing to maintain. It goes in the binder.
+costs nothing to maintain. It goes in the trashder.
 
 **And know your own building.** Where the water main, gas meter and breaker panel are. Which way the valves
 turn. What the roof covering is and how old it is. Whether the crawl space floods. Where the sump discharges.
@@ -64,7 +64,7 @@ stairs, in the dark, possibly many floors, possibly carrying somebody. If anyone
 that, the plan has to be built around it — which means either leaving early on a warning or having a genuine
 arrangement for assistance. Know how many floors, and count them once with the lights off and a flashlight.
 
-**Water pressure** in many multi-storey buildings depends on electric pumps, so an outage means no water on
+**Water pressure** in many multi-story buildings depends on electric pumps, so an outage means no water on
 the upper floors regardless of what the mains is doing. Store water accordingly (Protection 1), and fill
 everything on a warning (Protection 3).
 
@@ -275,7 +275,7 @@ in the event nobody will be able to reach anybody: **where does this household m
 children?**
 
 Two locations. **One near home** — a specific neighbor's driveway, a named tree, a corner — for the case where
-the house is unsafe but the area is fine. **One outside the area** — a named relative, a specific car park, a
+the house is unsafe but the area is fine. **One outside the area** — a named relative, a specific parking lot, a
 named town — for the case where the whole area is evacuated. Both written down, both known by everyone
 including the children, both reachable without a phone.
 

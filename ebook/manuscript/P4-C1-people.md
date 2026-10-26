@@ -95,7 +95,7 @@ agreement and a phone number, written down on both sides.
 
   **When they will not get in the car.** Plan for this before the day. Practice the evacuation with the
   family, including the drive. Pack a favorite item in the car, such as a photo book or a pillow. On the
-  day, keep the words short and concrete, then reassure: "We're going to see Tom." Approach from the
+  day, keep the words short and concrete, then reassure: "We're going to see your son." Approach from the
   front, use their name, and speak calmly and low. Do not argue or correct. Do not leave them alone while
   you load the car. Leave as early as you can. Tell the county registry the household has two people who
   need help, not one (Protection 111).
@@ -176,7 +176,7 @@ guidance for a missed session, and the transport. Clinics have emergency plans; 
 
 **Mobility and evacuation.** If a household member cannot walk out, cannot use stairs, or needs equipment
 that does not travel easily, the evacuation plan needs to be specific: who lifts, what equipment comes, which
-vehicle, and which route. Enrol in the county's voluntary assistance registry (Protection 111) — and then
+vehicle, and which route. Enroll in the county's voluntary assistance registry (Protection 111) — and then
 arrange a named human being as well, because a registry is a list of intentions and a neighbor is a person
 who arrives. Know that shelters are legally required to be accessible, and know that the reality varies,
 which is why a named alternative destination matters.
