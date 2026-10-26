@@ -245,6 +245,8 @@ def main():
         for l in live:
             print("   ", l[:160])
         sys.exit(3)
+    if "--launch" not in sys.argv:  # render.cmd already holds the lock (--hold) when it gets to --launch
+        wait_free()
     # the RAM floor protects a RENDER about to start (--launch); a gate's single headless Chromium (~300 MB) only needs 'no render alive'
     free = free_gb()
     if "--launch" in sys.argv:
