@@ -289,4 +289,6 @@ def synth_file(model, voice_state, voice_md5, sr, stream_audio_chunks, lines, ou
 
 
 if __name__ == "__main__":
-    main()
+    import render_busy  # the heavy lock: one heavy job per machine (owner 26 Oct 26)
+    with render_busy.heavy_lock("tts_clone"):
+        main()

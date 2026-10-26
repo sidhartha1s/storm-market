@@ -115,4 +115,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import render_busy  # the heavy lock: one heavy job per machine (owner 26 Oct 26)
+    with render_busy.heavy_lock("e2e"):
+        main()

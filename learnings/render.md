@@ -2,6 +2,16 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 26 Oct 26: one heavy lock per machine; heavy jobs wait their turn instead of clashing
+- That day 2 of 4 helpers lost their results to clashes: a test render blocked main's e2e, a render killed a 26-min
+  snapshot-queue test, and a queue start ran into another render. render_busy only refused a browser beside a live
+  render; nothing made a render, TTS, the face pass or e2e wait for each other.
+- Now each of them books `~/.storm-heavy.lock` first (holder, job, machine, pid, start time) and a waiting job prints the
+  holder and waits. Mechanism, reclaim of a dead holder and the child pass-through: `scripts/render_busy.py` docstring.
+- The snapshot worker (PR #225) calls `render_busy.py` with no argument, which now waits for the lock but does not book
+  it. To book it, its ZBook batch calls `render_busy.py --hold snapshot` and `snap_local` wraps the run in
+  `render_busy.heavy_lock("snapshot")`.
+
 ## 26 Oct 26: render.cmd no longer passes --experimental-fast-capture=true
 1. Measured on the ZBook, 90 s Joplin slice: with the flag, capture fell back to screenshot and at 2 workers streaming
    was off (`enabled:false, multi_worker`), the slow disk path behind the 100 GB / 1-worker rule. Moore (2 workers) and
