@@ -240,6 +240,7 @@ footer a{color:#fff3df}
   footer{font-size:16px;padding-right:16px}.foot-links a{display:inline-block;padding:10px 0}
 }
 @media (max-width:400px){.band #live-n::after{content:""}}
+.pill{transition:opacity .25s}.pill.off{opacity:0;pointer-events:none;visibility:hidden}
 </style>
 </head>
 <body>
@@ -267,7 +268,7 @@ footer a{color:#fff3df}
       <p class="kick">Contacts</p>
       <h2>Who to call, before and after</h2>
       <ul class="ruled">
-        <li><b>Emergency management</b><p><a href="https://cdphe.colorado.gov/emergency-preparedness-response">Emergency preparedness and response</a> &middot; (720) 852-6600</p></li><li><b>Insurance regulator</b><p><a href="https://www.sircon.com/ComplianceExpress/Inquiry/consumerInquiry.do?nonSscrb=Y">Department of Regulatory Agencies Division of Insurance</a> &middot; (303) 894-7499</p></li><li><b>Weather alerts</b><p><a href="https://cdphe.colorado.gov/health-alert-network">Colorado Health Alert Network</a></p></li><li><b>Energy bill assistance (LIHEAP)</b><p><a href="https://www.colorado.gov/pacific/energyoffice/weatherization-assistance">Energy bill assistance (LIHEAP)</a> &middot; 1-866-432-8435</p></li><li><b>Well water testing</b><p><a href="https://www.colorado.gov/pacific/cdphe/drinking-water-private-wells">Colorado Department of Public Health &amp; Environment</a></p></li>
+        <li><b>Emergency management</b><p><a href="https://cdphe.colorado.gov/emergency-preparedness-response">Emergency preparedness and response</a> &middot; (720) 852-6600</p></li><li><b>Insurance regulator</b><p><a href="https://www.sircon.com/ComplianceExpress/Inquiry/consumerInquiry.do?nonSscrb=Y">Department of Regulatory Agencies Division of Insurance</a> &middot; (303) 894-7499</p></li><li><b>Weather alerts</b><p><a href="https://cdphe.colorado.gov/health-alert-network">Colorado Health Alert Network</a></p></li><li><b>Energy bill assistance (LIHEAP)</b><p><a href="https://www.colorado.gov/pacific/energyoffice/weatherization-assistance">Apply for help with heating and cooling bills</a> &middot; 1-866-432-8435</p></li><li><b>Well water testing</b><p><a href="https://www.colorado.gov/pacific/cdphe/drinking-water-private-wells">Colorado Department of Public Health &amp; Environment</a></p></li>
       </ul>
     </section>
 <section class="sheet" id="sheet-hazards">
@@ -363,6 +364,12 @@ footer a{color:#fff3df}
   toast.querySelector('.x').addEventListener('click',()=>{localStorage.setItem(KEY,Date.now()+86400000);clearTimeout(hide);toast.classList.remove('on');});
   if(!dismissed())setTimeout(function loop(){show();setTimeout(loop,7500+Math.random()*2500);},5000);
   window.__showToast=show;
+})();
+
+(function(){
+  var p=document.querySelector('.pill'), b=document.querySelector('.sheet .btn');
+  if(!p||!b||!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(es){p.classList.toggle('off',es[0].isIntersecting);}).observe(b);
 })();
 </script>
 </body>

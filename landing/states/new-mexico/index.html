@@ -240,6 +240,7 @@ footer a{color:#fff3df}
   footer{font-size:16px;padding-right:16px}.foot-links a{display:inline-block;padding:10px 0}
 }
 @media (max-width:400px){.band #live-n::after{content:""}}
+.pill{transition:opacity .25s}.pill.off{opacity:0;pointer-events:none;visibility:hidden}
 </style>
 </head>
 <body>
@@ -267,7 +268,7 @@ footer a{color:#fff3df}
       <p class="kick">Contacts</p>
       <h2>Who to call, before and after</h2>
       <ul class="ruled">
-        <li><b>Emergency management</b><p><a href="https://www.dhsem.nm.gov/">State emergency management agency</a> &middot; (505) 476-9600</p></li><li><b>Insurance regulator</b><p>Office of Superintendent of Insurance (OSI) &middot; (855) 427-5674</p></li><li><b>Energy bill assistance (LIHEAP)</b><p><a href="https://www.hsd.state.nm.us/lookingforassistance/low_income_home_energy_assistance_program/">Energy bill assistance (LIHEAP)</a> &middot; 1800-283-4465</p></li><li><b>Well water testing</b><p><a href="https://www.env.nm.gov/drinking_water/private-wells-2/">New Mexico Environment Department Drinking Water Bureau</a></p></li>
+        <li><b>Emergency management</b><p><a href="https://www.dhsem.nm.gov/">State emergency management agency</a> &middot; (505) 476-9600</p></li><li><b>Insurance regulator</b><p>Office of Superintendent of Insurance (OSI) &middot; (855) 427-5674</p></li><li><b>Energy bill assistance (LIHEAP)</b><p><a href="https://www.hsd.state.nm.us/lookingforassistance/low_income_home_energy_assistance_program/">Apply for help with heating and cooling bills</a> &middot; 1800-283-4465</p></li><li><b>Well water testing</b><p><a href="https://www.env.nm.gov/drinking_water/private-wells-2/">New Mexico Environment Department Drinking Water Bureau</a></p></li>
       </ul>
     </section>
 <section class="sheet" id="sheet-hazards">
@@ -363,6 +364,12 @@ footer a{color:#fff3df}
   toast.querySelector('.x').addEventListener('click',()=>{localStorage.setItem(KEY,Date.now()+86400000);clearTimeout(hide);toast.classList.remove('on');});
   if(!dismissed())setTimeout(function loop(){show();setTimeout(loop,7500+Math.random()*2500);},5000);
   window.__showToast=show;
+})();
+
+(function(){
+  var p=document.querySelector('.pill'), b=document.querySelector('.sheet .btn');
+  if(!p||!b||!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(es){p.classList.toggle('off',es[0].isIntersecting);}).observe(b);
 })();
 </script>
 </body>

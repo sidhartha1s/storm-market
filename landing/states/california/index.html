@@ -240,6 +240,7 @@ footer a{color:#fff3df}
   footer{font-size:16px;padding-right:16px}.foot-links a{display:inline-block;padding:10px 0}
 }
 @media (max-width:400px){.band #live-n::after{content:""}}
+.pill{transition:opacity .25s}.pill.off{opacity:0;pointer-events:none;visibility:hidden}
 </style>
 </head>
 <body>
@@ -267,7 +268,7 @@ footer a{color:#fff3df}
       <p class="kick">Contacts</p>
       <h2>Who to call, before and after</h2>
       <ul class="ruled">
-        <li><b>Emergency management</b><p><a href="https://www.caloes.ca.gov/">California Governor&#x27;s Office of Emergency Services</a> &middot; (916) 845-8506</p></li><li><b>Insurance regulator</b><p><a href="https://www.insurance.ca.gov/01-consumers/120-company/">California Department of Insurance</a> &middot; (916) 492-3500</p></li><li><b>Energy bill assistance (LIHEAP)</b><p><a href="https://www.csd.ca.gov">Energy bill assistance (LIHEAP)</a> &middot; 1-866-675-6623</p></li><li><b>Well water testing</b><p><a href="https://www.waterboards.ca.gov/gama/well_owners.html">California State Water Resources Control Board</a></p></li>
+        <li><b>Emergency management</b><p><a href="https://www.caloes.ca.gov/">California Governor&#x27;s Office of Emergency Services</a> &middot; (916) 845-8506</p></li><li><b>Insurance regulator</b><p><a href="https://www.insurance.ca.gov/01-consumers/120-company/">California Department of Insurance</a> &middot; (916) 492-3500</p></li><li><b>Energy bill assistance (LIHEAP)</b><p><a href="https://www.csd.ca.gov">Apply for help with heating and cooling bills</a> &middot; 1-866-675-6623</p></li><li><b>Well water testing</b><p><a href="https://www.waterboards.ca.gov/gama/well_owners.html">California State Water Resources Control Board</a></p></li>
       </ul>
     </section>
 <section class="sheet" id="sheet-hazards">
@@ -370,6 +371,12 @@ footer a{color:#fff3df}
   toast.querySelector('.x').addEventListener('click',()=>{localStorage.setItem(KEY,Date.now()+86400000);clearTimeout(hide);toast.classList.remove('on');});
   if(!dismissed())setTimeout(function loop(){show();setTimeout(loop,7500+Math.random()*2500);},5000);
   window.__showToast=show;
+})();
+
+(function(){
+  var p=document.querySelector('.pill'), b=document.querySelector('.sheet .btn');
+  if(!p||!b||!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(es){p.classList.toggle('off',es[0].isIntersecting);}).observe(b);
 })();
 </script>
 </body>
