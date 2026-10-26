@@ -71,12 +71,11 @@ Legend: **[BOOK HAD IT]** = the book covers it (file, protection) but the reader
 **Outcome: near-death.** Texas counted 246 deaths from this storm, hypothermia the leading cause and CO poisoning a major one «CITE: Texas DSHS, February 2021 Winter Storm-Related Deaths, final report». Earl is in the core profile: old, alone, no neighbor, power-dependent.
 
 **Decisive moments and cause chain**
-1. No named person nearby. [BOOK HAD IT, P4-C1 "a person, not a purchase"] He "did not find one"; the book gives no script for asking a stranger.
-2. No leave-temperature number, no transport to a warming center at night. [BOOK HAD IT without the number; transport BOOK GAP]
-3. Generator repair at night as a solo 82-year-old. [BOOK GAP] P40 is maintenance, not "never fix it in the dark alone; if it does not start, you leave."
+1. No named person nearby. [BOOK HAD IT, P4-C1] No script for asking a stranger.
+2. No leave-temperature number; no night transport to a warming center. [BOOK HAD IT without the number; transport BOOK GAP]
+3. Solo generator repair at night. [BOOK GAP] P40 never says "if it will not start, you leave."
 4. Fall on a blood thinner. [BOOK GAP]
-5. CPAP backup sized by guess. [BOOK HAD IT, P38] No worked CPAP example.
-6. Hard-of-hearing at night and CO. [BOOK HAD IT in P48 and P4-C1, missing from P47]
+5. CPAP sized by guess; CO alarm he cannot hear. [BOOK HAD IT, P38 without a worked example; P48/P4-C1 bed-shaker, not linked from P47]
 
 ### 1.4 Bev Tanner, 67, Ray, 70 (cane), grandkids 4 and 8, Peanut. Moore May 20, 2013-type EF5
 
