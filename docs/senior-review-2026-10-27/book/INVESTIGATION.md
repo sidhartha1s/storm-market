@@ -16,16 +16,15 @@ Legend: **[BOOK HAD IT]** = the book covers it (file, protection) but the reader
 ### 1.1 Dorothy Kowalski, 78. Hurricane Ian-type Cat 4, Fort Myers Beach, late September
 
 **Timeline**
-- **Day -4 to -3 (Sat-Sun).** Forecast track points at Tampa. Lee County is in the cone, not the center. Dorothy's radio and phone stay quiet about her county.
-- **Day -2 (Mon).** Hurricane watch for her coast. Her sentence fires: "call Rita and we leave." Rita, 70, says "it's going to Tampa, let's wait for the order." This is the Joplin verification behavior, done by her driver, not by her. Daughter in Ohio books an Orlando hotel. No ride exists: ride-hail is scarce, the driver will not take a walker and a cat, and Rita is the only car.
-- **Day -2 night.** Track shifts south. Hurricane warning.
-- **Day -1 (Tue) morning.** Lee County orders Zone A out, about a day later than neighboring counties. Dorothy calls the county. Her special-needs registry form was "partly" done: Rita was still helping fill it. She is not on the transport list. The phone line is busy for an hour.
-- **Day -1, 2 pm.** Rita, now frightened herself, drives Dorothy, Biscuit and the cooler to the general shelter (the special-needs shelter needs pre-registration and a caregiver). Pets go to a different site; Biscuit is taken from her.
-- **Day 0 (Wed) 3 pm.** Landfall. Surge of roughly 12 to 15 feet over Fort Myers Beach. Her ground-floor condo floods to the ceiling. Power out across the county.
-- **Day +1 to +3.** Shelter on generator. Insulin is fine: cooler, thermometer and frozen bottles work (P60). Her food is not: she packed no-cook cans she "cannot judge for my sugar," and shelter meals come at shelter times. Day +2, before dawn, she has a low, gets up with the walker in the dark between cots, and falls. Bruised hip, ER visit.
-- **Day +4 onward.** Home is gone. Refill by emergency law works (P59). Cat recovered on day +6.
+- **Day -4 to -3.** Track points at Tampa; Lee County is in the cone, not the center.
+- **Day -2 (Mon).** Hurricane watch. Her sentence fires: "call Rita and we leave." Rita, 70: "it's going to Tampa, let's wait for the order." The Joplin verification behavior, done by her driver. Daughter books an Orlando hotel; no ride-hail takes a walker and a cat. Night: track shifts south, hurricane warning.
+- **Day -1 (Tue) morning.** Lee County orders Zone A out, later than neighboring counties. Her registry form was never finished; she is not on the transport list. County line busy an hour.
+- **Day -1, 2 pm.** Rita, now frightened, drives her to the general shelter (special-needs shelter needs pre-registration). Biscuit goes to a separate pet site.
+- **Day 0, ~3 pm.** Landfall. Surge roughly 12 to 15 feet. Her ground-floor condo floods to the ceiling.
+- **Day +1 to +3.** Insulin fine: cooler, thermometer, frozen bottles (P60). Food not: cans she "cannot judge for my sugar," meals at shelter times. Day +2 before dawn: a low, the walker in the dark between cots, a fall. Bruised hip, ER.
+- **Day +4 on.** Home gone. Emergency refill works (P59). Cat back day +6.
 
-**Outcome: survived, injured.** And a counterfactual the book must face: if Rita had gone to her own son instead (she has her own evacuation), Dorothy stays on a ground floor six blocks from the Gulf. That is the profile of most Ian deaths in Lee County: older, alone, drowned at home. **One missing person away from death.**
+**Outcome: survived, injured.** Counterfactual: had Rita left with her own family, Dorothy stays on a ground floor six blocks from the Gulf, the profile of most Lee County Ian deaths (older, at home, drowned). **One missing person away from death.**
 
 **Decisive moments and cause chain**
 1. Trigger owned by a driver who never agreed to it. [BOOK GAP] P95 assumes the people who agree the trigger drive; P4-C1 asks for one "named individual," singular.
