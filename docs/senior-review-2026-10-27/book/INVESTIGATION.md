@@ -239,7 +239,7 @@ Target: `P0-front-matter.md`, after the new R2 page. Table by budget, each row n
 All prices «CITE: retail spot check, date stamped».
 
 ### R9. Large-print checklist card per hazard (1 page each, 6 hazards first)
-Target: end of `P3-01`, `P3-02`, `P3-05`, `P3-11`, `P3-17`, `P3-10`, after "## The one-page version". 16-pt type, one column, tick boxes, three rows: WATCH / WARNING / AFTER, each with at most four lines, no protection numbers. A cut-out line. Also add the six cards as a pull-out at the back of `P6-the-binder.md`. Diagram D1 is the template.
+Target: after "## The one-page version" in `P3-01`, `P3-02`, `P3-05`, `P3-10`, `P3-11`, `P3-17`; repeated as a pull-out in `P6-the-binder.md`. 16-pt, tick boxes, WATCH / WARNING / AFTER, four lines each, no protection numbers, cut line. Template D1.
 
 ### R10. P95 examples for people without a car (0.25 page)
 Target: `P5-C1`, "### 95 · The trigger plan", add two examples to the quoted list:
