@@ -52,7 +52,7 @@ Rows: sources-cuba.md header ("Belen", "Gangoiti" and any Cuban ban appear nowhe
 
 ### H1-S4 — narration
 **Picture:** telegraph line graphic, the Washington line lit, the Havana line dark; chip with NOAA's words "only the Weather Bureau prognostication was carried over the wires"; back to the report page, slow push to the line about his wife. Source lines: NOAA AOML, 2015; Isaac Cline, Monthly Weather Review, September 1900. [VE] [HUMAN] [loop E1 open]
-> By NOAA's account, only the Weather Bureau's forecast was carried over the wires. Near the end of his report, Cline writes that his wife was among the lost.
+> By NOAA's account, only the Weather Bureau's forecast was carried over the wires. In his report, Cline writes that his wife was among the lost.
 
 Rows: sources-cuba.md §2 and factcheck-B.md I1-S4 (AOML: "Only the Weather Bureau prognostication was carried over the wires."); sources-cline.md §3 ("Among the lost was my wife").
 
