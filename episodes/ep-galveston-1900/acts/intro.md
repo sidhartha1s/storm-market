@@ -62,7 +62,7 @@ Rows: factcheck-E.md I1-S5 and factcheck intro-r2 row 29 ("It kept coming across
 
 ### I1-S4 — narration
 **Picture:** the Monthly Weather Review report page, slow push to the line listing warning messages from the Central Office; chips stack one per day "SEPT 4 · 5 · 6 · 7 · 8", then "STORM WARNING: SEPT 7", then "'MODERATE STORM'" in quote marks with tag "WASHINGTON, FRIDAY MIDDAY". Source line: Isaac Cline, Monthly Weather Review, September 1900; Texas State Historical Association; Ohio State University, Origins. [VE] [PAY] [loop q2 closes] [loop E1 still open]
-> I read Cline's own report, and Galveston wasn't left in the dark. Messages from Washington came in every day from the fourth to the eighth. By Friday the seventh, the city was under a storm warning. But even Friday's midday warning called it a moderate storm.
+> Washington's messages reached Galveston every day from the fourth to the eighth. By Friday the seventh, the city was under a storm warning. But even Friday's midday warning called it a moderate storm.
 
 Rows: factcheck intro-r1 Apply list ("Galveston was not left in the dark. Messages from Washington came in every day from the fourth to the eighth"; MWR "Warning messages were received from the Central Office at Washington on September 4, 5, 6,7, and 8", Cline's report); factcheck intro-r1 row 18 (TSHA storm warning 7 Sept, Friday verified); factcheck intro-r1 row 19 (OSU Origins "that warning still called the storm a moderate one, not a hurricane", SECONDARY, named on the source line). First-person Paul line on Cline's own report and contractions (grade fix 7). The warning Galveston got was Washington's view, which lands the Claim's "did not ignore a warning" (grade fix 5).
 
