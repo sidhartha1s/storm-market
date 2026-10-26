@@ -6,6 +6,7 @@ stubbed), no process scan (live_renders stubbed). The 3.3 GB case is the 18 Oct 
 that sat refused for 34 minutes, then stalled on 2 workers."""
 import contextlib
 import io
+import json
 import os
 import subprocess
 import sys
