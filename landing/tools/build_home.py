@@ -32,6 +32,30 @@ end_row = body.index('</section>', start)
 body = body[:end_row] + STATS + '\n      ' + body[end_row:]
 assert 'class="stats"' in body
 
+# senior buyer panel 2026-10-27 (docs/senior-review-2026-10-27/landing): testers aged 63-80 could not tell
+# what arrives, whether anything is mailed, or whether paying is safe; say it in plain words where they look
+PLAIN = ('<p class="plain">You get a PDF file by email, about two minutes after you pay. Nothing comes in the mail. '
+         'Read it on a phone, tablet or computer, or print the pages you need at home or the library.</p>')
+hero_btn = '<p><a class="btn" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get the book, $9.99</a></p>'
+assert body.count(hero_btn) == 1
+body = body.replace(hero_btn, hero_btn + '\n            ' + PLAIN)
+FAQ_OLD = ('<dd>One PDF of 486 pages, delivered to your inbox after payment, plus the printable binder and your state packets. '
+           'No app, no DRM.</dd>')
+FAQ_NEW = ('<dd>One PDF computer file of 486 pages, sent to your email about two minutes after you pay, with the printable '
+           'binder forms and your state packets. Nothing comes in the mail. It opens on any phone, tablet or computer with '
+           'no app to install, and you can print any page.</dd></div>\n'
+           '          <div><dt>Is it safe to pay?</dt><dd>Checkout runs on Gumroad, the store that delivers the file. You pay '
+           'there by card, and this site never sees your card number. The receipt and the download link arrive by email.</dd></div>\n'
+           '          <div><dt>Can I buy it for my mother or father?</dt><dd>Yes. Buy it with your own email, then print the '
+           'pages they need or forward them the file.</dd>')
+assert body.count(FAQ_OLD) == 1
+body = body.replace(FAQ_OLD, FAQ_NEW)
+# the binder is 41 forms laid out on 61 pages; "61 fillable forms" contradicted /resources/
+assert body.count('The binder, 61 fillable forms') == 1
+body = body.replace('The binder, 61 fillable forms', 'The binder, 41 fillable forms on 61 pages')
+body = body.replace('<p class="lead">Instant PDF download. Pay once, own it forever.</p>',
+                    '<p class="lead">Instant PDF download by email. Nothing is mailed. Pay once, own it forever.</p>')
+
 # owner edit: three recent-event quotes, the third is the thank-you note (drop the fourth)
 recent = re.findall(r'<blockquote class="quote recent">.*?</blockquote>', body, re.S)
 assert len(recent) == 4, len(recent)
