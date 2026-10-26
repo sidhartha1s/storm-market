@@ -2,7 +2,7 @@
 
 ### I1-S1 — narration
 **Picture:** stays in the hook's scene: the self-made Newark locator, a tide line pushing in from the water toward the Newark pin, then the map slides east to a LaGuardia pin with a pulsing marker on the shoreline (no label yet). [VE] [loop L1 still open] [loop L2 open] where the water gets through. Sound: bed; low water and wind ambience (library, not archive) rising under "find a way through".
-> From where you're standing in Newark, that wind is shoving the water in toward you, and at an airport in New York the water's about to find a way through.
+> From where you're standing in Newark, that wind is pushing the tide in against the coast, and at an airport in New York the water is finding a way through.
 
 Rows: nws-facts.md §1 "onshore winds along the coast caused extreme high tides and flooding in New Jersey" (NCEI); §1 LaGuardia dikes breached (JKL). Tense matches the hook's drop-in.
 
