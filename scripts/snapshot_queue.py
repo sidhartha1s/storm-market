@@ -15,7 +15,9 @@ The spool is `.snapq/` in the MAIN checkout, so every worktree on this laptop fe
 Batching: one snapshot run costs about 44 s before its first frame (node, bundling the whole episode with fonts, Chrome
 launch, page settle) and about 2 s per frame after (measured on the ZBook 26 Oct 26). So each run takes the oldest job
 and every other pending job for the same episode folder, captures the union of their times in one browser, and hands
-each job its own frames.
+each job its own frames. The union is sorted, so every frame is still reached by forward seeks from a fresh page.
+A job whose times go backwards or repeat (the seek-order check: forward, then seek 0, past it, back) runs alone, in its
+own order, on a fresh page.
 With --host zbook the worker copies the files the timeline references (changed ones only) to
 `.snapq/mirror/<slug>/` in the ZBook's main checkout, snapshots there and copies the PNGs back.
 """
@@ -175,19 +177,18 @@ def load(p):
     return job
 
 
-def frames(stage, times):
-    """hyperframes names frame i of an --at list `frame-<i, 2+ digits>-at-<t>s.png`: map each time to its file."""
-    by_index = {int(f.name.split("-")[1]): f for f in Path(stage).glob("frame-*-at-*.png")}
-    return {t: by_index[i] for i, t in enumerate(times) if i in by_index}
+def frames(stage):
+    """hyperframes names frame i of an --at list `frame-<i, 2+ digits>-at-<t>s.png`."""
+    return {int(f.name.split("-")[1]): f for f in Path(stage).glob("frame-*-at-*.png")}
 
 
-def deliver(by_time, job):
-    """Copy this job's frames out of the batch, numbered as a run of its own would number them."""
+def deliver(by_index, times, job):
+    """Copy this job's frames out of the run, numbered as a run of its own would number them."""
     out = Path(job["out"])
     out.mkdir(parents=True, exist_ok=True)
     pngs = []
     for k, t in enumerate(job["at"]):
-        src = by_time.get(t)
+        src = by_index.get(k if job["at"] == times else times.index(t))   # a solo run keeps repeats in place
         if src:
             dst = out / f"frame-{k:02d}-at-{src.name.split('-at-', 1)[1]}"
             shutil.copy2(src, dst)
@@ -210,14 +211,28 @@ def shoot(snap, ep, times, pin, name, batch, host, t0):
         except Exception as e:
             rc, log = 1, f"{type(e).__name__}: {e}"
         log = f"batch of {len(batch)} job(s), {len(times)} frame(s); {log}"
-        if rc and len(batch) > 1:
+        if rerun(rc, log, batch):
             return rc, log
-        by_time = frames(stage, times) if rc == 0 else {}
+        by_index = frames(stage) if rc == 0 else {}
         for p, j in batch.items():
-            pngs = deliver(by_time, j)
-            miss = rc == 0 and len(pngs) < len(j["at"])
-            finish(p, j, host, 1 if miss else rc, log + (f" | exit 0 but {len(pngs)} of {len(j['at'])} PNG(s) written" if miss else ""), t0, pngs)
+            try:
+                pngs = deliver(by_index, times, j)
+                miss = rc == 0 and len(pngs) < len(j["at"])
+                jrc, jlog = (1, log + f" | exit 0 but {len(pngs)} of {len(j['at'])} PNG(s) written") if miss else (rc, log)
+            except Exception as e:   # a bad out path is this job's rc 1, never a dead worker with the job still first in line
+                pngs, jrc, jlog = [], 1, log + f" | {type(e).__name__}: {e}"
+            finish(p, j, host, jrc, jlog, t0, pngs)
     return rc, log
+
+
+def rerun(rc, log, batch):
+    """A multi-job batch that failed fast (one builder's bad time) reruns its jobs one at a time, so the rest still pass.
+    A hung run is not rerun: 20 jobs would hold the worker for 20 more timeouts."""
+    return rc and len(batch) > 1 and "killed after" not in log
+
+
+def forward(job):
+    return all(a < b for a, b in zip(job["at"], job["at"][1:]))
 
 
 def run(host):
@@ -247,11 +262,12 @@ def run(host):
                 finish(p, {}, host, 1, f"{type(e).__name__}: {e}", t0, [])
         if not jobs:
             continue
-        ep = next(iter(jobs.values()))["ep"]   # the oldest job picks the episode; the batch is every pending job for that folder
-        batch = {p: j for p, j in jobs.items() if j["ep"] == ep}
-        times = sorted({t for j in batch.values() for t in j["at"]})
+        first, j0 = next(iter(jobs.items()))   # the oldest job picks the episode; the batch is every forward-only job for that folder
+        batch = {p: j for p, j in jobs.items() if j["ep"] == j0["ep"] and forward(j)} if forward(j0) else {first: j0}
+        ep = j0["ep"]
+        times = sorted({t for j in batch.values() for t in j["at"]}) if forward(j0) else j0["at"]
         rc, log = shoot(snap, ep, times, pin, next(iter(batch)).stem, batch, host, t0)
-        if rc and len(batch) > 1:   # one builder's bad time must not sink the rest: each job alone, once
+        if rerun(rc, log, batch):
             print(f"[snapq] [FALLBACK] batch of {len(batch)} failed (rc {rc}); running its jobs one at a time")
             for p, j in batch.items():
                 shoot(snap, ep, j["at"], pin, p.stem, {p: j}, host, time.time())

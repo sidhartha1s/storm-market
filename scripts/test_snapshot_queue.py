@@ -52,7 +52,7 @@ with tempfile.TemporaryDirectory() as d:
         peak[0] = max(peak[0], live[0])
         runs.append((Path(e).name, times))
         for i, t in enumerate(times):
-            (Path(out) / f"frame-{i:02d}-at-{t:g}s.png").write_bytes(f"{t}".encode())
+            (Path(out) / f"frame-{i:02d}-at-{t:g}s.png").write_bytes(f"{i}:{t}".encode())
         time.sleep(0.05)
         live[0] -= 1
         return 0, "ok"
@@ -66,10 +66,30 @@ with tempfile.TemporaryDirectory() as d:
     assert [Path(x).name for x in res["unlabeled"]["pngs"]] == ["frame-00-at-2s.png"], res["unlabeled"]
     first = res["g-a"]
     assert first["rc"] == 0 and [Path(x).name for x in first["pngs"]] == ["frame-00-at-1.5s.png", "frame-01-at-6s.png"], first
-    assert Path(first["pngs"][1]).read_bytes() == b"6.0", "a job got another job's frame"
+    assert Path(first["pngs"][1]).read_bytes() == b"2:6.0", "a job got another job's frame"
     later = res["same-ep-later"]
     assert [Path(x).name for x in later["pngs"]] == ["frame-00-at-6s.png", "frame-01-at-7s.png"] and "batch of 3 job(s), 4 frame(s)" in later["log"], later
     assert res["other-ep"]["rc"] == 0 and len(res["other-ep"]["pngs"]) == 1, res["other-ep"]
+
+    # a seek-order job (times go back and repeat) runs alone in its own order on a fresh page; forward jobs still batch
+    q.submit(str(ep), "8,9", "fwd-a")
+    q.submit(str(ep), "5,0,7,5", "seek")
+    q.submit(str(ep), "1", "fwd-b")
+    runs.clear()
+    q.run("local")
+    assert runs == [("ep-x", [1.0, 8.0, 9.0]), ("ep-x", [5.0, 0.0, 7.0, 5.0])], runs
+    seek = json.loads(next((q.SPOOL / "done").glob("*-seek.json")).read_text())
+    assert [Path(x).read_bytes() for x in seek["pngs"]] == [b"0:5.0", b"1:0.0", b"2:7.0", b"3:5.0"], seek
+
+    # a job whose PNG dir cannot be made is its own rc 1; the worker carries on
+    (d / "blocker").write_text("a file, not a dir", encoding="utf-8")
+    q.submit(str(ep), "3", "badout")
+    bad = next((q.SPOOL / "pending").glob("*-badout.json"))
+    bad.write_text(json.dumps({**json.loads(bad.read_text()), "out": str(d / "blocker" / "x")}), encoding="utf-8")
+    q.submit(str(ep2), "4", "fine")
+    q.run("local")
+    res = {f.stem.split("-", 1)[1]: json.loads(f.read_text()) for f in (q.SPOOL / "done").glob("*.json") if "-" in f.stem}
+    assert res["badout"]["rc"] == 1 and "Error" in res["badout"]["log"] and res["fine"]["rc"] == 0, (res["badout"], res["fine"])
 
     # exit 0 with a frame missing is a failed job, not a pass
     q.submit(str(ep), "3", "empty")
@@ -129,6 +149,15 @@ with tempfile.TemporaryDirectory() as d:
     assert res["good"]["rc"] == 0 and len(res["good"]["pngs"]) == 1 and res["badtime"]["rc"] == 1, (res["good"], res["badtime"])
     assert runs == [("ep-x", [8.0])], runs
 
+    # a hung batch is not rerun job by job (that would be one more timeout per job)
+    q.submit(str(ep), "1", "hung-a")
+    q.submit(str(ep), "2", "hung-b")
+    tries = []
+    q.snap_local = lambda e, times, pin, name, out: (tries.append(times), (1, f"killed after {q.limit(times)} s"))[1]
+    q.run("local")
+    res = {f.stem.split("-", 1)[1]: json.loads(f.read_text()) for f in (q.SPOOL / "done").glob("*.json") if "-" in f.stem}
+    assert tries == [[1.0, 2.0]] and res["hung-a"]["rc"] == 1 and res["hung-b"]["rc"] == 1, (tries, res["hung-a"])
+
     # the ZBook path: remote command runs the RAM gate, then the pinned snapshot on the mirror with the signed Chrome,
     # and scp brings that job's PNGs back into the job's own out dir
     calls = []
@@ -161,4 +190,4 @@ with tempfile.TemporaryDirectory() as d:
     rc, log = q.snap_zbook(ep, [1.5, 6.0], "0.8.185", "J2", stage)
     assert rc == 1 and f"killed after {q.SNAP_TIMEOUT + 2 * q.FRAME_TIMEOUT} s" in log and calls[-1] == q.KILL_REMOTE, (rc, log, calls)
 
-print("snapshot_queue self-check PASS (no-browser submit, one run at a time, per-episode batches with each job's own frames, lock, empty-PNG fail, bad and raising jobs recorded, a bad time sinks only its own job, referenced-only delta ship, ZBook command, scp and timeout kill)")
+print("snapshot_queue self-check PASS (no-browser submit, one run at a time, per-episode batches with each job's own frames, lock, empty-PNG fail, bad and raising jobs recorded, a bad time sinks only its own job, no per-job rerun of a hung batch, seek-order jobs alone and in order, a bad out dir is one job's rc 1, referenced-only delta ship, ZBook command, scp and timeout kill)")
