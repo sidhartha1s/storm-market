@@ -2,6 +2,17 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 26 Oct 26 - one owner example became the only hook, 7 episodes in a row
+- Owner, on the batch A hooks: "Every video is having the same hook ... Every plot is the same ... when i'm giving you
+  examples you take it very literally and follow only that thing moving forward like a bible".
+- Measured: all 7 documentary hooks written after the 15 Oct 26 opener rule (Joplin 2011, Mayfield, Moore, Camille,
+  Galveston, Buffalo, Appalachian) are question, the viewer's answer, then the break. The other 16 hooks on disk use 8
+  different shapes. Cause: script-quickref.md "The hook" quoted one example ("Siren goes off. What do you do?") as the
+  rule, and the register line's two quoted lines bred "I read the report" and "if you lived there" in most of them.
+- Fix: the principle (friend's voice, the viewer's world, break a belief) plus a menu of shapes in script-quickref.md,
+  a `Hook shape:` tag in edit_script.md, `scripts/hook_shape.py` failing a repeat of either of the last 2 episodes, and
+  a top-of-file line that quoted examples are illustrations, never templates.
+
 ## 15 Oct 26 - hooks lost the viewer in the first 8 s, and the narration read like a report
 - Owner: "8 secs is not an investment for the viewer - perfect time to skip"; "approach the audience ... like a
   bestfriend you are meeting after 10-15 years gap"; on a hook built on a viewer comment: "why the fuck would u

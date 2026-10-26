@@ -91,6 +91,7 @@ Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (W
 ---
 
 ## H1 · Hook
+Hook shape: belief-question (2026-10-24)
 
 ### H1-S1 — narration
 **Picture:** **Paul on camera:** full frame at 0:00, the one hook sentence, nothing added. No sound bed under him (siren removed 24 Oct 26). Popfig "OKLAHOMA · MAY 3, 1999" inside the first second. [HOOK] [Q] [loop E open]
