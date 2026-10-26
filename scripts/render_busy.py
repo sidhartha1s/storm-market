@@ -30,7 +30,8 @@ from the ASUS over ssh runs as the same user on the ZBook, so it books the same 
 job, machine, pid and start time. A holder whose pid is gone (or reused by a newer process) is dead and its
 lock is taken over. A waiting job prints who holds the lock and waits in-process (no window, no shell loop).
   with render_busy.heavy_lock("tts ep-x"): ...   a Python job: held by this process, released when the block ends
-  render_busy.py --hold <job>                     a cmd script (render.cmd): held by the calling cmd.exe until it exits
+  render_busy.py --hold <job>                     a cmd script (render.cmd): held by the calling cmd.exe until
+  render_busy.py --release                        it calls --release (or exits); --hold again from it passes
 The no-argument gate mode (not --light) also waits while another job holds the lock, without booking it, so the
 snapshot worker's call waits its turn. A child of the holder passes: HEAVY_LOCK_TOKEN in its environment matches.
 """
@@ -111,7 +112,7 @@ def free_gb():
 
 
 POLL_S = 5  # seconds between looks at a held lock
-_k32 = ctypes.WinDLL("kernel32", use_last_error=True)
+_k32 = ctypes.WinDLL("kernel32")
 _k32.OpenProcess.restype = ctypes.c_void_p  # a HANDLE, not the default 32-bit int
 
 
@@ -120,10 +121,10 @@ def lock_path():
 
 
 def created(pid):
-    """Creation time (FILETIME) of a running pid; None when it is not running; -1 when Windows will not say."""
+    """Creation time (FILETIME) of a running pid; None when it is not running."""
     h = _k32.OpenProcess(0x1000, False, pid)  # PROCESS_QUERY_LIMITED_INFORMATION
-    if not h:
-        return -1 if ctypes.get_last_error() == 5 else None  # access denied = alive, so it is never taken over
+    if not h:  # gone, or access denied: holders are this user's own processes, so a denied pid is someone else's now
+        return None
     h = ctypes.c_void_p(h)
     try:
         code, t = ctypes.c_ulong(), (ctypes.c_ulonglong * 4)()
@@ -136,8 +137,7 @@ def created(pid):
 
 
 def holder_alive(rec):
-    now = created(rec["pid"])
-    return now == -1 or (now is not None and now == rec["created"])  # same pid, newer process = the holder died
+    return created(rec["pid"]) == rec["created"]  # gone, or the pid reused by a newer process = the holder died
 
 
 def read_lock(p):
@@ -177,8 +177,8 @@ def take(job, pid):
                     time.sleep(0.2)
                     continue
                 cur = {"pid": 0, "created": 0, "job": "an unreadable lock file"}
-            if mine and cur.get("token") == mine:
-                return None
+            if (mine and cur.get("token") == mine) or (cur["pid"], cur["created"]) == (pid, rec["created"]):
+                return None  # a child of the holder, or the holder itself again (a wrapper calling render.cmd twice)
             if not holder_alive(cur):
                 stale = p.with_name(f"{p.name}.{rec['token']}.stale")
                 try:
@@ -214,8 +214,23 @@ def heavy_lock(job):
     finally:
         if rec:
             os.environ.pop("HEAVY_LOCK_TOKEN", None)
-            if (read_lock(lock_path()) or {}).get("token") == rec["token"]:
-                lock_path().unlink()
+            release(lambda cur: cur["token"] == rec["token"])
+
+
+def release(ours):
+    """Delete the lock if ours(record) says it is ours. A waiter reading the file at that instant blocks the delete
+    (WinError 32), so it is retried for up to 5 s."""
+    p = lock_path()
+    for _ in range(50):
+        cur = read_lock(p)
+        if not cur or not ours(cur):
+            return
+        try:
+            p.unlink()
+            return
+        except PermissionError:
+            time.sleep(0.1)
+    print(f"[heavy-lock] could not delete {p}; the next job takes it over once this process exits", flush=True)
 
 
 def wait_free():
@@ -229,8 +244,12 @@ def wait_free():
 
 
 def main():
-    if "--hold" in sys.argv:  # before RENDER_BUSY_OK: that override skips the RAM and live-render checks, never the queue
+    if "--hold" in sys.argv:  # before RENDER_BUSY_OK: that override skips render.cmd's RAM and live-render checks, not its turn
         take(sys.argv[sys.argv.index("--hold") + 1], os.getppid())
+        sys.exit(0)
+    if "--release" in sys.argv:  # render.cmd, before each exit: frees what --hold booked for the same cmd.exe
+        parent = (os.getppid(), created(os.getppid()))
+        release(lambda cur: (cur["pid"], cur["created"]) == parent)
         sys.exit(0)
     if os.environ.get("RENDER_BUSY_OK") == "1":
         sys.exit(0)

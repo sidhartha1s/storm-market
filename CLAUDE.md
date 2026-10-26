@@ -205,6 +205,7 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
   `python3 scripts/test_frozen_circle.py`). Its `LAYERS` table is the list and holds the thresholds; `run_gates.py` runs it too.
 - One heavy job per machine at a time: render.cmd, TTS (`tts_episode.py`, `tts_clone.py`), the face pass (`circle_face.py`) and `e2e.py`
   book the heavy lock (`~/.storm-heavy.lock`) and wait their turn, also when started over ssh; a dead holder's lock is taken over.
+  A waiting e2e can sit behind a 75 min render: launch long waits detached, not in a 10 min tool call.
   How it works and how a new heavy job books it: the `scripts/render_busy.py` docstring (test `python3 scripts/test_render_busy.py`).
   No gates, Playwright or subagent browsers beside a render.
 - Render only with `scripts\render.cmd <slug> <draft|full> [out-basename]`. The dojo-ops dashboard starts a draft only through `scripts\dojo_draft.cmd` (no arguments: it reads and re-checks the slug dojo-ops wrote to `%LOCALAPPDATA%\dojo-ops\render-request.txt`, sets 2 workers, then calls render.cmd; test `python3 scripts/test_dojo_draft.py`). Default 3 workers; full renders on this box

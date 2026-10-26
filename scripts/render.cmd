@@ -79,12 +79,21 @@ REM Output goes to a log next to render_%MODE%.log: a hidden/schtasks launch has
 REM a refusal reason with nowhere to land was invisible until the operator reran by hand.
 set PREFLIGHT_LOG=render_%MODE%_preflight.log
 REM Heavy lock (owner 26 Oct 26): wait for this machine's other heavy job (render, TTS, face pass, e2e) to end, then
-REM book the lock for this cmd.exe until it exits. Before the preflight, which refuses a live render instead of waiting.
+REM book it for this cmd.exe. Before the preflight, which refuses a live render instead of waiting. Every exit below
+REM releases it (RELEASE) before writing the done marker; a cmd.exe that dies holding it leaves a dead holder's lock.
+set RELEASE="C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_busy.py" --release
 "C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_busy.py" --hold "render %SLUG% %MODE%" > "%PREFLIGHT_LOG%" 2>&1
+if errorlevel 1 (
+  echo HEAVY LOCK FAILED - see %CD%\%PREFLIGHT_LOG%
+  type "%PREFLIGHT_LOG%"
+  echo 1 > "render_%MODE%_done.marker"
+  exit /b 1
+)
 "C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_preflight.py" "%EP%" %MODE% >> "%PREFLIGHT_LOG%" 2>&1
 if errorlevel 1 (
   echo PREFLIGHT REFUSED exit %ERRORLEVEL% — see %CD%\%PREFLIGHT_LOG%
   type "%PREFLIGHT_LOG%"
+  %RELEASE%
   echo %ERRORLEVEL% > "render_%MODE%_done.marker"
   exit /b %ERRORLEVEL%
 )
@@ -98,6 +107,7 @@ del /q "render_%MODE%.workers" 2>nul
 if errorlevel 1 (
   echo RENDER_BUSY REFUSED exit %ERRORLEVEL% — see %CD%\%PREFLIGHT_LOG%
   type "%PREFLIGHT_LOG%"
+  %RELEASE%
   echo %ERRORLEVEL% > "render_%MODE%_done.marker"
   exit /b %ERRORLEVEL%
 )
@@ -115,6 +125,7 @@ REM render on a short disk, then watch the log and stop the render if the gate l
 if errorlevel 1 (
   echo STREAM GATE REFUSED — see %CD%\%PREFLIGHT_LOG%
   type "%PREFLIGHT_LOG%"
+  %RELEASE%
   echo 1 > "render_%MODE%_done.marker"
   exit /b 1
 )
@@ -132,6 +143,7 @@ if "%RC%"=="0" (
     set RC=1
   )
 )
+%RELEASE%
 echo %RC% > "render_%MODE%_done.marker"
 exit /b %RC%
 
