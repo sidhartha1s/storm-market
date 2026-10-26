@@ -94,7 +94,7 @@ replaced.
 
 **One more choice that most households get wrong by default.** There are two sensing technologies,
 ionization and photoelectric, and they detect *different kinds of fire* — fast flaming fires versus
-smouldering ones. Because nobody can predict which kind will start, the federal recommendation is that
+smoldering ones. Because nobody can predict which kind will start, the federal recommendation is that
 every sleeping area have **both types, or dual-sensor alarms that contain both.** If you are buying
 alarms anyway, that is the same money spent better. Alarms with strobes and bed-shakers exist for people
 with hearing loss and belong in the plan for anyone who would not wake to a sounder.
@@ -128,7 +128,7 @@ retrieved 2026-07-29»
 
 Read that list again and notice what is on it. Two of the six outcomes are cardiac. Smoke is filed
 mentally as a lung problem, and for the people most likely to die of it, it is a heart problem — which
-is a large fraction of any neighbourhood.
+is a large fraction of any neighborhood.
 
 Two actions. Fit the highest-efficiency filter your system is rated to accept — commonly MERV 13, but
 **check your equipment's tolerance**, because a filter too restrictive for your blower reduces airflow
@@ -222,7 +222,7 @@ For a prolonged event the answer is leaving, not sealing harder.
 
 Buy N95 or better, per person, and store them where they will be found. They matter for three
 distinct situations: wildfire smoke, volcanic ash, and post-event debris clearing, which produces
-silica, fibreglass, mould spores, and pulverized building material.
+silica, fibreglass, mold spores, and pulverized building material.
 
 **Fit is the whole protection**, and NIOSH explains why in a sentence worth memorizing: a respirator
 **"can only filter particles that try to pass through the filter material."** A tight-fitting respirator
@@ -278,7 +278,7 @@ contains waste until it can be disposed of properly, which is Protection 54.
 ### 54 · Waste containment and lawful disposal
 
 **Prevents:** a solved sanitation problem becoming a contamination problem.
-**Cost:** $10–30 · **Time:** ongoing · **Materials:** heavy bags, a lidded outdoor bin
+**Cost:** $10–30 · **Time:** ongoing · **Materials:** heavy bags, a lidded outdoor trash can
 · **Regions:** all five.
 
 Double-bag the solid waste, seal it, and store it in a lidded container outside, away from the house

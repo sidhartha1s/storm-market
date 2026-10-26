@@ -32,7 +32,7 @@ canyons, different highways. Then **drive them both**, in daylight, and notice t
 not show: the low-water crossing, the single-lane bridge, the section that runs through unbroken brush
 for four miles, the level crossing, the gate that is locked at night.
 
-Write the turn-by-turn on the form in the binder, in words, and keep a paper map in each vehicle. A
+Write the turn-by-turn on the form in the trashder, in words, and keep a paper map in each vehicle. A
 navigation app routes you into the closure, and it needs a signal.
 
 For wildfire specifically, the honest and uncomfortable point: a road with fuel on both sides and no
@@ -73,7 +73,7 @@ self-sufficiency. It bridges you to a shelter, a relative or a hotel. It is not 
 ### 108 · The five-minute list and the thirty-minute list
 
 **Prevents:** freezing in the doorway, or dying while looking for a photo album.
-**Cost:** $0 · **Time:** 30 minutes · **Materials:** the form in the binder
+**Cost:** $0 · **Time:** 30 minutes · **Materials:** the form in the trashder
 · **Regions:** Wildfire West rank 4, all five.
 
 Two lists, written now, taped inside a cupboard door where anyone can find them.
@@ -168,8 +168,8 @@ because it is announced during the event rather than published in advance.
 **If anyone in the household cannot drive or cannot easily be moved**, the destination question comes
 with a transport question, and it has to be answered before the event rather than during it. Many
 counties operate a voluntary registry for residents who would need assistance to evacuate — mobility
-limitations, oxygen, dialysis, a wheelchair, no vehicle — and enrolment is free and usually a single
-form. Enrol, and then do not rely on it alone: arrange a named neighbor or relative who has agreed
+limitations, oxygen, dialysis, a wheelchair, no vehicle — and enrollment is free and usually a single
+form. Enroll, and then do not rely on it alone: arrange a named neighbor or relative who has agreed
 to come, because a registry is a list of intentions and a neighbor is a person. This is the same
 registry conversation as Protection 42, extended from power to movement.
 
@@ -210,7 +210,7 @@ ride on your schedule. Your two drivers are the plan; the registry is the backup
 ### 112 · The out-of-area contact
 
 **Prevents:** a household that cannot find itself.
-**Cost:** $0 · **Time:** 20 minutes · **Materials:** the form in the binder
+**Cost:** $0 · **Time:** 20 minutes · **Materials:** the form in the trashder
 · **Regions:** all five.
 
 One person, well outside your region, who everybody in the household calls or messages if separated.
@@ -313,7 +313,7 @@ https://www.weather.gov/safety/flood-turn-around-dont-drown | retrieved 2026-07-
 
 The rule that governs it: **the decision to go up is only survivable if you can keep going up.** An
 attic with no exit is a sealed box, which is why an axe or a hatchet in the attic is standard advice in
-surge-exposed coastal housing, and why a single-storey house in a surge zone is not a vertical
+surge-exposed coastal housing, and why a single-story house in a surge zone is not a vertical
 evacuation candidate at all — it is a leave-early house.
 
 Storm surge is the case where vertical thinking gets people killed. Surge is not rising water in a
@@ -368,7 +368,7 @@ mistakes that recur in every case review.
 ### 116 · Coming back
 
 **Prevents:** getting hurt after the event is over, which is when a large share of injuries happen.
-**Cost:** $0 · **Time:** reading, once · **Materials:** the checklist in the binder
+**Cost:** $0 · **Time:** reading, once · **Materials:** the checklist in the trashder
 · **Regions:** all five.
 
 Return when authorities say the area is open, not when you can physically get there. Roadblocks exist
