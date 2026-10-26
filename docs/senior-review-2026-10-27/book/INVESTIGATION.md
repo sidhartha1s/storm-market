@@ -57,16 +57,15 @@ Legend: **[BOOK HAD IT]** = the book covers it (file, protection) but the reader
 ### 1.3 Earl Dawson, 82, alone. Winter Storm Uri-type, Austin, February
 
 **Timeline**
-- **Day 1 (Sun).** Hard freeze warning. Earl's trigger fires: tub filled, power station and phone charged, back bedroom set up, taps dripping. **Good.**
-- **Day 2 (Mon) 2 am.** Rolling outages become a total outage. Outdoor temps in single digits. He is asleep with hearing aids out; CPAP stops; he wakes at 4 am short of breath, moves CPAP to the power station.
-- **Day 2 night.** Power station runs the CPAP most of the night, then is flat. No solar, no way to recharge except the car, which he does not have. [BOOK HAD IT, P38 sizing; he could not do the watts x hours.]
-- **Day 3 (Tue).** Bedroom at about 45°F. He heats soup on the gas stovetop with the window cracked. CO alarms are new, but if one sounds while he naps with aids out, he will not hear it. [BOOK HAD IT, P48 strobe and bed-shaker alarms; never linked to P47 CO, and he only read P47.] Boil-water notice; water pressure drops; a pipe splits in the crawl space. He shuts the main (P35 labeled, good).
-- **Day 3, 9 pm.** He tries the 15-year-old generator for the CPAP. Old fuel was not drained (P40, partly done). It will not start. He tinkers on an icy yard in the dark on neuropathic feet, falls, and hits his head. **He is on warfarin.** He gets back inside, headache, dizzy, goes to bed. [BOOK GAP: anticoagulants 0 hits, "warfarin" 0 hits.]
-- **Day 4 (Wed).** Phone dead. Niece in Houston (also blacked out) cannot reach him. No neighbor knows him. Indoor temperature falls. He is drowsy, confused, does not eat. He never wrote the "leave below this temperature" number. [BOOK HAD IT, P3-11 "agree an indoor temperature in advance"; the book gives no number.]
-- **Day 4, 4 pm.** Niece calls 911 for a welfare check. Roads iced; check reaches him Day 5 morning. Duke barking at the door gets the officer in.
+- **Day 1.** Hard freeze warning. His trigger fires: tub filled, power station charged, back bedroom, taps dripping. **Good.**
+- **Day 2, 2 am.** Rolling outages become total; single digits outside. Aids out, CPAP stops; he wakes at 4 am short of breath, moves it to the power station. By morning it is flat; no car or solar to recharge. [BOOK HAD IT, P38; he could not do watts x hours.]
+- **Day 3.** Bedroom about 45°F. Soup on the gas stovetop, window cracked. New CO alarms, but with aids out he would not hear one. [BOOK HAD IT, P48 bed-shaker; absent from P47, which he read.] Boil-water notice; a crawl-space pipe splits; he shuts the main (P35, good).
+- **Day 3, 9 pm.** The 15-year-old generator (old fuel never drained, P40 partly) will not start. He tinkers in the dark on ice with neuropathic feet, falls, hits his head. **He is on warfarin.** Headache, bed. [BOOK GAP: "warfarin", "anticoag" 0 hits.]
+- **Day 4.** Phone dead; niece in Houston, also blacked out, cannot reach him; no neighbor knows him. Drowsy, confused, not eating. No leave-temperature written. [BOOK HAD IT, P3-11 "agree an indoor temperature," no number.]
+- **Day 4, 4 pm.** Niece calls 911. Iced roads; the welfare check reaches him Day 5 morning, Duke barking at the door.
 - **Day 5.** Hypothermia and a slow head bleed. ICU.
 
-**Outcome: near-death.** Texas counted 246 deaths from this storm, hypothermia the leading cause and CO poisoning a major one «CITE: Texas DSHS, February 2021 Winter Storm-Related Deaths, final report». Earl is in the core profile: old, alone, no neighbor, power-dependent.
+**Outcome: near-death.** Texas counted 246 storm deaths, hypothermia leading, CO poisoning a major share «CITE: Texas DSHS, February 2021 Winter Storm-Related Deaths report». Earl fits the core profile: old, alone, no neighbor, power-dependent.
 
 **Decisive moments and cause chain**
 1. No named person nearby. [BOOK HAD IT, P4-C1] No script for asking a stranger.
