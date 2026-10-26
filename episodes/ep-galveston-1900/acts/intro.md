@@ -16,9 +16,9 @@ Rows: sources-cline.md §1 and factcheck-E.md H1-S2 (Cline wrote the part of the
 
 ### H1-S3 — narration
 **Picture:** hard cut to the Library of Congress ruins photograph of Galveston, September 1900; popfig "SATURDAY · SEPT 8, 1900"; chip "AT LEAST 6,000 LIVES" with small tag "CLINE'S OWN COUNT"; low swell under the cut. Source line: Isaac Cline, Monthly Weather Review, September 1900; NOAA Heritage; NOAA AOML. [RS] [VE] [PAY] (toll and twist inside about 20 s)
-> In nineteen hundred, on the evening of Saturday the eighth of September, a hurricane came ashore at Galveston. At least six thousand people there lost their lives that night.
+> Nine years later, on a Saturday night in September, a hurricane came ashore at Galveston. At least six thousand people there lost their lives.
 
-Rows: sources-cuba.md §4 (AOML "On the evening of September 8, 1900, a major hurricane struck Galveston"); factcheck intro-r1 rows 21 and 22 (Saturday verified; Cline, MWR "at least 6,000 people", "lost their lives" alternative); "Nine years later" dropped: no year is spoken before this line. Moved here from old I1-S5 (grade fix 1).
+Rows: sources-cuba.md §4 (AOML "On the evening of September 8, 1900, a major hurricane struck Galveston"); factcheck intro-r2 rows 7 to 9 (Saturday verified; "at least 6,000" NOAA Heritage, Cline's MWR count 6,000 "conservative"; "lost their lives" alternative); [verify: "Nine years later" = 16 July 1891 page to 8 September 1900 (nine years, two months) · Commons 1891 page date, AOML 1900 date]; [verify: "Saturday night" as the spoken form of AOML "evening of September 8" (storm wave about 6:30 p.m. TSHA, landfall about 8:00 p.m. CST Wikipedia) · https://www.tshaonline.org/handbook/entries/galveston-hurricane-of-1900]. "That night" dropped here so it is spoken once, in H1-S5 (round 3, grade r2 fix 4: date stack cut, nine-year gap spoken, toll earlier).
 
 ### H1-S4 — narration
 **Picture:** NOAA 1900 weather map, Havana pinned, popfig "BELEN OBSERVATORY, HAVANA", one arrow northwest into the Gulf; then the telegraph line graphic, the Washington line lit, the Havana line dark. Source line: NOAA AOML, 2015 (on screen: "NOAA: the Bureau 'decreed that only its forecasts would be carried over the telegraph'"). [RS] [VE] (break two)
