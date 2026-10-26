@@ -123,6 +123,8 @@ listings by state, along with a station finder and coverage maps.
 «SRC: NOAA Weather Radio All Hazards — "County Coverage Listing by State" (SAME county codes), station
 listings and coverage maps. | https://www.weather.gov/nwr/counties | retrieved 2026-07-29»
 
+«FIG: weather-radio-setup»
+
 **Check coverage before you buy, not after.** NWR is a nationwide network broadcasting directly from the
 nearest Weather Service office, but service to a county *"depends on reliable signal reception, which
 typically extends in about a 40 mile radius from the transmitter, assuming level terrain."* Counties with
