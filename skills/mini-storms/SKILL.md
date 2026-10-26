@@ -161,7 +161,7 @@ narration speech spans, hidden in the hook / CTA / close. Deliverables: `master_
 ### 7–9. QC, render, ship
 Same scripts and hidden-window rules as storm-episode. Static gates → 3–5 slice renders (40 s windows at 10 fps
 around every new card, the CTA and the close; strip read by a subagent) → ONE draft → owner preview → full.
-**One heavy job at a time:** `scripts/render_busy.py` refuses gates and ffmpeg batches while a render is alive.
+**One heavy job at a time:** `scripts/render_busy.py` refuses gates and ffmpeg batches while a render is alive. Renders, TTS, the face pass and e2e also wait for each other on the heavy lock (CLAUDE.md).
 Frames: the settle-frame pass in `references/mg-quickref.md` "Verify" (new/changed comps only, one subagent reader, two fix rounds max). `metadata.md`: first URL = `channel.cta.first_link`,
 courtesy credits block listing every non-PD source with @handles, chapters at each idea block.
 
