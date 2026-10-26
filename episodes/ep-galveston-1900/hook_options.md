@@ -30,23 +30,23 @@ Rows: sources-cuba.md §2 (USWB "decreed that only its forecasts would be carrie
 Rows: sources-cuba.md §4 (landfall evening of 8 Sept, AOML); sources-cline.md §3 ("at least 6,000 people", Cline's report, paraphrased per flag-words.md); footage-inventory.md row 1 (ruins film, LoC record still to confirm).
 
 ## Option 2 · Hook shape: object (2026-10-26)
-The one ordinary thing is Cline's own report on the storm: it lists the warnings, gives the count of lives lost and names his wife, and Havana is nowhere in it, so a few printed pages carry the whole angle.
+The one ordinary thing is Cline's own report on the storm: it lists a warning from Washington on every day of that week and names his wife among the lost, and Belen Observatory is nowhere in that issue, so a few printed pages carry the whole angle.
 
 ### H1-S1 — Paul on camera
 **Picture:** Paul full frame at 0:00, holding a printed copy of the Monthly Weather Review report, September 1900; popfig "GALVESTON, TEXAS · SEPTEMBER 1900" inside the first second; the sound under him: one page turning, then rain on a window, no wind.
-> This report on the Galveston storm comes from the head of its weather office, a man who once called a storm like it an absurd delusion.
+> This report from Galveston's weather office lists a warning message from Washington on every day from Tuesday to Saturday, the day the hurricane hit.
 
-Rows: sources-cline.md §2 and §3 (Cline, "Local Forecast Official and Section Director", wrote the Special Report reprinted from MWR, Sept 1900); sources-cline.md §1 ("absurd delusion", 16 July 1891; "a storm like this" accepted as fair, factcheck-C.md I1-S6).
+Rows: sources-cline.md §3 ("Warning messages were received from the Central Office at Washington on September 4, 5, 6, 7, and 8"; Cline's Special Report, MWR Sept 1900); sources-cuba.md §4 (landfall the evening of 8 Sept); factcheck-D.md I1-S5 (7 Sept 1900 was a Friday, so the fourth was a Tuesday and the eighth a Saturday).
 
 ### H1-S2 — narration
-**Picture:** macro push across the report page to the warnings sentence; chip "WARNINGS · SEPT 4 TO 8". Source line: Isaac Cline, Monthly Weather Review, September 1900. [RS] [VE] (break two: the city was warned)
-> In it, he lists the warning messages from Washington, five days of them, from the fourth of September to the eighth.
+**Picture:** report byline, lower-third "ISAAC CLINE · LOCAL FORECAST OFFICIAL, GALVESTON"; hard cut to the Galveston Daily News page of 1891, chip "ABSURD DELUSION"; one telegraph-key click on the chip. Source line: Isaac Cline, Galveston Daily News, 16 July 1891. [RS] [VE] (break one)
+> The man who wrote it, Isaac Cline, had said in the city paper in eighteen ninety-one that a storm seriously damaging Galveston was an absurd delusion.
 
-Rows: sources-cline.md §3 ("Warning messages were received from the Central Office at Washington on September 4, 5, 6, 7, and 8").
+Rows: sources-cline.md §1 and §2 (16 July 1891, "is simply an absurd delusion"; Cline wrote that part, factcheck-E.md H1-S2; Cline wrote the 1900 report).
 
 ### H1-S3 — narration
-**Picture:** the report pages fan out; cut to the NOAA 1900 map, Havana pinned, popfig "BELEN OBSERVATORY, HAVANA", one arrow northwest into the Gulf; chip "NOT IN THE REPORT". Source line: NOAA AOML, 2015. [RS] [VE]
-> Havana never shows up in those pages. The Jesuit forecasters at Belen Observatory had said this storm was moving northwest, into the Gulf of Mexico.
+**Picture:** the report pages fan out; cut to the NOAA 1900 map, Havana pinned, popfig "BELEN OBSERVATORY, HAVANA", one arrow northwest into the Gulf; chip "BELEN: NOT IN THE REVIEW". Source line: NOAA AOML, 2015. [RS] [VE] (break two)
+> Belen Observatory never shows up in that issue. The Jesuit forecasters there had said this storm was moving northwest, into the Gulf of Mexico.
 
 Rows: sources-cuba.md header ("Belen", "Gangoiti" and any Cuban ban appear nowhere in any 1900 MWR issue grepped; Cline's report is printed in the Sept issue); sources-cuba.md §1 (Belen: northwest into the Gulf, NOAA AOML).
 
