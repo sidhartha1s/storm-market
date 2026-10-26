@@ -52,6 +52,8 @@ import re
 import subprocess
 import sys
 import time
+
+NO_WINDOW = getattr(subprocess, "CREATE_NO_WINDOW", 0)  # the stop hook runs this every turn; a console child otherwise flashes a window on the owner's screen
 from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
@@ -81,7 +83,7 @@ def ps(host, script, timeout=90):
         argv = ["ssh", "-n", "-o", "ConnectTimeout=15", host, " ".join(argv)]
     try:
         r = subprocess.run(argv, capture_output=True, text=True, encoding="utf-8", errors="replace",
-                           stdin=subprocess.DEVNULL, timeout=timeout)
+                           stdin=subprocess.DEVNULL, timeout=timeout, creationflags=NO_WINDOW)
     except subprocess.TimeoutExpired:
         return 124, f"timed out after {timeout}s"
     return r.returncode, r.stdout if r.returncode == 0 else r.stdout + r.stderr  # stderr carries CLIXML progress noise
