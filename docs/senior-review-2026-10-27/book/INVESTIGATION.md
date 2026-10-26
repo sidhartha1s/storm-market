@@ -232,7 +232,7 @@ Target: `P3-11-extreme-cold.md`, "## During", replace "agree an indoor temperatu
 Also P40 "What this does not do": "If you live alone and your generator has not started this year, it is not a plan."
 
 ### R8. Buying ladder: first $50 / $150 / $500 (1 page)
-Target: `P0-front-matter.md`, after the new R2 page. Table by budget, each row name-first then protection number:
+Target: `P0-front-matter.md`, after the R2 page. Name first, number second:
 - **$50:** weather radio (87), whistle and flashlight at the bed (43), CO alarm check (47), copies of med list (Form 2).
 - **$150:** add 7 days of water in small bottles (1), helmets for every person in a mobile home (25), phone battery bank (117), insulin cooler kit (60) or bed-shaker (48).
 - **$500:** add a power station sized for the medical device (38), adult helmets, short-range radios (121), go-bag per person (107).
