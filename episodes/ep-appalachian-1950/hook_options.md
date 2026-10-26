@@ -38,7 +38,7 @@ Rows: nws-facts.md §1 Newark 108 mph gust on 25 Nov, strongest recorded there (
 
 ### H1-S3 — narration
 **Picture:** map slides down the coast to Philadelphia; a tide gauge graphic fills to the top, chip "10.8 FT · RECORD TIDE" [VE] [RS]. Sound: bed; low water ambience from the library under the tide line, then out.
-> Down the coast, the tide on the Delaware rose to a record ten point eight feet at Philadelphia. So the storm that buried Pittsburgh in snow was flooding Philadelphia too.
+> And the tide on the Delaware rose to a record ten point eight feet at Philadelphia, so the other side of Pittsburgh's snowstorm was a flood.
 
 Rows: nws-facts.md §1 Philadelphia (PHL gage) record tide 10.8 ft above MLLW (PHI); angle.md Claim (snow inland, wind on the coast).
 
