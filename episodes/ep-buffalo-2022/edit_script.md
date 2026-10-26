@@ -10,7 +10,7 @@ Publish target: near Christmas, the anniversary window 23 to 27 Dec 26 (owner: "
 - Target: about 20 min (proposal; the owner sets length per episode). 5 acts of 3 to 4.5 min plus hook/intro (about 2 min), close (about 0.5 min), the CTA (24.0 s) and blackouts. `word_budget.py` sizes it once probe TTS exists.
 - Architecture: Detective with a twist. Dominant question: **"The warning came days early. So why were so many of the people who lost their lives found outside, and not at home?"**
 - Script concept (Claim line, copied): It wasn't people trapped at home: more of the people who lost their lives in Erie County were found outside, in the snow, than anywhere else, eighteen of forty-six, with four more in their cars.
-- Ruled out as the lead: snow totals / "blizzard of the century"; raw whiteout drive-through footage; "they froze at home without heat". The twelve no-heat deaths appear inside Act 5, never in the hook.
+- Ruled out as the lead: snow totals / "blizzard of the century"; raw whiteout drive-through footage; "they froze at home without heat". The twelve no-heat deaths are spoken once in H1-S2 (never "at home": WIVB gives no place) and told in full in Act 5.
 - Chapters in stakes order: the forecast that was right → Friday morning (the flash freeze and the ban that came as the whiteout did) → outside (the eighteen, Anndel Taylor) → nobody could come (the plows, ambulances, the 911 backlog, the seven) → home was not safe either, and what changed.
 
 ## Paul on camera (Christmas touch, owner "santa paulclaus presents....")
