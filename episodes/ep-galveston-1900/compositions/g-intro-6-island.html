@@ -228,7 +228,7 @@ window.__timelines = window.__timelines || {};
   const cnt = {v: 10000};
   tl.to(cnt, {v: 38000, duration: 0.9, ease: "power3.out", onUpdate: function() {
       const el = document.getElementById("g-intro-6-island-num");
-      if (el) el.textContent = Math.round(cnt.v / 100) * 100 >= 38000 ? "38,000" : (Math.round(cnt.v / 100) * 100).toLocaleString("en-US");
+      if (el) el.textContent = (Math.round(cnt.v / 100) * 100).toLocaleString("en-US");
   }}, 2.6);
   tl.to(P+"c1", {y: -4, duration: 1.35, ease: "sine.inOut"}, 3.05);
   /* Its @5.28: C1 slides out right */
