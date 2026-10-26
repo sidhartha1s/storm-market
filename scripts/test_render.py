@@ -188,7 +188,10 @@ check("render-01 OLD: the pre-fix preflight block had no render_busy.py --launch
 check("render-01 NEW: render.cmd calls render_busy.py --launch and aborts on errorlevel",
       re.search(r'render_busy\.py"\s+--launch.*\n.*errorlevel 1', render_cmd) is not None)
 check("render-03 NEW: preflight output is redirected to a log file",
-      'render_preflight.py" "%EP%" %MODE% > "%PREFLIGHT_LOG%"' in render_cmd)
+      'render_preflight.py" "%EP%" %MODE% >> "%PREFLIGHT_LOG%"' in render_cmd)
+check("heavy lock: render.cmd books it (--hold) before the preflight, into the same log",
+      render_cmd.find('render_busy.py" --hold "render %SLUG% %MODE%" > "%PREFLIGHT_LOG%"')
+      in range(0, render_cmd.find('render_preflight.py" "%EP%"')))
 check("render-08 NEW: the done marker is deleted before any gate runs",
       'del /q "%EP%\\render_%MODE%_done.marker" 2>nul' in render_cmd)
 check("render-08 NEW: the missing-index.html and :usage paths write a marker",
