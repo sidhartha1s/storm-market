@@ -225,6 +225,8 @@ the shops have it.
 
 ## The one-page version
 
+«FIG: card-cold»
+
 | | |
 |---|---|
 | **The distinction** | No storm needed. Duration below freezing is the mechanism — and it hits unprepared regions hardest |
