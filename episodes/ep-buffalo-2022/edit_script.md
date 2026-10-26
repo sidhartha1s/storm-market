@@ -3,7 +3,7 @@ Opening (27 Oct 26): hook owner-picked, Option A "record" of `hook_options-v2.md
 
 Lane: documentary (`/storm-episode`). Angle: `angle.md` (owner delegated the pick 26 Oct 26 02:09:38, "angle is your call"; wording tightened by the research pass: "more ... than anywhere else", not "most").
 Research: `research/deaths.md`, `research/nws.md`, `research/response.md` (every fact with a URL, PRIMARY or SECONDARY).
-Status (26 Oct 26): structure + act briefs by the orchestrator; hook, tail and intro by a separate writer over six rounds; fact-check `fact_check.md` (0 open `[verify]`, 0 UNVERIFIED); fresh Opus grader each round, `grade_hook.md` then `grade_hook_r2.md` to `grade_hook_r6.md`: 6, 6.5, 6.5, 7.5, 7, 7 of 10. The lock bar is 8, so H1, T1 and I1 are NOT LOCKED (condition b fails, and condition c, the owner's explicit sign-off, is pending). No TTS, no clips, no renders this round.
+Status (26 Oct 26): structure + act briefs by the orchestrator; hook, tail and intro by a separate writer over six rounds; fact-check `fact_check.md` (0 open `[verify]`, 0 UNVERIFIED); fresh Opus grader each round, `grade_hook.md` then `grade_hook_r2.md` to `grade_hook_r6.md`: 6, 6.5, 6.5, 7.5, 7, 7 of 10. The lock bar is 8, so H1, T1 and I1 are NOT LOCKED (condition b fails, and condition c, the owner's explicit sign-off, is pending). 27 Oct 26: the owner picked the hook (Option A, "record"), which is his sign-off on the hook wording only; T1 and I1 still wait for his sign-off. No TTS, no clips, no renders this round.
 Publish target: near Christmas, the anniversary window 23 to 27 Dec 26 (owner: "lets drop it near christmas").
 
 ## Runtime and shape
