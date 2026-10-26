@@ -164,6 +164,19 @@ with tempfile.TemporaryDirectory() as d:
     check("--hold books the lock for the calling cmd.exe (render.cmd)", out.strip().splitlines()[-1:] == [str(p.pid)], out)
     out = book("e2e")
     check("render.cmd's lock is free once its cmd.exe exits", "took over a dead holder's lock: render ep-test draft" in out, out)
+
+    # A wrapper calling render.cmd twice (draft, then full) in one cmd.exe: the second --hold must pass, and
+    # --release must free the lock while that cmd.exe lives on (review blocker: it waited forever on itself).
+    busy = f'"{sys.executable}" "{S / "render_busy.py"}"'
+    bat.write_text(f'@echo off\n{busy} --hold "render ep-test draft"\n{busy} --hold "render ep-test full"\n'
+                   f'echo HELD TWICE\n{busy} --release\n'
+                   f'if exist "{lock}" (echo STILL LOCKED) else (echo RELEASED)\n', encoding="utf-8")
+    try:
+        out = subprocess.run(["cmd", "/c", str(bat)], capture_output=True, text=True, timeout=30, creationflags=NW).stdout
+    except subprocess.TimeoutExpired:
+        out = "timed out: the second --hold waited on its own cmd.exe"
+    check("one cmd.exe books the lock twice, then --release frees it before it exits",
+          "HELD TWICE" in out and "RELEASED" in out, out)
     os.environ.pop("HEAVY_LOCK_FILE")
 
 if FAILS:
