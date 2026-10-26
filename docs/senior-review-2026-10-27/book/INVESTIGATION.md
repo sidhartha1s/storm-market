@@ -77,13 +77,14 @@ Legend: **[BOOK HAD IT]** = the book covers it (file, protection) but the reader
 ### 1.4 Bev Tanner, 67, Ray, 70 (cane), grandkids 4 and 8, Peanut. Moore May 20, 2013-type EF5
 
 **Timeline**
-- **~1:10 pm.** Tornado watch for central Oklahoma. The book says a manufactured-home household leaves now (P4-C2, P3-01). Bev decided in advance she will not (watches "all spring"). TV on. Kids arrive about 2:30.
-- **2:40 pm.** Tornado warning. Phone screams, radio sounds. She does not look outside. Good. [BOOK HAD IT, P95]
-- **2:40-2:50.** Helmets on kids. Ray takes about four minutes to reach the car. The 4-year-old will not leave without a toy. Peanut runs under the trailer. Ten minutes gone.
-- **2:56 pm.** Touchdown to the west. They are on the road; traffic has thickened with other leavers. Hail on the windshield.
-- **3:02 pm.** The church. Locked. Nobody ever answered her calls. No second place. [BOOK GAP] Ray falls on the wet steps trying the side door.
-- **3:05-3:20.** Bev puts everyone back in the car and sits in the lot, kids on the floor under her body. The tornado passes about a mile south. Their park is in the path; the single-wide is gone.
-- **Outcome: survived, injured (Ray, wrist fracture; Bev, hail cuts). Survived by geography, not by plan.** Had the path been a mile north, a car in an open lot in an EF5 is among the worst places to be. Had they stayed home, the single-wide was destroyed.
+- **~1:10 pm.** Tornado watch. The book says a manufactured home leaves now (P4-C2, P3-01). Bev decided she will not. Kids arrive ~2:30.
+- **2:40 pm.** Warning. She does not look outside. [BOOK HAD IT, P95] Good.
+- **2:40-2:50.** Kids' helmets on; Ray needs four minutes to the car; the 4-year-old wants a toy; Peanut hides under the trailer. Ten minutes gone.
+- **2:56 pm.** Touchdown to the west. On the road; traffic thick; hail.
+- **3:02 pm.** Church locked. No second place. [BOOK GAP] Ray falls on wet steps trying the side door.
+- **3:05-3:20.** Back in the car in the open lot, kids on the floor under Bev. The tornado passes about a mile south; their park is in the path; the single-wide is gone.
+
+**Outcome: survived, injured (Ray wrist fracture, Bev hail cuts). Survived by geography, not by plan.** A mile north, a car in an open lot is among the worst places in an EF5; at home, the trailer was destroyed.
 
 **Decisive moments and cause chain**
 1. Watch trigger rejected. [BOOK HAD IT, P4-C2] "Accept you will do this several times for nothing" is right and lost her; no middle version (high-risk days, kid afternoons).
