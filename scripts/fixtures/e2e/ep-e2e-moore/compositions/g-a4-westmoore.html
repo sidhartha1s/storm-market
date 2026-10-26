@@ -1,0 +1,128 @@
+<template>
+<!-- g-a4-westmoore · ep-moore-1999 · A4-S2 tail + A4-S3 first sentence, track 2, full frame, host 685.76 for 14.14 s (to 699.90).
+     Self-made schematic (FEMA 342 photos carry no per-photo credit, so none is used): a school plan with an interior hallway,
+     a central locker core with bathrooms, a reinforced stairwell and the gym. Not to scale; says so in the source line.
+     Cues local = abs - 685.76 (a4-s2 / a4-s3 words.json): "Several hundred ... in the building" @0.00-1.92; "ushered" @3.74;
+     "interior hallways" @5.26; "bathrooms" @6.54; "reinforced stairwell" @8.66; "tore the roof off the gym" @10.56;
+     "gym" @11.68 (697.44); "nobody ... hurt" @12.56 / @13.58; out 14.14. -->
+<style>
+  #g-a4-westmoore-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .a4w-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .a4w-title { position:absolute; left:96px; top:60px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:1; letter-spacing:1px; opacity:0; visibility:hidden; }
+  .a4w-lab { font-family:Arial, sans-serif; font-weight:700; font-size:28px; letter-spacing:3px; fill:#93a3b2; paint-order:stroke; stroke:#04070c; stroke-width:5px; }
+  .a4w-hot { fill:#e8c56a; }
+  .a4w-chip { position:absolute; left:96px; top:900px; display:flex; align-items:baseline; gap:16px; padding:14px 34px 16px; border-radius:28px;
+    background:rgba(10,16,24,0.62); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.14);
+    white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4w-ct { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:52px; color:#f2f5f8; }
+  .a4w-cs { font-weight:700; font-size:34px; line-height:40px; letter-spacing:2px; color:#7fb2e5; opacity:0; visibility:hidden; }
+  .a4w-src { position:absolute; left:96px; top:134px; font-weight:700; font-size:20px; line-height:26px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a4-westmoore-labs text, #g-a4-westmoore-roof, #g-a4-westmoore-people circle { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-westmoore-root" data-composition-id="g-a4-westmoore" data-width="1920" data-height="1080" data-duration="14.14">
+  <svg class="a4w-svg" viewBox="0 0 1920 1080">
+    <g id="g-a4-westmoore-plan">
+      <!-- rooms: fills, then walls drawn on -->
+      <rect id="g-a4-westmoore-f-awards" x="320" y="230" width="320" height="300" fill="#0f1922"/>
+      <rect id="g-a4-westmoore-f-hall" x="320" y="560" width="840" height="90" fill="#15202b"/>
+      <rect id="g-a4-westmoore-f-vhall" x="660" y="230" width="70" height="330" fill="#15202b"/>
+      <rect id="g-a4-westmoore-f-core" x="760" y="390" width="340" height="150" fill="#1b2836"/>
+      <rect id="g-a4-westmoore-f-stair" x="960" y="230" width="180" height="130" fill="#1b2836"/>
+      <rect id="g-a4-westmoore-f-gym" x="1190" y="230" width="350" height="420" fill="#0f1922"/>
+      <rect id="g-a4-westmoore-f-class" x="320" y="680" width="1220" height="150" fill="#0b1219"/>
+      <g fill="none" stroke="#46586b" stroke-width="5" stroke-linejoin="round">
+        <path id="g-a4-westmoore-w-out" d="M300,210 L1560,210 L1560,850 L300,850 Z"/>
+        <path id="g-a4-westmoore-w-in" d="M640,230 L640,530 M320,530 L640,530 M320,560 L1160,560 M320,650 L1160,650 M660,230 L660,560 M730,230 L730,560 M320,680 L1540,680 M560,680 L560,830 M800,680 L800,830 M1040,680 L1040,830 M1280,680 L1280,830"/>
+        <path id="g-a4-westmoore-w-core" d="M760,390 L1100,390 L1100,540 L760,540 Z M930,390 L930,540" stroke="#7fb2e5"/>
+        <path id="g-a4-westmoore-w-stair" d="M960,230 L1140,230 L1140,360 L960,360 Z M990,230 L990,360 M1020,230 L1020,360 M1050,230 L1050,360 M1080,230 L1080,360 M1110,230 L1110,360" stroke="#e8c56a"/>
+        <path id="g-a4-westmoore-w-gym" d="M1190,230 L1540,230 L1540,650 L1190,650 Z"/>
+      </g>
+      <!-- gym roof: hatched slab that lifts away on "tore the roof off" -->
+      <g id="g-a4-westmoore-roof">
+        <rect x="1190" y="230" width="350" height="420" fill="#2a3644" stroke="#93a3b2" stroke-width="3"/>
+        <path d="M1190,290 L1250,230 M1190,370 L1330,230 M1190,450 L1410,230 M1190,530 L1490,230 M1190,610 L1540,260 M1230,650 L1540,340 M1310,650 L1540,420 M1390,650 L1540,500 M1470,650 L1540,580" stroke="#46586b" stroke-width="2" fill="none"/>
+      </g>
+      <g id="g-a4-westmoore-people" fill="#f2f5f8" stroke="#04070c" stroke-width="2"></g>
+    </g>
+    <g id="g-a4-westmoore-labs">
+      <text id="g-a4-westmoore-l-awards" class="a4w-lab" x="480" y="270" text-anchor="middle">AWARDS</text>
+      <text id="g-a4-westmoore-l-hall" class="a4w-lab a4w-hot" x="340" y="592" text-anchor="start">INTERIOR HALLWAY</text>
+      <text id="g-a4-westmoore-l-core" class="a4w-lab a4w-hot" x="930" y="430" text-anchor="middle">LOCKERS · BATHROOMS</text>
+      <text id="g-a4-westmoore-l-stair" class="a4w-lab a4w-hot" x="945" y="305" text-anchor="end">STAIRWELL</text>
+      <text id="g-a4-westmoore-l-gym" class="a4w-lab" x="1365" y="450" text-anchor="middle">GYM</text>
+    </g>
+  </svg>
+  <div class="a4w-title" id="g-a4-westmoore-title">WESTMOORE HIGH</div>
+  <div class="a4w-src" id="g-a4-westmoore-src">Schematic, not to scale · NWS Service Assessment, p23; FEMA 342</div>
+  <div class="a4w-chip" id="g-a4-westmoore-chip"><span class="a4w-ct" id="g-a4-westmoore-ct">GYM ROOF GONE</span><span class="a4w-cs" id="g-a4-westmoore-cs">· NOBODY HURT</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a4-westmoore", P = "#g-a4-westmoore-", DUR = 14.14;
+  const $ = s => document.querySelector(P + s);
+  /* 28 figures: start in the awards room, move to the hallway / core (24) or the stairwell (4). Fixed seed, deterministic. */
+  let seed = 7; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+  const g = $("people"), ppl = [];
+  for (let i = 0; i < 28; i++) {
+    const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    c.setAttribute("id", "g-a4-westmoore-p" + i); c.setAttribute("r", "9");
+    const sx = 350 + rnd() * 260, sy = 300 + rnd() * 200;   /* below the AWARDS label (baseline 270) */
+    let tx, ty;
+    if (i < 4) { tx = 975 + rnd() * 150; ty = 250 + rnd() * 90; }               /* stairwell */
+    else if (i < 12) { tx = 775 + rnd() * 310; ty = 450 + rnd() * 75; }        /* core: lockers, bathrooms */
+    else { tx = 340 + rnd() * 800; ty = 608 + rnd() * 30; }                     /* interior hallway */
+    c.setAttribute("cx", sx.toFixed(1)); c.setAttribute("cy", sy.toFixed(1));
+    g.appendChild(c); ppl.push({ c, sx, sy, tx, ty, i });
+  }
+  const walls = ["w-out", "w-in", "w-gym", "w-core", "w-stair"].map(k => $(k));
+  const tl = gsap.timeline({ paused: true });
+  walls.forEach(w => { const L = Math.ceil(w.getTotalLength()) + 1; tl.set(w, { strokeDasharray: L, strokeDashoffset: L }, 0); });
+  tl.set([P + "title", P + "src", P + "chip", P + "cs", P + "roof", P + "labs text"], { autoAlpha: 0 }, 0);
+  tl.set(P + "people circle", { autoAlpha: 0 }, 0);
+  tl.set(P + "roof", { x: 0, y: 0, rotation: 0 }, 0);
+
+  /* ambient: plan drifts */
+  tl.fromTo(P + "plan", { x: 0, y: 0 }, { x: -14, y: 6, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "labs", { x: 0, y: 0 }, { x: -14, y: 6, duration: DUR, ease: "none" }, 0);
+
+  /* 0.00 "Several hundred students and parents were in the building": plan draws, title, people in the awards room */
+  tl.fromTo(P + "title", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.0);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  walls.forEach((w, i) => tl.to(w, { strokeDashoffset: 0, duration: 1.2, ease: "power2.inOut" }, 0.1 + i * 0.12));
+  tl.set(P + "roof", { autoAlpha: 1 }, 1.0);
+  tl.fromTo(P + "l-awards", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.9);
+  tl.fromTo(P + "l-gym", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.1);
+  ppl.forEach(p => tl.fromTo(p.c, { autoAlpha: 0, scale: 0, svgOrigin: p.sx + " " + p.sy }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 0.46 + p.i * 0.04));
+  /* idle shuffle in the room until "ushered" */
+  ppl.forEach(p => tl.to(p.c, { attr: { cy: p.sy - 8 }, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.9 + (p.i % 5) * 0.08));
+  /* "ushered" @3.74: the room empties inward; "interior hallways" @5.26 and "bathrooms" @6.54 name the places */
+  ppl.filter(p => p.i >= 4).forEach(p => tl.to(p.c, { attr: { cx: p.tx, cy: p.ty }, duration: 2.0, ease: "power2.inOut" }, 3.74 + (p.i % 8) * 0.07));
+  tl.to(P + "l-awards", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 4.4);
+  tl.fromTo(P + "l-hall", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.26);
+  tl.fromTo(P + "l-core", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.54);
+  tl.fromTo(P + "f-core", { attr: { fill: "#1b2836" } }, { attr: { fill: "#2a4158" }, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 6.54);
+  /* "Others went into a reinforced stairwell" @7.70 / @8.66 */
+  ppl.filter(p => p.i < 4).forEach(p => tl.to(p.c, { attr: { cx: p.tx, cy: p.ty }, duration: 1.4, ease: "power2.inOut" }, 7.70 + p.i * 0.08));
+  tl.fromTo(P + "l-stair", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.66);
+  tl.fromTo(P + "f-stair", { attr: { fill: "#1b2836" } }, { attr: { fill: "#4a3d1c" }, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 8.66);
+  /* "tore the roof off the gym" @10.56: the roof slab lifts and flies off frame top right */
+  tl.to(P + "roof", { y: -40, rotation: -4, svgOrigin: "1365 440", duration: 0.35, ease: "power2.out" }, 10.56);
+  tl.to(P + "roof", { y: -900, x: 260, rotation: 18, svgOrigin: "1365 440", autoAlpha: 0, duration: 0.9, ease: "power3.in" }, 10.91);
+  tl.to(P + "l-gym", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 10.56);
+  /* chip GYM ROOF GONE @11.10, NOBODY HURT @12.56; people pulse once, unharmed */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -120 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 11.10);
+  tl.fromTo(P + "cs", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 12.56);
+  tl.to(P + "people circle", { attr: { r: 12 }, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 12.56);
+  /* exit by 14.10 */
+  tl.to(P + "chip", { x: -1000, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 13.55);
+  tl.to(P + "title", { x: -900, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 13.55);
+  tl.to(P + "src", { x: -900, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 13.55);
+  tl.to(P + "plan", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 13.60);
+  tl.to(P + "labs", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 13.60);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>

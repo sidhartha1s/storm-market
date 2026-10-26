@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1-waterbill · ep-moore-1999 · A1-S6 first half · host 204.25 to 213.13 (8.88 s), track 2, full frame. Sonnet-tier graphic, built here.
+  Self-made mock of a city water-bill envelope (no real bill shown) with a TORNADO SAFETY insert sliding out; chip MOORE · 2 MONTHS BEFORE.
+  Local time = episode s minus 204.25 (a1-s6 word s - 3.122). Cues: "Moore" 3.12 -> 0 envelope slides in; "homework" 5.91 -> 1.66
+  envelope settles, label; "tornado safety insert" 7.20 -> 4.08 insert slides out; "two months" 10.08 -> 6.96 chip. -->
+<template>
+<style>
+  #g-a1-waterbill-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #1a232d 0%, #0b1016 55%, #030507 100%); }
+  .a1b-stage { position:absolute; inset:0; }
+  .a1b-back { position:absolute; left:510px; top:420px; width:900px; height:440px; background:#c9c2b0; border-radius:6px; }
+  .a1b-ins { position:absolute; left:550px; top:480px; width:820px; height:380px; background:#fbfaf6; border-radius:4px; box-shadow:0 -6px 24px rgba(0,0,0,0.35); }
+  .a1b-it { position:absolute; left:0; top:40px; width:820px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:76px; line-height:86px; color:#c0392b; opacity:0; visibility:hidden; }
+  .a1b-ln { position:absolute; left:110px; height:16px; background:#b8c0c8; border-radius:8px; }
+  .a1b-front { position:absolute; left:510px; top:470px; width:900px; height:390px; background:linear-gradient(180deg, #ece6d6, #ddd5c2); border-radius:0 0 6px 6px;
+    box-shadow:0 30px 70px rgba(0,0,0,0.55); overflow:hidden; }
+  .a1b-win { position:absolute; left:80px; top:150px; width:360px; height:110px; border:3px solid rgba(80,90,100,0.35); border-radius:6px; background:rgba(255,255,255,0.35); }
+  .a1b-elab { position:absolute; left:80px; top:60px; font-weight:700; font-size:30px; line-height:36px; letter-spacing:6px; color:#3a4654; white-space:nowrap; }
+  .a1b-stamp { position:absolute; right:60px; top:50px; width:90px; height:110px; border:3px dashed rgba(80,90,100,0.4); }
+  .a1b-glass { position:absolute; inset:auto; box-sizing:border-box; border-radius:28px; background:rgba(10,16,24,0.6);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); white-space:nowrap; opacity:0; visibility:hidden; }
+  .a1b-chip { left:96px; top:60px; padding:14px 34px 16px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:1.1; color:#f2f5f8; }
+  .a1b-chip .a1b-amb { color:#e8c56a; }
+  .a1b-src { left:96px; bottom:60px; padding:10px 24px 11px; font-weight:700; font-size:21px; line-height:26px; letter-spacing:1px; color:#c8d3e0; }
+</style>
+<div id="g-a1-waterbill-root" data-composition-id="g-a1-waterbill" data-width="1920" data-height="1080" data-duration="8.88">
+  <div class="a1b-stage" id="g-a1-waterbill-stage">
+    <div class="a1b-back" id="g-a1-waterbill-back"></div>
+    <div class="a1b-ins" id="g-a1-waterbill-ins">
+      <div class="a1b-it" id="g-a1-waterbill-it">TORNADO SAFETY</div>
+      <div class="a1b-ln" id="g-a1-waterbill-l1" style="top:160px; width:600px;"></div>
+      <div class="a1b-ln" id="g-a1-waterbill-l2" style="top:196px; width:540px;"></div>
+      <div class="a1b-ln" id="g-a1-waterbill-l3" style="top:232px; width:580px;"></div>
+      <div class="a1b-ln" id="g-a1-waterbill-l4" style="top:268px; width:420px;"></div>
+    </div>
+    <div class="a1b-front" id="g-a1-waterbill-front">
+      <svg id="g-a1-waterbill-flaps" width="900" height="390" viewBox="0 0 900 390" style="position:absolute; left:0; top:0;">
+        <path id="g-a1-waterbill-fl" d="M0,0 L450,390 L0,390 Z" fill="rgba(0,0,0,0.05)"/>
+        <path id="g-a1-waterbill-fr" d="M900,0 L450,390 L900,390 Z" fill="rgba(0,0,0,0.08)"/>
+      </svg>
+      <div class="a1b-elab" id="g-a1-waterbill-elab">CITY WATER BILL</div>
+      <div class="a1b-win" id="g-a1-waterbill-win"></div>
+      <div class="a1b-stamp" id="g-a1-waterbill-stamp"></div>
+    </div>
+  </div>
+  <div class="a1b-glass a1b-chip" id="g-a1-waterbill-chip"><span id="g-a1-waterbill-chipt">MOORE &middot; <span class="a1b-amb">2 MONTHS BEFORE</span></span></div>
+  <div class="a1b-glass a1b-src" id="g-a1-waterbill-src"><span id="g-a1-waterbill-srct">NWS Service Assessment, Aug 1999, p11, p21</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a1-waterbill-";
+  const DUR = 8.88;
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "chip", P + "src"], { autoAlpha: 0 }, 0);
+  tl.set(P + "ins", { y: 0 }, 0);
+  tl.set([P + "elab", P + "it"], { autoAlpha: 0 }, 0);
+  tl.set(P + "stage", { transformOrigin: "960px 600px", rotation: -4, scale: 1 }, 0);
+
+  /* "Moore" 0: the envelope slides onto the table; a slow push the whole window */
+  tl.fromTo(P + "stage", { x: 1300 }, { x: 0, duration: 0.9, ease: "power3.out" }, 0);
+  tl.to(P + "stage", { rotation: 0, scale: 1.06, duration: DUR - 0.9, ease: "none" }, 0.9);
+  /* "homework" 1.66: its label */
+  tl.fromTo(P + "elab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.66);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.8);
+  /* "tornado safety insert" 4.08: the insert slides out of the envelope */
+  tl.to(P + "ins", { y: -330, duration: 0.9, ease: "power3.out" }, 4.08);
+  tl.fromTo(P + "it", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 4.2);
+  tl.to(P + "ins", { y: -342, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 5.0);
+  /* "two months" 6.96 */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -80 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 6.96);
+  tl.to(P + "chip", { x: -980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 8.32);
+  tl.to(P + "src", { y: 60, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 8.32);
+  tl.set({}, {}, DUR);
+  window.__timelines["g-a1-waterbill"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

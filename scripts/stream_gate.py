@@ -4,13 +4,20 @@
 Camille's full render (25 Oct 26, 1205 s, RENDER_WORKERS=2) logged `streaming-encode gate {"enabled":false,
 "reason":"multi_worker"}` and asked for 75.0 GB of frame storage with 71.5 GB free. Moore at 2 workers streamed
 (`parallel_forced`): whether hyperframes takes the parallel streaming route depends on the composition, so the
-worker count alone does not tell. learnings/render.md (25 Oct 26): under 100 GB free, full renders run at 1 worker.
+worker count alone does not tell. render.cmd passed `--experimental-fast-capture=true` until 26 Oct 26; on the Joplin slice that flag turned streaming off at 2 workers, but Moore and the ZBook bench streamed with it, so for Camille it is a suspected cause, not a proven one. learnings/render.md (25 Oct 26): under 100 GB free, full renders run at 1 worker.
 
   stream_gate.py launch <draft|full> <workers> <episode dir>   exit 1 = refuse before launch (render.cmd)
   stream_gate.py watch <render log> <done marker> <preflight log>  runs beside the render; kills it when the
-      gate line says enabled:false, or is missing WATCH_S after launch
+      gate line says enabled:false, is missing WATCH_S after launch, or the render already runs on something
+      other than what it asked for (used_vs_asked)
+  stream_gate.py check <render log> [mp4]   after the render (render.cmd, verify_render.sh): exit 1 and one
+      [FALLBACK] line per way the render ran on something other than what it asked for
+
+ZBook renders (driver 595.95, Oct 26): ffmpeg 8.1.2's NVENC needs driver 610+, the nvenc probe failed on every
+render and hyperframes encoded on Intel QSV instead without saying so. Six episodes went out that way.
 """
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -21,6 +28,8 @@ from pathlib import Path
 MIN_FREE_GB_MULTI = 100  # learnings/render.md 25 Oct 26: Camille needed 75.0 GB at 2 workers
 WATCH_S = 480  # the gate line printed within the first 4 min of every measured full render; twice that
 GATE = re.compile(r"streaming-encode gate (\{.*?\})")
+ASKED = re.compile(r"GPU: (.+)")  # hyperframes' plan line: "encoder GPU" = --gpu, "browser GPU" = --browser-gpu
+BROWSER = re.compile(r"browserGpuMode probe .*")  # names the WebGL renderer; one or more per render
 
 
 def launch_refusal(mode, workers, free_gb):
@@ -44,6 +53,55 @@ def log_verdict(text, waited_s):
     return "pending"
 
 
+def used_vs_asked(text, video_encoder=None):
+    """One [FALLBACK] line per way the render ran on something other than it asked for; [] = ran as asked.
+
+    video_encoder is the output's video-stream encoder tag ('Lavc62.28.102 h264_nvenc'), None when not probed.
+    hyperframes picks its encoder silently: a failed probe is printed only under HYPERFRAMES_DEBUG_GPU_PROBE=1
+    (render.cmd sets it), so the tag on the finished file is the proof once it exists.
+    """
+    m = ASKED.search(text)
+    if not m:
+        return ["[FALLBACK] no 'GPU:' line in the render log: what the render asked for is unknown"]
+    asked, out = m.group(1), []
+    if "encoder GPU" in asked:
+        if video_encoder is None:  # the file's tag, once read, wins over the probe line
+            if "[gpuEncoder] nvenc probe failed" in text:
+                out.append("[FALLBACK] encoder: --gpu asked, the nvenc probe failed, hyperframes encoded on another encoder")
+        elif "nvenc" not in video_encoder:
+            out.append(f"[FALLBACK] encoder: --gpu asked, the output was encoded by '{video_encoder}', not nvenc")
+    if "browser GPU" in asked:
+        probes = BROWSER.findall(text)
+        if not probes or any("NVIDIA" not in p for p in probes):
+            out.append("[FALLBACK] browser: --browser-gpu asked, a capture worker did not run on the NVIDIA GPU: "
+                       + ("; ".join(p[:160] for p in probes if "NVIDIA" not in p) or "no browserGpuMode probe line"))
+    gates = [json.loads(g) for g in GATE.findall(text)]
+    if not gates or any(g.get("enabled") is not True for g in gates):
+        out.append("[FALLBACK] capture: streaming asked, frames went to disk ("
+                   + (", ".join(str(g.get("reason")) for g in gates) or "no streaming-encode gate line") + ")")
+    return out
+
+
+def video_encoder(mp4):
+    """The video stream's encoder tag, read with the ffprobe render.cmd names (HYPERFRAMES_FFPROBE_PATH)."""
+    r = subprocess.run([os.environ.get("HYPERFRAMES_FFPROBE_PATH", "").strip() or "ffprobe", "-v", "error", "-select_streams", "v:0",
+                        "-show_entries", "stream_tags=encoder", "-of", "default=nw=1:nk=1", str(mp4)],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit(f"[stream_gate] ffprobe failed on {mp4}: {r.stderr.strip()[-300:]}")
+    return r.stdout.strip()
+
+
+def check(log, mp4=None):
+    text = log.read_text(encoding="utf-8", errors="replace") if log.exists() else ""
+    fallbacks = used_vs_asked(text, video_encoder(mp4) if mp4 else None)
+    for line in fallbacks:
+        print(line)
+    print(f"[stream_gate] RENDER FAILED: it ran on something other than it asked for ({log})" if fallbacks
+          else "[stream_gate] OK: encoder, browser GPU and streaming capture are what the render asked for")
+    return 1 if fallbacks else 0
+
+
 def kill_renders():
     import render_busy
     for line in render_busy.live_renders():
@@ -54,12 +112,15 @@ def watch(log, marker, out):
     start = time.time()
     while not marker.exists():
         text = log.read_text(encoding="utf-8", errors="replace") if log.exists() else ""
-        verdict = log_verdict(text, time.time() - start)
+        verdict, fix = log_verdict(text, time.time() - start), "Relaunch with RENDER_WORKERS=1"
         if verdict == "ok":
-            return 0
+            fallbacks = used_vs_asked(text)  # the probes print before the gate line, so this is minute one
+            if not fallbacks:
+                return 0
+            verdict, fix = "; ".join(fallbacks), "Fix the [FALLBACK] cause (GPU driver, NVIDIA pin) before a relaunch"
         if verdict != "pending":
             with out.open("a", encoding="utf-8") as f:
-                f.write(f"[stream_gate] STOPPING THE RENDER: {verdict}. Relaunch with RENDER_WORKERS=1.\n")
+                f.write(f"[stream_gate] STOPPING THE RENDER: {verdict}. {fix}.\n")
             kill_renders()
             return 1
         time.sleep(10)
@@ -74,4 +135,6 @@ if __name__ == "__main__":
         sys.exit(1 if why else 0)
     if a[:1] == ["watch"] and len(a) == 4:
         sys.exit(watch(*map(Path, a[1:])))
+    if a[:1] == ["check"] and len(a) in (2, 3):
+        sys.exit(check(Path(a[1]), Path(a[2]) if len(a) == 3 else None))
     sys.exit(__doc__)

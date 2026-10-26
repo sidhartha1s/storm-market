@@ -1,0 +1,48 @@
+<template>
+<!--
+  g-a5-rebate · ep-moore-1999 · A5-S6 tail · host 963.516 to 969.471 (5.955 s), track 4, overlay over the NSSL aerial
+  still (c-a5-s6-aerial, John Jarboe, NWS; provenance row 7). Chip text from the Picture line; source line
+  "Oklahoma Emergency Management". Cues = local seconds = nx-a5-s6 word time - 16.44 (host start 963.516).
+  Corner x >= 1600, y >= 680 left empty.
+-->
+<style>
+  #g-a5-rebate-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  .ga5r-card { position:absolute; left:110px; bottom:110px; padding:18px 36px 20px; box-sizing:border-box; border-radius:28px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); }
+  .ga5r-st { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; color:#f2f5f8; line-height:1; letter-spacing:2px; }
+  .ga5r-ln { font-size:34px; font-weight:700; color:#e8c56a; letter-spacing:3px; line-height:1; margin-top:12px; }
+  .ga5r-src { font-size:20px; font-weight:700; color:#c8d3e0; letter-spacing:1px; line-height:1; margin-top:14px; }
+  .ga5r-cr { position:absolute; right:110px; top:70px; padding:11px 26px 12px; box-sizing:border-box; border-radius:28px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+    font-size:21px; font-weight:700; color:#c8d3e0; letter-spacing:1px; line-height:26px; }
+  #ga5r-card, #ga5r-st, #ga5r-ln, #ga5r-src, #ga5r-cr { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-rebate-root" data-composition-id="g-a5-rebate" data-width="1920" data-height="1080" data-duration="5.955">
+  <div class="ga5r-card" id="ga5r-card">
+    <div class="ga5r-st" id="ga5r-st">OKLAHOMA</div>
+    <div class="ga5r-ln" id="ga5r-ln">FIRST SAFE-ROOM REBATE IN THE US</div>
+    <div class="ga5r-src" id="ga5r-src">Oklahoma Emergency Management</div>
+  </div>
+  <div class="ga5r-cr" id="ga5r-cr">Photo: John Jarboe, NWS</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#ga5r-";
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo(P + "cr", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.20);
+  /* "Oklahoma" @1.60 */
+  tl.fromTo(P + "card", { autoAlpha: 0, x: -140 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 1.60);
+  tl.fromTo(P + "st", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "none" }, 1.60);
+  /* "first program" @2.84 */
+  tl.fromTo(P + "ln", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.84);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.20);
+  tl.to(P + "card", { y: -6, duration: 1.6, ease: "sine.inOut" }, 3.4);
+  /* exits */
+  tl.to(P + "card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 5.30);
+  tl.to(P + "cr", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 5.30);
+  tl.to({}, { duration: 5.955 }, 0);
+  window.__timelines["g-a5-rebate"] = tl;
+})();
+</script>
+</template>

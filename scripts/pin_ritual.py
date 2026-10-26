@@ -80,7 +80,7 @@ BASELINE_DIR = Path(os.environ.get("LOCALAPPDATA", str(Path.home() / "AppData" /
 # nepal_full_task.cmd at 1); render.cmd's own
 # bare default of 3 is the draft-tuned value, not what full renders actually use.
 WORKERS = int(os.environ.get("RENDER_WORKERS", "2"))
-RENDER_FLAGS = ["--gpu", "--browser-gpu", "--experimental-fast-capture=true",
+RENDER_FLAGS = ["--gpu", "--browser-gpu",
                 "--quality", "standard", "--crf", "16", "--fps", "30",
                 "--workers", str(WORKERS)]
 FALLBACK_1W = "[FALLBACK] single-worker capture path, parallel-stream router unverified"

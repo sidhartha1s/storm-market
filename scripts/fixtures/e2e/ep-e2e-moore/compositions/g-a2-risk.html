@@ -1,0 +1,91 @@
+<template>
+<!--
+  g-a2-risk · ep-moore-1999 · A2-S5, host 373.627 (nx-a2-s5) for 14.12 s to "And" 387.747 (g-a2-path-s5 follows), track 2,
+  full frame. Two rows of home icons, both marked estimate (Brooks and Doswell 2002; Doswell and Brooks 2002).
+  Row 1: 10 mobile homes, more than 1 life lost per 10. Row 2: 200 houses, under 1 per 200 (no icon marked: under one).
+  Cues: audio/a2-s5.words.json, local = words s.
+-->
+<style>
+  #g-a2-risk-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .grk-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .grk-scan { position:absolute; left:0; top:0; width:1920px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.22), rgba(127,178,229,0)); }
+  .grk-t { position:absolute; inset:auto; left:96px; white-space:nowrap; opacity:0; visibility:hidden; }
+  .grk-eb { top:60px; font-family:Arial, sans-serif; font-weight:700; font-size:24px; letter-spacing:6px; color:#93a3b2; }
+  .grk-a { font-family:Arial, sans-serif; font-weight:700; font-size:30px; letter-spacing:5px; color:#e8c56a; }
+  .grk-b { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:1.1; color:#f2f5f8; }
+  .grk-c { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; }
+  .grk-src { position:absolute; inset:auto; left:96px; bottom:54px; font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px;
+    color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  #g-a2-risk-mh rect, #g-a2-risk-hs rect { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-risk-root" data-composition-id="g-a2-risk" data-width="1920" data-height="1080" data-duration="14.12">
+  <svg class="grk-svg" viewBox="0 0 1920 1080">
+    <g id="g-a2-risk-mh"></g>
+    <g id="g-a2-risk-hs"></g>
+  </svg>
+  <div class="grk-scan" id="g-a2-risk-scan"></div>
+  <div class="grk-t grk-eb" id="g-a2-risk-eb">THE ODDS THAT NIGHT · NSSL</div>
+  <div class="grk-t grk-a" id="g-a2-risk-a1" style="top:130px">MOBILE HOMES HIT</div>
+  <div class="grk-t grk-b" id="g-a2-risk-b1" style="top:172px">MORE THAN 1 LIFE LOST PER 10</div>
+  <div class="grk-t grk-c" id="g-a2-risk-c1" style="top:244px">(ESTIMATE)</div>
+  <div class="grk-t grk-a" id="g-a2-risk-a2" style="top:470px">HOUSES HIT</div>
+  <div class="grk-t grk-b" id="g-a2-risk-b2" style="top:512px">UNDER 1 PER 200</div>
+  <div class="grk-t grk-c" id="g-a2-risk-c2" style="top:584px">(ESTIMATE)</div>
+  <div class="grk-src" id="g-a2-risk-src">Brooks and Doswell 2002 · Doswell and Brooks 2002</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a2-risk-", NS = "http://www.w3.org/2000/svg";
+  const DUR = 14.12;
+  const C = { two: 0.0, est: 5.26, ten: 6.48, more: 8.90, houses: 10.90, under: 12.00 };
+  /* row 1: 10 mobile homes, 110 x 44 px, 20 px apart, y 300 */
+  const mh = document.querySelector(P + "mh");
+  for (let i = 0; i < 10; i++) {
+    const r = document.createElementNS(NS, "rect");
+    r.setAttribute("id", "g-a2-risk-m" + i); r.setAttribute("x", 96 + i * 130); r.setAttribute("y", 300);
+    r.setAttribute("width", 110); r.setAttribute("height", 44); r.setAttribute("rx", 4);
+    r.setAttribute("fill", "#c8d3e0"); r.setAttribute("fill-opacity", "0.18"); r.setAttribute("stroke", "#dfe7ee"); r.setAttribute("stroke-width", 2);
+    mh.appendChild(r);
+  }
+  /* row 2: 200 houses, 40 x 5 grid of 22 px squares, 8 px gaps, y 640 */
+  const hs = document.querySelector(P + "hs");
+  for (let i = 0; i < 200; i++) {
+    const r = document.createElementNS(NS, "rect");
+    r.setAttribute("x", 96 + (i % 40) * 30); r.setAttribute("y", 640 + Math.floor(i / 40) * 30);
+    r.setAttribute("width", 22); r.setAttribute("height", 22); r.setAttribute("rx", 2);
+    r.setAttribute("fill", "#93a3b2"); r.setAttribute("fill-opacity", "0.35"); r.setAttribute("stroke", "#c8d3e0"); r.setAttribute("stroke-width", 1);
+    hs.appendChild(r);
+  }
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "eb", P + "a1", P + "b1", P + "c1", P + "a2", P + "b2", P + "c2", P + "src", P + "mh rect", P + "hs rect"], { autoAlpha: 0 }, 0);
+  tl.fromTo(P + "scan", { y: 30 }, { y: 1050, duration: DUR / 2, ease: "none", repeat: 1, yoyo: true }, 0);
+  /* TWO RESEARCHERS @0: eyebrow and source */
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.fromTo(P + "eb", { y: 0 }, { y: -5, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 2, immediateRender: false }, 0.6);
+  /* EVERY 10 MOBILE HOMES @6.20-6.48: label, then the ten drop in */
+  tl.fromTo(P + "a1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.est + 0.94);
+  /* the board: both rows stand dim from the start (frame coverage), each row lights on its words */
+  tl.fromTo(P + "mh rect", { autoAlpha: 0, y: -30 }, { autoAlpha: 0.3, y: 0, duration: 0.35, ease: "back.out(2)", stagger: 0.05 }, 0.3);
+  tl.fromTo(P + "hs rect", { autoAlpha: 0, scale: 0.3, transformOrigin: "50% 50%" }, { autoAlpha: 0.3, scale: 1, transformOrigin: "50% 50%", duration: 0.25, ease: "back.out(2)", stagger: 0.004 }, 1.0);
+  tl.fromTo([P + "mh", P + "hs"], { y: 0 }, { y: -6, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 1.0);
+  tl.to(P + "mh rect", { autoAlpha: 1, y: -8, duration: 0.3, ease: "power3.out", stagger: 0.06 }, C.ten);
+  /* MORE THAN ONE @8.90: one turns red, the stat lands */
+  tl.to(P + "m6", { attr: { fill: "#d0121f", "fill-opacity": 0.85, stroke: "#e74c3c" }, duration: 0.3, ease: "power2.out" }, C.more);
+  tl.fromTo(P + "m6", { scale: 1, svgOrigin: "771 322" }, { scale: 1.12, svgOrigin: "771 322", duration: 0.25, ease: "sine.out", yoyo: true, repeat: 1, immediateRender: false }, C.more);
+  tl.fromTo(P + "b1", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.more);
+  tl.fromTo(P + "c1", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, C.more + 0.4);
+  /* HOUSES @10.90: label and the 200 fill in; UNDER ONE @12.00: the stat (no house marked) */
+  tl.fromTo(P + "a2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.houses);
+  tl.to(P + "hs rect", { autoAlpha: 1, duration: 0.2, ease: "power3.out", stagger: 0.004 }, C.houses + 0.1);
+  tl.fromTo(P + "hs", { y: 0 }, { y: -8, duration: 0.4, ease: "power3.out", immediateRender: false }, C.houses + 0.1);
+  tl.fromTo(P + "b2", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.under);
+  tl.fromTo(P + "c2", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, C.under + 0.4);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines["g-a2-risk"] = tl;
+})();
+</script>
+</template>

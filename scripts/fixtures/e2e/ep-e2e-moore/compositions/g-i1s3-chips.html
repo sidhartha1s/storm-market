@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-i1s3-chips (D) · ep-moore-1999 · host 86.205 to 97.00 (10.795 s), track 4, transparent overlay over the NSSL/SA damage stills.
+     Local time = episode s minus 86.205 = i1-s3 word time. Under it: Bridge Creek ground 0 to 6.48, Moore destruction 6.48 to 11.0.
+     Cues (audio/i1-s3.words.json): "12" 2.82 -> chip 1 in; "24" 6.48 -> chip 2 in; chip 1 out by 6.30; chip 2 + credit out by 10.60. -->
+<template>
+<style>
+  #g-i1s3-chips-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; }
+  .i3-chip { position:absolute; inset:auto; left:110px; bottom:110px; display:flex; align-items:baseline; gap:24px; padding:12px 40px 14px 34px;
+    box-sizing:border-box; border-radius:28px; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .i3-h { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; letter-spacing:1px; color:#f2f5f8; white-space:nowrap; }
+  .i3-dot { font-family:Arial, sans-serif; font-weight:700; font-size:52px; line-height:60px; color:#93a3b2; white-space:nowrap; }
+  .i3-m { font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:36px; letter-spacing:6px; color:#dfe7ee; white-space:nowrap; }
+  .i3-n { font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:92px; color:#e74c3c; white-space:nowrap; }
+  .i3-src { position:absolute; inset:auto; right:110px; top:70px; padding:11px 26px 12px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .i3-srct { font-family:Arial, sans-serif; font-weight:700; font-size:21px; line-height:26px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-i1s3-chips-root" data-composition-id="g-i1s3-chips" data-width="1920" data-height="1080" data-duration="10.795">
+  <div class="i3-chip" id="g-i1s3-chips-c1">
+    <span class="i3-h" id="g-i1s3-chips-c1h">BRIDGE CREEK</span>
+    <span class="i3-dot" id="g-i1s3-chips-c1d">&middot;</span>
+    <span class="i3-n" id="g-i1s3-chips-c1n">12</span>
+  </div>
+  <div class="i3-chip" id="g-i1s3-chips-c2">
+    <span class="i3-m" id="g-i1s3-chips-c2m">THE OTHER</span>
+    <span class="i3-n" id="g-i1s3-chips-c2n">24</span>
+  </div>
+  <div class="i3-src" id="g-i1s3-chips-src"><span class="i3-srct" id="g-i1s3-chips-srct">Brooks, NSSL list of lives lost; NWS Storm Data</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-i1s3-chips-";
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "c1", P + "c2", P + "src"], { autoAlpha: 0 }, 0);
+
+  /* "12" @2.82: chip 1 lands, 12 counts up fast then slow */
+  tl.fromTo(P + "c1", { autoAlpha: 0, x: -140 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 2.82);
+  const n1 = document.querySelector(P + "c1n"), k1 = { v: 0 };
+  tl.to(k1, { v: 12, duration: 0.7, ease: "power4.out", onUpdate: () => { n1.textContent = String(Math.round(k1.v)); } }, 2.82);
+  tl.to(P + "c1", { y: -7, duration: 2.6, ease: "sine.inOut" }, 3.42);
+  /* credit lands with the first chip and stays to 10.6 */
+  tl.fromTo(P + "src", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.82);
+  tl.to(P + "src", { y: 5, duration: 3.6, ease: "sine.inOut" }, 3.32);
+  tl.to(P + "src", { y: 0, duration: 3.6, ease: "sine.inOut" }, 6.92);
+  /* chip 1 out by 6.30 */
+  tl.to(P + "c1", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 5.70);
+
+  /* "24" @6.48: chip 2 lands in the same slot, count-up into 24 */
+  tl.fromTo(P + "c2", { autoAlpha: 0, x: -140 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 6.48);
+  const n2 = document.querySelector(P + "c2n"), k2 = { v: 0 };
+  tl.to(k2, { v: 24, duration: 0.8, ease: "power4.out", onUpdate: () => { n2.textContent = String(Math.round(k2.v)); } }, 6.48);
+  tl.to(P + "c2", { y: -7, duration: 3.0, ease: "sine.inOut" }, 7.08);
+
+  /* chip 2 and credit out by 10.60 */
+  tl.to(P + "c2", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 10.0);
+  tl.to(P + "src", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 10.0);
+  tl.set({}, {}, 10.795);
+  window.__timelines["g-i1s3-chips"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

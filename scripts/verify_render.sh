@@ -13,13 +13,11 @@ MP4="$EP/renders/$BASE.mp4"
 [ -f "$MP4" ] || { echo "MISSING $MP4"; exit 1; }
 FAIL=0
 
-echo "=== gpu (owner 2026-09-15: capture must run on the dedicated GPU, never the Intel iGPU) ==="
+echo "=== used vs asked (owner 2026-09-15: dedicated GPU only; Oct 26: the ZBook encoded on Intel QSV unseen) ==="
 LOG="$EP/render_$MODE.log"
-PROBES=$(grep -ao 'browserGpuMode probe.*' "$LOG" 2>/dev/null | cut -c1-160)
-echo "${PROBES:-no probe line in $LOG}"
-# one probe line per capture worker; every one of them must name NVIDIA
-if [ -z "$PROBES" ] || printf '%s\n' "$PROBES" | grep -qv NVIDIA; then
-  echo "FAIL: a capture worker did not run on the NVIDIA GPU (re-render through scripts/render.cmd: it re-pins on every launch)"; exit 2
+# stream_gate.py owns this check: nvenc encoder (output tag), NVIDIA capture on every worker, streaming capture
+if ! python3 "$(dirname "$0")/stream_gate.py" check "$LOG" "$MP4"; then
+  echo "FAIL: the render ran on something other than it asked for (re-render through scripts/render.cmd once the [FALLBACK] cause is fixed)"; exit 2
 fi
 
 echo
