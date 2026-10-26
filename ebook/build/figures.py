@@ -27,7 +27,15 @@ FIGURES is the manifest paginate.mjs / blocks_pipeline.py needs to resolve a
 No number appears in any figure below unless it is already published, cited prose
 elsewhere in this same manuscript (see the justification/source note on each render
 function) — nothing here is estimated or approximated for the sake of a nicer picture.
+
+Figures 14 on are the large-print set for older readers (senior review 2026-10-27): drawn
+in points (viewBox width 342 = the 4.76in content width, so 1 unit = 1pt at print size),
+system serif, nothing under 11pt. Figures 25-28 are the one exception to "no raster": they
+point at art/illustrations/<id>.png, and render_figure raises if that file is missing.
 """
+from pathlib import Path
+
+ART_DIR = Path(__file__).parent / "art" / "illustrations"
 
 # ---------------------------------------------------------------------------
 # shared constants — book.css custom properties, referenced live (never hex-forked)
