@@ -1,75 +1,78 @@
 # Harold Becker: what I did after reading "The Storm-Ready Home"
+(Source: full manuscript at storm-market/ebook/manuscript/, all 17 files present.)
 
 ## 1. Profile
 Harold Becker, 74, retired machinist, COPD (night oxygen concentrator plus portable tanks). Wife Marge, 72, early dementia, wanders when routines change. Two dogs, wood house on 2 wooded acres outside Paradise, CA, one paved road, private well, flip phone and landline, $3,400/month, $22,000 savings, tires fast.
 
 ## 2. What I read vs skimmed vs gave up on
-Only 9 of the 17 files on my list exist in the folder. The rest are not there.
-- **Read:** P0-front-matter.md (short, plain, the 15-minute list was usable). P1-C2-the-timeline.md (clear, a little long).
-- **Skimmed:** P2-C1-water.md (read only the well section, Protection 9). P2-C3-temperature-shelter.md (generator siting and warm room only). P2-C5-air-sanitation.md (smoke filter, box fan, N95). P2-C7-structure-hardening.md (embers and defensible space only; it says roof work is "hire-it", so I stopped). P5-C1-warning-literacy.md (alerts, zone, trigger plan).
-- **Could not read, file not present:** P1-C1 six mechanisms, P2-C4 power, P2-C6 medical, P3-05 wildfire, P3-06 wildfire smoke, P3-17 long outage, P4-C1 people, P5-C3 evacuation, P6 binder, P7 the 60 days. This is the main finding. Front matter says "start in Part Seven" and "Part Three playbooks" for my hazard. I could not find them. The oxygen, dementia, dog, evacuation and 60-day material was exactly what I needed.
+- **Read:** P0-front-matter.md (clear, the 15-minute list worked). P3-05-wildfire.md (it opens with Paradise, my town; I read every word). P5-C3-evacuation.md (read, long but useful). P4-C1-people.md (older adults, dementia, animals; read twice). P7-the-60-days.md (the first one I could follow).
+- **Skimmed:** P1-C2-the-timeline.md (phases 4 and 5 only). P2-C6-medical.md and P2-C4-power.md (only Protections 42, 38, 61). P2-C1-water.md (well section). P2-C3-temperature-shelter.md (generator siting). P2-C5-air-sanitation.md (box fan, N95). P5-C1-warning-literacy.md (alerts, zone, trigger plan). P6-the-binder.md (forms 2, 3, 7, 27, 29-32). P3-06-wildfire-smoke.md (read the one-page version).
+- **Gave up on:** P1-C1-six-mechanisms.md (5,500 words, I read two pages). P3-17-grid-failure-long-outage.md (read the one-page version only). P2-C7-structure-hardening.md (read Zone 0 and defensible space, skipped the roof and structure protections; "hire-it" work and I do not own a re-roof budget). The source blocks inside paragraphs wore me out.
 
-## 3. Preparation log (no 60-day schedule exists, so I worked in the order of the 15-minute start, then my region's first ten)
+## 3. Preparation log (the 60 days, done in my own slow way)
 | Action (protection) | Cost (book band) | Status | Honest reason |
 |---|---|---|---|
-| Turn on wireless alerts (85) | $0 | Skipped | Flip phone. Book assumes a smartphone; says nothing for me. |
-| Enrol in county alerts (86) | $0 | Partly | Landline; I called the county, they said "sign up online". Asked my son. |
-| NOAA SAME radio at bedside (85, 87) | $30-70, paid $50 | Partly | Bought it; the programming manual beat me. Son set it up by phone. |
-| Written trigger plan (95) | $0 | Done | One evening. Section 4 is it. Marge cannot be part of the agreement. |
-| 14-day water store (1) | $0-60, paid $40 | Partly | Book says wells should store more. Jugs are heavy; I stored about 14 days for two. Dogs not counted. |
-| Hand pump or generator for well (9) | up to $500 | Skipped | Book says check depth and casing. I do not know mine. Left it. |
-| Ember vents and Zone 0 (76) | $200-1,200, paid $300 | Partly | Cleared mulch and woodpile from the first 5 ft. Did two vents; rest too many ladders. |
-| Defensible space, ladder fuels (77) | $0-2,000, paid $800 | Partly | 2 acres of trees; hired a crew for the near zone only. Rest is beyond my back. |
-| Gutter cleaning (78) | $0-400, paid $100 | Done | Hired. Ladder and my lungs do not mix. |
-| N95 masks (52) | $15-40, paid $30 | Partly | Bought. With COPD I do not know if I can breathe through one. Book is silent. |
-| Box-fan filter (50) | $30-90, paid $60 | Done | Easy. Needs power; I am not sure the oxygen machine and the fan share the outlet. |
-| CO alarms, smoke alarms (47, 48) | $90 total, my pick of bands | Done | Cheap, I know how. |
-| Furnace MERV 13 filter (49) | $20-60 | Skipped | Book says "check your equipment's tolerance". I do not know how. |
-| Generator siting (32) | $0 | Skipped | No generator. Book never says whether I should buy one for oxygen. |
-| Light and shoes by bed (43) | band not given, about $20 my guess | Done | Simple. |
-| Narrated home video (100) | $0 | Partly | Flip phone has no video. Son will film it on his next visit. |
-| Out-of-area contact (112) | $0 | Done | Son. Wrote the number on a card in Marge's pocket. |
-| Helmets (25), sleeping bags (28), safe room (24) | various | Skipped | Tornado and cold advice; not my hazard. |
-| Go-bag (107), two routes (106), document vault (96) | n/a | Could not do | Those pages were not in my copy. |
+| Wireless alerts (85) | $0 | Skipped | Flip phone. Day 1 says "every phone"; mine cannot. |
+| County alerts (86) | $0 | Partly | Landline call; they sent me to a website. Son did it. |
+| NOAA SAME radio at bed (85, 87), $50 | $30-70 | Partly | Bought it; son talked me through programming by phone. |
+| Trigger plan (95) | $0 | Done | Section 4 is it. Marge cannot sign it. |
+| 14-day water, well needs more (1, 9), $40 | $0-60 | Partly | Jugs are heavy. About 14 days for two people; dogs not counted. |
+| Well log, hand pump (9) | up to $500 | Skipped | Do not know my well depth. Not touching the $500. |
+| Ember vents, Zone 0 (76), $300 | $200-1,200 | Partly | Cleared the first 5 feet. Did the vents I could reach. |
+| Defensible space (77), $800 | $0-2,000 | Partly | Hired a crew for the near zone. 2 acres is beyond my back. |
+| Gutters (78), $100 | $0-400 | Done | Hired. Ladders and my lungs do not mix. |
+| N95 (52), $30 | $15-40 | Partly | Bought. Book is silent on wearing one with COPD, so I will ask my doctor first. |
+| Box-fan filter (50), $60 | $30-90 | Done | Easy. |
+| CO and smoke alarms (47, 48), $90 | $15-45 each | Done | Cheap, I know how. |
+| Headlamps and shoes by bed (43), $45 | $20-70 | Done | Marge's shoes by the door too. |
+| Medical device power plan (42) | $0 | Done | Called utility, the oxygen supplier and my clinic. Got battery run time and cylinder count. |
+| Power station for the concentrator (38), $500 | $80-1,500 | Partly | Bought a mid-size one; book says size by watts times hours. I need my son to do the arithmetic. |
+| Generator and transfer switch (39) | $500-5,000 plus $500-1,500 | Skipped | Too expensive. I will leave rather than run the well. |
+| Go-bags, 2 people (107), $110 | $30-80 each | Done | Packed light. Oxygen tanks separate. |
+| Pet kit and carriers, 2 dogs (109), $80 | $40-120 | Partly | Leashes and food ready. Dogs ride in the back seat, no carriers. |
+| Drive both routes (106) | fuel | Partly | Drove the paved road. Not sure the dirt fire road goes through; did not drive it. |
+| Trauma kit (57), $80, CPR course (58), $40 | $40-120; $0-80 | Partly | Bought the kit. Course is on Marge's schedule days; not booked. |
+| Twin-bucket toilet (53), $40 | $25-60 | Done | Not pleasant, but done. |
+| Video home inventory (100) | $0 | Partly | Flip phone, no video. Son films it next visit. |
+| Out-of-area contact (112) | $0 | Done | Son. Card in Marge's pocket. |
+| Helmets (25), safe room (23), sleeping bags (28) | various | Skipped | Tornado and cold advice; not my hazard. |
 
-Spent about $1,550 of my savings. No monthly income touched.
+Spent about $2,365 of savings. No monthly income touched.
 
-## 4. My plan when a wildfire is coming (partly built from the book, partly my own gut; the book's wildfire pages were missing)
-- **How I find out:** Radio at the bed, landline if the county calls, and my son in Sacramento phoning me. I do not trust the flip phone for alerts. I will also watch for smoke, since the book itself says an order may never arrive in a fast fire (Protection 91).
-- **When we leave:** Red Flag Warning means the car gets packed. If I see smoke on our ridge, or the radio names any fire near Paradise, we go. We do not wait for an order. We do not call anyone first. Marge cannot argue with a rule that is already written.
-- **Which road:** The paved road. The dirt fire road I am not sure goes through, and I will not gamble on it. If the paved road is blocked, I do not know what to do. That is my biggest worry.
-- **What we take:** Marge first. Then portable oxygen tanks (full), meds, both dogs, water jugs, the radio, the home-inventory card, cash, the card with my son's number. I will fill the car's tank when the Red Flag Warning comes.
-- **Marge:** I tell her calmly, one step at a time, and keep her hand. Her coat and shoes are by the door. I will not leave her alone to load the car. I do not know how to stop her wandering off in the smoke.
-- **Oxygen:** I will leave early because the concentrator is useless without power and the tanks run out. How many hours a tank lasts and what the car can do, I have to get from my doctor. The book told me to ask a clinician and nothing else.
-- **Dogs:** Leashes and a carrier by the door; they go in the car. Where we go with them, I do not know.
+## 4. My plan when a wildfire is coming
+- **How I find out:** SAME radio at the bed, the landline if the county calls, and my son in Sacramento phoning me. I do not trust the flip phone for alerts. Red Flag Warning on the radio is my cue. I also use my own eyes: smoke on the ridge.
+- **When we leave:** Red Flag Warning, we pack the car and fill the tank. A fire near us or any evacuation warning, we go at the warning, not the order. The book says nobody ever regretted leaving early and Paradise burned in four hours. No arguing. No calling anyone first.
+- **Which road:** The paved road. The book says a road with fuel both sides is a chimney, and mine is. So we leave earlier than a coastal family would. The dirt fire road I do not trust.
+- **What we take:** Five-minute list. Marge, the dogs, oxygen tanks and meds, go-bags, the envelope with Form 2 medical summaries, cash, radio, phone and chargers, keys. Thirty-minute list only if there is time.
+- **Marge:** Calm, one step at a time, her hand in mine. Shoes and coat by the door, ID card in her pocket. She goes in the car first, seatbelted, before I carry anything.
+- **Oxygen:** Full portable tanks in the car, the power station charged, and I leave early because the concentrator is useless without power. I get tank hours from the supplier. Destination: my son in Sacramento first.
+- **Dogs:** In the back seat on leashes, a week of food in the bag. Dogs go; I do not go back for them.
 
 ## 5. Where the book lost me
-- "Protection 112" in P5-C1-warning-literacy.md: "the decision is the leave-early trigger in Protection 112". Front matter calls 112 the out-of-area contact. I flipped back and forth and lost the thread.
-- "check your equipment's tolerance" in P2-C5-air-sanitation.md (Protection 49). I do not know what my furnace tolerates and the book does not say how to find out.
-- "disinfected by a well or pump contractor" in P2-C1-water.md (Protection 9): nine steps, bleach ratios, a 7-to-10-day wait. I stopped reading.
-- "Zone 0" in P2-C7-structure-hardening.md. Explained, but three zones plus 100 ft is a lot to hold in my head.
-- "Check those settings tonight" in P5-C1-warning-literacy.md. No phone settings; I have a flip phone.
-- "a SAME-capable radio" in P5-C1-warning-literacy.md. What is SAME? I bought the one with the box that said it.
-- P0-front-matter.md: 130 protections, 23 playbooks, 7 parts, five regions. Where do I start? I only knew from the 15-minute list.
-- The long source blocks in the middle of paragraphs. Hard to read past.
+- "the leave-early trigger in Protection 112", P5-C1-warning-literacy.md (Protection 91). 112 is the out-of-area contact; I flipped back and forth. Probably meant 95.
+- "check your equipment's tolerance", P2-C5-air-sanitation.md (Protection 49). How do I find out what my furnace takes?
+- "a SAME-capable radio", P5-C1-warning-literacy.md. What is SAME? The word is never explained where I met it.
+- "Every adult gets an assigned area", P5-C3-evacuation.md (108). There are two of us and one has dementia.
+- "Enrol in the county's voluntary assistance registry", P4-C1-people.md. No number, no way to find it on a landline.
+- "Size it against watt-hours", P2-C4-power.md (Protection 38). I do not do that arithmetic; I stalled.
+- P0-front-matter.md: 130 protections, 23 playbooks, 5 regions. I did not know where to start until the 15-minute list.
 
 ## 6. Where I needed a picture
-- A one-page "leave" checklist with big type for the car door: oxygen, meds, Marge, dogs, radio, cash.
-- A map picture of zones 0, 1, 2 around a house on a ridge. Figure 6 exists in the plan but I could not see it.
-- How to program the NOAA radio, step by step, with photos of the buttons.
-- How to read an air quality number against when to close windows.
-- Box-fan filter assembly photos: which way the arrows point.
-- A picture of a pressure tank, shut-off and well-pump switch so I know what to turn off.
-- Evacuation zone map: how to find mine from a landline and no computer.
+- A big-print "leave" card for the car door: oxygen, Marge, dogs, meds, radio.
+- Zones 0, 1, 2 around a house on a ridge.
+- How to program the NOAA radio, with the buttons.
+- Oxygen: a picture of how to size the power station (watts times hours) with my concentrator as the example.
+- Evacuation zone map: how to find mine without a computer.
+- A road with fuel on both sides, versus one with a turnout, so I can judge my own.
+- Box-fan filter with arrows (only if I read past the long paragraph).
 
 ## 7. What the book never told me
-- Oxygen: how long portable tanks last, how to refill, whether to buy a battery concentrator, whether a car can run one. Nothing in the files I could open.
-- Marge's dementia: how to move her calmly in a hurry, ID bracelets, what to do if she wanders in the smoke.
-- Dogs: where they can go to evacuate, shelters that take pets, how much food and water.
-- Flip phone and landline: how to get alerts without a smartphone.
-- One road out: what to do if the paved road is on fire or blocked. Is the fire road safe?
-- Well: will a generator even start my pump? Do I need one? What does it cost for a 74-year-old on $3,400?
+- Oxygen: it says call the supplier but not what to do if tanks run out on the road, or whether to ride with concentrator on the car inverter (44) while the fire is near.
+- Dementia: it says carry ID and choose a quiet destination. It does not say what to do if Marge refuses to get in the car, or wanders in the smoke.
+- A road: "two routes" is no help with one paved road. What if the paved road is on fire?
+- Flip phone and landline: no alert path for people without a smartphone.
+- Whether my own pre-fire clearing on 2 acres is enough, and what I owe the county or insurer.
+- Dogs and shelters: shelters often refuse pets (said), but not how to find kennels in Sacramento on short notice.
 - Can I wear an N95 with COPD?
-- Where do we sleep if we are out for two weeks, and who pays?
-- Who helps a couple like us leave? Is there a county list for people who need help to evacuate?
-- Money: book gives cost bands, but not a "what to buy first on $1,500" order for a retiree.
+- A priority list for $2,000 when you have $22,000 and a fixed income.
+- Who helps a couple like us leave if my back goes out?
