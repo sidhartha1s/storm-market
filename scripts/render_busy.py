@@ -112,7 +112,124 @@ def free_gb():
     return m.ullAvailPhys / 2**30
 
 
+POLL_S = 10  # seconds between looks at a held lock
+_k32 = ctypes.WinDLL("kernel32", use_last_error=True)
+
+
+def lock_path():
+    return Path(os.environ.get("HEAVY_LOCK_FILE") or Path.home() / ".storm-heavy.lock")  # tests point it at a temp file
+
+
+def created(pid):
+    """Creation time (FILETIME) of a running pid; None when it is not running; -1 when Windows will not say."""
+    h = _k32.OpenProcess(0x1000, False, pid)  # PROCESS_QUERY_LIMITED_INFORMATION
+    if not h:
+        return -1 if ctypes.get_last_error() == 5 else None  # access denied = alive, so it is never taken over
+    try:
+        code, t = ctypes.c_ulong(), (ctypes.c_ulonglong * 4)()
+        if not _k32.GetExitCodeProcess(h, ctypes.byref(code)) or code.value != 259:  # 259 = STILL_ACTIVE
+            return None
+        _k32.GetProcessTimes(h, *(ctypes.byref(t, 8 * i) for i in range(4)))
+        return t[0]
+    finally:
+        _k32.CloseHandle(h)
+
+
+def holder_alive(rec):
+    now = created(rec["pid"])
+    return now == -1 or (now is not None and now == rec["created"])  # same pid, newer process = the holder died
+
+
+def read_lock(p):
+    try:
+        rec = json.loads(p.read_text(encoding="utf-8"))
+        rec["pid"], rec["created"]  # a record without them is unreadable, like a half-written one
+        return rec
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+
+
+def describe(rec):
+    return (f"{rec.get('job')} (holder {rec.get('holder')}, machine {rec.get('machine')}, pid {rec['pid']}, "
+            f"since {rec.get('start')})")
+
+
+def take(job, pid):
+    """Wait until this machine's heavy lock is free, then book it for pid. Returns the record, or None when the
+    caller's own holder already has it (a child of the holder)."""
+    p, mine, shown = lock_path(), os.environ.get("HEAVY_LOCK_TOKEN"), None
+    ssh = os.environ.get("SSH_CONNECTION", "").split()
+    rec = {"holder": os.environ.get("HEAVY_LOCK_HOLDER")
+                     or os.environ.get("USERNAME", "?") + (f" via ssh from {ssh[0]}" if ssh else " local"),
+           "job": job, "machine": platform.node(), "pid": pid, "created": created(pid),
+           "start": datetime.now().isoformat(timespec="seconds"), "token": uuid.uuid4().hex}
+    while True:
+        try:
+            fd = os.open(p, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        except FileExistsError:
+            cur = read_lock(p)
+            if cur is None:  # still being written by its taker (or corrupt: then it never parses; see below)
+                if time.time() - p.stat().st_mtime > 60:
+                    cur = {"pid": 0, "created": 0, "job": "unreadable lock file"}
+                else:
+                    time.sleep(0.2)
+                    continue
+            if mine and cur.get("token") == mine:
+                return None
+            if not holder_alive(cur):
+                stale = p.with_name(f"{p.name}.{rec['token']}.stale")
+                try:
+                    os.rename(p, stale)  # one taker wins the rename; the loser sees the new file next pass
+                except OSError:
+                    continue
+                moved = read_lock(stale)
+                if moved and holder_alive(moved):  # a live lock was booked between our read and the rename: put it back
+                    os.rename(stale, p)  # shortcut: fails if a third job books in that gap; never seen, add a mutex if it is
+                    continue
+                os.remove(stale)
+                print(f"[heavy-lock] took over a dead holder's lock: {describe(cur)}", flush=True)
+                continue
+            if cur != shown:
+                print(f"[heavy-lock] WAITING to start {job}: this machine's heavy lock is held by {describe(cur)}", flush=True)
+                shown = cur
+            time.sleep(POLL_S)
+            continue
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            json.dump(rec, f)
+        print(f"[heavy-lock] booked for {job} (pid {pid}, {rec['machine']})", flush=True)
+        return rec
+
+
+@contextmanager
+def heavy_lock(job):
+    """Hold this machine's heavy lock for the current process while the block runs; its children pass through."""
+    rec = take(job, os.getpid())
+    if rec is None:
+        yield
+        return
+    os.environ["HEAVY_LOCK_TOKEN"] = rec["token"]
+    try:
+        yield
+    finally:
+        os.environ.pop("HEAVY_LOCK_TOKEN", None)
+        if (read_lock(lock_path()) or {}).get("token") == rec["token"]:
+            lock_path().unlink()
+
+
+def wait_free():
+    """Gate mode: wait while another job holds the lock, without booking it."""
+    p, mine, shown = lock_path(), os.environ.get("HEAVY_LOCK_TOKEN"), None
+    while (cur := read_lock(p)) and cur.get("token") != mine and holder_alive(cur):
+        if cur != shown:
+            print(f"[heavy-lock] WAITING: this machine's heavy lock is held by {describe(cur)}", flush=True)
+            shown = cur
+        time.sleep(POLL_S)
+
+
 def main():
+    if "--hold" in sys.argv:  # before RENDER_BUSY_OK: that override skips the RAM and live-render checks, never the queue
+        take(sys.argv[sys.argv.index("--hold") + 1], os.getppid())
+        sys.exit(0)
     if os.environ.get("RENDER_BUSY_OK") == "1":
         sys.exit(0)
     live = live_renders()
