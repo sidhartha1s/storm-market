@@ -63,7 +63,7 @@ Start from: `library/inhouse/master-map-us-canada.html` (real Natural Earth base
 Strings: `LAKE ERIE` · `WESTERN NEW YORK` · `ERIE COUNTY` · `BUFFALO AIRPORT` · card strings exactly as g-intro-3 · `38°F · RAIN` · `DRIVING BAN · 9:30 AM` · `51 MIN` · sources `Buffalo airport ASOS, IEM archive` then `Erie County driving ban, WKBW`
 | t (s) | spoken word | action |
 |---|---|---|
-| 0.00 | "Before" @0.00 | ground, land, water and lines on from frame 0 (land and water `fromTo(autoAlpha 0.6 -> 1, 0.5)`, map group `to(scale 1.0 -> 1.0)` none: the map does not drift before the push) |
+| 0.00 | "Before" @0.00 | ground, land, water and lines on from frame 0 (land and water `fromTo(autoAlpha 0.6 -> 1, 0.5)`; the map does not drift before the push, so the labels never ride a move) |
 | 0.30 | "dawn," @0.30 | "LAKE ERIE" `fromTo(autoAlpha 0, y:12 -> 0, 0.4, power3.out)` |
 | 0.90 | "if" @0.90 | Erie County outline draws, strokeDashoffset, 0.9 s, power2.inOut; fill fades in after |
 | 1.18 | "getting" @1.18 | "WESTERN NEW YORK" in (as LAKE ERIE) |
