@@ -238,7 +238,7 @@ def build_state_page(row):
     if row["alerts_note"].strip() or row["alerts_url"].strip():
         call_items += call_item("Weather alerts", row["alerts_note"].strip(),
                                  row["alerts_url"].strip(), "")
-    call_items += call_item("Energy bill assistance (LIHEAP)", "Apply for help with heating and cooling bills",
+    call_items += call_item("Energy bill assistance (LIHEAP)", "Apply for help with heating and cooling bills" if row["energy_assist_url"].strip() else "",
                              row["energy_assist_url"].strip(), row["energy_assist_phone"].strip())
     call_items += call_item("Well water testing", row["well_test_contact"].strip(),
                              row["well_test_url"].strip(), "")
