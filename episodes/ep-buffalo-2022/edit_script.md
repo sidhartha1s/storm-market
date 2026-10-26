@@ -1,4 +1,5 @@
 # ep-buffalo-2022 · edit_script.md (Buffalo blizzard, Erie County, New York, 23 to 27 December 2022)
+Opening (26 Oct 26, batch A): hook (PROVISIONAL, shape missing), tail and intro rewritten over 3 rounds; fact-check rounds factcheck/intro-r1..r3.md, 0 open [verify]; fresh Opus grade 6, 7, 7.5 (grades/intro-r1..r3.md): plateaued below the bar of 8 after 2 rewrite rounds, so rewriting stopped. Not locked: grade below 8 and owner approval pending. Voiced provisionally. Anndel Taylor moved from the intro to Act 3. Grader note: the twelve without power or heat are now spoken in the hook (the brief said Act 5 only). Loop changes: L0b I1-S1 to I1-S2; L1a planted I1-S3, paid A2/A3; L1 planted I1-S4.
 
 Lane: documentary (`/storm-episode`). Angle: `angle.md` (owner delegated the pick 26 Oct 26 02:09:38, "angle is your call"; wording tightened by the research pass: "more ... than anywhere else", not "most").
 Research: `research/deaths.md`, `research/nws.md`, `research/response.md` (every fact with a URL, PRIMARY or SECONDARY).
@@ -63,65 +64,48 @@ Hook shape: missing (2026-10-26)
 PROVISIONAL (26 Oct 26): orchestrator's default pick from `hook_options.md`, owner pick pending; if he picks another shape only the hook and intro are redone.
 
 ### H1-S1 — Paul on camera
-**Picture:** Paul full frame at 0:00 in a Santa hat; popfig "BUFFALO, NY · DEC 23, 2022" inside the first second; the sound under him: a phone line ringing on and on, low under the wind, with no pickup. [HOOK] [loop E open]
-> The biggest group the storm took around Buffalo was found in the open, and some of the nine one one calls never got an answer.
+**Picture:** Paul full frame at 0:00 in a Santa hat (Christmas touch, owner "santa paulclaus presents...."); popfig "BUFFALO, NY · DEC 23, 2022" inside the first second; the sound under him: a phone line ringing on and on, low under the wind, with no pickup. [HOOK] [loop E open]
+> You call nine one one in a blizzard, and someone answers. Around Buffalo that Christmas, some of those calls never got an answer.
 
-Rows: `research/deaths.md` section 1 "final" and section 3 (18 outside, the largest single category, SECONDARY); `research/response.md` section 5 (NYU Wagner report via AP: "emergency calls that went unanswered due to a backlog", SECONDARY; "some" calls, never every call). The line sets the two facts side by side and does not claim the people outside were the ones who called.
+Rows: sentence 1 is the viewer's belief (framing, no fact). Sentence 2: `research/response.md` section 2 and section 5 (NYU Wagner report via AP: "emergency calls that went unanswered due to a backlog", SECONDARY; "some" calls, never every call), the checked H1-S1 wording "some of the nine one one calls never got an answer" kept. "That Christmas" = the 23 to 27 Dec 2022 storm, Christmas weekend (`fact_check_r6_hook.md` row 1). . The number seven and the eleven hundred backlog are held for Act 4.
 
-### H1-S2 — narration (the hedge)
-**Picture:** on the cut, DVIDS 7576030 (a Guard soldier knocking at a front door during welfare checks, Buffalo, 30 Dec 2022, courtesy photo), public domain, cropped to 16:9. Chip "18 IN THE OPEN". Source line: "Erie County Executive Mark Poloncarz, last reported count, via WIVB". [VE] [PAY]
-> That was eighteen people, by the newest numbers the county gave out.
+### H1-S2 — narration (the second break)
+**Picture:** on the cut, DVIDS 7576030 (a Guard soldier knocking at a front door during welfare checks, Buffalo, 30 Dec 2022, courtesy photo), public domain, cropped to 16:9. Chips, one per sentence: "46 IN ERIE COUNTY", then "12 WITHOUT POWER OR HEAT", then "18 OF 46 FOUND OUTSIDE", then "+4 IN THEIR CARS". Source line: "Erie County Executive Mark Poloncarz, last reported count (3 cases pending), via WIVB". Wind drops to near silence. [VE] [RS] [PAY]
+> At last count, forty-six people lost their lives in Erie County. Twelve of them were without power or heat. But the biggest group, eighteen, were found outside, in the snow. Four more were found in their cars.
 
-Rows: `research/deaths.md` section 1 "final" (18 outside of 46, three cases pending, so the hedge stays); `fact_check_r6_hook.md` rows 2 and 3.
-
-### H1-S3 — narration
-**Picture:** self-made dispatch queue card, a counter running up to "1,100 CALLS WAITING". Source line: "NYU Wagner review, via Firehouse, 5 Jun 2023". Wind holds low. [VE] [RS] [Q]
-> By the morning after the first day, eleven hundred emergency calls were waiting in line, a review for the city found later.
-
-Rows: `research/response.md` section 2 (backlog of 1,100 emergency calls "by the morning after the first day", Firehouse citing the NYU report, SECONDARY; report PDF itself not read).
-
-### H1-S4 — narration (the second break)
-**Picture:** self-made text card, "7 LIVES · CALLS UNANSWERED". Source line: "NYU Wagner review for the City of Buffalo, via AP, 2 Jun 2023". Wind drops to near silence. [VE] [RS] [Q]
-> That same review tied seven of the lives lost in Erie County to calls that went unanswered in the backlog.
-
-Rows: `research/response.md` section 2 and section 5 (seven Erie County deaths tied to unanswered calls due to a backlog, NYU report via AP, SECONDARY). This is the review's seven, never equated with the county's seven delayed-EMS category in `research/deaths.md`.
+Rows: `research/deaths.md` section 1 "final" and section 3 (46 Erie County; 18 outside, the largest single category; 12 no power or heat; 4 vehicles; WIVB, SECONDARY); `fact_check_r6_hook.md` rows 2 to 5; `factcheck/intro-r2.md` rows 4 to 7 ("at last count" hedge confirmed, three cases pending; WIVB gives no place for the twelve, so never "at home"). One count per sentence; the twelve come first so the viewer's "stuck at home" belief is heard, then the eighteen break it. "Twelve of them were without power or heat" restates the checked "the twelve who lost their lives without power or heat" (WIVB category "no power or heat") · same WIVB URL] "the biggest group" is the checked I1-S4 wording (`factcheck/intro-r2.md` row 28). Never "most": 18 of 46 is the largest group, not a majority.
 
 ## T1 · Hook tail
 
 ### T1-S1 — narration
-**Picture:** Buffalo Niagara International Airport weather station readout (self-made ASOS log card, rows ticking past: 7:24, 8:06, 8:39). Source line: "Buffalo airport ASOS observations, IEM archive". Chip "FRIDAY · DEC 23". [VE] [Q] [loop L0 open] (loop E stated aloud)
-> I wanted to know why so many of them were out in it. Part of the answer is how fast Friday morning turned, the day before Christmas Eve, and the airport's weather log shows it.
+**Picture:** Buffalo Niagara International Airport weather station readout (self-made ASOS log card, rows ticking past: 7:24, 8:06, 8:39). Source line: "Buffalo airport ASOS observations, IEM archive". Chip "FRIDAY · DEC 23". The hook's wind bed comes back up under the first row. [VE] [Q] [loop L0 open]
+> I went through the Buffalo airport's weather log for that Friday, the day before Christmas Eve. It shows how fast the morning turned.
 
-*register: 9/10*
+Rows: `research/nws.md` 2.2, 2.3 (ASOS BUF rows 7:24, 8:06, 8:39, IEM archive); `fact_check_r6_hook.md` rows 11 to 13 (calendar: Fri 23 Dec 2022, Christmas Eve Sat 24 Dec; "the airport's weather log shows it" kept as "it shows how fast the morning turned"). The first-person line names a concrete record only Buffalo has, replacing "I wanted to know why so many people were out in it".
 
 ## I1 · Intro
 
 ### I1-S1 — narration
-**Picture:** self-made map, Lake Erie to Buffalo, Erie County outlined, labels "LAKE ERIE" and "WESTERN NEW YORK" (the geography is on screen only). Then the ASOS card from T1 returns: "38°F · RAIN" at the pre-dawn rows, then "VIS 1/4 MI · 8:39 AM" lights up, then a red clock chip "DRIVING BAN · 9:30 AM". Source lines: "Buffalo airport ASOS, IEM archive"; "Erie County driving ban, WKBW". [VE] [RS] [PAY] [loop L0 closes]
-> Before dawn that Friday, December twenty-third, if you were getting ready for work in Buffalo, it was raining, at about thirty-eight degrees. By eight thirty-nine in the morning, snow and wind had cut the visibility at the airport to a quarter of a mile. Erie County's driving ban took effect at nine thirty in the morning. That's fifty-one minutes after the visibility dropped to a quarter of a mile.
+**Picture:** self-made map, Lake Erie to Buffalo, Erie County outlined, labels "LAKE ERIE" and "WESTERN NEW YORK" (the geography is on screen only). Then the ASOS card from T1 returns: "38°F · RAIN" at the pre-dawn rows, then "VIS 1/4 MI · 8:39 AM" lights up, then a red clock chip "DRIVING BAN · 9:30 AM". Source lines: "Buffalo airport ASOS, IEM archive"; "Erie County driving ban, WKBW". [VE] [RS] [PAY] [loop L0 closes] [loop L0b open]
+> Before dawn, if you were getting ready for work in Buffalo, it was raining, at about thirty-eight degrees. By eight thirty-nine in the morning, snow and wind had cut the visibility at the airport to a quarter of a mile. Erie County's driving ban took effect fifty-one minutes later. Anyone already on the road by then was about to find out how long this would last.
 
-*register: 8/10*
+Rows: `fact_check_r6_intro.md` rows 1 to 5 and `factcheck/intro-r1.md` rows 5 to 8 (`research/nws.md` 2.1, 2.3; ban 9:30 a.m. WKBW, SECONDARY, `research/response.md`; 8:39 to 9:30 = 51 min); `factcheck/intro-r2.md` rows 13 to 15. "That Friday, December twenty-third" dropped (T1 and the popfig carry the day). Sentence 4 turns the old rhetorical question into a statement that keeps L0b open (how long it would last, paid by I1-S2's thirty-seven hours); framing, no new fact. Note for the Act 2 writer: the 8:39 quarter mile and the 9:30 ban, fifty-one minutes apart, are spent here; Act 2 deepens the morning (7:24 front, falling temperature, the people on the road), it does not reveal the gap again.
 
 ### I1-S2 — narration
-**Picture:** DVIDS 7572837 (827th Engineer Co clearing snow to recover an AMR ambulance, Buffalo, 26 Dec 2022, Eric Durr), public domain, held wide. Chips, one per sentence: "HUNDREDS STRANDED", then "GUSTS 69 MPH", then "37 STRAIGHT HOURS". Source lines: "Office of the Governor, 26 Dec 2022"; "NWS Buffalo Blizzard Warning, 22 Dec 2022"; "Buffalo airport ASOS, IEM archive"; "NYS DHSES, 4 Aug 2023". [VE] [RS] [Q]
-> During the storm, hundreds of drivers ended up stranded, the governor's office said. The weather service's warning opened with the words blizzard conditions, before it gave any snow total. Out at the airport, the weather station logged gusts of sixty-nine miles an hour. And the state counted thirty-seven straight hours of blizzard-like conditions in Erie County. That's a day and a half with no letup if you were caught out in it. So who was out in that, and why couldn't help reach some of them?
+**Picture:** DVIDS 7572837 (827th Engineer Co clearing snow to recover an AMR ambulance, Buffalo, 26 Dec 2022, Eric Durr), public domain, held wide. Chips, one per sentence: "GUSTS 69 MPH", then "HUNDREDS STRANDED", then "37 STRAIGHT HOURS". Source lines: "Buffalo airport ASOS, IEM archive"; "Office of the Governor, 26 Dec 2022"; "NYS DHSES, 4 Aug 2023". [VE] [RS] [PAY] [loop L0b closes]
+> The weather station there logged gusts of sixty-nine miles an hour, which means the snow kept blowing across the roads. The governor's office said the storm left hundreds of drivers stranded. And the state counted thirty-seven straight hours of blizzard-like conditions in Erie County, which is a day and a half.
 
-*register: 8/10*
+Rows: `factcheck/intro-r1.md` rows 16 to 19 and `factcheck/intro-r2.md` rows 18 to 21 (ASOS gust 60 kt = 69 mph, "logged" kept, never "peak", `research/nws.md` 3.1; governor.ny.gov 26 Dec "Leaving Hundreds of Motorists Stranded", `research/response.md`; DHSES 37 straight hours of blizzard-like conditions, now on the source line only; 37 h = 1.54 days). "which means the snow kept blowing across the roads" and "That's why hundreds of drivers ended up stranded" are new causal wording; ASOS shows blowing snow ("+SN BLSN") at 8:39 (`research/nws.md` 2.3) and the governor's 26 Dec release ties the strandings to the storm · https://www.governor.ny.gov/news/governor-hochul-submits-request-federal-emergency-declaration-historic-winter-storm-continues] "didn't let up for thirty-seven straight hours" restates DHSES "thirty-seven straight hours of blizzard-like conditions" · dhses.ny.gov/node/16646]
 
 ### I1-S3 — narration
-**Picture:** a Guard soldier knocking at a front door during welfare checks: NY National Guard photo, DVIDS 7576030 (Buffalo, 30 Dec 2022, courtesy photo), public domain, portrait 1212x1804 cropped to 16:9. Then the self-made running tally graphic, full frame, building by date: 27 Dec "17 of 31", 28 Dec "17 of 37", 30 Dec "17 of 39", last reported "18 of 46" (no date, no "final"), the "outside" bar the longest at every step; Source line: "Erie County counts via NPR/KAXE, AP, WBFO, WIVB; last reported count, Poloncarz via WIVB". [VE] [RS] [PAY] [Q]
-> As the National Guard and the road crews dug the city out, they started finding people. Outside, in the snow, was the biggest group in every county count I could find.
+**Picture:** self-made running tally graphic, full frame, building by date: 27 Dec "17 of 31", 28 Dec "17 of 37", 30 Dec "17 of 39", last reported "18 of 46" (no date, no "final"), the "outside" bar the longest at every step. Source line: "Erie County counts via NPR/KAXE, AP, WBFO; last reported count, Poloncarz via WIVB". [VE] [RS] [Q] [loop L1a open]
+> The county's count kept climbing for days after Christmas, and in every county count I could find, outside stayed the biggest group. What none of those counts said was why so many people were out there in the first place.
 
-*register: 8/10*
+Rows: `research/deaths.md` section 1 (25 on 26 Dec, 31 on 27 Dec, 37 on 28 Dec, 39 on 30 Dec, then 46; outside 17, 17, 17, 18, the largest category at each) and section 3; `factcheck/intro-r2.md` rows 27 to 29 ("every county count I could find", "the biggest group" kept, normal word order, no third "outside, in the snow"). Sentence 2 is framing, no fact: a gap stated, not asked, planting L1a (why people were out), carried by I1-S4 into Act 2 and Act 3. Was I1-S4; the old I1-S3 (Anndel Taylor) moved to Act 3, whose brief owns her.
 
 ### I1-S4 — narration
-**Picture:** self-made name card, text only, "ANNDEL TAYLOR · 22", over a licensed night-snow street (Pexels or Pixabay, no car or person identifiable). No family photo unless licensed. Chip "~6 MIN FROM HOME". Source line: "Her family, via CBS News / CNN, 28 Dec 2022". [HUMAN] [VE] [Q]
-> Anndel Taylor was twenty-two. Her family said she got stuck in her car that Friday, driving home from work, about six minutes from home. She called nine one one, but crews couldn't get to her car.
+**Picture:** the NWS Buffalo Area Forecast Discussion card, the earliest product: "very large and powerful storm system", 4:10 a.m. Sun 18 Dec 2022 (FXUS61 KBUF 180910, IEM archive). Chip "5 DAYS OUT". Source line: "NWS Buffalo Area Forecast Discussion, 18 Dec 2022, IEM archive". Slow fade toward the Act 1 blackout. [VE] [Q] [loop L1 open]
+> Five days out, on the Sunday before Christmas, Buffalo's weather service was already writing that a very large and powerful storm system would hit the eastern half of the country later that week. How does a forecast that early still end with so many people found outside, in the snow?
 
-*register: 9/10*
+Rows: `research/nws.md` 1.8 and 1.10 (AFD 4:10 a.m. EST Sun 18 Dec 2022: "very large and powerful storm system will impact the bulk of the eastern half of the country later in the week", about 5 days before the 23 Dec onset, PRIMARY). "five days out" (18 Dec 4:10 a.m. to the warning's 7 a.m. Fri 23 Dec start, about 5 days 3 h) and "the Sunday before Christmas" = Sun 18 Dec 2022; the quote is about the eastern half of the country, so "calling it" = the storm system the Buffalo office was forecasting · https://mesonet.agron.iastate.edu/cgi-bin/afos/retrieve.py?pil=AFDBUF&sdate=2022-12-15T00:00Z&edate=2022-12-20T00:00Z&fmt=text&limit=100] Was I1-S5. Act 1 (`acts/a1.md`) quotes the 20 Dec "once in a generation" discussion and the 22 Dec warning, so this line uses only the 18 Dec product; "more than a day ahead" and "named that Friday" dropped. "Forecast", not "warning", because the 18 Dec product is a discussion; this matches the L1 line already in the `edit_script.md` loop table. "So many ... outside" = 18 of 46, the largest group (`research/deaths.md` section 1), no number spoken.
 
-### I1-S5 — narration
-**Picture:** back to the NWS Buffalo forecast discussion card, now the earlier product: "very large and powerful storm system", 4:10 a.m. Sun 18 Dec 2022 (IEM archive, FXUS61 KBUF 180910). Chip "5 DAYS OUT". Slow fade toward the Act 1 blackout. [VE] [Q] [loop L1 open]
-> And the forecasters were talking about it even earlier than that. By the Sunday before, five days out, the weather service in Buffalo was calling it a very large and powerful storm system. How does a forecast that early still end with so many people found outside, in the snow?
-
-*register: 9/10*
