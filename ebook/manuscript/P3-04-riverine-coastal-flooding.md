@@ -130,7 +130,7 @@ work performed. | https://www.ecfr.gov/current/title-44/section-59.1 | retrieved
   life from a folder for months.
 
 **The one decision to make in advance:** at what forecast crest do you move out rather than up? Write it
-as a number, on the form in the trashder. It is the same trigger-plan logic as Protection 95, applied to a
+as a number, on the form in the binder. It is the same trigger-plan logic as Protection 95, applied to a
 gauge reading instead of a warning.
 
 ---
@@ -159,7 +159,7 @@ of a flood.
 flood kills people, and it makes no sense at all after four days of notice.
 
 **If you are staying because your building is genuinely above the projected crest**, understand what
-staying means: no power, no water, no sewer, no shops, no access, possibly for a two weeks, with water
+staying means: no power, no water, no sewer, no shops, no access, possibly for two weeks, with water
 around you. That is a supply question — Protections 1, 13, 37 to 46, 53 to 55 — and it is a decision
 about medical dependency more than about bravery.
 

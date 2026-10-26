@@ -33,7 +33,7 @@ month.
 
 **So the plan for an owner is: do the free and cheap things now, and keep a written list of what to demand
 next time a contractor is on the property for any reason.** That list is worth thousands of dollars and it
-costs nothing to maintain. It goes in the trashder.
+costs nothing to maintain. It goes in the binder.
 
 **And know your own building.** Where the water main, gas meter and breaker panel are. Which way the valves
 turn. What the roof covering is and how old it is. Whether the crawl space floods. Where the sump discharges.
@@ -151,7 +151,8 @@ because that is what the arithmetic requires.
 - **Always leave on the worst days.** The Storm Prediction Center rates each day's risk from 1 to 5. Level 4
   is Moderate and Level 5 is High; both mean widespread severe weather or an outbreak is expected. A tornado
   watch that says "particularly dangerous situation" means forecasters are confident of multiple intense
-  tornadoes. On any of these days, you leave at the watch.
+  tornadoes. When a watch is out and storms are heading your way, go. On a Level 4 or 5 day, go
+  even if they are not yet.
   «SRC: NOAA Storm Prediction Center, "SPC Products" — categorical outlook levels 1-MRGL, 2-SLGT, 3-ENH,
   4-MDT ("an area where widespread severe weather with several tornadoes and/or numerous severe
   thunderstorms is likely") and 5-HIGH ("an area where a severe weather outbreak is expected from either
@@ -240,7 +241,7 @@ itself.
 - In winter: a shovel, a scraper, grit or sand, and traction aids.
 - Paper maps of your region, because the phone is not reliable when you need it.
 
-**Rotate the water and food twice a year**, because a car interior destroys both faster than a cupboard does.
+**Rotate the water and food twice a year**, because a car interior destroys both faster than a cabinet does.
 
 **Maintenance is a preparedness activity here**, not a chore: tires with real tread, working wipers and
 lights, a battery that is not on its last year, and the coolant and washer fluid appropriate to the season.

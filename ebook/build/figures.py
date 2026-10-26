@@ -634,10 +634,10 @@ def fig_card_cold():
             "Wrap pipes. <b>Label the water main</b>",
             "Set up the warm room and sleeping bags",
             "Check CO alarms are in date",
-            "Hoses off. Cupboard doors open"]),
+            "Hoses off. Cabinet doors open"]),
         ("WARNING", "the hard freeze", [
             "Heat up, not down at night",
-            "<b>Drip the far taps</b>",
+            "<b>Drip the far faucets</b>",
             "Frozen pipe: tap open, hair dryer, <b>never a flame</b>",
             "If you leave: water off, pipes drained"]),
         ("AFTER", "the thaw", [

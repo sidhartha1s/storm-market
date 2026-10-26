@@ -354,7 +354,7 @@ The three are rarely in the same place — Figure 3 shows the pattern of where t
 
 «FIG: utility-shutoffs»
 
-**What this does not do:** shutting off the main does not drain the pipes. Open the lowest taps
+**What this does not do:** shutting off the main does not drain the pipes. Open the lowest faucets
 afterwards to relieve what is still in the system.
 
 ---

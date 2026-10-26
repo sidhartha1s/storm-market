@@ -163,7 +163,7 @@ Priority order for an Ice & Snow North household:
   then refreezes at the cold eave.
 
 **Then the vehicle**, which is a genuine part of this hazard: winter tires or proper all-season tires, a
-scraper and brush, a shovel, sand or grit, a blanket, a flashlight, and warm layers in the boot from November.
+scraper and brush, a shovel, sand or grit, a blanket, a flashlight, and warm layers in the trunk from November.
 People are stranded in cars on interstates for many hours in this hazard every year.
 
 **And a phone call to make.** Anyone in your circle who is old, alone or medically dependent needs a plan
@@ -188,7 +188,7 @@ Fill the tubs.
 along the bottom of the door. You are heating one small volume, not a house.
 
 **Then protect the plumbing**, in the order that matters. If you have heat, leave a slow drip from the
-taps furthest from the entry point and open the cupboard doors under sinks on exterior walls. If the house
+faucets furthest from the entry point and open the cabinet doors under sinks on exterior walls. If the house
 is going to fall below freezing and you are leaving, **shut the water main off and drain the system** —
 this is the whole difference between coming home to a cold house and coming home to a waterfall.
 
@@ -262,7 +262,7 @@ most do not write it down.
 | **Ice thresholds** | ½ in brings limbs down · ¾ in brings lines down · 1½ in brings poles down |
 | **Biggest killer** | **Carbon monoxide** from improvised heat. Nothing that burns fuel runs indoors |
 | **Before** | Pipe insulation · labeled water main · warm room chosen · rated sleeping bags · CO alarms in date |
-| **When power goes** | Shut down to one room · drip the taps, or **drain the system if you leave** |
+| **When power goes** | Shut down to one room · drip the faucets, or **drain the system if you leave** |
 | **Shoveling** | Push, don't lift · little and often · chest symptoms mean stop and get help |
 | **Stranded in a car** | Stay with it · engine 10 min/hour · **clear the exhaust of snow every time** |
 | **The thaw** | The pipes fail then, not while frozen. Be there, and know where the main is |

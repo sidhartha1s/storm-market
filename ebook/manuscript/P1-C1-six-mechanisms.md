@@ -371,7 +371,7 @@ Bleeding control. This is the single highest-value skill for a layperson, becaus
 kills in minutes and is often stoppable by direct pressure or a tourniquet applied by someone with
 no medical background. Stop the Bleed training is widely available and frequently free, and it is
 Protection 58. The kit that goes with it is 57, and it lives where you can reach it in the dark
-rather than in a cupboard.
+rather than in a cabinet.
 
 CPR. Same argument, same availability.
 

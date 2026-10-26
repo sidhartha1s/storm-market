@@ -109,7 +109,7 @@ It is also the window of the second injury wave, which is entirely preventable a
 ignored: people walking into a wrecked building in the dark. Broken glass, exposed nails, splintered
 framing, downed lines, unstable structure, gas. The shoes you sleep in are not shoes for this. That
 is why Protection 43 puts a headlamp and a pair of real shoes at the bedside rather than in a
-cupboard — a light you have to find in the dark is a light you do not have.
+cabinet — a light you have to find in the dark is a light you do not have.
 
 Three specific hazards live in this window and each has its own aftermath section later in the book:
 gas leaks after an earthquake, live conductors on the ground after wind, and floodwater that is

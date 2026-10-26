@@ -88,7 +88,7 @@ Then the signed line: **nobody goes back for anybody.**
 ## Section B — The trigger plan (6 pages)
 
 ### Form 7 · The trigger plan
-*Serves 95. The single most important page in the trashder.*
+*Serves 95. The single most important page in the binder.*
 
 One row per hazard that applies to you. Each row completes the sentence:
 
@@ -149,7 +149,7 @@ slab · heating type and whether it needs electricity, and how much · water sou
 septic · panel amperage · flood zone · evacuation zone · elevation relative to the street.
 
 ### Form 14 · The contractor list
-*Serves 69–84. The most financially valuable page in the trashder.*
+*Serves 69–84. The most financially valuable page in the binder.*
 
 What to demand next time anyone is working on the property, by trade:
 
@@ -187,12 +187,12 @@ People × gallons per day × days, plus animals, equals **your number**. Then a 
 date filled, rotation date.
 
 ### Form 18 · The pre-fill list
-*Serves 3. Designed to be taped inside a cupboard door.*
+*Serves 3. Designed to be taped inside a cabinet door.*
 
 In order: which tubs, which pots, which bottles, where the bladder is, and who does it.
 
 ### Form 19 · Water treatment card
-*Serves 7, 8. Taped inside the cupboard.*
+*Serves 7, 8. Taped inside the cabinet.*
 
 Bleach ratios for the volumes you actually use, written out · tablet dosing · the boil protocol with the
 altitude adjustment · **the three notices and what each one means** · what boiling does not fix.
@@ -221,7 +221,7 @@ photographs taken · estimated values for the claim.
 Standard contents checklist, plus the person-specific additions, plus **the size and season check date**.
 
 ### Form 24 · Five-minute and thirty-minute lists
-*Serves 108. Taped inside a cupboard door.*
+*Serves 108. Taped inside a cabinet door.*
 
 **Five minutes:** people, pets, go-bags, medication, phones and chargers, document envelope, keys, wallets.
 **Thirty minutes:** the actual items, where in the house each is, and who carries it.

@@ -80,7 +80,7 @@ Half now, half next week is fine — a partial store is not a failure.
 **Day 10 — Date-mark and shelve (2).** Marker pen, date on everything, and a note in the calendar for
 rotation. A store you cannot date is a store you will not trust.
 
-**Day 11 — Write the pre-fill list (3).** Tape it inside a cupboard door: which tubs, which pots, which
+**Day 11 — Write the pre-fill list (3).** Tape it inside a cabinet door: which tubs, which pots, which
 bottles, in what order, and where the tub bladder is if you buy one. Fifteen minutes on a warning, and it
 doubles your store.
 
@@ -89,7 +89,7 @@ off first, then a tap opened to break the vacuum, then the valve — and write i
 gallons already in your house.
 
 **Day 13 — Disinfection card (7).** Buy plain unscented household bleach, and write the correct ratios on a
-card taped inside the cupboard. Never recalled from memory, never the scented kind.
+card taped inside the cabinet. Never recalled from memory, never the scented kind.
 
 **Weekend — Finish the store, and the well owners' hour.** Buy the rest. If you are on a well, this is the
 weekend to find your well log, write down the well depth, pump setting depth and static water level, and price
@@ -196,7 +196,7 @@ cheapest life-saving object in this book.
 pockets with names and numbers. Then put the bags where they belong — by the door, or in the car during your
 season.
 
-**Day 40 — The five- and thirty-minute lists (108).** Written and taped inside a cupboard door. Every adult
+**Day 40 — The five- and thirty-minute lists (108).** Written and taped inside a cabinet door. Every adult
 gets an assigned area so two people are not carrying the same box.
 
 **Day 41 — Pets (109).** Carriers out and made ordinary, pet bag packed, vaccination records copied, and the
@@ -258,7 +258,7 @@ and defensible space out to thirty feet and beyond (77).
 **Ice & Snow North:** pipe insulation on every accessible run in unheated space (34), gutters cleared, attic
 insulation and ventilation checked (31), and a sump pump battery backup (36).
 
-**Quake West:** the anchoring weekend (83) — straps on tall furniture into studs, cupboard latches, the water
+**Quake West:** the anchoring weekend (83) — straps on tall furniture into studs, cabinet latches, the water
 heater strapped top and bottom, nothing heavy above a bed. Then gas flex connectors (84).
 
 **Hail regions:** impact-rated shingles specified for your next re-roof (71), and an arborist looking at

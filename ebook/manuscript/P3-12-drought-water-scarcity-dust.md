@@ -118,7 +118,7 @@ whose income touches agriculture.
   level. Those three numbers tell you how much margin you have before the pump breaks suction, and almost
   no well owner knows them. Get them from the well log, which is usually a public record, or measure them.
 - Watch for the warning signs, because a well gives notice: sediment or cloudiness that was not there
-  before, air spitting from taps, the pump running longer or cycling oddly, reduced pressure, and a
+  before, air spitting from faucets, the pump running longer or cycling oddly, reduced pressure, and a
   recovery that takes longer after heavy use. Any of those means the water level is approaching the intake.
 - Have the conversation with a driller **before** you need one. Lowering a pump is far cheaper than
   deepening or re-drilling, and it is only possible if the borehole has depth below the pump. Knowing which

@@ -82,7 +82,7 @@ live or work in one of these, that is the single most important fact in this pla
 today.
 
 **Injured by, in vastly greater numbers:** falling objects and toppling furniture. Bookcases, wall units,
-televisions, water heaters, mirrors, hanging light fittings, and the contents of upper kitchen cupboards.
+televisions, water heaters, mirrors, hanging light fittings, and the contents of upper kitchen cabinets.
 Then cuts to feet and hands from broken glass, which is why Protection 43 puts shoes and a flashlight under every
 bed — and an earthquake at four in the morning is the specific reason.
 
@@ -134,7 +134,7 @@ Priority order for a Quake West household:
 
 - **83 — anchoring what will otherwise fall on you.** The highest-value, lowest-cost protection in this
   playbook and the one that prevents most injuries. Straps and brackets on tall furniture into studs, not
-  drywall. Latches on cupboards, especially upper kitchen cupboards over where people stand. Televisions and
+  drywall. Latches on cabinets, especially upper kitchen cabinets over where people stand. Televisions and
   monitors strapped. Nothing heavy or glass hung above a bed or a sofa. Heavy items on low shelves. A
   weekend and a hundred dollars of hardware buys most of the injury reduction available to you.
 - **The water heater specifically**, because it deserves naming separately: strapped top and bottom to the
@@ -276,7 +276,7 @@ anyone sleeping in a building with unrepaired damage should not be.
 |---|---|
 | **No warning, no season** | Twenty seconds. Everything is decided by what you did beforehand |
 | **What injures most** | Not collapse — **falling and toppling contents**, and glass under bare feet |
-| **The weekend that matters** | **83** — strap the furniture, latch the cupboards, strap the water heater |
+| **The weekend that matters** | **83** — strap the furniture, latch the cabinets, strap the water heater |
 | **Insurance** | Excluded from standard policies; separate cover with a large percentage deductible |
 | **During** | **Drop, cover, hold on.** Do not run — especially not outside |
 | **In bed** | Stay, face down, pillow over head and neck |

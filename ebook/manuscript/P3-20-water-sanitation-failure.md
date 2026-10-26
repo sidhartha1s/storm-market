@@ -41,7 +41,7 @@ than a thing that degrades.
 
 **The point of this playbook is that the water goes off in almost every hazard in this book, and households
 plan for it least.** People buy a generator before they buy a water container, which is exactly backwards:
-you can live without electricity for a two weeks and you cannot live without water for three days.
+you can live without electricity for two weeks and you cannot live without water for three days.
 
 And the half nobody wants to discuss at all is the second half. **When the water stops, the toilet stops**,
 and a household of four generates a sanitation problem within hours. That is not a comfort issue. In a
@@ -99,7 +99,7 @@ Legionella case in a large building — a serious liability and remediation prob
   unit for microbes, and the honest understanding that chemical contamination needs a different technology or
   bottled water.
 - **7 — chemical disinfection**, with the correct ratios for unscented household bleach written on a card
-  taped inside the cupboard rather than recalled from memory, and dosing tablets as a compact alternative.
+  taped inside the cabinet rather than recalled from memory, and dosing tablets as a compact alternative.
 - **8 — the boil protocol**, and knowing the three notices apart: **boil water**, **do not drink**, and **do
   not use**.
 - **9, 10 — the well owner's plan**: no power means no water, so a hand pump or a generator-fed pump matters;
@@ -181,7 +181,7 @@ after testing, and the gap between "water is flowing again" and "water is safe" 
 
 **Then flush the plumbing properly**, because your own pipes are now the problem. After a pressure loss or a
 long shutdown, run every cold tap for several minutes until the water is cold and clear, starting with the
-tap nearest the supply and working outward. Then run the hot taps. Flush and clean the ice maker — discard
+tap nearest the supply and working outward. Then run the hot faucets. Flush and clean the ice maker — discard
 the first several batches — and run the dishwasher and washing machine empty. Replace point-of-use filters,
 including the fridge filter, because a filter that processed contaminated water is now a contaminated
 filter.
@@ -195,7 +195,7 @@ house that has been shut for a month, not the first glass of water.
 containing the bacteria. | https://www.cdc.gov/legionella/about/index.html | retrieved 2026-07-29»
 
 So: flush thoroughly *before* anybody showers, and flush in a way that makes as little spray as possible —
-open taps gently rather than fully, and remove and clean aerators and shower heads first. Building-scale
+open faucets gently rather than fully, and remove and clean aerators and shower heads first. Building-scale
 flushing protocols exist and are worth following if you manage a building rather than a house; ask your
 utility for the current guidance, because the specifics (including whether and how to raise water heater
 temperature) are a plumbing and scalding question this book will not answer from a distance.
@@ -218,12 +218,12 @@ review sheet.
 
 | | |
 |---|---|
-| **The priority** | You can last a two weeks without power and **three days without water.** Buy water first |
+| **The priority** | You can last two weeks without power and **three days without water.** Buy water first |
 | **Free, 15 minutes** | On any warning: **fill the tubs, pots and bottles.** Most-skipped action in the book |
 | **Already in the house** | 40–80 gallons in the water heater. Know the draw-off procedure |
 | **Three notices** | **Boil** = microbes handled · **Do not drink** = boiling makes it worse · **Do not use** = no bathing |
 | **Never boil for** | Nitrate, arsenic, lead, algal toxins. Boiling **concentrates** them |
-| **Forgotten taps** | Ice maker · fridge dispenser · coffee machine · toothbrushing · pet bowls |
+| **Forgotten faucets** | Ice maker · fridge dispenser · coffee machine · toothbrushing · pet bowls |
 | **The toilet** | Flush with non-potable water if the sewer is intact. **If it is broken, do not flush at all** |
 | **The one that matters** | **Soap and water from a jug**, every time. Gel is the backup, not the method |
 | **After** | Notice lifted, not water clear · flush every tap and the ice maker · re-test a flooded well |

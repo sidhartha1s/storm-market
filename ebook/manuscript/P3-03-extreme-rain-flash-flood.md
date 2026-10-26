@@ -120,7 +120,7 @@ during a flood watch, and do not store the irreplaceable things there at all.
 
 ## During
 
-**Flood watch** — conditions are favourable. Move vehicles to higher ground now, because a parking loted in
+**Flood watch** — conditions are favorable. Move vehicles to higher ground now, because a car parked in
 a dip is a total loss for no reason. Move valuables and documents up a floor. Charge everything. Check
 the gauge.
 

@@ -18,7 +18,7 @@ a backup, once, on a drive in the same room.
 
 **Half the electronics are dead**, not from water but from the surge when the power came back — and the
 household did not know that surge damage was a thing until the television, the router, the furnace control
-board and the well pump controller all failed within a two weeks.
+board and the well pump controller all failed within two weeks.
 
 **And the claim is smaller than it should be**, because nobody can prove what was in the house. The adjuster
 is not being difficult. There is simply no evidence.
@@ -50,7 +50,7 @@ septic controllers, garage door openers, alarm panels, and the electronics insid
 **The unclaimable contents**, which is the largest number of the three. A household with no inventory
 routinely under-claims a contents loss by a wide margin, because reconstructing what was in a house from
 memory produces a list that is short by a factor you would not believe until you tried it. The garage. The
-loft. The linen cupboard. The tools. The children's things. The clothes.
+loft. The linen cabinet. The tools. The children's things. The clothes.
 
 **And the coverage basis**, which decides what any of it is worth. Contents settled on **actual cash value**
 pay depreciated value: a ten-year-old television at a fraction of what a new one costs. Contents settled on

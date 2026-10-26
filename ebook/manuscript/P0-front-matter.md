@@ -110,8 +110,8 @@ One lives near. One lives far away. Tell them both. *(out-of-area contact, 112; 
 Four)*
 
 **2. One sentence on the fridge.** *"When ___ happens, I leave, and I call ___ and ___."* If you live
-in a hurricane zone, a wildfire area or a mobile home, the blank is the *watch* or the *Red Flag
-Warning*. It is not the evacuation order. If you do not drive, your driver must agree to the sentence
+in a hurricane zone or a mobile home, the blank is the *watch*. In a wildfire area, it is the
+*evacuation warning*. Neither is the evacuation order. If you do not drive, your driver must agree to the sentence
 out loud. *(trigger plan, 95)*
 
 **3. An alarm that wakes you.** Put a weather radio by the bed. Have a flip phone or a landline?
@@ -130,8 +130,8 @@ buffer, 59; medical summary, Form 2)*
 
 **7. A light, shoes and a whistle at the bed.** *(lighting, 43; whistle, go-bag, 107)*
 
-**8. Your "leave" number for a cold house: 64°F.** If your warmest room drops below it, you leave.
-Write it where everyone can see it. *(the extreme-cold playbook in Part Three)*
+**8. Your "leave" number for a cold house: at least 64°F.** If your warmest room drops below it, you
+leave. If you are older or ill, ask your doctor whether you need it warmer. Write it where everyone can see it. *(the extreme-cold playbook in Part Three)*
 
 Then fill in the card below and put it on the fridge.
 
