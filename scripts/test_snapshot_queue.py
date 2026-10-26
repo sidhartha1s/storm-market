@@ -185,7 +185,7 @@ with tempfile.TemporaryDirectory() as d:
     body = scripts[0]
     assert rc == 0 and "last log line" in log, (rc, log)
     assert f'python "{q.ZBOOK_REPO}\\scripts\\render_busy.py" && ' in body, body
-    assert f'set "HYPERFRAMES_BROWSER_PATH={q.ZBOOK_CHROME}"' in body and "npx --yes hyperframes@0.8.185 snapshot" in body, body
+    assert f'set "HYPERFRAMES_BROWSER_PATH={q.ZBOOK_CHROME}"' in body and "call npx --yes hyperframes@0.8.185 snapshot" in body, body   # npx is a .cmd: without call the script never reaches its rc line
     assert f'"{q.ZBOOK_REPO}\\.snapq\\mirror\\ep-x" --at 1.5,6.0 --no-end --describe false -o "{q.ZBOOK_REPO}\\.snapq\\out\\J1"' in body, body
     assert any("Win32_Process" in c and "CommandLine='cmd.exe /c J1.cmd'" in c for c in calls if isinstance(c, str)), calls   # started outside the ssh session
     assert calls[-1][:3] == ["scp", "-q", "-r"] and calls[-1][3] == "zbook:" + f"{q.ZBOOK_REPO}/.snapq/out/J1/*".replace("\\", "/"), calls[-1]
