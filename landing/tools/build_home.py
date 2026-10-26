@@ -76,7 +76,7 @@ tabs = [("sheet-start", "Start here"), ("sheet-why", "Why this book"), ("sheet-i
 
 head_extra = open(os.path.join(HERE, "_orig", "home-head.html"), encoding="utf-8").read()
 title = open(os.path.join(HERE, "_orig", "home-title.txt"), encoding="utf-8").read().strip()
-extra_css = ('<style>.rated{margin:18px 0 6px;font-size:18px;color:var(--soft)}.rated .stars{color:var(--tab5);letter-spacing:.12em}'
+extra_css = ('<style>.plain{margin:14px 0 0;max-width:46ch;font-size:19px;color:var(--ink)}.rated{margin:18px 0 6px;font-size:18px;color:var(--soft)}.rated .stars{color:var(--tab5);letter-spacing:.12em}'
              '.stats{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-wrap:nowrap;gap:28px;overflow-x:auto;scrollbar-width:none}'
              '.stats li{flex:0 0 auto;text-align:left}.stats b{display:block;font-family:var(--display);font-weight:900;font-size:40px;line-height:1;color:var(--tab3);letter-spacing:-.02em}'
              '.stats span{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faded);margin-top:4px;white-space:nowrap}'
