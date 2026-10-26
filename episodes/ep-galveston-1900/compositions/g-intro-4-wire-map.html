@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-intro-4-wire-map · H1-S4 · ep-galveston-1900 · DEEP (Opus) · brief: briefs/intro/g-intro-4-wire-map.md
+  Claim: Belen (Havana) said northwest into the Gulf; Washington ruled only its forecasts went over the telegraph,
+  so the only forecast on the wire to Galveston was Washington's. No date anywhere (the decree has none on record).
+
+  BASE OF A FAMILY: g-intro-8-track copies the plate, projection, pins and wire layer from this file.
+  PLATE (the one coordinate system; every point on this map is computed by this formula, never placed by eye):
+    X = (lon + 100) * 90        Y = (41 - lat) * 103.95        (equirectangular, 30 deg latitude stretch, north up)
+    The nominal plate is 2700 x 2703 (lon -100..-70, lat 15..41). The drawn geometry runs wider, lon -110..-62,
+    lat 8..46 (X -900..3420, Y -520..3430), so no camera state used here shows an edge. The land polygon's outer ring
+    follows that box: a camera wider than about s 0.45 centred on the Gulf would show it.
+  BASEMAP (between BASEMAP markers, path data in plate units, do not hand-edit):
+    land   = Natural Earth 10m coastline (public domain), polygonised against the box, water faces dropped
+             (seeds: Gulf, Atlantic, Caribbean, Pacific), simplified 0.025 deg. Fill #15202b, coast stroke #5a768f 2 px.
+    border = US-Mexico land border: NE 50m admin-1 US outline minus anything within 0.12 deg of the 10m coast.
+    states = NE 10m admin-1 lines touching Texas, Louisiana or Florida.
+    Source files: cartopy cache ne_10m_coastline.shp, ne_10m_admin_1_states_provinces_lines.shp;
+    ep-mayfield-2021 research/geo/ne50m/ne_50m_admin_1_states_provinces_lakes.geojson. One-shot transform, not committed.
+  PINS (plate px, by the formula): Galveston (-94.80, 29.30) = (468.0, 1216.2); Havana (-82.38, 23.13) = (1585.8, 1857.6);
+    Washington (-77.04, 38.90) = (2066.4, 218.3).
+  CAMERA: screen = (960 + (X - cx) * s, 540 + (Y - cy) * s). camAt(t) below is a pure function of comp time
+    (seek-safe). V-HAV cx 1100 cy 1560 s 1.0; V-WIRE cx 1267 cy 1000 s 0.5; the pull between them interpolates s in
+    log space (logLerpScale, copied from library/inhouse/snippets/helpers.js logZoom).
+  LAYERS: #...-cam holds plate-unit geometry (land, wires, arrow) and is the only element the camera transforms.
+    #...-pins holds screen-size marks (pins, the x mark); camAt places each mark's outer <g> on its projected point.
+    #...-hud holds every text label at fixed screen positions, revealed only once the camera has settled.
+-->
+<template>
+<style>
+  #g-intro-4-wire-map-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .gi4-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .gi4-land { fill:#15202b; stroke:#5a768f; stroke-width:2px; stroke-linejoin:round; }
+  .gi4-border { fill:none; stroke:#4a5560; stroke-width:1.5px; }
+  .gi4-states { fill:none; stroke:#2a3644; stroke-width:1.5px; }
+  .gi4-lab { font-family:Arial, sans-serif; font-weight:700; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .gi4-labbig { font-family:'Arial Black', Arial, sans-serif; font-weight:900; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .gi4-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:1.4; color:#c8d3e0; }
+  .gi4-src span { display:block; white-space:nowrap; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .gi4-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-intro-4-wire-map-root" data-composition-id="g-intro-4-wire-map" data-width="1920" data-height="1080">
+  <svg class="gi4-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <!-- camera layer: plate units -->
+    <g id="g-intro-4-wire-map-cam">
+      <!--BASEMAP:g-intro-4-->
+      <path class="gi4-land" vector-effect="non-scaling-stroke" d="__LAND__"/>
+      <path class="gi4-border" vector-effect="non-scaling-stroke" d="__BORDER__"/>
+      <path class="gi4-states" vector-effect="non-scaling-stroke" d="__STATES__"/>
+      <!--/BASEMAP-->
+      <!-- Belen forecast: Havana (1585.8,1857.6) to (-89.0, 27.0) = (990.0,1455.2), control (1330,1720); 8 px at s 1 -->
+      <path id="g-intro-4-wire-map-arrow" class="gi4-hide" d="M1585.8,1857.6 Q1330,1720 990,1455.2" fill="none" stroke="#d8a13a" stroke-width="8" stroke-linecap="round"/>
+      <polygon id="g-intro-4-wire-map-head" class="gi4-hide" points="0,0 0,0 0,0" fill="#d8a13a"/>
+      <!-- wire layer: straight city-to-city lines into Galveston (468.0,1216.2); 12 plate units = 6 px at s 0.5 -->
+      <line id="g-intro-4-wire-map-hwire" class="gi4-hide" x1="1585.8" y1="1857.6" x2="1585.8" y2="1857.6" stroke="#5a768f" stroke-width="12" stroke-dasharray="28 24"/>
+      <line id="g-intro-4-wire-map-wglow" class="gi4-hide" x1="2066.4" y1="218.3" x2="468.0" y2="1216.2" stroke="#7fb2e5" stroke-width="12" stroke-linecap="round" style="filter:drop-shadow(0 0 10px #7fb2e5) drop-shadow(0 0 10px #7fb2e5)"/>
+      <line id="g-intro-4-wire-map-wwire" class="gi4-hide" x1="2066.4" y1="218.3" x2="2066.4" y2="218.3" stroke="#7fb2e5" stroke-width="12" stroke-linecap="round"/>
+      <line id="g-intro-4-wire-map-pulse" class="gi4-hide" x1="2066.4" y1="218.3" x2="468.0" y2="1216.2" stroke="#f2f5f8" stroke-width="14" stroke-linecap="round"/>
+    </g>
+    <!-- screen-size marks: camAt sets each *-at group's translate to its projected point -->
+    <g id="g-intro-4-wire-map-pins">
+      <g id="g-intro-4-wire-map-xm-at"><g id="g-intro-4-wire-map-xm" class="gi4-hide">
+        <circle r="17" fill="#04070c" stroke="#c0392b" stroke-width="2"/>
+        <path d="M-8,-8 L8,8 M8,-8 L-8,8" stroke="#c0392b" stroke-width="5" stroke-linecap="round" fill="none"/>
+      </g></g>
+      <g id="g-intro-4-wire-map-hav-at"><g id="g-intro-4-wire-map-hav" class="gi4-hide">
+        <circle id="g-intro-4-wire-map-hav-ring" r="7" fill="none" stroke="#d8a13a" stroke-width="2"/>
+        <circle r="7" fill="#d8a13a"/>
+      </g></g>
+      <g id="g-intro-4-wire-map-was-at"><g id="g-intro-4-wire-map-was" class="gi4-hide">
+        <circle id="g-intro-4-wire-map-was-ring" r="7" fill="none" stroke="#7fb2e5" stroke-width="2"/>
+        <circle r="7" fill="#7fb2e5"/>
+      </g></g>
+      <g id="g-intro-4-wire-map-gal-at"><g id="g-intro-4-wire-map-gal" class="gi4-hide">
+        <circle id="g-intro-4-wire-map-gal-ring" r="7" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+        <circle id="g-intro-4-wire-map-gal-dot" r="7" fill="#f2f5f8"/>
+      </g></g>
+    </g>
+    <!-- HUD: fixed screen positions, from the projected points once the camera has settled -->
+    <g id="g-intro-4-wire-map-hud">
+      <!-- V-HAV: Havana pin at screen (1446,838); label left of the dot, nothing at x >= 1600 -->
+      <text id="g-intro-4-wire-map-belen" class="gi4-lab gi4-hide" x="1410" y="885" text-anchor="end" font-size="30" fill="#e8c56a">Belen Observatory</text>
+      <text id="g-intro-4-wire-map-havana1" class="gi4-lab gi4-hide" x="1410" y="915" text-anchor="end" font-size="22" letter-spacing="3" fill="#93a3b2">Havana</text>
+      <!-- arrow tip at plate (974,1443) = screen (830,419) at s 1.033 (5.84 s); label left of the tip, open Gulf -->
+      <text id="g-intro-4-wire-map-gulf" class="gi4-lab gi4-hide" x="806" y="430" text-anchor="end" font-size="30" fill="#e8c56a">Into the Gulf</text>
+      <!-- V-WIRE: Washington (1360,149), Galveston (560,648), Havana (1119,969) -->
+      <text id="g-intro-4-wire-map-washington" class="gi4-lab gi4-hide" x="1385" y="160" font-size="30" fill="#7fb2e5">Washington</text>
+      <text id="g-intro-4-wire-map-galveston" class="gi4-labbig gi4-hide" x="535" y="666" text-anchor="end" font-size="52" fill="#f2f5f8">Galveston</text>
+      <!-- baseline 990, not the brief's 978: keeps the label 15 px under the dimmed Belen arrow leaving the pin -->
+      <text id="g-intro-4-wire-map-havana2" class="gi4-lab gi4-hide" x="1095" y="990" text-anchor="end" font-size="26" fill="#e8c56a">Havana</text>
+    </g>
+  </svg>
+  <div class="gi4-src gi4-hide" id="g-intro-4-wire-map-src">
+    <span id="g-intro-4-wire-map-src1">NOAA AOML, 2015: the Bureau "decreed that only its forecasts</span>
+    <span id="g-intro-4-wire-map-src2">would be carried over the telegraph"</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-intro-4-wire-map-";
+  const $ = function (n) { return document.getElementById("g-intro-4-wire-map-" + n); };
+  const proj = function (lon, lat) { return [(lon + 100) * 90, (41 - lat) * 103.95]; };
+  const GAL = proj(-94.80, 29.30), HAV = proj(-82.38, 23.13), WAS = proj(-77.04, 38.90);
+
+  /* camera: pure function of comp time */
+  const ease = gsap.parseEase("power2.inOut");
+  const lerp = function (a, b, u) { return a + (b - a) * u; };
+  function logLerpScale(fromScale, toScale, t) {
+    return Math.exp(Math.log(fromScale) + (Math.log(toScale) - Math.log(fromScale)) * t);
+  }
+  const HAV_MID = [(HAV[0] + GAL[0]) / 2, (HAV[1] + GAL[1]) / 2];
+  const marks = [[$("hav-at"), HAV], [$("was-at"), WAS], [$("gal-at"), GAL], [$("xm-at"), HAV_MID]];
+  const camEl = $("cam");
+  function camAt(t) {
+    let cx = 1100, cy = 1560, s;
+    if (t < 7.0) { s = 1 + 0.04 * (t / 7.0); }                                  /* V-HAV drift 1.0 -> 1.04 */
+    else if (t < 7.12) { s = 1.04; }
+    else if (t < 8.40) {                                                       /* BUT @7.12: pull-out to V-WIRE */
+      const u = ease((t - 7.12) / 1.28);
+      s = logLerpScale(1.04, 0.5, u); cx = lerp(1100, 1267, u); cy = lerp(1560, 1000, u);
+    }
+    else { cx = 1267; cy = 1000; s = t < 14.48 ? 0.5 : 0.5 + 0.01 * Math.min(1, (t - 14.48) / 0.81); } /* V-WIRE, drift from 14.48 */
+    camEl.setAttribute("transform", "translate(" + (960 - cx * s).toFixed(2) + "," + (540 - cy * s).toFixed(2) + ") scale(" + s.toFixed(5) + ")");
+    for (let i = 0; i < marks.length; i++) {
+      const p = marks[i][1];
+      marks[i][0].setAttribute("transform", "translate(" + (960 + (p[0] - cx) * s).toFixed(2) + "," + (540 + (p[1] - cy) * s).toFixed(2) + ")");
+    }
+  }
+  camAt(0);
+
+  /* arrowhead: tip 20 plate px past the curve's end along its end tangent (end - control), 36 long, 32 wide */
+  const END = [990.0, 1455.2], CTL = [1330, 1720];
+  const dl = Math.hypot(END[0] - CTL[0], END[1] - CTL[1]);
+  const dx = (END[0] - CTL[0]) / dl, dy = (END[1] - CTL[1]) / dl;
+  const tip = [END[0] + dx * 20, END[1] + dy * 20], base = [tip[0] - dx * 36, tip[1] - dy * 36];
+  $("head").setAttribute("points", [tip, [base[0] - dy * 16, base[1] + dx * 16], [base[0] + dy * 16, base[1] - dx * 16]]
+    .map(function (q) { return q[0].toFixed(1) + "," + q[1].toFixed(1); }).join(" "));
+
+  const AL = Math.ceil($("arrow").getTotalLength()) + 1;                       /* dash lengths: ceil(len)+1 */
+  const WL = Math.ceil(Math.hypot(WAS[0] - GAL[0], WAS[1] - GAL[1])) + 1;
+  const ARROW_DASH = AL + " " + (AL + 40), PULSE_DASH = "80 " + (WL + 200), PULSE_END = -WL;
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to({ t: 0 }, { t: 1, duration: 15.29, ease: "none", onUpdate: function () { camAt(this.time()) } }, 0);
+
+  /* 0.00: plate on from frame 0; source line slides in */
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.0);
+  tl.set(P + "arrow", { strokeDasharray: ARROW_DASH, strokeDashoffset: AL }, 0);
+  tl.set(P + "pulse", { strokeDasharray: PULSE_DASH, strokeDashoffset: 80 }, 0);
+
+  /* HAVANA @0.40: pin drops in, ring pulses to the end (10 x 1.4 s from 0.85) */
+  tl.fromTo(P + "hav", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(2)" }, 0.40);
+  tl.fromTo(P + "hav-ring", { scale: 1, opacity: 0.8, transformOrigin: "50% 50%" }, { scale: 2.2, opacity: 0, transformOrigin: "50% 50%", duration: 1.4, ease: "power1.out", repeat: 9 }, 0.85);
+  /* JESUIT @1.30 / BELEN @2.64: label lines */
+  tl.fromTo(P + "belen", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.30);
+  tl.fromTo(P + "havana1", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.64);
+  /* NORTHWEST @4.56: the Belen arrow draws to 5.84 */
+  tl.set(P + "arrow", { autoAlpha: 1 }, 4.56);
+  tl.to(P + "arrow", { strokeDashoffset: 0, duration: 1.28, ease: "power2.inOut" }, 4.56);
+  tl.fromTo(P + "head", { autoAlpha: 0, scale: 0.4, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.2, ease: "back.out(2)" }, 5.70);
+  /* GULF @5.84: label at the head */
+  tl.fromTo(P + "gulf", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.84);
+
+  /* BUT @7.12: HUD text clears before the pull-out (camera: camAt 7.12 -> 8.40); the arrow stays, dimmed */
+  tl.to([P + "belen", P + "havana1", P + "gulf"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 7.12);
+  tl.to([P + "arrow", P + "head"], { opacity: 0.5, duration: 0.4, ease: "power2.inOut" }, 7.12);
+
+  /* WASHINGTON @8.08: pin drops in on its projected point; label once settled at 8.40 */
+  tl.fromTo(P + "was", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(2)" }, 8.08);
+  tl.fromTo(P + "was-ring", { scale: 1, opacity: 0.8, transformOrigin: "50% 50%" }, { scale: 2.2, opacity: 0, transformOrigin: "50% 50%", duration: 1.4, ease: "power1.out", repeat: 3 }, 8.60);
+  tl.fromTo(P + "washington", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 8.40);
+
+  /* TELEGRAPH @9.30: both wires draw from their source city into Galveston; Galveston and Havana labels land */
+  tl.fromTo(P + "wwire", { autoAlpha: 0.75, attr: { x2: WAS[0], y2: WAS[1] } }, { autoAlpha: 0.75, attr: { x2: GAL[0], y2: GAL[1] }, duration: 0.8, ease: "power2.inOut" }, 9.30);
+  tl.fromTo(P + "hwire", { autoAlpha: 1, attr: { x2: HAV[0], y2: HAV[1] } }, { autoAlpha: 1, attr: { x2: GAL[0], y2: GAL[1] }, duration: 0.8, ease: "power2.inOut" }, 9.30);
+  tl.fromTo(P + "gal", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(2)" }, 9.30);
+  tl.fromTo(P + "galveston", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 9.30);
+  tl.fromTo(P + "havana2", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 9.30);
+  tl.fromTo(P + "gal-ring", { scale: 1, opacity: 0.8, transformOrigin: "50% 50%" }, { scale: 2.2, opacity: 0, transformOrigin: "50% 50%", duration: 1.4, ease: "power1.out", repeat: 2 }, 9.80);
+
+  /* ONLY @10.28: Havana wire goes dark (dash pattern stays), x pops on its midpoint; Washington wire lights, pulse 1 */
+  tl.to(P + "hwire", { opacity: 0.35, duration: 0.3, ease: "power2.out" }, 10.28);
+  tl.fromTo(P + "xm", { autoAlpha: 0, scale: 0, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.35, ease: "back.out(2)" }, 10.28);
+  tl.to(P + "wwire", { opacity: 1, duration: 0.3, ease: "power2.out" }, 10.28);
+  tl.fromTo(P + "wglow", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 10.28);
+  tl.set(P + "pulse", { autoAlpha: 1 }, 10.28);
+  tl.to(P + "pulse", { strokeDashoffset: PULSE_END, duration: 0.82, ease: "power1.inOut" }, 10.28);
+
+  /* WIRE @13.42: pulse 2 arrives at Galveston on "Galveston" 13.82-14.30; the Galveston pin flashes */
+  tl.fromTo(P + "pulse", { strokeDashoffset: 80 }, { strokeDashoffset: PULSE_END, duration: 0.88, ease: "power1.in", immediateRender: false }, 13.42);
+  tl.to(P + "gal-dot", { scale: 1.6, transformOrigin: "50% 50%", duration: 0.24, ease: "power2.out", yoyo: true, repeat: 1 }, 13.82);
+
+  /* WASHINGTON'S @14.48: hold, camera drifts (camAt); fade-through to the 1891 page cut, 14.94 -> 15.29 */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.35, ease: "power1.in" }, 14.94);
+
+  window.__timelines["g-intro-4-wire-map"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
