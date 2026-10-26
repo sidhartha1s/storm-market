@@ -41,26 +41,32 @@ Budget per `references/mg-quickref.md` "Paul on screen": 6 clips x 15 credits = 
 | cta-hinge: what Cline told Washington at three thirty | A3 last segment | A4-S1 |
 
 ## H · Hook (0:00)
-Hook shape: belief-question (2026-10-26)
-### H1-S1 — narration
-Visual: Paul full frame, on camera, the hook line only. Popfig inside the first second: "GALVESTON, TEXAS · SEPTEMBER 1900". Sound: wind and surf rising under the line. [HOOK] [Q] (the viewer answers: my weatherman)
-> A hurricane's coming. Who do you listen to?
+Hook shape: object (2026-10-26)
+PROVISIONAL (26 Oct 26): orchestrator's default pick from `hook_options.md`, owner pick pending; if he picks another shape only the hook and intro are redone.
+
+### H1-S1 — Paul on camera
+**Picture:** Paul full frame at 0:00, holding a printed reproduction of the Galveston Daily News page of 16 July 1891; popfig "GALVESTON, TEXAS · SEPTEMBER 1900" inside the first second; the sound under him: newsprint unfolding, then rain on a window, no wind.
+> This page of the Galveston paper, from July eighteen ninety-one, told readers no hurricane could send a storm wave big enough to badly damage their city.
+
+Rows: sources-cline.md §1 and factcheck-E.md H1-S4 (same page: "impossible for any cyclone to create a storm wave which would materially injure the city"; "badly" accepted for "seriously/materially", factcheck-D.md H1-S2; "hurricane" for "cyclone").
 
 ### H1-S2 — narration
-Visual: Galveston Daily News, July 16, 1891, page 5, slow push to the line; chip "ABSURD DELUSION"; telegraph-key click on the reveal. Source line: Isaac Cline, Galveston Daily News, 16 July 1891. [RS] [VE] (contradiction one)
-> Galveston's weatherman said a storm seriously damaging the city was an absurd delusion.
+**Picture:** slow push to the column; chip "ABSURD DELUSION"; lower-third "ISAAC CLINE · GALVESTON WEATHER OFFICE, 1900". Source line: Isaac Cline, Galveston Daily News, 16 July 1891. [RS] [VE] (break one)
+> Isaac Cline wrote part of it. He still ran the weather office in nineteen hundred.
+
+Rows: sources-cline.md §1 and factcheck-E.md H1-S2 (Cline wrote part of the article); sources-cline.md §2 (Local Forecast Official, in Galveston from 1889); sources-cuba.md §4 (landfall 8 Sept 1900).
 
 ### H1-S3 — narration
-Visual: cut on the swell to the Library of Congress 1900 film of the ruins on Broadway, Galveston; chip "AT LEAST 6,000 LIVES · CLINE'S OWN COUNT". Source line: Isaac Cline, Monthly Weather Review, September 1900. [RS] [VE] (contradiction two)
-> Nine years later the storm came, and at least six thousand people there lost their lives.
+**Picture:** hard cut to the NOAA 1900 map, Havana pinned, popfig "BELEN OBSERVATORY, HAVANA", one arrow northwest into the Gulf; then the telegraph line graphic, the Washington line lit, the Havana line dark. Source line: NOAA AOML, 2015. [RS] [VE] (break two)
+> Over in Havana, the Jesuits at Belen Observatory had said the storm was moving northwest, into the Gulf of Mexico. NOAA says the Bureau decreed that only its forecasts would be carried over the telegraph.
+
+Rows: sources-cuba.md §1 (Belen: northwest into the Gulf; Jesuit, cubamemorias.com via factcheck-B.md I1-S3); sources-cuba.md §2 (decree, NOAA's words with spoken attribution: "only its forecasts would be carried over the telegraph").
 
 ### H1-S4 — narration
-Visual: Library of Congress damage photograph, slow push; title words on screen "HE SAID IT WAS SAFE. IT WAS NOT." [VE] (title promise)
-> He said it was safe. It was not.
+**Picture:** back to the 1891 page, the light on it dimming; cut to the Monthly Weather Review report page, slow push to the line about his wife. Source line: Isaac Cline, Monthly Weather Review, September 1900. [VE] [HUMAN] [loop E1 open]
+> Among the people Galveston lost that night was Isaac Cline's own wife.
 
-### H1-S5 — narration
-Visual: the Monthly Weather Review page listing the warnings from Washington, chip "WARNINGS · SEPT 4 TO 8"; then a Galveston street photograph of 1900, chip "FEW HAD LEFT". Source line: Isaac Cline, Monthly Weather Review, September 1900; National Park Service. Sound: low swell under the line. [loop E1 open] [Q]
-> Washington sent the city warnings all that week, and still so few people left. I wanted to know why.
+Rows: sources-cline.md §3 ("Among the lost was my wife, who never rose above the water after the wreck of the building"); sources-cuba.md §4 (landfall on the evening of 8 Sept).
 
 ## HT · Hook tail
 ### T1-S1 — narration
