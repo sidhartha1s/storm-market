@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-intro-3-coast (I1-S1, deep, full-frame map on track 2): the coast side. Tide line pushes onto the real New Jersey
+  shore, a narrow SCHEMATIC flood band grows south, then a log-zoom to LaGuardia with a SCHEMATIC runway-flood inset
+  (fallback build: LaGuardia footage is SOURCE TBD). Brief: briefs/intro/g-intro-3-coast.md. L1 closed: no track, low,
+  arrow, isobar or wind vector anywhere.
+  Basemap: library/inhouse/master-map-us-canada.html (Natural Earth 50m admin-1, public domain), its three paths copied
+  verbatim into #ic3-base (ids renamed mastermap- to ic3-), restyled by CSS to the g-intro-2 §3 colours.
+  Projection: map x = 3841*(lon+97.576), map y = -5585*(lat-46.6213). Camera: screen = (map - frame top-left) * s.
+    D s 0.04024 tl (59078.1,18954.6)  E s 0.06 tl (74893.2,26537.8)  G s 0.25 tl (87599.4,30481.0)
+  Coast geometry: New Jersey = basemap subpath 47 (+ subpath 48, Long Beach Island) of the US path, vertices verbatim.
+  Ocean coast traced Sandy Hook (90561,34455) to Cape May (87008,42894); the Island Beach to Long Beach Island hop is one
+  straight segment between two basemap vertices (Barnegat Inlet), no invented points.
+  Host: data-start = I1-S1 audio start, data-duration 10.83 (10.427 + 0.40 gap). Cues = audio/i1-s1.words.json seconds.
+  Footage branch: host ends at 5.60 instead; nothing here changes.
+  HANDOFF CAVEAT: g-intro-2-hookmap was not on disk at build time; frame 0 is built to frame D from the brief tables
+  (pins, labels, colours, credit). Re-match against the hookmap's last frame once it exists.
+-->
+<template>
+<style>
+  #ic3-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .ic3-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* basemap restyle (g-intro-2 §3): states #0b1016, state lines #2a3644 1.2 px; Canada a step lighter */
+  #ic3-us { fill:#0b1016; stroke:#2a3644; stroke-width:1.2px; }
+  #ic3-ca { fill:#15202b; stroke:#2a3644; stroke-width:1.2px; }
+  #ic3-border { stroke:#2a3644; stroke-width:1.2px; stroke-dasharray:none; }
+  .ic3-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .ic3-scan { position:absolute; left:370px; top:0; width:1180px; height:2px; pointer-events:none; opacity:0.30;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,1), rgba(127,178,229,0)); }
+  .ic3-credit { position:absolute; left:110px; bottom:60px; font-size:19px; font-weight:700; color:#93a3b2; line-height:22px; white-space:nowrap; }
+  .ic3-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px; box-sizing:border-box; }
+  .ic3-chip { position:absolute; padding:10px 18px; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; color:#f2f5f8; }
+  /* SHORE FLOODED: 494 px of text at 52 (fontTools, ariblk.ttf) + 36 padding = box x 1000..1530, y 590..670 */
+  #ic3-chip1 { left:1000px; top:590px; font-size:52px; line-height:60px; }
+  /* DIKES BREACHED · LAGUARDIA: 702 px at 40 does not fit 600; 562 px at 32 (still mid tier) = box x 981..1579, y 620..678 */
+  #ic3-chip2 { left:981px; top:620px; font-size:32px; line-height:38px; }
+  #ic3-card { position:absolute; left:1000px; top:230px; width:560px; height:360px; overflow:hidden; }
+  #ic3-card svg { position:absolute; left:0; top:0; width:560px; height:360px; }
+  .ic3-schem { font-family:Arial, sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; fill:#93a3b2; }
+  /* start-hidden in CSS as well as in the timeline */
+  #ic3-tide, #ic3-band, #ic3-chip1, #ic3-chip2, #ic3-card, #ic3-leader, #ic3-lga, #ic3-lga-lab, #ic3-water, #ic3-lga-pulse { opacity:0; visibility:hidden; }
+</style>
+<div id="ic3-root" data-composition-id="g-intro-3-coast" data-width="1920" data-height="1080" data-duration="10.83">
+  <svg class="ic3-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <!-- New Jersey land: basemap US subpaths 47 and 48, verbatim -->
+      <clipPath id="ic3-njclip" clipPathUnits="userSpaceOnUse">
+        <path d="M86430,37072 L87733,36117 L86805,34713 L86584,34632 L86340,33947 L85988,33652 L86001,32826 L86043,32649 L86285,32500 L86424,32198 L86242,31401 L86593,31106 L87051,30528 L87435,29711 L87870,29399 L90901,31438 L90835,31874 L90457,32756 L89837,33361 L89685,33584 L89541,34028 L89628,34432 L90364,34579 L90561,34455 L90718,35146 L90447,36572 L90248,38163 L90307,37018 L90187,37114 L90104,37326 L89879,38507 L89570,39137 L89286,39572 L88992,39500 L89058,39846 L88908,40403 L88733,40652 L88569,40628 L88333,40800 L88239,40931 L88232,41183 L87504,42554 L87008,42894 L86890,42844 L87110,41753 L86522,41387 L86192,41404 L85827,40977 L85357,40667 L84701,39827 L84703,39204 L85094,38154 L85358,37931 L86124,37703 L86430,37072 Z M89593,39608 L89583,39446 L90145,38396 L90044,38763 L89593,39608 Z"/>
+      </clipPath>
+      <!-- band growth: a rect from Sandy Hook (y 34300) whose height grows to Cape May (y 43100) -->
+      <clipPath id="ic3-growclip" clipPathUnits="userSpaceOnUse">
+        <rect id="ic3-growrect" x="84000" y="34300" width="8000" height="0"/>
+      </clipPath>
+      <pattern id="ic3-hatch" patternUnits="userSpaceOnUse" width="140" height="140" patternTransform="rotate(45)">
+        <rect x="0" y="0" width="40" height="140" fill="#7fb2e5"/>
+      </pattern>
+    </defs>
+    <g id="ic3-cam" transform="translate(-2377.302,-762.733) scale(0.04024)">
+      <g id="ic3-base"><!--BASEMAP--></g>
+      <!-- shore flood band: 24 px stroke on the ocean coast, clipped to NJ land = 12 px on the land side. SCHEMATIC -->
+      <g id="ic3-band" clip-path="url(#ic3-njclip)">
+        <g clip-path="url(#ic3-growclip)">
+          <path id="ic3-band-fill" d="M90561,34455 L90718,35146 L90447,36572 L90248,38163 L90145,38396 L90044,38763 L89593,39608 L89286,39572 L88992,39500 L89058,39846 L88908,40403 L88733,40652 L88569,40628 L88333,40800 L88239,40931 L88232,41183 L87504,42554 L87008,42894" fill="none" stroke="#5a768f" stroke-opacity="0.55" stroke-width="24" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+          <path id="ic3-band-hatch" d="M90561,34455 L90718,35146 L90447,36572 L90248,38163 L90145,38396 L90044,38763 L89593,39608 L89286,39572 L88992,39500 L89058,39846 L88908,40403 L88733,40652 L88569,40628 L88333,40800 L88239,40931 L88232,41183 L87504,42554 L87008,42894" fill="none" stroke="url(#ic3-hatch)" stroke-opacity="0.35" stroke-width="24" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+        </g>
+      </g>
+      <!-- tide line: same ocean-coast vertices, 40 map units seaward (translate 28,28 = 40 along the SE normal). GSAP moves #ic3-tide only -->
+      <g id="ic3-tide">
+        <g transform="translate(28,28)">
+          <path id="ic3-tide-soft" d="M90561,34455 L90718,35146 L90447,36572 L90248,38163 L90145,38396 L90044,38763 L89593,39608 L89286,39572 L88992,39500 L89058,39846 L88908,40403 L88733,40652 L88569,40628 L88333,40800 L88239,40931 L88232,41183 L87504,42554 L87008,42894" fill="none" stroke="#7fb2e5" stroke-opacity="0.25" stroke-width="10" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+          <path id="ic3-tide-line" d="M90561,34455 L90718,35146 L90447,36572 L90248,38163 L90145,38396 L90044,38763 L89593,39608 L89286,39572 L88992,39500 L89058,39846 L88908,40403 L88733,40652 L88569,40628 L88333,40800 L88239,40931 L88232,41183 L87504,42554 L87008,42894" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+        </g>
+      </g>
+    </g>
+  </svg>
+  <!-- HUD: pins and labels at constant screen size; group positions written from the camera maths (static = frame D / G) -->
+  <svg class="ic3-svg" viewBox="0 0 1920 1080">
+    <path id="ic3-leader" d="M1000,540 L877,540" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="124" stroke-dashoffset="124"/>
+    <g id="ic3-pit" transform="translate(339.91,626.32)">
+      <circle id="ic3-pit-pulse" r="17" fill="none" stroke="#f2f5f8" stroke-width="3"/>
+      <circle r="17" fill="none" stroke="#f2f5f8" stroke-width="3"/>
+      <circle r="9" fill="#f2f5f8"/>
+      <text id="ic3-pit-lab" class="ic3-lab" x="33" y="9">PITTSBURGH</text>
+    </g>
+    <g id="ic3-nwk" transform="translate(1240.00,560.00)">
+      <circle id="ic3-nwk-pulse" r="17" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+      <circle r="17" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+      <circle r="9" fill="#7fb2e5"/>
+      <text id="ic3-nwk-lab" class="ic3-lab" x="-33" y="9" text-anchor="end">NEWARK</text>
+    </g>
+    <g id="ic3-lga" transform="translate(860.00,540.00)">
+      <circle id="ic3-lga-pulse" r="17" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+      <circle id="ic3-lga-ring" r="0" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+      <circle id="ic3-lga-core" r="0" fill="#7fb2e5"/>
+      <text id="ic3-lga-lab" class="ic3-lab" x="33" y="9">LAGUARDIA AIRPORT</text>
+    </g>
+  </svg>
+  <div class="ic3-scan" id="ic3-scan"></div>
+  <!-- runway inset, fallback only: everything inside is SCHEMATIC (no source gives the 1950 layout) -->
+  <div class="ic3-glass" id="ic3-card">
+    <svg viewBox="0 0 560 360">
+      <path d="M0,0 H560 V58 C470,74 400,52 300,66 C200,80 120,60 0,72 Z" fill="#5a768f" fill-opacity="0.6"/>
+      <path d="M0,72 C120,60 200,80 300,66 C400,52 470,74 560,58" fill="none" stroke="#7fb2e5" stroke-width="2"/>
+      <rect x="-200" y="-17" width="400" height="34" transform="translate(280,170) rotate(-45)" fill="#2a3644" stroke="#93a3b2" stroke-width="2"/>
+      <rect x="-150" y="-17" width="300" height="34" transform="translate(280,170) rotate(45)" fill="#2a3644" stroke="#93a3b2" stroke-width="2"/>
+      <path id="ic3-water" d="M0,72 C120,60 200,80 300,66 C400,52 470,74 560,58 V300 C460,290 380,312 280,302 C180,292 90,314 0,300 Z" fill="#5a768f" fill-opacity="0.6"/>
+      <text id="ic3-schem" class="ic3-schem" x="280" y="346" text-anchor="middle">SCHEMATIC, NOT TO SCALE</text>
+    </svg>
+  </div>
+  <div class="ic3-glass ic3-chip" id="ic3-chip1">SHORE FLOODED</div>
+  <div class="ic3-glass ic3-chip" id="ic3-chip2">DIKES BREACHED · LAGUARDIA</div>
+  <div class="ic3-credit" id="ic3-credit">Basemap: Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-intro-3-coast", P = "#ic3-";
+  const DUR = 10.83;
+  /* cues: audio/i1-s1.words.json (comp-local = segment seconds) */
+  const CUES = { on: 0.00, coast: 0.26, drove: 2.12, shore: 4.06, flooded: 4.36, inny: 5.22, broke: 6.64, dikes: 7.34, at: 7.60, ran: 8.88, runways: 10.16 };
+  /* camera frames [top-left x, top-left y, s] in map units, from the brief table */
+  const F = { D: [59078.1, 18954.6, 0.04024], E: [74893.2, 26537.8, 0.06], G: [87599.4, 30481.0, 0.25] };
+  const PINS = { nwk: [89893.2, 32871.1], pit: [67525.2, 34519.2], lga: [91039.4, 32641.0] };
+  const camEl = document.querySelector(P + "cam");
+  const pinEl = { nwk: document.querySelector(P + "nwk"), pit: document.querySelector(P + "pit"), lga: document.querySelector(P + "lga") };
+  /* log-space zoom (helpers.js logZoom idea): scale interpolates in log space; the screen-centre map point moves in step
+     with 1/s, so the push reads as one straight, even-speed zoom */
+  function frameAt(a, b, p) {
+    const s = Math.exp(Math.log(a[2]) + (Math.log(b[2]) - Math.log(a[2])) * p);
+    const w = (1 / a[2] - 1 / s) / (1 / a[2] - 1 / b[2]);
+    const cx = a[0] + 960 / a[2] + ((b[0] + 960 / b[2]) - (a[0] + 960 / a[2])) * w;
+    const cy = a[1] + 540 / a[2] + ((b[1] + 540 / b[2]) - (a[1] + 540 / a[2])) * w;
+    return [cx - 960 / s, cy - 540 / s, s];
+  }
+  function camAt(f) {
+    camEl.setAttribute("transform", "translate(" + (-f[0] * f[2]).toFixed(3) + "," + (-f[1] * f[2]).toFixed(3) + ") scale(" + f[2].toFixed(6) + ")");
+    for (const k in pinEl) pinEl[k].setAttribute("transform", "translate(" + ((PINS[k][0] - f[0]) * f[2]).toFixed(2) + "," + ((PINS[k][1] - f[1]) * f[2]).toFixed(2) + ")");
+  }
+  const tl = gsap.timeline({ paused: true });
+
+  /* start states (transforms only in tl.set at 0) */
+  tl.set([P + "tide", P + "band", P + "chip1", P + "chip2", P + "card", P + "leader", P + "lga", P + "lga-lab", P + "water", P + "lga-pulse"], { autoAlpha: 0 }, 0);
+  tl.set(P + "tide", { x: 416.7 }, 0);              /* 25 px at s 0.06, seaward (east) */
+  tl.set(P + "chip1", { y: 20 }, 0);
+  tl.set(P + "chip2", { y: 20 }, 0);
+  tl.set(P + "card", { x: 120 }, 0);
+  tl.set(P + "water", { scaleY: 0, svgOrigin: "280 60" }, 0);
+
+  /* ambient: scan line top to bottom over the whole comp (~92 px/s) */
+  tl.fromTo(P + "scan", { y: 40 }, { y: 1040, duration: DUR, ease: "none" }, 0);
+
+  /* ON @0.00: frame D held from the hook; pins pulse every 1.4 s */
+  tl.fromTo(P + "nwk-pulse", { attr: { r: 17 }, opacity: 0.8 }, { attr: { r: 35 }, opacity: 0, duration: 1.2, ease: "power1.out", repeat: 4, repeatDelay: 0.2 }, CUES.on);
+  tl.fromTo(P + "pit-pulse", { attr: { r: 17 }, opacity: 0.8 }, { attr: { r: 35 }, opacity: 0, duration: 1.2, ease: "power1.out" }, CUES.on);
+
+  /* COAST @0.26: push D to E (1.5x), Pittsburgh leaves frame west, so pin and label fade during it */
+  const pDE = { p: 0 };
+  tl.to(pDE, { p: 1, duration: 1.1, ease: "power2.inOut", onUpdate: function () { camAt(frameAt(F.D, F.E, pDE.p)); } }, CUES.coast);
+  tl.to(P + "pit", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, CUES.coast);
+
+  /* DROVE @2.12: tide line in 25 px seaward, pushes onto the coast by 3.20 */
+  tl.to(P + "tide", { autoAlpha: 1, duration: 0.35, ease: "power1.out" }, CUES.drove);
+  tl.to(P + "tide", { x: 0, duration: 1.08, ease: "power2.out" }, CUES.drove);
+  /* hold: soft stroke breathes so the coast never sits still */
+  tl.fromTo(P + "tide-soft", { attr: { "stroke-opacity": 0.25 } }, { attr: { "stroke-opacity": 0.45 }, duration: 0.5, ease: "sine.inOut", repeat: 3, yoyo: true }, 3.20);
+
+  /* SHORE @4.06: schematic flood band grows south, Sandy Hook to Cape May */
+  tl.to(P + "band", { autoAlpha: 1, duration: 0.2 }, CUES.shore);
+  tl.fromTo(P + "growrect", { attr: { height: 0 } }, { attr: { height: 8800 }, duration: 1.2, ease: "power2.inOut" }, CUES.shore);
+
+  /* FLOODED @4.36: chip in */
+  tl.fromTo(P + "chip1", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.4)" }, CUES.flooded);
+
+  /* IN NEW YORK @5.22: chip out; push E to G (4.2x, log zoom), settles 6.62. Newark label fades during the push;
+     the tide line, band and Newark pin go too, so the last frame holds only LaGuardia (g-intro-5 opens on it) */
+  tl.to(P + "chip1", { autoAlpha: 0, y: -12, duration: 0.35, ease: "power2.in" }, CUES.inny);
+  const pEG = { p: 0 };
+  tl.to(pEG, { p: 1, duration: 1.4, ease: "expo.inOut", onUpdate: function () { camAt(frameAt(F.E, F.G, pEG.p)); } }, CUES.inny);
+  tl.to(P + "nwk-lab", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, CUES.inny);
+  tl.to([P + "tide", P + "band"], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 5.50);
+  tl.to(P + "nwk", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 6.22);
+
+  /* BROKE @6.64: LaGuardia pin and label in, after the push settles at 6.62 */
+  tl.to(P + "lga", { autoAlpha: 1, duration: 0.15 }, CUES.broke);
+  tl.fromTo(P + "lga-core", { attr: { r: 0 } }, { attr: { r: 9 }, duration: 0.4, ease: "back.out(2.5)" }, CUES.broke);
+  tl.fromTo(P + "lga-ring", { attr: { r: 0 } }, { attr: { r: 17 }, duration: 0.45, ease: "back.out(2)" }, CUES.broke + 0.05);
+  tl.fromTo(P + "lga-lab", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, CUES.broke + 0.1);
+  tl.set(P + "lga-pulse", { autoAlpha: 1 }, 6.90);
+  tl.fromTo(P + "lga-pulse", { attr: { r: 17 }, opacity: 0.8 }, { attr: { r: 35 }, opacity: 0, duration: 1.2, ease: "power1.out", repeat: 2, repeatDelay: 0.2, immediateRender: false }, 6.90);
+
+  /* DIKES @7.34: the label steps aside (it sits where the card lands: x 893..1173 at y 540), card slides in, leader draws */
+  tl.to(P + "lga-lab", { autoAlpha: 0, duration: 0.25, ease: "power2.in" }, 7.20);
+  tl.fromTo(P + "card", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, CUES.dikes);
+  tl.to(P + "leader", { autoAlpha: 1, duration: 0.1 }, 7.50);
+  tl.fromTo(P + "leader", { strokeDashoffset: 124 }, { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 7.50);
+  /* AT @7.60: chip under the card */
+  tl.fromTo(P + "chip2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.4)" }, CUES.at);
+
+  /* RAN @8.88: water spreads from the shoreline down across the strips, to RUNWAYS @10.16 */
+  tl.to(P + "water", { autoAlpha: 1, duration: 0.2 }, CUES.ran);
+  tl.to(P + "water", { scaleY: 1, svgOrigin: "280 60", duration: 1.28, ease: "power2.inOut" }, CUES.ran);
+  /* RUNWAYS @10.16: 1.5 % drift of the water edge until the exit */
+  tl.to(P + "water", { scaleY: 1.015, svgOrigin: "280 60", duration: 0.35, ease: "sine.inOut", repeat: 1, yoyo: true }, CUES.runways);
+
+  /* exit anchored to the host's last 0.6 s: inset, leader and chip slide out; the label returns once the card has cleared */
+  tl.to(P + "leader", { autoAlpha: 0, duration: 0.25, ease: "power2.in" }, DUR - 0.6);
+  tl.to([P + "card", P + "chip2"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, DUR - 0.6);
+  tl.fromTo(P + "lga-lab", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.18, ease: "power1.out", immediateRender: false }, DUR - 0.21);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
