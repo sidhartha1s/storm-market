@@ -55,7 +55,7 @@ I do not look out the window. I do not wait to see what the neighbors do. That i
 - "Kill the energy first. Gas to pilot or off at the valve." (`P2-C1-water.md`, water heater) I do not know where mine is.
 - "Rank 1 Quake West, rank 3 Hurricane Coast, rank 9 Ice & Snow." (`P2-C1-water.md`) Ranks of what? No explanation.
 - "Protection 112" (`P0-front-matter.md`) is the out-of-area contact, but `P5-C1-warning-literacy.md` says it is the "leave-early trigger". Which is it?
-- "Torch", "nappies", "oil of the..." Many British words (torch, nappies, programme, mould). "Torch" confused me for a minute.
+- "Put a torch and a pair of sturdy shoes under every bed." (`P0-front-matter.md`) British words (torch, nappies, programme, mould) in an American book.
 - "The numeric criteria are set locally." (`P5-C1-warning-literacy.md`, Baltimore example) Not my county; I skipped the paragraph.
 - Every protection says "Materials, Regions, Rank", all in small bold print. Too dense for 20 minutes.
 
