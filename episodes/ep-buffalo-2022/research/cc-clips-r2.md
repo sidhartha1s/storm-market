@@ -6,7 +6,7 @@ Already accepted, not repeated here: Andre Carrotflower's "Snowy door ... 202212
 How each row was checked: Commons rows read from the file page's own wikitext through the Commons API (licence template, `{{own}}` source, author, date, description). DVIDS rows read from each image page (dvidshub.net/image/<id>): every one is headed "PUBLIC DOMAIN" with the line that it "must comply with the restrictions shown on https://www.dvidshub.net/about/copyright". Nothing downloaded.
 Caveats: (1) every DVIDS row is a "Courtesy Photo" with no named photographer; `research/response.md` section 7 already marks the DVIDS copyright-page terms UNCONFIRMED, so the same open item covers these. (2) CC BY-SA 4.0 rows need the on-screen plus description credit already used for the two accepted clips ("Andre Carrotflower / Wikimedia Commons / CC BY-SA 4.0"); a cropped or graded still is an adaptation and stays under CC BY-SA.
 
-Totals: 21 candidates (4 videos, 13 stills, 4 graphics): 11 CC BY-SA 4.0 (Commons), 6 DVIDS public domain, 4 NOAA/NWS public domain graphics. Rejected: 5 files plus one group.
+Totals: 21 candidates (4 videos, 13 stills, 4 graphics): 11 CC BY-SA 4.0 (Commons), 6 DVIDS public domain, 4 NOAA/NWS public domain graphics. Rejected: 4 files plus one group.
 
 ## Video (CC BY-SA 4.0, Andre Carrotflower, own work, Commons)
 | # | File page | Taken | Length | What it shows | Act / beat |
