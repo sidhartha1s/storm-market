@@ -1,0 +1,73 @@
+<template>
+<style>
+  #g-intro-2-cline1891-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  .g-intro-2-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  /* source line, top-left */
+  #g-intro-2-cline1891-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  /* lower-third: outer moves in x, inner drifts in y */
+  #g-intro-2-cline1891-lt { position:absolute; left:110px; bottom:110px; opacity:0; visibility:hidden; }
+  #g-intro-2-cline1891-ltin { display:table; padding:18px 28px; border-radius:28px; }
+  #g-intro-2-cline1891-name { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1.1; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #g-intro-2-cline1891-role { display:block; margin-top:6px; font-weight:700; font-size:27px; letter-spacing:1px; color:#f5d98b; opacity:0; visibility:hidden; }
+  /* chip: centred by xPercent set in tl.set */
+  #g-intro-2-cline1891-chip { position:absolute; left:50%; top:600px; opacity:0; visibility:hidden; }
+  #g-intro-2-cline1891-chipin { display:table; padding:22px 40px; border-radius:28px; text-align:left; }
+  #g-intro-2-cline1891-main { display:table; position:relative; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; letter-spacing:2px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  #g-intro-2-cline1891-rule { position:absolute; left:0; right:0; bottom:-14px; height:4px; background:#d0121f; transform-origin:left center; }
+  #g-intro-2-cline1891-tag { display:block; margin-top:34px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px; color:#d8a13a; white-space:nowrap; }
+</style>
+<div id="g-intro-2-cline1891-root" data-composition-id="g-intro-2-cline1891" data-width="1920" data-height="1080">
+  <div id="g-intro-2-cline1891-src" class="g-intro-2-glass">Galveston Daily News, July 16, 1891 &middot; text: Wikimedia Commons transcription</div>
+  <div id="g-intro-2-cline1891-lt">
+    <div id="g-intro-2-cline1891-ltin" class="g-intro-2-glass">
+      <span id="g-intro-2-cline1891-name">ISAAC CLINE</span>
+      <span id="g-intro-2-cline1891-role">Galveston Weather Office</span>
+    </div>
+  </div>
+  <div id="g-intro-2-cline1891-chip">
+    <div id="g-intro-2-cline1891-chipin" class="g-intro-2-glass">
+      <span id="g-intro-2-cline1891-main">ABSURD DELUSION<span id="g-intro-2-cline1891-rule"></span></span>
+      <span id="g-intro-2-cline1891-tag">Isaac Cline, 1891</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-intro-2-cline1891-";
+  /* TIMING: audio/h1-s2.words.json, comp-local = segment time (host starts at segment start, ends 6.63).
+     ISAAC @1.24 ; Klein(=Cline) @1.60 ; He @4.28 ; ABSURD @5.50 ; DELUSION @5.92 */
+  tl.set(P+"src", {autoAlpha:0}, 0);
+  tl.set(P+"lt", {autoAlpha:0, x:-60}, 0);
+  tl.set([P+"name", P+"role"], {autoAlpha:0}, 0);
+  tl.set(P+"chip", {autoAlpha:0, xPercent:-50, y:24, scale:0.94}, 0);
+  tl.set(P+"rule", {scaleX:0}, 0);
+
+  /* source line: in at 0, holds, drifts, fades with the chip */
+  tl.to(P+"src", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  tl.to(P+"src", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:1}, 0.4);
+  tl.to(P+"src", {y:0, duration:1.0, ease:"sine.inOut"}, 5.2);
+
+  /* ISAAC @1.24: card slides in, name rises; ROLE @1.60 (+0.36) */
+  tl.fromTo(P+"lt", {x:-60, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 1.24);
+  tl.fromTo(P+"name", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.24);
+  tl.fromTo(P+"role", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.60);
+  tl.to(P+"ltin", {y:-4, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:2}, 1.84);
+  /* HE @4.28: lower-third out before the chip */
+  tl.to(P+"lt", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 4.28);
+
+  /* ABSURD @5.50: chip in */
+  tl.to(P+"chip", {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 5.50);
+  /* DELUSION @5.92: red strike-under, the telegraph click (0.4 s so the exit can start at 6.10) */
+  tl.to(P+"rule", {scaleX:1, duration:0.4, ease:"power2.out"}, 5.92);
+  tl.to(P+"chipin", {y:-4, duration:0.6, ease:"sine.inOut", yoyo:true, repeat:1}, 5.50);
+  /* exit anchored to the segment end (6.63): hard cut to H1-S3 follows */
+  tl.to(P+"chip", {x:980, autoAlpha:0, duration:0.53, ease:"power3.in"}, 6.10);
+  tl.to(P+"src", {autoAlpha:0, duration:0.53, ease:"power2.in"}, 6.10);
+  window.__timelines["g-intro-2-cline1891"] = tl;
+})();
+</script>
+</template>
