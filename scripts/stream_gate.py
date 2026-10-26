@@ -4,7 +4,7 @@
 Camille's full render (25 Oct 26, 1205 s, RENDER_WORKERS=2) logged `streaming-encode gate {"enabled":false,
 "reason":"multi_worker"}` and asked for 75.0 GB of frame storage with 71.5 GB free. Moore at 2 workers streamed
 (`parallel_forced`): whether hyperframes takes the parallel streaming route depends on the composition, so the
-worker count alone does not tell. learnings/render.md (25 Oct 26): under 100 GB free, full renders run at 1 worker.
+worker count alone does not tell. The disk path came from the `--experimental-fast-capture=true` flag render.cmd passed until 26 Oct 26. learnings/render.md (25 Oct 26): under 100 GB free, full renders run at 1 worker.
 
   stream_gate.py launch <draft|full> <workers> <episode dir>   exit 1 = refuse before launch (render.cmd)
   stream_gate.py watch <render log> <done marker> <preflight log>  runs beside the render; kills it when the

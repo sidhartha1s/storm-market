@@ -2,6 +2,14 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 26 Oct 26: render.cmd no longer passes --experimental-fast-capture=true
+1. Measured on the ZBook, 90 s Joplin slice: with the flag, Windows falls back to screenshot capture, and above 1 worker
+   that turns streaming off (`enabled:false, multi_worker`), the slow disk path behind the 100 GB / 1-worker rule.
+   Without the flag, 2 workers went from 5.56 to 3.68 s per output second and streamed (`parallel_forced`).
+2. Removed from `scripts/render.cmd`, `scripts/pin_ritual.py` (RENDER_FLAGS mirrors it) and `config.yaml`. `--gpu`,
+   workers, crf and fps are unchanged. The 100 GB / 1-worker rule stays until a full render without the flag is measured.
+3. Item 3 of the entry below is history: no render asks for fast capture any more.
+
 ## 26 Oct 26: the ZBook encoded on Intel QSV, unseen, for six episodes
 1. Measured: the ZBook's NVIDIA driver 595.95 offers NVENC API 13.0; ffmpeg 8.1.2 needs 13.1 (driver 610+). Its bench log
    (`scratch/renderspeed/bench1/log_D_w4_ss_gpu.txt`) prints `[gpuEncoder] nvenc probe failed` and hyperframes 0.8.185
@@ -9,7 +17,7 @@ Newest first. New entries go at the top, under this line. Superseded lines point
 2. The probe failure prints only under `HYPERFRAMES_DEBUG_GPU_PROBE=1`, so ASUS logs carry no encoder line at all.
    The proof that does exist: ffmpeg writes the encoder into the mp4's video stream tag (`Lavc62.28.102 h264_nvenc`
    on Camille's and Moore's ASUS renders). The rule and the check: CLAUDE.md "A render runs on what it asked for".
-3. Every episode render asks `--experimental-fast-capture=true` and every one falls back to screenshot capture
+3. (Fixed the same day, entry above.) Every episode render asked `--experimental-fast-capture=true` and every one falls back to screenshot capture
    (Moore: mix-blend-mode; the bench: backdrop-filter). The check does not judge this one: it is hyperframes'
    own logged fallback and would fail every render. Open item in ops/tasks.md.
 
