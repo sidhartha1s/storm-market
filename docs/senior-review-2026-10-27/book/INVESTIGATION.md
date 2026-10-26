@@ -96,8 +96,7 @@ Cost bands are retail estimates, verify before print.
 | Item | Cost band | Who it would have saved or helped | Book lists it? |
 |---|---|---|---|
 | NOAA weather radio with SAME | $30-70 | All four; Earl's never programmed | Yes, P87 (setup steps beat 3 of 4) |
-| Note that weather radio may not carry local evacuation orders | $0 | Harold | No |
-| Landline / flip-phone alert route (county call list registration, reverse-911 landline sign-up) | $0 | Harold, Earl | No (0 hits "landline", "flip phone") |
+| Landline / flip-phone alert route, and "your radio may not carry evacuation orders" | $0 | Harold, Earl | No (0 hits "landline", "flip phone") |
 | Bed-shaker / strobe alarm paired to CO and smoke | $40-150 | Earl | Yes, P48 and P4-C1; missing from P47 |
 | Medical alert pendant with fall detection | $20-50/mo | Earl, Dorothy | No (0 hits) |
 | Whistle on the body, not in the bag | $2-5 | Bev, Earl (fall), Dorothy | Yes, go-bag P107, P3-01 After |
@@ -109,15 +108,11 @@ Cost bands are retail estimates, verify before print.
 | Insulin cooler + thermometer + frozen bottles | $25-60 | Dorothy | Yes, P60 |
 | Diabetic shelf (glucose tabs, measured-carb no-cook food) | $15-30 | Dorothy | No |
 | Phone battery bank | $20-40 | Earl (dead phone Day 4) | Yes, P117, P107 |
-| Paper map, routes marked | $0-10 | Harold | Yes, P106 |
 | Short-range radios (FRS) | $30-70 pair | Bev (reach neighbor shelter), Harold | Yes, P121 |
 | Adult helmets | $15-40 each | Bev, Ray | Yes, P25 |
 | Backup tornado shelter (neighbor in-ground, city registry) | $0 | Bev | No |
-| Rated sleeping bag / thermal layers | $40-150 | Earl | Yes, P28 |
-| Lightweight water (case of small bottles, wheeled cart) | $10-40 | Dorothy, Earl | No (book is gallons only) |
 | Medication card naming blood thinner | $0 | Earl | Partly (Form 2); anticoagulant risk not named |
 | Pet-friendly shelter name, written | $0 | Dorothy, Bev | Partly (P109) |
-| ID and photo card for person with dementia | $0-30 | Harold/Marge | Yes, P4-C1 |
 
 ---
 
@@ -229,12 +224,12 @@ Target: `P5-C1-warning-literacy.md`, inside "### 85 · Two independent alert pat
 Also add a one-line cross-reference in P47 body: "If anyone sleeps without hearing aids, buy a CO alarm with a bed-shaker or strobe (see 48)." Diagram D6 (radio buttons).
 
 ### R7. "Leave" thresholds for cold houses, and never fix the generator alone at night (0.5 page)
-Target: `P3-11-extreme-cold.md`, "## During", replacing "agree an indoor temperature in advance" with a number and a ride:
+Target: `P3-11-extreme-cold.md`, "## During", replace "agree an indoor temperature in advance" with:
 
-> Write a number on the fridge: if the room you are in drops below «CITE: CDC or WHO indoor minimum temperature for older adults» °F, you leave. Name who drives you at night. Call 211 or 311 to ask which warming centers take dogs. «CITE: Austin/Texas 211 warming-center pet policy, as an example»
+> If your room drops below «CITE: CDC/WHO indoor minimum for older adults» °F, you leave. Name who drives you at night. Call 211 to ask which warming centers take dogs.
 > If an old generator will not start in the cold, stop. Do not fix it in the dark or on ice. That is your signal to leave.
 
-Also `P2-C4-power.md` "### 40 · Fuel storage...": add "What this does not do: if you live alone and your generator has not started this year, it is not a plan."
+Also P40 "What this does not do": "If you live alone and your generator has not started this year, it is not a plan."
 
 ### R8. Buying ladder: first $50 / $150 / $500 (1 page)
 Target: `P0-front-matter.md`, after the new R2 page. Table by budget, each row name-first then protection number:
