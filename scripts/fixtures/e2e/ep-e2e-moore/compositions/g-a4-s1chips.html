@@ -1,0 +1,52 @@
+<template>
+<!-- g-a4-s1chips · ep-moore-1999 · A4-S1 overlay, track 4, host 661.699 for 9.25 s (to 670.95).
+     Under it: 661.699-666.70 cut-a4-s1.mp4 (KWTV, muted; the KWTV "9" sits bottom right, x 1570-1730, y >= 890: left clear),
+     666.70-670.95 SA p8 photo of Moore (sa-018-000.png, Curtis Carey, NOAA/NWS PA).
+     Cues local = abs - 661.699: "5" @661.90 -> 0.20; cut to photo 5.00; "three" @668.24 -> 6.54; "well-built" @669.52 -> 7.82. -->
+<style>
+  #g-a4-s1chips-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  .a4c-chip { position:absolute; left:110px; top:84px; display:flex; align-items:baseline; gap:22px; padding:12px 38px 14px 32px;
+    box-sizing:border-box; border-radius:28px; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .a4c-n { font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:92px; color:#e74c3c; white-space:nowrap; }
+  .a4c-l { font-weight:700; font-size:34px; line-height:40px; letter-spacing:5px; color:#f2f5f8; white-space:nowrap; }
+  .a4c-l2 { font-weight:700; font-size:30px; line-height:36px; letter-spacing:4px; color:#dfe7ee; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4c-src { position:absolute; left:110px; bottom:64px; padding:10px 24px 11px; border-radius:24px; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .a4c-srct { font-weight:700; font-size:20px; line-height:26px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-a4-s1chips-root" data-composition-id="g-a4-s1chips" data-width="1920" data-height="1080" data-duration="9.25">
+  <div class="a4c-chip" id="g-a4-s1chips-c1">
+    <span class="a4c-l" id="g-a4-s1chips-moore">MOORE ·</span>
+    <span class="a4c-n" id="g-a4-s1chips-n1">5</span>
+    <span class="a4c-l" id="g-a4-s1chips-lives">LIVES</span>
+  </div>
+  <div class="a4c-chip" id="g-a4-s1chips-c2">
+    <span class="a4c-n" id="g-a4-s1chips-n2">3 OF 5</span>
+    <span class="a4c-l2" id="g-a4-s1chips-l2">INSIDE WELL-BUILT BUILDINGS</span>
+  </div>
+  <div class="a4c-src" id="g-a4-s1chips-src"><span class="a4c-srct" id="g-a4-s1chips-srct">Moore Emergency Management, via NWS Norman overpass talk, slide 21</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a4-s1chips-";
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "c1", P + "c2", P + "l2", P + "src"], { autoAlpha: 0 }, 0);
+  /* "5" @0.20: MOORE · 5 LIVES */
+  tl.fromTo(P + "c1", { autoAlpha: 0, x: -140 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.20);
+  tl.fromTo(P + "n1", { scale: 1.6 }, { scale: 1, duration: 0.5, ease: "back.out(2)" }, 0.20);
+  tl.to(P + "c1", { y: 8, duration: 4.0, ease: "sine.inOut" }, 0.80);
+  tl.to(P + "c1", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 4.40);
+  /* photo 5.00, "three" @6.54: 3 OF 5, then the label and source on "well-built" @7.82 */
+  tl.fromTo(P + "c2", { autoAlpha: 0, x: -140 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 6.54);
+  tl.fromTo(P + "l2", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 7.00);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 7.00);
+  tl.to(P + "c2", { y: 6, duration: 1.6, ease: "sine.inOut" }, 7.20);
+  tl.to(P + "c2", { x: -980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 8.70);
+  tl.to(P + "src", { y: 80, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 8.70);
+  tl.to({}, { duration: 9.25 }, 0);
+  window.__timelines["g-a4-s1chips"] = tl;
+})();
+</script>
+</template>

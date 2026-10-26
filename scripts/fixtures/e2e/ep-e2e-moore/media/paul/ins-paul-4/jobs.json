@@ -1,0 +1,15 @@
+{
+ "aspect": "16:9",
+ "count": 1,
+ "credits_per_video": 15,
+ "budget": 15,
+ "jobs": [
+  {
+   "name": "moore-ins-paul-4",
+   "frame": "C:/Users/Sidhartha/Automation Projects/storm-market/.claude/worktrees/ep-moore-1999-e7be0e/assets/paul/paul-start-frame-omni-v2.png",
+   "line": "It worked that night. I wouldn't copy it. The people who came through best had already picked a safe spot, low and deep inside, and they went there early.",
+   "prompt": "This is an educational history documentary, filmed in a studio, looking back at the May 3, 1999 Oklahoma tornado outbreak and what people learned from it. The man in the start frame sits at his desk, exactly as shown, and speaks straight to the camera. ONE full-width 16:9 video, a single take, no variations; never a split image, a collage or panels. Medium shot, the camera does not move, the room stays as in the start frame. Calm, deep, measured voice, natural small hand movement. He says exactly these words and nothing else: \"It worked that night. I wouldn't copy it. The people who came through best had already picked a safe spot, low and deep inside, and they went there early.\" He stops speaking and holds his look at the camera. No music, no captions, no text on screen.",
+   "line_before_rephrase": "It worked that night. Please don't copy it. When a warning comes for your town, get below ground or into an interior room, and stay put."
+  }
+ ]
+}

@@ -2,15 +2,23 @@
 """End-to-end check of the pipeline tooling. Read-only: never renders, never calls TTS or any paid API.
 
 1. Every scripts/test_*.py self-check must exit 0 (each one proves a gate FAILs on a seeded defect).
-2. For each real episode given, the tooling must run end to end without crashing:
+2. For each episode (default: the pinned fixture FIXTURE), the tooling must run end to end:
    - tts_episode.parse_segments + word_budget's counter read the script (0 segments is fine only
      for a script word_budget can count another way),
-   - scripts/run_gates.py runs the whole pre-render suite and ends in a verdict.
-   An episode may legitimately FAIL a gate (a real defect); a crash, a traceback or a missing
-   verdict is a tooling bug and fails this suite.
+   - scripts/run_gates.py runs the whole pre-render suite, and EVERY gate runs and passes. run_gates
+     stops at the first FAIL, so a failing gate also leaves every later gate unrun: that is an e2e
+     FAIL, never a pass (skeptic finding 27, 26 Oct 26: 8 of 9 gates had never run in e2e).
+
+The fixture is Moore's shipped composition (ep-moore-1999) with every source shrunk to 256 px video,
+16 kHz wav and 64 kbps audio (one-shot transform declared in its PR, never committed), the CTA swapped to
+config's file and narration lowered 0.8 dB so config's CTA sits inside audio_levels' insert band. It
+passes every gate on main. A rule change that fails it means the fixture is brought to the new rule in
+the same PR, never that e2e skips the gate. A plain git checkout writes x.wav before x.words.json
+(index order), which sweep's "words.json older than its wav" check needs; a copy that drops
+timestamps or a parallel checkout can break that.
 
 Usage: python3 scripts/e2e.py [episodes/<slug> ...]
-Exit 0 = all green. Exit 1 = a self-check failed or a tool crashed (named in the output).
+Exit 0 = all green. Exit 1 = a self-check failed, a tool crashed, or a gate failed or did not run.
 """
 import re
 import subprocess
@@ -18,6 +26,7 @@ import sys
 from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
+FIXTURE = SCRIPTS / "fixtures" / "e2e" / "ep-e2e-moore"
 
 # run_gates' four Node gates exit 1 on an uncaught JS exception same as on a real gate FAIL.
 # These markers only ever appear in a Node crash dump (checked against every gate's own FAIL
@@ -32,6 +41,13 @@ GATE_NAMES = re.findall(r'^\s*\("([^"]+)",', (SCRIPTS / "run_gates.py").read_tex
 def is_tool_crash(out):
     """A crashed gate (Python traceback or uncaught Node exception), not a legitimate gate FAIL."""
     return "Traceback (most recent call last)" in out or any(m in out for m in NODE_CRASH_MARKERS)
+
+
+def gate_results(out):
+    """{gate: PASS | FAIL | NOT RUN} for every run_gates gate, read from run_gates' output."""
+    ran = set(re.findall(r'^=== (.+) ===$', out, re.M))
+    failed = set(re.findall(r'^RUN_GATES FAIL - (.+) exited', out, re.M))
+    return {g: "FAIL" if g in failed else "PASS" if g in ran else "NOT RUN" for g in GATE_NAMES}
 
 
 def run(cmd, timeout, cwd=None):
@@ -62,7 +78,7 @@ def main():
     sys.path.insert(0, str(SCRIPTS))
     from tts_episode import parse_segments  # noqa: E402
 
-    for arg in sys.argv[1:]:
+    for arg in sys.argv[1:] or [str(FIXTURE)]:
         ep = Path(arg).resolve()
         print(f"\n== {ep.name} ==")
         script = ep / "edit_script.md"
@@ -79,13 +95,17 @@ def main():
         code, out = run([sys.executable, str(SCRIPTS / "run_gates.py"), str(ep)], timeout=1800)
         verdict = next((l for l in out.splitlines() if l.startswith("RUN_GATES")), None)
         print(verdict or "(no RUN_GATES verdict line)")
-        if is_tool_crash(out) or verdict is None or code not in (0, 1):
+        crashed = is_tool_crash(out) or verdict is None or code not in (0, 1)
+        if crashed:
             bad.append(f"{ep.name}: run_gates crashed or gave no verdict (exit {code})")
+        results = gate_results(out)
+        for g, r in results.items():
+            print(f"{r} {g}")
+        not_passed = [g for g, r in results.items() if r != "PASS"]
+        if not_passed:
+            bad.append(f"{ep.name}: gates failed or not run: " + ", ".join(not_passed))
+        if crashed or not_passed:
             print(out[-2500:])
-        ran = set(re.findall(r'^=== (.+) ===$', out, re.M))
-        not_exercised = [g for g in GATE_NAMES if g not in ran]
-        if not_exercised:
-            print("not exercised: " + ", ".join(not_exercised))
 
     print()
     if bad:
