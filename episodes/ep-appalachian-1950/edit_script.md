@@ -23,6 +23,7 @@
 11. [src: 11] NWS Peachtree City https://www.weather.gov/ffc/thanksgiving_climatology
 
 ## HOOK
+Hook shape: belief-question (2026-10-26)
 
 ### H1-S1 — paul (on camera)
 > What do you picture when I say Thanksgiving weekend, nineteen fifty? Two feet of snow, right?
