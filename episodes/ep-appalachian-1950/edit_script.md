@@ -23,31 +23,32 @@
 11. [src: 11] NWS Peachtree City https://www.weather.gov/ffc/thanksgiving_climatology
 
 ## HOOK
-Hook shape: belief-question (2026-10-26)
+Hook shape: drop-in (2026-10-26)
+PROVISIONAL (26 Oct 26): orchestrator's default pick from `hook_options.md`, owner pick pending; if he picks another shape only the hook and intro are redone.
 
-### H1-S1 — paul (on camera)
-> What do you picture when I say Thanksgiving weekend, nineteen fifty? Two feet of snow, right?
+### H1-S1 — Paul on camera
+**Picture:** Paul full frame at 0:00; popfig "SAT, NOV 25, 1950 · NEWARK, NJ" inside the first second; chip "108 MPH" on "a hundred eight". Sound: music bed starts at 0:00 under Paul, a low library wind gust rising under his last words, no archive audio.
+> It's the Saturday of Thanksgiving weekend, you're in Newark, New Jersey, and the wind just gusted to a hundred eight miles an hour.
 
-Picture: Paul full frame, on camera. Date/place popfig inside the first second, "THANKSGIVING WEEKEND 1950 · APPALACHIANS". Chip "2 FEET OF SNOW" as he says it. [HOOK]
-Sound: bed starts at 0:00 under Paul, no archive audio. Soft swell on "snow".
-Loop: none (the belief he answers in his head)
-[src: 4] [src: 5] [src: 8]
+Rows: nws-facts.md §1 Newark 108 mph gust, 25 Nov 1950 (PHI, JKL). Wording "the Saturday of Thanksgiving weekend" per fact-check (no Thanksgiving date in research; Saturday = 25 Nov per §4 dated entries).
 
 ### H1-S2 — narration
-> But that Saturday, Newark, New Jersey, had its strongest gust on record, a hundred eight miles an hour. If you lived there, you had hurricane-force gusts at your door, while inland, snow and cold broke records. At least a hundred sixty people lost their lives.
+**Picture:** hard cut on "That's" to a self-made map, Newark pin in wind blue, chip "HURRICANE FORCE" [VE]. The map swings west and a Pittsburgh pin fills with snow white, chip "2+ FEET OF SNOW" [RS]. Sound: wind swell under "hurricane-force", bed thins to a hush on "snow".
+> That's a hurricane-force gust, and it's coming from a winter storm. Right now, that same storm is burying Pittsburgh in what will be more than two feet of snow.
 
-Picture: hard cut on "But" to a self-made locator map, Newark pin. Chip "108 MPH · NEWARK RECORD" [VE] [RS]. Map widens: Newark coast in wind blue, inland band in snow white, chips "RECORD SNOW" and "RECORD COLD". Toll on the on-screen source line on the last sentence: "at least 160 lives lost · NCEI". No track, no arrows. [HOOK]
-Sound: bed. Wind swell lands on "a hundred eight". Bed dips under the toll line.
-Loop: none (second break: the coast, by about 9 s; toll by about 20 s)
-[src: 2] [src: 1] [src: 5]
+Rows: nws-facts.md §1 Newark 108 mph; §4 NWS Peachtree City text calling the Northeast winds hurricane-force (FFC); §2 Pittsburgh 27.4 in storm total, 10.1 in falling on 25 Nov (PBZ).
 
 ### H1-S3 — narration
-> How do you get record snow inland and record wind on the coast from one storm at once?
+**Picture:** map pushes north of Pittsburgh; a Buffalo pin turns warm orange, chip "40s · NO SNOW" [VE] [RS]. Sound: bed; a short drop on "no snow at all".
+> And this same weekend, two hundred miles north of Pittsburgh, Buffalo is sitting in the forties with no snow at all.
 
-Picture: split screen. Left is the NWS Jackson snow map 1950SnowStorm.jpg, chip "RECORD SNOW". Right is the self-made Newark locator, chip "RECORD WIND". Both hold, nothing on screen hints at a cause. [HOOK]
-Sound: bed. A riser that ends on "at once".
-Loop: [loop L1 open] how one storm made record snow inland and record wind on the coast at once (paid in Act 3: "The low went northwest."; not hinted here)
-[src: 1] [src: 2]
+Rows: nws-facts.md §3 Pittsburgh single digits vs Buffalo in the 40s, two hundred miles north (JKL); §2 Buffalo "recorded no snow at all" (JKL).
+
+### H1-S4 — narration
+**Picture:** all three pins lit on the same map, nothing on screen hints at a cause. Toll on the on-screen source line: "at least 160 lives lost · NCEI". Sound: bed dips under the toll, riser ends on "one storm".
+> Before this storm is done, at least a hundred sixty people will lose their lives.
+
+Rows: nws-facts.md §5 toll at least 160 (JKL, NCEI); §4 "Both hazards same time" (25 Nov dated entries, PHI, ILN, PBZ). [loop L1 open] how one storm makes both at once.
 
 ## INTRO
 
