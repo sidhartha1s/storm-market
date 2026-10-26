@@ -7,11 +7,15 @@ about 1.3 GB) on the 16 GB ASUS beside each other: 60 snapshots, 0 on the ZBook,
 count, and the worker runs on the ZBook (CLAUDE.md "Heavy local jobs").
 
   submit episodes/<slug> --at <t1>,<t2>,... [--label <comp id>]   no browser; prints the job id and PNG dir
-  run [--host zbook]       the worker: drains the queue oldest first, one job at a time, then exits
+  run [--host zbook]       the worker: drains the queue oldest first, one snapshot run at a time, then exits
   status                   pending / done counts and the last results
 
 The spool is `.snapq/` in the MAIN checkout, so every worktree on this laptop feeds the same queue. PNGs land in
 `<episode>/.qc-tmp/snapq/<job>/`; `.snapq/done/<job>.json` holds the exit code and the PNG list.
+Batching: one snapshot run costs about 44 s before its first frame (node, bundling the whole episode with fonts, Chrome
+launch, page settle) and about 2 s per frame after (measured on the ZBook 26 Oct 26). So each run takes the oldest job
+and every other pending job for the same episode folder, captures the union of their times in one browser, and hands
+each job its own frames.
 With --host zbook the worker copies the files the timeline references (changed ones only) to
 `.snapq/mirror/<slug>/` in the ZBook's main checkout, snapshots there and copies the PNGs back.
 """
@@ -33,7 +37,9 @@ sys.path.insert(0, str(SCRIPTS))
 from render_preflight import parse_pin  # noqa: E402
 
 ZBOOK_REPO = r"C:\Users\Sidhartha\Automation Projects\storm-market"
-SNAP_TIMEOUT = 600   # a 3-frame snapshot takes about a minute; ten times that is a hung Chrome
+SNAP_TIMEOUT = 600   # fixed part: a run reaches its first frame in about 44 s; ten times that is a hung Chrome
+FRAME_TIMEOUT = 20   # added per frame: a frame takes about 2 s
+SETTLE = 3           # seconds a run waits before picking its batch, so a burst of submits shares one run
 ZBOOK_CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"  # Smart App Control blocks hyperframes' own shell (learnings/render.md 10 Oct 26, item 3)
 REF = re.compile(r"""(?:src|href)="([^"#?]+)"|url\(['"]?([^'")#?]+)""")
 
@@ -111,21 +117,25 @@ def ship(ep):
     return len(todo), len(now)
 
 
-def snap_local(job, pin):
+def limit(times):
+    return SNAP_TIMEOUT + FRAME_TIMEOUT * len(times)
+
+
+def snap_local(ep, times, pin, name, out):
     gate = subprocess.run([sys.executable, str(SCRIPTS / "render_busy.py")])
     if gate.returncode:
         return gate.returncode, "render_busy refused"
-    cmd = [shutil.which("npx") or "npx", "--yes", f"hyperframes@{pin}", "snapshot", job["ep"], "--at", ",".join(map(str, job["at"])),
-           "--no-end", "--describe", "false", "-o", job["out"]]
+    cmd = [shutil.which("npx") or "npx", "--yes", f"hyperframes@{pin}", "snapshot", str(ep), "--at", ",".join(map(str, times)),
+           "--no-end", "--describe", "false", "-o", str(out)]
     with tempfile.TemporaryFile("w+", encoding="utf-8", errors="replace") as log:   # a file, not a pipe: an orphan Chrome holding a pipe hangs the worker
         p = subprocess.Popen(cmd, stdout=log, stderr=subprocess.STDOUT, creationflags=subprocess.CREATE_NO_WINDOW)
         try:
-            rc = p.wait(timeout=SNAP_TIMEOUT)
+            rc = p.wait(timeout=limit(times))
         except subprocess.TimeoutExpired:
             subprocess.run(["taskkill", "/T", "/F", "/PID", str(p.pid)], capture_output=True)   # the whole tree: npx, node, Chrome
             p.wait()
             rc = 1
-            log.write(f" | killed after {SNAP_TIMEOUT} s")
+            log.write(f" | killed after {limit(times)} s")
         log.seek(0)
         return rc, log.read()[-400:]
 
@@ -139,25 +149,75 @@ def kill_remote():
     ssh(KILL_REMOTE, 120)
 
 
-def snap_zbook(job, pin, name):
-    ep = Path(job["ep"])
+def snap_zbook(ep, times, pin, name, out):
     sent, total = ship(ep)
     mirror = rf"{ZBOOK_REPO}\.snapq\mirror\{ep.name}"
     rout = rf"{ZBOOK_REPO}\.snapq\out\{name}"
     # `python`, not `python3`: on the ZBook python3 is the WindowsApps redirector that hung TTS jobs (22 Oct 26); python is Python312
     try:
         r = ssh(f'python "{ZBOOK_REPO}\\scripts\\render_busy.py" && set "HYPERFRAMES_BROWSER_PATH={ZBOOK_CHROME}" && '
-                f'npx --yes hyperframes@{pin} snapshot "{mirror}" --at {",".join(map(str, job["at"]))} --no-end --describe false -o "{rout}"',
-                SNAP_TIMEOUT)
+                f'npx --yes hyperframes@{pin} snapshot "{mirror}" --at {",".join(map(str, times))} --no-end --describe false -o "{rout}"',
+                limit(times))
     except subprocess.TimeoutExpired:
         kill_remote()
-        return 1, f"shipped {sent} of {total} files; killed after {SNAP_TIMEOUT} s"
+        return 1, f"shipped {sent} of {total} files; killed after {limit(times)} s"
     log = f"shipped {sent} of {total} files; " + (r.stdout + r.stderr)[-400:]
     if r.returncode:
         return r.returncode, log
-    Path(job["out"]).mkdir(parents=True, exist_ok=True)
-    g = subprocess.run(["scp", "-q", "-r", f"zbook:{rout}/*".replace("\\", "/"), job["out"]], capture_output=True, text=True, timeout=600)
+    g = subprocess.run(["scp", "-q", "-r", f"zbook:{rout}/*".replace("\\", "/"), str(out)], capture_output=True, text=True, timeout=600)
     return g.returncode, log + g.stderr[-200:]
+
+
+def load(p):
+    job = json.loads(p.read_text(encoding="utf-8"))
+    job["at"] = [float(t) for t in job["at"]]
+    str(job["ep"]), str(job["out"])   # a job missing a key fails here, alone
+    return job
+
+
+def frames(stage, times):
+    """hyperframes names frame i of an --at list `frame-<i, 2+ digits>-at-<t>s.png`: map each time to its file."""
+    by_index = {int(f.name.split("-")[1]): f for f in Path(stage).glob("frame-*-at-*.png")}
+    return {t: by_index[i] for i, t in enumerate(times) if i in by_index}
+
+
+def deliver(by_time, job):
+    """Copy this job's frames out of the batch, numbered as a run of its own would number them."""
+    out = Path(job["out"])
+    out.mkdir(parents=True, exist_ok=True)
+    pngs = []
+    for k, t in enumerate(job["at"]):
+        src = by_time.get(t)
+        if src:
+            dst = out / f"frame-{k:02d}-at-{src.name.split('-at-', 1)[1]}"
+            shutil.copy2(src, dst)
+            pngs.append(str(dst))
+    return pngs
+
+
+def finish(p, job, host, rc, log, t0, pngs):
+    (SPOOL / "done" / p.name).write_text(json.dumps({**job, "host": host, "rc": rc, "secs": round(time.time() - t0, 1),
+                                                      "pngs": pngs, "log": log}, indent=1), encoding="utf-8")
+    p.unlink()
+    print(f"[snapq] {p.stem}: rc {rc}, {len(pngs)} PNG(s), {time.time() - t0:.0f} s on {host}")
+
+
+def shoot(snap, ep, times, pin, name, batch, host, t0):
+    """One snapshot run for every job in the batch. Records the jobs (unless a multi-job batch failed) and returns rc, log."""
+    with tempfile.TemporaryDirectory() as stage:
+        try:
+            rc, log = snap(Path(ep), times, pin, name, stage)
+        except Exception as e:
+            rc, log = 1, f"{type(e).__name__}: {e}"
+        log = f"batch of {len(batch)} job(s), {len(times)} frame(s); {log}"
+        if rc and len(batch) > 1:
+            return rc, log
+        by_time = frames(stage, times) if rc == 0 else {}
+        for p, j in batch.items():
+            pngs = deliver(by_time, j)
+            miss = rc == 0 and len(pngs) < len(j["at"])
+            finish(p, j, host, 1 if miss else rc, log + (f" | exit 0 but {len(pngs)} of {len(j['at'])} PNG(s) written" if miss else ""), t0, pngs)
+    return rc, log
 
 
 def run(host):
@@ -175,21 +235,26 @@ def run(host):
             kill_remote()   # a worker that died mid-job leaves its Chrome behind
         except subprocess.TimeoutExpired:
             print("[snapq] ZBook did not answer the cleanup call in 120 s; jobs will report their own ssh errors")
-    while jobs := sorted((SPOOL / "pending").glob("*.json")):
-        p = jobs[0]
-        job, t0, pngs = {}, time.time(), []
-        try:   # any failure is this job's rc 1 in done/, never a dead worker with the bad job still first in line
-            job = json.loads(p.read_text(encoding="utf-8"))
-            rc, log = snap_zbook(job, pin, p.stem) if host == "zbook" else snap_local(job, pin)
-            pngs = sorted(str(f) for f in Path(job["out"]).glob("*.png")) if rc == 0 else []
-        except Exception as e:
-            rc, log = 1, f"{type(e).__name__}: {e}"
-        if rc == 0 and not pngs:
-            rc, log = 1, log + " | exit 0 but no PNG written"
-        (SPOOL / "done" / p.name).write_text(json.dumps({**job, "host": host, "rc": rc, "secs": round(time.time() - t0, 1),
-                                                          "pngs": pngs, "log": log}, indent=1), encoding="utf-8")
-        p.unlink()
-        print(f"[snapq] {p.stem}: rc {rc}, {len(pngs)} PNG(s), {time.time() - t0:.0f} s on {host}")
+    snap = snap_zbook if host == "zbook" else snap_local
+    while sorted((SPOOL / "pending").glob("*.json")):
+        time.sleep(SETTLE)
+        pending = sorted((SPOOL / "pending").glob("*.json"))
+        jobs, t0 = {}, time.time()
+        for p in pending:
+            try:
+                jobs[p] = load(p)
+            except Exception as e:   # a half-written or corrupt job is its own rc 1, never a dead worker
+                finish(p, {}, host, 1, f"{type(e).__name__}: {e}", t0, [])
+        if not jobs:
+            continue
+        ep = next(iter(jobs.values()))["ep"]   # the oldest job picks the episode; the batch is every pending job for that folder
+        batch = {p: j for p, j in jobs.items() if j["ep"] == ep}
+        times = sorted({t for j in batch.values() for t in j["at"]})
+        rc, log = shoot(snap, ep, times, pin, next(iter(batch)).stem, batch, host, t0)
+        if rc and len(batch) > 1:   # one builder's bad time must not sink the rest: each job alone, once
+            print(f"[snapq] [FALLBACK] batch of {len(batch)} failed (rc {rc}); running its jobs one at a time")
+            for p, j in batch.items():
+                shoot(snap, ep, j["at"], pin, p.stem, {p: j}, host, time.time())
     print("[snapq] queue empty")
 
 
