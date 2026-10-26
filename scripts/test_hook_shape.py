@@ -25,6 +25,8 @@ assert h.check(("drop-in", "2026-10-26"), others, menu) == ["hook shape `drop-in
 assert h.check(None, others, menu)[0].startswith("no `Hook shape")
 assert "not on the menu" in h.check(("riddle", "2026-10-26"), others, menu)[0]
 assert h.check(("pair", "2026-10-26"), {}, menu) == []
+# a hook dated before the others has no "last 2" among them (a later episode never blocks an earlier one)
+assert h.check(("drop-in", "2026-10-01"), others, menu) == []
 # equal dates: the slug breaks the tie, so "last 2" never depends on worktree order
 assert [s for s, _ in h.last_two({"x": ("pair", "2026-10-26"), "y": ("clock", "2026-10-26"), "z": ("flip", "2026-10-01")})] == ["y", "x"]
 

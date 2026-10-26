@@ -24,7 +24,7 @@ of the principle beside it. Never reuse its words or its sentence pattern in a s
 - **Never the shape of either of the last 2 episodes' hooks.** Record it in `edit_script.md` on its own line under
   the hook heading: `Hook shape: <tag> (<YYYY-MM-DD the hook was written>)`. `python3 scripts/hook_shape.py
   episodes/<slug>` reads the tag in every checkout (main and every worktree) and fails on a missing or unknown tag, or
-  on the shape of either of the 2 most recently dated other episodes.
+  on the shape of either of the 2 most recently dated other episodes up to this hook's date.
 - **Never open on a stranger's words**: no viewer comment, other video, like count or "people say" in the hook.
   Comments live inside acts as beliefs the record answers. A line from the record itself (a forecast, a newspaper,
   a log) is not a stranger's words; it is the `record` shape.

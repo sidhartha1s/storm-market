@@ -584,7 +584,7 @@ with tempfile.TemporaryDirectory() as d:
     stub_dir.mkdir()
     order_log = Path(d) / "order.log"
     names = ["render_preflight.py", "paul_start_frame.py", "sweep_episode.py", "lint_timeline.py", "narration_picture_check.py",
-             "flag_words.py", "homograph_scan.py", "beat_density.py", "media_budget.py", "audio_levels.py"]
+             "flag_words.py", "hook_shape.py", "homograph_scan.py", "beat_density.py", "media_budget.py", "audio_levels.py"]
     for i, name in enumerate(names):
         fail_here = (name == "lint_timeline.py")
         (stub_dir / name).write_text(
