@@ -273,4 +273,4 @@ Target: `P3-05-wildfire.md`, "## During", after the paragraph "A fire starts nea
 | D7 | Generator 20 feet | P2-C3 32 | Top-down house and yard: windows, doors, vents marked; 20-ft radius ring; generator outside ring, downwind; cord path; garage crossed out |
 | D8 | Who to call, in order | P0 new start page | Fridge card: my sentence, driver 1, driver 2, far contact, county registry, pharmacist; blank lines in large print |
 
-Illustrations: **I1** an older woman with a walker and a cat carrier waiting on a porch while a neighbor's car pulls up, morning light, calm, for R3. **I2** a single-wide home torn open after EF-1 winds beside an intact brick house, documentary style, no people, for R5.
+Illustrations: **I1** (R3) older woman with walker and cat carrier on a porch as a neighbor's car pulls up, calm morning light. **I2** (R5) single-wide torn open by EF-1 wind beside an intact brick house, documentary style, no people.
