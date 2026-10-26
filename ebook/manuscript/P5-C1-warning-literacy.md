@@ -89,7 +89,7 @@ charger in another room and a radio in a cupboard are both decorative. Placement
 · **Regions:** all five. **The single most-skipped free protection in this book.**
 
 Federal alerts cover broad hazards. The alerts that tell you *your* street is being evacuated, *your*
-water is unsafe, or *your* neighbourhood is under a shelter order come from your county or city
+water is unsafe, or *your* neighborhood is under a shelter order come from your county or city
 emergency management office, and they almost always require you to sign up.
 
 Almost nobody does. It takes a few minutes, it is free, and it is the alert most likely to be
