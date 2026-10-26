@@ -111,7 +111,7 @@
   ]
 }
 </script>
-<style>.rated{margin:18px 0 6px;font-size:18px;color:var(--soft)}.rated .stars{color:var(--tab5);letter-spacing:.12em}.stats{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-wrap:nowrap;gap:28px;overflow-x:auto;scrollbar-width:none}.stats li{flex:0 0 auto;text-align:left}.stats b{display:block;font-family:var(--display);font-weight:900;font-size:40px;line-height:1;color:var(--tab3);letter-spacing:-.02em}.stats span{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faded);margin-top:4px;white-space:nowrap}.row>*{min-width:0}@media (max-width:600px){.stats{display:block;font-size:18px;line-height:1.7;color:var(--soft)}.stats li{display:inline}.stats li:not(:last-child)::after{content:" · ";color:var(--faded)}.stats b{display:inline;font-size:22px;margin-right:4px;white-space:nowrap}.stats span{display:inline;font:inherit;letter-spacing:0;text-transform:none;margin:0}}</style>
+<style>.plain{margin:14px 0 0;max-width:46ch;font-size:19px;color:var(--ink)}.rated{margin:18px 0 6px;font-size:18px;color:var(--soft)}.rated .stars{color:var(--tab5);letter-spacing:.12em}.stats{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-wrap:nowrap;gap:28px;overflow-x:auto;scrollbar-width:none}.stats li{flex:0 0 auto;text-align:left}.stats b{display:block;font-family:var(--display);font-weight:900;font-size:40px;line-height:1;color:var(--tab3);letter-spacing:-.02em}.stats span{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faded);margin-top:4px;white-space:nowrap}.row>*{min-width:0}@media (max-width:600px){.stats{display:block;font-size:18px;line-height:1.7;color:var(--soft)}.stats li{display:inline}.stats li:not(:last-child)::after{content:" · ";color:var(--faded)}.stats b{display:inline;font-size:22px;margin-right:4px;white-space:nowrap}.stats span{display:inline;font:inherit;letter-spacing:0;text-transform:none;margin:0}}</style>
 <style>
 :root{
   --table:#7a5a3c; --table2:#5e4429;
@@ -333,6 +333,7 @@ footer a{color:#fff3df}
   footer{font-size:16px;padding-right:16px}.foot-links a{display:inline-block;padding:10px 0}
 }
 @media (max-width:400px){.band #live-n::after{content:""}}
+.pill{transition:opacity .25s}.pill.off{opacity:0;pointer-events:none;visibility:hidden}
 </style>
 </head>
 <body>
@@ -351,6 +352,7 @@ footer a{color:#fff3df}
             <h1>The storm doesn't warn twice.</h1>
             <p class="lead">A 486-page manual that turns the reports written after real storms into a Saturday's work for one American household. This binder is what it looks like on your kitchen table.</p>
             <p><a class="btn" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get the book, $9.99</a></p>
+            <p class="plain">You get a PDF file by email, about two minutes after you pay. Nothing comes in the mail. Read it on a phone, tablet or computer, or print the pages you need at home or the library.</p>
           </div>
           <figure style="margin:0">
             <img class="cover" src="assets/cover-hero.webp" width="420" height="560" alt="Cover of The Storm-Ready Home">
@@ -397,7 +399,7 @@ footer a{color:#fff3df}
             <div class="col-head"><span class="dot"></span>With the book</div>
             <ul>
               <li><span>The manual, 486 pages <em>($14.99)</em></span><b>included</b></li>
-              <li><span>The binder, 61 fillable forms <em>($19)</em></span><b>included</b></li>
+              <li><span>The binder, 41 fillable forms on 61 pages <em>($19)</em></span><b>included</b></li>
               <li><span>The 60-day sequence <em>($15)</em></span><b>included</b></li>
               <li><span>All 51 state packets <em>($19)</em></span><b>included</b></li>
               <li><span>Lifetime updates <em>($20)</em></span><b>included</b></li>
@@ -434,7 +436,9 @@ footer a{color:#fff3df}
 <section class="sheet" id="sheet-questions">
         <h2>Before you buy.</h2>
         <dl class="faq">
-          <div><dt>What do I get, and in what format?</dt><dd>One PDF of 486 pages, delivered to your inbox after payment, plus the printable binder and your state packets. No app, no DRM.</dd></div>
+          <div><dt>What do I get, and in what format?</dt><dd>One PDF computer file of 486 pages, sent to your email about two minutes after you pay, with the printable binder forms and your state packets. Nothing comes in the mail. It opens on any phone, tablet or computer with no app to install, and you can print any page.</dd></div>
+          <div><dt>Is it safe to pay?</dt><dd>Checkout runs on Gumroad, the store that delivers the file. You pay there by card, and this site never sees your card number. The receipt and the download link arrive by email.</dd></div>
+          <div><dt>Can I buy it for my mother or father?</dt><dd>Yes. Buy it with your own email, then print the pages they need or forward them the file.</dd></div>
           <div><dt>Isn't this free from FEMA?</dt><dd>Some of it, and the book cites those documents. What the federal guides lack: prices, build steps, fillable forms, a state directory.</dd></div>
           <div><dt>I rent. Is it useful?</dt><dd>Yes. Most of the highest-value items need no permission. Structural chapters are marked so you can skip them.</dd></div>
           <div><dt>Is this a prepper book?</dt><dd>No. No bunkers, no firearms, no politics. A family safety manual about weather and natural disasters.</dd></div>
@@ -445,7 +449,7 @@ footer a{color:#fff3df}
         <div class="order">
           <div>
             <h2>One book. Everything in it. Yours in two minutes.</h2>
-            <p class="lead">Instant PDF download. Pay once, own it forever.</p>
+            <p class="lead">Instant PDF download by email. Nothing is mailed. Pay once, own it forever.</p>
             <img src="assets/cover-mini.webp" width="260" height="347" alt="" style="max-width:220px;height:auto;box-shadow:0 20px 30px -14px rgba(0,0,0,.6);transform:rotate(-3deg)" loading="lazy">
           </div>
           <div class="form">
@@ -522,6 +526,12 @@ footer a{color:#fff3df}
   toast.querySelector('.x').addEventListener('click',()=>{localStorage.setItem(KEY,Date.now()+86400000);clearTimeout(hide);toast.classList.remove('on');});
   if(!dismissed())setTimeout(function loop(){show();setTimeout(loop,7500+Math.random()*2500);},5000);
   window.__showToast=show;
+})();
+
+(function(){
+  var p=document.querySelector('.pill'), b=document.querySelector('.sheet .btn');
+  if(!p||!b||!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(es){p.classList.toggle('off',es[0].isIntersecting);}).observe(b);
 })();
 </script>
 </body>

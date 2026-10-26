@@ -240,6 +240,7 @@ footer a{color:#fff3df}
   footer{font-size:16px;padding-right:16px}.foot-links a{display:inline-block;padding:10px 0}
 }
 @media (max-width:400px){.band #live-n::after{content:""}}
+.pill{transition:opacity .25s}.pill.off{opacity:0;pointer-events:none;visibility:hidden}
 </style>
 </head>
 <body>
@@ -267,7 +268,7 @@ footer a{color:#fff3df}
       <p class="kick">Contacts</p>
       <h2>Who to call, before and after</h2>
       <ul class="ruled">
-        <li><b>Emergency management</b><p><a href="https://www.in.gov/dhs/emergency-management-and-preparedness/">State emergency management agency</a> &middot; (317) 232-3986</p></li><li><b>Insurance regulator</b><p><a href="https://www.sircon.com/ComplianceExpress/Inquiry/consumerInquiry.do?nonSscrb=Y">Indiana Department of Insurance</a> &middot; (317) 232-2385</p></li><li><b>Energy bill assistance (LIHEAP)</b><p><a href="https://www.ihcda.in.gov">Energy bill assistance (LIHEAP)</a> &middot; 1-800-872-0371</p></li><li><b>Well water testing</b><p><a href="https://in.gov/idem/cleanwater/2452.htm">Indiana Department of Health Laboratories</a></p></li>
+        <li><b>Emergency management</b><p><a href="https://www.in.gov/dhs/emergency-management-and-preparedness/">State emergency management agency</a> &middot; (317) 232-3986</p></li><li><b>Insurance regulator</b><p><a href="https://www.sircon.com/ComplianceExpress/Inquiry/consumerInquiry.do?nonSscrb=Y">Indiana Department of Insurance</a> &middot; (317) 232-2385</p></li><li><b>Energy bill assistance (LIHEAP)</b><p><a href="https://www.ihcda.in.gov">Apply for help with heating and cooling bills</a> &middot; 1-800-872-0371</p></li><li><b>Well water testing</b><p><a href="https://in.gov/idem/cleanwater/2452.htm">Indiana Department of Health Laboratories</a></p></li>
       </ul>
     </section>
 <section class="sheet" id="sheet-hazards">
@@ -363,6 +364,12 @@ footer a{color:#fff3df}
   toast.querySelector('.x').addEventListener('click',()=>{localStorage.setItem(KEY,Date.now()+86400000);clearTimeout(hide);toast.classList.remove('on');});
   if(!dismissed())setTimeout(function loop(){show();setTimeout(loop,7500+Math.random()*2500);},5000);
   window.__showToast=show;
+})();
+
+(function(){
+  var p=document.querySelector('.pill'), b=document.querySelector('.sheet .btn');
+  if(!p||!b||!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(es){p.classList.toggle('off',es[0].isIntersecting);}).observe(b);
 })();
 </script>
 </body>
