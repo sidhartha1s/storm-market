@@ -266,7 +266,7 @@ All manuscript files. "torch" to "flashlight" (except P3-11 pipe-thawing: "blowt
 Target: `P4-C1-people.md`, "Cognitive impairment changes everything" bullet. Add: practice the car trip as a routine outing; keep a familiar coat and object in the car; say "we're going to see [son]," not "fire"; load them first, before the bags; if alone, ask the county registry to list the household as "two people needing help." «CITE: Alzheimer's Association disaster-preparedness guidance»
 
 ### R14. If you are trapped in the car in a wildfire (0.5 page)
-Target: `P3-05-wildfire.md`, "## During", after the paragraph "A fire starts nearby...". Instructions «CITE: CAL FIRE "Ready, Set, Go!" trapped-in-vehicle guidance» (windows up, vents closed, engine on, low in the car, cover with a wool blanket). Add for oxygen users: "Turn your oxygen off if flames are around the car." «CITE: same or NFPA oxygen-fire guidance»
+Target: `P3-05-wildfire.md`, "## During", after the paragraph "A fire starts nearby...". Instructions «CITE: CAL FIRE "Ready, Set, Go!" trapped-in-vehicle guidance» (windows up, vents closed, engine running, down low, wool blanket over you). Oxygen users: "Ask your supplier now what to do with your oxygen if flames surround the car." «CITE: NFPA/supplier oxygen-fire guidance»
 
 ---
 
