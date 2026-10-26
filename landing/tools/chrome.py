@@ -63,6 +63,17 @@ SRC_JS = """
 })();
 """
 JS = SRC_JS + JS
+# Senior buyer panel 2026-10-27: at 1366px and at 125% zoom the fixed pill sat on top of the hero's own buy
+# button and cover. The pill stays hidden while the page's first .btn is on screen; pages without one keep it.
+PILL_JS = """
+(function(){
+  var p=document.querySelector('.pill'), b=document.querySelector('.sheet .btn');
+  if(!p||!b||!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(es){p.classList.toggle('off',es[0].isIntersecting);}).observe(b);
+})();
+"""
+JS = JS + PILL_JS
+CSS = CSS + ".pill{transition:opacity .25s}.pill.off{opacity:0;pointer-events:none;visibility:hidden}\n"
 BAND = '<div class="band" role="status"><span><span class="dot"></span><b id="live-n">22</b> <span class="lbl">viewing now</span></span><span class="sep">·</span><span><span class="lbl">Launch price ends in </span><b id="countdown">--:--:--</b></span><a class="go" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get my copy, $9.99</a></div>\n'
 BRAND = '<div class="brand"><b>The Storm-Ready Home</b><span>Paul Raymond · First edition</span></div>\n'
 PILL = '<div class="pill"><span>The Storm-Ready Home · $9.99</span><a class="btn" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get the book</a></div>\n'
