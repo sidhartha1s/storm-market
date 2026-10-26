@@ -257,7 +257,7 @@ Target: `P5-C1`, "### 95 · The trigger plan", add two examples to the quoted li
 > When the house drops below our number — I call my driver, or 911 if nobody answers.
 
 ### R11. Dosa study framing (2 sentences)
-Target: `P4-C1-people.md`, after "Which means the calculation is real in both directions": "This study is about nursing-home residents moved in groups. If you live in your own home in a surge zone or fire zone, leave early. The danger of staying is the larger one."
+Target: `P4-C1-people.md`, after "Which means the calculation is real in both directions": "This study is about nursing-home residents moved in groups. If you live in your own home in a surge zone or fire zone, leave early." Any claim that staying is the larger danger needs «CITE: age profile of drowning deaths, e.g. Florida medical examiner data for Ian».
 
 ### R12. US English and "torch" sweep (0 pages)
 All manuscript files. "torch" to "flashlight" (except P3-11 pipe-thawing: "blowtorch").
