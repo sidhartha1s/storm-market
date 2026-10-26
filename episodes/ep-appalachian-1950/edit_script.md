@@ -1,4 +1,5 @@
 # ep-appalachian-1950: The Great Appalachian Storm, 24 to 26 November 1950
+Opening (26 Oct 26, batch A): hook (PROVISIONAL, shape drop-in) and intro rewritten over 2 rounds; fact-check factcheck/intro-r1..r2.md, 0 open [verify]; fresh Opus grade 7 then 8 (grades/intro-r2.md): meets the bar. Lock waits only on the owner's approval of the hook. Voiced provisionally. Opening loops now: L1 H1-S5 to Act 3; L2 (how far south the cold reached) I1-S2 to I1-S3; L4 I1-S4 to Act 1; old L3/L5 retired.
 
 ## Spec
 - slug: ep-appalachian-1950
@@ -27,62 +28,60 @@ Hook shape: drop-in (2026-10-26)
 PROVISIONAL (26 Oct 26): orchestrator's default pick from `hook_options.md`, owner pick pending; if he picks another shape only the hook and intro are redone.
 
 ### H1-S1 — Paul on camera
-**Picture:** Paul full frame at 0:00; popfig "SAT, NOV 25, 1950 · NEWARK, NJ" inside the first second; chip "108 MPH" on "a hundred eight". Sound: music bed starts at 0:00 under Paul, a low library wind gust rising under his last words, no archive audio.
-> It's the Saturday of Thanksgiving weekend, you're in Newark, New Jersey, and the wind just gusted to a hundred eight miles an hour.
+**Picture:** Paul full frame at 0:00; popfig "SAT, NOV 25, 1950 · NEWARK, NJ" inside the first second; chip "108 MPH" on "a hundred eight"; chip "WINTER STORM" on "winter storm". [HOOK] [VE]. Sound: music bed starts at 0:00 under Paul, a low library wind gust rising under "a hundred eight", no archive audio.
+> You're in Newark, New Jersey, the wind just gusted to a hundred eight miles an hour, and it's coming from a winter storm.
 
-Rows: nws-facts.md §1 Newark 108 mph gust, 25 Nov 1950 (PHI, JKL). Wording "the Saturday of Thanksgiving weekend" per fact-check (no Thanksgiving date in research; Saturday = 25 Nov per §4 dated entries).
+Rows: nws-facts.md §1 Newark 108 mph gust, 25 Nov 1950 (PHI, JKL); §2 RLX "worst winter storm on record to affect the Ohio Valley" (the storm named a winter storm). Date on the popfig only (Saturday = 25 Nov per §4 dated entries). Contradiction (winter storm, hurricane-strength gust) lands at about word 22, near 0:07.
 
 ### H1-S2 — narration
 **Picture:** hard cut on "That's" to a self-made map, Newark pin in wind blue, chip "HURRICANE FORCE" [VE]. The map swings west and a Pittsburgh pin fills with snow white, chip "2+ FEET OF SNOW" [RS]. Sound: wind swell under "hurricane-force", bed thins to a hush on "snow".
-> That's a hurricane-force gust, and it's coming from a winter storm. Right now, that same storm is burying Pittsburgh in what will be more than two feet of snow.
+> That's a hurricane-force gust. Inland, that storm is burying Pittsburgh under what will be more than two feet of snow.
 
-Rows: nws-facts.md §1 Newark 108 mph; §4 NWS Peachtree City text calling the Northeast winds hurricane-force (FFC); §2 Pittsburgh 27.4 in storm total, 10.1 in falling on 25 Nov (PBZ).
+Rows: nws-facts.md §4 FFC text calling the Northeast winds hurricane-force; §2 Pittsburgh 27.4 in storm total, rank 1 (PBZ). Wording "what will be more than two feet" kept from the checked round.
 
 ### H1-S3 — narration
-**Picture:** map pushes north of Pittsburgh; a Buffalo pin turns warm orange, chip "40s · NO SNOW" [VE] [RS]. Sound: bed; a short drop on "no snow at all".
-> And this same weekend, two hundred miles north of Pittsburgh, Buffalo is sitting in the forties with no snow at all.
+**Picture:** the map holds both pins; on-screen source line "at least 160 lives lost · NCEI, NWS Jackson". [VE] [RS]. Sound: bed dips under the toll.
+> Before it's done, at least a hundred sixty people will lose their lives.
 
-Rows: nws-facts.md §3 Pittsburgh single digits vs Buffalo in the 40s, two hundred miles north (JKL); §2 Buffalo "recorded no snow at all" (JKL).
+Rows: nws-facts.md §5 toll at least 160 (JKL, NCEI). Toll starts at about word 44, near 0:14.
 
 ### H1-S4 — narration
-**Picture:** all three pins lit on the same map, nothing on screen hints at a cause. Toll on the on-screen source line: "at least 160 lives lost · NCEI". Sound: bed dips under the toll, riser ends on "one storm".
-> Before this storm is done, at least a hundred sixty people will lose their lives.
+**Picture:** map pushes north of Pittsburgh; a Buffalo pin appears, chip "200 MI NORTH" [VE]; on "forties" the pin turns warm orange, chip "40s · NO SNOW", and Pittsburgh's chip flips to "SINGLE DIGITS" [RS]. Sound: bed; a short drop on "no snow at all".
+> You'd figure Buffalo, about two hundred miles north of Pittsburgh, is getting it even worse. Buffalo is sitting in the forties with no snow at all, while Pittsburgh is down in the single digits.
 
-Rows: nws-facts.md §5 toll at least 160 (JKL, NCEI); §4 "Both hazards same time" (25 Nov dated entries, PHI, ILN, PBZ). [loop L1 open] how one storm makes both at once.
+Rows: nws-facts.md §3 "only 200 miles to the north, Buffalo, NY enjoyed temps in the 40s" and Pittsburgh single digits (JKL); §2 Buffalo "recorded no snow at all" (JKL). Belief (north is colder and snowier) is handed over first, then broken.
+
+### H1-S5 — narration
+**Picture:** back to the Newark locator, wind-blue pin on the coast, the Pittsburgh pin small and white at the map's west edge; nothing on screen joins them or hints at a cause. [VE] [loop L1 open] how one storm brings hurricane wind to the coast and deep snow inland at once. Sound: riser that ends on "see how", then the cut to the intro.
+> It's one storm bringing hurricane wind and deep snow on the same Saturday, and from where you're standing in Newark, there's no way to see how.
+
+Rows: nws-facts.md §4 "Both hazards same time" (25 Nov dated entries: PHI Newark 108 mph, ILN Columbus snow, PBZ Pittsburgh snow); §4 FFC "hurricane-force winds ... and blizzard conditions across much of the Appalachians". Gap voiced, cause never hinted.
 
 ## INTRO
 
 ### I1-S1 — narration
-> I read the weather service reports from that weekend. At LaGuardia, the water broke through the dikes and ran out onto the runways. If you lived on the water in New Jersey, the wind drove the tide in until the shore flooded.
+**Picture:** stays in the hook's scene: the self-made Newark locator, a tide line pushing in along the New Jersey shore, chip "SHORE FLOODED" [VE]. The map slides east to a LaGuardia pin; LaGuardia footage SOURCE TBD (fallback: self-made locator, flood fill spreading across the runways), chip "DIKES BREACHED · LAGUARDIA" [VE] [RS] [PAY]. [loop L1 still open]. Sound: bed; low water and wind ambience (library, not archive) under the shore line.
+> On the coast side of the storm, that wind drove the tide in until the New Jersey shore flooded. In New York, the water broke through the dikes at LaGuardia Airport and ran out onto the runways.
 
-Picture: LaGuardia footage SOURCE TBD (fallback: self-made locator map with a LaGuardia pin and a flood fill on the runways). Chip "DIKES BREACHED · LAGUARDIA" [VE] [RS]. Then a self-made New Jersey shore map with the tide line pushing inland, chip "SHORE FLOODED".
-Sound: bed. Low water and wind ambience under the shore line (library, not archive).
-Loop: L1 still open
-[src: 1] [src: 5]
+Rows: nws-facts.md §1 NCEI "onshore winds along the coast caused extreme high tides and flooding in New Jersey and Connecticut"; §1 JKL "breached dikes at LaGuardia Airport in New York flooding runways". Wording kept from the checked I1-S2 (factcheck rows 4, 5). Tide said once, past tense through the whole intro.
 
 ### I1-S2 — narration
-> Inland, it was snow. Pittsburgh got more than two feet, its biggest snowstorm on record. Now, Buffalo sits north of Pittsburgh, so you'd figure it was colder and got buried even deeper.
+**Picture:** self-made map swings west to the Pittsburgh pin under falling snow; the NWS Pittsburgh snow records sheet slides in, top row highlighted, chip "27.4 IN · BIGGEST ON RECORD" [VE] [RS] [PAY]. Then the map tilts south past the Ohio River, a cold-blue edge sliding down toward Kentucky with no pin named. [loop L2 open] how far south the cold reached. Sound: small swell on "biggest snowstorm on record", bed thins on "a long way south".
+> On the inland side, Pittsburgh's snow went down as the city's biggest snowstorm on record. The cold that came with it reached a long way south.
 
-Picture: NWS Pittsburgh snow records sheet, the top row highlighted, chip "27.4 IN · PITTSBURGH RECORD" [VE]. Self-made map: Pittsburgh pin, then a Buffalo pin to its north, chip "NORTH OF PITTSBURGH".
-Sound: bed. Small swell on "biggest snowstorm on record".
-Loop: [loop L2 open] did Buffalo, to the north, get even more snow
-[src: 4]
+Rows: nws-facts.md §2 PBZ rank 1, 27.4 in, 24 to 26 Nov 1950 (factcheck rows 9, 11: rank 1 on the current list); §3 NCEI cold reaching FL, AL, GA, NC, and JKL Kentucky record lows (the "long way south" tease).
 
 ### I1-S3 — narration
-> It was the other way around. Down in Kentucky, Bowling Green fell to seven below zero, a November record that still stands. Up north, Buffalo sat in the forties with no snow at all, while Pittsburgh sat in the single digits.
+**Picture:** a Bowling Green, Kentucky pin turns deep blue, chip "-7°F" [VE]; the NWS Louisville November records table for Bowling Green slides in, the all-November low row highlighted "-7 · 1950", chip "STILL THE NOVEMBER RECORD" [RS] [PAY] [loop L2 closes] [HUMAN]. Sound: hit on "seven below zero".
+> The number I didn't expect was down in Kentucky. Bowling Green fell to seven below zero that weekend, and when I checked the city's November records, it's still the coldest reading on the list.
 
-Picture: same self-made map. Bowling Green pin turns deep blue, chip "-7°F · STILL THE RECORD" [VE] [RS]. Buffalo pin turns warm, chip "40s · NO SNOW", and Pittsburgh's chip reads "SINGLE DIGITS".
-Sound: bed. Hit on "seven below zero". A short drop of the bed on "no snow at all".
-Loop: [loop L2 closes] Buffalo in the forties with no snow
-[src: 1]
+Rows: nws-facts.md §3 Bowling Green -7F record low for the month (JKL); factcheck\intro-r1.md row 19 and New evidence: LMK November_Records_Bowling_Green.pdf, all-November row "-7, 1950", table carries 2025 entries (current). First-person line earns its place with the finding (the record still holds in today's table).
 
 ### I1-S4 — narration
+**Picture:** back to the Newark locator, the "108 MPH" chip dims. A question-mark marker pulses on an unnamed point off the map's edge (no place name, no number). [VE] [loop L4 open] which gust beat Newark's, carried into Act 1. Sound: a riser that ends on "strongest one", then the chapter blackout.
 > And Newark's gust wasn't the strongest one.
 
-Picture: back to the Newark locator, the "108 MPH" chip dims. A question-mark marker pulses on an unnamed point off the map's edge (no place name, no number). [VE]
-Sound: bed. A riser that ends on "strongest one", then the chapter blackout.
-Loop: [loop L4 open] which gust beat Newark's (carried into Act 1, paid in Act 1)
-[src: 1]
+Rows: nws-facts.md §1 Bear Mountain 140 mph (JKL), Mount Washington 160 mph (JKL, NCEI); paid in Act 1.
 
 ## ACT OUTLINE
 
