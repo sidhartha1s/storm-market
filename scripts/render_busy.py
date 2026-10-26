@@ -24,9 +24,7 @@ queueing behind a 15-minute draft (owner 17 Sep 26). The full browser gates stay
 Exit 0 = clear. Exit 3 = a render is running, or (with --launch) not even 1 worker fits.
 RENDER_BUSY_OK=1 overrides, for the case where the render itself is the thing being tested.
 
-The heavy lock (owner 26 Oct 26, "One booking sheet for the ZBook"): one heavy job per machine at a time.
-2 of 4 helpers lost their results that day to clashes (a test render blocked e2e, a render killed a 26-min
-queue test, a queue start ran into another render). render.cmd, TTS (tts_episode.py, tts_clone.py), the face
+The heavy lock (owner 26 Oct 26; why: learnings/render.md): one heavy job per machine at a time. render.cmd, TTS (tts_episode.py, tts_clone.py), the face
 pass (circle_face.py) and e2e.py book ~/.storm-heavy.lock before they start and wait their turn. A job started
 from the ASUS over ssh runs as the same user on the ZBook, so it books the same file. The file records holder,
 job, machine, pid and start time. A holder whose pid is gone (or reused by a newer process) is dead and its
@@ -112,7 +110,7 @@ def free_gb():
     return m.ullAvailPhys / 2**30
 
 
-POLL_S = 10  # seconds between looks at a held lock
+POLL_S = 5  # seconds between looks at a held lock
 _k32 = ctypes.WinDLL("kernel32", use_last_error=True)
 _k32.OpenProcess.restype = ctypes.c_void_p  # a HANDLE, not the default 32-bit int
 
@@ -208,17 +206,16 @@ def take(job, pid):
 @contextmanager
 def heavy_lock(job):
     """Hold this machine's heavy lock for the current process while the block runs; its children pass through."""
-    rec = take(job, os.getpid())
-    if rec is None:
-        yield
-        return
-    os.environ["HEAVY_LOCK_TOKEN"] = rec["token"]
+    rec = take(job, os.getpid())  # None: a child of the holder, which owns neither the lock nor the token
+    if rec:
+        os.environ["HEAVY_LOCK_TOKEN"] = rec["token"]
     try:
         yield
     finally:
-        os.environ.pop("HEAVY_LOCK_TOKEN", None)
-        if (read_lock(lock_path()) or {}).get("token") == rec["token"]:
-            lock_path().unlink()
+        if rec:
+            os.environ.pop("HEAVY_LOCK_TOKEN", None)
+            if (read_lock(lock_path()) or {}).get("token") == rec["token"]:
+                lock_path().unlink()
 
 
 def wait_free():
