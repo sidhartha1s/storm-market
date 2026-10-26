@@ -181,17 +181,17 @@ Target: `P5-C3-evacuation.md`, new block after "### 111 · Where you are going, 
 > **Prevents:** being left behind because your only ride waited.
 > **Cost:** $0 · **Time:** two afternoons · **Materials:** phone, this page · **Regions:** all five.
 >
-> If you do not drive, your trigger is the trigger of the person who drives you. So they must agree to it, out loud, and sign the sheet. If they want to "wait for the order," you need a second driver.
+> If you do not drive, your trigger is your driver's trigger. They must agree to it out loud. If they want to "wait for the order," you need a different driver.
 >
-> Name **two drivers**. Ask both: "If a hurricane watch is issued for our county, will you take me that day?" Write their numbers on the fridge.
+> Name **two drivers**. Ask both: "If a hurricane watch is issued for our county, will you take me that day?" Numbers on the fridge.
 >
-> Call your county emergency office and ask four questions, and write the answers down: Am I on your list? When do you send transport (it is usually only after an order)? Where does it take me? Can my pet and my walker come?
+> Ask your county emergency office four questions and write the answers: Am I on your list? When does transport come (usually only after an order)? Where to? Can my pet and walker come?
 >
-> Time yourself. From "go" to sitting in the car with your bag, medicine and pet. Write the number down. If it is more than ten minutes, your trigger moves earlier.
+> Time yourself from "go" to seated in the car with bag, medicine and pet. Over ten minutes, your trigger moves earlier.
 >
-> Pack a bag you can carry or roll. If you cannot carry three days of water, carry one day and a list. Shelters have water.
+> Pack a bag you can carry or roll. If three days of water is too heavy, carry one day.
 >
-> **What this does not do:** a registry is not a ride on your schedule. In a fast event, county transport may come late or not at all. Your drivers are your plan; the registry is the backup.
+> **What this does not do:** a registry is not a ride on your schedule. Your drivers are the plan; the registry is the backup.
 
 Diagram D3 (timeline strip).
 
