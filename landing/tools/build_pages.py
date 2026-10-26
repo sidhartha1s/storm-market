@@ -755,7 +755,7 @@ def split_sections(content, simple, tab1_label_override=None):
 
 
 GET_BOOK_LEAD = (
-    "The Storm-Ready Home is a 517-page manual built from post-storm reports: "
+    f"The Storm-Ready Home is a {chrome.BOOK_PAGES}-page manual built from post-storm reports: "
     "130 numbered protections, 23 hazard playbooks, the 60-day sequence, and "
     "the 61-page printable binder, every figure cited."
 )

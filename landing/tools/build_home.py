@@ -23,7 +23,7 @@ body = body.replace("../assets/", "assets/")
 # owner edit: stat strip under the hero button, ONE row
 STATS = ('<p class="rated"><span class="stars">★★★★★</span> Rated five stars by early readers. '
          'Built from National Weather Service &amp; FEMA post-storm reports.</p>\n'
-         '<ul class="stats"><li><b>517</b><span>pages</span></li><li><b>130</b><span>protections</span></li>'
+         f'<ul class="stats"><li><b>{chrome.BOOK_PAGES}</b><span>pages</span></li><li><b>130</b><span>protections</span></li>'
          '<li><b>23</b><span>hazards</span></li><li><b>60</b><span>day sequence</span></li>'
          '<li><b>7-day</b><span>refund, no questions</span></li></ul>')
 # place it AFTER the hero .row (full width) so the nowrap row never squeezes the cover column
@@ -36,10 +36,10 @@ assert 'class="stats"' in body
 # what arrives, whether anything is mailed, or whether paying is safe; say it in plain words where they look
 PLAIN = ('<p class="plain">You get a PDF file by email, about two minutes after you pay. Nothing comes in the mail. '
          'Read it on a phone, tablet or computer, or print the pages you need at home or the library.</p>')
-hero_btn = '<p><a class="btn" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get the book, $9.99</a></p>'
+hero_btn = f'<p><a class="btn" href="{chrome.BUY}">Get the book, $9.99</a></p>'
 assert body.count(hero_btn) == 1
 body = body.replace(hero_btn, hero_btn + '\n            ' + PLAIN)
-FAQ_OLD = ('<dd>One PDF of 517 pages, delivered to your inbox after payment, plus the printable binder and your state packets. '
+FAQ_OLD = (f'<dd>One PDF of {chrome.BOOK_PAGES} pages, delivered to your inbox after payment, plus the printable binder and your state packets. '
            'No app, no DRM.</dd>')
 FAQ_NEW = (f'<dd>One PDF computer file of {chrome.BOOK_PAGES} pages, sent to your email about two minutes after you pay, '
            'with the printable binder forms and your state packets. Nothing comes in the mail. It opens on any phone, '
