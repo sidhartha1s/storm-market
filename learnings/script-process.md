@@ -6,7 +6,7 @@ Newest first. New entries go at the top, under this line. Superseded lines point
 - Owner, on the batch A hooks: "Every video is having the same hook ... Every plot is the same ... when i'm giving you
   examples you take it very literally and follow only that thing moving forward like a bible".
 - Measured: all 7 documentary hooks written after the 15 Oct 26 opener rule (Joplin 2011, Mayfield, Moore, Camille,
-  Galveston, Buffalo, Appalachian) are question, the viewer's answer, then the break. The 15 hooks before it used 8
+  Galveston, Buffalo, Appalachian) are question, the viewer's answer, then the break. The other 16 hooks on disk use 8
   different shapes. Cause: script-quickref.md "The hook" quoted one example ("Siren goes off. What do you do?") as the
   rule, and the register line's two quoted lines bred "I read the report" and "if you lived there" in most of them.
 - Fix: the principle (friend's voice, the viewer's world, break a belief) plus a menu of shapes in script-quickref.md,
