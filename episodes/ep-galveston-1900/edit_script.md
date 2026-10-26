@@ -46,10 +46,10 @@ Hook shape: object (2026-10-26)
 PROVISIONAL (26 Oct 26): orchestrator's default pick from `hook_options.md`, owner pick pending; if he picks another shape only the hook and intro are redone.
 
 ### H1-S1 — Paul on camera
-**Picture:** Paul full frame at 0:00, holding a printed reproduction of the Galveston Daily News page of 16 July 1891; popfig "GALVESTON, TEXAS · JULY 1891" inside the first second; the sound under him: newsprint unfolding, then rain on a window, no wind. [HOOK] [VE]
-> This page of the Galveston paper told readers no hurricane could badly damage their city.
+**Picture:** Paul full frame at 0:00, plain Omni clip, no prop in his hands (owner 16:02: "Instead of Paul holding it, you can show a snippet of it ... do the omni as it is"); the Galveston Daily News page of 16 July 1891 shows as an on-screen panel to his side, the column snippet, never in his hands; popfig "GALVESTON, TEXAS · JULY 1891" inside the first second; the sound under him: newsprint unfolding, then rain on a window, no wind. [HOOK] [VE]
+> Nine years before the storm, an article in Galveston's own newspaper told its readers no hurricane could badly damage their city.
 
-Rows: sources-cline.md §1 and factcheck-E.md H1-S4 (same page: "impossible for any cyclone to create a storm wave which would materially injure the city"; belief the city "will at some time be seriously damaged ... is simply an absurd delusion"); "badly" for "seriously/materially" accepted in factcheck-D.md H1-S2; "hurricane" for "cyclone". Date "from July eighteen ninety-one" moved to the popfig (grade fix 2). Fifteen words.
+Rows: sources-cline.md §1 and factcheck-E.md H1-S4 (same page: "impossible for any cyclone to create a storm wave which would materially injure the city"; belief the city "will at some time be seriously damaged ... is simply an absurd delusion"); "badly" for "seriously/materially" accepted in factcheck-D.md H1-S2; "hurricane" for "cyclone". Date "from July eighteen ninety-one" moved to the popfig (grade fix 2). Twenty-one words (owner 16:02 rewrite: no "This page", Paul holds nothing). "Nine years before the storm": 16 July 1891 to 8 Sept 1900. "Galveston's own newspaper" = the Galveston Daily News. H1-S2's "part of it" now points at "an article".
 
 ### H1-S2 — narration
 **Picture:** slow push to the column; chip "ABSURD DELUSION"; lower-third "ISAAC CLINE · GALVESTON WEATHER OFFICE". Source line: Isaac Cline, Galveston Daily News, 16 July 1891 (Wikimedia Commons transcription). Telegraph-key click on "absurd delusion". [RS] [VE] (break one)
