@@ -183,7 +183,7 @@ Priority order for a Quake West household:
   Northwest," USGS Open-File Report 2021-1026 — a few seconds of warning for shallow crustal and
   intraslab events, seconds to tens of seconds for offshore great megathrust events, longest times of
   50-80 seconds only at considerable distance from the epicenter, and a no-warning zone near every
-  epicentre. | https://pubs.usgs.gov/of/2021/1026/ofr20211026.pdf | retrieved 2026-07-29»
+  epicenter. | https://pubs.usgs.gov/of/2021/1026/ofr20211026.pdf | retrieved 2026-07-29»
   «SRC: US Geological Survey, "ShakeAlert" — the system is being developed to cover California, Oregon
   and Washington. | https://earthquake.usgs.gov/data/shakealert/ | retrieved 2026-07-29»
 

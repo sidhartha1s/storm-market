@@ -146,7 +146,7 @@ The sequence matters and the order is not optional:
    that fires with no water in it destroys itself and can start a fire.
 2. **Shut the cold-water inlet** to the tank, so you are drawing from the tank rather than from a
    contaminated main.
-3. **Open a hot tap** somewhere in the house to admit air. Without this the tank will barely drain.
+3. **Open a hot faucet** somewhere in the house to admit air. Without this the tank will barely drain.
 4. **Draw from the drain valve** at the base into a clean container. The first flow will be
    discolored with sediment; let it run clear.
 5. **Do not refill or re-energize** until you know the supply is safe and the tank is full.
@@ -314,7 +314,7 @@ The disinfection itself is nine steps and EPA says plainly that drilled, driven 
 best disinfected by a well or pump contractor, because it is difficult for the private owner to
 thoroughly disinfect these wells."* If you are doing it yourself, the shape of it is: run the water
 clear, pour a gallon of unscented household bleach down the casing, run an outside hose back into the
-casing until you smell chlorine, open every cold tap inside and out until each one smells of chlorine
+casing until you smell chlorine, open every cold faucet inside and out until each one smells of chlorine
 and then close them all, and **wait six to twenty-four hours** without drinking, cooking, bathing or
 washing with any of it. Then flush to an area away from plants, streams and the septic field until the
 smell is gone. **Then wait seven to ten days and have the water tested for bacteria** — the wait is so
@@ -350,7 +350,7 @@ the level without power, know where the inlet screening is, and know how you wou
 if it ran dry — including whether your access allows a delivery truck to reach it, which is a
 question worth answering before the summer you need it.
 
-A pressure tank holds a small usable volume above the pump, which is why a tap sometimes runs for a
+A pressure tank holds a small usable volume above the pump, which is why a faucet sometimes runs for a
 minute after the power fails. That minute is real and worth catching in a container.
 
 **What this does not do:** neither is a treatment system. Stored volume says nothing about quality.

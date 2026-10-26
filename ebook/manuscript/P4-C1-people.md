@@ -46,7 +46,7 @@ numbers and any medical information; and for a younger child, a recent photograp
 pets, which is how a separated child gets reunited.
 
 **For infants specifically**, the supply list is unforgiving: formula, and enough of it, in a form that does
-not need clean water if possible; bottles that can be cleaned without a tap; diapers and wipes in quantity;
+not need clean water if possible; bottles that can be cleaned without a faucet; diapers and wipes in quantity;
 a means of keeping a baby warm without heating a house. Protection 19 covers the reserve, and the honest note
 is that an infant's supply cannot be improvised in the way an adult's can.
 
@@ -83,7 +83,7 @@ agreement and a phone number, written down on both sides.
 - The safe room and the shelter route have to work for the actual mobility involved, which sometimes means the
   plan is different from the rest of the household's.
 - Medication becomes the central logistical fact: the thirty-day buffer (Protection 59), an accurate written
-  list, and a pill organiser that can be grabbed rather than reassembled.
+  list, and a pill organizer that can be grabbed rather than reassembled.
 - Hearing and vision: spare glasses, spare hearing aid batteries, and the recognition that an alert which is
   audible-only may not reach someone. A bed-shaker alarm or a visual alert is a real protection.
 - A written medical summary in the document envelope, because an older person in an emergency is frequently

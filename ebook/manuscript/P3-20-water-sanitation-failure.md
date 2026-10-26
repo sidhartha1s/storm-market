@@ -93,7 +93,7 @@ Legionella case in a large building — a serious liability and remediation prob
   bathtubs, every pot, every bottle, and any bladder you own, at the point a warning is issued. A tub liner
   bladder is a cheap upgrade because a bathtub itself is not a clean container.
 - **4 — the water heater as a reserve**, forty to eighty gallons already in the house, with the draw-off
-  procedure known in advance — power or gas off to it first, then the drain valve, and a tap opened somewhere
+  procedure known in advance — power or gas off to it first, then the drain valve, and a faucet opened somewhere
   to break the vacuum.
 - **6 — filter selection**, chosen against what you might actually face: a gravity filter or hollow-fiber
   unit for microbes, and the honest understanding that chemical contamination needs a different technology or
@@ -131,7 +131,7 @@ that changes the whole event, and it is the most-skipped free action in this boo
 
 **When pressure drops or a notice is issued.**
 
-**Stop drinking from the tap immediately**, and remember all the ways you use it without thinking: ice from
+**Stop drinking from the faucet immediately**, and remember all the ways you use it without thinking: ice from
 the ice maker, the water dispenser in the fridge door, coffee machines and their internal reservoirs,
 toothbrushing, rinsing salad, filling a pet bowl, and a child in a bath. Turn the ice maker off and discard
 the ice already made.
@@ -180,8 +180,8 @@ patience.
 after testing, and the gap between "water is flowing again" and "water is safe" is frequently days.
 
 **Then flush the plumbing properly**, because your own pipes are now the problem. After a pressure loss or a
-long shutdown, run every cold tap for several minutes until the water is cold and clear, starting with the
-tap nearest the supply and working outward. Then run the hot faucets. Flush and clean the ice maker — discard
+long shutdown, run every cold faucet for several minutes until the water is cold and clear, starting with the
+faucet nearest the supply and working outward. Then run the hot faucets. Flush and clean the ice maker — discard
 the first several batches — and run the dishwasher and washing machine empty. Replace point-of-use filters,
 including the fridge filter, because a filter that processed contaminated water is now a contaminated
 filter.
@@ -209,7 +209,7 @@ anything porous that was in it (Protection 21).
 
 **Then re-stock the store and the sanitation kit immediately**, and note what actually ran out. In almost
 every household after a water event the answer is the same: not enough stored water, no plan for the toilet,
-and no soap arrangement that worked without a tap. All three are cheap, and all three are on the annual
+and no soap arrangement that worked without a faucet. All three are cheap, and all three are on the annual
 review sheet.
 
 ---
@@ -226,5 +226,5 @@ review sheet.
 | **Forgotten faucets** | Ice maker · fridge dispenser · coffee machine · toothbrushing · pet bowls |
 | **The toilet** | Flush with non-potable water if the sewer is intact. **If it is broken, do not flush at all** |
 | **The one that matters** | **Soap and water from a jug**, every time. Gel is the backup, not the method |
-| **After** | Notice lifted, not water clear · flush every tap and the ice maker · re-test a flooded well |
+| **After** | Notice lifted, not water clear · flush every faucet and the ice maker · re-test a flooded well |
 | **Protections** | 1, 2, 3, 4, 6, 7, 8, 9, 10, 12, 21, 35, 53, 54, 55, 57 |

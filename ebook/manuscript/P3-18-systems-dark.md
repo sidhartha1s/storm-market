@@ -163,7 +163,7 @@ reach anybody specific. If data is intermittent, send short messages and let the
 aggressively: brightness down, background activity off, aeroplane mode when there is no signal — because a
 phone hunting for a network it cannot find flattens itself in hours.
 
-**And know how to call for help without a network.** In most cases a mobile phone will place an emergency
+**And know how to call for help without a network.** In most cases a cell phone will place an emergency
 call over **any** available carrier's network, not just yours, so a "no service" indicator does not
 necessarily mean no emergency call. If 911 is down in your area, counties publish an alternative
 ten-digit number — and it is worth writing that number on the household contact sheet now.

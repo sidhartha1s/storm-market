@@ -29,10 +29,10 @@ that costs money.
 **Cost:** $0 · **Time:** 30 minutes · **Materials:** a phone and cloud storage
 · **Regions:** all five. Rank 9 Tornado Alley and Hurricane Coast.
 
-Photograph or scan everything that would be difficult to replace: driver's licences and passports,
+Photograph or scan everything that would be difficult to replace: driver's licenses and passports,
 birth and marriage certificates, deeds and titles, vehicle registrations, insurance policies with the
 declarations page, mortgage and loan documents, tax returns, prescriptions and the medication list,
-immunization and pet vaccination records, professional licences, wills and powers of attorney, account
+immunization and pet vaccination records, professional licenses, wills and powers of attorney, account
 numbers, and photographs of the household including the pets — because a lost pet is found with a
 photograph, not a description.
 

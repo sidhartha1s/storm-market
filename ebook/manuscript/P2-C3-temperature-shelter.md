@@ -273,7 +273,7 @@ Decide the exact spot now and mark it, because this decision otherwise gets made
 by someone exhausted, and it gets made badly. Run the cord from there, and make sure it is rated for
 the load and the distance.
 
-Carbon monoxide is colourless and odourless, its early symptoms are indistinguishable from
+Carbon monoxide is colorless and odorless, its early symptoms are indistinguishable from
 post-storm exhaustion, and it impairs the judgment you would use to recognize it. CDC's instruction is
 unqualified: **never use a generator inside a home or garage, "even if doors and windows are open,"** and
 place it **more than 20 feet from any window, door or vent** — plus a **battery-powered or battery-backup
@@ -321,8 +321,8 @@ pumping into the structure. The correctable failures are all cheap.
 
 Insulate pipes in unconditioned space — crawlspaces, garages, exterior walls, attics. Cover outdoor
 spigots and disconnect hoses, because a connected hose holds water against the valve. Open cabinet
-doors under sinks on exterior walls so room air reaches the pipes. Let a vulnerable tap drip, because
-moving water resists freezing and a dripping tap relieves the pressure that actually splits the pipe.
+doors under sinks on exterior walls so room air reaches the pipes. Let a vulnerable faucet drip, because
+moving water resists freezing and a dripping faucet relieves the pressure that actually splits the pipe.
 And if the house will be empty in a hard freeze, either keep the heat on at a set minimum or drain the
 system properly.
 

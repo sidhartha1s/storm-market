@@ -46,7 +46,7 @@ poisoned themselves trying not to.**
 Then the burst pipes. Homes flooded from inside as the freeze released, in a state with almost no
 plumbing insulation. The insured-loss totals quoted for this event come from industry estimates rather
 than a public filing, so no figure appears here — but you do not need one to act, because the protection
-is Protection 34 and it costs the price of a few feet of pipe insulation and a dripping tap.
+is Protection 34 and it costs the price of a few feet of pipe insulation and a dripping faucet.
 
 The distinction from the previous playbook is worth being precise about, because the response differs.
 A blizzard or ice storm is a **storm** — wind, precipitation, downed lines, blocked roads. A deep freeze
@@ -76,7 +76,7 @@ people genuinely do.
 **Then the pipes**, which are the money.
 
 A pipe bursts because water expands as it freezes, and the split is usually not where the ice is — the
-ice plug traps water between itself and a closed tap, and pressure builds until the weakest point fails.
+ice plug traps water between itself and a closed faucet, and pressure builds until the weakest point fails.
 That is why the drip protocol works: an open path means no pressure build-up.
 
 The vulnerable runs are always the same: pipes in unheated attics, crawl spaces, garages, exterior walls
@@ -155,7 +155,7 @@ door is open."
 
 **Then make the plumbing decision.** If the house is going to drop below freezing and you are staying with
 it, keep the faucets dripping. **If you are leaving, shut the water main off and drain the system** — open
-every tap, flush the toilets, and drain the water heater if you can. It takes twenty minutes and it is the
+every faucet, flush the toilets, and drain the water heater if you can. It takes twenty minutes and it is the
 difference between coming home to a cold house and coming home to a ruined one.
 
 **Watch for hypothermia and act on it early**, because it impairs the judgment needed to recognize it.
@@ -181,9 +181,9 @@ information about local assistance. | https://www.211.org/get-help/disaster-reco
 **If an old generator will not start in the cold, stop.** Do not fix it in the dark or on ice. That
 is your signal to leave.
 
-**If a tap stops running while it is freezing**, you have a frozen pipe and probably a few hours before it
-splits. Leave that tap open and warm the pipe along its length with a hair dryer, a heat lamp or towels
-soaked in hot water, working from the tap end back. **Never an open flame** — every winter someone burns a
+**If a faucet stops running while it is freezing**, you have a frozen pipe and probably a few hours before it
+splits. Leave that faucet open and warm the pipe along its length with a hair dryer, a heat lamp or towels
+soaked in hot water, working from the faucet end back. **Never an open flame** — every winter someone burns a
 house down thawing a pipe with a propane torch. If you cannot find or reach it, shut the main off and call a
 plumber.
 
@@ -193,7 +193,7 @@ plumber.
 
 **The thaw is the flood.** Be in the house as it warms if you possibly can. Walk every level, the
 basement, the crawl space and the attic. Listen for running water with everything switched off, and look
-at the water meter — a meter turning with every tap closed means water is escaping somewhere.
+at the water meter — a meter turning with every faucet closed means water is escaping somewhere.
 
 **If a pipe has burst:** water main off first, then power off to the affected area if water is anywhere
 near electrics, then get the water out and start drying. Photograph everything before you move it. Then
@@ -235,6 +235,6 @@ the shops have it.
 | **Before** | Insulate exposed pipes · **label the water main** · warm room · rated sleeping bags · CO alarms in date |
 | **On a hard freeze** | Hoses off · cabinets open · thermostat up, not down at night · **drip the far faucets** |
 | **If you leave** | **Water off and system drained.** Twenty minutes against a ruined house |
-| **Frozen pipe** | Tap open, warm from the tap end, hair dryer — **never a flame** |
+| **Frozen pipe** | Faucet open, warm from the faucet end, hair dryer — **never a flame** |
 | **After** | Be there for the thaw · check the meter with everything off · dry the cavities, not just the floor |
 | **Protections** | 1, 12, 13, 16, 26, 27, 28, 31, 32, 34, 35, 38, 39, 47, 63 |

@@ -230,7 +230,7 @@ Hazards extend far outside it, sometimes hundreds of miles — and being outside
 out of danger. Rainfall, surge, and tornadoes routinely occur well beyond it, and the cone is drawn so that
 **two-thirds** of historical forecast errors fall inside it — which means the center itself goes outside
 the cone about one time in three.
-«SRC: NHC, "Definition of the NHC Track Forecast Cone" — the cone encloses circles sized so that two-thirds of official forecast errors over a 5-year sample fall within them, and it depicts the probable track of the centre only, not the extent of impacts. https://www.nhc.noaa.gov/aboutcone.shtml | retrieved 2026-07-29»
+«SRC: NHC, "Definition of the NHC Track Forecast Cone" — the cone encloses circles sized so that two-thirds of official forecast errors over a 5-year sample fall within them, and it depicts the probable track of the center only, not the extent of impacts. https://www.nhc.noaa.gov/aboutcone.shtml | retrieved 2026-07-29»
 
 Figure 10 puts the cone next to what it leaves out.
 

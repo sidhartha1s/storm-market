@@ -32,7 +32,7 @@ Then Lahaina, in August 2023, did the same thing to a coastal Hawaiian town in a
 
 Hawai'i's Attorney General commissioned an independent three-phase investigation, and the conclusion of
 its second report is the sentence to take from it: **"no single factor led to the devastation."** Weather
-and its impacts, low perception of risk, decades-old infrastructure, organisational structure, incident
+and its impacts, low perception of risk, decades-old infrastructure, organizational structure, incident
 management and coordination — 84 findings and 140 recommendations. In the investigators' own words, *"the
 conditions that made this tragedy possible were years in the making."* The first of the three areas
 flagged for immediate attention was **"perception of risk and preparedness"**: the low perception of
@@ -213,14 +213,14 @@ Fire and the 2018 Camp Fire in California, volatile organic compounds (VOCs) wer
 water of the impacted towns. Tests of the water revealed elevated levels of several VOCs, such as
 benzene, in water mains, service connections, and building fixtures."*
 
-The mechanism is worth understanding because it explains why flushing the tap for ten minutes is not the
+The mechanism is worth understanding because it explains why flushing the faucet for ten minutes is not the
 answer. When system pressure drops — broken mains, or heavy demand for firefighting — **contaminated air
 and water are drawn into the pipes**, and the contamination can travel to parts of the system the fire
 never reached. Worse, **VOCs permeate certain plastics such as polyethylene, and rubber, and then leach
 back out slowly** — accumulating again in standing water. EPA's own conclusion: the potential for
 recontamination persists until all the contaminated material is dealt with.
 
-So: follow the notice, and if there is any doubt, do not drink or cook with the tap until the utility has
+So: follow the notice, and if there is any doubt, do not drink or cook with the faucet until the utility has
 confirmed it — Protection 8. A "do not drink" notice after a fire is a different and more serious animal
 than a boil-water notice, because **boiling does not remove benzene.**
 «SRC: US EPA, "Addressing Contamination of Drinking Water Distribution Systems from Volatile Organic
