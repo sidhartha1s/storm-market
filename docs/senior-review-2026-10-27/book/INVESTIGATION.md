@@ -161,20 +161,18 @@ Target: `P0-front-matter.md`, immediately after "## The fifteen-minute start" (b
 > **If you are over 65, or you care for someone who is, start here.**
 > This book has 130 protections. You need about ten. Here they are, in order.
 >
-> 1. **Two people, not one.** Name two people who will come for you or call you every day in a storm. One near, one far. Tell them they are on the list. (Protection 112, and "Older adults" in Part Four)
-> 2. **One sentence on the fridge.** "When ___ happens, I leave, and I call ___ and ___." If you live in a hurricane evacuation zone, a wildfire area, or a mobile home, the blank is the *watch* or the *Red Flag Warning*, not the order. (95)
-> 3. **An alarm that wakes you.** A weather radio by the bed. If you have a flip phone or landline, sign the landline up for county calls. If you take your hearing aids out at night, add a bed-shaker. (85, 86, 87)
-> 4. **Your machine's backup.** If you use oxygen, CPAP or insulin, make the three calls in Protection 42 this week.
-> 5. **Your registry.** Call the county and ask to be on the list for help leaving. It does not count until they tell you that you are on it.
-> 6. **Thirty days of pills,** and a card that lists every one, including any blood thinner. (59, Form 2)
-> 7. **A flashlight, shoes and a whistle at the bed.** (43)
-> 8. **Your "leave" temperature,** written down: if the house drops below it, you go. (P3-11)
+> 1. **Two people, not one.** Two people who will come for you or call you daily in a storm. One near, one far. Tell them. (112; "Older adults," Part Four)
+> 2. **One sentence on the fridge.** "When ___ happens, I leave, and I call ___ and ___." In a hurricane zone, wildfire area or mobile home, the blank is the *watch* or *Red Flag Warning*, not the order. (95)
+> 3. **An alarm that wakes you.** Weather radio by the bed. Flip phone or landline: sign the landline up for county calls. Hearing aids out at night: add a bed-shaker. (85, 86, 87)
+> 4. **Your machine's backup.** Oxygen, CPAP or insulin: make the three calls in Protection 42 this week.
+> 5. **Your registry.** Ask the county to list you for help leaving. It counts only when they confirm you are on it.
+> 6. **Thirty days of pills,** and a card listing each one, including any blood thinner. (59, Form 2)
+> 7. **Flashlight, shoes and whistle at the bed.** (43)
+> 8. **Your "leave" temperature,** written down. (P3-11, R7)
 >
-> Each step costs nothing or very little. The large-print card at the back of each hazard chapter repeats them.
->
-> **What this does not do:** this page is not the whole book. It is the part that keeps you alive long enough for the rest to matter.
+> **What this does not do:** this page is not the whole book. It keeps you alive long enough for the rest to matter.
 
-Mark «CITE» on step 8 (see R6). No diagram; set in 14-pt minimum.
+Set in 14-pt minimum. No diagram (D8 card sits opposite).
 
 ### R3. New protection: "Leaving with no car, or with someone who cannot move fast" (2 pages)
 Target: `P5-C3-evacuation.md`, new block after "### 111 · Where you are going, specifically" (renumber as 111A or append as 131 to keep numbering permanent). Draft:
