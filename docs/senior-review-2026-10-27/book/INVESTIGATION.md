@@ -50,12 +50,11 @@ Legend: **[BOOK HAD IT]** = the book covers it (file, protection) but the reader
 **Outcome: near-death (Harold); Marge survived unharmed.**
 
 **Decisive moments and cause chain**
-1. Overnight onset with no alert path that reaches a flip phone, a landline, or a sleeper. [BOOK GAP] P85 "two independent alert paths" assumes a smartphone for path one. "Landline" appears nowhere in the manuscript (grep: 0 hits); "flip phone" 0 hits.
-2. Red Flag readiness bought about 20 minutes. [BOOK HAD IT, P3-05 During, P91] and he used it. Credit the book.
-3. The dementia refusal. [BOOK GAP] One bullet in P4-C1 "Older adults."
-4. One road through fuel. [BOOK HAD IT, partly] P106 / P3-05 says a single road through unbroken fuel "is not an escape route" and then stops. No "so you leave at the Red Flag Warning, not the evacuation warning," no "what to do if you are trapped in the car."
-5. Oxygen in a car in fire, and tank hours at the flow you will actually use. [BOOK GAP] P61 says "cylinders are the outage answer" only.
-6. N95 with COPD: P52 silent; he waited for his doctor. [BOOK GAP] (minor in this outcome).
+1. Overnight onset, no alert path for a flip phone, landline or sleeper. [BOOK GAP] P85 assumes a smartphone; "landline" and "flip phone" have 0 grep hits.
+2. Red Flag readiness bought about 20 minutes. [BOOK HAD IT, P3-05 During, P91] Credit the book.
+3. Dementia refusal at the car. [BOOK GAP] One bullet in P4-C1.
+4. One road through fuel. [BOOK HAD IT, partly, P106, P3-05] "Not an escape route," then nothing: no earlier trigger, no trapped-in-car steps.
+5. Oxygen in a car near fire; tank hours at real flow. [BOOK GAP] P61 says only "cylinders are the outage answer." N95 with COPD: P52 silent.
 
 ### 1.3 Earl Dawson, 82, alone. Winter Storm Uri-type, Austin, February
 
