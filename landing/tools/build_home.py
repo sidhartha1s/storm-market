@@ -23,7 +23,7 @@ body = body.replace("../assets/", "assets/")
 # owner edit: stat strip under the hero button, ONE row
 STATS = ('<p class="rated"><span class="stars">★★★★★</span> Rated five stars by early readers. '
          'Built from National Weather Service &amp; FEMA post-storm reports.</p>\n'
-         '<ul class="stats"><li><b>486</b><span>pages</span></li><li><b>130</b><span>protections</span></li>'
+         '<ul class="stats"><li><b>517</b><span>pages</span></li><li><b>130</b><span>protections</span></li>'
          '<li><b>23</b><span>hazards</span></li><li><b>60</b><span>day sequence</span></li>'
          '<li><b>7-day</b><span>refund, no questions</span></li></ul>')
 # place it AFTER the hero .row (full width) so the nowrap row never squeezes the cover column
@@ -39,9 +39,9 @@ PLAIN = ('<p class="plain">You get a PDF file by email, about two minutes after 
 hero_btn = '<p><a class="btn" href="https://paulraymond.gumroad.com/l/ebook?wanted=true">Get the book, $9.99</a></p>'
 assert body.count(hero_btn) == 1
 body = body.replace(hero_btn, hero_btn + '\n            ' + PLAIN)
-FAQ_OLD = ('<dd>One PDF of 486 pages, delivered to your inbox after payment, plus the printable binder and your state packets. '
+FAQ_OLD = ('<dd>One PDF of 517 pages, delivered to your inbox after payment, plus the printable binder and your state packets. '
            'No app, no DRM.</dd>')
-FAQ_NEW = ('<dd>One PDF computer file of 486 pages, sent to your email about two minutes after you pay, with the printable '
+FAQ_NEW = ('<dd>One PDF computer file of 517 pages, sent to your email about two minutes after you pay, with the printable '
            'binder forms and your state packets. Nothing comes in the mail. It opens on any phone, tablet or computer with '
            'no app to install, and you can print any page.</dd></div>\n'
            '          <div><dt>Is it safe to pay?</dt><dd>Checkout runs on Gumroad, the store that delivers the file. You pay '

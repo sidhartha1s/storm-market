@@ -101,7 +101,7 @@ def footer_html(depth):
         'and not a substitute for the instructions of your local emergency officials. In an emergency, call 911 and follow the '
         'direction of authorities. Figures cited to their issuing documents. Public-domain material reproduced under 17 U.S.C. '
         '&sect; 105. No agency of the United States Government has endorsed, reviewed, or is affiliated with this book.</p>'
-        '<p class="foot-legal"><strong>The Storm-Ready Home</strong>: 486 pages &middot; 130 numbered protections &middot; 23 hazard playbooks &middot; the 60-day sequence &middot; the 61-page printable binder. $9.99, instant PDF, 7-day money-back guarantee. Instant PDF, pay once, own it forever, 7-day money-back guarantee.</p>'
+        '<p class="foot-legal"><strong>The Storm-Ready Home</strong>: 517 pages &middot; 130 numbered protections &middot; 23 hazard playbooks &middot; the 60-day sequence &middot; the 61-page printable binder. $9.99, instant PDF, 7-day money-back guarantee. Instant PDF, pay once, own it forever, 7-day money-back guarantee.</p>'
         '<p class="foot-legal">The Storm-Ready Home &middot; Paul Raymond &middot; First edition 2026 &middot; Support: reply to your purchase receipt.</p>'
         '</footer>')
 
