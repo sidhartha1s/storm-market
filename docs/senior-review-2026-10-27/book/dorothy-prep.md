@@ -1,79 +1,85 @@
-# Dorothy Kowalski - preparation log
+# Dorothy Kowalski - preparation log (full book, redo)
 
 ## 1. Profile
-Dorothy Kowalski, 78, widow, ground-floor condo, Fort Myers Beach, 6 blocks from the Gulf. Insulin-dependent type 2, macular degeneration, walker outside, no car, cat Biscuit.
-Income $1,900/mo, savings $4,000; I will spend about $150 total and keep the rest. Neighbor Rita (70) drives; daughter in Ohio.
-Rode out Charley in 2004 "and it was fine". I read with a magnifier, about 20 minutes at a time.
+Dorothy Kowalski, 78, widow, ground-floor condo, Fort Myers Beach, 6 blocks from the Gulf. Insulin-dependent, macular degeneration (20 minutes of small print, then I stop), walker outside, no car, cat Biscuit.
+$1,900/month, $4,000 savings; I will spend about $250 and keep the rest. Neighbor Rita (70) is my only ride; daughter is in Ohio.
+Rode out Charley in 2004 "and it was fine".
 
 ## 2. What I read vs skimmed vs gave up on
-Only 4 of the 14 files I was pointed to exist in the manuscript folder. The 10 below are NOT there, so I could not read them at all.
-- Read: `P0-front-matter.md` (the 15-minute start and the region table; I stopped at "Disclaimer").
-- Read: `P1-C2-the-timeline.md` (readable; the phase table helped).
-- Read: `P2-C1-water.md` (Protections 1-8 only; 9-12 are wells, cisterns, freeze, grey water and do not apply to me).
-- Read: `P5-C1-warning-literacy.md` (85-88, 90, 91, 95; skipped 89 radar, 92, 93, 94 space weather).
-- Skimmed headings only: `P2-C3-temperature-shelter.md`, `P2-C5-air-sanitation.md`, `P2-C7-structure-hardening.md`. These are mostly for homeowners with roofs and shutters. I live in a condo and the association owns the building.
-- Missing, so I never read: P1-C1, P2-C2 food, P2-C4 power, P2-C6 medical, P3-02 hurricane surge, P3-04 flooding, P4-C1 people, P5-C3 evacuation, P6 binder, P7 the 60 days.
-- Consequence: the book never told me what to do with insulin, a cat, a walker, or no car. I found no 60-day schedule.
+- Read all the way: `P0-front-matter.md`, `P1-C2-the-timeline.md`, `P2-C6-medical.md` (that is my chapter), `P5-C3-evacuation.md`, `P3-02-hurricane-surge.md`, `P7-the-60-days.md`.
+- Read partly: `P2-C1-water.md` (Protections 1-8; skipped wells/cisterns/rain barrels), `P5-C1-warning-literacy.md` (85-88, 90, 91, 95), `P4-C1-people.md` (only "Older adults", disability and the animals part; children skipped), `P2-C4-power.md` (only Protection 42), `P2-C2-food.md` (only #15, the fridge rule), `P6-the-binder.md` (the contents list and Forms 31-32).
+- Skimmed: `P3-04-riverine-coastal-flooding.md` (the "Before" list only; it is mostly river and gauges).
+- Gave up on: `P1-C1-six-mechanisms.md`. 5,500 words, no way I read that in an evening. I took the timeline chapter instead.
+- Did not touch structure chapters (P2-C7): the condo association owns the roof and windows.
 
-## 3. Preparation log (60 days, in the order I would actually do it)
-| Action (protection) | Cost | Done? | Honest reason |
+## 3. Preparation log over the book's 60 days
+| Action (protection) | Cost | Status | Honest reason |
 |---|---|---|---|
-| Turn on wireless alerts (85) | $0 | Done | Grandson set up the phone. I checked Settings with Rita on the phone. |
-| Sign up for Lee County alerts (86) | $0 | Partly | Book says "search your county". Rita did it by phone call; I cannot type a web form on that phone. |
-| NOAA radio with SAME code (87) | $50 | Partly | Bought one at the store with Rita. Rita set the county code; the print in the manual is too small. |
-| Torch and sturdy shoes under bed (43) | $15 | Done | Listed in the 15-minute start. Bought a lamp, the shoes I already own. |
-| Film home inventory (100) | $0 | Skipped | Needs a steady phone, narrating, opening every drawer. I will ask my daughter to do it when she visits. |
-| Name out-of-area contact (112) | $0 | Done | My daughter in Ohio. Number written large on the fridge. |
-| Write the trigger sentence (95) | $0 | Done | See section 4. |
-| Learn my evacuation zone (91) | $0 | Partly | Book never says where to find it. Rita says Zone A. I wrote "Zone A?" on the fridge. |
-| 14 days of drinking water (1) | $40 | Partly | 1 gal/day x 14 = 14 gallons for me plus some for Biscuit. Cases of bottled water are heavy and I cannot carry them. Rita carried 6 gallons. I stored 6, not 14. |
-| Date marker on containers (2) | $0 | Done | Rita wrote the dates. |
-| Fill bathtub on a hurricane watch (3) | $0 | Skipped | I have a walker and a tub with a high edge; I would not fill and empty it safely. I would leave anyway. |
-| Water heater draw-off (4) | $0 | Skipped | Hose and wrench and valves; I cannot do it. Condo may not even give me access. |
-| Rain barrel (5) | $40-200 | Skipped | Condo, no downspout of my own. |
-| Filter (6) | $30-120 | Skipped | Too many choices; I could not tell which one. |
-| Bleach/tablets (7) | $10 | Partly | Bought tablets for the go-bag. Did not trust my eyes to measure 1/8 teaspoon. |
-| Plywood/shutters/impact windows (73), roof, straps | $5,000-15,000 | Skipped | Not mine to alter, and cost is more than my savings. |
-| Generator (32) | $0 | Skipped | Can't buy, can't use. Never indoors, the book says. |
-| Flood insurance (103) | unknown | Not reached | Referred to in the region table but I did not find the chapter. Will ask Rita to call my agent. |
+| Wireless alerts on (85) | $0 | Done | Grandson set it up; Rita and I checked the screen. |
+| County alerts (86) | $0 | Partly | Rita did it with me by phone; I cannot type the web form. |
+| NOAA radio with county code (87) | $50 | Partly | Bought it; Rita programmed it. The manual print is too small. |
+| Flashlight + sturdy shoes at bed (43) | $15 | Done | Easy, I trust it. |
+| Write trigger plan (95) | $0 | Done | Rewrote their examples for a person with no car (section 4). |
+| Out-of-area contact = daughter (112) | $0 | Done | Number on the fridge in big marker. |
+| Learn my zone (91) | $0 | Partly | The book says look it up by letter; Rita says "A". Not confirmed. |
+| 14 days drinking water (1) | $40 | Partly | 14 gallons is heavy. Rita carried 6; I hold 6 gallons plus bottled. |
+| Date the containers (2) | $0 | Done | Rita wrote the dates. |
+| Fill tubs at the watch (3) | $0 | Skipped | I'd be gone by then; I cannot lift that. |
+| Water heater draw-off (4) | $0 | Skipped | Hoses, valves, wrench; condo plumbing. |
+| Bleach/filter (6, 7) | $10 | Partly | Bought tablets only; I cannot measure 1/8 teaspoon by eye. |
+| No-cook pantry (13) | $60 | Partly | Cans I can open: soup, tuna, crackers. I cannot judge which are safe for my sugar; asked nobody. |
+| Two fridge thermometers (15) | $15 | Done | Cheap, number on the door. |
+| Insulin plan (60): call pharmacist, cooler, thermometer, frozen bottles | $25 | Done | The most important call of my life. Wrote the room-temperature window on a card. |
+| 30-day prescriptions + emergency refill law (59) | copays | Partly | Called the pharmacy; they will ask insurance to waive "refill too soon" when Lee County is under a warning. |
+| Spare glasses, spare meter and strips (68) | $30 | Done | Old glasses were in a drawer. |
+| Medical summary in an envelope (68, 97) | $0 | Partly | Rita copied my meds and insurance cards. |
+| Medical registry: county list for people needing evacuation help (111, Form 32) | $0 | Partly | I called; they mailed a form. Rita helps me fill it. |
+| Name a person (4-C1) | $0 | Done | Rita is my "named human". She said yes. Backup: my daughter books a ride service. |
+| Pet carrier + pet bag (109) | $40 | Partly | Biscuit hates the carrier; practicing. Food and records ready. |
+| Go-bag (107) | $40 | Partly | Without the 3 days of water; 3 days of water and food is too heavy for me with a walker. |
+| Cash (98) | $100 | Done | From the bank with Rita. |
+| Flood insurance (103) | unknown | Partly | One phone call to my agent; 30-day clock. Unsure what it costs for a condo. |
+| Video home inventory (100) | $0 | Skipped | Daughter will do it when she visits. |
+| Drive both routes (106) | fuel | Skipped | No car. Rita drove one. |
+| Stop the Bleed / trauma kit (57, 58) | $40-120 | Skipped | No transport to the class, and not my priority. |
+| Shutters, roof, straps, garage (69-74) | $1,000+ | Skipped | Not mine to change, and out of budget. |
+| Generator (39) | $500+ | Skipped | Never. |
 
-Total spent: about $115.
+Total about $250.
 
-## 4. My plan when a hurricane is coming (my own words)
-I will not wait for the evacuation order. When the hurricane watch is posted for Lee County, I call Rita and then my daughter. That is my sentence, written on the fridge: "When there is a hurricane watch, I call Rita and we go."
-I do not look out the window. I do not wait to see what the neighbors do. That is what got people killed in Joplin and I do not want to be that person.
-- When I leave: the day the watch is posted, not the day of the order. I will not stay because Charley was fine.
-- How: Rita drives me. If she cannot, my daughter books a ride or I call the county special-needs line (I would need to find that number; the book did not give it).
-- Where to: a hotel inland, or Rita's relatives. I do not know a shelter that takes the cat. I do not know which shelter would take insulin.
-- What I take: walker, insulin in a small cooler with ice packs and syringes or pens, glucose meter, a two-week supply of pills, my ID, Medicare and insurance cards, daughter's number, charger, the NOAA radio, 6 bottles of water, cat carrier and cat food, bleach tablets.
-- Who I call: Rita first, then daughter, then my doctor to ask about extra insulin.
-- Insulin: I keep it with me in the cooler. I would not leave it in the refrigerator at home.
-- The cat: Biscuit goes in the carrier with me. If a shelter will not take pets, we go to a hotel.
+## 4. My plan when a hurricane is coming
+My sentence, on the fridge: **"When Lee County says hurricane watch, I call Rita and we leave."** No looking out the window, no waiting to see what the neighbors do.
+- When I leave: at the watch, two days out. The book says go then. I live 6 blocks from the Gulf, so I am a "leave house" and the book says so plainly: "In a surge evacuation zone, you leave." Charley does not count.
+- How: Rita drives me. If she cannot, I call my daughter, who books a ride, and I call the county special-needs registry I enrolled in.
+- Where: first choice a hotel inland (Orlando) that my daughter books; second, the county special-needs shelter; third, the general shelter. I do not know if any of them will take Biscuit. I will ask the registry.
+- What I take: walker, insulin pens and needles in the cooler with frozen bottles and the thermometer, meter and strips, 30 days of pills, glasses (and spare pair), cards and the envelope, cash, phone and charger, radio, Biscuit in her carrier with food, litter and records, a small bag of water.
+- Who I call: Rita, then daughter (text, not call), then pharmacist for the refill.
+- Insulin: it travels with me in the cooler, never in the condo fridge. Check the thermometer; never let the pens touch ice directly.
+- Biscuit: carrier, a towel, with me in the car. I will not go back for anything.
 
 ## 5. Where the book lost me
-- "Pour it between two clean containers to put the air back in." (`P2-C1-water.md`) Fussy; I'd just drink it.
-- "Kill the energy first. Gas to pilot or off at the valve." (`P2-C1-water.md`, water heater) I do not know where mine is.
-- "Rank 1 Quake West, rank 3 Hurricane Coast, rank 9 Ice & Snow." (`P2-C1-water.md`) Ranks of what? No explanation.
-- "Protection 112" (`P0-front-matter.md`) is the out-of-area contact, but `P5-C1-warning-literacy.md` says it is the "leave-early trigger". Which is it?
-- "Put a torch and a pair of sturdy shoes under every bed." (`P0-front-matter.md`) British words (torch, nappies, programme, mould) in an American book.
-- "The numeric criteria are set locally." (`P5-C1-warning-literacy.md`, Baltimore example) Not my county; I skipped the paragraph.
-- Every protection says "Materials, Regions, Rank", all in small bold print. Too dense for 20 minutes.
+- "Kill the energy first. Gas to pilot or off at the valve." (`P2-C1-water.md`) I do not know what or where that is.
+- "Do not read that as 'never move anybody.'" (`P4-C1-people.md`) A study says evacuating doubles deaths for frail people. I am frail-ish. Should I stay? It scared me more than it helped.
+- "The decision is the leave-early trigger in Protection 112." (`P5-C1-warning-literacy.md`) 112 is the out-of-area contact elsewhere. A wrong number.
+- "When a hurricane watch is issued for our county, the cars are fuelled." (`P1-C2-the-timeline.md`) I have no car.
+- "Drive them both, in daylight" (`P5-C3-evacuation.md`, two routes) I cannot drive. Also "Keep the tank above half."
+- Go-bag: "three days of water and food" with a walker. "A bag a person cannot carry for twenty minutes is... abandoned" (`P5-C3-evacuation.md`) fair, but then what should I do?
+- Nearly every protection is a block of bold labels plus 4-5 paragraphs; too dense after 20 minutes.
+- British words: torch, nappies, petrol, programme, tyres.
 
 ## 6. Where I needed a picture
-- A one-page checklist of the six 15-minute-start actions with big boxes to tick. The list is buried in paragraphs.
-- Picture of where to find my evacuation zone on a county map, step by step.
-- Picture of the NOAA radio buttons for setting the SAME code.
-- A picture of the Wireless Emergency Alert settings screen on an Android phone.
-- A bleach-dosing picture with a real spoon next to the 1/8 teaspoon; text only gave the number.
-- A "grab list" of what goes in my go-bag, in large print, to tape to the door.
-- The hurricane cone figure (Figure 10 is named but I did not find a picture in the text).
+- One page with the six "fifteen-minute start" steps, big tick boxes.
+- The hurricane zone map: where to find "Zone A" on the county site, with a picture of the screen.
+- A diagram for the insulin cooler: bottle, pen, towel, thermometer, and what not to do (ice directly on pens).
+- A simple "leave at watch" timeline strip: 5 days, 3 days, 2 days, 1 day, in big print (the one-page version table in the surge chapter is close but has fine print).
+- The alerts settings screen on an Android phone.
+- A go-bag packing photo for someone who can carry 8 pounds.
 
 ## 7. What the book never told me
-- How do I leave with no car, a walker, and insulin? Who picks me up? Is there a county list for people like me?
-- Which shelters take cats, and does a shelter have a fridge for insulin? How long can insulin sit unrefrigerated?
-- Where do I find my zone, and is Zone A (6 blocks from the Gulf) a "leave at the watch" place?
-- What about my condo association, the elevator, and stairs with a walker if the power is out?
-- How much money to bring when cards don't work? Is $100 cash enough? (Protection 98 is in the table but I never found it.)
-- What to do if Rita is also leaving or unreachable.
-- Where are the chapters on medical, evacuation, people, binder and the 60 days? I wanted to be told what to do each week and could not find that.
-- What do I do after if my condo floods and I come back?
+- How do I leave with no car, a walker and insulin? The book mentions a registry and "a named person", but not what the registry actually sends, or when they come.
+- Which shelter takes cats and has a fridge for insulin? How many days does my insulin last unrefrigerated? The book says to ask the pharmacist, but gives no typical number.
+- A ground-floor condo is flood risk: does flood insurance cover my contents, and does the association's policy matter?
+- What do I do if I am alone and the power is out for a week, with a walker and stairs, and the elevator stops?
+- Does a doctor sign something for the registry? Does Medicare pay for a ride?
+- How much cash is enough?
+- What if Rita is away or has her own evacuation? The book says "a named person", singular.
