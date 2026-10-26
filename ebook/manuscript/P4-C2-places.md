@@ -151,8 +151,8 @@ because that is what the arithmetic requires.
 - **Always leave on the worst days.** The Storm Prediction Center rates each day's risk from 1 to 5. Level 4
   is Moderate and Level 5 is High; both mean widespread severe weather or an outbreak is expected. A tornado
   watch that says "particularly dangerous situation" means forecasters are confident of multiple intense
-  tornadoes. When a watch is out and storms are heading your way, go. On a Level 4 or 5 day, go
-  even if they are not yet.
+  tornadoes. On any of these days, leave as soon as a watch is issued, even before storms are
+  heading your way.
   «SRC: NOAA Storm Prediction Center, "SPC Products" — categorical outlook levels 1-MRGL, 2-SLGT, 3-ENH,
   4-MDT ("an area where widespread severe weather with several tornadoes and/or numerous severe
   thunderstorms is likely") and 5-HIGH ("an area where a severe weather outbreak is expected from either
