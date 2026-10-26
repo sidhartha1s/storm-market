@@ -151,21 +151,59 @@ def kill_remote():
     ssh(KILL_REMOTE, 120)
 
 
+POLL = 20            # seconds between status calls to the ZBook
+POLL_FAILS = 15      # consecutive failed status calls before the run is given up (one ssh reset must not kill a healthy run)
+
+
+def run_detached(name, body, deadline):
+    """Run a cmd script on the ZBook outside the ssh session (CIM spawn), then poll for its exit code with short fresh ssh calls.
+    One ssh held open for 6+ min was reset by the ZBook (`Connection reset by peer`, 26 Oct 26) and took the whole 180-frame batch with it."""
+    base = rf"{ZBOOK_REPO}\.snapq\out"
+    cmd_f, rc_f, log_f = (rf"{base}\{name}.{x}" for x in ("cmd", "rc", "log"))
+    with tempfile.TemporaryDirectory() as d:
+        local = Path(d) / f"{name}.cmd"
+        local.write_text(f'@echo off\r\n({body}) > "{log_f}" 2>&1\r\necho %errorlevel% > "{rc_f}.tmp" & move /y "{rc_f}.tmp" "{rc_f}" >nul\r\n', encoding="ascii")
+        r = ssh(f'mkdir "{base}" 2>nul & del "{rc_f}" 2>nul & exit 0', 60)
+        if r.returncode:
+            raise RuntimeError(f"ssh mkdir: {r.stderr.strip()}")
+        subprocess.run(["scp", "-q", str(local), f"zbook:{cmd_f}".replace("\\", "/")], check=True, timeout=300)
+    start = ("powershell -NoProfile -Command \"(Invoke-CimMethod -ClassName Win32_Process -MethodName Create "
+             f"-Arguments @{{CommandLine='cmd.exe /c {name}.cmd'; CurrentDirectory='{base}'}}).ReturnValue\"")   # relative name: the repo path has a space
+    r = ssh(start, 120)
+    if r.stdout.strip() != "0":
+        raise RuntimeError(f"ZBook start failed: {(r.stdout + r.stderr).strip()[-200:]}")
+    t0, fails = time.time(), 0
+    while time.time() - t0 < deadline:
+        time.sleep(POLL)
+        try:
+            r = ssh(f'if exist "{rc_f}" (type "{rc_f}") else (echo RUNNING)', 120)
+            fails = 0 if r.returncode == 0 else fails + 1
+        except subprocess.TimeoutExpired:
+            fails += 1
+            continue
+        if fails >= POLL_FAILS:
+            raise RuntimeError(f"ZBook status call failed {fails} times in a row: {r.stderr.strip()[-200:]}")
+        if r.returncode == 0 and r.stdout.strip() != "RUNNING":
+            tail = ssh(f'powershell -NoProfile -Command "Get-Content -Tail 12 \'{log_f}\'"', 120)
+            return int(r.stdout.strip()), tail.stdout[-400:]
+    raise subprocess.TimeoutExpired(name, deadline)
+
+
 def snap_zbook(ep, times, pin, name, out):
     sent, total = ship(ep)
     mirror = rf"{ZBOOK_REPO}\.snapq\mirror\{ep.name}"
     rout = rf"{ZBOOK_REPO}\.snapq\out\{name}"
     # `python`, not `python3`: on the ZBook python3 is the WindowsApps redirector that hung TTS jobs (22 Oct 26); python is Python312
+    body = (f'python "{ZBOOK_REPO}\\scripts\\render_busy.py" && set "HYPERFRAMES_BROWSER_PATH={ZBOOK_CHROME}" && '
+            f'npx --yes hyperframes@{pin} snapshot "{mirror}" --at {",".join(map(str, times))} --no-end --describe false -o "{rout}"')
     try:
-        r = ssh(f'python "{ZBOOK_REPO}\\scripts\\render_busy.py" && set "HYPERFRAMES_BROWSER_PATH={ZBOOK_CHROME}" && '
-                f'npx --yes hyperframes@{pin} snapshot "{mirror}" --at {",".join(map(str, times))} --no-end --describe false -o "{rout}"',
-                limit(times))
+        rc, tail = run_detached(name, body, limit(times))
     except subprocess.TimeoutExpired:
         kill_remote()
         return 1, f"shipped {sent} of {total} files; killed after {limit(times)} s"
-    log = f"shipped {sent} of {total} files; " + (r.stdout + r.stderr)[-400:]
-    if r.returncode:
-        return r.returncode, log
+    log = f"shipped {sent} of {total} files; " + tail
+    if rc:
+        return rc, log
     g = subprocess.run(["scp", "-q", "-r", f"zbook:{rout}/*".replace("\\", "/"), str(out)], capture_output=True, text=True, timeout=600)
     return g.returncode, log + g.stderr[-200:]
 
