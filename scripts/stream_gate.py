@@ -17,6 +17,7 @@ ZBook renders (driver 595.95, Oct 26): ffmpeg 8.1.2's NVENC needs driver 610+, t
 render and hyperframes encoded on Intel QSV instead without saying so. Six episodes went out that way.
 """
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -64,9 +65,10 @@ def used_vs_asked(text, video_encoder=None):
         return ["[FALLBACK] no 'GPU:' line in the render log: what the render asked for is unknown"]
     asked, out = m.group(1), []
     if "encoder GPU" in asked:
-        if video_encoder is None and "[gpuEncoder] nvenc probe failed" in text:  # the file's tag, once read, wins
-            out.append("[FALLBACK] encoder: --gpu asked, the nvenc probe failed, hyperframes encoded on another encoder")
-        if video_encoder is not None and "nvenc" not in video_encoder:
+        if video_encoder is None:  # the file's tag, once read, wins over the probe line
+            if "[gpuEncoder] nvenc probe failed" in text:
+                out.append("[FALLBACK] encoder: --gpu asked, the nvenc probe failed, hyperframes encoded on another encoder")
+        elif "nvenc" not in video_encoder:
             out.append(f"[FALLBACK] encoder: --gpu asked, the output was encoded by '{video_encoder}', not nvenc")
     if "browser GPU" in asked:
         probes = BROWSER.findall(text)
@@ -82,8 +84,7 @@ def used_vs_asked(text, video_encoder=None):
 
 def video_encoder(mp4):
     """The video stream's encoder tag, read with the ffprobe render.cmd names (HYPERFRAMES_FFPROBE_PATH)."""
-    import os
-    r = subprocess.run([os.environ.get("HYPERFRAMES_FFPROBE_PATH", "ffprobe"), "-v", "error", "-select_streams", "v:0",
+    r = subprocess.run([os.environ.get("HYPERFRAMES_FFPROBE_PATH", "").strip() or "ffprobe", "-v", "error", "-select_streams", "v:0",
                         "-show_entries", "stream_tags=encoder", "-of", "default=nw=1:nk=1", str(mp4)],
                        capture_output=True, text=True)
     if r.returncode != 0:
@@ -111,16 +112,14 @@ def watch(log, marker, out):
     start = time.time()
     while not marker.exists():
         text = log.read_text(encoding="utf-8", errors="replace") if log.exists() else ""
-        verdict = log_verdict(text, time.time() - start)
+        verdict, fix = log_verdict(text, time.time() - start), "Relaunch with RENDER_WORKERS=1"
         if verdict == "ok":
             fallbacks = used_vs_asked(text)  # the probes print before the gate line, so this is minute one
             if not fallbacks:
                 return 0
-            verdict = "; ".join(fallbacks)
+            verdict, fix = "; ".join(fallbacks), "Fix the [FALLBACK] cause (GPU driver, NVIDIA pin) before a relaunch"
         if verdict != "pending":
             with out.open("a", encoding="utf-8") as f:
-                fix = ("Fix the [FALLBACK] cause (GPU driver, NVIDIA pin) before a relaunch" if "[FALLBACK]" in verdict
-                       else "Relaunch with RENDER_WORKERS=1")
                 f.write(f"[stream_gate] STOPPING THE RENDER: {verdict}. {fix}.\n")
             kill_renders()
             return 1
