@@ -44,10 +44,10 @@ Any first beat outside the title's frame reads as "not the video I clicked" → 
 ## 3. ROI drip — how the promise is paced across the runtime (AVD is the target)
 The payoff is never dumped early and never hoarded to the end. Structure:
 
-- **Hook = the endpoint, flashed forward.** State the conclusion (ep7: the court named the
-  government). The episode then EARNS it; the final act returns to the hook's scene and pays it
+- **The hook's claim is the endpoint, flashed forward**, whatever shape carries it (the shape menu and the
+  no-repeat rule: script-quickref.md "The hook"). The episode then EARNS it; the final act returns to the hook's scene and pays it
   in full detail. The hook is a promissory note the last act redeems.
-  Hook wording follows script-quickref.md 'The hook (owner 27 Sep 26)', which wins on wording.
+  Hook wording and shape follow script-quickref.md 'The hook', which wins on both.
 - **Intro = the full WHAT** (the roster, the list, the claim) — the viewer's ROI is delivered as
   information within the first ~2 minutes. Everything after is WHY/HOW — that's what they stay for.
 - **Each act closes one item (a mini-payoff) and plants the next** — small ROI every act, on the
