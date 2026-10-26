@@ -41,15 +41,15 @@ assert body.count(hero_btn) == 1
 body = body.replace(hero_btn, hero_btn + '\n            ' + PLAIN)
 FAQ_OLD = ('<dd>One PDF of 517 pages, delivered to your inbox after payment, plus the printable binder and your state packets. '
            'No app, no DRM.</dd>')
-FAQ_NEW = ('<dd>One PDF computer file of 517 pages, sent to your email about two minutes after you pay, with the printable '
-           'binder forms and your state packets. Nothing comes in the mail. It opens on any phone, tablet or computer with '
-           'no app to install, and you can print any page.</dd></div>\n'
-           '          <div><dt>Is it safe to pay?</dt><dd>Checkout runs on Gumroad, the store that delivers the file. You pay '
-           'there by card, and this site never sees your card number. The receipt and the download link arrive by email.</dd></div>\n'
-           '          <div><dt>Can I buy it for my mother or father?</dt><dd>Yes. Buy it with your own email, then print the '
-           'pages they need or forward them the file.</dd>')
-assert body.count(FAQ_OLD) == 1
-body = body.replace(FAQ_OLD, FAQ_NEW)
+FAQ_NEW = (f'<dd>One PDF computer file of {chrome.BOOK_PAGES} pages, sent to your email about two minutes after you pay, '
+           'with the printable binder forms and your state packets. Nothing comes in the mail. It opens on any phone, '
+           'tablet or computer with no app to install, and you can print any page.</dd>')
+FAQ_ADD = ('\n          <div><dt>Is it safe to pay?</dt><dd>Checkout runs on Gumroad, the store that delivers the file. You pay '
+           'there by card, and this site never sees your card number. The receipt and the download link arrive by email.</dd></div>'
+           '\n          <div><dt>Can I buy it for my mother or father?</dt><dd>Yes. Buy it with your own email, then print the '
+           'pages they need or forward them the file.</dd></div>')
+assert body.count(FAQ_OLD + '</div>') == 1
+body = body.replace(FAQ_OLD + '</div>', FAQ_NEW + '</div>' + FAQ_ADD)
 # the binder is 41 forms laid out on 61 pages; "61 fillable forms" contradicted /resources/
 assert body.count('The binder, 61 fillable forms') == 1
 body = body.replace('The binder, 61 fillable forms', 'The binder, 41 fillable forms on 61 pages')
