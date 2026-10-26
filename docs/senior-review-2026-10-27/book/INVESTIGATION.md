@@ -28,12 +28,11 @@ Legend: **[BOOK HAD IT]** = the book covers it (file, protection) but the reader
 **Outcome: survived, injured.** And a counterfactual the book must face: if Rita had gone to her own son instead (she has her own evacuation), Dorothy stays on a ground floor six blocks from the Gulf. That is the profile of most Ian deaths in Lee County: older, alone, drowned at home. **One missing person away from death.**
 
 **Decisive moments and cause chain**
-1. Trigger depended on one driver who did not share it. [BOOK GAP] P95 assumes the household that agrees the trigger is the household that drives. P4-C1 "Older adults" asks for "a named individual," singular.
-2. Registry enrollment left half-finished. [BOOK HAD IT] P111 and P4-C1 say enroll; the book never says "it does not count until they confirm you are on the list," or that transport runs only after an order.
-3. P95's own hurricane-watch example says "cars fuelled... garage braced," not "leave if you are in Zone A and cannot drive." She got it right from P3-02 ("a surge evacuation zone... you leave"); Rita read neither. [BOOK HAD IT, mis-taught by the example]
-4. Zone never confirmed ("Rita says A"). [BOOK HAD IT] P91, but no picture of how to find it, no phone route.
-5. Shelter pet separation. [BOOK HAD IT] P109 warns shelters exclude pets; no "ask the county which shelter is pet-friendly and write its name."
-6. Diabetic food and night lows in a shelter. [BOOK GAP] P13 pantry has no diabetic line; P43 shoes and light at the bed is home-only.
+1. Trigger owned by a driver who never agreed to it. [BOOK GAP] P95 assumes the people who agree the trigger drive; P4-C1 asks for one "named individual," singular.
+2. Registry half-enrolled. [BOOK HAD IT, P111, P4-C1] Never says "it counts only once they confirm," or that transport runs only after an order.
+3. P95's hurricane-watch example says "cars fuelled... garage braced," not "Zone A without a car: leave." [BOOK HAD IT in P3-02, mis-taught by P95's example]
+4. Zone unconfirmed; pet separation. [BOOK HAD IT, P91, P109] No phone route to the zone; no "write the pet-friendly shelter's name."
+5. Diabetic food and a night fall in a shelter. [BOOK GAP] P13 has no diabetic line; P43 is home-only.
 
 ### 1.2 Harold, 74 (COPD, oxygen) and Marge, 72 (dementia). Camp Fire-type, Paradise ridge, November
 
