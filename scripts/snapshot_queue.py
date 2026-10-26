@@ -196,12 +196,12 @@ def snap_zbook(ep, times, pin, name, out):
     rout = rf"{ZBOOK_REPO}\.snapq\out\{name}"
     # `python`, not `python3`: on the ZBook python3 is the WindowsApps redirector that hung TTS jobs (22 Oct 26); python is Python312
     body = (f'python "{ZBOOK_REPO}\\scripts\\render_busy.py" && set "HYPERFRAMES_BROWSER_PATH={ZBOOK_CHROME}" && '
-            f'npx --yes hyperframes@{pin} snapshot "{mirror}" --at {",".join(map(str, times))} --no-end --describe false -o "{rout}"')
+            f'call npx --yes hyperframes@{pin} snapshot "{mirror}" --at {",".join(map(str, times))} --no-end --describe false -o "{rout}"')
     try:
         rc, tail = run_detached(name, body, limit(times))
-    except subprocess.TimeoutExpired:
+    except (subprocess.TimeoutExpired, RuntimeError) as e:   # a lost status call or failed start can leave the batch running: stop it, and never rerun per job
         kill_remote()
-        return 1, f"shipped {sent} of {total} files; killed after {limit(times)} s"
+        return 1, f"shipped {sent} of {total} files; killed after {limit(times)} s ({type(e).__name__}: {str(e)[:150]})"
     log = f"shipped {sent} of {total} files; " + tail
     if rc:
         return rc, log
