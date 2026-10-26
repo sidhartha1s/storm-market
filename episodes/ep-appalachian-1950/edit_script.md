@@ -29,13 +29,13 @@ PROVISIONAL (26 Oct 26): orchestrator's default pick from `hook_options.md`, own
 
 ### H1-S1 — Paul on camera
 **Picture:** Paul full frame at 0:00; popfig "SAT, NOV 25, 1950 · NEWARK, NJ" inside the first second; chip "108 MPH" on "a hundred eight"; chip "WINTER STORM" on "winter storm". [HOOK] [VE]. Sound: music bed starts at 0:00 under Paul, a low library wind gust rising under "a hundred eight", no archive audio.
-> You're in Newark, New Jersey, the wind just gusted to a hundred eight miles an hour, and it's coming from a winter storm.
+> You are in Newark, New Jersey. It's the Saturday of Thanksgiving weekend, nineteen fifty, and the wind just gusted to a hundred eight miles an hour.
 
-Rows: nws-facts.md §1 Newark 108 mph gust, 25 Nov 1950 (PHI, JKL); §2 RLX "worst winter storm on record to affect the Ohio Valley" (the storm named a winter storm). Date on the popfig only (Saturday = 25 Nov per §4 dated entries). Contradiction (winter storm, hurricane-strength gust) lands at about word 22, near 0:07.
+Rows: nws-facts.md §1 Newark 108 mph gust, 25 Nov 1950 (PHI, JKL); §2 RLX "worst winter storm on record to affect the Ohio Valley" (the storm named a winter storm). Date on the popfig only (Saturday = 25 Nov per §4 dated entries). Owner 16:02 rewrite, his words: "You are in Newark, New Jersey. It's the Saturday of Thanksgiving weekend, 1950, and the wind just gusted to 180 miles an hour"; he said 180, the checked fact is 108, kept. Thanksgiving 1950 = Thu 23 Nov, so Saturday = 25 Nov (§4). Twenty-six words, the Paul clip cap. The winter-storm turn moved to H1-S2.
 
 ### H1-S2 — narration
 **Picture:** hard cut on "That's" to a self-made map, Newark pin in wind blue, chip "HURRICANE FORCE" [VE]. The map swings west and a Pittsburgh pin fills with snow white, chip "2+ FEET OF SNOW" [RS]. Sound: wind swell under "hurricane-force", bed thins to a hush on "snow".
-> That's a hurricane-force gust. Inland, that storm is burying Pittsburgh under what will be more than two feet of snow.
+> That's hurricane force, and it isn't a hurricane. It's a winter storm, and inland, it's burying Pittsburgh under what will be more than two feet of snow.
 
 Rows: nws-facts.md §4 FFC text calling the Northeast winds hurricane-force; §2 Pittsburgh 27.4 in storm total, rank 1 (PBZ). Wording "what will be more than two feet" kept from the checked round.
 
