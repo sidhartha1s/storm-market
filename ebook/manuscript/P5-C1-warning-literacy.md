@@ -380,6 +380,10 @@ a set of pre-committed thresholds with an action attached to each:
 > When the AQI passes our number — windows shut, filtration on, and the children stay in.
 >
 > When a Red Flag Warning is issued — the go-bags go in the car.
+>
+> When a hurricane watch is issued and we are in Zone A — I call my driver and we leave that day.
+>
+> When the house drops below our number — I call my driver, or 911 if nobody answers.
 
 Write between five and ten. Put it on the fridge and in the binder. Read it once at the start of each
 season.
