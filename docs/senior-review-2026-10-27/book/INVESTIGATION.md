@@ -36,15 +36,14 @@ Legend: **[BOOK HAD IT]** = the book covers it (file, protection) but the reader
 ### 1.2 Harold, 74 (COPD, oxygen) and Marge, 72 (dementia). Camp Fire-type, Paradise ridge, November
 
 **Timeline**
-- **Day -1.** Red Flag Warning on the SAME radio. Harold does exactly what P3-05 says: car fueled, go-bags and two full portable tanks in the car, dogs' leashes by the door. **This is the best single piece of prep among the four.**
-- **6:30 am.** Fire ignites upwind in the canyon. Harold is asleep on the concentrator. The radio does not sound: weather radio does not carry the county's evacuation orders unless the county asks for it, and this county did not. [BOOK GAP: the book never says this.]
-- **7:15 am.** Evacuation orders go to the eastern zones by the county call system. His landline is not registered; many registered numbers were never reached. Flip phone gets no wireless alert. [BOOK GAP]
-- **7:40 am.** Sky goes dark brown. Harold wakes to the smell. Power goes out as lines burn; the concentrator stops. He switches to a portable tank.
-- **7:50 am.** Son in Sacramento, watching TV, gets through on the landline: "Dad, go now."
-- **7:50-8:05.** Marge, woken into smoke and darkness with her routine broken, refuses to get in the car and walks toward the trees. Harold, on oxygen, follows her. Fifteen minutes lost. [BOOK GAP: P4-C1 names wandering; it gives no "what to do when she will not get in."]
-- **8:05 am.** They leave on the one paved road. Joins the main route to town. Gridlock; fire on both sides by 8:30. Embers on the car. A lit oxygen cylinder inside a car in a fire.
-- **8:30-10:30 am.** Two hours in stopped traffic in thick smoke. Harold's COPD flares. His second tank runs low because he turned the flow up. He did not ask the supplier for tank hours at the higher flow.
-- **10:45 am.** Out of the fire. Chico ER. COPD exacerbation, smoke inhalation. Admitted three days. Marge is confused and distressed but unhurt. Dogs unhurt. House lost.
+- **Day -1.** Red Flag Warning on the radio. Harold does exactly what P3-05 says: car fueled, go-bags and two full tanks in the car. **Best single piece of prep among the four.**
+- **6:30 am.** Ignition upwind. Harold asleep on the concentrator. The weather radio is silent: in the modeled event, evacuation orders go by county call system, not the radio (verify for Butte 2018). [BOOK GAP: never says the radio may not carry evacuation orders.]
+- **~7:15 am.** Orders go out. His landline is not registered; the flip phone gets no wireless alert. [BOOK GAP]
+- **7:40 am.** Brown sky, smoke smell. Power dies as lines burn; concentrator stops; he goes to a tank.
+- **7:50 am.** Son in Sacramento, watching TV, reaches the landline: "Dad, go now."
+- **7:50-8:05.** Marge, woken into darkness, refuses the car and walks toward the trees. Harold follows on oxygen. Fifteen minutes lost. [BOOK GAP]
+- **8:05-10:30.** One paved road into the main route. Gridlock, fire both sides by 8:30, embers on the car, an oxygen cylinder inside. Two hours in smoke; COPD flares; he turns the flow up and the second tank runs low.
+- **10:45 am.** Out. Chico ER: COPD exacerbation, smoke inhalation, three days admitted. Marge distressed, unhurt. Dogs unhurt. House lost.
 
 **Outcome: near-death (Harold); Marge survived unharmed.**
 
