@@ -36,6 +36,7 @@ On one Saturday the same storm put a hurricane-force gust on Newark and more tha
   - Buffalo chip, 30 px right of the label: "ABOUT 200 MI NORTH" Arial 700 30 px `#dfe7ee`; swaps to "40s · NO SNOW" Arial Black 900 40 px `#d8a13a` (two halves: "40s" on its word, "· NO SNOW" on "no").
   - Toll line (H1-S3 only), centred on x 960, block top y 880: "AT LEAST 160 LIVES LOST" Arial Black 900 52 px `#f2f5f8`; under it "Source: NCEI · NWS Jackson, KY" Arial 700 20 px `#c8d3e0` tracking 1. Glass card behind both, centred, about 900 x 130 px; bottom edge at or above y 1026.
 - Three type tiers: 58/52 (big), 40/30/26 (mid), 22/20 (small).
+- Basemap credit "Basemap: Natural Earth" Arial 700 19 px `#93a3b2` at left 110, bottom 60, on for the whole comp (g-intro-3 and -5 carry the same credit at the same spot, so the frame-D handoff matches).
 - Scan line: the exemplar's `.mm4-scan` (2 px, 1180 px wide) sweeping top to bottom at about 60 px/s for the whole comp, opacity 0.30.
 
 ## 4. Must be true in the picture
