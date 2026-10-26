@@ -59,25 +59,32 @@ Not written this round. Title rule: ≤52 chars, Name + Year in the first 40 (`r
 <!-- HOOK, TAIL, INTRO: written by the writer below this line -->
 
 ## H1 · Hook
-Hook shape: belief-question (2026-10-26)
+Hook shape: missing (2026-10-26)
+PROVISIONAL (26 Oct 26): orchestrator's default pick from `hook_options.md`, owner pick pending; if he picks another shape only the hook and intro are redone.
 
 ### H1-S1 — Paul on camera
-**Picture:** Paul full frame at 0:00 in a Santa hat, the one hook clip (question, then the viewer's answer). Popfig "BUFFALO, NY · DEC 23, 2022" inside the first second (the date lives on screen, not in the spoken lines). Wind bed fades up under him. [HOOK] [Q] [loop E open]
-> A blizzard warning hits your town at Christmas. What do you do? You stay home.
+**Picture:** Paul full frame at 0:00 in a Santa hat; popfig "BUFFALO, NY · DEC 23, 2022" inside the first second; the sound under him: a phone line ringing on and on, low under the wind, with no pickup. [HOOK] [loop E open]
+> The biggest group the storm took around Buffalo was found in the open, and some of the nine one one calls never got an answer.
 
-*register: 9/10*
+Rows: `research/deaths.md` section 1 "final" and section 3 (18 outside, the largest single category, SECONDARY); `research/response.md` section 5 (NYU Wagner report via AP: "emergency calls that went unanswered due to a backlog", SECONDARY; "some" calls, never every call). The line sets the two facts side by side and does not claim the people outside were the ones who called.
 
-### H1-S2 — narration (the break)
-**Picture:** on the cut at "But": a 174th Attack Wing runway snowblower clearing I-90 in Buffalo, NY National Guard photo, DVIDS 7571852 (26 Dec 2022, courtesy photo), public domain. Wind drops to near silence on the cut. Chip "18 FOUND OUTSIDE". Source line: "Erie County Executive Mark Poloncarz, last reported count, via WIVB". Chip "+4 IN THEIR CARS" follows on "four more". [VE] [RS] [PAY]
-> But around Buffalo, the biggest single group of the people who lost their lives was found outside, in the snow. That's eighteen of the forty-six in the county's last reported count, and four more were found in their cars.
+### H1-S2 — narration (the hedge)
+**Picture:** on the cut, DVIDS 7576030 (a Guard soldier knocking at a front door during welfare checks, Buffalo, 30 Dec 2022, courtesy photo), public domain, cropped to 16:9. Chip "18 IN THE OPEN". Source line: "Erie County Executive Mark Poloncarz, last reported count, via WIVB". [VE] [PAY]
+> That was eighteen people, by the newest numbers the county gave out.
 
-*register: 8/10*
+Rows: `research/deaths.md` section 1 "final" (18 outside of 46, three cases pending, so the hedge stays); `fact_check_r6_hook.md` rows 2 and 3.
 
-### H1-S3 — narration (the second contradiction)
-**Picture:** NWS Buffalo forecast discussion text, typed on as a glass card, the original sentence verbatim with the phrase highlighted: "One could certainly describe this storm system as a once in a generation type of event." Source line: "NWS Buffalo Area Forecast Discussion, 4:51 a.m. Tue 20 Dec 2022 (IEM archive, FXUS61 KBUF 200951)". Chip "3 DAYS' WARNING". [VE] [RS] [Q]
-> And they were warned. Three days before it hit, the National Weather Service in Buffalo wrote that you could call it a once in a generation event.
+### H1-S3 — narration
+**Picture:** self-made dispatch queue card, a counter running up to "1,100 CALLS WAITING". Source line: "NYU Wagner review, via Firehouse, 5 Jun 2023". Wind holds low. [VE] [RS] [Q]
+> By the morning after the first day, eleven hundred emergency calls were waiting in line, a review for the city found later.
 
-*register: 9/10*
+Rows: `research/response.md` section 2 (backlog of 1,100 emergency calls "by the morning after the first day", Firehouse citing the NYU report, SECONDARY; report PDF itself not read).
+
+### H1-S4 — narration (the second break)
+**Picture:** self-made text card, "7 LIVES · CALLS UNANSWERED". Source line: "NYU Wagner review for the City of Buffalo, via AP, 2 Jun 2023". Wind drops to near silence. [VE] [RS] [Q]
+> That same review tied seven of the lives lost in Erie County to calls that went unanswered in the backlog.
+
+Rows: `research/response.md` section 2 and section 5 (seven Erie County deaths tied to unanswered calls due to a backlog, NYU report via AP, SECONDARY). This is the review's seven, never equated with the county's seven delayed-EMS category in `research/deaths.md`.
 
 ## T1 · Hook tail
 
