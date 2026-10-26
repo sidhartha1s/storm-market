@@ -43,10 +43,10 @@ Rows: nws-facts.md §1 Newark 108 mph gust on 25 Nov, strongest recorded there (
 Rows: nws-facts.md §1 Philadelphia (PHL gage) record tide 10.8 ft above MLLW (PHI); angle.md Claim (snow inland, wind on the coast).
 
 ### H1-S4 — narration
-**Picture:** pull back to the full map, Pittsburgh, Newark and Philadelphia pins lit together. Toll on the on-screen source line: "at least 160 lives lost · NCEI". Sound: bed dips under the toll, small riser out on "moved".
-> At least a hundred sixty people did not survive it. Every one of those records came out of a single storm, and the reason starts with the way it moved.
+**Picture:** pull back to the full map, Pittsburgh, Newark and Philadelphia pins lit together, then the storm outline drifts north over Lake Erie. Source line on the toll sentence: "160 lives lost · NWS Jackson KY". Sound: bed dips under the toll, small riser out on "turned".
+> Before it wore itself out over Lake Erie and Canada, the storm had claimed a hundred sixty lives. The reason a snowstorm could flood Philadelphia starts with which way it turned.
 
-Rows: nws-facts.md §5 toll at least 160 (JKL, NCEI); §4 track rows (low formed over the Carolinas on 25 Nov and went northwest, JKL), held back for Act 3. [loop L1 open] how one storm set records on both sides.
+Rows: nws-facts.md §4 stalled over Lake Erie 27 and 28 Nov, exited into Canada 29 and 30 Nov (JKL); §5 toll 160 by 29 and 30 Nov (JKL); §4 track rows (low went northwest, JKL), held back for Act 3. [loop L1 open] how a snowstorm flooded the coast.
 
 ## Option 3 · Hook shape: drop-in (2026-10-26)
 The strongest fact for a "you are there" open is the Newark gust itself: a hurricane-force gust on a city street, with no hurricane, while the same storm snowed on Pittsburgh.
