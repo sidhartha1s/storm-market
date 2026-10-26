@@ -89,12 +89,10 @@ Legend: **[BOOK HAD IT]** = the book covers it (file, protection) but the reader
 - **Outcome: survived, injured (Ray, wrist fracture; Bev, hail cuts). Survived by geography, not by plan.** Had the path been a mile north, a car in an open lot in an EF5 is among the worst places to be. Had they stayed home, the single-wide was destroyed.
 
 **Decisive moments and cause chain**
-1. Watch-trigger rejected as unrealistic. [BOOK HAD IT, P4-C2] The book's answer ("accept you will do this several times for nothing") is correct and lost her. It gave no cheaper version: leave only when the watch is a high-risk day, or only on afternoons with the kids.
-2. One unconfirmed shelter, no backup. [BOOK GAP] P4-C2 says "identify the place" and nothing about what to do when the answer is voicemail. No mention of a neighbor's in-ground shelter, the city shelter registry, or the park owner.
-3. Movement time never measured. [BOOK HAD IT, P4-C2 "time the journey"] She never timed Ray to the car.
-4. Car in a parking lot as the last resort. [BOOK HAD IT, partly, P3-01 table "In a car"] Bev did not read it; the playbook does not address "sitting in a parked car vs. staying in a trailer."
-5. Helmets for kids only; adults skipped for $60. [BOOK HAD IT, P25]
-6. Grandkids' pickup and the 2-adults-1-car load plan. [BOOK GAP]
+1. Watch trigger rejected. [BOOK HAD IT, P4-C2] "Accept you will do this several times for nothing" is right and lost her; no middle version (high-risk days, kid afternoons).
+2. One unconfirmed shelter, no backup. [BOOK GAP] Nothing for "voicemail," a neighbor's in-ground shelter, a city registry, or the park owner.
+3. Movement time never measured. [BOOK HAD IT, P4-C2 "time the journey"]
+4. Parked car vs. trailer as last resort. [BOOK HAD IT, partly, P3-01 table "In a car"]; adult helmets skipped [BOOK HAD IT, P25].
 
 ---
 
