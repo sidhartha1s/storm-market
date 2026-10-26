@@ -214,13 +214,13 @@ Diagram D2 (CPAP/oxygen power sizing) and D5 (insulin cooler).
 Target: `P4-C2-places.md`, inside "## The manufactured or mobile home", after the paragraph "**Then set the trigger at the watch, not the warning**". Draft:
 
 > **If leaving at every watch is not possible**, do this, in this order:
-> - Leave at every watch the forecasters call high-risk or "particularly dangerous." Those are the days that kill. «CITE: SPC definitions of Moderate/High risk and PDS watches»
-> - On any watch day with grandchildren or a slow walker in the house, leave at the watch, no exceptions.
-> - Have **three** places, not one, and a time for each: a neighbor's in-ground shelter (ask them now), a public building you have confirmed opens, and your city's storm shelter registry if it has one. Ask your park manager in writing whether the park has a shelter.
-> - If you are caught at home in a warning with nowhere to go, the trailer is the worst choice. «CITE: NWS guidance on vehicle vs mobile home when no shelter is reachable» 
-> - Time everyone to the car. If it is more than five minutes, the warning is too late for you.
+> - Always leave on a watch the forecasters label high-risk or "particularly dangerous." «CITE: SPC risk categories, PDS watches, and share of violent-tornado deaths on those days»
+> - With grandchildren or a slow walker in the house, leave at the watch, no exceptions.
+> - Have **three** places, each with a drive time: a neighbor's in-ground shelter (ask now), a public building confirmed open, your city's shelter registry if it has one. Ask the park manager in writing about a park shelter.
+> - Caught at home in a warning with nowhere to go: «CITE: NWS last-resort guidance for mobile-home residents (vehicle vs. ditch vs. home)».
+> - Time everyone to the car. Over five minutes, a warning is too late for you.
 >
-> **What this does not do:** none of these makes a mobile home safe. They only give you somewhere else to be.
+> **What this does not do:** none of this makes a mobile home safe. It gives you somewhere else to be.
 
 Diagram D4 (three-shelter map). Illustration I2.
 
