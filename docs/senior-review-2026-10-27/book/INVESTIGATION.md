@@ -1,13 +1,8 @@
 # Senior survival investigation: "The Storm-Ready Home"
 
-Evidence: the four prep logs in this folder (Dorothy, Harold, Earl, Bev). Book checked by grep against
-`ebook/manuscript/` (read-only). Scenario timelines are modeled on the named real events from public
-record; times are approximate and rounded. Outcomes are judgments, not predictions. Cost bands in this
-file are retail estimates for planning, not book text; any number proposed for the book carries
-«CITE: ...».
+Evidence: the four prep logs here; book checked by grep against `ebook/manuscript/`. Timelines are modeled on the real events from memory of the public record, times approximate; outcomes are judgments. Cost bands are retail estimates. Any number proposed for the book carries «CITE».
 
-Legend: **[BOOK HAD IT]** = the book covers it (file, protection) but the reader skipped or misread it.
-**[BOOK GAP]** = the book never covers it, or covers it only for able-bodied, car-owning, smartphone readers.
+**[BOOK HAD IT]** = covered (file, protection), skipped or misread. **[BOOK GAP]** = not covered, or only for able-bodied, car-owning smartphone readers.
 
 ---
 
