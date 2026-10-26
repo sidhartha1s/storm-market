@@ -53,7 +53,7 @@ Wind, not a siren: a self-made or licensed whiteout wind bed fades up under Paul
 > **Job:** pays L4 and E. The twelve with no power or heat; the four shoveling; the three-year-old in the hotel pool (family left a dark house); the final count, 46 in Erie County plus one in Niagara County, 47; the 1977 comparison (23 in western New York by the Army Corps count, 29 by the NWS count). The NYU review (2 Jun 23) and the state review (Guidehouse, 4 Aug 23). Close: fact + dated forward window, then the signature line (DESIGN.md "Signature closing footnote"). Christmas lands here, plainly, no sentiment adjectives.
 
 ## Packaging (candidates only; the owner picks at the packaging gate)
-Not written this round. Title rule: ≤52 chars, Name + Year in the first 40 (`references/packaging-rules.md`). Thumbnail: Paul in a Santa hat (owner idea), school per video type.
+Not written this round. Title rule: ≤52 chars, Name + Year in the first 40 (`references/packaging-rules.md`). Thumbnail: Paul in his own room with the light Christmas touch, no Santa hat (see "Paul on camera"), school per video type.
 
 ---
 
