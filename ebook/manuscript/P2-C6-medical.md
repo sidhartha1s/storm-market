@@ -144,6 +144,20 @@ bottles** rather than relying on ice you will not be able to buy.
 Write the storage range and the room-temperature window on the form in Part Six. In an emergency the
 household needs to read it, not remember it.
 
+**If you use insulin.** Insulin out of the fridge is not ruined in hours. The FDA says insulin in its
+original vial or cartridge may be left unrefrigerated between 59°F and 86°F for up to 28 days. Some
+products differ, so ask your pharmacist about yours. Never use insulin that has frozen. Keep it out of
+direct sun and away from heat. If you use ice, do not let it touch the insulin.
+«SRC: US Food and Drug Administration, "Information Regarding Insulin Storage and Switching Between
+Products in an Emergency" (n.d.) — insulin in the manufacturer's vial or cartridge "may be left
+unrefrigerated at a temperature between 59°F and 86°F for up to 28 days"; do not use insulin that has
+been frozen; if using ice, avoid freezing the insulin; keep it away from direct heat and out of direct
+sunlight; some products (e.g. Awiqli) have different limits. |
+https://www.fda.gov/drugs/emergency-preparedness-drugs/information-regarding-insulin-storage-and-switching-between-products-emergency
+| retrieved 2026-10-27»
+
+«FIG: insulin-cooler»
+
 **What this does not do:** a cooler is a delay measured in days. For a long displacement the answer is
 a pharmacy or clinic with power, and the trigger for going there belongs in Protection 95.
 
