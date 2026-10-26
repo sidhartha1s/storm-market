@@ -60,9 +60,10 @@ def _svg(viewbox, height_in, label, body):
             f'role="img" aria-label="{label}">{body}</svg>')
 
 
-def _figure(number, caption, inner_html):
+def _figure(number, caption, inner_html, large=False, credit="Original diagram."):
+    cap_style = ' style="font-size:11pt;line-height:1.35"' if large else ""
     return (f'<figure><b class="fignum" style="display:none">{number}</b>{inner_html}'
-            f'<figcaption><b>Figure {number}</b> — {caption} Original diagram.</figcaption>'
+            f'<figcaption{cap_style}><b>Figure {number}</b> — {caption} {credit}</figcaption>'
             f'</figure>')
 
 
