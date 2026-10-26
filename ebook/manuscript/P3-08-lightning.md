@@ -139,7 +139,7 @@ effects that appear later. Anyone struck or in close proximity to a strike needs
 with hearing changes, confusion, chest symptoms or numbness needs it urgently.
 
 **Then the building.** A strike to a structure frequently starts a fire in a concealed space — the attic,
-a wall cavity, the roof deck — that smoulders before it shows. If your house is struck, get everybody out
+a wall cavity, the roof deck — that smolders before it shows. If your house is struck, get everybody out
 and call the fire service even if there is nothing visible. Have them check with a thermal camera. This
 is the difference between a scorched rafter and a total loss.
 

@@ -310,7 +310,7 @@ control.
 Alcohol-based sanitiser at a sufficient concentration is the low-water answer and belongs at every
 point of use — the bucket toilet, the food area, the door. Soap and a small poured stream of treated
 water is better when hands are visibly soiled, because sanitiser does not work well on dirty hands.
-A tap-fitted water container makes a two-liter bottle last for many washes.
+A faucet-fitted water container makes a two-liter bottle last for many washes.
 
 Note the priority conflict honestly: this is one of the few non-drinking uses that justifies treated
 water, because the alternative is illness in the worst possible circumstances.

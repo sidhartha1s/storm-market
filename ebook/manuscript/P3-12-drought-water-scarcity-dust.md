@@ -68,7 +68,7 @@ Outage 3,142, Resolved 1,976, Interim Solution 1,044, Vulnerable 17. DWR notes t
 under-representative of all dry wells that have occurred or dry wells that have been resolved." |
 https://data.cnra.ca.gov/dataset/dry-well-reporting-system-data | retrieved 2026-07-29»
 
-That is the household event this playbook is about. Not a reservoir statistic — **your tap stops, and the
+That is the household event this playbook is about. Not a reservoir statistic — **your faucet stops, and the
 fix costs tens of thousands of dollars and takes months because every driller in the county is booked.**
 
 ---

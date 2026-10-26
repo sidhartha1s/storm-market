@@ -239,7 +239,7 @@ heated public building is, and recognizing the progression early (63, 64).
 This mechanism is the one that turns a survived disaster into a fatal one, and it does it during
 the recovery, in the dark, to people who did everything else right.
 
-Carbon monoxide is the central case. It is colourless, odourless, and produced by every fuel-burning
+Carbon monoxide is the central case. It is colorless, odorless, and produced by every fuel-burning
 engine and appliance, which means it is produced by exactly the equipment people reach for when the
 power is out: the generator, the charcoal grill, the camp stove, the vehicle idling in the garage
 for warmth or for a phone charge. It binds to haemoglobin far more readily than oxygen does, so a

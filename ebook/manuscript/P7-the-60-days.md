@@ -85,7 +85,7 @@ bottles, in what order, and where the tub bladder is if you buy one. Fifteen min
 doubles your store.
 
 **Day 12 — Learn the water heater draw-off (4).** Find the drain valve, understand the sequence — power or gas
-off first, then a tap opened to break the vacuum, then the valve — and write it on the card. Forty to eighty
+off first, then a faucet opened to break the vacuum, then the valve — and write it on the card. Forty to eighty
 gallons already in your house.
 
 **Day 13 — Disinfection card (7).** Buy plain unscented household bleach, and write the correct ratios on a

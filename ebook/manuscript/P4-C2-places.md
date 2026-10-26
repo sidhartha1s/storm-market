@@ -56,10 +56,10 @@ building now, in advance, because in an emergency you cannot reason through four
 
 **Learn the building's own plan**, which exists and which most residents have never read: the fire evacuation
 routes, the assembly point, whether there is a designated shelter area, how the building's alarm system works,
-what happens to the lifts and the water supply in a power outage, and whether there is a generator and what it
+what happens to the elevators and the water supply in a power outage, and whether there is a generator and what it
 actually runs. Ask management directly, in writing if necessary.
 
-**The lift is the single biggest practical fact.** In an outage it stops, and in a high-rise that means the
+**The elevator is the single biggest practical fact.** In an outage it stops, and in a high-rise that means the
 stairs, in the dark, possibly many floors, possibly carrying somebody. If anyone in your household cannot do
 that, the plan has to be built around it — which means either leaving early on a warning or having a genuine
 arrangement for assistance. Know how many floors, and count them once with the lights off and a flashlight.
@@ -89,7 +89,7 @@ Ask specifically about **loss of use**, which pays for somewhere to live while t
 and is the part that turns a fire two floors below you from a catastrophe into an inconvenience.
 
 **Then the neighbors, who matter more here than in a house.** In a building, an emergency is collective: the
-stairwell, the alarm, the water, the lift and the exits are shared. Knowing three neighbors by name — and
+stairwell, the alarm, the water, the elevator and the exits are shared. Knowing three neighbors by name — and
 knowing which of them is elderly, disabled or alone — is a genuine protection, and it is the one that gets
 someone knocked on when the power has been off for two days.
 
@@ -300,7 +300,7 @@ an evacuation notice on the door that almost nobody reads.
 |---|---|
 | **Owner** | Free things now; keep a written list of what to demand next time a contractor is on site |
 | **Apartment: floor** | Wind → lowest, interior. Flood → up. Hazmat → up. Fire → out. Decide **now**, not then |
-| **Apartment: lift** | Stops in an outage. Count the stairs with a flashlight once. Water pumps stop too |
+| **Apartment: elevator** | Stops in an outage. Count the stairs with a flashlight once. Water pumps stop too |
 | **Renters** | **Renter's insurance**, with loss of use — and flood is separately excluded, as always |
 | **Manufactured home** | Not survivable shelter in strong wind. **The plan is leaving, and the trigger is the watch** |
 | **Manufactured home** | Locate the community shelter, confirm night access, insulate the underfloor plumbing |

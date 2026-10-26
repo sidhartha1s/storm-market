@@ -222,8 +222,9 @@ def fig_water_heater_drawoff():
     {_text(180, 10, "cold inlet valve", size=6.8, anchor="end")}
     <path d="M256 34 v-12 h30" stroke-width="1.6" style="stroke:{INK};fill:none"/>
     <rect x="288" y="16" width="10" height="10" stroke-width="1.4" style="fill:none;stroke:{INK}"/>
-    {_text(302, 24, "hot tap opened", size=6.8)}
-    {_text(302, 33, "elsewhere", size=6.8)}
+    {_text(302, 24, "hot faucet", size=6.8)}
+    {_text(302, 33, "opened", size=6.8)}
+    {_text(302, 42, "elsewhere", size=6.8)}
     <rect x="224" y="184" width="18" height="10" stroke-width="1.6" style="fill:none;stroke:{INK}"/>
     <path d="M233 194 v10 h20" stroke-width="1.6" style="stroke:{INK};fill:none"/>
     {_text(233, 216, "drain valve", size=6.8, anchor="middle")}
@@ -231,7 +232,7 @@ def fig_water_heater_drawoff():
     {_text(233, 245, "gas pilot / breaker off at the base first", size=6.8, color=INK_MUTE, anchor="middle")}
     {step(1, 30, 24, ["kill the energy &mdash;", "gas pilot or breaker"])}
     {step(2, 30, 66, ["shut the cold-water", "inlet at the tank"])}
-    {step(3, 30, 108, ["open a hot tap", "elsewhere, to admit air"])}
+    {step(3, 30, 108, ["open a hot faucet", "elsewhere, to admit air"])}
     {step(4, 30, 150, ["draw from the drain", "valve into a container"])}
     {step(5, 30, 192, ["do not refill or", "re-energize until safe"])}
     <line x1="40" y1="24" x2="184" y2="18" stroke-width="1" stroke-dasharray="2,2" style="stroke:{INK_MUTE}"/>
@@ -638,7 +639,7 @@ def fig_card_cold():
         ("WARNING", "the hard freeze", [
             "Heat up, not down at night",
             "<b>Drip the far faucets</b>",
-            "Frozen pipe: tap open, hair dryer, <b>never a flame</b>",
+            "Frozen pipe: faucet open, hair dryer, <b>never a flame</b>",
             "If you leave: water off, pipes drained"]),
         ("AFTER", "the thaw", [
             "Be home for the thaw",

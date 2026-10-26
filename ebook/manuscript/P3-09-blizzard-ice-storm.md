@@ -224,8 +224,8 @@ side. Make the car visible.
 arrives when the heat comes back. Be in the house when it thaws if you can, know where the main is, and
 check every level and the basement as the temperature comes up.
 
-**If you find a frozen pipe that has not yet split:** open the tap it feeds, and warm it gently along its
-length with a hair dryer or towels, starting from the tap end. Never a blowtorch or any open flame. If
+**If you find a frozen pipe that has not yet split:** open the faucet it feeds, and warm it gently along its
+length with a hair dryer or towels, starting from the faucet end. Never a blowtorch or any open flame. If
 it has split, water off first, then deal with it.
 
 **Ice dams** get removed carefully or not at all. Do not go on an icy roof, and do not attack the ice
