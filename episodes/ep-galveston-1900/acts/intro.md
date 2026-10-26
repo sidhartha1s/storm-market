@@ -44,7 +44,7 @@ Rows: factcheck-A.md / factcheck-C.md / factcheck-D.md T1-S1 (TSHA "the city of 
 
 ### I1-S1 — narration
 **Picture:** Monthly Weather Review, September 1900, the report's byline; lower-thirds "ISAAC CLINE · LOCAL FORECAST OFFICIAL, GALVESTON" then "JOSEPH CLINE · OBSERVER"; then NOAA 1900 weather maps, September 2 to 4, the storm stepping across Cuba, chip "CROSSES CUBA · SEPT 4"; last line, a dotted arrow off western Cuba labelled "WASHINGTON ?". Source line: Isaac Cline, Monthly Weather Review; Monthly Weather Review, September 1900. [VE] [HUMAN] [Q] [loop q1 open] (where did Washington think it would go?) [loop E1 still open]
-> If you lived in Galveston in nineteen hundred, Isaac Cline still ran your weather office. His brother Joseph worked beside him as the observer. The storm crossed Cuba on the fourth of September. And Washington had its own idea of where it'd go next.
+> If you lived in Galveston in nineteen hundred, Isaac Cline still ran your weather office. His brother Joseph worked beside him as the observer. The storm crossed Cuba on the fourth of September. And Washington's forecasters had a different track in mind.
 
 Rows: factcheck-D.md I1-S1 (NOAA VLab "the senior Weather Bureau employee present at Galveston"; MWR "Local Forecast Official"); sources-cline.md §2 and factcheck-B.md I1-S1 (Joseph Cline, brother, "Mr. J. L. Cline, Observer"); factcheck-C.md / factcheck-D.md I1-S1 (MWR "crossed northward over the western central part of Cuba during the 4th"); sources-cuba.md §3 (AOML "The USWB forecasters expected the storm to recurve to the northeast"). Cline's job is spoken here once more as 1900 fact (H1-S2 said 1891); the old third spend in I1-S6 is gone (grade fix 8).
 
