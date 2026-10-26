@@ -22,19 +22,19 @@ Rows: nws-facts.md §4 NWS Peachtree City text naming hurricane-force winds in t
 Rows: nws-facts.md §3 Bowling Green -7F, November record that still stands (JKL); §5 toll 160 (JKL). [loop L1 open] how a winter storm made both.
 
 ## Option 2 · Hook shape: endpoint (2026-10-26)
-The ending everyone knows is Pittsburgh's record snow; the detail that makes it make no sense is that the same storm set a wind record and a tide record on the coast.
+The ending everyone knows is Pittsburgh's record snow; the detail that makes it make no sense is that the storm behind it had already set a wind record near the coast and a tide record on the Delaware.
 
 ### H1-S1 — Paul on camera
-**Picture:** Paul full frame at 0:00; popfig "NOVEMBER 1950 · PITTSBURGH, PA" inside the first second; chip "27.4 IN · PITTSBURGH RECORD" on "biggest snowstorm". Sound: music bed starts at 0:00 under Paul, no archive audio.
-> By the time that storm moved off into Canada, Pittsburgh was digging out from the biggest snowstorm in its records, more than two feet.
+**Picture:** Paul full frame at 0:00; popfig "NOVEMBER 1950 · PITTSBURGH, PA" inside the first second; chip "27.4 IN · RECORD" on "twenty-seven point four inches", chip "NEWARK · WIND RECORD" on "Newark". Sound: music bed starts at 0:00 under Paul, no archive audio.
+> Pittsburgh's biggest snowstorm on record stopped at twenty-seven point four inches, and the storm behind it had already set a wind record in Newark.
 
-Rows: nws-facts.md §4 exit into Canada on 29 and 30 Nov (JKL); §2 Pittsburgh largest storm on record, 27.4 in, 24 to 26 Nov (PBZ).
+Rows: nws-facts.md §2 Pittsburgh largest storm on record, 27.4 in, 24 to 26 Nov (PBZ); §1 Newark 108 mph gust on 25 Nov, strongest recorded there (PHI), so it came before the snow stopped.
 
 ### H1-S2 — narration
-**Picture:** hard cut on "And" to a self-made map: the Pittsburgh pin holds in snow white, a Newark pin appears on the coast in wind blue, chip "108 MPH · CITY RECORD" [VE] [RS]. Sound: bed; wind swell lands on "a hundred eight".
-> And on the Saturday in the middle of all that snow, the same storm hit Newark, New Jersey, with a gust of a hundred eight miles an hour, the strongest gust ever recorded there.
+**Picture:** hard cut on "Over" to a self-made map: the Pittsburgh pin holds in snow white, a Newark pin appears in wind blue, chip "108 MPH · STRONGEST EVER THERE" [VE] [RS]. Sound: bed; wind swell lands on "a hundred eight".
+> Over in Newark, New Jersey, the gust that Saturday hit a hundred eight miles an hour, the strongest ever recorded there.
 
-Rows: nws-facts.md §1 Newark 108 mph gust on 25 Nov, strongest recorded there (PHI, JKL); §2 Pittsburgh 10.1 in on 25 Nov (PBZ), so the snow was still falling that Saturday.
+Rows: nws-facts.md §1 Newark 108 mph gust on 25 Nov, strongest recorded there (PHI, JKL).
 
 ### H1-S3 — narration
 **Picture:** map slides down the coast to Philadelphia; a tide gauge graphic fills to the top, chip "10.8 FT · RECORD TIDE" [VE] [RS]. Sound: bed; low water ambience from the library under the tide line, then out.
