@@ -1,0 +1,306 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-intro-2-hookmap · H1-S2 to H1-S5 · ep-appalachian-1950 · DEEP (Opus) · brief: briefs/intro/g-intro-2-hookmap.md
+  Claim: one Saturday, the same storm put a hurricane-force gust on Newark and more than two feet of snow on Pittsburgh,
+  while Buffalo, north of Pittsburgh, sat in the 40s with no snow. Three separate pins; NOTHING joins them (L1 closed).
+
+  BASEMAP: library/inhouse/master-map-us-canada.html regional layer (Natural Earth 50m admin-1, public domain), path
+    data copied verbatim between the BASEMAP markers. The US path holds one subpath per state, so its stroke draws the
+    state lines. Coast: the same paths drawn first with a 3.2 px #4a5560 stroke, then the fills on top cover its inner
+    half and every shared state edge, leaving a 1.6 px coastline and lake shore. State lines #2a3644 1.2 px on top.
+  PROJECTION (the episode's one coordinate system): X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213).
+    Newark (-74.1724, 40.7357) = (89893.2, 32871.1); Pittsburgh (-79.9959, 40.4406) = (67525.2, 34519.2);
+    Buffalo (-78.8784, 42.8864) = (71817.5, 20859.4).
+  CAMERA FRAMES (screen = (map - top-left) * s), from briefs/intro/_list.md:
+    A s 0.12 TL (80726.5, 28204.4): NWK (1100,560)
+    B s 0.04024 TL (54602.7, 19608.7): NWK (1420,534) PIT (520,600) BUF (693,50)
+    C s 0.04024 TL (48638.5, 14141.5): NWK (1660,754) PIT (760,820) BUF (933,270)
+    D s 0.04024 TL (59078.1, 18954.6): NWK (1240,560) PIT (340,626)   <- last frame; g-intro-3-coast opens on it
+  LAYERS: #ih2-cam holds map-unit geometry and is the only element the camera transforms. Pins (#ih2-*-at) and chip
+    anchors (#ih2-*chip-at) are screen-size and camAt(t) translates each to its projected point (seek-safe, a pure
+    function of comp time). A to B is a 3x pull-out interpolated in log space (logZoom, library/inhouse/snippets/helpers.js).
+  SEG offsets assume 0.40 s gaps (no index.html yet): replace with the real data-start differences.
+-->
+<template>
+<style>
+  #g-intro-2-hookmap-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 45% 50%, #0b1016 0%, #030507 78%); }
+  .ih2-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ih2-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .ih2-scan { position:absolute; left:370px; top:0; width:1180px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .ih2-at { position:absolute; left:0; top:0; width:0; height:0; }
+  .ih2-chip { position:absolute; box-sizing:border-box; padding:10px 18px; border-radius:14px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .ih2-black { font-family:'Arial Black', Arial, sans-serif; font-weight:900; line-height:1; }
+  .ih2-bold { font-family:Arial, sans-serif; font-weight:700; line-height:1; }
+  /* Newark chip: right edge 20 px right of the pin, top 40 px below it (frame A box about x 820-1120, y 600-720) */
+  #ih2-nwkchip { right:-20px; top:40px; text-align:right; }
+  #ih2-nwk108 { display:block; font-size:58px; color:#f2f5f8; }
+  #ih2-nwkhf { display:block; margin-top:8px; font-size:22px; letter-spacing:3px; color:#7fb2e5; }
+  /* Pittsburgh chip: 30 px right of the label (label x 42, "PITTSBURGH" 26 px bold about 169 px wide) */
+  #ih2-pitchip { left:241px; top:-31px; display:grid; }
+  #ih2-pitfeet, #ih2-pitdig { grid-area:1 / 1; font-size:40px; }
+  #ih2-pitfeet { color:#f2f5f8; }
+  #ih2-pitdig { color:#7fb2e5; }
+  /* Buffalo chips: 30 px right of the label (label x 42, "BUFFALO" about 124 px wide) */
+  #ih2-bufchip1 { left:196px; top:-26px; font-size:30px; color:#dfe7ee; }
+  #ih2-bufchip2 { left:196px; top:-31px; font-size:40px; color:#d8a13a; }
+  /* toll card: centred on x 960, top 880, about 900 x 130, bottom edge at or above 1026 */
+  #ih2-toll { left:510px; top:880px; width:900px; padding:18px 18px 20px; text-align:center; }
+  #ih2-tollbig { display:block; font-size:52px; color:#f2f5f8; }
+  #ih2-tollsrc { display:block; margin-top:14px; font-size:20px; letter-spacing:1px; color:#c8d3e0; }
+  .ih2-credit { position:absolute; left:110px; bottom:60px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#93a3b2; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .ih2-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-intro-2-hookmap-root" data-composition-id="g-intro-2-hookmap" data-width="1920" data-height="1080" data-duration="28.681">
+  <svg class="ih2-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ih2-landgrad" gradientUnits="userSpaceOnUse" x1="0" y1="14000" x2="0" y2="46000">
+        <stop offset="0" stop-color="#15202b"/><stop offset="1" stop-color="#0b1016"/>
+      </linearGradient>
+      <!-- Pittsburgh / Buffalo fill sweeps: a clip rect grows top to bottom over the core dot -->
+      <clipPath id="ih2-pitclip" clipPathUnits="userSpaceOnUse"><rect id="ih2-pitclip-r" x="-10" y="-10" width="20" height="0"/></clipPath>
+      <clipPath id="ih2-bufclip" clipPathUnits="userSpaceOnUse"><rect id="ih2-bufclip-r" x="-10" y="-10" width="20" height="0"/></clipPath>
+    </defs>
+    <!-- camera layer: map units -->
+    <g id="ih2-cam">
+      <!--BASEMAP:ih2-->
+      <path id="ih2-us" vector-effect="non-scaling-stroke" stroke-linejoin="round" d="@US@"/>
+      <path id="ih2-ca" vector-effect="non-scaling-stroke" stroke-linejoin="round" d="@CA@"/>
+      <path id="ih2-border" vector-effect="non-scaling-stroke" fill="none" stroke="#2a3644" stroke-width="1.2" d="@BORDER@"/>
+      <!--/BASEMAP-->
+    </g>
+    <!-- coast under-stroke, fills, state lines: painted in this order on top of the defs-less paths above -->
+    <!-- screen-size pins: camAt sets each *-at group's translate to its projected point -->
+    <g id="ih2-pins">
+      <g id="ih2-pit-at">
+        <g id="ih2-snow" class="ih2-hide" fill="#dfe7ee" fill-opacity="0.7">
+          <circle cx="-72" cy="0" r="1.5"/><circle cx="-58" cy="0" r="1"/><circle cx="-44" cy="0" r="1.5"/>
+          <circle cx="-31" cy="0" r="1"/><circle cx="-19" cy="0" r="1.5"/><circle cx="-8" cy="0" r="1"/>
+          <circle cx="6" cy="0" r="1.5"/><circle cx="17" cy="0" r="1"/><circle cx="29" cy="0" r="1.5"/>
+          <circle cx="41" cy="0" r="1"/><circle cx="53" cy="0" r="1.5"/><circle cx="64" cy="0" r="1"/>
+          <circle cx="76" cy="0" r="1.5"/><circle cx="-84" cy="0" r="1"/>
+        </g>
+        <g id="ih2-pit" class="ih2-hide">
+          <circle id="ih2-pit-pulse" r="17" fill="none" stroke="#f2f5f8" stroke-width="3" opacity="0"/>
+          <circle id="ih2-pit-ring" r="17" fill="#04070c" fill-opacity="0.6" stroke="#93a3b2" stroke-width="3"/>
+          <circle id="ih2-pit-core" r="9" fill="#f2f5f8" clip-path="url(#ih2-pitclip)"/>
+        </g>
+        <text id="ih2-pitlab" class="ih2-lab ih2-hide" x="42" y="9">PITTSBURGH</text>
+      </g>
+      <g id="ih2-buf-at">
+        <g id="ih2-buf" class="ih2-hide">
+          <circle id="ih2-buf-ring" r="17" fill="#04070c" fill-opacity="0.6" stroke="#93a3b2" stroke-width="3"/>
+          <circle id="ih2-buf-core" r="9" fill="#d8a13a" clip-path="url(#ih2-bufclip)"/>
+        </g>
+        <text id="ih2-buflab" class="ih2-lab ih2-hide" x="42" y="9">BUFFALO</text>
+      </g>
+      <g id="ih2-nwk-at">
+        <circle id="ih2-nwk-pulse" r="17" fill="none" stroke="#7fb2e5" stroke-width="3" opacity="0"/>
+        <circle id="ih2-nwk-big" r="17" fill="none" stroke="#7fb2e5" stroke-width="3" opacity="0"/>
+        <g id="ih2-nwk">
+          <circle r="17" fill="#04070c" fill-opacity="0.6" stroke="#7fb2e5" stroke-width="3"/>
+          <circle r="9" fill="#7fb2e5"/>
+        </g>
+        <text id="ih2-nwklab" class="ih2-lab" x="-42" y="9" text-anchor="end">NEWARK</text>
+      </g>
+    </g>
+  </svg>
+  <div class="ih2-scan" id="ih2-scan"></div>
+  <!-- chip anchors: camAt translates each zero-size anchor to its pin's screen point -->
+  <div class="ih2-at" id="ih2-nwkchip-at">
+    <div class="ih2-chip" id="ih2-nwkchip">
+      <span class="ih2-black" id="ih2-nwk108">108 MPH</span>
+      <span class="ih2-bold ih2-hide" id="ih2-nwkhf">HURRICANE FORCE</span>
+    </div>
+  </div>
+  <div class="ih2-at" id="ih2-pitchip-at">
+    <div class="ih2-chip ih2-hide" id="ih2-pitchip">
+      <span class="ih2-black" id="ih2-pitfeet">2+ FEET OF SNOW</span>
+      <span class="ih2-black ih2-hide" id="ih2-pitdig">SINGLE DIGITS</span>
+    </div>
+  </div>
+  <div class="ih2-at" id="ih2-bufchip-at">
+    <div class="ih2-chip ih2-bold ih2-hide" id="ih2-bufchip1">ABOUT 200 MI NORTH</div>
+    <div class="ih2-chip ih2-black ih2-hide" id="ih2-bufchip2"><span id="ih2-buf40">40s</span><span id="ih2-bufno" class="ih2-hide"> · NO SNOW</span></div>
+  </div>
+  <div class="ih2-chip ih2-hide" id="ih2-toll">
+    <span class="ih2-black ih2-hide" id="ih2-tollbig">AT LEAST 160 LIVES LOST</span>
+    <span class="ih2-bold ih2-hide" id="ih2-tollsrc">Source: NCEI · NWS Jackson, KY</span>
+  </div>
+  <div class="ih2-credit" id="ih2-credit">Basemap: Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#ih2-";
+  const $ = function (n) { return document.getElementById("ih2-" + n); };
+  const proj = function (lon, lat) { return [3841 * (lon + 97.576), -5585 * (lat - 46.6213)]; };
+  const NWK = proj(-74.1724, 40.7357), PIT = proj(-79.9959, 40.4406), BUF = proj(-78.8784, 42.8864);
+
+  /* segment offsets (comp-local s), 0.40 s gaps assumed; cue = SEG[seg] + words.json time */
+  const SEG = { h1s2: 0.000, h1s3: 7.065, h1s4: 11.230, h1s5: 21.580 };
+  const DUR = SEG.h1s5 + 7.101;                                               /* 28.681 */
+
+  /* camera frames [s, top-left x, top-left y] -> centre form [s, cx, cy] */
+  const fr = function (s, tx, ty) { return [s, tx + 960 / s, ty + 540 / s]; };
+  const A = fr(0.12, 80726.5, 28204.4), B = fr(0.04024, 54602.7, 19608.7);
+  const C = fr(0.04024, 48638.5, 14141.5), D = fr(0.04024, 59078.1, 18954.6);
+  const DW = [D[0] / 1.03, D[1], D[2]];                                       /* D, 3 % wider */
+  const scr = function (f, p) { return [960 + (p[0] - f[1]) * f[0], 540 + (p[1] - f[2]) * f[0]]; };
+  const NWK_A = scr(A, NWK), NWK_B = scr(B, NWK);
+  const S_A1 = A[0] * (1 + 0.02 * 2.06 / 3.4);                                /* drift-in 2 % per 3.4 s, until 2.06 */
+
+  const expo = gsap.parseEase("expo.inOut"), p2 = gsap.parseEase("power2.inOut");
+  const lerp = function (a, b, u) { return a + (b - a) * u; };
+  function logLerpScale(fromScale, toScale, t) {                              /* helpers.js logZoom */
+    return Math.exp(Math.log(fromScale) + (Math.log(toScale) - Math.log(fromScale)) * t);
+  }
+  /* centre that puts map point p at screen (px, py) at scale s */
+  const anchor = function (p, px, py, s) { return [s, p[0] - (px - 960) / s, p[1] - (py - 540) / s]; };
+  function state(t) {
+    if (t < 2.06) return anchor(NWK, NWK_A[0], NWK_A[1], A[0] * (1 + 0.02 * t / 3.4));   /* THATS: drift in on Newark */
+    if (t < 3.96) {                                                            /* INLAND: logZoom A -> B, Newark glides */
+      const u = expo((t - 2.06) / 1.9);
+      return anchor(NWK, lerp(NWK_A[0], NWK_B[0], u), lerp(NWK_A[1], NWK_B[1], u), logLerpScale(S_A1, B[0], u));
+    }
+    if (t < SEG.h1s4) return B;
+    if (t < SEG.h1s4 + 1.0) {                                                  /* YOUD: pan B -> C */
+      const u = p2(t - SEG.h1s4);
+      return [B[0], lerp(B[1], C[1], u), lerp(B[2], C[2], u)];
+    }
+    if (t < SEG.h1s5) return C;
+    if (t < SEG.h1s5 + 1.4) {                                                  /* ITS: pan C -> D wide */
+      const u = p2((t - SEG.h1s5) / 1.4);
+      return [lerp(C[0], DW[0], u), lerp(C[1], DW[1], u), lerp(C[2], DW[2], u)];
+    }
+    const PUSH0 = SEG.h1s5 + 1.4, PUSH1 = DUR - 0.08;                          /* slow push, lands exactly on D */
+    if (t < PUSH1) return [logLerpScale(DW[0], D[0], (t - PUSH0) / (PUSH1 - PUSH0)), D[1], D[2]];
+    return D;
+  }
+  const camEl = $("cam");
+  const pins = [[$("nwk-at"), NWK], [$("pit-at"), PIT], [$("buf-at"), BUF]];
+  const chips = [[$("nwkchip-at"), NWK], [$("pitchip-at"), PIT], [$("bufchip-at"), BUF]];
+  function camAt(t) {
+    const c = state(t), s = c[0], cx = c[1], cy = c[2];
+    camEl.setAttribute("transform", "translate(" + (960 - cx * s).toFixed(2) + "," + (540 - cy * s).toFixed(2) + ") scale(" + s.toFixed(6) + ")");
+    for (let i = 0; i < pins.length; i++) {
+      const p = pins[i][1], x = (960 + (p[0] - cx) * s).toFixed(2), y = (540 + (p[1] - cy) * s).toFixed(2);
+      pins[i][0].setAttribute("transform", "translate(" + x + "," + y + ")");
+      chips[i][0].style.transform = "translate(" + x + "px," + y + "px)";
+    }
+  }
+  camAt(0);
+
+  /* basemap paint order: coast under-stroke (half hidden by the fills), then fills with state lines */
+  const us = $("us"), ca = $("ca");
+  us.setAttribute("fill", "url(#ih2-landgrad)"); us.setAttribute("stroke", "#2a3644"); us.setAttribute("stroke-width", "1.2");
+  ca.setAttribute("fill", "#0e1620"); ca.setAttribute("stroke", "#2a3644"); ca.setAttribute("stroke-width", "1.2");
+  [ca, us].forEach(function (el, i) {
+    const u = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    u.setAttribute("href", "#" + el.id);
+    u.setAttribute("fill", "none"); u.setAttribute("stroke", "#4a5560"); u.setAttribute("stroke-width", "3.2");
+    camEl.insertBefore(u, camEl.firstChild);
+  });
+  /* a <use> inherits fill/stroke only where the path sets none: give the coast copies their own clone instead */
+  Array.prototype.slice.call(camEl.querySelectorAll("use")).forEach(function (u) {
+    const src = document.getElementById(u.getAttribute("href").slice(1)), cl = src.cloneNode(false);
+    cl.removeAttribute("id"); cl.setAttribute("fill", "none"); cl.setAttribute("stroke", "#4a5560"); cl.setAttribute("stroke-width", "3.2");
+    camEl.replaceChild(cl, u);
+  });
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to({ t: 0 }, { t: 1, duration: DUR, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
+
+  /* transforms start in set() at 0 (file contract) */
+  tl.set([P + "nwkchip", P + "pitchip", P + "bufchip1", P + "bufchip2", P + "toll", P + "tollbig", P + "tollsrc"], { x: 0, y: 0, scale: 1 }, 0);
+  tl.set([P + "nwkhf", P + "pitfeet", P + "pitdig", P + "buf40", P + "bufno"], { x: 0, y: 0 }, 0);
+  tl.set([P + "pit", P + "buf"], { scale: 1, svgOrigin: "0 0" }, 0);
+  tl.set([P + "nwklab", P + "pitlab", P + "buflab"], { x: 0, y: 0 }, 0);
+
+  /* ambient: scan line top to bottom at about 60 px/s; credit on for the whole comp */
+  tl.fromTo(P + "scan", { y: -10 }, { y: 1090, duration: 18, ease: "none", repeat: 1 }, 0);
+
+  /* THATS @0.00: frame A, Newark pin pulsing, NEWARK label and 108 MPH already on (carried across the cut) */
+  tl.fromTo(P + "nwk-pulse", { opacity: 0.8, attr: { r: 17 } }, { opacity: 0, attr: { r: 35 }, duration: 1.2, ease: "power1.out", repeat: 14, repeatDelay: 0.2 }, 0);
+  /* HURRICANE @0.36 */
+  tl.fromTo(P + "nwkhf", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s2 + 0.36);
+
+  /* INLAND @2.06: Newark chip leaves (in frame B it would collide with the Pittsburgh chip); the label clears
+     so no text rides the 3x pull-out, and returns once the camera settles at 3.96 */
+  tl.to(P + "nwkchip", { x: -30, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, SEG.h1s2 + 2.06);
+  tl.to(P + "nwklab", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, SEG.h1s2 + 2.06);
+  tl.fromTo(P + "nwklab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out", immediateRender: false }, SEG.h1s2 + 3.96);
+
+  /* PITTSBURGH @4.02: ring + label in, white fill sweep (clip rect, top to bottom, 0.6 s), snowfall starts */
+  tl.fromTo(P + "pit", { autoAlpha: 0, scale: 0.3, svgOrigin: "0 0" }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", duration: 0.4, ease: "back.out(2)" }, SEG.h1s2 + 4.02);
+  tl.fromTo(P + "pitlab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s2 + 4.02);
+  tl.to(P + "pitclip-r", { attr: { height: 20 }, duration: 0.6, ease: "power2.inOut" }, SEG.h1s2 + 4.12);
+  tl.to(P + "pit-ring", { attr: { stroke: "#f2f5f8" }, duration: 0.6, ease: "power2.inOut" }, SEG.h1s2 + 4.12);
+  tl.fromTo(P + "snow", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, SEG.h1s2 + 4.02);
+  /* snow dots fall inside a 90 px radius, 30-50 px/s, staggered, finite repeats to the end of H1-S4 */
+  const SNOW_END = SEG.h1s4 + 9.95;
+  Array.prototype.slice.call($("snow").querySelectorAll("circle")).forEach(function (c, i) {
+    const x = +c.getAttribute("cx"), h = Math.sqrt(90 * 90 - x * x), v = 30 + (i * 7) % 21;
+    const dur = 2 * h / v, t0 = SEG.h1s2 + 4.02 + (i * 0.37) % 2.4;
+    const rep = Math.max(0, Math.floor((SNOW_END - t0) / dur) - 1);
+    tl.fromTo(c, { attr: { cy: -h } }, { attr: { cy: h }, duration: dur, ease: "none", repeat: rep }, t0);
+  });
+  tl.to(P + "snow", { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, SNOW_END);
+
+  /* TWO FEET @5.62 */
+  tl.fromTo(P + "pitchip", { autoAlpha: 0, scale: 0.9, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, transformOrigin: "left center", duration: 0.4, ease: "back.out(1.4)" }, SEG.h1s2 + 5.62);
+
+  /* AT LEAST @1.18 (H1-S3): chips to 0.35, toll card in, source 0.3 s after; "160" spoken @1.42 */
+  tl.to(P + "pitchip", { opacity: 0.35, duration: 0.3, ease: "power2.out" }, SEG.h1s3 + 1.18);
+  tl.fromTo(P + "toll", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, SEG.h1s3 + 1.18);
+  tl.fromTo(P + "tollbig", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power3.out" }, SEG.h1s3 + 1.18);
+  tl.fromTo(P + "tollsrc", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, SEG.h1s3 + 1.48);
+  /* LIVES ends @3.48: toll card out, done before H1-S4 0.20 */
+  tl.to(P + "toll", { y: 30, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, SEG.h1s3 + 3.64);
+
+  /* YOUD @0.00 (H1-S4): pan B -> C (camAt, 1.0 s, power2.inOut); Pittsburgh chip back to full */
+  tl.to(P + "pitchip", { opacity: 1, duration: 0.3, ease: "power2.out" }, SEG.h1s4);
+  /* BUFFALO @0.44: ring in during the pan; its label waits for the pan to settle at 1.00 */
+  tl.fromTo(P + "buf", { autoAlpha: 0, scale: 0.3, svgOrigin: "0 0" }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", duration: 0.4, ease: "back.out(2)" }, SEG.h1s4 + 0.44);
+  tl.fromTo(P + "buflab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 1.00);
+  /* 200 @1.32: one reading target, the Pittsburgh chip dims */
+  tl.fromTo(P + "bufchip1", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 1.32);
+  tl.to(P + "pitchip", { opacity: 0.35, duration: 0.3, ease: "power2.out" }, SEG.h1s4 + 1.32);
+  /* BUFFALO2 @5.24 */
+  tl.to(P + "bufchip1", { x: 20, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, SEG.h1s4 + 5.24);
+  /* 40S @6.16: Buffalo fill sweeps warm amber, "40s" in */
+  tl.to(P + "bufclip-r", { attr: { height: 20 }, duration: 0.4, ease: "power2.inOut" }, SEG.h1s4 + 6.16);
+  tl.to(P + "buf-ring", { attr: { stroke: "#d8a13a" }, duration: 0.4, ease: "power2.inOut" }, SEG.h1s4 + 6.16);
+  tl.fromTo(P + "bufchip2", { autoAlpha: 0, scale: 0.9, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, transformOrigin: "left center", duration: 0.4, ease: "back.out(1.4)" }, SEG.h1s4 + 6.16);
+  /* NO SNOW @6.64 */
+  tl.fromTo(P + "bufno", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 6.64);
+  /* SINGLE @9.14: Pittsburgh chip flips to SINGLE DIGITS at full; Buffalo chip dims */
+  tl.to(P + "pitchip", { opacity: 1, duration: 0.3, ease: "power2.out" }, SEG.h1s4 + 9.14);
+  tl.to(P + "pitfeet", { y: -20, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, SEG.h1s4 + 9.14);
+  tl.fromTo(P + "pitdig", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 9.14);
+  tl.to(P + "bufchip2", { opacity: 0.35, duration: 0.3, ease: "power2.out" }, SEG.h1s4 + 9.14);
+
+  /* ITS @0.00 (H1-S5): Buffalo and both chips out; pan C -> D wide (camAt 1.4 s), then slow push to exactly D */
+  tl.to([P + "buf", P + "buflab"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, SEG.h1s5);
+  tl.to(P + "bufchip2", { x: 20, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, SEG.h1s5);
+  tl.to(P + "pitchip", { x: 20, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, SEG.h1s5);
+  /* HURRICANE @1.00: Newark one strong pulse (ring to 90 px) */
+  tl.fromTo(P + "nwk-big", { opacity: 1, attr: { r: 17 } }, { opacity: 0, attr: { r: 45 }, duration: 1.0, ease: "power2.out" }, SEG.h1s5 + 1.00);
+  tl.fromTo(P + "nwk-pulse", { opacity: 0.8, attr: { r: 17 } }, { opacity: 0, attr: { r: 35 }, duration: 1.2, ease: "power1.out", repeat: 3, repeatDelay: 0.2, immediateRender: false }, SEG.h1s5 + 1.60);
+  /* SNOW @2.38: Pittsburgh one pulse, white */
+  tl.fromTo(P + "pit-pulse", { opacity: 0.9, attr: { r: 17 } }, { opacity: 0, attr: { r: 40 }, duration: 1.0, ease: "power2.out" }, SEG.h1s5 + 2.38);
+  /* SEE HOW ends @6.96: the push lands on frame D (camAt), the comp ends on it for g-intro-3-coast */
+
+  window.__timelines["g-intro-2-hookmap"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
