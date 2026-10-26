@@ -28,6 +28,7 @@ import os
 import re
 import shutil
 import subprocess
+NO_WINDOW = getattr(subprocess, "CREATE_NO_WINDOW", 0)   # each ssh/scp from a console-less parent otherwise opens a window on the owner's screen
 import sys
 import tarfile
 import tempfile
@@ -90,7 +91,7 @@ def referenced(ep):
 
 
 def ssh(cmd, timeout):
-    return subprocess.run(["ssh", "-n", "zbook", cmd], capture_output=True, text=True, timeout=timeout)
+    return subprocess.run(["ssh", "-n", "zbook", cmd], capture_output=True, text=True, timeout=timeout, creationflags=NO_WINDOW)
 
 
 def ship(ep):
@@ -110,7 +111,7 @@ def ship(ep):
             r = ssh(f'mkdir "{mirror}" 2>nul & exit 0', 60)
             if r.returncode:
                 raise RuntimeError(f"ssh mkdir: {r.stderr.strip()}")
-            subprocess.run(["scp", "-q", str(tar), f"zbook:{mirror}\\ship.tar".replace("\\", "/")], check=True, timeout=1800)
+            subprocess.run(["scp", "-q", str(tar), f"zbook:{mirror}\\ship.tar".replace("\\", "/")], check=True, timeout=1800, creationflags=NO_WINDOW)
             r = ssh(f'tar -xf "{mirror}\\ship.tar" -C "{mirror}" && del "{mirror}\\ship.tar"', 600)
             if r.returncode:
                 raise RuntimeError(f"ssh untar: {r.stderr.strip()}")
@@ -124,7 +125,7 @@ def limit(times):
 
 
 def snap_local(ep, times, pin, name, out):
-    gate = subprocess.run([sys.executable, str(SCRIPTS / "render_busy.py")])
+    gate = subprocess.run([sys.executable, str(SCRIPTS / "render_busy.py")], creationflags=NO_WINDOW)
     if gate.returncode:
         return gate.returncode, "render_busy refused"
     cmd = [shutil.which("npx") or "npx", "--yes", f"hyperframes@{pin}", "snapshot", str(ep), "--at", ",".join(map(str, times)),
@@ -134,7 +135,7 @@ def snap_local(ep, times, pin, name, out):
         try:
             rc = p.wait(timeout=limit(times))
         except subprocess.TimeoutExpired:
-            subprocess.run(["taskkill", "/T", "/F", "/PID", str(p.pid)], capture_output=True)   # the whole tree: npx, node, Chrome
+            subprocess.run(["taskkill", "/T", "/F", "/PID", str(p.pid)], capture_output=True, creationflags=NO_WINDOW)   # the whole tree: npx, node, Chrome
             p.wait()
             rc = 1
             log.write(f" | killed after {limit(times)} s")
@@ -166,7 +167,7 @@ def run_detached(name, body, deadline):
         r = ssh(f'mkdir "{base}" 2>nul & del "{rc_f}" 2>nul & exit 0', 60)
         if r.returncode:
             raise RuntimeError(f"ssh mkdir: {r.stderr.strip()}")
-        subprocess.run(["scp", "-q", str(local), f"zbook:{cmd_f}".replace("\\", "/")], check=True, timeout=300)
+        subprocess.run(["scp", "-q", str(local), f"zbook:{cmd_f}".replace("\\", "/")], check=True, timeout=300, creationflags=NO_WINDOW)
     start = ("powershell -NoProfile -Command \"(Invoke-CimMethod -ClassName Win32_Process -MethodName Create "
              f"-Arguments @{{CommandLine='cmd.exe /c {name}.cmd'; CurrentDirectory='{base}'}}).ReturnValue\"")   # relative name: the repo path has a space
     r = ssh(start, 120)
@@ -204,7 +205,7 @@ def snap_zbook(ep, times, pin, name, out):
     log = f"shipped {sent} of {total} files; " + tail
     if rc:
         return rc, log
-    g = subprocess.run(["scp", "-q", "-r", f"zbook:{rout}/*".replace("\\", "/"), str(out)], capture_output=True, text=True, timeout=600)
+    g = subprocess.run(["scp", "-q", "-r", f"zbook:{rout}/*".replace("\\", "/"), str(out)], capture_output=True, text=True, timeout=600, creationflags=NO_WINDOW)
     return g.returncode, log + g.stderr[-200:]
 
 
