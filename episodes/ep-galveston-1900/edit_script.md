@@ -41,6 +41,7 @@ Budget per `references/mg-quickref.md` "Paul on screen": 6 clips x 15 credits = 
 | cta-hinge: what Cline told Washington at three thirty | A3 last segment | A4-S1 |
 
 ## H · Hook (0:00)
+Hook shape: belief-question (2026-10-26)
 ### H1-S1 — narration
 Visual: Paul full frame, on camera, the hook line only. Popfig inside the first second: "GALVESTON, TEXAS · SEPTEMBER 1900". Sound: wind and surf rising under the line. [HOOK] [Q] (the viewer answers: my weatherman)
 > A hurricane's coming. Who do you listen to?

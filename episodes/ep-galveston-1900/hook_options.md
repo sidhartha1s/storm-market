@@ -7,7 +7,7 @@ The strongest fact is one sentence on a newspaper page, so the hook opens on tha
 
 ### H1-S1 — Paul on camera
 **Picture:** Paul full frame at 0:00; popfig "GALVESTON, TEXAS · SEPTEMBER 1900" inside the first second; the sound under him: a low sea swell only, no wind yet.
-> Galveston's own weatherman wrote in the city paper that a storm seriously damaging Galveston was simply an absurd delusion.
+> Galveston's own weatherman wrote in the city paper that the fear of a storm seriously damaging Galveston was simply an absurd delusion.
 
 Rows: sources-cline.md §1 (Galveston Daily News, 16 July 1891, p. 5: "is simply an absurd delusion"); factcheck-E.md H1-S2 (Cline wrote the part of the article that holds the line; "the whole city" was flagged as an overstatement, so the line says "the city paper").
 
@@ -34,19 +34,19 @@ The one ordinary thing is a single page of the town paper from 1891: it is where
 
 ### H1-S1 — Paul on camera
 **Picture:** Paul full frame at 0:00, holding a printed reproduction of the Galveston Daily News page of 16 July 1891; popfig "GALVESTON, TEXAS · SEPTEMBER 1900" inside the first second; the sound under him: newsprint unfolding, then rain on a window, no wind.
-> This one page of the Galveston paper, printed in July of eighteen ninety-one, told readers that no hurricane could badly hurt their city.
+> This page of the Galveston paper, from July eighteen ninety-one, told readers no hurricane could send a storm wave big enough to badly damage their city.
 
 Rows: sources-cline.md §1 and factcheck-E.md H1-S4 (same page: "impossible for any cyclone to create a storm wave which would materially injure the city"; "badly" accepted for "seriously/materially", factcheck-D.md H1-S2; "hurricane" for "cyclone").
 
 ### H1-S2 — narration
-**Picture:** slow push to the column; chip "ABSURD DELUSION"; lower-third "ISAAC CLINE · LOCAL FORECAST OFFICIAL, GALVESTON". Source line: Isaac Cline, Galveston Daily News, 16 July 1891. [RS] [VE] (break one)
-> Part of that page was written by the man who ran the island's weather office, Isaac Cline. He was still running it when the hurricane came ashore in September of nineteen hundred.
+**Picture:** slow push to the column; chip "ABSURD DELUSION"; lower-third "ISAAC CLINE · GALVESTON WEATHER OFFICE, 1900". Source line: Isaac Cline, Galveston Daily News, 16 July 1891. [RS] [VE] (break one)
+> Isaac Cline wrote part of it. He still ran the weather office in nineteen hundred.
 
 Rows: sources-cline.md §1 and factcheck-E.md H1-S2 (Cline wrote part of the article); sources-cline.md §2 (Local Forecast Official, in Galveston from 1889); sources-cuba.md §4 (landfall 8 Sept 1900).
 
 ### H1-S3 — narration
 **Picture:** hard cut to the NOAA 1900 map, Havana pinned, popfig "BELEN OBSERVATORY, HAVANA", one arrow northwest into the Gulf; then the telegraph line graphic, the Washington line lit, the Havana line dark. Source line: NOAA AOML, 2015. [RS] [VE] (break two)
-> Over in Havana, the Jesuits at Belen Observatory had said the storm was moving northwest, into the Gulf of Mexico. NOAA says the Bureau's forecasts were the only ones carried over the telegraph.
+> Over in Havana, the Jesuits at Belen Observatory had said the storm was moving northwest, into the Gulf of Mexico. NOAA says the Bureau decreed that only its forecasts would be carried over the telegraph.
 
 Rows: sources-cuba.md §1 (Belen: northwest into the Gulf; Jesuit, cubamemorias.com via factcheck-B.md I1-S3); sources-cuba.md §2 (decree, NOAA's words with spoken attribution: "only its forecasts would be carried over the telegraph").
 
@@ -84,8 +84,14 @@ Rows: sources-cuba.md §1 (Belen: northwest into the Gulf, undated in the source
 Rows: sources-cline.md §5 (highest point 8.7 ft, NPS).
 
 ## Word counts (Paul's line, counted word by word)
-- Option 1 · record: 19 words.
-- Option 2 · object: 23 words.
+- Option 1 · record: 22 words.
+- Option 2 · object: 26 words.
 - Option 3 · drop-in: 23 words.
 
 Open `[verify]` markers: 0. Footage note carried from research: the Library of Congress record for the Broadway ruins film (Option 1, H1-S4) and the 1891 page scan are still to be checked by a person before render; neither is a new fact.
+
+## Review record (26 Oct 26)
+- Rule: `references/script-quickref.md` "The hook" (PR sidhartha1s/storm-market#226). None of these options is `belief-question`, the shape of the current hook in `edit_script.md`.
+- Facts: every spoken line and chip checked against `research/` by a separate checker (rounds 1 to 3); every CORRECTED wording applied, nothing UNVERIFIED left.
+- Grade (fresh Opus grader, bar 8, after round 3): record 6 · object 7 · drop-in 8.
+- The shape the owner picks replaces the `Hook shape:` tag in `edit_script.md`; `python3 scripts/hook_shape.py episodes/ep-galveston-1900` then checks it against the last 2 episodes.
