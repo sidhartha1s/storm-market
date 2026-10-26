@@ -203,7 +203,10 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
 - `render_preflight.py` refuses an `ep-` documentary missing a layer the owner already asked for (circle, bed, Paul's
   clips; owner 18 Oct 26) or whose circle clip is a still stand-in, not a moving face (test
   `python3 scripts/test_frozen_circle.py`). Its `LAYERS` table is the list and holds the thresholds; `run_gates.py` runs it too.
-- One heavy job at a time; `scripts/render_busy.py` guards it. No gates, Playwright or subagent browsers beside a render.
+- One heavy job per machine at a time: render.cmd, TTS (`tts_episode.py`, `tts_clone.py`), the face pass (`circle_face.py`) and `e2e.py`
+  book the heavy lock (`~/.storm-heavy.lock`) and wait their turn, also when started over ssh; a dead holder's lock is taken over.
+  How it works and how a new heavy job books it: the `scripts/render_busy.py` docstring (test `python3 scripts/test_render_busy.py`).
+  No gates, Playwright or subagent browsers beside a render.
 - Render only with `scripts\render.cmd <slug> <draft|full> [out-basename]`. The dojo-ops dashboard starts a draft only through `scripts\dojo_draft.cmd` (no arguments: it reads and re-checks the slug dojo-ops wrote to `%LOCALAPPDATA%\dojo-ops\render-request.txt`, sets 2 workers, then calls render.cmd; test `python3 scripts/test_dojo_draft.py`). Default 3 workers; full renders on this box
   set `RENDER_WORKERS=2` in a per-episode wrapper only with 100 GB free (else 1) (`scripts/<ep>_full_task.cmd`). `RENDER_CRF=20` gives a smaller single pass. Planning numbers: a 17 min draft took 36 min, a 28 min full took about 75 min at 2 workers.
 - Launch hidden through a scheduled task, deleted in the same command: `schtasks /create /tn <T> /tr "wscript.exe

@@ -114,6 +114,7 @@ def free_gb():
 
 POLL_S = 10  # seconds between looks at a held lock
 _k32 = ctypes.WinDLL("kernel32", use_last_error=True)
+_k32.OpenProcess.restype = ctypes.c_void_p  # a HANDLE, not the default 32-bit int
 
 
 def lock_path():
@@ -125,6 +126,7 @@ def created(pid):
     h = _k32.OpenProcess(0x1000, False, pid)  # PROCESS_QUERY_LIMITED_INFORMATION
     if not h:
         return -1 if ctypes.get_last_error() == 5 else None  # access denied = alive, so it is never taken over
+    h = ctypes.c_void_p(h)
     try:
         code, t = ctypes.c_ulong(), (ctypes.c_ulonglong * 4)()
         if not _k32.GetExitCodeProcess(h, ctypes.byref(code)) or code.value != 259:  # 259 = STILL_ACTIVE
@@ -168,12 +170,15 @@ def take(job, pid):
             fd = os.open(p, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
         except FileExistsError:
             cur = read_lock(p)
-            if cur is None:  # still being written by its taker (or corrupt: then it never parses; see below)
-                if time.time() - p.stat().st_mtime > 60:
-                    cur = {"pid": 0, "created": 0, "job": "unreadable lock file"}
-                else:
+            if cur is None:  # being written by its taker this instant, or corrupt: a minute on, it counts as dead
+                try:
+                    age = time.time() - p.stat().st_mtime
+                except OSError:
+                    continue
+                if age < 60:
                     time.sleep(0.2)
                     continue
+                cur = {"pid": 0, "created": 0, "job": "an unreadable lock file"}
             if mine and cur.get("token") == mine:
                 return None
             if not holder_alive(cur):
@@ -245,7 +250,7 @@ def main():
         for l in live:
             print("   ", l[:160])
         sys.exit(3)
-    if "--launch" not in sys.argv:  # render.cmd already holds the lock (--hold) when it gets to --launch
+    if "--launch" not in sys.argv and "--light" not in sys.argv:  # --light may run beside a heavy job; render.cmd already holds the lock (--hold) when it gets to --launch
         wait_free()
     # the RAM floor protects a RENDER about to start (--launch); a gate's single headless Chromium (~300 MB) only needs 'no render alive'
     free = free_gb()
