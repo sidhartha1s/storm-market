@@ -33,8 +33,7 @@ G to H is a 6.2x pull-out with a westward pan: `logZoom`. H to F is a 1.6x pull-
   - Keep-out for the LMK sheet (track 3), I1-S3 5.8 to 10.2 s: box x 960 to 1580, y 150 to 660. Pittsburgh (1103, 155) and Newark (1662, 114) in frame F show dots only, no labels.
 - Newark (frame D, I1-S4): pin wind blue with pulse, label "NEWARK" left of the pin, chip "108 MPH" (Arial Black 900 58 px `#f2f5f8`, glass) 30 px below-left of the pin: box about x 920 to 1200, y 600 to 680. Pittsburgh pin white at (340, 626), label "PITTSBURGH" right of it. Bowling Green and the cold wash fade out during the F to D move.
 - Unnamed marker (I1-S4): a HUD element, not a map point (it must not sit on a real place): a 64 px circle, 3 px stroke `#d8a13a`, centred at (1700, 170), with a "?" Arial Black 900 52 px `#d8a13a` centred in it. Pulse ring 64 to 120 px, opacity 0.8 to 0, 0.9 s, repeating every 1.0 s to the end. No leader line, no label, no number.
-- Type tiers: 58/52 (big), 26 (labels, mid), 19 small is not needed here; if the gate counts fewer than 3 tiers, add the I1-S2 eyebrow below.
-  - Optional small tier: none on screen is required by the script; do not invent copy. If graphics_qc fails flat-type, declare `data-type-ok="map labels and figures, two tiers by design"` on the root and say so in the receipt.
+- Type tiers: big 58 (chips), mid 26 (place labels), small 19: a basemap credit "Basemap: Natural Earth" Arial 700 19 px `#93a3b2` at left 110, bottom 60, on for the whole comp (honest small text; no invented copy).
 
 ## 4. Must be true in the picture
 1. L1: no line, band or shading joins any two pins; no track, low symbol, front teeth, isobar or wind arrow. The cold wash has no teeth and no attachment to any pin, and stops short of the coast (Newark and the shore outside it).
@@ -46,7 +45,7 @@ G to H is a 6.2x pull-out with a westward pan: `logZoom`. H to F is a 1.6x pull-
 7. Nothing with text or a highlight in x >= 1600, y >= 680 in any frame.
 
 ## 5. Panel text (exact) and cues
-Text strings: `LAGUARDIA AIRPORT` (carried in, then out) · `PITTSBURGH` · `BOWLING GREEN, KY` · `-7°F` · `NEWARK` · `108 MPH` · `?`
+Text strings: `Basemap: Natural Earth` · `LAGUARDIA AIRPORT` (carried in, then out) · `PITTSBURGH` · `BOWLING GREEN, KY` · `-7°F` · `NEWARK` · `108 MPH` · `?`
 Segment offsets (comp-local, assumes 0.40 s gaps; replace with the real `data-start` differences):
 `SEG = { i1s2: 0.000, i1s3: 7.723, i1s4: 18.099 }` ; segment lengths 7.323, 9.976, 2.021 s.
 Cues (segment word time from `audio/<seg>.words.json`; comp time = SEG + t):

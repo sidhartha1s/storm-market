@@ -28,7 +28,7 @@ D to E is a 1.5x push (linear is fine); E to G is a 4.2x push: `logZoom` from `l
 - LaGuardia pin (frame G): core 18 px `#7fb2e5`, ring 34 px, label "LAGUARDIA AIRPORT" Arial 700 26 px `#dfe7ee` with the dark stroke, right of the pin.
 - Runway inset (fallback only; the basemap is too coarse to show runways): a glass card 560 x 360 px at x 1000 to 1560, y 230 to 590 (clear of the circle corner), leader line 2 px `#93a3b2` from the card's left edge to the LaGuardia pin ring. Inside: two crossing runway strips 400 x 34 px and 300 x 34 px, `#2a3644` with `#93a3b2` 2 px edges, at 45 and 135 degrees, crossing near the centre; a shoreline curve along the card's top edge (water above it). Water fill `#5a768f` at 0.6 spreads from the shoreline down across the strips (clip-path or scaleY from the top edge, 1.3 s, power2.inOut). A small label under the card's lower edge, inside it: "SCHEMATIC, NOT TO SCALE" Arial 700 19 px `#93a3b2` tracking 2. No runway numbers, no headings (the 1950 layout is not sourced).
 - Chip "DIKES BREACHED · LAGUARDIA" (glass, Arial Black 900 40 px `#f2f5f8`) centred under the inset card at y 630 to 700, x about 980 to 1580 (keep right edge at or left of 1590).
-- Scan line as g-intro-2 for the whole comp.
+- Scan line as g-intro-2 for the whole comp. Basemap credit "Basemap: Natural Earth" Arial 700 19 px `#93a3b2` at left 110, bottom 60, whole comp (small tier in both branches).
 - Type tiers: big 52 ("SHORE FLOODED"), mid 40 ("DIKES BREACHED · LAGUARDIA", too wide at 52 for the 600 px under the inset) and 26 (labels), small 19 (inset label).
 
 ## 4. Must be true in the picture
@@ -41,7 +41,7 @@ D to E is a 1.5x push (linear is fine); E to G is a 4.2x push: `logZoom` from `l
 7. Connecticut flooding is not drawn (narration names New Jersey and New York only).
 
 ## 5. Panel text (exact) and cues
-Text strings: `NEWARK` · `SHORE FLOODED` · `LAGUARDIA AIRPORT` · `SCHEMATIC, NOT TO SCALE` · `DIKES BREACHED · LAGUARDIA`
+Text strings: `Basemap: Natural Earth` · `NEWARK` · `SHORE FLOODED` · `LAGUARDIA AIRPORT` · `SCHEMATIC, NOT TO SCALE` · `DIKES BREACHED · LAGUARDIA`
 Cues from `audio/i1-s1.words.json` (seconds from the segment start = comp-local seconds; host starts on I1-S1 audio start):
 - 0.00 "On": frame D, held from the hook; pins pulse every 1.4 s. `/* ON @0.00 */`
 - 0.26 "coast": push D to E (1.1 s, power2.inOut), Pittsburgh pin and label out during it. `/* COAST @0.26 */`
@@ -53,7 +53,7 @@ Cues from `audio/i1-s1.words.json` (seconds from the segment start = comp-local 
 - 7.34 "dikes": inset card slides in (`fromTo` x 120 to 0, autoAlpha, 0.6 s, power3.out), leader line draws (strokeDashoffset, 0.4 s); chip "DIKES BREACHED · LAGUARDIA" in at 7.60. `/* DIKES @7.34 */`
 - 8.88 "ran": water spreads across the strips (to 10.16 "runways."). `/* RAN @8.88 */`
 - 10.16 to end: hold with a 1.5 % slow drift of the inset water edge (sine yoyo) and the scan line; then inset and chip exit (`to` x 980, autoAlpha 0, 0.6 s, power3.in) anchored to the host's last 0.6 s.
-Host: data-start = I1-S1 audio start, duration = 10.427 + the gap to I1-S2 (default 0.40) = 10.83 s. g-intro-5-inland opens on its own frame (H), so this comp ends on its exit, not on a shared frame.
+Host: data-start = I1-S1 audio start, duration = 10.427 + the gap to I1-S2 (default 0.40) = 10.83 s. Last frame: camera frame G with only the LaGuardia pin and "LAGUARDIA AIRPORT" label on the map (inset, leader and chip gone); g-intro-5-inland opens on exactly that frame. Footage branch: the host ends at 5.60 instead and g-intro-5 opens on frame G after the footage.
 
 ## 6-8
 Contract, tools, done line, receipt: `references/mg-brief-template.md` §6, §7, §7a, §8. Done line item 3: capture this host's first frame next to g-intro-2-hookmap's last frame and state that they match.
