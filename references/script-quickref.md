@@ -38,7 +38,7 @@ of the principle beside it. Never reuse its words or its sentence pattern in a s
 - `endpoint`: say how it ended in plain words, then the one detail that makes that ending make no sense.
 - `missing`: name the thing that should exist and does not (a photo, a name, a warning, a siren).
 - `clock`: a time of day and a count of minutes; the gap between them is the story.
-- `object`: one ordinary thing (a door, a page, a phone call) held up first, which turns out to carry the whole story.
+- `object`: one ordinary thing (a door, a page, a phone call) shown first (on screen, never in Paul's hand), which turns out to carry the whole story.
 
 ### Every hook, whatever its shape
 - Promise first: the payoff the title/thumbnail already made lands inside the hook.

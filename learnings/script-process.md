@@ -93,7 +93,9 @@ Rules:
 3. F5 vs EF5: 1974 and every tornado before 2007 is F-scale (F5); 2007 on is EF5. The owner read "F5" as a typo; the
    script now carries a one-line note so nobody "fixes" it.
 4. **Every hook and every script (shorts, minis, docs) gets an independent grade before the owner sees it**: a
-   separate skeptic-reviewer agent that has not seen the writer's reasoning rates the hook 0 to 10 with a confidence
+   separate skeptic-reviewer agent that has not seen the writer's reasoning runs the named pass/fail checks in
+   `references/grader-calibration.md` (26 Oct 26, replacing the one 0-10 number; the 24 owner verdicts there are the
+   calibration), rates the hook 0 to 10 with a confidence
    percentage, every chapter on the six script-os axes, draws the stakes curve, lists open-loop gaps, register
    violations and fluff sentences, and ranks the fixes. The writer fixes, re-grades, and reports both grades to the
    owner. Revised 27 Sep 26 (`references/script-scaling.md` "Section lock — the ONE definition"): the grade applies
