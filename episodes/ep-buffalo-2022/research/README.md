@@ -1,6 +1,6 @@
 # ep-buffalo-2022 research index (26 Oct 26)
 
-Fact files (every row has a URL and a PRIMARY or SECONDARY tag): `deaths.md` (who lost their lives, where found), `nws.md` (forecast, warnings, airport observations), `response.md` (driving ban, stranded vehicles, 911, Guard, reviews). Fact-check passes on the hook+intro: `../fact_check.md`.
+Fact files (every row has a URL and a PRIMARY or SECONDARY tag): `deaths.md` (who lost their lives, where found), `nws.md` (forecast, warnings, airport observations), `response.md` (driving ban, stranded vehicles, 911, Guard, reviews). Fact-check passes on the hook+intro: `../fact_check.md`. Licensed real-footage candidates, round 2: `cc-clips-r2.md`.
 
 ## Primary sources read, by agency
 - **NWS Buffalo** (via the Iowa Environmental Mesonet text archive): Winter Storm Watch WWUS41 KBUF 201922 (2:22 p.m. 20 Dec 22); Blizzard Warning WWUS41 KBUF 220854 (3:54 a.m. 22 Dec 22); Area Forecast Discussions FXUS61 KBUF 180910 (18 Dec), 200951 (20 Dec, "once in a generation"), 221008 (22 Dec); snowfall PNS NOUS41 KBUF 281646 (51.9 in at the airport); airport ASOS observations 22 to 27 Dec. URLs in `nws.md`.
