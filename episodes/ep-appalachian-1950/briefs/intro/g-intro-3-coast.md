@@ -24,12 +24,12 @@ D to E is a 1.5x push (linear is fine); E to G is a 4.2x push: `logZoom` from `l
 - Basemap, pins, labels: as g-intro-2 §3. Pittsburgh pin and label fade out during the D to E push (they leave frame). Newark keeps its blue pin and "NEWARK" label (label left of pin).
 - Tide line (frame E): a polyline in map units that follows the New Jersey Atlantic coastline from Sandy Hook to Cape May, offset 40 map units seaward (trace the basemap's own coastline vertices between those two points; do not invent a coast). Stroke `#7fb2e5` 3 px non-scaling, plus a second softer stroke 10 px at 0.25 opacity. It starts 25 px seaward of the coast (screen) and pushes onto the coast: `to` a translate of about 25 px westward (screen) over 1.0 s, power2.out.
 - Shore flood fill: a band 12 px wide (screen, at frame E) on the land side of the same coastline, `#5a768f` at 0.55 with a 45-degree hatch `#7fb2e5` at 0.35; it grows south from Sandy Hook to Cape May (clip rect or strokeDashoffset on a thick stroked path, 1.2 s, power2.inOut). This band is SCHEMATIC (no source gives extent); keep it narrow.
-- Chip "SHORE FLOODED" (glass chip as g-intro-2, Arial Black 900 40 px `#f2f5f8`) in the ocean, left edge 60 px east of the Atlantic City coast point: about x 1000 to 1330, y 760 to 830 at frame E. Must not cross into x >= 1600, y >= 680.
+- Chip "SHORE FLOODED" (glass chip as g-intro-2, Arial Black 900 52 px `#f2f5f8`) in the ocean, in open ocean east of the coast between Sandy Hook and Atlantic City: box x 1000 to 1500, y 590 to 670 at frame E (above the circle corner x >= 1600, y >= 680, and at least 60 px from the coastline).
 - LaGuardia pin (frame G): core 18 px `#7fb2e5`, ring 34 px, label "LAGUARDIA AIRPORT" Arial 700 26 px `#dfe7ee` with the dark stroke, right of the pin.
 - Runway inset (fallback only; the basemap is too coarse to show runways): a glass card 560 x 360 px at x 1000 to 1560, y 230 to 590 (clear of the circle corner), leader line 2 px `#93a3b2` from the card's left edge to the LaGuardia pin ring. Inside: two crossing runway strips 400 x 34 px and 300 x 34 px, `#2a3644` with `#93a3b2` 2 px edges, at 45 and 135 degrees, crossing near the centre; a shoreline curve along the card's top edge (water above it). Water fill `#5a768f` at 0.6 spreads from the shoreline down across the strips (clip-path or scaleY from the top edge, 1.3 s, power2.inOut). A small label under the card's lower edge, inside it: "SCHEMATIC, NOT TO SCALE" Arial 700 19 px `#93a3b2` tracking 2. No runway numbers, no headings (the 1950 layout is not sourced).
 - Chip "DIKES BREACHED · LAGUARDIA" (glass, Arial Black 900 40 px `#f2f5f8`) centred under the inset card at y 630 to 700, x about 980 to 1580 (keep right edge at or left of 1590).
 - Scan line as g-intro-2 for the whole comp.
-- Type tiers: 40 (mid) for chips is not big: the big tier is the chip "SHORE FLOODED" at 52 px if the gate counts fewer than 3 tiers; set both chips to Arial Black 900 52 px and keep labels 26 px, inset label 19 px (3 tiers: 52 / 26 / 19).
+- Type tiers: big 52 ("SHORE FLOODED"), mid 40 ("DIKES BREACHED · LAGUARDIA", too wide at 52 for the 600 px under the inset) and 26 (labels), small 19 (inset label).
 
 ## 4. Must be true in the picture
 1. Frame 0 equals g-intro-2-hookmap's last frame (frame D, same pins, labels, colours, scan line position aside).
@@ -37,7 +37,7 @@ D to E is a 1.5x push (linear is fine); E to G is a 4.2x push: `logZoom` from `l
 3. The tide line and flood band follow the real New Jersey coastline from the basemap's own vertices (Sandy Hook at (940, 472) to Cape May at (731, 983) in frame E, ±10 px).
 4. Every invented extent or layout is labelled "SCHEMATIC, NOT TO SCALE" (the inset); the shore band is narrow and claims no depth.
 5. One chip at full opacity at a time; "SHORE FLOODED" is gone before the LaGuardia chip lands.
-6. Nothing with text or a highlight sits in x >= 1600, y >= 680 in any frame.
+6. Nothing with text or a highlight sits in x >= 1600, y >= 680 in any frame (the "SHORE FLOODED" chip sits at y 590 to 670).
 7. Connecticut flooding is not drawn (narration names New Jersey and New York only).
 
 ## 5. Panel text (exact) and cues
