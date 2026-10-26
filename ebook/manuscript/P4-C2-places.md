@@ -155,7 +155,7 @@ because that is what the arithmetic requires.
   «SRC: NOAA Storm Prediction Center, "SPC Products" — categorical outlook levels 1-MRGL, 2-SLGT, 3-ENH,
   4-MDT ("an area where widespread severe weather with several tornadoes and/or numerous severe
   thunderstorms is likely") and 5-HIGH ("an area where a severe weather outbreak is expected from either
-  numerous intense and long-tracked tornadoes" or widespread damaging wind); a tornado watch carries the
+  numerous intense and long-tracked tornadoes ..."); a tornado watch carries the
   wording "particularly dangerous situation" whenever there is a high-confidence forecast of multiple
   intense (EF2–EF5) tornadoes. | https://www.spc.noaa.gov/misc/about.html | retrieved 2026-10-27»
 - **Always leave at the watch if grandchildren or a slow walker are in the house.** No exceptions. They are
