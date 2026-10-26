@@ -36,7 +36,7 @@ Rows: factcheck-B.md I1-S2 and factcheck-C.md H1-S4 (MWR "Warning messages were 
 **Picture:** Library of Congress ruins photograph of Galveston, September 1900; chip "AT LEAST 6,000 LIVES" with small tag "CLINE'S OWN COUNT"; popfig "SATURDAY · SEPT 8, 1900". Source line: Isaac Cline, Monthly Weather Review, September 1900. [RS] [VE] [HUMAN] [loop E1 still open]
 > The storm came ashore on the evening of Saturday the eighth. At least six thousand people there lost their lives that night.
 
-Rows: sources-cuba.md §4 (AOML "On the evening of September 8, 1900, a major hurricane struck Galveston"); factcheck-E.md H1-S3 ("at least six thousand people there lost their lives", MWR "at least 6,000 people were killed in a few hours' time"; "Saturday": factcheck-E.md I1-S5 has Sept 7 as Friday).
+Rows: sources-cuba.md §4 (AOML "On the evening of September 8, 1900, a major hurricane struck Galveston"); factcheck-E.md H1-S3 ("at least six thousand people there lost their lives", MWR count "at least 6,000 people", Cline's report; "Saturday": factcheck-E.md I1-S5 has Sept 7 as Friday).
 
 ### I1-S6 — narration
 **Picture:** slow return to the Galveston Daily News page of 1891, popfig "JULY 16, 1891", "ABSURD DELUSION" chip back on. Telegraph-key click on the last line. [Q] [loop L-intro open] (carried into A1)
