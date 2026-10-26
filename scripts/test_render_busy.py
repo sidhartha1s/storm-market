@@ -100,6 +100,68 @@ with tempfile.TemporaryDirectory() as d:
     check("render.cmd dry run: request 2 at 3.3 GB free -> --workers gets 1", r.stdout.strip() == "WORKERS=1",
           f"rc={r.returncode} out={r.stdout!r} err={r.stderr!r}")
 
+# Heavy lock (owner 26 Oct 26): a second heavy job waits for the first, then runs. Temp lock file; the
+# HEAVY_LOCK_TOKEN e2e.py holds is dropped, or every job here would pass through as e2e's child.
+NW = subprocess.CREATE_NO_WINDOW
+with tempfile.TemporaryDirectory() as d:
+    lock = Path(d) / "heavy.lock"
+    os.environ["HEAVY_LOCK_FILE"] = str(lock)
+    os.environ.pop("HEAVY_LOCK_TOKEN", None)
+    render_busy.POLL_S = 0.2
+    py = f"import sys; sys.path.insert(0, {str(S)!r}); import render_busy, time\n"
+
+    holder = subprocess.Popen([sys.executable, "-c", py + "with render_busy.heavy_lock('render ep-test full'):\n time.sleep(4)"],
+                              stdout=subprocess.DEVNULL, creationflags=NW)
+    t0 = time.time()
+    while not render_busy.read_lock(lock) and time.time() - t0 < 20:
+        time.sleep(0.1)
+    rec = render_busy.read_lock(lock)
+    check("lock records holder, job, machine, pid and start time",
+          rec and rec["job"] == "render ep-test full" and rec["pid"] == holder.pid
+          and all(rec.get(k) for k in ("holder", "machine", "start")), rec)
+    buf, t0 = io.StringIO(), time.time()
+    with contextlib.redirect_stdout(buf):
+        with render_busy.heavy_lock("tts ep-test"):
+            waited, holder_done = time.time() - t0, holder.poll() is not None
+            mine = render_busy.read_lock(lock)
+    out = buf.getvalue()
+    check("second heavy job waits while the first holds the lock, then runs",
+          holder_done and waited > 1.5 and mine["job"] == "tts ep-test", f"waited={waited:.1f}s done={holder_done} out={out!r}")
+    check("the waiting job prints who holds the lock",
+          "WAITING to start tts ep-test" in out and "render ep-test full" in out and f"pid {holder.pid}" in out, out)
+    check("lock released when the block ends", not lock.exists())
+
+    dead = subprocess.Popen([sys.executable, "-c", "pass"], creationflags=NW)
+    dead.wait()
+    for name, fake in (("dead pid", {"pid": dead.pid, "created": 1}),
+                       ("pid reused by a newer process", {"pid": os.getpid(), "created": 1})):
+        lock.write_text(json.dumps({**fake, "job": "render old", "holder": "x", "machine": "x", "start": "x", "token": "t"}))
+        buf, t0 = io.StringIO(), time.time()
+        with contextlib.redirect_stdout(buf):
+            with render_busy.heavy_lock("e2e"):
+                pass
+        check(f"a dead holder's lock is taken over at once ({name})",
+              time.time() - t0 < 1 and "took over a dead holder's lock: render old" in buf.getvalue(), buf.getvalue())
+
+    with render_busy.heavy_lock("tts ep-test"):
+        r = subprocess.run([sys.executable, "-c", py + "with render_busy.heavy_lock('tts_clone'):\n print('INNER RAN')"],
+                           capture_output=True, text=True, timeout=30, creationflags=NW)
+    check("a child of the holder (tts_episode -> tts_clone) passes through the lock", "INNER RAN" in r.stdout, r.stdout + r.stderr)
+
+    bat = Path(d) / "hold.cmd"
+    bat.write_text(f'@echo off\n"{sys.executable}" "{S / "render_busy.py"}" --hold "render ep-test draft"\n'
+                   f'"{sys.executable}" -c "import json; print(json.load(open(r\'{lock}\'))[\'pid\'])"\n', encoding="utf-8")
+    p = subprocess.Popen(["cmd", "/c", str(bat)], stdout=subprocess.PIPE, text=True, creationflags=NW)
+    out = p.communicate(timeout=60)[0]
+    check("--hold books the lock for the calling cmd.exe (render.cmd)", out.strip().splitlines()[-1:] == [str(p.pid)], out)
+    buf = io.StringIO()
+    with contextlib.redirect_stdout(buf):
+        with render_busy.heavy_lock("e2e"):
+            pass
+    check("render.cmd's lock is free once its cmd.exe exits", "took over a dead holder's lock: render ep-test draft" in buf.getvalue(),
+          buf.getvalue())
+    os.environ.pop("HEAVY_LOCK_FILE")
+
 if FAILS:
     print(f"\n{len(FAILS)} FAILED")
     sys.exit(1)
