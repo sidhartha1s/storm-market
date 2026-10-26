@@ -59,6 +59,8 @@ sealed-battery units remove the dead-battery failure mode entirely and are worth
 Know the response: alarm sounds, everyone goes outside immediately, then call 911 or the gas utility
 from outside. Do not open windows and wait — you will disperse the evidence and stay in the building.
 
+If anyone sleeps without hearing aids, use a CO alarm with a bed-shaker or strobe (see 48).
+
 Figure 8 lines up this protection with Protection 48 below — one placement rule for smoke, a
 different one for carbon monoxide, on the same house.
 
@@ -76,7 +78,7 @@ propane, or smoke unless it is a combination unit — three different sensors, t
 · **Regions:** all five.
 
 Post-disaster house fires are a recurring pattern — candles, space heaters, damaged wiring, generators
-too close to the structure, restored power energising a damaged circuit. The alarms that would catch
+too close to the structure, restored power energizing a damaged circuit. The alarms that would catch
 that are the ones already in your ceiling, and they expire too.
 
 One in every sleeping room, one outside each sleeping area, one on every level. Interconnected units,
@@ -172,8 +174,8 @@ fire risk.** The recommended practice is to use a **box fan from 2012 or newer**
 fused plug and a thermal cutoff.
 
 Second, and this is the one people get wrong: **a DIY cleaner with dirty, loaded filters was almost
-completely ineffective.** Not degraded — ineffective. A unit running all week on a grey filter is
-theatre. Change the filters.
+completely ineffective.** Not degraded — ineffective. A unit running all week on a gray filter is
+theater. Change the filters.
 
 Build it correctly: filters oriented with airflow arrows pointing **into** the fan, joints sealed with
 tape so air cannot bypass the filters, and the cardboard shroud on the outlet side.
@@ -185,7 +187,7 @@ Figure 9 shows the build exploded out — orientation and the shroud are the two
 Run it in the room people are in — usually the same consolidated room from Protection 26 — and keep
 that room's door closed.
 
-**What this does not do:** it removes particulate. It does not remove gases, smoke odour, or carbon
+**What this does not do:** it removes particulate. It does not remove gases, smoke odor, or carbon
 monoxide, and it is not a substitute for leaving an area under evacuation order.
 
 ---
@@ -220,9 +222,9 @@ For a prolonged event the answer is leaving, not sealing harder.
 
 Buy N95 or better, per person, and store them where they will be found. They matter for three
 distinct situations: wildfire smoke, volcanic ash, and post-event debris clearing, which produces
-silica, fibreglass, mould spores, and pulverised building material.
+silica, fibreglass, mould spores, and pulverized building material.
 
-**Fit is the whole protection**, and NIOSH explains why in a sentence worth memorising: a respirator
+**Fit is the whole protection**, and NIOSH explains why in a sentence worth memorizing: a respirator
 **"can only filter particles that try to pass through the filter material."** A tight-fitting respirator
 seals to the face and *forces* the air through the filter. A loose-fitting mask does not, and **"if gaps
 exist between your face and the respirator or mask, some small particles that you cannot see can enter
@@ -233,7 +235,7 @@ which is an argument for buying them before you need them.
 **On cloth and surgical masks, NIOSH's objection is precise and it is not "they don't work."** It is
 that **"some masks, like many disposable face masks and cloth masks, are not made to a standard. They
 provide unknown levels of protection."** A NIOSH Approved N95 meets the most rigorous standard and states
-its filtration level. An unstandardised mask states nothing, and for smoke, ash and silica that is the
+its filtration level. An unstandardized mask states nothing, and for smoke, ash and silica that is the
 same as no information. Buy the thing with a number on it.
 «SRC: CDC/NIOSH, "Community Respirators and Masks" — filtration and fit; NIOSH Approved respirators meet
 the most rigorous standards and report their filtration level; disposable and cloth masks not made to a
@@ -243,7 +245,7 @@ https://www.cdc.gov/niosh/ppe/php/community-respirators-masks/index.html | retri
 Children's faces do not seal on adult respirators. Buy sized ones or accept that their protection is
 staying indoors with the filtration running.
 
-**What this does not do:** a particulate respirator does nothing for gases or vapours — not carbon
+**What this does not do:** a particulate respirator does nothing for gases or vapors — not carbon
 monoxide, not chemical releases. Those require a cartridge respirator and training, or evacuation.
 
 ---
@@ -257,7 +259,7 @@ absorbent · **Regions:** all five.
 When water or sewer fails, the toilet stops. It does not stop being needed.
 
 The system is two buckets kept separate, which is the entire trick: **one for liquid, one for solid.**
-Separating them is what controls odour and volume, and it is why this works where a single bucket
+Separating them is what controls odor and volume, and it is why this works where a single bucket
 becomes unusable within a day. Line the solid bucket with a heavy bag, and after each use cover with
 an absorbent — sawdust, wood pellets, cat litter, peat, or shredded paper. Snap-on toilet seats for
 buckets are inexpensive and make the difference between a system people will use and one they will
@@ -308,7 +310,7 @@ control.
 Alcohol-based sanitiser at a sufficient concentration is the low-water answer and belongs at every
 point of use — the bucket toilet, the food area, the door. Soap and a small poured stream of treated
 water is better when hands are visibly soiled, because sanitiser does not work well on dirty hands.
-A tap-fitted water container makes a two-litre bottle last for many washes.
+A tap-fitted water container makes a two-liter bottle last for many washes.
 
 Note the priority conflict honestly: this is one of the few non-drinking uses that justifies treated
 water, because the alternative is illness in the worst possible circumstances.
@@ -325,7 +327,7 @@ available.
 **Cost:** $0–40 · **Time:** as needed · **Materials:** respirators, vehicle filters
 · **Regions:** Pacific Northwest, Alaska, Hawaii.
 
-Ash is pulverised rock — abrasive, heavy, and unlike ordinary dust in three ways that matter.
+Ash is pulverized rock — abrasive, heavy, and unlike ordinary dust in three ways that matter.
 
 **It loads roofs.** Wet ash is dramatically heavier than dry, and accumulation is a structural load
 problem. Clear it before it gets wet, from the ground where possible.
