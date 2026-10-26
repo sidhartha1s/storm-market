@@ -22,7 +22,7 @@ Rows: nws-facts.md §5 toll at least 160 (JKL, NCEI). Toll starts at about word 
 
 ### H1-S4 — narration
 **Picture:** map pushes north of Pittsburgh; a Buffalo pin appears, chip "200 MI NORTH" [VE]; on "forties" the pin turns warm orange, chip "40s · NO SNOW", and Pittsburgh's chip flips to "SINGLE DIGITS" [RS]. Sound: bed; a short drop on "no snow at all".
-> You'd figure Buffalo, two hundred miles north of Pittsburgh, is getting it even worse. Buffalo is sitting in the forties with no snow at all, while Pittsburgh is down in the single digits.
+> You'd figure Buffalo, about two hundred miles north of Pittsburgh, is getting it even worse. Buffalo is sitting in the forties with no snow at all, while Pittsburgh is down in the single digits.
 
 Rows: nws-facts.md §3 "only 200 miles to the north, Buffalo, NY enjoyed temps in the 40s" and Pittsburgh single digits (JKL); §2 Buffalo "recorded no snow at all" (JKL). Belief (north is colder and snowier) is handed over first, then broken.
 
