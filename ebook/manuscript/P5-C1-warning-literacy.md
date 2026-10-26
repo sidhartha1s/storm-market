@@ -40,9 +40,42 @@ emergency categories on.
 **A NOAA weather radio** with battery backup fails differently. It does not depend on the cellular
 network, the internet, or the power grid. It is the path that still works when everything else is
 saturated, which is precisely when you need it. Get one with SAME programming and battery backup, and
-put it where you sleep.
+put it where you sleep. SAME is the setting that makes the radio sound only for your own county
+(Protection 87 shows how).
 
 The point is not redundancy for its own sake. It is that the two paths do not share a failure.
+
+**If you have a flip phone or a landline.** Phone alerts reach only phones built to receive them.
+Older phones may get a shorter message, or none. Ask your wireless provider whether your phone gets
+Wireless Emergency Alerts.
+«SRC: FEMA, "Wireless Emergency Alerts" (IPAWS) — "To find out if your phone can receive WEA alerts,
+contact your wireless provider"; all major providers take part on a voluntary basis; participating
+providers send a 90-character version to older phones. |
+https://www.fema.gov/emergency-managers/practitioners/integrated-public-alert-warning-system/public/wireless-emergency-alerts
+| retrieved 2026-10-27»
+Then call your county emergency office. Ask whether your landline is on its emergency call list. If it
+is not, sign it up (county alerts, 86). When the county sends its yearly test, check that your phone
+rang. Ask a relative to call you whenever an alert reaches them, and write that call into your trigger
+plan (95).
+
+**A weather radio may not tell you to evacuate.** It always carries the Weather Service's own weather
+warnings. Other emergency messages go out only when local or state officials ask the Weather Service
+to send them. The Weather Service does not start those messages itself.
+«SRC: National Weather Service, "NWR All Hazards" — "For non-weather emergencies, NWS activates the
+system at the request of local and/or state officials"; "NWS does not initiate the contact or the
+message"; local or state officials provide the text to the local NWS office, and offices set up
+agreements in advance. | https://www.weather.gov/nwr/allhazard | retrieved 2026-10-27»
+So the radio may stay silent through an evacuation order. Ask your county whether it sends evacuation
+orders over the weather radio. Count on it only if they say yes.
+
+**If you take hearing aids out at night,** a beep will not wake you. Your alarms must shake the bed
+or flash a light. That means the weather radio, the smoke alarms (48) and the carbon monoxide alarm
+(47). Some weather radios have a socket for a bed-shaker or a strobe. Check for it before you buy.
+«SRC: National Weather Service, "NWR Special Needs" — some receivers have special output connectors
+that activate alerting devices such as vibrators, bed shakers, pillow vibrators and strobe lights. |
+https://www.weather.gov/nwr/special_needs | retrieved 2026-10-27»
+
+«FIG: illus-bed-shaker»
 
 **What this does not do:** neither path helps if nobody is awake to hear it. A phone face-down on a
 charger in another room and a radio in a cupboard are both decorative. Placement is the protection.
@@ -172,7 +205,7 @@ you need is "twenty minutes" versus "two hours".
 matter. Learn what a hook or a distinct bounded structure looks like in your area's typical storms, and
 learn what velocity data shows — most public radar apps expose it and almost nobody looks.
 
-Practise on ordinary storms when nothing is at stake. That is the whole method, and after a season of
+Practice on ordinary storms when nothing is at stake. That is the whole method, and after a season of
 casual watching you will read a loop far better than most people.
 
 **What this does not do:** radar shows precipitation and motion, not the ground. A radar signature is
@@ -190,10 +223,10 @@ particularly at long range or in terrain, where the beam is looking well above t
 The cone is the most misunderstood graphic in public weather, and the misunderstanding is dangerous in
 a specific way.
 
-**The cone shows the probable track of the storm's centre. It does not show where the impacts are.**
+**The cone shows the probable track of the storm's center. It does not show where the impacts are.**
 Hazards extend far outside it, sometimes hundreds of miles — and being outside the cone is not being
 out of danger. Rainfall, surge, and tornadoes routinely occur well beyond it, and the cone is drawn so that
-**two-thirds** of historical forecast errors fall inside it — which means the centre itself goes outside
+**two-thirds** of historical forecast errors fall inside it — which means the center itself goes outside
 the cone about one time in three.
 «SRC: NHC, "Definition of the NHC Track Forecast Cone" — the cone encloses circles sized so that two-thirds of official forecast errors over a 5-year sample fall within them, and it depicts the probable track of the centre only, not the extent of impacts. https://www.nhc.noaa.gov/aboutcone.shtml | retrieved 2026-07-29»
 
@@ -209,7 +242,7 @@ And read the **category** correctly: it describes wind only. It says nothing abo
 is why lower-category storms have produced some of the worst water disasters.
 
 **What this does not do:** none of these products replace your evacuation zone, which is Protection 91.
-Zones are drawn from surge modelling, not from the forecast, and they are the instruction that
+Zones are drawn from surge modeling, not from the forecast, and they are the instruction that
 actually applies to you.
 
 ---
@@ -225,14 +258,14 @@ you will not be in a state to work out which one you are in.
 
 In wildfire country the equivalent is your **evacuation zone identifier** in whatever system your
 county uses, plus the fire-weather products: a **Red Flag Warning** means conditions for rapid fire
-growth are present, and it is a signal to be packed, fuelled and paying attention rather than to leave.
+growth are present, and it is a signal to be packed, fueled and paying attention rather than to leave.
 
 Know the difference between the two levels of order your jurisdiction uses — typically a warning or
 "be ready" tier and a mandatory or "go now" tier — and know that in a fast-moving fire the first may
 never arrive.
 
 **What this does not do:** knowing your zone is not a decision. The decision is the leave-early
-trigger in Protection 112, and the whole point is that it fires *before* the order in the cases where
+trigger in Protection 95, and the whole point is that it fires *before* the order in the cases where
 the order comes too late.
 
 ---
@@ -326,7 +359,7 @@ response is small.
 This is the protection that everything in Part One points at.
 
 People do not act on warnings. They seek to verify them — the window, a relative, the television, the
-neighbours — and verification consumes exactly the time the warning bought. This was among the
+neighbors — and verification consumes exactly the time the warning bought. This was among the
 findings of the National Weather Service assessment of the Joplin tornado, and it is not a failure of
 character. It is what a lifetime of warnings that came to nothing trains you to do.
 «SRC: NWS Central Region, *Service Assessment: Joplin, Missouri, Tornado — May 22, 2011* — timeline: initial 3-minute siren alert **5:11 pm CDT**; WFO Springfield tornado warning polygon #31 issued **5:17 pm**; initial touchdown **5:34 pm**; **second** 3-minute siren alert **5:38 pm**. As of the report date, **158 direct and 4 indirect fatalities**. Findings: the perceived frequency of siren activation "led the majority of survey participants to become desensitized or complacent to this method of warning"; and Finding #2d — "the majority of surveyed Joplin residents did not take protective action until receiving and processing additional, credible confirmation of the threat and its magnitude from a non-routine trigger", achieved by seeing the tornado, hearing on-air instruction to take cover, or hearing the second siren. Joplin Globe preliminary analysis of fatality location: **54% in residences, 32% in non-residential buildings, 14% in vehicles or outdoors**. https://www.weather.gov/media/publications/assessments/Joplin_tornado.pdf | retrieved 2026-07-29»
@@ -337,7 +370,7 @@ a set of pre-committed thresholds with an action attached to each:
 
 > When a tornado warning includes our location — we go to the room. We do not look outside.
 >
-> When a hurricane watch is issued for our county — cars fuelled, documents in the car, garage braced.
+> When a hurricane watch is issued for our county — cars fueled, documents in the car, garage braced.
 >
 > When an evacuation order is issued for our zone — we leave within thirty minutes, and we do not
 > reopen the argument about whether it is necessary.
