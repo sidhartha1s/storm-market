@@ -92,6 +92,26 @@ agreement and a phone number, written down on both sides.
   itself a hazard, disorientation and wandering are real risks in a shelter, and identification on the person
   — a bracelet, a card in a pocket — is essential. The evacuation destination should favor familiarity and
   quiet over convenience.
+
+  **When they will not get in the car.** Plan for this before the day. Practice the evacuation with the
+  family, including the drive. Pack a favorite item in the car, such as a photo book or a pillow. On the
+  day, keep the words short and concrete, then reassure: "We're going to see Tom." Approach from the
+  front, use their name, and speak calmly and low. Do not argue or correct. Do not leave them alone while
+  you load the car. Leave as early as you can. Tell the county registry the household has two people who
+  need help, not one (Protection 111).
+  «SRC: Alzheimer's Association, "Emergency Preparedness" tip sheet TS-0002 (updated July 2024) — if the
+  need to evacuate is likely, do not delay, leave as early as possible; pack a favorite item (book,
+  picture, purse) of the person living with dementia; avoid elaborate or detailed explanations, use
+  concrete terms, follow brief explanations with reassurance; approach from the front, use the person's
+  name, use a calm, low-pitched voice; don't argue with or correct the person; do not leave the person
+  living with dementia alone. |
+  https://alz.org/getmedia/72966bd2-1991-4e24-949c-9fa12130d945/alzheimers-dementia-emergency-preparedness-ts.pdf
+  | retrieved 2026-10-27»
+  «SRC: National Institute on Aging, "Disaster Preparedness and Recovery for Older Adults" (reviewed
+  November 25, 2022) — people with Alzheimer's or another dementia may need extra help to lessen agitation;
+  include comfort items like a favorite pillow or blanket; take time to practice your evacuation plan with
+  family and neighbors. | https://www.nia.nih.gov/health/safety/disaster-preparedness-and-recovery-older-adults
+  | retrieved 2026-10-27»
 - Falls: the flashlight and shoes at the bedside (Protection 43) matter more here than anywhere, and clutter in the
   route to the safe room is a genuine hazard rather than untidiness.
 
