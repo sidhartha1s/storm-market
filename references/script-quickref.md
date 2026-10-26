@@ -4,26 +4,51 @@ A script writer reads this file, `references/flag-words.md` and the episode rese
 the source file named in each section header; if a rule here and its source disagree, fix the source in the same
 PR and say which one won.
 
+**Examples are illustrations, never templates (owner 26 Oct 26: "when i'm giving you examples you take it very
+literally and follow only that thing moving forward like a bible").** A quoted line in any rule file shows one instance
+of the principle beside it. Never reuse its words or its sentence pattern in a script; write from the principle.
+
 ## The angle (owner 9 Oct 26) — `references/angle.md`
 - Your brief carries an Angle block locked by the owner, documentary or mini: one true claim the whole video is built on. A brief without it is not ready: stop and say so.
 - Every act serves the angle. The fact every other video on the subject leads with is not the lead here; the block names it.
 - The hook, the open loops and the close all pay the angle. Do not drift back to the subject's default line.
 
-## The hook (owner 27 Sep 26, opener rewritten 15 Oct 26 — supersedes any looser hook rule below)
-- **Open on the viewer's own belief, not a stranger's.** Ask the question the viewer answers in their head with what
-  they believe or would do ("Siren goes off. What do you do?"), give the answer they gave, then break it with the
-  record. A second contradiction follows at once (the double contradiction), so the viewer has invested before 8 s.
-  A rhetorical question nobody answers in their head is not an opener.
-- **Never open on someone else's words**: no viewer comment, other video, like count or "people say" in the hook.
-  The broken belief is the viewer's. Comments live inside acts as beliefs the record answers.
+## The hook (owner 27 Sep 26; opener rewritten 26 Oct 26, replacing the 15 Oct 26 single opener)
+- **The principle.** Talk to the viewer the way a friend tells you what happened. Start inside the viewer's world
+  (their town, their habits, what they would assume about a storm like this one) and break one thing they believe
+  with the record before about 8 s, then a second break at once (the double contradiction), so they have invested
+  early. The owner's 15 Oct 26 example was one way to do this, not the format: by 26 Oct 26 all 7 hooks written after
+  it had the same shape ("Every video is having the same hook ... Every plot is the same").
+- **Pick the shape from the story's strongest fact**, from the menu below. Each shape is a way in, not a sentence to
+  fill; two hooks in the same shape must still share no words or rhythm.
+- **Never the shape of either of the last 2 episodes' hooks.** Record it in `edit_script.md` on its own line under
+  the hook heading: `Hook shape: <tag> (<YYYY-MM-DD the hook was written>)`. `python3 scripts/hook_shape.py
+  episodes/<slug>` reads the tag in every checkout (main and every worktree) and fails on a missing or unknown tag, or
+  on the shape of either of the 2 most recently dated other episodes.
+- **Never open on a stranger's words**: no viewer comment, other video, like count or "people say" in the hook.
+  Comments live inside acts as beliefs the record answers. A line from the record itself (a forecast, a newspaper,
+  a log) is not a stranger's words; it is the `record` shape.
+
+### Hook shapes (the menu; the check reads the tags from this list)
+- `belief-question`: ask what the viewer believes or would do, let them answer in their head, then the record breaks the answer.
+- `flip`: the official verdict and its later reversal, both inside the first sentence.
+- `pair`: two true facts that cannot both seem true, set side by side and left unexplained.
+- `drop-in`: put the viewer inside the minute it happened, present tense and "you", the stakes before any explanation.
+- `record`: open on the record's own sentence (a forecast, a headline, a log entry), then what happened after it.
+- `endpoint`: say how it ended in plain words, then the one detail that makes that ending make no sense.
+- `missing`: name the thing that should exist and does not (a photo, a name, a warning, a siren).
+- `clock`: a time of day and a count of minutes; the gap between them is the story.
+- `object`: one ordinary thing (a door, a page, a phone call) held up first, which turns out to carry the whole story.
+
+### Every hook, whatever its shape
 - Promise first: the payoff the title/thumbnail already made lands inside the hook.
 - **Never pause on a fact that contradicts the title/thumbnail.** Bad: "The weather service called it EF3." then a
   pause. Good (owner-approved): "The weather service changed it to EF5, four months after they called it EF3." The
   promised fact leads; the contradiction rides inside the same sentence.
-- No fluff before it: sentence one IS the payoff (numbers first, then the specific image, then the question).
+- No fluff before it: sentence one IS the payoff, in the chosen shape.
   Delete-test: cut sentence one — if the hook still works, it was fluff.
 - No roadmap phrases ("one more thing before", "in the next twenty minutes"): they read as delay. Exception (owner 4 Oct 26): a hook callback that names the hook's claim ("Stick with me, because what I'm about to explain is exactly why <the hook's claim>.") is allowed, several times through the video, e.g. at act seams (home: `script-scaling.md` "open-loop registry"). Runtime roadmaps stay banned.
-- Cold open (DESIGN.md): frame one is Paul on camera speaking the hook line (documentaries; the one sentence above, nothing added to fill his clip), then mid-action footage, never black. The first line starts at 0:00 — no broadcast,
+- Cold open (DESIGN.md): frame one is Paul on camera speaking the hook line (documentaries; the hook sentence only, nothing added to fill his clip), then mid-action footage, never black. The first line starts at 0:00 — no broadcast,
   radio or archive audio in the hook (bad audio quality loses viewers before the hook finishes). Date/place popfig
   inside the first second. Every cut lands ON an audio event, never mid-sentence.
 
@@ -87,10 +112,11 @@ mechanism/analysis pair) and plants+pays a loop.
 ## Voice (45–75 US viewer) — `script-os.md` Voice rules + CLAUDE.md Voice
 - Median sentence 12–18 words; 10–15% run 25–35 words as fact-chains (and/then/which); one ≤4-word kicker per 150
   words. Write the long sentence — TTS splits it at commas, don't pre-shorten for that reason.
-- Sentence one of the script follows the hook rule above (the viewer's belief), not a number or date.
+- Sentence one of the script is the hook in its chosen shape (above), never a bare date or place: the popfig carries those.
 - **Register (owner 15 Oct 26): an old friend you have not seen in years, telling you what happened.** Paul speaks in
-  first person ("I read the whole report"), talks to "you" and puts the viewer in the place ("if you lived there, you
-  heard them every Monday"). Contractions wherever a person would use them. Target 9 of 10 on "a person talking to
+  first person, talks to "you" and puts the viewer in the place. A first-person line earns its place with what he
+  found; one that could sit in any episode (that he read the report, that he wanted to know why) is cut, and the
+  ways he puts the viewer in the place change from episode to episode (owner 26 Oct 26). Contractions wherever a person would use them. Target 9 of 10 on "a person talking to
   you" (1 = a report read aloud); the writer scores every section and the grader checks it.
 - **Low cognitive load (owner 15 Oct 26: "Don't make them think. Don't fry their brains ... They will skip.")**: name
   the thing in full ("a tornado siren goes off", not "siren goes off"), never drop articles or subjects for punch, never
@@ -170,4 +196,4 @@ alternative by default, for example "lost their lives" (owner 9 Oct 26); the tab
 - Dual-scope stats (episode total vs. one day) name their scope in the same sentence a viewer could misread it.
 
 ## Hand-back check
-`flag_words.py` exit 0, and `word_budget.py` PASS at the shipping tempo (CLAUDE.md "Voice").
+`flag_words.py` exit 0, `hook_shape.py` exit 0, and `word_budget.py` PASS at the shipping tempo (CLAUDE.md "Voice").

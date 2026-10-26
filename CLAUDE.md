@@ -27,6 +27,7 @@ goes to Opus. Gates passing is not verification.
 | Script method, hook wording, humanise pass, scaling | `references/script-os.md`, `script-framework.md`, `script-scaling.md`, `humanise-rules.md` |
 | The one condensed brief a script writer opens (wins for writers) | `references/script-quickref.md` |
 | Violence/death words that trip YouTube's transcript scan, with alternatives; gate `scripts/flag_words.py episodes/<slug>` | `references/flag-words.md` |
+| Hook shapes menu and the rule that a hook never repeats the last 2 episodes' shape; gate `scripts/hook_shape.py episodes/<slug>` | `references/script-quickref.md` "The hook" |
 | Heteronyms (word, both senses, a hint) that pocket-TTS can mispronounce by guessing the wrong sense; gate `scripts/homograph_scan.py episodes/<slug>` (WARN-only, reports for a probe, never fails) | `references/homographs.md` |
 | Titles and thumbnails; fill-in prompts for a thumbnail with Paul on it | `references/packaging-rules.md`; `references/thumbnail-prompts.md` |
 | News-lane rulebook, templates, clip pools | `references/mini-storms/FORMAT.md`, `library/mini-storms/`, `library/mini-storms/<event>/` (pools are reused across angles) |
