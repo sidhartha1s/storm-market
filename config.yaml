@@ -19,7 +19,7 @@ render:
   fps: 30
   quality: standard               # "high" silently picks libx265 CPU on this box (JP measured)
   crf: 16
-  gpu: true                       # --gpu --browser-gpu --experimental-fast-capture=true
+  gpu: true                       # --gpu --browser-gpu
   resolution: landscape           # 1920x1080
 
 channel:

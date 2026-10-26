@@ -1,0 +1,53 @@
+<template>
+<!--
+  g-a5-s2-chips · ep-moore-1999 · A5-S2 tail · host 884.13 to 894.628 (10.498 s), track 4, overlay over the NSSL damage
+  stills c-a5-s2-dmg1 (884.13-890.13) and c-a5-s2-dmg2 (890.13-894.628), both "Credit: NOAA/NSSL page" (provenance rows 8, 9).
+  Chips from the Picture line: "1,800 STUDENTS · HOMES HIT" then "NONE LOST"; source line "Moore Public Schools, via Brooks
+  and Doswell 2002" (fact_check.md A5-S2 CONFIRMED). Cues = local s = nx-a5-s2 word time - 16.14 (host start 884.13).
+-->
+<style>
+  #g-a5-s2-chips-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  .ga52-card { position:absolute; left:110px; bottom:110px; padding:16px 36px 18px; box-sizing:border-box; border-radius:28px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); }
+  .ga52-row { display:flex; align-items:baseline; gap:20px; }
+  .ga52-n { font-family:'Courier New', monospace; font-weight:700; font-size:84px; color:#e74c3c; line-height:1; }
+  .ga52-l { font-size:30px; font-weight:700; color:#dfe7ee; letter-spacing:4px; line-height:1; }
+  .ga52-none { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; color:#f2f5f8; letter-spacing:3px; line-height:1; margin-top:12px; }
+  .ga52-src { font-size:20px; font-weight:700; color:#c8d3e0; letter-spacing:1px; line-height:1; margin-top:14px; }
+  .ga52-cr { position:absolute; right:110px; top:70px; padding:11px 26px 12px; box-sizing:border-box; border-radius:28px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+    font-size:21px; font-weight:700; color:#c8d3e0; letter-spacing:1px; line-height:26px; }
+  #ga52-card, #ga52-n, #ga52-l, #ga52-none, #ga52-src, #ga52-cr { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-s2-chips-root" data-composition-id="g-a5-s2-chips" data-width="1920" data-height="1080" data-duration="10.498">
+  <div class="ga52-card" id="ga52-card">
+    <div class="ga52-row"><span class="ga52-n" id="ga52-n">1,800</span><span class="ga52-l" id="ga52-l">STUDENTS · HOMES HIT</span></div>
+    <div class="ga52-none" id="ga52-none">NONE LOST</div>
+    <div class="ga52-src" id="ga52-src">Moore Public Schools, via Brooks and Doswell 2002</div>
+  </div>
+  <div class="ga52-cr" id="ga52-cr">Photo: NOAA/NSSL</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#ga52-";
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo(P + "cr", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.10);
+  /* "1,800" @1.16 (s2 17.30): card, counter fast then slow into 1,800 */
+  tl.fromTo(P + "card", { autoAlpha: 0, x: -140 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 1.16);
+  tl.fromTo([P + "n", P + "l"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: "none" }, 1.16);
+  const n = document.getElementById("ga52-n"), o = { v: 100 };
+  tl.fromTo(o, { v: 100 }, { v: 1800, duration: 0.9, ease: "power4.out",
+    onUpdate: () => { n.textContent = (Math.round(o.v / 100) * 100).toLocaleString("en-US"); } }, 1.16);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.0);
+  /* "none" @5.52 (s2 21.66) */
+  tl.fromTo(P + "none", { autoAlpha: 0, scale: 1.25 }, { autoAlpha: 1, scale: 1, transformOrigin: "left center", duration: 0.45, ease: "back.out(2)" }, 5.52);
+  tl.to(P + "card", { y: -6, duration: 1.8, ease: "sine.inOut", repeat: 1, yoyo: true }, 6.1);
+  /* exits */
+  tl.to(P + "card", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.85);
+  tl.to(P + "cr", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.85);
+  tl.to({}, { duration: 10.498 }, 0);
+  window.__timelines["g-a5-s2-chips"] = tl;
+})();
+</script>
+</template>

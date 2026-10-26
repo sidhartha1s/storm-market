@@ -1,0 +1,53 @@
+<template>
+<!--
+  g-a1-s9-pop · ep-moore-1999 · A1-S9 popfig "6:26 PM · NEAR AMBER" (edit_script A1-S9 Picture line), track 4, transparent
+  overlay over ins-paul-2 (256.243 for 9.05 s, media-start 0.62). Host 256.243 for 5.0 s (to 261.243, 4.05 s before the clip ends).
+  Cues: media/paul/ins-paul-2-retake/raw-01.words.json minus media-start 0.62: "626" 0.84 -> 0.22; "near Amber" 2.20 -> 1.58;
+  "tornado." ends 5.92 -> 5.30 (popfig out by 4.75, before it).
+  Placement as g-hook-overlay's popfig on clip 1 (same framing): mid-screen on the shirt, under his face (face ends ~y 540),
+  corner x>=1600, y>=680 and the logo at (1740, 900) left clear. Soft radial scrim behind it (ep-enderlin .popfig::before) so red reads on the white shirt.
+-->
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-a1-s9-pop-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; }
+  .a19p-scrim { position:absolute; inset:auto; left:520px; top:540px; width:880px; height:320px; opacity:0; visibility:hidden;
+    background:radial-gradient(ellipse at center, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0) 72%); }
+  .a19p-pop { position:absolute; inset:auto; left:0; top:585px; width:1920px; text-align:center; }
+  .a19p-big { display:block; width:1920px; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:142px; color:#d0121f;
+    white-space:nowrap; opacity:0; visibility:hidden;
+    text-shadow:0 3px 0 #3a0508, 0 8px 26px rgba(0,0,0,0.70), 0 0 3px rgba(0,0,0,0.55); }
+  .a19p-sub { display:block; width:1920px; margin-top:10px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:38px; line-height:46px;
+    letter-spacing:0.3em; color:#f4f0e8; white-space:nowrap; opacity:0; visibility:hidden;
+    text-shadow:0 0 18px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.9), 0 3px 10px #000; }
+</style>
+<div id="g-a1-s9-pop-root" data-composition-id="g-a1-s9-pop" data-width="1920" data-height="1080" data-duration="5.0">
+  <div class="a19p-scrim" id="g-a1-s9-pop-scrim"></div>
+  <div class="a19p-pop" id="g-a1-s9-pop-pop">
+    <div class="a19p-big" id="g-a1-s9-pop-big">6:26 PM</div>
+    <div class="a19p-sub" id="g-a1-s9-pop-sub">NEAR AMBER</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a1-s9-pop-";
+  const DUR = 5.0;
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "scrim", P + "big", P + "sub"], { autoAlpha: 0 }, 0);
+  tl.set(P + "pop", { y: 0 }, 0);
+  /* "626" @0.22: scrim and figure pop in */
+  tl.to(P + "scrim", { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 0.22);
+  tl.fromTo(P + "big", { autoAlpha: 0, scale: 0.72, y: 34 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" }, 0.22);
+  /* "near Amber" @1.58 */
+  tl.fromTo(P + "sub", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.58);
+  /* float while it holds */
+  tl.to(P + "pop", { y: -14, duration: 3.6, ease: "sine.inOut" }, 0.72);
+  /* exit up, done by 4.75 */
+  tl.to(P + "big", { autoAlpha: 0, y: -46, duration: 0.4, ease: "power3.in" }, 4.30);
+  tl.to(P + "sub", { autoAlpha: 0, y: -46, duration: 0.4, ease: "power3.in" }, 4.35);
+  tl.to(P + "scrim", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 4.35);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines["g-a1-s9-pop"] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,39 @@
+<template>
+<!-- g-a4-cap-street · ep-moore-1999 · running caption for ins-a4-street (cut-a4-s5.mp4, KFOR Chopper 4), track 4,
+     host 736.897 for 4.266 s. Words verbatim from faster-whisper small.en (tts_episode.load_whisper_model, word_timestamps)
+     on the cut itself; local s = clip s (data-media-start 0). Opaque band y 860-1080 hides the "CHOPPER 4 LIVE" lower bug
+     area as mg-quickref "Outside voices" asks; the 4WARN mark top left stays visible. -->
+<style>
+  #g-a4-cap-street-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  #a4cs-band { position:absolute; left:0; right:0; top:860px; height:220px; background:linear-gradient(180deg,#0b1016 0%,#04070c 100%);
+    border-top:1px solid rgba(255,255,255,0.14); box-sizing:border-box; }
+  .a4cs-chunk { position:absolute; left:96px; right:96px; top:884px; height:136px; display:flex; flex-direction:column; justify-content:center;
+    align-items:center; visibility:hidden; opacity:0; }
+  .a4cs-ln { white-space:nowrap; text-align:center; font-weight:700; font-size:56px; line-height:68px; color:#f2f5f8; }
+  .a4cs-w { opacity:0.45; display:inline-block; }
+</style>
+<div id="g-a4-cap-street-root" data-composition-id="g-a4-cap-street" data-width="1920" data-height="1080" data-duration="4.266" data-type-ok="running caption">
+  <div id="a4cs-band"></div>
+  <div class="a4cs-chunk" id="a4cs-c0">
+    <div class="a4cs-ln"><span class="a4cs-w" id="a4cs-w0">...family</span> <span class="a4cs-w" id="a4cs-w1">and</span> <span class="a4cs-w" id="a4cs-w2">friends</span> <span class="a4cs-w" id="a4cs-w3">are</span> <span class="a4cs-w" id="a4cs-w4">hugging</span> <span class="a4cs-w" id="a4cs-w5">one</span> <span class="a4cs-w" id="a4cs-w6">another.</span></div>
+  </div>
+  <div class="a4cs-chunk" id="a4cs-c1">
+    <div class="a4cs-ln"><span class="a4cs-w" id="a4cs-w7">Everybody's</span> <span class="a4cs-w" id="a4cs-w8">out</span> <span class="a4cs-w" id="a4cs-w9">in</span> <span class="a4cs-w" id="a4cs-w10">the</span> <span class="a4cs-w" id="a4cs-w11">street</span> <span class="a4cs-w" id="a4cs-w12">now.</span></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.to({}, { duration: 4.266 }, 0);
+  /* chunk 0 @0.00 */
+  tl.fromTo("#a4cs-c0", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.18, ease: "power3.out" }, 0.00);
+  const W = [0.00, 0.24, 0.40, 0.68, 0.86, 1.04, 1.26, 2.08, 2.50, 2.62, 2.68, 2.78, 3.02];
+  W.forEach((t, i) => tl.fromTo("#a4cs-w" + i, { opacity: 0.45, y: 3 }, { opacity: 1, y: 0, duration: 0.1, ease: "power3.out" }, t));
+  tl.set("#a4cs-c0", { autoAlpha: 0 }, 2.08);
+  /* chunk 1 @2.08: Everybody's out in the street now. (stays to the end) */
+  tl.fromTo("#a4cs-c1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.18, ease: "power3.out" }, 2.08);
+  window.__timelines["g-a4-cap-street"] = tl;
+})();
+</script>
+</template>

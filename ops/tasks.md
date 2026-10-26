@@ -5,6 +5,12 @@ Open work on the tooling, gates and pipeline. Episode slots live in `ops/tracker
 
 Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or the owner) · `done` (merged, main green) · `parked`.
 
+## Render runs on what it asked for (owner 26 Oct 26, ZBook QSV fallback)
+| # | task | PR | status |
+|---|---|---|---|
+| 1 | `stream_gate.py check`: fail a render whose encoder, capture GPU or streaming differs from the ask; watch stops it at the gate line. Until the ZBook driver is 610+, every ZBook render stops in its first minutes: do not relaunch there | branch render-fallback-gate | review |
+| 2 | every render asks `--experimental-fast-capture=true` and falls back to screenshot capture (mix-blend-mode, backdrop-filter): dropped the flag (2 workers 5.56 to 3.68 s per output second, streaming on) | render-no-fast-capture | review |
+
 ## Bug fixes from the Opus re-review of PRs #85-#91 (24 Sep 26)
 | # | task | PR | status |
 |---|---|---|---|
@@ -87,3 +93,9 @@ stop at the first one that works. Every row runs alone (one heavy job at a time)
 - Paul on screen (7 Oct 26): the second Flow account is not set up yet (the owner types the login); until it is, one account's free credits do not cover a video's full-frame clips in a day. No episode has opened on Paul yet: El Reno v4 is the first, and its hook plan predates this rule. Two gaps to close on that first build: `build_srt.py` captions a whole Paul clip as one cue (up to about 26 words), and no gate fails narration laid under an `ins-paul-` clip.
 - Presenter circle face (10 Oct 26, `references/mg-quickref.md` "Corner circle"): the FlashHead install exists only on the ZBook and was built by hand (recipe in `learnings/render.md`); no install script is tracked, so a rebuilt machine repeats it from that entry. The two models that lost the comparison (MuseTalk 10.31 GB, JoyVASA 8.36 GB) and the uv cache (17.96 GB) still sit under `.models\lipsync\` on the ZBook: delete on the owner's word. Task 15 (the keep-out gate) now guards most of a documentary's runtime, not a minute of it. The minis' circle is still cut from the v5 ad clip and could move to the same tool. Both deAPI accounts in the repo `.env` answered `403 Client account is suspended` on 10 Oct 26, so LTX clips and DeAPI music are out until the owner reinstates one; `CLAUDE.md` "Sound" and `DESIGN.md` still list DeAPI as a source. (todo)
 - Angle first (9 Oct 26, `references/angle.md`): one open question for the owner. Should a gate refuse narration when the episode has no `angle.md`? Today the rule is enforced by the two skills and the writer's brief, not by code. (Minis: answered 9 Oct 26, "yes minis too"; the mini skill has the gate as step 0.)
+
+## e2e runs every gate (owner 26 Oct 26, skeptic finding 27 "do")
+| # | task | PR | status |
+|---|---|---|---|
+| 1 | e2e fails on a gate that fails or never runs; pinned fixture `scripts/fixtures/e2e/ep-e2e-moore` passes all of them | branch e2e-fixture | review |
+| 2 | config's CTA (v9) is 3.1 dB under Moore's narration, past audio_levels' 2.5 dB insert band; Moore shipped the unmerged v10. Merge v10 or regain v9 | | todo |

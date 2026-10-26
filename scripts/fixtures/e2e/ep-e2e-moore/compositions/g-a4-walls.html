@@ -1,0 +1,109 @@
+<template>
+<!-- g-a4-walls · ep-moore-1999 · A4-S8, track 2, full frame, host 789.486 for 22.434 s (to 811.92). Deep graphic.
+     Started from library/inhouse/ranked-bars.html via g-leadtime (kept: rail + scaleX bar, counted readout, staggered rows,
+     scan line). Claim (FEMA 342 section 6.2.1.2, pp. 6-20 to 6-22): of 89 standing interior-wall clusters, a bathroom was part
+     of 81 %, a closet 75 %, the kitchen about 16 %. SCALE: 0 to 100 %, origin x 470, 10 px per % (100 % = x 1470):
+     bathroom 810 px, closet 750, kitchen 160. The core-remnant photo is not used (FEMA 342 photos carry no per-photo credit).
+     Cues local = abs - 789.486: "FEMA sent a team" @2.02; "center of the track" @3.20; "Where the houses were gone" @5.06;
+     "89" @7.14; "bathroom" @10.90; "81" @12.48; "closet" @14.80; "75" @15.70; "kitchen" @17.42; "16" @18.32;
+     "They counted rooms" @18.86; "not who was inside them" @21.00; out 22.434. -->
+<style>
+  #g-a4-walls-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 46% 50%, #0d141c 0%, #04070a 76%); }
+  .a4b-hd { position:absolute; left:96px; top:110px; display:flex; align-items:baseline; gap:24px; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4b-hn { font-family:'Courier New', monospace; font-weight:700; font-size:110px; line-height:1; color:#e74c3c; }
+  .a4b-ht { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; letter-spacing:1px; color:#f2f5f8; }
+  .a4b-eb { position:absolute; left:96px; top:60px; font-weight:700; font-size:24px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4b-band { position:absolute; left:96px; top:470px; width:1728px; height:180px; background:linear-gradient(180deg, rgba(208,18,31,0.10), rgba(208,18,31,0.28), rgba(208,18,31,0.10));
+    border-top:2px solid rgba(231,76,60,0.5); border-bottom:2px solid rgba(231,76,60,0.5); box-sizing:border-box; opacity:0; visibility:hidden; }
+  .a4b-cl { position:absolute; left:96px; top:559px; width:1728px; height:0; border-top:3px dashed rgba(242,245,248,0.55); opacity:0; visibility:hidden; }
+  .a4b-team { position:absolute; left:96px; top:545px; width:30px; height:30px; border-radius:50%; background:#e8c56a; border:3px solid #04070c; opacity:0; visibility:hidden; }
+  .a4b-nm { position:absolute; left:96px; width:340px; text-align:right; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:34px; line-height:70px; color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4b-rail { position:absolute; left:470px; width:1000px; height:70px; background:linear-gradient(180deg,#0f1922,#0a121a); border:1px solid #1b2836; box-sizing:border-box; opacity:0; visibility:hidden; }
+  .a4b-bar { position:absolute; left:470px; height:70px; background:linear-gradient(90deg,#33556f,#7fb2e5); opacity:0; visibility:hidden; }
+  .a4b-num { position:absolute; left:1440px; width:150px; text-align:right; font-family:'Courier New', monospace; font-weight:700; font-size:56px; line-height:70px; color:#dfe7ee; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4b-note { position:absolute; left:470px; top:790px; font-weight:700; font-size:34px; letter-spacing:3px; color:#e8c56a; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4b-src { position:absolute; left:96px; top:990px; font-weight:700; font-size:20px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4b-scan { position:absolute; left:0; top:380px; width:3px; height:380px; background:linear-gradient(180deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .a4b-sq { position:absolute; width:16px; height:16px; background:#93a3b2; border-radius:2px; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-walls-root" data-composition-id="g-a4-walls" data-width="1920" data-height="1080" data-duration="22.434">
+  <div class="a4b-scan" id="g-a4-walls-scan"></div>
+  <div class="a4b-eb" id="g-a4-walls-eb">FEMA TEAM · CENTER OF THE TRACK</div>
+  <div class="a4b-hd" id="g-a4-walls-hd"><span class="a4b-hn" id="g-a4-walls-hn">89</span><span class="a4b-ht" id="g-a4-walls-ht">WALL CLUSTERS LEFT STANDING</span></div>
+  <div class="a4b-band" id="g-a4-walls-band"></div>
+  <div class="a4b-cl" id="g-a4-walls-cl"></div>
+  <div id="g-a4-walls-sqs"></div>
+  <div class="a4b-team" id="g-a4-walls-team"></div>
+  <div class="a4b-rail" id="g-a4-walls-r1" style="top:400px"></div>
+  <div class="a4b-rail" id="g-a4-walls-r2" style="top:530px"></div>
+  <div class="a4b-rail" id="g-a4-walls-r3" style="top:660px"></div>
+  <div class="a4b-bar" id="g-a4-walls-b1" style="top:400px; width:810px"></div>
+  <div class="a4b-bar" id="g-a4-walls-b2" style="top:530px; width:750px"></div>
+  <div class="a4b-bar" id="g-a4-walls-b3" style="top:660px; width:160px"></div>
+  <div class="a4b-nm" id="g-a4-walls-n1" style="top:400px">BATHROOM</div>
+  <div class="a4b-nm" id="g-a4-walls-n2" style="top:530px">CLOSET</div>
+  <div class="a4b-nm" id="g-a4-walls-n3" style="top:660px">KITCHEN</div>
+  <div class="a4b-num" id="g-a4-walls-v1" style="top:400px"><span id="g-a4-walls-v1t">81</span>%</div>
+  <div class="a4b-num" id="g-a4-walls-v2" style="top:530px"><span id="g-a4-walls-v2t">75</span>%</div>
+  <div class="a4b-num" id="g-a4-walls-v3" style="top:660px; left:660px; text-align:left">~<span id="g-a4-walls-v3t">16</span>%</div>
+  <div class="a4b-note" id="g-a4-walls-note">ROOMS COUNTED, NOT WHO WAS IN THEM</div>
+  <div class="a4b-src" id="g-a4-walls-src">FEMA 342, pp. 6-20 to 6-22</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a4-walls", P = "#g-a4-walls-", DUR = 22.434;
+  const $ = s => document.querySelector(P + s);
+  /* 89 cluster marks along the band (fixed seed): the clusters FEMA studied, shown as marks, not mapped positions */
+  let seed = 11; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+  const box = $("sqs"), SQ = [];
+  for (let i = 0; i < 89; i++) {
+    const d = document.createElement("div"); d.className = "a4b-sq"; d.id = "g-a4-walls-q" + i;
+    d.style.left = (120 + (i / 89) * 1660 + rnd() * 14).toFixed(0) + "px"; d.style.top = (488 + rnd() * 140).toFixed(0) + "px";
+    box.appendChild(d); SQ.push(d);
+  }
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "eb", P + "hd", P + "band", P + "cl", P + "team", P + "note", P + "src", ".a4b-rail", ".a4b-bar", ".a4b-nm", ".a4b-num"], { autoAlpha: 0 }, 0);
+  tl.set(SQ, { autoAlpha: 0 }, 0);
+  tl.set(".a4b-bar", { scaleX: 0, transformOrigin: "left center" }, 0);
+  /* ambient scan, sweeping the rows */
+  tl.fromTo(P + "scan", { x: 96 }, { x: 1824, duration: DUR / 2, ease: "none", repeat: 1, yoyo: true }, 0);
+  /* 0.00 "Were those the wrong rooms?": the track band opens */
+  tl.fromTo(P + "band", { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 1, scaleY: 1, duration: 0.6, ease: "power3.out" }, 0.10);
+  /* "FEMA sent a team" @2.02 */
+  tl.fromTo(P + "eb", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.02);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.30);
+  /* "center of the track" @3.20: centre line, the team walks it */
+  tl.fromTo(P + "cl", { autoAlpha: 0, scaleX: 0, transformOrigin: "left center" }, { autoAlpha: 1, scaleX: 1, duration: 0.6, ease: "power2.out" }, 3.20);
+  tl.fromTo(P + "team", { autoAlpha: 0, x: 0 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power2.out" }, 3.20);
+  tl.to(P + "team", { x: 1680, duration: 4.4, ease: "none" }, 3.40);
+  /* "Where the houses were gone" @5.06: cluster marks appear behind the team; "89" @7.14 counts them */
+  SQ.forEach((q, i) => tl.fromTo(q, { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.2, ease: "back.out(3)" }, 5.06 + i * 0.024));
+  tl.fromTo(P + "hd", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 7.14);
+  const hn = $("hn"), hc = { v: 1 };
+  tl.to(hc, { v: 89, duration: 0.9, ease: "power4.out", onUpdate: () => { hn.textContent = String(Math.round(hc.v)); } }, 7.14);
+  /* 8.60: the band clears for the bars */
+  tl.to(SQ, { autoAlpha: 0, y: -20, duration: 0.4, ease: "power2.in", stagger: 0.004 }, 8.40);
+  tl.to([P + "band", P + "cl", P + "team", P + "eb"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 8.70);
+  tl.to(".a4b-rail", { autoAlpha: 1, duration: 0.5, ease: "power2.out", stagger: 0.1 }, 9.30);
+  /* rows: name on the room word, bar and count on the number */
+  const row = (k, tName, tNum, v) => {
+    tl.fromTo(P + "n" + k, { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, tName);
+    tl.set(P + "b" + k, { autoAlpha: 1 }, tNum);
+    tl.to(P + "b" + k, { scaleX: 1, duration: 0.6, ease: "power3.out" }, tNum);
+    tl.fromTo(P + "v" + k, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: "power2.out" }, tNum);
+    const el = $("v" + k + "t"), c = { v: 1 };
+    tl.to(c, { v, duration: 0.7, ease: "power3.out", onUpdate: () => { el.textContent = String(Math.round(c.v)); } }, tNum);
+  };
+  row(1, 10.90, 12.48, 81);   /* bathroom @10.90, 81 @12.48 */
+  row(2, 14.80, 15.70, 75);   /* closet @14.80, 75 @15.70 */
+  row(3, 17.42, 18.32, 16);   /* kitchen @17.42, 16 @18.32 */
+  /* "They counted rooms" @18.86 */
+  tl.fromTo(P + "note", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 18.86);
+  tl.to(P + "note", { y: -6, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 19.4);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
