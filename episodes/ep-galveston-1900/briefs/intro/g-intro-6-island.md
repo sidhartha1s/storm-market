@@ -25,7 +25,7 @@ Galveston was an island city of about 38,000 people whose highest ground was 8.7
 - Note: "Vertical scale exaggerated" Arial 700 19 px `#93a3b2` at left 96, top 1000.
 - Chips (glass, `_shared.md` chip spec):
   - C1 "ABOUT 38,000 PEOPLE", centred on x 960, top 150.
-  - C2 "HIGHEST POINT ABOUT 8.7 FT", left edge at x 1060, top 380 (beside the crest end of the bracket, not over it).
+  - C2 "HIGHEST POINT ABOUT 8.7 FT", left edge at x 1000, top 290 (card bottom about y 400: above the crest line at y 432 and the descending profile, right of the bracket top; not over either).
   - C3 "WARNED", centred x 960, top 150 (C1's spot, after C1 leaves).
   - C4 "FEW HAD LEFT", centred x 960, top 260, under C3.
 - Leaving dots: 3 of the 22 houses' small person dots (8 px `#f2f5f8`) travel right along a dashed arrow from (1380, 600) over the bay to the mainland edge at (1800, 700); only these 3 move. No count is printed.
