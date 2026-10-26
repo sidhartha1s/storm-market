@@ -42,7 +42,7 @@ Rows: nws-facts.md §1 NCEI "onshore winds along the coast caused extreme high t
 
 ### I1-S2 — narration
 **Picture:** self-made map swings west to the Pittsburgh pin under falling snow; the NWS Pittsburgh snow records sheet slides in, top row highlighted, chip "27.4 IN · BIGGEST ON RECORD" [VE] [RS] [PAY]. Then the map tilts south past the Ohio River, a cold-blue edge sliding down toward Kentucky with no pin named. [loop L2 open] how far south the cold reached. Sound: small swell on "biggest snowstorm on record", bed thins on "a long way south".
-> On the inland side, Pittsburgh's snow went into the record book as the city's biggest snowstorm on record. The cold that came with it reached a long way south.
+> On the inland side, Pittsburgh's snow went down as the city's biggest snowstorm on record. The cold that came with it reached a long way south.
 
 Rows: nws-facts.md §2 PBZ rank 1, 27.4 in, 24 to 26 Nov 1950 (factcheck rows 9, 11: rank 1 on the current list); §3 NCEI cold reaching FL, AL, GA, NC, and JKL Kentucky record lows (the "long way south" tease).
 
