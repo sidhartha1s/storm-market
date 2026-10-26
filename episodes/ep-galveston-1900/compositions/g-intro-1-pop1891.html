@@ -1,0 +1,50 @@
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-intro-1-pop1891-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  /* local scrim: ellipse 760 x 420 centred on the text block, so the red reads over the lit shelf lamp */
+  #g-intro-1-pop1891-scrim { position:absolute; inset:auto; left:10px; top:185px; width:760px; height:420px; opacity:0; visibility:hidden; }
+  #g-intro-1-pop1891-scrimin { position:absolute; inset:0; opacity:0.85;
+    background:radial-gradient(ellipse closest-side at 50% 50%, rgba(4,7,12,0.55), rgba(4,7,12,0)); }
+  #g-intro-1-pop1891-block { position:absolute; inset:auto; left:110px; top:300px; text-align:left; white-space:nowrap; }
+  .g-intro-1-pop1891-sub { display:block; opacity:0; visibility:hidden; transform-origin:left center;
+    font-family:Arial, sans-serif; font-weight:700; font-size:32px; color:#e8e3d8; letter-spacing:3px;
+    text-shadow:0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+  .g-intro-1-pop1891-big { display:block; margin-top:12px; opacity:0; visibility:hidden; transform-origin:left center;
+    font-family:'AbrilFig', Georgia, serif; font-size:110px; line-height:1.1; color:#d0121f; letter-spacing:0.04em;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+</style>
+<div id="g-intro-1-pop1891-root" data-composition-id="g-intro-1-pop1891" data-width="1920" data-height="1080">
+  <div id="g-intro-1-pop1891-scrim"><div id="g-intro-1-pop1891-scrimin"></div></div>
+  <div id="g-intro-1-pop1891-block">
+    <span class="g-intro-1-pop1891-sub" id="g-intro-1-pop1891-sub">GALVESTON, TEXAS</span>
+    <span class="g-intro-1-pop1891-big" id="g-intro-1-pop1891-big">JULY 1891</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-intro-1-pop1891-";
+  /* TIMING: stand-in cues from the TTS audio/h1-s1.words.json (provisional hook). Re-cue to Paul's
+     full-frame clip 1 (ins-paul-1) words.json once that clip exists; host start = clip start + "Galveston" time.
+     Comp-local t = word time - 0.76 (host starts at "Galveston" 0.76, ends 4.00).
+     GALVESTON @0.76 -> local 0.00 ; JULY 1891 @1.00 -> local 0.24 ; exit "damage" @3.50 -> local 2.74..3.19 */
+  tl.set(P+"sub", {autoAlpha:0, scale:1.1}, 0);
+  tl.set(P+"big", {autoAlpha:0, scale:1.1}, 0);
+  tl.set(P+"scrim", {autoAlpha:0}, 0);
+  /* scrim in, then breathes 0.85 <-> 1 (1.2 s yoyo scaled to the window) */
+  tl.to(P+"scrim", {autoAlpha:1, duration:0.3, ease:"power2.out"}, 0);
+  tl.to(P+"scrimin", {opacity:1, duration:0.81, ease:"sine.inOut", yoyo:true, repeat:3}, 0);
+  /* sub, then big; scale-in starts at 1.1 (not 1.35) so the left-anchored text never passes x 760 */
+  tl.to(P+"sub", {autoAlpha:1, scale:1, duration:0.5, ease:"power4.out"}, 0);
+  tl.to(P+"big", {autoAlpha:1, scale:1, duration:0.5, ease:"power4.out"}, 0.24);
+  /* drift +-4 px across the whole window */
+  tl.to(P+"block", {y:-4, duration:1.62, ease:"sine.inOut", yoyo:true, repeat:1}, 0);
+  /* DAMAGE @3.50 -> exit together, clean frame for "their city" */
+  tl.to([P+"sub", P+"big"], {scale:0.92, autoAlpha:0, duration:0.45, ease:"power2.in"}, 2.74);
+  tl.to(P+"scrim", {autoAlpha:0, duration:0.45, ease:"power2.in"}, 2.74);
+  window.__timelines["g-intro-1-pop1891"] = tl;
+})();
+</script>
+</template>
