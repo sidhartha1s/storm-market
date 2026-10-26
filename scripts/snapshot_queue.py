@@ -266,9 +266,10 @@ def run(host):
         batch = {p: j for p, j in jobs.items() if j["ep"] == j0["ep"] and forward(j)} if forward(j0) else {first: j0}
         ep = j0["ep"]
         times = sorted({t for j in batch.values() for t in j["at"]}) if forward(j0) else j0["at"]
-        rc, log = shoot(snap, ep, times, pin, next(iter(batch)).stem, batch, host, t0)
+        name = next(iter(batch)).stem + (f"-x{len(batch)}" if len(batch) > 1 else "")   # never the out dir a solo rerun reuses
+        rc, log = shoot(snap, ep, times, pin, name, batch, host, t0)
         if rerun(rc, log, batch):
-            print(f"[snapq] [FALLBACK] batch of {len(batch)} failed (rc {rc}); running its jobs one at a time")
+            print(f"[snapq] [FALLBACK] batch of {len(batch)} failed (rc {rc}); running its jobs one at a time. Batch log: {log[-600:]}")
             for p, j in batch.items():
                 shoot(snap, ep, j["at"], pin, p.stem, {p: j}, host, time.time())
     print("[snapq] queue empty")
