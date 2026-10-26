@@ -22,7 +22,7 @@ Rows: sources-cuba.md §4 (AOML "On the evening of September 8, 1900, a major hu
 
 ### H1-S4 — narration
 **Picture:** NOAA 1900 weather map, Havana pinned, popfig "BELEN OBSERVATORY, HAVANA", one arrow northwest into the Gulf; then the telegraph line graphic, the Washington line lit, the Havana line dark. Source line: NOAA AOML, 2015 (on screen: "NOAA: the Bureau 'decreed that only its forecasts would be carried over the telegraph'"). [RS] [VE] (break two)
-> Over in Havana, the Jesuit forecasters at Belen Observatory had said the storm was moving northwest, into the Gulf of Mexico. But the Weather Bureau in Washington had decreed that only its own forecasts would be carried over the telegraph.
+> Over in Havana, the Jesuit forecasters at Belen Observatory said the storm was moving northwest, into the Gulf of Mexico. But the Weather Bureau in Washington ruled that the telegraph would carry only its forecasts. So the only forecasts on the wire to Galveston were Washington's.
 
 Rows: sources-cuba.md §1 (AOML "the Belén forecasters said their observations indicated the storm moved to the northwest and into the Gulf of Mexico"; Jesuit, cubamemorias.com via factcheck-B.md I1-S3); sources-cuba.md §2 (AOML "the USWB decreed that only its forecasts would be carried over the telegraph"; "NOAA says" moved to the on-screen source line, grade fix 3; "the storm" now follows the hurricane named in H1-S3; "the Weather Bureau in Washington" replaces the unintroduced "the Bureau"). "Own" added for the ear, same meaning.
 
