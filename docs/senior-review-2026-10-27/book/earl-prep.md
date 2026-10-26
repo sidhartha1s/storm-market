@@ -1,95 +1,109 @@
-# Earl Dawson prep log (role-play)
+# Earl Dawson prep log (role-play, full book read)
 
 ## 1. Profile
 Earl Dawson, 82, widower, alone in a 1978 brick single-story in north Austin with Duke the Lab. Hearing aids off at night, CPAP, warfarin plus a heart pill, neuropathy in the feet.
-Retired electrician, $2,600/month, $9,000 savings, 15-year-old unstarted generator, gas stove and water heater. Niece is in Houston and neighbours are strangers.
-Total spend I actually made: about $343 (my sum of the cost-band midpoints I chose), against $9,000 savings.
+Retired electrician, $2,600/month, $9,000 savings, a 15-year-old generator he has not started in years, gas stove and water heater, niece in Houston, strangers for neighbours.
+Spent over 60 days: about $778 (script sum of the prices I chose inside the book's cost bands). I read from the main ebook/manuscript folder, after the coordinator pointed me there.
 
 ## 2. What I read vs skimmed vs gave up on
-**Important: 11 of the 17 files I was told to read do not exist in the manuscript folder.** Missing: P1-C1 (six mechanisms), P2-C2 (food), P2-C4 (power), P2-C6 (medical), P3-09 (blizzard/ice), P3-11 (extreme cold), P3-17 (grid failure), P3-20 (water failure), P4-C1 (people/older adults), P6 (binder), P7 (the 60 days). The folder holds only P0, P1-C2, P2-C1, P2-C3, P2-C5, P2-C7, P3-07, P3-22, P5-C1, P8. So Earl never got the power, medicine, food or cold-weather chapters, and no 60-day schedule. I reacted only to what exists.
-
 | File | Result | Why |
 |---|---|---|
-| P0-front-matter | Read fully | Short, the 15-minute start is doable. Skimmed the regions table. |
-| P1-C2-the-timeline | Read about 70% | Phases 4-5 hit me (power out, meds run out). The source-note blocks were noise; I skipped them. |
-| P2-C1-water | Read the top and #1-4, 7, 8. Skipped 9-11 | Well and cistern sections do not apply (I'm on city water). |
-| P2-C3-temperature-shelter | Read #26-28, 32-35 carefully. Skipped 23-25, 29-31, 36 | Tornado, safe-room, attic and sump items do not fit a freeze. |
-| P2-C5-air-sanitation | Read #47, 48, 53-55. Skipped 49-52, 56 | Wildfire, volcano and ash do not apply. |
-| P5-C1-warning-literacy | Read #85, 86, 88, 95. Skimmed the rest | Radar, cone and space weather lost me; I'd never open a radar loop. |
-| P2-C7, P3-07, P3-22 | Not read | Not on my list and not my hazard. |
+| P0-front-matter | Read | Short. The 15-minute start is doable. Regions table skimmed (I'm "Ice & Snow North" for pipes only). |
+| P1-C1-six-mechanisms | Skimmed 30% (CO, medical dependency, thermal) | 5,500 words of case histories. I wanted the point and got stories. |
+| P1-C2-the-timeline | Read most | Phases 4 and 5 are me. Citation blocks skipped. |
+| P2-C1-water | Read 1-4, 7, 8, 12. Skipped 5, 6, 9-11 | No well, no rain barrel, filter choice too confusing. |
+| P2-C2-food | Read 13, 15, 16, 18, 22. Skipped 14, 17, 19, 21 | Deep pantry and flood cans do not fit me. |
+| P2-C3-temperature | Read 26-28, 32-35. Skipped tornado, heat, attic, sump | |
+| P2-C4-power | Read fully, twice | It is the chapter about my generator and CPAP. |
+| P2-C5-air-sanitation | Read 47, 48, 53, 55. Skipped wildfire, ash | |
+| P2-C6-medical | Read 59, 60, 63, 68. Skimmed 57-58. Skipped 62, 64-67 | I took a hard look at 59 for my pills. |
+| P3-09, P3-11 | Read 11 (Texas 2021, my own city). Skimmed 09 | 11 was written for me. |
+| P3-17-grid-failure | Read "Before" and "During" | Long list of protection numbers. |
+| P3-20-water-sanitation | Skimmed | Same advice as P2-C1. |
+| P4-C1-people | Read "Older adults" and "Disability" | First place the book talks to me. Stopped before "Animals" ended. |
+| P5-C1-warning-literacy | Read 85, 86, 88, 95. Skipped 89-94 | Radar, cones, space weather. |
+| P6-the-binder | Opened it, filled in 4 forms, gave up | 41 forms. |
+| P7-the-60-days | Read; followed weeks 1-5 loosely, dropped 6-8 | See section 3. |
 
-## 3. Preparation log (days 1-60)
-No schedule existed, so I did things in the order I met them.
-
+## 3. Preparation log (60 days, in the order of Part Seven)
 | Action | $ | Status | Honest reason |
 |---|---|---|---|
-| Turn on wireless alerts (#85, P0 step 1) | 0 | Done | Daughter-in-law-style setup help not needed; settings menu, 5 min. |
-| Enrol in county alerts (#86) | 0 | Partly | Found the county page; the form wanted an email and a code texted to me. Did it on the second try. |
-| NOAA SAME radio, bedside (#85/87) | 40 | Partly | Bought one. The manual is 40 pages. Looked up the county code, never got it programmed, so it is on with no county filter. |
-| Torch and shoes under the bed (#43) | 20 | Done | Cheap. I already had shoes. |
-| Film the house (#100) | 0 | Skipped | Narrating every drawer is a young person's chore; my knees say no. |
-| Out-of-area contact (#112) | 0 | Done | Niece in Houston, number on the fridge. She is also the one in the outage zone if Texas freezes, so I wrote that down. |
-| Write the trigger sentence (#95) | 0 | Done | One sentence: "Freeze warning means I fill the tub and go to the back bedroom." |
-| 14-day water, about 30 gal for me plus Duke (#1) | 40 | Partly | Bought 6 jugs at about 7 gal total. Two weeks of water is more than I can carry or store. |
-| Date-marker rotation (#2) | 0 | Done | Marker, fine. |
-| Fill bathtub on a watch (#3) | 0 | Done | Easy. Duke will not drink from it. |
-| Drain the water heater by hose (#4) | 0 | Skipped | Gas heater plus a wrench on the floor, neuropathy. I would not trust my balance. |
-| Bleach and the 1/8 tsp rule (#7) | 8 | Done | Bought plain bleach and taped the card inside the cabinet. |
-| Filter (#6) | 0 | Skipped | Too many types, no clear pick. Bleach covers it. |
-| Insulate pipes, cover spigots (#34) | 40 | Done | This is my trade; I did the garage and crawl-space pipes. |
-| Learn the shut-offs, label them (#35) | 0 | Done | I knew the water main. Took photos. The gas wrench hangs there now. |
-| Warm-room consolidation, back bedroom (#26) | 0 | Partly | I picked the room. Closing the rest of the house worries me for the pipes, and I could not work out when to drip. |
-| Window film (#27) | 30 | Partly | Did one window in that room. |
-| Rated sleeping bag (#28) | 0 | Skipped | $40-150 each is too much when I own wool blankets. |
-| CO alarms x4 (#47) | 120 | Partly | Bought and put them up; they were the one thing I took seriously. Did not check the dates or write the replacement year. |
-| Smoke alarms, 10-year dual (#48) | 0 | Skipped | Mine work and chirp. Not buying more. |
-| Twin-bucket toilet (#53) | 35 | Done | Two buckets and a seat. Sold. |
-| Hand sanitiser, wipes (#55) | 10 | Done | Cheap. |
-| Generator siting, 20 ft from windows (#32) | 0 | Partly | Picked the back-yard spot. Have not started it in years. I will not test it, since the book never says how. |
-| Space heater rules (#33) | 0 | Done | I already own an oil-filled one. |
-| Everything else: air chapter, hail/tornado/radiological, structure, weather-radar (#89), hurricane cone (#90) | 0 | Skipped | Not my hazard. |
+| Wireless alerts on, county alert signup (85, 86) | 0 | Done | Settings menu. County form wanted a texted code; took two tries. |
+| NOAA SAME radio at bedside (85/87) | 40 | Partly | Bought it. Never programmed the county code; it sits unfiltered. |
+| Trigger plan, one sentence (95) | 0 | Done | "Freeze warning: fill the tub, go to the back bedroom, charge everything." |
+| Out-of-area contact (112) | 0 | Done | Niece. She is in Houston, so also a freeze victim; I know that. |
+| Headlamp and shoes by bed (43) | 20 | Done | |
+| Label shut-offs, wrench at the gas meter (35) | 0 | Done | Easy for an electrician. |
+| Water store (1) | 40 | Partly | About 8 gal for me and Duke. Two weeks is more than I can carry. |
+| Date-marking, tub fill (2, 3) | 0 | Done | |
+| Water heater drain (4) | 0 | Skipped | Gas heater, floor valve, bad feet and balance. |
+| Bleach card (7) | 8 | Done | |
+| Pantry, no-cook, 14 days (13) | 60 | Partly | About 8 days. Cold canned food does not tempt me. |
+| Fridge and freezer thermometers (15), frozen bottles | 15 | Done | Cheap, understood, did it. |
+| Two can openers (18) | 10 | Done | |
+| Pet food 2 weeks (20) | 30 | Done | Duke eats. |
+| Pipe insulation, spigot covers (34) | 40 | Done | My trade. |
+| Warm room, back bedroom (26) | 0 | Partly | Picked it. Unsure how to close the rest without freezing pipes. |
+| Window film, one room (27) | 30 | Partly | One window only. |
+| Rated sleeping bag (28) | 0 | Skipped | $40-150 and I own wool blankets. |
+| CO alarms x4, check dates (47) | 120 | Done | Replaced two old ones. Only thing I felt in my gut. |
+| Smoke alarms (48) | 0 | Skipped | Mine chirp and work. |
+| Power priority list (37) | 0 | Done | Tier 1: CPAP. Tier 2: fridge, phone, light. |
+| Call utility medical registry (42) | 0 | Partly | Austin Energy line was on hold 40 minutes; hung up, tried once more. Registered second time. |
+| Power station for CPAP and phone (38) | 250 | Done | Silent, no exhaust. I pick this over trusting the generator. |
+| Start generator, stabiliser, fuel (40) | 30 | Partly | Started it in the yard; sputtered, ran. Stabiliser bought, old fuel not drained. |
+| Transfer switch or interlock (39) | 0 | Skipped | $500-1,500, and I wire my own gear directly with proper cords. I keep it off the house. |
+| Solar panel (41) | 0 | Skipped | Winter sun, not worth it. |
+| Twin-bucket toilet (53) | 35 | Done | |
+| Hand sanitiser (55) | 10 | Done | |
+| Prescription buffer (59) | 0 | Partly | Pharmacy said 30 days is possible on my insurance. Warfarin is monitored; I did not ask about that. |
+| Spares: hearing aid batteries, CPAP supplies (68) | 40 | Done | |
+| Trauma kit, Stop the Bleed (57, 58) | 0 | Skipped | $40-120 plus a class across town; I do not drive at night. |
+| Video home inventory, paper week (96-102) | 0 | Skipped | Narrating every drawer on bad knees. |
+| Go-bag, helmets, safe room, routes, drills (weeks 6, 8) | 0 | Skipped | Not a tornado or flood man; no evacuation plan for a freeze. |
+| Binder (Part Six) | 0 | Skipped | 41 forms; filled 4. |
 
 ## 4. My plan when a hard freeze knocks the power out for days
-**Heat.** First sign of the warning, I go to the back bedroom, shut the door, hang blankets on the window, put Duke on the bed with me. Oil-filled heater only if the power is on. If it is off, I stay in blankets and wool hat. I will NOT light the gas oven for heat; the book did not tell me whether that is ok, so I do not.
+**Heat.** When the freeze warning comes I fill the tub, charge the power station and phone, go to the back bedroom, shut the door, blankets on the window, Duke on the bed, wool hat. I will NOT use the gas oven or stove for heat; the book says that kills people. Oil heater only while the power is on.
 
-**Generator.** Honestly, I will try to start it. I rig things. If it runs I put it in the back yard marked spot, well away from the window, and run a cord. If it does not start in the cold, I do not tinker in the dark. That is the weak point. The book says never in the garage and 20 ft out. It gave me no steps for stale gas, how to start a machine I have not touched in years, or what the cord should be.
+**Generator.** I will try it. I rig things. It goes in the yard, 20 feet from any window or door, away from the neighbour's fence, and I run a heavy cord, never into a wall socket. If it will not start in the cold I stop; I do not tinker in the dark. CO alarms stay on. I will refuel only when cold and stopped, which means going outside at night on bad feet.
 
-**CPAP.** I have no answer. The book never mentions a CPAP, battery, or sleeping without it. I will probably run the generator at night to power it, which means going outside to refuel in the dark with bad feet. I will sleep with the CPAP off and slightly propped up if it comes to that.
+**CPAP.** Runs off the power station first night. When it is flat I run the generator for it. I do not own a panel, so if both fail I sleep propped up without the CPAP.
 
-**Water pipes.** Drip a tap. Water main off if a pipe goes. I insulated what I could reach. Pulling the main and draining is beyond what I can do by myself in the cold.
+**Water pipes.** Drip taps farthest from the main, hot and cold. Cabinet doors open. If a pipe splits I shut the main and call a plumber. I do not drain the whole house; I cannot do it alone.
 
-**Food.** Nothing. I never got the food chapter; I eat what is in the fridge, then peanut butter and canned soup on the gas stove top. No plan for cold stored food.
+**Food.** Fridge and freezer shut, thermometers read, frozen bottles in. Eat cold canned food and peanut butter. I cook on the gas stove top only to heat soup with the window cracked and the CO alarm working; the book is silent on that, so I do it briefly.
 
-**Medicine.** Nothing. The medical chapter is missing. I have about a week of warfarin and heart pills. I do not know if warfarin needs anything special, and I will not call my doctor in a storm.
+**Medicine.** I have 30 days of warfarin and the heart pill. No refrigerated drugs. Nothing in the book told me what a cold house does to my blood thinner or my bleeding risk if I fall.
 
-**Who checks on me.** My niece in Houston, by phone, if my phone has charge. Neighbours are strangers; the book told me to know a neighbour and I never did.
+**Who checks on me.** My niece phones daily if the phone has charge. I have not met a neighbour. The book said "a person, not a purchase" and I did not find one. If the house drops below a number, I go to a warming centre; I never wrote the number down.
 
 ## 5. Where the book lost me
-- "Not a general intention to be careful. A specific, pre-committed threshold" (P1-C2-the-timeline.md): good idea, but I do not know what my threshold is for a freeze; it only had tornado and hurricane examples.
-- "Number you add depends on what is already there" (P2-C3-temperature-shelter.md, #31): attic table, R-values, climate zones; pure noise to me.
-- "Fit the highest-efficiency filter your system is rated to accept" (P2-C5-air-sanitation.md, #49): jargon (MERV, PM2.5), nothing I would do.
-- "SAME — Specific Area Message Encoding — fixes this" (P5-C1-warning-literacy.md, #87): I did not know how to program it.
-- "Hand a tub bladder... keeps the water clean enough to drink" (P2-C1-water.md, #3): never saw one; no picture, so I skipped.
-- Source blocks in all files ("retrieved 2026-07-29"): they interrupt reading and add nothing for me.
-- Heading with "Protection 112" for two different things (P5-C1, #91 vs. #112 contact in P0): I could not tell which 112 was meant.
+- "SAME — Specific Area Message Encoding — fixes this." (P5-C1-warning-literacy.md): sounds like a fix; the code lookup and button steps beat me.
+- "starting loads, which are much higher than running loads" (P2-C4-power.md): I know this, but the book gives no watts for a CPAP, a furnace blower, or a fridge.
+- "Not a general intention to be careful." (P1-C2-the-timeline.md): good, but every example is tornado or hurricane; the freeze trigger is left for me to invent.
+- "Do not write a list of what to pack." (P7-the-60-days.md, Day 38): contradicts a book that asks for 41 forms.
+- Protection numbers in every sentence (P3-17-grid-failure.md, "Before" list): "37, 42, 38, 39, 32, 47, 40, 41..." I had to flip back each time.
+- 41 forms (P6-the-binder.md): I did four and quit.
+- P3-11 says the thermostat stays "no lower than about sixty-five" but I cannot afford the gas bill on $2,600.
 
 ## 6. Where I needed a picture
-- Water heater draw-off (#4): there is a FIG reference, but the text still assumes I can crawl to the valve. I need to see which valve is which.
-- NOAA radio SAME code programming: a step-by-step photo of the buttons.
-- Warm-room layout for a one-story house, with the door, towel and blanket placement.
-- A generator placement diagram showing the 20 ft rule against my own windows, vents and the neighbour's fence.
-- CO alarm: how to read the date on the back, and a picture of the end-of-life chirp and where it goes on the ceiling.
-- Which pipes to drip, which taps, and which faucet in a house like mine.
-- A one-page "freeze checklist" I could stick on the fridge. The trigger plan only had tornado and hurricane examples.
+- A water-heater drain-valve photo, with my own gas valve circled, in a house like mine.
+- Which taps to drip on a one-story slab or crawl-space house, and where the pipes run.
+- A yard diagram showing 20 feet from my windows, vents and the neighbour's house.
+- A one-page "freeze checklist" for the fridge door, written for Texas, not a tornado card.
+- The NOAA radio buttons and where the county code goes.
+- A CO alarm date on the back and what the end-of-life chirp sounds like.
+- A CPAP power chart: watts, hours, battery size.
+- A warm-room layout for a one-story house with a gas furnace.
 
 ## 7. What the book never told me that I wondered about
-- Anything on a CPAP or home oxygen when the power is out; I could not find it.
-- Warfarin and heart pills: how long they keep, whether cold or heat hurts them, how to get a refill early when I am on a fixed income.
-- How to start and run a 15-year-old generator safely, fuel storage, how many watts for CPAP, fridge and heater.
-- Whether I can use the gas stove or oven for heat or cooking in an outage, and CO risk.
-- What to do with Duke: water, food, a place to go.
-- How a hard-of-hearing person with hearing aids out at night is woken by an alert or a CO alarm. The book mentions strobe or bed-shaker smoke alarms but says nothing for CO.
-- Whether the water heater and pilot relight themselves after a freeze.
-- How an 82-year-old alone gets to a warming centre with no car and bad feet, and who pays.
-- A plain budget: what to buy first with $343, what the whole "ready" list costs, and what Medicare or the city will cover.
-- How to get neighbours to check on me when I do not know them.
+- Warfarin: how cold, missed doses, or a fall affect bleeding; who to call. The medical chapter has no dosing guidance by design, but not even "ask your doctor about anticoagulants."
+- Can I safely run my gas furnace blower on a generator, and how big a generator, and does a 15-year-old unit still qualify?
+- How to wake a hard-of-hearing man with the aids out for a CO alarm; the people chapter says visual or bed-shaker for hearing loss, but the CO alarm page does not.
+- The gas water heater pilot after a freeze, and gas pressure in a deep freeze.
+- Duke: a dog in a sealed warm room, where he goes if I leave for a warming centre, whether centres take dogs in Austin.
+- What a hotel, cooling or warming centre costs, how I get there with no car at night, and the threshold to go.
+- Cost in order: what to buy first with $778 and what to skip, because the book lists 130 items.
+- How to get strangers on my street to check on me without feeling like a burden.
+- Whether Medicare or the city pays for any of it, including a battery for my CPAP.
