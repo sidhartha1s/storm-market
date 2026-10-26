@@ -1,5 +1,5 @@
 # g-intro-6-island · T1-S1 · DEEP · Opus 5.5 high
-Shared rules: `_shared.md`. Exemplar: `episodes/ep6-katrina-2005/compositions/g-surge-ms.html` (cross-section on a datum line with a measured height) and `library/inhouse/then-now-scale.html` (one measured axis). Reference worked brief: `references/mg-brief-example-g-slope.md`.
+Shared rules: `_list.md` "Shared rules". Exemplar: `episodes/ep6-katrina-2005/compositions/g-surge-ms.html` (cross-section on a datum line with a measured height) and `library/inhouse/then-now-scale.html` (one measured axis). Reference worked brief: `references/mg-brief-example-g-slope.md`.
 
 ## 0. Claim
 Galveston was an island city of about 38,000 people whose highest ground was 8.7 ft above the sea; it had been warned, and still few people left.
@@ -23,7 +23,7 @@ Galveston was an island city of about 38,000 people whose highest ground was 8.7
 - Measure bracket: a vertical dashed line `#d8a13a` 3 px at x 960 from y 780 (sea level) up to y 432 (crest), drawn upward; end ticks 30 px wide; at y 780 the tick label "Sea level" Arial 700 22 px `#93a3b2` left of the bracket base.
 - Labels (Arial 700 22 px `#93a3b2` tracking 3, diagram-label tier): "Gulf of Mexico" centred over the Gulf water at (228, 840); "Galveston Bay" at (1692, 840); "Galveston Island" above the crest is NOT used (the chip names the city).
 - Note: "Vertical scale exaggerated" Arial 700 19 px `#93a3b2` at left 96, top 1000.
-- Chips (glass, `_shared.md` chip spec):
+- Chips (glass, `_list.md` "Shared rules" chip spec):
   - C1 "ABOUT 38,000 PEOPLE", centred on x 960, top 150.
   - C2 "HIGHEST POINT ABOUT 8.7 FT", left edge at x 1000, top 290 (card bottom about y 400: above the crest line at y 432 and the descending profile, right of the bracket top; not over either).
   - C3 "WARNED", centred x 960, top 150 (C1's spot, after C1 leaves).

@@ -1,5 +1,5 @@
 # g-intro-5-src-mwr · H1-S5 + first beat of T1-S1 · standard · Sonnet 5.5 high
-Shared rules: `_shared.md`. Exemplar: cards.css `.srclab` (restyled to the glass surface and moved top-left per `_shared.md`).
+Shared rules: `_list.md` "Shared rules". Exemplar: cards.css `.srclab` (restyled to the glass surface and moved top-left per `_list.md` "Shared rules").
 
 ## 0. Claim
 The line about his wife comes from Isaac Cline's own report in the Monthly Weather Review, September 1900. This comp is the source line only: the human beat carries itself (edit script H1-S5 [HUMAN]; no chip, no popfig).

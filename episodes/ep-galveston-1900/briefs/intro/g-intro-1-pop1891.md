@@ -1,5 +1,5 @@
 # g-intro-1-pop1891 · H1-S1 · standard · Sonnet 5.5 high
-Shared rules: `_shared.md` (this folder). Exemplar: `references/editing-patterns/ep6-glasscard-popfig-bfmg.html` (popfig block only) and cards.css `.popfig`.
+Shared rules: `_list.md` "Shared rules" (this folder). Exemplar: `references/editing-patterns/ep6-glasscard-popfig-bfmg.html` (popfig block only) and cards.css `.popfig`.
 
 ## 0. Claim
 The page Paul holds is from Galveston, Texas, July 1891. Date and place only; no other text in the hook's first frame.

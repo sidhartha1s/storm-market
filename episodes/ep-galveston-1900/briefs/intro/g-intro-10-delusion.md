@@ -1,5 +1,5 @@
 # g-intro-10-delusion · I1-S5 · standard · Sonnet 5.5 high
-Shared rules: `_shared.md`. Copies the "ABSURD DELUSION" chip from `g-intro-2-cline1891` (same family: build g-intro-2 first, copy its chip block and restyle nothing). Exemplar for the popfig: cards.css `.popfig`.
+Shared rules: `_list.md` "Shared rules". Copies the "ABSURD DELUSION" chip from `g-intro-2-cline1891` (same family: build g-intro-2 first, copy its chip block and restyle nothing). Exemplar for the popfig: cards.css `.popfig`.
 
 ## 0. Claim
 Long before the 1900 messages, the city had Cline's word in print: July 16, 1891, "absurd delusion". This opens the question carried into Act 1.

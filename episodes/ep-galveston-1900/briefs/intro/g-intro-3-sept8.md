@@ -1,5 +1,5 @@
 # g-intro-3-sept8 · H1-S3 · standard · Sonnet 5.5 high
-Shared rules: `_shared.md`. Exemplar: `references/editing-patterns/ep6-glasscard-popfig-bfmg.html` (popfig, then glass card, one after the other).
+Shared rules: `_list.md` "Shared rules". Exemplar: `references/editing-patterns/ep6-glasscard-popfig-bfmg.html` (popfig, then glass card, one after the other).
 
 ## 0. Claim
 The storm struck Galveston on Saturday, September 8, 1900, and at least 6,000 people died there, by Cline's own count.

@@ -1,5 +1,5 @@
 # g-intro-2-cline1891 · H1-S2 · standard · Sonnet 5.5 high
-Shared rules: `_shared.md`. Exemplars: `library/official` `lt-dark-card` for the lower-third shape (restyle to the glass card), `episodes/ep-1974-super-outbreak/compositions/g-cite-paper.html` (single-word marker tag over a page).
+Shared rules: `_list.md` "Shared rules". Exemplars: `library/official` `lt-dark-card` for the lower-third shape (restyle to the glass card), `episodes/ep-1974-super-outbreak/compositions/g-cite-paper.html` (single-word marker tag over a page).
 
 ## 0. Claim
 The man who wrote part of the 1891 page was Isaac Cline, Galveston's weatherman, and he called the fear an "absurd delusion".

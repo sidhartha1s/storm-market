@@ -1,8 +1,8 @@
 # g-intro-9-warnings · I1-S4 · standard · Sonnet 5.5 high
-Shared rules: `_shared.md`. Exemplars: `library/inhouse/stat-timeline.html` (sequential chronology labels) and `library/inhouse/numbers-rollup.html` (rows landing in order); restyle both to glass tiles over footage.
+Shared rules: `_list.md` "Shared rules". Exemplars: `library/inhouse/stat-timeline.html` (sequential chronology labels) and `library/inhouse/numbers-rollup.html` (rows landing in order); restyle both to glass tiles over footage.
 
 ## 0. Claim
-Washington's messages reached Galveston every day from September 4 to 8; on Friday the 7th the city was under a storm warning; even Friday's midday warning called it a moderate storm, not a hurricane.
+Washington's messages reached Galveston every day from September 4 to 8; on Friday the 7th the city was under a storm warning; even Friday's midday warning called it a moderate storm. (OSU adds "not a hurricane"; the narration does not say it, so it is not on screen: reveals follow the voice's wording.)
 
 ## 1. Source
 - MWR Sept 1900 (Cline, in Garriott): "Warning messages were received from the Central Office at Washington on September 4, 5, 6, 7, and 8." (sources-cuba.md §3; factcheck intro-r1 Apply list).
@@ -15,7 +15,7 @@ Overlay comp, transparent root, over the MWR report page with a slow push to the
 ## 3. Geometry (px)
 - Day row: five glass tiles, each 150 x 150 px, 24 px gaps, row centred on x 960 at top 200 (row spans x 579 to 1341). Each tile: eyebrow "SEPT" Arial 700 22 px `#93a3b2` tracking 6 on top, the day numeral Arial Black 900 72 px `#f2f5f8` under it: 4, 5, 6, 7, 8. Under each numeral a 6 px `#7fb2e5` bar (Washington's colour, as in the maps) that fills `scaleX 0 -> 1` when the tile lands: one message per day.
 - Storm-warning tag: on the "7" tile only, a crimson `#8e2020` band across the tile's bottom 40 px, text "STORM WARNING" Arial 700 19 px `#f4f0e8` tracking 2 (tokens.md `.stamp` colours); the "7" tile scales to 1.08 and the others dim to 0.6.
-- Chip "MODERATE STORM" (no quote marks, see §4.3): centred x 960, top 470, Arial Black 900 52 px; tag line "Washington, Friday midday" Arial 700 22 px `#93a3b2` tracking 4. Then a second line inside the chip, "not a hurricane", Georgia italic 30 px `#d8a13a`.
+- Chip "MODERATE STORM" (no quote marks, see §4.3): centred x 960, top 470, Arial Black 900 52 px; tag line "Washington, Friday midday" Arial 700 22 px `#93a3b2` tracking 4.
 - Source line top-left: "Isaac Cline, Monthly Weather Review, Sept. 1900 · Texas State Historical Association · Ohio State University, Origins".
 
 ## 4. Must be true in the picture
@@ -33,7 +33,6 @@ Overlay comp, transparent root, over the MWR report page with a slow push to the
 - 6.44 ("storm" 6.44): STORM WARNING band wipes in across tile 7 (scaleX 0 to 1 from the left, 0.4 s), landing by "warning" 6.62.
 - 7.48 ("But" 7.48): the whole row dims to 0.45 and rises 20 px.
 - 9.46 ("moderate" 9.46) /* MODERATE @9.46 */: chip in with "MODERATE STORM"; tag "Washington, Friday midday" at 9.74 ("storm").
-- 10.10: "not a hurricane" line rises in inside the chip (it is the narration's meaning, spoken a beat later in the act; it lands after the voice line ends, never before it).
 - Host 0.00 to 10.356 + land time to the cut into I1-S5 (at least 0.8 s; default 11.20 capped by I1-S5's narration start). Exit anchored to the host's last 0.6 s.
 
 ## Motion for the whole window

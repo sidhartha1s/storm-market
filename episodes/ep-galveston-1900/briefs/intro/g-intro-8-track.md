@@ -1,5 +1,5 @@
 # g-intro-8-track · I1-S1 (8.10 on) + I1-S2 + I1-S3 · DEEP · Opus 5.5 high
-Shared rules: `_shared.md`. Built on the base `g-intro-4-wire-map` (same plate, projection, pins, colours, wire layer): copy it only after the base passed its full-size frame read. Exemplar for the moving storm marker: `episodes/ep6-katrina-2005/compositions/g-track.html` (ring follows the track, camera clamp).
+Shared rules: `_list.md` "Shared rules". Built on the base `g-intro-4-wire-map` (same plate, projection, pins, colours, wire layer): copy it only after the base passed its full-size frame read. Exemplar for the moving storm marker: `episodes/ep6-katrina-2005/compositions/g-track.html` (ring follows the track, camera clamp).
 
 ## 0. Claim
 The storm crossed Cuba on September 4. Washington expected it to recurve northeast, the way many storms did at that latitude; it did not: on the 6th the steamer Louisiana passed through its centre in the eastern Gulf, and it kept coming across the Gulf toward Galveston while Washington's wire told Galveston what to expect.
@@ -20,17 +20,17 @@ Plate and projection exactly as g-intro-4 (`X = (lon + 100) * 90`, `Y = (41 - la
 - V-GULF: cx 1150, cy 1550, s 0.75 (Galveston 449, 290; Havana 1286, 771).
 - V-WIRE: cx 1267, cy 1000, s 0.5 (as g-intro-4).
 V-GULF to V-WIRE is 1.5x: use `logZoom`.
-Comp-local time = (segment's narration data-start − host data-start) + word time (`_shared.md`). Host data-start = I1-S1 data-start + 8.10.
+Comp-local time = (segment's narration data-start − host data-start) + word time (`_list.md` "Shared rules"). Host data-start = I1-S1 data-start + 8.10.
 
 ## 3. Geometry
 - Storm marker: white ring 96 px, 6 px stroke `#f2f5f8` with glow (g-track's ring, smaller), moves only by GSAP along the HURDAT2 points (per-leg `attr`/x,y tweens; MotionPathPlugin is not bundled). Past track: solid line `#f2f5f8` 5 px behind the marker, drawn by strokeDashoffset as the marker moves; its head always under the marker (assert at three times, 7a).
 - Day ticks on the past track: a 10 px dot at each 12Z position from Sept 2 to Sept 8, no date text except the two chips below.
 - Washington's expected path (the "WASHINGTON ?" arrow, then resolved): dotted `#7fb2e5` 6 px (dots 2/14, round caps), from the Sept 5 Straits point, curving north then northeast to (-79.0, 31.0) = (1890.0, 1039.5), arrowhead 34 px. Phase 1 (I1-S1): only its first third is drawn, ending in a "?" glyph; label "Washington ?" Arial 700 30 px `#7fb2e5`. Phase 2 (I1-S2): drawn to its end; label changes to "Washington: recurve northeast" (a second pre-authored label swapped with autoAlpha, never written text).
 - Havana's forecast arrow: the g-intro-4 arrow, same geometry and colour `#d8a13a`, label "Havana: into the Gulf".
-- Chips (glass, `_shared.md` chip spec), placed on the HUD next to the point they name, settled before they enter:
+- Chips (glass, `_list.md` "Shared rules" chip spec), placed on the HUD next to the point they name, settled before they enter:
   - "CROSSES CUBA · SEPT 4" beside the Sept 4 crossing point, above it, never over the ring.
   - "STEAMER LOUISIANA · SEPT 6" beside the Sept 6 position; a small ship glyph (`#e8c56a`, 40 px) sits on the track at that position and the ring passes through it.
-- Lower-third (fixed HUD, `_shared.md` spec, bottom-left): "WILLIS MOORE" / "Chief, US Weather Bureau". In V-GULF the bottom-left of the screen is Mexico's land and the western Gulf with no labels: keep it so.
+- Lower-third (fixed HUD, `_list.md` "Shared rules" spec, bottom-left): "WILLIS MOORE" / "Chief, US Weather Bureau". In V-GULF the bottom-left of the screen is Mexico's land and the western Gulf with no labels: keep it so.
 - Wire layer (I1-S3): exactly g-intro-4's two lines and three labels in V-WIRE, Havana line dark from its first frame, the "×" already on it.
 - Source line top-left: I1-S1 part "Monthly Weather Review, Sept. 1900 · track: NOAA HURDAT2"; from I1-S2 "NOAA AOML, 2015 · Monthly Weather Review, Sept. 1900".
 

@@ -1,5 +1,5 @@
 # g-intro-7-clines · I1-S1 (0.00 to 8.10) · standard · Sonnet 5.5 high
-Shared rules: `_shared.md`. Exemplars: `episodes/ep-1974-super-outbreak/compositions/g-person-allen.html` (text-only person card, no photo slot, light band drift) and library/official `lt-stack-bars` (two names in sequence).
+Shared rules: `_list.md` "Shared rules". Exemplars: `episodes/ep-1974-super-outbreak/compositions/g-person-allen.html` (text-only person card, no photo slot, light band drift) and library/official `lt-stack-bars` (two names in sequence).
 
 ## 0. Claim
 In 1900 Isaac Cline was Galveston's Local Forecast Official; his brother Joseph worked beside him as the observer.
@@ -13,7 +13,7 @@ In 1900 Isaac Cline was Galveston's Local Forecast Official; his brother Joseph 
 Overlay comp, transparent root, over the MWR September 1900 report page at its byline (track 1, slow push). Zones: lower-third (one card, two names in turn), source line top-left.
 
 ## 3. Geometry (px)
-- Lower-third glass card at `left:110px; bottom:110px` (`_shared.md`). Name 1 "ISAAC CLINE" Arial Black 900 52 px; role 1 "Local Forecast Official, Galveston" Arial 700 27 px `#f5d98b`.
+- Lower-third glass card at `left:110px; bottom:110px` (`_list.md` "Shared rules"). Name 1 "ISAAC CLINE" Arial Black 900 52 px; role 1 "Local Forecast Official, Galveston" Arial 700 27 px `#f5d98b`.
 - Name 2 "JOSEPH CLINE" and role 2 "Observer · his brother" in the same card position, replacing name 1 (a line swap: line A exits up 40 px through the card's overflow, line B enters from 40 px below; the card stays and resizes its width by scaleX on an inner background, never by `width`).
 - A light band (`linear-gradient` 120 px wide, rgba(255,255,255,0.08)) drifts across the card left to right and back, 3 s each way, finite repeats over the host.
 - Source line top-left: "Isaac Cline, Monthly Weather Review, Sept. 1900".
