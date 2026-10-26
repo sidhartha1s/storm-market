@@ -136,19 +136,19 @@ Cost bands are retail estimates, verify before print.
 
 **3.3 British English throughout** (grep counts): neighbour 45, programme 40, torch 32, enrol 16, organis- 13, petrol 6, stabiliser 6, tyres 5, colour 4, fuelled 4, nappies 2. Dorothy named five of them. One sweep to US English.
 
-**3.4 Number-chains instead of instructions.** "Protections 37, 42, 38, 39, 32, 47, 40, 41" (P3-17 Before) made Earl flip back each time; Bev asked "what 25 means." Rule for every list a senior acts from: name first, number second ("helmets (25)"), never a bare number.
+**3.4 Number-chains instead of instructions.** "37, 42, 38, 39, 32, 47, 40, 41..." (P3-17 Before) made Earl flip back each time; Bev asked "what 25 means." Rule: name first, number second ("helmets (25)").
 
-**3.5 Jargon introduced before it is explained.** "SAME" (all three radio buyers stalled), "watt-hours" (Harold, Earl), "Tornado Alley rank 8. Owners only" (Bev), "check your equipment's tolerance" (Harold), "gas to pilot or off at the valve" (Dorothy).
+**3.5 Jargon before explanation.** "SAME" (all three radio buyers stalled), "watt-hours" (Harold, Earl), "Tornado Alley rank 8. Owners only" (Bev), "equipment's tolerance" (Harold), "gas to pilot or off at the valve" (Dorothy).
 
-**3.6 Density and reading stamina.** Each protection is a bold header block plus 4-5 paragraphs plus inline «SRC» citation text in the draft. Dorothy stops at 20 minutes; Harold "the source blocks wore me out"; Bev skimmed every "What this does not do." P1-C1 (5,500 words) was abandoned or skimmed by all four. The rendered book strips SRC to superscripts (README), so the senior edition fix is layout: a 3-line "Do this" box at the top of each protection.
+**3.6 Density.** Header block plus 4-5 paragraphs per protection. Dorothy stops at 20 minutes; P1-C1 (5,500 words) was abandoned or skimmed by all four. Fix: a 3-line "Do this" box atop each protection.
 
-**3.7 Advice that assumes a car, a smartphone and two able adults.** "Every phone" (P85), "drive both routes" (P106), "keep the tank above half" (P110), "the cars are fuelled" (P1-C2, P95 example), "every adult gets an assigned area" (P108), three days of water in a go-bag (P107). Each of the four hit at least one and concluded "this part isn't for me."
+**3.7 Car, smartphone and two able adults assumed.** P85 "every phone," P106 "drive both routes," P110 half-tank, P95 "cars fuelled," P108 "every adult gets an area," P107 three days of water. Each reader hit one and concluded "this part isn't for me."
 
-**3.8 A statistic that frightens without directing.** P4-C1 Dosa study ("evacuation... roughly doubling" death risk) made Dorothy ask whether she should stay. The text says "do not read that as never move anybody," but it is about nursing-home residents and sits in the "Older adults" section read by independent seniors in surge zones. Add one sentence: "If you live at home in a surge zone, this study is not about you. Leave."
+**3.8 A statistic that frightens without directing.** The P4-C1 Dosa study (evacuation roughly doubling death risk, nursing-home residents) made Dorothy ask whether she should stay. See R11.
 
-**3.9 Volume without a start line for them.** 130 protections, 41 forms, 23 playbooks. All four asked for "my three." Earl: P7 Day 38 "Do not write a list of what to pack" next to 41 forms felt contradictory.
+**3.9 No start line.** 130 protections, 41 forms; all four asked for "my three."
 
-**3.10 Missing pictures** they asked for, in order of frequency: NOAA radio buttons and county code (3 of 4), one-page big-print card per hazard (4 of 4), where to find your zone (2), power sizing chart for CPAP/oxygen (2), generator 20-foot yard diagram (1), insulin cooler (1), mobile-home EF-1 damage (1).
+**3.10 Pictures asked for:** big-print card per hazard (4 of 4), radio buttons and county code (3), zone lookup (2), CPAP/oxygen power chart (2), generator yard (1), insulin cooler (1), mobile home in EF-1 wind (1).
 
 ---
 
