@@ -235,10 +235,10 @@ def fig_water_heater_drawoff():
     {step(3, 30, 108, ["open a hot faucet", "elsewhere, to admit air"])}
     {step(4, 30, 150, ["draw from the drain", "valve into a container"])}
     {step(5, 30, 192, ["do not refill or", "re-energize until safe"])}
-    <line x1="40" y1="24" x2="184" y2="18" stroke-width="1" stroke-dasharray="2,2" style="stroke:{INK_MUTE}"/>
-    <line x1="40" y1="66" x2="196" y2="70" stroke-width="1" stroke-dasharray="2,2" style="stroke:{INK_MUTE}"/>
-    <line x1="40" y1="108" x2="288" y2="21" stroke-width="1" stroke-dasharray="2,2" style="stroke:{INK_MUTE}"/>
-    <line x1="40" y1="150" x2="224" y2="188" stroke-width="1" stroke-dasharray="2,2" style="stroke:{INK_MUTE}"/>
+    <line x1="134" y1="24" x2="184" y2="18" stroke-width="1" stroke-dasharray="2,2" style="stroke:{INK_MUTE}"/>
+    <line x1="134" y1="66" x2="196" y2="70" stroke-width="1" stroke-dasharray="2,2" style="stroke:{INK_MUTE}"/>
+    <line x1="134" y1="108" x2="288" y2="21" stroke-width="1" stroke-dasharray="2,2" style="stroke:{INK_MUTE}"/>
+    <line x1="134" y1="150" x2="224" y2="188" stroke-width="1" stroke-dasharray="2,2" style="stroke:{INK_MUTE}"/>
     '''
     return _figure(4, "The five-step draw-off sequence in order, and where each valve is on the "
                    "tank — a conventional water heater holds forty to eighty gallons of potable "
