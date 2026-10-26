@@ -24,7 +24,7 @@ queueing behind a 15-minute draft (owner 17 Sep 26). The full browser gates stay
 Exit 0 = clear. Exit 3 = a render is running, or (with --launch) not even 1 worker fits.
 RENDER_BUSY_OK=1 overrides, for the case where the render itself is the thing being tested.
 
-The heavy lock (owner 26 Oct 26; why: learnings/render.md): one heavy job per machine at a time. render.cmd, TTS (tts_episode.py, tts_clone.py), the face
+The heavy lock (owner 26 Oct 26; why: learnings/render.md): one heavy job per machine at a time. render.cmd, pin_ritual.py, TTS (tts_episode.py, tts_clone.py), the face
 pass (circle_face.py) and e2e.py book ~/.storm-heavy.lock before they start and wait their turn. A job started
 from the ASUS over ssh runs as the same user on the ZBook, so it books the same file. The file records holder,
 job, machine, pid and start time. A holder whose pid is gone (or reused by a newer process) is dead and its
