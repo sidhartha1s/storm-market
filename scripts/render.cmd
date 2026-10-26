@@ -78,7 +78,10 @@ REM and with no env it measures the slow PATH build and refuses (ep6 full attemp
 REM Output goes to a log next to render_%MODE%.log: a hidden/schtasks launch has no console, so
 REM a refusal reason with nowhere to land was invisible until the operator reran by hand.
 set PREFLIGHT_LOG=render_%MODE%_preflight.log
-"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_preflight.py" "%EP%" %MODE% > "%PREFLIGHT_LOG%" 2>&1
+REM Heavy lock (owner 26 Oct 26): wait for this machine's other heavy job (render, TTS, face pass, e2e) to end, then
+REM book the lock for this cmd.exe until it exits. Before the preflight, which refuses a live render instead of waiting.
+"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_busy.py" --hold "render %SLUG% %MODE%" > "%PREFLIGHT_LOG%" 2>&1
+"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_preflight.py" "%EP%" %MODE% >> "%PREFLIGHT_LOG%" 2>&1
 if errorlevel 1 (
   echo PREFLIGHT REFUSED exit %ERRORLEVEL% — see %CD%\%PREFLIGHT_LOG%
   type "%PREFLIGHT_LOG%"
