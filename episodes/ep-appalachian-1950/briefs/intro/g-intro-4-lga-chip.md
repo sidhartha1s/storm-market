@@ -35,7 +35,7 @@ Cues from `audio/i1-s1.words.json` (seconds from the I1-S1 segment start; the ho
 - 7.34 "dikes": "DIKES BREACHED" in (`fromTo` y 20 to 0, autoAlpha, 0.4 s, power3.out), accent rule draws. `/* DIKES @7.34 */`
 - 7.76 "LaGuardia": "LaGuardia Airport" in (0.4 s). `/* LAGUARDIA @7.76 */`
 - 8.16 to end: card floats y 0 to -6 px, sine.inOut yoyo, finite repeats (motion through the hold).
-- Exit: `to` x -980... no: slide out right per the rule, `to` x 980, autoAlpha 0, 0.6 s, power3.in, anchored to the host's last 0.6 s.
+- Exit: slide out per the rule, `to` x 980, autoAlpha 0, 0.6 s, power3.in, anchored to the host's last 0.6 s.
 Host: data-start = I1-S1 start + 6.94, duration = 10.427 - 6.94 + 0.40 (gap) = 3.887 s, or the clip's end if earlier (then exit in its last 0.6 s).
 
 ## 6-8
