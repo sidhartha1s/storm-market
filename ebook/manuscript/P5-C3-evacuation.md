@@ -202,7 +202,8 @@ to carry, pack less and let your driver load the rest.
 «FIG: illus-walker-porch»
 
 **What this does not do:** a destination is not a reservation. In a mass evacuation the hotels fill in
-hours. Having three named options is what stops you driving without a plan.
+hours. Having three named options is what stops you driving without a plan. And a registry is not a
+ride on your schedule. Your two drivers are the plan; the registry is the backup.
 
 ---
 
