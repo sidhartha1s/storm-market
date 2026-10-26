@@ -59,6 +59,7 @@ Not written this round. Title rule: ≤52 chars, Name + Year in the first 40 (`r
 <!-- HOOK, TAIL, INTRO: written by the writer below this line -->
 
 ## H1 · Hook
+Hook shape: belief-question (2026-10-26)
 
 ### H1-S1 — Paul on camera
 **Picture:** Paul full frame at 0:00 in a Santa hat, the one hook clip (question, then the viewer's answer). Popfig "BUFFALO, NY · DEC 23, 2022" inside the first second (the date lives on screen, not in the spoken lines). Wind bed fades up under him. [HOOK] [Q] [loop E open]
