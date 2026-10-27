@@ -136,7 +136,7 @@ def spawn(host, cmd, log, cwd):
     """Start cmd in cwd on host hidden, as a WMI process (it outlives this call and the ssh session), output to log.
     Exits only when the lane is known not to run: an ssh drop after a good launch started p4 twice (18 Oct 26)."""
     # shortcut: an unquoted ")" in cmd closes the ( ) group early; quote it ("Bash(rm:*)"), as every claude flag is
-    line = f'cmd /s /c "({cmd}) > "{log}" 2>&1"'
+    line = f'cmd /s /c "({cmd}) {redirect(log)}"'
     code, out = ps(host, "$si = New-CimInstance -ClassName Win32_ProcessStartup -ClientOnly -Property @{ShowWindow=[uint16]0}; "
                          "(Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments "
                          f"@{{CommandLine={quote(line)}; CurrentDirectory={quote(cwd)}; ProcessStartupInformation=$si}}).ReturnValue")
