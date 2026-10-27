@@ -327,8 +327,27 @@ def test_rule3_relaunch_moves_a_limited_lane_to_the_next_profile(tmp_path):
     assert new["profile"] == "claude5" and new["started"] > run["started"]
 
 
+def test_stop_all_ends_every_running_lane_by_its_log(tmp_path):
+    """Owner 27 Oct 26 asked for one stop-all; a lane is found the way alive() finds it, by its log path."""
+    ep = lane_episode(tmp_path)
+    fakes(answering={"claude1"})
+    assert lanes.main(["start", str(ep), "source:a1", *LANE]) == 0
+    assert lanes.main(["start", str(ep), "voice:a1", "--host", "zbook"]) == 0  # recorded only: no log to find it by
+    killed = []
+    lanes.ps = lambda host, script, timeout=90: (killed.append((host, script)) or (0, "noise\n2\n"))
+    try:
+        assert lanes.main(["stop", str(ep), "all"]) == 0
+    finally:
+        lanes.ps = REAL_PS
+    assert len(killed) == 1 and killed[0][0] == "zbook" and r"'C:\x\lane.log'" in killed[0][1] and "taskkill /T /F" in killed[0][1]
+    jobs = lanes.load_ledger(ep)["jobs"]
+    assert "ended" in jobs["source:a1"] and "ended" in jobs["voice:a1"]
+    assert not [s for s in lanes.job_states(ep, lanes.load_ledger(ep), lanes.time.time()) if s["state"] == "RUNNING"]
+
+
 if __name__ == "__main__":
-    for t in (test_rule1_start_skips_a_profile_that_does_not_answer,
+    for t in (test_stop_all_ends_every_running_lane_by_its_log,
+              test_rule1_start_skips_a_profile_that_does_not_answer,
               test_an_ssh_drop_after_a_good_launch_never_launches_twice,
               test_a_recorded_launch_whose_log_never_appears_fails,
               test_rule2_start_refuses_low_memory_and_a_full_lane_count,
