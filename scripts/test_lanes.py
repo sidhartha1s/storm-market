@@ -20,7 +20,7 @@ def never(*a):
 
 
 # no test ever probes claude, reads a host or launches a lane: each test that needs one installs its own fake
-REAL_PROBE, REAL_SPAWN = lanes.probe, lanes.spawn
+REAL_PROBE, REAL_SPAWN, REAL_PS = lanes.probe, lanes.spawn, lanes.ps
 lanes.probe = lanes.spawn = lanes.read_log = never
 lanes.free_gb = lambda host: 64.0
 FAILS = []
