@@ -17,7 +17,7 @@ which jobs were launched and when they ended, and which are held.
   python3 scripts/lanes.py unhold episodes/<slug> source:z1
   python3 scripts/lanes.py status episodes/<slug> [--json]   # exit 2 while any job is READY, STALE or FAILED; read-only
   python3 scripts/lanes.py relaunch episodes/<slug>          # put every FAILED lane on the next profile that answers
-  python3 scripts/lanes.py stop   episodes/<slug> all|<job>  # stop-all: end every RUNNING lane's process tree, mark it ended
+  python3 scripts/lanes.py stop   episodes/<slug> all|<job>  # stop-all: end each RUNNING, STALE or FAILED lane's tree; ended only once stopped
 
 Launching (why: lanes sat dead for hours on an exhausted profile or a full ZBook). `start --cmd` runs one job's command
 itself, hidden and detached, on host local or zbook, with {cli} replaced by the profile (claudeN, the wrapper that sets
