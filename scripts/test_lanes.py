@@ -339,10 +339,18 @@ def test_stop_all_ends_every_running_lane_by_its_log(tmp_path):
         assert lanes.main(["stop", str(ep), "all"]) == 0
     finally:
         lanes.ps = REAL_PS
-    assert len(killed) == 1 and killed[0][0] == "zbook" and r"'C:\x\lane.log'" in killed[0][1] and "taskkill /T /F" in killed[0][1]
+    assert len(killed) == 1 and killed[0][0] == "zbook" and "taskkill /T /F" in killed[0][1]
+    assert """'> "C:\\x\\lane.log" 2>&1'""" in killed[0][1] and "$_.Name -eq 'cmd.exe'" in killed[0][1]  # only the lane's root
     jobs = lanes.load_ledger(ep)["jobs"]
-    assert "ended" in jobs["source:a1"] and "ended" in jobs["voice:a1"]
-    assert not [s for s in lanes.job_states(ep, lanes.load_ledger(ep), lanes.time.time()) if s["state"] == "RUNNING"]
+    assert "ended" in jobs["source:a1"] and "ended" not in jobs["voice:a1"]  # unfindable: never marked as stopped
+    # an unreachable host: nothing marked ended, so the Stop gate never relaunches a lane that may still run
+    assert lanes.main(["start", str(ep), "source:intro", *LANE]) == 0
+    lanes.ps = lambda host, script, timeout=90: (255, "Connection reset by peer")
+    try:
+        lanes.main(["stop", str(ep), "source:intro"])
+    finally:
+        lanes.ps = REAL_PS
+    assert "ended" not in lanes.load_ledger(ep)["jobs"]["source:intro"]
 
 
 if __name__ == "__main__":
