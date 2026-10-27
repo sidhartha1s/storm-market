@@ -8,7 +8,7 @@ Target: 12 pages · draft 1, 2026-07-29
 
 ## How to use this book
 
-This book is organised around **130 numbered protections**. Each one is a specific thing you can do to your
+This book is organized around **130 numbered protections**. Each one is a specific thing you can do to your
 house, your household or your paperwork, and each one is numbered permanently so the rest of the book can
 point at it. When a hazard chapter says *Protection 74*, it means the garage door, and it means it every
 time.
@@ -46,7 +46,7 @@ telling you, and how to not lose the recovery after surviving the event.
 **Part Seven — The 60 days.** If you want to be told what to do in what order, start here and work backwards
 into the reference. Eight weeks of short evenings.
 
-**Then the appendix**, which is a compact directory of the agencies and programmes in your state.
+**Then the appendix**, which is a compact directory of the agencies and programs in your state.
 
 **Three ways to read this book, and all of them are correct.**
 
@@ -69,10 +69,10 @@ minutes, and they are genuinely the highest-value fifteen minutes available to y
 **1. Turn on wireless emergency alerts** on every phone in the household, and confirm they are on rather than
 assuming. *(Protection 85)*
 
-**2. Enrol in your county's alert system.** Search your county's name and "emergency alerts." *(Protection
+**2. Enroll in your county's alert system.** Search your county's name and "emergency alerts." *(Protection
 86)*
 
-**3. Put a torch and a pair of sturdy shoes under every bed.** The floor after a tornado, an earthquake or a
+**3. Put a flashlight and a pair of sturdy shoes under every bed.** The floor after a tornado, an earthquake or a
 window failure is glass and nails, and the lights are out. *(Protection 43)*
 
 **4. Film your home inventory.** Twenty minutes with a phone, narrating, every room, every drawer opened. Then
@@ -80,7 +80,7 @@ get it off the phone tonight. In a total loss this is the only evidence that wil
 every region in this book. *(Protection 100)*
 
 **5. Name your out-of-area contact** — one person, well outside your region, whom everybody calls or texts if
-separated. Everyone memorises the number, including the children. *(Protection 112)*
+separated. Everyone memorizes the number, including the children. *(Protection 112)*
 
 **6. Write one sentence.** Pick the hazard most likely where you live and finish this sentence: *when ___
 happens, we ___, without further discussion.* Then say it out loud to whoever is in the room. *(Protection
@@ -89,14 +89,90 @@ happens, we ___, without further discussion.* Then say it out loud to whoever is
 That last one is the most important thing in this book. It is on this page because of what happened in
 Joplin, Missouri on 22 May 2011. The sirens sounded at 5:11 in the afternoon. The tornado warning was
 issued at 5:17. The tornado touched down at 5:34. The federal service assessment counted 158 people
-killed directly and four more indirectly — and it found that the dominant behaviour was not disbelief or
+killed directly and four more indirectly — and it found that the dominant behavior was not disbelief or
 panic but **looking for a second opinion.** Going to a window. Calling somebody. Checking a screen. The
 assessment's own words: most residents "did not take protective action until receiving and processing
 additional, credible confirmation of the threat."
 
 Seventeen minutes was enough time. It was not enough time to spend most of it confirming.
 
-A written trigger is the only reliable defence against that, and it costs one sentence.
+A written trigger is the only reliable defense against that, and it costs one sentence.
+
+---
+
+## Start here if you are over 65
+
+**If you are over 65, or you care for someone who is, start here.** This book has 130 protections. You
+need about eight to begin. Here they are, in order.
+
+**1. Two people, not one.** Name two people who will come for you, or call you every day, in a storm.
+One lives near. One lives far away. Tell them both. *(out-of-area contact, 112; "Older adults" in Part
+Four)*
+
+**2. One sentence on the fridge.** *"When ___ happens, I leave, and I call ___ and ___."* If you live
+in a hurricane zone or a mobile home, the blank is the *watch*. In a wildfire area, it is the
+*evacuation warning*. Neither is the evacuation order. If you do not drive, your driver must agree to the sentence
+out loud. *(trigger plan, 95)*
+
+**3. An alarm that wakes you.** Put a weather radio by the bed. Have a flip phone or a landline?
+Ask your county to put the landline on its emergency call list. If your hearing aids come out at
+night, add a bed-shaker or a flashing light. *(two alert paths, 85; county alerts, 86; weather radio,
+87)*
+
+**4. Your machine's backup.** If you use oxygen, a CPAP or insulin, make the three phone calls this
+week. *(medical device power plan, 42)*
+
+**5. Your county's help list.** Ask your county to list you for help leaving. It counts only once they
+confirm you are on it. Ask them to say so in writing. *(where you are going, 111)*
+
+**6. Thirty days of pills,** and a card that lists each one. Include any blood thinner. *(prescription
+buffer, 59; medical summary, Form 2)*
+
+**7. A light, shoes and a whistle at the bed.** *(lighting, 43; whistle, go-bag, 107)*
+
+**8. Your "leave" number for a cold house: at least 64°F.** If your warmest room drops below it, you
+leave. If you are older or ill, ask your doctor whether you need it warmer. Write it where everyone can see it. *(the extreme-cold playbook in Part Three)*
+
+Then fill in the card below and put it on the fridge.
+
+«FIG: call-card»
+
+**What this does not do:** this page is not the whole book. It keeps you alive long enough for the rest
+to matter.
+
+---
+
+## What to buy first: $50, $150, $500
+
+Most of the start page is free. When you are ready to spend, buy in this order. Each price is the band
+this book prints in that protection. Prices move, so treat them as a guide, not a quote.
+
+**With about $50.**
+
+- A weather radio with SAME *(87)*: $30–70.
+- Check the date on every carbon monoxide alarm you own *(47)*: free.
+- A medication list, copied twice *(Form 2)*: free.
+
+**With about $150, add these.**
+
+- A light for each bed, with spare batteries *(43)*: $20–70.
+- A new carbon monoxide alarm, if yours is past its date *(47)*: $20–45 each.
+- Drinking water, in bottles small enough to lift *(1)*: $0–60.
+- If you use insulin, a cooler kit *(60)*: $0–60.
+- If you sleep without hearing aids, a bed-shaker or strobe for your alarms *(48)*. Ask the seller to
+  confirm it works with your alarm.
+
+**With about $500, add these.**
+
+- A battery power station sized to your medical machine *(38)*: $80–1,500. The size of your machine
+  decides where in that band you land.
+- A phone battery pack and a car charger *(117)*: $30–150.
+- A helmet for each person, if you live in a mobile home or tornado country *(25)*: $15–40 each.
+- Two short-range radios, to reach a neighbor *(121)*: $30–70 a pair.
+- A go-bag for each person *(107)*: $30–80 per person.
+
+**What this does not do:** buying is not the plan. The free steps on the start page matter more than
+anything on this list.
 
 ---
 
@@ -159,7 +235,7 @@ policy are the only ones that will pay you.
 
 **Costs are estimates from the time of writing** and they move. Treat them as bands for planning, not quotes.
 
-**And this book does not cover self-defence, firearms or civil disorder.** That is a deliberate choice.
+**And this book does not cover self-defense, firearms or civil disorder.** That is a deliberate choice.
 Almost every competitor title includes it; this one does not, because the evidence base for the protections
 in this book is a set of government post-event assessments, and there is no comparable evidence base for the
 other thing. This book is about nature, structures, water, power and paperwork.
@@ -208,7 +284,7 @@ It is not written to frighten you and there is nothing in it about collapse, cha
 The evidence is genuinely reassuring, and it is worth saying plainly at the front: **the people who come
 through these events well are overwhelmingly ordinary households who did a small number of unglamorous
 things in advance.** Stored water. Wrote a trigger down. Bought helmets. Filmed the house. Knew where the
-gas shut-off was. Had a neighbour's phone number. Left early.
+gas shut-off was. Had a neighbor's phone number. Left early.
 
 None of it is heroic. All of it is available to you. And most of the highest-value items in these four
 hundred pages are free.

@@ -188,7 +188,10 @@ check("render-01 OLD: the pre-fix preflight block had no render_busy.py --launch
 check("render-01 NEW: render.cmd calls render_busy.py --launch and aborts on errorlevel",
       re.search(r'render_busy\.py"\s+--launch.*\n.*errorlevel 1', render_cmd) is not None)
 check("render-03 NEW: preflight output is redirected to a log file",
-      'render_preflight.py" "%EP%" %MODE% > "%PREFLIGHT_LOG%"' in render_cmd)
+      'render_preflight.py" "%EP%" %MODE% >> "%PREFLIGHT_LOG%"' in render_cmd)
+check("heavy lock: render.cmd books it (--hold) before the preflight, into the same log",
+      render_cmd.find('render_busy.py" --hold "render %SLUG% %MODE%" > "%PREFLIGHT_LOG%"')
+      in range(0, render_cmd.find('render_preflight.py" "%EP%"')))
 check("render-08 NEW: the done marker is deleted before any gate runs",
       'del /q "%EP%\\render_%MODE%_done.marker" 2>nul' in render_cmd)
 check("render-08 NEW: the missing-index.html and :usage paths write a marker",
@@ -271,9 +274,12 @@ if HAVE_FFMPEG:
         (ep / "index.html").write_text(
             '<div id="root" data-composition-id="x" data-start="0" data-width="320" '
             'data-height="240" data-duration="2.00" data-fps="25"></div>', encoding="utf-8")
+        # the synthetic clips are libx264, so this log asks only for the browser GPU (stream_gate.used_vs_asked)
         (ep / "render_full.log").write_text(
+            "   GPU: browser GPU (forced)\n"
             "browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n"
-            "browserGpuMode probe worker1 NVIDIA GeForce GTX 1650\n", encoding="utf-8")
+            "browserGpuMode probe worker1 NVIDIA GeForce GTX 1650\n"
+            'streaming-encode gate {"enabled":true,"reason":"parallel_forced"}\n', encoding="utf-8")
         mp4 = ep / "renders" / "clean-final.mp4"
         subprocess.run(["ffmpeg", "-y", "-v", "error",
                         "-f", "lavfi", "-i", "color=c=gray:s=320x240:r=25:d=2",
@@ -403,7 +409,9 @@ if HAVE_FFMPEG:
             'data-height="240" data-duration="2.00" data-fps="25"></div>', encoding="utf-8")
         mk_clip(ep / "renders" / "pal-preview-v1.mp4", 15)
         mk_clip(ep / "renders" / "pal-24.mp4", 24)
-        NVIDIA, INTEL = "browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n", "browserGpuMode probe worker0 Intel(R) UHD Graphics\n"
+        ASK, GATE_OK = "   GPU: browser GPU (forced)\n", 'streaming-encode gate {"enabled":true,"reason":"single_worker"}\n'
+        NVIDIA = ASK + "browserGpuMode probe worker0 NVIDIA GeForce GTX 1650\n" + GATE_OK
+        INTEL = ASK + "browserGpuMode probe worker0 Intel(R) UHD Graphics\n" + GATE_OK
 
         # (label, clip, mode arg, recorded draft fps, expected exit code, text that must be in stdout).
         # The log of the mode under test is NVIDIA and the other one Intel, so a wrong log pick fails too.

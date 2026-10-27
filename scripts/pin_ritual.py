@@ -80,7 +80,7 @@ BASELINE_DIR = Path(os.environ.get("LOCALAPPDATA", str(Path.home() / "AppData" /
 # nepal_full_task.cmd at 1); render.cmd's own
 # bare default of 3 is the draft-tuned value, not what full renders actually use.
 WORKERS = int(os.environ.get("RENDER_WORKERS", "2"))
-RENDER_FLAGS = ["--gpu", "--browser-gpu", "--experimental-fast-capture=true",
+RENDER_FLAGS = ["--gpu", "--browser-gpu",
                 "--quality", "standard", "--crf", "16", "--fps", "30",
                 "--workers", str(WORKERS)]
 FALLBACK_1W = "[FALLBACK] single-worker capture path, parallel-stream router unverified"
@@ -449,4 +449,7 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    import render_busy  # the heavy lock: the ritual renders wait their turn like render.cmd (owner 26 Oct 26)
+    with render_busy.heavy_lock("pin ritual"):
+        rc = main()
+    sys.exit(rc)

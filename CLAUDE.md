@@ -27,6 +27,7 @@ goes to Opus. Gates passing is not verification.
 | Script method, hook wording, humanise pass, scaling | `references/script-os.md`, `script-framework.md`, `script-scaling.md`, `humanise-rules.md` |
 | The one condensed brief a script writer opens (wins for writers) | `references/script-quickref.md` |
 | Violence/death words that trip YouTube's transcript scan, with alternatives; gate `scripts/flag_words.py episodes/<slug>` | `references/flag-words.md` |
+| Hook shapes menu and the rule that a hook never repeats the last 2 episodes' shape; gate `scripts/hook_shape.py episodes/<slug>` | `references/script-quickref.md` "The hook" |
 | Heteronyms (word, both senses, a hint) that pocket-TTS can mispronounce by guessing the wrong sense; gate `scripts/homograph_scan.py episodes/<slug>` (WARN-only, reports for a probe, never fails) | `references/homographs.md` |
 | Titles and thumbnails; fill-in prompts for a thumbnail with Paul on it | `references/packaging-rules.md`; `references/thumbnail-prompts.md` |
 | News-lane rulebook, templates, clip pools | `references/mini-storms/FORMAT.md`, `library/mini-storms/`, `library/mini-storms/<event>/` (pools are reused across angles) |
@@ -208,7 +209,11 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
 - `render_preflight.py` refuses an `ep-` documentary missing a layer the owner already asked for (circle, bed, Paul's
   clips; owner 18 Oct 26) or whose circle clip is a still stand-in, not a moving face (test
   `python3 scripts/test_frozen_circle.py`). Its `LAYERS` table is the list and holds the thresholds; `run_gates.py` runs it too.
-- One heavy job at a time; `scripts/render_busy.py` guards it. No gates, Playwright or subagent browsers beside a render.
+- One heavy job per machine at a time: render.cmd, the pin ritual, TTS (`tts_episode.py`, `tts_clone.py`), the face pass (`circle_face.py`) and `e2e.py`
+  book the heavy lock (`~/.storm-heavy.lock`) and wait their turn, also when started over ssh; a dead holder's lock is taken over.
+  A waiting e2e can sit behind a 75 min render: launch long waits detached, not in a 10 min tool call.
+  How it works and how a new heavy job books it: the `scripts/render_busy.py` docstring (test `python3 scripts/test_render_busy.py`).
+  No gates, Playwright or subagent browsers beside a render.
 - Render only with `scripts\render.cmd <slug> <draft|full> [out-basename]`. The dojo-ops dashboard starts a draft only through `scripts\dojo_draft.cmd` (no arguments: it reads and re-checks the slug dojo-ops wrote to `%LOCALAPPDATA%\dojo-ops\render-request.txt`, sets 2 workers, then calls render.cmd; test `python3 scripts/test_dojo_draft.py`). Default 3 workers; full renders on this box
   set `RENDER_WORKERS=2` in a per-episode wrapper only with 100 GB free (else 1) (`scripts/<ep>_full_task.cmd`). `RENDER_CRF=20` gives a smaller single pass. Planning numbers: a 17 min draft took 36 min, a 28 min full took about 75 min at 2 workers.
 - Launch hidden through a scheduled task, deleted in the same command: `schtasks /create /tn <T> /tr "wscript.exe
@@ -217,7 +222,8 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
   started job survives the delete. `/i` ignores the on-battery constraint, which would otherwise leave the run queued
   and then deleted unstarted. The `schtasks-once` hook in `~/.claude/hooks` blocks a create without the delete.
   A harness background job is reaped at low RAM, and `Start-Process` dies with its tool call.
-- `streaming-encode gate ... enabled:true` must be in the log. Without it a long composition captures to disk and fills it (Camille full at 2 workers: `multi_worker`, 75 GB). `scripts/stream_gate.py`, called by render.cmd, refuses a full render at more than 1 worker with under 100 GB free and stops a render whose gate line says enabled:false or is missing 8 min in (test `python3 scripts/test_stream_gate.py`).
+- `streaming-encode gate ... enabled:true` must be in the log. Without it a long composition captures to disk and fills it (Camille full at 2 workers: `multi_worker`, 75 GB; render.cmd then passed `--experimental-fast-capture=true`, removed 26 Oct 26; on the Joplin slice it turned streaming off at 2 workers, see learnings/render.md 26 Oct 26). `scripts/stream_gate.py`, called by render.cmd, refuses a full render at more than 1 worker with under 100 GB free and stops a render whose gate line says enabled:false or is missing 8 min in (test `python3 scripts/test_stream_gate.py`).
+- A render runs on what it asked for or it fails: `stream_gate.py check` (render.cmd after the render, verify_render.sh) prints a `[FALLBACK]` line and exits 1 when `--gpu` did not encode on nvenc (the mp4's encoder tag, or a failed nvenc probe: render.cmd sets `HYPERFRAMES_DEBUG_GPU_PROBE=1`), a capture worker was not on NVIDIA, or frames went to disk. The watch stops such a render at the gate line. Cause on record: the ZBook's driver 595.95 is too old for ffmpeg 8.1.2's NVENC, so hyperframes encoded six episodes on Intel QSV without a word.
 - Liveness is judged by command line (`Get-CimInstance Win32_Process | Where CommandLine -like '*hyperframes*'`), never by process count.
 - `ffprobe deadline` means slow, never corrupt. The deadline is 30 s and no env var raises it. Cap every source asset at
   the composition's resolution: `media_budget.py` refuses the render otherwise, `optimize_clips.py <episode> --apply` fixes it and never re-encodes the md5-pinned CTA or end-ask clips (test `python3 scripts/test_optimize_clips.py`).
@@ -227,4 +233,4 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
 ## Git
 All git and gh as `sidhartha1s`. Small PRs: `/simplify`, tests + E2E, then `code-reviewer` on Opus; merge only after the owner's OK; rebase-merge, docs sweep in the same PR. `python3`, never
 `python`. Node 22 or newer. Before opening and before merging any PR that touches `scripts/`, run
-`python3 scripts/e2e.py episodes/<slug>` on a live episode: every self-check green and no tool crash.
+`python3 scripts/e2e.py` (the pinned fixture `scripts/fixtures/e2e/ep-e2e-moore`, or pass `episodes/<slug>` instead for a live one): every self-check green and every run_gates gate run and PASS. A gate that fails or never runs fails e2e. It runs the browser gates, so not beside a render.

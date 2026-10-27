@@ -542,7 +542,7 @@ def build_form4_pages(form):
              '</div>' +
              f'<div class="bgroup"><h4>{esc(whole("Two local emergency contacts"))}</h4>' +
              render_table(["Name", "Relationship", "Phone"], 2, numbered=False) + '</div>' +
-             f'<div class="bgroup"><h4>{esc(whole("Neighbours"))}</h4>' +
+             f'<div class="bgroup"><h4>{esc(whole("Neighbors"))}</h4>' +
              render_table(["Name", "Phone", "Note — elderly, alone, disabled, medically dependent"],
                           3, numbered=False) + '</div>' +
              '<div class="bgroup"><h4>Utilities</h4>' +

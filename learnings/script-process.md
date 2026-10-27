@@ -2,6 +2,17 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 26 Oct 26 - one owner example became the only hook, 7 episodes in a row
+- Owner, on the batch A hooks: "Every video is having the same hook ... Every plot is the same ... when i'm giving you
+  examples you take it very literally and follow only that thing moving forward like a bible".
+- Measured: all 7 documentary hooks written after the 15 Oct 26 opener rule (Joplin 2011, Mayfield, Moore, Camille,
+  Galveston, Buffalo, Appalachian) are question, the viewer's answer, then the break. The other 16 hooks on disk use 8
+  different shapes. Cause: script-quickref.md "The hook" quoted one example ("Siren goes off. What do you do?") as the
+  rule, and the register line's two quoted lines bred "I read the report" and "if you lived there" in most of them.
+- Fix: the principle (friend's voice, the viewer's world, break a belief) plus a menu of shapes in script-quickref.md,
+  a `Hook shape:` tag in edit_script.md, `scripts/hook_shape.py` failing a repeat of either of the last 2 episodes, and
+  a top-of-file line that quoted examples are illustrations, never templates.
+
 ## 15 Oct 26 - hooks lost the viewer in the first 8 s, and the narration read like a report
 - Owner: "8 secs is not an investment for the viewer - perfect time to skip"; "approach the audience ... like a
   bestfriend you are meeting after 10-15 years gap"; on a hook built on a viewer comment: "why the fuck would u
@@ -62,7 +73,8 @@ beside them are confusing; a 3.5 s hold followed by a blackout is 5 to 7 s of no
 2. **Decoration words are cut** ("in the dark" when the clock already said 7:30 PM; "head on"; "by the way" unless it
    is a deliberate filler). Delete test per phrase, not just per sentence.
 3. **One score per script, out of 10, from the independent grader, with one line on what would move it.** No
-   confidence percentage in the owner-facing report (it lives in the grader file only).
+   confidence percentage in the owner-facing report (it lives in the grader file only). Superseded for hooks on 26 Oct 26:
+   the owner-facing line is the failing checks from `references/grader-calibration.md`, not a number.
 4. **A hold replaces the blackout at that seam, never both.** Hold 3 to 4 s after a payoff over a moving picture
    with a bed; the act blackout stays only where there is no hold.
 5. **Spoken fillers are an experiment, not a rule:** uh / um / you know / look / I mean / so / well / right? / by the
@@ -82,12 +94,13 @@ Rules:
 3. F5 vs EF5: 1974 and every tornado before 2007 is F-scale (F5); 2007 on is EF5. The owner read "F5" as a typo; the
    script now carries a one-line note so nobody "fixes" it.
 4. **Every hook and every script (shorts, minis, docs) gets an independent grade before the owner sees it**: a
-   separate skeptic-reviewer agent that has not seen the writer's reasoning rates the hook 0 to 10 with a confidence
-   percentage, every chapter on the six script-os axes, draws the stakes curve, lists open-loop gaps, register
-   violations and fluff sentences, and ranks the fixes. The writer fixes, re-grades, and reports both grades to the
+   separate skeptic-reviewer agent that has not seen the writer's reasoning runs the named pass/fail checks in
+   `references/grader-calibration.md` (26 Oct 26, replacing the one 0-10 number; the 24 owner verdicts there are the
+   calibration), scores every chapter on the six script-os axes, draws the stakes curve, lists open-loop gaps, register
+   violations and fluff sentences, and ranks the fixes. The writer fixes, re-grades, and reports the failing checks before and after to the
    owner. Revised 27 Sep 26 (`references/script-scaling.md` "Section lock — the ONE definition"): the grade applies
-   PER SECTION, before that section locks, not once on the whole finished script — the hook section needs a grader
-   hook score of at least 8, and no chapter axis on a locking section may be under 3.
+   PER SECTION, before that section locks, not once on the whole finished script — the hook section passes only when no applicable check in
+   `references/grader-calibration.md` FAILs (26 Oct 26; the old bar was a hook score of 8), and no chapter axis on a locking section may be under 3.
 5. Tension system, not taste: the loop table carries plant and pay TIMES; at any timestamp at least one loop must be
    open and unpaid; no 90-second window without a retention spike; stakes score per chapter never drops more than one
    point and ends higher than it started. Checked by the grader, and by `scripts/script_scorecard.py` once it exists.

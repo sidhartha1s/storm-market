@@ -1,0 +1,87 @@
+<template>
+<!-- g-a4-room · ep-moore-1999 · A4-S5 from "The Millhouses' hallway", track 2, full frame, host 745.22 for 15.53 s (to 760.747).
+     Left: a house plan whose outer rooms fall away until one inside room stands. Right: the NWS Norman overpass talk photo
+     (nwsnorman-overpass-interior-room-left.png, 229 x 160, slide 21 crop) inset on the card; source line only, no photographer
+     (uncredited on the slide). Cues local = abs - 745.22: "says otherwise" @0.84; "the only one" @2.88; "weather service talk" @4.08;
+     "showed" @5.50; "single inside room" @5.92; "the only piece of a house still standing" @7.48-8.62; "Seven people" @9.92;
+     "walked out" @10.46; "What about the people in houses" @13.00; out 15.53. -->
+<style>
+  #g-a4-room-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 45% 50%, #0d141c 0%, #04070a 76%); }
+  .a4r-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .a4r-lab { font-family:Arial, sans-serif; font-weight:700; font-size:28px; letter-spacing:3px; fill:#e8c56a; paint-order:stroke; stroke:#04070c; stroke-width:5px; }
+  .a4r-frame { position:absolute; left:960px; top:250px; width:600px; height:420px; overflow:hidden; border:2px solid rgba(255,255,255,0.22);
+    box-shadow:0 18px 50px rgba(0,0,0,0.6); background:#0b1016; opacity:0; visibility:hidden; }
+  .a4r-img { position:absolute; left:0; top:0; width:600px; height:420px; object-fit:cover; }
+  .a4r-chip { position:absolute; left:120px; top:70px; display:flex; align-items:baseline; gap:18px; padding:14px 34px 16px; border-radius:28px;
+    background:rgba(10,16,24,0.62); border:1px solid rgba(255,255,255,0.14); white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4r-ct { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:64px; color:#f2f5f8; }
+  .a4r-cs { font-weight:700; font-size:40px; line-height:46px; letter-spacing:2px; color:#7fb2e5; opacity:0; visibility:hidden; }
+  .a4r-src { position:absolute; left:960px; top:690px; font-weight:700; font-size:20px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a4r-scan { position:absolute; left:0; top:0; width:3px; height:1080px; background:linear-gradient(180deg, rgba(127,178,229,0), rgba(127,178,229,0.25), rgba(127,178,229,0)); }
+  #g-a4-room-plan path, #g-a4-room-plan rect, #g-a4-room-lab { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-room-root" data-composition-id="g-a4-room" data-width="1920" data-height="1080" data-duration="15.53">
+  <svg class="a4r-svg" viewBox="0 0 1920 1080">
+    <g id="g-a4-room-plan">
+      <rect id="g-a4-room-floor" x="160" y="260" width="600" height="480" fill="#0f1922"/>
+      <rect id="g-a4-room-in" x="400" y="440" width="140" height="130" fill="#2a4158"/>
+      <g fill="none" stroke="#46586b" stroke-width="6" stroke-linejoin="round">
+        <path id="g-a4-room-w0" d="M160,260 L760,260"/>
+        <path id="g-a4-room-w1" d="M760,260 L760,740"/>
+        <path id="g-a4-room-w2" d="M760,740 L160,740"/>
+        <path id="g-a4-room-w3" d="M160,740 L160,260"/>
+        <path id="g-a4-room-w4" d="M160,440 L400,440 M540,440 L760,440"/>
+        <path id="g-a4-room-w5" d="M400,260 L400,440 M600,260 L600,440"/>
+        <path id="g-a4-room-w6" d="M160,570 L400,570 M540,570 L760,570 M620,570 L620,740"/>
+      </g>
+      <path id="g-a4-room-core" d="M400,440 L540,440 L540,570 L400,570 Z" fill="none" stroke="#e8c56a" stroke-width="7" stroke-linejoin="round"/>
+    </g>
+    <text id="g-a4-room-lab" class="a4r-lab" x="470" y="800" text-anchor="middle">INSIDE ROOM</text>
+  </svg>
+  <div class="a4r-scan" id="g-a4-room-scan"></div>
+  <div class="a4r-frame" id="g-a4-room-frame"><img class="a4r-img" id="a4r-photo" src="media/stills/nwsnorman-overpass-interior-room-left.png" alt=""></div>
+  <div class="a4r-src" id="g-a4-room-src">NWS Norman overpass talk, Oct 1999</div>
+  <div class="a4r-chip" id="g-a4-room-chip"><span class="a4r-ct" id="g-a4-room-ct">1 ROOM LEFT</span><span class="a4r-cs" id="g-a4-room-cs">· 7 WALKED OUT</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a4-room", P = "#g-a4-room-", DUR = 15.53;
+  const tl = gsap.timeline({ paused: true });
+  const W = [0, 1, 2, 3, 4, 5, 6].map(i => document.querySelector(P + "w" + i));
+  const core = document.querySelector(P + "core"), CL = Math.ceil(core.getTotalLength()) + 1;
+  W.forEach(w => { const L = Math.ceil(w.getTotalLength()) + 1; tl.set(w, { strokeDasharray: L, strokeDashoffset: L, autoAlpha: 1 }, 0); });
+  tl.set(core, { strokeDasharray: CL, strokeDashoffset: CL, autoAlpha: 1 }, 0);
+  tl.set([P + "floor", P + "in", P + "lab", P + "frame", P + "src", P + "chip", P + "cs"], { autoAlpha: 0 }, 0);
+  /* ambient */
+  tl.fromTo(P + "plan", { x: 0, y: 0 }, { x: 10, y: -8, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(P + "scan", { x: 0 }, { x: 1917, duration: DUR, ease: "none" }, 0);
+  tl.fromTo("#a4r-photo", { scale: 1 }, { scale: 1.08, transformOrigin: "50% 50%", duration: DUR, ease: "none" }, 0);
+  /* 0.00-2.88 "hallway says otherwise ... wasn't the only one": a house plan draws, its inside room traced */
+  tl.to(P + "floor", { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 0.0);
+  W.forEach((w, i) => tl.to(w, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 0.2 + i * 0.12));
+  tl.to(core, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 2.88);
+  tl.fromTo(P + "in", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 3.0);
+  /* "weather service talk" @4.08: source; "showed" @5.50: the photo */
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.08);
+  tl.fromTo(P + "frame", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 5.50);
+  /* "single inside room" @5.92: chip */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -120 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 5.92);
+  /* "the only piece of a house still standing" @7.48: the outer walls fall away; the room stands */
+  W.forEach((w, i) => tl.to(w, { y: 40 + (i % 3) * 25, rotation: (i % 2 ? 6 : -6), transformOrigin: "50% 50%", autoAlpha: 0, duration: 0.7, ease: "power3.in" }, 7.48 + i * 0.08));
+  tl.to(P + "floor", { autoAlpha: 0.35, duration: 0.8, ease: "power2.inOut" }, 7.6);
+  tl.fromTo(P + "lab", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.62);
+  tl.fromTo(core, { attr: { "stroke-width": 7 } }, { attr: { "stroke-width": 12 }, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 3 }, 8.62);
+  /* "Seven people" @9.92 */
+  tl.fromTo(P + "cs", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 9.92);
+  tl.to(P + "chip", { y: 6, duration: 2.4, ease: "sine.inOut" }, 10.5);
+  /* "What about the people in houses who didn't make it?" @13.00: everything leaves by 15.45 */
+  tl.to(P + "chip", { x: -1100, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 14.80);
+  tl.to([P + "frame", P + "src"], { x: 900, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 14.80);
+  tl.to([P + "plan", P + "lab"], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 14.80);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>

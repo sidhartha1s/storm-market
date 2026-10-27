@@ -195,7 +195,7 @@ Paste into an episode's `<style>` block (or a shared `:root` if the composition 
 - `.dim-heavy { position: absolute; inset: 0; background: rgba(2,4,6,0.68); pointer-events: none; }`
 
 ## Structural rules (don't violate)
-- GSAP timelines only — no CSS `@keyframes` (breaks fast-capture render).
+- GSAP timelines only — no CSS `@keyframes`.
 - Overlay exits slide out and end at `autoAlpha:0` (`references/mg-quickref.md` "Motion and exits");
   a hard unmount at the end of the card's track-3 window is not an exit.
 - Any positioned card class placed with `left/right/top/bottom` needs `inset: auto` to

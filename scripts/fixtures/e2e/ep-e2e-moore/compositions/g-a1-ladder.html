@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a1-ladder · ep-moore-1999 · A1-S2 + A1-S3 risk ladder · host 132.376 to 161.56 (29.184 s), track 2, full frame. Opus build.
+  From library/inhouse/ef-ladder.html (kept: rung bars with a coloured left border, Arial Black rung names, dark radial ground);
+  turned upright with a climbing marker. Behind it: GOES-8 visible image (media/stills/sa/sa-001-002.png, SA PDF p2, NOAA/NESDIS, PD), faded.
+  Local time = episode s minus 132.376. nx-a1-s2 132.376 (word s = local s); nx-a1-s3 153.924 (+21.548).
+  Cues: "forecasts" 0.98 -> rungs build; "6 .30" 4.02 -> chip 6:30 AM; "slight" 6.80 -> marker SLIGHT;
+  "Late that morning" 13.02 -> chip LATE MORNING; "moderate" 16.90 -> marker MODERATE; "kept getting worse" 20.08 -> marker strains;
+  S3 "3 .49" 0.34 + 21.548 = 21.89 -> chip 3:49 PM; "high" 3.24 -> 24.79 marker HIGH; "top of its scale" 4.28 -> 25.83 HIGH flashes.
+  Ends on "tornado watch" (S3 7.64 -> 29.19): hard cut to g-a1-watch, per the Picture line. -->
+<template>
+<style>
+  #g-a1-ladder-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .a1l-sat { position:absolute; inset:0; width:1920px; height:1080px; object-fit:cover; background:#0b1016; opacity:0.2; filter:grayscale(0.4) blur(3px); }
+  .a1l-shade { position:absolute; inset:0; background:linear-gradient(90deg, rgba(4,7,12,0.9) 0%, rgba(4,7,12,0.55) 60%, rgba(4,7,12,0.75) 100%); }
+  .a1l-eye { position:absolute; left:300px; top:110px; font-weight:700; font-size:30px; letter-spacing:8px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a1l-rung { position:absolute; left:300px; width:700px; height:150px; box-sizing:border-box; background:rgba(16,24,32,0.92); border-left:14px solid #2a3644;
+    opacity:0; visibility:hidden; }
+  .a1l-rn { position:absolute; left:40px; top:38px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; line-height:74px; color:#5a6b7c; white-space:nowrap; }
+  .a1l-glow { position:absolute; inset:0; opacity:0; }
+  .a1l-mark { position:absolute; left:206px; top:0; width:0; height:0; border-top:34px solid transparent; border-bottom:34px solid transparent; border-left:56px solid #e74c3c;
+    opacity:0; visibility:hidden; }
+  .a1l-chip { position:absolute; inset:auto; left:1080px; top:390px; box-sizing:border-box; padding:22px 40px 26px; border-radius:28px; background:rgba(10,16,24,0.6);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); white-space:nowrap; opacity:0; visibility:hidden; }
+  .a1l-ct { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:72px; line-height:84px; color:#f2f5f8; }
+  .a1l-cs { font-weight:700; font-size:30px; line-height:38px; letter-spacing:4px; color:#d8a13a; margin-top:6px; }
+  .a1l-src { position:absolute; inset:auto; left:96px; bottom:60px; box-sizing:border-box; padding:10px 24px 11px; border-radius:28px; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.14); font-weight:700; font-size:21px; line-height:26px; letter-spacing:1px; color:#c8d3e0;
+    white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a1-ladder-root" data-composition-id="g-a1-ladder" data-width="1920" data-height="1080" data-duration="29.184">
+  <img class="a1l-sat" id="g-a1-ladder-sat" src="media/stills/sa/sa-001-002.png" alt="">
+  <div class="a1l-shade" id="g-a1-ladder-shade"></div>
+  <div class="a1l-eye" id="g-a1-ladder-eye">SEVERE STORM RISK</div>
+  <div class="a1l-rung" id="g-a1-ladder-rh" style="top:220px;"><div class="a1l-glow" id="g-a1-ladder-gh" style="background:linear-gradient(90deg, rgba(208,18,31,0.55), rgba(208,18,31,0.08));"></div><span class="a1l-rn" id="g-a1-ladder-nh">HIGH</span></div>
+  <div class="a1l-rung" id="g-a1-ladder-rm" style="top:400px;"><div class="a1l-glow" id="g-a1-ladder-gm" style="background:linear-gradient(90deg, rgba(216,161,58,0.5), rgba(216,161,58,0.08));"></div><span class="a1l-rn" id="g-a1-ladder-nm">MODERATE</span></div>
+  <div class="a1l-rung" id="g-a1-ladder-rs" style="top:580px;"><div class="a1l-glow" id="g-a1-ladder-gs" style="background:linear-gradient(90deg, rgba(232,197,106,0.42), rgba(232,197,106,0.06));"></div><span class="a1l-rn" id="g-a1-ladder-ns">SLIGHT</span></div>
+  <div class="a1l-mark" id="g-a1-ladder-mark"></div>
+  <div class="a1l-chip" id="g-a1-ladder-k1"><div class="a1l-ct" id="g-a1-ladder-k1t">6:30 AM</div><div class="a1l-cs" id="g-a1-ladder-k1s">NWS NORMAN</div></div>
+  <div class="a1l-chip" id="g-a1-ladder-k2"><div class="a1l-ct" id="g-a1-ladder-k2t">LATE MORNING</div><div class="a1l-cs" id="g-a1-ladder-k2s">STORM PREDICTION CENTER</div></div>
+  <div class="a1l-chip" id="g-a1-ladder-k3"><div class="a1l-ct" id="g-a1-ladder-k3t">3:49 PM</div><div class="a1l-cs" id="g-a1-ladder-k3s">STORM PREDICTION CENTER</div></div>
+  <div class="a1l-src" id="g-a1-ladder-src">NWS Service Assessment, Aug 1999, p7, p9</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a1-ladder-";
+  const DUR = 29.184;
+  /* marker y: rung top + 75 (centre) - 34 (half the triangle) */
+  const MY = { s: 621, m: 441, h: 261 };
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "eye", P + "rh", P + "rm", P + "rs", P + "mark", P + "k1", P + "k2", P + "k3", P + "src"], { autoAlpha: 0 }, 0);
+  tl.set(P + "mark", { y: MY.s }, 0);
+  tl.set(P + "sat", { scale: 1.04, transformOrigin: "50% 50%" }, 0);
+
+  /* ambient: the satellite image drifts the whole window */
+  tl.to(P + "sat", { scale: 1.12, x: -30, duration: DUR, ease: "none" }, 0);
+
+  /* "forecasts" 0.98: the ladder builds bottom up */
+  tl.fromTo(P + "eye", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.98);
+  [["rs", 1.1], ["rm", 1.3], ["rh", 1.5]].forEach(([r, t]) =>
+    tl.fromTo(P + r, { autoAlpha: 0, x: -120 }, { autoAlpha: 1, x: 0, duration: 0.55, ease: "power3.out" }, t));
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.8);
+
+  /* "6 .30" 4.02: chip 1 */
+  tl.fromTo(P + "k1", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.55, ease: "power3.out" }, 4.02);
+  tl.to(P + "k1", { y: -8, duration: 3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4.6);
+  /* "slight" 6.80: marker lands on SLIGHT */
+  tl.fromTo(P + "mark", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "back.out(2)" }, 6.8);
+  tl.to(P + "gs", { opacity: 1, duration: 0.4, ease: "power2.out" }, 6.8);
+  tl.to(P + "ns", { color: "#f2f5f8", duration: 0.4, ease: "power2.out" }, 6.8);
+  tl.to(P + "mark", { x: 10, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 7 }, 7.4);
+  tl.to(P + "k1", { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 12.5);
+
+  /* "Late that morning" 13.02: chip 2 */
+  tl.fromTo(P + "k2", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.55, ease: "power3.out" }, 13.02);
+  tl.to(P + "k2", { y: -8, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 13.6);
+  /* "moderate" 16.90: marker climbs one rung */
+  tl.to(P + "mark", { y: MY.m, x: 0, duration: 0.5, ease: "power3.inOut" }, 16.9);
+  tl.to(P + "gm", { opacity: 1, duration: 0.4, ease: "power2.out" }, 17.2);
+  tl.to(P + "nm", { color: "#f2f5f8", duration: 0.4, ease: "power2.out" }, 17.2);
+  tl.to(P + "gs", { opacity: 0.35, duration: 0.4, ease: "power2.out" }, 17.2);
+  /* "kept getting worse" 20.08: the marker strains upward */
+  tl.to(P + "mark", { y: MY.m - 22, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 3 }, 20.08);
+  tl.to(P + "k2", { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 21.3);
+
+  /* "3 .49" 21.89: chip 3 */
+  tl.fromTo(P + "k3", { autoAlpha: 0, x: 120 }, { autoAlpha: 1, x: 0, duration: 0.55, ease: "power3.out" }, 21.89);
+  tl.to(P + "k3", { y: -8, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 22.5);
+  /* "high" 24.79: marker hits HIGH; "top of its scale" 25.83: HIGH flashes */
+  tl.to(P + "mark", { y: MY.h, duration: 0.45, ease: "back.out(1.6)" }, 24.79);
+  tl.to(P + "gh", { opacity: 1, duration: 0.3, ease: "power2.out" }, 25.0);
+  tl.to(P + "nh", { color: "#f2f5f8", duration: 0.3, ease: "power2.out" }, 25.0);
+  tl.to(P + "gm", { opacity: 0.35, duration: 0.4, ease: "power2.out" }, 25.0);
+  tl.to(P + "rh", { borderLeftColor: "#d0121f", duration: 0.2, ease: "power2.out" }, 25.0);
+  tl.fromTo(P + "rh", { scale: 1 }, { scale: 1.04, duration: 0.25, ease: "power2.out", yoyo: true, repeat: 5 }, 25.83);
+  tl.to(P + "mark", { x: 14, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 2 }, 27.4);
+  tl.set({}, {}, DUR);
+  window.__timelines["g-a1-ladder"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

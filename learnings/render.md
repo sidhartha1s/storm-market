@@ -2,6 +2,37 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 26 Oct 26: one heavy lock per machine; heavy jobs wait their turn instead of clashing
+- That day 2 of 4 helpers lost their results to clashes: a test render blocked main's e2e, a render killed a 26-min
+  snapshot-queue test, and a queue start ran into another render. render_busy only refused a browser beside a live
+  render; nothing made a render, TTS, the face pass or e2e wait for each other.
+- Now each of them books `~/.storm-heavy.lock` first (holder, job, machine, pid, start time) and a waiting job prints the
+  holder and waits. Mechanism, reclaim of a dead holder and the child pass-through: `scripts/render_busy.py` docstring.
+- The snapshot worker (PR #225) calls `render_busy.py` with no argument, which now waits for the lock but does not book
+  it. To book it, its ZBook batch calls `render_busy.py --hold snapshot` and `snap_local` wraps the run in
+  `render_busy.heavy_lock("snapshot")`.
+
+## 26 Oct 26: render.cmd no longer passes --experimental-fast-capture=true
+1. Measured on the ZBook, 90 s Joplin slice: with the flag, capture fell back to screenshot and at 2 workers streaming
+   was off (`enabled:false, multi_worker`), the slow disk path behind the 100 GB / 1-worker rule. Moore (2 workers) and
+   the ZBook bench (4 workers) fell back to screenshot capture and still streamed (`parallel_forced`), so the fallback
+   does not turn streaming off by itself.
+   Without the flag, 2 workers went from 5.56 to 3.68 s per output second and streamed (`parallel_forced`).
+2. Removed from `scripts/render.cmd`, `scripts/pin_ritual.py` (RENDER_FLAGS mirrors it) and `config.yaml`. `--gpu`,
+   workers, crf and fps are unchanged. The 100 GB / 1-worker rule stays until a full render without the flag is measured.
+3. Item 3 of the entry below is history: no render asks for fast capture any more.
+
+## 26 Oct 26: the ZBook encoded on Intel QSV, unseen, for six episodes
+1. Measured: the ZBook's NVIDIA driver 595.95 offers NVENC API 13.0; ffmpeg 8.1.2 needs 13.1 (driver 610+). Its bench log
+   (`scratch/renderspeed/bench1/log_D_w4_ss_gpu.txt`) prints `[gpuEncoder] nvenc probe failed` and hyperframes 0.8.185
+   then takes the next encoder whose probe passes, without ever logging which (dist chunk `detectGpuEncoder`).
+2. The probe failure prints only under `HYPERFRAMES_DEBUG_GPU_PROBE=1`, so ASUS logs carry no encoder line at all.
+   The proof that does exist: ffmpeg writes the encoder into the mp4's video stream tag (`Lavc62.28.102 h264_nvenc`
+   on Camille's and Moore's ASUS renders). The rule and the check: CLAUDE.md "A render runs on what it asked for".
+3. (Fixed the same day, entry above.) Every episode render asked `--experimental-fast-capture=true` and every one falls back to screenshot capture
+   (Moore: mix-blend-mode; the bench: backdrop-filter). The check does not judge this one: it is hyperframes'
+   own logged fallback and would fail every render. Open item in ops/tasks.md.
+
 ## 26 Oct 26: hyperframes' pre-capture probe sweep sets graphic state (render by act, PR 223)
 1. When the compiled page has a trigger (any `<video>`/`<audio>` without `data-start`, scripted `volume`, script-made
    media; producer `probeRequiresBrowser`), 0.8.185 opens a probe browser that sweeps the root timeline before

@@ -52,6 +52,7 @@ import re
 import subprocess
 import sys
 import time
+
 from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
@@ -70,6 +71,7 @@ LIMIT = re.compile(r"hit your (\w+ )?limit|session limit|usage limit reached", r
 LOCK_MIN = 10      # a ledger lock older than this is a dead holder's
 LOCK_WAIT_S = 120  # a ledger write waits this long for the lock before it gives up
 NO_LOG = "[lanes: no log]"  # read_log's answer for a log that does not exist; the launch redirect creates it at once
+NO_WINDOW = getattr(subprocess, "CREATE_NO_WINDOW", 0)  # no console window for the stop hook's children
 NO_LOG_MIN = 5     # a RUNNING lane with no log this many minutes after its start never ran (an unconfirmed launch)
 
 
@@ -81,7 +83,7 @@ def ps(host, script, timeout=90):
         argv = ["ssh", "-n", "-o", "ConnectTimeout=15", host, " ".join(argv)]
     try:
         r = subprocess.run(argv, capture_output=True, text=True, encoding="utf-8", errors="replace",
-                           stdin=subprocess.DEVNULL, timeout=timeout)
+                           stdin=subprocess.DEVNULL, timeout=timeout, creationflags=NO_WINDOW)
     except subprocess.TimeoutExpired:
         return 124, f"timed out after {timeout}s"
     return r.returncode, r.stdout if r.returncode == 0 else r.stdout + r.stderr  # stderr carries CLIXML progress noise

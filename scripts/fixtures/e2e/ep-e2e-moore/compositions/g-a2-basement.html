@@ -1,0 +1,104 @@
+<template>
+<!--
+  g-a2-basement · ep-moore-1999 · A2-S6, host 392.578 (nx-a2-s6) for 22.717 s to nx-a2-s7 415.295, track 2, full frame.
+  Self-made fallback for the FEMA 342 slab photo (no per-photo credit, not used). SCHEMATIC CUTAWAY, NOT TO SCALE.
+  Claims (Picture line A2-S6): homes on concrete slabs, basements rare; safest room above ground; soil types and the
+  water table (Doswell and Brooks 2002); a basement is a shelter only with a concrete ceiling (FEMA 342 3.3, 6.2.1.1).
+  Cues: audio/a2-s6.words.json, local = words s.
+-->
+<style>
+  #g-a2-basement-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 35%, #0b1016 0%, #030507 78%); }
+  .gbs-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gbs-corner { position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse 520px 440px at 1790px 940px, #04070c 0%, #04070c 45%, rgba(4,7,12,0) 100%); }
+  .gbs-lab { font-family:Arial, sans-serif; font-weight:700; font-size:30px; letter-spacing:3px; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:6px; }
+  .gbs-labA { fill:#e8c56a; }
+  .gbs-labB { fill:#7fb2e5; }
+  .gbs-chip { position:absolute; inset:auto; left:96px; top:60px; box-sizing:border-box; padding:16px 34px 18px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1.1;
+    color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  .gbs-src { position:absolute; inset:auto; left:96px; bottom:54px; font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:1px;
+    color:#c8d3e0; white-space:nowrap; text-shadow:0 0 6px #04070c, 0 0 12px #04070c; opacity:0; visibility:hidden; }
+  #g-a2-basement-svg text, #g-a2-basement-room, #g-a2-basement-wt, #g-a2-basement-base, #g-a2-basement-ceil { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-basement-root" data-composition-id="g-a2-basement" data-width="1920" data-height="1080" data-duration="22.717">
+  <svg class="gbs-svg" id="g-a2-basement-svg" viewBox="0 0 1920 1080">
+    <g id="g-a2-basement-world">
+      <!-- soil: three bands under the surface at y 560 -->
+      <rect x="-200" y="560" width="3200" height="110" fill="#1c1a16"/>
+      <rect x="-200" y="670" width="3200" height="120" fill="#17150f"/>
+      <rect x="-200" y="790" width="3200" height="300" fill="#0f141a"/>
+      <path d="M-200,560 L3000,560" stroke="#5a6774" stroke-width="3"/>
+      <!-- water table: a wavy line, moving -->
+      <g id="g-a2-basement-wt"><path id="g-a2-basement-wave" d="M-400,790 q40,-12 80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0" fill="none" stroke="#7fb2e5" stroke-width="4" stroke-opacity="0.85"/></g>
+      <!-- house on its slab (x 560 to 1160) -->
+      <g id="g-a2-basement-house">
+        <rect id="g-a2-basement-slab" x="540" y="546" width="640" height="16" fill="#93a3b2"/>
+        <path d="M560,546 L560,380 L1160,380 L1160,546" fill="#c8d3e0" fill-opacity="0.08" stroke="#dfe7ee" stroke-width="3"/>
+        <path d="M540,382 L860,250 L1180,382" fill="none" stroke="#dfe7ee" stroke-width="3"/>
+        <path d="M760,380 L760,546 M960,380 L960,546" stroke="#5a6774" stroke-width="2"/>
+        <rect id="g-a2-basement-room" x="764" y="384" width="192" height="160" fill="#d8a13a" fill-opacity="0.25" stroke="#e8c56a" stroke-width="3"/>
+      </g>
+      <!-- second structure, to the right: a basement with a concrete ceiling (x 1660 to 2160) -->
+      <g id="g-a2-basement-base">
+        <path d="M1660,560 L1660,770 L2160,770 L2160,560" fill="#04070c" stroke="#93a3b2" stroke-width="4"/>
+        <path d="M1700,770 L1700,600 M1700,620 L1760,620 M1700,660 L1760,660 M1700,700 L1760,700 M1700,740 L1760,740" stroke="#5a6774" stroke-width="3"/>
+        <g id="g-a2-basement-ppl" fill="#f2f5f8" fill-opacity="0.75" style="opacity:0; visibility:hidden">
+          <circle cx="1880" cy="700" r="14"/><rect x="1868" y="716" width="24" height="54" rx="8"/>
+          <circle cx="1960" cy="704" r="12"/><rect x="1950" y="718" width="20" height="52" rx="7"/>
+          <circle cx="2040" cy="700" r="14"/><rect x="2028" y="716" width="24" height="54" rx="8"/>
+        </g>
+        <rect id="g-a2-basement-ceil" x="1640" y="536" width="540" height="30" fill="#93a3b2" stroke="#e8c56a" stroke-width="4"/>
+      </g>
+    </g>
+    <text id="g-a2-basement-troom" class="gbs-lab gbs-labA" x="860" y="340" text-anchor="middle">INTERIOR ROOM · ABOVE GROUND</text>
+    <text id="g-a2-basement-tsoil" class="gbs-lab" x="1040" y="640" text-anchor="middle">SOIL</text>
+    <text id="g-a2-basement-twt" class="gbs-lab gbs-labB" x="1040" y="850" text-anchor="middle">WATER TABLE</text>
+  </svg>
+  <div class="gbs-corner"></div>
+  <div class="gbs-chip" id="g-a2-basement-c1">SLABS · BASEMENTS RARE</div>
+  <div class="gbs-chip" id="g-a2-basement-c2">SHELTER ONLY WITH A CONCRETE CEILING</div>
+  <div class="gbs-src" id="g-a2-basement-src">FEMA 342, §3.3 and §6.2.1.1; Doswell and Brooks 2002 · Schematic</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a2-basement-";
+  const DUR = 22.717;
+  const C = { basement: 1.32, slabs: 5.38, rare: 6.78, safest: 9.84, soil: 13.94, water: 14.98, fema: 16.48, a: 18.38, concrete: 21.08 };
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "c1", P + "c2", P + "src", P + "troom", P + "tsoil", P + "twt", P + "room", P + "wt", P + "base", P + "ceil"], { autoAlpha: 0 }, 0);
+  tl.set(P + "world", { x: 0 }, 0);
+  /* ambient: the world breathes, the water table moves for the whole window */
+  tl.fromTo(P + "world", { y: 0 }, { y: -10, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0);
+  tl.fromTo(P + "wave", { x: 0 }, { x: -160, duration: 1.6, ease: "none", repeat: 13 }, 0);
+  tl.fromTo(P + "src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  /* NO BASEMENT @1.32: the house drops onto the ground, no hole under it */
+  tl.fromTo(P + "house", { y: -60, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 0);
+  /* SLABS @5.38: the slab flashes; RARE @6.78 chip */
+  tl.fromTo(P + "slab", { attr: { fill: "#93a3b2" } }, { attr: { fill: "#e8c56a" }, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, C.slabs);
+  tl.fromTo(P + "c1", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.rare);
+  /* SAFEST ROOM @9.84: the interior room lights, above ground */
+  tl.fromTo(P + "room", { autoAlpha: 0, scale: 0.85, svgOrigin: "860 464" }, { autoAlpha: 1, scale: 1, svgOrigin: "860 464", duration: 0.45, ease: "back.out(2)" }, C.safest);
+  tl.fromTo(P + "troom", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.safest + 0.1);
+  /* SOIL @13.94, WATER TABLE @14.98 */
+  tl.to(P + "troom", { autoAlpha: 0, y: -10, duration: 0.3, ease: "power2.in" }, C.soil - 0.4);
+  tl.fromTo(P + "tsoil", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.soil);
+  tl.fromTo(P + "wt", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, C.water);
+  tl.fromTo(P + "twt", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.water + 0.1);
+  /* FEMA @16.48: labels and chip 1 leave, the camera pans right to a basement */
+  tl.to([P + "tsoil", P + "twt"], { autoAlpha: 0, y: -10, duration: 0.3, ease: "power2.in" }, C.fema - 0.2);
+  tl.to(P + "c1", { autoAlpha: 0, x: -140, duration: 0.4, ease: "power3.in" }, C.fema - 0.2);
+  tl.to(P + "base", { autoAlpha: 1, duration: 0.2, ease: "none" }, C.fema);
+  tl.to(P + "world", { x: -820, duration: 1.4, ease: "power2.inOut" }, C.fema);
+  /* A BASEMENT @18.38: people below; CONCRETE CEILING @21.08: the ceiling slab drops in, chip 2 */
+  tl.fromTo(P + "ppl", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, C.a);
+  tl.fromTo(P + "ceil", { autoAlpha: 0, y: -80 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "bounce.out" }, C.concrete);
+  tl.fromTo(P + "c2", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, C.concrete);
+  tl.to({}, { duration: DUR }, 0);
+  window.__timelines["g-a2-basement"] = tl;
+})();
+</script>
+</template>

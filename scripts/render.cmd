@@ -67,6 +67,9 @@ REM With --workers > 1 streaming also needs the parallel-capture router (cli.js 
 REM else the gate logs enabled:false and the render dies at 'Disk capture may need ~131 GB'.
 set HF_CAPTURE_PARALLEL_STREAM=true
 set DO_NOT_TRACK=1
+REM hyperframes picks its encoder silently; this prints each failed probe (nvenc on the ZBook's 595.95 driver)
+REM so stream_gate.py can stop a render that fell back to Intel QSV (Oct 26: six episodes did).
+set HYPERFRAMES_DEBUG_GPU_PROBE=1
 set HYPERFRAMES_FFPROBE_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffprobe.exe
 set HYPERFRAMES_FFMPEG_PATH=C:\Users\Sidhartha\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg.Shared_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build-shared\bin\ffmpeg.exe
 REM Preflight gate (busy box / media budget / pin drift). CLAUDE.md has always
@@ -77,10 +80,22 @@ REM and with no env it measures the slow PATH build and refuses (ep6 full attemp
 REM Output goes to a log next to render_%MODE%.log: a hidden/schtasks launch has no console, so
 REM a refusal reason with nowhere to land was invisible until the operator reran by hand.
 set PREFLIGHT_LOG=render_%MODE%_preflight.log
-"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_preflight.py" "%EP%" %MODE% > "%PREFLIGHT_LOG%" 2>&1
+REM Heavy lock (owner 26 Oct 26): wait for this machine's other heavy job (render, TTS, face pass, e2e) to end, then
+REM book it for this cmd.exe. Before the preflight, which refuses a live render instead of waiting. Every exit below
+REM releases it (RELEASE) before writing the done marker; a cmd.exe that dies holding it leaves a dead holder's lock.
+set RELEASE="C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_busy.py" --release
+"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_busy.py" --hold "render %SLUG% %MODE%" > "%PREFLIGHT_LOG%" 2>&1
+if errorlevel 1 (
+  echo HEAVY LOCK FAILED - see %CD%\%PREFLIGHT_LOG%
+  type "%PREFLIGHT_LOG%"
+  echo 1 > "render_%MODE%_done.marker"
+  exit /b 1
+)
+"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_preflight.py" "%EP%" %MODE% >> "%PREFLIGHT_LOG%" 2>&1
 if errorlevel 1 (
   echo PREFLIGHT REFUSED exit %ERRORLEVEL% — see %CD%\%PREFLIGHT_LOG%
   type "%PREFLIGHT_LOG%"
+  %RELEASE%
   echo %ERRORLEVEL% > "render_%MODE%_done.marker"
   exit /b %ERRORLEVEL%
 )
@@ -94,6 +109,7 @@ del /q "render_%MODE%.workers" 2>nul
 if errorlevel 1 (
   echo RENDER_BUSY REFUSED exit %ERRORLEVEL% — see %CD%\%PREFLIGHT_LOG%
   type "%PREFLIGHT_LOG%"
+  %RELEASE%
   echo %ERRORLEVEL% > "render_%MODE%_done.marker"
   exit /b %ERRORLEVEL%
 )
@@ -112,14 +128,25 @@ REM render on a short disk, then watch the log and stop the render if the gate l
 if errorlevel 1 (
   echo STREAM GATE REFUSED — see %CD%\%PREFLIGHT_LOG%
   type "%PREFLIGHT_LOG%"
+  %RELEASE%
   echo 1 > "render_%MODE%_done.marker"
   exit /b 1
 )
 del /q "render_%MODE%.log" 2>nul
 start "" /b "C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0stream_gate.py" watch "%CD%\render_%MODE%.log" "%CD%\render_%MODE%_done.marker" "%CD%\%PREFLIGHT_LOG%"
 echo %_FPS% > "render_%MODE%.fps"
-call npx hyperframes@0.8.185 render . -c %RENDER_COMPOSITION% --gpu --browser-gpu --experimental-fast-capture=true %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
+call npx hyperframes@0.8.185 render . -c %RENDER_COMPOSITION% --gpu --browser-gpu %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
 set RC=%ERRORLEVEL%
+REM A render that ran on another encoder, an iGPU or a disk capture fails here, not in a viewer's eyes.
+if "%RC%"=="0" (
+  "C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0stream_gate.py" check "render_%MODE%.log" "renders\%OUTBASE%.mp4" >> "%PREFLIGHT_LOG%" 2>&1
+  if errorlevel 1 (
+    echo RENDER RAN ON A FALLBACK - see %CD%\%PREFLIGHT_LOG%
+    type "%PREFLIGHT_LOG%"
+    set RC=1
+  )
+)
+%RELEASE%
 echo %RC% > "render_%MODE%_done.marker"
 exit /b %RC%
 

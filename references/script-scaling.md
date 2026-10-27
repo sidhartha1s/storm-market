@@ -97,7 +97,9 @@ A section (hook+intro first, then each act) **locks** only when ALL of:
 - (a) its `[verify]` markers are all resolved (CONFIRMED / CORRECTED / cut, none open);
 - (b) its independent grade passed (bar: `learnings/script-process.md` "independent grade on every script");
 - (c) for the hook+intro only, the owner has **explicitly** approved it in chat or on his devq page; silence is
-  never approval (SKILL.md "never infer").
+  never approval (SKILL.md "never infer");
+- (d) for the hook+intro only, `python3 scripts/hook_shape.py episodes/<slug>` passes (its `Hook shape:` tag is on the
+  script-quickref.md menu and is not the shape of either of the last 2 episodes, owner 26 Oct 26).
 
 Acts need no owner sign-off (owner 22 Oct 26: "i dont thinks its highly necessary for me to have thhis 'check
 acts' gate anymore. i thought you were gonna share the preview"). His next look after the hook+intro is the

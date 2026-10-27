@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-hook-overlay (A) · ep-moore-1999 · host 0.00 to 7.00, track 4, transparent overlay.
+     Under it: 0 to 2.75 Paul full frame (ins-paul-1), 2.75 to 7.00 the A9 photo near Bridge Creek (Erin Maxwell, NWS).
+     Local time = episode time (host starts at 0). Cues: briefs/intro.md A; h1-s2 starts at 2.90 ("36" @0.00 -> 2.90). -->
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-hook-overlay-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; }
+  /* popfig: red Abril, no card, text-shadow; mid-screen, on the shirt below his face; corner x>=1600,y>=680 stays empty */
+  .hk-pop { position:absolute; inset:auto; left:0; top:585px; width:1920px; text-align:center; }
+  .hk-pf { display:block; width:1920px; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:142px; color:#d0121f;
+    white-space:nowrap; opacity:0; visibility:hidden;
+    text-shadow:0 3px 0 #3a0508, 0 8px 26px rgba(0,0,0,0.70), 0 0 3px rgba(0,0,0,0.55); }
+  .hk-chip { position:absolute; inset:auto; left:110px; bottom:110px; display:flex; align-items:baseline; gap:22px; padding:12px 38px 14px 32px;
+    box-sizing:border-box; border-radius:28px; background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .hk-n { font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:92px; color:#e74c3c; white-space:nowrap; }
+  .hk-l { font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:36px; letter-spacing:6px; color:#dfe7ee; white-space:nowrap; }
+  .hk-src { position:absolute; inset:auto; right:110px; top:70px; padding:11px 26px 12px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .hk-srct { font-family:Arial, sans-serif; font-weight:700; font-size:21px; line-height:26px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-hook-overlay-root" data-composition-id="g-hook-overlay" data-width="1920" data-height="1080" data-duration="7.18">
+  <div class="hk-pop" id="g-hook-overlay-pop">
+    <div class="hk-pf" id="g-hook-overlay-pf1">OKLAHOMA</div>
+    <div class="hk-pf" id="g-hook-overlay-pf2">MAY 3, 1999</div>
+  </div>
+  <div class="hk-chip" id="g-hook-overlay-chip">
+    <span class="hk-n" id="g-hook-overlay-n">36</span>
+    <span class="hk-l" id="g-hook-overlay-l">LIVES</span>
+  </div>
+  <div class="hk-src" id="g-hook-overlay-src"><span class="hk-srct" id="g-hook-overlay-srct">Photo: Erin Maxwell, NWS</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-hook-overlay-";
+  /* cues (briefs/intro.md A; h1-s2 start 3.08 since the clip-1 retake, 23 Oct 26, was 2.90): popfig in 0.15 / out by 2.55; "36" @3.08 (h1-s2 0.00); chip + credit out by 7.03 */
+  const tl = gsap.timeline({ paused: true });
+  tl.set([P + "pf1", P + "pf2", P + "chip", P + "src"], { autoAlpha: 0 }, 0);
+
+  /* popfig: pops in line by line, floats, exits up */
+  tl.fromTo(P + "pf1", { autoAlpha: 0, scale: 0.72, y: 34 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" }, 0.15);
+  tl.fromTo(P + "pf2", { autoAlpha: 0, scale: 0.72, y: 34 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" }, 0.35);
+  tl.to(P + "pop", { y: -12, duration: 2.4, ease: "sine.inOut" }, 0.15);
+  tl.to(P + "pf1", { autoAlpha: 0, y: -46, duration: 0.4, ease: "power3.in" }, 2.10);
+  tl.to(P + "pf2", { autoAlpha: 0, y: -46, duration: 0.4, ease: "power3.in" }, 2.15);
+
+  /* "36" @3.08: chip lands, count-up fast then slow into 36 */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -140 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 3.08);
+  const n = document.querySelector(P + "n");
+  const cnt = { v: 0 };
+  tl.to(cnt, { v: 36, duration: 0.8, ease: "power4.out", onUpdate: () => { n.textContent = String(Math.round(cnt.v)); } }, 3.08);
+  tl.to(P + "chip", { y: -7, duration: 3.0, ease: "sine.inOut" }, 3.68);
+  tl.fromTo(P + "src", { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 3.08);
+
+  /* exits: slide out, done by 7.03 */
+  tl.to(P + "chip", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.43);
+  tl.to(P + "src", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 6.43);
+  tl.set({}, {}, 7.18);
+  window.__timelines["g-hook-overlay"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
