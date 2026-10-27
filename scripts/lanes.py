@@ -414,10 +414,11 @@ def write(a, ep, lock):
         if a.cmd == "start":
             ledger.setdefault("jobs", {})[job] = dict(run)
         elif a.cmd == "stop":  # a lane recorded without --log runs elsewhere and is not ours to find
-            run = ledger.setdefault("jobs", {}).setdefault(job, {"started": now, "host": a.host})
-            n = kill(run.get("host", "local"), run["log"]) if run.get("log") else None
-            print(f"[lanes] stop {job}: " + (f"{n} process(es) ended" if n is not None else "no log recorded or host unreadable; stop it where it runs"))
-            run["ended"] = now
+            run = ledger.get("jobs", {}).get(job)
+            n = kill(run.get("host", "local"), run["log"]) if run and run.get("log") else None
+            print(f"[lanes] stop {job}: " + (f"{n} lane tree(s) ended" if n is not None else "not stopped: no log recorded or host unreadable; stop it where it runs"))
+            if n is not None:  # marked ended only once stopped: an ended job reads READY and would be launched twice
+                run["ended"] = now
         elif a.cmd == "end":
             ledger.setdefault("jobs", {}).setdefault(job, {"started": now, "host": a.host})["ended"] = now
         elif a.cmd == "hold":
