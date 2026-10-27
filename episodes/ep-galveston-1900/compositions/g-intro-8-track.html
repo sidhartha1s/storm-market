@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-intro-8-track · I1-S1 (8.10 on) + I1-S2 + I1-S3 · ep-galveston-1900 · DEEP (Opus) · brief: briefs/intro/g-intro-8-track.md
+  Claim: the storm crossed Cuba on the 4th; Washington expected a recurve northeast; it did not: on the 6th the steamer
+  Louisiana passed through its centre in the eastern Gulf, and it kept coming toward Galveston while Washington's wire
+  told Galveston what to expect.
+
+  BUILT ON g-intro-4-wire-map: same plate, projection, pins, colours, Havana arrow and wire layer.
+  PLATE: X = (lon + 100) * 90, Y = (41 - lat) * 103.95 (north up). Basemap lines copied verbatim from g-intro-4
+    (Natural Earth 10m coastline / admin-1, public domain; see that file's header for the one-shot transform).
+    Cuba outline = the Cuba ring of that same land path (lon -85.0..-74.1, lat 19.8..23.2), copied, not redrawn.
+  PINS: Galveston (-94.80, 29.30) = (468.0, 1216.2); Havana (-82.38, 23.13) = (1585.8, 1857.6);
+    Washington (-77.04, 38.90) = (2066.4, 218.3).
+  TRACK: NOAA HURDAT2 AL011900 (nhc.noaa.gov/data/hurdat/hurdat2-1851-2025-092326.txt), Sept 2 00Z to Sept 8 18Z,
+    every 6-hourly fix, projected by the formula above (list in TRK below; plate px in the build receipt).
+  CAMERA: screen = (960 + (X - cx) * s, 540 + (Y - cy) * s); render(t) is a pure function of comp time (seek-safe).
+    V-CUBA cx 1800 cy 1900 s 0.85 (+2 % drift); V-GULF cx 1150 cy 1550 s 0.75 (+2 % drift); V-WIRE cx 1267 cy 1000 s 0.5.
+    V-CUBA -> V-GULF is 1.13x (plain power2.inOut); V-GULF -> V-WIRE is 1.53x (log-space scale, logZoom).
+  STORM RING: its plate point is pointAt(dAt(t)) on the HURDAT2 polyline; the past track's drawn length is the same
+    dAt(t) (strokeDashoffset = len - d), so the track head is under the ring at every time by construction.
+  TIME: comp-local = (segment narration start - host start) + word time. index.html does not exist yet (27 Oct 26),
+    so the segment offsets are ASSUMED: host start = I1-S1 + 8.10; I1-S1 ends at comp 6.174; 0.50 s gaps, so
+    I1-S2 starts at comp 6.674 and I1-S3 at comp 20.09. Every cue comment below carries its segment word time
+    ("S2 2.06"): when the nx- mounts land, shift S2 cues by (real S2 start - 6.674) and S3 cues by (real S3 start - 20.09).
+  LAYERS: #...-cam plate-unit geometry (land, Cuba, arrows, track, wires); #...-pins screen-size marks placed by
+    render(); #...-hud text at fixed screen positions, revealed only once the camera has settled.
+-->
+<template>
+<style>
+  #g-intro-8-track-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .gi8-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .gi4-land { fill:#15202b; stroke:#5a768f; stroke-width:2px; stroke-linejoin:round; }
+  .gi4-border { fill:none; stroke:#4a5560; stroke-width:1.5px; }
+  .gi4-states { fill:none; stroke:#2a3644; stroke-width:1.5px; }
+  .gi8-cuba { fill:none; stroke:#93a3b2; stroke-width:2.5px; stroke-linejoin:round; }
+  .gi8-lab { font-family:Arial, sans-serif; font-weight:700; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .gi8-labbig { font-family:'Arial Black', Arial, sans-serif; font-weight:900; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .gi8-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .gi8-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:19px; line-height:1.4; color:#c8d3e0; white-space:nowrap; }
+  #g-intro-8-track-lt { position:absolute; left:110px; bottom:110px; }
+  #g-intro-8-track-ltin { display:table; padding:18px 28px; border-radius:28px; }
+  #g-intro-8-track-name { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1.1; color:#f2f5f8; }
+  #g-intro-8-track-role { display:block; margin-top:6px; font-weight:700; font-size:27px; letter-spacing:1px; color:#f5d98b; }
+  .gi8-chip { position:absolute; }
+  .gi8-chipin { display:table; padding:18px 32px; border-radius:28px; }
+  .gi8-chipmain { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .gi8-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-intro-8-track-root" data-composition-id="g-intro-8-track" data-width="1920" data-height="1080">
+  <svg class="gi8-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- reveals the dotted Washington path: a solid stroke drawn by strokeDashoffset masks the dots -->
+      <mask id="g-intro-8-track-wmask" maskUnits="userSpaceOnUse" x="-2000" y="-2000" width="8000" height="8000">
+        <path id="g-intro-8-track-wmaskp" d="M1665.0,1819.1 Q1720,1250 1890.0,1039.5" fill="none" stroke="#ffffff" stroke-width="40"/>
+      </mask>
+    </defs>
+    <!-- camera layer: plate units -->
+    <g id="g-intro-8-track-cam">
+<!--SPLICE-BASEMAP-->
+      <path id="g-intro-8-track-cuba" class="gi8-cuba" vector-effect="non-scaling-stroke" d="CUBA_D"/>
+      <!-- Belen forecast (g-intro-4 arrow, same geometry): Havana to (-89.0, 27.0) = (990.0,1455.2), control (1330,1720) -->
+      <path id="g-intro-8-track-harrow" class="gi8-hide" d="M1585.8,1857.6 Q1330,1720 990,1455.2" fill="none" stroke="#d8a13a" stroke-width="8" stroke-linecap="round"/>
+      <polygon id="g-intro-8-track-hhead" class="gi8-hide" points="0,0 0,0 0,0" fill="#d8a13a"/>
+      <!-- Washington's expected path: Sept 5 18Z Straits fix (-81.5, 23.5) = (1665.0,1819.1), north over Florida, then
+           northeast to (-79.0, 31.0) = (1890.0,1039.5) off Georgia. Dots 2/14 px at s 0.75 = 2.7/18.7 plate. -->
+      <path id="g-intro-8-track-wpath" mask="url(#g-intro-8-track-wmask)" d="M1665.0,1819.1 Q1720,1250 1890.0,1039.5" fill="none" stroke="#7fb2e5" stroke-width="8" stroke-linecap="round" stroke-dasharray="2.7 18.7"/>
+      <polygon id="g-intro-8-track-whead" class="gi8-hide" points="0,0 0,0 0,0" fill="#7fb2e5"/>
+      <!-- wire layer (g-intro-4): straight city-to-city lines into Galveston (468.0,1216.2); 12 plate = 6 px at s 0.5 -->
+      <line id="g-intro-8-track-hwire" class="gi8-hide" x1="1585.8" y1="1857.6" x2="1585.8" y2="1857.6" stroke="#5a768f" stroke-width="12" stroke-dasharray="28 24"/>
+      <line id="g-intro-8-track-wglow" class="gi8-hide" x1="2066.4" y1="218.3" x2="468.0" y2="1216.2" stroke="#7fb2e5" stroke-width="12" stroke-linecap="round" style="filter:drop-shadow(0 0 10px #7fb2e5) drop-shadow(0 0 10px #7fb2e5)"/>
+      <line id="g-intro-8-track-wwire" class="gi8-hide" x1="2066.4" y1="218.3" x2="2066.4" y2="218.3" stroke="#7fb2e5" stroke-width="12" stroke-linecap="round"/>
+      <line id="g-intro-8-track-pulse" class="gi8-hide" x1="2066.4" y1="218.3" x2="468.0" y2="1216.2" stroke="#f2f5f8" stroke-width="14" stroke-linecap="round"/>
+      <!-- past track: every HURDAT2 fix Sept 2 00Z .. Sept 8 18Z; width 5 px on screen (render sets 5/s plate) -->
+      <path id="g-intro-8-track-trk" d="M2673.0,2359.7 L2583.0,2318.1 L2493.0,2286.9 L2412.0,2255.7 L2331.0,2234.9 L2250.0,2214.1 L2160.0,2183.0 L2106.0,2151.8 L2052.0,2120.6 L2007.0,2079.0 L1953.0,2047.8 L1899.0,2016.6 L1845.0,1975.0 L1791.0,1933.5 L1737.0,1871.1 L1665.0,1819.1 L1593.0,1756.8 L1512.0,1684.0 L1431.0,1611.2 L1332.0,1548.9 L1242.0,1507.3 L1134.0,1476.1 L1017.0,1455.3 L927.0,1434.5 L846.0,1413.7 L765.0,1392.9 L684.0,1372.1 L585.0,1330.6" fill="none" stroke="#f2f5f8" stroke-width="5.9" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 4px rgba(242,245,248,0.45))"/>
+    </g>
+    <!-- screen-size marks: render() sets each *-at group's translate to its projected point -->
+    <g id="g-intro-8-track-pins">
+      <g id="g-intro-8-track-xm-at"><g id="g-intro-8-track-xm" class="gi8-hide">
+        <circle r="17" fill="#04070c" stroke="#c0392b" stroke-width="2"/>
+        <path d="M-8,-8 L8,8 M8,-8 L-8,8" stroke="#c0392b" stroke-width="5" stroke-linecap="round" fill="none"/>
+      </g></g>
+      <g id="g-intro-8-track-hav-at"><g id="g-intro-8-track-hav"><circle r="7" fill="#d8a13a"/></g></g>
+      <g id="g-intro-8-track-was-at"><g id="g-intro-8-track-was" class="gi8-hide">
+        <circle id="g-intro-8-track-was-ring" r="7" fill="none" stroke="#7fb2e5" stroke-width="2"/>
+        <circle r="7" fill="#7fb2e5"/>
+      </g></g>
+      <g id="g-intro-8-track-gal-at"><g id="g-intro-8-track-gal">
+        <circle id="g-intro-8-track-gal-ring" r="7" fill="none" stroke="#f2f5f8" stroke-width="2" opacity="0"/>
+        <circle id="g-intro-8-track-gal-dot" r="7" fill="#f2f5f8"/>
+      </g></g>
+      <!-- day ticks: 10 px dot on each 12Z fix, Sept 2 to Sept 8 (shown once the track has passed it) -->
+      <g id="g-intro-8-track-tk2-at"><circle r="5" fill="#f2f5f8" id="g-intro-8-track-tk2" opacity="0"/></g>
+      <g id="g-intro-8-track-tk3-at"><circle r="5" fill="#f2f5f8" id="g-intro-8-track-tk3" opacity="0"/></g>
+      <g id="g-intro-8-track-tk4-at"><circle r="5" fill="#f2f5f8" id="g-intro-8-track-tk4" opacity="0"/></g>
+      <g id="g-intro-8-track-tk5-at"><circle r="5" fill="#f2f5f8" id="g-intro-8-track-tk5" opacity="0"/></g>
+      <g id="g-intro-8-track-tk6-at"><circle r="5" fill="#f2f5f8" id="g-intro-8-track-tk6" opacity="0"/></g>
+      <g id="g-intro-8-track-tk7-at"><circle r="5" fill="#f2f5f8" id="g-intro-8-track-tk7" opacity="0"/></g>
+      <g id="g-intro-8-track-tk8-at"><circle r="5" fill="#f2f5f8" id="g-intro-8-track-tk8" opacity="0"/></g>
+      <!-- steamer Louisiana: 40 px ship glyph on the Sept 6 18Z fix (-85.2, 26.1) = (1332.0,1548.9) -->
+      <g id="g-intro-8-track-ship-at"><g id="g-intro-8-track-ship" class="gi8-hide">
+        <path d="M-20,2 L20,2 L13,11 L-13,11 Z M-9,-5 L9,-5 L9,2 L-9,2 Z M-3,-14 L3,-14 L3,-5 L-3,-5 Z" fill="#e8c56a" stroke="#04070c" stroke-width="1.5" stroke-linejoin="round"/>
+      </g></g>
+      <!-- storm ring: 96 px outer (r 45 + 3), 6 px stroke, glow -->
+      <g id="g-intro-8-track-ring-at"><g id="g-intro-8-track-ring" style="filter:drop-shadow(0 0 8px rgba(242,245,248,0.85)) drop-shadow(0 0 18px rgba(127,178,229,0.55))">
+        <circle r="45" fill="rgba(242,245,248,0.06)" stroke="#f2f5f8" stroke-width="6"/>
+      </g></g>
+    </g>
+    <!-- HUD: fixed screen positions, from the projected points once the camera has settled -->
+    <g id="g-intro-8-track-hud">
+      <!-- V-CUBA at 5.52 (s 0.867): the first third of the Washington path ends at plate (1701.3,1547.9) = screen (875,236) -->
+      <text id="g-intro-8-track-qmark" class="gi8-labbig gi8-hide" x="880" y="221" text-anchor="middle" font-size="44" fill="#7fb2e5">?</text>
+      <text id="g-intro-8-track-wq" class="gi8-lab gi8-hide" x="908" y="221" font-size="30" fill="#7fb2e5">Washington ?</text>
+      <!-- V-GULF at 9.47: path end (1890.0,1039.5) = screen (1516,157); label left of the head, above the path -->
+      <text id="g-intro-8-track-wne" class="gi8-lab gi8-hide" x="1480" y="162" text-anchor="end" font-size="30" fill="#7fb2e5">Washington: recurve northeast</text>
+      <!-- V-GULF at 11.55: Belen arrow tip plate (974,1443) = screen (827,459); label left of the tip -->
+      <text id="g-intro-8-track-havl" class="gi8-lab gi8-hide" x="806" y="430" text-anchor="end" font-size="30" fill="#e8c56a">Havana: into the Gulf</text>
+      <!-- V-WIRE (g-intro-4 labels): Washington (1360,149), Galveston (559,649), Havana (1119,969) -->
+      <text id="g-intro-8-track-washington" class="gi8-lab gi8-hide" x="1385" y="160" font-size="30" fill="#7fb2e5">Washington</text>
+      <text id="g-intro-8-track-galveston" class="gi8-labbig gi8-hide" x="535" y="666" text-anchor="end" font-size="52" fill="#f2f5f8">Galveston</text>
+      <text id="g-intro-8-track-havana2" class="gi8-lab gi8-hide" x="1095" y="990" text-anchor="end" font-size="26" fill="#e8c56a">Havana</text>
+    </g>
+  </svg>
+  <div class="gi8-src gi8-glass gi8-hide" id="g-intro-8-track-src1">Monthly Weather Review, Sept. 1900 &middot; track: NOAA HURDAT2</div>
+  <div class="gi8-src gi8-glass gi8-hide" id="g-intro-8-track-src2">NOAA AOML, 2015 &middot; Monthly Weather Review, Sept. 1900</div>
+  <!-- chip 1: above-right of the Sept 4 crossing point (ring at screen 998,604 at 1.80), clear of the ring and the Havana pin (777,504) -->
+  <div class="gi8-chip gi8-hide" id="g-intro-8-track-chip1" style="left:960px; top:440px;">
+    <div class="gi8-chipin gi8-glass" id="g-intro-8-track-chip1in"><span class="gi8-chipmain" id="g-intro-8-track-chip1t">CROSSES CUBA &middot; SEPT 4</span></div>
+  </div>
+  <!-- chip 2: above the ship (screen 1098,539 at 16.11), right of the dimmed Belen arrowhead (827,459) -->
+  <div class="gi8-chip gi8-hide" id="g-intro-8-track-chip2" style="left:880px; top:396px;">
+    <div class="gi8-chipin gi8-glass" id="g-intro-8-track-chip2in"><span class="gi8-chipmain" id="g-intro-8-track-chip2t">STEAMER LOUISIANA &middot; SEPT 6</span></div>
+  </div>
+  <div id="g-intro-8-track-lt" class="gi8-hide">
+    <div id="g-intro-8-track-ltin" class="gi8-glass">
+      <span id="g-intro-8-track-name">WILLIS MOORE</span>
+      <span id="g-intro-8-track-role">Chief, US Weather Bureau</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-intro-8-track-";
+  const $ = function (n) { return document.getElementById("g-intro-8-track-" + n); };
+  const proj = function (lon, lat) { return [(lon + 100) * 90, (41 - lat) * 103.95]; };
+  const GAL = proj(-94.80, 29.30), HAV = proj(-82.38, 23.13), WAS = proj(-77.04, 38.90);
+
+  /* HURDAT2 AL011900, 6-hourly fixes Sept 2 00Z (index 0) .. Sept 8 18Z (index 27); index = (day - 2) * 4 + hour / 6 */
+  const TRK = [[-70.3,18.3],[-71.3,18.7],[-72.3,19.0],[-73.2,19.3],[-74.1,19.5],[-75.0,19.7],[-76.0,20.0],[-76.6,20.3],[-77.2,20.6],[-77.7,21.0],[-78.3,21.3],[-78.9,21.6],[-79.5,22.0],[-80.1,22.4],[-80.7,23.0],[-81.5,23.5],[-82.3,24.1],[-83.2,24.8],[-84.1,25.5],[-85.2,26.1],[-86.2,26.5],[-87.4,26.8],[-88.7,27.0],[-89.7,27.2],[-90.6,27.4],[-91.5,27.6],[-92.4,27.8],[-93.5,28.2]]
+    .map(function (p) { return proj(p[0], p[1]); });
+  const CUM = [0];
+  for (let i = 1; i < TRK.length; i++) CUM.push(CUM[i - 1] + Math.hypot(TRK[i][0] - TRK[i - 1][0], TRK[i][1] - TRK[i - 1][1]));
+  const TLC = Math.ceil(CUM[CUM.length - 1]) + 1;                                /* dash lengths: ceil(len)+1 */
+  function pointAt(d) {
+    let i = 0;
+    while (i < CUM.length - 2 && CUM[i + 1] < d) i++;
+    const u = Math.max(0, Math.min(1, (d - CUM[i]) / (CUM[i + 1] - CUM[i])));
+    return [TRK[i][0] + (TRK[i + 1][0] - TRK[i][0]) * u, TRK[i][1] + (TRK[i + 1][1] - TRK[i][1]) * u];
+  }
+  /* ring legs [start, end, from fix, to fix, ease]; holds between legs. Fix 12 = Sept 5 00Z (evening of Sept 4, Cuban
+     local time, over central Cuba); 15 = Sept 5 18Z (Florida Straits); 19 = Sept 6 18Z (the Louisiana); 27 = Sept 8 18Z (offshore) */
+  const LEGS = [[0, 1.80, 0, 12, "none"], [3.14, 4.70, 12, 15, "power1.inOut"], [14.134, 17.774, 15, 19, "power1.inOut"], [20.09, 22.27, 19, 27, "power1.inOut"]]
+    .map(function (g) { return [g[0], g[1], CUM[g[2]], CUM[g[3]], gsap.parseEase(g[4])]; });
+  function dAt(t) {
+    let d = 0;
+    for (let k = 0; k < LEGS.length; k++) {
+      const g = LEGS[k];
+      if (t >= g[1]) { d = g[3]; continue; }
+      if (t > g[0]) d = g[2] + (g[3] - g[2]) * g[4]((t - g[0]) / (g[1] - g[0]));
+      break;
+    }
+    return d;
+  }
+
+  /* camera: pure function of comp time */
+  const io = gsap.parseEase("power2.inOut");
+  const lerp = function (a, b, u) { return a + (b - a) * u; };
+  function logLerpScale(fromScale, toScale, t) {                              /* from library/inhouse/snippets/helpers.js logZoom */
+    return Math.exp(Math.log(fromScale) + (Math.log(toScale) - Math.log(fromScale)) * t);
+  }
+  function camAt(t) {
+    if (t < 6.674) return [1800, 1900, 0.85 * (1 + 0.02 * t / 6.674)];                  /* V-CUBA, drift +2 % */
+    if (t < 8.474) { const u = io((t - 6.674) / 1.8);                                   /* WILLIS S2 0.00: to V-GULF */
+      return [lerp(1800, 1150, u), lerp(1900, 1550, u), lerp(0.867, 0.75, u)]; }
+    if (t < 22.99) return [1150, 1550, 0.75 * (1 + 0.02 * (t - 8.474) / 14.516)];       /* V-GULF, drift +2 % */
+    if (t < 23.99) { const u = io(t - 22.99);                                           /* AND S3 2.90: logZoom to V-WIRE */
+      return [lerp(1150, 1267, u), lerp(1550, 1000, u), logLerpScale(0.765, 0.5, u)]; }
+    return [1267, 1000, 0.5 + 0.01 * Math.min(1, (t - 23.99) / 2.9)];                  /* V-WIRE, drift */
+  }
+
+  const HAV_MID = [(HAV[0] + GAL[0]) / 2, (HAV[1] + GAL[1]) / 2];
+  const TICKS = [[2, "tk2"], [6, "tk3"], [10, "tk4"], [14, "tk5"], [18, "tk6"], [22, "tk7"], [26, "tk8"]];
+  const marks = [[$("hav-at"), HAV], [$("was-at"), WAS], [$("gal-at"), GAL], [$("xm-at"), HAV_MID], [$("ship-at"), TRK[19]]]
+    .concat(TICKS.map(function (k) { return [$(k[1] + "-at"), TRK[k[0]]]; }));
+  const camEl = $("cam"), trkEl = $("trk"), ringAt = $("ring-at");
+  trkEl.style.strokeDasharray = TLC + " " + TLC;
+  function render(t) {
+    const c = camAt(t), cx = c[0], cy = c[1], s = c[2];
+    const at = function (p) { return "translate(" + (960 + (p[0] - cx) * s).toFixed(2) + "," + (540 + (p[1] - cy) * s).toFixed(2) + ")"; };
+    camEl.setAttribute("transform", "translate(" + (960 - cx * s).toFixed(2) + "," + (540 - cy * s).toFixed(2) + ") scale(" + s.toFixed(5) + ")");
+    for (let i = 0; i < marks.length; i++) marks[i][0].setAttribute("transform", at(marks[i][1]));
+    const d = dAt(t);
+    ringAt.setAttribute("transform", at(pointAt(d)));                           /* ring = track head, same d */
+    trkEl.setAttribute("stroke-width", (5 / s).toFixed(3));
+    trkEl.style.strokeDashoffset = (TLC - d).toFixed(2);
+    for (let k = 0; k < TICKS.length; k++) $(TICKS[k][1]).setAttribute("opacity", d >= CUM[TICKS[k][0]] - 0.01 ? 1 : 0);
+  }
+  render(0);
+
+  /* arrowheads: tip 20 plate px past the curve end along its end tangent (end - control) */
+  function head(id, end, ctl, len, half) {
+    const dl = Math.hypot(end[0] - ctl[0], end[1] - ctl[1]), dx = (end[0] - ctl[0]) / dl, dy = (end[1] - ctl[1]) / dl;
+    const tip = [end[0] + dx * 20, end[1] + dy * 20], base = [tip[0] - dx * len, tip[1] - dy * len];
+    $(id).setAttribute("points", [tip, [base[0] - dy * half, base[1] + dx * half], [base[0] + dy * half, base[1] - dx * half]]
+      .map(function (q) { return q[0].toFixed(1) + "," + q[1].toFixed(1); }).join(" "));
+  }
+  head("hhead", [990.0, 1455.2], [1330, 1720], 36, 16);                       /* g-intro-4's Belen head */
+  head("whead", [1890.0, 1039.5], [1720, 1250], 45, 20);                      /* 34 px at s 0.75 */
+
+  const WPL = Math.ceil($("wmaskp").getTotalLength()) + 1;
+  const WL = Math.ceil(Math.hypot(WAS[0] - GAL[0], WAS[1] - GAL[1])) + 1;
+  const PULSE_DASH = "80 " + (WL + 200), PULSE_END = -WL;
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to({ t: 0 }, { t: 1, duration: 26.89, ease: "none", onUpdate: function () { render(this.time()); } }, 0);
+  tl.set($("wmaskp"), { strokeDasharray: WPL + " " + WPL, strokeDashoffset: WPL }, 0);
+  tl.set(P + "pulse", { strokeDasharray: PULSE_DASH, strokeDashoffset: 80 }, 0);
+  tl.set(P + "harrow", { opacity: 0 }, 0);
+
+  /* ring pulses the whole host: 0.92 <-> 1.1, 0.9 s yoyo, 29 legs = 26.1 s */
+  tl.fromTo(P + "ring", { scale: 0.92, svgOrigin: "0 0" }, { scale: 1.1, svgOrigin: "0 0", duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 28 }, 0);
+
+  /* STORM @8.10 (S1 8.10 = comp 0): plate drawn from frame 0; source line in; ring runs Sept 2 -> Sept 5 00Z by 1.80 (render) */
+  tl.fromTo(P + "src1", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.0);
+  tl.to(P + "src1", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.4);
+  /* CUBA S1 8.88: Cuba's outline brightens */
+  tl.to(P + "cuba", { stroke: "#dfe7ee", duration: 0.5, ease: "power2.out" }, 0.78);
+  /* 4TH S1 9.90: chip in, ring holds over Cuba (pulsing) */
+  tl.fromTo(P + "chip1", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 1.80);
+  tl.to(P + "chip1in", { y: -4, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.25);
+  /* AND S1 11.24: chip out; ring on to the Sept 5 18Z Straits fix, 3.14 -> 4.70 (render) */
+  tl.to(P + "chip1", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 3.14);
+  /* DIFFERENT S1 13.00: the first third of Washington's path draws 4.90 -> 5.52; "?" and label land at 5.52 (S1 13.62) */
+  tl.to(P + "wmaskp", { strokeDashoffset: WPL * 2 / 3, duration: 0.62, ease: "power2.out" }, 4.90);
+  tl.fromTo(P + "qmark", { autoAlpha: 0, scale: 0.4, svgOrigin: "880 206" }, { autoAlpha: 1, scale: 1, svgOrigin: "880 206", duration: 0.35, ease: "back.out(2.2)" }, 5.52);
+  tl.fromTo(P + "wq", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.52);
+
+  /* WILLIS S2 0.00 (comp 6.674): HUD text clears before the camera move (render 6.674 -> 8.474); source line swaps; lower-third in */
+  tl.to([P + "qmark", P + "wq"], { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 6.674);
+  tl.to(P + "src1", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 6.674);
+  tl.fromTo(P + "src2", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 6.974);
+  tl.to(P + "src2", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 7 }, 7.374);
+  tl.fromTo(P + "lt", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 6.674);
+  tl.to(P + "ltin", { y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3 }, 7.274);
+  /* CURVE S2 2.06: Washington's path draws to its end 8.734 -> 10.074; head lands at the end */
+  tl.to(P + "wmaskp", { strokeDashoffset: 0, duration: 1.34, ease: "power2.inOut" }, 8.734);
+  tl.fromTo(P + "whead", { autoAlpha: 0, scale: 0.4, svgOrigin: "1890 1039.5" }, { autoAlpha: 1, scale: 1, svgOrigin: "1890 1039.5", duration: 0.25, ease: "back.out(2)" }, 9.90);
+  /* NORTHEAST S2 2.80: the resolved label (a second pre-authored label) */
+  tl.fromTo(P + "wne", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 9.474);
+  /* ONCE S2 4.88: the Belen arrow fades back in with its label */
+  tl.to([P + "harrow", P + "hhead"], { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 11.554);
+  tl.fromTo(P + "havl", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 11.754);
+  /* S2 5.40: lower-third out */
+  tl.to(P + "lt", { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 12.074);
+
+  /* DIDN'T S2 7.46 (comp 14.134): Washington's path and label fade out over 0.6 s; Belen arrow dims to 0.5, its label clears;
+     ring runs NW then WNW along the real track, Sept 5 18Z -> Sept 6 18Z, 14.134 -> 17.774 (render) */
+  tl.to([P + "wpath", P + "whead", P + "wne"], { autoAlpha: 0, duration: 0.6, ease: "power2.inOut" }, 14.134);
+  tl.to([P + "harrow", P + "hhead"], { opacity: 0.5, duration: 0.6, ease: "power2.inOut" }, 14.134);
+  tl.to(P + "havl", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 14.134);
+  /* LOUISIANA S2 9.44: ship glyph on the Sept 6 18Z fix and chip in */
+  tl.fromTo(P + "ship", { autoAlpha: 0, scale: 0.5, svgOrigin: "0 0" }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", duration: 0.4, ease: "back.out(2)" }, 16.114);
+  tl.fromTo(P + "chip2", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 16.114);
+  tl.to(P + "chip2in", { y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 16.564);
+  /* CENTER S2 11.10: the ring is on the ship; the glyph flashes */
+  tl.to(P + "ship", { scale: 1.5, svgOrigin: "0 0", duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 17.774);
+  /* GULF S2 12.56: chip out 12.30 -> 12.90 */
+  tl.to(P + "chip2", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.974);
+
+  /* COMING S3 0.00 (comp 20.09): ring and track run on WNW, Sept 6 18Z -> Sept 8 18Z, stop offshore at ISLAND S3 2.18 (render) */
+  /* TOWARD S3 1.84: Galveston pin pulses (3 x 1.4 s) */
+  tl.fromTo(P + "gal-ring", { scale: 1, opacity: 0.8, svgOrigin: "0 0" }, { scale: 2.2, opacity: 0, svgOrigin: "0 0", duration: 1.4, ease: "power1.out", repeat: 2 }, 21.93);
+  /* AND S3 2.90: camera V-GULF -> V-WIRE 22.99 -> 23.99 (render) */
+  /* WASHINGTON'S S3 3.08: wires draw from their source city; Havana line dark from its first frame, x on it */
+  tl.fromTo(P + "wwire", { autoAlpha: 1, attr: { x2: WAS[0], y2: WAS[1] } }, { autoAlpha: 1, attr: { x2: GAL[0], y2: GAL[1] }, duration: 0.8, ease: "power2.inOut" }, 23.17);
+  tl.fromTo(P + "hwire", { autoAlpha: 0.35, attr: { x2: HAV[0], y2: HAV[1] } }, { autoAlpha: 0.35, attr: { x2: GAL[0], y2: GAL[1] }, duration: 0.8, ease: "power2.inOut" }, 23.17);
+  tl.fromTo(P + "xm", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: "power2.out" }, 23.57);
+  tl.fromTo(P + "was", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "back.out(2)" }, 23.17);
+  tl.fromTo(P + "wglow", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 23.97);
+  tl.fromTo(P + "was-ring", { scale: 1, opacity: 0.8, svgOrigin: "0 0" }, { scale: 2.2, opacity: 0, svgOrigin: "0 0", duration: 1.4, ease: "power1.out", repeat: 1 }, 23.99);
+  /* V-WIRE settled 23.99: labels land */
+  tl.fromTo(P + "washington", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 23.99);
+  tl.fromTo(P + "galveston", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 23.99);
+  tl.fromTo(P + "havana2", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 23.99);
+  /* WIRE S3 3.68: pulse 1, head reaches Galveston at GALVESTON S3 4.40 (comp 24.49; 0.72 s x (WL+80)/WL); pin flashes */
+  tl.set(P + "pulse", { autoAlpha: 1 }, 23.77);
+  tl.to(P + "pulse", { strokeDashoffset: PULSE_END, duration: 0.75, ease: "none" }, 23.77);
+  tl.to(P + "gal-dot", { scale: 1.6, svgOrigin: "0 0", duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 24.49);
+  /* WHAT S3 4.98: pulse 2, arriving 5.80 (comp 25.89) */
+  tl.fromTo(P + "pulse", { strokeDashoffset: 80 }, { strokeDashoffset: PULSE_END, duration: 0.855, ease: "none", immediateRender: false }, 25.07);
+  tl.to(P + "gal-dot", { scale: 1.6, svgOrigin: "0 0", duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 25.89);
+
+  /* host end = S3 5.946 + land to 6.80 (comp 26.89); fade-through to I1-S4's MWR page over the last 0.4 s */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, 26.49);
+
+  window.__timelines["g-intro-8-track"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
