@@ -119,8 +119,10 @@ def alive(host, log):
 
 
 def kill(host, log):
-    """Count of processes ended on host: each whose command line holds log, with its children (the lane's claude)."""
-    code, out = ps(host, f"$n = 0; Get-CimInstance Win32_Process | Where-Object {{ $_.CommandLine -and $_.CommandLine.Contains({quote(log)}) }} | "
+    """Count of lane trees ended on host (None: host unreadable). Only the cmd.exe root spawn() starts matches, by its
+    exact redirect, so a viewer, a tail or a lane whose log path extends this one is never hit."""
+    root = f'> "{log}" 2>&1'
+    code, out = ps(host, f"$n = 0; Get-CimInstance Win32_Process | Where-Object {{ $_.Name -eq 'cmd.exe' -and $_.CommandLine -and $_.CommandLine.Contains({quote(root)}) }} | "
                          "ForEach-Object { taskkill /T /F /PID $_.ProcessId | Out-Null; $n++ }; $n", timeout=60)
     last = out.strip().splitlines()[-1] if out.strip() else ""
     return int(last) if code == 0 and last.isdigit() else None
@@ -385,7 +387,7 @@ def write(a, ep, lock):
         if a.jobs == ["all"] and a.cmd == "hold":
             a.jobs = [s["job"] for s in states if s["state"] in BLOCKING]
         if a.jobs == ["all"] and a.cmd == "stop":
-            a.jobs = [s["job"] for s in states if s["state"] == "RUNNING"]
+            a.jobs = [s["job"] for s in states if s["state"] in ("RUNNING", "STALE", "FAILED")]  # all may still run
         unknown = sorted(set(a.jobs) - known)
         if unknown:
             sys.exit(f"[lanes] FAIL: unknown job(s) {unknown}; `status` lists the real names")
