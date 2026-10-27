@@ -17,6 +17,7 @@ which jobs were launched and when they ended, and which are held.
   python3 scripts/lanes.py unhold episodes/<slug> source:z1
   python3 scripts/lanes.py status episodes/<slug> [--json]   # exit 2 while any job is READY, STALE or FAILED; read-only
   python3 scripts/lanes.py relaunch episodes/<slug>          # put every FAILED lane on the next profile that answers
+  python3 scripts/lanes.py stop   episodes/<slug> all|<job>  # stop-all: end every RUNNING lane's process tree, mark it ended
 
 Launching (why: lanes sat dead for hours on an exhausted profile or a full ZBook). `start --cmd` runs one job's command
 itself, hidden and detached, on host local or zbook, with {cli} replaced by the profile (claudeN, the wrapper that sets
@@ -115,6 +116,14 @@ def alive(host, log):
     code, out = ps(host, f"@(Get-CimInstance Win32_Process | Where-Object {{ $_.CommandLine -and $_.CommandLine.Contains({quote(log)}) }}).Count",
                    timeout=20)  # the query's own command line is encoded, so it never matches itself
     return int(out.strip()) > 0 if code == 0 and out.strip().isdigit() else None
+
+
+def kill(host, log):
+    """Count of processes ended on host: each whose command line holds log, with its children (the lane's claude)."""
+    code, out = ps(host, f"$n = 0; Get-CimInstance Win32_Process | Where-Object {{ $_.CommandLine -and $_.CommandLine.Contains({quote(log)}) }} | "
+                         "ForEach-Object { taskkill /T /F /PID $_.ProcessId | Out-Null; $n++ }; $n", timeout=60)
+    last = out.strip().splitlines()[-1] if out.strip() else ""
+    return int(last) if code == 0 and last.isdigit() else None
 
 
 def spawn(host, cmd, log, cwd):
@@ -295,7 +304,7 @@ def job_states(ep, ledger, now=None):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("cmd", choices=["claim", "start", "end", "hold", "unhold", "status", "relaunch"])
+    ap.add_argument("cmd", choices=["claim", "start", "end", "hold", "unhold", "status", "relaunch", "stop"])
     ap.add_argument("episode")
     ap.add_argument("jobs", nargs="*")
     ap.add_argument("--host", default="local", choices=HOSTS)
@@ -375,6 +384,8 @@ def write(a, ep, lock):
             sys.exit(f"[lanes] FAIL: --minutes must be 1 to {HOLD_H * 60}; a longer lane is held with a reason instead")
         if a.jobs == ["all"] and a.cmd == "hold":
             a.jobs = [s["job"] for s in states if s["state"] in BLOCKING]
+        if a.jobs == ["all"] and a.cmd == "stop":
+            a.jobs = [s["job"] for s in states if s["state"] == "RUNNING"]
         unknown = sorted(set(a.jobs) - known)
         if unknown:
             sys.exit(f"[lanes] FAIL: unknown job(s) {unknown}; `status` lists the real names")
@@ -400,6 +411,11 @@ def write(a, ep, lock):
     for job in a.jobs:
         if a.cmd == "start":
             ledger.setdefault("jobs", {})[job] = dict(run)
+        elif a.cmd == "stop":  # a lane recorded without --log runs elsewhere and is not ours to find
+            run = ledger.setdefault("jobs", {}).setdefault(job, {"started": now, "host": a.host})
+            n = kill(run.get("host", "local"), run["log"]) if run.get("log") else None
+            print(f"[lanes] stop {job}: " + (f"{n} process(es) ended" if n is not None else "no log recorded or host unreadable; stop it where it runs"))
+            run["ended"] = now
         elif a.cmd == "end":
             ledger.setdefault("jobs", {}).setdefault(job, {"started": now, "host": a.host})["ended"] = now
         elif a.cmd == "hold":
