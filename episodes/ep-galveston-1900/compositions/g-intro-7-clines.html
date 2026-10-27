@@ -56,8 +56,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"roleA", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.04);
   /* card floats from its land time */
   tl.to(P+"ltin", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:1}, 3.34);
-  /* light band: left to right and back, 3 s each way */
-  tl.fromTo(P+"band", {x:-120}, {x:600, duration:3, ease:"sine.inOut", yoyo:true, repeat:1}, 3.34);
+  /* light band: left to right and back, 2.3 s each way, done at 7.94 s inside the 8.10 s host */
+  tl.fromTo(P+"band", {x:-120}, {x:600, duration:2.3, ease:"sine.inOut", yoyo:true, repeat:1}, 3.34);
 
   /* His @5.24: line A exits up through the overflow, card narrows for name 2 */
   tl.to([P+"nameA", P+"roleA"], {y:-40, autoAlpha:0, duration:0.3, ease:"power2.in"}, 5.24);
