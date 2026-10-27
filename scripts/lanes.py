@@ -118,11 +118,15 @@ def alive(host, log):
     return int(out.strip()) > 0 if code == 0 and out.strip().isdigit() else None
 
 
+def redirect(log):
+    """The output redirect spawn() writes into a lane's command line; kill() finds the lane by it."""
+    return f'> "{log}" 2>&1'
+
+
 def kill(host, log):
     """Count of lane trees ended on host (None: host unreadable). Only the cmd.exe root spawn() starts matches, by its
     exact redirect, so a viewer, a tail or a lane whose log path extends this one is never hit."""
-    root = f'> "{log}" 2>&1'
-    code, out = ps(host, f"$n = 0; Get-CimInstance Win32_Process | Where-Object {{ $_.Name -eq 'cmd.exe' -and $_.CommandLine -and $_.CommandLine.Contains({quote(root)}) }} | "
+    code, out = ps(host, f"$n = 0; Get-CimInstance Win32_Process | Where-Object {{ $_.Name -eq 'cmd.exe' -and $_.CommandLine -and $_.CommandLine.Contains({quote(redirect(log))}) }} | "
                          "ForEach-Object { taskkill /T /F /PID $_.ProcessId | Out-Null; $n++ }; $n", timeout=60)
     last = out.strip().splitlines()[-1] if out.strip() else ""
     return int(last) if code == 0 and last.isdigit() else None
