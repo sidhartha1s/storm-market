@@ -1,0 +1,125 @@
+<template>
+<style>
+  #g-intro-9-warnings-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  .g-intro-9-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+
+  /* source line, top-left */
+  #g-intro-9-warnings-src { position:absolute; inset:auto; left:96px; top:54px; max-width:1000px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; letter-spacing:1px; opacity:0; visibility:hidden; }
+
+  /* day row: 5 x 150 px tiles, 24 px gaps, centred on x 960 (left 537), top 200. row = rise/dim/exit, rowdrift = float */
+  #g-intro-9-warnings-row { position:absolute; inset:auto; left:0; top:200px; width:1920px; height:150px; }
+  #g-intro-9-warnings-rowdrift { position:absolute; inset:0; }
+  .g-intro-9-frame { position:absolute; inset:auto; top:0; width:150px; height:150px; box-sizing:border-box; border-radius:20px; border:2px solid #f2f5f8; opacity:0; visibility:hidden; }
+  .g-intro-9-tile { position:absolute; inset:auto; top:0; width:150px; height:150px; box-sizing:border-box; border-radius:20px; overflow:hidden; opacity:0; visibility:hidden; }
+  .g-intro-9-eyebrow { position:absolute; left:0; right:0; top:8px; height:24px; text-align:center; padding-left:6px; box-sizing:border-box;
+    font-weight:700; font-size:22px; line-height:24px; letter-spacing:6px; color:#93a3b2; }
+  .g-intro-9-num { position:absolute; left:0; right:0; top:30px; height:62px; text-align:center;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:72px; line-height:62px; color:#f2f5f8; }
+  .g-intro-9-bar { position:absolute; left:18px; right:18px; top:98px; height:6px; border-radius:3px; background:#7fb2e5; transform-origin:left center; }
+  /* storm-warning band: bottom 40 px of the 7 tile; text wraps to two lines inside 150 px */
+  #g-intro-9-warnings-band { position:absolute; left:0; right:0; bottom:0; height:40px; background:#8e2020; transform-origin:left center; }
+  #g-intro-9-warnings-bandtxt { position:absolute; left:0; right:0; bottom:0; height:40px; box-sizing:border-box; padding:0 10px; display:flex; align-items:center; justify-content:center; text-align:center;
+    font-weight:700; font-size:19px; line-height:20px; letter-spacing:2px; color:#f4f0e8; opacity:0; visibility:hidden; }
+
+  /* chip: centred by xPercent set in tl.set */
+  #g-intro-9-warnings-chip { position:absolute; inset:auto; left:50%; top:470px; opacity:0; visibility:hidden; }
+  #g-intro-9-warnings-chipin { display:table; padding:26px 48px 22px; border-radius:28px; text-align:center; }
+  #g-intro-9-warnings-main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  #g-intro-9-warnings-tag { display:block; margin-top:12px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-intro-9-warnings-root" data-composition-id="g-intro-9-warnings" data-width="1920" data-height="1080">
+  <div id="g-intro-9-warnings-src" class="g-intro-9-glass">Isaac Cline, Monthly Weather Review, Sept. 1900 &middot; Texas State Historical Association &middot; Ohio State University, Origins</div>
+  <div id="g-intro-9-warnings-row">
+    <div id="g-intro-9-warnings-rowdrift">
+      <div class="g-intro-9-frame" id="g-intro-9-warnings-f4" style="left:537px"></div>
+      <div class="g-intro-9-frame" id="g-intro-9-warnings-f5" style="left:711px"></div>
+      <div class="g-intro-9-frame" id="g-intro-9-warnings-f6" style="left:885px"></div>
+      <div class="g-intro-9-frame" id="g-intro-9-warnings-f7" style="left:1059px"></div>
+      <div class="g-intro-9-frame" id="g-intro-9-warnings-f8" style="left:1233px"></div>
+
+      <div class="g-intro-9-tile g-intro-9-glass" id="g-intro-9-warnings-t4" style="left:537px">
+        <div class="g-intro-9-eyebrow">SEPT</div><div class="g-intro-9-num">4</div><div class="g-intro-9-bar" id="g-intro-9-warnings-b4"></div>
+      </div>
+      <div class="g-intro-9-tile g-intro-9-glass" id="g-intro-9-warnings-t5" style="left:711px">
+        <div class="g-intro-9-eyebrow">SEPT</div><div class="g-intro-9-num">5</div><div class="g-intro-9-bar" id="g-intro-9-warnings-b5"></div>
+      </div>
+      <div class="g-intro-9-tile g-intro-9-glass" id="g-intro-9-warnings-t6" style="left:885px">
+        <div class="g-intro-9-eyebrow">SEPT</div><div class="g-intro-9-num">6</div><div class="g-intro-9-bar" id="g-intro-9-warnings-b6"></div>
+      </div>
+      <div class="g-intro-9-tile g-intro-9-glass" id="g-intro-9-warnings-t7" style="left:1059px">
+        <div class="g-intro-9-eyebrow">SEPT</div><div class="g-intro-9-num">7</div><div class="g-intro-9-bar" id="g-intro-9-warnings-b7"></div>
+        <div id="g-intro-9-warnings-band"></div>
+        <div id="g-intro-9-warnings-bandtxt">STORM WARNING</div>
+      </div>
+      <div class="g-intro-9-tile g-intro-9-glass" id="g-intro-9-warnings-t8" style="left:1233px">
+        <div class="g-intro-9-eyebrow">SEPT</div><div class="g-intro-9-num">8</div><div class="g-intro-9-bar" id="g-intro-9-warnings-b8"></div>
+      </div>
+    </div>
+  </div>
+  <div id="g-intro-9-warnings-chip">
+    <div id="g-intro-9-warnings-chipin" class="g-intro-9-glass">
+      <span id="g-intro-9-warnings-main">MODERATE STORM</span>
+      <span id="g-intro-9-warnings-tag">Washington, Friday midday</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-intro-9-warnings-";
+  const days = [4, 5, 6, 7, 8];
+  /* TIMING: audio/i1-s4.words.json, comp-local = segment time. Host 0.00 to 11.20 (segment 10.356 + 0.84 land, cut into I1-S5).
+     messages @0.60 ; 4th @2.78 ; 8th @3.44 ; 7th @4.74 ; storm @6.44 ; warning @6.62 ; But @7.48 ; moderate @9.46 ; storm @9.74 */
+  tl.set(P+"src", {autoAlpha:0}, 0);
+  tl.set(".g-intro-9-frame", {autoAlpha:0}, 0);
+  tl.set(".g-intro-9-tile", {autoAlpha:0, y:24}, 0);
+  tl.set(".g-intro-9-bar", {scaleX:0}, 0);
+  tl.set(P+"band", {scaleX:0}, 0);
+  tl.set(P+"bandtxt", {autoAlpha:0}, 0);
+  tl.set(P+"chip", {autoAlpha:0, xPercent:-50, y:24, scale:0.94}, 0);
+  tl.set(P+"tag", {autoAlpha:0}, 0);
+
+  /* source line in at 0.00, floats until the exit */
+  tl.fromTo(P+"src", {autoAlpha:0, x:-30}, {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 0);
+  tl.to(P+"src", {y:-4, duration:2.0, ease:"sine.inOut", yoyo:true, repeat:4}, 0.5);
+
+  /* messages @0.60: empty row frame (five outlines at 0.3) fades in; the row floats +-4 px from here to the exit */
+  tl.to(".g-intro-9-frame", {autoAlpha:0.3, duration:0.5, ease:"power2.out", stagger:0.06}, 0.6);
+  tl.to(P+"rowdrift", {y:-4, duration:1.0, ease:"sine.inOut", yoyo:true, repeat:9}, 0.6);
+
+  /* 4TH @2.78 */ /* 8TH @3.44 */
+  /* tiles land 4 @2.78, 5 @2.94, 6 @3.10, 7 @3.26, 8 @3.44; each bar fills 0.3 s after its tile */
+  const lands = [2.78, 2.94, 3.10, 3.26, 3.44];
+  days.forEach(function(d, i) {
+    tl.fromTo(P+"t"+d, {y:24, autoAlpha:0}, {y:0, autoAlpha:1, duration:0.35, ease:"back.out(1.6)"}, lands[i]);
+    tl.to(P+"b"+d, {scaleX:1, duration:0.3, ease:"power2.out"}, lands[i] + 0.3);
+  });
+
+  /* 7TH @4.74: tile 7 scales to 1.08, the others dim to 0.6 */
+  tl.to(P+"t7", {scale:1.08, duration:0.4, ease:"power3.out"}, 4.74);
+  tl.to([P+"t4", P+"t5", P+"t6", P+"t8"], {autoAlpha:0.6, duration:0.4, ease:"power2.out"}, 4.74);
+
+  /* storm @6.44: STORM WARNING band wipes in from the left over 0.4 s; its text is up on warning @6.62 */
+  tl.to(P+"band", {scaleX:1, duration:0.4, ease:"power2.out"}, 6.44);
+  tl.to(P+"bandtxt", {autoAlpha:1, duration:0.2, ease:"power2.out"}, 6.62);
+
+  /* But @7.48: the whole row dims to 0.45 and rises 20 px */
+  tl.to([P+"t4", P+"t5", P+"t6", P+"t7", P+"t8"], {autoAlpha:0.45, duration:0.5, ease:"power2.inOut"}, 7.48);
+  tl.to(P+"row", {y:-20, duration:0.6, ease:"power3.out"}, 7.48);
+
+  /* MODERATE @9.46 */
+  tl.to(P+"chip", {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 9.46);
+  /* storm @9.74: tag line */
+  tl.to(P+"tag", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 9.74);
+  tl.to(P+"chipin", {y:-4, duration:0.7, ease:"sine.inOut"}, 9.91);
+
+  /* exit anchored to the host's last 0.6 s (10.60 to 11.20): row and chip slide right together, source fades */
+  tl.to([P+"row", P+"chip"], {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 10.6);
+  tl.to(P+"src", {autoAlpha:0, duration:0.6, ease:"power2.in"}, 10.6);
+  window.__timelines["g-intro-9-warnings"] = tl;
+})();
+</script>
+</template>
