@@ -236,7 +236,6 @@ window.__timelines = window.__timelines || {};
   tl.to({ t: 0 }, { t: 1, duration: 26.89, ease: "none", onUpdate: function () { render(this.time()); } }, 0);
   tl.set($("wmaskp"), { strokeDasharray: WPL + " " + WPL, strokeDashoffset: WPL }, 0);
   tl.set(P + "pulse", { strokeDasharray: PULSE_DASH, strokeDashoffset: 80 }, 0);
-  tl.set(P + "harrow", { opacity: 0 }, 0);
 
   /* ring pulses the whole host: 0.92 <-> 1.1, 0.9 s yoyo, 29 legs = 26.1 s */
   tl.fromTo(P + "ring", { scale: 0.92, svgOrigin: "0 0" }, { scale: 1.1, svgOrigin: "0 0", duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 28 }, 0);
