@@ -362,7 +362,7 @@ Superscript numbers are references; the Sources chapter at the back lists each o
     subprocess.run(
         [CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
          f"--print-to-pdf={pdf_path}", html_path.resolve().as_uri()],
-        check=True,
+        check=True, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0)
     )
     print(f"wrote {pdf_path}  ({pdf_path.stat().st_size / 1_048_576:.1f} MB)")
 

@@ -58,7 +58,7 @@ def chrome_dom(url, budget_ms=15000):
         proc = subprocess.run(
             [str(CHROME), "--headless=new", "--disable-gpu", "--dump-dom",
              f"--virtual-time-budget={budget_ms}", url],
-            capture_output=True, text=True, errors="replace", timeout=budget_ms // 1000 + 75,
+            capture_output=True, text=True, errors="replace", timeout=budget_ms // 1000 + 75, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0)
         )
     except (subprocess.SubprocessError, OSError):
         return None
