@@ -1,0 +1,323 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-9-surge · A1-S5 0.00 to 17.249 · ep-galveston-1900 · DEEP (Opus) · brief: briefs/a1/g-a1-9-surge.md
+  Claim: Cline's "storm wave" is what forecasters now call storm surge, the mound of seawater a hurricane's wind drives
+  ahead of it onto the land, riding on top of the normal tide (NHC). Then the open question: at Galveston, which way?
+
+  PART A (0.00 to 13.40), generic coast cross-section, SCHEMATIC, screen px, sea LEFT, land RIGHT, no compass:
+    datum (mean sea level) y 760, x 96..1200; normal tide dashed y 740, x 96..1230.
+    Land: (1200,760) -> (1230,740) -> (1824,712). The knee at (1230,740) is added so the brief's tide line really
+      "meets the land slope" at x 1230 (a straight 1200..1824 slope reaches y 740 only at x 1460) and the mound's
+      front can climb the slope to x 1290 (land y 737.2 there) instead of floating 17 px above it.
+    Mound at rest x 640..1100, base on the tide line y 740, peak (900,610). Travels x +140 (8.22 to 9.46); its front
+      stretches at the same time so the front edge ends on the slope at x 1290. Peak ends at (1040,610).
+    Surge bracket: at the peak's position when it draws (x 1040, not the brief's rest-position 900), y 740 -> 610,
+      label "Surge" at (1064,660): the brief's (924,660) shifted with it.
+  PART B (12.98 to end), map. PLATE (g-intro-4, unchanged): X = (lon + 100) * 90, Y = (41 - lat) * 103.95, north up.
+    CAMERA: screen = (960 + (X - 463.5) * s, 540 + (Y - 1205.8) * s), s 19.75 -> static matrix(19.75 0 0 19.75
+      -8194.125 -23274.55) on the inner group; the slow push to s 20.4 is a GSAP scale 1 -> 1.032911 (20.4/19.75)
+      about screen (960,540) on the outer group (linear: 3 %, under the 1.5x logZoom threshold).
+    GEOMETRY: Natural Earth 10m coastline, UNSIMPLIFIED, copied unchanged from compositions/g-a5-3-island-map.html
+      (cartopy ne_10m_coastline.shp: Galveston Island = record 741, 33 points, closed; mainland + Bolivar Peninsula =
+      record 206 points 557..721, closed by an off-frame box). The island resolves at 10m, so no "Schematic" on Part B.
+    Island on screen at s 19.75: NE tip (1183,678); Gulf shore x 820 -> y 962, x 900 -> y 890; bay shore x 820 -> y 875.
+    Bolivar tip (1065,581)-(1073,601); Texas City dike end (1011,594); mainland shore near B: (811,730), (869,675).
+    ARROWS (screen px at s 19.75, inside the pushed group, so they stay on the geography):
+      main  (820,1050) -> split (820,975), just south of the Gulf shore (y 962). Moved west from the brief's x 900 so
+            B crosses the island where it is free of the mainland and the rotated island label sits east of it.
+      A     split -> along the Gulf shore (>= 55 px off it) -> round the east end (28 px off the tip) -> through Bolivar
+            Roads (between the island and Bolivar, then between the dike end and Bolivar tip, >= 25 px each side)
+            -> north into the bay, head tip (1038,429). Nearest mainland shore > 180 px.
+      B     split -> straight north across the island -> head tip (820,785). Nearest mainland shore (811,730): 56 px.
+    LABELS (HUD svg, fixed screen px; anchor groups follow the push by (anchor - centre) * 0.032911 so they stay put
+      on the map): Galveston Island 30 px centred (1010,760) rotated -36.8 deg along the island's Gulf shore
+      (island is about 110 px across, too narrow for flat text); Galveston Bay 22 px from (1090,360) (water: north shore
+      y ~ 270, Bolivar bay side y ~ 400 there); Mainland 22 px from (520,560); Gulf of Mexico 22 px centred (1265,945).
+      Every label >= 24 px from every arrow.
+  CORNER x >= 1600, y >= 680: Part A only unlabelled land fill there; Part B only Gulf water. Arrows and labels west of 1500.
+
+  CUES (audio/a1-s5.words.json, comp time = segment time; segment 17.249 s):
+    0.00  "A"            plate (sea, coast, tide line, glyph turning, water phase), source line A in
+    0.18  "storm"        chip STORM WAVE (1891)
+    4.22  "storm"        morph to STORM SURGE (TODAY), done 4.62 ("surge."). Each line 0.3 s, overlapping 0.2 s
+                         (the brief's 0.4 + 0.4 with 0.2 overlap ends at 4.82, past its own "done by 4.62")
+    5.94  "mound"        mound rises from the tide line (scaleY, bottom origin)
+    7.36  "hurricane's"  wind arrows draw in, 0.12 s apart
+    8.22  "drives"       mound travels right to 9.46 ("land.")
+    10.26 "The"          chip out (y -24)
+    11.78 "normal"       tide line brightens 0.5 -> 1, "Normal tide" label in
+    12.04 "tide."        surge bracket draws 12.04 to 12.60, "Surge" label in
+    12.98 "Klein's"      Part A fades 12.98 to 13.40, Part B fades in 13.10 to 13.50, source line swaps, push starts
+    14.36 "somewhere"    dotted arrow draws Gulf -> island shore 14.36 to 15.30; dots march to the end
+    15.60 "Where"        split: A and B draw 15.60 to 16.30
+    16.40 "1900?"        chip WHICH WAY?
+    16.849               root fades to 0 by 17.249 (fade-through into A1-S6). DUR is one constant in the script.
+-->
+<template>
+<style>
+  #g-a1-9-surge-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ga19-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .ga19-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .ga19-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:19px; line-height:1.4; color:#c8d3e0; white-space:nowrap; }
+  .ga19-lab { font-family:Arial, sans-serif; font-weight:700; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .ga19-geo { font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:3px; fill:#93a3b2;
+    paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .ga19-land { fill:#15202b; stroke:#5a768f; stroke-width:2px; stroke-linejoin:round; }
+  /* chip A: wrapper enters/exits, inner drifts, bg scales in x, two pre-authored lines swap */
+  #g-a1-9-surge-chipa { position:absolute; left:0; top:140px; width:1920px; height:93px; }
+  #g-a1-9-surge-chipa-in { position:relative; width:780px; height:93px; margin:0 auto; }
+  #g-a1-9-surge-chipa-bg { position:absolute; left:0; top:0; width:780px; height:93px; box-sizing:border-box; border-radius:28px; }
+  .ga19-chipline { position:absolute; left:0; top:18px; width:780px; text-align:center; font-family:'Arial Black', Arial, sans-serif;
+    font-weight:900; font-size:52px; line-height:57px; color:#f2f5f8; white-space:nowrap; }
+  /* chip WHICH WAY? */
+  #g-a1-9-surge-chipw { position:absolute; left:0; top:120px; width:1920px; text-align:center; }
+  #g-a1-9-surge-chipw-in { display:inline-block; padding:18px 28px; border-radius:28px; font-family:'Arial Black', Arial, sans-serif;
+    font-weight:900; font-size:64px; line-height:70px; color:#f2f5f8; white-space:nowrap; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .ga19-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a1-9-surge-root" data-composition-id="g-a1-9-surge" data-width="1920" data-height="1080">
+
+  <!-- ===================== PART A: cross-section ===================== -->
+  <div id="g-a1-9-surge-parta" style="position:absolute; inset:0;">
+    <svg class="ga19-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="g-a1-9-surge-wfill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0b1016"/><stop offset="1" stop-color="#04070c"/>
+        </linearGradient>
+        <clipPath id="g-a1-9-surge-sclip" clipPathUnits="userSpaceOnUse"><rect x="96" y="740" width="1104" height="40"/></clipPath>
+      </defs>
+      <!-- sea below the datum -->
+      <rect x="96" y="760" width="1104" height="240" fill="url(#g-a1-9-surge-wfill)"/>
+      <!-- land: beach face to the knee, then the flat coast rising -->
+      <polygon points="1200,760 1230,740 1824,712 1824,1000 1200,1000" fill="#15202b"/>
+      <polyline points="1200,760 1230,740 1824,712" fill="none" stroke="#93a3b2" stroke-width="3" stroke-linejoin="round"/>
+      <!-- water surface on the datum, phase-shifted by GSAP (period 80 px), clipped to x 96..1200 -->
+      <g clip-path="url(#g-a1-9-surge-sclip)">
+        <path id="g-a1-9-surge-surf" fill="none" stroke="#5a768f" stroke-width="3" d="M16,760 q20,-3 40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0 t40,0"/>
+      </g>
+      <!-- normal tide line -->
+      <line id="g-a1-9-surge-tide" x1="96" y1="740" x2="1230" y2="740" stroke="#93a3b2" stroke-width="2" stroke-dasharray="10 8" opacity="0.5"/>
+
+      <!-- mound: base on the tide line (y 740), never on the datum -->
+      <g id="g-a1-9-surge-mound" class="ga19-hide">
+        <path id="g-a1-9-surge-moundf" fill="#7fb2e5" fill-opacity="0.75" d="M640,740 C760,738 820,610 900,610 C980,610 1040,700 1100,740 Z"/>
+        <path id="g-a1-9-surge-mounde" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-linecap="round" d="M640,740 C760,738 820,610 900,610 C980,610 1040,700 1100,740"/>
+      </g>
+
+      <!-- hurricane glyph, about 210 px, centred (330,380) -->
+      <g id="g-a1-9-surge-glyph" fill="none" stroke="#93a3b2" stroke-width="6" stroke-linecap="round">
+        <circle cx="330" cy="380" r="34"/>
+        <path d="M330,346 C330,290 270,270 225,290"/>
+        <path d="M330,414 C330,470 390,490 435,470"/>
+      </g>
+
+      <!-- wind arrows, x 420..640, pointing right (toward the land) -->
+      <g fill="none" stroke="#c8d3e0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <path id="g-a1-9-surge-w1" class="ga19-hide" d="M420,560 L637,560 M622,548 L640,560 L622,572"/>
+        <path id="g-a1-9-surge-w2" class="ga19-hide" d="M420,607 L637,607 M622,595 L640,607 L622,619"/>
+        <path id="g-a1-9-surge-w3" class="ga19-hide" d="M420,653 L637,653 M622,641 L640,653 L622,665"/>
+        <path id="g-a1-9-surge-w4" class="ga19-hide" d="M420,700 L637,700 M622,688 L640,700 L622,712"/>
+      </g>
+
+      <!-- surge bracket at the moved peak (x 1040) -->
+      <line id="g-a1-9-surge-brk" class="ga19-hide" x1="1040" y1="740" x2="1040" y2="610" stroke="#d8a13a" stroke-width="3"/>
+      <line id="g-a1-9-surge-tkb" class="ga19-hide" x1="1028" y1="740" x2="1052" y2="740" stroke="#d8a13a" stroke-width="3"/>
+      <line id="g-a1-9-surge-tkt" class="ga19-hide" x1="1028" y1="610" x2="1052" y2="610" stroke="#d8a13a" stroke-width="3"/>
+
+      <!-- labels -->
+      <text id="g-a1-9-surge-tidelab" class="ga19-lab ga19-hide" x="120" y="734" font-size="26" fill="#93a3b2">Normal tide</text>
+      <text id="g-a1-9-surge-surgelab" class="ga19-lab ga19-hide" x="1064" y="682" font-size="26" fill="#d8a13a">Surge</text>
+      <text class="ga19-lab" x="96" y="1015" font-size="19" fill="#93a3b2">Schematic</text>
+    </svg>
+
+    <div id="g-a1-9-surge-chipa" class="ga19-hide">
+      <div id="g-a1-9-surge-chipa-in">
+        <div id="g-a1-9-surge-chipa-bg" class="ga19-glass"></div>
+        <div id="g-a1-9-surge-l1" class="ga19-chipline">STORM WAVE (1891)</div>
+        <div id="g-a1-9-surge-l2" class="ga19-chipline ga19-hide" data-overlap-ok="label morph: the 1891 line leaves as the TODAY line enters, 0.2 s overlap">STORM SURGE (TODAY)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== PART B: map ===================== -->
+  <div id="g-a1-9-surge-partb" class="ga19-hide" style="position:absolute; inset:0;">
+    <svg class="ga19-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <mask id="g-a1-9-surge-mm" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+          <path id="g-a1-9-surge-mmp" fill="none" stroke="#fff" stroke-width="16" d="M820,1050 L820,975"/>
+        </mask>
+        <mask id="g-a1-9-surge-ma" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+          <path id="g-a1-9-surge-map" fill="none" stroke="#fff" stroke-width="16" d="M820,975 C930,955 1150,800 1215,712 C1240,660 1160,630 1100,628 C1060,626 1038,605 1038,560 L1038,447"/>
+        </mask>
+        <mask id="g-a1-9-surge-mb" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+          <path id="g-a1-9-surge-mbp" fill="none" stroke="#fff" stroke-width="16" d="M820,975 L820,803"/>
+        </mask>
+      </defs>
+      <!-- pushed group: the slow push s 19.75 -> 20.4 about screen centre -->
+      <g id="g-a1-9-surge-push">
+        <!-- plate units -> screen at s 19.75, c (463.5, 1205.8) -->
+        <g transform="matrix(19.75 0 0 19.75 -8194.125 -23274.55)">
+          <!--GEO: copied from g-a5-3-island-map (NE 10m, unsimplified)-->
+          <path class="ga19-land" vector-effect="non-scaling-stroke" d="M376.44,1275.21 L379.80,1274.85 L383.94,1275.09 L388.00,1274.81 L391.96,1273.81 L395.83,1271.95 L406.15,1265.11 L412.27,1260.67 L413.84,1260.04 L415.86,1259.82 L416.90,1259.13 L421.75,1254.85 L426.60,1249.30 L429.16,1247.87 L435.70,1242.65 L436.39,1241.32 L436.53,1239.90 L436.50,1238.14 L435.77,1233.79 L435.67,1231.56 L436.50,1229.23 L435.34,1226.54 L434.65,1225.68 L436.22,1226.52 L437.65,1226.72 L438.82,1227.28 L439.57,1229.23 L442.05,1227.79 L444.13,1226.18 L450.07,1219.23 L450.12,1218.94 L450.01,1218.09 L450.07,1217.81 L450.34,1217.75 L451.09,1217.89 L451.36,1217.81 L453.20,1216.44 L454.04,1215.56 L454.43,1214.26 L455.04,1214.26 L456.46,1215.43 L457.84,1214.60 L458.88,1212.62 L459.29,1210.36 L460.01,1208.32 L461.67,1207.81 L463.55,1208.32 L464.93,1209.30 L465.18,1208.86 L465.46,1208.70 L465.76,1208.65 L466.10,1208.53 L462.08,1206.68 L460.91,1206.46 L459.94,1205.73 L457.44,1201.42 L457.36,1201.65 L457.35,1201.97 L457.24,1202.02 L457.04,1202.02 L457.02,1202.29 L457.07,1202.48 L457.44,1202.85 L457.44,1203.62 L455.14,1203.53 L454.76,1202.14 L454.66,1200.42 L453.14,1199.29 L453.14,1198.58 L454.45,1198.15 L455.72,1197.50 L456.88,1197.97 L457.66,1196.67 L458.30,1195.81 L451.45,1193.99 L447.85,1191.04 L448.56,1188.26 L449.51,1187.25 L450.97,1185.61 L451.39,1184.39 L449.10,1182.33 L448.58,1180.40 L449.22,1178.82 L451.28,1177.24 L450.13,1176.02 L449.19,1175.31 L448.34,1175.10 L447.41,1174.90 L446.69,1174.18 L445.47,1173.90 L444.23,1173.30 L445.29,1169.46 L446.94,1169.60 L447.59,1170.88 L448.60,1172.52 L450.07,1172.97 L453.04,1174.17 L454.60,1175.24 L455.55,1175.71 L456.16,1178.09 L457.24,1179.28 L458.42,1179.03 L461.15,1178.19 L462.33,1176.39 L463.62,1172.81 L465.63,1169.46 L465.62,1167.55 L467.39,1166.11 L468.47,1167.18 L470.37,1167.05 L471.56,1166.69 L472.98,1166.09 L473.94,1166.09 L475.25,1166.68 L476.08,1168.34 L476.68,1169.30 L476.81,1170.96 L477.41,1172.75 L477.65,1175.02 L476.72,1179.79 L475.55,1183.84 L473.78,1187.19 L472.55,1189.08 L471.49,1190.86 L470.36,1191.08 L469.34,1190.55 L469.13,1191.19 L469.89,1192.32 L472.03,1192.90 L473.69,1192.46 L477.43,1191.38 L485.51,1189.95 L489.47,1187.67 L490.90,1188.31 L492.33,1189.65 L494.09,1190.33 L495.46,1189.31 L496.26,1188.55 L496.33,1190.00 L495.74,1191.88 L494.60,1192.72 L493.03,1192.93 L488.51,1192.68 L487.72,1192.91 L486.67,1193.60 L483.98,1196.46 L483.30,1196.92 L482.39,1197.36 L481.36,1197.69 L479.24,1198.04 L476.91,1199.29 L469.62,1206.51 L468.84,1207.90 L469.24,1208.91 L471.35,1209.30 L473.18,1208.45 L477.83,1202.85 L481.11,1200.43 L509.83,1187.30 L520.56,1183.21 L528.17,1178.91 L530.82,1177.69 L534.59,1176.52 L536.62,1176.30 L547.49,1176.52 L547.49,1100.00 L300.00,1100.00 L300.00,1275.21Z"/>
+          <path class="ga19-land" vector-effect="non-scaling-stroke" d="M466.71,1210.71 L465.57,1210.61 L465.49,1210.00 L465.13,1209.96 L464.93,1210.00 L464.83,1210.31 L464.83,1210.60 L464.72,1210.77 L464.26,1210.71 L464.26,1211.42 L465.81,1211.71 L466.05,1212.98 L465.48,1214.38 L464.59,1215.04 L464.42,1215.12 L462.42,1215.68 L461.99,1216.22 L461.24,1217.81 L457.45,1220.86 L457.13,1221.36 L456.41,1222.78 L455.12,1224.23 L452.90,1225.79 L446.94,1230.46 L442.68,1233.25 L440.80,1235.84 L439.51,1238.15 L440.25,1238.19 L443.16,1235.55 L454.75,1227.24 L459.75,1224.03 L474.80,1212.77Z"/>
+          <!--/GEO-->
+        </g>
+        <!-- dotted arrows (screen px at s 19.75), revealed by their masks; same colour, same weight, no labels -->
+        <g fill="none" stroke="#7fb2e5" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 12">
+          <path id="g-a1-9-surge-am" mask="url(#g-a1-9-surge-mm)" d="M820,1050 L820,975"/>
+          <path id="g-a1-9-surge-aa" mask="url(#g-a1-9-surge-ma)" d="M820,975 C930,955 1150,800 1215,712 C1240,660 1160,630 1100,628 C1060,626 1038,605 1038,560 L1038,447"/>
+          <path id="g-a1-9-surge-ab" mask="url(#g-a1-9-surge-mb)" d="M820,975 L820,803"/>
+        </g>
+        <polygon id="g-a1-9-surge-ha" class="ga19-hide" points="1038,429 1029,447 1047,447" fill="#7fb2e5"/>
+        <polygon id="g-a1-9-surge-hb" class="ga19-hide" points="820,785 811,803 829,803" fill="#7fb2e5"/>
+      </g>
+    </svg>
+
+    <!-- HUD labels: fixed screen px; anchor groups follow the push, inner groups drift -->
+    <svg class="ga19-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="g-a1-9-surge-ka-isl"><g id="g-a1-9-surge-kd-isl">
+        <text class="ga19-lab" x="1010" y="770" font-size="30" fill="#f2f5f8" text-anchor="middle" transform="rotate(-36.8 1010 760)">Galveston Island</text>
+      </g></g>
+      <g id="g-a1-9-surge-ka-bay"><g id="g-a1-9-surge-kd-bay">
+        <text class="ga19-geo" x="1090" y="360">Galveston Bay</text>
+      </g></g>
+      <g id="g-a1-9-surge-ka-main"><g id="g-a1-9-surge-kd-main">
+        <text class="ga19-geo" x="520" y="560">Mainland</text>
+      </g></g>
+      <g id="g-a1-9-surge-ka-gulf"><g id="g-a1-9-surge-kd-gulf">
+        <text class="ga19-geo" x="1265" y="952" text-anchor="middle">Gulf of Mexico</text>
+      </g></g>
+    </svg>
+
+    <div id="g-a1-9-surge-chipw" class="ga19-hide">
+      <div id="g-a1-9-surge-chipw-in" class="ga19-glass">WHICH WAY?</div>
+    </div>
+  </div>
+
+  <!-- source lines: A for the diagram, B for the map (swap at 12.98) -->
+  <div id="g-a1-9-surge-srca" class="ga19-src ga19-glass ga19-hide">Diagram: The Warning Hour · definition: National Hurricane Center</div>
+  <div id="g-a1-9-surge-srcb" class="ga19-src ga19-glass ga19-hide">basemap: Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a1-9-surge-";
+  const $ = function (n) { return document.getElementById("g-a1-9-surge-" + n); };
+  const DUR = 17.249;             /* A1-S5 wav length; if the host adds the gap, raise this one number */
+  const K = 20.4 / 19.75;         /* push factor about screen (960,540) */
+  const PUSH0 = 13.10, PUSHD = DUR - PUSH0;
+
+  /* dash lengths: ceil(len)+1 */
+  const ML = Math.ceil($("mmp").getTotalLength()) + 1;
+  const AL = Math.ceil($("map").getTotalLength()) + 1;
+  const BL = Math.ceil($("mbp").getTotalLength()) + 1;
+
+  const tl = gsap.timeline({ paused: true });
+
+  /* initial states (transforms only here, never in CSS) */
+  tl.set(P + "srca", { autoAlpha: 0, x: -24 }, 0);
+  tl.set(P + "srcb", { autoAlpha: 0 }, 0);
+  tl.set(P + "chipa", { autoAlpha: 0, y: 24, scale: 0.94 }, 0);
+  tl.set(P + "chipa-bg", { scaleX: 0.88, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "l2", { autoAlpha: 0, y: 20 }, 0);
+  tl.set(P + "mound", { autoAlpha: 0, scaleY: 0, svgOrigin: "870 740" }, 0);
+  tl.set(P + "w1", { autoAlpha: 0, scaleX: 0, svgOrigin: "420 560" }, 0);
+  tl.set(P + "w2", { autoAlpha: 0, scaleX: 0, svgOrigin: "420 607" }, 0);
+  tl.set(P + "w3", { autoAlpha: 0, scaleX: 0, svgOrigin: "420 653" }, 0);
+  tl.set(P + "w4", { autoAlpha: 0, scaleX: 0, svgOrigin: "420 700" }, 0);
+  tl.set(P + "tide", { opacity: 0.5 }, 0);
+  tl.set(P + "tidelab", { autoAlpha: 0 }, 0);
+  tl.set(P + "brk", { autoAlpha: 0, scaleY: 0, svgOrigin: "1040 740" }, 0);
+  tl.set(P + "tkb", { autoAlpha: 0 }, 0);
+  tl.set(P + "tkt", { autoAlpha: 0, scaleX: 0, svgOrigin: "1040 610" }, 0);
+  tl.set(P + "surgelab", { autoAlpha: 0 }, 0);
+  tl.set(P + "partb", { autoAlpha: 0 }, 0);
+  tl.set(P + "mmp", { strokeDasharray: ML + " " + ML, strokeDashoffset: ML }, 0);
+  tl.set(P + "map", { strokeDasharray: AL + " " + AL, strokeDashoffset: AL }, 0);
+  tl.set(P + "mbp", { strokeDasharray: BL + " " + BL, strokeDashoffset: BL }, 0);
+  tl.set(P + "ha", { autoAlpha: 0, scale: 0, svgOrigin: "1038 440" }, 0);
+  tl.set(P + "hb", { autoAlpha: 0, scale: 0, svgOrigin: "820 796" }, 0);
+  tl.set(P + "chipw", { autoAlpha: 0, y: 24, scale: 0.94 }, 0);
+
+  /* PLATE @0.00 ("A"): plate on from frame 0; source line A in; glyph turns (counter-clockwise), water phase runs */
+  tl.to(P + "srca", { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0);
+  tl.to(P + "glyph", { rotation: -540, svgOrigin: "330 380", duration: 13.4, ease: "none" }, 0);
+  tl.to(P + "surf", { x: -80, duration: 2, ease: "none", repeat: 6 }, 0);
+
+  /* STORM WAVE @0.18 ("storm"): chip in, drifts until it leaves */
+  tl.to(P + "chipa", { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.18);
+  tl.to(P + "chipa-in", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.63);
+
+  /* SURGE @4.22 ("storm" of "storm surge"): 1891 out, TODAY in, box widens; done 4.62 ("surge.") */
+  tl.to(P + "l1", { autoAlpha: 0, y: -20, duration: 0.3, ease: "power2.inOut" }, 4.22);
+  tl.to(P + "chipa-bg", { scaleX: 1, duration: 0.4, ease: "power2.inOut" }, 4.22);
+  tl.to(P + "l2", { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.inOut" }, 4.32);
+
+  /* MOUND @5.94 ("mound"): rises from the tide line */
+  tl.set(P + "mound", { autoAlpha: 1 }, 5.94);
+  tl.to(P + "mound", { scaleY: 1, svgOrigin: "870 740", duration: 0.6, ease: "power2.out" }, 5.94);
+
+  /* WIND @7.36 ("hurricane's"): arrows draw in, 0.12 s apart */
+  tl.to(P + "w1", { autoAlpha: 1, scaleX: 1, svgOrigin: "420 560", duration: 0.4, ease: "power2.out" }, 7.36);
+  tl.to(P + "w2", { autoAlpha: 1, scaleX: 1, svgOrigin: "420 607", duration: 0.4, ease: "power2.out" }, 7.48);
+  tl.to(P + "w3", { autoAlpha: 1, scaleX: 1, svgOrigin: "420 653", duration: 0.4, ease: "power2.out" }, 7.60);
+  tl.to(P + "w4", { autoAlpha: 1, scaleX: 1, svgOrigin: "420 700", duration: 0.4, ease: "power2.out" }, 7.72);
+
+  /* ONTO LAND @8.22 ("drives") to 9.46 ("land."): mound travels +140, front stretches onto the slope (x 1290) */
+  tl.to(P + "mound", { x: 140, duration: 1.24, ease: "power1.inOut" }, 8.22);
+  tl.to(P + "moundf", { attr: { d: "M640,740 C760,738 820,610 900,610 C990,610 1060,712 1150,737 Z" }, duration: 1.24, ease: "power1.inOut" }, 8.22);
+  tl.to(P + "mounde", { attr: { d: "M640,740 C760,738 820,610 900,610 C990,610 1060,712 1150,737" }, duration: 1.24, ease: "power1.inOut" }, 8.22);
+
+  /* 10.26 ("The"): chip out */
+  tl.to(P + "chipa", { autoAlpha: 0, y: -24, duration: 0.4, ease: "power2.in" }, 10.26);
+
+  /* TIDE @11.78 ("normal"): tide line brightens, label in */
+  tl.to(P + "tide", { opacity: 1, duration: 0.3, ease: "power2.out" }, 11.78);
+  tl.fromTo(P + "tidelab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 11.78);
+
+  /* 12.04 ("tide."): surge bracket draws up to the peak, then "Surge" */
+  tl.set([P + "brk", P + "tkb"], { autoAlpha: 1 }, 12.04);
+  tl.to(P + "brk", { scaleY: 1, svgOrigin: "1040 740", duration: 0.56, ease: "power2.out" }, 12.04);
+  tl.to(P + "tkt", { autoAlpha: 1, scaleX: 1, svgOrigin: "1040 610", duration: 0.15, ease: "power2.out" }, 12.50);
+  tl.fromTo(P + "surgelab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 12.30);
+
+  /* MAP @12.98 ("Klein's"): Part A out 12.98 to 13.40, Part B in 13.10 to 13.50, source line swaps */
+  tl.to([P + "parta", P + "srca"], { autoAlpha: 0, duration: 0.42, ease: "power1.inOut" }, 12.98);
+  tl.to([P + "partb", P + "srcb"], { autoAlpha: 1, duration: 0.4, ease: "power1.inOut" }, PUSH0);
+
+  /* slow push s 19.75 -> 20.4; label anchors follow by (anchor - centre) * (K - 1) */
+  tl.to(P + "push", { scale: K, svgOrigin: "960 540", duration: PUSHD, ease: "none" }, PUSH0);
+  [["isl", 1010, 760], ["bay", 1190, 353], ["main", 570, 553], ["gulf", 1265, 945]].forEach(function (a) {
+    tl.to(P + "ka-" + a[0], { x: (a[1] - 960) * (K - 1), y: (a[2] - 540) * (K - 1), duration: PUSHD, ease: "none" }, PUSH0);
+    tl.to(P + "kd-" + a[0], { y: -4, duration: (DUR - 13.50) / 2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 13.50);
+  });
+
+  /* SOMEWHERE @14.36 ("somewhere"): dotted arrow Gulf -> island shore; dots march to the end */
+  tl.to(P + "mmp", { strokeDashoffset: 0, duration: 0.94, ease: "power1.inOut" }, 14.36);
+  tl.to([P + "am", P + "aa", P + "ab"], { strokeDashoffset: -56, duration: DUR - 14.36, ease: "none" }, 14.36);
+
+  /* SPLIT @15.60 ("Where"): A round the east end into the bay, B straight across the island; heads land */
+  tl.to(P + "map", { strokeDashoffset: 0, duration: 0.70, ease: "power1.inOut" }, 15.60);
+  tl.to(P + "mbp", { strokeDashoffset: 0, duration: 0.70, ease: "power1.inOut" }, 15.60);
+  tl.to(P + "ha", { autoAlpha: 1, scale: 1, svgOrigin: "1038 440", duration: 0.2, ease: "back.out(2)" }, 16.20);
+  tl.to(P + "hb", { autoAlpha: 1, scale: 1, svgOrigin: "820 796", duration: 0.2, ease: "back.out(2)" }, 16.20);
+
+  /* WHICH WAY @16.40 ("1900?") */
+  tl.to(P + "chipw", { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 16.40);
+
+  /* exit: fade-through into A1-S6, root to 0 over the last 0.4 s */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, DUR - 0.4);
+
+  window.__timelines["g-a1-9-surge"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
