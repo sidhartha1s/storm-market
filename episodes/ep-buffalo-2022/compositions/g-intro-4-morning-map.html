@@ -245,7 +245,7 @@ window.__timelines = window.__timelines || {};
 
   /* "driving" @12.46: ban chip in, clock 8:39 -> 9:30 (minute +306, hour +25.5), source swap */
   tl.fromTo($("ban"), { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 12.46);
-  tl.fromTo($("mh"), { rotation: 234 }, { rotation: 540, duration: 0.6, ease: "power2.out" }, 12.46);
+  tl.fromTo($("mh"), { rotation: 234, svgOrigin: "28 28" }, { rotation: 540, svgOrigin: "28 28", duration: 0.6, ease: "power2.out" }, 12.46);
   tl.fromTo($("hh"), { rotation: 259.5 }, { rotation: 285, duration: 0.6, ease: "power2.out" }, 12.46);
   tl.to($("src1"), { autoAlpha: 0, y: -8, duration: 0.2, ease: "power1.in" }, 12.46);
   tl.fromTo($("src2"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out" }, 12.66);
