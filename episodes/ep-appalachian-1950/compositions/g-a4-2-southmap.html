@@ -118,8 +118,9 @@
       <g clip-path="url(#a42-frostclip)">
         <g id="a42-frost" class="a42-hide"><use href="#a42-ga" fill="url(#a42-frostpat)"/><use href="#a42-sc" fill="url(#a42-frostpat)"/></g>
       </g>
-      <!-- frost glints: 3 px dots (r 125 map units at P0), 11 in GA and 9 in SC, points tested inside the outlines by script -->
-      <g id="a42-glints" fill="#f2f5f8">
+      <!-- frost glints: 3 px dots (r 125 map units at P0), 11 in GA and 9 in SC (each checked against the TIGER rings),
+           clipped to the two states as a guard -->
+      <g id="a42-glints" fill="#f2f5f8" clip-path="url(#a42-gasc)">
         <circle class="a42-hide" cx="54240" cy="79410" r="125"/><circle class="a42-hide" cx="57480" cy="85450" r="125"/>
         <circle class="a42-hide" cx="57920" cy="80860" r="125"/><circle class="a42-hide" cx="49450" cy="71170" r="125"/>
         <circle class="a42-hide" cx="54030" cy="86740" r="125"/><circle class="a42-hide" cx="54330" cy="72110" r="125"/>
