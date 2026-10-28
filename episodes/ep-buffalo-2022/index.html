@@ -4,7 +4,8 @@
      CADENCE: 0.30 s seams in the hook (h1-s1, h1-s2). Elsewhere a segment that ends on a graphic waits for the comp's land time
      (gap = comp end - wav end, clamped 0.30 to 0.79 s; lint caps a narration gap at 0.8 s), else 0.50 s.
      Act seams: 0.7 s chapter blackout from the last full-frame comp end (or wav end + 0.5 over footage); the next act's voice
-     starts on the blackout end. CTA hinge A3-S12 -> A4-S1 with 1.0 s dips (config channel.cta dip_in / dip_out).
+     starts on the blackout end. CTA hinge A2-S10 -> A3-S1 with 1.0 s dips (config channel.cta dip_in / dip_out); moved from
+     A3-S12 -> A4-S1 by the orchestrator 28 Oct 26 to sit inside channel.cta.window (A3-S12 -> A4-S1 is now a plain seam, bo-a4).
      GROUND PLATES (gp-*): two comps are shorter than their segment + 0.30 s seam and the next beat is also a comp, so a plain
      ground section (the root colour) covers 0.30 to 0.40 s. Where the next beat is footage, the footage starts early instead.
      STAND-INS / NOT BUILT: Paul clips (ins-paul-1 hook line, ins-paul-4 A3-S12 tease) are not generated: the Christmas start
@@ -32,7 +33,7 @@
   </style>
 </head>
 <body>
-<div id="root" data-composition-id="ep-buffalo-2022" data-start="0" data-width="1920" data-height="1080" data-duration="1065.987" data-fps="30">
+<div id="root" data-composition-id="ep-buffalo-2022" data-start="0" data-width="1920" data-height="1080" data-duration="1065.823" data-fps="30">
 
   <!-- ============ NARRATION (ffprobe wav durations, tempo 0.94) ============ -->
   <!-- h1-s1 is Paul's on-camera line; until ins-paul-1 exists the TTS take stands in -->
