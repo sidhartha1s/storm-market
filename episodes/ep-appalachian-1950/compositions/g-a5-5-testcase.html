@@ -1,0 +1,266 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a5-5-testcase (A5-S5 + A5-S6, deep): two-layer slab of atmosphere over the eastern US, starting conditions drop in,
+  upper layer lifts ("TWO-LEVEL MODEL"), bar "TEST CASE #1" runs and stalls at 0.68 (red, blinks), quote chip
+  "NOT AS SUCCESSFUL AS HOPED" (Kistler et al., AMS 2004), slab clears, red popfig "1954" / "JOINT NUMERICAL WEATHER PREDICTION UNIT".
+  Brief: briefs/a5/g-a5-5-testcase.md. Full-frame designed scene, track 2, ground (radial gradient) on from frame 0.
+  Host: data-start = A5-S5 audio start, data-duration = SEG.a5s6 + 18.40 (32.98 with the assumed 0.40 s gap).
+  SEG = { a5s5: 0.000, a5s6: 14.580 } ASSUMED (0.40 s gap after a5-s5's 14.18 s); when index.html exists, replace 14.58
+  with the real data-start difference: every A5-S6 position below is written as S6 + word time.
+  GEOMETRY (computed by script from the brief's table, 28 Oct 26, never by eye):
+    local units u = (mapX - 3841*(-79+97.576)) * 0.0055, v = (mapY - (-5585*(38.5-46.6213))) * 0.0055 (box centre lon -79, lat 38.5);
+    static iso group transform matrix(1,0,-0.55,0.42,920,640): screen X = u - 0.55 v + 920, Y = 0.42 v + 640.
+    Plane local x -390..390, y -292..292 -> screen corners NW 690.6,517.4  NE 1470.6,517.4  SE 1149.4,762.6  SW 369.4,762.6
+    (on-screen 1101 x 245 px; right corner x 1470.6 < 1600).
+    Outline: library/inhouse/master-map-us-canada.html #mastermap-us (Natural Earth 50m admin-1), cut to runs inside
+    lon -92..-66, lat 35.1..48, thinned to >= 4 local units, clipped by #a55-clip (local x -274.63..274.63, y -291.82..104.44);
+    lands on screen x 587.9..1355.1, y 517.4..683.9. The on-disk basemap stops at lat 35.0 N, so the plane shows the coast
+    from Cape Hatteras (939,682) to Maine (1282,557); Florida is NOT on disk (reported to the orchestrator).
+  SCHEMATIC, NOT TO SCALE: layer heights and the lift distance are illustration.
+-->
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-a5-5-testcase-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; font-family:Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .a55-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  /* scan line: 2 px core at 0.25 plus a faint 46 px trail so the cleared ground between the slab exit and "1954" still carries ink */
+  #a55-scan { position:absolute; left:0; top:0; width:1920px; height:48px; overflow:visible; }
+  .a55-in { opacity:0; visibility:hidden; }
+  .a55-dot { fill:#dfe7ee; }
+  .a55-tick { stroke:#93a3b2; stroke-width:2.4; stroke-linecap:round; }
+  .a55-guide { stroke:#4a5560; stroke-width:1; stroke-dasharray:6 5; opacity:0; visibility:hidden; }
+  .a55-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:14px; }
+  #a55-chip { position:absolute; left:110px; top:90px; padding:10px 18px; white-space:nowrap;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:62px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #a55-bar { position:absolute; left:460px; top:840px; width:1000px; height:78px; opacity:0; visibility:hidden; }
+  #a55-barlab { position:absolute; left:0; top:0; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:46px; color:#f2f5f8; }
+  #a55-track { position:absolute; left:0; top:62px; width:1000px; height:16px; border-radius:8px; background:rgba(255,255,255,.12); overflow:hidden; }
+  #a55-fill { position:absolute; left:0; top:0; width:1000px; height:16px; border-radius:8px; background:#d8a13a; }
+  #a55-q { position:absolute; left:96px; right:96px; top:720px; height:110px; text-align:center; }
+  #a55-qchip { display:table; margin:0 auto; padding:10px 18px; white-space:nowrap;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:48px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #a55-qsrc { display:table; margin:10px auto 0; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:20px; line-height:24px; color:#c8d3e0;
+    text-shadow:0 2px 8px rgba(0,0,0,.9); opacity:0; visibility:hidden; }
+  /* popfig: timed wrapper (exit) > float layer > two lines; block top 360, centred */
+  #a55-pf { position:absolute; left:96px; width:1728px; top:360px; height:200px; text-align:center; white-space:nowrap; transform-origin:50% 50%; opacity:0; visibility:hidden; }
+  #a55-pffloat { position:absolute; inset:0; }
+  .a55-pf-big { position:absolute; left:0; right:0; top:0; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:150px; color:#d0121f; letter-spacing:0.04em;
+    transform-origin:50% 50%; opacity:0; visibility:hidden;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  .a55-pf-sub { position:absolute; left:0; right:0; top:162px; font-family:Arial, sans-serif; font-weight:700; font-size:32px; line-height:38px; color:#e8e3d8; letter-spacing:0.06em;
+    opacity:0; visibility:hidden; text-shadow:0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+</style>
+<div id="g-a5-5-testcase-root" data-composition-id="g-a5-5-testcase" data-width="1920" data-height="1080">
+
+  <svg id="a55-scan" viewBox="0 0 1920 48">
+    <defs>
+      <linearGradient id="a55-scangrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#7fb2e5" stop-opacity="0"/>
+        <stop offset="1" stop-color="#7fb2e5" stop-opacity="0.07"/>
+      </linearGradient>
+    </defs>
+    <rect x="0" y="0" width="1920" height="46" fill="url(#a55-scangrad)"/>
+    <rect x="0" y="46" width="1920" height="2" fill="#7fb2e5" fill-opacity="0.25"/>
+  </svg>
+
+  <svg class="a55-svg" viewBox="0 0 1920 1080">
+    <defs>
+      <clipPath id="a55-clip"><rect x="-274.63" y="-291.82" width="549.26" height="396.26"/></clipPath>
+    </defs>
+    <!-- slab: the one mover for drift and exit (svgOrigin 920 640); children carry no static transform except the static iso groups -->
+    <g id="a55-slab">
+      <g id="a55-lower">
+        <!-- side faces (screen px): 14 px below the front (SW-SE) and right (SE-NE) edges -->
+        <polygon points="369.4,762.6 1149.4,762.6 1149.4,776.6 369.4,776.6" fill="#0b1016" stroke="#2a3644" stroke-width="1"/>
+        <polygon points="1149.4,762.6 1470.6,517.4 1470.6,531.4 1149.4,776.6" fill="#04070a" stroke="#2a3644" stroke-width="1"/>
+        <g transform="matrix(1,0,-0.55,0.42,920,640)">
+          <rect x="-390" y="-292" width="780" height="584" fill="#15202b" fill-opacity="0.85"/>
+          <path id="a55-us" clip-path="url(#a55-clip)" fill="none" stroke="#2a3644" stroke-width="1.2" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M-194,108L-140,108L-194,108M-226,77L-228,83L-231,87L-232,92L-235,98L-235,104L-239,108M-236,61L-234,65L-236,70L-239,74L-226,77M152,-108L152,-93L151,-87L142,-86L138,-85L130,-85L126,-83L114,-77L117,-84L117,-109L131,-109L152,-108M84,1L70,1L68,-38L71,-41L76,-40L72,-35L72,-30L76,-24L76,-18L78,-14L81,-10L82,-4L84,0L84,1M-265,-59L-268,-63L-269,-65M-259,-154L-256,-148L-257,-144L-256,-135L-253,-130L-247,-126L-245,-121L-241,-118L-237,-112L-236,-107L-237,-102L-240,-96L-245,-92L-252,-90L-255,-85L-254,-81L-253,-77L-256,-69L-261,-65L-262,-58L-265,-59M-262,-58L-262,-63L-258,-66L-254,-74L-253,-79L-255,-83L-255,-88L-248,-91L-242,-94L-239,-99L-236,-104L-236,-109L-240,-114L-243,-119L-246,-123L-186,-123L-186,-114L-184,-110L-182,-103L-180,-99L-180,-27L-182,-21L-180,-13L-180,-7L-182,-1L-186,2L-187,6L-189,11L-191,15L-192,19L-193,25L-192,30L-198,33L-200,42L-209,40L-214,43L-217,45L-222,40L-221,35L-222,28L-224,23L-229,19L-232,16L-236,13L-239,10L-240,6L-239,1L-235,-10L-242,-14L-246,-15L-248,-21L-252,-27L-258,-34L-262,-38L-264,-49L-263,-58L-262,-58M-192,19L-191,15L-189,11L-189,7L-186,2L-182,-1L-181,-6L-180,-10L-182,-19L-182,-24L-180,-99L-174,-96L-166,-100L-122,-100L-123,-18L-123,-14L-123,-10L-130,-6L-135,-7L-136,-3L-138,0L-140,5L-145,9L-147,15L-152,14L-155,10L-158,13L-159,18L-164,17L-168,17L-171,21L-177,18L-181,17L-185,19L-189,22L-192,19M-215,45L-212,40L-203,43L-201,36L-194,32L-193,27L-192,22L-188,18L-183,19L-179,17L-173,20L-168,17L-164,17L-161,19L-158,14L-156,11L-152,14L-148,16L-146,13L-143,7L-140,2L-136,-1L-136,-6L-132,-7L-125,-8L-123,-12L-124,-17L-121,-19L-116,-19L-112,-15L-108,-9L-102,-7L-96,-6L-92,-4L-85,-7L-81,-4L-76,2L-76,7L-74,16L-72,21L-69,25L-66,29L-71,37L-78,42L-81,47L-85,51L-93,56L-100,59L-159,56L-187,57L-192,56L-191,61L-221,61L-218,58L-214,52L-215,45M152,-108L132,-109L117,-109L121,-131L162,-129L166,-132L170,-134L174,-130L177,-127L173,-124L170,-121L169,-117L175,-115L177,-109L179,-101L184,-99L190,-102L188,-107L185,-110L191,-106L192,-99L182,-96L176,-93L176,-99L170,-94L165,-92L165,-96L162,-101L161,-108L152,-108M174,-87L176,-91L179,-88L174,-87M189,-84L189,-89L191,-85L189,-84M42,-9L41,-16L36,-17L32,-19L31,-24L27,-26L26,-30L24,-34L19,-36L14,-35L11,-32L5,-33L1,-29L-6,-25L-10,-22L-10,-38L68,-38L70,1L84,1L81,8L77,15L71,15L67,16L66,11L66,6L59,4L57,0L59,-4L63,-3L60,-6L57,-10L58,-14L61,-18L60,-25L66,-27L66,-31L62,-33L60,-28L56,-25L51,-24L54,-19L53,-14L52,-7L53,-1L55,4L51,2L49,-3L50,1L55,7L56,11L51,8L45,3L41,2L38,-1L41,-6L42,-12L42,-9M79,14L82,6L80,14L79,14M210,-270L215,-267L224,-271L230,-270L236,-264L237,-229L237,-225L237,-220L243,-218L244,-211L246,-205L251,-205L252,-199L254,-194L249,-190L244,-189L240,-186L234,-183L230,-184L224,-183L222,-178L217,-179L216,-185L212,-182L210,-174L206,-169L202,-168L198,-165L195,-163L189,-164L184,-159L179,-149L177,-142L173,-146L170,-150L167,-209L171,-208L173,-212L175,-217L181,-222L184,-227L184,-232L185,-238L189,-244L190,-252L206,-275L210,-274L210,-270M227,-179L225,-182L228,-179L227,-179M-72,-139L-74,-130L-77,-125L-78,-129L-80,-126L-82,-120L-86,-117L-88,-112L-90,-107L-94,-100L-122,-98L-166,-100L-162,-103L-156,-114L-154,-120L-153,-127L-153,-135L-155,-145L-159,-158L-157,-163L-159,-171L-154,-179L-153,-186L-153,-190L-150,-193L-147,-199L-140,-206L-140,-199L-140,-195L-138,-199L-138,-194L-135,-201L-135,-207L-131,-211L-126,-212L-129,-215L-126,-222L-122,-224L-115,-220L-111,-219L-108,-216L-104,-215L-95,-210L-93,-206L-91,-203L-94,-199L-91,-196L-91,-190L-91,-180L-94,-177L-97,-171L-102,-169L-104,-165L-104,-161L-100,-157L-97,-160L-92,-165L-86,-170L-82,-170L-79,-167L-73,-141L-72,-139M-183,-203L-183,-210L-187,-211L-186,-217L-187,-222L-193,-225L-193,-229L-201,-231L-208,-232L-214,-235L-235,-241L-237,-246L-241,-249L-236,-250L-229,-255L-222,-257L-215,-261L-210,-262L-208,-266L-204,-268L-202,-265L-200,-260L-200,-255L-195,-260L-185,-258L-180,-251L-177,-246L-171,-246L-166,-245L-161,-244L-156,-248L-151,-251L-144,-252L-140,-252L-130,-254L-127,-249L-125,-246L-120,-245L-114,-246L-110,-242L-111,-237L-107,-235L-103,-230L-115,-231L-119,-232L-121,-226L-126,-230L-132,-233L-137,-234L-142,-230L-146,-229L-150,-229L-155,-225L-159,-223L-161,-219L-162,-223L-160,-227L-164,-226L-167,-222L-168,-227L-171,-222L-174,-218L-177,-211L-182,-205L-183,-203M-210,-290L-215,-287L-203,-297L-210,-290M-191,-273L-195,-268L-198,-263L-202,-265L-198,-273L-192,-276L-188,-276L-191,-273M-137,-223L-138,-219L-138,-223L-137,-223M-97,-233L-95,-230L-102,-229L-99,-232L-97,-233M-109,-241L-111,-245L-108,-241L-109,-241M-264,-294L-258,-295L-254,-298M-249,-296L-245,-295L-239,-295L-234,-295L-230,-292L-223,-292L-229,-289L-232,-287L-245,-282L-250,-279L-262,-268L-267,-263L-276,-256L-279,-251M-280,-183L-276,-181L-273,-178L-269,-173L-264,-171L-260,-167L-259,-163L-259,-154M-226,77L-240,77L-237,71L-234,68L-236,61M-269,-65L-267,-62L-263,-58L-264,-53L-263,-41L-258,-34L-252,-27L-248,-21L-246,-15L-242,-14L-237,-12L-239,1L-240,6L-239,10L-236,13L-232,16L-229,19L-224,23L-222,28L-221,33L-222,37L-219,45L-215,46L-214,52L-216,58L-220,59L-223,61L-223,65L-225,69L-225,74L-226,77M-239,108L-222,108L-217,108L-239,108M-87,107L-112,108L-112,101L-107,99L-106,95L-103,92L-95,90L-91,87L-87,84L-83,82L-81,78L-76,75L-71,74L-67,72L-61,67L-57,60L64,60L65,65L67,73L60,68L60,72L55,73L52,76L48,72L48,78L53,78L58,78L62,78L62,86L64,80L68,80L69,84L64,92L61,96L55,95L52,92L48,94L41,91L51,97L51,103L47,108L41,103L43,107L-39,108L-41,104L-72,101L-77,104L-87,107M66,60L68,70L73,82L69,74L67,68L66,60M70,101L74,90L74,84L75,90L74,99L70,101M64,104L68,102L64,104M160,-206L165,-208L170,-152L171,-148L173,-143L174,-136L170,-134L166,-132L162,-129L138,-130L136,-135L138,-139L140,-156L142,-160L145,-168L147,-173L147,-178L152,-180L156,-185L156,-193L158,-197L160,-206M83,-46L90,-51L85,-59L82,-63L81,-69L83,-72L82,-77L86,-82L88,-86L108,-77L105,-69L102,-66L100,-62L105,-59L105,-48L104,-40L104,-46L102,-38L99,-32L97,-27L93,-24L89,-15L87,-20L82,-22L77,-26L73,-30L76,-40L81,-42L83,-46M100,-32L103,-38L100,-32M-1,-141L-1,-147L7,-149L11,-150L17,-150L25,-149L29,-147L33,-147L41,-147L45,-148L51,-152L55,-155L59,-158L58,-164L62,-169L57,-170L58,-175L67,-181L76,-193L81,-197L85,-199L119,-200L119,-195L119,-187L120,-183L120,-177L118,-171L119,-163L118,-156L121,-132L116,-110L115,-86L111,-80L110,-73L106,-69L108,-74L108,-78L107,-83L108,-77L91,-88L86,-91L83,-95L83,-100L79,-104L77,-107L-16,-108L-16,-116L-11,-120L-4,-125L0,-130L3,-133L2,-138L-1,-141M136,-74L142,-78L150,-79L141,-74L136,-71L123,-66L114,-65L108,-64L106,-68L111,-72L115,-74L119,-75L124,-75L135,-77L140,-81L136,-74M101,-62L104,-66L101,-62M-32,-107L-32,-66L-34,-60L-40,-38L-41,-33L-48,-27L-53,-27L-56,-24L-59,-18L-59,-14L-63,-16L-68,-8L-67,-4L-70,1L-74,3L-79,-1L-82,-6L-89,-4L-94,-6L-99,-5L-105,-8L-110,-11L-113,-17L-118,-18L-123,-18L-122,-98L-94,-100L-90,-97L-86,-95L-82,-94L-85,-91L-81,-91L-74,-89L-66,-92L-58,-92L-52,-97L-47,-100L-39,-104L-32,-107M-16,-116L-16,-108L77,-107L79,-104L82,-101L83,-95L86,-91L90,-90L86,-82L84,-78L83,-72L80,-67L82,-63L85,-59L90,-51L84,-47L81,-43L76,-40L71,-41L68,-38L-32,-38L-32,-107L-28,-109L-16,-116M151,-89L152,-108L161,-108L162,-101L160,-96L160,-91L153,-87L151,-89M163,-91L163,-96L164,-92L163,-91M-87,107L-80,105L-73,102L-44,103L-39,108L-87,107M-112,108L-194,107L-239,107L-235,104L-235,98L-232,92L-231,87L-228,83L-226,79L-225,74L-225,69L-223,65L-222,61L-191,61L-192,56L-187,56L-159,56L-100,59L-62,58L-56,58L-58,66L-64,73L-70,73L-73,76L-78,76L-82,78L-84,83L-91,87L-95,90L-100,90L-106,95L-107,99L-111,100L-112,108M38,-14L42,-12L40,-7L37,-3L36,3L40,4L44,9L50,11L53,15L58,19L57,24L53,25L46,17L44,12L40,10L44,14L48,21L52,26L57,29L58,33L55,37L47,31L50,36L55,40L57,44L51,42L42,36L37,36L42,38L49,41L53,47L58,48L63,49L66,60L-56,59L-61,58L-99,58L-93,56L-88,53L-82,49L-79,45L-71,37L-63,29L-61,36L-56,39L-51,37L-47,38L-40,37L-36,34L-32,32L-28,30L-27,25L-21,14L-19,10L-17,5L-14,-1L-8,1L-1,-9L5,-13L9,-15L12,-20L14,-28L25,-20L27,-26L31,-24L32,-19L36,-17L38,-14M71,15L77,15L72,27L70,30L66,37L65,41L64,34L66,27L68,23L71,17L71,15M80,14L77,19L79,14L80,14M119,-200L158,-200L156,-193L157,-188L155,-183L148,-179L147,-173L145,-168L143,-163L140,-156L138,-139L136,-135L138,-130L121,-131L122,-155L119,-163L118,-171L120,-177L120,-183L119,-187L119,-193L119,-198L119,-200M-246,-123L-249,-128L-255,-132L-257,-141L-256,-147L-258,-150L-259,-163L-260,-167L-264,-171L-269,-173L-273,-178L-276,-181L-280,-183M-279,-251L-274,-252L-264,-254L-258,-258L-252,-260L-249,-258L-251,-254L-252,-249L-248,-251L-244,-249L-240,-248L-235,-241L-214,-235L-208,-232L-203,-231L-193,-229L-193,-225L-188,-223L-186,-218L-187,-213L-183,-211L-184,-207L-182,-203L-187,-198L-190,-190L-189,-186L-186,-189L-183,-193L-179,-196L-176,-193L-179,-185L-180,-178L-182,-173L-184,-168L-184,-160L-185,-157L-186,-152L-188,-147L-188,-142L-187,-138L-186,-134L-186,-123L-246,-123M-245,-257L-249,-254L-245,-257M-169,-209L-170,-204L-173,-199L-175,-195L-177,-198L-174,-204L-171,-208L-169,-209M-66,29L-69,25L-73,17L-76,12L-76,7L-76,2L-72,2L-70,-2L-68,-8L-65,-14L-61,-12L-59,-18L-57,-22L-53,-27L-48,-27L-41,-33L-40,-38L-34,-57L-35,-63L-32,-38L-10,-38L-10,-22L-6,-25L-2,-30L4,-33L9,-32L13,-35L17,-36L22,-34L26,-30L27,-26L25,-20L14,-29L12,-20L9,-15L5,-13L0,-10L-5,1L-11,0L-15,3L-17,7L-21,14L-26,23L-26,27L-29,32L-36,34L-40,37L-46,38L-50,36L-55,40L-61,36L-63,32L-66,29"/>
+          <rect id="a55-loweredge" x="-390" y="-292" width="780" height="584" fill="none" stroke="#4a5560" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+        </g>
+        <!-- starting conditions (undated; no Minnesota ripple, no swirl): 36 station dots + 12 wind ticks, jittered grid
+             (seed 1950) inside the lower plane, screen px from the projection above -->
+        <g id="a55-inputs">
+          <circle class="a55-in a55-dot" cx="782.2" cy="547.3" r="5"/>
+          <circle class="a55-in a55-dot" cx="838.1" cy="547.3" r="5"/>
+          <circle class="a55-in a55-dot" cx="922.4" cy="541.0" r="5"/>
+          <circle class="a55-in a55-dot" cx="995.5" cy="529.6" r="5"/>
+          <circle class="a55-in a55-dot" cx="1047.6" cy="529.9" r="5"/>
+          <circle class="a55-in a55-dot" cx="1115.4" cy="542.4" r="5"/>
+          <circle class="a55-in a55-dot" cx="1164.3" cy="539.0" r="5"/>
+          <circle class="a55-in a55-dot" cx="1238.0" cy="531.6" r="5"/>
+          <circle class="a55-in a55-dot" cx="1275.4" cy="546.3" r="5"/>
+          <line class="a55-in a55-tick" x1="804.7" y1="567.2" x2="821.1" y2="559.7"/>
+          <line class="a55-in a55-tick" x1="947.7" y1="555.9" x2="964.2" y2="548.6"/>
+          <line class="a55-in a55-tick" x1="1062.1" y1="567.6" x2="1079.7" y2="563.5"/>
+          <line class="a55-in a55-tick" x1="1230.7" y1="563.9" x2="1248.5" y2="561.1"/>
+          <circle class="a55-in a55-dot" cx="698.9" cy="614.6" r="5"/>
+          <circle class="a55-in a55-dot" cx="766.9" cy="617.2" r="5"/>
+          <circle class="a55-in a55-dot" cx="839.6" cy="596.8" r="5"/>
+          <circle class="a55-in a55-dot" cx="919.9" cy="605.0" r="5"/>
+          <circle class="a55-in a55-dot" cx="989.5" cy="594.5" r="5"/>
+          <circle class="a55-in a55-dot" cx="1027.9" cy="611.3" r="5"/>
+          <circle class="a55-in a55-dot" cx="1103.9" cy="602.5" r="5"/>
+          <circle class="a55-in a55-dot" cx="1144.5" cy="598.3" r="5"/>
+          <circle class="a55-in a55-dot" cx="1202.6" cy="607.9" r="5"/>
+          <line class="a55-in a55-tick" x1="681.6" y1="653.4" x2="699.5" y2="651.6"/>
+          <line class="a55-in a55-tick" x1="838.5" y1="633.4" x2="854.0" y2="624.2"/>
+          <line class="a55-in a55-tick" x1="977.8" y1="641.2" x2="992.9" y2="631.3"/>
+          <line class="a55-in a55-tick" x1="1137.0" y1="644.7" x2="1154.6" y2="640.9"/>
+          <circle class="a55-in a55-dot" cx="652.6" cy="662.4" r="5"/>
+          <circle class="a55-in a55-dot" cx="685.2" cy="674.2" r="5"/>
+          <circle class="a55-in a55-dot" cx="736.1" cy="677.2" r="5"/>
+          <circle class="a55-in a55-dot" cx="823.2" cy="661.7" r="5"/>
+          <circle class="a55-in a55-dot" cx="880.4" cy="662.6" r="5"/>
+          <circle class="a55-in a55-dot" cx="932.6" cy="666.9" r="5"/>
+          <circle class="a55-in a55-dot" cx="984.4" cy="681.1" r="5"/>
+          <circle class="a55-in a55-dot" cx="1089.5" cy="662.0" r="5"/>
+          <circle class="a55-in a55-dot" cx="1135.4" cy="666.2" r="5"/>
+          <line class="a55-in a55-tick" x1="585.3" y1="725.2" x2="599.3" y2="713.9"/>
+          <line class="a55-in a55-tick" x1="730.1" y1="720.0" x2="743.0" y2="707.4"/>
+          <line class="a55-in a55-tick" x1="859.2" y1="731.2" x2="877.1" y2="729.2"/>
+          <line class="a55-in a55-tick" x1="1020.9" y1="726.6" x2="1037.8" y2="720.3"/>
+          <circle class="a55-in a55-dot" cx="540.7" cy="733.4" r="5"/>
+          <circle class="a55-in a55-dot" cx="594.4" cy="735.1" r="5"/>
+          <circle class="a55-in a55-dot" cx="683.8" cy="731.3" r="5"/>
+          <circle class="a55-in a55-dot" cx="754.8" cy="731.9" r="5"/>
+          <circle class="a55-in a55-dot" cx="775.4" cy="741.8" r="5"/>
+          <circle class="a55-in a55-dot" cx="835.5" cy="753.1" r="5"/>
+          <circle class="a55-in a55-dot" cx="930.9" cy="728.8" r="5"/>
+          <circle class="a55-in a55-dot" cx="958.3" cy="748.6" r="5"/>
+          <circle class="a55-in a55-dot" cx="1071.5" cy="728.2" r="5"/>
+        </g>
+      </g>
+      <!-- guide lines join the plane corners while the upper layer is lifted (y2 follows the lift) -->
+      <line class="a55-guide" id="a55-g1" x1="690.6" y1="517.4" x2="690.6" y2="517.4"/>
+      <line class="a55-guide" id="a55-g2" x1="1470.6" y1="517.4" x2="1470.6" y2="517.4"/>
+      <line class="a55-guide" id="a55-g3" x1="1149.4" y1="762.6" x2="1149.4" y2="762.6"/>
+      <line class="a55-guide" id="a55-g4" x1="369.4" y1="762.6" x2="369.4" y2="762.6"/>
+      <g id="a55-upper">
+        <g id="a55-upwob">
+          <g transform="matrix(1,0,-0.55,0.42,920,640)">
+            <rect x="-390" y="-292" width="780" height="584" fill="#5a768f" fill-opacity="0.35"/>
+            <rect id="a55-upedge" x="-390" y="-292" width="780" height="584" fill="none" stroke="#7fb2e5" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </svg>
+
+  <div id="a55-chip" class="a55-glass">TWO-LEVEL MODEL</div>
+
+  <div id="a55-q">
+    <div id="a55-qchip" class="a55-glass">“NOT AS SUCCESSFUL AS HOPED”</div>
+    <div id="a55-qsrc">Kistler et al., AMS 2004</div>
+  </div>
+
+  <div id="a55-bar">
+    <div id="a55-barlab">TEST CASE #1</div>
+    <div id="a55-track"><div id="a55-fill"></div></div>
+  </div>
+
+  <div id="a55-pf">
+    <div id="a55-pffloat">
+      <span class="a55-pf-big" id="a55-pfbig">1954</span>
+      <span class="a55-pf-sub" id="a55-pfsub">JOINT NUMERICAL WEATHER PREDICTION UNIT</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  /* segment offsets, comp-local seconds: replace 14.58 with the real data-start difference (see header) */
+  const S6 = 14.88;
+  const P = "#a55-";
+  const ORG = "920 640";
+  const guides = [P + "g1", P + "g2", P + "g3", P + "g4"];
+  const ins = "#a55-inputs .a55-in";
+
+  /* time-0 state (transforms start here, never in CSS) */
+  tl.set(P + "slab", { svgOrigin: ORG, rotation: -1, y: 0, scale: 1, autoAlpha: 1 }, 0);
+  tl.set(P + "upper", { y: 0 }, 0);
+  tl.set(P + "upwob", { y: 0 }, 0);
+  tl.set(ins, { autoAlpha: 0, y: -260 }, 0);
+  tl.set(guides, { autoAlpha: 0 }, 0);
+  tl.set(P + "fill", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set([P + "chip", P + "bar", P + "qchip", P + "qsrc", P + "pf", P + "pfbig", P + "pfsub"], { autoAlpha: 0 }, 0);
+  tl.set(P + "scan", { y: -48 }, 0);
+
+  /* scan line, whole comp: two top-to-bottom sweeps of 1128 px in 16.49 s each (68 px/s), ends at 32.98 */
+  tl.fromTo(P + "scan", { y: -48 }, { y: 1080, duration: 16.49, ease: "none", repeat: 1 }, 0);
+
+  /* THEN @0.00 (A5-S5): ground and lower layer on from frame 0; slow orbit drift until the slab exit ends (24.20) */
+  tl.to(P + "slab", { rotation: 1, y: -8, duration: 24.2, ease: "none" }, 0);
+
+  /* PICKED @2.04: 36 dots + 12 ticks drop from y -260 onto the lower plane, stagger 0.04, then a 4 px settle */
+  tl.fromTo(ins, { autoAlpha: 0, y: -260 }, { autoAlpha: 1, y: 4, duration: 0.4, ease: "power2.in", stagger: 0.04 }, 2.04);
+  tl.to(ins, { y: 0, duration: 0.16, ease: "power2.out", stagger: 0.04 }, 2.44);
+
+  /* FIRST TEST @3.94: bar label and empty track in */
+  tl.fromTo(P + "bar", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.94);
+
+  /* TWO-LEVEL @5.42: upper layer lifts 190 px, guide lines draw with it, chip in */
+  tl.to(P + "upper", { y: -190, duration: 1.0, ease: "power3.inOut" }, 5.42);
+  tl.to(guides, { autoAlpha: 1, duration: 0.2, ease: "power1.out" }, 5.42);
+  tl.to(P + "g1", { attr: { y2: 327.4 }, duration: 1.0, ease: "power3.inOut" }, 5.42);
+  tl.to(P + "g2", { attr: { y2: 327.4 }, duration: 1.0, ease: "power3.inOut" }, 5.42);
+  tl.to(P + "g3", { attr: { y2: 572.6 }, duration: 1.0, ease: "power3.inOut" }, 5.42);
+  tl.to(P + "g4", { attr: { y2: 572.6 }, duration: 1.0, ease: "power3.inOut" }, 5.42);
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "back.out(1.4)" }, 5.42);
+
+  /* TWO LAYERS @8.32: edge brightness pulse, lower then upper 0.3 s apart (1 -> 0.5 -> 1, 0.6 s) */
+  tl.to(P + "loweredge", { opacity: 0.5, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 8.32);
+  tl.to(P + "upedge", { opacity: 0.5, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 8.62);
+
+  /* PASS @10.18: fill runs 0 -> 0.55 by the end of A5-S5 (14.18) */
+  tl.to(P + "fill", { scaleX: 0.55, duration: 4.0, ease: "power1.inOut" }, 10.18);
+
+  /* LOT @13.52: upper layer wobble y +-6, 2 finite repeats, back to rest by 15.02 */
+  tl.to(P + "upwob", { y: -6, duration: 0.1, ease: "sine.out" }, 13.52);
+  tl.to(P + "upwob", { y: 6, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 2 }, 13.62);
+  tl.to(P + "upwob", { y: 0, duration: 0.2, ease: "sine.out" }, 14.82);
+
+  /* FELL SHORT @0.12 (A5-S6, comp 14.70): fill 0.55 -> 0.68 and stops; turns red, blinks twice. It never moves again. */
+  tl.to(P + "fill", { scaleX: 0.68, duration: 0.25, ease: "power4.out" }, S6 + 0.12);
+  tl.to(P + "fill", { backgroundColor: "#c0392b", duration: 0.3, ease: "power1.out" }, S6 + 0.37);
+  tl.to(P + "fill", { opacity: 0.5, duration: 0.2, ease: "sine.inOut", yoyo: true, repeat: 3 }, S6 + 0.67);
+
+  /* NOT AS SUCCESSFUL @3.44 (comp 18.02): chip dims to 0.35; quote chip in, attribution 0.3 s after */
+  tl.to(P + "chip", { autoAlpha: 0.35, duration: 0.3, ease: "power1.out" }, S6 + 3.44);
+  tl.fromTo(P + "qchip", { autoAlpha: 0, scale: 0.9 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(1.4)" }, S6 + 3.44);
+  tl.fromTo(P + "qsrc", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, S6 + 3.74);
+
+  /* STORM WON @5.32 (comp 19.90): upper layer drops back onto the lower one, guides retract with it */
+  tl.to(P + "upper", { y: 0, duration: 0.8, ease: "power2.in" }, S6 + 5.32);
+  tl.to(P + "g1", { attr: { y2: 517.4 }, duration: 0.8, ease: "power2.in" }, S6 + 5.32);
+  tl.to(P + "g2", { attr: { y2: 517.4 }, duration: 0.8, ease: "power2.in" }, S6 + 5.32);
+  tl.to(P + "g3", { attr: { y2: 762.6 }, duration: 0.8, ease: "power2.in" }, S6 + 5.32);
+  tl.to(P + "g4", { attr: { y2: 762.6 }, duration: 0.8, ease: "power2.in" }, S6 + 5.32);
+  tl.to(guides, { autoAlpha: 0, duration: 0.2, ease: "power1.in" }, S6 + 5.92);
+
+  /* MEETINGS @8.82 (comp 23.40): chips and bar slide out; slab shrinks and fades (ends 24.20). Ground and scan line stay. */
+  tl.to([P + "chip", P + "q", P + "bar"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, S6 + 8.82);
+  tl.to(P + "slab", { svgOrigin: ORG, scale: 0.85, autoAlpha: 0, duration: 0.8, ease: "power2.in" }, S6 + 8.82);
+
+  /* 1954 @11.26 (comp 25.84): big line stamps down */
+  tl.set(P + "pf", { autoAlpha: 1 }, S6 + 11.26);
+  tl.fromTo(P + "pfbig", { autoAlpha: 0, scale: 1.4, y: -30 }, { autoAlpha: 1, scale: 1, y: 0, duration: 0.35, ease: "back.out(2.0)" }, S6 + 11.26);
+  /* BUILT @12.16 (comp 26.74): sub in */
+  tl.fromTo(P + "pfsub", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, S6 + 12.16);
+  /* float 12.60 -> 17.30 (comp 27.18 -> 31.88): 4 legs of 1.175 s */
+  tl.to(P + "pffloat", { y: -10, duration: 1.175, ease: "sine.inOut", yoyo: true, repeat: 3 }, S6 + 12.6);
+  /* DAY @17.88: exit 17.40 -> 18.00 (comp 31.98 -> 32.58), then 0.4 s land on the ground to 32.98 */
+  tl.to(P + "pf", { autoAlpha: 0, y: -40, scale: 0.96, duration: 0.6, ease: "power3.in" }, S6 + 17.4);
+
+  window.__timelines["g-a5-5-testcase"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
