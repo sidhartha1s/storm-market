@@ -239,6 +239,8 @@ window.__timelines = window.__timelines || {};
 
   /* ambient: g-a2-8's flake motion (35-65 px/s from the frame-0 height to y 950, then once more from the top) */
   const FALL0 = -20, FALL1 = 950;
+  /* g-a2-8 ends with no flakes, so they fade in here */
+  tl.fromTo($("flakes"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power1.out" }, 0);
   Array.prototype.slice.call($("flakes").querySelectorAll("circle")).forEach(function (c, i) {
     const cy0 = +c.getAttribute("cy"), v = 35 + (i * 11) % 31, d0 = (FALL1 - cy0) / v;
     tl.fromTo(c, { attr: { cy: cy0 } }, { attr: { cy: FALL1 }, duration: d0, ease: "none" }, 0);
