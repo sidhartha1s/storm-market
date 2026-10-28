@@ -10,7 +10,7 @@
   /* RETUNE both boxes to the measured crop once media/doc/mwr-1900-09-p376-herald.jpg is on disk (wrapper px).
      Lit bar: whole line(s) of "It was not through any lack of attention on the part of the forecasters", x 24, y 290, 1240 x 90 -> frame y 430 to 520 at scale 1.
      Underline: under the heading "From the Boston Herald". */
-  #g-a5-12-herald-bar { position:absolute; inset:auto; left:24px; top:290px; width:1240px; height:90px; border-radius:6px;
+  #g-a5-12-herald-bar { position:absolute; inset:auto; left:24px; top:156px; width:1240px; height:80px; border-radius:6px;
     background:rgba(216,161,58,0.32); transform-origin:left center; opacity:0; visibility:hidden; }
   #g-a5-12-herald-ul { position:absolute; inset:auto; left:24px; top:226px; width:520px; height:4px; border-radius:2px;
     background:#d8a13a; transform-origin:left center; opacity:0; visibility:hidden; }
@@ -51,7 +51,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"pg", {scale:1.06, y:20, duration:2.16, ease:"power1.out"}, 0);
   /* source line and eyebrow in at 0.40, drift to the end */
   tl.to([P+"src", P+"eye"], {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0.40);
-  tl.to([P+"src", P+"eye"], {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:3}, 0.80);
+  tl.to([P+"src", P+"eye"], {y:-4, duration:2.115, ease:"sine.inOut", yoyo:true, repeat:3}, 0.80);
   /* heading hold: slow creep so the page keeps moving 2.16 to 5.46 */
   tl.to(P+"pg", {scale:1.09, y:8, duration:3.30, ease:"none"}, 2.16);
 
@@ -60,15 +60,15 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"ul", {scaleX:1, duration:0.4, ease:"power2.out"}, 3.76);
 
   /* FORECASTERS @5.46: push moves to the sentence (1.09 -> 1.15 to the host end), bar draws 5.46 to 6.22, page dims */
-  tl.to(P+"pg", {scale:1.15, y:0, duration:4.94, ease:"power1.inOut"}, 5.46);
+  tl.to(P+"pg", {scale:1.15, y:0, duration:3.80, ease:"power1.inOut"}, 5.46);
   tl.to(P+"bar", {autoAlpha:1, duration:0.1, ease:"none"}, 5.46);
   tl.to(P+"bar", {scaleX:1, duration:0.76, ease:"power2.out"}, 5.46);
   tl.to(P+"img", {opacity:0.55, duration:0.76, ease:"power2.out"}, 5.46);
   tl.to(P+"ul", {opacity:0.55, duration:0.76, ease:"power2.out"}, 5.46);
 
-  /* attention. @8.32: bar at full, hold; the push runs to the host end (10.40, index.html mount);
+  /* attention. @8.32: bar at full, hold; the push runs to the host end (9.26, index.html mount; g-a5-13 holds track 2 from 976.235);
      exit: root fades over the last 0.3 s (g-a5-13 cuts in) */
-  tl.to(P+"root", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 10.10);
+  tl.to(P+"root", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 8.96);
   window.__timelines["g-a5-12-herald"] = tl;
 })();
 </script>
