@@ -40,7 +40,7 @@ for m in re.finditer(r'<(section|video|div)\b([^>]*)>', h):
     cid = re.search(r'data-composition-id="([^"]+)"', a)
     src = re.search(r'src="([^"]+)"', a)
     cls = re.search(r'class="([^"]*)"', a)
-    is_black = bool(cls and re.search(r'blackout|ground', cls.group(1)))   # ground plates carry no src of their own
+    is_black = bool(cls and re.search(r'blackout|\bground\b', cls.group(1)))   # ground plates carry no src of their own
     if not src and not cid and not is_black:
         # only a src inside THIS element: stop at its closing tag, or the next window-bearing tag for a void <video>
         inner = h[m.end():m.end() + 900]
@@ -268,6 +268,7 @@ for gid in sorted(mounted):
         unresolved = calls_total - len(pos_matches)
         note = f"; {unresolved} loop/expression positions not checked" if unresolved else ""
         print(f"      check 7: resolved {len(pos_matches)}/{calls_total} tween positions in {gid}{note}")
+    unresolved += sum(1 for m in pos_matches if re.search(r'duration:\s*(?![\d.])', m.group(0)))   # duration: DUR
     ends = [float(m.group(1)) + max([float(d) for d in re.findall(
         r'duration:\s*([\d.]+)', m.group(0))] or [0])
         for m in pos_matches]

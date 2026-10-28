@@ -163,7 +163,7 @@ with tempfile.TemporaryDirectory() as d:
     h = (ep_ground / "index.html").read_text(encoding="utf-8")
     h = h.replace("</section>", '<section class="ground" data-start="0" data-duration="1.0" data-track-index="2"></section>'
                   '<section class="ground" data-start="0.5" data-duration="1.0" data-track-index="2"></section>'
-                  '<video src="media/decoy.webm"></video></section>')
+                  '<video src="media/decoy.webm" muted></video></section>')
     (ep_ground / "index.html").write_text(h, encoding="utf-8")
     code, out = run("sweep_episode.py", ep_ground)
     check("sweep_episode: src-less ground section is named like a blackout, not after the next src",
@@ -180,8 +180,8 @@ with tempfile.TemporaryDirectory() as d:
 
 # a timeline whose positions are expressions (DUR - 0.6) is unmeasurable: no false "holds"
 with tempfile.TemporaryDirectory() as d:
-    comp = ('<template><div id="g"><span id="t">hi</span></div><script>const DUR=8; '
-            'tl.to("#t", {duration:1}, 0.1); tl.to("#t", {duration:1}, DUR - 0.6);</script></template>')
+    comp = ('<template><div id="g"><span id="t">hi</span></div><script>const DUR=Math.max(8, 2); '
+            'tl.to("#t", {duration:1}, 0.1); tl.to({t:0}, {duration: DUR}, 0);</script></template>')
     ep_dur = make_ep(Path(d) / "dur", comp_html=comp, comp_window=8.0)
     code, out = run("sweep_episode.py", ep_dur)
     check("sweep_episode: expression positions skip 'holds' with a note, no false FAIL",
