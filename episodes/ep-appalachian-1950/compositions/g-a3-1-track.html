@@ -1,0 +1,157 @@
+<template>
+<style>
+  #a3t-root { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8; }
+  /* chart camera C1 (briefs/a3/_list.md): screen = (chart px - (196,110)) x 2.0; static, no drift */
+  .a3t-chart { position:absolute; left:-392px; top:-220px; width:2312px; height:1518px; }
+  .a3t-dim { position:absolute; inset:0; background:rgba(4,7,12,.38); }
+  .a3t-scan { position:absolute; left:370px; top:0; width:1180px; height:2px; background:rgba(127,178,229,.30); }
+  .a3t-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .a3t-track { fill:none; stroke:#d0121f; stroke-width:6; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:3000 3000; stroke-dashoffset:3000; filter:drop-shadow(0 0 6px rgba(208,18,31,.6));
+    opacity:0; visibility:hidden; }
+  .a3t-head { fill:#d0121f; filter:drop-shadow(0 0 6px rgba(208,18,31,.6)); opacity:0; visibility:hidden; }
+  .a3t-ghost { fill:none; stroke:#93a3b2; stroke-width:5; stroke-dasharray:14 10; stroke-linecap:butt;
+    opacity:0; visibility:hidden; }
+  .a3t-gmaskpath { fill:none; stroke:#fff; stroke-width:18; stroke-linecap:butt; stroke-dasharray:3000 3000; stroke-dashoffset:3000; }
+  .a3t-ghosthead { fill:#93a3b2; opacity:0; visibility:hidden; }
+  .a3t-pin, .a3t-endflash { opacity:0; visibility:hidden; }
+  .a3t-pulse { opacity:0; }
+  .a3t-glass { position:absolute; box-sizing:border-box; white-space:nowrap;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); }
+  .a3t-headline { left:110px; top:90px; padding:18px 28px; border-radius:28px; box-shadow:0 18px 50px rgba(0,0,0,.35);
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1.1; color:#f2f5f8;
+    opacity:0; visibility:hidden; }
+  .a3t-chip { padding:10px 18px; border-radius:14px; font-weight:700; font-size:26px; line-height:30px; letter-spacing:3px;
+    opacity:0; visibility:hidden; }
+  /* right edge 24 px left of the pin ring (ring edge x 1221 -> 1197), vertical centre y 660 */
+  .a3t-pinchip { right:723px; top:635px; color:#f2f5f8; }
+  /* left of the ghost end (1768,160), right edge 1740, top 184: the ghost passes below-right of it */
+  .a3t-usualchip { right:180px; top:184px; color:#93a3b2; }
+  /* right edge x 886 (24 px left of the track end at 910), vertical centre y 400 */
+  .a3t-ohio { position:absolute; right:1034px; top:385px; line-height:30px; font-weight:700; font-size:26px; letter-spacing:4px;
+    color:#f2f5f8; -webkit-text-stroke:5px #04070c; paint-order:stroke fill; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a3t-source { position:absolute; left:110px; bottom:60px; font-weight:700; font-size:19px; letter-spacing:2px; color:#c8d3e0;
+    text-shadow:0 1px 4px rgba(4,7,12,.9); white-space:nowrap; }
+</style>
+<div id="a3t-root" data-composition-id="g-a3-1-track" data-width="1920" data-height="1080">
+  <img class="a3t-chart" id="a3t-chart" src="media/a3/A3-S1_c1_nws-jkl-surface-1950-11-25.jpg" alt="">
+  <div class="a3t-dim" id="a3t-dim"></div>
+  <div class="a3t-scan" id="a3t-scan"></div>
+  <svg class="a3t-svg" id="a3t-svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <defs>
+      <mask id="a3t-gmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <path class="a3t-gmaskpath" id="a3t-gmaskpath" d="M1238 660 C1300 580 1380 500 1420 430 C1520 360 1760 330 1768 160"/>
+      </mask>
+    </defs>
+    <!-- ghost: the usual path, NE up the coast and out to sea; same d as the mask path -->
+    <path class="a3t-ghost" id="a3t-ghost" mask="url(#a3t-gmask)" d="M1238 660 C1300 580 1380 500 1420 430 C1520 360 1760 330 1768 160"/>
+    <g id="a3t-ghostheadg"><polygon class="a3t-ghosthead" id="a3t-ghosthead" points="1768,160 1778,183 1756,181"/></g>
+    <!-- red track (schematic): Carolinas pin north to near Washington, bends left (west) into Ohio -->
+    <path class="a3t-track" id="a3t-track" d="M1238 660 C1262 590 1300 500 1300 430 C1300 385 1250 360 1180 360 C1080 360 990 378 910 400"/>
+    <!-- arrowhead: tip at local (0,0), rides the track head by GSAP x/y/rotation -->
+    <polygon class="a3t-head" id="a3t-head" points="0,0 -22,-11 -22,11"/>
+    <circle class="a3t-pulse" id="a3t-pulse" cx="1238" cy="660" r="17" fill="none" stroke="#d0121f" stroke-width="3"/>
+    <g class="a3t-pin" id="a3t-pin">
+      <circle id="a3t-pinring" cx="1238" cy="660" r="15.5" fill="none" stroke="#d0121f" stroke-width="3"/>
+      <circle id="a3t-pincore" cx="1238" cy="660" r="9" fill="#f2f5f8"/>
+    </g>
+    <circle class="a3t-endflash" id="a3t-endflash" cx="910" cy="400" r="17" fill="none" stroke="#d0121f" stroke-width="3"/>
+  </svg>
+  <div class="a3t-glass a3t-headline" id="a3t-headline">THE LOW WENT NORTHWEST</div>
+  <div class="a3t-glass a3t-chip a3t-pinchip" id="a3t-pinchip">CAROLINAS · NOV 24–25</div>
+  <div class="a3t-glass a3t-chip a3t-usualchip" id="a3t-usualchip">THE USUAL PATH</div>
+  <div class="a3t-ohio" id="a3t-ohio">OHIO</div>
+  <div class="a3t-source" id="a3t-source">Source: NWS Jackson, KY · track schematic</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var P = "#a3t-";
+  var track = document.getElementById("a3t-track");
+  var gmask = document.getElementById("a3t-gmaskpath");
+  var head = document.getElementById("a3t-head");
+  var tLen = track.getTotalLength(), TL = Math.ceil(tLen) + 1;
+  var GL = Math.ceil(gmask.getTotalLength()) + 1;
+  var tl = gsap.timeline({ paused: true });
+
+  // head point and tangent angle at a length along the red track; angles unwrapped so rotation never spins
+  var lastR = null;
+  function headAt(len) {
+    var p = track.getPointAtLength(len);
+    var a = track.getPointAtLength(Math.max(0, len - 1)), b = track.getPointAtLength(Math.min(tLen, len + 1));
+    var r = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
+    if (lastR !== null) { while (r - lastR > 180) r -= 360; while (r - lastR < -180) r += 360; }
+    lastR = r;
+    return { x: p.x, y: p.y, r: r };
+  }
+  // the arrowhead follows the dash head in n linear legs sampled on the same ease as the draw
+  function ride(p0, p1, start, dur, ease, n) {
+    var e = gsap.parseEase(ease);
+    for (var k = 1; k <= n; k++) {
+      var h = headAt(tLen * (p0 + (p1 - p0) * e(k / n)));
+      tl.to(head, { x: h.x, y: h.y, rotation: h.r, duration: dur / n, ease: "none" }, start + dur * (k - 1) / n);
+    }
+  }
+
+  /* THE @0.00: chart dimmed, scan line running, source line on */
+  var h0 = headAt(0);
+  tl.set(track, { strokeDasharray: TL + " " + TL, strokeDashoffset: TL }, 0);
+  tl.set(gmask, { strokeDasharray: GL + " " + GL, strokeDashoffset: GL }, 0);
+  tl.set(head, { x: h0.x, y: h0.y, rotation: h0.r, transformOrigin: "100% 50%" }, 0);
+  tl.set(P + "pin", { svgOrigin: "1238 660", scale: 0.4 }, 0);
+  tl.set(P + "ghostheadg", { svgOrigin: "1768 160", scale: 0.5 }, 0);
+  tl.to(P + "scan", { y: 1080, duration: 18, ease: "none" }, 0); // 60 px/s, one finite pass covers the 16.14 s host
+
+  /* LOW @0.16 */
+  tl.fromTo(P + "headline", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 0.16);
+
+  /* NORTHWEST @0.66: red stub tease 0 -> 12 % */
+  tl.set([track, head], { autoAlpha: 1 }, 0.66);
+  tl.to(track, { strokeDashoffset: TL - 0.12 * tLen, duration: 0.4, ease: "power2.out" }, 0.66);
+  ride(0, 0.12, 0.66, 0.4, "power2.out", 8);
+
+  /* CENTER @3.50: Carolinas pin in */
+  tl.fromTo(P + "pin", { svgOrigin: "1238 660", scale: 0.4, autoAlpha: 0 }, { svgOrigin: "1238 660", scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(1.6)" }, 3.5);
+  tl.fromTo(P + "pulse", { attr: { r: 17 }, opacity: 0.8 }, { attr: { r: 34 }, opacity: 0, duration: 1.4, ease: "power2.out", repeat: 7 }, 3.9); // pulse every 1.4 s, ends 15.10
+
+  /* CAROLINAS @6.32: pin chip in */
+  tl.fromTo(P + "pinchip", { x: -16, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 6.32);
+
+  /* RIDES @8.38: ghost draws up the coast, reaching the sea end on "out" @10.42 */
+  tl.set(P + "ghost", { autoAlpha: 0.55 }, 8.38);
+  tl.to(gmask, { strokeDashoffset: 0, duration: 2.04, ease: "power1.inOut" }, 8.38);
+
+  /* OUT @10.42: ghost arrowhead + THE USUAL PATH chip in, headline dims */
+  tl.fromTo(P + "ghostheadg", { svgOrigin: "1768 160", scale: 0.5 }, { svgOrigin: "1768 160", scale: 1, duration: 0.35, ease: "back.out(2)" }, 10.42);
+  tl.fromTo(P + "ghosthead", { autoAlpha: 0 }, { autoAlpha: 0.55, duration: 0.25 }, 10.42);
+  tl.fromTo(P + "usualchip", { x: 16, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 10.42);
+  tl.to(P + "headline", { autoAlpha: 0.35, duration: 0.4 }, 10.42);
+
+  /* TURNED @11.88: ghost dims (kept for g-a3-4), red track draws 12 % -> 100 %, landing on "Ohio." @15.38 */
+  tl.to([P + "ghost", P + "ghosthead", P + "usualchip"], { autoAlpha: 0.3, duration: 0.4 }, 11.88);
+  tl.to(track, { strokeDashoffset: 0, duration: 3.5, ease: "power2.inOut" }, 11.88);
+  ride(0.12, 1, 11.88, 3.5, "power2.inOut", 48);
+
+  /* OHIO @15.38: label in, flash at the track end, headline back to 1 */
+  tl.fromTo(P + "ohio", { x: 16, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 15.38);
+  tl.fromTo(P + "endflash", { attr: { r: 17 }, autoAlpha: 1 }, { attr: { r: 35 }, autoAlpha: 0, duration: 0.5, ease: "power2.out" }, 15.38);
+  tl.to(P + "headline", { autoAlpha: 1, duration: 0.25 }, 15.38);
+
+  /* EXIT @15.64 (host end - 0.5): headline and pin chip slide out; g-a3-2 opens on chart + track + ghost + OHIO */
+  tl.to([P + "headline", P + "pinchip"], { x: -60, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 15.64);
+
+  // self-check: the arrowhead sits on the dash head at three times (mid stub, mid draw, end)
+  [0.86, 13.6, 15.38].forEach(function (t) {
+    tl.seek(t);
+    var drawn = TL - parseFloat(gsap.getProperty(track, "strokeDashoffset"));
+    var p = track.getPointAtLength(Math.min(tLen, drawn));
+    var dx = gsap.getProperty(head, "x") - p.x, dy = gsap.getProperty(head, "y") - p.y;
+    if (Math.sqrt(dx * dx + dy * dy) > 4) console.error("g-a3-1-track: arrowhead off the track head at " + t + " s by " + Math.sqrt(dx * dx + dy * dy).toFixed(1) + " px");
+  });
+  tl.seek(0);
+
+  window.__timelines["g-a3-1-track"] = tl;
+})();
+</script>
+</template>
