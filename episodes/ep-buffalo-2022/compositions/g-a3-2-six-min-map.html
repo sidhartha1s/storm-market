@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-2-six-min-map (A3-S1 host 11.60-15.20, standard): schematic street grid, amber car pin, white house pin,
+  dotted route "ABOUT 6 MINUTES", chip "STRANDED DRIVERS". Full-frame designed ground. FAMILY BASE for g-a3-4-map-evening:
+  keep ids sm-car, sm-home, sm-route, sm-ground stable (g-a3-4 dims sm-car).
+  Cue times are comp-local = segment seconds (audio/a3-s1.words.json) minus 11.60. Comp duration 3.60 s.
+  The map is SCHEMATIC: no street names, no compass, no tiles.
+-->
+<template>
+<style>
+  #g-a3-2-six-min-map-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  #sm-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #sm-map { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #sm-grid { opacity:0.6; }
+  #sm-car, #sm-home, #sm-ring-wrap, #sm-route, #sm-lab-car, #sm-lab-home, #sm-lab-route { opacity:0; visibility:hidden; }
+  .sm-chip { position:absolute; left:110px; bottom:110px; display:table; box-sizing:border-box; padding:22px 34px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden; }
+  #sm-chip-t { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; color:#f2f5f8; }
+  #sm-schem { position:absolute; left:96px; top:54px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:1.3; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #sm-src { position:absolute; left:110px; bottom:54px; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; }
+</style>
+<div id="g-a3-2-six-min-map-root" data-composition-id="g-a3-2-six-min-map" data-width="1920" data-height="1080">
+  <div id="sm-ground"></div>
+  <svg id="sm-map" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <mask id="sm-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <path id="sm-mask-path" d="M620,600 L940,600 L940,470 L1240,470" fill="none" stroke="#ffffff" stroke-width="16" stroke-linejoin="miter"/>
+      </mask>
+    </defs>
+    <g id="sm-grid">
+      <g stroke="#2a3644" stroke-width="14" fill="none">
+        <line x1="300" y1="300" x2="1560" y2="300"/>
+        <line x1="300" y1="470" x2="1560" y2="470"/>
+        <line x1="300" y1="600" x2="1560" y2="600"/>
+        <line x1="300" y1="780" x2="1560" y2="780"/>
+        <line x1="380" y1="240" x2="380" y2="840"/>
+        <line x1="620" y1="240" x2="620" y2="840"/>
+        <line x1="940" y1="240" x2="940" y2="840"/>
+        <line x1="1240" y1="240" x2="1240" y2="840"/>
+        <line x1="1480" y1="240" x2="1480" y2="840"/>
+      </g>
+      <g stroke="#4a5560" stroke-width="2" fill="none">
+        <line x1="300" y1="300" x2="1560" y2="300"/>
+        <line x1="300" y1="470" x2="1560" y2="470"/>
+        <line x1="300" y1="600" x2="1560" y2="600"/>
+        <line x1="300" y1="780" x2="1560" y2="780"/>
+        <line x1="380" y1="240" x2="380" y2="840"/>
+        <line x1="620" y1="240" x2="620" y2="840"/>
+        <line x1="940" y1="240" x2="940" y2="840"/>
+        <line x1="1240" y1="240" x2="1240" y2="840"/>
+        <line x1="1480" y1="240" x2="1480" y2="840"/>
+      </g>
+    </g>
+    <path id="sm-route" d="M620,600 L940,600 L940,470 L1240,470" fill="none" stroke="#f2f5f8" stroke-width="5" stroke-dasharray="4 14" mask="url(#sm-mask)"/>
+    <g id="sm-ring-wrap"><circle id="sm-car-ring" cx="620" cy="578" r="22" fill="none" stroke="#e8c56a" stroke-width="3" opacity="0"/></g>
+    <g id="sm-car">
+      <path d="M0,0 C-6,-12 -22,-22 -22,-38 A22,22 0 1 1 22,-38 C22,-22 6,-12 0,0 Z" fill="#e8c56a"/>
+      <path d="M-9,-38 L-6,-45 L6,-45 L9,-38 Z" fill="#04070c"/>
+      <rect x="-12" y="-38" width="24" height="8" rx="2" fill="#04070c"/>
+      <circle cx="-7" cy="-30" r="3.2" fill="#e8c56a" stroke="#04070c" stroke-width="2"/>
+      <circle cx="7" cy="-30" r="3.2" fill="#e8c56a" stroke="#04070c" stroke-width="2"/>
+    </g>
+    <g id="sm-home">
+      <path d="M0,0 C-6,-12 -22,-22 -22,-38 A22,22 0 1 1 22,-38 C22,-22 6,-12 0,0 Z" fill="#f2f5f8"/>
+      <polygon points="-13,-38 0,-50 13,-38" fill="#04070c"/>
+      <rect x="-8" y="-38" width="16" height="12" fill="#04070c"/>
+    </g>
+    <text id="sm-lab-car" x="584" y="578" text-anchor="end" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#e8c56a">HER CAR</text>
+    <text id="sm-lab-home" x="1240" y="394" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#f2f5f8">HOME</text>
+    <text id="sm-lab-route" x="780" y="655" text-anchor="middle" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="26" letter-spacing="1" fill="#f2f5f8">ABOUT 6 MINUTES</text>
+  </svg>
+  <div class="sm-chip" id="sm-chip"><span id="sm-chip-t">STRANDED DRIVERS</span></div>
+  <div id="sm-schem">SCHEMATIC · NOT TO SCALE</div>
+  <div id="sm-src">CNN via CBS News, 28 Dec 2022</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+
+  /* pins positioned at 0 (tips at the route ends) */
+  tl.set("#sm-car", { x: 620, y: 600 }, 0);
+  tl.set("#sm-home", { x: 1240, y: 470 }, 0);
+
+  /* route draw mask: dash length = ceil(path length) + 1, measured from the page */
+  const L = Math.ceil(document.getElementById("sm-mask-path").getTotalLength()) + 1;
+  tl.set("#sm-mask-path", { strokeDasharray: L, strokeDashoffset: L }, 0);
+
+  /* grid fades 0.6 -> 1 over 0.4 s from frame 0 (ground stays on to the last frame) */
+  tl.fromTo("#sm-grid", { opacity: 0.6 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 0);
+
+  /* CAR PIN @11.82 "snow" -> 0.22 */
+  tl.fromTo("#sm-car", { y: 560, autoAlpha: 0 }, { y: 600, autoAlpha: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.22);
+  /* HER CAR in at 12.00 -> 0.40 */
+  tl.fromTo("#sm-lab-car", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.40);
+  /* CHIP @12.06 "stopped" -> 0.46 */
+  tl.fromTo("#sm-chip", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 0.46);
+  /* car ring pulses from "stopped" @12.06 -> 0.46; 3 pulses every 1.2 s, finite, last ends 3.56 */
+  tl.set("#sm-ring-wrap", { autoAlpha: 1 }, 0.46);
+  tl.fromTo("#sm-car-ring", { attr: { r: 22 }, opacity: 0.8 }, { attr: { r: 46 }, opacity: 0, duration: 0.7, ease: "power2.out", repeat: 2, repeatDelay: 0.5 }, 0.46);
+
+  /* HOUSE PIN @12.94 "about" -> 1.34 */
+  tl.fromTo("#sm-home", { y: 430, autoAlpha: 0 }, { y: 470, autoAlpha: 1, duration: 0.45, ease: "back.out(1.6)" }, 1.34);
+  /* HOME in at 13.10 -> 1.50 */
+  tl.fromTo("#sm-lab-home", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.50);
+
+  /* ROUTE draws @13.42 "six minutes" -> 1.82, 0.9 s */
+  tl.set("#sm-route", { autoAlpha: 1 }, 1.82);
+  tl.to("#sm-mask-path", { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 1.82);
+  /* ABOUT 6 MINUTES @13.70 "minutes" -> 2.10 */
+  tl.fromTo("#sm-lab-route", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.10);
+  /* house brightens @14.32 "house." -> 2.72 */
+  tl.to("#sm-home", { scale: 1.1, svgOrigin: "1240 470", duration: 0.2, ease: "power2.out" }, 2.72);
+  tl.to("#sm-home", { scale: 1, svgOrigin: "1240 470", duration: 0.2, ease: "power2.in" }, 2.92);
+
+  /* dash crawl after the draw (2 dash periods of 18 over 0.88 s, finite) */
+  tl.to("#sm-route", { strokeDashoffset: -36, duration: 0.88, ease: "none" }, 2.72);
+
+  /* EXIT: after "house." ends @14.60 -> 3.00; ground and grid stay to the last frame */
+  tl.to("#sm-chip", { x: -80, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 3.00);
+  tl.to(["#sm-car", "#sm-home", "#sm-ring-wrap", "#sm-route", "#sm-lab-car", "#sm-lab-home", "#sm-lab-route"], { autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 3.00);
+
+  window.__timelines["g-a3-2-six-min-map"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
