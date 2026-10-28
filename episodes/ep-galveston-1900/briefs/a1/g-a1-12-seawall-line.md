@@ -43,4 +43,4 @@ Draws every 1 to 2 s to 5.62; 5.62 to 7.12 chip and labels drift ±4 px; after 8
 Source line fades over the last 0.3 s; A1-S9 cuts to Paul full frame.
 
 ## Footage under it
-None to 7.12; then `media/a1/beach-hotel-galveston.jpg` (staged from `A1-S8_c1_beach-hotel-galveston.jpg`, scaled to 1667 x 1080, slow push), mounted 7.12 to 10.311.
+None to 7.12; then `media/a1/beach-hotel-galveston.jpg` (staged from `A1-S8_c1_beach-hotel-galveston.jpg`, scaled to 1920 x 1244 and cropped to 1920 x 1080 keeping the hotel and the sand, slow push), mounted 7.12 to 10.311.
