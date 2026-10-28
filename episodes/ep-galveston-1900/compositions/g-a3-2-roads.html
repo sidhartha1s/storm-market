@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-2-roads · A3-S2 · ep-galveston-1900 · standard · brief: briefs/a3/g-a3-2-roads.md
+  Claim: the Monthly Weather Review of September 1900 (the issue that carried Cline's report) says September hurricanes
+  sometimes recurve north and northeast along the Atlantic coast and disappear past Newfoundland, and others pass
+  westward over the Gulf of Mexico. Source: MWR Sept 1900 p. 395 (E. B. Garriott). Textbook roads, not the 1900 track:
+  no date and no "1900" on the map part.
+
+  Part A (0 to 7.98): MWR p. 395 scan (media/candidates/a3/A3-S2_c1_mwr-sept1900-p395_recurve-statement.png, 1150 x 1566).
+    Crop = right text column, image x 575..1060, y 434..787, shown at 2.557 x in a 1240 x 903 box (left 280, top 120, centred x 900).
+    Top and bottom box edges fade out (mask) so a partly shown line is never read; left/right keep whole lines at the
+    full 1.06 push (margin 43 px each side, the push adds at most 19 px).
+    Measured on the scan (image px): quoted sentence = line 536-549 from x ~893 ("The hurricanes of", start x read by eye) to 1037;
+    lines 553-599 full width 592-1037; last line 603-616 from 592 to ~826 ("over the Gulf of Mexico.", end x read by eye).
+    Band boxes in page px = ((x - 575) * 2.557, (y - 434) * 2.557): B1 left 813 top 256 w 368 h 44; B2 left 44 top 299 w 1137 h 128;
+    B3 left 44 top 427 w 598 h 43. Each band carries a copy of the scan clipped to its box (so the quoted lines stay bright
+    while the rest of the page takes a 0.45 ink dim, = opacity 0.55) plus an amber #d8a13a 0.28 layer.
+  Part B (7.98 to end): P-WIDE plate (same projection as g-intro-4: X = (lon + 100) * 90, Y = (41 - lat) * 103.95),
+    camera cx 2500, cy 800, s 0.34 -> 0.35, screen = (960 + (X - cx) * s, 540 + (Y - cy) * s), a pure function of comp time.
+    Basemap copied from g-intro-4-wire-map (land, US-Mexico border, states); its land stops at lon -62, lat 46.
+    Havana (1585.8, 1857.6). N arrow cubic (1800,1767.1) (1890,1039.5) (2700,104.0) to (3985,-488); head tip (4053,-519) ~ brief (4050,-519.8).
+    W arrow quad (1440,1819.1) (990,1700) to (614.8,1669.3); head tip (540,1663.2) = brief end, 323 plate px off the Texas coast.
+    Arrow stroke 8 screen px = 23.2 plate units at s 0.345 (3 % drift over the window). Head 75 x 82 plate units (~26 x 28 px).
+-->
+<template>
+<style>
+  #g-a3-2-roads-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ga32-hide { opacity:0; visibility:hidden; }
+  .ga32-box { position:absolute; left:280px; top:262px; width:1240px; height:555px; }
+  .ga32-page { position:absolute; left:0; top:0; width:1240px; height:555px; overflow:hidden; }
+  .ga32-img { position:absolute; left:-1470.3px; top:-1153.2px; width:2941px; height:4004px; max-width:none; }
+  .ga32-dim { position:absolute; left:0; top:0; width:1240px; height:555px; background:rgba(4,7,12,0.45); opacity:0; }
+  .ga32-hl { position:absolute; overflow:hidden; clip-path:inset(0 100% 0 0); }
+  .ga32-himg { position:absolute; width:2941px; height:4004px; max-width:none; }
+  .ga32-amb { position:absolute; left:0; top:0; width:100%; height:100%; background:#d8a13a; opacity:0.28; }
+  .ga32-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .ga32-land { fill:#15202b; stroke:#5a768f; stroke-width:2px; stroke-linejoin:round; }
+  .ga32-border { fill:none; stroke:#4a5560; stroke-width:1.5px; }
+  .ga32-states { fill:none; stroke:#2a3644; stroke-width:1.5px; }
+  .ga32-lab { font-family:Arial, sans-serif; font-weight:700; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .ga32-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:1.4;
+    color:#c8d3e0; white-space:nowrap; z-index:5; }
+  .ga32-chipw { position:absolute; left:0; top:150px; width:1920px; display:flex; justify-content:center; z-index:4; }
+  .ga32-chip { box-sizing:border-box; padding:18px 44px; border-radius:28px; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px;
+    line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+</style>
+<div id="g-a3-2-roads-root" data-composition-id="g-a3-2-roads" data-width="1920" data-height="1080">
+
+  <!-- PART A: MWR p. 395 page panel -->
+  <div id="g-a3-2-roads-box" class="ga32-box ga32-hide">
+    <div id="g-a3-2-roads-page" class="ga32-page">
+      <img id="g-a3-2-roads-img" class="ga32-img" src="media/candidates/a3/A3-S2_c1_mwr-sept1900-p395_recurve-statement.png" alt="">
+      <div id="g-a3-2-roads-dim" class="ga32-dim"></div>
+      <div id="g-a3-2-roads-hl1" class="ga32-hl" style="left:813px;top:256px;width:368px;height:44px;">
+        <img class="ga32-himg" style="left:-2283.3px;top:-1365.7px;" src="media/candidates/a3/A3-S2_c1_mwr-sept1900-p395_recurve-statement.png" alt="">
+        <div class="ga32-amb"></div>
+      </div>
+      <div id="g-a3-2-roads-hl2" class="ga32-hl" style="left:44px;top:299px;width:1137px;height:128px;">
+        <img class="ga32-himg" style="left:-1514.3px;top:-1408.7px;" src="media/candidates/a3/A3-S2_c1_mwr-sept1900-p395_recurve-statement.png" alt="">
+        <div class="ga32-amb"></div>
+      </div>
+      <div id="g-a3-2-roads-hl3" class="ga32-hl" style="left:44px;top:427px;width:598px;height:43px;">
+        <img class="ga32-himg" style="left:-1514.3px;top:-1536.7px;" src="media/candidates/a3/A3-S2_c1_mwr-sept1900-p395_recurve-statement.png" alt="">
+        <div class="ga32-amb"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART B: the plate -->
+  <div id="g-a3-2-roads-mapb" class="ga32-hide" style="position:absolute;left:0;top:0;width:1920px;height:1080px;">
+    <svg class="ga32-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="g-a3-2-roads-cam">
+        <!--BASEMAP-->
+        <!--/BASEMAP-->
+        <path id="g-a3-2-roads-arrn" d="M1800,1767.1 C1890,1039.5 2700,104 3985,-488" fill="none" stroke="#7fb2e5" stroke-width="23.2" stroke-dasharray="3257" stroke-dashoffset="3257"/>
+        <g transform="translate(3985,-488) rotate(-24.7)"><polygon id="g-a3-2-roads-headn" class="ga32-hide" points="75,0 0,-41 0,41" fill="#7fb2e5"/></g>
+        <path id="g-a3-2-roads-arrw" d="M1440,1819.1 Q990,1700 614.8,1669.3" fill="none" stroke="#d8a13a" stroke-width="23.2" stroke-dasharray="841" stroke-dashoffset="841"/>
+        <g transform="translate(614.8,1669.3) rotate(184.7)"><polygon id="g-a3-2-roads-headw" class="ga32-hide" points="75,0 0,-41 0,41" fill="#d8a13a"/></g>
+        <circle id="g-a3-2-roads-hav" class="ga32-hide" cx="1585.8" cy="1857.6" r="20" fill="#d8a13a"/>
+      </g>
+      <g id="g-a3-2-roads-hud">
+        <!-- Havana pin at screen ~(649,900) to (640,910) over the drift; label under it -->
+        <text id="g-a3-2-roads-havlab" class="ga32-lab ga32-hide" x="645" y="950" text-anchor="middle" font-size="22" letter-spacing="3" fill="#93a3b2">Havana</text>
+        <!-- N arrow head tip at screen ~(1496,84) when the label lands (13.38) -->
+        <text id="g-a3-2-roads-nfl" class="ga32-lab ga32-hide" x="1500" y="132" font-size="22" letter-spacing="3" fill="#93a3b2">Newfoundland</text>
+      </g>
+    </svg>
+    <div class="ga32-chipw" id="g-a3-2-roads-c1w"><div id="g-a3-2-roads-c1" class="ga32-chip ga32-hide">SOMETIMES RECURVE</div></div>
+    <div class="ga32-chipw" id="g-a3-2-roads-c2w"><div id="g-a3-2-roads-c2" class="ga32-chip ga32-hide">OTHERS PASS WESTWARD</div></div>
+  </div>
+
+  <div id="g-a3-2-roads-src" class="ga32-src ga32-hide">Monthly Weather Review, September 1900, p. 395 (E. B. Garriott)</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a3-2-roads-";
+  const tl = gsap.timeline({ paused: true });
+
+  /* camera: pure function of comp time (seek-safe); s 0.34 -> 0.35 over 8.0 to 17.4 */
+  const cam = document.getElementById("g-a3-2-roads-cam");
+  const camS = { v: 0 };
+  function camAt() {
+    const s = 0.34 + 0.01 * camS.v;
+    cam.setAttribute("transform", "translate(" + (960 - 2500 * s) + " " + (540 - 800 * s) + ") scale(" + s + ")");
+  }
+  camAt();
+
+  tl.set([P+"box", P+"mapb", P+"src", P+"c1", P+"c2", P+"headn", P+"headw", P+"hav", P+"havlab", P+"nfl"], { autoAlpha: 0 }, 0);
+
+  /* 0.00 page in, source line in */
+  tl.fromTo(P+"box", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0);
+  tl.fromTo(P+"src", { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0);
+  tl.to(P+"box", { y: -8, duration: 7.38, ease: "none" }, 0.6);
+  tl.to(P+"src", { y: 4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0.5);
+
+  /* MONTHLY @3.52: push starts toward the quoted sentence */
+  tl.fromTo(P+"page", { scale: 1.0, transformOrigin: "50% 40%" }, { scale: 1.06, transformOrigin: "50% 40%", duration: 4.46, ease: "power1.inOut" }, 3.52);
+
+  /* SAME ISSUE @5.76: dim the page, band draws 5.76 to 7.08 left to right, line by line */
+  tl.to(P+"dim", { opacity: 1, duration: 0.4, ease: "power2.out" }, 5.76);
+  tl.fromTo(P+"hl1", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.34, ease: "none" }, 5.76);
+  tl.fromTo(P+"hl2", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.7, ease: "none" }, 6.10);
+  tl.fromTo(P+"hl3", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.28, ease: "none" }, 6.80);
+
+  /* SEPTEMBER @7.98: cross-dissolve 0.5 s to the plate */
+  tl.to(P+"box", { autoAlpha: 0, duration: 0.5, ease: "power2.inOut" }, 7.98);
+  tl.to(P+"mapb", { autoAlpha: 1, duration: 0.5, ease: "power2.inOut" }, 7.98);
+  tl.to(P+"hav", { autoAlpha: 1, duration: 0.4 }, 8.2);
+  tl.to(P+"havlab", { autoAlpha: 1, duration: 0.4 }, 8.2);
+  tl.to(camS, { v: 1, duration: 9.4, ease: "none", onUpdate: camAt }, 8.0);
+
+  /* SOMETIMES @8.94: C1 in */
+  tl.fromTo(P+"c1", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 8.94);
+  tl.to(P+"c1w", { y: 4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.39);
+
+  /* CURVE @9.46 to NEWFOUNDLAND @13.38: N arrow draws; head and label land at 13.38 */
+  tl.to(P+"arrn", { strokeDashoffset: 0, duration: 3.92, ease: "none" }, 9.46);
+  tl.to(P+"headn", { autoAlpha: 1, duration: 0.2 }, 13.2);
+  tl.to(P+"nfl", { autoAlpha: 1, duration: 0.3 }, 13.38);
+
+  /* 14.10: C1 out; OTHERS @14.70: C2 in */
+  tl.to(P+"c1", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 14.10);
+  tl.fromTo(P+"c2", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 14.70);
+  tl.to(P+"c2w", { y: 4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 0 }, 15.15);
+
+  /* WESTWARD @15.04 to MEXICO @16.28: W arrow draws; head lands as the line ends */
+  tl.to(P+"arrw", { strokeDashoffset: 0, duration: 1.24, ease: "none" }, 15.04);
+  tl.to(P+"headw", { autoAlpha: 1, duration: 0.2 }, 16.2);
+
+  /* exit: C2 slides out ending at host end 17.4, root fades 0.3 s */
+  tl.to(P+"c2", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 16.8);
+  tl.to(P+"root", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 17.1);
+
+  window.__timelines["g-a3-2-roads"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
