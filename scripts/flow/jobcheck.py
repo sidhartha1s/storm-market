@@ -3,6 +3,8 @@
 Swapping the character sheet in as the frame, or rewriting the room in the prompt, gave every clip a different
 background. The frame is the room; the sheet is only an ingredient.
 """
+import re
+
 LOCKED_FRAME = "assets/paul/paul-start-frame-omni-v2.png"  # owner-made 22 Oct 26 evening; v1 .jpg is history
 # An episode may carry its own owner-picked start frame (Buffalo's Christmas look C, owner devq 27 Oct 26);
 # scripts/paul_start_frame.py then holds every clip of that episode to the one frame.
