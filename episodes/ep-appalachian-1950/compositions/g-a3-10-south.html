@@ -209,6 +209,7 @@ window.__timelines = window.__timelines || {};
     exitEl.setAttribute("d", "M" + EXIT.map(sc).join(" L"));
     loopArrow.setAttribute("transform", "translate(" + sc(ARROW_AT) + ") scale(" + k.toFixed(4) + ")");
     for (let i = 0; i < CON.length; i++) CON[i][0].setAttribute("d", "M" + sc(CON[i][1]) + " L" + sc(CON[i][2]));
+    void 0;
     for (let i = 0; i < AR.length; i++) {
       const a = AR[i], el = arEls[i];
       const d = "M" + sc(a[0]) + " Q" + sc(a[1]) + " " + sc(a[2]);
