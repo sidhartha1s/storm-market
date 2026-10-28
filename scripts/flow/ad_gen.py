@@ -159,9 +159,14 @@ def landed(thread, grid, target):
     return take[:target], note
 
 
-def verdict(path):
-    from jobcheck import clip_verdict
-    return clip_verdict(path, CFG, sys.argv[1])
+def verdict_later(path):
+    # verdict_bg.py checks the clip after this run exits and appends its line to drv.log: the check took 7 min on a
+    # loaded box (Galveston clip 1, 29 Oct 26) and held the runner's next clip. Hidden console, so ffmpeg opens no window.
+    import subprocess
+    subprocess.Popen([sys.executable, os.path.join(D, "verdict_bg.py"), sys.argv[1], path, os.path.join(OUT, "drv.log")],
+                     stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                     creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0) | getattr(subprocess, "CREATE_NEW_PROCESS_GROUP", 0))
+    log("verdict running in the background, its line lands in drv.log:", path)
 
 
 def quoted_price(quote, expect):
@@ -453,7 +458,7 @@ with sync_playwright() as p:
                 log("[FALLBACK] main save got no file; copied Chrome's own download", own)
             shot(page, f"dl-{i + 1:02d}")
             log("saved", path, os.path.getsize(path), title)
-            log(*verdict(path))
+            verdict_later(path)
             page.keyboard.press("Escape")
             page.wait_for_timeout(3000)
             to_grid(page)
