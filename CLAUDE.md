@@ -168,8 +168,8 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
   whose staged slice and mounted graphics are unchanged is taken from the older run, so a fix re-renders only its act.
   `--plan` lists the seams. The act file is staged render input, never episode HTML (TRIPWIRE below).
 - Heavy local jobs run on the ZBook by default (owner 17 Oct 26): transcription, voice conversion, clip downloads and
-  frame extraction for sourcing, captures, gates and renders. Renders stay on the ASUS until the ZBook's NVIDIA driver
-  is 610+ (`ops/tasks.md`; `stream_gate.py` stops a ZBook render that falls back to QSV). Sourcing lanes pause while a render runs there (one heavy job at a time). The ASUS GPU runs the owner's live dictation and its RAM is shared with his work; measured
+  frame extraction for sourcing, captures, gates and renders. Until the ZBook's NVIDIA driver is 610+, a render runs on
+  the ASUS only while the owner is not using it, and otherwise waits (`ops/tasks.md`; `stream_gate.py` stops a ZBook render that falls back to QSV). Sourcing lanes pause while a render runs there (one heavy job at a time). The ASUS GPU runs the owner's live dictation and its RAM is shared with his work; measured
   on Joplin, one act's transcription ran 28 min+ unfinished on the ASUS while all 8 acts cut and converted on the ZBook in 19 min.
 
 ## HARD RULE: everything lives in this folder
