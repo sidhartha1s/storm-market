@@ -1,0 +1,256 @@
+<template>
+<style>
+  #g-a4-15-four-seconds-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a4-15-four-seconds-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* start-hidden SVG parts (also hidden by tl.set at 0) */
+  .ga415-hs { visibility:hidden; opacity:0; }
+
+  /* source line: top-left glass, small radius */
+  #g-a4-15-four-seconds-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* diagram labels: HUD layer */
+  .ga415-lab { position:absolute; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:3px; }
+  /* ruler labels right of the right jamb (x 1180), centred on ticks 820/700/580/460/340 */
+  #g-a4-15-four-seconds-r1 { left:1180px; top:807px; }
+  #g-a4-15-four-seconds-r2 { left:1180px; top:687px; }
+  #g-a4-15-four-seconds-r3 { left:1180px; top:567px; }
+  #g-a4-15-four-seconds-r4 { left:1180px; top:447px; }
+  #g-a4-15-four-seconds-r5 { left:1180px; top:327px; }
+  /* compass pair above the lintel (y 100): W over the left jamb, E over the right jamb */
+  #g-a4-15-four-seconds-mw { left:752px; top:64px; letter-spacing:0; }
+  #g-a4-15-four-seconds-me { left:1150px; top:64px; letter-spacing:0; }
+  #g-a4-15-four-seconds-note { position:absolute; left:96px; top:1000px; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#93a3b2; letter-spacing:2px; }
+
+  /* chips: glass card, radius 28 */
+  .ga415-chip { position:absolute; box-sizing:border-box; padding:24px 52px; border-radius:28px;
+    white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  .ga415-main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:48px; color:#f2f5f8; }
+  .ga415-tag { display:block; margin-top:4px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:4px; }
+  /* 8 IN chip: x 1240 to about 1540 (right edge <= 1600), y 820 to about 938 */
+  #g-a4-15-four-seconds-c8 { left:1240px; top:820px; padding:16px 40px; }
+  #g-a4-15-four-seconds-c8 .ga415-main { font-size:52px; line-height:56px; }
+  #g-a4-15-four-seconds-c4 { left:96px; top:130px; }
+
+  /* clock: glass circle r 110 centred (1460, 330) */
+  #g-a4-15-four-seconds-clock { position:absolute; left:1350px; top:220px; width:220px; height:220px; border-radius:50%;
+    opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55); }
+  #g-a4-15-four-seconds-csvg { position:absolute; left:0; top:0; width:220px; height:220px; }
+  .ga415-leaf { position:absolute; left:0; top:82px; width:220px; text-align:center; opacity:0; visibility:hidden;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:56px; color:#f2f5f8; }
+</style>
+<div id="g-a4-15-four-seconds-root" data-composition-id="g-a4-15-four-seconds" data-width="1920" data-height="1080">
+  <svg id="g-a4-15-four-seconds-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g-a4-15-four-seconds-sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#15202b"/><stop offset="1" stop-color="#04070c"/>
+      </linearGradient>
+      <!-- door opening inside the 10 px frame (frame rect x 760-1160, y 100-940) -->
+      <clipPath id="g-a4-15-four-seconds-cdoor"><rect x="765" y="105" width="390" height="835"/></clipPath>
+      <!-- inside water stops at the floor line y 940 -->
+      <clipPath id="g-a4-15-four-seconds-croom"><rect x="0" y="0" width="1920" height="940"/></clipPath>
+    </defs>
+
+    <!-- OUTSIDE, seen through the door: night sky, then water whose surface = inside surface (y 860, later y 380) -->
+    <g clip-path="url(#g-a4-15-four-seconds-cdoor)">
+      <rect x="765" y="105" width="390" height="835" fill="url(#g-a4-15-four-seconds-sky)"/>
+      <g id="g-a4-15-four-seconds-outw">
+        <rect x="740" y="860" width="440" height="700" fill="#5a768f"/>
+        <path fill="none" stroke="#7fb2e5" stroke-width="3" d="M740,860 L1180,860"/>
+        <!-- flow streaks: paths run west to east (left to right); a rising strokeDashoffset moves the dashes toward the
+             path start, so they travel east to west (right to left) on screen. Rows below y 940 come into view as the water rises. -->
+        <g id="g-a4-15-four-seconds-streaks" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-linecap="round" opacity="0.75">
+          <path class="ga415-st" stroke-dasharray="46 74" d="M740,882 L1180,882"/>
+          <path class="ga415-st" stroke-dasharray="28 92" d="M740,904 L1180,904"/>
+          <path class="ga415-st" stroke-dasharray="60 60" d="M740,926 L1180,926"/>
+          <path class="ga415-st" stroke-dasharray="36 84" d="M740,966 L1180,966"/>
+          <path class="ga415-st" stroke-dasharray="52 68" d="M740,1012 L1180,1012"/>
+          <path class="ga415-st" stroke-dasharray="30 90" d="M740,1066 L1180,1066"/>
+          <path class="ga415-st" stroke-dasharray="44 76" d="M740,1124 L1180,1124"/>
+          <path class="ga415-st" stroke-dasharray="58 62" d="M740,1182 L1180,1182"/>
+          <path class="ga415-st" stroke-dasharray="34 86" d="M740,1240 L1180,1240"/>
+          <path class="ga415-st" stroke-dasharray="50 70" d="M740,1298 L1180,1298"/>
+          <path class="ga415-st" stroke-dasharray="40 80" d="M740,1352 L1180,1352"/>
+          <path class="ga415-st" stroke-dasharray="26 94" d="M740,1404 L1180,1404"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- door leaf, partly open, hinged on the left jamb (x 765); swings by scaleX about svgOrigin 765 520 -->
+    <g id="g-a4-15-four-seconds-leaf">
+      <rect x="765" y="105" width="120" height="835" fill="#2a2622" stroke="#6b6257" stroke-width="2"/>
+      <rect x="785" y="150" width="80" height="300" fill="none" stroke="#6b6257" stroke-width="2" opacity="0.7"/>
+      <rect x="785" y="500" width="80" height="380" fill="none" stroke="#6b6257" stroke-width="2" opacity="0.7"/>
+    </g>
+    <!-- door frame x 760-1160, y 100-940, 10 px -->
+    <path fill="none" stroke="#6b6257" stroke-width="10" stroke-linejoin="miter" d="M760,940 L760,100 L1160,100 L1160,940"/>
+
+    <!-- Isaac: silhouette x 560-660, feet y 940, head top y 250 (5.75 ft x 120 px) -->
+    <g id="g-a4-15-four-seconds-fig" class="ga415-hs" fill="#93a3b2">
+      <circle cx="610" cy="290" r="40"/>
+      <rect x="598" y="326" width="24" height="22"/>
+      <path d="M572,348 L648,348 Q660,350 660,366 L654,540 L566,540 L560,366 Q560,350 572,348 Z"/>
+      <path d="M560,370 L548,560 L560,562 L574,400 Z"/>
+      <path d="M660,370 L672,560 L660,562 L646,400 Z"/>
+      <path d="M568,536 L606,536 L604,940 L576,940 Z"/>
+      <path d="M614,536 L652,536 L644,940 L616,940 Z"/>
+    </g>
+
+    <!-- INSIDE water: rect + rippling surface, moved as one group, clipped at the floor line -->
+    <g clip-path="url(#g-a4-15-four-seconds-croom)">
+      <g id="g-a4-15-four-seconds-inw">
+        <rect id="g-a4-15-four-seconds-inrect" x="0" y="860" width="1920" height="700" fill="#5a768f" opacity="0.6"/>
+        <!-- wavelength 120 px, x 0 to 2040 (one wavelength spare for the ripple shift) -->
+        <path id="g-a4-15-four-seconds-wave" fill="none" stroke="#7fb2e5" stroke-width="3"
+          d="M0,860 q30,-6 60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0 t60,0"/>
+      </g>
+    </g>
+
+    <!-- floor in section below y 940: boards -->
+    <rect x="0" y="940" width="1920" height="140" fill="#15202b"/>
+    <path fill="none" stroke="#2a2622" stroke-width="3"
+      d="M0,968 L1920,968 M0,998 L1920,998 M0,1028 L1920,1028 M0,1058 L1920,1058
+         M180,940 L180,968 M520,940 L520,968 M940,940 L940,968 M1380,940 L1380,968 M1760,940 L1760,968
+         M330,968 L330,998 M760,968 L760,998 M1190,968 L1190,998 M1610,968 L1610,998
+         M120,998 L120,1028 M600,998 L600,1028 M1050,998 L1050,1028 M1480,998 L1480,1028
+         M400,1028 L400,1058 M860,1028 L860,1058 M1300,1028 L1300,1058 M1700,1028 L1700,1058"/>
+    <path fill="none" stroke="#6b6257" stroke-width="2" d="M0,940 L1920,940"/>
+
+    <!-- doorframe ruler on the right jamb: ticks every 1 ft (120 px) from the floor y 940 -->
+    <path id="g-a4-15-four-seconds-ruler" class="ga415-hs" fill="none" stroke="#93a3b2" stroke-width="3"
+      d="M1160,940 L1176,940 M1160,820 L1176,820 M1160,700 L1176,700 M1160,580 L1176,580 M1160,460 L1176,460 M1160,340 L1176,340 M1160,220 L1176,220"/>
+
+    <!-- waist tick at y 532 (3.4 ft above the feet) -->
+    <path id="g-a4-15-four-seconds-waist" class="ga415-hs" fill="none" stroke="#d8a13a" stroke-width="5" stroke-linecap="round" d="M536,532 L684,532"/>
+  </svg>
+
+  <div id="g-a4-15-four-seconds-src">Isaac Cline, Monthly Weather Review, September 1900, p. 373</div>
+  <div id="g-a4-15-four-seconds-mw" class="ga415-lab">W</div>
+  <div id="g-a4-15-four-seconds-me" class="ga415-lab">E</div>
+  <div id="g-a4-15-four-seconds-r1" class="ga415-lab">1 FT</div>
+  <div id="g-a4-15-four-seconds-r2" class="ga415-lab">2 FT</div>
+  <div id="g-a4-15-four-seconds-r3" class="ga415-lab">3 FT</div>
+  <div id="g-a4-15-four-seconds-r4" class="ga415-lab">4 FT</div>
+  <div id="g-a4-15-four-seconds-r5" class="ga415-lab">5 FT</div>
+  <div id="g-a4-15-four-seconds-note">Vertical scale 120 px per ft &middot; house: schematic</div>
+
+  <div id="g-a4-15-four-seconds-c8" class="ga415-chip">
+    <span class="ga415-main">8 IN</span>
+    <span class="ga415-tag">On his floor</span>
+  </div>
+
+  <div id="g-a4-15-four-seconds-clock">
+    <svg id="g-a4-15-four-seconds-csvg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- 4 tick marks at 90 deg steps, r 78 to 102 -->
+      <path fill="none" stroke="#93a3b2" stroke-width="3" d="M110,8 L110,32 M212,110 L188,110 M110,212 L110,188 M8,110 L32,110"/>
+      <!-- arc r 90 from 12 o'clock clockwise; length 2*pi*90 = 565.49, dash ceil+1 = 567 -->
+      <path id="g-a4-15-four-seconds-arc" fill="none" stroke="#e8c56a" stroke-width="10" stroke-linecap="butt"
+        stroke-dasharray="567 567" stroke-dashoffset="567"
+        d="M110,20 A90,90 0 1 1 110,200 A90,90 0 1 1 110,20"/>
+    </svg>
+    <div id="g-a4-15-four-seconds-k1" class="ga415-leaf">1 S</div>
+    <div id="g-a4-15-four-seconds-k2" class="ga415-leaf">2 S</div>
+    <div id="g-a4-15-four-seconds-k3" class="ga415-leaf">3 S</div>
+    <div id="g-a4-15-four-seconds-k4" class="ga415-leaf">4 S</div>
+  </div>
+
+  <div id="g-a4-15-four-seconds-c4" class="ga415-chip"><span class="ga415-main">4 FT IN ABOUT 4 SECONDS</span></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-15-four-seconds-";
+  /* a4-s9.words.json; host spans the whole segment, so comp-local = word time.
+     stayed 0.00 · 7 1.50 (spoken, no popfig) · stood 3.34 · front 3.92 · partly 5.12 · current 6.80 · Inside 8.34
+     8 12.20 · it. ends 13.60 · Count 14.02 · feet 18.20 · above 19.26 · waist 19.76 · move. ends 20.94 (host end) */
+
+  /* --- start states --- */
+  tl.set([P+"src", P+"mw", P+"me", P+"r1", P+"r2", P+"r3", P+"r4", P+"r5", P+"note", P+"c8", P+"c4", P+"clock",
+          P+"k1", P+"k2", P+"k3", P+"k4", P+"fig", P+"ruler", P+"waist"], {autoAlpha: 0}, 0);
+  tl.set(P+"leaf", {svgOrigin: "765 520", scaleX: 1}, 0);
+  tl.set([P+"inw", P+"outw"], {y: 0}, 0);
+
+  /* --- whole-window motion --- */
+  /* flow east to west: 100 px/s to CURRENT 6.80, then x2 = 200 px/s to the end (680 + 14.14 x 200 = 3508) */
+  tl.fromTo(P+"streaks path", {strokeDashoffset: 0}, {strokeDashoffset: 680, duration: 6.8, ease: "none"}, 0);
+  tl.fromTo(P+"streaks path", {strokeDashoffset: 680}, {strokeDashoffset: 3508, duration: 14.14, ease: "none"}, 6.8);
+  /* ripple: one 120 px wavelength per 1.2 s, right to left, 17 cycles = 20.4 s */
+  tl.fromTo(P+"wave", {x: 0}, {x: -120, duration: 1.2, ease: "none", repeat: 16}, 0);
+
+  /* SO THEY STAYED @0.00: room, door, outside water at y 860, flow moving on frame 0; source line in */
+  tl.fromTo(P+"src", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out"}, 0);
+  tl.to(P+"src", {y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 7}, 0.5);
+
+  /* ISAAC STOOD @3.34: figure steps in from the left */
+  tl.fromTo(P+"fig", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out"}, 3.34);
+
+  /* DOOR @3.92: leaf swings a little (scaleX 1 -> 0.9); PARTLY @5.12: a knock in the current */
+  tl.to(P+"leaf", {scaleX: 0.9, duration: 0.5, ease: "power2.out"}, 3.92);
+  tl.to(P+"leaf", {scaleX: 0.86, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1}, 5.12);
+
+  /* CURRENT @6.80: streaks speed up (tween above); W / E pair marks the direction */
+  tl.fromTo(P+"mw", {autoAlpha: 0, y: 12}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out"}, 6.8);
+  tl.fromTo(P+"me", {autoAlpha: 0, y: 12}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out"}, 6.9);
+
+  /* INSIDE @8.34: the doorframe ruler and the scale note */
+  tl.fromTo(P+"ruler", {autoAlpha: 0, x: 10}, {autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out"}, 8.34);
+  tl.fromTo(P+"r1", {autoAlpha: 0, x: 16}, {autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out"}, 8.4);
+  tl.fromTo(P+"r2", {autoAlpha: 0, x: 16}, {autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out"}, 8.5);
+  tl.fromTo(P+"r3", {autoAlpha: 0, x: 16}, {autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out"}, 8.6);
+  tl.fromTo(P+"r4", {autoAlpha: 0, x: 16}, {autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out"}, 8.7);
+  tl.fromTo(P+"r5", {autoAlpha: 0, x: 16}, {autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out"}, 8.8);
+  tl.fromTo(P+"note", {autoAlpha: 0, x: -20}, {autoAlpha: 1, x: 0, duration: 0.5, ease: "power2.out"}, 8.9);
+
+  /* 8 IN @12.20: inside sheet brightens, chip in; chip out 13.80 */
+  tl.fromTo(P+"inrect", {opacity: 0.6}, {opacity: 0.85, duration: 0.4, ease: "power2.out"}, 12.2);
+  tl.to(P+"inrect", {opacity: 0.6, duration: 0.6, ease: "power2.inOut"}, 13.4);
+  tl.fromTo(P+"c8", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 12.2);
+  tl.to(P+"c8", {y: -4, duration: 1.15, ease: "sine.inOut"}, 12.65);
+  tl.to(P+"c8", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 13.8);
+
+  /* COUNT @14.02: clock in, arc draws 14.02 -> 18.02; waist tick in; water rises 480 px (4 ft) 14.02 -> 18.02, surging */
+  tl.fromTo(P+"clock", {autoAlpha: 0, scale: 0.8}, {autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(1.6)"}, 14.02);
+  tl.fromTo(P+"arc", {strokeDashoffset: 567}, {strokeDashoffset: 0, duration: 4.0, ease: "none"}, 14.02);
+  tl.fromTo(P+"waist", {autoAlpha: 0, scaleX: 0.4, svgOrigin: "610 532"}, {autoAlpha: 1, scaleX: 1, svgOrigin: "610 532", duration: 0.4, ease: "power3.out"}, 14.02);
+  tl.to([P+"inw", P+"outw"], {y: -480, duration: 4.0, ease: "power1.in"}, 14.02);
+
+  /* counts: 1 @15.02, 2 @16.02, 3 @17.02, 4 @18.02 (pre-authored leaves) */
+  tl.set(P+"k1", {autoAlpha: 1}, 15.02);
+  tl.fromTo(P+"k1", {scale: 1.3}, {scale: 1, duration: 0.3, ease: "power3.out"}, 15.02);
+  tl.set(P+"k1", {autoAlpha: 0}, 16.02);
+  tl.set(P+"k2", {autoAlpha: 1}, 16.02);
+  tl.fromTo(P+"k2", {scale: 1.3}, {scale: 1, duration: 0.3, ease: "power3.out"}, 16.02);
+  tl.set(P+"k2", {autoAlpha: 0}, 17.02);
+  tl.set(P+"k3", {autoAlpha: 1}, 17.02);
+  tl.fromTo(P+"k3", {scale: 1.3}, {scale: 1, duration: 0.3, ease: "power3.out"}, 17.02);
+  tl.set(P+"k3", {autoAlpha: 0}, 18.02);
+  tl.set(P+"k4", {autoAlpha: 1}, 18.02);
+  tl.fromTo(P+"k4", {scale: 1.3}, {scale: 1, duration: 0.3, ease: "power3.out"}, 18.02);
+  tl.to(P+"clock", {y: -4, duration: 1.16, ease: "sine.inOut", yoyo: true, repeat: 1}, 18.02);
+
+  /* 4 FT @18.20: chip in top-left */
+  tl.fromTo(P+"c4", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 18.2);
+  tl.to(P+"c4", {y: -4, duration: 1.69, ease: "sine.inOut"}, 18.65);
+
+  /* WAIST @19.76: waist tick flashes red, water already above it (y 380 < 532) */
+  tl.to(P+"waist", {stroke: "#d0121f", scaleX: 1.15, svgOrigin: "610 532", duration: 0.2, ease: "power2.out"}, 19.76);
+  tl.to(P+"waist", {scaleX: 1, svgOrigin: "610 532", duration: 0.4, ease: "power2.inOut"}, 19.96);
+
+  /* exit: chips and clock slide out in the last 0.6 s; cut to g-a4-16 at 20.94 */
+  tl.to([P+"c4", P+"clock"], {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 20.34);
+  window.__timelines["g-a4-15-four-seconds"] = tl;
+})();
+</script>
+</template>
