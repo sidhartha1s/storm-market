@@ -6,7 +6,6 @@ ffmpeg-lavfi fixture clips (not episode renders)."""
 import json
 import os
 import re
-import shutil
 import subprocess
 import sys
 import tempfile
@@ -15,6 +14,7 @@ from pathlib import Path
 
 S = Path(__file__).resolve().parent
 sys.path.insert(0, str(S))
+import winbin  # noqa: E402
 FAILS = []
 
 
@@ -256,6 +256,21 @@ finally:
 # render-07: verify_render.sh only gated on the GPU probe; black/silence/freeze/duration/
 # fps/resolution/audio were printed but never failed the run.
 # ---------------------------------------------------------------------------
+# render-14: a hidden launch resolved bare "bash" to WSL's WindowsApps\bash.exe (rc 127 on a Windows path, PR 239
+# e2e 29 Oct 26). Tests launch verify_render.sh through winbin.real("bash"), which skips the stub.
+with tempfile.TemporaryDirectory() as sd:
+    stub = Path(sd) / "WindowsApps"
+    stub.mkdir()
+    (stub / "bash.exe").write_bytes(b"")
+    git_bash = Path(winbin.real("bash")).parent
+    picked = winbin.real("bash", path=os.pathsep.join([str(stub), str(git_bash)]))
+    check("render-14: a WindowsApps bash first on PATH is skipped for the real bash", Path(picked).parent == git_bash, picked)
+    try:
+        winbin.real("bash", path=str(stub))
+        check("render-14: a PATH with only the WindowsApps bash stops and names WindowsApps", False, "no SystemExit")
+    except SystemExit as e:
+        check("render-14: a PATH with only the WindowsApps bash stops and names WindowsApps", "WindowsApps" in str(e), str(e))
+
 verify_src = (S / "verify_render.sh").read_text(encoding="utf-8")
 check("render-07 OLD script had no non-GPU exit path", True)  # documented from the pre-fix read; see report
 check("render-07 NEW script asserts duration/fps/resolution/audio against the composition",
@@ -263,7 +278,7 @@ check("render-07 NEW script asserts duration/fps/resolution/audio against the co
 
 
 def run_verify(ep_dir, base, mode="full", env=None):  # mode=None leaves the argument out
-    return subprocess.run(["bash", str(S / "verify_render.sh"), str(ep_dir), base, *([mode] if mode else [])],
+    return subprocess.run([winbin.real("bash"), str(S / "verify_render.sh"), str(ep_dir), base, *([mode] if mode else [])],
                           capture_output=True, text=True, env=env)
 
 
@@ -276,7 +291,7 @@ def store_stub_env(d, real_python):
     for n in ("python3", "python"):
         (stub / n).write_text("#!/bin/sh\necho 'Python was not found; run without arguments to install from the Microsoft Store' >&2\nexit 9009\n",
                               encoding="utf-8", newline="\n")
-    rest = [str(Path(sys.executable).parent), os.environ["PATH"]] if real_python else [str(Path(shutil.which("bash")).parent)]
+    rest = [str(Path(sys.executable).parent), os.environ["PATH"]] if real_python else [str(Path(winbin.real("bash")).parent)]
     return dict(os.environ, PATH=os.pathsep.join([str(stub), *rest]))
 
 
