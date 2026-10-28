@@ -36,6 +36,7 @@ from tts_episode import parse_segments, SegmentParseError  # noqa: E402
 DEFAULT_WORDLIST = Path(__file__).resolve().parent.parent / "references" / "flag-words.md"
 SCRIPT_STYLE_RE = re.compile(r"<(script|style)\b[^>]*>.*?</\1>", re.IGNORECASE | re.DOTALL)
 TAG_RE = re.compile(r"<[^>]+>")
+COMMENT_RE = re.compile(r"<!--.*?-->", re.DOTALL)
 # English inflections that are plain concatenation (kill+s, murder+ed, bomb+ing). Irregular
 # forms (y -> ied, -ize infixes) are NOT covered here on purpose — see module docstring; they
 # get their own literal row in flag-words.md instead of a smarter, harder-to-audit regex.
@@ -73,7 +74,8 @@ def load_terms(wordlist_path):
 def strip_html(html_text):
     """Return visible text per source line; a <script>/<style> block collapses to blank lines
     (same newline count, so line numbers of everything after it stay correct)."""
-    no_script = SCRIPT_STYLE_RE.sub(lambda m: "\n" * m.group(0).count("\n"), html_text)
+    blank = lambda m: "\n" * m.group(0).count("\n")
+    no_script = COMMENT_RE.sub(blank, SCRIPT_STYLE_RE.sub(blank, html_text))
     lines = []
     for raw in no_script.split("\n"):
         visible = TAG_RE.sub(" ", raw)

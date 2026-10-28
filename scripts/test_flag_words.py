@@ -206,6 +206,13 @@ with tempfile.TemporaryDirectory() as d:
     check("shipped wordlist: 'explosion' tagged SOFT, not HARD",
           'SOFT "explosion"' in out and 'HARD "explosion"' not in out, out)
 
+    # 15. a multi-line HTML comment is not on-screen text
+    ep_comment = make_episode(
+        root, "ep-comment", "### A1-S1 — narration\n> The tornado struck at dusk.\n",
+        composition_html="<div>safe</div><!-- note: the victims\nwere killed here\n--><p>ok</p>")
+    rc, out = run_gate(ep_comment, wordlist)
+    check("html comment (multi-line): not scanned, exit 0", rc == 0 and "HARD" not in out, f"rc={rc} {out}")
+
 print()
 if FAILS:
     print(f"test_flag_words: {len(FAILS)} FAILED: {FAILS}")
