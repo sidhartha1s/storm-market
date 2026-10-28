@@ -1,0 +1,344 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-4-flash-freeze (A2-S3, deep): full-frame road cross-section explainer. Comp 25.42 s, no footage under it,
+  ground on the root from frame 0. Cue times are seconds from the A2-S3 start (audio/a2-s3.words.json).
+  SCHEMATIC, NOT TO SCALE: the water film is drawn thousands of times thicker than life (label on screen).
+  Thermometer: y(T) = 640 - (T - 20) x 20 px (40F 240, 38F 280, 37F 300, 33F 380, 32F 400, 31F 420, 29F 460, 20F 640).
+  Mercury = rect x 1548 w 24, top at y(T), bottom 662 (under the bulb); attr y/height tweened, never CSS height.
+  Mercury colour flips at the computed instant its top crosses y 400 (python, from each tween's ease):
+    power2.in 380->420 from 2.58 over 0.7 -> 3.075; power2.out 420->280 from 4.42 over 0.6 -> 4.465;
+    power2.inOut 280->460 from 9.54 over 1.16 -> 10.227.
+  Crack dash lengths = ceil(polyline length)+1 (python): 57, 97, 94, 75, 93, 28.
+  Particles: SVG pattern sheets translated by whole tile heights (seamless, seek-safe), clipped to the air region
+  x 420-1420, y 200-584; finite repeats. Nothing in x >= 1600, y >= 680.
+-->
+<template>
+<style>
+  #g-a2-4-flash-freeze-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  #ff-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #ff-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+
+  /* start-hidden SVG parts (also hidden by the timeline) */
+  #ff-rain2, #ff-snowfall, #ff-front, #ff-shimmer, #ff-wisp1, #ff-wisp2, #ff-ice, #ff-snowlayer, #ff-smear,
+  .ff-crack, #ff-lead-snow, #ff-lead-water, #ff-lead-asph { opacity:0; visibility:hidden; }
+  .ff-crack { fill:none; stroke:#7fb2e5; stroke-width:1; }
+  #ff-c1 { stroke-dasharray:57; stroke-dashoffset:57; }
+  #ff-c2 { stroke-dasharray:97; stroke-dashoffset:97; }
+  #ff-c3 { stroke-dasharray:94; stroke-dashoffset:94; }
+  #ff-c4 { stroke-dasharray:75; stroke-dashoffset:75; }
+  #ff-c5 { stroke-dasharray:93; stroke-dashoffset:93; }
+  #ff-c6 { stroke-dasharray:28; stroke-dashoffset:28; }
+
+  /* HUD title slot, fixed top-left */
+  .ff-hud { position:absolute; left:110px; top:110px; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:52px; line-height:52px; color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  #ff-hud-term { font-size:84px; line-height:84px; }
+
+  /* diagram labels, right-aligned at x 380 */
+  .ff-lab { position:absolute; right:1540px; height:26px; line-height:26px; font-size:22px; font-weight:700;
+    letter-spacing:3px; white-space:nowrap; text-align:right; opacity:0; visibility:hidden; }
+  #ff-lab-snow { top:557px; color:#f2f5f8; }
+  #ff-lab-water { top:613px; color:#7fb2e5; }
+  #ff-lab-ice { top:613px; color:#dfe7ee; }
+  #ff-lab-asph { top:717px; color:#93a3b2; }
+  #ff-schem { position:absolute; left:400px; top:916px; height:22px; line-height:22px; font-size:19px; font-weight:700;
+    color:#93a3b2; white-space:nowrap; }
+
+  /* thermometer text */
+  .ff-tick { position:absolute; left:1610px; height:22px; line-height:22px; font-size:19px; font-weight:700;
+    color:#93a3b2; white-space:nowrap; }
+  #ff-t40 { top:229px; }
+  #ff-t20 { top:629px; }
+  #ff-t32 { position:absolute; left:1610px; top:387px; height:26px; line-height:26px; font-size:22px; font-weight:700;
+    color:#c0392b; white-space:nowrap; }
+  #ff-eyebrow { position:absolute; right:220px; top:150px; height:26px; line-height:26px; font-size:22px; font-weight:700;
+    letter-spacing:6px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+  .ff-read { position:absolute; right:220px; top:190px; height:32px; line-height:32px; font-family:'Courier New', monospace;
+    font-size:30px; font-weight:700; white-space:nowrap; opacity:0; visibility:hidden; }
+  #ff-read-below { color:#7fb2e5; }
+  #ff-read-warm { color:#e8c56a; }
+
+  /* source line, one string at a time */
+  .ff-src { position:absolute; left:96px; bottom:54px; font-size:19px; color:#c8d3e0; white-space:nowrap; }
+  #ff-src-nws { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-4-flash-freeze-root" data-composition-id="g-a2-4-flash-freeze" data-width="1920" data-height="1080">
+  <div id="ff-stage">
+    <svg id="ff-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="ff-clip-air"><rect x="420" y="200" width="1000" height="384"/></clipPath>
+        <clipPath id="ff-clip-front"><rect x="400" y="200" width="1040" height="384"/></clipPath>
+        <clipPath id="ff-clip-film"><rect x="400" y="612" width="1040" height="28"/></clipPath>
+        <!-- light rain, tile 250 x 192 -->
+        <pattern id="ff-pat-rain1" patternUnits="userSpaceOnUse" x="0" y="0" width="250" height="192">
+          <g stroke="#7fb2e5" stroke-width="2" stroke-linecap="round" opacity="0.6">
+            <line x1="34" y1="12" x2="30" y2="36"/>
+            <line x1="162" y1="44" x2="158" y2="68"/>
+            <line x1="92" y1="98" x2="88" y2="122"/>
+            <line x1="214" y1="118" x2="210" y2="142"/>
+            <line x1="20" y1="150" x2="16" y2="174"/>
+            <line x1="134" y1="160" x2="130" y2="184"/>
+          </g>
+        </pattern>
+        <!-- added rain, tile 170 x 160 -->
+        <pattern id="ff-pat-rain2" patternUnits="userSpaceOnUse" x="0" y="0" width="170" height="160">
+          <g stroke="#dfe7ee" stroke-width="1.5" stroke-linecap="round" opacity="0.45">
+            <line x1="62" y1="8" x2="58" y2="30"/>
+            <line x1="138" y1="30" x2="134" y2="52"/>
+            <line x1="16" y1="70" x2="12" y2="92"/>
+            <line x1="104" y1="96" x2="100" y2="118"/>
+            <line x1="152" y1="128" x2="148" y2="150"/>
+            <line x1="48" y1="124" x2="44" y2="146"/>
+          </g>
+        </pattern>
+        <!-- snow, tile 200 x 192 -->
+        <pattern id="ff-pat-snow" patternUnits="userSpaceOnUse" x="0" y="0" width="200" height="192">
+          <g fill="#f2f5f8" opacity="0.9">
+            <circle cx="24" cy="18" r="4"/>
+            <circle cx="118" cy="40" r="3"/>
+            <circle cx="176" cy="76" r="4.5"/>
+            <circle cx="66" cy="96" r="3.5"/>
+            <circle cx="150" cy="138" r="3"/>
+            <circle cx="30" cy="160" r="4"/>
+            <circle cx="98" cy="176" r="3"/>
+          </g>
+        </pattern>
+        <!-- asphalt aggregate, static -->
+        <pattern id="ff-pat-agg" patternUnits="userSpaceOnUse" x="400" y="640" width="130" height="60">
+          <g fill="#4a5560">
+            <circle cx="12" cy="10" r="3"/>
+            <circle cx="58" cy="22" r="2"/>
+            <circle cx="97" cy="8" r="2.5"/>
+            <circle cx="30" cy="42" r="2"/>
+            <circle cx="80" cy="48" r="3"/>
+            <circle cx="118" cy="34" r="2"/>
+            <circle cx="50" cy="56" r="1.5"/>
+          </g>
+        </pattern>
+        <linearGradient id="ff-grad-shim" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+          <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.55"/>
+          <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- cold front: lies under the particles; leading edge top ahead of bottom by 120 px; local edge at x 0 (top) -->
+      <g clip-path="url(#ff-clip-front)">
+        <polygon id="ff-front" points="-1200,200 0,200 -120,584 -1200,584" fill="rgba(90,118,143,0.35)"/>
+      </g>
+
+      <!-- particles, air region only -->
+      <g clip-path="url(#ff-clip-air)">
+        <rect id="ff-rain1" x="420" y="8" width="1000" height="576" fill="url(#ff-pat-rain1)"/>
+        <rect id="ff-rain2" x="420" y="40" width="1000" height="544" fill="url(#ff-pat-rain2)"/>
+        <rect id="ff-snowfall" x="420" y="8" width="1000" height="576" fill="url(#ff-pat-snow)"/>
+        <!-- near-surface flakes for the wind smear (x 440-1300, +60 slide stays inside 1420) -->
+        <g id="ff-smear">
+          <g stroke="#f2f5f8" stroke-width="2" stroke-linecap="round" opacity="0.55">
+            <line class="ff-streak" x1="452" y1="552" x2="474" y2="552"/>
+            <line class="ff-streak" x1="602" y1="570" x2="624" y2="570"/>
+            <line class="ff-streak" x1="748" y1="548" x2="770" y2="548"/>
+            <line class="ff-streak" x1="890" y1="566" x2="912" y2="566"/>
+            <line class="ff-streak" x1="1032" y1="556" x2="1054" y2="556"/>
+            <line class="ff-streak" x1="1176" y1="572" x2="1198" y2="572"/>
+            <line class="ff-streak" x1="1280" y1="550" x2="1302" y2="550"/>
+          </g>
+          <g fill="#f2f5f8">
+            <circle cx="476" cy="552" r="3.5"/>
+            <circle cx="626" cy="570" r="3"/>
+            <circle cx="772" cy="548" r="4"/>
+            <circle cx="914" cy="566" r="3"/>
+            <circle cx="1056" cy="556" r="3.5"/>
+            <circle cx="1200" cy="572" r="3"/>
+            <circle cx="1304" cy="550" r="4"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- evaporation wisps over the film: rise 20 px, fade; the water stays -->
+      <path id="ff-wisp1" d="M 700 606 q 7 -8 0 -16 q -7 -8 0 -16" fill="none" stroke="rgba(223,231,238,0.6)" stroke-width="2" stroke-linecap="round"/>
+      <path id="ff-wisp2" d="M 1150 606 q -7 -8 0 -16 q 7 -8 0 -16" fill="none" stroke="rgba(223,231,238,0.6)" stroke-width="2" stroke-linecap="round"/>
+
+      <!-- road layers, x 400-1440 -->
+      <rect id="ff-base" x="400" y="820" width="1040" height="80" fill="#15202b"/>
+      <rect id="ff-asph" x="400" y="640" width="1040" height="180" fill="#2a3644"/>
+      <rect id="ff-agg" x="400" y="640" width="1040" height="180" fill="url(#ff-pat-agg)"/>
+      <rect id="ff-water" x="400" y="612" width="1040" height="28" fill="rgba(127,178,229,0.55)"/>
+      <g clip-path="url(#ff-clip-film)">
+        <rect id="ff-shimmer" x="200" y="612" width="200" height="28" fill="url(#ff-grad-shim)"/>
+      </g>
+      <rect id="ff-ice" x="400" y="612" width="1040" height="28" fill="#dfe7ee"/>
+      <path class="ff-crack" id="ff-c1" d="M 470 614 L 503 623 L 518 638"/>
+      <path class="ff-crack" id="ff-c2" d="M 640 638 L 668 626 L 706 621 L 731 613"/>
+      <path class="ff-crack" id="ff-c3" d="M 860 614 L 884 627 L 921 632 L 948 639"/>
+      <path class="ff-crack" id="ff-c4" d="M 1050 638 L 1081 624 L 1120 620"/>
+      <path class="ff-crack" id="ff-c5" d="M 1230 613 L 1262 625 L 1290 630 L 1318 638"/>
+      <path class="ff-crack" id="ff-c6" d="M 1120 620 L 1146 615"/>
+      <!-- snow layer ON the ice: grows from its bottom edge (y 612) -->
+      <g id="ff-snowwrap">
+        <rect id="ff-snowlayer" x="400" y="584" width="1040" height="28" fill="#f2f5f8"/>
+      </g>
+
+      <!-- label leaders, 1 px to x 400 -->
+      <line id="ff-lead-snow" x1="386" y1="570" x2="400" y2="598" stroke="#93a3b2" stroke-width="1"/>
+      <line id="ff-lead-water" x1="386" y1="626" x2="400" y2="626" stroke="#93a3b2" stroke-width="1"/>
+      <line id="ff-lead-asph" x1="386" y1="730" x2="400" y2="730" stroke="#93a3b2" stroke-width="1"/>
+
+      <!-- thermometer: tube y 230-640, bulb (1560, 662) r 26 -->
+      <rect id="ff-tube" x="1540" y="230" width="40" height="410" rx="20" fill="#0b1016" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <rect id="ff-merc" x="1548" y="380" width="24" height="282" fill="#d8a13a"/>
+      <circle id="ff-bulb" cx="1560" cy="662" r="26" fill="#d8a13a" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <line id="ff-l32" x1="1520" y1="400" x2="1600" y2="400" stroke="#c0392b" stroke-width="2"/>
+    </svg>
+
+    <!-- HUD title slot -->
+    <div class="ff-hud" id="ff-hud-time">ABOUT 8:15 AM</div>
+    <div class="ff-hud" id="ff-hud-night">OVERNIGHT</div>
+    <div class="ff-hud" id="ff-hud-front">BEHIND THE FRONT</div>
+    <div class="ff-hud" id="ff-hud-term">FLASH FREEZE</div>
+
+    <!-- diagram labels -->
+    <div class="ff-lab" id="ff-lab-snow">SNOW</div>
+    <div class="ff-lab" id="ff-lab-water">RAINWATER</div>
+    <div class="ff-lab" id="ff-lab-ice">ICE</div>
+    <div class="ff-lab" id="ff-lab-asph">ASPHALT</div>
+    <div id="ff-schem">SCHEMATIC, NOT TO SCALE</div>
+
+    <!-- thermometer text -->
+    <div id="ff-eyebrow">AIR, BUFFALO AIRPORT</div>
+    <div class="ff-read" id="ff-read-below">BELOW 32°F</div>
+    <div class="ff-read" id="ff-read-warm">37 TO 39°F</div>
+    <div class="ff-tick" id="ff-t40">40°F</div>
+    <div id="ff-t32">32°F</div>
+    <div class="ff-tick" id="ff-t20">20°F</div>
+
+    <!-- source line -->
+    <div class="ff-src" id="ff-src-asos">Buffalo airport ASOS, IEM archive</div>
+    <div class="ff-src" id="ff-src-nws">NWS Buffalo Blizzard Warning, 22 Dec 2022</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const AMBER = "#d8a13a", COLD = "#7fb2e5";
+  const MERC = ["#ff-merc", "#ff-bulb"];
+  function merc(T) { const y = 640 - (T - 20) * 20; return { attr: { y: y, height: 662 - y } }; }
+
+  /* rest states at 0 (transforms only here, never in CSS or markup) */
+  tl.set("#ff-front", { x: 520 }, 0);
+  tl.set("#ff-ice", { scaleX: 0, svgOrigin: "400 626" }, 0);
+  tl.set("#ff-snowlayer", { scaleY: 0, svgOrigin: "920 612" }, 0);
+  tl.set("#ff-l32", { scaleY: 1, svgOrigin: "1560 400" }, 0);
+  tl.set("#ff-smear", { x: 0 }, 0);
+  tl.set("#ff-snowwrap", { y: 0 }, 0);
+
+  /* frame 0: light rain falls, 192 px tile every 0.4 s (480 px/s), finite; stops at "freezes" */
+  tl.fromTo("#ff-rain1", { y: 0 }, { y: 192, duration: 0.4, ease: "none", repeat: 38 }, 0);
+
+  /* "quarter" @0.44: HUD time */
+  tl.fromTo("#ff-hud-time", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.44);
+
+  /* "air" @1.70: thermometer eyebrow */
+  tl.fromTo("#ff-eyebrow", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.70);
+
+  /* "dropped" @2.58: 33 -> 31 (y 380 -> 420); top crosses y 400 at 3.075 -> cold blue */
+  tl.to("#ff-merc", Object.assign({ duration: 0.7, ease: "power2.in" }, merc(31)), 2.58);
+  tl.set(MERC, { attr: { fill: COLD } }, 3.075);
+
+  /* "freezing." @3.32: readout BELOW 32F; red line pulses */
+  tl.fromTo("#ff-read-below", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 3.32);
+  tl.to("#ff-l32", { scaleY: 2, svgOrigin: "1560 400", duration: 0.2, ease: "power2.out" }, 3.32);
+  tl.to("#ff-l32", { scaleY: 1, svgOrigin: "1560 400", duration: 0.2, ease: "power2.in" }, 3.52);
+
+  /* "The rain" @4.32: flashback. HUD -> OVERNIGHT; readout out (gone by 4.44, before the mercury crosses 400) */
+  tl.to("#ff-hud-time", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 4.32);
+  tl.fromTo("#ff-hud-night", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 4.32);
+  tl.to("#ff-read-below", { autoAlpha: 0, duration: 0.12, ease: "power2.in" }, 4.32);
+  /* heavier rain: second sheet, 160 px tile every 0.36 s, until the freeze */
+  tl.fromTo("#ff-rain2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 4.32);
+  tl.fromTo("#ff-rain2", { y: 0 }, { y: 160, duration: 0.36, ease: "none", repeat: 30 }, 4.32);
+  /* "rain" @4.42: mercury up to 38 (y 280); crosses 400 at 4.465 -> amber */
+  tl.to("#ff-merc", Object.assign({ duration: 0.6, ease: "power2.out" }, merc(38)), 4.42);
+  tl.set(MERC, { attr: { fill: AMBER } }, 4.465);
+
+  /* "roads" @5.42: ASPHALT names the road; film shimmer sweeps every 1.4 s, 7 passes (ends 15.22) */
+  tl.fromTo("#ff-lab-asph", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.42);
+  tl.fromTo("#ff-lead-asph", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 5.42);
+  tl.set("#ff-shimmer", { autoAlpha: 1 }, 5.42);
+  tl.fromTo("#ff-shimmer", { x: 0 }, { x: 1240, duration: 1.4, ease: "none", repeat: 6 }, 5.42);
+
+  /* "37" @6.78: readout 37 TO 39F; mercury breathes 37 <-> 39 (y 300 <-> 260), back to 38 by "When"'s front */
+  tl.fromTo("#ff-read-warm", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 6.78);
+  tl.to("#ff-merc", Object.assign({ duration: 0.6, ease: "sine.inOut" }, merc(37)), 6.78);
+  tl.to("#ff-merc", Object.assign({ duration: 1.2, ease: "sine.inOut" }, merc(39)), 7.38);
+  tl.to("#ff-merc", Object.assign({ duration: 0.96, ease: "sine.inOut" }, merc(38)), 8.58);
+
+  /* "When" @9.02: HUD -> BEHIND THE FRONT; readout out; front enters (bottom of its edge at x 400) */
+  tl.to("#ff-hud-night", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 9.02);
+  tl.fromTo("#ff-hud-front", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 9.02);
+  tl.to("#ff-read-warm", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 9.02);
+  tl.fromTo("#ff-front", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 9.02);
+
+  /* "behind a front drops that fast" @9.54-10.70: edge bottom x 400 -> 1440; mercury 38 -> 29 (y 280 -> 460),
+     top crosses 400 at 10.227 -> cold blue */
+  tl.to("#ff-front", { x: 1560, duration: 1.16, ease: "power2.inOut" }, 9.54);
+  tl.to("#ff-merc", Object.assign({ duration: 1.16, ease: "power2.inOut" }, merc(29)), 9.54);
+  tl.set(MERC, { attr: { fill: COLD } }, 10.227);
+
+  /* "fast," @10.70: readout BELOW 32F (stays to the exit, mercury at y 460) */
+  tl.fromTo("#ff-read-below", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 10.70);
+
+  /* "water" @11.82: RAINWATER label + leader */
+  tl.fromTo("#ff-lab-water", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 11.82);
+  tl.fromTo("#ff-lead-water", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 11.82);
+
+  /* "drain" @13.66: two wisps rise 20 px and fade; the film is unchanged */
+  tl.fromTo(["#ff-wisp1", "#ff-wisp2"], { autoAlpha: 0, y: 0 }, { autoAlpha: 1, y: -10, duration: 0.5, ease: "power2.out", stagger: 0.15 }, 13.66);
+  tl.to(["#ff-wisp1", "#ff-wisp2"], { autoAlpha: 0, y: -20, duration: 0.5, ease: "power2.in", stagger: 0.15 }, 14.16);
+
+  /* "freezes" @15.34: ice sweeps left to right 0.8 s, cracks draw in; RAINWATER -> ICE; rain stops */
+  tl.set("#ff-ice", { autoAlpha: 1 }, 15.34);
+  tl.fromTo("#ff-ice", { scaleX: 0 }, { scaleX: 1, svgOrigin: "400 626", duration: 0.8, ease: "power2.inOut" }, 15.34);
+  tl.to("#ff-shimmer", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 15.34);
+  tl.to(["#ff-rain1", "#ff-rain2"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 15.34);
+  tl.to("#ff-lab-water", { autoAlpha: 0, duration: 0.4, ease: "power2.inOut" }, 15.34);
+  tl.fromTo("#ff-lab-ice", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.inOut" }, 15.34);
+  tl.set(".ff-crack", { autoAlpha: 1 }, 15.60);
+  tl.to(".ff-crack", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out", stagger: 0.12 }, 15.60);
+
+  /* "snow" @17.10: flakes fall (192 px tile every 2.08 s, 4 passes, ends 25.42); snow layer grows ON the ice */
+  tl.fromTo("#ff-snowfall", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 17.10);
+  tl.fromTo("#ff-snowfall", { y: 0 }, { y: 192, duration: 2.08, ease: "none", repeat: 3 }, 17.10);
+  tl.set("#ff-snowlayer", { autoAlpha: 1 }, 17.10);
+  tl.to("#ff-snowlayer", { scaleY: 1, svgOrigin: "920 612", duration: 1.2, ease: "power2.out" }, 17.10);
+  tl.fromTo("#ff-lab-snow", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 17.10);
+  tl.fromTo("#ff-lead-snow", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 17.10);
+
+  /* "keeps falling on it" @17.36-18.40: near-surface flakes smear right 60 px with streaks; layer top ripples 2 px */
+  tl.fromTo("#ff-smear", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.15, ease: "power2.out" }, 17.36);
+  tl.to("#ff-smear", { x: 60, duration: 1.04, ease: "power2.inOut" }, 17.36);
+  tl.to("#ff-smear", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 18.40);
+  tl.to("#ff-snowwrap", { y: 2, duration: 0.26, ease: "sine.inOut", yoyo: true, repeat: 3 }, 17.36);
+
+  /* "flash" @19.98: HUD -> FLASH FREEZE at 84 px */
+  tl.to("#ff-hud-front", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 19.98);
+  tl.fromTo("#ff-hud-term", { autoAlpha: 0, scale: 1.12 }, { autoAlpha: 1, scale: 1, transformOrigin: "left top", duration: 0.45, ease: "power4.out" }, 19.98);
+
+  /* "and it's" @21.24: source line names the warning product */
+  tl.to("#ff-src-asos", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 21.24);
+  tl.fromTo("#ff-src-nws", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 21.24);
+
+  /* after "before." @24.24: exit fade-through 24.62-25.42, ground stays; snow still falling */
+  tl.to("#ff-stage", { autoAlpha: 0, duration: 0.8, ease: "power2.in" }, 24.62);
+
+  window.__timelines["g-a2-4-flash-freeze"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
