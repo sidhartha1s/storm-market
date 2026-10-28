@@ -81,7 +81,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"sub", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 5.38);
 
   /* exit: popfig out, then the spine slides out right in the last 0.6 s */
-  tl.to([P+"pop", P+"sub"], {scale:0.92, autoAlpha:0, duration:0.5, ease:"power2.in"}, 6.3);
+  tl.to([P+"pop", P+"sub"], {scale:0.92, autoAlpha:0, duration:0.5, ease:"power2.in"}, 6.44); /* spoken-word punch, 0.86 s settled; the 6.94 host end leaves no room for 1.5 s */
   tl.to(P+"spine", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 6.34);
 
   window.__timelines["g-a5-8-memoir"] = tl;
