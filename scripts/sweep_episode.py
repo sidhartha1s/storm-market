@@ -253,7 +253,7 @@ report("no unmounted compositions", sorted(authored - mounted))
 report("no missing compositions", sorted(mounted - authored))
 
 # 7. graphic window vs its own timeline length
-overrun = []
+overrun, unmeasured = [], []
 for gid in sorted(mounted):
     src = fold((ep / "compositions" / f"{gid}.html").read_text(encoding="utf-8", errors="replace"))
     pos_matches = list(re.finditer(r'tl\.\w+\([^;]*?,\s*([\d.]+)\s*\);', src))
@@ -264,12 +264,13 @@ for gid in sorted(mounted):
     # print the coverage honestly instead so a real hole is never silently capped, but only a
     # confirmed overrun among the tweens actually resolved below fails the sweep.
     calls_total = len(re.findall(r'tl\.(?:to|from|fromTo|set|add)\s*\(', src))
-    unresolved = 0
     if calls_total:
         unresolved = calls_total - len(pos_matches)
         note = f"; {unresolved} loop/expression positions not checked" if unresolved else ""
         print(f"      check 7: resolved {len(pos_matches)}/{calls_total} tween positions in {gid}{note}")
-    unresolved += sum(1 for m in pos_matches if re.search(r'duration:\s*(?![\d.])', m.group(0)))   # duration: DUR
+    # a `duration: DUR` that fold() could not resolve reads as 0 s, so tl_end is only a lower bound and "holds" cannot be
+    # claimed. Only this skips "holds": the loop/no-position count above is coverage, never a reason to drop a verdict.
+    dur_expr = sum(1 for m in pos_matches if re.search(r'duration:\s*(?![\d.])', m.group(0)))
     ends = [float(m.group(1)) + max([float(d) for d in re.findall(
         r'duration:\s*([\d.]+)', m.group(0))] or [0])
         for m in pos_matches]
@@ -293,9 +294,8 @@ for gid in sorted(mounted):
     for w in wins:
         if w["name"] != gid:
             continue
-        # tl_end is only a lower bound while positions (DUR - 0.6, SEG * 2) go unresolved, so "holds" cannot be claimed
-        if unresolved and w["dur"] - tl_end > 4.0:
-            print(f"      check 7: 'holds' skipped for {gid}: {unresolved} unresolved positions make the timeline length a lower bound")
+        if dur_expr and w["dur"] - tl_end > 4.0:
+            unmeasured.append((gid, dur_expr, round(w["dur"], 1), round(tl_end, 1)))
         elif w["dur"] - tl_end > 4.0:
             overrun.append(("holds", gid, round(w["dur"], 1), round(tl_end, 1)))
         # the direction this check used to ignore entirely: a mount SHORTER than the
@@ -304,6 +304,9 @@ for gid in sorted(mounted):
             overrun.append(("cuts a beat", gid, round(w["dur"], 1), round(last_beat, 1)))
 report("graphic window fits its timeline", overrun,
        lambda x: f"{x[0]:9} {x[1]} window {x[2]}s vs timeline {x[3]}s")
+# a skipped verdict is counted, never hidden behind the PASS above: make the duration a literal or a foldable const
+report("graphic timeline measurable (holds checked)", unmeasured,
+       lambda x: f"{x[0]} window {x[2]}s vs timeline >= {x[3]}s: {x[1]} unresolved duration expression(s)")
 
 # NOTE: there is deliberately no "cue alignment" check here. One used to sit at this
 # spot; it initialised an empty findings list, never appended to it, and printed PASS on

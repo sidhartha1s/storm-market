@@ -189,14 +189,14 @@ with tempfile.TemporaryDirectory() as d:
     code, out = run("sweep_episode.py", ep_webm)
     check("sweep_episode: a long .webm is not a still", "PASS no still over 6s" in out, out[-600:])
 
-# a timeline whose positions are expressions (DUR - 0.6) is unmeasurable: no false "holds"
+# a timeline whose durations are unfoldable expressions is unmeasurable: no false "holds", but the skip is a reported FAIL
 with tempfile.TemporaryDirectory() as d:
     comp = ('<template><div id="g"><span id="t">hi</span></div><script>const DUR=Math.max(8, 2); '
             'tl.to("#t", {duration:1}, 0.1); tl.to({t:0}, {duration: DUR}, 0);</script></template>')
     ep_dur = make_ep(Path(d) / "dur", comp_html=comp, comp_window=8.0)
     code, out = run("sweep_episode.py", ep_dur)
-    check("sweep_episode: expression positions skip 'holds' with a note, no false FAIL",
-          "holds" not in out.replace("'holds' skipped", "") and "'holds' skipped for g1" in out, out[-600:])
+    check("sweep_episode: an unresolved duration skips 'holds' and reports the skip, no false 'holds' FAIL",
+          "FAIL graphic timeline measurable" in out and "PASS graphic window fits its timeline" in out, out[-600:])
 
 def ask_check(out):
     return next((l for l in out.splitlines() if "End ask present" in l), "")
@@ -272,7 +272,7 @@ with tempfile.TemporaryDirectory() as d:
     ep_real = make_ep(Path(d) / "realoverrun", unparsed_tween=True, comp_window=6.0)
     code, out = run("sweep_episode.py", ep_real)
     check("sweep_episode: a genuine overrun among resolved tweens still FAILs (unparsed doesn't mask it)",
-          code == 1 and "holds" in out and "resolved" in out, f"(exit {code})\n{out[-600:]}")
+          code == 1 and "FAIL graphic window fits its timeline" in out and "holds     g1" in out, f"(exit {code})\n{out[-600:]}")
 
 # ===================================================================================
 # 3. beat_density.py — exit code on a DEAD (>=4s motionless) composition
