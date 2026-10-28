@@ -123,6 +123,10 @@ window.__timelines = window.__timelines || {};
   /* The tide @10.76: the four "About 5 a.m." lines light one after another on the p. 372 still, out 12.30 to 12.60 before the cut at 12.68 */
   const BD = [P+"bd1", P+"bd2", P+"bd3", P+"bd4"];
   tl.set(BD, {autoAlpha:0, scaleX:0}, 0);
+  /* 10.00: the page copy takes over from the index still (identical framing) and pushes in to 10.70; hard off at the cut 12.68 */
+  tl.set(P+"pg", {autoAlpha:1, scale:1}, 10.00);
+  tl.to(P+"pg", {scale:1.797, duration:0.7, ease:"power2.inOut"}, 10.00);
+  tl.set(P+"pg", {autoAlpha:0}, 12.68);
   tl.set(BD, {autoAlpha:1}, 10.30);
   tl.to(P+"bd1", {scaleX:1, duration:0.35, ease:"power2.out"}, 10.30);
   tl.to(P+"bd2", {scaleX:1, duration:0.35, ease:"power2.out"}, 10.76);
