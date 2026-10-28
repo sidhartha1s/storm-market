@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-5-coast-map · A1-S3 5.46 to A1-S4 1.64 · ep-galveston-1900 · DEEP (Opus) · brief: briefs/a1/g-a1-5-coast-map.md
+  Claim: down the coast from Galveston, Indianola on Matagorda Bay was wrecked in 1875 (8 buildings undamaged),
+  wrecked again in 1886 (not on this map: g-a1-6 photo) and never rebuilt (TSHA).
+
+  PLATE: g-intro-4-wire-map unchanged: X = (lon + 100) * 90, Y = (41 - lat) * 103.95, north up.
+  BASEMAP (between BASEMAP markers): the subset of g-intro-4's land path (Natural Earth 10m, simplified 0.025 deg)
+    whose points fall in X 0..999, Y 950..1549, copied point for point; the mainland run is closed by an off-frame
+    box (north and west of the window), the barrier islands are g-intro-4's own subpaths. The states line is
+    g-intro-4's Texas-Louisiana segment in the same box. The unsimplified 10m coast was not used (no shell this run),
+    so Matagorda Bay shows as the simplified sliver: the source line says "Schematic".
+  PINS (formula): Galveston (-94.80, 29.30) = (468.0, 1216.2); Indianola (-96.51, 28.53) = (314.1, 1296.3), which
+    sits 1 plate unit off the simplified west-shore segment (305.2,1291.2)-(315.6,1298.3), i.e. on the coast stroke.
+    Matagorda Bay label anchor (-96.30, 28.42) = (333.0, 1307.7): Pass Cavallo, the bay's mouth (water between
+    Port O'Connor 323.7,1306.1, Matagorda Island tip 321.5,1310.5 and the peninsula tip 340.3,1300.5).
+  CAMERA: screen = (960 + (X - cx) * s, 540 + (Y - cy) * s), camAt(t) pure function of comp time.
+    C0 0..0.36 s 3, c (468.0,1216.2); C1 0.36..1.80 to c (391.0,1256.2) power2.inOut; then s 3.0 -> 3.12 ease none
+    to the host end 18.369. Linear: no zoom, so no logZoom.
+  TIMES: host start = nx-a1-s3 132.334 + 5.46 = 137.794; S4 starts 154.523, so comp = S4 time + 16.729.
+    Host duration 18.369 (S4 1.64). Comp time inside S3 = S3 time - 5.46.
+  CIRCLE CORNER (x >= 1600, y >= 680): coast there lies at Y < 1240 (screen y < 680) at every camera state: Gulf only.
+-->
+<template>
+<style>
+  #g-a1-5-coast-map-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ga15-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .ga15-land { fill:#15202b; stroke:#5a768f; stroke-width:2px; stroke-linejoin:round; }
+  .ga15-states { fill:none; stroke:#2a3644; stroke-width:1.5px; }
+  .ga15-lab { font-family:Arial, sans-serif; font-weight:700; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .ga15-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:1.4; color:#c8d3e0; white-space:nowrap; }
+  .ga15-chip { position:absolute; left:400px; top:760px; box-sizing:border-box; padding:18px 28px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; }
+  .ga15-chipin { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:60px; color:#f2f5f8; }
+  .ga15-big { display:inline-block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; }
+  .ga15-rest { display:inline-block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; white-space:pre; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .ga15-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a1-5-coast-map-root" data-composition-id="g-a1-5-coast-map" data-width="1920" data-height="1080">
+  <svg class="ga15-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <!-- camera layer: plate units -->
+    <g id="g-a1-5-coast-map-cam">
+      <!--BASEMAP:g-a1-5 (subset of g-intro-4)-->
+      <path class="ga15-land" vector-effect="non-scaling-stroke" d="M1000.0,900.0 L1000.0,1100.0 L967.2,1110.3 L960.1,1104.2 L958.0,1107.0 L961.2,1111.0 L952.1,1116.7 L950.2,1123.7 L936.4,1127.2 L936.4,1124.0 L923.8,1124.2 L922.4,1118.8 L902.8,1115.9 L894.7,1106.0 L880.0,1103.2 L861.4,1123.8 L865.8,1135.1 L886.9,1141.0 L900.3,1138.0 L910.8,1127.4 L919.0,1133.2 L923.7,1125.2 L923.1,1133.1 L928.7,1125.9 L932.4,1128.8 L925.4,1140.0 L918.0,1138.1 L914.4,1142.3 L917.0,1148.9 L926.2,1148.0 L924.4,1151.6 L930.2,1156.4 L935.8,1154.8 L939.1,1143.4 L946.2,1135.5 L957.1,1138.4 L949.1,1145.9 L956.7,1148.6 L950.9,1150.8 L956.7,1151.9 L954.6,1155.9 L960.1,1155.9 L955.8,1160.8 L958.9,1165.1 L952.8,1167.9 L946.6,1160.8 L942.1,1168.8 L935.9,1171.0 L946.6,1181.5 L926.8,1173.6 L934.2,1182.2 L921.9,1181.5 L929.0,1192.5 L942.9,1198.6 L941.4,1206.1 L959.7,1206.8 L955.7,1209.7 L964.7,1210.2 L968.0,1214.6 L972.3,1210.7 L979.9,1219.9 L976.7,1222.8 L987.1,1224.9 L989.1,1229.2 L981.3,1230.8 L987.9,1232.1 L984.2,1238.5 L981.1,1235.0 L982.4,1239.2 L980.5,1237.0 L976.5,1242.4 L978.0,1247.8 L967.7,1236.4 L967.5,1240.7 L962.1,1242.2 L952.8,1254.8 L965.1,1230.8 L962.6,1234.2 L961.0,1228.5 L960.8,1235.0 L955.5,1238.3 L946.6,1222.1 L949.0,1221.4 L945.4,1220.4 L945.3,1223.6 L930.4,1216.1 L916.4,1214.5 L923.1,1209.0 L920.2,1203.7 L916.2,1204.0 L916.5,1198.1 L912.6,1201.3 L905.3,1199.1 L891.0,1190.8 L888.5,1192.9 L883.6,1187.2 L881.1,1193.9 L897.9,1202.8 L896.6,1212.1 L894.7,1210.0 L898.4,1216.4 L891.4,1217.9 L892.5,1224.0 L895.4,1223.6 L892.8,1229.2 L879.4,1238.4 L875.6,1230.0 L876.5,1219.4 L874.1,1223.0 L869.5,1215.0 L864.6,1222.1 L860.9,1210.3 L856.5,1217.2 L845.8,1215.4 L847.3,1223.6 L843.6,1222.9 L842.3,1232.8 L840.3,1230.3 L831.8,1235.4 L827.5,1234.2 L830.0,1229.9 L823.8,1228.5 L820.4,1233.5 L809.0,1228.5 L810.1,1224.7 L802.8,1227.0 L780.5,1216.7 L779.4,1212.1 L783.6,1213.8 L789.9,1207.9 L790.7,1211.7 L795.5,1212.1 L796.1,1221.4 L799.8,1219.2 L799.1,1212.3 L786.4,1198.6 L789.4,1184.2 L786.8,1183.6 L783.1,1197.1 L771.8,1193.2 L771.4,1188.6 L759.7,1191.4 L759.5,1180.6 L752.0,1180.3 L752.6,1170.3 L732.7,1172.7 L733.7,1161.0 L721.4,1160.9 L707.9,1170.9 L707.3,1167.7 L701.8,1167.9 L704.5,1175.1 L711.0,1173.6 L707.3,1175.8 L710.3,1182.9 L717.8,1182.2 L714.1,1186.3 L691.7,1191.9 L658.5,1184.6 L612.0,1167.1 L579.7,1168.1 L555.2,1174.6 L549.6,1165.2 L559.6,1158.4 L561.6,1147.5 L553.1,1144.8 L545.6,1163.6 L551.2,1177.2 L530.8,1177.7 L481.1,1200.4 L471.4,1209.3 L468.8,1207.9 L476.9,1199.3 L494.6,1192.7 L496.3,1188.6 L469.9,1192.3 L477.7,1175.0 L473.9,1166.1 L467.4,1166.1 L461.2,1178.2 L457.2,1179.3 L445.3,1169.5 L444.2,1173.3 L451.3,1177.2 L447.8,1191.0 L458.3,1195.8 L453.1,1198.6 L455.1,1203.5 L457.4,1201.4 L466.1,1208.5 L460.0,1208.3 L457.8,1214.6 L439.6,1229.2 L434.7,1225.7 L435.7,1242.6 L395.8,1271.9 L364.3,1279.8 L365.4,1286.3 L385.3,1277.0 L340.3,1300.5 L361.4,1287.6 L361.1,1284.3 L339.6,1290.3 L347.7,1286.2 L340.6,1285.9 L343.1,1279.5 L328.9,1285.3 L325.5,1275.5 L320.0,1271.9 L324.2,1277.3 L322.5,1284.4 L326.7,1286.2 L321.5,1289.5 L315.6,1291.2 L320.0,1289.3 L319.8,1285.3 L316.4,1287.7 L310.1,1284.1 L307.9,1277.3 L301.4,1275.5 L305.2,1291.2 L315.6,1298.3 L310.7,1302.6 L317.4,1300.0 L323.7,1306.1 L301.2,1318.1 L288.6,1301.5 L286.8,1303.7 L291.0,1308.7 L284.0,1308.1 L289.7,1316.9 L289.6,1326.2 L280.8,1335.7 L274.9,1338.2 L278.1,1323.9 L272.4,1337.4 L268.2,1336.8 L268.7,1329.6 L254.4,1334.8 L255.8,1337.4 L250.4,1343.6 L256.6,1350.8 L260.5,1344.0 L268.1,1340.9 L267.5,1347.5 L253.4,1368.3 L249.1,1369.6 L246.0,1363.9 L223.1,1364.5 L226.2,1368.5 L234.8,1367.4 L236.5,1376.8 L246.6,1383.0 L233.0,1420.5 L221.3,1425.1 L228.5,1419.6 L226.2,1413.7 L213.3,1424.1 L200.3,1406.6 L206.4,1422.3 L209.9,1423.0 L201.5,1426.3 L223.1,1431.2 L231.7,1427.9 L229.9,1441.5 L225.2,1444.8 L226.7,1453.0 L219.3,1456.0 L220.9,1463.8 L226.7,1468.0 L220.6,1465.7 L219.4,1472.2 L225.6,1476.9 L232.3,1507.1 L227.5,1507.7 L236.1,1524.2 L239.4,1523.7 L237.5,1529.5 L241.6,1531.7 L242.1,1546.4 L250.9,1549.8 L250.0,1700.0 L-200.0,1700.0 L-200.0,900.0 Z M239.1,1480.6 L255.0,1548.6 L234.2,1472.9 L233.5,1442.3 L234.8,1435.2 L236.1,1433.7 Z M251.5,1389.5 L266.0,1368.5 L246.7,1403.7 L238.4,1430.9 L234.2,1431.5 L247.1,1386.7 Z M280.8,1337.8 L283.9,1338.7 L283.5,1343.9 L266.9,1366.7 Z M321.5,1310.5 L322.5,1317.2 L296.8,1332.1 L284.8,1343.9 L287.3,1331.8 L320.1,1315.9 Z M464.9,1210.0 L474.8,1212.8 L439.5,1238.1 L465.5,1214.4 Z M745.2,1186.9 L734.4,1197.1 L716.8,1185.4 L727.5,1180.0 Z M973.0,1135.2 L970.0,1139.9 L966.6,1135.9 L958.9,1136.6 L973.7,1125.9 L967.5,1132.8 L970.6,1137.4 Z M889.2,1194.9 L898.6,1201.3 L891.7,1198.2 Z"/>
+      <path class="ga15-states" vector-effect="non-scaling-stroke" d="M558.1,1144.9 L566.6,1128.5 L562.0,1104.6 L566.7,1094.2 L564.3,1084.7 L578.4,1058.2 L581.6,1045.3 L578.0,1038.6 L583.7,1035.1 L579.6,1029.4 L579.0,1019.1 L577.3,1019.5 L569.2,1006.2 L571.1,1000.7 L562.9,989.9 L564.6,986.0 L555.3,977.8 L554.4,957.3"/>
+      <!--/BASEMAP-->
+    </g>
+    <!-- screen-size marks: camAt sets each *-at group's translate to its projected point -->
+    <g id="g-a1-5-coast-map-pins">
+      <g id="g-a1-5-coast-map-gal-at"><g id="g-a1-5-coast-map-gal">
+        <circle id="g-a1-5-coast-map-gal-ring" r="7" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+        <circle r="7" fill="#f2f5f8"/>
+      </g></g>
+      <g id="g-a1-5-coast-map-ind-at"><g id="g-a1-5-coast-map-ind" class="ga15-hide">
+        <circle id="g-a1-5-coast-map-ind-ring" r="7" fill="none" stroke="#d8a13a" stroke-width="2"/>
+        <circle id="g-a1-5-coast-map-ind-dot" r="7" fill="#d8a13a"/>
+        <circle id="g-a1-5-coast-map-ind-hollow" class="ga15-hide" r="7" fill="none" stroke="#93a3b2" stroke-width="2"/>
+      </g></g>
+    </g>
+    <!-- HUD: fixed screen positions from the C1 projection; labels enter once the camera has settled (1.80) -->
+    <g id="g-a1-5-coast-map-hud">
+      <!-- Galveston pin at C1 (1190.9,419.9), at s 3.12 (1200.2,415.2) -->
+      <text id="g-a1-5-coast-map-gallab" class="ga15-lab ga15-hide" x="1215" y="412" font-size="30" style="fill:#f2f5f8">Galveston</text>
+      <!-- Indianola pin at C1 (729.1,660.1), at s 3.12 (720.1,665.1) -->
+      <text id="g-a1-5-coast-map-indlab" class="ga15-lab ga15-hide" x="705" y="652" text-anchor="end" font-size="30" style="fill:#f2f5f8">Indianola</text>
+      <!-- bay mouth at C1 (785.9,694.4); centred x 786, visual centre about y 700 -->
+      <text id="g-a1-5-coast-map-baylab" class="ga15-lab ga15-hide" x="786" y="708" text-anchor="middle" font-size="22" letter-spacing="3" font-style="normal" style="fill:#93a3b2">Matagorda Bay</text>
+    </g>
+  </svg>
+  <div class="ga15-src ga15-hide" id="g-a1-5-coast-map-src">Texas State Historical Association · basemap: Natural Earth · Schematic</div>
+  <div class="ga15-chip ga15-hide" id="g-a1-5-coast-map-chip">
+    <div class="ga15-chipin" id="g-a1-5-coast-map-chipin"><span class="ga15-big" id="g-a1-5-coast-map-c1">1875</span><span class="ga15-rest ga15-hide" id="g-a1-5-coast-map-c2"> · 8 BUILDINGS UNDAMAGED</span></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a1-5-coast-map-";
+  const $ = function (n) { return document.getElementById("g-a1-5-coast-map-" + n); };
+  const proj = function (lon, lat) { return [(lon + 100) * 90, (41 - lat) * 103.95]; };
+  const GAL = proj(-94.80, 29.30), IND = proj(-96.51, 28.53);
+  const DUR = 18.369;                                                          /* host: A1-S3 5.46 to A1-S4 1.64 */
+
+  /* camera: pure function of comp time */
+  const ease = gsap.parseEase("power2.inOut");
+  const lerp = function (a, b, u) { return a + (b - a) * u; };
+  const marks = [[$("gal-at"), GAL], [$("ind-at"), IND]];
+  const camEl = $("cam");
+  function camAt(t) {
+    let cx = 468.0, cy = 1216.2, s = 3.0;                                      /* C0: Galveston at (960,540) */
+    if (t >= 0.36 && t < 1.80) {                                               /* COAST @0.36: C1 move */
+      const u = ease((t - 0.36) / 1.44);
+      cx = lerp(468.0, 391.0, u); cy = lerp(1216.2, 1256.2, u);
+    } else if (t >= 1.80) {                                                    /* C1 hold, drift s 3.0 -> 3.12 */
+      cx = 391.0; cy = 1256.2; s = 3.0 + 0.12 * Math.min(1, (t - 1.80) / (DUR - 1.80));
+    }
+    camEl.setAttribute("transform", "translate(" + (960 - cx * s).toFixed(2) + "," + (540 - cy * s).toFixed(2) + ") scale(" + s.toFixed(5) + ")");
+    for (let i = 0; i < marks.length; i++) {
+      const p = marks[i][1];
+      marks[i][0].setAttribute("transform", "translate(" + (960 + (p[0] - cx) * s).toFixed(2) + "," + (540 + (p[1] - cy) * s).toFixed(2) + ")");
+    }
+  }
+  camAt(0);
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to({ t: 0 }, { t: 1, duration: DUR, ease: "none", onUpdate: function () { camAt(this.time()) } }, 0);
+
+  /* COAST @5.46 (0.00): map on from frame 0, Galveston pin already there; source line slides in */
+  tl.fromTo(P + "src", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.0);
+  tl.set([P + "gallab", P + "indlab", P + "baylab", P + "c1", P + "c2", P + "chipin"], { x: 0, y: 0 }, 0);
+  /* Galveston pulse all window: 13 x 1.4 s = 18.2 s */
+  tl.fromTo(P + "gal-ring", { scale: 1, opacity: 0.8, transformOrigin: "50% 50%" }, { scale: 2.2, opacity: 0, transformOrigin: "50% 50%", duration: 1.4, ease: "power1.out", repeat: 12 }, 0.0);
+
+  /* camera settled @1.80: Galveston label (HUD text never rides the move), then drift */
+  tl.fromTo(P + "gallab", { autoAlpha: 0, x: 20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.80);
+  tl.to(P + "gallab", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 5 }, 2.20);
+
+  /* INDIANOLA @8.06 (2.60): pin drops in, label 0.2 s later; pulse 9 x 1.4 s from 3.00 (ends 15.60, the cycle "never" lands in) */
+  tl.fromTo(P + "ind", { autoAlpha: 0, y: -20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 2.60);
+  tl.fromTo(P + "ind-ring", { scale: 1, opacity: 0.8, transformOrigin: "50% 50%" }, { scale: 2.2, opacity: 0, transformOrigin: "50% 50%", duration: 1.4, ease: "power1.out", repeat: 8 }, 3.00);
+  tl.fromTo(P + "indlab", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.80);
+  tl.to(P + "indlab", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 5 }, 3.20);
+
+  /* 1875 @8.82 (3.36): chip in with "1875" only */
+  tl.fromTo(P + "chip", { y: 24, scale: 0.94, autoAlpha: 0 }, { y: 0, scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(1.6)" }, 3.36);
+  tl.to(P + "chipin", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 3.81);
+  /* EIGHT @10.62 (5.16): " · 8 BUILDINGS UNDAMAGED" */
+  tl.fromTo(P + "c2", { autoAlpha: 0, x: -8 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 5.16);
+  /* S3 12.60 (7.14): chip out, map exit */
+  tl.to(P + "chip", { y: -24, autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 7.14);
+
+  /* 13.18 to 16.46 (7.72 to 11.00): the 1886 photo covers this comp; pulse and drift run on underneath */
+
+  /* MATAGORDA @17.42 (11.96): bay label in */
+  tl.fromTo(P + "baylab", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.96);
+  tl.to(P + "baylab", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 12.36);
+
+  /* NEVER REBUILT @20.66 (15.20): Indianola pin goes hollow, label greys by "rebuilt." 21.00 (15.54) */
+  tl.to(P + "ind-dot", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 15.20);
+  tl.fromTo(P + "ind-hollow", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power2.inOut" }, 15.20);
+  tl.to(P + "indlab", { fill: "#93a3b2", duration: 0.34, ease: "power1.out" }, 15.20);
+
+  /* S4 0.00 to 1.64 (16.73 to 18.37): hold on the Indianola pin, camera drift runs; root fades over the last 0.3 s */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 18.069);
+
+  window.__timelines["g-a1-5-coast-map"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
