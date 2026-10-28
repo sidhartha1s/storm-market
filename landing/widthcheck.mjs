@@ -25,7 +25,7 @@ const chrome = spawn(CHROME, [
   '--headless=new', '--disable-gpu', '--hide-scrollbars', '--mute-audio',
   '--no-first-run', '--no-default-browser-check',
   `--remote-debugging-port=${PORT}`, `--user-data-dir=${profile}`, 'about:blank',
-], { stdio: 'ignore' });
+], { stdio: 'ignore', windowsHide: true });
 process.on('exit', () => {
   try { chrome.kill(); } catch {}
   try { rmSync(profile, { recursive: true, force: true }); } catch {}
