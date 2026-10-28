@@ -8,7 +8,7 @@ About fifty people were in the house; eighteen came through. Cline's pregnant wi
 MWR Sept 1900 p. 373 (factcheck/a4-r1.md rows 58 to 61): "my residence went down with about fifty persons who had sought it for safety, and all but eighteen were hurled into eternity. Among the lost was my wife, who never rose above the water after the wreck of the building." Cora, pregnant: NOAA VLab (sources-cline.md §5; row 60). The "hurled into eternity" words are NOT lit (flag-word caution; the voice paraphrases).
 
 ## 2. Datum, scale, orientation
-Full-frame comp on the tokens gradient: the p. 373 scan on a glass card x 300 to 1620? Card right edge must stay left of 1600 below y 680: card x 300 to 1580, y 120 to 960. Slow push toward the wife sentence (scale 1.00 to 1.25, logZoom not needed under 1.5x; transform-origin on the sentence's measured centre). Whole lines in every frame.
+Full-frame comp on the tokens gradient: the p. 373 scan on a glass card x 300 to 1580, y 120 to 960 (right edge left of 1600 for the corner). Slow push toward the wife sentence (scale 1.00 to 1.25, logZoom not needed under 1.5x; transform-origin on the sentence's measured centre). Whole lines in every frame.
 
 ## 3. Geometry (px)
 - Page dimmed to 0.55; amber band `#d8a13a` at 0.28 behind "Among the lost was my wife, who never rose above the water after the wreck of the building." only (measured box in the receipt).
