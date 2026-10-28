@@ -173,7 +173,7 @@ window.__timelines = window.__timelines || {};
   tl.to("#pd-l968", { color: "#e74c3c", duration: 0.3, ease: "power2.out" }, 13.46);
 
   /* "deeper" @14.76: wind ring in, counterclockwise */
-  tl.fromTo("#pd-wind", { autoAlpha: 0, rotation: 0 }, { autoAlpha: 1, rotation: -40, svgOrigin: O, duration: 0.6, ease: "power2.out" }, 14.76);
+  tl.fromTo("#pd-wind", { autoAlpha: 0, rotation: 0, svgOrigin: O, smoothOrigin: false }, { autoAlpha: 1, rotation: -40, svgOrigin: O, smoothOrigin: false, duration: 0.6, ease: "power2.out" }, 14.76);
 
   /* "harder the wind blows around it." @16.20-17.40: ring accelerates counterclockwise */
   tl.to("#pd-wind", { rotation: -400, svgOrigin: O, duration: 2.0, ease: "power2.in" }, 16.2);
