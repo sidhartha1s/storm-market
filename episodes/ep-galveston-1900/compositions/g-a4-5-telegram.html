@@ -1,0 +1,179 @@
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-a4-5-telegram-root { position:absolute; inset:0; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .g-a4-5-telegram-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  /* source lines, top-left, one at a time */
+  .g-a4-5-telegram-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  /* page panel: glass card x 140 to 760, y 180 to 940 */
+  #g-a4-5-telegram-panel { position:absolute; left:140px; top:180px; width:620px; height:760px; box-sizing:border-box; padding:22px; border-radius:28px; }
+  #g-a4-5-telegram-panelin { position:relative; width:576px; height:716px; }
+  /* crop measured on the 1150 x 1563 scan (A3-S10_c2, printed p. 372): right column image x 568 to 1048 (column rule at about 563 and left column ink to 556 excluded, right ink ends about 1040),
+     image y 884 to 1481; scale 1.2. Telegram = image y 1152 to 1222 -> crop y 320 to 408. Top and bottom edges feathered so no half line shows. */
+  #g-a4-5-telegram-crop { position:absolute; left:0; top:0; width:576px; height:716px; overflow:hidden; border-radius:10px; isolation:isolate; background:#e9e4d6;
+    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%); mask-image:linear-gradient(180deg, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%); }
+  #g-a4-5-telegram-img { position:absolute; left:-681.6px; top:-1060.8px; width:1380px; height:1875.6px; max-width:none; }
+  #g-a4-5-telegram-dimtop { position:absolute; left:0; top:0; width:576px; height:320px; background:rgba(10,16,24,0.55); }
+  #g-a4-5-telegram-dimbot { position:absolute; left:0; top:408px; width:576px; height:308px; background:rgba(10,16,24,0.55); }
+  #g-a4-5-telegram-band { position:absolute; left:0; top:320px; width:576px; height:88px; background:#d8a13a; opacity:0.28; transform-origin:left center; }
+  /* telegraph form, x 840 to 1580, y 230 to 900 */
+  #g-a4-5-telegram-formpush { position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:1210px 565px; }
+  #g-a4-5-telegram-form { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a4-5-telegram-paper { position:absolute; left:840px; top:230px; width:740px; height:670px; box-sizing:border-box; border-radius:10px; background:#e9e4d6;
+    border:2px solid rgba(107,98,87,0.45); box-shadow:0 18px 60px rgba(0,0,0,0.55); }
+  #g-a4-5-telegram-strip { position:absolute; left:860px; top:262px; width:700px; height:82px; border-radius:6px; background:#15202b; }
+  #g-a4-5-telegram-head { position:absolute; left:880px; top:285px; height:36px; line-height:36px; white-space:nowrap; font-family:Georgia, 'Times New Roman', serif; font-weight:700; font-size:30px; letter-spacing:4px; color:#93a3b2; }
+  .g-a4-5-telegram-h { display:inline-block; white-space:pre; opacity:0; visibility:hidden; }
+  .g-a4-5-telegram-rule { position:absolute; left:880px; width:660px; height:2px; background:rgba(107,98,87,0.55); }
+  .g-a4-5-telegram-line { position:absolute; left:880px; width:680px; height:44px; line-height:44px; white-space:nowrap;
+    font-family:'Courier New', monospace; font-weight:700; font-size:34px; color:#2a2622; }
+  .g-a4-5-telegram-w { display:inline-block; white-space:pre; opacity:0; visibility:hidden; }
+  .g-a4-5-telegram-g { color:#d8a13a; }
+  #g-a4-5-telegram-slab { position:absolute; left:872px; top:808px; width:552px; height:52px; border-radius:6px; background:#15202b; transform-origin:left center; opacity:0; visibility:hidden; }
+  #g-a4-5-telegram-uline { position:absolute; left:880px; top:862px; width:531px; height:6px; background:#d8a13a; transform-origin:left center; opacity:0; visibility:hidden; }
+  /* chip C1: right edge x 1824, top 100, bottom under y 220 */
+  #g-a4-5-telegram-c1 { position:absolute; right:96px; top:100px; opacity:0; visibility:hidden; }
+  #g-a4-5-telegram-c1in { display:table; padding:18px 36px; border-radius:28px; }
+  #g-a4-5-telegram-c1main { display:table; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; letter-spacing:2px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  /* chip C2: g-intro-10's chip block, ids renamed only, centred x 1210, top 440 */
+  #g-a4-5-telegram-c2 { position:absolute; left:1210px; top:440px; opacity:0; visibility:hidden; }
+  #g-a4-5-telegram-c2in { display:table; padding:22px 40px; border-radius:28px; text-align:left; }
+  #g-a4-5-telegram-c2main { display:table; position:relative; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; letter-spacing:2px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  #g-a4-5-telegram-c2rule { position:absolute; left:0; right:0; bottom:-14px; height:4px; background:#d0121f; transform-origin:left center; }
+  #g-a4-5-telegram-c2tag { display:block; margin-top:34px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:26px; color:#d8a13a; white-space:nowrap; }
+</style>
+<div id="g-a4-5-telegram-root" data-composition-id="g-a4-5-telegram" data-width="1920" data-height="1080">
+  <div id="g-a4-5-telegram-src1" class="g-a4-5-telegram-src g-a4-5-telegram-glass">Isaac Cline, Monthly Weather Review, September 1900, p. 372</div>
+  <div id="g-a4-5-telegram-src2" class="g-a4-5-telegram-src g-a4-5-telegram-glass">Galveston Daily News, 16 July 1891</div>
+
+  <div id="g-a4-5-telegram-panel" class="g-a4-5-telegram-glass">
+    <div id="g-a4-5-telegram-panelin">
+      <div id="g-a4-5-telegram-crop">
+        <img id="g-a4-5-telegram-img" src="media/a3/A3-S10_c2_mwr-sept1900-p372_cline-report.png" alt="Monthly Weather Review, September 1900, page 372" data-crop-ok="page 372 cropped to whole lines of the right column around the telegram; top and bottom edges feathered">
+        <div id="g-a4-5-telegram-dimtop"></div>
+        <div id="g-a4-5-telegram-dimbot"></div>
+        <div id="g-a4-5-telegram-band"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="g-a4-5-telegram-formpush">
+    <div id="g-a4-5-telegram-form">
+      <div id="g-a4-5-telegram-paper"></div>
+      <div id="g-a4-5-telegram-strip"></div>
+      <div id="g-a4-5-telegram-head"><span id="g-a4-5-telegram-h1" class="g-a4-5-telegram-h">TELEGRAM &middot; </span><span id="g-a4-5-telegram-h2" class="g-a4-5-telegram-h">TO WASHINGTON</span></div>
+      <div class="g-a4-5-telegram-rule" style="top:428px"></div>
+      <div class="g-a4-5-telegram-rule" style="top:500px"></div>
+      <div class="g-a4-5-telegram-rule" style="top:572px"></div>
+      <div class="g-a4-5-telegram-rule" style="top:644px"></div>
+      <div class="g-a4-5-telegram-rule" style="top:716px"></div>
+      <div class="g-a4-5-telegram-rule" style="top:788px"></div>
+      <div class="g-a4-5-telegram-rule" style="top:860px"></div>
+      <div id="g-a4-5-telegram-slab"></div>
+      <div id="g-a4-5-telegram-uline"></div>
+      <div class="g-a4-5-telegram-line" style="top:380px"><span id="g-a4-5-telegram-w01" class="g-a4-5-telegram-w">UNUSUALLY </span><span id="g-a4-5-telegram-w02" class="g-a4-5-telegram-w">HEAVY </span><span id="g-a4-5-telegram-w03" class="g-a4-5-telegram-w">SWELLS </span><span id="g-a4-5-telegram-w04" class="g-a4-5-telegram-w">FROM </span><span id="g-a4-5-telegram-w05" class="g-a4-5-telegram-w">THE</span></div>
+      <div class="g-a4-5-telegram-line" style="top:452px"><span id="g-a4-5-telegram-w06" class="g-a4-5-telegram-w">SOUTHEAST, </span><span id="g-a4-5-telegram-w07" class="g-a4-5-telegram-w">INTERVALS ONE </span><span id="g-a4-5-telegram-w08" class="g-a4-5-telegram-w">TO FIVE</span></div>
+      <div class="g-a4-5-telegram-line" style="top:524px"><span id="g-a4-5-telegram-w09" class="g-a4-5-telegram-w">MINUTES, </span><span id="g-a4-5-telegram-w10" class="g-a4-5-telegram-w">OVERFLOWING </span><span id="g-a4-5-telegram-w11" class="g-a4-5-telegram-w">LOW </span><span id="g-a4-5-telegram-w12" class="g-a4-5-telegram-w">PLACES</span></div>
+      <div class="g-a4-5-telegram-line" style="top:596px"><span id="g-a4-5-telegram-w13" class="g-a4-5-telegram-w">SOUTH PORTION OF CITY </span><span id="g-a4-5-telegram-w14" class="g-a4-5-telegram-w">THREE </span><span id="g-a4-5-telegram-w15" class="g-a4-5-telegram-w">TO</span></div>
+      <div class="g-a4-5-telegram-line" style="top:668px"><span id="g-a4-5-telegram-w16" class="g-a4-5-telegram-w">FOUR </span><span id="g-a4-5-telegram-w17" class="g-a4-5-telegram-w">BLOCKS </span><span id="g-a4-5-telegram-w18" class="g-a4-5-telegram-w">FROM </span><span id="g-a4-5-telegram-w19" class="g-a4-5-telegram-w">BEACH. </span><span id="g-a4-5-telegram-w20" class="g-a4-5-telegram-w">SUCH</span></div>
+      <div class="g-a4-5-telegram-line" style="top:740px"><span id="g-a4-5-telegram-w21" class="g-a4-5-telegram-w">HIGH WATER </span><span id="g-a4-5-telegram-w22" class="g-a4-5-telegram-w">WITH </span><span id="g-a4-5-telegram-w23" class="g-a4-5-telegram-w">OPPOSING </span><span id="g-a4-5-telegram-w24" class="g-a4-5-telegram-w">WINDS</span></div>
+      <div class="g-a4-5-telegram-line g-a4-5-telegram-g" style="top:812px"><span id="g-a4-5-telegram-g1" class="g-a4-5-telegram-w">NEVER </span><span id="g-a4-5-telegram-g2" class="g-a4-5-telegram-w">OBSERVED </span><span id="g-a4-5-telegram-g3" class="g-a4-5-telegram-w">PREVIOUSLY.</span></div>
+    </div>
+  </div>
+
+  <div id="g-a4-5-telegram-c1">
+    <div id="g-a4-5-telegram-c1in" class="g-a4-5-telegram-glass"><span id="g-a4-5-telegram-c1main">3 TO 4 BLOCKS FROM BEACH</span></div>
+  </div>
+
+  <div id="g-a4-5-telegram-c2" data-overlap-ok="1891 chip over dimmed form">
+    <div id="g-a4-5-telegram-c2in" class="g-a4-5-telegram-glass" data-overlap-ok="1891 chip over dimmed form">
+      <span id="g-a4-5-telegram-c2main" data-overlap-ok="1891 chip over dimmed form">ABSURD DELUSION<span id="g-a4-5-telegram-c2rule"></span></span>
+      <span id="g-a4-5-telegram-c2tag" data-overlap-ok="1891 chip over dimmed form">Galveston Daily News, July 1891</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-5-telegram-";
+  /* TIMING: audio/a4-s3.words.json, comp-local = segment time (host starts at segment start 0; segment ends 21.90).
+     telegram @2.92 ; Washington @3.52 ; unusually @5.38 ; three @8.84 ; It @11.14 ; water @11.78 ; never @14.76 ; seen @15.44 ;
+     Nine @16.36 ; had @18.50 ; delusion @20.82 ; print ends 21.90 */
+  const END = 22.9;
+
+  tl.set(P+"src1", {autoAlpha:0}, 0);
+  tl.set(P+"src2", {autoAlpha:0}, 0);
+  tl.set(P+"c1", {autoAlpha:0, y:24, scale:0.94}, 0);
+  tl.set(P+"c2", {autoAlpha:0, xPercent:-50, y:24, scale:0.94}, 0);
+  tl.set(P+"c2rule", {scaleX:0}, 0);
+  tl.set(P+"slab", {autoAlpha:0, scaleX:0}, 0);
+  tl.set(P+"uline", {autoAlpha:0, scaleX:0}, 0);
+  tl.set(P+"formpush", {scale:1}, 0);
+
+  /* frame 0: page panel, empty form, source line; everything drifts from 0 so nothing idles */
+  tl.to(P+"src1", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  tl.to(P+"src1", {y:-4, duration:2.3, ease:"sine.inOut", yoyo:true, repeat:3}, 0.4);
+  tl.to(P+"panelin", {y:-4, duration:2.3, ease:"sine.inOut", yoyo:true, repeat:9}, 0);
+  tl.to(P+"band", {opacity:0.4, duration:1.1, ease:"sine.inOut", yoyo:true, repeat:5}, 0);
+  tl.to(P+"paper", {y:-3, duration:2.3, ease:"sine.inOut", yoyo:true, repeat:9}, 0);
+
+  /* TELEGRAM @2.92: header in; Washington @3.52: TO WASHINGTON turns white */
+  tl.set([P+"h1", P+"h2"], {y:10}, 0);
+  tl.to(P+"h1", {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.92);
+  tl.to(P+"h2", {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 2.92);
+  tl.to(P+"h2", {color:"#f2f5f8", duration:0.3, ease:"power2.out"}, 3.52);
+
+  /* typing: phrase by phrase, each span in with a small rise; [id, time] */
+  const W = [
+    ["w01",5.38],["w02",5.90],["w03",6.26],["w04",6.68],["w05",6.90],            /* unusually heavy swells from the */
+    ["w06",7.04],["w07",7.14],["w08",7.26],["w09",7.34],                           /* southeast + unspoken "intervals one to five minutes," by were 7.42 */
+    ["w10",7.72],["w11",8.06],["w12",8.40],["w13",8.50],                           /* flooding low places + unspoken "south portion of city" */
+    ["w14",8.84],["w15",9.20],["w16",9.30],["w17",9.58],["w18",9.92],["w19",10.32], /* three to four blocks from beach */
+    ["w20",11.30],["w21",12.36],["w22",12.92],["w23",13.44],["w24",13.74]          /* such high water with opposing winds */
+  ];
+  W.forEach(function(p) {
+    tl.set(P+p[0], {y:8}, 0);
+    tl.to(P+p[0], {autoAlpha:1, y:0, duration:0.18, ease:"power2.out"}, p[1]);
+  });
+
+  /* BLOCKS @8.84: chip C1 in; It @11.14: out (x 980, 0.5) */
+  tl.to(P+"c1", {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 8.84);
+  tl.to(P+"c1in", {y:-4, duration:1.15, ease:"sine.inOut", yoyo:true, repeat:1}, 8.84);
+  tl.to(P+"c1", {x:980, autoAlpha:0, duration:0.5, ease:"power3.in"}, 11.14);
+
+  /* NEVER @14.76: gold line types, slab and underline draw 14.76 to 15.44 */
+  tl.to(P+"slab", {autoAlpha:1, scaleX:1, duration:0.3, ease:"power2.out"}, 14.76);
+  tl.set([P+"g1", P+"g2", P+"g3"], {y:8}, 0);
+  tl.to(P+"g1", {autoAlpha:1, y:0, duration:0.18, ease:"power2.out"}, 14.76);
+  tl.to(P+"g2", {autoAlpha:1, y:0, duration:0.18, ease:"power2.out"}, 15.00);
+  tl.to(P+"g3", {autoAlpha:1, y:0, duration:0.18, ease:"power2.out"}, 15.22);
+  tl.set(P+"uline", {autoAlpha:1}, 14.76);
+  tl.to(P+"uline", {scaleX:1, duration:0.68, ease:"power2.out"}, 14.76);
+  /* from 15.44: shimmer on the underline, slow push on the form to the end */
+  tl.to(P+"uline", {opacity:0.7, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:5}, 15.44);
+  tl.to(P+"formpush", {scale:1.03, duration:END - 15.44, ease:"sine.inOut"}, 15.44);
+
+  /* Nine @16.36: page and form dim to 0.25 over 0.6 s */
+  tl.to(P+"panel", {opacity:0.25, duration:0.6, ease:"power2.inOut"}, 16.36);
+  tl.to(P+"form", {opacity:0.25, duration:0.6, ease:"power2.inOut"}, 16.36);
+
+  /* had @18.50: source line swaps (out 0.3, then in 0.3) */
+  tl.to(P+"src1", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 18.50);
+  tl.to(P+"src2", {autoAlpha:1, duration:0.3, ease:"power2.out"}, 18.80);
+  tl.to(P+"src2", {y:-4, duration:2.3, ease:"sine.inOut", yoyo:true, repeat:1}, 19.10);
+
+  /* delusion @20.82: C2 in (g-intro-10 entrance), red rule draws, slides out in the last 0.6 s */
+  tl.to(P+"c2", {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 20.82);
+  tl.to(P+"c2in", {y:-4, duration:0.7, ease:"sine.inOut", yoyo:true, repeat:1}, 20.82);
+  tl.to(P+"c2rule", {scaleX:1, duration:0.4, ease:"power2.out"}, 20.90);
+  tl.to(P+"c2", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 21.30);
+
+  /* hold the timeline to END (segment end 21.90 plus land time); form push and drift keep running */
+  tl.to(P+"root", {autoAlpha:1, duration:0.06}, END - 0.06);
+  window.__timelines["g-a4-5-telegram"] = tl;
+})();
+</script>
+</template>
