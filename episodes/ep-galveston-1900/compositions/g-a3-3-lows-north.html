@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-3-lows-north · A3-S3 · ep-galveston-1900 · DEEP (Opus) · brief: briefs/a3/g-a3-3-lows-north.md
+  Claim: early that September a high settled off the middle and south Atlantic coasts; all month the storm systems on the
+  westerlies stayed mostly north of the 45th parallel (about Minneapolis). The Bureau's summary gives no reason the storm
+  never turned (factcheck/a3-r1.md row 10): NOTHING here ties the lows to the track. The storm went on WNW across the Gulf,
+  the road Belen had called from Havana.
+  TIME: comp-local = a3-s3.words.json word time (host starts on the segment's first word, "Early" @0.00). Host 0 to 24.60.
+  PART A (0.00 to 5.12): NOAA weather map 4 Sep 1900 (media/candidates/a3/A3-S3_c2, 2048 x 1452, public domain), shown at
+    0.9375 (1920 x 1361), top -140 (centred crop). The printed "H" measured on the scan: glyph box x 1455..1528, y 345..415
+    (source px), centre (1492, 380) = (1399, 356) in the 1920-wide layer = screen (1399, 216) at frame 0. The H sits over the
+    open Atlantic east of the Washington / Norfolk coast, offshore of the middle Atlantic coast: ring kept. Push 1.00 -> 1.10
+    about the H, so the H holds its screen point.
+  PART B (4.62 on): wide plate, X = (lon + 100) * 90, Y = (41 - lat) * 103.95 (north up; g-intro-4 projection, extended).
+    BASEMAP (between BASEMAP markers, plate units, do not hand-edit): Natural Earth 10m coastline (public domain) clipped to
+    lon -118..-36, lat 8..56, polygonised against that box, water faces dropped (seeds: Gulf, Atlantic x3, Caribbean,
+    Pacific, James Bay, Gulf of St Lawrence), simplified 0.04 deg; US admin-1 lines, simplified 0.04 deg. Same one-shot
+    transform as g-intro-4 on the wider box (cartopy cache ne_10m_coastline.shp, ne_10m_admin_1_states_provinces_lines.shp),
+    not committed. No lakes layer in the cache: the Great Lakes are not drawn (as in g-intro-4 / g-intro-8).
+    Pins by formula: Minneapolis (-93.27, 44.98) = (605.7, -413.7); 45th parallel Y = -415.8; Galveston (468.0, 1216.2);
+    Havana (1585.8, 1857.6); ridge centre (-72, 33) = (2520.0, 831.6), radii 900 x 600.
+  CAMERA: screen = (960 + (X - cx) * s, 540 + (Y - cy) * s); render(t) is a pure function of comp time (seek-safe).
+    V-NORTH cx 1700 cy 600 s 0.36 (+2 % drift 4.62 -> 18.58); V-GULF cx 1100 cy 1500 s 0.75 (+2 % drift from 19.98).
+    The move 18.58 -> 19.98 is 2.04x: scale interpolated in log space (logZoom, library/inhouse/snippets/helpers.js), power2.inOut.
+  TRACK: NOAA HURDAT2 AL011900 fixes Sept 6 00Z (-82.3, 24.1) to Sept 8 12Z (-92.4, 27.8), as g-intro-8's TRK (indices 16..26).
+    Sept 8 12Z = plate (684.0, 1372.1) = screen (648, 444) at s 0.75; Galveston pin = screen (486, 327): 200 px apart, offshore.
+  LAYERS: #...-cam plate geometry (only element the camera transforms); #...-pins screen-size marks placed by render();
+    #...-hud text at fixed screen positions, shown only while the camera holds a view.
+-->
+<template>
+<style>
+  #g-a3-3-lows-north-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ga33-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .ga33-land { fill:#15202b; stroke:#5a768f; stroke-width:2px; stroke-linejoin:round; fill-rule:evenodd; }
+  .ga33-states { fill:none; stroke:#2a3644; stroke-width:1.5px; }
+  .ga33-lab { font-family:Arial, sans-serif; font-weight:700; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .ga33-labbig { font-family:'Arial Black', Arial, sans-serif; font-weight:900; paint-order:stroke; stroke:#04070c; stroke-width:6px; stroke-linejoin:round; }
+  .ga33-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .ga33-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:19px; line-height:1.4; color:#c8d3e0; }
+  .ga33-src span { display:block; white-space:nowrap; }
+  #g-a3-3-lows-north-scan { position:absolute; left:0; top:-140px; width:1920px; height:1361px; }
+  #g-a3-3-lows-north-scanimg { position:absolute; left:0; top:0; width:1920px; height:1361px; }
+  #g-a3-3-lows-north-scansvg { position:absolute; left:0; top:0; width:1920px; height:1361px; overflow:visible; }
+  .ga33-chip { position:absolute; }
+  .ga33-chipin { display:table; padding:18px 32px; border-radius:28px; }
+  .ga33-chipmain { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  .ga33-chiptag { display:block; margin-top:6px; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .ga33-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-3-lows-north-root" data-composition-id="g-a3-3-lows-north" data-width="1920" data-height="1080">
+  <svg class="ga33-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- 45th parallel reveal, plate units: width grows west to east 9.78 -> 10.80 -->
+      <clipPath id="g-a3-3-lows-north-pclip"><rect id="g-a3-3-lows-north-pclipr" x="-1600" y="-520" width="0" height="200"/></clipPath>
+    </defs>
+    <!-- camera layer: plate units -->
+    <g id="g-a3-3-lows-north-cam">
+      <!--BASEMAP:g-a3-3-->
+      <path class="ga33-land" vector-effect="non-scaling-stroke" d="__LAND__"/>
+      <path class="ga33-states" vector-effect="non-scaling-stroke" d="__STATES__"/>
+      <!--/BASEMAP-->
+      <!-- ridge: MWR position, centre (-72, 33) = (2520.0, 831.6), radii 900 x 600; no isobars, no pressure numbers -->
+      <ellipse id="g-a3-3-lows-north-ridge" cx="2520.0" cy="831.6" rx="900" ry="600" fill="rgba(216,161,58,0.13)" stroke="#d8a13a" stroke-opacity="0.6" stroke-width="2" vector-effect="non-scaling-stroke"/>
+      <!-- 45th parallel, Y -415.8, full plate width; 3 px, dash 6/10 screen px at s 0.36 = 8.3 and 16.7/27.8 plate -->
+      <line id="g-a3-3-lows-north-par" clip-path="url(#g-a3-3-lows-north-pclip)" x1="-1600" y1="-415.8" x2="5800" y2="-415.8" stroke="#93a3b2" stroke-width="8.3" stroke-dasharray="16.7 27.8"/>
+      <!-- Belen forecast (g-intro-4 arrow, same geometry): Havana to (-89.0, 27.0) = (990.0,1455.2), control (1330,1720) -->
+      <path id="g-a3-3-lows-north-aglow" class="ga33-hide" d="M1585.8,1857.6 Q1330,1720 990,1455.2" fill="none" stroke="#d8a13a" stroke-width="14" stroke-linecap="round" style="filter:drop-shadow(0 0 10px #d8a13a) drop-shadow(0 0 16px #d8a13a)"/>
+      <path id="g-a3-3-lows-north-arrow" class="ga33-hide" d="M1585.8,1857.6 Q1330,1720 990,1455.2" fill="none" stroke="#d8a13a" stroke-width="8" stroke-linecap="round"/>
+      <polygon id="g-a3-3-lows-north-head" class="ga33-hide" points="0,0 0,0 0,0" fill="#d8a13a"/>
+      <!-- past track: HURDAT2 Sept 6 00Z .. Sept 8 12Z (d set by script from TRK); 5 px on screen (render sets 5/s) -->
+      <path id="g-a3-3-lows-north-trk" class="ga33-hide" d="M0,0" fill="none" stroke="#f2f5f8" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <!-- screen-size marks: render() sets each *-at group's translate to its projected point -->
+    <g id="g-a3-3-lows-north-pins">
+      <!-- lows: Arial Black 40 px "L", baselines at plate Y -622 / -511 / -567 (screen y 100 / 140 / 120 in V-NORTH), all above Y -415.8 -->
+      <g id="g-a3-3-lows-north-l0-at"><text id="g-a3-3-lows-north-l0" class="ga33-labbig ga33-hide" x="0" y="0" text-anchor="middle" font-size="40" fill="#7fb2e5">L</text></g>
+      <g id="g-a3-3-lows-north-l1-at"><text id="g-a3-3-lows-north-l1" class="ga33-labbig ga33-hide" x="0" y="0" text-anchor="middle" font-size="40" fill="#7fb2e5">L</text></g>
+      <g id="g-a3-3-lows-north-l2-at"><text id="g-a3-3-lows-north-l2" class="ga33-labbig ga33-hide" x="0" y="0" text-anchor="middle" font-size="40" fill="#7fb2e5">L</text></g>
+      <g id="g-a3-3-lows-north-msp-at"><g id="g-a3-3-lows-north-msp" class="ga33-hide">
+        <circle id="g-a3-3-lows-north-msp-ring" r="6" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+        <circle r="6" fill="#f2f5f8"/>
+      </g></g>
+      <g id="g-a3-3-lows-north-hav-at"><g id="g-a3-3-lows-north-hav" class="ga33-hide"><circle r="7" fill="#d8a13a"/></g></g>
+      <g id="g-a3-3-lows-north-gal-at"><g id="g-a3-3-lows-north-gal" class="ga33-hide"><circle r="7" fill="#f2f5f8"/></g></g>
+      <!-- storm ring (g-intro-8): 96 px outer (r 45 + 3), 6 px stroke, glow -->
+      <g id="g-a3-3-lows-north-ring-at"><g id="g-a3-3-lows-north-ring" class="ga33-hide" style="filter:drop-shadow(0 0 8px rgba(242,245,248,0.85)) drop-shadow(0 0 18px rgba(127,178,229,0.55))">
+        <circle id="g-a3-3-lows-north-ringc" r="45" fill="rgba(242,245,248,0.06)" stroke="#f2f5f8" stroke-width="6"/>
+      </g></g>
+    </g>
+    <!-- HUD: fixed screen positions from the projected points at the settled camera -->
+    <g id="g-a3-3-lows-north-hud">
+      <!-- V-NORTH: ridge centre screen (1255, 623); label centred on it -->
+      <text id="g-a3-3-lows-north-high" class="ga33-labbig ga33-hide" x="1258" y="642" text-anchor="middle" font-size="52" fill="#e8c56a">HIGH</text>
+      <!-- V-NORTH: parallel at screen y 174; label below its left end -->
+      <text id="g-a3-3-lows-north-p45" class="ga33-lab ga33-hide" x="110" y="208" font-size="22" fill="#93a3b2">45°N</text>
+      <!-- V-NORTH: Minneapolis pin at screen (566, 175); label right of the pin, under the dotted line -->
+      <text id="g-a3-3-lows-north-msplab" class="ga33-lab ga33-hide" x="584" y="208" font-size="22" letter-spacing="3" fill="#f2f5f8">MINNEAPOLIS</text>
+      <!-- V-GULF: Galveston pin at screen (486, 327); label left of the pin -->
+      <text id="g-a3-3-lows-north-galv" class="ga33-lab ga33-hide" x="466" y="338" text-anchor="end" font-size="30" fill="#f2f5f8">Galveston</text>
+    </g>
+  </svg>
+  <!-- PART A: the 4 Sep 1900 map scan over the plate; dissolves at 4.62 -->
+  <div id="g-a3-3-lows-north-scan">
+    <img id="g-a3-3-lows-north-scanimg" src="media/candidates/a3/A3-S3_c2_noaa-weather-map-1900-09-04.jpg" alt="">
+    <svg id="g-a3-3-lows-north-scansvg" viewBox="0 0 1920 1361" xmlns="http://www.w3.org/2000/svg">
+      <!-- ring around the printed H: centre (1399, 356) in this layer, r 52, 4 px; dash ceil(2*pi*52)+1 = 328 -->
+      <circle id="g-a3-3-lows-north-hring" class="ga33-hide" cx="1399" cy="356" r="52" fill="none" stroke="#d8a13a" stroke-width="4" stroke-dasharray="328 328" stroke-dashoffset="328" style="filter:drop-shadow(0 0 6px rgba(216,161,58,0.8))"/>
+    </svg>
+  </div>
+  <div class="ga33-src ga33-glass ga33-hide" id="g-a3-3-lows-north-srca"><span id="g-a3-3-lows-north-srca1">NOAA Central Library &middot; weather map, Sept. 4, 1900</span></div>
+  <div class="ga33-src ga33-glass ga33-hide" id="g-a3-3-lows-north-srcb">
+    <span id="g-a3-3-lows-north-srcb1">Monthly Weather Review, Sept. 1900, pp. 377-378</span>
+    <span id="g-a3-3-lows-north-srcb2">track: NOAA HURDAT2 &middot; Belen: NOAA AOML</span>
+  </div>
+  <!-- C1: centred on x 960 (full-width row, card margin auto); top 300, not the brief's 150 (at 150 it would sit on the 45th line at y 171 and the MINNEAPOLIS label) -->
+  <div class="ga33-chip ga33-hide" id="g-a3-3-lows-north-c1" style="left:0; width:1920px; top:300px;">
+    <div class="ga33-chipin ga33-glass" id="g-a3-3-lows-north-c1in" style="margin:0 auto;">
+      <span class="ga33-chipmain" id="g-a3-3-lows-north-c1t">STAYED MOSTLY NORTH</span>
+      <span class="ga33-chiptag" id="g-a3-3-lows-north-c1s">storm systems, all month</span>
+    </div>
+  </div>
+  <!-- C2: left edge x 1000, top 150 (V-GULF: open map, right of the Belen arrow tip at screen 877,506) -->
+  <div class="ga33-chip ga33-hide" id="g-a3-3-lows-north-c2" style="left:1000px; top:150px;">
+    <div class="ga33-chipin ga33-glass" id="g-a3-3-lows-north-c2in">
+      <span class="ga33-chipmain" id="g-a3-3-lows-north-c2t">BELEN: INTO THE GULF</span>
+      <span class="ga33-chiptag" id="g-a3-3-lows-north-c2s">Havana forecast</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#g-a3-3-lows-north-";
+  const $ = function (n) { return document.getElementById("g-a3-3-lows-north-" + n); };
+  const proj = function (lon, lat) { return [(lon + 100) * 90, (41 - lat) * 103.95]; };
+  const GAL = proj(-94.80, 29.30), HAV = proj(-82.38, 23.13), MSP = proj(-93.27, 44.98);
+  const DUR = 24.60;
+  /* HURDAT2 AL011900 fixes Sept 6 00Z .. Sept 8 12Z (g-intro-8 TRK indices 16..26) */
+  const TRK = [[-82.3,24.1],[-83.2,24.8],[-84.1,25.5],[-85.2,26.1],[-86.2,26.5],[-87.4,26.8],[-88.7,27.0],[-89.7,27.2],[-90.6,27.4],[-91.5,27.6],[-92.4,27.8]]
+    .map(function (p) { return proj(p[0], p[1]); });
+  const CUM = [0];
+  for (let i = 1; i < TRK.length; i++) CUM.push(CUM[i - 1] + Math.hypot(TRK[i][0] - TRK[i - 1][0], TRK[i][1] - TRK[i - 1][1]));
+  const TL = Math.ceil(CUM[CUM.length - 1]) + 1;                               /* dash lengths: ceil(len)+1 */
+  $("trk").setAttribute("d", "M" + TRK.map(function (q) { return q[0].toFixed(1) + "," + q[1].toFixed(1); }).join(" L"));
+  function pointAt(d) {
+    if (d <= 0) return TRK[0];
+    for (let i = 1; i < TRK.length; i++) {
+      if (d <= CUM[i]) { const u = (d - CUM[i - 1]) / (CUM[i] - CUM[i - 1]);
+        return [TRK[i - 1][0] + (TRK[i][0] - TRK[i - 1][0]) * u, TRK[i - 1][1] + (TRK[i][1] - TRK[i - 1][1]) * u]; }
+    }
+    return TRK[TRK.length - 1];
+  }
+  const easeIO = gsap.parseEase("power2.inOut"), easeRun = gsap.parseEase("power1.inOut");
+  const lerp = function (a, b, u) { return a + (b - a) * u; };
+  function logLerpScale(fromScale, toScale, t) {                              /* logZoom, library/inhouse/snippets/helpers.js */
+    return Math.exp(Math.log(fromScale) + (Math.log(toScale) - Math.log(fromScale)) * t);
+  }
+  /* WNW @19.98: ring runs the track 19.98 -> 21.80 */
+  function dAt(t) { return t <= 19.98 ? 0 : t >= 21.80 ? CUM[CUM.length - 1] : CUM[CUM.length - 1] * easeRun((t - 19.98) / 1.82); }
+  /* lows: plate start X (screen x 250 / 700 / 1150 at V-NORTH), baselines Y; drift east 120 plate/s (43 px/s) from SYSTEMS @5.94 */
+  const LOWS = [[$("l0-at"), -272, -622], [$("l1-at"), 978, -511], [$("l2-at"), 2228, -567]];
+  const S_N = 0.36, S_N2 = 0.36 * 1.02, S_G = 0.75;
+  const camEl = $("cam"), trkEl = $("trk");
+  function camAt(t) {
+    if (t < 4.62) return [1700, 600, S_N];
+    if (t < 18.58) return [1700, 600, S_N * (1 + 0.02 * (t - 4.62) / 13.96)];  /* V-NORTH drift */
+    if (t < 19.98) { const u = easeIO((t - 18.58) / 1.40);                      /* 18.58 -> 19.98: to V-GULF */
+      return [lerp(1700, 1100, u), lerp(600, 1500, u), logLerpScale(S_N2, S_G, u)]; }
+    return [1100, 1500, S_G * (1 + 0.02 * Math.min(1, (t - 19.98) / 4.62))];   /* V-GULF drift */
+  }
+  function place(el, p, c) {
+    el.setAttribute("transform", "translate(" + (960 + (p[0] - c[0]) * c[2]).toFixed(2) + "," + (540 + (p[1] - c[1]) * c[2]).toFixed(2) + ")");
+  }
+  function render(t) {
+    const c = camAt(t);
+    camEl.setAttribute("transform", "translate(" + (960 - c[0] * c[2]).toFixed(2) + "," + (540 - c[1] * c[2]).toFixed(2) + ") scale(" + c[2].toFixed(5) + ")");
+    const run = Math.max(0, t - 5.94) * 120;
+    for (let i = 0; i < LOWS.length; i++) place(LOWS[i][0], [LOWS[i][1] + run, LOWS[i][2]], c);
+    place($("msp-at"), MSP, c); place($("hav-at"), HAV, c); place($("gal-at"), GAL, c);
+    const d = dAt(t);
+    place($("ring-at"), pointAt(d), c);
+    trkEl.setAttribute("stroke-width", (5 / c[2]).toFixed(2));
+    trkEl.setAttribute("stroke-dasharray", TL + " " + TL);
+    trkEl.setAttribute("stroke-dashoffset", (TL - d).toFixed(1));
+  }
+  render(0);
+  /* arrowhead (g-intro-4): tip 20 plate px past the curve's end along its end tangent, 36 long, 32 wide */
+  const END = [990.0, 1455.2], CTL = [1330, 1720];
+  const dl = Math.hypot(END[0] - CTL[0], END[1] - CTL[1]);
+  const dx = (END[0] - CTL[0]) / dl, dy = (END[1] - CTL[1]) / dl;
+  const tip = [END[0] + dx * 20, END[1] + dy * 20], base = [tip[0] - dx * 36, tip[1] - dy * 36];
+  $("head").setAttribute("points", [tip, [base[0] - dy * 16, base[1] + dx * 16], [base[0] + dy * 16, base[1] - dx * 16]]
+    .map(function (q) { return q[0].toFixed(1) + "," + q[1].toFixed(1); }).join(" "));
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to({ t: 0 }, { t: 1, duration: DUR, ease: "none", onUpdate: function () { render(this.time()) } }, 0);
+
+  /* 0.00: Part A scan from frame 0, slow push about the printed H (holds its screen point); source line in */
+  tl.to(P + "scan", { scale: 1.10, transformOrigin: "1399px 356px", duration: 5.12, ease: "none" }, 0);
+  tl.fromTo(P + "srca", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.0);
+  /* HIGH @1.54: amber ring draws around the scan's H */
+  tl.fromTo(P + "hring", { autoAlpha: 0, strokeDashoffset: 328 }, { autoAlpha: 1, strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 1.54);
+  tl.fromTo(P + "hring", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1.06, transformOrigin: "50% 50%", duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 2.14);
+
+  /* ALL MONTH @4.62: dissolve 0.5 s to Part B; ridge on the plate, HIGH label in */
+  tl.to(P + "scan", { autoAlpha: 0, duration: 0.5, ease: "power1.inOut" }, 4.62);
+  tl.to(P + "srca", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 4.62);
+  tl.fromTo(P + "srcb", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.92);
+  tl.fromTo(P + "high", { autoAlpha: 0, scale: 0.85, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.5, ease: "back.out(1.6)" }, 4.82);
+
+  /* SYSTEMS @5.94: lows appear and ride east along the northern band (render() moves them from 5.94) */
+  tl.fromTo([P + "l0", P + "l1", P + "l2"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out", stagger: 0.12 }, 5.94);
+
+  /* MOSTLY @7.88: C1 in, then floats */
+  tl.fromTo(P + "c1", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 7.88);
+  tl.to(P + "c1in", { y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3 }, 8.33);
+
+  /* 45TH @9.78: dotted parallel draws west to east 9.78 -> 10.80; 45°N label in */
+  tl.fromTo(P + "pclipr", { attr: { width: 0 } }, { attr: { width: 7400 }, duration: 1.02, ease: "power2.inOut" }, 9.78);
+  tl.fromTo(P + "p45", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 9.98);
+
+  /* MINNEAPOLIS @12.08: pin and label pop */
+  tl.fromTo(P + "msp", { autoAlpha: 0, scale: 0.3, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.4, ease: "back.out(2.2)" }, 12.08);
+  tl.fromTo(P + "msp-ring", { scale: 1, opacity: 0.8, transformOrigin: "50% 50%" }, { scale: 2.4, opacity: 0, transformOrigin: "50% 50%", duration: 1.4, ease: "power1.out", repeat: 3 }, 12.40);
+  tl.fromTo(P + "msplab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 12.18);
+
+  /* THE BUREAU'S @13.20: C1 out by 13.80; hold to 18.58 with the lows travelling and the camera drifting */
+  tl.to(P + "c1", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 13.20);
+  tl.fromTo(P + "ridge", { opacity: 1 }, { opacity: 0.7, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3 }, 13.80);
+
+  /* 18.28: HUD text clears before the move; 18.58 -> 19.98 camera to V-GULF (render), lows leave with the plate */
+  tl.to([P + "high", P + "p45", P + "msplab"], { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 18.28);
+  tl.to([P + "l0", P + "l1", P + "l2", P + "msp"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 18.58);
+  tl.fromTo([P + "gal", P + "hav"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 19.40);
+  tl.fromTo([P + "arrow", P + "head"], { autoAlpha: 0 }, { autoAlpha: 0.35, duration: 0.4, ease: "power2.out" }, 19.60);
+
+  /* WNW @19.98: ring and past track run Sept 6 00Z -> Sept 8 12Z, 19.98 -> 21.80; Galveston label once settled */
+  tl.fromTo(P + "ring", { autoAlpha: 0, scale: 0.6, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.3, ease: "back.out(2)" }, 19.98);
+  tl.fromTo(P + "trk", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: "none" }, 19.98);
+  tl.fromTo(P + "galv", { autoAlpha: 0, x: 16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 20.10);
+  tl.fromTo(P + "ringc", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1.08, transformOrigin: "50% 50%", duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 5 }, 21.80);
+
+  /* BELEN @22.40: Havana arrow lights with glow; C2 in */
+  tl.to([P + "arrow", P + "head"], { autoAlpha: 1, duration: 0.35, ease: "power2.out" }, 22.40);
+  tl.fromTo(P + "aglow", { autoAlpha: 0 }, { autoAlpha: 0.6, duration: 0.5, ease: "power2.out" }, 22.40);
+  tl.fromTo(P + "c2", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 22.40);
+  tl.to(P + "c2in", { y: -4, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 22.85);
+
+  /* exit (Havana. ends 23.70): C2 slides out 24.00 -> 24.60, root fades 24.30 -> 24.60 */
+  tl.to(P + "c2", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 24.00);
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 24.30);
+
+  window.__timelines["g-a3-3-lows-north"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
