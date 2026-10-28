@@ -143,6 +143,16 @@ window.__timelines = window.__timelines || {};
 
   /* "It was a long, semi-technical note ... It said," @9.28-18.62: stack scrolls 1100 px (y 0 -> -1100) */
   tl.fromTo($("stack"), { y: 0 }, { y: -1100, duration: 9.34, ease: "power1.inOut", immediateRender: false }, 9.28);
+  /* a row is shown only while its glyph (row top +8..+36) sits inside the window: on as its glyph top passes window y500
+     (bottom feather), off as its glyph bottom passes window y8 (top feather). Offset o -> time inverts power1.inOut,
+     so no row is visible below the panel or up over the header while the window's clip hides it from the gates. */
+  const inv1 = (f) => (f < 0.5 ? Math.sqrt(f / 2) : 1 - Math.sqrt((1 - f) / 2));
+  document.querySelectorAll("#as-stack .as-row").forEach(function (r) {
+    const top = parseFloat(r.style.top), oIn = top - 492, oOut = top + 28;
+    if (oIn > 0) tl.set(r, { visibility: "hidden" }, 0);
+    if (oIn > 0 && oIn <= 1100) tl.set(r, { visibility: "visible" }, 9.28 + 9.34 * inv1(oIn / 1100));
+    if (oOut <= 1100) tl.set(r, { visibility: "hidden" }, 9.28 + 9.34 * inv1(oOut / 1100));
+  });
 
   /* "One could certainly" @19.64-20.50: rect 1 tracks the voice; each word turns dark as the rect passes its middle */
   tl.fromTo($("hl1"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.86, ease: "none" }, 19.64);
