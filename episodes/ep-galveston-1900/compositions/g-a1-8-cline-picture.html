@@ -1,0 +1,330 @@
+<template>
+<style>
+  #g-a1-8-cline-picture-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a1-8-cline-picture-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* start-hidden SVG parts (also hidden by tl.set at 0) */
+  #g-a1-8-cline-picture-level, #g-a1-8-cline-picture-tick, #g-a1-8-cline-picture-spread,
+  #g-a1-8-cline-picture-storm, #g-a1-8-cline-picture-wind, #g-a1-8-cline-picture-mound,
+  #g-a1-8-cline-picture-sheet { visibility:hidden; opacity:0; }
+
+  /* glass surface shared by the source line and the chip */
+  .ga18-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+
+  /* source line: top-left glass, small radius */
+  #g-a1-8-cline-picture-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* HUD text: never rides the camera */
+  .ga18-hud { position:absolute; white-space:nowrap; opacity:0; visibility:hidden; font-family:Arial, sans-serif; font-weight:700; }
+  .ga18-stroke { -webkit-text-stroke:5px #04070c; paint-order:stroke fill; }
+  #g-a1-8-cline-picture-note { left:96px; top:1000px; font-size:19px; line-height:22px; color:#93a3b2; letter-spacing:2px; }
+  /* centred at screen (1300, 640) at V1, above the mainland ground line, left of x 1500 */
+  #g-a1-8-cline-picture-lmain { left:1300px; top:627px; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:3px; }
+  /* centred at screen (1200, 300) at V1, above the level line (screen y 432) */
+  #g-a1-8-cline-picture-llow { left:1200px; top:285px; font-size:26px; line-height:30px; color:#d8a13a; letter-spacing:1px; }
+  #g-a1-8-cline-picture-brow { left:960px; top:120px; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:6px; }
+  /* left edge 96, centred on y 360, beside the storm glyph at V2 */
+  #g-a1-8-cline-picture-lcyc { left:96px; top:342px; font-size:30px; line-height:36px; color:#f2f5f8; }
+
+  /* chip: glass card, radius 28 */
+  #g-a1-8-cline-picture-chip { position:absolute; left:50%; top:130px; box-sizing:border-box; padding:22px 52px 20px; border-radius:28px;
+    text-align:center; white-space:nowrap; opacity:0; visibility:hidden;
+    box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  .ga18-main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:58px; color:#f2f5f8; }
+  .ga18-tag { display:block; margin-top:6px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:4px; }
+</style>
+<div id="g-a1-8-cline-picture-root" data-composition-id="g-a1-8-cline-picture" data-width="1920" data-height="1080">
+  <svg id="g-a1-8-cline-picture-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g-a1-8-cline-picture-wgrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0b1016"/><stop offset="1" stop-color="#04070c"/>
+      </linearGradient>
+      <!-- land fill: solid to sea level (y 780), fades out by y 900 (the g-intro-6 plate) -->
+      <linearGradient id="g-a1-8-cline-picture-igrad" gradientUnits="userSpaceOnUse" x1="0" y1="432" x2="0" y2="900">
+        <stop offset="0" stop-color="#15202b" stop-opacity="1"/>
+        <stop offset="0.7436" stop-color="#15202b" stop-opacity="1"/>
+        <stop offset="1" stop-color="#15202b" stop-opacity="0"/>
+      </linearGradient>
+      <!-- water extents: Gulf x -200 to 360, bay x 1560 to 2400 -->
+      <clipPath id="g-a1-8-cline-picture-cgulf"><rect x="-200" y="660" width="560" height="340"/></clipPath>
+      <clipPath id="g-a1-8-cline-picture-cbay"><rect x="1560" y="740" width="840" height="260"/></clipPath>
+      <!-- left-to-right reveals (width tweened) -->
+      <clipPath id="g-a1-8-cline-picture-clev"><rect id="g-a1-8-cline-picture-clevr" x="1016" y="420" width="0" height="24"/></clipPath>
+      <clipPath id="g-a1-8-cline-picture-ctick"><rect id="g-a1-8-cline-picture-ctickr" x="2990" y="430" width="20" height="0"/></clipPath>
+      <clipPath id="g-a1-8-cline-picture-cspr"><rect id="g-a1-8-cline-picture-csprr" x="2446" y="650" width="0" height="40"/></clipPath>
+      <clipPath id="g-a1-8-cline-picture-cisl"><rect id="g-a1-8-cline-picture-cislr" x="356" y="420" width="0" height="370"/></clipPath>
+      <clipPath id="g-a1-8-cline-picture-cmain"><rect id="g-a1-8-cline-picture-cmainr" x="2396" y="690" width="0" height="40"/></clipPath>
+      <g id="g-a1-8-cline-picture-house">
+        <rect x="-14" y="-15" width="28" height="15" fill="#4a5560"/>
+        <polygon points="-15,-15 0,-24 15,-15" fill="#93a3b2"/>
+      </g>
+    </defs>
+
+    <!-- camera: transform written each frame from camAt(t), a pure function of comp time -->
+    <g id="g-a1-8-cline-picture-cam">
+      <!-- Gulf of Mexico (left, south): amplitude 6 px, wavelength 60 px (path d built in script) -->
+      <g clip-path="url(#g-a1-8-cline-picture-cgulf)">
+        <g id="g-a1-8-cline-picture-wgulf">
+          <path id="g-a1-8-cline-picture-wgulff" fill="url(#g-a1-8-cline-picture-wgrad)"/>
+          <path id="g-a1-8-cline-picture-wgulfs" fill="none" stroke="#5a768f" stroke-width="3"/>
+        </g>
+      </g>
+      <!-- Galveston Bay (north): amplitude 3 px, wavelength 80 px; outer group rises 4 px at the spill -->
+      <g id="g-a1-8-cline-picture-bayrise">
+        <g clip-path="url(#g-a1-8-cline-picture-cbay)">
+          <g id="g-a1-8-cline-picture-wbay">
+            <path id="g-a1-8-cline-picture-wbayf" fill="url(#g-a1-8-cline-picture-wgrad)"/>
+            <path id="g-a1-8-cline-picture-wbays" fill="none" stroke="#5a768f" stroke-width="3"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- mean sea level datum -->
+      <path fill="none" stroke="#5a768f" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.55" d="M-200,780 L3600,780"/>
+
+      <!-- island cross-section: 40 px per ft above sea level (y 780); crest 8.7 ft = y 432, shoulders 4 ft = y 620 -->
+      <path fill="url(#g-a1-8-cline-picture-igrad)" d="M360,780 L520,640 L720,620 L900,432 L1020,432 L1200,620 L1400,640 L1560,780 L1560,900 L360,900 Z"/>
+      <path fill="none" stroke="#93a3b2" stroke-width="3" stroke-linejoin="round" d="M360,780 L520,640 L720,620 L900,432 L1020,432 L1200,620 L1400,640 L1560,780"/>
+
+      <!-- mainland (SCHEMATIC): top y 720 from x 2400 to 3200, rising to y 700 at 3600; below the island everywhere above its shoreline -->
+      <path id="g-a1-8-cline-picture-main" fill="url(#g-a1-8-cline-picture-igrad)" d="M2370,780 L2400,720 L3200,720 L3600,700 L3600,900 L2370,900 Z"/>
+      <path fill="none" stroke="#93a3b2" stroke-width="3" stroke-linejoin="round" d="M2370,780 L2400,720 L3200,720 L3600,700"/>
+
+      <!-- storm wave mound on the Gulf surface: x -100 to 140, peak y 680 (100 px above the datum) -->
+      <g id="g-a1-8-cline-picture-mound">
+        <path fill="#7fb2e5" d="M-100,780 C-50,780 -25,680 20,680 C65,680 90,780 140,780 Z"/>
+        <path fill="none" stroke="#7fb2e5" stroke-width="2" d="M-100,780 C-50,780 -25,680 20,680 C65,680 90,780 140,780"/>
+      </g>
+
+      <!-- spill sheet: 4 px over the island top, tapering 4 to 1 px over the mainland; drawn UNDER the houses -->
+      <g id="g-a1-8-cline-picture-sheet">
+        <g clip-path="url(#g-a1-8-cline-picture-cisl)">
+          <path fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linejoin="round" d="M360,776.5 L520,636.5 L720,616.5 L900,428.5 L1020,428.5 L1200,616.5 L1400,636.5 L1560,776.5"/>
+        </g>
+        <g clip-path="url(#g-a1-8-cline-picture-cmain)">
+          <path fill="#7fb2e5" d="M2400,714.5 L3200,716.7 L3500,702.5 L3500,703.5 L3200,718.5 L2400,718.5 Z"/>
+        </g>
+      </g>
+
+      <!-- 22 houses, placed on the profile by the script (left to right), as g-intro-6 -->
+      <use id="g-a1-8-cline-picture-h0" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h1" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h2" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h3" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h4" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h5" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h6" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h7" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h8" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h9" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h10" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h11" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h12" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h13" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h14" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h15" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h16" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h17" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h18" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h19" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h20" href="#g-a1-8-cline-picture-house"/>
+      <use id="g-a1-8-cline-picture-h21" href="#g-a1-8-cline-picture-house"/>
+
+      <!-- level line from the island crest north over the mainland, plus the down-tick to the mainland top at x 3000 -->
+      <g id="g-a1-8-cline-picture-level" clip-path="url(#g-a1-8-cline-picture-clev)">
+        <path fill="none" stroke="#d8a13a" stroke-width="2" stroke-dasharray="12 9" d="M1020,432 L3600,432"/>
+      </g>
+      <g id="g-a1-8-cline-picture-tick" clip-path="url(#g-a1-8-cline-picture-ctick)">
+        <path fill="none" stroke="#d8a13a" stroke-width="2" d="M3000,432 L3000,716"/>
+        <path fill="none" stroke="#d8a13a" stroke-width="2" d="M2992,716 L3008,716"/>
+      </g>
+
+      <!-- spread arrow along the mainland top; lifted to y 676 -> 668 so it stays out of the circle corner (y >= 680) at V1 -->
+      <g id="g-a1-8-cline-picture-spread" clip-path="url(#g-a1-8-cline-picture-cspr)">
+        <path fill="none" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="10 8" d="M2450,676 L3436,668"/>
+        <polygon fill="#7fb2e5" points="3456,668 3434,676 3434,660"/>
+      </g>
+
+      <!-- storm glyph (hurricane symbol, 160 px) over the Gulf at (-60, 560); three wind arrows -->
+      <g id="g-a1-8-cline-picture-storm">
+        <g id="g-a1-8-cline-picture-spin">
+          <circle cx="-60" cy="560" r="18" fill="none" stroke="#93a3b2" stroke-width="6"/>
+          <path fill="none" stroke="#93a3b2" stroke-width="6" stroke-linecap="round" d="M-42,560 C-42,510 -80,485 -130,500"/>
+          <path fill="none" stroke="#93a3b2" stroke-width="6" stroke-linecap="round" d="M-78,560 C-78,610 -40,635 10,620"/>
+        </g>
+      </g>
+      <g id="g-a1-8-cline-picture-wind">
+        <g id="g-a1-8-cline-picture-windm">
+          <path fill="none" stroke="#c8d3e0" stroke-width="4" stroke-linecap="round" d="M0,640 L280,640 M262,628 L282,640 L262,652"/>
+          <path fill="none" stroke="#c8d3e0" stroke-width="4" stroke-linecap="round" d="M40,670 L300,670 M282,658 L302,670 L282,682"/>
+          <path fill="none" stroke="#c8d3e0" stroke-width="4" stroke-linecap="round" d="M0,700 L260,700 M242,688 L262,700 L242,712"/>
+        </g>
+      </g>
+    </g>
+  </svg>
+
+  <div id="g-a1-8-cline-picture-src" class="ga18-glass">Isaac Cline, Galveston Daily News, July 16, 1891</div>
+  <div id="g-a1-8-cline-picture-note" class="ga18-hud">Schematic &middot; vertical scale exaggerated</div>
+  <div id="g-a1-8-cline-picture-lmain" class="ga18-hud ga18-stroke">Mainland</div>
+  <div id="g-a1-8-cline-picture-llow" class="ga18-hud ga18-stroke">Lower than the island</div>
+  <div id="g-a1-8-cline-picture-brow" class="ga18-hud">CLINE'S PICTURE, 1891</div>
+  <div id="g-a1-8-cline-picture-lcyc" class="ga18-hud ga18-stroke">Cyclone</div>
+  <div id="g-a1-8-cline-picture-chip" class="ga18-glass">
+    <span class="ga18-main">TOO LARGE A TERRITORY TO THE NORTH</span>
+    <span class="ga18-tag">Isaac Cline, 1891</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a1-8-cline-picture-";
+  const q = function(id) { return document.querySelector(P + id); };
+  /* a1-s4.words.json, comp-local = S4 time - 4.62 (host starts at "He" 4.62).
+     Host: nx-a1-s4 154.523 + 4.62 = 159.143 to nx-a1-s5 178.762 -> 19.619 s.
+     north 6.14 -> 1.52 · lower 7.20 -> 2.58 · (pan settles 7.54 -> 2.92) · spread 9.00 -> 4.38 · it. 9.70 -> 5.08
+     In 10.30 -> 5.68 · picture, 10.58 -> 5.96 · storm 11.48 -> 6.86 · Gulf 12.96 -> 8.34 · run 13.50 -> 8.88
+     that 14.22 -> 9.60 · country 15.16 -> 10.54 · thin 15.40 -> 10.78 · city. 20.28 -> 15.66 · Cyclone 20.54 -> 15.92
+     Timeline ends 19.619; fade-through to A1-S5 in the last 0.4 s. */
+  const END = 19.619;
+
+  /* --- water paths (Gulf wavelength 60, Bay 80), long enough for the whole phase drift --- */
+  const wave = function(x0, x1, half, amp) {
+    let d = "M" + x0 + ",780 q" + (half / 2) + "," + (-2 * amp) + " " + half + ",0";
+    for (let x = x0 + half; x < x1; x += half) d += " t" + half + ",0";
+    return d;
+  };
+  const gd = wave(-680, 420, 30, 6), bd = wave(1480, 2720, 40, 3);
+  q("wgulfs").setAttribute("d", gd);
+  q("wgulff").setAttribute("d", gd + " L420,1000 L-680,1000 Z");
+  q("wbays").setAttribute("d", bd);
+  q("wbayf").setAttribute("d", bd + " L2720,1000 L1480,1000 Z");
+
+  /* --- houses on the island profile, evenly by arc length (x 560 to 1360), exactly as g-intro-6 --- */
+  const PTS = [[360,780],[520,640],[720,620],[900,432],[1020,432],[1200,620],[1400,640],[1560,780]];
+  const yAt = function(x) {
+    for (let i = 0; i < PTS.length - 1; i++) {
+      const a = PTS[i], b = PTS[i + 1];
+      if (x >= a[0] && x <= b[0]) return a[1] + (b[1] - a[1]) * (x - a[0]) / (b[0] - a[0]);
+    }
+    return 780;
+  };
+  const xs = [], arc = [0];
+  for (let x = 560; x <= 1360; x += 0.5) xs.push(x);
+  for (let i = 1; i < xs.length; i++) arc.push(arc[i - 1] + Math.hypot(0.5, yAt(xs[i]) - yAt(xs[i - 1])));
+  const total = arc[arc.length - 1];
+  const houses = [];
+  for (let k = 0, j = 0; k < 22; k++) {
+    const want = total * k / 21;
+    while (j < arc.length - 1 && arc[j] < want) j++;
+    houses.push(q("h" + k));
+    tl.set(houses[k], {x: xs[j], y: yAt(xs[j]), scale: 1, transformOrigin: "50% 100%"}, 0);
+  }
+
+  /* --- camera: screen = (960 + (X - cx)*s, 540 + (Y - cy)*s), pure function of comp time --- */
+  const io2 = gsap.parseEase("power2.inOut"), io1 = gsap.parseEase("power1.inOut");
+  const clamp = function(u) { return Math.max(0, Math.min(1, u)); };
+  const camAt = function(t) {
+    if (t < 1.52) return [960, 540, 1];                                   /* V0: g-intro-6 framing */
+    if (t < 2.92) return [960 + 1540 * io2(clamp((t - 1.52) / 1.4)), 540, 1]; /* V1 pan north */
+    if (t < 5.68) return [2500, 540, 1];
+    if (t < 6.68) {                                                       /* V2 pull-out 2x, log space (helpers.js logZoom) */
+      const u = io1(clamp((t - 5.68) / 1.0));
+      return [2500 - 800 * u, 540 + 60 * u, Math.exp(Math.log(0.5) * u)];
+    }
+    return [1700, 600, 0.5 + 0.02 * clamp((t - 6.68) / (END - 6.68))];   /* V2 drift 0.50 -> 0.52 */
+  };
+  const cam = q("cam");
+  const applyCam = function() {
+    const c = camAt(tl.time()), s = c[2];
+    cam.setAttribute("transform", "matrix(" + s + ",0,0," + s + "," + (960 - c[0] * s) + "," + (540 - c[1] * s) + ")");
+  };
+  applyCam();
+  tl.eventCallback("onUpdate", applyCam);
+
+  /* --- start states --- */
+  tl.set([P+"src", P+"note", P+"lmain", P+"llow", P+"brow", P+"lcyc", P+"chip",
+          P+"level", P+"tick", P+"spread", P+"storm", P+"wind", P+"mound", P+"sheet"], {autoAlpha: 0}, 0);
+  tl.set([P+"lmain", P+"llow", P+"brow", P+"chip"], {xPercent: -50}, 0);
+  tl.set(P+"mound", {scaleY: 0, x: 0, transformOrigin: "50% 100%"}, 0);
+  tl.set(P+"spin", {rotation: 0, transformOrigin: "50% 50%"}, 0);
+  tl.set(P+"windm", {x: 0}, 0);
+  tl.set(P+"bayrise", {y: 0}, 0);
+
+  /* --- whole-window motion: water phase (ease none) --- */
+  tl.to(P+"wgulf", {x: 390, duration: END, ease: "none"}, 0);
+  tl.to(P+"wbay", {x: -260, duration: END, ease: "none"}, 0);
+
+  /* HE SAID @4.62 (local 0): plate on at V0; source line and note in, then drift */
+  tl.fromTo(P+"src", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out"}, 0);
+  tl.to(P+"src", {y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 7}, 0.5);
+  tl.fromTo(P+"note", {autoAlpha: 0, x: -20}, {autoAlpha: 1, x: 0, duration: 0.4, ease: "power2.out"}, 0);
+  tl.to(P+"note", {y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 7}, 0.4);
+
+  /* NORTH @6.14: chip in on the HUD while the V1 pan runs (1.52 to 2.92) */
+  tl.fromTo(P+"chip", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 1.52);
+  tl.to(P+"chip", {y: -4, duration: 1.55, ease: "sine.inOut", yoyo: true, repeat: 1}, 1.97);
+
+  /* LOWER @7.20: level line draws left to right (0.8 s), then the down-tick to the mainland top at x 3000 */
+  tl.set(P+"level", {autoAlpha: 1}, 2.58);
+  tl.fromTo(P+"clevr", {attr: {width: 0}}, {attr: {width: 2590}, duration: 0.8, ease: "none"}, 2.58);
+  tl.set(P+"tick", {autoAlpha: 1}, 3.19);
+  tl.fromTo(P+"ctickr", {attr: {height: 0}}, {attr: {height: 292}, duration: 0.3, ease: "power2.out"}, 3.19);
+  /* labels in once the pan has settled (7.54 -> 2.92) */
+  tl.fromTo(P+"llow", {autoAlpha: 0, y: 14}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out"}, 2.92);
+  tl.fromTo(P+"lmain", {autoAlpha: 0, y: 14}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out"}, 3.02);
+  tl.to(P+"llow", {y: -4, duration: 1.76, ease: "sine.inOut"}, 3.32);
+  tl.to(P+"lmain", {y: -4, duration: 1.66, ease: "sine.inOut"}, 3.42);
+
+  /* SPREAD @9.00: spread arrow draws left to right along the mainland (0.7 s) */
+  tl.set(P+"spread", {autoAlpha: 1}, 4.38);
+  tl.fromTo(P+"csprr", {attr: {width: 0}}, {attr: {width: 1016}, duration: 0.7, ease: "power1.inOut"}, 4.38);
+
+  /* it. @9.70 to 10.10: chip out (diagram exit), labels out (0.3 s), before the pull-out */
+  tl.to(P+"chip", {y: -24, autoAlpha: 0, duration: 0.4, ease: "power2.in"}, 5.08);
+  tl.to([P+"llow", P+"lmain"], {autoAlpha: 0, duration: 0.3, ease: "power2.in"}, 5.08);
+
+  /* IN @10.30: V2 pull-out 5.68 to 6.68 (camAt). HIS PICTURE @10.58: eyebrow starts on "In" so a Cline tag is
+     on every frame from 10.30 (§4.4) and lands on "picture," */
+  tl.fromTo(P+"brow", {autoAlpha: 0, y: 14}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out"}, 5.66);
+  tl.to(P+"brow", {y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 4}, 6.06);
+  /* storm glyph and wind arrows fade in as the pull-out settles; glyph turns slowly, wind arrows push */
+  tl.fromTo([P+"storm", P+"wind"], {autoAlpha: 0}, {autoAlpha: 1, duration: 0.5, ease: "power2.out"}, 6.68);
+  tl.to(P+"spin", {rotation: -150, duration: END - 6.68, ease: "none"}, 6.68);
+  tl.to(P+"windm", {x: 24, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 7}, 6.68);
+
+  /* WAVE @11.48: mound rises from the datum (0.4 s) and travels to the beach, front at x 360, by "Gulf" 12.96 */
+  tl.set(P+"mound", {autoAlpha: 0.75}, 6.86);
+  tl.to(P+"mound", {scaleY: 1, duration: 0.4, ease: "power2.out"}, 6.86);
+  tl.to(P+"mound", {x: 220, duration: 1.48, ease: "power1.inOut"}, 6.86);
+
+  /* SPILL @13.50: mound collapses (peak 680 -> 772), thin sheet runs over the island (to 14.22),
+     bay rises 4 px (14.22), sheet spreads over the mainland (14.22 to 15.16) */
+  tl.to(P+"mound", {scaleY: 0.08, duration: 0.7, ease: "power2.in"}, 8.88);
+  tl.set(P+"sheet", {autoAlpha: 0.75}, 8.88);
+  tl.fromTo(P+"cislr", {attr: {width: 0}}, {attr: {width: 1208}, duration: 0.72, ease: "none"}, 8.88);
+  tl.to(P+"bayrise", {y: -4, duration: 0.4, ease: "power2.out"}, 9.6);
+  tl.fromTo(P+"cmainr", {attr: {width: 0}}, {attr: {width: 1108}, duration: 0.94, ease: "power1.out"}, 9.6);
+  tl.to(P+"spread", {opacity: 0.45, duration: 0.5, ease: "power2.out"}, 9.6);
+
+  /* THIN @15.40: the whole sheet thins out, 0.75 -> 0.25 over 1.0 s; the collapsed mound goes with it */
+  tl.to(P+"sheet", {opacity: 0.25, duration: 1.0, ease: "power1.inOut"}, 10.78);
+  tl.to(P+"mound", {opacity: 0.25, duration: 1.0, ease: "power1.inOut"}, 10.78);
+
+  /* CITY @20.28: the 22 houses pulse once, 1 -> 1.06 -> 1 (0.5 s): the city stands, in his picture */
+  tl.to(houses, {scale: 1.06, duration: 0.25, ease: "power1.out", yoyo: true, repeat: 1}, 15.66);
+
+  /* CYCLONE @20.54: label beside the storm glyph */
+  tl.fromTo(P+"lcyc", {autoAlpha: 0, x: -20}, {autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out"}, 15.92);
+  tl.to(P+"lcyc", {y: -4, duration: 1.45, ease: "sine.inOut", yoyo: true, repeat: 1}, 16.32);
+
+  /* exit: fade-through to A1-S5 (a different cross-section), root to 0 over the last 0.4 s */
+  tl.to(P+"root", {autoAlpha: 0, duration: 0.4, ease: "power1.in"}, END - 0.4);
+  window.__timelines["g-a1-8-cline-picture"] = tl;
+})();
+</script>
+</template>
