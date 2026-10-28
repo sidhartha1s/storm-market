@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-8-upslope · A3-S7 (seg 9.00 to 15.20) · ep-appalachian-1950 · STANDARD (Sonnet) · brief: briefs/a3/g-a3-8-upslope.md
+  Claim: the stalled storm's winds kept pushing moist air up the West Virginia slopes, and the snow kept falling (to 29 Nov).
+  SOURCE: research/maps-forecast.md section 3 M7 RLX (NWS Charleston, SECONDARY). Relief is SCHEMATIC (said in the source line).
+  BASEMAP: Natural Earth 50m admin-1 (public domain), the West Virginia subpath copied verbatim from the episode's shared US path
+    (compositions/g-a2-8-wv.html, last subpath of #w8-us = master-map-us-canada.html regional layer). No other state is drawn.
+    Placed by one group matrix(): frame A2-W, s 0.075, top-left (54186.2, 35931.1): screen = (map - TL) * 0.075
+    = matrix(0.075 0 0 0.075 -4063.97 -2694.83). Camera is static at A2-W (g-a2-8's end state).
+  RELIEF: the basemap has no terrain layer, so 7 soft ridge bands run SW to NE parallel to the Allegheny ridge line
+    (820,900) to (1300,250), clipped to the state. Bands lie at signed offsets -380,-270,-160,-70,0,+120,+250 px from that line
+    (+ = east/south-east). NW-facing (west) edges carry a #4a5560 highlight and a faint #5a768f .25 light.
+  ARROWS: 4 quadratic chains of 3 segments, tangent angle rising -8 to 28 degrees (they bend upward as they climb); tips stop
+    about 17 px west of the ridge line (f = 650x + 480y - 965000 stays < 0 along every arrow). Dashes shorten and brighten
+    per segment (26/16, 17/13, 10/11 px; #7fb2e5, #96c3ee, #b3d6f6).
+  CUES (audio/a3-s7.words.json, segment time - 9.00 = comp time):
+    seg  9.00 / 0.00  relief + ground fade in over 0.6 s (over g-a3-7's fade out)            FADE
+    seg  9.84 / 0.84  arrows draw on (stagger .2, 0.8 s each), conveyor dashes start          winds
+    seg 11.48 / 2.48  arrows brighten, one pulse                                              up
+    seg 13.18 / 4.18  "WEST VIRGINIA" in; snow starts                                          West
+    seg 14.02 / 5.02  counter card in, "NOV 27"                                               snow
+    seg 14.26 / 5.26  counter to "NOV 28"                                                     kept
+    seg 14.52 / 5.52  counter to "NOV 29"                                                     falling.
+    comp 5.60 to 6.20 counter card slides out left; map, ground, source lines fade to 0
+  Host: data-start = A3-S7 start + 9.00, data-duration 6.20.
+-->
+<template>
+<style>
+  #a3u-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; }
+  /* ground fades in with the relief so g-a3-7 shows through the handoff */
+  #a3u-bg { position:absolute; inset:0; opacity:0; background:radial-gradient(ellipse at 45% 50%, #0e1a26 0%, #070c12 78%); }
+  .a3u-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* start-hidden in CSS as well as on the timeline */
+  .a3u-hide { opacity:0; visibility:hidden; }
+  #a3u-stage { opacity:0; }
+  #a3u-flakes { fill:#f2f5f8; opacity:0; }
+  /* glass card, title zone */
+  #a3u-card { position:absolute; left:110px; top:90px; box-sizing:border-box; padding:18px 28px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #a3u-eyebrow { white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; letter-spacing:6px; color:#93a3b2; }
+  #a3u-dayw { position:relative; width:290px; height:66px; margin-top:6px; }
+  .a3u-day { position:absolute; left:0; top:0; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:58px; line-height:66px; color:#f2f5f8; }
+  #a3u-d28, #a3u-d29 { opacity:0; visibility:hidden; }
+  .a3u-src { position:absolute; left:110px; bottom:90px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700;
+    font-size:19px; letter-spacing:2px; color:#c8d3e0; }
+  .a3u-credit { position:absolute; left:110px; bottom:60px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700;
+    font-size:19px; color:#93a3b2; }
+</style>
+<div id="a3u-root" data-composition-id="g-a3-8-upslope" data-width="1920" data-height="1080" data-duration="6.20">
+  <div id="a3u-bg"></div>
+  <svg class="a3u-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!--BASEMAP:a3u (West Virginia subpath, verbatim)-->
+      <path id="a3u-wv" vector-effect="non-scaling-stroke" stroke-linejoin="round" d="M59430,50548 L58751,49897 L58015,48494 L57975,48242 L57566,47593 L57455,47313 L57448,47133 L57606,46630 L57563,45802 L57474,45647 L57916,45832 L58341,45726 L58605,45471 L58710,45067 L58858,44832 L59050,44766 L59136,44589 L59046,43859 L59550,42772 L59823,42503 L60020,42625 L60224,43159 L60428,42932 L60560,42844 L60672,42861 L60586,42084 L60708,42013 L60977,41283 L61144,41046 L61339,41034 L61550,40845 L61776,40478 L61980,40373 L62161,40527 L62388,40539 L62660,40406 L63809,39375 L64151,38855 L64159,38457 L65198,34948 L65189,34494 L64978,33836 L65061,33611 L65516,33367 L65514,38530 L69516,38528 L69476,41387 L70223,40825 L71061,39907 L71460,40031 L72062,39381 L72204,39065 L72324,39137 L72343,39337 L72588,39496 L72983,39589 L73288,39586 L73629,39058 L73942,38995 L74496,38735 L74816,38779 L75087,39040 L75362,39165 L75640,39154 L75747,39216 L75682,39349 L76038,39838 L75991,40098 L76104,40168 L76241,40630 L75822,41754 L73954,40041 L73843,40270 L73520,41667 L72958,42570 L72531,43003 L72398,42990 L72285,43078 L71855,43582 L71381,43572 L71192,43740 L70428,45489 L70182,45637 L69830,45612 L69411,45406 L69218,45026 L69054,44927 L68894,44953 L68782,45110 L68603,45893 L68341,46273 L68228,46659 L67883,47140 L67618,47892 L66565,49540 L66414,49954 L66565,50268 L66295,50888 L66084,51095 L65725,51318 L65560,51115 L64744,51495 L64270,51380 L64161,51504 L64156,51833 L63993,51996 L62984,52264 L62796,52265 L62324,51871 L62058,52158 L61406,52573 L61130,52496 L60305,51894 L59937,51093 L59961,50721 L59430,50548 Z"/>
+      <!--/BASEMAP-->
+      <clipPath id="a3u-wvclip" clipPathUnits="userSpaceOnUse"><use href="#a3u-wv" transform="matrix(0.075 0 0 0.075 -4063.97 -2694.83)"/></clipPath>
+      <filter id="a3u-soft" filterUnits="userSpaceOnUse" x="-300" y="-300" width="2600" height="1700"><feGaussianBlur stdDeviation="9"/></filter>
+      <!-- one ridge centre line in local px, two wobbles; each band is a translate of it -->
+      <path id="a3u-rA" fill="none" stroke-linecap="round" d="M-297,402.5 C4.9,30.4 256.9,-378.6 564.3,-764.8"/>
+      <path id="a3u-rB" fill="none" stroke-linecap="round" d="M-297,402.5 C-30.5,4.2 285.9,-357.2 564.3,-764.8"/>
+    </defs>
+    <g id="a3u-stage">
+      <use href="#a3u-wv" transform="matrix(0.075 0 0 0.075 -4063.97 -2694.83)" fill="#0b1016"/>
+      <!-- relief, SCHEMATIC: 7 bands SW to NE, clipped to the state -->
+      <g clip-path="url(#a3u-wvclip)">
+        <g id="a3u-relief" filter="url(#a3u-soft)">
+          <use href="#a3u-rA" transform="translate(514.1 674.3)" stroke="#182430" stroke-opacity="0.95" stroke-width="70"/>
+          <use href="#a3u-rB" transform="translate(602.6 739.6)" stroke="#1b2835" stroke-opacity="0.95" stroke-width="84"/>
+          <use href="#a3u-rA" transform="translate(691.2 805.0)" stroke="#1f2d3b" stroke-opacity="0.95" stroke-width="96"/>
+          <use href="#a3u-rB" transform="translate(763.7 858.4)" stroke="#243342" stroke-opacity="0.95" stroke-width="90"/>
+          <use href="#a3u-rA" transform="translate(820 900)" stroke="#2a3644" stroke-opacity="0.95" stroke-width="110"/>
+          <use href="#a3u-rB" transform="translate(916.6 971.3)" stroke="#1f2d3b" stroke-opacity="0.95" stroke-width="84"/>
+          <use href="#a3u-rA" transform="translate(1021.3 1048.5)" stroke="#182430" stroke-opacity="0.95" stroke-width="70"/>
+          <!-- faint light on the north-west facing edges -->
+          <use href="#a3u-rA" transform="translate(491.6 657.7)" stroke="#5a768f" stroke-opacity="0.25" stroke-width="16"/>
+          <use href="#a3u-rB" transform="translate(574.4 718.8)" stroke="#5a768f" stroke-opacity="0.25" stroke-width="16"/>
+          <use href="#a3u-rA" transform="translate(658.2 780.6)" stroke="#5a768f" stroke-opacity="0.25" stroke-width="16"/>
+          <use href="#a3u-rB" transform="translate(733.1 835.8)" stroke="#5a768f" stroke-opacity="0.25" stroke-width="16"/>
+          <use href="#a3u-rA" transform="translate(781.4 871.5)" stroke="#5a768f" stroke-opacity="0.25" stroke-width="16"/>
+          <use href="#a3u-rB" transform="translate(888.4 950.5)" stroke="#5a768f" stroke-opacity="0.25" stroke-width="16"/>
+          <use href="#a3u-rA" transform="translate(998.8 1031.9)" stroke="#5a768f" stroke-opacity="0.25" stroke-width="16"/>
+        </g>
+        <g id="a3u-edges">
+          <use href="#a3u-rA" transform="translate(485.9 653.5)" stroke="#4a5560" stroke-opacity="0.6" stroke-width="2"/>
+          <use href="#a3u-rB" transform="translate(568.8 714.7)" stroke="#4a5560" stroke-opacity="0.6" stroke-width="2"/>
+          <use href="#a3u-rA" transform="translate(652.6 776.5)" stroke="#4a5560" stroke-opacity="0.6" stroke-width="2"/>
+          <use href="#a3u-rB" transform="translate(727.5 831.7)" stroke="#4a5560" stroke-opacity="0.6" stroke-width="2"/>
+          <use href="#a3u-rA" transform="translate(775.7 867.3)" stroke="#4a5560" stroke-opacity="0.6" stroke-width="2"/>
+          <use href="#a3u-rB" transform="translate(882.8 946.4)" stroke="#4a5560" stroke-opacity="0.6" stroke-width="2"/>
+          <use href="#a3u-rA" transform="translate(993.1 1027.7)" stroke="#4a5560" stroke-opacity="0.6" stroke-width="2"/>
+        </g>
+      </g>
+      <!-- state outline -->
+      <use href="#a3u-wv" transform="matrix(0.075 0 0 0.075 -4063.97 -2694.83)" fill="none" stroke="#93a3b2" stroke-opacity="0.6" stroke-width="2"/>
+
+      <!-- upslope arrows: dim base line draws on, three conveyor segments run on top, head pops at the end -->
+      <g id="a3u-arrows" fill="none" stroke-linejoin="round">
+        <path id="a3u-ab" class="a3u-hide" stroke="#7fb2e5" stroke-width="8" stroke-linecap="round" d="M570,400 Q682.1,415.8 795.0,407.9 Q907.9,400.0 1016.6,368.8 Q1136.3,334.5 1246.2,276.0"/>
+        <path id="a3u-a1" class="a3u-hide" stroke="#7fb2e5" stroke-width="8" stroke-dasharray="26 16" d="M570,400 Q682.1,415.8 795.0,407.9"/>
+        <path id="a3u-a2" class="a3u-hide" stroke="#96c3ee" stroke-width="8" stroke-dasharray="17 13" d="M795.0,407.9 Q907.9,400.0 1016.6,368.8"/>
+        <path id="a3u-a3" class="a3u-hide" stroke="#b3d6f6" stroke-width="8" stroke-dasharray="10 11" d="M1016.6,368.8 Q1136.3,334.5 1246.2,276.0"/>
+        <polygon id="a3u-ah" class="a3u-hide" fill="#b3d6f6" stroke="#b3d6f6" stroke-width="2" points="1252.3,287.5 1269.2,263.8 1240.1,264.5"/>
+
+        <path id="a3u-bb" class="a3u-hide" stroke="#7fb2e5" stroke-width="8" stroke-linecap="round" d="M590,480 Q686.9,493.6 784.6,486.8 Q882.2,480.0 976.3,453.0 Q1079.9,423.3 1174.9,372.8"/>
+        <path id="a3u-b1" class="a3u-hide" stroke="#7fb2e5" stroke-width="8" stroke-dasharray="26 16" d="M590,480 Q686.9,493.6 784.6,486.8"/>
+        <path id="a3u-b2" class="a3u-hide" stroke="#96c3ee" stroke-width="8" stroke-dasharray="17 13" d="M784.6,486.8 Q882.2,480.0 976.3,453.0"/>
+        <path id="a3u-b3" class="a3u-hide" stroke="#b3d6f6" stroke-width="8" stroke-dasharray="10 11" d="M976.3,453.0 Q1079.9,423.3 1174.9,372.8"/>
+        <polygon id="a3u-bh" class="a3u-hide" fill="#b3d6f6" stroke="#b3d6f6" stroke-width="2" points="1181.0,384.3 1197.9,360.6 1168.8,361.3"/>
+
+        <path id="a3u-cb" class="a3u-hide" stroke="#7fb2e5" stroke-width="8" stroke-linecap="round" d="M640,640 Q704.7,649.1 769.9,644.5 Q835.1,640.0 897.9,622.0 Q967.1,602.2 1030.5,568.4"/>
+        <path id="a3u-c1" class="a3u-hide" stroke="#7fb2e5" stroke-width="8" stroke-dasharray="26 16" d="M640,640 Q704.7,649.1 769.9,644.5"/>
+        <path id="a3u-c2" class="a3u-hide" stroke="#96c3ee" stroke-width="8" stroke-dasharray="17 13" d="M769.9,644.5 Q835.1,640.0 897.9,622.0"/>
+        <path id="a3u-c3" class="a3u-hide" stroke="#b3d6f6" stroke-width="8" stroke-dasharray="10 11" d="M897.9,622.0 Q967.1,602.2 1030.5,568.4"/>
+        <polygon id="a3u-ch" class="a3u-hide" fill="#b3d6f6" stroke="#b3d6f6" stroke-width="2" points="1036.6,579.9 1053.5,556.2 1024.4,556.9"/>
+
+        <path id="a3u-db" class="a3u-hide" stroke="#7fb2e5" stroke-width="8" stroke-linecap="round" d="M700,700 Q744.7,706.3 789.7,703.1 Q834.8,700.0 878.2,687.5 Q925.9,673.9 969.8,650.5"/>
+        <path id="a3u-d1" class="a3u-hide" stroke="#7fb2e5" stroke-width="8" stroke-dasharray="26 16" d="M700,700 Q744.7,706.3 789.7,703.1"/>
+        <path id="a3u-d2" class="a3u-hide" stroke="#96c3ee" stroke-width="8" stroke-dasharray="17 13" d="M789.7,703.1 Q834.8,700.0 878.2,687.5"/>
+        <path id="a3u-d3" class="a3u-hide" stroke="#b3d6f6" stroke-width="8" stroke-dasharray="10 11" d="M878.2,687.5 Q925.9,673.9 969.8,650.5"/>
+        <polygon id="a3u-dh" class="a3u-hide" fill="#b3d6f6" stroke="#b3d6f6" stroke-width="2" points="975.9,662.0 992.8,638.3 963.7,639.0"/>
+      </g>
+
+      <!-- snow over the ridge zone: 80 seeded flakes made by the timeline script (x 770-1400) -->
+      <g id="a3u-flakes"></g>
+
+      <text id="a3u-lab" class="a3u-hide" x="640" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="26"
+        letter-spacing="4" fill="#dfe7ee" stroke="#04070c" stroke-width="5" stroke-linejoin="round" paint-order="stroke">WEST VIRGINIA</text>
+    </g>
+  </svg>
+
+  <!-- fixed HUD: day counter, title zone -->
+  <div id="a3u-card" class="a3u-hide">
+    <div id="a3u-eyebrow">SNOW STILL FALLING</div>
+    <div id="a3u-dayw">
+      <div class="a3u-day" id="a3u-d27" data-overlap-ok="text-state swap, one value visible at a time">NOV 27</div>
+      <div class="a3u-day" id="a3u-d28" data-overlap-ok="text-state swap, one value visible at a time">NOV 28</div>
+      <div class="a3u-day" id="a3u-d29" data-overlap-ok="text-state swap, one value visible at a time">NOV 29</div>
+    </div>
+  </div>
+
+  <div class="a3u-src a3u-hide" id="a3u-src">Source: NWS Charleston, WV · relief schematic</div>
+  <div class="a3u-credit a3u-hide" id="a3u-credit">Basemap: Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#a3u-";
+  const $ = function (n) { return document.getElementById("a3u-" + n); };
+  const tl = gsap.timeline({ paused: true });
+  const DUR = 6.20;
+
+  /* FADE @9.00: ground and relief fade in from 0 over 0.6 s */
+  tl.fromTo([P + "bg", P + "stage"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power1.out" }, 0);
+  tl.fromTo([P + "src", P + "credit"], { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.6);
+
+  /* snow: 80 seeded flakes, x 770-1400, y -120..860, 2-5 px, opacity .35-.8, 60-110 px/s; made here, once, from a fixed seed */
+  function mulberry(a) {
+    return function () {
+      a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  const rnd = mulberry(1129);
+  const fg = $("flakes");
+  const flakes = [];
+  for (let i = 0; i < 80; i++) {
+    const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    const cy0 = -120 + rnd() * 980;
+    c.setAttribute("cx", (770 + rnd() * 630).toFixed(1));
+    c.setAttribute("cy", cy0.toFixed(1));
+    c.setAttribute("r", (1 + rnd() * 1.5).toFixed(2));
+    c.setAttribute("fill-opacity", (0.35 + rnd() * 0.45).toFixed(2));
+    fg.appendChild(c);
+    flakes.push([c, cy0, 60 + rnd() * 50]);
+  }
+
+  /* arrows: draw-on at WINDS @0.84 (stagger .2, 0.8 s each); segments fade in as the line passes, dashes run to the end */
+  const heads = [], convs = [];
+  const ORIGIN = { a: "1246.2 276", b: "1174.9 372.8", c: "1030.5 568.4", d: "969.8 650.5" };
+  ["a", "b", "c", "d"].forEach(function (k, i) {
+    const t0 = 0.84 + i * 0.2;
+    const base = $(k + "b"), L = Math.ceil(base.getTotalLength()) + 1;
+    tl.set(base, { strokeDasharray: L }, 0);
+    tl.fromTo(base, { autoAlpha: 0, strokeDashoffset: L }, { autoAlpha: 0.4, strokeDashoffset: 0, duration: 0.8, ease: "power1.inOut" }, t0);
+    [1, 2, 3].forEach(function (j) {
+      const cv = $(k + j);
+      convs.push(cv);
+      tl.fromTo(cv, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: "power1.out" }, t0 + (j - 1) * 0.27);
+      tl.to(cv, { strokeDashoffset: -90 * (DUR - t0), duration: DUR - t0, ease: "none" }, t0);
+    });
+    const h = $(k + "h");
+    heads.push(h);
+    tl.fromTo(h, { autoAlpha: 0, scale: 0.4, svgOrigin: ORIGIN[k], smoothOrigin: false },
+      { autoAlpha: 1, scale: 1, svgOrigin: ORIGIN[k], smoothOrigin: false, duration: 0.25, ease: "back.out(2)" }, t0 + 0.6);
+  });
+
+  /* UP @11.48: arrows brighten, one pulse */
+  tl.to(convs, { stroke: "#e3f0fc", duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 2.48);
+  tl.to(heads, { fill: "#e3f0fc", stroke: "#e3f0fc", duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 2.48);
+
+  /* WEST VIRGINIA @13.18: label in; snow starts and falls to the end of the window */
+  tl.fromTo(P + "lab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 4.18);
+  tl.fromTo(P + "flakes", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 4.18);
+  flakes.forEach(function (f) {
+    tl.to(f[0], { attr: { cy: f[1] + f[2] * 2.02 }, duration: 2.02, ease: "none" }, 4.18);
+  });
+
+  /* SNOW @14.02: counter card in showing NOV 27 */
+  tl.fromTo(P + "card", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.02);
+  /* KEPT @14.26: NOV 27 -> NOV 28 (text-state swap, leaves pre-authored) */
+  tl.to(P + "d27", { autoAlpha: 0, y: -12, duration: 0.25, ease: "power2.in" }, 5.26);
+  tl.fromTo(P + "d28", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 5.26);
+  /* FALLING @14.52: NOV 28 -> NOV 29, the final value */
+  tl.to(P + "d28", { autoAlpha: 0, y: -12, duration: 0.25, ease: "power2.in" }, 5.52);
+  tl.fromTo(P + "d29", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, 5.52);
+
+  /* EXIT comp 5.60 to 6.20: card slides out left; map, ground and source lines fade as g-a3-9 fades in */
+  tl.to(P + "card", { x: -60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 5.60);
+  tl.to([P + "stage", P + "bg", P + "src", P + "credit"], { autoAlpha: 0, duration: 0.6, ease: "power1.in" }, 5.60);
+  tl.set([P + "card", P + "stage", P + "bg", P + "src", P + "credit"], { autoAlpha: 0 }, 6.20);
+
+  window.__timelines["g-a3-8-upslope"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
