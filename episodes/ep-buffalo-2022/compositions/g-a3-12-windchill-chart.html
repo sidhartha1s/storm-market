@@ -140,6 +140,22 @@ window.__timelines = window.__timelines || {};
   const LL = Math.ceil(Math.hypot(lx2 - lx1, ly2 - ly1)) + 1;
   set($("leader"), { x1: lx1, y1: ly1, x2: lx2, y2: ly2, "stroke-dasharray": LL, "stroke-dashoffset": LL });
 
+  // line part 2 is paced by x, not by length (the wiggle makes length uneven): the head rides 10 px ahead of
+  // the band edge (power1.inOut, 5.44-7.80), then runs on to the last point by 8.20
+  const cumAtX = (x) => {
+    for (let i = 1; i < P.length; i++) if (P[i][0] >= x) return cum[i - 1] + (cum[i] - cum[i - 1]) * (x - P[i - 1][0]) / (P[i][0] - P[i - 1][0]);
+    return cum[cum.length - 1];
+  };
+  const pio = (p) => (p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2);   // = power1.inOut
+  const xEnd = P[P.length - 1][0];
+  const headEase = (p) => {
+    if (p >= 1) return 1;
+    const t = p * 2.76;                                                     // seconds after 5.44
+    const hx = t <= 2.36 ? bx0 + (bx1 - bx0) * pio(t / 2.36) + 10 * Math.min(1, t / 0.3)
+                         : bx1 + 10 + (xEnd - bx1 - 10) * (t - 2.36) / 0.40;
+    return (cumAtX(Math.min(hx, xEnd)) - cum[i1233]) / (L - cum[i1233]);
+  };
+
   const tl = gsap.timeline({ paused: true });
   tl.set($("band"), { scaleX: 0, svgOrigin: bx0 + " " + Y(-10) }, 0);
   tl.set($("low"), { scale: 0, svgOrigin: mx + " " + my }, 0);
