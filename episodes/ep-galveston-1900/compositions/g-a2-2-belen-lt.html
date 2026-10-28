@@ -1,0 +1,78 @@
+<template>
+<style>
+  #g-a2-2-belen-lt-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  /* source lines A and B share one top-left box position (glass surface, tokens.md) */
+  .g-a2-2-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  /* lower-third: outer moves in x, inner drifts in y; card top edge ~ y 829 */
+  #g-a2-2-belen-lt-lt { position:absolute; left:110px; bottom:110px; width:700px; height:141px; opacity:0; visibility:hidden; }
+  #g-a2-2-belen-lt-ltin { position:absolute; left:0; top:0; width:700px; height:141px; }
+  #g-a2-2-belen-lt-bg { position:absolute; left:0; top:0; width:700px; height:141px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #g-a2-2-belen-lt-name { position:absolute; left:28px; top:18px; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:57px; color:#f2f5f8; }
+  /* accent rule: drawn by scaleX from the left, never width */
+  #g-a2-2-belen-lt-rule { position:absolute; left:28px; top:78px; width:644px; height:3px; background:#d8a13a; transform-origin:left center; opacity:0.6; }
+  #g-a2-2-belen-lt-role { position:absolute; left:28px; top:88px; white-space:nowrap; font-weight:700; font-size:27px; line-height:35px; letter-spacing:1px; color:#f5d98b; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-2-belen-lt-root" data-composition-id="g-a2-2-belen-lt" data-width="1920" data-height="1080">
+  <div id="g-a2-2-belen-lt-srcA" class="g-a2-2-src">Illustration: C. H. Tate, Munsey Magazine, December 1898</div>
+  <div id="g-a2-2-belen-lt-srcB" class="g-a2-2-src">Havana Cathedral, 1900 &middot; Library of Congress</div>
+  <div id="g-a2-2-belen-lt-srcC" class="g-a2-2-src">Palacio de Gobierno, Havana, 1900 &middot; Detroit Photographic Co. postcard</div>
+  <div id="g-a2-2-belen-lt-lt">
+    <div id="g-a2-2-belen-lt-ltin">
+      <div id="g-a2-2-belen-lt-bg"></div>
+      <span id="g-a2-2-belen-lt-name">Belen Observatory</span>
+      <div id="g-a2-2-belen-lt-rule"></div>
+      <span id="g-a2-2-belen-lt-role">Jesuit College of Belen, Havana</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a2-2-belen-lt-";
+  /* TIMING: audio/a2-s1.words.json, segment time minus 5.32 = comp-local (host 5.32 to 21.062, 15.742 s).
+     Jesuit @5.32 -> 0.00 ; Belen @6.22 -> 0.90 ; there, @6.58 -> 1.26 ; observatory. @8.32 -> 3.00 ; cut "since" @11.20 -> 5.88 (Belen still capped at 6 s) ;
+     cut "Remember" @16.32 -> 11.00 (Havana Cathedral -> Palacio) ; end 21.062 -> 15.742 */
+  tl.set(P+"srcA", {autoAlpha:0, y:8}, 0);
+  tl.set(P+"srcB", {autoAlpha:0, y:8}, 0);
+  tl.set(P+"srcC", {autoAlpha:0, y:8}, 0);
+  tl.set(P+"lt", {autoAlpha:0, x:-60}, 0);
+  tl.set(P+"rule", {scaleX:0, opacity:0.6}, 0);
+  tl.set(P+"role", {autoAlpha:0, y:10}, 0);
+
+  /* JESuit @5.32 -> 0.00: source line A in */
+  tl.to(P+"srcA", {y:0, autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  /* source A float: y +-4 px, 3 legs of 1.8 to 5.80, before the cut */
+  tl.to(P+"srcA", {y:-4, duration:1.8, ease:"sine.inOut", yoyo:true, repeat:2}, 0.4);
+
+  /* BELEN @6.22 -> 0.90: lower-third enters; rule draws 1.18 to 1.68 */
+  tl.fromTo(P+"lt", {x:-60, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0.90);
+  tl.to(P+"rule", {scaleX:1, duration:0.5, ease:"power2.out"}, 1.18);
+  /* "there," @6.58 -> 1.26: role line in */
+  tl.fromTo(P+"role", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.35, ease:"power2.out"}, 1.26);
+  /* card float from its land time, 3 legs to 8.10 */
+  tl.to(P+"ltin", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:2}, 1.50);
+  /* "observatory." @8.32 -> 3.00: rule brightens */
+  tl.to(P+"rule", {opacity:1, duration:0.3, ease:"power2.out"}, 3.00);
+
+  /* exit 12.96 to 13.56 -> 7.64 to 8.24, done before the cut */
+  tl.to(P+"lt", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 7.64);
+
+  /* CATHEDRAL @13.56 "That's" -> 8.24: A out, B in */
+  tl.to(P+"srcA", {autoAlpha:0, duration:0.2, ease:"power2.in"}, 8.24);
+  /* B waits for A to finish leaving (same slot), so the two lines never share a frame */
+  tl.fromTo(P+"srcB", {autoAlpha:0, y:8}, {autoAlpha:1, y:0, duration:0.3, ease:"power2.out"}, 8.44);
+  /* source B float to the end (3 legs of 2.33 from 8.74 = 15.74) */
+  tl.to(P+"srcB", {y:-4, duration:2.333, ease:"sine.inOut", yoyo:true, repeat:2}, 8.74);
+  /* exit: B fades over the last 0.3 s, 20.762 to 21.062 -> 15.442 to 15.742 */
+  tl.to(P+"srcB", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 15.442);
+
+  window.__timelines["g-a2-2-belen-lt"] = tl;
+})();
+</script>
+</template>
