@@ -16,7 +16,7 @@ FAIL=0
 # render.cmd names), and every check below would then FAIL as a render defect. Take the first python or python3
 # outside WindowsApps, python first (a python3 shim may just call "python" again); none left is a setup error.
 PY=""
-while IFS= read -r c; do case "$c" in *WindowsApps*) ;; *) PY="$c"; break ;; esac; done < <(type -ap python python3)
+while IFS= read -r c; do case "$c" in *[Ww]indows[Aa]pps*) ;; *) PY="$c"; break ;; esac; done < <(type -ap python python3)
 [ -n "$PY" ] || { echo "FAIL: no Python on PATH outside WindowsApps (the Microsoft Store stub); put the Python install folder ahead of it"; exit 3; }
 
 echo "=== used vs asked (owner 2026-09-15: dedicated GPU only; Oct 26: the ZBook encoded on Intel QSV unseen) ==="
