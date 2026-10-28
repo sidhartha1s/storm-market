@@ -101,7 +101,11 @@ window.__timelines = window.__timelines || {};
   const $ = (id) => "#sc-" + id;
   const DIM = ["rail", "tk0", "tk1", "tk2", "tk3", "d0", "d1", "d2", "d3", "wstem", "wdot", "gstem", "gdot", "gcard", "ustem", "udot", "ucard"].map($);
 
-  /* 0 to 4.06 "On Thursday night at the Buffalo airport, the snow still hadn't started.": nothing on screen, the street plays unlabelled */
+  /* 0 to 4.06 "On Thursday night at the Buffalo airport, the snow still hadn't started.": the street plays with no place
+     label; "Thursday" @0.18 a glass time chip lands top-left, floats, and leaves on "The" @4.06 as the ground comes in */
+  tl.fromTo($("thu"), { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.18);
+  tl.fromTo($("thu"), { y: 0 }, { y: -4, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 0.63);
+  tl.to($("thu"), { x: -40, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 3.86);
 
   /* "The watch" @4.06: ground and dimmed timeline fade in; watch card 0.8 now, back to 0.3 at 5.0 */
   tl.to($("ground"), { autoAlpha: 1, duration: 0.6, ease: "power2.out" }, 4.06);
