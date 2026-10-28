@@ -1,0 +1,153 @@
+<template>
+<!--
+  g-a4-19-barograph · A4-S11 14.20 to 20.54 (host 6.34 s) · MWR Sept 1900 fig. 1, barograph tracing.
+  PAGE CHECK: fig. 1 sits on printed p. 372 (page head "372 MONTHLY WEATHER REVIEW. SEPTEMBER, 1900" on the scan
+  media/a3/A3-S10_c2_mwr-sept1900-p372_cline-report.png, 1150 x 1563). Source line says p. 372.
+  STAND-IN SCAN: the brief's 300 dpi raster media/a4/mwr-fig1.png is not on disk; this comp crops the 1150 px page scan
+  at 2.0x. Swapping in the 300 dpi file means a new img src, size and offset; every screen coordinate below stays.
+
+  SCAN READINGS (scan px on the 1150 x 1563 page; read off the image, NOT pixel-measured: Bash was down this session,
+  so the orchestrator should confirm them with an ink-measuring script before the frame read):
+    figure crop          x 94 to 556, y 664 to 990 (header "September 7 / 8 / 9" through the caption "FIG. 1.-Barograph tracing.")
+    time axis            labels every 2 h from 6 a.m. Sept 7 (x 103) to 8 a.m. Sept 10 (x 547): 6.0 px per hour
+                         Sept 8 midnight x 211, Sept 8 noon x 283, 8:30 p.m. Sept 8 x 334
+    pressure axis        30.00 at y 797, 29.00 at y 889 (92 px per inch): 29.42 -> y 850, 28.48 -> y 937
+    plot box             x 100 to 549, y 702 to 960
+    trace lowest point   x 323, y 938  (11 px left of the 8:30 axis position: the chip and bottom marker sit on the
+                         axis 8:30 x per the brief, the pen dot stops on the ink minimum)
+  SCREEN MAP: X = 300 + (sx - 94) * 2 ; Y = 296 + (sy - 664) * 2
+    noon x 678 · 8:30 x 780 · 29.42 y 668 · 28.48 y 842 · plot right 1210 · plot bottom 888 · minimum (758, 844)
+  TRACE CENTRE LINE, noon to minimum (scan -> screen), one point per 4 scan px = 8 screen px:
+    283,846 -> 678,660 | 287,848 -> 686,664 | 291,851 -> 694,670 | 295,855 -> 702,678 | 299,861 -> 710,690
+    303,869 -> 718,706 | 307,879 -> 726,726 | 311,892 -> 734,752 | 315,906 -> 742,780 | 319,922 -> 750,812
+    323,938 -> 758,844
+  Dot check times (comp-local): noon 0.76 (678,660) · midpoint 2.01 (718,706) · minimum 3.26 (758,844).
+-->
+<style>
+  #g-a4-19-barograph-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a4-19-barograph-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ga419-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  /* card: glass x 160 to 1500, y 250 to 960 */
+  #g-a4-19-barograph-card { position:absolute; left:160px; top:250px; width:1340px; height:710px; box-sizing:border-box; border-radius:28px; }
+  /* figure window: x 300 to 1224, y 296 to 948 (scan crop 462 x 326 at 2.0x) */
+  #g-a4-19-barograph-fig { position:absolute; left:300px; top:296px; width:924px; height:652px; overflow:hidden; border-radius:10px; background:#e9e4d6; }
+  #g-a4-19-barograph-img { position:absolute; left:-188px; top:-1328px; width:2300px; height:3126px; max-width:none; }
+  #g-a4-19-barograph-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  /* source line top-left */
+  #g-a4-19-barograph-src { position:absolute; left:96px; top:54px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:20px; line-height:1.3; color:#c8d3e0; white-space:nowrap; }
+  /* noon label: centred on noon x 678, above the figure */
+  #g-a4-19-barograph-noonlab { position:absolute; left:578px; width:200px; top:262px; text-align:center; white-space:nowrap;
+    font-weight:700; font-size:22px; line-height:1.1; letter-spacing:2px; color:#93a3b2; }
+  /* "ABOUT 1 IN" beside the bracket, centred on y 755 */
+  #g-a4-19-barograph-inlab { position:absolute; left:1262px; top:737px; white-space:nowrap;
+    font-weight:700; font-size:30px; line-height:1.2; letter-spacing:1px; color:#e74c3c; opacity:0; visibility:hidden; }
+  /* chip: wrapper centred on the 8:30 x 780 (left 380 + 400), top 100; chip about 740 wide, so x 410 to 1150, y 100 to 230 */
+  #g-a4-19-barograph-chipwrap { position:absolute; left:380px; width:800px; top:100px; opacity:0; visibility:hidden; }
+  #g-a4-19-barograph-chip { display:table; margin:0 auto; padding:14px 32px 16px; border-radius:28px; text-align:center; }
+  #g-a4-19-barograph-chipmain { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  #g-a4-19-barograph-chiptag { display:block; margin-top:4px; font-weight:700; font-size:22px; line-height:1.2; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  /* fade to black, 0.6 s hold */
+  #g-a4-19-barograph-black { position:absolute; left:0; top:0; width:1920px; height:1080px; background:#04070c; opacity:0; visibility:hidden; }
+  #g-a4-19-barograph-ring, #g-a4-19-barograph-botline, #g-a4-19-barograph-bracket { visibility:hidden; }
+</style>
+<div id="g-a4-19-barograph-root" data-composition-id="g-a4-19-barograph" data-width="1920" data-height="1080">
+  <div id="g-a4-19-barograph-stage">
+    <div id="g-a4-19-barograph-card" class="ga419-glass"></div>
+    <div id="g-a4-19-barograph-fig">
+      <img id="g-a4-19-barograph-img" src="media/a3/A3-S10_c2_mwr-sept1900-p372_cline-report.png" alt="Monthly Weather Review, September 1900, page 372, fig. 1, barograph tracing" data-crop-ok="fig. 1 cropped whole from page 372: axis labels and caption kept, the page text around it is not wanted">
+    </div>
+    <svg id="g-a4-19-barograph-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="g-a4-19-barograph-figclip"><rect x="300" y="296" width="924" height="652" rx="10"/></clipPath>
+      </defs>
+      <!-- reveal mask: covers the figure from the pen dot's x to the right edge; its left edge rides the dot -->
+      <rect id="g-a4-19-barograph-cover" x="678" y="296" width="640" height="652" fill="#101820" clip-path="url(#g-a4-19-barograph-figclip)"/>
+      <!-- noon marker at x 678 -->
+      <line id="g-a4-19-barograph-noonline" x1="678" y1="290" x2="678" y2="888" stroke="#93a3b2" stroke-width="2"/>
+      <!-- bottom marker at the axis 8:30 x 780, drawn top-down; length 598 -> dash 599 -->
+      <line id="g-a4-19-barograph-botline" x1="780" y1="290" x2="780" y2="888" stroke="#d0121f" stroke-width="2" stroke-dasharray="599" stroke-dashoffset="599"/>
+      <!-- "ABOUT 1 IN" bracket at the right of the plot, 29.42 (y 668) to 28.48 (y 842); length 12+174+12 = 198 -> dash 199 -->
+      <path id="g-a4-19-barograph-bracket" d="M1234,668 H1248 V842 H1234" fill="none" stroke="#e74c3c" stroke-width="3" stroke-dasharray="199" stroke-dashoffset="199"/>
+      <!-- pulse ring at the minimum, after the dot lands -->
+      <circle id="g-a4-19-barograph-ring" cx="758" cy="844" r="9" fill="none" stroke="#d0121f" stroke-width="3"/>
+      <!-- pen dot: 14 px red with a 4 px light ring -->
+      <circle id="g-a4-19-barograph-dot" cx="678" cy="660" r="7" fill="#d0121f" stroke="#f2f5f8" stroke-width="4"/>
+    </svg>
+    <div id="g-a4-19-barograph-noonlab">NOON · 29.42</div>
+    <div id="g-a4-19-barograph-inlab">ABOUT 1 IN</div>
+    <div id="g-a4-19-barograph-chipwrap"><div id="g-a4-19-barograph-chip" class="ga419-glass"><span id="g-a4-19-barograph-chipmain">8:30 PM · 28.48 IN</span><span id="g-a4-19-barograph-chiptag">Lowest reading</span></div></div>
+  </div>
+  <div id="g-a4-19-barograph-src" class="ga419-glass">Monthly Weather Review, September 1900, p. 372, fig. 1</div>
+  <div id="g-a4-19-barograph-black"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-19-barograph-";
+  /* TIMING: audio/a4-s11.words.json, comp-local = word time - 14.20.
+     The @14.20 (0.00) ; fallen @14.96 (0.76) ; an @15.48 (1.28) ; inch @15.64 (1.44) ; .30 @17.46 (3.26) ;
+     hit @18.26 (4.06) ; went @19.56 (5.36) ; down @19.78 (5.58) ; About @20.54 (6.34, host end) */
+  tl.set(P+"stage", {y:0}, 0);
+  tl.set(P+"chipwrap", {autoAlpha:0, y:24}, 0);
+  tl.set(P+"inlab", {autoAlpha:0, x:-12}, 0);
+  tl.set(P+"black", {autoAlpha:0}, 0);
+  tl.set(P+"ring", {autoAlpha:0}, 0);
+  tl.set(P+"botline", {autoAlpha:1, attr:{"stroke-dashoffset":599}}, 0);
+  tl.set(P+"bracket", {autoAlpha:1, attr:{"stroke-dashoffset":199}}, 0);
+  tl.set(P+"cover", {attr:{x:678}}, 0);
+  tl.set(P+"dot", {attr:{cx:678, cy:660}}, 0);
+
+  /* BAROMETER @14.36: frame 0 = card, figure masked to the noon line, noon marker and label, source line. Noon marker pulses until the dot moves. */
+  tl.to(P+"noonline", {attr:{"stroke-width":4}, duration:0.38, ease:"sine.inOut", yoyo:true, repeat:1}, 0);
+  tl.to(P+"noonlab", {y:-4, duration:0.38, ease:"sine.inOut", yoyo:true, repeat:1}, 0);
+
+  /* FALL @14.96: dot rides the ink noon to minimum, 0.76 to 3.26, linear in time (equal x steps, 0.25 s each); the mask's edge follows */
+  tl.to(P+"dot", {attr:{cx:686, cy:664}, duration:0.25, ease:"none"}, 0.76);
+  tl.to(P+"cover", {attr:{x:686}, duration:0.25, ease:"none"}, 0.76);
+  tl.to(P+"dot", {attr:{cx:694, cy:670}, duration:0.25, ease:"none"}, 1.01);
+  tl.to(P+"cover", {attr:{x:694}, duration:0.25, ease:"none"}, 1.01);
+  tl.to(P+"dot", {attr:{cx:702, cy:678}, duration:0.25, ease:"none"}, 1.26);
+  tl.to(P+"cover", {attr:{x:702}, duration:0.25, ease:"none"}, 1.26);
+  tl.to(P+"dot", {attr:{cx:710, cy:690}, duration:0.25, ease:"none"}, 1.51);
+  tl.to(P+"cover", {attr:{x:710}, duration:0.25, ease:"none"}, 1.51);
+  tl.to(P+"dot", {attr:{cx:718, cy:706}, duration:0.25, ease:"none"}, 1.76);
+  tl.to(P+"cover", {attr:{x:718}, duration:0.25, ease:"none"}, 1.76);
+  tl.to(P+"dot", {attr:{cx:726, cy:726}, duration:0.25, ease:"none"}, 2.01);
+  tl.to(P+"cover", {attr:{x:726}, duration:0.25, ease:"none"}, 2.01);
+  tl.to(P+"dot", {attr:{cx:734, cy:752}, duration:0.25, ease:"none"}, 2.26);
+  tl.to(P+"cover", {attr:{x:734}, duration:0.25, ease:"none"}, 2.26);
+  tl.to(P+"dot", {attr:{cx:742, cy:780}, duration:0.25, ease:"none"}, 2.51);
+  tl.to(P+"cover", {attr:{x:742}, duration:0.25, ease:"none"}, 2.51);
+  tl.to(P+"dot", {attr:{cx:750, cy:812}, duration:0.25, ease:"none"}, 2.76);
+  tl.to(P+"cover", {attr:{x:750}, duration:0.25, ease:"none"}, 2.76);
+  tl.to(P+"dot", {attr:{cx:758, cy:844}, duration:0.25, ease:"none"}, 3.01);
+  tl.to(P+"cover", {attr:{x:758}, duration:0.25, ease:"none"}, 3.01);
+
+  /* an inch @15.48: bracket draws; inch @15.64: label in */
+  tl.to(P+"bracket", {attr:{"stroke-dashoffset":0}, duration:0.4, ease:"power2.out"}, 1.28);
+  tl.to(P+"inlab", {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 1.44);
+
+  /* 8:30 @17.46: dot at the minimum; bottom marker draws; the reveal stops here (the rise stays masked) */
+  tl.to(P+"botline", {attr:{"stroke-dashoffset":0}, duration:0.35, ease:"power2.out"}, 3.26);
+  /* ring pulses every 0.6 s from the landing until the fade */
+  tl.set(P+"ring", {autoAlpha:1, attr:{r:9}}, 3.26);
+  tl.fromTo(P+"ring", {attr:{r:9}, opacity:1}, {attr:{r:24}, opacity:0, duration:0.6, ease:"power2.out", repeat:3}, 3.26);
+
+  /* hit bottom @18.26: chip in */
+  tl.to(P+"chipwrap", {autoAlpha:1, y:0, duration:0.45, ease:"back.out(1.6)"}, 4.06);
+  tl.to(P+"chipwrap", {y:-4, duration:0.6, ease:"sine.inOut", yoyo:true, repeat:1}, 4.51);
+
+  /* DOWN @19.56: 0.2 s jolt on the card, y +6 */
+  tl.to(P+"stage", {y:6, duration:0.1, ease:"power2.out"}, 5.36);
+  tl.to(P+"stage", {y:0, duration:0.1, ease:"power2.in"}, 5.46);
+  /* fade to black 5.58 to 5.74, hold black to host end 6.34 (0.6 s) */
+  tl.to(P+"black", {autoAlpha:1, duration:0.16, ease:"power1.in"}, 5.58);
+  tl.to(P+"black", {autoAlpha:1, duration:0.6, ease:"none"}, 5.74);
+  window.__timelines["g-a4-19-barograph"] = tl;
+})();
+</script>
+</template>
