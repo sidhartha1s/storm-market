@@ -8,13 +8,16 @@
      A3-S12 -> A4-S1 by the orchestrator 28 Oct 26 to sit inside channel.cta.window (A3-S12 -> A4-S1 is now a plain seam, bo-a4).
      GROUND PLATES (gp-*): two comps are shorter than their segment + 0.30 s seam and the next beat is also a comp, so a plain
      ground section (the root colour) covers 0.30 to 0.40 s. Where the next beat is footage, the footage starts early instead.
-     STAND-INS / NOT BUILT: Paul clips (ins-paul-1 hook line, ins-paul-4 A3-S12 tease) are not generated: the Christmas start
-     frame stands in as a still and the TTS takes h1-s1.wav / a3-s12.wav carry his lines. A5 graphics g-a5-1 to g-a5-10 mounted
+     PAUL: the hook line is his real Flow clips ins-paul-1 + ins-paul-2 (29 Oct 26). STAND-IN / NOT BUILT: ins-paul-4 (A3-S12 tease) is
+     not generated: the Christmas start frame stands in as a still and the TTS take a3-s12.wav carries his line.
+     RETIME 29 Oct 26: the real hook runs to 17.156, 1.551 s past the old 15.605, so every data-start and still punch at or after 15.605
+     moved +1.551 s (one-shot uniform transform, orchestrator's call), and sx-bed-a1 runs on to 166.551 so the bed has no gap.
+     Times written in the comments below are the pre-retime ones unless marked; add 1.551 to any at or after 15.605. A5 graphics g-a5-1 to g-a5-10 mounted
      28 Oct 26; the old A5 stand-in stills under the opaque full-frame comps were removed the same day (never visible). Presenter circle windows pip-w1..w7 mounted 28 Oct 26 (see PRESENTER CIRCLE); beds mounted; no SFX yet. g-a3-10-hochul-lt
      mounted text-only 28 Oct 26 (no licensed Hochul still).
-     END: g-a5-10-close runs its 4.0 s tail past A5-S9 (brief), so the episode is 1068.319 s (was 1065.823, then 1068.819
-     until the 0.5 s seam after the end ask went, 28 Oct 26, to put e1 inside config end_ask.last_s).
-     CTA at 502.2 s of 1068.319 s = 0.470, inside config channel.cta.window [0.40, 0.60]. -->
+     END: g-a5-10-close runs its 4.0 s tail past A5-S9 (brief), so the episode is 1069.87 s after the retime (was 1065.823, then
+     1068.819, then 1068.319 when the 0.5 s seam after the end ask went, 28 Oct 26, to put e1 inside config end_ask.last_s).
+     CTA at 503.751 s of 1069.87 s = 0.471 (after the retime), inside config channel.cta.window [0.40, 0.60]. -->
      <!-- A2-S10 -> CTA: g-a2-11 (16.40 s) is cut at 15.736 s so the dip-in sits 0.087 s after the last word (lint dip_in 1.0 + 0.1). -->
 <html lang="en">
 <head>
@@ -82,7 +85,7 @@
   <audio id="nx-a3-s9" src="audio/a3-s9.wav" data-start="647.413" data-duration="14.369" data-volume="0.89"></audio>
   <audio id="nx-a3-s10" src="audio/a3-s10.wav" data-start="662.572" data-duration="23.984" data-volume="0.89"></audio>
   <audio id="nx-a3-s11" src="audio/a3-s11.wav" data-start="686.856" data-duration="12.649" data-volume="0.89"></audio>
-  <audio id="nx-a3-s12" src="audio/a3-s12.wav" data-start="700.005" data-duration="3.62" data-volume="0.89"></audio>
+  <!-- a3-s12 is spoken by ins-paul-4 (PICTURE, track 1) since 29 Oct 26, so no TTS here -->
   <!-- A4 (plain act seam since the hinge moved to a2/a3, orchestrator 28 Oct 26) -->
   <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="704.825" data-duration="19.214" data-volume="0.89"></audio>
   <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="724.739" data-duration="17.903" data-volume="0.89"></audio>
@@ -146,6 +149,7 @@
   <!-- ============ CTA (config channel.cta: paul-storm-ready-v9-oct20.mp4, 24.042 s, md5 bba0b9f3..., staged in media/cta/) ============ -->
   <!-- Hinge moved to the a2/a3 seam (orchestrator 28 Oct 26; edit_script still names A3-S12 -> A4-S1): a2-s10 ends 501.113,
        bo-cta-in 501.2, ins-cta-paul 502.2-526.242 (0.470 of 1068.319), bo-cta-out 526.242; a3-s1 opens at 527.242.
+       After the 29 Oct 26 retime (+1.551): bo-cta-in 502.751, ins-cta-paul 503.751-527.793 (0.471 of 1069.87), a3-s1 528.793.
        The dip-out middle is the a2/a3 render seam. -->
   <section class="clip blackout" id="bo-cta-in" data-start="502.751" data-duration="1.0" data-track-index="1"></section>
   <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v9-oct20.mp4" data-start="503.751" data-duration="24.042" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
@@ -245,7 +249,7 @@
   <!-- PRESENTER CIRCLE (28 Oct 26, hand-mounted; mg-quickref "Corner circle", worked example ep-e2e-moore). Face pass:
        media/face/ep-buffalo-2022-face.mp4@0.000 (covers the whole timeline from 0, so each window seeks to its own start and
        the lips stay on the narration). Windows = narration spans (nx start to wav end, seams inside a run kept) minus:
-       H1-S1 (Paul's hook line, stand-in c-h1-paul 0-15.605), the CTA and its dips (501.2-527.242), A3-S12 (Paul stand-in
+       H1-S1 (Paul's hook line, ins-paul-1 + ins-paul-2 0-17.156 after the retime), the CTA and its dips (501.2-527.242), A3-S12 (Paul stand-in
        c-a3-s12-paul 698.454), the chapter blackouts, g-a4-7-guard-bars 803.697-813.737 (#gb-panel right:0, 820 px wide, full
        height: bars and numbers under the corner), the end ask (1038.429-1053.929) and the A5-S9 signature over g-a5-10-close.
        No broadcast clips in this episode. Every other comp keeps the corner clear (header or measured CSS: right edges <= 1598). -->
