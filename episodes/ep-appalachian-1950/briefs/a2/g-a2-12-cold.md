@@ -19,7 +19,7 @@ Shared scale 0°F to 60°F, 8 px per °F: 0°F at y 860, 60°F at y 380. Highs: 
 - Liquid: `#7fb2e5`, rect from y 860 up to the value, `scaleY` origin bottom.
 - Ghost bar: same tube width, from y 860 to actual + 40 (§2), stroke 2 px dashed `rgba(242,245,248,.45)`, no fill, behind the liquid. "NORMAL" Arial 700 20 px `#c8d3e0` tracking 6 above each ghost top (centre x of its tube). A bracket on Elkins only: vertical 2 px `#d8a13a` line from y 780 to 460 at x 610 with label "ABOUT 40° COLDER" Arial 700 26 px `#d8a13a` at x 625, centre y 620 (one instance, on the first city).
 - Value labels above each liquid top, right of the tube (x centre + 40): "10°F" / "12°F" / "15°F" Arial Black 900 52 px `#f2f5f8`; city names under the bulbs, y 960: "ELKINS" / "CHARLESTON" / "HUNTINGTON" Arial 700 26 px `#dfe7ee` tracking 4. (edit_script "ELKINS 10°F", "CHARLESTON 12°F", "HUNTINGTON 15°F": same, split.) Bottom of city labels about y 990, inside the 1026 limit; the Huntington tube and label end at x <= 1400, clear of the corner.
-- Source line "Source: NWS Charleston WV" Arial 700 19 px `#c8d3e0`, left 110, bottom 60... it collides with nothing (city labels start x 470); keep.
+- Source line "Source: NWS Charleston WV" Arial 700 19 px `#c8d3e0`, left 110, bottom 60 (clear of the city labels, which start about x 470).
 - Tiers: 52 / 26 / 22 / 20 / 19.
 
 ## 4. Must be true in the picture
