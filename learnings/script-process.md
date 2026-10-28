@@ -73,8 +73,9 @@ beside them are confusing; a 3.5 s hold followed by a blackout is 5 to 7 s of no
 2. **Decoration words are cut** ("in the dark" when the clock already said 7:30 PM; "head on"; "by the way" unless it
    is a deliberate filler). Delete test per phrase, not just per sentence.
 3. **One score per script, out of 10, from the independent grader, with one line on what would move it.** No
-   confidence percentage in the owner-facing report (it lives in the grader file only). Superseded for hooks on 26 Oct 26:
-   the owner-facing line is the failing checks from `references/grader-calibration.md`, not a number.
+   confidence percentage in the owner-facing report (it lives in the grader file only). Superseded on 26 Oct 26 for every
+   section, hooks included: the owner-facing line is the failing checks from `references/grader-calibration.md`, not a
+   number (the chapter axes keep their script-os scores, rule 4 of "independent grade on every script").
 4. **A hold replaces the blackout at that seam, never both.** Hold 3 to 4 s after a payoff over a moving picture
    with a bed; the act blackout stays only where there is no hold.
 5. **Spoken fillers are an experiment, not a rule:** uh / um / you know / look / I mean / so / well / right? / by the
