@@ -152,7 +152,7 @@ window.__timelines = window.__timelines || {};
 
   /* segment offsets (comp-local s), 0.40 s gaps assumed; cue = SEG[seg] + words.json time */
   const SEG = { a4s8: 0.000, a4s9: 21.929 };
-  const DUR = SEG.a4s9 + 15.308 + 0.40;                                        /* 37.637 */
+  const DUR = 37.637;                                                         /* SEG.a4s9 + 15.308 + 0.40, literal so sweep check 7 folds DUR - 0.6 */
 
   /* camera: Q1 -> Q2 is a translate-only pan at s 0.02, then a 3 % push about screen (468, 840) */
   const S = 0.02, TLX = 17991.0, TLY1 = 13696.7, TLY2 = 35196.7, PO = [468, 840];
