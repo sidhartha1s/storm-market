@@ -6,8 +6,12 @@
   g-a2-1-columbus (A2-S1): Columbus, noon Saturday 25 Nov 1950. Full-frame designed map, host 13.70 s.
   Camera A2-C: screen px = 700 + 384.1*(lon+82.9988), 560 - 558.5*(lat-39.9612) (same formula as the shared
   map: x = 3841*(lon+97.576), y = -5585*(lat-46.6213), s 0.10, Columbus pin at (700, 560)).
-  GROUND: hand-drawn simplified state/river fills for the frame's lat 39.0 to 40.96, lon -84.82 to -79.82
-  (Ohio River, OH-PA line, WV panhandle, PA-WV line). NOT the Natural Earth path data: see the receipt.
+  GROUND: Natural Earth 50m admin-1 (public domain), vertices copied verbatim in map units from the reduced state paths in
+  compositions/g-a4-4-statemap.html defs (= the US path of library/inhouse/master-map-us-canada.html, RDP 15):
+  a44-g-oh vertices 0..20 (OH-PA line, WV panhandle, Ohio River OH-WV) and 50..59 (Ohio River OH-KY, OH-IN line);
+  a44-g-wv vertices 46..49 (PA-WV line, Mason-Dixon). Each border drawn once. Group matrix(0.1 0 0 0.1 -4899.1 -3159.67)
+  = frame A2-C. Frame 0 (#c1-wrap x +480) = g-a1-9's right half: same #0b1016 land, same Ohio River vertices
+  (63809,39375 ... 60672,42861), same 1.5 px rgba(255,255,255,.14) stroke; no other line falls in the frame-0 window.
   Cues (audio/a2-s1.words.json): COLUMBUS 1.68, NOON 3.80, 18 5.32, 10 7.12, 8 9.00, HALF 11.16, KEPT 12.74.
 -->
 <template>
