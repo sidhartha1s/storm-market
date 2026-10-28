@@ -112,8 +112,8 @@ window.__timelines = window.__timelines || {};
   } }, 1.7);
 
   /* "minutes." @21.62 -> local 2.22: wedge edge pulse on the ring */
-  tl.to("#wk-ring", { scale: 1.03, svgOrigin: O, duration: 0.2, ease: "power2.out" }, 2.22);
-  tl.to("#wk-ring", { scale: 1, svgOrigin: O, duration: 0.2, ease: "power2.in" }, 2.42);
+  tl.to("#wk-ring", { scale: 1.03, svgOrigin: O, smoothOrigin: false, duration: 0.2, ease: "power2.out" }, 2.22);
+  tl.to("#wk-ring", { scale: 1, svgOrigin: O, smoothOrigin: false, duration: 0.2, ease: "power2.in" }, 2.42);
 
   /* after "minutes." ends @21.94 -> local 2.84: fade-through, ground stays; ends 3.44 = comp end */
   tl.to(["#wk-clock", "#wk-tag", "#wk-labwrap", "#wk-src"], { autoAlpha: 0, y: -20, duration: 0.6, ease: "power2.in" }, 2.84);
