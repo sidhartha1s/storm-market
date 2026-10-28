@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-11-rsi: NCEI Regional Snowfall Index, #1 of 232 in the Ohio Valley (A2-S11).
+  Host: data-start = A2-S11 start, data-duration 21.14 (20.74 + 0.40), full-frame designed card, track 2.
+  Cues (s from A2-S11 start, audio/a2-s11.words.json):
+   0.00 government -> source line on          0.80 scale -> eyebrow
+   2.32 snowfall -> axis draws                4.06 fell / 5.34 spread / 6.64 people -> axis glints
+   8.14 Ohio -> headline                      9.72 232 -> dots stagger, caption at end
+  12.80 top -> dot #1 white, bar rises        13.74 Category -> chip + leader
+  14.74 worst -> quote card in, dots dim      16.10 there. -> attribution
+  20.54 exit: quote card x 980, chip x -980 (0.6 s)
+-->
+<template>
+<style>
+  #r11-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #r11-root div { position:absolute; box-sizing:border-box; }
+  .r11-hide { opacity:0; visibility:hidden; }
+  #r11-scan { left:0; top:0; width:1920px; height:2px; background:rgba(242,245,248,0.05); }
+  #r11-eyebrow { left:110px; top:70px; font-size:22px; font-weight:700; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  #r11-head { left:110px; top:104px; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  #r11-axis { left:139px; top:350px; width:2px; height:450px; background:#4a5560; transform-origin:50% 100%; }
+  #r11-glint { left:138px; top:760px; width:4px; height:40px; background:#f2f5f8; }
+  .r11-tick { left:140px; width:12px; height:2px; background:#4a5560; }
+  .r11-lab { left:70px; width:60px; height:28px; line-height:28px; text-align:right; font-size:22px; font-weight:700; color:#93a3b2; }
+  .r11-dot { width:4px; height:4px; border-radius:2px; background:#4a5560; top:798px; }
+  #r11-bar { left:162px; top:279.5px; width:16px; height:520.5px; background:#f2f5f8; transform-origin:50% 100%; }
+  #r11-glow { left:150px; top:279.5px; width:40px; height:520.5px; background:rgba(242,245,248,0.35); filter:blur(12px); transform-origin:50% 100%; }
+  #r11-cap { left:210px; top:830px; width:1340px; text-align:center; font-size:22px; font-weight:700; letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  #r11-leader { left:178px; top:279px; width:22px; height:2px; background:#f2f5f8; transform-origin:0% 50%; }
+  #r11-chip { left:200px; top:260px; padding:26px 36px 28px 36px; border-radius:28px; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); }
+  #r11-chip .c1 { position:relative; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:58px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  #r11-chip .c2 { position:relative; margin-top:8px; font-size:26px; font-weight:700; letter-spacing:2px; color:#d8a13a; white-space:nowrap; }
+  #r11-quote { left:760px; top:240px; width:840px; padding:34px 44px; border-radius:18px; background:rgba(232,222,200,0.90); }
+  #r11-quote .q { position:relative; font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:44px; line-height:1.25; color:#2a2622; }
+  #r11-quote .a { position:relative; margin-top:20px; font-size:22px; font-weight:700; letter-spacing:4px; color:#6b6257; white-space:nowrap; }
+  #r11-src { left:110px; bottom:60px; font-size:19px; font-weight:700; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="r11-root" data-composition-id="g-a2-11-rsi" data-width="1920" data-height="1080" data-type-ok="">
+  <div id="r11-scan"></div>
+  <div id="r11-eyebrow" class="r11-hide">NCEI REGIONAL SNOWFALL INDEX</div>
+  <div id="r11-head" class="r11-hide">OHIO VALLEY · 232 STORMS SCORED</div>
+
+  <div id="r11-axis" class="r11-hide"></div>
+  <div id="r11-glint" class="r11-hide"></div>
+  <div id="r11-t0" class="r11-tick r11-hide" style="top:799px"></div>
+  <div id="r11-t1" class="r11-tick r11-hide" style="top:649px"></div>
+  <div id="r11-t2" class="r11-tick r11-hide" style="top:499px"></div>
+  <div id="r11-t3" class="r11-tick r11-hide" style="top:349px"></div>
+  <div id="r11-l0" class="r11-lab r11-hide" style="top:786px">0</div>
+  <div id="r11-l1" class="r11-lab r11-hide" style="top:636px">10</div>
+  <div id="r11-l2" class="r11-lab r11-hide" style="top:486px">20</div>
+  <div id="r11-l3" class="r11-lab r11-hide" style="top:336px">30</div>
+
+  <div id="r11-dots"></div>
+  <div id="r11-glow" class="r11-hide"></div>
+  <div id="r11-bar" class="r11-hide"></div>
+  <div id="r11-cap" class="r11-hide">231 OTHER OHIO VALLEY STORMS · ALL RANKED LOWER</div>
+
+  <div id="r11-leader" class="r11-hide"></div>
+  <div id="r11-chip" class="r11-hide">
+    <div class="c1">CATEGORY 5</div>
+    <div class="c2">RSI 34.7 · #1 OF 232</div>
+  </div>
+
+  <div id="r11-quote" class="r11-hide">
+    <div class="q">“Objectively the worst winter storm on record to affect the Ohio Valley.”</div>
+    <div class="a" id="r11-attr">NWS CHARLESTON, WV</div>
+  </div>
+
+  <div id="r11-src" class="r11-hide">Source: NOAA NCEI; NWS Charleston WV</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#r11-";
+  const N = 232, X0 = 170, X1 = 1550, pitch = (X1 - X0) / (N - 1);
+
+  // 232 dots, positions from the count (pitch 5.974 px)
+  const host = document.getElementById("r11-dots");
+  const dots = [];
+  for (let i = 0; i < N; i++) {
+    const d = document.createElement("div");
+    d.className = "r11-dot r11-hide";
+    d.id = "r11-d" + i;
+    d.style.left = (X0 + i * pitch - 2) + "px";
+    host.appendChild(d);
+    dots.push(d);
+  }
+  if (dots.length !== 232) throw new Error("r11: dot count " + dots.length + " != 232");
+  const rest = dots.slice(1);
+
+  tl.set(dots, { scale: 0 }, 0);
+  tl.set([P+"bar", P+"glow"], { scaleY: 0 }, 0);
+  tl.set(P+"axis", { scaleY: 0 }, 0);
+  tl.set(P+"leader", { scaleX: 0 }, 0);
+
+  // ambient: a faint scan line sweeps the whole window (44 px/s)
+  tl.fromTo(P+"scan", { y: 40 }, { y: 1000, duration: 21.14, ease: "none" }, 0);
+
+  /* GOVERNMENT @0.00 */
+  tl.fromTo(P+"src", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0);
+  /* SCALE @0.80 */
+  tl.fromTo(P+"eyebrow", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.8);
+
+  /* SNOWFALL @2.32 */
+  tl.set(P+"axis", { autoAlpha: 1 }, 2.32);
+  tl.to(P+"axis", { scaleY: 1, duration: 0.5, ease: "power2.out" }, 2.32);
+  ["0", "1", "2", "3"].forEach(function(k, j) {
+    const at = 2.32 + j * 0.17;
+    tl.fromTo(P+"t"+k, { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power2.out" }, at);
+    tl.fromTo(P+"l"+k, { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power2.out" }, at);
+  });
+
+  /* FELL @4.06  SPREAD @5.34  PEOPLE @6.64: glint runs up the axis */
+  [4.06, 5.34, 6.64].forEach(function(t) {
+    tl.fromTo(P+"glint", { y: 0, autoAlpha: 1 }, { y: -410, autoAlpha: 0, duration: 0.9, ease: "power1.out" }, t);
+  });
+
+  /* OHIO @8.14 */
+  tl.fromTo(P+"head", { autoAlpha: 0, x: -50 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 8.14);
+
+  /* 232 @9.72 */
+  tl.fromTo(dots, { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.08, ease: "none",
+    stagger: { each: 1.2 / (N - 1) } }, 9.72);
+  tl.fromTo(P+"cap", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power2.out" }, 10.9);
+
+  /* TOP @12.80 */
+  tl.to(dots[0], { backgroundColor: "#f2f5f8", scale: 2.2, duration: 0.3, ease: "power2.out" }, 12.8);
+  tl.set([P+"bar", P+"glow"], { autoAlpha: 1 }, 12.8);
+  tl.to([P+"bar", P+"glow"], { scaleY: 1, duration: 0.9, ease: "power3.out" }, 12.8);
+  tl.fromTo(P+"glow", { opacity: 0.5 }, { opacity: 1, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 4 }, 13.7); // breathes to 20.7
+
+  /* CATEGORY 5 @13.74 */
+  tl.fromTo(P+"chip", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 13.74);
+  tl.set(P+"leader", { autoAlpha: 1 }, 13.74);
+  tl.to(P+"leader", { scaleX: 1, duration: 0.4, ease: "power2.out" }, 13.74);
+
+  /* WORST @14.74 */
+  tl.fromTo(P+"quote", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 14.74);
+  tl.to(rest, { autoAlpha: 0.5, duration: 0.6, ease: "power1.out" }, 14.74);
+
+  /* THERE. @16.10 */
+  tl.fromTo(P+"attr", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 16.1);
+  tl.to(P+"quote", { y: -6, duration: 1.75, ease: "sine.inOut", yoyo: true, repeat: 1 }, 17.0); // ends 20.5, before the exit
+
+  /* EXIT: last 0.6 s */
+  tl.to(P+"quote", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 20.54);
+  tl.to([P+"chip", P+"leader"], { x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 20.54);
+
+  window.__timelines["g-a2-11-rsi"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
