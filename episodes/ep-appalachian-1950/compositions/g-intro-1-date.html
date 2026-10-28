@@ -46,9 +46,9 @@ window.__timelines = window.__timelines || {};
   tl.set(B+"float", {y:0}, 0);
   /* NEWARK @0.75 clip (local 0.00): big line punches in */
   tl.fromTo(B+"big", {autoAlpha:0, scale:1.25}, {autoAlpha:1, scale:1, duration:0.45, ease:"back.out(1.6)"}, 0);
-  /* JERSEY @0.82 (local 0.54): sub line in, fully on by 0.94 local, before "Jersey." ends at 1.20 */
-  tl.fromTo(B+"sub", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.54);
-  /* hold 0.73..4.40 (local 0.45..4.12): both lines float up/down; 3 legs of 1.22 s = 3.66 s */
+  /* JERSEY @1.33 clip (local 0.58): sub line in, fully on by 0.98 local (1.73 clip), as "Jersey." ends */
+  tl.fromTo(B+"sub", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.58);
+  /* hold local 0.45..4.14: both lines float up/down; 3 legs of 1.22 s = 3.66 s */
   tl.to(B+"float", {y:-10, duration:1.22, ease:"sine.inOut", repeat:2, yoyo:true}, 0.45);
   /* EXIT ends @5.00 (local 4.72), before WINTER @5.56 */
   tl.to(B+"block", {autoAlpha:0, y:-40, scale:0.96, duration:0.6, ease:"power3.in"}, 4.12);
