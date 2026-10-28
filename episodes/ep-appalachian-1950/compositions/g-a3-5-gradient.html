@@ -224,8 +224,11 @@ window.__timelines = window.__timelines || {};
   tl.set(P + "he", { x: 0, y: 0 }, 0);
   tl.set([P + "head", P + "chip"], { x: 0, y: 0 }, 0);
 
-  /* THAT @0.00: g-a3-4's last frame (dome, H, track, ghost); scan line keeps running at 60 px/s */
-  tl.fromTo(P + "scan", { attr: { y: 102 } }, { attr: { y: 1054.8 }, duration: 15.88, ease: "none" }, 0);
+  /* THAT @0.00: g-a3-4's last frame (dome, H, track, ghost, its source line); scan line restarts at the top
+     (g-a3-4 ends it at y 1142, off frame) and runs 60 px/s; source lines crossfade 0.10 to 0.80 */
+  tl.fromTo(P + "scan", { y: -40 }, { y: 912.8, duration: 15.88, ease: "none" }, 0);
+  tl.to(P + "src4", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 0.10);
+  tl.fromTo(P + "source", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 0.40);
 
   /* HIGH @0.54: dome pulses (1.06, 0.4 s); its "H" moves to (1290, 150) over 1.0 s; breathing after the pulse */
   tl.fromTo(P + "dome", { scale: 1, svgOrigin: "1150 230", smoothOrigin: false }, { scale: 1.06, svgOrigin: "1150 230", smoothOrigin: false, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 0.54);
