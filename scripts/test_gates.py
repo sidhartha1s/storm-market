@@ -274,6 +274,15 @@ with tempfile.TemporaryDirectory() as d:
     check("sweep_episode: a genuine overrun among resolved tweens still FAILs (unparsed doesn't mask it)",
           code == 1 and "FAIL graphic window fits its timeline" in out and "holds     g1" in out, f"(exit {code})\n{out[-600:]}")
 
+with tempfile.TemporaryDirectory() as d:
+    # `duration: 1` (with a space) is a plain number, not an unresolved expression: the overrun must still FAIL as "holds".
+    spaced = ('<template><div id="g"><span id="t">hi</span></div>'
+              '<script>tl.to("#t", {duration: 1}, 0.1);</script></template>')
+    ep_spaced = make_ep(Path(d) / "spaced", comp_html=spaced, comp_window=6.0)
+    code, out = run("sweep_episode.py", ep_spaced)
+    check("sweep_episode: `duration: 1` with a space resolves; a 6s window over it FAILs as holds",
+          code == 1 and "holds     g1" in out and "unresolved duration" not in out, f"(exit {code})\n{out[-600:]}")
+
 # ===================================================================================
 # 3. beat_density.py — exit code on a DEAD (>=4s motionless) composition
 # ===================================================================================
