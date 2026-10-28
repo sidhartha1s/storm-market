@@ -129,7 +129,7 @@ window.__timelines = window.__timelines || {};
   tl.to("#pd-shim", { rotation: 375, svgOrigin: O, duration: 18.75, ease: "none" }, 0.05);
 
   /* "Behind" @0.00: ground is on; face in */
-  tl.fromTo("#pd-face", { autoAlpha: 0, scale: 0.9 }, { autoAlpha: 1, scale: 1, svgOrigin: O, duration: 0.6, ease: "power3.out" }, 0.05);
+  tl.fromTo("#pd-face", { autoAlpha: 0, scale: 0.9, svgOrigin: O, smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: O, smoothOrigin: false, duration: 0.6, ease: "power3.out" }, 0.05);
 
   /* "that wind" @0.30-0.54 -> ticks draw clockwise from 0.6, labels fade up with them */
   tl.set(ticks, { autoAlpha: 1 }, 0.6);
