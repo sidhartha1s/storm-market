@@ -220,16 +220,10 @@ window.__timelines = window.__timelines || {};
   /* MISS @20.84: chip 2 out, done by A5-S9 0.00 */
   tl.to(P + "chip2", { y: -20, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, SEG.a5s8 + 20.84);
 
-  /* ONE STORM @0.00 (A5-S9): map fades 1.0 -> 0.25 while the camera pushes 1.00 -> 1.08 (ease none); source out @0.40 */
-  tl.to(P + "map", { opacity: 0.25, duration: PUSH, ease: "none" }, SEG.a5s9);
-  tl.to(P + "zoom", { scale: K2, svgOrigin: "960 540", duration: PUSH, ease: "none" }, SEG.a5s9);
-  tl.to(P + "nwk-at", { x: at(NWK[0], 960, K2), y: at(NWK[1], 540, K2), duration: PUSH, ease: "none" }, SEG.a5s9);
-  tl.to(P + "pit-at", { x: at(PIT[0], 960, K2), y: at(PIT[1], 540, K2), duration: PUSH, ease: "none" }, SEG.a5s9);
-  tl.to(P + "buf-at", { x: at(BUF[0], 960, K2), y: at(BUF[1], 540, K2), duration: PUSH, ease: "none" }, SEG.a5s9);
-  tl.to(P + "src", { x: -20, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, SEG.a5s9 + 0.40);
-
-  /* A5-S9 11.72 + 2.00: hold at 0.25 (scan and streams still move), then fade to black over the last 0.8 s */
-  tl.fromTo(P + "fade", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8, ease: "power1.in" }, DUR - 0.8);
+  /* host cut at the end of A5-S8's slot (21.76): the A5-S9 push, map dim and ground are removed; source line out and
+     fade to black over the last 0.5 s so the end ask opens on a clean frame */
+  tl.to(P + "src", { x: -20, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, DUR - 0.5);
+  tl.fromTo(P + "fade", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power1.in" }, DUR - 0.5);
 
   window.__timelines["g-a5-8-splitmap"] = tl;
 })();
