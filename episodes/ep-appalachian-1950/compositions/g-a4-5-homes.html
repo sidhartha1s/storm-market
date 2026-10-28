@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4-5-homes (A4-S10, standard): night street of 7 house outlines in falling snow, windows go dark block by block, counter "1,000,000+" HOMES WITHOUT POWER, then a beige cite card with the NWS Jackson KY quote.
+  Brief: briefs/a4/g-a4-5-homes.md. Full-frame designed scene on track 2, sits over nothing. Prefix a45-.
+  Host: data-start = A4-S10 audio start, data-duration 10.493 (10.093 + 0.40 assumed gap). Segment time = comp time (cues from audio/a4-s10.words.json).
+  Corner rule: houses end at x 1542 (1553 at the 2 % push); no text at x >= 1600, y >= 680; only night ground and snow there.
+  Exit: the quote card starts out at 9.95 (just after "time." ends 9.94) and lands at 10.50, host end 10.493. If the real gap is shorter than 0.40 s, the exit no earlier than 10.0 per the brief means shorten nothing: re-cue to the real data-duration.
+-->
+<template>
+<style>
+  #a45-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:linear-gradient(180deg, #04070c 0px, #0b1016 900px, #15202b 900px, #15202b 1080px); }
+  #a45-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .a45-w { fill:#e8c56a; fill-opacity:0.9; }
+  .a45-g { fill:#e8c56a; fill-opacity:0.4; filter:url(#a45-blur); }
+  .a45-house { fill:#0b1016; stroke:#93a3b2; stroke-width:3; stroke-linejoin:round; }
+  .a45-chim { fill:#0b1016; stroke:#93a3b2; stroke-width:3; }
+  .a45-cap { fill:none; stroke:#dfe7ee; stroke-width:6; stroke-linecap:round; stroke-linejoin:round; opacity:0.9; }
+  .a45-f { fill:#dfe7ee; }
+
+  /* counter block: glass card x 520..1400, y 140..370 */
+  #a45-cc { position:absolute; left:520px; top:140px; width:880px; height:230px; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  #a45-numrow { position:absolute; left:0; top:30px; width:880px; height:120px; display:flex; justify-content:center; align-items:center; white-space:nowrap; }
+  #a45-num { display:block; width:596px; text-align:right; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:110px; line-height:120px; color:#f2f5f8; }
+  #a45-plus { display:block; width:80px; text-align:left; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:110px; line-height:120px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #a45-lab { position:absolute; left:0; top:170px; width:880px; text-align:center; font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:40px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+
+  /* quote card: beige cite card x 300..1500, y 230..560 */
+  #a45-qc { position:absolute; left:300px; top:230px; width:1200px; height:330px; opacity:0; visibility:hidden; }
+  #a45-qf { position:absolute; inset:0; box-sizing:border-box; border-radius:18px; background:rgba(232,222,200,0.90); box-shadow:0 18px 50px rgba(0,0,0,0.45); }
+  #a45-eye { position:absolute; left:44px; top:44px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; letter-spacing:6px; color:#6b6257; white-space:nowrap; }
+  .a45-q { position:absolute; left:44px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:56px; line-height:67px; color:#2a2622; white-space:nowrap; opacity:0; visibility:hidden; }
+  #a45-q1 { top:120px; }
+  #a45-q2 { top:187px; }
+
+  #a45-src { position:absolute; left:110px; bottom:60px; font-family:Arial, sans-serif; font-weight:700; font-size:20px; line-height:26px; letter-spacing:1px; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="a45-root" data-composition-id="g-a4-5-homes" data-width="1920" data-height="1080">
+  <svg id="a45-svg" viewBox="0 0 1920 1080" width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="a45-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+    </defs>
+    <g id="a45-street">
+      <!-- snow ground and snow line -->
+      <rect x="-100" y="900" width="2120" height="300" fill="#15202b"/>
+      <line x1="-100" y1="900" x2="2020" y2="900" stroke="#dfe7ee" stroke-width="2" stroke-opacity="0.35"/>
+
+      <!-- chimneys first, so the house fill covers their feet -->
+      <rect class="a45-chim" x="482" y="676" width="26" height="59"/>
+      <rect class="a45-chim" x="1088" y="690" width="26" height="52"/>
+
+      <!-- house 1 -->
+      <path class="a45-house" d="M150 900 V750 L240 680 L330 750 V900 Z"/>
+      <path class="a45-cap" d="M150 750 L240 680 L330 750"/>
+      <!-- house 2 (steeper roof, chimney) -->
+      <path class="a45-house" d="M352 900 V750 L442 665 L532 750 V900 Z"/>
+      <path class="a45-cap" d="M352 750 L442 665 L532 750"/>
+      <!-- house 3 -->
+      <path class="a45-house" d="M554 900 V750 L644 680 L734 750 V900 Z"/>
+      <path class="a45-cap" d="M554 750 L644 680 L734 750"/>
+      <!-- house 4 -->
+      <path class="a45-house" d="M756 900 V750 L846 680 L936 750 V900 Z"/>
+      <path class="a45-cap" d="M756 750 L846 680 L936 750"/>
+      <!-- house 5 (flatter roof, chimney) -->
+      <path class="a45-house" d="M958 900 V750 L1048 700 L1138 750 V900 Z"/>
+      <path class="a45-cap" d="M958 750 L1048 700 L1138 750"/>
+      <!-- house 6 -->
+      <path class="a45-house" d="M1160 900 V750 L1250 680 L1340 750 V900 Z"/>
+      <path class="a45-cap" d="M1160 750 L1250 680 L1340 750"/>
+      <!-- house 7 (right edge 1542) -->
+      <path class="a45-house" d="M1362 900 V750 L1452 680 L1542 750 V900 Z"/>
+      <path class="a45-cap" d="M1362 750 L1452 680 L1542 750"/>
+
+      <!-- window glows (36 x 40 windows, 14 px glow) -->
+      <rect class="a45-g" id="a45-g1l" x="175" y="783" width="50" height="54" rx="8"/>
+      <rect class="a45-g" id="a45-g1r" x="255" y="783" width="50" height="54" rx="8"/>
+      <rect class="a45-g" id="a45-g2l" x="377" y="783" width="50" height="54" rx="8"/>
+      <rect class="a45-g" id="a45-g2r" x="457" y="783" width="50" height="54" rx="8"/>
+      <rect class="a45-g" id="a45-g3l" x="579" y="783" width="50" height="54" rx="8"/>
+      <rect class="a45-g" id="a45-g3r" x="659" y="783" width="50" height="54" rx="8"/>
+      <rect class="a45-g" id="a45-g4l" x="781" y="783" width="50" height="54" rx="8"/>
+      <rect class="a45-g" id="a45-g4r" x="861" y="783" width="50" height="54" rx="8"/>
+      <rect class="a45-g" id="a45-g5l" x="983" y="783" width="50" height="54" rx="8"/>
+      <rect class="a45-g" id="a45-g5r" x="1063" y="783" width="50" height="54" rx="8"/>
+      <rect class="a45-g" id="a45-g6l" x="1185" y="783" width="50" height="54" rx="8"/>
+      <rect class="a45-g" id="a45-g6r" x="1265" y="783" width="50" height="54" rx="8"/>
+      <rect class="a45-g" id="a45-g7l" x="1387" y="783" width="50" height="54" rx="8"/>
+      <rect class="a45-g" id="a45-g7r" x="1467" y="783" width="50" height="54" rx="8"/>
+
+      <!-- windows -->
+      <rect class="a45-w" id="a45-w1l" x="182" y="790" width="36" height="40" rx="3"/>
+      <rect class="a45-w" id="a45-w1r" x="262" y="790" width="36" height="40" rx="3"/>
+      <rect class="a45-w" id="a45-w2l" x="384" y="790" width="36" height="40" rx="3"/>
+      <rect class="a45-w" id="a45-w2r" x="464" y="790" width="36" height="40" rx="3"/>
+      <rect class="a45-w" id="a45-w3l" x="586" y="790" width="36" height="40" rx="3"/>
+      <rect class="a45-w" id="a45-w3r" x="666" y="790" width="36" height="40" rx="3"/>
+      <rect class="a45-w" id="a45-w4l" x="788" y="790" width="36" height="40" rx="3"/>
+      <rect class="a45-w" id="a45-w4r" x="868" y="790" width="36" height="40" rx="3"/>
+      <rect class="a45-w" id="a45-w5l" x="990" y="790" width="36" height="40" rx="3"/>
+      <rect class="a45-w" id="a45-w5r" x="1070" y="790" width="36" height="40" rx="3"/>
+      <rect class="a45-w" id="a45-w6l" x="1192" y="790" width="36" height="40" rx="3"/>
+      <rect class="a45-w" id="a45-w6r" x="1272" y="790" width="36" height="40" rx="3"/>
+      <rect class="a45-w" id="a45-w7l" x="1394" y="790" width="36" height="40" rx="3"/>
+      <rect class="a45-w" id="a45-w7r" x="1474" y="790" width="36" height="40" rx="3"/>
+    </g>
+
+    <!-- 60 flakes, fixed positions; each falls 40 to 70 px/s with a slight drift -->
+    <g id="a45-snow">
+      <circle class="a45-f" cx="62" cy="40" r="1.5" opacity="0.6"/>
+      <circle class="a45-f" cx="148" cy="310" r="1" opacity="0.5"/>
+      <circle class="a45-f" cx="231" cy="120" r="2" opacity="0.8"/>
+      <circle class="a45-f" cx="305" cy="560" r="1.5" opacity="0.5"/>
+      <circle class="a45-f" cx="390" cy="20" r="1" opacity="0.7"/>
+      <circle class="a45-f" cx="452" cy="430" r="2" opacity="0.6"/>
+      <circle class="a45-f" cx="518" cy="690" r="1.5" opacity="0.75"/>
+      <circle class="a45-f" cx="597" cy="210" r="1" opacity="0.45"/>
+      <circle class="a45-f" cx="660" cy="480" r="2" opacity="0.8"/>
+      <circle class="a45-f" cx="731" cy="90" r="1.5" opacity="0.55"/>
+      <circle class="a45-f" cx="802" cy="640" r="1" opacity="0.65"/>
+      <circle class="a45-f" cx="869" cy="350" r="2" opacity="0.7"/>
+      <circle class="a45-f" cx="941" cy="760" r="1.5" opacity="0.5"/>
+      <circle class="a45-f" cx="1010" cy="170" r="1" opacity="0.8"/>
+      <circle class="a45-f" cx="1074" cy="520" r="2" opacity="0.6"/>
+      <circle class="a45-f" cx="1139" cy="30" r="1.5" opacity="0.7"/>
+      <circle class="a45-f" cx="1207" cy="400" r="1" opacity="0.45"/>
+      <circle class="a45-f" cx="1268" cy="610" r="2" opacity="0.75"/>
+      <circle class="a45-f" cx="1331" cy="250" r="1.5" opacity="0.55"/>
+      <circle class="a45-f" cx="1396" cy="710" r="1" opacity="0.65"/>
+      <circle class="a45-f" cx="1462" cy="100" r="2" opacity="0.8"/>
+      <circle class="a45-f" cx="1528" cy="460" r="1.5" opacity="0.5"/>
+      <circle class="a45-f" cx="1590" cy="330" r="1" opacity="0.7"/>
+      <circle class="a45-f" cx="1655" cy="580" r="2" opacity="0.6"/>
+      <circle class="a45-f" cx="1721" cy="150" r="1.5" opacity="0.75"/>
+      <circle class="a45-f" cx="1786" cy="800" r="1" opacity="0.5"/>
+      <circle class="a45-f" cx="1850" cy="420" r="2" opacity="0.65"/>
+      <circle class="a45-f" cx="1890" cy="60" r="1.5" opacity="0.8"/>
+      <circle class="a45-f" cx="95" cy="620" r="2" opacity="0.55"/>
+      <circle class="a45-f" cx="20" cy="260" r="1" opacity="0.7"/>
+      <circle class="a45-f" cx="270" cy="860" r="1.5" opacity="0.6"/>
+      <circle class="a45-f" cx="340" cy="700" r="1" opacity="0.45"/>
+      <circle class="a45-f" cx="420" cy="290" r="1.5" opacity="0.8"/>
+      <circle class="a45-f" cx="490" cy="800" r="2" opacity="0.5"/>
+      <circle class="a45-f" cx="560" cy="380" r="1" opacity="0.7"/>
+      <circle class="a45-f" cx="630" cy="60" r="1.5" opacity="0.6"/>
+      <circle class="a45-f" cx="700" cy="560" r="2" opacity="0.75"/>
+      <circle class="a45-f" cx="770" cy="240" r="1" opacity="0.55"/>
+      <circle class="a45-f" cx="840" cy="880" r="1.5" opacity="0.65"/>
+      <circle class="a45-f" cx="910" cy="450" r="1" opacity="0.8"/>
+      <circle class="a45-f" cx="980" cy="640" r="2" opacity="0.5"/>
+      <circle class="a45-f" cx="1045" cy="300" r="1.5" opacity="0.7"/>
+      <circle class="a45-f" cx="1110" cy="800" r="1" opacity="0.6"/>
+      <circle class="a45-f" cx="1175" cy="130" r="2" opacity="0.75"/>
+      <circle class="a45-f" cx="1240" cy="520" r="1.5" opacity="0.45"/>
+      <circle class="a45-f" cx="1305" cy="860" r="1" opacity="0.8"/>
+      <circle class="a45-f" cx="1370" cy="350" r="2" opacity="0.55"/>
+      <circle class="a45-f" cx="1435" cy="590" r="1.5" opacity="0.7"/>
+      <circle class="a45-f" cx="1500" cy="200" r="1" opacity="0.65"/>
+      <circle class="a45-f" cx="1565" cy="760" r="2" opacity="0.5"/>
+      <circle class="a45-f" cx="1625" cy="10" r="1.5" opacity="0.8"/>
+      <circle class="a45-f" cx="1690" cy="470" r="1" opacity="0.6"/>
+      <circle class="a45-f" cx="1755" cy="670" r="2" opacity="0.75"/>
+      <circle class="a45-f" cx="1815" cy="230" r="1.5" opacity="0.55"/>
+      <circle class="a45-f" cx="1870" cy="540" r="1" opacity="0.7"/>
+      <circle class="a45-f" cx="1910" cy="880" r="2" opacity="0.5"/>
+      <circle class="a45-f" cx="40" cy="450" r="1.5" opacity="0.65"/>
+      <circle class="a45-f" cx="205" cy="920" r="1" opacity="0.8"/>
+      <circle class="a45-f" cx="1590" cy="940" r="1.5" opacity="0.6"/>
+      <circle class="a45-f" cx="760" cy="980" r="1" opacity="0.55"/>
+    </g>
+  </svg>
+
+  <div id="a45-cc">
+    <div id="a45-numrow"><span id="a45-num">1</span><span id="a45-plus">+</span></div>
+    <div id="a45-lab">HOMES WITHOUT POWER</div>
+  </div>
+
+  <div id="a45-qc">
+    <div id="a45-qf">
+      <div id="a45-eye">NATIONAL WEATHER SERVICE &middot; JACKSON, KY</div>
+      <div class="a45-q" id="a45-q1">&ldquo;The costliest storm on record</div>
+      <div class="a45-q" id="a45-q2">up until that time&rdquo;</div>
+    </div>
+  </div>
+
+  <div id="a45-src">Source: NWS Jackson KY; NOAA NCEI; Monthly Weather Review, Nov 1950 (secondary via usdeadlyevents.com)</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#a45-";
+  const flakes = gsap.utils.toArray("#a45-snow circle");
+
+  tl.set(P+"street", {scale:1, svgOrigin:"960 540"}, 0);
+  tl.set([P+"cc", P+"lab", P+"plus", P+"qc", P+"q1", P+"q2"], {autoAlpha:0}, 0);
+
+  /* AND FOR THE PEOPLE @0.00: street lit, snow falling, source line on; slow 2 % push on the street layer for the whole comp */
+  tl.to(P+"street", {scale:1.02, svgOrigin:"960 540", duration:10.5, ease:"none"}, 0);
+  /* snow keeps falling to the end: 40 to 70 px/s, slight drift (finite, sized to the host) */
+  tl.to(flakes, {y:function(i){ return 10.6 * (40 + (i * 13) % 31); }, x:function(i){ return ((i % 5) - 2) * 7; }, duration:10.6, ease:"none"}, 0);
+
+  /* MORE THAN @1.98: glass card in; count-up 1 to 1,000,000 (lands by 2.58 "homes") */
+  tl.fromTo(P+"cc", {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 1.98);
+  const cnt = {v:1};
+  tl.to(cnt, {v:1000000, duration:0.6, ease:"power3.out", onUpdate:function() {
+      const el = document.getElementById("a45-num");
+      if (el) el.textContent = Math.round(cnt.v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  } }, 1.98);
+
+  /* MILLION @2.36: first block dark (houses 1, 2) */
+  tl.to([P+"w1l", P+"w1r", P+"w2l", P+"w2r"], {fill:"#15202b", fillOpacity:1, duration:0.25, ease:"power2.out"}, 2.36);
+  tl.to([P+"g1l", P+"g1r", P+"g2l", P+"g2r"], {opacity:0, duration:0.25, ease:"power2.out"}, 2.36);
+
+  /* HOMES @2.58: count has landed; "+" pops in, label in */
+  tl.fromTo(P+"plus", {autoAlpha:0, scale:0.6}, {autoAlpha:1, scale:1, duration:0.3, ease:"back.out(2)"}, 2.58);
+  tl.fromTo(P+"lab", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 2.58);
+
+  /* LOST @3.06: block 2 dark (houses 3, 4) */
+  tl.to([P+"w3l", P+"w3r", P+"w4l", P+"w4r"], {fill:"#15202b", fillOpacity:1, duration:0.25, ease:"power2.out"}, 3.06);
+  tl.to([P+"g3l", P+"g3r", P+"g4l", P+"g4r"], {opacity:0, duration:0.25, ease:"power2.out"}, 3.06);
+
+  /* POWER @3.38: block 3 dark (houses 5, 6) */
+  tl.to([P+"w5l", P+"w5r", P+"w6l", P+"w6r"], {fill:"#15202b", fillOpacity:1, duration:0.25, ease:"power2.out"}, 3.38);
+  tl.to([P+"g5l", P+"g5r", P+"g6l", P+"g6r"], {opacity:0, duration:0.25, ease:"power2.out"}, 3.38);
+
+  /* MANY @4.40: house 7 left window dark */
+  tl.to(P+"w7l", {fill:"#15202b", fillOpacity:1, duration:0.25, ease:"power2.out"}, 4.40);
+  tl.to(P+"g7l", {opacity:0, duration:0.25, ease:"power2.out"}, 4.40);
+  /* DAYS @5.20: house 7 right window; tween runs 4.95 to 5.20 so every window is dark by 5.20 */
+  tl.to(P+"w7r", {fill:"#15202b", fillOpacity:1, duration:0.25, ease:"power2.out"}, 4.95);
+  tl.to(P+"g7r", {opacity:0, duration:0.25, ease:"power2.out"}, 4.95);
+
+  /* 5.70: counter card out, done by 6.15; street dims to 0.5 */
+  tl.to(P+"cc", {y:-30, autoAlpha:0, duration:0.45, ease:"power3.in"}, 5.70);
+  tl.to(P+"street", {opacity:0.5, duration:0.45, ease:"power2.inOut"}, 5.70);
+
+  /* WEATHER SERVICE @6.16: quote card in with its eyebrow */
+  tl.fromTo(P+"qc", {autoAlpha:0, y:30}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 6.16);
+  /* COSTLIEST @7.64: line 1 */
+  tl.fromTo(P+"q1", {autoAlpha:0, y:12}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 7.64);
+  /* UP TO THAT TIME @9.12: line 2 */
+  tl.fromTo(P+"q2", {autoAlpha:0, y:12}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 9.12);
+
+  /* card floats 0 to -6 px, 3 legs of 1.1 s from 6.70 to 10.0 */
+  tl.to(P+"qf", {y:-6, duration:1.1, ease:"sine.inOut", yoyo:true, repeat:2}, 6.70);
+
+  /* EXIT 9.95 to 10.50 (after "time." ends 9.94; host ends 10.493) */
+  tl.to(P+"qc", {x:980, autoAlpha:0, duration:0.55, ease:"power3.in"}, 9.95);
+
+  window.__timelines["g-a4-5-homes"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
