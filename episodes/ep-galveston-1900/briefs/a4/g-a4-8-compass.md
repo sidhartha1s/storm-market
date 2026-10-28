@@ -14,7 +14,7 @@ Full-frame comp on the tokens gradient. Page panel left (x 140 to 820, y 180 to 
 - Page panel: glass card, p. 373 crop around the warning paragraph (whole lines, measured), amber band behind "warned, over the telephone and verbally" then extended to "the worst was yet to come".
 - Compass: ring `#5a768f` 4 px, cardinal letters N, E, S, W Arial Black 900 52 px `#f2f5f8` at r 270 (N at (1300, 220), E at (1570, 540), S at (1300, 860), W at (1030, 540)); 8 ticks.
 - Wind arrow: `#7fb2e5` 10 px shaft from the rim to 40 px short of the centre, head 36 px; it rotates about the centre: N (0°) to E (90°) to S (180°), clockwise via east. A faint 6 px `#7fb2e5` arc at r 240 traces the swing path (strokeDashoffset).
-- Label "Wind from" Arial 700 22 px `#93a3b2` tracking 3 centred at (1300, 920)? No: S letter sits at y 860; put "Wind from" at top 950 centred x 1300 (bottom 980 < 1026).
+- Label "Wind from" Arial 700 22 px `#93a3b2` tracking 3 centred x 1300, top 950 (below the S letter at y 860; bottom 980 inside the 1026 margin).
 - Chip (glass, main Arial Black 900 52 px) "THE WORST WAS YET TO COME", centred x 1300, top 100 (above N at 220: chip bottom about 210; move N letter to r 250 if tight: receipt), tag "Cline's report, p. 373".
 - Source line top-left: "Isaac Cline, Monthly Weather Review, September 1900, p. 373".
 
