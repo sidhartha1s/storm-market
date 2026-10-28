@@ -98,13 +98,13 @@ window.__timelines = window.__timelines || {};
   fly("s5", 5.00, 0.9, 430, -360);
   fly("b6", 5.20, 0.7, 322, 720);
 
-  /* though @3.42 (18.68): card in, landed by 3.84 (19.10, "paper"); drifts while it holds */
-  tl.fromTo(P+"card", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.42, ease:"back.out(1.6)"}, 3.42);
-  tl.to(P+"cardin", {y:-4, duration:1.4, ease:"sine.inOut"}, 3.84);
+  /* flying @1.98 (17.24): card in (was though @3.42), landed 2.40; drifts while it holds */
+  tl.fromTo(P+"card", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.42, ease:"back.out(1.6)"}, 1.98);
+  tl.to(P+"cardin", {y:-4, duration:1.06, ease:"sine.inOut"}, 2.4);
 
-  /* exit: card and source line slide out in the last 0.6 s (5.34 to 5.94); card readable 3.84 to 5.34 = 1.50 s */
-  tl.to(P+"card", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.34);
-  tl.to(P+"src", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.34);
+  /* exit: card and source line slide out in the last 0.6 s of the 4.06 host (3.46 to 4.06); card readable 2.40 to 3.46 = 1.06 s (host not stretched) */
+  tl.to(P+"card", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 3.46);
+  tl.to(P+"src", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 3.46);
 
   window.__timelines["g-a4-14-timbers"] = tl;
 })();
