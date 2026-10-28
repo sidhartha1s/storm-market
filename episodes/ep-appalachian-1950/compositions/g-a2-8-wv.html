@@ -19,10 +19,7 @@
     on screen at (825.3, 846.3) in both frames, scale interpolated in log space (logZoom, helpers.js), 1.1 s expo.inOut.
     Pins at A2-W (computed by camAt from the table): Parkersburg (549.4, 385.8), Clarksburg (900.0, 380.0),
     Elkins (1043.4, 528.5). Frame 0 pins (A2-B): Erie (889, 138), Youngstown (820, 322), Pittsburgh (900, 440).
-  BAND: the brief says "same band polygon vertices from g-a2-7's receipt"; g-a2-7 is being built in parallel and its
-    receipt does not exist yet, so BAND below holds provisional lon/lat vertices inside g-a2-7 §2's expected extent
-    (north tip just south of Erie at 42.05, south end in central WV at 38.6, west edge near the PA-OH line, east edge
-    west of the Allegheny Front). REPLACE BAND with g-a2-7's receipt vertices before the frame read (one array).
+  BAND: g-a2-7's polygon, its header's V1 to V18 (lat, lon there; lon, lat here), same as g-a2-9's BAND_LL.
   CONFLICT (§3 vs §4, reported): the Elkins pill RIGHT of its pin (left 1068) is about 230 px wide ("34.7 IN" Arial Black
     52 px = 202 px + 28 padding), so its right edge would be ~1298, past the 1230 limit and under the ruler panel (1250).
     Moved BELOW its pin (centred on x 1043, top 551, bottom 647): beside its pin, clear of the panel and of y 680.
