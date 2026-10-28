@@ -15,6 +15,7 @@ import numpy as np
 S = Path(__file__).resolve().parent
 sys.path.insert(0, str(S))
 from pop_scan import find_pops  # noqa: E402
+import winbin  # noqa: E402
 
 FAILS = []
 
@@ -98,7 +99,7 @@ if HAVE_FFMPEG:
                         "-f", "lavfi", "-i", "sine=frequency=440:duration=2",
                         "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", str(mp4)],
                        capture_output=True)
-        r = subprocess.run(["bash", str(S / "verify_render.sh"), str(ep), "clean-final", "full"],
+        r = subprocess.run([winbin.real("bash"), str(S / "verify_render.sh"), str(ep), "clean-final", "full"],
                             capture_output=True, text=True)
         check("pop_scan-07 verify_render.sh runs the pop-scan section", "pop scan" in r.stdout, r.stdout[-1500:])
         check("pop_scan-08 verify_render.sh still exits 0 on a clean render (pop-scan never FAILs)",
