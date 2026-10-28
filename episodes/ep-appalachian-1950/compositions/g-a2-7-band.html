@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-7-band · A2-S7 · ep-appalachian-1950 · DEEP (Opus) · brief: briefs/a2/g-a2-7-band.md
+  Claim: over 30 in fell in a band from near Erie, PA south into the heart of West Virginia; Erie and Youngstown each
+  got more than 28 in; Youngstown's 30.6 in made November 1950 its snowiest November. A snow-amount band inside
+  PA/OH/WV only: no track, no low, nothing toward the coast (L1 open).
+
+  BASEMAP (compact, not the master block): state outlines OH, WV, KY, PA, NY, NJ, IN, MI copied verbatim from
+    compositions/g-a4-4-statemap.html defs (= master-map-us-canada, Natural Earth 50m admin-1, public domain, RDP 15).
+    Lake Erie's south shore and Lake Michigan's east/south shores reuse those same vertices; Lake Erie's Ontario shore,
+    the Atlantic coast, Delaware Bay and Chesapeake Bay are coarse hand-projected lon/lat points (formula below).
+    MD, DE, VA have no lines of their own (their WV, PA, KY edges come from those states). Swap in the master
+    BASEMAP block if a frame read finds the coarse coast wrong.
+  PROJECTION: X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213).
+  CAMERA: A2-P s 0.08 TL (56275.2, 28019.2) -> A2-B s 0.032 TL (39400.2, 20769.2), 0.84 to 2.84, expo.inOut, scale in
+    log space (logLerpScale, helpers.js logZoom); Pittsburgh glides (900,520) -> (900,440). camAt(t) is a pure
+    function of comp time (seek-safe). Settled A2-B pins: Erie (889.0, 138.2), Youngstown (819.7, 322.2),
+    Pittsburgh (900.0, 440.0).
+  BAND (30+ core, inside the NCEI > 24 in dark-red area; PNG georeferenced on the PA-OH line x 862 = -80.52, PA-MD
+    line y 555 = 39.72, Erie shore y 430 = 42.13: about 39.3 px/deg lon, 51.9 px/deg lat), lat, lon -> map units:
+    V1 41.95,-80.15 (66933.3,26089.2) N tip   V2 41.80,-79.80 (68277.7,26927.0)   V3 41.40,-79.62 (68969.0,29161.0)
+    V4 40.90,-79.55 (69237.9,31953.5)         V5 40.40,-79.45 (69622.0,34746.0)   V6 39.95,-79.50 (69430.0,37259.2)
+    V7 39.55,-79.55 (69237.9,39493.2)         V8 39.10,-79.62 (68969.0,42006.5)   V9 38.75,-79.90 (67893.5,43961.2)
+    V10 38.62,-80.35 (66165.1,44687.3) S tip  V11 38.75,-80.75 (64628.7,43961.2)  V12 39.10,-80.95 (63860.5,42006.5)
+    V13 39.55,-80.85 (64244.6,39493.2)        V14 40.00,-80.75 (64628.7,36980.0)  V15 40.50,-80.70 (64820.7,34187.5)
+    V16 41.00,-80.62 (65128.0,31395.0)        V17 41.50,-80.45 (65781.0,28602.5)  V18 41.75,-80.35 (66165.1,27206.2)
+    At A2-B: N tip (881,170), S tip (857,765), east max V5 (967,447), west max V12 (783,680).
+  NCEI PLATE: crop x 520-1210, y 230-763 of the 1210 x 935 PNG (scale 0.753623), not the brief's x 300: x 300-518
+    still holds the legend's "18-24", "> 24", "4", "5" and part of "34.7"; x >= 520 holds no legend and no number.
+  CUES (audio/a2-s7.words.json, comp time = segment time):
+    0.00 Pittsburgh · 0.84 deepest · 2.86 Over · 3.02 30 · 4.28 band · 5.44 Erie, · 8.02 south · 9.40 Virginia.
+    10.54 Erie · 10.90 Youngstown, · 12.82 28. · 13.76 Youngstown · 15.40 30 · exit 18.40 · end 19.32
+-->
+<template>
+<style>
+  #g-a2-7-band-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 45% 50%, #0b1016 0%, #030507 78%); }
+  .b7-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .b7-vig { position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 50%, rgba(3,5,7,0) 55%, rgba(3,5,7,0.55) 100%); }
+  .b7-glass { position:absolute; box-sizing:border-box; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  /* map labels: 26 px pills, 38 px tall, top = pin y - 19 */
+  .b7-pill { padding:6px 12px; border-radius:8px; font-family:Arial, sans-serif; font-weight:700; font-size:26px;
+    line-height:1; letter-spacing:4px; color:#f2f5f8; }
+  #b7-pitlab0 { left:916px; top:501px; }
+  #b7-pitlab { left:913px; top:421px; }
+  #b7-erielab { left:903px; top:119px; }
+  #b7-ynglab { right:1113px; top:303px; }      /* right-aligned: pill right edge 807, text ends near 795 */
+  /* NCEI plate: 520 x 402 window on the PNG crop x 520-1210, y 230-763 */
+  #b7-plate { position:absolute; left:1220px; top:110px; width:520px; height:402px; overflow:hidden;
+    border:2px solid rgba(255,255,255,0.14); border-radius:12px; background:#ffffff; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  #b7-plateimg { position:absolute; left:-391.88px; top:-173.33px; width:911.88px; height:704.64px; }
+  #b7-cap { position:absolute; left:1220px; top:80px; font-family:Arial, sans-serif; font-weight:700; font-size:19px;
+    line-height:1; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  /* 30+ chip: left 980, top 560, about 270 x 82 */
+  #b7-chip30 { left:980px; top:560px; padding:12px 18px; border-radius:14px; }
+  #b7-big30 { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:1; color:#f2f5f8; }
+  /* Erie/Youngstown card: one card, two text states in one grid cell; right edge about 646 (<= 780) */
+  #b7-card { left:140px; top:150px; padding:14px 18px; border-radius:14px; display:grid; }
+  #b7-st28, #b7-st306 { grid-area:1 / 1; }
+  .b7-cbig { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; color:#f2f5f8; }
+  .b7-csub { margin-top:10px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:1.2;
+    letter-spacing:3px; color:#93a3b2; }
+  #b7-sub306 { width:470px; white-space:normal; }
+  .b7-src { position:absolute; left:110px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:1;
+    letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  #b7-src { bottom:90px; }
+  #b7-credit { bottom:60px; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .b7-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-7-band-root" data-composition-id="g-a2-7-band" data-width="1920" data-height="1080" data-duration="19.32">
+  <svg class="b7-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- band reveal: rect grows from the north tip down (map units) -->
+      <clipPath id="b7-revealclip" clipPathUnits="userSpaceOnUse"><rect id="b7-reveal-r" x="62000" y="25800" width="9000" height="0"/></clipPath>
+      <!-- the band shape itself, for the shimmer -->
+      <clipPath id="b7-bandclip" clipPathUnits="userSpaceOnUse">
+        <polygon points="66933.3,26089.2 68277.7,26927.0 68969.0,29161.0 69237.9,31953.5 69622.0,34746.0 69430.0,37259.2 69237.9,39493.2 68969.0,42006.5 67893.5,43961.2 66165.1,44687.3 64628.7,43961.2 63860.5,42006.5 64244.6,39493.2 64628.7,36980.0 64820.7,34187.5 65128.0,31395.0 65781.0,28602.5 66165.1,27206.2"/>
+      </clipPath>
+      <linearGradient id="b7-shimgrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#7fb2e5" stop-opacity="0"/><stop offset="0.5" stop-color="#bcd9f2" stop-opacity="0.8"/><stop offset="1" stop-color="#7fb2e5" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <!-- camera layer: map units; camAt sets its transform -->
+    <g id="b7-cam">
+      <rect id="b7-land" x="20000" y="0" width="100000" height="70000" fill="#0b1016"/>
+      <g id="b7-water" fill="#0e1a26" stroke="#2a3644" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linejoin="round">
+        <!-- Lake Erie: MI + OH + PA + NY shore (Natural Earth vertices), Ontario shore hand-projected -->
+        <path vector-effect="non-scaling-stroke" d="M55313,24993 L55263,25344 L55308,25537 L55005,25890 L54940,26175 L54845,26173 L54596,26481 L54203,27265 L54242,27231 L54285,27347 L54870,27523 L55055,27698 L55721,28040 L56127,28368 L56329,28389 L56467,28322 L56541,28168 L56636,28157 L56752,28291 L57127,28438 L57139,28484 L56099,28738 L55881,28856 L56142,28939 L56405,28919 L56669,28797 L57241,28861 L57359,28787 L57813,29122 L57983,29172 L59361,28642 L60891,28541 L61221,28332 L61951,27645 L62790,27092 L64171,26406 L65511,25868 L66225,25582 L68420,24301 L69383,23626 L69751,23258 L70547,22709 L70870,22396 L71375,21729 L71664,21543 L71820,21347 L71841,21141 L71658,20784 L70390,20895 L66741,21454 L65781,22571 L62862,22124 L60173,24358 L57869,26201 L56985,25642 L55602,25251 Z"/>
+        <!-- Lake Michigan (southern end): IN + MI shore vertices, west edge off frame -->
+        <path vector-effect="non-scaling-stroke" d="M38000,27400 L38620,27330 L38990,27605 L39038,27728 L39650,27834 L40344,27656 L41150,27147 L41807,26629 L42034,26305 L42899,24560 L43313,23478 L43570,22180 L43613,20781 L43509,20064 L43400,15000 L38000,15000 Z"/>
+        <!-- Atlantic, Delaware Bay, Chesapeake Bay (coarse, from NJ shore vertices and projected capes) -->
+        <path vector-effect="non-scaling-stroke" d="M90561,34455 L90718,35146 L90447,36572 L90248,38163 L89879,38507 L89286,39572 L88908,40403 L88232,41183 L87504,42554 L87008,42894 L86890,42844 L87110,41753 L86522,41387 L86192,41404 L85827,40977 L85357,40667 L84701,39827 L84703,39204 L84448,39381 L85178,42229 L86176,43793 L86407,46307 L85255,48541 L84200,51200 L82990,53065 L83260,50384 L83069,47033 L82301,44799 L82682,41448 L82682,39493 L80646,41057 L81000,42733 L81115,46363 L81616,47926 L81539,51780 L81710,54013 L82823,54126 L82823,60000 L110000,60000 L110000,34455 Z"/>
+      </g>
+      <g id="b7-states" fill="none" stroke="#2a3644" stroke-width="1.5" stroke-linejoin="round">
+        <path vector-effect="non-scaling-stroke" d="M65511,25868 L65516,33367 L65061,33611 L64978,33836 L65189,34494 L65198,34948 L64159,38457 L64151,38855 L63809,39375 L62660,40406 L62388,40539 L62161,40527 L61980,40373 L61776,40478 L61550,40845 L61339,41034 L61144,41046 L60977,41283 L60708,42013 L60586,42084 L60672,42861 L60560,42844 L60428,42932 L60224,43159 L60020,42625 L59823,42503 L59550,42772 L59046,43859 L59136,44589 L59050,44766 L58858,44832 L58710,45067 L58605,45471 L58341,45726 L57916,45832 L57441,45633 L56915,45128 L56583,44644 L56446,44183 L55986,44162 L55205,44582 L54615,44646 L54217,44355 L53918,44241 L53337,44522 L53097,44412 L52806,44066 L52344,43826 L51710,43691 L51272,43318 L51030,42706 L50770,42286 L50494,42057 L50191,41991 L49862,42086 L49608,42037 L49430,41845 L49204,41867 L48989,42051 L49088,27477 L54242,27231 L54285,27347 L54870,27523 L55055,27698 L55721,28040 L56127,28368 L56329,28389 L56467,28322 L56541,28168 L56636,28157 L56752,28291 L57127,28438 L57139,28484 L56099,28738 L55881,28856 L56142,28939 L56405,28919 L56669,28797 L57241,28861 L57359,28787 L57813,29122 L57983,29172 L59361,28642 L60891,28541 L61221,28332 L61951,27645 L62790,27092 L64171,26406 Z"/>
+        <path vector-effect="non-scaling-stroke" d="M59430,50548 L58751,49897 L58015,48494 L57975,48242 L57566,47593 L57455,47313 L57448,47133 L57606,46630 L57563,45802 L57474,45647 L57916,45832 L58341,45726 L58605,45471 L58710,45067 L58858,44832 L59050,44766 L59136,44589 L59046,43859 L59550,42772 L59823,42503 L60020,42625 L60224,43159 L60428,42932 L60560,42844 L60672,42861 L60586,42084 L60708,42013 L60977,41283 L61144,41046 L61339,41034 L61550,40845 L61776,40478 L61980,40373 L62161,40527 L62388,40539 L62660,40406 L63809,39375 L64151,38855 L64159,38457 L65198,34948 L65189,34494 L64978,33836 L65061,33611 L65516,33367 L65514,38530 L69516,38528 L69476,41387 L70223,40825 L71061,39907 L71460,40031 L72062,39381 L72204,39065 L72324,39137 L72343,39337 L72588,39496 L72983,39589 L73288,39586 L73629,39058 L73942,38995 L74496,38735 L74816,38779 L75087,39040 L75362,39165 L75640,39154 L75747,39216 L75682,39349 L76038,39838 L75991,40098 L76104,40168 L76241,40630 L75822,41754 L73954,40041 L73843,40270 L73520,41667 L72958,42570 L72531,43003 L72398,42990 L72285,43078 L71855,43582 L71381,43572 L71192,43740 L70428,45489 L70182,45637 L69830,45612 L69411,45406 L69218,45026 L69054,44927 L68894,44953 L68782,45110 L68603,45893 L68341,46273 L68228,46659 L67883,47140 L67618,47892 L66565,49540 L66414,49954 L66565,50268 L66295,50888 L66084,51095 L65725,51318 L65560,51115 L64744,51495 L64270,51380 L64161,51504 L64156,51833 L63993,51996 L62984,52264 L62796,52265 L62324,51871 L62058,52158 L61406,52573 L61130,52496 L60305,51894 L59937,51093 L59961,50721 Z"/>
+        <path vector-effect="non-scaling-stroke" d="M32306,53503 L32423,53163 L32763,52713 L33430,52699 L34424,53120 L34970,53241 L35067,53062 L34836,51928 L34881,51700 L35286,51438 L36050,51140 L36368,50751 L36242,50269 L36286,49828 L36500,49429 L36698,49265 L36879,49334 L37019,49301 L37118,49168 L37196,48636 L37666,48791 L37878,48711 L38013,48785 L38152,49082 L38259,48994 L38366,48397 L38466,48546 L38631,48588 L38866,48496 L39192,48577 L39818,48961 L40081,49238 L40263,49148 L40452,48784 L40740,48496 L41125,48283 L41505,48375 L41878,48770 L42162,48849 L42356,48613 L42543,47885 L42687,47805 L42741,47670 L42707,47479 L42813,47370 L43061,47342 L43075,47150 L43255,47235 L43435,47689 L43666,47946 L44066,48195 L44381,48237 L44613,48072 L44826,47642 L45021,46949 L45276,46557 L45592,46467 L45822,46210 L45966,45787 L46206,45447 L46543,45189 L46673,44818 L46596,44335 L46747,44073 L47126,44033 L47357,44089 L47652,44294 L48684,43852 L49070,43574 L49112,43300 L49044,43126 L48865,43051 L48827,42938 L48932,42785 L48936,42587 L48840,42343 L48929,42103 L49204,41867 L49430,41845 L49608,42037 L49862,42086 L50191,41991 L50494,42057 L50770,42286 L51030,42706 L51272,43318 L51710,43691 L52344,43826 L52806,44066 L53097,44412 L53337,44522 L53918,44241 L54217,44355 L54615,44646 L55205,44582 L55986,44162 L56446,44183 L56583,44644 L56915,45128 L57563,45802 L57606,46630 L57448,47133 L57455,47313 L57975,48242 L58015,48494 L58315,49109 L58751,49897 L59430,50548 L59961,50721 L58509,52077 L57209,52964 L57016,53466 L56632,53851 L56392,54258 L55818,54598 L55409,55062 L54385,55517 L53812,55675 L53181,56043 L42514,55607 L37399,55723 L37286,55550 L36412,55450 L36564,56023 L36554,56529 L31211,56527 L31414,56037 L31671,55880 L31957,56000 L32161,55826 L32443,54790 L32470,54229 Z"/>
+        <path vector-effect="non-scaling-stroke" d="M68420,24301 L68420,25805 L85365,25819 L85662,26108 L85797,26412 L86246,26629 L86347,26750 L86350,26930 L86508,27122 L86457,27412 L86517,27997 L86786,28559 L86963,28746 L87649,29027 L87870,29399 L87435,29711 L87051,30528 L86593,31106 L86242,31401 L86424,32198 L86285,32500 L86043,32649 L85976,33127 L85988,33652 L86340,33947 L86584,34632 L86805,34713 L87733,36117 L86624,36883 L86050,37568 L85482,37736 L85097,38011 L84754,37854 L84277,37876 L83991,38081 L83700,38531 L65514,38530 L65511,25868 L66225,25582 Z"/>
+        <path vector-effect="non-scaling-stroke" d="M71097,19632 L71115,18645 L72543,18206 L73434,18060 L74519,18021 L75813,18231 L76315,18422 L76633,18666 L77000,18732 L77416,18618 L77992,18580 L78729,18618 L79123,18676 L79174,18752 L79473,18471 L80026,18270 L80099,18311 L80647,17690 L81058,17392 L81429,17237 L81983,17151 L82095,17016 L82124,16624 L82036,15993 L81882,15594 L81767,15485 L81780,15370 L81980,15229 L81965,15361 L82018,15401 L82112,15341 L82602,14648 L82200,14675 L82135,14621 L82281,14386 L82208,14196 L82114,14174 L81698,14399 L81520,14048 L81960,13617 L83518,12421 L83735,12077 L83672,11864 L85173,10327 L86025,9617 L86729,9222 L87265,9033 L93044,9025 L93071,9396 L92991,9835 L93058,10310 L92967,11304 L93207,12073 L93164,13138 L92933,13593 L92760,14222 L92956,15734 L92799,16932 L92893,16994 L93127,16725 L93447,17136 L93320,21269 L93423,21609 L92448,25363 L92551,25500 L92304,29742 L92537,30172 L91619,30811 L91975,31440 L91404,32074 L91127,32337 L90899,32422 L90605,32783 L90914,31884 L91047,31087 L91008,30442 L90842,30177 L90671,30000 L90872,30637 L90901,31438 L87870,29399 L87649,29027 L86963,28746 L86627,28307 L86517,27997 L86457,27412 L86508,27122 L86350,26930 L86347,26750 L86246,26629 L85797,26412 L85662,26108 L85365,25819 L68420,25805 L68420,24270 L69383,23626 L69751,23258 L70547,22709 L70870,22396 L71375,21729 L71664,21543 L71820,21347 L71841,21141 L71641,20239 L71755,19902 L71703,19832 Z M96006,31834 L96253,31871 L97133,31260 L97531,31134 L97656,31107 L97846,31311 L98609,31056 L96935,31986 L96593,32091 L96104,32368 L93650,33326 L93377,33274 L92012,33630 L91451,33670 L90941,33794 L91319,33507 L91327,33400 L91237,33316 L91035,33341 L90828,33636 L90498,33734 L90432,33413 L90691,32929 L91019,32558 L91488,32324 L91726,32121 L91891,32300 L91927,32058 L92192,31844 L92524,31842 L92965,31709 L93328,31818 L93683,31787 L93969,31636 L94267,31585 L95836,31441 L96806,30694 L97184,30540 Z M89649,34083 L89833,33547 L90169,33303 L90291,33354 L90249,33705 L90023,33954 Z"/>
+        <path vector-effect="non-scaling-stroke" d="M86430,37072 L87733,36117 L86805,34713 L86584,34632 L86340,33947 L85988,33652 L86001,32826 L86043,32649 L86285,32500 L86424,32198 L86242,31401 L86593,31106 L87051,30528 L87435,29711 L87870,29399 L90901,31438 L90835,31874 L90457,32756 L89837,33361 L89685,33584 L89541,34028 L89628,34432 L90364,34579 L90561,34455 L90718,35146 L90447,36572 L90248,38163 L90307,37018 L90187,37114 L90104,37326 L89879,38507 L89570,39137 L89286,39572 L88992,39500 L89058,39846 L88908,40403 L88733,40652 L88569,40628 L88333,40800 L88239,40931 L88232,41183 L87504,42554 L87008,42894 L86890,42844 L87110,41753 L86522,41387 L86192,41404 L85827,40977 L85357,40667 L84701,39827 L84703,39204 L85094,38154 L85358,37931 L86124,37703 Z"/>
+        <path vector-effect="non-scaling-stroke" d="M36415,48845 L36431,48727 L36554,48718 L36618,48504 L36610,48076 L36681,47817 L36819,47651 L36758,47517 L36943,47344 L36979,47156 L36868,46952 L36857,46758 L36946,46574 L37083,46488 L37269,46502 L37445,46276 L37611,45809 L37798,45526 L38008,45425 L38180,45119 L38380,44356 L38589,44004 L38634,43616 L38586,43074 L38196,41969 L38136,41623 L38260,41485 L38275,40938 L38398,40644 L38575,40471 L38620,27330 L38990,27605 L39038,27728 L39650,27834 L40344,27656 L41150,27147 L49086,27152 L48989,42051 L48840,42343 L48936,42587 L48932,42785 L48827,42938 L48865,43051 L49044,43126 L49112,43300 L49070,43574 L48684,43852 L47652,44294 L47357,44089 L47126,44033 L46747,44073 L46596,44335 L46673,44818 L46543,45189 L46206,45447 L45966,45787 L45822,46210 L45592,46467 L45276,46557 L45021,46949 L44826,47642 L44613,48072 L44381,48237 L44066,48195 L43666,47946 L43435,47689 L43255,47235 L43075,47150 L43061,47342 L42813,47370 L42707,47479 L42741,47670 L42687,47805 L42543,47885 L42356,48613 L42162,48849 L41878,48770 L41505,48375 L41125,48283 L40740,48496 L40452,48784 L40263,49148 L40081,49238 L39818,48961 L39192,48577 L38866,48496 L38631,48588 L38466,48546 L38366,48397 L38259,48994 L38152,49082 L38013,48785 L37878,48711 L37666,48791 L37453,48756 L37264,48621 L37142,48698 L37118,49168 L37019,49301 L36879,49334 L36698,49265 L36620,49329 Z"/>
+        <path vector-effect="non-scaling-stroke" d="M58225,20128 L57952,21680 L57733,22321 L57350,22693 L57408,22490 L57331,21975 L57190,21918 L56803,22098 L56738,22242 L56817,22388 L56770,22520 L56597,22637 L56485,22911 L56363,23610 L55743,24008 L55584,24210 L55313,24993 L55263,25344 L55308,25537 L55005,25890 L54940,26175 L54845,26173 L54596,26481 L54203,27265 L49088,27477 L49086,27152 L41150,27147 L41807,26629 L42034,26305 L42899,24560 L43313,23478 L43570,22180 L43613,20781 L43509,20064 L43199,18973 L42381,16666 L42781,15686 L42740,15065 L42469,14228 L42868,13693 L43327,12793 L43533,11561 L43470,10736 L43553,10618 L43980,10464 L44124,10204 L44154,9748 L44242,9522 L44387,9526 L44644,9241 L44807,9187 L45010,9270 L45293,8987 L45936,7978 L46131,7901 L46168,7960 L46010,8366 L46056,8597 L45926,9127 L45982,9223 L45826,9716 L45818,9963 L45913,10150 L46026,10084 L46156,9766 L46162,9441 L46254,9191 L46335,9073 L46407,9086 L46395,9480 L46188,10090 L46148,10277 L46194,10329 L46443,9947 L46810,8872 L46801,7693 L46861,7508 L47448,7066 L47815,6941 L48431,6862 L48574,6751 L48524,6661 L48280,6595 L48094,6449 L47968,6224 L47925,5966 L47967,5675 L48475,4903 L48376,4771 L49050,4726 L49180,4616 L50450,5278 L50892,5334 L51215,5456 L51418,5642 L51655,6081 L51866,6211 L52459,6339 L52650,6505 L54148,7163 L54391,7385 L54465,7819 L54715,8138 L54772,8535 L54916,8794 L54861,8829 L54535,8681 L54350,8726 L54252,9100 L54311,9270 L54727,9785 L54836,10255 L54856,10823 L54717,12545 L54580,12797 L54209,13160 L54203,13092 L54114,13073 L54018,13128 L53628,14315 L53364,14444 L53330,14559 L52831,14677 L52611,14849 L52447,15335 L52382,16106 L52469,16312 L52729,16519 L53162,16725 L53421,16757 L53599,16670 L53785,16332 L54185,16143 L54631,15314 L54630,15163 L54517,15064 L54688,15037 L54962,14792 L55720,14500 L56007,14299 L56189,14266 L56454,14373 L56802,14620 L57077,14981 L57280,15454 L58056,19773 Z"/>
+      </g>
+      <!-- the 30+ band: fill and edge, revealed north to south -->
+      <g id="b7-band" clip-path="url(#b7-revealclip)">
+        <polygon fill="rgba(242,245,248,0.85)" stroke="#f2f5f8" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"
+          points="66933.3,26089.2 68277.7,26927.0 68969.0,29161.0 69237.9,31953.5 69622.0,34746.0 69430.0,37259.2 69237.9,39493.2 68969.0,42006.5 67893.5,43961.2 66165.1,44687.3 64628.7,43961.2 63860.5,42006.5 64244.6,39493.2 64628.7,36980.0 64820.7,34187.5 65128.0,31395.0 65781.0,28602.5 66165.1,27206.2"/>
+      </g>
+      <!-- shimmer: a 40 px (1250 map units) light sweep inside the band, north to south, one pass -->
+      <g id="b7-shim" class="b7-hide" clip-path="url(#b7-bandclip)">
+        <rect id="b7-shim-r" x="62000" y="24500" width="9000" height="1250" fill="url(#b7-shimgrad)"/>
+      </g>
+    </g>
+    <!-- screen-size pins: camAt sets each *-at group's translate to its projected point -->
+    <g id="b7-pins">
+      <g id="b7-pit-at">
+        <g id="b7-pit"><circle r="8" fill="#f2f5f8" stroke="#04070c" stroke-width="2"/></g>
+      </g>
+      <g id="b7-yng-at">
+        <circle id="b7-yng-pulse" r="7" fill="none" stroke="#7fb2e5" stroke-width="3" opacity="0"/>
+        <g id="b7-yng" class="b7-hide"><circle r="5.5" fill="#f2f5f8" stroke="#7fb2e5" stroke-width="3"/></g>
+      </g>
+      <g id="b7-erie-at">
+        <circle id="b7-erie-pulse" r="7" fill="none" stroke="#7fb2e5" stroke-width="3" opacity="0"/>
+        <g id="b7-erie" class="b7-hide"><circle r="5.5" fill="#f2f5f8" stroke="#7fb2e5" stroke-width="3"/></g>
+      </g>
+    </g>
+    <!-- light snow, screen space, kept left of x 1580 (circle corner stays clear) -->
+    <g id="b7-flakes" fill="#dfe7ee" fill-opacity="0.6">
+      <circle cx="53" cy="40" r="2"/><circle cx="450" cy="820" r="1.5"/><circle cx="847" cy="300" r="2.5"/><circle cx="1244" cy="610" r="1.5"/>
+      <circle cx="61" cy="950" r="2"/><circle cx="458" cy="170" r="2.5"/><circle cx="855" cy="700" r="1.5"/><circle cx="1252" cy="90" r="2"/>
+      <circle cx="69" cy="520" r="1.5"/><circle cx="466" cy="380" r="2"/><circle cx="863" cy="980" r="2.5"/><circle cx="1260" cy="450" r="1.5"/>
+      <circle cx="157" cy="250" r="2"/><circle cx="554" cy="640" r="1.5"/><circle cx="951" cy="120" r="2"/><circle cx="1348" cy="880" r="2.5"/>
+      <circle cx="205" cy="730" r="1.5"/><circle cx="602" cy="30" r="2"/><circle cx="999" cy="560" r="1.5"/><circle cx="1396" cy="310" r="2"/>
+      <circle cx="253" cy="1010" r="2.5"/><circle cx="650" cy="470" r="1.5"/><circle cx="1047" cy="840" r="2"/><circle cx="1444" cy="200" r="1.5"/>
+      <circle cx="301" cy="360" r="2"/><circle cx="698" cy="920" r="1.5"/><circle cx="1095" cy="260" r="2.5"/><circle cx="1492" cy="680" r="1.5"/>
+      <circle cx="349" cy="600" r="2"/><circle cx="746" cy="140" r="1.5"/><circle cx="1143" cy="1040" r="2"/><circle cx="1540" cy="420" r="2.5"/>
+      <circle cx="397" cy="60" r="1.5"/><circle cx="794" cy="540" r="2"/><circle cx="1191" cy="760" r="1.5"/><circle cx="22" cy="320" r="2"/>
+      <circle cx="1300" cy="960" r="2"/><circle cx="1520" cy="40" r="1.5"/><circle cx="130" cy="870" r="2.5"/><circle cx="1010" cy="400" r="1.5"/>
+    </g>
+    <!-- leader: 30+ chip left edge (980, 601) to the band's east edge at y 470 (965.4); length 131.8 -> dash 133 -->
+    <line id="b7-leader" class="b7-hide" x1="980" y1="601" x2="965.4" y2="470" stroke="#93a3b2" stroke-width="2" stroke-dasharray="133" stroke-dashoffset="133"/>
+  </svg>
+  <div class="b7-vig"></div>
+  <!-- HUD: fixed screen layer, never on the moving map -->
+  <div class="b7-glass b7-pill" id="b7-pitlab0">PITTSBURGH</div>
+  <div class="b7-glass b7-pill b7-hide" id="b7-pitlab">PITTSBURGH</div>
+  <div class="b7-glass b7-pill b7-hide" id="b7-erielab">ERIE, PA</div>
+  <div class="b7-glass b7-pill b7-hide" id="b7-ynglab">YOUNGSTOWN, OH</div>
+  <div id="b7-cap" class="b7-hide">NOAA NCEI · TOTAL SNOWFALL, NOV 22-30, 1950</div>
+  <div id="b7-plate" class="b7-hide">
+    <img id="b7-plateimg" src="media/a2/A2-S9_c2_ncei-snowfall-index-nov22-30-1950.png" alt=""
+      data-crop-ok="brief section 3: plate shows only the band region; the PNG legend (RSI 34.7, spent in A2-S11) and title are cropped out">
+  </div>
+  <div class="b7-glass b7-hide" id="b7-chip30"><div id="b7-big30">30+ IN</div></div>
+  <div class="b7-glass b7-hide" id="b7-card">
+    <div id="b7-st28">
+      <div class="b7-cbig" id="b7-big28">28+ IN</div>
+      <div class="b7-csub" id="b7-sub28">ERIE AND YOUNGSTOWN, EACH</div>
+    </div>
+    <div id="b7-st306" class="b7-hide">
+      <div class="b7-cbig" id="b7-big306">30.6 IN</div>
+      <div class="b7-csub" id="b7-sub306">YOUNGSTOWN · SNOWIEST NOVEMBER ON RECORD</div>
+    </div>
+  </div>
+  <div class="b7-src" id="b7-src">Source: NOAA NCEI; NWS Charleston WV</div>
+  <div class="b7-src" id="b7-credit">Basemap: Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#b7-";
+  const $ = function (n) { return document.getElementById("b7-" + n); };
+  const proj = function (lon, lat) { return [3841 * (lon + 97.576), -5585 * (lat - 46.6213)]; };
+  const PIT = proj(-79.9959, 40.4406), ERIE = proj(-80.0851, 42.1292), YNG = proj(-80.6495, 41.0998);
+  const DUR = 19.32;                                                          /* 18.92 + 0.40 */
+
+  /* camera: A2-P (s 0.08, PIT at 900,520) -> A2-B (s 0.032, PIT at 900,440), 0.84 to 2.84, expo.inOut */
+  const MOVE0 = 0.84, MOVE1 = 2.84;
+  const expo = gsap.parseEase("expo.inOut");
+  function logLerpScale(fromScale, toScale, t) {                              /* helpers.js logZoom */
+    return Math.exp(Math.log(fromScale) + (Math.log(toScale) - Math.log(fromScale)) * t);
+  }
+  const camEl = $("cam");
+  const pins = [[$("pit-at"), PIT], [$("erie-at"), ERIE], [$("yng-at"), YNG]];
+  function camAt(t) {
+    const u = t <= MOVE0 ? 0 : (t >= MOVE1 ? 1 : expo((t - MOVE0) / (MOVE1 - MOVE0)));
+    const s = logLerpScale(0.08, 0.032, u), px = 900, py = 520 + (440 - 520) * u;
+    const tx = PIT[0] - px / s, ty = PIT[1] - py / s;                          /* frame top-left, map units */
+    camEl.setAttribute("transform", "translate(" + (-tx * s).toFixed(2) + "," + (-ty * s).toFixed(2) + ") scale(" + s.toFixed(6) + ")");
+    for (let i = 0; i < pins.length; i++) {
+      const p = pins[i][1];
+      pins[i][0].setAttribute("transform", "translate(" + ((p[0] - tx) * s).toFixed(2) + "," + ((p[1] - ty) * s).toFixed(2) + ")");
+    }
+  }
+  camAt(0);
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to({ t: 0 }, { t: 1, duration: DUR, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
+
+  /* transforms start in set() at 0 (file contract) */
+  tl.set([P + "plate", P + "cap", P + "chip30", P + "card", P + "st28", P + "st306", P + "src", P + "credit"], { x: 0, y: 0 }, 0);
+  tl.set([P + "pitlab0", P + "pitlab", P + "erielab", P + "ynglab"], { x: 0, y: 0 }, 0);
+  tl.set([P + "pit", P + "erie", P + "yng"], { scale: 1, svgOrigin: "0 0", smoothOrigin: false }, 0);
+
+  /* snow: every flake falls 70-119 px/s for the whole comp, finite repeats */
+  Array.prototype.slice.call($("flakes").querySelectorAll("circle")).forEach(function (c, i) {
+    const v = 70 + (i * 13) % 50, cy0 = +c.getAttribute("cy");
+    const first = (1100 - cy0) / v, loop = 1120 / v;
+    const rep = Math.max(0, Math.ceil((DUR - first) / loop) - 1);
+    tl.fromTo(c, { attr: { cy: cy0 } }, { attr: { cy: 1100 }, duration: first, ease: "none" }, 0);
+    tl.fromTo(c, { attr: { cy: -20 } }, { attr: { cy: 1100 }, duration: loop, ease: "none", repeat: rep, immediateRender: false }, first);
+  });
+
+  /* PITTSBURGH @0.00: frame A2-P, pin + label on, flakes falling */
+  /* DEEPEST @0.84: label out before the camera moves; pull-back A2-P -> A2-B (camAt), 2.0 s, arrives 2.84; pin 16 -> 14 px */
+  tl.to(P + "pitlab0", { autoAlpha: 0, x: -12, duration: 0.3, ease: "power2.in" }, 0.84);
+  tl.fromTo(P + "pit", { scale: 1, svgOrigin: "0 0", smoothOrigin: false },
+    { scale: 0.875, svgOrigin: "0 0", smoothOrigin: false, duration: 2.0, ease: "expo.inOut" }, 0.84);
+
+  /* OVER @2.86: NCEI plate + caption slide in */
+  tl.fromTo([P + "plate", P + "cap"], { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 2.86);
+  /* 30 @3.02: 30+ IN chip in, leader draws */
+  tl.fromTo(P + "chip30", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.02);
+  tl.fromTo(P + "leader", { autoAlpha: 0, strokeDashoffset: 133 }, { autoAlpha: 1, strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 3.12);
+  /* camera settled: PITTSBURGH label returns at its A2-B spot */
+  tl.fromTo(P + "pitlab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 3.60);
+
+  /* BAND @4.28: reveal starts at the north tip, down to about lat 41.0 */
+  tl.to(P + "reveal-r", { attr: { height: 5595 }, duration: 1.1, ease: "power2.out" }, 4.28);
+  /* ERIE @5.44: Erie pin pops, label in */
+  tl.fromTo(P + "erie", { autoAlpha: 0, scale: 0, svgOrigin: "0 0", smoothOrigin: false },
+    { autoAlpha: 1, scale: 1, svgOrigin: "0 0", smoothOrigin: false, duration: 0.45, ease: "back.out(2)" }, 5.44);
+  tl.fromTo(P + "erielab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 5.54);
+
+  /* SOUTH @8.02: reveal sweeps south, reaching the south tip at VIRGINIA @9.40 */
+  tl.to(P + "reveal-r", { attr: { height: 19000 }, duration: 1.38, ease: "power2.inOut" }, 8.02);
+
+  /* ERIE @10.54: Erie pulse */
+  tl.fromTo(P + "erie-pulse", { opacity: 0.9, attr: { r: 7 } }, { opacity: 0, attr: { r: 30 }, duration: 1.0, ease: "power2.out", immediateRender: false }, 10.54);
+  /* YOUNGSTOWN @10.90: pin + label in */
+  tl.fromTo(P + "yng", { autoAlpha: 0, scale: 0, svgOrigin: "0 0", smoothOrigin: false },
+    { autoAlpha: 1, scale: 1, svgOrigin: "0 0", smoothOrigin: false, duration: 0.45, ease: "back.out(2)" }, 10.90);
+  tl.fromTo(P + "ynglab", { autoAlpha: 0, x: 12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 11.00);
+
+  /* 28 @12.82: one card for both cities */
+  tl.fromTo(P + "card", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 12.82);
+  /* YOUNGSTOWN @13.76: Youngstown pulse */
+  tl.fromTo(P + "yng-pulse", { opacity: 0.9, attr: { r: 7 } }, { opacity: 0, attr: { r: 30 }, duration: 1.0, ease: "power2.out", immediateRender: false }, 13.76);
+  /* 30.6 @15.40: same card swaps to Youngstown's November total */
+  tl.to(P + "st28", { autoAlpha: 0, y: -20, duration: 0.35, ease: "power3.in" }, 15.40);
+  tl.fromTo(P + "st306", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 15.50);
+
+  /* 15.40 to 17.90: one shimmer pass north to south along the band */
+  tl.fromTo(P + "shim", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: "none" }, 15.40);
+  tl.fromTo(P + "shim-r", { attr: { y: 24500 } }, { attr: { y: 44800 }, duration: 2.5, ease: "power1.inOut" }, 15.40);
+  tl.to(P + "shim", { autoAlpha: 0, duration: 0.2, ease: "none" }, 17.70);
+
+  /* EXIT @18.40: everything but the band and the three dots leaves; last frame = bare A2-B for g-a2-8 */
+  tl.to([P + "plate", P + "cap", P + "chip30", P + "pitlab", P + "erielab"], { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 18.40);
+  tl.to([P + "card", P + "ynglab", P + "src", P + "credit"], { x: -60, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 18.40);
+  tl.to([P + "leader", P + "flakes"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 18.40);
+
+  window.__timelines["g-a2-7-band"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
