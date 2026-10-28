@@ -50,7 +50,10 @@
   .a41-bold { font-family:Arial, sans-serif; font-weight:700; line-height:1; }
   /* Chicago chip, left of the pin (640,178): box about x 200-566, y 108-248. Right edge moved from the brief's 610 to
      566 so the box clears the CHICAGO label (centred on 640, about x 579-701, y 135-154). */
-  #a41-chichip { right:74px; top:-70px; }
+  /* The box grows with its lines: the hidden lines keep their layout space, so a clip hides the box below the lines
+     due so far. Heights (line-height 1): 1+10 + 58 (-2°F) + 10+22 (TIES) + 8+22 (NOV 24) + 10+1 = 142 px;
+     inset 62 shows only -2°F, 30 adds TIES, 0 the whole box. */
+  #a41-chichip { right:74px; top:-70px; clip-path:inset(0px 0px 62px 0px round 14px); }
   #a41-chi2 { display:block; font-size:58px; color:#7fb2e5; }
   #a41-chities { display:block; margin-top:10px; font-size:22px; letter-spacing:3px; color:#dfe7ee; }
   #a41-chinov { display:block; margin-top:8px; font-size:22px; letter-spacing:3px; color:#93a3b2; }
@@ -329,8 +332,10 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "chichip", { autoAlpha: 0, scale: 0.9, transformOrigin: "right center" }, { autoAlpha: 1, scale: 1, transformOrigin: "right center", duration: 0.4, ease: "back.out(1.4)" }, S1 + 2.42);
   /* TIED @3.30 */
   tl.fromTo(P + "chities", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S1 + 3.30);
+  tl.fromTo(P + "chichip", { clipPath: "inset(0px 0px 62px 0px round 14px)" }, { clipPath: "inset(0px 0px 30px 0px round 14px)", duration: 0.35, ease: "power3.out", immediateRender: false }, S1 + 3.30);
   /* DAY AFTER THANKSGIVING @7.70 */
   tl.fromTo(P + "chinov", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S1 + 7.70);
+  tl.fromTo(P + "chichip", { clipPath: "inset(0px 0px 30px 0px round 14px)" }, { clipPath: "inset(0px 0px 0px 0px round 14px)", duration: 0.35, ease: "power3.out", immediateRender: false }, S1 + 7.70);
   /* FROM THERE @9.16: edge slides 41.0 -> 38.6 by 12.20 (edgeLat), front line bright while it moves */
   tl.to(P + "front", { opacity: 0.9, duration: 0.4, ease: "power2.out" }, S1 + 9.16);
   tl.to(P + "front", { opacity: 0.6, duration: 0.5, ease: "power2.inOut" }, S1 + 12.20);
