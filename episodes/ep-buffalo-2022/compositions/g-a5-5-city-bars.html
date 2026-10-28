@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  #cb-root { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .cb-ground { position:absolute; left:0; top:0; width:1920px; height:1080px; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .cb-fl { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .cb-eyebrow { position:absolute; left:96px; top:96px; font:700 22px/26px Arial, sans-serif; letter-spacing:6px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+  .cb-head { position:absolute; left:96px; top:132px; font:900 52px/64px 'Arial Black', Arial, sans-serif; color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  .cb-lab { position:absolute; left:160px; font:700 26px/32px Arial, sans-serif; letter-spacing:4px; white-space:nowrap; opacity:0; visibility:hidden; }
+  .cb-track { position:absolute; left:160px; width:1100px; height:80px; box-sizing:border-box; border:1px solid rgba(255,255,255,.14); border-radius:6px; opacity:0; visibility:hidden; }
+  .cb-bar { position:absolute; left:160px; height:80px; border-radius:6px; opacity:0; visibility:hidden; }
+  .cb-val { position:absolute; font:900 84px/100px 'Arial Black', Arial, sans-serif; white-space:nowrap; opacity:0; visibility:hidden; }
+  #cb-lab77 { top:340px; color:#93a3b2; }
+  #cb-track77 { top:380px; }
+  #cb-bar77 { top:380px; width:345.7px; background:#5a768f; }
+  #cb-val77 { left:530px; top:370px; color:#dfe7ee; }
+  #cb-lab22 { top:540px; color:#f2f5f8; }
+  #cb-track22 { top:580px; }
+  #cb-bar22 { top:580px; width:1100px; background:#c0392b; }
+  #cb-val22 { left:1290px; top:570px; color:#f2f5f8; }
+  #cb-chip { position:absolute; right:96px; top:230px; box-sizing:border-box; padding:20px 28px; background:rgba(21,32,43,.92); border:1px solid rgba(255,255,255,.14); border-radius:20px; opacity:0; visibility:hidden; }
+  .cb-c1 { font:900 38px/44px 'Arial Black', Arial, sans-serif; color:#dfe7ee; white-space:nowrap; }
+  .cb-c2 { margin-top:8px; font:700 22px/28px Arial, sans-serif; letter-spacing:3px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+  .cb-src { position:absolute; left:96px; bottom:54px; font:400 19px/24px Arial, sans-serif; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="cb-root" data-composition-id="g-a5-5-city-bars" data-width="1920" data-height="1080">
+  <div class="cb-ground" id="cb-ground"></div>
+  <div class="cb-fl" id="cb-fl-title">
+    <div class="cb-eyebrow" id="cb-eyebrow">CITY OF BUFFALO ONLY</div>
+    <div class="cb-head" id="cb-head">TWO BLIZZARDS, ONE CITY</div>
+  </div>
+  <div class="cb-fl" id="cb-fl-77">
+    <div class="cb-lab" id="cb-lab77">BUFFALO 1977</div>
+    <div class="cb-track" id="cb-track77"></div>
+    <div class="cb-bar" id="cb-bar77"></div>
+    <div class="cb-val" id="cb-val77">11</div>
+  </div>
+  <div class="cb-fl" id="cb-fl-22">
+    <div class="cb-lab" id="cb-lab22">BUFFALO 2022</div>
+    <div class="cb-track" id="cb-track22"></div>
+    <div class="cb-bar" id="cb-bar22"></div>
+    <div class="cb-val" id="cb-val22">35</div>
+  </div>
+  <div class="cb-fl" id="cb-fl-chip">
+    <div id="cb-chip">
+      <div class="cb-c1" id="cb-c1">1977 · 29 (NWS)</div>
+      <div class="cb-c2" id="cb-c2">23 WESTERN NY (ARMY CORPS)</div>
+    </div>
+  </div>
+  <div class="cb-fl" id="cb-fl-src">
+    <div class="cb-src" id="cb-srcA">US Army Corps of Engineers report, via Wikipedia; NWS tally</div>
+    <div class="cb-src" id="cb-srcB">Poloncarz via WIVB</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const $ = function(id) { return "#cb-" + id; };
+
+  /* bars: scaleX from the left edge; origin set at 0 on both bars */
+  tl.set([$("bar77"), $("bar22")], { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* 0.00 "On the day after Christmas," tracks fade in 0.0-0.6 */
+  tl.fromTo([$("track77"), $("track22")], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power2.out" }, 0);
+
+  /* ambient float, staggered, finite (5 x 3.0 s = 15 s) */
+  tl.to($("fl-title"), { y: -3, duration: 3, ease: "sine.inOut", yoyo: true, repeat: 4 }, 0);
+  tl.to($("fl-77"), { y: -3, duration: 3, ease: "sine.inOut", yoyo: true, repeat: 4 }, 0.4);
+  tl.to($("fl-22"), { y: -3, duration: 3, ease: "sine.inOut", yoyo: true, repeat: 4 }, 0.8);
+  tl.to($("fl-chip"), { y: -3, duration: 3, ease: "sine.inOut", yoyo: true, repeat: 4 }, 1.2);
+  tl.to($("fl-src"), { y: -3, duration: 3, ease: "sine.inOut", yoyo: true, repeat: 4 }, 1.6);
+
+  /* 0.66 "Christmas," eyebrow; 0.90 headline */
+  tl.fromTo($("eyebrow"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.66);
+  tl.fromTo($("head"), { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.9);
+
+  /* 3.42 "blizzard of 1977." label, 3.88 bar, 4.40 value 11 + source A */
+  tl.fromTo($("lab77"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.42);
+  tl.set($("bar77"), { autoAlpha: 1 }, 3.88);
+  tl.to($("bar77"), { scaleX: 1, duration: 0.6, ease: "power3.out" }, 3.88);
+  tl.fromTo($("val77"), { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35 }, 4.4);
+  tl.fromTo($("srcA"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.4);
+
+  /* 6.90 "29 lives." chip in; 7.30 line 2 */
+  tl.fromTo($("chip"), { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 6.9);
+  tl.fromTo($("c2"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.3);
+
+  /* 8.46 "He turned out to be right." chip settles to 80 % */
+  tl.to($("chip"), { autoAlpha: 0.8, duration: 0.5, ease: "sine.inOut" }, 8.46);
+
+  /* 10.04 "2022," label */
+  tl.fromTo($("lab22"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.04);
+
+  /* 11.38 "the city of Buffalo alone" eyebrow pulse */
+  tl.set($("eyebrow"), { transformOrigin: "left center" }, 11.3);
+  tl.to($("eyebrow"), { scale: 1.06, duration: 0.25, ease: "sine.out" }, 11.38);
+  tl.to($("eyebrow"), { scale: 1, duration: 0.25, ease: "sine.in" }, 11.63);
+
+  /* 12.56 "lost 35." bar grows, count-up lands 13.31, source A out / B in */
+  tl.set($("bar22"), { autoAlpha: 1 }, 12.56);
+  tl.to($("bar22"), { scaleX: 1, duration: 0.75, ease: "power3.out" }, 12.56);
+  tl.set($("val22"), { autoAlpha: 1 }, 12.56);
+  const cnt = { v: 1 };
+  tl.fromTo(cnt, { v: 1 }, { v: 35, duration: 0.75, ease: "power4.out", onUpdate: function() {
+      const el = document.getElementById("cb-val22"); if (el) el.textContent = Math.round(cnt.v);
+  } }, 12.56);
+  tl.to($("srcA"), { autoAlpha: 0, y: -8, duration: 0.3, ease: "power2.in" }, 12.56);
+  tl.fromTo($("srcB"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.56);
+
+  /* 14.15 exit: everything but the ground (35 readable 13.31-14.15) */
+  tl.to([$("eyebrow"), $("head"), $("lab77"), $("track77"), $("bar77"), $("val77"),
+         $("lab22"), $("track22"), $("bar22"), $("val22"), $("chip"), $("srcB")],
+        { autoAlpha: 0, y: -10, duration: 0.55, ease: "power3.in", stagger: 0.02 }, 14.15);
+
+  window.__timelines["g-a5-5-city-bars"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
