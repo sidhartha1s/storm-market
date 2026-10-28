@@ -240,7 +240,7 @@ window.__timelines = window.__timelines || {};
   [3, 6, 9].forEach((i, n) => tl.to(eIn[i], { y: -2, duration: 1, ease: "sine.inOut", yoyo: true, repeat: 9, svgOrigin: (E_X[i] + 55) + " 656" }, 7.3 + 0.25 * n));
 
   /* "froze" @8.36: frost rings + sheen on all 10 engines */
-  frost.forEach((el, i) => tl.fromTo(el, { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%", duration: 0.4, ease: "back.out(1.4)" }, 8.36 + 0.03 * i));
+  frost.forEach((el, i) => tl.fromTo(el, { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, transformBox: "fill-box", transformOrigin: "50% 50%", duration: 0.4, ease: "back.out(1.4)" }, 8.36 + 0.03 * i));
 
   /* "most" @11.06: chip in, MOST punches */
   tl.fromTo("#sf-chip", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 11.06);
