@@ -19,6 +19,8 @@
   /* diagram labels: HUD layer, never ride the plan push */
   .ga64-lab { position:absolute; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700;
     font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:3px; }
+  /* bay and harbour labels sit over the tan fill blocks once they fill: dark backing so they read (were grey on tan) */
+  #g-a6-4-grade-lbay, #g-a6-4-grade-lharb { padding:3px 12px; border-radius:8px; background:rgba(10,16,24,0.84); color:#dfe7ee; }
   #g-a6-4-grade-lbay { left:480px; top:270px; }
   #g-a6-4-grade-lgulf { left:400px; top:872px; }
   #g-a6-4-grade-lharb { right:880px; top:290px; opacity:0; visibility:hidden; } /* right edge at x 1040 */
@@ -56,8 +58,8 @@
         <g id="g-a6-4-grade-waves" fill="none" stroke="#5a768f" stroke-width="2" stroke-dasharray="26 22" opacity="0.35">
           <path d="M40,262 L1100,262"/>
           <path d="M40,312 L1100,312"/>
-          <path d="M40,900 L1100,900"/>
-          <path d="M40,918 L1100,918"/>
+          <path d="M40,910 L1100,910"/>
+          <path d="M40,926 L1100,926"/>
         </g>
         <!-- island band, WSW to ENE, city at the east end -->
         <path fill="#15202b" stroke="#93a3b2" stroke-width="2" stroke-linejoin="round"
@@ -252,8 +254,7 @@ window.__timelines = window.__timelines || {};
 
   /* CHURCH @16.84: house cross-fades to the church (0.5 s); the bracket goes with it */
   tl.to([P+"house", P+"jacks", P+"bracket"], {autoAlpha: 0, duration: 0.5, ease: "power1.inOut"}, 16.84);
-  tl.fromTo(P+"church", {autoAlpha: 0}, {autoAlpha: 1, duration: 0.5, ease: "power1.inOut"}, 16.84);
-  tl.to(P+"cbody", {y: -4, duration: 1.3, ease: "sine.inOut", yoyo: true, repeat: 1}, 16.92);
+  tl.fromTo([P+"church", P+"cjacks"], {autoAlpha: 0}, {autoAlpha: 1, duration: 0.5, ease: "power1.inOut"}, 16.84);
 
   /* 3,000 @17.70: C4 in, floats to the end */
   tl.fromTo(P+"c4", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 17.7);
@@ -263,5 +264,10 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"church", {y: -30, duration: 1.58, ease: "none"}, 19.52);
   tl.to(CJACKS, {scaleY: 2, duration: 1.58, ease: "none"}, 19.52);
   tl.fromTo(P+"win", {opacity: 0.4}, {opacity: 0.8, duration: 1.2, ease: "sine.inOut"}, 19.52);
+
+  /* exit: cut to g-a6-5, root fades to 0 over the last 0.4 s (21.06 to 21.46) */
+  tl.to(P+"root", {autoAlpha: 0, duration: 0.4, ease: "power1.in"}, 21.06);
+  window.__timelines["g-a6-4-grade"] = tl;
+})();
 </script>
 </template>
