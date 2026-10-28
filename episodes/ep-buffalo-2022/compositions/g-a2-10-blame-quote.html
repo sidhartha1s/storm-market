@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-10-blame-quote (A2-S9, standard): popfig "5 DAYS LATER", beige quote card with Poloncarz lower third, then the review finding "INADEQUATELY CONVEYED".
+  Full-frame designed ground, no footage. Comp duration 18.00 s. Cue times are seconds from the START of A2-S9 (audio/a2-s9.words.json).
+  Brief: briefs/a2/g-a2-10-blame-quote.md. Font file fonts/AbrilFatface-Regular.ttf is vendored under the episode root.
+  The finding is shown WITHOUT quote marks (AP paraphrase of the NYU Wagner review) and never shares a frame with the Poloncarz quote.
+-->
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-a2-10-blame-quote-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  /* popfig: centred (960,470), one line */
+  .bq-popfig { position:absolute; left:0; top:395px; width:1920px; height:150px; line-height:150px; text-align:center; white-space:nowrap;
+    font-family:'AbrilFig', Georgia, serif; font-size:150px; color:#d0121f; letter-spacing:0.04em; transform-origin:50% 50%;
+    opacity:0; visibility:hidden;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+
+  /* beige cite card x 260..1660, y 250..640 */
+  .bq-card { position:absolute; inset:auto; left:260px; top:250px; width:1400px; height:390px; border-radius:14px;
+    background:rgba(232,222,200,0.90); box-shadow:0 18px 60px rgba(0,0,0,0.45); opacity:0; visibility:hidden; }
+  .bq-q { position:absolute; left:80px; height:90px; line-height:90px; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:60px; color:#2a2622; }
+  #bq-q1 { top:70px; }   /* glyph box y 330..400 */
+  #bq-q2 { top:160px; }  /* glyph box y 420..490 */
+  #bq-bm { position:relative; display:inline-block; }
+  #bq-rule { position:absolute; left:0; right:0; bottom:-4px; height:4px; background:#8e2020; opacity:0; visibility:hidden; transform-origin:left center; }
+
+  /* lower third (glass) */
+  .bq-lt { position:absolute; inset:auto; left:110px; bottom:110px; padding:18px 30px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .bq-lt-name { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:58px; color:#f2f5f8; letter-spacing:1px; }
+  .bq-lt-date { display:block; margin-top:6px; font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:32px; color:#dfe7ee; letter-spacing:2px; }
+
+  /* finding, on the ground */
+  .bq-find { position:absolute; left:0; top:370px; width:1920px; height:200px; }
+  .bq-eyebrow { position:absolute; left:0; top:10px; width:1920px; height:26px; line-height:26px; text-align:center; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:700; font-size:22px; color:#93a3b2; letter-spacing:6px; opacity:0; visibility:hidden; }
+  .bq-fwrap { position:absolute; left:0; right:0; top:60px; display:table; margin:0 auto; width:max-content; }
+  .bq-head { display:block; height:90px; line-height:90px; white-space:nowrap; text-align:center;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #bq-ul { position:absolute; left:0; right:0; top:110px; height:4px; background:#c0392b; opacity:0; visibility:hidden; transform-origin:left center; }
+
+  /* source lines, one at a time */
+  .bq-src { position:absolute; inset:auto; left:96px; bottom:54px; font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:23px;
+    color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-10-blame-quote-root" data-composition-id="g-a2-10-blame-quote" data-width="1920" data-height="1080">
+  <div class="bq-popfig" id="bq-popfig">5 DAYS LATER</div>
+
+  <div class="bq-card" id="bq-card">
+    <div class="bq-q" id="bq-q1">&ldquo;If anyone is to be blamed,</div>
+    <div class="bq-q" id="bq-q2">you can <span id="bq-bm">blame me<span id="bq-rule"></span></span>.&rdquo;</div>
+  </div>
+  <div class="bq-lt" id="bq-lt"><span class="bq-lt-name">MARK POLONCARZ</span><span class="bq-lt-date">28 DEC 2022</span></div>
+  <div class="bq-src" id="bq-src1">NPR via WAMC, 28 Dec 2022</div>
+
+  <div class="bq-find" id="bq-find">
+    <div class="bq-eyebrow" id="bq-eyebrow">CITY OF BUFFALO REVIEW &middot; THE TRAVEL BANS</div>
+    <div class="bq-fwrap" id="bq-fwrap"><span class="bq-head" id="bq-head">INADEQUATELY CONVEYED</span><span id="bq-ul"></span></div>
+  </div>
+  <div class="bq-src" id="bq-src2">NYU Wagner review for the City of Buffalo, via AP, 2 Jun 2023</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const B = "#bq-";
+  tl.set([B+"popfig",B+"card",B+"q1",B+"q2",B+"rule",B+"lt",B+"src1",B+"src2",B+"eyebrow",B+"head",B+"ul"], {autoAlpha:0}, 0);
+  tl.set([B+"rule",B+"ul"], {scaleX:0}, 0);
+
+  /* "Five" @0.00 / "days" @0.24: popfig punches in */
+  tl.fromTo(B+"popfig", {scale:1.3, autoAlpha:0}, {scale:1, autoAlpha:1, duration:0.45, ease:"power4.out"}, 0.05);
+  tl.to(B+"popfig", {scale:1.03, duration:2.5, ease:"none"}, 0.5);
+  tl.to(B+"popfig", {autoAlpha:0, scale:0.96, duration:0.4, ease:"power2.in"}, 3.0);
+
+  /* "Paul" @3.52: card, lower third, WAMC source */
+  tl.fromTo(B+"card", {y:40, autoAlpha:0}, {y:0, autoAlpha:1, duration:0.5, ease:"power3.out"}, 3.52);
+  tl.fromTo(B+"lt", {x:-60, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.5, ease:"power3.out"}, 3.52);
+  tl.fromTo(B+"src1", {y:10, autoAlpha:0}, {y:0, autoAlpha:1, duration:0.5, ease:"power3.out"}, 3.52);
+  /* card float after its entrance, ends where the exit starts */
+  tl.to(B+"card", {y:-4, duration:2.3, ease:"sine.inOut", yoyo:true, repeat:1}, 4.1);
+
+  /* "If" @6.16 */
+  tl.fromTo(B+"q1", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 6.16);
+  /* "you" @7.68 */
+  tl.fromTo(B+"q2", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 7.68);
+  /* "blame" @8.00 */
+  tl.set(B+"rule", {autoAlpha:1}, 8.0);
+  tl.to(B+"rule", {scaleX:1, duration:0.4, ease:"power2.out"}, 8.0);
+
+  /* "The city's" @8.90: card, lower third, source out (starts 8.70 so it lands on the word) */
+  tl.to(B+"card", {x:980, autoAlpha:0, duration:0.5, ease:"power3.in"}, 8.7);
+  tl.to(B+"lt", {x:-80, autoAlpha:0, duration:0.5, ease:"power3.in"}, 8.7);
+  tl.to(B+"src1", {autoAlpha:0, duration:0.4, ease:"power2.in"}, 8.7);
+
+  /* "review" @9.36: eyebrow, NYU source */
+  tl.fromTo(B+"eyebrow", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 9.36);
+  tl.fromTo(B+"src2", {y:10, autoAlpha:0}, {y:0, autoAlpha:1, duration:0.5, ease:"power3.out"}, 9.36);
+  /* "inadequately" @11.10 */
+  tl.fromTo(B+"head", {autoAlpha:0, scale:1.12}, {autoAlpha:1, scale:1, duration:0.45, ease:"power4.out"}, 11.1);
+  /* "conveyed." @11.80 */
+  tl.set(B+"ul", {autoAlpha:1}, 11.8);
+  tl.to(B+"ul", {scaleX:1, duration:0.5, ease:"power2.out"}, 11.8);
+  /* finding float 12.3 to 17.4 */
+  tl.to(B+"find", {y:-4, duration:2.55, ease:"sine.inOut", yoyo:true, repeat:1}, 12.3);
+  /* "unaware" @15.32, "ignored" @16.62: underline pulse */
+  tl.to(B+"ul", {opacity:0.5, duration:0.2, ease:"sine.inOut"}, 15.32);
+  tl.to(B+"ul", {opacity:1, duration:0.2, ease:"sine.inOut"}, 15.52);
+  tl.to(B+"ul", {opacity:0.5, duration:0.2, ease:"sine.inOut"}, 16.62);
+  tl.to(B+"ul", {opacity:1, duration:0.2, ease:"sine.inOut"}, 16.82);
+
+  /* exit fade-through after "them." @16.90 */
+  tl.to([B+"find",B+"src2"], {autoAlpha:0, y:-16, duration:0.6, ease:"power2.in"}, 17.4);
+
+  window.__timelines["g-a2-10-blame-quote"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
