@@ -44,9 +44,18 @@
 <div id="a3g-root" data-composition-id="g-a3-5-gradient" data-width="1920" data-height="1080" data-duration="15.88">
   <svg class="a3g-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <linearGradient id="a3g-landgrad" gradientUnits="userSpaceOnUse" x1="0" y1="-50000" x2="0" y2="88000">
+      <linearGradient id="a3g-landgrad" gradientUnits="userSpaceOnUse" x1="0" y1="-50000" x2="0" y2="65000">
         <stop offset="0" stop-color="#15202b"/><stop offset="1" stop-color="#0b1016"/>
       </linearGradient>
+      <!-- data edge fades as g-a3-4 (screen px): east cut at x 1159, south cut at y 897 -->
+      <linearGradient id="a3g-fadex" gradientUnits="userSpaceOnUse" x1="1105" y1="0" x2="1159" y2="0">
+        <stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/>
+      </linearGradient>
+      <linearGradient id="a3g-fadey" gradientUnits="userSpaceOnUse" x1="0" y1="852" x2="0" y2="897">
+        <stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#000"/>
+      </linearGradient>
+      <mask id="a3g-maskx" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><rect x="0" y="0" width="1920" height="1080" fill="url(#a3g-fadex)"/></mask>
+      <mask id="a3g-masky" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><rect x="0" y="0" width="1920" height="1080" fill="url(#a3g-fadey)"/></mask>
       <radialGradient id="a3g-domegrad">
         <stop offset="0" stop-color="#5a768f" stop-opacity="0.45"/><stop offset="1" stop-color="#5a768f" stop-opacity="0"/>
       </radialGradient>
