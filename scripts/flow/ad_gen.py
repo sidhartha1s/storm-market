@@ -88,8 +88,13 @@ def video_tiles(page):
     vids = page.get_by_text("Videos", exact=True).first
     box = vids.bounding_box() if vids.is_visible() else None
     if box and box["x"] >= 0:  # the nav rail collapses when the agent panel widens; the Videos filter stays applied
-        vids.click()
-        page.wait_for_timeout(3000)
+        # a failed click never ends the job: the filter is already applied. 29 Oct 26 01:21 this click timed out (30 s)
+        # in the sluggish hidden window and killed the poll after 15 credits were spent.
+        try:
+            vids.click(timeout=5000)
+            page.wait_for_timeout(3000)
+        except Exception as e:
+            log("Videos filter click skipped", repr(e)[:80])
     raw = page.evaluate("""() => [...document.querySelectorAll('img,video')].map(e => { const r = e.getBoundingClientRect();
         return [Math.round(r.left + r.width / 2), Math.round(r.top + r.height / 2), (e.currentSrc || e.src || '').split('?')[0], r.left, r.right, r.width]; })""")
     return grid_tiles(raw)
@@ -121,6 +126,36 @@ def clips_above(tiles, known):
     # for about an hour; a token can also vanish a minute later (29 Oct 26).
     first = next((i for i, t in enumerate(tiles) if t[2] in known), None)
     return tiles[:first] if first is not None else []
+
+
+def thread_clips(panel_html):
+    # Clip ids the Flow agent posted in its own chat thread, oldest first: every <img>/<video> with a media id in its
+    # src inside an agent message. This is where landing is decided. Four misses in three weeks (9, 23, 23, 28-29 Oct 26)
+    # all came from reading the shared, virtualised Videos grid, whose tile ids change form; the thread showed the
+    # finished clip under "waiting in the queue due to high demand" while the driver read 0 (owner, 29 Oct 26 01:09).
+    # The user's own bubble is skipped: it holds the start-frame and ingredient chips.
+    ids = []
+    for row in re.split(r'(?=<div[^>]*\bclass="[^"]*\bmessage-row\b)', panel_html):
+        head = row[:row.find(">") + 1]
+        if "message-row" not in head or "agent-row" not in head:
+            continue
+        for src in re.findall(r'<(?:img|video|source)\b[^>]*?\bsrc="([^"]+)"', row):
+            # the host varies (flow-content.google, storage.googleapis.com/ai-sandbox-videofx, flow.google.com/asb): the id stays
+            m = re.search(r"/(?:image|video)/([0-9a-f]{8}-[0-9a-f-]{27})|/asb/([\w-]+)", src)
+            if m and (m.group(1) or m.group(2)) not in ids:
+                ids.append(m.group(1) or m.group(2))
+    return ids
+
+
+def landed(thread, grid, target):
+    # (clip ids to fetch, [FALLBACK] note or "") from this job's thread ids and the grid set-diff tiles. The thread
+    # decides; the grid is a cross-check, and the source only when the thread falls short of the target.
+    # shortcut: the thread is the LAST approved job's only (one session per job), so a multi-job run lands through
+    # the grid with a [FALLBACK] line; the runner (run_paul_jobs.sh) already sends one job per run.
+    gids = [t[2] for t in grid]
+    take = thread if len(thread) >= target or len(gids) < target else gids
+    note = "" if len(gids) == len(thread) else         f"[FALLBACK] thread shows {len(thread)} new clip(s), grid {len(gids)}: going by the {'thread' if take is thread else 'grid'}"
+    return take[:target], note
 
 
 def verdict(path):
@@ -155,6 +190,49 @@ def take_lock():
             sys.exit(f"another Flow driver is running (pid {pid}); not starting, nothing spent")
     open(lock, "w").write(str(os.getpid()))
     return lock
+
+
+def panel_html(page):
+    return page.evaluate("() => document.querySelector('flow-agent-panel')?.outerHTML || ''")
+
+
+def hard_check(page, name):
+    # 15 min after the send with no clip: evidence of what the tab shows, taken without a new tab, focus or reload.
+    # A CDP Page.captureScreenshot runs in a node child with a timeout (Playwright's call can hang on the unpainted
+    # hidden window, 12 Oct 26); if it fails, the page text and the agent panel are saved instead.
+    import subprocess
+    png = os.path.join(OUT, f"drv-{name}-15min.png")
+    js = ("const [port, out, url] = process.argv.slice(1); const t = (await (await fetch(`http://127.0.0.1:${port}/json`)).json())"
+          ".find(t => t.type === 'page' && t.url === url) || process.exit(3); const ws = new WebSocket(t.webSocketDebuggerUrl);"
+          "ws.onopen = () => ws.send(JSON.stringify({id: 1, method: 'Page.captureScreenshot', params: {format: 'png'}}));"
+          "ws.onmessage = m => { const d = JSON.parse(m.data); if (d.id === 1) { if (!d.result) process.exit(4);"
+          "require('fs').writeFileSync(out, Buffer.from(d.result.data, 'base64')); process.exit(0); } };")
+    try:
+        subprocess.run(["node", "--input-type=commonjs", "-e", f"(async () => {{ {js} }})()", "9333", png, page.url], timeout=30,
+                       check=True, capture_output=True, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+        log("15 min hard check: screenshot", png)
+    except Exception as e:
+        txt = os.path.join(OUT, f"drv-{name}-15min.txt")
+        with open(txt, "w", encoding="utf8") as f:
+            f.write(page.evaluate("() => document.body.innerText") + "\n\n===== agent panel =====\n" + panel_html(page))
+        log("15 min hard check: screenshot failed", repr(e)[:80], "; page text and panel saved", txt)
+
+
+def open_clip(page, clip):
+    # Open a clip for download by its id: the thread's thumbnail or the grid tile, whichever element carries the id
+    # (the agent panel first). Returns False when no element carries it.
+    js = """(id) => { const all = [...document.querySelectorAll('img,video')].filter(e => (e.currentSrc || e.src || '').includes(id));
+        const e = all.find(e => e.closest('flow-agent-panel')) || all.find(e => e.getBoundingClientRect().width > 300);
+        if (!e) return null; e.scrollIntoView({block: 'center'}); const r = e.getBoundingClientRect();
+        return [Math.round(r.left + r.width / 2), Math.round(r.top + r.height / 2)]; }"""
+    pos = page.evaluate(js, clip)
+    if not pos:
+        return False
+    page.wait_for_timeout(1500)
+    # read the position again after the scroll: positions taken before go stale once a tile was opened (12 Oct 26)
+    page.mouse.click(*page.evaluate(js, clip))
+    page.wait_for_timeout(4000)
+    return True
 
 
 def failed_cards(page):
@@ -278,7 +356,9 @@ with sync_playwright() as p:
                     break
                 continue
             refused = 0
+            pre_thread = set(thread_clips(panel_html(page)))  # media already in this thread is never the new clip
             enabled_approves(page)[-1].click()
+            sent_at = time.time()
             spent += expect
             approved += 1
             open(DONE, "a", encoding="utf8").write(job["name"] + "\n")
@@ -289,6 +369,7 @@ with sync_playwright() as p:
         target = TOP or (1 if mode == "--after" else approved * CFG["count"])
         end = time.time() + 1500
         new = []
+        checked = False
         # poll the open page; reloading every minute got the profile logged out (5 Oct 26). Every 5th empty poll the grid
         # is opened afresh: Buffalo ins-paul-1 (28 Oct 26) polled 0 for 21 min in send mode, then an --after run that
         # opened the project grid found the clip on its first read.
@@ -299,31 +380,39 @@ with sync_playwright() as p:
                 page.goto(PROJECT, wait_until="domcontentloaded")
                 page.wait_for_timeout(10000)
             tiles = video_tiles(page)
-            new = tiles[:TOP] if TOP else clips_above(tiles, known)
-            log(time.strftime("%H:%M:%S"), "new clips", len(new), "target", target)
+            grid = tiles[:TOP] if TOP else clips_above(tiles, known)
+            if approved:  # this run's own thread decides; --after and --download-top have no thread of their own
+                thread = [c for c in thread_clips(panel_html(page)) if c not in pre_thread]
+                new, note = landed(thread, grid, target)
+                log(time.strftime("%H:%M:%S"), "new clips: thread", len(thread), "grid", len(grid), "target", target)
+                if note:
+                    log(note)
+            else:
+                new = [t[2] for t in grid]
+                log(time.strftime("%H:%M:%S"), "new clips", len(new), "target", target)
             if len(new) >= target:
                 break
+            if approved and not checked and time.time() - sent_at > 900:
+                checked = True
+                hard_check(page, job["name"])
             if failed_cards(page) > fails_before:  # stop waiting: nothing will land for this shot
                 why = [l.strip() for l in page.evaluate("() => document.body.innerText").splitlines() if l.strip().startswith("Unable")]
                 log("FAILED in Flow, refunded by Flow:", (why or ["no reason shown"])[0][:200])
                 break
             page.wait_for_timeout(60000)
         shot(page, "grid")
-        for i, (x, y, clip) in enumerate(new[:target]):
+        for i, clip in enumerate(new[:target]):
             log("opening", clip)
-            # find the tile again by its clip id and scroll it into view: the positions taken before the loop go stale
-            # once a tile has been opened and closed, and the second download then clicked beside its tile (12 Oct 26)
-            pos = page.evaluate("""(id) => { const e = [...document.querySelectorAll('img,video')].find(e => (e.currentSrc || e.src || '').includes(id) && e.getBoundingClientRect().width > 300);
-                if (!e) return null; e.scrollIntoView({block: 'center'}); const r = e.getBoundingClientRect();
-                return [Math.round(r.left + r.width / 2), Math.round(r.top + r.height / 2)]; }""", clip)
-            if not pos:
-                log("tile not in the grid, skipped", clip)
+            if not open_clip(page, clip):
+                log("clip not on the page, skipped", clip)
                 continue
-            page.wait_for_timeout(1500)
-            x, y = page.evaluate("""(id) => { const r = [...document.querySelectorAll('img,video')].find(e => (e.currentSrc || e.src || '').includes(id) && e.getBoundingClientRect().width > 300).getBoundingClientRect();
-                return [Math.round(r.left + r.width / 2), Math.round(r.top + r.height / 2)]; }""", clip)
-            page.mouse.click(x, y)
-            page.wait_for_timeout(4000)
+            if not page.locator('button[aria-label="Download media"]').count() and approved and i < len(grid):
+                log("[FALLBACK] the thread thumbnail opened no download view; opening the grid tile", grid[i][2])
+                page.keyboard.press("Escape")
+                to_grid(page)
+                if not open_clip(page, grid[i][2]):
+                    log("grid tile not on the page, skipped", grid[i][2])
+                    continue
             title = page.evaluate("() => document.title")
             page.locator('button[aria-label="Download media"]').first.click()
             page.wait_for_timeout(1500)

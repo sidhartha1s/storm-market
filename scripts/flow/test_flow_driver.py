@@ -73,3 +73,26 @@ landed = [[538, 224, ASB + NEWTOK, 293, 783, 490], [1047, 224, ASB + T[1], 802, 
 assert [t[2] for t in clips_above(grid_tiles(landed), known)] == [NEWTOK], clips_above(grid_tiles(landed), known)
 assert clips_above(grid_tiles(landed), {"ac356b2a-1b2c-4d5e-8f90-123456789abc"}) == [], "no known clip in view: nothing new"
 print("test_flow_driver: known-set anchor PASS")
+
+# 29 Oct 26: landing is decided from the job's own agent thread, the grid only cross-checks. Real fixtures, read-only
+# from the live Flow tab: ins-paul-4's thread at 01:31 with the finished clip posted under "waiting in the queue due to
+# high demand", a fresh session's empty thread, and the Videos grid at 01:32 with two runs' known sets.
+import json
+thread_clips, landed = ns["thread_clips"], ns["landed"]
+FX = os.path.join(HERE, "fixtures")
+done_html = open(os.path.join(FX, "panel-ins-paul-4-landed-0131.html"), encoding="utf-8").read()
+CLIP = "1eee7965-d6ff-4655-ad03-3f91156278d9"
+assert thread_clips(done_html) == [CLIP], "the agent's thumbnail is the clip; the start-frame chip in the user's bubble is not"
+assert thread_clips(open(os.path.join(FX, "panel-new-session-0126.html"), encoding="utf-8").read()) == [], "zero-state cards are no clip"
+g = json.load(open(os.path.join(FX, "grid-0132.json"), encoding="utf-8"))
+gtiles = grid_tiles(g["raw"])
+# the run that started after the clip landed counted it as known: the grid diff alone returns nothing
+assert clips_above(gtiles, set(g["known_0121"])) == []
+take, note = landed(thread_clips(done_html), clips_above(gtiles, set(g["known_0121"])), 1)
+assert take == [CLIP] and note.startswith("[FALLBACK]"), (take, note)
+# grid-only: the thread shows nothing, the grid diff shows the clip (token form): take it and say so
+take, note = landed([], clips_above(gtiles, set(g["known_0113"])), 1)
+assert take == [gtiles[0][2]] and take[0].startswith("ANqvLOZsQq46") and "grid" in note and note.startswith("[FALLBACK]"), (take, note)
+assert landed([CLIP], [[0, 0, "ANqvLOtoken"]], 1) == ([CLIP], ""), "thread and grid agree: no note"
+assert landed([], [], 1) == ([], ""), "nothing landed yet"
+print("test_flow_driver: thread decides landing PASS")
