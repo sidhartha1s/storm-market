@@ -15,7 +15,7 @@ Part A (0 to 5.44): overlay over A4-S11_c1 (one stereo half). Part B (5.44 to 8.
 - Part B: plate frame 0; the band = a jagged hatched strip `#6b6257` with `#d8a13a` 2 px edge over rows 4 to 6 (y 324 to 566; row 4 is y 496 to 566), across x 320 to 1600, filling from east to west.
 - Chip "DEBRIS PILED 8 TO 15 FT", tag "4 to 6 blocks in · Cline's report", left edge 96, top 130 (above the grid top 324: chip bottom about 240).
 - Gulf-side arrows: 5 `#7fb2e5` arrows pushing north from the Gulf (y 900) and stopping at the band's south edge (y 566).
-- Source line top-left: part A "Galveston History Center"? The row cites Galveston History Center via a1-r1 row 38: "Galveston History Center"; part B "Isaac Cline, Monthly Weather Review, September 1900, p. 373" (swap at 5.44).
+- Source line top-left: part A "Galveston History Center" (a1-r1.md row 38); part B "Isaac Cline, Monthly Weather Review, September 1900, p. 373" (swap at 5.44).
 
 ## 4. Must be true in the picture
 1. Band covers rows 4 to 6 from the Gulf, not rows 1 to 3.
