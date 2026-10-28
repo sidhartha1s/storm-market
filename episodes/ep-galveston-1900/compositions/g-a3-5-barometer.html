@@ -116,7 +116,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "r2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.54);
   /* BY @10.76: needle to 29.25 (-123.75 deg, delta -83.70) 10.76 to 11.38; row 3 lands with the needle */
   tl.to(N, Object.assign({ rotation: -83.7, duration: 0.62, ease: "power2.inOut" }, ROT), 2.7);
-  tl.to(P + "trail", { strokeDashoffset: 271.4, duration: 0.62, ease: "power2.inOut" }, 2.7);
+  tl.to(P + "trail", { strokeDashoffset: 242.0, duration: 0.62, ease: "power2.inOut" }, 2.7);
   tl.fromTo(P + "r3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.32);
   /* needle settles at 29.25 (within +-0.5 deg) until "28" */
   tl.to(N, Object.assign({ rotation: -83.2, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, ROT), 3.4);
