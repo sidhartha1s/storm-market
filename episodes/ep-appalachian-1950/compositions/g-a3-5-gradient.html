@@ -63,8 +63,6 @@
         <stop offset="0" stop-color="#5a768f" stop-opacity="0.35"/><stop offset="1" stop-color="#5a768f" stop-opacity="0"/>
       </radialGradient>
       <filter id="a3g-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="22"/></filter>
-      <!-- scan line never enters the presenter corner (x >= 1600, y >= 680) -->
-      <clipPath id="a3g-scanclip"><path d="M0,0 H1920 V680 H1600 V1080 H0 Z"/></clipPath>
       <!-- flow-arrow reveals: each mask path draws on (pathLength 1), the dashed body runs inside it -->
       <mask id="a3g-a1mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="a3g-a1-m" fill="none" stroke="#ffffff" stroke-width="16" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/></mask>
       <mask id="a3g-a2mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080"><path id="a3g-a2-m" fill="none" stroke="#ffffff" stroke-width="16" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/></mask>
