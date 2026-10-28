@@ -183,11 +183,16 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"e7", { rotation: 3,  duration: 1.56, ease: "sine.inOut", yoyo: true, repeat: 5 }, 8.02);
 
   /* CLOUDS @9.14: streaks draw one by one from the storm side, 0.12 s apart; each then drifts left 8 px/s to 17.74; label @9.30 */
-  [["c1", 9.14], ["c2", 9.26], ["c3", 9.38], ["c4", 9.50], ["c5", 9.62]].forEach(function(c) {
-    const len = { c1: 202, c2: 192, c3: 162, c4: 202, c5: 122 }[c[0]];
-    tl.fromTo(P+c[0], { strokeDashoffset: len }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, c[1]);
-    tl.to(P+c[0], { x: -8 * (17.74 - c[1]), duration: 17.74 - c[1], ease: "none" }, c[1]);
-  });
+  tl.fromTo(P+"c1", { strokeDashoffset: 202 }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 9.14);
+  tl.to(P+"c1", { x: -68.8, duration: 8.6, ease: "none" }, 9.14);
+  tl.fromTo(P+"c2", { strokeDashoffset: 192 }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 9.26);
+  tl.to(P+"c2", { x: -67.84, duration: 8.48, ease: "none" }, 9.26);
+  tl.fromTo(P+"c3", { strokeDashoffset: 162 }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 9.38);
+  tl.to(P+"c3", { x: -66.88, duration: 8.36, ease: "none" }, 9.38);
+  tl.fromTo(P+"c4", { strokeDashoffset: 202 }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 9.50);
+  tl.to(P+"c4", { x: -65.92, duration: 8.24, ease: "none" }, 9.50);
+  tl.fromTo(P+"c5", { strokeDashoffset: 122 }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, 9.62);
+  tl.to(P+"c5", { x: -64.96, duration: 8.12, ease: "none" }, 9.62);
   tl.fromTo(P+"lcld", { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 9.30);
 
   /* SWELL @10.32: swell draws right to left 10.32 to 10.92; label @10.50 */
