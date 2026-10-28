@@ -14,11 +14,12 @@
     #jt3-mapunits holds map-unit geometry with the static frame transform matrix(s,0,0,s,-TLx*s,-TLy*s)
     = matrix(0.028 0 0 0.028 -1918.224 60.6956); GSAP never transforms it (the drift and scale ride HTML wrappers).
     PROJECTION (_list.md): map x = 3841 * (lon + 97.576), map y = -5585 * (lat - 46.6213); jt3Proj() below applies it.
-  BASEMAP: SIMPLIFIED, NOT the verbatim Natural Earth copy. The 50m paths sit on one line of about 150 KB in every
-    sibling, which this builder's Read/Grep could not return and Bash was down, so the coast, lakes, St Lawrence and
-    state/border lines here are hand-listed lon/lat vertices (about 0.1 deg detail) projected with the formula at load.
-    To swap in the verbatim basemap: paste the sibling's BASEMAP <path>s (map units) into #jt3-mapunits in place of
-    #jt3-land ... #jt3-river; the frame transform already matches.
+  BASEMAP: Natural Earth admin-1 vertices copied verbatim (map units) into #jt3-mapunits: NY, PA, NJ (reduced paths,
+    compositions/g-a4-4-statemap.html defs), VT, NH, ME, MA, CT, RI (US path, library/inhouse/master-map-us-canada.html,
+    CT and RI via g-a1-5-ct.html). #jt3-isles = Long Island + Staten Island. Canada = the St Lawrence south-shore ring and
+    the New Brunswick ring of the master ca path, in-frame run, closed off-frame. NOT covered (no source subpath found):
+    Ontario, Nova Scotia, PEI, Martha's Vineyard, Nantucket, lakes, river. #jt3-lakes/#jt3-borders/#jt3-river stay empty;
+    the state outlines on #jt3-land carry the state and border lines.
   Markers (screen px, brief §2): tree centre = site - 20 px x, outage centre = site + 20 px x. Illustrative of
     "extensive" damage, not a count.
 
