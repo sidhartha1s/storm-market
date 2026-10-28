@@ -176,7 +176,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "stage", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power1.out" }, 0);
 
   /* ambient: Newark pulse ring every 1.4 s (1.2 s tween + 0.2 s gap), finite repeats past the host end */
-  tl.fromTo(P + "nwk-pulse", { opacity: 0.8, attr: { r: 17 } }, { opacity: 0, attr: { r: 35 }, duration: 1.2, ease: "power1.out", repeat: 3, repeatDelay: 0.2 }, 0);
+  tl.fromTo(P + "nwk-pulse", { opacity: 0.8, attr: { r: 17 } }, { opacity: 0, attr: { r: 35 }, duration: 1.2, ease: "power1.out", repeat: 2, repeatDelay: 0.2 }, 0);
 
   /* FINALLY @15.46 (comp 0.86): arrowhead circles the loop once, slowly (counter-clockwise on screen) */
   tl.fromTo(P + "arrow", { rotation: 0, svgOrigin: "621 265", smoothOrigin: false }, { rotation: -360, svgOrigin: "621 265", smoothOrigin: false, duration: 1.6, ease: "power1.inOut" }, 0.86);
