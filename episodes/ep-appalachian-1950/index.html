@@ -292,7 +292,7 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   /* stills get a quick punch on their cut (no slow Ken Burns: DESIGN.md "Footage motion"); the overlay comps carry the motion after */
   const stills = [
-    ["#kb-a2-snowbowl", 283.488], ["#kb-a2-snowbowl2", 287.888], ["#kb-a2-pc1", 292.728], ["#kb-a2-pc2", 296.328], ["#kb-a2-pc3", 300.188], ["#kb-a2-paul", 455.677], 
+    ["#kb-a2-snowbowl", 283.488], ["#kb-a2-snowbowl2", 287.888], ["#kb-a2-pc1", 292.728], ["#kb-a2-pc2", 296.328], ["#kb-a2-pc3", 300.188], 
   ];
   stills.forEach(([sel, at]) => tl.fromTo(sel, { scale: 1.08 }, { scale: 1, duration: 0.6, ease: "power3.out" }, at));
   tl.set({}, {}, DUR);
