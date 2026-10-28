@@ -172,7 +172,10 @@ window.__timelines = window.__timelines || {};
   tl.set(P + "cmaskpath-b", { strokeDasharray: "130 130", strokeDashoffset: 130 }, 0);
   tl.set(P + "ringg", { svgOrigin: "1284 576" }, 0);
   tl.set(P + "pass", { strokeDasharray: "170 " + (TL + 200), strokeDashoffset: 170 }, 0);
-  tl.to(P + "scan", { y: 1080, duration: END, ease: "none" }, 0);
+  /* scan continues g-a3-2's last y 905.9 at 60 px/s, wrapping at 1080 */
+  tl.fromTo(P + "scan", { y: 905.9 }, { y: 1080, duration: 2.9, ease: "none" }, 0);
+  tl.fromTo(P + "scan", { y: 0 }, { y: 1080, duration: 18, ease: "none", immediateRender: false }, 2.9);
+  tl.fromTo(P + "scan", { y: 0 }, { y: 74.4, duration: 1.24, ease: "none", immediateRender: false }, 20.9);
   tl.to(P + "ringg", { rotation: -360, svgOrigin: "1284 576", duration: 7.38, ease: "none", repeat: 2 }, 0);
   ["c1", "c2", "c3", "w1", "w2", "w3"].forEach(function (id, i) {
     tl.to(P + id, { strokeDashoffset: -700, duration: END, ease: "none" }, 0);
