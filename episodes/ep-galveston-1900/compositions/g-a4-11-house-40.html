@@ -167,7 +167,7 @@ window.__timelines = window.__timelines || {};
 
   /* WAIST @2.52: chip 0 in, tick pulses */
   tl.fromTo(P+"c0", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 2.52);
-  tl.to(P+"tick", {scaleX: 1.6, duration: 0.2, ease: "sine.inOut", yoyo: true, repeat: 3}, 2.52);
+  tl.to(P+"tick", {scaleX: 1.6, svgOrigin: "560 702", smoothOrigin: false, duration: 0.2, ease: "sine.inOut", yoyo: true, repeat: 3}, 2.52);
   tl.to(P+"c0", {y: -4, duration: 0.37, ease: "sine.inOut"}, 2.97);
   /* He started @3.60: chip 0 out by 3.94 */
   tl.to(P+"c0", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 3.34);
