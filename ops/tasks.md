@@ -8,8 +8,9 @@ Status: `todo` · `doing` · `review` (PR open, waiting on Opus review, e2e or t
 ## Render runs on what it asked for (owner 26 Oct 26, ZBook QSV fallback)
 | # | task | PR | status |
 |---|---|---|---|
-| 1 | `stream_gate.py check`: fail a render whose encoder, capture GPU or streaming differs from the ask; watch stops it at the gate line. Until the ZBook driver is 610+, every ZBook render stops in its first minutes: do not relaunch there | branch render-fallback-gate | review |
-| 2 | every render asks `--experimental-fast-capture=true` and falls back to screenshot capture (mix-blend-mode, backdrop-filter): dropped the flag (2 workers 5.56 to 3.68 s per output second, streaming on) | render-no-fast-capture | review |
+| 1 | `stream_gate.py check`: fail a render whose encoder, capture GPU or streaming differs from the ask; watch stops it at the gate line | branch render-fallback-gate | done (merged, 5c8f9109) |
+| 2 | every render asks `--experimental-fast-capture=true` and falls back to screenshot capture (mix-blend-mode, backdrop-filter): dropped the flag (2 workers 5.56 to 3.68 s per output second, streaming on) | render-no-fast-capture | done (merged, 259b6645) |
+| 3 | ZBook NVIDIA driver to 610+ (595.95 is too old for ffmpeg 8.1.2's NVENC). Until then every ZBook render stops in its first minutes: renders stay on the ASUS (CLAUDE.md "Heavy local jobs") | owner (admin on the ZBook) | todo |
 
 ## Bug fixes from the Opus re-review of PRs #85-#91 (24 Sep 26)
 | # | task | PR | status |
