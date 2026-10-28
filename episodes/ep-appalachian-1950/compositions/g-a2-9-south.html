@@ -219,6 +219,14 @@ window.__timelines = window.__timelines || {};
   }
   camAt(0);
 
+  /* basemap paint order as g-a2-8: coast under-stroke, then fills (keeps the a2-8 -> a2-9 cut identical) */
+  [$("ca"), $("us")].forEach(function (el) {
+    const coast = el.cloneNode(false);
+    coast.removeAttribute("id");
+    coast.setAttribute("fill", "none"); coast.setAttribute("stroke", "#4a5560"); coast.setAttribute("stroke-width", "3.2");
+    camEl.insertBefore(coast, camEl.firstChild);
+  });
+
   const tl = gsap.timeline({ paused: true });
   /* camera spine over the whole window (pull-out, drift, hold) */
   tl.to({ t: 0 }, { t: 1, duration: DUR, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
