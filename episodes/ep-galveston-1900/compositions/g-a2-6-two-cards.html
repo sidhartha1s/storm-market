@@ -15,15 +15,18 @@
   .g6card { position:absolute; box-sizing:border-box; background:#f4f0e6; border:1px solid rgba(42,38,34,0.25);
     border-radius:6px; box-shadow:0 18px 40px rgba(0,0,0,0.45); opacity:0; visibility:hidden; }
   #g6-c1 { left:120px; top:140px; width:780px; height:380px; padding:48px; }
-  #g6-c2 { left:820px; top:470px; width:760px; height:430px; padding:48px 48px 48px 100px; }
+  #g6-c2 { left:820px; top:470px; width:760px; height:470px; padding:48px 48px 48px 100px; }
   #g6-sh1 { left:130px; top:160px; width:760px; height:370px; }
-  #g6-sh2 { left:830px; top:490px; width:740px; height:420px; }
-  .g6d { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:64px; line-height:72px; color:#2a2622; }
-  .g6b1 { font-family:Georgia,'Times New Roman',serif; font-size:34px; line-height:42px; color:#2a2622; max-width:684px; margin-top:12px; opacity:0; visibility:hidden; }
-  .g6l2 { font-family:Arial,sans-serif; font-weight:700; font-size:26px; line-height:32px; color:#2a2622; max-width:612px; margin-top:12px; opacity:0; visibility:hidden; }
-  .g6q { font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:32px; line-height:42px; color:#2a2622; max-width:612px; margin-top:16px; }
+  #g6-sh2 { left:830px; top:490px; width:740px; height:460px; }
+  /* fit-content + wider gaps: the cards sit rotated 3 to 5 deg, which inflates each line's box by width x sin(angle) */
+  .g6d { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:64px; line-height:72px; color:#2a2622; width:fit-content; }
+  #g6-c1 .g6d { width:fit-content; }
+  .g6b1 { font-family:Georgia,'Times New Roman',serif; font-size:34px; line-height:42px; color:#2a2622; max-width:684px; width:fit-content; margin-top:28px; opacity:0; visibility:hidden; }
+  .g6l2 { font-family:Arial,sans-serif; font-weight:700; font-size:26px; line-height:32px; color:#2a2622; max-width:612px; width:fit-content; margin-top:36px; opacity:0; visibility:hidden; }
+  .g6q { font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:32px; line-height:42px; color:#2a2622; max-width:612px; margin-top:28px; }
   .g6w { display:inline-block; opacity:0; visibility:hidden; }
-  .g6tag { font-family:Arial,sans-serif; font-weight:700; font-size:20px; line-height:26px; letter-spacing:2px; color:#6b6257; margin-top:16px; opacity:0; visibility:hidden; }
+  .g6tag { font-family:Arial,sans-serif; font-weight:700; font-size:20px; line-height:26px; letter-spacing:2px; color:#6b6257; width:fit-content; margin-top:16px; opacity:0; visibility:hidden; }
+  #g6-t1 { margin-top:40px; }
   #g6-chip { position:absolute; left:1060px; top:160px; box-sizing:border-box; padding:22px 40px;
     background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden;
