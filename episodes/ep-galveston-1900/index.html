@@ -8,11 +8,18 @@
      STAND-INS / NOT BUILT: Paul's clip 1 (ins-paul-1) is not generated: the Omni start frame stands in as a still and the
      TTS take h1-s1.wav carries his line. No presenter circle yet. No hook sound, bed or SFX yet (edit_script "Hook sound").
      No CTA here (it sits in act 3). The 0.7 s chapter blackout after I1-S5 is the act-1 seam. -->
+<!-- assembly v1 (28 Oct 26): acts A1 to A6 appended, all voiced (wav lengths by wave/ffprobe). Hook, title and intro above are
+     unchanged. CADENCE: 0.6 s seams in A1, 0.5 s in A4; A2 butts its segments with 0 s (its comps end flush at each wav end);
+     A3, A5 and A6 seams follow each outgoing comp's land time, capped at 0.79 s (lint max 0.8); A6-S3 into A6-S4 is 0 s
+     (g-a6-4 ends flush). Act seams: 0.6 s land (0.85 s after A5) then a 0.7 s blackout. CTA after A3-S11: 1.0 s dip in and out.
+     STAND-INS: every Paul segment (A1-S9, A2-S9, A3-S11, A5-S7, A6-S7) is the Omni start frame with the TTS take;
+     A1 and A4 graphics are not briefed yet, so their beats carry the act's picks (each marked "planned graphic slot");
+     designed-ground sections (.ground) fill A5-S1 0 to 7.54 and A5-S5 0 to 2.70, where no picture is sourced. -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, height=1080">
-  <title>Galveston 1900 (intro section) — The Warning Hour</title>
+  <title>Galveston 1900 (hook to A6, draft assembly) — The Warning Hour</title>
   <script src="gsap.min.js"></script>
   <style>
     body { margin: 0; background: #000; font-family: Arial, sans-serif; }
@@ -23,6 +30,8 @@
     .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
     .clip { position: absolute; inset: 0; }
     .blackout { position: absolute; inset: 0; background: #000; }
+    .ground { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+    .stereo-left { width: 200% !important; }
   </style>
 </head>
 <body>
