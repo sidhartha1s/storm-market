@@ -55,22 +55,28 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"rule", {scaleX:1, duration:0.5, ease:"power2.out"}, 1.18);
   /* "there," @6.58 -> 1.26: role line in */
   tl.fromTo(P+"role", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.35, ease:"power2.out"}, 1.26);
-  /* card float from its land time, 3 legs to 8.10 */
-  tl.to(P+"ltin", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:2}, 1.50);
+  /* card float from its land time, 3 legs of 1.26 to 5.28 */
+  tl.to(P+"ltin", {y:-4, duration:1.26, ease:"sine.inOut", yoyo:true, repeat:2}, 1.50);
   /* "observatory." @8.32 -> 3.00: rule brightens */
   tl.to(P+"rule", {opacity:1, duration:0.3, ease:"power2.out"}, 3.00);
 
-  /* exit 12.96 to 13.56 -> 7.64 to 8.24, done before the cut */
-  tl.to(P+"lt", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 7.64);
+  /* exit 5.28 to 5.88, done before the cut to the cathedral (the Belen name never sits on another building) */
+  tl.to(P+"lt", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.28);
 
-  /* CATHEDRAL @13.56 "That's" -> 8.24: A out, B in */
-  tl.to(P+"srcA", {autoAlpha:0, duration:0.2, ease:"power2.in"}, 8.24);
+  /* CATHEDRAL @11.20 "since" -> 5.88: A out, B in */
+  tl.to(P+"srcA", {autoAlpha:0, duration:0.2, ease:"power2.in"}, 5.88);
   /* B waits for A to finish leaving (same slot), so the two lines never share a frame */
-  tl.fromTo(P+"srcB", {autoAlpha:0, y:8}, {autoAlpha:1, y:0, duration:0.3, ease:"power2.out"}, 8.44);
-  /* source B float to the end (3 legs of 2.33 from 8.74 = 15.74) */
-  tl.to(P+"srcB", {y:-4, duration:2.333, ease:"sine.inOut", yoyo:true, repeat:2}, 8.74);
-  /* exit: B fades over the last 0.3 s, 20.762 to 21.062 -> 15.442 to 15.742 */
-  tl.to(P+"srcB", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 15.442);
+  tl.fromTo(P+"srcB", {autoAlpha:0, y:8}, {autoAlpha:1, y:0, duration:0.3, ease:"power2.out"}, 6.08);
+  /* source B float, 3 legs of 1.473 from 6.38 to 10.80 */
+  tl.to(P+"srcB", {y:-4, duration:1.473, ease:"sine.inOut", yoyo:true, repeat:2}, 6.38);
+
+  /* PALACIO @16.32 "Remember" -> 11.00: B out, C in after it */
+  tl.to(P+"srcB", {autoAlpha:0, duration:0.2, ease:"power2.in"}, 11.00);
+  tl.fromTo(P+"srcC", {autoAlpha:0, y:8}, {autoAlpha:1, y:0, duration:0.3, ease:"power2.out"}, 11.20);
+  /* source C float, 3 legs of 1.314 from 11.50 to 15.442 */
+  tl.to(P+"srcC", {y:-4, duration:1.314, ease:"sine.inOut", yoyo:true, repeat:2}, 11.50);
+  /* exit: C fades over the last 0.3 s, 20.762 to 21.062 -> 15.442 to 15.742 */
+  tl.to(P+"srcC", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 15.442);
 
   window.__timelines["g-a2-2-belen-lt"] = tl;
 })();
