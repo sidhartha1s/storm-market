@@ -189,7 +189,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo([$("l-erie"), $("l-ont")].join(","), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 2.84);
 
   /* "low" @5.14 -> "passed" @7.76 -> "Ontario." @9.20: low enters from the SW edge, per-leg tweens, track draws behind */
-  tl.set([$("low"), $("trackg")].join(","), { autoAlpha: 1 }, 5.14);
+  tl.set($("trackg"), { autoAlpha: 1 }, 5.14);
+  /* the low (its "L" glyph) waits hidden until it is inside the frame: leg 1 puts its centre at x -4 at 5.75 (power1.inOut) */
+  tl.fromTo($("low"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power1.out" }, 5.75);
   tl.to($("low"), { x: P1.x, y: P1.y, duration: 2.62, ease: "power1.inOut" }, 5.14);
   tl.to($("trackrev"), { strokeDashoffset: LT - L1, duration: 2.62, ease: "power1.inOut" }, 5.14);
   tl.to($("low"), { x: P2.x, y: P2.y, duration: 1.44, ease: "power1.inOut" }, 7.76);
