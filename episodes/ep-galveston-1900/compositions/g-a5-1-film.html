@@ -55,7 +55,7 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"pop", {autoAlpha:1}, 0);
   tl.to(P+"scrim", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
   tl.fromTo(P+"big", {autoAlpha:0, scale:1.35}, {autoAlpha:1, scale:1, duration:0.5, ease:"power4.out"}, 0);
-  tl.fromTo(P+"sub", {autoAlpha:0, scale:1.35}, {autoAlpha:1, scale:1, duration:0.5, ease:"power4.out"}, 0.15);
+  tl.fromTo(P+"sub", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.15);
   /* 9th, @0.80: red line pulse 1 -> 1.05 -> 1 */
   tl.to(P+"big", {scale:1.05, duration:0.15, ease:"power2.out"}, 0.8);
   tl.to(P+"big", {scale:1, duration:0.15, ease:"power2.in"}, 0.95);
