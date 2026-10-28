@@ -192,8 +192,10 @@
   <section class="clip blackout" id="bo-a3" data-start="400.782" data-duration="0.7" data-track-index="1"></section>
 
   <!-- ===== A3 (S1 to S4, S6, S8, S9 are full-frame comps) ===== -->
-  <!-- A3-S5 under g-a3-6: grey sea from a deck (weak pick: modern ferry; clip 14.85 s, window 15.43 s, so the last 0.58 s holds its final frame) -->
-  <video id="v-a3-sea" src="media/a3/A3-S5_c3_pexels-19842311_boat-deck-ocean.mp4" data-start="483.078" data-duration="15.433" data-track-index="1" muted></video>
+  <!-- A3-S5 under g-a3-6: grey sea from a deck (weak pick: modern ferry). Window cut 28 Oct 26 to the clip's real length (ffprobe 14.805 s),
+       so no frame past the file end; 497.883 to 498.511 has no footage under g-a3-6's exit (its panel leaves 498.078 to 498.678).
+       g-a3-7 stays at 498.511, on "The" of A3-S6. -->
+  <video id="v-a3-sea" src="media/a3/A3-S5_c3_pexels-19842311_boat-deck-ocean.mp4" data-start="483.078" data-duration="14.805" data-track-index="1" muted></video>
   <!-- A3-S7 under g-a3-8: flat beach under broken cloud, then the overcast-waves backup from "Cline's report" (10.92) -->
   <video id="v-a3-beach" src="media/a3/A3-S7_c1_pexels-39562256_calm-beach-cloudy-sky.mp4" data-start="511.408" data-duration="10.92" data-track-index="1" muted></video>
   <video id="v-a3-beach2" src="media/a3/A3-S7_c2_pexels-31980310_overcast-beach-waves.mp4" data-start="522.328" data-duration="9.876" data-track-index="1" muted></video>
