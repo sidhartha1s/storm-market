@@ -86,16 +86,17 @@ def video_tiles(page):
     # target 10"). Never compare whole addresses: Flow swaps a tile's thumbnail from .../image/<id> to .../video/<id>
     # (same day: an old clip was taken for a new one). The id inside the address is what stays.
     # width > 300 drops the chat thumbnails.
-    vids = page.get_by_text("Videos", exact=True).first
-    box = vids.bounding_box() if vids.is_visible() else None
-    if box and box["x"] >= 0:  # the nav rail collapses when the agent panel widens; the Videos filter stays applied
-        # a failed click never ends the job: the filter is already applied. 29 Oct 26 01:21 this click timed out (30 s)
-        # in the sluggish hidden window and killed the poll after 15 credits were spent.
-        try:
+    # a failed Videos lookup or click never ends the job: the filter is already applied and the thread decides landing.
+    # In the sluggish hidden window the click (29 Oct 26 01:21) and then bounding_box (02:00, Galveston ins-paul-2)
+    # each timed out at 30 s and killed the poll after 15 credits were spent.
+    try:
+        vids = page.get_by_text("Videos", exact=True).first
+        box = vids.bounding_box(timeout=5000) if vids.is_visible() else None
+        if box and box["x"] >= 0:  # the nav rail collapses when the agent panel widens; the Videos filter stays applied
             vids.click(timeout=5000)
             page.wait_for_timeout(3000)
-        except Exception as e:
-            log("Videos filter click skipped", repr(e)[:80])
+    except Exception as e:
+        log("Videos filter skipped", repr(e)[:80])
     raw = page.evaluate("""() => [...document.querySelectorAll('img,video')].map(e => { const r = e.getBoundingClientRect();
         return [Math.round(r.left + r.width / 2), Math.round(r.top + r.height / 2), (e.currentSrc || e.src || '').split('?')[0], r.left, r.right, r.width]; })""")
     return grid_tiles(raw)
@@ -394,8 +395,11 @@ with sync_playwright() as p:
         while time.time() < end:
             polls += 1
             if polls % 5 == 0:
-                page.goto(PROJECT, wait_until="domcontentloaded")
-                page.wait_for_timeout(10000)
+                try:  # a slow reload is one skipped refresh, never the end of a paid job
+                    page.goto(PROJECT, wait_until="domcontentloaded")
+                    page.wait_for_timeout(10000)
+                except Exception as e:
+                    log("grid reload skipped", repr(e)[:80])
             tiles = video_tiles(page)
             grid = tiles[:TOP] if TOP else clips_above(tiles, known)
             if approved:  # this run's own thread decides; --after and --download-top have no thread of their own
