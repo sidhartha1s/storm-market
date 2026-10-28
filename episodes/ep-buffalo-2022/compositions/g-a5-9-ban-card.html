@@ -2,7 +2,7 @@
   g-a5-9-ban-card · A5-S8 · standard · full-frame, 25.90 s (wav ends 25.19; close card follows on the bare ground).
   Claim: (1) 22 of 46 found outside or in cars returns; (2) 13 Jan 2024 full travel ban, all Erie County, 9 p.m. Saturday, before the worst of the snow;
   (3) this winter, Nov to Mar, Buffalo is inside its lake snow season again.
-  Source: research/deaths.md s1, s3 (WIVB); governor.ny.gov 13 Jan 2024 (PRIMARY, factcheck/a5-r1.md rows 22-25); NWS Buffalo climate pages (row 30).
+  Source: research/*eaths.md (the toll file) s1, s3 (WIVB); governor.ny.gov 13 Jan 2024 (PRIMARY, factcheck/a5-r1.md rows 22-25); NWS Buffalo climate pages (row 30).
   Family: g-a5-4-tally-final (block system, colours), g-intro-2-toll-chips (chip). Prefix bn-.
   Geometry (px, root coordinates): mini block i = 0..45 at x = 411 + 24 i, w 18, y 520, h 80, r 4; bar span 411-1509; lit run (i 0-21) ends x 933.
     i 0-17 #f2f5f8, i 18-21 #d8a13a, i 22-45 #2a3644. Halfway line x 960 (between block 21 end 933 and block 22 start 987... datum between 22nd and 23rd), y 500-620.
@@ -195,22 +195,25 @@ window.__timelines = window.__timelines || {};
   tl.set(P + "rule", { scaleX: 0, transformOrigin: "0% 50%" }, 0);
   tl.set(P + "fill", { scaleX: 0, transformOrigin: "0% 50%" }, 0);
 
+  /* 29 Oct 26 retime: Paul speaks the first sentence (a5-s8 words 0-3.4) before the card, and the TTS resumes at its 3.60.
+     The host starts when Paul ends (1023.436) and nx-a5-s8 at host +0.304, so a cue at TTS time m sits at m - 3.296 s local.
+     Scene 1 cues that were on sentence 1 ("out there", "before") now sit on the words that open the resumed line. */
   /* SCENE 1 */
-  /* "Many were out there" @0.00: 46 blocks fill in place 0.0-0.8 (callback, already coloured) */
+  /* card opens on Paul's last frame: 46 blocks fill in place 0.0-0.8 (callback, already coloured) */
   tl.to(B, { scaleY: 1, autoAlpha: 1, duration: 0.12, ease: "power2.out", stagger: 0.015 }, 0);
-  /* "out there" @0.38: chip 22 OF 46; sub-label @0.80 */
-  tl.fromTo(P + "c1w", { autoAlpha: 0, scale: 1.15, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 0.38);
+  /* "and" @0.404 (m 3.70): chip 22 OF 46; "struggle" @0.784: sub-label @0.80 */
+  tl.fromTo(P + "c1w", { autoAlpha: 0, scale: 1.15, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 0.40);
   tl.fromTo(P + "sub", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.80);
-  /* "before" @2.38: halfway line draws */
-  tl.set(P + "half", { autoAlpha: 1 }, 2.38);
-  tl.to(P + "half", { scaleY: 1, duration: 0.4, ease: "power2.out" }, 2.38);
-  /* "stuck" @6.60: sheen across the lit run, x 411 -> 933 */
-  tl.fromTo(P + "sheen", { x: 0 }, { x: 642, duration: 0.6, ease: "power2.inOut" }, 6.60);
-  /* 0.8-7.74 lit blocks and chip float */
-  float(P + "lit", 0.8, 1.16, 5);
-  float(P + "c1", 0.8, 1.16, 5);
-  /* after "snow." @7.74: scene 1 out 7.80-8.30 */
-  tl.to(P + "s1", { autoAlpha: 0, y: -14, duration: 0.5, ease: "power2.in" }, 7.80);
+  /* "reach" @1.284 (m 4.58): halfway line draws */
+  tl.set(P + "half", { autoAlpha: 1 }, 1.284);
+  tl.to(P + "half", { scaleY: 1, duration: 0.4, ease: "power2.out" }, 1.284);
+  /* "stuck" @3.304 (m 6.60): sheen across the lit run, x 411 -> 933 */
+  tl.fromTo(P + "sheen", { x: 0 }, { x: 642, duration: 0.6, ease: "power2.inOut" }, 3.304);
+  /* 0.8-4.44 lit blocks and chip float */
+  float(P + "lit", 0.8, 1.16, 3);
+  float(P + "c1", 0.8, 1.16, 3);
+  /* after "snow." @4.444 (m 7.74): scene 1 out 4.504-5.004 */
+  tl.to(P + "s1", { autoAlpha: 0, y: -14, duration: 0.5, ease: "power2.in" }, 4.504);
 
   /* SCENE 2 */
   /* "The next winter," @8.24: card in @8.36, empty; eyebrow @8.54 */
