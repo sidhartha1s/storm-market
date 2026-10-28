@@ -208,7 +208,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "nwk-pulse", { opacity: 1, attr: { r: 17 } }, { opacity: 0, attr: { r: 45 }, duration: 0.8, ease: "power2.out", immediateRender: false }, SEG.a5s8 + 7.12);
 
   /* PITTSBURGH @8.80: pulse, white */
-  tl.fromTo(P + "pit-pulse", { opacity: 1, attr: { r: 17 } }, { opacity: 0, attr: { r: 45 }, duration: 0.8, ease: "power2.out" }, SEG.a5s8 + 8.80);
+  tl.fromTo(P + "pit-pulse", { opacity: 1, attr: { r: 17 } }, { opacity: 0, attr: { r: 45 }, duration: 0.8, ease: "power2.out", immediateRender: false }, SEG.a5s8 + 8.80);
 
   /* TODAYS @10.44: chip 1 out; arrows and track settle to 0.6, streaming continues; camera lands on Frame S */
   tl.to(P + "chip1", { x: -30, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, SEG.a5s8 + 10.44);
