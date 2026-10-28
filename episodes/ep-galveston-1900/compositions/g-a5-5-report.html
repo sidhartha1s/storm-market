@@ -3,9 +3,10 @@
   #g-a5-5-report-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
     background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
 
-  /* page wrappers: crop width 1288 (column 1240 + 24 px margin each side), centred x 960, top 140.
-     transform-origin sits on the lit line's centre so the push keeps that line at frame y ~475. */
-  .g-a5-5-report-pg { position:absolute; inset:auto; left:316px; top:140px; width:1288px; transform-origin:644px 335px; opacity:0; visibility:hidden; }
+  /* page wrappers: crop width 1288 (column 1240 + 24 px margin each side), centred x 850, top 140.
+     transform-origin sits on the lit line's centre so the push keeps that line at frame y ~475.
+     max push 1.14: page spans x 116..1584, clear of the presenter circle corner (x >= 1600, y >= 680). */
+  .g-a5-5-report-pg { position:absolute; inset:auto; left:206px; top:140px; width:1288px; transform-origin:644px 335px; opacity:0; visibility:hidden; }
   .g-a5-5-report-img { display:block; width:1288px; height:auto; }
   /* whole lines: both crops are 468 x 244 (scale 2.752), measured by pixel rows 28 Oct 26.
      telephone: half line at y 0-7 and blank margin under y 208 cut away; strand: partial lines at y 0-3 and 240-243 cut away. */
