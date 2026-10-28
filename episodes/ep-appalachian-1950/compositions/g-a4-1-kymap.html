@@ -367,10 +367,12 @@ window.__timelines = window.__timelines || {};
   tl.fromTo([P + "willab", P + "wilval"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, S3 + 3.30);
   tl.fromTo(P + "som", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "back.out(2)" }, S3 + 3.45);
   tl.fromTo([P + "somlab", P + "somval"], { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, S3 + 3.45);
-  /* ONLY ONE @4.50: the three new pins pulse once, 0.15 s apart (they still stand) */
-  tl.fromTo(P + "mid-pulse", { opacity: 0.9, attr: { r: 15 } }, { opacity: 0, attr: { r: 30 }, duration: 0.8, ease: "power2.out" }, S3 + 4.50);
-  tl.fromTo(P + "wil-pulse", { opacity: 0.9, attr: { r: 15 } }, { opacity: 0, attr: { r: 30 }, duration: 0.8, ease: "power2.out" }, S3 + 4.65);
-  tl.fromTo(P + "som-pulse", { opacity: 0.9, attr: { r: 15 } }, { opacity: 0, attr: { r: 30 }, duration: 0.8, ease: "power2.out" }, S3 + 4.80);
+  /* ONLY ONE @4.50: the three new pins pulse once, 0.15 s apart (they still stand).
+     immediateRender:false on every pulse: without it a seek before the cue paints the 0.9 start ring, so empty rings
+     stood at Somerset, Williamsburg and Middlesboro from the comp's start (frames 641 and 649.13). */
+  tl.fromTo(P + "mid-pulse", { opacity: 0.9, attr: { r: 15 } }, { opacity: 0, attr: { r: 30 }, duration: 0.8, ease: "power2.out", immediateRender: false }, S3 + 4.50);
+  tl.fromTo(P + "wil-pulse", { opacity: 0.9, attr: { r: 15 } }, { opacity: 0, attr: { r: 30 }, duration: 0.8, ease: "power2.out", immediateRender: false }, S3 + 4.65);
+  tl.fromTo(P + "som-pulse", { opacity: 0.9, attr: { r: 15 } }, { opacity: 0, attr: { r: 30 }, duration: 0.8, ease: "power2.out", immediateRender: false }, S3 + 4.80);
   /* ZERO @8.18: Farmers drops in cold blue with 0°F ("FARMERS" waits); the three lines dim to 0.6 (one reading target) */
   tl.fromTo(P + "far", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, S3 + 8.18);
   tl.fromTo(P + "farval", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, S3 + 8.18);
