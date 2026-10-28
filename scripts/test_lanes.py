@@ -357,7 +357,7 @@ if __name__ == "__main__":
               test_rule1_start_skips_a_profile_that_does_not_answer,
               test_an_ssh_drop_after_a_good_launch_never_launches_twice,
               test_a_recorded_launch_whose_log_never_appears_fails,
-              test_rule2_start_refuses_low_memory_and_a_full_lane_count,
+              test_rule2_start_refuses_low_memory_and_never_counts_lanes,
               test_status_launches_nothing_even_with_a_limited_lane,
               test_relaunch_backs_off_while_another_holds_the_lock,
               test_rule3_relaunch_moves_a_limited_lane_to_the_next_profile):
