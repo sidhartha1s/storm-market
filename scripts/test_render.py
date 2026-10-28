@@ -6,6 +6,7 @@ ffmpeg-lavfi fixture clips (not episode renders)."""
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -326,11 +327,11 @@ if HAVE_FFMPEG:
         # render-13: under schtasks/run_hidden, python3 on PATH can be the Microsoft Store stub (exit 9009).
         # verify_render.sh skips it for the real interpreter, and fails loudly when only stubs are left.
         with tempfile.TemporaryDirectory() as sd:
-            r13 = run_verify(ep, "clean-final", env=store_stub_env(sd, ["python3"]))
-            check("render-13: a WindowsApps python3 stub first on PATH does not fail a clean render",
+            r13 = run_verify(ep, "clean-final", env=store_stub_env(sd, real_python=True))
+            check("render-13: WindowsApps store stubs first on PATH do not fail a clean render",
                   r13.returncode == 0, f"rc={r13.returncode}\n{r13.stdout[-800:]}")
         with tempfile.TemporaryDirectory() as sd:
-            r13b = run_verify(ep, "clean-final", env=store_stub_env(sd, ["python3", "python"]))
+            r13b = run_verify(ep, "clean-final", env=store_stub_env(sd, real_python=False))
             check("render-13: only store stubs on PATH fails loudly and names WindowsApps",
                   r13b.returncode != 0 and "WindowsApps" in r13b.stdout, f"rc={r13b.returncode}\n{r13b.stdout[-800:]}")
 
