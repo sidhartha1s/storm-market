@@ -244,6 +244,10 @@ window.__timelines = window.__timelines || {};
   tl.to($("v5"), { color: DARK, duration: 0.08 }, 23.38); /* zero. */
   tl.to([$("chip3"), $("chip4")], { autoAlpha: 0.5, duration: 0.3 }, 23.38);
 
+  /* title and card pinned at scale 1 from the start and again before the last frames (frame read: title drifted to ~1.2) */
+  tl.set([$("wcard"), $("wc1")], { scale: 1 }, 0);
+  tl.set([$("wcard"), $("wc1")], { scale: 1 }, 23.9);
+
   /* 23.60-24.6 tail: no exit, last frame is g-a1-7's frame 0; notice dashes and the card float keep moving */
 
   window.__timelines["g-a1-6-warning-card"] = tl;
