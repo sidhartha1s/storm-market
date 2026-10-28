@@ -199,7 +199,7 @@ window.__timelines = window.__timelines || {};
 
   /* 8.70 to end: bar-end glow pulses (3 plays, ends 9.90), pin pulses twice (ends 9.95); drift continues */
   tl.fromTo(P + "bmglow", { autoAlpha: 0, scaleY: 1 }, { autoAlpha: 0.9, scaleY: 1.25, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 2 }, 8.70);
-  tl.fromTo(P + "bmpulse", { opacity: 0.8, attr: { r: 12 } }, { opacity: 0, attr: { r: 22 }, duration: 0.55, ease: "power1.out", repeat: 1, repeatDelay: 0.05 }, 8.80);
+  tl.fromTo(P + "bmpulse2", { opacity: 0.8, attr: { r: 12 } }, { opacity: 0, attr: { r: 22 }, duration: 0.55, ease: "power1.out", repeat: 1, repeatDelay: 0.05 }, 8.80);
 
   /* exit: none, the host cuts to g-a1-3 */
   window.__timelines["g-a1-2-bearmtn"] = tl;
