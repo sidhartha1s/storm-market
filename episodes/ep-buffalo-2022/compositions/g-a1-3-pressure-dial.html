@@ -127,7 +127,7 @@ window.__timelines = window.__timelines || {};
 
   /* continuous motion the whole window: bezel shimmer 20 deg/s */
   tl.fromTo("#pd-shim", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 0.05);
-  tl.to("#pd-shim", { rotation: 375, svgOrigin: O, duration: 18.75, ease: "none" }, 0.05);
+  tl.to("#pd-shim", { rotation: 375, svgOrigin: O, duration: 18.446, ease: "none" }, 0.05);
 
   /* "Behind" @0.00: ground is on; face in */
   tl.fromTo("#pd-face", { autoAlpha: 0, scale: 0.9, svgOrigin: O, smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: O, smoothOrigin: false, duration: 0.6, ease: "power3.out" }, 0.05);
