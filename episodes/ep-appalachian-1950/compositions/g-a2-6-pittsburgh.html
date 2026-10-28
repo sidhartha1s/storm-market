@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-6-pittsburgh (A2-S6, standard): Pittsburgh three days of snow. Full-frame card, hard cut from g-a2-5.
+  Host: data-start = A2-S6 start, data-duration 13.56. Cues are local = audio/a2-s6.words.json seconds.
+  Scale (shared by stack and gauge): 0 in at y 880, 20 px per inch. FRI 14.0 in = 280 px (600-880), SAT 10.1 in = 202 px (398-600),
+  gauge 22 in = 440 px (fill top y 440), so the settled depth sits 42 px below the stacked top.
+  SHEET (media/a2/pbz-snow-p1.png, 150 dpi letter, 1275 x 1650; boxes estimated from a 100 dpi read x 1.5):
+    depths list "22" November 26, 1950" is page 1 row 8, centre y about 648, text x 310-533. Window = source x 290-560, y 468-668, shown at 2.0x
+    (img width 2550, left -580, top -936). Row box in window: left 24, top 338, w 480, h 44.
+  The "27.4" storm-total line (page 1 y about 250) is outside the crop and never shown.
+  NO ROW for 14.0 (Nov 24) or 10.1 (Nov 25) exists on this sheet (daily list tops out at 23.6; page 3 shows 10.1 for 1967), so only row 3 is lit.
+-->
+<template>
+<style>
+  #p6-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #p6-sweep { position:absolute; left:0; top:0; width:260px; height:1080px;
+    background:linear-gradient(100deg, transparent, rgba(127,178,229,.07), transparent); }
+  #p6-eyebrow { position:absolute; left:110px; top:70px; font-weight:700; font-size:22px; line-height:28px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+  #p6-head { position:absolute; left:110px; top:104px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:56px; color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+  #p6-axis { position:absolute; left:300px; top:400px; width:2px; height:480px; background:#4a5560; }
+  .p6-tl { position:absolute; left:290px; width:12px; height:2px; background:#4a5560; }
+  .p6-tk { position:absolute; left:135px; width:150px; text-align:right; font-weight:700; font-size:22px; line-height:28px; color:#93a3b2; white-space:nowrap; }
+  #p6-col { position:absolute; left:340px; top:400px; width:180px; height:480px; box-sizing:border-box; border:2px solid #4a5560; border-radius:6px;
+    background:linear-gradient(0deg, rgba(21,32,43,.7), rgba(21,32,43,.25)); }
+  #p6-fri { position:absolute; left:340px; top:600px; width:180px; height:280px; background:#f2f5f8; opacity:0; visibility:hidden; }
+  #p6-sat { position:absolute; left:340px; top:398px; width:180px; height:202px; background:#dfe7ee; opacity:0; visibility:hidden; }
+  #p6-seam { position:absolute; left:340px; top:599px; width:180px; height:2px; background:#7fb2e5; opacity:0; visibility:hidden; }
+  .p6-lab { position:absolute; left:545px; width:230px; opacity:0; visibility:hidden; }
+  .p6-sm { font-weight:700; font-size:22px; line-height:26px; letter-spacing:2px; color:#93a3b2; white-space:nowrap; }
+  .p6-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:56px; color:#f2f5f8; white-space:nowrap; }
+  #p6-labfri { top:699px; }
+  #p6-labsat { top:458px; }
+  #p6-tube { position:absolute; left:780px; top:400px; width:60px; height:480px; box-sizing:border-box; border:3px solid #93a3b2; border-radius:30px; opacity:0; visibility:hidden; overflow:hidden; }
+  #p6-gfill { position:absolute; left:783px; top:440px; width:54px; height:440px; background:#7fb2e5; opacity:0; visibility:hidden; border-radius:0 0 27px 27px; }
+  #p6-dash { position:absolute; left:340px; top:439px; width:520px; height:2px; opacity:0; visibility:hidden;
+    background:repeating-linear-gradient(90deg, #7fb2e5 0, #7fb2e5 10px, transparent 10px, transparent 18px); }
+  #p6-labsun { position:absolute; left:865px; top:380px; width:300px; opacity:0; visibility:hidden; }
+  #p6-ground { font-weight:700; font-size:26px; line-height:32px; letter-spacing:4px; color:#dfe7ee; white-space:nowrap; }
+  .p6-flake { position:absolute; top:334px; width:6px; height:6px; border-radius:3px; background:#f2f5f8; opacity:0; visibility:hidden; }
+  #p6-sheet { position:absolute; left:1180px; top:170px; width:560px; height:480px; box-sizing:border-box; border-radius:4px; background:#f4f0e6;
+    box-shadow:0 18px 50px rgba(0,0,0,.55); opacity:.4; filter:blur(6px); overflow:hidden; }
+  #p6-sheeteb { position:absolute; left:20px; top:16px; font-weight:700; font-size:19px; line-height:24px; letter-spacing:2px; color:#2a2622; white-space:nowrap; }
+  #p6-win { position:absolute; left:20px; top:56px; width:520px; height:400px; overflow:hidden; background:#fff; }
+  #p6-img { position:absolute; left:-580px; top:-936px; width:2550px; height:auto; display:block; }
+  #p6-bar { position:absolute; left:24px; top:338px; width:480px; height:44px; box-sizing:border-box; border:3px solid #d8a13a; background:rgba(216,161,58,.18); transform-origin:left center; opacity:0; visibility:hidden; }
+  #p6-src { position:absolute; left:110px; bottom:60px; font-weight:700; font-size:19px; line-height:24px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  #p6-cover { position:absolute; inset:0; background:#04070c; opacity:0; visibility:hidden; }
+</style>
+<div id="p6-root" data-composition-id="g-a2-6-pittsburgh" data-width="1920" data-height="1080" data-duration="13.56" data-type-ok="">
+  <div id="p6-sweep"></div>
+
+  <div id="p6-eyebrow">PITTSBURGH</div>
+  <div id="p6-head">THANKSGIVING WEEKEND, 1950</div>
+
+  <div id="p6-axis"></div>
+  <div class="p6-tl" style="top:879px"></div><div class="p6-tl" style="top:759px"></div><div class="p6-tl" style="top:639px"></div><div class="p6-tl" style="top:519px"></div><div class="p6-tl" style="top:399px"></div>
+  <div class="p6-tk" id="p6-t0" style="top:866px">0 in</div>
+  <div class="p6-tk" id="p6-t6" style="top:746px">6</div>
+  <div class="p6-tk" id="p6-t12" style="top:626px">12</div>
+  <div class="p6-tk" id="p6-t18" style="top:506px">18</div>
+  <div class="p6-tk" id="p6-t24" style="top:386px">24</div>
+
+  <div id="p6-col"></div>
+  <div id="p6-fri"></div>
+  <div id="p6-sat"></div>
+  <div id="p6-seam"></div>
+  <div class="p6-lab" id="p6-labfri"><div class="p6-sm">FRI 24</div><div class="p6-big">14.0 IN</div></div>
+  <div class="p6-lab" id="p6-labsat"><div class="p6-sm">SAT 25</div><div class="p6-big">10.1 IN</div></div>
+
+  <div id="p6-tube"></div>
+  <div id="p6-gfill"></div>
+  <div id="p6-dash"></div>
+  <div id="p6-labsun"><div class="p6-sm">SUN 26</div><div class="p6-big">22 IN</div><div id="p6-ground">ON THE GROUND</div></div>
+
+  <div class="p6-flake" id="p6-f1"  style="left:352px"></div>
+  <div class="p6-flake" id="p6-f2"  style="left:366px"></div>
+  <div class="p6-flake" id="p6-f3"  style="left:381px"></div>
+  <div class="p6-flake" id="p6-f4"  style="left:397px"></div>
+  <div class="p6-flake" id="p6-f5"  style="left:412px"></div>
+  <div class="p6-flake" id="p6-f6"  style="left:428px"></div>
+  <div class="p6-flake" id="p6-f7"  style="left:441px"></div>
+  <div class="p6-flake" id="p6-f8"  style="left:456px"></div>
+  <div class="p6-flake" id="p6-f9"  style="left:471px"></div>
+  <div class="p6-flake" id="p6-f10" style="left:485px"></div>
+  <div class="p6-flake" id="p6-f11" style="left:498px"></div>
+  <div class="p6-flake" id="p6-f12" style="left:508px"></div>
+
+  <div id="p6-sheet">
+    <div id="p6-sheeteb">NWS PITTSBURGH · DEPTHS ON THE GROUND</div>
+    <div id="p6-win">
+      <img id="p6-img" src="media/a2/pbz-snow-p1.png" alt="NWS Pittsburgh snowfall records, greatest depths of snow on the ground list" data-crop-ok="document page cropped to the depths list by design">
+      <div id="p6-bar"></div>
+    </div>
+  </div>
+
+  <div id="p6-src">Source: NWS Pittsburgh</div>
+  <div id="p6-cover"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#p6-";
+
+  /* hidden states (also hidden in CSS) */
+  tl.set([P+"eyebrow", P+"head", P+"fri", P+"sat", P+"seam", P+"labfri", P+"labsat", P+"tube", P+"gfill", P+"dash", P+"labsun", P+"bar", P+"cover"], { autoAlpha: 0 }, 0);
+  tl.set(P+"sheet", { rotation: 1.5, autoAlpha: 0.4 }, 0);
+
+  /* continuous motion the whole window: light sweep, tick drift, sheet float */
+  tl.fromTo(P+"sweep", { x: -300 }, { x: 2200, duration: 6.8, ease: "none", repeat: 1 }, 0);
+  tl.to([P+"t0", P+"t6", P+"t12", P+"t18", P+"t24"], { x: -8, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+  tl.to(P+"sheet", { y: -10, duration: 3.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0);
+
+  /* IF @0.00: axis and empty column settle in; sheet already on, soft and blurred */
+  tl.fromTo([P+"axis", P+"col"], { y: 30 }, { y: 0, duration: 0.9, ease: "power3.out" }, 0);
+  tl.fromTo(P+"sheet", { filter: "blur(6px)" }, { filter: "blur(6px)", duration: 0.01 }, 0);
+
+  /* PITTSBURGH @4.12: eyebrow + headline in; sheet to 92 %, blur clears */
+  tl.fromTo(P+"eyebrow", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.12);
+  tl.fromTo(P+"head", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.12);
+  tl.to(P+"sheet", { autoAlpha: 0.92, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }, 4.12);
+
+  /* 14 @5.12: FRI segment fills from the bottom, label pair in */
+  tl.set(P+"fri", { autoAlpha: 1 }, 5.12);
+  tl.fromTo(P+"fri", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.7, ease: "power3.out" }, 5.12);
+  tl.fromTo(P+"labfri", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.4);
+
+  /* 10 @8.64 (.1 @8.96): SAT stacks on top of FRI, label pair in */
+  tl.set([P+"sat", P+"seam"], { autoAlpha: 1 }, 8.64);
+  tl.fromTo(P+"sat", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.6, ease: "power3.out" }, 8.64);
+  tl.fromTo(P+"seam", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.3, ease: "power2.out" }, 8.64);
+  tl.fromTo(P+"labsat", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.96);
+
+  /* SUNDAY @11.04: gauge tube draws, dashed line draws left to right */
+  tl.set([P+"tube", P+"dash"], { autoAlpha: 1 }, 11.04);
+  tl.fromTo(P+"tube", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, 11.04);
+  tl.fromTo(P+"dash", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 11.04);
+
+  /* 22 @11.74: gauge fills to 440 px, label block in, row 3 highlight draws */
+  tl.set(P+"gfill", { autoAlpha: 1 }, 11.74);
+  tl.fromTo(P+"gfill", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.8, ease: "power3.out" }, 11.74);
+  tl.fromTo(P+"labsun", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 11.74);
+  tl.set(P+"bar", { autoAlpha: 1 }, 11.74);
+  tl.fromTo(P+"bar", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 11.74);
+
+  /* GROUND @12.90: a few flakes settle on the stack top (40 px/s) */
+  tl.set([P+"f1", P+"f2", P+"f3", P+"f4", P+"f5", P+"f6", P+"f7", P+"f8", P+"f9", P+"f10", P+"f11", P+"f12"], { autoAlpha: 1 }, 12.9);
+  tl.fromTo(P+"f1",  { y: 0 }, { y: 54, duration: 1.35, ease: "none", repeat: 0 }, 12.90);
+  tl.fromTo(P+"f2",  { y: 0 }, { y: 54, duration: 1.35, ease: "none", repeat: 0 }, 12.95);
+  tl.fromTo(P+"f3",  { y: 0 }, { y: 54, duration: 1.35, ease: "none", repeat: 0 }, 13.00);
+  tl.fromTo(P+"f4",  { y: 0 }, { y: 54, duration: 1.35, ease: "none", repeat: 0 }, 12.92);
+  tl.fromTo(P+"f5",  { y: 0 }, { y: 54, duration: 1.35, ease: "none", repeat: 0 }, 12.97);
+  tl.fromTo(P+"f6",  { y: 0 }, { y: 54, duration: 1.35, ease: "none", repeat: 0 }, 13.02);
+  tl.fromTo(P+"f7",  { y: 0 }, { y: 54, duration: 1.35, ease: "none", repeat: 0 }, 12.91);
+  tl.fromTo(P+"f8",  { y: 0 }, { y: 54, duration: 1.35, ease: "none", repeat: 0 }, 12.96);
+  tl.fromTo(P+"f9",  { y: 0 }, { y: 54, duration: 1.35, ease: "none", repeat: 0 }, 13.01);
+  tl.fromTo(P+"f10", { y: 0 }, { y: 54, duration: 1.35, ease: "none", repeat: 0 }, 12.93);
+  tl.fromTo(P+"f11", { y: 0 }, { y: 54, duration: 1.35, ease: "none", repeat: 0 }, 12.98);
+  tl.fromTo(P+"f12", { y: 0 }, { y: 54, duration: 1.35, ease: "none", repeat: 0 }, 13.03);
+
+  /* EXIT: whole card crossfades to #04070c over the last 0.32 s (13.24 to 13.56), 1.5 s after the last label lands at 11.74 */
+  tl.set(P+"cover", { autoAlpha: 1 }, 13.24);
+  tl.fromTo(P+"cover", { opacity: 0 }, { opacity: 1, duration: 0.32, ease: "power2.in" }, 13.24);
+
+  tl.to({}, { duration: 0.01 }, 13.55);
+  window.__timelines["g-a2-6-pittsburgh"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
