@@ -35,8 +35,13 @@
   #a3g-head { left:110px; top:90px; padding:14px 24px; font-size:52px; }
   /* chip: left 1010 (brief 1060 would put the right edge near 1873 > 1824 at 40 px), top 470, bottom ~532 */
   #a3g-chip { left:1010px; top:470px; padding:10px 18px; font-size:40px; }
-  .a3g-source { position:absolute; left:110px; bottom:90px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
-  .a3g-credit { position:absolute; left:110px; bottom:60px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#93a3b2; white-space:nowrap; }
+  /* source / credit / scan: g-a3-4's styles, so frame 0 matches its last frame */
+  .a3g-src { position:absolute; left:110px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:19px; letter-spacing:2px;
+    color:#c8d3e0; white-space:nowrap; text-shadow:0 1px 4px rgba(4,7,12,.9); }
+  #a3g-source, #a3g-src4 { bottom:90px; }
+  #a3g-credit { bottom:60px; }
+  .a3g-scan { position:absolute; left:370px; top:0; width:1180px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
   #a3g-fade { position:absolute; left:0; top:0; width:1920px; height:1080px; background:#04070c; }
   /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
   .a3g-hide { opacity:0; visibility:hidden; }
