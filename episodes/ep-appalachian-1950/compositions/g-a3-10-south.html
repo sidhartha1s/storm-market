@@ -201,11 +201,13 @@ window.__timelines = window.__timelines || {};
       const p = pins[i][1];
       pins[i][0].setAttribute("transform", "translate(" + sc(p) + ") scale(" + k.toFixed(4) + ")");
     }
-    const r = (LOOP_R * s).toFixed(2);
-    const td = "M" + TRK.map(sc).join(" L") + " A" + r + " " + r + " 0 1 1 " + sc(LOOP_TOP) + " A" + r + " " + r + " 0 1 1 " + sc(TRK[4]);
+    const r = (LOOP_R * s).toFixed(2), q = TRK.map(sc);
+    const td = "M" + sc(CAR) + " L" + q[0] + " L" + q[1] + " C" + q[2] + " " + q[3] + " " + q[4] + " C" + q[5] + " " + q[6] + " " + q[7] +
+      " C" + q[8] + " " + q[9] + " " + q[10] + " A" + r + " " + r + " 0 1 0 " + sc(LOOP_W) + " A" + r + " " + r + " 0 1 0 " + q[10];
     trackEl.setAttribute("d", td);
     glowEl.setAttribute("d", td);
     exitEl.setAttribute("d", "M" + EXIT.map(sc).join(" L"));
+    loopArrow.setAttribute("transform", "translate(" + sc(ARROW_AT) + ") scale(" + k.toFixed(4) + ")");
     for (let i = 0; i < CON.length; i++) CON[i][0].setAttribute("d", "M" + sc(CON[i][1]) + " L" + sc(CON[i][2]));
     for (let i = 0; i < AR.length; i++) {
       const a = AR[i], el = arEls[i];
