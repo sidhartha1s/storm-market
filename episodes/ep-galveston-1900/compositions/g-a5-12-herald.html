@@ -5,14 +5,15 @@
 
   /* page wrapper: crop width 1288 (column 1240 + 24 px margin each side), centred x 960, top 140.
      transform-origin sits on the lit sentence's centre so the push keeps it near frame y ~475. */
-  #g-a5-12-herald-pg { position:absolute; inset:auto; left:316px; top:140px; width:1288px; transform-origin:644px 335px; opacity:0; visibility:hidden; }
+  /* top 156 (was 140): at the 1.15 end push the page top sits at frame y ~106, clear of the eyebrow chip bottom (~100) */
+  #g-a5-12-herald-pg { position:absolute; inset:auto; left:316px; top:156px; width:1288px; transform-origin:644px 335px; opacity:0; visibility:hidden; }
   #g-a5-12-herald-img { display:block; width:1288px; height:auto; }
   /* RETUNE both boxes to the measured crop once media/doc/mwr-1900-09-p376-herald.jpg is on disk (wrapper px).
      Lit bar: whole line(s) of "It was not through any lack of attention on the part of the forecasters", x 24, y 290, 1240 x 90 -> frame y 430 to 520 at scale 1.
      Underline: under the heading "From the Boston Herald". */
   #g-a5-12-herald-bar { position:absolute; inset:auto; left:24px; top:156px; width:1240px; height:80px; border-radius:6px;
     background:rgba(216,161,58,0.32); transform-origin:left center; opacity:0; visibility:hidden; }
-  #g-a5-12-herald-ul { position:absolute; inset:auto; left:24px; top:226px; width:520px; height:4px; border-radius:2px;
+  #g-a5-12-herald-ul { position:absolute; inset:auto; left:37px; top:66px; width:730px; height:4px; border-radius:2px;
     background:#d8a13a; transform-origin:left center; opacity:0; visibility:hidden; }
 
   /* source line top-left, eyebrow top-right: glass (tokens.md) */
