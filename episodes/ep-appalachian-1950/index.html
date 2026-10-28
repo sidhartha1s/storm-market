@@ -8,7 +8,7 @@
      DURATIONS: every nx-* audio duration is the measured wav length (app-wav-durations.tsv, marked DUR:wav); hook and
      intro match audio/manifest.json (tempo 0.94). Every start is the previous start + its wav + 0.40.
      STAND-INS: every Paul segment (H1-S1, A2-S15, A4-S6) is the nearest accepted still with the TTS take (no media/paul/,
-     no clips generated). No bed, no SFX yet (sound hits listed in the composer report, not mounted).
+     no clips generated). Presenter circle pip-w1..w7 mounted 28 Oct 26 (see PRESENTER CIRCLE). No bed, no SFX yet (sound hits listed in the composer report, not mounted).
      DESIGNED GROUND (.ground, track 1) fills the frames where a comp's built timeline ends before the next segment
      (A2, A3, A5 comps were built on word end + 0.40, so their gaps differ from the slot by the wav-vs-words difference;
      g-intro-2 is 2.23 s short). -->
@@ -149,6 +149,28 @@
   <video id="ins-paul-e1" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="915.569" data-duration="9.083" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
   <video id="ins-paul-e2" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="924.652" data-duration="6.417" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
   <section class="clip ground" id="c-a5-ground2" data-start="931.069" data-duration="13.72" data-track-index="1"></section>
+
+  <!-- PRESENTER CIRCLE (28 Oct 26, hand-mounted; mg-quickref "Corner circle", worked example ep-e2e-moore). Face pass:
+       media/face/ep-appalachian-1950-face.mp4@0.000 (covers the whole timeline from 0, so each window seeks to its own start and
+       the lips stay on the narration). Windows = narration spans (nx start to wav end) minus: the Paul stand-in slots
+       (c-h1-paul 0-8.838, c-a2-paul 453.081, c-a4-paul 702.459), the CTA and its dips (459.053-485.095), the chapter
+       blackouts, the end ask (915.569-931.069) and the A5-S9 signature over g-a5-9-title. No broadcast clips. No comp draws
+       into x >= 1600, y >= 680 (headers and CSS read; only snow flakes there in g-a4-5, allowed by its header), so no comp
+       turns the circle off. -->
+  <video id="pip-w1" class="pip" src="media/pip/paul-w1.mp4" data-start="8.838" data-duration="61.857" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w1" data-start="8.838" data-duration="61.857" data-track-index="9"></section>
+  <video id="pip-w2" class="pip" src="media/pip/paul-w2.mp4" data-start="71.795" data-duration="164.285" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w2" data-start="71.795" data-duration="164.285" data-track-index="9"></section>
+  <video id="pip-w3" class="pip" src="media/pip/paul-w3.mp4" data-start="237.18" data-duration="215.501" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w3" data-start="237.18" data-duration="215.501" data-track-index="9"></section>
+  <video id="pip-w4" class="pip" src="media/pip/paul-w4.mp4" data-start="485.095" data-duration="135.715" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w4" data-start="485.095" data-duration="135.715" data-track-index="9"></section>
+  <video id="pip-w5" class="pip" src="media/pip/paul-w5.mp4" data-start="621.91" data-duration="80.149" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w5" data-start="621.91" data-duration="80.149" data-track-index="9"></section>
+  <video id="pip-w6" class="pip" src="media/pip/paul-w6.mp4" data-start="710.64" data-duration="65.481" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w6" data-start="710.64" data-duration="65.481" data-track-index="9"></section>
+  <video id="pip-w7" class="pip" src="media/pip/paul-w7.mp4" data-start="777.221" data-duration="137.948" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w7" data-start="777.221" data-duration="137.948" data-track-index="9"></section>
 
   <!-- ============ GRAPHICS (host start = segment start + the brief's offset; duration = the comp's built value, mount-app.md) ============ -->
   <!-- intro (briefs/intro/_list.md). g-intro-4-lga-chip not built (no LaGuardia footage): not mounted. -->
