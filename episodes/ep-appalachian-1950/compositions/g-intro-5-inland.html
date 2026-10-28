@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-intro-5-inland · I1-S2 to I1-S4 · ep-appalachian-1950 · DEEP (Opus) · brief: briefs/intro/g-intro-5-inland.md
+  Claim: inland, Pittsburgh's snow was its biggest on record; the cold reached a long way south, to Bowling Green, KY at
+  -7°F (still the November record); Newark's 108 mph was not the strongest gust. L2 opens and closes here, L4 opens at
+  the end (no place, no number), L1 stays closed: no track, low, front, isobar, arrow, or anything joining two pins.
+  BASEMAP: copied verbatim from g-intro-2-hookmap.html (Natural Earth 50m admin-1, public domain), ids ih2- renamed ii5-.
+    Kentucky outline (#ii5-ky) = US path subpath 14, vertices verbatim (point-in-polygon: holds Bowling Green and Louisville).
+  PROJECTION: X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213).
+    Newark (89893.2, 32871.1) LaGuardia (91039.4, 32641.0) Pittsburgh (67525.2, 34519.2)
+    Bowling Green (42616.7, 53910.9) Louisville (45391.0, 46738.6)
+  CAMERA FRAMES (screen = (map - top-left) * s), from the brief:
+    G s 0.25 TL (87599.4, 30481.0): LGA (860,540)            <- g-intro-3-coast's last frame
+    H s 0.04024 TL (53608.7, 21596.7): PIT (560,520) NWK (1460,454)
+    F s 0.025 TL (23416.7, 28310.9): BWG (480,640) LOU (549,461) PIT (1103,155) NWK (1662,114)
+    D s 0.04024 TL (59078.1, 18954.6): NWK (1240,560) PIT (340,626)
+  LAYERS: #ii5-cam holds map-unit geometry (only the camera transforms it). Pins and chip anchors are screen-size and
+    camAt(t) translates each to its projected point (seek-safe: a pure function of comp time). Moves interpolate scale
+    in log space (helpers.js logZoom idea). The cold wash is SCHEMATIC screen-space shading: direction and reach only.
+  SEG offsets assume 0.40 s gaps (no index.html yet): replace with the real data-start differences.
+-->
+<template>
+<style>
+  #g-intro-5-inland-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 45% 50%, #0b1016 0%, #030507 78%); }
+  .ii5-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ii5-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .ii5-scan { position:absolute; left:370px; top:0; width:1180px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .ii5-at { position:absolute; left:0; top:0; width:0; height:0; }
+  .ii5-chip { position:absolute; box-sizing:border-box; padding:10px 18px; border-radius:14px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:1; }
+  /* -7°F: 120 px of text at 58 (fontTools, ariblk.ttf) + 36 padding; left edge with the label (pin + 42), top pin + 30:
+     frame F box about x 522-678, y 670-748 */
+  #ii5-bwgchip { left:42px; top:30px; color:#7fb2e5; }
+  /* 108 MPH: 280 px at 58 + 36 padding; right edge 40 px left of the pin, top 40 px below: frame D box x 884-1200, y 600-678 */
+  #ii5-nwkchip { right:40px; top:40px; color:#f2f5f8; }
+  .ii5-credit { position:absolute; left:110px; bottom:60px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#93a3b2; }
+  .ii5-q { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; fill:#d8a13a; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .ii5-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-intro-5-inland-root" data-composition-id="g-intro-5-inland" data-width="1920" data-height="1080" data-duration="20.12">
+  <svg class="ii5-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ii5-landgrad" gradientUnits="userSpaceOnUse" x1="0" y1="14000" x2="0" y2="46000">
+        <stop offset="0" stop-color="#15202b"/><stop offset="1" stop-color="#0b1016"/>
+      </linearGradient>
+    </defs>
+    <!-- camera layer: map units -->
+    <g id="ii5-cam">
+      __BASEMAP__
+      <path id="ii5-ky" vector-effect="non-scaling-stroke" stroke-linejoin="round" fill="none" stroke="#2a3644" stroke-width="1.2" stroke-opacity="1" d="__KY__"/>
+    </g>
+  </svg>
+  <!-- cold wash, SCHEMATIC, screen space, under the pins: #5a768f at 0.45 above the leading edge, 0 at the edge over
+       the last 120 px; east side masked out over x 1150-1350 so Newark and the coast stay outside it -->
+  <svg class="ii5-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ii5-washgrad" gradientUnits="userSpaceOnUse" x1="0" y1="-1080" x2="0" y2="0">
+        <stop offset="0" stop-color="#5a768f" stop-opacity="0.45"/>
+        <stop offset="0.8889" stop-color="#5a768f" stop-opacity="0.45"/>
+        <stop offset="1" stop-color="#5a768f" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="ii5-eastgrad" gradientUnits="userSpaceOnUse" x1="1150" y1="0" x2="1350" y2="0">
+        <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#000000"/>
+      </linearGradient>
+      <mask id="ii5-eastmask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+        <rect x="0" y="0" width="1920" height="1080" fill="url(#ii5-eastgrad)"/>
+      </mask>
+    </defs>
+    <g id="ii5-washg" class="ii5-hide" mask="url(#ii5-eastmask)">
+      <g id="ii5-wash">
+        <rect x="0" y="-1080" width="1920" height="1080" fill="url(#ii5-washgrad)"/>
+        <line x1="0" y1="0" x2="1920" y2="0" stroke="#7fb2e5" stroke-opacity="0.6" stroke-width="2"/>
+      </g>
+    </g>
+  </svg>
+  <!-- screen-size pins: camAt sets each *-at group's translate to its projected point -->
+  <svg class="ii5-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <clipPath id="ii5-pitclip" clipPathUnits="userSpaceOnUse"><rect id="ii5-pitclip-r" x="-10" y="-10" width="20" height="0"/></clipPath>
+      <clipPath id="ii5-bwgclip" clipPathUnits="userSpaceOnUse"><rect id="ii5-bwgclip-r" x="-10" y="-10" width="20" height="0"/></clipPath>
+    </defs>
+    <g id="ii5-lou-at">
+      <circle id="ii5-lou" class="ii5-hide" r="5" fill="#93a3b2"/>
+    </g>
+    <g id="ii5-lga-at">
+      <g id="ii5-lga">
+        <circle r="17" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+        <circle r="9" fill="#7fb2e5"/>
+      </g>
+      <!-- x 33 matches g-intro-3-coast's last frame, so the cut does not jump -->
+      <text id="ii5-lgalab" class="ii5-lab" x="33" y="9">LAGUARDIA AIRPORT</text>
+    </g>
+    <g id="ii5-pit-at">
+      <!-- snow columns only east of x -30: the label sits left of the pin (right edge at -42), so no dot falls through it -->
+      <g id="ii5-snow" class="ii5-hide" fill="#dfe7ee" fill-opacity="0.7">
+        <circle cx="-30" cy="0" r="1.5"/><circle cx="-20" cy="0" r="1"/><circle cx="-10" cy="0" r="1.5"/>
+        <circle cx="0" cy="0" r="1"/><circle cx="10" cy="0" r="1.5"/><circle cx="20" cy="0" r="1"/>
+        <circle cx="30" cy="0" r="1.5"/><circle cx="40" cy="0" r="1"/><circle cx="50" cy="0" r="1.5"/>
+        <circle cx="60" cy="0" r="1"/><circle cx="70" cy="0" r="1.5"/><circle cx="80" cy="0" r="1"/>
+      </g>
+      <g id="ii5-pit" class="ii5-hide">
+        <circle id="ii5-pit-pulse" r="17" fill="none" stroke="#f2f5f8" stroke-width="3" opacity="0"/>
+        <circle id="ii5-pit-ring" r="17" fill="#04070c" fill-opacity="0.6" stroke="#93a3b2" stroke-width="3"/>
+        <circle id="ii5-pit-core" r="9" fill="#f2f5f8" clip-path="url(#ii5-pitclip)"/>
+      </g>
+      <text id="ii5-pitlab" class="ii5-lab ii5-hide" x="-42" y="9" text-anchor="end">PITTSBURGH</text>
+      <text id="ii5-pitlabr" class="ii5-lab ii5-hide" x="42" y="9">PITTSBURGH</text>
+    </g>
+    <g id="ii5-bwg-at">
+      <g id="ii5-bwg" class="ii5-hide">
+        <circle id="ii5-bwg-pulse" r="17" fill="none" stroke="#7fb2e5" stroke-width="3" opacity="0"/>
+        <circle id="ii5-bwg-ring" r="17" fill="#04070c" fill-opacity="0.6" stroke="#93a3b2" stroke-width="3"/>
+        <circle id="ii5-bwg-core" r="9" fill="#5a768f" clip-path="url(#ii5-bwgclip)"/>
+      </g>
+      <text id="ii5-bwglab" class="ii5-lab ii5-hide" x="42" y="9">BOWLING GREEN, KY</text>
+    </g>
+    <g id="ii5-nwk-at">
+      <circle id="ii5-nwk-pulse" r="17" fill="none" stroke="#7fb2e5" stroke-width="3" opacity="0"/>
+      <g id="ii5-nwk" class="ii5-hide">
+        <circle r="17" fill="#04070c" fill-opacity="0.6" stroke="#7fb2e5" stroke-width="3"/>
+        <circle r="9" fill="#7fb2e5"/>
+      </g>
+      <text id="ii5-nwklab" class="ii5-lab ii5-hide" x="-42" y="9" text-anchor="end">NEWARK</text>
+    </g>
+    <!-- unnamed marker: a HUD element over open ocean in frame D (no place, no name, no number, no leader) -->
+    <g id="ii5-q-at" transform="translate(1700,560)">
+      <g id="ii5-q" class="ii5-hide">
+        <circle id="ii5-q-pulse" r="32" fill="none" stroke="#d8a13a" stroke-width="3" opacity="0"/>
+        <circle r="32" fill="#04070c" fill-opacity="0.6" stroke="#d8a13a" stroke-width="3"/>
+        <text class="ii5-q" x="0" y="19" text-anchor="middle">?</text>
+      </g>
+    </g>
+  </svg>
+  <div class="ii5-scan" id="ii5-scan"></div>
+  <!-- chip anchors: camAt translates each zero-size anchor to its pin's screen point -->
+  <div class="ii5-at" id="ii5-bwgchip-at"><div class="ii5-chip ii5-hide" id="ii5-bwgchip">-7°F</div></div>
+  <div class="ii5-at" id="ii5-nwkchip-at"><div class="ii5-chip ii5-hide" id="ii5-nwkchip">108 MPH</div></div>
+  <div class="ii5-credit" id="ii5-credit">Basemap: Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#ii5-";
+  const $ = function (n) { return document.getElementById("ii5-" + n); };
+  /* map units from the brief §2 */
+  const NWK = [89893.2, 32871.1], LGA = [91039.4, 32641.0], PIT = [67525.2, 34519.2];
+  const BWG = [42616.7, 53910.9], LOU = [45391.0, 46738.6];
+
+  /* segment offsets (comp-local s), 0.40 s gaps assumed; cue = SEG[seg] + words.json time */
+  const SEG = { i1s2: 0.000, i1s3: 7.723, i1s4: 18.099 };
+  const DUR = SEG.i1s4 + 2.021;                                                /* 20.12 */
+
+  /* camera frames [s, top-left x, top-left y] -> centre form [s, cx, cy] */
+  const fr = function (s, tx, ty) { return [s, tx + 960 / s, ty + 540 / s]; };
+  const G = fr(0.25, 87599.4, 30481.0), H = fr(0.04024, 53608.7, 21596.7);
+  const F = fr(0.025, 23416.7, 28310.9), D = fr(0.04024, 59078.1, 18954.6);
+  /* centre that puts map point p at screen (px, py) at scale s */
+  const anchor = function (p, px, py, s) { return [s, p[0] - (px - 960) / s, p[1] - (py - 540) / s]; };
+  function logLerpScale(fromScale, toScale, t) {                              /* helpers.js logZoom */
+    return Math.exp(Math.log(fromScale) + (Math.log(toScale) - Math.log(fromScale)) * t);
+  }
+  /* zoom + pan: scale in log space, the centre moves in step with 1/s so the move reads at one even speed */
+  function move(a, b, u) {
+    const s = logLerpScale(a[0], b[0], u);
+    const w = (1 / a[0] - 1 / s) / (1 / a[0] - 1 / b[0]);
+    return [s, a[1] + (b[1] - a[1]) * w, a[2] + (b[2] - a[2]) * w];
+  }
+  const HD = anchor(PIT, 560, 520, H[0] * 1.015);                              /* H after the 1.5 % drift on Pittsburgh */
+  const expo = gsap.parseEase("expo.inOut"), p2 = gsap.parseEase("power2.inOut");
+  const T_H = 1.4, T_COLD = SEG.i1s2 + 5.12, T_F = T_COLD + 1.8, T_AND = SEG.i1s4, T_D = SEG.i1s4 + 0.8;
+  function state(t) {
+    if (t < T_H) return move(G, H, expo(Math.max(0, t) / T_H));              /* ON: G -> H pull-out, 6.2x */
+    if (t < T_COLD) return anchor(PIT, 560, 520, logLerpScale(H[0], HD[0], (t - T_H) / (T_COLD - T_H)));
+    if (t < T_F) return move(HD, F, p2((t - T_COLD) / 1.8));                 /* COLD: tilt south to F */
+    if (t < T_AND) return F;
+    if (t < T_D) return move(F, D, p2((t - T_AND) / 0.8));                   /* AND: push east to D */
+    return D;
+  }
+  const camEl = $("cam");
+  const pts = [[$("lga-at"), LGA], [$("nwk-at"), NWK], [$("pit-at"), PIT], [$("bwg-at"), BWG], [$("lou-at"), LOU]];
+  const anchors = [[$("bwgchip-at"), BWG], [$("nwkchip-at"), NWK]];
+  function camAt(t) {
+    const c = state(t), s = c[0], cx = c[1], cy = c[2];
+    camEl.setAttribute("transform", "translate(" + (960 - cx * s).toFixed(2) + "," + (540 - cy * s).toFixed(2) + ") scale(" + s.toFixed(6) + ")");
+    for (let i = 0; i < pts.length; i++) {
+      const p = pts[i][1];
+      pts[i][0].setAttribute("transform", "translate(" + (960 + (p[0] - cx) * s).toFixed(2) + "," + (540 + (p[1] - cy) * s).toFixed(2) + ")");
+    }
+    for (let i = 0; i < anchors.length; i++) {
+      const p = anchors[i][1];
+      anchors[i][0].style.transform = "translate(" + (960 + (p[0] - cx) * s).toFixed(2) + "px," + (540 + (p[1] - cy) * s).toFixed(2) + "px)";
+    }
+  }
+  camAt(0);
+
+  /* basemap paint order: coast under-stroke (half hidden by the fills), then fills with state lines (as g-intro-2) */
+  [$("ca"), $("us")].forEach(function (el) {
+    const coast = el.cloneNode(false);
+    coast.removeAttribute("id");
+    coast.setAttribute("fill", "none"); coast.setAttribute("stroke", "#4a5560"); coast.setAttribute("stroke-width", "3.2");
+    camEl.insertBefore(coast, camEl.firstChild);
+  });
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to({ t: 0 }, { t: 1, duration: DUR, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
+
+  /* transforms start in set() at 0 (file contract) */
+  tl.set([P + "bwgchip", P + "nwkchip"], { x: 0, y: 0, scale: 1 }, 0);
+  tl.set([P + "pit", P + "bwg", P + "q"], { scale: 1, svgOrigin: "0 0" }, 0);
+  tl.set([P + "pitlab", P + "pitlabr", P + "bwglab", P + "nwklab"], { x: 0 }, 0);
+  tl.set(P + "wash", { y: 0 }, 0);
+
+  /* ambient: scan line top to bottom for the whole comp (about 55 px/s); credit on throughout */
+  tl.fromTo(P + "scan", { y: -10 }, { y: 1090, duration: DUR, ease: "none" }, 0);
+
+  /* ON @0.00: frame G (g-intro-3's last frame); LaGuardia pin and label out during the pull-out */
+  tl.to([P + "lga", P + "lgalab"], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, SEG.i1s2 + 0.00);
+  /* Newark as a dot only (its pin sits inside the PBZ sheet box in frame H) */
+  tl.fromTo(P + "nwk", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, 1.00);
+
+  /* PITTSBURGH @1.42: ring + label in, white fill sweep (clip rect, top to bottom, 0.6 s), snowfall starts */
+  tl.fromTo(P + "pit", { autoAlpha: 0, scale: 0.3, svgOrigin: "0 0" }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", duration: 0.4, ease: "back.out(2)" }, SEG.i1s2 + 1.42);
+  tl.fromTo(P + "pitlab", { autoAlpha: 0, x: 12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.i1s2 + 1.42);
+  tl.to(P + "pitclip-r", { attr: { height: 20 }, duration: 0.6, ease: "power2.inOut" }, SEG.i1s2 + 1.52);
+  tl.to(P + "pit-ring", { attr: { stroke: "#f2f5f8" }, duration: 0.6, ease: "power2.inOut" }, SEG.i1s2 + 1.52);
+  tl.fromTo(P + "snow", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, SEG.i1s2 + 1.42);
+  /* snow dots fall inside a 90 px radius, 30-50 px/s, staggered, finite repeats until COLD */
+  Array.prototype.slice.call($("snow").querySelectorAll("circle")).forEach(function (c, i) {
+    const x = +c.getAttribute("cx"), h = Math.sqrt(90 * 90 - x * x), v = 30 + (i * 7) % 21;
+    const dur = 2 * h / v, t0 = SEG.i1s2 + 1.42 + (i * 0.37) % 2.4;
+    const rep = Math.max(0, Math.floor((T_COLD - t0) / dur) - 1);
+    tl.fromTo(c, { attr: { cy: -h } }, { attr: { cy: h }, duration: dur, ease: "none", repeat: rep }, t0);
+  });
+  tl.to(P + "snow", { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, T_COLD);
+
+  /* SHEET @2.04-4.58: Pittsburgh pulses every 1.2 s; the camera drifts 1.5 % on Pittsburgh (state()) */
+  tl.fromTo(P + "pit-pulse", { opacity: 0.8, attr: { r: 17 } }, { opacity: 0, attr: { r: 35 }, duration: 1.0, ease: "power1.out", repeat: 2, repeatDelay: 0.2 }, SEG.i1s2 + 2.04);
+
+  /* COLD @5.12: label clears before the tilt; cold wash leading edge starts south */
+  tl.to(P + "pitlab", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, T_COLD);
+  tl.fromTo(P + "washg", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power1.out" }, T_COLD);
+  /* SOUTH @6.94: leading edge at y 700 (frame F, south of Bowling Green) */
+  tl.to(P + "wash", { y: 700, duration: (SEG.i1s2 + 6.94) - T_COLD, ease: "power1.inOut" }, T_COLD);
+
+  /* KENTUCKY @1.64 (I1-S3): state outline brightens, no label */
+  tl.to(P + "ky", { attr: { stroke: "#93a3b2", "stroke-width": 2 }, duration: 0.4, ease: "power1.out" }, SEG.i1s3 + 1.64);
+
+  /* BOWLING @2.66: ring + label in; Louisville as a plain dot (never labelled) */
+  tl.fromTo(P + "bwg", { autoAlpha: 0, scale: 0.3, svgOrigin: "0 0" }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", duration: 0.4, ease: "back.out(2)" }, SEG.i1s3 + 2.66);
+  tl.fromTo(P + "bwglab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.i1s3 + 2.66);
+  tl.fromTo(P + "lou", { autoAlpha: 0 }, { autoAlpha: 0.7, duration: 0.4, ease: "power1.out" }, SEG.i1s3 + 2.76);
+
+  /* SEVEN BELOW @3.54: deep-blue fill sweep, ring to #7fb2e5, chip in; everything else steps back */
+  tl.to(P + "bwgclip-r", { attr: { height: 20 }, duration: 0.4, ease: "power2.inOut" }, SEG.i1s3 + 3.54);
+  tl.to(P + "bwg-ring", { attr: { stroke: "#7fb2e5" }, duration: 0.4, ease: "power2.inOut" }, SEG.i1s3 + 3.54);
+  tl.fromTo(P + "bwgchip", { autoAlpha: 0, scale: 0.85, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, transformOrigin: "left center", duration: 0.4, ease: "back.out(1.6)" }, SEG.i1s3 + 3.54);
+  tl.to(P + "bwglab", { opacity: 0.6, duration: 0.3, ease: "power2.out" }, SEG.i1s3 + 3.54);
+  tl.to([P + "pit", P + "nwk"], { opacity: 0.5, duration: 0.3, ease: "power2.out" }, SEG.i1s3 + 3.54);
+  tl.to(P + "ky", { attr: { "stroke-opacity": 0.5 }, duration: 0.3, ease: "power2.out" }, SEG.i1s3 + 3.54);
+  /* hold: Bowling Green pulses every 1.4 s until AND */
+  tl.fromTo(P + "bwg-pulse", { opacity: 0.8, attr: { r: 17 } }, { opacity: 0, attr: { r: 35 }, duration: 1.2, ease: "power1.out", repeat: 4, repeatDelay: 0.2 }, SEG.i1s3 + 4.00);
+
+  /* CHECKED @5.98: chip dims for the LMK sheet window (g-intro-7, to about I1-S3 10.2) */
+  tl.to(P + "bwgchip", { opacity: 0.35, duration: 0.3, ease: "power2.out" }, SEG.i1s3 + 5.98);
+
+  /* AND @0.00 (I1-S4): wash, Bowling Green, Louisville, label and chip out; F -> D (state(), 0.8 s) */
+  tl.to([P + "washg", P + "bwg", P + "bwglab", P + "bwgchip", P + "lou"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, T_AND);
+  tl.to(P + "ky", { attr: { stroke: "#2a3644", "stroke-width": 1.2, "stroke-opacity": 1 }, duration: 0.4, ease: "power2.in" }, T_AND);
+  tl.to([P + "pit", P + "nwk"], { opacity: 1, duration: 0.4, ease: "power2.out" }, T_AND);
+
+  /* NEWARKS @0.14, shown on settle 0.80: labels and 108 MPH in; one Newark pulse */
+  tl.fromTo(P + "nwklab", { autoAlpha: 0, x: 12 }, { autoAlpha: 1, x: 0, duration: 0.25, ease: "power3.out" }, T_D);
+  tl.fromTo(P + "pitlabr", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.25, ease: "power3.out" }, T_D);
+  tl.fromTo(P + "nwkchip", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power3.out" }, T_D);
+  tl.fromTo(P + "nwk-pulse", { opacity: 0.8, attr: { r: 17 } }, { opacity: 0, attr: { r: 35 }, duration: 1.2, ease: "power1.out" }, T_D);
+
+  /* STRONGEST @1.22 */
+  tl.to(P + "nwkchip", { opacity: 0.35, duration: 0.35, ease: "power2.out" }, SEG.i1s4 + 1.22);
+
+  /* ONE @1.56: "?" marker in, then its pulse runs to the last frame. Only 0.46 s remain, so the pulse is the first
+     0.46 s of the brief's 0.9 s ring (64 -> 120 px, 0.8 -> 0, linear), cut by the end of the host, never past it */
+  const T_ONE = SEG.i1s4 + 1.56, QP = (DUR - T_ONE) / 0.9;
+  tl.fromTo(P + "q", { autoAlpha: 0, scale: 0.6, svgOrigin: "0 0" }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", duration: 0.35, ease: "back.out(2)" }, T_ONE);
+  tl.fromTo(P + "q-pulse", { opacity: 0.8, attr: { r: 32 } }, { opacity: 0.8 * (1 - QP), attr: { r: 32 + 28 * QP }, duration: DUR - T_ONE, ease: "none" }, T_ONE);
+
+  window.__timelines["g-intro-5-inland"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
