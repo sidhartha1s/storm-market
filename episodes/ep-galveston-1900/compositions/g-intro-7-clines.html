@@ -62,9 +62,9 @@ window.__timelines = window.__timelines || {};
   /* His @5.24: line A exits up through the overflow, card narrows for name 2 */
   tl.to([P+"nameA", P+"roleA"], {y:-40, autoAlpha:0, duration:0.3, ease:"power2.in"}, 5.24);
   tl.to(P+"bg", {scaleX:0.86, duration:0.36, ease:"power2.inOut"}, 5.24);
-  /* Joseph @5.60: name 2 rises in; observer @7.20: role 2 */
+  /* Joseph @5.60: name 2 rises in; role 2 @5.90 as name 2 lands, so it settles by 6.30 and holds 1.2 s before the 7.50 exit */
   tl.fromTo(P+"nameB", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 5.60);
-  tl.fromTo(P+"roleB", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 7.20);
+  tl.fromTo(P+"roleB", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 5.90);
 
   /* exit 7.50 to 8.10, ends where g-intro-8-track cuts in ("The storm" @8.10) */
   tl.to(P+"lt", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 7.50);
