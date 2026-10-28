@@ -19,10 +19,14 @@
     10.70 -> 8.10 chip in              12.68 message -> 10.08 chip out, zoom to Washington 10.08 to 10.78
     13.38 -> 10.78 Houston flash       13.40 to 14.00 -> 10.80 to 11.40 line 2  14.00 -> 11.40 (Washington label in at 10.80, see receipt)
     14.30 -> 11.70 segment end (D)
-  BASEMAP TODO: g-intro-4's whole-Gulf land / border / states paths (plate units, same coordinates as here) are not pasted:
-    they are too large to copy by hand. Only the g-a4-2 Natural Earth patch (plate x 300 to 547, y 1100 to 1275) is drawn, so the
-    Houston framing shows that patch and the Washington framing shows a small patch plus the pins and the line. Paste g-intro-4's
-    land path (line 54 of g-intro-4-wire-map.html) into #g-a4-10-houston-wire-plate under the patch and delete this note.
+  BASEMAP (plate units, same projection as here, so it sits in #...-plate with no extra transform):
+    gulf = g-a2-5-two-offices.html's land path (between its BASEMAP markers), copied verbatim: Natural Earth 10m coastline,
+           box lon -110..-50, lat 5..46, simplified 0.035 deg, whole plate px. Covers the Washington framing (plate X -653..3187).
+    patch = g-a4-2's unsimplified Natural Earth 10m patch (plate x 300 to 547.49, y 1100 to 1275.21), for the close framings.
+    Hand-off, a pure function of camera scale in draw(): u = 0 at s >= 8, 1 at s <= 2 (log). The gulf path is masked out of
+    the patch box with opacity 1 - u and the patch fades to 1 - u, so the close framings show only the 10m coast inside the
+    box (gulf land outside it, seam at plate X 547.49 = screen x 1900 in the Houston framing) and the wide framing shows only
+    the gulf path (no box outline). Credit: Natural Earth only (no Census paths drawn).
   CIRCLE CORNER (x >= 1600, y >= 680): nothing labelled; gauge right edge 1540.
 -->
 <template>
