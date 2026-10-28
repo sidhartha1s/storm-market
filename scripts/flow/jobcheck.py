@@ -19,6 +19,8 @@ def errors(cfg):
         if "paul" in frame and LOCKED_FRAME not in frame and not EPISODE_FRAME.search(frame):
             out.append(f"{job['name']}: frame {job['frame']} is not Paul's locked start frame ({LOCKED_FRAME}) "
                        "or an episode's media/paul/paul-start-frame-*")
+        if job.get("ingredients"):  # Buffalo 28 Oct 26: First Frame takes one image; Flow asked instead of quoting, 0 spent
+            out.append(f"{job['name']}: has ingredients; a start-frame clip takes the frame only")
         for phrase in BANNED:
             if phrase in job["prompt"].lower():
                 out.append(f"{job['name']}: prompt rewrites the room ('{phrase}'); keep the start frame's room")
