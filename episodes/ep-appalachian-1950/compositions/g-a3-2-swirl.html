@@ -87,15 +87,16 @@
         <polygon id="a3w-rh3" points="1383.3,624.1 1382.2,641.9 1368.3,633.9"/>
       </g>
     </g>
-    <!-- warm Atlantic air (schematic): nested CCW curls over the low's north side; W2 passes Buffalo (1132,224), W3 lands on the Newark coast (1381,299) -->
-    <path class="a3w-air a3w-warm" id="a3w-w1" mask="url(#a3w-w1mask)" d="M1480 650 C1475 617 1473 503 1450 450 C1427 397 1384 358 1340 330 C1296 303 1211 293 1185 285"/>
-    <path class="a3w-air a3w-warm" id="a3w-w2" mask="url(#a3w-w2mask)" d="M1590 520 C1580 488 1573 383 1530 330 C1487 277 1404 217 1330 200 C1256 183 1126 225 1085 230"/>
-    <path class="a3w-air a3w-warm" id="a3w-w3" mask="url(#a3w-w3mask)" d="M1560 630 C1552 600 1532 498 1510 450 C1488 402 1452 365 1430 340 C1409 315 1389 306 1381 299"/>
+    <!-- warm Atlantic air (schematic): in off the ocean east of the low, curling CCW across its north side to the north-west.
+         W2 and W3 end short of the Buffalo and Newark pins, as g-a3-3-pins draws them -->
+    <path class="a3w-air a3w-warm" id="a3w-w1" mask="url(#a3w-w1mask)" d="M1560 640 C1520 420 1360 300 1203 256"/>
+    <path class="a3w-air a3w-warm" id="a3w-w2" mask="url(#a3w-w2mask)" d="M1580 520 C1480 330 1300 220 1199 212"/>
+    <path class="a3w-air a3w-warm" id="a3w-w3" mask="url(#a3w-w3mask)" d="M1590 600 C1500 420 1445 360 1433 344"/>
     <!-- arctic air (schematic): pours south down the low's west side; Pittsburgh (1078,364) sits between C1 and C3 -->
-    <path class="a3w-air a3w-cold" id="a3w-c1" mask="url(#a3w-c1mask)" d="M820 110 C843 135 920 215 960 260 C1000 305 1033 337 1060 380 C1087 423 1110 497 1120 520"/>
-    <path class="a3w-air a3w-cold" id="a3w-c2" mask="url(#a3w-c2mask)" d="M680 160 C710 188 807 278 860 330 C913 382 960 418 1000 470 C1040 522 1083 612 1100 640"/>
-    <path class="a3w-air a3w-cold" id="a3w-c3" mask="url(#a3w-c3mask)" d="M960 90 C973 112 1017 180 1040 220 C1063 260 1080 293 1100 330 C1120 367 1150 422 1160 440"/>
-    <!-- arrowheads: tip at local (0,0), ride each shaft by GSAP x/y/rotation -->
+    <path class="a3w-air a3w-cold" id="a3w-c1" mask="url(#a3w-c1mask)" d="M820 110 C960 260 1060 380 1110 498"/>
+    <path class="a3w-air a3w-cold" id="a3w-c2" mask="url(#a3w-c2mask)" d="M680 160 C860 330 1000 470 1088 619"/>
+    <path class="a3w-air a3w-cold" id="a3w-c3" mask="url(#a3w-c3mask)" d="M960 90 C1040 220 1100 330 1148 419"/>
+    <!-- arrowheads: tip at local (0,0), HEAD px ahead of the revealed shaft along its tangent, by GSAP x/y/rotation -->
     <polygon class="a3w-ahead a3w-whead" id="a3w-w1-h" points="0,0 -26,-13 -26,13"/>
     <polygon class="a3w-ahead a3w-whead" id="a3w-w2-h" points="0,0 -26,-13 -26,13"/>
     <polygon class="a3w-ahead a3w-whead" id="a3w-w3-h" points="0,0 -26,-13 -26,13"/>
