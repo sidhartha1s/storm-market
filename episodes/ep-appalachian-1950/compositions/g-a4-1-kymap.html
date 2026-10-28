@@ -359,7 +359,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "lou-pulse", { opacity: 0.9, attr: { r: 15 } }, { opacity: 0, attr: { r: 30 }, duration: 0.8, ease: "power2.out", immediateRender: false }, S2 + 14.48);
 
   /* OUT IN SOUTHEASTERN @0.00: records chip and the three values out; Louisville, Lexington, Bowling Green labels to 0.45 */
-  tl.to([P + "recchip", P + "louval", P + "lexval", P + "bgval"], { y: -12, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, S3);
+  /* values drop down and away from their labels (y:-12 rode -7°F into BOWLING GREEN, graphics_qc text-collision at 33.1) */
+  tl.to([P + "recchip", P + "louval", P + "lexval", P + "bgval"], { y: 12, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, S3);
   tl.to([P + "loulab", P + "lexlab", P + "bglab"], { opacity: 0.45, duration: 0.4, ease: "power2.out" }, S3);
   /* MIDDLESBORO @2.04: pin drops in, label part in */
   tl.fromTo(P + "mid", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, S3 + 2.04);
