@@ -216,7 +216,8 @@ window.__timelines = window.__timelines || {};
   tl.to($("flow"), { strokeDashoffset: -120 * (28.9 - 13.54), duration: 28.9 - 13.54, ease: "none" }, 13.54);
 
   /* "Buffalo sits" @15.68: head lands, pin flash */
-  tl.fromTo($("head"), { autoAlpha: 0, scale: 0.3 }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, 15.43);
+  tl.fromTo($("head"), { autoAlpha: 0, scale: 0.3, svgOrigin: "1368 437.3", smoothOrigin: false },
+    { autoAlpha: 1, scale: 1, svgOrigin: "1368 437.3", smoothOrigin: false, duration: 0.25, ease: "back.out(2)" }, 15.43);
   tl.to($("pin"), { scale: 1.6, duration: 0.25, ease: "power2.out" }, 15.68);
   tl.to($("pin"), { scale: 1, duration: 0.25, ease: "power2.in" }, 15.93);
 
