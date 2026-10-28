@@ -55,7 +55,7 @@ this way passed unchanged outside the sandbox.
 **517 pages** (486 before the 2026-10-27 senior review added the start-here page, older-reader paragraphs, 15 figures and their sources). `paginate.mjs` runs `blocks_pipeline.py` to flatten the manuscript into ~3,200 blocks,
 measures every one of them at the book's exact content width in headless Chrome, then fills fixed 6x9
 pages from those measurements. `frontmatter.mjs` prepends the cover, title page, copyright page and
-contents. `fitcheck.mjs` passes on all 517.
+contents. `fitcheck.mjs` passes on all 517. When the count changes, update both places buyers see it: `landing/tools/chrome.py` `BOOK_PAGES` (the whole site) and `ebook/appendix/templates/rehook.html` (the free packets), then rebuild the site, the free packets and the Gumroad pages.
 
 ```
 Front matter (cover, title, copyright, contents)    6
