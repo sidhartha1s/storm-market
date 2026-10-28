@@ -157,10 +157,10 @@ window.__timelines = window.__timelines || {};
   const CHS = proj(-81.6326, 38.3498), HUN = proj(-82.4452, 38.4192);
   const PAI = proj(-82.8071, 37.8145), HAZ = proj(-83.1932, 37.2498);
 
-  /* PROVISIONAL band (lon, lat), clockwise from the north tip: replace with g-a2-7's receipt vertices */
-  const BAND_LL = [[-80.10, 42.05], [-79.80, 41.75], [-79.55, 41.20], [-79.45, 40.60], [-79.50, 40.00], [-79.55, 39.45],
-    [-79.60, 39.05], [-79.70, 38.75], [-80.50, 38.60], [-81.00, 38.70], [-81.70, 39.20], [-81.55, 39.60],
-    [-81.00, 40.10], [-80.75, 40.70], [-80.60, 41.30], [-80.35, 41.85]];
+  /* band (lon, lat), clockwise from the north tip: g-a2-7's V1 to V18, so frame 0 matches its band */
+  const BAND_LL = [[-80.15, 41.95], [-79.80, 41.80], [-79.62, 41.40], [-79.55, 40.90], [-79.45, 40.40], [-79.50, 39.95],
+    [-79.55, 39.55], [-79.62, 39.10], [-79.90, 38.75], [-80.35, 38.62], [-80.75, 38.75], [-80.95, 39.10],
+    [-80.85, 39.55], [-80.75, 40.00], [-80.70, 40.50], [-80.62, 41.00], [-80.45, 41.50], [-80.35, 41.75]];
   /* KY-WV line, north to south: Big Sandy mouth (Catlettsburg), Louisa / Fort Gay, Tug Fork via Crum, Kermit,
      Williamson, Matewan, to the Virginia corner */
   const KYWV_LL = [[-82.598, 38.418], [-82.604, 38.115], [-82.50, 38.02], [-82.44, 37.90], [-82.409, 37.838],
