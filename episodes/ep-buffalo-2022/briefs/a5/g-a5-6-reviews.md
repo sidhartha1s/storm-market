@@ -27,7 +27,7 @@ Scene A — two report cards (panel `#15202b` at 94 %, 1 px `rgba(255,255,255,.1
 - Chip "12 RECOMMENDATIONS" (same panel, radius 20, padding 16 px 26 px), left x 1000, top 670 (about x 1000-1500, y 670-740): "12" Arial Black 900 52 px `#f2f5f8` + "RECOMMENDATIONS" Arial 700 26 px `#dfe7ee` tracking 4. Right edge < 1600.
 Scene B — quote:
 - Both report cards and the chip have left; the attribution line names the review, so no reference card is kept (a shrunken card would put text under the 19 px floor).
-- Quote card (panel `#15202b` at 94 %, border as above, radius 28, padding 48 px 64 px), x 260-1560, y 400-640. Quote in Georgia italic 52 px `#f2f5f8`, line-height 66, centred, two lines: "Clearly communicate the risks" / "associated with weather events." Each of the 8 words is its own span.
+- Quote card (panel `#15202b` at 94 %, border as above, radius 28, padding 48 px 64 px), x 260-1560, y 400-690 (quote lines y about 448-580, attribution 600-630). Quote in Georgia italic 52 px `#f2f5f8`, line-height 66, centred, two lines: "Clearly communicate the risks" / "associated with weather events." Each of the 8 words is its own span.
 - Word slots: before each word shows, its span shows a placeholder bar 6 px high `#2a3644` at the word's own width, sitting on the baseline (pre-authored, same span box, so the word replaces its own bar in place; no text written at runtime).
 - Attribution under the quote, Georgia italic 26 px `#d8a13a`, centred, top 600: "NYS after-action review, Guidehouse, Aug 4, 2023".
 - Source (both scenes from 12.94 s), Arial 400 19 px `#c8d3e0`, `left:96px; bottom:54px`: "NYS DHSES release, 4 Aug 2023".
