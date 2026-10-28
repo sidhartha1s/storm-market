@@ -34,8 +34,8 @@ The 160 mph often quoted as the storm's wind was one mountaintop station (Mount 
 Text: `PEAK GUSTS · MPH` · `MOUNT WASHINGTON, NH · SUMMIT *` · `160` · `* ONE MOUNTAINTOP STATION` · `BEAR MOUNTAIN, NY` · `140 MPH` · `NEWARK, NJ` · `· ITS RECORD` · `108 MPH` · `NEW YORK CITY` · `?` · `NEW YORK CITY · NWS JACKSON` · `94` · `STATION NOT NAMED` · `CENTRAL PARK · NWS MOUNT HOLLY · PARK RECORD` · `70` · `ALLENTOWN, PA` · `88` · `ALBANY, NY · ITS RECORD` · `83` · pin labels `NEWARK`, `BEAR MOUNTAIN, NY`, `STATE PARK ON THE HUDSON`, `ALBANY`, `ALLENTOWN`, `CENTRAL PARK` · the three source lines · `Basemap: Natural Earth`
 Segment offsets in comp time (0.40 s gaps assumed; replace with the real data-start differences): `SEG = {s4: 0, s5: 13.359, s6: 30.777}`. Cue = SEG + word time.
 - S4 0.00: frame 0 as g-a1-2's end; map drift continues (scale 1.03 to 1.06 over the host, ease none). `/* YOULL @s4 0.00 */`
-- S4 2.32 "160,": Mount Washington bar `scaleX` 0 to 1 (0.8 s, power4.out) in full `#7fb2e5`, value counts to 160. `/* 160 @s4 2.32 */`
-- S4 6.06 "summit": name line in; bar recolours to `#93a3b2` and dims to 45 % (0.6 s); divider draws. `/* SUMMIT @s4 6.06 */`
+- S4 2.32 "160,": Mount Washington bar `scaleX` 0 to 1 (0.8 s, power4.out) in `#93a3b2` at 45 % (dimmed from its first frame, never wind blue), value counts to 160. `/* 160 @s4 2.32 */`
+- S4 6.06 "summit": name line in; divider draws. `/* SUMMIT @s4 6.06 */`
 - S4 8.70 "station": the star and footnote tag in. `/* STATION @s4 8.70 */`
 - S4 12.46 "footnote.": the whole Mount Washington row shifts x 0 to -8 and back (settle beat). `/* FOOTNOTE @s4 12.46 */`
 - S5 2.82 "ladder,": empty slots show faint tick marks at x 900 for Albany, Allentown, NYC (opacity .3), one after another bottom to top (0.15 s stagger). `/* LADDER @s5 2.82 */`
