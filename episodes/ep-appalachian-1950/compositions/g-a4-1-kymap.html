@@ -12,6 +12,10 @@
     copied verbatim between the BASEMAP markers (the same copy g-intro-2-hookmap uses). Coast: the same paths drawn first
     with a 3.2 px #4a5560 stroke; the fills on top leave a 1.6 px coastline. State lines #2a3644 1.2 px; Kentucky's line
     is the same as every other state's (no highlight).
+    That path stops at map y 64905 (lat 35.0 N); frame P0 reaches lat 28.4, so south of the seam was a black void
+    (fix 29 Oct 26). #a41-south is the whole d of g-a4-2-southmap #a42-south (US Census TIGER SC AR MS LA NC GA AL TN
+    FL TX, Natural Earth 50m OK), drawn as g-a4-2 draws it: clipped to y >= 64805, coast under-stroke, fill #0b1016,
+    a #0e1620 Mexico rect under Texas. Credit line now names US Census, as g-a4-2's (the seam frame matches).
   PROJECTION (the episode's one coordinate system): X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213).
   CAMERA FRAMES (screen = (map - top-left) * s), briefs/a4/_list.md:
     P0  s 0.012 TL (-15129.9, 11692.7): CHI (640,178) BUF (1043,110)
@@ -208,7 +212,7 @@
     <span class="a41-bold a41-hide" id="a41-rec2">· STILL STANDING</span>
   </div>
   <div class="a41-src" id="a41-src">Source: NWS Jackson, KY</div>
-  <div class="a41-credit" id="a41-credit">Basemap: Natural Earth</div>
+  <div class="a41-credit" id="a41-credit">Basemap: Natural Earth, US Census</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
