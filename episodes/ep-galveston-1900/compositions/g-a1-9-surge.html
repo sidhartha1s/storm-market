@@ -134,7 +134,7 @@
       <!-- labels -->
       <text id="g-a1-9-surge-tidelab" class="ga19-lab ga19-hide" x="120" y="734" font-size="26" fill="#93a3b2">Normal tide</text>
       <text id="g-a1-9-surge-surgelab" class="ga19-lab ga19-hide" x="1064" y="682" font-size="26" fill="#d8a13a">Surge</text>
-      <text class="ga19-lab" x="96" y="1015" font-size="19" fill="#93a3b2">Schematic</text>
+      <text class="ga19-lab" x="96" y="1015" font-size="26" fill="#93a3b2">Schematic</text>
     </svg>
 
     <div id="g-a1-9-surge-chipa" class="ga19-hide">
@@ -290,7 +290,9 @@ window.__timelines = window.__timelines || {};
 
   /* MAP @12.98 ("Klein's"): Part A out 12.98 to 13.40, Part B in 13.10 to 13.50, source line swaps */
   tl.to([P + "parta", P + "srca"], { autoAlpha: 0, duration: 0.42, ease: "power1.inOut" }, 12.98);
-  tl.to([P + "partb", P + "srcb"], { autoAlpha: 1, duration: 0.4, ease: "power1.inOut" }, PUSH0);
+  tl.to(P + "partb", { autoAlpha: 1, duration: 0.4, ease: "power1.inOut" }, PUSH0);
+  /* source B waits for source A to finish leaving (same slot), so the two lines never share a frame */
+  tl.to(P + "srcb", { autoAlpha: 1, duration: 0.3, ease: "power1.out" }, 13.40);
 
   /* slow push s 19.75 -> 20.4; label anchors follow by (anchor - centre) * (K - 1) */
   tl.to(P + "push", { scale: K, svgOrigin: "960 540", duration: PUSHD, ease: "none" }, PUSH0);
