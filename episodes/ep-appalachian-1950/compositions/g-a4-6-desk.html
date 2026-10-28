@@ -13,6 +13,11 @@
   CAMERA: P0 s 0.012 TL (-15129.9, 11692.7) -> P6 s 0.0105 TL (9632.0, 0.8), 1.0 s power2.inOut from AND @2.16.
   Map layers (SCHEMATIC, NOT TO SCALE) live in map units under #a46-cam; pins are screen-size HUD dots placed by camAt(t).
   Segment time = comp time (one segment, A4-S11). Host 8.647 s = 8.247 wav + 0.40 tail; the fade-through is the last 0.5 s.
+  BASEMAP FIX (29 Oct 26): the regional box stops at lat 35.0 N (y 64905) and lon -64.0 (x 128965), which left the
+  lower third and the right strip black. #a46-outus / #a46-outfgn fill everything outside it inside this comp's camera
+  range: US Census TIGER for SC AR MS LA NC GA AL TN FL TX (as g-a4-2-southmap), Natural Earth 50m admin-1 for the
+  other states and Canada, and a SCHEMATIC Mexico outline (no Mexico geometry on disk) under Texas. Projected as
+  above, RDP 40 map units. The cold clip now takes the outer US land too, so the cold tint reaches its lat 30.2 edge.
 -->
 <template>
 <style>
