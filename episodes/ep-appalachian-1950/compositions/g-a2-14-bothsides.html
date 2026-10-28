@@ -192,7 +192,7 @@ window.__timelines = window.__timelines || {};
   camAt(0);
 
   /* basemap paint order as g-intro-2: coast under-stroke (half hidden by the fills), then fills with state lines.
-     shortcut: skips ids the BASEMAP TODO has not filled yet; once filled both exist. */
+     both ids exist in the basemap above. */
   ["ca", "us"].map($).filter(Boolean).forEach(function (el) {
     const coast = el.cloneNode(false);
     coast.removeAttribute("id");
