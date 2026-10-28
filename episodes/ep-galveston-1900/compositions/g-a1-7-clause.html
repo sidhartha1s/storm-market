@@ -39,7 +39,7 @@ window.__timelines = window.__timelines || {};
      territory @3.62 -> 1.98 ; island. end @3.78 -> 2.14 ; spread @4.10 -> 2.46 ; exit 4.32 -> 2.68 */
 
   /* camera: a pure function of comp time, so seeking is safe */
-  const cam = document.querySelector(P + "cam");
+  const cam = P + "cam";
   const cx = 507;
   function apply(t) {
     let s, cy;
