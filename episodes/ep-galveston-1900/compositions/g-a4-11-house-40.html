@@ -1,0 +1,184 @@
+<template>
+<style>
+  #g-a4-11-house-40-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a4-11-house-40-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* start-hidden SVG parts (also hidden by tl.set at 0) */
+  .ga411-walker, #g-a4-11-house-40-glow { visibility:hidden; opacity:0; }
+
+  /* source line: top-left glass, small radius */
+  #g-a4-11-house-40-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* HUD labels: never ride a move */
+  #g-a4-11-house-40-lsea { position:absolute; left:110px; top:920px; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:3px; }
+  #g-a4-11-house-40-note { position:absolute; left:96px; top:1000px; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#93a3b2; letter-spacing:2px; }
+
+  /* chips: glass card, radius 28, right edge 1824, top 130 (clear of the roof at x <= 1260) */
+  .ga411-chip { position:absolute; right:96px; top:130px; box-sizing:border-box; padding:20px 48px 22px; border-radius:28px;
+    text-align:right; white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  .ga411-main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:58px; color:#f2f5f8; }
+  .ga411-tag { display:block; margin-top:6px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:4px; }
+</style>
+<div id="g-a4-11-house-40-root" data-composition-id="g-a4-11-house-40" data-width="1920" data-height="1080"
+     data-type-ok="schematic house plate by brief: chips 52 px, plate labels and tags 19-22 px, no mid-tier element in this beat">
+  <svg id="g-a4-11-house-40-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- 5.75 ft figure = 172 px at 30 px/ft; feet at (0,0), head top at -172, waist at -102 -->
+      <g id="g-a4-11-house-40-man">
+        <circle cx="0" cy="-158" r="14"/>
+        <path d="M-10,-142 L10,-142 L18,-90 L12,-90 L10,-58 L14,0 L4,0 L0,-50 L-4,0 L-14,0 L-10,-58 L-12,-90 L-18,-90 Z"/>
+      </g>
+    </defs>
+
+    <!-- HOUSE PLATE: sea level y 960, 30 px/ft, ground 5.2 ft = y 804, floor 10.53 ft = y 644 -->
+    <!-- ground band y 804 to 960 with 2 px top stroke -->
+    <rect x="0" y="804" width="1920" height="156" fill="#15202b"/>
+    <path fill="none" stroke="#93a3b2" stroke-width="2" d="M0,804 L1920,804"/>
+    <!-- sea-level datum -->
+    <path id="g-a4-11-house-40-datum" fill="none" stroke="#5a768f" stroke-width="2" stroke-dasharray="8 8" d="M96,960 L1824,960"/>
+
+    <!-- house: body x 760 to 1240, floor y 644, eave y 104, ridge y 60 (schematic) -->
+    <polygon fill="#15202b" stroke="#93a3b2" stroke-width="3" stroke-linejoin="round" points="740,104 860,60 1140,60 1260,104"/>
+    <rect x="760" y="104" width="480" height="540" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+    <path fill="none" stroke="#2a3644" stroke-width="2" d="M760,374 L1240,374"/>
+    <!-- windows: upper storey y 200 to 320, lower storey y 470 to 590 -->
+    <rect id="g-a4-11-house-40-w0" x="880" y="200" width="60" height="120" fill="#e8c56a" opacity="0.6"/>
+    <rect id="g-a4-11-house-40-w1" x="1000" y="200" width="60" height="120" fill="#e8c56a" opacity="0.6"/>
+    <rect id="g-a4-11-house-40-w2" x="1120" y="200" width="60" height="120" fill="#e8c56a" opacity="0.6"/>
+    <rect id="g-a4-11-house-40-w3" x="880" y="470" width="60" height="120" fill="#e8c56a" opacity="0.6"/>
+    <rect id="g-a4-11-house-40-w4" x="1000" y="470" width="60" height="120" fill="#e8c56a" opacity="0.6"/>
+    <rect id="g-a4-11-house-40-w5" x="1120" y="470" width="60" height="120" fill="#e8c56a" opacity="0.6"/>
+    <!-- door 60 x 210, x 760 to 820, y 434 to 644; glow flashes as each person enters -->
+    <rect x="760" y="434" width="60" height="210" fill="#04070a" stroke="#93a3b2" stroke-width="2"/>
+    <rect id="g-a4-11-house-40-glow" x="762" y="436" width="56" height="206" fill="#e8c56a"/>
+
+    <!-- front steps (700,804) up to the door sill (760,644): 8 risers of 20 px -->
+    <polygon fill="#2a3644" stroke="#93a3b2" stroke-width="2" stroke-linejoin="round"
+      points="700,804 700,784 707.5,784 707.5,764 715,764 715,744 722.5,744 722.5,724 730,724 730,704 737.5,704 737.5,684 745,684 745,664 752.5,664 752.5,644 760,644 760,804"/>
+
+    <!-- fence (4 ft) with the gate gap at x 560 -->
+    <path fill="none" stroke="#4a5560" stroke-width="4"
+      d="M400,804 V684 M420,804 V684 M440,804 V684 M460,804 V684 M480,804 V684 M500,804 V684 M520,804 V684 M600,804 V684 M620,804 V684 M640,804 V684 M660,804 V684 M680,804 V684 M400,700 H528 M592,700 H680"/>
+    <path fill="none" stroke="#93a3b2" stroke-width="6" d="M534,804 V676 M586,804 V676"/>
+
+    <!-- 10 people filing in (placed by tl.set at 0) -->
+    <use id="g-a4-11-house-40-p0" class="ga411-walker" href="#g-a4-11-house-40-man" fill="#4a5560"/>
+    <use id="g-a4-11-house-40-p1" class="ga411-walker" href="#g-a4-11-house-40-man" fill="#4a5560"/>
+    <use id="g-a4-11-house-40-p2" class="ga411-walker" href="#g-a4-11-house-40-man" fill="#4a5560"/>
+    <use id="g-a4-11-house-40-p3" class="ga411-walker" href="#g-a4-11-house-40-man" fill="#4a5560"/>
+    <use id="g-a4-11-house-40-p4" class="ga411-walker" href="#g-a4-11-house-40-man" fill="#4a5560"/>
+    <use id="g-a4-11-house-40-p5" class="ga411-walker" href="#g-a4-11-house-40-man" fill="#4a5560"/>
+    <use id="g-a4-11-house-40-p6" class="ga411-walker" href="#g-a4-11-house-40-man" fill="#4a5560"/>
+    <use id="g-a4-11-house-40-p7" class="ga411-walker" href="#g-a4-11-house-40-man" fill="#4a5560"/>
+    <use id="g-a4-11-house-40-p8" class="ga411-walker" href="#g-a4-11-house-40-man" fill="#4a5560"/>
+    <use id="g-a4-11-house-40-p9" class="ga411-walker" href="#g-a4-11-house-40-man" fill="#4a5560"/>
+
+    <!-- Isaac at the gate: feet y 804, head y 632, x 542 to 578 (static, not a GSAP mover) -->
+    <use id="g-a4-11-house-40-isaac" href="#g-a4-11-house-40-man" x="560" y="804" fill="#93a3b2"/>
+
+    <!-- water: y 702 to 804, x 96 to 1824, behind the piers, in front of ground, people and steps.
+         Surface wavelength 48 px; control +-6 gives +-3 px, so the line stays within 4 px of y 702 at the waist tick. -->
+    <path id="g-a4-11-house-40-wfill" fill="#5a768f" fill-opacity="0.75"
+      d="M96,702 q24,-6 48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 L1824,804 L96,804 Z"/>
+    <path id="g-a4-11-house-40-wsurf" fill="none" stroke="#7fb2e5" stroke-width="3"
+      d="M96,702 q24,-6 48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0"/>
+
+    <!-- piers under the floor: x 780 to 1220 every 110 px, y 644 to 804 -->
+    <path fill="none" stroke="#93a3b2" stroke-width="14" d="M780,644 V804 M890,644 V804 M1000,644 V804 M1110,644 V804 M1220,644 V804"/>
+
+    <!-- waist mark on Isaac: 3.4 ft = 102 px above his feet = y 702 -->
+    <path id="g-a4-11-house-40-tick" fill="none" stroke="#d8a13a" stroke-width="2" d="M532,702 L588,702"/>
+  </svg>
+
+  <div id="g-a4-11-house-40-src">Isaac Cline, Monthly Weather Review, September 1900, p. 373</div>
+  <div id="g-a4-11-house-40-lsea">Sea level</div>
+  <div id="g-a4-11-house-40-note">Vertical scale 30 px per ft &middot; house: schematic</div>
+
+  <div id="g-a4-11-house-40-c0" class="ga411-chip">
+    <span class="ga411-main">WAIST DEEP</span>
+    <span class="ga411-tag">Around his house</span>
+  </div>
+  <div id="g-a4-11-house-40-c1" class="ga411-chip">
+    <span class="ga411-main">40 TO 50</span>
+    <span class="ga411-tag">People inside &middot; his report</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-11-house-40-";
+  const q = function(id) { return document.querySelector(P + id); };
+  /* a4-s7.words.json, comp starts at 0.00 ("At"), so comp-local = word time.
+     At 0.00 · water 1.62 · waist ("waste") 2.52 · He 3.60 · bringing 3.94 · 40 6.62 · inside 7.84 · (8.28) · next segment word 8.86.
+     Host window 0 to 8.86; timeline ends 8.86 with the chip exit. */
+
+  /* --- start states --- */
+  tl.set([P+"src", P+"c0", P+"c1", P+"glow"], {autoAlpha: 0}, 0);
+  tl.set(P+"tick", {svgOrigin: "560 702"}, 0);
+  const wins = [0, 1, 2, 3, 4, 5].map(function(k) { return q("w" + k); });
+  tl.set(wins, {opacity: 0.6}, 0);
+
+  /* --- filing people: queue in the water at x 680 - 60*i (feet y 804), conveyor at 187.5 px/s to the step foot (700),
+         climb 0.70 s to the sill (760,644), 0.213 s through the door to x 800 while fading.
+         Entry times = 3.94 + (20 + 60 i)/187.5 + 0.913: i 0 -> 4.96 ... i 9 -> 7.84 ("inside"), 0.32 s apart. */
+  const V = 187.5, CLIMB = 0.70, DOOR = 0.213, GO = 3.94;
+  const ppl = [];
+  for (let i = 0; i < 10; i++) {
+    const p = q("p" + i), x0 = 680 - 60 * i, walk = (700 - x0) / V, atStep = GO + walk, entry = atStep + CLIMB + DOOR;
+    ppl.push(p);
+    tl.set(p, {x: x0, y: 804, autoAlpha: 0}, 0);
+    /* He started @3.60: the queue fades in, nearest the steps first */
+    tl.to(p, {autoAlpha: 1, duration: 0.3, ease: "power2.out"}, 3.60 + 0.03 * i);
+    /* BRINGING @3.94: wade to the step foot */
+    tl.to(p, {x: 700, duration: walk, ease: "none"}, GO);
+    /* climb the steps to the door sill */
+    tl.to(p, {x: 760, y: 644, duration: CLIMB, ease: "none"}, atStep);
+    /* through the door, gone at the door */
+    tl.to(p, {x: 800, autoAlpha: 0, duration: DOOR, ease: "power1.in"}, atStep + CLIMB);
+    /* door glow as each one enters (0.30 s, inside the 0.32 s spacing) */
+    tl.to(P+"glow", {autoAlpha: 0.7, duration: 0.1, ease: "power2.out"}, entry - 0.1);
+    tl.to(P+"glow", {autoAlpha: 0, duration: 0.2, ease: "power2.in"}, entry);
+  }
+
+  /* --- whole-window motion: water ripple, 1.2 s period (0.6 s each way), finite repeats to 8.40 --- */
+  const wf = q("wfill"), ws = q("wsurf");
+  const flip = function(d) { return d.replace("q24,-6", "q24,6"); };
+  tl.to(wf, {attr: {d: flip(wf.getAttribute("d"))}, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 13}, 0);
+  tl.to(ws, {attr: {d: flip(ws.getAttribute("d"))}, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 13}, 0);
+
+  /* window flicker (lamps), scattered across the window */
+  [[0, 1.30], [3, 2.90], [1, 4.40], [5, 5.60], [2, 6.90], [0, 7.40], [4, 8.00]].forEach(function(f) {
+    tl.to(wins[f[0]], {opacity: 0.25, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, f[1]);
+  });
+
+  /* AT HOME @0.00: plate on frame 0; source line slides in, then drifts */
+  tl.fromTo(P+"src", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out"}, 0);
+  tl.to(P+"src", {y: -4, duration: 2.0, ease: "sine.inOut", yoyo: true, repeat: 3}, 0.5);
+
+  /* WAIST @2.52: chip 0 in, tick pulses */
+  tl.fromTo(P+"c0", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 2.52);
+  tl.to(P+"tick", {scaleX: 1.6, duration: 0.2, ease: "sine.inOut", yoyo: true, repeat: 3}, 2.52);
+  tl.to(P+"c0", {y: -4, duration: 0.37, ease: "sine.inOut"}, 2.97);
+  /* He started @3.60: chip 0 out by 3.94 */
+  tl.to(P+"c0", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 3.34);
+
+  /* 40 TO 50 @6.62: chip in (text, no count-up) */
+  tl.fromTo(P+"c1", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 6.62);
+  tl.to(P+"c1", {y: -4, duration: 1.19, ease: "sine.inOut"}, 7.07);
+  /* exit 8.26 to 8.86, then cut to g-a4-12 */
+  tl.to(P+"c1", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 8.26);
+
+  window.__timelines["g-a4-11-house-40"] = tl;
+})();
+</script>
+</template>
