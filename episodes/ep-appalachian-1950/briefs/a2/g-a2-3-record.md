@@ -14,7 +14,7 @@ WORDING: research holds a fetch summary of the record sentence, not verified ver
 Text card, no scale. Two blocks: calendar card left half, cite card right half, chip under the cite card.
 
 ## 3. Geometry (px, 1920 x 1080)
-- Calendar card (left): 520 x 560, left 200, top 220 (bottom 780), crimson `#8e2020`, radius 18, top band 90 px `#6e1818` with two binder rings (white 14 px circles at x 330 and 590 of the card's local... place at card-local x 130 and 390, y -10). Inside, centred:
+- Calendar card (left): 520 x 560, left 200, top 220 (bottom 780), crimson `#8e2020`, radius 18, top band 90 px `#6e1818` with two binder rings (`#f4f0e8` 14 px circles at card-local x 130 and 390, y -10). Inside, centred:
   - "SAT · NOV 25" Arial 700 30 px `#f4f0e8` tracking 4 in the top band.
   - "7.5" Arial Black 900 180 px `#f4f0e8` (display tier), centre y about 470.
   - "IN" Arial Black 900 58 px `#f4f0e8` under it, then "COLUMBUS, OHIO" Arial 700 22 px `#f5d98b` tracking 6.
