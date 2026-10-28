@@ -1,0 +1,214 @@
+<template>
+<style>
+  #g-a4-13-neck-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:linear-gradient(180deg, #15202b 0%, #04070c 100%); }
+  #g-a4-13-neck-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* start-hidden parts (also hidden by tl.set at 0) */
+  #g-a4-13-neck-joseph, #g-a4-13-neck-tick, #g-a4-13-neck-arrow { visibility:hidden; opacity:0; }
+
+  /* source line: top-left glass, small radius */
+  #g-a4-13-neck-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  #g-a4-13-neck-note { position:absolute; left:96px; top:1000px; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#93a3b2; letter-spacing:2px; }
+
+  /* chip: glass card, radius 28, right edge 1824, top 130 */
+  #g-a4-13-neck-c0 { position:absolute; right:96px; top:130px; box-sizing:border-box; padding:20px 48px 22px; border-radius:28px;
+    text-align:right; white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  .ga413-main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:58px; color:#f2f5f8; }
+  .ga413-tag { display:block; margin-top:6px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:4px; }
+
+  /* arrow label, top-left at (1516, 284) */
+  #g-a4-13-neck-alabel { position:absolute; left:1516px; top:284px; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:30px; color:#f2f5f8; text-shadow:0 0 10px #04070c, 0 0 4px #04070c; }
+
+  /* lower-third (from g-intro-7-clines): outer moves in x, inner drifts in y; card top edge ~ y 834 */
+  #g-a4-13-neck-lt { position:absolute; left:110px; bottom:110px; width:600px; height:136px; opacity:0; visibility:hidden; }
+  #g-a4-13-neck-ltin { position:absolute; left:0; top:0; width:600px; height:136px; }
+  #g-a4-13-neck-bg { position:absolute; left:0; top:0; width:600px; height:136px; box-sizing:border-box; border-radius:28px; overflow:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #g-a4-13-neck-band { position:absolute; left:0; top:0; width:120px; height:136px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.08), rgba(255,255,255,0)); }
+  #g-a4-13-neck-win { position:absolute; left:28px; top:18px; width:544px; height:100px; overflow:hidden; }
+  #g-a4-13-neck-name { position:absolute; left:0; top:0; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:57px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #g-a4-13-neck-role { position:absolute; left:0; top:64px; white-space:nowrap; font-weight:700; font-size:27px; line-height:35px; letter-spacing:1px; color:#f5d98b; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-13-neck-root" data-composition-id="g-a4-13-neck" data-width="1920" data-height="1080"
+     data-type-ok="schematic house plate by brief: chip 52 px, plate labels and tags 19-26 px, lower-third from g-intro-7-clines">
+  <svg id="g-a4-13-neck-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- 5.75 ft figure = 172 px at 30 px/ft; feet at (0,0), head top at -172, neck at -144 -->
+      <g id="g-a4-13-neck-man">
+        <circle cx="0" cy="-158" r="14"/>
+        <path d="M-10,-142 L10,-142 L18,-90 L12,-90 L10,-58 L14,0 L4,0 L0,-50 L-4,0 L-14,0 L-10,-58 L-12,-90 L-18,-90 Z"/>
+      </g>
+      <!-- water never draws below the ground line y 804 -->
+      <clipPath id="g-a4-13-neck-wclip"><rect x="96" y="0" width="1728" height="804"/></clipPath>
+      <clipPath id="g-a4-13-neck-aclip"><rect id="g-a4-13-neck-aclipr" x="600" y="200" width="0" height="500"/></clipPath>
+    </defs>
+
+    <!-- HOUSE PLATE: sea level y 960, 30 px/ft, ground 5.2 ft = y 804, floor 10.53 ft = y 644 -->
+    <rect x="0" y="804" width="1920" height="156" fill="#15202b"/>
+    <path fill="none" stroke="#93a3b2" stroke-width="2" d="M0,804 L1920,804"/>
+    <path id="g-a4-13-neck-datum" fill="none" stroke="#5a768f" stroke-width="2" stroke-dasharray="8 8" d="M96,960 L1824,960"/>
+
+    <!-- house: body x 760 to 1240, floor y 644, eave y 104, ridge y 60 (schematic) -->
+    <polygon fill="#15202b" stroke="#93a3b2" stroke-width="3" stroke-linejoin="round" points="740,104 860,60 1140,60 1260,104"/>
+    <rect x="760" y="104" width="480" height="540" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+    <path fill="none" stroke="#2a3644" stroke-width="2" d="M760,374 L1240,374"/>
+    <!-- windows lit at dusk -->
+    <rect id="g-a4-13-neck-w0" x="880" y="200" width="60" height="120" fill="#e8c56a" opacity="0.8"/>
+    <rect id="g-a4-13-neck-w1" x="1000" y="200" width="60" height="120" fill="#e8c56a" opacity="0.8"/>
+    <rect id="g-a4-13-neck-w2" x="1120" y="200" width="60" height="120" fill="#e8c56a" opacity="0.8"/>
+    <rect id="g-a4-13-neck-w3" x="880" y="470" width="60" height="120" fill="#e8c56a" opacity="0.8"/>
+    <rect id="g-a4-13-neck-w4" x="1000" y="470" width="60" height="120" fill="#e8c56a" opacity="0.8"/>
+    <rect id="g-a4-13-neck-w5" x="1120" y="470" width="60" height="120" fill="#e8c56a" opacity="0.8"/>
+    <!-- door 60 x 210, x 760 to 820, y 434 to 644 -->
+    <rect x="760" y="434" width="60" height="210" fill="#04070a" stroke="#93a3b2" stroke-width="2"/>
+
+    <!-- front steps (700,804) up to the door sill (760,644): 8 risers of 20 px -->
+    <polygon fill="#2a3644" stroke="#93a3b2" stroke-width="2" stroke-linejoin="round"
+      points="700,804 700,784 707.5,784 707.5,764 715,764 715,744 722.5,744 722.5,724 730,724 730,704 737.5,704 737.5,684 745,684 745,664 752.5,664 752.5,644 760,644 760,804"/>
+
+    <!-- fence (4 ft) with the gate gap at x 560 -->
+    <path fill="none" stroke="#4a5560" stroke-width="4"
+      d="M400,804 V684 M420,804 V684 M440,804 V684 M460,804 V684 M480,804 V684 M500,804 V684 M520,804 V684 M600,804 V684 M620,804 V684 M640,804 V684 M660,804 V684 M680,804 V684 M400,700 H528 M592,700 H680"/>
+    <path fill="none" stroke="#93a3b2" stroke-width="6" d="M534,804 V676 M586,804 V676"/>
+
+    <!-- Joseph: feet y 804, head y 632, final x 690 at the foot of the steps -->
+    <use id="g-a4-13-neck-joseph" href="#g-a4-13-neck-man" x="0" y="804" fill="#93a3b2"/>
+
+    <!-- water: local surface y 0, moved by GSAP y (702 start, 660 settled); clipped at the ground line.
+         Surface wavelength 48 px; control +-6 gives +-3 px so the line stays within 3 px of y 660. -->
+    <g clip-path="url(#g-a4-13-neck-wclip)">
+      <g id="g-a4-13-neck-wg">
+        <path id="g-a4-13-neck-wfill" fill="#5a768f" fill-opacity="0.75"
+          d="M96,0 q24,-6 48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 L1824,900 L96,900 Z"/>
+        <path id="g-a4-13-neck-wsurf" fill="none" stroke="#7fb2e5" stroke-width="3"
+          d="M96,0 q24,-6 48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0"/>
+      </g>
+    </g>
+
+    <!-- piers under the floor: x 780 to 1220 every 110 px, y 644 to 804 -->
+    <path fill="none" stroke="#93a3b2" stroke-width="14" d="M780,644 V804 M890,644 V804 M1000,644 V804 M1110,644 V804 M1220,644 V804"/>
+
+    <!-- neck tick on Joseph: 4.8 ft = 144 px above his feet = y 660, centred on x 690 -->
+    <path id="g-a4-13-neck-tick" fill="none" stroke="#d8a13a" stroke-width="3" d="M662,660 L718,660"/>
+
+    <!-- arrow off-plate toward the city centre (north-east), revealed left to right through a clip -->
+    <g id="g-a4-13-neck-arrow">
+      <g clip-path="url(#g-a4-13-neck-aclip)">
+        <path fill="none" stroke="#d8a13a" stroke-width="4" stroke-dasharray="14 10" stroke-linecap="butt"
+          d="M720,600 C900,420 1250,300 1480,300"/>
+      </g>
+      <polygon id="g-a4-13-neck-ahead" fill="#d8a13a" points="1478,286 1508,300 1478,314"/>
+    </g>
+  </svg>
+
+  <div id="g-a4-13-neck-src">Isaac Cline, Monthly Weather Review, September 1900, p. 373</div>
+  <div id="g-a4-13-neck-note">Vertical scale 30 px per ft &middot; house: schematic</div>
+
+  <div id="g-a4-13-neck-alabel">City centre</div>
+
+  <div id="g-a4-13-neck-c0">
+    <span class="ga413-main">BAROMETER BELOW 29.00 IN</span>
+    <span class="ga413-tag">no more messages could get out</span>
+  </div>
+
+  <div id="g-a4-13-neck-lt">
+    <div id="g-a4-13-neck-ltin">
+      <div id="g-a4-13-neck-bg"><div id="g-a4-13-neck-band"></div></div>
+      <div id="g-a4-13-neck-win">
+        <span id="g-a4-13-neck-name">JOSEPH CLINE</span>
+        <span id="g-a4-13-neck-role">6:30 PM &middot; his brother</span>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-13-neck-";
+  const q = function(id) { return document.querySelector(P + id); };
+  /* a4-s8.words.json, comp starts at 0.00 ("Around"), comp-local = word time. Host window 0 to 15.26.
+     6:30 @0.28 · JOSEPH @1.98 · NECK @3.92 · barometer 5.06 · 29 @6.08 · out 9.10 · head 11.62 · CENTER @12.08 · But 15.26 (cut to g-a4-14). */
+
+  /* --- start states --- */
+  tl.set([P+"src", P+"c0", P+"alabel", P+"lt", P+"name", P+"role", P+"tick", P+"arrow", P+"joseph"], {autoAlpha: 0}, 0);
+  tl.set(P+"lt", {x: -60}, 0);
+  tl.set(P+"joseph", {x: 150, svgOrigin: "690 804", smoothOrigin: false}, 0);
+  tl.set(P+"wg", {y: 702}, 0);
+  const wins = [0, 1, 2, 3, 4, 5].map(function(k) { return q("w" + k); });
+  tl.set(wins, {opacity: 0.8}, 0);
+
+  /* --- whole-window motion: water ripple, 1.2 s period (0.6 s each way), finite repeats past 15.26 --- */
+  const wf = q("wfill"), ws = q("wsurf");
+  const flip = function(d) { return d.replace("q24,-6", "q24,6"); };
+  tl.to(wf, {attr: {d: flip(wf.getAttribute("d"))}, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 25}, 0);
+  tl.to(ws, {attr: {d: flip(ws.getAttribute("d"))}, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 25}, 0);
+
+  /* window flicker (lamps) */
+  tl.to(wins[0], {opacity: 0.35, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 1.30);
+  tl.to(wins[3], {opacity: 0.35, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 2.90);
+  tl.to(wins[1], {opacity: 0.35, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 4.40);
+  tl.to(wins[5], {opacity: 0.35, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 5.60);
+  tl.to(wins[2], {opacity: 0.35, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 6.90);
+  tl.to(wins[4], {opacity: 0.35, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 8.00);
+  tl.to(wins[0], {opacity: 0.35, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 9.40);
+  tl.to(wins[3], {opacity: 0.35, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 11.20);
+  tl.to(wins[2], {opacity: 0.35, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 13.00);
+  tl.to(wins[5], {opacity: 0.35, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 14.40);
+
+  /* 6:30 @0.28: plate at dusk on frame 0; source line slides in, then drifts */
+  tl.fromTo(P+"src", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out"}, 0);
+  tl.to(P+"src", {y: -4, duration: 2.0, ease: "sine.inOut", yoyo: true, repeat: 6}, 0.5);
+
+  /* water rises y 702 to y 660 over 0 to 4.16 */
+  tl.to(P+"wg", {y: 660, duration: 4.16, ease: "power1.inOut"}, 0);
+
+  /* JOSEPH @1.98: lower-third in with name, role 0.3 s behind; figure wades in 1.98 to 3.30 */
+  tl.fromTo(P+"lt", {x: -60, autoAlpha: 0}, {x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out"}, 1.98);
+  tl.fromTo(P+"name", {autoAlpha: 0, y: 40}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out"}, 1.98);
+  tl.fromTo(P+"role", {autoAlpha: 0, y: 40}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out"}, 2.28);
+  tl.to(P+"ltin", {y: -4, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 1}, 2.58);
+  tl.fromTo(P+"band", {x: -120}, {x: 600, duration: 2.0, ease: "sine.inOut"}, 2.58);
+  tl.fromTo(P+"joseph", {autoAlpha: 0, x: 150, svgOrigin: "690 804", smoothOrigin: false}, {autoAlpha: 1, x: 690, svgOrigin: "690 804", smoothOrigin: false, duration: 1.32, ease: "power1.out"}, 1.98);
+  /* sway about his feet from 3.30 to 15.30, 1.2 s each way */
+  tl.fromTo(P+"joseph", {rotation: -1.2, svgOrigin: "690 804", smoothOrigin: false}, {rotation: 1.2, svgOrigin: "690 804", smoothOrigin: false, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 9}, 3.30);
+
+  /* NECK @3.92: tick appears and pulses as the water settles at y 660 (4.16) */
+  tl.fromTo(P+"tick", {autoAlpha: 0}, {autoAlpha: 1, duration: 0.2, ease: "power2.out"}, 3.92);
+  tl.fromTo(P+"tick", {scaleX: 1, svgOrigin: "690 660", smoothOrigin: false}, {scaleX: 1.6, svgOrigin: "690 660", smoothOrigin: false, duration: 0.2, ease: "sine.inOut", yoyo: true, repeat: 3}, 3.92);
+
+  /* lower-third exit 4.80 to 5.40 (barometer @5.06 is inside it) */
+  tl.to(P+"lt", {x: -980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 4.80);
+
+  /* 29 @6.08: chip in, holds, out 9.10 to 9.70 */
+  tl.fromTo(P+"c0", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 6.08);
+  tl.to(P+"c0", {y: -4, duration: 2.57, ease: "sine.inOut"}, 6.53);
+  tl.to(P+"c0", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 9.10);
+
+  /* head @11.62: arrow draws left to right 11.62 to 12.08, head pops at the end; CENTER @12.08: label in */
+  tl.set(P+"aclipr", {attr: {width: 0}}, 0);
+  tl.set(P+"arrow", {autoAlpha: 1}, 11.62);
+  tl.set(P+"ahead", {autoAlpha: 0}, 0);
+  tl.fromTo(P+"aclipr", {attr: {width: 0}}, {attr: {width: 1000}, duration: 0.46, ease: "none"}, 11.62);
+  tl.fromTo(P+"ahead", {autoAlpha: 0}, {autoAlpha: 1, duration: 0.12, ease: "power2.out"}, 11.96);
+  tl.fromTo(P+"alabel", {autoAlpha: 0, x: -16}, {autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out"}, 12.08);
+  /* But @15.26: arrow and label dim to 0.3 over the last 0.3 s into the cut */
+  tl.to(P+"arrow", {autoAlpha: 0.3, duration: 0.3, ease: "power1.inOut"}, 14.96);
+  tl.to(P+"alabel", {autoAlpha: 0.3, duration: 0.3, ease: "power1.inOut"}, 14.96);
+
+  window.__timelines["g-a4-13-neck"] = tl;
+})();
+</script>
+</template>
