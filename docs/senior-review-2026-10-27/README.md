@@ -42,6 +42,8 @@ link text; every page count now 517.
 Kept by owner decision (ops/decisions.md, 27 Oct 26): countdown, viewer count, purchase toast, $87.99 value stack,
 five-star line and testimonials, Gumroad pay-what-you-want "$9.99+".
 
+Shipped 27-28 Oct: site deployed to Cloudflare; Gumroad ebook carries the 517-page book and rebuilt Binder, and its
+description and page say 517; the free packet product's page and all 51 state packets say 517 (the rehook page had 486).
+
 Not done: the About page pen-name framing (owner-approved 26 Aug), the North Carolina page has no hurricane/Helene
-(state data is derived from NOAA Storm Events; needs a sourced data pass), the Gumroad product description and the
-book file on Gumroad still say 486 / carry the old PDF until the owner uploads.
+(state data is derived from NOAA Storm Events; needs a sourced data pass).
