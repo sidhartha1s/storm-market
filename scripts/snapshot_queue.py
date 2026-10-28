@@ -91,7 +91,10 @@ def referenced(ep):
 
 
 def ssh(cmd, timeout):
-    return subprocess.run(["ssh", "-n", "zbook", cmd], capture_output=True, text=True, timeout=timeout, creationflags=NO_WINDOW)
+    # errors="replace": the ZBook console is not UTF-8. A 0x83 byte killed the reader thread, left stdout None, and the
+    # caller's tail[-400:] then hid the job's real exit code behind "'NoneType' object is not subscriptable" (29 Oct 26)
+    return subprocess.run(["ssh", "-n", "zbook", cmd], capture_output=True, text=True, encoding="utf-8", errors="replace",
+                          timeout=timeout, creationflags=NO_WINDOW)
 
 
 def ship(ep):
@@ -205,7 +208,7 @@ def snap_zbook(ep, times, pin, name, out):
     log = f"shipped {sent} of {total} files; " + tail
     if rc:
         return rc, log
-    g = subprocess.run(["scp", "-q", "-r", f"zbook:{rout}/*".replace("\\", "/"), str(out)], capture_output=True, text=True, timeout=600, creationflags=NO_WINDOW)
+    g = subprocess.run(["scp", "-q", "-r", f"zbook:{rout}/*".replace("\\", "/"), str(out)], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=600, creationflags=NO_WINDOW)
     return g.returncode, log + g.stderr[-200:]
 
 

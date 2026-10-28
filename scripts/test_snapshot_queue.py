@@ -14,6 +14,16 @@ S = Path(__file__).resolve().parent
 sys.path.insert(0, str(S))
 import snapshot_queue as q  # noqa: E402
 
+# the ZBook console is not UTF-8: a 0x83 byte in ssh output must come back as text, never a dead reader and stdout None
+real_run = subprocess.run
+q.subprocess.run = lambda cmd, **k: real_run([sys.executable, "-c", "import sys; sys.stdout.buffer.write(b'0 ' + bytes([0x83, 0x81]) + b' done'); sys.stderr.buffer.write(bytes([0x83]))"], **k)
+try:
+    r = q.ssh("type rc", 30)
+finally:
+    q.subprocess.run = real_run
+assert r.returncode == 0 and r.stdout.startswith("0 ") and r.stdout.endswith(" done") and r.stderr, (r.stdout, r.stderr)
+assert int(r.stdout.split()[0]) == 0 and r.stdout[-400:], r.stdout   # what run_detached reads
+
 with tempfile.TemporaryDirectory() as d:
     d = Path(d)
     q.SPOOL = d / ".snapq"
