@@ -13,7 +13,7 @@ Full-frame designed card (tokens radial background). Two page cards side by side
 
 ## 3. Geometry (px)
 - Left page L: `left:160px; top:150px; width:640px; height:760px`, the MWR report first page crop (open item 6) scaled to fit whole lines, slight rotation -1.5 deg, shadow `0 20px 60px rgba(0,0,0,.6)`.
-- Right page R: `left:1120px; top:150px; width:640px; height:760px`, a typeset page in beige cite card `rgba(232,222,200,.90)`, dark text `#2a2622`, Georgia: heading "Galveston Hurricane of 1900" 34 px, then the one sentence "The Weather Bureau official in charge locally, Isaac M. Cline, drove a horse-drawn cart around low areas warning people to leave." 28 px, line-height 1.4, padding 56 px; foot "Handbook of Texas Online" 20 px `#6b6257`. Rotation +1.5 deg.
+- Right page R: `left:1120px; top:150px; width:640px; height:760px`, a typeset page in beige cite card `rgba(232,222,200,.90)`, dark text `#2a2622`, Georgia: heading "Galveston Hurricane of 1900" 34 px, then the one sentence "The Weather Bureau official in charge locally, Isaac M. Cline, … drove a horse-drawn cart around low areas warning people to leave." 28 px (the ellipsis stays: fact-check row 20 quotes two fragments, the words between are unseen), line-height 1.4, padding 56 px; foot "Handbook of Texas Online" 20 px `#6b6257`. Rotation +1.5 deg.
 - Gap: x 800 to 1120 (320 px) stays empty: no line, no arrow, no label.
 - Tag over each page, top 96: L "HIS REPORT · SEPT 1900" left-aligned x 160; R "LATER TELLING" left-aligned x 1120. Arial Black 900 34 px `#f2f5f8`.
 - Page R must end by y 910 so x >= 1600, y >= 680 holds part of R: the presenter circle goes OFF for this comp (a page is under the corner). Report to the orchestrator.
