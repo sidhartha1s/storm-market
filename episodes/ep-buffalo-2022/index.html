@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!-- ep-buffalo-2022 · The Warning Hour · assembly v0 (28 Oct 26): HOOK + TITLE + INTRO + ACTS 1 to 5, all voiced, CTA after A3-S12,
+     end ask before A5-S9. Built so the act graphics can be frame-read and the draft rendered by act (render_acts.py).
+     CADENCE: 0.30 s seams in the hook (h1-s1, h1-s2). Elsewhere a segment that ends on a graphic waits for the comp's land time
+     (gap = comp end - wav end, clamped 0.30 to 0.79 s; lint caps a narration gap at 0.8 s), else 0.50 s.
+     Act seams: 0.7 s chapter blackout from the last full-frame comp end (or wav end + 0.5 over footage); the next act's voice
+     starts on the blackout end. CTA hinge A3-S12 -> A4-S1 with 1.0 s dips (config channel.cta dip_in / dip_out).
+     GROUND PLATES (gp-*): two comps are shorter than their segment + 0.30 s seam and the next beat is also a comp, so a plain
+     ground section (the root colour) covers 0.30 to 0.40 s. Where the next beat is footage, the footage starts early instead.
+     STAND-INS / NOT BUILT: Paul clips (ins-paul-1 hook line, ins-paul-4 A3-S12 tease) are not generated: the Christmas start
+     frame stands in as a still and the TTS takes h1-s1.wav / a3-s12.wav carry his lines. A5 has no graphics list yet: every A5
+     beat sits on a stand-in still or clip. No presenter circle, no bed, no SFX yet. g-a3-10-hochul-lt not mounted (no file,
+     no licensed Hochul still). g-a4-10-ems-pins is mounted while it is still being built (file arrives).
+     CTA at 678.396 s of 1065.987 s = 0.636, outside config channel.cta.window [0.40, 0.60]: the scripted hinge sits there. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Buffalo 2022 (assembly v0) — The Warning Hour</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .still-wrap img.soft { filter: blur(8px) brightness(0.8); }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .ground { position: absolute; inset: 0; background: #04070c; }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="ep-buffalo-2022" data-start="0" data-width="1920" data-height="1080" data-duration="1065.987" data-fps="30">
+
+  <!-- ============ NARRATION (ffprobe wav durations, tempo 0.94) ============ -->
+  <!-- h1-s1 is Paul's on-camera line; until ins-paul-1 exists the TTS take stands in -->
+  <audio id="nx-h1-s1" src="audio/h1-s1.wav" data-start="0.0" data-duration="15.305" data-volume="1"></audio>
+  <audio id="nx-h1-s2" src="audio/h1-s2.wav" data-start="15.605" data-duration="9.075" data-volume="1"></audio>
+  <audio id="nx-t1-s1" src="audio/t1-s1.wav" data-start="24.98" data-duration="6.647" data-volume="1"></audio>
+  <audio id="nx-i1-s1" src="audio/i1-s1.wav" data-start="31.98" data-duration="19.104" data-volume="1"></audio>
+  <audio id="nx-i1-s2" src="audio/i1-s2.wav" data-start="51.58" data-duration="15.708" data-volume="1"></audio>
+  <audio id="nx-i1-s3" src="audio/i1-s3.wav" data-start="67.788" data-duration="11.57" data-volume="1"></audio>
+  <audio id="nx-i1-s4" src="audio/i1-s4.wav" data-start="79.788" data-duration="15.376" data-volume="1"></audio>
+  <!-- A1 -->
+  <audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="96.088" data-duration="24.093" data-volume="1"></audio>
+  <audio id="nx-a1-s2" src="audio/a1-s2.wav" data-start="120.971" data-duration="21.58" data-volume="1"></audio>
+  <audio id="nx-a1-s3" src="audio/a1-s3.wav" data-start="143.341" data-duration="17.706" data-volume="1"></audio>
+  <audio id="nx-a1-s4" src="audio/a1-s4.wav" data-start="161.837" data-duration="28.826" data-volume="1"></audio>
+  <audio id="nx-a1-s5" src="audio/a1-s5.wav" data-start="191.337" data-duration="34.535" data-volume="1"></audio>
+  <audio id="nx-a1-s6" src="audio/a1-s6.wav" data-start="226.662" data-duration="23.89" data-volume="1"></audio>
+  <audio id="nx-a1-s7" src="audio/a1-s7.wav" data-start="251.262" data-duration="4.758" data-volume="1"></audio>
+  <audio id="nx-a1-s8" src="audio/a1-s8.wav" data-start="256.81" data-duration="13.111" data-volume="1"></audio>
+  <audio id="nx-a1-s9" src="audio/a1-s9.wav" data-start="270.711" data-duration="18.771" data-volume="1"></audio>
+  <audio id="nx-a1-s10" src="audio/a1-s10.wav" data-start="290.111" data-duration="10.713" data-volume="1"></audio>
+  <!-- A2 (no A2-S6) -->
+  <audio id="nx-a2-s1" src="audio/a2-s1.wav" data-start="302.411" data-duration="22.237" data-volume="1"></audio>
+  <audio id="nx-a2-s2" src="audio/a2-s2.wav" data-start="325.251" data-duration="14.803" data-volume="1"></audio>
+  <audio id="nx-a2-s3" src="audio/a2-s3.wav" data-start="340.411" data-duration="24.873" data-volume="1"></audio>
+  <audio id="nx-a2-s4" src="audio/a2-s4.wav" data-start="365.831" data-duration="13.312" data-volume="1"></audio>
+  <audio id="nx-a2-s5" src="audio/a2-s5.wav" data-start="379.933" data-duration="13.551" data-volume="1"></audio>
+  <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="394.274" data-duration="35.837" data-volume="1"></audio>
+  <audio id="nx-a2-s8" src="audio/a2-s8.wav" data-start="430.474" data-duration="36.375" data-volume="1"></audio>
+  <audio id="nx-a2-s9" src="audio/a2-s9.wav" data-start="467.474" data-duration="17.2" data-volume="1"></audio>
+  <audio id="nx-a2-s10" src="audio/a2-s10.wav" data-start="485.464" data-duration="15.649" data-volume="1"></audio>
+  <!-- A3 (no A3-S5); a3-s12 is Paul's tease, TTS take stands in for ins-paul-4 -->
+  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="527.242" data-duration="14.808" data-volume="1"></audio>
+  <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="542.442" data-duration="14.18" data-volume="1"></audio>
+  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="556.922" data-duration="16.55" data-volume="1"></audio>
+  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="574.262" data-duration="14.65" data-volume="1"></audio>
+  <audio id="nx-a3-s6" src="audio/a3-s6.wav" data-start="589.702" data-duration="18.51" data-volume="1"></audio>
+  <audio id="nx-a3-s7" src="audio/a3-s7.wav" data-start="608.512" data-duration="16.625" data-volume="1"></audio>
+  <audio id="nx-a3-s8" src="audio/a3-s8.wav" data-start="625.637" data-duration="19.925" data-volume="1"></audio>
+  <audio id="nx-a3-s9" src="audio/a3-s9.wav" data-start="645.862" data-duration="14.369" data-volume="1"></audio>
+  <audio id="nx-a3-s10" src="audio/a3-s10.wav" data-start="661.021" data-duration="23.984" data-volume="1"></audio>
+  <audio id="nx-a3-s11" src="audio/a3-s11.wav" data-start="685.305" data-duration="12.649" data-volume="1"></audio>
+  <audio id="nx-a3-s12" src="audio/a3-s12.wav" data-start="698.454" data-duration="3.62" data-volume="1"></audio>
+  <!-- A4 (plain act seam since the hinge moved to a2/a3, orchestrator 28 Oct 26) -->
+  <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="703.274" data-duration="19.214" data-volume="1"></audio>
+  <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="723.188" data-duration="17.903" data-volume="1"></audio>
+  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="741.391" data-duration="12.265" data-volume="1"></audio>
+  <audio id="nx-a4-s4" src="audio/a4-s4.wav" data-start="754.156" data-duration="16.849" data-volume="1"></audio>
+  <audio id="nx-a4-s5" src="audio/a4-s5.wav" data-start="771.305" data-duration="23.292" data-volume="1"></audio>
+  <audio id="nx-a4-s6" src="audio/a4-s6.wav" data-start="794.897" data-duration="18.843" data-volume="1"></audio>
+  <audio id="nx-a4-s7" src="audio/a4-s7.wav" data-start="814.24" data-duration="9.86" data-volume="1"></audio>
+  <audio id="nx-a4-s8" src="audio/a4-s8.wav" data-start="824.64" data-duration="17.591" data-volume="1"></audio>
+  <audio id="nx-a4-s9" src="audio/a4-s9.wav" data-start="842.84" data-duration="24.315" data-volume="1"></audio>
+  <audio id="nx-a4-s10" src="audio/a4-s10.wav" data-start="867.755" data-duration="15.032" data-volume="1"></audio>
+  <!-- A5 -->
+  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="883.987" data-duration="18.749" data-volume="1"></audio>
+  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="903.236" data-duration="16.737" data-volume="1"></audio>
+  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="920.473" data-duration="21.075" data-volume="1"></audio>
+  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="942.048" data-duration="13.626" data-volume="1"></audio>
+  <audio id="nx-a5-s5" src="audio/a5-s5.wav" data-start="956.174" data-duration="25.299" data-volume="1"></audio>
+  <audio id="nx-a5-s6" src="audio/a5-s6.wav" data-start="981.973" data-duration="15.731" data-volume="1"></audio>
+  <audio id="nx-a5-s7" src="audio/a5-s7.wav" data-start="998.204" data-duration="14.036" data-volume="1"></audio>
+  <audio id="nx-a5-s8" src="audio/a5-s8.wav" data-start="1012.74" data-duration="25.189" data-volume="1"></audio>
+  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="1054.429" data-duration="10.394" data-volume="1"></audio>
+
+  <!-- ============ PICTURE, track 1 (footage under every overlay comp for its whole host window) ============ -->
+  <!-- H1-S1: STAND-IN for ins-paul-1 (media/paul/paul-start-frame-christmas.png, the start frame every Paul clip comes from) -->
+  <section class="clip still-wrap" id="c-h1-paul" data-start="0" data-duration="15.605" data-track-index="1"><img id="kb-h1-paul" src="media/paul/paul-start-frame-christmas.png" alt=""></section>
+  <!-- H1-S2: DVIDS 7576030, Guard soldier at a front door, 30 Dec 2022 (pick), under g-intro-2 chips -->
+  <section class="clip still-wrap" id="c-h2-door" data-start="15.605" data-duration="9.375" data-track-index="1"><img id="kb-h2-door" src="media/intro/H1-S2_c1_guard-welfare-door.jpg" alt=""></section>
+  <!-- T1-S1, I1-S1: g-intro-3, g-intro-4 full frame. I1-S2: DVIDS 7572837 ambulance recovery, held wide, under g-intro-5 -->
+  <section class="clip still-wrap" id="c-i2-amb" data-start="51.58" data-duration="16.208" data-track-index="1"><img id="kb-i2-amb" src="media/intro/I1-S2_c1_amr-ambulance-recovery.jpg" alt=""></section>
+  <!-- I1-S3, I1-S4: g-intro-6, g-intro-7 full frame; act-1 chapter seam -->
+  <section class="clip blackout" id="bo-a1" data-start="95.388" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- A1-S1 to A1-S9: full-frame comps. A1-S10: Pexels 12570193 night street, unlabelled, under g-a1-10's transparent open -->
+  <video id="v-a1-s10-street" src="media/a1/A1-S10_c1_rain-night-street.mp4" data-start="290.111" data-duration="4.6" data-track-index="1" muted></video>
+  <section class="clip blackout" id="bo-a2" data-start="301.711" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- A2-S1 8.60 to 19.40: the stock beat alone (windshield pick, then the backup for cadence), between g-a2-1 and g-a2-2 -->
+  <video id="v-a2-s1-wind" src="media/a2/A2-S1_c1_rainy-street-windshield.mp4" data-start="311.011" data-duration="5.4" data-track-index="1" muted></video>
+  <video id="v-a2-s1-wipers" src="media/a2/A2-S1_c2_wipers-wet-windshield.mp4" data-start="316.411" data-duration="5.4" data-track-index="1" muted></video>
+  <!-- A2-S2 to A2-S10: full-frame comps -->
+  <section class="clip blackout" id="bo-a3" data-start="501.864" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- A3-S1 0 to 11.60: Carrotflower, Main and Laurel St, 23 Dec 2022, CC BY-SA 4.0, soft focus under g-a3-1 -->
+  <section class="clip still-wrap" id="c-a3-s1-laurel" data-start="502.564" data-duration="11.6" data-track-index="1"><img id="kb-a3-s1-laurel" class="soft" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
+  <!-- A3-S2: g-a3-3 is 0.10 s shorter than its wav; the next beat (g-a3-4) is a comp, so a ground plate covers the seam -->
+  <section class="clip ground" id="gp-a3-s2" data-start="531.844" data-duration="0.4" data-track-index="1"></section>
+  <!-- A3-S7: Carrotflower, abandoned vehicles on West Utica St, 27 Dec 2022, CC BY-SA 4.0 (starts on g-a3-7's end) under g-a3-8 -->
+  <section class="clip still-wrap" id="c-a3-s7-utica" data-start="583.384" data-duration="17.575" data-track-index="1"><img id="kb-a3-s7-utica" src="media/a3/A4-S3_c2_abandoned-vehicles-utica.jpg" alt=""></section>
+  <!-- A3-S9 0 to 6.70: STAND-IN for the Hochul briefing still (none licensed): Carrotflower, Main St Cold Spring, 24 Dec 2022 -->
+  <section class="clip still-wrap" id="c-a3-s9-main" data-start="620.699" data-duration="7.185" data-track-index="1"><img id="kb-a3-s9-main" src="media/a3/A4-S10_c3_cold-spring-main-street.jpg" alt=""></section>
+  <!-- A3-S11: STAND-IN for the single-car-under-a-streetlight shot: Carrotflower Laurel St whiteout video, 23 Dec 2022 evening, CC BY-SA 4.0, muted, under g-a3-13 -->
+  <video id="v-a3-s11-whiteout" src="media/a3/I1-S2_c3_laurel-street-whiteout-commons.webm" data-start="660.063" data-duration="13.713" data-track-index="1" muted></video>
+  <!-- A3-S12: STAND-IN for ins-paul-4 (the tease), same start frame as the hook -->
+  <section class="clip still-wrap" id="c-a3-s12-paul" data-start="673.776" data-duration="3.62" data-track-index="1" data-callback="Paul's tease into the CTA: the presenter returns on the same start frame (stand-in until ins-paul-4 exists)"><img id="kb-a3-s12-paul" src="media/paul/paul-start-frame-christmas.png" alt=""></section>
+
+  <!-- ============ CTA (config channel.cta: paul-storm-ready-v9-oct20.mp4, 24.042 s, md5 bba0b9f3..., staged in media/cta/) ============ -->
+  <!-- book ad: bo-cta-in 677.396, ins-cta-paul 678.396-702.438, bo-cta-out 702.438; a4-s1 opens on the payoff at 703.438 -->
+  <section class="clip blackout" id="bo-cta-in" data-start="677.396" data-duration="1.0" data-track-index="1"></section>
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v9-oct20.mp4" data-start="678.396" data-duration="24.042" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+  <section class="clip blackout" id="bo-cta-out" data-start="702.438" data-duration="1.0" data-track-index="1"></section>
+
+  <!-- A4-S1: DVIDS 7571852, runway snowblower on I-90, 26 Dec 2022 (pick) under g-a4-1 -->
+  <section class="clip still-wrap" id="c-a4-s1-blower" data-start="703.438" data-duration="19.914" data-track-index="1"><img id="kb-a4-s1-blower" src="media/a4/A4-S1_c1_snowblower-i90.jpg" alt=""></section>
+  <!-- A4-S2: g-a4-2 full frame. A4-S3: DVIDS 7572837 again, held close on the ambulance (starts on g-a4-2's end) under g-a4-3 -->
+  <section class="clip still-wrap" id="c-a4-s3-amb" data-start="741.252" data-duration="13.068" data-track-index="1" data-callback="A4 names what I1 only showed: the same ambulance, held close"><img id="kb-a4-s3-amb" src="media/intro/I1-S2_c1_amr-ambulance-recovery.jpg" alt="" style="object-position: 50% 45%;"></section>
+  <!-- A4-S4: g-a4-4 is 0.001 s longer than its wav; the next beat (g-a4-5) is a comp, so a ground plate covers the 0.30 s seam -->
+  <section class="clip ground" id="gp-a4-s4" data-start="771.17" data-duration="0.299" data-track-index="1"></section>
+  <!-- A4-S5: g-a4-5 then g-a4-6, full frame. A4-S6: DVIDS 7572835 (D1), motorist and his dog, 24 Dec 2022 (starts on g-a4-6's end); g-a4-7 panel from 8.80 -->
+  <section class="clip still-wrap" id="c-a4-s6-dog" data-start="794.759" data-duration="19.645" data-track-index="1"><img id="kb-a4-s6-dog" src="media/a4/A4-S6_c1_motorist-dog-drifts.jpg" alt=""></section>
+  <!-- A4-S7: DVIDS 7572836 (D2), airmen helping motorists, 25 Dec 2022, soft focus (not Waldman) under g-a4-8 -->
+  <section class="clip still-wrap" id="c-a4-s7-d2" data-start="814.404" data-duration="10.4" data-track-index="1"><img id="kb-a4-s7-d2" class="soft" src="media/a4/A4-S7_c1_guard-airmen-drifts-25dec.jpg" alt=""></section>
+  <!-- A4-S8: DVIDS 7576033 (D5), welfare checks with Buffalo residents, 30 Dec 2022, under g-a4-9 -->
+  <section class="clip still-wrap" id="c-a4-s8-welfare" data-start="824.804" data-duration="18.2" data-track-index="1"><img id="kb-a4-s8-welfare" src="media/a4/A4-S8_c1_welfare-check-residents.jpg" alt=""></section>
+  <!-- A4-S9: g-a4-10 full frame. A4-S10: Carrotflower "Snowy door", 24 Dec 2022, CC BY-SA 4.0, push toward the door, under g-a4-11 -->
+  <section class="clip still-wrap" id="c-a4-s10-door" data-start="867.904" data-duration="15.547" data-track-index="1"><img id="kb-a4-s10-door" src="media/a4/A4-S10_c1_snowy-door.jpg" alt="" style="object-position: 50% 55%;"></section>
+  <section class="clip blackout" id="bo-a5" data-start="883.451" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- A5: NO GRAPHICS LIST YET. Every beat below is footage only; the self-made cards of the Picture lines are not built. -->
+  <!-- A5-S1: Pexels snowy suburban street at night (pick, not Buffalo, uncaptioned), then STAND-IN Carrotflower Laurel St, 24 Dec 2022 -->
+  <video id="v-a5-s1-street" src="media/a5/A5-S1_c1_snowy-suburban-street-night.mp4" data-start="884.151" data-duration="12.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-a5-s1-laurel" data-start="896.151" data-duration="7.249" data-track-index="1"><img id="kb-a5-s1-laurel" src="media/a5/A4-S10_c2_laurel-street.jpg" alt=""></section>
+  <!-- A5-S2: STAND-IN (family-to-hotel card not built): DVIDS welfare check at a residence -->
+  <section class="clip still-wrap" id="c-a5-s2-res" data-start="903.4" data-duration="17.237" data-track-index="1"><img id="kb-a5-s2-res" src="media/a5/A4-S8_c3_knock-residence-2.jpg" alt=""></section>
+  <!-- A5-S3: STAND-IN (tally return not built): DVIDS bulldozer clearing snow -->
+  <section class="clip still-wrap" id="c-a5-s3-dozer" data-start="920.637" data-duration="21.575" data-track-index="1"><img id="kb-a5-s3-dozer" src="media/a5/A4-S1_c3_bulldozer-burger-king.jpg" alt=""></section>
+  <!-- A5-S4: STAND-IN (1977 vs 2022 bars not built): DVIDS skid steer, Cheektowaga -->
+  <section class="clip still-wrap" id="c-a5-s4-skid" data-start="942.212" data-duration="14.126" data-track-index="1"><img id="kb-a5-s4-skid" src="media/a5/A4-S1_c2_skid-steer-cheektowaga.jpg" alt=""></section>
+  <!-- A5-S5: STAND-IN (report covers not built): the A4-S1 snowblower returns -->
+  <section class="clip still-wrap" id="c-a5-s5-blower" data-start="956.338" data-duration="25.799" data-track-index="1" data-callback="stand-in under the reviews until the A5 report cards exist; the I-90 clearing photo returns as the recommendations are read"><img id="kb-a5-s5-blower" src="media/a4/A4-S1_c1_snowblower-i90.jpg" alt="" style="object-position: 30% 50%;"></section>
+  <!-- A5-S6: STAND-IN (checklist card not built): the ambulance photo returns under "tracked vehicles ... ambulances paired" -->
+  <section class="clip still-wrap" id="c-a5-s6-amb" data-start="982.137" data-duration="16.231" data-track-index="1" data-callback="the county's fix names the ambulance problem: the stuck ambulance returns under the plan"><img id="kb-a5-s6-amb" src="media/intro/I1-S2_c1_amr-ambulance-recovery.jpg" alt="" style="object-position: 50% 70%;"></section>
+  <!-- A5-S7: STAND-IN for the Cold Spring brunch photo (CC BY-SA, not downloaded): DVIDS 7578226 toys during welfare checks (pick) -->
+  <section class="clip still-wrap" id="c-a5-s7-toys" data-start="998.368" data-duration="14.536" data-track-index="1"><img id="kb-a5-s7-toys" src="media/a5/A5-S7_c1_dvids-toys-welfare-check.jpg" alt=""></section>
+  <!-- A5-S8 (summary zone): STAND-IN Laurel St returns, then the sunrise snowy roadway under "the next winter" -->
+  <section class="clip still-wrap" id="c-a5-s8-laurel" data-start="1012.904" data-duration="12.596" data-track-index="1" data-callback="close: the street where the act-3 driver's day began returns"><img id="kb-a5-s8-laurel" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
+  <video id="v-a5-s8-sunrise" src="media/a5/A2-S1_c4_sunrise-snowy-roadway.mp4" data-start="1025.5" data-duration="13.093" data-track-index="1" muted></video>
+  <!-- END ASK (config channel.end_ask, staged unchanged in media/end-ask/), right before the signature line -->
+  <video id="ins-paul-e1" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="1038.593" data-duration="9.083" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
+  <video id="ins-paul-e2" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="1047.676" data-duration="6.417" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
+  <!-- A5-S9 signature: STAND-IN for the title card (not built): Pexels aerial of houses in snow at night -->
+  <video id="v-a5-s9-aerial" src="media/a5/A5-S1_c2_aerial-houses-snow-night.mp4" data-start="1054.093" data-duration="11.894" data-track-index="1" muted></video>
+
+  <!-- ============ GRAPHICS, track 2 (host start = segment narration start + the brief's offset; duration = comp length, cut at the next beat) ============ -->
+  <div id="host-g-intro-1-popfig" data-composition-id="g-intro-1-popfig" data-composition-src="compositions/g-intro-1-popfig.html" data-start="0" data-duration="5.4" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-intro-2-toll-chips" data-composition-id="g-intro-2-toll-chips" data-composition-src="compositions/g-intro-2-toll-chips.html" data-start="15.605" data-duration="9.375" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-intro-3-asos-log" data-composition-id="g-intro-3-asos-log" data-composition-src="compositions/g-intro-3-asos-log.html" data-start="24.98" data-duration="7.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-intro-4-morning-map" data-composition-id="g-intro-4-morning-map" data-composition-src="compositions/g-intro-4-morning-map.html" data-start="31.98" data-duration="19.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-intro-5-wind-chips" data-composition-id="g-intro-5-wind-chips" data-composition-src="compositions/g-intro-5-wind-chips.html" data-start="51.58" data-duration="16.2" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-intro-6-count-tally" data-composition-id="g-intro-6-count-tally" data-composition-src="compositions/g-intro-6-count-tally.html" data-start="67.788" data-duration="12.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-intro-7-afd-card" data-composition-id="g-intro-7-afd-card" data-composition-src="compositions/g-intro-7-afd-card.html" data-start="79.788" data-duration="15.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A1 -->
+  <div id="host-g-a1-1-afd-scroll" data-composition-id="g-a1-1-afd-scroll" data-composition-src="compositions/g-a1-1-afd-scroll.html" data-start="96.088" data-duration="24.883" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-2-jet-section" data-composition-id="g-a1-2-jet-section" data-composition-src="compositions/g-a1-2-jet-section.html" data-start="120.971" data-duration="22.37" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-3-pressure-dial" data-composition-id="g-a1-3-pressure-dial" data-composition-src="compositions/g-a1-3-pressure-dial.html" data-start="143.341" data-duration="18.496" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-4-erie-fetch-map" data-composition-id="g-a1-4-erie-fetch-map" data-composition-src="compositions/g-a1-4-erie-fetch-map.html" data-start="161.837" data-duration="29.5" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-5-watch-timeline" data-composition-id="g-a1-5-watch-timeline" data-composition-src="compositions/g-a1-5-watch-timeline.html" data-start="191.337" data-duration="35.325" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-6-warning-card" data-composition-id="g-a1-6-warning-card" data-composition-src="compositions/g-a1-6-warning-card.html" data-start="226.662" data-duration="24.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-7-travel-line" data-composition-id="g-a1-7-travel-line" data-composition-src="compositions/g-a1-7-travel-line.html" data-start="251.262" data-duration="5.548" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-8-afd-rare" data-composition-id="g-a1-8-afd-rare" data-composition-src="compositions/g-a1-8-afd-rare.html" data-start="256.81" data-duration="13.901" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-9-update-card" data-composition-id="g-a1-9-update-card" data-composition-src="compositions/g-a1-9-update-card.html" data-start="270.711" data-duration="19.4" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-10-street-clock" data-composition-id="g-a1-10-street-clock" data-composition-src="compositions/g-a1-10-street-clock.html" data-start="290.111" data-duration="11.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A2 -->
+  <div id="host-g-a2-1-log-724" data-composition-id="g-a2-1-log-724" data-composition-src="compositions/g-a2-1-log-724.html" data-start="302.411" data-duration="8.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-2-warning-clock" data-composition-id="g-a2-2-warning-clock" data-composition-src="compositions/g-a2-2-warning-clock.html" data-start="321.811" data-duration="3.44" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-3-log-806" data-composition-id="g-a2-3-log-806" data-composition-src="compositions/g-a2-3-log-806.html" data-start="325.251" data-duration="15.16" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-4-flash-freeze" data-composition-id="g-a2-4-flash-freeze" data-composition-src="compositions/g-a2-4-flash-freeze.html" data-start="340.411" data-duration="25.42" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-5-log-839" data-composition-id="g-a2-5-log-839" data-composition-src="compositions/g-a2-5-log-839.html" data-start="365.831" data-duration="9.2" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-6-quarter-mile" data-composition-id="g-a2-6-quarter-mile" data-composition-src="compositions/g-a2-6-quarter-mile.html" data-start="375.031" data-duration="4.902" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-7-temp-line" data-composition-id="g-a2-7-temp-line" data-composition-src="compositions/g-a2-7-temp-line.html" data-start="379.933" data-duration="14.341" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-8-officials-clock" data-composition-id="g-a2-8-officials-clock" data-composition-src="compositions/g-a2-8-officials-clock.html" data-start="394.274" data-duration="36.2" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-9-ban-bracket" data-composition-id="g-a2-9-ban-bracket" data-composition-src="compositions/g-a2-9-ban-bracket.html" data-start="430.474" data-duration="37.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-10-blame-quote" data-composition-id="g-a2-10-blame-quote" data-composition-src="compositions/g-a2-10-blame-quote.html" data-start="467.474" data-duration="17.99" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-11-both-lanes" data-composition-id="g-a2-11-both-lanes" data-composition-src="compositions/g-a2-11-both-lanes.html" data-start="485.464" data-duration="16.4" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A3 (g-a3-10-hochul-lt not mounted: no file, no licensed Hochul still; its 3.20 to 6.70 slot plays the stand-in still alone) -->
+  <div id="host-g-a3-1-ban-namecard" data-composition-id="g-a3-1-ban-namecard" data-composition-src="compositions/g-a3-1-ban-namecard.html" data-start="502.564" data-duration="11.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-2-six-min-map" data-composition-id="g-a3-2-six-min-map" data-composition-src="compositions/g-a3-2-six-min-map.html" data-start="514.164" data-duration="3.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-3-phone-911" data-composition-id="g-a3-3-phone-911" data-composition-src="compositions/g-a3-3-phone-911.html" data-start="517.764" data-duration="14.08" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-4-map-evening" data-composition-id="g-a3-4-map-evening" data-composition-src="compositions/g-a3-4-map-evening.html" data-start="532.244" data-duration="10.8" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-5-steele-quote" data-composition-id="g-a3-5-steele-quote" data-composition-src="compositions/g-a3-5-steele-quote.html" data-start="543.044" data-duration="6.54" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-6-tally-27dec" data-composition-id="g-a3-6-tally-27dec" data-composition-src="compositions/g-a3-6-tally-27dec.html" data-start="549.584" data-duration="15.44" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-7-warning-card" data-composition-id="g-a3-7-warning-card" data-composition-src="compositions/g-a3-7-warning-card.html" data-start="565.024" data-duration="18.36" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-8-abandoned-quotes" data-composition-id="g-a3-8-abandoned-quotes" data-composition-src="compositions/g-a3-8-abandoned-quotes.html" data-start="583.834" data-duration="16.38" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-9-ten-doors" data-composition-id="g-a3-9-ten-doors" data-composition-src="compositions/g-a3-9-ten-doors.html" data-start="600.959" data-duration="19.74" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-11-fuel-gauge" data-composition-id="g-a3-11-fuel-gauge" data-composition-src="compositions/g-a3-11-fuel-gauge.html" data-start="627.884" data-duration="8.459" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-12-windchill-chart" data-composition-id="g-a3-12-windchill-chart" data-composition-src="compositions/g-a3-12-windchill-chart.html" data-start="636.343" data-duration="23.72" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-13-two-choices" data-composition-id="g-a3-13-two-choices" data-composition-src="compositions/g-a3-13-two-choices.html" data-start="663.527" data-duration="5.7" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A4 -->
+  <div id="host-g-a4-1-stuck-quote" data-composition-id="g-a4-1-stuck-quote" data-composition-src="compositions/g-a4-1-stuck-quote.html" data-start="703.438" data-duration="19.9" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-2-sinking-fleet" data-composition-id="g-a4-2-sinking-fleet" data-composition-src="compositions/g-a4-2-sinking-fleet.html" data-start="723.352" data-duration="17.9" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-3-day-chip" data-composition-id="g-a4-3-day-chip" data-composition-src="compositions/g-a4-3-day-chip.html" data-start="741.555" data-duration="12.26" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-4-dispatch-screen" data-composition-id="g-a4-4-dispatch-screen" data-composition-src="compositions/g-a4-4-dispatch-screen.html" data-start="754.32" data-duration="16.85" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-5-response-clock" data-composition-id="g-a4-5-response-clock" data-composition-src="compositions/g-a4-5-response-clock.html" data-start="771.469" data-duration="14.9" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-6-relief-line" data-composition-id="g-a4-6-relief-line" data-composition-src="compositions/g-a4-6-relief-line.html" data-start="786.369" data-duration="8.39" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-7-guard-bars" data-composition-id="g-a4-7-guard-bars" data-composition-src="compositions/g-a4-7-guard-bars.html" data-start="803.861" data-duration="10.04" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-8-waldman-card" data-composition-id="g-a4-8-waldman-card" data-composition-src="compositions/g-a4-8-waldman-card.html" data-start="814.404" data-duration="10.4" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-9-guard-tally" data-composition-id="g-a4-9-guard-tally" data-composition-src="compositions/g-a4-9-guard-tally.html" data-start="824.804" data-duration="18.2" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- g-a4-10-ems-pins: still being built (orchestrator 28 Oct 26: mount it anyway; the file arrives) -->
+  <div id="host-g-a4-10-ems-pins" data-composition-id="g-a4-10-ems-pins" data-composition-src="compositions/g-a4-10-ems-pins.html" data-start="843.004" data-duration="24.9" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-11-door-quote" data-composition-id="g-a4-11-door-quote" data-composition-src="compositions/g-a4-11-door-quote.html" data-start="867.919" data-duration="15.03" data-track-index="2" data-width="1920" data-height="1080"></div>
+
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const DUR = 1065.987;
+  const tl = gsap.timeline({ paused: true });
+  /* stills get a quick punch on their cut (no slow Ken Burns: DESIGN.md "Footage motion"); the overlay comps carry the motion after */
+  const stills = [
+    ["#kb-h1-paul", 0], ["#kb-h2-door", 15.605], ["#kb-i2-amb", 51.58],
+    ["#kb-a3-s1-laurel", 502.564], ["#kb-a3-s7-utica", 583.384], ["#kb-a3-s9-main", 620.699], ["#kb-a3-s12-paul", 673.776],
+    ["#kb-a4-s1-blower", 703.438], ["#kb-a4-s3-amb", 741.252], ["#kb-a4-s6-dog", 794.759], ["#kb-a4-s7-d2", 814.404],
+    ["#kb-a4-s8-welfare", 824.804], ["#kb-a4-s10-door", 867.904],
+    ["#kb-a5-s1-laurel", 896.151], ["#kb-a5-s2-res", 903.4], ["#kb-a5-s3-dozer", 920.637], ["#kb-a5-s4-skid", 942.212],
+    ["#kb-a5-s5-blower", 956.338], ["#kb-a5-s6-amb", 982.137], ["#kb-a5-s7-toys", 998.368], ["#kb-a5-s8-laurel", 1012.904]
+  ];
+  stills.forEach(([sel, at]) => tl.fromTo(sel, { scale: 1.08 }, { scale: 1, duration: 0.6, ease: "power3.out" }, at));
+  tl.set({}, {}, DUR);
+  window.__timelines["ep-buffalo-2022"] = tl;
+})();
+</script>
+</body>
+</html>
