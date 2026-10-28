@@ -227,11 +227,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "chip1", { x: -30, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, SEG.a5s8 + 10.44);
   tl.to([P + "trkg", P + "warmg", P + "coldg"], { opacity: 0.6, duration: 0.6, ease: "power2.out" }, SEG.a5s8 + 10.44);
 
-  /* HOLIDAY @17.48: chip EVERY HOLIDAY DRIVE */
-  tl.fromTo(P + "chip2", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, SEG.a5s8 + 17.48);
-
-  /* MISS @20.84: chip 2 out, done by A5-S9 0.00 */
-  tl.to(P + "chip2", { y: -20, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, SEG.a5s8 + 20.84);
+  /* chip 2 EVERY HOLIDAY DRIVE (was @17.48 to @20.84) moved to compositions/g-a5-8b-holiday.html: this comp is cut at 15.62 by ins-paul-6 */
 
   /* host cut at the end of A5-S8's slot (21.76): the A5-S9 push, map dim and ground are removed; source line out and
      fade to black over the last 0.5 s so the end ask opens on a clean frame */
