@@ -245,10 +245,9 @@ window.__timelines = window.__timelines || {};
   tl.to({ t: 0 }, { t: 1, duration: DUR, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
 
   /* transforms and dash state start in set() at 0 (file contract) */
-  tl.set([P + "chip", P + "src", P + "src0", P + "nwklab", P + "pitlab", P + "buflab"], { x: 0, y: 0 }, 0);
+  tl.set([P + "chip", P + "exitchip", P + "src", P + "src0", P + "nwklab", P + "pitlab", P + "buflab"], { x: 0, y: 0 }, 0);
   tl.set(P + "scan", { y: 0 }, 0);
   tl.set(P + "leader", { strokeDasharray: "103 103", strokeDashoffset: 103 }, 0);
-  tl.set(P + "exit", { strokeDashoffset: 0 }, 0);
 
   /* ambient: scan line down at 60 px/s for the whole comp (384 px), fades in as the camera starts */
   tl.to(P + "scan", { y: 384, duration: DUR, ease: "none" }, 0);
