@@ -266,15 +266,17 @@ def run_verify(ep_dir, base, mode="full", env=None):  # mode=None leaves the arg
                           capture_output=True, text=True, env=env)
 
 
-def store_stub_env(d, names):
-    """Env whose PATH starts with a fake WindowsApps folder holding Microsoft Store python stubs (`names`), then this
-    Python's own folder. A hidden schtasks launch puts WindowsApps ahead of the python3 shim (29 Oct 26: e2e, Flow runner)."""
+def store_stub_env(d, real_python):
+    """Env whose PATH starts with a fake WindowsApps folder holding Microsoft Store stubs for python3 and python.
+    A hidden schtasks launch puts WindowsApps ahead of the python3 shim (29 Oct 26: e2e, Flow runner). With
+    real_python the rest of PATH follows; without it PATH is the stubs plus bash's own folder only."""
     stub = Path(d) / "WindowsApps"
     stub.mkdir()
-    for n in names:
+    for n in ("python3", "python"):
         (stub / n).write_text("#!/bin/sh\necho 'Python was not found; run without arguments to install from the Microsoft Store' >&2\nexit 9009\n",
                               encoding="utf-8", newline="\n")
-    return dict(os.environ, PATH=os.pathsep.join([str(stub), str(Path(sys.executable).parent), os.environ["PATH"]]))
+    rest = [str(Path(sys.executable).parent), os.environ["PATH"]] if real_python else [str(Path(shutil.which("bash")).parent)]
+    return dict(os.environ, PATH=os.pathsep.join([str(stub), *rest]))
 
 
 HAVE_FFMPEG = subprocess.run(["ffmpeg", "-version"], capture_output=True).returncode == 0
