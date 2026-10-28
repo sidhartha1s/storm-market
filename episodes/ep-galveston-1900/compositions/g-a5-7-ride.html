@@ -170,6 +170,8 @@ window.__timelines = window.__timelines || {};
 
   /* settle @1.16: scale bar for the final framing */
   tl.fromTo(P + "scale", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.16);
+  /* note waits for the settled framing: the island outline crosses it while the push runs */
+  tl.fromTo(P + "note", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.16);
 
   /* 2.56 -> 5.76: glyph bobs at the line's end */
   tl.fromTo(P + "cartg", { y: 0 }, { y: -3, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 2.56);
