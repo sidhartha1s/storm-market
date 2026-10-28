@@ -21,11 +21,11 @@ Prompt wording follows `references/mg-quickref.md` "Paul on screen" and the ep4-
 | ins-paul-1 | H1-S1 | hook, first line | 21 | Nine years before the storm, an article in Galveston's own newspaper told its readers no hurricane could badly damage their city. |
 | ins-paul-2 | A1-S9 | end of act 1 | 23 | By nineteen hundred, Galveston had spent nine years building on that low ground, with no seawall. Then the Gulf came to test it. |
 | ins-paul-3 | A2-S9 | end of act 2 | 26 | Stockman, the Bureau's own man in Havana, later reported it was not severe in the West Indies. So why was Washington so sure it would turn? |
-| ins-paul-4 | A3-S11 | CTA hinge, end of act 3 | 32 (OVER the 25 cap) | At half past three on Saturday, Isaac Cline wrote one line for Washington. When Joseph tried to send it, the telegraph wires had all gone down. It sounds nothing like eighteen ninety-one. |
+| ins-paul-4 | A3-S11 | CTA hinge, end of act 3 | 25 | At half past three on Saturday, Isaac Cline wrote one line for Washington. The telegraph wires were down. Nobody was calling it a delusion now. |
 | ins-paul-5 | act 5 turn | not written yet | TBD | TBD |
 | ins-paul-6 | close | not written yet | TBD | TBD |
 
 ## Open before spending
-- ins-paul-4 must be cut to 25 words or fewer in `acts/a3.md` (grade r2 flagged it) and re-voiced/re-graded before its clip.
+- ins-paul-4 cut to 25 words (28 Oct 26, grade r2 fix); re-grade before its clip.
 - ins-paul-5 and ins-paul-6 wait for acts 4 to 6.
 - A different owner hook pick redoes ins-paul-1 only.
