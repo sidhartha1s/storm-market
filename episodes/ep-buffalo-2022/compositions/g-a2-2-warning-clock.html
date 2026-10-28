@@ -90,8 +90,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#wk-row", { y: 0 }, { y: -3, duration: 0.585, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.5);
 
   /* "effect" @20.64 -> local 1.24: hands + wedge sweep 7:00 -> 7:24 in 1.0 s */
-  tl.fromTo("#wk-mh", { rotation: 0 }, { rotation: 144, svgOrigin: O, duration: 1.0, ease: "power2.inOut" }, 1.24);
-  tl.fromTo("#wk-hh", { rotation: 210 }, { rotation: 222, svgOrigin: O, duration: 1.0, ease: "power2.inOut" }, 1.24);
+  tl.fromTo("#wk-mh", { rotation: 0, svgOrigin: O, smoothOrigin: false }, { rotation: 144, svgOrigin: O, smoothOrigin: false, duration: 1.0, ease: "power2.inOut" }, 1.24);
+  tl.fromTo("#wk-hh", { rotation: 210, svgOrigin: O, smoothOrigin: false }, { rotation: 222, svgOrigin: O, smoothOrigin: false, duration: 1.0, ease: "power2.inOut" }, 1.24);
   const wp = { a: 0 };
   tl.fromTo(wp, { a: 0 }, { a: 144, duration: 1.0, ease: "power2.inOut" }, 1.24);
   function drawWedge() {
