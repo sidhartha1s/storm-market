@@ -15,7 +15,8 @@ over footage) goes to Sonnet 5.5 at high effort with a full brief on `references
 leaves the builder guessing is the defect, since Nepal's thin Sonnet graphics came from thin briefs. The plan lists
 each graphic with its model. The builder never verifies its own work: the orchestrator reads a settled frame of every
 new or changed graphic over the footage it will sit on before any render. A Sonnet graphic that fails the read twice
-goes to Opus. Gates passing is not verification.
+goes to Opus. Gates passing is not verification. Subagents and side sessions in this repo start without the owner's
+approval (owner 28 Oct 26: "you dont need my approval for subagents, inside strom market repo").
 
 | Need | Home |
 |---|---|
@@ -55,9 +56,10 @@ An owner correction or a measured surprise lands in its single home (`references
   the hook+intro; the draft preview; any paid retake. Acts are never his gate (`references/script-scaling.md` "Section
   lock"); a plan or ETA that waits on him for anything else is wrong (owner 28 Oct 26: "why I sign off the scripts
   because I don't read it", and the titles of 3 videos never reached him).
-- Design sign-off before paid spend or bulk sourcing. Paid API railguards per the global CLAUDE.md. Free candidate sourcing
+- Paid spend and bulk sourcing ride on the hook+intro gate (Paul's Flow clips with their credit total, skill phase 3);
+  a retake is the paid-retake gate. Paid API railguards per the global CLAUDE.md. Free candidate sourcing
   (public domain and stock downloads, no spend, nothing licensed) is not bulk sourcing: it starts from each act's Picture
-  lines without waiting for the sign-off (owner 17 Oct 26, flow page f1). A paid or licensed buy still waits for it.
+  lines without waiting for that gate (owner 17 Oct 26, flow page f1). A paid or licensed buy still waits for it.
 - Every review cut is a DRAFT render at 98 % production quality: a full-quality cut at draft encode settings, never a
   placeholder. Post the absolute path in one line and PARK. His chat approval resumes. Full render only after that.
 - Studio preview cannot play 15 min media-heavy compositions in real time. Do not offer it for review.
@@ -166,7 +168,8 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
   whose staged slice and mounted graphics are unchanged is taken from the older run, so a fix re-renders only its act.
   `--plan` lists the seams. The act file is staged render input, never episode HTML (TRIPWIRE below).
 - Heavy local jobs run on the ZBook by default (owner 17 Oct 26): transcription, voice conversion, clip downloads and
-  frame extraction for sourcing, captures, gates and renders. Sourcing lanes pause while a render runs there (one heavy job at a time). The ASUS GPU runs the owner's live dictation and its RAM is shared with his work; measured
+  frame extraction for sourcing, captures, gates and renders. Renders stay on the ASUS until the ZBook's NVIDIA driver
+  is 610+ (`ops/tasks.md`; `stream_gate.py` stops a ZBook render that falls back to QSV). Sourcing lanes pause while a render runs there (one heavy job at a time). The ASUS GPU runs the owner's live dictation and its RAM is shared with his work; measured
   on Joplin, one act's transcription ran 28 min+ unfinished on the ASUS while all 8 acts cut and converted on the ZBook in 19 min.
 
 ## HARD RULE: everything lives in this folder
