@@ -206,7 +206,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo($("c2"), { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 20.14);
 
   /* "six." @22.04: amber ring pulse at (350, 700) */
-  tl.fromTo($("ring"), { autoAlpha: 1, scale: 1 }, { autoAlpha: 0, scale: 2, duration: 0.8, ease: "power2.out" }, 22.04);
+  show($("ring"), 22.04);
+  tl.fromTo($("ring"), { scale: 1 }, { scale: 2, autoAlpha: 0, duration: 0.8, ease: "power2.out" }, 22.04);
 
   /* "But" @22.90: chips out */
   tl.to([$("c1"), $("c1-hr"), $("c2"), $("c2-hr")].join(","), { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 22.9);
