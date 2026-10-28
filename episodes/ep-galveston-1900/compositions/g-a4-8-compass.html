@@ -7,24 +7,24 @@
   /* source line, top-left, on from frame 0 */
   #g-a4-8-compass-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
     font-weight:700; font-size:22px; line-height:1.3; color:#c8d3e0; }
-  /* page panel: glass card x 140 to 820, y 180 to 940 (padding 14, crop 652 x 732) */
-  #g-a4-8-compass-panel { position:absolute; left:140px; top:180px; width:680px; height:760px; box-sizing:border-box; padding:14px; border-radius:28px; }
-  #g-a4-8-compass-panelin { position:relative; width:652px; height:732px; }
-  /* crop measured on the 1150 x 1563 scan of printed p. 373, LEFT column, scale 1.4113 (image x 100 to 562, image y 659 to 1178).
-     Whole lines: the crop edges sit between printed lines (top edge between two lines, bottom edge in the blank margin under the last line).
-     Estimated by eye from the scan, not by pixel analysis (no shell in this session): the frame read must confirm no cut line. */
-  #g-a4-8-compass-crop { position:absolute; left:0; top:0; width:652px; height:732px; overflow:hidden; border-radius:10px; isolation:isolate; background:#e9e4d6; }
-  #g-a4-8-compass-img { position:absolute; left:-141.13px; top:-930.07px; width:1623px; height:2205.9px; max-width:none; }
-  /* page dimmed to about 0.55 except the three warning lines (crop y 624 to 684) */
-  #g-a4-8-compass-dimtop { position:absolute; left:0; top:0; width:652px; height:624px; background:rgba(10,16,24,0.45); }
-  #g-a4-8-compass-dimmid { position:absolute; left:0; top:624px; width:652px; height:60px; background:rgba(10,16,24,0.45); }
-  #g-a4-8-compass-dimbot { position:absolute; left:0; top:684px; width:652px; height:48px; background:rgba(10,16,24,0.45); }
+  /* page panel: glass card x 120 to 970, y 229 to 851 (padding 14, crop 822 x 594) */
+  #g-a4-8-compass-panel { position:absolute; left:120px; top:229px; width:850px; height:622px; box-sizing:border-box; padding:14px; border-radius:28px; }
+  #g-a4-8-compass-panelin { position:relative; width:822px; height:594px; }
+  /* crop measured by pixel rows on the 1150 x 1563 scan of printed p. 373 (28 Oct 26), LEFT column, scale 1.768:
+     image x 98 to 563 (text 102..562, column rule 565), image y 1031 to 1367 (line gaps 1029-1033 and after 1364).
+     Whole lines at both edges: 9 lines, "Mr. Blagden looked after..." to "near the beach...". Body line pitch ~29 px on screen. */
+  #g-a4-8-compass-crop { position:absolute; left:0; top:0; width:822px; height:594px; overflow:hidden; border-radius:10px; isolation:isolate; background:#e9e4d6; }
+  #g-a4-8-compass-img { position:absolute; left:-173.26px; top:-1822.81px; width:2033.2px; height:2763.4px; max-width:none; }
+  /* page dimmed to about 0.55 except the three warning lines (image y 1283 to 1333 = crop y 445 to 534) */
+  #g-a4-8-compass-dimtop { position:absolute; left:0; top:0; width:822px; height:445px; background:rgba(10,16,24,0.45); }
+  #g-a4-8-compass-dimmid { position:absolute; left:0; top:445px; width:822px; height:89px; background:rgba(10,16,24,0.45); }
+  #g-a4-8-compass-dimbot { position:absolute; left:0; top:534px; width:822px; height:60px; background:rgba(10,16,24,0.45); }
   /* amber bands, #d8a13a, 0.28 resting; multiply so the print stays black */
-  .g-a4-8-compass-band { position:absolute; height:20px; background:#d8a13a; mix-blend-mode:multiply; transform-origin:left center; opacity:0; visibility:hidden; }
-  #g-a4-8-compass-b1 { left:80px; top:624px; width:503px; }   /* "warned, over the telephone and verbally," */
-  #g-a4-8-compass-x1 { left:583px; top:624px; width:62px; }   /* "that the" */
-  #g-a4-8-compass-x2 { left:6px; top:644px; width:640px; }    /* "wind would go by the east to the south and that the worst" */
-  #g-a4-8-compass-x3 { left:6px; top:664px; width:124px; }    /* "was yet to come." */
+  .g-a4-8-compass-band { position:absolute; height:28px; background:#d8a13a; mix-blend-mode:multiply; transform-origin:left center; opacity:0; visibility:hidden; }
+  #g-a4-8-compass-b1 { left:85px; top:445px; width:666px; }   /* "warned, over the telephone and verbally," (image x 146..522) */
+  #g-a4-8-compass-x1 { left:750px; top:445px; width:72px; }   /* "that the" */
+  #g-a4-8-compass-x2 { left:0; top:475px; width:822px; }      /* "wind would go by the east to the south and that the worst" */
+  #g-a4-8-compass-x3 { left:2px; top:505px; width:226px; }    /* "was yet to come." */
   #g-a4-8-compass-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
   #g-a4-8-compass-lab { position:absolute; left:1100px; top:950px; width:400px; text-align:center; font-weight:700; font-size:22px; letter-spacing:3px; color:#93a3b2; }
   /* chip: glass, centred on x 1300, top 100, width 940 (x 830 to 1770) */
@@ -94,8 +94,8 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"chip", {autoAlpha:0, x:980}, 0);
   tl.set([P+"b1", P+"x1", P+"x2", P+"x3"], {scaleX:0}, 0);
 
-  /* whole window: page panel push 1.00 to 1.03 */
-  tl.to(P+"panelin", {scale:1.03, duration:8.2, ease:"none"}, 0);
+  /* whole window: page panel drifts up 10 px (was a 1.03 scale push, which cut the line ends at the crop edge) */
+  tl.to(P+"panel", {y:-10, duration:7.6, ease:"none"}, 0);
 
   /* REPORT @0.12: band draws on "warned, over the telephone and verbally" 0.12 to 1.26; the three lines light */
   tl.to(P+"dimmid", {autoAlpha:0, duration:0.5, ease:"power2.out"}, 0.12);
