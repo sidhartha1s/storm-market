@@ -215,7 +215,7 @@ window.__timelines = window.__timelines || {};
   tl.set([P + "nwklab", P + "pitlab", P + "buflab"], { x: 0, y: 0 }, 0);
 
   /* ambient: scan line top to bottom at about 60 px/s; credit on for the whole comp */
-  tl.fromTo(P + "scan", { y: -10 }, { y: 1090, duration: 18, ease: "none", repeat: 1 }, 0);
+  tl.fromTo(P + "scan", { y: -10 }, { y: 1090, duration: 15.255, ease: "none", repeat: 1 }, 0);
 
   /* THATS @0.00: frame A, Newark pin pulsing, NEWARK label and 108 MPH already on (carried across the cut) */
   tl.fromTo(P + "nwk-pulse", { opacity: 0.8, attr: { r: 17 } }, { opacity: 0, attr: { r: 35 }, duration: 1.2, ease: "power1.out", repeat: 14, repeatDelay: 0.2 }, 0);
