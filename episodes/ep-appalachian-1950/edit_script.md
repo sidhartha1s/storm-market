@@ -108,6 +108,80 @@ Rows: nws-facts.md §1 Bear Mountain 140 mph (JKL), Mount Washington 160 mph (JK
 
 <!-- LOCKED ACTS (spliced from acts/*.md; edit the act file, then re-splice) -->
 
+## A1 · The side nobody remembers
+Chapter card:
+Purpose · Make the coast side real, the hazard viewers forget, and pay L4 with something more than "a mountaintop is windier".
+Question · How hard did the east side really get hit, and which gust beat Newark's?
+Reveal · Bear Mountain, a hundred forty, beat Newark's gust, and a fast stream of air running about a mile up mixed down to the ground in places; then the ladder, the record tide and the hurricane-class water in Connecticut.
+Visual event · Self-made gust ladder by city that fills bar by bar (Bear Mountain bar first, Mount Washington as a dimmed footnote bar); NWS Jackson 25 Nov 1950 surface chart under the tide and rain beats.
+Exit hook · On the same Saturday Newark was gusting, Columbus, Ohio sat at ten degrees at noon in falling snow (opens loop A1 into Act 2).
+
+### A1-S1 — narration
+**Picture:** chapter card "THE SIDE NOBODY REMEMBERS" out of the blackout, then a self-made comment wall: blurred rows of viewer comments, the snow ones lit white, the few wind ones lit blue; chip "MOST MEMORIES: SNOW". Comment text paraphrased and unreadable at size, no usernames. [VE] [HUMAN]
+> Under the other videos about this storm, almost every memory people share is snow. One person remembers being ten in Pittsburgh. Another was a baby, brought home in North Carolina just as it started to snow. Hardly anyone mentions the wind, and on the coast, the wind was the storm.
+
+Rows: teardown-footage.md "Viewer comments" items 1 (born Nov 1950 in N.C., brought home as it began to snow) and 2 (Pittsburgh, 10 years old); counts "8 of 192, 6 of 92, 1 of 8 mention wind or the coast". "On the coast, the wind was the storm": nws-facts.md §1 ALY "No snow fell in Albany" and §1 NCEI coastal flooding (framing line, no new number).
+
+### A1-S2 — narration
+**Picture:** the Newark locator from I1-S4 returns, the "108 MPH" chip dim; the question-mark marker slides north up the Hudson and resolves into a pin "BEAR MOUNTAIN, NY". Self-made gust ladder builds beside it: one bar for Newark at 108, then the Bear Mountain bar shoots past it, chip "140 MPH". Source line "NWS Jackson KY". [VE] [RS] [PAY] [loop L4 closes] which gust beat Newark's. Sound: hit on "a hundred forty".
+> Near the city, one gust beat Newark's. It came from Bear Mountain, a state park on the Hudson north of New York City. It hit a hundred forty miles an hour.
+
+Rows: nws-facts.md §1 Bear Mountain 140 mph, "just north of the New York City" (JKL).
+
+### A1-S3 — narration
+**Picture:** self-made side-view cutaway: a generic ground line with unlabeled rooftops and hills, a fast blue band of wind drawn about a mile above them, chip "FAST WIND ABOUT 1 MILE UP". Short wisps curl down from the band at several points along its length, none tied to a named place or number. Source line "NBC Connecticut report (a Connecticut weather writer's reading)". Then a wide map of New England with tree and outage markers, source line "NCEI". [VE] [RS] [loop A1a open] how hard each town got it. Sound: low wind swell along the band.
+> That day, a stream of unusually fast air was running about a mile overhead. Meteorologists say warm air near the ground let some of it mix down. Across New England, the wind brought down trees and knocked out power.
+
+Rows: factcheck/a1-r1.md row 13 (NBC CT, SECONDARY: +4 standard deviation 850 mb winds, about a mile up; warm sector "turbulent mixing to mix down destructive winds"); row 14 (mechanism kept general, no tie to Newark or Bear Mountain); row 58 (band redrawn as general mixing at several points). New England trees and power: factcheck/a1-r4.md row 1 (nws-facts.md §1 NCEI New England damage; moved here from S9).
+
+### A1-S4 — narration
+**Picture:** the ladder grows one dimmed bar off to the side, labeled "MOUNT WASHINGTON, NH · 160 · SUMMIT", in grey with a footnote marker, visibly set apart from the city bars. Source line "NCEI; NWS Jackson KY". [VE]
+> You'll see a bigger number in other videos, a hundred sixty, and they give it as the storm's wind. That was the summit of Mount Washington in New Hampshire, one weather station on a mountaintop. It's a real reading, and it belongs in a footnote.
+
+Rows: nws-facts.md §1 Mount Washington 160 mph (JKL, NCEI); teardown-footage.md "Vintage America" treats 160 as storm-wide, "Ruled out as lead" (one mountaintop station).
+
+### A1-S5 — narration
+**Picture:** the gust ladder fills city by city, each bar landing on its number: "ALBANY 83 · ITS RECORD", "ALLENTOWN 88", "NEWARK 108 · ITS RECORD"; a New York City bar appears split in two, half-height and question-marked. Source line "NWS Albany; NWS Mount Holly". [VE] [RS] [loop A1a closes] [loop A1b open] why New York City has two numbers.
+> Down where people lived, the gusts climbed like a ladder. Albany hit eighty-three, the strongest it had ever recorded. Allentown, Pennsylvania hit eighty-eight. Newark topped the towns at a hundred eight, its own record too. And New York City shows up with two numbers that don't agree.
+
+Rows: nws-facts.md §1 Albany 83 mph gust, strongest ever, sustained 50-60 mph (ALY); Allentown 88 mph (PHI); Newark 108 mph, strongest ever there (PHI fetch summary, JKL).
+
+### A1-S6 — narration
+**Picture:** the split New York City bar resolves into two labeled bars side by side: "NEW YORK CITY 94 · NWS JACKSON" and "CENTRAL PARK 70 · NWS MOUNT HOLLY · PARK RECORD"; a small tag under both, "STATION NOT NAMED". [VE] [PAY] [loop A1b closes]
+> One weather service page lists New York City at ninety-four miles an hour. Another office lists Central Park at seventy, the strongest gust the park had ever measured. The record doesn't say which station took the ninety-four, so you're getting both.
+
+Rows: nws-facts.md §1 NYC 94 mph (JKL) and Central Park 70 mph, strongest ever there (PHI); nws-facts.md "Conflicts" item 3.
+
+### A1-S7 — narration
+**Picture:** self-made Connecticut map, a Bridgeport pin on the shore, chip "WORST SINCE 1938", a water level rising up a station silhouette, chip "STATION FLOODED 4 TO 5 FT" [VE]; then a Hartford pin well inland from the shore; a clock chip runs "4:30 PM to 7:30 PM" and three gust ticks flash past a "100 MPH" line [VE] [RS]. Source line "Weather Bureau reports via NBC Connecticut". [loop A1c open] what this side of the storm cost in lives, paid in S11.
+> On the Connecticut coast, the weather station at Bridgeport was under four to five feet of water. Its report called this the worst storm there since the hurricane of nineteen thirty-eight. Inland, Hartford sits about thirty-five miles from the shore. There, the Weather Bureau logged gusts of a hundred miles an hour. So what did this side of the storm cost the people who lived on it?
+
+Rows: factcheck/a1-r1.md rows 28 (thirty-five miles), 29 (Hartford, NBC CT quoting the Weather Bureau monthly report, SECONDARY), 31 and 32 (Bridgeport station report, SECONDARY). Bridgeport's eighty-eight cut from the spoken line (same number as Allentown in S5).
+
+### A1-S8 — narration
+**Picture:** NWS Jackson KY surface chart for 25 Nov 1950 fills the frame, a slow push in toward the Atlantic coast, isobars packed tight along it; self-made arrows overlay the onshore wind blowing from the ocean toward New Jersey and up Delaware Bay. Source line "NWS Jackson KY, surface chart, 25 Nov 1950". Then a self-made Delaware River map, a tide line climbing from the bay up to a Philadelphia pin, chips "10.8 FT · RECORD" and a fainter line "FLOODING STARTS 10.2 FT"; a Delaware Bay pin on the New Jersey side, chip "RECORD TIDE". [VE] [RS] [PAY]
+> Farther south, on the Delaware River, the wind blew in off the ocean and stacked the water upriver. At Philadelphia, a long way from the sea, the tide gage hit ten point eight feet, a record. Severe flooding there starts at ten point two. Down on Delaware Bay in New Jersey, the tide set a record too.
+
+Rows: nws-facts.md §1 NCEI "onshore winds along the coast caused extreme high tides"; §1 PHI Philadelphia record 10.8 ft above MLLW, severe flooding begins 10.2 ft; §1 PHI Greenwich Piers (Delaware Bay, southern NJ) 8.8 ft above mean sea level, highest of record to then (spoken as "set a record too"). Chart: maps-forecast.md §1 item 1, 25 Nov JPEG (image contents not read; confirm the coast and isobars are legible before the push in).
+
+### A1-S9 — narration
+**Picture:** self-made bar chart "NEW LONDON, CT · TOP FOUR TIDES IN 100 YEARS": four bars, 1938 HURRICANE, CAROL, SANDY above, then NOV 1950 at 7.58 FT, the three taller bars labeled with a small hurricane glyph, the 1950 bar labeled "WINTER STORM". [VE] [RS] Then a wide map of New York State, chip "$20 MILLION · NY STATE WIND DAMAGE (1950 $)". Source line "NBC Connecticut; NWS Albany".
+> On the Connecticut shore at New London, the tide reached seven point five eight feet. In a hundred years of records there, only three storms have pushed it higher. All three were hurricanes: nineteen thirty-eight, Carol and Sandy. In New York State, the wind damage came to about twenty million dollars at the time.
+
+Rows: New London 7.58 ft and the three hurricanes above it: NBC Connecticut, SECONDARY (factcheck/a1-r1.md rows 42, 43; nws-facts.md §1); New England trees and power line moved to S3; §1 ALY NY State wind damage about $20 million at the time.
+
+### A1-S11 — narration
+**Picture:** self-made map of New Jersey and New York, state outlines in a neutral grey, not wind blue. Chip "NEW JERSEY 34" counts up first, tag "WHOLE-STORM COUNT"; then "NEW YORK 36", its southwest corner shaded snow-white, tag "INCLUDES SNOW SIDE". Source line "Associated Press, 29 Nov 1950, via usdeadlyevents.com". No photos of people. [VE] [HUMAN] [PAY] [loop A1c closes] Sound: bed drops to a hush under the numbers.
+> The east side cost lives too. New Jersey lost thirty-four people. New York lost thirty-six, and that count takes in the snowy southwest of the state too.
+
+Rows: factcheck/a1-r1.md row 47 (AP 29 Nov 1950 via usdeadlyevents.com, SECONDARY: New York 36, New Jersey 34, whole-storm state tallies, no cause split) and row 48 (New York's tally includes the snowy southwest, ALY "20+ inches"). Four children in the Delaware River cut: row 48 is UNVERIFIED.
+
+### A1-S12 — narration
+**Picture:** split screen: left the Newark locator, wind-blue, "108 MPH"; right a Columbus, Ohio pin under falling snow, a clock chip "NOON · SAT, NOV 25", chips "10°F" and "SNOWING". Nothing joins the two halves. [VE] [RS] [loop A1 open] Columbus at ten degrees while Newark gusted, paid in Act 2. Sound: wind on the left half fades to near silence as the snow half fills; riser ends on "gusting", then the chapter blackout.
+> That same Saturday the wind was tearing at Newark, and at noon in Columbus, Ohio, it was ten degrees, with snow coming down. Ohio was getting the same storm's other side. So how could one storm bring both at once?
+
+Rows: nws-facts.md §3 ILN Columbus 25 Nov noon 10F; (Columbus November calendar-day record left for Act 2); §4 "Both hazards same time" (dated entries). "The same storm's other side": factcheck/a1-r4.md row 2 (nws-facts.md §4 rows 113, 114, 108). Exit question left open for Act 2 (the mechanism is not answered in A1).
+
 ## A2 · The side everybody remembers
 Chapter card:
 Purpose · Give the viewers their own snow memory back, then place it on the map so the snow side has a shape and a size next to Act 1's wind side.
@@ -205,6 +279,64 @@ Rows: nws-facts.md §2 Coburn Creek 62 in; §4 FFC hurricane-force winds Northea
 > There's one line on that Saturday's weather map that ties Newark and Pittsburgh together. I'll draw it for you right after this.
 
 Rows: maps-forecast.md §1 item 1, 25 Nov 1950 surface chart (image contents not read); paid by Act 3's first sentence "The low went northwest." (edit_script.md LOOP TABLE, cta-hinge). Track not revealed.
+
+## A3 · The left turn
+Chapter card: The left turn
+Purpose · Join the two sides into one machine: pay the cta-hinge in the first three words. The Buffalo contrast is stated but its cause is NOT answered here: no source in research/ gives the cause, so the act states the Buffalo contrast and does not claim an answer.
+Question · Why did one storm bring hurricane wind to Newark and record snow to Pittsburgh on the same Saturday?
+Reveal · The low formed on the arctic front over the Carolinas and went northwest, inland, blocked by high pressure to the northeast; its east side pulled warm Atlantic air northwest, its west side dragged arctic air south, and the tight squeeze between the low and the high drove the coastal wind.
+Visual event · A self-made track line drawing itself across the NWS Jackson surface charts for 24 to 27 Nov 1950, then turning left; a swirl of warm-orange and cold-blue arrows around it.
+Exit hook · The cold did not stop in Ohio (loop A3, paid in Act 4).
+
+### A3-S1 — narration
+**Picture:** straight out of the CTA onto the NWS Jackson KY surface chart for 25 Nov 1950 (https://www.weather.gov/images/jkl/PastEvents/19501125Surface.JPG), slightly dimmed. A self-made red line draws itself from a pin "CAROLINAS · NOV 24–25", heads north, then bends LEFT toward Ohio; chip "THE LOW WENT NORTHWEST" on the first words. A faint grey ghost arrow runs northeast up the coast and out to sea, chip "THE USUAL PATH". Source line "NWS Jackson, KY". [VE] [RS] [PAY] [loop cta-hinge closes] [loop L1 closes] Sound: hit on "northwest", bed back in.
+> The low went northwest. As that weekend began, a center of low pressure formed on the arctic front over the Carolinas. A storm there usually rides the coast north and heads out to sea. This one turned inland instead, and by midday Sunday it was sitting over Ohio.
+
+Rows: nws-facts.md §4 JKL "Low pressure quickly developed on the arctic front over the Carolinas on the 25th"; JKL "The low tracked northwestward into Ohio by midday on the 26th"; maps-forecast.md §1 item 1 (25 Nov chart URL, image not read, so the drawn track is schematic, not traced). NWS Greenville-Spartanburg statement: nor'easters "develop over the ocean and track northeast along the coast" (nwschat.weather.gov/p.php?pid=202112061312-KGSP-NOUS42-PNSGSP; factcheck a3-r1 row 3). Formation date disputed (JKL 25th; Ocean Weather and gCaptain late 24th; Wikipedia morning 24th; maps-forecast.md Conflicts, factcheck a3-r1 rows 2 and 5), so the spoken line and chip are date-neutral.
+
+### A3-S2 — narration
+**Picture:** same chart, the red track now complete to Ohio. Self-made arrows start turning counterclockwise around the low's center: warm-orange arrows sweep in off the Atlantic and curl northwest inland from the coast, chip "WARM OCEAN AIR"; cold-blue arrows pour down the west side out of Canada, chip "ARCTIC AIR". [VE] Sound: low wind swell under the arrows.
+> Now follow that line and watch the air around it. Wind turns counterclockwise around a low. So on its east side, this storm was pulling warm, wet air off the Atlantic and sending it northwest, inland. On its west side, it was dragging arctic air down out of Canada.
+
+Rows: maps-forecast.md §3 M3 (JKL fetch summary) "arctic air wrapped around the low while warm Atlantic air was drawn northwest"; §2 Kistler et al. "a very cold air mass over southwestern Canada" (secondary, origin of the arctic air). Counterclockwise flow around a Northern Hemisphere low, textbook meteorology (factcheck a3-r1 row 6).
+
+### A3-S3 — narration
+**Picture:** the Buffalo pin from the hook returns, warm orange, placed INSIDE the orange arrows to match the warm side A3-S2 just taught (placement is inference, on screen only, never spoken), chip "40s · NO SNOW"; the Pittsburgh pin sits under the blue arrows, chip "SINGLE DIGITS · SNOW"; a Newark pin pulses at the coast where the orange arrows come ashore. The three pins are finally joined by the red track. [VE] [RS] [loop A3b open] why the low turned left at all (voiced in the last line). Sound: small swell on "turn around".
+> Now pin three cities on that map, Newark, Pittsburgh and Buffalo. Along the coast, Newark took the wind coming in off the ocean. Pittsburgh was on the cold side, buried in snow, with temperatures in the single digits. And Buffalo, about two hundred miles north of Pittsburgh, sat in the forties with no snow at all. So why did a storm that usually heads out to sea turn inland?
+
+Rows: nws-facts.md §3 JKL Pittsburgh single digits vs Buffalo 40s, "only 200 miles to the north" (spoken as "about", factcheck intro-r2 row 11: great circle about 179 mi); §2 JKL Buffalo "recorded no snow at all" (factcheck a3-r1 row 9); maps-forecast.md §3 M3 (JKL) "Best single fact for the two hazards claim"; §4 "Both hazards same time" (25 Nov entries: PHI Newark 108 mph, PBZ Pittsburgh 10.1 in). Buffalo is undated in JKL (intro-r2 row 12), so the line no longer ties it to "the same Saturday". Buffalo's place inside the warm arrows is on screen only: no source places it there (factcheck a3-r1 row 9 and its note "placement is inference; keep the pin but the voice no longer claims it"). The Buffalo cause is NOT answered here (needs a source outside research/ or an upstream reword). "Should have run out to sea" rests on the usual-path row in A3-S1 (GSP). Albany's rain is spent in A1-S11 and is no longer called back. No figure respent.
+
+### A3-S4 — narration
+**Picture:** zoom out to all of eastern North America. A broad self-made dome of high pressure, labeled "H", sits over eastern Canada and the North Atlantic, chip "BLOCKING HIGH"; the grey "usual path" arrow from A3-S1 runs into it and stops. The red track bends away from the dome, inland. Source line "NWS Charleston, WV (omega pattern); Ocean Weather Services (secondary)". [VE] [RS] [PAY] [loop A3b closes] [loop A3c open] where the coast's wind came from. Sound: low thud as the grey arrow stops.
+> Something big was sitting in its way, to the northeast. A big, slow high pressure system had parked over eastern Canada and the North Atlantic, and it wasn't moving. Forecasters call that a block, and on the upper-air maps this one was shaped like the Greek letter omega. With the ocean route blocked, the low curled back inland to the northwest.
+
+Rows: nws-facts.md §4 RLX "Upper low over central Appalachians, omega block forming", 25 Nov (fetch summary); RLX 12Z 25 Nov "upper level pattern": "the development of an omega-blocking pattern with strong downstream ridging" (factcheck a3-r1 row 26); maps-forecast.md §3 M6, Ocean Weather (SECONDARY, oceanweatherservices.com/blog/?p=154) "a strong High-pressure area was nearly stationary over Eastern Canada", "an Omega Block was developing over the North Atlantic Ocean", ALY high east of Labrador (factcheck a3-r1 row 25). Causal link: Wikipedia (SECONDARY) "retrograded, or moved northwestward, into Ohio due to a blocking ridge up across eastern Canada", citing Smith 1950 (factcheck a3-r1 row 27).
+
+### A3-S5 — narration
+**Picture:** self-made pressure map: tight isobar lines bunch up between the "L" over the Appalachians and two highs, an "H" east of Labrador and a second "H" over the Mississippi Valley, packed thickest over New Jersey, New York and New England; chip "VERY TIGHT PRESSURE GRADIENT" with source line "NWS Albany". [VE] [RS] Sound: wind builds under the bunching lines.
+> That same high is also where the coast's wind came from. Air flows from high pressure toward low, and the closer together the two sit, the harder it blows. The weather service in Albany says the storm sat between two very strong highs, with the air packed tight in between.
+
+Rows: nws-facts.md §4 ALY "rapidly deepened as it tracked inland" / "situated between two very strong high pressure centers ... producing a very tight pressure gradient", highs east of Labrador and over the Mississippi Valley (factcheck a3-r1 row 29). High-to-low flow and gradient wind, standard meteorology (row 28). "That same high" as the coast's wind source: NBC Connecticut (SECONDARY) "what made the winds vicious was the 1050ish mb high near Maine" (row 30).
+
+### A3-S6 — narration
+**Picture:** two self-made gauges side by side, "LOW ≈ 980 MB" and "HIGH ≈ 1050 MB", with a small on-screen gloss "MB = millibars, a measure of air pressure"; the gap between them glowing; then wind arrows come ashore from the east and southeast onto a Newark pin, chip "108 MPH", and up the Delaware River toward a Philadelphia pin, chip "RECORD TIDE". Source line "NBC Connecticut (secondary)". [VE] [RS] [PAY] [loop A3c closes] [loop A3d open] why the snow side wouldn't quit. Sound: gust swell landing on "Newark".
+> The low bottomed out near nine hundred eighty millibars, and far higher pressure sat to its northeast. That squeeze pushed the air in off the ocean from the east and southeast, hard. That kind of wind hit Newark, and along the coast it piled the tide up. But the snow side of the storm was nowhere near done.
+
+Rows: NBC Connecticut (SECONDARY, nbcconnecticut.com/news/local/the-great-southeast-of-1950/26557/) "980ish mb" low and "1050ish mb high near Maine"; Wikipedia infobox 978 hPa uncited; no primary found, so both stay "around" and "near" (factcheck a3-r1 rows 31, 32); same NBC URL (SECONDARY) "freakishly strong pressure gradient produced violent southeasterly and easterly winds across New England" (row 33); Newark wind direction and a Delaware link not stated by any source, so the line is softened (row 34); nws-facts.md §1 PHI Newark 108 mph; NCEI "onshore winds along the coast caused extreme high tides"; PHI Philadelphia record 10.8 ft tide (spent in A1-S9, only called back here, no figure spoken).
+
+### A3-S7 — narration
+**Picture:** the NWS Jackson surface charts for 26 and 27 Nov 1950 crossfade; the red track ends in a tight self-made loop over Lake Erie, chip "STALLED · NOV 27–28". Cut to a self-made West Virginia relief map: blue arrows run up the mountain slopes and snow keeps falling, a day counter "NOV 29". Then the full split map from the hook with the red track drawn through it, ending in a dotted line off into Canada, chip "EXITS · NOV 29–30"; the Newark pin glows wind blue, Pittsburgh snow white, Buffalo orange (old A3-S11 merged here). Source line "NWS Jackson, KY; NWS Charleston, WV". [VE] [RS] [PAY] [loop A3d closes] Sound: bed slows, then thins on the exit.
+> Then it stopped moving. The low spun in place over Lake Erie for two days. By then it was stacked straight up, from the ground to the upper air, and it sat nearly still. Its winds kept pushing moist air up the mountain slopes, and in West Virginia the snow kept falling. It finally weakened and slid off into Canada on the twenty-ninth and thirtieth.
+
+Rows: nws-facts.md §4 JKL "spun in place over Lake Erie on the 27th and 28th"; maps-forecast.md §3 M7 RLX (fetch summary) upper low stalled over the central Appalachians, low "vertically stacked and near-stationary", "upslope flow kept snow falling to 29 Nov"; chart URLs maps-forecast.md §1 item 1 (26 and 27 Nov). A2-S9's "snow for about a week" is explained here, not respent.
+
+Exit into Canada: nws-facts.md §4 JKL "finally weakened and exited into Canada on the 29th and 30th" (old S11 merged into this segment; its recap sentence cut). "So nothing pushed it along" glosses RLX "vertically stacked and near-stationary" (grade a3-r3 fix 4 wording)..
+
+### A3-S8 — narration
+**Picture:** the map tilts south. The cold-blue arrows from the low's west side keep running, past the Ohio River, across Kentucky, down toward Georgia, Alabama and the Florida Panhandle; the snow-white fill stops far short of them, chip "THE SNOW STOPPED HERE". No temperatures, no town names. [VE] [loop A3 open] the cold side did not stop in Ohio, paid in Act 4. Sound: riser that ends on "reached", then the chapter blackout.
+> But the cold didn't stop in Ohio. So how far south did it get? A lot farther than the snow ever reached.
+
+Rows: nws-facts.md §6 NCEI cold reached FL, AL, GA, NC; "heading for the Gulf" = NCEI Pensacola FL reached (number held for Act 4); §2 JKL snow in eastern Kentucky (Paintsville, Hazard) as the snow's southern edge on screen. Chapter-exit question plus one affirming line (quickref Humanise exception). No record low named: Act 4's.
 
 ## A4 · The cold that went south
 Chapter card:
