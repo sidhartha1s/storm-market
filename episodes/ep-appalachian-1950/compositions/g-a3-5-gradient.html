@@ -99,15 +99,18 @@
     <!-- gust flash along the tight band (BLOWS) -->
     <path id="a3g-gust" class="a3g-hide" fill="none" stroke="#f2f5f8" stroke-width="5" stroke-linecap="round" pathLength="1" stroke-dasharray="0.14 2" stroke-dashoffset="0.14"/>
     <!-- g-a3-4's usual-path ghost, dimmed, with its stop bar -->
-    <g id="a3g-ghost" opacity="0.3">
-      <path d="M722,875 L854,700 L1000,440" fill="none" stroke="#93a3b2" stroke-opacity="0.55" stroke-width="5" stroke-dasharray="14 10" stroke-linejoin="round"/>
-      <path d="M982.6,430.2 L1017.4,449.8" fill="none" stroke="#93a3b2" stroke-width="10"/>
+    <!-- (geometry and end-state styles copied from g-a3-4-block.html: ghost .3, bar .35, track with glow) -->
+    <g id="a3g-ghost">
+      <path d="M722 875 C780 800 830 740 854 700 C900 620 950 500 985 412" fill="none" stroke="#93a3b2" stroke-width="5" stroke-dasharray="14 10" opacity="0.3"/>
+      <g transform="translate(985 412) rotate(-68.3)">
+        <rect x="-5" y="-22" width="10" height="44" rx="2" fill="#93a3b2" opacity="0.35"/>
+      </g>
     </g>
     <!-- g-a3-4's red track: Carolinas north, then bending west to Ohio (596,670) -->
-    <g id="a3g-track">
-      <path d="M722,875 C740,800 755,740 760,690 C740,660 680,655 620,666" fill="none" stroke="#d0121f" stroke-opacity="0.25" stroke-width="16" stroke-linecap="round"/>
-      <path d="M722,875 C740,800 755,740 760,690 C740,660 680,655 620,666" fill="none" stroke="#d0121f" stroke-width="6" stroke-linecap="round"/>
-      <polygon points="596.4,670.3 617.5,652.2 622.5,679.8" fill="#d0121f"/>
+    <path id="a3g-track" d="M722 875 C738 820 756 760 760 700 C762 668 740 650 705 652 C670 654 630 664 596 670"
+      fill="none" stroke="#d0121f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 6px rgba(208,18,31,.6))"/>
+    <g transform="translate(596 670) rotate(170)">
+      <polygon points="0,0 -22,-11 -22,11" fill="#d0121f" style="filter:drop-shadow(0 0 6px rgba(208,18,31,.6))"/>
     </g>
     <!-- flow arrows: eastern high toward the low (bodies masked for the draw-on, conveyor dashes) -->
     <path id="a3g-a1" class="a3g-flow" mask="url(#a3g-a1mask)"/>
