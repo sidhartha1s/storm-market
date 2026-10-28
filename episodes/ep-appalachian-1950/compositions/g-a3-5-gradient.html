@@ -8,11 +8,12 @@
   (east of Labrador, Mississippi Valley), so the isobars bunch tightest over NJ, NY and New England (NWS Albany).
 
   FRAME E (briefs/a3/_list.md): s 0.0078, top-left (-19654.3, -50096.2) map units; screen = (map - TL) * s.
-    One group matrix(0.0078,0,0,0.0078,153.30354,390.75036) places the verbatim Natural Earth basemap
-    (g-intro-2-hookmap ih2-us / ih2-ca / ih2-border, renamed a3g-*). No camera move: HUD text holds still.
-  CARRIED FROM g-a3-4 (geometry from its brief, not its file): dome ellipse (1150,230) r 330 x 190, "H" (1150,230),
-    grey ghost Carolinas (722,875) -> (854,700) -> stop bar at (1000,440) dimmed .3, red track (722,875) -> (760,690)
-    -> Ohio (596,670) with arrowhead, scan line 60 px/s (assumed downward from y 0 at g-a3-4 t 0, so y 102 here at t 0).
+    One group matrix(0.0078 0 0 0.0078 153.304 390.750) (g-a3-4's) places the verbatim Natural Earth basemap
+    (g-intro-2-hookmap ih2-us / ih2-ca / ih2-border, renamed a3g-*; g-a3-4 uses the same data cropped to frame E, so
+    in-frame pixels match), with g-a3-4's coast under-stroke, land gradient and its two edge fades (x 1105-1159,
+    y 852-897; no land data east of 64.0W / south of 35.0N). No camera move: HUD text holds still.
+  CARRIED FROM g-a3-4-block.html (its last frame = this frame 0): dome + "H" (1150,230), ghost .3 with stop bar .35,
+    full red track to Ohio (596,670), its source line (crossfades out 0.10-0.40), scan line div restarting at y -40.
   ISOBARS (computed in the script below, shared numbers for the receipt), 7 rings about L (665,679), angle th:
     w(th) = ((1 + cos(th - thNE)) / 2)^2, thNE = atan2(-149, 215) = -34.7 deg (L -> tight band centre (880,530)).
     final r_i = 60 + 130 w + i (60 - 46 w): NE spacing 14 px (16-18 px over x 760-1000, y 420-640), SW spacing 60 px;
