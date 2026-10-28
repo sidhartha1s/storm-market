@@ -77,6 +77,7 @@ episodes/*/lanes.json*
 
 # hyperframes >= 0.8.152 writes per-revision run state (history-id, render-outputs.json, video-state.json, artifacts/) into each project
 .hyperframes/
+_act_tmp.html*
 # the pinned e2e fixture (scripts/e2e.py FIXTURE) carries its shrunk media, mp4s included
 !scripts/fixtures/e2e/**/*.mp4
 scripts/fixtures/e2e/**/.luma-cache.json

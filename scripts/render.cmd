@@ -45,6 +45,8 @@ if "%MODE%"=="draft" (
 )
 if defined RENDER_CRF set _CRF=%RENDER_CRF%
 if defined RENDER_FPS set _FPS=%RENDER_FPS%
+REM RENDER_COMPOSITION: the composition file to render (default index.html); render_acts.py sets it per act.
+if not defined RENDER_COMPOSITION set RENDER_COMPOSITION=index.html
 set QFLAGS=--quality %QUAL% --crf %_CRF% --fps %_FPS%
 
 cd /d "%EP%"
@@ -114,7 +116,8 @@ if errorlevel 1 (
 REM QC tools (blank_scan.mjs, graphics_qc.mjs) stage _*_tmp.html in the episode root; if one is
 REM left behind, hyperframes discovers it as a second root composition and warns of duplicate
 REM audio. Sweep them before every render — a render dir must contain exactly one root index.html.
-del /q _*_tmp.html 2>nul
+REM render_acts.py renders its staged _act_tmp.html through RENDER_COMPOSITION, so that run keeps it.
+if /i "%RENDER_COMPOSITION%"=="index.html" del /q _*_tmp.html 2>nul
 set PRODUCER_PAGE_NAVIGATION_TIMEOUT_MS=120000
 set PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000
 REM RENDER_BUSY_OK=1 skips render_busy, so no .workers file: the request stands.
@@ -132,7 +135,7 @@ if errorlevel 1 (
 del /q "render_%MODE%.log" 2>nul
 start "" /b "C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0stream_gate.py" watch "%CD%\render_%MODE%.log" "%CD%\render_%MODE%_done.marker" "%CD%\%PREFLIGHT_LOG%"
 echo %_FPS% > "render_%MODE%.fps"
-call npx hyperframes@0.8.185 render . --gpu --browser-gpu %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
+call npx hyperframes@0.8.185 render . -c %RENDER_COMPOSITION% --gpu --browser-gpu %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
 set RC=%ERRORLEVEL%
 REM A render that ran on another encoder, an iGPU or a disk capture fails here, not in a viewer's eyes.
 if "%RC%"=="0" (

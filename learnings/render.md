@@ -33,6 +33,19 @@ Newest first. New entries go at the top, under this line. Superseded lines point
    (Moore: mix-blend-mode; the bench: backdrop-filter). The check does not judge this one: it is hyperframes'
    own logged fallback and would fail every render. Open item in ops/tasks.md.
 
+## 26 Oct 26: hyperframes' pre-capture probe sweep sets graphic state (render by act, PR 223)
+1. When the compiled page has a trigger (any `<video>`/`<audio>` without `data-start`, scripted `volume`, script-made
+   media; producer `probeRequiresBrowser`), 0.8.185 opens a probe browser that sweeps the root timeline before
+   capture: every audible clip's window at 1/fps, then 0 to the end at 0.1 s, events suppressed, then back to 0. That
+   leaves each graphic's timeline played through and rewound, which is visible: a JS clock driven by `onUpdate` shows
+   its last leg's start (Moore g-path-i1: 7:41 PM, not the authored 6:26 PM), and a `.to` on an attribute the target
+   does not carry records 0 as its start (g-a1-counties fill). Moore's trigger is g-a3-tiles' radar video, minutes
+   away from both. A page without the trigger skips the sweep, so the same graphic renders differently.
+2. Measured: Moore 0 to 107.4 s with every element kept: 7:41 (with or without the narration audio); the act page
+   that dropped out-of-act hosts: 6:26 and no "Launching browser for composition probe" line in its log.
+3. So an act page keeps every element (outside ones parked, hidden) and `render_acts.py` fingerprints only the probe
+   triggers of what is parked.
+
 ## 22 Oct 26: pin 0.8.149 to 0.8.185 before Moore 1999, Mayfield 2021 and Camille 1969
 1. Ritual on demo-pin (hidden task on the ASUS, exit 0): duration 24.000/24.000 s, black 0/0, RMS -21.602708/-21.602708
    dB, workers 2/2, SSIM 0.9936, video-region SSIM 0.9977. Bumped clean. Full-frame SSIM is a little under the last
