@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4-7-strand · A4-S4 8.70 to 18.96 (comp-local = word time - 8.70, comp length 10.26 s)
+  Full-frame schematic drawing: interior wall of a wholesale commission house on Strand Street.
+  Scale 80 px per ft: floor y 880, 3 ft = 240 px, 3 FT line y 640. Building: schematic (no pre-storm Strand photo).
+  Source: Isaac Cline, Monthly Weather Review, September 1900, p. 373.
+  Nothing is drawn in x >= 1600, y >= 680 (presenter circle corner).
+-->
+<template>
+<style>
+  #g-a4-7-strand-root { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; }
+  #g-a4-7-strand-root div, #g-a4-7-strand-root svg { position:absolute; box-sizing:border-box; }
+
+  /* ground on from frame 0 */
+  #a47-bg { left:0; top:0; width:1920px; height:1080px; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  /* wall x 96..1824, y 0..880; the corner x>=1600, y>=680 is cut out of it */
+  #a47-wall { left:96px; top:0; width:1728px; height:880px; background:repeating-linear-gradient(0deg, #2a3644 0 1px, transparent 1px 24px), #15202b;
+    clip-path:polygon(0 0, 1728px 0, 1728px 680px, 1504px 680px, 1504px 880px, 0 880px); }
+  #a47-floor { left:96px; top:880px; width:1504px; height:200px; background:#0b1016; border-top:2px solid #93a3b2; }
+
+  .a47-win { top:280px; width:160px; height:340px; border-radius:80px 80px 0 0; border:3px solid #4a5560; background:linear-gradient(180deg, #2b3d52, #1c2a3a); }
+  #a47-winL { left:300px; }
+  #a47-winR { left:1360px; }
+  #a47-shafts { left:0; top:0; width:1920px; height:1080px; }
+
+  .a47-mote { width:6px; height:6px; border-radius:50%; background:#c8d3e0; opacity:0.45; }
+
+  /* trestles */
+  .a47-leg { top:654px; width:16px; height:226px; background:#6b6257; border:2px solid #2a2622; opacity:0; visibility:hidden; }
+  #a47-legL { left:600px; }
+  #a47-legR { left:1090px; }
+
+  /* lifted group: plank, bottom crates, sacks, swaying top crates */
+  #a47-lift { left:0; top:0; width:1920px; height:1080px; }
+  #a47-plank { left:580px; top:880px; width:560px; height:14px; background:#6b6257; border-top:2px solid #c8b98a; }
+  .a47-crate { width:120px; height:80px; border:3px solid #5f1414;
+    background:linear-gradient(#d8a13a,#d8a13a) 0 24px / 100% 4px no-repeat, linear-gradient(#d8a13a,#d8a13a) 0 48px / 100% 4px no-repeat, #8e2020; }
+  .a47-sack { width:50px; height:56px; border-radius:18px 18px 8px 8px; border:2px solid #6b6257; background:#c8b98a; }
+  #a47-c1 { left:620px; top:800px; }
+  #a47-c2 { left:740px; top:800px; }
+  #a47-c3 { left:860px; top:800px; }
+  #a47-s1 { left:980px; top:824px; }
+  #a47-s2 { left:1030px; top:824px; }
+  #a47-s3 { left:1080px; top:824px; }
+  #a47-s4 { left:1005px; top:768px; }
+  #a47-sway { left:680px; top:640px; width:240px; height:160px; }
+  #a47-c4 { left:0px; top:80px; }
+  #a47-c5 { left:120px; top:80px; }
+  #a47-c6 { left:60px; top:0px; }
+
+  /* 3 FT line, bracket, label */
+  #a47-ftline { left:560px; top:638.5px; width:600px; height:3px; overflow:hidden; opacity:0; visibility:hidden; }
+  #a47-ftline-in { left:0; top:0; width:600px; height:3px; background:repeating-linear-gradient(90deg, #d8a13a 0 18px, transparent 18px 28px); }
+  #a47-bracket { left:1186px; top:640px; width:28px; height:240px; opacity:0; visibility:hidden; }
+  #a47-brk-v { left:12.5px; top:0; width:3px; height:240px; background:#d8a13a; }
+  .a47-tick { left:0; width:28px; height:3px; background:#d8a13a; }
+  #a47-tick-t { top:0; }
+  #a47-tick-b { top:237px; }
+  #a47-ftlabel { left:1230px; top:730px; width:200px; height:58px; opacity:0; visibility:hidden; }
+  #a47-ft-text { left:0; top:0; width:200px; height:58px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:58px; color:#d8a13a; white-space:nowrap; }
+
+  /* wind streaks */
+  .a47-streak { left:1440px; width:220px; height:3px; background:#c8d3e0; opacity:0; visibility:hidden; }
+  /* dust puffs */
+  .a47-puff { width:60px; height:60px; border-radius:50%; background:#93a3b2; opacity:0; visibility:hidden; }
+
+  /* glass surfaces */
+  .a47-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); }
+  #a47-src { left:96px; top:54px; max-width:900px; padding:6px 14px; border-radius:12px; font-size:19px; font-weight:700; color:#c8d3e0; white-space:nowrap; width:auto; }
+  #a47-chip { left:96px; top:140px; width:560px; height:124px; border-radius:28px; opacity:0; visibility:hidden; }
+  #a47-chip-in { left:0; top:0; width:560px; height:124px; padding:16px 28px; }
+  #a47-chip-main { position:static !important; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:56px; color:#f2f5f8; white-space:nowrap; }
+  #a47-chip-tag { position:static !important; font-size:28px; font-weight:700; line-height:32px; letter-spacing:3px; color:#93a3b2; margin-top:4px; white-space:nowrap; }
+  #a47-note { left:96px; top:1000px; font-size:19px; font-weight:700; line-height:24px; color:#93a3b2; white-space:nowrap; }
+</style>
+<div id="g-a4-7-strand-root" data-composition-id="g-a4-7-strand" data-width="1920" data-height="1080">
+  <div id="a47-bg"></div>
+  <div id="a47-wall"></div>
+  <div id="a47-floor"></div>
+
+  <div class="a47-win" id="a47-winL"></div>
+  <div class="a47-win" id="a47-winR"></div>
+  <svg id="a47-shafts" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <polygon points="300,620 460,620 640,880 440,880" fill="#7fb2e5" fill-opacity="0.07"></polygon>
+    <polygon points="1360,620 1520,620 1260,880 1080,880" fill="#7fb2e5" fill-opacity="0.07"></polygon>
+  </svg>
+  <div class="a47-mote" id="a47-m1" style="left:340px; top:700px;"></div>
+  <div class="a47-mote" id="a47-m2" style="left:420px; top:770px;"></div>
+  <div class="a47-mote" id="a47-m3" style="left:520px; top:830px;"></div>
+  <div class="a47-mote" id="a47-m4" style="left:1300px; top:700px;"></div>
+  <div class="a47-mote" id="a47-m5" style="left:1230px; top:780px;"></div>
+  <div class="a47-mote" id="a47-m6" style="left:1150px; top:840px;"></div>
+
+  <div class="a47-leg" id="a47-legL"></div>
+  <div class="a47-leg" id="a47-legR"></div>
+
+  <div id="a47-ftline"><div id="a47-ftline-in"></div></div>
+
+  <div id="a47-lift">
+    <div id="a47-plank"></div>
+    <div class="a47-crate" id="a47-c1"></div>
+    <div class="a47-crate" id="a47-c2"></div>
+    <div class="a47-crate" id="a47-c3"></div>
+    <div class="a47-sack" id="a47-s1"></div>
+    <div class="a47-sack" id="a47-s2"></div>
+    <div class="a47-sack" id="a47-s3"></div>
+    <div class="a47-sack" id="a47-s4"></div>
+    <div id="a47-sway">
+      <div class="a47-crate" id="a47-c4"></div>
+      <div class="a47-crate" id="a47-c5"></div>
+      <div class="a47-crate" id="a47-c6"></div>
+    </div>
+  </div>
+
+  <div id="a47-bracket">
+    <div id="a47-brk-v"></div>
+    <div class="a47-tick" id="a47-tick-t"></div>
+    <div class="a47-tick" id="a47-tick-b"></div>
+  </div>
+  <div id="a47-ftlabel"><div id="a47-ft-text">3 FT</div></div>
+
+  <div class="a47-streak" id="a47-w1" style="top:340px;"></div>
+  <div class="a47-streak" id="a47-w2" style="top:385px;"></div>
+  <div class="a47-streak" id="a47-w3" style="top:430px;"></div>
+  <div class="a47-streak" id="a47-w4" style="top:475px;"></div>
+  <div class="a47-streak" id="a47-w5" style="top:520px;"></div>
+  <div class="a47-streak" id="a47-w6" style="top:565px;"></div>
+
+  <div class="a47-puff" id="a47-p1" style="left:400px; top:790px;"></div>
+  <div class="a47-puff" id="a47-p2" style="left:470px; top:810px;"></div>
+  <div class="a47-puff" id="a47-p3" style="left:540px; top:800px;"></div>
+  <div class="a47-puff" id="a47-p4" style="left:610px; top:820px;"></div>
+
+  <div id="a47-src" class="a47-glass">Isaac Cline, Monthly Weather Review, September 1900, p. 373</div>
+  <div id="a47-chip" class="a47-glass">
+    <div id="a47-chip-in">
+      <div id="a47-chip-main">STRAND STREET</div>
+      <div id="a47-chip-tag">Wholesale merchants</div>
+    </div>
+  </div>
+  <div id="a47-note">Building: schematic · 80 px per ft</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const A = "#a47-";
+
+  // ---- time 0 states (hidden things are also hidden in CSS) ----
+  tl.set(A+"sway", {transformOrigin:"50% 100%"}, 0);
+  tl.set([A+"legL", A+"legR"], {scaleY:0, transformOrigin:"50% 100%", autoAlpha:0}, 0);
+  tl.set(A+"brk-v", {scaleY:0, transformOrigin:"50% 100%"}, 0);
+  tl.set([A+"tick-t", A+"tick-b"], {scaleX:0}, 0);
+  tl.set(A+"ftline-in", {x:-600}, 0);
+  tl.set(A+"ft-text", {transformOrigin:"left center"}, 0);
+  tl.set([A+"w1",A+"w2",A+"w3",A+"w4",A+"w5",A+"w6"], {x:0, autoAlpha:0}, 0);
+  tl.set([A+"p1",A+"p2",A+"p3",A+"p4"], {scale:0.3, autoAlpha:0}, 0);
+
+  // ---- ambient motes in the window light, the whole window ----
+  const motes = [A+"m1",A+"m2",A+"m3",A+"m4",A+"m5",A+"m6"];
+  motes.forEach(function(m, i) {
+    tl.to(m, {y: (i % 2 ? -22 : 22), duration:2.4, ease:"sine.inOut", yoyo:true, repeat:3}, i * 0.1);
+  });
+
+  // ---- 0.78 "Strand" @9.48 : chip in; out by 3.90 ("advised" @12.14 -> 3.44) ----
+  tl.fromTo(A+"chip", {y:24, scale:0.94, autoAlpha:0}, {y:0, scale:1, autoAlpha:1, duration:0.45, ease:"back.out(1.6)"}, 0.78);
+  tl.to(A+"chip-in", {y:-4, duration:1.1, ease:"sine.inOut", yoyo:true, repeat:1}, 1.2);
+  tl.to(A+"chip", {x:-700, autoAlpha:0, duration:0.5, ease:"power3.in"}, 3.4);
+
+  // ---- 4.48 "lift" @13.18 : stack + plank rise 240 px to 1.0 s (power2.inOut), trestles grow ----
+  tl.to(A+"lift", {y:-240, duration:1.0, ease:"power2.inOut"}, 4.48);
+  tl.to([A+"legL", A+"legR"], {autoAlpha:1, scaleY:1, duration:1.0, ease:"power2.inOut"}, 4.48);
+
+  // ---- 5.14 "three" @13.84 : 3 FT line draws ----
+  tl.set(A+"ftline", {autoAlpha:1}, 5.14);
+  tl.to(A+"ftline-in", {x:0, duration:0.5, ease:"power2.out"}, 5.14);
+
+  // ---- 5.48 "feet" @14.18 : bracket and label in ----
+  tl.set(A+"bracket", {autoAlpha:1}, 5.48);
+  tl.to(A+"brk-v", {scaleY:1, duration:0.5, ease:"power2.out"}, 5.48);
+  tl.to([A+"tick-t", A+"tick-b"], {scaleX:1, duration:0.35, ease:"power2.out"}, 5.48);
+  tl.fromTo(A+"ftlabel", {x:-24, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.45, ease:"power3.out"}, 5.48);
+  tl.to(A+"ftlabel", {y:-4, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:2}, 6.0);
+
+  // ---- 5.48 to 8.78 : the top three crates sway +-1 deg, 1.2 s a cycle, until the wind ----
+  tl.to(A+"sway", {rotation:1, duration:0.3, ease:"sine.out"}, 5.48);
+  tl.to(A+"sway", {rotation:-1, duration:0.6, ease:"sine.inOut", yoyo:true, repeat:4}, 5.78);
+
+  // ---- 7.84 "had" @16.54 : label pulses once ----
+  tl.to(A+"ft-text", {scale:1.12, duration:0.25, ease:"power2.out", yoyo:true, repeat:1}, 7.84);
+
+  // ---- 8.78 "wind" @17.48 : streaks cross from the right window leftward ----
+  ["w1","w2","w3","w4","w5","w6"].forEach(function(w, i) {
+    const t = 8.78 + i * 0.09;
+    tl.to(A+w, {autoAlpha:0.5, duration:0.12}, t);
+    tl.to(A+w, {x:-1000, duration:0.8, ease:"power1.in"}, t);
+    tl.to(A+w, {autoAlpha:0, duration:0.25}, t + 0.6);
+  });
+
+  // ---- 9.00 "blew" @17.70 : top three crates tip and fall left to 9.70 (power2.in); one sack slides ----
+  tl.to(A+"c4", {rotation:-35, x:-230, y:293, duration:0.7, ease:"power2.in"}, 9.0);
+  tl.to(A+"c5", {rotation:-60, x:-400, y:288, duration:0.7, ease:"power2.in"}, 9.0);
+  tl.to(A+"c6", {rotation:-45, x:-315, y:255, duration:0.7, ease:"power2.in"}, 9.0);
+  tl.to(A+"s4", {rotation:-25, x:-50, y:296, duration:0.65, ease:"power2.in"}, 9.05);
+
+  // ---- dust where the goods land ----
+  ["p1","p2","p3","p4"].forEach(function(p, i) {
+    const t = 9.55 + i * 0.05;
+    tl.to(A+p, {autoAlpha:0.4, duration:0.1}, t);
+    tl.to(A+p, {scale:1.6, y:-40, duration:0.8, ease:"power1.out"}, t);
+    tl.to(A+p, {autoAlpha:0, duration:0.3}, t + 0.4);
+  });
+
+  // ---- exit: 3 FT line, bracket and label fade 0.4 s at the end (the cut follows) ----
+  tl.to([A+"ftline", A+"bracket", A+"ftlabel"], {autoAlpha:0, duration:0.4, ease:"power1.in"}, 9.86);
+
+  window.__timelines["g-a4-7-strand"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
