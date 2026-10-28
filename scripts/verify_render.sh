@@ -12,17 +12,23 @@ EP="$1"; BASE="$2"; MODE="$3"
 MP4="$EP/renders/$BASE.mp4"
 [ -f "$MP4" ] || { echo "MISSING $MP4"; exit 1; }
 FAIL=0
+# Under schtasks/run_hidden, python3 on PATH can be the Microsoft Store stub in WindowsApps (exit 9009, the trap
+# render.cmd names), and every check below would then FAIL as a render defect. Take the first python or python3
+# outside WindowsApps, python first (a python3 shim may just call "python" again); none left is a setup error.
+PY=""
+while IFS= read -r c; do case "$c" in *WindowsApps*) ;; *) PY="$c"; break ;; esac; done < <(type -ap python python3)
+[ -n "$PY" ] || { echo "FAIL: no Python on PATH outside WindowsApps (the Microsoft Store stub); put the Python install folder ahead of it"; exit 3; }
 
 echo "=== used vs asked (owner 2026-09-15: dedicated GPU only; Oct 26: the ZBook encoded on Intel QSV unseen) ==="
 LOG="$EP/render_$MODE.log"
 # stream_gate.py owns this check: nvenc encoder (output tag), NVIDIA capture on every worker, streaming capture
-if ! python3 "$(dirname "$0")/stream_gate.py" check "$LOG" "$MP4"; then
+if ! "$PY" "$(dirname "$0")/stream_gate.py" check "$LOG" "$MP4"; then
   echo "FAIL: the render ran on something other than it asked for (re-render through scripts/render.cmd once the [FALLBACK] cause is fixed)"; exit 2
 fi
 
 echo
 echo "=== composition truth (index.html #root — the spec this render must match) ==="
-COMPOUT=$(python3 - "$EP/index.html" <<'PYEOF'
+COMPOUT=$("$PY" - "$EP/index.html" <<'PYEOF'
 import re, sys
 h = open(sys.argv[1], encoding="utf-8", errors="replace").read()
 m = re.search(r'<div[^>]*\bid="root"[^>]*>', h)
@@ -68,7 +74,7 @@ HAS_AUDIO=$(ffprobe -v error -select_streams a -show_entries stream=codec_type -
 # Passed as an argv string, never a /tmp file: this python runs as a native Windows exe (no
 # MSYS path translation for text read from a heredoc), so a bash-side /tmp/... path that
 # ffmpeg/grep resolve fine is simply not there when a plain open() asks for it.
-if ! python3 - "$COMP_W" "$COMP_H" "$COMP_DUR" "$EXPECT_FPS" "$HAS_AUDIO" "$PROBE" <<'PYEOF'
+if ! "$PY" - "$COMP_W" "$COMP_H" "$COMP_DUR" "$EXPECT_FPS" "$HAS_AUDIO" "$PROBE" <<'PYEOF'
 import re, sys
 comp_w, comp_h, comp_dur, expect_fps, has_audio, probe = sys.argv[1:7]
 probe = probe.replace("\r\n", "\n")  # ffprobe is a native console app; bash keeps its \r
@@ -115,7 +121,7 @@ BLACK_RAW=$(ffmpeg -hide_banner -nostats -i "$MP4" -vf "blackdetect=d=1.5:pix_th
 SILENCE_RAW=$(ffmpeg -hide_banner -nostats -i "$MP4" -af "silencedetect=n=-50dB:d=2" -f null - 2>&1)
 FREEZE_RAW=$(ffmpeg -hide_banner -nostats -i "$MP4" -vf "freezedetect=n=-58dB:d=6" -an -f null - 2>&1)
 VID_DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$MP4")
-if ! python3 - "$EP" "$VID_DUR" "$BLACK_RAW" "$SILENCE_RAW" "$FREEZE_RAW" <<'PYEOF'
+if ! "$PY" - "$EP" "$VID_DUR" "$BLACK_RAW" "$SILENCE_RAW" "$FREEZE_RAW" <<'PYEOF'
 import re, sys
 from pathlib import Path
 
@@ -188,7 +194,7 @@ if [ -z "$EXPECT_FPS" ] || [ "$EXPECT_FPS" = "0" ]; then
   echo "SKIP: no expected fps available to sample at"
 else
   ffmpeg -hide_banner -v error -i "$MP4" -vf "fps=$EXPECT_FPS,scale=180:180,format=gray" -f rawvideo - \
-    | python3 "$(dirname "$0")/pop_scan.py" --fps "$EXPECT_FPS"
+    | "$PY" "$(dirname "$0")/pop_scan.py" --fps "$EXPECT_FPS"
   POP_FFMPEG_RC=${PIPESTATUS[0]}
   if [ "$POP_FFMPEG_RC" != 0 ]; then
     echo "SKIP: ffmpeg failed to decode frames for pop scan (exit $POP_FFMPEG_RC) — not run, not clean"
