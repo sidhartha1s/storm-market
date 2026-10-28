@@ -20,10 +20,10 @@ Full-frame ground (radial gradient, layer `cb-ground`, frame 0). Horizontal bars
   - Row 1977: label "BUFFALO 1977" Arial 700 26 px `#93a3b2` tracking 4, left 160, top 340; track x 160-1260, y 380-460; bar fill `#5a768f`, x 160-505.7; value "11" Arial Black 900 84 px `#dfe7ee`, left edge x 530, vertically centred on the bar (box about y 370-470).
   - Row 2022: label "BUFFALO 2022" Arial 700 26 px `#f2f5f8` tracking 4, left 160, top 540; track x 160-1260, y 580-660; bar fill `#c0392b`, x 160-1260; value "35" Arial Black 900 84 px `#f2f5f8`, left edge x 1290 (box about x 1290-1400, y 570-670).
   - Bar text layout: label line and value combine as the Picture's "BUFFALO 1977 · 11" / "BUFFALO 2022 · 35": the label sits above the bar, the value at the bar's end.
-- Chip (dark-panel card, not glass: no footage under it; `#15202b` at 92 %, 1 px `rgba(255,255,255,.14)` border, radius 20, padding 20 px 28 px), right edge x 1824, top 300 (about x 1240-1824, y 300-420); two lines, left-aligned:
+- Chip (dark-panel card, not glass: no footage under it; `#15202b` at 92 %, 1 px `rgba(255,255,255,.14)` border, radius 20, padding 20 px 28 px), right edge x 1824, top 230 (about x 1240-1824, y 230-350, clear above row 1977's track, which starts at y 380); two lines, left-aligned:
   - Line 1: "1977 · 29 (NWS)" Arial Black 900 38 px `#dfe7ee`.
   - Line 2: "23 WESTERN NY (ARMY CORPS)" Arial 700 22 px `#93a3b2` tracking 3.
-  It must clear row 1977's track end (x 1260, y 380-460): if the measured chip box crosses x 1260 below y 380, move the chip up to top 230 and state the box.
+  State the measured chip box; it must stay above y 370 and right of the headline (x > 860).
 - Source (one zone, two pre-authored lines, one visible at a time), Arial 400 19 px `#c8d3e0`, `left:96px; bottom:54px`: S-A "US Army Corps of Engineers report, via Wikipedia; NWS tally"; S-B "Poloncarz via WIVB".
 - Type tiers: 84/52 big, 38/26 mid, 22/19 small.
 
@@ -54,7 +54,7 @@ Strings: `CITY OF BUFFALO ONLY` · `TWO BLIZZARDS, ONE CITY` · `BUFFALO 1977` �
 Comp duration 14.90 s (1.27 s past the wav end, the land time after the last beat; trim to the real gap, keeping at least 0.8 s after 13.31).
 
 ## 6. CONTRACT
-One file `compositions/g-a5-5-city-bars.html`, root `id="g-a5-5-city-bars-root"`, `data-composition-id="g-a5-5-city-bars"`, PAUSED timeline `window.__timelines["g-a5-5-city-bars"]`. Prefix `cb-`. Bars tween `scaleX`, never `width`. Repeat note: "1977" appears in the label, the chip and the eyebrow-free headline area: label "BUFFALO 1977" and chip line "1977 · 29 (NWS)" are two different facts about one year; declare `data-repeat-ok="year label on two different counts"` on the chip's line-1 leaf only after a frame read. "35" also appears in A3 (another comp): a callback. Rest: `references/mg-quickref.md`. Footage: none.
+One file `compositions/g-a5-5-city-bars.html`, root `id="g-a5-5-city-bars-root"`, `data-composition-id="g-a5-5-city-bars"`, PAUSED timeline `window.__timelines["g-a5-5-city-bars"]`. Prefix `cb-`. Bars tween `scaleX`, never `width`. Repeat note: "1977" appears in the row label and the chip: label "BUFFALO 1977" and chip line "1977 · 29 (NWS)" are two different facts about one year; declare `data-repeat-ok="year label on two different counts"` on the chip's line-1 leaf only after a frame read. "35" also appears in A3 (another comp): a callback. Rest: `references/mg-quickref.md`. Footage: none.
 
 ## 7. TOOLS
 `node scripts/freeze_scan.mjs episodes/ep-buffalo-2022 --comp g-a5-5-city-bars`; `node scripts/graphics_qc.mjs episodes/ep-buffalo-2022 g-a5-5-city-bars`.
