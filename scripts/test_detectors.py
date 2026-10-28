@@ -463,6 +463,7 @@ assert 'ERROR [undesigned] flat background · 0 type tier(s) · 0 elements on sc
     f'old code should drop every sample of the debris comp and call it undesigned: {olds}'
 print('graphics_qc self-check PASS (canvas background + renderer span, their quarter-frame/onUpdate limits, a {} clock is not motion)')
 print('graphics_qc self-check PASS (declared exemptions: data-type-ok and data-crop-ok need a reason, are printed, and reach no other rule or img)')
+print('graphics_qc self-check PASS (back-to-back slides: design stats read every sample, text geometry skips only text slides, an empty frame still fails)')
 
 # ---------------------------------------------------------------- settle frames for the vision pass
 # The old reader sampled every 3 s from the comp start, so frame 1 was always mid-reveal. The frames
