@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-2-bearmtn · A1-S2 · ep-appalachian-1950 · DEEP (Opus) · brief: briefs/a1/g-a1-2-bearmtn.md
+  Claim: near New York City one gust beat Newark's 108 mph: 140 mph at Bear Mountain, a state park on the Hudson north
+  of the city (closes L4). Source: research/nws-facts.md §1 JKL. L1 stays closed: no track, low, front, or line joining
+  two pins; the "?" rides the river and draws no trail.
+  g-a1-4 COPIES THIS FILE: map panel (frame A1-N) and the whole ladder (8 slots, only Newark and Bear Mountain drawn).
+  BASEMAP (frame A1-N, x 0 to 820): Natural Earth 50m admin-1 (public domain), the same RDP'd integer state paths the
+    episode's other maps use: PA, NY (with Long Island and Staten Island), NJ copied verbatim from g-a4-4-statemap.html
+    defs; CT and VT copied verbatim from that file's US path subpaths; MA = its US path subpath verbatim from its start
+    to (100812,21887), then closed straight down x 100812 to the RI line (screen x 1100, under the ladder ground, never
+    seen). Off frame or under the panel, so not drawn: RI, NH, DE (a 30 px sliver at screen y > 1050, x 106 to 270,
+    shows as water), MD.
+  PROJECTION: X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213); screen = (map - (81836.7, 19751.4)) * 0.058,
+    i.e. the map group's static transform translate(-4746.5286,-1145.5812) scale(0.058).
+    Check: Newark (89893.2, 32871.1) -> (467.3, 760.9); Bear Mtn (90529.3, 29658.6) -> (504.2, 574.6).
+  LAYERS: #bm2-cam (screen px) holds the map-unit group, the Hudson, the pins and the "?"; only the camera drift
+    transforms it (scale 1 -> 1.03 about the Bear Mountain pin, svgOrigin "504 575", ease none, whole host), so pins
+    stay on their geography (Newark moves (-1.1, +5.6) px by the end). Labels are a fixed HUD layer above the fade.
+  LADDER (_list.md "The gust ladder"): origin x 900, 3.5 px per mph, bar 34 px, radius 4.
+    Bear Mountain 140 -> 490 px, x 900 to 1390, centre y 330. Newark 108 -> 378 px, x 900 to 1278, centre y 440.
+    Ratio 490 / 378 = 1.296 = 140 / 108. Name baseline 14 px above the bar top; value at bar end + 18.
+  Host: data-start = A1-S2 start, duration = 9.610 + 0.40 = 10.01 s (0.40 s gap assumed, no index.html yet).
+-->
+<template>
+<style>
+  #bm2-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 30% 55%, #070b10 0%, #04070a 70%); }
+  .bm2-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* map panel fades into the ladder ground over x 700 to 820; solid #04070c from 820 */
+  .bm2-fade { position:absolute; left:700px; top:0; right:0; bottom:0;
+    background:linear-gradient(90deg, rgba(4,7,12,0) 0px, #04070c 120px); }
+  .bm2-lab { font-family:Arial, sans-serif; font-weight:700; fill:#f2f5f8; letter-spacing:3px;
+    paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .bm2-q { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; fill:#d8a13a; }
+  .bm2-head { position:absolute; left:900px; top:70px; font-family:Arial, sans-serif; font-weight:700; font-size:26px;
+    line-height:1; letter-spacing:8px; color:#93a3b2; white-space:nowrap; }
+  .bm2-name { position:absolute; left:900px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:1;
+    letter-spacing:3px; color:#93a3b2; white-space:nowrap; }
+  .bm2-bar { position:absolute; left:900px; height:34px; border-radius:4px; background:#7fb2e5; }
+  .bm2-val { position:absolute; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:52px;
+    color:#f2f5f8; white-space:nowrap; }
+  .bm2-guide { position:absolute; left:1278px; top:300px; width:0; height:170px; border-left:1px dashed rgba(255,255,255,0.3); }
+  .bm2-glow { position:absolute; left:1340px; top:313px; width:50px; height:34px; border-radius:4px;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(190,220,248,0.95)); box-shadow:0 0 34px rgba(127,178,229,0.75); }
+  .bm2-credit { position:absolute; left:110px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:1;
+    letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .bm2-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="bm2-root" data-composition-id="g-a1-2-bearmtn" data-width="1920" data-height="1080" data-duration="10.01">
+
+  <!-- MAP PANEL: camera layer in screen px; the map-unit group carries the static A1-N transform and is never tweened -->
+  <svg class="bm2-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- state shapes, map units, no paint -->
+      <path id="bm2-g-pa" d="M68420,24301 L68420,25805 L85365,25819 L85662,26108 L85797,26412 L86246,26629 L86347,26750 L86350,26930 L86508,27122 L86457,27412 L86517,27997 L86786,28559 L86963,28746 L87649,29027 L87870,29399 L87435,29711 L87051,30528 L86593,31106 L86242,31401 L86424,32198 L86285,32500 L86043,32649 L85976,33127 L85988,33652 L86340,33947 L86584,34632 L86805,34713 L87733,36117 L86624,36883 L86050,37568 L85482,37736 L85097,38011 L84754,37854 L84277,37876 L83991,38081 L83700,38531 L65514,38530 L65511,25868 L66225,25582 Z"/>
+      <path id="bm2-g-ny" d="M71097,19632 L71115,18645 L72543,18206 L73434,18060 L74519,18021 L75813,18231 L76315,18422 L76633,18666 L77000,18732 L77416,18618 L77992,18580 L78729,18618 L79123,18676 L79174,18752 L79473,18471 L80026,18270 L80099,18311 L80647,17690 L81058,17392 L81429,17237 L81983,17151 L82095,17016 L82124,16624 L82036,15993 L81882,15594 L81767,15485 L81780,15370 L81980,15229 L81965,15361 L82018,15401 L82112,15341 L82602,14648 L82200,14675 L82135,14621 L82281,14386 L82208,14196 L82114,14174 L81698,14399 L81520,14048 L81960,13617 L83518,12421 L83735,12077 L83672,11864 L85173,10327 L86025,9617 L86729,9222 L87265,9033 L93044,9025 L93071,9396 L92991,9835 L93058,10310 L92967,11304 L93207,12073 L93164,13138 L92933,13593 L92760,14222 L92956,15734 L92799,16932 L92893,16994 L93127,16725 L93447,17136 L93320,21269 L93423,21609 L92448,25363 L92551,25500 L92304,29742 L92537,30172 L91619,30811 L91975,31440 L91404,32074 L91127,32337 L90899,32422 L90605,32783 L90914,31884 L91047,31087 L91008,30442 L90842,30177 L90671,30000 L90872,30637 L90901,31438 L87870,29399 L87649,29027 L86963,28746 L86627,28307 L86517,27997 L86457,27412 L86508,27122 L86350,26930 L86347,26750 L86246,26629 L85797,26412 L85662,26108 L85365,25819 L68420,25805 L68420,24270 L69383,23626 L69751,23258 L70547,22709 L70870,22396 L71375,21729 L71664,21543 L71820,21347 L71841,21141 L71641,20239 L71755,19902 L71703,19832 Z M96006,31834 L96253,31871 L97133,31260 L97531,31134 L97656,31107 L97846,31311 L98609,31056 L96935,31986 L96593,32091 L96104,32368 L93650,33326 L93377,33274 L92012,33630 L91451,33670 L90941,33794 L91319,33507 L91327,33400 L91237,33316 L91035,33341 L90828,33636 L90498,33734 L90432,33413 L90691,32929 L91019,32558 L91488,32324 L91726,32121 L91891,32300 L91927,32058 L92192,31844 L92524,31842 L92965,31709 L93328,31818 L93683,31787 L93969,31636 L94267,31585 L95836,31441 L96806,30694 L97184,30540 Z M89649,34083 L89833,33547 L90169,33303 L90291,33354 L90249,33705 L90023,33954 Z"/>
+      <path id="bm2-g-nj" d="M86430,37072 L87733,36117 L86805,34713 L86584,34632 L86340,33947 L85988,33652 L86001,32826 L86043,32649 L86285,32500 L86424,32198 L86242,31401 L86593,31106 L87051,30528 L87435,29711 L87870,29399 L90901,31438 L90835,31874 L90457,32756 L89837,33361 L89685,33584 L89541,34028 L89628,34432 L90364,34579 L90561,34455 L90718,35146 L90447,36572 L90248,38163 L90307,37018 L90187,37114 L90104,37326 L89879,38507 L89570,39137 L89286,39572 L88992,39500 L89058,39846 L88908,40403 L88733,40652 L88569,40628 L88333,40800 L88239,40931 L88232,41183 L87504,42554 L87008,42894 L86890,42844 L87110,41753 L86522,41387 L86192,41404 L85827,40977 L85357,40667 L84701,39827 L84703,39204 L85094,38154 L85358,37931 L86124,37703 Z"/>
+      <path id="bm2-g-ct" d="M98999,25683 L99022,28491 L98988,29067 L98891,29202 L98843,29521 L98506,29490 L97219,29766 L96812,29652 L96396,29855 L94984,29910 L94686,29802 L94305,30186 L93696,30413 L92157,31273 L91975,31440 L91619,30811 L92537,30172 L92304,29742 L92551,25500 L95135,25620 L95140,25765 L95305,25747 L95327,25620 L98999,25683 Z"/>
+      <path id="bm2-g-ma" d="M98999,25683 L95327,25620 L95305,25747 L95140,25765 L95135,25620 L92551,25500 L92448,25363 L93423,21609 L100812,21887 L100812,25716 L100591,25716 L99002,25743 Z"/>
+      <path id="bm2-g-vt" d="M93044,9025 L100091,9013 L100029,9122 L100119,9567 L99694,10329 L99895,11246 L99738,11769 L99455,12125 L98908,12551 L98231,12800 L98118,12960 L97998,13990 L97796,14833 L97383,15808 L97098,16232 L96846,16949 L96418,20010 L96126,20858 L96165,21176 L96444,21731 L93423,21609 L93320,21269 L93447,17136 L93127,16725 L92893,16994 L92799,16932 L92956,15734 L92760,14222 L92933,13593 L93164,13138 L93207,12073 L92967,11304 L93058,10310 L92991,9835 L93071,9396 L93044,9025 Z"/>
+    </defs>
+    <g id="bm2-cam">
+      <g transform="translate(-4746.5286,-1145.5812) scale(0.058)">
+        <!-- land fills, then one outline layer whose group opacity keeps shared borders at the same .14 as the coast -->
+        <g fill="#0b1016" stroke="none">
+          <use href="#bm2-g-pa"/><use href="#bm2-g-ny"/><use href="#bm2-g-nj"/>
+          <use href="#bm2-g-ct"/><use href="#bm2-g-ma"/><use href="#bm2-g-vt"/>
+        </g>
+        <g fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round" opacity="0.14">
+          <use href="#bm2-g-pa" vector-effect="non-scaling-stroke"/><use href="#bm2-g-ny" vector-effect="non-scaling-stroke"/>
+          <use href="#bm2-g-nj" vector-effect="non-scaling-stroke"/><use href="#bm2-g-ct" vector-effect="non-scaling-stroke"/>
+          <use href="#bm2-g-ma" vector-effect="non-scaling-stroke"/><use href="#bm2-g-vt" vector-effect="non-scaling-stroke"/>
+        </g>
+      </g>
+      <!-- Hudson, Battery to Albany (screen px from _list.md frame A1-N) -->
+      <polyline id="bm2-hudson" points="501,773 528,698 532,653 509,572 503,513 519,449 515,374 560,140" fill="none"
+        stroke="#5a768f" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- NEW YORK @6.66: the stretch south of the pin brightens toward the Battery (pin end first) -->
+      <polyline id="bm2-hudhl" class="bm2-hide" points="509,572 532,653 528,698 501,773" fill="none"
+        stroke="#9fc8ee" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- Newark pin: 16 px dot, pulse every 1.5 s -->
+      <circle id="bm2-nwkpulse" cx="467" cy="761" r="8" fill="none" stroke="#7fb2e5" stroke-width="2" opacity="0"/>
+      <circle id="bm2-nwkpin" cx="467" cy="761" r="8" fill="#7fb2e5"/>
+      <!-- Bear Mountain pin: 18 px dot, 2 px ring -->
+      <circle id="bm2-bmpulse" cx="504" cy="575" r="12" fill="none" stroke="#7fb2e5" stroke-width="2" opacity="0"/>
+      <g id="bm2-bmpin" class="bm2-hide">
+        <circle cx="504" cy="575" r="12" fill="#04070c" fill-opacity="0.6" stroke="#7fb2e5" stroke-width="2"/>
+        <circle cx="504" cy="575" r="9" fill="#f2f5f8"/>
+      </g>
+      <!-- "?" marker (as g-intro-5 ended it): q-at is moved by GSAP x/y only, along the Hudson legs -->
+      <g id="bm2-q-at">
+        <g id="bm2-q" class="bm2-hide">
+          <circle id="bm2-qpulse" r="32" fill="none" stroke="#d8a13a" stroke-width="3" opacity="0"/>
+          <circle id="bm2-qc" r="32" fill="#04070c" fill-opacity="0.6" stroke="#d8a13a" stroke-width="3"/>
+          <text id="bm2-qt" class="bm2-q" x="0" y="19" text-anchor="middle">?</text>
+        </g>
+      </g>
+    </g>
+  </svg>
+  <div class="bm2-fade" id="bm2-fade"></div>
+
+  <!-- HUD map labels: fixed, never ride the drift -->
+  <svg class="bm2-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <text id="bm2-nwklab" class="bm2-lab" x="447" y="769" font-size="22" text-anchor="end">NEWARK</text>
+    <text id="bm2-bmlab" class="bm2-lab bm2-hide" x="548" y="584" font-size="26">BEAR MOUNTAIN, NY</text>
+    <text id="bm2-bmsub" class="bm2-lab bm2-hide" x="548" y="614" font-size="19" style="fill:#93a3b2">STATE PARK ON THE HUDSON</text>
+  </svg>
+
+  <!-- LADDER: slots fixed from frame 0 (_list.md). Drawn here: Bear Mountain (y 330) and Newark (y 440) only.
+       Empty slots for g-a1-4: Mount Washington 190, divider 250, NYC 550, Central Park 640, Allentown 750, Albany 860. -->
+  <div class="bm2-head" id="bm2-head">PEAK GUSTS · MPH</div>
+  <div class="bm2-guide" id="bm2-guide"></div>
+
+  <div class="bm2-name bm2-hide" id="bm2-bmname" style="top:281px" data-repeat-ok="pin label and ladder row name">BEAR MOUNTAIN, NY</div>
+  <div class="bm2-bar bm2-hide" id="bm2-bmbar" style="top:313px; width:490px"></div>
+  <div class="bm2-glow bm2-hide" id="bm2-bmglow"></div>
+  <div class="bm2-val bm2-hide" id="bm2-bmval" style="left:1408px; top:304px"><span id="bm2-bmnum">1</span><span id="bm2-bmunit"> MPH</span></div>
+
+  <div class="bm2-name" id="bm2-nwkname" style="top:391px">NEWARK, NJ</div>
+  <div class="bm2-bar" id="bm2-nwkbar" style="top:423px; width:378px; opacity:0.35"></div>
+  <div class="bm2-val" id="bm2-nwkval" style="left:1296px; top:414px">108 MPH</div>
+
+  <div class="bm2-credit" id="bm2-src" style="bottom:90px">Source: NWS Jackson KY</div>
+  <div class="bm2-credit" id="bm2-credit" style="bottom:60px">Basemap: Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#bm2-";
+  const DUR = 10.01;                                   /* 9.610 wav + 0.40 gap */
+  const BM = "504 575";                                /* Bear Mountain pin, screen px: drift and pin origin */
+  const tl = gsap.timeline({ paused: true });
+
+  /* transforms start in set() at 0 (file contract) */
+  tl.set(P + "cam", { scale: 1, svgOrigin: BM }, 0);
+  tl.set(P + "q-at", { x: 528, y: 698 }, 0);           /* Yonkers */
+  tl.set(P + "q", { scale: 1, svgOrigin: "0 0" }, 0);
+  tl.set(P + "qc", { scale: 1, svgOrigin: "0 0" }, 0);
+  tl.set(P + "bmpin", { scale: 1, svgOrigin: BM }, 0);
+  tl.set([P + "bmlab", P + "bmsub", P + "bmname", P + "bmval"], { x: 0 }, 0);
+  tl.set(P + "bmbar", { scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set(P + "bmglow", { scaleY: 1, transformOrigin: "right center" }, 0);
+
+  /* NEAR @0.00: map, Newark pin + label, header, Newark row (dim) on from frame 0; drift 1 -> 1.03, ease none */
+  tl.to(P + "cam", { scale: 1.03, svgOrigin: BM, duration: DUR, ease: "none" }, 0);
+  /* Newark pulse every 1.5 s (6 pulses, last ends 8.80; r 8 -> 18 stays clear of the label end at x 447) */
+  tl.fromTo(P + "nwkpulse", { opacity: 0.8, attr: { r: 8 } }, { opacity: 0, attr: { r: 18 }, duration: 1.2, ease: "power1.out", repeat: 5, repeatDelay: 0.3 }, 0.10);
+
+  /* GUST @1.54: "?" in at Yonkers, then pulses every 1.0 s until the slide */
+  tl.fromTo(P + "q", { autoAlpha: 0, scale: 0.6, svgOrigin: "0 0" }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", duration: 0.35, ease: "back.out(2)" }, 1.54);
+  tl.fromTo(P + "qpulse", { opacity: 0.8, attr: { r: 32 } }, { opacity: 0, attr: { r: 56 }, duration: 0.8, ease: "power1.out", repeat: 1, repeatDelay: 0.2 }, 1.89);
+
+  /* NEWARKS @2.16: Newark bar brightens to 70 % for 0.6 s, back to 35 % */
+  tl.to(P + "nwkbar", { opacity: 0.7, duration: 0.2, ease: "power2.out" }, 2.16);
+  tl.to(P + "nwkbar", { opacity: 0.35, duration: 0.4, ease: "power2.in" }, 2.76);
+
+  /* BEAR @3.70: "?" up the river, Yonkers -> Tappan Zee -> Bear Mtn Bridge, 0.9 s. Legs 45.2 px and 84.2 px: the time
+     split 0.314 / 0.586 matches speed at the joint, power2.in then power2.out = power2.inOut over the whole path */
+  tl.to(P + "q-at", { x: 532, y: 653, duration: 0.314, ease: "power2.in" }, 3.70);
+  tl.to(P + "q-at", { x: 509, y: 572, duration: 0.586, ease: "power2.out" }, 4.014);
+
+  /* MOUNTAIN @3.94, settles 4.60: "?" morphs into the pin at (504,575) */
+  tl.to(P + "q-at", { x: 504, y: 575, duration: 0.35, ease: "power2.out" }, 4.60);
+  tl.fromTo(P + "qc", { scale: 1, svgOrigin: "0 0" }, { scale: 0.3, svgOrigin: "0 0", duration: 0.35, ease: "power2.in" }, 4.60);
+  tl.to(P + "qt", { autoAlpha: 0, duration: 0.15, ease: "power1.in" }, 4.60);
+  tl.fromTo(P + "bmpin", { autoAlpha: 0, scale: 0, svgOrigin: BM }, { autoAlpha: 1, scale: 1, svgOrigin: BM, duration: 0.35, ease: "back.out(2)" }, 4.60);
+  tl.to(P + "q", { autoAlpha: 0, duration: 0.15, ease: "power1.in" }, 4.80);
+
+  /* STATE @4.98: pin label in; HUDSON @5.86: sub in */
+  tl.fromTo(P + "bmlab", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.98);
+  tl.fromTo(P + "bmsub", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.86);
+
+  /* NEWYORK @6.66: Hudson south of the pin brightens toward the Battery (0.5 s), then back */
+  const HL = document.getElementById("bm2-hudhl");
+  const HLEN = Math.ceil(HL.getTotalLength()) + 1;     /* about 209 px + 1 */
+  HL.setAttribute("stroke-dasharray", HLEN + " " + HLEN);
+  tl.set(P + "hudhl", { strokeDashoffset: HLEN }, 0);
+  tl.set(P + "hudhl", { autoAlpha: 1 }, 6.66);
+  tl.fromTo(P + "hudhl", { strokeDashoffset: HLEN }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 6.66);
+  tl.to(P + "hudhl", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 7.30);
+
+  /* 140 @7.96: Bear Mountain bar shoots past Newark's guide (x 1278) to x 1390; value counts 1 -> 140; pin pulse
+     ring doubles once (r 12 -> 24). Sound hit here (index.html, not this file). */
+  tl.fromTo(P + "bmname", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 7.96);
+  tl.fromTo(P + "bmbar", { autoAlpha: 1, scaleX: 0, transformOrigin: "left center" }, { autoAlpha: 1, scaleX: 1, transformOrigin: "left center", duration: 0.7, ease: "power4.out" }, 7.96);
+  tl.fromTo(P + "bmval", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.25, ease: "power3.out" }, 7.96);
+  const V = { v: 1 };
+  const NUM = document.getElementById("bm2-bmnum");
+  tl.fromTo(V, { v: 1 }, { v: 140, duration: 0.7, ease: "power3.out", onUpdate: function () { NUM.textContent = Math.round(V.v); } }, 7.96);
+  tl.fromTo(P + "bmpulse", { opacity: 0.9, attr: { r: 12 } }, { opacity: 0, attr: { r: 24 }, duration: 0.7, ease: "power1.out" }, 7.96);
+
+  /* 8.70 to end: bar-end glow pulses (3 plays, ends 9.90), pin pulses twice (ends 9.95); drift continues */
+  tl.fromTo(P + "bmglow", { autoAlpha: 0, scaleY: 1 }, { autoAlpha: 0.9, scaleY: 1.25, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 2 }, 8.70);
+  tl.fromTo(P + "bmpulse", { opacity: 0.8, attr: { r: 12 } }, { opacity: 0, attr: { r: 22 }, duration: 0.55, ease: "power1.out", repeat: 1, repeatDelay: 0.05 }, 8.80);
+
+  /* exit: none, the host cuts to g-a1-3 */
+  window.__timelines["g-a1-2-bearmtn"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
