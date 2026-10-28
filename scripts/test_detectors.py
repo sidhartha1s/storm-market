@@ -459,6 +459,8 @@ assert 'flat background' in olds['fbebe442'].get('g-n1', '') and '[idle]' not in
     f'pre-fix main should run and count the {{}} clock as motion: {olds}'
 assert 'ERROR [flat-type]' in olds['29dfbdca'].get('g-t1', '') and 'ERROR [bad-crop]' in olds['29dfbdca'].get('g-c1', ''), \
     f'old code should fail the declared comps: {olds}'
+assert 'ERROR [undesigned] flat background · 0 type tier(s) · 0 elements on screen' in olds['0d2fa47a'].get('g-d1', ''), \
+    f'old code should drop every sample of the debris comp and call it undesigned: {olds}'
 print('graphics_qc self-check PASS (canvas background + renderer span, their quarter-frame/onUpdate limits, a {} clock is not motion)')
 print('graphics_qc self-check PASS (declared exemptions: data-type-ok and data-crop-ok need a reason, are printed, and reach no other rule or img)')
 
