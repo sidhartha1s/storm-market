@@ -1,0 +1,74 @@
+<template>
+<style>
+  #g-a5-12-herald-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  /* page wrapper: crop width 1288 (column 1240 + 24 px margin each side), centred x 960, top 140.
+     transform-origin sits on the lit sentence's centre so the push keeps it near frame y ~475. */
+  #g-a5-12-herald-pg { position:absolute; inset:auto; left:316px; top:140px; width:1288px; transform-origin:644px 335px; opacity:0; visibility:hidden; }
+  #g-a5-12-herald-img { display:block; width:1288px; height:auto; }
+  /* RETUNE both boxes to the measured crop once media/doc/mwr-1900-09-p376-herald.jpg is on disk (wrapper px).
+     Lit bar: whole line(s) of "It was not through any lack of attention on the part of the forecasters", x 24, y 290, 1240 x 90 -> frame y 430 to 520 at scale 1.
+     Underline: under the heading "From the Boston Herald". */
+  #g-a5-12-herald-bar { position:absolute; inset:auto; left:24px; top:290px; width:1240px; height:90px; border-radius:6px;
+    background:rgba(216,161,58,0.32); transform-origin:left center; opacity:0; visibility:hidden; }
+  #g-a5-12-herald-ul { position:absolute; inset:auto; left:24px; top:226px; width:520px; height:4px; border-radius:2px;
+    background:#d8a13a; transform-origin:left center; opacity:0; visibility:hidden; }
+
+  /* source line top-left, eyebrow top-right: glass (tokens.md) */
+  #g-a5-12-herald-src { position:absolute; inset:auto; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; letter-spacing:1px; opacity:0; visibility:hidden; }
+  #g-a5-12-herald-eye { position:absolute; inset:auto; right:96px; top:54px; box-sizing:border-box; padding:8px 18px; border-radius:12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:22px; line-height:28px; color:#c8d3e0; letter-spacing:4px; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-12-herald-root" data-composition-id="g-a5-12-herald" data-width="1920" data-height="1080" data-type-ok="page crop with two small tags, no headline by design">
+  <!-- crop expected from the orchestrator: media/doc/mwr-1900-09-p376-herald.jpg (MWR Sept 1900, p. 376, "From the Boston Herald" heading and the forecasters sentence, column 1240 px wide at scale) -->
+  <div id="g-a5-12-herald-pg">
+    <img id="g-a5-12-herald-img" src="media/doc/mwr-1900-09-p376-herald.jpg" alt="Monthly Weather Review, September 1900, page 376: From the Boston Herald, it was not through any lack of attention on the part of the forecasters">
+    <div id="g-a5-12-herald-ul"></div>
+    <div id="g-a5-12-herald-bar"></div>
+  </div>
+  <div id="g-a5-12-herald-src">Monthly Weather Review, Sept. 1900 (Boston Herald, Sept. 17, 1900, as reprinted)</div>
+  <div id="g-a5-12-herald-eye">MONTHLY WEATHER REVIEW &middot; P. 376</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a5-12-herald-";
+  /* TIMING: audio/a5-s8.words.json, comp-local = segment time (host 0.00 to 9.26).
+     Washington @0.00 ; journal. @2.16 ; Boston @3.76 ; forecasters @5.46 ; attention. @8.32 ; I @9.26 (g-a5-13 cuts in) */
+  tl.set(P+"pg", {autoAlpha:0, scale:1, y:36}, 0);
+  tl.set([P+"bar", P+"ul"], {autoAlpha:0, scaleX:0}, 0);
+  tl.set([P+"src", P+"eye"], {autoAlpha:0, y:0}, 0);
+
+  /* Washington @0.00: page on, push toward the Herald heading starts (1.00 -> 1.06 settles 2.16 on the heading) */
+  tl.to(P+"pg", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  tl.to(P+"pg", {scale:1.06, y:20, duration:2.16, ease:"power1.out"}, 0);
+  /* source line and eyebrow in at 0.40, drift to the end */
+  tl.to([P+"src", P+"eye"], {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0.40);
+  tl.to([P+"src", P+"eye"], {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:3}, 0.80);
+  /* heading hold: slow creep so the page keeps moving 2.16 to 5.46 */
+  tl.to(P+"pg", {scale:1.09, y:8, duration:3.30, ease:"none"}, 2.16);
+
+  /* BOSTON @3.76: underline under "From the Boston Herald", 0.4 s */
+  tl.to(P+"ul", {autoAlpha:1, duration:0.1, ease:"none"}, 3.76);
+  tl.to(P+"ul", {scaleX:1, duration:0.4, ease:"power2.out"}, 3.76);
+
+  /* FORECASTERS @5.46: push moves to the sentence (1.09 -> 1.15 to the host end), bar draws 5.46 to 6.22, page dims */
+  tl.to(P+"pg", {scale:1.15, y:0, duration:4.94, ease:"power1.inOut"}, 5.46);
+  tl.to(P+"bar", {autoAlpha:1, duration:0.1, ease:"none"}, 5.46);
+  tl.to(P+"bar", {scaleX:1, duration:0.76, ease:"power2.out"}, 5.46);
+  tl.to(P+"img", {opacity:0.55, duration:0.76, ease:"power2.out"}, 5.46);
+  tl.to(P+"ul", {opacity:0.55, duration:0.76, ease:"power2.out"}, 5.46);
+
+  /* attention. @8.32: bar at full, hold; exit: root fades over the last 0.3 s of the 9.26 s host (g-a5-13 cuts in) */
+  tl.to(P+"root", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 8.96);
+  window.__timelines["g-a5-12-herald"] = tl;
+})();
+</script>
+</template>
