@@ -140,7 +140,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#pd-unit", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.26);
 
   /* "pressure" @2.68: needle and hub land on 1000; THU EVENING in */
-  tl.fromTo("#pd-needle", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, svgOrigin: O, duration: 0.4, ease: "back.out" }, 2.68);
+  tl.fromTo("#pd-needle", { autoAlpha: 0, scale: 0.6, svgOrigin: O, smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: O, smoothOrigin: false, duration: 0.4, ease: "back.out" }, 2.68);
   tl.fromTo("#pd-hub", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, svgOrigin: O, duration: 0.4, ease: "back.out" }, 2.68);
   tl.fromTo("#pd-thu", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.68);
   tl.set(["#pd-arc1", "#pd-arc2"], { visibility: "visible" }, 3.9);
