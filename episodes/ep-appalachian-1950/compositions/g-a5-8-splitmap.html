@@ -135,12 +135,12 @@ window.__timelines = window.__timelines || {};
   const $ = function (n) { return document.getElementById("a58-" + n); };
 
   /* segment offsets (comp-local s), 0.40 s gap assumed; cue = SEG[seg] + words.json time */
-  const SEG = { a5s8: 0.000, a5s9: 21.460 };
-  const DUR = SEG.a5s9 + 13.72;                                               /* 35.18 */
+  const SEG = { a5s8: 0.000 };
+  const DUR = 21.76;                                                          /* host: end of the S8 slot */
 
   /* camera: k = scale of Frame S about (960, 540); pins follow pos(k) = c + (p - c) * k on the same span and ease */
-  const K0 = 1 / 1.04, K2 = 1.08;
-  const SETTLE = SEG.a5s8 + 10.44, PUSH = 11.72;                    /* A5-S9 0.00 -> 11.72 */
+  const K0 = 1 / 1.04;
+  const SETTLE = SEG.a5s8 + 10.44;
   const at = function (v, c, k) { return c + (v - c) * k; };
   const NWK = [1117.9, 443.6], PIT = [760.0, 470.0], BUF = [828.7, 251.4];  /* Frame S screen points (header) */
 
