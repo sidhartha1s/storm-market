@@ -191,7 +191,7 @@ window.__timelines = window.__timelines || {};
     return FT;
   }
 
-  const camEl = $("cam"), trackEl = $("track"), glowEl = $("trackglow"), exitEl = $("exit");
+  const camEl = $("cam"), trackEl = $("track"), glowEl = $("trackglow"), exitEl = $("exit"), loopArrow = $("looparrow");
   const pins = [[$("nwk-at"), NWK], [$("pit-at"), PIT], [$("buf-at"), BUF]];
   function camAt(t) {
     const c = state(t), s = c[0], cx = c[1], cy = c[2], k = s / 0.03;
