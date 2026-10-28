@@ -403,7 +403,7 @@ CASES = {  # comp: (source, host s, new output must hold all of, must not hold, 
     'g-d2': (_debris_comp('#000', '', 2), 7, ['ERROR [undesigned] flat background · 0 type tier(s) · '], None,
              'a truly empty frame (two boxes sliding back to back on flat black) still fails'),
     'g-d3': (_debris_comp('linear-gradient(#123,#000)', CARD + CHIP, 12).replace(
-                 "window.__timelines['g-cv']", "tl.fromTo('#chip', { x: -1500 }, { x: 0, duration: 1.0, ease: 'power3.out' }, 2.0);\nwindow.__timelines['g-cv']"),
+                 "window.__timelines['g-cv']", "tl.fromTo('#chip', { x: -1500, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 1.0, ease: 'none' }, 2.0);\nwindow.__timelines['g-cv']"),
              7, [], 'out-of-frame', 'a text chip mid-slide off-frame is still not audited for geometry'),
     'g-i1': (_ok_comp(f'data-type-ok="{TYPE_WHY}" data-idle-ok="held on purpose"', SHEET, 1, "tl.to({}, { duration: 7 }, 0);\n"), 7, ['ERROR [idle] 6.0s frozen at 1.0s', 'ERROR [undesigned] 2 type tier(s)', 'exempt [flat-type] g-i1:'], None, 'idle takes no exemption and undesigned still counts the two tiers, flat-type stays exempt beside them'),
 }
