@@ -311,7 +311,15 @@ window.__timelines = window.__timelines || {};
   /* stills get a quick punch on their cut (no slow Ken Burns: DESIGN.md "Footage motion"); the overlay comps carry the motion after */
   const stills = [
     ["#kb-h2-gdn", 7.08], ["#kb-h3-stereo", 14.012], ["#kb-h5-gdn", 37.673], ["#kb-h5-mwr", 39.193],
-    ["#kb-i1-byline", 54.275], ["#kb-i4-warn", 89.201], ["#kb-i5-gdn", 100.347]
+    ["#kb-i1-byline", 54.275], ["#kb-i4-warn", 89.201], ["#kb-i5-gdn", 100.347],
+    ["#kb-a1-page", 111.247], ["#kb-a1-beach", 132.334], ["#kb-a1-indianola", 137.794], ["#kb-a1-column", 154.523],
+    ["#kb-a1-street", 178.762], ["#kb-a1-page2", 196.611], ["#kb-a1-street2", 212.759], ["#kb-a1-beach2", 220.032],
+    ["#kb-a1-paul", 230.943], ["#kb-a2-belen", 246.058], ["#kb-a2-havana", 254.298], ["#kb-a2-paul", 391.861],
+    ["#kb-a3-p373", 567.425], ["#kb-a3-p372", 575.105], ["#kb-a3-paul", 584.905],
+    ["#kb-a4-330", 620.625], ["#kb-a4-p372", 644.075], ["#kb-a4-p373a", 666.674], ["#kb-a4-p373b", 686.336],
+    ["#kb-a4-wreck", 736.979], ["#kb-a4-wreck2", 757.029], ["#kb-a4-work", 778.563], ["#kb-a4-work2", 804.224],
+    ["#kb-a4-wife", 828.844], ["#kb-a5-p374", 881.784], ["#kb-a5-paul", 960.508], ["#kb-a5-map", 1003.951],
+    ["#kb-a6-build", 1034.428], ["#kb-a6-paul", 1122.492], ["#kb-a6-pier", 1132.57]
   ];
   stills.forEach(([sel, at]) => tl.fromTo(sel, { scale: 1.08 }, { scale: 1, duration: 0.6, ease: "power3.out" }, at));
   tl.set({}, {}, DUR);
