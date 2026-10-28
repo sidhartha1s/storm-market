@@ -19,7 +19,7 @@ Full-frame ground (radial gradient `#0b1016 -> #030507 78%`) from frame 0, layer
 - Wordmark: "The" / "Warning" / "Hour", three spans, Arial Black `font-weight:900` 120 px, line-height 140, letter-spacing 6, `#f2f5f8`, "Warning" `#d8a13a`; one centred line, top 462 (box about x 360-1560, y 462-602).
 - Light sweep box `left:260px; top:452px; 1400 x 160`, overflow hidden, `mix-blend-mode:screen`; sweep 220 x 240 white-amber gradient.
 - Rule: 600 x 4, radius 2, `#d8a13a`, left 660, top 630, `scaleX` from centre.
-- One text tier only (the wordmark): declare `data-type-ok="wordmark close card"` on the root (flat-type exemption, `references/mg-quickref.md` "Gate-readable authoring"), as Enderlin's outro shipped.
+- One text tier only (the wordmark), 3 text nodes: under the 4-node threshold of `graphics_qc` flat-type, so no exemption is needed (Enderlin's outro shipped the same way). If the gate still flags it, declare `data-type-ok="wordmark close card"` on the root and say so.
 
 ## 4. MUST BE TRUE IN THE PICTURE
 1. The wordmark is on the first frame (match cut from the ground g-a5-9 ends on), settled within 0.4 s; never a fade up from black.
