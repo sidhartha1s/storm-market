@@ -50,8 +50,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(B+"sub", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.58);
   /* hold local 0.45..4.14: both lines float up/down; 3 legs of 1.22 s = 3.66 s */
   tl.to(B+"float", {y:-10, duration:1.22, ease:"sine.inOut", repeat:2, yoyo:true}, 0.45);
-  /* EXIT ends @5.00 (local 4.72), before WINTER @5.56 */
-  tl.to(B+"block", {autoAlpha:0, y:-40, scale:0.96, duration:0.6, ease:"power3.in"}, 4.12);
+  /* EXIT starts as "1950" ends (4.89 clip, local 4.14), done 5.49 clip (local 4.74), before "and" @5.77 */
+  tl.to(B+"block", {autoAlpha:0, y:-40, scale:0.96, duration:0.6, ease:"power3.in"}, 4.14);
   window.__timelines["g-intro-1-date"] = tl;
 })();
 </script>
