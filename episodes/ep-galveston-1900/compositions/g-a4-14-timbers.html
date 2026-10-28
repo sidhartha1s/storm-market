@@ -102,9 +102,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"card", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.42, ease:"back.out(1.6)"}, 3.42);
   tl.to(P+"cardin", {y:-4, duration:1.4, ease:"sine.inOut"}, 3.84);
 
-  /* exit: card and source line slide out in the last 0.6 s (5.32 to 5.92); readable 3.84 to 5.32 = 1.48 s plus the 0.42 s landing */
-  tl.to(P+"card", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.32);
-  tl.to(P+"src", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.32);
+  /* exit: card and source line slide out in the last 0.6 s (5.34 to 5.94); card readable 3.84 to 5.34 = 1.50 s */
+  tl.to(P+"card", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.34);
+  tl.to(P+"src", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.34);
 
   window.__timelines["g-a4-14-timbers"] = tl;
 })();
