@@ -161,7 +161,7 @@ window.__timelines = window.__timelines || {};
   /* from @5.44: band grows 5.44-7.80; line draws on to Sat 15:54, 5.44-8.20, head ahead of the band edge */
   tl.set($("band"), { autoAlpha: 1 }, 5.44);
   tl.to($("band"), { scaleX: 1, duration: 2.36, ease: "power1.inOut" }, 5.44);
-  tl.to($("line"), { strokeDashoffset: 0, duration: 2.76, ease: "none" }, 5.44);
+  tl.to($("line"), { strokeDashoffset: 0, duration: 2.76, ease: headEase }, 5.44);
 
   /* more @8.34: band brightens .18 -> .28 -> .18 */
   tl.to($("band"), { attr: { "fill-opacity": 0.28 }, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 8.34);
