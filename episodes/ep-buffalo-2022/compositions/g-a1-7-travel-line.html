@@ -64,6 +64,7 @@
   /* the lifted line */
   #tl-chipb { left:0; top:300px; width:1920px; text-align:center; font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:36px; letter-spacing:2px; color:#e8c56a; }
   #tl-big { left:0; top:420px; width:1920px; text-align:center; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-weight:400; font-size:96px; line-height:110px; color:#f2f5f8; }
+  #tl-bk { position:absolute; left:96px; top:410px; width:1728px; height:150px; border-radius:24px; background:#0b1016; opacity:0; visibility:hidden; }
   #tl-rule { position:absolute; left:425px; top:540px; width:1070px; height:3px; background:#d8a13a; }
   #tl-source { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
 </style>
@@ -114,8 +115,8 @@
   <!-- R8/R9: stay bright; the highlight fades at 0.38, the tail words lift at 3.02 -->
   <div id="tl-h8" class="tl-rect"></div>
   <span id="tl-r8h" class="tl-t tl-row">frequently reducing visibilities to zero.</span>
-  <span id="tl-g1" class="tl-t tl-row">Travel is strongly</span>
-  <span id="tl-g2" class="tl-t tl-row">discouraged.</span>
+  <span id="tl-g1" class="tl-t tl-row" data-overlap-ok="ghost-to-big morph: the row words lift and crossfade into tl-big over 0.4 s (3.3-3.7)">Travel is strongly</span>
+  <span id="tl-g2" class="tl-t tl-row" data-overlap-ok="ghost-to-big morph: the row words lift and crossfade into tl-big over 0.4 s (3.3-3.7)">discouraged.</span>
 
   <span id="tl-chipb" class="tl-t tl-hide">BLIZZARD WARNING · THU DEC 22 · 3:54 AM</span>
   <span id="tl-big" class="tl-t tl-hide">Travel is strongly discouraged.</span>
