@@ -6,7 +6,7 @@
      at 0.8 s, so the hosts end 0.04 to 0.19 s before their timelines, inside the 0.30 s sweep tolerance);
      0.50 s between I1-S1, I1-S2 and I1-S3 (g-intro-8's assumed offsets, kept so its cues land without a comp edit).
      STAND-INS / NOT BUILT: Paul's clip 1 (ins-paul-1) is not generated: the Omni start frame stands in as a still and the
-     TTS take h1-s1.wav carries his line. No presenter circle yet. No hook sound, bed or SFX yet (edit_script "Hook sound").
+     TTS take h1-s1.wav carries his line. Presenter circle pip-w1..w16 mounted 28 Oct 26 (see PRESENTER CIRCLE). No hook sound, bed or SFX yet (edit_script "Hook sound").
      No CTA here (it sits in act 3). The 0.7 s chapter blackout after I1-S5 is the act-1 seam. -->
 <!-- assembly v1 (28 Oct 26): acts A1 to A6 appended, all voiced (wav lengths by wave/ffprobe). Hook, title and intro above are
      unchanged. CADENCE: 0.6 s seams in A1, 0.5 s in A4; A2 butts its segments with 0 s (its comps end flush at each wav end);
@@ -32,6 +32,10 @@
     .blackout { position: absolute; inset: 0; background: #000; }
     .ground { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
     .stereo-left { width: 200% !important; }
+    .pip { position: absolute !important; inset: auto !important; left: 1640px !important; top: 708px !important;
+      width: 240px !important; height: 240px !important; border-radius: 50% !important; object-fit: cover !important; z-index: 8 !important; }
+    .pipring { position: absolute; left: 1632px; top: 700px; width: 256px; height: 256px; border-radius: 50%; border: 4px solid #d0121f;
+      box-sizing: border-box; z-index: 9; box-shadow: 0 10px 30px rgba(0,0,0,0.55); }
   </style>
 </head>
 <body>
@@ -39,83 +43,83 @@
 
   <!-- ============ NARRATION (audio/manifest.json durations, tempo 0.94) ============ -->
   <!-- h1-s1 is Paul's on-camera line; until ins-paul-1 exists the TTS take of the same 21 words stands in -->
-  <audio id="nx-h1-s1" src="audio/h1-s1.wav" data-start="0.0" data-duration="6.78" data-volume="1"></audio>
-  <audio id="nx-h1-s2" src="audio/h1-s2.wav" data-start="7.08" data-duration="6.632" data-volume="1"></audio>
-  <audio id="nx-h1-s3" src="audio/h1-s3.wav" data-start="14.012" data-duration="8.071" data-volume="1"></audio>
-  <audio id="nx-h1-s4" src="audio/h1-s4.wav" data-start="22.383" data-duration="15.29" data-volume="1"></audio>
-  <audio id="nx-h1-s5" src="audio/h1-s5.wav" data-start="37.973" data-duration="3.795" data-volume="1"></audio>
-  <audio id="nx-t1-s1" src="audio/t1-s1.wav" data-start="41.768" data-duration="11.717" data-volume="1"></audio>
-  <audio id="nx-i1-s1" src="audio/i1-s1.wav" data-start="54.275" data-duration="14.274" data-volume="1"></audio>
-  <audio id="nx-i1-s2" src="audio/i1-s2.wav" data-start="69.049" data-duration="12.916" data-volume="1"></audio>
-  <audio id="nx-i1-s3" src="audio/i1-s3.wav" data-start="82.465" data-duration="5.946" data-volume="1"></audio>
-  <audio id="nx-i1-s4" src="audio/i1-s4.wav" data-start="89.201" data-duration="10.356" data-volume="1"></audio>
-  <audio id="nx-i1-s5" src="audio/i1-s5.wav" data-start="100.347" data-duration="9.191" data-volume="1"></audio>
+  <audio id="nx-h1-s1" src="audio/h1-s1.wav" data-start="0.0" data-duration="6.78" data-volume="0.89"></audio>
+  <audio id="nx-h1-s2" src="audio/h1-s2.wav" data-start="7.08" data-duration="6.632" data-volume="0.89"></audio>
+  <audio id="nx-h1-s3" src="audio/h1-s3.wav" data-start="14.012" data-duration="8.071" data-volume="0.89"></audio>
+  <audio id="nx-h1-s4" src="audio/h1-s4.wav" data-start="22.383" data-duration="15.29" data-volume="0.89"></audio>
+  <audio id="nx-h1-s5" src="audio/h1-s5.wav" data-start="37.973" data-duration="3.795" data-volume="0.89"></audio>
+  <audio id="nx-t1-s1" src="audio/t1-s1.wav" data-start="41.768" data-duration="11.717" data-volume="0.89"></audio>
+  <audio id="nx-i1-s1" src="audio/i1-s1.wav" data-start="54.275" data-duration="14.274" data-volume="0.89"></audio>
+  <audio id="nx-i1-s2" src="audio/i1-s2.wav" data-start="69.049" data-duration="12.916" data-volume="0.89"></audio>
+  <audio id="nx-i1-s3" src="audio/i1-s3.wav" data-start="82.465" data-duration="5.946" data-volume="0.89"></audio>
+  <audio id="nx-i1-s4" src="audio/i1-s4.wav" data-start="89.201" data-duration="10.356" data-volume="0.89"></audio>
+  <audio id="nx-i1-s5" src="audio/i1-s5.wav" data-start="100.347" data-duration="9.191" data-volume="0.89"></audio>
   <!-- A1 · An absurd delusion (a1-s9 is Paul's line P2; TTS take stands in until ins-paul-2 exists) -->
-  <audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="111.247" data-duration="11.121" data-volume="1"></audio>
-  <audio id="nx-a1-s2" src="audio/a1-s2.wav" data-start="122.968" data-duration="8.766" data-volume="1"></audio>
-  <audio id="nx-a1-s3" src="audio/a1-s3.wav" data-start="132.334" data-duration="21.589" data-volume="1"></audio>
-  <audio id="nx-a1-s4" src="audio/a1-s4.wav" data-start="154.523" data-duration="23.639" data-volume="1"></audio>
-  <audio id="nx-a1-s5" src="audio/a1-s5.wav" data-start="178.762" data-duration="17.249" data-volume="1"></audio>
-  <audio id="nx-a1-s6" src="audio/a1-s6.wav" data-start="196.611" data-duration="15.548" data-volume="1"></audio>
-  <audio id="nx-a1-s7" src="audio/a1-s7.wav" data-start="212.759" data-duration="6.673" data-volume="1"></audio>
-  <audio id="nx-a1-s8" src="audio/a1-s8.wav" data-start="220.032" data-duration="10.311" data-volume="1"></audio>
-  <audio id="nx-a1-s9" src="audio/a1-s9.wav" data-start="230.943" data-duration="8.495" data-volume="1"></audio>
+  <audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="111.247" data-duration="11.121" data-volume="0.89"></audio>
+  <audio id="nx-a1-s2" src="audio/a1-s2.wav" data-start="122.968" data-duration="8.766" data-volume="0.89"></audio>
+  <audio id="nx-a1-s3" src="audio/a1-s3.wav" data-start="132.334" data-duration="21.589" data-volume="0.89"></audio>
+  <audio id="nx-a1-s4" src="audio/a1-s4.wav" data-start="154.523" data-duration="23.639" data-volume="0.89"></audio>
+  <audio id="nx-a1-s5" src="audio/a1-s5.wav" data-start="178.762" data-duration="17.249" data-volume="0.89"></audio>
+  <audio id="nx-a1-s6" src="audio/a1-s6.wav" data-start="196.611" data-duration="15.548" data-volume="0.89"></audio>
+  <audio id="nx-a1-s7" src="audio/a1-s7.wav" data-start="212.759" data-duration="6.673" data-volume="0.89"></audio>
+  <audio id="nx-a1-s8" src="audio/a1-s8.wav" data-start="220.032" data-duration="10.311" data-volume="0.89"></audio>
+  <audio id="nx-a1-s9" src="audio/a1-s9.wav" data-start="230.943" data-duration="8.495" data-volume="0.89"></audio>
   <!-- A2 · Havana (no a2-s3: folded into a2-s2; a2-s9 is Paul's line P3, TTS stand-in) -->
-  <audio id="nx-a2-s1" src="audio/a2-s1.wav" data-start="240.738" data-duration="21.062" data-volume="1"></audio>
-  <audio id="nx-a2-s2" src="audio/a2-s2.wav" data-start="261.8" data-duration="31.898" data-volume="1"></audio>
-  <audio id="nx-a2-s4" src="audio/a2-s4.wav" data-start="293.698" data-duration="24.092" data-volume="1"></audio>
-  <audio id="nx-a2-s5" src="audio/a2-s5.wav" data-start="317.79" data-duration="17.672" data-volume="1"></audio>
-  <audio id="nx-a2-s6" src="audio/a2-s6.wav" data-start="335.462" data-duration="17.978" data-volume="1"></audio>
-  <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="353.44" data-duration="20.517" data-volume="1"></audio>
-  <audio id="nx-a2-s8" src="audio/a2-s8.wav" data-start="373.957" data-duration="17.904" data-volume="1"></audio>
-  <audio id="nx-a2-s9" src="audio/a2-s9.wav" data-start="391.861" data-duration="8.321" data-volume="1"></audio>
+  <audio id="nx-a2-s1" src="audio/a2-s1.wav" data-start="240.738" data-duration="21.062" data-volume="0.89"></audio>
+  <audio id="nx-a2-s2" src="audio/a2-s2.wav" data-start="261.8" data-duration="31.898" data-volume="0.89"></audio>
+  <audio id="nx-a2-s4" src="audio/a2-s4.wav" data-start="293.698" data-duration="24.092" data-volume="0.89"></audio>
+  <audio id="nx-a2-s5" src="audio/a2-s5.wav" data-start="317.79" data-duration="17.672" data-volume="0.89"></audio>
+  <audio id="nx-a2-s6" src="audio/a2-s6.wav" data-start="335.462" data-duration="17.978" data-volume="0.89"></audio>
+  <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="353.44" data-duration="20.517" data-volume="0.89"></audio>
+  <audio id="nx-a2-s8" src="audio/a2-s8.wav" data-start="373.957" data-duration="17.904" data-volume="0.89"></audio>
+  <audio id="nx-a2-s9" src="audio/a2-s9.wav" data-start="391.861" data-duration="8.321" data-volume="0.89"></audio>
   <!-- A3 · The turn that never came (a3-s11 is Paul's line P4, the cta-hinge tease; TTS stand-in) -->
-  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="401.482" data-duration="23.74" data-volume="1"></audio>
-  <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="425.882" data-duration="16.869" data-volume="1"></audio>
-  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="443.281" data-duration="23.952" data-volume="1"></audio>
-  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="467.883" data-duration="14.535" data-volume="1"></audio>
-  <audio id="nx-a3-s5" src="audio/a3-s5.wav" data-start="483.078" data-duration="15.133" data-volume="1"></audio>
-  <audio id="nx-a3-s6" src="audio/a3-s6.wav" data-start="498.511" data-duration="12.207" data-volume="1"></audio>
-  <audio id="nx-a3-s7" src="audio/a3-s7.wav" data-start="511.408" data-duration="20.366" data-volume="1"></audio>
-  <audio id="nx-a3-s8" src="audio/a3-s8.wav" data-start="532.204" data-duration="18.788" data-volume="1"></audio>
-  <audio id="nx-a3-s9" src="audio/a3-s9.wav" data-start="551.402" data-duration="15.633" data-volume="1"></audio>
-  <audio id="nx-a3-s10" src="audio/a3-s10.wav" data-start="567.425" data-duration="16.98" data-volume="1"></audio>
-  <audio id="nx-a3-s11" src="audio/a3-s11.wav" data-start="584.905" data-duration="9.678" data-volume="1"></audio>
+  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="401.482" data-duration="23.74" data-volume="0.89"></audio>
+  <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="425.882" data-duration="16.869" data-volume="0.89"></audio>
+  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="443.281" data-duration="23.952" data-volume="0.89"></audio>
+  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="467.883" data-duration="14.535" data-volume="0.89"></audio>
+  <audio id="nx-a3-s5" src="audio/a3-s5.wav" data-start="483.078" data-duration="15.133" data-volume="0.89"></audio>
+  <audio id="nx-a3-s6" src="audio/a3-s6.wav" data-start="498.511" data-duration="12.207" data-volume="0.89"></audio>
+  <audio id="nx-a3-s7" src="audio/a3-s7.wav" data-start="511.408" data-duration="20.366" data-volume="0.89"></audio>
+  <audio id="nx-a3-s8" src="audio/a3-s8.wav" data-start="532.204" data-duration="18.788" data-volume="0.89"></audio>
+  <audio id="nx-a3-s9" src="audio/a3-s9.wav" data-start="551.402" data-duration="15.633" data-volume="0.89"></audio>
+  <audio id="nx-a3-s10" src="audio/a3-s10.wav" data-start="567.425" data-duration="16.98" data-volume="0.89"></audio>
+  <audio id="nx-a3-s11" src="audio/a3-s11.wav" data-start="584.905" data-duration="9.678" data-volume="0.89"></audio>
   <!-- CTA 595.583 to 619.625 (its own VO; narration silent under it) -->
   <!-- A4 · Saturday (a4-s1 opens on the cta-hinge payoff) -->
-  <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="620.625" data-duration="11.113" data-volume="1"></audio>
-  <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="632.238" data-duration="11.337" data-volume="1"></audio>
-  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="644.075" data-duration="22.099" data-volume="1"></audio>
-  <audio id="nx-a4-s4" src="audio/a4-s4.wav" data-start="666.674" data-duration="19.162" data-volume="1"></audio>
-  <audio id="nx-a4-s5" src="audio/a4-s5.wav" data-start="686.336" data-duration="15.288" data-volume="1"></audio>
-  <audio id="nx-a4-s6" src="audio/a4-s6.wav" data-start="702.124" data-duration="14.474" data-volume="1"></audio>
-  <audio id="nx-a4-s7" src="audio/a4-s7.wav" data-start="717.098" data-duration="19.381" data-volume="1"></audio>
-  <audio id="nx-a4-s8" src="audio/a4-s8.wav" data-start="736.979" data-duration="19.55" data-volume="1"></audio>
-  <audio id="nx-a4-s9" src="audio/a4-s9.wav" data-start="757.029" data-duration="21.034" data-volume="1"></audio>
-  <audio id="nx-a4-s10" src="audio/a4-s10.wav" data-start="778.563" data-duration="25.161" data-volume="1"></audio>
-  <audio id="nx-a4-s11" src="audio/a4-s11.wav" data-start="804.224" data-duration="30.819" data-volume="1"></audio>
-  <audio id="nx-a4-s12" src="audio/a4-s12.wav" data-start="835.543" data-duration="25.487" data-volume="1"></audio>
+  <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="620.625" data-duration="11.113" data-volume="0.89"></audio>
+  <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="632.238" data-duration="11.337" data-volume="0.89"></audio>
+  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="644.075" data-duration="22.099" data-volume="0.89"></audio>
+  <audio id="nx-a4-s4" src="audio/a4-s4.wav" data-start="666.674" data-duration="19.162" data-volume="0.89"></audio>
+  <audio id="nx-a4-s5" src="audio/a4-s5.wav" data-start="686.336" data-duration="15.288" data-volume="0.89"></audio>
+  <audio id="nx-a4-s6" src="audio/a4-s6.wav" data-start="702.124" data-duration="14.474" data-volume="0.89"></audio>
+  <audio id="nx-a4-s7" src="audio/a4-s7.wav" data-start="717.098" data-duration="19.381" data-volume="0.89"></audio>
+  <audio id="nx-a4-s8" src="audio/a4-s8.wav" data-start="736.979" data-duration="19.55" data-volume="0.89"></audio>
+  <audio id="nx-a4-s9" src="audio/a4-s9.wav" data-start="757.029" data-duration="21.034" data-volume="0.89"></audio>
+  <audio id="nx-a4-s10" src="audio/a4-s10.wav" data-start="778.563" data-duration="25.161" data-volume="0.89"></audio>
+  <audio id="nx-a4-s11" src="audio/a4-s11.wav" data-start="804.224" data-duration="30.819" data-volume="0.89"></audio>
+  <audio id="nx-a4-s12" src="audio/a4-s12.wav" data-start="835.543" data-duration="25.487" data-volume="0.89"></audio>
   <!-- A5 · Two stories (a5-s7 is Paul's line P5; TTS stand-in) -->
-  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="862.33" data-duration="18.664" data-volume="1"></audio>
-  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="881.784" data-duration="12.485" data-volume="1"></audio>
-  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="894.589" data-duration="11.729" data-volume="1"></audio>
-  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="907.088" data-duration="10.678" data-volume="1"></audio>
-  <audio id="nx-a5-s5" src="audio/a5-s5.wav" data-start="918.406" data-duration="18.908" data-volume="1"></audio>
-  <audio id="nx-a5-s6" src="audio/a5-s6.wav" data-start="937.864" data-duration="21.854" data-volume="1"></audio>
-  <audio id="nx-a5-s7" src="audio/a5-s7.wav" data-start="960.508" data-duration="5.677" data-volume="1"></audio>
-  <audio id="nx-a5-s8" src="audio/a5-s8.wav" data-start="966.975" data-duration="14.344" data-volume="1"></audio>
-  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="982.109" data-duration="21.052" data-volume="1"></audio>
-  <audio id="nx-a5-s10" src="audio/a5-s10.wav" data-start="1003.951" data-duration="20.31" data-volume="1"></audio>
+  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="862.33" data-duration="18.664" data-volume="0.89"></audio>
+  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="881.784" data-duration="12.485" data-volume="0.89"></audio>
+  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="894.589" data-duration="11.729" data-volume="0.89"></audio>
+  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="907.088" data-duration="10.678" data-volume="0.89"></audio>
+  <audio id="nx-a5-s5" src="audio/a5-s5.wav" data-start="918.406" data-duration="18.908" data-volume="0.89"></audio>
+  <audio id="nx-a5-s6" src="audio/a5-s6.wav" data-start="937.864" data-duration="21.854" data-volume="0.89"></audio>
+  <audio id="nx-a5-s7" src="audio/a5-s7.wav" data-start="960.508" data-duration="5.677" data-volume="0.89"></audio>
+  <audio id="nx-a5-s8" src="audio/a5-s8.wav" data-start="966.975" data-duration="14.344" data-volume="0.89"></audio>
+  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="982.109" data-duration="21.052" data-volume="0.89"></audio>
+  <audio id="nx-a5-s10" src="audio/a5-s10.wav" data-start="1003.951" data-duration="20.31" data-volume="0.89"></audio>
   <!-- A6 · After (a6-s7 is Paul's line P6; TTS stand-in) -->
-  <audio id="nx-a6-s1" src="audio/a6-s1.wav" data-start="1025.811" data-duration="8.617" data-volume="1"></audio>
-  <audio id="nx-a6-s2" src="audio/a6-s2.wav" data-start="1034.928" data-duration="16.094" data-volume="1"></audio>
-  <audio id="nx-a6-s3" src="audio/a6-s3.wav" data-start="1051.622" data-duration="21.46" data-volume="1"></audio>
-  <audio id="nx-a6-s4" src="audio/a6-s4.wav" data-start="1073.082" data-duration="19.403" data-volume="1"></audio>
-  <audio id="nx-a6-s5" src="audio/a6-s5.wav" data-start="1093.085" data-duration="16.227" data-volume="1"></audio>
-  <audio id="nx-a6-s6" src="audio/a6-s6.wav" data-start="1110.102" data-duration="12.39" data-volume="1"></audio>
-  <audio id="nx-a6-s7" src="audio/a6-s7.wav" data-start="1122.992" data-duration="9.078" data-volume="1"></audio>
-  <audio id="nx-a6-s8" src="audio/a6-s8.wav" data-start="1132.57" data-duration="10.675" data-volume="1"></audio>
-  <audio id="nx-a6-s9" src="audio/a6-s9.wav" data-start="1159.535" data-duration="11.176" data-volume="1"></audio>
+  <audio id="nx-a6-s1" src="audio/a6-s1.wav" data-start="1025.811" data-duration="8.617" data-volume="0.89"></audio>
+  <audio id="nx-a6-s2" src="audio/a6-s2.wav" data-start="1034.928" data-duration="16.094" data-volume="0.89"></audio>
+  <audio id="nx-a6-s3" src="audio/a6-s3.wav" data-start="1051.622" data-duration="21.46" data-volume="0.89"></audio>
+  <audio id="nx-a6-s4" src="audio/a6-s4.wav" data-start="1073.082" data-duration="19.403" data-volume="0.89"></audio>
+  <audio id="nx-a6-s5" src="audio/a6-s5.wav" data-start="1093.085" data-duration="16.227" data-volume="0.89"></audio>
+  <audio id="nx-a6-s6" src="audio/a6-s6.wav" data-start="1110.102" data-duration="12.39" data-volume="0.89"></audio>
+  <audio id="nx-a6-s7" src="audio/a6-s7.wav" data-start="1122.992" data-duration="9.078" data-volume="0.89"></audio>
+  <audio id="nx-a6-s8" src="audio/a6-s8.wav" data-start="1132.57" data-duration="10.675" data-volume="0.89"></audio>
+  <audio id="nx-a6-s9" src="audio/a6-s9.wav" data-start="1159.535" data-duration="11.176" data-volume="0.89"></audio>
 
   <!-- ============ SOUND: music beds (DeAPI scores, claim-free, assets/sfx/deapi/README.md). Off under the CTA + its dips (594.583-620.625)
        and under the end ask (1144.035-1159.535). Each file is the README duration minus its ~3 s silent tail. Not yet volumedetect-compensated:
@@ -131,7 +135,9 @@
   <!-- H1-S1: STAND-IN for ins-paul-1 (assets/paul/paul-start-frame-omni.jpg, the start frame the clip will come from) -->
   <section class="clip still-wrap" id="c-h1-paul" data-start="0" data-duration="7.08" data-track-index="1"><img id="kb-h1-paul" src="media/paul/paul-start-frame-omni-standin.jpg" alt=""></section>
   <!-- H1-S2: Galveston Daily News 16 Jul 1891 p5, columns 1-3 (WEST INDIA HURRICANES head) under the Cline lower-third + chip -->
-  <section class="clip still-wrap" id="c-h2-gdn" data-start="7.08" data-duration="6.932" data-track-index="1"><img id="kb-h2-gdn" src="media/intro/gdn-1891-jul16-cols1-3.jpg" alt=""></section>
+  <!-- split 28 Oct 26 (no still over 6 s): the H1-S2 pick, Cline's portrait, on "Isaac Cline, Galveston's own weatherman", then the columns on "absurd delusion" -->
+  <section class="clip still-wrap" id="c-h2-cline" data-start="7.08" data-duration="3.466" data-track-index="1"><img id="kb-h2-cline" src="media/candidates/intro/H1-S2_c1_isaac-cline-portrait-nara.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-h2-gdn" data-start="10.546" data-duration="3.466" data-track-index="1"><img id="kb-h2-gdn" src="media/intro/gdn-1891-jul16-cols1-3.jpg" alt=""></section>
   <!-- H1-S3: hard cut to the Keystone/Singley stereoview (c 1900, left half), then the Edison 1900 film under the toll chip -->
   <section class="clip still-wrap" id="c-h3-stereo" data-start="14.012" data-duration="4.5" data-track-index="1"><img id="kb-h3-stereo" src="media/intro/stereoview-searching-ruins-1900-left-v2.jpg" alt=""></section>
   <video id="v-h3-edison" src="media/intro/edison-searching-ruins-broadway-1900-cut.mp4" data-start="18.512" data-duration="3.871" data-track-index="1" muted></video>
@@ -249,6 +255,50 @@
        e1 starts 27.5 s before the end (config end_ask.last_s 30). -->
   <video id="ins-paul-e1" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="1144.035" data-duration="9.083" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
   <video id="ins-paul-e2" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="1153.118" data-duration="6.417" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
+
+  <!-- PRESENTER CIRCLE (28 Oct 26, hand-mounted; mg-quickref "Corner circle", worked example ep-e2e-moore). Face pass:
+       media/face/ep-galveston-1900-face.mp4@0.000 (covers the whole timeline from 0, so each window seeks to its own start and
+       the lips stay on the narration). Windows = narration spans (nx start to wav end) minus: every Paul stand-in slot
+       (c-h1-paul 0-7.08, c-a1-paul 230.943, c-a2-paul 391.861, c-a3-paul 584.905, c-a5-paul 960.508, c-a6-paul 1122.492),
+       the CTA and its dips (594.583-620.625), the chapter blackouts, the end ask (1144.035-1159.535), the A6-S9 close
+       (g-a6-12, circle OFF in its header), and the comps that draw into x >= 1600, y >= 680:
+       g-intro-6-island (BAY label left 1692 top 827), g-a4-1 (form reaches y 760), g-a4-2 (Gulf zone outline x 1606 and
+       street grid to x 1619), g-a4-6 (door queue figures x 1606-1974, y 740-860), g-a4-12 (office building window x 1640 y 880),
+       g-a4-13 / g-a4-15 / g-a4-16 / g-a4-18 (rising-water depth drawing clipped to x 1824, the depth figure under the corner),
+       g-a5-4-pages (page mark right 48 bottom 20), g-a6-3-wall (17 FT measuring bar at x 1760, y 587-900).
+       Broadcast clips: none (Edison 1900 films are LOC public domain, no station bug). -->
+  <video id="pip-w1" class="pip" src="media/pip/paul-w1.mp4" data-start="7.08" data-duration="35.568" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w1" data-start="7.08" data-duration="35.568" data-track-index="9"></section>
+  <video id="pip-w2" class="pip" src="media/pip/paul-w2.mp4" data-start="54.275" data-duration="55.263" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w2" data-start="54.275" data-duration="55.263" data-track-index="9"></section>
+  <video id="pip-w3" class="pip" src="media/pip/paul-w3.mp4" data-start="111.247" data-duration="119.096" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w3" data-start="111.247" data-duration="119.096" data-track-index="9"></section>
+  <video id="pip-w4" class="pip" src="media/pip/paul-w4.mp4" data-start="240.738" data-duration="151.123" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w4" data-start="240.738" data-duration="151.123" data-track-index="9"></section>
+  <video id="pip-w5" class="pip" src="media/pip/paul-w5.mp4" data-start="401.482" data-duration="182.923" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w5" data-start="401.482" data-duration="182.923" data-track-index="9"></section>
+  <video id="pip-w6" class="pip" src="media/pip/paul-w6.mp4" data-start="632.238" data-duration="33.936" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w6" data-start="632.238" data-duration="33.936" data-track-index="9"></section>
+  <video id="pip-w7" class="pip" src="media/pip/paul-w7.mp4" data-start="675.374" data-duration="50.584" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w7" data-start="675.374" data-duration="50.584" data-track-index="9"></section>
+  <video id="pip-w8" class="pip" src="media/pip/paul-w8.mp4" data-start="752.239" data-duration="4.29" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w8" data-start="752.239" data-duration="4.29" data-track-index="9"></section>
+  <video id="pip-w9" class="pip" src="media/pip/paul-w9.mp4" data-start="804.224" data-duration="8.52" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w9" data-start="804.224" data-duration="8.52" data-track-index="9"></section>
+  <video id="pip-w10" class="pip" src="media/pip/paul-w10.mp4" data-start="818.424" data-duration="42.606" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w10" data-start="818.424" data-duration="42.606" data-track-index="9"></section>
+  <video id="pip-w11" class="pip" src="media/pip/paul-w11.mp4" data-start="862.33" data-duration="40.999" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w11" data-start="862.33" data-duration="40.999" data-track-index="9"></section>
+  <video id="pip-w12" class="pip" src="media/pip/paul-w12.mp4" data-start="907.088" data-duration="52.63" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w12" data-start="907.088" data-duration="52.63" data-track-index="9"></section>
+  <video id="pip-w13" class="pip" src="media/pip/paul-w13.mp4" data-start="966.975" data-duration="57.286" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w13" data-start="966.975" data-duration="57.286" data-track-index="9"></section>
+  <video id="pip-w14" class="pip" src="media/pip/paul-w14.mp4" data-start="1025.811" data-duration="19.097" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w14" data-start="1025.811" data-duration="19.097" data-track-index="9"></section>
+  <video id="pip-w15" class="pip" src="media/pip/paul-w15.mp4" data-start="1051.622" data-duration="70.87" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w15" data-start="1051.622" data-duration="70.87" data-track-index="9"></section>
+  <video id="pip-w16" class="pip" src="media/pip/paul-w16.mp4" data-start="1132.57" data-duration="10.675" data-track-index="7" muted></video>
+  <section class="pipring" id="ring-w16" data-start="1132.57" data-duration="10.675" data-track-index="9"></section>
 
   <!-- ============ GRAPHICS, track 2 (host start = segment narration start + the brief's first cue) ============ -->
   <div id="host-g-intro-1" data-composition-id="g-intro-1-pop1891" data-composition-src="compositions/g-intro-1-pop1891.html" data-start="0.76" data-duration="3.24" data-track-index="2" data-width="1920" data-height="1080"></div>
