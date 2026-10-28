@@ -441,7 +441,7 @@ with sync_playwright() as p:
             if os.path.exists(path) and os.path.getsize(path):  # never write over a clip already on disk
                 path = path.replace(".mp4", f"-{time.strftime('%H%M%S')}.mp4")
             dls = []
-            page.once("download", dls.append)
+            page.once("download", lambda d: dls.append(d))  # a lambda: Playwright cannot wrap a builtin method as a handler
             try:  # flowdl.py says why the download setting is re-asserted before the click
                 save_download(browser, page, lambda: page.locator('[role=menuitem]:has-text("720p")').first.click(), path)
             except Exception as e:
