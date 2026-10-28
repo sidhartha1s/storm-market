@@ -174,40 +174,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "massfill", { attr: { "fill-opacity": 0.55 } }, { attr: { "fill-opacity": 0.45 }, duration: 0.855, ease: "sine.inOut", repeat: 3, yoyo: true }, 13.30);
   /* END: hold to 17.40 (swirl and scan still moving), cut to g-a5-4 */
 
-  /* YOUD @0.00 (H1-S4): pan B -> C (camAt, 1.0 s, power2.inOut); Pittsburgh chip back to full */
-  tl.to(P + "pitchip", { opacity: 1, duration: 0.3, ease: "power2.out" }, SEG.h1s4);
-  /* BUFFALO @0.44: ring in during the pan; its label waits for the pan to settle at 1.00 */
-  tl.fromTo(P + "buf", { autoAlpha: 0, scale: 0.3, svgOrigin: "0 0" }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", duration: 0.4, ease: "back.out(2)" }, SEG.h1s4 + 0.44);
-  tl.fromTo(P + "buflab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 1.00);
-  /* 200 @1.32: one reading target, the Pittsburgh chip dims */
-  tl.fromTo(P + "bufchip1", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 1.32);
-  tl.to(P + "pitchip", { opacity: 0.35, duration: 0.3, ease: "power2.out" }, SEG.h1s4 + 1.32);
-  /* BUFFALO2 @5.24 */
-  tl.to(P + "bufchip1", { x: 20, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, SEG.h1s4 + 5.24);
-  /* 40S @6.16: Buffalo fill sweeps warm amber, "40s" in */
-  tl.to(P + "bufclip-r", { attr: { height: 20 }, duration: 0.4, ease: "power2.inOut" }, SEG.h1s4 + 6.16);
-  tl.to(P + "buf-ring", { attr: { stroke: "#d8a13a" }, duration: 0.4, ease: "power2.inOut" }, SEG.h1s4 + 6.16);
-  tl.fromTo(P + "bufchip2", { autoAlpha: 0, scale: 0.9, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, transformOrigin: "left center", duration: 0.4, ease: "back.out(1.4)" }, SEG.h1s4 + 6.16);
-  /* NO SNOW @6.64 */
-  tl.fromTo(P + "bufno", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 6.64);
-  /* SINGLE @9.14: Pittsburgh chip flips to SINGLE DIGITS at full; Buffalo chip dims */
-  tl.to(P + "pitchip", { opacity: 1, duration: 0.3, ease: "power2.out" }, SEG.h1s4 + 9.14);
-  tl.to(P + "pitfeet", { y: -20, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, SEG.h1s4 + 9.14);
-  tl.fromTo(P + "pitdig", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 9.14);
-  tl.to(P + "bufchip2", { opacity: 0.35, duration: 0.3, ease: "power2.out" }, SEG.h1s4 + 9.14);
-
-  /* ITS @0.00 (H1-S5): Buffalo and both chips out; pan C -> D wide (camAt 1.4 s), then slow push to exactly D */
-  tl.to([P + "buf", P + "buflab"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, SEG.h1s5);
-  tl.to(P + "bufchip2", { x: 20, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, SEG.h1s5);
-  tl.to(P + "pitchip", { x: 20, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, SEG.h1s5);
-  /* HURRICANE @1.00: Newark one strong pulse (ring to 90 px) */
-  tl.fromTo(P + "nwk-big", { opacity: 1, attr: { r: 17 } }, { opacity: 0, attr: { r: 45 }, duration: 1.0, ease: "power2.out" }, SEG.h1s5 + 1.00);
-  tl.fromTo(P + "nwk-pulse", { opacity: 0.8, attr: { r: 17 } }, { opacity: 0, attr: { r: 35 }, duration: 1.2, ease: "power1.out", repeat: 3, repeatDelay: 0.2, immediateRender: false }, SEG.h1s5 + 1.60);
-  /* SNOW @2.38: Pittsburgh one pulse, white */
-  tl.fromTo(P + "pit-pulse", { opacity: 0.9, attr: { r: 17 } }, { opacity: 0, attr: { r: 40 }, duration: 1.0, ease: "power2.out" }, SEG.h1s5 + 2.38);
-  /* SEE HOW ends @6.96: the push lands on frame D (camAt), the comp ends on it for g-intro-3-coast */
-
-  window.__timelines["g-intro-2-hookmap"] = tl;
+  window.__timelines["g-a5-3-startmap"] = tl;
 })();
 </script>
 </template>
