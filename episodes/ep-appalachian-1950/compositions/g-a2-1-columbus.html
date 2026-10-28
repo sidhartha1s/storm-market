@@ -39,12 +39,16 @@
   <div class="c1-clip" id="c1-clip">
     <div class="c1-wrap" id="c1-wrap">
       <svg class="c1-ground" id="c1-ground" viewBox="0 0 1920 1080" width="1920" height="1080">
-        <rect x="0" y="0" width="1920" height="1080" fill="#0a1118"/>
-        <path d="M0,0 L1652,0 L1652,181 L1629,192 L1614,332 L1575,499 L1568,583 L1522,734 L1468,784 L1295,862 L1253,946 L1072,1080 L170,1080 L120,1041 L0,1046 Z" fill="#111b27"/>
-        <path d="M1652,0 L1920,0 L1920,695 L1652,695 Z" fill="#0d151f"/>
-        <path d="M0,259 L1920,259 M0,538 L1920,538 M0,817 L1920,817 M315,0 L315,1080 M699,0 L699,1080 M1084,0 L1084,1080 M1468,0 L1468,1080 M1852,0 L1852,1080" fill="none" stroke="#7fb2e5" stroke-opacity="0.07" stroke-width="1"/>
-        <path d="M1652,181 L1652,695 L1920,695" fill="none" stroke="#93a3b2" stroke-opacity="0.35" stroke-width="2"/>
-        <path d="M1652,181 L1629,192 L1614,332 L1575,499 L1568,583 L1522,734 L1468,784 L1295,862 L1253,946 L1072,1080 M170,1080 L120,1041 L0,1046" fill="none" stroke="#5a768f" stroke-opacity="0.85" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="0" y="0" width="1920" height="1080" fill="#0b1016"/>
+        <!-- state lines, Natural Earth vertices in map units (same vertices, projection and stroke as g-a1-9's right half) -->
+        <g transform="matrix(0.1 0 0 0.1 -4899.1 -3159.67)" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.5" stroke-linejoin="round">
+          <!-- OH east border: OH-PA line, WV panhandle, Ohio River (OH-WV) -->
+          <path vector-effect="non-scaling-stroke" d="M65511,25868 L65516,33367 L65061,33611 L64978,33836 L65189,34494 L65198,34948 L64159,38457 L64151,38855 L63809,39375 L62660,40406 L62388,40539 L62161,40527 L61980,40373 L61776,40478 L61550,40845 L61339,41034 L61144,41046 L60977,41283 L60708,42013 L60586,42084 L60672,42861"/>
+          <!-- Ohio River (OH-KY) and the OH-IN line -->
+          <path vector-effect="non-scaling-stroke" d="M51030,42706 L50770,42286 L50494,42057 L50191,41991 L49862,42086 L49608,42037 L49430,41845 L49204,41867 L48989,42051 L49088,27477"/>
+          <!-- WV panhandle east edge (PA-WV) and the Mason-Dixon line -->
+          <path vector-effect="non-scaling-stroke" d="M65516,33367 L65514,38530 L69516,38528 L69476,41387"/>
+        </g>
       </svg>
       <div class="c1-ring" id="c1-ring"></div>
       <div class="c1-dot" id="c1-dot"></div>
