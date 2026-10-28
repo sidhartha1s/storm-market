@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-14-bothsides · A2-S14 · ep-appalachian-1950 · DEEP (Opus) · brief: briefs/a2/g-a2-14-bothsides.md
+  Claim: on the same Saturday (25 Nov 1950) five feet of snow in West Virginia and hurricane-force wind on the Jersey
+  coast, Buffalo in the 40s with no snow between them; nothing on the map joins them (L1 and cta-hinge stay open).
+
+  START: g-intro-2-hookmap frame D (pins, label and credit styles copied under the x14- prefix; intro file untouched).
+  PROJECTION (episode's one system, briefs/a2/_list.md): X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213).
+  CAMERA (screen = (map - top-left) * s):
+    D    s 0.04024 TL (59078.1, 18954.6): NWK (1240,560) PIT (340,626) BUF (513,77)
+    A2-X s 0.03    TL (42191.8, 15852.5): NWK (1431,511) PIT (760,560) BUF (889,150)
+    D -> A2-X 0.10 to 1.70, expo.inOut, scale in log space (logZoom, library/inhouse/snippets/helpers.js).
+    NOTHING @8.80: 4 % push about screen (1100, 450), ease none, to the end.
+  LAYERS: #x14-cam holds map-unit geometry (basemap, snow footprint, coast band) and is the only element the camera
+    transforms. Pins (#x14-*-at) and pill anchors (#x14-*pill-at) are screen-size; camAt(t) translates each to its point.
+  SNOW FOOTPRINT: NCEI 18 in+ area (red + dark red) traced on media/candidates/a2/A2-S9_c2_ncei-snowfall-index-nov22-30-1950.png
+    against its state lines, 24 lon/lat vertices in FP below. COAST BAND: centreline 8 px seaward of the shore,
+    Cape May to Boston (via NY harbour, Long Island Sound, Buzzards Bay and the Cape Cod Canal), lon/lat in COAST below.
+-->
+<template>
+<style>
+  #g-a2-14-bothsides-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 45% 50%, #0b1016 0%, #030507 78%); }
+  .x14-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .x14-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .x14-at { position:absolute; left:0; top:0; width:0; height:0; }
+  .x14-pill { position:absolute; box-sizing:border-box; white-space:nowrap; border-radius:14px;
+    background:rgba(10,16,24,0.58); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .x14-black { font-family:'Arial Black', Arial, sans-serif; font-weight:900; line-height:1; }
+  .x14-bold { font-family:Arial, sans-serif; font-weight:700; line-height:1; }
+  /* NEWARK / PITTSBURGH return as glass pills beside their A2-X pins (Pittsburgh's sits on the snow fill) */
+  .x14-plab { padding:6px 14px; font-size:26px; color:#dfe7ee; top:-20px; }
+  #x14-nwkpill { right:26px; }
+  #x14-pitpill { left:26px; }
+  /* Buffalo pill: left edge 25 px right of the pin (pin x 889 -> 914), centred on the pin's y */
+  #x14-bufpill { left:25px; top:-47px; padding:12px 18px; }
+  #x14-bufname { display:block; font-size:22px; letter-spacing:3px; color:#93a3b2; }
+  #x14-bufno { display:block; margin-top:7px; font-size:40px; color:#e8c56a; }
+  /* SNOW: text at left 470, top 700 on a glass pill (it sits on the footprint's south-west fill) */
+  #x14-snowpill { left:452px; top:690px; padding:10px 18px; font-size:52px; color:#f2f5f8; }
+  /* WIND: inland, west of the NJ shore band, below Newark's label; bare (no fill under it) */
+  #x14-wind { position:absolute; left:1180px; top:600px; font-size:52px; color:#7fb2e5; white-space:nowrap;
+    text-shadow:0 2px 10px rgba(3,5,7,0.85); }
+  .x14-credit { position:absolute; left:110px; bottom:60px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#93a3b2; }
+  .x14-source { position:absolute; left:110px; bottom:90px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; color:#c8d3e0; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .x14-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-14-bothsides-root" data-composition-id="g-a2-14-bothsides" data-width="1920" data-height="1080" data-duration="11.46">
+  <svg class="x14-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="x14-landgrad" gradientUnits="userSpaceOnUse" x1="0" y1="14000" x2="0" y2="46000">
+        <stop offset="0" stop-color="#15202b"/><stop offset="1" stop-color="#0b1016"/>
+      </linearGradient>
+      <!-- snow sweep, north to south: the rect grows down from above Erie (map units) -->
+      <clipPath id="x14-sweep" clipPathUnits="userSpaceOnUse"><rect id="x14-sweep-r" x="52000" y="24000" width="22500" height="0"/></clipPath>
+      <!-- the footprint itself, to keep the inner glow inside it -->
+      <clipPath id="x14-fpclip" clipPathUnits="userSpaceOnUse"><path id="x14-fp-c"/></clipPath>
+      <filter id="x14-blur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="260"/></filter>
+      <!-- streaks show only where the band is drawn: the mask path reveals with the band -->
+      <mask id="x14-streakmask" maskUnits="userSpaceOnUse" x="84000" y="21000" width="23000" height="25000">
+        <path id="x14-band-m" fill="none" stroke="#ffffff" stroke-width="866.7" stroke-linecap="round" stroke-linejoin="round"/>
+      </mask>
+    </defs>
+    <!-- camera layer: map units -->
+    <g id="x14-cam">
+      <!--BASEMAP:x14-->
+      <!-- BASEMAP TODO: US states + Canada provinces (regional layer of library/inhouse/master-map-us-canada.html, as in
+           g-intro-2-hookmap: ids x14-us, x14-ca, x14-border, fill url(#x14-landgrad)), projection: episode formula above -->
+      <path id="x14-basemap"/>
+      <!--/BASEMAP-->
+      <g id="x14-snowg" class="x14-hide">
+        <g clip-path="url(#x14-sweep)">
+          <path id="x14-fp" fill="rgba(242,245,248,0.80)" stroke="#f2f5f8" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>
+          <g clip-path="url(#x14-fpclip)">
+            <path id="x14-glow" fill="none" stroke="#ffffff" stroke-width="900" stroke-linejoin="round" filter="url(#x14-blur)" opacity="0.35"/>
+          </g>
+        </g>
+      </g>
+      <g id="x14-coastg">
+        <path id="x14-band" class="x14-hide" fill="none" stroke="#7fb2e5" stroke-opacity="0.85" stroke-width="866.7" stroke-linecap="round" stroke-linejoin="round"/>
+        <g mask="url(#x14-streakmask)">
+          <path id="x14-streak" class="x14-hide" fill="none" stroke="#e6f1fb" stroke-width="66.7" stroke-linecap="round" stroke-dasharray="800 2200"/>
+        </g>
+      </g>
+    </g>
+    <!-- screen-size pins: camAt sets each *-at group's translate to its projected point -->
+    <g id="x14-pins">
+      <g id="x14-pit-at">
+        <circle r="17" fill="#04070c" fill-opacity="0.6" stroke="#f2f5f8" stroke-width="3"/>
+        <circle r="9" fill="#f2f5f8"/>
+        <text id="x14-pitlab0" class="x14-lab" x="42" y="9">PITTSBURGH</text>
+      </g>
+      <g id="x14-buf-at">
+        <g id="x14-buf" class="x14-hide">
+          <circle r="10" fill="none" stroke="#e8c56a" stroke-width="2"/>
+          <circle r="8" fill="#d8a13a"/>
+        </g>
+      </g>
+      <g id="x14-nwk-at">
+        <circle r="17" fill="#04070c" fill-opacity="0.6" stroke="#7fb2e5" stroke-width="3"/>
+        <circle r="9" fill="#7fb2e5"/>
+        <text id="x14-nwklab0" class="x14-lab" x="-42" y="9" text-anchor="end">NEWARK</text>
+      </g>
+    </g>
+  </svg>
+  <!-- pill anchors: camAt translates each zero-size anchor to its pin's screen point -->
+  <div class="x14-at" id="x14-nwkpill-at"><div class="x14-pill x14-plab x14-bold x14-hide" id="x14-nwkpill">NEWARK</div></div>
+  <div class="x14-at" id="x14-pitpill-at"><div class="x14-pill x14-plab x14-bold x14-hide" id="x14-pitpill">PITTSBURGH</div></div>
+  <div class="x14-at" id="x14-bufpill-at">
+    <div class="x14-pill x14-hide" id="x14-bufpill">
+      <span class="x14-bold" id="x14-bufname">BUFFALO</span>
+      <span class="x14-black" id="x14-bufno">40s · NO SNOW</span>
+    </div>
+  </div>
+  <div class="x14-pill x14-black x14-hide" id="x14-snowpill">SNOW</div>
+  <div class="x14-black x14-hide" id="x14-wind">WIND</div>
+  <div class="x14-source x14-hide" id="x14-source">Source: NOAA NCEI; NWS</div>
+  <div class="x14-credit" id="x14-credit">Basemap: Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#x14-";
+  const $ = function (n) { return document.getElementById("x14-" + n); };
+  const proj = function (lon, lat) { return [3841 * (lon + 97.576), -5585 * (lat - 46.6213)]; };
+  const NWK = proj(-74.1724, 40.7357), PIT = proj(-79.9959, 40.4406), BUF = proj(-78.8784, 42.8864);
+  const DUR = 11.46;                                                          /* 11.06 "together." end + 0.40 */
+
+  /* NCEI 18 in+ footprint (lon, lat), clockwise from the Lake Erie shore east of Erie */
+  const FP = [
+    [-79.70, 42.24], [-79.25, 42.00], [-78.99, 41.37], [-78.78, 40.69], [-78.73, 40.21], [-78.94, 39.79],
+    [-78.60, 39.06], [-79.05, 38.29], [-79.65, 37.87], [-80.36, 37.52], [-81.15, 37.42], [-81.57, 37.81],
+    [-82.02, 38.25], [-82.41, 38.63], [-82.68, 39.02], [-83.15, 39.29], [-83.47, 39.63], [-83.07, 40.02],
+    [-82.55, 40.31], [-82.28, 40.79], [-81.76, 41.21], [-81.15, 41.60], [-80.57, 41.94], [-80.15, 42.05]
+  ];
+  /* coast band centreline (lon, lat), 8 px seaward: Cape May -> NJ shore -> NY harbour -> CT/RI shore -> Boston */
+  const COAST = [
+    [-74.86, 38.90], [-74.73, 39.00], [-74.50, 39.27], [-74.35, 39.35], [-74.25, 39.45], [-74.16, 39.58],
+    [-74.03, 39.77], [-73.99, 39.95], [-73.97, 40.08], [-73.92, 40.22], [-73.91, 40.32], [-73.93, 40.45],
+    [-74.00, 40.55], [-74.04, 40.62], [-74.03, 40.68], [-73.97, 40.73], [-73.93, 40.78], [-73.80, 40.81],
+    [-73.68, 40.86], [-73.54, 40.99], [-73.40, 41.04], [-73.18, 41.10], [-73.05, 41.17], [-72.90, 41.21],
+    [-72.68, 41.22], [-72.35, 41.23], [-72.08, 41.26], [-71.86, 41.26], [-71.49, 41.32], [-71.30, 41.42],
+    [-71.17, 41.43], [-71.05, 41.46], [-70.90, 41.52], [-70.70, 41.66], [-70.58, 41.75], [-70.52, 41.83],
+    [-70.58, 41.96], [-70.63, 42.06], [-70.68, 42.20], [-70.86, 42.30], [-71.00, 42.35], [-71.04, 42.36]
+  ];
+  const pathD = function (pts, close) {
+    return pts.map(function (p, i) { const m = proj(p[0], p[1]); return (i ? "L" : "M") + m[0].toFixed(1) + "," + m[1].toFixed(1); }).join(" ") + (close ? " Z" : "");
+  };
+  const fpD = pathD(FP, true), coastD = pathD(COAST, false);
+  ["fp", "fp-c", "glow"].forEach(function (n) { $(n).setAttribute("d", fpD); });
+  ["band", "band-m", "streak"].forEach(function (n) { $(n).setAttribute("d", coastD); });
+  const BAND_LEN = Math.ceil($("band").getTotalLength()) + 1;                 /* map units */
+
+  /* camera frames [s, top-left x, top-left y] -> centre form [s, cx, cy] */
+  const fr = function (s, tx, ty) { return [s, tx + 960 / s, ty + 540 / s]; };
+  const D = fr(0.04024, 59078.1, 18954.6), X = fr(0.03, 42191.8, 15852.5);
+  const PUSH_PT = [42191.8 + 1100 / 0.03, 15852.5 + 450 / 0.03];              /* map point under screen (1100, 450) at A2-X */
+  const expo = gsap.parseEase("expo.inOut");
+  const lerp = function (a, b, u) { return a + (b - a) * u; };
+  function logLerpScale(fromScale, toScale, t) {                              /* helpers.js logZoom */
+    return Math.exp(Math.log(fromScale) + (Math.log(toScale) - Math.log(fromScale)) * t);
+  }
+  /* centre that puts map point p at screen (px, py) at scale s */
+  const anchor = function (p, px, py, s) { return [s, p[0] - (px - 960) / s, p[1] - (py - 540) / s]; };
+  function state(t) {
+    if (t < 0.10) return D;                                                    /* THAT: frame D held */
+    if (t < 1.70) {                                                            /* D -> A2-X, 1.6 s, expo.inOut, log scale */
+      const u = expo((t - 0.10) / 1.6);
+      return [logLerpScale(D[0], X[0], u), lerp(D[1], X[1], u), lerp(D[2], X[2], u)];
+    }
+    if (t < 8.80) return X;
+    return anchor(PUSH_PT, 1100, 450, X[0] * (1 + 0.04 * Math.min(1, (t - 8.80) / (DUR - 8.80))));   /* NOTHING: 4 % push, linear */
+  }
+  const camEl = $("cam");
+  const pins = [[$("nwk-at"), $("nwkpill-at"), NWK], [$("pit-at"), $("pitpill-at"), PIT], [$("buf-at"), $("bufpill-at"), BUF]];
+  function camAt(t) {
+    const c = state(t), s = c[0], cx = c[1], cy = c[2];
+    camEl.setAttribute("transform", "translate(" + (960 - cx * s).toFixed(2) + "," + (540 - cy * s).toFixed(2) + ") scale(" + s.toFixed(6) + ")");
+    for (let i = 0; i < pins.length; i++) {
+      const p = pins[i][2], x = (960 + (p[0] - cx) * s).toFixed(2), y = (540 + (p[1] - cy) * s).toFixed(2);
+      pins[i][0].setAttribute("transform", "translate(" + x + "," + y + ")");
+      pins[i][1].style.transform = "translate(" + x + "px," + y + "px)";
+    }
+  }
+  camAt(0);
+
+  /* basemap paint order as g-intro-2: coast under-stroke (half hidden by the fills), then fills with state lines.
+     shortcut: skips ids the BASEMAP TODO has not filled yet; once filled both exist. */
+  ["ca", "us"].map($).filter(Boolean).forEach(function (el) {
+    const coast = el.cloneNode(false);
+    coast.removeAttribute("id");
+    coast.setAttribute("fill", "none"); coast.setAttribute("stroke", "#4a5560"); coast.setAttribute("stroke-width", "3.2");
+    camEl.insertBefore(coast, camEl.firstChild);
+  });
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to({ t: 0 }, { t: 1, duration: DUR, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
+
+  /* transforms and dash state start in set() at 0 (file contract) */
+  tl.set([P + "nwkpill", P + "pitpill", P + "bufpill", P + "snowpill", P + "wind", P + "source"], { x: 0, y: 0 }, 0);
+  tl.set([P + "nwklab0", P + "pitlab0"], { x: 0, y: 0 }, 0);
+  tl.set(P + "buf", { scale: 0, svgOrigin: "0 0", smoothOrigin: false }, 0);
+  tl.set([P + "band", P + "band-m"], { strokeDasharray: BAND_LEN + " " + BAND_LEN, strokeDashoffset: BAND_LEN }, 0);
+  tl.set(P + "streak", { strokeDashoffset: 0 }, 0);
+  tl.set([P + "snowg", P + "coastg"], { filter: "brightness(1)" }, 0);
+
+  /* THAT @0.00: frame D, NEWARK and PITTSBURGH labels on; at 0.10 they fade (0.3 s) and the move D -> A2-X starts (camAt) */
+  tl.to([P + "nwklab0", P + "pitlab0"], { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 0.10);
+
+  /* MAP @1.38: camera settling; labels return as pills beside the A2-X pins at 1.70, source line with them */
+  tl.fromTo(P + "nwkpill", { autoAlpha: 0, x: 12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 1.70);
+  tl.fromTo(P + "pitpill", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 1.70);
+  tl.fromTo(P + "source", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 1.70);
+
+  /* FIVE @2.40: snow footprint sweeps in north to south (Erie first), 1.2 s */
+  tl.set(P + "snowg", { autoAlpha: 1 }, 2.40);
+  tl.to(P + "sweep-r", { attr: { height: 27800 }, duration: 1.2, ease: "power2.inOut" }, 2.40);
+  /* VIRGINIA @3.58: SNOW label */
+  tl.fromTo(P + "snowpill", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.58);
+  /* inner glow breathes to the end (6 cycles of 1.2 s, 3.60 to 10.80) */
+  tl.fromTo(P + "glow", { opacity: 0.35 }, { opacity: 0.85, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 11 }, 3.60);
+
+  /* HURRICANE @4.54: coast band draws Cape May -> Boston (1.4 s); streaks run NE on the drawn band only (mask) */
+  tl.set([P + "band", P + "streak"], { autoAlpha: 1 }, 4.54);
+  tl.to([P + "band", P + "band-m"], { strokeDashoffset: 0, duration: 1.4, ease: "power2.inOut" }, 4.54);
+  /* 120 px/s = 4000 map units/s; one 3000-unit dash period per 0.75 s; 9 periods, 4.54 to 11.29 */
+  tl.to(P + "streak", { strokeDashoffset: -3000, duration: 0.75, ease: "none", repeat: 8 }, 4.54);
+  /* WIND @5.28 */
+  tl.fromTo(P + "wind", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 5.28);
+
+  /* BOTH @6.86: both fills pulse once together; nothing drawn between them */
+  tl.to([P + "snowg", P + "coastg"], { filter: "brightness(1.25)", duration: 0.4, ease: "power1.inOut", yoyo: true, repeat: 1 }, 6.86);
+
+  /* SATURDAY @7.64: Buffalo pin pops, its pill follows */
+  tl.fromTo(P + "buf", { autoAlpha: 0, scale: 0, svgOrigin: "0 0", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", smoothOrigin: false, duration: 0.4, ease: "back.out(2)" }, 7.64);
+  tl.fromTo(P + "bufpill", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 7.74);
+
+  /* NOTHING @8.80: 4 % push toward the empty land between the fills (camAt), ease none, to the end.
+     WHY @10.10 .. TOGETHER @10.70: streaks and glow keep moving, nothing added. Exit: hard cut to ins-paul-4. */
+
+  window.__timelines["g-a2-14-bothsides"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
