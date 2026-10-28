@@ -112,6 +112,16 @@ window.__timelines = window.__timelines || {};
   /* source line leaves with the popfig */
   tl.to(P+"src", {autoAlpha:0, duration:0.45, ease:"power2.in"}, 9.80);
 
+  /* The tide @10.76: the four "About 5 a.m." lines light one after another on the p. 372 still, out 12.30 to 12.60 before the cut at 12.68 */
+  const BD = [P+"bd1", P+"bd2", P+"bd3", P+"bd4"];
+  tl.set(BD, {autoAlpha:0, scaleX:0}, 0);
+  tl.set(BD, {autoAlpha:1}, 10.30);
+  tl.to(P+"bd1", {scaleX:1, duration:0.35, ease:"power2.out"}, 10.30);
+  tl.to(P+"bd2", {scaleX:1, duration:0.35, ease:"power2.out"}, 10.76);
+  tl.to(P+"bd3", {scaleX:1, duration:0.35, ease:"power2.out"}, 11.20);
+  tl.to(P+"bd4", {scaleX:1, duration:0.30, ease:"power2.out"}, 11.64);
+  tl.to(BD, {autoAlpha:0, duration:0.3, ease:"power2.in"}, 12.30);
+
   /* The tide @10.76 to 16.66: no text over the street. A faint pre-dawn tint rises slowly (the comp's own mover), out at the end. */
   tl.to(P+"dawn", {autoAlpha:1, duration:0.9, ease:"power2.out"}, 9.80);
   tl.fromTo(P+"dawnin", {y:60}, {y:-40, duration:6.26, ease:"none"}, 10.40);
