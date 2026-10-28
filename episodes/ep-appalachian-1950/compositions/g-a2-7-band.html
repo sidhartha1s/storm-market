@@ -198,6 +198,14 @@ window.__timelines = window.__timelines || {};
   }
   camAt(0);
 
+  /* basemap paint order: coast under-stroke (half hidden by the fills), then fills with state lines (as g-a2-8) */
+  [$("ca"), $("us")].forEach(function (el) {
+    const coast = el.cloneNode(false);
+    coast.removeAttribute("id");
+    coast.setAttribute("fill", "none"); coast.setAttribute("stroke", "#4a5560"); coast.setAttribute("stroke-width", "3.2");
+    camEl.insertBefore(coast, camEl.firstChild);
+  });
+
   const tl = gsap.timeline({ paused: true });
   tl.to({ t: 0 }, { t: 1, duration: DUR, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
 
