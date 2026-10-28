@@ -82,10 +82,10 @@ Weather Radio alert tone (1050 Hz, self-made with ffmpeg: zero claim risk) marks
 > **Tempo + emotion:** slow, ends higher than it started.
 
 ## Packaging (candidates only; the owner picks at the packaging gate)
-`scripts/title_fre.py` scores, 21 Oct 26:
-- "Moore 1999: The Warning Worked. The Homes Did Not." (109.8, 50 ch)
-- "Moore 1999: 35 in One Cellar. All Lived." (109.0, 40 ch)
-- "Moore 1999: An Hour of Warning Was Not Enough" (94.3, 45 ch: under 100, rewrite or drop)
+Candidates, 21 Oct 26:
+- "Moore 1999: The Warning Worked. The Homes Did Not." (50 ch)
+- "Moore 1999: 35 in One Cellar. All Lived." (40 ch)
+- "Moore 1999: An Hour of Warning Was Not Enough" (45 ch)
 Thumbnail school A (Name + Year documentary card): the Bridge Creek mud swath (William Lerner, NWS, SA photo, PD) with "35 IN ONE CELLAR" or "THE WARNING WORKED".
 
 ---
