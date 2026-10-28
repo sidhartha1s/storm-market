@@ -76,9 +76,10 @@ window.__timelines = window.__timelines || {};
     tl.to(P+c[0], {color:"#f2f5f8", textShadow:"0 0 0 rgba(255,214,120,0)", duration:0.15, ease:"power2.in"}, c[1] + 0.15);
   });
 
-  /* 1945. @17.70 -> 5.18: popfig punches in; HIS MEMOIR at 17.90 -> 5.38 */
+  /* 1945. @17.70 -> 5.18: popfig punches in (lands 5.58); HIS MEMOIR rises in once it has landed, 5.60
+     (at 5.38 the still-scaled 1945 covered the sub line) */
   tl.fromTo(P+"pop", {autoAlpha:0, scale:2.2}, {autoAlpha:1, scale:1, duration:0.4, ease:"power4.in"}, 5.18);
-  tl.fromTo(P+"sub", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 5.38);
+  tl.fromTo(P+"sub", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 5.60);
 
   /* exit: popfig out, then the spine slides out right in the last 0.6 s */
   tl.to([P+"pop", P+"sub"], {scale:0.92, autoAlpha:0, duration:0.5, ease:"power2.in"}, 6.44); /* spoken-word punch, 0.86 s settled; the 6.94 host end leaves no room for 1.5 s */
