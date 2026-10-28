@@ -229,23 +229,16 @@ window.__timelines = window.__timelines || {};
   tl.set(P + "chsval", { scale: 1, transformOrigin: "center center" }, 0);
   tl.set(P + "fill", { scaleX: 0, transformOrigin: "left center" }, 0);
 
-  /* ambient: 40 flakes falling the whole window (deterministic LCG, finite repeats) */
-  let seed = 19501125;
-  const rnd = function () { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; };
-  const flakes = $("flakes");
-  for (let i = 0; i < 40; i++) {
-    const f = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    f.setAttribute("cx", (rnd() * 1920).toFixed(1));
-    f.setAttribute("cy", "-10");
-    f.setAttribute("r", (1.5 + rnd() * 2).toFixed(2));
-    f.setAttribute("fill", "#f2f5f8");
-    f.setAttribute("opacity", (0.35 + rnd() * 0.45).toFixed(2));
-    flakes.appendChild(f);
-    const v = 60 + rnd() * 50, y0 = rnd() * 1100, first = (1100 - y0) / v, loop = 1100 / v;
-    const reps = Math.max(0, Math.ceil((DUR - first) / loop) - 1);
-    tl.fromTo(f, { y: y0 }, { y: 1100, duration: first, ease: "none" }, 0);
-    tl.fromTo(f, { y: 0 }, { y: 1100, duration: loop, ease: "none", repeat: reps, immediateRender: false }, first);
-  }
+  /* ambient: g-a2-8's flake motion (35-65 px/s from the frame-0 height to y 950, then once more from the top) */
+  const FALL0 = -20, FALL1 = 950;
+  Array.prototype.slice.call($("flakes").querySelectorAll("circle")).forEach(function (c, i) {
+    const cy0 = +c.getAttribute("cy"), v = 35 + (i * 11) % 31, d0 = (FALL1 - cy0) / v;
+    tl.fromTo(c, { attr: { cy: cy0 } }, { attr: { cy: FALL1 }, duration: d0, ease: "none" }, 0);
+    if (d0 < DUR) {
+      const d1 = Math.min((FALL1 - FALL0) / v, DUR - d0);
+      tl.fromTo(c, { attr: { cy: FALL0 } }, { attr: { cy: FALL0 + v * d1 }, duration: d1, ease: "none", immediateRender: false }, d0);
+    }
+  });
 
   /* REACHED @0.14: pull-out W -> S (camAt); the three WV dots fade during the zoom (Elkins would sit under the card) */
   tl.to([P + "pkb", P + "ckb", P + "elk"], { autoAlpha: 0, duration: 0.8, ease: "power1.in" }, T_Z0);
