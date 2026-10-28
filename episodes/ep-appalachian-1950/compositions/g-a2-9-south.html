@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-9-south · A2-S9 · ep-appalachian-1950 · DEEP (Opus) · brief: briefs/a2/g-a2-9-south.md + briefs/a2/_list.md
+  Claim: the snow reached far south: Charleston WV 25.7 in, Huntington 20.9, eastern Kentucky a foot or more
+  (Paintsville 14, Hazard 13), and in parts of the region snow kept falling about a week (22 to 30 Nov).
+  Sources: research/nws-facts.md §2 (RLX, JKL, NCEI); factcheck/a2-r1.md rows 29 to 32.
+
+  BASEMAP: library/inhouse/master-map-us-canada.html regional layer (Natural Earth 50m admin-1, public domain).
+    TODO-BASEMAP (orchestrator): the three path `d` values between the BASEMAP markers are placeholders. Copy the
+    `d` data verbatim (content-blind) from g-a4-1-kymap.html #a41-us / #a41-ca / #a41-border (the same copy
+    g-intro-2-hookmap uses). The builder's Bash was broken, and the path data (~38k tokens) cannot be hand-typed.
+  PROJECTION (one coordinate system): X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213).
+  CAMERA FRAMES (screen = (map - top-left) * s), briefs/a2/_list.md:
+    A2-W s 0.075 TL (54186.2, 35931.1): Parkersburg (549,386) Clarksburg (900,380) Elkins (1043,528)  <- frame 0
+    A2-S s 0.042 TL (37429.1, 35005.9): Charleston (1000,470) Huntington (869,454) Paintsville (811,596)
+         Hazard (748,728) Elkins (1288,335)
+    W -> S is a 1.79x pull-out about the one map point both frames hold at the same screen spot (computed in state()),
+    scale interpolated in log space (logZoom, library/inhouse/snippets/helpers.js), 0.14 to 1.74 expo.inOut.
+    Then a slow drift south: top-left y +600 map units (25.2 px at s 0.042), 1.74 to 15.34, ease none.
+  BAND: PROVISIONAL. g-a2-7 owns the band polygon (its receipt lists the lon/lat vertices); it was still building, so
+    BAND_LL below is this builder's trace of the 30+ core (Erie south into central WV, west of the Allegheny Front,
+    Parkersburg/Clarksburg/Elkins inside, Charleston outside). Replace BAND_LL with g-a2-7's vertices so frame 0 matches.
+  KY-WV LINE: an overlay polyline (Big Sandy / Tug Fork, hand-listed river points) drawn over the basemap's own state
+    line for the 6.48 glow only (the basemap path is one path for all states, so its KY-WV segment cannot be isolated).
+  LAYERS: #s9-cam holds map-unit geometry and is the only element the camera transforms. Pins (#s9-*-at, SVG) and
+    pill anchors (#s9-*-pa, HTML) are screen-size; camAt(t) translates each to its projected point, so the pills ride
+    the 25 px drift with their pins (relative positions hold).
+  CUES (audio/a2-s9.words.json, comp time = word time):
+    0.00 It          A2-W as g-a2-8 left it (band, 3 WV dots, flakes)
+    0.14 reached     pull-out W -> S starts (1.6 s, lands 1.74); WV dots fade 0.14-0.94
+    1.74             drift south to 15.34
+    2.58 Charleston  Charleston pin + pill
+    3.30 Virginia    Huntington pin + pill
+    4.18 25          Charleston value pulse
+    6.48 Kentucky    KY-WV line glow 0.6 s
+    8.40/8.62        source line swaps from g-a2-8's to this comp's (Kentucky source arrives with the KY pins)
+    8.94 Paintsville Paintsville pin + pill
+    9.60 Hazard      Hazard pin + pill
+    12.86 parts      counter card in, NOV 22
+    13.06 of         counter runs NOV 22 -> NOV 30 + fill, 1.02 s, lands 14.08
+    13.68 snow       chip in, lands 14.08 with NOV 30 (brief had 15.18 "week."; moved so the chip reads 1.66 s
+                     before the cut at 15.74, orchestrator's 1.5 s rule)
+    15.74            hard cut to g-a2-10 (everything holds; last frame = A2-S + drift, all on)
+-->
+<template>
+<style>
+  #g-a2-9-south-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 45% 50%, #0e1a26 0%, #05090e 80%); }
+  .s9-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #s9-kyline { filter:drop-shadow(0 0 6px #93a3b2); }
+  .s9-at { position:absolute; left:0; top:0; width:0; height:0; }
+  .s9-pill { position:absolute; box-sizing:border-box; padding:8px 14px; border-radius:14px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .s9-pn { display:block; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:24px; letter-spacing:3px; color:#93a3b2; }
+  .s9-pv { display:block; margin-top:4px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:52px; color:#f2f5f8; }
+  /* pill anchors = pin screen point; pill box about 98 px tall, centred on the pin unless noted */
+  #s9-chspill { left:25px; top:-49px; }                         /* RIGHT of Charleston, left edge pin + 25 */
+  #s9-hunpill { right:25px; top:-73px; text-align:right; }      /* LEFT of Huntington, centre 24 px above the pin */
+  #s9-paipill { right:25px; top:-49px; text-align:right; }      /* LEFT of Paintsville */
+  #s9-hazpill { right:25px; top:-49px; text-align:right; }      /* LEFT of Hazard */
+  .s9-card { position:absolute; box-sizing:border-box; border-radius:22px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  /* day counter: left 1290, top 110, 520 x 190 (right 1810, bottom 300) */
+  #s9-ctr { left:1290px; top:110px; width:520px; height:190px; }
+  #s9-ctrlab { position:absolute; left:35px; top:22px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:24px; letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  #s9-date { position:absolute; left:35px; top:60px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:52px; color:#f2f5f8; white-space:nowrap; }
+  /* track: x 1325 to 1775 at y 260 (card-relative left 35, top 150) */
+  #s9-track { position:absolute; left:35px; top:147px; width:450px; height:6px; border-radius:3px; background:rgba(147,163,178,0.30); }
+  #s9-fill { position:absolute; left:35px; top:147px; width:450px; height:6px; border-radius:3px; background:#7fb2e5; }
+  .s9-tick { position:absolute; top:141px; width:2px; height:18px; background:#93a3b2; opacity:0.7; }
+  /* chip: two lines, right-aligned with the counter (right 1810), top 320, about 392 x 116 (left ~1418, bottom ~436).
+     One 40 px line is ~636 px wide and would run past x 1824 from left 1290. */
+  #s9-chip { right:110px; top:320px; padding:14px 24px; text-align:right; }
+  .s9-cl { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:44px; color:#f2f5f8; white-space:nowrap; }
+  .s9-src { position:absolute; left:110px; bottom:90px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  .s9-credit { position:absolute; left:110px; bottom:60px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .s9-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-9-south-root" data-composition-id="g-a2-9-south" data-width="1920" data-height="1080" data-duration="15.74">
+  <svg class="s9-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <!-- camera layer: map units -->
+    <g id="s9-cam">
+      <!--BASEMAP:s9-->
+      <path id="s9-ca" vector-effect="non-scaling-stroke" stroke-linejoin="round" fill="#0e1620" stroke="#2a3644" stroke-width="1.5" d="M0 0"/>
+      <path id="s9-us" vector-effect="non-scaling-stroke" stroke-linejoin="round" fill="#0b1016" stroke="#2a3644" stroke-width="1.5" d="M0 0"/>
+      <path id="s9-border" vector-effect="non-scaling-stroke" fill="none" stroke="#2a3644" stroke-width="1.5" d="M0 0"/>
+      <!--/BASEMAP-->
+      <!-- 30+ in band (points set from BAND_LL in the script) -->
+      <polygon id="s9-band" points="0,0" fill="rgba(242,245,248,0.55)" stroke="#f2f5f8" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>
+      <!-- KY-WV state line glow (points set from KYWV_LL) -->
+      <polyline id="s9-kyline" class="s9-hide" points="0,0" fill="none" stroke="#93a3b2" stroke-width="3" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"/>
+    </g>
+    <!-- flakes: screen layer above the map, below pins and every label -->
+    <g id="s9-flakes"></g>
+    <!-- screen-size pins: camAt sets each *-at group's translate to its projected point -->
+    <g id="s9-pins">
+      <g id="s9-pkb-at"><g id="s9-pkb"><circle r="9" fill="none" stroke="#7fb2e5" stroke-width="3"/><circle r="7" fill="#ffffff"/></g></g>
+      <g id="s9-ckb-at"><g id="s9-ckb"><circle r="9" fill="none" stroke="#7fb2e5" stroke-width="3"/><circle r="7" fill="#ffffff"/></g></g>
+      <g id="s9-elk-at"><g id="s9-elk"><circle r="9" fill="none" stroke="#7fb2e5" stroke-width="3"/><circle r="7" fill="#ffffff"/></g></g>
+      <g id="s9-chs-at"><g id="s9-chs" class="s9-hide"><circle r="9" fill="none" stroke="#7fb2e5" stroke-width="3"/><circle r="7" fill="#ffffff"/></g></g>
+      <g id="s9-hun-at"><g id="s9-hun" class="s9-hide"><circle r="9" fill="none" stroke="#7fb2e5" stroke-width="3"/><circle r="7" fill="#ffffff"/></g></g>
+      <g id="s9-pai-at"><g id="s9-pai" class="s9-hide"><circle r="9" fill="none" stroke="#7fb2e5" stroke-width="3"/><circle r="7" fill="#ffffff"/></g></g>
+      <g id="s9-haz-at"><g id="s9-haz" class="s9-hide"><circle r="9" fill="none" stroke="#7fb2e5" stroke-width="3"/><circle r="7" fill="#ffffff"/></g></g>
+    </g>
+  </svg>
+  <!-- pill anchors: camAt translates each zero-size anchor to its pin's screen point -->
+  <div class="s9-at" id="s9-chs-pa">
+    <div class="s9-pill s9-hide" id="s9-chspill"><span class="s9-pn" id="s9-chsname">CHARLESTON, WV</span><span class="s9-pv" id="s9-chsval">25.7 IN</span></div>
+  </div>
+  <div class="s9-at" id="s9-hun-pa">
+    <div class="s9-pill s9-hide" id="s9-hunpill"><span class="s9-pn" id="s9-hunname">HUNTINGTON, WV</span><span class="s9-pv" id="s9-hunval">20.9 IN</span></div>
+  </div>
+  <div class="s9-at" id="s9-pai-pa">
+    <div class="s9-pill s9-hide" id="s9-paipill"><span class="s9-pn" id="s9-painame">PAINTSVILLE, KY</span><span class="s9-pv" id="s9-paival">14 IN</span></div>
+  </div>
+  <div class="s9-at" id="s9-haz-pa">
+    <div class="s9-pill s9-hide" id="s9-hazpill"><span class="s9-pn" id="s9-hazname">HAZARD, KY</span><span class="s9-pv" id="s9-hazval">13 IN</span></div>
+  </div>
+  <!-- fixed HUD: day counter and chip (never ride the camera) -->
+  <div class="s9-card s9-hide" id="s9-ctr">
+    <span id="s9-ctrlab">SNOW FALLING</span>
+    <span id="s9-date">NOV 22</span>
+    <div id="s9-track"></div>
+    <div id="s9-fill"></div>
+    <div class="s9-tick" style="left:34px"></div>
+    <div class="s9-tick" style="left:90.25px"></div>
+    <div class="s9-tick" style="left:146.5px"></div>
+    <div class="s9-tick" style="left:202.75px"></div>
+    <div class="s9-tick" style="left:259px"></div>
+    <div class="s9-tick" style="left:315.25px"></div>
+    <div class="s9-tick" style="left:371.5px"></div>
+    <div class="s9-tick" style="left:427.75px"></div>
+    <div class="s9-tick" style="left:484px"></div>
+  </div>
+  <div class="s9-card s9-hide" id="s9-chip">
+    <span class="s9-cl" id="s9-chip1">SNOW FOR</span>
+    <span class="s9-cl" id="s9-chip2">ABOUT A WEEK</span>
+  </div>
+  <!-- source: frame 0 carries g-a2-8's line (identical cut), swapped when the Kentucky figures arrive -->
+  <div class="s9-src" id="s9-src0">Source: NWS Charleston WV; NOAA NCEI</div>
+  <div class="s9-src s9-hide" id="s9-src1">Source: NWS Charleston WV; NWS Jackson KY; NOAA NCEI</div>
+  <div class="s9-credit" id="s9-credit">Basemap: Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#s9-";
+  const $ = function (n) { return document.getElementById("s9-" + n); };
+  const proj = function (lon, lat) { return [3841 * (lon + 97.576), -5585 * (lat - 46.6213)]; };
+  const PKB = proj(-81.5615, 39.2667), CKB = proj(-80.3445, 39.2806), ELK = proj(-79.8467, 38.9262);
+  const CHS = proj(-81.6326, 38.3498), HUN = proj(-82.4452, 38.4192);
+  const PAI = proj(-82.8071, 37.8145), HAZ = proj(-83.1932, 37.2498);
+
+  /* PROVISIONAL band (lon, lat), clockwise from the north tip: replace with g-a2-7's receipt vertices */
+  const BAND_LL = [[-80.10, 42.05], [-79.80, 41.75], [-79.55, 41.20], [-79.45, 40.60], [-79.50, 40.00], [-79.55, 39.45],
+    [-79.60, 39.05], [-79.70, 38.75], [-80.50, 38.60], [-81.00, 38.70], [-81.70, 39.20], [-81.55, 39.60],
+    [-81.00, 40.10], [-80.75, 40.70], [-80.60, 41.30], [-80.35, 41.85]];
+  /* KY-WV line, north to south: Big Sandy mouth (Catlettsburg), Louisa / Fort Gay, Tug Fork via Crum, Kermit,
+     Williamson, Matewan, to the Virginia corner */
+  const KYWV_LL = [[-82.598, 38.418], [-82.604, 38.115], [-82.50, 38.02], [-82.44, 37.90], [-82.409, 37.838],
+    [-82.277, 37.674], [-82.167, 37.624], [-81.968, 37.544]];
+  const pts = function (ll) { return ll.map(function (p) { const m = proj(p[0], p[1]); return m[0].toFixed(1) + "," + m[1].toFixed(1); }).join(" "); };
+  $("band").setAttribute("points", pts(BAND_LL));
+  $("kyline").setAttribute("points", pts(KYWV_LL));
+
+  const DUR = 15.74;                                                          /* week. ends 15.34 + 0.40 */
+  /* camera frames: [s, centre x, centre y] from scale + top-left */
+  const fr = function (s, tx, ty) { return [s, tx + 960 / s, ty + 540 / s]; };
+  const SW = 0.075, TLW = [54186.2, 35931.1], SS = 0.042, TLS = [37429.1, 35005.9];
+  const W = fr(SW, TLW[0], TLW[1]), S = fr(SS, TLS[0], TLS[1]);
+  /* the pull-out's fixed point: (FX - TLW) * SW = (FX - TLS) * SS */
+  const FX = [(TLS[0] * SS - TLW[0] * SW) / (SS - SW), (TLS[1] * SS - TLW[1] * SW) / (SS - SW)];
+  const FS = [(FX[0] - TLW[0]) * SW, (FX[1] - TLW[1]) * SW];
+  const T_Z0 = 0.14, T_Z1 = 1.74, T_D1 = 15.34, DRIFT = 600;                 /* REACHED @0.14 -> lands 1.74 */
+
+  const expo = gsap.parseEase("expo.inOut");
+  function logLerpScale(fromScale, toScale, t) {                              /* helpers.js logZoom */
+    return Math.exp(Math.log(fromScale) + (Math.log(toScale) - Math.log(fromScale)) * t);
+  }
+  function state(t) {
+    if (t < T_Z0) return W;
+    if (t < T_Z1) {
+      const s = logLerpScale(SW, SS, expo((t - T_Z0) / (T_Z1 - T_Z0)));
+      return [s, FX[0] + (960 - FS[0]) / s, FX[1] + (540 - FS[1]) / s];
+    }
+    if (t < T_D1) return [SS, S[1], S[2] + DRIFT * (t - T_Z1) / (T_D1 - T_Z1)];
+    return [SS, S[1], S[2] + DRIFT];
+  }
+  const camEl = $("cam");
+  const pins = [[$("pkb-at"), PKB], [$("ckb-at"), CKB], [$("elk-at"), ELK], [$("chs-at"), CHS], [$("hun-at"), HUN],
+    [$("pai-at"), PAI], [$("haz-at"), HAZ]];
+  const anchors = [[$("chs-pa"), CHS], [$("hun-pa"), HUN], [$("pai-pa"), PAI], [$("haz-pa"), HAZ]];
+  function camAt(t) {
+    const c = state(t), s = c[0], cx = c[1], cy = c[2];
+    camEl.setAttribute("transform", "translate(" + (960 - cx * s).toFixed(2) + "," + (540 - cy * s).toFixed(2) + ") scale(" + s.toFixed(6) + ")");
+    for (let i = 0; i < pins.length; i++) {
+      const p = pins[i][1];
+      pins[i][0].setAttribute("transform", "translate(" + (960 + (p[0] - cx) * s).toFixed(2) + "," + (540 + (p[1] - cy) * s).toFixed(2) + ")");
+    }
+    for (let i = 0; i < anchors.length; i++) {
+      const p = anchors[i][1];
+      anchors[i][0].style.transform = "translate(" + (960 + (p[0] - cx) * s).toFixed(2) + "px," + (540 + (p[1] - cy) * s).toFixed(2) + "px)";
+    }
+  }
+  camAt(0);
+
+  const tl = gsap.timeline({ paused: true });
+  /* camera spine over the whole window (pull-out, drift, hold) */
+  tl.to({ t: 0 }, { t: 1, duration: DUR, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
+
+  /* transforms start in set() at 0 (file contract) */
+  tl.set([P + "chs", P + "hun", P + "pai", P + "haz"], { scale: 1, svgOrigin: "0 0", smoothOrigin: false }, 0);
+  tl.set([P + "chspill", P + "hunpill", P + "paipill", P + "hazpill", P + "ctr", P + "chip", P + "src1"], { x: 0, y: 0 }, 0);
+  tl.set(P + "chsval", { scale: 1, transformOrigin: "center center" }, 0);
+  tl.set(P + "fill", { scaleX: 0, transformOrigin: "left center" }, 0);
+
+  /* ambient: 40 flakes falling the whole window (deterministic LCG, finite repeats) */
+  let seed = 19501125;
+  const rnd = function () { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; };
+  const flakes = $("flakes");
+  for (let i = 0; i < 40; i++) {
+    const f = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    f.setAttribute("cx", (rnd() * 1920).toFixed(1));
+    f.setAttribute("cy", "-10");
+    f.setAttribute("r", (1.5 + rnd() * 2).toFixed(2));
+    f.setAttribute("fill", "#f2f5f8");
+    f.setAttribute("opacity", (0.35 + rnd() * 0.45).toFixed(2));
+    flakes.appendChild(f);
+    const v = 60 + rnd() * 50, y0 = rnd() * 1100, first = (1100 - y0) / v, loop = 1100 / v;
+    const reps = Math.max(0, Math.ceil((DUR - first) / loop) - 1);
+    tl.fromTo(f, { y: y0 }, { y: 1100, duration: first, ease: "none" }, 0);
+    tl.fromTo(f, { y: 0 }, { y: 1100, duration: loop, ease: "none", repeat: reps, immediateRender: false }, first);
+  }
+
+  /* REACHED @0.14: pull-out W -> S (camAt); the three WV dots fade during the zoom (Elkins would sit under the card) */
+  tl.to([P + "pkb", P + "ckb", P + "elk"], { autoAlpha: 0, duration: 0.8, ease: "power1.in" }, T_Z0);
+
+  /* CHARLESTON @2.58: pin pops, pill in */
+  tl.fromTo(P + "chs", { autoAlpha: 0, scale: 0, svgOrigin: "0 0", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", smoothOrigin: false, duration: 0.4, ease: "back.out(1.7)" }, 2.58);
+  tl.fromTo(P + "chspill", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.58);
+  /* VIRGINIA @3.30: Huntington pin + pill (on screen only) */
+  tl.fromTo(P + "hun", { autoAlpha: 0, scale: 0, svgOrigin: "0 0", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", smoothOrigin: false, duration: 0.4, ease: "back.out(1.7)" }, 3.30);
+  tl.fromTo(P + "hunpill", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.30);
+  /* 25 @4.18: Charleston value pulse */
+  tl.to(P + "chsval", { scale: 1.08, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1 }, 4.18);
+  /* KENTUCKY @6.48: KY-WV line glows 0.6 s */
+  tl.fromTo(P + "kyline", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 6.48);
+  /* source swap before the Kentucky figures: old out 8.40-8.60, new in 8.62-8.92 (never both visible) */
+  tl.to(P + "src0", { autoAlpha: 0, duration: 0.2, ease: "power1.in" }, 8.40);
+  tl.fromTo(P + "src1", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power1.out" }, 8.62);
+  /* PAINTSVILLE @8.94 */
+  tl.fromTo(P + "pai", { autoAlpha: 0, scale: 0, svgOrigin: "0 0", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", smoothOrigin: false, duration: 0.4, ease: "back.out(1.7)" }, 8.94);
+  tl.fromTo(P + "paipill", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.94);
+  /* HAZARD @9.60 */
+  tl.fromTo(P + "haz", { autoAlpha: 0, scale: 0, svgOrigin: "0 0", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", smoothOrigin: false, duration: 0.4, ease: "back.out(1.7)" }, 9.60);
+  tl.fromTo(P + "hazpill", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.60);
+
+  /* PARTS @12.86: counter card in, reading NOV 22 */
+  tl.fromTo(P + "ctr", { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out" }, 12.86);
+  /* OF @13.06: days run NOV 22 -> NOV 30 with the fill, landing 14.08 with the chip (floor: never past 30, 30 only at the end) */
+  const dateEl = $("date"), ctr = { v: 0 };
+  tl.to(ctr, { v: 8, duration: 1.02, ease: "power2.out", onUpdate: function () {
+    dateEl.textContent = "NOV " + (22 + Math.min(8, Math.max(0, Math.floor(ctr.v + 1e-6))));
+  } }, 13.06);
+  tl.fromTo(P + "fill", { scaleX: 0 }, { scaleX: 1, duration: 1.02, ease: "power2.out" }, 13.06);
+  /* SNOW @13.68: chip in, lands 14.08 (1.66 s readable before the cut at 15.74) */
+  tl.fromTo(P + "chip", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 13.68);
+  /* WEEK @15.18: voice lands on the settled card; drift ends 15.34; hold, hard cut at 15.74 */
+
+  window.__timelines["g-a2-9-south"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
