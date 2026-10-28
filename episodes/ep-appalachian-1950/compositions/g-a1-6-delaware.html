@@ -274,7 +274,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "tideglow", { attr: { "stroke-opacity": 0.35 } }, { attr: { "stroke-opacity": 0.8 }, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false }, 15.20);
   tl.fromTo(P + "gwpulse", { attr: { r: 10 }, opacity: 0.9 }, { attr: { r: 24 }, opacity: 0, duration: 1.2, ease: "power1.out", repeat: 1, immediateRender: false }, 15.5);
 
-  /* RECORD @17.60 (chip lands on "tide" 16.98 so it reads 1.5 s+ before the cut) */
+  /* RECORD @17.60 (chip enters on "tide" 16.98 and has no exit, for the longest read before the cut) */
   tl.fromTo(P + "chip", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 16.98);
 
   // exit: gauge card slides out in the last 0.6 s; chip and map hold to the cut (g-a1-7)
