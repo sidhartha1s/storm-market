@@ -211,7 +211,7 @@ window.__timelines = window.__timelines || {};
   const LEX = proj(-84.5037, 38.0406), BG = proj(-86.4808, 36.9685), FAR = proj(-83.5352, 38.1468);
   const SOM = proj(-84.6041, 37.0920), WIL = proj(-84.1597, 36.7434), MID = proj(-83.7166, 36.6084);
 
-  /* segment offsets (comp-local s), 0.40 s gaps assumed; cue = SEG[seg] + words.json time */
+  /* segment offsets (comp-local s); cue = segment offset + words.json time */
   /* numeric literals so sweep check 7 can fold the S-relative positions (comp_consts.fold reads `const X = n;` only).
      Checked against index.html: a4-s1/s2/s3 start 621.91 / 636.414 / 654.624 */
   const S1 = 0.000;
