@@ -87,10 +87,13 @@
       <circle id="bm2-nwkpulse" cx="467" cy="761" r="8" fill="none" stroke="#7fb2e5" stroke-width="2" opacity="0"/>
       <circle id="bm2-nwkpin" cx="467" cy="761" r="8" fill="#7fb2e5"/>
       <!-- Bear Mountain pin: 18 px dot, 2 px ring -->
-      <circle id="bm2-bmpulse" cx="504" cy="575" r="12" fill="none" stroke="#7fb2e5" stroke-width="2" opacity="0"/>
+      <!-- pulse rings sit inside the pin group: their fromTo start state (r 12) lies exactly on the pin's own ring, so a
+           pre-rendered start value never shows as an extra ring; one ring per tween, so no two fromTo share a target -->
       <g id="bm2-bmpin" class="bm2-hide">
         <circle cx="504" cy="575" r="12" fill="#04070c" fill-opacity="0.6" stroke="#7fb2e5" stroke-width="2"/>
         <circle cx="504" cy="575" r="9" fill="#f2f5f8"/>
+        <circle id="bm2-bmpulse" cx="504" cy="575" r="12" fill="none" stroke="#7fb2e5" stroke-width="2" opacity="0"/>
+        <circle id="bm2-bmpulse2" cx="504" cy="575" r="12" fill="none" stroke="#7fb2e5" stroke-width="2" opacity="0"/>
       </g>
       <!-- "?" marker (as g-intro-5 ended it): q-at is moved by GSAP x/y only, along the Hudson legs -->
       <g id="bm2-q-at">
