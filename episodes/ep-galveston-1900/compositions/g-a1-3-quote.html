@@ -1,0 +1,84 @@
+<template>
+<style>
+  #g-a1-3-quote-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  .g-a1-3-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  /* quote card: outer slides in x, inner drifts in y */
+  #g-a1-3-quote-card { position:absolute; left:1000px; top:140px; width:824px; opacity:0; visibility:hidden; }
+  #g-a1-3-quote-cardin { box-sizing:border-box; width:824px; padding:36px 40px; border-radius:28px; }
+  #g-a1-3-quote-q { display:block; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:28px; line-height:40px; color:#93a3b2; }
+  #g-a1-3-quote-q .ph { color:#93a3b2; }
+  #g-a1-3-quote-key { position:relative; display:inline-block; white-space:nowrap; }
+  #g-a1-3-quote-rule { position:absolute; left:0; right:0; bottom:2px; height:3px; background:#d0121f; transform-origin:left center; }
+  #g-a1-3-quote-attr { display:block; margin-top:16px; font-family:Arial, sans-serif; font-weight:700; font-size:20px; letter-spacing:2px; color:#d8a13a; white-space:nowrap; }
+  /* chips: outer moves, inner drifts */
+  #g-a1-3-quote-chipa, #g-a1-3-quote-chipb { position:absolute; left:1000px; top:560px; opacity:0; visibility:hidden; }
+  #g-a1-3-quote-chipain, #g-a1-3-quote-chipbin { display:table; padding:22px 36px; border-radius:28px; }
+  .g-a1-3-chiptxt { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  #g-a1-3-quote-b2 { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a1-3-quote-root" data-composition-id="g-a1-3-quote" data-width="1920" data-height="1080">
+  <div id="g-a1-3-quote-card">
+    <div id="g-a1-3-quote-cardin" class="g-a1-3-glass">
+      <span id="g-a1-3-quote-q"><span class="ph" id="g-a1-3-quote-p1">The opinion held by some,</span> <span class="ph" id="g-a1-3-quote-p2">who are unacquainted with the actual conditions of things,</span> <span class="ph" id="g-a1-3-quote-p3">that Galveston will at some time be seriously damaged by some such disturbance,</span> <span class="ph" id="g-a1-3-quote-p4">is simply an <span id="g-a1-3-quote-key">absurd delusion<span id="g-a1-3-quote-rule"></span></span></span> <span class="ph" id="g-a1-3-quote-p5">and can only have its origin in the imagination</span> <span class="ph" id="g-a1-3-quote-p6">and not from reasoning</span></span>
+      <span id="g-a1-3-quote-attr">Isaac Cline &middot; Galveston Daily News, July 16, 1891</span>
+    </div>
+  </div>
+  <div id="g-a1-3-quote-chipa">
+    <div id="g-a1-3-quote-chipain" class="g-a1-3-glass"><span class="g-a1-3-chiptxt">ABSURD DELUSION</span></div>
+  </div>
+  <div id="g-a1-3-quote-chipb">
+    <div id="g-a1-3-quote-chipbin" class="g-a1-3-glass">
+      <span class="g-a1-3-chiptxt" id="g-a1-3-quote-b1">IMAGINATION,</span>
+      <span class="g-a1-3-chiptxt" id="g-a1-3-quote-b2">NOT REASONING</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a1-3-quote-";
+  const LIT = "#f2f5f8";
+  /* TIMING: audio/a1-s2.words.json, comp-local = segment time (segment 8.766 s). */
+  tl.set(P+"card", {autoAlpha:0, x:60}, 0);
+  tl.set(P+"chipa", {autoAlpha:0, y:24, scale:0.94}, 0);
+  tl.set(P+"chipb", {autoAlpha:0, y:24, scale:0.94}, 0);
+  tl.set(P+"b2", {autoAlpha:0}, 0);
+  tl.set(P+"rule", {scaleX:0}, 0);
+
+  /* CARD @0.58 ("people"): card + attribution in, all text unlit */
+  tl.fromTo(P+"card", {x:60, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0.58);
+  tl.to(P+"cardin", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:2}, 1.18);
+
+  /* HELD @1.06: P1 lit */
+  tl.to(P+"p1", {color:LIT, duration:0.35, ease:"power2.out"}, 1.06);
+  /* FEAR @1.46: P3 lit ("that fear" stands for it) */
+  tl.to(P+"p3", {color:LIT, duration:0.35, ease:"power2.out"}, 1.46);
+  /* UNACQUAINTED @2.04: P2 lit */
+  tl.to(P+"p2", {color:LIT, duration:0.35, ease:"power2.out"}, 2.04);
+
+  /* ABSURD @4.80 ("Such"): P4 lit, red underline draws, chip A in */
+  tl.to(P+"p4", {color:LIT, duration:0.35, ease:"power2.out"}, 4.80);
+  tl.to(P+"rule", {scaleX:1, duration:0.5, ease:"power2.out"}, 4.80);
+  tl.to(P+"chipa", {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 4.80);
+  tl.to(P+"chipain", {y:-4, duration:0.95, ease:"sine.inOut", yoyo:true, repeat:1}, 5.25);
+  /* COULD @5.94: P5 lit */
+  tl.to(P+"p5", {color:LIT, duration:0.35, ease:"power2.out"}, 5.94);
+  /* 6.30: chip A out before chip B */
+  tl.to(P+"chipa", {y:-24, autoAlpha:0, duration:0.4, ease:"power2.in"}, 6.30);
+
+  /* IMAGINATION @6.72: chip B in; NOT @7.92: second line */
+  tl.to(P+"chipb", {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 6.72);
+  tl.fromTo(P+"b2", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 7.92);
+  tl.to(P+"chipbin", {y:-4, duration:0.7, ease:"sine.inOut", yoyo:true, repeat:1}, 7.17);
+  /* AND @7.74: P6 lit; REASONING @8.28: brightens to gold and back */
+  tl.to(P+"p6", {color:LIT, duration:0.35, ease:"power2.out"}, 7.74);
+  tl.to(P+"p6", {color:"#f5d98b", duration:0.2, ease:"power2.out", yoyo:true, repeat:1}, 8.28);
+
+  /* EXIT: card and chip B together, ends on the segment end 8.766 (S3 opens on a cut) */
+  tl.to([P+"card", P+"chipb"], {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 8.166);
+  window.__timelines["g-a1-3-quote"] = tl;
+})();
+</script>
+</template>
