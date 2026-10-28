@@ -20,9 +20,8 @@
     W -> S is a 1.79x pull-out about the one map point both frames hold at the same screen spot (computed in state()),
     scale interpolated in log space (logZoom, library/inhouse/snippets/helpers.js), 0.14 to 1.74 expo.inOut.
     Then a slow drift south: top-left y +600 map units (25.2 px at s 0.042), 1.74 to 15.34, ease none.
-  BAND: PROVISIONAL. g-a2-7 owns the band polygon (its receipt lists the lon/lat vertices); it was still building, so
-    BAND_LL below is this builder's trace of the 30+ core (Erie south into central WV, west of the Allegheny Front,
-    Parkersburg/Clarksburg/Elkins inside, Charleston outside). Replace BAND_LL with g-a2-7's vertices so frame 0 matches.
+  BAND: g-a2-7 owns the band polygon; BAND_LL below is its V1 to V18 (lat, lon in its header, here lon, lat), so
+    frame 0 matches g-a2-7's band.
   KY-WV LINE: an overlay polyline (Big Sandy / Tug Fork, hand-listed river points) drawn over the basemap's own state
     line for the 6.48 glow only (the basemap path is one path for all states, so its KY-WV segment cannot be isolated).
   LAYERS: #s9-cam holds map-unit geometry and is the only element the camera transforms. Pins (#s9-*-at, SVG) and
