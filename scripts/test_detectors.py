@@ -447,7 +447,7 @@ assert '[idle]' not in got.get('g-p2', ''), f'the renderer span covers the {{}} 
 assert '\n  declared exemptions:\n    exempt [' in r.stdout and r.stdout.rstrip().endswith(' compositions, 4 exempt'), \
     f'the exempt lines sit under one header and the summary counts them: {r.stdout}'
 olds = {}  # each old revision runs only the comps its assertion reads
-for rev, comps in (('f3a6fece', ('g-p1', 'g-p2')), ('fbebe442', ('g-n1', 'g-n4')), ('29dfbdca', ('g-t1', 'g-c1'))):
+for rev, comps in (('f3a6fece', ('g-p1', 'g-p2')), ('fbebe442', ('g-n1', 'g-n4')), ('29dfbdca', ('g-t1', 'g-c1')), ('0d2fa47a', ('g-d1',))):
     ep = _stage_ep(case_files(comps))
     old_gq = old_rev('graphics_qc.mjs', f'_old_gqc_{rev}_tmp.mjs', rev)
     olds[rev] = by_comp(subprocess.run(['node', str(old_gq), str(ep)], capture_output=True, text=True, encoding='utf-8').stdout)
