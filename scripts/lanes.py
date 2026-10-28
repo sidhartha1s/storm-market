@@ -27,7 +27,7 @@ the host is asked whether the lane's process runs, and one that cannot be read i
   1. it first probes the profile (`claude -p 'reply with the single word ok' --model haiku` under its
      CLAUDE_CONFIG_DIR); any reply but "ok" (a limit, a logged-out profile, an error) moves it to the next
      ~/.claude-accounts/claude* profile. It never waits for a reset.
-  2. every start refuses while the host has MIN_FREE_GB or less free, or MAX_LANES lanes are already RUNNING
+  2. every start refuses while the host has MIN_FREE_GB or less free (a RAM floor, not a lane cap: lanes run on the API)
   3. a running lane whose log tail says it hit a limit is FAILED (blocking). `status` only reports it, since the Stop
      hook calls status; `relaunch` moves it to the next profile that answers, and backs off if another lanes.py
      holds the lock
@@ -66,7 +66,6 @@ DEFAULT_MIN = 60    # a lane with no end recorded this many minutes after its st
 BLOCKING = ("READY", "STALE", "FAILED")
 HOSTS = ("local", "zbook")
 MIN_FREE_GB = 4     # a lane never starts on a host with this much free memory or less
-MAX_LANES = 4       # ...or while this many lanes are RUNNING
 ACCOUNTS = Path.home() / ".claude-accounts"
 LIMIT = re.compile(r"hit your (\w+ )?limit|session limit|usage limit reached", re.I)
 LOCK_MIN = 10      # a ledger lock older than this is a dead holder's
@@ -167,11 +166,8 @@ def profile_order(first=None, skip=None):
     return [n for n in names[i:] + names[:i] if n != skip]
 
 
-def gate(states, host):
+def gate(host):
     """Rule 2: why a lane may not start on host now, or None."""
-    running = sum(s["state"] == "RUNNING" for s in states)
-    if running >= MAX_LANES:
-        return f"{running} lanes already RUNNING (cap {MAX_LANES})"
     gb = free_gb(host)
     return f"{host} has {gb} GB free (needs more than {MIN_FREE_GB})" if gb <= MIN_FREE_GB else None
 
@@ -362,7 +358,7 @@ def write(a, ep, lock):
         left = 0
         for s in (s for s in states if s["state"] == "FAILED"):
             run = ledger["jobs"][s["job"]]
-            why = gate(states, run["host"])
+            why = gate(run["host"])
             new = None if why else launch(dict(run, started=now), profile_order(run.get("profile"), skip=run.get("profile")))
             os.utime(lock)  # still alive: a long relaunch is never taken over
             if new:
@@ -404,7 +400,7 @@ def write(a, ep, lock):
         if a.lane_cmd and busy:
             sys.exit(f"[lanes] FAIL: {busy[0]} is already RUNNING or DONE; a second launch would double it")
         if a.cmd == "start":
-            why = gate(states, a.host)
+            why = gate(a.host)
             if why:
                 sys.exit(f"[lanes] FAIL: not starting: {why}")
             run = {"started": now, "host": a.host, "minutes": a.minutes}

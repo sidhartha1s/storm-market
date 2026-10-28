@@ -271,16 +271,15 @@ def test_a_recorded_launch_whose_log_never_appears_fails(tmp_path):
         assert st["source:a1"] == state, (minutes_ago, st["source:a1"])
 
 
-def test_rule2_start_refuses_low_memory_and_a_full_lane_count(tmp_path):
+def test_rule2_start_refuses_low_memory_and_never_counts_lanes(tmp_path):
+    """no lane-count cap (owner 13 Oct 26: agents run on the API, not on local cores); only the RAM floor refuses"""
     ep = lane_episode(tmp_path)
     calls = fakes(answering={"claude1"}, free=lanes.MIN_FREE_GB)
     assert raises(lambda: lanes.main(["start", str(ep), "source:a1", *LANE])) and not calls["spawn"]
     now = time.time()
-    four = ("source:a1", "source:intro", "voice:a1", "voice:intro")
-    lanes.save_ledger(ep, {"jobs": {j: {"started": now, "host": "zbook"} for j in four}})
+    six = ("source:a1", "source:intro", "voice:a1", "voice:intro", "source:a2", "voice:a2")
+    lanes.save_ledger(ep, {"jobs": {j: {"started": now, "host": "zbook"} for j in six}})
     calls = fakes(answering={"claude1"}, free=lanes.MIN_FREE_GB + 0.1)
-    assert raises(lambda: lanes.main(["start", str(ep), "words:a1", *LANE])) and not calls["spawn"]
-    lanes.save_ledger(ep, {"jobs": {j: {"started": now, "host": "zbook"} for j in four[:3]}})
     assert lanes.main(["start", str(ep), "words:a1", *LANE]) == 0 and len(calls["spawn"]) == 1
 
 
