@@ -219,7 +219,8 @@ window.__timelines = window.__timelines || {};
     glowEl.setAttribute("d", td);
     exitEl.setAttribute("d", "M" + EXIT.map(sc).join(" L"));
     loopArrow.setAttribute("transform", "translate(" + sc(ARROW_AT) + ") scale(" + k.toFixed(4) + ")");
-    for (let i = 0; i < CON.length; i++) CON[i][0].setAttribute("d", "M" + sc(CON[i][1]) + " L" + sc(CON[i][2]));    for (let i = 0; i < AR.length; i++) {
+    for (let i = 0; i < CON.length; i++) CON[i][0].setAttribute("d", "M" + sc(CON[i][1]) + " L" + sc(CON[i][2]));
+    for (let i = 0; i < AR.length; i++) {
       const a = AR[i], el = arEls[i];
       const d = "M" + sc(a[0]) + " Q" + sc(a[1]) + " " + sc(a[2]);
       const p = p1io(clamp((t - a[3]) / a[4]));
