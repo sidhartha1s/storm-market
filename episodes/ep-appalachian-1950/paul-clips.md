@@ -21,7 +21,7 @@ Prompt wording follows `references/mg-quickref.md` "Paul on screen" and the ep4-
 | ins-paul-1 | H1-S1 | hook, first line | 26 | You are in Newark, New Jersey. It's the Saturday of Thanksgiving weekend, nineteen fifty, and the wind just gusted to a hundred eight miles an hour. |
 | ins-paul-2 | act 1 | not chosen yet | TBD | TBD |
 | ins-paul-3 | act 2 | not chosen yet | TBD | TBD |
-| ins-paul-4 | A2-S15 | CTA hinge, end of act 2 | 24 | Somewhere on that Saturday's weather map is one line that ties Buffalo, Newark and Pittsburgh together. I'll draw it for you right after this. |
+| ins-paul-4 | A2-S15 | CTA hinge, end of act 2 | 24 | Somewhere on that Saturday's weather map is one line that ties Newark and Pittsburgh together. I'll draw it for you right after this. |
 | ins-paul-5 | act 4 turn | not written yet | TBD | TBD |
 | ins-paul-6 | close | not written yet | TBD | TBD |
 
