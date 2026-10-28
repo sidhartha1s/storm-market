@@ -209,6 +209,15 @@ window.__timelines = window.__timelines || {};
   arrow("a3", [1270, 250], [830, 600]);
   arrow("aw", [465.3, 800.9], [593.4, 722.7]);                              /* HW + 100 and + 250 px toward L */
 
+  /* coast as g-a3-4: same paths under-stroked 3.2 px #4a5560 beneath the fills (1.6 px shows outside the land) */
+  const cam = $("cam");
+  ["ca", "us"].map($).forEach(function (el) {
+    const coast = el.cloneNode(false);
+    coast.removeAttribute("id");
+    coast.setAttribute("fill", "none"); coast.setAttribute("stroke", "#4a5560"); coast.setAttribute("stroke-width", "3.2");
+    cam.insertBefore(coast, cam.firstChild);
+  });
+
   const isos = [0, 1, 2, 3, 4, 5, 6].map(function (i) { return $("iso" + i); });
   const sq = gsap.parseEase("power2.inOut");
   function draw(t) {
