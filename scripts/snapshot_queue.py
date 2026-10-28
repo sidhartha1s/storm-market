@@ -41,6 +41,8 @@ from render_preflight import parse_pin  # noqa: E402
 
 ZBOOK_REPO = r"C:\Users\Sidhartha\Automation Projects\storm-market"
 SNAP_TIMEOUT = 600   # fixed part: a run reaches its first frame in about 44 s; ten times that is a hung Chrome
+COPY_BASE = 600      # copy-back from the ZBook: fixed part
+COPY_PER_FRAME = 15  # added per frame: an 88-job Galveston batch outran a flat 600 s
 FRAME_TIMEOUT = 20   # added per frame: a frame takes about 2 s
 SETTLE = 3           # seconds a run waits before picking its batch, so a burst of submits shares one run
 ZBOOK_CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"  # Smart App Control blocks hyperframes' own shell (learnings/render.md 10 Oct 26, item 3)
@@ -92,7 +94,8 @@ def referenced(ep):
 
 
 def ssh(cmd, timeout):
-    return subprocess.run(["ssh", "-n", "zbook", cmd], capture_output=True, text=True, timeout=timeout, creationflags=NO_WINDOW)
+    # errors="replace": ZBook console output is not always UTF-8, and a decode crash would fail a finished run
+    return subprocess.run(["ssh", "-n", "zbook", cmd], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=timeout, creationflags=NO_WINDOW)
 
 
 def ship(ep):
@@ -206,8 +209,18 @@ def snap_zbook(ep, times, pin, name, out):
     log = f"shipped {sent} of {total} files; " + tail
     if rc:
         return rc, log
-    g = subprocess.run(["scp", "-q", "-r", f"zbook:{rout}/*".replace("\\", "/"), str(out)], capture_output=True, text=True, timeout=600, creationflags=NO_WINDOW)
-    return g.returncode, log + g.stderr[-200:]
+    n = len(times)
+    for attempt, timeout in enumerate((COPY_BASE + COPY_PER_FRAME * n, 2 * (COPY_BASE + COPY_PER_FRAME * n))):   # a retry copies only; the run is done
+        try:
+            g = subprocess.run(["scp", "-q", "-r", f"zbook:{rout}/*".replace("\\", "/"), str(out)], capture_output=True, text=True,
+                               encoding="utf-8", errors="replace", timeout=timeout, creationflags=NO_WINDOW)
+            if g.returncode == 0:
+                return 0, log + g.stderr[-200:]
+            err = g.stderr[-200:]
+        except subprocess.TimeoutExpired:
+            err = f"timed out after {timeout:.0f} s"
+        print(f"[snapq] copy-back attempt {attempt + 1} failed ({err}); frames stay on the ZBook at {rout}")
+    return 1, f"{log}copy-back failed: {err}"
 
 
 def load(p):
@@ -267,8 +280,8 @@ def shoot(snap, ep, times, pin, name, batch, host, t0):
 
 def rerun(rc, log, batch):
     """A multi-job batch that failed fast (one builder's bad time) reruns its jobs one at a time, so the rest still pass.
-    A hung run is not rerun: 20 jobs would hold the worker for 20 more timeouts."""
-    return rc and len(batch) > 1 and "killed after" not in log
+    A hung run is not rerun: 20 jobs would hold the worker for 20 more timeouts. Nor is a failed copy-back: the run succeeded."""
+    return rc and len(batch) > 1 and "killed after" not in log and "copy-back failed" not in log
 
 
 def forward(job):

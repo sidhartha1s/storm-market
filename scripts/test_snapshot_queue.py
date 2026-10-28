@@ -13,6 +13,7 @@ from pathlib import Path
 S = Path(__file__).resolve().parent
 sys.path.insert(0, str(S))
 import snapshot_queue as q  # noqa: E402
+real_ssh = q.ssh
 
 with tempfile.TemporaryDirectory() as d:
     d = Path(d)
@@ -208,5 +209,41 @@ with tempfile.TemporaryDirectory() as d:
     rc, log = q.snap_zbook(ep, [1.5, 6.0], "0.8.185", "J2", stage)
     q.subprocess.run = real_run
     assert rc == 1 and "killed after 0.05 s" in log and calls[-1] == q.KILL_REMOTE, (rc, log, calls)
+
+    # copy-back: the timeout scales with the frame count and a timed-out copy is retried alone; a copy that keeps failing
+    # is recorded, never a recapture of every job
+    calls.clear()
+    answers["exist"] = "0 \n"
+    seen = []
+    def scp_slow(cmd, **k):
+        calls.append(cmd)
+        if "-r" in cmd:
+            seen.append(k["timeout"])
+            if len(seen) == 1:
+                raise subprocess.TimeoutExpired(cmd, k["timeout"])
+            Path(cmd[-1]).mkdir(parents=True, exist_ok=True)
+            (Path(cmd[-1]) / "frame-00-at-1.5s.png").write_bytes(b"png")
+        return subprocess.CompletedProcess(cmd, 0, "", "")
+    q.subprocess.run = scp_slow
+    rc, log = q.snap_zbook(ep, list(range(100)), "0.8.185", "J3", stage)
+    q.subprocess.run = real_run
+    assert rc == 0 and seen[0] > 600 and seen[1] == 2 * seen[0], (rc, seen)
+    assert sum(1 for c in calls if isinstance(c, list) and "-r" not in c) == 1, "retry must not re-upload or recapture"
+    def scp_dead(cmd, **k):
+        if "-r" in cmd:
+            raise subprocess.TimeoutExpired(cmd, k["timeout"])
+        return subprocess.CompletedProcess(cmd, 0, "", "")
+    q.subprocess.run = scp_dead
+    rc, log = q.snap_zbook(ep, [1.5], "0.8.185", "J4", stage)
+    q.subprocess.run = real_run
+    assert rc == 1 and not q.rerun(rc, log, {1: 1, 2: 2}), (rc, log)
+
+    # ssh decodes non-UTF-8 ZBook output instead of crashing
+    q.ssh = real_ssh
+    cap = {}
+    q.subprocess.run = lambda cmd, **k: (cap.update(k), subprocess.CompletedProcess(cmd, 0, "", ""))[1]
+    q.ssh("echo hi", 5)
+    q.subprocess.run = real_run
+    assert cap.get("errors") == "replace", cap
 
 print("snapshot_queue self-check PASS (no-browser submit, one run at a time, per-episode batches with each job's own frames, lock, empty-PNG fail, bad and raising jobs recorded, a bad time sinks only its own job, no per-job rerun of a hung batch, seek-order jobs alone and in order, a bad out dir is one job's rc 1, referenced-only delta ship, ZBook command, scp and timeout kill)")
