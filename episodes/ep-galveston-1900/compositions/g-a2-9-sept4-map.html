@@ -38,7 +38,9 @@
   /* chips: centred on x 960; top 150, not 120, because the two-line source line ends at about y 121 (brief §3 fallback) */
   .ga29-chipwrap { position:absolute; left:0; width:1920px; top:150px; display:flex; justify-content:center; }
   .ga29-chip { position:relative; border-radius:28px; padding:18px 34px 18px 46px; overflow:hidden; }
-  .ga29-bar { position:absolute; left:18px; top:18px; bottom:18px; width:6px; border-radius:3px; }
+  /* bar sits in the chip's -in wrapper (a transform tween makes it the containing block, inside the 46 px left padding):
+     left -28 puts it 18 px from the chip edge, top/bottom 0 spans the 56 px text line, clear of the first letter */
+  .ga29-bar { position:absolute; left:-28px; top:0; bottom:0; width:6px; border-radius:3px; }
   .ga29-main { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:56px; color:#f2f5f8; white-space:nowrap; }
   /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
   .ga29-hide { opacity:0; visibility:hidden; }
