@@ -8,12 +8,10 @@
   got more than 28 in; Youngstown's 30.6 in made November 1950 its snowiest November. A snow-amount band inside
   PA/OH/WV only: no track, no low, nothing toward the coast (L1 open).
 
-  BASEMAP (compact, not the master block): state outlines OH, WV, KY, PA, NY, NJ, IN, MI copied verbatim from
-    compositions/g-a4-4-statemap.html defs (= master-map-us-canada, Natural Earth 50m admin-1, public domain, RDP 15).
-    Lake Erie's south shore and Lake Michigan's east/south shores reuse those same vertices; Lake Erie's Ontario shore,
-    the Atlantic coast, Delaware Bay and Chesapeake Bay are coarse hand-projected lon/lat points (formula below).
-    MD, DE, VA have no lines of their own (their WV, PA, KY edges come from those states). Swap in the master
-    BASEMAP block if a frame read finds the coarse coast wrong.
+  BASEMAP: Natural Earth 50m admin-1 (public domain), the episode's shared copy (= g-a4-1-kymap #a41-*): the subpaths
+    reaching the A2-B view, copied verbatim from g-a2-8-wv #w8-us / #w8-ca / #w8-border, same colours and coast
+    under-stroke as g-a2-8 so the cut matches. Water (lakes, Atlantic, bays) is the root ground. #b7-states (from
+    g-a4-4-statemap) is kept: its vertices are identical to the same states' subpaths in #a41-us.
   PROJECTION: X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213).
   CAMERA: A2-P s 0.08 TL (56275.2, 28019.2) -> A2-B s 0.032 TL (39400.2, 20769.2), 0.84 to 2.84, expo.inOut, scale in
     log space (logLerpScale, helpers.js logZoom); Pittsburgh glides (900,520) -> (900,440). camAt(t) is a pure
