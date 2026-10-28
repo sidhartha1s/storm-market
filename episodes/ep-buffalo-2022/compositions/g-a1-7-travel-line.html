@@ -1,0 +1,161 @@
+<!--
+  g-a1-7-travel-line · A1-S7 · everything dims, "Travel is strongly discouraged." lifts out of the warning text, 5.6 s.
+  Frame 0 = g-a1-6-warning-card's last frame (rebuilt here from its brief: g-a1-6 was not on disk when this was authored).
+  Cues: seconds from A1-S7 start (audio/a1-s7.words.json): warning @0.38 · plain @1.60/words, @1.94 · travel @3.02 · strongly @3.46 · discouraged. @3.88-4.38.
+  Axis (shared with g-a1-5): Tue 160 · Wed 554.3 · Thu 948.6 · Fri 1342.9 · WATCH dot 396 · WARNING dot 1012.6 · IN EFFECT 1457.9. Rail y 900.
+  Text card x 170..1530, y 186..552. Courier rows 28 px (advance 16.8), left 230. R8 = "frequently reducing visibilities to zero. Travel is strongly".
+  Ghost words (tl-g1 = "Travel is strongly" @ left 935.6, tl-g2 = "discouraged." @ left 230) are the rows' own elements: they lift, scale 2.4, crossfade into tl-big.
+  tl-big width is an estimate (Georgia italic 96 px, 31 chars); the rule under it uses 1300 px. Not measured (no browser in this lane).
+-->
+<template>
+<style>
+  #g-a1-7-travel-line-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    font-family: Arial, sans-serif; color:#f2f5f8; }
+  .tl-fill { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #tl-ground { background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .tl-hide { opacity:0; visibility:hidden; }
+  .tl-t { position:absolute; white-space:pre; }
+  /* chips (frame 0: dimmed to 0.5) */
+  .tl-chip { top:110px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:56px; color:#e8c56a; opacity:.5; }
+  #tl-chip1 { left:200px; } #tl-chip2 { left:487px; }
+  /* rail */
+  #tl-rail { position:absolute; left:160px; top:898px; width:1380px; height:4px; background:#4a5560; }
+  .tl-tick { position:absolute; top:892px; width:2px; height:16px; background:#4a5560; }
+  #tl-tk0 { left:159px; } #tl-tk1 { left:553.3px; } #tl-tk2 { left:947.6px; } #tl-tk3 { left:1341.9px; }
+  .tl-day { top:914px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#93a3b2; }
+  #tl-d0 { left:172px; } #tl-d1 { left:566.3px; } #tl-d2 { left:960.6px; } #tl-d3 { left:1354.9px; }
+  #tl-eff { position:absolute; left:1455.9px; top:886px; width:4px; height:28px; background:#c0392b; }
+  /* watch (dimmed in g-a1-6) */
+  #tl-wbr { position:absolute; left:396px; top:896px; width:1061.9px; height:8px; background:#d8a13a; opacity:.3; }
+  #tl-wcard { position:absolute; left:206px; top:760px; width:380px; height:104px; box-sizing:border-box; border-radius:20px; opacity:.5;
+    border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); }
+  #tl-wc1 { left:24px; top:18px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:24px; line-height:30px; color:#f2f5f8; }
+  #tl-wc2 { left:24px; top:62px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#d8a13a; }
+  #tl-wstem { position:absolute; left:395px; top:864px; width:2px; height:36px; background:#93a3b2; opacity:.5; }
+  #tl-wdot { position:absolute; left:389px; top:893px; width:14px; height:14px; border-radius:7px; background:#d8a13a; opacity:.5; }
+  /* warning */
+  #tl-card { position:absolute; left:822.6px; top:760px; width:380px; height:104px; box-sizing:border-box; border-radius:20px;
+    border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); overflow:hidden; }
+  #tl-cbar { position:absolute; left:0; top:0; width:3px; height:104px; background:#c0392b; }
+  #tl-c1 { left:24px; top:16px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:30px; line-height:34px; color:#f2f5f8; }
+  #tl-c2 { left:24px; top:62px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#d8a13a; }
+  #tl-stem { position:absolute; left:1011.6px; top:864px; width:2px; height:36px; background:#93a3b2; }
+  #tl-dot { position:absolute; left:1005.6px; top:893px; width:14px; height:14px; border-radius:7px; background:#e74c3c; }
+  #tl-nbr { position:absolute; left:1012.6px; top:896px; width:445.3px; height:8px; background:#e74c3c; overflow:hidden; }
+  #tl-dash { position:absolute; left:-240px; top:0; width:685.3px; height:8px;
+    background:repeating-linear-gradient(90deg, rgba(4,7,12,.55) 0, rgba(4,7,12,.55) 10px, transparent 10px, transparent 40px); }
+  #tl-arrow { position:absolute; left:1012.6px; top:887px; width:437.4px; height:3px; background:#e74c3c; }
+  #tl-ahead { position:absolute; left:1450px; top:881px; width:0; height:0; border-left:12px solid #e74c3c; border-top:7px solid transparent; border-bottom:7px solid transparent; }
+  #tl-efflab { left:1318px; top:858px; width:280px; text-align:center; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; letter-spacing:2px; color:#e74c3c; }
+  /* text card */
+  #tl-cardbg { position:absolute; left:170px; top:186px; width:1360px; height:366px; box-sizing:border-box; border-radius:28px;
+    border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); }
+  .tl-row { left:230px; font-family:'Courier New', monospace; font-weight:700; font-size:28px; line-height:40px; letter-spacing:0; color:#dfe7ee; }
+  #tl-r0 { top:206px; font-size:26px; color:#93a3b2; }
+  #tl-r1 { top:246px; } #tl-r2 { top:286px; } #tl-r4 { top:334px; } #tl-r5 { top:374px; } #tl-r7 { top:422px; }
+  #tl-r8h { top:462px; color:#04070c; z-index:2; }
+  #tl-g1 { left:935.6px; top:462px; width:302.4px; height:40px; }
+  #tl-g2 { left:230px; top:502px; width:201.6px; height:40px; }
+  .tl-rect { position:absolute; height:36px; border-radius:4px; background:#e8c56a; }
+  #tl-h1 { left:818px; top:248px; width:184.8px; }
+  #tl-h5a { left:263.6px; top:376px; width:184.8px; }
+  #tl-h5b { left:717.2px; top:376px; width:285.6px; }
+  #tl-h8 { left:230px; top:464px; width:688.8px; z-index:1; }
+  /* the lifted line */
+  #tl-chipb { left:0; top:300px; width:1920px; text-align:center; font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:36px; letter-spacing:2px; color:#e8c56a; }
+  #tl-big { left:0; top:420px; width:1920px; text-align:center; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-weight:400; font-size:96px; line-height:110px; color:#f2f5f8; }
+  #tl-rule { position:absolute; left:310px; top:540px; width:1300px; height:3px; background:#d8a13a; }
+  #tl-source { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-a1-7-travel-line-root" data-composition-id="g-a1-7-travel-line" data-width="1920" data-height="1080">
+  <div id="tl-ground" class="tl-fill"></div>
+  <div id="tl-cardbg"></div>
+
+  <!-- everything except R8/R9, the lifted line and the source dims to 0.12 from 0.38 -->
+  <div id="tl-dim" class="tl-fill">
+    <span id="tl-chip1" class="tl-t tl-chip">1 TO 3 FT</span>
+    <span id="tl-chip2" class="tl-t tl-chip">GUSTS TO 70 MPH</span>
+    <div id="tl-h1" class="tl-rect"></div>
+    <div id="tl-h5a" class="tl-rect"></div>
+    <div id="tl-h5b" class="tl-rect"></div>
+    <span id="tl-r0" class="tl-t tl-row">354 AM EST Thu Dec 22 2022</span>
+    <span id="tl-r1" class="tl-t tl-row">...BLIZZARD WARNING IN EFFECT FROM <span id="tl-a1">7 AM FRIDAY</span> TO 7 AM EST</span>
+    <span id="tl-r2" class="tl-t tl-row">SUNDAY...</span>
+    <span id="tl-r4" class="tl-t tl-row">* WHAT...Blizzard conditions expected. Total snow accumulations of</span>
+    <span id="tl-r5" class="tl-t tl-row">  <span id="tl-b1">1 to 3 feet.</span> Winds gusting <span id="tl-b2">as high as 70 mph</span> Friday and Friday</span>
+    <span id="tl-r7" class="tl-t tl-row">Strong winds will cause significant blowing and drifting snow,</span>
+
+    <div id="tl-rail"></div>
+    <div id="tl-tk0" class="tl-tick"></div><div id="tl-tk1" class="tl-tick"></div>
+    <div id="tl-tk2" class="tl-tick"></div><div id="tl-tk3" class="tl-tick"></div>
+    <span id="tl-d0" class="tl-t tl-day">TUE</span><span id="tl-d1" class="tl-t tl-day">WED</span>
+    <span id="tl-d2" class="tl-t tl-day">THU</span><span id="tl-d3" class="tl-t tl-day">FRI</span>
+    <div id="tl-eff"></div>
+    <div id="tl-wbr"></div>
+    <div id="tl-wstem"></div>
+    <div id="tl-wdot"></div>
+    <div id="tl-wcard">
+      <span id="tl-wc1" class="tl-t">WINTER STORM WATCH</span>
+      <span id="tl-wc2" class="tl-t">TUE DEC 20 · 2:22 PM</span>
+    </div>
+    <div id="tl-nbr"><div id="tl-dash"></div></div>
+    <div id="tl-arrow"></div>
+    <div id="tl-ahead"></div>
+    <span id="tl-efflab" class="tl-t">IN EFFECT 7 AM FRI</span>
+    <div id="tl-stem"></div>
+    <div id="tl-dot"></div>
+    <div id="tl-card">
+      <div id="tl-cbar"></div>
+      <span id="tl-c1" class="tl-t">BLIZZARD WARNING</span>
+      <span id="tl-c2" class="tl-t">THU DEC 22 · 3:54 AM</span>
+    </div>
+  </div>
+
+  <!-- R8/R9: stay bright; the highlight fades at 0.38, the tail words lift at 3.02 -->
+  <div id="tl-h8" class="tl-rect"></div>
+  <span id="tl-r8h" class="tl-t tl-row">frequently reducing visibilities to zero.</span>
+  <span id="tl-g1" class="tl-t tl-row">Travel is strongly</span>
+  <span id="tl-g2" class="tl-t tl-row">discouraged.</span>
+
+  <span id="tl-chipb" class="tl-t tl-hide">BLIZZARD WARNING · THU DEC 22 · 3:54 AM</span>
+  <span id="tl-big" class="tl-t tl-hide">Travel is strongly discouraged.</span>
+  <div id="tl-rule" class="tl-hide"></div>
+  <div id="tl-source" class="tl-t">NWS Buffalo, WWUS41 KBUF 220854, IEM archive</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#tl-" + id;
+
+  /* continuous motion: notice-bracket dashes flow right at 40 px/s over the whole window */
+  tl.to($("dash"), { x: 224, duration: 5.6, ease: "none" }, 0);
+
+  /* "warning" @0.38 to "words," @1.94: dim everything but R8/R9 and the source; R8 highlight fades */
+  tl.to($("dim"), { opacity: 0.12, duration: 1.2, ease: "power2.inOut" }, 0.38);
+  tl.to($("cardbg"), { opacity: 0.25, duration: 1.2, ease: "power2.inOut" }, 0.38);
+  tl.to($("h8"), { autoAlpha: 0, duration: 0.4 }, 0.38);
+  tl.to($("r8h"), { color: "#dfe7ee", duration: 0.4 }, 0.38);
+
+  /* "words," @1.94: label chip in */
+  tl.fromTo($("chipb"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.94);
+
+  /* "travel is strongly discouraged." @3.02-3.88: tail words lift to the big-line position, crossfade into tl-big by 3.70 */
+  tl.to($("r8h"), { opacity: 0.12, duration: 0.4 }, 3.02);
+  tl.to($("g1"), { x: -388.8, y: -7, scale: 2.4, transformOrigin: "50% 50%", duration: 0.6, ease: "power3.out" }, 3.02);
+  tl.to($("g2"), { x: 1012.2, y: -47, scale: 2.4, transformOrigin: "50% 50%", duration: 0.6, ease: "power3.out" }, 3.02);
+  tl.to([$("g1"), $("g2")], { autoAlpha: 0, duration: 0.4, ease: "none" }, 3.3);
+  tl.fromTo($("big"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "none" }, 3.3);
+  /* "strongly" @3.46: rule draws 3.46 to 3.96 */
+  tl.fromTo($("rule"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power2.out" }, 3.46);
+
+  /* 3.88 to 5.6: slow push on the line */
+  tl.to($("big"), { scale: 1.03, duration: 1.7, ease: "none" }, 3.9);
+
+  /* 5.0 to 5.6 tail: fade-through toward g-a1-8's ground */
+  tl.to([$("dim"), $("cardbg"), $("chipb"), $("big"), $("rule"), $("source")], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 5.0);
+
+  window.__timelines["g-a1-7-travel-line"] = tl;
+})();
+</script>
+</template>
