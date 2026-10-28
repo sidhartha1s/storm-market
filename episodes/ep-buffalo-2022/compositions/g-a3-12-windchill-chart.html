@@ -90,7 +90,6 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function() {
-  const NS = "http://www.w3.org/2000/svg";
   const $ = (id) => document.getElementById("wc2-" + id);
   const set = (el, o) => { for (const k in o) el.setAttribute(k, o[k]); };
   const H = (day, hm) => (day - 23) * 24 + (+hm.slice(0, 2)) + (+hm.slice(3)) / 60 - 6;   // hours since Fri 06:00
