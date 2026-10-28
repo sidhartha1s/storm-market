@@ -136,7 +136,7 @@ window.__timelines = window.__timelines || {};
   set($("glint"), { d: dLine, "stroke-dasharray": "60 " + (L + 60), "stroke-dashoffset": 60 });
   const mx = P[iLow][0], my = P[iLow][1];
   set($("low"), { cx: mx, cy: my }); set($("ring"), { cx: mx, cy: my });
-  const lx1 = mx + 7.8, ly1 = my + 4.3, lx2 = 1125, ly2 = 772;          // marker edge -> annotation pill
+  const lx1 = mx + 7.8, ly1 = my + 4.3, lx2 = 1165, ly2 = 772;          // marker edge -> annotation pill
   const LL = Math.ceil(Math.hypot(lx2 - lx1, ly2 - ly1)) + 1;
   set($("leader"), { x1: lx1, y1: ly1, x2: lx2, y2: ly2, "stroke-dasharray": LL, "stroke-dashoffset": LL });
 
