@@ -8,7 +8,7 @@ Thousands near the beach or in small houses moved their families into the centre
 MWR Sept 1900 p. 373 (factcheck/a4-r1.md rows 23 to 25): "thousands of people who lived near the beach or in small houses moved their families into the center of the city"; house at "Rosenberg avenue (Twenty-fifth street) and Q street". "Stayed home": inference from the report (row 24; A3-S10). Dot count and paths: SCHEMATIC, no number on screen.
 
 ## 2. Datum, scale, orientation
-Island plate exactly as g-a4-2 (north up, Gulf at the bottom, grid x 320 to 1600, y 324 to 824, rows from the Gulf). "Centre of the city" = rows 4 and 5 (y 410 to 566), columns 4 to 9 (x 644 to 1276): an amber outline `#d8a13a` 3 px box, label "City centre" Arial 700 26 px `#f2f5f8` above it at (960, 380)... the label sits on street y 394 to 410: put it inside the box top-left (660, 420) instead.
+Island plate exactly as g-a4-2 (north up, Gulf at the bottom, grid x 320 to 1600, y 324 to 824, rows from the Gulf). "Centre of the city" = rows 4 and 5 (y 410 to 566), columns 4 to 9 (x 644 to 1276): an amber outline `#d8a13a` 3 px box, label "City centre" Arial 700 26 px `#f2f5f8` inside the box at its top-left (660, 420).
 
 ## 3. Geometry (px)
 - Family dots: 30 dots, 10 px `#f2f5f8`, starting in rows 1 and 2 (the beach blocks, y 668 to 824) spread across all 12 columns; each moves along the streets (first up the nearest north-south street, then across) into the centre box. Paths are 2-leg `x`/`y` tweens (no MotionPathPlugin). Staggered 0.08 s.
