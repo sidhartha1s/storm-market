@@ -231,7 +231,7 @@ window.__timelines = window.__timelines || {};
   /* BRIDGEPORT @2.24: pin + label */
   tl.fromTo(P + "bpt", so("640 800", { autoAlpha: 0, scale: 0 }), so("640 800", { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }), C.bpt);
   tl.fromTo(P + "bptlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, C.bpt + 0.1);
-  tl.fromTo(P + "bpt-pulse", { opacity: 0.8, attr: { r: 14 } }, { opacity: 0, attr: { r: 36 }, duration: 1.0, ease: "power1.out" }, C.bpt + 0.2);
+  tl.fromTo(P + "bpt-pulse", { opacity: 0.8, attr: { r: 14 } }, { opacity: 0, attr: { r: 36 }, duration: 1.0, ease: "power1.out", immediateRender: false }, C.bpt + 0.2);
 
   /* UNDER @2.94: inset in, water rises to 225 px (4.5 ft), waterline drifts 30 px/s */
   tl.fromTo(P + "inset", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, C.under);
