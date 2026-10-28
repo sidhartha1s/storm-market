@@ -100,18 +100,18 @@ window.__timelines = window.__timelines || {};
   tl.to($("eyebrow"), { scale: 1.06, duration: 0.25, ease: "sine.out" }, 11.38);
   tl.to($("eyebrow"), { scale: 1, duration: 0.25, ease: "sine.in" }, 11.63);
 
-  /* 12.56 "lost 35." bar grows, count-up lands 13.31, source A out / B in */
-  tl.set($("bar22"), { autoAlpha: 1 }, 12.56);
-  tl.to($("bar22"), { scaleX: 1, duration: 0.75, ease: "power3.out" }, 12.56);
-  tl.set($("val22"), { autoAlpha: 1 }, 12.56);
+  /* 11.38 "the city of Buffalo alone": bar grows, count-up lands 12.03 (was 12.56 "lost 35." landing 13.31), source A out / B in */
+  tl.set($("bar22"), { autoAlpha: 1 }, 11.38);
+  tl.to($("bar22"), { scaleX: 1, duration: 0.65, ease: "power3.out" }, 11.38);
+  tl.set($("val22"), { autoAlpha: 1 }, 11.38);
   const cnt = { v: 1 };
-  tl.fromTo(cnt, { v: 1 }, { v: 35, duration: 0.75, ease: "power4.out", onUpdate: function() {
+  tl.fromTo(cnt, { v: 1 }, { v: 35, duration: 0.65, ease: "power4.out", onUpdate: function() {
       const el = document.getElementById("cb-val22"); if (el) el.textContent = Math.round(cnt.v);
-  } }, 12.56);
-  tl.to($("srcA"), { autoAlpha: 0, y: -8, duration: 0.3, ease: "power2.in" }, 12.56);
-  tl.fromTo($("srcB"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.56);
+  } }, 11.38);
+  tl.to($("srcA"), { autoAlpha: 0, y: -8, duration: 0.3, ease: "power2.in" }, 11.38);
+  tl.fromTo($("srcB"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.38);
 
-  /* 13.55 exit: everything but the ground (35 readable 13.31-13.55), no stagger so it ends 14.10 inside the 14.126 host */
+  /* 13.55 exit: everything but the ground (35 settled 12.03-13.55 = 1.52 s), no stagger so it ends 14.10 inside the 14.126 host */
   tl.to([$("eyebrow"), $("head"), $("lab77"), $("track77"), $("bar77"), $("val77"),
          $("lab22"), $("track22"), $("bar22"), $("val22"), $("chip"), $("srcB")],
         { autoAlpha: 0, y: -10, duration: 0.55, ease: "power3.in" }, 13.55);
