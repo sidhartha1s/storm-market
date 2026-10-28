@@ -139,7 +139,7 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
    section goes to TTS only once LOCKED (hook+intro locks and moves first; the one lock definition is
    `references/script-scaling.md` "Section lock — the ONE definition" — never restated here) — never the whole
    script waiting on the last act. The CTA hinge is named (segment before, segment after, estimated time). Owner
-   signs off on story/register in parallel with the fact-check fan-out, not serially after it.
+   signs off on the hook+intro only (acts are never his gate), in parallel with the fact-check fan-out.
 2. TTS: `python3 scripts/tts_episode.py episodes/<slug>` makes per-segment wavs at the lane tempo plus words.json (faster-whisper) in one pass.
 3. Sourcing: runs beside the script from the first Picture lines (lanes and roles: skill phase 5). The owner confirms only `insert` clips.
 4. Compose `index.html` by hand as a hyperframes composition, one sub-composition per act, graphics library-first and built to

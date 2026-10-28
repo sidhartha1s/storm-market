@@ -88,7 +88,7 @@ script anywhere. Fixed:
    the conditional-fact rule: drop entirely, never soften into "reportedly").
 3. **The fan-out runs while the owner reads, not before.** The writer hands off the hook+intro
    draft to the OWNER GATE the moment it's written; the fact-check fan-out starts on that same
-   draft in the same window. Owner reviews story/register, the fan-out checks facts — different
+   draft in the same window. Owner reviews the hook+intro's story/register (never the acts), the fan-out checks facts — different
    reviewers, same wall-clock window, not two serial waits.
 
 ### Section lock — the ONE definition (every other doc links here, never restates it)
