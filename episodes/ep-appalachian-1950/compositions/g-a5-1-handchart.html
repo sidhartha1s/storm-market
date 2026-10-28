@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a5-1-handchart (A5-S1, deep): the NWS Jackson KY surface chart of 1:30 am, 24 Nov 1950 rises out of near black under a red
+  popfig "1950" / "FORECAST BY HAND"; red dots fill in on printed station circles, then a self-made pencil traces the chart's own
+  1020 isobar down the Atlantic side. Full-frame comp, track 2, ground = the chart (provenance.csv row A5-S1_c1, verified Y).
+  Host: data-start = A5-S1 audio start, data-duration 14.00 (last word ends 13.62 + tail). Cues = audio/a5-s1.words.json seconds.
+
+  Datum: chart 1179 x 760 cover-fit, k = 1920/1179 = 1.6285 -> 1920 x 1238, centred: screen = (sx * k, sy * k - 79). North up.
+  Push 1.00 -> 1.06 about (960, 540) over the whole comp; image, dim, trace, dots and pencil all ride inside the pushed group.
+
+  1020 isobar, source px (read on a 3x grid crop, each refined to the darkest pixel across the printed line; overlay checked):
+    (1117,212) (1100,213) (1080,220) (1060,231) (1038,247) (1026,260) (1013,280) (1004,300) (995,320) (989,347) (987,377)
+    (986,400) (989,427) (1000,457)
+  Screen (pre-push): (1819.0,266.2) (1791.3,267.9) (1758.8,279.3) (1726.2,297.2) (1690.4,323.2) (1670.8,344.4) (1649.7,377.0)
+    (1635.0,409.5) (1620.4,442.1) (1610.6,486.1) (1607.3,534.9) (1605.7,572.4) (1610.6,616.4) (1628.5,665.2)
+  The trace stops at source y 457: the printed line continues south into the presenter-circle corner (x >= 1600, y >= 680);
+  the last point pushed to 1.06 lands at (1668.6, 672.7), still above y 680.
+
+  Station dots, source px -> screen (pre-push), each on a printed station circle (overlay checked):
+    (940,207)->(1530.8,258.1) NYC area   (874,209)->(1423.3,261.4)   (908,257)->(1478.7,339.5) Philadelphia
+    (811,243)->(1320.7,316.7)            (760,280)->(1237.7,376.0) Pittsburgh   (865,315)->(1408.7,434.0) Washington
+    (910,322)->(1481.9,445.4)            (867,372)->(1411.9,526.8)   (915,383)->(1490.1,544.7)   (844,453)->(1374.5,658.7) Raleigh
+  Corner check: no dot at x >= 1600.
+
+  Asset: media/a5/jkl-surface-1950-11-24.jpg (orchestrator copies it from media/candidates/a5/A5-S1_c1_jkl-surface-1950-11-24.JPG).
+  Font: fonts/AbrilFatface-Regular.ttf under the episode root.
+-->
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-a5-1-handchart-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:#04070c; }
+  #a51-push { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #a51-chart { position:absolute; left:0; top:-79px; width:1920px; height:auto; display:block;
+    filter: sepia(0.28) contrast(1.08) brightness(0.96) saturate(0.8); }
+  /* "chart comes up": near-black dim on frame 0, never pure black */
+  #a51-dim { position:absolute; left:0; top:0; width:1920px; height:1080px; background:rgb(3,5,8); opacity:0.82; }
+  #a51-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  #a51-trace { visibility:hidden; opacity:0; }
+  #a51-pen { visibility:hidden; opacity:0; }
+  .a51-dot { visibility:hidden; opacity:0; }
+
+  /* popfig: HUD layer, never pushed. Block top y 360, centred x 960 */
+  #a51-pf { position:absolute; left:96px; top:360px; width:1728px; height:212px; text-align:center; white-space:nowrap; transform-origin:50% 50%; }
+  #a51-pf-float { position:absolute; inset:0; }
+  .a51-pf-big { position:absolute; left:0; right:0; top:0; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:150px; color:#d0121f; letter-spacing:0.04em;
+    opacity:0; visibility:hidden; transform-origin:50% 50%;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  .a51-pf-sub { position:absolute; left:0; right:0; top:162px; font-family:Arial, sans-serif; font-weight:700; font-size:32px; line-height:40px; color:#e8e3d8; letter-spacing:0.2em;
+    opacity:0; visibility:hidden;
+    text-shadow:0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+
+  /* source line: bottom-left glass pill, clear of the circle corner */
+  .a51-src { position:absolute; left:110px; bottom:60px; padding:6px 14px; border-radius:14px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:Arial, sans-serif; font-weight:700; font-size:20px; line-height:26px; color:#c8d3e0; white-space:nowrap;
+    opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-1-handchart-root" data-composition-id="g-a5-1-handchart" data-width="1920" data-height="1080">
+  <div id="a51-push">
+    <img id="a51-chart" src="media/a5/jkl-surface-1950-11-24.jpg" alt="NWS surface chart, 1:30 am, 24 November 1950">
+    <div id="a51-dim"></div>
+    <svg id="a51-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <!-- station dots: 9 px red dot + 2 px ring, on printed station circles (list in the header comment) -->
+      <g id="a51-d0" class="a51-dot"><circle cx="1530.8" cy="258.1" r="4.5" fill="#d0121f" fill-opacity="0.9"/><circle cx="1530.8" cy="258.1" r="8" fill="none" stroke="#d0121f" stroke-width="2" stroke-opacity="0.9"/></g>
+      <g id="a51-d1" class="a51-dot"><circle cx="1423.3" cy="261.4" r="4.5" fill="#d0121f" fill-opacity="0.9"/><circle cx="1423.3" cy="261.4" r="8" fill="none" stroke="#d0121f" stroke-width="2" stroke-opacity="0.9"/></g>
+      <g id="a51-d2" class="a51-dot"><circle cx="1478.7" cy="339.5" r="4.5" fill="#d0121f" fill-opacity="0.9"/><circle cx="1478.7" cy="339.5" r="8" fill="none" stroke="#d0121f" stroke-width="2" stroke-opacity="0.9"/></g>
+      <g id="a51-d3" class="a51-dot"><circle cx="1320.7" cy="316.7" r="4.5" fill="#d0121f" fill-opacity="0.9"/><circle cx="1320.7" cy="316.7" r="8" fill="none" stroke="#d0121f" stroke-width="2" stroke-opacity="0.9"/></g>
+      <g id="a51-d4" class="a51-dot"><circle cx="1237.7" cy="376.0" r="4.5" fill="#d0121f" fill-opacity="0.9"/><circle cx="1237.7" cy="376.0" r="8" fill="none" stroke="#d0121f" stroke-width="2" stroke-opacity="0.9"/></g>
+      <g id="a51-d5" class="a51-dot"><circle cx="1408.7" cy="434.0" r="4.5" fill="#d0121f" fill-opacity="0.9"/><circle cx="1408.7" cy="434.0" r="8" fill="none" stroke="#d0121f" stroke-width="2" stroke-opacity="0.9"/></g>
+      <g id="a51-d6" class="a51-dot"><circle cx="1481.9" cy="445.4" r="4.5" fill="#d0121f" fill-opacity="0.9"/><circle cx="1481.9" cy="445.4" r="8" fill="none" stroke="#d0121f" stroke-width="2" stroke-opacity="0.9"/></g>
+      <g id="a51-d7" class="a51-dot"><circle cx="1411.9" cy="526.8" r="4.5" fill="#d0121f" fill-opacity="0.9"/><circle cx="1411.9" cy="526.8" r="8" fill="none" stroke="#d0121f" stroke-width="2" stroke-opacity="0.9"/></g>
+      <g id="a51-d8" class="a51-dot"><circle cx="1490.1" cy="544.7" r="4.5" fill="#d0121f" fill-opacity="0.9"/><circle cx="1490.1" cy="544.7" r="8" fill="none" stroke="#d0121f" stroke-width="2" stroke-opacity="0.9"/></g>
+      <g id="a51-d9" class="a51-dot"><circle cx="1374.5" cy="658.7" r="4.5" fill="#d0121f" fill-opacity="0.9"/><circle cx="1374.5" cy="658.7" r="8" fill="none" stroke="#d0121f" stroke-width="2" stroke-opacity="0.9"/></g>
+
+      <!-- the 1020 isobar, pencil graphite; d is built in the script from the source px list -->
+      <path id="a51-trace" d="M1819 266.2" fill="none" stroke="#2a2622" stroke-width="3.5" stroke-opacity="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- pencil: tip at local (0,0); a51-pen is moved by GSAP only, a51-pen-rot takes the lift tilt, the inner static group holds the 35 deg lean -->
+      <g id="a51-pen">
+        <g id="a51-pen-rot">
+          <g transform="rotate(35)">
+            <rect x="-9" y="-270" width="18" height="228" fill="#c8b98a" stroke="rgba(42,38,34,0.45)" stroke-width="1.5"/>
+            <line x1="-3" y1="-268" x2="-3" y2="-44" stroke="rgba(42,38,34,0.25)" stroke-width="2"/>
+            <rect x="-10" y="-292" width="20" height="22" fill="#93a3b2" stroke="rgba(42,38,34,0.45)" stroke-width="1.5"/>
+            <rect x="-9" y="-306" width="18" height="15" rx="4" fill="#8e2020"/>
+            <polygon points="-9,-42 9,-42 4,-14 -4,-14" fill="#f4f0e6" stroke="rgba(42,38,34,0.35)" stroke-width="1"/>
+            <polygon points="-4,-14 4,-14 0,0" fill="#2a2622"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div id="a51-pf">
+    <div id="a51-pf-float">
+      <span class="a51-pf-big" id="a51-pf-big">1950</span>
+      <span class="a51-pf-sub" id="a51-pf-sub">FORECAST BY HAND</span>
+    </div>
+  </div>
+
+  <div class="a51-src" id="a51-src">Chart: NWS Jackson, KY · Nov 24, 1950</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#a51-";
+
+  // --- geometry: source px -> screen by the brief's formula, then Catmull-Rom densified so straight legs follow the printed curve
+  const K = 1920 / 1179, OFF = -79;
+  const SRC = [[1117,212],[1100,213],[1080,220],[1060,231],[1038,247],[1026,260],[1013,280],[1004,300],[995,320],[989,347],[987,377],[986,400],[989,427],[1000,457]];
+  const S = SRC.map(function(p) { return [p[0] * K, p[1] * K + OFF]; });
+  const STEPS = 6, pts = [S[0]];
+  for (let i = 0; i < S.length - 1; i++) {
+    const p0 = S[Math.max(i - 1, 0)], p1 = S[i], p2 = S[i + 1], p3 = S[Math.min(i + 2, S.length - 1)];
+    for (let s = 1; s <= STEPS; s++) {
+      const t = s / STEPS, t2 = t * t, t3 = t2 * t;
+      pts.push([0, 1].map(function(a) {
+        return 0.5 * (2 * p1[a] + (-p0[a] + p2[a]) * t + (2 * p0[a] - 5 * p1[a] + 4 * p2[a] - p3[a]) * t2 + (-p0[a] + 3 * p1[a] - 3 * p2[a] + p3[a]) * t3);
+      }));
+    }
+  }
+  const trace = document.querySelector(P + "trace");
+  trace.setAttribute("d", "M" + pts.map(function(p) { return p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" L"));
+  const cum = [0];
+  for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+  const LEN = trace.getTotalLength ? trace.getTotalLength() : cum[cum.length - 1];
+  const DASH = Math.ceil(LEN) + 1;
+  trace.setAttribute("stroke-dasharray", DASH);
+  const X0 = pts[0][0], Y0 = pts[0][1], XE = pts[pts.length - 1][0], YE = pts[pts.length - 1][1];
+
+  // --- frame 0: chart on at 0.82 dim, push starts, everything else hidden (CSS hides them too)
+  tl.set([P+"pf-big", P+"pf-sub", P+"src", P+"trace", P+"pen", ".a51-dot"], {autoAlpha:0}, 0);
+  tl.set(P+"push", {scale:1, transformOrigin:"960px 540px"}, 0);
+  tl.set(P+"dim", {opacity:0.82}, 0);
+  tl.set(P+"pf-float", {y:0}, 0);
+  tl.set(P+"pf", {y:0, scale:1}, 0);
+  tl.set(P+"trace", {strokeDashoffset:DASH}, 0);
+  tl.set(P+"pen", {x:X0 + 400, y:Y0}, 0);
+  tl.set(P+"pen-rot", {rotation:0, transformOrigin:"0% 100%"}, 0);
+  tl.set(".a51-dot", {scale:0, transformOrigin:"50% 50%"}, 0);
+  /* push 1.00 -> 1.06 over the whole host: the motion floor (about 4 px/s at the frame edge, 58 px total) */
+  tl.to(P+"push", {scale:1.06, duration:14.0, ease:"none"}, 0);
+
+  /* 1950 @0.18 */
+  tl.fromTo(P+"pf-big", {autoAlpha:0, scale:1.25}, {autoAlpha:1, scale:1, duration:0.45, ease:"back.out(1.6)"}, 0.18);
+  /* float 0.63 .. 2.62 */
+  tl.to(P+"pf-float", {y:-8, duration:1.99, ease:"sine.inOut"}, 0.63);
+  /* FORECAST @1.48 */
+  tl.fromTo(P+"pf-sub", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.48);
+
+  /* PENCIL @2.62: popfig out by 3.02; the dim eases (power3.in) so it reaches 0.5 at 3.11, after the popfig is gone */
+  tl.to(P+"pf", {autoAlpha:0, y:-40, scale:0.96, duration:0.4, ease:"power3.in"}, 2.62);
+  tl.to(P+"dim", {opacity:0.30, duration:0.58, ease:"power3.in"}, 2.62);
+  tl.set(P+"pen", {autoAlpha:1}, 2.62);
+  tl.fromTo(P+"pen", {x:X0 + 400, y:Y0}, {x:X0, y:Y0, duration:0.5, ease:"power3.out", immediateRender:false}, 2.62);
+  /* source line @3.00 */
+  tl.fromTo(P+"src", {autoAlpha:0, x:-20}, {autoAlpha:1, x:0, duration:0.4, ease:"power2.out"}, 3.00);
+  /* pencil hovers over the trace start, 4 legs of 1.555 s, back at Y0 by 9.34 */
+  tl.fromTo(P+"pen", {y:Y0}, {y:Y0 - 6, duration:1.555, ease:"sine.inOut", yoyo:true, repeat:3, immediateRender:false}, 3.12);
+
+  /* STATION @5.24: dots pop 0.28 s apart, 5.24 .. 7.76 (last one lands by 7.76, near "hand." 7.42) */
+  for (let i = 0; i < 10; i++) {
+    const t = 5.24 + i * 0.28;
+    tl.fromTo(P+"d" + i, {autoAlpha:0, scale:0}, {autoAlpha:1, scale:1.25, duration:0.15, ease:"power2.out", immediateRender:false}, t);
+    tl.to(P+"d" + i, {scale:1, duration:0.10, ease:"power2.in"}, t + 0.15);
+  }
+
+  /* PRESSURE @9.34: trace draws 9.34 .. 12.50 (power1.inOut overall). Stroke head and pencil tip share leg times:
+     leg i runs linear in arc length, its start time is the inverse power1.inOut of its arc fraction, so the tip sits on the head at every leg end. */
+  const T0 = 9.34, TD = 3.16;
+  const inv = function(f) { return f < 0.5 ? Math.sqrt(f / 2) : 1 - Math.sqrt((1 - f) / 2); };
+  const tAt = function(i) { return T0 + TD * inv(cum[i] / cum[cum.length - 1]); };
+  tl.set(P+"trace", {autoAlpha:1}, T0);
+  for (let i = 1; i < pts.length; i++) {
+    const a = tAt(i - 1), d = tAt(i) - a;
+    const offA = DASH - LEN * cum[i - 1] / cum[cum.length - 1], offB = DASH - LEN * cum[i] / cum[cum.length - 1];
+    tl.fromTo(P+"trace", {strokeDashoffset:offA}, {strokeDashoffset:offB, duration:d, ease:"none", immediateRender:false}, a);
+    tl.fromTo(P+"pen", {x:pts[i - 1][0], y:pts[i - 1][1]}, {x:pts[i][0], y:pts[i][1], duration:d, ease:"none", immediateRender:false}, a);
+  }
+
+  /* lift at the end of the draw (12.50), then drift off right, gone by 13.40 */
+  tl.fromTo(P+"pen", {y:YE}, {y:YE - 30, duration:0.5, ease:"power2.out", immediateRender:false}, 12.50);
+  tl.to(P+"pen-rot", {rotation:8, duration:0.5, ease:"power2.out"}, 12.50);
+  /* EXPERIENCE @13.16 */
+  tl.fromTo(P+"pen", {x:XE}, {x:XE + 500, duration:0.6, ease:"power3.in", immediateRender:false}, 12.80);
+  tl.set(P+"pen", {autoAlpha:0}, 13.40);
+
+  /* 13.50 .. 14.00: dim to 0.70 for a continuous cut into g-a5-2 (same chart, heavy dim); the source line fades with it */
+  tl.to(P+"dim", {opacity:0.70, duration:0.5, ease:"power1.inOut"}, 13.50);
+  tl.to(P+"src", {autoAlpha:0, x:-20, duration:0.4, ease:"power2.in"}, 13.50);
+
+  // assert: pencil tip on the stroke head at three times during the draw (leg ends are exact by construction)
+  [Math.floor(pts.length / 4), Math.floor(pts.length / 2), pts.length - 1].forEach(function(i) {
+    const head = trace.getPointAtLength ? trace.getPointAtLength(LEN * cum[i] / cum[cum.length - 1]) : {x:pts[i][0], y:pts[i][1]};
+    console.assert(Math.hypot(head.x - pts[i][0], head.y - pts[i][1]) < 2, "a51 pencil tip off the stroke head at leg " + i);
+  });
+
+  window.__timelines["g-a5-1-handchart"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
