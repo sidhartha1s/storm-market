@@ -120,7 +120,7 @@ function launchChrome() {
     '--no-first-run', '--no-default-browser-check',
     `--remote-debugging-port=${PORT}`, `--user-data-dir=${profile}`,
     '--window-size=700,1000', 'about:blank',
-  ], { stdio: 'ignore' });
+  ], { stdio: 'ignore', windowsHide: true });
   return { chrome, profile };
 }
 
@@ -192,7 +192,7 @@ function loadBlocks() {
   // the shell's. Routing through `cmd.exe /c` reuses cmd's PATH resolution, which finds
   // the real python3 first, matching what running `python3` in a terminal actually does.
   const r = spawnSync('cmd.exe', ['/c', 'python3', join(HERE, 'blocks_pipeline.py')], {
-    maxBuffer: 64 * 1024 * 1024, encoding: 'utf-8',
+    maxBuffer: 64 * 1024 * 1024, encoding: 'utf-8', windowsHide: true,
   });
   if (r.status !== 0) {
     throw new Error(`blocks_pipeline.py failed (exit ${r.status}):\n${r.stderr}`);
@@ -300,7 +300,9 @@ function paginateBlocks(blocks, meas) {
 // book, right after Part Six's own manuscript pages; Appendix B stays at the very end).
 function loadPrebuiltPages(path, disableFlag) {
   if (process.argv.includes(disableFlag)) return [];
-  if (!existsSync(path)) return [];
+  // A missing file used to return [] and ship a book without the Binder or Appendix B, silently
+  // (2026-10-27: a fresh worktree built 438 pages, not 517). Missing is an error; the flag opts out.
+  if (!existsSync(path)) throw new Error(`missing ${path} -- build it first (binder/build.py, appendix/build.py) or pass ${disableFlag}`);
   const html = readFileSync(path, 'utf-8');
   return html.match(/<section class="page">[\s\S]*?<\/section>/g) || [];
 }

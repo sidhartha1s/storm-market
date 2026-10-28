@@ -16,8 +16,8 @@ power for a week and without food for longer than anyone enjoys thinking about. 
 days, and the days are few.
 
 It is also the resource most likely to fail in ways people do not anticipate. The common assumption
-is that water fails by disappearing — taps run dry. In practice it fails four different ways, and
-three of them leave the taps working:
+is that water fails by disappearing — faucets run dry. In practice it fails four different ways, and
+three of them leave the faucets working:
 
 - **Pressure loss.** Pumping stations need power. High ground loses pressure first.
 - **Contamination with pressure intact.** A main break, a flood, or a treatment failure means water
@@ -48,7 +48,7 @@ Two weeks, not three days — and it is worth being exact about where each numbe
 they are not the same authority saying different things. **Ready.gov says one gallon per person per
 day "for several days."** That is the federal floor and it is written for the common case. **The
 two-week figure is state guidance from the places that expect help to be slow**: Oregon's Department
-of Emergency Management and Washington's Emergency Management Division both run a public programme
+of Emergency Management and Washington's Emergency Management Division both run a public program
 called **"Be 2 Weeks Ready,"** and both say plainly that after a large regional event the emergency
 system will be saturated and *you are the help until help arrives.*
 «SRC: Oregon Department of Emergency Management, "Be 2 Weeks Ready." |
@@ -146,9 +146,9 @@ The sequence matters and the order is not optional:
    that fires with no water in it destroys itself and can start a fire.
 2. **Shut the cold-water inlet** to the tank, so you are drawing from the tank rather than from a
    contaminated main.
-3. **Open a hot tap** somewhere in the house to admit air. Without this the tank will barely drain.
+3. **Open a hot faucet** somewhere in the house to admit air. Without this the tank will barely drain.
 4. **Draw from the drain valve** at the base into a clean container. The first flow will be
-   discoloured with sediment; let it run clear.
+   discolored with sediment; let it run clear.
 5. **Do not refill or re-energize** until you know the supply is safe and the tank is full.
 
 Learn this on a calm afternoon, not by flashlight. Hang the hose and the wrench on the tank itself.
@@ -187,14 +187,14 @@ you want it — which is why the drought chapter treats storage rather than capt
 ### 6 · Choosing a filter that matches the threat
 
 **Prevents:** buying the wrong device and trusting it.
-**Cost:** $30–120 · **Time:** an hour of reading, once · **Materials:** a gravity or hollow-fibre
+**Cost:** $30–120 · **Time:** an hour of reading, once · **Materials:** a gravity or hollow-fiber
 filter · **Regions:** all five.
 
 Filters are the most misunderstood item in preparedness, because the word covers devices that do
 completely different things. What matters is the specific threat you are filtering for:
 
 - **Sediment and turbidity** — nearly anything works, including cloth pre-filtering.
-- **Bacteria and protozoa** — this is what a good hollow-fibre or ceramic filter is for, and it is
+- **Bacteria and protozoa** — this is what a good hollow-fiber or ceramic filter is for, and it is
   what most municipal contamination and most surface water requires.
 - **Viruses** — most portable filters do **not** remove viruses, because viruses are smaller than
   the pore size. This requires either a purifier rated for viruses or a chemical or thermal step.
@@ -226,20 +226,20 @@ tablets · **Regions:** all five.
 Chemical disinfection is the cheapest backstop there is, and the details are the whole protection.
 
 **Use only plain, unscented household bleach with sodium hypochlorite as the sole active
-ingredient.** Not scented. Not colour-safe. Not "splash-less". Not any product with added
+ingredient.** Not scented. Not color-safe. Not "splash-less". Not any product with added
 surfactants, thickeners, or fragrance. The additives are not treatable and some are toxic. Check the
 label for the concentration, because household bleach is sold at more than one strength and the dose
 depends on it.
 
 Bleach also degrades. An opened bottle loses potency over months, which means the bottle under your
-sink is not a reliable emergency supply. Purification tablets are more expensive per litre, do not
+sink is not a reliable emergency supply. Purification tablets are more expensive per liter, do not
 degrade nearly as fast, and are what belongs in a go-bag.
 
 **The ratio is not written from memory in this book.** The federal figure, for regular unscented
 household bleach containing **5.25 to 6.0 percent sodium hypochlorite**, is **one-eighth of a teaspoon
 per gallon** of water. Stir it, then **let it stand thirty minutes**. The water should then have a
-slight bleach odour — **if it does not, repeat the dose and stand another fifteen minutes, and if it
-still does not smell of chlorine, discard it and find another source.** Never use scented, colour-safe
+slight bleach odor — **if it does not, repeat the dose and stand another fifteen minutes, and if it
+still does not smell of chlorine, discard it and find another source.** Never use scented, color-safe
 or cleaner-added bleach, and do not substitute iodine or camping products whose only active ingredient
 is not sodium hypochlorite at those concentrations.
 «SRC: Ready.gov, "Water" — Water Treatment, Chlorination. https://www.ready.gov/water | retrieved 2026-07-29» It goes on the form in Part Six and on a
@@ -314,7 +314,7 @@ The disinfection itself is nine steps and EPA says plainly that drilled, driven 
 best disinfected by a well or pump contractor, because it is difficult for the private owner to
 thoroughly disinfect these wells."* If you are doing it yourself, the shape of it is: run the water
 clear, pour a gallon of unscented household bleach down the casing, run an outside hose back into the
-casing until you smell chlorine, open every cold tap inside and out until each one smells of chlorine
+casing until you smell chlorine, open every cold faucet inside and out until each one smells of chlorine
 and then close them all, and **wait six to twenty-four hours** without drinking, cooking, bathing or
 washing with any of it. Then flush to an area away from plants, streams and the septic field until the
 smell is gone. **Then wait seven to ten days and have the water tested for bacteria** — the wait is so
@@ -350,14 +350,14 @@ the level without power, know where the inlet screening is, and know how you wou
 if it ran dry — including whether your access allows a delivery truck to reach it, which is a
 question worth answering before the summer you need it.
 
-A pressure tank holds a small usable volume above the pump, which is why a tap sometimes runs for a
+A pressure tank holds a small usable volume above the pump, which is why a faucet sometimes runs for a
 minute after the power fails. That minute is real and worth catching in a container.
 
 **What this does not do:** neither is a treatment system. Stored volume says nothing about quality.
 
 ---
 
-### 11 · Grey-water reuse under restriction
+### 11 · Gray-water reuse under restriction
 
 **Prevents:** wasting water that has one more job left in it.
 **Cost:** $0 · **Time:** none · **Materials:** a bucket
@@ -367,11 +367,11 @@ In a shortage, water gets used twice by design rather than by accident. Water th
 or hands flushes a toilet. Water that has boiled vegetables cools and goes on the garden. A bucket in
 the shower catches what runs while the water warms.
 
-Two limits. Do not store grey water — it grows bacteria quickly, so use it the same day. And keep
-water that has touched raw meat, soiled nappies, or cleaning chemicals out of the reuse chain
+Two limits. Do not store gray water — it grows bacteria quickly, so use it the same day. And keep
+water that has touched raw meat, soiled diapers, or cleaning chemicals out of the reuse chain
 entirely.
 
-**What this does not do:** grey water is never drinking water, never washes food, and is not for
+**What this does not do:** gray water is never drinking water, never washes food, and is not for
 anyone with a compromised immune system.
 
 ---

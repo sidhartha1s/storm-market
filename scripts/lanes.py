@@ -17,6 +17,7 @@ which jobs were launched and when they ended, and which are held.
   python3 scripts/lanes.py unhold episodes/<slug> source:z1
   python3 scripts/lanes.py status episodes/<slug> [--json]   # exit 2 while any job is READY, STALE or FAILED; read-only
   python3 scripts/lanes.py relaunch episodes/<slug>          # put every FAILED lane on the next profile that answers
+  python3 scripts/lanes.py stop   episodes/<slug> all|<job>  # stop-all: end each RUNNING, STALE or FAILED lane's tree; ended only once stopped
 
 Launching (why: lanes sat dead for hours on an exhausted profile or a full ZBook). `start --cmd` runs one job's command
 itself, hidden and detached, on host local or zbook, with {cli} replaced by the profile (claudeN, the wrapper that sets
@@ -52,6 +53,7 @@ import re
 import subprocess
 import sys
 import time
+
 from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent
@@ -70,6 +72,7 @@ LIMIT = re.compile(r"hit your (\w+ )?limit|session limit|usage limit reached", r
 LOCK_MIN = 10      # a ledger lock older than this is a dead holder's
 LOCK_WAIT_S = 120  # a ledger write waits this long for the lock before it gives up
 NO_LOG = "[lanes: no log]"  # read_log's answer for a log that does not exist; the launch redirect creates it at once
+NO_WINDOW = getattr(subprocess, "CREATE_NO_WINDOW", 0)  # no console window for the stop hook's children
 NO_LOG_MIN = 5     # a RUNNING lane with no log this many minutes after its start never ran (an unconfirmed launch)
 
 
@@ -81,7 +84,7 @@ def ps(host, script, timeout=90):
         argv = ["ssh", "-n", "-o", "ConnectTimeout=15", host, " ".join(argv)]
     try:
         r = subprocess.run(argv, capture_output=True, text=True, encoding="utf-8", errors="replace",
-                           stdin=subprocess.DEVNULL, timeout=timeout)
+                           stdin=subprocess.DEVNULL, timeout=timeout, creationflags=NO_WINDOW)
     except subprocess.TimeoutExpired:
         return 124, f"timed out after {timeout}s"
     return r.returncode, r.stdout if r.returncode == 0 else r.stdout + r.stderr  # stderr carries CLIXML progress noise
@@ -115,11 +118,25 @@ def alive(host, log):
     return int(out.strip()) > 0 if code == 0 and out.strip().isdigit() else None
 
 
+def redirect(log):
+    """The output redirect spawn() writes into a lane's command line; kill() finds the lane by it."""
+    return f'> "{log}" 2>&1'
+
+
+def kill(host, log):
+    """Count of lane trees ended on host (None: host unreadable). Only the cmd.exe root spawn() starts matches, by its
+    exact redirect, so a viewer, a tail or a lane whose log path extends this one is never hit."""
+    code, out = ps(host, f"$n = 0; Get-CimInstance Win32_Process | Where-Object {{ $_.Name -eq 'cmd.exe' -and $_.CommandLine -and $_.CommandLine.Contains({quote(redirect(log))}) }} | "
+                         "ForEach-Object { taskkill /T /F /PID $_.ProcessId | Out-Null; $n++ }; $n", timeout=60)
+    last = out.strip().splitlines()[-1] if out.strip() else ""
+    return int(last) if code == 0 and last.isdigit() else None
+
+
 def spawn(host, cmd, log, cwd):
     """Start cmd in cwd on host hidden, as a WMI process (it outlives this call and the ssh session), output to log.
     Exits only when the lane is known not to run: an ssh drop after a good launch started p4 twice (18 Oct 26)."""
     # shortcut: an unquoted ")" in cmd closes the ( ) group early; quote it ("Bash(rm:*)"), as every claude flag is
-    line = f'cmd /s /c "({cmd}) > "{log}" 2>&1"'
+    line = f'cmd /s /c "({cmd}) {redirect(log)}"'
     code, out = ps(host, "$si = New-CimInstance -ClassName Win32_ProcessStartup -ClientOnly -Property @{ShowWindow=[uint16]0}; "
                          "(Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments "
                          f"@{{CommandLine={quote(line)}; CurrentDirectory={quote(cwd)}; ProcessStartupInformation=$si}}).ReturnValue")
@@ -293,7 +310,7 @@ def job_states(ep, ledger, now=None):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("cmd", choices=["claim", "start", "end", "hold", "unhold", "status", "relaunch"])
+    ap.add_argument("cmd", choices=["claim", "start", "end", "hold", "unhold", "status", "relaunch", "stop"])
     ap.add_argument("episode")
     ap.add_argument("jobs", nargs="*")
     ap.add_argument("--host", default="local", choices=HOSTS)
@@ -373,6 +390,8 @@ def write(a, ep, lock):
             sys.exit(f"[lanes] FAIL: --minutes must be 1 to {HOLD_H * 60}; a longer lane is held with a reason instead")
         if a.jobs == ["all"] and a.cmd == "hold":
             a.jobs = [s["job"] for s in states if s["state"] in BLOCKING]
+        if a.jobs == ["all"] and a.cmd == "stop":
+            a.jobs = [s["job"] for s in states if s["state"] in ("RUNNING", "STALE", "FAILED")]  # all may still run
         unknown = sorted(set(a.jobs) - known)
         if unknown:
             sys.exit(f"[lanes] FAIL: unknown job(s) {unknown}; `status` lists the real names")
@@ -398,6 +417,12 @@ def write(a, ep, lock):
     for job in a.jobs:
         if a.cmd == "start":
             ledger.setdefault("jobs", {})[job] = dict(run)
+        elif a.cmd == "stop":  # a lane recorded without --log runs elsewhere and is not ours to find
+            run = ledger.get("jobs", {}).get(job)
+            n = kill(run.get("host", "local"), run["log"]) if run and run.get("log") else None
+            print(f"[lanes] stop {job}: " + (f"{n} lane tree(s) ended" if n is not None else "not stopped: no log recorded or host unreadable; stop it where it runs"))
+            if n is not None:  # marked ended only once stopped: an ended job reads READY and would be launched twice
+                run["ended"] = now
         elif a.cmd == "end":
             ledger.setdefault("jobs", {}).setdefault(job, {"started": now, "host": a.host})["ended"] = now
         elif a.cmd == "hold":

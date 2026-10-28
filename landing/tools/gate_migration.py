@@ -70,7 +70,7 @@ def canon(o):
 OLD_TO_NEW = []
 
 def old_file(rel):
-    r = subprocess.run(["git", "-C", REPO, "show", f"main:landing/{rel}"], capture_output=True)
+    r = subprocess.run(["git", "-C", REPO, "show", f"main:landing/{rel}"], capture_output=True, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     if r.returncode != 0:
         return None
     h = r.stdout.decode("utf-8", "replace")

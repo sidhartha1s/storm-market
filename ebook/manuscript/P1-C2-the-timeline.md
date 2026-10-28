@@ -32,10 +32,10 @@ forecast you can calmly choose a route, a destination, and a departure time. At 
 choosing between bad options in traffic.
 
 The characteristic mistake of this phase has a name in the research literature, and it is the single
-most consequential behaviour in this book: **confirmation-seeking.**
+most consequential behavior in this book: **confirmation-seeking.**
 
 When people receive a warning, they do not act on it. They seek to verify it. They look out the
-window. They call a relative. They turn on the television. They check whether the neighbours are
+window. They call a relative. They turn on the television. They check whether the neighbors are
 doing anything. This is not stupidity — it is a completely rational response to a lifetime of
 warnings that came to nothing, and it is nearly universal. The problem is that verification consumes
 exactly the resource the warning was purchased with.
@@ -54,7 +54,7 @@ happening.
 
 *When a tornado warning includes our location, we go to the room. We do not look outside.*
 
-*When a hurricane watch is issued for our county, the cars are fuelled and the documents are in the
+*When a hurricane watch is issued for our county, the cars are fueled and the documents are in the
 car.*
 
 *When an evacuation order is issued for our zone, we leave within thirty minutes, and the argument
@@ -80,7 +80,7 @@ by decisions made in the previous phase or months earlier: which room, whether t
 it, whether the garage door held, whether the roof deck was sealed, whether you were already
 somewhere else.
 
-The only useful behaviours are reflexes: get low, protect the head, get behind as many walls as
+The only useful behaviors are reflexes: get low, protect the head, get behind as many walls as
 possible, and stay off the phone. Phones fail in this window precisely because everyone reaches for
 them at once, and a battery radio does not.
 
@@ -109,7 +109,7 @@ It is also the window of the second injury wave, which is entirely preventable a
 ignored: people walking into a wrecked building in the dark. Broken glass, exposed nails, splintered
 framing, downed lines, unstable structure, gas. The shoes you sleep in are not shoes for this. That
 is why Protection 43 puts a headlamp and a pair of real shoes at the bedside rather than in a
-cupboard — a light you have to find in the dark is a light you do not have.
+cabinet — a light you have to find in the dark is a light you do not have.
 
 Three specific hazards live in this window and each has its own aftermath section later in the book:
 gas leaks after an earthquake, live conductors on the ground after wind, and floodwater that is
@@ -163,7 +163,7 @@ missed doses converge.
 
 It is also the phase of exhaustion-driven injury. People who have slept badly for a week climb ladders,
 run chainsaws, clear debris and work on roofs. This is not an inference: when the National Hurricane
-Center itemised the 43 indirect deaths from Hurricane Michael, the causes it named were **"falls during
+Center itemized the 43 indirect deaths from Hurricane Michael, the causes it named were **"falls during
 the post-storm clean up, traffic accidents, and medical issues compounded by the hurricane."** Falls
 first. Not the hurricane — the tidying up afterwards.
 «SRC: National Hurricane Center, Tropical Cyclone Report: Hurricane Michael (AL142018) — 43 indirect
@@ -191,7 +191,7 @@ work that is producing the injuries.
 ---
 
 ## Phase six · The recovery window
-### Two weeks to two years. Dominant mechanisms: money, mould, and the mind.
+### Two weeks to two years. Dominant mechanisms: money, mold, and the mind.
 
 The last phase is the longest by an enormous margin, and it is the one where the damage becomes
 permanent — financially and psychologically.
@@ -202,7 +202,7 @@ the average federal award and the statutory maximum is decided here, and it is d
 entirely by proof. A household with a video walkthrough, a document vault, receipts, and dated
 damage photographs is in a different conversation than a household relying on memory.
 
-Physically, this is mould, which begins within days in wet building materials and becomes a health
+Physically, this is mold, which begins within days in wet building materials and becomes a health
 problem and a remediation cost that dwarfs the original water damage if the drying is not done
 properly and quickly.
 
@@ -226,7 +226,7 @@ carefully, appeal rather than accept, and plan for months.
 | Isolation | 30 min–6 hr | Delayed care | Walking into wreckage unshod, in the dark | Who is hurt; is the building safe; utilities off |
 | Degradation | 6 hr–3 days | Thermal, toxic atmosphere, sanitation | Running the household normally | Consolidate, ration, site the generator, document |
 | Decompensation | 3 days–2 weeks | Medical decompensation | Believing it is over | Restore support; refill early; slow the physical work |
-| Recovery | 2 weeks–2 years | Money, mould, the mind | Cleaning up before documenting | Document, dry, file, appeal, plan for months |
+| Recovery | 2 weeks–2 years | Money, mold, the mind | Cleaning up before documenting | Document, dry, file, appeal, plan for months |
 
 The table above treats all six rows as the same size. Figure 13 does not — laid out to actual scale,
 the phase everyone prepares for is a sliver, and the phases nobody prepares for are most of the line.

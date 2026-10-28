@@ -20,7 +20,7 @@ def never(*a):
 
 
 # no test ever probes claude, reads a host or launches a lane: each test that needs one installs its own fake
-REAL_PROBE, REAL_SPAWN = lanes.probe, lanes.spawn
+REAL_PROBE, REAL_SPAWN, REAL_PS = lanes.probe, lanes.spawn, lanes.ps
 lanes.probe = lanes.spawn = lanes.read_log = never
 lanes.free_gb = lambda host: 64.0
 FAILS = []
@@ -327,8 +327,35 @@ def test_rule3_relaunch_moves_a_limited_lane_to_the_next_profile(tmp_path):
     assert new["profile"] == "claude5" and new["started"] > run["started"]
 
 
+def test_stop_all_ends_every_running_lane_by_its_log(tmp_path):
+    """Owner 27 Oct 26 asked for one stop-all; a lane is found the way alive() finds it, by its log path."""
+    ep = lane_episode(tmp_path)
+    fakes(answering={"claude1"})
+    assert lanes.main(["start", str(ep), "source:a1", *LANE]) == 0
+    assert lanes.main(["start", str(ep), "voice:a1", "--host", "zbook"]) == 0  # recorded only: no log to find it by
+    killed = []
+    lanes.ps = lambda host, script, timeout=90: (killed.append((host, script)) or (0, "noise\n2\n"))
+    try:
+        assert lanes.main(["stop", str(ep), "all"]) == 0
+    finally:
+        lanes.ps = REAL_PS
+    assert len(killed) == 1 and killed[0][0] == "zbook" and "taskkill /T /F" in killed[0][1]
+    assert """'> "C:\\x\\lane.log" 2>&1'""" in killed[0][1] and "$_.Name -eq 'cmd.exe'" in killed[0][1]  # only the lane's root
+    jobs = lanes.load_ledger(ep)["jobs"]
+    assert "ended" in jobs["source:a1"] and "ended" not in jobs["voice:a1"]  # unfindable: never marked as stopped
+    # an unreachable host: nothing marked ended, so the Stop gate never relaunches a lane that may still run
+    assert lanes.main(["start", str(ep), "source:intro", *LANE]) == 0
+    lanes.ps = lambda host, script, timeout=90: (255, "Connection reset by peer")
+    try:
+        lanes.main(["stop", str(ep), "source:intro"])
+    finally:
+        lanes.ps = REAL_PS
+    assert "ended" not in lanes.load_ledger(ep)["jobs"]["source:intro"]
+
+
 if __name__ == "__main__":
-    for t in (test_rule1_start_skips_a_profile_that_does_not_answer,
+    for t in (test_stop_all_ends_every_running_lane_by_its_log,
+              test_rule1_start_skips_a_profile_that_does_not_answer,
               test_an_ssh_drop_after_a_good_launch_never_launches_twice,
               test_a_recorded_launch_whose_log_never_appears_fails,
               test_rule2_start_refuses_low_memory_and_a_full_lane_count,
