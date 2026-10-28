@@ -58,8 +58,8 @@ Strings: `LESSONS LEARNED FROM THE BUFFALO BLIZZARD` · `NYU WAGNER` · `JUN 2, 
 | 20.64 | "eight words." @20.64-21.40 | the 8 slot bars draw `scaleX 0 -> 1` from left, stagger 0.08; attribution in at 21.10 |
 | 22.34 | "Clearly" @22.34 | word 1 `fromTo(autoAlpha 0, y:10 -> 0, 0.25, power2.out)`, its bar `to(autoAlpha 0, 0.15)` |
 | 22.62 / 23.00 / 23.36 / 23.62 / 24.22 / 24.46 / 24.72 | "communicate" / "the" / "risks" / "associated" / "with" / "weather" / "events." | words 2-8, same move each, on these exact times |
-| whole window | | cards and quote card float y 0 -> -4 (sine, yoyo, finite); the empty-slot window 21.4-22.34 has the attribution entrance; no 4 s gap without a tween (check 0.6-3.42 and 17.4-20.64: add a slow 1 px/s drift on the quote card and the reference card) |
-| 25.90 to 26.50 | after "events." @25.06 | quote card `to(y:-20, autoAlpha 0, 0.6, power3.in)`; reference card and source out with it |
+| whole window | | cards and quote card float y 0 -> -4 (sine, yoyo, finite); the empty-slot window 21.4-22.34 has the attribution entrance; no 4 s gap without a tween (check 0.6-3.42 and 17.4-20.64: the empty outlines and the empty quote card float, amplitude 4 px, period 2.4 s) |
+| 25.90 to 26.50 | after "events." @25.06 | quote card `to(y:-20, autoAlpha 0, 0.6, power3.in)`; source out with it |
 
 Comp duration 26.50 s (1.20 s past the wav end; trim to the real gap, keeping at least 0.8 s after 25.06).
 
