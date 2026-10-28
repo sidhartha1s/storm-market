@@ -214,7 +214,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo($("lt2"), { x: -20, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 2.37);
 
   /* "9" @4.38: slot out, ban card drops in, connector draws, WKBW source in */
-  tl.to($("slot"), { autoAlpha: 0, duration: 0.25, ease: "power2.in" }, 4.38);
+  tl.to($("slot"), { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 4.18); /* gone by 4.38: never under the ban card */
   tl.fromTo($("ban"), { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: "back.out(1.3)" }, 4.38);
   show($("ban-con"), 4.83);
   tl.fromTo($("ban-con"), { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.2, ease: "power2.out" }, 4.83);
