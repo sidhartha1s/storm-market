@@ -1,0 +1,298 @@
+<!--
+  g-a2-9-ban-bracket · A2-S8 · on the two-lane base (frame 0 = g-a2-8-officials-clock end state).
+  Brief: briefs/a2/g-a2-9-ban-bracket.md. Cues: seconds from A2-S8 start (audio/a2-s8.words.json),
+  spoken time in each tween comment. Comp duration 37.00 s.
+  Time axis x(t) = 200 + 5 px per minute after 5:30 AM. Every element with data-t gets left = x(t) + data-dx
+  in the script; the bracket and 40 MIN span paths are built from x(t) too.
+  x(t): 7:00 650 · 8:06 980 · 8:15 1025 · 8:39 1145 · 8:50 1200 · 9:30 1400 · 10:00 1550.
+  Bracket 9:30 -> 8:06 = 1400 - 980 = 420 px = 84 min; span 8:50 -> 9:30 = 1400 - 1200 = 200 px = 40 min.
+-->
+<template>
+<style>
+  #g-a2-9-ban-bracket-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  .bb-fill { position:absolute; inset:0; }
+  .bb-h { opacity:0; visibility:hidden; }
+  .bb-t { position:absolute; white-space:nowrap; }
+
+  /* ===== LANE FAMILY BASE (copied whole from g-a2-8-officials-clock, oc- -> bb-) ===== */
+  .bb-lab { left:200px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  #bb-wlab { top:150px; }
+  #bb-olab { top:560px; }
+  .bb-axis { position:absolute; left:200px; width:1350px; height:2px; background:rgba(255,255,255,.3); }
+  #bb-waxis { top:469px; }
+  #bb-oaxis { top:699px; }
+  .bb-htk { position:absolute; width:2px; height:8px; background:rgba(255,255,255,.3); }
+  .bb-wtk { top:471px; }
+  .bb-otk { top:691px; }
+  .bb-hl { top:482px; width:100px; text-align:center; font-size:19px; line-height:22px; font-weight:700; color:#93a3b2; }
+  .bb-mtk { position:absolute; width:2px; background:#93a3b2; }
+  .bb-mlb { position:absolute; white-space:nowrap; }
+  .bb-m1 { font-family:'Courier New', monospace; font-weight:700; font-size:26px; line-height:30px; color:#e8c56a; }
+  .bb-m2 { margin-top:4px; font-weight:700; font-size:24px; line-height:28px; color:#dfe7ee; }
+  #bb-M1-tk { top:220px; height:250px; } #bb-M1-lb { top:220px; }
+  #bb-M2-tk { top:290px; height:180px; } #bb-M2-lb { top:290px; }
+  #bb-M4-tk { top:376px; height:94px; }  #bb-M4-lb { top:376px; }
+  #bb-soe { position:absolute; top:600px; height:76px; box-sizing:border-box; padding:10px 18px; border-radius:10px;
+    background:#15202b; border:1px solid rgba(255,255,255,.14); border-left:4px solid #d8a13a; white-space:nowrap; }
+  #bb-soe1 { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:26px; line-height:30px; color:#f2f5f8; }
+  #bb-soe2 { font-weight:700; font-size:19px; line-height:24px; color:#c8d3e0; }
+  #bb-soe-con { position:absolute; top:676px; width:3px; height:24px; background:#d8a13a; }
+  .bb-dash { position:absolute; }
+  #bb-sl-top { left:880px; top:600px; width:420px; height:2px; background:repeating-linear-gradient(90deg, #93a3b2 0 8px, transparent 8px 14px); }
+  #bb-sl-bot { left:880px; top:674px; width:420px; height:2px; background:repeating-linear-gradient(90deg, #93a3b2 0 8px, transparent 8px 14px); }
+  #bb-sl-lft { left:880px; top:600px; width:2px; height:76px; background:repeating-linear-gradient(180deg, #93a3b2 0 8px, transparent 8px 14px); }
+  #bb-sl-rgt { left:1298px; top:600px; width:2px; height:76px; background:repeating-linear-gradient(180deg, #93a3b2 0 8px, transparent 8px 14px); }
+  #bb-sl-txt { left:880px; top:600px; width:420px; height:76px; line-height:76px; text-align:center;
+    font-size:22px; font-weight:700; letter-spacing:2px; color:#93a3b2; }
+  /* ===== end LANE FAMILY BASE ===== */
+
+  /* this comp: ban card on the officials lane, right edge at 9:30 */
+  #bb-ban { position:absolute; top:600px; width:440px; height:76px; box-sizing:border-box; padding:10px 18px; border-radius:10px;
+    background:#8e2020; display:flex; align-items:center; gap:12px; white-space:nowrap; }
+  #bb-ban-ic { flex:0 0 44px; width:44px; height:44px; }
+  #bb-ban1 { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:26px; line-height:30px; color:#f4f0e8; }
+  #bb-ban2 { font-weight:700; font-size:19px; line-height:24px; letter-spacing:3px; color:#f4f0e8; }
+  #bb-ban-con { position:absolute; top:676px; width:3px; height:24px; background:#c0392b; }
+
+  /* bracket + span (paths built from x(t) in the script) */
+  #bb-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  #bb-br { fill:none; stroke:#c0392b; stroke-width:3; stroke-linejoin:miter; }
+  #bb-sp { fill:none; stroke:#e8c56a; stroke-width:2; }
+
+  /* centred labels: a wide wrapper centred on the x, the leaf hugs its text */
+  .bb-ctr { position:absolute; width:600px; text-align:center; white-space:nowrap; }
+  .bb-rgt { position:absolute; width:600px; text-align:right; white-space:nowrap; }
+  .bb-big { font-family:'Courier New', monospace; font-weight:700; color:#e8c56a; }
+  #bb-84w { top:206px; } #bb-84 { font-size:30px; line-height:30px; }
+  #bb-40w { top:804px; } #bb-40 { font-size:26px; line-height:26px; }
+  .bb-sm { font-weight:700; font-size:19px; line-height:24px; color:#c8d3e0; }
+
+  /* 8:50 chip */
+  #bb-850-hr { position:absolute; top:700px; width:1px; height:40px; background:#93a3b2; }
+  #bb-850w { top:740px; }
+  #bb-850 { display:inline-block; padding:6px 14px; border-radius:10px; background:rgba(147,163,178,.18); }
+
+  /* 10 AM expected */
+  #bb-10-tk { position:absolute; top:700px; width:2px; height:40px; background:repeating-linear-gradient(180deg, #93a3b2 0 6px, transparent 6px 10px); }
+  #bb-10w { top:744px; }
+
+  /* M3 below the weather axis */
+  #bb-M3-tk { position:absolute; top:470px; width:2px; height:46px; background:#c0392b; }
+  #bb-M3-lb { top:516px; }
+  #bb-M3-b { margin-top:4px; font-weight:700; font-size:24px; line-height:28px; color:#7fb2e5; }
+
+  /* commute */
+  #bb-c7-tk { position:absolute; top:700px; width:2px; height:40px; background:#e8c56a; }
+  #bb-c7w { top:744px; }
+  #bb-c7 { color:#e8c56a; }
+  #bb-trav { position:absolute; top:714px; width:750px; height:4px; background:#e8c56a; }
+
+  /* lower third (glass, tokens.md "Surfaces") */
+  #bb-lt { position:absolute; inset:auto; left:110px; bottom:110px; padding:18px 30px; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); white-space:nowrap; }
+  #bb-lt1 { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:58px; color:#f2f5f8; }
+  #bb-lt2 { margin-top:6px; font-weight:700; font-size:26px; line-height:32px; letter-spacing:2px; color:#dfe7ee; }
+
+  .bb-src { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-a2-9-ban-bracket-root" data-composition-id="g-a2-9-ban-bracket" data-width="1920" data-height="1080">
+  <div id="bb-lanes" class="bb-fill">
+    <!-- LANE FAMILY BASE: weather lane (visible from frame 0: g-a2-8 end state) -->
+    <div id="bb-wlab" class="bb-t bb-lab">AIRPORT WEATHER LOG</div>
+    <div id="bb-waxis" class="bb-axis"></div>
+    <div id="bb-wtk6" class="bb-htk bb-wtk" data-t="6:00" data-dx="-1"></div>
+    <div id="bb-wtk7" class="bb-htk bb-wtk" data-t="7:00" data-dx="-1"></div>
+    <div id="bb-wtk8" class="bb-htk bb-wtk" data-t="8:00" data-dx="-1"></div>
+    <div id="bb-wtk9" class="bb-htk bb-wtk" data-t="9:00" data-dx="-1"></div>
+    <div id="bb-wtk10" class="bb-htk bb-wtk" data-t="10:00" data-dx="-1"></div>
+    <div id="bb-hl6" class="bb-t bb-hl" data-t="6:00" data-dx="-50">6 AM</div>
+    <div id="bb-hl7" class="bb-t bb-hl" data-t="7:00" data-dx="-50">7 AM</div>
+    <div id="bb-hl8" class="bb-t bb-hl" data-t="8:00" data-dx="-50">8 AM</div>
+    <div id="bb-hl9" class="bb-t bb-hl" data-t="9:00" data-dx="-50">9 AM</div>
+    <div id="bb-hl10" class="bb-t bb-hl" data-t="10:00" data-dx="-50">10 AM</div>
+
+    <div id="bb-M1-tk" class="bb-mtk" data-t="7:24" data-dx="-1"></div>
+    <div id="bb-M1-lb" class="bb-mlb" data-t="7:24" data-dx="12"><div id="bb-M1-a" class="bb-m1">7:24 AM</div><div id="bb-M1-b" class="bb-m2">RAIN · 38°F</div></div>
+    <div id="bb-M2-tk" class="bb-mtk" data-t="8:06" data-dx="-1"></div>
+    <div id="bb-M2-lb" class="bb-mlb" data-t="8:06" data-dx="12"><div id="bb-M2-a" class="bb-m1">8:06 AM</div><div id="bb-M2-b" class="bb-m2">GUSTS ~60 MPH</div></div>
+    <div id="bb-M4-tk" class="bb-mtk" data-t="8:39" data-dx="-1"></div>
+    <div id="bb-M4-lb" class="bb-mlb" data-t="8:39" data-dx="12"><div id="bb-M4-a" class="bb-m1">8:39 AM</div><div id="bb-M4-b" class="bb-m2">VIS 1/4 MI</div></div>
+
+    <!-- LANE FAMILY BASE: officials lane -->
+    <div id="bb-olab" class="bb-t bb-lab">THE OFFICIALS' CLOCK</div>
+    <div id="bb-oaxis" class="bb-axis"></div>
+    <div id="bb-otk6" class="bb-htk bb-otk" data-t="6:00" data-dx="-1"></div>
+    <div id="bb-otk7" class="bb-htk bb-otk" data-t="7:00" data-dx="-1"></div>
+    <div id="bb-otk8" class="bb-htk bb-otk" data-t="8:00" data-dx="-1"></div>
+    <div id="bb-otk9" class="bb-htk bb-otk" data-t="9:00" data-dx="-1"></div>
+    <div id="bb-otk10" class="bb-htk bb-otk" data-t="10:00" data-dx="-1"></div>
+
+    <div id="bb-soe" data-t="6:00" data-dx="0"><div id="bb-soe1">STATE OF EMERGENCY</div><div id="bb-soe2">DECLARED THU · IN EFFECT 6:00 AM FRI</div></div>
+    <div id="bb-soe-con" data-t="6:00" data-dx="0"></div>
+
+    <div id="bb-slot" class="bb-fill">
+      <div id="bb-sl-top" class="bb-dash"></div>
+      <div id="bb-sl-rgt" class="bb-dash"></div>
+      <div id="bb-sl-bot" class="bb-dash"></div>
+      <div id="bb-sl-lft" class="bb-dash"></div>
+      <div id="bb-sl-txt" class="bb-t">NO ERIE COUNTY DRIVING BAN</div>
+    </div>
+    <!-- end LANE FAMILY BASE -->
+
+    <!-- weather lane addition: 8:15 below freezing -->
+    <div id="bb-M3-tk" class="bb-h" data-t="8:15" data-dx="-1"></div>
+    <div id="bb-M3-lb" class="bb-mlb bb-h" data-t="8:15" data-dx="12"><div id="bb-M3-a" class="bb-m1">8:15 AM</div><div id="bb-M3-b">BELOW 32°F</div></div>
+
+    <!-- bracket (9:30 back to 8:06) and 40 MIN span (8:50 to 9:30) -->
+    <svg id="bb-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <path id="bb-br" class="bb-h" d=""></path>
+      <path id="bb-sp" class="bb-h" d=""></path>
+    </svg>
+    <div id="bb-84w" class="bb-ctr bb-h" data-t="8:48" data-dx="-300"><span id="bb-84" class="bb-big">84 MIN</span></div>
+
+    <!-- officials lane additions -->
+    <div id="bb-ban" class="bb-h" data-t="9:30" data-dx="-440">
+      <svg id="bb-ban-ic" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="19.5" fill="none" stroke="#f4f0e8" stroke-width="3"></circle>
+        <line x1="22" y1="22" x2="12.3" y2="19.4" stroke="#f4f0e8" stroke-width="3" stroke-linecap="round"></line>
+        <line x1="22" y1="22" x2="22" y2="36" stroke="#f4f0e8" stroke-width="2.5" stroke-linecap="round"></line>
+      </svg>
+      <div><div id="bb-ban1">DRIVING BAN · 9:30 AM</div><div id="bb-ban2">ERIE COUNTY</div></div>
+    </div>
+    <div id="bb-ban-con" class="bb-h" data-t="9:30" data-dx="-2"></div>
+
+    <div id="bb-850-hr" class="bb-h" data-t="8:50" data-dx="0"></div>
+    <div id="bb-850w" class="bb-ctr bb-h" data-t="8:50" data-dx="-300"><span id="bb-850" class="bb-sm">POSTED 8:50 AM · WKBW LIVE BLOG</span></div>
+    <div id="bb-40w" class="bb-ctr bb-h" data-t="9:10" data-dx="-300"><span id="bb-40" class="bb-big">40 MIN</span></div>
+
+    <div id="bb-10-tk" class="bb-h" data-t="10:00" data-dx="-1"></div>
+    <div id="bb-10w" class="bb-rgt bb-h" data-t="10:00" data-dx="-600"><span id="bb-10" class="bb-sm">SNOW BAND EXPECTED · 10 AM</span></div>
+
+    <div id="bb-trav" class="bb-h" data-t="7:00" data-dx="0"></div>
+    <div id="bb-c7-tk" class="bb-h" data-t="7:00" data-dx="-1"></div>
+    <div id="bb-c7w" class="bb-ctr bb-h" data-t="7:00" data-dx="-300"><span id="bb-c7" class="bb-sm">LEFT AT 7:00</span></div>
+  </div>
+
+  <div id="bb-lt" class="bb-h"><div id="bb-lt1">MARK POLONCARZ</div><div id="bb-lt2" class="bb-h">ERIE COUNTY EXECUTIVE</div></div>
+
+  <div id="bb-src1" class="bb-t bb-src bb-h">Erie County driving ban, WKBW</div>
+  <div id="bb-src2" class="bb-t bb-src bb-h">AP via ABC7, 28 Dec 2022</div>
+  <div id="bb-src3" class="bb-t bb-src bb-h">Buffalo airport ASOS, IEM archive</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  // LANE FAMILY BASE: one time axis, x(t) = 200 + 5 px per minute after 5:30 AM
+  const X = (hm) => { const [h, m] = hm.split(":").map(Number); return 200 + 5 * ((h * 60 + m) - 330); };
+  document.querySelectorAll('#g-a2-9-ban-bracket-root [data-t]').forEach((el) => {
+    el.style.left = (X(el.dataset.t) + Number(el.dataset.dx || 0)) + "px";
+  });
+
+  // bracket: ban card top at 9:30 -> up over the weather axis -> back to the 8:06 tick top (y 290)
+  const xBan = X("9:30"), x806 = X("8:06"), x850 = X("8:50");
+  const br = document.getElementById("bb-br"), sp = document.getElementById("bb-sp");
+  br.setAttribute("d", "M " + xBan + " 600 V 250 H " + x806 + " V 290");
+  sp.setAttribute("d", "M " + x850 + " 786 V 796 H " + xBan + " V 786");
+  const brL = Math.ceil(br.getTotalLength()) + 1, spL = Math.ceil(sp.getTotalLength()) + 1;
+  br.style.strokeDasharray = brL; sp.style.strokeDasharray = spL;
+
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#bb-" + id;
+  const show = (sel, t) => tl.set(sel, { autoAlpha: 1 }, t);
+
+  // whole-window float on the lane group: 12 legs x 3.0 s = 0 -> 36.0
+  tl.fromTo($("lanes"), { y: 0 }, { y: -3, duration: 3.0, ease: "sine.inOut", yoyo: true, repeat: 11 }, 0);
+
+  /* "ban" @0.68: dashed slot border pulse (anticipation) */
+  tl.to($("slot"), { scale: 1.03, transformOrigin: "1090px 638px", duration: 0.2, ease: "power2.out" }, 0.68);
+  tl.to($("slot"), { scale: 1, duration: 0.25, ease: "power2.in" }, 0.88);
+
+  /* "Mark" @2.22: lower third in, line 2 0.15 later */
+  tl.fromTo($("lt"), { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 2.22);
+  tl.fromTo($("lt2"), { x: -20, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 2.37);
+
+  /* "9" @4.38: slot out, ban card drops in, connector draws, WKBW source in */
+  tl.to($("slot"), { autoAlpha: 0, duration: 0.25, ease: "power2.in" }, 4.38);
+  tl.fromTo($("ban"), { y: -40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, ease: "back.out(1.3)" }, 4.38);
+  show($("ban-con"), 4.83);
+  tl.fromTo($("ban-con"), { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.2, ease: "power2.out" }, 4.83);
+  tl.fromTo($("src1"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 4.38);
+
+  /* "logging" @6.58: M2 label pulse */
+  tl.to($("M2-lb"), { scale: 1.06, transformOrigin: "0% 50%", duration: 0.2, ease: "power2.out" }, 6.58);
+  tl.to($("M2-lb"), { scale: 1, duration: 0.2, ease: "power2.in" }, 6.78);
+
+  /* "gusts" @6.86 -> "an" @9.16: bracket draws from the ban card back to 8:06 */
+  show($("br"), 6.86);
+  tl.fromTo($("br"), { strokeDashoffset: brL }, { strokeDashoffset: 0, duration: 2.3, ease: "power1.inOut" }, 6.86);
+
+  /* lower third out 7.20 -> 7.80 */
+  tl.to($("lt"), { x: -80, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 7.2);
+
+  /* bar head passes x 1145 (8:39) at ~8.34 (path 605 of 810 px, power1.inOut): M4 label brightens */
+  tl.to($("M4-b"), { color: "#f2f5f8", duration: 0.3, ease: "power2.out" }, 8.34);
+  tl.to($("M4-lb"), { scale: 1.06, transformOrigin: "0% 50%", duration: 0.2, ease: "power2.out" }, 8.34);
+  tl.to($("M4-lb"), { scale: 1, duration: 0.25, ease: "power2.in" }, 8.54);
+
+  /* "an hour and a half" @9.16: 84 MIN */
+  tl.fromTo($("84w"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 9.16);
+
+  /* "posted" @12.36: 8:50 hairline draws, chip in */
+  show($("850-hr"), 12.36);
+  tl.fromTo($("850-hr"), { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.25, ease: "power2.out" }, 12.36);
+  tl.fromTo($("850w"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 12.46);
+
+  /* "40" @15.34: 40 MIN span draws 0.5 s, label in */
+  show($("sp"), 15.34);
+  tl.fromTo($("sp"), { strokeDashoffset: spL }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 15.34);
+  tl.fromTo($("40w"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 15.6);
+
+  /* before "Paulenkars" @18.40: 8:50 group out 18.20 -> 18.50; bracket and 84 MIN dim to 0.4 */
+  tl.to([$("850w"), $("850-hr"), $("sp"), $("40w")].join(","), { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 18.2);
+  tl.to([$("br"), $("84w")].join(","), { opacity: 0.4, duration: 0.3, ease: "power2.inOut" }, 18.2);
+
+  /* "Paulenkars said" @18.40: source swaps to AP */
+  tl.to($("src1"), { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 18.4);
+  tl.fromTo($("src2"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 18.6);
+
+  /* "until 10." @22.06: 10 AM tick + label */
+  show($("10-tk"), 22.06);
+  tl.fromTo($("10-tk"), { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.25, ease: "power2.out" }, 22.06);
+  tl.fromTo($("10w"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 22.2);
+
+  /* "before" @25.96: 10 AM label pulse */
+  tl.to($("10"), { scale: 1.06, transformOrigin: "100% 50%", duration: 0.2, ease: "power2.out" }, 25.96);
+  tl.to($("10"), { scale: 1, duration: 0.25, ease: "power2.in" }, 26.16);
+
+  /* "but" @28.22: 10 AM marker to 0.5; source swaps to ASOS */
+  tl.to([$("10-tk"), $("10w")].join(","), { opacity: 0.5, duration: 0.3, ease: "power2.inOut" }, 28.22);
+  tl.to($("src2"), { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 28.22);
+  tl.fromTo($("src3"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 28.42);
+
+  /* "8 .15" @30.64: M3 tick draws down, label in */
+  show($("M3-tk"), 30.64);
+  tl.fromTo($("M3-tk"), { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.3, ease: "power2.out" }, 30.64);
+  tl.fromTo($("M3-lb"), { autoAlpha: 0, y: -8 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 30.84);
+
+  /* "7," @33.10: commute tick + LEFT AT 7:00 */
+  show($("c7-tk"), 33.1);
+  tl.fromTo($("c7-tk"), { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.25, ease: "power2.out" }, 33.1);
+  tl.fromTo($("c7w"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 33.2);
+
+  /* "landed" @34.22: ban card pulse, right edge held at 9:30 */
+  tl.to($("ban"), { scale: 1.04, transformOrigin: "100% 50%", duration: 0.2, ease: "power2.out" }, 34.22);
+  tl.to($("ban"), { scale: 1, duration: 0.25, ease: "power2.in" }, 34.42);
+
+  /* "still on the road" @35.48: travel bar 7:00 -> 9:30 */
+  show($("trav"), 35.48);
+  tl.fromTo($("trav"), { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.8, ease: "power2.out" }, 35.48);
+
+  /* after "road." @35.96: exit fade-through, ground stays (36.40 -> 37.00) */
+  tl.to([$("lanes"), $("src3")].join(","), { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 36.4);
+
+  window.__timelines["g-a2-9-ban-bracket"] = tl;
+})();
+</script>
+</template>
