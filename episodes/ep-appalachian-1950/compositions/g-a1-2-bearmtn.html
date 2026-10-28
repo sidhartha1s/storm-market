@@ -190,7 +190,7 @@ window.__timelines = window.__timelines || {};
   /* 140 @7.96: Bear Mountain bar shoots past Newark's guide (x 1278) to x 1390; value counts 1 -> 140; pin pulse
      ring doubles once (r 12 -> 24). Sound hit here (index.html, not this file). */
   tl.fromTo(P + "bmname", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 7.96);
-  tl.fromTo(P + "bmbar", { autoAlpha: 1, scaleX: 0, transformOrigin: "left center" }, { autoAlpha: 1, scaleX: 1, transformOrigin: "left center", duration: 0.7, ease: "power4.out" }, 7.96);
+  tl.fromTo(P + "bmbar", { autoAlpha: 0, scaleX: 0, transformOrigin: "left center" }, { autoAlpha: 1, scaleX: 1, transformOrigin: "left center", duration: 0.7, ease: "power4.out" }, 7.96);
   tl.fromTo(P + "bmval", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.25, ease: "power3.out" }, 7.96);
   const V = { v: 1 };
   const NUM = document.getElementById("bm2-bmnum");
