@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-7-newlondon (A1-S9): scene 1 bar card "NEW LONDON, CT / TOP FOUR TIDES IN 100 YEARS", scene 2 NY State map + chip.
+  Hand-authored from briefs/a1/g-a1-7-newlondon.md. Cues from audio/a1-s9.words.json (seconds from A1-S9 start).
+  Map: frame A1-Y, s 0.03, top-left (58158.5, 5498.5): sx = 115.23*lon + 9498.9, sy = 7646.3 - 167.55*lat (Albany = 1000,500).
+  The NY outline is hand-simplified from lat/lon through that formula (not the Natural Earth path).
+  Timeline runs 18.96 s so the $20 MILLION chip stays settled 1.5 s before its exit; host data-duration should be 18.96.
+-->
+<template>
+<style>
+  #nl7-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 38% 50%, #0b1016 0%, #030507 78%); }
+  .nl7-fill { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .nl7-abs { position:absolute; opacity:0; visibility:hidden; }
+  .nl7-base { position:absolute; left:200px; top:900px; width:1300px; height:2px; background:rgba(255,255,255,.14); opacity:0; visibility:hidden; }
+  .nl7-title { left:110px; top:70px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; white-space:nowrap; }
+  .nl7-sub { left:110px; top:140px; font-weight:700; font-size:26px; line-height:30px; letter-spacing:8px; color:#93a3b2; white-space:nowrap; }
+  .nl7-bar { position:absolute; width:180px; opacity:0; visibility:hidden; }
+  .nl7-hbar { top:200px; height:700px; background:linear-gradient(to top, #5a768f 0%, #5a768f 85.7%, rgba(90,118,143,0) 100%); }
+  .nl7-nbar { left:1140px; top:369.4px; height:530.6px; background:#7fb2e5; border-radius:4px 4px 0 0; }
+  .nl7-ref { left:260px; top:369px; width:1060px; height:0; border-top:1px dashed rgba(255,255,255,.3); }
+  .nl7-val { left:1090px; top:290px; width:280px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; white-space:nowrap; }
+  .nl7-lab { top:940px; width:240px; text-align:center; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#dfe7ee; white-space:nowrap; }
+  .nl7-lab-n { color:#f2f5f8; }
+  .nl7-win { left:1110px; top:972px; width:240px; text-align:center; font-weight:700; font-size:19px; line-height:22px; letter-spacing:3px; color:#7fb2e5; white-space:nowrap; }
+  .nl7-gw { top:906px; width:26px; height:26px; }
+  .nl7-gl { position:absolute; left:0; top:0; width:26px; height:26px; }
+  .nl7-src { left:110px; font-weight:700; font-size:19px; line-height:22px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  .nl7-chip { left:460px; top:342px; width:600px; height:130px; box-sizing:border-box; padding:18px 28px; border-radius:28px; text-align:center;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); }
+  .nl7-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:61px; color:#f2f5f8; white-space:nowrap; }
+  .nl7-csub { margin-top:8px; font-weight:700; font-size:22px; line-height:26px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  .nl7-ml { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+</style>
+<div id="nl7-root" data-composition-id="g-a1-7-newlondon" data-width="1920" data-height="1080">
+
+  <!-- scene 1: the tide bars -->
+  <div id="nl7-card" class="nl7-fill">
+    <div id="nl7-drift" class="nl7-fill">
+      <div id="nl7-baseline" class="nl7-base"></div>
+      <div id="nl7-title" class="nl7-abs nl7-title">NEW LONDON, CT</div>
+      <div id="nl7-sub" class="nl7-abs nl7-sub">TOP FOUR TIDES IN 100 YEARS</div>
+
+      <div id="nl7-b1" class="nl7-bar nl7-hbar" style="left:260px"></div>
+      <div id="nl7-b2" class="nl7-bar nl7-hbar" style="left:520px"></div>
+      <div id="nl7-b3" class="nl7-bar nl7-hbar" style="left:780px"></div>
+      <div id="nl7-b4" class="nl7-bar nl7-nbar"></div>
+      <div id="nl7-ref" class="nl7-abs nl7-ref"></div>
+      <div id="nl7-val" class="nl7-abs nl7-val">0.00 FT</div>
+
+      <div id="nl7-gw1" class="nl7-abs nl7-gw" style="left:337px"><svg id="nl7-g1" class="nl7-gl" viewBox="0 0 26 26"><path d="M13 13 C13 11 15 10 16 12 C18 14 16 17 13 17 C9 17 7 13 9 10 C11 6 17 6 20 9 C23 13 21 18 17 21 C12 24 5 22 3 16" fill="none" stroke="#d8a13a" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+      <div id="nl7-gw2" class="nl7-abs nl7-gw" style="left:597px"><svg id="nl7-g2" class="nl7-gl" viewBox="0 0 26 26"><path d="M13 13 C13 11 15 10 16 12 C18 14 16 17 13 17 C9 17 7 13 9 10 C11 6 17 6 20 9 C23 13 21 18 17 21 C12 24 5 22 3 16" fill="none" stroke="#d8a13a" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+      <div id="nl7-gw3" class="nl7-abs nl7-gw" style="left:857px"><svg id="nl7-g3" class="nl7-gl" viewBox="0 0 26 26"><path d="M13 13 C13 11 15 10 16 12 C18 14 16 17 13 17 C9 17 7 13 9 10 C11 6 17 6 20 9 C23 13 21 18 17 21 C12 24 5 22 3 16" fill="none" stroke="#d8a13a" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+
+      <div id="nl7-l1" class="nl7-abs nl7-lab" style="left:230px">1938 HURRICANE</div>
+      <div id="nl7-l2" class="nl7-abs nl7-lab" style="left:490px">CAROL</div>
+      <div id="nl7-l3" class="nl7-abs nl7-lab" style="left:750px">SANDY</div>
+      <div id="nl7-l4" class="nl7-abs nl7-lab nl7-lab-n" style="left:1110px">NOV 1950</div>
+      <div id="nl7-win" class="nl7-abs nl7-win">WINTER STORM</div>
+
+      <div id="nl7-src1" class="nl7-abs nl7-src" style="bottom:60px">Source: NBC Connecticut; NWS Albany</div>
+    </div>
+  </div>
+
+  <!-- scene 2: New York State -->
+  <div id="nl7-map" class="nl7-fill" style="opacity:0;visibility:hidden">
+    <div id="nl7-mapdrift" class="nl7-fill">
+      <svg class="nl7-fill" viewBox="0 0 1920 1080">
+        <polyline id="nl7-pa" points="219.9,880 219.9,609.2 308,609.2" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
+        <polyline id="nl7-pa2" points="816.3,609.2 850.9,642.7 892.4,716.4 833,827 837.5,900" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
+        <polyline id="nl7-nj" points="979.9,778.4 966.1,827 948.8,900" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
+        <polygon id="nl7-ny" points="308,609.2 308,564 409.4,460.1 389.8,398.1 510.9,379.7 626.2,394.7 718.4,349.5 718.4,282.4 703.4,252.3 753,217.1 822.1,136.7 891.2,106.5 1046.8,104.8 1046.8,173.5 1040.9,274.1 1040.9,341.1 1055.9,346.1 1058.2,483.5 1029.4,600.8 1023.7,726.5 1011,776.7 994.9,801.9 1040.9,788.5 1133.2,776.7 1167.8,756.6 1213.9,765 1144.7,806.9 1040.9,840.4 971.9,848.8 948.8,860.5 966.1,827 979.9,778.4 892.4,716.4 850.9,642.7 816.3,609.2"
+          fill="#15202b" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linejoin="round" style="opacity:.9"/>
+        <g id="nl7-pin" style="opacity:0;visibility:hidden">
+          <circle id="nl7-ring" cx="1000" cy="500" r="8" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+          <circle id="nl7-dot" cx="1000" cy="500" r="8" fill="#f2f5f8"/>
+          <text id="nl7-albany" class="nl7-ml" x="1022" y="508">ALBANY</text>
+        </g>
+      </svg>
+    </div>
+    <div id="nl7-chip" class="nl7-abs nl7-chip">
+      <div id="nl7-amt" class="nl7-big">$0 MILLION</div>
+      <div id="nl7-csub" class="nl7-csub">NY STATE WIND DAMAGE (1950 $)</div>
+    </div>
+    <div id="nl7-src2" class="nl7-abs nl7-src" style="bottom:90px">Source: NBC Connecticut; NWS Albany</div>
+    <div id="nl7-bm" class="nl7-abs nl7-src" style="bottom:60px">Basemap: Natural Earth</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#nl7-";
+  const HIDE = ["title","sub","ref","val","gw1","gw2","gw3","l1","l2","l3","l4","win","src1","baseline","src2","bm","chip","pin"].map(function(k){ return P + k; });
+  tl.set(HIDE, { autoAlpha: 0 }, 0);
+  tl.set([P+"b1",P+"b2",P+"b3",P+"b4"], { autoAlpha: 1, scaleY: 0, transformOrigin: "50% 100%" }, 0);
+  tl.set(P+"ref", { transformOrigin: "0% 50%", scaleX: 0 }, 0);
+  tl.set(P+"baseline", { transformOrigin: "0% 50%", scaleX: 0 }, 0);
+  tl.set(P+"map", { autoAlpha: 0 }, 0);
+
+  /* ON @0.00: baseline draws, whole card drifts */
+  tl.to(P+"baseline", { autoAlpha: 1, scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.0);
+  tl.fromTo(P+"src1", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+  tl.to(P+"drift", { y: -10, duration: 13.84, ease: "none" }, 0.0);
+
+  /* NEWLONDON @1.02 */
+  tl.fromTo(P+"title", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, 1.02);
+
+  /* 7 @2.62: the 1950 bar rises, value counts to 7.58 landing 3.72, NOV 1950 label in */
+  tl.to(P+"b4", { scaleY: 1, duration: 0.8, ease: "power4.out" }, 2.62);
+  tl.fromTo(P+"val", { autoAlpha: 0, y: 530 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: "power4.out" }, 2.62);
+  const cnt = { v: 0 };
+  tl.to(cnt, { v: 7.58, duration: 1.1, ease: "power3.out", onUpdate: function() {
+    const el = document.getElementById("nl7-val"); if (el) el.textContent = cnt.v.toFixed(2) + " FT";
+  } }, 2.62);
+  tl.fromTo(P+"l4", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.62);
+
+  /* HUNDRED @4.78: sub line in, reference line draws */
+  tl.fromTo(P+"sub", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.78);
+  tl.to(P+"ref", { autoAlpha: 1, scaleX: 1, duration: 0.9, ease: "power2.out" }, 4.78);
+
+  /* THREE @6.66: the three hurricane bars rise together past the line */
+  tl.to([P+"b1", P+"b2", P+"b3"], { scaleY: 1, duration: 0.9, ease: "power3.out" }, 6.66);
+
+  /* HURRICANES @9.38: glyphs in and spinning, WINTER STORM under the 1950 bar */
+  tl.fromTo([P+"gw1", P+"gw2", P+"gw3"], { autoAlpha: 0, scale: 0.4 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, 9.38);
+  tl.set([P+"g1", P+"g2", P+"g3"], { transformOrigin: "50% 50%" }, 0);
+  tl.to([P+"g1", P+"g2", P+"g3"], { rotation: 360, duration: 2, ease: "none", repeat: 1 }, 9.38);
+  tl.fromTo(P+"win", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.38);
+
+  /* 1938 @10.86 / CAROL @12.36 / SANDY @12.82 */
+  tl.fromTo(P+"l1", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.86);
+  tl.fromTo(P+"l2", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.36);
+  tl.fromTo(P+"l3", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.82);
+
+  /* NEWYORK @13.84: card slides up and out, map rises in */
+  tl.to(P+"card", { y: -200, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 13.84);
+  tl.fromTo(P+"map", { y: 200, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 13.84);
+  tl.fromTo(P+"src2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 14.2);
+  tl.fromTo(P+"bm", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 14.2);
+  /* Albany pin */
+  tl.set(P+"pin", { svgOrigin: "1000 500" }, 0);
+  tl.fromTo(P+"pin", { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "back.out(2.2)" }, 14.54);
+  tl.fromTo(P+"ring", { attr: { r: 8 }, opacity: 0.8 }, { attr: { r: 30 }, opacity: 0, duration: 1.2, ease: "power2.out", repeat: 2 }, 15.0);
+
+  /* hold: state fill breathes, map drifts */
+  tl.to(P+"ny", { opacity: 1, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: 3 }, 14.5);
+  tl.to(P+"mapdrift", { x: -16, duration: 4.46, ease: "none" }, 14.5);
+
+  /* 20 @16.26: chip in (from 15.84 so it is settled well before the exit), $0 to $20 */
+  tl.fromTo(P+"chip", { autoAlpha: 0, scale: 0.9 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 15.84);
+  const amt = { v: 0 };
+  tl.to(amt, { v: 20, duration: 0.6, ease: "power3.out", onUpdate: function() {
+    const el = document.getElementById("nl7-amt"); if (el) el.textContent = "$" + Math.round(amt.v) + " MILLION";
+  } }, 16.26);
+
+  /* exit: chip slides out, map fades; chip has been settled since about 16.86 (1.5 s) */
+  tl.to(P+"chip", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.36);
+  tl.to(P+"map", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 18.36);
+
+  window.__timelines["g-a1-7-newlondon"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
