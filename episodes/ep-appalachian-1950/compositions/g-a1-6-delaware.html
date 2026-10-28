@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-6-delaware · A1-S8 · ep-appalachian-1950 · DEEP (Opus) · brief: briefs/a1/g-a1-6-delaware.md
+  Claim: onshore wind stacked water up the Delaware; Philadelphia's gage hit a record 10.8 ft (severe flooding 10.2 ft);
+  the tide on Delaware Bay, NJ set a record too (no number on screen). Full frame, track 2, sits over nothing.
+  Host: data-start = A1-S8 start, data-duration 18.65 (18.250 wav + 0.40 gap). Cues = audio/a1-s8.words.json seconds.
+
+  SCENE 1 (0 to 5.9 s): chart still media/a1/A1-S8_c1_nws-jkl-surface-1950-11-25.jpg (1156 x 759, NWS Jackson KY, PD).
+    Sized in CSS (no initial transform) at S0 = 1920/516 = 3.72093 so image px (640,120) sits at screen (0,0):
+    box left -2381.40, top -446.51, 4301.40 x 2824.19. Push = GSAP scale 1 to 1.1825 (= 3.72 to 4.40) in log space about
+    image px (900,320) (transform-origin 3348.84px 1190.70px, screen 967.44, 744.19), 0 to 5.5 s.
+    Low "L" (840,398) is at screen (744,1034) on frame 0 (bottom edge) and below the frame (y 1087) at 5.5 s; never
+    labelled, ringed or pointed at (L1 closed, orchestrator item 1).
+    Coast (brief's measures, image px): NJ coast ~(905,300), bay mouth ~(885,345). Arrows in image px inside the pushed
+    box (6 px shafts on frame 0 = 1.61 image units; 140 to 220 px long on screen):
+      A1 (962,268)->(913,284) 192 px · A2 (960,296)->(907,301) 198 px · A3 (948,325)->(899,318) 184 px
+      B1 (936,360)->mouth (887,346) 190 px, then up the bay to (867.65,320.2) 120 px (draw fraction at mouth 0.6124)
+      B2 (930,382)->mouth (883,352) 207 px, then up the bay to (863.65,326.2) 120 px (draw fraction at mouth 0.6336)
+    Arrow tails on screen frame 0: (1190,563) (1183,655) (1153,752) (1116,863) (1101,938); none in x>=1600, y>=680.
+  SCENE 2 (5.9 s on): frame A1-D, s 0.13, top-left (79156.8, 35398.5): cam translate(-10290.384,-4601.805) scale(0.13).
+    Ground: Natural Earth 50m admin-1 (public domain) from library/inhouse/master-map-us-canada.html: NJ verbatim via
+    compositions/g-intro-3-coast.html, PA verbatim via compositions/g-a1-8-toll.html, DE and MD subpaths verbatim from the
+    master US path. shortcut: MD is closed off-frame by one chord (79028,45663)->(78957,43646) (screen x -17 to -26),
+    leaving out the Potomac/western-MD vertices west of the frame; take the full subpath if the frame ever moves west.
+    River/tide course (lat/lon -> map -> screen): Cape May Pt (1002.46,982.46) · Cape Henlopen (937.55,1076.85) ·
+    Bay centre (857.66,786.43) · Greenwich shore (797.74,648.48) · Del. Mem. Bridge (722.84,430.67) · Chester (802.73,314.50)
+    · Philadelphia pin (900,240). Path length 1060 px (brief's estimate was ~760). Greenwich NJ pin (815.2,649.0).
+    Gauge: floor y 620, 40 px/ft, 10.2 ft line y 212, 10.8 ft water top y 188 (24 px above the line).
+  CUES (seg time = comp time):
+    0.00 farther   chart on at the frame-0 crop, push to 5.50
+    2.44 wind      arrows draw (0.15 stagger, 0.6 s each)
+    3.36 ocean     pulses run along the arrows every 1.2 s (2 passes)
+    4.14 stacked   the two bay arrows extend 120 px up the bay (0.6 s)
+    5.30           chart crossfades to the map (done 5.90), credits in 5.90
+    6.04 Philadelphia,  pin + label
+    6.94 a         tide line grows Cape May to Philadelphia (1.6 s, done 8.54)
+    8.76 tide      gauge card in; 8.96 fill + counter (1.0 s, reads 10.0 at 9.54 "10", lands 9.96)
+    11.20 record.  RECORD stamp
+    12.40 flooding 10.2 ft line + label
+    15.20 Delaware Greenwich pin, tide line glow pulses
+    16.98 tide     RECORD TIDE chip (brief: 17.60 "record"; moved to "tide" so the chip reads 1.67 s to the cut)
+    18.05          gauge card slides out (ends 18.65); the chip holds to the cut (full-frame scene ends on the cut)
+-->
+<template>
+<style>
+  #dl6-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .dl6-full { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .dl6-hide { opacity:0; visibility:hidden; }
+  .dl6-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-sizing:border-box; }
+  /* scene 1: the chart, sized to the frame-0 crop in CSS */
+  #dl6-cam { position:absolute; left:-2381.40px; top:-446.51px; width:4301.40px; height:2824.19px; transform-origin:3348.84px 1190.70px; }
+  #dl6-chart { position:absolute; left:0; top:0; width:4301.40px; height:2824.19px; filter:blur(0.3px); }
+  #dl6-arrows { position:absolute; left:0; top:0; width:4301.40px; height:2824.19px; overflow:visible; }
+  #dl6-src1 { position:absolute; inset:auto; left:110px; bottom:60px; padding:8px 16px; border-radius:14px; font-family:Arial, sans-serif;
+    font-weight:700; font-size:19px; line-height:22px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  /* scene 2: map */
+  .dl6-land { fill:#0b1016; stroke:rgba(255,255,255,0.14); stroke-width:1.5px; stroke-linejoin:round; }
+  .dl6-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; letter-spacing:3px; fill:#f2f5f8;
+    paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .dl6-pulse { opacity:0; }
+  .dl6-credit { position:absolute; inset:auto; left:110px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:22px;
+    letter-spacing:2px; white-space:nowrap; }
+  #dl6-src2 { bottom:90px; color:#c8d3e0; }
+  #dl6-base2 { bottom:60px; color:#93a3b2; }
+  /* gauge */
+  #dl6-card { position:absolute; inset:auto; left:1060px; top:90px; width:400px; height:570px; border-radius:28px; }
+  #dl6-col { position:absolute; inset:auto; left:1120px; top:140px; width:80px; height:480px; box-sizing:border-box;
+    border:2px solid rgba(255,255,255,0.14); background:rgba(4,7,10,0.5); }
+  #dl6-fill { position:absolute; inset:auto; left:1122px; top:188px; width:76px; height:430px;
+    background:linear-gradient(180deg, rgba(127,178,229,0.85) 0%, rgba(90,118,143,0.75) 100%); }
+  #dl6-wave { position:absolute; inset:auto; left:1122px; top:182px; width:76px; height:12px; overflow:hidden; }
+  #dl6-wavein { position:absolute; left:0; top:0; width:152px; height:12px; }
+  #dl6-val { position:absolute; inset:auto; left:1216px; top:96px; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:58px; line-height:58px; color:#f2f5f8; white-space:nowrap; }
+  #dl6-rec { position:absolute; inset:auto; left:1216px; top:154px; font-family:Arial, sans-serif; font-weight:700; font-size:26px;
+    line-height:26px; letter-spacing:6px; color:#e74c3c; white-space:nowrap; transform-origin:0% 50%; }
+  #dl6-flood { position:absolute; inset:auto; left:1220px; top:222px; }
+  .dl6-fl { font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; letter-spacing:1px; color:#93a3b2; white-space:nowrap; }
+  /* RECORD TIDE chip: right edge x 766 (brief 790 moved left: the tide line runs x 781 to 805 at y 620 to 648) */
+  #dl6-chip { position:absolute; inset:auto; right:1154px; top:619px; padding:4px 20px; border-radius:14px;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:52px; color:#f2f5f8; white-space:nowrap; }
+</style>
+<div id="dl6-root" data-composition-id="g-a1-6-delaware" data-width="1920" data-height="1080" data-duration="18.65">
+
+  <!-- ================= SCENE 2 (under scene 1 from frame 0; revealed by the chart's crossfade) ================= -->
+  <div id="dl6-s2" class="dl6-full">
+    <svg class="dl6-full" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="1920" height="1080" fill="#04070a"/>
+      <g id="dl6-mapcam" transform="translate(-10290.384,-4601.805) scale(0.13)">
+        <!--BASEMAP:dl6-->
+        <path id="dl6-pa" class="dl6-land" vector-effect="non-scaling-stroke" d="M68420,24301 L68420,25805 L85365,25819 L85662,26108 L85797,26412 L86246,26629 L86347,26750 L86350,26930 L86508,27122 L86457,27412 L86517,27997 L86786,28559 L86963,28746 L87649,29027 L87870,29399 L87435,29711 L87051,30528 L86593,31106 L86242,31401 L86424,32198 L86285,32500 L86043,32649 L85976,33127 L85988,33652 L86340,33947 L86584,34632 L86805,34713 L87733,36117 L86624,36883 L86050,37568 L85482,37736 L85097,38011 L84754,37854 L84277,37876 L83991,38081 L83700,38531 L65514,38530 L65511,25868 L66225,25582 Z"/>
+        <path id="dl6-md" class="dl6-land" vector-effect="non-scaling-stroke" d="M78957,43646 L79297,43189 L78871,42499 L78564,42880 L78301,42738 L77876,42267 L77185,41934 L77087,41768 L77193,41331 L76981,41082 L76463,40836 L76194,40586 L76104,40168 L75991,40098 L76038,39838 L75682,39349 L75747,39216 L75640,39154 L75362,39165 L75087,39040 L74816,38779 L74496,38735 L73942,38995 L73629,39058 L73288,39586 L72588,39496 L72343,39337 L72324,39137 L72204,39065 L72062,39381 L71460,40031 L71061,39907 L70223,40825 L69476,41387 L69516,38528 L83700,38531 L83999,45608 L86570,45605 L86518,46011 L86429,46107 L86432,45860 L86370,45774 L86266,45881 L86100,46725 L85849,46797 L85270,48010 L84333,48154 L84182,48407 L83891,48297 L83446,48309 L83659,47666 L83428,47366 L83150,47205 L83396,46691 L83347,46370 L83416,46128 L83300,46164 L82999,46523 L82928,46296 L82677,46589 L82060,46132 L81741,45387 L81859,44799 L82111,44695 L82440,44790 L82870,44789 L82808,44659 L82655,44680 L82201,44203 L82055,43915 L81804,43836 L81690,44113 L81563,44187 L81720,43580 L81925,43555 L82228,43387 L82140,43037 L81948,42883 L81603,43075 L81607,42829 L81672,42513 L81932,42514 L82160,42617 L82354,42106 L82363,41878 L82041,42210 L81968,41495 L82285,40805 L82588,40505 L83350,40465 L82861,40270 L83361,39712 L82987,39747 L83031,39297 L82631,39431 L82547,39622 L82500,40146 L82330,40313 L82044,40443 L82017,40217 L81922,40115 L81887,40598 L81812,40762 L81603,40309 L81495,40752 L81315,40868 L81326,41153 L81257,41308 L80682,41061 L80669,41145 L80994,41679 L81231,41861 L81260,42152 L81056,42394 L80728,42201 L80977,42871 L80878,43133 L80811,44002 L80948,45178 L81360,46089 L81188,46131 L80675,45716 L80389,45142 L80272,44732 L80306,45148 L80408,45612 L81303,46652 L81595,47364 L81563,47664 L81128,47181 L80593,46875 L79919,46681 L79539,45970 L79540,46267 L79456,46519 L79077,45950 L79028,45663 Z"/>
+        <path id="dl6-de" class="dl6-land" vector-effect="non-scaling-stroke" d="M86570,45605 L83999,45608 L83700,38531 L83991,38081 L84277,37876 L84754,37854 L85097,38011 L84457,38986 L84536,39477 L84510,39901 L85129,40993 L85208,42047 L85522,42752 L86004,43574 L86374,43807 L86392,44113 L86221,44618 L85996,44849 L86289,44802 L86434,44918 L86577,45339 L86570,45605 Z"/>
+        <path id="dl6-nj" class="dl6-land" vector-effect="non-scaling-stroke" d="M86430,37072 L87733,36117 L86805,34713 L86584,34632 L86340,33947 L85988,33652 L86001,32826 L86043,32649 L86285,32500 L86424,32198 L86242,31401 L86593,31106 L87051,30528 L87435,29711 L87870,29399 L90901,31438 L90835,31874 L90457,32756 L89837,33361 L89685,33584 L89541,34028 L89628,34432 L90364,34579 L90561,34455 L90718,35146 L90447,36572 L90248,38163 L90307,37018 L90187,37114 L90104,37326 L89879,38507 L89570,39137 L89286,39572 L88992,39500 L89058,39846 L88908,40403 L88733,40652 L88569,40628 L88333,40800 L88239,40931 L88232,41183 L87504,42554 L87008,42894 L86890,42844 L87110,41753 L86522,41387 L86192,41404 L85827,40977 L85357,40667 L84701,39827 L84703,39204 L85094,38154 L85358,37931 L86124,37703 L86430,37072 Z M89593,39608 L89583,39446 L90145,38396 L90044,38763 L89593,39608 Z"/>
+        <!--/BASEMAP-->
+      </g>
+      <!-- river/bay course, Cape May Point to Philadelphia, screen px from the brief's lat/lon -->
+      <path id="dl6-river" d="M1002.46,982.46 L937.55,1076.85 L857.66,786.43 L797.74,648.48 L722.84,430.67 L802.73,314.50 L900,240" fill="none" stroke="#5a768f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+      <path id="dl6-tideglow" class="dl6-hide" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M1002.46,982.46 L937.55,1076.85 L857.66,786.43 L797.74,648.48 L722.84,430.67 L802.73,314.50 L900,240" fill="none" stroke="#7fb2e5" stroke-opacity="0.35" stroke-width="14" stroke-linejoin="round"/>
+      <path id="dl6-tide" class="dl6-hide" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M1002.46,982.46 L937.55,1076.85 L857.66,786.43 L797.74,648.48 L722.84,430.67 L802.73,314.50 L900,240" fill="none" stroke="#7fb2e5" stroke-width="6" stroke-linejoin="round"/>
+      <!-- Greenwich, NJ pin (no label, no number: the chip carries it) -->
+      <circle id="dl6-gwpulse" class="dl6-pulse" cx="815.2" cy="649.0" r="10" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+      <circle id="dl6-gwdot" cx="815.2" cy="649.0" r="0" fill="#f2f5f8"/>
+      <!-- Philadelphia pin; label right edge x 874, baseline 238 (brief 876 / 240: kept 15 px clear of the tide line) -->
+      <circle id="dl6-phpulse" class="dl6-pulse" cx="900" cy="240" r="10" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+      <circle id="dl6-phring" cx="900" cy="240" r="0" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+      <circle id="dl6-phdot" cx="900" cy="240" r="0" fill="#f2f5f8"/>
+      <text id="dl6-phlab" class="dl6-lab dl6-hide" x="874" y="238" text-anchor="end">PHILADELPHIA</text>
+    </svg>
+
+    <div id="dl6-src2" class="dl6-credit dl6-hide">Source: NWS Mount Holly</div>
+    <div id="dl6-base2" class="dl6-credit dl6-hide">Basemap: Natural Earth</div>
+
+    <!-- tide gauge: glass card 1060..1460 x 90..660; column 1120..1200, floor 620, 40 px per ft -->
+    <div id="dl6-gauge" class="dl6-full dl6-hide">
+      <div id="dl6-card" class="dl6-glass"></div>
+      <div id="dl6-col"></div>
+      <div id="dl6-fill"></div>
+      <div id="dl6-wave" class="dl6-hide">
+        <svg id="dl6-wavein" viewBox="0 0 152 12" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,6 Q9.5,0 19,6 T38,6 T57,6 T76,6 T95,6 T114,6 T133,6 T152,6 V12 H0 Z" fill="#7fb2e5" fill-opacity="0.85"/>
+        </svg>
+      </div>
+      <svg class="dl6-full" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="rgba(255,255,255,0.22)" stroke-width="2">
+          <line x1="1106" y1="140" x2="1118" y2="140"/><line x1="1106" y1="220" x2="1118" y2="220"/>
+          <line x1="1106" y1="300" x2="1118" y2="300"/><line x1="1106" y1="380" x2="1118" y2="380"/>
+          <line x1="1106" y1="460" x2="1118" y2="460"/><line x1="1106" y1="540" x2="1118" y2="540"/>
+        </g>
+        <line x1="1100" y1="620" x2="1220" y2="620" stroke="#93a3b2" stroke-width="2"/>
+        <line id="dl6-fline" class="dl6-hide" x1="1110" y1="212" x2="1210" y2="212" stroke="rgba(242,245,248,0.45)" stroke-width="2" stroke-dasharray="8 6"/>
+      </svg>
+      <div id="dl6-val" class="dl6-hide">10.8 FT</div>
+      <div id="dl6-rec" class="dl6-hide">RECORD</div>
+      <div id="dl6-flood" class="dl6-hide">
+        <div id="dl6-fl1" class="dl6-fl">FLOODING STARTS</div>
+        <div id="dl6-fl2" class="dl6-fl">10.2 FT</div>
+      </div>
+    </div>
+
+    <div id="dl6-chip" class="dl6-glass dl6-hide">RECORD TIDE</div>
+  </div>
+
+  <!-- ================= SCENE 1: the chart, pushed toward the New Jersey coast ================= -->
+  <div id="dl6-s1" class="dl6-full">
+    <div id="dl6-cam">
+      <img id="dl6-chart" src="media/a1/A1-S8_c1_nws-jkl-surface-1950-11-25.jpg" alt=""
+        data-crop-ok="brief push into the New Jersey coast of a whole-US surface chart: the 2.5x crop is the shot (brief section 2)">
+      <svg id="dl6-arrows" viewBox="0 0 1156 759" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#7fb2e5" stroke-width="1.61" stroke-linejoin="round">
+          <path id="dl6-a1" class="dl6-hide" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M962,268 L917.75,282.45"/>
+          <path id="dl6-a2" class="dl6-hide" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M960,296 L911.98,300.53"/>
+          <path id="dl6-a3" class="dl6-hide" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M948,325 L903.95,318.71"/>
+          <path id="dl6-b1" class="dl6-hide" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M936,360 L887,346 L867.65,320.2"/>
+          <path id="dl6-b2" class="dl6-hide" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" d="M930,382 L883,352 L863.65,326.2"/>
+        </g>
+        <g fill="#7fb2e5">
+          <polygon id="dl6-h1" class="dl6-hide" points="913,284 916.91,279.88 918.59,285.02"/>
+          <polygon id="dl6-h2" class="dl6-hide" points="907,301 911.73,297.84 912.23,303.22"/>
+          <polygon id="dl6-h3" class="dl6-hide" points="899,318 904.33,316.04 903.57,321.38"/>
+          <polygon id="dl6-ha1" class="dl6-hide" points="885.56,345.59 891.11,344.37 889.63,349.56"/>
+          <polygon id="dl6-ha2" class="dl6-hide" points="881.74,351.19 887.40,351.60 884.50,356.16"/>
+          <g id="dl6-hb1" class="dl6-hide"><polygon points="0,0 5.16,2.38 0.84,5.62"/></g>
+          <g id="dl6-hb2" class="dl6-hide"><polygon points="0,0 5.16,2.38 0.84,5.62"/></g>
+        </g>
+        <!-- brightness pulses: one 0.22-long dash per arrow, ocean leg only -->
+        <g fill="none" stroke="#eaf4ff" stroke-width="1.61" stroke-opacity="0.95">
+          <path id="dl6-p1" class="dl6-hide" pathLength="1" stroke-dasharray="0.22 2" stroke-dashoffset="0.22" d="M962,268 L917.75,282.45"/>
+          <path id="dl6-p2" class="dl6-hide" pathLength="1" stroke-dasharray="0.22 2" stroke-dashoffset="0.22" d="M960,296 L911.98,300.53"/>
+          <path id="dl6-p3" class="dl6-hide" pathLength="1" stroke-dasharray="0.22 2" stroke-dashoffset="0.22" d="M948,325 L903.95,318.71"/>
+          <path id="dl6-p4" class="dl6-hide" pathLength="1" stroke-dasharray="0.22 2" stroke-dashoffset="0.22" d="M936,360 L887,346"/>
+          <path id="dl6-p5" class="dl6-hide" pathLength="1" stroke-dasharray="0.22 2" stroke-dashoffset="0.22" d="M930,382 L883,352"/>
+        </g>
+      </svg>
+    </div>
+    <div id="dl6-src1" class="dl6-glass">Source: NWS Jackson KY, surface chart, 25 Nov 1950</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#dl6-";
+  const zoom = { t: 0 };
+  const cnt = { v: 0 };
+  // log-space push (library/inhouse/snippets/helpers.js logZoom, inlined so every call below keeps a numeric position)
+  function dl6Zoom() {
+    gsap.set(P + "cam", { scale: Math.exp(Math.log(1) + (Math.log(1.1825) - Math.log(1)) * zoom.t) });
+  }
+  function dl6Count() {
+    const el = document.getElementById("dl6-val");
+    if (el) el.textContent = cnt.v.toFixed(1) + " FT";
+  }
+
+  // ---- scene 1 ----
+  tl.set(P + "cam", { scale: 1, transformOrigin: "3348.84px 1190.70px" }, 0);
+  tl.set(P + "hb1", { x: 886.1, y: 344.8 }, 0);
+  tl.set(P + "hb2", { x: 882.1, y: 350.8 }, 0);
+  tl.set(P + "fill", { scaleY: 0, transformOrigin: "50% 100%" }, 0);
+  /* FARTHER @0.00 */
+  tl.fromTo(zoom, { t: 0 }, { t: 1, duration: 5.5, ease: "none", onUpdate: dl6Zoom }, 0);
+
+  /* WIND @2.44 */
+  tl.set(P + "a1", { autoAlpha: 1 }, 2.44);
+  tl.fromTo(P + "a1", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 2.44);
+  tl.fromTo(P + "h1", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12 }, 2.98);
+  tl.set(P + "a2", { autoAlpha: 1 }, 2.59);
+  tl.fromTo(P + "a2", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 2.59);
+  tl.fromTo(P + "h2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12 }, 3.13);
+  tl.set(P + "a3", { autoAlpha: 1 }, 2.74);
+  tl.fromTo(P + "a3", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 2.74);
+  tl.fromTo(P + "h3", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12 }, 3.28);
+  tl.set(P + "b1", { autoAlpha: 1 }, 2.89);
+  tl.fromTo(P + "b1", { strokeDashoffset: 1 }, { strokeDashoffset: 0.3876, duration: 0.6, ease: "power2.out" }, 2.89);
+  tl.fromTo(P + "ha1", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12 }, 3.43);
+  tl.set(P + "b2", { autoAlpha: 1 }, 3.04);
+  tl.fromTo(P + "b2", { strokeDashoffset: 1 }, { strokeDashoffset: 0.3664, duration: 0.6, ease: "power2.out" }, 3.04);
+  tl.fromTo(P + "ha2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12 }, 3.58);
+
+  /* OCEAN @3.36 */
+  tl.set([P + "p1", P + "p2", P + "p3", P + "p4", P + "p5"], { autoAlpha: 1 }, 3.36);
+  tl.fromTo(P + "p1", { strokeDashoffset: 0.22 }, { strokeDashoffset: -1, duration: 1.2, ease: "none", repeat: 1 }, 3.36);
+  tl.fromTo(P + "p2", { strokeDashoffset: 0.22 }, { strokeDashoffset: -1, duration: 1.2, ease: "none", repeat: 1 }, 3.36);
+  tl.fromTo(P + "p3", { strokeDashoffset: 0.22 }, { strokeDashoffset: -1, duration: 1.2, ease: "none", repeat: 1 }, 3.36);
+  tl.fromTo(P + "p4", { strokeDashoffset: 0.22 }, { strokeDashoffset: -1, duration: 1.2, ease: "none", repeat: 1 }, 3.36);
+  tl.fromTo(P + "p5", { strokeDashoffset: 0.22 }, { strokeDashoffset: -1, duration: 1.2, ease: "none", repeat: 1 }, 3.36);
+
+  /* STACKED @4.14 */
+  tl.fromTo(P + "b1", { strokeDashoffset: 0.3876 }, { strokeDashoffset: 0, duration: 0.6, ease: "none", immediateRender: false }, 4.14);
+  tl.fromTo(P + "b2", { strokeDashoffset: 0.3664 }, { strokeDashoffset: 0, duration: 0.6, ease: "none", immediateRender: false }, 4.14);
+  tl.to([P + "ha1", P + "ha2"], { autoAlpha: 0, duration: 0.12 }, 4.14);
+  tl.set([P + "hb1", P + "hb2"], { autoAlpha: 1 }, 4.14);
+  tl.fromTo(P + "hb1", { x: 886.1, y: 344.8 }, { x: 866.75, y: 319.0, duration: 0.6, ease: "none", immediateRender: false }, 4.14);
+  tl.fromTo(P + "hb2", { x: 882.1, y: 350.8 }, { x: 862.75, y: 325.0, duration: 0.6, ease: "none", immediateRender: false }, 4.14);
+
+  /* AT @5.92 (crossfade 5.30 to 5.90) */
+  tl.to(P + "s1", { autoAlpha: 0, duration: 0.6, ease: "power1.inOut" }, 5.30);
+  tl.fromTo([P + "src2", P + "base2"], { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 5.90);
+
+  // ---- scene 2 ----
+  /* PHILADELPHIA @6.04 */
+  tl.fromTo(P + "phring", { attr: { r: 0 } }, { attr: { r: 14 }, duration: 0.35, ease: "back.out(2)" }, 6.04);
+  tl.fromTo(P + "phdot", { attr: { r: 0 } }, { attr: { r: 8 }, duration: 0.3, ease: "back.out(2)" }, 6.04);
+  tl.fromTo(P + "phlab", { autoAlpha: 0, x: 14 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 6.14);
+  tl.fromTo(P + "phpulse", { attr: { r: 10 }, opacity: 0.9 }, { attr: { r: 22 }, opacity: 0, duration: 1.2, ease: "power1.out", repeat: 9, immediateRender: false }, 6.6);
+
+  /* LONG @7.14 (grows from "a" 6.94) */
+  tl.set([P + "tide", P + "tideglow"], { autoAlpha: 1 }, 6.94);
+  tl.fromTo([P + "tide", P + "tideglow"], { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.6, ease: "power2.inOut" }, 6.94);
+
+  /* TIDE @8.76 */
+  tl.fromTo(P + "gauge", { x: 200, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 8.76);
+  /* 10 @9.54 (counter reads 10.0 there, lands 10.8 at 9.96) */
+  tl.set(P + "val", { autoAlpha: 1 }, 8.96);
+  tl.fromTo(P + "fill", { scaleY: 0 }, { scaleY: 1, duration: 1.0, ease: "power3.out", immediateRender: false }, 8.96);
+  tl.fromTo(cnt, { v: 0 }, { v: 10.8, duration: 1.0, ease: "power3.out", onUpdate: dl6Count, immediateRender: false }, 8.96);
+  tl.set(P + "wave", { autoAlpha: 1 }, 9.96);
+  tl.fromTo(P + "wavein", { x: 0 }, { x: -38, duration: 1.6, ease: "none", repeat: 4 }, 9.96);
+
+  /* RECORD @11.20 */
+  tl.fromTo(P + "rec", { autoAlpha: 0, scale: 1.15 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: "power3.out" }, 11.20);
+
+  /* FLOODING @12.40 */
+  tl.fromTo(P + "fline", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 12.40);
+  tl.fromTo(P + "flood", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 12.40);
+
+  /* DELAWARE @15.20 */
+  tl.fromTo(P + "gwdot", { attr: { r: 0 } }, { attr: { r: 8 }, duration: 0.3, ease: "back.out(2)" }, 15.20);
+  tl.fromTo(P + "tideglow", { attr: { "stroke-opacity": 0.35 } }, { attr: { "stroke-opacity": 0.8 }, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 5, immediateRender: false }, 15.20);
+  tl.fromTo(P + "gwpulse", { attr: { r: 10 }, opacity: 0.9 }, { attr: { r: 24 }, opacity: 0, duration: 1.2, ease: "power1.out", repeat: 1, immediateRender: false }, 15.5);
+
+  /* RECORD @17.60 (chip lands on "tide" 16.98 so it reads 1.5 s+ before the cut) */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 16.98);
+
+  // exit: gauge card slides out in the last 0.6 s; chip and map hold to the cut (g-a1-7)
+  tl.to(P + "gauge", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.05);
+
+  window.__timelines["g-a1-6-delaware"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
