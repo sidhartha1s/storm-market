@@ -219,14 +219,14 @@ window.__timelines = window.__timelines || {};
   /* EXIT @16.70: both chips out in the last 0.26 s (arctic chip readable 15.20 to 16.70); g-a3-3 opens on chart + track + arrows + ring */
   tl.to([P + "warmchip", P + "coldchip"], { scale: 0.94, autoAlpha: 0, duration: 0.26, ease: "power2.in" }, 16.7);
 
-  // self-check: each arrowhead sits TIP px ahead of its revealed shaft at three times in its draw
+  // self-check: each arrowhead tip sits HEAD px from its revealed shaft end at three times in its draw
   arrows.forEach(function (a) {
     [a.start + a.dur * 0.3, a.start + a.dur * 0.7, a.start + a.dur].forEach(function (t) {
       tl.seek(t);
       var shown = a.ML - parseFloat(gsap.getProperty(a.mask, "strokeDashoffset"));
-      var p = a.tr.path.getPointAtLength(Math.min(a.tr.L, shown + TIP));
+      var p = a.tr.path.getPointAtLength(Math.min(a.tr.L, shown));
       var dx = gsap.getProperty(a.head, "x") - p.x, dy = gsap.getProperty(a.head, "y") - p.y, d = Math.sqrt(dx * dx + dy * dy);
-      if (d > 4) console.error("g-a3-2-swirl: " + a.name + " head off its shaft at " + t.toFixed(2) + " s by " + d.toFixed(1) + " px");
+      if (Math.abs(d - HEAD) > 4) console.error("g-a3-2-swirl: " + a.name + " head " + d.toFixed(1) + " px from its shaft end at " + t.toFixed(2) + " s (want " + HEAD + ")");
     });
   });
   tl.seek(0);
