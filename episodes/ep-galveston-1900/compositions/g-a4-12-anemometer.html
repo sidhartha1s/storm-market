@@ -1,0 +1,179 @@
+<template>
+<style>
+  #g-a4-12-anemometer-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:linear-gradient(180deg, #15202b 0%, #0b1016 70%, #04070c 100%); }
+  #g-a4-12-anemometer-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .g-a4-12-bld { fill:#0b1016; stroke:#93a3b2; stroke-width:3; }
+  .g-a4-12-win { fill:#15202b; stroke:#2a3644; stroke-width:2; }
+  .g-a4-12-mast { stroke:#93a3b2; stroke-width:8; fill:none; stroke-linecap:round; }
+  .g-a4-12-arm { stroke:#93a3b2; stroke-width:5; stroke-linecap:round; }
+  .g-a4-12-cup { fill:#15202b; stroke:#dfe7ee; stroke-width:3; }
+  .g-a4-12-hub { fill:#dfe7ee; stroke:#93a3b2; stroke-width:3; }
+  .g-a4-12-rain line { stroke:#c8d3e0; stroke-width:2; stroke-linecap:round; opacity:0.35; }
+
+  /* source line, top-left glass (tokens.md surfaces) */
+  #g-a4-12-anemometer-src { position:absolute; left:96px; top:54px; max-width:1000px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  #g-a4-12-anemometer-note { position:absolute; left:96px; top:1000px; font-weight:700; font-size:19px; line-height:24px; color:#93a3b2; opacity:0; visibility:hidden; }
+
+  /* chips: wrapper drifts, chip enters and exits; both at left 1180, top 200, never together */
+  .g-a4-12-cw { position:absolute; left:1180px; top:200px; }
+  .g-a4-12-chip { padding:14px 28px; border-radius:28px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .g-a4-12-main { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:56px; color:#f2f5f8; }
+  .g-a4-12-tag { font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:32px; color:#93a3b2; }
+
+  /* beat-accent flash on the tear-off */
+  #g-a4-12-anemometer-flash { position:absolute; left:0; top:0; width:1920px; height:1080px; background:#f2f5f8; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-12-anemometer-root" data-composition-id="g-a4-12-anemometer" data-width="1920" data-height="1080">
+  <svg id="g-a4-12-anemometer-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <!-- office building: roof line y 820, x 96 to 1824 -->
+    <rect class="g-a4-12-bld" x="96" y="820" width="1728" height="300"/>
+    <rect class="g-a4-12-win" x="200" y="880" width="130" height="90"/>
+    <rect class="g-a4-12-win" x="520" y="880" width="130" height="90"/>
+    <rect class="g-a4-12-win" x="1000" y="880" width="130" height="90"/>
+    <rect class="g-a4-12-win" x="1360" y="880" width="130" height="90"/>
+    <rect class="g-a4-12-win" x="1640" y="880" width="130" height="90"/>
+    <!-- mast: base plate, pole, top cap; whips about its foot (760, 820) -->
+    <rect x="730" y="808" width="60" height="12" fill="#93a3b2"/>
+    <g id="g-a4-12-anemometer-mast">
+      <line class="g-a4-12-mast" x1="760" y1="820" x2="760" y2="412"/>
+      <circle cx="760" cy="412" r="8" fill="#93a3b2"/>
+    </g>
+    <!-- rotor (seen from slightly below): ellipse 260 x 70 around hub (760, 400); cup positions are driven by one angle -->
+    <g id="g-a4-12-anemometer-rotor">
+      <line id="g-a4-12-anemometer-arm1" class="g-a4-12-arm" x1="760" y1="400" x2="890" y2="400"/>
+      <line id="g-a4-12-anemometer-arm2" class="g-a4-12-arm" x1="760" y1="400" x2="760" y2="435"/>
+      <line id="g-a4-12-anemometer-arm3" class="g-a4-12-arm" x1="760" y1="400" x2="630" y2="400"/>
+      <line id="g-a4-12-anemometer-arm4" class="g-a4-12-arm" x1="760" y1="400" x2="760" y2="365"/>
+      <circle id="g-a4-12-anemometer-cup1" class="g-a4-12-cup" cx="890" cy="400" r="22"/>
+      <circle id="g-a4-12-anemometer-cup2" class="g-a4-12-cup" cx="760" cy="435" r="26"/>
+      <circle id="g-a4-12-anemometer-cup3" class="g-a4-12-cup" cx="630" cy="400" r="22"/>
+      <circle id="g-a4-12-anemometer-cup4" class="g-a4-12-cup" cx="760" cy="365" r="18"/>
+      <circle class="g-a4-12-hub" cx="760" cy="400" r="11"/>
+    </g>
+    <!-- rain: 8 groups of 5 streaks, 40 in all; each streak starts above the frame and falls left to right -->
+    <g id="g-a4-12-anemometer-r0" class="g-a4-12-rain">
+      <line x1="-560" y1="-90" x2="-532" y2="-30"/><line x1="-64" y1="-90" x2="-36" y2="-30"/><line x1="432" y1="-90" x2="460" y2="-30"/><line x1="928" y1="-90" x2="956" y2="-30"/><line x1="1424" y1="-90" x2="1452" y2="-30"/>
+    </g>
+    <g id="g-a4-12-anemometer-r1" class="g-a4-12-rain">
+      <line x1="-498" y1="-90" x2="-470" y2="-30"/><line x1="-2" y1="-90" x2="26" y2="-30"/><line x1="494" y1="-90" x2="522" y2="-30"/><line x1="990" y1="-90" x2="1018" y2="-30"/><line x1="1486" y1="-90" x2="1514" y2="-30"/>
+    </g>
+    <g id="g-a4-12-anemometer-r2" class="g-a4-12-rain">
+      <line x1="-436" y1="-90" x2="-408" y2="-30"/><line x1="60" y1="-90" x2="88" y2="-30"/><line x1="556" y1="-90" x2="584" y2="-30"/><line x1="1052" y1="-90" x2="1080" y2="-30"/><line x1="1548" y1="-90" x2="1576" y2="-30"/>
+    </g>
+    <g id="g-a4-12-anemometer-r3" class="g-a4-12-rain">
+      <line x1="-374" y1="-90" x2="-346" y2="-30"/><line x1="122" y1="-90" x2="150" y2="-30"/><line x1="618" y1="-90" x2="646" y2="-30"/><line x1="1114" y1="-90" x2="1142" y2="-30"/><line x1="1610" y1="-90" x2="1638" y2="-30"/>
+    </g>
+    <g id="g-a4-12-anemometer-r4" class="g-a4-12-rain">
+      <line x1="-312" y1="-90" x2="-284" y2="-30"/><line x1="184" y1="-90" x2="212" y2="-30"/><line x1="680" y1="-90" x2="708" y2="-30"/><line x1="1176" y1="-90" x2="1204" y2="-30"/><line x1="1672" y1="-90" x2="1700" y2="-30"/>
+    </g>
+    <g id="g-a4-12-anemometer-r5" class="g-a4-12-rain">
+      <line x1="-250" y1="-90" x2="-222" y2="-30"/><line x1="246" y1="-90" x2="274" y2="-30"/><line x1="742" y1="-90" x2="770" y2="-30"/><line x1="1238" y1="-90" x2="1266" y2="-30"/><line x1="1734" y1="-90" x2="1762" y2="-30"/>
+    </g>
+    <g id="g-a4-12-anemometer-r6" class="g-a4-12-rain">
+      <line x1="-188" y1="-90" x2="-160" y2="-30"/><line x1="308" y1="-90" x2="336" y2="-30"/><line x1="804" y1="-90" x2="832" y2="-30"/><line x1="1300" y1="-90" x2="1328" y2="-30"/><line x1="1796" y1="-90" x2="1824" y2="-30"/>
+    </g>
+    <g id="g-a4-12-anemometer-r7" class="g-a4-12-rain">
+      <line x1="-126" y1="-90" x2="-98" y2="-30"/><line x1="370" y1="-90" x2="398" y2="-30"/><line x1="866" y1="-90" x2="894" y2="-30"/><line x1="1362" y1="-90" x2="1390" y2="-30"/><line x1="1858" y1="-90" x2="1886" y2="-30"/>
+    </g>
+  </svg>
+  <div id="g-a4-12-anemometer-src">Isaac Cline, Monthly Weather Review, September 1900, p. 373</div>
+  <div id="g-a4-12-anemometer-note">Roof and gauge: schematic</div>
+  <div id="g-a4-12-anemometer-cw1" class="g-a4-12-cw"><div id="g-a4-12-anemometer-c1" class="g-a4-12-chip"><div class="g-a4-12-main">84 MPH &#183; 6:15 PM</div><div class="g-a4-12-tag">five-minute record</div></div></div>
+  <div id="g-a4-12-anemometer-cw2" class="g-a4-12-cw"><div id="g-a4-12-anemometer-c2" class="g-a4-12-chip"><div class="g-a4-12-main">AT LEAST 120 MPH</div><div class="g-a4-12-tag">Cline's estimate, before 8 PM</div></div></div>
+  <div id="g-a4-12-anemometer-flash"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-12-anemometer-";
+  /* TIMING: audio/a4-s7.words.json, host starts at segment 8.86, comp-local = word time - 8.86 (host 0.00 to 10.40).
+     At @8.86 (ROOF, local 0.00) ; 6 @8.98 ; .15 @9.22 (local 0.36, spin speeds up) ; clocked @12.02 (local 3.16, C1 in) ;
+     84 @12.42 (3.56) ; Then @14.20 (5.34, C1 out) ; blew @14.90 (6.04, tear-off) ; the @16.56 (7.70, C2 in) ;
+     least @17.78 (8.92) ; hour. ends @19.26 (10.40) */
+
+  /* hidden states (CSS hides them too); transforms start here */
+  tl.set(P+"src", {autoAlpha:0}, 0);
+  tl.set(P+"note", {autoAlpha:0}, 0);
+  tl.set(P+"flash", {autoAlpha:0}, 0);
+  tl.set([P+"c1", P+"c2"], {autoAlpha:0, y:24, x:0, scale:0.94}, 0);
+  tl.set([P+"cw1", P+"cw2"], {y:0}, 0);
+  tl.set(P+"rotor", {x:0, y:0, rotation:0, svgOrigin:"760 400"}, 0);
+  tl.set(P+"mast", {rotation:0, svgOrigin:"760 820"}, 0);
+
+  /* frame 0: roof, mast, spinning rotor; source line and note come in */
+  tl.to(P+"src", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  tl.to(P+"note", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+
+  /* rotor spin: one angle drives the 4 cups on the 260 x 70 ellipse (front cups drawn larger).
+     1 rev per 0.6 s (600 deg/s) to .15 @0.36, then 1 rev per 0.35 s (1028.57 deg/s) until the tear-off ends at 6.94 */
+  const A = { a: 0 };
+  const draw = function() {
+    for (let k = 0; k < 4; k++) {
+      const th = (A.a + 90 * k) * Math.PI / 180;
+      const x = 760 + 130 * Math.cos(th), y = 400 + 35 * Math.sin(th);
+      const cup = document.getElementById("g-a4-12-anemometer-cup" + (k + 1));
+      const arm = document.getElementById("g-a4-12-anemometer-arm" + (k + 1));
+      if (cup) { cup.setAttribute("cx", x.toFixed(1)); cup.setAttribute("cy", y.toFixed(1)); cup.setAttribute("r", (22 + 4 * Math.sin(th)).toFixed(1)); }
+      if (arm) { arm.setAttribute("x2", x.toFixed(1)); arm.setAttribute("y2", y.toFixed(1)); }
+    }
+  };
+  tl.to(A, { a: 216, duration: 0.36, ease: "none", onUpdate: draw }, 0);
+  tl.to(A, { a: 6984, duration: 6.58, ease: "none", onUpdate: draw }, 0.36);
+
+  /* rain throughout: 8 groups, each one phase of a 1.3 s fall (x +560, y +1200). First leg finishes the cycle the group
+     starts in, then the group loops (repeat 9, runs past the host end). Streaks start and end off-frame, so no pop shows. */
+  tl.to(P+"r0", {x:560, y:1200, duration:1.3, ease:"none", repeat:9}, 0);
+  tl.fromTo(P+"r1", {x:70, y:150}, {x:560, y:1200, duration:1.1375, ease:"none"}, 0);
+  tl.fromTo(P+"r1", {x:0, y:0}, {x:560, y:1200, duration:1.3, ease:"none", repeat:9, immediateRender:false}, 1.1375);
+  tl.fromTo(P+"r2", {x:140, y:300}, {x:560, y:1200, duration:0.975, ease:"none"}, 0);
+  tl.fromTo(P+"r2", {x:0, y:0}, {x:560, y:1200, duration:1.3, ease:"none", repeat:9, immediateRender:false}, 0.975);
+  tl.fromTo(P+"r3", {x:210, y:450}, {x:560, y:1200, duration:0.8125, ease:"none"}, 0);
+  tl.fromTo(P+"r3", {x:0, y:0}, {x:560, y:1200, duration:1.3, ease:"none", repeat:9, immediateRender:false}, 0.8125);
+  tl.fromTo(P+"r4", {x:280, y:600}, {x:560, y:1200, duration:0.65, ease:"none"}, 0);
+  tl.fromTo(P+"r4", {x:0, y:0}, {x:560, y:1200, duration:1.3, ease:"none", repeat:9, immediateRender:false}, 0.65);
+  tl.fromTo(P+"r5", {x:350, y:750}, {x:560, y:1200, duration:0.4875, ease:"none"}, 0);
+  tl.fromTo(P+"r5", {x:0, y:0}, {x:560, y:1200, duration:1.3, ease:"none", repeat:9, immediateRender:false}, 0.4875);
+  tl.fromTo(P+"r6", {x:420, y:900}, {x:560, y:1200, duration:0.325, ease:"none"}, 0);
+  tl.fromTo(P+"r6", {x:0, y:0}, {x:560, y:1200, duration:1.3, ease:"none", repeat:9, immediateRender:false}, 0.325);
+  tl.fromTo(P+"r7", {x:490, y:1050}, {x:560, y:1200, duration:0.1625, ease:"none"}, 0);
+  tl.fromTo(P+"r7", {x:0, y:0}, {x:560, y:1200, duration:1.3, ease:"none", repeat:9, immediateRender:false}, 0.1625);
+
+  /* clocked @3.16: C1 in (84 follows at 3.56); readable 1.7 s before it leaves; drifts until it leaves */
+  tl.fromTo(P+"c1", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)", immediateRender:false}, 3.16);
+  tl.to(P+"cw1", {y:-4, duration:0.9, ease:"sine.inOut", yoyo:true, repeat:1}, 3.61);
+  /* Then @5.34: C1 slides out by 5.94, before the rotor goes */
+  tl.to(P+"c1", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.34);
+
+  /* blew @6.04: rotor tears off (6.04 to 6.94), beat-accent flash 0.1 s; path stays above y 680 and leaves on the right */
+  tl.to(P+"flash", {autoAlpha:0.35, duration:0.04, ease:"power2.out"}, 6.04);
+  tl.to(P+"flash", {autoAlpha:0, duration:0.06, ease:"power2.in"}, 6.08);
+  tl.to(P+"rotor", {x:1500, duration:0.9, ease:"power2.in"}, 6.04);
+  tl.to(P+"rotor", {y:-300, duration:0.9, ease:"power3.out"}, 6.04);
+  tl.to(P+"rotor", {rotation:540, duration:0.9, ease:"none"}, 6.04);
+  /* the bare mast whips: 3 cycles of +-6 deg, then settles and sways slightly */
+  tl.to(P+"mast", {rotation:6, duration:0.12, ease:"power2.out"}, 6.04);
+  tl.to(P+"mast", {rotation:-6, duration:0.24, ease:"sine.inOut"}, 6.16);
+  tl.to(P+"mast", {rotation:6, duration:0.24, ease:"sine.inOut"}, 6.40);
+  tl.to(P+"mast", {rotation:-6, duration:0.24, ease:"sine.inOut"}, 6.64);
+  tl.to(P+"mast", {rotation:6, duration:0.24, ease:"sine.inOut"}, 6.88);
+  tl.to(P+"mast", {rotation:0, duration:0.4, ease:"power2.out"}, 7.12);
+  tl.to(P+"mast", {rotation:0.8, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:2}, 7.52);
+
+  /* the @7.70: C2 in, after the rotor is gone (6.94); readable 1.65 s before its exit; the tag says estimate */
+  tl.fromTo(P+"c2", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)", immediateRender:false}, 7.70);
+  tl.to(P+"cw2", {y:-4, duration:0.85, ease:"sine.inOut", yoyo:true, repeat:1}, 8.15);
+
+  /* exit 9.80 to 10.40: C2 slides out, cut to g-a4-13 at 10.40 */
+  tl.to(P+"c2", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 9.80);
+
+  window.__timelines["g-a4-12-anemometer"] = tl;
+})();
+</script>
+</template>
