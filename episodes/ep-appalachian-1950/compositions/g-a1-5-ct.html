@@ -255,7 +255,7 @@ window.__timelines = window.__timelines || {};
   /* HARTFORD @10.74: pin; label once the camera settles (11.02) */
   tl.fromTo(P + "hfd", so("997 210", { autoAlpha: 0, scale: 0 }), so("997 210", { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }), C.hfd);
   tl.fromTo(P + "hfdlab", { autoAlpha: 0, x: 12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, C.inland + 1.0);
-  tl.fromTo(P + "hfd-pulse", { opacity: 0.8, attr: { r: 14 } }, { opacity: 0, attr: { r: 36 }, duration: 1.0, ease: "power1.out" }, C.hfd + 0.2);
+  tl.fromTo(P + "hfd-pulse", { opacity: 0.8, attr: { r: 14 } }, { opacity: 0, attr: { r: 36 }, duration: 1.0, ease: "power1.out", immediateRender: false }, C.hfd + 0.2);
 
   /* 35 @11.46: dashed line Hartford -> shore */
   tl.fromTo(P + "dist", so("997 218", { autoAlpha: 0, scaleY: 0 }), so("997 218", { autoAlpha: 1, scaleY: 1, duration: 0.8, ease: "power2.inOut" }), C.n35);
