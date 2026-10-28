@@ -121,17 +121,12 @@ window.__timelines = window.__timelines || {};
 
   // scale geometry
   [30, 20, 10, 0, -10, -20, -30].forEach((v) => {
-    const g = document.createElementNS(NS, "line");
-    set(g, { x1: 220, x2: 1500, y1: Y(v), y2: Y(v) });
-    $("grid").appendChild(g);
-    $("v" + (v < 0 ? "m" + (-v) : v)).setAttribute("y", Y(v));
+    const k = v < 0 ? "m" + (-v) : v;
+    set($("g" + k), { y1: Y(v), y2: Y(v) });
+    $("v" + k).setAttribute("y", Y(v));
   });
   set($("zero"), { y1: Y(0), y2: Y(0) });
-  [0, 6, 12, 18, 24, 30].forEach((h) => {
-    const t = document.createElementNS(NS, "line");
-    set(t, { x1: X(h), x2: X(h), y1: 800, y2: 812 });
-    $("ticks").appendChild(t);
-  });
+  [0, 6, 12, 18, 24, 30].forEach((h) => set($("k" + h), { x1: X(h), x2: X(h) }));
   set($("m10"), { y1: Y(-10), y2: Y(-10) });
 
   // band 12:33 Fri -> 14:45 Sat, y(-10) -> 800
