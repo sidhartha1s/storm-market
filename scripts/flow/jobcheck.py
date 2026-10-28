@@ -4,6 +4,9 @@ Swapping the character sheet in as the frame, or rewriting the room in the promp
 background. The frame is the room; the sheet is only an ingredient.
 """
 LOCKED_FRAME = "assets/paul/paul-start-frame-omni-v2.png"  # owner-made 22 Oct 26 evening; v1 .jpg is history
+# An episode may carry its own owner-picked start frame (Buffalo's Christmas look C, owner devq 27 Oct 26);
+# scripts/paul_start_frame.py then holds every clip of that episode to the one frame.
+EPISODE_FRAME = re.compile(r"/episodes/[^/]+/media/paul/paul-start-frame-[^/]+\.(png|jpg)$")
 BANNED = ("quiet study",)
 
 
@@ -11,8 +14,9 @@ def errors(cfg):
     out = []
     for job in cfg["jobs"]:
         frame = job["frame"].replace("\\", "/").lower()
-        if "paul" in frame and LOCKED_FRAME not in frame:
-            out.append(f"{job['name']}: frame {job['frame']} is not Paul's locked start frame ({LOCKED_FRAME})")
+        if "paul" in frame and LOCKED_FRAME not in frame and not EPISODE_FRAME.search(frame):
+            out.append(f"{job['name']}: frame {job['frame']} is not Paul's locked start frame ({LOCKED_FRAME}) "
+                       "or an episode's media/paul/paul-start-frame-*")
         for phrase in BANNED:
             if phrase in job["prompt"].lower():
                 out.append(f"{job['name']}: prompt rewrites the room ('{phrase}'); keep the start frame's room")
