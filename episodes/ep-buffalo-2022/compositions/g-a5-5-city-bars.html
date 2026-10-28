@@ -109,7 +109,7 @@ window.__timelines = window.__timelines || {};
       const el = document.getElementById("cb-val22"); if (el) el.textContent = Math.round(cnt.v);
   } }, 11.38);
   tl.to($("srcA"), { autoAlpha: 0, y: -8, duration: 0.3, ease: "power2.in" }, 11.38);
-  tl.fromTo($("srcB"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.38);
+  tl.fromTo($("srcB"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.68); /* after srcA is gone (same spot) */
 
   /* 13.55 exit: everything but the ground (35 settled 12.03-13.55 = 1.52 s), no stagger so it ends 14.10 inside the 14.126 host */
   tl.to([$("eyebrow"), $("head"), $("lab77"), $("track77"), $("bar77"), $("val77"),
