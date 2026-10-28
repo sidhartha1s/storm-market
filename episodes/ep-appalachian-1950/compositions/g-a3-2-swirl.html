@@ -131,25 +131,32 @@ window.__timelines = window.__timelines || {};
       return { x: p.x, y: p.y, r: r };
     } };
   }
+  // head tip HEAD px ahead of the shaft point at a length, along its tangent
+  function tipAt(tr, len) {
+    var h = tr.at(len), a = h.r * Math.PI / 180;
+    return { x: h.x + HEAD * Math.cos(a), y: h.y + HEAD * Math.sin(a), r: h.r };
+  }
   // a head follows the reveal in n linear legs sampled on the same ease as the mask
-  function ride(tr, head, l0, l1, start, dur, ease, n) {
+  function ride(tr, head, start, dur, ease, n) {
     var e = gsap.parseEase(ease);
     for (var k = 1; k <= n; k++) {
-      var h = tr.at(l0 + (l1 - l0) * e(k / n));
+      var h = tipAt(tr, tr.L * e(k / n));
       tl.to(head, { x: h.x, y: h.y, rotation: h.r, duration: dur / n, ease: "none" }, start + dur * (k - 1) / n);
     }
   }
-  // one air arrow: mask draws the shaft (stopping TIP px short of the tip), head rides, dashes run to the host end
+  // one air arrow: mask draws the shaft, head rides 24 px ahead, dashes run to the host end and stop on a whole
+  // dash period (offset = 0 mod 70), so the cut to g-a3-3 (dash offset 0 at its frame 0) keeps the dash phase
   var arrows = [];
   function arrow(name, start, dur) {
     var path = $(name), mask = $(name + "-m"), head = $(name + "-h");
-    var tr = tracer(path), ML = Math.ceil(tr.L) + 1, p = tr.at(TIP);
+    var tr = tracer(path), ML = Math.ceil(tr.L) + 1, p = tipAt(tr, 0);
+    var run = Math.round(SPEED * (END - start) / DASH) * DASH;
     tl.set(mask, { strokeDasharray: ML + " " + ML, strokeDashoffset: ML }, 0);
     tl.set(head, { x: p.x, y: p.y, rotation: p.r, transformOrigin: "100% 50%" }, 0);
     tl.set([path, head], { autoAlpha: 0.9 }, start);
-    tl.to(mask, { strokeDashoffset: ML - (tr.L - TIP), duration: dur, ease: "power2.out" }, start);
-    ride(tr, head, TIP, tr.L, start, dur, "power2.out", 24);
-    tl.fromTo(path, { strokeDashoffset: 0 }, { strokeDashoffset: -SPEED * (END - start), duration: END - start, ease: "none" }, start);
+    tl.to(mask, { strokeDashoffset: ML - tr.L, duration: dur, ease: "power2.out" }, start);
+    ride(tr, head, start, dur, "power2.out", 24);
+    tl.fromTo(path, { strokeDashoffset: 0 }, { strokeDashoffset: -run, duration: END - start, ease: "none" }, start);
     arrows.push({ name: name, tr: tr, mask: mask, head: head, ML: ML, start: start, dur: dur });
   }
 
