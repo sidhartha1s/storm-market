@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a5-4-princeton (A5-S4, standard): slow pan down the left rack column of the IAS computer photo (faces cropped out),
+  red Abril popfig "PRINCETON" / "NEW JERSEY", text-only name card "JULE CHARNEY", bottom-left source line.
+  Host: data-start = A5-S4 audio start, data-duration 18.40, track 2, full frame. Cue times are LOCAL = audio/a5-s4.words.json times.
+  Photo: media/a5/ias-machine-1952.jpg (1500 x 1125; orchestrator copies it from media/candidates/a5/A5-S4_c2_von-neumann-oppenheimer-ias-1952.jpg).
+  Crop: box 430 x 242 source px at crop_x 40 (fixed), scale 1920/430 = 4.465. crop_y 140 at 0.00 to 818 at 18.40, ease none.
+  Faces sit at source x 620 to 1160; the crop reaches x 470 only, so no face is in any frame. No "1950" on screen; "1952" only in the source line.
+  Fallback if the 4.465x crop reads as mush on the frame read: self-made line drawing of a 1950s room-sized computer, same text and cues, source line "Source: AMS".
+  This build ships the PHOTO version.
+  Font: fonts/AbrilFatface-Regular.ttf under the episode root.
+-->
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-a5-4-princeton-root { position:absolute; inset:0; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  #a54-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; }
+  /* 1500 x 1125 photo, GSAP scales it 4.465x from the top-left corner and pans it */
+  #a54-photo { position:absolute; left:0; top:0; width:1500px; height:1125px; max-width:none; filter:sepia(0.28) contrast(1.08) brightness(0.96) saturate(0.8); }
+  #a54-dim { position:absolute; left:0; top:0; width:1920px; height:1080px; background:rgba(3,5,8,0.25); }
+
+  /* popfig: block top y 330, centred x 960, inside the text-safe box x 96..1824 */
+  #a54-pop { position:absolute; left:96px; top:330px; width:1728px; height:200px; text-align:center; white-space:nowrap; transform-origin:50% 50%; opacity:0; visibility:hidden; }
+  #a54-popfloat { position:absolute; left:0; top:0; width:1728px; height:200px; }
+  .a54-big { position:absolute; left:0; right:0; top:0; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:150px; color:#d0121f; letter-spacing:0.04em; opacity:0; visibility:hidden; transform-origin:50% 50%;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  .a54-sub { position:absolute; left:0; right:0; top:162px; font-family:Arial, sans-serif; font-weight:700; font-size:32px; line-height:38px; color:#e8e3d8; letter-spacing:0.42em; opacity:0; visibility:hidden;
+    text-shadow:0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+
+  /* name card: one glass pill, text only, bottom 150, centred */
+  #a54-name { position:absolute; left:96px; right:96px; bottom:150px; opacity:0; visibility:hidden; }
+  #a54-namefloat { display:table; margin:0 auto; padding:10px 42px; border-radius:28px; text-align:center;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); }
+  .a54-nm { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; line-height:72px; color:#f2f5f8; text-shadow:0 3px 24px rgba(0,0,0,0.85); }
+  .a54-ns { display:block; margin-top:10px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:32px; line-height:38px; color:#e8c56a; opacity:0; visibility:hidden; }
+
+  /* source line: bottom-left, left 110, bottom 60 */
+  #a54-src { position:absolute; left:110px; bottom:60px; padding:6px 16px; border-radius:28px; font-family:Arial, sans-serif; font-weight:700; font-size:20px; line-height:26px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); }
+
+  /* end fade-through to black */
+  #a54-black { position:absolute; left:0; top:0; width:1920px; height:1080px; background:#030507; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-4-princeton-root" data-composition-id="g-a5-4-princeton" data-width="1920" data-height="1080">
+  <div id="a54-stage">
+    <img id="a54-photo" src="media/a5/ias-machine-1952.jpg" alt="">
+    <div id="a54-dim"></div>
+  </div>
+  <div id="a54-pop">
+    <div id="a54-popfloat">
+      <span class="a54-big" id="a54-big">PRINCETON</span>
+      <span class="a54-sub" id="a54-sub">NEW JERSEY</span>
+    </div>
+  </div>
+  <div id="a54-name">
+    <div id="a54-namefloat">
+      <span class="a54-nm" id="a54-nm">JULE CHARNEY</span>
+      <span class="a54-ns" id="a54-ns">Meteorology group, Princeton</span>
+    </div>
+  </div>
+  <div id="a54-src">Photo: IAS computer, Princeton, 1952 &middot; Source: AMS</div>
+  <div id="a54-black"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const A = "#a54-";
+  /* photo: 4.465x from the top-left, crop_x 40 -> x -178.6; crop_y 140 -> y -625.1 */
+  tl.set(A+"photo", {transformOrigin:"0 0", scale:4.465, x:-178.6, y:-625.1}, 0);
+  tl.set([A+"pop", A+"big", A+"sub", A+"name", A+"ns", A+"src", A+"black"], {autoAlpha:0}, 0);
+  tl.set([A+"popfloat", A+"namefloat"], {y:0}, 0);
+
+  /* 0.00 to 18.40: pan to crop_y 818 (y -3652.4), ease none, carries the whole window */
+  tl.to(A+"photo", {y:-3652.4, duration:18.4, ease:"none"}, 0);
+
+  /* source line in at 0.60 */
+  tl.fromTo(A+"src", {autoAlpha:0, x:-20}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 0.6);
+
+  /* PRINCETON @1.12: big line punches in */
+  tl.set(A+"pop", {autoAlpha:1}, 1.12);
+  tl.fromTo(A+"big", {autoAlpha:0, scale:1.25}, {autoAlpha:1, scale:1, duration:0.45, ease:"back.out(1.6)"}, 1.12);
+  /* NEW @1.84: sub line in */
+  tl.fromTo(A+"sub", {autoAlpha:0, y:18}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.84);
+  /* 2.20 to 3.10: popfig floats up */
+  tl.to(A+"popfloat", {y:-8, duration:0.9, ease:"sine.inOut"}, 2.2);
+  /* 3.10 exit, gone by 3.60 */
+  tl.to(A+"pop", {autoAlpha:0, y:-40, scale:0.96, duration:0.5, ease:"power3.in"}, 3.1);
+
+  /* JULE @3.78: name pill in; CHARNEY @4.00: sub line in */
+  tl.set(A+"name", {autoAlpha:1}, 3.78);
+  tl.fromTo(A+"nm", {autoAlpha:0, y:30}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 3.78);
+  tl.fromTo(A+"ns", {autoAlpha:0, y:12}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 4.0);
+  /* 4.50 to 8.80: pill floats, 2 legs of 2.15 s */
+  tl.to(A+"namefloat", {y:-6, duration:2.15, ease:"sine.inOut", repeat:1, yoyo:true}, 4.5);
+  /* WORKED @8.34: name card exits at 8.80 */
+  tl.to(A+"name", {y:30, autoAlpha:0, duration:0.5, ease:"power3.in"}, 8.8);
+
+  /* 9.30 to 17.88: pan alone. 18.00 to 18.40: fade-through to black, lands on the host end */
+  tl.to(A+"black", {autoAlpha:1, duration:0.4, ease:"power1.in"}, 18.0);
+  window.__timelines["g-a5-4-princeton"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
