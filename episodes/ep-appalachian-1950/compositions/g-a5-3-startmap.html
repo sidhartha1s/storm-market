@@ -104,64 +104,15 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  const P = "#ih2-";
-  const $ = function (n) { return document.getElementById("ih2-" + n); };
-  const proj = function (lon, lat) { return [3841 * (lon + 97.576), -5585 * (lat - 46.6213)]; };
-  const NWK = proj(-74.1724, 40.7357), PIT = proj(-79.9959, 40.4406), BUF = proj(-78.8784, 42.8864);
-
-  /* segment offsets (comp-local s), 0.40 s gaps assumed; cue = SEG[seg] + words.json time */
-  const SEG = { h1s2: 0.000, h1s3: 7.065, h1s4: 11.230, h1s5: 21.580 };
-  const DUR = SEG.h1s5 + 7.101;                                               /* 28.681 */
-
-  /* camera frames [s, top-left x, top-left y] -> centre form [s, cx, cy] */
-  const fr = function (s, tx, ty) { return [s, tx + 960 / s, ty + 540 / s]; };
-  const A = fr(0.12, 80726.5, 28204.4), B = fr(0.04024, 54602.7, 19608.7);
-  const C = fr(0.04024, 48638.5, 14141.5), D = fr(0.04024, 59078.1, 18954.6);
-  const DW = [D[0] / 1.03, D[1], D[2]];                                       /* D, 3 % wider */
-  const scr = function (f, p) { return [960 + (p[0] - f[1]) * f[0], 540 + (p[1] - f[2]) * f[0]]; };
-  const NWK_A = scr(A, NWK), NWK_B = scr(B, NWK);
-  const S_A1 = A[0] * (1 + 0.02 * 2.06 / 3.4);                                /* drift-in 2 % per 3.4 s, until 2.06 */
-
-  const expo = gsap.parseEase("expo.inOut"), p2 = gsap.parseEase("power2.inOut");
-  const lerp = function (a, b, u) { return a + (b - a) * u; };
-  function logLerpScale(fromScale, toScale, t) {                              /* helpers.js logZoom */
-    return Math.exp(Math.log(fromScale) + (Math.log(toScale) - Math.log(fromScale)) * t);
-  }
-  /* centre that puts map point p at screen (px, py) at scale s */
-  const anchor = function (p, px, py, s) { return [s, p[0] - (px - 960) / s, p[1] - (py - 540) / s]; };
-  function state(t) {
-    if (t < 2.06) return anchor(NWK, NWK_A[0], NWK_A[1], A[0] * (1 + 0.02 * t / 3.4));   /* THATS: drift in on Newark */
-    if (t < 3.96) {                                                            /* INLAND: logZoom A -> B, Newark glides */
-      const u = expo((t - 2.06) / 1.9);
-      return anchor(NWK, lerp(NWK_A[0], NWK_B[0], u), lerp(NWK_A[1], NWK_B[1], u), logLerpScale(S_A1, B[0], u));
-    }
-    if (t < SEG.h1s4) return B;
-    if (t < SEG.h1s4 + 1.0) {                                                  /* YOUD: pan B -> C */
-      const u = p2(t - SEG.h1s4);
-      return [B[0], lerp(B[1], C[1], u), lerp(B[2], C[2], u)];
-    }
-    if (t < SEG.h1s5) return C;
-    if (t < SEG.h1s5 + 1.4) {                                                  /* ITS: pan C -> D wide */
-      const u = p2((t - SEG.h1s5) / 1.4);
-      return [lerp(C[0], DW[0], u), lerp(C[1], DW[1], u), lerp(C[2], DW[2], u)];
-    }
-    const PUSH0 = SEG.h1s5 + 1.4, PUSH1 = DUR - 0.08;                          /* slow push, lands exactly on D */
-    if (t < PUSH1) return [logLerpScale(DW[0], D[0], (t - PUSH0) / (PUSH1 - PUSH0)), D[1], D[2]];
-    return D;
-  }
+  const P = "#a53-";
+  const $ = function (n) { return document.getElementById("a53-" + n); };
+  const DUR = 17.4;                                   /* last cue 16.72 (northwest) + land time, brief host duration */
+  /* camera frames (brief §2): transform = translate(-TL * s) scale(s) */
+  const CAM_N = "translate(925.73,443.58) scale(0.00645)";      /* N  s 0.00645  TL (-143524.0, -68772.7) */
+  const CAM_N2 = "translate(561.40,229.81) scale(0.008385)";    /* N2 s 0.008385 TL (-66952.8, -27407.5) */
+  const RIP = "1009 455", CORE = "494 250", MID = "960 540";    /* svgOrigins: ripple, mass core (frame-N px), frame centre */
   const camEl = $("cam");
-  const pins = [[$("nwk-at"), NWK], [$("pit-at"), PIT], [$("buf-at"), BUF]];
-  const chips = [[$("nwkchip-at"), NWK], [$("pitchip-at"), PIT], [$("bufchip-at"), BUF]];
-  function camAt(t) {
-    const c = state(t), s = c[0], cx = c[1], cy = c[2];
-    camEl.setAttribute("transform", "translate(" + (960 - cx * s).toFixed(2) + "," + (540 - cy * s).toFixed(2) + ") scale(" + s.toFixed(6) + ")");
-    for (let i = 0; i < pins.length; i++) {
-      const p = pins[i][1], x = (960 + (p[0] - cx) * s).toFixed(2), y = (540 + (p[1] - cy) * s).toFixed(2);
-      pins[i][0].setAttribute("transform", "translate(" + x + "," + y + ")");
-      chips[i][0].style.transform = "translate(" + x + "px," + y + "px)";
-    }
-  }
-  camAt(0);
+  camEl.setAttribute("transform", CAM_N);                       /* frame N on the exact first frame */
 
   /* basemap paint order: coast under-stroke (half hidden by the fills), then fills with state lines */
   [$("ca"), $("us")].forEach(function (el) {
