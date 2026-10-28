@@ -12,7 +12,8 @@
      frame stands in as a still and the TTS takes h1-s1.wav / a3-s12.wav carry his lines. A5 has no graphics list yet: every A5
      beat sits on a stand-in still or clip. No presenter circle, no bed, no SFX yet. g-a3-10-hochul-lt not mounted (no file,
      no licensed Hochul still). g-a4-10-ems-pins is mounted while it is still being built (file arrives).
-     CTA at 678.396 s of 1065.987 s = 0.636, outside config channel.cta.window [0.40, 0.60]: the scripted hinge sits there. -->
+     CTA at 502.2 s of 1065.823 s = 0.471, inside config channel.cta.window [0.40, 0.60]. -->
+     <!-- A2-S10 -> CTA: g-a2-11 (16.40 s) is cut at 15.736 s so the dip-in sits 0.087 s after the last word (lint dip_in 1.0 + 0.1). -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -26,7 +27,7 @@
     video { width: 100%; height: 100%; object-fit: cover; }
     .still-wrap { overflow: hidden; }
     .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
-    .still-wrap img.soft { filter: blur(8px) brightness(0.8); }
+    .still-wrap img.soft { inset: -24px; width: calc(100% + 48px); height: calc(100% + 48px); filter: blur(8px) brightness(0.8); } /* oversize so the blur's dark edge falls off-frame */
     .clip { position: absolute; inset: 0; }
     .blackout { position: absolute; inset: 0; background: #000; }
     .ground { position: absolute; inset: 0; background: #04070c; }
