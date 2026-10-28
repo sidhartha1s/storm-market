@@ -64,7 +64,11 @@
       <linearGradient id="a42-coldgrad" gradientUnits="userSpaceOnUse" x1="0" y1="56286" x2="0" y2="57086">
         <stop offset="0" stop-color="#5a768f" stop-opacity="0.38"/><stop offset="1" stop-color="#5a768f" stop-opacity="0"/>
       </linearGradient>
-      <clipPath id="a42-land" clipPathUnits="userSpaceOnUse"><use href="#a42-us"/><use href="#a42-ca"/></clipPath>
+      <clipPath id="a42-land" clipPathUnits="userSpaceOnUse"><use href="#a42-us"/><use href="#a42-ca"/><use href="#a42-south"/></clipPath>
+      <!-- the south land (TIGER) is shown only south of the Natural Earth seam (y 64905), with 100 units of overlap (as g-a4-4) -->
+      <clipPath id="a42-southclip" clipPathUnits="userSpaceOnUse"><rect x="-20000" y="64805" width="160000" height="80000"/></clipPath>
+      <!-- crop rows and glints stay inside Georgia and South Carolina -->
+      <clipPath id="a42-gasc" clipPathUnits="userSpaceOnUse"><use href="#a42-ga"/><use href="#a42-sc"/></clipPath>
       <!-- east boundary (_list.md), map units: (46.0,-81.0) (42.3,-79.6) (40.8,-78.0) (39.0,-77.0) (36.5,-78.5)
            (34.0,-77.8) (32.0,-80.8) (30.0,-81.4); north edge lat 60, south lat 24, west lon -110 -->
       <clipPath id="a42-east" clipPathUnits="userSpaceOnUse">
