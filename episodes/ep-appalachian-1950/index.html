@@ -36,7 +36,7 @@
   </style>
 </head>
 <body>
-<div id="root" data-composition-id="ep-appalachian-1950" data-start="0" data-width="1920" data-height="1080" data-duration="948.424" data-fps="30">
+<div id="root" data-composition-id="ep-appalachian-1950" data-start="0" data-width="1920" data-height="1080" data-duration="950.773" data-fps="30">
 
   <!-- ============ NARRATION (0.40 s gaps; see header for the duration sources) ============ -->
   <!-- h1-s1 is Paul's on-camera line, spoken by ins-paul-1 (PICTURE, track 1), so no TTS here (29 Oct 26) -->
@@ -107,7 +107,7 @@
   <audio id="nx-a5-s7" src="audio/a5-s7.wav" data-start="884.942" data-duration="12.132" data-volume="0.89"></audio><!-- DUR:wav -->
   <audio id="nx-a5-s8" data-cut-by="ins-paul-6" src="audio/a5-s8.wav" data-start="897.474" data-duration="15.62" data-volume="0.89"></audio><!-- DUR:wav -->
   <!-- END ASK 915.569 to 931.069 (Paul's own voice, ins-paul-e1/e2; narration silent under it) -->
-  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="934.704" data-duration="11.962" data-volume="0.89"></audio><!-- DUR:wav -->
+  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="937.053" data-duration="11.962" data-volume="0.89"></audio><!-- DUR:wav -->
   <!-- BEDS (DeAPI scores, claim-free). Off under CTA + dips 459.053-485.095 and the end ask 915.569-931.069 -->
   <audio id="sx-bed-a1" src="media/beds/score-act3-somber.mp3" data-bed="" data-start="0" data-duration="112" data-volume="0.13"></audio>
   <audio id="sx-bed-a2" src="media/beds/score-act1-darkambient.mp3" data-bed="" data-start="112.212" data-duration="165" data-volume="0.13"></audio>
@@ -150,8 +150,8 @@
   <section class="clip ground" id="gp-a2-s12" data-start="430.4" data-duration="0.236" data-track-index="2"></section>
   <section class="clip ground" id="gp-a2-s13" data-start="443.756" data-duration="0.305" data-track-index="2"></section>
   <section class="clip ground" id="gp-a2-s14" data-start="455.521" data-duration="0.156" data-track-index="2"></section>
-  <!-- A2-S15: STAND-IN for ins-paul-4: the beat's own pick, the 25 Nov surface chart, soft (Picture line); hard cut to the CTA dip -->
-  <section class="clip still-wrap" id="c-a2-paul" data-start="455.677" data-duration="5.972" data-track-index="1" data-callback="stand-in for Paul's clip P4 (ins-paul-4 not generated): A2-S15's own pick, the Saturday chart behind his line"><img id="kb-a2-paul" src="media/a2/A2-S15_c1_nws-jkl-surface-1950-11-25.jpg" alt=""></section>
+  <!-- A2-S15: Paul's real Flow clip ins-paul-4 (speech 0.362-3.99, 4.33-6.06, 6.57-8.01 of the file; media-start 0.06 leaves 0.30 s lead-in, seam 0.30 s after speech end); hard cut to the CTA dip -->
+  <video id="ins-paul-4" src="media/paul/ins-paul-4/ins-paul-4-v2.mp4" data-start="455.677" data-duration="8.252" data-media-start="0.06" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="There's one line on that Saturday's weather map that ties Newark and Pittsburgh together. I'll draw it for you right after this."></video>
 
   <!-- ===== CTA (config.yaml channel.cta, 48.7 % of runtime) ===== -->
   <section class="clip blackout" id="bo-cta-in" data-start="461.649" data-duration="1.0" data-track-index="1"></section>
@@ -176,7 +176,7 @@
   <section class="clip blackout" id="bo-a5" data-start="780.156" data-duration="0.7" data-track-index="1"></section>
   <!-- A5-S8 sentence 4: Paul's real Flow clip ins-paul-6 (speech 0.614-3.742 and 4.937-8.069 of the file; media-start 0.31 leaves 0.30 s lead-in, seam 0.30 s after speech end) -->
   <video id="ins-paul-6" src="media/paul/ins-paul-6/ins-paul-6-v2.mp4" data-start="913.094" data-duration="8.059" data-media-start="0.31" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="So the next time you check the weather before a holiday drive, you're using a system that traces back to that miss."></video>
-  <section class="clip ground" id="gp-a5-s8" data-start="918.804" data-duration="0.4" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a5-s8" data-start="921.153" data-duration="0.4" data-track-index="2"></section>
 
   <!-- ===== A5 (every beat a full-frame comp; ground under the comp gaps, and under A5-S9 until g-a5-8's S9 fade is re-timed) ===== -->
   <section class="clip ground" id="gp-a5-s1" data-start="794.856" data-duration="0.386" data-track-index="2"></section>
@@ -186,9 +186,9 @@
   <section class="clip ground" id="gp-a5-s6" data-start="884.658" data-duration="0.284" data-track-index="2"></section>
   <section class="clip ground" id="gp-a5-s7" data-start="897.342" data-duration="0.132" data-track-index="2"></section>
   <!-- END ASK (config channel.end_ask, staged media/end-ask/), right before Paul's signature line A5-S9 and the close card; first clip inside the last 30 s (915.569 >= 944.789 - 30) -->
-  <video id="ins-paul-e1" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="919.204" data-duration="9.083" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
-  <video id="ins-paul-e2" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="928.287" data-duration="6.417" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
-  <section class="clip ground" id="c-a5-ground2" data-start="934.704" data-duration="13.72" data-track-index="2"></section>
+  <video id="ins-paul-e1" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="921.553" data-duration="9.083" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
+  <video id="ins-paul-e2" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="930.636" data-duration="6.417" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
+  <section class="clip ground" id="c-a5-ground2" data-start="937.053" data-duration="13.72" data-track-index="2"></section>
 
   <!-- PRESENTER CIRCLE (28 Oct 26, hand-mounted; mg-quickref "Corner circle", worked example ep-e2e-moore). Face pass:
        media/face/ep-appalachian-1950-face.mp4@0.000 (covers the whole timeline from 0, so each window seeks to its own start and
@@ -283,13 +283,13 @@
   <div id="host-g-a5-5" data-composition-id="g-a5-5-testcase" data-composition-src="compositions/g-a5-5-testcase.html" data-start="851.678" data-duration="32.98" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-g-a5-7" data-composition-id="g-a5-7-phillips" data-composition-src="compositions/g-a5-7-phillips.html" data-start="884.942" data-duration="12.4" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-g-a5-8" data-cut-by="ins-paul-6" data-composition-id="g-a5-8-splitmap" data-composition-src="compositions/g-a5-8-splitmap.html" data-start="897.474" data-duration="15.62" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a5-9" data-composition-id="g-a5-9-title" data-composition-src="compositions/g-a5-9-title.html" data-start="937.544" data-duration="10.88" data-track-index="3" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-9" data-composition-id="g-a5-9-title" data-composition-src="compositions/g-a5-9-title.html" data-start="939.893" data-duration="10.88" data-track-index="3" data-width="1920" data-height="1080"></div>
 
 </div>
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  const DUR = 948.424;
+  const DUR = 950.773;
   const tl = gsap.timeline({ paused: true });
   /* stills get a quick punch on their cut (no slow Ken Burns: DESIGN.md "Footage motion"); the overlay comps carry the motion after */
   const stills = [
