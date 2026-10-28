@@ -433,6 +433,17 @@ with sync_playwright() as p:
             if os.path.exists(path) and os.path.getsize(path):  # never write over a clip already on disk
                 path = path.replace(".mp4", f"-{time.strftime('%H%M%S')}.mp4")
             dl.value.save_as(path)
+            # Buffalo ins-paul-3 (29 Oct 26): save_as wrote 0 B while Chrome put the whole clip in its own Downloads folder
+            own = os.path.join(os.path.expanduser("~"), "Downloads", dl.value.suggested_filename)
+            for _ in range(60):
+                if os.path.getsize(path) or (os.path.exists(own) and os.path.getsize(own)):
+                    break
+                page.wait_for_timeout(1000)
+            if not os.path.getsize(path) and os.path.exists(own) and os.path.getsize(own):
+                os.remove(path)
+                path = path.replace(".mp4", f"-{time.strftime('%H%M%S')}.mp4")
+                shutil.copy2(own, path)
+                log("[FALLBACK] save_as wrote 0 B; copied Chrome's own download", own)
             shot(page, f"dl-{i + 1:02d}")
             log("saved", path, os.path.getsize(path), title)
             log(*verdict(path))
