@@ -21,7 +21,7 @@ Full-frame designed card (tokens radial background). The TSHA entry is a web pag
 ## 4. Must be true in the picture
 1. Text is the two TSHA fragments with the ellipsis; no word added.
 2. Only the cart clause is lit.
-3. Three tiers: 40 (mid... use 52 px for the lit clause? no): body 40 (mid), eyebrow 22 (small), and the card title "Galveston Hurricane of 1900" Georgia 56 px (big) above the body. Add that title line.
+3. Three type tiers: card title "Galveston Hurricane of 1900" Georgia 56 px `#2a2622` (big) between eyebrow and body, body 40 px (mid), eyebrow 22 px and foot 24 px (small). Card height grows to 620 px (top 200) to fit it.
 4. Card stays clear of x >= 1600, y >= 680.
 
 ## 5. Text and cues (a5-s5.words.json, segment 18.46 s; host starts at "Texas'" 2.70)
