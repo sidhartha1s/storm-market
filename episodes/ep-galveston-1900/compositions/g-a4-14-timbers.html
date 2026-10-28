@@ -98,11 +98,11 @@ window.__timelines = window.__timelines || {};
   fly("s5", 5.00, 0.9, 430, -360);
   fly("b6", 5.20, 0.7, 322, 720);
 
-  /* flying @1.98 (17.24): card in (was though @3.42), landed 2.40; drifts while it holds */
-  tl.fromTo(P+"card", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.42, ease:"back.out(1.6)"}, 1.98);
-  tl.to(P+"cardin", {y:-4, duration:1.06, ease:"sine.inOut"}, 2.4);
+  /* timbers @1.46 (16.72): card in (was flying @1.98), landed 1.88; drifts while it holds */
+  tl.fromTo(P+"card", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.42, ease:"back.out(1.6)"}, 1.46);
+  tl.to(P+"cardin", {y:-4, duration:1.06, ease:"sine.inOut"}, 1.88);
 
-  /* exit: card and source line slide out in the last 0.6 s of the 4.06 host (3.46 to 4.06); card readable 2.40 to 3.46 = 1.06 s (host not stretched) */
+  /* exit: card and source line slide out in the last 0.6 s of the 4.06 host (3.46 to 4.06); card readable 1.88 to 3.46 = 1.58 s (host not stretched) */
   tl.to(P+"card", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 3.46);
   tl.to(P+"src", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 3.46);
 
