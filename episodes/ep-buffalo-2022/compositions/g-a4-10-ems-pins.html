@@ -42,7 +42,7 @@
     border:2px solid #e74c3c; opacity:0; }
 
   /* pin labels: tag = ECG icon + town + date */
-  .ep-tag { position:absolute; display:flex; flex-direction:row; align-items:center; height:34px; box-sizing:border-box;
+  .ep-tag { position:absolute; display:flex; flex-direction:row; align-items:center; min-height:34px; box-sizing:border-box;
     padding:4px 8px; border-radius:6px; background:rgba(11,16,22,0.85); white-space:nowrap; }
   .ep-ecg { display:block; width:34px; height:20px; margin-right:8px; overflow:visible; flex:none; }
   .ep-nm, .ep-dt { display:block; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; white-space:pre; }
@@ -50,7 +50,7 @@
   .ep-dt { color:#e8c56a; }
   #ep-tag-ch { left:1032px; top:341px; }
   #ep-tag-am { left:1017px; top:209px; }
-  #ep-tag-bu { right:1047px; top:387px; }
+  #ep-tag-bu { right:1055px; top:387px; } /* right edge x 865 */
 
   /* chip: g-intro-2-toll-chips glass */
   #ep-chip { position:absolute; left:110px; top:110px; display:flex; flex-direction:row; align-items:baseline; box-sizing:border-box;
