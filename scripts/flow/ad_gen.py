@@ -13,6 +13,7 @@ PROJECT = "https://flow.google.com/project/d8c62548-9b03-4a66-a99b-cfff268d9996"
 CFG = json.load(open(sys.argv[1], encoding="utf8"))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from jobcheck import errors as _job_errors, ram_refusal, assert_responsive
+from flowdl import save_download
 if _job_errors(CFG):
     sys.exit("refused, nothing spent:\n" + "\n".join(_job_errors(CFG)))
 if ram_refusal():
