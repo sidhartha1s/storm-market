@@ -8,11 +8,16 @@
   /* top 156 (was 140): at the 1.15 end push the page top sits at frame y ~106, clear of the eyebrow chip bottom (~100) */
   #g-a5-12-herald-pg { position:absolute; inset:auto; left:316px; top:156px; width:1288px; transform-origin:644px 335px; opacity:0; visibility:hidden; }
   #g-a5-12-herald-img { display:block; width:1288px; height:auto; }
-  /* RETUNE both boxes to the measured crop once media/doc/mwr-1900-09-p376-herald.jpg is on disk (wrapper px).
-     Lit bar: whole line(s) of "It was not through any lack of attention on the part of the forecasters", x 24, y 290, 1240 x 90 -> frame y 430 to 520 at scale 1.
+  /* Boxes measured on media/doc/mwr-1900-09-p376-herald.jpg (488 x 244 source, x2.6393 to 1288 wide; wrapper px).
+     Lit lines: "nition. It was not through..." / "forecasters that the victims..." / "overtaken by such a terrible disaster."
+     = source ink rows 54-66, 68-77, 81-91, gaps at 53 and 92.5 -> wrapper y 140 to 244; ink x 6-464 -> bar x 8 to 1240.
+     #-lit is an undimmed copy of those rows (stays bright while the page dims); #-bar multiplies amber over it so ink stays dark.
      Underline: under the heading "From the Boston Herald". */
-  #g-a5-12-herald-bar { position:absolute; inset:auto; left:24px; top:156px; width:1240px; height:80px; border-radius:6px;
-    background:rgba(216,161,58,0.32); transform-origin:left center; opacity:0; visibility:hidden; }
+  #g-a5-12-herald-lit { position:absolute; inset:auto; left:8px; top:140px; width:1232px; height:104px; border-radius:6px;
+    background:url(media/doc/mwr-1900-09-p376-herald.jpg) -8px -140px / 1288px auto no-repeat;
+    clip-path:inset(0% 100% 0% 0%); opacity:0; visibility:hidden; }
+  #g-a5-12-herald-bar { position:absolute; inset:auto; left:8px; top:140px; width:1232px; height:104px; border-radius:6px;
+    background:#f2c86e; mix-blend-mode:multiply; transform-origin:left center; opacity:0; visibility:hidden; }
   #g-a5-12-herald-ul { position:absolute; inset:auto; left:37px; top:66px; width:730px; height:4px; border-radius:2px;
     background:#d8a13a; transform-origin:left center; opacity:0; visibility:hidden; }
 
