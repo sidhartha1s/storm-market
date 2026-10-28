@@ -1,0 +1,51 @@
+<template>
+<style>
+  #g-a1-6-chip1886-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  .g-a1-6-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  /* source line, top-left */
+  #g-a1-6-chip1886-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  /* chip: outer moves/enters, inner drifts in y */
+  #g-a1-6-chip1886-chip { position:absolute; left:110px; top:150px; opacity:0; visibility:hidden; }
+  #g-a1-6-chip1886-chipin { display:table; padding:22px 40px; border-radius:28px; }
+  #g-a1-6-chip1886-main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; line-height:1.1; letter-spacing:2px; color:#f2f5f8; white-space:nowrap; }
+  #g-a1-6-chip1886-tag { display:block; margin-top:8px; font-weight:700; font-size:22px; line-height:1.2; letter-spacing:4px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a1-6-chip1886-root" data-composition-id="g-a1-6-chip1886" data-width="1920" data-height="1080">
+  <div id="g-a1-6-chip1886-src" class="g-a1-6-glass">Indianola after the 1886 hurricane &middot; Wikimedia Commons, CC BY 2.0</div>
+  <div id="g-a1-6-chip1886-chip">
+    <div id="g-a1-6-chip1886-chipin" class="g-a1-6-glass">
+      <span id="g-a1-6-chip1886-main">1886</span>
+      <span id="g-a1-6-chip1886-tag">Indianola, second hurricane</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a1-6-chip1886-";
+  /* TIMING: audio/a1-s3.words.json, comp-local = S3 time minus 13.18 (host 13.18 to 16.46, 3.28 s).
+     A @13.18 -> 0.00 ; second @13.32 -> 0.14 ; 1886. @14.86 -> 1.68 ; exit start 15.86 -> 2.68 ; cut 16.46 -> 3.28 */
+  tl.set(P+"src", {autoAlpha:0, y:8}, 0);
+  tl.set(P+"chip", {autoAlpha:0, y:24, scale:0.94}, 0);
+  tl.set(P+"tag", {autoAlpha:0, y:10}, 0);
+
+  /* PHOTO @13.18 -> 0.00: source line in, then floats to the exit */
+  tl.to(P+"src", {autoAlpha:1, y:0, duration:0.3, ease:"power2.out"}, 0);
+  tl.to(P+"src", {y:-4, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:1}, 0.3);
+
+  /* 1886 @14.86 -> 1.68: chip in; tag line rises 0.15 s after */
+  tl.to(P+"chip", {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 1.68);
+  tl.to(P+"tag", {autoAlpha:1, y:0, duration:0.3, ease:"power2.out"}, 1.83);
+  tl.to(P+"chipin", {y:-4, duration:0.5, ease:"sine.inOut", yoyo:true, repeat:1}, 2.13);
+
+  /* exit 15.86 -> 2.68: chip slides out left, source line fades; done at the cut 3.28 */
+  tl.to(P+"chip", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 2.68);
+  tl.to(P+"src", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 2.98);
+
+  window.__timelines["g-a1-6-chip1886"] = tl;
+})();
+</script>
+</template>
