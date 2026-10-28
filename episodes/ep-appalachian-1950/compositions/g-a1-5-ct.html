@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-5-ct · A1-S7 · ep-appalachian-1950 · DEEP (Opus) · brief: briefs/a1/g-a1-5-ct.md
+  Claim: Bridgeport's weather station stood in 4 to 5 ft of water and its report called the storm the worst there since
+  1938; inland Hartford, about 35 miles from the shore, logged gusts of 100 mph (at least 3 times, 4:30 to 7:30 pm).
+  Source: factcheck/a1-r1.md rows 28, 29, 31, 32 (SECONDARY, NBC Connecticut quoting Weather Bureau reports).
+  BASEMAP: Natural Earth 50m admin-1 (public domain), vertices copied verbatim from the US path in
+    library/inhouse/master-map-us-canada.html: Connecticut subpath (closed), Rhode Island subpath (closed), the Long
+    Island subpath, and the New York shore west of Connecticut. The land north of Connecticut and west of it is closed
+    with off-frame corners (x 89000 / 102500, y 20000), never on screen.
+  PROJECTION: X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213). Frame A1-C: s 0.18, top-left (90113.4, 25949.7):
+    screen = (map - TL) * 0.18 = matrix(0.18 0 0 0.18 -16220.41 -4670.95) on #ct5-land.
+    Bridgeport (640,800) Hartford (997,210) New London (1394,623) shore point Guilford/Madison (996,696): 486 px.
+    Coast highlight = the Connecticut subpath's shore vertices, projected (Greenwich 335,988 to Pawcatuck 1571,643).
+  LAYERS: #ct5-zoom (slow 1 -> 1.04 drift, svgOrigin 960 540) > #ct5-cam (y +120 at INLAND) > land, pins, map labels.
+    Cards (inset, WORST card, gust card) are fixed HUD divs; nothing rides the camera except map labels with their pins.
+  DEVIATIONS from the brief §3 (geometry collisions found while building, kept to the brief's intent):
+    - BRIDGEPORT label: brief puts it left of the pin (right edge x 616); at Arial 700 26 tracking 3 it is about 200 px
+      wide, so x 412-616 runs under the inset card (x 110-490) for 2.4 s. Set centred above the pin, baseline y 758
+      (box about x 538-742, y 739-758), clear of the coast (y 767 at x 742) and of the source lines after the move.
+    - CONNECTICUT label: brief (760,420) puts it across the Hartford-to-shore dashed line (x 997). Start x 600 instead.
+    - Station silhouette: drawn to the inset's ft scale, the hut's flat roof sits at about 5 ft (the chip owns y 490-590);
+      the mast stands on the ground beside the hut. Schematic, not a measured building.
+    - 4-to-5 ft band drawn as the full 50 px range (200 to 250 px) in a lighter tint, water level at 225 px.
+  CUES (audio/a1-s7.words.json, s from A1-S7 start = comp-local):
+    0.00 On        map on, state label, zoom drift starts
+    0.24 Connecticut  coast highlight draws (1.2 s)
+    2.24 Bridgeport   pin + label
+    2.94 under     inset in, water rises 0 -> 225 px (1.2 s)
+    3.18 4         chip "STATION FLOODED" / "4 TO 5 FT"
+    5.38 called    inset out
+    5.72 this      WORST SINCE 1938 card in
+    8.48 1938      title punch 1.08 -> 1
+   10.02 Inland,   camera y +120 (1.0 s), WORST card out
+   10.74 Hartford  pin in (label at 11.02, when the camera settles)
+   11.46 35        dashed line Hartford -> shore (0.8 s)
+   14.28 weather   gust card in, axis, ticks and 100 MPH line draw
+   15.96 100       three spikes, 0.3 s apart, flash at each top
+   17.52 So        spikes flash again, slower; Bridgeport and Hartford pulse
+   20.20 exit      gust card x 980 out, map fades to ground (host end 20.80)
+  Host: data-start = A1-S7 start, data-duration 20.80 (20.399 wav + 0.40 gap).
+  The 4:30 / 7:30 axis ticks repeat the clock chip's times; the brief asks for data-repeat-ok on each tick leaf only
+  after a frame read, so it is NOT declared here (the strings "4:30" and "4:30 PM" also differ for dup-fact).
+-->
+<template>
+<style>
+  #ct5-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 45% 55%, #04070a 0%, #030507 78%); }
+  .ct5-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .ct5-land { fill:#0b1016; stroke:rgba(255,255,255,0.14); stroke-width:1.5; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
+  .ct5-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .ct5-scan { position:absolute; left:370px; top:0; width:1180px; height:2px; pointer-events:none;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  .ct5-card { position:absolute; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #ct5-inset { left:110px; top:470px; width:380px; height:420px; overflow:hidden; }
+  #ct5-inset .ct5-insvg { position:absolute; left:0; top:0; width:380px; height:420px; }
+  .ct5-chip1 { position:absolute; left:48px; top:20px; font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:1; color:#f2f5f8; letter-spacing:1px; white-space:nowrap; }
+  .ct5-chip2 { position:absolute; left:48px; top:52px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:1; color:#7fb2e5; white-space:nowrap; }
+  .ct5-tick { font-family:Arial, sans-serif; font-weight:700; font-size:19px; fill:#93a3b2; }
+  #ct5-worst { left:110px; top:90px; padding:26px 40px 28px 36px; white-space:nowrap; }
+  .ct5-wt { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1.05; color:#f2f5f8; }
+  .ct5-ws { margin-top:12px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; }
+  #ct5-gust { left:1100px; top:300px; width:600px; height:330px; overflow:hidden; }
+  #ct5-gust .ct5-gsvg { position:absolute; left:0; top:0; width:600px; height:330px; }
+  .ct5-clk { position:absolute; left:40px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; color:#f2f5f8; white-space:nowrap; }
+  .ct5-limlab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#e74c3c; }
+  .ct5-src { position:absolute; left:110px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .ct5-hide { opacity:0; visibility:hidden; }
+  .ct5-off { opacity:0; }
+</style>
+<div id="ct5-root" data-composition-id="g-a1-5-ct" data-width="1920" data-height="1080" data-duration="20.80">
+  <svg class="ct5-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <g id="ct5-zoom">
+      <g id="ct5-cam">
+        <!-- land, Natural Earth 50m vertices in map units -->
+        <g id="ct5-land" transform="matrix(0.18 0 0 0.18 -16220.41 -4670.95)">
+          <!-- north of Connecticut and New York west of it (closed off frame) -->
+          <path class="ct5-land" d="M89000,20000 L102500,20000 L102500,25716 L100591,25716 L99002,25743 L98999,25683 L95327,25620 L95305,25747 L95140,25765 L95135,25620 L92551,25500 L92304,29742 L92537,30172 L91619,30811 L91975,31440 L91404,32074 L91127,32337 L90899,32422 L90605,32783 L90457,32756 L89685,33584 L89000,33584 Z"/>
+          <!-- Connecticut -->
+          <path class="ct5-land" d="M98999,25683 L99022,28491 L98988,29067 L98891,29202 L98843,29521 L98506,29490 L97219,29766 L96812,29652 L96396,29855 L94984,29910 L94686,29802 L94305,30186 L93696,30413 L92157,31273 L91975,31440 L91619,30811 L92537,30172 L92304,29742 L92551,25500 L95135,25620 L95140,25765 L95305,25747 L95327,25620 Z"/>
+          <!-- Rhode Island -->
+          <path class="ct5-land" d="M98891,29202 L98988,29067 L99022,28491 L99002,25743 L100591,25716 L100622,26355 L100782,26416 L100770,26939 L101049,27202 L101181,27449 L101037,27590 L100809,27138 L100580,26953 L100682,27470 L100440,27858 L100374,28861 L100070,29278 L99124,29547 L98843,29521 Z"/>
+          <!-- Long Island -->
+          <path class="ct5-land" d="M96006,31834 L96253,31871 L97133,31260 L97531,31134 L97656,31107 L97846,31311 L98609,31056 L96935,31986 L96593,32091 L96104,32368 L93650,33326 L93377,33274 L92012,33630 L91451,33670 L90941,33794 L91319,33507 L91327,33400 L91237,33316 L91035,33341 L90828,33636 L90498,33734 L90432,33413 L90691,32929 L91019,32558 L91488,32324 L91726,32121 L91891,32300 L91927,32058 L92192,31844 L92524,31842 L92965,31709 L93328,31818 L93683,31787 L93969,31636 L94267,31585 L95836,31441 L96806,30694 L97184,30540 Z"/>
+        </g>
+        <!-- Connecticut shoreline highlight (screen px, the CT subpath's shore vertices projected) -->
+        <path id="ct5-coast" class="ct5-hide" d="M335.1,988.3 L367.8,958.2 L644.9,803.4 L754.5,762.5 L823.1,693.4 L876.7,712.9 L1130.9,703 L1205.7,666.4 L1279,686.9 L1510.7,637.3 L1571.3,642.8" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+        <text id="ct5-state" class="ct5-lab ct5-hide" x="600" y="420" fill="#93a3b2" letter-spacing="8">CONNECTICUT</text>
+        <!-- New London: outline only, never labelled -->
+        <circle id="ct5-nl" cx="1394" cy="623" r="8" fill="none" stroke="#93a3b2" stroke-width="1.5" opacity="0.6"/>
+        <!-- Hartford to the nearest shore point (Guilford/Madison 996,696), no label -->
+        <line id="ct5-dist" class="ct5-hide" x1="997" y1="218" x2="996" y2="696" stroke="#93a3b2" stroke-width="2" stroke-dasharray="8 8"/>
+        <!-- Bridgeport pin + label -->
+        <circle id="ct5-bpt-pulse" class="ct5-off" cx="640" cy="800" r="14" fill="none" stroke="#7fb2e5" stroke-width="2"/>
+        <g id="ct5-bpt" class="ct5-hide">
+          <circle cx="640" cy="800" r="14" fill="none" stroke="#7fb2e5" stroke-width="2.5"/>
+          <circle cx="640" cy="800" r="8" fill="#f2f5f8"/>
+        </g>
+        <text id="ct5-bptlab" class="ct5-lab ct5-hide" x="640" y="758" text-anchor="middle" fill="#f2f5f8" letter-spacing="3">BRIDGEPORT</text>
+        <!-- Hartford pin + label (label right edge 24 px left of the dot) -->
+        <circle id="ct5-hfd-pulse" class="ct5-off" cx="997" cy="210" r="14" fill="none" stroke="#7fb2e5" stroke-width="2"/>
+        <g id="ct5-hfd" class="ct5-hide">
+          <circle cx="997" cy="210" r="14" fill="none" stroke="#7fb2e5" stroke-width="2.5"/>
+          <circle cx="997" cy="210" r="8" fill="#f2f5f8"/>
+        </g>
+        <text id="ct5-hfdlab" class="ct5-lab ct5-hide" x="965" y="219" text-anchor="end" fill="#f2f5f8" letter-spacing="3">HARTFORD</text>
+      </g>
+    </g>
+  </svg>
+  <div id="ct5-scan" class="ct5-scan"></div>
+
+  <!-- Bridgeport station inset: floor at local y 380 (global 850), 50 px per ft -->
+  <div id="ct5-inset" class="ct5-card ct5-hide">
+    <svg class="ct5-insvg" viewBox="0 0 380 420" xmlns="http://www.w3.org/2000/svg">
+      <defs><clipPath id="ct5-inclip"><rect x="41" y="0" width="329" height="380"/></clipPath></defs>
+      <!-- station silhouette: flat-roof hut with door and window, instrument mast beside it -->
+      <g fill="#0b1016" stroke="#4a5560" stroke-width="2" stroke-linejoin="round">
+        <rect x="150" y="135" width="180" height="245"/>
+        <rect x="140" y="128" width="200" height="8"/>
+        <rect x="190" y="240" width="44" height="140"/>
+        <rect x="262" y="190" width="46" height="40"/>
+        <line x1="100" y1="380" x2="100" y2="140"/>
+        <line x1="86" y1="140" x2="114" y2="140"/>
+        <circle cx="86" cy="140" r="4"/>
+        <circle cx="114" cy="140" r="4"/>
+      </g>
+      <!-- 4 to 5 ft range (200 to 250 px above the floor) -->
+      <rect x="41" y="130" width="329" height="50" fill="rgba(127,178,229,0.14)"/>
+      <line x1="41" y1="130" x2="370" y2="130" stroke="rgba(127,178,229,0.45)" stroke-width="1.5" stroke-dasharray="6 6"/>
+      <line x1="41" y1="180" x2="370" y2="180" stroke="rgba(127,178,229,0.45)" stroke-width="1.5" stroke-dasharray="6 6"/>
+      <!-- water: level 225 px (4.5 ft), rises by y, waterline drifts by x (period 40 px) -->
+      <g clip-path="url(#ct5-inclip)">
+        <g id="ct5-water">
+          <path id="ct5-wave" d="M0,155 q10,-5 20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 t20,0 V420 H0 Z" fill="rgba(127,178,229,0.38)" stroke="#7fb2e5" stroke-width="2"/>
+        </g>
+      </g>
+      <!-- ft scale -->
+      <line x1="40" y1="80" x2="40" y2="380" stroke="#93a3b2" stroke-width="2"/>
+      <line x1="40" y1="380" x2="370" y2="380" stroke="#93a3b2" stroke-width="2"/>
+      <line x1="33" y1="380" x2="47" y2="380" stroke="#93a3b2" stroke-width="2"/>
+      <line x1="33" y1="280" x2="47" y2="280" stroke="#93a3b2" stroke-width="2"/>
+      <line x1="33" y1="180" x2="47" y2="180" stroke="#93a3b2" stroke-width="2"/>
+      <line x1="33" y1="80" x2="47" y2="80" stroke="#93a3b2" stroke-width="2"/>
+      <text class="ct5-tick" x="27" y="387" text-anchor="end">0</text>
+      <text class="ct5-tick" x="27" y="287" text-anchor="end">2</text>
+      <text class="ct5-tick" x="27" y="187" text-anchor="end">4</text>
+      <text class="ct5-tick" x="27" y="87" text-anchor="end">6</text>
+    </svg>
+    <div id="ct5-chip1" class="ct5-chip1 ct5-hide">STATION FLOODED</div>
+    <div id="ct5-chip2" class="ct5-chip2 ct5-hide">4 TO 5 FT</div>
+  </div>
+
+  <!-- the station report's ranking of the storm (never a gust) -->
+  <div id="ct5-worst" class="ct5-card ct5-hide">
+    <div id="ct5-worst-t" class="ct5-wt">WORST SINCE 1938</div>
+    <div id="ct5-worst-s" class="ct5-ws">BRIDGEPORT STATION REPORT</div>
+  </div>
+
+  <!-- Hartford gust strip: 4:00 PM (x 60) to 8:00 PM (x 540), 2 px per minute; spikes schematic in time -->
+  <div id="ct5-gust" class="ct5-card ct5-hide">
+    <svg class="ct5-gsvg" viewBox="0 0 600 330" xmlns="http://www.w3.org/2000/svg">
+      <line id="ct5-lim" class="ct5-hide" x1="60" y1="170" x2="540" y2="170" stroke="#e74c3c" stroke-width="2" stroke-dasharray="10 8"/>
+      <text id="ct5-limlab" class="ct5-limlab ct5-hide" x="60" y="160">100 MPH</text>
+      <polyline id="ct5-sp1" class="ct5-hide" points="174,290 181,252 185,262 190,140 195,240 200,256 206,290" fill="none" stroke="#7fb2e5" stroke-width="2" stroke-linejoin="round"/>
+      <polyline id="ct5-sp2" class="ct5-hide" points="294,290 301,252 305,262 310,140 315,240 320,256 326,290" fill="none" stroke="#7fb2e5" stroke-width="2" stroke-linejoin="round"/>
+      <polyline id="ct5-sp3" class="ct5-hide" points="404,290 411,252 415,262 420,140 425,240 430,256 436,290" fill="none" stroke="#7fb2e5" stroke-width="2" stroke-linejoin="round"/>
+      <circle id="ct5-fl1" class="ct5-off" cx="190" cy="140" r="2" fill="#ffffff"/>
+      <circle id="ct5-fl2" class="ct5-off" cx="310" cy="140" r="2" fill="#ffffff"/>
+      <circle id="ct5-fl3" class="ct5-off" cx="420" cy="140" r="2" fill="#ffffff"/>
+      <line id="ct5-axis" class="ct5-hide" x1="60" y1="290" x2="540" y2="290" stroke="#93a3b2" stroke-width="2"/>
+      <g id="ct5-ticks" class="ct5-hide">
+        <line x1="120" y1="290" x2="120" y2="298" stroke="#93a3b2" stroke-width="2"/>
+        <line x1="480" y1="290" x2="480" y2="298" stroke="#93a3b2" stroke-width="2"/>
+        <text class="ct5-tick" x="120" y="316" text-anchor="middle">4:30</text>
+        <text class="ct5-tick" x="480" y="316" text-anchor="middle">7:30</text>
+      </g>
+    </svg>
+    <div id="ct5-clk1" class="ct5-clk ct5-hide" style="top:22px;">4:30 PM</div>
+    <div id="ct5-clk2" class="ct5-clk ct5-hide" style="top:74px;">TO 7:30 PM</div>
+  </div>
+
+  <div id="ct5-src" class="ct5-src" style="bottom:90px;">Source: Weather Bureau reports via NBC Connecticut</div>
+  <div id="ct5-base" class="ct5-src" style="bottom:60px;">Basemap: Natural Earth</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#ct5-";
+  const $ = function (n) { return document.getElementById("ct5-" + n); };
+  const DUR = 20.80;
+  const C = { on: 0.00, ct: 0.24, bpt: 2.24, under: 2.94, four: 3.18, called: 5.38, thisw: 5.72, y1938: 8.48,
+              inland: 10.02, hfd: 10.74, n35: 11.46, wx: 14.28, n100: 15.96, so: 17.52, exit: 20.20 };
+  const dash = function (el) { return Math.ceil(el.getTotalLength()) + 1; };
+  const O = { smoothOrigin: false };
+  const so = function (o, v) { return Object.assign({ svgOrigin: o }, O, v); };
+
+  const tl = gsap.timeline({ paused: true });
+
+  /* transforms start in set() at 0 (file contract) */
+  tl.set(P + "zoom", so("960 540", { scale: 1 }), 0);
+  tl.set(P + "cam", { y: 0 }, 0);
+  tl.set(P + "bpt", so("640 800", { scale: 0 }), 0);
+  tl.set(P + "hfd", so("997 210", { scale: 0 }), 0);
+  tl.set(P + "dist", so("997 218", { scaleY: 0 }), 0);
+  tl.set(P + "lim", so("60 170", { scaleX: 0 }), 0);
+  tl.set(P + "water", { y: 230 }, 0);
+  tl.set(P + "wave", { x: 0 }, 0);
+  tl.set(P + "worst-t", { scale: 1, transformOrigin: "left center" }, 0);
+  const coastL = dash($("coast")), axisL = dash($("axis"));
+  tl.set(P + "coast", { strokeDasharray: coastL, strokeDashoffset: coastL }, 0);
+  tl.set(P + "axis", { strokeDasharray: axisL, strokeDashoffset: axisL }, 0);
+  const sp = [$("sp1"), $("sp2"), $("sp3")], spL = sp.map(dash);
+  sp.forEach(function (el, i) { tl.set(el, { strokeDasharray: spL[i], strokeDashoffset: spL[i] }, 0); });
+
+  /* ambient: slow zoom drift and a scan line for the whole window */
+  tl.to(P + "zoom", so("960 540", { scale: 1.04, duration: DUR, ease: "none" }), 0);
+  tl.fromTo(P + "scan", { y: -10 }, { y: 1090, duration: DUR, ease: "none" }, 0);
+
+  /* ON @0.00: map on, state label */
+  tl.fromTo(P + "state", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.on);
+  /* CONNECTICUT @0.24: shoreline draws */
+  tl.set(P + "coast", { autoAlpha: 1 }, C.ct);
+  tl.to(P + "coast", { strokeDashoffset: 0, duration: 1.2, ease: "power2.inOut" }, C.ct);
+
+  /* BRIDGEPORT @2.24: pin + label */
+  tl.fromTo(P + "bpt", so("640 800", { autoAlpha: 0, scale: 0 }), so("640 800", { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }), C.bpt);
+  tl.fromTo(P + "bptlab", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, C.bpt + 0.1);
+  tl.fromTo(P + "bpt-pulse", { opacity: 0.8, attr: { r: 14 } }, { opacity: 0, attr: { r: 36 }, duration: 1.0, ease: "power1.out" }, C.bpt + 0.2);
+
+  /* UNDER @2.94: inset in, water rises to 225 px (4.5 ft), waterline drifts 30 px/s */
+  tl.fromTo(P + "inset", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, C.under);
+  tl.to(P + "water", { y: 0, duration: 1.2, ease: "power2.out" }, C.under);
+  tl.fromTo(P + "wave", { x: 0 }, { x: -40, duration: 40 / 30, ease: "none", repeat: 2 }, C.under);
+  /* 4 @3.18: chip lines */
+  tl.fromTo(P + "chip1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.four);
+  tl.fromTo(P + "chip2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.four + 0.22);
+  /* CALLED @5.38: inset out */
+  tl.to(P + "inset", { x: -60, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, C.called);
+
+  /* THIS @5.72: WORST SINCE 1938 card in; 1938 @8.48: punch 1.08 -> 1 */
+  tl.fromTo(P + "worst", { autoAlpha: 0, y: -24 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, C.thisw);
+  tl.to(P + "worst-t", { scale: 1.08, transformOrigin: "left center", duration: 0.1, ease: "power2.out" }, C.y1938);
+  tl.to(P + "worst-t", { scale: 1, transformOrigin: "left center", duration: 0.35, ease: "power3.out" }, C.y1938 + 0.1);
+
+  /* INLAND @10.02: camera eases north (map y +120), card out */
+  tl.to(P + "cam", { y: 120, duration: 1.0, ease: "power2.inOut" }, C.inland);
+  tl.to(P + "worst", { x: -80, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, C.inland);
+
+  /* HARTFORD @10.74: pin; label once the camera settles (11.02) */
+  tl.fromTo(P + "hfd", so("997 210", { autoAlpha: 0, scale: 0 }), so("997 210", { autoAlpha: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }), C.hfd);
+  tl.fromTo(P + "hfdlab", { autoAlpha: 0, x: 12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, C.inland + 1.0);
+  tl.fromTo(P + "hfd-pulse", { opacity: 0.8, attr: { r: 14 } }, { opacity: 0, attr: { r: 36 }, duration: 1.0, ease: "power1.out" }, C.hfd + 0.2);
+
+  /* 35 @11.46: dashed line Hartford -> shore */
+  tl.fromTo(P + "dist", so("997 218", { autoAlpha: 0, scaleY: 0 }), so("997 218", { autoAlpha: 1, scaleY: 1, duration: 0.8, ease: "power2.inOut" }), C.n35);
+
+  /* WEATHER @14.28: gust card in, clock chip, axis, ticks, 100 MPH line */
+  tl.fromTo(P + "gust", { autoAlpha: 0, x: 200 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out" }, C.wx);
+  tl.fromTo(P + "clk1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.wx + 0.3);
+  tl.fromTo(P + "clk2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, C.wx + 0.5);
+  tl.set(P + "axis", { autoAlpha: 1 }, C.wx + 0.5);
+  tl.to(P + "axis", { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, C.wx + 0.5);
+  tl.fromTo(P + "ticks", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, C.wx + 0.9);
+  tl.fromTo(P + "lim", so("60 170", { autoAlpha: 0, scaleX: 0 }), so("60 170", { autoAlpha: 1, scaleX: 1, duration: 0.6, ease: "power2.out" }), C.wx + 0.8);
+  tl.fromTo(P + "limlab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, C.wx + 1.0);
+
+  /* 100 @15.96: spikes up in turn, white flash at each top */
+  const fl = [P + "fl1", P + "fl2", P + "fl3"];
+  sp.forEach(function (el, i) {
+    const t = C.n100 + i * 0.3;
+    tl.set(el, { autoAlpha: 1 }, t);
+    tl.to(el, { strokeDashoffset: 0, duration: 0.25, ease: "power2.out" }, t);
+    tl.fromTo(fl[i], { opacity: 1, attr: { r: 2 } }, { opacity: 0, attr: { r: 14 }, duration: 0.45, ease: "power1.out" }, t + 0.22);
+  });
+  /* SO @17.52: one slower flash each, pins pulse */
+  fl.forEach(function (f, i) {
+    tl.fromTo(f, { opacity: 0.9, attr: { r: 2 } }, { opacity: 0, attr: { r: 18 }, duration: 0.9, ease: "power1.out", immediateRender: false }, C.so + i * 0.5);
+  });
+  tl.fromTo([P + "bpt-pulse", P + "hfd-pulse"], { opacity: 0.8, attr: { r: 14 } }, { opacity: 0, attr: { r: 36 }, duration: 1.2, ease: "power1.out", repeat: 1, repeatDelay: 0.2, immediateRender: false }, C.so);
+
+  /* EXIT: last 0.6 s, gust card slides out, map fades to ground */
+  tl.to(P + "gust", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, C.exit);
+  tl.to([P + "zoom", P + "src", P + "base", P + "scan"], { opacity: 0, duration: 0.6, ease: "power1.in" }, C.exit);
+
+  window.__timelines["g-a1-5-ct"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
