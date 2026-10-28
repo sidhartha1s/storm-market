@@ -362,6 +362,27 @@ SHEET = ''.join(f'  <span style="position:absolute;left:200px;top:{top}px;font-s
 photo = lambda attrs, left=0: (f'  <img {attrs} src="media/wide.svg" alt="" style="position:absolute;left:{left}px;top:0;'
                                'width:400px;height:400px;object-fit:cover">\n')
 TYPE_WHY, CROP_WHY = 'typed sheet, two tiers by design', 'blurred backdrop behind the whole photograph'
+
+
+# Back-to-back x slides (g-d*): Galveston g-a4-14-timbers flies textless debris across the frame in 1 s x
+# tweens one after another for the whole window. Old 0d2fa47a dropped every sample within 0.15 s before to
+# 0.35 s after ANY x tween of 1.2 s or less, so no sample survived and the comp read "flat background ·
+# 0 type tier(s) · 0 elements on screen" = undesigned. The mid-slide skip exists for text parked off-frame,
+# so it now skips only the geometry checks, only while a text-bearing element slides.
+def _debris_comp(bg, inner, n):
+    flies = ''.join(f"tl.fromTo('#d{i}', {{ x: 0 }}, {{ x: 1500, duration: 1.0, ease: 'none' }}, {i * 0.5});\n" for i in range(n))
+    boxes = ''.join(f'  <div id="d{i}" style="position:absolute;left:-200px;top:{40 + i * 40}px;width:120px;height:20px;background:#654"></div>\n'
+                    for i in range(n))
+    return ('<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
+            f'<div id="root" style="position:absolute;inset:0;background:{bg}">\n{boxes}{inner}</div>\n'
+            '<script>\nwindow.__timelines = window.__timelines || {};\nconst tl = gsap.timeline({ paused: true });\n'
+            f"{flies}window.__timelines['g-cv'] = tl;\n</script>\n</template></body></html>\n")
+
+
+CARD = ''.join(f'  <span style="position:absolute;left:400px;top:{top}px;font-size:{px}px;color:#fff">{txt}</span>\n'
+               for top, px, txt in ((700, 60, 'AS THOUGH THEY WERE PAPER'), (790, 30, 'Cline, p. 373'), (850, 20, 'Monthly Weather Review')))
+# a text chip that slides in from far off-frame left during the debris stream: mid-slide it is out of frame
+CHIP = ('  <span id="chip" style="position:absolute;left:400px;top:960px;font-size:30px;color:#fff">Galveston</span>\n')
 CASES = {  # comp: (source, host s, new output must hold all of, must not hold, why)
     'g-p1': (CANVAS_FILES['compositions/g-cv.html'], 3, [], 'undesigned', 'a full-frame canvas is a designed background'),
     'g-p2': (cv, 3, [], 'fade-only', 'an onUpdate canvas renderer is continuous motion'),
