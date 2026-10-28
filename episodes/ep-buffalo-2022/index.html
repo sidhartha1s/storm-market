@@ -115,66 +115,68 @@
   <!-- A2-S1 8.60 to 19.40: the stock beat alone (windshield pick, then the backup for cadence), between g-a2-1 and g-a2-2 -->
   <video id="v-a2-s1-wind" src="media/a2/A2-S1_c1_rainy-street-windshield.mp4" data-start="311.011" data-duration="5.4" data-track-index="1" muted></video>
   <video id="v-a2-s1-wipers" src="media/a2/A2-S1_c2_wipers-wet-windshield.mp4" data-start="316.411" data-duration="5.4" data-track-index="1" muted></video>
-  <!-- A2-S2 to A2-S10: full-frame comps -->
-  <section class="clip blackout" id="bo-a3" data-start="501.864" data-duration="0.7" data-track-index="1"></section>
-
-  <!-- A3-S1 0 to 11.60: Carrotflower, Main and Laurel St, 23 Dec 2022, CC BY-SA 4.0, soft focus under g-a3-1 -->
-  <section class="clip still-wrap" id="c-a3-s1-laurel" data-start="502.564" data-duration="11.6" data-track-index="1"><img id="kb-a3-s1-laurel" class="soft" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
-  <!-- A3-S2: g-a3-3 is 0.10 s shorter than its wav; the next beat (g-a3-4) is a comp, so a ground plate covers the seam -->
-  <section class="clip ground" id="gp-a3-s2" data-start="531.844" data-duration="0.4" data-track-index="1"></section>
-  <!-- A3-S7: Carrotflower, abandoned vehicles on West Utica St, 27 Dec 2022, CC BY-SA 4.0 (starts on g-a3-7's end) under g-a3-8 -->
-  <section class="clip still-wrap" id="c-a3-s7-utica" data-start="583.384" data-duration="17.575" data-track-index="1"><img id="kb-a3-s7-utica" src="media/a3/A4-S3_c2_abandoned-vehicles-utica.jpg" alt=""></section>
-  <!-- A3-S9 0 to 6.70: STAND-IN for the Hochul briefing still (none licensed): Carrotflower, Main St Cold Spring, 24 Dec 2022 -->
-  <section class="clip still-wrap" id="c-a3-s9-main" data-start="620.699" data-duration="7.185" data-track-index="1"><img id="kb-a3-s9-main" src="media/a3/A4-S10_c3_cold-spring-main-street.jpg" alt=""></section>
-  <!-- A3-S11: STAND-IN for the single-car-under-a-streetlight shot: Carrotflower Laurel St whiteout video, 23 Dec 2022 evening, CC BY-SA 4.0, muted, under g-a3-13 -->
-  <video id="v-a3-s11-whiteout" src="media/a3/I1-S2_c3_laurel-street-whiteout-commons.webm" data-start="660.063" data-duration="13.713" data-track-index="1" muted></video>
-  <!-- A3-S12: STAND-IN for ins-paul-4 (the tease), same start frame as the hook -->
-  <section class="clip still-wrap" id="c-a3-s12-paul" data-start="673.776" data-duration="3.62" data-track-index="1" data-callback="Paul's tease into the CTA: the presenter returns on the same start frame (stand-in until ins-paul-4 exists)"><img id="kb-a3-s12-paul" src="media/paul/paul-start-frame-christmas.png" alt=""></section>
+  <!-- A2-S2 to A2-S10: full-frame comps. g-a2-11 is cut at the CTA dip-in (501.2), 0.66 s before its own fade ends -->
 
   <!-- ============ CTA (config channel.cta: paul-storm-ready-v9-oct20.mp4, 24.042 s, md5 bba0b9f3..., staged in media/cta/) ============ -->
-  <!-- book ad: bo-cta-in 677.396, ins-cta-paul 678.396-702.438, bo-cta-out 702.438; a4-s1 opens on the payoff at 703.438 -->
-  <section class="clip blackout" id="bo-cta-in" data-start="677.396" data-duration="1.0" data-track-index="1"></section>
-  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v9-oct20.mp4" data-start="678.396" data-duration="24.042" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
-  <section class="clip blackout" id="bo-cta-out" data-start="702.438" data-duration="1.0" data-track-index="1"></section>
+  <!-- Hinge moved to the a2/a3 seam (orchestrator 28 Oct 26; edit_script still names A3-S12 -> A4-S1): a2-s10 ends 501.113,
+       bo-cta-in 501.2, ins-cta-paul 502.2-526.242 (0.471 of 1065.823), bo-cta-out 526.242; a3-s1 opens at 527.242.
+       The dip-out middle is the a2/a3 render seam. -->
+  <section class="clip blackout" id="bo-cta-in" data-start="501.2" data-duration="1.0" data-track-index="1"></section>
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v9-oct20.mp4" data-start="502.2" data-duration="24.042" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+  <section class="clip blackout" id="bo-cta-out" data-start="526.242" data-duration="1.0" data-track-index="1"></section>
+
+  <!-- A3-S1 0 to 11.60: Carrotflower, Main and Laurel St, 23 Dec 2022, CC BY-SA 4.0, soft focus under g-a3-1 -->
+  <section class="clip still-wrap" id="c-a3-s1-laurel" data-start="527.242" data-duration="11.6" data-track-index="1"><img id="kb-a3-s1-laurel" class="soft" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
+  <!-- A3-S2: g-a3-3 is 0.10 s shorter than its wav; the next beat (g-a3-4) is a comp, so a ground plate covers the seam -->
+  <section class="clip ground" id="gp-a3-s2" data-start="556.522" data-duration="0.4" data-track-index="1"></section>
+  <!-- A3-S7: Carrotflower, abandoned vehicles on West Utica St, 27 Dec 2022, CC BY-SA 4.0 (starts on g-a3-7's end) under g-a3-8 -->
+  <section class="clip still-wrap" id="c-a3-s7-utica" data-start="608.062" data-duration="17.575" data-track-index="1"><img id="kb-a3-s7-utica" src="media/a3/A4-S3_c2_abandoned-vehicles-utica.jpg" alt=""></section>
+  <!-- A3-S9 0 to 6.70: STAND-IN for the Hochul briefing still (none licensed): Carrotflower, Main St Cold Spring, 24 Dec 2022 -->
+  <section class="clip still-wrap" id="c-a3-s9-main" data-start="645.377" data-duration="7.185" data-track-index="1"><img id="kb-a3-s9-main" src="media/a3/A4-S10_c3_cold-spring-main-street.jpg" alt=""></section>
+  <!-- A3-S11: STAND-IN for the single-car-under-a-streetlight shot: Carrotflower Laurel St whiteout video, 23 Dec 2022 evening, CC BY-SA 4.0, muted, under g-a3-13 -->
+  <video id="v-a3-s11-whiteout" src="media/a3/I1-S2_c3_laurel-street-whiteout-commons.webm" data-start="684.741" data-duration="13.713" data-track-index="1" muted></video>
+  <!-- A3-S12: STAND-IN for ins-paul-4 (Paul's line), same start frame as the hook; held to the act-4 blackout -->
+  <section class="clip still-wrap" id="c-a3-s12-paul" data-start="698.454" data-duration="4.12" data-track-index="1" data-callback="Paul returns to close act 3: the presenter on the same start frame (stand-in until ins-paul-4 exists)"><img id="kb-a3-s12-paul" src="media/paul/paul-start-frame-christmas.png" alt=""></section>
+  <section class="clip blackout" id="bo-a4" data-start="702.574" data-duration="0.7" data-track-index="1"></section>
 
   <!-- A4-S1: DVIDS 7571852, runway snowblower on I-90, 26 Dec 2022 (pick) under g-a4-1 -->
-  <section class="clip still-wrap" id="c-a4-s1-blower" data-start="703.438" data-duration="19.914" data-track-index="1"><img id="kb-a4-s1-blower" src="media/a4/A4-S1_c1_snowblower-i90.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s1-blower" data-start="703.274" data-duration="19.914" data-track-index="1"><img id="kb-a4-s1-blower" src="media/a4/A4-S1_c1_snowblower-i90.jpg" alt=""></section>
   <!-- A4-S2: g-a4-2 full frame. A4-S3: DVIDS 7572837 again, held close on the ambulance (starts on g-a4-2's end) under g-a4-3 -->
-  <section class="clip still-wrap" id="c-a4-s3-amb" data-start="741.252" data-duration="13.068" data-track-index="1" data-callback="A4 names what I1 only showed: the same ambulance, held close"><img id="kb-a4-s3-amb" src="media/intro/I1-S2_c1_amr-ambulance-recovery.jpg" alt="" style="object-position: 50% 45%;"></section>
+  <section class="clip still-wrap" id="c-a4-s3-amb" data-start="741.088" data-duration="13.068" data-track-index="1" data-callback="A4 names what I1 only showed: the same ambulance, held close"><img id="kb-a4-s3-amb" src="media/intro/I1-S2_c1_amr-ambulance-recovery.jpg" alt="" style="object-position: 50% 45%;"></section>
   <!-- A4-S4: g-a4-4 is 0.001 s longer than its wav; the next beat (g-a4-5) is a comp, so a ground plate covers the 0.30 s seam -->
-  <section class="clip ground" id="gp-a4-s4" data-start="771.17" data-duration="0.299" data-track-index="1"></section>
+  <section class="clip ground" id="gp-a4-s4" data-start="771.006" data-duration="0.299" data-track-index="1"></section>
   <!-- A4-S5: g-a4-5 then g-a4-6, full frame. A4-S6: DVIDS 7572835 (D1), motorist and his dog, 24 Dec 2022 (starts on g-a4-6's end); g-a4-7 panel from 8.80 -->
-  <section class="clip still-wrap" id="c-a4-s6-dog" data-start="794.759" data-duration="19.645" data-track-index="1"><img id="kb-a4-s6-dog" src="media/a4/A4-S6_c1_motorist-dog-drifts.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s6-dog" data-start="794.595" data-duration="19.645" data-track-index="1"><img id="kb-a4-s6-dog" src="media/a4/A4-S6_c1_motorist-dog-drifts.jpg" alt=""></section>
   <!-- A4-S7: DVIDS 7572836 (D2), airmen helping motorists, 25 Dec 2022, soft focus (not Waldman) under g-a4-8 -->
-  <section class="clip still-wrap" id="c-a4-s7-d2" data-start="814.404" data-duration="10.4" data-track-index="1"><img id="kb-a4-s7-d2" class="soft" src="media/a4/A4-S7_c1_guard-airmen-drifts-25dec.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s7-d2" data-start="814.24" data-duration="10.4" data-track-index="1"><img id="kb-a4-s7-d2" class="soft" src="media/a4/A4-S7_c1_guard-airmen-drifts-25dec.jpg" alt=""></section>
   <!-- A4-S8: DVIDS 7576033 (D5), welfare checks with Buffalo residents, 30 Dec 2022, under g-a4-9 -->
-  <section class="clip still-wrap" id="c-a4-s8-welfare" data-start="824.804" data-duration="18.2" data-track-index="1"><img id="kb-a4-s8-welfare" src="media/a4/A4-S8_c1_welfare-check-residents.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s8-welfare" data-start="824.64" data-duration="18.2" data-track-index="1"><img id="kb-a4-s8-welfare" src="media/a4/A4-S8_c1_welfare-check-residents.jpg" alt=""></section>
   <!-- A4-S9: g-a4-10 full frame. A4-S10: Carrotflower "Snowy door", 24 Dec 2022, CC BY-SA 4.0, push toward the door, under g-a4-11 -->
-  <section class="clip still-wrap" id="c-a4-s10-door" data-start="867.904" data-duration="15.547" data-track-index="1"><img id="kb-a4-s10-door" src="media/a4/A4-S10_c1_snowy-door.jpg" alt="" style="object-position: 50% 55%;"></section>
-  <section class="clip blackout" id="bo-a5" data-start="883.451" data-duration="0.7" data-track-index="1"></section>
+  <section class="clip still-wrap" id="c-a4-s10-door" data-start="867.74" data-duration="15.547" data-track-index="1"><img id="kb-a4-s10-door" src="media/a4/A4-S10_c1_snowy-door.jpg" alt="" style="object-position: 50% 55%;"></section>
+  <section class="clip blackout" id="bo-a5" data-start="883.287" data-duration="0.7" data-track-index="1"></section>
 
   <!-- A5: NO GRAPHICS LIST YET. Every beat below is footage only; the self-made cards of the Picture lines are not built. -->
   <!-- A5-S1: Pexels snowy suburban street at night (pick, not Buffalo, uncaptioned), then STAND-IN Carrotflower Laurel St, 24 Dec 2022 -->
-  <video id="v-a5-s1-street" src="media/a5/A5-S1_c1_snowy-suburban-street-night.mp4" data-start="884.151" data-duration="12.0" data-track-index="1" muted></video>
-  <section class="clip still-wrap" id="c-a5-s1-laurel" data-start="896.151" data-duration="7.249" data-track-index="1"><img id="kb-a5-s1-laurel" src="media/a5/A4-S10_c2_laurel-street.jpg" alt=""></section>
+  <video id="v-a5-s1-street" src="media/a5/A5-S1_c1_snowy-suburban-street-night.mp4" data-start="883.987" data-duration="12.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-a5-s1-laurel" data-start="895.987" data-duration="7.249" data-track-index="1"><img id="kb-a5-s1-laurel" src="media/a5/A4-S10_c2_laurel-street.jpg" alt=""></section>
   <!-- A5-S2: STAND-IN (family-to-hotel card not built): DVIDS welfare check at a residence -->
-  <section class="clip still-wrap" id="c-a5-s2-res" data-start="903.4" data-duration="17.237" data-track-index="1"><img id="kb-a5-s2-res" src="media/a5/A4-S8_c3_knock-residence-2.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s2-res" data-start="903.236" data-duration="17.237" data-track-index="1"><img id="kb-a5-s2-res" src="media/a5/A4-S8_c3_knock-residence-2.jpg" alt=""></section>
   <!-- A5-S3: STAND-IN (tally return not built): DVIDS bulldozer clearing snow -->
-  <section class="clip still-wrap" id="c-a5-s3-dozer" data-start="920.637" data-duration="21.575" data-track-index="1"><img id="kb-a5-s3-dozer" src="media/a5/A4-S1_c3_bulldozer-burger-king.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s3-dozer" data-start="920.473" data-duration="21.575" data-track-index="1"><img id="kb-a5-s3-dozer" src="media/a5/A4-S1_c3_bulldozer-burger-king.jpg" alt=""></section>
   <!-- A5-S4: STAND-IN (1977 vs 2022 bars not built): DVIDS skid steer, Cheektowaga -->
-  <section class="clip still-wrap" id="c-a5-s4-skid" data-start="942.212" data-duration="14.126" data-track-index="1"><img id="kb-a5-s4-skid" src="media/a5/A4-S1_c2_skid-steer-cheektowaga.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s4-skid" data-start="942.048" data-duration="14.126" data-track-index="1"><img id="kb-a5-s4-skid" src="media/a5/A4-S1_c2_skid-steer-cheektowaga.jpg" alt=""></section>
   <!-- A5-S5: STAND-IN (report covers not built): the A4-S1 snowblower returns -->
-  <section class="clip still-wrap" id="c-a5-s5-blower" data-start="956.338" data-duration="25.799" data-track-index="1" data-callback="stand-in under the reviews until the A5 report cards exist; the I-90 clearing photo returns as the recommendations are read"><img id="kb-a5-s5-blower" src="media/a4/A4-S1_c1_snowblower-i90.jpg" alt="" style="object-position: 30% 50%;"></section>
+  <section class="clip still-wrap" id="c-a5-s5-blower" data-start="956.174" data-duration="25.799" data-track-index="1" data-callback="stand-in under the reviews until the A5 report cards exist; the I-90 clearing photo returns as the recommendations are read"><img id="kb-a5-s5-blower" src="media/a4/A4-S1_c1_snowblower-i90.jpg" alt="" style="object-position: 30% 50%;"></section>
   <!-- A5-S6: STAND-IN (checklist card not built): the ambulance photo returns under "tracked vehicles ... ambulances paired" -->
-  <section class="clip still-wrap" id="c-a5-s6-amb" data-start="982.137" data-duration="16.231" data-track-index="1" data-callback="the county's fix names the ambulance problem: the stuck ambulance returns under the plan"><img id="kb-a5-s6-amb" src="media/intro/I1-S2_c1_amr-ambulance-recovery.jpg" alt="" style="object-position: 50% 70%;"></section>
+  <section class="clip still-wrap" id="c-a5-s6-amb" data-start="981.973" data-duration="16.231" data-track-index="1" data-callback="the county's fix names the ambulance problem: the stuck ambulance returns under the plan"><img id="kb-a5-s6-amb" src="media/intro/I1-S2_c1_amr-ambulance-recovery.jpg" alt="" style="object-position: 50% 70%;"></section>
   <!-- A5-S7: STAND-IN for the Cold Spring brunch photo (CC BY-SA, not downloaded): DVIDS 7578226 toys during welfare checks (pick) -->
-  <section class="clip still-wrap" id="c-a5-s7-toys" data-start="998.368" data-duration="14.536" data-track-index="1"><img id="kb-a5-s7-toys" src="media/a5/A5-S7_c1_dvids-toys-welfare-check.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a5-s7-toys" data-start="998.204" data-duration="14.536" data-track-index="1"><img id="kb-a5-s7-toys" src="media/a5/A5-S7_c1_dvids-toys-welfare-check.jpg" alt=""></section>
   <!-- A5-S8 (summary zone): STAND-IN Laurel St returns, then the sunrise snowy roadway under "the next winter" -->
-  <section class="clip still-wrap" id="c-a5-s8-laurel" data-start="1012.904" data-duration="12.596" data-track-index="1" data-callback="close: the street where the act-3 driver's day began returns"><img id="kb-a5-s8-laurel" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
-  <video id="v-a5-s8-sunrise" src="media/a5/A2-S1_c4_sunrise-snowy-roadway.mp4" data-start="1025.5" data-duration="13.093" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-a5-s8-laurel" data-start="1012.74" data-duration="12.596" data-track-index="1" data-callback="close: the street where the act-3 driver's day began returns"><img id="kb-a5-s8-laurel" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
+  <video id="v-a5-s8-sunrise" src="media/a5/A2-S1_c4_sunrise-snowy-roadway.mp4" data-start="1025.336" data-duration="13.093" data-track-index="1" muted></video>
   <!-- END ASK (config channel.end_ask, staged unchanged in media/end-ask/), right before the signature line -->
-  <video id="ins-paul-e1" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="1038.593" data-duration="9.083" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
-  <video id="ins-paul-e2" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="1047.676" data-duration="6.417" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
+  <video id="ins-paul-e1" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="1038.429" data-duration="9.083" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
+  <video id="ins-paul-e2" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="1047.512" data-duration="6.417" data-media-start="0" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
   <!-- A5-S9 signature: STAND-IN for the title card (not built): Pexels aerial of houses in snow at night -->
   <video id="v-a5-s9-aerial" src="media/a5/A5-S1_c2_aerial-houses-snow-night.mp4" data-start="1054.093" data-duration="11.894" data-track-index="1" muted></video>
 
