@@ -257,7 +257,7 @@ window.__timelines = window.__timelines || {};
 
   /* "Anyone" @15.44 -> "last." @18.64: hold; clock keeps turning (+120 / +10), card floats */
   tl.to($("mh"), { rotation: 660, svgOrigin: "28 28", duration: 3.3, ease: "none" }, 15.44);
-  tl.to($("hh"), { rotation: 295, duration: 3.3, ease: "none" }, 15.44);
+  tl.to($("hh"), { rotation: 295, svgOrigin: "28 28", duration: 3.3, ease: "none" }, 15.44);
   tl.fromTo($("float"), { y: 0 }, { y: -4, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, 15.44);
 
   /* after "last." @18.64 (ends 18.90): fade-through, ground stays */
