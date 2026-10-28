@@ -2,6 +2,16 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 26 Oct 26: one heavy lock per machine; heavy jobs wait their turn instead of clashing
+- That day 2 of 4 helpers lost their results to clashes: a test render blocked main's e2e, a render killed a 26-min
+  snapshot-queue test, and a queue start ran into another render. render_busy only refused a browser beside a live
+  render; nothing made a render, TTS, the face pass or e2e wait for each other.
+- Now each of them books `~/.storm-heavy.lock` first (holder, job, machine, pid, start time) and a waiting job prints the
+  holder and waits. Mechanism, reclaim of a dead holder and the child pass-through: `scripts/render_busy.py` docstring.
+- The snapshot worker (PR #225) calls `render_busy.py` with no argument, which now waits for the lock but does not book
+  it. To book it, its ZBook batch calls `render_busy.py --hold snapshot` and `snap_local` wraps the run in
+  `render_busy.heavy_lock("snapshot")`.
+
 ## 26 Oct 26: render.cmd no longer passes --experimental-fast-capture=true
 1. Measured on the ZBook, 90 s Joplin slice: with the flag, capture fell back to screenshot and at 2 workers streaming
    was off (`enabled:false, multi_worker`), the slow disk path behind the 100 GB / 1-worker rule. Moore (2 workers) and
@@ -22,6 +32,19 @@ Newest first. New entries go at the top, under this line. Superseded lines point
 3. (Fixed the same day, entry above.) Every episode render asked `--experimental-fast-capture=true` and every one falls back to screenshot capture
    (Moore: mix-blend-mode; the bench: backdrop-filter). The check does not judge this one: it is hyperframes'
    own logged fallback and would fail every render. Open item in ops/tasks.md.
+
+## 26 Oct 26: hyperframes' pre-capture probe sweep sets graphic state (render by act, PR 223)
+1. When the compiled page has a trigger (any `<video>`/`<audio>` without `data-start`, scripted `volume`, script-made
+   media; producer `probeRequiresBrowser`), 0.8.185 opens a probe browser that sweeps the root timeline before
+   capture: every audible clip's window at 1/fps, then 0 to the end at 0.1 s, events suppressed, then back to 0. That
+   leaves each graphic's timeline played through and rewound, which is visible: a JS clock driven by `onUpdate` shows
+   its last leg's start (Moore g-path-i1: 7:41 PM, not the authored 6:26 PM), and a `.to` on an attribute the target
+   does not carry records 0 as its start (g-a1-counties fill). Moore's trigger is g-a3-tiles' radar video, minutes
+   away from both. A page without the trigger skips the sweep, so the same graphic renders differently.
+2. Measured: Moore 0 to 107.4 s with every element kept: 7:41 (with or without the narration audio); the act page
+   that dropped out-of-act hosts: 6:26 and no "Launching browser for composition probe" line in its log.
+3. So an act page keeps every element (outside ones parked, hidden) and `render_acts.py` fingerprints only the probe
+   triggers of what is parked.
 
 ## 22 Oct 26: pin 0.8.149 to 0.8.185 before Moore 1999, Mayfield 2021 and Camille 1969
 1. Ritual on demo-pin (hidden task on the ASUS, exit 0): duration 24.000/24.000 s, black 0/0, RMS -21.602708/-21.602708

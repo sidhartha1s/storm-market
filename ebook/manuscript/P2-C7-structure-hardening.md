@@ -13,7 +13,7 @@ and the book total up accordingly. The final count comes from laid-out pages, no
 Everything in the last six chapters protects a person. This chapter protects the building, and it
 matters more than it sounds, for a reason established in Part One: **most of the trauma in a wind
 event is delivered by your own house.** Wind does not usually carry a house away. It finds an
-opening, pressurises the interior, and pushes the roof off from underneath. Everything that then
+opening, pressurizes the interior, and pushes the roof off from underneath. Everything that then
 injures you is material that used to be your home.
 
 So the highest-value protections against trauma are not personal equipment. They are the ones that
@@ -26,7 +26,7 @@ protection can pay for itself annually rather than once.
 Three honest warnings before the list.
 
 **Most of this is not a DIY chapter.** Roof work, structural connections, and anything involving a
-ladder above single-storey height is hire-it work. The book tells you what to buy and what to
+ladder above single-story height is hire-it work. The book tells you what to buy and what to
 demand; it does not teach you to do it.
 
 **Renters can skip most of this chapter** and should not feel behind. Every protection here is marked
@@ -43,7 +43,7 @@ that.
 ### 69 · Sealed roof deck
 
 **Prevents:** water destroying the inside of a house whose roof covering has gone.
-**Cost:** small premium at re-roof; $1,000–4,000 standalone (Florida's state programme prices a deck
+**Cost:** small premium at re-roof; $1,000–4,000 standalone (Florida's state program prices a deck
 nailing upgrade at $1,000–4,000 and a secondary water barrier at $500–2,500) · **Time:** with a re-roof
 · **Materials:** taped or fully-adhered underlayment · **Regions:** Hurricane Coast rank 4,
 Tornado Alley rank 8. Owners only.
@@ -55,9 +55,9 @@ deck is plywood sheets with open seams and a layer of felt. A **sealed roof deck
 adheres those seams so that a roof stripped of its covering is still a water barrier. The difference
 between a repairable roof and a gutted interior is frequently exactly this.
 
-This is the core of the recognised fortified-construction standards. IBHS describes taping over all
+This is the core of the recognized fortified-construction standards. IBHS describes taping over all
 horizontal and vertical joints before the underlayment goes on as **"one of the most cost-effective and
-easy-to-install elements"** of its FORTIFIED Roof programme — and it is moving out of the voluntary
+easy-to-install elements"** of its FORTIFIED Roof program — and it is moving out of the voluntary
 standard and into law: Connecticut amended the 2015 International Residential Code to require exactly
 that step on roof decking.
 «SRC: Insurance Institute for Business & Home Safety, "Lead with the Roof" / FORTIFIED Home technical
@@ -87,7 +87,7 @@ more easily than ring-shank nails. Renailing the deck to current specification d
 inexpensive as a line item and effectively impossible afterwards.
 
 **The specification to write on the contract** is the one the FORTIFIED standard uses, because it is
-published, unambiguous, and what an evaluator will check: **8d ring-shank nails at 6 inches on centre
+published, unambiguous, and what an evaluator will check: **8d ring-shank nails at 6 inches on center
 into every framing member**, with 7/16-inch sheathing preferred. If your existing deck already has 8d
 or larger nails, the standard also allows augmenting rather than replacing — adding 8d ring-shanks so
 that the gap between old and new nails is no more than 4 inches on all framing members. An evaluator
@@ -121,7 +121,7 @@ return.
 **But the rating deserves a hard look, and this is where the book has to be honest with you.** The test
 that produces the familiar Class 1 to Class 4 impact ratings is **Underwriters Laboratories 2218**, and
 it works by dropping **steel ball bearings** on shingles. IBHS, which runs the largest hail research
-programme in the country, replicated that test and its conclusion is worth reading twice: the UL 2218
+program in the country, replicated that test and its conclusion is worth reading twice: the UL 2218
 test *"has limited ability to recreate the physics of actual hail,"* and IBHS's own results *"differed
 from the protections marketed to consumers."* Real hailstones are not steel; they shatter, they vary in
 density, and they behave differently on impact.
@@ -133,7 +133,7 @@ Class 4 sticker is a real signal and better than nothing — it is also a steel-
 industry that studies hail hardest has said so in public.
 
 Ask your carrier for the discount **before** buying, because the credit is carrier-specific and
-sometimes conditional on the exact rating — and ask which rating system they recognise.
+sometimes conditional on the exact rating — and ask which rating system they recognize.
 «SRC: Insurance Institute for Business & Home Safety, "FORTIFIED Roof — Roof Product Performance
 Testing" and IBHS hail risk research — the current UL 2218 test for hail resistance of asphalt shingles
 is based on impacts of steel ball bearings and "has limited ability to recreate the physics of actual
@@ -150,7 +150,7 @@ hail claims.
 ### 72 · Hurricane straps and gable-end bracing
 
 **Prevents:** the roof structure separating from the walls.
-**Cost:** $800–3,000, the range Florida's state grant programme publishes for roof-to-wall
+**Cost:** $800–3,000, the range Florida's state grant program publishes for roof-to-wall
 reinforcement · **Time:** days · **Materials:** metal connectors, bracing lumber
 · **Regions:** Hurricane Coast, Tornado Alley. Owners only.
 
@@ -162,7 +162,7 @@ Both jobs are usually done from inside the attic, which makes them possible with
 roof covering, and both belong to a contractor.
 
 **What this does not do:** connectors do not compensate for a rotted or termite-damaged connection,
-and they do nothing if the opening protection fails first and the house pressurises. This protection
+and they do nothing if the opening protection fails first and the house pressurizes. This protection
 only pays when Protections 73 and 74 are also done.
 
 ---
@@ -171,7 +171,7 @@ only pays when Protections 73 and 74 are also done.
 
 **Prevents:** the breach that lets the wind inside.
 **Cost:** $50–200 per opening for plywood; $5,000–15,000 for shutters or impact glass, the range
-Florida's state grant programme publishes
+Florida's state grant program publishes
 · **Time:** varies · **Materials:** rated shutters, impact windows, or correctly specified sheathing
 · **Regions:** Hurricane Coast rank 2. Owners, and renters with permission.
 
@@ -179,17 +179,17 @@ Once a window fails, the house becomes a pressure vessel and Protection 72 is fi
 not designed for. Protecting the openings is therefore upstream of most other structural work.
 
 Three tiers. **Rated shutters** — accordion, roll-down, or panel — are the practical answer and are
-what most credit schemes recognise. **Impact-rated glazing** is the invisible, permanent, expensive
+what most credit schemes recognize. **Impact-rated glazing** is the invisible, permanent, expensive
 option. **Plywood** is the last resort, and it only works to a real specification: correct thickness,
-correct fastener, correct edge distance, and pre-cut and labelled per window *before* the season,
-because cutting plywood in a queue at a hardware store two days before landfall is not a plan.
+correct fastener, correct edge distance, and pre-cut and labeled per window *before* the season,
+because cutting plywood in line at a hardware store two days before landfall is not a plan.
 
 The weather service's own hurricane guidance gives both the ranking and the specification in two
 sentences: *"permanent storm shutters offer the best protection for windows,"* and the second option is
 to *"board up windows with 5/8 inch exterior grade or marine plywood, built to fit and ready to
 install."* Note the three separate requirements packed into that — **5/8 inch**, **exterior grade or
 marine** (interior-grade ply delaminates when it gets wet, which it will), and **built to fit and ready
-to install**, which means cut, labelled by window, and stored, before the season. Fasteners must reach
+to install**, which means cut, labeled by window, and stored, before the season. Fasteners must reach
 the framing around the opening rather than the siding, so buy screws or lag bolts long enough to
 penetrate the studs, and buy them at the same time as the plywood.
 «SRC: NOAA National Weather Service, "Hurricane Safety for You and Your Family" one-page safety sheet
@@ -403,7 +403,7 @@ Doing this correctly is also what flood insurance rating requires for enclosures
 elevation, and it can materially change a premium. This is engineering, not a weekend project. Get it
 specified properly, and keep the engineer's certificate — it is the document your insurer will ask for.
 «SRC: 44 CFR 60.3(c)(5) (NFIP floodplain management criteria) — enclosed areas below the lowest floor
-must automatically equalise hydrostatic flood forces; minimum of two openings, total net area not less
+must automatically equalize hydrostatic flood forces; minimum of two openings, total net area not less
 than one square inch per square foot of enclosed area, bottom of all openings no higher than one foot
 above grade, screens/louvers/valves permitted if they allow automatic entry and exit of floodwaters. |
 https://www.ecfr.gov/current/title-44/section-60.3 | retrieved 2026-07-29»
@@ -444,7 +444,7 @@ elevation to work against, which means knowing your actual flood risk rather tha
 cities. Owners.
 
 When a combined sewer surcharges in heavy rain, the excess has to go somewhere, and the somewhere is
-the lowest connected fixture in the neighbourhood — which may be your floor drain. What comes up is
+the lowest connected fixture in the neighborhood — which may be your floor drain. What comes up is
 sewage, which turns a water-damage claim into a health event and a far larger remediation.
 
 A backwater valve is a one-way gate on the sewer lateral. Retrofitting is expensive because it means
@@ -476,11 +476,11 @@ dressers — to studs. **Latch cabinets**, especially the ones above where peopl
 holding the heavy crockery. **Move heavy objects off high shelves**, and get anything heavy off the
 wall above a bed.
 
-Then the free part: shoes and a torch at the bedside, per Protection 43, because the floor afterwards
+Then the free part: shoes and a flashlight at the bedside, per Protection 43, because the floor afterwards
 is glass.
 
 **What this does not do:** anchoring does not make an unreinforced building safe. If you live in
-unreinforced masonry or a soft-storey structure, that is a retrofit conversation and a much larger
+unreinforced masonry or a soft-story structure, that is a retrofit conversation and a much larger
 one, and it should be raised with a structural engineer.
 
 ---

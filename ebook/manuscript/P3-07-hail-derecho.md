@@ -39,7 +39,7 @@ country. A severe convective storm is the one you should expect, wherever you li
 decade, with an hour's notice.** For most readers of this book, over a lifetime, this is the hazard that
 will actually visit — and 2,145 deaths across those 203 events says it is not merely a property matter.
 «SRC: NOAA National Centers for Environmental Information, "Billion-Dollar Weather and Climate
-Disasters," United States summary, 1980–2024 (CPI-adjusted) — 403 events totalling $2,918.1B and 16,941
+Disasters," United States summary, 1980–2024 (CPI-adjusted) — 403 events totaling $2,918.1B and 16,941
 deaths; severe storm 203 events (50.4% of frequency), $514.4B (17.6% of costs), $2.5B per event, 2,145
 deaths; tropical cyclone 67 events (16.6%), $1,543.3B (52.9%), $23.0B per event, 7,211 deaths; 1980–2024
 annual average 9.0 events, 2020–2024 annual average 23.0 events. |
@@ -92,7 +92,7 @@ Two more things from the same source, both worth knowing before a storm rather t
 whether your wind-and-hail deductible is different from your deductible for everything else**, because in
 hail states it frequently is, and it is frequently a percentage. And if you *do* have replacement cost
 cover, expect **two cheques**: a partial payment first, and the balance *"after you've started repairs."*
-Households that do not know this assume the first cheque is the settlement, and either argue with the
+Households that do not know this assume the first check is the settlement, and either argue with the
 insurer or under-repair the roof.
 
 And the line that ends most disputes before they start: **your insurer *"won't pay for a new roof just

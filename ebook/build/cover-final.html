@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cover — HTML type over clean plate</title>
+<link rel="stylesheet" href="book.css">
+<style>
+  @media screen { body { padding: 0; background: #fff; } .page { margin: 0; box-shadow: none; } }
+  .page.cover { padding: 0; overflow: hidden; background: #05070a; }
+  /* book.css styles .cover .counts with its own border-top — kill it, .hr owns the rule here */
+  .txt .counts { border-top: 0; padding-top: 0; margin-top: 0; }
+  .plate {
+    position: absolute; top: 0; left: 0; width: 100%;
+    /* art is 2:3, same as the trim — full bleed, no crop */
+    height: 100%; object-fit: cover; object-position: top center;
+  }
+  /* deepen the type well so white type never fights the art */
+  .well {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 56%;
+    background: linear-gradient(to bottom, rgba(5,7,10,0) 0%, rgba(5,7,10,.72) 26%, #05070a 52%);
+  }
+  .txt { position: absolute; inset: 0.46in 0.5in 0.44in; display: flex; flex-direction: column; }
+  .kick {
+    font-family: var(--sans); font-size: 8.4pt; font-weight: 700;
+    letter-spacing: .2em; text-transform: uppercase; color: #e8a33a;
+  }
+  .txt h1 {
+    margin-top: auto; font-size: 40pt; line-height: 0.96;
+    letter-spacing: -.005em; text-transform: uppercase; color: #f4efe6;
+    font-weight: 500;
+  }
+  .sub {
+    font-size: 11.6pt; line-height: 1.36; color: #cdc6bb; margin-top: 13pt;
+    max-width: 4.3in;
+  }
+  .hr { height: .6pt; background: #6a5c46; margin: 15pt 0 10pt; }
+  .counts {
+    font-family: var(--sans); font-size: 9pt; font-weight: 600;
+    letter-spacing: .13em; text-transform: uppercase; color: #9a9188;
+  }
+  .byline {
+    font-family: var(--sans); font-size: 11pt; font-weight: 700;
+    letter-spacing: .18em; text-transform: uppercase; color: #f4efe6; margin-top: 14pt;
+  }
+</style>
+</head>
+<body>
+<section class="page cover">
+  <img class="plate" src="art/cover-us-clean.png" alt="">
+  <div class="well"></div>
+  <div class="txt">
+    <div class="kick">Storm Market Field Manual</div>
+    <h1>The<br>Storm-Ready<br>Home</h1>
+    <div class="sub">What the survivors did differently — and the 130 things you can do before the next one.</div>
+    <div class="hr"></div>
+    <div class="counts">130 protections · 23 hazards · 60 days · 5 regions</div>
+    <div class="byline">Paul Raymond</div>
+  </div>
+</section>
+</body>
+</html>

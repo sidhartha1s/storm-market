@@ -337,7 +337,7 @@ def render_pdfs(directory):
         subprocess.run(
             [CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
              f"--print-to-pdf={pdf_path}", html_path.resolve().as_uri()],
-            check=True, capture_output=True,
+            check=True, capture_output=True, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0)
         )
     print(f"wrote {len(html_files)} PDF(s) in {directory}")
 

@@ -150,7 +150,7 @@ for (const c of scanned.filter(c => !missing.includes(c.name))) {
   if (aborted) break;
 
   const fd = spawnSync('ffmpeg', ['-v', 'info', '-framerate', fps, '-i', join(dir, 'f_%05d.jpg'),
-    '-vf', `freezedetect=n=0.003:d=${HOLD}`, '-f', 'null', '-'], { encoding: 'utf8' });
+    '-vf', `freezedetect=n=0.003:d=${HOLD}`, '-f', 'null', '-'], { encoding: 'utf8', windowsHide: true });
   if (fd.status !== 0) { findings.push([c.name, `ffmpeg freezedetect failed (exit ${fd.status})`]); continue; }
   const log = (fd.stderr || '') + (fd.stdout || '');
   const starts = [...log.matchAll(/freeze_start: ([\d.]+)/g)].map(m => parseFloat(m[1]));
@@ -172,7 +172,7 @@ for (const c of scanned.filter(c => !missing.includes(c.name))) {
   const rows = Math.ceil(Math.ceil(n / every) / 6);
   spawnSync('ffmpeg', ['-y', '-v', 'error', '-framerate', fps, '-i', join(dir, 'f_%05d.jpg'),
     '-vf', `select='not(mod(n\\,${every}))',scale=480:-1,tile=6x${rows}:color=0x505050`,
-    '-frames:v', '1', '-q:v', '4', join(SHEETS, `${c.name}_${Math.floor(c.start)}s.jpg`)], { encoding: 'utf8' });
+    '-frames:v', '1', '-q:v', '4', join(SHEETS, `${c.name}_${Math.floor(c.start)}s.jpg`)], { encoding: 'utf8', windowsHide: true });
   console.log(`${c.name.padEnd(24)} ${fmt(c.start).padStart(7)}  dur ${c.dur.toFixed(1).padStart(6)}s  frames ${String(n).padStart(4)}  holds>=${HOLD}s: ${real}`);
 }
 await browser.close();
