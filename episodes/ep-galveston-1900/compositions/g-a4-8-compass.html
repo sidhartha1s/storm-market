@@ -116,14 +116,14 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"gust", {rotation:2, duration:0.3, ease:"sine.inOut"}, 5.6);
   tl.to(P+"gust", {rotation:-2, duration:0.6, ease:"sine.inOut", yoyo:true, repeat:2}, 5.9);
 
-  /* WORST @6.58: chip in */
-  tl.to(P+"chip", {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 6.58);
+  /* SOUTH @5.60 (was WORST @6.58, 0.52 s read): chip settles 6.10, reads 1.5 s to the 7.6 exit */
+  tl.to(P+"chip", {autoAlpha:1, x:0, duration:0.5, ease:"power3.out"}, 5.6);
 
-  /* COME @7.38: band extends over "that the worst was yet to come" */
-  tl.set([P+"x1", P+"x2", P+"x3"], {autoAlpha:0.28}, 7.38);
-  tl.to(P+"x1", {scaleX:1, duration:0.06, ease:"power2.out"}, 7.38);
-  tl.to(P+"x2", {scaleX:1, duration:0.1, ease:"power2.out"}, 7.44);
-  tl.to(P+"x3", {scaleX:1, duration:0.06, ease:"power2.out"}, 7.54);
+  /* bands at 5.80 to 6.06 (were COME @7.38 to 7.60, 0.2 s read): lit by 6.06, read 1.54 s to the 7.6 exit */
+  tl.set([P+"x1", P+"x2", P+"x3"], {autoAlpha:0.28}, 5.8);
+  tl.to(P+"x1", {scaleX:1, duration:0.06, ease:"power2.out"}, 5.8);
+  tl.to(P+"x2", {scaleX:1, duration:0.1, ease:"power2.out"}, 5.9);
+  tl.to(P+"x3", {scaleX:1, duration:0.06, ease:"power2.out"}, 6.0);
 
   /* 7.60: chip and panel exit begin, out by 8.20 (cut to g-a4-9's map) */
   tl.to(P+"chip", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 7.6);
