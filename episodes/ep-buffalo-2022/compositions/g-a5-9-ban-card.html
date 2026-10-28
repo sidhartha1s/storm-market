@@ -216,46 +216,47 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "s1", { autoAlpha: 0, y: -14, duration: 0.5, ease: "power2.in" }, 4.504);
 
   /* SCENE 2 */
-  /* "The next winter," @8.24: card in @8.36, empty; eyebrow @8.54 */
-  tl.fromTo(P + "card", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 8.36);
-  tl.fromTo(P + "eye", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.54);
-  /* "January 2024," @9.30: date; rule @9.70; source @9.70 */
-  tl.fromTo(P + "date", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.30);
-  tl.set(P + "rule", { autoAlpha: 1 }, 9.70);
-  tl.to(P + "rule", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 9.70);
-  tl.fromTo(P + "srcg", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 9.70);
-  /* "a big lake storm came back." @11.20: card floats; snow drift fades in behind, 30 % at 30 px/s */
-  float(P + "card", 11.34, 1.0, 1);
-  tl.to(P + "snow", { autoAlpha: 0.5, duration: 0.8, ease: "power1.out" }, 11.34);
-  tl.to(P + "snow", { y: 220, duration: 7.34, ease: "none" }, 11.34);
-  /* "full travel ban" @13.82 */
-  tl.fromTo(P + "ban", { autoAlpha: 0, scale: 1.15, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 13.82);
-  /* "all of Erie County" @14.96 */
-  tl.fromTo(P + "cty", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 14.96);
-  /* "9 on a Saturday night." @16.42 */
-  tl.fromTo(P + "time", { autoAlpha: 0, scale: 1.25, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 16.42);
-  /* "before the worst of the snow." @18.68: drift thickens to 60 %, speed 30 -> 60 px/s (86 px over 1.44 s) */
-  tl.to(P + "snow", { autoAlpha: 1, duration: 1.0, ease: "power1.inOut" }, 18.68);
-  tl.to(P + "snow", { y: 306, duration: 1.44, ease: "none" }, 18.68);
-  /* "Between now" @20.12: card and drift out 20.12-20.62 */
-  tl.to(P + "card", { autoAlpha: 0, y: -16, duration: 0.5, ease: "power2.in" }, 20.12);
-  tl.to(P + "snow", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 20.12);
-  tl.to(P + "srcg", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 20.12);
+  /* every cue below = TTS time (m) - 3.296; m in the comment */
+  /* "The next winter," @4.944 (m 8.24): card in @5.064, empty; eyebrow @5.244 */
+  tl.fromTo(P + "card", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 5.064);
+  tl.fromTo(P + "eye", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 5.244);
+  /* "January 2024," @6.004 (m 9.30): date; rule @6.404; source @6.404 */
+  tl.fromTo(P + "date", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.004);
+  tl.set(P + "rule", { autoAlpha: 1 }, 6.404);
+  tl.to(P + "rule", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 6.404);
+  tl.fromTo(P + "srcg", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.404);
+  /* "a big lake storm came back." @7.904 (m 11.20): card floats; snow drift fades in behind, 30 % at 30 px/s */
+  float(P + "card", 8.044, 1.0, 1);
+  tl.to(P + "snow", { autoAlpha: 0.5, duration: 0.8, ease: "power1.out" }, 8.044);
+  tl.to(P + "snow", { y: 220, duration: 7.34, ease: "none" }, 8.044);
+  /* "full travel ban" @10.524 (m 13.82) */
+  tl.fromTo(P + "ban", { autoAlpha: 0, scale: 1.15, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 10.524);
+  /* "all of Erie County" @11.664 (m 14.96) */
+  tl.fromTo(P + "cty", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 11.664);
+  /* "9 on a Saturday night." @13.124 (m 16.42) */
+  tl.fromTo(P + "time", { autoAlpha: 0, scale: 1.25, transformOrigin: "50% 50%" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 13.124);
+  /* "before the worst of the snow." @15.384 (m 18.68): drift thickens to 60 %, speed 30 -> 60 px/s (86 px over 1.44 s) */
+  tl.to(P + "snow", { autoAlpha: 1, duration: 1.0, ease: "power1.inOut" }, 15.384);
+  tl.to(P + "snow", { y: 306, duration: 1.44, ease: "none" }, 15.384);
+  /* "Between now" @16.824 (m 20.12): card and drift out 16.824-17.324 */
+  tl.to(P + "card", { autoAlpha: 0, y: -16, duration: 0.5, ease: "power2.in" }, 16.824);
+  tl.to(P + "snow", { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 16.824);
+  tl.to(P + "srcg", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 16.824);
 
   /* SCENE 3 */
-  /* source swaps @20.62 */
-  tl.fromTo(P + "srcn", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 20.62);
-  /* "now and the end of March," @20.82: calendar chip in; track with it */
-  tl.fromTo(P + "calw", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 20.82);
-  tl.fromTo(P + "track", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.45, ease: "power2.out" }, 20.82);
-  /* @21.36: strip fills 1.2 s, done 22.56 ("end of March" lands as it completes) */
-  tl.set(P + "fill", { autoAlpha: 1 }, 21.36);
-  tl.to(P + "fill", { scaleX: 1, duration: 1.2, ease: "power1.inOut" }, 21.36);
-  /* "Buffalo is inside its lake snow season again." @22.64: chip floats; glow pulse @23.94 ("snow season") */
-  float(P + "calw", 22.64, 1.1, 1);
-  tl.fromTo(P + "fill", { boxShadow: "0 0 0px rgba(127,178,229,0)" }, { boxShadow: "0 0 18px rgba(127,178,229,0.9)", duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 23.94);
-  /* after "again." @24.98: everything fades toward the bare ground 25.10-25.90 */
-  tl.to(P + "cal", { autoAlpha: 0, duration: 0.8, ease: "power1.in" }, 25.10);
+  /* source swaps @17.324 (m 20.62) */
+  tl.fromTo(P + "srcn", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 17.324);
+  /* "now and the end of March," @17.524 (m 20.82): calendar chip in; track with it */
+  tl.fromTo(P + "calw", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 17.524);
+  tl.fromTo(P + "track", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.45, ease: "power2.out" }, 17.524);
+  /* @18.064 (m 21.36): strip fills 1.2 s, done 19.264 ("end of March" lands as it completes) */
+  tl.set(P + "fill", { autoAlpha: 1 }, 18.064);
+  tl.to(P + "fill", { scaleX: 1, duration: 1.2, ease: "power1.inOut" }, 18.064);
+  /* "Buffalo is inside its lake snow season again." @19.344 (m 22.64): chip floats; glow pulse @20.644 ("snow season") */
+  float(P + "calw", 19.344, 1.1, 1);
+  tl.fromTo(P + "fill", { boxShadow: "0 0 0px rgba(127,178,229,0)" }, { boxShadow: "0 0 18px rgba(127,178,229,0.9)", duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 20.644);
+  /* after "again." @21.684 (m 24.98): everything fades toward the bare ground 21.804-22.604 */
+  tl.to(P + "cal", { autoAlpha: 0, duration: 0.8, ease: "power1.in" }, 21.804);
 
   window.__timelines["g-a5-9-ban-card"] = tl;
 })();
