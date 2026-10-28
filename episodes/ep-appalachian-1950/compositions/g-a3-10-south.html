@@ -10,6 +10,11 @@
 
   BASEMAP: verbatim copy of g-a4-1-kymap #a41-us / #a41-ca / #a41-border (Natural Earth, master-map-us-canada.html),
     renamed a3c-*. Coast: the same paths drawn first with a 3.2 px #4a5560 stroke (as g-a4-1).
+  BASEMAP FIX (29 Oct 26): the regional box stops at lat 35.0 N (y 64905) and lon -64.0 (x 128965), so frame T was black
+    below y about 600. #a3c-outg (as g-a5-3 #a53-outg) fills everything outside the box inside the camera range (union of
+    frames A2-X and T, +6000): US Census TIGER for SC AR MS LA NC GA AL TN FL TX, Natural Earth 50m for other US states and
+    Nova Scotia, Mexico SCHEMATIC. Ocean stays the root background. Credit carries "US Census" from 2.26 (#a3c-credit2);
+    #a3c-credit keeps g-a3-9's text at frame 0 and leaves with src0.
   PROJECTION (the episode's one system): X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213).
   CAMERA (screen = (map - top-left) * s), briefs/a3/_list.md:
     A2-X s 0.03   TL (42191.8, 15852.5): NWK (1431,511) PIT (760,560) BUF (889,150) Lake Erie centre (621,265)
