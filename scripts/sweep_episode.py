@@ -42,9 +42,10 @@ for m in re.finditer(r'<(section|video|div)\b([^>]*)>', h):
     cls = re.search(r'class="([^"]*)"', a)
     is_black = bool(cls and re.search(r'blackout|\bground\b', cls.group(1)))   # ground plates carry no src of their own
     if not src and not cid and not is_black:
-        # only a src inside THIS element: stop at its closing tag, or the next window-bearing tag for a void <video>
+        # only a src inside THIS element: stop at its closing tag or the next WINDOW-bearing tag (a void <video>);
+        # a plain nested <div class="dim"> is no stop, or a still-wrap loses its own img
         inner = h[m.end():m.end() + 900]
-        inner = re.split(r'</%s>|<(?:section|video|div)\b' % m.group(1), inner, maxsplit=1)[0]
+        inner = re.split(r'</%s>|<(?:section|video|div)\b[^>]*data-start=' % m.group(1), inner, maxsplit=1)[0]
         s2 = re.search(r'src="([^"]+)"', inner)
         src = s2
     wins.append(dict(at=float(st.group(1)), dur=float(du.group(1)), tr=int(tr.group(1)),
