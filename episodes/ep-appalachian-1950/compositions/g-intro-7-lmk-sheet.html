@@ -5,8 +5,7 @@
 <!--
   g-intro-7-lmk-sheet (I1-S3, standard): NWS Louisville Bowling Green November records page scrolls to the ALL-TIME row, row highlighted, red box on "-7, 1950", chip "STILL THE / NOVEMBER RECORD". Overlay over g-intro-5-inland (track 3).
   Host: data-start = I1-S3 start + 5.98, data-duration 4.38 (to 10.36). Cue times below are LOCAL (segment time - 5.98); segment times in the comments (audio/i1-s3.words.json).
-  PAGE-IMAGE CAVEAT: media/docs/lmk-bwg-november.png did not exist when this was built (no render allowed to me). The five PLACEHOLDER-MEASURE numbers in the script (CW, CH, ROWC, ROWH, row/cell x) are
-  guesses for a 200 dpi crop and MUST be re-measured on the real crop; only those constants change, every other position derives from them.
+  FIT (28 Oct 26): constants measured on the real media/docs/lmk-bwg-november.png (1619 x 1366): ALL-TIME row y 1279-1358, table x 24-1595, LOW column x 206-388. Scale S = 580/1619 = 0.3582.
   Pair of g-intro-6-pbz-sheet (same card, box, eyebrow style, chip style); g-intro-6 was not on disk, matched from its brief.
 -->
 <template>
@@ -17,10 +16,10 @@
     background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 24px 70px rgba(0,0,0,0.5); opacity:0; visibility:hidden; }
   #l7-scroll { position:absolute; left:0; top:64px; width:580px; height:1100px; }
   #l7-push { position:absolute; left:0; top:0; width:580px; height:1100px; }
-  #l7-page { position:absolute; left:0; top:0; width:1200px; height:1500px; }
-  #l7-img { position:absolute; left:0; top:0; width:1200px; height:1500px; display:block; }
+  #l7-page { position:absolute; left:0; top:0; width:1619px; height:1366px; }
+  #l7-img { position:absolute; left:0; top:0; width:1619px; height:1366px; display:block; }
   #l7-bar { position:absolute; background:#5a768f; opacity:0.40; mix-blend-mode:multiply; }
-  #l7-red { position:absolute; left:0; top:0; width:1200px; height:1500px; overflow:visible; }
+  #l7-red { position:absolute; left:0; top:0; width:1619px; height:1366px; overflow:visible; }
   /* eyebrow on its own beige band, above the scrolling page */
   #l7-band { position:absolute; left:0; top:0; width:580px; height:64px; background:rgba(232,222,200,0.97); z-index:3; }
   #l7-eyebrow { position:absolute; left:20px; right:20px; top:9px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:25px; letter-spacing:2px; color:#2a2622; text-align:center; white-space:normal; }
@@ -37,7 +36,7 @@
     <div id="l7-scroll"><div id="l7-push"><div id="l7-page">
       <img id="l7-img" src="media/docs/lmk-bwg-november.png" alt="NWS Louisville November records, Bowling Green" data-crop-ok="page crop is taller than the card; the card window scrolls it by design">
       <div id="l7-bar"></div>
-      <svg id="l7-red" viewBox="0 0 1200 1500"><rect id="l7-rect" x="0" y="0" width="10" height="10" fill="none" stroke="#c0392b" stroke-width="9"/></svg>
+      <svg id="l7-red" viewBox="0 0 1619 1366"><rect id="l7-rect" x="0" y="0" width="10" height="10" fill="none" stroke="#c0392b" stroke-width="9"/></svg>
     </div></div></div>
   </div>
   <div id="l7-chipwrap" data-start="0" data-duration="4.38" data-track-index="2" data-overlap-ok="chip sits on the sheet foot by design">
@@ -48,13 +47,13 @@
 window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
-  /* PLACEHOLDER-MEASURE: native pixels of media/docs/lmk-bwg-november.png (crop = table text width + 24 px each side, header line to ALL-TIME row) */
-  const CW = 1200, CH = 1500;          /* crop size (css box above must match) */
-  const ROWC = 1420, ROWH = 34;        /* ALL-TIME row centre y and line height */
-  const ROWX0 = 24, ROWX1 = 1176;      /* table text width inside the crop */
-  const CELLX0 = 930, CELLX1 = 1170;   /* "-7, 1950" low cell x range */
+  /* measured native pixels of media/docs/lmk-bwg-november.png */
+  const CW = 1619, CH = 1366;          /* crop size (css box above must match) */
+  const ROWC = 1318.5, ROWH = 79;      /* ALL-TIME row centre y (rules 1279..1358) and height */
+  const ROWX0 = 24, ROWX1 = 1595;      /* table outer border */
+  const CELLX0 = 206, CELLX1 = 388;    /* LOW column rules */
   const S = 580 / CW, BAND = 64;
-  const rowScreen = 300;               /* ALL-TIME row centre, card-relative: card bottom (420) - 120 */
+  const rowScreen = 300 - ROWH * S / 2; /* ALL-TIME row centre, card-relative: row bottom = card bottom (420) - 120 */
   const T = rowScreen - BAND - ROWC * S; /* scroll end translateY */
 
   tl.set("#l7-page", { scale: S, transformOrigin: "0px 0px" }, 0);

@@ -5,23 +5,21 @@
 <!--
   g-intro-6-pbz-sheet (I1-S2 first 5 s, standard): NWS Pittsburgh "largest snow storms" crop on beige cite stock, rank-1 row highlighted, chip "27.4 IN / BIGGEST ON RECORD".
   Host: data-start = I1-S2 start + 2.04, data-duration 2.98, track 3, over g-intro-5-inland. Cues are LOCAL = i1-s2.words.json time - 2.04.
-  CROP (measured on media/candidates/intro/_frames/pbz-1.png, 680x880 = 80 dpi, scale 2.5 to the 200 dpi media/docs/pbz-snow-records.png, 1700x2200):
-    text column x 64..243 (title widest), title line y 105..111, rank1 y 131..137, rank3 y 156..162 (80 dpi px).
-    crop = text column +/-10 px margin (24 px at 200 dpi): x 135..632, y 242..425 at 200 dpi (497 x 183). Shown 540 px wide: factor 1.0865 on the 200 dpi image.
-    Page image: 1700 x 1.0865 = 1847 px wide, left -147, top -263 inside the 540 x 199 window. Row pitch 33.7 px; rank1 row centre y 101 in the window.
-  Bar: rank1 row centre = window y 101, height 33.7 + 8 = 42 -> top 80 in window; text column width x 25..515.
+  CROP (fit 28 Oct 26): media/docs/pbz-snow-records.png is 500 x 170, ink x 24-476, title y 20-37, rank1 y 82-101, rank2 114-133, rank3 145-164.
+    Shown 540 px wide: factor 1.08 -> 540 x 183.6, window 540 x 184 (card height 56 + 184 + 20 = 260). Rank1 centre y 91.5*1.08 = 98.8 -> origin 99.
+    Bar: rank1 ink 88.6-109.1, next row ink starts 123.1; bar top 82 height 34 (82-116), x 22-518 (ink 25.9-514.1).
   Eyebrow is 18 px, tracking 2 (brief: 22 px, tracking 4): 35 characters at 22/4 measure about 660 px, wider than the 540 px card interior.
 -->
 <template>
 <style>
   #g6-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
-  #g6-card { position:absolute; left:980px; top:170px; width:580px; height:275px; box-sizing:border-box; border-radius:18px; overflow:hidden;
+  #g6-card { position:absolute; left:980px; top:170px; width:580px; height:260px; box-sizing:border-box; border-radius:18px; overflow:hidden;
     background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 24px 70px rgba(0,0,0,0.55); opacity:0; visibility:hidden; }
   #g6-eyebrow { position:absolute; left:20px; top:18px; font-weight:700; font-size:18px; line-height:24px; letter-spacing:2px; color:#2a2622; white-space:nowrap; }
-  #g6-page { position:absolute; left:20px; top:56px; width:540px; height:199px; overflow:hidden; background:#fff; }
-  #g6-zoom { position:absolute; left:0; top:0; width:540px; height:199px; transform-origin:50% 101px; }
-  #g6-img { position:absolute; left:-147px; top:-263px; width:1847px; height:auto; display:block; }
-  #g6-bar { position:absolute; left:25px; top:80px; width:490px; height:42px; background:rgba(216,161,58,0.35); mix-blend-mode:multiply; transform-origin:left center; transform:scaleX(0); }
+  #g6-page { position:absolute; left:20px; top:56px; width:540px; height:184px; overflow:hidden; background:#fff; }
+  #g6-zoom { position:absolute; left:0; top:0; width:540px; height:184px; transform-origin:50% 99px; }
+  #g6-img { position:absolute; left:0; top:0; width:540px; height:auto; display:block; }
+  #g6-bar { position:absolute; left:22px; top:82px; width:496px; height:34px; background:rgba(216,161,58,0.35); mix-blend-mode:multiply; transform-origin:left center; transform:scaleX(0); }
   #g6-chip { position:absolute; left:1050px; top:405px; width:440px; height:120px; box-sizing:border-box; padding:10px 22px; border-radius:14px; text-align:center;
     background:rgba(10,16,24,0.55); -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.14);
     opacity:0; visibility:hidden; }
