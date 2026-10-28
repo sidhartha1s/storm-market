@@ -105,18 +105,22 @@ def grid_tiles(raw):
     return [[x, y, (re.search(r"[0-9a-f]{8}-[0-9a-f-]{27}", src) or re.search(r"[^/]+$", src)).group(0)] for x, y, src, *_ in tiles]
 
 
-def to_grid(page):
+def to_grid(page, fresh=False):
     # The project grid, where tiles are read. Clicking a tile now opens the clip in the scene editor
     # (<project>/edit/<id>), which Escape does not leave; every later job then read 0 tiles (23 Oct 26, 10 jobs in a row).
-    if not page.url.startswith(PROJECT) or "/edit/" in page.url:
+    # fresh: reload even when already there, so tile ids come in the freshly loaded form (see clips_above)
+    if fresh or not page.url.startswith(PROJECT) or "/edit/" in page.url:
         page.goto(PROJECT, wait_until="domcontentloaded")
         page.wait_for_timeout(10000)
 
 
-def clips_above(tiles, anchor):
-    # the tiles above the anchor clip (the top clip before the send) are the new ones; none when the anchor is out of view
-    ids = [t[2] for t in tiles]
-    return tiles[:ids.index(anchor)] if anchor in ids else []
+def clips_above(tiles, known):
+    # the tiles above the first known clip (known = every clip id in view before the send) are the new ones; none when no
+    # known clip is in view. Never one anchor id: a tile's id is a long token on a freshly loaded grid and a uuid once the
+    # tile was opened, so a uuid anchor from the open tab never matched the reloaded grid and a landed clip sat unseen
+    # for about an hour; a token can also vanish a minute later (29 Oct 26).
+    first = next((i for i, t in enumerate(tiles) if t[2] in known), None)
+    return tiles[:first] if first is not None else []
 
 
 def verdict(path):
@@ -195,7 +199,7 @@ with sync_playwright() as p:
     spent = 0
     approved = 0
     try:
-        to_grid(page)
+        to_grid(page, fresh=True)  # the known set below must be read from a freshly loaded grid
         enter = page.get_by_text("Create with Google Flow", exact=True)
         if enter.count() and enter.first.is_visible():  # public page: enter the app in this same tab, as the owner does
             log("public page: entering Flow")
@@ -219,8 +223,8 @@ with sync_playwright() as p:
         # land above that clip (a shot approved by an earlier run), then fetches it
         mode = sys.argv[2] if len(sys.argv) > 3 else ""
         TOP = int(sys.argv[3]) if mode == "--download-top" else 0
-        anchor = sys.argv[3] if mode == "--after" else video_tiles(page)[0][2]
-        log("top clip before", anchor, "mode", mode or "send")
+        known = {sys.argv[3]} if mode == "--after" else {t[2] for t in video_tiles(page)}
+        log("clips in view before", sorted(known), "mode", mode or "send")
         fails_before = failed_cards(page)
         expect = CFG["count"] * CFG["credits_per_video"]
         done = set(open(DONE, encoding="utf8").read().split()) if os.path.exists(DONE) else set()
@@ -295,7 +299,7 @@ with sync_playwright() as p:
                 page.goto(PROJECT, wait_until="domcontentloaded")
                 page.wait_for_timeout(10000)
             tiles = video_tiles(page)
-            new = tiles[:TOP] if TOP else clips_above(tiles, anchor)
+            new = tiles[:TOP] if TOP else clips_above(tiles, known)
             log(time.strftime("%H:%M:%S"), "new clips", len(new), "target", target)
             if len(new) >= target:
                 break

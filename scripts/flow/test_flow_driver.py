@@ -24,11 +24,11 @@ raw = [
 ]
 tiles = grid_tiles(raw)
 assert [t[2][:8] for t in tiles] == ["6fa051dc", "ANqvLOYl", "ANqvLObC", "ANqvLObk"], tiles
-assert [t[2] for t in clips_above(tiles, ANCHOR)] == [NEW], clips_above(tiles, ANCHOR)
+assert [t[2] for t in clips_above(tiles, {ANCHOR})] == [NEW], clips_above(tiles, {ANCHOR})
 
 # one column (the 1080 px window the driver ran on before): same answer
 narrow = [[538, 224 + 261 * i, t[2], 293, 783, 490] for i, t in enumerate(raw[2:])] + raw[:2]  # one tile per row, same order
-assert [t[2] for t in clips_above(grid_tiles(narrow), ANCHOR)] == [NEW]
+assert [t[2] for t in clips_above(grid_tiles(narrow), {ANCHOR})] == [NEW]
 
 # a clip beyond the agent panel is not a grid tile
 assert grid_tiles([[1500, 300, ASB + "x", 1340, 1830, 490]]) == []
@@ -59,5 +59,17 @@ assert not quoted_price("Generate for 115 credits?", 15)
 assert not quoted_price("Generate for 1,015 credits?", 15)
 # a 1 px row jitter keeps the newest clip first
 jitter = [[1047, 224, ASB + ANCHOR, 802, 1292, 490], [538, 225, "https://flow-content.google/video/" + NEW, 293, 783, 490]]
-assert [t[2] for t in clips_above(grid_tiles(jitter), ANCHOR)] == [NEW]
+assert [t[2] for t in clips_above(grid_tiles(jitter), {ANCHOR})] == [NEW]
 print("test_flow_driver: price quote and row jitter PASS")
+
+# 29 Oct 26: the anchor was the uuid of a tile opened in the tab (ac356b2a-...); the reloaded grid showed only tokens, so
+# one anchor id never matched and a landed clip sat unseen for about an hour. The driver now keeps every id in view
+# after a fresh load, and the first one still in view marks where the new clips end, even when the top one has gone.
+T = ["ANqvLO" + c * 80 for c in "abcd"]
+NEWTOK = "ANqvLO" + "n" * 80
+known = set(T[:3])  # read from a freshly loaded grid before the send
+landed = [[538, 224, ASB + NEWTOK, 293, 783, 490], [1047, 224, ASB + T[1], 802, 1292, 490],
+          [538, 490, ASB + T[2], 293, 783, 490], [1047, 490, ASB + T[3], 802, 1292, 490]]  # T[0]'s token is gone
+assert [t[2] for t in clips_above(grid_tiles(landed), known)] == [NEWTOK], clips_above(grid_tiles(landed), known)
+assert clips_above(grid_tiles(landed), {"ac356b2a-1b2c-4d5e-8f90-123456789abc"}) == [], "no known clip in view: nothing new"
+print("test_flow_driver: known-set anchor PASS")
