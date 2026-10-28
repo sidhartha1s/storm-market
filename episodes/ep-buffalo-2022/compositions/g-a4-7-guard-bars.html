@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4-7-guard-bars (A4-S6, standard): RHS glass panel over the DVIDS 7572835 still (D1). Three bars on one scale:
+  DEC 24 · 54, DEC 29 · 701 ON DUTY, ghost 849 CALLED UP. 0.5889 px per person: 31.8 / 412.8 / 500 px. Zero line at root x 1270.
+  Cue times are seconds from the START of A4-S6 (audio/a4-s6.words.json), comp-local = S6 time - 8.80. Comp duration 10.04 s.
+  849 is on screen only, never spoken. Panel left edge x 1100, so a child at panel-left 170 sits at root x 1270.
+-->
+<template>
+<style>
+  #g-a4-7-guard-bars-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  #gb-panel { position:absolute; right:0; top:0; bottom:0; width:820px; box-sizing:border-box;
+    background:linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0));
+    backdrop-filter:blur(16px) saturate(1.15); -webkit-backdrop-filter:blur(16px) saturate(1.15);
+    opacity:0; visibility:hidden; }
+  #gb-float { position:absolute; left:0; top:0; width:820px; height:700px; }
+  #gb-eyebrow { position:absolute; left:170px; top:142px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:22px;
+    letter-spacing:6px; color:#93a3b2; white-space:nowrap; opacity:0; visibility:hidden; }
+  .gb-head { position:absolute; left:170px; height:52px; display:flex; flex-direction:row; align-items:baseline; white-space:pre; line-height:52px; }
+  #gb-h1 { top:218px; } #gb-h2 { top:348px; } #gb-h3 { top:478px; }
+  .gb-lab { font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:52px; color:#93a3b2; opacity:0; visibility:hidden; }
+  .gb-num { display:inline-block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:52px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #gb-n2 { color:#e74c3c; }
+  #gb-n3 { color:#93a3b2; }
+  #gb-ondty { color:#dfe7ee; }
+  #gb-called { color:#93a3b2; }
+  .gb-bar { position:absolute; left:170px; height:28px; transform-origin:left center; opacity:0; visibility:hidden; }
+  #gb-b1 { top:282px; width:32px; background:#dfe7ee; }
+  #gb-b2 { top:412px; width:413px; background:#e74c3c; }
+  #gb-ghost { position:absolute; left:170px; top:542px; width:500px; height:28px; opacity:0; visibility:hidden; }
+  #gb-glint { position:absolute; left:170px; top:412px; width:2px; height:28px; background:#dfe7ee; opacity:0; visibility:hidden; }
+  #gb-axis { position:absolute; left:170px; top:276px; width:1px; height:300px; background:#2a3644; opacity:0; visibility:hidden; }
+  #gb-src { position:absolute; left:110px; bottom:54px; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-7-guard-bars-root" data-composition-id="g-a4-7-guard-bars" data-width="1920" data-height="1080">
+  <div id="gb-panel">
+    <div id="gb-eyebrow">NEW YORK NATIONAL GUARD</div>
+    <div id="gb-float">
+      <div id="gb-axis"></div>
+      <div class="gb-head" id="gb-h1"><span class="gb-lab" id="gb-l1">DEC 24 · </span><span class="gb-num" id="gb-n1">54</span></div>
+      <div class="gb-bar" id="gb-b1"></div>
+      <div class="gb-head" id="gb-h2"><span class="gb-lab" id="gb-l2">DEC 29 · </span><span class="gb-num" id="gb-n2">701</span><span class="gb-lab" id="gb-ondty"> ON DUTY</span></div>
+      <div class="gb-bar" id="gb-b2"></div>
+      <div id="gb-glint"></div>
+      <div class="gb-head" id="gb-h3"><span class="gb-num" id="gb-n3">849</span><span class="gb-lab" id="gb-called"> CALLED UP</span></div>
+      <svg id="gb-ghost" width="500" height="28" viewBox="0 0 500 28"><rect x="1" y="1" width="498" height="26" fill="none" stroke="#93a3b2" stroke-width="2" stroke-dasharray="8 6"/></svg>
+    </div>
+  </div>
+  <div id="gb-src">New York National Guard, DVIDS, 3 Jan 2023</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+
+  /* whole-window float: 10 x 1.004 s = 10.04 s */
+  tl.fromTo("#gb-float", { y: 0 }, { y: -3, duration: 1.004, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0);
+
+  /* panel + pill in. "That was Christmas Eve" @8.86 (local 0.06) */
+  tl.fromTo("#gb-panel", { x: 660, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0.06);
+  tl.fromTo("#gb-src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.06);
+  tl.fromTo("#gb-axis", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 0.4);
+  /* eyebrow @9.20 (local 0.40) */
+  tl.fromTo("#gb-eyebrow", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.4);
+
+  /* row 1 header. "Christmas" @9.20 (local 0.40) */
+  tl.fromTo("#gb-l1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.4);
+  /* "54" @10.42 (local 1.62) */
+  tl.fromTo("#gb-n1", { autoAlpha: 0, scale: 1.3, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 1.62);
+  tl.fromTo("#gb-b1", { scaleX: 0, autoAlpha: 1 }, { scaleX: 1, autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 1.62);
+
+  /* row 2 header. "December" @13.38 (local 4.58) */
+  tl.fromTo("#gb-l2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 4.58);
+  /* bar 2 from 14.70 (local 5.90), "701" @15.08 counts from 54, starts 14.60 (local 5.80), lands 15.30 (local 6.50) */
+  tl.fromTo("#gb-b2", { scaleX: 0, autoAlpha: 1 }, { scaleX: 1, autoAlpha: 1, duration: 0.6, ease: "power2.out" }, 5.9);
+  tl.set("#gb-n2", { autoAlpha: 1 }, 5.8);
+  const cnt = { v: 54 };
+  tl.fromTo(cnt, { v: 54 }, { v: 701, duration: 0.7, ease: "power4.out", onUpdate: function() { /* "701" @15.08, writes a leaf span */
+    const el = document.getElementById("gb-n2"); if (el) el.textContent = Math.round(cnt.v);
+  } }, 5.8);
+  /* " ON DUTY" @15.20 (local 6.40) */
+  tl.fromTo("#gb-ondty", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 6.4);
+
+  /* glint travels along bar 2 once the bar lands (local 6.5), twice: 6.5 and 9.0 */
+  tl.set("#gb-glint", { autoAlpha: 1 }, 6.5);
+  tl.fromTo("#gb-glint", { x: 0 }, { x: 411, duration: 1.2, ease: "power1.inOut", repeat: 1, repeatDelay: 1.3 }, 6.5);
+
+  /* row 3 ghost, before "but" @16.36 (local 7.10 = 15.90) */
+  tl.fromTo("#gb-ghost", { clipPath: "inset(0px 500px 0px 0px)", autoAlpha: 1 }, { clipPath: "inset(0px 0px 0px 0px)", autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 7.1);
+  tl.fromTo("#gb-n3", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 7.1);
+  tl.fromTo("#gb-called", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 7.1);
+
+  /* exit after "rescue." @18.40 (local 9.44 to 10.04) */
+  tl.to(["#gb-panel", "#gb-src"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.44);
+
+  window.__timelines["g-a4-7-guard-bars"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
