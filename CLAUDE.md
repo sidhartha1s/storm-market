@@ -51,6 +51,10 @@ An owner correction or a measured surprise lands in its single home (`references
 - Shorts: planned, pilot pending the owner's go. No skill until about ten shorts stabilise.
 
 ## Owner gates: rules inherited from the owner's other channels (never claim or infer approval)
+- His gates per documentary, in this order and no others: the angle; the title and thumbnail (`references/angle.md`);
+  the hook+intro; the draft preview; any paid retake. Acts are never his gate (`references/script-scaling.md` "Section
+  lock"); a plan or ETA that waits on him for anything else is wrong (owner 28 Oct 26: "why I sign off the scripts
+  because I don't read it", and the titles of 3 videos never reached him).
 - Design sign-off before paid spend or bulk sourcing. Paid API railguards per the global CLAUDE.md. Free candidate sourcing
   (public domain and stock downloads, no spend, nothing licensed) is not bulk sourcing: it starts from each act's Picture
   lines without waiting for the sign-off (owner 17 Oct 26, flow page f1). A paid or licensed buy still waits for it.
