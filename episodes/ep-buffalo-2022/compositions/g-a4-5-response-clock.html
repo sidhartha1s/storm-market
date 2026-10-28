@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4-5-response-clock (A4-S5 0 to 14.90 s, standard): full-frame 24-hour ring. Arc sweeps 22.72 h (340.8 deg) from
+  BREAKFAST to NEXT MORNING, centre chip AVG RESPONSE ~23 HRS, night span recoloured on "whole night".
+  Claim: NYU Wagner p.142, 22.72 h average response in the city (factcheck/a4-r1.md row 18). "~23" per brief; no clock time printed.
+  Cue times are seconds from the START of A4-S5 (audio/a4-s5.words.json). Comp duration 14.90 s.
+  Geometry (centre 960,540, r 300, 15 deg/h, 0 h at top, clockwise): arc end (861.3,256.7); night start 130.0 deg (1189.8,732.8);
+  moon (647.2,755.8) at r 380, 235.4 deg. Arc path length 1784.42 -> dash 1786; night arc 1103.75 -> dash 1105.
+  Night overlay uses round caps: its end covers the amber arc's cap; its start overshoots 14 px (2.7 deg) back onto amber.
+-->
+<template>
+<style>
+  #g-a4-5-response-clock-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #rc-dark { position:absolute; inset:0; background:#000; opacity:0; }
+  #rc-content, #rc-float { position:absolute; inset:0; }
+  .rc-full { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #rc-trackbox { opacity:0; visibility:hidden; }
+  #rc-ticks line { opacity:0; visibility:hidden; }
+  #rc-arc, #rc-night { opacity:0; visibility:hidden; }
+  .rc-t { position:absolute; opacity:0; visibility:hidden; white-space:nowrap; }
+  #rc-sub { left:660px; width:600px; top:614px; text-align:center; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:30px; line-height:30px; color:#d8a13a; }
+  #rc-avg { left:660px; width:600px; top:451px; text-align:center; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:22px; letter-spacing:6px; color:#93a3b2; text-indent:6px; }
+  #rc-big { left:660px; width:600px; top:506px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; line-height:84px; color:#f2f5f8; }
+  #rc-lab-a { left:1000px; top:194px; font-weight:700; font-size:22px; line-height:22px; letter-spacing:3px; color:#f2f5f8; }
+  #rc-lab-b { right:1080px; top:204px; text-align:right; font-weight:700; font-size:22px; line-height:22px; letter-spacing:3px; color:#e8c56a; }
+  .rc-dot { position:absolute; width:12px; height:12px; border-radius:50%; opacity:0; visibility:hidden; }
+  #rc-dot-a { left:954px; top:234px; background:#f2f5f8; }
+  #rc-dot-b { left:855.4px; top:250.7px; background:#e8c56a; }
+  #rc-moon { position:absolute; left:627.2px; top:735.8px; width:40px; height:40px; opacity:0; visibility:hidden; }
+  #rc-src { position:absolute; left:110px; bottom:54px; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-5-response-clock-root" data-composition-id="g-a4-5-response-clock" data-width="1920" data-height="1080">
+  <div id="rc-dark"></div>
+  <div id="rc-content">
+    <div id="rc-float">
+      <div class="rc-full" id="rc-trackbox">
+        <svg class="rc-full" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="960" cy="540" r="300" fill="none" stroke="#15202b" stroke-width="28"/>
+        </svg>
+      </div>
+      <svg class="rc-full" id="rc-ticks" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <line x1="960" y1="222" x2="960" y2="198" stroke="#93a3b2" stroke-width="3"/>
+        <line x1="1042.3" y1="232.8" x2="1045.4" y2="221.2" stroke="#2a3644" stroke-width="2"/>
+        <line x1="1119" y1="264.6" x2="1125" y2="254.2" stroke="#2a3644" stroke-width="2"/>
+        <line x1="1184.9" y1="315.1" x2="1193.3" y2="306.7" stroke="#2a3644" stroke-width="2"/>
+        <line x1="1235.4" y1="381" x2="1245.8" y2="375" stroke="#2a3644" stroke-width="2"/>
+        <line x1="1267.2" y1="457.7" x2="1278.8" y2="454.6" stroke="#2a3644" stroke-width="2"/>
+        <line x1="1278" y1="540" x2="1302" y2="540" stroke="#93a3b2" stroke-width="3"/>
+        <line x1="1267.2" y1="622.3" x2="1278.8" y2="625.4" stroke="#2a3644" stroke-width="2"/>
+        <line x1="1235.4" y1="699" x2="1245.8" y2="705" stroke="#2a3644" stroke-width="2"/>
+        <line x1="1184.9" y1="764.9" x2="1193.3" y2="773.3" stroke="#2a3644" stroke-width="2"/>
+        <line x1="1119" y1="815.4" x2="1125" y2="825.8" stroke="#2a3644" stroke-width="2"/>
+        <line x1="1042.3" y1="847.2" x2="1045.4" y2="858.8" stroke="#2a3644" stroke-width="2"/>
+        <line x1="960" y1="858" x2="960" y2="882" stroke="#93a3b2" stroke-width="3"/>
+        <line x1="877.7" y1="847.2" x2="874.6" y2="858.8" stroke="#2a3644" stroke-width="2"/>
+        <line x1="801" y1="815.4" x2="795" y2="825.8" stroke="#2a3644" stroke-width="2"/>
+        <line x1="735.1" y1="764.9" x2="726.7" y2="773.3" stroke="#2a3644" stroke-width="2"/>
+        <line x1="684.6" y1="699" x2="674.2" y2="705" stroke="#2a3644" stroke-width="2"/>
+        <line x1="652.8" y1="622.3" x2="641.2" y2="625.4" stroke="#2a3644" stroke-width="2"/>
+        <line x1="642" y1="540" x2="618" y2="540" stroke="#93a3b2" stroke-width="3"/>
+        <line x1="652.8" y1="457.7" x2="641.2" y2="454.6" stroke="#2a3644" stroke-width="2"/>
+        <line x1="684.6" y1="381" x2="674.2" y2="375" stroke="#2a3644" stroke-width="2"/>
+        <line x1="735.1" y1="315.1" x2="726.7" y2="306.7" stroke="#2a3644" stroke-width="2"/>
+        <line x1="801" y1="264.6" x2="795" y2="254.2" stroke="#2a3644" stroke-width="2"/>
+        <line x1="877.7" y1="232.8" x2="874.6" y2="221.2" stroke="#2a3644" stroke-width="2"/>
+      </svg>
+      <svg class="rc-full" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <path id="rc-arc" d="M 960 240 A 300 300 0 1 1 861.3 256.7" fill="none" stroke="#d8a13a" stroke-width="28" stroke-linecap="round" stroke-dasharray="1786" stroke-dashoffset="1786"/>
+        <path id="rc-night" d="M 1189.8 732.8 A 300 300 0 1 1 861.3 256.7" fill="none" stroke="#5a768f" stroke-width="28" stroke-linecap="round" stroke-dasharray="1105" stroke-dashoffset="1105"/>
+      </svg>
+      <div class="rc-dot" id="rc-dot-a"></div>
+      <div class="rc-dot" id="rc-dot-b"></div>
+      <div class="rc-t" id="rc-lab-a">BREAKFAST</div>
+      <div class="rc-t" id="rc-lab-b">NEXT MORNING</div>
+      <div id="rc-moon"><svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M22 4 A16 16 0 1 0 36 28 A13 13 0 1 1 22 4 Z" fill="#7fb2e5"/></svg></div>
+      <div class="rc-t" id="rc-avg">AVG RESPONSE</div>
+      <div class="rc-t" id="rc-big">~23 HRS</div>
+      <div class="rc-t" id="rc-sub">In the city</div>
+    </div>
+    <div id="rc-src">NYU Wagner review, via Firehouse</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#rc-trackbox", "#rc-ticks line", "#rc-arc", "#rc-night", "#rc-dot-a", "#rc-dot-b", "#rc-lab-a", "#rc-lab-b", "#rc-moon", "#rc-avg", "#rc-big", "#rc-sub", "#rc-src"], { autoAlpha: 0 }, 0);
+
+  /* whole-window float: 10 x 1.5 s = 15 s >= 14.90 */
+  tl.fromTo("#rc-float", { y: 0 }, { y: -3, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0);
+
+  /* "In the city" @0.00 to 0.26 -> sub in at 0.26 */
+  tl.fromTo("#rc-sub", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.26);
+
+  /* "emergency services" @2.24: track and ticks draw, source pill in */
+  tl.fromTo("#rc-trackbox", { scale: 0.92, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 2.24);
+  tl.fromTo("#rc-ticks line", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, stagger: 0.02 }, 2.24);
+  tl.fromTo("#rc-src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 2.24);
+
+  /* "took" @3.26 */
+  tl.fromTo("#rc-avg", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 3.26);
+
+  /* "23" @3.84 */
+  tl.fromTo("#rc-big", { scale: 1.3, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.45, ease: "power4.out" }, 3.84);
+
+  /* "breakfast" @8.38: start dot + label, then the arc runs to "morning." @10.02 */
+  tl.fromTo("#rc-dot-a", { scale: 0, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.3, ease: "back.out(1.6)" }, 8.38);
+  tl.fromTo("#rc-lab-a", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.3 }, 8.38);
+  tl.set("#rc-arc", { autoAlpha: 1 }, 8.38);
+  tl.to("#rc-arc", { strokeDashoffset: 0, duration: 1.64, ease: "power1.inOut" }, 8.38);
+
+  /* "morning." @10.02: end dot + label, dot pulses to the end (8 x 0.6 s = 4.8 s, ends 15.2) */
+  tl.fromTo("#rc-dot-b", { scale: 0, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.3, ease: "back.out(1.6)" }, 10.02);
+  tl.fromTo("#rc-lab-b", { autoAlpha: 0, x: 10 }, { autoAlpha: 1, x: 0, duration: 0.3 }, 10.02);
+  tl.to("#rc-dot-b", { scale: 1.4, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 7 }, 10.4);
+
+  /* "whole night" @13.68: night span, moon, ground darkens 10 % */
+  tl.set("#rc-night", { autoAlpha: 1 }, 13.68);
+  tl.to("#rc-night", { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 13.68);
+  tl.fromTo("#rc-moon", { autoAlpha: 0, rotation: -20 }, { autoAlpha: 1, rotation: 0, duration: 0.5 }, 13.68);
+  tl.to("#rc-dark", { opacity: 0.1, duration: 0.6 }, 13.68);
+
+  /* after "alone." @14.04: content fades through to the ground (host end 14.90) */
+  tl.to("#rc-content", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 14.3);
+
+  window.__timelines["g-a4-5-response-clock"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
