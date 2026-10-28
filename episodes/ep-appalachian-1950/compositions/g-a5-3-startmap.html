@@ -52,8 +52,9 @@
   /* ARCTIC AIR: centred on the mass core x 494 (wrapper x 0-988), box about x 347-641, y 300-362 */
   #a53-arcwrap { position:absolute; left:0; top:300px; width:988px; text-align:center; }
   #a53-arcchip { display:inline-block; font-size:40px; color:#7fb2e5; }
-  .a53-eyebrow { position:absolute; left:110px; top:80px; font-family:Arial, sans-serif; font-weight:700; font-size:22px;
-    letter-spacing:6px; color:#93a3b2; line-height:1; }
+  /* glass pill (as the source line) so no map line crosses the letters; text stays at y 80-102 */
+  .a53-eyebrow { position:absolute; left:110px; top:70px; padding:10px 12px 10px 18px; border-radius:999px;
+    font-family:Arial, sans-serif; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; line-height:1; }
   .a53-src { position:absolute; left:110px; bottom:60px; padding:8px 18px; border-radius:999px; font-family:Arial, sans-serif;
     font-weight:700; font-size:20px; line-height:1; color:#c8d3e0; }
   /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
