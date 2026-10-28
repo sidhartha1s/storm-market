@@ -277,6 +277,14 @@ ep = _stage_ep({**GQC_FILES, 'index.html': GQC_FILES['index.html'].replace('data
 r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
 shutil.rmtree(ep, ignore_errors=True)
 assert '[idle]' not in r.stdout, r.stdout
+# a large <img id="g-..."> has no children by nature: it is content, not an empty container
+PNG1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=='
+ep = _stage_ep({**GQC_FILES, 'compositions/y-short.html': GQC_FILES['compositions/y-short.html'].replace(
+    '  <div id="y-box"', f'  <img id="g-photo" src="{PNG1}" style="position:absolute;left:100px;top:100px;width:600px;height:400px">
+  <div id="y-box"')})
+r = subprocess.run(['node', str(S / 'graphics_qc.mjs'), str(ep)], capture_output=True, text=True)
+shutil.rmtree(ep, ignore_errors=True)
+assert 'empty-container' not in r.stdout, r.stdout
 print('graphics_qc self-check PASS (short-duration vs host window, stillness one number: 4 s hard)')
 
 # A full-frame canvas (Three.js/WebGL) is a rendered background the DOM cannot read. Before
