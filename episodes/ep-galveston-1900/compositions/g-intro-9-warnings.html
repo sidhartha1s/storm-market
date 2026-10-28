@@ -12,15 +12,17 @@
   #g-intro-9-warnings-row { position:absolute; inset:auto; left:0; top:200px; width:1920px; height:150px; }
   #g-intro-9-warnings-rowdrift { position:absolute; inset:0; }
   .g-intro-9-frame { position:absolute; inset:auto; top:0; width:150px; height:150px; box-sizing:border-box; border-radius:20px; border:2px solid #f2f5f8; opacity:0; visibility:hidden; }
-  .g-intro-9-tile { position:absolute; inset:auto; top:0; width:150px; height:150px; box-sizing:border-box; border-radius:20px; overflow:hidden; opacity:0; visibility:hidden; }
+  /* tiles sit over a white page scan: tokens glass colour at high alpha so the page never shows through */
+  .g-intro-9-tile { position:absolute; inset:auto; top:0; width:150px; height:150px; box-sizing:border-box; border-radius:20px; overflow:hidden; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.94); }
   .g-intro-9-eyebrow { position:absolute; left:0; right:0; top:8px; height:24px; text-align:center; padding-left:6px; box-sizing:border-box;
     font-weight:700; font-size:22px; line-height:24px; letter-spacing:6px; color:#93a3b2; }
   .g-intro-9-num { position:absolute; left:0; right:0; top:30px; height:62px; text-align:center;
     font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:72px; line-height:62px; color:#f2f5f8; }
   .g-intro-9-bar { position:absolute; left:18px; right:18px; top:98px; height:6px; border-radius:3px; background:#7fb2e5; transform-origin:left center; }
-  /* storm-warning band: bottom 40 px of the 7 tile; text wraps to two lines inside 150 px */
-  #g-intro-9-warnings-band { position:absolute; left:0; right:0; bottom:0; height:40px; background:#8e2020; transform-origin:left center; }
-  #g-intro-9-warnings-bandtxt { position:absolute; left:0; right:0; bottom:0; height:40px; box-sizing:border-box; padding:0 10px; display:flex; align-items:center; justify-content:center; text-align:center;
+  /* storm-warning band: bottom 52 px of the 7 tile (covers its bar); text wraps to two 20 px lines with 6 px clear top and bottom */
+  #g-intro-9-warnings-band { position:absolute; left:0; right:0; bottom:0; height:52px; background:#8e2020; transform-origin:left center; }
+  #g-intro-9-warnings-bandtxt { position:absolute; left:0; right:0; bottom:0; height:52px; box-sizing:border-box; padding:0 10px; display:flex; align-items:center; justify-content:center; text-align:center;
     font-weight:700; font-size:19px; line-height:20px; letter-spacing:2px; color:#f4f0e8; opacity:0; visibility:hidden; }
 
   /* chip: centred by xPercent set in tl.set */
