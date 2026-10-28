@@ -103,7 +103,8 @@ BG_MP4_BYTES = _BG_MP4.read_bytes()
 
 
 def make_ep(d, comp_html=None, nx_dur=1.0, nx_wav_secs=1.0, words_last_end=None,
-            words_mtime_before_wav=False, unparsed_tween=False, comp_window=2.0):
+            words_mtime_before_wav=False, unparsed_tween=False, comp_window=2.0, nx_tags=None, host_attrs="",
+            extra=""):
     # Track 1 carries a plain background video spanning the WHOLE episode (picture coverage);
     # the composition mounts on track 3, same as real episodes ("overlay comps ride tracks
     # 3-4") — mounting a graphic directly on track 1 makes an unrelated check (5, "media files
@@ -132,8 +133,9 @@ def make_ep(d, comp_html=None, nx_dur=1.0, nx_wav_secs=1.0, words_last_end=None,
     html = f'''<section data-duration="{total}">
 <div id="root" data-width="1920" data-height="1080"></div>
 <video data-start="0" data-duration="{total}" data-track-index="1" src="media/bg.mp4" muted></video>
-<div data-composition-id="g1" data-start="0" data-duration="{comp_window}" data-track-index="3"></div>
-<audio id="nx-a1s1" src="audio/a1-s1.wav" data-start="0" data-duration="{nx_dur}"></audio>
+<div data-composition-id="g1" data-start="0" data-duration="{comp_window}" data-track-index="3"{host_attrs}></div>
+{nx_tags or f'<audio id="nx-a1s1" src="audio/a1-s1.wav" data-start="0" data-duration="{nx_dur}"></audio>'}
+{extra}
 </section>'''
     (ep / "index.html").write_text(html, encoding="utf-8")
     (ep / "media" / "bg.mp4").write_bytes(BG_MP4_BYTES)
@@ -282,6 +284,41 @@ with tempfile.TemporaryDirectory() as d:
     code, out = run("sweep_episode.py", ep_spaced)
     check("sweep_episode: `duration: 1` with a space resolves; a 6s window over it FAILs as holds",
           code == 1 and "holds     g1" in out and "unresolved duration" not in out, f"(exit {code})\n{out[-600:]}")
+
+# Partial mounts (references/mg-quickref.md "Partial mounts", Buffalo A4-S10 / A5-S8): a 4.0 s wav played as
+# 0-1.5 and 2.5-4.0 with Paul's clip in the 1.0 s hole, and a graphic whose 2.0 s beat is cut at 1.5 for him.
+# The pre-model gates read each <audio> as one whole wav and FAIL the declared pair; the undeclared twin must still FAIL.
+PAUL = '<video id="ins-paul-1" src="media/bg.mp4" data-start="1.5" data-duration="1.0" data-track-index="2" data-volume="1"></video>'
+CUT_COMP = ('<template><div id="g"><span id="t">hi</span></div>'
+            '<script>tl.to("#t", {duration: 1}, 1.0);</script></template>')
+
+
+def partial_tags(cut_by):
+    return (f'<audio id="nx-a1s1" src="audio/a1-s1.wav" data-start="0" data-duration="1.5"{cut_by}></audio>'
+            '<audio id="nx-a1s1b" src="audio/a1-s1.wav" data-start="2.5" data-duration="1.5" data-media-start="2.5"></audio>')
+
+
+for label, cut_by, want in (("a declared Paul cut passes (narration split + graphic cut short)", ' data-cut-by="ins-paul-1"', 0),
+                            ("the same cut undeclared still FAILs", "", 1)):
+    with tempfile.TemporaryDirectory() as d:
+        ep_p = make_ep(Path(d) / "partial", comp_html=CUT_COMP, comp_window=1.5, nx_dur=4.0, nx_wav_secs=4.0,
+                       nx_tags=partial_tags(cut_by), host_attrs=cut_by, extra=PAUL)
+        code, out = run("sweep_episode.py", ep_p)
+        fails = {l.split(":")[0] for l in out.splitlines() if l.startswith("FAIL")}
+        check(f"sweep_episode partial mount: {label}", code == want and (not want or fails == {
+            "FAIL graphic window fits its timeline", "FAIL narration freshness (words.json + data-duration match the real wav)"}),
+            f"(exit {code}) {out[-800:]}")
+with tempfile.TemporaryDirectory() as d:
+    # a cut-by naming a Paul clip that plays 6 s later, not in the hole, declares nothing
+    far = PAUL.replace('data-start="1.5"', 'data-start="8.5"')
+    ep_far = make_ep(Path(d) / "far", nx_dur=4.0, nx_wav_secs=4.0, nx_tags=partial_tags(' data-cut-by="ins-paul-1"'), extra=far)
+    code, out = run("sweep_episode.py", ep_far)
+    check("sweep_episode partial mount: a cut-by whose Paul clip is not beside the cut FAILs", code == 1 and "never played" in out, out[-600:])
+with tempfile.TemporaryDirectory() as d:
+    overlap = partial_tags(' data-cut-by="ins-paul-1"').replace('data-media-start="2.5"', 'data-media-start="1.0"')
+    ep_ov = make_ep(Path(d) / "ov", nx_dur=4.0, nx_wav_secs=4.0, nx_tags=overlap, extra=PAUL)
+    code, out = run("sweep_episode.py", ep_ov)
+    check("sweep_episode partial mount: two mounts playing the same words FAIL", code == 1 and "both play wav" in out, out[-600:])
 
 # ===================================================================================
 # 3. beat_density.py — exit code on a DEAD (>=4s motionless) composition
@@ -575,6 +612,24 @@ with tempfile.TemporaryDirectory() as d:
         '</section>', encoding="utf-8")
     code, out = run("lint_timeline.py", ep)
     check("lint_timeline: FAILs a narration window shorter than its wav", code == 1 and "shorter than its wav" in out, out)
+
+# partial mounts (mg-quickref "Partial mounts"): a 4.0 s wav played as 0-1.5 and 2.5-4.0 around Paul's 1.0 s clip
+for label, cut_by, want in (("a wav split around a declared Paul clip passes", ' data-cut-by="ins-paul-1"', 0),
+                            ("the same split undeclared FAILs as last words cut", "", 1)):
+    with tempfile.TemporaryDirectory() as d:
+        ep = Path(d)
+        (ep / "media").mkdir(); (ep / "compositions").mkdir()
+        write_wav(ep / "media" / "a1.wav", 4.0)
+        (ep / "media" / "p.mp4").write_bytes(b"0")
+        (ep / "index.html").write_text(
+            '<section data-duration="4">'
+            '<video src="media/p.mp4" data-start="0" data-duration="4" data-track-index="1" muted></video>'
+            f'<audio id="nx-a1" src="media/a1.wav" data-start="0" data-duration="1.5"{cut_by}></audio>'
+            '<video id="ins-paul-1" src="media/p.mp4" data-start="1.5" data-duration="1.0" data-track-index="2" data-volume="1" data-has-audio="true"></video>'
+            '<audio id="nx-a1b" src="media/a1.wav" data-start="2.5" data-duration="1.5" data-media-start="2.5"></audio>'
+            '</section>', encoding="utf-8")
+        code, out = run("lint_timeline.py", ep)
+        check(f"lint_timeline partial mount: {label}", code == want and (("shorter than its wav" in out) == bool(want)), out)
 
 with tempfile.TemporaryDirectory() as d:
     # gap of 5s with no CTA and no structure -> already failed before; confirms baseline still works
