@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-10-hochul-lt (A3-S9 3.20-6.70, standard): TEXT-ONLY lower third, no photo of Gov. Hochul (none licensed, accepted).
+  Glass name card + glass quote card + source pill over whatever footage the host slot shows. Comp duration 3.50 s.
+  Cue times are comp-local (host starts at segment 3.20; audio/a3-s9.words.json): "Hochschild" (= Hochul) @3.30 -> 0.10.
+  Quote: research/response.md row 33 (governor.ny.gov rush transcript, 26 Dec 2022, PRIMARY), verbatim fragment.
+  Presenter circle may be on: nothing at x >= 1600, y >= 680.
+-->
+<template>
+<style>
+  #g-a3-10-hochul-lt-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  #hl-stack { position:absolute; inset:0; }
+  .hl-glass { position:absolute; left:110px; display:table; box-sizing:border-box; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  #hl-card { bottom:110px; padding:22px 34px 22px 42px; border-radius:28px; overflow:hidden; }
+  #hl-bar { position:absolute; left:0; top:0; bottom:0; width:4px; background:#d8a13a; }
+  #hl-name { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; color:#f2f5f8; }
+  #hl-sub { display:block; margin-top:10px; font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:1.2; letter-spacing:3px; color:#e8c56a; opacity:0; visibility:hidden; }
+  #hl-quote { bottom:290px; padding:20px 34px; border-radius:28px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:34px; line-height:1.25; color:#f2f5f8; }
+  #hl-src { bottom:54px; padding:5px 12px; border-radius:14px; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; }
+</style>
+<div id="g-a3-10-hochul-lt-root" data-composition-id="g-a3-10-hochul-lt" data-width="1920" data-height="1080">
+  <div id="hl-stack">
+    <div class="hl-glass" id="hl-quote">&ldquo;trapped in a vehicle with his elderly mother&rdquo;</div>
+    <div class="hl-glass" id="hl-card">
+      <div id="hl-bar"></div>
+      <span id="hl-name">KATHY HOCHUL</span>
+      <span id="hl-sub">GOVERNOR OF NEW YORK &middot; DEC 26 BRIEFING</span>
+    </div>
+    <div class="hl-glass" id="hl-src">Gov. Kathy Hochul, storm briefing, 26 Dec 2022</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#hl-card", "#hl-quote", "#hl-src", "#hl-sub"], { autoAlpha: 0 }, 0);
+  tl.set("#hl-bar", { transformOrigin: "center top", scaleY: 0 }, 0);
+
+  /* whole-window float: 5 legs x 0.7 s = 3.5 s */
+  tl.fromTo("#hl-stack", { y: 0 }, { y: -4, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 4 }, 0);
+
+  /* "Hochschild" (= Hochul) @3.30 -> 0.10: card in, gold bar grows */
+  tl.fromTo("#hl-card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 0.1);
+  tl.to("#hl-bar", { scaleY: 1, duration: 0.3, ease: "power3.out" }, 0.1);
+
+  /* "told the story" @3.52 -> 0.32..0.50: sub-line and source pill */
+  tl.fromTo("#hl-sub", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power2.out" }, 0.5);
+  tl.fromTo("#hl-src", { x: -40, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 0.5);
+
+  /* quote lands after the name has been read */
+  tl.fromTo("#hl-quote", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 1.0);
+
+  /* exit before "He was stuck" @6.74 -> 3.54; ends at 3.45, 0.05 s inside the host */
+  tl.to(["#hl-card", "#hl-quote", "#hl-src"], { x: -80, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 2.85);
+
+  window.__timelines["g-a3-10-hochul-lt"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
