@@ -111,7 +111,7 @@ window.__timelines = window.__timelines || {};
   tl.to($("srcA"), { autoAlpha: 0, y: -8, duration: 0.3, ease: "power2.in" }, 12.56);
   tl.fromTo($("srcB"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.56);
 
-  /* 14.15 exit: everything but the ground (35 readable 13.31-14.15) */
+  /* 13.55 exit: everything but the ground (35 readable 13.31-13.55), no stagger so it ends 14.10 inside the 14.126 host */
   tl.to([$("eyebrow"), $("head"), $("lab77"), $("track77"), $("bar77"), $("val77"),
          $("lab22"), $("track22"), $("bar22"), $("val22"), $("chip"), $("srcB")],
         { autoAlpha: 0, y: -10, duration: 0.55, ease: "power3.in", stagger: 0.02 }, 14.15);
