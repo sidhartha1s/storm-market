@@ -30,7 +30,7 @@
     background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:1.4; color:#c8d3e0; white-space:nowrap; }
   /* whole-lines crop, measured on the scan 28 Oct 26: column rule at x 567-569, text x 571..1034, line gaps y 1104-1107 and 1322-1325.
-     Box x 570..1043 (473 wide), y 1104..1322 (218 high); panel 1280 x 640 keeps clear of the presenter corner (x < 1600). */
+     Box x 570..1043 (473 wide), y 1106..1322 (216 high); panel 1280 x 640 keeps clear of the presenter corner (x < 1600). */
   #g-a3-4-port-eads-page { position:absolute; left:320px; top:220px; width:1280px; height:640px; overflow:hidden; border-radius:12px;
     border:1px solid rgba(255,255,255,0.14); background:#04070c; }
   .ga34-img { position:absolute; left:0; top:0; width:1150px; height:1568px; transform-origin:0 0; }
@@ -103,8 +103,8 @@ window.__timelines = window.__timelines || {};
 
   /* pure function of comp time: page push, map camera, ship */
   function upd(t) {
-    const u = ease(clamp(t / 3.84)), s = 1.80 + 0.15 * u;
-    const tx = (920 - 467 * s) / 2 - 576 * s, ty = (450 - 221 * s) / 2 - 1101 * s;
+    const u = ease(clamp(t / 3.84)), s = 2.55 + 0.13 * u;   /* 473 * 2.68 = 1268 < 1280: whole lines at both ends of the push */
+    const tx = (1280 - 473 * s) / 2 - 570 * s, ty = (640 - 218 * s) / 2 - 1104 * s;
     for (let i = 0; i < imgs.length; i++) {
       imgs[i].style.transform = "translate(" + tx.toFixed(2) + "px," + ty.toFixed(2) + "px) scale(" + s.toFixed(4) + ")";
     }
