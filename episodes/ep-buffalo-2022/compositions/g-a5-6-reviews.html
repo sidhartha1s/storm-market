@@ -160,9 +160,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#rv-wt8", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power2.out" }, 24.72);
   tl.to("#rv-b8", { autoAlpha: 0, duration: 0.15 }, 24.72);
 
-  /* exit: last word @24.72 stays readable 1.5 s, so the card leaves at 26.22 (brief said 25.90) */
-  tl.to("#rv-q", { y: -20, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 26.22);
-  tl.to("#rv-src", { autoAlpha: 0, y: 8, duration: 0.6, ease: "power3.in" }, 26.22);
+  /* exit: last word @24.72 stays readable 1.5 s, so the card leaves at 25.19, ends 25.79 inside the 25.799 s host */
+  tl.to("#rv-q", { y: -20, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 25.19);
+  tl.to("#rv-src", { autoAlpha: 0, y: 8, duration: 0.6, ease: "power3.in" }, 25.19);
 
   window.__timelines["g-a5-6-reviews"] = tl;
 })();
