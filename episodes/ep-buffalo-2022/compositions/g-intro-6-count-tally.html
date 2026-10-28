@@ -158,6 +158,8 @@ window.__timelines = window.__timelines || {};
   /* exit after "place." @11.02: fade-through to the ground, 11.20 -> 11.80 inside the 12.0 s host */
   tl.to(P+"float", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 11.20);
 
+  tl.set(P+"float", { autoAlpha: 0 }, 12.0); /* no-op hold: timeline ends at the 12.0 s host */
+
   window.__timelines["g-intro-6-count-tally"] = tl;
 })();
 </script>
