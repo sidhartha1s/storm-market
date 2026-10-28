@@ -1,0 +1,108 @@
+<template>
+<style>
+  #a3k-root { position:absolute; inset:0; overflow:hidden; font-family: Arial, sans-serif; color:#f2f5f8; background:#04070c; }
+  /* chart camera C1 (briefs/a3/_list.md): screen = (chart px - (196,110)) x 2.0; size = 2x each still's own px */
+  .a3k-chart { position:absolute; left:-392px; top:-220px; }
+  .a3k-c1 { width:2348px; height:1514px; }
+  .a3k-c2 { width:2336px; height:1516px; opacity:0; visibility:hidden; }
+  .a3k-dim { position:absolute; inset:0; background:rgba(4,7,12,.38); }
+  .a3k-scan { position:absolute; left:370px; top:0; width:1180px; height:2px; background:rgba(127,178,229,.30); }
+  .a3k-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .a3k-track { fill:none; stroke:#d0121f; stroke-width:6; stroke-linecap:round; stroke-linejoin:round;
+    filter:drop-shadow(0 0 6px rgba(208,18,31,.6)); }
+  .a3k-loop { fill:none; stroke:#d0121f; stroke-width:6; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:3000 3000; stroke-dashoffset:3000; filter:drop-shadow(0 0 6px rgba(208,18,31,.6)); }
+  .a3k-spinhead { fill:#d0121f; filter:drop-shadow(0 0 6px rgba(208,18,31,.6)); }
+  .a3k-spin, .a3k-glow, .a3k-tier { opacity:0; visibility:hidden; }
+  .a3k-ring { fill:none; stroke:#dfe7ee; stroke-width:3; }
+  .a3k-ringhead { fill:#dfe7ee; }
+  .a3k-glass { position:absolute; box-sizing:border-box; white-space:nowrap;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); }
+  /* right of the loop (loop right edge x 1056); ~600 px wide, right edge about 1720 <= 1824 */
+  .a3k-chip { left:1120px; top:180px; padding:10px 18px; border-radius:14px;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:46px; color:#f2f5f8;
+    opacity:0; visibility:hidden; }
+  /* right edge x 894 = 24 px left of the column (x 918), vertical centre on the middle ring y 146 */
+  .a3k-label { position:absolute; right:1026px; top:133px; line-height:26px; font-weight:700; font-size:22px; letter-spacing:3px;
+    color:#93a3b2; -webkit-text-stroke:5px #04070c; paint-order:stroke fill; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a3k-source { position:absolute; left:110px; bottom:60px; font-weight:700; font-size:19px; letter-spacing:2px; color:#c8d3e0;
+    text-shadow:0 1px 4px rgba(4,7,12,.9); white-space:nowrap; }
+  .a3k-black { position:absolute; inset:0; background:#04070c; opacity:0; visibility:hidden; }
+</style>
+<div id="a3k-root" data-composition-id="g-a3-7-stall" data-width="1920" data-height="1080">
+  <img class="a3k-chart a3k-c1" id="a3k-c1" src="media/a3/A3-S7_c1_nws-jkl-surface-1950-11-26.jpg" alt="">
+  <img class="a3k-chart a3k-c2" id="a3k-c2" src="media/a3/A3-S7_c2_nws-jkl-surface-1950-11-27.jpg" alt="">
+  <div class="a3k-dim" id="a3k-dim"></div>
+  <div class="a3k-scan" id="a3k-scan"></div>
+  <svg class="a3k-svg" id="a3k-svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+    <!-- red track (schematic): g-a3-1's path (Carolinas to Ohio) plus one leg to the 26 Nov printed low, chart (640,268) = screen (888,316) -->
+    <path class="a3k-track" id="a3k-track" d="M1238 660 C1262 590 1300 500 1300 430 C1300 385 1250 360 1180 360 C1080 360 990 378 910 400 C880 390 878 350 888 316"/>
+    <!-- loop: continues the track into a 1.5-turn counterclockwise spiral (semicircle arcs r 68/62/56) about the 27 Nov low, centre (988,132) -->
+    <path class="a3k-loop" id="a3k-loop" d="M888 316 C895 260 930 200 988 200 A68 68 0 0 0 988 64 A62 62 0 0 0 988 188 A56 56 0 0 0 988 76"/>
+    <circle class="a3k-glow" id="a3k-glow" cx="988" cy="132" r="90" fill="#d0121f" fill-opacity=".25"/>
+    <!-- circling arrowhead: tip at the spiral end (988,76) pointing west, on the r 56 ring; GSAP rotates the group about (988,132) -->
+    <g class="a3k-spin" id="a3k-spin"><polygon class="a3k-spinhead" points="974,76 994,66 994,86"/></g>
+    <!-- stacked column, ground to upper air: offsets 0/-70/-140 shifted down so the top ring's top = 60 (brief clamp) -->
+    <g class="a3k-tier" id="a3k-tier1"><ellipse class="a3k-ring" cx="988" cy="216" rx="70" ry="16"/><polygon class="a3k-ringhead" points="1000,232 988,226 988,238"/></g>
+    <g class="a3k-tier" id="a3k-tier2"><ellipse class="a3k-ring" cx="988" cy="146" rx="70" ry="16"/><polygon class="a3k-ringhead" points="1000,162 988,156 988,168"/></g>
+    <g class="a3k-tier" id="a3k-tier3"><ellipse class="a3k-ring" cx="988" cy="76" rx="70" ry="16"/><polygon class="a3k-ringhead" points="1000,92 988,86 988,98"/></g>
+  </svg>
+  <div class="a3k-glass a3k-chip" id="a3k-chip">STALLED · NOV 27–28</div>
+  <div class="a3k-label" id="a3k-label">GROUND TO UPPER AIR</div>
+  <div class="a3k-source" id="a3k-source">Source: NWS Jackson, KY; NWS Charleston, WV · loop schematic</div>
+  <div class="a3k-black" id="a3k-black"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var P = "#a3k-";
+  var loop = document.getElementById("a3k-loop");
+  var LL = Math.ceil(loop.getTotalLength()) + 1;
+  var tl = gsap.timeline({ paused: true });
+  var tiers = [P + "tier1", P + "tier2", P + "tier3"];
+  var tierO = ["988 216", "988 146", "988 76"];
+
+  /* THEN @0.00: 26 Nov chart dimmed, red track already on to the 26 Nov low, scan line, source line */
+  tl.set(loop, { strokeDasharray: LL + " " + LL, strokeDashoffset: LL }, 0);
+  tl.set(P + "spin", { svgOrigin: "988 132", smoothOrigin: false, rotation: 0 }, 0);
+  tl.set(P + "glow", { svgOrigin: "988 132", smoothOrigin: false, scale: 0.7 }, 0);
+  tiers.forEach(function (t, i) { tl.set(t, { svgOrigin: tierO[i], smoothOrigin: false, scale: 0.6 }, 0); });
+  tl.set(P + "chip", { x: 30 }, 0);
+  tl.to(P + "scan", { y: 576, duration: 9.6, ease: "none" }, 0); // 60 px/s over the 9.60 s host
+
+  /* STOPPED @0.34: crossfade to the 27 Nov chart */
+  tl.fromTo(P + "c2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.2, ease: "power1.inOut" }, 0.34);
+
+  /* SPUN @1.82: loop draws on from the track end (1.4 s), then the arrowhead circles CCW, one lap per 2.4 s to host end */
+  tl.to(loop, { strokeDashoffset: 0, duration: 1.4, ease: "power1.inOut" }, 1.82);
+  tl.set(P + "spin", { autoAlpha: 1 }, 3.22);
+  tl.fromTo(P + "spin", { svgOrigin: "988 132", smoothOrigin: false, rotation: 0 },
+    { svgOrigin: "988 132", smoothOrigin: false, rotation: -957, duration: 6.38, ease: "none" }, 3.22); // 6.38 / 2.4 x 360
+
+  /* LAKE ERIE @2.90: loop centre glows once */
+  tl.fromTo(P + "glow", { svgOrigin: "988 132", smoothOrigin: false, scale: 0.7, autoAlpha: 0 },
+    { svgOrigin: "988 132", smoothOrigin: false, scale: 1, autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 2.9);
+  tl.to(P + "glow", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 3.2);
+
+  /* TWO DAYS @3.50: chip in */
+  tl.fromTo(P + "chip", { x: 30, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 3.5);
+
+  /* STACKED @5.06: chip dims, rings appear bottom to top (stagger .25), label in */
+  tl.to(P + "chip", { autoAlpha: 0.35, duration: 0.4 }, 5.06);
+  tiers.forEach(function (t, i) {
+    tl.fromTo(t, { svgOrigin: tierO[i], smoothOrigin: false, scale: 0.6, autoAlpha: 0 },
+      { svgOrigin: tierO[i], smoothOrigin: false, scale: 1, autoAlpha: 0.7, duration: 0.4, ease: "back.out(1.6)" }, 5.06 + 0.25 * i);
+  });
+  tl.fromTo(P + "label", { x: -16, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 5.31);
+
+  /* STILL @8.80: column to .4 */
+  tl.to(tiers, { autoAlpha: 0.4, duration: 0.3 }, 8.8);
+
+  /* EXIT @9.00: everything fades to #04070c (0.6 s); g-a3-8 owns its own fade-in on top */
+  tl.fromTo(P + "black", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power2.in" }, 9.0);
+
+  window.__timelines["g-a3-7-stall"] = tl;
+})();
+</script>
+</template>
