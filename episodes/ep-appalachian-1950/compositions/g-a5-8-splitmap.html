@@ -10,6 +10,10 @@
   BASEMAP: copied verbatim from compositions/g-intro-2-hookmap.html (= library/inhouse/master-map-us-canada.html regional
     layer, Natural Earth 50m admin-1, public domain). Coast under-stroke 3.2 px #4a5560 (half hidden by fills -> 1.6 px),
     state lines #2a3644 1.2 px non-scaling.
+  BASEMAP FIX (29 Oct 26): the regional box stops at lon -64.0 (x 128965) and lat 35.0 N (y 64905), screen x 1743 and
+    y 956 at Frame S, so the right strip and the bottom band were black. #a58-outg (as g-a5-3 #a53-outg) fills everything
+    outside the box inside the widest view (k 1/1.04, +6000): US Census TIGER for NC TN AR (south of 35 N), Natural Earth
+    50m for other US states, New Brunswick, Nova Scotia and PEI. Atlantic stays the root background. Source pill credits US Census.
   PROJECTION: X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213). FRAME S: s 0.016, top-left (20025.2, 5144.2).
     Printed by script 28 Oct 26 (screen at Frame S):
     Newark (40.7357, -74.1724) -> (89893.2, 32871.1) -> (1117.9, 443.6)
