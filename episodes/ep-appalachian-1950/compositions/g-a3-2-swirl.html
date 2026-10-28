@@ -184,7 +184,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "ringpath", { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, 3.7);
   tl.fromTo(P + "ringheads", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 }, 4.3);
   tl.fromTo(P + "ring", { rotation: 0, svgOrigin: "1284 576", smoothOrigin: false },
-    { rotation: -360 * (END - 3.7) / 8, svgOrigin: "1284 576", smoothOrigin: false, duration: END - 3.7, ease: "none" }, 3.7); // -360 per 8 s
+    { rotation: -600, svgOrigin: "1284 576", smoothOrigin: false, duration: END - 3.7, ease: "none" }, 3.7); // ~-360 per 8 s; -600 = 5 x 120, so the 3 heads end where g-a3-3 draws them
 
   /* A LOW @4.88 (Whisper "below."): halo pulses once */
   tl.to(P + "halo", { attr: { r: 185 }, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 1 }, 4.88);
