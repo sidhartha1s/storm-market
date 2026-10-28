@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-8-abandoned-quotes (A3-S7, standard): glass quote cards over the Carrotflower S3 still (abandoned vehicles, West Utica St, CC BY-SA 4.0).
+  Overlay, transparent root. Comp duration 16.38 s. Cue times are seconds from the START of A3-S7 (audio/a3-s7.words.json).
+  Card 2 (Poloncarz) is its own block ("CARD 2" below) so the orchestrator can drop it: delete the card-2 DOM, S2, and the CARD 2 tween lines.
+  Photo credit stays on screen the whole window (CC BY-SA). The push lives on the footage in index.html, never on the cards.
+-->
+<template>
+<style>
+  #g-a3-8-abandoned-quotes-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  .aq-card { position:absolute; inset:auto; left:260px; top:160px; width:1240px; box-sizing:border-box; padding:48px 64px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden; }
+  .aq-q { font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:52px; line-height:70px; color:#f2f5f8; max-width:1110px; }
+  .aq-ln { display:block; opacity:0; visibility:hidden; white-space:nowrap; }
+  .aq-att { margin-top:24px; font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:1.2; letter-spacing:3px; color:#d8a13a; }
+  .aq-src { position:absolute; left:110px; bottom:54px; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  #aq-credit { position:absolute; right:96px; top:54px; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; }
+</style>
+<div id="g-a3-8-abandoned-quotes-root" data-composition-id="g-a3-8-abandoned-quotes" data-width="1920" data-height="1080">
+  <div id="aq-credit">Photo: Andre Carrotflower / Wikimedia Commons / CC BY-SA 4.0</div>
+
+  <!-- CARD 1: Hochul -->
+  <div class="aq-card" id="aq-card1">
+    <div class="aq-in" id="aq-in1">
+      <div class="aq-q">
+        <span class="aq-ln" id="aq-1l1">&ldquo;scores and scores of vehicles</span>
+        <span class="aq-ln" id="aq-1l2">that were abandoned&rdquo;</span>
+      </div>
+      <div class="aq-att" id="aq-att1">GOV. KATHY HOCHUL &middot; DEC 26, 2022</div>
+    </div>
+  </div>
+  <div class="aq-src" id="aq-s1">Gov. Kathy Hochul, storm briefing, 26 Dec 2022, governor.ny.gov</div>
+
+  <!-- CARD 2: Poloncarz -->
+  <div class="aq-card" id="aq-card2">
+    <div class="aq-in" id="aq-in2">
+      <div class="aq-q">
+        <span class="aq-ln" id="aq-2l1">&ldquo;The city of Buffalo is <span id="aq-imp">impassable</span></span>
+        <span class="aq-ln" id="aq-2l2">in most areas.&rdquo;</span>
+      </div>
+      <div class="aq-att" id="aq-att2">MARK POLONCARZ &middot; ERIE COUNTY EXECUTIVE &middot; DEC 26</div>
+    </div>
+  </div>
+  <div class="aq-src" id="aq-s2">Mark Poloncarz, 26 Dec 2022, AP via The Peninsula</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const hid = ["#aq-card1","#aq-card2","#aq-s1","#aq-s2","#aq-1l1","#aq-1l2","#aq-2l1","#aq-2l2"];
+  tl.set(hid, { autoAlpha: 0 }, 0);
+
+  /* credit floats the whole window (CC BY-SA, always on screen) */
+  tl.to("#aq-credit", { y: -4, duration: 2.0, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+
+  /* CARD 1 */
+  /* "Governor Kathy Hochul" @3.30 */
+  tl.fromTo("#aq-card1", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 3.30);
+  tl.fromTo("#aq-s1", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.30);
+  /* "scores and scores" @6.46 */
+  tl.fromTo("#aq-1l1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 6.46);
+  /* "that were abandoned" @7.84 */
+  tl.fromTo("#aq-1l2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.84);
+  tl.to("#aq-in1", { y: -4, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 3 }, 3.80);
+  /* after "storm." @10.02 */
+  tl.to(["#aq-card1", "#aq-s1"], { x: -80, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 10.02);
+
+  /* CARD 2 */
+  /* "polling cars" (Poloncarz) @12.00 */
+  tl.fromTo("#aq-card2", { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 12.00);
+  tl.fromTo("#aq-s2", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.00);
+  /* "The city of Buffalo" @13.90 */
+  tl.fromTo("#aq-2l1", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 13.90);
+  /* "impassable" @15.04 */
+  tl.to("#aq-imp", { color: "#ffffff", duration: 0.3, ease: "power2.out" }, 15.04);
+  /* "in most areas" @15.66 */
+  tl.fromTo("#aq-2l2", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 15.66);
+  tl.to("#aq-in2", { y: -4, duration: 1.6, ease: "sine.inOut", yoyo: true, repeat: 1 }, 12.50);
+  /* after "areas." @16.00 */
+  tl.to(["#aq-card2", "#aq-s2", "#aq-credit"], { autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 15.78);
+
+  window.__timelines["g-a3-8-abandoned-quotes"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
