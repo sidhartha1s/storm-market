@@ -1,0 +1,124 @@
+<!--
+  g-a1-1-page · A1-S1 0.00 to A1-S2 end · brief briefs/a1/g-a1-1-page.md
+  HOST: nx-a1-s1 data-start 111.247, nx-a1-s2 data-start 122.968 (index.html), so S2 word time + 11.721 = comp time.
+    Host 111.247, duration 11.721 + 8.766 = 20.487.
+  SOURCE: Galveston Daily News, Thu 16 July 1891, p. 5 (Commons, CC0; media/candidates/a1/provenance.csv row 1).
+    Every geometry number below is in SOURCE px of the 1412 x 1802 original.
+    Layers: media/a1/gdn-1891-p5-full.jpg (846 x 1080 staged) drawn at 1412 x 1802;
+            media/a1/gdn-1891-p5-col3.jpg (215 x 880 native crop, x 400-615, y 0-880) drawn over the same rect.
+  CAMERA: screen = (960 + (sx - cx) * s, 540 + (sy - cy) * s). camAt(t) is a pure function of comp time (seek-safe),
+    pattern of compositions/g-intro-4-wire-map.html; pushes interpolate s in log space (logLerpScale, helpers.js logZoom).
+    K0b 0.00-4.62 s 0.5993->0.62 linear, c 706,901 | K1 4.62-9.04 s 0.62->1.15 log, power2.inOut, c -> 507,445
+    K1b 9.04-11.721 s 1.15->1.18 linear (brief ends at S1 end 11.121; extended through the 0.6 s segment gap so the camera never stops)
+    K2 11.721-13.021 s 1.18->4.0 log, power2.inOut, c -> 615,566 | K2b 13.021-20.487 s 4.0->4.12 linear
+  CROP LAYER: opacity = (s - 0.9) / 0.2 clamped, so it fades in between s 0.9 and 1.1 on the K1 move.
+  WHOLE LINES: page copies left of x 405 and right of x 610 fade 1 -> 0 from 5.60 to 8.40; only column 3 stays.
+  HIGHLIGHTS (source px, line centres from the brief, measured at 3x on the scan, +-3): L1 543.3 (x 473-603),
+    L2 551.7, L3 560.0 (a: 418-500, b: 500-603), L4 568.3, L5 576.7, L6 584.3 (418-603), L7 591.7 (418-548). Height 7.5.
+  No text in this comp.
+-->
+<template>
+<style>
+  #g-a1-1-page-root { position:absolute; inset:0; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a1-1-page-cam { position:absolute; left:0; top:0; width:1412px; height:1802px; transform-origin:0 0; }
+  .ga11-shade { position:absolute; left:0; top:0; width:1412px; height:1802px; box-shadow:0 30px 90px rgba(0,0,0,0.6); }
+  .ga11-pg { position:absolute; left:0; top:0; width:1412px; height:1802px; display:block; }
+  #g-a1-1-page-pgL { clip-path:inset(0px 1007px 0px 0px); }
+  #g-a1-1-page-pgM { clip-path:inset(0px 802px 0px 405px); }
+  #g-a1-1-page-pgR { clip-path:inset(0px 0px 0px 610px); }
+  #g-a1-1-page-crop { position:absolute; left:400px; top:0; width:215px; height:880px; display:block; opacity:0; }
+  .ga11-hl { position:absolute; height:7.5px; background:#d8a13a; mix-blend-mode:multiply; opacity:0; }
+  #g-a1-1-page-h1  { left:473px; width:130px; top:539.55px; }
+  #g-a1-1-page-h2  { left:418px; width:185px; top:547.95px; }
+  #g-a1-1-page-h3a { left:418px; width:82px;  top:556.25px; }
+  #g-a1-1-page-h3b { left:500px; width:103px; top:556.25px; }
+  #g-a1-1-page-h4  { left:418px; width:185px; top:564.55px; }
+  #g-a1-1-page-h5  { left:418px; width:185px; top:572.95px; }
+  #g-a1-1-page-h6  { left:418px; width:185px; top:580.55px; }
+  #g-a1-1-page-h7  { left:418px; width:130px; top:587.95px; }
+</style>
+<div id="g-a1-1-page-root" data-composition-id="g-a1-1-page" data-width="1920" data-height="1080">
+  <div id="g-a1-1-page-cam">
+    <div class="ga11-shade" id="g-a1-1-page-shade"></div>
+    <img class="ga11-pg" id="g-a1-1-page-pgL" src="media/a1/gdn-1891-p5-full.jpg" alt="" data-crop-ok="document scan under a camera push; the brief frames column 3 and fades this side copy out by 8.40">
+    <img class="ga11-pg" id="g-a1-1-page-pgM" src="media/a1/gdn-1891-p5-full.jpg" alt="" data-crop-ok="document scan under a camera push into column 3 by design (brief g-a1-1-page section 2)">
+    <img class="ga11-pg" id="g-a1-1-page-pgR" src="media/a1/gdn-1891-p5-full.jpg" alt="" data-crop-ok="document scan under a camera push; the brief frames column 3 and fades this side copy out by 8.40">
+    <img id="g-a1-1-page-crop" src="media/a1/gdn-1891-p5-col3.jpg" alt="" data-crop-ok="native column 3 crop under a camera push into Cline's sentence by design">
+    <div class="ga11-hl" id="g-a1-1-page-h1"></div>
+    <div class="ga11-hl" id="g-a1-1-page-h2"></div>
+    <div class="ga11-hl" id="g-a1-1-page-h3a"></div>
+    <div class="ga11-hl" id="g-a1-1-page-h3b"></div>
+    <div class="ga11-hl" id="g-a1-1-page-h4"></div>
+    <div class="ga11-hl" id="g-a1-1-page-h5"></div>
+    <div class="ga11-hl" id="g-a1-1-page-h6"></div>
+    <div class="ga11-hl" id="g-a1-1-page-h7"></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const P = "#g-a1-1-page-";
+  const $ = function (n) { return document.getElementById("g-a1-1-page-" + n); };
+  const S2 = 11.721;                       /* nx-a1-s2 start - nx-a1-s1 start */
+  const DUR = 20.487;                      /* host: S1 0.00 to S2 8.766 */
+
+  /* camera: pure function of comp time */
+  const ease = gsap.parseEase("power2.inOut");
+  const lerp = function (a, b, u) { return a + (b - a) * u; };
+  function logLerpScale(fromScale, toScale, t) {
+    return Math.exp(Math.log(fromScale) + (Math.log(toScale) - Math.log(fromScale)) * t);
+  }
+  const camEl = $("cam"), cropEl = $("crop");
+  function camAt(t) {
+    let cx = 706, cy = 901, s, u;
+    if (t < 4.62) { s = 0.5993 + 0.0207 * (t / 4.62); }                               /* K0b drift */
+    else if (t < 9.04) {                                                              /* SOME @4.62: K1 push */
+      u = ease((t - 4.62) / 4.42);
+      s = logLerpScale(0.62, 1.15, u); cx = lerp(706, 507, u); cy = lerp(901, 445, u);
+    }
+    else if (t < S2) { cx = 507; cy = 445; s = 1.15 + 0.03 * ((t - 9.04) / (S2 - 9.04)); }  /* KLEIN @9.04: K1b drift */
+    else if (t < S2 + 1.30) {                                                         /* HE @S2 0.00: K2 push */
+      u = ease((t - S2) / 1.30);
+      s = logLerpScale(1.18, 4.0, u); cx = lerp(507, 615, u); cy = lerp(445, 566, u);
+    }
+    else { cx = 615; cy = 566; s = 4.0 + 0.12 * Math.min(1, (t - S2 - 1.30) / (DUR - S2 - 1.30)); } /* K2b drift */
+    camEl.style.transform = "translate(" + (960 - cx * s).toFixed(2) + "px," + (540 - cy * s).toFixed(2) + "px) scale(" + s.toFixed(5) + ")";
+    cropEl.style.opacity = Math.max(0, Math.min(1, (s - 0.9) / 0.2)).toFixed(3);
+  }
+  camAt(0);
+
+  const tl = gsap.timeline({ paused: true });
+  /* PAGE @0.00: whole page on from frame 0; the camera runs the whole window */
+  tl.to({ t: 0 }, { t: 1, duration: DUR, ease: "none", onUpdate: function () { camAt(this.time()) } }, 0);
+
+  const HL = ["h1", "h2", "h3a", "h3b", "h4", "h5", "h6", "h7"].map(function (n) { return P + n; });
+  tl.set(HL, { scaleX: 0, transformOrigin: "left center", opacity: 0 }, 0);
+
+  /* PUSH @4.62 (Some): whole lines rule, columns other than 3 fade out 5.60 -> 8.40 */
+  tl.to([P + "pgL", P + "pgR", P + "shade"], { opacity: 0, duration: 2.8, ease: "power1.inOut" }, 5.60);
+
+  /* SENTENCE @S2 0.00 (He): K2 push in camAt. Lines lit as they are read (a1-s2.words.json + 11.721) */
+  function lite(id, at) {
+    tl.set(P + id, { opacity: 0.32 }, at);
+    tl.to(P + id, { scaleX: 1, duration: 0.5, ease: "power2.out" }, at);
+  }
+  lite("h1", 12.781);   /* HELD @1.06 */
+  lite("h2", 13.761);   /* UNACQUAINTED @2.04 */
+  lite("h3a", 14.981);  /* CONDITIONS @3.26: L3 to "things," */
+  lite("h3b", 16.521);  /* SUCH @4.80: rest of L3 */
+  lite("h4", 16.771);   /* SUCH @4.80 + 0.25: L4 follows L3 */
+  lite("h5", 16.861);   /* FEAR @5.14 */
+  lite("h6", 17.661);   /* COULD @5.94 */
+  lite("h7", 19.461);   /* AND @7.74: L7 to "reasoning;" */
+
+  /* REASONING @8.28 -> 20.001: all lit lines brighten */
+  tl.to(HL, { opacity: 0.45, duration: 0.3, ease: "power2.out" }, 20.001);
+
+  /* exit: fade-through to A1-S3's cross-section, last 0.4 s of the host */
+  tl.to(P + "root", { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, 20.087);
+
+  window.__timelines["g-a1-1-page"] = tl;
+})();
+</script>
+</template>
