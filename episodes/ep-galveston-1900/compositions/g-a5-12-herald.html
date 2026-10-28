@@ -36,6 +36,7 @@
   <div id="g-a5-12-herald-pg">
     <img id="g-a5-12-herald-img" src="media/doc/mwr-1900-09-p376-herald.jpg" alt="Monthly Weather Review, September 1900, page 376: From the Boston Herald, it was not through any lack of attention on the part of the forecasters">
     <div id="g-a5-12-herald-ul"></div>
+    <div id="g-a5-12-herald-lit"></div>
     <div id="g-a5-12-herald-bar"></div>
   </div>
   <div id="g-a5-12-herald-src">Monthly Weather Review, Sept. 1900 (Boston Herald, Sept. 17, 1900, as reprinted)</div>
@@ -51,6 +52,7 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"pg", {autoAlpha:0, scale:1, y:36}, 0);
   tl.set([P+"bar", P+"ul"], {autoAlpha:0, scaleX:0}, 0);
   tl.set([P+"src", P+"eye"], {autoAlpha:0, y:0}, 0);
+  tl.set(P+"lit", {autoAlpha:0, clipPath:"inset(0% 100% 0% 0%)"}, 0);
 
   /* Washington @0.00: page on, push toward the Herald heading starts (1.00 -> 1.06 settles 2.16 on the heading) */
   tl.to(P+"pg", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
