@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4-17-debris-band · A4-S11 0 to 8.52 · ep-galveston-1900 · standard (Sonnet) · brief: briefs/a4/g-a4-17-debris-band.md
+  Claim: no seawall in 1900 (first section 29 July 1904); the town's own wreckage piled 8 to 15 ft high, four to six blocks in
+  from the beach (MWR Sept 1900 p. 373). The report does not date the pile: no time label on the band. Grid, band: SCHEMATIC.
+  PART A 0 to 5.44: root transparent over A4-S11_c1 (mounted in index.html); chip NO SEAWALL only.
+  PART B 5.44 to 8.52: island plate (map, projection, grid copied from g-a4-2-half-city; flood, buggy, chips dropped).
+  HOST: data-start = nx-a4-s11 start, data-duration 8.52.
+  CUES (a4-s11.words.json, first word "There" dropped by Whisper; comp-local = segment time):
+    0.24 "no"        chip A in (0.24 to 0.69); float on its wrapper whole part A
+    4.46 "wreckage"  chip A out 4.46 to 5.06
+    5.44 "It piled"  cut: plate bg + map on, source line swaps; PILED @5.54 band fills east to west 5.54 to 6.82
+    6.08 "four" to 6.82 "blocks"  row numbers 4, 5, 6 flash at x 296 (right edge)
+    6.12 chip B in (cue 7.72 in the brief; pulled to 6.12 so it is readable 1.5 s before its exit at 8.12)
+    7.12 "in from the beach"  arrows push north 7.12 to 7.92, stop at tip y 568, pulse 7.92 to 8.52
+    8.12 chip B slides out x:980, ends 8.52; cut to g-a4-18
+  CIRCLE CORNER (x >= 1600, y >= 680): empty (arrow x 1560 stays left of it).
+-->
+<template>
+<style>
+  #g-a4-17-debris-band-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; }
+  .ga417-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ga417-map { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ga417-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .ga417-land { fill:#15202b; stroke:#2a3644; stroke-width:2px; stroke-linejoin:round; }
+  .ga417-isl { fill:#15202b; stroke:#93a3b2; stroke-width:2px; stroke-linejoin:round; }
+  .ga417-blk { fill:#2a3644; stroke:#3d4b5b; stroke-width:1px; }
+  .ga417-geo { position:absolute; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; text-align:center; }
+  .ga417-row { position:absolute; left:236px; width:60px; text-align:right; font-weight:700; font-size:22px; line-height:22px; color:#f2f5f8;
+    text-shadow:0 2px 6px rgba(0,0,0,0.85); }
+  .ga417-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-weight:700; font-size:19px; line-height:1.4; color:#c8d3e0; white-space:nowrap; }
+  .ga417-chip { box-sizing:border-box; padding:18px 28px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; }
+  .ga417-main { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; }
+  .ga417-tag { font-weight:700; font-size:22px; line-height:28px; letter-spacing:4px; color:#93a3b2; }
+  .ga417-small { position:absolute; font-weight:700; font-size:19px; line-height:22px; color:#93a3b2; white-space:nowrap; }
+  .ga417-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-17-debris-band-root" data-composition-id="g-a4-17-debris-band" data-width="1920" data-height="1080"
+  data-type-ok="map: 52 px chips are the top tier; row numbers 22 px, geography and notes 19 to 22 px">
+
+  <div class="ga417-bg ga417-hide" id="g-a4-17-debris-band-bg"></div>
+
+  <div class="ga417-map ga417-hide" id="g-a4-17-debris-band-map">
+    <svg class="ga417-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="g-a4-17-debris-band-rg" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#5a768f" stop-opacity="0"/>
+          <stop offset="0.5" stop-color="#5a768f" stop-opacity="0.7"/>
+          <stop offset="1" stop-color="#5a768f" stop-opacity="0"/>
+        </linearGradient>
+        <pattern id="g-a4-17-debris-band-hatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="14" stroke="#2c2722" stroke-width="4"/>
+        </pattern>
+        <clipPath id="g-a4-17-debris-band-clip"><rect id="g-a4-17-debris-band-cr" x="1600" y="300" width="0" height="300"/></clipPath>
+      </defs>
+      <rect id="g-a4-17-debris-band-rp1" x="470" y="950" width="420" height="2" fill="url(#g-a4-17-debris-band-rg)"/>
+      <rect id="g-a4-17-debris-band-rp2" x="1000" y="1010" width="460" height="2" fill="url(#g-a4-17-debris-band-rg)"/>
+      <rect id="g-a4-17-debris-band-rp3" x="380" y="1052" width="320" height="2" fill="url(#g-a4-17-debris-band-rg)"/>
+      <rect id="g-a4-17-debris-band-rp4" x="260" y="170" width="380" height="2" fill="url(#g-a4-17-debris-band-rg)"/>
+
+      <g id="g-a4-17-debris-band-plate">
+        <!--GEO: copied verbatim from g-a4-2-half-city.html (Natural Earth 10m via g-a5-3), do not hand-edit-->
+        <path class="ga417-land" vector-effect="non-scaling-stroke" d="M376.44,1275.21 L379.80,1274.85 L383.94,1275.09 L388.00,1274.81 L391.96,1273.81 L395.83,1271.95 L406.15,1265.11 L412.27,1260.67 L413.84,1260.04 L415.86,1259.82 L416.90,1259.13 L421.75,1254.85 L426.60,1249.30 L429.16,1247.87 L435.70,1242.65 L436.39,1241.32 L436.53,1239.90 L436.50,1238.14 L435.77,1233.79 L435.67,1231.56 L436.50,1229.23 L435.34,1226.54 L434.65,1225.68 L436.22,1226.52 L437.65,1226.72 L438.82,1227.28 L439.57,1229.23 L442.05,1227.79 L444.13,1226.18 L450.07,1219.23 L450.12,1218.94 L450.01,1218.09 L450.07,1217.81 L450.34,1217.75 L451.09,1217.89 L451.36,1217.81 L453.20,1216.44 L454.04,1215.56 L454.43,1214.26 L455.04,1214.26 L456.46,1215.43 L457.84,1214.60 L458.88,1212.62 L459.29,1210.36 L460.01,1208.32 L461.67,1207.81 L463.55,1208.32 L464.93,1209.30 L465.18,1208.86 L465.46,1208.70 L465.76,1208.65 L466.10,1208.53 L462.08,1206.68 L460.91,1206.46 L459.94,1205.73 L457.44,1201.42 L457.36,1201.65 L457.35,1201.97 L457.24,1202.02 L457.04,1202.02 L457.02,1202.29 L457.07,1202.48 L457.44,1202.85 L457.44,1203.62 L455.14,1203.53 L454.76,1202.14 L454.66,1200.42 L453.14,1199.29 L453.14,1198.58 L454.45,1198.15 L455.72,1197.50 L456.88,1197.97 L457.66,1196.67 L458.30,1195.81 L451.45,1193.99 L447.85,1191.04 L448.56,1188.26 L449.51,1187.25 L450.97,1185.61 L451.39,1184.39 L449.10,1182.33 L448.58,1180.40 L449.22,1178.82 L451.28,1177.24 L450.13,1176.02 L449.19,1175.31 L448.34,1175.10 L447.41,1174.90 L446.69,1174.18 L445.47,1173.90 L444.23,1173.30 L445.29,1169.46 L446.94,1169.60 L447.59,1170.88 L448.60,1172.52 L450.07,1172.97 L453.04,1174.17 L454.60,1175.24 L455.55,1175.71 L456.16,1178.09 L457.24,1179.28 L458.42,1179.03 L461.15,1178.19 L462.33,1176.39 L463.62,1172.81 L465.63,1169.46 L465.62,1167.55 L467.39,1166.11 L468.47,1167.18 L470.37,1167.05 L471.56,1166.69 L472.98,1166.09 L473.94,1166.09 L475.25,1166.68 L476.08,1168.34 L476.68,1169.30 L476.81,1170.96 L477.41,1172.75 L477.65,1175.02 L476.72,1179.79 L475.55,1183.84 L473.78,1187.19 L472.55,1189.08 L471.49,1190.86 L470.36,1191.08 L469.34,1190.55 L469.13,1191.19 L469.89,1192.32 L472.03,1192.90 L473.69,1192.46 L477.43,1191.38 L485.51,1189.95 L489.47,1187.67 L490.90,1188.31 L492.33,1189.65 L494.09,1190.33 L495.46,1189.31 L496.26,1188.55 L496.33,1190.00 L495.74,1191.88 L494.60,1192.72 L493.03,1192.93 L488.51,1192.68 L487.72,1192.91 L486.67,1193.60 L483.98,1196.46 L483.30,1196.92 L482.39,1197.36 L481.36,1197.69 L479.24,1198.04 L476.91,1199.29 L469.62,1206.51 L468.84,1207.90 L469.24,1208.91 L471.35,1209.30 L473.18,1208.45 L477.83,1202.85 L481.11,1200.43 L509.83,1187.30 L520.56,1183.21 L528.17,1178.91 L530.82,1177.69 L534.59,1176.52 L536.62,1176.30 L547.49,1176.52 L547.49,1100.00 L300.00,1100.00 L300.00,1275.21Z"/>
+        <path id="g-a4-17-debris-band-isl" class="ga417-isl" vector-effect="non-scaling-stroke" d="M466.71,1210.71 L465.57,1210.61 L465.49,1210.00 L465.13,1209.96 L464.93,1210.00 L464.83,1210.31 L464.83,1210.60 L464.72,1210.77 L464.26,1210.71 L464.26,1211.42 L465.81,1211.71 L466.05,1212.98 L465.48,1214.38 L464.59,1215.04 L464.42,1215.12 L462.42,1215.68 L461.99,1216.22 L461.24,1217.81 L457.45,1220.86 L457.13,1221.36 L456.41,1222.78 L455.12,1224.23 L452.90,1225.79 L446.94,1230.46 L442.68,1233.25 L440.80,1235.84 L439.51,1238.15 L440.25,1238.19 L443.16,1235.55 L454.75,1227.24 L459.75,1224.03 L474.80,1212.77Z"/>
+        <!--/GEO-->
+      </g>
+
+      <g id="g-a4-17-debris-band-grid">
+        <g>
+          <rect class="ga417-blk" x="320" y="324" width="92" height="70"/><rect class="ga417-blk" x="428" y="324" width="92" height="70"/><rect class="ga417-blk" x="536" y="324" width="92" height="70"/><rect class="ga417-blk" x="644" y="324" width="92" height="70"/><rect class="ga417-blk" x="752" y="324" width="92" height="70"/><rect class="ga417-blk" x="860" y="324" width="92" height="70"/><rect class="ga417-blk" x="968" y="324" width="92" height="70"/><rect class="ga417-blk" x="1076" y="324" width="92" height="70"/><rect class="ga417-blk" x="1184" y="324" width="92" height="70"/><rect class="ga417-blk" x="1292" y="324" width="92" height="70"/><rect class="ga417-blk" x="1400" y="324" width="92" height="70"/><rect class="ga417-blk" x="1508" y="324" width="92" height="70"/>
+        </g>
+        <g>
+          <rect class="ga417-blk" x="320" y="410" width="92" height="70"/><rect class="ga417-blk" x="428" y="410" width="92" height="70"/><rect class="ga417-blk" x="536" y="410" width="92" height="70"/><rect class="ga417-blk" x="644" y="410" width="92" height="70"/><rect class="ga417-blk" x="752" y="410" width="92" height="70"/><rect class="ga417-blk" x="860" y="410" width="92" height="70"/><rect class="ga417-blk" x="968" y="410" width="92" height="70"/><rect class="ga417-blk" x="1076" y="410" width="92" height="70"/><rect class="ga417-blk" x="1184" y="410" width="92" height="70"/><rect class="ga417-blk" x="1292" y="410" width="92" height="70"/><rect class="ga417-blk" x="1400" y="410" width="92" height="70"/><rect class="ga417-blk" x="1508" y="410" width="92" height="70"/>
+        </g>
+        <g>
+          <rect class="ga417-blk" x="320" y="496" width="92" height="70"/><rect class="ga417-blk" x="428" y="496" width="92" height="70"/><rect class="ga417-blk" x="536" y="496" width="92" height="70"/><rect class="ga417-blk" x="644" y="496" width="92" height="70"/><rect class="ga417-blk" x="752" y="496" width="92" height="70"/><rect class="ga417-blk" x="860" y="496" width="92" height="70"/><rect class="ga417-blk" x="968" y="496" width="92" height="70"/><rect class="ga417-blk" x="1076" y="496" width="92" height="70"/><rect class="ga417-blk" x="1184" y="496" width="92" height="70"/><rect class="ga417-blk" x="1292" y="496" width="92" height="70"/><rect class="ga417-blk" x="1400" y="496" width="92" height="70"/><rect class="ga417-blk" x="1508" y="496" width="92" height="70"/>
+        </g>
+        <g>
+          <rect class="ga417-blk" x="320" y="582" width="92" height="70"/><rect class="ga417-blk" x="428" y="582" width="92" height="70"/><rect class="ga417-blk" x="536" y="582" width="92" height="70"/><rect class="ga417-blk" x="644" y="582" width="92" height="70"/><rect class="ga417-blk" x="752" y="582" width="92" height="70"/><rect class="ga417-blk" x="860" y="582" width="92" height="70"/><rect class="ga417-blk" x="968" y="582" width="92" height="70"/><rect class="ga417-blk" x="1076" y="582" width="92" height="70"/><rect class="ga417-blk" x="1184" y="582" width="92" height="70"/><rect class="ga417-blk" x="1292" y="582" width="92" height="70"/><rect class="ga417-blk" x="1400" y="582" width="92" height="70"/><rect class="ga417-blk" x="1508" y="582" width="92" height="70"/>
+        </g>
+        <g>
+          <rect class="ga417-blk" x="320" y="668" width="92" height="70"/><rect class="ga417-blk" x="428" y="668" width="92" height="70"/><rect class="ga417-blk" x="536" y="668" width="92" height="70"/><rect class="ga417-blk" x="644" y="668" width="92" height="70"/><rect class="ga417-blk" x="752" y="668" width="92" height="70"/><rect class="ga417-blk" x="860" y="668" width="92" height="70"/><rect class="ga417-blk" x="968" y="668" width="92" height="70"/><rect class="ga417-blk" x="1076" y="668" width="92" height="70"/><rect class="ga417-blk" x="1184" y="668" width="92" height="70"/><rect class="ga417-blk" x="1292" y="668" width="92" height="70"/><rect class="ga417-blk" x="1400" y="668" width="92" height="70"/><rect class="ga417-blk" x="1508" y="668" width="92" height="70"/>
+        </g>
+        <g>
+          <rect class="ga417-blk" x="320" y="754" width="92" height="70"/><rect class="ga417-blk" x="428" y="754" width="92" height="70"/><rect class="ga417-blk" x="536" y="754" width="92" height="70"/><rect class="ga417-blk" x="644" y="754" width="92" height="70"/><rect class="ga417-blk" x="752" y="754" width="92" height="70"/><rect class="ga417-blk" x="860" y="754" width="92" height="70"/><rect class="ga417-blk" x="968" y="754" width="92" height="70"/><rect class="ga417-blk" x="1076" y="754" width="92" height="70"/><rect class="ga417-blk" x="1184" y="754" width="92" height="70"/><rect class="ga417-blk" x="1292" y="754" width="92" height="70"/><rect class="ga417-blk" x="1400" y="754" width="92" height="70"/><rect class="ga417-blk" x="1508" y="754" width="92" height="70"/>
+        </g>
+      </g>
+
+      <!-- debris band over rows 4 to 6 (y 324 to 566), clipped by a rect that opens east to west -->
+      <g clip-path="url(#g-a4-17-debris-band-clip)">
+        <polygon fill="#6b6257" points="320,326 400,320 480,327 560,321 640,328 720,320 800,326 880,321 960,328 1040,320 1120,326 1200,321 1280,328 1360,320 1440,326 1520,321 1600,326 1600,562 1520,567 1440,562 1360,567 1280,562 1200,567 1120,562 1040,567 960,562 880,567 800,562 720,567 640,562 560,567 480,562 400,567 320,563"/>
+        <polygon fill="url(#g-a4-17-debris-band-hatch)" points="320,326 400,320 480,327 560,321 640,328 720,320 800,326 880,321 960,328 1040,320 1120,326 1200,321 1280,328 1360,320 1440,326 1520,321 1600,326 1600,562 1520,567 1440,562 1360,567 1280,562 1200,567 1120,562 1040,567 960,562 880,567 800,562 720,567 640,562 560,567 480,562 400,567 320,563"/>
+        <polygon fill="none" stroke="#d8a13a" stroke-width="2" stroke-linejoin="round" points="320,326 400,320 480,327 560,321 640,328 720,320 800,326 880,321 960,328 1040,320 1120,326 1200,321 1280,328 1360,320 1440,326 1520,321 1600,326 1600,562 1520,567 1440,562 1360,567 1280,562 1200,567 1120,562 1040,567 960,562 880,567 800,562 720,567 640,562 560,567 480,562 400,567 320,563"/>
+      </g>
+
+      <!-- 5 Gulf-side arrows: tip at local (0,0), shaft below; group sits at tip y 830 and rises to tip y 568 -->
+      <g id="g-a4-17-debris-band-arrows" fill="none" stroke="#7fb2e5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+        <g class="ga417-ar ga417-hide" transform="translate(400,830)"><path d="M0,70 L0,0 M-14,16 L0,0 L14,16"/></g>
+        <g class="ga417-ar ga417-hide" transform="translate(640,830)"><path d="M0,70 L0,0 M-14,16 L0,0 L14,16"/></g>
+        <g class="ga417-ar ga417-hide" transform="translate(1240,830)"><path d="M0,70 L0,0 M-14,16 L0,0 L14,16"/></g>
+        <g class="ga417-ar ga417-hide" transform="translate(1400,830)"><path d="M0,70 L0,0 M-14,16 L0,0 L14,16"/></g>
+        <g class="ga417-ar ga417-hide" transform="translate(1560,830)"><path d="M0,70 L0,0 M-14,16 L0,0 L14,16"/></g>
+      </g>
+    </svg>
+
+    <div class="ga417-geo" style="left:780px; top:228px; width:240px;">Galveston Bay</div>
+    <div class="ga417-geo" style="left:760px; top:889px; width:400px;">Gulf of Mexico</div>
+    <div class="ga417-row ga417-hide" id="g-a4-17-debris-band-n4" style="top:520px;">4</div>
+    <div class="ga417-row ga417-hide" id="g-a4-17-debris-band-n5" style="top:434px;">5</div>
+    <div class="ga417-row ga417-hide" id="g-a4-17-debris-band-n6" style="top:348px;">6</div>
+  </div>
+
+  <svg class="ga417-svg ga417-hide" id="g-a4-17-debris-band-hud" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <g id="g-a4-17-debris-band-north">
+      <path d="M0,-30 L9,4 L0,-3 L-9,4Z" fill="#93a3b2"/>
+      <text x="0" y="26" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="19" fill="#93a3b2">N</text>
+    </g>
+  </svg>
+  <div class="ga417-small ga417-hide" id="g-a4-17-debris-band-note" style="left:96px; top:1000px;">Street grid: schematic</div>
+
+  <div class="ga417-src" id="g-a4-17-debris-band-srca">Galveston History Center</div>
+  <div class="ga417-src ga417-hide" id="g-a4-17-debris-band-srcb">Isaac Cline, Monthly Weather Review, September 1900, p. 373</div>
+
+  <!-- chip A: centred wrapper (floats), chip inside is what GSAP enters and exits -->
+  <div id="g-a4-17-debris-band-wa" style="position:absolute; left:0; top:130px; width:1920px; text-align:center;">
+    <div class="ga417-chip ga417-hide" id="g-a4-17-debris-band-ca" style="display:inline-block; text-align:center;">
+      <div class="ga417-main">NO SEAWALL</div>
+      <div class="ga417-tag">the first section came in 1904</div>
+    </div>
+  </div>
+  <div class="ga417-chip ga417-hide" id="g-a4-17-debris-band-cb" style="position:absolute; left:96px; top:130px;">
+    <div class="ga417-main">DEBRIS PILED 8 TO 15 FT</div>
+    <div class="ga417-tag">4 to 6 blocks in · Cline's report</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a4-17-debris-band";
+  const P = "#" + ID + "-";
+  const $ = function (n) { return document.getElementById(ID + "-" + n); };
+  const root = $("root");
+  const D = 8.52;   /* host: A4-S11 0 to 8.52 */
+
+  /* PROJECTION: same as g-a4-2 (island axis from the ring's own tips, NE tip pinned at (XT, YT)) */
+  const SW = [439.51, 1238.15], NE = [474.80, 1212.77];
+  const S = 135, XT = 2120, YT = 850;
+  const L = Math.hypot(NE[0] - SW[0], NE[1] - SW[1]);
+  const UX = (NE[0] - SW[0]) / L, UY = (NE[1] - SW[1]) / L;
+  const VX = -UY, VY = UX;
+  $("plate").setAttribute("transform", "matrix(" + [S * UX, S * VX, S * UY, S * VY,
+    XT - S * (UX * NE[0] + UY * NE[1]), YT - S * (VX * NE[0] + VY * NE[1])].map(function (n) { return n.toFixed(4); }).join(",") + ")");
+  const northDeg = Math.atan2(-UY, UX) * 180 / Math.PI;
+  $("north").setAttribute("transform", "translate(132,936) rotate(" + northDeg.toFixed(2) + ")");
+
+  const isl = $("isl");
+  if (isl.isPointInFill) {
+    [[320, 324], [1600, 324], [320, 824], [1600, 824]].forEach(function (q) {
+      const a = (q[0] - XT) / S, b = (q[1] - YT) / S;
+      const pt = new DOMPoint(NE[0] + a * UX + b * VX, NE[1] + a * UY + b * VY);
+      if (!isl.isPointInFill(pt)) console.error(ID + ": grid point " + q + " is off the island polygon");
+    });
+  }
+
+  const arrows = root.querySelectorAll(".ga417-ar");
+  const tl = gsap.timeline({ paused: true });
+
+  /* PART A (0 to 5.44): chip over the photo. Wrapper floats the whole part A (slow rise). */
+  tl.set(P + "wa", { y: 0 }, 0);
+  tl.to(P + "wa", { y: -10, duration: 5.44, ease: "none" }, 0);
+  /* NO @0.24 */
+  tl.fromTo(P + "ca", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.24);
+  /* WRECKAGE @4.46: out by 5.06 */
+  tl.to(P + "ca", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 4.46);
+
+  /* PART B @5.44: plate on, source line swaps */
+  tl.set([P + "bg", P + "map", P + "hud", P + "note", P + "srcb"], { autoAlpha: 1 }, 5.44);
+  tl.set(P + "srca", { autoAlpha: 0 }, 5.44);
+  tl.set([P + "rp1", P + "rp2", P + "rp3", P + "rp4"], { x: 0 }, 0);
+  tl.to(P + "rp1", { x: 90, duration: D, ease: "none" }, 0);
+  tl.to(P + "rp2", { x: -80, duration: D, ease: "none" }, 0);
+  tl.to(P + "rp3", { x: 70, duration: D, ease: "none" }, 0);
+  tl.to(P + "rp4", { x: 80, duration: D, ease: "none" }, 0);
+
+  /* PILED @5.54: band opens east to west 5.54 to 6.82 */
+  tl.set(P + "cr", { attr: { x: 1600, width: 0 } }, 0);
+  tl.to(P + "cr", { attr: { x: 320, width: 1280 }, duration: 1.28, ease: "power2.inOut" }, 5.54);
+
+  /* four @6.08 to blocks @6.82: row numbers 4, 5, 6 flash in, then rest at 0.9 */
+  [["n4", 6.08], ["n5", 6.42], ["n6", 6.76]].forEach(function (r) {
+    tl.fromTo(P + r[0], { autoAlpha: 0, scale: 1.6 }, { autoAlpha: 1, scale: 1, duration: 0.22, ease: "back.out(2)" }, r[1]);
+  });
+
+  /* chip B in 6.12 (brief cue 7.72); fully readable from 6.57 to its exit at 8.12 */
+  tl.fromTo(P + "cb", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 6.12);
+
+  /* BEACH @7.14: arrows push north 7.12 to 7.92 and stop at tip y 568 (830 - 262), then pulse y +4 against the band */
+  tl.set(arrows, { y: 0 }, 0);
+  tl.fromTo(arrows, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: "none", stagger: 0.04 }, 7.12);
+  tl.to(arrows, { y: -262, duration: 0.8, ease: "power2.out" }, 7.12);
+  tl.to(arrows, { y: -258, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 7.92);
+
+  /* EXIT: chip B slides out in the last 0.4 s; cut to g-a4-18 */
+  tl.to(P + "cb", { x: 980, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 8.12);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
