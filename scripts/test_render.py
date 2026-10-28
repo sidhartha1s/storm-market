@@ -261,9 +261,20 @@ check("render-07 NEW script asserts duration/fps/resolution/audio against the co
       "comp_dur" in verify_src and "has_audio" in verify_src.replace("HAS_AUDIO", "has_audio"))
 
 
-def run_verify(ep_dir, base, mode="full"):  # mode=None leaves the argument out
+def run_verify(ep_dir, base, mode="full", env=None):  # mode=None leaves the argument out
     return subprocess.run(["bash", str(S / "verify_render.sh"), str(ep_dir), base, *([mode] if mode else [])],
-                          capture_output=True, text=True)
+                          capture_output=True, text=True, env=env)
+
+
+def store_stub_env(d, names):
+    """Env whose PATH starts with a fake WindowsApps folder holding Microsoft Store python stubs (`names`), then this
+    Python's own folder. A hidden schtasks launch puts WindowsApps ahead of the python3 shim (29 Oct 26: e2e, Flow runner)."""
+    stub = Path(d) / "WindowsApps"
+    stub.mkdir()
+    for n in names:
+        (stub / n).write_text("#!/bin/sh\necho 'Python was not found; run without arguments to install from the Microsoft Store' >&2\nexit 9009\n",
+                              encoding="utf-8", newline="\n")
+    return dict(os.environ, PATH=os.pathsep.join([str(stub), str(Path(sys.executable).parent), os.environ["PATH"]]))
 
 
 HAVE_FFMPEG = subprocess.run(["ffmpeg", "-version"], capture_output=True).returncode == 0
