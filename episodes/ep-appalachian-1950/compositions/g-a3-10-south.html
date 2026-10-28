@@ -255,7 +255,7 @@ window.__timelines = window.__timelines || {};
   /* carried over from g-a3-9, in phase with its state at host end (4.70):
      Newark pulse (1.2 s tween + 0.2 s gap, r 17 -> 35, power1.out) is 0.50 s into a cycle: finish it, then cycles from 0.90.
      Exit dots (14 px per 0.5 s from g-a3-9 comp 3.0) sit at offset -5.6: continue from there. */
-  tl.fromTo(P + "nwk-pulse", { opacity: 0.8 * (1 - 0.6145), attr: { r: 17 + 18 * 0.6145 } }, { opacity: 0, attr: { r: 35 }, duration: 0.70, ease: "power1.out" }, 0);
+  tl.fromTo(P + "nwk-pulse", { opacity: 0.8 * (1 - 0.6597), attr: { r: 17 + 18 * 0.6597 } }, { opacity: 0, attr: { r: 35 }, duration: 0.70, ease: "power1.out" }, 0);
   tl.fromTo(P + "nwk-pulse", { opacity: 0.8, attr: { r: 17 } }, { opacity: 0, attr: { r: 35 }, duration: 1.2, ease: "power1.out", repeat: 3, repeatDelay: 0.2, immediateRender: false }, 0.90);
   tl.fromTo(P + "exit", { strokeDashoffset: -5.6 }, { strokeDashoffset: -19.6, duration: 0.5, ease: "none", repeat: 11 }, 0);
   /* Pittsburgh glow (static in g-a3-9) breathes 1 -> 0.6 -> 1 */
