@@ -1,0 +1,228 @@
+<!--
+  g-a4-10-ems-pins · A4-S9 · DEEP · full-frame Erie County map, no footage under it, no camera move.
+  Comp 24.90 s (wav 24.32 + land). Cues: seconds from A4-S9 start (audio/a4-s9.words.json), spoken time in each comment.
+  Projection (brief section 2): equirectangular, cos 42.6 N, x = 960 + (lon + 78.79) * 956.9, y = 540 - (lat - 42.77) * 1300.
+  Paths computed by a one-shot in-memory script (not committed, not in the repo), simplified in px space:
+    Erie County 36029 (land fill + outline): Census 2022 cartographic 500K counties (TIGERweb Generalized_ACS2022
+      State_County layer 11, the cb_2022_us_county_500k geometry), simplified 0.5 px. Box x 628.1..1273.8, y 112.7..971.2.
+    County lines: shared edges of Niagara 36063, Genesee 36037, Wyoming 36121, Cattaraugus 36009, Chautauqua 36013
+      (same layer), Erie's own edges left to the gold outline; simplified 1.5 px.
+    Towns: Cheektowaga town 3602915011 and Amherst town 3602902000 (cousub 500K, layer 7), Buffalo city 3611000
+      (place 500K, layer 10); simplified 0.5 px.
+    Water: Natural Earth 10m ne_10m_lakes (Lake Erie incl. the upper Niagara River, Lake Ontario) joined to a 34 px
+      band off the Census shoreline, minus the six counties, so the US shore is the Census shore. Niagara below the
+      falls: ne_10m_rivers_lake_centerlines.
+    Pins at each polygon's Census interior point (INTPTLAT/INTPTLON):
+      Buffalo city 42.8924919 N, 78.8596862 W -> (893.3, 380.8)
+      Cheektowaga town 42.9100211 N, 78.7418208 W -> (1006.1, 358.0)
+      Amherst town 43.0116389 N, 78.7571478 W -> (991.4, 225.9)
+    Each pin tested inside its own town polygon and inside Erie County; LAKE ERIE (472, 761) tested on water,
+    ERIE COUNTY (1000, 700) tested inside the county.
+  Pin labels keep the brief's offset from the pin (icon starts 34 px right of the pin centre; Buffalo ends at x 865)
+  and ride a 0.85 #0b1016 tag so the Erie east line they cross (x ~1272) is masked under the tag.
+-->
+<template>
+<style>
+  #g-a4-10-ems-pins-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  .ep-hide { opacity:0; visibility:hidden; }
+  .ep-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .ep-t { position:absolute; white-space:nowrap; }
+  .ep-lab { font-weight:700; letter-spacing:3px; }
+  #ep-l-lake { left:322px; top:746px; width:300px; text-align:center; font-size:26px; line-height:30px; color:#7fb2e5; }
+  #ep-l-county { left:850px; top:687px; width:300px; text-align:center; font-size:22px; line-height:26px; color:#d8a13a; }
+
+  /* pins: wrapper is a 0x0 point at the Census interior point; children centre on it */
+  .ep-pinwrap { position:absolute; width:0; height:0; }
+  #ep-pw-ch { left:1006.1px; top:358px; }
+  #ep-pw-am { left:991.4px; top:225.9px; }
+  #ep-pw-bu { left:893.3px; top:380.8px; }
+  .ep-pin { position:absolute; left:-9px; top:-9px; width:18px; height:18px; border-radius:50%; background:#e74c3c; }
+  .ep-ring { position:absolute; left:-9px; top:-9px; width:18px; height:18px; box-sizing:border-box; border-radius:50%;
+    border:2px solid #e74c3c; opacity:0; }
+
+  /* pin labels: tag = ECG icon + town + date */
+  .ep-tag { position:absolute; display:flex; flex-direction:row; align-items:center; height:34px; box-sizing:border-box;
+    padding:4px 8px; border-radius:6px; background:rgba(11,16,22,0.85); white-space:nowrap; }
+  .ep-ecg { display:block; width:34px; height:20px; margin-right:8px; overflow:visible; flex:none; }
+  .ep-nm, .ep-dt { display:block; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; white-space:pre; }
+  .ep-nm { color:#f2f5f8; }
+  .ep-dt { color:#e8c56a; }
+  #ep-tag-ch { left:1032px; top:341px; }
+  #ep-tag-am { left:1017px; top:209px; }
+  #ep-tag-bu { right:1047px; top:387px; }
+
+  /* chip: g-intro-2-toll-chips glass */
+  #ep-chip { position:absolute; left:110px; top:110px; display:flex; flex-direction:row; align-items:baseline; box-sizing:border-box;
+    padding:22px 34px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  #ep-chip-n { display:inline-block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; line-height:1;
+    color:#f2f5f8; margin-right:16px; }
+  #ep-chip-l { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:38px; line-height:1; color:#dfe7ee; }
+
+  /* source slot: glass pill, one string at a time */
+  .ep-src { position:absolute; left:110px; bottom:54px; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; }
+</style>
+<div id="g-a4-10-ems-pins-root" data-composition-id="g-a4-10-ems-pins" data-width="1920" data-height="1080">
+
+  <!-- map: ground, land, water and lines on from frame 0 -->
+  <svg id="ep-map" class="ep-svg" viewBox="0 0 1920 1080">
+    <!-- county lines (neighbours' shared edges) -->
+    <path fill="none" stroke="#2a3644" stroke-width="1" d="M1420.4,864.0 1420.4,863.4M1420.4,863.4 1329.2,865.7M1329.2,865.7 1321.0,865.9M1321.0,865.9 1309.7,866.0M1309.7,866.0 1288.4,866.0M1288.4,866.0 1288.2,866.0M1288.2,866.0 1274.3,866.0M1274.3,866.0 1271.4,866.1M1271.4,866.1 1272.0,843.8M1272.0,843.8 1271.4,844.3M701.5,842.0 700.9,841.8M700.9,841.8 700.7,861.2M700.7,861.2 700.7,874.1M700.7,874.1 700.6,923.1M700.6,923.1 700.6,945.8M700.6,945.8 700.5,960.3M700.5,960.3 700.5,969.6M700.5,969.6 700.5,974.1M700.5,974.1 700.5,974.4M700.5,974.4 700.5,975.9M700.5,975.9 700.6,1013.1M700.6,1013.1 700.7,1028.0M700.7,1028.0 700.9,1059.7M700.9,1059.7 700.9,1064.8M700.9,1064.8 701.0,1078.7M701.0,1078.7 701.0,1088.7M701.0,1088.7 701.0,1088.9M701.0,1088.9 701.0,1110.0M1270.5,73.8 1271.0,88.5M1271.0,88.5 1271.7,122.0M1271.7,122.0 1271.5,125.7M1271.5,125.7 1271.5,126.5M1271.6,412.7 1271.6,413.3M1271.6,413.3 1287.1,413.0M1287.1,413.0 1289.9,413.0M1289.9,413.0 1355.6,411.7M1355.6,411.7 1366.6,411.5M1366.6,411.5 1379.2,411.1M1379.2,411.1 1407.8,410.4M1407.8,410.4 1421.7,410.2M1421.7,410.2 1421.9,410.2M1421.9,410.2 1425.2,410.2M1425.2,410.2 1433.3,410.3M1433.3,410.3 1439.2,410.5M1439.2,410.5 1443.3,410.6M1443.3,410.6 1449.5,410.8M1449.5,410.8 1454.0,410.8M1454.0,410.8 1460.8,411.4M1460.8,411.4 1461.4,410.7M1461.4,410.7 1466.2,410.6M1466.2,410.6 1467.2,410.8M1467.2,410.8 1532.8,409.6M1532.8,409.6 1544.9,409.6M1544.9,409.6 1574.5,409.7M1574.5,409.7 1590.4,409.9M1590.4,409.9 1606.4,409.8M1606.4,409.8 1621.3,410.0M1621.3,410.0 1621.6,410.0M1621.6,410.0 1645.0,409.8M1645.0,409.8 1645.0,418.1M1645.0,418.1 1669.4,417.4M1669.4,417.4 1672.5,417.3M1672.5,417.3 1706.8,416.6M1706.8,416.6 1720.4,416.5M1720.4,416.5 1720.5,418.9M1720.5,418.9 1722.3,418.8M1722.3,418.8 1759.0,419.4M1759.0,419.4 1759.0,418.8M1271.1,73.8 1270.5,73.8M1270.9,126.3 1271.5,125.7M1270.5,73.8 1270.5,73.2M1272.0,843.2 1272.0,843.8M1420.4,863.4 1421.0,863.4M1759.1,420.0 1759.0,419.4M1271.6,413.3 1271.0,413.3M700.9,841.8 700.4,841.5"/>
+    <!-- Erie County land (cb 500K 36029); the gold fill and outline copy this d at runtime -->
+    <path id="ep-erie-land" fill="#15202b" stroke="none" d="M628.1,800.3 630.6,802.4 638.7,806.4 642.0,805.9 649.1,799.9 652.2,800.4 655.2,799.7 659.3,802.4 657.5,807.7 662.1,809.9 665.4,807.6 667.3,807.2 669.4,808.9 668.6,811.7 670.8,814.5 670.6,816.7 673.2,818.2 679.3,817.4 681.7,818.9 681.4,820.9 675.6,823.5 673.7,822.8 671.9,823.9 673.3,826.0 676.3,826.6 679.6,830.7 681.3,831.6 684.9,831.5 688.6,833.6 690.1,835.5 700.9,841.8 707.5,843.9 708.8,843.0 709.0,841.2 710.0,840.1 713.8,840.3 717.2,842.0 720.9,842.0 724.2,839.1 724.7,836.7 727.4,834.7 728.3,835.2 729.3,838.1 730.6,838.7 733.0,838.2 735.4,839.1 736.4,840.5 746.2,845.9 749.6,846.3 751.3,844.5 752.6,844.4 754.4,845.8 755.8,848.4 758.8,849.6 763.5,849.7 767.0,853.0 767.2,856.4 768.7,860.5 772.1,866.2 770.4,870.9 771.0,873.9 775.5,876.0 774.8,880.2 772.2,884.1 773.1,884.8 775.5,883.1 778.0,883.0 778.8,886.2 780.0,887.4 782.9,887.7 787.9,893.5 791.0,899.2 796.2,898.8 794.0,908.4 800.2,926.9 804.8,928.5 806.2,932.2 815.7,932.1 818.0,932.9 821.2,938.3 826.1,942.9 830.2,944.8 837.0,951.8 837.1,956.8 834.5,958.1 833.7,963.3 835.2,965.7 837.2,965.7 840.4,963.6 842.3,959.6 843.5,958.7 849.5,960.9 854.3,957.2 856.0,958.5 858.6,968.0 860.7,970.1 862.2,970.0 864.8,966.6 867.0,966.3 869.2,970.9 871.0,971.2 872.9,968.7 876.1,966.8 881.9,969.6 883.9,969.1 885.3,966.4 894.5,966.3 898.6,964.4 901.9,965.5 903.5,965.0 905.8,962.7 908.7,962.7 911.9,965.5 914.0,965.3 915.5,964.2 916.4,960.8 919.8,957.4 924.0,958.3 924.8,954.0 925.7,953.5 929.6,955.1 938.1,948.0 941.2,944.5 944.8,945.0 946.5,944.3 948.0,942.4 953.2,939.5 955.6,939.5 962.7,944.4 963.0,946.2 966.5,948.6 968.8,949.3 975.5,947.5 978.4,946.3 978.8,943.6 976.9,942.3 972.6,941.8 971.9,940.6 972.7,938.1 976.8,936.3 980.4,937.4 983.4,940.8 986.5,940.8 990.1,938.3 990.3,935.5 989.1,933.8 984.5,931.6 983.9,930.3 985.2,929.3 996.7,932.3 997.6,931.0 997.7,926.5 998.5,925.2 1000.5,924.7 1008.1,926.3 1009.4,926.0 1010.5,922.9 1008.6,919.1 1009.5,916.4 1013.1,918.5 1016.0,918.7 1016.9,918.0 1017.0,915.2 1018.5,913.7 1023.2,913.5 1029.1,911.8 1029.5,909.3 1032.7,908.3 1032.6,911.0 1034.6,912.4 1036.1,910.6 1040.2,911.1 1042.9,908.2 1044.0,908.7 1045.7,910.8 1046.6,917.6 1045.6,922.5 1046.7,925.1 1050.7,927.7 1052.5,927.6 1053.5,926.8 1053.2,924.1 1054.3,921.4 1059.5,922.8 1062.8,919.4 1061.7,917.5 1063.3,916.1 1063.1,912.9 1065.0,911.1 1069.3,912.4 1070.5,911.1 1070.8,908.2 1072.5,908.2 1073.6,906.0 1075.3,905.7 1076.5,907.5 1077.9,907.4 1078.6,905.7 1080.9,904.8 1082.1,900.8 1084.6,901.9 1088.9,901.3 1090.2,903.6 1092.7,903.0 1092.6,901.4 1094.3,900.6 1098.1,902.9 1099.3,902.6 1100.2,899.4 1104.8,893.5 1109.2,895.4 1111.9,893.4 1115.7,894.4 1116.7,890.9 1119.1,886.7 1120.8,885.6 1127.7,885.3 1129.7,887.4 1132.2,886.2 1134.1,882.6 1136.8,881.7 1135.7,880.3 1136.5,878.8 1138.6,878.7 1144.8,874.5 1147.4,875.1 1150.0,877.8 1153.5,879.3 1155.4,878.2 1155.6,874.2 1157.4,872.6 1162.0,873.8 1162.2,875.3 1167.3,877.2 1169.1,875.2 1171.9,874.5 1172.8,877.9 1176.6,879.6 1178.4,877.3 1179.1,874.5 1180.2,873.7 1182.4,873.7 1182.5,876.2 1183.5,876.6 1185.6,875.7 1187.2,872.3 1192.4,870.8 1190.7,869.3 1191.1,868.0 1192.5,867.9 1197.7,871.9 1200.3,872.6 1201.2,868.0 1202.7,869.0 1205.8,868.8 1205.6,865.9 1207.3,863.6 1211.1,862.4 1214.0,864.6 1219.2,866.1 1220.2,863.6 1223.1,862.2 1226.3,858.4 1226.4,854.8 1229.6,855.1 1230.2,856.5 1233.3,855.1 1238.4,854.9 1240.0,852.2 1245.8,852.0 1248.5,845.7 1249.6,846.7 1253.0,845.4 1253.5,848.2 1258.0,847.1 1259.3,848.3 1261.1,846.3 1267.5,847.6 1272.0,843.8 1273.8,728.5 1272.1,638.9 1272.7,526.4 1248.8,526.1 1250.7,412.9 1271.6,413.3 1271.6,285.9 1272.9,223.6 1271.5,125.7 1270.7,126.5 1268.1,127.0 1268.4,127.9 1270.8,129.2 1266.5,133.4 1263.8,134.9 1264.4,131.5 1261.8,133.4 1262.2,131.0 1261.0,130.4 1261.2,129.1 1259.8,128.9 1259.6,130.9 1255.1,132.1 1255.1,130.3 1252.2,129.0 1248.1,133.5 1244.5,131.8 1244.7,134.4 1243.5,133.6 1240.9,134.7 1237.9,132.5 1240.5,128.6 1239.2,127.8 1236.8,129.2 1234.8,128.5 1236.8,125.2 1234.5,125.7 1232.7,123.9 1231.7,124.4 1232.6,121.9 1231.6,120.0 1233.0,120.2 1234.2,122.2 1233.9,119.8 1230.4,118.6 1229.3,119.7 1228.6,118.8 1229.4,115.8 1227.9,115.1 1227.6,113.7 1226.4,116.7 1224.8,117.9 1223.3,117.7 1222.4,122.0 1224.1,122.2 1224.0,123.5 1222.4,123.3 1217.6,125.6 1216.1,124.6 1216.2,126.4 1212.4,127.1 1210.6,126.2 1212.0,125.3 1211.7,123.5 1209.8,123.9 1210.5,125.9 1207.5,127.4 1206.9,125.8 1204.6,129.0 1202.8,129.9 1202.2,128.1 1200.9,127.4 1200.7,129.5 1199.0,129.3 1199.1,127.7 1197.2,126.5 1198.8,126.2 1198.8,123.9 1197.0,122.6 1196.7,125.6 1194.8,124.7 1194.1,123.4 1192.6,123.7 1192.1,121.7 1193.1,119.7 1195.9,120.4 1198.0,119.6 1197.4,115.6 1195.0,115.4 1193.9,112.7 1189.5,115.4 1190.5,117.4 1189.0,120.2 1184.7,120.9 1184.5,122.1 1179.2,123.5 1182.6,119.0 1185.0,117.6 1182.4,117.4 1181.8,115.0 1179.8,114.5 1176.2,118.0 1177.2,119.3 1175.8,125.4 1175.0,126.3 1172.5,126.6 1171.0,125.8 1164.5,125.6 1166.4,127.7 1165.4,129.5 1166.5,133.9 1168.2,134.3 1166.4,136.7 1164.7,137.3 1164.2,134.8 1162.7,133.5 1163.6,131.6 1161.7,130.2 1162.7,127.3 1160.7,127.2 1159.3,125.4 1156.6,128.3 1156.1,131.1 1160.8,136.8 1158.9,140.3 1157.0,141.1 1158.4,143.3 1155.1,146.0 1150.5,142.0 1149.5,148.2 1147.5,150.6 1146.3,150.5 1146.9,148.0 1146.0,146.8 1142.5,147.3 1140.9,146.8 1140.5,144.9 1139.6,146.8 1138.0,147.4 1135.5,146.5 1135.3,145.6 1137.8,144.8 1140.4,142.4 1140.1,141.4 1136.2,142.7 1132.6,141.5 1130.4,139.8 1130.3,141.9 1128.2,144.4 1126.2,144.2 1127.0,141.3 1125.3,139.7 1126.3,136.8 1129.6,134.1 1129.8,132.3 1125.9,130.5 1123.7,127.3 1122.2,127.8 1121.4,129.7 1119.5,130.5 1116.3,130.4 1114.1,128.3 1113.5,125.9 1110.5,122.8 1112.3,121.9 1113.0,119.4 1112.1,118.6 1109.1,118.6 1107.3,119.7 1102.8,114.5 1101.8,114.4 1101.5,118.0 1102.8,123.1 1101.9,125.8 1100.4,126.3 1096.5,124.5 1094.9,127.5 1097.2,129.7 1097.8,135.0 1097.3,136.0 1095.5,136.2 1093.4,134.3 1089.3,133.3 1085.8,130.3 1079.9,128.7 1078.0,130.0 1069.8,131.9 1065.5,131.0 1064.7,135.8 1063.5,136.7 1061.8,136.2 1058.3,131.2 1058.2,128.6 1054.4,125.7 1049.1,128.8 1046.6,128.1 1038.9,128.0 1038.3,131.5 1036.9,133.7 1034.9,133.9 1032.6,132.8 1030.9,133.2 1027.9,135.6 1026.4,135.0 1025.3,132.3 1023.1,129.9 1020.1,128.9 1014.0,131.5 1011.5,134.7 1010.1,139.3 1006.6,143.7 1004.8,148.8 1002.7,150.3 997.1,151.0 989.5,148.8 980.1,150.0 978.4,150.6 975.1,154.1 970.9,156.0 963.0,154.5 950.8,154.6 948.5,155.5 944.6,158.9 943.6,161.5 946.0,169.3 943.4,171.4 937.2,173.8 922.5,174.2 920.5,175.7 919.5,178.6 920.4,182.0 924.8,189.6 926.2,197.2 922.9,201.8 921.5,202.4 918.5,209.6 912.8,215.7 910.5,216.5 906.3,215.7 901.4,216.0 896.3,212.3 891.8,211.3 884.6,210.8 877.5,213.0 874.0,212.6 872.0,209.6 867.7,212.0 864.2,212.5 864.3,209.1 861.4,191.9 858.3,183.6 849.1,174.0 843.7,169.8 811.4,154.0 806.9,152.8 749.8,150.6 740.6,152.7 752.2,155.5 759.6,168.1 754.1,179.8 747.8,203.4 736.8,219.7 739.9,247.8 748.0,260.2 782.9,281.6 795.6,295.9 823.8,298.4 836.7,310.1 846.0,327.8 849.3,340.6 848.9,371.9 862.7,390.7 866.4,398.4 864.2,401.3 871.4,413.6 881.5,433.3 887.5,432.3 895.0,450.6 892.2,452.3 893.1,459.5 889.5,461.7 886.8,458.6 885.0,458.2 884.4,459.8 885.2,462.4 883.1,463.5 881.6,467.0 881.7,471.5 893.6,500.1 896.4,500.7 899.2,508.6 899.3,521.9 893.3,527.6 887.6,537.7 879.3,545.0 876.2,545.7 873.4,550.0 852.6,568.8 846.9,572.1 841.4,579.0 837.4,582.6 820.7,588.6 812.5,589.5 797.1,602.0 793.3,602.2 790.0,604.4 788.2,608.8 780.3,615.6 767.5,624.0 757.8,626.2 753.2,625.1 744.7,630.3 740.2,630.2 738.4,633.3 733.1,636.2 729.8,635.4 718.0,642.2 714.3,642.3 712.3,645.1 709.3,653.1 707.3,662.6 701.2,668.4 699.5,672.1 698.7,676.9 698.0,702.8 693.3,707.0 688.9,709.1 685.9,708.3 683.7,708.9 677.8,719.8 673.6,722.6 669.8,722.2 665.1,732.4 662.1,734.1 652.5,743.6 649.2,756.2 644.5,757.6 642.4,768.5 638.2,772.8 636.1,772.3 634.2,773.8Z"/>
+    <!-- town outlines: Buffalo city (place 3611000), Cheektowaga town, Amherst town (cousub) -->
+    <g fill="none" stroke="#4a5560" stroke-width="1" stroke-linejoin="round">
+      <path d="M842.8,297.9 841.1,318.5 846.0,327.8 849.3,340.6 848.9,371.9 862.7,390.7 866.4,398.4 864.2,401.3 871.4,413.6 881.5,433.3 887.5,432.3 895.0,450.6 892.2,452.3 893.1,459.1 915.4,459.6 917.6,467.0 919.0,466.2 927.5,466.1 927.6,459.3 948.8,459.4 949.4,458.7 949.7,447.0 950.2,450.0 953.6,451.1 955.1,447.5 952.1,444.7 953.4,441.8 951.2,440.7 949.8,441.9 950.8,413.5 950.9,332.6 951.4,332.2 952.1,307.0 939.4,306.7 940.5,303.2 942.1,303.1 942.1,299.9 946.7,300.1 946.7,297.7 943.1,297.5 941.9,291.2 932.4,296.4 931.5,295.6 913.8,295.1 863.7,294.9 861.9,291.4 855.9,284.6Z"/>
+      <path d="M951.3,358.3 950.5,407.7 966.2,408.6 968.3,405.4 971.3,407.3 976.1,406.4 979.2,408.6 979.4,405.4 983.2,404.4 985.1,406.8 985.0,404.9 986.7,403.8 989.8,404.0 989.2,417.5 1049.0,418.2 1049.0,305.0 1022.5,304.9 1022.5,311.4 1017.5,309.6 1013.1,301.4 1013.3,307.1 952.1,307.0 951.4,332.2 950.9,332.6Z"/>
+      <path d="M919.5,178.6 920.4,182.0 924.8,189.6 926.2,197.2 922.9,201.8 925.9,202.1 927.3,200.6 929.2,200.7 928.8,252.8 927.6,295.4 931.5,295.6 932.4,296.4 941.9,291.2 943.1,297.5 946.7,297.7 946.7,300.1 942.1,299.9 942.1,303.1 940.5,303.2 939.4,306.7 1013.3,307.1 1013.1,301.4 1017.5,309.6 1022.5,311.4 1022.5,304.9 1049.0,305.0 1049.1,128.8 1046.6,128.1 1038.9,128.0 1038.3,131.5 1036.9,133.7 1034.9,133.9 1032.6,132.8 1030.9,133.2 1027.9,135.6 1026.4,135.0 1025.3,132.3 1023.1,129.9 1020.1,128.9 1014.0,131.5 1011.5,134.7 1010.1,139.3 1006.6,143.7 1004.8,148.8 1002.7,150.3 997.1,151.0 989.5,148.8 978.4,150.6 975.1,154.1 970.9,156.0 963.0,154.5 950.8,154.6 948.5,155.5 944.6,158.9 943.6,161.5 946.0,169.3 943.4,171.4 937.2,173.8 922.5,174.2 920.5,175.7Z"/>
+    </g>
+    <!-- water: Lake Erie + upper Niagara River (Grand Island is land), Lake Ontario corner; 1.5 px shoreline -->
+    <path fill="#04070a" fill-rule="evenodd" stroke="#5a768f" stroke-width="1.5" stroke-linejoin="round" d="M171.6,1110.0 179.3,1100.5 184.5,1098.1 187.1,1095.3 189.3,1097.3 193.6,1096.7 196.5,1095.0 213.8,1084.4 230.5,1070.1 236.3,1068.6 241.1,1065.1 243.9,1061.2 250.5,1058.5 270.1,1043.9 304.7,1015.4 316.3,1011.8 325.1,1006.5 351.7,980.2 354.3,972.6 354.7,968.0 359.3,951.6 361.7,951.4 364.2,954.0 367.9,953.8 371.1,951.7 382.8,940.7 393.6,934.6 412.5,916.7 414.1,913.9 417.7,902.1 419.8,898.7 421.3,899.0 422.4,901.8 424.4,902.0 428.8,900.0 430.7,902.6 427.9,906.2 430.1,908.3 442.0,905.4 449.9,897.8 454.9,888.0 461.6,885.6 464.1,885.9 473.7,882.0 477.4,878.3 487.9,876.4 493.0,876.4 499.4,866.0 505.8,860.9 508.6,859.4 511.6,859.2 516.3,856.3 520.1,849.7 525.5,847.7 527.8,850.4 532.8,849.1 537.4,841.5 538.7,841.4 541.4,845.0 545.5,844.3 549.4,840.6 563.4,836.3 568.2,832.6 574.1,831.4 576.5,832.4 580.1,830.8 587.0,823.7 588.9,824.0 590.3,827.4 596.5,827.3 604.9,821.5 608.8,822.8 613.7,823.1 616.7,821.2 626.5,807.2 634.2,773.8 636.1,772.3 638.2,772.8 642.4,768.5 644.5,757.6 649.2,756.2 652.5,743.6 662.1,734.1 665.1,732.4 669.8,722.2 673.6,722.6 677.8,719.8 683.7,708.9 685.9,708.3 688.9,709.1 693.3,707.0 698.0,702.8 698.7,676.9 699.5,672.1 701.2,668.4 707.3,662.6 709.3,653.1 712.3,645.1 714.3,642.3 718.0,642.2 729.8,635.4 733.1,636.2 738.4,633.3 740.2,630.2 744.7,630.3 753.2,625.1 757.8,626.2 767.5,624.0 780.3,615.6 788.2,608.8 790.0,604.4 793.3,602.2 797.1,602.0 812.5,589.5 820.7,588.6 837.4,582.6 841.4,579.0 846.9,572.1 852.6,568.8 873.4,550.0 876.2,545.7 879.3,545.0 887.6,537.7 893.3,527.6 899.3,521.9 899.2,508.6 896.4,500.7 893.6,500.1 881.7,471.5 881.6,467.0 883.1,463.5 885.2,462.4 884.4,459.8 885.0,458.2 886.8,458.6 889.5,461.7 893.1,459.5 892.2,452.3 895.0,450.6 887.5,432.3 881.5,433.3 871.4,413.6 864.2,401.3 866.4,398.4 862.7,390.7 848.9,371.9 849.3,340.6 846.0,327.8 836.7,310.1 823.8,298.4 795.6,295.9 782.9,281.6 748.0,260.2 739.9,247.8 736.8,219.7 747.8,203.4 754.1,179.8 759.6,168.1 752.2,155.5 687.8,139.8 686.9,135.2 697.1,119.8 703.6,102.0 701.9,94.3 699.8,91.0 692.9,85.1 700.6,78.0 704.7,76.1 711.3,66.1 699.4,63.1 691.5,63.1 683.8,64.8 673.1,69.9 667.0,75.0 662.1,81.2 659.0,87.1 659.4,90.5 662.4,100.0 666.0,105.8 657.2,118.8 653.7,128.2 653.1,138.2 655.1,149.3 659.6,154.8 678.6,172.5 718.3,182.2 716.4,189.1 705.4,206.8 703.4,213.3 702.8,220.1 706.2,251.6 707.4,257.8 711.5,266.4 721.2,281.2 725.4,285.5 730.2,289.1 760.8,308.0 772.5,320.8 777.6,324.7 783.3,327.6 789.5,329.4 809.4,331.3 814.1,340.1 815.3,344.8 814.9,370.6 813.2,372.3 792.2,384.2 685.7,409.5 675.6,418.6 668.2,435.9 650.9,431.3 609.7,405.6 564.9,396.8 406.4,406.0 331.4,396.1 318.5,399.5 310.2,407.5 303.5,416.7 295.4,423.6 284.9,426.3 204.9,420.9 179.0,424.8 160.9,437.0 143.9,442.4 93.3,419.8 72.6,413.7 55.9,418.6 17.4,437.8 -2.7,442.0 -30.0,454.4 -30.0,1110.0ZM421.1,-11.1 442.9,-6.1 462.9,-17.6 477.4,-30.0 384.5,-30.0Z"/>
+    <!-- Niagara River below the falls (ne_10m_rivers_lake_centerlines) -->
+    <path fill="none" stroke="#5a768f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M709.7,-30.0 711.8,18.9 711.1,32.9 708.9,49.8 705.1,60.7 699.6,71.3 695.4,84.4 695.9,103.1"/>
+    <!-- Erie County: gold fill (breathes) and 3 px outline (dash draw); d copied from #ep-erie-land -->
+    <path id="ep-erie-fill" class="ep-hide" fill="#d8a13a" fill-opacity="0.06" stroke="none" d=""/>
+    <path id="ep-erie-line" class="ep-hide" fill="none" stroke="#d8a13a" stroke-width="3" stroke-linejoin="round" d=""/>
+  </svg>
+
+  <!-- snow: three layers of 10 dots, 12 / 14 / 16 px/s, the whole window -->
+  <svg id="ep-snow" class="ep-svg" viewBox="0 0 1920 1080">
+    <g id="ep-snow-a" fill="#dfe7ee" fill-opacity="0.4">
+      <circle cx="120" cy="-320" r="1.25"/><circle cx="410" cy="-90" r="1"/><circle cx="705" cy="160" r="1.5"/>
+      <circle cx="980" cy="-260" r="1"/><circle cx="1260" cy="420" r="1.25"/><circle cx="1530" cy="30" r="1.5"/>
+      <circle cx="1790" cy="610" r="1"/><circle cx="300" cy="700" r="1.5"/><circle cx="860" cy="940" r="1.25"/>
+      <circle cx="1640" cy="-180" r="1"/>
+    </g>
+    <g id="ep-snow-b" fill="#dfe7ee" fill-opacity="0.4">
+      <circle cx="210" cy="520" r="1"/><circle cx="560" cy="-340" r="1.5"/><circle cx="830" cy="380" r="1.25"/>
+      <circle cx="1110" cy="820" r="1"/><circle cx="1390" cy="-60" r="1.25"/><circle cx="1700" cy="300" r="1.5"/>
+      <circle cx="60" cy="180" r="1.25"/><circle cx="650" cy="1040" r="1"/><circle cx="1480" cy="760" r="1.5"/>
+      <circle cx="1880" cy="-280" r="1"/>
+    </g>
+    <g id="ep-snow-c" fill="#dfe7ee" fill-opacity="0.4">
+      <circle cx="350" cy="250" r="1.5"/><circle cx="470" cy="880" r="1"/><circle cx="760" cy="-200" r="1.25"/>
+      <circle cx="1020" cy="600" r="1"/><circle cx="1180" cy="-380" r="1.5"/><circle cx="1340" cy="1000" r="1.25"/>
+      <circle cx="1600" cy="520" r="1"/><circle cx="1850" cy="880" r="1.25"/><circle cx="90" cy="-140" r="1"/>
+      <circle cx="920" cy="40" r="1.5"/>
+    </g>
+  </svg>
+
+  <!-- map labels -->
+  <div id="ep-l-lake" class="ep-t ep-lab ep-hide">LAKE ERIE</div>
+  <div id="ep-l-county" class="ep-t ep-lab ep-hide">ERIE COUNTY</div>
+
+  <!-- pins -->
+  <div id="ep-pw-ch" class="ep-pinwrap ep-hide"><div id="ep-ring-ch" class="ep-ring"></div><div id="ep-pin-ch" class="ep-pin"></div></div>
+  <div id="ep-pw-am" class="ep-pinwrap ep-hide"><div id="ep-ring-am" class="ep-ring"></div><div id="ep-pin-am" class="ep-pin"></div></div>
+  <div id="ep-pw-bu" class="ep-pinwrap ep-hide"><div id="ep-ring-bu" class="ep-ring"></div><div id="ep-pin-bu" class="ep-pin"></div></div>
+
+  <!-- pin labels: ECG icon, town, date (date starts hidden inside the tag) -->
+  <div id="ep-tag-ch" class="ep-tag ep-hide">
+    <svg class="ep-ecg" viewBox="0 0 34 20"><path id="ep-ecg-ch" d="M0,10 H9 L12,4 L15,16 L19,0 L22,20 L25,10 H34" fill="none" stroke="#e74c3c" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <span id="ep-nm-ch" class="ep-nm">CHEEKTOWAGA</span><span id="ep-dt-ch" class="ep-dt ep-hide"> · DEC 24</span>
+  </div>
+  <div id="ep-tag-am" class="ep-tag ep-hide">
+    <svg class="ep-ecg" viewBox="0 0 34 20"><path id="ep-ecg-am" d="M0,10 H9 L12,4 L15,16 L19,0 L22,20 L25,10 H34" fill="none" stroke="#e74c3c" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <span id="ep-nm-am" class="ep-nm">AMHERST</span><span id="ep-dt-am" class="ep-dt ep-hide"> · DEC 25</span>
+  </div>
+  <div id="ep-tag-bu" class="ep-tag ep-hide">
+    <svg class="ep-ecg" viewBox="0 0 34 20"><path id="ep-ecg-bu" d="M0,10 H9 L12,4 L15,16 L19,0 L22,20 L25,10 H34" fill="none" stroke="#e74c3c" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <span id="ep-nm-bu" class="ep-nm">BUFFALO</span><span id="ep-dt-bu" class="ep-dt ep-hide"> · DEC 27</span>
+  </div>
+
+  <!-- chip, title zone -->
+  <div id="ep-chip" class="ep-hide"><span id="ep-chip-n">7</span><span id="ep-chip-l">LINKED TO DELAYED EMS</span></div>
+
+  <!-- source slot -->
+  <div id="ep-src-a" class="ep-src ep-hide">NYU Wagner review, via AP, 2 Jun 2023</div>
+  <div id="ep-src-b" class="ep-src ep-hide">Erie County Medical Examiner, via WIVB</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#ep-" + id;
+  const el = (id) => document.getElementById("ep-" + id);
+  const END = 24.9; // wav 24.32 + land
+
+  // gold fill and outline share the land path; dash lengths measured, ceil(len)+1
+  const landD = el("erie-land").getAttribute("d");
+  el("erie-fill").setAttribute("d", landD);
+  el("erie-line").setAttribute("d", landD);
+  const LC = Math.ceil(el("erie-line").getTotalLength()) + 1;
+  const LE = Math.ceil(el("ecg-ch").getTotalLength()) + 1; // the three ECG traces are one shape
+
+  // transforms and dash state start in tl.set at 0
+  tl.set($("erie-line"), { strokeDasharray: LC, strokeDashoffset: LC }, 0);
+  tl.set([$("ecg-ch"), $("ecg-am"), $("ecg-bu")].join(","), { strokeDasharray: LE, strokeDashoffset: LE }, 0);
+  tl.set([$("snow-a"), $("snow-b"), $("snow-c")].join(","), { x: 0, y: 0 }, 0);
+  tl.set([$("pw-ch"), $("pw-am"), $("pw-bu")].join(","), { y: 0 }, 0);
+  tl.set([$("ring-ch"), $("ring-am"), $("ring-bu")].join(","), { transformOrigin: "50% 50%", scale: 1 }, 0);
+  tl.set([$("tag-ch"), $("tag-am"), $("tag-bu")].join(","), { x: 0 }, 0);
+  tl.set($("chip"), { x: 0 }, 0);
+  tl.set($("chip-n"), { transformOrigin: "50% 60%", scale: 1 }, 0);
+
+  /* "For some people" @0.00: ground, water, land on from frame 0; snow falls the whole window (12 / 14 / 16 px/s) */
+  tl.to($("snow-a"), { y: 349, duration: END, ease: "none" }, 0);
+  tl.to($("snow-b"), { y: 299, duration: END, ease: "none" }, 0);
+  tl.to($("snow-c"), { y: 398, duration: END, ease: "none" }, 0);
+  tl.to([$("snow-a"), $("snow-c")].join(","), { x: 10, duration: 4.15, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0);
+
+  /* "help came too late" @1.12 to 1.80: Erie County outline draws, fill after it */
+  tl.set($("erie-line"), { autoAlpha: 1 }, 1.12);
+  tl.fromTo($("erie-line"), { strokeDashoffset: LC }, { strokeDashoffset: 0, duration: 1.0, ease: "power2.inOut" }, 1.12);
+  tl.fromTo($("erie-fill"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 2.1);
+
+  /* after "late." @1.80 (ends 2.10): map labels */
+  tl.fromTo($("l-lake"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.3);
+  tl.fromTo($("l-county"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.3);
+
+  /* "seven" @5.32: chip in, "7" punches, S-A in */
+  tl.fromTo($("chip"), { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 5.32);
+  tl.fromTo($("chip-n"), { scale: 1.3 }, { scale: 1, duration: 0.4, ease: "power4.out" }, 5.32);
+  tl.fromTo($("src-a"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out" }, 5.32);
+
+  /* "Officials blamed backlogged calls, unplowed streets and stranded vehicles" @10.34 to 14.98: fill breathes 0.06 -> 0.10 -> 0.06 */
+  tl.to($("erie-fill"), { attr: { "fill-opacity": 0.10 }, duration: 2, ease: "sine.inOut" }, 10.34);
+  tl.to($("erie-fill"), { attr: { "fill-opacity": 0.06 }, duration: 2, ease: "sine.inOut" }, 12.34);
+
+  /* before "The last three" @15.90: chip dims, S-A out, S-B in */
+  tl.to($("chip"), { autoAlpha: 0.5, duration: 0.3, ease: "power1.inOut" }, 15.7);
+  tl.to($("src-a"), { autoAlpha: 0, y: -8, duration: 0.2, ease: "power1.in" }, 15.7);
+  tl.fromTo($("src-b"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out" }, 15.9);
+
+  /* "Cheek" @19.26: Cheektowaga pin drops, icon draws, name in; ring pulses 4 x 1.2 s (19.71 -> 24.51) */
+  tl.fromTo($("pw-ch"), { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "bounce.out" }, 19.26);
+  tl.fromTo($("tag-ch"), { autoAlpha: 0, x: -8 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 19.26);
+  tl.fromTo($("ecg-ch"), { strokeDashoffset: LE }, { strokeDashoffset: 0, duration: 0.4, ease: "power1.inOut" }, 19.26);
+  tl.fromTo($("ring-ch"), { scale: 1, opacity: 0.6 }, { scale: 2.2, opacity: 0, duration: 1.2, ease: "power1.out", repeat: 3 }, 19.71);
+  /* "Christmas Eve" @20.06 */
+  tl.fromTo($("dt-ch"), { autoAlpha: 0, x: -8 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 20.06);
+
+  /* "Amherst" @21.42: pin, icon, name; ring 2 x 1.2 s (21.87 -> 24.27) */
+  tl.fromTo($("pw-am"), { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "bounce.out" }, 21.42);
+  tl.fromTo($("tag-am"), { autoAlpha: 0, x: -8 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 21.42);
+  tl.fromTo($("ecg-am"), { strokeDashoffset: LE }, { strokeDashoffset: 0, duration: 0.4, ease: "power1.inOut" }, 21.42);
+  tl.fromTo($("ring-am"), { scale: 1, opacity: 0.6 }, { scale: 2.2, opacity: 0, duration: 1.2, ease: "power1.out", repeat: 1 }, 21.87);
+  /* "Christmas Day" @21.84 */
+  tl.fromTo($("dt-am"), { autoAlpha: 0, x: -8 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 21.84);
+
+  /* "Buffalo" @22.98: pin, icon, name; ring 1 x 1.2 s (23.43 -> 24.63) */
+  tl.fromTo($("pw-bu"), { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "bounce.out" }, 22.98);
+  tl.fromTo($("tag-bu"), { autoAlpha: 0, x: 8 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 22.98);
+  tl.fromTo($("ecg-bu"), { strokeDashoffset: LE }, { strokeDashoffset: 0, duration: 0.4, ease: "power1.inOut" }, 22.98);
+  tl.fromTo($("ring-bu"), { scale: 1, opacity: 0.6 }, { scale: 2.2, opacity: 0, duration: 1.2, ease: "power1.out", repeat: 0 }, 23.43);
+  /* "27th" @23.68 */
+  tl.fromTo($("dt-bu"), { autoAlpha: 0, x: -8 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 23.68);
+
+  /* after "27th." (ends 24.28) -> 24.90: hold, snow and rings move; the scene ends on the cut into the S10 photo */
+
+  window.__timelines["g-a4-10-ems-pins"] = tl;
+})();
+</script>
+</template>
