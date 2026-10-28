@@ -125,7 +125,7 @@ window.__timelines = window.__timelines || {};
   /* "December" @0.90: panel rises in, source line in; whole panel group floats up 4 px to the end (never still) */
   tl.fromTo($("panel"), { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.9);
   tl.fromTo($("source"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 0.9);
-  tl.to($("float"), { y: -4, duration: 24.3, ease: "sine.inOut" }, 0.9);
+  tl.to($("float"), { y: -4, duration: 24.0, ease: "sine.inOut" }, 0.9); /* ends 24.9 = host window (index.html) */
 
   /* "451" @2.18: header rows one by one (2.18, 2.50, 2.82); product id @3.00 */
   tl.fromTo($("h1"), { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.18);
