@@ -81,12 +81,14 @@
     </g>
     <!-- red track (map-anchored, projected by camAt): glow, line, connectors, dotted exit -->
     <g id="a3c-trackg">
-      <path id="a3c-trackglow" fill="none" stroke="#d0121f" stroke-width="14" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round" filter="url(#a3c-glow)"/>
-      <path id="a3c-track" fill="none" stroke="#d0121f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="a3c-con-nwk" fill="none" stroke="#d0121f" stroke-opacity="0.6" stroke-width="4" stroke-dasharray="8 6"/>
       <path id="a3c-con-pit" fill="none" stroke="#d0121f" stroke-opacity="0.6" stroke-width="4" stroke-dasharray="8 6"/>
       <path id="a3c-con-buf" fill="none" stroke="#d0121f" stroke-opacity="0.6" stroke-width="4" stroke-dasharray="8 6"/>
-      <path id="a3c-con-nwk" fill="none" stroke="#d0121f" stroke-opacity="0.6" stroke-width="4" stroke-dasharray="8 6"/>
+      <!-- glow as g-a3-9 after WEAKENED (group 0.6, 18 px at 0.55, blur 6) -->
+      <g opacity="0.6"><path id="a3c-trackglow" fill="none" stroke="#d0121f" stroke-width="18" stroke-opacity="0.55" stroke-linecap="round" stroke-linejoin="round" filter="url(#a3c-glow)"/></g>
+      <path id="a3c-track" fill="none" stroke="#d0121f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
       <path id="a3c-exit" fill="none" stroke="#d0121f" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 12"/>
+      <g id="a3c-looparrow"><polygon points="0,-16 -9,4 9,4" fill="#f2f5f8" stroke="#04070c" stroke-width="2" stroke-linejoin="round"/></g>
     </g>
     <!-- cold arrows (map-anchored): pathLength 1 so the draw-on fraction survives the camera move; conveyor dashes in px -->
     <g id="a3c-arrows">
