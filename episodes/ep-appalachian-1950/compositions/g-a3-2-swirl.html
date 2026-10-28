@@ -81,10 +81,11 @@
     <!-- counterclockwise ring, r 110 about the low; drawn CCW (sweep 0), turned CCW about svgOrigin 1284 576 -->
     <g class="a3w-ring" id="a3w-ring">
       <path class="a3w-ringpath" id="a3w-ringpath" d="M1394 576 A110 110 0 1 0 1174 576 A110 110 0 1 0 1394 576"/>
+      <!-- same three heads as g-a3-3-pins (0, 120, 240 deg on the ring); never moved by GSAP themselves, only their group -->
       <g class="a3w-ringheads" id="a3w-ringheads">
-        <polygon id="a3w-rh1" points="1276,466 1292,458 1292,474"/>
-        <polygon id="a3w-rh2" points="1192.7,637.9 1177.8,628.1 1191.7,620.1"/>
-        <polygon id="a3w-rh3" points="1383.3,624.1 1382.2,641.9 1368.3,633.9"/>
+        <polygon points="0,0 -12,-6 -12,6" transform="translate(1394 576) rotate(-90)"/>
+        <polygon points="0,0 -12,-6 -12,6" transform="translate(1229 671.3) rotate(30)"/>
+        <polygon points="0,0 -12,-6 -12,6" transform="translate(1229 480.7) rotate(150)"/>
       </g>
     </g>
     <!-- warm Atlantic air (schematic): in off the ocean east of the low, curling CCW across its north side to the north-west.
