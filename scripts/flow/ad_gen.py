@@ -233,6 +233,17 @@ def open_clip(page, clip):
         if (!e) return null; e.scrollIntoView({block: 'center'}); const r = e.getBoundingClientRect();
         return [Math.round(r.left + r.width / 2), Math.round(r.top + r.height / 2)]; }"""
     pos = page.evaluate(js, clip)
+    if not pos and re.fullmatch(r"[0-9a-f]{8}-[0-9a-f-]{27}", clip):  # a uuid opens straight in the scene editor
+        page.goto(f"{PROJECT}/edit/{clip}", wait_until="domcontentloaded")
+        page.wait_for_timeout(10000)
+        return bool(page.locator('button[aria-label="Download media"]').count())
+    for _ in range(40 if not pos else 0):  # a grid token deeper than the ~8 tiles Flow keeps in the DOM: scroll to it
+        page.mouse.move(600, 600)
+        page.mouse.wheel(0, 600)
+        page.wait_for_timeout(1500)
+        pos = page.evaluate(js, clip)
+        if pos:
+            break
     if not pos:
         return False
     page.wait_for_timeout(1500)
@@ -305,10 +316,12 @@ with sync_playwright() as p:
         if not page.locator('button[aria-label="Start generation"]').count():
             raise RuntimeError(f"not in the Flow editor ({page.url}); nothing spent")
         # no send, no spend: `--download-top N` fetches the top N clips now; `--after <clip id>` waits for one clip to
-        # land above that clip (a shot approved by an earlier run), then fetches it
+        # land above that clip (a shot approved by an earlier run), then fetches it; `--clip <id> [<id> ...]` fetches those
+        # clips now (a uuid from the scene editor, or a grid token), e.g. a paid clip whose run crashed before the save
         mode = sys.argv[2] if len(sys.argv) > 3 else ""
+        CLIPS = sys.argv[3:] if mode == "--clip" else []
         TOP = int(sys.argv[3]) if mode == "--download-top" else 0
-        known = {sys.argv[3]} if mode == "--after" else {t[2] for t in video_tiles(page)}
+        known = {sys.argv[3]} if mode == "--after" else set() if CLIPS else {t[2] for t in video_tiles(page)}
         log("clips in view before", sorted(known), "mode", mode or "send")
         fails_before = failed_cards(page)
         expect = CFG["count"] * CFG["credits_per_video"]
@@ -384,9 +397,9 @@ with sync_playwright() as p:
             page.wait_for_timeout(8000)
 
         # wait for the approved videos to land, then download the newest ones at 720p original
-        target = TOP or (1 if mode == "--after" else approved * CFG["count"])
-        end = time.time() + 1500
-        new = []
+        target = len(CLIPS) or TOP or (1 if mode == "--after" else approved * CFG["count"])
+        end = time.time() + (0 if CLIPS else 1500)  # --clip: no wait, the ids are known
+        new = list(CLIPS)
         checked = False
         # poll the open page; reloading every minute got the profile logged out (5 Oct 26). Every 5th empty poll the grid
         # is opened afresh: Buffalo ins-paul-1 (28 Oct 26) polled 0 for 21 min in send mode, then an --after run that
