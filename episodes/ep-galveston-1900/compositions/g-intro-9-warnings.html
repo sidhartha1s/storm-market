@@ -102,7 +102,8 @@ window.__timelines = window.__timelines || {};
 
   /* 7TH @4.74: tile 7 scales to 1.08, the others dim to 0.6 */
   tl.to(P+"t7", {scale:1.08, duration:0.4, ease:"power3.out"}, 4.74);
-  tl.to([P+"t4", P+"t5", P+"t6", P+"t8"], {autoAlpha:0.6, duration:0.4, ease:"power2.out"}, 4.74);
+  /* dim by brightness, not alpha, so the tiles stay opaque over the page */
+  tl.to([P+"t4", P+"t5", P+"t6", P+"t8"], {filter:"brightness(0.65)", duration:0.4, ease:"power2.out"}, 4.74);
 
   /* storm @6.44: STORM WARNING band wipes in from the left over 0.4 s; its text is up on warning @6.62 */
   tl.to(P+"band", {scaleX:1, duration:0.4, ease:"power2.out"}, 6.44);
