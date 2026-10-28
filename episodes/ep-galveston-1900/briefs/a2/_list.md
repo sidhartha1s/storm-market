@@ -15,8 +15,6 @@ Briefs written from `acts/a2.md` (locked, graded) and `audio/a2-s<n>.words.json`
 | g-a2-9-sept4-map | A2-S8 (whole) | NOAA weather map of 4 Sept 1900: Galveston pin, dashed Washington arrow to south Florida, Belen arrow northwest into the Gulf, three chips | DEEP | Opus 5.5 high | official `north-korea-locked-down` (map push, pop-up label); arrows as `g-intro-4-wire-map` | NOAA 4 Sept 1900 weather map crop (inside the comp, a still) |
 | g-a2-10-paul-panel | A2-S9 (whole) | panel beside Paul: the 4 Sept map with both arrows; chip 'NOT SEVERE IN THE WEST INDIES' / Stockman, MWR | standard | Sonnet 5.5 high | `library/inhouse/quote-card.html`; panel per `references/mg-quickref.md` RHS panel (narrowed) | `ins-paul-3` (not generated; start frame stand-in `media/paul/paul-start-frame-omni-standin.jpg`) |
 
-(The "g-a2-6 note" row is blank on purpose: ignore it. Ten graphics: g-a2-1 to g-a2-10.)
-
 ## Changes from the Picture lines (the orchestrator decides; each brief says why)
 1. A2-S1 popfig "HAVANA · CUBA" becomes the map pin label "Havana, Cuba": popfigs carry dates and figures only and never sit over a map comp (mg-quickref "Palette and surfaces"; the intro made the same change).
 2. "Galveston island graphic" (A2-S1, S4, S7) is the Galveston pin and label on the shared plate, as in g-intro-4: the island cross-section (g-intro-6) is a different scale and cannot sit on a Gulf map.
