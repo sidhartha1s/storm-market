@@ -1,0 +1,223 @@
+<template>
+<style>
+  #g-a2-3-vines-signs-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a2-3-vines-signs-diag { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ga23-lab { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#93a3b2; letter-spacing:3px; }
+  .ga23-hide { opacity:0; visibility:hidden; }
+
+  /* source line: top-left glass (_list "Placement") */
+  #g-a2-3-vines-signs-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* Viñes paper card, state A box: left 410, top 375, 1100 x 330 (state B by GSAP: scale 0.45 from top-left to x 1330, y 54) */
+  #g-a2-3-vines-signs-card { position:absolute; left:410px; top:375px; width:1100px; height:330px; opacity:0; visibility:hidden; }
+  #g-a2-3-vines-signs-cardin { position:absolute; left:0; top:0; width:1100px; height:330px; box-sizing:border-box;
+    background:#f4f0e6; border:1px solid rgba(42,38,34,0.25); border-radius:6px; box-shadow:0 18px 40px rgba(0,0,0,0.45); }
+  #g-a2-3-vines-signs-eyebrow { position:absolute; left:48px; top:64px; font-family:Arial, sans-serif; font-weight:700;
+    font-size:22px; line-height:26px; color:#6b6257; letter-spacing:6px; white-space:nowrap; }
+  #g-a2-3-vines-signs-name { position:absolute; left:48px; top:116px; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:52px; line-height:62px; color:#2a2622; white-space:nowrap; }
+  #g-a2-3-vines-signs-role { position:absolute; left:48px; top:204px; font-family:Georgia, 'Times New Roman', serif; font-style:italic;
+    font-size:30px; line-height:40px; color:#6b6257; white-space:nowrap; opacity:0; visibility:hidden; }
+
+  /* chip: centred at x 960, top 840; the wrapper floats, the inner card enters and exits */
+  #g-a2-3-vines-signs-chipwrap { position:absolute; left:0; top:840px; width:1920px; text-align:center; }
+  #g-a2-3-vines-signs-chip { display:inline-block; padding:18px 40px; border-radius:28px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:52px; color:#f2f5f8; white-space:nowrap; }
+</style>
+<div id="g-a2-3-vines-signs-root" data-composition-id="g-a2-3-vines-signs" data-width="1920" data-height="1080">
+  <svg id="g-a2-3-vines-signs-diag" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g-a2-3-vines-signs-seagrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="rgb(90,118,143)" stop-opacity="0.18"/>
+        <stop offset="1" stop-color="rgb(90,118,143)" stop-opacity="0"/>
+      </linearGradient>
+      <clipPath id="g-a2-3-vines-signs-swclip"><rect x="400" y="690" width="930" height="80"/></clipPath>
+    </defs>
+
+    <!-- sea body y 700 to 1000, sea surface y 700 from x 160 to 1560 (length 1400, dash 1401) -->
+    <rect id="g-a2-3-vines-signs-seabody" class="ga23-hide" x="160" y="700" width="1400" height="300" fill="url(#g-a2-3-vines-signs-seagrad)"/>
+    <path id="g-a2-3-vines-signs-sealine" d="M160 700 L1560 700" fill="none" stroke="#5a768f" stroke-width="3"
+          stroke-dasharray="1401" stroke-dashoffset="1401"/>
+
+    <!-- long swell: amplitude 16, wavelength 260, centre y 730, clipped to x 400 to 1330.
+         draw path starts at the storm side (x 1330) and runs left; length 1080.6 -> dash 1082.
+         roll path starts one wavelength further right (x 1590), same phase at x 1330; group x 0 -> -260 per cycle is seamless -->
+    <g clip-path="url(#g-a2-3-vines-signs-swclip)">
+      <path id="g-a2-3-vines-signs-swdraw" d="M1330 730 Q1265 698 1200 730 T1070 730 T940 730 T810 730 T680 730 T550 730 T420 730 T290 730"
+            fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round" stroke-dasharray="1082" stroke-dashoffset="1082"/>
+      <g id="g-a2-3-vines-signs-swroll" class="ga23-hide">
+        <path d="M1590 730 Q1525 698 1460 730 T1330 730 T1200 730 T1070 730 T940 730 T810 730 T680 730 T550 730 T420 730 T290 730"
+              fill="none" stroke="#7fb2e5" stroke-width="4" stroke-linecap="round"/>
+      </g>
+    </g>
+
+    <!-- hurricane mass: 7 ellipses inside x 1330 to 1560, y 330 to 690; group pivot (1445, 510) -->
+    <g id="g-a2-3-vines-signs-mass" class="ga23-hide">
+      <ellipse id="g-a2-3-vines-signs-e1" cx="1450" cy="600" rx="108" ry="84" fill="#2a3644"/>
+      <ellipse id="g-a2-3-vines-signs-e2" cx="1402" cy="500" rx="70" ry="90" fill="#4a5560"/>
+      <ellipse id="g-a2-3-vines-signs-e3" cx="1494" cy="472" rx="64" ry="108" fill="#2a3644"/>
+      <ellipse id="g-a2-3-vines-signs-e4" cx="1440" cy="412" rx="78" ry="74" fill="#4a5560"/>
+      <ellipse id="g-a2-3-vines-signs-e5" cx="1386" cy="620" rx="50" ry="60" fill="#4a5560"/>
+      <ellipse id="g-a2-3-vines-signs-e6" cx="1508" cy="630" rx="47" ry="54" fill="#4a5560"/>
+      <ellipse id="g-a2-3-vines-signs-e7" cx="1455" cy="522" rx="60" ry="70" fill="#2a3644"/>
+    </g>
+
+    <!-- cloud streaks: each path starts at its storm-side (right) end, so the dash draw runs right to left.
+         lengths 200.52 / 190.69 / 160.20 / 200.52 / 120.27 -> dash 202 / 192 / 162 / 202 / 122 -->
+    <g fill="none" stroke="#93a3b2" stroke-width="3" stroke-linecap="round" stroke-opacity="0.8">
+      <path id="g-a2-3-vines-signs-c1" d="M1300 340 Q1210 326 1100 332" stroke-dasharray="202" stroke-dashoffset="202"/>
+      <path id="g-a2-3-vines-signs-c2" d="M1150 300 Q1060 284 960 292" stroke-dasharray="192" stroke-dashoffset="192"/>
+      <path id="g-a2-3-vines-signs-c3" d="M980 350 Q900 342 820 346" stroke-dasharray="162" stroke-dashoffset="162"/>
+      <path id="g-a2-3-vines-signs-c4" d="M860 270 Q770 256 660 264" stroke-dasharray="202" stroke-dashoffset="202"/>
+      <path id="g-a2-3-vines-signs-c5" d="M700 318 Q640 310 580 314" stroke-dasharray="122" stroke-dashoffset="122"/>
+    </g>
+
+    <!-- barometer: centre (330, 470), r 130; 9 ticks every 33.75 deg from -135 to +135, no numbers; group pivot = dial centre -->
+    <g id="g-a2-3-vines-signs-baro" class="ga23-hide">
+      <circle cx="330" cy="470" r="130" fill="#0b1016" stroke="#d8a13a" stroke-width="6"/>
+      <g stroke="#93a3b2" stroke-width="4" stroke-linecap="round">
+        <line x1="253.6" y1="546.4" x2="242.3" y2="557.7"/>
+        <line x1="224.1" y1="491.1" x2="208.4" y2="494.2"/>
+        <line x1="230.2" y1="428.7" x2="215.4" y2="422.5"/>
+        <line x1="270.0" y1="380.2" x2="261.1" y2="366.9"/>
+        <line x1="330.0" y1="362.0" x2="330.0" y2="346.0"/>
+        <line x1="390.0" y1="380.2" x2="398.9" y2="366.9"/>
+        <line x1="429.8" y1="428.7" x2="444.6" y2="422.5"/>
+        <line x1="435.9" y1="491.1" x2="451.6" y2="494.2"/>
+        <line x1="406.4" y1="546.4" x2="417.7" y2="557.7"/>
+      </g>
+      <!-- needle drawn at rest, -20 deg from up (tip 294.1, 371.3); GSAP rotation is the tremble delta about svgOrigin 330 470 -->
+      <g id="g-a2-3-vines-signs-needle">
+        <line x1="330" y1="470" x2="294.1" y2="371.3" stroke="#f2f5f8" stroke-width="4" stroke-linecap="round"/>
+      </g>
+      <circle cx="330" cy="470" r="9" fill="#d8a13a"/>
+    </g>
+
+    <!-- diagram labels (HUD, never on a mover) -->
+    <text id="g-a2-3-vines-signs-lhur" class="ga23-lab ga23-hide" x="1560" y="312" text-anchor="end">Hurricane</text>
+    <text id="g-a2-3-vines-signs-lcld" class="ga23-lab ga23-hide" x="520" y="232">Clouds</text>
+    <text id="g-a2-3-vines-signs-lswl" class="ga23-lab ga23-hide" x="760" y="800">Long swell</text>
+    <text id="g-a2-3-vines-signs-lbar" class="ga23-lab ga23-hide" x="330" y="640" text-anchor="middle">Barometer</text>
+  </svg>
+
+  <div id="g-a2-3-vines-signs-src">Belen history (1925, reprinted) &middot; Wikipedia &middot; NOAA AOML, 2015</div>
+
+  <div id="g-a2-3-vines-signs-card">
+    <div id="g-a2-3-vines-signs-cardin">
+      <div id="g-a2-3-vines-signs-eyebrow">Belen Observatory &middot; Havana</div>
+      <div id="g-a2-3-vines-signs-name">P. Benito Vi&ntilde;es, S.J.</div>
+      <div id="g-a2-3-vines-signs-role">Director from 1870</div>
+    </div>
+  </div>
+
+  <div id="g-a2-3-vines-signs-chipwrap">
+    <div id="g-a2-3-vines-signs-chip">1875: A WARNING BEFORE THE STORM</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* comp-local time = a2-s2.words.json time (host A2-S2 0.00 to 17.74; "People" 17.74 is g-a2-4's first word) */
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a2-3-vines-signs-";
+
+  /* transforms and pivots at 0 (start-hidden states are also in CSS) */
+  tl.set(P+"card", { x: 0, y: 24, scale: 1, transformOrigin: "0 0" }, 0);
+  tl.set(P+"cardin", { y: 0 }, 0);
+  tl.set(P+"name", { scale: 1, transformOrigin: "left center" }, 0);
+  tl.set(P+"src", { y: 0 }, 0);
+  tl.set(P+"chipwrap", { y: 0 }, 0);
+  tl.set(P+"chip", { x: 0, y: 24, scale: 0.94, transformOrigin: "50% 50%" }, 0);
+  tl.set(P+"mass", { x: 80, scale: 0.9, svgOrigin: "1445 510" }, 0);
+  tl.set(P+"e1", { rotation: 0, svgOrigin: "1450 600" }, 0);
+  tl.set(P+"e2", { rotation: 0, svgOrigin: "1402 500" }, 0);
+  tl.set(P+"e3", { rotation: 0, svgOrigin: "1494 472" }, 0);
+  tl.set(P+"e4", { rotation: 0, svgOrigin: "1440 412" }, 0);
+  tl.set(P+"e5", { rotation: 0, svgOrigin: "1386 620" }, 0);
+  tl.set(P+"e6", { rotation: 0, svgOrigin: "1508 630" }, 0);
+  tl.set(P+"e7", { rotation: 0, svgOrigin: "1455 522" }, 0);
+  tl.set([P+"c1", P+"c2", P+"c3", P+"c4", P+"c5"], { x: 0 }, 0);
+  tl.set(P+"swroll", { x: 0 }, 0);
+  tl.set(P+"baro", { scale: 0.6, svgOrigin: "330 470" }, 0);
+  tl.set(P+"needle", { rotation: 0, svgOrigin: "330 470" }, 0);
+  tl.set([P+"lhur", P+"lcld", P+"lswl", P+"lbar"], { y: 8 }, 0);
+  tl.set(P+"role", { y: 10 }, 0);
+
+  /* 0.00: card A rises in, eyebrow and name visible; source line in; both float +-4 (2.4 s legs) to the cut */
+  tl.fromTo(P+"card", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 0);
+  tl.fromTo(P+"src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 0);
+  tl.to(P+"src", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0.4);      /* ends 17.20 */
+  tl.to(P+"cardin", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0.5);   /* ends 17.30 */
+
+  /* VINES @0.78 ("Father"): name pulses once */
+  tl.to(P+"name", { scale: 1.03, duration: 0.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.78);
+
+  /* 1870 @3.96: role line in */
+  tl.fromTo(P+"role", { y: 10, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 3.96);
+
+  /* He @5.24: card A to state B (box x 1330 to 1825, y 54 to 202.5): x +920, y -321, scale 0.45 from the top-left corner */
+  tl.to(P+"card", { x: 920, y: -321, scale: 0.45, duration: 0.7, ease: "power3.inOut" }, 5.24);
+
+  /* signs @6.20: sea line draws left to right, sea body fades in */
+  tl.fromTo(P+"sealine", { strokeDashoffset: 1401 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 6.20);
+  tl.fromTo(P+"seabody", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power1.out" }, 6.20);
+
+  /* ahead @7.84: hurricane mass grows in from the right; itself. @8.16: label */
+  tl.fromTo(P+"mass", { x: 80, scale: 0.9, autoAlpha: 0, svgOrigin: "1445 510" },
+                      { x: 0, scale: 1, autoAlpha: 1, svgOrigin: "1445 510", duration: 0.6, ease: "power3.out" }, 7.84);
+  tl.fromTo(P+"lhur", { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 8.16);
+  /* churn: each ellipse rocks +-3 deg about its own centre, finite yoyo, every one ends by 17.48 */
+  tl.to(P+"e1", { rotation: 3,  duration: 1.9,  ease: "sine.inOut", yoyo: true, repeat: 4 }, 7.90);
+  tl.to(P+"e2", { rotation: -3, duration: 2.36, ease: "sine.inOut", yoyo: true, repeat: 3 }, 7.95);
+  tl.to(P+"e3", { rotation: 3,  duration: 1.56, ease: "sine.inOut", yoyo: true, repeat: 5 }, 8.00);
+  tl.to(P+"e4", { rotation: -3, duration: 1.89, ease: "sine.inOut", yoyo: true, repeat: 4 }, 7.92);
+  tl.to(P+"e5", { rotation: 3,  duration: 2.33, ease: "sine.inOut", yoyo: true, repeat: 3 }, 8.05);
+  tl.to(P+"e6", { rotation: -3, duration: 1.9,  ease: "sine.inOut", yoyo: true, repeat: 4 }, 7.98);
+  tl.to(P+"e7", { rotation: 3,  duration: 1.56, ease: "sine.inOut", yoyo: true, repeat: 5 }, 8.02);
+
+  /* CLOUDS @9.14: streaks draw one by one from the storm side, 0.12 s apart; each then drifts left 8 px/s to 17.74; label @9.30 */
+  [["c1", 9.14], ["c2", 9.26], ["c3", 9.38], ["c4", 9.50], ["c5", 9.62]].forEach(function(c) {
+    const len = { c1: 202, c2: 192, c3: 162, c4: 202, c5: 122 }[c[0]];
+    tl.fromTo(P+c[0], { strokeDashoffset: len }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, c[1]);
+    tl.to(P+c[0], { x: -8 * (17.74 - c[1]), duration: 17.74 - c[1], ease: "none" }, c[1]);
+  });
+  tl.fromTo(P+"lcld", { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 9.30);
+
+  /* SWELL @10.32: swell draws right to left 10.32 to 10.92; label @10.50 */
+  tl.fromTo(P+"swdraw", { strokeDashoffset: 1082 }, { strokeDashoffset: 0, duration: 0.6, ease: "power1.inOut" }, 10.32);
+  tl.fromTo(P+"lswl", { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 10.50);
+  /* 10.92: swap to the roll path (same phase in the clip), then roll right to left one wavelength per 2.2733 s, 3 cycles, ends 17.74 */
+  tl.set(P+"swroll", { autoAlpha: 1 }, 10.92);
+  tl.set(P+"swdraw", { autoAlpha: 0 }, 10.92);
+  tl.fromTo(P+"swroll", { x: 0 }, { x: -260, duration: 2.2733, ease: "none", repeat: 2 }, 10.92);
+
+  /* BAROMETER @11.28: dial pops in; label @11.45; needle trembles +-6 deg about its rest from 11.60 (never sweeps), ends 17.45 */
+  tl.fromTo(P+"baro", { scale: 0.6, autoAlpha: 0, svgOrigin: "330 470" },
+                      { scale: 1, autoAlpha: 1, svgOrigin: "330 470", duration: 0.45, ease: "back.out(1.6)" }, 11.28);
+  tl.fromTo(P+"lbar", { y: 8, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 11.45);
+  tl.to(P+"needle", { rotation: -6, svgOrigin: "330 470", duration: 0.15, ease: "sine.out" }, 11.60);
+  tl.fromTo(P+"needle", { rotation: -6, svgOrigin: "330 470" },
+                        { rotation: 6, svgOrigin: "330 470", duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 18 }, 11.75);
+
+  /* 1875 @12.40: chip enters, then floats */
+  tl.fromTo(P+"chip", { y: 24, scale: 0.94, autoAlpha: 0 }, { y: 0, scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(1.6)" }, 12.40);
+  tl.to(P+"chipwrap", { y: -4, duration: 2.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 12.85);
+
+  /* hurricane @15.36: storm mass nudges left 20 px, it is coming */
+  tl.to(P+"mass", { x: -20, duration: 0.8, ease: "sine.inOut" }, 15.36);
+
+  /* arrived. @16.74: hold; chip exits 17.14 to 17.74; diagram layer fades 17.39 to 17.74 (card B, source and ground carry into g-a2-4) */
+  tl.to(P+"chip", { y: -24, autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 17.14);
+  tl.fromTo(P+"diag", { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.35, ease: "power1.in" }, 17.39);
+
+  window.__timelines["g-a2-3-vines-signs"] = tl;
+})();
+</script>
+</template>
