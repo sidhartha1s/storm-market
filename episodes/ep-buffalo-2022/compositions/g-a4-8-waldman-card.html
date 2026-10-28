@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4-8-waldman-card (A4-S7, standard): name card PFC. MATTHEW WALDMAN / 105TH MILITARY POLICE CO., inset map card with an
+  ERIE COUNTY MEDICAL CENTER pin, chip BORN CHRISTMAS EVE, source pill. Overlay on the DVIDS 7572836 still (D2, not Waldman).
+  Comp duration 10.40 s. Cues: seconds from the START of A4-S7 (audio/a4-s7.words.json).
+  Inset map = g-a4-10 projection (g-a4-10 not built): north up, cos 42.6, 1300 px/deg lat, 956.9 px/deg lon, datum
+    (78.79 W, 42.77 N) = (960,540), translate (+577.9,+38.4). The paths are the g-intro-4-morning-map paths (cos 42.6,
+    397.3 px/deg lon, 540 px/deg lat, datum 79.3 W / 42.6 N), carried by ONE static affine group
+    matrix(2.40851 0 0 2.40741 -1262.29 -500.60) = exact old -> new projection plus the translate.
+    ECMC 42.926 N, 78.830 W -> old (1146.7, 364.0) -> screen (1499.5, 375.6); pin drawn at (1500, 375).
+  Water, Lake Erie + Niagara River + Grand Island, and Erie County outline: copied from g-intro-4-morning-map (Natural Earth 10m lakes, Census 36029).
+  City of Buffalo outline: Census cb_2022_36_place_500k (GEOID 3611000) is NOT on disk. The outline below is a hand-drawn
+    APPROXIMATION in old coords (ECMC inside it, north-east of downtown). Replace its d with the real Census path.
+  The card names no one in the photo: no pointer, no photo slot.
+-->
+<template>
+<style>
+  #g-a4-8-waldman-card-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  #wc-float { position:absolute; inset:0; }
+  .wc-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .wc-card { position:absolute; left:110px; bottom:110px; display:table; box-sizing:border-box; padding:22px 34px; border-radius:28px; opacity:0; visibility:hidden; }
+  .wc-l1 { display:block; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:58px; color:#f2f5f8; }
+  .wc-l2 { display:block; white-space:nowrap; margin-top:8px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:30px; line-height:36px; color:#e8c56a; opacity:0; visibility:hidden; }
+  .wc-row { display:flex; flex-direction:row; align-items:baseline; white-space:pre; }
+  #wc-born { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:58px; color:#f2f5f8; }
+  #wc-xmas { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:38px; line-height:44px; color:#e8c56a; opacity:0; visibility:hidden; }
+  .wc-src { position:absolute; left:110px; bottom:54px; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap; border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  #wc-map { position:absolute; left:1200px; top:150px; width:600px; height:450px; box-sizing:border-box; overflow:hidden; border-radius:20px;
+    background:rgba(11,16,22,0.92); border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  #wc-svg { position:absolute; left:-1200px; top:-150px; width:1920px; height:1080px; overflow:visible; }
+  /* pin: card-local (300,225) = screen (1500,375) */
+  #wc-pinwrap { position:absolute; left:300px; top:225px; width:0; height:0; opacity:0; visibility:hidden; }
+  #wc-ring { position:absolute; left:-9px; top:-9px; width:18px; height:18px; box-sizing:border-box; border-radius:50%; border:2px solid #e74c3c; opacity:0; }
+  #wc-pin { position:absolute; left:-9px; top:-9px; width:18px; height:18px; border-radius:50%; background:#e74c3c; }
+  #wc-ecmc-w { position:absolute; left:0; top:260px; width:600px; text-align:center; opacity:0; visibility:hidden; }
+  .wc-ecmc { display:inline-block; padding:2px 10px; background:rgba(11,16,22,0.6); font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#f2f5f8; white-space:nowrap; }
+  #wc-buf { position:absolute; left:230px; top:305px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:24px; letter-spacing:3px; color:#d8a13a; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-8-waldman-card-root" data-composition-id="g-a4-8-waldman-card" data-width="1920" data-height="1080">
+  <div id="wc-float">
+    <div class="wc-card wc-glass" id="wc-name">
+      <span class="wc-l1" id="wc-n1">PFC. MATTHEW WALDMAN</span>
+      <span class="wc-l2" id="wc-n2">105TH MILITARY POLICE CO.</span>
+    </div>
+    <div id="wc-map">
+      <svg id="wc-svg" viewBox="0 0 1920 1080">
+        <g transform="matrix(2.40851 0 0 2.40741 -1262.29 -500.60)">
+          <rect x="-30" y="-30" width="1980" height="1140" fill="#15202b"/>
+          <!-- Lake Erie + Niagara River (ne_10m_lakes; inner ring = Grand Island) -->
+          <path fill="#04070a" fill-rule="evenodd" stroke="#5a768f" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M146.2,1010.1 274.2,947.5 301.6,942.2 311.7,935.7 325.9,932.7 328.3,930.6 333.2,924.3 336.5,921.5 343.8,919.3 359.1,917.1 371.8,907.7 495.1,865.6 501.4,860.2 507.4,856.5 532.6,851.3 598.2,814.1 609.6,804.1 613.1,803.0 617.3,800.1 622.5,787.7 632.5,781.2 638.9,774.4 646.3,769.9 655.1,773.7 651.4,778.6 647.2,780.6 637.5,780.9 635.5,782.3 630.5,789.5 628.1,791.8 628.1,796.0 637.8,793.0 657.3,780.1 674.3,773.7 692.2,758.5 708.5,753.1 726.0,740.0 780.5,717.1 788.6,710.5 799.7,705.1 829.5,681.0 856.6,670.6 863.5,664.2 869.9,656.7 892.1,644.2 910.8,618.6 922.6,612.5 926.6,608.1 932.8,599.5 936.9,597.0 956.7,588.7 977.5,574.9 985.8,563.3 1012.0,555.3 1017.2,552.5 1019.3,550.2 1024.1,542.3 1030.7,527.7 1032.4,525.4 1040.9,521.5 1047.3,512.1 1055.6,492.2 1066.7,478.4 1081.6,469.2 1112.6,455.0 1120.5,449.4 1126.6,442.5 1130.5,432.9 1131.8,419.9 1131.8,407.3 1131.1,402.6 1128.8,395.7 1120.4,379.5 1118.3,373.6 1115.3,349.8 1113.6,346.8 1106.2,339.8 1104.5,335.0 1107.8,322.9 1121.7,308.1 1123.7,296.2 1113.0,282.7 1068.8,277.3 1052.9,266.6 1049.2,276.0 1057.9,284.1 1066.5,294.1 1062.3,309.1 1062.4,318.6 1071.3,329.6 1090.9,344.5 1108.2,353.3 1112.8,360.8 1108.7,371.9 1101.7,378.6 1092.9,383.5 1048.7,394.0 1044.5,397.8 1041.5,404.9 1034.3,403.0 1017.2,392.4 998.6,388.7 932.8,392.5 901.6,388.4 896.3,389.8 892.8,393.2 890.0,397.0 886.7,399.9 882.3,401.0 849.1,398.7 838.3,400.3 830.9,405.4 823.8,407.6 802.8,398.3 794.2,395.7 787.2,397.8 771.3,405.7 762.9,407.5 747.6,414.5 731.6,414.5 607.3,436.1 589.8,444.0 567.5,466.8 561.3,470.1 555.4,474.9 548.9,497.0 543.7,503.3 539.6,501.6 534.7,492.4 531.2,494.1 528.1,497.1 521.4,501.3 505.5,519.9 501.6,530.2 505.7,540.2 546.4,538.3 551.3,545.9 562.7,549.4 643.9,555.5 663.6,562.6 658.7,562.3 652.6,563.3 646.8,565.3 638.3,571.0 632.3,570.1 621.3,566.3 581.9,562.6 550.2,552.8 539.5,551.2 478.8,555.0 461.9,549.6 452.5,545.0 402.3,533.7 381.7,521.5 372.4,520.3 311.4,504.0 193.6,502.4 141.9,513.3 118.8,529.1 102.6,535.1 94.3,539.7 83.8,549.4 70.0,555.3 65.9,558.7 59.2,566.8 32.2,592.8 23.6,603.3 -30.0,645.0 -30.0,1110.0 31.3,1110.0 146.2,1010.1M1080.0,328.8 1074.5,321.6 1070.4,318.3 1070.0,314.8 1075.3,296.5 1074.6,288.7 1082.0,288.3 1088.9,286.4 1095.5,285.7 1101.7,288.7 1112.0,292.4 1115.5,297.3 1113.9,304.0 1093.4,336.7 1086.5,335.3 1080.0,328.8"/>
+          <!-- US-Canada border, dashed -->
+          <path fill="none" stroke="#2a3644" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke" d="M-30.0,880.2 174.7,751.3 583.9,666.6 1071.5,430.5 1093.9,410.3 1111.4,383.8 1115.3,361.7 1112.9,352.3 1104.5,345.6 1095.1,342.2 1085.7,336.9 1075.9,328.8 1070.4,322.8 1066.5,316.8 1068.0,305.4 1070.4,297.3 1069.9,292.6 1067.0,287.9 1057.1,276.5 1054.2,271.9 1053.3,266.8 1053.1,259.1 1054.8,253.6 1057.1,249.2 1058.7,244.7 1059.9,231.9 1057.8,183.4 1056.0,174.0 1042.8,139.0 1009.9,73.2 1178.2,-9.2 1203.1,-17.2 1936.7,-13.8 1950.0,-21.8"/>
+          <!-- Erie County NY, cb_2022_us_county_500k GEOID 36029, 1.5 px #93a3b2 -->
+          <path fill="none" stroke="#93a3b2" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M1024.8,556.3 1027.3,545.3 1028.2,544.7 1029.0,544.9 1030.8,543.1 1031.6,538.6 1033.6,538.0 1034.9,532.8 1040.2,528.1 1042.1,523.9 1043.7,524.1 1045.5,522.9 1047.9,518.4 1050.1,518.4 1053.9,515.8 1054.5,503.1 1055.2,501.6 1057.7,499.1 1058.5,495.2 1060.6,490.7 1062.1,490.6 1067.0,487.8 1068.4,488.2 1070.6,486.9 1071.4,485.7 1073.2,485.7 1076.7,483.5 1078.7,484.0 1082.7,483.1 1091.3,476.8 1092.0,474.9 1093.4,474.0 1095.0,473.9 1101.4,468.7 1104.8,468.4 1111.7,465.9 1115.7,461.5 1118.0,460.2 1126.7,452.3 1127.8,450.6 1129.1,450.3 1132.5,447.3 1134.9,443.0 1137.4,440.7 1137.4,435.1 1136.2,431.9 1135.1,431.6 1130.1,419.8 1130.1,417.9 1130.7,416.4 1131.6,416.0 1131.5,414.2 1133.3,415.7 1134.9,414.7 1134.5,411.8 1135.6,411.1 1132.5,403.4 1130.0,403.9 1122.9,390.6 1123.7,389.4 1122.2,386.2 1116.5,378.4 1116.7,365.4 1115.3,360.0 1111.4,352.7 1106.1,347.8 1094.4,346.8 1089.1,340.9 1074.6,332.0 1071.3,326.8 1070.0,315.2 1074.5,308.4 1077.1,298.6 1079.4,293.7 1076.4,288.5 1071.5,287.3 1075.4,286.4 1099.1,287.4 1100.9,287.8 1114.3,294.4 1120.4,300.2 1121.7,303.6 1122.8,312.1 1126.1,311.0 1126.9,312.2 1128.4,312.4 1131.3,311.4 1134.3,311.6 1136.2,312.1 1138.3,313.6 1142.1,313.8 1143.0,313.5 1145.4,311.0 1146.7,308.0 1148.6,305.8 1148.0,302.6 1145.8,298.1 1146.2,296.9 1147.1,296.3 1153.1,296.1 1155.7,295.1 1156.8,294.2 1155.8,291.0 1156.2,289.9 1158.8,288.1 1163.9,288.1 1167.2,288.7 1171.0,286.2 1174.9,285.7 1178.0,286.6 1180.4,286.3 1181.2,285.7 1185.0,278.5 1187.6,277.5 1188.8,277.9 1190.8,280.2 1192.7,279.1 1194.6,279.4 1195.4,277.1 1199.6,277.4 1201.8,276.1 1203.4,277.3 1203.4,278.4 1204.9,280.5 1205.6,280.7 1206.4,278.3 1208.2,278.7 1212.4,277.3 1214.9,278.0 1218.9,280.5 1219.6,280.4 1219.6,277.8 1218.6,276.9 1219.3,275.6 1221.5,276.2 1221.9,275.0 1221.5,271.4 1221.9,271.5 1223.8,273.6 1224.5,273.2 1226.2,273.5 1225.8,274.5 1225.1,274.9 1227.5,278.0 1228.8,278.1 1230.6,276.8 1231.5,278.1 1233.1,278.8 1231.3,281.9 1232.0,282.6 1231.6,283.8 1232.5,283.9 1233.4,281.9 1235.8,283.2 1237.4,282.6 1237.5,283.0 1235.4,284.4 1235.5,284.8 1236.5,285.1 1237.6,284.1 1237.7,284.9 1238.4,285.1 1239.8,284.9 1240.0,286.4 1240.5,286.5 1241.3,285.5 1241.7,282.9 1243.6,284.5 1245.0,283.4 1244.4,282.5 1245.2,282.2 1246.0,280.7 1244.0,278.3 1244.2,277.2 1245.4,276.0 1246.0,276.7 1246.8,276.8 1246.4,278.0 1247.1,278.6 1246.8,279.4 1247.6,280.9 1248.3,280.7 1249.1,279.7 1248.4,279.5 1247.9,277.7 1248.3,277.0 1247.5,276.1 1251.9,276.4 1252.8,273.4 1252.4,272.9 1253.9,271.5 1254.7,271.7 1254.9,272.7 1256.0,272.7 1253.7,275.2 1257.7,273.8 1258.3,272.7 1257.9,271.8 1259.7,270.7 1260.2,271.8 1261.2,271.9 1261.4,273.6 1259.4,273.6 1259.2,275.3 1260.9,276.0 1261.0,274.8 1261.8,275.4 1261.8,276.3 1261.1,276.4 1261.9,276.9 1261.8,277.6 1262.6,277.7 1262.6,276.8 1263.4,277.8 1265.1,276.2 1265.4,276.8 1266.6,276.2 1266.3,275.3 1267.1,275.2 1267.2,276.0 1266.7,276.3 1267.4,276.7 1269.0,276.4 1268.9,275.6 1269.6,276.0 1272.2,275.2 1272.3,274.7 1271.6,274.6 1271.9,272.8 1273.2,272.4 1273.7,271.1 1274.5,272.0 1274.4,273.6 1274.9,273.1 1276.4,273.7 1276.5,274.6 1275.4,273.7 1275.8,274.5 1275.4,275.6 1277.6,275.9 1276.7,277.2 1279.1,277.3 1278.0,278.9 1279.2,279.9 1280.3,279.4 1280.8,279.7 1280.7,278.6 1282.2,279.3 1283.9,277.5 1285.1,278.0 1285.1,278.8 1287.0,278.2 1287.1,277.4 1288.1,278.3 1287.9,279.3 1289.0,278.5 1288.8,279.9 1291.7,277.6 1290.5,276.6 1292.0,276.1 1292.5,316.8 1292.0,395.6 1283.3,395.4 1282.6,442.4 1292.4,442.6 1292.2,489.3 1292.9,526.5 1292.2,574.4 1290.3,576.0 1287.6,575.4 1286.9,576.2 1286.4,575.8 1284.5,576.2 1284.3,575.1 1282.9,575.6 1282.4,575.2 1281.3,577.8 1278.9,577.9 1278.2,579.0 1274.8,579.7 1274.6,579.1 1273.2,579.0 1273.2,580.4 1270.7,582.6 1270.3,583.7 1266.9,582.1 1265.3,582.6 1264.6,583.6 1264.7,584.8 1262.8,584.4 1262.4,586.3 1258.6,584.4 1258.4,585.0 1259.1,585.6 1256.9,586.2 1256.3,587.6 1255.4,588.0 1255.0,586.8 1254.1,586.8 1252.5,589.3 1251.0,588.6 1250.6,587.1 1249.4,587.4 1248.7,588.3 1246.6,587.5 1246.5,586.8 1244.6,586.4 1243.8,587.0 1243.8,588.7 1242.9,589.2 1239.3,587.2 1236.8,588.9 1235.9,588.9 1235.6,589.5 1236.0,590.1 1234.9,590.5 1234.1,592.0 1233.1,592.5 1232.2,591.6 1229.4,591.7 1227.7,594.0 1227.3,595.4 1225.7,595.0 1224.6,595.8 1222.7,595.0 1220.8,597.5 1220.5,598.8 1218.4,598.0 1217.7,598.3 1217.7,599.0 1216.7,599.2 1216.1,598.3 1214.4,598.5 1213.3,598.1 1212.8,599.7 1211.6,600.8 1209.8,600.2 1209.4,601.2 1208.6,601.1 1208.0,602.9 1206.2,602.3 1204.8,605.0 1205.3,605.8 1203.9,607.2 1201.8,606.6 1201.0,609.2 1198.6,608.2 1198.2,607.1 1198.6,605.0 1198.2,602.2 1197.5,601.3 1197.1,601.2 1195.9,602.3 1194.2,602.1 1193.6,602.9 1192.8,602.3 1192.8,601.2 1191.5,601.6 1191.3,602.7 1186.9,603.4 1185.9,605.5 1183.2,604.6 1182.8,605.7 1183.6,607.3 1183.1,608.5 1178.6,608.2 1177.9,611.1 1173.1,609.9 1172.6,610.3 1172.8,610.8 1174.7,611.8 1175.1,613.6 1173.6,614.7 1172.3,614.7 1171.1,613.3 1169.6,612.8 1167.9,613.5 1167.9,615.1 1170.4,615.8 1170.3,617.0 1169.0,617.5 1166.3,618.2 1165.3,617.9 1160.8,614.2 1159.8,614.2 1157.0,616.1 1154.8,616.2 1150.0,620.6 1148.0,620.2 1147.7,621.9 1145.9,621.6 1143.5,624.9 1142.6,624.9 1141.3,623.8 1140.1,623.8 1138.5,624.9 1137.1,624.5 1135.4,625.3 1131.6,625.3 1131.0,626.4 1130.2,626.6 1127.8,625.5 1125.7,627.3 1124.9,627.2 1124.0,625.3 1123.1,625.4 1121.4,626.9 1120.5,626.0 1119.4,622.1 1118.7,621.5 1116.7,623.0 1114.3,622.1 1113.0,624.1 1110.8,625.0 1110.2,624.0 1110.5,621.9 1111.6,621.3 1111.6,619.3 1108.7,616.3 1107.0,615.6 1105.0,613.6 1103.6,611.4 1098.8,611.1 1098.2,609.6 1096.3,608.9 1093.7,601.2 1094.6,597.2 1092.5,597.4 1089.1,592.6 1087.4,592.0 1087.0,590.7 1084.7,591.1 1085.7,589.5 1086.0,587.8 1084.2,586.9 1083.9,585.6 1084.6,583.7 1083.2,581.3 1082.5,578.2 1081.0,576.8 1077.8,576.3 1076.5,574.7 1075.3,575.4 1073.9,575.3 1069.4,572.5 1066.9,572.0 1066.0,570.6 1063.4,573.7 1058.8,572.9 1057.8,574.4 1055.0,573.6 1048.4,569.3 1046.2,569.0 1044.8,567.3 1043.6,567.0 1043.0,566.1 1046.9,564.9 1047.1,564.1 1046.1,563.4 1043.5,563.8 1042.5,563.2 1042.5,562.2 1041.6,561.1 1042.0,559.9 1041.1,559.2 1038.9,560.3 1037.0,559.4 1037.8,557.2 1036.1,556.1 1033.5,556.2 1030.6,558.6 1029.2,558.9Z"/>
+          <!-- City of Buffalo: hand-drawn APPROXIMATION (Census place 3611000 not on disk), 2 px #d8a13a -->
+          <path fill="rgba(216,161,58,.08)" stroke="#d8a13a" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke" d="M1140,420 1132,407 1124,385 1118,362 1118,345 1130,338 1160,342 1163,364 1160,390 1153,410Z"/>
+        </g>
+      </svg>
+      <div id="wc-buf">BUFFALO</div>
+      <div id="wc-ecmc-w"><span class="wc-ecmc" id="wc-ecmc">ERIE COUNTY MEDICAL CENTER</span></div>
+      <div id="wc-pinwrap"><div id="wc-ring"></div><div id="wc-pin"></div></div>
+    </div>
+    <div class="wc-card wc-glass" id="wc-chip">
+      <div class="wc-row"><span id="wc-born">BORN</span><span id="wc-xmas"> CHRISTMAS EVE</span></div>
+    </div>
+    <div class="wc-src wc-glass" id="wc-src">New York National Guard, DVIDS, 6 Jan 2023</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const cards = ["#wc-name", "#wc-chip", "#wc-map", "#wc-src", "#wc-pinwrap", "#wc-ecmc-w", "#wc-buf", "#wc-n2", "#wc-xmas"];
+  tl.set(cards, { autoAlpha: 0 }, 0);
+
+  /* whole-window float so something always moves: 8 legs x 1.3 s = 10.4 s */
+  tl.to("#wc-float", { y: -3, duration: 1.3, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+
+  /* "Private" @1.20: name card + source pill in */
+  tl.fromTo("#wc-name", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 1.2);
+  tl.fromTo("#wc-src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.2);
+  /* "Class" @1.68: line 2 */
+  tl.fromTo("#wc-n2", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35 }, 1.68);
+  /* "He and" @5.52: name card out */
+  tl.to("#wc-name", { x: -80, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 5.2);
+
+  /* "got her" @6.48: map card in, BUFFALO label @6.70 */
+  tl.fromTo("#wc-map", { x: 60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 6.48);
+  tl.fromTo("#wc-buf", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 6.7);
+
+  /* "hospital," @7.02: ECMC pin, label, ring pulse (3 x 1.12 s ends 10.38) */
+  tl.set("#wc-pinwrap", { autoAlpha: 1 }, 7.02);
+  tl.fromTo("#wc-pin", { scale: 0 }, { scale: 1, duration: 0.35, ease: "back.out(1.8)" }, 7.02);
+  tl.fromTo("#wc-ecmc-w", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.35 }, 7.02);
+  tl.fromTo("#wc-ring", { scale: 1, opacity: 0.6 }, { scale: 2.2, opacity: 0, duration: 1.12, ease: "power1.out", repeat: 2, immediateRender: false }, 7.02);
+
+  /* "born" @8.62: chip in; " CHRISTMAS EVE" at "Christmas" ~9.10 */
+  tl.fromTo("#wc-chip", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 8.62);
+  tl.fromTo("#wc-born", { scale: 1.25 }, { scale: 1, duration: 0.4, ease: "power4.out", transformOrigin: "left center" }, 8.62);
+  tl.fromTo("#wc-xmas", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.35 }, 9.1);
+
+  /* after "Eve." @9.36: map, chip, pill out; ends on comp end 10.40 */
+  tl.to(["#wc-map", "#wc-chip", "#wc-src"], { x: 980, autoAlpha: 0, duration: 0.54, ease: "power3.in" }, 9.86);
+
+  window.__timelines["g-a4-8-waldman-card"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
