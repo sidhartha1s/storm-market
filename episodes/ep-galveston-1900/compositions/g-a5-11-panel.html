@@ -88,50 +88,50 @@ window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
   const P = "#g-a5-11-panel-";
-  /* a5-s7.words.json (TTS stand-in, 5.64 s), host starts at 0.00; retime to ins-paul-5's own transcript once generated
-     Put @0.00 | side @0.58 | side, @1.04 | ride @2.06 | no @3.90 | have @4.94 | up. @5.50 | segment end 5.64
-     host = 5.64 + 1.0 land = 6.64 s; timeline 6.64 s */
+  /* ins-paul-5-v2.mp4 whisper words minus data-media-start 0.88 (clip 6.98 s, host starts at clip start)
+     Put @0.26 | side @0.96 | side, @1.42 | ride @2.34 | no @4.72 | known @5.48 | have @5.92 | up. @6.46 | speech end 6.64
+     host = clip 6.98 s; popfig squeezed into the last 0.9 s (the line ends at 6.64) */
   tl.set([P+"pnl", P+"title", P+"tagL", P+"tagR", P+"L", P+"R", P+"labL", P+"labR", P+"bar1", P+"bar2", P+"scrim", P+"pop"], {autoAlpha:0}, 0);
   tl.set(P+"bar1", {scaleX:0, transformOrigin:"left center"}, 0);
   tl.set(P+"bar2", {scaleX:0, transformOrigin:"left center"}, 0);
 
-  /* PUT @0.00: panel slides in */
-  tl.fromTo(P+"pnl", {x:660, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.7, ease:"power3.out"}, 0.0);
-  tl.fromTo(P+"title", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.2);
+  /* PUT @0.26: panel slides in (0.1 to 0.8, settled by "two side") */
+  tl.fromTo(P+"pnl", {x:660, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.7, ease:"power3.out"}, 0.1);
+  tl.fromTo(P+"title", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.3);
 
-  /* SIDE BY SIDE @0.58: left page, then right page 0.2 s later, tags with them */
-  tl.fromTo(P+"L", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.58);
-  tl.fromTo(P+"tagL", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.58);
-  tl.fromTo(P+"R", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.78);
-  tl.fromTo(P+"tagR", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.78);
+  /* SIDE BY SIDE @0.96: left page, then right page 0.2 s later, tags with them */
+  tl.fromTo(P+"L", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.96);
+  tl.fromTo(P+"tagL", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.96);
+  tl.fromTo(P+"R", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.16);
+  tl.fromTo(P+"tagR", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.16);
 
-  /* SIDE, @1.04: both report bars draw 0.3 s apart, page dims around them, label in */
-  tl.to(P+"bar1", {autoAlpha:1, duration:0.1, ease:"none"}, 1.04);
-  tl.to(P+"bar1", {scaleX:1, duration:0.5, ease:"power2.out"}, 1.04);
-  tl.to(P+"bar2", {autoAlpha:1, duration:0.1, ease:"none"}, 1.34);
-  tl.to(P+"bar2", {scaleX:1, duration:0.5, ease:"power2.out"}, 1.34);
-  tl.to(P+"img", {opacity:0.55, duration:0.5, ease:"power2.out"}, 1.04);
-  tl.fromTo(P+"labL", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.04);
+  /* SIDE, @1.42: both report bars draw 0.3 s apart, page dims around them, label in */
+  tl.to(P+"bar1", {autoAlpha:1, duration:0.1, ease:"none"}, 1.42);
+  tl.to(P+"bar1", {scaleX:1, duration:0.5, ease:"power2.out"}, 1.42);
+  tl.to(P+"bar2", {autoAlpha:1, duration:0.1, ease:"none"}, 1.72);
+  tl.to(P+"bar2", {scaleX:1, duration:0.5, ease:"power2.out"}, 1.72);
+  tl.to(P+"img", {opacity:0.55, duration:0.5, ease:"power2.out"}, 1.42);
+  tl.fromTo(P+"labL", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.42);
 
-  /* RIDE @2.06: right page brightens; its label waits for NO @3.90 */
-  tl.to(P+"Rin", {opacity:1, duration:0.5, ease:"power2.out"}, 2.06);
-  tl.fromTo(P+"labR", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 3.90);
+  /* RIDE @2.34: right page brightens; its label waits for NO @4.72 */
+  tl.to(P+"Rin", {opacity:1, duration:0.5, ease:"power2.out"}, 2.34);
+  tl.fromTo(P+"labR", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 4.72);
 
   /* motion all window: pages float y +-3 (to the panel exit), popfig drifts after */
   tl.fromTo(P+"Lin", {y:-3}, {y:3, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:3}, 0);
   tl.fromTo(P+"Rin", {y:3}, {y:-3, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:3}, 0);
 
-  /* HAVE @4.94: panel out, done 5.54 */
-  tl.to(P+"pnl", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 4.94);
+  /* KNOWN @5.48: panel out 5.52 to 6.12 (the "have backed it up" tail is the popfig's) */
+  tl.to(P+"pnl", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.52);
 
-  /* UP. @5.50: popfig in once the panel is gone */
-  tl.fromTo(P+"scrim", {autoAlpha:0}, {autoAlpha:1, duration:0.5, ease:"power2.out"}, 5.55);
-  tl.fromTo(P+"pop", {scale:1.15, autoAlpha:0}, {scale:0.85, autoAlpha:1, duration:0.5, ease:"power4.out"}, 5.55);
-  tl.to(P+"popin", {y:-8, duration:1.09, ease:"sine.inOut"}, 5.55);
+  /* popfig in 6.12 to 6.52, as "backed it up." (6.04 to 6.64) lands */
+  tl.fromTo(P+"scrim", {autoAlpha:0}, {autoAlpha:1, duration:0.4, ease:"power2.out"}, 6.12);
+  tl.fromTo(P+"pop", {scale:1.15, autoAlpha:0}, {scale:0.85, autoAlpha:1, duration:0.4, ease:"power4.out"}, 6.12);
+  tl.to(P+"popin", {y:-8, duration:0.86, ease:"sine.inOut"}, 6.12);
 
-  /* exit ends on the host end (6.64) */
-  tl.to(P+"pop", {scale:0.78, autoAlpha:0, duration:0.45, ease:"power2.in"}, 6.19);
-  tl.to(P+"scrim", {autoAlpha:0, duration:0.45, ease:"power2.in"}, 6.19);
+  /* exit ends on the host end (6.98) */
+  tl.to(P+"pop", {scale:0.78, autoAlpha:0, duration:0.4, ease:"power2.in"}, 6.58);
+  tl.to(P+"scrim", {autoAlpha:0, duration:0.4, ease:"power2.in"}, 6.58);
   window.__timelines["g-a5-11-panel"] = tl;
 })();
 </script>
