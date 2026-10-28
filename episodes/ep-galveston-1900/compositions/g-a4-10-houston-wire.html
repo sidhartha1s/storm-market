@@ -1,0 +1,336 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4-10-houston-wire · A4-S6 2.60 to 14.30 · ep-galveston-1900 · DEEP (Opus brief, Sonnet build) · brief: briefs/a4/g-a4-10-houston-wire.md
+  Claim: Joseph went to the telegraph offices through water 2 to 4 ft deep; wires down, but one long-distance telephone wire still
+  worked to Houston, and over it he gave the message to Western Union there, to go on to Washington (MWR Sept 1900 p. 373).
+  PART A (0 to 6.16): island plate as g-a4-2 (projection, grid, polygon copied). Figure, gauge, poles, wires, office: SCHEMATIC.
+  PART B (6.16 on): one camera function camAt(t) (pure, seek-safe) from the island framing, turned and scaled (log zoom), to the
+    Houston framing, then the Washington framing. The camera is the intro-4 form: screen = (960,540) + s * R(b) * (p - c), plate units
+    X = (lon + 100) * 90, Y = (41 - lat) * 103.95 (g-intro-4 projection, also g-a4-2's plate units).
+    Island framing: s 135, b = island turn, centre solved so the NE tip sits at (2120, 850) as in g-a4-2 (centre lands on Galveston).
+    Houston framing: s 8, b 0, c (430, 1192). Washington framing: s 0.5, b 0, c (1267, 1000) = g-intro-4 V-WIRE.
+  COMP-LOCAL TIMES = word time - 2.60 (a4-s6.words.json). Brief cue -> local:
+    4.50 Joseph -> 1.90 figure in      4.86 waded -> 2.26 walk 2.26 to 5.20     5.54 telegraph -> 2.94 poles and wires draw
+    7.02 two -> 4.42 bar to 2 ft       7.54 four -> 4.94 bar to 4 ft            7.82 feet -> 5.22 (label in earlier, see receipt)
+    8.76 One -> 6.16 zoom 6.16 to 7.16 9.80 -> 7.20 line 1 draws to 7.90        10.50 Houston -> 7.90 label
+    10.70 -> 8.10 chip in              12.68 message -> 10.08 chip out, zoom to Washington 10.08 to 10.78
+    13.38 -> 10.78 Houston flash       13.40 to 14.00 -> 10.80 to 11.40 line 2  14.00 -> 11.40 (Washington label in at 10.80, see receipt)
+    14.30 -> 11.70 segment end (D)
+  BASEMAP TODO: g-intro-4's whole-Gulf land / border / states paths (plate units, same coordinates as here) are not pasted:
+    they are too large to copy by hand. Only the g-a4-2 Natural Earth patch (plate x 300 to 547, y 1100 to 1275) is drawn, so the
+    Houston framing shows that patch and the Washington framing shows a small patch plus the pins and the line. Paste g-intro-4's
+    land path (line 54 of g-intro-4-wire-map.html) into #g-a4-10-houston-wire-plate under the patch and delete this note.
+  CIRCLE CORNER (x >= 1600, y >= 680): nothing labelled; gauge right edge 1540.
+-->
+<template>
+<style>
+  #g-a4-10-houston-wire-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ga410-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .ga410-land { fill:#15202b; stroke:#2a3644; stroke-width:2px; stroke-linejoin:round; }
+  .ga410-isl { fill:#15202b; stroke:#93a3b2; stroke-width:2px; stroke-linejoin:round; }
+  .ga410-blk { fill:#2a3644; stroke:#3d4b5b; stroke-width:1px; }
+  .ga410-geo { position:absolute; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; text-align:center; }
+  .ga410-lab { position:absolute; font-weight:700; font-size:26px; line-height:26px; color:#f2f5f8; white-space:nowrap; text-shadow:0 2px 6px rgba(0,0,0,0.85); }
+  .ga410-big { position:absolute; right:520px; top:380px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:60px; color:#f2f5f8; white-space:nowrap; text-align:right; text-shadow:0 2px 8px rgba(0,0,0,0.9); }
+  .ga410-card { position:absolute; left:1420px; top:240px; width:120px; height:360px; box-sizing:border-box; border-radius:22px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .ga410-src { position:absolute; left:96px; top:54px; max-width:1000px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-weight:700; font-size:19px; line-height:1.4; color:#c8d3e0; white-space:nowrap; }
+  .ga410-chip { position:absolute; left:96px; top:130px; box-sizing:border-box; padding:18px 28px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; }
+  .ga410-main { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; }
+  .ga410-tag { font-weight:700; font-size:22px; line-height:28px; letter-spacing:4px; color:#93a3b2; }
+  .ga410-small { position:absolute; font-weight:700; font-size:19px; line-height:22px; color:#93a3b2; white-space:nowrap; }
+  .ga410-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-10-houston-wire-root" data-composition-id="g-a4-10-houston-wire" data-width="1920" data-height="1080"
+  data-type-ok="map: 52 px chip and gauge label are the top tier; map labels 26 px, geography, ticks and notes 19 to 22 px">
+
+  <svg class="ga410-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g-a4-10-houston-wire-rg" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#5a768f" stop-opacity="0"/>
+        <stop offset="0.5" stop-color="#5a768f" stop-opacity="0.7"/>
+        <stop offset="1" stop-color="#5a768f" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+
+    <g id="g-a4-10-houston-wire-ripples">
+      <rect id="g-a4-10-houston-wire-rp1" x="470" y="950" width="420" height="2" fill="url(#g-a4-10-houston-wire-rg)"/>
+      <rect id="g-a4-10-houston-wire-rp2" x="1000" y="1010" width="460" height="2" fill="url(#g-a4-10-houston-wire-rg)"/>
+      <rect id="g-a4-10-houston-wire-rp3" x="380" y="1052" width="320" height="2" fill="url(#g-a4-10-houston-wire-rg)"/>
+      <rect id="g-a4-10-houston-wire-rp4" x="260" y="170" width="380" height="2" fill="url(#g-a4-10-houston-wire-rg)"/>
+    </g>
+
+    <!-- PLATE (plate units; matrix set by camAt) -->
+    <g id="g-a4-10-houston-wire-plate">
+      <!--GEO: copied verbatim from g-a4-2-half-city.html (Natural Earth 10m via g-a5-3), do not hand-edit-->
+      <path class="ga410-land" vector-effect="non-scaling-stroke" d="M376.44,1275.21 L379.80,1274.85 L383.94,1275.09 L388.00,1274.81 L391.96,1273.81 L395.83,1271.95 L406.15,1265.11 L412.27,1260.67 L413.84,1260.04 L415.86,1259.82 L416.90,1259.13 L421.75,1254.85 L426.60,1249.30 L429.16,1247.87 L435.70,1242.65 L436.39,1241.32 L436.53,1239.90 L436.50,1238.14 L435.77,1233.79 L435.67,1231.56 L436.50,1229.23 L435.34,1226.54 L434.65,1225.68 L436.22,1226.52 L437.65,1226.72 L438.82,1227.28 L439.57,1229.23 L442.05,1227.79 L444.13,1226.18 L450.07,1219.23 L450.12,1218.94 L450.01,1218.09 L450.07,1217.81 L450.34,1217.75 L451.09,1217.89 L451.36,1217.81 L453.20,1216.44 L454.04,1215.56 L454.43,1214.26 L455.04,1214.26 L456.46,1215.43 L457.84,1214.60 L458.88,1212.62 L459.29,1210.36 L460.01,1208.32 L461.67,1207.81 L463.55,1208.32 L464.93,1209.30 L465.18,1208.86 L465.46,1208.70 L465.76,1208.65 L466.10,1208.53 L462.08,1206.68 L460.91,1206.46 L459.94,1205.73 L457.44,1201.42 L457.36,1201.65 L457.35,1201.97 L457.24,1202.02 L457.04,1202.02 L457.02,1202.29 L457.07,1202.48 L457.44,1202.85 L457.44,1203.62 L455.14,1203.53 L454.76,1202.14 L454.66,1200.42 L453.14,1199.29 L453.14,1198.58 L454.45,1198.15 L455.72,1197.50 L456.88,1197.97 L457.66,1196.67 L458.30,1195.81 L451.45,1193.99 L447.85,1191.04 L448.56,1188.26 L449.51,1187.25 L450.97,1185.61 L451.39,1184.39 L449.10,1182.33 L448.58,1180.40 L449.22,1178.82 L451.28,1177.24 L450.13,1176.02 L449.19,1175.31 L448.34,1175.10 L447.41,1174.90 L446.69,1174.18 L445.47,1173.90 L444.23,1173.30 L445.29,1169.46 L446.94,1169.60 L447.59,1170.88 L448.60,1172.52 L450.07,1172.97 L453.04,1174.17 L454.60,1175.24 L455.55,1175.71 L456.16,1178.09 L457.24,1179.28 L458.42,1179.03 L461.15,1178.19 L462.33,1176.39 L463.62,1172.81 L465.63,1169.46 L465.62,1167.55 L467.39,1166.11 L468.47,1167.18 L470.37,1167.05 L471.56,1166.69 L472.98,1166.09 L473.94,1166.09 L475.25,1166.68 L476.08,1168.34 L476.68,1169.30 L476.81,1170.96 L477.41,1172.75 L477.65,1175.02 L476.72,1179.79 L475.55,1183.84 L473.78,1187.19 L472.55,1189.08 L471.49,1190.86 L470.36,1191.08 L469.34,1190.55 L469.13,1191.19 L469.89,1192.32 L472.03,1192.90 L473.69,1192.46 L477.43,1191.38 L485.51,1189.95 L489.47,1187.67 L490.90,1188.31 L492.33,1189.65 L494.09,1190.33 L495.46,1189.31 L496.26,1188.55 L496.33,1190.00 L495.74,1191.88 L494.60,1192.72 L493.03,1192.93 L488.51,1192.68 L487.72,1192.91 L486.67,1193.60 L483.98,1196.46 L483.30,1196.92 L482.39,1197.36 L481.36,1197.69 L479.24,1198.04 L476.91,1199.29 L469.62,1206.51 L468.84,1207.90 L469.24,1208.91 L471.35,1209.30 L473.18,1208.45 L477.83,1202.85 L481.11,1200.43 L509.83,1187.30 L520.56,1183.21 L528.17,1178.91 L530.82,1177.69 L534.59,1176.52 L536.62,1176.30 L547.49,1176.52 L547.49,1100.00 L300.00,1100.00 L300.00,1275.21Z"/>
+      <path id="g-a4-10-houston-wire-isl" class="ga410-isl" vector-effect="non-scaling-stroke" d="M466.71,1210.71 L465.57,1210.61 L465.49,1210.00 L465.13,1209.96 L464.93,1210.00 L464.83,1210.31 L464.83,1210.60 L464.72,1210.77 L464.26,1210.71 L464.26,1211.42 L465.81,1211.71 L466.05,1212.98 L465.48,1214.38 L464.59,1215.04 L464.42,1215.12 L462.42,1215.68 L461.99,1216.22 L461.24,1217.81 L457.45,1220.86 L457.13,1221.36 L456.41,1222.78 L455.12,1224.23 L452.90,1225.79 L446.94,1230.46 L442.68,1233.25 L440.80,1235.84 L439.51,1238.15 L440.25,1238.19 L443.16,1235.55 L454.75,1227.24 L459.75,1224.03 L474.80,1212.77Z"/>
+      <!--/GEO-->
+      <!-- BASEMAP TODO: paste g-intro-4-wire-map.html land path here (plate units) -->
+      <!-- phone lines in plate units: one glowing line leaves Galveston to Houston; the Washington leg starts at Houston -->
+      <g id="g-a4-10-houston-wire-glow">
+        <line id="g-a4-10-houston-wire-l1" class="ga410-hide" x1="0" y1="0" x2="0" y2="0" stroke="#e8c56a" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke" style="filter:drop-shadow(0 0 6px #e8c56a)"/>
+        <line id="g-a4-10-houston-wire-l2" class="ga410-hide" x1="0" y1="0" x2="0" y2="0" stroke="#e8c56a" stroke-width="4" stroke-linecap="round" vector-effect="non-scaling-stroke" style="filter:drop-shadow(0 0 6px #e8c56a)"/>
+      </g>
+    </g>
+
+    <!-- WORLD: part A drawn in the island framing's screen px; matrix = camera * inverse(island camera), set by camAt -->
+    <g id="g-a4-10-houston-wire-world">
+      <g id="g-a4-10-houston-wire-partA">
+        <g id="g-a4-10-houston-wire-grid">
+          <g>
+            <rect class="ga410-blk" x="320" y="324" width="92" height="70"/><rect class="ga410-blk" x="428" y="324" width="92" height="70"/><rect class="ga410-blk" x="536" y="324" width="92" height="70"/><rect class="ga410-blk" x="644" y="324" width="92" height="70"/><rect class="ga410-blk" x="752" y="324" width="92" height="70"/><rect class="ga410-blk" x="860" y="324" width="92" height="70"/><rect class="ga410-blk" x="968" y="324" width="92" height="70"/><rect class="ga410-blk" x="1076" y="324" width="92" height="70"/><rect class="ga410-blk" x="1184" y="324" width="92" height="70"/><rect class="ga410-blk" x="1292" y="324" width="92" height="70"/><rect class="ga410-blk" x="1400" y="324" width="92" height="70"/><rect class="ga410-blk" x="1508" y="324" width="92" height="70"/>
+          </g>
+          <g>
+            <rect class="ga410-blk" x="320" y="410" width="92" height="70"/><rect class="ga410-blk" x="428" y="410" width="92" height="70"/><rect class="ga410-blk" x="536" y="410" width="92" height="70"/><rect class="ga410-blk" x="644" y="410" width="92" height="70"/><rect class="ga410-blk" x="752" y="410" width="92" height="70"/><rect class="ga410-blk" x="860" y="410" width="92" height="70"/><rect class="ga410-blk" x="968" y="410" width="92" height="70"/><rect class="ga410-blk" x="1076" y="410" width="92" height="70"/><rect class="ga410-blk" x="1184" y="410" width="92" height="70"/><rect class="ga410-blk" x="1292" y="410" width="92" height="70"/><rect class="ga410-blk" x="1400" y="410" width="92" height="70"/><rect class="ga410-blk" x="1508" y="410" width="92" height="70"/>
+          </g>
+          <g>
+            <rect class="ga410-blk" x="320" y="496" width="92" height="70"/><rect class="ga410-blk" x="428" y="496" width="92" height="70"/><rect class="ga410-blk" x="536" y="496" width="92" height="70"/><rect class="ga410-blk" x="644" y="496" width="92" height="70"/><rect class="ga410-blk" x="752" y="496" width="92" height="70"/><rect class="ga410-blk" x="860" y="496" width="92" height="70"/><rect class="ga410-blk" x="968" y="496" width="92" height="70"/><rect class="ga410-blk" x="1076" y="496" width="92" height="70"/><rect class="ga410-blk" x="1184" y="496" width="92" height="70"/><rect class="ga410-blk" x="1292" y="496" width="92" height="70"/><rect class="ga410-blk" x="1400" y="496" width="92" height="70"/><rect class="ga410-blk" x="1508" y="496" width="92" height="70"/>
+          </g>
+          <g>
+            <rect class="ga410-blk" x="320" y="582" width="92" height="70"/><rect class="ga410-blk" x="428" y="582" width="92" height="70"/><rect class="ga410-blk" x="536" y="582" width="92" height="70"/><rect class="ga410-blk" x="644" y="582" width="92" height="70"/><rect class="ga410-blk" x="752" y="582" width="92" height="70"/><rect class="ga410-blk" x="860" y="582" width="92" height="70"/><rect class="ga410-blk" x="968" y="582" width="92" height="70"/><rect class="ga410-blk" x="1076" y="582" width="92" height="70"/><rect class="ga410-blk" x="1184" y="582" width="92" height="70"/><rect class="ga410-blk" x="1292" y="582" width="92" height="70"/><rect class="ga410-blk" x="1400" y="582" width="92" height="70"/><rect class="ga410-blk" x="1508" y="582" width="92" height="70"/>
+          </g>
+          <g>
+            <rect class="ga410-blk" x="320" y="668" width="92" height="70"/><rect class="ga410-blk" x="428" y="668" width="92" height="70"/><rect class="ga410-blk" x="536" y="668" width="92" height="70"/><rect class="ga410-blk" x="644" y="668" width="92" height="70"/><rect class="ga410-blk" x="752" y="668" width="92" height="70"/><rect class="ga410-blk" x="860" y="668" width="92" height="70"/><rect class="ga410-blk" x="968" y="668" width="92" height="70"/><rect class="ga410-blk" x="1076" y="668" width="92" height="70"/><rect class="ga410-blk" x="1184" y="668" width="92" height="70"/><rect class="ga410-blk" x="1292" y="668" width="92" height="70"/><rect class="ga410-blk" x="1400" y="668" width="92" height="70"/><rect class="ga410-blk" x="1508" y="668" width="92" height="70"/>
+          </g>
+          <g>
+            <rect class="ga410-blk" x="320" y="754" width="92" height="70"/><rect class="ga410-blk" x="428" y="754" width="92" height="70"/><rect class="ga410-blk" x="536" y="754" width="92" height="70"/><rect class="ga410-blk" x="644" y="754" width="92" height="70"/><rect class="ga410-blk" x="752" y="754" width="92" height="70"/><rect class="ga410-blk" x="860" y="754" width="92" height="70"/><rect class="ga410-blk" x="968" y="754" width="92" height="70"/><rect class="ga410-blk" x="1076" y="754" width="92" height="70"/><rect class="ga410-blk" x="1184" y="754" width="92" height="70"/><rect class="ga410-blk" x="1292" y="754" width="92" height="70"/><rect class="ga410-blk" x="1400" y="754" width="92" height="70"/><rect class="ga410-blk" x="1508" y="754" width="92" height="70"/>
+          </g>
+        </g>
+
+        <!-- local water in the streets the figure crosses: the street x 1276 to 1292 and four cross streets -->
+        <g fill="#5a768f" fill-opacity="0.8">
+          <rect x="1276" y="480" width="16" height="354"/>
+          <rect x="1100" y="738" width="300" height="16"/><rect x="1100" y="652" width="300" height="16"/>
+          <rect x="1100" y="566" width="300" height="16"/><rect x="1100" y="480" width="300" height="16"/>
+        </g>
+
+        <!-- telegraph office block: column 10, row 5 (schematic) -->
+        <rect id="g-a4-10-houston-wire-office" class="ga410-hide" x="1292" y="410" width="92" height="70" fill="none" stroke="#d8a13a" stroke-width="3"/>
+
+        <!-- 4 poles on the bay edge, wires slack: seg 1 and seg 3 whole, seg 2 broken into two dangling ends -->
+        <g transform="translate(700,270)"><path class="ga410-pole ga410-hide" d="M0,40 L0,0 M-12,8 L12,8" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round"/></g>
+        <g transform="translate(900,270)"><path class="ga410-pole ga410-hide" d="M0,40 L0,0 M-12,8 L12,8" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round"/></g>
+        <g transform="translate(1100,270)"><path class="ga410-pole ga410-hide" d="M0,40 L0,0 M-12,8 L12,8" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round"/></g>
+        <g transform="translate(1300,270)"><path class="ga410-pole ga410-hide" d="M0,40 L0,0 M-12,8 L12,8" fill="none" stroke="#93a3b2" stroke-width="4" stroke-linecap="round"/></g>
+        <path class="ga410-wire ga410-hide" d="M700,278 Q800,312 900,278" fill="none" stroke="#93a3b2" stroke-width="2"/>
+        <path class="ga410-wire ga410-hide" d="M1100,278 Q1200,312 1300,278" fill="none" stroke="#93a3b2" stroke-width="2"/>
+        <g transform="translate(900,278)"><g id="g-a4-10-houston-wire-pc1"><path class="ga410-wire ga410-hide" d="M0,0 Q40,16 90,12" fill="none" stroke="#93a3b2" stroke-width="2"/></g></g>
+        <g transform="translate(1100,278)"><g id="g-a4-10-houston-wire-pc2"><path class="ga410-wire ga410-hide" d="M0,0 Q-40,16 -90,12" fill="none" stroke="#93a3b2" stroke-width="2"/></g></g>
+
+        <!-- wading figure 18 x 46 (feet at local (9,46)); moved by GSAP x/y only -->
+        <g id="g-a4-10-houston-wire-fig" class="ga410-hide">
+          <circle cx="9" cy="6" r="6" fill="#f2f5f8"/>
+          <rect x="4" y="13" width="10" height="18" rx="4" fill="#f2f5f8"/>
+          <line id="g-a4-10-houston-wire-legl" x1="7" y1="30" x2="7" y2="46" stroke="#f2f5f8" stroke-width="4" stroke-linecap="round"/>
+          <line id="g-a4-10-houston-wire-legr" x1="11" y1="30" x2="11" y2="46" stroke="#f2f5f8" stroke-width="4" stroke-linecap="round"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- MARKS: screen-size pins, outer g placed by camAt, inner g/circle animated -->
+    <g id="g-a4-10-houston-wire-gal-at"><g id="g-a4-10-houston-wire-gal" class="ga410-hide"><circle cx="0" cy="0" r="6" fill="#e8c56a" stroke="#f2f5f8" stroke-width="2"/></g></g>
+    <g id="g-a4-10-houston-wire-hou-at"><g id="g-a4-10-houston-wire-hou" class="ga410-hide"><circle id="g-a4-10-houston-wire-houc" cx="0" cy="0" r="9" fill="#d0121f" stroke="#f2f5f8" stroke-width="3"/></g></g>
+    <g id="g-a4-10-houston-wire-was-at"><g id="g-a4-10-houston-wire-was" class="ga410-hide"><circle cx="0" cy="0" r="9" fill="#d0121f" stroke="#f2f5f8" stroke-width="3"/></g></g>
+
+    <!-- HUD svg: north arrow and gauge ticks/bar (fixed) -->
+    <g id="g-a4-10-houston-wire-north">
+      <path d="M0,-30 L9,4 L0,-3 L-9,4Z" fill="#93a3b2"/>
+      <text x="0" y="26" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="19" fill="#93a3b2">N</text>
+    </g>
+    <g id="g-a4-10-houston-wire-gsvg" class="ga410-hide">
+      <g stroke="#93a3b2" stroke-width="2">
+        <line x1="1430" y1="600" x2="1448" y2="600"/><line x1="1430" y1="540" x2="1448" y2="540"/><line x1="1430" y1="480" x2="1448" y2="480"/>
+        <line x1="1430" y1="420" x2="1448" y2="420"/><line x1="1430" y1="360" x2="1448" y2="360"/><line x1="1430" y1="300" x2="1448" y2="300"/>
+      </g>
+      <g font-family="Arial, sans-serif" font-weight="700" font-size="19" fill="#93a3b2">
+        <text x="1508" y="606">0</text><text x="1508" y="546">1</text><text x="1508" y="486">2</text>
+        <text x="1508" y="426">3</text><text x="1508" y="366">4</text><text x="1508" y="306">5</text>
+      </g>
+      <rect id="g-a4-10-houston-wire-bar" x="1456" y="600" width="40" height="0" fill="#7fb2e5" fill-opacity="0.9"/>
+    </g>
+  </svg>
+
+  <div class="ga410-geo" id="g-a4-10-houston-wire-geo1" style="left:780px; top:228px; width:240px;">Galveston Bay</div>
+  <div class="ga410-geo" id="g-a4-10-houston-wire-geo2" style="left:760px; top:889px; width:400px;">Gulf of Mexico</div>
+  <div class="ga410-lab ga410-hide" id="g-a4-10-houston-wire-office-lab" style="left:1086px; top:452px; width:190px; text-align:right;">Telegraph offices</div>
+  <div class="ga410-small" id="g-a4-10-houston-wire-note" style="left:96px; top:1000px;">Street grid: schematic</div>
+
+  <div class="ga410-card ga410-hide" id="g-a4-10-houston-wire-card"></div>
+  <div class="ga410-big ga410-hide" id="g-a4-10-houston-wire-depth">2 TO 4 FT</div>
+
+  <div class="ga410-lab ga410-hide" id="g-a4-10-houston-wire-gal-lab">Galveston</div>
+  <div class="ga410-lab ga410-hide" id="g-a4-10-houston-wire-hou-lab">Houston</div>
+  <div class="ga410-lab ga410-hide" id="g-a4-10-houston-wire-was-lab">Washington</div>
+
+  <div class="ga410-src" id="g-a4-10-houston-wire-src">Isaac Cline, Monthly Weather Review, September 1900, pp. 372 and 373</div>
+  <div class="ga410-chip ga410-hide" id="g-a4-10-houston-wire-c1">
+    <div class="ga410-main">ONE WIRE TO HOUSTON</div>
+    <div class="ga410-tag">long-distance telephone</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a4-10-houston-wire";
+  const P = "#" + ID + "-";
+  const $ = function (n) { return document.getElementById(ID + "-" + n); };
+  const root = $("root");
+  const D = 11.70;   /* host: A4-S6 2.60 to 14.30 */
+
+  /* g-intro-4 projection (plate units) */
+  const proj = function (lon, lat) { return [(lon + 100) * 90, (41 - lat) * 103.95]; };
+  const GAL = proj(-94.80, 29.30), HOU = proj(-95.37, 29.76), WAS = proj(-77.04, 38.90);
+
+  /* island framing, as g-a4-2: NE tip at (2120, 850), s 135, island turned level */
+  const SW = [439.51, 1238.15], NE = [474.80, 1212.77];
+  const SA = 135;
+  const L = Math.hypot(NE[0] - SW[0], NE[1] - SW[1]);
+  const UX = (NE[0] - SW[0]) / L, UY = (NE[1] - SW[1]) / L;
+  const bA = Math.atan2(-UY, UX), cb = Math.cos(bA), sb = Math.sin(bA);
+  const vx = (2120 - 960) / SA, vy = (850 - 540) / SA;
+  const cA = [NE[0] - (cb * vx + sb * vy), NE[1] - (-sb * vx + cb * vy)];   /* R^T v */
+  const CAM_A = { s: SA, b: bA, c: cA };
+  const CAM_H = { s: 8, b: 0, c: [430, 1192] };
+  const CAM_W = { s: 0.5, b: 0, c: [1267, 1000] };
+
+  const lerp = function (a, b, u) { return a + (b - a) * u; };
+  const ease = gsap.parseEase("power2.inOut");
+  function mix(c1, c2, u) {   /* zoom in log space (helpers.js logZoom form) */
+    return { s: Math.exp(lerp(Math.log(c1.s), Math.log(c2.s), u)), b: lerp(c1.b, c2.b, u),
+      c: [lerp(c1.c[0], c2.c[0], u), lerp(c1.c[1], c2.c[1], u)] };
+  }
+  function camAt(t) {
+    if (t <= 6.16) return CAM_A;
+    if (t < 7.16) return mix(CAM_A, CAM_H, ease(t - 6.16));
+    if (t <= 10.08) return CAM_H;
+    if (t < 10.78) return mix(CAM_H, CAM_W, ease((t - 10.08) / 0.7));
+    return CAM_W;
+  }
+  /* affine [a,b,c,d,e,f] (SVG order) */
+  function mat(cam) {
+    const cs = cam.s * Math.cos(cam.b), sn = cam.s * Math.sin(cam.b);
+    return [cs, sn, -sn, cs, 960 - (cs * cam.c[0] - sn * cam.c[1]), 540 - (sn * cam.c[0] + cs * cam.c[1])];
+  }
+  function ap(m, p) { return [m[0] * p[0] + m[2] * p[1] + m[4], m[1] * p[0] + m[3] * p[1] + m[5]]; }
+  function inv(m) {
+    const det = m[0] * m[3] - m[1] * m[2];
+    return [m[3] / det, -m[1] / det, -m[2] / det, m[0] / det, (m[2] * m[5] - m[3] * m[4]) / det, (m[1] * m[4] - m[0] * m[5]) / det];
+  }
+  function mul(p, q) {   /* p after q */
+    return [p[0] * q[0] + p[2] * q[1], p[1] * q[0] + p[3] * q[1], p[0] * q[2] + p[2] * q[3], p[1] * q[2] + p[3] * q[3],
+      p[0] * q[4] + p[2] * q[5] + p[4], p[1] * q[4] + p[3] * q[5] + p[5]];
+  }
+  const fmt = function (m) { return "matrix(" + m.map(function (n) { return n.toFixed(5); }).join(",") + ")"; };
+  const MAinv = inv(mat(CAM_A));
+  const plate = $("plate"), world = $("world");
+  const marks = [[$("gal-at"), GAL], [$("hou-at"), HOU], [$("was-at"), WAS]];
+  function draw(t) {
+    const m = mat(camAt(t));
+    plate.setAttribute("transform", fmt(m));
+    world.setAttribute("transform", fmt(mul(m, MAinv)));
+    marks.forEach(function (k) { const p = ap(m, k[1]); k[0].setAttribute("transform", "translate(" + p[0].toFixed(2) + "," + p[1].toFixed(2) + ")"); });
+  }
+  draw(0);
+
+  /* north arrow (island framing) */
+  $("north").setAttribute("transform", "translate(132,936) rotate(" + (Math.atan2(-UY, UX) * 180 / Math.PI).toFixed(2) + ")");
+
+  /* HUD labels: fixed screen positions taken from the settled camera states */
+  const mH = mat(CAM_H), mW = mat(CAM_W);
+  const place = function (el, p) { el.style.left = (p[0] + 18).toFixed(0) + "px"; el.style.top = (p[1] - 13).toFixed(0) + "px"; };
+  place($("gal-lab"), ap(mH, GAL)); place($("hou-lab"), ap(mH, HOU)); place($("was-lab"), ap(mW, WAS));
+
+  /* phone lines in plate units */
+  const l1 = $("l1"), l2 = $("l2");
+  l1.setAttribute("x1", GAL[0]); l1.setAttribute("y1", GAL[1]); l1.setAttribute("x2", GAL[0]); l1.setAttribute("y2", GAL[1]);
+  l2.setAttribute("x1", HOU[0]); l2.setAttribute("y1", HOU[1]); l2.setAttribute("x2", HOU[0]); l2.setAttribute("y2", HOU[1]);
+
+  const dl = function (el) { return Math.ceil(el.getTotalLength()) + 1; };
+  const poles = Array.prototype.slice.call(root.querySelectorAll(".ga410-pole"));
+  const wires = Array.prototype.slice.call(root.querySelectorAll(".ga410-wire"));
+  poles.concat(wires).forEach(function (el) { const n = dl(el); el.style.strokeDasharray = n + " " + n; el.style.strokeDashoffset = n; el._n = n; });
+
+  const tl = gsap.timeline({ paused: true });
+
+  /* camera: a pure function of timeline time (seek-safe), runs the whole window */
+  tl.to({ t: 0 }, { t: 1, duration: D, ease: "none", onUpdate: function () { draw(this.time()); } }, 0);
+
+  /* whole part A: ripples drift (HUD layer, off by 6.40) */
+  tl.set([P + "rp1", P + "rp2", P + "rp3", P + "rp4"], { x: 0 }, 0);
+  tl.to(P + "rp1", { x: 90, duration: 6.4, ease: "none" }, 0);
+  tl.to(P + "rp2", { x: -80, duration: 6.4, ease: "none" }, 0);
+  tl.to(P + "rp3", { x: 70, duration: 6.4, ease: "none" }, 0);
+  tl.to(P + "rp4", { x: 80, duration: 6.4, ease: "none" }, 0);
+
+  /* JOSEPH @4.50 (1.90): figure in at row 2; WADED @4.86 (2.26): walks north 2.26 to 5.20, legs bob */
+  tl.set(P + "fig", { x: 1275, y: 654 }, 0);
+  tl.fromTo(P + "fig", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 1.9);
+  tl.to(P + "fig", { y: 444, duration: 2.94, ease: "none" }, 2.26);
+  tl.fromTo(P + "legl", { rotation: -22, svgOrigin: "7 30", smoothOrigin: false },
+    { rotation: 22, svgOrigin: "7 30", smoothOrigin: false, duration: 0.42, ease: "sine.inOut", yoyo: true, repeat: 6 }, 2.26);
+  tl.fromTo(P + "legr", { rotation: 22, svgOrigin: "11 30", smoothOrigin: false },
+    { rotation: -22, svgOrigin: "11 30", smoothOrigin: false, duration: 0.42, ease: "sine.inOut", yoyo: true, repeat: 6 }, 2.26);
+
+  /* TELEGRAPH @5.54 (2.94): poles and broken wires draw 0.6 s, office outline pulses, label in */
+  tl.set(poles.concat(wires), { autoAlpha: 1 }, 2.94);
+  tl.to(poles.concat(wires), { strokeDashoffset: 0, duration: 0.6, ease: "power2.out" }, 2.94);
+  tl.fromTo(P + "pc1", { rotation: 0, svgOrigin: "0 0", smoothOrigin: false }, { rotation: 55, svgOrigin: "0 0", smoothOrigin: false, duration: 0.5, ease: "power2.in" }, 3.54);
+  tl.fromTo(P + "pc2", { rotation: 0, svgOrigin: "0 0", smoothOrigin: false }, { rotation: -55, svgOrigin: "0 0", smoothOrigin: false, duration: 0.5, ease: "power2.in" }, 3.54);
+  tl.fromTo(P + "office", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: "none" }, 2.94);
+  tl.to(P + "office", { opacity: 0.3, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 5 }, 3.14);
+  tl.fromTo(P + "office-lab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.94);
+
+  /* TWO @7.02 (4.42): gauge and label in (from 4.20 so the label reads 1.5 s before it goes); bar rises to 2 ft (y 480), then
+     FOUR @7.54 (4.94) swings to 4 ft (y 360) and wavers between 4 ft and 3.3 ft (never above 4, never below 2) */
+  tl.fromTo([P + "card", P + "gsvg"], { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 4.2);
+  tl.fromTo(P + "depth", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 4.2);
+  tl.to(P + "bar", { attr: { y: 480, height: 120 }, duration: 0.5, ease: "power2.out" }, 4.42);
+  tl.to(P + "bar", { attr: { y: 360, height: 240 }, duration: 0.5, ease: "sine.inOut" }, 4.94);
+  tl.to(P + "bar", { attr: { y: 402, height: 198 }, duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 5.44);
+
+  /* ONE @8.76 (6.16): part A text and gauge off (HUD text is gone before the camera has moved), zoom 6.16 to 7.16 (camAt) */
+  tl.to([P + "card", P + "gsvg", P + "depth", P + "office-lab", P + "note", P + "north", P + "ripples", P + "geo1", P + "geo2"],
+    { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 6.1);
+  tl.to(P + "partA", { autoAlpha: 0, duration: 0.6, ease: "power1.inOut" }, 6.4);
+
+  /* WIRE @9.40 to HOUSTON @10.50 (7.20 to 7.90): Galveston to Houston draws 0.7 s; Galveston dot and label at the settled camera */
+  tl.fromTo(P + "gal", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 7.2);
+  tl.fromTo(P + "gal-lab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 7.2);
+  tl.set(P + "l1", { autoAlpha: 1 }, 7.2);
+  tl.fromTo(P + "l1", { attr: { x2: GAL[0], y2: GAL[1] } }, { attr: { x2: HOU[0], y2: HOU[1] }, duration: 0.7, ease: "power2.inOut" }, 7.2);
+  tl.fromTo(P + "hou", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 7.5);
+  tl.fromTo(P + "hou-lab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 7.9);
+  /* line glow pulse (opacity 0.7 to 1, 0.8 s) */
+  tl.fromTo(P + "glow", { opacity: 1 }, { opacity: 0.7, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 4 }, 7.5);
+
+  /* chip in 8.10, readable from 8.55, out at 10.08 (1.5 s) */
+  tl.fromTo(P + "c1", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 8.1);
+
+  /* MESSAGE @12.68 (10.08): chip out, labels off before the move, zoom to Washington 10.08 to 10.78 (camAt) */
+  tl.to(P + "c1", { x: 980, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 10.08);
+  tl.to([P + "gal-lab", P + "hou-lab"], { autoAlpha: 0, duration: 0.28, ease: "power2.in" }, 9.8);
+
+  /* WESTERN UNION @13.38 (10.78): Houston pin flashes (r, no scale origin to drift); Houston to Washington draws 10.80 to 11.40 */
+  tl.to(P + "houc", { attr: { r: 16 }, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 10.78);
+  tl.set(P + "l2", { autoAlpha: 1 }, 10.8);
+  tl.fromTo(P + "l2", { attr: { x2: HOU[0], y2: HOU[1] } }, { attr: { x2: WAS[0], y2: WAS[1] }, duration: 0.6, ease: "power2.inOut" }, 10.8);
+  tl.fromTo(P + "was", { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(2)" }, 10.8);
+  tl.fromTo(P + "was-lab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 10.8);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
