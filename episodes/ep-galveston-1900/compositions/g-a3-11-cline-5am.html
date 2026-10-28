@@ -30,10 +30,14 @@
      boxes measured in frame px on the 577.425 s snapshot; the band leaves before the cut to the byline still at 580.105 */
   .g-a3-11-band { position:absolute; inset:auto; height:28px; border-radius:4px; background:rgba(216,161,58,0.32);
     transform-origin:left center; opacity:0; visibility:hidden; }
-  /* bands stop at x 1636: the presenter circle (pip-w5, x 1640+) covers the line ends */
-  #g-a3-11-cline-5am-bd1 { left:1040px; top:838px; width:596px; }
-  #g-a3-11-cline-5am-bd2 { left:944px; top:866px; width:692px; }
-  #g-a3-11-cline-5am-bd3 { left:944px; top:895px; width:692px; }
+  /* push: a copy of the p. 372 still, fitted exactly like index's object-fit:cover (1150x1563 -> 1920x2609, top -764), so the swap at 10.00 is seamless.
+     It scales 1.797 about (1920, 1390): the right edge stays on the frame edge and the banded lines land at x 166..1561, y ~430..640,
+     clear of the presenter circle corner (x >= 1600, y >= 680). Bands ride inside it in still-frame px. */
+  #g-a3-11-cline-5am-pg { position:absolute; inset:auto; left:0; top:0; width:1920px; height:1080px; transform-origin:1920px 1390px; opacity:0; visibility:hidden; }
+  #g-a3-11-cline-5am-pgimg { position:absolute; left:0; top:-764px; width:1920px; height:2609px; }
+  #g-a3-11-cline-5am-bd1 { left:1040px; top:838px; width:676px; }
+  #g-a3-11-cline-5am-bd2 { left:944px; top:866px; width:772px; }
+  #g-a3-11-cline-5am-bd3 { left:944px; top:895px; width:772px; }
   #g-a3-11-cline-5am-bd4 { left:944px; top:923px; width:482px; }
   #g-a3-11-cline-5am-pop { position:absolute; inset:auto; left:0; top:410px; width:1920px; text-align:center; white-space:nowrap; }
   #g-a3-11-cline-5am-big { display:block; opacity:0; visibility:hidden; transform-origin:center;
