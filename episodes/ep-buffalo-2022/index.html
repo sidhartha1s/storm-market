@@ -10,7 +10,7 @@
      ground section (the root colour) covers 0.30 to 0.40 s. Where the next beat is footage, the footage starts early instead.
      STAND-INS / NOT BUILT: Paul clips (ins-paul-1 hook line, ins-paul-4 A3-S12 tease) are not generated: the Christmas start
      frame stands in as a still and the TTS takes h1-s1.wav / a3-s12.wav carry his lines. A5 graphics g-a5-1 to g-a5-10 mounted
-     28 Oct 26; the old A5 stand-in stills stay under the full-frame comps. Presenter circle windows pip-w1..w7 mounted 28 Oct 26 (see PRESENTER CIRCLE); beds mounted; no SFX yet. g-a3-10-hochul-lt
+     28 Oct 26; the old A5 stand-in stills under the opaque full-frame comps were removed the same day (never visible). Presenter circle windows pip-w1..w7 mounted 28 Oct 26 (see PRESENTER CIRCLE); beds mounted; no SFX yet. g-a3-10-hochul-lt
      not mounted (no file, no licensed Hochul still).
      END: g-a5-10-close runs its 4.0 s tail past A5-S9 (brief), so the episode is 1068.319 s (was 1065.823, then 1068.819
      until the 0.5 s seam after the end ask went, 28 Oct 26, to put e1 inside config end_ask.last_s).
@@ -335,12 +335,20 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   /* stills get a quick punch on their cut (no slow Ken Burns: DESIGN.md "Footage motion"); the overlay comps carry the motion after */
   const stills = [
-    ["#kb-h1-paul", 0], ["#kb-h2-door", 15.605], ["#kb-i2-amb", 51.58],
-    ["#kb-a3-s1-laurel", 527.242], ["#kb-a3-s7-utica", 608.062], ["#kb-a3-s9-main", 645.377], ["#kb-a3-s12-paul", 698.454],
-    ["#kb-a4-s1-blower", 703.274], ["#kb-a4-s3-amb", 741.088], ["#kb-a4-s6-dog", 794.595], ["#kb-a4-s7-d2", 814.24],
-    ["#kb-a4-s8-welfare", 824.64], ["#kb-a4-s10-door", 867.74],
-    ["#kb-a5-s1-laurel", 895.987], ["#kb-a5-s2-res", 903.236], ["#kb-a5-s3-dozer", 920.473], ["#kb-a5-s4-skid", 942.048],
-    ["#kb-a5-s5-blower", 956.174], ["#kb-a5-s6-amb", 981.973], ["#kb-a5-s7-brunch", 998.204], ["#kb-a5-s7-toys", 1007.944], ["#kb-a5-s8-laurel", 1012.74]
+    ["#kb-h1-paul", 0], ["#kb-h2-door", 15.605], ["#kb-h2-knock", 20.305],
+    ["#kb-i2-amb", 51.58], ["#kb-i2-blower", 56.98], ["#kb-i2-drifts", 62.38],
+    ["#kb-a3-s1-laurel", 527.242], ["#kb-a3-s1-laurel2", 533.042],
+    ["#kb-a3-s7-utica", 608.062], ["#kb-a3-s7-pickup", 613.962], ["#kb-a3-s7-laurel", 619.862],
+    ["#kb-a3-s9-main", 645.377], ["#kb-a3-s9-dozer", 648.977],
+    ["#kb-a3-s11-night", 690.741], ["#kb-a3-s11-laurel", 694.741], ["#kb-a3-s12-paul", 698.454],
+    ["#kb-a4-s1-blower", 703.274], ["#kb-a4-s1-skid", 708.274], ["#kb-a4-s1-dozer", 713.274], ["#kb-a4-s1-pickup", 718.274],
+    ["#kb-a4-s3-amb", 741.088], ["#kb-a4-s3-drifts", 746.088], ["#kb-a4-s3-dig", 750.088],
+    ["#kb-a4-s6-dog", 794.595], ["#kb-a4-s6-blower", 800.595], ["#kb-a4-s6-skid", 805.095], ["#kb-a4-s6-dozer", 809.595],
+    ["#kb-a4-s7-d2", 814.24], ["#kb-a4-s7-knock", 819.44],
+    ["#kb-a4-s8-welfare", 824.64], ["#kb-a4-s8-knock2", 829.24], ["#kb-a4-s8-toys", 833.74], ["#kb-a4-s8-night", 838.24],
+    ["#kb-a4-s10-door", 867.74], ["#kb-a4-s10-laurel", 872.94], ["#kb-a4-s10-main", 877.94],
+    ["#kb-a5-s1-laurel", 895.987], ["#kb-a5-s1-night", 899.587],
+    ["#kb-a5-s7-brunch", 998.204], ["#kb-a5-s7-toys", 1007.944]
   ];
   stills.forEach(([sel, at]) => tl.fromTo(sel, { scale: 1.08 }, { scale: 1, duration: 0.6, ease: "power3.out" }, at));
   tl.set({}, {}, DUR);
