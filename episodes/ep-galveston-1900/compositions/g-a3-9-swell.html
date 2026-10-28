@@ -100,8 +100,9 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"tide", {x:0, y:0, autoAlpha:0}, 0);
   tl.set(P+"shore", {strokeDashoffset:2092}, 0);
   tl.set(P+"shaft", {autoAlpha:0, strokeDashoffset:197}, 0);
-  tl.set(P+"head", {autoAlpha:0, scale:0, transformOrigin:"50% 50%"}, 0);
-  tl.set(P+"wind", {scale:1, svgOrigin:"520 350"}, 0);
+  /* head scales about its own apex in SVG user space: a % transformOrigin on the polygon put the apex ~18 px off the shaft */
+  tl.set(P+"head", {autoAlpha:0, scale:0, svgOrigin:"520 460", smoothOrigin:false}, 0);
+  tl.set(P+"wind", {scale:1, svgOrigin:"520 350", smoothOrigin:false}, 0);
   tl.set(P+"windlab", {autoAlpha:0, x:-16, y:0}, 0);
   tl.set(P+"src", {autoAlpha:0, y:0}, 0);
   tl.set(P+"chip", {autoAlpha:0, x:0, y:24, scale:0.94, transformOrigin:"left center"}, 0);
