@@ -27,7 +27,7 @@ const chrome = spawn(CHROME, [
   '--no-first-run', '--no-default-browser-check',
   `--remote-debugging-port=${PORT}`, `--user-data-dir=${profile}`,
   '--window-size=700,1000', 'about:blank',
-], { stdio: 'ignore' });
+], { stdio: 'ignore', windowsHide: true });
 
 const cleanup = () => {
   try { chrome.kill(); } catch {}

@@ -120,7 +120,7 @@ function launchChrome() {
     '--no-first-run', '--no-default-browser-check',
     `--remote-debugging-port=${PORT}`, `--user-data-dir=${profile}`,
     '--window-size=700,1000', 'about:blank',
-  ], { stdio: 'ignore' });
+  ], { stdio: 'ignore', windowsHide: true });
   return { chrome, profile };
 }
 
@@ -192,7 +192,7 @@ function loadBlocks() {
   // the shell's. Routing through `cmd.exe /c` reuses cmd's PATH resolution, which finds
   // the real python3 first, matching what running `python3` in a terminal actually does.
   const r = spawnSync('cmd.exe', ['/c', 'python3', join(HERE, 'blocks_pipeline.py')], {
-    maxBuffer: 64 * 1024 * 1024, encoding: 'utf-8',
+    maxBuffer: 64 * 1024 * 1024, encoding: 'utf-8', windowsHide: true,
   });
   if (r.status !== 0) {
     throw new Error(`blocks_pipeline.py failed (exit ${r.status}):\n${r.stderr}`);
