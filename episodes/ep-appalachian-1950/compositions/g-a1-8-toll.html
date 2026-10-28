@@ -38,6 +38,12 @@
   <svg class="tl8-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <clipPath id="tl8-nyclip"><use href="#tl8-ny"/></clipPath>
+      <!-- snow-side shading: soft glow from the southwest corner; a flat fill read as a stray box (frame 222.19) -->
+      <radialGradient id="tl8-snowgrad" cx="0.15" cy="0.85" r="0.9">
+        <stop offset="0" stop-color="#f2f5f8" stop-opacity="0.5"/>
+        <stop offset="0.55" stop-color="#f2f5f8" stop-opacity="0.22"/>
+        <stop offset="1" stop-color="#f2f5f8" stop-opacity="0"/>
+      </radialGradient>
     </defs>
     <g id="tl8-drift">
       <g transform="translate(-1696.797,-366.132) scale(0.03)">
