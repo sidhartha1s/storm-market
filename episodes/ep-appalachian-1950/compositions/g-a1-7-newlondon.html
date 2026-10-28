@@ -6,7 +6,12 @@
   g-a1-7-newlondon (A1-S9): scene 1 bar card "NEW LONDON, CT / TOP FOUR TIDES IN 100 YEARS", scene 2 NY State map + chip.
   Hand-authored from briefs/a1/g-a1-7-newlondon.md. Cues from audio/a1-s9.words.json (seconds from A1-S9 start).
   Map: frame A1-Y, s 0.03, top-left (58158.5, 5498.5): sx = 115.23*lon + 9498.9, sy = 7646.3 - 167.55*lat (Albany = 1000,500).
-  The NY outline is hand-simplified from lat/lon through that formula (not the Natural Earth path).
+  BASEMAP: Natural Earth 50m admin-1 (public domain), vertices copied verbatim in map units from the reduced state paths in
+    compositions/g-a4-4-statemap.html defs (= the US path of library/inhouse/master-map-us-canada.html, RDP 15):
+    NY = a44-g-ny whole (main, Long Island, Staten Island subpaths); PA = a44-g-pa vertices 14..28 (Delaware south of the
+    NY-NJ-PA tripoint) and 36,37,38,0 (OH-PA line and Erie lake shore); NJ = a44-g-nj vertices 15..25 (Hudson and harbor
+    shore). Borders shared with NY are drawn once, by NY. Neighbours are clipped at screen y 900.
+    Map X = 3841*(lon+97.576), Y = -5585*(lat-46.6213); screen = (map - TL) * 0.03 = matrix(0.03 0 0 0.03 -1744.755 -164.955).
   Timeline runs 18.96 s so the $20 MILLION chip stays settled 1.5 s before its exit; host data-duration should be 18.96.
 -->
 <template>
