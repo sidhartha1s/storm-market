@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4-11-door-quote (A4-S10, standard): Poloncarz glass quote card typed word by word (S-A), then grey chip
+  TRAVEL IS STRONGLY DISCOURAGED (S-B, the warning's own words), CC BY-SA photo credit on screen the whole window.
+  Overlay on cc-snowy-door.jpg (slow push, index work). Comp duration 15.03 s (a4-s10.wav).
+  Cue times are seconds from the START of A4-S10 (audio/a4-s10.words.json). Card and chip never on screen together.
+  From 13.04 ("So what happened") only the photo, the credit and S-B remain.
+  Fallbacks if a frame at 6.6 s / 10.0 s shows the card or chip over the door: .dq-card bottom:300px, or .dq-chip left:auto; right:400px (orchestrator call).
+-->
+<template>
+<style>
+  #g-a4-11-door-quote-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  #dq-stack { position:absolute; inset:0; }
+  .dq-card { position:absolute; inset:auto; left:260px; right:400px; bottom:150px; box-sizing:border-box; padding:28px 48px; text-align:center;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden; }
+  .dq-q { white-space:nowrap; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:44px; line-height:1.35; color:#f2f5f8; }
+  .dq-word { display:inline-block; opacity:0; visibility:hidden; }
+  .dq-attr { margin-top:12px; font-family:Arial, sans-serif; font-weight:700; font-size:24px; letter-spacing:3px; color:#d8a13a; }
+  .dq-chip { position:absolute; inset:auto; left:110px; bottom:110px; display:table; box-sizing:border-box; padding:22px 34px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden; }
+  .dq-row { white-space:pre; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; color:#c8d3e0; }
+  .dq-row span { display:inline-block; }
+  .dq-pill { position:absolute; inset:auto; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; }
+  .dq-src { left:110px; bottom:54px; display:table; opacity:0; visibility:hidden; }
+  .dq-credit { right:96px; top:54px; }
+</style>
+<div id="g-a4-11-door-quote-root" data-composition-id="g-a4-11-door-quote" data-width="1920" data-height="1080">
+  <div id="dq-stack">
+    <div class="dq-card" id="dq-card">
+      <div class="dq-q"><span class="dq-word" id="dq-w1">&ldquo;may</span> <span class="dq-word" id="dq-w2">have</span> <span class="dq-word" id="dq-w3">perished</span> <span class="dq-word" id="dq-w4">living</span> <span class="dq-word" id="dq-w5">alone.&rdquo;</span></div>
+      <div class="dq-attr" id="dq-attr">MARK POLONCARZ &middot; ERIE COUNTY EXECUTIVE</div>
+    </div>
+    <div class="dq-chip" id="dq-chip"><div class="dq-row"><span id="dq-c1">TRAVEL IS</span><span id="dq-c2"> STRONGLY DISCOURAGED</span></div></div>
+    <div class="dq-pill dq-src" id="dq-sa">Mark Poloncarz, via WBFO, 30 Dec 2022</div>
+    <div class="dq-pill dq-src" id="dq-sb">NWS Buffalo Blizzard Warning, 22 Dec 2022</div>
+    <div class="dq-pill dq-credit" id="dq-credit">Photo: Andre Carrotflower, Wikimedia Commons, CC BY-SA 4.0</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  /* credit is NOT hidden: it is there from frame 0 */
+  tl.set(["#dq-card", "#dq-chip", "#dq-sa", "#dq-sb", "#dq-c2"], { autoAlpha: 0 }, 0);
+  tl.set([1,2,3,4,5].map(function(i) { return "#dq-w" + i; }), { autoAlpha: 0 }, 0);
+
+  /* whole-window float so something always moves: 10 x 1.51 s = 15.1 s >= 15.03 */
+  tl.fromTo("#dq-stack", { y: 0 }, { y: -3, duration: 1.51, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0);
+
+  /* "Polonkars" @3.52: card shell + attribution in, quote words hidden; S-A in */
+  tl.fromTo("#dq-card", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 3.52);
+  tl.fromTo("#dq-sa", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 3.52);
+
+  /* words: may 5.02, have 5.72, perished 5.94, living 6.32, alone. 6.60 */
+  const T = [5.02, 5.72, 5.94, 6.32, 6.60];
+  T.forEach(function(t, i) {
+    tl.fromTo("#dq-w" + (i + 1), { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.14, ease: "power2.out" }, t);
+  });
+
+  /* before "The Weather Service" @7.50: card + S-A out */
+  tl.to(["#dq-card", "#dq-sa"], { x: 980, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 7.10);
+
+  /* "Weather Service warning" @7.60: S-B in */
+  tl.fromTo("#dq-sb", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 7.60);
+
+  /* "travel" @8.94: chip in with TRAVEL IS */
+  tl.fromTo("#dq-chip", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 8.94);
+  /* "strongly discouraged" @9.60 */
+  tl.fromTo("#dq-c2", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power2.out" }, 9.60);
+
+  /* after "advice." @12.04: chip out; S-B stays over the question */
+  tl.to("#dq-chip", { x: -80, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 12.30);
+
+  /* after "home?" @14.54: S-B and credit fade as the index fades toward the Act 5 blackout (host end 15.03) */
+  tl.to(["#dq-sb", "#dq-credit"], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 14.43);
+
+  window.__timelines["g-a4-11-door-quote"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
