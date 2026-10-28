@@ -252,13 +252,19 @@ window.__timelines = window.__timelines || {};
   /* ambient: scan line down at 60 px/s for the whole comp (384 px), fades in as the camera starts */
   tl.to(P + "scan", { y: 384, duration: DUR, ease: "none" }, 0);
   tl.to(P + "scan", { opacity: 1, duration: 0.5, ease: "power1.out" }, 0.26);
-  /* carried over from g-a3-9: Newark pulse ring every 1.4 s, Pittsburgh glow breathes, exit dots march */
-  tl.fromTo(P + "nwk-pulse", { opacity: 0.8, attr: { r: 17 } }, { opacity: 0, attr: { r: 40 }, duration: 1.4, ease: "power2.out", repeat: 3 }, 0);
-  tl.fromTo(P + "pit-glow", { opacity: 0.6 }, { opacity: 1, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0);
-  tl.to(P + "exit", { strokeDashoffset: -14, duration: 0.5, ease: "none", repeat: 11 }, 0);
+  /* carried over from g-a3-9, in phase with its state at host end (4.70):
+     Newark pulse (1.2 s tween + 0.2 s gap, r 17 -> 35, power1.out) is 0.50 s into a cycle: finish it, then cycles from 0.90.
+     Exit dots (14 px per 0.5 s from g-a3-9 comp 3.0) sit at offset -5.6: continue from there. */
+  tl.fromTo(P + "nwk-pulse", { opacity: 0.8 * (1 - 0.6145), attr: { r: 17 + 18 * 0.6145 } }, { opacity: 0, attr: { r: 35 }, duration: 0.70, ease: "power1.out" }, 0);
+  tl.fromTo(P + "nwk-pulse", { opacity: 0.8, attr: { r: 17 } }, { opacity: 0, attr: { r: 35 }, duration: 1.2, ease: "power1.out", repeat: 3, repeatDelay: 0.2, immediateRender: false }, 0.90);
+  tl.fromTo(P + "exit", { strokeDashoffset: -5.6 }, { strokeDashoffset: -19.6, duration: 0.5, ease: "none", repeat: 11 }, 0);
+  /* Pittsburgh glow (static in g-a3-9) breathes 1 -> 0.6 -> 1 */
+  tl.fromTo(P + "pit-glow", { opacity: 1 }, { opacity: 0.6, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0);
 
   /* BUT @0.00: frame 0 = g-a3-9 last frame; pin labels and g-a3-9's source line fade out before the move (0.26 s) */
   tl.to([P + "nwklab", P + "pitlab", P + "buflab", P + "src0"], { autoAlpha: 0, duration: 0.26, ease: "power2.in" }, 0);
+  /* EXITS chip (on screen since g-a3-9 comp 3.22-3.62): held 0.50 s here for a 1.58 s read in all, then out y -16 (0.4 s) */
+  tl.to(P + "exitchip", { y: -16, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, 0.50);
 
   /* COLD @0.26: camera A2-X -> T starts (camAt, logZoom, power2.inOut, lands 2.26); arrows 3 and 4 start drawing south
      (camAt, 2.2 s); the track dims to 0.4 */
