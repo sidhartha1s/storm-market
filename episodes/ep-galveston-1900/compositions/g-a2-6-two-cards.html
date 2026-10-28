@@ -20,7 +20,6 @@
   #g6-sh2 { left:830px; top:490px; width:740px; height:460px; }
   /* fit-content + wider gaps: the cards sit rotated 3 to 5 deg, which inflates each line's box by width x sin(angle) */
   .g6d { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:64px; line-height:72px; color:#2a2622; width:fit-content; }
-  #g6-c1 .g6d { width:fit-content; }
   .g6b1 { font-family:Georgia,'Times New Roman',serif; font-size:34px; line-height:42px; color:#2a2622; max-width:684px; width:fit-content; margin-top:28px; opacity:0; visibility:hidden; }
   .g6l2 { font-family:Arial,sans-serif; font-weight:700; font-size:26px; line-height:32px; color:#2a2622; max-width:612px; width:fit-content; margin-top:36px; opacity:0; visibility:hidden; }
   .g6q { font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:32px; line-height:42px; color:#2a2622; max-width:612px; margin-top:28px; }
@@ -81,8 +80,9 @@ window.__timelines = window.__timelines || {};
   const R = "#g-a2-6-two-cards-root";
 
   /* starting poses */
-  tl.set("#g6-c1", { y:-700, rotation:-10, transformOrigin:"50% 50%" }, 0);
-  tl.set("#g6-c2", { x:80, y:-800, rotation:14, transformOrigin:"50% 50%" }, 0);
+  /* drops start inside the frame and fade in as they fall, so no card text is ever visible above the frame */
+  tl.set("#g6-c1", { y:-140, rotation:-10, transformOrigin:"50% 50%" }, 0);
+  tl.set("#g6-c2", { x:80, y:-260, rotation:14, transformOrigin:"50% 50%" }, 0);
   tl.set("#g6-sh1", { rotation:-3, scale:1.2 }, 0);
   tl.set("#g6-sh2", { rotation:8, x:-20, y:5, scale:1.15 }, 0);
   tl.set("#g6-chip", { y:24, scale:0.94 }, 0);
