@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a5-15-moore, A5-S10 0 to 9.94. Text-only person card (no photo, no silhouette, no monogram).
+     0 to 4.62 full-frame designed card; 4.62 to 9.94 transparent over the g-intro-8-track still (orchestrator mount). */
+  #g-a5-15-moore-root { position:absolute; inset:0; background:transparent; font-family:Arial,sans-serif; overflow:hidden; }
+  .m15-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14);
+    border-radius:28px; box-sizing:border-box; box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  #m15-bg { position:absolute; inset:0; overflow:hidden;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .m15-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    font-family:Arial,sans-serif; font-weight:700; font-size:19px; color:#c8d3e0; white-space:nowrap; opacity:0; visibility:hidden; }
+  #m15-person { position:absolute; left:510px; top:330px; width:900px; height:200px; overflow:hidden; opacity:0; visibility:hidden; }
+  #m15-person-in { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+  #m15-pbeam { position:absolute; top:0; left:0; width:140px; height:200px;
+    background:linear-gradient(90deg, transparent, rgba(232,197,106,0.14), transparent); pointer-events:none; }
+  #m15-name { position:relative; font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:72px; line-height:1.05; color:#f2f5f8; }
+  #m15-role { position:relative; font-family:Arial,sans-serif; font-weight:700; font-size:27px; letter-spacing:2px; color:#f5d98b; margin-top:14px; }
+  #m15-c1 { position:absolute; left:580px; top:580px; width:760px; box-sizing:border-box; padding:24px 40px; text-align:center; opacity:0; visibility:hidden; }
+  #m15-c1-main { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:44px; line-height:1.1; color:#f2f5f8; }
+  #m15-c2 { position:absolute; left:96px; top:140px; box-sizing:border-box; padding:24px 40px; opacity:0; visibility:hidden; }
+  #m15-c2-main { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:44px; line-height:1.1; color:#f2f5f8; white-space:nowrap; }
+  #m15-c2-tag { font-family:Arial,sans-serif; font-weight:700; font-size:22px; letter-spacing:4px; color:#93a3b2; margin-top:10px; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-15-moore-root" data-composition-id="g-a5-15-moore" data-width="1920" data-height="1080">
+  <div id="m15-bg"><div id="m15-bgbeam"></div></div>
+
+  <div id="m15-src1" class="m15-src m15-glass">Search of Weather Bureau records, MWR 1900</div>
+  <div id="m15-src2" class="m15-src m15-glass">NOAA AOML, 2015</div>
+
+  <div id="m15-person" class="m15-glass">
+    <div id="m15-pbeam"></div>
+    <div id="m15-person-in">
+      <div id="m15-name">WILLIS MOORE</div>
+      <div id="m15-role">CHIEF, US WEATHER BUREAU</div>
+    </div>
+  </div>
+
+  <div id="m15-c1" class="m15-glass"><div id="m15-c1-main">NO STATEMENT FOUND</div></div>
+
+  <div id="m15-c2" class="m15-glass">
+    <div id="m15-c2-main">NORTHWEST, INTO THE GULF</div>
+    <div id="m15-c2-tag">AS BELEN CALLED IT</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* audio/a5-s10.words.json, host window 0 to 9.94 (g-a5-16 cuts at "And" 9.94). */
+  const tl = gsap.timeline({ paused: true });
+
+  /* background: ambient light band sweeps 0 to 4.6, then the ground cross-fades away over the track still */
+  tl.fromTo("#m15-bgbeam", { x: -300 }, { x: 1920, duration: 2.3, ease: "none", repeat: 1 }, 0);
+  tl.to("#m15-bg", { autoAlpha: 0, duration: 0.4, ease: "power1.inOut" }, 4.62); /* "The" 4.62 */
+
+  /* source line, search wording, then swap */
+  tl.fromTo("#m15-src1", { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0.12); /* "couldn't" 0.12 */
+  tl.to("#m15-src1", { autoAlpha: 0, duration: 0.2, ease: "power1.in" }, 4.62);
+  tl.fromTo("#m15-src2", { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 4.82); /* swap after "The" 4.62 */
+
+  /* person card: MOORE @1.60 (Willis 1.60) */
+  tl.fromTo("#m15-person", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6, ease: "back.out(1.6)" }, 1.6);
+  tl.fromTo("#m15-pbeam", { x: -140 }, { x: 900, duration: 1.2, ease: "none", repeat: 2 }, 1.6);
+  tl.to("#m15-person-in", { y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.2);
+
+  /* chip C1: NO STATEMENT @3.84 (right. 3.84) */
+  tl.fromTo("#m15-c1", { y: 24, scale: 0.94, autoAlpha: 0 }, { y: 0, scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(1.6)" }, 3.84);
+
+  /* 4.62 ("The"): person card and C1 slide right out */
+  tl.to("#m15-person", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 4.62);
+  tl.to("#m15-c1", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 4.62);
+
+  /* chip C2 over the track still: NORTHWEST @6.60 (northwest, 6.60); tag at 8.70 (Bellin 8.70, Belen on screen) */
+  tl.fromTo("#m15-c2", { y: 24, scale: 0.94, autoAlpha: 0 }, { y: 0, scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(1.6)" }, 6.6);
+  tl.to("#m15-c2", { y: -4, duration: 1.17, ease: "sine.inOut", yoyo: true, repeat: 1 }, 7.05);
+  tl.fromTo("#m15-c2-tag", { y: 10, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 8.7);
+
+  /* exit: C2 and source line slide out right 9.34 to 9.94, cut to the island */
+  tl.to("#m15-c2", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.34);
+  tl.to("#m15-src2", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 9.34);
+
+  window.__timelines["g-a5-15-moore"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
