@@ -212,9 +212,12 @@ window.__timelines = window.__timelines || {};
   const SOM = proj(-84.6041, 37.0920), WIL = proj(-84.1597, 36.7434), MID = proj(-83.7166, 36.6084);
 
   /* segment offsets (comp-local s), 0.40 s gaps assumed; cue = SEG[seg] + words.json time */
-  const SEG = { a4s1: 0.000, a4s2: 14.504, a4s3: 32.714 };
-  const DUR = SEG.a4s3 + 12.257 + 0.40;                                       /* 45.371 */
-  const S1 = SEG.a4s1, S2 = SEG.a4s2, S3 = SEG.a4s3;
+  /* numeric literals so sweep check 7 can fold the S-relative positions (comp_consts.fold reads `const X = n;` only).
+     Checked against index.html: a4-s1/s2/s3 start 621.91 / 636.414 / 654.624 */
+  const S1 = 0.000;
+  const S2 = 14.504;
+  const S3 = 32.714;
+  const DUR = 45.371;                                                          /* S3 + 12.257 (a4-s3 wav) + 0.40 */
 
   /* camera frames [s, top-left x, top-left y] -> centre form [s, cx, cy] */
   const fr = function (s, tx, ty) { return [s, tx + 960 / s, ty + 540 / s]; };
