@@ -139,8 +139,11 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"cg", {x:660, autoAlpha:0}, 0);
 
   /* ambient: surface ripples at 30 px/s the whole window (one period = 60 px per 2 s) */
-  tl.to(P+"pwave", {x:-60, duration:2, ease:"none", repeat:6}, 0);
-  tl.to(P+"cwave", {x:-60, duration:2, ease:"none", repeat:1}, 10.5);
+  /* host is 13.12 s: whole periods, then a partial one so neither wave runs past it (60 px = one period, so the 0 restart is seamless) */
+  tl.to(P+"pwave", {x:-60, duration:2, ease:"none", repeat:5}, 0);
+  tl.fromTo(P+"pwave", {x:0}, {x:-33.6, duration:1.12, ease:"none", immediateRender:false}, 12);
+  tl.to(P+"cwave", {x:-60, duration:2, ease:"none"}, 10.5);
+  tl.fromTo(P+"cwave", {x:0}, {x:-18.6, duration:0.62, ease:"none", immediateRender:false}, 12.5);
 
   /* THEN @0.00: flakes melt into the Pittsburgh water (12 flakes fall 215 px to the 8 ft surface and fade) */
   tl.set(P+"f1", {autoAlpha:0.9}, 0.10);  tl.to(P+"f1", {y:215, duration:1.3, ease:"none"}, 0.10);  tl.to(P+"f1", {autoAlpha:0, duration:0.3}, 1.10);
