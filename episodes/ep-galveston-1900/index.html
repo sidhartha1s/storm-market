@@ -181,9 +181,12 @@
   <section class="clip blackout" id="bo-a2" data-start="240.038" data-duration="0.7" data-track-index="1"></section>
 
   <!-- ===== A2 (S1 0 to 5.32 and S2 to S8 are full-frame comps; footage only under the overlays) ===== -->
-  <!-- A2-S1 under g-a2-2: Belen College engraving (C. H. Tate, Munsey's, Dec 1898; an illustration), cut at 13.56 to Havana Cathedral (LOC, 1900) -->
-  <section class="clip still-wrap" id="c-a2-belen" data-start="246.058" data-duration="8.24" data-track-index="1"><img id="kb-a2-belen" src="media/a2/belen-college-1898.jpg" alt=""></section>
-  <section class="clip still-wrap" id="c-a2-havana" data-start="254.298" data-duration="7.502" data-track-index="1"><img id="kb-a2-havana" src="media/a2/havana-cathedral-1900.jpg" alt=""></section>
+  <!-- A2-S1 under g-a2-2: Belen College engraving (C. H. Tate, Munsey's, Dec 1898; an illustration), cut at "since" 11.20 to Havana Cathedral (LOC, 1900),
+       then at "Remember" 16.32 to the Palacio de Gobierno postcard (1900, A2-S1_c3). Split 28 Oct 26 (no still over 6 s): the only Belen image
+       is the engraving, and a same-photo second cut fails sweep's adjacent-duplicate check, so Belen holds 5.88 s and the two Havana views share the rest. -->
+  <section class="clip still-wrap" id="c-a2-belen" data-start="246.058" data-duration="5.88" data-track-index="1"><img id="kb-a2-belen" src="media/a2/belen-college-1898.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-havana" data-start="251.938" data-duration="5.12" data-track-index="1"><img id="kb-a2-havana" src="media/a2/havana-cathedral-1900.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a2-palacio" data-start="257.058" data-duration="4.742" data-track-index="1"><img id="kb-a2-palacio" src="media/candidates/a2/A2-S1_c3_havana-palacio-de-gobierno-1900.jpg" alt=""></section>
   <!-- A2-S9: STAND-IN for ins-paul-3 under the g-a2-10 panel -->
   <section class="clip still-wrap" id="c-a2-paul" data-start="391.861" data-duration="8.921" data-track-index="1" data-callback="stand-in for Paul's clip P3 (ins-paul-3 not generated)"><img id="kb-a2-paul" src="media/paul/paul-start-frame-omni-standin.jpg" alt=""></section>
   <section class="clip blackout" id="bo-a3" data-start="400.782" data-duration="0.7" data-track-index="1"></section>
@@ -424,7 +427,7 @@
   <div id="host-g-a6-6" data-composition-id="g-a6-6-surge" data-composition-src="compositions/g-a6-6-surge.html" data-start="1080.142" data-duration="12.943" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-g-a6-7" data-composition-id="g-a6-7-flood" data-composition-src="compositions/g-a6-7-flood.html" data-start="1093.085" data-duration="12.92" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-g-a6-8" data-composition-id="g-a6-8-warn24" data-composition-src="compositions/g-a6-8-warn24.html" data-start="1106.005" data-duration="4.11" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a6-9" data-composition-id="g-a6-9-recap" data-composition-src="compositions/g-a6-9-recap.html" data-start="1110.102" data-duration="12.39" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a6-9" data-composition-id="g-a6-9-recap" data-composition-src="compositions/g-a6-9-recap.html" data-start="1110.115" data-duration="12.377" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-g-a6-10" data-composition-id="g-a6-10-today" data-composition-src="compositions/g-a6-10-today.html" data-start="1132.57" data-duration="3.44" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-g-a6-11" data-composition-id="g-a6-11-season" data-composition-src="compositions/g-a6-11-season.html" data-start="1136.01" data-duration="8.025" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-g-a6-12" data-composition-id="g-a6-12-close" data-composition-src="compositions/g-a6-12-close.html" data-start="1159.535" data-duration="12.0" data-track-index="2" data-width="1920" data-height="1080"></div>
@@ -437,16 +440,17 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   /* stills get a quick punch on their cut (no slow Ken Burns: DESIGN.md "Footage motion"); the overlay comps carry the motion after */
   const stills = [
-    ["#kb-h2-gdn", 7.08], ["#kb-h3-stereo", 14.012], ["#kb-h5-gdn", 37.673], ["#kb-h5-mwr", 39.193],
-    ["#kb-i1-byline", 54.275], ["#kb-i4-warn", 89.201], ["#kb-i5-gdn", 100.347],
-    ["#kb-a1-page", 111.247], ["#kb-a1-beach", 132.334], ["#kb-a1-indianola", 145.514], ["#kb-a1-column", 154.523],
-    ["#kb-a1-street", 178.762], ["#kb-a1-page2", 196.611], ["#kb-a1-street2", 212.759], ["#kb-a1-beach2", 220.032],
+    ["#kb-h2-cline", 7.08], ["#kb-h2-gdn", 10.546], ["#kb-h3-stereo", 14.012], ["#kb-h5-gdn", 37.673], ["#kb-h5-mwr", 39.193],
+    ["#kb-i1-byline", 54.275], ["#kb-i1-p373", 58.325], ["#kb-i4-warn", 89.201], ["#kb-i4-map", 94.774],
+    ["#kb-i5-gdn", 100.347], ["#kb-i5-cline", 105.447],
+    ["#kb-a1-page", 126.334], ["#kb-a1-beach", 132.334], ["#kb-a1-indianola", 145.514], ["#kb-a1-column", 154.523],
+    ["#kb-a1-page2", 193.451], ["#kb-a1-street2", 214.032], ["#kb-a1-beach2", 224.943],
     ["#kb-a1-paul", 230.943], ["#kb-a2-belen", 246.058], ["#kb-a2-havana", 254.298], ["#kb-a2-paul", 391.861],
-    ["#kb-a3-p373", 567.425], ["#kb-a3-p372", 575.105], ["#kb-a3-paul", 584.905],
-    ["#kb-a4-330", 620.625], ["#kb-a4-p372", 644.075], ["#kb-a4-p373a", 666.674], ["#kb-a4-p373b", 686.336],
-    ["#kb-a4-wreck", 736.979], ["#kb-a4-wreck2", 757.029], ["#kb-a4-work", 778.563], ["#kb-a4-work2", 804.224],
-    ["#kb-a4-wife", 828.844], ["#kb-a5-p374", 881.784], ["#kb-a5-paul", 960.508], ["#kb-a5-map", 1003.951],
-    ["#kb-a6-build", 1034.428], ["#kb-a6-paul", 1122.492], ["#kb-a6-pier", 1132.57]
+    ["#kb-a3-p373", 567.425], ["#kb-a3-p372", 575.105], ["#kb-a3-byline", 580.105], ["#kb-a3-paul", 584.905],
+    ["#kb-a4-wreck", 751.029], ["#kb-a4-work2", 803.724],
+    ["#kb-a4-wife", 829.543], ["#kb-a5-p374", 881.784], ["#kb-a5-p372", 886.051], ["#kb-a5-p373", 890.318],
+    ["#kb-a5-paul", 960.508], ["#kb-a5-map", 1007.891],
+    ["#kb-a6-build", 1034.428], ["#kb-a6-map", 1039.668], ["#kb-a6-paul", 1122.492], ["#kb-a6-pier", 1132.57]
   ];
   stills.forEach(([sel, at]) => tl.fromTo(sel, { scale: 1.08 }, { scale: 1, duration: 0.6, ease: "power3.out" }, at));
   tl.set({}, {}, DUR);
