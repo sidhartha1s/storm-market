@@ -17,11 +17,12 @@
   /* diagram labels: HUD layer, never ride the camera push */
   .ga111-lab { position:absolute; white-space:nowrap;
     font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:3px;
-    paint-order:stroke; -webkit-text-stroke:0; text-shadow:0 0 5px #04070c, 0 0 5px #04070c; }
+    -webkit-text-stroke:5px #04070c; paint-order:stroke fill; }
   .ga111-hid { opacity:0; visibility:hidden; }
-  #g-a1-11-elevation-lgulf { left:228px; top:827px; }
-  /* above y 680 (circle corner is x>=1600, y>=680) */
-  #g-a1-11-elevation-lbay { left:1692px; top:600px; }
+  /* water labels centred by a fixed box (no transform: they show on frame 0 and never move) */
+  #g-a1-11-elevation-lgulf { left:78px; width:300px; text-align:center; top:827px; }
+  /* above y 680 (circle corner is x>=1600, y>=680); centred x 1692 */
+  #g-a1-11-elevation-lbay { left:1542px; width:300px; text-align:center; top:600px; }
   #g-a1-11-elevation-lsea { right:990px; top:748px; }
   /* baseline 318 -> top 296; baseline 526 -> top 504 (22 px on a 26 px line) */
   #g-a1-11-elevation-lhoop { left:96px; top:296px; }
