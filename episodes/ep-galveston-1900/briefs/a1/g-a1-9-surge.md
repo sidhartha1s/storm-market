@@ -35,7 +35,7 @@ Part B, map (12.98 to end): g-intro-4 projection `X = (lon + 100) * 90`, `Y = (4
 3. The 1891 label is gone before the TODAY label is fully in (one reading target), and both say exactly "STORM WAVE (1891)" / "STORM SURGE (TODAY)".
 4. Part B: neither arrow reaches the mainland or a town, and no arrow is brighter or labelled: the picture asks, it does not answer. No text says where the water went.
 5. No number except the two years in the label; no height, depth or distance.
-6. Nothing in x >= 1600, y >= 680 in either part (land fill only in Part A; arrows start west of x 1500).
+6. Nothing in x >= 1600, y >= 680 in either part except unlabelled land or water fill (arrows and labels stay west of x 1500 there).
 
 ## 5. Text and cues (a1-s5.words.json, segment 17.249 s)
 - 0.00: Part A on (sea, coast, tide line, glyph turning); source line A in. /* PLATE @0.00 */
