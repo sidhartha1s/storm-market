@@ -29,12 +29,14 @@
   .ga34-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
     background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:1.4; color:#c8d3e0; white-space:nowrap; }
-  #g-a3-4-port-eads-page { position:absolute; left:500px; top:315px; width:920px; height:450px; overflow:hidden; border-radius:12px;
+  /* whole-lines crop, measured on the scan 28 Oct 26: column rule at x 567-569, text x 571..1034, line gaps y 1104-1107 and 1322-1325.
+     Box x 570..1043 (473 wide), y 1104..1322 (218 high); panel 1280 x 640 keeps clear of the presenter corner (x < 1600). */
+  #g-a3-4-port-eads-page { position:absolute; left:320px; top:220px; width:1280px; height:640px; overflow:hidden; border-radius:12px;
     border:1px solid rgba(255,255,255,0.14); background:#04070c; }
   .ga34-img { position:absolute; left:0; top:0; width:1150px; height:1568px; transform-origin:0 0; }
-  #g-a3-4-port-eads-img-dim { opacity:0.55; clip-path:inset(1101px 107px 246px 576px); }
-  #g-a3-4-port-eads-img-lit { clip-path:inset(1104px 107px 450px 576px); }
-  #g-a3-4-port-eads-band { position:absolute; left:576px; top:1104px; width:467px; height:14px; background:#d8a13a; opacity:0; visibility:hidden; transform-origin:0 0; }
+  #g-a3-4-port-eads-img-dim { opacity:0.55; clip-path:inset(1104px 107px 246px 570px); }
+  #g-a3-4-port-eads-img-lit { clip-path:inset(1104px 107px 450px 570px); }
+  #g-a3-4-port-eads-band { position:absolute; left:570px; top:1104px; width:473px; height:14px; background:#d8a13a; opacity:0; visibility:hidden; transform-origin:0 0; }
   .ga34-hide { opacity:0; visibility:hidden; }
 </style>
 <div id="g-a3-4-port-eads-root" data-composition-id="g-a3-4-port-eads" data-width="1920" data-height="1080">
