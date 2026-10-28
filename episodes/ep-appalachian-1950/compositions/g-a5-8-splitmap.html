@@ -172,7 +172,7 @@ window.__timelines = window.__timelines || {};
   tl.set(P + "nwk-at", { x: at(NWK[0], 960, K0), y: at(NWK[1], 540, K0) }, 0);
   tl.set(P + "pit-at", { x: at(PIT[0], 960, K0), y: at(PIT[1], 540, K0) }, 0);
   tl.set(P + "buf-at", { x: at(BUF[0], 960, K0), y: at(BUF[1], 540, K0) }, 0);
-  tl.set([P + "chip1", P + "chip2", P + "src"], { x: 0, y: 0 }, 0);
+  tl.set([P + "chip1", P + "src"], { x: 0, y: 0 }, 0);
 
   /* ambient: scan line top to bottom at about 62 px/s over the whole comp */
   tl.fromTo(P + "scan", { y: -10 }, { y: 1090, duration: DUR / 2, ease: "none", repeat: 1 }, 0);
