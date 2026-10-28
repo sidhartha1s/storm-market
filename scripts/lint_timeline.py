@@ -35,6 +35,7 @@ import sys
 from pathlib import Path
 
 import yaml
+import narration_mounts
 
 # owner-banned audio by content hash (a rename cannot dodge it): "<md5>  <name>  <why>" per line
 _banned = Path(__file__).resolve().parent.parent / "assets/sfx/BANNED.md5"
@@ -110,7 +111,7 @@ def main():
 
     tags = re.findall(r"<(video|img|audio|script)\b[^>]*>", html)
     elems = re.finditer(r'<(video|img|audio)\b([^>]*)>', html)
-    audio_windows = []
+    audio_windows, nx_mounts = [], {}
     for e in elems:
         kind, attrs = e.group(1), e.group(2)
         src = re.search(r'src="([^"]+)"', attrs)
@@ -133,17 +134,24 @@ def main():
         # narration window must be at least as long as its wav (FORMAT.md:59, day-1 bug 15 Sep
         # 26: a retime moved narration starts and kept the old data-duration, cutting the last
         # words of six segments — the render shipped clean-looking and silently truncated).
+        # A wav may be mounted in parts around a Paul clip (narration_mounts.py); checked per wav below.
         if kind == "audio" and src and re.search(r'\sid="nx-', attrs) and d is not None and (ep / src.group(1)).exists():
-            wav_d = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
-                                          "-of", "csv=p=0", str(ep / src.group(1))],
-                                         capture_output=True, text=True).stdout.strip() or 0)
-            if wav_d > d + 0.05:
-                findings.append(f"narration window shorter than its wav: {src.group(1)} window {d}s, wav {wav_d:.2f}s (last words cut)")
+            nx_mounts.setdefault(src.group(1), []).append(e.group(0))
         # b-roll is muted by default; a clip with its own sound declares data-has-audio
         # (FORMAT.md:57, owner 15 Sep 26: a stranded-passenger interview played under Paul and
         # a quote card with neither muted nor data-has-audio set).
         if kind == "video" and 'data-track-index="1"' in attrs and "muted" not in attrs and "data-has-audio" not in attrs:
             findings.append(f"unmuted b-roll without data-has-audio: {src.group(1) if src else '?'}")
+
+    paul = narration_mounts.paul_lines(html)
+    for src, mounts in nx_mounts.items():
+        wav_d = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                                      "-of", "csv=p=0", str(ep / src)],
+                                     capture_output=True, text=True).stdout.strip() or 0)
+        # lint owns "last words cut" only; a window longer than its wav is sweep_episode's freshness check
+        for kind, msg in narration_mounts.segment_findings(mounts, wav_d, paul, tol=0.05):
+            if kind != "past":
+                findings.append(f"narration window shorter than its wav: {src} {msg} (last words cut)")
 
     audio_windows.sort()
     for (s1, e1, f1), (s2, e2, f2) in zip(audio_windows, audio_windows[1:]):

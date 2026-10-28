@@ -12,9 +12,11 @@ import tempfile
 from collections import Counter
 from pathlib import Path
 from comp_consts import fold
+from narration_mounts import declared_cut, paul_lines, segment_findings
 
 ep = Path(sys.argv[1])
 h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
+paul = paul_lines(h)
 fails = []
 
 
@@ -48,7 +50,7 @@ for m in re.finditer(r'<(section|video|div)\b([^>]*)>', h):
         inner = re.split(r'</%s>|<(?:section|video|div)\b[^>]*data-start=' % m.group(1), inner, maxsplit=1)[0]
         s2 = re.search(r'src="([^"]+)"', inner)
         src = s2
-    wins.append(dict(at=float(st.group(1)), dur=float(du.group(1)), tr=int(tr.group(1)),
+    wins.append(dict(at=float(st.group(1)), dur=float(du.group(1)), tr=int(tr.group(1)), tag=m.group(0),
                      name="[blackout]" if is_black else
                           (cid.group(1) if cid else (src.group(1) if src else "?"))))
 
@@ -300,7 +302,7 @@ for gid in sorted(mounted):
             overrun.append(("holds", gid, round(w["dur"], 1), round(tl_end, 1)))
         # the direction this check used to ignore entirely: a mount SHORTER than the
         # composition cuts off its own authored reveals
-        elif last_beat - w["dur"] > 0.30:
+        elif last_beat - w["dur"] > 0.30 and not declared_cut(w["tag"], paul, after=w["at"] + w["dur"]):
             overrun.append(("cuts a beat", gid, round(w["dur"], 1), round(last_beat, 1)))
 report("graphic window fits its timeline", overrun,
        lambda x: f"{x[0]:9} {x[1]} window {x[2]}s vs timeline {x[3]}s")
@@ -434,13 +436,16 @@ def _wav_duration(p):
         return None
 
 stale = []
+# one wav may be mounted as several partial <audio> tags around a Paul clip (narration_mounts.py): checked per wav
+segs = {}
 for m in re.finditer(r'<audio\b[^>]*id="(nx-(?!ins)[^"]*)"[^>]*>', h):
-    a, eid = m.group(0), m.group(1)
+    a = m.group(0)
     src = re.search(r'src="([^"]+)"', a)
-    du = re.search(r'data-duration="([\d.]+)"', a)
-    if not (src and du):
-        continue
-    wav = ep / src.group(1)
+    if src and re.search(r'data-duration="([\d.]+)"', a):
+        segs.setdefault(src.group(1), []).append((m.group(1), a))
+for src, mounts in segs.items():
+    eid = "+".join(i for i, _ in mounts)
+    wav = ep / src
     if not wav.exists():
         continue  # "media files exist" already flags this
     words_p = wav.with_name(wav.stem + ".words.json")
@@ -448,9 +453,7 @@ for m in re.finditer(r'<audio\b[^>]*id="(nx-(?!ins)[^"]*)"[^>]*>', h):
     if wav_dur is None or wav_dur != wav_dur:  # nan = ffprobe failed
         stale.append((eid, "wav duration unreadable (ffprobe failed)"))
         continue
-    html_dur = float(du.group(1))
-    if abs(html_dur - wav_dur) > 0.1:
-        stale.append((eid, f"data-duration {html_dur}s vs wav {wav_dur:.2f}s (diff {html_dur - wav_dur:+.2f}s)"))
+    stale += [(eid, msg) for _, msg in segment_findings([a for _, a in mounts], wav_dur, paul, tol=0.1)]
     if words_p.exists():
         if words_p.stat().st_mtime < wav.stat().st_mtime - 0.001:
             stale.append((eid, f"{words_p.name} is older than its wav"))
