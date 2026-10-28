@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-2-warning-clock (A2-S1 19.40 to 22.84, standard): full-frame designed scene, the Blizzard Warning clock.
+  Comp 3.44 s; host data-start = A2-S1 start + 19.40. Cue times below are comp-local; spoken time (seconds from the
+  A2-S1 wav, audio/a2-s1.words.json) in each tween comment. No footage under it: the ground is on the root.
+  Clock: centre (960, 430), 12 o'clock up, 6 deg per minute clockwise. Wedge end angle runs through a proxy written
+  in the timeline onUpdate (seek-safe). Minute hand 0 -> 144 (7:24), hour hand 210 -> 222. Nothing in x >= 1600, y >= 680.
+  The word BLIZZARD is not on screen (the picture string is WARNING IN EFFECT).
+  Wedge end point at 144 deg: x = 960 + 192 sin(144) = 1072.86, y = 430 - 192 cos(144) = 585.34.
+-->
+<template>
+<style>
+  #g-a2-2-warning-clock-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  #wk-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  #wk-clock { opacity:0; visibility:hidden; }
+  #wk-tag { position:absolute; left:0; top:186px; width:1920px; text-align:center; white-space:nowrap;
+    font-family:'Courier New', monospace; font-weight:700; font-size:30px; line-height:30px; color:#e8c56a;
+    opacity:0; visibility:hidden; }
+  #wk-labwrap { position:absolute; left:0; top:700px; width:1920px; height:84px; }
+  #wk-lab { position:absolute; left:0; top:0; width:1920px; height:84px; opacity:0; visibility:hidden; }
+  #wk-row { display:flex; flex-direction:row; align-items:baseline; justify-content:center; white-space:nowrap; width:1920px; height:84px; }
+  #wk-warn { font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:1; color:#dfe7ee; letter-spacing:1px; margin-right:18px; }
+  #wk-numbox { display:block; opacity:0; visibility:hidden; }
+  #wk-n { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; line-height:1; color:#f2f5f8; }
+  #wk-min { display:block; font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:1; color:#dfe7ee; margin-left:12px; opacity:0; visibility:hidden; }
+  #wk-src { position:absolute; left:96px; bottom:54px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:400;
+    font-size:19px; line-height:24px; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-2-warning-clock-root" data-composition-id="g-a2-2-warning-clock" data-width="1920" data-height="1080">
+  <svg id="wk-svg" viewBox="0 0 1920 1080">
+    <g id="wk-clock">
+      <circle id="wk-ring" cx="960" cy="430" r="200" fill="#15202b" stroke="#dfe7ee" stroke-width="6"/>
+      <path id="wk-wedge" d="M960 430" fill="rgba(216,161,58,.45)"/>
+      <g stroke="#93a3b2" stroke-width="4" fill="none">
+        <line x1="960" y1="260" x2="960" y2="238"/>
+        <line x1="1045" y1="282.78" x2="1056" y2="263.72"/>
+        <line x1="1107.22" y1="345" x2="1126.28" y2="334"/>
+        <line x1="1130" y1="430" x2="1152" y2="430"/>
+        <line x1="1107.22" y1="515" x2="1126.28" y2="526"/>
+        <line x1="1045" y1="577.22" x2="1056" y2="596.28"/>
+        <line x1="960" y1="600" x2="960" y2="622"/>
+        <line x1="875" y1="577.22" x2="864" y2="596.28"/>
+        <line x1="812.78" y1="515" x2="793.72" y2="526"/>
+        <line x1="790" y1="430" x2="768" y2="430"/>
+        <line x1="812.78" y1="345" x2="793.72" y2="334"/>
+        <line x1="875" y1="282.78" x2="864" y2="263.72"/>
+      </g>
+      <line id="wk-hh" x1="960" y1="430" x2="960" y2="320" stroke="#f2f5f8" stroke-width="12"/>
+      <line id="wk-mh" x1="960" y1="430" x2="960" y2="260" stroke="#f2f5f8" stroke-width="8"/>
+      <circle cx="960" cy="430" r="14" fill="#d8a13a"/>
+    </g>
+  </svg>
+  <div id="wk-tag">7:00 AM</div>
+  <div id="wk-labwrap">
+    <div id="wk-lab"><div id="wk-row">
+      <span id="wk-warn">WARNING IN EFFECT</span>
+      <span id="wk-numbox"><span id="wk-n">24</span></span>
+      <span id="wk-min">MIN</span>
+    </div></div>
+  </div>
+  <div id="wk-src">NWS Buffalo Blizzard Warning, 22 Dec 2022</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const $ = function(id) { return document.getElementById(id); };
+  const O = "960 430";
+
+  /* start-hidden also in CSS; transforms start here */
+  tl.set(["#wk-clock", "#wk-tag", "#wk-lab", "#wk-numbox", "#wk-min", "#wk-src"], { autoAlpha: 0 }, 0);
+  /* svgOrigin + smoothOrigin:false on BOTH ends of every tween of these elements: a from-state without it
+     re-bases the origin and leaves a residual offset (clock off-centre, hour hand detached from the pivot) */
+  tl.set("#wk-mh", { rotation: 0, svgOrigin: O, smoothOrigin: false }, 0);
+  tl.set("#wk-hh", { rotation: 210, svgOrigin: O, smoothOrigin: false }, 0);
+  tl.set("#wk-clock", { scale: 0.9, svgOrigin: O, smoothOrigin: false }, 0);
+  tl.set("#wk-ring", { scale: 1, svgOrigin: O, smoothOrigin: false }, 0);
+
+  /* "The" @19.50 -> local 0.10: clock at 7:00 + tag in */
+  tl.fromTo("#wk-clock", { autoAlpha: 0, scale: 0.9, svgOrigin: O, smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: O, smoothOrigin: false, duration: 0.45, ease: "power3.out" }, 0.1);
+  tl.fromTo("#wk-tag", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.1);
+
+  /* "warning" @19.90 -> local 0.50: label + source in; label row floats to 2.84 (4 x 0.585 s) */
+  tl.fromTo("#wk-lab", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.5);
+  tl.fromTo("#wk-src", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.5);
+  tl.fromTo("#wk-row", { y: 0 }, { y: -3, duration: 0.585, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.5);
+
+  /* "effect" @20.64 -> local 1.24: hands + wedge sweep 7:00 -> 7:24 in 1.0 s */
+  tl.fromTo("#wk-mh", { rotation: 0 }, { rotation: 144, svgOrigin: O, duration: 1.0, ease: "power2.inOut" }, 1.24);
+  tl.fromTo("#wk-hh", { rotation: 210 }, { rotation: 222, svgOrigin: O, duration: 1.0, ease: "power2.inOut" }, 1.24);
+  const wp = { a: 0 };
+  tl.fromTo(wp, { a: 0 }, { a: 144, duration: 1.0, ease: "power2.inOut" }, 1.24);
+  function drawWedge() {
+    const a = wp.a, r = 192, rad = a * Math.PI / 180;
+    const x = 960 + r * Math.sin(rad), y = 430 - r * Math.cos(rad);
+    $("wk-wedge").setAttribute("d", a < 0.05 ? "M960 430" :
+      "M960 430 L960 " + (430 - r) + " A" + r + " " + r + " 0 " + (a > 180 ? 1 : 0) + " 1 " + x.toFixed(2) + " " + y.toFixed(2) + " Z");
+  }
+  tl.eventCallback("onUpdate", drawWedge);
+  drawWedge();
+
+  /* "24" @21.10 -> local 1.70: numeral + MIN in, count 0 -> 24 lands 2.25 with the hand */
+  tl.fromTo("#wk-numbox", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.7);
+  tl.fromTo("#wk-min", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.7);
+  const cnt = { v: 0 };
+  tl.fromTo(cnt, { v: 0 }, { v: 24, duration: 0.55, ease: "power3.out", onUpdate: function() { /* leaf span only */
+    $("wk-n").textContent = Math.round(cnt.v);
+  } }, 1.7);
+
+  /* "minutes." @21.62 -> local 2.22: wedge edge pulse on the ring */
+  tl.to("#wk-ring", { scale: 1.03, svgOrigin: O, duration: 0.2, ease: "power2.out" }, 2.22);
+  tl.to("#wk-ring", { scale: 1, svgOrigin: O, duration: 0.2, ease: "power2.in" }, 2.42);
+
+  /* after "minutes." ends @21.94 -> local 2.84: fade-through, ground stays; ends 3.44 = comp end */
+  tl.to(["#wk-clock", "#wk-tag", "#wk-labwrap", "#wk-src"], { autoAlpha: 0, y: -20, duration: 0.6, ease: "power2.in" }, 2.84);
+
+  window.__timelines["g-a2-2-warning-clock"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
