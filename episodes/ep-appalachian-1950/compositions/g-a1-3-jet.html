@@ -1,0 +1,364 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-3-jet · A1-S3 · ep-appalachian-1950 · DEEP (Opus) · brief: briefs/a1/g-a1-3-jet.md + briefs/a1/_list.md
+  Claim: a stream of unusually fast air ran about a mile overhead; warm air near the ground let some of it mix down
+  (general mechanism, no place tied to it). Across New England the wind brought down trees and knocked out power.
+  Sources: factcheck/a1-r1.md rows 13, 14, 58 (NBC Connecticut, secondary); research/nws-facts.md §1 NCEI (factcheck/a1-r4.md row 1).
+
+  SCENE 1, cutaway (0 to 8.72 s, gone by 9.52): side view, west left, east right, no compass. Ground datum y 860; band
+    y 350-410, centre y 380 = "about a mile up" (480 px = 1 mile, schematic). Horizontal not to scale.
+  SCENE 2, map (8.72 s on): frame A1-E, s 0.028, top-left (68508.0, -2167.7), north up.
+    #jt3-mapunits holds map-unit geometry with the static frame transform matrix(s,0,0,s,-TLx*s,-TLy*s)
+    = matrix(0.028 0 0 0.028 -1918.224 60.6956); GSAP never transforms it (the drift and scale ride HTML wrappers).
+    PROJECTION (_list.md): map x = 3841 * (lon + 97.576), map y = -5585 * (lat - 46.6213); jt3Proj() below applies it.
+  BASEMAP: SIMPLIFIED, NOT the verbatim Natural Earth copy. The 50m paths sit on one line of about 150 KB in every
+    sibling, which this builder's Read/Grep could not return and Bash was down, so the coast, lakes, St Lawrence and
+    state/border lines here are hand-listed lon/lat vertices (about 0.1 deg detail) projected with the formula at load.
+    To swap in the verbatim basemap: paste the sibling's BASEMAP <path>s (map units) into #jt3-mapunits in place of
+    #jt3-land ... #jt3-river; the frame transform already matches.
+  Markers (screen px, brief §2): tree centre = site - 20 px x, outage centre = site + 20 px x. Illustrative of
+    "extensive" damage, not a count.
+
+  CUE TABLE (audio/a1-s3.words.json, seconds from A1-S3 start)
+    0.00 "That"     sky, ridge, rooftops, ground, tag, source line on
+    1.14 "stream"   band wipes in left to right (scaleX 0->1, 1.0 s, power3.out); streak set 1 moves at 420 px/s
+    1.88 "fast"     streak set 2 fades in (0.5 s), 560 px/s
+    3.46 "mile"     height bracket draws up from the ground (0.6 s); chip in (x -60->0, autoAlpha, 0.6 s)
+    5.66 "warm"     warm layer fades up (0.8 s), shimmer y 0->-6 yoyo
+    7.76 "mix"      four wisps draw down (0.8 s each, stagger 0.2 s), two arrowheads ride each
+    8.72 "Across"   chip exits; tag and source fade; cutaway y 0->400 + autoAlpha 0 (0.8 s); map in, scale 1.08->1 (0.9 s)
+    9.34 "England," region label, legend card, map source lines in
+   10.88 "trees"    9 tree markers pop (scale 0->1, back.out(2), stagger 0.08)
+   11.52 "knocked"  9 outage markers pop, then blink 1 -> .4 -> 1 to the last frame (12.84)
+  Host: data-start = A1-S3 start, data-duration = 12.438 + 0.40 = 12.84 s. Exit: none, the scene cuts to g-a1-4.
+-->
+<template>
+<style>
+  #jt3-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 55% 50%, #0b1016 0%, #030507 78%); }
+  .jt3-layer { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .jt3-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; }
+  .jt3-hide { opacity:0; visibility:hidden; }
+
+  /* ---- scene 1: cutaway ---- */
+  #jt3-cut { background:linear-gradient(180deg, #0b1016 0px, #15202b 860px, #15202b 1080px); }
+  #jt3-warm { position:absolute; left:0; top:700px; width:1920px; height:160px;
+    background:linear-gradient(0deg, rgba(216,161,58,.35), rgba(216,161,58,0)); }
+  #jt3-band { position:absolute; left:0; top:350px; width:1920px; height:60px; overflow:hidden;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,.85) 15%, rgba(127,178,229,.85) 85%, rgba(127,178,229,0)); }
+  #jt3-streaks { position:absolute; left:0; top:0; width:1920px; height:60px; overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+    mask-image:linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%); }
+  .jt3-st1 line { stroke:#f2f5f8; stroke-opacity:.6; stroke-width:2; stroke-linecap:round; }
+  .jt3-st2 line { stroke:#f2f5f8; stroke-opacity:.75; stroke-width:2; stroke-linecap:round; }
+  /* bracket: x 200, y 380 to 860, ticks at both ends; no number on it */
+  #jt3-bracket { position:absolute; left:188px; top:379px; width:26px; height:482px; }
+  .jt3-bline { position:absolute; left:12px; top:1px; width:2px; height:480px; background:#93a3b2; }
+  .jt3-btick { position:absolute; left:0; width:26px; height:2px; background:#93a3b2; }
+  .jt3-wisp { fill:none; stroke:#7fb2e5; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+  .jt3-arrow { fill:#7fb2e5; }
+
+  /* ---- HUD text ---- */
+  .jt3-glass { position:absolute; box-sizing:border-box; border-radius:28px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); }
+  #jt3-chip { left:110px; top:70px; padding:22px 34px 24px 34px; white-space:nowrap; }
+  #jt3-chip1 { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:1; color:#f2f5f8; }
+  #jt3-chip2 { font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:1; letter-spacing:2px; color:#dfe7ee; margin-top:14px; }
+  #jt3-tag { position:absolute; right:120px; top:70px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:1;
+    letter-spacing:2px; color:#93a3b2; white-space:nowrap; }
+  .jt3-src { position:absolute; left:110px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:1;
+    letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  #jt3-src1 { bottom:60px; }
+  #jt3-src2 { bottom:90px; }
+  #jt3-credit { bottom:60px; }
+
+  /* ---- scene 2: map ---- */
+  #jt3-map { background:radial-gradient(ellipse at 55% 50%, #070b10 0%, #030507 78%); }
+  #jt3-mapmove { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .jt3-landfill { fill:#0b1016; stroke:rgba(255,255,255,.14); stroke-width:1.5; stroke-linejoin:round; }
+  .jt3-water { fill:#05080c; stroke:rgba(255,255,255,.14); stroke-width:1.5; stroke-linejoin:round; }
+  .jt3-line { fill:none; stroke:rgba(255,255,255,.14); stroke-width:1.5; stroke-linejoin:round; stroke-linecap:round; }
+  .jt3-mk { position:absolute; width:28px; height:28px; filter:drop-shadow(0 0 3px #04070c); }
+  .jt3-mk svg, .jt3-lg svg { display:block; width:28px; height:28px; }
+  #jt3-region { position:absolute; left:1180px; top:300px; font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:1;
+    letter-spacing:8px; color:#93a3b2; white-space:nowrap; }
+  #jt3-legend { left:110px; top:70px; padding:22px 30px; }
+  .jt3-lg { display:flex; align-items:center; gap:16px; }
+  .jt3-lg + .jt3-lg { margin-top:16px; }
+  .jt3-lgt { font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:1; letter-spacing:2px; color:#f2f5f8; white-space:nowrap; }
+</style>
+<div id="jt3-root" data-composition-id="g-a1-3-jet" data-width="1920" data-height="1080" data-duration="12.84">
+
+  <!-- ================= SCENE 2: MAP (under the cutaway) ================= -->
+  <div id="jt3-map" class="jt3-layer jt3-hide">
+    <div id="jt3-mapmove">
+      <svg class="jt3-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <g id="jt3-mapunits" transform="matrix(0.028 0 0 0.028 -1918.224 60.6956)">
+          <path id="jt3-land" class="jt3-landfill" vector-effect="non-scaling-stroke" d=""/>
+          <path id="jt3-isles" class="jt3-landfill" vector-effect="non-scaling-stroke" d=""/>
+          <path id="jt3-lakes" class="jt3-water" vector-effect="non-scaling-stroke" d=""/>
+          <path id="jt3-borders" class="jt3-line" vector-effect="non-scaling-stroke" d=""/>
+          <path id="jt3-river" class="jt3-line" vector-effect="non-scaling-stroke" d=""/>
+        </g>
+      </svg>
+      <!-- tree markers: centre = site - 20 px x (box left = site x - 34, top = site y - 14) -->
+      <div id="jt3-trees">
+        <div class="jt3-mk jt3-tree jt3-hide" style="left:726px; top:806px;"><svg viewBox="0 0 28 28"><path d="M3 22 L17 15" stroke="#dfe7ee" stroke-width="3.2" stroke-linecap="round" fill="none"/><path d="M14 11 C16 5 24 5 25 10 C27 14 23 19 18 18 C15 18 13 15 14 11 Z" fill="#dfe7ee"/><path d="M2 25.5 L26 25.5" stroke="#dfe7ee" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <div class="jt3-mk jt3-tree jt3-hide" style="left:735px; top:754px;"><svg viewBox="0 0 28 28"><path d="M3 22 L17 15" stroke="#dfe7ee" stroke-width="3.2" stroke-linecap="round" fill="none"/><path d="M14 11 C16 5 24 5 25 10 C27 14 23 19 18 18 C15 18 13 15 14 11 Z" fill="#dfe7ee"/><path d="M2 25.5 L26 25.5" stroke="#dfe7ee" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <div class="jt3-mk jt3-tree jt3-hide" style="left:820px; top:729px;"><svg viewBox="0 0 28 28"><path d="M3 22 L17 15" stroke="#dfe7ee" stroke-width="3.2" stroke-linecap="round" fill="none"/><path d="M14 11 C16 5 24 5 25 10 C27 14 23 19 18 18 C15 18 13 15 14 11 Z" fill="#dfe7ee"/><path d="M2 25.5 L26 25.5" stroke="#dfe7ee" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <div class="jt3-mk jt3-tree jt3-hide" style="left:862px; top:798px;"><svg viewBox="0 0 28 28"><path d="M3 22 L17 15" stroke="#dfe7ee" stroke-width="3.2" stroke-linecap="round" fill="none"/><path d="M14 11 C16 5 24 5 25 10 C27 14 23 19 18 18 C15 18 13 15 14 11 Z" fill="#dfe7ee"/><path d="M2 25.5 L26 25.5" stroke="#dfe7ee" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <div class="jt3-mk jt3-tree jt3-hide" style="left:699px; top:877px;"><svg viewBox="0 0 28 28"><path d="M3 22 L17 15" stroke="#dfe7ee" stroke-width="3.2" stroke-linecap="round" fill="none"/><path d="M14 11 C16 5 24 5 25 10 C27 14 23 19 18 18 C15 18 13 15 14 11 Z" fill="#dfe7ee"/><path d="M2 25.5 L26 25.5" stroke="#dfe7ee" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <div class="jt3-mk jt3-tree jt3-hide" style="left:900px; top:713px;"><svg viewBox="0 0 28 28"><path d="M3 22 L17 15" stroke="#dfe7ee" stroke-width="3.2" stroke-linecap="round" fill="none"/><path d="M14 11 C16 5 24 5 25 10 C27 14 23 19 18 18 C15 18 13 15 14 11 Z" fill="#dfe7ee"/><path d="M2 25.5 L26 25.5" stroke="#dfe7ee" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <div class="jt3-mk jt3-tree jt3-hide" style="left:848px; top:580px;"><svg viewBox="0 0 28 28"><path d="M3 22 L17 15" stroke="#dfe7ee" stroke-width="3.2" stroke-linecap="round" fill="none"/><path d="M14 11 C16 5 24 5 25 10 C27 14 23 19 18 18 C15 18 13 15 14 11 Z" fill="#dfe7ee"/><path d="M2 25.5 L26 25.5" stroke="#dfe7ee" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <div class="jt3-mk jt3-tree jt3-hide" style="left:668px; top:382px;"><svg viewBox="0 0 28 28"><path d="M3 22 L17 15" stroke="#dfe7ee" stroke-width="3.2" stroke-linecap="round" fill="none"/><path d="M14 11 C16 5 24 5 25 10 C27 14 23 19 18 18 C15 18 13 15 14 11 Z" fill="#dfe7ee"/><path d="M2 25.5 L26 25.5" stroke="#dfe7ee" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <div class="jt3-mk jt3-tree jt3-hide" style="left:986px; top:510px;"><svg viewBox="0 0 28 28"><path d="M3 22 L17 15" stroke="#dfe7ee" stroke-width="3.2" stroke-linecap="round" fill="none"/><path d="M14 11 C16 5 24 5 25 10 C27 14 23 19 18 18 C15 18 13 15 14 11 Z" fill="#dfe7ee"/><path d="M2 25.5 L26 25.5" stroke="#dfe7ee" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      </div>
+      <!-- outage markers: centre = site + 20 px x (box left = site x + 6, top = site y - 14); the inner svg blinks -->
+      <div id="jt3-bolts">
+        <div class="jt3-mk jt3-bolt jt3-hide" style="left:766px; top:806px;"><svg class="jt3-boltg" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12.5" fill="none" stroke="#e8c56a" stroke-width="2"/><path d="M15.5 5 L8.5 15.5 L13.5 15.5 L12 23 L19.5 12 L14.5 12 Z" fill="#e8c56a"/></svg></div>
+        <div class="jt3-mk jt3-bolt jt3-hide" style="left:775px; top:754px;"><svg class="jt3-boltg" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12.5" fill="none" stroke="#e8c56a" stroke-width="2"/><path d="M15.5 5 L8.5 15.5 L13.5 15.5 L12 23 L19.5 12 L14.5 12 Z" fill="#e8c56a"/></svg></div>
+        <div class="jt3-mk jt3-bolt jt3-hide" style="left:860px; top:729px;"><svg class="jt3-boltg" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12.5" fill="none" stroke="#e8c56a" stroke-width="2"/><path d="M15.5 5 L8.5 15.5 L13.5 15.5 L12 23 L19.5 12 L14.5 12 Z" fill="#e8c56a"/></svg></div>
+        <div class="jt3-mk jt3-bolt jt3-hide" style="left:902px; top:798px;"><svg class="jt3-boltg" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12.5" fill="none" stroke="#e8c56a" stroke-width="2"/><path d="M15.5 5 L8.5 15.5 L13.5 15.5 L12 23 L19.5 12 L14.5 12 Z" fill="#e8c56a"/></svg></div>
+        <div class="jt3-mk jt3-bolt jt3-hide" style="left:739px; top:877px;"><svg class="jt3-boltg" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12.5" fill="none" stroke="#e8c56a" stroke-width="2"/><path d="M15.5 5 L8.5 15.5 L13.5 15.5 L12 23 L19.5 12 L14.5 12 Z" fill="#e8c56a"/></svg></div>
+        <div class="jt3-mk jt3-bolt jt3-hide" style="left:940px; top:713px;"><svg class="jt3-boltg" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12.5" fill="none" stroke="#e8c56a" stroke-width="2"/><path d="M15.5 5 L8.5 15.5 L13.5 15.5 L12 23 L19.5 12 L14.5 12 Z" fill="#e8c56a"/></svg></div>
+        <div class="jt3-mk jt3-bolt jt3-hide" style="left:888px; top:580px;"><svg class="jt3-boltg" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12.5" fill="none" stroke="#e8c56a" stroke-width="2"/><path d="M15.5 5 L8.5 15.5 L13.5 15.5 L12 23 L19.5 12 L14.5 12 Z" fill="#e8c56a"/></svg></div>
+        <div class="jt3-mk jt3-bolt jt3-hide" style="left:708px; top:382px;"><svg class="jt3-boltg" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12.5" fill="none" stroke="#e8c56a" stroke-width="2"/><path d="M15.5 5 L8.5 15.5 L13.5 15.5 L12 23 L19.5 12 L14.5 12 Z" fill="#e8c56a"/></svg></div>
+        <div class="jt3-mk jt3-bolt jt3-hide" style="left:1026px; top:510px;"><svg class="jt3-boltg" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12.5" fill="none" stroke="#e8c56a" stroke-width="2"/><path d="M15.5 5 L8.5 15.5 L13.5 15.5 L12 23 L19.5 12 L14.5 12 Z" fill="#e8c56a"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- map HUD: fixed, never rides the scale or drift -->
+  <div id="jt3-region" class="jt3-hide">NEW ENGLAND</div>
+  <div id="jt3-legend" class="jt3-glass jt3-hide">
+    <div class="jt3-lg"><svg viewBox="0 0 28 28"><path d="M3 22 L17 15" stroke="#dfe7ee" stroke-width="3.2" stroke-linecap="round" fill="none"/><path d="M14 11 C16 5 24 5 25 10 C27 14 23 19 18 18 C15 18 13 15 14 11 Z" fill="#dfe7ee"/><path d="M2 25.5 L26 25.5" stroke="#dfe7ee" stroke-width="1.6" stroke-linecap="round"/></svg><div class="jt3-lgt" id="jt3-lg1">TREES DOWN</div></div>
+    <div class="jt3-lg"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="12.5" fill="none" stroke="#e8c56a" stroke-width="2"/><path d="M15.5 5 L8.5 15.5 L13.5 15.5 L12 23 L19.5 12 L14.5 12 Z" fill="#e8c56a"/></svg><div class="jt3-lgt" id="jt3-lg2">POWER OUT</div></div>
+  </div>
+  <div id="jt3-src2" class="jt3-src jt3-hide">Source: NCEI</div>
+  <div id="jt3-credit" class="jt3-src jt3-hide">Basemap: Natural Earth</div>
+
+  <!-- ================= SCENE 1: CUTAWAY (over the map) ================= -->
+  <div id="jt3-cut" class="jt3-layer">
+    <!-- ridge: 3 low hills, crest y 760 to 820 -->
+    <svg class="jt3-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <path id="jt3-ridge" fill="#2a3644" d="M0,860 L0,820 C200,790 330,770 480,775 C640,780 700,812 860,815 C1020,818 1120,770 1300,762 C1480,756 1600,790 1760,805 C1840,812 1900,818 1920,820 L1920,860 Z"/>
+    </svg>
+    <div id="jt3-warm" class="jt3-hide"></div>
+    <!-- 14 unlabeled rooftop blocks on y 830-860 (all x < 1600), then the ground band y 860-1080 -->
+    <svg class="jt3-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="jt3-roofs" fill="#4a5560">
+        <rect x="250" y="840" width="56" height="20"/>
+        <rect x="330" y="832" width="40" height="28"/>
+        <rect x="395" y="844" width="64" height="16"/>
+        <rect x="500" y="836" width="46" height="24"/>
+        <rect x="585" y="842" width="58" height="18"/>
+        <rect x="680" y="830" width="42" height="30"/>
+        <rect x="760" y="840" width="66" height="20"/>
+        <rect x="864" y="834" width="48" height="26"/>
+        <rect x="955" y="844" width="60" height="16"/>
+        <rect x="1060" y="836" width="44" height="24"/>
+        <rect x="1140" y="840" width="62" height="20"/>
+        <rect x="1220" y="832" width="46" height="28"/>
+        <rect x="1320" y="842" width="58" height="18"/>
+        <rect x="1440" y="836" width="50" height="24"/>
+      </g>
+      <rect id="jt3-ground" x="0" y="860" width="1920" height="220" fill="#04070a"/>
+    </svg>
+    <!-- wind band y 350-410; two streak sets, each a strip plus its copy one frame-width to the left (seamless wrap) -->
+    <div id="jt3-band" class="jt3-hide">
+      <svg id="jt3-streaks" viewBox="0 0 1920 60" xmlns="http://www.w3.org/2000/svg">
+        <g id="jt3-s1" class="jt3-st1">
+          <g id="jt3-s1a">
+            <line x1="40" y1="12" x2="160" y2="12"/><line x1="150" y1="34" x2="330" y2="34"/>
+            <line x1="260" y1="22" x2="350" y2="22"/><line x1="330" y1="48" x2="480" y2="48"/>
+            <line x1="420" y1="16" x2="620" y2="16"/><line x1="480" y1="54" x2="580" y2="54"/>
+            <line x1="540" y1="40" x2="650" y2="40"/><line x1="610" y1="28" x2="770" y2="28"/>
+            <line x1="700" y1="10" x2="780" y2="10"/><line x1="790" y1="50" x2="930" y2="50"/>
+            <line x1="880" y1="24" x2="1070" y2="24"/><line x1="960" y1="38" x2="1060" y2="38"/>
+            <line x1="1000" y1="6" x2="1130" y2="6"/><line x1="1050" y1="14" x2="1220" y2="14"/>
+            <line x1="1130" y1="46" x2="1260" y2="46"/><line x1="1210" y1="30" x2="1300" y2="30"/>
+            <line x1="1290" y1="8" x2="1440" y2="8"/><line x1="1370" y1="42" x2="1570" y2="42"/>
+            <line x1="1460" y1="20" x2="1570" y2="20"/><line x1="1530" y1="52" x2="1700" y2="52"/>
+            <line x1="1610" y1="32" x2="1690" y2="32"/><line x1="1690" y1="12" x2="1830" y2="12"/>
+            <line x1="1760" y1="44" x2="1880" y2="44"/><line x1="1830" y1="26" x2="1990" y2="26"/>
+          </g>
+          <use href="#jt3-s1a" x="-1920"/>
+        </g>
+        <g id="jt3-s2" class="jt3-st2 jt3-hide">
+          <g id="jt3-s2a">
+            <line x1="40" y1="38" x2="190" y2="38"/><line x1="90" y1="18" x2="310" y2="18"/>
+            <line x1="300" y1="44" x2="460" y2="44"/><line x1="470" y1="30" x2="730" y2="30"/>
+            <line x1="560" y1="50" x2="700" y2="50"/><line x1="650" y1="8" x2="830" y2="8"/>
+            <line x1="820" y1="36" x2="1060" y2="36"/><line x1="990" y1="52" x2="1140" y2="52"/>
+            <line x1="1120" y1="20" x2="1350" y2="20"/><line x1="1210" y1="4" x2="1410" y2="4"/>
+            <line x1="1300" y1="40" x2="1470" y2="40"/><line x1="1380" y1="54" x2="1540" y2="54"/>
+            <line x1="1440" y1="12" x2="1690" y2="12"/><line x1="1600" y1="28" x2="1790" y2="28"/>
+            <line x1="1750" y1="48" x2="1960" y2="48"/><line x1="1860" y1="16" x2="2040" y2="16"/>
+          </g>
+          <use href="#jt3-s2a" x="-1920"/>
+        </g>
+      </svg>
+    </div>
+    <!-- height bracket: x 200, ground y 860 up to band centre y 380 -->
+    <div id="jt3-bracket" class="jt3-hide">
+      <div class="jt3-btick" style="top:0;"></div>
+      <div class="jt3-bline"></div>
+      <div class="jt3-btick" style="top:480px;"></div>
+    </div>
+    <!-- mixing wisps: band bottom (y 410) down to rooftops at x 520, 880, 1240; the x 1560 wisp ends near y 630 -->
+    <svg class="jt3-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <path id="jt3-w1" class="jt3-wisp jt3-hide" d="M520,410 C480,490 568,560 530,640 C496,712 556,760 524,806 C512,822 494,818 500,804"/>
+      <path id="jt3-w2" class="jt3-wisp jt3-hide" d="M880,410 C840,490 928,560 890,640 C856,712 916,760 884,806 C872,822 854,818 860,804"/>
+      <path id="jt3-w3" class="jt3-wisp jt3-hide" d="M1240,410 C1200,490 1288,560 1250,640 C1216,712 1276,760 1244,806 C1232,822 1214,818 1220,804"/>
+      <path id="jt3-w4" class="jt3-wisp jt3-hide" d="M1560,410 C1522,470 1596,520 1568,590 C1556,620 1532,634 1540,614"/>
+      <path id="jt3-a1a" class="jt3-arrow jt3-hide" d="M-6,-5 L6,0 L-6,5 Z"/><path id="jt3-a1b" class="jt3-arrow jt3-hide" d="M-6,-5 L6,0 L-6,5 Z"/>
+      <path id="jt3-a2a" class="jt3-arrow jt3-hide" d="M-6,-5 L6,0 L-6,5 Z"/><path id="jt3-a2b" class="jt3-arrow jt3-hide" d="M-6,-5 L6,0 L-6,5 Z"/>
+      <path id="jt3-a3a" class="jt3-arrow jt3-hide" d="M-6,-5 L6,0 L-6,5 Z"/><path id="jt3-a3b" class="jt3-arrow jt3-hide" d="M-6,-5 L6,0 L-6,5 Z"/>
+      <path id="jt3-a4a" class="jt3-arrow jt3-hide" d="M-6,-5 L6,0 L-6,5 Z"/><path id="jt3-a4b" class="jt3-arrow jt3-hide" d="M-6,-5 L6,0 L-6,5 Z"/>
+    </svg>
+  </div>
+
+  <!-- cutaway HUD: fixed, fades out when the camera moves -->
+  <div id="jt3-tag">SCHEMATIC, NOT TO SCALE</div>
+  <div id="jt3-src1" class="jt3-src">Source: NBC Connecticut report (a Connecticut weather writer's reading)</div>
+  <div id="jt3-chip" class="jt3-glass jt3-hide">
+    <div id="jt3-chip1">FAST WIND</div>
+    <div id="jt3-chip2">ABOUT 1 MILE UP</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const P = "#jt3-";
+  const $ = (id) => document.getElementById("jt3-" + id);
+
+  /* ---- map geometry: lon/lat vertices projected to map units (_list.md formula); SIMPLIFIED basemap, see header ---- */
+  const jt3Proj = (p) => (3841 * (p[0] + 97.576)).toFixed(1) + "," + (-5585 * (p[1] - 46.6213)).toFixed(1);
+  const jt3Path = (rings, close) => rings.map((r) => r.map((p, i) => (i ? "L" : "M") + jt3Proj(p)).join(" ") + (close ? " Z" : "")).join(" ");
+  const LAND = [[-82,48],[-64.85,48],[-64.8,47.1],[-64.6,46.6],[-64.2,46.25],[-63.8,46.12],[-63.3,45.8],[-62.6,45.65],
+    [-61.95,45.88],[-61.5,45.65],[-61.25,45.9],[-60.3,46.6],[-59.5,46.2],[-59.6,45.6],[-61.0,45.25],[-61.9,44.95],
+    [-62.8,44.72],[-63.6,44.5],[-64.3,44.4],[-64.8,43.95],[-65.35,43.6],[-65.75,43.5],[-66.1,43.8],[-66.2,44.25],
+    [-65.75,44.65],[-65.3,44.85],[-64.8,45.1],[-64.3,45.15],[-63.6,45.3],[-64.2,45.4],[-64.45,45.75],[-64.95,45.55],
+    [-65.6,45.3],[-66.1,45.25],[-66.6,45.1],[-67.0,44.9],[-67.3,44.6],[-67.9,44.4],[-68.4,44.25],[-68.8,44.45],
+    [-69.1,44.05],[-69.6,43.85],[-70.1,43.7],[-70.25,43.6],[-70.4,43.4],[-70.6,43.15],[-70.75,43.05],[-70.82,42.87],
+    [-70.65,42.65],[-70.9,42.5],[-71.05,42.32],[-70.85,42.25],[-70.65,41.95],[-70.5,41.77],[-70.05,41.77],[-70.08,41.95],
+    [-70.22,42.06],[-70.06,42.07],[-69.96,41.95],[-69.94,41.68],[-70.3,41.62],[-70.65,41.54],[-70.62,41.73],[-70.95,41.58],
+    [-71.15,41.48],[-71.25,41.75],[-71.4,41.78],[-71.42,41.55],[-71.48,41.37],[-71.86,41.32],[-72.1,41.32],[-72.5,41.27],
+    [-72.9,41.26],[-73.2,41.15],[-73.6,41.0],[-73.78,40.88],[-73.93,40.8],[-74.02,40.7],[-74.25,40.52],[-74.0,40.45],
+    [-74.0,40.3],[-74.05,40.05],[-74.15,39.6],[-82,39.6]];
+  const ISLES = [
+    [[-74.03,40.58],[-73.75,40.59],[-73.3,40.62],[-72.8,40.75],[-72.3,40.88],[-71.86,41.07],[-72.25,41.0],[-72.3,41.15],
+     [-72.65,40.98],[-73.1,40.93],[-73.5,40.9],[-73.75,40.8],[-73.95,40.72]],                    /* Long Island */
+    [[-70.83,41.35],[-70.7,41.45],[-70.6,41.47],[-70.45,41.42],[-70.5,41.35],[-70.7,41.33]],     /* Martha's Vineyard */
+    [[-70.25,41.29],[-70.05,41.3],[-69.97,41.26],[-70.1,41.24],[-70.2,41.25]],                   /* Nantucket */
+    [[-64.0,47.05],[-63.6,46.6],[-62.95,46.45],[-62.0,46.45],[-62.45,46.0],[-63.25,46.15],[-63.8,46.35],[-64.35,46.6]]]; /* PEI */
+  const LAKES = [
+    [[-79.85,43.3],[-79.05,43.25],[-78.4,43.37],[-77.6,43.26],[-76.95,43.28],[-76.5,43.47],[-76.2,43.55],[-76.15,43.95],
+     [-76.35,44.1],[-76.5,44.2],[-77.0,44.05],[-77.6,44.0],[-78.4,43.95],[-79.0,43.85],[-79.4,43.63],[-79.75,43.42]], /* Ontario */
+    [[-80.2,42.2],[-79.76,42.27],[-79.1,42.6],[-78.9,42.88],[-79.2,42.88],[-79.6,42.85],[-80.2,42.75]],             /* Erie */
+    [[-73.35,45.02],[-73.27,44.6],[-73.3,44.2],[-73.38,43.6],[-73.43,43.6],[-73.4,44.2],[-73.4,44.6],[-73.42,45.02]]]; /* Champlain */
+  const BORDERS = [
+    [[-74.75,44.99],[-71.5,45.01],[-71.08,45.3],[-70.85,45.4],[-70.4,45.73],[-70.25,46.1],[-70.0,46.7],[-69.25,47.45],
+     [-68.3,47.35],[-67.8,47.07],[-67.78,45.95],[-67.43,45.6],[-67.2,45.18],[-67.0,44.9]],         /* US-Canada */
+    [[-73.35,45.01],[-73.33,44.5],[-73.4,43.95],[-73.42,43.58],[-73.25,43.56],[-73.27,42.75],[-73.5,42.05],[-73.48,41.21],[-73.66,41.0]], /* NY east */
+    [[-71.5,45.01],[-71.65,44.65],[-72.05,44.3],[-72.4,43.6],[-72.45,43.1],[-72.55,42.73]],       /* VT-NH */
+    [[-71.08,45.3],[-71.0,44.5],[-70.97,43.6],[-70.82,43.25],[-70.7,43.08]],                      /* NH-ME */
+    [[-73.27,42.75],[-72.46,42.73],[-71.3,42.7],[-71.1,42.85],[-70.82,42.87]],                    /* MA north */
+    [[-73.5,42.05],[-71.8,42.02],[-71.38,42.02],[-71.34,41.73],[-71.12,41.5]],                    /* MA south, RI east */
+    [[-71.8,42.02],[-71.86,41.32]],                                                               /* CT-RI */
+    [[-79.76,42.0],[-75.36,42.0],[-75.07,41.6],[-74.7,41.36],[-73.9,41.0]],                       /* NY-PA, NY-NJ */
+    [[-74.7,41.36],[-75.1,40.95],[-75.2,40.6],[-74.95,40.25],[-74.7,40.15],[-75.1,39.9]],         /* NJ-PA */
+    [[-64.42,45.78],[-64.0,46.0]]];                                                               /* NB-NS */
+  const RIVER = [[[-76.3,44.2],[-75.5,44.7],[-74.7,45.0],[-73.9,45.35],[-73.5,45.55],[-72.8,45.95],[-72.2,46.3],[-71.2,46.8],[-70.5,47.1],[-69.8,47.6]]];
+  $("land").setAttribute("d", jt3Path([LAND], true));
+  $("isles").setAttribute("d", jt3Path(ISLES, true));
+  $("lakes").setAttribute("d", jt3Path(LAKES, true));
+  $("borders").setAttribute("d", jt3Path(BORDERS, false));
+  $("river").setAttribute("d", jt3Path(RIVER, false));
+
+  /* ---- wisps: dash length = ceil(len) + 1, measured, never typed ---- */
+  const wisps = [1, 2, 3, 4].map((n) => {
+    const path = $("w" + n);
+    const L = Math.ceil(path.getTotalLength()) + 1;
+    return { path: path, L: L, a: $("a" + n + "a"), b: $("a" + n + "b"), pr: { p: 0 } };
+  });
+  function placeArrow(el, path, len) {
+    const l = Math.max(2, len);
+    const q = path.getPointAtLength(l), r = path.getPointAtLength(l - 2);
+    const ang = Math.atan2(q.y - r.y, q.x - r.x) * 180 / Math.PI;
+    el.setAttribute("transform", "translate(" + q.x.toFixed(1) + " " + q.y.toFixed(1) + ") rotate(" + ang.toFixed(1) + ")");
+  }
+  /* arrowheads ride the drawn dash: one near its head (92 %), one at its middle (50 %); a pure function of the proxy */
+  function rideArrows(w) { const d = w.pr.p * (w.L - 1); placeArrow(w.a, w.path, d * 0.92); placeArrow(w.b, w.path, d * 0.5); }
+  wisps.forEach(rideArrows);
+
+  const tl = gsap.timeline({ paused: true });
+
+  /* ---- time 0: hidden states (also hidden in CSS) and transform starts ---- */
+  tl.set([P+"band", P+"s2", P+"bracket", P+"chip", P+"warm", P+"map", P+"region", P+"legend", P+"src2", P+"credit",
+          ".jt3-tree", ".jt3-bolt", ".jt3-wisp", ".jt3-arrow"], { autoAlpha: 0 }, 0);
+  tl.set(P+"band", { scaleX: 0, transformOrigin: "0% 50%" }, 0);
+  tl.set(P+"bracket", { scaleY: 0, transformOrigin: "50% 100%" }, 0);
+  tl.set(P+"chip", { x: -60 }, 0);
+  tl.set(P+"map", { scale: 1.08, transformOrigin: "50% 50%" }, 0);
+  tl.set([".jt3-tree", ".jt3-bolt"], { scale: 0, transformOrigin: "50% 50%" }, 0);
+  wisps.forEach((w) => tl.set(w.path, { strokeDasharray: w.L, strokeDashoffset: w.L }, 0));
+  /* THAT @0.00: sky, ridge, rooftops, ground, tag and source line are on from frame 0 (no tween needed) */
+
+  /* STREAM @1.14: band wipes in left to right; streak set 1 at 420 px/s (1920 px per 4.571 s, 2 cycles, ends 10.28) */
+  tl.set(P+"band", { autoAlpha: 1 }, 1.14);
+  tl.fromTo(P+"band", { scaleX: 0 }, { scaleX: 1, duration: 1.0, ease: "power3.out" }, 1.14);
+  tl.fromTo(P+"s1", { x: 0 }, { x: 1920, duration: 1920 / 420, ease: "none", repeat: 1 }, 1.14);
+
+  /* FAST @1.88: second, faster streak set fades in over the first; 560 px/s (3.429 s per cycle, 3 cycles, ends 12.17) */
+  tl.fromTo(P+"s2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, 1.88);
+  tl.fromTo(P+"s2", { x: 0 }, { x: 1920, duration: 1920 / 560, ease: "none", repeat: 2 }, 1.88);
+
+  /* MILE @3.46: bracket draws up from the ground; chip in */
+  tl.set(P+"bracket", { autoAlpha: 1 }, 3.46);
+  tl.fromTo(P+"bracket", { scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "power2.out" }, 3.46);
+  tl.fromTo(P+"chip", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 3.46);
+
+  /* WARM @5.66: warm layer fades up, then a slow shimmer (y 0 -> -6 yoyo, 4 legs, ends 10.46) */
+  tl.fromTo(P+"warm", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8, ease: "power1.out" }, 5.66);
+  tl.fromTo(P+"warm", { y: 0 }, { y: -6, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3 }, 5.66);
+
+  /* MIX @7.76: four wisps draw down, staggered 0.2 s, 0.8 s each; arrowheads ride each dash */
+  wisps.forEach((w, i) => {
+    const t = 7.76 + 0.2 * i;
+    tl.set(w.path, { autoAlpha: 1 }, t);
+    tl.fromTo(w.path, { strokeDashoffset: w.L }, { strokeDashoffset: 0, duration: 0.8, ease: "power2.inOut" }, t);
+    tl.fromTo(w.pr, { p: 0 }, { p: 1, duration: 0.8, ease: "power2.inOut", onUpdate: () => rideArrows(w) }, t);
+    tl.set([w.a, w.b], { autoAlpha: 1 }, t + 0.12);
+  });
+
+  /* ACROSS @8.72: chip exits; HUD fades; camera pulls up and through: cutaway down and out, map lands under it */
+  tl.to(P+"chip", { x: -60, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 8.72);
+  tl.to([P+"tag", P+"src1"], { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, 8.72);
+  tl.to(P+"cut", { y: 400, autoAlpha: 0, duration: 0.8, ease: "power2.in" }, 8.72);
+  tl.fromTo(P+"map", { autoAlpha: 0, scale: 1.08 }, { autoAlpha: 1, scale: 1, duration: 0.9, ease: "power2.out" }, 8.72);
+  /* slow map drift so the hold never idles (about 6.4 px/s, ends on the last frame 12.84) */
+  tl.fromTo(P+"mapmove", { x: 0, y: 0 }, { x: -20, y: -6, duration: 12.84 - 9.62, ease: "none" }, 9.62);
+
+  /* ENGLAND @9.34: region label, legend card and map source lines in */
+  tl.fromTo(P+"region", { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 9.34);
+  tl.fromTo(P+"legend", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.6, ease: "power3.out" }, 9.34);
+  tl.fromTo([P+"src2", P+"credit"], { y: 12, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 9.34);
+
+  /* TREES @10.88: 9 tree markers pop */
+  tl.fromTo(".jt3-tree", { scale: 0, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(2)", stagger: 0.08 }, 10.88);
+
+  /* KNOCKED @11.52: 9 outage markers pop, then blink 1 -> .4 -> 1 (one 0.8 s cycle, ends on the last frame 12.84) */
+  tl.fromTo(".jt3-bolt", { scale: 0, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.45, ease: "back.out(2)", stagger: 0.08 }, 11.52);
+  tl.fromTo(".jt3-boltg", { opacity: 1 }, { opacity: 0.4, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 12.04);
+
+  window.__timelines["g-a1-3-jet"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
