@@ -3,8 +3,8 @@
 <head><meta charset="UTF-8"></head>
 <body>
 <!--
-  g-intro-2-toll-chips (H1-S2, standard): four glass chips, one at a time, 46 / 12 / 18 OF 46 / +4, plus the WIVB source pill.
-  Overlay on the DVIDS 7576030 still (mounted by the orchestrator on a lower track). Comp duration 13.5 s.
+  g-intro-2-toll-chips (H1-S2, standard): three glass chips, one at a time, 12 / 18 OF 46 / +4, plus the WIVB source pill (the 46 IN ERIE COUNTY chip dropped: re-voiced line never says "46").
+  Overlay on the DVIDS 7576030 still (mounted by the orchestrator on a lower track). Comp duration 9.375 s (host cut).
   Cue times are seconds from the START of H1-S2 (audio/h1-s2.words.json). PROVISIONAL hook: redone if the owner picks another hook shape.
   Family base for g-intro-5-wind-chips: copy this file and swap the strings.
   Chip 2 reads "WITHOUT POWER OR HEAT" (never "at home", never "final", never "most").
@@ -13,7 +13,7 @@
 <style>
   #g-intro-2-toll-chips-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
   #tc-stack { position:absolute; inset:0; }
-  .tc-chip { position:absolute; left:110px; bottom:110px; display:table; box-sizing:border-box; padding:22px 34px;
+  .tc-chip { position:absolute; left:960px; bottom:110px; display:table; box-sizing:border-box; padding:22px 34px;
     background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden; }
   .tc-row { display:flex; flex-direction:row; align-items:baseline; white-space:nowrap; }
@@ -29,7 +29,6 @@
 </style>
 <div id="g-intro-2-toll-chips-root" data-composition-id="g-intro-2-toll-chips" data-width="1920" data-height="1080">
   <div id="tc-stack">
-    <div class="tc-chip" id="tc-c1"><div class="tc-row"><span class="tc-num" id="tc-n1">46</span><span class="tc-lab" id="tc-l1">IN ERIE COUNTY</span></div></div>
     <div class="tc-chip" id="tc-c2"><div class="tc-row"><span class="tc-num" id="tc-n2">12</span><span class="tc-lab" id="tc-l2">WITHOUT POWER OR HEAT</span></div></div>
     <div class="tc-chip" id="tc-c3"><div class="tc-row"><span class="tc-num tc-red" id="tc-n3">18</span><span class="tc-lab" id="tc-l3">OF 46 FOUND <span class="tc-out">OUTSIDE<span id="tc-rule"></span></span></span></div></div>
     <div class="tc-chip" id="tc-c4"><div class="tc-row"><span class="tc-num" id="tc-n4">+4</span><span class="tc-lab" id="tc-l4">IN THEIR CARS</span></div></div>
