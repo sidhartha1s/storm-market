@@ -1,0 +1,334 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4-2-half-city · A4-S1 4.58 to 11.02 (+ gap to A4-S2) · ep-galveston-1900 · DEEP (Opus) · brief: briefs/a4/g-a4-2-half-city.md
+  Claim: Cline drove to the bay side first, then the Gulf side, and found about half the city's streets under water;
+  his own house stood on ground 5.2 ft above sea level (MWR Sept 1900 p. 373). Street grid, flooded half, pin: SCHEMATIC.
+
+  BASE OF THE ISLAND PLATE: g-a4-9, g-a4-10, g-a4-17 copy the map layer (#...-map), projection, grid and labels from here.
+  HOST: data-start = nx-a4-s1 620.625 + 4.58 = 625.205; data-duration 7.03 (to nx-a4-s2 start 632.238, so C2 lands
+    and exits inside the 0.59 s gap after "feet." ends at local 6.44).
+  GEOMETRY: g-a5-3's Natural Earth 10m island ring and mainland/Bolivar ring, verbatim (plate units,
+    X = (lon + 100) * 90, Y = (41 - lat) * 103.95).
+  PROJECTION (computed in the script below from the ring's own tips, not typed):
+    island axis u = SW tip (439.51,1238.15) -> NE tip (474.80,1212.77), unit; v = u turned 90 deg (toward the Gulf).
+    screen x = XT + S * (p - NE).u ; screen y = YT + S * (p - NE).v ; S = 135 px per plate unit, NE tip at (2120, 850).
+    The plate is turned so the island lies level (bay on top, Gulf at the bottom, as the brief's grid and labels need);
+    a north arrow bottom-left shows the turn (north points 35.7 deg right of up). See receipt: brief said "north up".
+    Scale: 46.75 km of island axis = 43.47 plate units -> 125.5 px per km along the island.
+  GRID (_list.md ISLAND PLATE): 12 x 6 blocks 92 x 70, streets 16, x 320..1600, y 324..824; row 1 = Gulf (y 754),
+    row 6 = bay (y 324); columns x 320 + 108 (c - 1). Pin block col 7 row 3 (968..1060, 582..652), pin (1014, 617).
+    The whole grid sits on the island polygon at this fit, so no block is clipped (all 72 drawn); the script checks the
+    grid corners and the pin with isPointInFill and logs console.error if one falls in the water.
+  CUES (a4-s1.words.json, comp-local = word time - 4.58):
+    0.00  "He'd"(He) 4.58  frame 0: water, island, grid, labels, source line; grid strokes draw row by row 0 to 0.4
+    0.66  "Bayside" 5.24   buggy in at the top street end (960, 300); bay outline draws, pulses twice; "Bay side" in
+    1.94  "then" 6.52      buggy runs south on x 960 to (960, 848), 0.68 s power2.inOut, trail draws under it
+    2.24  "Gulf" 6.82      Gulf outline draws, pulses twice; "Gulf side" in
+    2.42  (7.00)           36 blocks flood, rows 1-3 from the Gulf, stagger 0.02 (ends 3.22 = 7.80); C1 in
+    3.34  "his" 7.92       C1 out x 980, 0.5
+    3.62  "house" 8.20     pin drops (y -40 -> 0, back.out); label "25th St & Q" in at 3.72; ring pulses every 1.2 s
+    5.48  "5" 10.06        C2 in; leader C2 -> pin draws 0.4 s
+    6.43  (last 0.6 s)     C2 and leader slide out x 980; cut to A4-S2 at 7.03
+  MOTION, whole window: map push 1.00 -> 1.03 linear about (960, 540); four water ripple lines drift; ring pulses.
+  CIRCLE CORNER (x >= 1600, y >= 680): island land and Gulf water only, no label, ripple or icon there.
+-->
+<template>
+<style>
+  #g-a4-2-half-city-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .ga42-map { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ga42-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:visible; }
+  .ga42-land { fill:#15202b; stroke:#2a3644; stroke-width:2px; stroke-linejoin:round; }
+  .ga42-isl { fill:#15202b; stroke:#93a3b2; stroke-width:2px; stroke-linejoin:round; }
+  .ga42-blk { fill:#2a3644; stroke:#3d4b5b; stroke-width:1px; }
+  .ga42-fl { fill:#5a768f; fill-opacity:0.85; stroke:#7fb2e5; stroke-width:1.5px; }
+  .ga42-zone { fill:none; stroke:#7fb2e5; stroke-width:3px; }
+  .ga42-geo { position:absolute; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#93a3b2;
+    white-space:nowrap; text-align:center; }
+  .ga42-lab { position:absolute; font-weight:700; font-size:26px; line-height:26px; color:#f2f5f8; white-space:nowrap;
+    text-shadow:0 2px 6px rgba(0,0,0,0.85); }
+  .ga42-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-weight:700; font-size:19px; line-height:1.4; color:#c8d3e0; white-space:nowrap; }
+  .ga42-chip { position:absolute; top:130px; box-sizing:border-box; padding:18px 28px; border-radius:28px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); white-space:nowrap; }
+  .ga42-main { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:52px; color:#f2f5f8; }
+  .ga42-tag { font-weight:700; font-size:22px; line-height:28px; letter-spacing:4px; color:#93a3b2; }
+  .ga42-small { position:absolute; font-weight:700; font-size:19px; line-height:22px; color:#93a3b2; white-space:nowrap; }
+  .ga42-buggy { position:absolute; left:936px; top:284px; width:48px; height:32px; overflow:visible; }
+  .ga42-pin { position:absolute; left:984px; top:587px; width:60px; height:60px; overflow:visible; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .ga42-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-2-half-city-root" data-composition-id="g-a4-2-half-city" data-width="1920" data-height="1080"
+  data-type-ok="map: the 44 px chips are the top tier by the shared chip spec; map labels 26 px, geography and notes 19 to 22 px">
+
+  <!-- MAP LAYER: everything the push moves (land, grid, zones, route, pin, map labels) -->
+  <div class="ga42-map" id="g-a4-2-half-city-map">
+    <svg class="ga42-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="g-a4-2-half-city-rg" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#5a768f" stop-opacity="0"/>
+          <stop offset="0.5" stop-color="#5a768f" stop-opacity="0.7"/>
+          <stop offset="1" stop-color="#5a768f" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <!-- water ripples (Gulf and bay), clear of labels and of the circle corner -->
+      <rect id="g-a4-2-half-city-rp1" x="470" y="950" width="420" height="2" fill="url(#g-a4-2-half-city-rg)"/>
+      <rect id="g-a4-2-half-city-rp2" x="1000" y="1010" width="460" height="2" fill="url(#g-a4-2-half-city-rg)"/>
+      <rect id="g-a4-2-half-city-rp3" x="380" y="1052" width="320" height="2" fill="url(#g-a4-2-half-city-rg)"/>
+      <rect id="g-a4-2-half-city-rp4" x="260" y="170" width="380" height="2" fill="url(#g-a4-2-half-city-rg)"/>
+
+      <!-- plate layer: plate units, turned and scaled by the projection set in the script -->
+      <g id="g-a4-2-half-city-plate">
+        <!--GEO: copied verbatim from g-a5-3-island-map.html (Natural Earth 10m), do not hand-edit-->
+        <path class="ga42-land" vector-effect="non-scaling-stroke" d="M376.44,1275.21 L379.80,1274.85 L383.94,1275.09 L388.00,1274.81 L391.96,1273.81 L395.83,1271.95 L406.15,1265.11 L412.27,1260.67 L413.84,1260.04 L415.86,1259.82 L416.90,1259.13 L421.75,1254.85 L426.60,1249.30 L429.16,1247.87 L435.70,1242.65 L436.39,1241.32 L436.53,1239.90 L436.50,1238.14 L435.77,1233.79 L435.67,1231.56 L436.50,1229.23 L435.34,1226.54 L434.65,1225.68 L436.22,1226.52 L437.65,1226.72 L438.82,1227.28 L439.57,1229.23 L442.05,1227.79 L444.13,1226.18 L450.07,1219.23 L450.12,1218.94 L450.01,1218.09 L450.07,1217.81 L450.34,1217.75 L451.09,1217.89 L451.36,1217.81 L453.20,1216.44 L454.04,1215.56 L454.43,1214.26 L455.04,1214.26 L456.46,1215.43 L457.84,1214.60 L458.88,1212.62 L459.29,1210.36 L460.01,1208.32 L461.67,1207.81 L463.55,1208.32 L464.93,1209.30 L465.18,1208.86 L465.46,1208.70 L465.76,1208.65 L466.10,1208.53 L462.08,1206.68 L460.91,1206.46 L459.94,1205.73 L457.44,1201.42 L457.36,1201.65 L457.35,1201.97 L457.24,1202.02 L457.04,1202.02 L457.02,1202.29 L457.07,1202.48 L457.44,1202.85 L457.44,1203.62 L455.14,1203.53 L454.76,1202.14 L454.66,1200.42 L453.14,1199.29 L453.14,1198.58 L454.45,1198.15 L455.72,1197.50 L456.88,1197.97 L457.66,1196.67 L458.30,1195.81 L451.45,1193.99 L447.85,1191.04 L448.56,1188.26 L449.51,1187.25 L450.97,1185.61 L451.39,1184.39 L449.10,1182.33 L448.58,1180.40 L449.22,1178.82 L451.28,1177.24 L450.13,1176.02 L449.19,1175.31 L448.34,1175.10 L447.41,1174.90 L446.69,1174.18 L445.47,1173.90 L444.23,1173.30 L445.29,1169.46 L446.94,1169.60 L447.59,1170.88 L448.60,1172.52 L450.07,1172.97 L453.04,1174.17 L454.60,1175.24 L455.55,1175.71 L456.16,1178.09 L457.24,1179.28 L458.42,1179.03 L461.15,1178.19 L462.33,1176.39 L463.62,1172.81 L465.63,1169.46 L465.62,1167.55 L467.39,1166.11 L468.47,1167.18 L470.37,1167.05 L471.56,1166.69 L472.98,1166.09 L473.94,1166.09 L475.25,1166.68 L476.08,1168.34 L476.68,1169.30 L476.81,1170.96 L477.41,1172.75 L477.65,1175.02 L476.72,1179.79 L475.55,1183.84 L473.78,1187.19 L472.55,1189.08 L471.49,1190.86 L470.36,1191.08 L469.34,1190.55 L469.13,1191.19 L469.89,1192.32 L472.03,1192.90 L473.69,1192.46 L477.43,1191.38 L485.51,1189.95 L489.47,1187.67 L490.90,1188.31 L492.33,1189.65 L494.09,1190.33 L495.46,1189.31 L496.26,1188.55 L496.33,1190.00 L495.74,1191.88 L494.60,1192.72 L493.03,1192.93 L488.51,1192.68 L487.72,1192.91 L486.67,1193.60 L483.98,1196.46 L483.30,1196.92 L482.39,1197.36 L481.36,1197.69 L479.24,1198.04 L476.91,1199.29 L469.62,1206.51 L468.84,1207.90 L469.24,1208.91 L471.35,1209.30 L473.18,1208.45 L477.83,1202.85 L481.11,1200.43 L509.83,1187.30 L520.56,1183.21 L528.17,1178.91 L530.82,1177.69 L534.59,1176.52 L536.62,1176.30 L547.49,1176.52 L547.49,1100.00 L300.00,1100.00 L300.00,1275.21Z"/>
+        <path id="g-a4-2-half-city-isl" class="ga42-isl" vector-effect="non-scaling-stroke" d="M466.71,1210.71 L465.57,1210.61 L465.49,1210.00 L465.13,1209.96 L464.93,1210.00 L464.83,1210.31 L464.83,1210.60 L464.72,1210.77 L464.26,1210.71 L464.26,1211.42 L465.81,1211.71 L466.05,1212.98 L465.48,1214.38 L464.59,1215.04 L464.42,1215.12 L462.42,1215.68 L461.99,1216.22 L461.24,1217.81 L457.45,1220.86 L457.13,1221.36 L456.41,1222.78 L455.12,1224.23 L452.90,1225.79 L446.94,1230.46 L442.68,1233.25 L440.80,1235.84 L439.51,1238.15 L440.25,1238.19 L443.16,1235.55 L454.75,1227.24 L459.75,1224.03 L474.80,1212.77Z"/>
+        <!--/GEO-->
+      </g>
+
+      <!-- street grid, screen px: 12 x 6 blocks, row 6 (bay) on top; strokes draw in by row at frame 0 -->
+      <g id="g-a4-2-half-city-r6">
+        <rect class="ga42-blk" x="320" y="324" width="92" height="70"/><rect class="ga42-blk" x="428" y="324" width="92" height="70"/>
+        <rect class="ga42-blk" x="536" y="324" width="92" height="70"/><rect class="ga42-blk" x="644" y="324" width="92" height="70"/>
+        <rect class="ga42-blk" x="752" y="324" width="92" height="70"/><rect class="ga42-blk" x="860" y="324" width="92" height="70"/>
+        <rect class="ga42-blk" x="968" y="324" width="92" height="70"/><rect class="ga42-blk" x="1076" y="324" width="92" height="70"/>
+        <rect class="ga42-blk" x="1184" y="324" width="92" height="70"/><rect class="ga42-blk" x="1292" y="324" width="92" height="70"/>
+        <rect class="ga42-blk" x="1400" y="324" width="92" height="70"/><rect class="ga42-blk" x="1508" y="324" width="92" height="70"/>
+      </g>
+      <g id="g-a4-2-half-city-r5">
+        <rect class="ga42-blk" x="320" y="410" width="92" height="70"/><rect class="ga42-blk" x="428" y="410" width="92" height="70"/>
+        <rect class="ga42-blk" x="536" y="410" width="92" height="70"/><rect class="ga42-blk" x="644" y="410" width="92" height="70"/>
+        <rect class="ga42-blk" x="752" y="410" width="92" height="70"/><rect class="ga42-blk" x="860" y="410" width="92" height="70"/>
+        <rect class="ga42-blk" x="968" y="410" width="92" height="70"/><rect class="ga42-blk" x="1076" y="410" width="92" height="70"/>
+        <rect class="ga42-blk" x="1184" y="410" width="92" height="70"/><rect class="ga42-blk" x="1292" y="410" width="92" height="70"/>
+        <rect class="ga42-blk" x="1400" y="410" width="92" height="70"/><rect class="ga42-blk" x="1508" y="410" width="92" height="70"/>
+      </g>
+      <g id="g-a4-2-half-city-r4">
+        <rect class="ga42-blk" x="320" y="496" width="92" height="70"/><rect class="ga42-blk" x="428" y="496" width="92" height="70"/>
+        <rect class="ga42-blk" x="536" y="496" width="92" height="70"/><rect class="ga42-blk" x="644" y="496" width="92" height="70"/>
+        <rect class="ga42-blk" x="752" y="496" width="92" height="70"/><rect class="ga42-blk" x="860" y="496" width="92" height="70"/>
+        <rect class="ga42-blk" x="968" y="496" width="92" height="70"/><rect class="ga42-blk" x="1076" y="496" width="92" height="70"/>
+        <rect class="ga42-blk" x="1184" y="496" width="92" height="70"/><rect class="ga42-blk" x="1292" y="496" width="92" height="70"/>
+        <rect class="ga42-blk" x="1400" y="496" width="92" height="70"/><rect class="ga42-blk" x="1508" y="496" width="92" height="70"/>
+      </g>
+      <g id="g-a4-2-half-city-r3">
+        <rect class="ga42-blk" x="320" y="582" width="92" height="70"/><rect class="ga42-blk" x="428" y="582" width="92" height="70"/>
+        <rect class="ga42-blk" x="536" y="582" width="92" height="70"/><rect class="ga42-blk" x="644" y="582" width="92" height="70"/>
+        <rect class="ga42-blk" x="752" y="582" width="92" height="70"/><rect class="ga42-blk" x="860" y="582" width="92" height="70"/>
+        <rect class="ga42-blk" x="968" y="582" width="92" height="70"/><rect class="ga42-blk" x="1076" y="582" width="92" height="70"/>
+        <rect class="ga42-blk" x="1184" y="582" width="92" height="70"/><rect class="ga42-blk" x="1292" y="582" width="92" height="70"/>
+        <rect class="ga42-blk" x="1400" y="582" width="92" height="70"/><rect class="ga42-blk" x="1508" y="582" width="92" height="70"/>
+      </g>
+      <g id="g-a4-2-half-city-r2">
+        <rect class="ga42-blk" x="320" y="668" width="92" height="70"/><rect class="ga42-blk" x="428" y="668" width="92" height="70"/>
+        <rect class="ga42-blk" x="536" y="668" width="92" height="70"/><rect class="ga42-blk" x="644" y="668" width="92" height="70"/>
+        <rect class="ga42-blk" x="752" y="668" width="92" height="70"/><rect class="ga42-blk" x="860" y="668" width="92" height="70"/>
+        <rect class="ga42-blk" x="968" y="668" width="92" height="70"/><rect class="ga42-blk" x="1076" y="668" width="92" height="70"/>
+        <rect class="ga42-blk" x="1184" y="668" width="92" height="70"/><rect class="ga42-blk" x="1292" y="668" width="92" height="70"/>
+        <rect class="ga42-blk" x="1400" y="668" width="92" height="70"/><rect class="ga42-blk" x="1508" y="668" width="92" height="70"/>
+      </g>
+      <g id="g-a4-2-half-city-r1">
+        <rect class="ga42-blk" x="320" y="754" width="92" height="70"/><rect class="ga42-blk" x="428" y="754" width="92" height="70"/>
+        <rect class="ga42-blk" x="536" y="754" width="92" height="70"/><rect class="ga42-blk" x="644" y="754" width="92" height="70"/>
+        <rect class="ga42-blk" x="752" y="754" width="92" height="70"/><rect class="ga42-blk" x="860" y="754" width="92" height="70"/>
+        <rect class="ga42-blk" x="968" y="754" width="92" height="70"/><rect class="ga42-blk" x="1076" y="754" width="92" height="70"/>
+        <rect class="ga42-blk" x="1184" y="754" width="92" height="70"/><rect class="ga42-blk" x="1292" y="754" width="92" height="70"/>
+        <rect class="ga42-blk" x="1400" y="754" width="92" height="70"/><rect class="ga42-blk" x="1508" y="754" width="92" height="70"/>
+      </g>
+
+      <!-- flood: 36 of 72 blocks (rows 1, 2, 3), DOM order = fill order, Gulf side first -->
+      <g id="g-a4-2-half-city-flood">
+        <rect class="ga42-fl ga42-hide" x="320" y="754" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="428" y="754" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="536" y="754" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="644" y="754" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="752" y="754" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="860" y="754" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="968" y="754" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="1076" y="754" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="1184" y="754" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="1292" y="754" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="1400" y="754" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="1508" y="754" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="320" y="668" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="428" y="668" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="536" y="668" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="644" y="668" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="752" y="668" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="860" y="668" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="968" y="668" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="1076" y="668" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="1184" y="668" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="1292" y="668" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="1400" y="668" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="1508" y="668" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="320" y="582" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="428" y="582" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="536" y="582" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="644" y="582" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="752" y="582" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="860" y="582" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="968" y="582" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="1076" y="582" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="1184" y="582" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="1292" y="582" width="92" height="70"/>
+        <rect class="ga42-fl ga42-hide" x="1400" y="582" width="92" height="70"/><rect class="ga42-fl ga42-hide" x="1508" y="582" width="92" height="70"/>
+      </g>
+
+      <!-- zone outlines, 6 px outside the rows they mark -->
+      <rect id="g-a4-2-half-city-zbay" class="ga42-zone ga42-hide" x="314" y="318" width="1292" height="168"/>
+      <rect id="g-a4-2-half-city-zgulf" class="ga42-zone ga42-hide" x="314" y="662" width="1292" height="168"/>
+
+      <!-- buggy route on the street between columns 6 and 7 (x 952..968, centre 960) -->
+      <line id="g-a4-2-half-city-trail" class="ga42-hide" x1="960" y1="300" x2="960" y2="848" stroke="#e8c56a" stroke-width="3" stroke-opacity="0.7" stroke-linecap="round"/>
+    </svg>
+
+    <!-- map labels (ride the push) -->
+    <div class="ga42-geo" id="g-a4-2-half-city-bay" style="left:780px; top:228px; width:240px;">Galveston Bay</div>
+    <div class="ga42-geo" id="g-a4-2-half-city-gulf" style="left:760px; top:889px; width:400px;">Gulf of Mexico</div>
+    <div class="ga42-lab ga42-hide" id="g-a4-2-half-city-baylab" style="left:300px; top:280px;">Bay side</div>
+    <div class="ga42-lab ga42-hide" id="g-a4-2-half-city-gulflab" style="left:300px; top:840px;">Gulf side</div>
+
+    <!-- buggy: 48 x 32 side view, centred on x 960; moves by GSAP y only -->
+    <svg class="ga42-buggy ga42-hide" id="g-a4-2-half-city-buggy" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="9" width="26" height="10" rx="2" fill="#e8c56a"/>
+      <rect x="24" y="1" width="5" height="10" rx="1" fill="#e8c56a"/>
+      <line x1="32" y1="14" x2="47" y2="12" stroke="#e8c56a" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="13" cy="24" r="7" fill="none" stroke="#e8c56a" stroke-width="2.5"/>
+      <circle cx="31" cy="26" r="5" fill="none" stroke="#e8c56a" stroke-width="2.5"/>
+    </svg>
+
+    <!-- pin at (1014, 617), centre of block col 7 row 3 (schematic) -->
+    <svg class="ga42-pin ga42-hide" id="g-a4-2-half-city-pin" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <circle id="g-a4-2-half-city-halo" cx="30" cy="30" r="13" fill="none" stroke="#f2f5f8" stroke-width="2" opacity="0"/>
+      <circle cx="30" cy="30" r="11" fill="#d0121f" stroke="#f2f5f8" stroke-width="4"/>
+    </svg>
+    <div class="ga42-lab ga42-hide" id="g-a4-2-half-city-pinlab" style="left:1040px; top:600px;">25th St &amp; Q</div>
+  </div>
+
+  <!-- HUD (fixed): leader, north arrow, notes, source line, chips -->
+  <svg class="ga42-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <line id="g-a4-2-half-city-lead" class="ga42-hide" x1="0" y1="0" x2="1014" y2="617" stroke="#d8a13a" stroke-width="1"/>
+    <g id="g-a4-2-half-city-north">
+      <path d="M0,-30 L9,4 L0,-3 L-9,4Z" fill="#93a3b2"/>
+      <text x="0" y="26" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="19" fill="#93a3b2">N</text>
+    </g>
+  </svg>
+  <div class="ga42-small" id="g-a4-2-half-city-note" style="left:96px; top:1000px;">Street grid: schematic</div>
+  <div class="ga42-src" id="g-a4-2-half-city-src">Isaac Cline, Monthly Weather Review, September 1900, p. 373</div>
+
+  <div class="ga42-chip ga42-hide" id="g-a4-2-half-city-c1" style="left:96px;">
+    <div class="ga42-main" id="g-a4-2-half-city-c1m">ABOUT HALF THE CITY</div>
+    <div class="ga42-tag" id="g-a4-2-half-city-c1t">streets under water · p. 373</div>
+  </div>
+  <div class="ga42-chip ga42-hide" id="g-a4-2-half-city-c2" style="right:96px;">
+    <div class="ga42-main" id="g-a4-2-half-city-c2m">CLINE'S HOUSE, 1900: 5.2 FT</div>
+    <div class="ga42-tag" id="g-a4-2-half-city-c2t">ground elevation, his report</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a4-2-half-city";
+  const P = "#" + ID + "-";
+  const $ = function (n) { return document.getElementById(ID + "-" + n); };
+  const root = $("root");
+  const D = 7.03;   /* host: 625.205 to 632.238 (nx-a4-s2 start) */
+
+  /* PROJECTION (header): island axis from the ring's own SW and NE tips, NE tip pinned at (XT, YT) */
+  const SW = [439.51, 1238.15], NE = [474.80, 1212.77];
+  const S = 135, XT = 2120, YT = 850;
+  const L = Math.hypot(NE[0] - SW[0], NE[1] - SW[1]);
+  const UX = (NE[0] - SW[0]) / L, UY = (NE[1] - SW[1]) / L;   /* along the island, to the NE tip */
+  const VX = -UY, VY = UX;                                      /* across it, toward the Gulf */
+  $("plate").setAttribute("transform", "matrix(" + [S * UX, S * VX, S * UY, S * VY,
+    XT - S * (UX * NE[0] + UY * NE[1]), YT - S * (VX * NE[0] + VY * NE[1])].map(function (n) { return n.toFixed(4); }).join(",") + ")");
+  /* north arrow: plate north (0,-1) on screen, bottom-left in the Gulf, clear of notes */
+  const northDeg = Math.atan2(-UY, UX) * 180 / Math.PI;
+  $("north").setAttribute("transform", "translate(132,936) rotate(" + northDeg.toFixed(2) + ")");
+
+  /* self-check: grid corners and pin must sit on the island polygon (screen -> plate, then isPointInFill) */
+  const isl = $("isl");
+  if (isl.isPointInFill) {
+    [[320, 324], [1600, 324], [320, 824], [1600, 824], [1014, 617]].forEach(function (q) {
+      const a = (q[0] - XT) / S, b = (q[1] - YT) / S;
+      const pt = new DOMPoint(NE[0] + a * UX + b * VX, NE[1] + a * UY + b * VY);
+      if (!isl.isPointInFill(pt)) console.error(ID + ": grid point " + q + " is off the island polygon");
+    });
+  }
+
+  /* dash lengths: ceil(len)+1 from the shapes themselves */
+  const dl = function (el) { return Math.ceil(el.getTotalLength()) + 1; };
+  const blocks = root.querySelectorAll(".ga42-blk");
+  const DB = dl(blocks[0]), DZ = dl($("zbay")), DT = dl($("trail"));
+
+  /* C2 leader: from C2's bottom-left corner (layout box, unaffected by transforms) to the pin, which the push moves */
+  const c2 = $("c2"), lead = $("lead");
+  const LX = c2.offsetLeft, LY = c2.offsetTop + c2.offsetHeight;
+  lead.setAttribute("x1", LX); lead.setAttribute("y1", LY);
+  const PIN = [1014, 617], PUSH = 0.03;
+  function pinAt(k) {
+    const x = 960 + (PIN[0] - 960) * k, y = 540 + (PIN[1] - 540) * k;
+    lead.setAttribute("x2", x.toFixed(2)); lead.setAttribute("y2", y.toFixed(2));
+  }
+  pinAt(1);
+  const DL = Math.ceil(Math.hypot(960 + (PIN[0] - 960) * (1 + PUSH) - LX, 540 + (PIN[1] - 540) * (1 + PUSH) - LY)) + 1;
+
+  const tl = gsap.timeline({ paused: true });
+
+  /* whole window: map push 1.00 -> 1.03 (linear, under 1.5x), ripples drift */
+  tl.set(P + "map", { scale: 1, transformOrigin: "960px 540px" }, 0);
+  tl.to(P + "map", { scale: 1 + PUSH, duration: D, ease: "none",
+    onUpdate: function () { pinAt(1 + PUSH * this.progress()); } }, 0);
+  tl.set([P + "rp1", P + "rp2", P + "rp3", P + "rp4"], { x: 0 }, 0);
+  tl.to(P + "rp1", { x: 90, duration: D, ease: "none" }, 0);
+  tl.to(P + "rp2", { x: -80, duration: D, ease: "none" }, 0);
+  tl.to(P + "rp3", { x: 70, duration: D, ease: "none" }, 0);
+  tl.to(P + "rp4", { x: 80, duration: D, ease: "none" }, 0);
+
+  /* START @4.58: grid strokes draw in row by row, bay to Gulf, 0 to 0.4 */
+  tl.set(blocks, { strokeDasharray: DB + " " + DB, strokeDashoffset: DB }, 0);
+  ["r6", "r5", "r4", "r3", "r2", "r1"].forEach(function (r, i) {
+    tl.to(root.querySelectorAll(P + r + " rect"), { strokeDashoffset: 0, duration: 0.2, ease: "power2.out" }, i * 0.04);
+  });
+  tl.set([P + "zbay", P + "zgulf"], { strokeDasharray: DZ + " " + DZ, strokeDashoffset: DZ }, 0);
+  tl.set(P + "trail", { strokeDasharray: DT + " " + DT, strokeDashoffset: DT }, 0);
+  tl.set(P + "buggy", { y: 0 }, 0);
+  tl.set(P + "pin", { y: -40 }, 0);
+  tl.set(P + "lead", { strokeDasharray: DL + " " + DL, strokeDashoffset: DL }, 0);
+
+  /* BAY @5.24 (0.66): buggy at the top street end, bay outline draws and pulses twice, label in */
+  tl.fromTo(P + "buggy", { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 0.66);
+  tl.fromTo(P + "zbay", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.1, ease: "none" }, 0.66);
+  tl.to(P + "zbay", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 0.66);
+  tl.to(P + "zbay", { opacity: 0.3, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.96);
+  tl.fromTo(P + "baylab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.66);
+
+  /* THEN @6.52 (1.94): buggy runs south along x 960 to (960, 848), trail draws with it */
+  tl.set(P + "trail", { autoAlpha: 1 }, 1.94);
+  tl.to(P + "buggy", { y: 548, duration: 0.68, ease: "power2.inOut" }, 1.94);
+  tl.to(P + "trail", { strokeDashoffset: 0, duration: 0.68, ease: "power2.inOut" }, 1.94);
+
+  /* GULF @6.82 (2.24): Gulf outline draws and pulses twice, label in */
+  tl.fromTo(P + "zgulf", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.1, ease: "none" }, 2.24);
+  tl.to(P + "zgulf", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 2.24);
+  tl.to(P + "zgulf", { opacity: 0.3, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 3 }, 2.54);
+  tl.fromTo(P + "gulflab", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.24);
+
+  /* FLOOD @7.00 (2.42): 36 blocks, rows 1-3 from the Gulf up, stagger 0.02, last lands 3.22 (= 7.80) */
+  tl.fromTo(root.querySelectorAll(".ga42-fl"), { autoAlpha: 0, scaleY: 0, transformOrigin: "50% 100%" },
+    { autoAlpha: 1, scaleY: 1, transformOrigin: "50% 100%", duration: 0.1, ease: "power2.out", stagger: 0.02 }, 2.42);
+  /* C1 @7.00 */
+  tl.fromTo(P + "c1", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 2.42);
+  /* HIS @7.92 (3.34): C1 out */
+  tl.to(P + "c1", { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 3.34);
+
+  /* HOUSE @8.20 (3.62): pin drops in, label in, ring pulses every 1.2 s */
+  tl.fromTo(P + "pin", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "back.out(1.8)" }, 3.62);
+  tl.fromTo(P + "pinlab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 3.72);
+  tl.fromTo(P + "halo", { scale: 1, opacity: 0.9, svgOrigin: "30 30" },
+    { scale: 2, opacity: 0, svgOrigin: "30 30", duration: 1.2, ease: "power1.out", repeat: 2 }, 4.12);
+
+  /* 5.2 @10.06 (5.48): C2 in, leader draws to the pin */
+  tl.fromTo(P + "c2", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 5.48);
+  tl.set(P + "lead", { autoAlpha: 1 }, 5.58);
+  tl.to(P + "lead", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 5.58);
+
+  /* EXIT: C2 slides out in the last 0.6 s, leader goes with it; cut to A4-S2 */
+  tl.to(P + "c2", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, D - 0.6);
+  tl.to(P + "lead", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, D - 0.6);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
