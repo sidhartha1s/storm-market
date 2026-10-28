@@ -149,12 +149,17 @@ window.__timelines = window.__timelines || {};
   const fromT = function (x, y) { return [-4474.8 + x / 0.0125, 16919.2 + y / 0.0125]; };
   const NWK = proj(-74.1724, 40.7357), PIT = proj(-79.9959, 40.4406), BUF = proj(-78.8784, 42.8864);
 
-  /* g-a3-9 track (A2-X px), extended south to the Carolinas point (T px), loop radius 30 px at A2-X = 1000 map units */
-  const TRK = [fromT(967, 565), fromAX(900, 1100), fromAX(900, 640), fromAX(700, 520), fromAX(621, 295)];
-  const LOOP_TOP = fromAX(621, 235), LOOP_R = 1000;
-  const EXIT = [LOOP_TOP, fromAX(760, 54), fromAX(899, -292)];
-  /* connectors: [pin, track point] */
-  const CON = [[$("con-pit"), PIT, fromAX(830, 598)], [$("con-buf"), BUF, fromAX(651, 265)], [$("con-nwk"), NWK, fromAX(900, 700)]];
+  /* g-a3-9-exit's track, copied from its file (A2-X px), extended south off-frame to the Carolinas point (T px).
+     Loop: radius 30 px at A2-X = 1000 map units, centre (621,265). */
+  const CAR = fromT(967, 565);
+  const TRK = [[1080, 1100], [1080, 650], [1080, 570], [1010, 500], [900, 492], [820, 486], [750, 515], [700, 520],
+    [660, 520], [651, 420], [651, 265]].map(function (p) { return fromAX(p[0], p[1]); });
+  const LOOP_W = fromAX(591, 265), LOOP_R = 1000;
+  const EXIT = [fromAX(637.5, 239.9), fromAX(1125, -500)];
+  const ARROW_AT = fromAX(651, 265);                                          /* loop arrowhead rest point (g-a3-9) */
+  /* connectors as g-a3-9: [element, from, to] */
+  const CON = [[$("con-nwk"), fromAX(1080, 700), fromAX(1415, 520)], [$("con-pit"), fromAX(752, 511), fromAX(759, 543)],
+    [$("con-buf"), fromAX(648.6, 253.2), fromAX(872, 157.3)]];
 
   /* cold arrows (T px): start on the Ohio / Lake Erie latitudes, quadratic control, end well south of the snow edge.
      [start, control, end, t0, dur]. 3 and 4 draw with the camera (COLD @0.26, cross the Ohio River near "Ohio," 1.16);
