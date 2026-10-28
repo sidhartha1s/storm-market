@@ -85,9 +85,12 @@ try:
         assert old_size != len(BODY) and in_default, "old path kept the clip: the detaching client no longer resets Chrome"
 
         other_client(cdp_url)
+        dls = []
+        page.once("download", lambda d: dls.append(d))  # as ad_gen does, for the [FALLBACK] Downloads name
         new = save_download(browser, page, lambda: page.click("#dl"), os.path.join(root, "new.mp4"))
         print("save_download:", os.path.getsize(new), "B")
         assert open(new, "rb").read() == BODY, "save_download lost the clip"
+        assert dls and dls[0].suggested_filename == "clip.mp4", "ad_gen's download listener got nothing"
     print("test_flowdl OK")
 finally:
     chrome.kill()
