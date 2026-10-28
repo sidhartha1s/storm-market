@@ -39,8 +39,7 @@
 <div id="root" data-composition-id="ep-appalachian-1950" data-start="0" data-width="1920" data-height="1080" data-duration="944.789" data-fps="30">
 
   <!-- ============ NARRATION (0.40 s gaps; see header for the duration sources) ============ -->
-  <!-- h1-s1 is Paul's on-camera line; until ins-paul-1 exists the TTS take of the same 26 words stands in -->
-  <audio id="nx-h1-s1" src="audio/h1-s1.wav" data-start="0.0" data-duration="8.438" data-volume="0.89"></audio>
+  <!-- h1-s1 is Paul's on-camera line, spoken by ins-paul-1 (PICTURE, track 1), so no TTS here (29 Oct 26) -->
   <audio id="nx-h1-s2" src="audio/h1-s2.wav" data-start="8.838" data-duration="8.494" data-volume="0.89"></audio>
   <audio id="nx-h1-s3" src="audio/h1-s3.wav" data-start="17.732" data-duration="3.765" data-volume="0.89"></audio>
   <audio id="nx-h1-s4" src="audio/h1-s4.wav" data-start="21.897" data-duration="9.95" data-volume="0.89"></audio>
@@ -119,7 +118,8 @@
 
   <!-- ============ PICTURE, track 1 (stills under overlays, designed ground in the comp gaps, blackouts, CTA) ============ -->
   <!-- H1-S1: STAND-IN for ins-paul-1 (no media/paul/): nearest accepted still, the 25 Nov 1950 surface chart (A1-S8 pick), under the g-intro-1 popfig -->
-  <section class="clip still-wrap" id="c-h1-paul" data-start="0" data-duration="8.838" data-track-index="1" data-callback="stand-in for Paul's clip P1 (ins-paul-1 not generated): the Saturday chart under the date popfig"><img id="kb-h1-paul" src="media/a1/A1-S8_c1_nws-jkl-surface-1950-11-25.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-h1-paul" data-start="0" data-duration="4.419" data-track-index="1" data-callback="stand-in for Paul's clip P1 (ins-paul-1 not generated): the Saturday chart under the date popfig"><img id="kb-h1-paul" src="media/a1/A1-S8_c1_nws-jkl-surface-1950-11-25.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-h1-paul2" data-start="4.419" data-duration="4.419" data-track-index="1" data-callback="second shot of the P1 stand-in hold (6 s still cap): same Saturday, the 12Z full Daily Weather Map"><img id="kb-h1-paul2" src="media/candidates/a1/A1-S8_c2_nws-rlx-surface-1950-11-25-12z.png" alt=""></section>
   <!-- H1-S2 to I1-S4 are full-frame map comps; ground fills g-intro-2's short tail (37.519 to 39.748) and g-intro-5's land (70.695 to 71.095) -->
   <section class="clip ground" id="gp-h1-s5" data-start="37.519" data-duration="2.229" data-track-index="2"></section>
   <section class="clip ground" id="gp-i1-s4" data-start="70.695" data-duration="0.4" data-track-index="2"></section>
@@ -132,10 +132,24 @@
   <section class="clip blackout" id="bo-a2" data-start="236.48" data-duration="0.7" data-track-index="1"></section>
 
   <!-- ===== A2 (S4 = still under the g-a2-4 overlay; S15 = Paul stand-in; ground under the comp gaps) ===== -->
-  <section class="clip ground" id="c-a2-ground" data-start="237.18" data-duration="44.382" data-track-index="1"></section>
-  <!-- A2-S4: Harry Allis extra point, Snow Bowl 25 Nov 1950 (pick; Snow Bowl film not found) under g-a2-4 -->
-  <section class="clip still-wrap" id="c-a2-snowbowl" data-start="281.562" data-duration="21.524" data-track-index="1"><img id="kb-a2-snowbowl" src="media/a2/A2-S4_c1_harry-allis-extra-point-1950.png" alt=""></section>
-  <section class="clip ground" id="c-a2-ground2" data-start="303.086" data-duration="149.995" data-track-index="1"></section>
+  <section class="clip ground" id="gp-a2-s1" data-start="250.88" data-duration="0.125" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a2-s3" data-start="281.208" data-duration="0.354" data-track-index="2"></section>
+  <!-- A2-S4: Snow Bowl 25 Nov 1950, two blocks: Allis kick 281.562-290.802 (full + closer crop), postcard 290.802-303.086 (full, right crop, left crop); g-a2-4 credit swaps once at 290.802 -->
+  <section class="clip still-wrap" id="c-a2-snowbowl" data-start="281.562" data-duration="4.4" data-track-index="1"><img id="kb-a2-snowbowl" src="media/a2/A2-S4_c1_harry-allis-extra-point-1950.png" alt="" style="transform-origin:50% 50%"></section>
+  <section class="clip still-wrap" id="c-a2-snowbowl2" data-start="285.962" data-duration="4.84" data-track-index="1"><img id="kb-a2-snowbowl2" src="media/a2/A2-S4_c1_harry-allis-extra-point-1950-crop.png" alt="" style="transform-origin:85% 60%"></section>
+  <section class="clip still-wrap" id="c-a2-pc1" data-start="290.802" data-duration="3.6" data-track-index="1"><img id="kb-a2-pc1" src="media/a2/A2-S4_c2_snow-bowl-postcard-1950s-16x9.jpg" alt="" style="transform-origin:20% 30%"></section>
+  <section class="clip still-wrap" id="c-a2-pc2" data-start="294.402" data-duration="3.86" data-track-index="1"><img id="kb-a2-pc2" src="media/a2/A2-S4_c2_snow-bowl-postcard-1950s-16x9-crop.jpg" alt="" style="transform-origin:85% 70%"></section>
+  <section class="clip still-wrap" id="c-a2-pc3" data-start="298.262" data-duration="4.824" data-track-index="1"><img id="kb-a2-pc3" src="media/a2/A2-S4_c2_snow-bowl-postcard-1950s-16x9-crop2.jpg" alt="" style="transform-origin:15% 80%"></section>
+  <section class="clip ground" id="gp-a2-s5" data-start="317.146" data-duration="0.239" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a2-s6" data-start="330.945" data-duration="0.255" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a2-s7" data-start="350.52" data-duration="0.13" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a2-s8" data-start="365.35" data-duration="0.207" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a2-s9" data-start="381.297" data-duration="0.183" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a2-s10" data-start="394.0" data-duration="0.143" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a2-s11" data-start="415.283" data-duration="0.161" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a2-s12" data-start="427.804" data-duration="0.236" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a2-s13" data-start="441.16" data-duration="0.305" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a2-s14" data-start="452.925" data-duration="0.156" data-track-index="2"></section>
   <!-- A2-S15: STAND-IN for ins-paul-4: the beat's own pick, the 25 Nov surface chart, soft (Picture line); hard cut to the CTA dip -->
   <section class="clip still-wrap" id="c-a2-paul" data-start="453.081" data-duration="5.972" data-track-index="1" data-callback="stand-in for Paul's clip P4 (ins-paul-4 not generated): A2-S15's own pick, the Saturday chart behind his line"><img id="kb-a2-paul" src="media/a2/A2-S15_c1_nws-jkl-surface-1950-11-25.jpg" alt=""></section>
 
@@ -145,20 +159,34 @@
   <section class="clip blackout" id="bo-cta-out" data-start="484.095" data-duration="1.0" data-track-index="1"></section>
 
   <!-- ===== A3 (every beat is a full-frame comp; the charts sit inside g-a3-1, -2, -3, -7) ===== -->
-  <section class="clip ground" id="c-a3-ground" data-start="485.095" data-duration="136.115" data-track-index="1"></section>
+  <section class="clip ground" id="gp-a3-s1" data-start="501.235" data-duration="0.233" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a3-s2" data-start="518.428" data-duration="0.2" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a3-s3" data-start="540.768" data-duration="0.233" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a3-s4" data-start="560.701" data-duration="0.272" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a3-s5" data-start="576.853" data-duration="0.26" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a3-s6" data-start="595.093" data-duration="0.162" data-track-index="2"></section>
+  <!-- under g-a3-8 (track 3) and g-a3-9 (track 4), whose own grounds cover it -->
+  <section class="clip ground" id="gp-a3-s7" data-start="604.855" data-duration="9.738" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a3-s8" data-start="620.993" data-duration="0.217" data-track-index="2"></section>
   <section class="clip blackout" id="bo-a4" data-start="621.21" data-duration="0.7" data-track-index="1"></section>
 
   <!-- ===== A4 (every beat a full-frame comp except S6) ===== -->
   <!-- A4-S6: STAND-IN for ins-paul-5: nearest accepted still, the 27 Nov surface chart (A3-S7 pick); Picture line wants the drained map beside him -->
-  <section class="clip still-wrap" id="c-a4-paul" data-start="702.459" data-duration="8.181" data-track-index="1" data-callback="stand-in for Paul's clip P5 (ins-paul-5 not generated): nearest accepted still"><img id="kb-a4-paul" src="media/a3/A3-S7_c2_nws-jkl-surface-1950-11-27.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-paul" data-start="702.459" data-duration="4.09" data-track-index="1" data-callback="stand-in for Paul's clip P5 (ins-paul-5 not generated): nearest accepted still"><img id="kb-a4-paul" src="media/a3/A3-S7_c2_nws-jkl-surface-1950-11-27.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-paul2" data-start="706.549" data-duration="4.091" data-track-index="1" data-callback="second shot of the P5 stand-in hold (6 s still cap): NWS Jackson storm-total snow map, the snow that kept falling"><img id="kb-a4-paul2" src="media/candidates/a3/A3-S7_c3_nws-jkl-snowstorm-1950.jpg" alt=""></section>
   <section class="clip blackout" id="bo-a5" data-start="776.521" data-duration="0.7" data-track-index="1"></section>
 
   <!-- ===== A5 (every beat a full-frame comp; ground under the comp gaps, and under A5-S9 until g-a5-8's S9 fade is re-timed) ===== -->
-  <section class="clip ground" id="c-a5-ground" data-start="777.221" data-duration="138.348" data-track-index="1"></section>
+  <section class="clip ground" id="gp-a5-s1" data-start="791.221" data-duration="0.386" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a5-s2" data-start="811.907" data-duration="0.1" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a5-s3" data-start="829.407" data-duration="0.058" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a5-s4" data-start="847.865" data-duration="0.178" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a5-s6" data-start="881.023" data-duration="0.284" data-track-index="2"></section>
+  <section class="clip ground" id="gp-a5-s7" data-start="893.707" data-duration="0.132" data-track-index="2"></section>
   <!-- END ASK (config channel.end_ask, staged media/end-ask/), right before Paul's signature line A5-S9 and the close card; first clip inside the last 30 s (915.569 >= 944.789 - 30) -->
   <video id="ins-paul-e1" src="media/end-ask/paul-end-ask-v1-oct19-a.mp4" data-start="915.569" data-duration="9.083" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I genuinely appreciate you watching the video till the end. Please like and subscribe and share your suggestions via comments."></video>
   <video id="ins-paul-e2" src="media/end-ask/paul-end-ask-v1-oct19-b.mp4" data-start="924.652" data-duration="6.417" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="I read them all. And if you want the checklist, it's the first link in the description."></video>
-  <section class="clip ground" id="c-a5-ground2" data-start="931.069" data-duration="13.72" data-track-index="1"></section>
+  <section class="clip ground" id="c-a5-ground2" data-start="931.069" data-duration="13.72" data-track-index="2"></section>
 
   <!-- PRESENTER CIRCLE (28 Oct 26, hand-mounted; mg-quickref "Corner circle", worked example ep-e2e-moore). Face pass:
        media/face/ep-appalachian-1950-face.mp4@0.000 (covers the whole timeline from 0, so each window seeks to its own start and
@@ -203,7 +231,7 @@
   <div id="host-g-a1-9" data-composition-id="g-a1-9-split" data-composition-src="compositions/g-a1-9-split.html" data-start="223.091" data-duration="13.389" data-track-index="2" data-width="1920" data-height="1080"></div>
   <!-- A2 (briefs/a2/_list.md). g-a2-2-thermo is NOT on disk yet (waits on the a2-s2 re-transcription): mounted at its slot so the file drops in. -->
   <div id="host-g-a2-1" data-composition-id="g-a2-1-columbus" data-composition-src="compositions/g-a2-1-columbus.html" data-start="237.18" data-duration="13.7" data-track-index="2" data-width="1920" data-height="1080"></div>
-  <div id="host-g-a2-2" data-composition-id="g-a2-2-thermo" data-composition-src="compositions/g-a2-2-thermo.html" data-start="251.005" data-duration="12.54" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-2" data-composition-id="g-a2-2-thermo" data-composition-src="compositions/g-a2-2-thermo.html" data-start="251.005" data-duration="12.523" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-g-a2-3" data-composition-id="g-a2-3-record" data-composition-src="compositions/g-a2-3-record.html" data-start="263.528" data-duration="17.68" data-track-index="2" data-width="1920" data-height="1080"></div>
   <div id="host-g-a2-4" data-composition-id="g-a2-4-snowbowl" data-composition-src="compositions/g-a2-4-snowbowl.html" data-start="281.562" data-duration="21.24" data-track-index="3" data-width="1920" data-height="1080"></div>
   <div id="host-g-a2-5" data-composition-id="g-a2-5-janowicz" data-composition-src="compositions/g-a2-5-janowicz.html" data-start="303.086" data-duration="14.06" data-track-index="2" data-width="1920" data-height="1080"></div>
@@ -257,7 +285,7 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   /* stills get a quick punch on their cut (no slow Ken Burns: DESIGN.md "Footage motion"); the overlay comps carry the motion after */
   const stills = [
-    ["#kb-h1-paul", 0], ["#kb-a2-snowbowl", 281.562], ["#kb-a2-paul", 453.081], ["#kb-a4-paul", 702.459]
+    ["#kb-h1-paul", 0], ["#kb-h1-paul2", 4.419], ["#kb-a2-snowbowl", 281.562], ["#kb-a2-snowbowl2", 285.962], ["#kb-a2-pc1", 290.802], ["#kb-a2-pc2", 294.402], ["#kb-a2-pc3", 298.262], ["#kb-a2-paul", 453.081], ["#kb-a4-paul", 702.459], ["#kb-a4-paul2", 706.549]
   ];
   stills.forEach(([sel, at]) => tl.fromTo(sel, { scale: 1.08 }, { scale: 1, duration: 0.6, ease: "power3.out" }, at));
   tl.set({}, {}, DUR);
