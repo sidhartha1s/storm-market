@@ -270,7 +270,7 @@ for gid in sorted(mounted):
         print(f"      check 7: resolved {len(pos_matches)}/{calls_total} tween positions in {gid}{note}")
     # a `duration: DUR` that fold() could not resolve reads as 0 s, so tl_end is only a lower bound and "holds" cannot be
     # claimed. Only this skips "holds": the loop/no-position count above is coverage, never a reason to drop a verdict.
-    dur_expr = sum(1 for m in pos_matches if re.search(r'duration:\s*(?![\d.])', m.group(0)))
+    dur_expr = sum(1 for m in pos_matches if re.search(r'duration:(?!\s*[\d.])', m.group(0)))
     ends = [float(m.group(1)) + max([float(d) for d in re.findall(
         r'duration:\s*([\d.]+)', m.group(0))] or [0])
         for m in pos_matches]
