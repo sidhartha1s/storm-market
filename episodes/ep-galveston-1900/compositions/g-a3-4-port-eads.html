@@ -101,8 +101,8 @@ window.__timelines = window.__timelines || {};
 
   /* pure function of comp time: page push, map camera, ship */
   function upd(t) {
-    const u = ease(clamp(t / 3.84)), s = 1.6 + 0.2 * u, y0 = 1105 + 83 * u;
-    const tx = (860 - 450 * s) / 2 - 582 * s, ty = -y0 * s;
+    const u = ease(clamp(t / 3.84)), s = 1.80 + 0.15 * u;
+    const tx = (920 - 467 * s) / 2 - 576 * s, ty = (450 - 221 * s) / 2 - 1101 * s;
     for (let i = 0; i < imgs.length; i++) {
       imgs[i].style.transform = "translate(" + tx.toFixed(2) + "px," + ty.toFixed(2) + "px) scale(" + s.toFixed(4) + ")";
     }
