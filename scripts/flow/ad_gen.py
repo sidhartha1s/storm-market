@@ -285,11 +285,18 @@ with sync_playwright() as p:
         target = TOP or (1 if mode == "--after" else approved * CFG["count"])
         end = time.time() + 1500
         new = []
-        # poll the open page; reloading every minute got the profile logged out (5 Oct 26)
+        # poll the open page; reloading every minute got the profile logged out (5 Oct 26). Every 5th empty poll the grid
+        # is opened afresh: Buffalo ins-paul-1 (28 Oct 26) polled 0 for 21 min in send mode, then an --after run that
+        # opened the project grid found the clip on its first read.
+        polls = 0
         while time.time() < end:
+            polls += 1
+            if polls % 5 == 0:
+                page.goto(PROJECT, wait_until="domcontentloaded")
+                page.wait_for_timeout(10000)
             tiles = video_tiles(page)
             new = tiles[:TOP] if TOP else clips_above(tiles, anchor)
-            log("new clips", len(new), "target", target)
+            log(time.strftime("%H:%M:%S"), "new clips", len(new), "target", target)
             if len(new) >= target:
                 break
             if failed_cards(page) > fails_before:  # stop waiting: nothing will land for this shot
