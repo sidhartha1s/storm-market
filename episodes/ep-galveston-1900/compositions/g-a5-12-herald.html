@@ -71,6 +71,9 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"pg", {scale:1.15, y:0, duration:3.80, ease:"power1.inOut"}, 5.46);
   tl.to(P+"bar", {autoAlpha:1, duration:0.1, ease:"none"}, 5.46);
   tl.to(P+"bar", {scaleX:1, duration:0.76, ease:"power2.out"}, 5.46);
+  /* same duration and ease as the bar, so the bright copy's right edge tracks the bar's right edge */
+  tl.to(P+"lit", {autoAlpha:1, duration:0.1, ease:"none"}, 5.46);
+  tl.to(P+"lit", {clipPath:"inset(0% 0% 0% 0%)", duration:0.76, ease:"power2.out"}, 5.46);
   tl.to(P+"img", {opacity:0.55, duration:0.76, ease:"power2.out"}, 5.46);
   tl.to(P+"ul", {opacity:0.55, duration:0.76, ease:"power2.out"}, 5.46);
 
