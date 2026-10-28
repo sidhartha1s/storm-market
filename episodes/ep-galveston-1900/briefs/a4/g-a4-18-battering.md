@@ -8,7 +8,7 @@ By 8 p.m. a number of houses had drifted up and lodged to the east and southeast
 MWR Sept 1900 p. 373 (factcheck/a4-r1.md rows 56, 57): "By 8 p. m. a number of houses had drifted up and lodged to the east and southeast of my residence, and these with the force of the waves acted as a battering ram against which it was impossible for any building to stand for any length of time." The houses are the ram (row 57).
 
 ## 2. Datum, scale, orientation
-HOUSE PLATE, but this view needs east: add a compass marker "E →" Arial 700 22 px `#93a3b2` at top-right of the plate (left 1700, top 130 is in the chip zone: put it at left 1500, top 960? corner. Use left 1360, top 54 beside the source line). East = right of screen. Water at y 360 (about 20 ft) for the whole window; the house's lower floor is under; the upper storey and roof show above y 360.
+HOUSE PLATE, but this view needs east: add a direction marker "East →" Arial 700 22 px `#93a3b2` at left 1360, top 54 (beside the source line, clear of the chip and the corner). East = right of screen. Water at y 360 (about 20 ft) for the whole window; the house's lower floor is under; the upper storey and roof show above y 360.
 
 ## 3. Geometry (px)
 - Plate at night, water to y 360, rough surface (amplitude 12 px, 0.9 s period).
