@@ -205,62 +205,82 @@
 <script>
 window.__timelines = window.__timelines || {};
 (function () {
-  const P = "#ih2-";
-  const $ = function (n) { return document.getElementById("ih2-" + n); };
+  const P = "#a42-";
+  const $ = function (n) { return document.getElementById("a42-" + n); };
   const proj = function (lon, lat) { return [3841 * (lon + 97.576), -5585 * (lat - 46.6213)]; };
-  const NWK = proj(-74.1724, 40.7357), PIT = proj(-79.9959, 40.4406), BUF = proj(-78.8784, 42.8864);
+  const latY = function (lat) { return -5585 * (lat - 46.6213); };
+  const CHI = proj(-87.6298, 41.8781), BUF = proj(-78.8784, 42.8864), LOU = proj(-85.7585, 38.2527);
+  const LEX = proj(-84.5037, 38.0406), BG = proj(-86.4808, 36.9685), FAR = proj(-83.5352, 38.1468);
+  const SOM = proj(-84.6041, 37.0920), WIL = proj(-84.1597, 36.7434), MID = proj(-83.7166, 36.6084);
+  const ASH = proj(-82.5515, 35.5951), ATL = proj(-84.3880, 33.7490), BIR = proj(-86.8104, 33.5186);
+  const PEN = proj(-87.2169, 30.4213);
 
-  /* segment offsets (comp-local s), 0.40 s gaps assumed; cue = SEG[seg] + words.json time */
-  const SEG = { h1s2: 0.000, h1s3: 7.065, h1s4: 11.230, h1s5: 21.580 };
-  const DUR = SEG.h1s5 + 7.101;                                               /* 28.681 */
+  /* segment offsets (comp-local s) = index.html nx-a4-s4 669.293 / nx-a4-s5 685.798; cue = SEG[seg] + words.json time */
+  const SEG = { a4s4: 0.000, a4s5: 16.505 };
+  const DUR = 35.178;                                                         /* host data-duration = SEG.a4s5 + 18.273 + 0.40 */
+  const S4 = SEG.a4s4, S5 = SEG.a4s5;
 
   /* camera frames [s, top-left x, top-left y] -> centre form [s, cx, cy] */
   const fr = function (s, tx, ty) { return [s, tx + 960 / s, ty + 540 / s]; };
-  const A = fr(0.12, 80726.5, 28204.4), B = fr(0.04024, 54602.7, 19608.7);
-  const C = fr(0.04024, 48638.5, 14141.5), D = fr(0.04024, 59078.1, 18954.6);
-  const DW = [D[0] / 1.03, D[1], D[2]];                                       /* D, 3 % wider */
-  const scr = function (f, p) { return [960 + (p[0] - f[1]) * f[0], 540 + (p[1] - f[2]) * f[0]]; };
-  const NWK_A = scr(A, NWK), NWK_B = scr(B, NWK);
-  const S_A1 = A[0] * (1 + 0.02 * 2.06 / 3.4);                                /* drift-in 2 % per 3.4 s, until 2.06 */
+  const P2S = fr(0.075, 35150.0, 43938.6), P4 = fr(0.015, -5316.0, 12192.7), P0 = fr(0.012, -15129.9, 11692.7);
+  /* pull-out fixed point: the map point at the same screen spot in P2s and P4 (screen ~ 758.7, 595.2) */
+  const FX = [(35150.0 * 0.075 + 5316.0 * 0.015) / 0.060, (43938.6 * 0.075 - 12192.7 * 0.015) / 0.060];
+  const FS = [(FX[0] + 5316.0) * 0.015, (FX[1] - 12192.7) * 0.015];
+  const P4D = [P4[0], P4[1], P4[2] - 20 / P4[0]];                             /* P4 after the 20 px drift up toward Buffalo */
+  /* S5 push: the map point under screen (760, 820) in P0 stays put; P0W is P0 2 % wider about it, so the hold
+     pushes P0W -> P0 and the last frame is P0 exactly (brief §4.7) */
+  const PM = [-15129.9 + 760 / 0.012, 11692.7 + 820 / 0.012];
+  const about = function (s) { return [s, PM[0] + (960 - 760) / s, PM[1] + (540 - 820) / s]; };
+  const P0W = about(0.012 / 1.02);
+  const T_OUT1 = S4 + 1.90, T_DRIFT0 = S4 + 11.46, T_DRIFT1 = S4 + 16.10;
+  const T_MOVE0 = S5, T_MOVE1 = S5 + 1.80, T_PUSH0 = S5 + 8.30, T_PUSH1 = S5 + 13.40;
 
-  const expo = gsap.parseEase("expo.inOut"), p2 = gsap.parseEase("power2.inOut");
+  const expo = gsap.parseEase("expo.inOut"), p2 = gsap.parseEase("power2.inOut"), p1 = gsap.parseEase("power1.inOut");
   const lerp = function (a, b, u) { return a + (b - a) * u; };
   function logLerpScale(fromScale, toScale, t) {                              /* helpers.js logZoom */
     return Math.exp(Math.log(fromScale) + (Math.log(toScale) - Math.log(fromScale)) * t);
   }
-  /* centre that puts map point p at screen (px, py) at scale s */
-  const anchor = function (p, px, py, s) { return [s, p[0] - (px - 960) / s, p[1] - (py - 540) / s]; };
   function state(t) {
-    if (t < 2.06) return anchor(NWK, NWK_A[0], NWK_A[1], A[0] * (1 + 0.02 * t / 3.4));   /* THATS: drift in on Newark */
-    if (t < 3.96) {                                                            /* INLAND: logZoom A -> B, Newark glides */
-      const u = expo((t - 2.06) / 1.9);
-      return anchor(NWK, lerp(NWK_A[0], NWK_B[0], u), lerp(NWK_A[1], NWK_B[1], u), logLerpScale(S_A1, B[0], u));
+    if (t < T_OUT1) {                                                         /* CROSSED: 5x pull-out, logZoom, fixed point FX */
+      const s = logLerpScale(P2S[0], P4[0], expo((t - S4) / 1.90));
+      return [s, FX[0] + (960 - FS[0]) / s, FX[1] + (540 - FS[1]) / s];
     }
-    if (t < SEG.h1s4) return B;
-    if (t < SEG.h1s4 + 1.0) {                                                  /* YOUD: pan B -> C */
-      const u = p2(t - SEG.h1s4);
-      return [B[0], lerp(B[1], C[1], u), lerp(B[2], C[2], u)];
+    if (t < T_DRIFT0) return P4;
+    if (t < T_DRIFT1) return [P4[0], P4[1], lerp(P4[2], P4D[2], (t - T_DRIFT0) / (T_DRIFT1 - T_DRIFT0))];
+    if (t < T_MOVE0) return P4D;
+    if (t < T_MOVE1) {                                                        /* DIDNT STOP: 1.25x + pan, linear, power2.inOut */
+      const u = p2((t - T_MOVE0) / (T_MOVE1 - T_MOVE0));
+      return [lerp(P4D[0], P0W[0], u), lerp(P4D[1], P0W[1], u), lerp(P4D[2], P0W[2], u)];
     }
-    if (t < SEG.h1s5) return C;
-    if (t < SEG.h1s5 + 1.4) {                                                  /* ITS: pan C -> D wide */
-      const u = p2((t - SEG.h1s5) / 1.4);
-      return [lerp(C[0], DW[0], u), lerp(C[1], DW[1], u), lerp(C[2], DW[2], u)];
-    }
-    const PUSH0 = SEG.h1s5 + 1.4, PUSH1 = DUR - 0.08;                          /* slow push, lands exactly on D */
-    if (t < PUSH1) return [logLerpScale(DW[0], D[0], (t - PUSH0) / (PUSH1 - PUSH0)), D[1], D[2]];
-    return D;
+    if (t < T_PUSH0) return P0W;
+    if (t < T_PUSH1) return about(lerp(P0W[0], P0[0], (t - T_PUSH0) / (T_PUSH1 - T_PUSH0)));   /* 2 % push, ease none */
+    return P0;
   }
-  const camEl = $("cam");
-  const pins = [[$("nwk-at"), NWK], [$("pit-at"), PIT], [$("buf-at"), BUF]];
-  const chips = [[$("nwkchip-at"), NWK], [$("pitchip-at"), PIT], [$("bufchip-at"), BUF]];
+  /* cold fill edge latitude per cue (brief §5); each pin's latitude is passed before it turns blue */
+  function edgeLat(t) {
+    if (t < S4 + 2.40) return lerp(36.4, 35.4, p2((t - S4) / 2.40));          /* Asheville 35.60 passed 2.27 < 2.64 */
+    if (t < S4 + 4.60) return 35.4;
+    if (t < S4 + 5.80) return lerp(35.4, 33.3, p1((t - S4 - 4.60) / 1.20));   /* Atlanta 33.75, Birmingham 33.52 by 5.80 */
+    if (t < S5 + 0.30) return 33.3;
+    if (t < S5 + 1.82) return lerp(33.3, 30.2, p1((t - S5 - 0.30) / 1.52));   /* Pensacola 30.42 by 1.82 < 2.98 */
+    return 30.2;
+  }
+  const camEl = $("cam"), grad = $("coldgrad"), front = $("front");
+  const pins = [[$("buf-at"), BUF], [$("chi-at"), CHI], [$("bwg-at"), BG], [$("lou-at"), LOU], [$("lex-at"), LEX],
+    [$("far-at"), FAR], [$("som-at"), SOM], [$("wil-at"), WIL], [$("mid-at"), MID],
+    [$("ash-at"), ASH], [$("atl-at"), ATL], [$("bir-at"), BIR], [$("pen-at"), PEN]];
   function camAt(t) {
     const c = state(t), s = c[0], cx = c[1], cy = c[2];
     camEl.setAttribute("transform", "translate(" + (960 - cx * s).toFixed(2) + "," + (540 - cy * s).toFixed(2) + ") scale(" + s.toFixed(6) + ")");
     for (let i = 0; i < pins.length; i++) {
-      const p = pins[i][1], x = (960 + (p[0] - cx) * s).toFixed(2), y = (540 + (p[1] - cy) * s).toFixed(2);
-      pins[i][0].setAttribute("transform", "translate(" + x + "," + y + ")");
-      chips[i][0].style.transform = "translate(" + x + "px," + y + "px)";
+      const p = pins[i][1];
+      pins[i][0].setAttribute("transform", "translate(" + (960 + (p[0] - cx) * s).toFixed(2) + "," + (540 + (p[1] - cy) * s).toFixed(2) + ")");
     }
+    const ey = latY(edgeLat(t)), f = 60 / s;                                  /* 60 px feather above the edge */
+    grad.setAttribute("y1", (ey - f).toFixed(1));
+    grad.setAttribute("y2", ey.toFixed(1));
+    front.setAttribute("y1", ey.toFixed(1));
+    front.setAttribute("y2", ey.toFixed(1));
   }
   camAt(0);
 
@@ -276,86 +296,88 @@ window.__timelines = window.__timelines || {};
   tl.to({ t: 0 }, { t: 1, duration: DUR, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
 
   /* transforms start in set() at 0 (file contract) */
-  tl.set([P + "nwkchip", P + "pitchip", P + "bufchip1", P + "bufchip2", P + "toll", P + "tollbig", P + "tollsrc"], { x: 0, y: 0, scale: 1 }, 0);
-  tl.set([P + "nwkhf", P + "pitfeet", P + "pitdig", P + "buf40", P + "bufno"], { x: 0, y: 0 }, 0);
-  tl.set([P + "pit", P + "buf"], { scale: 1, svgOrigin: "0 0" }, 0);
-  tl.set([P + "nwklab", P + "pitlab", P + "buflab"], { x: 0, y: 0 }, 0);
+  const LABS = [P + "ashlab", P + "atllab", P + "birlab", P + "buflab", P + "penlab"];
+  const VALS = [P + "ashval", P + "atlval", P + "birval", P + "bufval", P + "penval"];
+  tl.set(LABS.concat(VALS), { x: 0, y: 0 }, 0);
+  tl.set([P + "chip"], { x: 0 }, 0);
 
-  /* ambient: scan line top to bottom at about 60 px/s; credit on for the whole comp */
-  tl.fromTo(P + "scan", { y: -10 }, { y: 1090, duration: 18, ease: "none", repeat: 1 }, 0);
+  /* ambient: scan line top to bottom, 1100 px per 11.7 s (about 94 px/s), three passes = the whole comp */
+  tl.fromTo(P + "scan", { y: -10 }, { y: 1090, duration: DUR / 3, ease: "none", repeat: 2 }, 0);
+  /* Buffalo glow breathes 0.5 - 0.7, 2 s period, finite repeats (35 s) */
+  tl.fromTo(P + "buf-glow", { opacity: 0.5 }, { opacity: 0.7, duration: 1.0, ease: "sine.inOut", repeat: 34, yoyo: true }, 0);
 
-  /* THATS @0.00: frame A, Newark pin pulsing, NEWARK label and 108 MPH already on (carried across the cut) */
-  tl.fromTo(P + "nwk-pulse", { opacity: 0.8, attr: { r: 17 } }, { opacity: 0, attr: { r: 35 }, duration: 1.2, ease: "power1.out", repeat: 14, repeatDelay: 0.2 }, 0);
-  /* HURRICANE @0.36 */
-  tl.fromTo(P + "nwkhf", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s2 + 0.36);
+  /* CROSSED THE MOUNTAINS @0.00: pull-out P2s -> P4 (camAt, logZoom, expo.inOut, lands 1.90); edge 36.4 -> 35.4 by 2.40.
+     Source line crossfades; Kentucky rings fade and the cores settle to 12 px dots at 0.6 (Farmers stays grey). */
+  tl.to(P + "src0", { autoAlpha: 0, duration: 0.3, ease: "power1.inOut" }, S4);
+  tl.fromTo(P + "src1", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power1.inOut" }, S4);
+  tl.to("#g-a4-2-southmap-root .a42-kyring", { opacity: 0, duration: 1.2, ease: "power2.inOut" }, S4 + 0.40);
+  tl.to(P + "ky", { opacity: 0.6, duration: 1.2, ease: "power2.inOut" }, S4 + 0.40);
+  tl.to([P + "lou-core", P + "lex-core", P + "bwg-core"], { attr: { r: 6 }, duration: 1.2, ease: "power2.inOut" }, S4 + 0.40);
 
-  /* INLAND @2.06: Newark chip leaves (in frame B it would collide with the Pittsburgh chip); the label clears
-     so no text rides the 3x pull-out, and returns once the camera settles at 3.96 */
-  tl.to(P + "nwkchip", { x: -30, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, SEG.h1s2 + 2.06);
-  tl.to(P + "nwklab", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, SEG.h1s2 + 2.06);
-  tl.fromTo(P + "nwklab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out", immediateRender: false }, SEG.h1s2 + 3.96);
+  /* ASHEVILLE @2.64: pin in, fills cold blue top to bottom (0.5 s), label in */
+  tl.fromTo(P + "ash", { autoAlpha: 0, scale: 0.6, svgOrigin: "0 0", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", smoothOrigin: false, duration: 0.4, ease: "back.out(2)" }, S4 + 2.64);
+  tl.to(P + "ashclip-r", { attr: { height: 20 }, duration: 0.5, ease: "power2.inOut" }, S4 + 2.64);
+  tl.fromTo(P + "ashlab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S4 + 2.64);
+  /* ONE ABOVE @4.54 */
+  tl.fromTo(P + "ashval", { autoAlpha: 0, scale: 0.9, svgOrigin: "184 0", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "184 0", smoothOrigin: false, duration: 0.4, ease: "back.out(1.4)" }, S4 + 4.54);
+  /* 4.60 - 5.80: edge 35.4 -> 33.3 (edgeLat) */
+  /* ATLANTA @5.88 */
+  tl.fromTo(P + "atl", { autoAlpha: 0, scale: 0.6, svgOrigin: "0 0", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", smoothOrigin: false, duration: 0.4, ease: "back.out(2)" }, S4 + 5.88);
+  tl.to(P + "atlclip-r", { attr: { height: 20 }, duration: 0.5, ease: "power2.inOut" }, S4 + 5.88);
+  tl.fromTo(P + "atllab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S4 + 5.88);
+  /* THREE ABOVE @6.62: Asheville line dims (one reading target) */
+  tl.fromTo(P + "atlval", { autoAlpha: 0, scale: 0.9, svgOrigin: "161 0", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "161 0", smoothOrigin: false, duration: 0.4, ease: "back.out(1.4)" }, S4 + 6.62);
+  tl.to([P + "ashlab", P + "ashval"], { opacity: 0.6, duration: 0.3, ease: "power2.out" }, S4 + 6.62);
+  /* BIRMINGHAM @8.42: label left of the pin */
+  tl.fromTo(P + "bir", { autoAlpha: 0, scale: 0.6, svgOrigin: "0 0", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", smoothOrigin: false, duration: 0.4, ease: "back.out(2)" }, S4 + 8.42);
+  tl.to(P + "birclip-r", { attr: { height: 20 }, duration: 0.5, ease: "power2.inOut" }, S4 + 8.42);
+  tl.fromTo(P + "birlab", { autoAlpha: 0, x: 12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S4 + 8.42);
+  /* FIVE ABOVE @10.40: Atlanta line dims */
+  tl.fromTo(P + "birval", { autoAlpha: 0, scale: 0.9, svgOrigin: "-210 0", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "-210 0", smoothOrigin: false, duration: 0.4, ease: "back.out(1.4)" }, S4 + 10.40);
+  tl.to([P + "atllab", P + "atlval"], { opacity: 0.6, duration: 0.3, ease: "power2.out" }, S4 + 10.40);
+  /* SAME WEEKEND @11.46: Southeast lines all at 0.6; 20 px drift up toward Buffalo to 16.10 (camAt, ease none) */
+  tl.to([P + "birlab", P + "birval"], { opacity: 0.6, duration: 0.3, ease: "power2.out" }, S4 + 11.46);
+  /* BUFFALO @12.72: one strong pulse ring (30 -> 70 px), label in */
+  tl.fromTo(P + "buf-pulse", { opacity: 0.9, attr: { r: 15 } }, { opacity: 0, attr: { r: 35 }, duration: 1.0, ease: "power2.out" }, S4 + 12.72);
+  tl.fromTo(P + "buflab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S4 + 12.72);
+  /* 40S @15.58: lands alone (Southeast values at 0.6) */
+  tl.fromTo(P + "bufval", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, S4 + 15.58);
 
-  /* PITTSBURGH @4.02: ring + label in, white fill sweep (clip rect, top to bottom, 0.6 s), snowfall starts */
-  tl.fromTo(P + "pit", { autoAlpha: 0, scale: 0.3, svgOrigin: "0 0" }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", duration: 0.4, ease: "back.out(2)" }, SEG.h1s2 + 4.02);
-  tl.fromTo(P + "pitlab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s2 + 4.02);
-  tl.to(P + "pitclip-r", { attr: { height: 20 }, duration: 0.6, ease: "power2.inOut" }, SEG.h1s2 + 4.12);
-  tl.to(P + "pit-ring", { attr: { stroke: "#f2f5f8" }, duration: 0.6, ease: "power2.inOut" }, SEG.h1s2 + 4.12);
-  tl.fromTo(P + "snow", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power1.out" }, SEG.h1s2 + 4.02);
-  /* snow dots fall inside a 90 px radius, 30-50 px/s, staggered, finite repeats to the end of H1-S4 */
-  const SNOW_END = SEG.h1s4 + 9.95;
-  Array.prototype.slice.call($("snow").querySelectorAll("circle")).forEach(function (c, i) {
-    const x = +c.getAttribute("cx"), h = Math.sqrt(90 * 90 - x * x), v = 30 + (i * 7) % 21;
-    const dur = 2 * h / v, t0 = SEG.h1s2 + 4.02 + (i * 0.37) % 2.4;
-    const rep = Math.max(0, Math.floor((SNOW_END - t0) / dur) - 1);
-    tl.fromTo(c, { attr: { cy: -h } }, { attr: { cy: h }, duration: dur, ease: "none", repeat: rep }, t0);
+  /* DIDNT STOP @0.00 (S5): every label and value out; move P4 -> P0 (camAt, 1.8 s); edge 33.3 -> 30.2 from 0.30
+     to 1.82 with the front line bright; source line crossfades */
+  tl.to(LABS.slice(0, 4).concat(VALS.slice(0, 4)), { autoAlpha: 0, duration: 0.4, ease: "power3.in" }, S5);
+  tl.to(P + "src1", { autoAlpha: 0, duration: 0.3, ease: "power1.inOut" }, S5);
+  tl.fromTo(P + "src2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power1.inOut" }, S5);
+  tl.to(P + "front", { opacity: 0.9, duration: 0.3, ease: "power2.out" }, S5 + 0.30);
+  /* GULF @1.82: fill meets the coast; front line flashes once and fades out (nowhere left to go) */
+  tl.to(P + "front", { opacity: 1, duration: 0.15, ease: "power2.out" }, S5 + 1.82);
+  tl.to(P + "front", { opacity: 0, duration: 0.8, ease: "power2.in" }, S5 + 1.97);
+
+  /* PENSACOLA @2.98: pale blue pin, label in */
+  tl.fromTo(P + "pen", { autoAlpha: 0, scale: 0.6, svgOrigin: "0 0", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", smoothOrigin: false, duration: 0.4, ease: "back.out(2)" }, S5 + 2.98);
+  tl.to(P + "penclip-r", { attr: { height: 20 }, duration: 0.5, ease: "power2.inOut" }, S5 + 2.98);
+  tl.fromTo(P + "penlab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, S5 + 2.98);
+  /* 22 DEGREES @6.80 */
+  tl.fromTo(P + "penval", { autoAlpha: 0, scale: 0.9, svgOrigin: "201 0", smoothOrigin: false }, { autoAlpha: 1, scale: 1, svgOrigin: "201 0", smoothOrigin: false, duration: 0.4, ease: "back.out(1.4)" }, S5 + 6.80);
+  /* HOLD 8.30 - 13.40: Pensacola ring pulse every 1.4 s (4 pulses) and the 2 % push (camAt) */
+  tl.fromTo(P + "pen-pulse", { opacity: 0.9, attr: { r: 15 } }, { opacity: 0, attr: { r: 30 }, duration: 1.0, ease: "power2.out", repeat: 3, repeatDelay: 0.4 }, S5 + 8.30);
+
+  /* GEORGIA @13.50: Pensacola line to 0.6; warm crop rows fade in over GA, then SC */
+  tl.to([P + "penlab", P + "penval"], { opacity: 0.6, duration: 0.3, ease: "power2.out" }, S5 + 13.50);
+  tl.fromTo(P + "rows-ga", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, S5 + 13.50);
+  tl.fromTo(P + "rows-sc", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power1.out" }, S5 + 13.75);
+  /* RECORD COLD @15.58: frost copy swept north to south over both states (clip rect, 1.2 s, power1.in) */
+  tl.set(P + "frost", { autoAlpha: 1 }, S5 + 15.58);
+  tl.to(P + "frost-r", { attr: { height: 27700 }, duration: 1.2, ease: "power1.in" }, S5 + 15.58);
+  /* glints: 20 dots, each a 0.4 s blink, 0.125 s apart, from 15.88 (behind the sweep) to the end (last ends 35.16) */
+  $("glints").querySelectorAll("circle").forEach(function (c, i) {
+    tl.fromTo(c, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: "power1.out", yoyo: true, repeat: 1 }, S5 + 15.88 + i * 0.125);
   });
-  tl.to(P + "snow", { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, SNOW_END);
+  /* WIDESPREAD @16.74: crop chip in, both lines together (settled 17.14, 1.53 s before the host ends) */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, S5 + 16.74);
+  /* to the end: glints and scan line keep moving; no exit (the edit cuts to Paul's clip 5 on frame P0) */
 
-  /* TWO FEET @5.62 */
-  tl.fromTo(P + "pitchip", { autoAlpha: 0, scale: 0.9, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, transformOrigin: "left center", duration: 0.4, ease: "back.out(1.4)" }, SEG.h1s2 + 5.62);
-
-  /* AT LEAST @1.18 (H1-S3): chips to 0.35, toll card in, source 0.3 s after; "160" spoken @1.42 */
-  tl.to(P + "pitchip", { opacity: 0.35, duration: 0.3, ease: "power2.out" }, SEG.h1s3 + 1.18);
-  tl.fromTo(P + "toll", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, SEG.h1s3 + 1.18);
-  tl.fromTo(P + "tollbig", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power3.out" }, SEG.h1s3 + 1.18);
-  tl.fromTo(P + "tollsrc", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, SEG.h1s3 + 1.48);
-  /* LIVES ends @3.48: toll card out, done before H1-S4 0.20 */
-  tl.to(P + "toll", { y: 30, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, SEG.h1s3 + 3.64);
-
-  /* YOUD @0.00 (H1-S4): pan B -> C (camAt, 1.0 s, power2.inOut); Pittsburgh chip back to full */
-  tl.to(P + "pitchip", { opacity: 1, duration: 0.3, ease: "power2.out" }, SEG.h1s4);
-  /* BUFFALO @0.44: ring in during the pan; its label waits for the pan to settle at 1.00 */
-  tl.fromTo(P + "buf", { autoAlpha: 0, scale: 0.3, svgOrigin: "0 0" }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", duration: 0.4, ease: "back.out(2)" }, SEG.h1s4 + 0.44);
-  tl.fromTo(P + "buflab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 1.00);
-  /* 200 @1.32: one reading target, the Pittsburgh chip dims */
-  tl.fromTo(P + "bufchip1", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 1.32);
-  tl.to(P + "pitchip", { opacity: 0.35, duration: 0.3, ease: "power2.out" }, SEG.h1s4 + 1.32);
-  /* BUFFALO2 @5.24 */
-  tl.to(P + "bufchip1", { x: 20, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, SEG.h1s4 + 5.24);
-  /* 40S @6.16: Buffalo fill sweeps warm amber, "40s" in */
-  tl.to(P + "bufclip-r", { attr: { height: 20 }, duration: 0.4, ease: "power2.inOut" }, SEG.h1s4 + 6.16);
-  tl.to(P + "buf-ring", { attr: { stroke: "#d8a13a" }, duration: 0.4, ease: "power2.inOut" }, SEG.h1s4 + 6.16);
-  tl.fromTo(P + "bufchip2", { autoAlpha: 0, scale: 0.9, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, transformOrigin: "left center", duration: 0.4, ease: "back.out(1.4)" }, SEG.h1s4 + 6.16);
-  /* NO SNOW @6.64 */
-  tl.fromTo(P + "bufno", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 6.64);
-  /* SINGLE @9.14: Pittsburgh chip flips to SINGLE DIGITS at full; Buffalo chip dims */
-  tl.to(P + "pitchip", { opacity: 1, duration: 0.3, ease: "power2.out" }, SEG.h1s4 + 9.14);
-  tl.to(P + "pitfeet", { y: -20, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, SEG.h1s4 + 9.14);
-  tl.fromTo(P + "pitdig", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 9.14);
-  tl.to(P + "bufchip2", { opacity: 0.35, duration: 0.3, ease: "power2.out" }, SEG.h1s4 + 9.14);
-
-  /* ITS @0.00 (H1-S5): Buffalo and both chips out; pan C -> D wide (camAt 1.4 s), then slow push to exactly D */
-  tl.to([P + "buf", P + "buflab"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, SEG.h1s5);
-  tl.to(P + "bufchip2", { x: 20, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, SEG.h1s5);
-  tl.to(P + "pitchip", { x: 20, autoAlpha: 0, duration: 0.4, ease: "power3.in" }, SEG.h1s5);
-  /* HURRICANE @1.00: Newark one strong pulse (ring to 90 px) */
-  tl.fromTo(P + "nwk-big", { opacity: 1, attr: { r: 17 } }, { opacity: 0, attr: { r: 45 }, duration: 1.0, ease: "power2.out" }, SEG.h1s5 + 1.00);
-  tl.fromTo(P + "nwk-pulse", { opacity: 0.8, attr: { r: 17 } }, { opacity: 0, attr: { r: 35 }, duration: 1.2, ease: "power1.out", repeat: 3, repeatDelay: 0.2, immediateRender: false }, SEG.h1s5 + 1.60);
-  /* SNOW @2.38: Pittsburgh one pulse, white */
-  tl.fromTo(P + "pit-pulse", { opacity: 0.9, attr: { r: 17 } }, { opacity: 0, attr: { r: 40 }, duration: 1.0, ease: "power2.out" }, SEG.h1s5 + 2.38);
-  /* SEE HOW ends @6.96: the push lands on frame D (camAt), the comp ends on it for g-intro-3-coast */
-
-  window.__timelines["g-intro-2-hookmap"] = tl;
+  window.__timelines["g-a4-2-southmap"] = tl;
 })();
 </script>
 </template>
