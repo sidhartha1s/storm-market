@@ -1,0 +1,90 @@
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-a5-1-film-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+
+  /* source line: top-left glass, small radius; enters with the film */
+  #g-a5-1-film-src { position:absolute; inset:auto; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* popfig zone: centre; big line centre y ~470, sub ~560 */
+  #g-a5-1-film-scrim { position:absolute; inset:auto; left:360px; top:300px; width:1200px; height:420px; opacity:0; visibility:hidden; }
+  #g-a5-1-film-scrimin { position:absolute; inset:0; background:radial-gradient(ellipse closest-side at 50% 50%, rgba(4,7,12,0.55), rgba(4,7,12,0)); }
+  #g-a5-1-film-pop { position:absolute; inset:auto; left:0; right:0; top:385px; text-align:center; white-space:nowrap; opacity:0; visibility:hidden; transform-origin:center; }
+  #g-a5-1-film-big { display:block; opacity:0; visibility:hidden; font-family:'AbrilFig', Georgia, serif; font-size:150px; line-height:1.1; color:#d0121f; letter-spacing:0.04em;
+    text-shadow:0 0 18px rgba(0,0,0,0.95), 0 0 60px rgba(120,0,0,0.55), 0 6px 26px rgba(0,0,0,0.9), 0 2px 4px #000; }
+  #g-a5-1-film-sub { display:block; margin-top:2px; opacity:0; visibility:hidden; font-family:Arial, sans-serif; font-weight:700; font-size:32px; color:#e8e3d8;
+    letter-spacing:0.42em; text-shadow:0 0 14px rgba(0,0,0,0.95), 0 3px 10px #000; }
+
+  /* chip: bottom-left above the lower-third zone, only over the film */
+  #g-a5-1-film-chip { position:absolute; inset:auto; left:96px; top:760px; box-sizing:border-box; padding:26px 44px; border-radius:28px;
+    white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  #g-a5-1-film-main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; color:#f2f5f8; line-height:1.1; }
+  #g-a5-1-film-tag { display:block; margin-top:12px; font-family:Arial, sans-serif; font-weight:700; font-size:26px; color:#93a3b2; letter-spacing:4px; }
+  .g-a5-1-film-ch { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-1-film-root" data-composition-id="g-a5-1-film" data-width="1920" data-height="1080">
+  <div id="g-a5-1-film-src">Library of Congress, paper print collection</div>
+  <div id="g-a5-1-film-scrim"><div id="g-a5-1-film-scrimin"></div></div>
+  <div id="g-a5-1-film-pop">
+    <span id="g-a5-1-film-big">SEPT 9, 1900</span>
+    <span id="g-a5-1-film-sub">SUNDAY</span>
+  </div>
+  <div id="g-a5-1-film-chip">
+    <span id="g-a5-1-film-main">FILMED IN THE RUINS DAYS LATER</span>
+    <span id="g-a5-1-film-tag"><span class="g-a5-1-film-ch">&copy;</span><span class="g-a5-1-film-ch">&nbsp;</span><span class="g-a5-1-film-ch">S</span><span class="g-a5-1-film-ch">E</span><span class="g-a5-1-film-ch">P</span><span class="g-a5-1-film-ch">T</span><span class="g-a5-1-film-ch">&nbsp;</span><span class="g-a5-1-film-ch">2</span><span class="g-a5-1-film-ch">4</span><span class="g-a5-1-film-ch">,</span><span class="g-a5-1-film-ch">&nbsp;</span><span class="g-a5-1-film-ch">1</span><span class="g-a5-1-film-ch">9</span><span class="g-a5-1-film-ch">0</span><span class="g-a5-1-film-ch">0</span></span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a5-1-film-";
+  /* a5-s1.words.json cues are segment-local; host starts at segment 0.16, so comp-local = segment time - 0.16.
+     Sunday @0.16 -> 0.00 | 9th, @0.96 -> 0.80 | island. @4.24 -> 4.08 | In @7.54 -> 7.38 | a @8.78 -> 8.62 | film @8.88 -> 8.72
+     24th @15.00 -> 14.84 | Library @16.66 -> 16.50 | segment end 18.64 -> 18.48; host = 19.48 (land time 1.0) */
+  tl.set([P+"src", P+"scrim", P+"pop", P+"big", P+"sub", P+"chip"], {autoAlpha:0}, 0);
+  tl.set(".g-a5-1-film-ch", {autoAlpha:0}, 0);
+
+  /* SUNDAY @0.00: popfig in (scale 1.35 -> 1), sub rises in 0.15 s after (a scaled sub overlapped the big line mid-entrance); wrapper just un-hides */
+  tl.set(P+"pop", {autoAlpha:1}, 0);
+  tl.to(P+"scrim", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  tl.fromTo(P+"big", {autoAlpha:0, scale:1.35}, {autoAlpha:1, scale:1, duration:0.5, ease:"power4.out"}, 0);
+  tl.fromTo(P+"sub", {autoAlpha:0, scale:1.35}, {autoAlpha:1, scale:1, duration:0.5, ease:"power4.out"}, 0.15);
+  /* 9th, @0.80: red line pulse 1 -> 1.05 -> 1 */
+  tl.to(P+"big", {scale:1.05, duration:0.15, ease:"power2.out"}, 0.8);
+  tl.to(P+"big", {scale:1, duration:0.15, ease:"power2.in"}, 0.95);
+  /* popfig drift 0.50 to 3.94 */
+  tl.to(P+"pop", {y:-4, duration:1.72, ease:"sine.inOut", yoyo:true, repeat:1}, 0.5);
+  /* island. @4.08: popfig out 3.94 to 4.39 (gone well before the film cut at 7.38) */
+  tl.to(P+"pop", {scale:0.92, autoAlpha:0, duration:0.45, ease:"power2.in"}, 3.94);
+  tl.to(P+"scrim", {autoAlpha:0, duration:0.45, ease:"power2.in"}, 3.94);
+
+  /* In @7.38: film starts on the lower track; source line in at 7.54 */
+  tl.fromTo(P+"src", {autoAlpha:0, y:8}, {autoAlpha:0.8, y:0, duration:0.4, ease:"power2.out"}, 7.54);
+  tl.to(P+"src", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:3}, 7.94);
+
+  /* a/film @8.62: chip main line in (tag line waits for 24th) */
+  tl.fromTo(P+"chip", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 8.62);
+  tl.to(P+"chip", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:2}, 9.07);
+
+  /* 24th @14.84: tag types on over 0.4 s, 15 characters */
+  tl.to(".g-a5-1-film-ch", {autoAlpha:1, duration:0.01, ease:"none", stagger:0.4/15}, 14.84);
+
+  /* Library @16.50: source line brightens */
+  tl.to(P+"src", {opacity:1, duration:0.3, ease:"power2.out"}, 16.5);
+
+  /* exit: chip slides out in the last 0.6 s of the narration (ends 18.48); source fades in the last 0.3 s */
+  tl.to(P+"chip", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 17.88);
+  tl.to(P+"src", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 18.18);
+  /* land time to the host end 19.48 */
+  tl.to(P+"scrim", {y:0, duration:0.01, ease:"none"}, 19.47);
+  window.__timelines["g-a5-1-film"] = tl;
+})();
+</script>
+</template>
