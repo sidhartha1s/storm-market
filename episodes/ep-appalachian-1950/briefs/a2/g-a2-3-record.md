@@ -19,7 +19,7 @@ Text card, no scale. Two blocks: calendar card left half, cite card right half, 
   - "7.5" Arial Black 900 180 px `#f4f0e8` (display tier), centre y about 470.
   - "IN" Arial Black 900 58 px `#f4f0e8` under it, then "COLUMBUS, OHIO" Arial 700 22 px `#f5d98b` tracking 6.
   The edit_script string "SAT · NOV 25 · 7.5 IN" is split across these lines; same words.
-- Cite card (right): beige `rgba(232,222,200,.90)`, radius 18, left 840, top 300, width 860 (right edge 1700? no: keep right edge <= 1600 at y >= 680 and <= 1824 above). Use width 780 (right edge 1620, top 300, height about 230, bottom 530: above the circle line, allowed). Text dark `#2a2622`:
+- Cite card (right): beige `rgba(232,222,200,.90)`, radius 18, left 840, top 300, width 780 (right edge 1620, inside the 1824 margin; bottom about 530, above the circle line y 680), padding 28 x 36. Text dark `#2a2622`:
   - eyebrow "NWS WILMINGTON, OHIO" Arial 700 22 px `#6b6257` tracking 6
   - line "Greatest calendar-day snowfall on record for any November day" Georgia italic 40 px `#2a2622`, max 2 lines, line-height 1.2. (no quotation marks unless §1 wording is confirmed)
 - Chip under the cite card: glass card left 840, top 570, "STILL THE RECORD" Arial Black 900 52 px `#f2f5f8`, padding 18 x 30 (bottom about 660, clear of y 680).
