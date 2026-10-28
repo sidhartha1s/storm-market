@@ -53,7 +53,7 @@ Strings: `LESSONS LEARNED FROM THE BUFFALO BLIZZARD` · `NYU WAGNER` · `JUN 2, 
 | 10.82 | "Guidehouse." @10.82 | "GUIDEHOUSE" in |
 | 12.94 | "August 4th," @12.94-13.94 | "AUG 4, 2023" in (as the June date); source in |
 | 14.14 | "12 recommendations." @14.14-14.96 | chip in `fromTo(y:20 -> 0, autoAlpha 0 -> 1, 0.4, power3.out)`; "12" `fromTo(scale 1.3 -> 1, 0.4, power4.out)` |
-| 15.82 | "One line in the state's review" @15.82-17.16 | card 1 and the chip out `to(x:-160, autoAlpha 0, 0.5, power3.in)`; card 2 moves to its reference box `to(x, y, scale 0.55, 0.8, power3.inOut)` at 16.02 |
+| 15.82 | "One line in the state's review" @15.82-17.16 | card 1 and the chip out `to(x:-160, autoAlpha 0, 0.5, power3.in)`; card 2 out `to(x:160, autoAlpha 0, 0.5, power3.in)` at 16.02 |
 | 16.84 | "review" @16.84 | quote card in `fromTo(y:30 -> 0, autoAlpha 0 -> 1, 0.5, power3.out)`, empty (no slots yet) |
 | 20.64 | "eight words." @20.64-21.40 | the 8 slot bars draw `scaleX 0 -> 1` from left, stagger 0.08; attribution in at 21.10 |
 | 22.34 | "Clearly" @22.34 | word 1 `fromTo(autoAlpha 0, y:10 -> 0, 0.25, power2.out)`, its bar `to(autoAlpha 0, 0.15)` |
