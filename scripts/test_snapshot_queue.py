@@ -28,7 +28,7 @@ with tempfile.TemporaryDirectory() as d:
     (ep / "media" / "clip.mp4").write_bytes(b"0")
     (ep / "media" / "unused.mp4").write_bytes(b"0")
     (ep / "media" / "stills" / "a.jpg").write_bytes(b"0")
-    (ep / "compositions" / "g-a.html").write_text('<img src="../media/stills/a.jpg"><div style="background:url(media/missing.png)">',
+    (ep / "compositions" / "g-a.html").write_text('<img src="../media/stills/a.jpg"><div style="background:url(media/stills/a.jpg)">',
                                                   encoding="utf-8")
 
     # submit opens no browser and only writes a job file
@@ -115,6 +115,15 @@ with tempfile.TemporaryDirectory() as d:
     # only referenced files that exist in the episode: comp, its still (../media), the clip, gsap; no unused media, no URLs
     got = {f.relative_to(ep).as_posix() for f in q.referenced(ep)}
     assert got == {"index.html", "gsap.min.js", "compositions/g-a.html", "media/clip.mp4", "media/stills/a.jpg"}, got
+
+    # a referenced file that is missing fails loudly, naming the path (it once silently shipped 24 blank snapshots)
+    (ep / "gsap.min.js").rename(ep / "gsap.gone")
+    try:
+        q.referenced(ep)
+        raise AssertionError("missing gsap.min.js should raise")
+    except FileNotFoundError as e:
+        assert "gsap.min.js" in str(e), e
+    (ep / "gsap.gone").rename(ep / "gsap.min.js")
 
     # ship sends only what changed since the last ship
     calls = []

@@ -83,10 +83,11 @@ def referenced(ep):
             ref = (a or b).strip()
             if "://" in ref or ref.startswith(("data:", "/")):
                 continue
-            for base in (page.parent, ep):   # comps use ../media/x or media/x (<base href="../">)
-                f = (base / ref).resolve()
-                if f.is_file() and ep in f.parents:
-                    files.add(f)
+            found = [f for f in ((b / ref).resolve() for b in (page.parent, ep))   # comps use ../media/x or media/x (<base href="../">)
+                     if f.is_file() and ep in f.parents]
+            if not found:   # a skipped file once shipped 24 blank snapshots (gsap.min.js missing)
+                raise FileNotFoundError(f"{page.relative_to(ep).as_posix()} references missing file: {ref}")
+            files.update(found)
     return sorted(files)
 
 
