@@ -64,7 +64,7 @@ Strings: `LESSONS LEARNED FROM THE BUFFALO BLIZZARD` · `NYU WAGNER` · `JUN 2, 
 Comp duration 26.50 s (1.20 s past the wav end; trim to the real gap, keeping at least 0.8 s after 25.06).
 
 ## 6. CONTRACT
-One file `compositions/g-a5-6-reviews.html`, root `id="g-a5-6-reviews-root"`, `data-composition-id="g-a5-6-reviews"`, PAUSED timeline `window.__timelines["g-a5-6-reviews"]`. Prefix `rv-`; never `.quotecard` or `.glasscard` (index classes). Card 2's move is a transform on its wrapper (no `width`/`height` tweens); text inside it stays legible at scale 0.55 only as a reference (its 26 px label becomes 14 px: allowed because it is a moving reference card for 1 s, then it holds; if `graphics_qc` flags the small text, fade card 2's text lines to the title only and state it). Repeat note: "Aug 4, 2023" appears on card 2 and in the attribution: one fact twice in scene B only if card 2's date is still visible; fade card 2's date line out at 16.02 to avoid the dup-fact. Rest: `references/mg-quickref.md`. Footage: none.
+One file `compositions/g-a5-6-reviews.html`, root `id="g-a5-6-reviews-root"`, `data-composition-id="g-a5-6-reviews"`, PAUSED timeline `window.__timelines["g-a5-6-reviews"]`. Prefix `rv-`; never `.quotecard` or `.glasscard` (index classes). Moves are transforms only (no `width`/`height` tweens). Repeat note: "Aug 4, 2023" is on card 2 and in the attribution; card 2 is fully out (16.52) before the attribution enters (21.10), so they never share a frame. Rest: `references/mg-quickref.md`. Footage: none.
 
 ## 7. TOOLS
 `node scripts/freeze_scan.mjs episodes/ep-buffalo-2022 --comp g-a5-6-reviews`; `node scripts/graphics_qc.mjs episodes/ep-buffalo-2022 g-a5-6-reviews`.
