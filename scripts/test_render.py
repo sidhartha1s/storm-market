@@ -347,8 +347,8 @@ if HAVE_FFMPEG:
                   r13.returncode == 0, f"rc={r13.returncode}\n{r13.stdout[-800:]}")
         with tempfile.TemporaryDirectory() as sd:
             r13b = run_verify(ep, "clean-final", env=store_stub_env(sd, real_python=False))
-            check("render-13: only store stubs on PATH fails loudly and names WindowsApps",
-                  r13b.returncode != 0 and "WindowsApps" in r13b.stdout, f"rc={r13b.returncode}\n{r13b.stdout[-800:]}")
+            check("render-13: only store stubs on PATH exits 3 and names WindowsApps",
+                  r13b.returncode == 3 and "WindowsApps" in r13b.stdout, f"rc={r13b.returncode}\n{r13b.stdout[-800:]}")
 
         # Review finding (23 Sep 26): silencedetect must exempt a declared hold/blackout/CTA
         # window (DESIGN.md "hold 2-4s in silence or low ambience"), not fail every real
