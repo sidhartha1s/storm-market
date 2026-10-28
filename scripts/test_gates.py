@@ -145,6 +145,48 @@ with tempfile.TemporaryDirectory() as d:
     code, out = run("sweep_episode.py", ep_clean)
     check("sweep_episode: exits 0 on a clean episode", code == 0, f"(exit {code})\n{out[-400:]}")
 
+# a src-less window must not borrow the next element's src (it misnamed ground plates)
+with tempfile.TemporaryDirectory() as d:
+    ep_srcless = make_ep(Path(d) / "srcless")
+    h = (ep_srcless / "index.html").read_text(encoding="utf-8")
+    h = h.replace("</section>", '<div data-start="0" data-duration="1.0" data-track-index="2"></div>'
+                  '<div data-start="0.5" data-duration="1.0" data-track-index="2"></div>'
+                  '<img src="media/decoy.png"></section>')
+    (ep_srcless / "index.html").write_text(h, encoding="utf-8")
+    code, out = run("sweep_episode.py", ep_srcless)
+    check("sweep_episode: src-less window does not borrow the next element's src",
+          "decoy.png" not in out and "track 2 ? over ?" in out, out[-600:])
+
+# a src-less ground plate is named like a blackout, never after the next element
+with tempfile.TemporaryDirectory() as d:
+    ep_ground = make_ep(Path(d) / "ground")
+    h = (ep_ground / "index.html").read_text(encoding="utf-8")
+    h = h.replace("</section>", '<section class="ground" data-start="0" data-duration="1.0" data-track-index="2"></section>'
+                  '<section class="ground" data-start="0.5" data-duration="1.0" data-track-index="2"></section>'
+                  '<video src="media/decoy.webm"></video></section>')
+    (ep_ground / "index.html").write_text(h, encoding="utf-8")
+    code, out = run("sweep_episode.py", ep_ground)
+    check("sweep_episode: src-less ground section is named like a blackout, not after the next src",
+          "decoy.webm" not in out and "track 2 [blackout] over [blackout]" in out, out[-600:])
+
+# a long .webm is a video, not a still (check 9)
+with tempfile.TemporaryDirectory() as d:
+    ep_webm = make_ep(Path(d) / "webm")
+    h = (ep_webm / "index.html").read_text(encoding="utf-8")
+    h = h.replace("</section>", '<video data-start="0" data-duration="8" data-track-index="1" src="media/film.webm"></video></section>')
+    (ep_webm / "index.html").write_text(h, encoding="utf-8")
+    code, out = run("sweep_episode.py", ep_webm)
+    check("sweep_episode: a long .webm is not a still", "PASS no still over 6s" in out, out[-600:])
+
+# a timeline whose positions are expressions (DUR - 0.6) is unmeasurable: no false "holds"
+with tempfile.TemporaryDirectory() as d:
+    comp = ('<template><div id="g"><span id="t">hi</span></div><script>const DUR=8; '
+            'tl.to("#t", {duration:1}, 0.1); tl.to("#t", {duration:1}, DUR - 0.6);</script></template>')
+    ep_dur = make_ep(Path(d) / "dur", comp_html=comp, comp_window=8.0)
+    code, out = run("sweep_episode.py", ep_dur)
+    check("sweep_episode: expression positions skip 'holds' with a note, no false FAIL",
+          "holds" not in out.replace("'holds' skipped", "") and "'holds' skipped for g1" in out, out[-600:])
+
 def ask_check(out):
     return next((l for l in out.splitlines() if "End ask present" in l), "")
 

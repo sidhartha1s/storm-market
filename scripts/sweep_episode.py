@@ -40,9 +40,11 @@ for m in re.finditer(r'<(section|video|div)\b([^>]*)>', h):
     cid = re.search(r'data-composition-id="([^"]+)"', a)
     src = re.search(r'src="([^"]+)"', a)
     cls = re.search(r'class="([^"]*)"', a)
-    is_black = bool(cls and "blackout" in cls.group(1))
+    is_black = bool(cls and re.search(r'blackout|ground', cls.group(1)))   # ground plates carry no src of their own
     if not src and not cid and not is_black:
+        # only a src inside THIS element: stop at its closing tag, or the next window-bearing tag for a void <video>
         inner = h[m.end():m.end() + 900]
+        inner = re.split(r'</%s>|<(?:section|video|div)\b' % m.group(1), inner, maxsplit=1)[0]
         s2 = re.search(r'src="([^"]+)"', inner)
         src = s2
     wins.append(dict(at=float(st.group(1)), dur=float(du.group(1)), tr=int(tr.group(1)),
@@ -261,6 +263,7 @@ for gid in sorted(mounted):
     # print the coverage honestly instead so a real hole is never silently capped, but only a
     # confirmed overrun among the tweens actually resolved below fails the sweep.
     calls_total = len(re.findall(r'tl\.(?:to|from|fromTo|set|add)\s*\(', src))
+    unresolved = 0
     if calls_total:
         unresolved = calls_total - len(pos_matches)
         note = f"; {unresolved} loop/expression positions not checked" if unresolved else ""
@@ -288,7 +291,10 @@ for gid in sorted(mounted):
     for w in wins:
         if w["name"] != gid:
             continue
-        if w["dur"] - tl_end > 4.0:
+        # tl_end is only a lower bound while positions (DUR - 0.6, SEG * 2) go unresolved, so "holds" cannot be claimed
+        if unresolved and w["dur"] - tl_end > 4.0:
+            print(f"      check 7: 'holds' skipped for {gid}: {unresolved} unresolved positions make the timeline length a lower bound")
+        elif w["dur"] - tl_end > 4.0:
             overrun.append(("holds", gid, round(w["dur"], 1), round(tl_end, 1)))
         # the direction this check used to ignore entirely: a mount SHORTER than the
         # composition cuts off its own authored reveals
@@ -405,7 +411,7 @@ report("media probes succeeded", probe_failed, lambda x: f"{x[0]}: {x[1]}")
 
 # 9. long stills — owner 2026-08-12: stills are 3-6s with motion, "not a PowerPoint"
 long_still = [(w["at"], w["name"], w["dur"]) for w in t1
-              if w["dur"] > 6.0 and not w["name"].endswith(".mp4")]
+              if w["dur"] > 6.0 and not w["name"].endswith((".mp4", ".webm"))]
 report("no still over 6s", long_still, lambda x: f"{x[0]}s {Path(x[1]).name} {x[2]}s")
 
 # 10. narration freshness (CLAUDE.md: "words.json must be younger than its wav") — ep3-tristate
