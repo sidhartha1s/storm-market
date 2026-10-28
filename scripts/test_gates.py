@@ -157,6 +157,17 @@ with tempfile.TemporaryDirectory() as d:
     check("sweep_episode: src-less window does not borrow the next element's src",
           "decoy.png" not in out and "track 2 ? over ?" in out, out[-600:])
 
+# a still-wrap keeps its own img name past a nested <div class="dim"> (the split once stopped at any div)
+with tempfile.TemporaryDirectory() as d:
+    ep_still = make_ep(Path(d) / "stillwrap")
+    h = (ep_still / "index.html").read_text(encoding="utf-8")
+    sw = '<section class="clip still-wrap" data-start="{}" data-duration="1.0" data-track-index="2"><div class="dim"></div><img src="media/still.jpg"></section>'
+    h = h.replace("</section>", sw.format(0) + sw.format(0.5) + "</section>")
+    (ep_still / "index.html").write_text(h, encoding="utf-8")
+    code, out = run("sweep_episode.py", ep_still)
+    check("sweep_episode: still-wrap keeps its img name past a nested dim div",
+          "track 2 media/still.jpg over media/still.jpg" in out, out[-600:])
+
 # a src-less ground plate is named like a blackout, never after the next element
 with tempfile.TemporaryDirectory() as d:
     ep_ground = make_ep(Path(d) / "ground")
