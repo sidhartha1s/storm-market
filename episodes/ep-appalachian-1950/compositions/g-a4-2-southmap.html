@@ -258,7 +258,7 @@ window.__timelines = window.__timelines || {};
   }
   /* cold fill edge latitude per cue (brief §5); each pin's latitude is passed before it turns blue */
   function edgeLat(t) {
-    if (t < S4 + 2.40) return lerp(36.4, 35.4, p2((t - S4) / 2.40));          /* Asheville 35.60 passed 2.27 < 2.64 */
+    if (t < S4 + 2.40) return lerp(36.4, 35.4, p2((t - S4) / 2.40));          /* Asheville 35.60 passed at 1.64 < 2.64 */
     if (t < S4 + 4.60) return 35.4;
     if (t < S4 + 5.80) return lerp(35.4, 33.3, p1((t - S4 - 4.60) / 1.20));   /* Atlanta 33.75, Birmingham 33.52 by 5.80 */
     if (t < S5 + 0.30) return 33.3;
