@@ -112,7 +112,7 @@ higher the credible savings delta right below the pricing, the higher the conver
 
 1. Sticky red band — live viewer count + looping launch-price countdown
 2. Hero — headline, sub, no-price CTA (price is revealed at the offer), 430px cover
-3. Proof strip — 486 pages, 130 protections, 23 hazards, 60 days, 7-day refund
+3. Proof strip — 517 pages, 130 protections, 23 hazards, 60 days, 7-day refund
 4. Joplin story — dated narrative lead with the tornado-selfie polaroid
 5. What it is — counts grid, then all 23 hazards as chips so the scope is undeniable
 6. **The money chapter** — the $3,029 / $43,600 gap, sourced, with the "what this is not" box
@@ -149,7 +149,7 @@ ordered all four, so they exist — with these standing caveats on the record:
 
 1. **Gumroad is wired and carries the files.** `GUMROAD_URL` at the top of the page script points
    at `/l/ebook`; the offer button and the exit-intent popup rewrite themselves to `?wanted=true`
-   direct checkout. The product carries the 486-page manual, the 61-page binder and the state-packet
+   direct checkout. The product carries the 517-page manual, the 61-page binder and the state-packet
    zip, and an explicit 7-day refund policy. Contact email: owner decided 2026-08-14 there is none —
    footer + legal pages say "reply to your purchase receipt", and all support runs through Gumroad.
 
@@ -166,11 +166,11 @@ ordered all four, so they exist — with these standing caveats on the record:
    Every claim carries a full citation and a retrieval date; claims that could not be traced to a
    primary document were cut rather than softened.
 
-   **The page figure is settled at 486** and every instance on this page has been reset — meta
+   **The page figure is settled at 517** and every instance on this page has been reset — meta
    description, hero subhead, proof strip, deliverables list, delivery section. It is a count, not a
    projection: `ebook/build/paginate.mjs` measures every block in headless Chrome and fills fixed 6x9
    pages, `ebook/build/frontmatter.mjs` prepends the cover, title page, copyright page and contents,
-   and `ebook/build/fitcheck.mjs` passes on all 486.
+   and `ebook/build/fitcheck.mjs` passes on all 517.
 
    Two other claims on this page were corrected at the same time, because they described a product
    that did not exist yet rather than the one in the repo:
@@ -179,7 +179,7 @@ ordered all four, so they exist — with these standing caveats on the record:
      honoured; the 80 was a per-section estimate written before anything was laid out. The binder
      also ships as its own file now: `ebook/binder/out/The-Storm-Ready-Home-Binder.pdf` (61 pages,
      661 KB, rendered 2026-08-13) — so the "printable, fillable forms" offer bullet matches the
-     delivery instead of pointing into the middle of the 486-page book.
+     delivery instead of pointing into the middle of the 517-page book.
    - "All 50 State Packets" is now **51 — 50 states and DC**, which is what actually ships.
 
    The "illustrated PDF" claim and the named floor-plan diagram for Protection 23 were **false when

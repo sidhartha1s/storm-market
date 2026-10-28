@@ -119,7 +119,7 @@ def storefront():
         [str(CHROME), "--headless=new", "--disable-gpu", "--hide-scrollbars",
          f"--window-size={WIDE[0]},{WIDE[1]}", f"--screenshot={out}",
          page.resolve().as_uri()],
-        capture_output=True, check=True, timeout=180)
+        capture_output=True, check=True, timeout=180, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     if not out.exists():
         sys.exit("FAIL: Chrome produced no storefront image.")
     return out

@@ -45,6 +45,8 @@ if "%MODE%"=="draft" (
 )
 if defined RENDER_CRF set _CRF=%RENDER_CRF%
 if defined RENDER_FPS set _FPS=%RENDER_FPS%
+REM RENDER_COMPOSITION: the composition file to render (default index.html); render_acts.py sets it per act.
+if not defined RENDER_COMPOSITION set RENDER_COMPOSITION=index.html
 set QFLAGS=--quality %QUAL% --crf %_CRF% --fps %_FPS%
 
 cd /d "%EP%"
@@ -78,10 +80,22 @@ REM and with no env it measures the slow PATH build and refuses (ep6 full attemp
 REM Output goes to a log next to render_%MODE%.log: a hidden/schtasks launch has no console, so
 REM a refusal reason with nowhere to land was invisible until the operator reran by hand.
 set PREFLIGHT_LOG=render_%MODE%_preflight.log
-"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_preflight.py" "%EP%" %MODE% > "%PREFLIGHT_LOG%" 2>&1
+REM Heavy lock (owner 26 Oct 26): wait for this machine's other heavy job (render, TTS, face pass, e2e) to end, then
+REM book it for this cmd.exe. Before the preflight, which refuses a live render instead of waiting. Every exit below
+REM releases it (RELEASE) before writing the done marker; a cmd.exe that dies holding it leaves a dead holder's lock.
+set RELEASE="C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_busy.py" --release
+"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_busy.py" --hold "render %SLUG% %MODE%" > "%PREFLIGHT_LOG%" 2>&1
+if errorlevel 1 (
+  echo HEAVY LOCK FAILED - see %CD%\%PREFLIGHT_LOG%
+  type "%PREFLIGHT_LOG%"
+  echo 1 > "render_%MODE%_done.marker"
+  exit /b 1
+)
+"C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0render_preflight.py" "%EP%" %MODE% >> "%PREFLIGHT_LOG%" 2>&1
 if errorlevel 1 (
   echo PREFLIGHT REFUSED exit %ERRORLEVEL% — see %CD%\%PREFLIGHT_LOG%
   type "%PREFLIGHT_LOG%"
+  %RELEASE%
   echo %ERRORLEVEL% > "render_%MODE%_done.marker"
   exit /b %ERRORLEVEL%
 )
@@ -95,13 +109,15 @@ del /q "render_%MODE%.workers" 2>nul
 if errorlevel 1 (
   echo RENDER_BUSY REFUSED exit %ERRORLEVEL% — see %CD%\%PREFLIGHT_LOG%
   type "%PREFLIGHT_LOG%"
+  %RELEASE%
   echo %ERRORLEVEL% > "render_%MODE%_done.marker"
   exit /b %ERRORLEVEL%
 )
 REM QC tools (blank_scan.mjs, graphics_qc.mjs) stage _*_tmp.html in the episode root; if one is
 REM left behind, hyperframes discovers it as a second root composition and warns of duplicate
 REM audio. Sweep them before every render — a render dir must contain exactly one root index.html.
-del /q _*_tmp.html 2>nul
+REM render_acts.py renders its staged _act_tmp.html through RENDER_COMPOSITION, so that run keeps it.
+if /i "%RENDER_COMPOSITION%"=="index.html" del /q _*_tmp.html 2>nul
 set PRODUCER_PAGE_NAVIGATION_TIMEOUT_MS=120000
 set PRODUCER_PUPPETEER_PROTOCOL_TIMEOUT_MS=900000
 REM RENDER_BUSY_OK=1 skips render_busy, so no .workers file: the request stands.
@@ -112,13 +128,14 @@ REM render on a short disk, then watch the log and stop the render if the gate l
 if errorlevel 1 (
   echo STREAM GATE REFUSED — see %CD%\%PREFLIGHT_LOG%
   type "%PREFLIGHT_LOG%"
+  %RELEASE%
   echo 1 > "render_%MODE%_done.marker"
   exit /b 1
 )
 del /q "render_%MODE%.log" 2>nul
 start "" /b "C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe" "%~dp0stream_gate.py" watch "%CD%\render_%MODE%.log" "%CD%\render_%MODE%_done.marker" "%CD%\%PREFLIGHT_LOG%"
 echo %_FPS% > "render_%MODE%.fps"
-call npx hyperframes@0.8.185 render . --gpu --browser-gpu %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
+call npx hyperframes@0.8.211 render . -c %RENDER_COMPOSITION% --gpu --browser-gpu %QFLAGS% --workers %RENDER_WORKERS% -o "renders/%OUTBASE%.mp4" > "render_%MODE%.log" 2>&1
 set RC=%ERRORLEVEL%
 REM A render that ran on another encoder, an iGPU or a disk capture fails here, not in a viewer's eyes.
 if "%RC%"=="0" (
@@ -129,6 +146,7 @@ if "%RC%"=="0" (
     set RC=1
   )
 )
+%RELEASE%
 echo %RC% > "render_%MODE%_done.marker"
 exit /b %RC%
 

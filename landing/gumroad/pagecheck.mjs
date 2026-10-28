@@ -28,7 +28,7 @@ const PORT = 9810 + (process.pid % 80);
 const profile = mkdtempSync(join(tmpdir(), 'pagecheck-'));
 const chrome = spawn(CHROME, ['--headless=new', '--disable-gpu', '--mute-audio', '--no-first-run',
   '--hide-scrollbars', '--no-default-browser-check', `--remote-debugging-port=${PORT}`,
-  `--user-data-dir=${profile}`, 'about:blank'], { stdio: 'ignore' });
+  `--user-data-dir=${profile}`, 'about:blank'], { stdio: 'ignore', windowsHide: true });
 process.on('exit', () => {
   try { chrome.kill(); } catch {}
   try { rmSync(profile, { recursive: true, force: true }); } catch {}

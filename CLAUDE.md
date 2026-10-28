@@ -38,7 +38,7 @@ goes to Opus. Gates passing is not verification.
 | Measured gotchas, newest first | `learnings/` (`README.md` says which file serves which job): read yours before building |
 | Pins, paths, CTA file and window | `config.yaml` |
 | Open tooling and pipeline work; dated decisions (read both at session start, update the same session) | `ops/tasks.md`, `ops/decisions.md` |
-| Which episode jobs are ready, running, held or done, the Stop gate that blocks an idle ready job, and the lane launcher (profile probe, free-memory and lane-count gate, `relaunch` of a lane that hit a limit) | `scripts/lanes.py` (job model in its docstring), hook `~/.claude/hooks/lane-gate.py` |
+| Which episode jobs are ready, running, held or done, the Stop gate that blocks an idle ready job, and the lane launcher (profile probe, free-memory and lane-count gate, `relaunch` of a lane that hit a limit, `stop <ep> all` to end every running lane) | `scripts/lanes.py` (job model in its docstring), hook `~/.claude/hooks/lane-gate.py` |
 
 An owner correction or a measured surprise lands in its single home (`references/mg-quickref.md`, a gate, or the right
 `learnings/` file) the same session.
@@ -51,6 +51,10 @@ An owner correction or a measured surprise lands in its single home (`references
 - Shorts: planned, pilot pending the owner's go. No skill until about ten shorts stabilise.
 
 ## Owner gates: rules inherited from the owner's other channels (never claim or infer approval)
+- His gates per documentary, in this order and no others: the angle; the title and thumbnail (`references/angle.md`);
+  the hook+intro; the draft preview; any paid retake. Acts are never his gate (`references/script-scaling.md` "Section
+  lock"); a plan or ETA that waits on him for anything else is wrong (owner 28 Oct 26: "why I sign off the scripts
+  because I don't read it", and the titles of 3 videos never reached him).
 - Design sign-off before paid spend or bulk sourcing. Paid API railguards per the global CLAUDE.md. Free candidate sourcing
   (public domain and stock downloads, no spend, nothing licensed) is not bulk sourcing: it starts from each act's Picture
   lines without waiting for the sign-off (owner 17 Oct 26, flow page f1). A paid or licensed buy still waits for it.
@@ -152,7 +156,13 @@ Per episode in `episodes/<slug>/`. The skill's phase map points at these step nu
    pre-master final, previews). Never delete the master. `metadata.md` stays tracked in the episode folder. After
    publish, commit, PR and merge the episode branch, then remove the worktree. `metadata.md` at publish: first URL
    is `channel.cta.first_link`, then the "book mentioned at mm:ss" line, no chapter marker at the CTA, category Education, type Overview.
-- Chunk a render only if a single render proves unstable.
+- Render by act (owner 26 Oct 26, sk_4): `python3 scripts/render_acts.py <slug> <draft|full> <basename> [--reuse <older-basename>]`,
+  launched hidden like a render. Seams are the middle frames of the chapter blackouts; each act's picture renders
+  through render.cmd (its sound is discarded), one 1 fps pass gives the whole mix, and the acts are concatenated
+  frame-exact. An act page keeps every element, parking what lies outside the act hidden, because hyperframes'
+  pre-capture probe sweep (which sets graphic state) depends on the whole page. With `--reuse`, every act
+  whose staged slice and mounted graphics are unchanged is taken from the older run, so a fix re-renders only its act.
+  `--plan` lists the seams. The act file is staged render input, never episode HTML (TRIPWIRE below).
 - Heavy local jobs run on the ZBook by default (owner 17 Oct 26): transcription, voice conversion, clip downloads and
   frame extraction for sourcing, captures, gates and renders. Sourcing lanes pause while a render runs there (one heavy job at a time). The ASUS GPU runs the owner's live dictation and its RAM is shared with his work; measured
   on Joplin, one act's transcription ran 28 min+ unfinished on the ASUS while all 8 acts cut and converted on the ZBook in 19 min.
@@ -203,7 +213,11 @@ The gate list and its order live in `scripts/run_gates.py`. Minis also run `node
 - `render_preflight.py` refuses an `ep-` documentary missing a layer the owner already asked for (circle, bed, Paul's
   clips; owner 18 Oct 26) or whose circle clip is a still stand-in, not a moving face (test
   `python3 scripts/test_frozen_circle.py`). Its `LAYERS` table is the list and holds the thresholds; `run_gates.py` runs it too.
-- One heavy job at a time; `scripts/render_busy.py` guards it. No gates, Playwright or subagent browsers beside a render.
+- One heavy job per machine at a time: render.cmd, the pin ritual, TTS (`tts_episode.py`, `tts_clone.py`), the face pass (`circle_face.py`) and `e2e.py`
+  book the heavy lock (`~/.storm-heavy.lock`) and wait their turn, also when started over ssh; a dead holder's lock is taken over.
+  A waiting e2e can sit behind a 75 min render: launch long waits detached, not in a 10 min tool call.
+  How it works and how a new heavy job books it: the `scripts/render_busy.py` docstring (test `python3 scripts/test_render_busy.py`).
+  No gates, Playwright or subagent browsers beside a render.
 - Render only with `scripts\render.cmd <slug> <draft|full> [out-basename]`. The dojo-ops dashboard starts a draft only through `scripts\dojo_draft.cmd` (no arguments: it reads and re-checks the slug dojo-ops wrote to `%LOCALAPPDATA%\dojo-ops\render-request.txt`, sets 2 workers, then calls render.cmd; test `python3 scripts/test_dojo_draft.py`). Default 3 workers; full renders on this box
   set `RENDER_WORKERS=2` in a per-episode wrapper only with 100 GB free (else 1) (`scripts/<ep>_full_task.cmd`). `RENDER_CRF=20` gives a smaller single pass. Planning numbers: a 17 min draft took 36 min, a 28 min full took about 75 min at 2 workers.
 - Launch hidden through a scheduled task, deleted in the same command: `schtasks /create /tn <T> /tr "wscript.exe

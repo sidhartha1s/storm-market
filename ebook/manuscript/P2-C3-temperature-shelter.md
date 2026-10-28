@@ -62,7 +62,7 @@ P-361** and the referenced consensus standard **ICC 500**, and the current editi
 (2021) and ICC 500-2020**. That is not a detail: FEMA's grace period allowing FEMA-funded prefabricated
 residential safe rooms to comply with the older 2015/2014 editions **expired on 1 January 2024.**
 
-So the sentence to say on the phone is: *"Is this unit tested, listed and labelled to ICC 500-2020, and
+So the sentence to say on the phone is: *"Is this unit tested, listed and labeled to ICC 500-2020, and
 will you give me that documentation in writing?"* If the answer is vague, the answer is no.
 «SRC: FEMA, "Safe Rooms" (Building Science) — near-absolute protection definition; FEMA P-361 (2021) and
 ICC 500-2020 compliance requirement effective 1 January 2024. |
@@ -176,7 +176,7 @@ Heat is, over the long run, the deadliest weather hazard in the country, and it 
 
 Identify the coolest room now — lowest floor, north side, fewest windows, best cross-ventilation. That
 is where the household goes. Then identify, and write down, the nearest reliably air-conditioned
-public building: library, mall, community centre, or the official cooling centre your county opens.
+public building: library, mall, community center, or the official cooling center your county opens.
 Know its hours and how you would get there without a car.
 
 Fans help only up to a point, and the Weather Service names the point: **"Do not direct the flow of
@@ -216,7 +216,7 @@ with night flushing — opening up when the outside air finally drops below the 
 
 ---
 
-### 31 · Attic insulation and ventilation as heat defence
+### 31 · Attic insulation and ventilation as heat defense
 
 **Prevents:** a ceiling that radiates into your living space all evening.
 **Cost:** $300–2,000 · **Time:** a weekend, or hire it · **Materials:** insulation
@@ -273,8 +273,8 @@ Decide the exact spot now and mark it, because this decision otherwise gets made
 by someone exhausted, and it gets made badly. Run the cord from there, and make sure it is rated for
 the load and the distance.
 
-Carbon monoxide is colourless and odourless, its early symptoms are indistinguishable from
-post-storm exhaustion, and it impairs the judgment you would use to recognise it. CDC's instruction is
+Carbon monoxide is colorless and odorless, its early symptoms are indistinguishable from
+post-storm exhaustion, and it impairs the judgment you would use to recognize it. CDC's instruction is
 unqualified: **never use a generator inside a home or garage, "even if doors and windows are open,"** and
 place it **more than 20 feet from any window, door or vent** — plus a **battery-powered or battery-backup
 CO detector** inside while it runs.
@@ -282,6 +282,8 @@ CO detector** inside while it runs.
 with doors and windows open; operate generators outdoors more than 20 feet from windows, doors and vents;
 use a battery-powered or battery-backup CO detector. |
 https://www.cdc.gov/carbon-monoxide/about/index.html | retrieved 2026-07-29»
+
+«FIG: generator-20ft»
 
 **What this does not do:** correct siting does not remove the need for alarms. Wind shifts, and
 enclosed spaces you did not think of connect to the house. Protection 47 is not optional alongside
@@ -319,8 +321,8 @@ pumping into the structure. The correctable failures are all cheap.
 
 Insulate pipes in unconditioned space — crawlspaces, garages, exterior walls, attics. Cover outdoor
 spigots and disconnect hoses, because a connected hose holds water against the valve. Open cabinet
-doors under sinks on exterior walls so room air reaches the pipes. Let a vulnerable tap drip, because
-moving water resists freezing and a dripping tap relieves the pressure that actually splits the pipe.
+doors under sinks on exterior walls so room air reaches the pipes. Let a vulnerable faucet drip, because
+moving water resists freezing and a dripping faucet relieves the pressure that actually splits the pipe.
 And if the house will be empty in a hard freeze, either keep the heat on at a set minimum or drain the
 system properly.
 
@@ -335,14 +337,14 @@ preventing it. If the house will be unheated for days in deep cold, draining is 
 ### 35 · Shut-off literacy
 
 **Prevents:** twenty minutes of hunting while water or gas fills the house.
-**Cost:** $0–20 · **Time:** 30 minutes, once · **Materials:** a labelled wrench
+**Cost:** $0–20 · **Time:** 30 minutes, once · **Materials:** a labeled wrench
 · **Regions:** all five. Rank 2 Ice & Snow North.
 
 Three locations, learned once, by everyone in the house old enough: **the main water shut-off, the gas
 shut-off, and the main electrical breaker.** Find them, label them, photograph them, and put the
 photographs in the document vault. Hang the wrench that fits the gas valve next to the gas valve.
 
-Then practise the water one — actually close it and open it, because valves seize and a valve you
+Then practice the water one — actually close it and open it, because valves seize and a valve you
 discover is seized during a burst pipe is not a shut-off.
 
 **On gas: shut it off only if you smell gas, hear it escaping, or are told to.** Once it is off, it
@@ -352,7 +354,7 @@ The three are rarely in the same place — Figure 3 shows the pattern of where t
 
 «FIG: utility-shutoffs»
 
-**What this does not do:** shutting off the main does not drain the pipes. Open the lowest taps
+**What this does not do:** shutting off the main does not drain the pipes. Open the lowest faucets
 afterwards to relieve what is still in the system.
 
 ---

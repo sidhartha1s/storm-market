@@ -86,7 +86,7 @@ def lab_contacts(refresh):
     txt = CACHE / "epa_certlabs.txt"
     # -table, not -layout: the plain layout mode folds the far-right column onto the wrong
     # rows, which silently gave Alabama the *lab list* text as its certifying office.
-    subprocess.run(["pdftotext", "-table", str(pdf), str(txt)], check=True)
+    subprocess.run(["pdftotext", "-table", str(pdf), str(txt)], check=True, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     text = txt.read_text(encoding="utf-8", errors="replace")
 
     found = {}
