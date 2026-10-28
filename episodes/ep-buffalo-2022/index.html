@@ -149,33 +149,65 @@
   <section class="clip blackout" id="bo-cta-out" data-start="526.242" data-duration="1.0" data-track-index="1"></section>
 
   <!-- A3-S1 0 to 11.60: Carrotflower, Main and Laurel St, 23 Dec 2022, CC BY-SA 4.0, soft focus under g-a3-1 -->
-  <section class="clip still-wrap" id="c-a3-s1-laurel" data-start="527.242" data-duration="11.6" data-track-index="1"><img id="kb-a3-s1-laurel" class="soft" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
-  <!-- A3-S2: g-a3-3 is 0.10 s shorter than its wav; the next beat (g-a3-4) is a comp, so a ground plate covers the seam -->
-  <section class="clip ground" id="gp-a3-s2" data-start="556.522" data-duration="0.4" data-track-index="1"></section>
-  <!-- A3-S7: Carrotflower, abandoned vehicles on West Utica St, 27 Dec 2022, CC BY-SA 4.0 (starts on g-a3-7's end) under g-a3-8 -->
-  <section class="clip still-wrap" id="c-a3-s7-utica" data-start="608.062" data-duration="17.575" data-track-index="1"><img id="kb-a3-s7-utica" src="media/a3/A4-S3_c2_abandoned-vehicles-utica.jpg" alt=""></section>
-  <!-- A3-S9 0 to 6.70: STAND-IN for the Hochul briefing still (none licensed): Carrotflower, Main St Cold Spring, 24 Dec 2022 -->
-  <section class="clip still-wrap" id="c-a3-s9-main" data-start="645.377" data-duration="7.185" data-track-index="1"><img id="kb-a3-s9-main" src="media/a3/A4-S10_c3_cold-spring-main-street.jpg" alt=""></section>
-  <!-- A3-S11: STAND-IN for the single-car-under-a-streetlight shot: Carrotflower Laurel St whiteout video, 23 Dec 2022 evening, CC BY-SA 4.0, muted, under g-a3-13 -->
-  <video id="v-a3-s11-whiteout" src="media/a3/I1-S2_c3_laurel-street-whiteout-commons.webm" data-start="684.741" data-duration="13.713" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-a3-s1-laurel" data-start="527.242" data-duration="5.8" data-track-index="1"><img id="kb-a3-s1-laurel" class="soft" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
+  <!-- then Carrotflower Laurel St, 24 Dec 2022 (a second frame of the same street, CC BY-SA 4.0), also soft under the name card -->
+  <section class="clip still-wrap" id="c-a3-s1-laurel2" data-start="533.042" data-duration="5.8" data-track-index="1" data-callback="the Laurel St storm frame first seen here returns at A3-S11 and A5-S1 as the street the story keeps coming back to"><img id="kb-a3-s1-laurel2" class="soft" src="media/a5/A4-S10_c2_laurel-street.jpg" alt=""></section>
+  <!-- A3-S2: g-a3-3 is 0.10 s shorter than its wav; the next beat (g-a3-4) is a comp, so a ground plate covers the seam.
+       On track 2 (the comp lane it bridges), not track 1: a src-less track-1 section was read by sweep_episode.py as the next still (28 Oct 26). -->
+  <section class="clip ground" id="gp-a3-s2" data-start="556.522" data-duration="0.4" data-track-index="2"></section>
+  <!-- A3-S7: Carrotflower, abandoned vehicles on West Utica St, 27 Dec 2022, CC BY-SA 4.0 (starts on g-a3-7's end) under g-a3-8;
+       then DVIDS 7572836 airmen pushing a stuck pickup in drifts (25 Dec), then Carrotflower Laurel St parked cars in whiteout (23 Dec), sharp -->
+  <section class="clip still-wrap" id="c-a3-s7-utica" data-start="608.062" data-duration="5.9" data-track-index="1"><img id="kb-a3-s7-utica" src="media/a3/A4-S3_c2_abandoned-vehicles-utica.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-s7-pickup" data-start="613.962" data-duration="5.9" data-track-index="1"><img id="kb-a3-s7-pickup" src="media/candidates/a3/A3-S7_c1_dvids-7572836.jpg" alt="" style="object-position: 50% 60%;"></section>
+  <section class="clip still-wrap" id="c-a3-s7-laurel" data-start="619.862" data-duration="5.775" data-track-index="1" data-callback="the act-3 street returns sharp under the abandoned-car quotes: the parked cars the name card blurred"><img id="kb-a3-s7-laurel" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
+  <!-- A3-S9 0 to 6.70: STAND-IN for the Hochul briefing still (none licensed): Carrotflower, Main St Cold Spring, 24 Dec 2022,
+       then Carrotflower, bulldozer clearing the Delaware Ave lot, 27 Dec 2022 (CC BY-SA 4.0) -->
+  <section class="clip still-wrap" id="c-a3-s9-main" data-start="645.377" data-duration="3.6" data-track-index="1"><img id="kb-a3-s9-main" src="media/a3/A4-S10_c3_cold-spring-main-street.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-s9-dozer" data-start="648.977" data-duration="3.585" data-track-index="1"><img id="kb-a3-s9-dozer" src="media/a5/A4-S1_c3_bulldozer-burger-king.jpg" alt=""></section>
+  <!-- A3-S11: STAND-IN for the single-car-under-a-streetlight shot: Carrotflower Laurel St whiteout video, 23 Dec 2022 evening, CC BY-SA 4.0, muted, under g-a3-13;
+       then DVIDS 7574755 Buffalo residential street at night (27 Dec), then the 24 Dec Laurel St frame (snow-covered SUV) -->
+  <video id="v-a3-s11-whiteout" src="media/a3/I1-S2_c3_laurel-street-whiteout-commons.webm" data-start="684.741" data-duration="6.0" data-track-index="1" muted></video>
+  <section class="clip still-wrap" id="c-a3-s11-night" data-start="690.741" data-duration="4.0" data-track-index="1"><img id="kb-a3-s11-night" src="media/candidates/a3/A3-S11_c3_dvids-7574755.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a3-s11-laurel" data-start="694.741" data-duration="3.713" data-track-index="1" data-callback="the Laurel St frame from the name card returns sharp: a car buried where the choice is made"><img id="kb-a3-s11-laurel" src="media/a5/A4-S10_c2_laurel-street.jpg" alt=""></section>
   <!-- A3-S12: STAND-IN for ins-paul-4 (Paul's line), same start frame as the hook; held to the act-4 blackout -->
   <section class="clip still-wrap" id="c-a3-s12-paul" data-start="698.454" data-duration="4.12" data-track-index="1" data-callback="Paul returns to close act 3: the presenter on the same start frame (stand-in until ins-paul-4 exists)"><img id="kb-a3-s12-paul" src="media/paul/paul-start-frame-christmas.png" alt=""></section>
   <section class="clip blackout" id="bo-a4" data-start="702.574" data-duration="0.7" data-track-index="1"></section>
 
   <!-- A4-S1: DVIDS 7571852, runway snowblower on I-90, 26 Dec 2022 (pick) under g-a4-1 -->
-  <section class="clip still-wrap" id="c-a4-s1-blower" data-start="703.274" data-duration="19.914" data-track-index="1"><img id="kb-a4-s1-blower" src="media/a4/A4-S1_c1_snowblower-i90.jpg" alt=""></section>
-  <!-- A4-S2: g-a4-2 full frame. A4-S3: DVIDS 7572837 again, held close on the ambulance (starts on g-a4-2's end) under g-a4-3 -->
-  <section class="clip still-wrap" id="c-a4-s3-amb" data-start="741.088" data-duration="13.068" data-track-index="1" data-callback="A4 names what I1 only showed: the same ambulance, held close"><img id="kb-a4-s3-amb" src="media/intro/I1-S2_c1_amr-ambulance-recovery.jpg" alt="" style="object-position: 50% 45%;"></section>
-  <!-- A4-S4: g-a4-4 is 0.001 s longer than its wav; the next beat (g-a4-5) is a comp, so a ground plate covers the 0.30 s seam -->
-  <section class="clip ground" id="gp-a4-s4" data-start="771.006" data-duration="0.299" data-track-index="1"></section>
-  <!-- A4-S5: g-a4-5 then g-a4-6, full frame. A4-S6: DVIDS 7572835 (D1), motorist and his dog, 24 Dec 2022 (starts on g-a4-6's end); g-a4-7 panel from 8.80 -->
-  <section class="clip still-wrap" id="c-a4-s6-dog" data-start="794.595" data-duration="19.645" data-track-index="1"><img id="kb-a4-s6-dog" src="media/a4/A4-S6_c1_motorist-dog-drifts.jpg" alt=""></section>
-  <!-- A4-S7: DVIDS 7572836 (D2), airmen helping motorists, 25 Dec 2022, soft focus (not Waldman) under g-a4-8 -->
-  <section class="clip still-wrap" id="c-a4-s7-d2" data-start="814.24" data-duration="10.4" data-track-index="1"><img id="kb-a4-s7-d2" class="soft" src="media/a4/A4-S7_c1_guard-airmen-drifts-25dec.jpg" alt=""></section>
-  <!-- A4-S8: DVIDS 7576033 (D5), welfare checks with Buffalo residents, 30 Dec 2022, under g-a4-9 -->
-  <section class="clip still-wrap" id="c-a4-s8-welfare" data-start="824.64" data-duration="18.2" data-track-index="1"><img id="kb-a4-s8-welfare" src="media/a4/A4-S8_c1_welfare-check-residents.jpg" alt=""></section>
-  <!-- A4-S9: g-a4-10 full frame. A4-S10: Carrotflower "Snowy door", 24 Dec 2022, CC BY-SA 4.0, push toward the door, under g-a4-11 -->
-  <section class="clip still-wrap" id="c-a4-s10-door" data-start="867.74" data-duration="15.547" data-track-index="1"><img id="kb-a4-s10-door" src="media/a4/A4-S10_c1_snowy-door.jpg" alt="" style="object-position: 50% 55%;"></section>
+  <!-- 28 Oct 26 (no still over 6 s): 4 cuts of the clearing effort under the quote: the I-90 snowblower, DVIDS 7571853 skid steers in
+       Cheektowaga (26 Dec), the Delaware Ave bulldozer (27 Dec), DVIDS 7572836 airmen pushing a stuck pickup (25 Dec) -->
+  <section class="clip still-wrap" id="c-a4-s1-blower" data-start="703.274" data-duration="5.0" data-track-index="1"><img id="kb-a4-s1-blower" src="media/a4/A4-S1_c1_snowblower-i90.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s1-skid" data-start="708.274" data-duration="5.0" data-track-index="1"><img id="kb-a4-s1-skid" src="media/a5/A4-S1_c2_skid-steer-cheektowaga.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s1-dozer" data-start="713.274" data-duration="5.0" data-track-index="1" data-callback="the clearing equipment returns under the stuck-quote: one machine at a time against the drifts"><img id="kb-a4-s1-dozer" src="media/a5/A4-S1_c3_bulldozer-burger-king.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s1-pickup" data-start="718.274" data-duration="4.914" data-track-index="1" data-callback="the stuck pickup from the A3 abandoned-car beat returns as the stuck line is spoken"><img id="kb-a4-s1-pickup" src="media/candidates/a3/A3-S7_c1_dvids-7572836.jpg" alt="" style="object-position: 50% 60%;"></section>
+  <!-- A4-S2: g-a4-2 full frame. A4-S3: DVIDS 7572837 again, held close on the ambulance (starts on g-a4-2's end) under g-a4-3;
+       then DVIDS 7572836 airmen pushing a pickup (25 Dec), then the 7572837 ambulance frame again, cropped lower and closer on the buried ambulance -->
+  <section class="clip still-wrap" id="c-a4-s3-amb" data-start="741.088" data-duration="5.0" data-track-index="1" data-callback="A4 names what I1 only showed: the same ambulance, held close"><img id="kb-a4-s3-amb" src="media/intro/I1-S2_c1_amr-ambulance-recovery.jpg" alt="" style="object-position: 50% 45%;"></section>
+  <section class="clip still-wrap" id="c-a4-s3-drifts" data-start="746.088" data-duration="4.0" data-track-index="1" data-callback="the intro's drift rescue returns as A4 explains why rescuers could not reach the stranded"><img id="kb-a4-s3-drifts" src="media/candidates/a4/A4-S6_c2_motorists-drifts.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s3-dig" data-start="750.088" data-duration="4.068" data-track-index="1"><img id="kb-a4-s3-dig" src="media/candidates/a4/A4-S3_c1_ambulance-dig-out.jpg" alt="" style="object-position: 50% 62%;"></section>
+  <!-- A4-S4: g-a4-4 is 0.001 s longer than its wav; the next beat (g-a4-5) is a comp, so a ground plate covers the 0.30 s seam.
+       On track 2 (the comp lane it bridges), not track 1: a src-less track-1 section was read by sweep_episode.py as the next still (28 Oct 26). -->
+  <section class="clip ground" id="gp-a4-s4" data-start="771.006" data-duration="0.299" data-track-index="2"></section>
+  <!-- A4-S5: g-a4-5 then g-a4-6, full frame. A4-S6: DVIDS 7572835 (D1), motorist and his dog, 24 Dec 2022 (starts on g-a4-6's end); g-a4-7 panel from 8.80;
+       then the Guard's clearing machines return (snowblower, skid steers, bulldozer) under the guard-bars count -->
+  <section class="clip still-wrap" id="c-a4-s6-dog" data-start="794.595" data-duration="6.0" data-track-index="1"><img id="kb-a4-s6-dog" src="media/a4/A4-S6_c1_motorist-dog-drifts.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s6-blower" data-start="800.595" data-duration="4.5" data-track-index="1" data-callback="the I-90 snowblower returns under the count of Guard members on duty"><img id="kb-a4-s6-blower" src="media/a4/A4-S1_c1_snowblower-i90.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s6-skid" data-start="805.095" data-duration="4.5" data-track-index="1" data-callback="the Guard skid steers return under the count of Guard members on duty"><img id="kb-a4-s6-skid" src="media/a5/A4-S1_c2_skid-steer-cheektowaga.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s6-dozer" data-start="809.595" data-duration="4.645" data-track-index="1" data-callback="the clearing bulldozer returns under the count of Guard members on duty"><img id="kb-a4-s6-dozer" src="media/a5/A4-S1_c3_bulldozer-burger-king.jpg" alt=""></section>
+  <!-- A4-S7: DVIDS 7572836 (D2), airmen helping motorists, 25 Dec 2022, soft focus (not Waldman) under g-a4-8; then DVIDS 7576030 Guard at a door (30 Dec), soft -->
+  <section class="clip still-wrap" id="c-a4-s7-d2" data-start="814.24" data-duration="5.2" data-track-index="1"><img id="kb-a4-s7-d2" class="soft" src="media/a4/A4-S7_c1_guard-airmen-drifts-25dec.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s7-knock" data-start="819.44" data-duration="5.2" data-track-index="1"><img id="kb-a4-s7-knock" class="soft" src="media/candidates/a4/A4-S8_c2_knock-residence.jpg" alt=""></section>
+  <!-- A4-S8: DVIDS 7576033 (D5), welfare checks with Buffalo residents, 30 Dec 2022, under g-a4-9; then DVIDS 7576032 knock at a door,
+       DVIDS 7578226 toys handed out on welfare checks (30 Dec), DVIDS 7574755 Guard clearing a Buffalo street at night (27 Dec) -->
+  <section class="clip still-wrap" id="c-a4-s8-welfare" data-start="824.64" data-duration="4.6" data-track-index="1"><img id="kb-a4-s8-welfare" src="media/a4/A4-S8_c1_welfare-check-residents.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s8-knock2" data-start="829.24" data-duration="4.5" data-track-index="1" data-callback="the hook's welfare-check knock returns as the Guard tally is counted"><img id="kb-a4-s8-knock2" src="media/a5/A4-S8_c3_knock-residence-2.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s8-toys" data-start="833.74" data-duration="4.5" data-track-index="1"><img id="kb-a4-s8-toys" src="media/a5/A5-S7_c1_dvids-toys-welfare-check.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s8-night" data-start="838.24" data-duration="4.6" data-track-index="1" data-callback="the night clearing on a Buffalo street from A3-S11 returns under the Guard tally"><img id="kb-a4-s8-night" src="media/candidates/a3/A3-S11_c3_dvids-7574755.jpg" alt=""></section>
+  <!-- A4-S9: g-a4-10 full frame. A4-S10: Carrotflower "Snowy door", 24 Dec 2022, CC BY-SA 4.0, push toward the door, under g-a4-11;
+       then Carrotflower Laurel St (23 Dec) and Cold Spring Main St (24 Dec), the empty streets of the people who stayed in -->
+  <section class="clip still-wrap" id="c-a4-s10-door" data-start="867.74" data-duration="5.2" data-track-index="1"><img id="kb-a4-s10-door" src="media/a4/A4-S10_c1_snowy-door.jpg" alt="" style="object-position: 50% 55%;"></section>
+  <section class="clip still-wrap" id="c-a4-s10-laurel" data-start="872.94" data-duration="5.0" data-track-index="1" data-callback="the act-3 street returns as the stay-home quote is read"><img id="kb-a4-s10-laurel" src="media/a3/A3-S1_c1_laurel-street.jpg" alt=""></section>
+  <section class="clip still-wrap" id="c-a4-s10-main" data-start="877.94" data-duration="5.347" data-track-index="1" data-callback="the empty Cold Spring Main St from A3-S9 returns as the stay-home quote ends"><img id="kb-a4-s10-main" src="media/a3/A4-S10_c3_cold-spring-main-street.jpg" alt=""></section>
   <section class="clip blackout" id="bo-a5" data-start="883.287" data-duration="0.7" data-track-index="1"></section>
 
   <!-- A5: g-a5-1 and g-a5-8 overlay the footage below; g-a5-2 to g-a5-7, g-a5-9, g-a5-10 are full frame over the older stand-ins. -->
