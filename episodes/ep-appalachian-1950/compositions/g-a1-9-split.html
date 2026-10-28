@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a1-9-split · A1-S12 · ep-appalachian-1950 · STANDARD (Sonnet) · brief: briefs/a1/g-a1-9-split.md
+  Claim: on Saturday 25 Nov 1950 Newark gusted 108 mph while Columbus sat at 10 F in snow, one storm's two sides. Nothing joins the halves.
+  PROJECTION: X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213), screen = (map - frame top-left) * 0.10.
+    Left half, frame A1-W top-left (85093.2, 27271.1): Newark (89893.2, 32871.1) -> (480, 560).
+    Right half, frame A2-C shifted +480 px, top-left (44191.0, 31596.7): Columbus (55991.0, 37196.7) -> (1180, 560).
+  BASEMAP: vertices are the Natural Earth 50m admin-1 vertices of library/inhouse/master-map-us-canada.html (the basemap line is
+    too long to copy whole), converted by hand to screen px for these two windows only: NJ/NY/CT coast, Long Island, Delaware River,
+    NJ-NY and CT-NY lines (left); Ohio River / West Virginia line (right: map (63809,39375) ... (60708,42013)). Staten Island and
+    the Battery notch are simplified by hand. g-a2-1 frame 0 must reuse the right-half line below, shifted by its own offset.
+  CUES (audio/a1-s12.words.json, s from A1-S12 start): see the /* WORD @t */ comments in the script.
+-->
+<template>
+<style>
+  #sp9-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8; background:#04070c; }
+  #sp9-left, #sp9-right { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; }
+  #sp9-left { clip-path:inset(0px 962px 0px 0px); }
+  #sp9-right { clip-path:inset(0px 0px 0px 1920px); }
+  .sp9-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .sp9-layer { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .sp9-streak { position:absolute; left:0; top:0; height:2px; border-radius:1px; background:#7fb2e5; opacity:.5; }
+  .sp9-flake { position:absolute; left:0; top:0; border-radius:50%; background:#ffffff; }
+  #sp9-streaks2, #sp9-snow2 { opacity:0; visibility:hidden; }
+  #sp9-seam { position:absolute; left:959px; top:0; width:2px; height:1080px; background:rgba(255,255,255,.14); z-index:6; }
+  .sp9-pin { position:absolute; }
+  .sp9-dot { position:absolute; left:0; top:0; border-radius:50%; }
+  .sp9-ring { position:absolute; left:0; top:0; border-radius:50%; border:2px solid #7fb2e5; opacity:0; }
+  #sp9-npin { left:472px; top:552px; width:16px; height:16px; z-index:3; }
+  #sp9-ndot { width:16px; height:16px; background:#7fb2e5; }
+  #sp9-nring, #sp9-nring2 { width:12px; height:12px; }
+  #sp9-cpin { left:1169px; top:549px; width:22px; height:22px; z-index:3; opacity:0; visibility:hidden; }
+  #sp9-cdot { width:18px; height:18px; background:#f2f5f8; border:2px solid #7fb2e5; }
+  #sp9-cring, #sp9-cring2 { width:18px; height:18px; }
+  .sp9-label { position:absolute; z-index:3; font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:30px; color:#f2f5f8; white-space:nowrap; }
+  #sp9-nlabel { left:510px; top:545px; letter-spacing:3px; }
+  #sp9-clabel { left:1213px; top:545px; letter-spacing:4px; opacity:0; visibility:hidden; }
+  .sp9-chip { position:absolute; z-index:4; box-sizing:border-box; border-radius:28px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .sp9-big { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:58px; line-height:1; color:#f2f5f8; }
+  .sp9-mid { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; color:#f2f5f8; }
+  .sp9-sub { margin-top:8px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:22px; letter-spacing:6px; color:#93a3b2; }
+  #sp9-gust { left:300px; top:610px; padding:16px 28px 18px; }
+  #sp9-clock { left:1010px; top:90px; padding:18px 28px; }
+  #sp9-temp { left:1220px; top:600px; padding:14px 26px; }
+  #sp9-snowing { left:1220px; top:700px; padding:14px 22px; }
+  .sp9-src { position:absolute; left:110px; z-index:3; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:19px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  #sp9-src1 { bottom:90px; }
+  #sp9-src2 { bottom:60px; }
+</style>
+<div id="sp9-root" data-composition-id="g-a1-9-split" data-width="1920" data-height="1080" data-duration="13.39">
+
+  <!-- LEFT HALF: Newark, x 0 to 958 (clip-path inset 0 962px 0 0) -->
+  <div id="sp9-left">
+    <svg class="sp9-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="1000" height="1080" fill="#04070a"/>
+      <!-- mainland: CT coast, Sound shore, NYC, Raritan Bay, NJ Atlantic coast (screen px, frame A1-W) -->
+      <path fill="#0b1016" stroke="rgba(255,255,255,.14)" stroke-width="1.5" stroke-linejoin="round"
+        d="M-20,-20 L1000,-20 L1000,252 L958,253 L921,292 L860,314 L706,400 L688,417 L631,480 L603,507 L581,515 L551,551 L542,592 L519,613 L470,675 L460,690 L448,700 L454,716 L527,731 L547,718 L563,788 L536,930 L514,1100 L-20,1100 Z"/>
+      <!-- Long Island -->
+      <path fill="#0b1016" stroke="rgba(255,255,255,.14)" stroke-width="1.5" stroke-linejoin="round"
+        d="M1000,574 L958,572 L856,605 L828,600 L692,636 L636,640 L585,652 L623,624 L623,613 L614,605 L594,607 L573,637 L540,646 L534,614 L560,566 L593,529 L640,505 L663,485 L680,503 L683,479 L710,457 L743,457 L787,444 L823,455 L859,452 L888,437 L917,431 L958,425 L1000,424 Z"/>
+      <!-- Delaware River (PA / NJ line) -->
+      <path fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.5" stroke-linejoin="round"
+        d="M0,1074 L39,1046 L96,1030 L153,961 L264,885 L171,744 L149,736 L125,668 L90,638 L91,556 L95,538 L119,523 L133,493 L115,413 L150,384 L196,326 L234,244 L278,213 L256,176 L187,148 L142,73 L136,14 L141,-15"/>
+      <!-- NJ / NY line, then the Hudson shore down to the Arthur Kill -->
+      <path fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.5" stroke-linejoin="round"
+        d="M278,213 L582,417 L574,460 L536,549 L474,609 L459,631 L445,676"/>
+      <!-- CT / NY line -->
+      <path fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.5" stroke-linejoin="round"
+        d="M747,-177 L722,246 L745,289 L653,353 L688,417"/>
+    </svg>
+
+    <div class="sp9-layer" id="sp9-streaks">
+      <div class="sp9-layer" id="sp9-streaks1"></div>
+      <div class="sp9-layer" id="sp9-streaks2"></div>
+    </div>
+
+    <div class="sp9-pin" id="sp9-npin">
+      <div class="sp9-dot" id="sp9-ndot"></div>
+      <div class="sp9-ring" id="sp9-nring"></div>
+      <div class="sp9-ring" id="sp9-nring2"></div>
+    </div>
+    <div class="sp9-label" id="sp9-nlabel">NEWARK, NJ</div>
+
+    <div class="sp9-chip" id="sp9-gust"><div class="sp9-big">108 MPH</div><div class="sp9-sub">GUST</div></div>
+
+    <div class="sp9-src" id="sp9-src1">Source: NWS Mount Holly; NWS Wilmington OH</div>
+    <div class="sp9-src" id="sp9-src2">Basemap: Natural Earth</div>
+  </div>
+
+  <!-- RIGHT HALF: Columbus, x 962 to 1920 (opens from the seam at 2.84 s) -->
+  <div id="sp9-right">
+    <svg class="sp9-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <rect x="900" y="0" width="1100" height="1080" fill="#0b1016"/>
+      <!-- Ohio River / West Virginia line, frame A2-C + 480 px -->
+      <path fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.5" stroke-linejoin="round"
+        d="M1960,777 L1847,881 L1820,894 L1797,893 L1779,878 L1759,888 L1736,925 L1715,944 L1695,945 L1679,969 L1652,1042 L1640,1049 L1648,1126"/>
+    </svg>
+
+    <div class="sp9-layer" id="sp9-snow1"></div>
+    <div class="sp9-layer" id="sp9-snow2"></div>
+
+    <div class="sp9-pin" id="sp9-cpin">
+      <div class="sp9-dot" id="sp9-cdot"></div>
+      <div class="sp9-ring" id="sp9-cring"></div>
+      <div class="sp9-ring" id="sp9-cring2"></div>
+    </div>
+    <div class="sp9-label" id="sp9-clabel">COLUMBUS, OHIO</div>
+
+    <div class="sp9-chip" id="sp9-clock"><div class="sp9-big">NOON</div><div class="sp9-sub">SAT, NOV 25</div></div>
+    <div class="sp9-chip" id="sp9-temp"><div class="sp9-big">10&deg;F</div></div>
+    <div class="sp9-chip" id="sp9-snowing"><div class="sp9-mid">SNOWING</div></div>
+  </div>
+
+  <div id="sp9-seam"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var tl = gsap.timeline({ paused: true });
+  var P = "#sp9-";
+
+  // seeded generator: positions are fixed at build time, never at seek time
+  var seed = 1950;
+  function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+
+  var wrapS = gsap.utils.wrap(-200, 1160);
+  var wrapX = gsap.utils.wrap(900, 1960);
+  var wrapY = gsap.utils.wrap(-30, 1110);
+  function mS(v) { return wrapS(parseFloat(v)); }
+  function mX(v) { return wrapX(parseFloat(v)); }
+  function mY(v) { return wrapY(parseFloat(v)); }
+
+  // wind streaks: 2 px, 60 to 160 px long, +500 px/s, wrapped inside the (clipped) left half
+  function streaks(hostId, n) {
+    var host = document.getElementById(hostId);
+    for (var i = 0; i < n; i++) {
+      var len = 60 + Math.round(rnd() * 100);
+      var y = 40 + Math.round(rnd() * 1000);
+      var x0 = -200 + Math.round(rnd() * 1360);
+      var d = document.createElement("div");
+      d.className = "sp9-streak";
+      d.style.width = len + "px";
+      d.style.top = y + "px";
+      host.appendChild(d);
+      tl.fromTo(d, { x: x0 }, { x: x0 + 7000, duration: 14, ease: "none", modifiers: { x: mS } }, 0);
+    }
+  }
+  streaks("sp9-streaks1", 30);
+  streaks("sp9-streaks2", 30);
+
+  // snow: 2 to 5 px flakes, 60 to 120 px/s down, +40 to +90 px/s east, wrapped inside the (clipped) right half
+  function flakes(hostId, n) {
+    var host = document.getElementById(hostId);
+    for (var i = 0; i < n; i++) {
+      var sz = 2 + Math.round(rnd() * 3);
+      var op = (0.35 + rnd() * 0.45).toFixed(2);
+      var x0 = 962 + Math.round(rnd() * 958);
+      var y0 = Math.round(rnd() * 1080);
+      var vy = 60 + rnd() * 60;
+      var vx = 40 + rnd() * 50;
+      var d = document.createElement("div");
+      d.className = "sp9-flake";
+      d.style.width = sz + "px";
+      d.style.height = sz + "px";
+      d.style.opacity = op;
+      host.appendChild(d);
+      tl.fromTo(d, { x: x0, y: y0 }, { x: x0 + vx * 14, y: y0 + vy * 14, duration: 14, ease: "none", modifiers: { x: mX, y: mY } }, 0);
+    }
+  }
+  flakes("sp9-snow1", 70);
+  flakes("sp9-snow2", 35);
+
+  // start-hidden (also hidden in CSS)
+  tl.set([P + "gust", P + "clock", P + "temp", P + "snowing", P + "cpin", P + "clabel", P + "streaks2", P + "snow2"], { autoAlpha: 0 }, 0);
+
+  // pulse rings every 1.5 s (1.2 s tween + 0.3 s gap), finite repeats to the end
+  tl.fromTo(P + "nring", { scale: 1, autoAlpha: 0.6 }, { scale: 2.4, autoAlpha: 0, duration: 1.2, ease: "power1.out", repeat: 8, repeatDelay: 0.3, immediateRender: false }, 0);
+  tl.fromTo(P + "cring", { scale: 1, autoAlpha: 0.6 }, { scale: 2.4, autoAlpha: 0, duration: 1.2, ease: "power1.out", repeat: 6, repeatDelay: 0.3, immediateRender: false }, 3.30);
+
+  /* TEARING @1.44 */
+  tl.to(P + "streaks2", { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 1.44);
+  /* NEWARK @1.94 */
+  tl.fromTo(P + "gust", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 1.94);
+  /* NOON @2.84 */
+  tl.fromTo(P + "right", { clipPath: "inset(0px 0px 0px 1920px)" }, { clipPath: "inset(0px 0px 0px 962px)", duration: 0.8, ease: "power3.inOut" }, 2.84);
+  tl.fromTo(P + "clock", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 2.84);
+  /* COLUMBUS @3.30 */
+  tl.fromTo(P + "cpin", { scale: 0.3, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(2)" }, 3.30);
+  tl.fromTo(P + "clabel", { x: -16, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 3.30);
+  /* 10 @4.80 */
+  tl.fromTo(P + "temp", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 4.80);
+  /* SNOW @6.14 */
+  tl.fromTo(P + "snowing", { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 6.14);
+  tl.to(P + "snow2", { autoAlpha: 1, duration: 0.6, ease: "power2.out" }, 6.14);
+  /* OTHER @9.20 */
+  tl.fromTo(P + "nring2", { scale: 1, autoAlpha: 0.9 }, { scale: 3.2, autoAlpha: 0, duration: 0.9, ease: "power2.out", immediateRender: false }, 9.20);
+  tl.fromTo(P + "cring2", { scale: 1, autoAlpha: 0.9 }, { scale: 3.2, autoAlpha: 0, duration: 0.9, ease: "power2.out", immediateRender: false }, 9.20);
+  /* SO @10.28 */
+  tl.to(P + "streaks", { opacity: 0.2, duration: 2.0, ease: "power1.inOut" }, 10.28);
+  tl.to(P + "gust", { autoAlpha: 0.5, duration: 0.6, ease: "power2.out" }, 10.28);
+  /* both @11.88: chips hold, snow and pin pulses keep moving */
+  /* EXIT: left chip slides out in the last 0.6 s of the 13.39 s host; the comp then cuts to the chapter blackout */
+  tl.to(P + "gust", { x: -60, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 12.79);
+
+  window.__timelines["g-a1-9-split"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
