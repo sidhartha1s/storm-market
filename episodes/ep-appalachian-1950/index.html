@@ -9,7 +9,8 @@
      intro match audio/manifest.json (tempo 0.94). Every start is the previous start + its wav + 0.40.
      STAND-INS: every Paul segment (H1-S1, A2-S15, A4-S6) is the nearest accepted still with the TTS take (no media/paul/,
      no clips generated). Presenter circle pip-w1..w7 mounted 28 Oct 26 (see PRESENTER CIRCLE). No bed, no SFX yet (sound hits listed in the composer report, not mounted).
-     DESIGNED GROUND (.ground, track 1) fills the frames where a comp's built timeline ends before the next segment
+     DESIGNED GROUND (.ground, track 2, one gp-* plate per gap, 28 Oct 26: was one long plate per act on track 1, which
+     the sweep named after the next src and counted as a long still) fills the frames where a comp's built timeline ends before the next segment
      (A2, A3, A5 comps were built on word end + 0.40, so their gaps differ from the slot by the wav-vs-words difference;
      g-intro-2 is 2.23 s short). -->
 <html lang="en">
@@ -120,11 +121,14 @@
   <!-- H1-S1: STAND-IN for ins-paul-1 (no media/paul/): nearest accepted still, the 25 Nov 1950 surface chart (A1-S8 pick), under the g-intro-1 popfig -->
   <section class="clip still-wrap" id="c-h1-paul" data-start="0" data-duration="8.838" data-track-index="1" data-callback="stand-in for Paul's clip P1 (ins-paul-1 not generated): the Saturday chart under the date popfig"><img id="kb-h1-paul" src="media/a1/A1-S8_c1_nws-jkl-surface-1950-11-25.jpg" alt=""></section>
   <!-- H1-S2 to I1-S4 are full-frame map comps; ground fills g-intro-2's short tail (37.519 to 39.748) and g-intro-5's land (70.695 to 71.095) -->
-  <section class="clip ground" id="c-intro-ground" data-start="8.838" data-duration="62.257" data-track-index="1"></section>
+  <section class="clip ground" id="gp-h1-s5" data-start="37.519" data-duration="2.229" data-track-index="2"></section>
+  <section class="clip ground" id="gp-i1-s4" data-start="70.695" data-duration="0.4" data-track-index="2"></section>
   <!-- act-1 chapter seam -->
   <section class="clip blackout" id="bo-a1" data-start="71.095" data-duration="0.7" data-track-index="1"></section>
 
   <!-- ===== A1 (every beat is a full-frame comp; picks.md: self-made, the S8 chart sits inside g-a1-6) ===== -->
+  <!-- A1-S11: g-a1-7 ends 214.278 and g-a1-8 (track 3) carries the beat to 223.091; ground under it so tracks 1/2 have no hole -->
+  <section class="clip ground" id="gp-a1-s11" data-start="214.278" data-duration="8.813" data-track-index="2"></section>
   <section class="clip blackout" id="bo-a2" data-start="236.48" data-duration="0.7" data-track-index="1"></section>
 
   <!-- ===== A2 (S4 = still under the g-a2-4 overlay; S15 = Paul stand-in; ground under the comp gaps) ===== -->
