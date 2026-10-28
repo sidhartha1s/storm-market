@@ -370,7 +370,8 @@ TYPE_WHY, CROP_WHY = 'typed sheet, two tiers by design', 'blurred backdrop behin
 # 0 type tier(s) · 0 elements on screen" = undesigned. The mid-slide skip exists for text parked off-frame,
 # so it now skips only the geometry checks, only while a text-bearing element slides.
 def _debris_comp(bg, inner, n):
-    flies = ''.join(f"tl.fromTo('#d{i}', {{ x: 0 }}, {{ x: 1500, duration: 1.0, ease: 'none' }}, {i * 0.5});\n" for i in range(n))
+    # 13 launches 0.5 s apart, each 1 s long, cycling the n boxes: something slides from 0 s to 7 s
+    flies = ''.join(f"tl.fromTo('#d{i % n}', {{ x: 0 }}, {{ x: 1500, duration: 1.0, ease: 'none' }}, {i * 0.5});\n" for i in range(13))
     boxes = ''.join(f'  <div id="d{i}" style="position:absolute;left:-200px;top:{40 + i * 40}px;width:120px;height:20px;background:#654"></div>\n'
                     for i in range(n))
     return ('<!doctype html><html><head><meta charset="UTF-8"></head><body><template>\n'
