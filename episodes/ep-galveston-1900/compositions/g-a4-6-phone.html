@@ -1,0 +1,164 @@
+<template>
+<style>
+  #g-a4-6-phone-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a4-6-phone-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* line art: strokes #93a3b2 3 px, fills #15202b (brief section 3) */
+  .g-a4-6-ln { fill:#15202b; stroke:#93a3b2; stroke-width:3; }
+  .g-a4-6-st { fill:none; stroke:#93a3b2; stroke-width:3; }
+  .g-a4-6-pp { fill:#4a5560; }
+  .g-a4-6-arc { fill:none; stroke:#e8c56a; stroke-width:3; opacity:0; visibility:hidden; }
+  #g-a4-6-phone-fig .g-a4-6-sil { fill:#5a768f; }
+  #g-a4-6-phone-queue { opacity:0; visibility:hidden; }
+
+  /* source line, top-left glass (tokens.md surfaces) */
+  #g-a4-6-phone-src { position:absolute; left:96px; top:54px; max-width:1000px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  #g-a4-6-phone-note { position:absolute; left:96px; top:1000px; font-weight:700; font-size:19px; line-height:24px; color:#93a3b2; opacity:0; visibility:hidden; }
+
+  /* chips: wrapper drifts, chip enters and exits; both sit at left 96, top 140, never together */
+  .g-a4-6-cw { position:absolute; left:96px; top:140px; }
+  .g-a4-6-chip { padding:14px 32px; border-radius:28px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
+  .g-a4-6-main { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:56px; color:#f2f5f8; }
+  .g-a4-6-tag { font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:32px; color:#93a3b2; }
+</style>
+<div id="g-a4-6-phone-root" data-composition-id="g-a4-6-phone" data-width="1920" data-height="1080">
+  <svg id="g-a4-6-phone-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <!-- floor -->
+    <line x1="96" y1="860" x2="1824" y2="860" stroke="#93a3b2" stroke-width="3"/>
+    <!-- window on the wall (office decor) -->
+    <rect class="g-a4-6-ln" x="860" y="420" width="260" height="200"/>
+    <line class="g-a4-6-st" x1="990" y1="420" x2="990" y2="620"/>
+    <line class="g-a4-6-st" x1="860" y1="520" x2="1120" y2="520"/>
+    <!-- door: frame with dark opening, open leaf swung inward -->
+    <rect x="1280" y="420" width="200" height="440" fill="#04070c" stroke="#93a3b2" stroke-width="3"/>
+    <polygon class="g-a4-6-ln" points="1280,420 1228,444 1228,860 1280,860"/>
+    <!-- bells sit behind the box top -->
+    <circle id="g-a4-6-phone-bl" class="g-a4-6-ln" cx="495" cy="352" r="18"/>
+    <circle id="g-a4-6-phone-br" class="g-a4-6-ln" cx="545" cy="352" r="18"/>
+    <!-- wall telephone: wooden box, shelf, mouthpiece, crank -->
+    <rect class="g-a4-6-ln" x="460" y="360" width="120" height="220"/>
+    <rect class="g-a4-6-ln" x="450" y="580" width="140" height="12"/>
+    <circle class="g-a4-6-ln" cx="520" cy="430" r="12"/>
+    <rect class="g-a4-6-st" x="476" y="480" width="88" height="70"/>
+    <line class="g-a4-6-st" x1="580" y1="470" x2="606" y2="470"/>
+    <circle class="g-a4-6-ln" cx="606" cy="470" r="7"/>
+    <!-- ring arcs above the bells -->
+    <path id="g-a4-6-phone-a1" class="g-a4-6-arc" d="M 484 340 A 36 36 0 0 1 556 340"/>
+    <path id="g-a4-6-phone-a2" class="g-a4-6-arc" d="M 470 340 A 50 50 0 0 1 570 340"/>
+    <path id="g-a4-6-phone-a3" class="g-a4-6-arc" d="M 456 340 A 64 64 0 0 1 584 340"/>
+    <!-- the one seated figure, receiver at the head, cord to the box -->
+    <g id="g-a4-6-phone-fig">
+      <rect class="g-a4-6-sil" x="690" y="780" width="30" height="80"/>
+      <rect class="g-a4-6-sil" x="616" y="740" width="104" height="44" rx="10"/>
+      <path class="g-a4-6-sil" d="M 622 640 Q 660 620 700 640 L 708 750 L 616 750 Z"/>
+      <circle class="g-a4-6-sil" cx="660" cy="592" r="30"/>
+      <rect class="g-a4-6-ln" x="614" y="574" width="14" height="46" rx="6"/>
+      <path class="g-a4-6-st" d="M 580 540 C 600 560 596 596 614 602"/>
+    </g>
+    <!-- queue outside the door: 9 silhouettes, 56 px apart, x 1490 to 1938 -->
+    <g id="g-a4-6-phone-queue">
+      <g id="g-a4-6-phone-q1" class="g-a4-6-q"><circle class="g-a4-6-pp" cx="1510" cy="752" r="12"/><rect class="g-a4-6-pp" x="1494" y="766" width="32" height="94" rx="12"/></g>
+      <g id="g-a4-6-phone-q2" class="g-a4-6-q"><circle class="g-a4-6-pp" cx="1566" cy="752" r="12"/><rect class="g-a4-6-pp" x="1550" y="766" width="32" height="94" rx="12"/></g>
+      <g id="g-a4-6-phone-q3" class="g-a4-6-q"><circle class="g-a4-6-pp" cx="1622" cy="752" r="12"/><rect class="g-a4-6-pp" x="1606" y="766" width="32" height="94" rx="12"/></g>
+      <g id="g-a4-6-phone-q4" class="g-a4-6-q"><circle class="g-a4-6-pp" cx="1678" cy="752" r="12"/><rect class="g-a4-6-pp" x="1662" y="766" width="32" height="94" rx="12"/></g>
+      <g id="g-a4-6-phone-q5" class="g-a4-6-q"><circle class="g-a4-6-pp" cx="1734" cy="752" r="12"/><rect class="g-a4-6-pp" x="1718" y="766" width="32" height="94" rx="12"/></g>
+      <g id="g-a4-6-phone-q6" class="g-a4-6-q"><circle class="g-a4-6-pp" cx="1790" cy="752" r="12"/><rect class="g-a4-6-pp" x="1774" y="766" width="32" height="94" rx="12"/></g>
+      <g id="g-a4-6-phone-q7" class="g-a4-6-q"><circle class="g-a4-6-pp" cx="1846" cy="752" r="12"/><rect class="g-a4-6-pp" x="1830" y="766" width="32" height="94" rx="12"/></g>
+      <g id="g-a4-6-phone-q8" class="g-a4-6-q"><circle class="g-a4-6-pp" cx="1902" cy="752" r="12"/><rect class="g-a4-6-pp" x="1886" y="766" width="32" height="94" rx="12"/></g>
+      <g id="g-a4-6-phone-q9" class="g-a4-6-q"><circle class="g-a4-6-pp" cx="1958" cy="752" r="12"/><rect class="g-a4-6-pp" x="1942" y="766" width="32" height="94" rx="12"/></g>
+    </g>
+  </svg>
+  <div id="g-a4-6-phone-src">Isaac Cline, Monthly Weather Review, September 1900, p. 373</div>
+  <div id="g-a4-6-phone-note">Office: schematic</div>
+  <div id="g-a4-6-phone-cw1" class="g-a4-6-cw"><div id="g-a4-6-phone-c1" class="g-a4-6-chip"><div class="g-a4-6-main">ONE MAN ON THE PHONE</div><div class="g-a4-6-tag">Storm warnings flying &#183; Sat. morning</div></div></div>
+  <div id="g-a4-6-phone-cw2" class="g-a4-6-cw"><div id="g-a4-6-phone-c2" class="g-a4-6-chip"><div class="g-a4-6-main">HUNDREDS CAME IN PERSON</div><div class="g-a4-6-tag">Could not get through</div></div></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-6-phone-";
+  const bells = [P+"bl", P+"br"];
+  const arcs = [P+"a1", P+"a2", P+"a3"];
+  /* TIMING: audio/a4-s4.words.json, comp-local = segment time (host 0.00 to 8.70).
+     By @0.00 ; kept @2.86 ; one @3.12 ; constantly. ends @4.96 ; Hundreds @5.54 ; people @5.98 ; came @7.22 ; person. ends @8.00 ; Isaac @8.70 */
+
+  /* hidden states (CSS hides them too); transforms start here */
+  tl.set(P+"src", {autoAlpha:0}, 0);
+  tl.set(P+"note", {autoAlpha:0}, 0);
+  tl.set([P+"c1", P+"c2"], {autoAlpha:0, y:24, x:0, scale:0.94}, 0);
+  tl.set([P+"cw1", P+"cw2"], {y:0}, 0);
+  tl.set(P+"bl", {rotation:0, svgOrigin:"495 352"}, 0);
+  tl.set(P+"br", {rotation:0, svgOrigin:"545 352"}, 0);
+  tl.set(arcs, {scale:0.6, svgOrigin:"520 340", autoAlpha:0}, 0);
+  tl.set(P+"fig", {y:0}, 0);
+  tl.set(P+"queue", {autoAlpha:0, x:300}, 0);
+  tl.set(".g-a4-6-q", {y:0, x:0}, 0);
+
+  /* frame 0: wall, phone, figure; source line and note come in */
+  tl.to(P+"src", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  tl.to(P+"note", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
+  /* the man at the phone leans in and out the whole window */
+  tl.to(P+"fig", {y:-3, duration:0.6, ease:"sine.inOut", yoyo:true, repeat:13}, 0);
+
+  /* ring bursts every 1.2 s: bells shake 6 cycles (0.06 s swings), three arcs flash out */
+  /* burst 1 @0.12 */
+  tl.fromTo(bells, {rotation:-8}, {rotation:8, duration:0.06, ease:"none", yoyo:true, repeat:11, immediateRender:false}, 0.12);
+  tl.to(bells, {rotation:0, duration:0.1, ease:"power2.out"}, 0.84);
+  tl.fromTo(arcs, {scale:0.6, autoAlpha:1}, {scale:1.2, autoAlpha:0, duration:0.4, ease:"power1.out", stagger:0.1, immediateRender:false}, 0.12);
+  /* burst 2 @1.32 */
+  tl.fromTo(bells, {rotation:-8}, {rotation:8, duration:0.06, ease:"none", yoyo:true, repeat:11, immediateRender:false}, 1.32);
+  tl.to(bells, {rotation:0, duration:0.1, ease:"power2.out"}, 2.04);
+  tl.fromTo(arcs, {scale:0.6, autoAlpha:1}, {scale:1.2, autoAlpha:0, duration:0.4, ease:"power1.out", stagger:0.1, immediateRender:false}, 1.32);
+  /* burst 3 @2.52 */
+  tl.fromTo(bells, {rotation:-8}, {rotation:8, duration:0.06, ease:"none", yoyo:true, repeat:11, immediateRender:false}, 2.52);
+  tl.to(bells, {rotation:0, duration:0.1, ease:"power2.out"}, 3.24);
+  tl.fromTo(arcs, {scale:0.6, autoAlpha:1}, {scale:1.2, autoAlpha:0, duration:0.4, ease:"power1.out", stagger:0.1, immediateRender:false}, 2.52);
+  /* burst 4 @3.72 */
+  tl.fromTo(bells, {rotation:-8}, {rotation:8, duration:0.06, ease:"none", yoyo:true, repeat:11, immediateRender:false}, 3.72);
+  tl.to(bells, {rotation:0, duration:0.1, ease:"power2.out"}, 4.44);
+  tl.fromTo(arcs, {scale:0.6, autoAlpha:1}, {scale:1.2, autoAlpha:0, duration:0.4, ease:"power1.out", stagger:0.1, immediateRender:false}, 3.72);
+  /* burst 5 @4.92 */
+  tl.fromTo(bells, {rotation:-8}, {rotation:8, duration:0.06, ease:"none", yoyo:true, repeat:11, immediateRender:false}, 4.92);
+  tl.to(bells, {rotation:0, duration:0.1, ease:"power2.out"}, 5.64);
+  tl.fromTo(arcs, {scale:0.6, autoAlpha:1}, {scale:1.2, autoAlpha:0, duration:0.4, ease:"power1.out", stagger:0.1, immediateRender:false}, 4.92);
+  /* burst 6 @6.12 */
+  tl.fromTo(bells, {rotation:-8}, {rotation:8, duration:0.06, ease:"none", yoyo:true, repeat:11, immediateRender:false}, 6.12);
+  tl.to(bells, {rotation:0, duration:0.1, ease:"power2.out"}, 6.84);
+  tl.fromTo(arcs, {scale:0.6, autoAlpha:1}, {scale:1.2, autoAlpha:0, duration:0.4, ease:"power1.out", stagger:0.1, immediateRender:false}, 6.12);
+  /* burst 7 @7.32 */
+  tl.fromTo(bells, {rotation:-8}, {rotation:8, duration:0.06, ease:"none", yoyo:true, repeat:11, immediateRender:false}, 7.32);
+  tl.to(bells, {rotation:0, duration:0.1, ease:"power2.out"}, 8.04);
+  tl.fromTo(arcs, {scale:0.6, autoAlpha:1}, {scale:1.2, autoAlpha:0, duration:0.4, ease:"power1.out", stagger:0.1, immediateRender:false}, 7.32);
+
+  /* one @3.12: chip 1 in (kept @2.86 leads it); drifts until it leaves */
+  tl.fromTo(P+"c1", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)", immediateRender:false}, 3.12);
+  tl.to(P+"cw1", {y:-4, duration:0.9, ease:"sine.inOut", yoyo:true, repeat:1}, 3.57);
+  /* constantly. ends @4.96: chip 1 slides out by 5.60, before chip 2 */
+  tl.to(P+"c1", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.00);
+
+  /* Hundreds @5.54: queue walks in from the right (x +300 to 0, 1.2 s) */
+  tl.to(P+"queue", {autoAlpha:1, duration:0.3, ease:"power2.out"}, 5.54);
+  tl.to(P+"queue", {x:0, duration:1.2, ease:"power2.out"}, 5.54);
+  /* queue shuffle: each figure y +-3 px, staggered 0.05 s (5.54 to 8.54) */
+  tl.to(".g-a4-6-q", {y:-3, duration:0.26, ease:"sine.inOut", yoyo:true, repeat:9, stagger:0.05}, 5.54);
+
+  /* people @5.98: chip 2 in; drifts until exit */
+  tl.fromTo(P+"c2", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)", immediateRender:false}, 5.98);
+  tl.to(P+"cw2", {y:-4, duration:0.8, ease:"sine.inOut", yoyo:true, repeat:1}, 6.43);
+
+  /* came @7.22: the first figure steps through the door */
+  tl.to(P+"q1", {x:-60, duration:0.6, ease:"power2.inOut"}, 7.22);
+
+  /* exit 8.10 to 8.70: chip 2 slides out, cut to g-a4-7 at 8.70 */
+  tl.to(P+"c2", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 8.10);
+
+  window.__timelines["g-a4-6-phone"] = tl;
+})();
+</script>
+</template>
