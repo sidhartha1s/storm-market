@@ -169,7 +169,8 @@ window.__timelines = window.__timelines || {};
   tl.set($("trackrev"), { strokeDasharray: LT + " " + LT, strokeDashoffset: LT }, 0);
   tl.set($("wrev"), { strokeDasharray: LW + " " + LW, strokeDashoffset: LW }, 0);
   tl.set($("flow"), { strokeDashoffset: 0 }, 0);
-  tl.set($("head"), { svgOrigin: "1368 437.3", scale: 0.3 }, 0);
+  // smoothOrigin off: with it on, GSAP shifted the head about 157 px west (bbox origin -> tip) and it sat off the band end
+  tl.set($("head"), { svgOrigin: "1368 437.3", smoothOrigin: false, scale: 0.3 }, 0);
   tl.set($("tag"), { y: 0 }, 0);
   tl.set([$("chip1"), $("src1"), $("chip2"), $("src2")].join(","), { y: 0 }, 0);
   parts.forEach(function (r, i) {
