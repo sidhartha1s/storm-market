@@ -154,9 +154,6 @@ window.__timelines = window.__timelines || {};
   /* "strongly" @3.46: rule draws 3.46 to 3.96 */
   tl.fromTo($("rule"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power2.out" }, 3.46);
 
-  /* big line landed: R7 and R8 leave fully so no card text runs through it (y 440 to 535) */
-  tl.to([$("r7"), $("r8h")], { opacity: 0, duration: 0.4, ease: "none" }, 3.9);
-
   /* 3.88 to 5.6: slow push on the line */
   tl.to($("big"), { scale: 1.03, duration: 1.7, ease: "none" }, 3.9);
 
