@@ -2,6 +2,22 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 28 Oct 26 - batch A (ep-buffalo-2022, ep-galveston-1900, ep-appalachian-1950): four kinds the gates passed
+Rules now live in `references/mg-quickref.md`; this entry keeps what happened.
+- **svgOrigin on one side of a tween (6 comps):** Buffalo g-a1-3, g-a1-4, g-a2-2, g-a4-2; Galveston g-a3-9, g-a4-11.
+  svgOrigin set in only one vars object of a `fromTo`, or added to an element already scaled, lets GSAP's
+  smoothOrigin move the element to keep it in place, so it jumps. Fix: svgOrigin plus `smoothOrigin:false` on both
+  ends (or a `tl.set` at 0). Home: mg-quickref "File contract".
+- **Short chips (5 comps):** Galveston a4-3 (0.3 s), a4-4 (0.5 s), a4-8 (1.0 s), Buffalo a5-5 (0.24 s), Appalachian
+  a2-6 (1.2 s) held a chip or label at full opacity for less than a reader needs before its exit. No gate measures
+  the read time of a text leaf. Home: mg-quickref "Motion and exits" (1.5 s, the agent's reading).
+- **False basemap credits (4 comps, plus 2 wrong credits):** Appalachian g-a1-7, g-a2-1, g-a1-3 and Buffalo g-a5-3
+  drew ground by hand and credited Natural Earth; Appalachian a4-2 and a4-4 named the wrong source. Home:
+  mg-quickref "Frame and safe zones" (RHS panel / map line).
+- **Whole-path copy beat subpath assembly:** in the basemap fixes, copying whole paths verbatim from
+  `library/inhouse/master-map-us-canada.html` or a sibling comp worked where assembling subpaths did not
+  (orchestrator state file, 28 Oct 26).
+
 ## 12 Oct 26 - ep-palm-sunday-1965 preview: 12 graphics, 3 failed the verifier, then the gate flagged 2 the verifier had passed
 - **What happened:** three Opus builders built 12 comps for a 113 s opening; one Opus verifier read them in four passes.
   3 of 12 failed (hook warning, list question, house), two fix rounds, then all 12 passed. `graphics_qc` was run only
