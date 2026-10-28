@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!-- ep-appalachian-1950 · The Warning Hour · assembly v0 (28 Oct 26): HOOK + INTRO + A1 to A5, hand-composed so every act's
+     graphics can be frame-read and the draft rendered by act. Not a render candidate until the wav durations land.
+     CADENCE: 0.40 s between every narration segment (every built comp and SEG table assumes it). Act seams: the outgoing
+     segment's 0.40 s land, then a 0.7 s chapter blackout. CTA after A2-S15 (Paul's cta-hinge tease): 1.0 s dip in and out,
+     A3 opens on the payoff "The low went northwest." (CTA at 461.28 of 931.753 = 49.5 %, window 0.40 to 0.60).
+     DURATIONS: hook and intro from audio/manifest.json (tempo 0.94). A1 and A4 from the wav lengths in briefs/a1/_list.md
+     and briefs/a4/_list.md (marked DUR:brief). A2, A3, A5: last words.json word end + 0.30 (marked DUR:words) until
+     app-wav-durations.tsv exists; then every start downstream moves.
+     STAND-INS: every Paul segment (H1-S1, A2-S15, A4-S6) is the nearest accepted still with the TTS take (no media/paul/,
+     no clips generated). No bed, no SFX yet (sound hits listed in the composer report, not mounted).
+     DESIGNED GROUND (.ground, track 1) fills the frames where a comp's built timeline ends before the next segment
+     (A2, A3, A5 comps were built on word end + 0.40, about 0.30 s short of the slot; g-intro-2 is 2.23 s short). -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920, height=1080">
+  <title>Appalachian 1950 (hook to A5, draft assembly) — The Warning Hour</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    body { margin: 0; background: #000; font-family: Arial, sans-serif; }
+    #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #04070c; }
+    video, .still-wrap { position: absolute; inset: 0; }
+    video { width: 100%; height: 100%; object-fit: cover; }
+    .still-wrap { overflow: hidden; }
+    .still-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    .clip { position: absolute; inset: 0; }
+    .blackout { position: absolute; inset: 0; background: #000; }
+    .ground { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  </style>
+</head>
+<body>
+<div id="root" data-composition-id="ep-appalachian-1950" data-start="0" data-width="1920" data-height="1080" data-duration="931.753" data-fps="30">
+
+  <!-- ============ NARRATION (0.40 s gaps; see header for the duration sources) ============ -->
+  <!-- h1-s1 is Paul's on-camera line; until ins-paul-1 exists the TTS take of the same 26 words stands in -->
+  <audio id="nx-h1-s1" src="audio/h1-s1.wav" data-start="0.0" data-duration="8.438" data-volume="1"></audio>
+  <audio id="nx-h1-s2" src="audio/h1-s2.wav" data-start="8.838" data-duration="8.494" data-volume="1"></audio>
+  <audio id="nx-h1-s3" src="audio/h1-s3.wav" data-start="17.732" data-duration="3.765" data-volume="1"></audio>
+  <audio id="nx-h1-s4" src="audio/h1-s4.wav" data-start="21.897" data-duration="9.95" data-volume="1"></audio>
+  <audio id="nx-h1-s5" src="audio/h1-s5.wav" data-start="32.247" data-duration="7.101" data-volume="1"></audio>
+  <audio id="nx-i1-s1" src="audio/i1-s1.wav" data-start="39.748" data-duration="10.427" data-volume="1"></audio>
+  <audio id="nx-i1-s2" src="audio/i1-s2.wav" data-start="50.575" data-duration="7.323" data-volume="1"></audio>
+  <audio id="nx-i1-s3" src="audio/i1-s3.wav" data-start="58.298" data-duration="9.976" data-volume="1"></audio>
+  <audio id="nx-i1-s4" src="audio/i1-s4.wav" data-start="68.674" data-duration="2.021" data-volume="1"></audio>
+  <!-- A1 · The side nobody remembers (no a1-s10) -->
+  <audio id="nx-a1-s1" src="audio/a1-s1.wav" data-start="71.795" data-duration="16.602" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a1-s2" src="audio/a1-s2.wav" data-start="88.797" data-duration="9.61" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a1-s3" src="audio/a1-s3.wav" data-start="98.807" data-duration="12.438" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a1-s4" src="audio/a1-s4.wav" data-start="111.645" data-duration="12.959" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a1-s5" src="audio/a1-s5.wav" data-start="125.004" data-duration="17.018" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a1-s6" src="audio/a1-s6.wav" data-start="142.422" data-duration="13.047" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a1-s7" src="audio/a1-s7.wav" data-start="155.869" data-duration="20.399" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a1-s8" src="audio/a1-s8.wav" data-start="176.668" data-duration="18.25" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a1-s9" src="audio/a1-s9.wav" data-start="195.318" data-duration="17.864" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a1-s11" src="audio/a1-s11.wav" data-start="213.582" data-duration="9.109" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a1-s12" src="audio/a1-s12.wav" data-start="223.091" data-duration="12.989" data-volume="1"></audio><!-- DUR:brief -->
+  <!-- A2 · The side everybody remembers (a2-s15 is Paul's line, ins-paul-4; TTS stand-in) -->
+  <audio id="nx-a2-s1" src="audio/a2-s1.wav" data-start="237.18" data-duration="13.6" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a2-s2" src="audio/a2-s2.wav" data-start="251.18" data-duration="12.14" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a2-s3" src="audio/a2-s3.wav" data-start="263.72" data-duration="17.58" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a2-s4" src="audio/a2-s4.wav" data-start="281.7" data-duration="21.14" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a2-s5" src="audio/a2-s5.wav" data-start="303.24" data-duration="13.96" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a2-s6" src="audio/a2-s6.wav" data-start="317.6" data-duration="13.46" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a2-s7" src="audio/a2-s7.wav" data-start="331.46" data-duration="19.22" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a2-s8" src="audio/a2-s8.wav" data-start="351.08" data-duration="14.6" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a2-s9" src="audio/a2-s9.wav" data-start="366.08" data-duration="15.64" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a2-s10" src="audio/a2-s10.wav" data-start="382.12" data-duration="12.42" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a2-s11" src="audio/a2-s11.wav" data-start="394.94" data-duration="21.04" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a2-s12" src="audio/a2-s12.wav" data-start="416.38" data-duration="12.26" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a2-s13" src="audio/a2-s13.wav" data-start="429.04" data-duration="13.02" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a2-s14" src="audio/a2-s14.wav" data-start="442.46" data-duration="11.36" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a2-s15" src="audio/a2-s15.wav" data-start="454.22" data-duration="6.06" data-volume="1"></audio><!-- DUR:words -->
+  <!-- CTA 461.28 to 485.322 (its own VO; narration silent under it) -->
+  <!-- A3 · The left turn (a3-s1 opens on the cta-hinge payoff) -->
+  <audio id="nx-a3-s1" src="audio/a3-s1.wav" data-start="486.322" data-duration="16.04" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a3-s2" src="audio/a3-s2.wav" data-start="502.762" data-duration="16.86" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a3-s3" src="audio/a3-s3.wav" data-start="520.022" data-duration="22.04" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a3-s4" src="audio/a3-s4.wav" data-start="542.462" data-duration="19.6" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a3-s5" src="audio/a3-s5.wav" data-start="562.462" data-duration="15.78" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a3-s6" src="audio/a3-s6.wav" data-start="578.642" data-duration="17.88" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a3-s7" src="audio/a3-s7.wav" data-start="596.922" data-duration="19.2" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a3-s8" src="audio/a3-s8.wav" data-start="616.522" data-duration="6.3" data-volume="1"></audio><!-- DUR:words -->
+  <!-- A4 · The cold that went south (a4-s6 is Paul's line, ins-paul-5; TTS stand-in) -->
+  <audio id="nx-a4-s1" src="audio/a4-s1.wav" data-start="623.922" data-duration="14.104" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a4-s2" src="audio/a4-s2.wav" data-start="638.426" data-duration="17.81" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a4-s3" src="audio/a4-s3.wav" data-start="656.636" data-duration="12.257" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a4-s4" src="audio/a4-s4.wav" data-start="669.293" data-duration="16.105" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a4-s5" src="audio/a4-s5.wav" data-start="685.798" data-duration="18.273" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a4-s6" src="audio/a4-s6.wav" data-start="704.471" data-duration="7.781" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a4-s7" src="audio/a4-s7.wav" data-start="712.652" data-duration="8.704" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a4-s8" src="audio/a4-s8.wav" data-start="721.756" data-duration="21.529" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a4-s9" src="audio/a4-s9.wav" data-start="743.685" data-duration="15.308" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a4-s10" src="audio/a4-s10.wav" data-start="759.393" data-duration="10.093" data-volume="1"></audio><!-- DUR:brief -->
+  <audio id="nx-a4-s11" src="audio/a4-s11.wav" data-start="769.886" data-duration="8.247" data-volume="1"></audio><!-- DUR:brief -->
+  <!-- A5 · The storm the computer had to learn (a5-s9 is the signature close over the title) -->
+  <audio id="nx-a5-s1" src="audio/a5-s1.wav" data-start="779.233" data-duration="13.92" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a5-s2" src="audio/a5-s2.wav" data-start="793.553" data-duration="20.08" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a5-s3" src="audio/a5-s3.wav" data-start="814.033" data-duration="17.02" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a5-s4" src="audio/a5-s4.wav" data-start="831.453" data-duration="18.18" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a5-s5" src="audio/a5-s5.wav" data-start="850.033" data-duration="14.48" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a5-s6" src="audio/a5-s6.wav" data-start="864.913" data-duration="18.34" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a5-s7" src="audio/a5-s7.wav" data-start="883.653" data-duration="12.22" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a5-s8" src="audio/a5-s8.wav" data-start="896.273" data-duration="21.36" data-volume="1"></audio><!-- DUR:words -->
+  <audio id="nx-a5-s9" src="audio/a5-s9.wav" data-start="918.033" data-duration="12.02" data-volume="1"></audio><!-- DUR:words -->
+
+  <!-- ============ PICTURE, track 1 (stills under overlays, designed ground in the comp gaps, blackouts, CTA) ============ -->
+  <!-- H1-S1: STAND-IN for ins-paul-1 (no media/paul/): nearest accepted still, the 25 Nov 1950 surface chart (A1-S8 pick), under the g-intro-1 popfig -->
+  <section class="clip still-wrap" id="c-h1-paul" data-start="0" data-duration="8.838" data-track-index="1" data-callback="stand-in for Paul's clip P1 (ins-paul-1 not generated): the Saturday chart under the date popfig"><img id="kb-h1-paul" src="media/a1/A1-S8_c1_nws-jkl-surface-1950-11-25.jpg" alt=""></section>
+  <!-- H1-S2 to I1-S4 are full-frame map comps; ground fills g-intro-2's short tail (37.519 to 39.748) and g-intro-5's land (70.695 to 71.095) -->
+  <section class="clip ground" id="c-intro-ground" data-start="8.838" data-duration="62.257" data-track-index="1"></section>
+  <!-- act-1 chapter seam -->
+  <section class="clip blackout" id="bo-a1" data-start="71.095" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- ===== A1 (every beat is a full-frame comp; picks.md: self-made, the S8 chart sits inside g-a1-6) ===== -->
+  <section class="clip blackout" id="bo-a2" data-start="236.48" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- ===== A2 (S4 = still under the g-a2-4 overlay; S15 = Paul stand-in; ground under the 0.30 s comp gaps) ===== -->
+  <section class="clip ground" id="c-a2-ground" data-start="237.18" data-duration="44.52" data-track-index="1"></section>
+  <!-- A2-S4: Harry Allis extra point, Snow Bowl 25 Nov 1950 (pick; Snow Bowl film not found) under g-a2-4 -->
+  <section class="clip still-wrap" id="c-a2-snowbowl" data-start="281.7" data-duration="21.54" data-track-index="1"><img id="kb-a2-snowbowl" src="media/a2/A2-S4_c1_harry-allis-extra-point-1950.png" alt=""></section>
+  <section class="clip ground" id="c-a2-ground2" data-start="303.24" data-duration="150.98" data-track-index="1"></section>
+  <!-- A2-S15: STAND-IN for ins-paul-4: the beat's own pick, the 25 Nov surface chart, soft (Picture line); hard cut to the CTA dip -->
+  <section class="clip still-wrap" id="c-a2-paul" data-start="454.22" data-duration="6.06" data-track-index="1" data-callback="stand-in for Paul's clip P4 (ins-paul-4 not generated): A2-S15's own pick, the Saturday chart behind his line"><img id="kb-a2-paul" src="media/a2/A2-S15_c1_nws-jkl-surface-1950-11-25.jpg" alt=""></section>
+
+  <!-- ===== CTA (config.yaml channel.cta, 49.5 % of runtime) ===== -->
+  <section class="clip blackout" id="bo-cta-in" data-start="460.28" data-duration="1.0" data-track-index="1"></section>
+  <video id="ins-cta-paul" src="media/cta/paul-storm-ready-v9-oct20.mp4" data-start="461.28" data-duration="24.042" data-track-index="1" data-volume="1" data-has-audio="true" data-srt-label="[PAUL RAYMOND — STORM-READY HOME · paulraymond.online]"></video>
+  <section class="clip blackout" id="bo-cta-out" data-start="485.322" data-duration="1.0" data-track-index="1"></section>
+
+  <!-- ===== A3 (every beat is a full-frame comp; the charts sit inside g-a3-1, -2, -3, -7) ===== -->
+  <section class="clip ground" id="c-a3-ground" data-start="486.322" data-duration="136.9" data-track-index="1"></section>
+  <section class="clip blackout" id="bo-a4" data-start="623.222" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- ===== A4 (every beat a full-frame comp except S6) ===== -->
+  <!-- A4-S6: STAND-IN for ins-paul-5: nearest accepted still, the 27 Nov surface chart (A3-S7 pick); Picture line wants the drained map beside him -->
+  <section class="clip still-wrap" id="c-a4-paul" data-start="704.471" data-duration="8.181" data-track-index="1" data-callback="stand-in for Paul's clip P5 (ins-paul-5 not generated): nearest accepted still"><img id="kb-a4-paul" src="media/a3/A3-S7_c2_nws-jkl-surface-1950-11-27.jpg" alt=""></section>
+  <section class="clip blackout" id="bo-a5" data-start="778.533" data-duration="0.7" data-track-index="1"></section>
+
+  <!-- ===== A5 (every beat a full-frame comp; ground under the comp gaps and the title's last 0.30 s) ===== -->
+  <section class="clip ground" id="c-a5-ground" data-start="779.233" data-duration="152.52" data-track-index="1"></section>
+
+  <!-- ============ GRAPHICS (host start = segment start + the brief's offset; duration = the comp's built value, mount-app.md) ============ -->
+  <!-- intro (briefs/intro/_list.md). g-intro-4-lga-chip not built (no LaGuardia footage): not mounted. -->
+  <div id="host-g-intro-1" data-composition-id="g-intro-1-date" data-composition-src="compositions/g-intro-1-date.html" data-start="0.28" data-duration="4.72" data-track-index="3" data-width="1920" data-height="1080"></div>
+  <!-- g-intro-2 SEG assumes h1-s2 = 6.665 s; the voiced h1-s2 is 8.494, so its S3 to S5 cues land 1.829 s early and its 28.681 timeline ends 2.229 s before I1-S1 (comp edit listed) -->
+  <div id="host-g-intro-2" data-composition-id="g-intro-2-hookmap" data-composition-src="compositions/g-intro-2-hookmap.html" data-start="8.838" data-duration="28.681" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-intro-3" data-composition-id="g-intro-3-coast" data-composition-src="compositions/g-intro-3-coast.html" data-start="39.748" data-duration="10.827" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-intro-5" data-composition-id="g-intro-5-inland" data-composition-src="compositions/g-intro-5-inland.html" data-start="50.575" data-duration="20.12" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-intro-6" data-composition-id="g-intro-6-pbz-sheet" data-composition-src="compositions/g-intro-6-pbz-sheet.html" data-start="52.615" data-duration="2.98" data-track-index="3" data-width="1920" data-height="1080"></div>
+  <div id="host-g-intro-7" data-composition-id="g-intro-7-lmk-sheet" data-composition-src="compositions/g-intro-7-lmk-sheet.html" data-start="64.278" data-duration="4.38" data-track-index="3" data-width="1920" data-height="1080"></div>
+  <!-- A1 (briefs/a1/_list.md; built on the real wav lengths, so hosts butt). g-a1-7 runs 18.96 s, 0.696 s past A1-S11's start: g-a1-8 goes on track 3 above it. -->
+  <div id="host-g-a1-1" data-composition-id="g-a1-1-wall" data-composition-src="compositions/g-a1-1-wall.html" data-start="71.795" data-duration="17.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-2" data-composition-id="g-a1-2-bearmtn" data-composition-src="compositions/g-a1-2-bearmtn.html" data-start="88.797" data-duration="10.01" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-3" data-composition-id="g-a1-3-jet" data-composition-src="compositions/g-a1-3-jet.html" data-start="98.807" data-duration="12.838" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-4" data-composition-id="g-a1-4-ladder" data-composition-src="compositions/g-a1-4-ladder.html" data-start="111.645" data-duration="44.22" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-5" data-composition-id="g-a1-5-ct" data-composition-src="compositions/g-a1-5-ct.html" data-start="155.869" data-duration="20.799" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-6" data-composition-id="g-a1-6-delaware" data-composition-src="compositions/g-a1-6-delaware.html" data-start="176.668" data-duration="18.65" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-7" data-composition-id="g-a1-7-newlondon" data-composition-src="compositions/g-a1-7-newlondon.html" data-start="195.318" data-duration="18.96" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-8" data-composition-id="g-a1-8-toll" data-composition-src="compositions/g-a1-8-toll.html" data-start="213.582" data-duration="9.509" data-track-index="3" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a1-9" data-composition-id="g-a1-9-split" data-composition-src="compositions/g-a1-9-split.html" data-start="223.091" data-duration="13.389" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A2 (briefs/a2/_list.md). g-a2-2-thermo is NOT on disk yet (waits on the a2-s2 re-transcription): mounted at its slot so the file drops in. -->
+  <div id="host-g-a2-1" data-composition-id="g-a2-1-columbus" data-composition-src="compositions/g-a2-1-columbus.html" data-start="237.18" data-duration="13.7" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-2" data-composition-id="g-a2-2-thermo" data-composition-src="compositions/g-a2-2-thermo.html" data-start="251.18" data-duration="12.54" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-3" data-composition-id="g-a2-3-record" data-composition-src="compositions/g-a2-3-record.html" data-start="263.72" data-duration="17.68" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-4" data-composition-id="g-a2-4-snowbowl" data-composition-src="compositions/g-a2-4-snowbowl.html" data-start="281.7" data-duration="21.24" data-track-index="3" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-5" data-composition-id="g-a2-5-janowicz" data-composition-src="compositions/g-a2-5-janowicz.html" data-start="303.24" data-duration="14.06" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-6" data-composition-id="g-a2-6-pittsburgh" data-composition-src="compositions/g-a2-6-pittsburgh.html" data-start="317.6" data-duration="13.56" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-7" data-composition-id="g-a2-7-band" data-composition-src="compositions/g-a2-7-band.html" data-start="331.46" data-duration="19.32" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-8" data-composition-id="g-a2-8-wv" data-composition-src="compositions/g-a2-8-wv.html" data-start="351.08" data-duration="14.7" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-9" data-composition-id="g-a2-9-south" data-composition-src="compositions/g-a2-9-south.html" data-start="366.08" data-duration="15.74" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-10" data-composition-id="g-a2-10-people" data-composition-src="compositions/g-a2-10-people.html" data-start="382.12" data-duration="12.52" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-11" data-composition-id="g-a2-11-rsi" data-composition-src="compositions/g-a2-11-rsi.html" data-start="394.94" data-duration="21.14" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-12" data-composition-id="g-a2-12-cold" data-composition-src="compositions/g-a2-12-cold.html" data-start="416.38" data-duration="12.36" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- g-a2-13 built 14.50; mounted 13.12 (orchestrator): its built exit fade never plays (comp edit listed) -->
+  <div id="host-g-a2-13" data-composition-id="g-a2-13-river" data-composition-src="compositions/g-a2-13-river.html" data-start="429.04" data-duration="13.12" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a2-14" data-composition-id="g-a2-14-bothsides" data-composition-src="compositions/g-a2-14-bothsides.html" data-start="442.46" data-duration="11.46" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A3 (briefs/a3/_list.md). A3-S7 split: g-a3-7 at +0, g-a3-8 at +9.00 (track 3), g-a3-9 at +14.60 (track 4); each fades in over the previous one's last 0.60 s. -->
+  <div id="host-g-a3-1" data-composition-id="g-a3-1-track" data-composition-src="compositions/g-a3-1-track.html" data-start="486.322" data-duration="16.14" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-2" data-composition-id="g-a3-2-swirl" data-composition-src="compositions/g-a3-2-swirl.html" data-start="502.762" data-duration="16.96" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-3" data-composition-id="g-a3-3-pins" data-composition-src="compositions/g-a3-3-pins.html" data-start="520.022" data-duration="22.14" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-4" data-composition-id="g-a3-4-block" data-composition-src="compositions/g-a3-4-block.html" data-start="542.462" data-duration="19.7" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-5" data-composition-id="g-a3-5-gradient" data-composition-src="compositions/g-a3-5-gradient.html" data-start="562.462" data-duration="15.88" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-6" data-composition-id="g-a3-6-squeeze" data-composition-src="compositions/g-a3-6-squeeze.html" data-start="578.642" data-duration="17.98" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-7" data-composition-id="g-a3-7-stall" data-composition-src="compositions/g-a3-7-stall.html" data-start="596.922" data-duration="9.6" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-8" data-composition-id="g-a3-8-upslope" data-composition-src="compositions/g-a3-8-upslope.html" data-start="605.922" data-duration="6.2" data-track-index="3" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-9" data-composition-id="g-a3-9-exit" data-composition-src="compositions/g-a3-9-exit.html" data-start="611.522" data-duration="4.7" data-track-index="4" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a3-10" data-composition-id="g-a3-10-south" data-composition-src="compositions/g-a3-10-south.html" data-start="616.522" data-duration="6.4" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A4 (briefs/a4/_list.md; built on the real wav lengths, hosts butt). No graphic on A4-S6 (Paul). -->
+  <div id="host-g-a4-1" data-composition-id="g-a4-1-kymap" data-composition-src="compositions/g-a4-1-kymap.html" data-start="623.922" data-duration="45.371" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- g-a4-2: file's script registers window.__timelines["g-intro-2-hookmap"] with the intro's SEG and DUR 28.681 under a 35.178 root (builder copy error, listed) -->
+  <div id="host-g-a4-2" data-composition-id="g-a4-2-southmap" data-composition-src="compositions/g-a4-2-southmap.html" data-start="669.293" data-duration="35.178" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-3" data-composition-id="g-a4-3-toll" data-composition-src="compositions/g-a4-3-toll.html" data-start="712.652" data-duration="9.104" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-4" data-composition-id="g-a4-4-statemap" data-composition-src="compositions/g-a4-4-statemap.html" data-start="721.756" data-duration="37.637" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-5" data-composition-id="g-a4-5-homes" data-composition-src="compositions/g-a4-5-homes.html" data-start="759.393" data-duration="10.493" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a4-6" data-composition-id="g-a4-6-desk" data-composition-src="compositions/g-a4-6-desk.html" data-start="769.886" data-duration="8.647" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <!-- A5 (briefs/a5/_list.md; no g-a5-6 in the brief). g-a5-5 SEG a5s6 and g-a5-8 SEG a5s9 assume 0.30 s less than this page (comp edits listed). -->
+  <div id="host-g-a5-1" data-composition-id="g-a5-1-handchart" data-composition-src="compositions/g-a5-1-handchart.html" data-start="779.233" data-duration="14.0" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-2" data-composition-id="g-a5-2-quote" data-composition-src="compositions/g-a5-2-quote.html" data-start="793.553" data-duration="20.3" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-3" data-composition-id="g-a5-3-startmap" data-composition-src="compositions/g-a5-3-startmap.html" data-start="814.033" data-duration="17.4" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-4" data-composition-id="g-a5-4-princeton" data-composition-src="compositions/g-a5-4-princeton.html" data-start="831.453" data-duration="18.4" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-5" data-composition-id="g-a5-5-testcase" data-composition-src="compositions/g-a5-5-testcase.html" data-start="850.033" data-duration="32.98" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-7" data-composition-id="g-a5-7-phillips" data-composition-src="compositions/g-a5-7-phillips.html" data-start="883.653" data-duration="12.4" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-8" data-composition-id="g-a5-8-splitmap" data-composition-src="compositions/g-a5-8-splitmap.html" data-start="896.273" data-duration="35.18" data-track-index="2" data-width="1920" data-height="1080"></div>
+  <div id="host-g-a5-9" data-composition-id="g-a5-9-title" data-composition-src="compositions/g-a5-9-title.html" data-start="920.873" data-duration="10.88" data-track-index="3" data-width="1920" data-height="1080"></div>
+
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const DUR = 931.753;
+  const tl = gsap.timeline({ paused: true });
+  /* stills get a quick punch on their cut (no slow Ken Burns: DESIGN.md "Footage motion"); the overlay comps carry the motion after */
+  const stills = [
+    ["#kb-h1-paul", 0], ["#kb-a2-snowbowl", 281.7], ["#kb-a2-paul", 454.22], ["#kb-a4-paul", 704.471]
+  ];
+  stills.forEach(([sel, at]) => tl.fromTo(sel, { scale: 1.08 }, { scale: 1, duration: 0.6, ease: "power3.out" }, at));
+  tl.set({}, {}, DUR);
+  window.__timelines["ep-appalachian-1950"] = tl;
+})();
+</script>
+</body>
+</html>
