@@ -25,9 +25,10 @@
   .p10-glass { position:absolute; box-sizing:border-box; background:rgba(10,16,24,.55);
     backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
     border:1px solid rgba(255,255,255,.14); border-radius:28px; }
-  /* legend cover: on from frame 0 so the RSI table (34.7 = A2-S11's reveal) never shows */
-  #p10-plate { left:210px; top:640px; width:690px; height:420px; background:rgba(10,16,24,.92); }
-  #p10-card { left:210px; top:640px; width:690px; height:420px; background:rgba(10,16,24,.92); visibility:hidden; }
+  /* legend cover: on from frame 0 so the RSI table (34.7 = A2-S11's reveal) never shows.
+     Bottom 1026 = 54 px safe margin; the legend box ends at screen y 1015 at full push (image y 910). */
+  #p10-plate { left:210px; top:640px; width:690px; height:386px; background:rgba(10,16,24,.92); }
+  #p10-card { left:210px; top:640px; width:690px; height:386px; background:rgba(10,16,24,.92); visibility:hidden; }
   #p10-eyebrow { position:absolute; left:56px; top:70px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; visibility:hidden; }
   #p10-countline { position:absolute; left:56px; top:112px; white-space:nowrap; }
   #p10-num { font-family:'Courier New',monospace; font-weight:700; font-size:84px; color:#e74c3c; visibility:hidden; }
