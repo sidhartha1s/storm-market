@@ -144,8 +144,8 @@ window.__timelines = window.__timelines || {};
   const NWK = proj(-74.1724, 40.7357), PIT = proj(-79.9959, 40.4406), BUF = proj(-78.8784, 42.8864);
 
   /* segment offsets (comp-local s), 0.40 s gaps assumed; cue = SEG[seg] + words.json time */
-  const SEG = { h1s2: 0.000, h1s3: 7.065, h1s4: 11.230, h1s5: 21.580 };
-  const DUR = SEG.h1s5 + 7.101;                                               /* 28.681 */
+  const SEG = { h1s2: 0.000, h1s3: 8.894, h1s4: 13.059, h1s5: 23.409 };
+  const DUR = SEG.h1s5 + 7.101;                                               /* 30.51 */
 
   /* camera frames [s, top-left x, top-left y] -> centre form [s, cx, cy] */
   const fr = function (s, tx, ty) { return [s, tx + 960 / s, ty + 540 / s]; };
