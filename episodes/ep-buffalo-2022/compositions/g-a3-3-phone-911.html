@@ -109,9 +109,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#ph-call", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 4.76);
   /* "911" @4.94 */
   tl.fromTo("#ph-911", { scale: 0.8, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.4, ease: "back.out(1.6)", transformOrigin: "50% 50%" }, 4.94);
-  /* ring pulses every 1.0 s from 4.94 (two rings, 0.5 s apart); scale 90 -> 170 radius = 1 -> 1.89 */
-  tl.fromTo("#ph-ring1", { scale: 1, opacity: 0.6 }, { scale: 1.89, opacity: 0, duration: 1.0, ease: "power1.out", repeat: 2 }, 4.94);
-  tl.fromTo("#ph-ring2", { scale: 1, opacity: 0.6 }, { scale: 1.89, opacity: 0, duration: 1.0, ease: "power1.out", repeat: 2 }, 5.44);
+  /* ring pulses every 1.0 s from 4.94 (two rings, 0.5 s apart); scale 50 -> 80 radius = 1 -> 1.6 (top edge stays at y 290, below CALLING) */
+  tl.fromTo("#ph-ring1", { scale: 1, opacity: 0.6 }, { scale: 1.6, opacity: 0, duration: 1.0, ease: "power1.out", repeat: 2 }, 4.94);
+  tl.fromTo("#ph-ring2", { scale: 1, opacity: 0.6 }, { scale: 1.6, opacity: 0, duration: 1.0, ease: "power1.out", repeat: 2 }, 5.44);
 
   /* after "911": chip lands 0.4 s after the screen number; source pill in. */
   tl.fromTo("#ph-chip", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 5.34);
