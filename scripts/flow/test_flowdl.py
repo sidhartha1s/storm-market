@@ -66,6 +66,12 @@ try:
         page = browser.contexts[0].pages[0]
         page.wait_for_selector("#dl")
 
+        with page.expect_download() as dl:  # control: with no other client the old path saves the whole clip
+            page.click("#dl")
+        dl.value.save_as(os.path.join(root, "control.mp4"))
+        assert os.path.getsize(os.path.join(root, "control.mp4")) == len(BODY), "old path fails even without a second client"
+        os.remove(os.path.join(default_dir, "clip.mp4")) if os.path.exists(os.path.join(default_dir, "clip.mp4")) else None
+
         other_client(cdp_url)
         with page.expect_download() as dl:  # the old path
             page.click("#dl")
