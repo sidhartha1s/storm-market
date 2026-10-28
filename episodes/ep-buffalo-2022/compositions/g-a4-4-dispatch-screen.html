@@ -1,0 +1,218 @@
+<!--
+  g-a4-4-dispatch-screen · A4-S4 · full-frame dispatch queue ILLUSTRATION, 16.85 s (wav length).
+  Claims: Erie County's dispatch software showed only 25 calls at once (NYU Wagner p.13); 1,100 calls backed up by
+  Sat 24 Dec morning (NYU p.139). Rows carry no text: a schematic queue, tagged ILLUSTRATION.
+  Mechanism: 70 pre-authored rows sit in column #ds-col, row k at top = -k x 29.2 px. Arrival k moves the column to
+  y = k x 29.2 (0.12 s) and fades row k in at slot 0 (viewport y 210). Row k then sits at slot (n - k); 25 rows fill
+  the 730 px viewport exactly (pitch 29.2), row 1 leaves through the bottom edge from arrival 26.
+  Highlight: at 13.72 n = 56 (row 56 arrived 13.62), so slot 8 (index 7) holds row 49.
+  Cues: seconds from A4-S4 start (audio/a4-s4.words.json), spoken time in each comment.
+  Corner x >= 1600, y >= 680 is empty ground (presenter circle).
+-->
+<template>
+<style>
+  #g-a4-4-dispatch-screen-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  .ds-hide { opacity:0; visibility:hidden; }
+  .ds-t { position:absolute; white-space:nowrap; }
+  #ds-panel { position:absolute; left:120px; top:120px; width:1060px; height:840px; box-sizing:border-box;
+    background:#0b1016; border:1px solid #2a3644; border-radius:14px; }
+  #ds-bar { position:absolute; left:120px; top:120px; width:1060px; height:70px; box-sizing:border-box;
+    background:#15202b; border:1px solid #2a3644; border-radius:14px 14px 0 0; }
+  #ds-head { left:160px; top:120px; font-size:26px; line-height:70px; font-weight:700; letter-spacing:8px; color:#93a3b2; }
+  #ds-tag { right:770px; top:120px; font-size:19px; line-height:70px; font-weight:700; letter-spacing:4px; color:#c8d3e0; }
+  #ds-view { position:absolute; left:140px; top:210px; width:1020px; height:730px; overflow:hidden; }
+  #ds-col { position:absolute; left:0; top:0; width:1020px; height:0; }
+  .ds-row { position:absolute; left:0; width:1020px; height:26px; top:calc(var(--k) * -29.2px);
+    opacity:0; visibility:hidden; background:#15202b; }
+  .ds-row:nth-child(even) { background:#0f1820; }
+  .ds-row i { position:absolute; display:block; top:8px; height:10px; background:#2a3644; border-radius:2px; }
+  .ds-row .ds-pip { left:20px; width:10px; background:#e74c3c; border-radius:50%; }
+  .ds-row .ds-b1 { left:50px; width:calc(var(--a) * 1px); }
+  .ds-row .ds-b2 { left:330px; width:calc(var(--b) * 1px); }
+  .ds-row .ds-b3 { left:620px; width:calc(var(--c) * 1px); }
+  .ds-row .ds-hl { left:0; top:0; width:1020px; height:26px; box-sizing:border-box; border:2px solid #d8a13a; border-radius:0;
+    background:transparent; opacity:0; visibility:hidden; }
+  #ds-line { position:absolute; left:1196px; top:210px; width:3px; height:730px; background:#d8a13a; transform-origin:top center; }
+  .ds-tick { position:absolute; left:1184px; width:12px; height:3px; background:#d8a13a; }
+  #ds-tick-t { top:210px; } #ds-tick-b { top:937px; }
+  .ds-glass { position:absolute; box-sizing:border-box; border-radius:28px; border:1px solid rgba(255,255,255,.14);
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); }
+  #ds-chip { left:1240px; top:520px; height:128px; padding:22px 34px; display:flex; align-items:baseline; white-space:nowrap; }
+  #ds-n25 { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; line-height:84px; color:#f2f5f8;
+    display:inline-block; transform-origin:left center; }
+  #ds-cl { margin-left:16px; font-size:30px; line-height:36px; font-weight:700; letter-spacing:1px; color:#dfe7ee; }
+  #ds-card { left:1240px; top:150px; width:480px; height:210px; }
+  #ds-count { left:1280px; top:180px; font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:84px; color:#e74c3c; }
+  #ds-clab { left:1280px; top:311px; font-size:20px; line-height:24px; font-weight:700; letter-spacing:6px; color:#c8d3e0; }
+  #ds-pill { left:110px; bottom:54px; padding:5px 12px; border-radius:14px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-a4-4-dispatch-screen-root" data-composition-id="g-a4-4-dispatch-screen" data-width="1920" data-height="1080">
+  <div id="ds-panel"></div>
+  <div id="ds-bar"></div>
+  <div id="ds-head" class="ds-t">ERIE COUNTY DISPATCH QUEUE</div>
+  <div id="ds-tag" class="ds-t">ILLUSTRATION</div>
+
+  <div id="ds-view">
+    <div id="ds-col">
+      <div class="ds-row" id="ds-r1" style="--k:1;--a:240;--b:216;--c:168"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r2" style="--k:2;--a:216;--b:240;--c:240"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r3" style="--k:3;--a:192;--b:120;--c:144"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r4" style="--k:4;--a:168;--b:144;--c:216"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r5" style="--k:5;--a:144;--b:168;--c:120"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r6" style="--k:6;--a:120;--b:192;--c:168"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r7" style="--k:7;--a:240;--b:216;--c:240"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r8" style="--k:8;--a:216;--b:240;--c:144"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r9" style="--k:9;--a:192;--b:120;--c:216"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r10" style="--k:10;--a:168;--b:144;--c:120"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r11" style="--k:11;--a:144;--b:168;--c:168"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r12" style="--k:12;--a:120;--b:192;--c:240"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r13" style="--k:13;--a:240;--b:216;--c:144"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r14" style="--k:14;--a:216;--b:240;--c:216"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r15" style="--k:15;--a:192;--b:120;--c:120"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r16" style="--k:16;--a:168;--b:144;--c:168"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r17" style="--k:17;--a:144;--b:168;--c:240"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r18" style="--k:18;--a:120;--b:192;--c:144"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r19" style="--k:19;--a:240;--b:216;--c:216"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r20" style="--k:20;--a:216;--b:240;--c:120"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r21" style="--k:21;--a:192;--b:120;--c:168"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r22" style="--k:22;--a:168;--b:144;--c:240"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r23" style="--k:23;--a:144;--b:168;--c:144"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r24" style="--k:24;--a:120;--b:192;--c:216"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r25" style="--k:25;--a:240;--b:216;--c:120"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r26" style="--k:26;--a:216;--b:240;--c:168"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r27" style="--k:27;--a:192;--b:120;--c:240"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r28" style="--k:28;--a:168;--b:144;--c:144"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r29" style="--k:29;--a:144;--b:168;--c:216"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r30" style="--k:30;--a:120;--b:192;--c:120"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r31" style="--k:31;--a:240;--b:216;--c:168"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r32" style="--k:32;--a:216;--b:240;--c:240"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r33" style="--k:33;--a:192;--b:120;--c:144"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r34" style="--k:34;--a:168;--b:144;--c:216"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r35" style="--k:35;--a:144;--b:168;--c:120"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r36" style="--k:36;--a:120;--b:192;--c:168"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r37" style="--k:37;--a:240;--b:216;--c:240"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r38" style="--k:38;--a:216;--b:240;--c:144"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r39" style="--k:39;--a:192;--b:120;--c:216"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r40" style="--k:40;--a:168;--b:144;--c:120"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r41" style="--k:41;--a:144;--b:168;--c:168"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r42" style="--k:42;--a:120;--b:192;--c:240"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r43" style="--k:43;--a:240;--b:216;--c:144"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r44" style="--k:44;--a:216;--b:240;--c:216"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r45" style="--k:45;--a:192;--b:120;--c:120"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r46" style="--k:46;--a:168;--b:144;--c:168"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r47" style="--k:47;--a:144;--b:168;--c:240"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r48" style="--k:48;--a:120;--b:192;--c:144"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r49" style="--k:49;--a:240;--b:216;--c:216"><i class="ds-pip" id="ds-hp"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i><i class="ds-hl" id="ds-hl"></i></div>
+      <div class="ds-row" id="ds-r50" style="--k:50;--a:216;--b:240;--c:120"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r51" style="--k:51;--a:192;--b:120;--c:168"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r52" style="--k:52;--a:168;--b:144;--c:240"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r53" style="--k:53;--a:144;--b:168;--c:144"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r54" style="--k:54;--a:120;--b:192;--c:216"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r55" style="--k:55;--a:240;--b:216;--c:120"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r56" style="--k:56;--a:216;--b:240;--c:168"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r57" style="--k:57;--a:192;--b:120;--c:240"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r58" style="--k:58;--a:168;--b:144;--c:144"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r59" style="--k:59;--a:144;--b:168;--c:216"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r60" style="--k:60;--a:120;--b:192;--c:120"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r61" style="--k:61;--a:240;--b:216;--c:168"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r62" style="--k:62;--a:216;--b:240;--c:240"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r63" style="--k:63;--a:192;--b:120;--c:144"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r64" style="--k:64;--a:168;--b:144;--c:216"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r65" style="--k:65;--a:144;--b:168;--c:120"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r66" style="--k:66;--a:120;--b:192;--c:168"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r67" style="--k:67;--a:240;--b:216;--c:240"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r68" style="--k:68;--a:216;--b:240;--c:144"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r69" style="--k:69;--a:192;--b:120;--c:216"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+      <div class="ds-row" id="ds-r70" style="--k:70;--a:168;--b:144;--c:120"><i class="ds-pip"></i><i class="ds-b1"></i><i class="ds-b2"></i><i class="ds-b3"></i></div>
+    </div>
+  </div>
+
+  <div id="ds-tick-t" class="ds-tick ds-hide"></div>
+  <div id="ds-line" class="ds-hide"></div>
+  <div id="ds-tick-b" class="ds-tick ds-hide"></div>
+
+  <div id="ds-chip" class="ds-glass ds-hide"><span id="ds-n25">25</span><span id="ds-cl">CALLS AT ONCE</span></div>
+
+  <div id="ds-card" class="ds-glass ds-hide"></div>
+  <div id="ds-count" class="ds-t ds-hide">1</div>
+  <div id="ds-clab" class="ds-t ds-hide">CALLS BACKED UP</div>
+
+  <div id="ds-pill" class="ds-glass ds-hide">NYU Wagner review for the City of Buffalo, via Firehouse, 5 Jun 2023</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+
+  // column and card parts start at their resting transform
+  tl.set("#ds-col", { y: 0 }, 0);
+
+  // arrival k: column steps down one pitch (29.2 px) and row k fades in at the top slot
+  function A(k, t) {
+    tl.fromTo("#ds-r" + k, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.12, ease: "power1.out" }, t);
+    tl.to("#ds-col", { y: +(k * 29.2).toFixed(1), duration: 0.12, ease: "power2.out" }, t);
+  }
+
+  /* "A review" @0.00: ground, panel, header, tag already on. Source pill in */
+  tl.fromTo("#ds-pill", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.1);
+
+  /* "found" @1.92 to "25" @5.30: rows 1 to 25, 0.1408 s apart */
+  A(1, 1.92); A(2, 2.061); A(3, 2.202); A(4, 2.342); A(5, 2.483);
+  A(6, 2.624); A(7, 2.765); A(8, 2.906); A(9, 3.046); A(10, 3.187);
+  A(11, 3.328); A(12, 3.469); A(13, 3.61); A(14, 3.75); A(15, 3.891);
+  A(16, 4.032); A(17, 4.173); A(18, 4.314); A(19, 4.454); A(20, 4.595);
+  A(21, 4.736); A(22, 4.877); A(23, 5.018); A(24, 5.158); A(25, 5.3);
+
+  /* "dispatch" @3.32: header brightens, back by 4.2 */
+  tl.to("#ds-head", { color: "#f2f5f8", duration: 0.3 }, 3.32);
+  tl.to("#ds-head", { color: "#93a3b2", duration: 0.3 }, 3.9);
+
+  /* "25" @5.30: bracket draws over exactly the 25 rows, chip lands */
+  tl.fromTo("#ds-line", { autoAlpha: 0, scaleY: 0 }, { autoAlpha: 1, scaleY: 1, duration: 0.4, ease: "power2.out" }, 5.3);
+  tl.fromTo("#ds-tick-t", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 }, 5.3);
+  tl.fromTo("#ds-tick-b", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 }, 5.5);
+  tl.fromTo("#ds-chip", { x: 60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 5.3);
+  tl.fromTo("#ds-n25", { scale: 1.3 }, { scale: 1, duration: 0.4, ease: "power4.out" }, 5.3);
+
+  /* "once." @6.42 on: rows 26 to 70 every 0.24 s, overflow leaves through the bottom edge */
+  A(26, 6.42); A(27, 6.66); A(28, 6.9); A(29, 7.14); A(30, 7.38);
+  A(31, 7.62); A(32, 7.86); A(33, 8.1); A(34, 8.34); A(35, 8.58);
+  A(36, 8.82); A(37, 9.06); A(38, 9.3); A(39, 9.54); A(40, 9.78);
+  A(41, 10.02); A(42, 10.26); A(43, 10.5); A(44, 10.74); A(45, 10.98);
+  A(46, 11.22); A(47, 11.46); A(48, 11.7); A(49, 11.94); A(50, 12.18);
+  A(51, 12.42); A(52, 12.66); A(53, 12.9); A(54, 13.14); A(55, 13.38);
+  A(56, 13.62); A(57, 13.86); A(58, 14.1); A(59, 14.34); A(60, 14.58);
+  A(61, 14.82); A(62, 15.06); A(63, 15.3); A(64, 15.54); A(65, 15.78);
+  A(66, 16.02); A(67, 16.26); A(68, 16.5); A(69, 16.74); A(70, 16.98);
+
+  /* before "By Saturday" @7.34: chip and bracket out */
+  tl.to("#ds-chip", { x: 80, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 7.0);
+  tl.to(["#ds-line", "#ds-tick-t", "#ds-tick-b"], { x: 80, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 7.0);
+
+  /* "backlog" @9.70: counter card in, value counts 1 -> 1,100 and lands 10.95 ("1,100" @10.60 to 10.86) */
+  tl.fromTo("#ds-card", { y: -20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 9.7);
+  tl.fromTo("#ds-count", { y: -20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 9.7);
+  tl.fromTo("#ds-clab", { y: -20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 9.7);
+  const cnt = { v: 1 };
+  tl.to(cnt, { v: 1100, duration: 1.25, ease: "power4.out", onUpdate: function () {
+      const el = document.getElementById("ds-count");
+      if (el) el.textContent = Math.round(cnt.v).toLocaleString("en-US");
+  } }, 9.7);
+
+  /* "emergency calls" @11.20: label brightens */
+  tl.to("#ds-clab", { color: "#f2f5f8", duration: 0.3 }, 11.2);
+
+  /* "somebody" @13.72: row 49 (slot 8) outlined, pip turns gold and pulses to the end */
+  tl.to("#ds-hl", { autoAlpha: 1, duration: 0.3 }, 13.72);
+  tl.to("#ds-hp", { backgroundColor: "#e8c56a", duration: 0.3 }, 13.72);
+  tl.fromTo("#ds-hp", { scale: 1 }, { scale: 1.6, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 5 }, 13.72);
+
+  /* after "then." @16.40: counter card and pill out, panel stays to the cut */
+  tl.to(["#ds-card", "#ds-count", "#ds-clab"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 16.25);
+  tl.to("#ds-pill", { y: 16, autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 16.25);
+
+  window.__timelines["g-a4-4-dispatch-screen"] = tl;
+})();
+</script>
+</template>
