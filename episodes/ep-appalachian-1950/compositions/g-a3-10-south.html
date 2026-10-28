@@ -22,9 +22,13 @@
     Pins are screen-size groups translated and scaled (s / 0.03) by camAt. Snow fill, edge line, leader and chip are
     fixed HUD at frame T (they only appear after the camera has landed); the fill is clipped to land by a <use> of
     #a3c-us under the frame-T matrix(0.0125 0 0 0.0125 55.935 -211.49).
-  FRAME 0 = g-a3-9-exit's last frame, built from its brief (g-a3-9 was not on disk): pins + labels, red track to the
-    Lake Erie loop with connectors, dotted exit north, g-a3-9's source line. The track is extended south off-frame to
-    the Carolinas point (967,565 in T) so it does not end mid-frame after the pull-out.
+  FRAME 0 = g-a3-9-exit's last frame, geometry copied from compositions/g-a3-9-exit.html: pins + labels (offsets 42 px),
+    track (up x 1080, curves to (700,520), loop centre (621,265) r 30) with glow at 0.6, connectors, loop arrowhead,
+    dotted exit (637.5,239.9) -> (1125,-500) with dots and Newark pulse in phase, EXITS chip (left 820, top 56), its source
+    line. The track is extended south off-frame to the Carolinas point (967,565 in T) so it does not end mid-frame after
+    the pull-out. The EXITS chip holds to 0.50 (orchestrator, for a 1.5 s read across the cut), out by 0.90; it is fixed
+    HUD, so for 0.26-0.90 it is on screen while the camera starts (brief §4.4 "no label while it moves": orchestrator's
+    order wins, reported).
 -->
 <template>
 <style>
