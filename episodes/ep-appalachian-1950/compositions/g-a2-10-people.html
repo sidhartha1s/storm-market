@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-10-people (A2-S10): NCEI Regional Snowfall Index map, 22-30 Nov 1950, full frame.
+  The 18 IN+ area (the PNG's own red 18-24 and dark red >24 legend colours) lights inside the
+  NCEI Ohio Valley states only; counter "6.1 MILLION" with OHIO VALLEY; dashed ring + "30 IN+ /
+  1.3 MILLION / NORTHEAST" on the PA heavy-snow area.
+  Lit area: no traced polygon. An SVG colour-matrix filter keys the PNG's own pixels
+  (alpha = 4(R-G-B) - 0.5: red 255,0,0 -> 3.5, dark red 115,0,0 -> 1.3, blues/greys/white/black < 0),
+  inside a clip polygon that follows the printed state lines (image px):
+    PA-OH line x 863 (Lake Erie shore to the Mason-Dixon line), PA south line y 549 (x 863 to 965),
+    WV-VA line approximated (965,549) -> (905,640) -> (868,700) (east of it the map is blue, never lit).
+  Placement: image 1210 x 935 at scale 1080/935 = 1.1551, left 201, top 0 (screen = 201 + 1.1551 ix, 1.1551 iy).
+-->
+<template>
+<style>
+  #p10-root { position:absolute; inset:0; overflow:hidden; font-family:Arial,sans-serif; color:#f2f5f8; }
+  #p10-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  #p10-push { position:absolute; inset:0; }
+  #p10-svg { position:absolute; left:0; top:0; }
+  #p10-dim, #p10-fill, #p10-outline, #p10-ringg { opacity:0; }
+  .p10-glass { position:absolute; box-sizing:border-box; background:rgba(10,16,24,.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); border-radius:28px; }
+  /* legend cover: on from frame 0 so the RSI table (34.7 = A2-S11's reveal) never shows */
+  #p10-plate { left:210px; top:640px; width:620px; height:420px; background:rgba(10,16,24,.92); }
+  #p10-card { left:210px; top:640px; width:620px; height:420px; background:rgba(10,16,24,.92); visibility:hidden; }
+  #p10-eyebrow { position:absolute; left:56px; top:70px; font-weight:700; font-size:22px; letter-spacing:6px; color:#93a3b2; visibility:hidden; }
+  #p10-countline { position:absolute; left:56px; top:112px; white-space:nowrap; }
+  #p10-num { font-family:'Courier New',monospace; font-weight:700; font-size:84px; color:#e74c3c; visibility:hidden; }
+  #p10-mil { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; color:#f2f5f8; display:inline-block; visibility:hidden; }
+  #p10-lab { position:absolute; left:56px; top:250px; font-weight:700; font-size:20px; letter-spacing:6px; color:#c8d3e0; white-space:nowrap; visibility:hidden; }
+  #p10-pill { left:1045px; top:658px; padding:10px 20px; border-radius:22px; white-space:nowrap; visibility:hidden; }
+  #p10-pilltx { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:40px; line-height:44px; color:#f2f5f8; }
+  #p10-nelab { left:1320px; top:400px; width:330px; padding:16px 20px; visibility:hidden; }
+  .p10-nel { display:block; white-space:nowrap; visibility:hidden; }
+  #p10-ne30, #p10-nemil { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:40px; line-height:46px; }
+  #p10-ne30 { color:#f2f5f8; }
+  #p10-nemil { color:#7fb2e5; }
+  #p10-nename { font-weight:700; font-size:22px; line-height:30px; letter-spacing:6px; color:#93a3b2; }
+  #p10-src { right:96px; top:52px; padding:6px 16px; border-radius:16px; text-align:right; white-space:nowrap;
+    font-weight:700; font-size:19px; letter-spacing:2px; color:#c8d3e0; }
+</style>
+<div id="p10-root" data-composition-id="g-a2-10-people" data-width="1920" data-height="1080">
+  <div id="p10-bg"></div>
+  <div id="p10-push">
+    <svg id="p10-svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+      <defs>
+        <!-- NCEI Ohio Valley states only (OH, WV, KY, IN shown here); PA, NY, MD, VA, MI outside -->
+        <clipPath id="p10-ovclip" clipPathUnits="userSpaceOnUse">
+          <polygon points="560,400 863,400 863,549 965,549 905,640 868,700 800,760 560,760"/>
+        </clipPath>
+        <filter id="p10-fDim" color-interpolation-filters="sRGB">
+          <feColorMatrix type="saturate" values="0.35"/>
+          <feComponentTransfer>
+            <feFuncR type="linear" slope="0.8"/><feFuncG type="linear" slope="0.8"/><feFuncB type="linear" slope="0.8"/>
+          </feComponentTransfer>
+        </filter>
+        <!-- key: white where the pixel is a red/dark-red legend colour; close 1.5 px so printed state lines inside the area fill -->
+        <filter id="p10-fFill" filterUnits="userSpaceOnUse" x="0" y="0" width="1210" height="935" color-interpolation-filters="sRGB">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  4 -4 -4 0 -0.5" result="m"/>
+          <feMorphology in="m" operator="dilate" radius="1.5" result="d"/>
+          <feMorphology in="d" operator="erode" radius="1.5"/>
+        </filter>
+        <!-- outline: dilate the closed key by 2.6 image px (= 3 screen px) and cut the key out -->
+        <filter id="p10-fOut" filterUnits="userSpaceOnUse" x="0" y="0" width="1210" height="935" color-interpolation-filters="sRGB">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  4 -4 -4 0 -0.5" result="m"/>
+          <feMorphology in="m" operator="dilate" radius="1.5" result="d"/>
+          <feMorphology in="d" operator="erode" radius="1.5" result="c"/>
+          <feMorphology id="p10-outR" in="c" operator="dilate" radius="2.6" result="o"/>
+          <feComposite in="o" in2="c" operator="out" result="r"/>
+          <feColorMatrix in="r" type="matrix" values="0 0 0 0 0.949  0 0 0 0 0.961  0 0 0 0 0.973  0 0 0 1 0"/>
+        </filter>
+        <mask id="p10-ringM" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+          <ellipse id="p10-ringmask" cx="1240" cy="548" rx="56" ry="98" fill="none" stroke="#fff" stroke-width="10"/>
+        </mask>
+      </defs>
+      <g transform="translate(201 0) scale(1.1551)">
+        <image id="p10-base" href="media/a2/A2-S9_c2_ncei-snowfall-index-nov22-30-1950.png" x="0" y="0" width="1210" height="935"/>
+        <image id="p10-dim" href="media/a2/A2-S9_c2_ncei-snowfall-index-nov22-30-1950.png" x="0" y="0" width="1210" height="935" filter="url(#p10-fDim)"/>
+        <g id="p10-fill" filter="url(#p10-fFill)">
+          <image href="media/a2/A2-S9_c2_ncei-snowfall-index-nov22-30-1950.png" x="0" y="0" width="1210" height="935" clip-path="url(#p10-ovclip)"/>
+        </g>
+        <g id="p10-outline" filter="url(#p10-fOut)">
+          <image href="media/a2/A2-S9_c2_ncei-snowfall-index-nov22-30-1950.png" x="0" y="0" width="1210" height="935" clip-path="url(#p10-ovclip)"/>
+        </g>
+      </g>
+      <!-- Northeast ring: PA dark-red area, image x 863-935 / y 400-549 = screen x 1198-1281 / y 462-634, plus 12 px clearance -->
+      <g id="p10-ringg">
+        <ellipse id="p10-ring" cx="1240" cy="548" rx="56" ry="98" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="10 6" mask="url(#p10-ringM)"/>
+      </g>
+    </svg>
+  </div>
+  <div class="p10-glass" id="p10-src">Source: NOAA NCEI, 2000 census population</div>
+  <div class="p10-glass" id="p10-plate"></div>
+  <div class="p10-glass" id="p10-card">
+    <div id="p10-eyebrow">OHIO VALLEY</div>
+    <div id="p10-countline"><span id="p10-num">0.1</span><span id="p10-mil">&nbsp;MILLION</span></div>
+    <div id="p10-lab">PEOPLE UNDER 18 IN OR MORE</div>
+  </div>
+  <div class="p10-glass" id="p10-pill"><span id="p10-pilltx">18 IN+</span></div>
+  <div class="p10-glass" id="p10-nelab">
+    <span class="p10-nel" id="p10-ne30">30 IN+</span>
+    <span class="p10-nel" id="p10-nemil">1.3 MILLION</span>
+    <span class="p10-nel" id="p10-nename">NORTHEAST</span>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#p10-";
+  tl.set([P+"card",P+"eyebrow",P+"num",P+"mil",P+"lab",P+"pill",P+"nelab",P+"ne30",P+"nemil",P+"nename",P+"ringg"], {autoAlpha:0}, 0);
+  tl.set([P+"dim",P+"fill",P+"outline"], {opacity:0}, 0);
+  tl.set(P+"push", {scale:1, transformOrigin:"900px 560px"}, 0);
+  tl.set([P+"card",P+"nelab"], {x:0, y:0}, 0);
+  tl.set(P+"outR", {attr:{radius:2.6}}, 0);
+  tl.set(P+"ne30", {color:"#f2f5f8"}, 0);
+  const ringEl = document.querySelector(P+"ringmask");
+  const ringLen = Math.ceil(ringEl.getTotalLength()) + 1;
+  tl.set(ringEl, {strokeDasharray:ringLen, strokeDashoffset:ringLen}, 0);
+
+  /* NOW @0.00: map on full colour, source on; slow push across the whole window */
+  tl.to(P+"push", {scale:1.02, duration:12.52, ease:"none"}, 0);
+
+  /* MAP @1.06: base desaturates, Ohio Valley 18 IN+ lights */
+  tl.to(P+"dim", {opacity:1, duration:0.6, ease:"power1.inOut"}, 1.06);
+  tl.to(P+"fill", {opacity:0.55, duration:0.8, ease:"power2.out"}, 1.06);
+  tl.to(P+"outline", {opacity:1, duration:0.8, ease:"power2.out"}, 1.06);
+
+  /* MORE @1.98: counter card slides in, eyebrow on */
+  tl.fromTo(P+"card", {autoAlpha:0, y:40}, {autoAlpha:1, y:0, duration:0.6, ease:"power3.out"}, 1.98);
+  tl.fromTo(P+"eyebrow", {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 1.98);
+
+  /* 6.1 @2.34: counter opens on 0.1, fast then slow into 6.1, lands 3.64 */
+  tl.fromTo(P+"num", {autoAlpha:0}, {autoAlpha:1, duration:0.12}, 2.34);
+  const cnt = {v:0.1};
+  tl.to(cnt, {v:6.1, duration:1.3, ease:"power4.out", onUpdate:function() {
+    const el = document.getElementById("p10-num"); if (el) el.textContent = cnt.v.toFixed(1);
+  }}, 2.34);
+  /* MILLION @3.30 */
+  tl.fromTo(P+"mil", {autoAlpha:0, x:-18}, {autoAlpha:1, x:0, duration:0.35, ease:"power3.out"}, 3.30);
+
+  /* OHIO @4.16: outline pulses 3 -> 5 px (2.6 -> 4.33 image px) */
+  tl.to(P+"outR", {attr:{radius:4.33}, duration:0.4, ease:"sine.inOut", yoyo:true, repeat:1}, 4.16);
+
+  /* 18 @5.82: pill on the lit area, card label */
+  tl.fromTo(P+"pill", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 5.82);
+  tl.fromTo(P+"lab", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 5.82);
+
+  /* NORTHEAST @7.72: ring draws */
+  tl.to(P+"ringg", {autoAlpha:1, duration:0.1}, 7.72);
+  tl.to(ringEl, {strokeDashoffset:0, duration:0.7, ease:"power2.inOut"}, 7.72);
+
+  /* 1.3 @9.06: Northeast label lines in, 0.15 s apart */
+  tl.to(P+"nelab", {autoAlpha:1, duration:0.25}, 9.06);
+  tl.fromTo(P+"ne30", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 9.06);
+  tl.fromTo(P+"nemil", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 9.21);
+  tl.fromTo(P+"nename", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.35, ease:"power3.out"}, 9.36);
+
+  /* 30 @10.88: "30 IN+" flashes to cold blue and back */
+  tl.to(P+"ne30", {color:"#7fb2e5", duration:0.2, ease:"sine.inOut", yoyo:true, repeat:1}, 10.88);
+
+  /* MORE @11.86: outline breathes to the cut */
+  tl.to(P+"outline", {opacity:0.8, duration:0.33, ease:"sine.inOut", yoyo:true, repeat:1}, 11.86);
+
+  /* EXIT @11.92: cards slide out; map, plate, pill and source hold for the cut to g-a2-11 */
+  tl.to(P+"card", {x:-980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 11.92);
+  tl.to(P+"nelab", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 11.92);
+
+  window.__timelines["g-a2-10-people"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
