@@ -24,7 +24,7 @@ W9  Areas of blowing
 W10   snow could significantly reduce visibility with whiteouts and
 W11   localized blizzard conditions possible.
 ```
-W4 to W7 are the end of the "* WHAT..." bullet (the product line before W4 ends "very"; start the excerpt at W4 as shown, it is a whole product line). W9 is the tail of the IMPACTS line "...Areas of blowing" (show it as "...Areas of blowing" right-aligned is NOT allowed; show the full product line instead: `  could be very difficult to impossible at times. Areas of blowing`). So W9 on screen = `  could be very difficult to impossible at times. Areas of blowing`. W8 is an empty row.
+Correction to W9: on screen W9 is the WHOLE product line `  could be very difficult to impossible at times. Areas of blowing` (never a partial line). W4 to W7 are whole product lines from the end of the "* WHAT..." bullet. W3 and W8 are gap rows (no text).
 
 ## 2. DATUM, SCALE, ORIENTATION (the family's shared numbers)
 Time axis: Tue 20 Dec 00:00 at x 160 to Fri 23 Dec 12:00 at x 1540 = 84 h, 16.4286 px per hour. Computed by script (state it in the receipt):
