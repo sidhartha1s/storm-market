@@ -124,7 +124,7 @@ window.__timelines = window.__timelines || {};
 
   /* --- start states --- */
   tl.set([P+"src", P+"c0", P+"c1", P+"glow"], {autoAlpha: 0}, 0);
-  tl.set(P+"tick", {svgOrigin: "560 702"}, 0);
+  tl.set(P+"tick", {svgOrigin: "560 702", smoothOrigin: false}, 0);
   const wins = [0, 1, 2, 3, 4, 5].map(function(k) { return q("w" + k); });
   tl.set(wins, {opacity: 0.6}, 0);
 
