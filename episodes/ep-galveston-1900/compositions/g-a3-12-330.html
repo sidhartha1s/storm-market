@@ -49,8 +49,8 @@ window.__timelines = window.__timelines || {};
 (function() {
   const tl = gsap.timeline({ paused: true });
   const P = "#g-a3-12-330-";
-  /* TIMING: audio/a3-s11.words.json (stand-in segment 9.56 s; retime to ins-paul-4 once generated). Host starts at the segment start.
-     3:30 @0.14 (".30" @0.38) ; Isaac @2.58 ; line @3.68 ; Washington @4.22 ; wires @6.10 ; down @6.38 ; Nobody @7.28 */
+  /* TIMING: ins-paul-4-v2.mp4 whisper words (clip 9.944 s, host starts at clip start).
+     3:30 @0.22 (".30" @0.44) ; Isaac @2.50 ; line @3.54 ; Washington @4.02 ; wires @5.88 ; down @6.06 ; Nobody @7.10 */
   tl.set(P+"src", {autoAlpha:0}, 0);
   tl.set(P+"pfbig", {autoAlpha:0, scale:1.35}, 0);
   tl.set(P+"pfsub", {autoAlpha:0, y:16}, 0);
@@ -79,8 +79,8 @@ window.__timelines = window.__timelines || {};
   /* Nobody @7.28: panel and source line out by 7.88; Paul alone until the cut */
   tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 7.28);
   tl.to(P+"src", {autoAlpha:0, duration:0.6, ease:"power2.in"}, 7.28);
-  /* keep the timeline to the segment end (9.56); nothing is on screen from 7.88 */
-  tl.to(P+"root", {autoAlpha:1, duration:0.06}, 9.5);
+  /* keep the timeline to the host end (9.68, mount in index.html); nothing is on screen from 7.88 */
+  tl.to(P+"root", {autoAlpha:1, duration:0.06}, 9.62);
   window.__timelines["g-a3-12-330"] = tl;
 })();
 </script>
