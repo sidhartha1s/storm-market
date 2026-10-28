@@ -223,9 +223,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo($("link"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.36, ease: "power3.out" }, 3.84);
   tl.fromTo($("src1"), { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out" }, 3.84);
 
-  /* "38" @4.22: R1 lit, RAIN -> 38°F · RAIN */
+  /* "38" @4.22: R1 lit, RAIN -> 38°F · RAIN. RAIN is gone by 4.22 so the two never show at once (overlap_check) */
   tl.to($("r1"), { opacity: 1, duration: 0.3, ease: "power2.out" }, 4.22);
-  tl.to($("r1-w"), { autoAlpha: 0, duration: 0.2, ease: "power1.in" }, 4.22);
+  tl.to($("r1-w"), { autoAlpha: 0, duration: 0.15, ease: "power1.in" }, 4.07);
   tl.fromTo($("r1-w2"), { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 4.22);
 
   /* "8" @6.00 (".39" @6.24): R1 back to 0.45, R3 lit, red rule, time cell pulse */
