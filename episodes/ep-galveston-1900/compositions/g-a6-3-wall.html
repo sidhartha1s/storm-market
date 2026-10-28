@@ -1,0 +1,192 @@
+<template>
+<style>
+  #g-a6-3-wall-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a6-3-wall-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* start-hidden SVG parts (also hidden by tl.set at 0) */
+  #g-a6-3-wall-brA, #g-a6-3-wall-brB, #g-a6-3-wall-line87, #g-a6-3-wall-dimbase, #g-a6-3-wall-dimtop,
+  #g-a6-3-wall-gh1, #g-a6-3-wall-gh2 { visibility:hidden; opacity:0; }
+
+  /* source line: top-left glass, small radius */
+  #g-a6-3-wall-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; line-height:24px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* HUD labels: fixed layer, never ride the plate push */
+  .ga63-lab { position:absolute; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; }
+  #g-a6-3-wall-ldatum { left:120px; top:912px; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:2px; opacity:0.6; }
+  #g-a6-3-wall-lbase { left:1048px; top:990px; font-size:24px; line-height:28px; color:#c8d3e0; opacity:0; visibility:hidden; }
+  #g-a6-3-wall-ltop { left:1246px; top:236px; font-size:24px; line-height:28px; color:#c8d3e0; opacity:0; visibility:hidden; }
+  /* two lines, right-aligned: one 26 px line would run left across bracket A (x 1380) and the ghost (x 1400) */
+  #g-a6-3-wall-l87 { right:120px; bottom:508px; text-align:right; font-size:26px; line-height:30px; color:#d8a13a; letter-spacing:1px; opacity:0; visibility:hidden; }
+
+  /* chip: glass card, radius 28 */
+  #g-a6-3-wall-chip { position:absolute; left:1420px; top:240px; box-sizing:border-box; padding:22px 48px; border-radius:28px;
+    white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10);
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:62px; color:#f2f5f8; }
+</style>
+<div id="g-a6-3-wall-root" data-composition-id="g-a6-3-wall" data-width="1920" data-height="1080">
+  <svg id="g-a6-3-wall-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g-a6-3-wall-wgrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0b1016"/><stop offset="1" stop-color="#04070c"/>
+      </linearGradient>
+      <!-- sea only seaward of the toe (x 760) -->
+      <clipPath id="g-a6-3-wall-csea"><rect x="96" y="880" width="664" height="200"/></clipPath>
+      <!-- draw-up clips: bottom pinned, top tweened -->
+      <clipPath id="g-a6-3-wall-cA"><rect id="g-a6-3-wall-cAr" x="1355" y="902" width="50" height="0"/></clipPath>
+      <clipPath id="g-a6-3-wall-cB"><rect id="g-a6-3-wall-cBr" x="1735" y="902" width="50" height="0"/></clipPath>
+      <clipPath id="g-a6-3-wall-cG1"><rect id="g-a6-3-wall-cG1r" x="1385" y="902" width="30" height="0"/></clipPath>
+      <clipPath id="g-a6-3-wall-cG2"><rect id="g-a6-3-wall-cG2r" x="1385" y="588.3" width="30" height="0"/></clipPath>
+      <!-- 1900 line draws right to left from x 1824 -->
+      <clipPath id="g-a6-3-wall-c87"><rect id="g-a6-3-wall-c87r" x="1826" y="570" width="0" height="34"/></clipPath>
+      <marker id="g-a6-3-wall-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 Z" fill="#c8d3e0"/>
+      </marker>
+    </defs>
+
+    <!-- plate: everything drawn to scale, pushed 1.00 -> 1.03 about (1048, 600) -->
+    <g id="g-a6-3-wall-cam">
+      <!-- Gulf of Mexico (left, south): calm, amplitude 6 px, wavelength 60 px; phase tween moves the group -->
+      <g clip-path="url(#g-a6-3-wall-csea)">
+        <g id="g-a6-3-wall-wave">
+          <path fill="url(#g-a6-3-wall-wgrad)" d="M-84,900 q15,-12 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 L816,1080 L-84,1080 Z"/>
+          <path fill="none" stroke="#5a768f" stroke-width="3" d="M-84,900 q15,-12 30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0 t30,0"/>
+        </g>
+      </g>
+      <!-- beach: sand wedge (96,930) rising to the toe (760,864) -->
+      <polygon fill="#2a2f36" points="96,930 760,864 760,1080 96,1080"/>
+      <!-- ground under the wall and the city behind it, at 1 ft (y 864) -->
+      <polygon fill="#15202b" points="760,864 1824,864 1824,1080 760,1080"/>
+
+      <!-- datum: mean low water, y 900 -->
+      <line x1="96" y1="900" x2="1824" y2="900" stroke="#93a3b2" stroke-width="2" stroke-dasharray="6 8" opacity="0.55"/>
+
+      <!-- the 1902 wall, 36 px/ft both axes: toe (760,864), base corner (1336,864), top (1336,288)-(1156,288); curved face SCHEMATIC, bows landward -->
+      <path id="g-a6-3-wall-wall" fill="#8d96a0" stroke="#c8d3e0" stroke-width="3" stroke-linejoin="round"
+            d="M760,864 L1336,864 L1336,288 L1156,288 C1120,700 900,860 760,864 Z"/>
+
+      <!-- dimension: base 16 ft at y 960, x 760 to 1336 -->
+      <g id="g-a6-3-wall-dimbase">
+        <line x1="760" y1="944" x2="760" y2="976" stroke="#c8d3e0" stroke-width="2" opacity="0.7"/>
+        <line x1="1336" y1="944" x2="1336" y2="976" stroke="#c8d3e0" stroke-width="2" opacity="0.7"/>
+        <line x1="762" y1="960" x2="1334" y2="960" stroke="#c8d3e0" stroke-width="2"
+              marker-start="url(#g-a6-3-wall-arr)" marker-end="url(#g-a6-3-wall-arr)"/>
+      </g>
+      <!-- dimension: top 5 ft at y 262, x 1156 to 1336 -->
+      <g id="g-a6-3-wall-dimtop">
+        <line x1="1156" y1="248" x2="1156" y2="276" stroke="#c8d3e0" stroke-width="2" opacity="0.7"/>
+        <line x1="1336" y1="248" x2="1336" y2="276" stroke="#c8d3e0" stroke-width="2" opacity="0.7"/>
+        <line x1="1158" y1="262" x2="1334" y2="262" stroke="#c8d3e0" stroke-width="2"
+              marker-start="url(#g-a6-3-wall-arr)" marker-end="url(#g-a6-3-wall-arr)"/>
+      </g>
+
+      <!-- 1900 island line: 8.7 ft = y 586.8, x 1360 to 1824 -->
+      <g id="g-a6-3-wall-line87" clip-path="url(#g-a6-3-wall-c87)">
+        <line x1="1360" y1="586.8" x2="1824" y2="586.8" stroke="#d8a13a" stroke-width="3" stroke-dasharray="14 10"/>
+      </g>
+
+      <!-- bracket B (island, 313.2 px) at x 1760 -->
+      <g id="g-a6-3-wall-brB" clip-path="url(#g-a6-3-wall-cB)">
+        <line x1="1760" y1="900" x2="1760" y2="586.8" stroke="#d8a13a" stroke-width="3"/>
+        <line x1="1745" y1="900" x2="1775" y2="900" stroke="#d8a13a" stroke-width="3"/>
+        <line x1="1745" y1="586.8" x2="1775" y2="586.8" stroke="#d8a13a" stroke-width="3"/>
+      </g>
+
+      <!-- ghost of B, stacked twice beside A at x 1400: 900 -> 586.8 -> 273.6 (14.4 px above the wall top) -->
+      <g id="g-a6-3-wall-gh1" clip-path="url(#g-a6-3-wall-cG1)">
+        <line x1="1400" y1="900" x2="1400" y2="586.8" stroke="#d8a13a" stroke-width="3" stroke-dasharray="14 10"/>
+        <line x1="1390" y1="586.8" x2="1410" y2="586.8" stroke="#d8a13a" stroke-width="3"/>
+      </g>
+      <g id="g-a6-3-wall-gh2" clip-path="url(#g-a6-3-wall-cG2)">
+        <line x1="1400" y1="586.8" x2="1400" y2="273.6" stroke="#d8a13a" stroke-width="3" stroke-dasharray="14 10"/>
+        <line x1="1390" y1="273.6" x2="1410" y2="273.6" stroke="#d8a13a" stroke-width="3"/>
+      </g>
+
+      <!-- bracket A (wall, 612 px) at x 1380: outer group pulses, inner group draws -->
+      <g id="g-a6-3-wall-brA">
+        <g clip-path="url(#g-a6-3-wall-cA)">
+          <line x1="1380" y1="900" x2="1380" y2="288" stroke="#f2f5f8" stroke-width="3"/>
+          <line x1="1365" y1="900" x2="1395" y2="900" stroke="#f2f5f8" stroke-width="3"/>
+          <line x1="1365" y1="288" x2="1395" y2="288" stroke="#f2f5f8" stroke-width="3"/>
+        </g>
+      </g>
+    </g>
+  </svg>
+
+  <!-- HUD text layer -->
+  <div id="g-a6-3-wall-src"><div>American Society of Civil Engineers · Rosenberg Library · National Park Service</div><div>Heights above mean low tide</div></div>
+  <div id="g-a6-3-wall-ldatum" class="ga63-lab">Mean low tide</div>
+  <div id="g-a6-3-wall-lbase" class="ga63-lab">16 ft base</div>
+  <div id="g-a6-3-wall-ltop" class="ga63-lab">5 ft top</div>
+  <div id="g-a6-3-wall-l87" class="ga63-lab"><div>HIGHEST POINT IN 1900</div><div>8.7 FT</div></div>
+  <div id="g-a6-3-wall-chip">17 FT</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  /* host: A6-S2 "It" 9.98 to 16.094 + 0.6 land = 16.694; comp-local = word time - 9.98; duration 6.714 */
+  const D = 6.714;
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a6-3-wall-";
+
+  tl.set([P+"brA", P+"brB", P+"line87", P+"dimbase", P+"dimtop", P+"gh1", P+"gh2",
+          P+"src", P+"lbase", P+"ltop", P+"l87", P+"chip"], {autoAlpha: 0}, 0);
+  tl.set([P+"lbase", P+"ltop"], {xPercent: -50, yPercent: -50}, 0);
+  tl.set(P+"cam", {svgOrigin: "1048 600"}, 0);
+  tl.set(P+"brA", {svgOrigin: "1380 900"}, 0);
+  tl.set(P+"dimbase", {svgOrigin: "1048 960"}, 0);
+  tl.set(P+"dimtop", {svgOrigin: "1246 262"}, 0);
+
+  /* whole-window motion: wave phase (2 wavelengths, ease none) and a linear plate push 1.00 -> 1.03 */
+  tl.to(P+"wave", {x: 120, duration: D, ease: "none"}, 0);
+  tl.to(P+"cam", {scale: 1.03, duration: D, ease: "none"}, 0);
+
+  /* It @9.98 (local 0): finished wall on frame 0; source line in, then drifts */
+  tl.fromTo(P+"src", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out"}, 0);
+  tl.to(P+"src", {y: -4, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 3}, 0.5);
+
+  /* 17 FT @10.34: bracket A draws up 10.34 to 11.20 (y 902 -> 285) */
+  tl.set(P+"brA", {autoAlpha: 1}, 0.36);
+  tl.fromTo(P+"cAr", {attr: {y: 902, height: 0}}, {attr: {y: 285, height: 617}, duration: 0.86, ease: "power2.out"}, 0.36);
+  /* feet @10.94: chip in, then floats */
+  tl.fromTo(P+"chip", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 0.96);
+  tl.to(P+"chip", {y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3}, 1.41);
+
+  /* low @11.62: datum label brightens */
+  tl.to(P+"ldatum", {opacity: 1, duration: 0.4, ease: "power2.out"}, 1.64);
+
+  /* 12.20: dimension lines grow from their centres, labels in, 0.3 s stagger */
+  tl.fromTo(P+"dimbase", {autoAlpha: 0, scaleX: 0}, {autoAlpha: 1, scaleX: 1, duration: 0.45, ease: "power3.out"}, 2.22);
+  tl.fromTo(P+"lbase", {autoAlpha: 0, y: 14}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out"}, 2.32);
+  tl.fromTo(P+"dimtop", {autoAlpha: 0, scaleX: 0}, {autoAlpha: 1, scaleX: 1, duration: 0.45, ease: "power3.out"}, 2.52);
+  tl.fromTo(P+"ltop", {autoAlpha: 0, y: 14}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out"}, 2.62);
+
+  /* TWICE @12.96: bracket A pulses once from its foot */
+  tl.to(P+"brA", {scaleY: 1.04, duration: 0.2, ease: "power2.out"}, 2.98);
+  tl.to(P+"brA", {scaleY: 1, duration: 0.3, ease: "power2.inOut"}, 3.18);
+
+  /* 8.7 @13.92: the 1900 line draws right to left from x 1824 (13.92 to 14.60), bracket B up */
+  tl.set([P+"line87", P+"brB"], {autoAlpha: 1}, 3.94);
+  tl.fromTo(P+"c87r", {attr: {x: 1826, width: 0}}, {attr: {x: 1358, width: 468}, duration: 0.68, ease: "power2.out"}, 3.94);
+  tl.fromTo(P+"cBr", {attr: {y: 902, height: 0}}, {attr: {y: 585, height: 317}, duration: 0.62, ease: "power2.out"}, 4.0);
+  /* ground @14.20: line label in */
+  tl.fromTo(P+"l87", {autoAlpha: 0, y: 14}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out"}, 4.22);
+  tl.to(P+"l87", {y: -4, duration: 1.0, ease: "sine.inOut", yoyo: true, repeat: 1}, 4.62);
+
+  /* DOUBLE @15.26: ghost of B stacks twice beside A (15.26 to 15.90), ending 14.4 px above the wall top */
+  tl.set([P+"gh1", P+"gh2"], {autoAlpha: 1}, 5.28);
+  tl.fromTo(P+"cG1r", {attr: {y: 902, height: 0}}, {attr: {y: 585, height: 317}, duration: 0.3, ease: "power1.in"}, 5.28);
+  tl.fromTo(P+"cG2r", {attr: {y: 588.3, height: 0}}, {attr: {y: 271.5, height: 316.8}, duration: 0.34, ease: "power2.out"}, 5.58);
+
+  /* exit: cut to g-a6-4, root fades to 0 over the last 0.4 s */
+  tl.to(P+"root", {autoAlpha: 0, duration: 0.4, ease: "power1.in"}, 6.314);
+  window.__timelines["g-a6-3-wall"] = tl;
+})();
+</script>
+</template>
