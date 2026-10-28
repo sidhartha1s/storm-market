@@ -147,9 +147,11 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"cam", {svgOrigin: "960 780"}, 0);
 
   /* --- whole-window motion: waves (phase as x, ease none) and a slow camera push 1.00 -> 1.03 about the datum foot --- */
-  tl.to(P+"wgulf", {x: 110, duration: 5.5, ease: "none"}, 0);
-  tl.to(P+"wbay", {x: -74, duration: 5.5, ease: "none"}, 0);
-  tl.to(P+"cam", {scale: 1.03, duration: 5.5, ease: "none"}, 0);
+  /* host window is 6.75 (index.html mount), so the whole-window motion runs to 6.75 */
+  const HOST = 6.75;
+  tl.to(P+"wgulf", {x: 135, duration: HOST, ease: "none"}, 0);
+  tl.to(P+"wbay", {x: -91, duration: HOST, ease: "none"}, 0);
+  tl.to(P+"cam", {scale: 1.037, duration: HOST, ease: "none"}, 0);
 
   /* ISLAND @0.00: finished cross-section on frame 0; source line in, then drifts */
   tl.fromTo(P+"src", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out"}, 0);
