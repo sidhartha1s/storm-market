@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-10-south · A3-S8 · ep-appalachian-1950 · DEEP (Opus) · brief: briefs/a3/g-a3-10-south.md + briefs/a3/_list.md
+  Claim: the cold air from the low's west side ran far past the Ohio River, across Kentucky, toward Georgia, Alabama and
+  the Florida Panhandle, much farther south than the snow reached (NCEI: cold reached FL, AL, GA, NC; JKL: snow in
+  eastern Kentucky). Arrow paths and the snow fill outline are SCHEMATIC.
+
+  BASEMAP: verbatim copy of g-a4-1-kymap #a41-us / #a41-ca / #a41-border (Natural Earth, master-map-us-canada.html),
+    renamed a3c-*. Coast: the same paths drawn first with a 3.2 px #4a5560 stroke (as g-a4-1).
+  PROJECTION (the episode's one system): X = 3841 * (lon + 97.576), Y = -5585 * (lat - 46.6213).
+  CAMERA (screen = (map - top-left) * s), briefs/a3/_list.md:
+    A2-X s 0.03   TL (42191.8, 15852.5): NWK (1431,511) PIT (760,560) BUF (889,150) Lake Erie centre (621,265)
+    T    s 0.0125 TL (-4474.8, 16919.2): PIT (900,220) NWK (1180,200) BUF (954,49) Lake Erie centre (842,97)
+                                         Louisville (623,373) Hazard (746,443) Atlanta (689,687) Pensacola (553,919)
+    A2-X -> T: 0.26 to 2.26, power2.inOut, scale in log space (logZoom, library/inhouse/snippets/helpers.js),
+    centre lerped in map units. No 3D tilt ("tilts south" read as pull-out and pan, per the brief).
+  LAYERS: #a3c-cam holds the basemap in map units and is the only element the camera transforms. Track, connectors,
+    exit line and cold arrows are map-anchored points that camAt(t) projects to screen each frame (constant px widths).
+    Pins are screen-size groups translated and scaled (s / 0.03) by camAt. Snow fill, edge line, leader and chip are
+    fixed HUD at frame T (they only appear after the camera has landed); the fill is clipped to land by a <use> of
+    #a3c-us under the frame-T matrix(0.0125 0 0 0.0125 55.935 -211.49).
+  FRAME 0 = g-a3-9-exit's last frame, built from its brief (g-a3-9 was not on disk): pins + labels, red track to the
+    Lake Erie loop with connectors, dotted exit north, g-a3-9's source line. The track is extended south off-frame to
+    the Carolinas point (967,565 in T) so it does not end mid-frame after the pull-out.
+-->
+<template>
+<style>
+  #g-a3-10-south-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 45% 50%, #0b1016 0%, #030507 78%); }
+  .a3c-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .a3c-lab { font-family:Arial, sans-serif; font-weight:700; font-size:26px; fill:#dfe7ee; paint-order:stroke; stroke:#04070c; stroke-width:5px; stroke-linejoin:round; }
+  .a3c-scan { position:absolute; left:300px; top:160px; width:1300px; height:2px; pointer-events:none; opacity:0;
+    background:linear-gradient(90deg, rgba(127,178,229,0), rgba(127,178,229,0.30), rgba(127,178,229,0)); }
+  /* chip: glass, radius 14, padding 10 x 18, box left 1000 top 420 (about 1000-1636 x 420-482: above y 680, corner free) */
+  .a3c-chip { position:absolute; left:1000px; top:420px; box-sizing:border-box; padding:10px 18px; border-radius:14px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:40px; line-height:1; color:#f2f5f8; }
+  .a3c-src { position:absolute; left:110px; bottom:90px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; color:#c8d3e0; white-space:nowrap; }
+  .a3c-credit { position:absolute; left:110px; bottom:60px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#93a3b2; }
+  .a3c-black { position:absolute; inset:0; background:#04070c; opacity:0; visibility:hidden; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .a3c-hide { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a3-10-south-root" data-composition-id="g-a3-10-south" data-width="1920" data-height="1080" data-duration="6.40">
+  <svg class="a3c-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="a3c-landgrad" gradientUnits="userSpaceOnUse" x1="0" y1="14000" x2="0" y2="60000">
+        <stop offset="0" stop-color="#15202b"/><stop offset="1" stop-color="#0b1016"/>
+      </linearGradient>
+      <radialGradient id="a3c-pitglowgrad">
+        <stop offset="0" stop-color="#f2f5f8" stop-opacity="0.9"/><stop offset="1" stop-color="#f2f5f8" stop-opacity="0"/>
+      </radialGradient>
+      <!-- land clip for the snow fill: the US path under the frame-T camera matrix (screen = map * 0.0125 + (55.935, -211.49)) -->
+      <clipPath id="a3c-landclip"><use href="#a3c-us" transform="matrix(0.0125 0 0 0.0125 55.935 -211.49)"/></clipPath>
+      <filter id="a3c-blur" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="10"/></filter>
+      <filter id="a3c-glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4"/></filter>
+      <!-- edge line draws west to east: the clip rect grows from x 610 -->
+      <clipPath id="a3c-edgeclip" clipPathUnits="userSpaceOnUse"><rect id="a3c-edgeclip-r" x="610" y="370" width="0" height="130"/></clipPath>
+    </defs>
+    <!-- camera layer: map units -->
+    <g id="a3c-cam">
+      <!--BASEMAP:a3c-->
+<!--BM-US-->
+<!--BM-CA-->
+<!--BM-BORDER-->
+      <!--/BASEMAP-->
+    </g>
+    <!-- snow fill (HUD, frame T px): PA, OH, WV, eastern KY; south edge (620,400) -> Hazard (746,443) -> (900,470) -->
+    <g id="a3c-fillg" class="a3c-hide">
+      <g clip-path="url(#a3c-landclip)">
+        <polygon fill="#f2f5f8" fill-opacity="0.35" filter="url(#a3c-blur)"
+          points="640,300 669,132 760,138 818,146 895,101 1121,111 1140,200 1135,299 1010,340 960,420 900,470 830,463 746,443 690,428 620,400"/>
+      </g>
+    </g>
+    <g clip-path="url(#a3c-edgeclip)">
+      <path id="a3c-edge" d="M620,400 L690,428 L746,443 L830,463 L900,470" fill="none" stroke="#f2f5f8" stroke-opacity="0.8" stroke-width="3" stroke-dasharray="12 8" stroke-linejoin="round"/>
+    </g>
+    <!-- red track (map-anchored, projected by camAt): glow, line, connectors, dotted exit -->
+    <g id="a3c-trackg">
+      <path id="a3c-trackglow" fill="none" stroke="#d0121f" stroke-width="14" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round" filter="url(#a3c-glow)"/>
+      <path id="a3c-track" fill="none" stroke="#d0121f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="a3c-con-pit" fill="none" stroke="#d0121f" stroke-opacity="0.6" stroke-width="4" stroke-dasharray="8 6"/>
+      <path id="a3c-con-buf" fill="none" stroke="#d0121f" stroke-opacity="0.6" stroke-width="4" stroke-dasharray="8 6"/>
+      <path id="a3c-con-nwk" fill="none" stroke="#d0121f" stroke-opacity="0.6" stroke-width="4" stroke-dasharray="8 6"/>
+      <path id="a3c-exit" fill="none" stroke="#d0121f" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 12"/>
+    </g>
+    <!-- cold arrows (map-anchored): pathLength 1 so the draw-on fraction survives the camera move; conveyor dashes in px -->
+    <g id="a3c-arrows">
+      <path id="a3c-ar1" fill="none" stroke="#7fb2e5" stroke-width="9" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>
+      <path id="a3c-ar2" fill="none" stroke="#7fb2e5" stroke-width="9" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>
+      <path id="a3c-ar3" fill="none" stroke="#7fb2e5" stroke-width="9" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>
+      <path id="a3c-ar4" fill="none" stroke="#7fb2e5" stroke-width="9" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>
+      <path id="a3c-ar5" fill="none" stroke="#7fb2e5" stroke-width="9" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>
+      <path id="a3c-cv1" fill="none" stroke="#e6f1fb" stroke-width="3" stroke-dasharray="10 22" opacity="0"/>
+      <path id="a3c-cv2" fill="none" stroke="#e6f1fb" stroke-width="3" stroke-dasharray="10 22" opacity="0"/>
+      <path id="a3c-cv3" fill="none" stroke="#e6f1fb" stroke-width="3" stroke-dasharray="10 22" opacity="0"/>
+      <path id="a3c-cv4" fill="none" stroke="#e6f1fb" stroke-width="3" stroke-dasharray="10 22" opacity="0"/>
+      <path id="a3c-cv5" fill="none" stroke="#e6f1fb" stroke-width="3" stroke-dasharray="10 22" opacity="0"/>
+      <polygon id="a3c-hd1" points="12,0 -14,-14 -14,14" fill="#7fb2e5" opacity="0"/>
+      <polygon id="a3c-hd2" points="12,0 -14,-14 -14,14" fill="#7fb2e5" opacity="0"/>
+      <polygon id="a3c-hd3" points="12,0 -14,-14 -14,14" fill="#7fb2e5" opacity="0"/>
+      <polygon id="a3c-hd4" points="12,0 -14,-14 -14,14" fill="#7fb2e5" opacity="0"/>
+      <polygon id="a3c-hd5" points="12,0 -14,-14 -14,14" fill="#7fb2e5" opacity="0"/>
+    </g>
+    <!-- screen-size pins (g-a3-9 styles: core 18 / ring 34 / 3 px); camAt translates and scales each *-at group -->
+    <g id="a3c-pins">
+      <g id="a3c-nwk-at">
+        <circle id="a3c-nwk-pulse" r="17" fill="none" stroke="#7fb2e5" stroke-width="3" opacity="0"/>
+        <circle r="17" fill="#04070c" fill-opacity="0.6" stroke="#7fb2e5" stroke-width="3"/>
+        <circle r="9" fill="#7fb2e5"/>
+        <text id="a3c-nwklab" class="a3c-lab" x="-30" y="9" text-anchor="end">NEWARK</text>
+      </g>
+      <g id="a3c-pit-at">
+        <circle id="a3c-pit-glow" r="34" fill="url(#a3c-pitglowgrad)" opacity="0.6"/>
+        <circle r="17" fill="#04070c" fill-opacity="0.6" stroke="#f2f5f8" stroke-width="3"/>
+        <circle r="9" fill="#f2f5f8"/>
+        <text id="a3c-pitlab" class="a3c-lab" x="30" y="9">PITTSBURGH</text>
+      </g>
+      <g id="a3c-buf-at">
+        <circle r="17" fill="#04070c" fill-opacity="0.6" stroke="#d8a13a" stroke-width="3"/>
+        <circle r="9" fill="#d8a13a"/>
+        <text id="a3c-buflab" class="a3c-lab" x="30" y="9">BUFFALO</text>
+      </g>
+    </g>
+    <!-- chip leader: chip left middle (1000,450) to the edge line's east end (900,470); length 102 -> dash 103 -->
+    <path id="a3c-leader" class="a3c-hide" d="M1000,450 L900,470" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+  </svg>
+  <div class="a3c-scan" id="a3c-scan"></div>
+  <div class="a3c-chip a3c-hide" id="a3c-chip">THE SNOW STOPPED HERE</div>
+  <div class="a3c-src" id="a3c-src0">Source: NWS Jackson, KY; NWS Charleston, WV · track schematic</div>
+  <div class="a3c-src a3c-hide" id="a3c-src">Source: NCEI; NWS Jackson, KY · arrows schematic</div>
+  <div class="a3c-credit" id="a3c-credit">Basemap: Natural Earth</div>
+  <div class="a3c-black" id="a3c-black"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const P = "#a3c-";
+  const $ = function (n) { return document.getElementById("a3c-" + n); };
+  const proj = function (lon, lat) { return [3841 * (lon + 97.576), -5585 * (lat - 46.6213)]; };
+  const DUR = 6.40;                                                           /* 6.00 "reached." end + 0.40 */
+
+  /* frame screen px -> map units */
+  const fromAX = function (x, y) { return [42191.8 + x / 0.03, 15852.5 + y / 0.03]; };
+  const fromT = function (x, y) { return [-4474.8 + x / 0.0125, 16919.2 + y / 0.0125]; };
+  const NWK = proj(-74.1724, 40.7357), PIT = proj(-79.9959, 40.4406), BUF = proj(-78.8784, 42.8864);
+
+  /* g-a3-9 track (A2-X px), extended south to the Carolinas point (T px), loop radius 30 px at A2-X = 1000 map units */
+  const TRK = [fromT(967, 565), fromAX(900, 1100), fromAX(900, 640), fromAX(700, 520), fromAX(621, 295)];
+  const LOOP_TOP = fromAX(621, 235), LOOP_R = 1000;
+  const EXIT = [LOOP_TOP, fromAX(760, 54), fromAX(899, -292)];
+  /* connectors: [pin, track point] */
+  const CON = [[$("con-pit"), PIT, fromAX(830, 598)], [$("con-buf"), BUF, fromAX(651, 265)], [$("con-nwk"), NWK, fromAX(900, 700)]];
+
+  /* cold arrows (T px): start on the Ohio / Lake Erie latitudes, quadratic control, end well south of the snow edge.
+     [start, control, end, t0, dur]. 3 and 4 draw with the camera (COLD @0.26, cross the Ohio River near "Ohio," 1.16);
+     5, 1, 2 at SOUTH @2.58, stagger 0.25, 0.76 s each, heads in by 3.84. Arrow 2 is the Florida Panhandle one. */
+  const AR = [
+    [fromT(520, 170), fromT(520, 450), fromT(505, 680), 2.83, 0.76],          /* 1 west Alabama */
+    [fromT(610, 150), fromT(600, 520), fromT(560, 880), 3.08, 0.76],          /* 2 Florida Panhandle (y 880) */
+    [fromT(700, 130), fromT(690, 440), fromT(640, 730), 0.26, 2.20],          /* 3 east Alabama */
+    [fromT(790, 190), fromT(770, 460), fromT(720, 700), 0.26, 2.20],          /* 4 Atlanta area */
+    [fromT(870, 250), fromT(850, 500), fromT(800, 730), 2.58, 0.76]           /* 5 east Georgia */
+  ];
+  const arEls = AR.map(function (a, i) { return [$("ar" + (i + 1)), $("cv" + (i + 1)), $("hd" + (i + 1))]; });
+
+  /* camera frames [s, top-left x, top-left y] -> centre form [s, cx, cy] */
+  const fr = function (s, tx, ty) { return [s, tx + 960 / s, ty + 540 / s]; };
+  const AX = fr(0.03, 42191.8, 15852.5), FT = fr(0.0125, -4474.8, 16919.2);
+  const p2io = gsap.parseEase("power2.inOut"), p1io = gsap.parseEase("power1.inOut");
+  const lerp = function (a, b, u) { return a + (b - a) * u; };
+  const clamp = function (v) { return v < 0 ? 0 : (v > 1 ? 1 : v); };
+  function logLerpScale(fromScale, toScale, t) {                              /* helpers.js logZoom */
+    return Math.exp(Math.log(fromScale) + (Math.log(toScale) - Math.log(fromScale)) * t);
+  }
+  function state(t) {
+    if (t < 0.26) return AX;                                                   /* BUT: frame A2-X held */
+    if (t < 2.26) {                                                            /* COLD: A2-X -> T, 2.0 s, log scale */
+      const u = p2io((t - 0.26) / 2.0);
+      return [logLerpScale(AX[0], FT[0], u), lerp(AX[1], FT[1], u), lerp(AX[2], FT[2], u)];
+    }
+    return FT;
+  }
+
+  const camEl = $("cam"), trackEl = $("track"), glowEl = $("trackglow"), exitEl = $("exit");
+  const pins = [[$("nwk-at"), NWK], [$("pit-at"), PIT], [$("buf-at"), BUF]];
+  function camAt(t) {
+    const c = state(t), s = c[0], cx = c[1], cy = c[2], k = s / 0.03;
+    const sc = function (p) { return (960 + (p[0] - cx) * s).toFixed(2) + "," + (540 + (p[1] - cy) * s).toFixed(2); };
+    camEl.setAttribute("transform", "translate(" + (960 - cx * s).toFixed(2) + "," + (540 - cy * s).toFixed(2) + ") scale(" + s.toFixed(6) + ")");
+    for (let i = 0; i < pins.length; i++) {
+      const p = pins[i][1];
+      pins[i][0].setAttribute("transform", "translate(" + sc(p) + ") scale(" + k.toFixed(4) + ")");
+    }
+    const r = (LOOP_R * s).toFixed(2);
+    const td = "M" + TRK.map(sc).join(" L") + " A" + r + " " + r + " 0 1 1 " + sc(LOOP_TOP) + " A" + r + " " + r + " 0 1 1 " + sc(TRK[4]);
+    trackEl.setAttribute("d", td);
+    glowEl.setAttribute("d", td);
+    exitEl.setAttribute("d", "M" + EXIT.map(sc).join(" L"));
+    for (let i = 0; i < CON.length; i++) CON[i][0].setAttribute("d", "M" + sc(CON[i][1]) + " L" + sc(CON[i][2]));
+    for (let i = 0; i < AR.length; i++) {
+      const a = AR[i], el = arEls[i];
+      const d = "M" + sc(a[0]) + " Q" + sc(a[1]) + " " + sc(a[2]);
+      const p = p1io(clamp((t - a[3]) / a[4]));
+      el[0].setAttribute("d", d);
+      el[0].setAttribute("stroke-dashoffset", (1 - p).toFixed(4));
+      el[1].setAttribute("d", d);
+      el[1].setAttribute("opacity", (0.75 * clamp((t - a[3] - a[4]) / 0.3)).toFixed(3));
+      el[1].setAttribute("stroke-dashoffset", (-90 * t).toFixed(1));      /* conveyor 90 px/s toward the head */
+      const L = el[0].getTotalLength(), at = p * L;
+      const h = el[0].getPointAtLength(at), b = el[0].getPointAtLength(Math.max(0, at - 2)), f = el[0].getPointAtLength(Math.min(L, Math.max(at, 2)));
+      const ang = Math.atan2(f.y - b.y, f.x - b.x) * 180 / Math.PI;
+      el[2].setAttribute("transform", "translate(" + h.x.toFixed(2) + "," + h.y.toFixed(2) + ") rotate(" + ang.toFixed(2) + ")");
+      el[2].setAttribute("opacity", clamp(p * 20).toFixed(3));
+    }
+  }
+  camAt(0);
+
+  /* basemap paint order as g-a4-1: coast under-stroke (half hidden by the fills), then fills with state lines */
+  [$("ca"), $("us")].forEach(function (el) {
+    const coast = el.cloneNode(false);
+    coast.removeAttribute("id");
+    coast.setAttribute("fill", "none"); coast.setAttribute("stroke", "#4a5560"); coast.setAttribute("stroke-width", "3.2");
+    camEl.insertBefore(coast, camEl.firstChild);
+  });
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to({ t: 0 }, { t: 1, duration: DUR, ease: "none", onUpdate: function () { camAt(this.time()); } }, 0);
+
+  /* transforms and dash state start in set() at 0 (file contract) */
+  tl.set([P + "chip", P + "src", P + "src0", P + "nwklab", P + "pitlab", P + "buflab"], { x: 0, y: 0 }, 0);
+  tl.set(P + "scan", { y: 0 }, 0);
+  tl.set(P + "leader", { strokeDasharray: "103 103", strokeDashoffset: 103 }, 0);
+  tl.set(P + "exit", { strokeDashoffset: 0 }, 0);
+
+  /* ambient: scan line down at 60 px/s for the whole comp (384 px), fades in as the camera starts */
+  tl.to(P + "scan", { y: 384, duration: DUR, ease: "none" }, 0);
+  tl.to(P + "scan", { opacity: 1, duration: 0.5, ease: "power1.out" }, 0.26);
+  /* carried over from g-a3-9: Newark pulse ring every 1.4 s, Pittsburgh glow breathes, exit dots march */
+  tl.fromTo(P + "nwk-pulse", { opacity: 0.8, attr: { r: 17 } }, { opacity: 0, attr: { r: 40 }, duration: 1.4, ease: "power2.out", repeat: 3 }, 0);
+  tl.fromTo(P + "pit-glow", { opacity: 0.6 }, { opacity: 1, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 9 }, 0);
+  tl.to(P + "exit", { strokeDashoffset: -14, duration: 0.5, ease: "none", repeat: 11 }, 0);
+
+  /* BUT @0.00: frame 0 = g-a3-9 last frame; pin labels and g-a3-9's source line fade out before the move (0.26 s) */
+  tl.to([P + "nwklab", P + "pitlab", P + "buflab", P + "src0"], { autoAlpha: 0, duration: 0.26, ease: "power2.in" }, 0);
+
+  /* COLD @0.26: camera A2-X -> T starts (camAt, logZoom, power2.inOut, lands 2.26); arrows 3 and 4 start drawing south
+     (camAt, 2.2 s); the track dims to 0.4 */
+  tl.to(P + "trackg", { opacity: 0.4, duration: 1.0, ease: "power1.inOut" }, 0.26);
+  /* OHIO @1.16: arrows 3 and 4 cross the Ohio River line (about 32 % of their length) */
+  /* 1.26: pins settle to 0.5 as the map pulls out (no labels) */
+  tl.to(P + "pins", { opacity: 0.5, duration: 1.0, ease: "power1.inOut" }, 1.26);
+  /* 2.26: camera lands on frame T; new source line in */
+  tl.fromTo(P + "src", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 2.26);
+
+  /* SOUTH @2.58: arrows 5, 1, 2 draw on (camAt), stagger 0.25, 0.76 s each, heads in by 3.84 (riser starts in index.html) */
+  /* GET @3.14: snow fill fades in (0.6 s), edge line draws west to east (0.6 s) */
+  tl.to(P + "fillg", { autoAlpha: 1, duration: 0.6, ease: "power2.out" }, 3.14);
+  tl.to(P + "edgeclip-r", { attr: { width: 300 }, duration: 0.6, ease: "power2.inOut" }, 3.14);
+
+  /* A LOT FARTHER @4.08 (brief cue "farther" @4.32, moved to the phrase's first word so the chip reads 1.5 s before the
+     exit): chip in x 30 -> 0 with its leader */
+  tl.fromTo(P + "chip", { autoAlpha: 0, x: 30 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 4.08);
+  tl.set(P + "leader", { autoAlpha: 1 }, 4.08);
+  tl.to(P + "leader", { strokeDashoffset: 0, duration: 0.35, ease: "power3.out" }, 4.08);
+
+  /* REACHED @5.68: riser ends (index.html); conveyors keep running (camAt) */
+  /* EXIT @5.95: the whole map fades through to #04070c (0.45 s, power2.in) into the chapter blackout */
+  tl.to(P + "black", { autoAlpha: 1, duration: 0.45, ease: "power2.in" }, 5.95);
+
+  window.__timelines["g-a3-10-south"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
