@@ -238,7 +238,7 @@ window.__timelines = window.__timelines || {};
   tl.set("#ff-snowwrap", { y: 0 }, 0);
 
   /* frame 0: light rain falls, 192 px tile every 0.4 s (480 px/s), finite; stops at "freezes" */
-  tl.fromTo("#ff-rain1", { y: 0 }, { y: 192, duration: 0.4, ease: "none", repeat: 38 }, 0);
+  tl.fromTo("#ff-rain1", { y: 0 }, { y: 192, duration: 0.4, ease: "none", repeat: 39 }, 0);
 
   /* "quarter" @0.44: HUD time */
   tl.fromTo("#ff-hud-time", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.44);
@@ -256,12 +256,12 @@ window.__timelines = window.__timelines || {};
   tl.to("#ff-l32", { scaleY: 1, svgOrigin: "1560 400", duration: 0.2, ease: "power2.in" }, 3.52);
 
   /* "The rain" @4.32: flashback. HUD -> OVERNIGHT; readout out (gone by 4.44, before the mercury crosses 400) */
-  tl.to("#ff-hud-time", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 4.32);
-  tl.fromTo("#ff-hud-night", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 4.32);
+  tl.to("#ff-hud-time", { autoAlpha: 0, duration: 0.15, ease: "power2.in" }, 4.32);
+  tl.fromTo("#ff-hud-night", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 4.44);
   tl.to("#ff-read-below", { autoAlpha: 0, duration: 0.12, ease: "power2.in" }, 4.32);
   /* heavier rain: second sheet, 160 px tile every 0.36 s, until the freeze */
   tl.fromTo("#ff-rain2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power2.out" }, 4.32);
-  tl.fromTo("#ff-rain2", { y: 0 }, { y: 160, duration: 0.36, ease: "none", repeat: 30 }, 4.32);
+  tl.fromTo("#ff-rain2", { y: 0 }, { y: 160, duration: 0.36, ease: "none", repeat: 31 }, 4.32);
   /* "rain" @4.42: mercury up to 38 (y 280); crosses 400 at 4.465 -> amber */
   tl.to("#ff-merc", Object.assign({ duration: 0.6, ease: "power2.out" }, merc(38)), 4.42);
   tl.set(MERC, { attr: { fill: AMBER } }, 4.465);
@@ -279,8 +279,8 @@ window.__timelines = window.__timelines || {};
   tl.to("#ff-merc", Object.assign({ duration: 0.96, ease: "sine.inOut" }, merc(38)), 8.58);
 
   /* "When" @9.02: HUD -> BEHIND THE FRONT; readout out; front enters (bottom of its edge at x 400) */
-  tl.to("#ff-hud-night", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 9.02);
-  tl.fromTo("#ff-hud-front", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 9.02);
+  tl.to("#ff-hud-night", { autoAlpha: 0, duration: 0.15, ease: "power2.in" }, 9.02);
+  tl.fromTo("#ff-hud-front", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 9.14);
   tl.to("#ff-read-warm", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 9.02);
   tl.fromTo("#ff-front", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 9.02);
 
@@ -306,8 +306,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#ff-ice", { scaleX: 0 }, { scaleX: 1, svgOrigin: "400 626", duration: 0.8, ease: "power2.inOut" }, 15.34);
   tl.to("#ff-shimmer", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 15.34);
   tl.to(["#ff-rain1", "#ff-rain2"], { autoAlpha: 0, duration: 0.5, ease: "power2.in" }, 15.34);
-  tl.to("#ff-lab-water", { autoAlpha: 0, duration: 0.4, ease: "power2.inOut" }, 15.34);
-  tl.fromTo("#ff-lab-ice", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "power2.inOut" }, 15.34);
+  /* the two labels share one spot: RAINWATER is gone before ICE starts (no crossfade, overlap_check text-collision) */
+  tl.to("#ff-lab-water", { autoAlpha: 0, duration: 0.2, ease: "power2.in" }, 15.34);
+  tl.fromTo("#ff-lab-ice", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 15.54);
   tl.set(".ff-crack", { autoAlpha: 1 }, 15.60);
   tl.to(".ff-crack", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out", stagger: 0.12 }, 15.60);
 
@@ -326,12 +327,12 @@ window.__timelines = window.__timelines || {};
   tl.to("#ff-snowwrap", { y: 2, duration: 0.26, ease: "sine.inOut", yoyo: true, repeat: 3 }, 17.36);
 
   /* "flash" @19.98: HUD -> FLASH FREEZE at 84 px */
-  tl.to("#ff-hud-front", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 19.98);
+  tl.to("#ff-hud-front", { autoAlpha: 0, duration: 0.12, ease: "power2.in" }, 19.98);
   tl.fromTo("#ff-hud-term", { autoAlpha: 0, scale: 1.12 }, { autoAlpha: 1, scale: 1, transformOrigin: "left top", duration: 0.45, ease: "power4.out" }, 19.98);
 
   /* "and it's" @21.24: source line names the warning product */
-  tl.to("#ff-src-asos", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 21.24);
-  tl.fromTo("#ff-src-nws", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 21.24);
+  tl.to("#ff-src-asos", { autoAlpha: 0, duration: 0.15, ease: "power2.in" }, 21.24);
+  tl.fromTo("#ff-src-nws", { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 21.36);
 
   /* after "before." @24.24: exit fade-through 24.62-25.42, ground stays; snow still falling */
   tl.to("#ff-stage", { autoAlpha: 0, duration: 0.8, ease: "power2.in" }, 24.62);
