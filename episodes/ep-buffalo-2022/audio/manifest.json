@@ -1,16 +1,16 @@
 {
  "h1-s1": {
   "wav": "audio/h1-s1.wav",
-  "duration": 6.978,
-  "words": 23,
-  "text_hash": "d48e0a1a7f3fa6bef96d28ae32ff259b6d63d2ee",
+  "duration": 15.305,
+  "words": 44,
+  "text_hash": "a360ca65ca7c8e1bfa9197a76433d21b3c74efdd",
   "tempo": 0.94
  },
  "h1-s2": {
   "wav": "audio/h1-s2.wav",
-  "duration": 13.075,
-  "words": 37,
-  "text_hash": "38fc122874436747cf4d48d392d370b4447c4a9f",
+  "duration": 9.075,
+  "words": 26,
+  "text_hash": "9c724621cb6859b5e9e94ce71af6bebc941bc99a",
   "tempo": 0.94
  },
  "t1-s1": {
