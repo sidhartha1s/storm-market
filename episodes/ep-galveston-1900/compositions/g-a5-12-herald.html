@@ -66,8 +66,9 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"img", {opacity:0.55, duration:0.76, ease:"power2.out"}, 5.46);
   tl.to(P+"ul", {opacity:0.55, duration:0.76, ease:"power2.out"}, 5.46);
 
-  /* attention. @8.32: bar at full, hold; exit: root fades over the last 0.3 s of the 9.26 s host (g-a5-13 cuts in) */
-  tl.to(P+"root", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 8.96);
+  /* attention. @8.32: bar at full, hold; the push runs to the host end (10.40, index.html mount);
+     exit: root fades over the last 0.3 s (g-a5-13 cuts in) */
+  tl.to(P+"root", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 10.10);
   window.__timelines["g-a5-12-herald"] = tl;
 })();
 </script>
