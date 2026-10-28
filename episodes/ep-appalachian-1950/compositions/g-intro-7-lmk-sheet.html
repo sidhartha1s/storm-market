@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-intro-7-lmk-sheet (I1-S3, standard): NWS Louisville Bowling Green November records page scrolls to the ALL-TIME row, row highlighted, red box on "-7, 1950", chip "STILL THE / NOVEMBER RECORD". Overlay over g-intro-5-inland (track 3).
+  Host: data-start = I1-S3 start + 5.98, data-duration 4.38 (to 10.36). Cue times below are LOCAL (segment time - 5.98); segment times in the comments (audio/i1-s3.words.json).
+  PAGE-IMAGE CAVEAT: media/docs/lmk-bwg-november.png did not exist when this was built (no render allowed to me). The five PLACEHOLDER-MEASURE numbers in the script (CW, CH, ROWC, ROWH, row/cell x) are
+  guesses for a 200 dpi crop and MUST be re-measured on the real crop; only those constants change, every other position derives from them.
+  Pair of g-intro-6-pbz-sheet (same card, box, eyebrow style, chip style); g-intro-6 was not on disk, matched from its brief.
+-->
+<template>
+<style>
+  #g-intro-7-lmk-sheet-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; }
+  /* card box x 980..1560, y 170..590; keep-out x>=1600,y>=680 */
+  #l7-card { position:absolute; left:980px; top:170px; width:580px; height:420px; box-sizing:border-box; border-radius:18px; overflow:hidden;
+    background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); box-shadow:0 24px 70px rgba(0,0,0,0.5); opacity:0; visibility:hidden; }
+  #l7-scroll { position:absolute; left:0; top:64px; width:580px; height:1100px; }
+  #l7-push { position:absolute; left:0; top:0; width:580px; height:1100px; }
+  #l7-page { position:absolute; left:0; top:0; width:1200px; height:1500px; }
+  #l7-img { position:absolute; left:0; top:0; width:1200px; height:1500px; display:block; }
+  #l7-bar { position:absolute; background:#5a768f; opacity:0.40; mix-blend-mode:multiply; }
+  #l7-red { position:absolute; left:0; top:0; width:1200px; height:1500px; overflow:visible; }
+  /* eyebrow on its own beige band, above the scrolling page */
+  #l7-band { position:absolute; left:0; top:0; width:580px; height:64px; background:rgba(232,222,200,0.97); z-index:3; }
+  #l7-eyebrow { position:absolute; left:20px; right:20px; top:9px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:25px; letter-spacing:2px; color:#2a2622; text-align:center; white-space:normal; }
+  /* chip: flex wrapper centres an auto-width glass chip on x 1270 */
+  #l7-chipwrap { position:absolute; left:960px; top:550px; width:620px; height:120px; display:flex; justify-content:center; opacity:0; visibility:hidden; }
+  #l7-chip { box-sizing:border-box; height:120px; padding:10px 22px; border-radius:14px; background:rgba(10,16,24,0.55); border:1px solid rgba(255,255,255,0.14);
+    -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px); text-align:center; white-space:nowrap; }
+  #l7-chip1 { display:block; font-family:Arial, sans-serif; font-weight:700; font-size:26px; line-height:32px; letter-spacing:3px; color:#dfe7ee; }
+  #l7-chip2 { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:62px; color:#f2f5f8; }
+</style>
+<div id="g-intro-7-lmk-sheet-root" data-composition-id="g-intro-7-lmk-sheet" data-width="1920" data-height="1080" data-type-ok="document-page card: eyebrow + two-line chip, sizes set by brief">
+  <div id="l7-card" data-start="0" data-duration="4.38" data-track-index="1">
+    <div id="l7-band"><div id="l7-eyebrow">NWS LOUISVILLE · BOWLING GREEN, KY · NOVEMBER RECORDS</div></div>
+    <div id="l7-scroll"><div id="l7-push"><div id="l7-page">
+      <img id="l7-img" src="media/docs/lmk-bwg-november.png" alt="NWS Louisville November records, Bowling Green" data-crop-ok="page crop is taller than the card; the card window scrolls it by design">
+      <div id="l7-bar"></div>
+      <svg id="l7-red" viewBox="0 0 1200 1500"><rect id="l7-rect" x="0" y="0" width="10" height="10" fill="none" stroke="#c0392b" stroke-width="9"/></svg>
+    </div></div></div>
+  </div>
+  <div id="l7-chipwrap" data-start="0" data-duration="4.38" data-track-index="2" data-overlap-ok="chip sits on the sheet foot by design">
+    <div id="l7-chip"><span id="l7-chip1">STILL THE</span><span id="l7-chip2">NOVEMBER RECORD</span></div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  /* PLACEHOLDER-MEASURE: native pixels of media/docs/lmk-bwg-november.png (crop = table text width + 24 px each side, header line to ALL-TIME row) */
+  const CW = 1200, CH = 1500;          /* crop size (css box above must match) */
+  const ROWC = 1420, ROWH = 34;        /* ALL-TIME row centre y and line height */
+  const ROWX0 = 24, ROWX1 = 1176;      /* table text width inside the crop */
+  const CELLX0 = 930, CELLX1 = 1170;   /* "-7, 1950" low cell x range */
+  const S = 580 / CW, BAND = 64;
+  const rowScreen = 300;               /* ALL-TIME row centre, card-relative: card bottom (420) - 120 */
+  const T = rowScreen - BAND - ROWC * S; /* scroll end translateY */
+
+  tl.set("#l7-page", { scale: S, transformOrigin: "0px 0px" }, 0);
+  tl.set("#l7-bar", { left: ROWX0, top: ROWC - ROWH / 2 - 4, width: ROWX1 - ROWX0, height: ROWH + 8, scaleX: 0, transformOrigin: "left center" }, 0);
+  tl.set("#l7-rect", { attr: { x: CELLX0, y: ROWC - ROWH / 2 - 2, width: CELLX1 - CELLX0, height: ROWH + 4, "stroke-width": 3 / S } }, 0);
+  const L = Math.ceil(document.getElementById("l7-rect").getTotalLength()) + 1;
+  tl.set("#l7-rect", { strokeDasharray: L, strokeDashoffset: L }, 0);
+  tl.set("#l7-scroll", { y: 0 }, 0);
+  tl.set("#l7-push", { scale: 1, transformOrigin: (CW * S / 2) + "px " + (ROWC * S) + "px" }, 0);
+  tl.set("#l7-chip", { y: 0 }, 0);
+
+  /* CHECKED @5.98 (local 0.00): card slides in, page at its top */
+  tl.fromTo("#l7-card", { x: 660, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 0);
+  /* NOVEMBER RECORDS @6.76 (local 0.78): scroll to the ALL-TIME row, 1.2 s, ends 7.96 (local 1.98) */
+  tl.to("#l7-scroll", { y: T, duration: 1.2, ease: "power2.inOut" }, 0.78);
+  /* ITS @7.96 (local 1.98): highlight bar draws on the ALL-TIME row */
+  tl.to("#l7-bar", { scaleX: 1, duration: 0.5, ease: "power2.out" }, 1.98);
+  /* STILL @8.22 (local 2.24): chip in */
+  tl.fromTo("#l7-chipwrap", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.4)" }, 2.24);
+  /* COLDEST @8.62 (local 2.64): red outline on the "-7, 1950" cell */
+  tl.to("#l7-rect", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 2.64);
+  /* hold 9.02 to 9.76 (local 3.04 to 3.78): slow push 1.00 to 1.03 about the ALL-TIME row */
+  tl.to("#l7-push", { scale: 1.03, duration: 0.74, ease: "none" }, 3.04);
+  /* EXIT @9.76 (local 3.78), ends 10.36 (local 4.38 = host end) */
+  tl.to("#l7-card", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 3.78);
+  tl.to("#l7-chipwrap", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 3.78);
+  window.__timelines["g-intro-7-lmk-sheet"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
