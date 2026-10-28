@@ -126,6 +126,12 @@ with tempfile.TemporaryDirectory() as d:
         assert "gsap.min.js" in str(e), e
     (ep / "gsap.gone").rename(ep / "gsap.min.js")
 
+    # missing audio is not a missing frame input: a still never plays it, so an episode without narration on disk still snapshots
+    idx = (ep / "index.html").read_text(encoding="utf-8")
+    (ep / "index.html").write_text(idx + '<audio src="audio/not-voiced-yet.wav"></audio>', encoding="utf-8")
+    assert "audio/not-voiced-yet.wav" not in {f.relative_to(ep).as_posix() for f in q.referenced(ep)}
+    (ep / "index.html").write_text(idx, encoding="utf-8")
+
     # ship sends only what changed since the last ship
     calls = []
     q.ssh = lambda cmd, timeout: (calls.append(cmd), subprocess.CompletedProcess(cmd, 0, "", ""))[1]

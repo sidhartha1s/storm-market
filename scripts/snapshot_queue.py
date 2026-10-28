@@ -87,7 +87,8 @@ def referenced(ep):
                 continue
             found = [f for f in ((b / ref).resolve() for b in (page.parent, ep))   # comps use ../media/x or media/x (<base href="../">)
                      if f.is_file() and ep in f.parents]
-            if not found:   # a skipped file once shipped 24 blank snapshots (gsap.min.js missing)
+            # a skipped file once shipped 24 blank snapshots (gsap.min.js missing); audio is exempt, a still frame never plays it
+            if not found and not ref.lower().endswith((".wav", ".mp3", ".ogg")):
                 raise FileNotFoundError(f"{page.relative_to(ep).as_posix()} references missing file: {ref}")
             files.update(found)
     return sorted(files)
