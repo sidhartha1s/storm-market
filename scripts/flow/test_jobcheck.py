@@ -12,4 +12,7 @@ assert errors(job(W.replace("/", "\\") + r"\episodes\ep-buffalo-2022\media\paul\
 assert errors(job(W + "/assets/paul/paul-sheet-c.png")), "the character sheet must never be the frame"
 assert errors(job(W + "/episodes/ep-buffalo-2022/media/paul/inputs/paul-desk-frame.jpg")), "only paul-start-frame-* files"
 assert errors(job(W + "/assets/paul/paul-start-frame-omni.jpg")), "v1 global frame stays refused"
+with_sheet = job(W + "/assets/paul/paul-start-frame-omni-v2.png")
+with_sheet["jobs"][0]["ingredients"] = [W + "/assets/paul/paul-sheet-c.png"]
+assert errors(with_sheet), "a start-frame job with an ingredient makes Flow ask instead of quoting"
 print("test_jobcheck OK")
