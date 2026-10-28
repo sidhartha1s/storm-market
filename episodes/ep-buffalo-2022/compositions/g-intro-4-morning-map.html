@@ -256,7 +256,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo($("51"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 14.0);
 
   /* "Anyone" @15.44 -> "last." @18.64: hold; clock keeps turning (+120 / +10), card floats */
-  tl.to($("mh"), { rotation: 660, duration: 3.3, ease: "none" }, 15.44);
+  tl.to($("mh"), { rotation: 660, svgOrigin: "28 28", duration: 3.3, ease: "none" }, 15.44);
   tl.to($("hh"), { rotation: 295, duration: 3.3, ease: "none" }, 15.44);
   tl.fromTo($("float"), { y: 0 }, { y: -4, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, 15.44);
 
