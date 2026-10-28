@@ -143,12 +143,10 @@ window.__timelines = window.__timelines || {};
   tl.fromTo($("chipb"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.94);
 
   /* "travel is strongly discouraged." @3.02-3.88: tail words lift to the big-line position, crossfade into tl-big by 3.70 */
-  /* hand-off: ghost words lift and are fully gone at 3.36; card text (r7, r8h) is gone by 3.32; an opaque backing
-     is up by 3.36; only then does tl-big fade in (3.40-3.80), so the two differently set lines never show together */
-  tl.to([$("r7"), $("r8h")], { opacity: 0, duration: 0.3, ease: "none" }, 3.02);
-  tl.to($("g1"), { x: -388.8, y: -7, scale: 2.4, transformOrigin: "50% 50%", duration: 0.5, ease: "power3.out" }, 3.02);
-  tl.to($("g2"), { x: 1012.2, y: -47, scale: 2.4, transformOrigin: "50% 50%", duration: 0.5, ease: "power3.out" }, 3.02);
-  tl.to([$("g1"), $("g2")], { autoAlpha: 0, duration: 0.26, ease: "none" }, 3.1);
+  /* hand-off: the mono ghost words fade out in place with the card text (r7, r8h), all gone by 3.22. They no longer
+     lift and scale: the 2.4x lift crossed the fading warning rows (frame 254.46). The opaque backing is up by 3.36;
+     only then does tl-big fade in (3.40-3.80), so the two differently set lines never show together */
+  tl.to([$("r7"), $("r8h"), $("g1"), $("g2")], { autoAlpha: 0, duration: 0.2, ease: "power1.in" }, 3.02);
   tl.fromTo($("bk"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: "none" }, 3.16);
   tl.fromTo($("big"), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4, ease: "none" }, 3.4);
   /* "strongly" @3.46: rule draws 3.46 to 3.96 */
