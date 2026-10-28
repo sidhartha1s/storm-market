@@ -1,0 +1,118 @@
+<template>
+<style>
+  #g-a2-4-vines-gangoiti-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  /* source line: top-left glass (Shared rules, Placement) */
+  #g-a2-4-vines-gangoiti-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* paper cards: outer = mover (GSAP x/y/scale/opacity), inner face = drift */
+  .ga24-card { position:absolute; transform-origin:0 0; }
+  .ga24-face { position:relative; width:100%; height:100%; box-sizing:border-box; background:#f4f0e6;
+    border:1px solid rgba(42,38,34,0.25); border-radius:6px; box-shadow:0 18px 40px rgba(0,0,0,0.45); }
+  .ga24-eye { position:absolute; left:48px; font-weight:700; font-size:22px; color:#6b6257; letter-spacing:6px; white-space:nowrap; }
+  .ga24-name { position:absolute; left:48px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; color:#2a2622; white-space:nowrap; }
+  .ga24-role { position:absolute; left:48px; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:30px; color:#6b6257; white-space:nowrap; }
+
+  #g-a2-4-vines-gangoiti-vc { left:410px; top:300px; width:1100px; height:330px; }
+  /* Viñes card internals copy g-a2-3's card (top and line-height) so the hard cut shows no shift */
+  #g-a2-4-vines-gangoiti-vc .ga24-eye { top:64px; line-height:26px; }
+  #g-a2-4-vines-gangoiti-vc .ga24-name { top:116px; line-height:62px; }
+  #g-a2-4-vines-gangoiti-vc .ga24-role { top:204px; line-height:40px; }
+
+  #g-a2-4-vines-gangoiti-gc { left:984px; top:360px; width:840px; height:300px; opacity:0; visibility:hidden; }
+  #g-a2-4-vines-gangoiti-gc .ga24-eye { top:40px; }
+  #g-a2-4-vines-gangoiti-gc .ga24-name { top:96px; }
+  #g-a2-4-vines-gangoiti-gc .ga24-role { top:180px; opacity:0; visibility:hidden; }
+
+  /* amber carry-on rule, Viñes right edge to Gangoiti left edge */
+  #g-a2-4-vines-gangoiti-rule { position:absolute; left:921px; top:505px; width:64px; height:4px; background:#d8a13a;
+    transform-origin:0 50%; opacity:0; visibility:hidden; }
+
+  /* chip: glass, radius 28 */
+  #g-a2-4-vines-gangoiti-chip { position:absolute; left:580px; top:700px; width:760px; opacity:0; visibility:hidden; }
+  .ga24-chipface { box-sizing:border-box; padding:22px 20px 20px; border-radius:28px; text-align:center;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  .ga24-chipmain { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; color:#f2f5f8; white-space:nowrap; }
+  #g-a2-4-vines-gangoiti-tag { margin-top:8px; font-weight:700; font-size:22px; color:#93a3b2; letter-spacing:4px; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-4-vines-gangoiti-root" data-composition-id="g-a2-4-vines-gangoiti" data-width="1920" data-height="1080">
+  <div id="g-a2-4-vines-gangoiti-src">Belen history (1925, reprinted) · José Rubiera · Wikipedia · NOAA AOML, 2015</div>
+
+  <div class="ga24-card" id="g-a2-4-vines-gangoiti-vc">
+    <div class="ga24-face" id="g-a2-4-vines-gangoiti-vf">
+      <div class="ga24-eye">BELEN OBSERVATORY · HAVANA</div>
+      <div class="ga24-name">P. Benito Viñes, S.J.</div>
+      <div class="ga24-role" id="g-a2-4-vines-gangoiti-vrole">Director from 1870</div>
+    </div>
+  </div>
+
+  <div id="g-a2-4-vines-gangoiti-rule"></div>
+
+  <div class="ga24-card" id="g-a2-4-vines-gangoiti-gc">
+    <div class="ga24-face" id="g-a2-4-vines-gangoiti-gf">
+      <div class="ga24-eye">BELEN OBSERVATORY · HAVANA</div>
+      <div class="ga24-name">P. Lorenzo Gangoiti</div>
+      <div class="ga24-role" id="g-a2-4-vines-gangoiti-grole">Director, 1900</div>
+    </div>
+  </div>
+
+  <div id="g-a2-4-vines-gangoiti-chip">
+    <div class="ga24-chipface" id="g-a2-4-vines-gangoiti-chipf">
+      <div class="ga24-chipmain">FATHER HURRICANE</div>
+      <div id="g-a2-4-vines-gangoiti-tag">Padre Huracán</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a2-4-vines-gangoiti-";
+  /* comp-local time = segment time (a2-s2) minus 17.74; host 17.74 to 31.898 */
+
+  /* frame 0: Viñes card in g-a2-3 state B (scale 0.45, box x 1330-1825, y 54-203) */
+  tl.set(P+"vc", {x:920, y:-246, scale:0.45}, 0);
+  tl.set(P+"gc", {x:600}, 0);
+  tl.set(P+"rule", {rotation:5.4, scaleX:0}, 0);
+
+  /* PEOPLE @17.74 */
+  tl.to(P+"vc", {x:0, y:0, scale:1, duration:0.7, ease:"power3.inOut"}, 0.0);
+
+  /* FATHER HURRICANE @18.94 */
+  tl.fromTo(P+"chip", {y:24, scale:0.94, autoAlpha:0}, {y:0, scale:1, autoAlpha:1, duration:0.45, ease:"back.out(1.6)"}, 1.2);
+  /* Hurricane. @19.24 */
+  tl.to(P+"tag", {autoAlpha:1, duration:0.3, ease:"power2.out"}, 1.5);
+  /* chip exit 23.30 */
+  tl.to(P+"chip", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.56);
+
+  /* 1893. @24.98: Viñes role dims */
+  tl.to(P+"vrole", {autoAlpha:0.6, duration:0.3, ease:"power1.out"}, 7.24);
+
+  /* FATHER (Gangoiti) @26.26: Viñes slides left to the two-card state (x 96-921, y 380-628) */
+  tl.to(P+"vc", {x:-314, y:80, scale:0.75, autoAlpha:0.6, duration:0.6, ease:"power3.inOut"}, 8.52);
+  /* Lorenzo @26.60: Gangoiti arrives from the right, landing at 27.08 */
+  tl.to(P+"gc", {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 8.86);
+  /* over @27.82 */
+  tl.to(P+"grole", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 10.08);
+  /* CARRIED ON @29.46: Viñes's work, amber line draws left to right */
+  tl.set(P+"rule", {autoAlpha:1}, 11.72);
+  tl.to(P+"rule", {scaleX:1, duration:0.58, ease:"power2.out"}, 11.72);
+
+  /* drift: cards and chip float y +-4 px, 2.4 s yoyo, finite repeats sized to the window */
+  tl.fromTo(P+"vf", {y:-4}, {y:4, duration:2.3597, ease:"sine.inOut", yoyo:true, repeat:5}, 0.0);
+  tl.fromTo(P+"gf", {y:-4}, {y:4, duration:2.349, ease:"sine.inOut", yoyo:true, repeat:1}, 9.46);
+  tl.fromTo(P+"chipf", {y:-4}, {y:4, duration:1.955, ease:"sine.inOut", yoyo:true, repeat:1}, 1.65);
+
+  /* exit: whole root fades over the last 0.35 s (31.548 to 31.898) */
+  tl.to("#g-a2-4-vines-gangoiti-root", {autoAlpha:0, duration:0.35, ease:"power1.in"}, 13.808);
+
+  window.__timelines["g-a2-4-vines-gangoiti"] = tl;
+})();
+</script>
+</template>
