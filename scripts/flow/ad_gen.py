@@ -316,28 +316,39 @@ with sync_playwright() as p:
             if spent + expect > CFG["budget"]:
                 log("budget stop before", job["name"], "spent", spent)
                 break
-            # a fresh agent session per job: the old thread carried a refused shot's line into the next take (20 Oct 26)
-            page.keyboard.press("Escape")  # a clip preview overlay blocks the panel
-            page.wait_for_timeout(1000)
-            page.locator('button[aria-label="Start new session"]').click(timeout=15000)
-            page.wait_for_timeout(3000)
-            clear = page.locator('button[aria-label="Clear prompt"]')
-            if clear.count():  # the input keeps the last job's attachments across sessions
-                clear.first.click()
-                page.wait_for_timeout(1000)
-            # the model is always set: Flow keeps the last pick as its default, and a Veo test left it on Veo 3.1 Lite,
-            # so the next Omni job was quoted 10 credits and refused by the price check (23 Oct 26, Moore retake 3)
-            set_defaults(page, CFG["aspect"], CFG["count"], CFG.get("model", "Omni 1.1 Flash"))
-            shot(page, f"{job['name']}-newsession")
-            for ing in [job["frame"]] + job.get("ingredients", []):
-                add_ingredient(page, ing)
-            n_before = len(enabled_approves(page))
-            box = page.locator("textarea:visible, [contenteditable=true]:visible").last
-            box.click()
-            page.keyboard.insert_text(job["prompt"])
-            page.wait_for_timeout(800)
-            page.locator('button[aria-label="Start generation"]').click()
-            log("sent", job["name"])
+            # a click that times out before the spend gets one retry on the same tab, reloaded: the hidden window is
+            # sluggish, and "Start new session" timed out after 15 s and ended ins-paul-3 with nothing spent (29 Oct 26 01:26)
+            for attempt in (1, 2):
+                try:
+                    # a fresh agent session per job: the old thread carried a refused shot's line into the next take (20 Oct 26)
+                    page.keyboard.press("Escape")  # a clip preview overlay blocks the panel
+                    page.wait_for_timeout(1000)
+                    page.locator('button[aria-label="Start new session"]').click(timeout=15000)
+                    page.wait_for_timeout(3000)
+                    clear = page.locator('button[aria-label="Clear prompt"]')
+                    if clear.count():  # the input keeps the last job's attachments across sessions
+                        clear.first.click()
+                        page.wait_for_timeout(1000)
+                    # the model is always set: Flow keeps the last pick as its default, and a Veo test left it on Veo 3.1 Lite,
+                    # so the next Omni job was quoted 10 credits and refused by the price check (23 Oct 26, Moore retake 3)
+                    set_defaults(page, CFG["aspect"], CFG["count"], CFG.get("model", "Omni 1.1 Flash"))
+                    shot(page, f"{job['name']}-newsession")
+                    for ing in [job["frame"]] + job.get("ingredients", []):
+                        add_ingredient(page, ing)
+                    n_before = len(enabled_approves(page))
+                    box = page.locator("textarea:visible, [contenteditable=true]:visible").last
+                    box.click()
+                    page.keyboard.insert_text(job["prompt"])
+                    page.wait_for_timeout(800)
+                    page.locator('button[aria-label="Start generation"]').click()
+                    log("sent", job["name"])
+                    break
+                except Exception as e:
+                    if attempt == 2:
+                        log(f"FAILED after retry, {spent} spent:", job["name"], repr(e)[:200])
+                        raise
+                    log("step timed out before the spend, reloading the tab and retrying once:", job["name"], repr(e)[:120])
+                    to_grid(page, fresh=True)
             quote = None
             for _ in range(36):  # up to 3 min for the agent's plan
                 page.wait_for_timeout(5000)
