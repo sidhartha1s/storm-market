@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a5-7-county-plan (A5-S6, standard): checklist panel, three rows tick on as the voice names them:
+  TRACKED VEHICLES FOR PATIENTS, AMBULANCES PAIRED WITH THEM, MORE DRIVING BANS BEFORE THE STORM.
+  On "the second one is about the clock" rows 1-2 drop to 45 %, row 3 stays bright, a clock icon sits beside row 3.
+  Source: Erie County plan, via WIVB, 14 Aug 2023 (factcheck/a5-r1.md row 21). Full-frame designed ground, no footage.
+  Cue times are seconds from the START of A5-S6 (audio/a5-s6.words.json). Comp duration 16.80 s.
+  Panel x 200-1440, y 200-820; clock centre (1500,680), right edge 1536; corner x >= 1600, y >= 680 empty.
+  Row text measured by hand from Arial Black advance widths: longest row ends about x 1237 at 38 px (limit 1390), so 38 px stays.
+  Deviations from the brief table (reader 1.5 s rule): clock icon enters at 14.48 (brief 14.84) and the exit starts at 16.35
+  (brief 16.20), so the clock is fully shown 1.52 s before the exit; minute hand turns 14.84 to 15.64 (0.8 s, brief 15.10 to 16.00)
+  so 0.71 s remains after the turn before the exit begins.
+-->
+<template>
+<style>
+  #g-a5-7-county-plan-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  #cp-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #cp-panel { position:absolute; inset:auto; left:200px; top:200px; width:1240px; height:620px; box-sizing:border-box;
+    background:rgba(21,32,43,0.94); border:1px solid rgba(255,255,255,0.14); border-radius:24px; opacity:0; visibility:hidden; }
+  #cp-eyebrow { position:absolute; inset:auto; left:70px; top:50px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; letter-spacing:6px; color:#93a3b2; opacity:0; visibility:hidden; }
+  #cp-head { position:absolute; inset:auto; left:70px; top:88px; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  .cp-box { position:absolute; inset:auto; left:70px; width:44px; height:44px; box-sizing:border-box; border:2px solid #93a3b2; border-radius:8px; opacity:0; visibility:hidden; }
+  .cp-tick { position:absolute; inset:auto; left:70px; width:44px; height:44px; }
+  .cp-tick svg { display:block; width:44px; height:44px; }
+  .cp-tick path { fill:none; stroke:#e8c56a; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:39; stroke-dashoffset:39; }
+  .cp-row { position:absolute; inset:auto; left:140px; display:inline-block; white-space:nowrap; opacity:0; visibility:hidden; }
+  .cp-txt { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:38px; line-height:48px; color:#dfe7ee; }
+  .cp-ul { position:absolute; inset:auto; left:0; right:0; bottom:-8px; height:2px; background:#e8c56a; transform-origin:left center; }
+  #cp-r1, #cp-b1, #cp-k1 { top:218px; }
+  #cp-r2, #cp-b2, #cp-k2 { top:338px; }
+  #cp-r3, #cp-b3, #cp-k3 { top:458px; }
+  #cp-r1 { top:216px; } #cp-r2 { top:336px; } #cp-r3 { top:456px; }
+  #cp-clock { position:absolute; inset:auto; left:1464px; top:644px; width:72px; height:72px; opacity:0; visibility:hidden; }
+  #cp-clock svg { display:block; width:72px; height:72px; }
+  #cp-src { position:absolute; inset:auto; left:96px; bottom:54px; white-space:nowrap; font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:25px; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-7-county-plan-root" data-composition-id="g-a5-7-county-plan" data-width="1920" data-height="1080">
+  <div id="cp-ground"></div>
+  <div id="cp-panel">
+    <div id="cp-eyebrow">ERIE COUNTY · AFTER THE BLIZZARD</div>
+    <div id="cp-head">THE COUNTY'S PLAN</div>
+    <div class="cp-box" id="cp-b1"></div>
+    <div class="cp-box" id="cp-b2"></div>
+    <div class="cp-box" id="cp-b3"></div>
+    <div class="cp-tick" id="cp-k1"><svg viewBox="0 0 44 44"><path id="cp-p1" d="M10 23 L19 32 L35 13"/></svg></div>
+    <div class="cp-tick" id="cp-k2"><svg viewBox="0 0 44 44"><path id="cp-p2" d="M10 23 L19 32 L35 13"/></svg></div>
+    <div class="cp-tick" id="cp-k3"><svg viewBox="0 0 44 44"><path id="cp-p3" d="M10 23 L19 32 L35 13"/></svg></div>
+    <div class="cp-row" id="cp-r1"><div class="cp-txt" id="cp-t1">TRACKED VEHICLES FOR PATIENTS</div><div class="cp-ul" id="cp-u1"></div></div>
+    <div class="cp-row" id="cp-r2"><div class="cp-txt" id="cp-t2">AMBULANCES PAIRED WITH THEM</div><div class="cp-ul" id="cp-u2"></div></div>
+    <div class="cp-row" id="cp-r3"><div class="cp-txt" id="cp-t3">MORE DRIVING BANS BEFORE THE STORM</div><div class="cp-ul" id="cp-u3"></div></div>
+  </div>
+  <div id="cp-clock"><svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="34.5" fill="none" stroke="#e8c56a" stroke-width="3"/><line x1="36" y1="36" x2="48" y2="36" stroke="#e8c56a" stroke-width="3" stroke-linecap="round"/><line id="cp-min" x1="36" y1="36" x2="36" y2="13" stroke="#e8c56a" stroke-width="3" stroke-linecap="round"/></svg></div>
+  <div id="cp-src">Erie County plan, via WIVB, 14 Aug 2023</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const Q = "#cp-";
+  tl.set(Q+"u1", {scaleX:0}, 0);
+  tl.set(Q+"u2", {scaleX:0}, 0);
+  tl.set(Q+"u3", {scaleX:0}, 0);
+
+  /* "The county" @0.14: panel and eyebrow */
+  tl.fromTo(Q+"panel", {x:-120, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.6, ease:"power3.out"}, 0.10);
+  tl.fromTo(Q+"eyebrow", {x:-24, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.4, ease:"power3.out"}, 0.34);
+  /* ambient: panel floats the whole window (11 passes of 1.5 s, ends 16.6) */
+  tl.to(Q+"panel", {y:-4, duration:1.5, ease:"sine.inOut", yoyo:true, repeat:10}, 0.10);
+
+  /* "plan too." @0.98-1.60 */
+  tl.fromTo(Q+"head", {x:-40, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.5, ease:"power3.out"}, 0.98);
+  tl.fromTo(Q+"src", {y:12, autoAlpha:0}, {y:0, autoAlpha:1, duration:0.4, ease:"power3.out"}, 1.30);
+  tl.fromTo(".cp-box", {autoAlpha:0, scale:0.8}, {autoAlpha:1, scale:1, duration:0.3, ease:"power3.out", stagger:0.1}, 1.40);
+
+  /* ROW 1: "tracked vehicles" @2.54; "deep snow," @4.56-5.24 */
+  tl.fromTo(Q+"r1", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 2.54);
+  tl.fromTo(Q+"p1", {strokeDashoffset:39}, {strokeDashoffset:0, duration:0.35, ease:"power2.out"}, 4.82);
+  tl.to(Q+"u1", {scaleX:1, duration:0.4, ease:"power3.out"}, 4.95);
+
+  /* ROW 2: "ambulances" @5.72; "teamed up with them." @6.34-7.28 */
+  tl.fromTo(Q+"r2", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 5.72);
+  tl.fromTo(Q+"p2", {strokeDashoffset:39}, {strokeDashoffset:0, duration:0.35, ease:"power2.out"}, 7.04);
+  tl.to(Q+"u2", {scaleX:1, duration:0.4, ease:"power3.out"}, 7.15);
+
+  /* ROW 3: "more driving bans," @8.26; "ahead of a storm." @10.00-10.76 */
+  tl.fromTo(Q+"r3", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 8.26);
+  tl.fromTo(Q+"p3", {strokeDashoffset:39}, {strokeDashoffset:0, duration:0.35, ease:"power2.out"}, 10.44);
+  tl.to(Q+"u3", {scaleX:1, duration:0.4, ease:"power3.out"}, 10.55);
+
+  /* "went wrong that Friday," @12.68-13.70: ticks pulse (0.2 up, 0.2 down), stagger 0.1 */
+  ["k1","k2","k3"].forEach(function(id, i) {
+    tl.to(Q+id, {scale:1.15, duration:0.2, ease:"power2.out"}, 13.16 + i*0.1);
+    tl.to(Q+id, {scale:1, duration:0.2, ease:"power2.in"}, 13.36 + i*0.1);
+  });
+
+  /* "the second one is about the clock." @14.48-15.50: rows 1-2 to 45 %, row 3 bright, clock beside row 3 */
+  tl.to([Q+"r1", Q+"b1", Q+"k1", Q+"r2", Q+"b2", Q+"k2"], {opacity:0.45, duration:0.4, ease:"power2.out"}, 14.48);
+  tl.to(Q+"t3", {color:"#f2f5f8", duration:0.4, ease:"power2.out"}, 14.48);
+  tl.fromTo(Q+"clock", {autoAlpha:0, scale:0.6}, {autoAlpha:1, scale:1, duration:0.35, ease:"back.out(1.7)"}, 14.48);
+  /* minute hand: one full turn, svgOrigin on both ends */
+  tl.fromTo(Q+"min", {rotation:0, svgOrigin:"36 36", smoothOrigin:false}, {rotation:360, svgOrigin:"36 36", smoothOrigin:false, duration:0.8, ease:"power2.inOut"}, 14.84);
+
+  /* exit after "clock." @15.50: panel, clock and source slide out, ends 16.80 */
+  tl.to([Q+"panel", Q+"clock"], {x:-160, autoAlpha:0, duration:0.45, ease:"power3.in"}, 16.35);
+  tl.to(Q+"src", {autoAlpha:0, duration:0.45, ease:"power2.in"}, 16.35);
+
+  window.__timelines["g-a5-7-county-plan"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
