@@ -311,8 +311,8 @@ window.__timelines = window.__timelines || {};
     { autoAlpha: 1, scaleY: 1, transformOrigin: "50% 100%", duration: 0.1, ease: "power2.out", stagger: 0.02 }, 2.42);
   /* C1 @7.00 */
   tl.fromTo(P + "c1", { autoAlpha: 0, y: 24, scale: 0.94 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 2.42);
-  /* HIS @7.92 (3.34): C1 out */
-  tl.to(P + "c1", { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 3.34);
+  /* C1 out held to 4.37 (was HIS @7.92 = 3.34, 0.47 s settled read): settled 2.87, reads 1.5 s; clear of C2 at 5.48 */
+  tl.to(P + "c1", { x: 980, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 4.37);
 
   /* HOUSE @8.20 (3.62): pin drops in, label in, ring pulses every 1.2 s */
   tl.fromTo(P + "pin", { autoAlpha: 0, y: -40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "back.out(1.8)" }, 3.62);
