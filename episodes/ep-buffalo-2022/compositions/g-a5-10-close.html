@@ -39,7 +39,6 @@ window.__timelines = window.__timelines || {};
   const tl = gsap.timeline({ paused: true });
   const DUR = 14.39;
   tl.set("#cl-rule", { scaleX: 0, autoAlpha: 1, transformOrigin: "50% 50%" }, 0);
-  tl.set("#cl-sweep", { x: -240 }, 0);
 
   /* ambient, whole window: slow push on the stage, glow and grid drift */
   tl.fromTo("#cl-stage", { scale: 1 }, { scale: 1.08, transformOrigin: "50% 50%", duration: DUR, ease: "none" }, 0);
