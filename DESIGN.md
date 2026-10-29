@@ -252,7 +252,7 @@ floors/ceilings; taste stays with the model.
   ("cupcake renamed fruit-cake" ban). Different stock files of similar subjects are legitimate
   different shots; the sin is re-showing ONE file under different references. Edit script
   carries a shot ledger: filename → subject-family → uses.
-- **Outro**: match-cut the channel title to the closing line; card does not sit.
+- **Outro**: match-cut the channel title to the closing line; card does not sit. The close card carries the `library/inhouse/outro-brand.html` lockup (`references/mg-quickref.md` "Close card"); `sweep_episode.py` fails an `ep-` close without it.
 
 ## Editing grammar (seed — grows via learnings/)
 
