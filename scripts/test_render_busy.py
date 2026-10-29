@@ -128,19 +128,15 @@ with tempfile.TemporaryDirectory() as d:
 
         # the checker's own parent chain: a render_acts.py that runs the check must not see itself
         probe = Path(d) / "render_acts.py"  # same basename on purpose
-        probe.write_text(f"import sys, os; sys.path.insert(0, {str(S)!r}); import render_busy
-"
-                         "print('SELF', os.getpid() in {p for p, _, _ in render_busy.busy_jobs()})
-"
-                         "print('PARENT_OF_CHILD', os.getpid() in {p for p, _, _ in render_busy.busy_jobs(self_pid=os.getppid())})
-", encoding="utf-8")
+        probe.write_text(f"import sys, os; sys.path.insert(0, {str(S)!r}); import render_busy; "
+                         "print('SELF', os.getpid() in {p for p, _, _ in render_busy.busy_jobs()})", encoding="utf-8")
         r = subprocess.run([sys.executable, str(probe)], capture_output=True, text=True, creationflags=NW)
         check("a render_acts.py that runs the check does not count itself", "SELF False" in r.stdout, r.stdout + r.stderr)
         table = [{"ProcessId": 10, "ParentProcessId": 1, "Name": "python.exe",
                   "CommandLine": f'python.exe "{fake}" ep-x'},
                  {"ProcessId": 11, "ParentProcessId": 10, "Name": "cmd.exe", "CommandLine": "cmd /c check"},
                  {"ProcessId": 12, "ParentProcessId": 11, "Name": "python.exe", "CommandLine": "python.exe render_busy.py --jobs"},
-                 {"ProcessId": 20, "ParentProcessId": 1, "Name": "python.exe", "CommandLine": 'python.exe -u "C:\a b\run_gates.py" ep-y'}]
+                 {"ProcessId": 20, "ParentProcessId": 1, "Name": "python.exe", "CommandLine": r'python.exe -u "C:\a b\run_gates.py" ep-y'}]
         got = [(p, k) for p, k, _ in render_busy.busy_jobs(table, self_pid=12)]
         check("the whole parent chain is skipped (render_acts.py ancestor), a sibling job still counts",
               got == [(20, "run_gates.py")], got)
