@@ -10,7 +10,8 @@ This file is tracked in `storm-market/skills/storm-episode/` and junctioned into
 behind origin/main, another session's uncommitted edits), and then its CLAUDE.md/DESIGN.md/
 learnings/ are outdated rules that LOOK authoritative, and new contracts merged on main
 are invisible from a stale checkout. The preflight is the fix. Everything else here is a pointer — the repo docs on FRESH main
-are the source of truth, and this skill never duplicates their content, so it cannot drift.
+are the source of truth. A number, threshold or recipe written here is a defect: it drifts the moment the doc changes
+(four did between 16 and 29 Oct 26), so this file names the doc and its heading and nothing more.
 
 Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
 
