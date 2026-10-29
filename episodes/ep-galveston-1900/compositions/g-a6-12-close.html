@@ -56,8 +56,9 @@ window.__timelines = window.__timelines || {};
   /* page drifts y -10 over 6 s */
   tl.to(P + "pagewrap", { y: -10, duration: 6, ease: "none" }, 0);
 
-  /* LEARN @3.82: page fades 0.35 -> 0 until 6.12 */
-  tl.to(P + "pagewrap", { opacity: 0, duration: 2.30, ease: "power1.inOut" }, 3.82);
+  /* page stays under the logo and leaves as the title lands: "know" @8.42 -> "was" @10.02. It is what keeps the
+     frame above blackdetect until the title (the 160 px logo alone covers about 1 % of the frame) */
+  tl.to(P + "pagewrap", { opacity: 0, duration: 1.60, ease: "power1.inOut" }, 8.42);
   /* "who is sending it" @5.58: Havana dashed line first, then the lit line from "So" @6.76 to 8.42 */
   tl.to(P + "havana", { opacity: 0, duration: 0.54, ease: "power1.in" }, 5.58);
   tl.to([P + "lit", P + "dot"], { opacity: 0, duration: 1.66, ease: "power1.inOut" }, 6.76);
