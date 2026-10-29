@@ -94,6 +94,9 @@ window.__timelines = window.__timelines || {};
   tl.to([B + "tsnow", B + "twind"], { scale: 1.06, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.18);
   /* DO. @9.72: the hazard beat leaves before "This" @10.34 */
   tl.to([B + "eyebrow", B + "snow", B + "wind", B + "tsnow", B + "twind"], { autoAlpha: 0, y: -24, duration: 0.45, ease: "power2.in" }, 9.8);
+  /* DO. ends @10.00: the lockup's rule and glow start, so 10.25..10.78 is never bare ground before "The" */
+  tl.to(B + "rule", { scaleX: 1, duration: 0.8, ease: "power3.out" }, 9.95);
+  tl.to(B + "glow", { scale: 1.15, duration: 0.9, ease: "sine.out" }, 9.9);
 
   /* THE @10.78, WARNING @11.04, HOUR @11.38: each word lands on the voice */
   tl.to(B + "w1", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 10.78);
