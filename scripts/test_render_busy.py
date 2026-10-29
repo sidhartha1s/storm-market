@@ -29,6 +29,7 @@ def check(name, cond, detail=""):
         print(f"FAIL {name} {detail}")
 
 
+REAL_LIVE_RENDERS = render_busy.live_renders
 render_busy.live_renders = lambda: []
 render_busy.pin_chrome_to_dedicated_gpu = lambda: None
 
@@ -102,9 +103,56 @@ with tempfile.TemporaryDirectory() as d:
     check("render.cmd dry run: request 2 at 3.3 GB free -> --workers gets 1", r.stdout.strip() == "WORKERS=1",
           f"rc={r.returncode} out={r.stdout!r} err={r.stderr!r}")
 
+# "Is a heavy job alive?" matches exe + argv, never a substring (29 Oct 26: a checker counted its own shell).
+# Real sleepers are spawned and looked up by pid, so a render running on this box changes nothing here.
+NW = subprocess.CREATE_NO_WINDOW
+with tempfile.TemporaryDirectory() as d:
+    fake = Path(d) / "render_acts.py"
+    fake.write_text("import time; time.sleep(60)\n", encoding="utf-8")
+    mention = ("import time; time.sleep(60)  # grep render_acts.py snapshot_queue.py test_detectors hyperframes render", )
+    procs = {
+        "real": subprocess.Popen([sys.executable, str(fake)], creationflags=NW),
+        # a python -c string / node -e string that only MENTIONS the job: the old regex counted these
+        "py -c mention": subprocess.Popen([sys.executable, "-c", *mention], creationflags=NW),
+        "node -e mention": subprocess.Popen(["node", "-e", "setTimeout(()=>{},60000) // hyperframes render graphics_qc.mjs"], creationflags=NW),
+        "cmd mention": subprocess.Popen(["cmd", "/c", f'ping -n 60 127.0.0.1 > nul & rem grep render_acts.py'], creationflags=NW),
+    }
+    try:
+        time.sleep(1.5)
+        seen = {pid: kind for pid, kind, _ in render_busy.busy_jobs()}
+        check("a real `python <dir>/render_acts.py` sleeper is busy", seen.get(procs["real"].pid) == "render_acts.py", seen)
+        for name in ("py -c mention", "node -e mention", "cmd mention"):
+            check(f"{name}: a command line that only mentions a job name is idle", procs[name].pid not in seen, seen)
+        check("hyperframes render live_renders() ignores a node -e string that mentions it",
+              not any(l.split()[0] == str(procs["node -e mention"].pid) for l in REAL_LIVE_RENDERS()))
+
+        # the checker's own parent chain: a render_acts.py that runs the check must not see itself
+        probe = Path(d) / "render_acts.py"  # same basename on purpose
+        probe.write_text(f"import sys, os; sys.path.insert(0, {str(S)!r}); import render_busy
+"
+                         "print('SELF', os.getpid() in {p for p, _, _ in render_busy.busy_jobs()})
+"
+                         "print('PARENT_OF_CHILD', os.getpid() in {p for p, _, _ in render_busy.busy_jobs(self_pid=os.getppid())})
+", encoding="utf-8")
+        r = subprocess.run([sys.executable, str(probe)], capture_output=True, text=True, creationflags=NW)
+        check("a render_acts.py that runs the check does not count itself", "SELF False" in r.stdout, r.stdout + r.stderr)
+        table = [{"ProcessId": 10, "ParentProcessId": 1, "Name": "python.exe",
+                  "CommandLine": f'python.exe "{fake}" ep-x'},
+                 {"ProcessId": 11, "ParentProcessId": 10, "Name": "cmd.exe", "CommandLine": "cmd /c check"},
+                 {"ProcessId": 12, "ParentProcessId": 11, "Name": "python.exe", "CommandLine": "python.exe render_busy.py --jobs"},
+                 {"ProcessId": 20, "ParentProcessId": 1, "Name": "python.exe", "CommandLine": 'python.exe -u "C:\a b\run_gates.py" ep-y'}]
+        got = [(p, k) for p, k, _ in render_busy.busy_jobs(table, self_pid=12)]
+        check("the whole parent chain is skipped (render_acts.py ancestor), a sibling job still counts",
+              got == [(20, "run_gates.py")], got)
+    finally:
+        for pr in procs.values():
+            pr.kill()
+    r = subprocess.run([sys.executable, str(S / "render_busy.py"), "--jobs"], capture_output=True, text=True, creationflags=NW)
+    check("--jobs CLI: exit 0 idle / 1 busy, last line says which", r.returncode in (0, 1) and
+          r.stdout.strip().splitlines()[-1].startswith("[render_busy] " + ("IDLE" if r.returncode == 0 else "BUSY")), r.stdout + r.stderr)
+
 # Heavy lock (owner 26 Oct 26): a second heavy job waits for the first, then runs. Temp lock file; the
 # HEAVY_LOCK_TOKEN e2e.py holds is dropped, or every job here would pass through as e2e's child.
-NW = subprocess.CREATE_NO_WINDOW
 with tempfile.TemporaryDirectory() as d:
     lock = Path(d) / "heavy.lock"
     os.environ["HEAVY_LOCK_FILE"] = str(lock)
