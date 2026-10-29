@@ -77,9 +77,12 @@ window.__timelines = window.__timelines || {};
 
   /* ONE STORM @0.00: eyebrow in on the first word */
   tl.fromTo(B + "eyebrow", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0);
-  /* TWO @1.02, DANGERS @1.32: SNOW then WIND */
-  tl.fromTo(B + "snow", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.02);
-  tl.fromTo(B + "wind", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.32);
+  /* ONE @0.00, STORM @0.26: SNOW then WIND, both readable by 0.27 (no lone eyebrow on ground after e2's cut) */
+  tl.fromTo(B + "snow", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 0.0);
+  tl.fromTo(B + "wind", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 0.1);
+  /* TWO @1.02, DANGERS @1.32: each chip punches on its word */
+  tl.to(B + "snow", { scale: 1.06, duration: 0.15, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.02);
+  tl.to(B + "wind", { scale: 1.06, duration: 0.15, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.32);
   /* hold beat: chips drift apart slightly so nothing sits */
   tl.to(B + "snow", { x: -14, duration: 8.2, ease: "sine.inOut" }, 1.5);
   tl.to(B + "wind", { x: 14, duration: 8.2, ease: "sine.inOut" }, 1.8);
