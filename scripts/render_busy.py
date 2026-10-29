@@ -21,6 +21,9 @@ new exe path, so the pin is re-asserted on every launch, never once by hand.
 render when at least LIGHT_MIN_FREE_GB (default 2) is free, so composers can test a fix without
 queueing behind a 15-minute draft (owner 17 Sep 26). The full browser gates stay exclusive.
 
+--jobs: print every heavy job alive (render, render_acts, snapshot_queue, run_gates, test_detectors, graphics_qc,
+blank_scan), exit 0 idle / 1 busy. For wait scripts; matches by exe + argv and skips its own parent chain.
+
 Exit 0 = clear. Exit 3 = a render is running, or (with --launch) not even 1 worker fits.
 RENDER_BUSY_OK=1 overrides, for the case where the render itself is the thing being tested.
 
@@ -72,10 +75,81 @@ def ps(cmd):
     return subprocess.run(["powershell", "-NoProfile", "-Command", cmd], capture_output=True, text=True).stdout.strip()
 
 
+# --- "is a heavy job alive?": match the executable and its argv, never a substring of a command line ---
+# 2026-10-29: two checkers matched a regex against every process's command line, so they counted themselves, their
+# parent shell, or any agent shell whose bash -c / powershell -Command string merely MENTIONED render_acts.py or
+# test_detectors, and waited forever or refused. A job is found here only by exact exe name plus the argv shape
+# below; the checker's own pid and its whole parent chain are never a job. This is the one owner of the scan:
+# wait scripts call `render_busy.py --jobs` (exit 0 idle, 1 busy) instead of their own regex.
+PY_JOBS = {"render_acts.py", "snapshot_queue.py", "run_gates.py", "test_detectors.py"}  # python.exe, argv[1] script
+NODE_JOBS = {"graphics_qc.mjs", "blank_scan.mjs"}  # node.exe, script arg
+_CODE_FLAGS = {"-c", "-m", "-e", "-p", "--eval", "--print"}  # the next arg is code, not a script path
+
+
+def process_table():
+    """[{ProcessId, ParentProcessId, Name, CommandLine}] for every process."""
+    out = ps("Get-CimInstance Win32_Process | Select-Object ProcessId,ParentProcessId,Name,CommandLine | ConvertTo-Json -Compress")
+    rows = json.loads(out) if out else []
+    return [rows] if isinstance(rows, dict) else rows
+
+
+def split_args(cmdline):
+    """argv of a Windows command line, the way the C runtime splits it."""
+    n = ctypes.c_int()
+    shell32 = ctypes.WinDLL("shell32")
+    shell32.CommandLineToArgvW.restype = ctypes.POINTER(ctypes.c_wchar_p)
+    argv = shell32.CommandLineToArgvW(cmdline, ctypes.byref(n))
+    try:
+        return [argv[i] for i in range(n.value)]
+    finally:
+        ctypes.WinDLL("kernel32").LocalFree(argv)
+
+
+def script_arg(args):
+    """The first non-flag arg, or None when the interpreter runs inline code (-c/-m/-e/-p)."""
+    for a in args:
+        if a in _CODE_FLAGS:
+            return None
+        if not a.startswith("-"):
+            return a
+    return None
+
+
+def job_kind(name, cmdline):
+    """Label of the heavy job this process IS (exact exe name + argv), else None."""
+    name, args = (name or "").lower(), split_args(cmdline)[1:] if cmdline else []
+    if name in ("python.exe", "pythonw.exe") and (s := script_arg(args)) and os.path.basename(s.replace("\\", "/")) in PY_JOBS:
+        return os.path.basename(s.replace("\\", "/"))
+    if name == "node.exe":
+        s = script_arg(args)
+        if s and os.path.basename(s.replace("\\", "/")) in NODE_JOBS:
+            return os.path.basename(s.replace("\\", "/"))
+        code = next((i for i, a in enumerate(args) if a in _CODE_FLAGS), len(args))
+        scan = args[:code]  # a hyperframes CLI path (or npx's hyperframes@x) followed by a separate `render` arg
+        if any("hyperframes" in a.lower() and not a.startswith("-") and "render" in scan[i + 1:] for i, a in enumerate(scan)):
+            return "hyperframes render"
+    return None
+
+
+def ancestors(table, pid):
+    """pid and every parent above it, so a checker never counts itself or the shell that launched it."""
+    parent, chain = {r["ProcessId"]: r["ParentProcessId"] for r in table}, set()
+    while pid and pid not in chain:
+        chain.add(pid)
+        pid = parent.get(pid)
+    return chain
+
+
+def busy_jobs(table=None, self_pid=None, kinds=None):
+    """[(pid, kind, commandline)] of live heavy jobs; `kinds` limits which (default all)."""
+    table = process_table() if table is None else table
+    skip = ancestors(table, os.getpid() if self_pid is None else self_pid)
+    jobs = [(r["ProcessId"], job_kind(r["Name"], r["CommandLine"]), r["CommandLine"]) for r in table if r["ProcessId"] not in skip]
+    return [j for j in jobs if j[1] and (kinds is None or j[1] in kinds)]
+
+
 def live_renders():
-    out = ps("Get-CimInstance Win32_Process | Where-Object { $_.Name -eq 'node.exe' -and "
-             "$_.CommandLine -like '*hyperframes*render*' } | ForEach-Object { $_.ProcessId.ToString() + ' ' + $_.CommandLine }")
-    return [l.strip() for l in out.splitlines() if l.strip()]
+    return [f"{pid} {cmd}" for pid, _, cmd in busy_jobs(kinds={"hyperframes render"})]
 
 
 def pin_chrome_to_dedicated_gpu():
@@ -251,6 +325,12 @@ def main():
         parent = (os.getppid(), created(os.getppid()))
         release(lambda cur: (cur["pid"], cur["created"]) == parent)
         sys.exit(0)
+    if "--jobs" in sys.argv:  # wait scripts: print every heavy job alive, exit 0 idle / 1 busy (no RAM check, no lock)
+        jobs = busy_jobs()
+        for pid, kind, cmd in jobs:
+            print(f"{pid} {kind}: {cmd[:160]}")
+        print(f"[render_busy] {'BUSY' if jobs else 'IDLE'} - {len(jobs)} heavy job(s)")
+        sys.exit(1 if jobs else 0)
     if os.environ.get("RENDER_BUSY_OK") == "1":
         sys.exit(0)
     live = live_renders()
