@@ -3,52 +3,104 @@
 <head><meta charset="UTF-8"></head>
 <body>
 <!--
-  g-a5-9-title (A5-S9, standard): closing title "THE WARNING HOUR" + 2 px red rule, over g-a5-8-splitmap (map fading 1.0 to 0.25 in its S9 window). Track 3.
-  Host: data-start = A5-S9 audio start + 2.84 (first mark "Today,"), data-duration 10.88 (to A5-S9 13.72). Cue times below are LOCAL (segment time - 2.84); segment times in the comments.
-  Text only: no number, URL or call to action. One text tier by design (brief section 3). No card behind the title; text-shadow carries it. If the frame read shows the map competing, add a radial scrim rgba(3,5,8,0.55) 1100 x 360 behind the title (never a box).
-  Layout: title block top 430, centred x 960, 120 px Arial Black; rule 520 px wide, 22 px under the title. Corner (x >= 1600, y >= 680) kept empty.
+  g-a5-9-title (A5-S9, close): rebuilt 29 Oct 26 from the channel lockup (library/inhouse/outro-brand.html via the shipped
+  Nepal g-outro round 2: "The / Warning (amber) / Hour", explicit word gaps, amber rule, grid + glow ground). Track 3.
+  Why: the old card started 2.84 s into A5-S9 ("Today,") over g-a5-8-splitmap's S9 window, which was cut for ins-paul-6, so
+  939.333-942.173 sat empty near-black under "One storm can bring two dangers at once." (draft 1029 frames 939.5-941.5),
+  and the grey Arial Black title with a red rule was not the channel lockup.
+  Host: data-start = A5-S9 start 939.333 (= ins-paul-e2 end, butted as Buffalo's g-a5-10-close), data-duration 13.72 (root end).
+  Cues are local = audio/a5-s9.words.json seconds. The line before "This was" is carried by two hazard chips and their
+  present-day NWS warning tags (as Nepal carried its line on footage); the wordmark lands on the closing line.
+  Corner (x >= 1600, y >= 680) kept empty.
 -->
 <template>
 <style>
-  #g-a5-9-title-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; }
-  /* timed wrapper (exit) > float layer > title + rule */
-  #a59-block { position:absolute; left:96px; top:430px; width:1728px; height:164px; opacity:0; visibility:hidden; }
-  #a59-float { position:absolute; inset:0; }
-  #a59-title { position:absolute; left:0; right:0; top:0; text-align:center; white-space:nowrap; transform-origin:50% 50%;
-    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:120px; line-height:120px; letter-spacing:0.06em; color:#f2f5f8;
-    text-shadow:0 3px 26px rgba(0,0,0,0.9);
-    opacity:0; visibility:hidden; }
-  /* local scrim (brief section 3): soft radial, never a box */
-  #a59-scrim { position:absolute; left:314px; top:-98px; width:1100px; height:360px; opacity:0; visibility:hidden;
-    background:radial-gradient(ellipse at 50% 50%, rgba(3,5,8,0.55) 0%, rgba(3,5,8,0) 70%); }
-  #a59-rule { position:absolute; left:700px; top:142px; width:520px; height:2px; background:#d0121f; transform-origin:50% 50%;
-    opacity:0; visibility:hidden; }
+  .a59-wrap { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  .a59-glow { position:absolute; left:360px; top:240px; width:1200px; height:600px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(216,161,58,0.12), rgba(216,161,58,0) 70%); }
+  .a59-grid { position:absolute; left:-240px; top:-60px; width:2400px; height:1200px;
+    background-image: linear-gradient(rgba(147,163,178,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(147,163,178,0.04) 1px, transparent 1px);
+    background-size: 120px 120px; }
+  .a59-stage { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* hazard beat: eyebrow, two glass chips, a warning tag under each */
+  #a59-eyebrow { position:absolute; left:0; right:0; top:300px; text-align:center; font-weight:700; font-size:30px;
+    letter-spacing:6px; color:#93a3b2; }
+  .a59-chip { position:absolute; top:380px; width:560px; height:150px; box-sizing:border-box; border-radius:18px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:84px; line-height:150px; color:#f2f5f8; }
+  .a59-chip i { position:absolute; left:40px; right:40px; bottom:0; height:4px; border-radius:2px; }
+  #a59-snow { left:330px; }   #a59-snow i { background:#7fb2e5; }
+  #a59-wind { left:1030px; }  #a59-wind i { background:#d8a13a; }
+  .a59-tag { position:absolute; top:556px; width:560px; text-align:center; font-weight:700; font-size:30px; letter-spacing:3px;
+    color:#ff5a4f; }
+  #a59-tsnow { left:330px; }  #a59-twind { left:1030px; }
+  /* channel lockup (Nepal g-outro round 2): word gaps are explicit margins */
+  .a59-mark { position:absolute; left:0; right:0; top:462px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:120px; line-height:140px; letter-spacing:6px; color:#f2f5f8; white-space:nowrap; }
+  .a59-mark span { display:inline-block; }
+  #a59-w2, #a59-w3 { margin-left:0.33em; }
+  .a59-amber { color:#d8a13a; }
+  .a59-rule { position:absolute; left:660px; width:600px; top:630px; height:4px; border-radius:2px; background:#d8a13a; }
+  /* start-hidden in CSS as well as on the timeline (mg-quickref "Motion and exits") */
+  .a59-hide { opacity:0; visibility:hidden; }
 </style>
-<div id="g-a5-9-title-root" data-composition-id="g-a5-9-title" data-width="1920" data-height="1080" data-type-ok="title card: single line by design">
-  <div id="a59-block" data-start="0" data-duration="10.88" data-track-index="1">
-    <div id="a59-float">
-      <div id="a59-title">THE WARNING HOUR</div>
-      <div id="a59-rule"></div>
-    </div>
+<div class="a59-wrap" id="g-a5-9-title-root" data-composition-id="g-a5-9-title" data-width="1920" data-height="1080" data-duration="13.72">
+  <div class="a59-grid" id="a59-grid"></div>
+  <div class="a59-glow" id="a59-glow"></div>
+  <div class="a59-stage" id="a59-stage">
+    <div id="a59-eyebrow" class="a59-hide">ONE STORM</div>
+    <div class="a59-chip a59-hide" id="a59-snow">SNOW<i></i></div>
+    <div class="a59-chip a59-hide" id="a59-wind">WIND<i></i></div>
+    <div class="a59-tag a59-hide" id="a59-tsnow">WINTER STORM WARNING</div>
+    <div class="a59-tag a59-hide" id="a59-twind">HIGH WIND WARNING</div>
+    <div class="a59-mark" id="a59-mark"><span id="a59-w1" class="a59-hide">The</span><span class="a59-amber a59-hide" id="a59-w2">Warning</span><span id="a59-w3" class="a59-hide">Hour</span></div>
+    <div class="a59-rule" id="a59-rule"></div>
   </div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
-(function() {
+(function () {
   const tl = gsap.timeline({ paused: true });
+  const DUR = 13.72;
   const B = "#a59-";
-  tl.set(B+"block", {autoAlpha:1}, 0);
-  tl.set([B+"title", B+"rule"], {autoAlpha:0}, 0);
-  /* TODAY @2.84 (local 0.00): title in, fully on at 0.80, long before "This was" @10.34 (local 7.50) */
-  tl.fromTo(B+"title", {autoAlpha:0, y:30, scale:0.96}, {autoAlpha:1, y:0, scale:1, duration:0.8, ease:"power3.out"}, 0);
-  /* rule draws 0.3 s later from the centre (local 0.30), 0.6 s */
-  tl.fromTo(B+"rule", {autoAlpha:0, scaleX:0}, {autoAlpha:1, scaleX:1, duration:0.6, ease:"power3.out"}, 0.3);
-  /* hold 3.70..10.30 (local 0.86..7.46): slow breath, title and rule float together */
-  tl.to(B+"float", {y:-10, scale:1.02, duration:6.6, ease:"none"}, 0.86);
-  /* WARNING @11.04 (local 8.20): rule brightness pulse, 0.5 s; title letter-spacing never tweened */
-  tl.to(B+"rule", {opacity:0.5, duration:0.25, ease:"sine.inOut", yoyo:true, repeat:1}, 8.2);
-  /* Hour. ends @11.38 (local 8.54); hold to local 10.08, then fade through with g-a5-8's fade to black, ends @13.72 (local 10.88) */
-  tl.to(B+"block", {autoAlpha:0, duration:0.8, ease:"power2.inOut"}, 10.08);
+  tl.set(B + "rule", { scaleX: 0, transformOrigin: "50% 50%" }, 0);
+  tl.set([B + "w1", B + "w2", B + "w3"], { autoAlpha: 0, y: 10 }, 0);
+  tl.set([B + "eyebrow", B + "snow", B + "wind", B + "tsnow", B + "twind"], { autoAlpha: 0, y: 0 }, 0);
+
+  /* ambient, whole window: slow push on the stage, glow and grid drift (on from frame 0: hard cut from e2, never black) */
+  tl.fromTo(B + "stage", { scale: 1 }, { scale: 1.05, transformOrigin: "50% 50%", duration: DUR, ease: "none" }, 0);
+  tl.fromTo(B + "glow", { x: -80 }, { x: 80, duration: DUR, ease: "none" }, 0);
+  tl.fromTo(B + "grid", { x: 0 }, { x: 70, duration: DUR, ease: "none" }, 0);
+
+  /* ONE STORM @0.00: eyebrow in on the first word */
+  tl.fromTo(B + "eyebrow", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0);
+  /* TWO @1.02, DANGERS @1.32: SNOW then WIND */
+  tl.fromTo(B + "snow", { autoAlpha: 0, x: -40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.02);
+  tl.fromTo(B + "wind", { autoAlpha: 0, x: 40 }, { autoAlpha: 1, x: 0, duration: 0.45, ease: "power3.out" }, 1.32);
+  /* hold beat: chips drift apart slightly so nothing sits */
+  tl.to(B + "snow", { x: -14, duration: 8.2, ease: "sine.inOut" }, 1.5);
+  tl.to(B + "wind", { x: 14, duration: 8.2, ease: "sine.inOut" }, 1.8);
+  /* WARNINGS @4.26, BOTH @4.94: one tag under each chip */
+  tl.fromTo(B + "tsnow", { autoAlpha: 0, y: -12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 4.26);
+  tl.fromTo(B + "twind", { autoAlpha: 0, y: -12 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 4.66);
+  /* SOUND @6.50 and KNOW @9.18: the tags pulse like an alert */
+  tl.to([B + "tsnow", B + "twind"], { scale: 1.06, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 3 }, 6.5);
+  tl.to([B + "tsnow", B + "twind"], { scale: 1.06, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 1 }, 9.18);
+  /* DO. @9.72: the hazard beat leaves before "This" @10.34 */
+  tl.to([B + "eyebrow", B + "snow", B + "wind", B + "tsnow", B + "twind"], { autoAlpha: 0, y: -24, duration: 0.45, ease: "power2.in" }, 9.8);
+
+  /* THE @10.78, WARNING @11.04, HOUR @11.38: each word lands on the voice */
+  tl.to(B + "w1", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 10.78);
+  tl.to(B + "w2", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 11.04);
+  tl.to(B + "w3", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 11.38);
+  tl.to(B + "rule", { scaleX: 1, duration: 0.6, ease: "power3.out" }, 11.66);
+  tl.to(B + "w2", { scale: 1.04, transformOrigin: "50% 60%", duration: 0.3, ease: "sine.inOut", yoyo: true, repeat: 1 }, 12.1);
+
+  /* fade to black over the last 0.92 s */
+  tl.to(B + "stage", { autoAlpha: 0, duration: 0.92, ease: "power1.in" }, DUR - 0.92);
+  tl.to([B + "glow", B + "grid"], { autoAlpha: 0, duration: 0.92, ease: "power1.in" }, DUR - 0.92);
   window.__timelines["g-a5-9-title"] = tl;
 })();
 </script>
