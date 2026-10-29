@@ -655,6 +655,51 @@ with tempfile.TemporaryDirectory() as d:
               f"!= external.voice_ref_md5 {real}" in r.stdout + r.stderr, (r.stdout + r.stderr)[-600:])
 
 # ===================================================================================
+# 9b. sweep_episode.py — the last-act close carries the library brand lockup (outro-brand.html).
+# Owner order 29 Oct 26: batch A hand-built three different closes. Shipped closes PASS; a title
+# without the amber WARNING lockup FAILs; an episode with no comp ending at the end FAILs;
+# non-`ep-` episodes are not checked.
+# ===================================================================================
+CLOSE_LABEL = "close card carries the brand lockup"
+FX = S / "fixtures" / "close_standard"
+
+
+def close_line(out):
+    return next((l for l in out.splitlines() if CLOSE_LABEL in l), "")
+
+
+def close_ep(root, slug, comp_html, start=0.5, dur=2.0, track=2):
+    # make_ep's episode is 2.5 s long; the default host (0.5 + 2.0) ends exactly at that end
+    host = (f'<div id="host-close" data-composition-id="g-close" data-composition-src="compositions/g-close.html" '
+            f'data-start="{start}" data-duration="{dur}" data-track-index="{track}"></div>')
+    ep = make_ep(Path(root) / slug, extra=host)
+    (ep / "compositions" / "g-close.html").write_text(comp_html, encoding="utf-8")
+    return ep
+
+
+for slug in ("ep-1974-super-outbreak", "ep-enderlin-2025", "ep-nepal-floods-2026"):
+    with tempfile.TemporaryDirectory() as d:
+        comp = (S.parent / "episodes" / slug / "compositions" / "g-outro.html").read_text(encoding="utf-8")
+        code, out = run("sweep_episode.py", close_ep(d, "ep-close-shipped", comp))
+        check(f"sweep_episode close card: shipped {slug} g-outro PASSes", close_line(out).startswith("PASS"), close_line(out) or out[-400:])
+
+for fx, want in (("galveston-g-a6-12-close.html", "FAIL"), ("appalachian-g-a5-9-title.html", "FAIL"),
+                 # Buffalo's as-built close (548ae1db) is the Enderlin lockup adapted (cl- classes), so it PASSes
+                 ("buffalo-g-a5-10-close.html", "PASS")):
+    with tempfile.TemporaryDirectory() as d:
+        code, out = run("sweep_episode.py", close_ep(d, "ep-close-fx", (FX / fx).read_text(encoding="utf-8")))
+        check(f"sweep_episode close card: batch-A {fx} {want}s", close_line(out).startswith(want), close_line(out) or out[-400:])
+
+with tempfile.TemporaryDirectory() as d:
+    code, out = run("sweep_episode.py", close_ep(d, "ep-close-early", "<template><div>THE WARNING HOUR</div></template>", start=0.2, dur=1.0))
+    check("sweep_episode close card: an ep- episode with no comp ending at its end FAILs",
+          close_line(out).startswith("FAIL") and "ends at the episode end" in out, close_line(out) or out[-400:])
+
+with tempfile.TemporaryDirectory() as d:
+    code, out = run("sweep_episode.py", close_ep(d, "close-not-ep", "<template><div>THE WARNING HOUR</div></template>"))
+    check("sweep_episode close card: a non-`ep-` slug is skipped", "SKIP " + CLOSE_LABEL in out, out[-400:])
+
+# ===================================================================================
 # 10. verify_render.sh silence classifier: the closing end card (last 4 s) may be silent
 # (owner 21 Oct 26: Joplin's final failed on silence 1194.33-1196.54 under its 4 s end card).
 # Runs the real heredoc out of verify_render.sh so the test cannot drift from what ships.
