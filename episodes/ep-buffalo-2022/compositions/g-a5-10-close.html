@@ -56,8 +56,7 @@ window.__timelines = window.__timelines || {};
   /* SETTLED BEFORE THE ROADS CLOSE @7.06-8.46: the rule stretches, then returns */
   tl.to("#cl-rule", { scaleX: 1.35, duration: 1.4, ease: "power2.inOut" }, 7.06);
   tl.to("#cl-rule", { scaleX: 1, duration: 1.2, ease: "power2.inOut" }, 8.46);
-  /* THIS WAS THE WARNING HOUR @9.06-10.18: second sweep, words lift on their names (WARNING @9.70) */
-  tl.fromTo("#cl-sweep", { x: -240 }, { x: 1420, duration: 1.4, ease: "power1.inOut" }, 9.3);
+  /* THIS WAS THE WARNING HOUR @9.06-10.18: words lift on their names (WARNING @9.70) */
   tl.fromTo(["#cl-w1", "#cl-w2", "#cl-w3"], { y: 0 }, { y: -8, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1, stagger: 0.12 }, 9.7);
   /* fade to black by DUR - 0.08 after the 4 s tail */
   tl.to("#cl-stage", { autoAlpha: 0, duration: 1.0, ease: "power1.in" }, 13.31);
