@@ -46,9 +46,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#cl-grid", { x: 0 }, { x: 150, duration: DUR, ease: "none" }, 0);
   /* BLIZZARDS @0.00: match cut, the wordmark is there on frame 0 and settles */
   tl.fromTo(["#cl-w1", "#cl-w2", "#cl-w3"], { y: 10 }, { y: 0, duration: 0.4, ease: "power3.out", stagger: 0.05 }, 0);
-  /* DON'T ASK PERMISSION @0.44-1.44: the rule draws, first light sweep */
+  /* DON'T ASK PERMISSION @0.44-1.44: the rule draws (the screen-blend light sweep is gone, as on Nepal: its box
+     showed as a grey block beside "Hour") */
   tl.to("#cl-rule", { scaleX: 1, duration: 0.9, ease: "power3.out" }, 0.3);
-  tl.fromTo("#cl-sweep", { x: -240 }, { x: 1420, duration: 1.6, ease: "power1.inOut" }, 0.5);
   /* SENT WORD DAYS EARLY @2.36-3.62: the glow breathes */
   tl.fromTo("#cl-glow", { opacity: 1 }, { opacity: 0.55, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 2.62);
   /* A WARNING @4.34-4.68: the amber word pulses */
