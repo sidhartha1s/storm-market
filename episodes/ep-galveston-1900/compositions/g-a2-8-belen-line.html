@@ -219,13 +219,22 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "letters", { autoAlpha: 0.8, attr: { x2: HAV[0], y2: HAV[1] } }, { autoAlpha: 0.8, attr: { x2: WAS[0], y2: WAS[1] }, duration: 0.62, ease: "power2.inOut" }, 10.58);
   tl.fromTo(P + "letlab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 11.20);
 
-  /* BUREAU @12.80: return dot travels Washington -> Havana, arrives on "August." 14.32 */
-  tl.set(P + "retdot", { autoAlpha: 1 }, 12.80);
-  tl.fromTo(P + "retdot", { attr: { cx: WAS[0], cy: WAS[1] } }, { attr: { cx: HAV[0], cy: HAV[1] }, duration: 1.52, ease: "power1.inOut" }, 12.80);
-  tl.to(P + "retdot", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 14.32);
+  /* "1898, and" 11.20 -> 12.40: Gangoiti's letter rides Havana -> Washington; Washington pin answers on arrival */
+  tl.fromTo(P + "env", { autoAlpha: 0, x: HAV[0], y: HAV[1] }, { autoAlpha: 1, duration: 0.2, ease: "power1.out" }, 11.20);
+  tl.to(P + "env", { x: WAS[0], y: WAS[1], duration: 1.20, ease: "power1.inOut" }, 11.20);
+  tl.to(P + "was-dot", { scale: 1.4, transformOrigin: "50% 50%", duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 12.40);
+
+  /* BUREAU @12.80: the Bureau's letter rides back Washington -> Havana, arrives on "August." 14.32 */
+  tl.to(P + "env", { x: HAV[0], y: HAV[1], duration: 1.52, ease: "power1.inOut" }, 12.80);
+  tl.to(P + "env", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 14.32);
   tl.to(P + "hav-dot", { scale: 1.4, transformOrigin: "50% 50%", duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 14.32);
 
-  /* HEAR @16.06: letters line brightens 0.8 -> 1 -> 0.8 */
+  /* "So the Americans could HEAR him" 15.20 -> 16.06: one more letter reaches Washington on "hear"; burst there,
+     letters line brightens 0.8 -> 1 -> 0.8 */
+  tl.fromTo(P + "env", { autoAlpha: 0, x: HAV[0], y: HAV[1] }, { autoAlpha: 1, duration: 0.2, ease: "power1.out", immediateRender: false }, 15.20);
+  tl.to(P + "env", { x: WAS[0], y: WAS[1], duration: 0.86, ease: "power1.inOut" }, 15.20);
+  tl.to(P + "env", { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 16.06);
+  tl.fromTo(P + "was-burst", { autoAlpha: 1, scale: 1, transformOrigin: "50% 50%" }, { autoAlpha: 0, scale: 3.2, transformOrigin: "50% 50%", duration: 0.9, ease: "power2.out", immediateRender: false }, 16.06);
   tl.to(P + "letters", { opacity: 1, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 16.06);
 
   /* GALVESTON @17.40: Belen line draws from Havana and stops at its 60 % point (18.10); open end appears */
