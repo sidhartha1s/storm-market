@@ -12,7 +12,7 @@ import tempfile
 from collections import Counter
 from pathlib import Path
 from comp_consts import fold
-from narration_mounts import declared_cut, paul_lines, segment_findings
+from narration_mounts import cut_note, declared_cut, paul_lines, segment_findings
 
 ep = Path(sys.argv[1])
 h = (ep / "index.html").read_text(encoding="utf-8", errors="replace")
@@ -303,9 +303,9 @@ for gid in sorted(mounted):
         # the direction this check used to ignore entirely: a mount SHORTER than the
         # composition cuts off its own authored reveals
         elif last_beat - w["dur"] > 0.30 and not declared_cut(w["tag"], paul, after=w["at"] + w["dur"]):
-            overrun.append(("cuts a beat", gid, round(w["dur"], 1), round(last_beat, 1)))
+            overrun.append(("cuts a beat", gid, round(w["dur"], 1), round(last_beat, 1), cut_note(w["tag"], paul)))
 report("graphic window fits its timeline", overrun,
-       lambda x: f"{x[0]:9} {x[1]} window {x[2]}s vs timeline {x[3]}s")
+       lambda x: f"{x[0]:9} {x[1]} window {x[2]}s vs timeline {x[3]}s{x[4] if len(x) > 4 else ''}")
 # a skipped verdict is counted, never hidden behind the PASS above: make the duration a literal or a foldable const
 report("graphic timeline measurable (holds checked)", unmeasured,
        lambda x: f"{x[0]} window {x[2]}s vs timeline >= {x[3]}s: {x[1]} unresolved duration expression(s)")

@@ -4,7 +4,7 @@ A narration wav may be mounted as several <audio> tags with the same src, each p
 [data-media-start, data-media-start + data-duration] of the wav. The ranges must not overlap and must
 stay inside the wav. A part of the wav no mount plays is a hole: it passes only when the mount beside it
 declares data-cut-by="ins-paul-<n>", a voiced Paul clip (data-volume="1") that plays in the gap the cut
-leaves, starting at most MAX_GAP after that mount ends (or ending at most MAX_GAP before it starts).
+leaves: starting where the mount ends (within TOL), or, for a mount that starts mid-wav, ending at most MAX_GAP before it starts.
 A graphic host cut short for Paul declares the same attribute. sweep_episode.py and lint_timeline.py
 both read it here; anything undeclared fails as it did before the model existed.
 """
@@ -37,8 +37,21 @@ def declared_cut(tag, paul, after=None, before=None):
     w = paul.get(m.group(1)) if m else None
     if not w:
         return False
-    return ((after is not None and -TOL <= w[0] - after <= MAX_GAP)
+    # a cut short for Paul hands over exactly: his clip starts where the mount ends (within TOL);
+    # only a mount that starts mid-wav may leave a silent gap (MAX_GAP) after him
+    return ((after is not None and abs(w[0] - after) <= TOL)
             or (before is not None and -TOL <= before - w[1] <= MAX_GAP))
+
+
+def cut_note(tag, paul):
+    """' (<mount id> data-cut-by="<id>" does not line up ...)' when tag declares a cut that declared_cut rejected, else ''."""
+    m = re.search(r'\sdata-cut-by="([^"]+)"', tag)
+    if not m:
+        return ""
+    me = re.search(r'\sid="([^"]+)"', tag)
+    w = paul.get(m.group(1))
+    where = f"plays {w[0]:g}-{w[1]:g}s" if w else "is not a voiced ins-paul clip"
+    return f' ({me.group(1) if me else "?"} data-cut-by="{m.group(1)}" does not line up: {m.group(1)} {where})'
 
 
 def segment_findings(tags, wav_dur, paul, tol):
@@ -60,7 +73,8 @@ def segment_findings(tags, wav_dur, paul, tol):
         if hi - cur > tol and not ((prev and declared_cut(prev[3], paul, after=prev[1] + prev[2]))
                                    or (nxt and declared_cut(nxt[3], paul, before=nxt[1]))):
             out.append(("hole", f"wav {cur:.2f}-{hi:.2f}s is never played (data-duration {played:g}s vs wav "
-                                f"{wav_dur:.2f}s, diff {played - wav_dur:+.2f}s); a cut for Paul declares data-cut-by"))
+                                f"{wav_dur:.2f}s, diff {played - wav_dur:+.2f}s); a cut for Paul declares data-cut-by"
+                                f"{cut_note(prev[3], paul) if prev else ''}{cut_note(nxt[3], paul) if nxt else ''}"))
         if nxt:
             cur, prev = max(cur, nxt[0] + nxt[2]), nxt
     return out

@@ -320,6 +320,19 @@ with tempfile.TemporaryDirectory() as d:
     code, out = run("sweep_episode.py", ep_ov)
     check("sweep_episode partial mount: two mounts playing the same words FAIL", code == 1 and "both play wav" in out, out[-600:])
 
+with tempfile.TemporaryDirectory() as d:
+    # a trailing cut hands over exactly: Paul starting 0.3 s after the mount ends is a gap, not a cut for him
+    late = PAUL.replace('data-start="1.5"', 'data-start="1.8"')
+    ep_late = make_ep(Path(d) / "late", nx_dur=4.0, nx_wav_secs=4.0, nx_tags=partial_tags(' data-cut-by="ins-paul-1"'), extra=late)
+    code, out = run("sweep_episode.py", ep_late)
+    check("sweep_episode cut-by: a Paul clip starting 0.3 s after the cut FAILs, naming nx-a1s1 and ins-paul-1",
+          code == 1 and "never played" in out and 'nx-a1s1 data-cut-by="ins-paul-1" does not line up' in out, out[-600:])
+with tempfile.TemporaryDirectory() as d:
+    ep_gl = make_ep(Path(d) / "gl", comp_html=CUT_COMP, comp_window=1.5, extra=late, host_attrs=' data-cut-by="ins-paul-1"')
+    code, out = run("sweep_episode.py", ep_gl)
+    check("sweep_episode cut-by: a graphic cut short whose Paul clip starts 0.3 s late FAILs, naming both ids",
+          code == 1 and "cuts a beat" in out and 'data-cut-by="ins-paul-1" does not line up' in out, out[-600:])
+
 # ===================================================================================
 # 3. beat_density.py — exit code on a DEAD (>=4s motionless) composition
 # ===================================================================================
@@ -630,6 +643,44 @@ for label, cut_by, want in (("a wav split around a declared Paul clip passes", '
             '</section>', encoding="utf-8")
         code, out = run("lint_timeline.py", ep)
         check(f"lint_timeline partial mount: {label}", code == want and (("shorter than its wav" in out) == bool(want)), out)
+
+# cut-by must line up (lint): the trailing cut hands over exactly, a mid-wav mount (data-media-start) may follow Paul
+def cutby_ep(d, paul_start, tail_cut_by=' data-cut-by="ins-paul-1"', media_start=None):
+    ep = Path(d)
+    (ep / "media").mkdir(); (ep / "compositions").mkdir()
+    write_wav(ep / "media" / "a1.wav", 4.0)
+    (ep / "media" / "p.mp4").write_bytes(b"0")
+    mounts = (f'<audio id="nx-a1" src="media/a1.wav" data-start="0" data-duration="1.5"{tail_cut_by}></audio>' if media_start is None else
+              f'<audio id="nx-a1" src="media/a1.wav" data-start="1.0" data-duration="{4.0 - media_start}" data-media-start="{media_start}"{tail_cut_by}></audio>')
+    paul_dur = 1.0 if media_start is None else media_start - 0.3
+    (ep / "index.html").write_text(
+        '<section data-duration="5">'
+        '<video src="media/p.mp4" data-start="0" data-duration="5" data-track-index="1" muted></video>'
+        + mounts +
+        f'<video id="ins-paul-1" src="media/p.mp4" data-start="{paul_start}" data-duration="{paul_dur}" data-track-index="2" data-volume="1" data-has-audio="true"></video>'
+        + ('<audio id="nx-a1b" src="media/a1.wav" data-start="2.5" data-duration="1.5" data-media-start="2.5"></audio>' if media_start is None else '')
+        + '</section>', encoding="utf-8")
+    return ep
+
+
+with tempfile.TemporaryDirectory() as d:
+    code, out = run("lint_timeline.py", cutby_ep(d, 1.5))
+    check("lint_timeline cut-by: Paul starting exactly where the window ends passes the narration check", "shorter than its wav" not in out, out)
+with tempfile.TemporaryDirectory() as d:
+    code, out = run("lint_timeline.py", cutby_ep(d, 1.8))
+    check("lint_timeline cut-by: Paul starting 0.3 s late FAILs, naming nx-a1 and ins-paul-1",
+          code == 1 and 'nx-a1 data-cut-by="ins-paul-1" does not line up' in out, out)
+with tempfile.TemporaryDirectory() as d:
+    code, out = run("lint_timeline.py", cutby_ep(d, 1.5, tail_cut_by=' data-cut-by="ins-paul-9"'))
+    check("lint_timeline cut-by: a cut-by naming no Paul clip FAILs, naming both ids",
+          code == 1 and 'nx-a1 data-cut-by="ins-paul-9" does not line up' in out, out)
+with tempfile.TemporaryDirectory() as d:
+    # a5-s8 shape: wav plays from 1.0 (data-media-start), Paul speaks the skipped first part and ends just before it
+    code, out = run("lint_timeline.py", cutby_ep(d, 0.0, media_start=1.0))
+    check("lint_timeline media-start: a window of (wav - data-media-start) after a Paul clip passes", "shorter than its wav" not in out, out)
+with tempfile.TemporaryDirectory() as d:
+    code, out = run("lint_timeline.py", cutby_ep(d, 0.0, tail_cut_by="", media_start=1.0))
+    check("lint_timeline media-start: the same window with no cut-by FAILs", code == 1 and "shorter than its wav" in out, out)
 
 with tempfile.TemporaryDirectory() as d:
     # gap of 5s with no CTA and no structure -> already failed before; confirms baseline still works
