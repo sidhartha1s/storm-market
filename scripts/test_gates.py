@@ -683,6 +683,16 @@ with tempfile.TemporaryDirectory() as d:
     check("lint_timeline media-start: the same window with no cut-by FAILs", code == 1 and "shorter than its wav" in out, out)
 
 with tempfile.TemporaryDirectory() as d:
+    # a media-start mount whose cut-by lines up BEFORE it, then a short tail: the tail hole FAILs but must not
+    # blame the cut-by, which is fine on its other side
+    ep = cutby_ep(d, 0.0, media_start=1.0)
+    h = (ep / "index.html").read_text(encoding="utf-8").replace('data-duration="3.0"', 'data-duration="2.5"')
+    (ep / "index.html").write_text(h, encoding="utf-8")
+    code, out = run("lint_timeline.py", ep)
+    check("lint_timeline cut-by: a tail hole beside a mount whose cut-by lines up on its other side FAILs without blaming the cut-by",
+          code == 1 and "never played" in out and "does not line up" not in out, out)
+
+with tempfile.TemporaryDirectory() as d:
     # gap of 5s with no CTA and no structure -> already failed before; confirms baseline still works
     ep = make_lint_ep(Path(d), nx2_dur=2.0, nx2_start=7.0)
     code, out = run("lint_timeline.py", ep)

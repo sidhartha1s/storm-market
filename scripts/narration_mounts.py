@@ -74,7 +74,8 @@ def segment_findings(tags, wav_dur, paul, tol):
                                    or (nxt and declared_cut(nxt[3], paul, before=nxt[1]))):
             out.append(("hole", f"wav {cur:.2f}-{hi:.2f}s is never played (data-duration {played:g}s vs wav "
                                 f"{wav_dur:.2f}s, diff {played - wav_dur:+.2f}s); a cut for Paul declares data-cut-by"
-                                f"{cut_note(prev[3], paul) if prev else ''}{cut_note(nxt[3], paul) if nxt else ''}"))
+                                f"{cut_note(prev[3], paul) if prev and not declared_cut(prev[3], paul, before=prev[1]) else ''}"
+                                f"{cut_note(nxt[3], paul) if nxt and not declared_cut(nxt[3], paul, after=nxt[1] + nxt[2]) else ''}"))
         if nxt:
             cur, prev = max(cur, nxt[0] + nxt[2]), nxt
     return out
