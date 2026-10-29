@@ -83,7 +83,7 @@ def ps(cmd):
 # parent shell, or any agent shell whose bash -c / powershell -Command string merely MENTIONED render_acts.py or
 # test_detectors, and waited forever or refused. A job is found here only by exact exe name plus the argv shape
 # below; the checker's own pid and its whole parent chain are never a job. This is the one owner of the scan:
-# wait scripts call `render_busy.py --jobs` (exit 0 idle, 1 busy) instead of their own regex.
+# wait scripts call `render_busy.py --jobs` (exit 0 idle, 1 busy, 2 unreadable: never idle) instead of their own regex.
 PY_JOBS = {"render_acts.py", "snapshot_queue.py", "run_gates.py", "test_detectors.py",
            "test_gates.py", "e2e.py", "rungates244.py"}  # python.exe, argv[1] script (rungates244.py: the ad-hoc gate runner)
 NODE_JOBS = {"graphics_qc.mjs", "blank_scan.mjs"}  # node.exe, script arg
@@ -332,7 +332,7 @@ def main():
         parent = (os.getppid(), created(os.getppid()))
         release(lambda cur: (cur["pid"], cur["created"]) == parent)
         sys.exit(0)
-    if "--jobs" in sys.argv:  # wait scripts: print every heavy job alive, exit 0 idle / 1 busy (no RAM check, no lock)
+    if "--jobs" in sys.argv:  # wait scripts: print every heavy job alive, exit 0 idle / 1 busy / 2 unreadable (no RAM check, no lock)
         try:
             jobs = busy_jobs()
         except RuntimeError as e:  # never IDLE on an unread table
