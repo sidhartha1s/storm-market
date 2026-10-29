@@ -358,7 +358,7 @@ def test_stop_all_ends_every_running_lane_by_its_log(tmp_path):
     finally:
         lanes.ps = REAL_PS
     assert len(killed) == 1 and killed[0][0] == "zbook" and "taskkill /T /F" in killed[0][1]
-    assert """'> "C:\\x\\lane.log" 2>&1'""" in killed[0][1] and "$_.Name -eq 'cmd.exe'" in killed[0][1]  # only the lane's root
+    assert """'> "C:\\x\\lane.log" 2>&1"'""" in killed[0][1] and "StartsWith('cmd /s /c" in killed[0][1] and "$_.Name -eq 'cmd.exe'" in killed[0][1]  # only the lane's root
     jobs = lanes.load_ledger(ep)["jobs"]
     assert "ended" in jobs["source:a1"] and "ended" not in jobs["voice:a1"]  # unfindable: never marked as stopped
     # an unreachable host: nothing marked ended, so the Stop gate never relaunches a lane that may still run
