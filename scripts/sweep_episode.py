@@ -217,6 +217,27 @@ elif ask:
         ask_bad.append(f"the ask ends at {prev_end:.3f}s, after the episode ends ({total}s)")
     report("End ask present + placed (config channel.end_ask)", ask_bad)
 
+# 5d-3. the close card carries the channel brand lockup (owner order 29 Oct 26: batch A hand-built three different closes).
+# The close = the comp host on track 2/3 that ends at the episode end. It must hold library/inhouse/outro-brand.html's
+# lockup: THE <amber>WARNING</amber> HOUR. Class names may be renamed (ou-, cl-, g-outro-); the structure may not. Applies to
+# `ep-` episodes only; every older slug (ep3-, ms-, br-) predates the lockup and no shipped ep- close fails it, so no exempt list.
+_LOCKUP = re.compile(r'\bthe\b\s*(?:</[a-z]+>)?\s*<[^>]*amber[^>]*>\s*warning\s*</[a-z]+>\s*(?:<[^>]+>)?\s*hour\b', re.I)
+if not re.match(r"ep-", _slug):
+    print(f"SKIP close card carries the brand lockup — {_slug} is not an ep- episode")
+else:
+    _closes = [w for w in wins if w["tr"] in (2, 3) and "data-composition-src=" in w["tag"]
+               and abs(w["at"] + w["dur"] - total) <= 0.05]
+    _close_bad = []
+    for w in _closes:
+        _f = ep / re.search(r'data-composition-src="([^"]+)"', w["tag"]).group(1)
+        if _f.exists() and _LOCKUP.search(re.sub(r"<!--.*?-->", "", _f.read_text(encoding="utf-8", errors="replace"), flags=re.S)):
+            _close_bad = []
+            break
+        _close_bad.append(f"{w['name']} ({_f.name}) lacks the lockup THE <amber>WARNING</amber> HOUR (library/inhouse/outro-brand.html)")
+    if not _closes:
+        _close_bad.append(f"no comp host on track 2/3 ends at the episode end ({total}s): the close card must end where the episode ends")
+    report("close card carries the brand lockup (library/inhouse/outro-brand.html)", _close_bad)
+
 # 5e. every <video> declares its audio (El Reno v3 post-mortem, 20 Sep 26): hyperframes plays a video's
 # track unless the element is `muted`, and audio_levels.py used to skip videos with no data-volume as
 # "muted by convention" — so stock footage mounted with neither was audible in the mix and no gate saw it.
