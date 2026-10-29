@@ -63,14 +63,13 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "havana", { opacity: 0, duration: 0.54, ease: "power1.in" }, 5.58);
   tl.to([P + "lit", P + "dot"], { opacity: 0, duration: 1.66, ease: "power1.inOut" }, 6.76);
 
-  /* "who is sending it" @5.58: the sender answers. Logo and title take over as the page leaves, so no dark gap opens
-     between the page and the sign-off (verify_render black 1169.49-1174.02 on galveston-draft-1029) and the logo holds 5.6 s */
+  /* "who is sending it" @5.58: the sender answers. The logo comes in over the dimmed page, so no dark gap opens before the
+     sign-off (verify_render black 1169.49-1174.02 on galveston-draft-1029) and the logo holds 5.6 s */
   tl.fromTo(P + "logo", { autoAlpha: 0, scale: 0.9 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 5.58);
-  tl.fromTo(P + "title", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 5.74);
   /* slow push on logo and title to the exit, so the long hold is never idle */
   tl.to([P + "logo", P + "titlewrap"], { scale: 1.04, transformOrigin: "50% 50%", duration: 5.4, ease: "none" }, 6.34);
-  /* THIS WAS @9.76: title lifts on the closing line; "warning" @10.46: red line grows from the centre */
-  tl.to(P + "title", { y: -8, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, 9.76);
+  /* THIS @9.76: title match-cuts to the closing line (DESIGN.md "Outro"); "warning" @10.46: red line grows from the centre */
+  tl.fromTo(P + "title", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 9.76);
   tl.fromTo(P + "rule", { autoAlpha: 1, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, 10.46);
   tl.to(P + "rule", { opacity: 0.8, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 11.0);
 
