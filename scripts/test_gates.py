@@ -688,7 +688,16 @@ for fx, want in (("galveston-g-a6-12-close.html", "FAIL"), ("appalachian-g-a5-9-
                  ("buffalo-g-a5-10-close.html", "PASS")):
     with tempfile.TemporaryDirectory() as d:
         code, out = run("sweep_episode.py", close_ep(d, "ep-close-fx", (FX / fx).read_text(encoding="utf-8")))
-        check(f"sweep_episode close card: batch-A {fx} {want}s", close_line(out).startswith(want), close_line(out) or out[-400:])
+        check(f"sweep_episode close card: batch-A {fx} {want}", close_line(out).startswith(want) and (want == "PASS" or "lacks the lockup" in out), close_line(out) or out[-400:])
+
+with tempfile.TemporaryDirectory() as d:
+    comp = (S.parent / "episodes" / "ep-enderlin-2025" / "compositions" / "g-outro.html").read_text(encoding="utf-8")
+    # track filter pinned both ways: Appalachian's real close sits on track 3; track 4 is no close
+    code, out = run("sweep_episode.py", close_ep(d, "ep-close-t3", comp, track=3))
+    check("sweep_episode close card: a lockup close on track 3 PASSes", close_line(out).startswith("PASS"), close_line(out) or out[-400:])
+    code, out = run("sweep_episode.py", close_ep(Path(d) / "t4", "ep-close-t4", comp, track=4))
+    check("sweep_episode close card: a close on track 4 is no close, FAILs",
+          close_line(out).startswith("FAIL") and "ends at the episode end" in out, close_line(out) or out[-400:])
 
 with tempfile.TemporaryDirectory() as d:
     code, out = run("sweep_episode.py", close_ep(d, "ep-close-early", "<template><div>THE WARNING HOUR</div></template>", start=0.2, dur=1.0))
