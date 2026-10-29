@@ -117,10 +117,19 @@ with tempfile.TemporaryDirectory() as d:
         "node -e mention": subprocess.Popen(["node", "-e", "setTimeout(()=>{},60000) // hyperframes render graphics_qc.mjs"], creationflags=NW),
         "cmd mention": subprocess.Popen(["cmd", "/c", f'ping -n 60 127.0.0.1 > nul & rem grep render_acts.py'], creationflags=NW),
     }
+    extra = []
     try:
         time.sleep(1.5)
         seen = {pid: kind for pid, kind, _ in render_busy.busy_jobs()}
         check("a real `python <dir>/render_acts.py` sleeper is busy", seen.get(procs["real"].pid) == "render_acts.py", seen)
+        for nm in ("test_gates.py", "e2e.py", "rungates244.py", "run_gates.py", "snapshot_queue.py", "test_detectors.py"):
+            f = Path(d) / nm
+            f.write_text("import time; time.sleep(60)\n", encoding="utf-8")
+            extra.append(subprocess.Popen([sys.executable, str(f)], creationflags=NW))
+        time.sleep(1.5)
+        seen = {pid: kind for pid, kind, _ in render_busy.busy_jobs()}
+        for nm, pr in zip(("test_gates.py", "e2e.py", "rungates244.py", "run_gates.py", "snapshot_queue.py", "test_detectors.py"), extra):
+            check(f"a real `python <dir>/{nm}` sleeper is busy", seen.get(pr.pid) == nm, seen)
         for name in ("py -c mention", "node -e mention", "cmd mention"):
             check(f"{name}: a command line that only mentions a job name is idle", procs[name].pid not in seen, seen)
         check("hyperframes render live_renders() ignores a node -e string that mentions it",
@@ -141,7 +150,7 @@ with tempfile.TemporaryDirectory() as d:
         check("the whole parent chain is skipped (render_acts.py ancestor), a sibling job still counts",
               got == [(20, "run_gates.py")], got)
     finally:
-        for pr in procs.values():
+        for pr in [*procs.values(), *extra]:
             pr.kill()
     r = subprocess.run([sys.executable, str(S / "render_busy.py"), "--jobs"], capture_output=True, text=True, creationflags=NW)
     check("--jobs CLI: exit 0 idle / 1 busy, last line says which", r.returncode in (0, 1) and
