@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a6-12-close · A6-S9 · ep-galveston-1900 · standard (Sonnet 5.5) · brief: briefs/a6/g-a6-12-close.md
+  Claim: none. Close card: the 1891 page and the telegraph line fade out, the channel title stays to the last frame.
+  Host start = A6-S9 narration data-start (cue 0.00); comp-local time = a6-s9.words.json time. Segment 11.176 s.
+  ASSUMED host length 12.0 s (11.176 + 0.8 s tail): the black exit below is anchored at 11.2 to 12.0; re-anchor if the editor sets another tail.
+  Page: provenance row for A1-S1_c1 reads verified Y (full page 5, 16 July 1891), so the page is used.
+  Presenter circle OFF (set on the host mount).
+-->
+<template>
+<style>
+  @font-face { font-family: 'AbrilFig'; src: url('fonts/AbrilFatface-Regular.ttf'); }
+  #g-a6-12-close-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a6-12-close-pagewrap { position:absolute; left:510px; top:-34px; width:900px; height:1148px; opacity:0.35; }
+  #g-a6-12-close-page { display:block; width:900px; height:1148px; filter:sepia(0.28) blur(2px); }
+  #g-a6-12-close-wires { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #g-a6-12-close-logo { position:absolute; left:880px; top:300px; width:160px; height:160px; visibility:hidden; opacity:0; }
+  #g-a6-12-close-titlewrap { position:absolute; left:0; top:480px; width:1920px; height:130px; }
+  #g-a6-12-close-title { width:1920px; text-align:center; font-family:'AbrilFig', Georgia, serif; font-size:110px;
+    line-height:130px; color:#f2f5f8; visibility:hidden; opacity:0; }
+  #g-a6-12-close-rule { position:absolute; left:750px; top:619px; width:420px; height:2px; background:#d0121f; visibility:hidden; opacity:0; }
+  #g-a6-12-close-black { position:absolute; inset:0; background:#000; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a6-12-close-root" data-composition-id="g-a6-12-close" data-width="1920" data-height="1080">
+  <div id="g-a6-12-close-pagewrap">
+    <img id="g-a6-12-close-page" src="media/candidates/a1/A1-S1_c1_galveston-daily-news-1891-07-16.jpg" alt="Galveston Daily News, 16 July 1891, page 5" data-crop-ok="full page scan centred; frame clips only the blank margin top and bottom, no text lines are cut">
+  </div>
+  <svg id="g-a6-12-close-wires" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <line id="g-a6-12-close-havana" x1="96" y1="790" x2="1824" y2="790" stroke="#5a768f" stroke-opacity="0.35" stroke-width="3" stroke-dasharray="28 24"/>
+    <line id="g-a6-12-close-lit" x1="96" y1="760" x2="1824" y2="760" stroke="#7fb2e5" stroke-width="3" stroke-linecap="round" style="filter:drop-shadow(0 0 8px #7fb2e5)"/>
+    <circle id="g-a6-12-close-dot" cx="96" cy="760" r="7" fill="#f2f5f8" style="filter:drop-shadow(0 0 10px #7fb2e5)"/>
+  </svg>
+  <img id="g-a6-12-close-logo" src="media/brand/warning-hour-logo.png" alt="The Warning Hour logo">
+  <div id="g-a6-12-close-titlewrap"><div id="g-a6-12-close-title">The Warning Hour</div></div>
+  <div id="g-a6-12-close-rule"></div>
+  <div id="g-a6-12-close-black"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a6-12-close-";
+  tl.set(P + "logo", { autoAlpha: 0, scale: 0.9 }, 0);
+  tl.set(P + "title", { autoAlpha: 0 }, 0);
+  tl.set(P + "rule", { autoAlpha: 0, scaleX: 0, transformOrigin: "50% 50%" }, 0);
+  tl.set(P + "black", { autoAlpha: 0 }, 0);
+  tl.set(P + "dot", { x: 0 }, 0);
+
+  /* "Disasters ... warnings." 0.00-2.64: wire pulse at 0.40 and 2.40 ("send"); the dot repeats every 2.0 s while the line is lit */
+  tl.to(P + "dot", { x: 1728, duration: 1.6, ease: "power1.inOut", repeat: 3, repeatDelay: 0.4 }, 0.40);
+  tl.to(P + "lit", { attr: { "stroke-width": 5 }, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0.40);
+  /* page drifts y -10 over 6 s */
+  tl.to(P + "pagewrap", { y: -10, duration: 6, ease: "none" }, 0);
+
+  /* page stays under the logo and leaves as the title lands: "know" @8.42 -> "was" @10.02. It is what keeps the
+     frame above blackdetect until the title (the 160 px logo alone covers about 1 % of the frame) */
+  tl.to(P + "pagewrap", { opacity: 0, duration: 1.60, ease: "power1.inOut" }, 8.42);
+  /* "who is sending it" @5.58: Havana dashed line first, then the lit line from "So" @6.76 to 8.42 */
+  tl.to(P + "havana", { opacity: 0, duration: 0.54, ease: "power1.in" }, 5.58);
+  tl.to([P + "lit", P + "dot"], { opacity: 0, duration: 1.66, ease: "power1.inOut" }, 6.76);
+
+  /* "who is sending it" @5.58: the sender answers. The logo comes in over the dimmed page, so no dark gap opens before the
+     sign-off (verify_render black 1169.49-1174.02 on galveston-draft-1029) and the logo holds 5.6 s */
+  tl.fromTo(P + "logo", { autoAlpha: 0, scale: 0.9 }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 5.58);
+  /* slow push on logo and title to the exit, so the long hold is never idle */
+  tl.to([P + "logo", P + "titlewrap"], { scale: 1.04, transformOrigin: "50% 50%", duration: 5.4, ease: "none" }, 6.34);
+  /* THIS @9.76: title match-cuts to the closing line (DESIGN.md "Outro"); "warning" @10.46: red line grows from the centre */
+  tl.fromTo(P + "title", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 9.76);
+  tl.fromTo(P + "rule", { autoAlpha: 1, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power3.out" }, 10.46);
+  tl.to(P + "rule", { opacity: 0.8, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 11.0);
+
+  /* EXIT: fade to black over the last 0.8 s of the host (assumed host end 12.0) */
+  tl.to(P + "black", { autoAlpha: 1, duration: 0.8, ease: "power1.in" }, 11.2);
+  window.__timelines["g-a6-12-close"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
