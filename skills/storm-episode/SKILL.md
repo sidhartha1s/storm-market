@@ -71,8 +71,8 @@ Only after 1–8: plan the episode.
 
 ## Standing owner rules that gate every phase (details in repo docs)
 - Timeline is master; the model is the editor; scripts = deterministic checks only.
-- Chaser/streamer footage NEVER without license; non-PD pulls 3–4s narrated-over; no
-  provenance disguise. Repeats allowed only well-spaced (≥3–4 min, never obvious).
+- Chaser/streamer footage NEVER without license; no provenance disguise. Pull length and the narration-over rule:
+  CLAUDE.md "Footage rules". Repeats: DESIGN.md "Editing grammar" no-repeat rule, gated by `lint_timeline.py`.
 - The ebook CTA is must-keep (owner 2026-08-30): every episode, in-timeline, inside the `config.yaml channel.cta`
   window (placement rule: DESIGN.md "CTA contract"); `sweep_episode.py` fails without it. Never skipped, shortened, or moved to the outro.
 - An owner correction lands in its single home the same session (`references/mg-quickref.md`, a gate, or the right `learnings/` file). Docs sweep in the same PR.
