@@ -84,15 +84,14 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "havana", { opacity: 0, duration: 0.54, ease: "power1.in" }, 5.58);
   tl.to([P + "lit", P + "dot"], { opacity: 0, duration: 1.66, ease: "power1.inOut" }, 6.76);
 
-  /* "This was THE @10.26, WARNING @10.46, HOUR @10.74": each word lands on the voice (match cut to the closing line,
-     DESIGN.md "Outro"); the rule draws on "hour" */
-  tl.to(P + "w1", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 10.26);
-  tl.to(P + "w2", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 10.46);
-  tl.to(P + "w3", { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 10.74);
-  tl.to(P + "rule", { scaleX: 1, duration: 0.6, ease: "power3.out" }, 10.74);
+  /* THIS @9.76: the wordmark builds on the start of the closing line (match cut, DESIGN.md "Outro"), a quick
+     0.05 s word stagger so it is whole by 10.16 and reads about 1.7 s before the exit (the host tail is fixed at 0.8 s:
+     an index.html change would force every act to re-render); the rule draws on "hour" @10.74 */
+  tl.to([P + "w1", P + "w2", P + "w3"], { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", stagger: 0.05 }, 9.76);
+  tl.to(P + "rule", { scaleX: 1, duration: 0.5, ease: "power3.out" }, 10.74);
 
-  /* EXIT: fade to black over the last 0.8 s of the host (assumed host end 12.0) */
-  tl.to(P + "black", { autoAlpha: 1, duration: 0.8, ease: "power1.in" }, 11.2);
+  /* EXIT: fade to black over the last 0.5 s of the host (assumed host end 12.0), after the narration ends at 11.18 */
+  tl.to(P + "black", { autoAlpha: 1, duration: 0.5, ease: "power1.in" }, 11.5);
   window.__timelines["g-a6-12-close"] = tl;
 })();
 </script>
