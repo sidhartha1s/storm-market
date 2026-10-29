@@ -110,10 +110,13 @@ def free_gb(host):
 
 
 def alive(host, log):
-    """True or False: a process whose command line holds log runs on host; None when the host cannot be read."""
-    # Contains, not -like: a "[" in the path is a wildcard to -like, and a running lane would read as dead
-    code, out = ps(host, f"@(Get-CimInstance Win32_Process | Where-Object {{ $_.CommandLine -and $_.CommandLine.Contains({quote(log)}) }}).Count",
-                   timeout=20)  # the query's own command line is encoded, so it never matches itself
+    """True or False: the lane's root cmd.exe runs on host; None when the host cannot be read."""
+    # The root is the one cmd.exe whose command line is exactly what spawn() wrote: it starts `cmd /s /c "(` and ends with
+    # the redirect. A shell, tail or agent command that only MENTIONS the log path never matches (29 Oct 26: same bug class as
+    # render_busy's job scan). StartsWith/EndsWith, not -like: a "[" in the path is a wildcard to -like.
+    code, out = ps(host, "@(Get-CimInstance Win32_Process | Where-Object { $_.Name -eq 'cmd.exe' -and $_.CommandLine -and "
+                         f"$_.CommandLine.StartsWith('cmd /s /c \"(') -and $_.CommandLine.EndsWith({quote(redirect(log) + chr(34))}) }}).Count",
+                   timeout=20)
     return int(out.strip()) > 0 if code == 0 and out.strip().isdigit() else None
 
 
