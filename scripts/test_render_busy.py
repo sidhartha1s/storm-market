@@ -130,6 +130,13 @@ with tempfile.TemporaryDirectory() as d:
         seen = {pid: kind for pid, kind, _ in render_busy.busy_jobs()}
         for nm, pr in zip(("test_gates.py", "e2e.py", "rungates244.py", "run_gates.py", "snapshot_queue.py", "test_detectors.py"), extra):
             check(f"a real `python <dir>/{nm}` sleeper is busy", seen.get(pr.pid) == nm, seen)
+        accent = Path(d) / "Jos\u00e9"
+        accent.mkdir()
+        (accent / "render_acts.py").write_text("import time; time.sleep(60)\n", encoding="utf-8")
+        extra.append(subprocess.Popen([sys.executable, str(accent / "render_acts.py")], creationflags=NW))
+        time.sleep(1.5)
+        seen = {pid: kind for pid, kind, _ in render_busy.busy_jobs()}
+        check("a real job whose path has an accent is decoded and found", seen.get(extra[-1].pid) == "render_acts.py", seen)
         for name in ("py -c mention", "node -e mention", "cmd mention"):
             check(f"{name}: a command line that only mentions a job name is idle", procs[name].pid not in seen, seen)
         check("hyperframes render live_renders() ignores a node -e string that mentions it",
@@ -155,6 +162,58 @@ with tempfile.TemporaryDirectory() as d:
     r = subprocess.run([sys.executable, str(S / "render_busy.py"), "--jobs"], capture_output=True, text=True, creationflags=NW)
     check("--jobs CLI: exit 0 idle / 1 busy, last line says which", r.returncode in (0, 1) and
           r.stdout.strip().splitlines()[-1].startswith("[render_busy] " + ("IDLE" if r.returncode == 0 else "BUSY")), r.stdout + r.stderr)
+
+# Table-driven job_kind / live_renders on the two REAL render.cmd command lines (live process table, 29 Oct 26) plus the
+# cmd.exe in between. Without these, a job_kind that returns None for every render passes every other test and a heavy job
+# launches on top of a live render.
+NPX = (r'"C:\Program Files\nodejs\node.exe"  "C:\Program Files\nodejs\node_modules\npm\bin\npx-cli.js" '
+       "hyperframes@0.8.211 render . -c _act_tmp.html --gpu --workers 2")
+MJS = (r'"node"   "C:\Users\u\AppData\Local\npm-cache\_npx\abc123\node_modules\.bin\..\hyperframes\bin\hyperframes.mjs" '
+       "render . -c _act_tmp.html --gpu --workers 2")
+CMDHF = r'C:\WINDOWS\system32\cmd.exe /d /s /c hyperframes render . -c _act_tmp.html'
+RENDER_TABLE = [
+    {"ProcessId": 1, "ParentProcessId": 0, "Name": "explorer.exe", "CommandLine": None},
+    {"ProcessId": 35000, "ParentProcessId": 1, "Name": "node.exe", "CommandLine": NPX},
+    {"ProcessId": 10181, "ParentProcessId": 35000, "Name": "cmd.exe", "CommandLine": CMDHF},
+    {"ProcessId": 10180, "ParentProcessId": 10181, "Name": "node.exe", "CommandLine": MJS},
+    {"ProcessId": 90, "ParentProcessId": 1, "Name": "node.exe", "CommandLine": 'node -e "x // hyperframes render"'},
+    {"ProcessId": 91, "ParentProcessId": 1, "Name": "python.exe", "CommandLine": 'python.exe C:\\Users\\Jos\u00e9\\render_acts.py ep-x'},
+]
+for nm, row, want in (("npx-cli.js node", 1, "hyperframes render"), ("hyperframes.mjs node", 3, "hyperframes render"),
+                      ("cmd /d /s /c hyperframes render", 2, None), ("node -e mention", 4, None),
+                      ("accented path python job", 5, "render_acts.py")):
+    r = RENDER_TABLE[row]
+    got = render_busy.job_kind(r["Name"], r["CommandLine"])
+    check(f"job_kind: {nm} -> {want}", got == want, got)
+got = sorted(p for p, _, _ in render_busy.busy_jobs(RENDER_TABLE, self_pid=1, kinds={"hyperframes render"}))
+check("busy_jobs(kinds=render) finds exactly the 2 render nodes, not the cmd.exe between them", got == [10180, 35000], got)
+_real_table = render_busy.process_table
+render_busy.process_table = lambda: RENDER_TABLE
+live = [l.split()[0] for l in REAL_LIVE_RENDERS()]
+render_busy.process_table = _real_table
+check("live_renders() lists both render nodes", sorted(live) == ["10180", "35000"], live)
+
+# A failed process query is "could not look", never IDLE (review of PR 245).
+real_ps = render_busy.ps
+for nm, ret in (("nonzero exit", (1, "", "Get-CimInstance : access denied")), ("empty output", (0, "", ""))):
+    render_busy.ps = lambda cmd, ret=ret: ret
+    try:
+        render_busy.process_table()
+        raised = False
+    except RuntimeError:
+        raised = True
+    check(f"process_table raises on {nm}", raised)
+    buf, argv0, code = io.StringIO(), sys.argv, None
+    sys.argv = ["render_busy.py", "--jobs"]
+    try:
+        with contextlib.redirect_stdout(buf):
+            render_busy.main()
+    except SystemExit as e:
+        code = e.code
+    sys.argv = argv0
+    check(f"--jobs on {nm}: exit 2 and an ERROR line, never IDLE",
+          code == 2 and "ERROR" in buf.getvalue() and "IDLE" not in buf.getvalue(), (code, buf.getvalue()))
+render_busy.ps = real_ps
 
 # Heavy lock (owner 26 Oct 26): a second heavy job waits for the first, then runs. Temp lock file; the
 # HEAVY_LOCK_TOKEN e2e.py holds is dropped, or every job here would pass through as e2e's child.
