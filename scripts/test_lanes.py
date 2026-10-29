@@ -5,6 +5,7 @@ a READY job that reads DONE, or a dead lane that reads RUNNING, is exactly the i
 """
 import json
 import os
+import subprocess
 import sys
 import tempfile
 import time
@@ -246,7 +247,7 @@ def test_an_ssh_drop_after_a_good_launch_never_launches_twice(tmp_path):
                 creates.append(host)
                 return drop  # the Create ran on the host, then the session dropped before its reply
             # the liveness query: lane seen running, host unreadable, lane not running; only a literal match finds it
-            return asked if f".Contains({lanes.quote(log)})" in script else (0, "0\n")
+            return asked if f".EndsWith({lanes.quote(lanes.redirect(log) + chr(34))})" in script else (0, "0\n")
         fakes(answering={"claude2"})
         lanes.spawn, lanes.ps = REAL_SPAWN, ps
         assert raises(lambda: lanes.main(["start", str(ep), "source:a1", *lane])) != recorded
@@ -269,6 +270,24 @@ def test_a_recorded_launch_whose_log_never_appears_fails(tmp_path):
         run = {"started": time.time() - minutes_ago * 60, "host": "zbook", "minutes": 60, "log": r"C:\x\lane.log"}
         st = {s["job"]: s["state"] for s in lanes.job_states(ep, {"jobs": {"source:a1": run}})}
         assert st["source:a1"] == state, (minutes_ago, st["source:a1"])
+
+
+def test_alive_finds_the_lane_root_never_a_command_that_mentions_its_log(tmp_path):
+    """29 Oct 26: alive() matched any command line holding the log path, so a shell or python -c that only mentioned it
+    read as a running lane. Real processes, real alive(); NO_WINDOW decoys."""
+    lanes.ps, lanes.spawn = REAL_PS, REAL_SPAWN
+    real, other = str(tmp_path / "real.log"), str(tmp_path / "other.log")
+    decoys = [subprocess.Popen(["cmd", "/c", f"ping -n 40 127.0.0.1 > nul & rem {lanes.redirect(other)}"], creationflags=lanes.NO_WINDOW),
+              subprocess.Popen([sys.executable, "-c", f"import time; time.sleep(40)  # {lanes.redirect(other)} {other}"], creationflags=lanes.NO_WINDOW)]
+    try:
+        lanes.spawn("local", "ping -n 40 127.0.0.1", real, str(tmp_path))
+        time.sleep(2)
+        assert lanes.alive("local", real) is True  # the lane root spawn() started
+        assert lanes.alive("local", other) is False  # only decoys that mention the log
+    finally:
+        lanes.kill("local", real)
+        for d in decoys:
+            d.kill()
 
 
 def test_rule2_start_refuses_low_memory_and_never_counts_lanes(tmp_path):
@@ -357,6 +376,7 @@ if __name__ == "__main__":
               test_rule1_start_skips_a_profile_that_does_not_answer,
               test_an_ssh_drop_after_a_good_launch_never_launches_twice,
               test_a_recorded_launch_whose_log_never_appears_fails,
+              test_alive_finds_the_lane_root_never_a_command_that_mentions_its_log,
               test_rule2_start_refuses_low_memory_and_never_counts_lanes,
               test_status_launches_nothing_even_with_a_limited_lane,
               test_relaunch_backs_off_while_another_holds_the_lock,

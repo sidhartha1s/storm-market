@@ -81,7 +81,8 @@ def ps(cmd):
 # test_detectors, and waited forever or refused. A job is found here only by exact exe name plus the argv shape
 # below; the checker's own pid and its whole parent chain are never a job. This is the one owner of the scan:
 # wait scripts call `render_busy.py --jobs` (exit 0 idle, 1 busy) instead of their own regex.
-PY_JOBS = {"render_acts.py", "snapshot_queue.py", "run_gates.py", "test_detectors.py"}  # python.exe, argv[1] script
+PY_JOBS = {"render_acts.py", "snapshot_queue.py", "run_gates.py", "test_detectors.py",
+           "test_gates.py", "e2e.py", "rungates244.py"}  # python.exe, argv[1] script (rungates244.py: the ad-hoc gate runner)
 NODE_JOBS = {"graphics_qc.mjs", "blank_scan.mjs"}  # node.exe, script arg
 _CODE_FLAGS = {"-c", "-m", "-e", "-p", "--eval", "--print"}  # the next arg is code, not a script path
 
