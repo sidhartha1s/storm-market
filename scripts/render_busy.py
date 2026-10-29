@@ -22,7 +22,7 @@ render when at least LIGHT_MIN_FREE_GB (default 2) is free, so composers can tes
 queueing behind a 15-minute draft (owner 17 Sep 26). The full browser gates stay exclusive.
 
 --jobs: print every heavy job alive (render, render_acts, snapshot_queue, run_gates, test_detectors, graphics_qc,
-blank_scan), exit 0 idle / 1 busy. For wait scripts; matches by exe + argv and skips its own parent chain.
+blank_scan), exit 0 idle / 1 busy / 2 process table unreadable. For wait scripts; matches by exe + argv and skips its own parent chain.
 
 Exit 0 = clear. Exit 3 = a render is running, or (with --launch) not even 1 worker fits.
 RENDER_BUSY_OK=1 overrides, for the case where the render itself is the thing being tested.
@@ -72,7 +72,10 @@ def workers_that_fit(requested, free):
 
 
 def ps(cmd):
-    return subprocess.run(["powershell", "-NoProfile", "-Command", cmd], capture_output=True, text=True).stdout.strip()
+    """(exit code, stdout, stderr) of a PowerShell command, decoded as UTF-8 so an accented command line cannot crash the scan."""
+    r = subprocess.run(["powershell", "-NoProfile", "-Command", "[Console]::OutputEncoding=[Text.Encoding]::UTF8; " + cmd],
+                       capture_output=True, text=True, encoding="utf-8", errors="replace")
+    return r.returncode, r.stdout.strip(), r.stderr.strip()
 
 
 # --- "is a heavy job alive?": match the executable and its argv, never a substring of a command line ---
@@ -88,9 +91,12 @@ _CODE_FLAGS = {"-c", "-m", "-e", "-p", "--eval", "--print"}  # the next arg is c
 
 
 def process_table():
-    """[{ProcessId, ParentProcessId, Name, CommandLine}] for every process."""
-    out = ps("Get-CimInstance Win32_Process | Select-Object ProcessId,ParentProcessId,Name,CommandLine | ConvertTo-Json -Compress")
-    rows = json.loads(out) if out else []
+    """[{ProcessId, ParentProcessId, Name, CommandLine}] for every process. Raises when the query fails or comes back
+    empty: a live machine always has processes, so no table means "could not look", never "idle"."""
+    code, out, err = ps("Get-CimInstance Win32_Process | Select-Object ProcessId,ParentProcessId,Name,CommandLine | ConvertTo-Json -Compress")
+    if code != 0 or not out:
+        raise RuntimeError(f"process query failed (exit {code}): {err[-200:] or 'empty output'}")
+    rows = json.loads(out)
     return [rows] if isinstance(rows, dict) else rows
 
 
@@ -327,7 +333,11 @@ def main():
         release(lambda cur: (cur["pid"], cur["created"]) == parent)
         sys.exit(0)
     if "--jobs" in sys.argv:  # wait scripts: print every heavy job alive, exit 0 idle / 1 busy (no RAM check, no lock)
-        jobs = busy_jobs()
+        try:
+            jobs = busy_jobs()
+        except RuntimeError as e:  # never IDLE on an unread table
+            print(f"[render_busy] ERROR - cannot read the process table: {e}")
+            sys.exit(2)
         for pid, kind, cmd in jobs:
             print(f"{pid} {kind}: {cmd[:160]}")
         print(f"[render_busy] {'BUSY' if jobs else 'IDLE'} - {len(jobs)} heavy job(s)")
