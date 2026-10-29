@@ -34,7 +34,10 @@ Repo: `C:\Users\Sidhartha\Automation Projects\storm-market`
    - `config.yaml` — pins and paths
 4. **Pin current before the first render:** `python3 scripts/pin_ritual.py --check-only`; exit 3 (stale) ⇒ run `python3 scripts/pin_ritual.py` (hidden schtasks) and PR the bump now, never mid-episode; exit 4 (npm unreachable) ⇒ proceed on the current pin and note it in the kickoff summary (repo CLAUDE.md "HARD RULE: the pin stays current").
 5. **Rule-change sweep:** `gh pr list --state merged --limit 5` — any PR merged since the
-   last episode may have changed the rulebook; skim its description before planning.
+   last episode may have changed the rulebook; skim its description before planning. Then
+   `gh pr list --state open`: an open PR that touches `CLAUDE.md`, `DESIGN.md`, `references/`, `learnings/`,
+   `skills/` or `config.yaml` is a rule the worktree cannot see; it goes to the owner as a merge-or-hold ask before
+   any lane starts (batch A built against five such PRs and broke two of them).
 6. **Generator tripwire:**
    `grep -rlE 'index\.html|compositions/g-' scripts/ --include='*.py'` — any script that
    WRITES or INJECTS episode HTML (index.html or compositions/*.html) is forbidden: delete
