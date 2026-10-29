@@ -109,14 +109,17 @@ def free_gb(host):
         sys.exit(f"[lanes] FAIL: cannot read free memory on {host}: {out.strip()[-200:]}")
 
 
+def root_filter(log):
+    """PowerShell Where-Object body that selects only the cmd.exe root spawn() wrote for this log: its command line starts
+    `cmd /s /c "(` and ends with the redirect. A shell, tail or agent command that only MENTIONS the log never matches
+    (29 Oct 26: same bug class as render_busy's job scan). StartsWith/EndsWith, not -like: "[" in a path is a -like wildcard."""
+    return ("$_.Name -eq 'cmd.exe' -and $_.CommandLine -and $_.CommandLine.StartsWith('cmd /s /c \"(') -and "
+            f"$_.CommandLine.EndsWith({quote(redirect(log) + chr(34))})")
+
+
 def alive(host, log):
     """True or False: the lane's root cmd.exe runs on host; None when the host cannot be read."""
-    # The root is the one cmd.exe whose command line is exactly what spawn() wrote: it starts `cmd /s /c "(` and ends with
-    # the redirect. A shell, tail or agent command that only MENTIONS the log path never matches (29 Oct 26: same bug class as
-    # render_busy's job scan). StartsWith/EndsWith, not -like: a "[" in the path is a wildcard to -like.
-    code, out = ps(host, "@(Get-CimInstance Win32_Process | Where-Object { $_.Name -eq 'cmd.exe' -and $_.CommandLine -and "
-                         f"$_.CommandLine.StartsWith('cmd /s /c \"(') -and $_.CommandLine.EndsWith({quote(redirect(log) + chr(34))}) }}).Count",
-                   timeout=20)
+    code, out = ps(host, f"@(Get-CimInstance Win32_Process | Where-Object {{ {root_filter(log)} }}).Count", timeout=20)
     return int(out.strip()) > 0 if code == 0 and out.strip().isdigit() else None
 
 
@@ -126,9 +129,9 @@ def redirect(log):
 
 
 def kill(host, log):
-    """Count of lane trees ended on host (None: host unreadable). Only the cmd.exe root spawn() starts matches, by its
-    exact redirect, so a viewer, a tail or a lane whose log path extends this one is never hit."""
-    code, out = ps(host, f"$n = 0; Get-CimInstance Win32_Process | Where-Object {{ $_.Name -eq 'cmd.exe' -and $_.CommandLine -and $_.CommandLine.Contains({quote(redirect(log))}) }} | "
+    """Count of lane trees ended on host (None: host unreadable). Only the cmd.exe root spawn() starts matches (the same
+    root_filter alive() uses), so a viewer, a tail, a decoy cmd or a lane whose log path extends this one is never hit."""
+    code, out = ps(host, f"$n = 0; Get-CimInstance Win32_Process | Where-Object {{ {root_filter(log)} }} | "
                          "ForEach-Object { taskkill /T /F /PID $_.ProcessId | Out-Null; $n++ }; $n", timeout=60)
     last = out.strip().splitlines()[-1] if out.strip() else ""
     return int(last) if code == 0 and last.isdigit() else None

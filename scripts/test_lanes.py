@@ -277,7 +277,8 @@ def test_alive_finds_the_lane_root_never_a_command_that_mentions_its_log(tmp_pat
     read as a running lane. Real processes, real alive(); NO_WINDOW decoys."""
     lanes.ps, lanes.spawn = REAL_PS, REAL_SPAWN
     real, other = str(tmp_path / "real.log"), str(tmp_path / "other.log")
-    decoys = [subprocess.Popen(["cmd", "/c", f"ping -n 40 127.0.0.1 > nul & rem {lanes.redirect(other)}"], creationflags=lanes.NO_WINDOW),
+    # decoy 1 is a str command line: the redirect reaches cmd.exe verbatim, exactly what the old kill() matched
+    decoys = [subprocess.Popen(f"cmd /c ping -n 40 127.0.0.1 > nul & rem {lanes.redirect(other)}", creationflags=lanes.NO_WINDOW),
               subprocess.Popen([sys.executable, "-c", f"import time; time.sleep(40)  # {lanes.redirect(other)} {other}"], creationflags=lanes.NO_WINDOW)]
     try:
         lanes.spawn("local", "ping -n 40 127.0.0.1", real, str(tmp_path))
