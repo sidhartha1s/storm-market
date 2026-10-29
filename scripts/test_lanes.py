@@ -284,6 +284,8 @@ def test_alive_finds_the_lane_root_never_a_command_that_mentions_its_log(tmp_pat
         time.sleep(2)
         assert lanes.alive("local", real) is True  # the lane root spawn() started
         assert lanes.alive("local", other) is False  # only decoys that mention the log
+        assert lanes.kill("local", other) == 0  # kill() uses the same exact root match: a decoy cmd.exe is not taskkill'd
+        assert all(d.poll() is None for d in decoys)
     finally:
         lanes.kill("local", real)
         for d in decoys:
