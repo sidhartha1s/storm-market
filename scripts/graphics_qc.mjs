@@ -170,7 +170,10 @@ const MEASURE = `((t) => {
   }
   /* containers that are visible but hold nothing — a gradient/border IS content */
   for (const el of document.querySelectorAll('[id^="g-"], .panel, .spanel, .card')) {
-    if (!vis(el) || el instanceof SVGElement) continue;
+    /* an <img>/<video>/<canvas> IS content (a broken one is the broken-image check); the look-inside rule below
+       flagged 25 loaded page scans in Galveston as "empty" (30 Oct 26) */
+    if (!vis(el) || el instanceof SVGElement || el instanceof HTMLImageElement || el instanceof HTMLVideoElement ||
+        el instanceof HTMLCanvasElement) continue;
     const r = el.getBoundingClientRect();
     const cs2 = getComputedStyle(el);
     const painted = cs2.backgroundImage !== 'none' || parseFloat(cs2.borderTopWidth) > 0 ||
@@ -321,7 +324,9 @@ for (const f of files) {
   if (kineticRatio < 0.25) flags.push(`${(kineticRatio*100).toFixed(0)}% kinetic tweens`);
   if (avgElems < 12) flags.push(`${avgElems.toFixed(0)} elements on screen`);
   if (idleFrac > 0.6) flags.push(`${(idleFrac*100).toFixed(0)}% frozen`);
-  if (flags.length >= 3)
+  /* the wireframe test is for cards: an effects overlay with no text at all (Galveston's flying timbers, 30 Oct 26)
+     has no type tiers or gradient by design and is judged by the motion checks above instead */
+  if (flags.length >= 3 && maxTextNodes > 0)
     add(name, 'undesigned', `${flags.join(' · ')} — reads as a wireframe, not a designed card (mg-quickref)`);
   if (process.env.QC_STATS) console.log(`  [stats] ${name}: dur ${probe.duration.toFixed(0)}s cover ${maxCoverage} elems ${avgElems.toFixed(0)} tiers ${tierMax} kinetic ${(kineticRatio*100).toFixed(0)}% idle ${(idleFrac*100).toFixed(0)}% grad ${gradAny}`);
 }
