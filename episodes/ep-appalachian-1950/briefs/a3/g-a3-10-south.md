@@ -22,7 +22,7 @@ Camera from A2-X (s 0.03, top-left (42191.8, 15852.5)) to T (s 0.0125, top-left 
 - Chip (glass chip, radius 14, padding 10 x 18): "THE SNOW STOPPED HERE" Arial Black 900 40 px `#f2f5f8`, box left 1000, top 420 (east of the edge line's end, a 2 px leader to (900, 470)); right edge <= 1600 (it sits above y 680 anyway).
 - No temperatures, no town names, no state names on screen (Act 4 owns them). Credit "Basemap: Natural Earth" left 110, bottom 60; source "Source: NCEI; NWS Jackson, KY · arrows schematic" left 110, bottom 90.
 - Scan line 60 px/s throughout.
-- Tiers: 40 / 19 only plus no third: declare `data-type-ok="single map chip"` on the root only if graphics_qc flags flat-type (fewer than 4 text nodes, so it should not).
+- Tiers: 40 / 19 (3 text nodes, under the flat-type count of 4, so no exemption needed).
 
 ## 4. Must be true in the picture
 1. The arrow heads reach far south of the snow edge: the nearest head is at least 200 px south of the edge line; one head reaches the Florida Panhandle (y >= 860).

@@ -34,7 +34,7 @@
 
     <!-- title -->
     <text id="v13-eyebrow" class="v13-eyebrow v13-hid" x="110" y="92">OHIO RIVER · AFTER THE STORM</text>
-    <text id="v13-head" class="v13-head v13-hid" x="110" y="146">THE MELT REACHES THE RIVER</text>
+    <text id="v13-head" class="v13-head v13-hid" x="110" y="160">THE MELT REACHES THE RIVER</text>
 
     <!-- ===== Pittsburgh gauge ===== -->
     <g id="v13-pg">
@@ -84,8 +84,9 @@
       <text id="v13-pflab" class="v13-flab v13-hid" x="690" y="495">FLOOD STAGE</text>
       <!-- readout -->
       <text id="v13-p285" class="v13-big v13-hid" x="700" y="418">28.5 FT</text>
-      <text id="v13-p4" class="v13-sub v13-hid" x="700" y="452">4 FT OVER</text>
-      <text id="v13-pname" class="v13-name" style="opacity:0.45" x="470" y="910">PITTSBURGH</text>
+      <text id="v13-p4" class="v13-sub v13-hid" x="700" y="464">4 FT OVER</text>
+      <!-- names sit 20 px lower than the first build so the "0" tick never touches them (overlap_check) -->
+      <text id="v13-pname" class="v13-name" style="opacity:0.45" x="470" y="932">PITTSBURGH</text>
     </g>
 
     <!-- ===== Cincinnati gauge ===== -->
@@ -117,8 +118,9 @@
       <text class="v13-tick" x="1165" y="408">60</text>
       <!-- flood stage line (52 ft = y 464), no text label -->
       <rect id="v13-cfl" class="v13-hid" x="1040" y="462.5" width="380" height="3" fill="#c0392b"/>
-      <text id="v13-c56" class="v13-big v13-hid" x="1230" y="382" text-anchor="middle">56 FT</text>
-      <text class="v13-name" x="1230" y="910">CINCINNATI</text>
+      <!-- raised above the "60" tick (overlap_check) -->
+      <text id="v13-c56" class="v13-big v13-hid" x="1230" y="366" text-anchor="middle">56 FT</text>
+      <text class="v13-name" x="1230" y="932">CINCINNATI</text>
     </g>
 
     <text class="v13-src" x="110" y="1020">Source: NOAA NCEI</text>

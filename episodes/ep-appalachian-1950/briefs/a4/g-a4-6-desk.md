@@ -23,7 +23,7 @@ North up. Projection and frames: `_list.md`.
   - Snow side: the A3 snow-white fill (copy it from the A3 exit comp if built; else a band over WV, western PA and eastern OH, lat 38.5 to 42.0, lon -84.0 to -77.5, soft 40 px edge) `#f2f5f8` at 0.30; Pittsburgh pin snow white.
   - Cold side: the `_list.md` cold fill at edge lat 30.2 (fully drained to the Gulf); Kentucky and Southeast pins as 12 px blue dots at 0.6, Farmers grey.
   - Buffalo: orange pin with glow, the only warm spot.
-  - No labels on the map except none: every pin is unlabelled in this comp (the narration names no place).
+  - No labels on the map: every pin is unlabelled in this comp (the narration names no place).
 - RHS panel: quickref values (`right:0; top:0; bottom:0; width:820px; linear-gradient(270deg, rgba(6,9,13,0.94) 72%, rgba(6,9,13,0))`), entering `fromTo(x:660 -> 0, 0.7, power3.out)`.
 - Sheet (inside the panel): `#f4f0e6` (beige polaroid stock), 520 x 380 px, top-left (1060, 230), rotated -2° (set at 0 via `tl.set`, never CSS), a 1 px `#6b6257` border and a soft 18 px shadow. Faint printed grid: 1 px `#c8b98a` at 0.35, 40 px squares.
 - Pencil isobars on the sheet: 4 hand-wobbly closed curves (pre-authored SVG paths, nested ovals, no letters, no numbers, no place names, no "L" or "H"), stroke `#2a2622` 1.8 px, opacity 0.8. They draw with stroke-dashoffset in order; the 4th stops at 60 % of its length and never closes (the unfinished map).

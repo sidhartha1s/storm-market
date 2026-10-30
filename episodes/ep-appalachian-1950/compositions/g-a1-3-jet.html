@@ -80,6 +80,10 @@
   /* ---- scene 2: map ---- */
   #jt3-map { background:radial-gradient(ellipse at 55% 50%, #070b10 0%, #030507 78%); }
   #jt3-mapmove { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  /* the Natural Earth ca rings stop at lon -64 (screen x about 1693, through Nova Scotia): fade the land to the
+     background before that cut, so no hard vertical edge shows (markers are separate divs, never masked) */
+  #jt3-mapmove .jt3-svg { -webkit-mask-image:linear-gradient(90deg, #000 1460px, transparent 1660px);
+    mask-image:linear-gradient(90deg, #000 1460px, transparent 1660px); }
   .jt3-landfill { fill:#0b1016; stroke:rgba(255,255,255,.14); stroke-width:1.5; stroke-linejoin:round; }
   .jt3-water { fill:#05080c; stroke:rgba(255,255,255,.14); stroke-width:1.5; stroke-linejoin:round; }
   .jt3-line { fill:none; stroke:rgba(255,255,255,.14); stroke-width:1.5; stroke-linejoin:round; stroke-linecap:round; }
@@ -310,8 +314,10 @@ window.__timelines = window.__timelines || {};
   tl.to([P+"tag", P+"src1"], { autoAlpha: 0, duration: 0.4, ease: "power1.in" }, 8.72);
   tl.to(P+"cut", { y: 400, autoAlpha: 0, duration: 0.8, ease: "power2.in" }, 8.72);
   tl.fromTo(P+"map", { autoAlpha: 0, scale: 1.08 }, { autoAlpha: 1, scale: 1, duration: 0.9, ease: "power2.out" }, 8.72);
-  /* slow map drift so the hold never idles (about 6.4 px/s, ends on the last frame 12.84) */
-  tl.fromTo(P+"mapmove", { x: 0, y: 0 }, { x: -20, y: -6, duration: 12.84 - 9.62, ease: "none" }, 9.62);
+  /* slow map drift so the hold never idles (about 6.2 px/s, ends on the last frame 12.84); x only: a y drift lifted
+     the 1080 px map svg off the frame bottom and showed its edge as a line at y 1075. The x drift's exposed right
+     edge sits inside the faded zone of the svg mask. */
+  tl.fromTo(P+"mapmove", { x: 0 }, { x: -20, duration: 12.84 - 9.62, ease: "none" }, 9.62);
 
   /* ENGLAND @9.34: region label, legend card and map source lines in */
   tl.fromTo(P+"region", { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: "power3.out" }, 9.34);

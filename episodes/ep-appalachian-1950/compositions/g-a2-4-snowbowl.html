@@ -37,7 +37,7 @@
   #s4-rule { display:block; height:2px; margin:10px 0; background:rgba(255,255,255,0.14); opacity:0; visibility:hidden; }
 
   /* source line */
-  #s4-src { position:absolute; left:110px; bottom:60px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:24px; color:#c8d3e0; letter-spacing:2px; white-space:nowrap;
+  #s4-src, #s4-src2 { position:absolute; left:94px; bottom:46px; padding:12px 16px; border-radius:14px; background:rgba(10,16,24,0.72); border:1px solid rgba(255,255,255,0.14); font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:24px; color:#c8d3e0; letter-spacing:2px; white-space:nowrap;
     text-shadow:0 2px 10px rgba(0,0,0,0.85); opacity:0; visibility:hidden; }
 </style>
 <div id="s4-root" data-composition-id="g-a2-4-snowbowl" data-width="1920" data-height="1080" data-type-ok="popfig and chips over a photo: sizes set by the brief">
@@ -59,6 +59,7 @@
   </div>
 
   <div id="s4-src">Photo: Michiganensian 1951 (public domain)</div>
+  <div id="s4-src2">Postcard: GNU Card Company, 1950s (public domain)</div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
@@ -67,6 +68,11 @@ window.__timelines = window.__timelines || {};
 
   /* THAT @0.00: source line in */
   tl.fromTo("#s4-src", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0);
+
+  /* credit follows the photo on screen: Allis 0 to 9.24 (two windows), postcard from 9.24 (index cut 290.802 minus host start 281.562) */
+  tl.set("#s4-src2", {autoAlpha:0}, 0);
+  tl.set("#s4-src", {autoAlpha:0}, 9.24);
+  tl.fromTo("#s4-src2", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.3, ease:"power3.out", immediateRender:false}, 9.24);
 
   /* OHIO @0.36: scrim and big line in, sub line 0.25 s later (OHIO STADIUM), whole popfig lands by 0.81 / 1.06 */
   tl.fromTo("#s4-scrim", {autoAlpha:0}, {autoAlpha:1, duration:0.45, ease:"power2.out"}, 0.36);

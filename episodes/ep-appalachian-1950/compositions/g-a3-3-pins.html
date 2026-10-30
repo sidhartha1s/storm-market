@@ -222,7 +222,7 @@ window.__timelines = window.__timelines || {};
   /* DIGITS @12.34 */
   tl.fromTo(P + "p-b", { x: -12, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 12.34);
   /* BUFFALO2 @13.42: Pittsburgh chip dims, Buffalo fill sweeps orange */
-  tl.to(P + "prow", { opacity: 0.35, duration: 0.3, ease: "none" }, 13.42);
+  tl.to(P + "prow", { opacity: 0.7, duration: 0.3, ease: "none" }, 13.42);
   tl.to(P + "bclip-r", { attr: { height: 18 }, duration: 0.4, ease: "none" }, 13.42);
   tl.to(P + "ring-b", { attr: { stroke: "#d8a13a" }, duration: 0.4, ease: "none" }, 13.42);
   /* 40S @16.74 */
@@ -231,7 +231,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "b-b", { x: -12, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.3, ease: "power3.out" }, 17.26);
 
   /* SO @18.58: both chips dim, one bright pass along the red track, connectors draw to Newark and Buffalo */
-  tl.to([P + "prow", P + "brow"], { opacity: 0.35, duration: 0.3, ease: "none" }, 18.58);
+  tl.to([P + "prow", P + "brow"], { opacity: 0.7, duration: 0.3, ease: "none" }, 18.58);
   tl.set(P + "pass", { autoAlpha: 1 }, 18.58);
   tl.to(P + "pass", { strokeDashoffset: -(TL + 20), duration: 0.8, ease: "power1.inOut" }, 18.58);
   tl.set(P + "pass", { autoAlpha: 0 }, 19.4);

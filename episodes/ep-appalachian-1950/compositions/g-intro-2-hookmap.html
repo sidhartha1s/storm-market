@@ -17,7 +17,8 @@
   CAMERA FRAMES (screen = (map - top-left) * s), from briefs/intro/_list.md:
     A s 0.12 TL (80726.5, 28204.4): NWK (1100,560)
     B s 0.04024 TL (54602.7, 19608.7): NWK (1420,534) PIT (520,600) BUF (693,50)
-    C s 0.04024 TL (48638.5, 14141.5): NWK (1660,754) PIT (760,820) BUF (933,270)
+    C s 0.04024 TL (51123.6, 14141.5): NWK (1560,754) PIT (660,820) BUF (833,270)
+      (was TL 48638.5, NWK 1660: the pin sat under the presenter circle; nothing may enter x >= 1600, y >= 680)
     D s 0.04024 TL (59078.1, 18954.6): NWK (1240,560) PIT (340,626)   <- last frame; g-intro-3-coast opens on it
   LAYERS: #ih2-cam holds map-unit geometry and is the only element the camera transforms. Pins (#ih2-*-at) and chip
     anchors (#ih2-*chip-at) are screen-size and camAt(t) translates each to its projected point (seek-safe, a pure
@@ -150,7 +151,7 @@ window.__timelines = window.__timelines || {};
   /* camera frames [s, top-left x, top-left y] -> centre form [s, cx, cy] */
   const fr = function (s, tx, ty) { return [s, tx + 960 / s, ty + 540 / s]; };
   const A = fr(0.12, 80726.5, 28204.4), B = fr(0.04024, 54602.7, 19608.7);
-  const C = fr(0.04024, 48638.5, 14141.5), D = fr(0.04024, 59078.1, 18954.6);
+  const C = fr(0.04024, 51123.6, 14141.5), D = fr(0.04024, 59078.1, 18954.6);
   const DW = [D[0] / 1.03, D[1], D[2]];                                       /* D, 3 % wider */
   const scr = function (f, p) { return [960 + (p[0] - f[1]) * f[0], 540 + (p[1] - f[2]) * f[0]]; };
   const NWK_A = scr(A, NWK), NWK_B = scr(B, NWK);
@@ -247,8 +248,8 @@ window.__timelines = window.__timelines || {};
   /* TWO FEET @5.62 */
   tl.fromTo(P + "pitchip", { autoAlpha: 0, scale: 0.9, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, transformOrigin: "left center", duration: 0.4, ease: "back.out(1.4)" }, SEG.h1s2 + 5.62);
 
-  /* AT LEAST @1.18 (H1-S3): chips to 0.35, toll card in, source 0.3 s after; "160" spoken @1.42 */
-  tl.to(P + "pitchip", { opacity: 0.35, duration: 0.3, ease: "power2.out" }, SEG.h1s3 + 1.18);
+  /* AT LEAST @1.18 (H1-S3): Pittsburgh chip fully out (a 0.35 dim read as grey on dark), toll card in, source 0.3 s after; "160" spoken @1.42 */
+  tl.to(P + "pitchip", { autoAlpha: 0, duration: 0.3, ease: "power2.out" }, SEG.h1s3 + 1.18);
   tl.fromTo(P + "toll", { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, SEG.h1s3 + 1.18);
   tl.fromTo(P + "tollbig", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: "power3.out" }, SEG.h1s3 + 1.18);
   tl.fromTo(P + "tollsrc", { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, SEG.h1s3 + 1.48);
@@ -256,13 +257,13 @@ window.__timelines = window.__timelines || {};
   tl.to(P + "toll", { y: 30, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, SEG.h1s3 + 3.64);
 
   /* YOUD @0.00 (H1-S4): pan B -> C (camAt, 1.0 s, power2.inOut); Pittsburgh chip back to full */
-  tl.to(P + "pitchip", { opacity: 1, duration: 0.3, ease: "power2.out" }, SEG.h1s4);
+  tl.to(P + "pitchip", { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, SEG.h1s4);
   /* BUFFALO @0.44: ring in during the pan; its label waits for the pan to settle at 1.00 */
   tl.fromTo(P + "buf", { autoAlpha: 0, scale: 0.3, svgOrigin: "0 0" }, { autoAlpha: 1, scale: 1, svgOrigin: "0 0", duration: 0.4, ease: "back.out(2)" }, SEG.h1s4 + 0.44);
   tl.fromTo(P + "buflab", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 1.00);
-  /* 200 @1.32: one reading target, the Pittsburgh chip dims */
+  /* 200 @1.32: one reading target, the Pittsburgh chip goes fully out (no grey-on-dark dim) */
   tl.fromTo(P + "bufchip1", { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 1.32);
-  tl.to(P + "pitchip", { opacity: 0.35, duration: 0.3, ease: "power2.out" }, SEG.h1s4 + 1.32);
+  tl.to(P + "pitchip", { autoAlpha: 0, duration: 0.3, ease: "power2.out" }, SEG.h1s4 + 1.32);
   /* BUFFALO2 @5.24 */
   tl.to(P + "bufchip1", { x: 20, autoAlpha: 0, duration: 0.3, ease: "power3.in" }, SEG.h1s4 + 5.24);
   /* 40S @6.16: Buffalo fill sweeps warm amber, "40s" in */
@@ -271,11 +272,13 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P + "bufchip2", { autoAlpha: 0, scale: 0.9, transformOrigin: "left center" }, { autoAlpha: 1, scale: 1, transformOrigin: "left center", duration: 0.4, ease: "back.out(1.4)" }, SEG.h1s4 + 6.16);
   /* NO SNOW @6.64 */
   tl.fromTo(P + "bufno", { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 6.64);
-  /* SINGLE @9.14: Pittsburgh chip flips to SINGLE DIGITS at full; Buffalo chip dims */
-  tl.to(P + "pitchip", { opacity: 1, duration: 0.3, ease: "power2.out" }, SEG.h1s4 + 9.14);
-  tl.to(P + "pitfeet", { y: -20, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, SEG.h1s4 + 9.14);
-  tl.fromTo(P + "pitdig", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 9.14);
-  tl.to(P + "bufchip2", { opacity: 0.35, duration: 0.3, ease: "power2.out" }, SEG.h1s4 + 9.14);
+  /* SINGLE @9.14: Pittsburgh chip returns with SINGLE DIGITS (chip in at 9.34, with the line; 2+ FEET leaves unseen
+     inside the hidden chip); Buffalo chip goes fully out */
+  tl.to(P + "pitchip", { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, SEG.h1s4 + 9.34);
+  /* sequenced, not crossfaded: both share one grid cell, so the old line is gone before the new one lands (overlap_check) */
+  tl.to(P + "pitfeet", { y: -20, autoAlpha: 0, duration: 0.2, ease: "power3.in" }, SEG.h1s4 + 9.14);
+  tl.fromTo(P + "pitdig", { autoAlpha: 0, y: 20 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, SEG.h1s4 + 9.34);
+  tl.to(P + "bufchip2", { autoAlpha: 0, duration: 0.3, ease: "power2.out" }, SEG.h1s4 + 9.14);
 
   /* ITS @0.00 (H1-S5): Buffalo and both chips out; pan C -> D wide (camAt 1.4 s), then slow push to exactly D */
   tl.to([P + "buf", P + "buflab"], { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, SEG.h1s5);

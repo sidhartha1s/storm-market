@@ -12,6 +12,9 @@
     That path stops at map y 64905 (lat 35.0 N), so the land south of it is #a42-south: the WHOLE d of g-a4-4-statemap
     #a44-g-south (US Census TIGER states, public domain; subpaths SC, AR, MS, LA, NC, GA, AL, TN, FL x2), pasted verbatim
     and drawn as g-a4-4 does: clipped to y >= 64805, coast under-stroke 3.2 px #4a5560, fill #0b1016, lines 1.2 px.
+    FIX 29 Oct 26 (frame 683 s, black notch bottom-left): Texas and Oklahoma were missing, so x 0-255 below the seam
+    was void. Appended two subpaths: TX from the same TIGER file (tiger-states-se.geojson) and OK from Natural Earth
+    50m admin-1, same projection, rounded, RDP 30 map units. A Mexico rect (#0e1620) sits under Texas.
     #a42-sc / #a42-ga (crop-row clip only): the SC (1st) and GA (6th) subpaths of that same d, each a whole closed ring,
     pasted verbatim. No hand-drawn outline remains.
     REBUILD 28 Oct 26: the script had been replaced by g-intro-2-hookmap's (wrong id, intro SEG, DUR 28.681); rewritten

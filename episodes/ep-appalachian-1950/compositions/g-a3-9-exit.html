@@ -188,7 +188,7 @@ window.__timelines = window.__timelines || {};
      Head crosses the frame top (y 0, 287 of 886 px along) at 1.80 + 1.2 * sqrt(0.3235) = 2.48 = CANADA @17.08 */
   tl.fromTo(P + "exmp", { strokeDasharray: L + " " + L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: 1.2, ease: "power2.in" }, 1.8);
   /* dots keep marching outward (period 14 px, 28 px/s), 3 cycles from 3.0, last tween ends at 4.50 (before the 4.70 host end) */
-  tl.fromTo(P + "exit", { strokeDashoffset: 0 }, { strokeDashoffset: -14, duration: 0.5, ease: "none", repeat: 2 }, 3.0);
+  tl.fromTo(P + "exit", { strokeDashoffset: 0 }, { strokeDashoffset: -47.6, duration: 1.7, ease: "none" }, 3.0);
 
   /* 29TH @17.82 (comp 3.22): chip in; it holds to the host end (no exit, see header) */
   tl.fromTo(P + "chip", { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 3.22);

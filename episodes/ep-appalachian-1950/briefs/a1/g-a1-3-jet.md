@@ -38,7 +38,7 @@ A stream of unusually fast air ran about a mile overhead; warm air near the grou
 Text: `FAST WIND` · `ABOUT 1 MILE UP` · `SCHEMATIC, NOT TO SCALE` · `NEW ENGLAND` · `TREES DOWN` · `POWER OUT` · `Source: NBC Connecticut report (a Connecticut weather writer's reading)` · `Source: NCEI` · `Basemap: Natural Earth`
 - 0.00: sky, ground, ridge, rooftops on; tag on. `/* THAT @0.00 */`
 - 1.14 "stream": band wipes in left to right (clip or scaleX 0 to 1 from left, 1.0 s, power3.out); streaks start. `/* STREAM @1.14 */`
-- 1.88 "fast": streak speed eases from 200 to 420 px/s (timeScale on the streak tweens is not allowed; author two streak sets and crossfade). `/* FAST @1.88 */`
+- 1.88 "fast": a second, faster streak set (560 px/s) fades in over the first (0.5 s), so the band visibly speeds up. `/* FAST @1.88 */`
 - 3.46 "mile": height bracket draws up from the ground (0.6 s); chip in (`fromTo` x -60 to 0, autoAlpha, 0.6 s, power3.out). `/* MILE @3.46 */`
 - 5.66 "warm": warm layer fades up (0.8 s). `/* WARM @5.66 */`
 - 7.76 "mix": four wisps draw down, staggered 0.2 s, 0.8 s each. `/* MIX @7.76 */`

@@ -96,7 +96,11 @@
 
       <!-- Elkins bracket: about 40 colder (two lines: one line would run into the Charleston tube) -->
       <path class="c12-h" id="c12-brk" d="M600 780 H620 M610 780 V460 M600 460 H620" fill="none" stroke="#d8a13a" stroke-width="2"/>
-      <text class="c12-brk c12-h" id="c12-brkl" x="628" y="611"><tspan x="628" dy="0">ABOUT 40° </tspan><tspan x="628" dy="32">COLDER</tspan></text>
+      <!-- two leaf texts, no tspans: a <text> with tspan children was read as a third box over both lines (overlap_check) -->
+      <g class="c12-h" id="c12-brkl">
+        <text class="c12-brk" x="628" y="611">ABOUT 40°</text>
+        <text class="c12-brk" x="628" y="643">COLDER</text>
+      </g>
 
       <!-- values, right of each tube, above the liquid top -->
       <text class="c12-val c12-h" id="c12-v-e" x="624" y="772">10°F</text>

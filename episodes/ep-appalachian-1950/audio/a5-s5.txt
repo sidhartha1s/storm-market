@@ -1,0 +1,1 @@
+Then they needed a hard test, and they picked this storm. It became the first test case for Charney's two-level model, a computer picture of the atmosphere in two layers instead of one. To pass, the machine had to predict the storm. That was a lot to ask.

@@ -261,7 +261,9 @@ window.__timelines = window.__timelines || {};
   tl.to([P + "chip1", P + "chip2"], { autoAlpha: 0.35, duration: 0.4, ease: "power1.out" }, 15.42);
 
   // exit: chips slide out, everything fades to #04070c (cut to g-a3-7's chart)
-  tl.to([P + "chip1", P + "chip2"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.38);
+  // RECORD TIDE exits left (right-going slide crossed the PHILADELPHIA label); 108 MPH exits right
+  tl.to(P + "chip1", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.38);
+  tl.to(P + "chip2", { x: -700, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.38);
   tl.fromTo(P + "cover", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power1.in" }, 17.38);
 
   window.__timelines["g-a3-6-squeeze"] = tl;

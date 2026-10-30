@@ -151,7 +151,7 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"l3", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 12.82);
 
   /* NEWYORK @13.84: card slides up and out, map rises in */
-  tl.to(P+"card", { y: -200, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 13.84);
+  tl.to(P+"card", { y: -120, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 13.84);
   tl.fromTo(P+"map", { y: 200, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.7, ease: "power3.out" }, 13.84);
   tl.fromTo(P+"src2", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 14.2);
   tl.fromTo(P+"bm", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 14.2);
@@ -171,9 +171,9 @@ window.__timelines = window.__timelines || {};
     const el = document.getElementById("nl7-amt"); if (el) el.textContent = "$" + Math.round(amt.v) + " MILLION";
   } }, 16.26);
 
-  /* exit: chip slides out, map fades; chip has been settled since about 16.86 (1.5 s) */
-  tl.to(P+"chip", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 18.36);
-  tl.to(P+"map", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 18.36);
+  /* exit 17.66-18.26 lands on the g-a1-8 hand-off (episode 213.582); chip settled since about 16.86 */
+  tl.to(P+"chip", { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.66);
+  tl.to(P+"map", { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 17.66);
 
   window.__timelines["g-a1-7-newlondon"] = tl;
 })();

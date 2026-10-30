@@ -51,7 +51,7 @@ window.__timelines = window.__timelines || {};
   const CW = 1619, CH = 1366;          /* crop size (css box above must match) */
   const ROWC = 1318.5, ROWH = 79;      /* ALL-TIME row centre y (rules 1279..1358) and height */
   const ROWX0 = 24, ROWX1 = 1595;      /* table outer border */
-  const CELLX0 = 206, CELLX1 = 388;    /* LOW column rules */
+  const CELLX0 = 388, CELLX1 = 569;    /* LOW column rules (206-388 is HIGH) */
   const S = 580 / CW, BAND = 64;
   const rowScreen = 300 - ROWH * S / 2; /* ALL-TIME row centre, card-relative: row bottom = card bottom (420) - 120 */
   const T = rowScreen - BAND - ROWC * S; /* scroll end translateY */

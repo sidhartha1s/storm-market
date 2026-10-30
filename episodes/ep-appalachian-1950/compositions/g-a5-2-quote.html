@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<template>
+<style>
+  /* g-a5-2-quote (A5-S2): beige cite card, AMS 2004 quote, over the dimmed 24 Nov 1950 chart.
+     Structure from library/inhouse/quote-card.html, beige values from ep-1974 g-cite-paper. Host 20.30 s. */
+  #g-a5-2-quote-root { position:absolute; inset:0; overflow:hidden; background:#04070c; font-family:Arial,sans-serif; }
+  .a52-ground { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; }
+  .a52-chart { position:absolute; left:0; top:-79px; width:1920px; height:1238px; object-fit:cover;
+    filter:sepia(0.28) contrast(1.08) brightness(0.96) saturate(0.8); }
+  .a52-dim { position:absolute; inset:0; background:rgb(3,5,8); opacity:0.70; pointer-events:none; }
+  .a52-card { position:absolute; inset:auto; left:260px; right:260px; top:300px; height:420px; box-sizing:border-box;
+    padding:56px 64px; background:rgba(232,222,200,0.90); border:1px solid rgba(90,74,46,0.35); border-radius:28px;
+    opacity:0; visibility:hidden; }
+  .a52-eyebrow { font-family:Arial,sans-serif; font-weight:700; font-size:20px; letter-spacing:6px; color:#6b6257; }
+  .a52-quote { margin-top:24px; font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:52px;
+    line-height:1.25; color:#2a2622; }
+  .a52-line { display:block; white-space:nowrap; opacity:0; visibility:hidden; }
+  .a52-hl { position:relative; display:inline-block; font-style:italic; }
+  .a52-ul { position:absolute; left:0; bottom:-4px; width:100%; height:6px; background:#d0121f; opacity:0.85;
+    transform-origin:left center; visibility:hidden; }
+  .a52-attr { margin-top:24px; font-family:Arial,sans-serif; font-weight:700; font-size:26px; color:#6b6257;
+    white-space:nowrap; opacity:0; visibility:hidden; }
+  .a52-chipwrap { position:absolute; left:0; top:190px; width:1920px; display:flex; justify-content:center; pointer-events:none; }
+  .a52-chip { padding:10px 22px; border-radius:14px; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:'Arial Black',Arial,sans-serif; font-weight:900;
+    font-size:58px; line-height:1.1; color:#f2f5f8; white-space:nowrap; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-2-quote-root" data-composition-id="g-a5-2-quote" data-width="1920" data-height="1080">
+  <div class="a52-ground" id="a52-ground">
+    <img class="a52-chart" id="a52-chart" src="media/a5/jkl-surface-1950-11-24.jpg" alt="">
+  </div>
+  <div class="a52-dim" id="a52-dim"></div>
+  <div class="a52-card" id="a52-card">
+    <div class="a52-eyebrow" id="a52-eyebrow">LOOKING BACK</div>
+    <div class="a52-quote">
+      <span class="a52-line" id="a52-l1">&hellip;the manually derived forecasts</span>
+      <span class="a52-line" id="a52-l2">of the day were <em class="a52-hl" id="a52-hl">unable to anticipate<i class="a52-ul" id="a52-ul"></i></em></span>
+      <span class="a52-line" id="a52-l3">this extreme event.</span>
+    </div>
+    <div class="a52-attr" id="a52-attr">Kistler, Uccellini, Kocin &middot; AMS, 2004</div>
+  </div>
+  <div class="a52-chipwrap" id="a52-chipwrap"><div class="a52-chip" id="a52-chip">MISSED</div></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#a52-";
+  /* ground: dim 0.70 -> 0.78 by 1.0 s, slow push the whole window */
+  tl.fromTo(P+"dim", { opacity:0.70 }, { opacity:0.78, duration:1.0, ease:"power1.out" }, 0);
+  tl.fromTo(P+"ground", { scale:1.0 }, { scale:1.04, duration:19.78, ease:"none", transformOrigin:"50% 50%" }, 0);
+  tl.set(P+"ul", { scaleX:0 }, 0);
+  /* LOOKING @2.98 */
+  tl.fromTo(P+"card", { autoAlpha:0, y:40 }, { autoAlpha:1, y:0, duration:0.6, ease:"power3.out" }, 2.98);
+  /* 2004 @3.60 */
+  tl.fromTo(P+"attr", { autoAlpha:0, y:12 }, { autoAlpha:1, y:0, duration:0.4 }, 3.60);
+  /* FORECASTS @6.86 */
+  tl.fromTo(P+"l1", { autoAlpha:0, y:24 }, { autoAlpha:1, y:0, duration:0.4, ease:"power3.out" }, 6.86);
+  /* DAY @7.70 */
+  tl.fromTo(P+"l2", { autoAlpha:0, y:24 }, { autoAlpha:1, y:0, duration:0.4, ease:"power3.out" }, 7.70);
+  /* WORKED @8.64 */
+  tl.fromTo(P+"l3", { autoAlpha:0, y:24 }, { autoAlpha:1, y:0, duration:0.4, ease:"power3.out" }, 8.64);
+  /* MISSED @10.12 */
+  tl.set(P+"ul", { autoAlpha:1 }, 10.12);
+  tl.to(P+"ul", { scaleX:1, duration:0.5, ease:"power2.out" }, 10.12);
+  tl.fromTo(P+"chip", { autoAlpha:0, scale:1.3 }, { autoAlpha:1, scale:1, duration:0.35, ease:"back.out(1.8)" }, 10.12);
+  /* float 10.50 to 18.90: 6 legs of 1.4 s, ends back at y 0 */
+  tl.to(P+"card", { y:-8, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:5 }, 10.50);
+  tl.to(P+"chip", { y:-8, duration:1.4, ease:"sine.inOut", yoyo:true, repeat:5 }, 10.50);
+  /* COMING @19.58 (chip out from "see" 18.98) */
+  tl.to(P+"chip", { autoAlpha:0, y:-20, duration:0.3, ease:"power2.in" }, 18.98);
+  tl.to(P+"card", { x:980, autoAlpha:0, duration:0.6, ease:"power3.in" }, 19.70);
+  window.__timelines["g-a5-2-quote"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
