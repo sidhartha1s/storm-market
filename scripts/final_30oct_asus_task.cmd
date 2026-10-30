@@ -29,7 +29,7 @@ if errorlevel 1 (
   exit /b 0
 )
 echo == %1 render start %date% %time% >> "%LOG%"
-start "" /b /wait /belownormal cmd /c ""%PY%" "%W%\scripts\render_acts.py" %1 full %B%" >> "%LOG%" 2>&1
+start "" /b /wait /belownormal cmd /c ""%PY%" "%W%\scripts\render_acts.py" %1 full %B% %REUSE%" >> "%LOG%" 2>&1
 if not exist "%W%\episodes\%1\renders\%B%.mp4" (
   echo == %1 RENDER FAIL no %B%.mp4 %date% %time% >> "%LOG%"
   exit /b 0
