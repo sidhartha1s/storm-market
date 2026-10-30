@@ -170,7 +170,10 @@ const MEASURE = `((t) => {
   }
   /* containers that are visible but hold nothing — a gradient/border IS content */
   for (const el of document.querySelectorAll('[id^="g-"], .panel, .spanel, .card')) {
-    if (!vis(el) || el instanceof SVGElement) continue;
+    /* an <img>/<video>/<canvas> IS content (a broken one is the broken-image check); the look-inside rule below
+       flagged 25 loaded page scans in Galveston as "empty" (30 Oct 26) */
+    if (!vis(el) || el instanceof SVGElement || el instanceof HTMLImageElement || el instanceof HTMLVideoElement ||
+        el instanceof HTMLCanvasElement) continue;
     const r = el.getBoundingClientRect();
     const cs2 = getComputedStyle(el);
     const painted = cs2.backgroundImage !== 'none' || parseFloat(cs2.borderTopWidth) > 0 ||
