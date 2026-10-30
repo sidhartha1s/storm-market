@@ -6,6 +6,7 @@ comparison quoted in the fixer report was done separately with `git show HEAD:<p
 before these edits were committed.
 """
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -744,6 +745,34 @@ with tempfile.TemporaryDirectory() as d:
     check("sweep_episode: a src-less designed section is not a still, a missing file or a duplicate of the next cut",
           "[c-a5-ground]" not in out.split("FAIL media files exist")[-1][:200] and "FAIL no still over 6s" not in out
           and "FAIL adjacent duplicate cuts" not in out, out[-800:])
+
+# lint_timeline.py — the same cut-by and media-start rules as sweep (scripts/cut_by.py is the one owner)
+def lint_nx_ep(d, dur, extra_attrs="", paul_at=None):
+    ep = make_lint_ep(Path(d), nx2_dur=2.0, nx2_start=7.0)
+    # the fixture's first narration is nx-a1 on media/a1.wav, 2.0 s; its mount becomes `dur` (+ extra attrs)
+    h = (ep / "index.html").read_text(encoding="utf-8")
+    old_tag = '<audio id="nx-a1" src="media/a1.wav" data-start="0" data-duration="2"></audio>'
+    assert old_tag in h
+    h = h.replace(old_tag, '<audio id="nx-a1" src="media/a1.wav" data-start="0" data-duration="%s"%s></audio>' % (dur, extra_attrs))
+    if paul_at is not None:
+        h = h.replace("</section>", f'<video id="ins-paul-9" src="media/paul.mp4" data-start="{paul_at}" data-duration="1" '
+                                    'data-track-index="2" data-volume="1" data-has-audio="true" data-srt-label="x"></video>\n</section>')
+        (ep / "media" / "paul.mp4").write_bytes(b"0")
+    (ep / "index.html").write_text(h, encoding="utf-8")
+    return ep
+
+with tempfile.TemporaryDirectory() as d:
+    code, out = run("lint_timeline.py", lint_nx_ep(d, 1.0))
+    check("lint_timeline: a narration window shorter than its wav FAILs", "narration window shorter" in out, out[-500:])
+with tempfile.TemporaryDirectory() as d:
+    code, out = run("lint_timeline.py", lint_nx_ep(d, 1.0, ' data-media-start="1.0"'))
+    check("lint_timeline: media-start + duration reaching the wav end is not a short window", "narration window shorter" not in out, out[-500:])
+with tempfile.TemporaryDirectory() as d:
+    code, out = run("lint_timeline.py", lint_nx_ep(d, 1.0, ' data-cut-by="ins-paul-9"', paul_at=1.0))
+    check("lint_timeline: a data-cut-by mount ending where Paul's clip starts is not a short window", "narration window shorter" not in out, out[-500:])
+with tempfile.TemporaryDirectory() as d:
+    code, out = run("lint_timeline.py", lint_nx_ep(d, 1.0, ' data-cut-by="ins-paul-9"', paul_at=1.5))
+    check("lint_timeline: a data-cut-by whose clip starts 0.5 s late still FAILs", "narration window shorter" in out, out[-500:])
 
 print()
 if FAILS:
