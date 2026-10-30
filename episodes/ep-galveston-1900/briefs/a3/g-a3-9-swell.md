@@ -9,7 +9,7 @@ MWR Sept 1900 p. 372, Cline's report (factcheck/a3-r1.md rows 29 to 31): "A heav
 
 ## 2. Datum, scale, orientation
 - Plan view, north up, SCHEMATIC (on-screen note "Schematic" Arial 700 19 px `#93a3b2` left 96, top 1000). Galveston's Gulf beach runs SW to NE: shoreline a straight line from (200, 860) to (1500, 300) (bearing about 67° from north, as the island lies). Land (the island) above-left of the line, fill `#15202b`; Gulf below-right, fill `#04070c`.
-- Swell crests: parallel lines to the shoreline is wrong; crests are perpendicular to travel. The swell travels FROM the SE toward the NW (heading 315°), so crests run SW-NE (bearing 45°); they arrive at the beach slightly oblique. Five crests `#5a768f` 4 px, 900 px long, spaced 110 px, moving toward the NW at 40 px/s.
+- Swell crests run perpendicular to their travel. The swell travels FROM the SE toward the NW (heading 315°), so crests run SW-NE (bearing 45°); they arrive at the beach slightly oblique. Five crests `#5a768f` 4 px, 900 px long, spaced 110 px, moving toward the NW at 40 px/s.
 - Wind arrow: from the north, pointing south (toward the sea), placed over the land at (520, 240) to (520, 460), `#7fb2e5` 8 px, arrowhead; label "WIND: NORTH" Arial 700 26 px `#7fb2e5` tracking 3 right of the arrow.
 - Tide line: a band 14 px `#d8a13a` opacity 0.6 along the shoreline on the land side, creeping inland 0 to 60 px over the host (no scale, no number).
 

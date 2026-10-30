@@ -1,0 +1,237 @@
+<template>
+<style>
+  #g-a4-16-tide-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #g-a4-16-tide-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+
+  /* start-hidden parts (also hidden by tl.set at 0) */
+  #g-a4-16-tide-gtick, #g-a4-16-tide-br10, #g-a4-16-tide-br20, #g-a4-16-tide-br87, #g-a4-16-tide-l87 { visibility:hidden; opacity:0; }
+
+  /* source line: top-left glass, small radius */
+  #g-a4-16-tide-src { position:absolute; left:96px; top:54px; max-width:1000px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; white-space:nowrap; }
+
+  /* HUD labels: never ride a move */
+  #g-a4-16-tide-note { position:absolute; left:96px; top:1000px; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#93a3b2; letter-spacing:2px; }
+  #g-a4-16-tide-axtitle { position:absolute; left:96px; top:300px; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; }
+  /* axis tick labels: right-aligned to x 286, centred on the tick (top = tick y - 13) */
+  .ga416-ax { position:absolute; right:1634px; white-space:nowrap; text-align:right;
+    font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; }
+  #g-a4-16-tide-ax0 { top:947px; }
+  #g-a4-16-tide-ax5 { top:797px; }
+  #g-a4-16-tide-ax10 { top:647px; }
+  #g-a4-16-tide-ax15 { top:497px; }
+  #g-a4-16-tide-ax20 { top:347px; }
+  #g-a4-16-tide-v152 { position:absolute; left:120px; top:474px; white-space:nowrap; opacity:0; visibility:hidden;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:58px; color:#d8a13a;
+    text-shadow:0 0 12px #04070c, 0 0 5px #04070c; }
+
+  /* chips: glass card, radius 28 */
+  .ga416-chip { position:absolute; box-sizing:border-box; padding:20px 32px 22px; border-radius:28px;
+    text-align:left; white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-shadow:0 30px 90px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.10); }
+  #g-a4-16-tide-cg { left:360px; top:830px; }
+  #g-a4-16-tide-cb { left:360px; top:130px; }
+  #g-a4-16-tide-c20 { left:1280px; top:280px; }
+  .ga416-main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:58px; color:#f2f5f8; }
+  .ga416-tag { display:block; margin-top:6px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:4px; }
+
+  /* small glass cards for the two measure labels */
+  .ga416-card { position:absolute; box-sizing:border-box; padding:10px 20px; border-radius:18px; white-space:nowrap; opacity:0; visibility:hidden;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); font-family:Arial, sans-serif; font-weight:700; color:#f2f5f8; }
+  #g-a4-16-tide-c10 { left:1330px; top:610px; font-size:30px; line-height:34px; }
+  #g-a4-16-tide-c87 { right:340px; top:712px; font-size:26px; line-height:30px; }
+</style>
+<div id="g-a4-16-tide-root" data-composition-id="g-a4-16-tide" data-width="1920" data-height="1080"
+     data-type-ok="schematic house plate by brief: chips 52 px, axis and plate labels 19-22 px, measure labels 26-30 px on glass cards">
+  <svg id="g-a4-16-tide-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <clipPath id="g-a4-16-tide-wclip"><rect x="96" y="0" width="1728" height="804"/></clipPath>
+      <clipPath id="g-a4-16-tide-l87clip"><rect id="g-a4-16-tide-l87r" x="300" y="680" width="0" height="40"/></clipPath>
+    </defs>
+
+    <!-- HOUSE PLATE: sea level y 960, 30 px/ft, ground 5.2 ft = y 804, 8.7 ft = y 699, 15.2 ft = y 504, 20 ft = y 360, floor y 644 -->
+    <rect x="0" y="804" width="1920" height="156" fill="#15202b"/>
+    <path fill="none" stroke="#93a3b2" stroke-width="2" d="M0,804 L1920,804"/>
+    <path id="g-a4-16-tide-datum" fill="none" stroke="#5a768f" stroke-width="2" stroke-dasharray="8 8" d="M96,960 L1824,960"/>
+
+    <!-- house: body x 760 to 1240, floor y 644, eave y 104, ridge y 60 (schematic) -->
+    <polygon fill="#15202b" stroke="#93a3b2" stroke-width="3" stroke-linejoin="round" points="740,104 860,60 1140,60 1260,104"/>
+    <rect x="760" y="104" width="480" height="540" fill="#0b1016" stroke="#93a3b2" stroke-width="3"/>
+    <path fill="none" stroke="#2a3644" stroke-width="2" d="M760,374 L1240,374"/>
+    <!-- windows: dark at night, a faint lamp each; they go out as the water takes them -->
+    <rect id="g-a4-16-tide-w0" x="880" y="200" width="60" height="120" fill="#e8c56a" opacity="0.3"/>
+    <rect id="g-a4-16-tide-w1" x="1000" y="200" width="60" height="120" fill="#e8c56a" opacity="0.3"/>
+    <rect id="g-a4-16-tide-w2" x="1120" y="200" width="60" height="120" fill="#e8c56a" opacity="0.3"/>
+    <rect id="g-a4-16-tide-w3" x="880" y="470" width="60" height="120" fill="#e8c56a" opacity="0.3"/>
+    <rect id="g-a4-16-tide-w4" x="1000" y="470" width="60" height="120" fill="#e8c56a" opacity="0.3"/>
+    <rect id="g-a4-16-tide-w5" x="1120" y="470" width="60" height="120" fill="#e8c56a" opacity="0.3"/>
+    <!-- door 60 x 210, x 760 to 820, y 434 to 644 -->
+    <rect x="760" y="434" width="60" height="210" fill="#04070a" stroke="#93a3b2" stroke-width="2"/>
+
+    <!-- front steps (700,804) up to the door sill (760,644): 8 risers of 20 px -->
+    <polygon fill="#2a3644" stroke="#93a3b2" stroke-width="2" stroke-linejoin="round"
+      points="700,804 700,784 707.5,784 707.5,764 715,764 715,744 722.5,744 722.5,724 730,724 730,704 737.5,704 737.5,684 745,684 745,664 752.5,664 752.5,644 760,644 760,804"/>
+
+    <!-- fence (4 ft) with the gate gap at x 560 -->
+    <path fill="none" stroke="#4a5560" stroke-width="4"
+      d="M400,804 V684 M420,804 V684 M440,804 V684 M460,804 V684 M480,804 V684 M500,804 V684 M520,804 V684 M600,804 V684 M620,804 V684 M640,804 V684 M660,804 V684 M680,804 V684 M400,700 H528 M592,700 H680"/>
+    <path fill="none" stroke="#93a3b2" stroke-width="6" d="M534,804 V676 M586,804 V676"/>
+
+    <!-- water: local surface y 0, moved by GSAP y (624 start, 504, then 360); clipped at the ground line -->
+    <g clip-path="url(#g-a4-16-tide-wclip)">
+      <g id="g-a4-16-tide-wg">
+        <path id="g-a4-16-tide-wfill" fill="#5a768f" fill-opacity="0.75"
+          d="M96,0 q24,-6 48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 L1824,900 L96,900 Z"/>
+        <path id="g-a4-16-tide-wsurf" fill="none" stroke="#7fb2e5" stroke-width="3"
+          d="M96,0 q24,-6 48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0 t48,0"/>
+      </g>
+    </g>
+
+    <!-- piers under the floor: x 780 to 1220 every 110 px, y 644 to 804 -->
+    <path fill="none" stroke="#93a3b2" stroke-width="14" d="M780,644 V804 M890,644 V804 M1000,644 V804 M1110,644 V804 M1220,644 V804"/>
+
+    <!-- elevation axis x 300, 0 ft y 960 to 20 ft y 360, ticks every 5 ft -->
+    <path fill="none" stroke="#93a3b2" stroke-width="2" d="M300,960 V360 M292,960 H308 M292,810 H308 M292,660 H308 M292,510 H308 M292,360 H308"/>
+
+    <!-- ground tick: ground line y 804 down to the chip at y 830, x 600 -->
+    <path id="g-a4-16-tide-gtick" fill="none" stroke="#d8a13a" stroke-width="2" d="M600,804 L600,830"/>
+
+    <!-- 10 ft above the ground bracket: x 1300, y 804 to 504, end ticks 30 px (length 30+300+30 = 360, dash 361) -->
+    <path id="g-a4-16-tide-br10" fill="none" stroke="#d8a13a" stroke-width="3" stroke-dasharray="361" stroke-dashoffset="361"
+      d="M1285,804 H1315 M1300,804 V504 M1285,504 H1315"/>
+
+    <!-- about 20 ft water bracket x 1760, y 960 to 360 (30+600+30 = 660, dash 661) -->
+    <path id="g-a4-16-tide-br20" fill="none" stroke="#d8a13a" stroke-width="3" stroke-dasharray="661" stroke-dashoffset="661"
+      d="M1745,960 H1775 M1760,960 V360 M1745,360 H1775"/>
+
+    <!-- island's highest point 8.7 ft: bracket x 1700, y 960 to 699 (30+261+30 = 321, dash 322) and dashed line y 699 -->
+    <path id="g-a4-16-tide-br87" fill="none" stroke="#93a3b2" stroke-width="3" stroke-dasharray="322" stroke-dashoffset="322"
+      d="M1685,960 H1715 M1700,960 V699 M1685,699 H1715"/>
+    <g clip-path="url(#g-a4-16-tide-l87clip)">
+      <path id="g-a4-16-tide-l87" fill="none" stroke="#93a3b2" stroke-width="3" stroke-dasharray="14 10" d="M300,699 H1824"/>
+    </g>
+  </svg>
+
+  <div id="g-a4-16-tide-src">Isaac Cline, Monthly Weather Review, September 1900, p. 373; National Park Service</div>
+  <div id="g-a4-16-tide-note">Vertical scale 30 px per ft &middot; house: schematic</div>
+  <div id="g-a4-16-tide-axtitle">Feet above sea level</div>
+  <div id="g-a4-16-tide-ax0" class="ga416-ax">0</div>
+  <div id="g-a4-16-tide-ax5" class="ga416-ax">5</div>
+  <div id="g-a4-16-tide-ax10" class="ga416-ax">10</div>
+  <div id="g-a4-16-tide-ax15" class="ga416-ax">15</div>
+  <div id="g-a4-16-tide-ax20" class="ga416-ax">20 FT</div>
+  <div id="g-a4-16-tide-v152">15.2 FT</div>
+
+  <div id="g-a4-16-tide-cg" class="ga416-chip"><span class="ga416-main">5.2 FT ELEVATION</span></div>
+  <div id="g-a4-16-tide-cb" class="ga416-chip">
+    <span class="ga416-main">BAY SIDE &middot; NO MORE THAN 15 FT</span>
+    <span class="ga416-tag">Cline's report, p. 373</span>
+  </div>
+  <div id="g-a4-16-tide-c20" class="ga416-chip">
+    <span class="ga416-main">ABOUT 20 FT</span>
+    <span class="ga416-tag">his report, at his house</span>
+  </div>
+  <div id="g-a4-16-tide-c10" class="ga416-card">10 FT ABOVE THE GROUND</div>
+  <div id="g-a4-16-tide-c87" class="ga416-card">ISLAND'S HIGHEST POINT 8.7 FT</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a4-16-tide-";
+  const q = function(id) { return document.querySelector(P + id); };
+  /* a4-s10.words.json, comp starts at 0.00 ("Remember"), comp-local = word time. Host window 0 to 25.04.
+     GROUND @0.42 · settled 2.06 · By 4.16 · 7:30 @4.32 · 10 FT @6.48 · ground 7.70 · An hour later 8.54 · NEARLY 5 @9.88 ·
+     over 13.36 · hold 16.28 · 20 @19.70 · The highest 21.08 · 8.7 @21.54 · less 23.68 · half 24.24 · segment end 25.04. */
+
+  /* --- start states --- */
+  tl.set([P+"src", P+"cg", P+"cb", P+"c20", P+"c10", P+"c87", P+"v152", P+"gtick", P+"br10", P+"br20", P+"br87", P+"l87"], {autoAlpha: 0}, 0);
+  tl.set(P+"wg", {y: 624}, 0);
+  tl.set(P+"l87r", {attr: {width: 0}}, 0);
+  const wins = [0, 1, 2, 3, 4, 5].map(function(k) { return q("w" + k); });
+  tl.set(wins, {opacity: 0.3}, 0);
+
+  /* --- whole-window motion: water ripple, 1.2 s period (0.6 s each way), finite repeats past 25.04 --- */
+  const wf = q("wfill"), ws = q("wsurf");
+  const flip = function(d) { return d.replace("q24,-6", "q24,6"); };
+  tl.to(wf, {attr: {d: flip(wf.getAttribute("d"))}, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 41}, 0);
+  tl.to(ws, {attr: {d: flip(ws.getAttribute("d"))}, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 41}, 0);
+
+  /* window lamps: upper storey flickers on its own; lower storey goes out as the water takes it (4.40 to 4.80) */
+  tl.to(wins[0], {opacity: 0.08, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 1.60);
+  tl.to(wins[2], {opacity: 0.08, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 3.10);
+  tl.to(wins[3], {opacity: 0.55, duration: 0.08, ease: "power1.inOut"}, 4.40);
+  tl.to(wins[3], {opacity: 0, duration: 0.18, ease: "power1.in"}, 4.48);
+  tl.to(wins[5], {opacity: 0.55, duration: 0.08, ease: "power1.inOut"}, 4.55);
+  tl.to(wins[5], {opacity: 0, duration: 0.18, ease: "power1.in"}, 4.63);
+  tl.to(wins[4], {opacity: 0.55, duration: 0.08, ease: "power1.inOut"}, 4.65);
+  tl.to(wins[4], {opacity: 0, duration: 0.18, ease: "power1.in"}, 4.73);
+  tl.to(wins[1], {opacity: 0.08, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 6.20);
+  tl.to(wins[0], {opacity: 0.08, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 9.60);
+  tl.to(wins[2], {opacity: 0.08, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 12.40);
+  tl.to(wins[1], {opacity: 0.08, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 15.80);
+  tl.to(wins[0], {opacity: 0.08, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 18.60);
+  tl.to(wins[2], {opacity: 0.08, duration: 0.12, ease: "power1.inOut", yoyo: true, repeat: 1}, 22.00);
+
+  /* source line slides in at 0, then drifts */
+  tl.fromTo(P+"src", {autoAlpha: 0, x: -30}, {autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out"}, 0);
+  tl.to(P+"src", {y: -4, duration: 2.0, ease: "sine.inOut", yoyo: true, repeat: 11}, 0.5);
+
+  /* GROUND @0.42: ground tick and chip in, settle by 2.06; out 3.76 to 4.16 */
+  tl.fromTo(P+"gtick", {autoAlpha: 0}, {autoAlpha: 1, duration: 0.3, ease: "power2.out"}, 0.42);
+  tl.fromTo(P+"cg", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 0.42);
+  tl.to(P+"cg", {y: -4, duration: 1.2, ease: "sine.inOut"}, 0.87);
+  tl.to(P+"cg", {autoAlpha: 0, y: 12, duration: 0.4, ease: "power2.in"}, 3.76);
+  tl.to(P+"gtick", {autoAlpha: 0, duration: 0.4, ease: "power2.in"}, 3.76);
+
+  /* 7:30 @4.32: water jumps y 624 to y 504 (4 ft rise, 4.32 to 4.80) */
+  tl.to(P+"wg", {y: 504, duration: 0.48, ease: "power3.out"}, 4.32);
+
+  /* 10 FT @6.48: bracket draws, label in; 15.2 FT axis value in at 7.70 with the "15" tick label off */
+  tl.set(P+"br10", {autoAlpha: 1}, 6.48);
+  tl.fromTo(P+"br10", {strokeDashoffset: 361}, {strokeDashoffset: 0, duration: 0.5, ease: "power1.inOut"}, 6.48);
+  tl.fromTo(P+"c10", {autoAlpha: 0, y: 16}, {autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out"}, 6.48);
+  tl.fromTo(P+"v152", {autoAlpha: 0, x: -20}, {autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out"}, 7.70);
+  tl.to(P+"ax15", {autoAlpha: 0, duration: 0.2, ease: "power1.out"}, 7.60);
+
+  /* An hour later @8.54: bracket and label out; water climbs y 504 to y 360 (9.24 to 10.54, steady) */
+  tl.to(P+"c10", {autoAlpha: 0, y: -12, duration: 0.4, ease: "power2.in"}, 8.54);
+  tl.to(P+"br10", {autoAlpha: 0, duration: 0.4, ease: "power2.in"}, 8.54);
+  tl.to(P+"v152", {autoAlpha: 0, x: -20, duration: 0.4, ease: "power2.in"}, 9.88);
+  tl.to(P+"ax15", {autoAlpha: 1, duration: 0.3, ease: "power1.out"}, 10.30);
+  tl.to(P+"wg", {y: 360, duration: 1.30, ease: "none"}, 9.24);
+
+  /* over @13.36: bay-side chip in, out at 16.28 ("hold") */
+  tl.fromTo(P+"cb", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 13.36);
+  tl.to(P+"cb", {y: -4, duration: 2.0, ease: "sine.inOut"}, 13.81);
+  tl.to(P+"cb", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 15.70);
+
+  /* 20 @19.70: ABOUT 20 FT chip in; orange bracket draws 19.70 to 20.40 */
+  tl.fromTo(P+"c20", {autoAlpha: 0, y: 24, scale: 0.94}, {autoAlpha: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.6)"}, 19.70);
+  tl.set(P+"br20", {autoAlpha: 1}, 19.70);
+  tl.fromTo(P+"br20", {strokeDashoffset: 661}, {strokeDashoffset: 0, duration: 0.70, ease: "power1.inOut"}, 19.70);
+  tl.to(P+"c20", {y: -4, duration: 1.5, ease: "sine.inOut"}, 20.15);
+
+  /* 8.7 @21.54: dashed line draws left to right 21.54 to 22.24 (clip reveal); label in at 22.24; grey bracket 23.68 to 24.24 */
+  tl.set(P+"l87", {autoAlpha: 1}, 21.54);
+  tl.fromTo(P+"l87r", {attr: {width: 0}}, {attr: {width: 1524}, duration: 0.70, ease: "none"}, 21.54);
+  tl.fromTo(P+"c87", {autoAlpha: 0, y: 16}, {autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out"}, 22.24);
+  tl.set(P+"br87", {autoAlpha: 1}, 23.68);
+  tl.fromTo(P+"br87", {strokeDashoffset: 322}, {strokeDashoffset: 0, duration: 0.56, ease: "power1.inOut"}, 23.68);
+
+  /* exit 24.44 to 25.04: chips slide out, then cut to A4-S11 */
+  tl.to(P+"c20", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 24.44);
+  tl.to(P+"c87", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 24.44);
+
+  window.__timelines["g-a4-16-tide"] = tl;
+})();
+</script>
+</template>

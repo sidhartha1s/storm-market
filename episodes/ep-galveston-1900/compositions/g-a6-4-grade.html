@@ -24,7 +24,7 @@
   #g-a6-4-grade-lbay { left:480px; top:270px; }
   #g-a6-4-grade-lgulf { left:400px; top:872px; }
   #g-a6-4-grade-lharb { right:880px; top:290px; opacity:0; visibility:hidden; } /* right edge at x 1040 */
-  #g-a6-4-grade-lground { left:1170px; top:836px; }
+  #g-a6-4-grade-lground { left:1130px; top:836px; } /* follows the mechanism panel's -40 shift */
   #g-a6-4-grade-note { position:absolute; left:120px; top:940px; white-space:nowrap;
     font-family:Arial, sans-serif; font-weight:700; font-size:20px; color:#93a3b2; letter-spacing:2px; }
 
@@ -36,10 +36,11 @@
   .ga64-main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:44px; line-height:48px; color:#f2f5f8; }
   .ga64-tag { display:block; margin-top:6px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:4px; }
   #g-a6-4-grade-c1 { left:120px; top:150px; }
-  #g-a6-4-grade-c2 { left:1180px; top:150px; }
-  /* brief put C3 at top 450; at 44 px the chip runs to about x 1584 and would sit on the raised house (x 1370-1590, y 420-600), so it sits above the roof */
-  #g-a6-4-grade-c3 { left:1180px; top:300px; }
-  #g-a6-4-grade-c4 { left:1180px; top:150px; }
+  /* chips follow the mechanism panel's -40 shift (left 1180 -> 1140) */
+  #g-a6-4-grade-c2 { left:1140px; top:150px; }
+  /* brief put C3 at top 450; at 44 px the chip runs to about x 1544 and would sit on the raised house (x 1330-1550, y 420-600), so it sits above the roof */
+  #g-a6-4-grade-c3 { left:1140px; top:300px; }
+  #g-a6-4-grade-c4 { left:1140px; top:150px; }
 </style>
 <div id="g-a6-4-grade-root" data-composition-id="g-a6-4-grade" data-width="1920" data-height="1080"
      data-type-ok="schematic diagram by brief: chips 44 px, diagram labels 19-22 px, no 52 px element in this beat">
@@ -109,7 +110,10 @@
     </g>
 
     <!-- ===== MECHANISM PANEL (right), cross-section, 20 px per ft; old ground y 820, 11 ft = 220 px -> y 600 ===== -->
-    <rect x="1150" y="820" width="674" height="80" fill="#0b1016"/>
+    <!-- presenter circle on here (pip-w15): the panel was 1150-1824 and ran under it. Static shift -40 (no mover carries it)
+         and ground 450 wide, so the panel spans screen x 1110-1560, clear of the corner x >= 1600, y >= 680 -->
+    <g transform="translate(-40 0)">
+    <rect x="1150" y="820" width="450" height="80" fill="#0b1016"/>
     <!-- jackscrews 8 x 60, base y 880, in the ground under the house; stretch x4.6667 to reach y 600 -->
     <g id="g-a6-4-grade-jacks" fill="#d8a13a">
       <rect id="g-a6-4-grade-j0" x="1396" y="820" width="8" height="60"/>
@@ -118,9 +122,9 @@
       <rect id="g-a6-4-grade-j3" x="1556" y="820" width="8" height="60"/>
     </g>
     <!-- sand fill under the raised house: y 600 to 820, rises from the bottom -->
-    <rect id="g-a6-4-grade-fill" x="1150" y="600" width="674" height="220" fill="#c9a46b"/>
+    <rect id="g-a6-4-grade-fill" x="1150" y="600" width="450" height="220" fill="#c9a46b"/>
     <!-- 1900 ground line -->
-    <path fill="none" stroke="#93a3b2" stroke-width="3" d="M1150,820 L1824,820"/>
+    <path fill="none" stroke="#93a3b2" stroke-width="3" d="M1150,820 L1600,820"/>
 
     <!-- house glyph (g-intro-6 house scaled to 220 x 180): body 1375-1585 x 707-820, roof 1370-1590 x 640-707 -->
     <g id="g-a6-4-grade-house">
@@ -156,6 +160,7 @@
       <path d="M1235,820 L1265,820"/>
       <path d="M1235,600 L1265,600"/>
     </g>
+    </g>
   </svg>
 
   <div id="g-a6-4-grade-src">American Society of Civil Engineers &middot; Texas State Historical Association</div>
@@ -184,9 +189,14 @@ window.__timelines = window.__timelines || {};
   const JACKS = [P+"j0", P+"j1", P+"j2", P+"j3"];
   const CJACKS = [P+"cj0", P+"cj1", P+"cj2", P+"cj3"];
 
+  /* sand blocks grow upward by attr y/height from each cell's own bottom edge (absolute user units). The scaleY +
+     percent transformOrigin form drew the settled blocks about one row (122 px) above the grid in the r4 frames
+     (origin taken from a bbox GSAP measured before layout; that read is not reproduced, so no bbox is used now). */
+  const SAND_Y = SAND.map(function (s, k) { return 380 + 126 * (k % 3); });   /* rows y 380 / 506 / 632, as the markup */
+
   /* --- start states --- */
   tl.set([P+"src", P+"lharb", P+"flash", P+"dots", P+"jacks", P+"fill", P+"bracket", P+"church"].concat(CHIPS), {autoAlpha: 0}, 0);
-  tl.set(SAND, {autoAlpha: 0, scaleY: 0, transformOrigin: "50% 100%"}, 0);
+  tl.set(SAND, {autoAlpha: 0, attr: {y: function (i) { return SAND_Y[i] + 120; }, height: 0}}, 0);
   tl.set(JACKS, {scaleY: 0, transformOrigin: "50% 100%"}, 0);
   tl.set(CJACKS, {scaleY: 1, transformOrigin: "50% 100%"}, 0);
   tl.set(P+"fill", {scaleY: 0, transformOrigin: "50% 100%"}, 0);
@@ -220,7 +230,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"lharb", {autoAlpha: 0, y: 12}, {autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out"}, 4.78);
 
   /* city @5.82: sections fill one after another, 0.35 s each, all done by 8.20 */
-  tl.fromTo(SAND, {autoAlpha: 0, scaleY: 0}, {autoAlpha: 1, scaleY: 1, duration: 0.35, ease: "power2.out", stagger: 0.119412}, 5.82);
+  tl.fromTo(SAND, {autoAlpha: 0, attr: {y: function (i) { return SAND_Y[i] + 120; }, height: 0}},
+    {autoAlpha: 1, attr: {y: function (i) { return SAND_Y[i]; }, height: 120}, duration: 0.35, ease: "power2.out", stagger: 0.119412}, 5.82);
 
   /* one @6.56: C1 out; the section starting to fill flashes its dike */
   tl.to(P+"c1", {x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in"}, 6.56);

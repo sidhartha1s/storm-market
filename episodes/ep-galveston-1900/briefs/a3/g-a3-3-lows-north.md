@@ -19,7 +19,7 @@ Early that September a high settled off the middle and south Atlantic coasts; al
 - Ridge: g-a3-1's ellipse moved to the MWR position: centre (lon -72, lat 33) = (2520, 831.6), radii 900 x 600, label "HIGH" on the HUD. No isobars, no pressure numbers.
 - 45th parallel: dotted line `#93a3b2` 3 screen px, dash 6/10, full plate width at Y -415.8; label "45°N" Arial 700 22 px `#93a3b2` at its left end.
 - Minneapolis pin 12 px `#f2f5f8`, label "MINNEAPOLIS" Arial 700 22 px tracking 3 right of the pin.
-- Lows: three small "L" glyphs Arial Black 900 40 px `#7fb2e5` riding a westerly band (as g-a3-1's band, but held flat ABOVE the parallel, Y between -900 and -450), moving west to east along it. They never cross below the dotted line.
+- Lows: three small "L" glyphs Arial Black 900 40 px `#7fb2e5` riding a westerly band (as g-a3-1's band, but held flat ABOVE the parallel, plate Y between -700 and -480, screen y 72 to 151 in V-NORTH), moving west to east along it. They never cross below the dotted line.
 - Chip C1 "STAYED MOSTLY NORTH" centred x 960 top 150, tag "storm systems, all month" Arial 700 22 px `#93a3b2`.
 - Track: g-intro-8's ring and past-track line, from the Sept 6 00Z fix to the Sept 8 12Z fix, stopping offshore at least 60 screen px short of the Galveston pin (landfall is A4's).
 - Havana arrow: g-intro-4's arrow geometry exactly, lit `#d8a13a` with glow as the ring runs.

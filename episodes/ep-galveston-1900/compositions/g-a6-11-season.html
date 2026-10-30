@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a6-11-season (A6-S8 3.44 to end): full-frame month strip, Jan to Dec, season band June 1 to Nov 30, peak marker Sept 10.
+     Brief: briefs/a6/g-a6-11-season.md. Source: NOAA National Hurricane Center climatology (sources-a6.md section 5). No year on screen.
+     Axis x = 160 + (day-1) * 1600/365 (2027 not a leap year): Jun 1 = 821.9, Nov 30 = 1619.7, Sep 10 = 1264.7.
+     Month starts: Jan 160.0 Feb 295.9 Mar 418.6 Apr 554.5 May 686.0 Jun 821.9 Jul 953.4 Aug 1089.3 Sep 1225.2 Oct 1356.7 Nov 1492.6 Dec 1624.1 (end 1760).
+     Host starts at "The" 3.44 in a6-s8, so comp-local = word time - 3.44. Duration 10.675 - 3.44 + 1.0 = 8.235.
+     Activity curve is SCHEMATIC (no counts sourced), drawn with no label. -->
+<template>
+<style>
+  #g-a6-11-season-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016 0%, #030507 78%); }
+  .ga11-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .ga11-mo { font-family:Arial, sans-serif; font-weight:700; font-size:22px; fill:#93a3b2; letter-spacing:3px; }
+  .ga11-src { position:absolute; left:96px; top:54px; max-width:900px; padding:6px 14px; border-radius:12px; box-sizing:border-box;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); opacity:0; visibility:hidden; }
+  .ga11-fl { position:absolute; inset:auto; }
+  #ga11-c1fl { left:841px; top:260px; width:760px; }
+  #ga11-c2fl { left:1115px; top:700px; width:300px; }
+  .ga11-chip { box-sizing:border-box; border-radius:28px; padding:22px 20px 24px; text-align:center;
+    background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.14); opacity:0; visibility:hidden; }
+  .ga11-eb { display:block; font-family:Arial, sans-serif; font-weight:700; color:#93a3b2; letter-spacing:4px; opacity:0; visibility:hidden; }
+  #ga11-c1eb { font-size:24px; }
+  #ga11-c2eb { font-size:30px; }
+  .ga11-main { display:block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:1.15; margin-top:8px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #ga11-c2main { color:#f5d98b; }
+  #ga11-band, #ga11-curve, #ga11-pkline, #ga11-pkdot, #ga11-pulse { opacity:0; visibility:hidden; }
+</style>
+<div id="g-a6-11-season-root" data-composition-id="g-a6-11-season" data-width="1920" data-height="1080" data-duration="8.235">
+  <svg class="ga11-svg" id="ga11-svg" viewBox="0 0 1920 1080">
+    <!-- season band Jun 1 to Nov 30 -->
+    <rect id="ga11-band" x="821.9" y="560" width="797.8" height="60" fill="#2f5d86" fill-opacity="0.8"/>
+    <!-- SCHEMATIC hump peaking at Sep 10 (x 1264.7); no label, no counts -->
+    <path id="ga11-curve" d="M821.9,620 C1000,620 1120,520 1264.7,520 C1400,520 1480,618 1619.7,620" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-linecap="round"/>
+    <!-- axis, ticks, month labels (drawn at frame 0) -->
+    <line id="ga11-axis" x1="160" y1="620" x2="1760" y2="620" stroke="#93a3b2" stroke-width="3"/>
+    <g id="ga11-ticks" stroke="#93a3b2" stroke-width="3">
+      <line x1="160" y1="620" x2="160" y2="636"/><line x1="295.9" y1="620" x2="295.9" y2="636"/>
+      <line x1="418.6" y1="620" x2="418.6" y2="636"/><line x1="554.5" y1="620" x2="554.5" y2="636"/>
+      <line x1="686" y1="620" x2="686" y2="636"/><line x1="821.9" y1="620" x2="821.9" y2="636"/>
+      <line x1="953.4" y1="620" x2="953.4" y2="636"/><line x1="1089.3" y1="620" x2="1089.3" y2="636"/>
+      <line x1="1225.2" y1="620" x2="1225.2" y2="636"/><line x1="1356.7" y1="620" x2="1356.7" y2="636"/>
+      <line x1="1492.6" y1="620" x2="1492.6" y2="636"/><line x1="1624.1" y1="620" x2="1624.1" y2="636"/>
+      <line x1="1760" y1="620" x2="1760" y2="636"/>
+    </g>
+    <g id="ga11-months">
+      <text class="ga11-mo" x="228" y="658" text-anchor="middle">Jan</text>
+      <text class="ga11-mo" x="357.3" y="658" text-anchor="middle">Feb</text>
+      <text class="ga11-mo" x="486.6" y="658" text-anchor="middle">Mar</text>
+      <text class="ga11-mo" x="620.3" y="658" text-anchor="middle">Apr</text>
+      <text class="ga11-mo" x="753.9" y="658" text-anchor="middle">May</text>
+      <text class="ga11-mo" x="887.7" y="658" text-anchor="middle">Jun</text>
+      <text class="ga11-mo" x="1021.7" y="658" text-anchor="middle">Jul</text>
+      <text class="ga11-mo" x="1157.3" y="658" text-anchor="middle">Aug</text>
+      <text class="ga11-mo" x="1291" y="658" text-anchor="middle">Sep</text>
+      <text class="ga11-mo" x="1424.7" y="658" text-anchor="middle">Oct</text>
+      <text class="ga11-mo" x="1558.7" y="658" text-anchor="middle">Nov</text>
+      <text class="ga11-mo" x="1692" y="658" text-anchor="middle">Dec</text>
+    </g>
+    <!-- peak marker, Sep 10 -->
+    <line id="ga11-pkline" x1="1264.7" y1="480" x2="1264.7" y2="620" stroke="#d0121f" stroke-width="3"/>
+    <circle id="ga11-pkdot" cx="1264.7" cy="480" r="7" fill="#d0121f"/>
+    <!-- one-shot ring on the June 1 edge -->
+    <circle id="ga11-pulse" cx="821.9" cy="590" r="14" fill="none" stroke="#7fb2e5" stroke-width="3"/>
+    <!-- scan line along the axis, 200 px/s -->
+    <line id="ga11-scan" x1="160" y1="598" x2="160" y2="642" stroke="#7fb2e5" stroke-width="3" opacity="0.25"/>
+  </svg>
+
+  <div class="ga11-src" id="ga11-src">NOAA National Hurricane Center</div>
+
+  <div class="ga11-fl" id="ga11-c1fl">
+    <div class="ga11-chip" id="ga11-c1">
+      <span class="ga11-eb" id="ga11-c1eb">HURRICANE SEASON</span>
+      <span class="ga11-main" id="ga11-c1main">JUNE 1 TO NOV 30</span>
+    </div>
+  </div>
+  <div class="ga11-fl" id="ga11-c2fl">
+    <div class="ga11-chip" id="ga11-c2">
+      <span class="ga11-eb" id="ga11-c2eb">PEAK</span>
+      <span class="ga11-main" id="ga11-c2main">SEPT 10</span>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const ID = "g-a6-11-season", P = "#ga11-";
+  const DUR = 8.235;
+  const tl = gsap.timeline({ paused: true });
+
+  const len = Math.ceil(document.getElementById("ga11-curve").getTotalLength()) + 1;
+  tl.set(P+"curve", { attr: { "stroke-dasharray": len, "stroke-dashoffset": len } }, 0);
+  tl.set(P+"band", { scaleX: 0, svgOrigin: "821.9 590" }, 0);
+  tl.set(P+"pkline", { scaleY: 0, svgOrigin: "1264.7 620" }, 0);
+  tl.set(P+"pulse", { scale: 1, svgOrigin: "821.9 590" }, 0);
+
+  /* axis + month labels visible at frame 0; scan line sweeps the whole window (160 -> 1760 at 200 px/s = 8 s) */
+  tl.to(P+"scan", { x: 1600, duration: 8, ease: "none" }, 0);
+
+  /* "The" @3.44: source line in */
+  tl.fromTo(P+"src", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.0);
+
+  /* "hurricane" @4.22: C1 glass chip + eyebrow */
+  tl.fromTo(P+"c1", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.78);
+  tl.fromTo(P+"c1eb", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.82);
+
+  /* "opens" @5.12: band grows from the June 1 edge to Nov 30 */
+  tl.to(P+"band", { autoAlpha: 1, scaleX: 1, duration: 1.68, ease: "power2.out" }, 1.68);
+  /* "1st" @5.82: C1 main line */
+  tl.fromTo(P+"c1main", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.4)" }, 2.38);
+
+  /* "2027." @7.02: band edge pulses once */
+  tl.to(P+"pulse", { autoAlpha: 1, duration: 0.05 }, 3.58);
+  tl.to(P+"pulse", { scale: 3, duration: 0.6, ease: "power2.out" }, 3.58);
+  tl.to(P+"pulse", { autoAlpha: 0, duration: 0.45, ease: "power1.in" }, 3.78);
+
+  /* "peak" @8.52: marker rises from the axis, curve draws */
+  tl.to(P+"pkline", { autoAlpha: 1, scaleY: 1, duration: 0.58, ease: "power3.out" }, 5.08);
+  tl.fromTo(P+"pkdot", { autoAlpha: 0, y: 140 }, { autoAlpha: 1, y: 0, duration: 0.58, ease: "power3.out" }, 5.08);
+  tl.to(P+"curve", { autoAlpha: 1, attr: { "stroke-dashoffset": 0 }, duration: 0.88, ease: "power2.inOut" }, 5.08);
+
+  /* "10th" @9.68: C2 chip in */
+  tl.fromTo(P+"c2", { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power3.out" }, 6.24);
+  tl.fromTo(P+"c2eb", { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 6.24);
+  tl.fromTo(P+"c2main", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "back.out(1.4)" }, 6.3);
+
+  /* floats (finite): chips drift while holding */
+  tl.to(P+"c1fl", { y: -6, duration: 1.7, ease: "sine.inOut", yoyo: true, repeat: 3 }, 1.4);
+  tl.to(P+"c2fl", { y: -5, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 2 }, 6.7);
+
+  /* exit: root fades over the last 0.4 s into the close card */
+  tl.to("#g-a6-11-season-root", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, DUR - 0.4);
+  tl.to({}, { duration: 0.01 }, DUR - 0.01);
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

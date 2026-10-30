@@ -10,11 +10,11 @@ factcheck/a3-r1.md rows 5 to 7: MWR Sept 1900 p. 395 (E. B. Garriott), "The hurr
 ## 2. Datum, scale, orientation
 Two parts, one comp:
 - Part A (0.00 to 7.98): full-frame page panel. Scan `media/candidates/a3/A3-S2_c1_mwr-sept1900-p395_recurve-statement.png` (verifier pick pending) cropped to the full text column (mg-quickref Text doctrine: whole lines, no word cut at either end of the push). Page box 1240 px wide, centred x 900, on the glass surface; slow push scale 1.00 to 1.06 toward the quoted sentence.
-- Part B (7.98 to end): P-WIDE plate, camera V-ROADS cx 2500, cy 1000, s 0.34 (Cuba to Newfoundland and the whole Gulf in frame). Pins by formula: Havana (1585.8, 1857.6); Newfoundland label anchor (lon -55, lat 48.5) = (4050.0, -779.6).
+- Part B (7.98 to end): P-WIDE plate, camera V-ROADS cx 2500, cy 800, s 0.34 (Cuba to Newfoundland and the whole Gulf in frame). Pins by formula: Havana (1585.8, 1857.6); N arrow head and Newfoundland label anchor (lon -55, lat 46) = (4050.0, -519.8), screen (1487, 91).
 
 ## 3. Geometry
 - Highlight on the scan: an amber band `#d8a13a` opacity 0.28 behind the quoted sentence's lines, boxes measured on the scan by the builder (list the boxes in the receipt). The rest of the page dims to opacity 0.55 as the band draws left to right.
-- Arrow N ("recurve"): from Havana's east side (lon -80, lat 24) = (1800, 1767.1) north along the coast, control points (lon -79, lat 31) = (1890, 1039.5) and (lon -70, lat 40) = (2700, 104.0), to (lon -52, lat 47) = (4320, -623.7). Stroke `#7fb2e5` 8 screen px, arrowhead, drawn by strokeDashoffset.
+- Arrow N ("recurve"): from Havana's east side (lon -80, lat 24) = (1800, 1767.1) north along the coast, control points (lon -79, lat 31) = (1890, 1039.5) and (lon -70, lat 40) = (2700, 104.0), to (lon -55, lat 46) = (4050, -519.8). Stroke `#7fb2e5` 8 screen px, arrowhead, drawn by strokeDashoffset.
 - Arrow W ("westward"): from (lon -84, lat 23.5) = (1440, 1819.1) west across the Gulf to (lon -94, lat 25) = (540, 1663.2), gentle curve, stroke `#d8a13a` 8 screen px, arrowhead. It ends offshore: it never touches Texas or the Galveston pin.
 - Label "Newfoundland" Arial 700 22 px `#93a3b2` on the HUD at the N arrow head.
 - Chips: C1 "SOMETIMES RECURVE" centred x 960, top 150. C2 "OTHERS PASS WESTWARD" centred x 960, top 150 after C1 leaves (same zone, one after the other).

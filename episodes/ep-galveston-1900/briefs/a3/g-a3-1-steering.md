@@ -18,7 +18,7 @@ A hurricane drifts around the edge of a dome of high pressure over the Atlantic;
 
 ## 3. Geometry (plate px unless stated)
 - Ridge (the dome of high pressure): a soft ellipse centred (lon -55, lat 30) = (4050, 1143.5), radii 1300 x 800, fill radial `#d8a13a` at opacity 0.22 centre to 0 at the edge; label "HIGH" Arial Black 900 64 px `#e8c56a` on the HUD at the centre's screen point.
-- Storm dot: white ring 40 screen px, 5 px stroke `#f2f5f8`, glow. Path (dashed 18/12, `#f2f5f8` 4 screen px, drawn behind the dot): (lon -55, lat 15) to (-70, 18) to (-80, 23) to (-82, 28) to (-78, 33) to (-68, 38) to (-55, 43). Plate points: (4050, 2702.7), (2700, 2390.9), (1800, 1871.1), (1620, 1351.4), (1980, 831.6), (2880, 311.9), (4050, -207.9). Curve through them (Catmull-Rom to cubic, `ease:none` per leg, legs timed below).
+- Storm dot: white ring 40 screen px, 5 px stroke `#f2f5f8`, glow. Path (dashed 18/12, `#f2f5f8` 4 screen px, drawn behind the dot): (lon -60, lat 19) to (-70, 18) to (-80, 23) to (-82, 28) to (-78, 33) to (-68, 38) to (-55, 43). Plate points: (3600, 2286.9), (2700, 2390.9), (1800, 1871.1), (1620, 1351.4), (1980, 831.6), (2880, 311.9), (4050, -207.9). Curve through them (Catmull-Rom to cubic, `ease:none` per leg, legs timed below).
 - Westerly dip: a wavy band from the west at lat 45 dipping to lat 33 near lon -80, stroke `#7fb2e5` 10 px opacity 0.7, arrowheads pointing east; it swings down at its cue. Label on the HUD "WESTERLY WINDS" Arial 700 22 px `#7fb2e5` tracking 3 above the band's west end.
 - Galveston pin `#f2f5f8` 14 px, label "Galveston" Arial Black 900 32 px left of the pin.
 - Chip "RECURVE" (shared chip spec) top 150, centred x 960; tag "National Hurricane Center term" Arial 700 22 px `#93a3b2`.
@@ -29,7 +29,7 @@ A hurricane drifts around the edge of a dome of high pressure over the Atlantic;
 2. The dot moves only along the ridge's southern and western edge before the dip arrives, then curves NE with the dip; it never touches the Gulf west of lon -88 (X 1080).
 3. Galveston's pin stays white-unlit (no pulse) through the curve-away; it never turns red or gets a hit.
 4. No text rides the camera push (all labels on the HUD, placed when the push is under 1 % from its start).
-5. Nothing in x >= 1600, y >= 680 (the ridge's faint fill may pass under; no label, pin or dot there). Report to the orchestrator if the ridge fill shows there.
+5. Nothing in x >= 1600, y >= 680 (the ridge's faint fill may pass under; no label, pin or dot there). At V-WIDE the ridge's screen edge reaches about (1914, 844): its faint fill does sit in the circle corner; report it to the orchestrator.
 
 ## 5. Text and cues (a3-s1.words.json, segment 23.38 s)
 - 0.00: plate, ridge at opacity 0, source line in. Dot parked at the first path point.

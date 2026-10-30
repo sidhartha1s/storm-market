@@ -8,16 +8,16 @@
   .g-a4-5-telegram-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
     font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
   /* page panel: glass card x 140 to 760, y 180 to 940 */
-  #g-a4-5-telegram-panel { position:absolute; left:140px; top:180px; width:620px; height:760px; box-sizing:border-box; padding:22px; border-radius:28px; }
-  #g-a4-5-telegram-panelin { position:relative; width:576px; height:716px; }
+  #g-a4-5-telegram-panel { position:absolute; left:140px; top:180px; width:634px; height:760px; box-sizing:border-box; padding:22px; border-radius:28px; }
+  #g-a4-5-telegram-panelin { position:relative; width:590px; height:716px; }
   /* crop measured on the 1150 x 1563 scan (A3-S10_c2, printed p. 372): right column image x 568 to 1048 (column rule at about 563 and left column ink to 556 excluded, right ink ends about 1040),
      image y 884 to 1481; scale 1.2. Telegram = image y 1152 to 1222 -> crop y 320 to 408. Top and bottom edges feathered so no half line shows. */
-  #g-a4-5-telegram-crop { position:absolute; left:0; top:0; width:576px; height:716px; overflow:hidden; border-radius:10px; isolation:isolate; background:#e9e4d6;
+  #g-a4-5-telegram-crop { position:absolute; left:0; top:0; width:590px; height:716px; overflow:hidden; border-radius:10px; isolation:isolate; background:#e9e4d6;
     -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%); mask-image:linear-gradient(180deg, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%); }
-  #g-a4-5-telegram-img { position:absolute; left:-681.6px; top:-1060.8px; width:1380px; height:1875.6px; max-width:none; }
-  #g-a4-5-telegram-dimtop { position:absolute; left:0; top:0; width:576px; height:320px; background:rgba(10,16,24,0.55); }
-  #g-a4-5-telegram-dimbot { position:absolute; left:0; top:408px; width:576px; height:308px; background:rgba(10,16,24,0.55); }
-  #g-a4-5-telegram-band { position:absolute; left:0; top:320px; width:576px; height:88px; background:#d8a13a; opacity:0.28; transform-origin:left center; }
+  #g-a4-5-telegram-img { position:absolute; left:-672px; top:-1060.8px; width:1380px; height:1875.6px; max-width:none; }
+  #g-a4-5-telegram-dimtop { position:absolute; left:0; top:0; width:590px; height:320px; background:rgba(10,16,24,0.55); }
+  #g-a4-5-telegram-dimbot { position:absolute; left:0; top:408px; width:590px; height:308px; background:rgba(10,16,24,0.55); }
+  #g-a4-5-telegram-band { position:absolute; left:0; top:320px; width:590px; height:88px; background:#d8a13a; opacity:0.28; transform-origin:left center; }
   /* telegraph form, x 840 to 1580, y 230 to 900 */
   #g-a4-5-telegram-formpush { position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:1210px 565px; }
   #g-a4-5-telegram-form { position:absolute; left:0; top:0; width:1920px; height:1080px; }
@@ -166,6 +166,9 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"src2", {y:-4, duration:2.3, ease:"sine.inOut", yoyo:true, repeat:1}, 19.10);
 
   /* delusion @20.82: C2 in (g-intro-10 entrance), red rule draws, slides out in the last 0.6 s */
+  /* the form steps back under C2 (0.25 -> 0.08) so the chip is the one reading target, then returns once C2 has left */
+  tl.to(P+"form", {opacity:0.08, duration:0.3, ease:"power2.inOut"}, 20.52);
+  tl.to(P+"form", {opacity:0.25, duration:0.4, ease:"power2.inOut"}, 21.90);
   tl.to(P+"c2", {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 20.82);
   tl.to(P+"c2in", {y:-4, duration:0.7, ease:"sine.inOut", yoyo:true, repeat:1}, 20.82);
   tl.to(P+"c2rule", {scaleX:1, duration:0.4, ease:"power2.out"}, 20.90);

@@ -39,7 +39,8 @@
   .ga410-blk { fill:#2a3644; stroke:#3d4b5b; stroke-width:1px; }
   .ga410-geo { position:absolute; font-weight:700; font-size:22px; line-height:26px; letter-spacing:3px; color:#93a3b2; white-space:nowrap; text-align:center; }
   .ga410-lab { position:absolute; font-weight:700; font-size:26px; line-height:26px; color:#f2f5f8; white-space:nowrap; text-shadow:0 2px 6px rgba(0,0,0,0.85); }
-  .ga410-big { position:absolute; right:520px; top:380px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+  /* top 330: y 330 to 390, between the pole feet (y 310) and the office box (y 410); at 380 it sat on the box */
+  .ga410-big { position:absolute; right:520px; top:330px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
     line-height:60px; color:#f2f5f8; white-space:nowrap; text-align:right; text-shadow:0 2px 8px rgba(0,0,0,0.9); }
   .ga410-card { position:absolute; left:1420px; top:240px; width:120px; height:360px; box-sizing:border-box; border-radius:22px;
     background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
@@ -181,6 +182,18 @@
       <path d="M0,-30 L9,4 L0,-3 L-9,4Z" fill="#93a3b2"/>
       <text x="0" y="26" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="19" fill="#93a3b2">N</text>
     </g>
+  </svg>
+
+  <div class="ga410-geo" id="g-a4-10-houston-wire-geo1" style="left:780px; top:228px; width:240px;">Galveston Bay</div>
+  <div class="ga410-geo" id="g-a4-10-houston-wire-geo2" style="left:760px; top:889px; width:400px;">Gulf of Mexico</div>
+  <!-- 222 px box ends at x 1262, clear of the wading figure (x 1275 to 1293); the 190 px box let the text run to 1308 -->
+  <div class="ga410-lab ga410-hide" id="g-a4-10-houston-wire-office-lab" style="left:1040px; top:452px; width:222px; text-align:right;">Telegraph offices</div>
+  <div class="ga410-small" id="g-a4-10-houston-wire-note" style="left:96px; top:1000px;">Street grid: schematic</div>
+
+  <div class="ga410-card ga410-hide" id="g-a4-10-houston-wire-card"></div>
+  <!-- gauge ticks, numbers and bar in their own svg AFTER the glass card, so they draw on top of it; inside the map svg
+       they painted under the card's backdrop blur and read as an empty capsule (frame read r4) -->
+  <svg class="ga410-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
     <g id="g-a4-10-houston-wire-gsvg" class="ga410-hide">
       <g stroke="#93a3b2" stroke-width="2">
         <line x1="1430" y1="600" x2="1448" y2="600"/><line x1="1430" y1="540" x2="1448" y2="540"/><line x1="1430" y1="480" x2="1448" y2="480"/>
@@ -193,13 +206,6 @@
       <rect id="g-a4-10-houston-wire-bar" x="1456" y="600" width="40" height="0" fill="#7fb2e5" fill-opacity="0.9"/>
     </g>
   </svg>
-
-  <div class="ga410-geo" id="g-a4-10-houston-wire-geo1" style="left:780px; top:228px; width:240px;">Galveston Bay</div>
-  <div class="ga410-geo" id="g-a4-10-houston-wire-geo2" style="left:760px; top:889px; width:400px;">Gulf of Mexico</div>
-  <div class="ga410-lab ga410-hide" id="g-a4-10-houston-wire-office-lab" style="left:1086px; top:452px; width:190px; text-align:right;">Telegraph offices</div>
-  <div class="ga410-small" id="g-a4-10-houston-wire-note" style="left:96px; top:1000px;">Street grid: schematic</div>
-
-  <div class="ga410-card ga410-hide" id="g-a4-10-houston-wire-card"></div>
   <div class="ga410-big ga410-hide" id="g-a4-10-houston-wire-depth">2 TO 4 FT</div>
 
   <div class="ga410-lab ga410-hide" id="g-a4-10-houston-wire-gal-lab">Galveston</div>

@@ -51,8 +51,9 @@ Comp-local = word time − 9.98. Frame 0 shows datum, sea, beach and the finishe
 - 10.34 ("17" 10.34) /* 17 FT @10.34 */: bracket A draws up 10.34 to 11.20, power2.out; chip "17 FT" in at 10.94 ("feet").
 - 11.62 ("low") : "Mean low tide" datum label brightens (opacity 0.6 to 1).
 - 12.20: dimension labels "16 ft base" and "5 ft top" draw in, 0.3 s stagger.
+- 12.96 ("twice") /* TWICE @12.96 */: bracket A pulses once (scaleY 1 to 1.04 to 1). "Twice" comes before "highest" in the voice, so the comparison is only completed at 15.26.
 - 13.92 ("highest") /* 8.7 @13.92 */: the 1900 line draws right to left from x 1824, 13.92 to 14.60; bracket B up; label in at 14.20 ("ground").
-- 12.96 ("twice") comes BEFORE "highest" in the voice: so at 12.96 only bracket A pulses once (scale 1 to 1.04 to 1); the doubled ghost of B stacks at 15.26 ("1900.") , 15.26 to 15.90, after B has been seen.
+- 15.26 ("1900.") /* DOUBLE @15.26 */: the doubled ghost of B stacks beside A, 15.26 to 15.90.
 - Host end: 16.094 + the gap to A6-S3 (default 16.094 + 0.6 land time).
 
 ## Fallback (no construction photo: g-a6-2 dropped)

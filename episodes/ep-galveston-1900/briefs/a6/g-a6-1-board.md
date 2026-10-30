@@ -19,7 +19,7 @@ No measured axis. The sheet is a designed ground: blueprint paper `#0f1d2c` with
 - Sheet items (centred column on x 960, upper half):
   - "1 · SEAWALL" Arial Black 900 64 px `#f2f5f8`, top 230; under it a 600 px wide schematic wall-profile icon (curved face, 90 px tall), 4 px `#7fb2e5` stroke drawn by strokeDashoffset.
   - "2 · RAISE THE CITY" Arial Black 900 64 px `#f2f5f8`, top 470; under it a row of 5 house glyphs (40 x 34 px, `#4a5560`, roof `#93a3b2`) that rise 30 px as a block.
-- Chip "REPORT · JAN 25, 1902": glass chip (main line "REPORT", tag "JAN 25, 1902" per the shared chip spec is too small for the date; use one line Arial Black 900 40 px), right edge at x 1824, top 140.
+- Chip "REPORT · JAN 25, 1902": glass chip, one line Arial Black 900 40 px `#f2f5f8`, right edge at x 1824, top 140.
 - Source line top-left: "Rosenberg Library · American Society of Civil Engineers".
 
 ## 4. Must be true in the picture

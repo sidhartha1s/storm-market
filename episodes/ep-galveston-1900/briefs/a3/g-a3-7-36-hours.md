@@ -9,7 +9,7 @@ MWR Sept 1900 p. 376 (Boston Herald, 17 Sept 1900; factcheck/a3-r1.md rows 23, 2
 
 ## 2. Datum, scale, orientation
 - Part A (0.00 to 6.04): page panel, `media/candidates/a3/A3-S6_c1_mwr-sept1900-p376_boston-herald-evening-sun.png`, column crop, whole lines, box 1240 px centred x 900.
-- Part B (6.04 to 10.06): Texas coast on the g-intro-4 plate, camera V-TX cx 420, cy 1350, s 0.9. Coast stroke = the Natural Earth Texas coastline from Sabine Pass (-93.87, 29.73) = (551.7, 1171.5) to the Rio Grande mouth (-97.15, 25.96) = (256.5, 1563.4). Galveston (468.0, 1216.2). Screen: Sabine (1078, 345), Rio Grande mouth (812, 698), Galveston (1003, 385).
+- Part B (6.04 to 10.06): Texas coast on the g-intro-4 plate, camera V-TX cx 420, cy 1350, s 0.9. Coast stroke = the Natural Earth Texas coastline from Sabine Pass (-93.87, 29.73) = (551.7, 1171.5) to the Rio Grande mouth (-97.15, 25.96) = (256.5, 1563.4). Galveston (468.0, 1216.2). Screen (checked 28 Oct 26): Sabine (1079, 379), Rio Grande mouth (813, 732), Galveston (1003, 420).
 - Part C (10.06 to end): time bar, full frame. Bar from x 260 to x 1460 (1200 px) at y 560, height 28. Scale 36 h = 1200 px, 33.33 px per hour. Left end "FRI MORNING", right end "SAT EVENING". NO clock hours on it: the source gives "morning" and "nearly thirty-six hours", no hour.
 
 ## 3. Geometry

@@ -1,0 +1,96 @@
+<template>
+<style>
+  #g-a2-10-paul-panel-root { position:absolute; left:0; top:0; width:1920px; height:1080px; overflow:hidden; background:transparent; font-family:Arial,sans-serif; color:#f2f5f8; }
+  .gp10-glass { background:rgba(10,16,24,.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,.14); box-sizing:border-box; }
+  /* panel: absolute full-frame holder so the slide moves card, image and marks together */
+  #gp10-panel { position:absolute; left:0; top:0; width:1920px; height:1080px; opacity:0; visibility:hidden; }
+  #gp10-panel-in { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #gp10-card { position:absolute; left:1290px; top:150px; width:534px; height:338px; border-radius:20px; }
+  #gp10-eyebrow { position:absolute; left:1300px; top:160px; width:514px; font-weight:700; font-size:26px; line-height:28px; letter-spacing:4px; color:#93a3b2; white-space:nowrap; }
+  #gp10-img { position:absolute; left:1300px; top:189px; width:514px; height:289px; object-fit:cover; display:block; background:#15202b; }
+  #gp10-dim { position:absolute; left:1300px; top:189px; width:514px; height:289px; background:rgba(3,5,8,0.45); }
+  #gp10-marks { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .gp10-pill { position:absolute; border-radius:10px; padding:3px 9px; font-weight:700; font-size:19px; line-height:21px; white-space:nowrap; }
+  #gp10-wash-tag { left:1664px; top:322px; color:#7fb2e5; }
+  #gp10-bel-tag { left:1430px; top:308px; color:#e8c56a; }
+  /* chip */
+  #gp10-chip { position:absolute; left:96px; top:120px; width:664px; border-radius:28px; padding:22px 28px; opacity:0; visibility:hidden; }
+  #gp10-chip-in { position:relative; }
+  #gp10-main { font-family:'Arial Black',Arial,sans-serif; font-weight:900; font-size:52px; line-height:60px; color:#f2f5f8; }
+  #gp10-main span { display:inline-block; opacity:0; visibility:hidden; white-space:pre; }
+  #gp10-tag { margin-top:12px; font-weight:700; font-size:22px; line-height:27px; letter-spacing:2px; color:#93a3b2; }
+</style>
+<div id="g-a2-10-paul-panel-root" data-composition-id="g-a2-10-paul-panel" data-width="1920" data-height="1080">
+  <div id="gp10-panel">
+    <div id="gp10-panel-in">
+      <div id="gp10-card" class="gp10-glass"></div>
+      <div id="gp10-eyebrow">NOAA map &middot; Sept. 4, 1900</div>
+      <img id="gp10-img" src="media/a2/noaa-map-1900-09-04-gulf.jpg" alt="NOAA weather map, 4 September 1900, Gulf crop">
+      <div id="gp10-dim"></div>
+      <!-- marks: 0.2781 x g-a2-9 brief points, origin (1300,189); low (1157,814)->(1622,415), Galveston (271,343)->(1375,284), S. Florida tip (1263,410)->(1651,303), Belen head (800,500)->(1522,328) -->
+      <svg id="gp10-marks" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <defs><clipPath id="gp10-clip"><rect x="1300" y="189" width="514" height="289"/></clipPath></defs>
+        <g clip-path="url(#gp10-clip)">
+          <circle id="gp10-gal-ring" cx="1375" cy="284" r="7" fill="none" stroke="#f2f5f8" stroke-width="2"/>
+          <circle id="gp10-gal" cx="1375" cy="284" r="3" fill="#f2f5f8"/>
+          <circle id="gp10-storm" cx="1622" cy="415" r="19" fill="none" stroke="#c0392b" stroke-width="2"/>
+          <g id="gp10-wash">
+            <path d="M1622 415 L1646.5 321" fill="none" stroke="#7fb2e5" stroke-width="3" stroke-dasharray="5 4" stroke-linecap="round"/>
+            <polygon points="1649,311 1650.9,322.1 1642.1,319.9" fill="#7fb2e5"/>
+          </g>
+          <g id="gp10-bel">
+            <path d="M1622 415 Q1588 387 1529 334" fill="none" stroke="#d8a13a" stroke-width="3.5" stroke-linecap="round"/>
+            <polygon points="1521.9,327.7 1532,330.7 1526,337.3" fill="#d8a13a"/>
+          </g>
+        </g>
+      </svg>
+      <div id="gp10-wash-tag" class="gp10-pill gp10-glass">Washington</div>
+      <div id="gp10-bel-tag" class="gp10-pill gp10-glass">Belen</div>
+    </div>
+  </div>
+  <div id="gp10-chip" class="gp10-glass">
+    <div id="gp10-chip-in">
+      <div id="gp10-main"><span id="gp10-w1">&ldquo;Not severe</span> <span id="gp10-w2">in</span><br><span id="gp10-w3">the</span> <span id="gp10-w4">West Indies&rdquo;</span></div>
+      <div id="gp10-tag">W. B. Stockman, Monthly Weather Review, Sept. 1900</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#gp10-";
+  tl.set([P+"chip", P+"panel", P+"w1", P+"w2", P+"w3", P+"w4"], {autoAlpha:0}, 0);
+  tl.set(P+"storm", {svgOrigin:"1622 415"}, 0);
+  tl.set(P+"gal-ring", {svgOrigin:"1375 284"}, 0);
+  tl.set(P+"wash", {opacity:0.7}, 0);
+
+  /* panel in @0.00 (arrows already drawn: the reference he points to) */
+  tl.fromTo(P+"panel", {x:660, autoAlpha:0}, {x:0, autoAlpha:1, duration:0.7, ease:"power3.out"}, 0.0);
+  /* motion all window: pin pulse, ring breath, drift */
+  tl.fromTo(P+"gal-ring", {scale:1, opacity:0.8}, {scale:2.2, opacity:0, duration:1.4, ease:"power1.out", repeat:7}, 0.0);
+  tl.to(P+"storm", {scale:1.08, duration:1.6, ease:"sine.inOut", yoyo:true, repeat:5}, 0.7);
+  tl.fromTo(P+"panel-in", {y:-4}, {y:4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:3}, 0.7);
+
+  /* STOCKMAN @0.30: chip in, tag visible, main hidden */
+  tl.fromTo(P+"chip", {y:24, scale:0.94, autoAlpha:0}, {y:0, scale:1, autoAlpha:1, duration:0.45, ease:"back.out(1.6)"}, 0.30);
+  tl.fromTo(P+"chip-in", {y:-4}, {y:4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:1}, 0.75);
+
+  /* NOT SEVERE word by word, clip words: "not severe" @4.26, "in the" @4.94, "West Indies" @5.20 (ends 5.90) */
+  tl.fromTo(P+"w1", {y:14, autoAlpha:0}, {y:0, autoAlpha:1, duration:0.3, ease:"power3.out"}, 4.26);
+  tl.fromTo([P+"w2", P+"w3"], {y:14, autoAlpha:0}, {y:0, autoAlpha:1, duration:0.3, ease:"power3.out"}, 4.94);
+  tl.fromTo(P+"w4", {y:14, autoAlpha:0}, {y:0, autoAlpha:1, duration:0.3, ease:"power3.out"}, 5.20);
+
+  /* chip exit 6.30 to 6.70 (last word ends 5.90) */
+  tl.to(P+"chip", {x:-980, autoAlpha:0, duration:0.4, ease:"power3.in"}, 6.30);
+
+  /* WASHINGTON ~@7.0 (phrase "So why was Washington" starts 6.58; word time estimated): arrow pulse */
+  tl.to(P+"wash", {opacity:1, duration:0.25, ease:"sine.inOut", yoyo:true, repeat:1}, 7.0);
+  tl.to(P+"wash path", {attr:{"stroke-width":4.5}, duration:0.25, ease:"sine.inOut", yoyo:true, repeat:1}, 7.0);
+
+  /* exit over the host last 0.6 s (host 9.88 = clip mount end) */
+  tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 9.28);
+  window.__timelines["g-a2-10-paul-panel"] = tl;
+})();
+</script>
+</template>

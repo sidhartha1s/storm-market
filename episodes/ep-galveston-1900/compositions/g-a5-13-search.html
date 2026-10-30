@@ -1,0 +1,184 @@
+<template>
+<style>
+  #g-a5-13-search-root { position:absolute; inset:0; overflow:hidden; font-family:Arial, sans-serif;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+
+  /* source line: top-left glass, small radius */
+  #g13-src { position:absolute; inset:auto; left:96px; top:54px; max-width:900px; box-sizing:border-box;
+    padding:6px 14px; border-radius:12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; color:#c8d3e0; letter-spacing:1px; }
+
+  /* search box */
+  #g13-box { position:absolute; inset:auto; left:460px; top:180px; width:1000px; height:110px; box-sizing:border-box;
+    border-radius:16px; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #g13-mag { position:absolute; inset:auto; left:28px; top:33px; width:44px; height:44px; }
+  #g13-typed { position:absolute; inset:auto; left:100px; top:0; height:110px; white-space:nowrap;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:56px; line-height:110px; color:#f2f5f8; }
+  .g13-l { display:inline-block; opacity:0; visibility:hidden; }
+  #g13-caret { position:absolute; inset:auto; left:100px; top:27px; width:3px; height:56px; background:#f2f5f8; }
+
+  /* month tiles: 120 x 200, gap 16, left 152, top 400 */
+  .g13-tile { position:absolute; inset:auto; top:400px; width:120px; height:200px; box-sizing:border-box;
+    border-radius:10px; background:#15202b; border:1px solid rgba(255,255,255,0.14); }
+  .g13-mo { position:absolute; inset:auto; left:0; top:20px; width:118px; text-align:center;
+    font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:26px; color:#93a3b2; letter-spacing:3px; }
+  .g13-yr { position:absolute; inset:auto; left:0; top:54px; width:118px; text-align:center;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:24px; color:#93a3b2; }
+  .g13-zero { position:absolute; inset:auto; left:0; top:106px; width:118px; height:80px; text-align:center;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; line-height:80px; color:#f2f5f8;
+    opacity:0; visibility:hidden; }
+  .g13-no { position:absolute; inset:auto; left:0; top:124px; width:118px; text-align:center;
+    font-family:Arial, sans-serif; font-weight:700; font-size:19px; line-height:26px; color:#93a3b2; letter-spacing:2px;
+    opacity:0; visibility:hidden; }
+
+  /* chip: centred on x 960, 700 wide (610 to 1310), 690 to 790; presenter corner stays empty */
+  #g13-chip { position:absolute; inset:auto; left:610px; top:690px; width:700px; height:100px; box-sizing:border-box;
+    border-radius:28px; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:36px; line-height:100px;
+    color:#f2f5f8; letter-spacing:1px; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a5-13-search-root" data-composition-id="g-a5-13-search" data-width="1920" data-height="1080">
+  <div id="g13-src">Monthly Weather Review, 1900 (issues Feb. to Oct.)</div>
+
+  <div id="g13-box">
+    <svg id="g13-mag" viewBox="0 0 44 44" width="44" height="44">
+      <circle cx="18" cy="18" r="12" fill="none" stroke="#93a3b2" stroke-width="4"/>
+      <line x1="27" y1="27" x2="40" y2="40" stroke="#93a3b2" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+    <div id="g13-typed"><span class="g13-l" id="g13-l1">B</span><span class="g13-l" id="g13-l2">E</span><span class="g13-l" id="g13-l3">L</span><span class="g13-l" id="g13-l4">E</span><span class="g13-l" id="g13-l5">N</span></div>
+    <div id="g13-caret"></div>
+  </div>
+
+  <div class="g13-tile" id="g13-t1" style="left:152px">
+    <span class="g13-mo" id="g13-mo1">JAN</span>
+    <span class="g13-yr" id="g13-yr1" data-repeat-ok="one issue label per tile">MWR 1900</span>
+    <span class="g13-no" id="g13-no1">NOT<br>OPENED</span>
+  </div>
+  <div class="g13-tile" id="g13-t2" style="left:288px">
+    <span class="g13-mo" id="g13-mo2">FEB</span>
+    <span class="g13-yr" id="g13-yr2" data-repeat-ok="one issue label per tile">MWR 1900</span>
+    <span class="g13-zero" id="g13-z2" data-repeat-ok="one result per issue tile">0</span>
+  </div>
+  <div class="g13-tile" id="g13-t3" style="left:424px">
+    <span class="g13-mo" id="g13-mo3">MAR</span>
+    <span class="g13-yr" id="g13-yr3" data-repeat-ok="one issue label per tile">MWR 1900</span>
+    <span class="g13-zero" id="g13-z3" data-repeat-ok="one result per issue tile">0</span>
+  </div>
+  <div class="g13-tile" id="g13-t4" style="left:560px">
+    <span class="g13-mo" id="g13-mo4">APR</span>
+    <span class="g13-yr" id="g13-yr4" data-repeat-ok="one issue label per tile">MWR 1900</span>
+    <span class="g13-zero" id="g13-z4" data-repeat-ok="one result per issue tile">0</span>
+  </div>
+  <div class="g13-tile" id="g13-t5" style="left:696px">
+    <span class="g13-mo" id="g13-mo5">MAY</span>
+    <span class="g13-yr" id="g13-yr5" data-repeat-ok="one issue label per tile">MWR 1900</span>
+    <span class="g13-zero" id="g13-z5" data-repeat-ok="one result per issue tile">0</span>
+  </div>
+  <div class="g13-tile" id="g13-t6" style="left:832px">
+    <span class="g13-mo" id="g13-mo6">JUN</span>
+    <span class="g13-yr" id="g13-yr6" data-repeat-ok="one issue label per tile">MWR 1900</span>
+    <span class="g13-zero" id="g13-z6" data-repeat-ok="one result per issue tile">0</span>
+  </div>
+  <div class="g13-tile" id="g13-t7" style="left:968px">
+    <span class="g13-mo" id="g13-mo7">JUL</span>
+    <span class="g13-yr" id="g13-yr7" data-repeat-ok="one issue label per tile">MWR 1900</span>
+    <span class="g13-zero" id="g13-z7" data-repeat-ok="one result per issue tile">0</span>
+  </div>
+  <div class="g13-tile" id="g13-t8" style="left:1104px">
+    <span class="g13-mo" id="g13-mo8">AUG</span>
+    <span class="g13-yr" id="g13-yr8" data-repeat-ok="one issue label per tile">MWR 1900</span>
+    <span class="g13-zero" id="g13-z8" data-repeat-ok="one result per issue tile">0</span>
+  </div>
+  <div class="g13-tile" id="g13-t9" style="left:1240px">
+    <span class="g13-mo" id="g13-mo9">SEP</span>
+    <span class="g13-yr" id="g13-yr9" data-repeat-ok="one issue label per tile">MWR 1900</span>
+    <span class="g13-zero" id="g13-z9" data-repeat-ok="one result per issue tile">0</span>
+  </div>
+  <div class="g13-tile" id="g13-t10" style="left:1376px">
+    <span class="g13-mo" id="g13-mo10">OCT</span>
+    <span class="g13-yr" id="g13-yr10" data-repeat-ok="one issue label per tile">MWR 1900</span>
+    <span class="g13-zero" id="g13-z10" data-repeat-ok="one result per issue tile">0</span>
+  </div>
+  <div class="g13-tile" id="g13-t11" style="left:1512px">
+    <span class="g13-mo" id="g13-mo11">NOV</span>
+    <span class="g13-yr" id="g13-yr11" data-repeat-ok="one issue label per tile">MWR 1900</span>
+    <span class="g13-no" id="g13-no11">NOT<br>OPENED</span>
+  </div>
+  <div class="g13-tile" id="g13-t12" style="left:1648px">
+    <span class="g13-mo" id="g13-mo12">DEC</span>
+    <span class="g13-yr" id="g13-yr12" data-repeat-ok="one issue label per tile">MWR 1900</span>
+    <span class="g13-no" id="g13-no12">NOT<br>OPENED</span>
+  </div>
+
+  <div id="g13-chip">BELEN: 0 &middot; ISSUES READ</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g13-";
+
+  /* start state: only transforms are set here; hidden things are also hidden in CSS */
+  tl.set(P+"caret", {x:0}, 0);
+
+  /* caret blinks 0.5 s the whole window (12 phases = 6 s) */ /* searched @9.36 -> comp 0.10 */
+  tl.fromTo(P+"caret", {autoAlpha:1}, {autoAlpha:0, duration:0.5, ease:"steps(1)", repeat:11, yoyo:true}, 0.1);
+
+  /* box drift, whole window up to the exit */
+  tl.to(P+"box", {y:-6, duration:5.4, ease:"sine.inOut"}, 0);
+
+  /* BELEN types one letter per 0.06 s from 1.34 (10.60), done 1.64 (10.90) */ /* BELEN @10.72 */
+  tl.set(P+"l1", {autoAlpha:1}, 1.34); tl.set(P+"caret", {x:44}, 1.34);
+  tl.set(P+"l2", {autoAlpha:1}, 1.40); tl.set(P+"caret", {x:84}, 1.40);
+  tl.set(P+"l3", {autoAlpha:1}, 1.46); tl.set(P+"caret", {x:121}, 1.46);
+  tl.set(P+"l4", {autoAlpha:1}, 1.52); tl.set(P+"caret", {x:162}, 1.52);
+  tl.set(P+"l5", {autoAlpha:1}, 1.58); tl.set(P+"caret", {x:209}, 1.58);
+
+  /* results tick across from 2.30 (In @11.56), 0.12 s apart, last at 3.62 (12.88) */ /* In @11.56 */
+  tl.to(P+"t1", {autoAlpha:0.45, duration:0.25, ease:"power2.out"}, 2.30);
+  tl.fromTo(P+"no1", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.25, ease:"power2.out"}, 2.30);
+  tl.fromTo(P+"z2", {autoAlpha:0, rotationX:-90, transformPerspective:500}, {autoAlpha:1, rotationX:0, duration:0.25, ease:"power2.out"}, 2.42);
+  tl.fromTo(P+"z3", {autoAlpha:0, rotationX:-90, transformPerspective:500}, {autoAlpha:1, rotationX:0, duration:0.25, ease:"power2.out"}, 2.54);
+  tl.fromTo(P+"z4", {autoAlpha:0, rotationX:-90, transformPerspective:500}, {autoAlpha:1, rotationX:0, duration:0.25, ease:"power2.out"}, 2.66);
+  tl.fromTo(P+"z5", {autoAlpha:0, rotationX:-90, transformPerspective:500}, {autoAlpha:1, rotationX:0, duration:0.25, ease:"power2.out"}, 2.78);
+  tl.fromTo(P+"z6", {autoAlpha:0, rotationX:-90, transformPerspective:500}, {autoAlpha:1, rotationX:0, duration:0.25, ease:"power2.out"}, 2.90);
+  tl.fromTo(P+"z7", {autoAlpha:0, rotationX:-90, transformPerspective:500}, {autoAlpha:1, rotationX:0, duration:0.25, ease:"power2.out"}, 3.02);
+  tl.fromTo(P+"z8", {autoAlpha:0, rotationX:-90, transformPerspective:500}, {autoAlpha:1, rotationX:0, duration:0.25, ease:"power2.out"}, 3.14);
+  tl.fromTo(P+"z9", {autoAlpha:0, rotationX:-90, transformPerspective:500}, {autoAlpha:1, rotationX:0, duration:0.25, ease:"power2.out"}, 3.26);
+  tl.fromTo(P+"z10", {autoAlpha:0, rotationX:-90, transformPerspective:500}, {autoAlpha:1, rotationX:0, duration:0.25, ease:"power2.out"}, 3.38);
+  tl.to(P+"t11", {autoAlpha:0.45, duration:0.25, ease:"power2.out"}, 3.50);
+  tl.fromTo(P+"no11", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.25, ease:"power2.out"}, 3.50);
+  tl.to(P+"t12", {autoAlpha:0.45, duration:0.25, ease:"power2.out"}, 3.62);
+  tl.fromTo(P+"no12", {autoAlpha:0, y:10}, {autoAlpha:1, y:0, duration:0.25, ease:"power2.out"}, 3.62);
+
+  /* chip in at 4.26 (never @13.52), then drifts until the exit */ /* never @13.52 */
+  tl.fromTo(P+"chip", {autoAlpha:0, y:30}, {autoAlpha:1, y:0, duration:0.5, ease:"power3.out"}, 4.26);
+  tl.to(P+"chip", {y:-4, duration:0.7, ease:"sine.inOut"}, 4.8);
+
+  /* exit, last 0.6 s: tiles drop (0.4 s, 0.03 stagger), chip slides right, box and source leave */
+  tl.to(P+"t1", {y:40, autoAlpha:0, duration:0.4, ease:"power2.in"}, 5.37);
+  tl.to(P+"t2", {y:40, autoAlpha:0, duration:0.4, ease:"power2.in"}, 5.40);
+  tl.to(P+"t3", {y:40, autoAlpha:0, duration:0.4, ease:"power2.in"}, 5.43);
+  tl.to(P+"t4", {y:40, autoAlpha:0, duration:0.4, ease:"power2.in"}, 5.46);
+  tl.to(P+"t5", {y:40, autoAlpha:0, duration:0.4, ease:"power2.in"}, 5.49);
+  tl.to(P+"t6", {y:40, autoAlpha:0, duration:0.4, ease:"power2.in"}, 5.52);
+  tl.to(P+"t7", {y:40, autoAlpha:0, duration:0.4, ease:"power2.in"}, 5.55);
+  tl.to(P+"t8", {y:40, autoAlpha:0, duration:0.4, ease:"power2.in"}, 5.58);
+  tl.to(P+"t9", {y:40, autoAlpha:0, duration:0.4, ease:"power2.in"}, 5.61);
+  tl.to(P+"t10", {y:40, autoAlpha:0, duration:0.4, ease:"power2.in"}, 5.64);
+  tl.to(P+"t11", {y:40, autoAlpha:0, duration:0.4, ease:"power2.in"}, 5.67);
+  tl.to(P+"t12", {y:40, autoAlpha:0, duration:0.4, ease:"power2.in"}, 5.70);
+  tl.to(P+"chip", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.50);
+  tl.to(P+"box", {y:-40, autoAlpha:0, duration:0.6, ease:"power3.in"}, 5.50);
+  tl.to(P+"src", {autoAlpha:0, duration:0.6, ease:"power2.in"}, 5.50);
+
+  window.__timelines["g-a5-13-search"] = tl;
+})();
+</script>
+</template>

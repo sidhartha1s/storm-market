@@ -7,13 +7,13 @@ No statement was found from Willis Moore saying Havana called the storm right; t
 ## 1. Source
 - No statement: sources-cuba.md §5 ("Moore or Bureau admitted Cuban view was right | UNSOURCED | none | No such statement found"); §2 (fact-check a5-r1 row 43). A search limit, so the chip says FOUND, not MADE.
 - Track: AOML 2015, "the Belén forecasters said their observations indicated the storm moved to the northwest and into the Gulf of Mexico" (sources-cuba.md §1 and §5; row 44).
-- Moore's title: as used in the intro (`briefs/intro/g-intro-8-track.md` Moore lower-third). Use that brief's exact title string; if it differs from "CHIEF, U.S. WEATHER BUREAU", the intro's wins.
+- Moore's title: as used in the intro (`briefs/intro/g-intro-8-track.md` Moore lower-third). Use that brief's exact title string; if it differs from "CHIEF, US WEATHER BUREAU", the intro's wins.
 
 ## 2. Datum, scale, orientation
 0 to 4.62: full-frame designed card (tokens radial). 4.62 to 9.94: overlay over a still of `g-intro-8-track`'s settled end frame (open item 4), mounted by the orchestrator on the lower track; the comp's background goes transparent at 4.62 (cross-fade 0.4 s).
 
 ## 3. Geometry (px)
-- Person card P (glass, text only), centred x 960, top 330, 900 x 200: name "WILLIS MOORE" Arial Black 900 72 px `#f2f5f8`; role "CHIEF, U.S. WEATHER BUREAU" Arial 700 27 px `#f5d98b`.
+- Person card P (glass, text only), centred x 960, top 330, 900 x 200: name "WILLIS MOORE" Arial Black 900 72 px `#f2f5f8`; role "CHIEF, US WEATHER BUREAU" Arial 700 27 px `#f5d98b`.
 - Chip C1 "NO STATEMENT FOUND", glass, centred x 960, top 580.
 - Chip C2 over the track still, top-left anchored to avoid the track line: `left:96px; top:140px`, main "NORTHWEST, INTO THE GULF" Arial Black 900 44 px, tag "AS BELEN CALLED IT" Arial 700 22 px `#93a3b2` tracking 4. Check the still: C2 must not cover the track line or its labels; if it does, move C2 to the frame's emptiest quadrant above y 680 and say where.
 - Source line top-left at top 54: "NOAA AOML, 2015" (from 4.62; before that "Search of Weather Bureau records, MWR 1900").

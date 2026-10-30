@@ -11,7 +11,7 @@ Pietruska (2016), JGAPE 15(4), fn 83 and 87: "Mr. Stockman," La Discusión, Oct.
 Full-frame designed card (tokens radial background). No 1900 masthead scan exists on disk: the mastheads are typeset in a period serif and must read as a title card, not a fake scan (no paper texture, no fake print damage).
 
 ## 3. Geometry (px)
-- Masthead M1: `left:160px; top:220px; width:760px`, beige cite card `rgba(232,222,200,.90)`, padding 40 px; "La Discusión" Georgia bold 72 px `#2a2622`; under it "HAVANA · 1900" Arial 700 22 px `#6b6257` tracking 4.
+- Masthead M1: `left:160px; top:220px; width:760px`, beige cite card `rgba(232,222,200,.90)`, padding 40 px; "La Discusión" Georgia bold 72 px `#2a2622`; under it "HAVANA" Arial 700 22 px `#6b6257` tracking 4.
 - Masthead M2: `left:1000px; top:220px; width:760px`, same: "Diario de la Marina".
 - Date chips (glass) under each: C1 under M1 at top 480: "LA DISCUSIÓN · OCT 27 · NOV 14, 1900" main Arial Black 900 34 px `#f2f5f8`; C2 under M2: "DIARIO DE LA MARINA · OCT 30, 1900". Each ≤ 760 wide; if C1 wraps, two lines.
 - Box label B: centred x 960, top 640: a card styled as an archive box end label, `#f4f0e6` with `#2a2622` text, 520 x 200: "NATIONAL ARCHIVES" Arial 700 22 px tracking 4, "RG 27 · BOX 1475" Arial Black 900 56 px, "WEATHER BUREAU RECORDS" Arial 700 22 px. Bottom 840; x 700 to 1220: clear of the corner.
@@ -22,14 +22,14 @@ Full-frame designed card (tokens radial background). No 1900 masthead scan exist
 2. No word implies the clippings' tone (no "attack", "criticism", "blamed").
 3. Dates exactly OCT 27, NOV 14 (La Discusión) and OCT 30 (Diario), 1900.
 4. Masthead cards never cover the chips; the box label never covers either chip.
-5. Dup-fact: "1900" appears on both chips and the mastheads' "HAVANA · 1900": declare `data-repeat-ok="one year on several labels"` on the two masthead year leaves after a frame read, or drop "· 1900" from the mastheads (preferred: drop it, write "HAVANA").
+5. Dup-fact: the mastheads say only "HAVANA", so "1900" is on the two chips only, inside different strings.
 
 ## 5. Text and cues (a5-s9.words.json, segment 20.90 s)
 - 0.00: background; 0.46 ("Havana," 0.46): source line in.
 - 1.06 ("papers" 1.06): both mastheads rise in, empty of chips, 0.2 s apart.
-- 1.60 ("stockmen" 1.60) /* STOCKMAN @1.60 */: a small glass tag "W. B. STOCKMAN · BUREAU, HAVANA" Arial 700 24 px `#f2f5f8` above the mastheads, centred, top 120. (Row: acts/a2.md A2-S4, MWR "W. B. Stockman, Forecast Official".)
+- 1.60 ("stockmen" 1.60) /* STOCKMAN @1.60 */: a small glass tag "W. B. STOCKMAN · WEATHER BUREAU, HAVANA" Arial 700 24 px `#f2f5f8` above the mastheads, centred, top 120. (Row: acts/a2.md A2-S4, MWR "W. B. Stockman, Forecast Official".)
 - 3.48 ("October" 3.48): tag out.
-- 5.20 ("Discusión" 5.20) /* DISCUSION @5.20 */: M1 brightens; C1 in at 5.40 with "OCT 27" first, "NOV 14, 1900" at 4.18 is past, so the whole line in at 5.40.
+- 5.20 ("Discusión" 5.20) /* DISCUSION @5.20 */: M1 brightens; C1 in whole at 5.40 (both dates; the months were already spoken at 3.48 and 4.18).
 - 6.74 ("Dario" 6.74) /* DIARIO @6.74 */: M2 brightens; C2 in at 7.44 ("Marina").
 - 10.46 ("Clippings" 10.46): mastheads and chips scale to 0.85 and rise 60 px together (one move, 0.6 s power2.inOut) to make room.
 - 13.42 ("National" 13.42) /* ARCHIVES @13.72 */: box label B rises in from y +80 at 13.42.

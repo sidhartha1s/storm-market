@@ -18,7 +18,7 @@ Overlay comp, transparent root, over `ins-paul-5` (not generated; timed to the T
 - Under the right page: "RIDE · NOT KNOWN TO BE BACKED" Arial 700 22 px `#93a3b2`.
 - Panel title top: "THE TWO ACCOUNTS" Arial Black 900 52 px `#f2f5f8` at top 140 (big tier).
 - Panel text stays above y 680 (pages end at 600, labels by 660): circle off anyway (full-frame Paul clip).
-- Popfig after the panel leaves, centred x 960 y 470: big "1900 → LATER", sub "THE REPORT · THE RIDE".
+- Popfig after the panel leaves, mid-height (big line centre y 470) on the side away from Paul's face (default x 1460, the panel's side), never over his face: big "1900 → LATER", sub "THE REPORT · THE RIDE".
 
 ## 4. Must be true in the picture
 1. Paul's face is never covered: read the start frame; if his face sits right of x 1100, mirror the panel to the left and say so.

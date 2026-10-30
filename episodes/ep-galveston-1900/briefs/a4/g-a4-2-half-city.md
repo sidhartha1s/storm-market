@@ -15,8 +15,8 @@ North up, plan view, g-a5-3's projection and island polygon (reuse its function 
 - Labels Arial 700 22 px `#93a3b2` tracking 3: "Galveston Bay" centred (960, 230); "Gulf of Mexico" centred (960, 900).
 - Bay-side zone: rows 5 and 6 (y 324 to 480) outlined `#7fb2e5` 3 px, label "Bay side" Arial 700 26 px `#f2f5f8` at (300, 290) left of the grid's top-left, above it. Gulf-side zone: rows 1 and 2 (y 668 to 824) outlined the same, label "Gulf side" at (300, 860).
 - Buggy icon: 48 x 32 px side-view buggy `#e8c56a`, path along the street between columns 6 and 7 (x 960), from (960, 300) south to (960, 848). Moves by GSAP `y` only; check it sits on x 960 at three times.
-- Flood fill: 36 of the 72 blocks (half) turn `#5a768f` at 0.85 with a `#7fb2e5` edge, filling from the Gulf side upward: rows 1, 2, 3 (36 blocks). The pin block (column 7, row 3) is inside the flooded rows: keep it unflooded-looking? NO: draw it flooded like its row (water covers streets near his house is consistent with p. 373 later). The legend chip carries the meaning.
-- Chip C1 (glass, shared spec) "ABOUT HALF THE CITY" at left 96, top 120 (below source line), tag "streets under water · p. 373". Wait: source line at top 54; C1 top 130.
+- Flood fill: 36 of the 72 blocks (half) turn `#5a768f` at 0.85 with a `#7fb2e5` edge, filling from the Gulf side upward: rows 1, 2, 3 (36 blocks). The pin block (column 7, row 3) floods with its row (schematic; p. 373 later finds water around his house).
+- Chip C1 (glass, shared spec) "ABOUT HALF THE CITY" at left 96, top 130 (under the source line at top 54), tag "streets under water · p. 373".
 - Pin: `#d0121f` 22 px dot with 4 px `#f2f5f8` ring at (1014, 617), label leaf "25th St & Q" Arial 700 26 px `#f2f5f8` with shadow, right of the pin at (1040, 600). Chip C2 "CLINE'S HOUSE, 1900: 5.2 FT" right-aligned to x 1824, top 130, tag "ground elevation, his report"; 1 px `#d8a13a` leader from C2's bottom-left to the pin.
 - Source line top-left: "Isaac Cline, Monthly Weather Review, September 1900, p. 373".
 

@@ -7,7 +7,7 @@
   Full-frame schematic drawing: interior wall of a wholesale commission house on Strand Street.
   Scale 80 px per ft: floor y 880, 3 ft = 240 px, 3 FT line y 640. Building: schematic (no pre-storm Strand photo).
   Source: Isaac Cline, Monthly Weather Review, September 1900, p. 373.
-  Nothing is drawn in x >= 1600, y >= 680 (presenter circle corner).
+  Only the plain wall/floor backdrop reaches x >= 1600, y >= 680 (presenter circle corner).
 -->
 <template>
 <style>
@@ -16,10 +16,9 @@
 
   /* ground on from frame 0 */
   #a47-bg { left:0; top:0; width:1920px; height:1080px; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
-  /* wall x 96..1824, y 0..880; the corner x>=1600, y>=680 is cut out of it */
-  #a47-wall { left:96px; top:0; width:1728px; height:880px; background:repeating-linear-gradient(0deg, #2a3644 0 1px, transparent 1px 24px), #15202b;
-    clip-path:polygon(0 0, 1728px 0, 1728px 680px, 1504px 680px, 1504px 880px, 0 880px); }
-  #a47-floor { left:96px; top:880px; width:1504px; height:200px; background:#0b1016; border-top:2px solid #93a3b2; }
+  /* wall and floor are plain backdrop and fill the frame edge to edge; nothing meaningful sits in the circle corner */
+  #a47-wall { left:0; top:0; width:1920px; height:880px; background:repeating-linear-gradient(0deg, #2a3644 0 1px, transparent 1px 24px), #15202b; }
+  #a47-floor { left:0; top:880px; width:1920px; height:200px; background:#0b1016; border-top:2px solid #93a3b2; }
 
   .a47-win { top:280px; width:160px; height:340px; border-radius:80px 80px 0 0; border:3px solid #4a5560; background:linear-gradient(180deg, #2b3d52, #1c2a3a); }
   #a47-winL { left:300px; }
@@ -162,7 +161,7 @@ window.__timelines = window.__timelines || {};
   // ---- ambient motes in the window light, the whole window ----
   const motes = [A+"m1",A+"m2",A+"m3",A+"m4",A+"m5",A+"m6"];
   motes.forEach(function(m, i) {
-    tl.to(m, {y: (i % 2 ? -22 : 22), duration:2.4, ease:"sine.inOut", yoyo:true, repeat:3}, i * 0.1);
+    tl.to(m, {y: (i % 2 ? -22 : 22), duration:(10.962 - i * 0.1) / 4, ease:"sine.inOut", yoyo:true, repeat:3}, i * 0.1); /* ends at host end 10.962 */
   });
 
   // ---- 0.78 "Strand" @9.48 : chip in; out by 3.90 ("advised" @12.14 -> 3.44) ----

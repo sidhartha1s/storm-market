@@ -58,29 +58,29 @@ window.__timelines = window.__timelines || {};
   tl.set(P+"panel", {autoAlpha:0, y:24, scale:0.94}, 0);
   tl.set(P+"band", {scaleX:0}, 0);
 
-  /* 3:30 @0.14: sub in at 0.14, big slams in at 0.26; both drift until the exit */
-  tl.to(P+"pfsub", {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.14);
-  tl.to(P+"pfbig", {autoAlpha:1, scale:1, duration:0.5, ease:"power4.out"}, 0.26);
-  tl.to(P+"pfin", {y:-4, duration:1.45, ease:"sine.inOut", yoyo:true, repeat:1}, 0.76);
-  /* Isaac @2.58: popfig out 2.58 to 3.03 (before the panel at 3.68) */
-  tl.to(P+"pf", {autoAlpha:0, scale:0.92, duration:0.45, ease:"power2.in"}, 2.58);
+  /* 3:30 @0.22: sub in at 0.22, big slams in at 0.34; both drift until the exit */
+  tl.to(P+"pfsub", {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.22);
+  tl.to(P+"pfbig", {autoAlpha:1, scale:1, duration:0.5, ease:"power4.out"}, 0.34);
+  tl.to(P+"pfin", {y:-4, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:1}, 0.84);
+  /* Isaac @2.50: popfig out 2.50 to 2.95 (before the panel at 3.54) */
+  tl.to(P+"pf", {autoAlpha:0, scale:0.92, duration:0.45, ease:"power2.in"}, 2.50);
 
-  /* line @3.68: panel and source line in; amber band draws 3.68 to 4.22 (Washington @4.22) */
-  tl.to(P+"panel", {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 3.68);
-  tl.to(P+"src", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 3.68);
-  tl.to(P+"dimline", {autoAlpha:0, duration:0.54, ease:"power2.out"}, 3.68);
-  tl.set(P+"band", {autoAlpha:1}, 3.68);
-  tl.to(P+"band", {scaleX:1, duration:0.54, ease:"power2.out"}, 3.68);
-  /* drift on the inner box and the source line, ends before the exit at 7.28 */
-  tl.to(P+"panelin", {y:-4, duration:1.6, ease:"sine.inOut", yoyo:true, repeat:1}, 4.13);
-  tl.to(P+"src", {y:-4, duration:1.6, ease:"sine.inOut", yoyo:true, repeat:1}, 4.08);
-  /* wires @6.10, down @6.38: band turns red at 6.38 */
-  tl.to(P+"band", {backgroundColor:"#c0392b", duration:0.3, ease:"power2.out"}, 6.38);
-  /* Nobody @7.28: panel and source line out by 7.88; Paul alone until the cut */
-  tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 7.28);
-  tl.to(P+"src", {autoAlpha:0, duration:0.6, ease:"power2.in"}, 7.28);
-  /* keep the timeline to the host end (9.68, mount in index.html); nothing is on screen from 7.88 */
-  tl.to(P+"root", {autoAlpha:1, duration:0.06}, 9.62);
+  /* line @3.54: panel and source line in; amber band draws 3.54 to 4.02 (Washington @4.02) */
+  tl.to(P+"panel", {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 3.54);
+  tl.to(P+"src", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 3.54);
+  tl.to(P+"dimline", {autoAlpha:0, duration:0.48, ease:"power2.out"}, 3.54);
+  tl.set(P+"band", {autoAlpha:1}, 3.54);
+  tl.to(P+"band", {scaleX:1, duration:0.48, ease:"power2.out"}, 3.54);
+  /* drift on the inner box and the source line, ends before the exit at 7.10 */
+  tl.to(P+"panelin", {y:-4, duration:1.5, ease:"sine.inOut", yoyo:true, repeat:1}, 3.99);
+  tl.to(P+"src", {y:-4, duration:1.5, ease:"sine.inOut", yoyo:true, repeat:1}, 3.94);
+  /* wires @5.88, down @6.06: band turns red at 6.06 */
+  tl.to(P+"band", {backgroundColor:"#c0392b", duration:0.3, ease:"power2.out"}, 6.06);
+  /* Nobody @7.10: panel and source line out by 7.70; Paul alone until the cut */
+  tl.to(P+"panel", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 7.10);
+  tl.to(P+"src", {autoAlpha:0, duration:0.6, ease:"power2.in"}, 7.10);
+  /* keep the timeline to the host end (9.944, mount in index.html); nothing is on screen from 7.70 */
+  tl.to(P+"root", {autoAlpha:1, duration:0.06}, 9.884);
   window.__timelines["g-a3-12-330"] = tl;
 })();
 </script>

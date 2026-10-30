@@ -135,7 +135,7 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"windlab", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:1}, 10.81);
 
   /* wind @12.56: arrow pulses once */
-  tl.to(P+"wind", {scale:1.12, duration:0.2, ease:"power2.out", yoyo:true, repeat:1}, 12.56);
+  tl.to(P+"wind", {scale:1.12, svgOrigin:"520 350", smoothOrigin:false, duration:0.2, ease:"power2.out", yoyo:true, repeat:1}, 12.56);
 
   /* JOSEPH @16.08: Part B. No footage sourced: fallback holds the plan dimmed to 0.4 (orchestrator: set 0 if footage is mounted beneath) */
   tl.to(P+"plan", {opacity:0.4, duration:0.5, ease:"power1.inOut"}, 16.08);

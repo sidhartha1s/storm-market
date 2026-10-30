@@ -1,0 +1,74 @@
+<template>
+<style>
+  #g-a6-10-today-root { position:absolute; inset:0; overflow:hidden; background:transparent; font-family:Arial, sans-serif; }
+  /* source line, top-left (glass surface, tokens.md) */
+  #g-a6-10-today-src { position:absolute; left:96px; top:54px; max-width:900px; box-sizing:border-box; padding:6px 14px; border-radius:12px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14);
+    font-weight:700; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  /* chip: outer slides in x, inner floats in y; left 120, top 150 */
+  #g-a6-10-today-chip { position:absolute; left:120px; top:150px; width:660px; height:230px; opacity:0; visibility:hidden; }
+  #g-a6-10-today-chipin { position:absolute; left:0; top:0; width:660px; height:230px; }
+  /* glass background: grows by scale only, never width/height; eyebrow-only state is sized to the eyebrow (36 + 333 + 36 px = 0.62 of 660)
+     so no empty blurred glass sits over the bright clouds */
+  #g-a6-10-today-bg { position:absolute; left:0; top:0; width:660px; height:230px; box-sizing:border-box; border-radius:28px;
+    transform-origin:left top;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); }
+  #g-a6-10-today-eyebrow { position:absolute; left:36px; top:24px; white-space:nowrap; font-weight:700; font-size:24px; line-height:29px; letter-spacing:4px; color:#93a3b2; opacity:0; visibility:hidden; }
+  #g-a6-10-today-main { position:absolute; left:36px; top:62px; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:64px; line-height:74px; color:#f2f5f8; opacity:0; visibility:hidden; }
+  #g-a6-10-today-rule { position:absolute; left:36px; top:148px; width:480px; height:4px; background:#d8a13a; transform-origin:left center; opacity:0; visibility:hidden; }
+  #g-a6-10-today-tag { position:absolute; left:36px; top:168px; white-space:nowrap; font-weight:700; font-size:26px; line-height:31px; letter-spacing:3px; color:#f5d98b; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a6-10-today-root" data-composition-id="g-a6-10-today" data-width="1920" data-height="1080">
+  <div id="g-a6-10-today-src">Rosenberg Library &middot; American Society of Civil Engineers &middot; Photo: Pixabay</div>
+  <div id="g-a6-10-today-chip">
+    <div id="g-a6-10-today-chipin">
+      <div id="g-a6-10-today-bg"></div>
+      <div id="g-a6-10-today-eyebrow">GALVESTON SEAWALL</div>
+      <div id="g-a6-10-today-main">OVER 10 MILES</div>
+      <div id="g-a6-10-today-rule"></div>
+      <div id="g-a6-10-today-tag">TODAY</div>
+    </div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const P = "#g-a6-10-today-";
+  /* TIMING: audio/a6-s8.words.json, comp-local = segment time (host 0.00 to 3.44).
+     source line @0.20 ; wall @0.12 ; 10 @1.86 ("more than 10 miles") ; now. @2.66 ; chip out 2.84 to 3.44 ; "The" @3.44 (g-a6-11 cuts in) */
+  tl.set(P+"src", {autoAlpha:0}, 0);
+  tl.set(P+"chip", {autoAlpha:0, x:0}, 0);
+  tl.set(P+"bg", {scaleX:0.62, scaleY:0.34}, 0);
+  tl.set([P+"eyebrow", P+"main", P+"tag"], {autoAlpha:0}, 0);
+  tl.set(P+"rule", {autoAlpha:0, scaleX:0}, 0);
+
+  /* source line in @0.20, drifts to the exit */
+  tl.to(P+"src", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0.2);
+  tl.to(P+"src", {y:-4, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:1}, 0.6);
+
+  /* wall @0.12: chip in with the eyebrow only (glass at eyebrow height) */
+  tl.fromTo(P+"chip", {y:24, autoAlpha:0}, {y:0, autoAlpha:1, duration:0.45, ease:"back.out(1.6)"}, 0.12);
+  tl.fromTo(P+"eyebrow", {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:0.4, ease:"power3.out"}, 0.12);
+
+  /* 10 @1.86: glass grows, main line in, rule grows 1.86 to 2.60 */
+  tl.to(P+"bg", {scaleX:1, scaleY:1, duration:0.35, ease:"power3.out"}, 1.86);
+  tl.fromTo(P+"main", {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:0.45, ease:"back.out(1.6)"}, 1.86);
+  tl.set(P+"rule", {autoAlpha:1}, 1.86);
+  tl.to(P+"rule", {scaleX:1, duration:0.74, ease:"power2.out"}, 1.86);
+
+  /* now. @2.66: TODAY tag */
+  tl.fromTo(P+"tag", {autoAlpha:0, x:-24}, {autoAlpha:1, x:0, duration:0.4, ease:"power3.out"}, 2.66);
+
+  /* chip floats from its land time */
+  tl.to(P+"chipin", {y:-5, duration:1.2, ease:"sine.inOut", yoyo:true, repeat:1}, 0.12);
+
+  /* exit 2.84 to 3.44: chip slides right, source line fades; g-a6-11 cuts in at 3.44 */
+  tl.to(P+"chip", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 2.84);
+  tl.to(P+"src", {autoAlpha:0, duration:0.6, ease:"power2.in"}, 2.84);
+  window.__timelines["g-a6-10-today"] = tl;
+})();
+</script>
+</template>

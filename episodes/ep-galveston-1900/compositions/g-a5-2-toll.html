@@ -77,8 +77,8 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"c3", {autoAlpha:0, y:24, scale:0.94}, {autoAlpha:1, y:0, scale:1, duration:0.45, ease:"back.out(1.6)"}, 8.05);
   tl.to(P+"c3", {y:-4, duration:1.47, ease:"sine.inOut", yoyo:true, repeat:1}, 8.5);
 
-  /* Klein @8.78: all three dim to 0.6 */
-  tl.to([P+"c1", P+"c2", P+"c3"], {autoAlpha:0.6, duration:0.4, ease:"power2.out"}, 8.78);
+  /* Klein @8.78: all three dim to 0.8 (0.6 let the white page wash the chips out) */
+  tl.to([P+"c1", P+"c2", P+"c3"], {autoAlpha:0.8, duration:0.4, ease:"power2.out"}, 8.78);
 
   /* Which @11.44: slide out right in order C3, C2, C1, 0.1 s apart, done by 12.24 */
   tl.to(P+"c3", {x:980, autoAlpha:0, duration:0.6, ease:"power3.in"}, 11.44);

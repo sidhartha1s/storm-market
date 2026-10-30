@@ -59,14 +59,14 @@ window.__timelines = window.__timelines || {};
   /* TIMING: audio/a5-s4.words.json, comp-local = segment time (host 0.00 to 10.32 + 1.0 land = 11.32).
      report @0.64 ; September. @3.60 ; public @4.64 ; telephone @5.66 ; and @7.98 ; Strand @8.54 ; merchants. ends 10.00 */
   tl.set(P+"pg1", {autoAlpha:0, scale:1}, 0);
-  tl.set(P+"pg2", {autoAlpha:0, scale:1.12}, 0);
+  tl.set(P+"pg2", {autoAlpha:0, scale:1.08}, 0);
   tl.set([P+"bar1", P+"bar2"], {autoAlpha:0, scaleX:0}, 0);
   tl.set(P+"src", {autoAlpha:0}, 0);
   tl.set(P+"lt", {autoAlpha:0, x:-60}, 0);
 
   /* 0.00: page on, push toward line 1 runs to 7.9; source line in */
   tl.to(P+"pg1", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
-  tl.to(P+"pg1", {scale:1.12, duration:7.9, ease:"none"}, 0);
+  tl.to(P+"pg1", {scale:1.08, duration:7.9, ease:"none"}, 0);
   tl.to(P+"src", {autoAlpha:1, duration:0.4, ease:"power2.out"}, 0);
   tl.to(P+"src", {y:-4, duration:2.4, ease:"sine.inOut", yoyo:true, repeat:3}, 0.4);
 
@@ -81,11 +81,11 @@ window.__timelines = window.__timelines || {};
   tl.to(P+"bar1", {scaleX:1, duration:0.5, ease:"power2.out"}, 4.64);
   tl.to(P+"img1", {opacity:0.55, duration:0.5, ease:"power2.out"}, 4.64);
 
-  /* and @7.98: bar 1 fades first, crop 1 hands to crop 2, push moves to line 2 (1.12 to 1.20 runs to the host end) */
+  /* and @7.98: bar 1 fades first, crop 1 hands to crop 2, push moves to line 2 (1.08 to 1.14 runs to the host end) */
   tl.to(P+"bar1", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 7.98);
   tl.to(P+"pg1", {autoAlpha:0, duration:0.3, ease:"power2.in"}, 7.98);
   tl.to(P+"pg2", {autoAlpha:1, duration:0.3, ease:"power2.out"}, 7.98);
-  tl.to(P+"pg2", {scale:1.20, duration:3.34, ease:"none"}, 7.98);
+  tl.to(P+"pg2", {scale:1.14, duration:3.34, ease:"none"}, 7.98);
 
   /* STRAND @8.54: bar 2 draws, done 9.04, page dims; holds through merchants. 10.00 */
   tl.to(P+"bar2", {autoAlpha:1, duration:0.1, ease:"none"}, 8.54);

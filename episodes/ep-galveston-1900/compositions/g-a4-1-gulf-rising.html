@@ -72,10 +72,11 @@ window.__timelines = window.__timelines || {};
   tl.fromTo(P+"chip", {autoAlpha:0, x:60}, {autoAlpha:1, x:0, duration:0.45, ease:"power3.out"}, 0.14);
   tl.to(P+"chip", {y:-5, duration:1.1, ease:"sine.inOut", yoyo:true, repeat:2}, 0.6);
 
-  /* typed words: each over 0.12 s from its spoken start */
+  /* typed words: each rises in over 0.12 s from its spoken start (a rise, as g-a4-5-telegram types: nine short x slides
+     back to back left graphics_qc no settled moment to measure, so the comp read as 0 elements) */
   const W = [["w0",0.82],["w1",1.14],["w2",1.62],["w3",2.26],["w4",2.68],["w5",3.04],["w6",3.22],["w7",3.42],["w8",3.74]];
   W.forEach(function(p) { /* GULF @0.82 ... CITY @3.74 */
-    tl.fromTo(P+p[0], {autoAlpha:0, x:8}, {autoAlpha:1, x:0, duration:0.12, ease:"power2.out"}, p[1]);
+    tl.fromTo(P+p[0], {autoAlpha:0, y:8}, {autoAlpha:1, y:0, duration:0.12, ease:"power2.out"}, p[1]);
   });
 
   /* exit: form and chip slide out from 4.00; band pulses once at 4.14; page fades 4.20 to 4.58 into g-a4-2's map */

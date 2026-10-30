@@ -9,7 +9,7 @@ MWR Sept 1900 p. 374, Halsey's account (factcheck/a3-r1.md rows 13, 14): "We lef
 
 ## 2. Datum, scale, orientation
 - 0.00 to 3.84: no steamer photo exists (sourcer: none found). Use the MWR p. 374 scan `media/candidates/a3/A3-S4_c1_mwr-sept1900-p374_halsey-louisiana.png` as a page panel, whole lines, slow push toward Halsey's first lines. (Change from the Picture line: steamer photo replaced by the page.)
-- 3.84 to 8.06: map, camera V-RIVER cx 935, cy 1195, s 3.2 (New Orleans to the Gulf mouth fills the frame). Pins by formula: New Orleans (-90.07, 29.95) = (893.7, 1148.6); Port Eads (-89.17, 29.02) = (974.7, 1245.3). Screen: New Orleans (764, 366), Port Eads (1023, 696).
+- 3.84 to 8.06: map, camera V-RIVER cx 935, cy 1195, s 3.2 (New Orleans to the Gulf mouth fills the frame). Pins by formula: New Orleans (-90.07, 29.95) = (893.7, 1148.6); Port Eads (-89.17, 29.02) = (974.7, 1245.3). Screen (checked 28 Oct 26): New Orleans (828, 392), Port Eads (1087, 701).
 - River: Natural Earth 1:10m rivers (Mississippi) if fetched, stroke `#5a768f` 3 px; else no river line and the route is a straight dashed line labelled nothing.
 
 ## 3. Geometry
@@ -22,11 +22,11 @@ MWR Sept 1900 p. 374, Halsey's account (factcheck/a3-r1.md rows 13, 14): "We lef
 1. Pins within 10 px of the formula.
 2. The flag is up when the ship passes Port Eads (it is "already up"): raised before the ship arrives.
 3. No time printed (the 9:20 a.m. and 5:22 p.m. are not spoken; the voice carries "morning of the 5th").
-4. Nothing in x >= 1600, y >= 680: Port Eads is at (1023, 696) on screen, inside the left of the circle zone limit only if x >= 1600 (it is not): fine; check the flag sits left.
+4. Nothing in x >= 1600, y >= 680. Port Eads sits at screen (1087, 701), left of x 1600: keep its label and flag left of the pin.
 
 ## 5. Text and cues (a3-s4.words.json, segment 14.20 s; this comp 0.00 to 8.06)
 - 0.00: page panel, source line.
-- 0.76 ("steamer") /* LOUISIANA @1.16 */: highlight band on the line naming the Louisiana, 1.16 to 1.80.
+- 1.16 ("Louisiana") /* LOUISIANA @1.16 */: amber band (opacity 0.28) behind the line naming the Louisiana, drawn 1.16 to 1.80 (box measured on the scan).
 - 3.84 ("The warning flag"): dissolve to map 0.4 s; ship already at New Orleans.
 - 3.98 ("warning") /* FLAG @4.26 */: flag raises 3.98 to 4.56.
 - 5.40 ("Port Eads") /* PORT EADS @5.40 */: Port Eads label in; ship runs 5.40 to 7.34 ("mouth") down to Port Eads and out past it.
