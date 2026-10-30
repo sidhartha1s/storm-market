@@ -49,7 +49,7 @@ def main():
         make_mp4(paul / "ins-paul-1-v3.mp4", ",equalizer=f=2000:t=o:w=2:g=12")  # Omni: bright
         make_mp4(paul / "ins-paul-1-vc.mp4")  # a proper conversion: same colour and level as the narration
         make_mp4(paul / "ins-paul-1-vc2.mp4", ",volume=6dB")
-        make_mp4(paul / "ins-paul-1-vc3.mp4", ",equalizer=f=2000:t=o:w=2:g=12")
+        make_mp4(paul / "ins-paul-1-vc3.mp4", ",equalizer=f=2000:t=o:w=2:g=12,volume=-4.5dB")  # the boost lifts the mean by 4.5 dB: level kept, colour wrong
         good = {"voice_ref_md5": md5, "source": "ins-paul-1-v3.mp4"}
         for name in ("ins-paul-1-vc.mp4", "ins-paul-1-vc2.mp4", "ins-paul-1-vc3.mp4"):
             (paul / (name + ".vc.json")).write_text(json.dumps(good), encoding="utf-8")

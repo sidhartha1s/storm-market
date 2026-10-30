@@ -33,7 +33,17 @@ def f0_median(path, lo=60, hi=320):
     return float(np.median(f0)) if f0 else 0.0, len(f0)
 
 
+def bands(path):
+    """Energy of 1 to 4 kHz and 4 to 8 kHz relative to 0 to 1 kHz, in dB: the voice colour the owner hears as 'pitch'."""
+    x = load(path)
+    spec = np.abs(np.fft.rfft(x * np.hanning(len(x)))) ** 2
+    f = np.fft.rfftfreq(len(x), 1 / SR)
+    e = lambda lo, hi: float(spec[(f >= lo) & (f < hi)].sum())
+    return 10 * np.log10(e(1000, 4000) / e(0, 1000)), 10 * np.log10(e(4000, 8000) / e(0, 1000))
+
+
 if __name__ == "__main__":
     for p in sys.argv[1:]:
         m, k = f0_median(p)
-        print(f"{m:6.1f} Hz  ({k} voiced frames)  {p}")
+        a, b = bands(p)
+        print(f"{m:6.1f} Hz  ({k} voiced frames)  1-4k {a:6.1f} dB  4-8k {b:6.1f} dB  {p}")
