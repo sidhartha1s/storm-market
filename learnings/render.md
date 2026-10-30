@@ -2,6 +2,24 @@
 
 Newest first. New entries go at the top, under this line. Superseded lines point at their current home.
 
+## 30 Oct 26: batch A finals on the ASUS (Buffalo, Appalachian, Galveston), what broke and what held
+1. Measured rate, full by act, 2 workers asked (render_busy cut to 1 under 3.2 GB free RAM): 3.1 wall s per output s
+   (Buffalo act 2, 208.6 s in 10.7 min; act 3, 199.7 s in 10.4 min). Gates 4 to 8 min per episode, verify 4 min,
+   master 3 min. Three masters, 3444 s of picture, took 20:38 to 01:03 with one 23 min gap between batches.
+2. A render under about 1 GB free RAM does not slow down, it dies: Buffalo act 2 sat at `framesCompleted:0` for 20 min
+   and ended "Streaming encoder exited before frame 0 was written"; in the same trough Galveston's graphics_qc browser
+   reported 25 loaded images as empty and Appalachian's media_budget measured a 0.40 s ffprobe spawn. All three passed
+   once Firefox, Slack and WSL were closed (5.4 GB free). Check free RAM before a launch, not only disk.
+3. Never edit a .cmd that cmd.exe is running: it reads the file by byte offset, so inserted lines made the task re-run
+   Appalachian's gates after they had passed (4 min lost) and print a stray empty batch start/end pair at the end.
+   Write a new file and launch that instead.
+4. The 100 GB / 1-worker stream gate: this box has no `enabled:false` line in any of its 100 render logs. The owner
+   overrode it (`STREAM_GATE_OVERRIDE`); 2 workers streamed (`parallel_forced`) on the one act that ran at 2.
+5. graphics_qc's empty-container rule looked inside an <img> for an image; Galveston's 20 `<img id="g-...-img">` page
+   scans were "empty" for two days of QC rounds (commit 812f99ae fixes it, with the wireframe test now needing text).
+6. A monitor's nested schtasks quoting (`cmd.exe /c ""x.cmd" arg"`) reports SUCCESS and runs nothing; a one-line
+   wrapper .cmd with the argument inside it is the shape that works.
+
 ## 26 Oct 26: one heavy lock per machine; heavy jobs wait their turn instead of clashing
 - That day 2 of 4 helpers lost their results to clashes: a test render blocked main's e2e, a render killed a 26-min
   snapshot-queue test, and a queue start ran into another render. render_busy only refused a browser beside a live
