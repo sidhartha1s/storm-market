@@ -7,6 +7,7 @@ hot, a converted file whose colour is still Omni's (same level, 1 to 4 kHz boost
 Why: on 30 Oct 26 three episodes had rendered drafts with Omni's own voice on all 18 clips; nothing had checked.
 """
 import json
+import yaml
 import os
 import shutil
 import subprocess
@@ -18,7 +19,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import render_preflight as rp  # noqa: E402
 
-VOICE = "sine=frequency=120:duration=4,volume=-20dB,lowpass=f=900"  # narration colour: nearly all energy under 1 kHz
+VOICE = "anoisesrc=color=pink:seed=7:duration=4,volume=-20dB"  # one fixed spectrum the narration wavs and the clips share
 
 
 def make_wav(path, extra=""):
@@ -41,16 +42,16 @@ def main():
         (ep / "audio").mkdir(parents=True)
         (ep / "media" / "paul").mkdir(parents=True)
         shutil.copy(HERE.parent / "config.yaml", root / "config.yaml")
-        md5 = rp.yaml.safe_load((root / "config.yaml").read_text(encoding="utf-8"))["external"]["voice_ref_md5"]
+        md5 = yaml.safe_load((root / "config.yaml").read_text(encoding="utf-8"))["external"]["voice_ref_md5"]
         for n in range(3):
             make_wav(ep / "audio" / f"a1-s{n}.wav")
         paul = ep / "media" / "paul"
         make_mp4(paul / "ins-paul-1-v3.mp4", ",equalizer=f=2000:t=o:w=2:g=12")  # Omni: bright
         make_mp4(paul / "ins-paul-1-vc.mp4")  # a proper conversion: same colour and level as the narration
-        make_mp4(paul / "ins-paul-1-vc-hot.mp4", ",volume=6dB")
-        make_mp4(paul / "ins-paul-1-vc-bright.mp4", ",equalizer=f=2000:t=o:w=2:g=12")
+        make_mp4(paul / "ins-paul-1-vc2.mp4", ",volume=6dB")
+        make_mp4(paul / "ins-paul-1-vc3.mp4", ",equalizer=f=2000:t=o:w=2:g=12")
         good = {"voice_ref_md5": md5, "source": "ins-paul-1-v3.mp4"}
-        for name in ("ins-paul-1-vc.mp4", "ins-paul-1-vc-hot.mp4", "ins-paul-1-vc-bright.mp4"):
+        for name in ("ins-paul-1-vc.mp4", "ins-paul-1-vc2.mp4", "ins-paul-1-vc3.mp4"):
             (paul / (name + ".vc.json")).write_text(json.dumps(good), encoding="utf-8")
 
         def gap(src, sidecar=None):
@@ -60,8 +61,8 @@ def main():
 
         cases = [
             ("unconverted -v3 mount", gap("media/paul/ins-paul-1-v3.mp4"), "not a -vc file"),
-            ("converted 6 dB hot", gap("media/paul/ins-paul-1-vc-hot.mp4"), "level"),
-            ("converted, still Omni's colour", gap("media/paul/ins-paul-1-vc-bright.mp4"), "colour"),
+            ("converted 6 dB hot", gap("media/paul/ins-paul-1-vc2.mp4"), "level"),
+            ("converted, still Omni's colour", gap("media/paul/ins-paul-1-vc3.mp4"), "colour"),
             ("sidecar from another voice_ref", gap("media/paul/ins-paul-1-vc.mp4", {"voice_ref_md5": "0" * 32, "source": "x"}), "another voice_ref"),
         ]
         for label, finding, word in cases:
