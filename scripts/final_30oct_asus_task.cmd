@@ -17,7 +17,11 @@ exit /b 0
 
 :one
 set W=%S%\.worktrees\%1
-set B=%1-final-1030
+set B=%1-final-1030b
+REM 17:55 relaunch: the first run died at 0.5 GB free RAM (act 2's encoder, Galveston's QC images, Appalachian's ffprobe
+REM spawn time); an act the first run finished is reused, never re-rendered.
+set REUSE=
+if exist "%W%\episodes\%1\renders\acts\%1-final-1030\plan.json" set REUSE=--reuse %1-final-1030
 echo == %1 gates start %date% %time% >> "%LOG%"
 "%PY%" "%W%\scripts\run_gates.py" "%W%\episodes\%1" >> "%LOG%" 2>&1
 if errorlevel 1 (
