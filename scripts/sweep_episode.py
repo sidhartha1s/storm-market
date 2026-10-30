@@ -29,6 +29,22 @@ def report(name, bad, detail=lambda x: str(x)):
 
 
 # ---- windows -------------------------------------------------------------
+def cut_by_ok(tag):
+    """True when the mount carries data-cut-by="<id>" and that id (a voiced Paul clip) starts within 0.1 s of the
+    mount's end: the narration or graphic was built for the whole line and is cut where Paul takes it over
+    (DESIGN.md "Editing grammar": the cut-by mount). A cut-by that names nothing, or ends elsewhere, is not exempt."""
+    cb = re.search(r'data-cut-by="([^"]+)"', tag)
+    st, du = re.search(r'data-start="([\d.]+)"', tag), re.search(r'data-duration="([\d.]+)"', tag)
+    if not (cb and st and du):
+        return False
+    end = float(st.group(1)) + float(du.group(1))
+    tgt = re.search(r'<video\b[^>]*\bid="%s"[^>]*>' % re.escape(cb.group(1)), h)
+    if not tgt:
+        return False
+    ts = re.search(r'data-start="([\d.]+)"', tgt.group(0))
+    return bool(ts) and abs(float(ts.group(1)) - end) <= 0.1
+
+
 wins = []
 for m in re.finditer(r'<(section|video|div)\b([^>]*)>', h):
     a = m.group(2)
@@ -42,14 +58,19 @@ for m in re.finditer(r'<(section|video|div)\b([^>]*)>', h):
     cls = re.search(r'class="([^"]*)"', a)
     is_black = bool(cls and "blackout" in cls.group(1))
     if not src and not cid and not is_black:
-        inner = h[m.end():m.end() + 900]
+        # its own body only: the 900-char look-ahead used to read the NEXT element's src, so a designed
+        # <section class="clip ground"> was reported as a duplicate of the film cut after it (Galveston A5, 30 Oct 26)
+        close = re.search(r"</%s>" % re.escape(m.group(1)), h[m.end():m.end() + 900])
+        inner = h[m.end():m.end() + (close.start() if close else 900)]
         s2 = re.search(r'src="([^"]+)"', inner)
         src = s2
-    wins.append(dict(at=float(st.group(1)), dur=float(du.group(1)), tr=int(tr.group(1)),
+    wins.append(dict(at=float(st.group(1)), dur=float(du.group(1)), tr=int(tr.group(1)), cut_by=cut_by_ok(a),
                      name="[blackout]" if is_black else
-                          (cid.group(1) if cid else (src.group(1) if src else "?"))))
+                          (cid.group(1) if cid else (src.group(1) if src else
+                                                     "[" + ((re.search(r'\bid="([^"]+)"', a) or [None, "?"])[1]) + "]"))))
 
 pic = sorted([w for w in wins if w["tr"] in (1, 2)], key=lambda w: w["at"])
+
 
 # 1. picture coverage
 total = float(re.search(r'data-duration="([\d.]+)"', h).group(1))   # not rounded: 1050.9 rounded to 1051 invented a 0.1 s hole past the end
@@ -82,7 +103,7 @@ report("asset reuse <= 3", [(n, c) for n, c in uses.items() if c > 3],
        lambda x: f"{Path(x[0]).name} x{x[1]}")
 
 # 5. missing media
-miss = [w["name"] for w in t1 if not (ep / w["name"]).exists()]
+miss = [w["name"] for w in t1 if not w["name"].startswith("[") and not (ep / w["name"]).exists()]  # "[id]" = a designed section, no file
 report("media files exist", sorted(set(miss)))
 
 # 5b. duplicate element ids — hyperframes keys frame placement by id; a duplicate
@@ -288,6 +309,8 @@ for gid in sorted(mounted):
     for w in wins:
         if w["name"] != gid:
             continue
+        if w.get("cut_by"):
+            continue                      # built for the whole line, cut where Paul's clip takes it over
         if w["dur"] - tl_end > 4.0:
             overrun.append(("holds", gid, round(w["dur"], 1), round(tl_end, 1)))
         # the direction this check used to ignore entirely: a mount SHORTER than the
@@ -405,7 +428,8 @@ report("media probes succeeded", probe_failed, lambda x: f"{x[0]}: {x[1]}")
 
 # 9. long stills — owner 2026-08-12: stills are 3-6s with motion, "not a PowerPoint"
 long_still = [(w["at"], w["name"], w["dur"]) for w in t1
-              if w["dur"] > 6.0 and not w["name"].endswith(".mp4")]
+              if w["dur"] > 6.0 and not w["name"].startswith("[")  # a designed section or a blackout is not a still
+              and not w["name"].lower().endswith((".mp4", ".webm", ".mov", ".mkv"))]
 report("no still over 6s", long_still, lambda x: f"{x[0]}s {Path(x[1]).name} {x[2]}s")
 
 # 10. narration freshness (CLAUDE.md: "words.json must be younger than its wav") — ep3-tristate
@@ -437,8 +461,11 @@ for m in re.finditer(r'<audio\b[^>]*id="(nx-(?!ins)[^"]*)"[^>]*>', h):
     if wav_dur is None or wav_dur != wav_dur:  # nan = ffprobe failed
         stale.append((eid, "wav duration unreadable (ffprobe failed)"))
         continue
-    html_dur = float(du.group(1))
-    if abs(html_dur - wav_dur) > 0.1:
+    ms = re.search(r'data-media-start="([\d.]+)"', a)
+    html_dur = float(du.group(1)) + (float(ms.group(1)) if ms else 0.0)  # the window ends at media-start + duration into the wav
+    if html_dur < wav_dur and cut_by_ok(a):
+        pass                              # the line continues in Paul's clip; words.json is still checked below
+    elif abs(html_dur - wav_dur) > 0.1:
         stale.append((eid, f"data-duration {html_dur}s vs wav {wav_dur:.2f}s (diff {html_dur - wav_dur:+.2f}s)"))
     if words_p.exists():
         if words_p.stat().st_mtime < wav.stat().st_mtime - 0.001:
