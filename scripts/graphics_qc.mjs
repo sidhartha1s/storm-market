@@ -324,7 +324,9 @@ for (const f of files) {
   if (kineticRatio < 0.25) flags.push(`${(kineticRatio*100).toFixed(0)}% kinetic tweens`);
   if (avgElems < 12) flags.push(`${avgElems.toFixed(0)} elements on screen`);
   if (idleFrac > 0.6) flags.push(`${(idleFrac*100).toFixed(0)}% frozen`);
-  if (flags.length >= 3)
+  /* the wireframe test is for cards: an effects overlay with no text at all (Galveston's flying timbers, 30 Oct 26)
+     has no type tiers or gradient by design and is judged by the motion checks above instead */
+  if (flags.length >= 3 && maxTextNodes > 0)
     add(name, 'undesigned', `${flags.join(' · ')} — reads as a wireframe, not a designed card (mg-quickref)`);
   if (process.env.QC_STATS) console.log(`  [stats] ${name}: dur ${probe.duration.toFixed(0)}s cover ${maxCoverage} elems ${avgElems.toFixed(0)} tiers ${tierMax} kinetic ${(kineticRatio*100).toFixed(0)}% idle ${(idleFrac*100).toFixed(0)}% grad ${gradAny}`);
 }
