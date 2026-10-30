@@ -703,6 +703,48 @@ _rg = (S / "run_gates.py").read_text(encoding="utf-8")
 check("run_gates: build_srt.py --check runs right after lint_timeline.py",
       _rg.index('"lint_timeline.py",') < _rg.index('"build_srt.py --check"') < _rg.index('"narration_picture_check.py"'))
 
+# ===================================================================================
+# 12. sweep_episode.py — cut-by mounts, designed src-less sections, .webm cuts (30 Oct 26 finals)
+# ===================================================================================
+def cutby_ep(d, cut_by=True, paul_at=1.0):
+    # narration wav is 2.0 s, mounted for 1.0 s and cut where Paul's clip (ins-paul-1) takes the line over
+    ep = make_ep(Path(d), nx_dur=1.0, nx_wav_secs=2.0)
+    h = (ep / "index.html").read_text(encoding="utf-8")
+    cb = ' data-cut-by="ins-paul-1"' if cut_by else ""
+    h = h.replace('data-start="0" data-duration="1.0"></audio>', f'data-start="0" data-duration="1.0"{cb}></audio>')
+    h = h.replace("</section>", f'<video id="ins-paul-1" src="media/bg.mp4" data-start="{paul_at}" data-duration="1" '
+                                'data-track-index="2" data-volume="1"></video>\n</section>')
+    (ep / "index.html").write_text(h, encoding="utf-8")
+    return ep
+
+with tempfile.TemporaryDirectory() as d:
+    code, out = run("sweep_episode.py", cutby_ep(d))
+    check("sweep_episode: a data-cut-by narration mount ending where Paul's clip starts is fresh",
+          "FAIL narration freshness" not in out, out[-600:])
+with tempfile.TemporaryDirectory() as d:
+    code, out = run("sweep_episode.py", cutby_ep(d, cut_by=False))
+    check("sweep_episode: the same short mount without data-cut-by is stale", "FAIL narration freshness" in out, out[-600:])
+with tempfile.TemporaryDirectory() as d:
+    code, out = run("sweep_episode.py", cutby_ep(d, paul_at=1.5))
+    check("sweep_episode: a data-cut-by whose clip starts 0.5 s after the mount ends is stale",
+          "FAIL narration freshness" in out, out[-600:])
+
+with tempfile.TemporaryDirectory() as d:
+    # a designed <section class="clip ground"> with no src of its own, 8 s long, followed by a .webm film cut of 8 s:
+    # neither is a still, the section is not a missing file, and the section is not a duplicate of the film after it
+    ep = make_ep(Path(d), nx_dur=1.0, nx_wav_secs=1.0, comp_window=17.0)
+    h = (ep / "index.html").read_text(encoding="utf-8")
+    h = h.replace("</section>", '<section id="c-a5-ground" class="clip ground" data-start="0" data-duration="8" '
+                                'data-track-index="2"><div class="sky"></div></section>\n'
+                                '<video src="media/film.webm" data-start="8" data-duration="8" data-track-index="2" muted></video>\n'
+                                '<video src="media/film.webm" data-start="16" data-duration="1" data-track-index="2" muted></video>\n</section>')
+    (ep / "index.html").write_text(h, encoding="utf-8")
+    (ep / "media" / "film.webm").write_bytes(BG_MP4_BYTES)
+    code, out = run("sweep_episode.py", ep)
+    check("sweep_episode: a src-less designed section is not a still, a missing file or a duplicate of the next cut",
+          "[c-a5-ground]" not in out.split("FAIL media files exist")[-1][:200] and "FAIL no still over 6s" not in out
+          and "FAIL adjacent duplicate cuts" not in out, out[-800:])
+
 print()
 if FAILS:
     print(f"test_gates: {len(FAILS)} FAILED: {FAILS}")
