@@ -10,8 +10,11 @@ set S=C:\Users\Sidhartha\Automation Projects\storm-market
 set PY=C:\Users\Sidhartha\AppData\Local\Programs\Python\Python312\python.exe
 set PATH=C:\Program Files\Git\bin;%PATH%
 set LOG=%TEMP%\final-30oct-asus.log
-echo ===== final batch start %date% %time% >> "%LOG%"
-for %%e in (ep-buffalo-2022 ep-galveston-1900 ep-appalachian-1950) do call :one %%e
+REM optional arguments name the episodes to run (a relaunch of one episode); none = all three
+set EPS=%*
+if "%EPS%"=="" set EPS=ep-buffalo-2022 ep-galveston-1900 ep-appalachian-1950
+echo ===== final batch start %date% %time% [%EPS%] >> "%LOG%"
+for %%e in (%EPS%) do call :one %%e
 echo ===== final batch end %date% %time% >> "%LOG%"
 exit /b 0
 
