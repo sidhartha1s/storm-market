@@ -32,8 +32,13 @@ ASKED = re.compile(r"GPU: (.+)")  # hyperframes' plan line: "encoder GPU" = --gp
 BROWSER = re.compile(r"browserGpuMode probe .*")  # names the WebGL renderer; one or more per render
 
 
-def launch_refusal(mode, workers, free_gb):
-    """Reason to refuse before launch, or None."""
+def launch_refusal(mode, workers, free_gb, override=None):
+    """Reason to refuse before launch, or None. `override` (env STREAM_GATE_OVERRIDE, the owner's words and date)
+    skips only this pre-launch refusal; the watch still stops a render whose gate line says frames go to disk
+    (owner 30 Oct 26: "2 fucking workers" on the ASUS with 67 GB free; render by act caps disk capture to one act)."""
+    if override:
+        print(f"[OVERRIDE] stream_gate launch refusal skipped: {override}")
+        return None
     if mode == "full" and workers > 1 and free_gb < MIN_FREE_GB_MULTI:
         return (f"full render at {workers} workers with {free_gb:.1f} GB free: hyperframes may skip streaming "
                 f"(multi_worker) and capture to disk (Camille needed 75.0 GB). Set RENDER_WORKERS=1 or free "
@@ -130,7 +135,7 @@ def watch(log, marker, out):
 if __name__ == "__main__":
     a = sys.argv[1:]
     if a[:1] == ["launch"] and len(a) == 4:
-        why = launch_refusal(a[1], int(a[2]), shutil.disk_usage(a[3]).free / 1e9)
+        why = launch_refusal(a[1], int(a[2]), shutil.disk_usage(a[3]).free / 1e9, os.environ.get("STREAM_GATE_OVERRIDE"))
         print(f"[stream_gate] REFUSING TO RENDER: {why}" if why else "[stream_gate] OK before launch")
         sys.exit(1 if why else 0)
     if a[:1] == ["watch"] and len(a) == 4:
