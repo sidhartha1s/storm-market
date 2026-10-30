@@ -181,6 +181,67 @@ def _frozen_gap(mounts, episode=None):
         return f"{len(frozen)} pip clip(s) barely move, need {FACE_MOTION_MIN:g}: " + ", ".join(frozen)
 
 
+# Paul's voice (owner 24 Oct 26: "audios of Omni versus the normal narration is somewhat different. The pitch is different";
+# "you can change that to the cloned voice, right?"). scripts/paul_voice.py converts every mounted clip and writes a
+# sidecar; three episodes still rendered Omni's own voice on 30 Oct 26 because nothing checked. Measured on Buffalo
+# ins-paul-1: Omni's 1 to 4 kHz band sits 5.3 dB above the narration median, the converted file 1.6 dB.
+VOICE_LEVEL_DB = 2.5
+VOICE_COLOUR_DB = 3.0
+
+
+def mean_db(path):
+    out = subprocess.run(["ffmpeg", "-i", str(path), "-af", "volumedetect", "-f", "null", "-"], capture_output=True, text=True).stderr
+    m = re.search(r"mean_volume: ([-\d.]+)", out)
+    return float(m.group(1)) if m else None
+
+
+def colour_db(path, sr=16000):
+    """Energy of 1 to 4 kHz over 0 to 1 kHz, in dB (the voice colour the owner hears as pitch)."""
+    import numpy as np
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), "-ac", "1", "-ar", str(sr), "-f", "f32le", "-"], capture_output=True, check=True).stdout
+    x = np.frombuffer(raw, dtype=np.float32)
+    spec = np.abs(np.fft.rfft(x * np.hanning(len(x)))) ** 2
+    f = np.fft.rfftfreq(len(x), 1 / sr)
+    return 10 * np.log10(spec[(f >= 1000) & (f < 4000)].sum() / spec[(f >= 0) & (f < 1000)].sum())
+
+
+def _voice_gap(mounts, episode=None):
+    if episode is None:
+        return None
+    import json
+    import yaml
+    clips = [a for t, a in mounts if t == "video" and re.fullmatch(r"ins-paul-\d+", a.get("id", ""))]
+    if not clips:
+        return None
+    ref_md5 = yaml.safe_load((episode.parent.parent / "config.yaml").read_text(encoding="utf-8"))["external"]["voice_ref_md5"]
+    wavs = sorted((episode / "audio").glob("*.wav"))
+    if not wavs:
+        return "no narration wavs to measure the clips against"
+    levels = sorted(v for v in (mean_db(w) for w in wavs) if v is not None)
+    nar_level = levels[len(levels) // 2]
+    colours = sorted(colour_db(w) for w in wavs[:: max(1, len(wavs) // 12)])  # about 12 wavs: the colour is stable, the FFT is not free
+    nar_colour = colours[len(colours) // 2]
+    bad = []
+    for a in clips:
+        src = episode / a.get("src", "")
+        if not re.search(r"-vc\d*\.mp4$", src.name):
+            bad.append(f"{a['id']} mounts {src.name}, not a -vc file"); continue
+        side = src.with_name(src.name + ".vc.json")
+        if not side.is_file():
+            bad.append(f"{a['id']} has no {side.name} (paul_voice.py never ran on it)"); continue
+        if json.loads(side.read_text(encoding="utf-8")).get("voice_ref_md5") != ref_md5:
+            bad.append(f"{a['id']} was converted from another voice_ref (sidecar md5 differs)"); continue
+        if not src.is_file():
+            continue  # a missing file is sweep_episode.py's finding
+        lv, col = mean_db(src), colour_db(src)
+        if lv is None or abs(lv - nar_level) > VOICE_LEVEL_DB:
+            bad.append(f"{a['id']} level {lv:.1f} dB vs narration {nar_level:.1f} (limit {VOICE_LEVEL_DB})")
+        elif abs(col - nar_colour) > VOICE_COLOUR_DB:
+            bad.append(f"{a['id']} colour {col:.1f} dB vs narration {nar_colour:.1f} (limit {VOICE_COLOUR_DB}): still Omni's voice")
+    if bad:
+        return f"{len(bad)} of {len(clips)} Paul clips not in the narrator's voice: " + "; ".join(bad)
+
+
 LAYERS = (
     ("presenter corner circle", _circle_gap,
      "mg-quickref.md 'Corner circle': Paul's face speaking the narration, on through the whole "
@@ -192,6 +253,9 @@ LAYERS = (
      "mg-quickref.md 'Paul on screen': Full frame (Flow/Omni), about 1 min: 6 clips of 10 s"),
     ("moving presenter face", _frozen_gap,
      "mg-quickref.md 'Corner circle': the circle is FlashHead's face speaking, never a still stand-in"),
+    ("Paul's voice", _voice_gap,
+     "mg-quickref.md 'Paul on screen' clip rules: every ins-paul clip mounts its -vc file from scripts/paul_voice.py, "
+     "at the narration's level and colour"),
 )
 
 
@@ -207,7 +271,7 @@ def layer_refusal(episode):
     """None if every layer is mounted, else the exit code preflight should use."""
     missing = missing_layers(episode.name, (episode / "index.html").read_text(encoding="utf-8"), episode)
     if not missing:
-        print("[layers] OK: circle (moving), bed and Paul's clips are mounted.")
+        print("[layers] OK: circle (moving), bed, Paul's clips and Paul's voice are mounted.")
         return None
     for name, gap, rule in missing:
         print(f"[layers] MISSING {name}: {gap}. Rule: {rule}", file=sys.stderr)
