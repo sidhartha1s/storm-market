@@ -1,0 +1,37 @@
+# ep-buffalo-2022 · a2 section (Friday morning) · motion-graphics list
+
+Section `a2` = A2-S1, S2, S3, S4, S5, S7, S8, S9, S10 (`acts/a2.md`, spliced into `edit_script.md`; there is no A2-S6). Voiced and locked (`audio/a2-s<n>.wav`, `audio/a2-s<n>.words.json`). No segment in a2 is "Paul on camera", so no popfig for a Paul clip.
+
+Cue times in every brief are seconds from the START OF THAT SEGMENT's wav. Where a comp starts later than its segment (g-a2-2, g-a2-6), the brief gives both the segment time and the comp-local time; the orchestrator mounts the host at segment start + the stated offset.
+
+| comp id | segments | what it shows | depth | builder model | library exemplar to start from | footage under it |
+|---|---|---|---|---|---|---|
+| `g-a2-1-log-724` | A2-S1 0.00 to 8.60 | The intro's airport log card returns, R1 "7:24 AM · 38°F · RAIN · 5 MI · 24 MPH" builds cell by cell on the voice, then the card exits so the stock beat reads | standard | Sonnet 5.5, high | built `compositions/g-intro-3-asos-log.html` (same card, same px) | none: full-frame designed ground (stock beat follows it, 8.60 to 19.40, no comp) |
+| `g-a2-2-warning-clock` | A2-S1 19.40 to 22.84 | Full-frame clock: minute hand sweeps 7:00 to 7:24, "WARNING IN EFFECT · 24 MIN" | standard | Sonnet 5.5, high | chip of built `compositions/g-intro-2-toll-chips.html` + clock icon of built `compositions/g-intro-4-morning-map.html` (ban chip clock) | none: full-frame designed ground |
+| `g-a2-3-log-806` | A2-S2 | Log card ticks to R2 "8:06 AM · SNOW · 1/2 MI · 60 MPH"; a gust gauge under the GUST column swings 24 to 60 | standard | Sonnet 5.5, high | `g-a2-1-log-724` (build first) | none: full-frame designed ground |
+| `g-a2-4-flash-freeze` | A2-S3 | Road cross-section explainer: overnight rain film, air temperature falling past 32°F behind the front, water turns to ice, snow lands and smears, "FLASH FREEZE" | deep | Opus 5.5, high | `references/editing-patterns/ep2-met-explainer.html` (layered physical diagram) | none: full-frame designed ground |
+| `g-a2-5-log-839` | A2-S4 0.00 to 9.20 | Log card ticks to R3 "8:39 AM · HEAVY SNOW, BLOWING SNOW · 1/4 MI · 67 MPH"; gauge 60 to 67 | standard | Sonnet 5.5, high | `g-a2-3-log-806` (copy) | none: full-frame designed ground |
+| `g-a2-6-quarter-mile` | A2-S4 9.20 to 14.16 | Driver's-eye road at highway speed, a "1/4 MI" marker dissolving into white, stopwatch counting to "15 SEC" | deep | Opus 5.5, high | `library/inhouse/moves/demo.html` (moves.js camera rig, particles) | none: full-frame designed ground |
+| `g-a2-7-temp-line` | A2-S5 | Temperature line 7:00 AM to 1:00 PM, 38°F at 7:24 down to 12°F at 12:54, red 32°F line crossed at about 8:14, chips "12°F · 12:54 PM", "DOWN 26°F IN ~5.5 HRS", marker "LEFT FOR WORK AT 7:00" | standard | Sonnet 5.5, high | official `mk-line-graph` (`library/official/`, catalog-index.json) retuned to tokens | none: full-frame designed ground |
+| `g-a2-8-officials-clock` | A2-S7 | FAMILY BASE. Two lanes on one clock (5:30 to 10:00 AM): the weather lane (7:24, 8:06, 8:39 markers) and "THE OFFICIALS' CLOCK" under it; State of Emergency card at 6:00; governor's release cite card; dashed "NO ERIE COUNTY DRIVING BAN" slot; NYU review cite card "wait-and-see" | deep | Opus 5.5, high | `library/inhouse/stat-timeline.html` (horizontal chronology) + beige cite card of `library/inhouse/quote-card.html` | none: full-frame designed ground |
+| `g-a2-9-ban-bracket` | A2-S8 | On the base: red "DRIVING BAN · ERIE COUNTY · 9:30 AM" card, "84 MIN" bracket back to 8:06, Poloncarz lower third, "POSTED 8:50 AM · WKBW LIVE BLOG" chip and "40 MIN" span, "SNOW BAND EXPECTED · 10 AM" marker, 8:15 "BELOW 32°F" marker, "LEFT AT 7:00" marker | deep | Opus 5.5, high | `g-a2-8-officials-clock` (build first) | none: full-frame designed ground |
+| `g-a2-10-blame-quote` | A2-S9 | Popfig "5 DAYS LATER", then the beige quote card "If anyone is to be blamed, you can blame me." with lower third "MARK POLONCARZ · 28 DEC 2022", then the review finding "INADEQUATELY CONVEYED" | standard | Sonnet 5.5, high | `library/inhouse/quote-card.html` + `.popfig` of `references/editing-patterns/ep6-glasscard-popfig-bfmg.html` | none: full-frame designed ground |
+| `g-a2-11-both-lanes` | A2-S10 | Both lanes at full frame, a white sweep from 9:30 back to 7:00, chip "ALREADY ON THE ROAD", 9:30 weather readout "ICE · BLOWING SNOW / WIND STILL BUILDING", slow push and fade toward the act blackout | standard | Sonnet 5.5, high | `g-a2-9-ban-bracket` end state (copy) | none: full-frame designed ground |
+
+Count: 11 graphics. Deep 4 (Opus 5.5, high): g-a2-4, g-a2-6, g-a2-8, g-a2-9. Standard 7 (Sonnet 5.5, high): g-a2-1, 2, 3, 5, 7, 10, 11.
+Build order: g-a2-1 first (copy of g-intro-3; send it alone for a full-size read), then g-a2-3, then g-a2-5. g-a2-8 first of the lane family (send it alone for a full-size read), then g-a2-9, then g-a2-11.
+
+## Where these briefs depart from the Picture lines (orchestrator decisions to confirm or overrule)
+1. A2-S1: the Picture puts the log card (which names BUFFALO AIRPORT and FRIDAY · DEC 23) and the warning chip over stock. `references/mg-brief-template.md` 7a item 7 forbids a place/date/event label over stock. So the card and the chip are full-frame designed scenes, and the stock (`media/candidates/a2/A2-S1_c1_rainy-street-windshield.mp4`, picks.md) plays alone from 8.60 to 19.40 under the "wet December morning" lines.
+2. Gusts in MPH, not knots (Picture strings say "G21", "G52 KT", "G58 KT"): the intro card already shows MPH and the voice speaks miles; one terminology per project. Values from `factcheck/a2-r1.md` rows 1, 5, 13.
+3. A2-S2 chip "GUSTS ~60 MPH" dropped: the R2 GUST cell "60 MPH" already carries it (dup-fact rule; same call g-intro-4 made). The gauge carries no numeral.
+4. A2-S5 chip "−26°F IN ~5.5 HRS" reworded "DOWN 26°F IN ~5.5 HRS": "−26°F" reads as a temperature of minus 26.
+5. A2-S7 "Governor's release page as a screenshot card": no capture exists (`media/candidates/a2/picks.md`). Briefed as a typeset beige cite card of the 23 Dec release sentence, verbatim from `factcheck/a2-r1.md` row 25.
+6. A2-S7 source line "Office of the Governor, 23 and 24 Dec 2022" widened to "22 to 24 Dec 2022": the truck ban and expressway closures it now shows come from the 22 Dec release (`factcheck/a2-r1.md` rows 27, 28).
+7. A2-S10 "weather lane at 9:30 reads 1/4 MI · G58 KT · TEMP FALLING": there is no 9:30 observation in research, and by 8:47 visibility was already 1/8 mi (`factcheck/a2-r1.md` row 14), so 1/4 MI at 9:30 would be wrong. The readout uses the voice's words instead: "ICE · BLOWING SNOW" / "WIND STILL BUILDING" (row 44).
+
+## Open items for the orchestrator (not the builders')
+1. "5 MI" (R1 visibility, 7:24) has no research or fact-check row (same gap as intro open item 4). Add it to `research/nws.md` 2.2 or tell g-a2-1/3/5 to show "—" in that cell. Every other figure on screen has a row (named in each brief's section 1).
+2. A2-S1 stock: the pick is a rainy windshield, not "a car backing out of a wet driveway at dawn"; it is illustration only (no label sits over it after change 1).
+3. The S1 stock beat (8.60 to 19.40, 10.8 s on one clip) needs index-side cadence (a second clip, c2 is the backup) under `sweep_episode.py` check 9.
+4. Lane family x scale (5 px per minute from 5:30 AM at x 200) and every marker px are in `g-a2-8-officials-clock.md` section 3; g-a2-9 and g-a2-11 cite it. Do not let a builder retune it alone.

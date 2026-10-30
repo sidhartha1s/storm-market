@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4-9-guard-tally (A4-S8, standard): one fixed-width glass counter card, three value/label pairs one at a time:
+  124 RESCUED FROM CARS, 3,755 HOUSEHOLDS CHECKED, 22 RECOVERED, plus the DVIDS source pill.
+  Overlay on the DVIDS 7576033 still (D5, mounted by the orchestrator on a lower track). Comp duration 18.20 s.
+  Cue times are seconds from the START of A4-S8 (audio/a4-s8.words.json).
+  Card sits at left 110 / bottom 110, clear of the presenter corner (x >= 1600, y >= 680).
+  If the faces at the door are covered at 8.5 s, move .gt-card to left:auto; right:400px.
+  22 is grey and static: a loss, no count-up, no pop, no colour flash.
+-->
+<template>
+<style>
+  #g-a4-9-guard-tally-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  #gt-stack { position:absolute; inset:0; }
+  .gt-card { position:absolute; inset:auto; left:110px; bottom:110px; width:700px; height:132px; box-sizing:border-box;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden; }
+  .gt-pair { position:absolute; left:34px; top:22px; right:34px; opacity:0; visibility:hidden; }
+  .gt-row { display:flex; flex-direction:row; align-items:baseline; white-space:nowrap; }
+  .gt-val { display:block; font-family:'Courier New', monospace; font-weight:700; font-size:84px; line-height:1; color:#e8c56a; margin-right:20px; }
+  .gt-grey { color:#c8d3e0; }
+  .gt-lab { display:block; font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:1; color:#dfe7ee; letter-spacing:1px; }
+  .gt-tick { position:absolute; left:0; top:92px; height:3px; background:#e8c56a; transform-origin:left center; }
+  .gt-tick-grey { background:#93a3b2; }
+  .gt-src { position:absolute; inset:auto; left:110px; bottom:54px; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-9-guard-tally-root" data-composition-id="g-a4-9-guard-tally" data-width="1920" data-height="1080">
+  <div id="gt-stack">
+    <div class="gt-card" id="gt-card">
+      <div class="gt-pair" id="gt-p1"><div class="gt-row"><span class="gt-val" id="gt-v1">124</span><span class="gt-lab" id="gt-l1">RESCUED FROM CARS</span></div><div class="gt-tick" id="gt-t1" style="width:152px"></div></div>
+      <div class="gt-pair" id="gt-p2"><div class="gt-row"><span class="gt-val" id="gt-v2">3,755</span><span class="gt-lab" id="gt-l2">HOUSEHOLDS CHECKED</span></div><div class="gt-tick" id="gt-t2" style="width:252px"></div></div>
+      <div class="gt-pair" id="gt-p3"><div class="gt-row"><span class="gt-val gt-grey" id="gt-v3">22</span><span class="gt-lab" id="gt-l3">RECOVERED</span></div><div class="gt-tick gt-tick-grey" id="gt-t3" style="width:101px"></div></div>
+    </div>
+    <div class="gt-src" id="gt-src">New York National Guard, DVIDS, 3 Jan 2023</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#gt-card", "#gt-src", "#gt-p1", "#gt-p2", "#gt-p3"], { autoAlpha: 0 }, 0);
+  tl.set(["#gt-t1", "#gt-t2"], { scaleX: 0 }, 0);
+
+  /* whole-window float so something always moves: 13 x 1.4 s = 18.2 s */
+  tl.fromTo("#gt-stack", { y: 0 }, { y: -3, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 12 }, 0);
+
+  /* source pill. "New" @1.46 */
+  tl.fromTo("#gt-src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.46);
+
+  /* P1 + card in. "rescued" @3.14, "124" @3.52, lands 3.95 */
+  tl.fromTo("#gt-card", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 3.14);
+  tl.set("#gt-p1", { autoAlpha: 1 }, 3.14);
+  const c1 = { v: 1 };
+  tl.fromTo(c1, { v: 1 }, { v: 124, duration: 0.81, ease: "power4.out", onUpdate: function() { /* lands 3.95 */
+    const el = document.getElementById("gt-v1"); if (el) el.textContent = Math.round(c1.v);
+  } }, 3.14);
+  tl.fromTo("#gt-t1", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 3.14);
+
+  /* P1 out, P2 in. "checked" @6.60, "3,755" @7.10 to 7.40, lands 7.85 */
+  tl.to("#gt-p1", { autoAlpha: 0, y: -12, duration: 0.25, ease: "power2.in" }, 6.60);
+  tl.set("#gt-p2", { autoAlpha: 1 }, 6.60);
+  tl.fromTo("#gt-p2", { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.25, ease: "power2.out" }, 6.60);
+  const c2 = { v: 1 };
+  tl.fromTo(c2, { v: 1 }, { v: 3755, duration: 1.25, ease: "power4.out", onUpdate: function() { /* lands 7.85, comma kept */
+    const el = document.getElementById("gt-v2"); if (el) el.textContent = Math.round(c2.v).toLocaleString("en-US");
+  } }, 6.60);
+  tl.fromTo("#gt-t2", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 6.60);
+
+  /* knock pulse, twice. "door" @10.08 */
+  tl.to("#gt-card", { scale: 1.02, transformOrigin: "50% 50%", duration: 0.15, ease: "sine.out" }, 10.08);
+  tl.to("#gt-card", { scale: 1, duration: 0.15, ease: "sine.in" }, 10.23);
+  tl.to("#gt-card", { scale: 1.02, transformOrigin: "50% 50%", duration: 0.15, ease: "sine.out" }, 10.48);
+  tl.to("#gt-card", { scale: 1, duration: 0.15, ease: "sine.in" }, 10.63);
+
+  /* P2 out after "job." @14.44; card stays, empty slot until 15.56 */
+  tl.to("#gt-p2", { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 14.80);
+
+  /* P3 in. "recovered" @15.56 (fade only: no count, no pop, no flash) */
+  tl.fromTo("#gt-p3", { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power1.out" }, 15.56);
+
+  /* card + pill out after "lives." @17.02; ends on host end 18.20 */
+  tl.to(["#gt-card", "#gt-src"], { x: -80, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 17.60);
+
+  window.__timelines["g-a4-9-guard-tally"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!--
+  g-a2-7-temp-line · A2-S5 · full-frame temperature line, 14.40 s.
+  Brief: briefs/a2/g-a2-7-temp-line.md. Datum: x = 260 + min after 7:00 x 1040/360 ; y = 260 + (40 - T) x 16.
+  Point px, crossing x and path lengths are computed in the script from those formulas (shapes get their attributes there).
+  Cues: seconds from A2-S5 start (audio/a2-s5.words.json), spoken time in each tween comment.
+  Departure from the brief: "32°F" label sits at left 1326 (brief: 1312) because the drop arrow is at x 1312 and would cross the label.
+-->
+<template>
+<style>
+  #g-a2-7-temp-line-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  #tl7-layer { position:absolute; inset:0; }
+  #tl7-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  .tl7-h { opacity:0; visibility:hidden; }
+  .tl7-t { font-family: Arial, sans-serif; font-weight:700; }
+  .tl7-tick { font-size:19px; fill:#93a3b2; }
+  #tl7-title { position:absolute; left:110px; top:110px; font-size:22px; line-height:26px; font-weight:700;
+    letter-spacing:6px; color:#93a3b2; white-space:nowrap; }
+  #tl7-source { position:absolute; left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400;
+    color:#c8d3e0; white-space:nowrap; }
+</style>
+<div id="g-a2-7-temp-line-root" data-composition-id="g-a2-7-temp-line" data-width="1920" data-height="1080">
+  <div id="tl7-layer">
+    <div id="tl7-title">BUFFALO AIRPORT AIR TEMPERATURE · FRI DEC 23</div>
+    <div id="tl7-source">Buffalo airport ASOS, IEM archive</div>
+    <svg id="tl7-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="tl7-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1080">
+          <stop id="tl7-gs1" offset="0.35926" stop-color="#f2f5f8"/>
+          <stop id="tl7-gs2" offset="0.35926" stop-color="#7fb2e5"/>
+        </linearGradient>
+        <mask id="tl7-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1080">
+          <path id="tl7-maskpath" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="butt"/>
+        </mask>
+      </defs>
+
+      <!-- axes and ticks (visible from frame 0) -->
+      <line x1="260" y1="740" x2="1300" y2="740" stroke="rgba(255,255,255,.25)" stroke-width="1"/>
+      <line x1="260" y1="260" x2="260" y2="740" stroke="rgba(255,255,255,.25)" stroke-width="1"/>
+      <g stroke="rgba(255,255,255,.25)" stroke-width="1">
+        <line x1="260" y1="740" x2="260" y2="746"/><line x1="433.3" y1="740" x2="433.3" y2="746"/>
+        <line x1="606.7" y1="740" x2="606.7" y2="746"/><line x1="780" y1="740" x2="780" y2="746"/>
+        <line x1="953.3" y1="740" x2="953.3" y2="746"/><line x1="1126.7" y1="740" x2="1126.7" y2="746"/>
+        <line x1="1300" y1="740" x2="1300" y2="746"/>
+        <line x1="254" y1="260" x2="260" y2="260"/><line x1="254" y1="420" x2="260" y2="420"/>
+        <line x1="254" y1="580" x2="260" y2="580"/><line x1="254" y1="740" x2="260" y2="740"/>
+      </g>
+      <g class="tl7-t tl7-tick" text-anchor="middle">
+        <text x="260" y="775">7 AM</text><text x="433.3" y="775">8</text><text x="606.7" y="775">9</text>
+        <text x="780" y="775">10</text><text x="953.3" y="775">11</text><text x="1126.7" y="775">12 PM</text>
+        <text x="1300" y="775">1 PM</text>
+      </g>
+      <g class="tl7-t tl7-tick" text-anchor="end">
+        <text x="244" y="267">40°F</text><text x="244" y="427">30°F</text>
+        <text x="244" y="587">20°F</text><text x="244" y="747">10°F</text>
+      </g>
+
+      <!-- freezing line (visible from frame 0) -->
+      <line id="tl7-frz" x1="260" y1="388" x2="1300" y2="388" stroke="#c0392b" stroke-width="2"/>
+      <text class="tl7-t" x="1326" y="396" font-size="22" fill="#c0392b">32°F</text>
+
+      <!-- 38°F reference, commute marker -->
+      <line id="tl7-ref" class="tl7-h" stroke="rgba(216,161,58,.5)" stroke-width="1" stroke-dasharray="6 6"/>
+      <line id="tl7-commute" class="tl7-h" x1="260" x2="260" stroke="#e8c56a" stroke-width="4" stroke-dasharray="10 8"/>
+
+      <!-- data line: solid part, dashed part under a draw mask -->
+      <path id="tl7-solid" class="tl7-h" fill="none" stroke="url(#tl7-grad)" stroke-width="4" stroke-linejoin="round"/>
+      <path id="tl7-dashed" class="tl7-h" fill="none" stroke="url(#tl7-grad)" stroke-width="4" stroke-dasharray="14 10" mask="url(#tl7-mask)"/>
+      <path id="tl7-glow" class="tl7-h" fill="none" stroke="#e8c56a" stroke-width="2" stroke-linejoin="round"/>
+
+      <!-- dots, ring -->
+      <circle id="tl7-d1" class="tl7-h" r="8" fill="#f2f5f8"/>
+      <circle id="tl7-d2" class="tl7-h" r="8" fill="#f2f5f8"/>
+      <circle id="tl7-d3" class="tl7-h" r="8" fill="#f2f5f8"/>
+      <circle id="tl7-d4" class="tl7-h" r="8" fill="#f2f5f8"/>
+      <circle id="tl7-ring" class="tl7-h" r="14" fill="none" stroke="#c0392b" stroke-width="3"/>
+      <circle id="tl7-pulse" class="tl7-h" r="14" fill="none" stroke="#c0392b" stroke-width="3"/>
+
+      <!-- drop arrow -->
+      <line id="tl7-arrow" class="tl7-h" x1="1312" y1="292" x2="1312" stroke="#d8a13a" stroke-width="3"/>
+      <polygon id="tl7-head" class="tl7-h" points="1312,708 1306,696 1318,696" fill="#d8a13a"/>
+
+      <!-- labels (pre-authored, toggled) -->
+      <text id="tl7-start" class="tl7-t tl7-h" x="346" y="268" font-size="22" fill="#dfe7ee">38°F · 7:24 AM</text>
+      <text id="tl7-commutelab" class="tl7-t tl7-h" x="270" y="221" font-size="22" fill="#e8c56a">LEFT FOR WORK AT 7:00</text>
+      <text id="tl7-down" class="tl7-t tl7-h" x="1340" y="486" font-size="52" font-weight="900" fill="#f2f5f8" style="font-family:'Arial Black',Arial,sans-serif">DOWN 26°F</text>
+      <text id="tl7-hrs" class="tl7-t tl7-h" x="1340" y="530" font-size="26" fill="#dfe7ee">IN ~5.5 HRS</text>
+      <text id="tl7-end" class="tl7-t tl7-h" data-overlap-ok="one label: the text node and its own two tspans (12F, time) are the same pixels" x="1340" y="722"><tspan font-size="38" font-weight="900" fill="#7fb2e5" style="font-family:'Arial Black',Arial,sans-serif">12°F</tspan><tspan dx="10" font-size="22" fill="#dfe7ee">· 12:54 PM</tspan></text>
+    </svg>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const $ = (id) => document.getElementById("tl7-" + id);
+  const X = (min) => 260 + min * 1040 / 360;          // minutes after 7:00
+  const Y = (t) => 260 + (40 - t) * 16;               // deg F
+  const set = (el, o) => { for (const k in o) el.setAttribute(k, o[k]); };
+
+  // data points: 7:24 38F, 8:06 33.0F, 8:39 28.9F, 12:54 12F
+  const P = [[X(24), Y(38)], [X(66), Y(33.0)], [X(99), Y(28.9)], [X(354), Y(12)]];
+  const cx = X(66 + 33 * (33.0 - 32) / (33.0 - 28.9)), cy = Y(32);   // 8:14 crossing
+  const len = (a, b) => Math.hypot(b[0] - a[0], b[1] - a[1]);
+  const L1 = len(P[0], P[1]), L2 = len(P[1], P[2]);
+  const Ls = Math.ceil(L1 + L2) + 1, Ld = Math.ceil(len(P[2], P[3])) + 1;
+  const Lg = Math.ceil(len(P[0], P[1]) + Math.hypot(cx - P[1][0], cy - P[1][1])) + 1;
+
+  set($("solid"), { d: `M${P[0][0]},${P[0][1]} L${P[1][0]},${P[1][1]} L${P[2][0]},${P[2][1]}`, "stroke-dasharray": Ls, "stroke-dashoffset": Ls });
+  set($("dashed"), { d: `M${P[2][0]},${P[2][1]} L${P[3][0]},${P[3][1]}` });
+  set($("maskpath"), { d: `M${P[2][0]},${P[2][1]} L${P[3][0]},${P[3][1]}`, "stroke-dasharray": Ld, "stroke-dashoffset": Ld });
+  set($("glow"), { d: `M${P[0][0]},${P[0][1]} L${P[1][0]},${P[1][1]} L${cx},${cy}`, "stroke-dasharray": Lg, "stroke-dashoffset": Lg });
+  [0, 1, 2, 3].forEach((i) => set($("d" + (i + 1)), { cx: P[i][0], cy: P[i][1] }));
+  set($("ring"), { cx: cx, cy: cy }); set($("pulse"), { cx: cx, cy: cy });
+  set($("ref"), { x1: P[0][0], y1: Y(38), x2: P[0][0], y2: Y(38) });
+  set($("arrow"), { y2: Y(38) });
+  set($("commute"), { y1: 260, y2: 260 });
+
+  const tl = gsap.timeline({ paused: true });
+  const dotAt = (i, t) => {
+    tl.fromTo($("d" + i), { scale: 0, autoAlpha: 0, svgOrigin: P[i - 1][0] + " " + P[i - 1][1] },
+      { scale: 1, autoAlpha: 1, duration: 0.3, ease: "back.out(2)" }, t);
+  };
+
+  /* temperature @0.00 (cue 0.20): first dot and start label */
+  dotAt(1, 0.2);
+  tl.fromTo($("start"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.2);
+
+  /* falling @0.78: solid line draws 0.78 -> 1.40, dots pop as the head passes */
+  tl.set($("solid"), { autoAlpha: 1 }, 0.78);
+  tl.to($("solid"), { strokeDashoffset: 0, duration: 0.62, ease: "none" }, 0.78);
+  dotAt(2, 0.78 + 0.62 * L1 / (L1 + L2));
+  dotAt(3, 1.40);
+  /* crossing ring pulses from 1.10 (finite repeats, to 14.3 s) */
+  tl.set($("ring"), { autoAlpha: 1 }, 1.10);
+  tl.fromTo($("pulse"), { scale: 1, autoAlpha: 0.7, svgOrigin: cx + " " + cy },
+    { scale: 1.6, autoAlpha: 0, duration: 1.2, ease: "power1.out", repeat: 10 }, 1.10);
+
+  /* all morning. By @1.40: dashed part draws to 12:54 (mask keeps the dash pattern) */
+  tl.set($("dashed"), { autoAlpha: 1 }, 1.40);
+  tl.to($("maskpath"), { strokeDashoffset: 0, duration: 1.12, ease: "power1.inOut" }, 1.40);
+  /* 1254 @2.52 */
+  dotAt(4, 2.52);
+
+  /* 12 @5.42: end label */
+  tl.fromTo($("end"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.35, ease: "power3.out" }, 5.42);
+
+  /* 26 @7.04: 38F reference draws, arrow draws, DOWN 26F lands */
+  tl.set($("ref"), { autoAlpha: 1 }, 7.04);
+  tl.to($("ref"), { attr: { x2: 1312 }, duration: 0.4, ease: "power2.out" }, 7.04);
+  tl.set($("arrow"), { autoAlpha: 1 }, 7.04);
+  tl.to($("arrow"), { attr: { y2: 700 }, duration: 0.5, ease: "power2.in" }, 7.04);
+  tl.set($("head"), { autoAlpha: 1 }, 7.54);
+  tl.to($("head"), { y: 3, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 9 }, 7.54);
+  tl.fromTo($("down"), { autoAlpha: 0, scale: 1.15, svgOrigin: "1340 468" },
+    { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 7.04);
+
+  /* five @8.58 */
+  tl.fromTo($("hrs"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 8.58);
+
+  /* left @10.74: commute dashes draw top to bottom, label in */
+  tl.set($("commute"), { autoAlpha: 1 }, 10.74);
+  tl.to($("commute"), { attr: { y2: 740 }, duration: 0.4, ease: "power2.out" }, 10.74);
+  tl.fromTo($("commutelab"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.74);
+
+  /* start @12.92: first segment brightens, 0.6 s pass then fades before the exit */
+  tl.set($("glow"), { autoAlpha: 1 }, 12.92);
+  tl.to($("glow"), { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, 12.92);
+  tl.to($("glow"), { autoAlpha: 0, duration: 0.3, ease: "power1.in" }, 13.40);
+
+  /* after "it." @13.32 (ends 13.7): fade-through exit, ground stays */
+  tl.to($("layer"), { autoAlpha: 0, y: -16, duration: 0.6, ease: "power2.in" }, 13.80);
+
+  window.__timelines["g-a2-7-temp-line"] = tl;
+})();
+</script>
+</template>

@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a2-6-quarter-mile (A2-S4 9.20 to 14.16, deep): driver's-eye road at highway speed, a "1/4 MI" marker dissolving
+  into the white, stopwatch chip counting 0 to 15 SEC. Full-frame designed ground, no footage beneath.
+  Claim: 1/4 mi = 1,320 ft; 60 mph = 88 ft/s; 1,320 / 88 = 15.0 s (acts/a2.md A2-S4, factcheck/a2-r1.md rows 13, 14).
+  Cue times: segment seconds from audio/a2-s4.words.json, comp-local = segment - 9.20. Comp duration 4.96 s.
+  Dashes and snow are seeded canvases painted from the timeline-level onUpdate (seek-safe, gate-visible).
+-->
+<template>
+<style>
+  #g-a2-6-quarter-mile-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; font-family:Arial, sans-serif; color:#f2f5f8;
+    background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #qm-scene { position:absolute; inset:0; }
+  .qm-layer { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #qm-sign { opacity:0; visibility:hidden; }
+  .qm-hud { position:absolute; left:110px; white-space:nowrap; opacity:0; visibility:hidden; }
+  #qm-eyebrow { top:110px; font-family:Arial, sans-serif; font-weight:700; font-size:22px; line-height:1; letter-spacing:6px; color:#93a3b2; }
+  #qm-speed { top:142px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; color:#f2f5f8; }
+  .qm-glass { background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); box-sizing:border-box; }
+  #qm-chip { position:absolute; left:110px; bottom:110px; display:table; padding:22px 34px; border-radius:28px; opacity:0; visibility:hidden; }
+  .qm-row { display:flex; flex-direction:row; align-items:baseline; white-space:nowrap; }
+  #qm-watch { display:block; width:56px; height:56px; margin-right:16px; overflow:visible; }
+  #qm-num { display:inline-block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; line-height:1; color:#f2f5f8; margin-right:12px; }
+  #qm-sec { display:block; font-family:Arial, sans-serif; font-weight:700; font-size:30px; line-height:1; color:#dfe7ee; letter-spacing:1px; }
+  #qm-src { position:absolute; left:110px; bottom:54px; display:table; padding:5px 12px; border-radius:14px; white-space:nowrap;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  #qm-wash { position:absolute; inset:0; background:#dfe7ee; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a2-6-quarter-mile-root" data-composition-id="g-a2-6-quarter-mile" data-width="1920" data-height="1080">
+  <div id="qm-scene">
+    <!-- road, edge lines, headlight cones (static geometry; motion comes from canvases, haze and sign) -->
+    <svg class="qm-layer" id="qm-road" viewBox="0 0 1920 1080" width="1920" height="1080">
+      <defs>
+        <filter id="qm-soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="12"/></filter>
+        <linearGradient id="qm-haze-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f2f5f8" stop-opacity="0"/>
+          <stop offset="0.3" stop-color="#f2f5f8" stop-opacity="1"/>
+          <stop offset="0.7" stop-color="#f2f5f8" stop-opacity="1"/>
+          <stop offset="1" stop-color="#f2f5f8" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <polygon points="420,1080 960,420 1500,1080" fill="#15202b"/>
+      <line x1="960" y1="420" x2="420" y2="1080" stroke="#93a3b2" stroke-width="3" stroke-opacity="0.6"/>
+      <line x1="960" y1="420" x2="1500" y2="1080" stroke="#93a3b2" stroke-width="3" stroke-opacity="0.6"/>
+    </svg>
+    <canvas class="qm-layer" id="qm-dash" width="1920" height="1080"></canvas>
+    <svg class="qm-layer" id="qm-lights" viewBox="0 0 1920 1080" width="1920" height="1080">
+      <g filter="url(#qm-soft)">
+        <polygon points="760,1080 940,1080 960,560 900,560" fill="rgba(245,217,139,0.22)"/>
+        <polygon points="980,1080 1160,1080 1020,560 960,560" fill="rgba(245,217,139,0.22)"/>
+      </g>
+    </svg>
+    <svg class="qm-layer" id="qm-hazesvg" viewBox="0 0 1920 1080" width="1920" height="1080">
+      <rect id="qm-haze" x="0" y="300" width="1920" height="260" fill="url(#qm-haze-grad)"/>
+    </svg>
+    <!-- "1/4 MI" marker on the right shoulder; post foot on the road edge at (1001, 470), the scale pivot -->
+    <svg class="qm-layer" id="qm-signsvg" viewBox="0 0 1920 1080" width="1920" height="1080">
+      <g id="qm-sign">
+        <line x1="1001" y1="470" x2="1001" y2="430" stroke="#93a3b2" stroke-width="4"/>
+        <rect x="1000" y="395" width="150" height="70" rx="6" ry="6" fill="#15202b" stroke="#f2f5f8" stroke-width="2"/>
+        <text id="qm-signtxt" x="1075" y="442" text-anchor="middle" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="34" fill="#f2f5f8">1/4 MI</text>
+      </g>
+    </svg>
+    <canvas class="qm-layer" id="qm-snow" width="1920" height="1080"></canvas>
+
+    <!-- fixed HUD: never rides the motion -->
+    <div class="qm-hud" id="qm-eyebrow">HIGHWAY SPEED</div>
+    <div class="qm-hud" id="qm-speed">60 MPH</div>
+
+    <div class="qm-glass" id="qm-chip"><div class="qm-row">
+      <svg id="qm-watch" viewBox="0 0 56 56" width="56" height="56">
+        <rect x="24" y="0" width="8" height="6" rx="2" fill="#dfe7ee"/>
+        <circle cx="28" cy="32" r="21" fill="none" stroke="#dfe7ee" stroke-width="4"/>
+        <line x1="28" y1="13" x2="28" y2="17" stroke="#dfe7ee" stroke-width="2"/>
+        <line x1="47" y1="32" x2="43" y2="32" stroke="#dfe7ee" stroke-width="2"/>
+        <line id="qm-hand" x1="28" y1="32" x2="28" y2="16" stroke="#e8c56a" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="28" cy="32" r="2.5" fill="#dfe7ee"/>
+      </svg>
+      <span id="qm-num">0</span><span id="qm-sec">SEC</span>
+    </div></div>
+  </div>
+  <div class="qm-glass" id="qm-src">Buffalo airport ASOS, IEM archive</div>
+  <div id="qm-wash"></div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const W = 1920, H = 1080, VX = 960, VY = 420, DUR = 4.96;
+
+  /* mulberry32, seeded: same particles in any seek order */
+  function rng(seed) { let s = seed | 0; return function() {
+    s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s >>> 15, 1 | s);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  const R = rng(2212239);
+  const flakes = [];
+  for (let i = 0; i < 240; i++) {
+    flakes.push({ ang: R() * Math.PI * 2, per: 0.55 + R() * 0.6, ph: R(), w: 1.5 + R() * 1.5, a: 0.5 + R() * 0.4 });
+  }
+  /* snow never paints over the HUD box, the chip box or the presenter corner */
+  function excluded(x, y) { return (x <= 560 && y <= 220) || (x <= 520 && y >= 820) || (x >= 1600 && y >= 680); }
+
+  function drawDashes(t) {
+    const c = document.getElementById("qm-dash"); if (!c) return;
+    const g = c.getContext("2d"); g.clearRect(0, 0, W, H);
+    g.fillStyle = "rgba(232,197,106,0.7)";
+    const D = 2, off = ((t / 0.5) % 1) * D; /* one dash period per 0.5 s, toward the camera */
+    for (let i = 0; i < 7; i++) {
+      const zn = 1 + i * D - off, zf = zn + 1;   /* world depth; screen scale s = 1 / z */
+      if (zf <= 0.2) continue;
+      const sn = 1 / Math.max(zn, 0.2), sf = 1 / zf;
+      const yn = VY + 660 * sn, yf = VY + 660 * sf, hn = 9 * sn, hf = 9 * sf;
+      g.beginPath(); g.moveTo(VX - hn, yn); g.lineTo(VX + hn, yn); g.lineTo(VX + hf, yf); g.lineTo(VX - hf, yf); g.closePath(); g.fill();
+    }
+  }
+  function drawSnow(t) {
+    const c = document.getElementById("qm-snow"); if (!c) return;
+    const g = c.getContext("2d"); g.clearRect(0, 0, W, H); g.lineCap = "round";
+    for (const f of flakes) {
+      const u = ((t / f.per + f.ph) % 1);
+      const r = 30 + 1500 * u * u, rt = 30 + 1500 * Math.max(0, u - 0.05) * Math.max(0, u - 0.05);
+      const dx = Math.cos(f.ang), dy = Math.sin(f.ang);
+      const x = VX + dx * r, y = VY + dy * r, xt = VX + dx * rt, yt = VY + dy * rt;
+      if (x < -20 || x > W + 20 || y < -20 || y > H + 20 || excluded(x, y) || excluded(xt, yt)) continue;
+      g.strokeStyle = "rgba(242,245,248," + (f.a * Math.min(1, u * 4)).toFixed(3) + ")";
+      g.lineWidth = f.w * (0.6 + u);
+      g.beginPath(); g.moveTo(xt, yt); g.lineTo(x, y); g.stroke();
+    }
+  }
+  function paint(t) { drawDashes(t); drawSnow(t); }
+
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#qm-sign", "#qm-eyebrow", "#qm-speed", "#qm-chip", "#qm-src", "#qm-wash"], { autoAlpha: 0 }, 0);
+  tl.set("#qm-haze", { opacity: 0.25 }, 0);
+  tl.set("#qm-sign", { scale: 0.8, svgOrigin: "1001 470" }, 0);
+  tl.set("#qm-hand", { rotation: 0, svgOrigin: "28 32" }, 0);
+  tl.set("#qm-num", { scale: 1, transformOrigin: "left bottom" }, 0);
+
+  /* "quarter" @9.60 (local 0.40): marker emerges from the white; source pill in */
+  tl.fromTo("#qm-sign", { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 0.9, scale: 0.85, duration: 0.4, ease: "power3.out", svgOrigin: "1001 470" }, 0.40);
+  tl.fromTo("#qm-src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.40);
+  /* slow approach through the window, ease none (0.80 to 4.40) */
+  tl.to("#qm-sign", { scale: 1.0, duration: 3.6, ease: "none", svgOrigin: "1001 470" }, 0.80);
+
+  /* "highway" @10.26 (local 1.06): eyebrow, then 60 MPH */
+  tl.fromTo("#qm-eyebrow", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.06);
+  tl.fromTo("#qm-speed", { autoAlpha: 0, x: -24 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.16);
+
+  /* "gives" @10.90 (local 1.70): chip in; count 0 to 15 lands on "seconds" @11.96 (local 2.76); hand sweeps 90 deg (15 s on a 60 s dial) */
+  tl.fromTo("#qm-chip", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 1.70);
+  const cnt = { v: 0 };
+  tl.fromTo(cnt, { v: 0 }, { v: 15, duration: 1.06, ease: "power2.out", onUpdate: function() {
+    const el = document.getElementById("qm-num"); if (el) el.textContent = Math.round(cnt.v);
+  } }, 1.70);
+  tl.fromTo("#qm-hand", { rotation: 0 }, { rotation: 90, duration: 1.06, ease: "power2.out", svgOrigin: "28 32" }, 1.70);
+
+  /* "seconds" @11.96 (local 2.76): numeral pulse */
+  tl.to("#qm-num", { scale: 1.08, duration: 0.2, ease: "power2.out", yoyo: true, repeat: 1 }, 2.76);
+
+  /* "see" @12.58 (local 3.38): white closes in, marker dissolves but stays legible */
+  tl.to("#qm-haze", { opacity: 0.75, duration: 0.92, ease: "power1.inOut" }, 3.38);
+  tl.to("#qm-sign", { autoAlpha: 0.35, duration: 0.92, ease: "power1.inOut" }, 3.38);
+
+  /* exit after "ahead." @12.92 to 13.16: fade-through a white-grey wash to ground (local 4.36 to 4.96) */
+  tl.to(["#qm-scene", "#qm-src"], { autoAlpha: 0, duration: 0.6, ease: "power2.in" }, 4.36);
+  tl.fromTo("#qm-wash", { autoAlpha: 0 }, { autoAlpha: 0.55, duration: 0.3, ease: "power2.in" }, 4.36);
+  tl.to("#qm-wash", { autoAlpha: 0, duration: 0.3, ease: "power2.out" }, 4.66);
+
+  /* canvases repaint from the timeline-level onUpdate (gate-visible, any seek order) */
+  tl.eventCallback("onUpdate", function() { paint(tl.time()); });
+  paint(0);
+  tl.render(0, false, true);
+
+  window.__timelines["g-a2-6-quarter-mile"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

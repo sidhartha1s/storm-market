@@ -1,0 +1,104 @@
+<!--
+  g-a2-1-log-724 · A2-S1 0.00 to 8.60 · full-frame airport weather-log card, row 1 only (7:24 AM).
+  FAMILY BASE for g-a2-3-log-806 and g-a2-5-log-839: card block copied from g-intro-3-asos-log, ids/classes lg- -> a21-, every px kept.
+  Rows R2 (top 500) and R3 (top 600) are not in this DOM. Panel stays 590 px tall.
+  Columns: TIME x220, WEATHER x470 ("38°F · " x470, "RAIN" x612.8 = 470 + 7 x 20.4), VISIBILITY x1020, GUST x1300. R1 top 400.
+  Cues: seconds from A2-S1 start (audio/a2-s1.words.json), spoken time in each tween comment.
+  "5 MI" has no research row yet (open item 1 in briefs/a2/_list.md).
+-->
+<template>
+<style>
+  #g-a2-1-log-724-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  .a21-fill { position:absolute; inset:0; }
+  .a21-hide { opacity:0; visibility:hidden; }
+  #a21-panel { position:absolute; left:160px; top:170px; width:1400px; height:590px; box-sizing:border-box;
+    border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); }
+  .a21-t { position:absolute; white-space:nowrap; }
+  #a21-eyebrow { left:220px; top:206px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  #a21-chip { left:220px; top:244px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:58px; color:#f2f5f8; transform-origin:left center; }
+  .a21-h { top:340px; font-size:19px; line-height:24px; font-weight:700; letter-spacing:4px; color:#93a3b2; }
+  #a21-divider { position:absolute; left:220px; top:376px; width:1280px; height:1px; background:rgba(255,255,255,.14);
+    transform-origin:left center; }
+  .a21-c { font-family:'Courier New', monospace; font-weight:700; font-size:34px; line-height:60px; color:#dfe7ee; }
+  .a21-cT { left:220px; color:#e8c56a; transform-origin:left center; }
+  .a21-cW { left:470px; }
+  .a21-cW2 { left:612.8px; }
+  .a21-cV { left:1020px; }
+  .a21-cG { left:1300px; transform-origin:left center; }
+  .a21-r1 { top:400px; }
+  .a21-hT { left:220px; } .a21-hW { left:470px; } .a21-hV { left:1020px; } .a21-hG { left:1300px; }
+  #a21-scan { position:absolute; left:180px; top:0; width:1360px; height:2px; background:#d8a13a; opacity:0; visibility:hidden; }
+  #a21-source { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-a2-1-log-724-root" data-composition-id="g-a2-1-log-724" data-width="1920" data-height="1080">
+  <div id="a21-float" class="a21-fill">
+    <div id="a21-panel" class="a21-hide"></div>
+    <div id="a21-eyebrow" class="a21-t a21-hide">BUFFALO AIRPORT WEATHER STATION</div>
+    <div id="a21-chip" class="a21-t a21-hide">FRIDAY · DEC 23</div>
+    <div id="a21-hT" class="a21-t a21-h a21-hT a21-hide">TIME</div>
+    <div id="a21-hW" class="a21-t a21-h a21-hW a21-hide">WEATHER</div>
+    <div id="a21-hV" class="a21-t a21-h a21-hV a21-hide">VISIBILITY</div>
+    <div id="a21-hG" class="a21-t a21-h a21-hG a21-hide">GUST</div>
+    <div id="a21-divider" class="a21-hide"></div>
+
+    <div id="a21-r1-t" class="a21-t a21-c a21-cT a21-r1 a21-hide">7:24 AM</div>
+    <div id="a21-r1-w1" class="a21-t a21-c a21-cW a21-r1 a21-hide">38°F · </div>
+    <div id="a21-r1-w2" class="a21-t a21-c a21-cW2 a21-r1 a21-hide">RAIN</div>
+    <div id="a21-r1-v" class="a21-t a21-c a21-cV a21-r1 a21-hide">5 MI</div>
+    <div id="a21-r1-g" class="a21-t a21-c a21-cG a21-r1 a21-hide">24 MPH</div>
+
+    <div id="a21-scan"></div>
+    <div id="a21-source" class="a21-t a21-hide">Buffalo airport ASOS, IEM archive</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#a21-" + id;
+
+  // whole-hold float 0.8 -> 8.0 (4 legs x 1.8 s), on the wrapper only
+  tl.fromTo($("float"), { y: 0 }, { y: -4, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.8);
+
+  /* "7" @0.14: panel, source, headers, divider */
+  tl.fromTo($("panel"), { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.14);
+  tl.fromTo($("source"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.14);
+  tl.fromTo($("hT"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.14);
+  tl.fromTo($("hW"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.2);
+  tl.fromTo($("hV"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.26);
+  tl.fromTo($("hG"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.32);
+  tl.fromTo($("divider"), { autoAlpha: 0, scaleX: 0 }, { autoAlpha: 1, scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.14);
+
+  /* ".24" @0.42: time cell, scan line starts (42 px/s, 380 -> 700 over 7.6 s) */
+  tl.fromTo($("r1-t"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 0.42);
+  tl.fromTo($("scan"), { y: 380 }, { y: 700, duration: 7.6, ease: "none" }, 0.42);
+  tl.fromTo($("scan"), { autoAlpha: 0 }, { autoAlpha: 0.45, duration: 0.3 }, 0.42);
+
+  /* "Friday" @1.14 */
+  tl.fromTo($("chip"), { autoAlpha: 0, scale: 1.15 }, { autoAlpha: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 1.14);
+
+  /* "airport's" @2.30 */
+  tl.fromTo($("eyebrow"), { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out" }, 2.3);
+
+  /* "38" @3.80 */
+  tl.fromTo($("r1-w1"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 3.8);
+
+  /* "rain." @5.22, then 5 MI 0.08 later */
+  tl.fromTo($("r1-w2"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 5.22);
+  tl.fromTo($("r1-v"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 5.3);
+
+  /* "24" @6.90 */
+  tl.fromTo($("r1-g"), { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 6.9);
+
+  /* exit 8.00 -> 8.60, before "To anyone" @8.68; ground stays on the root */
+  tl.to([$("panel"), $("eyebrow"), $("chip"), $("hT"), $("hW"), $("hV"), $("hG"), $("divider"),
+         $("r1-t"), $("r1-w1"), $("r1-w2"), $("r1-v"), $("r1-g"), $("source")].join(","),
+        { autoAlpha: 0, y: -20, duration: 0.6, ease: "power2.in" }, 8.0);
+  tl.to($("scan"), { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 8.0);
+
+  window.__timelines["g-a2-1-log-724"] = tl;
+})();
+</script>
+</template>

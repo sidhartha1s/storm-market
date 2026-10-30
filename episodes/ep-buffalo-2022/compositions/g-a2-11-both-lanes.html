@@ -1,0 +1,197 @@
+<!--
+  g-a2-11-both-lanes · A2-S10 · full-frame two-lane timeline, opening state = g-a2-9 end-of-lanes look (ban card, M3, commute marker).
+  Brief: briefs/a2/g-a2-11-both-lanes.md. Lane px from g-a2-8 (LANE FAMILY BASE, copied), ban card / M3 / commute marker from g-a2-9 brief section 3.
+  Cues: seconds from A2-S10 start (audio/a2-s10.words.json), spoken time in each tween comment. Comp duration 15.74 s (host window; the segment wav runs 16.40).
+  Time axis x(t) = 200 + 5 px per minute after 5:30 AM. x(t): 6:00 350 · 7:00 650 · 7:24 770 · 8:06 980 · 8:15 1025 · 8:39 1145 · 9:30 1400 · 10:00 1550.
+-->
+<template>
+<style>
+  #g-a2-11-both-lanes-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  .bl-fill { position:absolute; inset:0; }
+  .bl-h { opacity:0; visibility:hidden; }
+  .bl-t { position:absolute; white-space:nowrap; }
+
+  /* ===== LANE FAMILY BASE (from g-a2-8; px are brief section 3) ===== */
+  .bl-lab { left:200px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  #bl-wlab { top:150px; }
+  #bl-olab { top:560px; }
+  .bl-axis { position:absolute; left:200px; width:1350px; height:2px; background:rgba(255,255,255,.3); }
+  #bl-waxis { top:469px; }
+  #bl-oaxis { top:699px; }
+  .bl-htk { position:absolute; width:2px; height:8px; background:rgba(255,255,255,.3); }
+  .bl-wtk { top:471px; }
+  .bl-otk { top:691px; }
+  .bl-hl { top:482px; width:100px; text-align:center; font-size:19px; line-height:22px; font-weight:700; color:#93a3b2; }
+  .bl-mtk { position:absolute; width:2px; background:#93a3b2; }
+  .bl-mlb { position:absolute; white-space:nowrap; }
+  .bl-m1 { font-family:'Courier New', monospace; font-weight:700; font-size:26px; line-height:30px; color:#e8c56a; }
+  .bl-m2 { margin-top:4px; font-weight:700; font-size:24px; line-height:28px; color:#dfe7ee; }
+  #bl-M1-tk { top:220px; height:250px; } #bl-M1-lb { top:220px; }
+  #bl-M2-tk { top:290px; height:180px; } #bl-M2-lb { top:290px; }
+  #bl-M4-tk { top:376px; height:94px; }  #bl-M4-lb { top:376px; }
+  #bl-M3-tk { top:470px; height:46px; background:#c0392b; } #bl-M3-lb { top:516px; }
+  #bl-M3-b { color:#7fb2e5; }
+  #bl-soe { position:absolute; top:600px; height:76px; box-sizing:border-box; padding:10px 18px; border-radius:10px;
+    background:#15202b; border:1px solid rgba(255,255,255,.14); border-left:4px solid #d8a13a; white-space:nowrap; }
+  #bl-soe1 { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:26px; line-height:30px; color:#f2f5f8; }
+  #bl-soe2 { font-weight:700; font-size:19px; line-height:24px; color:#c8d3e0; }
+  #bl-soe-con { position:absolute; top:676px; width:3px; height:24px; background:#d8a13a; }
+  /* ===== end LANE FAMILY BASE ===== */
+
+  /* ban card (g-a2-9 geometry): x 960 to 1400, y 600 to 676 */
+  #bl-ban { position:absolute; left:960px; top:600px; width:440px; height:76px; box-sizing:border-box; border-radius:10px; background:#8e2020; }
+  #bl-ico { position:absolute; left:18px; top:16px; width:44px; height:44px; box-sizing:border-box; border-radius:22px; border:3px solid #f4f0e8; }
+  .bl-hand { position:absolute; width:3px; background:#f4f0e8; transform-origin:50% 100%; }
+  #bl-hm { left:17.5px; top:5px; height:14px; transform:rotate(180deg); }
+  #bl-hh { left:17.5px; top:9px; height:10px; transform:rotate(285deg); }
+  #bl-ban1 { position:absolute; left:74px; top:11px; white-space:nowrap; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:26px; line-height:30px; color:#f4f0e8; }
+  #bl-ban2 { position:absolute; left:74px; top:41px; white-space:nowrap; font-weight:700; font-size:19px; line-height:24px; letter-spacing:3px; color:#f4f0e8; }
+  #bl-ban-con { position:absolute; left:1399px; top:676px; width:3px; height:24px; background:#c0392b; }
+
+  /* commute marker */
+  #bl-cm-tk { position:absolute; width:2px; top:700px; height:40px; background:#e8c56a; }
+  #bl-cm-lb { top:744px; width:120px; text-align:center; font-size:19px; line-height:24px; font-weight:700; color:#e8c56a; }
+
+  /* sweep 7:00 to 9:30: x 650 to 1400, y 200 to 700, 40 px soft left edge, 10 % white (breathes to 14 %) */
+  #bl-sweep { position:absolute; left:650px; top:200px; width:750px; height:500px; }
+  #bl-swf { position:absolute; inset:0; background:linear-gradient(90deg, rgba(242,245,248,0) 0, rgba(242,245,248,.14) 40px); }
+
+  /* readout at 9:30 (weather lane) */
+  #bl-rd-tk { position:absolute; left:1399px; top:300px; width:2px; height:170px; background:#f2f5f8; }
+  #bl-rd-a { left:1412px; top:300px; font-family:'Courier New', monospace; font-weight:700; font-size:26px; line-height:30px; color:#e8c56a; }
+  #bl-rd-b { left:1412px; top:336px; font-weight:700; font-size:24px; line-height:28px; color:#dfe7ee; }
+  #bl-rd-c { left:1412px; top:370px; font-weight:700; font-size:24px; line-height:28px; color:#dfe7ee; }
+
+  /* chip + bracket */
+  #bl-brk { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #bl-brk-p { fill:none; stroke:rgba(242,245,248,.35); stroke-width:2; stroke-dasharray:767; stroke-dashoffset:767; }
+  #bl-chip { left:650px; top:790px; width:750px; text-align:center; font-family:'Arial Black', Arial, sans-serif; font-weight:900;
+    font-size:52px; line-height:60px; color:#f2f5f8; }
+
+  .bl-src { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-a2-11-both-lanes-root" data-composition-id="g-a2-11-both-lanes" data-width="1920" data-height="1080">
+  <div id="bl-scene" class="bl-fill">
+    <div id="bl-sweep" class="bl-h"><div id="bl-swf"></div></div>
+
+    <div id="bl-lanes" class="bl-fill">
+      <!-- weather lane -->
+      <div id="bl-wlab" class="bl-t bl-lab">AIRPORT WEATHER LOG</div>
+      <div id="bl-waxis" class="bl-axis"></div>
+      <div id="bl-wtk6" class="bl-htk bl-wtk" data-t="6:00" data-dx="-1"></div>
+      <div id="bl-wtk7" class="bl-htk bl-wtk" data-t="7:00" data-dx="-1"></div>
+      <div id="bl-wtk8" class="bl-htk bl-wtk" data-t="8:00" data-dx="-1"></div>
+      <div id="bl-wtk9" class="bl-htk bl-wtk" data-t="9:00" data-dx="-1"></div>
+      <div id="bl-wtk10" class="bl-htk bl-wtk" data-t="10:00" data-dx="-1"></div>
+      <div id="bl-hl6" class="bl-t bl-hl" data-t="6:00" data-dx="-50">6 AM</div>
+      <div id="bl-hl7" class="bl-t bl-hl" data-t="7:00" data-dx="-50">7 AM</div>
+      <div id="bl-hl8" class="bl-t bl-hl" data-t="8:00" data-dx="-50">8 AM</div>
+      <div id="bl-hl9" class="bl-t bl-hl" data-t="9:00" data-dx="-50">9 AM</div>
+      <div id="bl-hl10" class="bl-t bl-hl" data-t="10:00" data-dx="-50">10 AM</div>
+
+      <div id="bl-M1-tk" class="bl-mtk" data-t="7:24" data-dx="-1"></div>
+      <div id="bl-M1-lb" class="bl-mlb" data-t="7:24" data-dx="12"><div id="bl-M1-a" class="bl-m1">7:24 AM</div><div id="bl-M1-b" class="bl-m2">RAIN · 38°F</div></div>
+      <div id="bl-M2-tk" class="bl-mtk" data-t="8:06" data-dx="-1"></div>
+      <div id="bl-M2-lb" class="bl-mlb" data-t="8:06" data-dx="12"><div id="bl-M2-a" class="bl-m1">8:06 AM</div><div id="bl-M2-b" class="bl-m2">GUSTS ~60 MPH</div></div>
+      <div id="bl-M4-tk" class="bl-mtk" data-t="8:39" data-dx="-1"></div>
+      <div id="bl-M4-lb" class="bl-mlb" data-t="8:39" data-dx="12"><div id="bl-M4-a" class="bl-m1">8:39 AM</div><div id="bl-M4-b" class="bl-m2">VIS 1/4 MI</div></div>
+      <div id="bl-M3-tk" class="bl-mtk" data-t="8:15" data-dx="-1"></div>
+      <div id="bl-M3-lb" class="bl-mlb" data-t="8:15" data-dx="12"><div id="bl-M3-a" class="bl-m1">8:15 AM</div><div id="bl-M3-b" class="bl-m2">BELOW 32°F</div></div>
+
+      <!-- officials lane -->
+      <div id="bl-olab" class="bl-t bl-lab">THE OFFICIALS' CLOCK</div>
+      <div id="bl-oaxis" class="bl-axis"></div>
+      <div id="bl-otk6" class="bl-htk bl-otk" data-t="6:00" data-dx="-1"></div>
+      <div id="bl-otk7" class="bl-htk bl-otk" data-t="7:00" data-dx="-1"></div>
+      <div id="bl-otk8" class="bl-htk bl-otk" data-t="8:00" data-dx="-1"></div>
+      <div id="bl-otk9" class="bl-htk bl-otk" data-t="9:00" data-dx="-1"></div>
+      <div id="bl-otk10" class="bl-htk bl-otk" data-t="10:00" data-dx="-1"></div>
+
+      <div id="bl-soe" data-t="6:00" data-dx="0"><div id="bl-soe1">STATE OF EMERGENCY</div><div id="bl-soe2">DECLARED THU · IN EFFECT 6:00 AM FRI</div></div>
+      <div id="bl-soe-con" data-t="6:00" data-dx="0"></div>
+    </div>
+
+    <div id="bl-ban">
+      <div id="bl-ico"><div id="bl-hm" class="bl-hand"></div><div id="bl-hh" class="bl-hand"></div></div>
+      <div id="bl-ban1">DRIVING BAN · 9:30 AM</div>
+      <div id="bl-ban2">ERIE COUNTY</div>
+    </div>
+    <div id="bl-ban-con"></div>
+
+    <div id="bl-cm-tk" data-t="7:00" data-dx="-1"></div>
+    <div id="bl-cm-lb" class="bl-t" data-t="7:00" data-dx="-60">LEFT AT 7:00</div>
+
+    <div id="bl-rd-tk" class="bl-h"></div>
+    <div id="bl-rd-a" class="bl-t bl-h">9:30 AM</div>
+    <div id="bl-rd-b" class="bl-t bl-h">ICE · BLOWING SNOW</div>
+    <div id="bl-rd-c" class="bl-t bl-h">WIND STILL BUILDING</div>
+
+    <svg id="bl-brk" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"><path id="bl-brk-p" class="bl-h" d="M 650 768 V 776 H 1400 V 768"/></svg>
+    <div id="bl-chip" class="bl-t bl-h">ALREADY ON THE ROAD</div>
+  </div>
+
+  <div id="bl-src1" class="bl-t bl-src">Erie County driving ban, WKBW</div>
+  <div id="bl-src2" class="bl-t bl-src bl-h">Buffalo airport ASOS, IEM archive</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  // LANE FAMILY BASE: one time axis, x(t) = 200 + 5 px per minute after 5:30 AM
+  const X = (hm) => { const [h, m] = hm.split(":").map(Number); return 200 + 5 * ((h * 60 + m) - 330); };
+  document.querySelectorAll('#g-a2-11-both-lanes-root [data-t]').forEach((el) => {
+    el.style.left = (X(el.dataset.t) + Number(el.dataset.dx || 0)) + "px";
+  });
+
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#bl-" + id;
+  const show = (sel, t) => tl.set(sel, { autoAlpha: 1 }, t);
+
+  // whole-window motion: lane float (finite, 6 legs x 2.623 s) and sweep breathing 10 % <-> 14 % (finite, 11 legs x 1.431 s);
+  // both end at 15.74 = the host window (index.html data-duration 15.736, clamped before the CTA)
+  tl.fromTo($("lanes"), { y: 0 }, { y: -3, duration: 2.623, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0);
+  tl.fromTo($("swf"), { opacity: 0.714 }, { opacity: 1, duration: 1.431, ease: "sine.inOut", yoyo: true, repeat: 10 }, 0);
+
+  /* ".30," @0.58: ban card pulse */
+  tl.to($("ban"), { scale: 1.05, transformOrigin: "50% 50%", duration: 0.2, ease: "power2.out" }, 0.58);
+  tl.to($("ban"), { scale: 1, duration: 0.2, ease: "power2.in" }, 0.78);
+
+  /* "morning" @1.42: sweep reveals right to left, ends 2.62 */
+  show($("sweep"), 1.42);
+  tl.fromTo($("sweep"), { scaleX: 0, transformOrigin: "right center" }, { scaleX: 1, duration: 1.2, ease: "power2.inOut" }, 1.42);
+
+  /* "already" @2.24: bracket draws, chip lands */
+  show($("brk-p"), 2.24);
+  tl.fromTo($("brk-p"), { strokeDashoffset: 767 }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 2.24);
+  tl.fromTo($("chip"), { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power3.out" }, 2.24);
+
+  /* "7" @5.16: LEFT AT 7:00 pulse */
+  tl.to($("cm-lb"), { scale: 1.1, transformOrigin: "50% 50%", duration: 0.2, ease: "power2.out" }, 5.16);
+  tl.to($("cm-lb"), { scale: 1, duration: 0.2, ease: "power2.in" }, 5.36);
+
+  /* "38" @7.06: M1 label pulse */
+  tl.to($("M1-lb"), { scale: 1.08, transformOrigin: "0% 50%", duration: 0.2, ease: "power2.out" }, 7.06);
+  tl.to($("M1-lb"), { scale: 1, duration: 0.2, ease: "power2.in" }, 7.26);
+
+  /* "Now" @8.56: source swaps to ASOS */
+  tl.to($("src1"), { autoAlpha: 0, duration: 0.3, ease: "power2.in" }, 8.56);
+  tl.fromTo($("src2"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 8.86);
+
+  /* "ice" @9.42: readout tick draws up, then time and ICE line */
+  show($("rd-tk"), 9.42);
+  tl.fromTo($("rd-tk"), { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.3, ease: "power2.out" }, 9.42);
+  tl.fromTo($("rd-a"), { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 9.42);
+  tl.fromTo($("rd-b"), { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 9.52);
+
+  /* "building" @12.20: wind line */
+  tl.fromTo($("rd-c"), { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 12.2);
+
+  /* "Where" @13.92: push; 14.40 to 15.74 (host end) "when the ban took effect?": fade out */
+  tl.to($("scene"), { scale: 1.04, transformOrigin: "1025px 450px", duration: 1.82, ease: "none" }, 13.92);
+  tl.to($("scene"), { autoAlpha: 0, duration: 1.34, ease: "power1.in" }, 14.4);
+  tl.to($("src2"), { autoAlpha: 0, duration: 1.34, ease: "power1.in" }, 14.4);
+
+  window.__timelines["g-a2-11-both-lanes"] = tl;
+})();
+</script>
+</template>

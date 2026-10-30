@@ -1,0 +1,158 @@
+<!--
+  g-a2-5-log-839 · A2-S4 0.00 to 9.20 · full-frame airport weather-log card, rows R1 R2 R3 (8:39 AM) + gust gauge 60 -> 67 mph.
+  Built from g-a2-1-log-724 (card px kept, a21- -> a25-) plus R2, R3 and the gauge per briefs/a2/g-a2-3-log-806.md section 3.
+  (g-a2-3 was not on disk when this was built; the gauge is hand-built from its brief geometry.)
+  Columns: TIME x220, WEATHER x470 ("HEAVY SNOW," ends x694.4, "BLOWING SNOW" x714.8 = 470 + 12 x 20.4), VISIBILITY x1020, GUST x1300.
+  Rows: R1 top 400, R2 top 500, R3 top 600. Gauge pivot (1360,960), r150, 2.25 deg per mph, needle drawn pointing left.
+  Cues: seconds from A2-S4 start (audio/a2-s4.words.json), spoken time in each tween comment.
+  "5 MI" (R1) has no research row yet (open item 1 in briefs/a2/_list.md).
+-->
+<template>
+<style>
+  #g-a2-5-log-839-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden;
+    background: radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family: Arial, sans-serif; color:#f2f5f8; }
+  .a25-fill { position:absolute; inset:0; }
+  .a25-hide { opacity:0; visibility:hidden; }
+  #a25-card { opacity:0; visibility:hidden; }
+  #a25-panel { position:absolute; left:160px; top:170px; width:1400px; height:590px; box-sizing:border-box;
+    border-radius:28px; border:1px solid rgba(255,255,255,.14); background:linear-gradient(180deg, #15202b, #0b1016); }
+  .a25-t { position:absolute; white-space:nowrap; }
+  #a25-eyebrow { left:220px; top:206px; font-size:22px; line-height:26px; font-weight:700; letter-spacing:6px; color:#93a3b2; }
+  #a25-chip { left:220px; top:244px; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px;
+    line-height:58px; color:#f2f5f8; }
+  .a25-h { top:340px; font-size:19px; line-height:24px; font-weight:700; letter-spacing:4px; color:#93a3b2; transform-origin:left center; }
+  #a25-divider { position:absolute; left:220px; top:376px; width:1280px; height:1px; background:rgba(255,255,255,.14); }
+  .a25-c { font-family:'Courier New', monospace; font-weight:700; font-size:34px; line-height:60px; color:#dfe7ee; }
+  .a25-cT { left:220px; color:#e8c56a; }
+  .a25-cW { left:470px; }
+  .a25-cW2 { left:612.8px; }
+  .a25-cW3 { left:714.8px; }
+  .a25-cV { left:1020px; transform-origin:left center; }
+  .a25-cG { left:1300px; transform-origin:left center; }
+  .a25-r1 { top:400px; } .a25-r2 { top:500px; } .a25-r3 { top:600px; }
+  .a25-hT { left:220px; } .a25-hW { left:470px; } .a25-hV { left:1020px; } .a25-hG { left:1300px; }
+  #a25-hl { position:absolute; left:1005px; top:592px; width:160px; height:76px; box-sizing:border-box; border-radius:8px;
+    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.22); transform-origin:left center; }
+  #a25-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #a25-needle { position:absolute; left:1230px; top:957px; width:130px; height:6px; background:#f2f5f8; }
+  #a25-cap { position:absolute; left:1350px; top:950px; width:20px; height:20px; border-radius:10px; background:#d8a13a; }
+  .a25-gl { font-size:19px; line-height:24px; font-weight:700; letter-spacing:0; color:#93a3b2; text-align:center; }
+  #a25-g0 { left:1180px; top:972px; width:60px; }
+  #a25-g80 { left:1480px; top:972px; width:60px; }
+  #a25-gcap { left:1210px; top:994px; width:300px; letter-spacing:4px; }
+  #a25-scan { position:absolute; left:180px; top:0; width:1360px; height:2px; background:#d8a13a; opacity:0; visibility:hidden; }
+  #a25-source { left:96px; bottom:54px; font-size:19px; line-height:24px; font-weight:400; color:#c8d3e0; }
+</style>
+<div id="g-a2-5-log-839-root" data-composition-id="g-a2-5-log-839" data-width="1920" data-height="1080">
+  <div id="a25-float" class="a25-fill">
+    <div id="a25-card" class="a25-fill">
+      <div id="a25-panel"></div>
+      <div id="a25-eyebrow" class="a25-t">BUFFALO AIRPORT WEATHER STATION</div>
+      <div id="a25-chip" class="a25-t">FRIDAY · DEC 23</div>
+      <div id="a25-hT" class="a25-t a25-h a25-hT">TIME</div>
+      <div id="a25-hW" class="a25-t a25-h a25-hW">WEATHER</div>
+      <div id="a25-hV" class="a25-t a25-h a25-hV">VISIBILITY</div>
+      <div id="a25-hG" class="a25-t a25-h a25-hG">GUST</div>
+      <div id="a25-divider"></div>
+
+      <div id="a25-hl" class="a25-hide"></div>
+
+      <div id="a25-r1-t" class="a25-t a25-c a25-cT a25-r1">7:24 AM</div>
+      <div id="a25-r1-w1" class="a25-t a25-c a25-cW a25-r1">38°F · </div>
+      <div id="a25-r1-w2" class="a25-t a25-c a25-cW2 a25-r1">RAIN</div>
+      <div id="a25-r1-v" class="a25-t a25-c a25-cV a25-r1">5 MI</div>
+      <div id="a25-r1-g" class="a25-t a25-c a25-cG a25-r1">24 MPH</div>
+
+      <div id="a25-r2-t" class="a25-t a25-c a25-cT a25-r2">8:06 AM</div>
+      <div id="a25-r2-w" class="a25-t a25-c a25-cW a25-r2">SNOW</div>
+      <div id="a25-r2-v" class="a25-t a25-c a25-cV a25-r2">1/2 MI</div>
+      <div id="a25-r2-g" class="a25-t a25-c a25-cG a25-r2">60 MPH</div>
+
+      <div id="a25-r3-t" class="a25-t a25-c a25-cT a25-r3 a25-hide">8:39 AM</div>
+      <div id="a25-r3-w1" class="a25-t a25-c a25-cW a25-r3 a25-hide">HEAVY SNOW,</div>
+      <div id="a25-r3-w2" class="a25-t a25-c a25-cW3 a25-r3 a25-hide">BLOWING SNOW</div>
+      <div id="a25-r3-v" class="a25-t a25-c a25-cV a25-r3 a25-hide">1/4 MI</div>
+      <div id="a25-r3-g" class="a25-t a25-c a25-cG a25-r3 a25-hide">67 MPH</div>
+
+      <svg id="a25-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1210 960 A150 150 0 0 1 1510 960" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="4"/>
+        <g stroke="#93a3b2" stroke-width="2">
+          <line x1="1228" y1="960" x2="1210" y2="960"/>
+          <line x1="1238.04" y1="909.48" x2="1221.42" y2="902.6"/>
+          <line x1="1266.66" y1="866.66" x2="1253.93" y2="853.93"/>
+          <line x1="1309.48" y1="838.04" x2="1302.6" y2="821.42"/>
+          <line x1="1360" y1="828" x2="1360" y2="810"/>
+          <line x1="1410.52" y1="838.04" x2="1417.4" y2="821.42"/>
+          <line x1="1453.34" y1="866.66" x2="1466.07" y2="853.93"/>
+          <line x1="1481.96" y1="909.48" x2="1498.58" y2="902.6"/>
+          <line x1="1492" y1="960" x2="1510" y2="960"/>
+        </g>
+        <line id="a25-ghost" x1="1277.1" y1="845.9" x2="1266.6" y2="831.4" stroke="#d8a13a" stroke-width="3"/>
+      </svg>
+      <div id="a25-needle"></div>
+      <div id="a25-cap"></div>
+      <div id="a25-g0" class="a25-t a25-gl">0</div>
+      <div id="a25-g80" class="a25-t a25-gl">80</div>
+      <div id="a25-gcap" class="a25-t a25-gl">GUST, MPH</div>
+    </div>
+
+    <div id="a25-scan"></div>
+    <div id="a25-source" class="a25-t a25-hide">Buffalo airport ASOS, IEM archive</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  const $ = (id) => "#a25-" + id;
+
+  // needle starts at 60 mph (135 deg); pivot = right end of the 130 px bar
+  tl.set($("needle"), { rotation: 135, transformOrigin: "130px 3px" }, 0);
+
+  // whole-hold float 0.5 -> 8.6 (4 legs x 2.025 s), on the wrapper only
+  tl.fromTo($("float"), { y: 0 }, { y: -4, duration: 2.025, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0.5);
+
+  /* "8" @0.16: card with R1, R2 and gauge, source, scan line */
+  tl.fromTo($("card"), { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.0);
+  tl.fromTo($("source"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.4 }, 0.1);
+  tl.fromTo($("scan"), { y: 380 }, { y: 700, duration: 8.0, ease: "none" }, 0.0);
+  tl.fromTo($("scan"), { autoAlpha: 0 }, { autoAlpha: 0.45, duration: 0.3 }, 0.0);
+
+  /* ".39," @0.40 (card settled 0.5) */
+  tl.fromTo($("r3-t"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 0.6);
+
+  /* "visibility" @1.72 */
+  tl.to($("hV"), { scale: 1.1, duration: 0.2, ease: "power2.out" }, 1.72);
+  tl.to($("hV"), { scale: 1, duration: 0.2, ease: "power2.in" }, 1.92);
+
+  /* "quarter" @2.66 */
+  tl.fromTo($("r3-v"), { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 2.66);
+  tl.fromTo($("hl"), { autoAlpha: 0, scaleX: 0.6 }, { autoAlpha: 1, scaleX: 1, duration: 0.4, ease: "power3.out" }, 2.66);
+
+  /* "heavy" @4.28 */
+  tl.fromTo($("r3-w1"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 4.28);
+
+  /* "blowing" @5.18 */
+  tl.fromTo($("r3-w2"), { autoAlpha: 0, x: -16 }, { autoAlpha: 1, x: 0, duration: 0.3, ease: "power3.out" }, 5.18);
+
+  /* "Gus" @6.88: ghost mark 24 -> 60 mph, needle shiver 135 -> 139 -> 135 */
+  tl.to($("ghost"), { attr: { x1: 1459.7, y1: 860.3, x2: 1472.4, y2: 847.6 }, duration: 0.4, ease: "power2.inOut" }, 6.88);
+  tl.to($("needle"), { rotation: 139, duration: 0.2, ease: "sine.out" }, 6.88);
+  tl.to($("needle"), { rotation: 135, duration: 0.2, ease: "sine.in" }, 7.08);
+
+  /* "67" @7.44 */
+  tl.to($("needle"), { rotation: 150.75, duration: 0.5, ease: "back.out(1.4)" }, 7.44);
+  tl.fromTo($("r3-g"), { autoAlpha: 0, scale: 1.2 }, { autoAlpha: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 7.44);
+
+  /* needle flutter after 8.0 */
+  tl.to($("needle"), { rotation: 148, duration: 0.3, ease: "sine.inOut" }, 8.0);
+  tl.to($("needle"), { rotation: 153, duration: 0.3, ease: "sine.inOut" }, 8.3);
+
+  /* exit 8.60 -> 9.20, after "hour." @8.70; ground stays on the root */
+  tl.to([$("card"), $("source")].join(","), { autoAlpha: 0, y: -20, duration: 0.6, ease: "power2.in" }, 8.6);
+  tl.to($("scan"), { autoAlpha: 0, duration: 0.4, ease: "power2.in" }, 8.6);
+
+  window.__timelines["g-a2-5-log-839"] = tl;
+})();
+</script>
+</template>

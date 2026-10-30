@@ -41,7 +41,7 @@ Full-frame ground (radial gradient, layer `wc-ground`, frame 0). No scale. Corne
 - Highlight 1 (frostbite): a band `rgba(216,161,58,.28)` (Amber 1 at 28 %) behind "frostbite on exposed skin in as" (B2) and "little as 30 minutes." (B3), measured from glyph boxes, drawn `scaleX 0 -> 1` left origin.
 - Highlight 2 (stay): band `rgba(231,76,60,.30)` behind "If you get stranded, stay with your vehicle." on B6 (x from the glyph box of "If" to the period).
 - Chips over the dark ground below the panel, one at a time, `left:200px; top:820px`, glass chip, Arial Black 900 52 px `#f2f5f8` (y about 820-928):
-  - C1 "FROSTBITE IN AS LITTLE AS 30 MIN" (width about 1080, x 200-1280)
+  - C1 "FROSTBITE IN AS LITTLE AS 30 MIN" (width about 1270 at about 37 px per Arial Black capital, x 200-1470; must end left of x 1600)
   - C2 "STAY WITH YOUR VEHICLE" (x about 200-930)
 - Source, Arial 400 19 px `#c8d3e0`, `left:96px; bottom:54px`: "NWS Buffalo Blizzard Warning, 22 Dec 2022, IEM archive".
 - Product id, Courier New 400 19 px `#93a3b2`, left 260, top 740: "WWUS41 KBUF 221909".

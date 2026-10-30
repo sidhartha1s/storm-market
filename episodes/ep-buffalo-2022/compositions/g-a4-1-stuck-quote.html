@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a4-1-stuck-quote (A4-S1, standard): glass chip ABOUT 2 OF EVERY 3 STUCK (source S-A), then Hochul's glass quote card
+  typed word by word (source S-B). Overlay on DVIDS 7571852 still, mounted by the orchestrator on a lower track.
+  Comp duration 19.9 s. Cue times are seconds from the START of A4-S1 (audio/a4-s1.words.json).
+  Chip and card are never on screen together (chip out 7.95 to 8.30, card in 16.10). One source pill at a time.
+-->
+<template>
+<style>
+  #g-a4-1-stuck-quote-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  #sq-stack { position:absolute; inset:0; }
+  .sq-chip { position:absolute; inset:auto; left:110px; bottom:110px; display:table; box-sizing:border-box; padding:22px 34px;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden; }
+  .sq-row { white-space:pre; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:38px; line-height:1; color:#dfe7ee; }
+  .sq-num { display:inline-block; font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:84px; line-height:1; color:#f2f5f8; }
+  .sq-stuck { position:relative; display:inline-block; color:#e74c3c; }
+  #sq-rule { position:absolute; left:0; right:0; bottom:-2px; height:4px; background:#e74c3c; transform-origin:left center; opacity:0; visibility:hidden; }
+  .sq-card { position:absolute; inset:auto; left:260px; right:400px; bottom:150px; box-sizing:border-box; padding:28px 48px; text-align:center;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden; }
+  .sq-q { white-space:nowrap; font-family:Georgia, 'Times New Roman', serif; font-style:italic; font-size:44px; line-height:1.35; color:#f2f5f8; }
+  .sq-word { display:inline-block; opacity:0; visibility:hidden; }
+  .sq-attr { margin-top:12px; font-family:Arial, sans-serif; font-weight:700; font-size:24px; letter-spacing:3px; color:#d8a13a; }
+  .sq-src { position:absolute; inset:auto; left:110px; bottom:54px; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+</style>
+<div id="g-a4-1-stuck-quote-root" data-composition-id="g-a4-1-stuck-quote" data-width="1920" data-height="1080">
+  <div id="sq-stack">
+    <div class="sq-chip" id="sq-c1"><div class="sq-row"><span>ABOUT </span><span class="sq-num" id="sq-n2">2</span><span> OF EVERY </span><span class="sq-num" id="sq-n3">3</span><span class="sq-stuck" id="sq-stuck"> STUCK<span id="sq-rule"></span></span></div></div>
+    <div class="sq-card" id="sq-card">
+      <div class="sq-q"><span class="sq-word" id="sq-w1">&ldquo;I</span> <span class="sq-word" id="sq-w2">saw</span> <span class="sq-word" id="sq-w3">them</span> <span class="sq-word" id="sq-w4">myself</span> <span class="sq-word" id="sq-w5">in</span> <span class="sq-word" id="sq-w6">ditches,</span> <span class="sq-word" id="sq-w7">buried</span> <span class="sq-word" id="sq-w8">in</span> <span class="sq-word" id="sq-w9">snow.&rdquo;</span></div>
+      <div class="sq-attr" id="sq-attr">GOV. KATHY HOCHUL</div>
+    </div>
+    <div class="sq-src" id="sq-sa">Mark Poloncarz, 26 Dec 2022, CNN, via CBS News</div>
+    <div class="sq-src" id="sq-sb">Gov. Kathy Hochul, storm briefing, 26 Dec 2022, governor.ny.gov</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  tl.set(["#sq-c1", "#sq-card", "#sq-sa", "#sq-sb", "#sq-rule"], { autoAlpha: 0 }, 0);
+  tl.set([1,2,3,4,5,6,7,8,9].map(function(i) { return "#sq-w" + i; }), { autoAlpha: 0 }, 0);
+
+  /* whole-window float so something always moves (keeps 9.98 to 16.10 alive): 12 x 1.6583 s = 19.9 s */
+  tl.fromTo("#sq-stack", { y: 0 }, { y: -4, duration: 1.6583, ease: "sine.inOut", yoyo: true, repeat: 11 }, 0);
+
+  /* "About" @0.00: chip + S-A in */
+  tl.fromTo("#sq-c1", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 0.08);
+  tl.fromTo("#sq-sa", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.08);
+  /* "two" @0.24 */
+  tl.fromTo("#sq-n2", { scale: 1.3 }, { scale: 1, duration: 0.35, ease: "power4.out", transformOrigin: "center bottom" }, 0.24);
+  /* "thirds" @0.52 */
+  tl.fromTo("#sq-n3", { scale: 1.3 }, { scale: 1, duration: 0.35, ease: "power4.out", transformOrigin: "center bottom" }, 0.52);
+  /* "stuck." @2.92 */
+  tl.set("#sq-rule", { autoAlpha: 1 }, 2.92);
+  tl.fromTo("#sq-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.out" }, 2.92);
+  /* "Mark" @5.66 */
+  tl.to("#sq-sa", { color: "#f2f5f8", duration: 0.25, ease: "power2.out" }, 5.66);
+  tl.to("#sq-sa", { color: "#c8d3e0", duration: 0.25, ease: "power2.out" }, 7.2);
+  /* after "Christmas." @7.74: chip + S-A out, gone before "The same day" @8.78 */
+  tl.to(["#sq-c1", "#sq-sa"], { x: -80, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 7.95);
+
+  /* "Governor" @9.98: S-B in */
+  tl.fromTo("#sq-sb", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 9.98);
+
+  /* before "I" @16.30: card shell + attribution in, quote words still hidden */
+  tl.fromTo("#sq-card", { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.35, ease: "power3.out" }, 16.10);
+  /* words on their spoken times: I 16.30, saw 16.44, them 16.64, myself 16.80, in 17.14, ditches, 17.36, buried 18.24, in 18.50, snow. 18.72 */
+  const T = [16.30, 16.44, 16.64, 16.80, 17.14, 17.36, 18.24, 18.50, 18.72];
+  T.forEach(function(t, i) {
+    tl.fromTo("#sq-w" + (i + 1), { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.14, ease: "power2.out" }, t);
+  });
+
+  /* after "snow." ends @19.00: card + S-B out, ends on host end 19.9 */
+  tl.to(["#sq-card", "#sq-sb"], { x: 980, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 19.30);
+
+  window.__timelines["g-a4-1-stuck-quote"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

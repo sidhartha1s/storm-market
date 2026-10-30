@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!--
+  g-a3-11-fuel-gauge (A3-S9 6.70-15.30, standard): illustrative fuel gauge, needle slides from 1/4 tank toward E, never reaching it.
+  Full-frame designed ground, no footage. Comp duration 8.60 s. Comp-local time = segment seconds - 6.70 (audio/a3-s9.words.json).
+  Illustration only: no fuel level was reported, no number on the gauge. Needle: -45 deg start, -80 deg end, never -90.
+  Text tiers: big 52 (E, F, chip), small 19 (ILLUSTRATION, source pill); no mid tier by design (3 text nodes besides E/F: chip, ILLUSTRATION, pill).
+-->
+<template>
+<style>
+  #g-a3-11-fuel-gauge-root { position:absolute; inset:0; overflow:hidden; pointer-events:none; background:transparent; font-family:Arial, sans-serif; }
+  #fg-ground { position:absolute; inset:0; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); }
+  #fg-stack { position:absolute; inset:0; }
+  #fg-svg { position:absolute; left:0; top:0; width:1920px; height:1080px; }
+  #fg-dial { opacity:0; visibility:hidden; }
+  #fg-pump { opacity:0.25; color:#d8a13a; }
+  .fg-ef { font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; text-anchor:middle; }
+  #fg-chip { position:absolute; left:110px; bottom:110px; display:table; box-sizing:border-box; padding:22px 34px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:28px; opacity:0; visibility:hidden;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:52px; line-height:1; color:#dfe7ee; }
+  #fg-src { position:absolute; left:110px; bottom:54px; display:table; box-sizing:border-box; padding:5px 12px; white-space:nowrap;
+    background:rgba(10,16,24,0.55); backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,0.14); border-radius:14px;
+    font-family:Arial, sans-serif; font-weight:400; font-size:19px; line-height:1.3; color:#c8d3e0; opacity:0; visibility:hidden; }
+  #fg-illus { position:absolute; left:96px; top:54px; font-family:Arial, sans-serif; font-weight:700; font-size:19px; letter-spacing:4px; line-height:1; color:#93a3b2; }
+</style>
+<div id="g-a3-11-fuel-gauge-root" data-composition-id="g-a3-11-fuel-gauge" data-width="1920" data-height="1080" data-type-ok="gauge by design: big 52 px labels and small 19 px notes, no mid tier (brief g-a3-11 section 3)">
+  <div id="fg-ground"></div>
+  <div id="fg-stack">
+    <svg id="fg-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <g id="fg-dial">
+        <path id="fg-arc" d="M640 640 A320 320 0 0 1 1280 640" fill="none" stroke="#93a3b2" stroke-width="10" stroke-linecap="round"/>
+        <path id="fg-low" d="M640 640 A320 320 0 0 1 664.4 517.5" fill="none" stroke="#c0392b" stroke-width="12" stroke-linecap="round"/>
+        <g stroke="#dfe7ee" stroke-width="6" fill="none">
+          <line x1="640" y1="640" x2="676" y2="640"/>
+          <line x1="733.7" y1="413.7" x2="759.2" y2="439.2"/>
+          <line x1="960" y1="320" x2="960" y2="356"/>
+          <line x1="1186.3" y1="413.7" x2="1160.8" y2="439.2"/>
+          <line x1="1280" y1="640" x2="1244" y2="640"/>
+        </g>
+        <text class="fg-ef" x="590" y="640" fill="#c0392b">E</text>
+        <text class="fg-ef" x="1330" y="640" fill="#dfe7ee">F</text>
+        <g id="fg-pump" fill="currentColor" stroke="currentColor">
+          <rect x="944" y="492" width="34" height="56" rx="4" stroke="none"/>
+          <rect x="950" y="498" width="22" height="16" rx="2" fill="#04070c" stroke="none"/>
+          <rect x="938" y="548" width="46" height="6" rx="2" stroke="none"/>
+          <path d="M978 506 C992 506 992 512 992 520 L992 534" fill="none" stroke-width="5" stroke-linecap="round"/>
+        </g>
+        <polygon id="fg-needle" points="960,350 952,640 968,640" fill="#e74c3c"/>
+        <circle id="fg-hub" cx="960" cy="640" r="26" fill="#15202b" stroke="#93a3b2" stroke-width="2"/>
+      </g>
+    </svg>
+    <div id="fg-chip">RUNNING OUT OF FUEL</div>
+    <div id="fg-src">Gov. Kathy Hochul, storm briefing, 26 Dec 2022</div>
+    <div id="fg-illus">ILLUSTRATION</div>
+  </div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function() {
+  const tl = gsap.timeline({ paused: true });
+  const O = "960 640";
+  tl.set(["#fg-dial", "#fg-chip", "#fg-src"], { autoAlpha: 0 }, 0);
+  tl.set("#fg-needle", { rotation: -45, svgOrigin: O }, 0);
+
+  /* whole-window float so something always moves: 8 x 1.075 s = 8.6 s */
+  tl.fromTo("#fg-stack", { y: 0 }, { y: -4, duration: 1.075, ease: "sine.inOut", yoyo: true, repeat: 7 }, 0);
+
+  /* ground on frame 0; dial, source pill in. "He was stuck" @6.74 */
+  tl.fromTo("#fg-dial", { autoAlpha: 0, scale: 0.96, svgOrigin: "960 480" }, { autoAlpha: 1, scale: 1, svgOrigin: "960 480", duration: 0.5, ease: "power3.out" }, 0.04);
+  tl.fromTo("#fg-src", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.04);
+
+  /* needle idle wobble around -45. "stuck in a car" @6.96, to 11.40 (local 0.26 to 4.70) */
+  tl.to("#fg-needle", { rotation: -43.5, svgOrigin: O, duration: 0.3, ease: "sine.inOut" }, 0.26);
+  tl.fromTo("#fg-needle", { rotation: -43.5, svgOrigin: O }, { rotation: -46.5, svgOrigin: O, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0.56);
+  tl.to("#fg-needle", { rotation: -45, svgOrigin: O, duration: 0.54, ease: "sine.inOut" }, 4.16);
+
+  /* pump brightens 25 -> 60 %. "elderly mother," @8.00-8.40 (local 1.70, from 8.40 spoken end) */
+  tl.to("#fg-pump", { opacity: 0.6, duration: 0.4, ease: "power2.out" }, 1.70);
+
+  /* FUEL @11.46 "running out of fuel": needle slides toward E but stops at -80 (local 4.76) */
+  tl.fromTo("#fg-needle", { rotation: -45, svgOrigin: O }, { rotation: -80, svgOrigin: O, duration: 1.4, ease: "power2.inOut" }, 4.76);
+  tl.fromTo("#fg-chip", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.45, ease: "power3.out" }, 4.94);
+  tl.to("#fg-pump", { color: "#c0392b", opacity: 1, duration: 0.2, ease: "power2.out" }, 4.76);
+  tl.fromTo("#fg-pump", { opacity: 1 }, { opacity: 0.25, duration: 0.25, ease: "sine.inOut", yoyo: true, repeat: 5 }, 4.96);
+
+  /* "State fire teams got them out." @12.94 (local 6.24): needle holds at -80 with small wobble, chip label brightens */
+  tl.to("#fg-needle", { rotation: -79.2, svgOrigin: O, duration: 0.2, ease: "sine.inOut" }, 6.24);
+  tl.fromTo("#fg-needle", { rotation: -79.2, svgOrigin: O }, { rotation: -80.8, svgOrigin: O, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 2 }, 6.44);
+  tl.to("#fg-chip", { color: "#ffffff", duration: 0.3, ease: "power2.out" }, 6.24);
+
+  /* all out after "out." @14.04 (14.70 to 15.30, local 8.00 to 8.60); ground and ILLUSTRATION stay */
+  tl.to(["#fg-dial", "#fg-chip", "#fg-src"], { autoAlpha: 0, y: 30, duration: 0.6, ease: "power3.in" }, 8.0);
+
+  window.__timelines["g-a3-11-fuel-gauge"] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

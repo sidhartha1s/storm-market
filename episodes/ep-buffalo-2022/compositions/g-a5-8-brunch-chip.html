@@ -6,8 +6,8 @@
   g-a5-8-brunch-chip (A5-S7, standard): glass chip "CHRISTMAS DAY · 2022" over the brunch photo only, plus two credit pills (C1 brunch photo, C2 DVIDS photo).
   Overlay on two stills (mounted by the orchestrator); root transparent. Comp duration 14.04 s (a5-s7.wav).
   Cue times are seconds from the START of A5-S7 (audio/a5-s7.words.json). Family base: g-a4-3-day-chip.
-  Picture cut at S7 +9.74 ("Across the same city,"): C1 off and C2 on, hard swap on that frame. If the cut moves, move both sets.
-  Chip is fully gone (autoAlpha 0) at 9.56, 0.18 s before the cut; visible 5.84 to 8.96 (3.1 s settled).
+  Picture cut at S7 +6.0 (brunch photo to DVIDS photo): C1 off and C2 on, hard swap on that frame. If the cut moves, move both sets.
+  Chip is fully gone (autoAlpha 0) at 5.90, 0.10 s before the cut; settled 4.80 to 5.40.
   Fallback if the table sits lower-left at 6.5 s: change .bc-chip to left:auto; right:400px (orchestrator call).
   No place name on screen. Nothing in x >= 1600, y >= 680.
 -->
@@ -46,19 +46,14 @@ window.__timelines = window.__timelines || {};
   /* C1 in. "Four years ago this week," @0.00 */
   tl.fromTo("#bc-c1", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, 0.10);
 
-  /* chip in on "Christmas brunch table." @5.44 */
-  tl.fromTo("#bc-chip", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 5.44);
-  tl.fromTo("#bc-year", { scale: 1.25 }, { scale: 1, duration: 0.35, ease: "power4.out", transformOrigin: "left center", immediateRender: false }, 5.60);
+  /* brunch photo now ends at 6.0 (index still split, 28 Oct 26): chip in 4.40, settled 4.80, out 5.40, gone 5.90 */
+  tl.fromTo("#bc-chip", { x: -60, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.4, ease: "power3.out" }, 4.40);
+  tl.fromTo("#bc-year", { scale: 1.25 }, { scale: 1, duration: 0.35, ease: "power4.out", transformOrigin: "left center", immediateRender: false }, 4.56);
+  tl.to("#bc-chip", { x: -80, autoAlpha: 0, duration: 0.5, ease: "power3.in" }, 5.40);
 
-  /* CHRISTMAS DAY brightens on "blizzard ran outside." @7.86 */
-  tl.to("#bc-date", { color: "#ffffff", duration: 0.5, ease: "power2.out" }, 7.86);
-
-  /* chip out after "outside." @8.92; gone 9.56, 0.18 s before the cut */
-  tl.to("#bc-chip", { x: -80, autoAlpha: 0, duration: 0.6, ease: "power3.in" }, 8.96);
-
-  /* picture cut "Across the same city," @9.74: hard credit swap on the cut frame */
-  tl.set("#bc-c1", { autoAlpha: 0 }, 9.74);
-  tl.set("#bc-c2", { autoAlpha: 1, y: 0 }, 9.74);
+  /* picture cut @6.0 (brunch -> DVIDS welfare-check photo): hard credit swap on the cut frame; C2 stays through the toys photo */
+  tl.set("#bc-c1", { autoAlpha: 0 }, 6.0);
+  tl.set("#bc-c2", { autoAlpha: 1, y: 0 }, 6.0);
 
   /* C2 out after "loved." @13.84 (host end 14.04 - 0.6) */
   tl.to("#bc-c2", { autoAlpha: 0, y: -10, duration: 0.6, ease: "power3.in" }, 13.44);

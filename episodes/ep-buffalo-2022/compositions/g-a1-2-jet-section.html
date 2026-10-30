@@ -282,9 +282,9 @@ window.__timelines = window.__timelines || {};
   tl.fromTo("#js-chip-mph", { autoAlpha: 0, scale: 1.2, transformOrigin: "left center" },
     { autoAlpha: 1, scale: 1, transformOrigin: "left center", duration: 0.4, ease: "power4.out" }, 8.98);
 
-  /* "Down at street level" @11.68-12.62: five short arrows in, then a slow drift (60 px/s, 1:8 of the streaks) */
+  /* "Down at street level" @11.68-12.62: five short arrows in, then a slow drift (90 px over the window) */
   tl.fromTo(".js-arr-i", { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.4, ease: "power3.out", stagger: 0.12 }, 11.68);
-  tl.fromTo(".js-arr-d", { x: 0 }, { x: 277, duration: XS_END - 11.68, ease: "none" }, 11.68);
+  tl.fromTo(".js-arr-d", { x: 0 }, { x: 90, duration: XS_END - 11.68, ease: "none" }, 11.68); /* 90 not 277: arrow 5 tip stops at x 1270 over the lake, clear of the bracket at x 1380 (frame read r4) */
 
   /* "65" @14.82, "70." @15.66: street arrows pulse */
   document.querySelectorAll(".js-arr").forEach(function (a, i) {
