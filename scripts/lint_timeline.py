@@ -36,6 +36,8 @@ from pathlib import Path
 
 import yaml
 
+from cut_by import cut_by_ok
+
 # owner-banned audio by content hash (a rename cannot dodge it): "<md5>  <name>  <why>" per line
 _banned = Path(__file__).resolve().parent.parent / "assets/sfx/BANNED.md5"
 if not _banned.exists():
@@ -137,8 +139,10 @@ def main():
             wav_d = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
                                           "-of", "csv=p=0", str(ep / src.group(1))],
                                          capture_output=True, text=True).stdout.strip() or 0)
-            if wav_d > d + 0.05:
-                findings.append(f"narration window shorter than its wav: {src.group(1)} window {d}s, wav {wav_d:.2f}s (last words cut)")
+            ms = re.search(r'data-media-start="([\d.]+)"', attrs)
+            played = d + (float(ms.group(1)) if ms else 0.0)   # the window ends media-start + duration into the wav
+            if wav_d > played + 0.05 and not cut_by_ok(attrs, html):   # a cut-by mount hands the line to Paul's clip
+                findings.append(f"narration window shorter than its wav: {src.group(1)} window {played}s, wav {wav_d:.2f}s (last words cut)")
         # b-roll is muted by default; a clip with its own sound declares data-has-audio
         # (FORMAT.md:57, owner 15 Sep 26: a stranded-passenger interview played under Paul and
         # a quote card with neither muted nor data-has-audio set).

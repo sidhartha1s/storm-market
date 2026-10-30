@@ -32,6 +32,8 @@ def check(name, ok):
 check("Camille launch (full, 2 workers, 71.5 GB free) is refused", stream_gate.launch_refusal("full", 2, 71.5) is not None)
 check("full at 1 worker on the same disk launches", stream_gate.launch_refusal("full", 1, 71.5) is None)
 check("a draft at 3 workers launches", stream_gate.launch_refusal("draft", 3, 71.5) is None)
+check("the owner's STREAM_GATE_OVERRIDE skips only the launch refusal",
+      stream_gate.launch_refusal("full", 2, 67.0, "owner 30 Oct 26") is None)
 check("Camille's multi_worker gate line stops the render", "multi_worker" in stream_gate.log_verdict(camille_bad, 60))
 check("Camille's 1-worker rerun line passes", stream_gate.log_verdict(camille_ok, 60) == "ok")
 check("Moore's 2-worker parallel_forced line passes", stream_gate.log_verdict(moore, 60) == "ok")

@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 import re
+from cut_by import cut_by_ok as _cut_by_ok
 import subprocess
 import sys
 import tempfile
@@ -30,19 +31,7 @@ def report(name, bad, detail=lambda x: str(x)):
 
 # ---- windows -------------------------------------------------------------
 def cut_by_ok(tag):
-    """True when the mount carries data-cut-by="<id>" and that id (a voiced Paul clip) starts within 0.1 s of the
-    mount's end: the narration or graphic was built for the whole line and is cut where Paul takes it over
-    (DESIGN.md "Editing grammar": the cut-by mount). A cut-by that names nothing, or ends elsewhere, is not exempt."""
-    cb = re.search(r'data-cut-by="([^"]+)"', tag)
-    st, du = re.search(r'data-start="([\d.]+)"', tag), re.search(r'data-duration="([\d.]+)"', tag)
-    if not (cb and st and du):
-        return False
-    end = float(st.group(1)) + float(du.group(1))
-    tgt = re.search(r'<video\b[^>]*\bid="%s"[^>]*>' % re.escape(cb.group(1)), h)
-    if not tgt:
-        return False
-    ts = re.search(r'data-start="([\d.]+)"', tgt.group(0))
-    return bool(ts) and abs(float(ts.group(1)) - end) <= 0.1
+    return _cut_by_ok(tag, h)   # the one rule: scripts/cut_by.py
 
 
 wins = []
