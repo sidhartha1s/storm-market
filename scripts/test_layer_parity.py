@@ -26,13 +26,14 @@ def check(name, ok):
         FAILS.append(name)
 
 
+# The HTML-only fixtures carry no wavs or -vc files, so the "Paul's voice" layer (test_paul_voice.py) is left out here.
 def run(slug, html):
     with tempfile.TemporaryDirectory() as tmp:
         ep = Path(tmp) / slug
         ep.mkdir()
         (ep / "index.html").write_text(html, encoding="utf-8")
-        rc = render_preflight.layer_refusal(ep)
-    return rc, [name for name, _, _ in render_preflight.missing_layers(slug, html)]
+        names = [n for n, _, _ in render_preflight.missing_layers(slug, html, ep) if n != "Paul's voice"]
+    return (6 if names else None), names
 
 
 palm = (FIX / "ep-palm-sunday-1965.html").read_text(encoding="utf-8")

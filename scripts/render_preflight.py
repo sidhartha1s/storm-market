@@ -213,7 +213,7 @@ def _voice_gap(mounts, episode=None):
     clips = [a for t, a in mounts if t == "video" and re.fullmatch(r"ins-paul-\d+", a.get("id", ""))]
     if not clips:
         return None
-    ref_md5 = yaml.safe_load((episode.parent.parent / "config.yaml").read_text(encoding="utf-8"))["external"]["voice_ref_md5"]
+    ref_md5 = yaml.safe_load((Path(__file__).resolve().parent.parent / "config.yaml").read_text(encoding="utf-8"))["external"]["voice_ref_md5"]
     wavs = sorted((episode / "audio").glob("*.wav"))
     if not wavs:
         return "no narration wavs to measure the clips against"

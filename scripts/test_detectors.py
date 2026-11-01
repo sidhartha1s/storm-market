@@ -8,6 +8,7 @@ comp_lint.py (qc-gates-03) is covered in test_comp_gates.py per the fixer brief.
 """
 import json
 import shutil
+import re
 import subprocess
 import sys
 import tempfile
@@ -112,8 +113,13 @@ def _stage_ep(files):
 
 def old_rev(rel_path, tmp_name, rev='ad3c9871'):
     out = S / tmp_name
-    out.write_text(subprocess.run(['git', 'show', f'{rev}:scripts/{rel_path}'],
-                                   cwd=S.parent, capture_output=True, text=True).stdout, encoding='utf-8')
+    src = subprocess.run(['git', 'show', f'{rev}:scripts/{rel_path}'],
+                         cwd=S.parent, capture_output=True, text=True).stdout
+    # the old revisions hardcode a Chromium build that is no longer installed; run them on today's one
+    exe = subprocess.run(['node', '-e', "import('./playwright_env.mjs').then(m => console.log(m.chromiumExecutable()))"],
+                         cwd=S, capture_output=True, text=True).stdout.strip().splitlines()[-1]
+    src = re.sub(r"const EXE = '[^']*chrome\.exe'", lambda _: f"const EXE = '{exe.replace(chr(92), '/')}'", src)
+    out.write_text(src, encoding='utf-8')
     return out
 
 
