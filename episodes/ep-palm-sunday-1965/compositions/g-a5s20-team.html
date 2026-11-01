@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-a5s20-team (A5-S20): the survey team's own memo, with the day the team was established underlined and labelled;
+     then the report's first page, with one word underlined: excellent. The third line, the toll approaching 200, stays
+     in frame and as bright as the others.
+     Brief: mg_specs/briefs/g-a5s20-team.md. Bases: g-i1s6-page (document card, unlit page, red underline by scaleX),
+     g-i1s7-sheriff (two cards, the first stays behind the second).
+     Memo: media/docs/survey-memo-p3-crop.png (1460 x 868) at screen (106, 64). Page: media/docs/survey-p1-excellent-crop.png
+     (1460 x 169) at screen (106, 390). Marks are in crop px. Both pages are single spaced: the underline is 3 px.
+     The date label is the same chip as g-a6s01-recs's.
+     Cues are comp-local seconds from audio/a5-s20.words.json (wav start -0.41, timeline-map.md table 5). -->
+<template>
+<style>
+  #team-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .team-h { opacity:0; visibility:hidden; }
+  .team-card { position:absolute; left:96px; width:1480px; box-sizing:border-box; border:10px solid #f4f0e6; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .team-card img { position:absolute; left:0; top:0; width:1460px; mix-blend-mode:multiply; }
+  .team-unlit { position:absolute; background:rgba(21,32,43,0.45); }
+  .team-ul { position:absolute; height:3px; background:#d0121f; }
+  /* our label, on glass, on the memo's blank paper right of its FROM line (crop x 1044 to 1440, y 290 to 440) */
+  .team-date { position:absolute; left:1064px; top:332px; padding:14px 26px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); -webkit-backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px;
+    font-family:'Arial Black', Arial, sans-serif; font-weight:900; font-size:34px; line-height:41px; color:#f2f5f8; white-space:nowrap; }
+  .team-src { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1; text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+</style>
+<div id="team-root" data-composition-id="g-a5s20-team" data-width="1920" data-height="1080" data-duration="9.19">
+
+  <!-- the memo: printed heading, TO, DATE: May 2, 1965, FROM, SUBJECT and the first paragraph. Children are in crop px -->
+  <div class="team-card" id="team-memo" style="top:54px;height:888px">
+    <img src="media/docs/survey-memo-p3-crop.png" alt="" style="height:868px">
+    <div id="team-unlit" class="team-h">
+      <div class="team-unlit" style="left:355px;top:654px;width:915px;height:32px"></div>     <!-- "has completed its assigned task." and the rest of that line -->
+      <div class="team-unlit" style="left:260px;top:688px;width:1010px;height:180px"></div>   <!-- paragraph lines 3 to 7 -->
+    </div>
+    <div class="team-ul" id="team-ul1" style="left:270px;top:652px;width:937px"></div>   <!-- The tornado survey team which you established on April 12, -->
+    <div class="team-ul" id="team-ul2" style="left:275px;top:685px;width:68px"></div>    <!-- 1965, -->
+    <div class="team-date team-h" id="team-date">April 12, 1965</div>
+  </div>
+
+  <!-- the report's first page, three lines, none dimmed. The scan is skewed: its lines rise to the right by 1.92 degrees,
+       and the underline is turned to that slope, from crop (961, 100) to (1140, 94) -->
+  <div class="team-card team-h" id="team-page" style="top:380px;height:189px">
+    <img src="media/docs/survey-p1-excellent-crop.png" alt="" style="height:169px">
+    <div class="team-ul" id="team-ul3" style="left:961px;top:100px;width:179.1px"></div>   <!-- excellent. -->
+  </div>
+
+  <div class="team-src" id="team-src1">Weather Bureau survey team memo, May 2, 1965</div>
+  <div class="team-src team-h" id="team-src2">Weather Bureau survey report, 1965, p. 1</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-a5s20-team", P = "team", D = 9.19;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+
+  var memo = $("memo"), page = $("page");
+
+  /* rest states, set at 0 */
+  s0($("date"), { y: 16 });
+  s0([$("ul1"), $("ul2")], { scaleX: 0, transformOrigin: "left center" });
+  s0($("ul3"), { rotation: -1.92, scaleX: 0, transformOrigin: "0% 0%" });
+  s0(page, { x: 1900 });
+
+  /* 0 · "The" @0.00: the memo card whole and bright, its source line */
+
+  /* 1 · day, @0.27: the date label lands on the memo's blank paper */
+  tl.to($("date"), { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.27);
+
+  /* 2 · named @1.75: the rest of the paragraph goes under the unlit page; underline 1 draws */
+  tl.to($("unlit"), { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 1.75);
+  tl.to($("ul1"), { scaleX: 1, duration: 0.6, ease: "none" }, 1.75);
+
+  /* 3 · team @2.15: underline 2, once underline 1 is complete (@2.35) */
+  tl.to($("ul2"), { scaleX: 1, duration: 0.2, ease: "none" }, 2.35);
+
+  /* 4 · Its @3.93: the memo stays in place and dims to 0.22 with its label and marks (acts-plan rule 22: a page card alone
+     would leave the band under it empty); the page card comes in from the right over it (y 380 to 569, above the presenter
+     corner); the source line changes to the page in front, out then in */
+  tl.to(memo, { opacity: 0.22, duration: 0.4, ease: "none" }, 3.93);
+  tl.set(page, { autoAlpha: 1 }, 3.93);
+  tl.to(page, { x: 0, duration: 0.7, ease: "power3.out" }, 3.93);
+  tl.to($("src1"), { autoAlpha: 0, duration: 0.15, ease: "none" }, 3.93);
+  tl.to($("src2"), { autoAlpha: 1, duration: 0.15, ease: "none" }, 4.08);
+
+  /* 5 · Excellent. @7.55: underline 3 draws under the one word */
+  tl.to($("ul3"), { scaleX: 1, duration: 0.4, ease: "none" }, 7.55);
+
+  /* 6 · @9.19: the comp ends on the hold */
+  tl.to({}, { duration: 0.01 }, D - 0.01);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

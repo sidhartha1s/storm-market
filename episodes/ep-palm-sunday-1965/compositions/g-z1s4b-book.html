@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-z1s4b-book (Z1-S4b): the book's front cover standing on the channel ground, and under it one line saying where it is.
+     Brief: mg_specs/briefs/g-z1s4b-book.md. Photograph family: the framed print of g-a2s17-funnels (a picture at or under its own
+     size on the ground, the paper shadow, a slow push inside the hold).
+     Cover: media/stills/z1-book-cover.png, 720 x 1080, the staged copy of the repo's landing/assets/cover.png (1024 x 1536,
+       Lanczos, no crop). Shown whole at 480 x 720 (0.667 of the staged copy), 494 x 742 at the end of the push (0.687): never
+       larger than the file, not cropped, recoloured, tilted or retouched. The book's name is the cover's own print; it is not retyped.
+     The only words of ours are "first link in the description". No price, no URL, no QR code, no urgency device: this is not the ad.
+     The line sits on a fixed layer and does not ride the push.
+     Cues: audio/z1-s4b.words.json seconds minus 0.44 (mg_specs/timeline-map.md table 5). No audio in this file. -->
+<template>
+<style>
+  #bk-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; background:radial-gradient(ellipse at 50% 45%, #0b1016, #030507 78%); font-family:Arial, sans-serif; }
+  .bk-h { opacity:0; visibility:hidden; }
+  .bk-cover { position:absolute; left:720px; top:96px; width:480px; height:720px; box-shadow:0 18px 50px rgba(0,0,0,0.55); border-radius:2px; }
+  .bk-line { position:absolute; left:0; top:856px; width:1920px; text-align:center; font:700 40px Arial, sans-serif; color:#f2f5f8; white-space:nowrap; line-height:46px; }
+</style>
+<div id="bk-root" data-composition-id="g-z1s4b-book" data-width="1920" data-height="1080" data-duration="6.31">
+  <img class="bk-cover" id="bk-cover" src="media/stills/z1-book-cover.png" alt="">
+  <div class="bk-line bk-h" id="bk-line">first link in the description</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-z1s4b-book", P = "bk", D = 6.31;
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+
+  /* start states: hidden in CSS (bk-h), transforms set here at 0; every move from rest below is a plain to() */
+  s0($("cover"), { scale: 1, transformOrigin: "50% 50%" });
+  s0($("line"), { y: 16 });
+
+  /* 0 · "My" @0.00: ground and the cover, already on; the slow push carries the whole comp */
+  tl.to($("cover"), { scale: 1.03, duration: D, ease: "none" }, 0);
+
+  /* 1 · "First" @4.16: the line rises under the cover. Hold to the last frame */
+  tl.to($("line"), { y: 0, autoAlpha: 1, duration: 0.3, ease: "power2.out" }, 4.16);
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>

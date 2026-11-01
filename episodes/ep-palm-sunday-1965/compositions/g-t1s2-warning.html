@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body>
+<!-- g-t1s2-warning (T1-S2): a clock at 5:43 PM, the survey's own warning page with one line underlined, then a telephone
+     picked up. Brief: mg_specs/02-T1S2-clock-warning.md; shared look: mg_specs/00-design-sheet.md sections 4, 7, 8, 9, 10.
+     Page: media/docs/survey-p39-warning-crop.png (1460 x 314, cut from survey-pdf-67-orig.png x 285 to 1345, y 244 to 472,
+     survey printed p. 39). Marks are in crop px. Ground: media/stills/a3-teletype-operators.jpg, a Weather Bureau
+     communications centre about 1955 (not South Bend, not 1965): it carries its own caption, the place sits on the glass stamp.
+     The clock stamp has left before the telephone is drawn: the telephone is not pinned to 5:43.
+     Cues are audio/t1-s2.words.json seconds minus 0.35 (wav at 13.83, host at 14.18). -->
+<template>
+<style>
+  #warn-root { position:absolute; inset:0; width:1920px; height:1080px; overflow:hidden; font-family:Arial, sans-serif; background:#04070c; }
+  .warn-ph { position:absolute; left:0; top:0; width:1920px; height:1080px; object-fit:cover; object-position:50% 40%; }
+  .warn-scrim { position:absolute; inset:0; background:rgba(3,5,8,0.45); }
+  .warn-h { opacity:0; visibility:hidden; }
+  .warn-stamp { position:absolute; left:96px; top:96px; width:590px; height:200px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .warn-face { position:absolute; left:0; top:0; width:200px; height:200px; overflow:visible; }
+  .warn-eye { position:absolute; left:188px; top:20px; font:700 20px Arial, sans-serif; color:#93a3b2; letter-spacing:6px; white-space:nowrap; line-height:1; }
+  .warn-time { position:absolute; left:188px; top:46px; font:700 84px 'Courier New', monospace; color:#e8c56a; white-space:nowrap; line-height:1; }
+  .warn-place { position:absolute; left:190px; top:148px; font:700 26px Arial, sans-serif; color:#dfe7ee; white-space:nowrap; line-height:1; }
+  .warn-card { position:absolute; left:96px; top:320px; width:1480px; height:334px; background:#f4f0e6; box-shadow:0 18px 50px rgba(0,0,0,0.55); }
+  .warn-crop { position:absolute; left:10px; top:10px; width:1460px; height:314px; mix-blend-mode:multiply; }
+  .warn-unlit { position:absolute; left:0; top:0; width:1480px; height:186px; background:rgba(21,32,43,0.45); }
+  .warn-ul { position:absolute; left:44px; top:322px; width:1342px; height:6px; background:#d0121f; }
+  .warn-src { position:absolute; right:360px; top:668px; font:700 20px Arial, sans-serif; color:#dfe7ee; letter-spacing:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  .warn-cap { position:absolute; left:96px; bottom:60px; font:700 22px Arial, sans-serif; color:rgba(244,240,232,0.88); letter-spacing:0.04em; white-space:nowrap; line-height:1;
+    text-shadow:0 0 10px rgba(0,0,0,0.95), 0 2px 4px #000; }
+  /* the drawing 360 px wide (viewBox -6 -58 102 106 = 360 x 374 px, x 760 to 1120): body base at y 596, the brief's telephone box */
+  .warn-tel { position:absolute; left:700px; top:196px; width:480px; height:454px; box-sizing:border-box; background:rgba(10,16,24,0.55);
+    backdrop-filter:blur(18px) saturate(1.15); border:1px solid rgba(255,255,255,0.14); border-radius:28px; }
+  .warn-telsvg { position:absolute; left:59px; top:39px; width:360px; height:374.12px; overflow:visible; }
+</style>
+<div id="warn-root" data-composition-id="g-t1s2-warning" data-width="1920" data-height="1080">
+  <img class="warn-ph" id="warn-ph" src="media/stills/a3-teletype-operators.jpg" alt="">
+  <div class="warn-scrim"></div>
+  <div class="warn-stamp warn-h" id="warn-stamp">
+    <svg class="warn-face" id="warn-face" viewBox="0 0 200 200"></svg>
+    <div class="warn-eye">WEATHER BUREAU</div>
+    <div class="warn-time">5:43 PM</div>
+    <div class="warn-place warn-h" id="warn-place">South Bend, Indiana</div>
+  </div>
+  <div class="warn-card warn-h" id="warn-card">
+    <img class="warn-crop" src="media/docs/survey-p39-warning-crop.png" alt="">
+    <div class="warn-unlit warn-h" id="warn-unlit"></div>
+    <div class="warn-ul" id="warn-ul"></div>
+  </div>
+  <div class="warn-src warn-h" id="warn-src">Weather Bureau survey report, 1965, p. 39</div>
+  <div class="warn-tel warn-h" id="warn-tel">
+    <svg class="warn-telsvg" viewBox="-6 -58 102 106">
+      <!-- media/drawings/telephone.svg, mounted inline with the 1.6 line its README gives for this size (5.6 px on screen) -->
+      <g class="dw-phone" id="warn-tel0" fill="none" stroke="#dfe7ee" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect class="dw-ln dw-body" x="24" y="-6" width="8" height="14" fill="#15202b"/>
+        <rect class="dw-ln dw-body" x="58" y="-6" width="8" height="14" fill="#15202b"/>
+        <path class="dw-ln dw-body" d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+        <circle class="dw-ln" cx="45" cy="27" r="15"/>
+        <circle class="dw-ln" cx="45" cy="27" r="3"/>
+        <circle class="dw-ln dw-hole" cx="43.2" cy="37" r="0.8"/>
+        <circle class="dw-ln dw-hole" cx="37.2" cy="33.6" r="0.8"/>
+        <circle class="dw-ln dw-hole" cx="34.8" cy="27" r="0.8"/>
+        <circle class="dw-ln dw-hole" cx="37.2" cy="20.4" r="0.8"/>
+        <circle class="dw-ln dw-hole" cx="43.2" cy="17" r="0.8"/>
+        <circle class="dw-ln dw-hole" cx="50.1" cy="18.2" r="0.8"/>
+        <circle class="dw-ln dw-hole" cx="54.6" cy="23.5" r="0.8"/>
+        <path class="dw-ln dw-body dw-handset" fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+      </g>
+      <!-- media/drawings/telephone-lifted.svg: the same body, the handset raised, the coiled cord -->
+      <g class="dw-phone" id="warn-tel1" fill="none" stroke="#dfe7ee" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect class="dw-ln dw-body" x="24" y="-6" width="8" height="14" fill="#15202b"/>
+        <rect class="dw-ln dw-body" x="58" y="-6" width="8" height="14" fill="#15202b"/>
+        <path class="dw-ln dw-body" d="M2 44 H88 L77 8 H13 Z" fill="#15202b"/>
+        <circle class="dw-ln" cx="45" cy="27" r="15"/>
+        <circle class="dw-ln" cx="45" cy="27" r="3"/>
+        <circle class="dw-ln dw-hole" cx="43.2" cy="37" r="0.8"/>
+        <circle class="dw-ln dw-hole" cx="37.2" cy="33.6" r="0.8"/>
+        <circle class="dw-ln dw-hole" cx="34.8" cy="27" r="0.8"/>
+        <circle class="dw-ln dw-hole" cx="37.2" cy="20.4" r="0.8"/>
+        <circle class="dw-ln dw-hole" cx="43.2" cy="17" r="0.8"/>
+        <circle class="dw-ln dw-hole" cx="50.1" cy="18.2" r="0.8"/>
+        <circle class="dw-ln dw-hole" cx="54.6" cy="23.5" r="0.8"/>
+        <path class="dw-ln dw-cord" d="M14 -10 L4 -5 a3.2 3.2 0 0 0 0 6.4 a3.2 3.2 0 0 1 0 6.4 a3.2 3.2 0 0 0 0 6.4 a3.2 3.2 0 0 1 0 6.4 a3.2 3.2 0 0 0 0 6.4 L6.5 28"/>
+        <g transform="translate(2 -26) rotate(-18 45 -5)">
+          <path class="dw-ln dw-body dw-handset" fill="#15202b" d="M4 -12 A143 143 0 0 1 86 -12 A6 6 0 0 1 92 -6 V-2 A6 6 0 0 1 86 4 H78 A6 6 0 0 1 72 -2 V-5 A75 75 0 0 0 18 -5 V-2 A6 6 0 0 1 12 4 H4 A6 6 0 0 1 -2 -2 V-6 A6 6 0 0 1 4 -12 Z"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="warn-cap" id="warn-cap">Weather Bureau Communications Center, about 1955 · NOAA</div>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function () {
+  var ID = "g-t1s2-warning", P = "warn", D = 6.89, NS = "http://www.w3.org/2000/svg";
+  var $ = function (s) { return document.getElementById(P + "-" + s); };
+  var tl = gsap.timeline({ paused: true });
+  function s0(e, v) { gsap.set(e, v); tl.set(e, v, 0); }   /* a paused timeline does not render a set at 0 until it is seeked past it */
+  function el(tag, a, parent) { var e = document.createElementNS(NS, tag); for (var k in a) e.setAttribute(k, a[k]); parent.appendChild(e); return e; }
+
+  /* ---- the ground: one photograph, a slow push that carries every hold; 1.06 is the number comp 03 opens on ---- */
+  tl.fromTo($("ph"), { scale: 1 }, { scale: 1.06, duration: D, ease: "none" }, 0);
+
+  /* ---- the clock face (design sheet section 8): centre (95,100) in the stamp, radius 62 ---- */
+  var face = $("face"), CX = 95, CY = 100, RR = 62, O = CX + " " + CY;
+  function pt(deg, r) { var a = deg * Math.PI / 180; return [CX + r * Math.sin(a), CY - r * Math.cos(a)]; }   /* degrees clockwise from 12 */
+  el("circle", { cx: CX, cy: CY, r: RR, fill: "none", stroke: "#dfe7ee", "stroke-width": 4 }, face);
+  for (var i = 0; i < 12; i++) { var a = pt(i * 30, RR - 7), b = pt(i * 30, RR - (i % 3 ? 15 : 21));
+    el("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: "#dfe7ee", "stroke-width": 3, "stroke-linecap": "round" }, face); }
+  var hh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 34, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  var mh = el("line", { x1: CX, y1: CY, x2: CX, y2: CY - 52, stroke: "#f2f5f8", "stroke-width": 5, "stroke-linecap": "round" }, face);
+  el("circle", { cx: CX, cy: CY, r: 5, fill: "#e8c56a" }, face);
+  s0(hh, { rotation: 171.5, svgOrigin: O });                /* 5:43: hour hand between 5 and 6 */
+  s0(mh, { rotation: 228, svgOrigin: O });                  /* minute hand sweeps its last 30 degrees to 258, between 8 and 9 */
+
+  /* ---- the telephone: the drawings builder's 1965 desk telephone (media/drawings/telephone.svg on the cradle, telephone-lifted.svg
+          with the handset raised; one viewBox, so the two states register), on a glass plate so it reads on the photograph ---- */
+  var tel = $("tel"), tel0 = $("tel0"), tel1 = $("tel1");
+  s0(tel0, { svgOrigin: "45 44" });                         /* the ring shake pivots on the middle of the body's base */
+  s0(tel1, { autoAlpha: 0 });
+
+  /* ---- cues ---- */
+  s0($("ul"), { scaleX: 0, transformOrigin: "left center" });
+  tl.fromTo($("stamp"), { autoAlpha: 0, x: -660 }, { autoAlpha: 1, x: 0, duration: 0.6, ease: "power3.out", immediateRender: false }, 0.13);   /* 5:43 @0.13 */
+  tl.to(mh, { rotation: 258, duration: 0.5, ease: "power3.out" }, 0.33);
+  tl.fromTo($("place"), { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power3.out", immediateRender: false }, 2.37);     /* South @2.37 */
+  tl.fromTo($("card"), { autoAlpha: 0, x: 660 }, { autoAlpha: 1, x: 0, duration: 0.7, ease: "power3.out", immediateRender: false }, 2.95);     /* issued @2.95 */
+  tl.fromTo($("src"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, 3.35);       /* the page's source, fixed, once the card has landed */
+  tl.to($("unlit"), { autoAlpha: 1, duration: 0.4, ease: "power2.out" }, 3.49);                                                                 /* tornado @3.49 */
+  tl.to($("ul"), { scaleX: 1, duration: 0.6, ease: "none" }, 3.49);                                                                             /* tornado warning @3.49 to 4.09 */
+  tl.to($("stamp"), { x: -980, autoAlpha: 0, duration: 0.42, ease: "power3.in" }, 4.99);                                                        /* It @4.99: the time leaves; both are off by 5.41, before the telephone's first stroke */
+  tl.to($("card"), { x: 1900, autoAlpha: 0, duration: 0.42, ease: "power3.in" }, 4.99);
+  tl.to($("src"), { x: 400, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 4.99);
+  tl.fromTo(tel, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.22, ease: "power3.out", immediateRender: false }, 5.43);            /* telephoned @5.43: on the cradle, after the page and the stamp are off */
+  tl.fromTo(tel0, { rotation: -2.5 }, { rotation: 2.5, duration: 0.06, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 5.52);   /* it rings: a short shake on the cradle */
+  tl.set(tel0, { autoAlpha: 0 }, 5.78);                                                                                                         /* the handset is lifted inside the word */
+  tl.set(tel1, { autoAlpha: 1 }, 5.78);
+  tl.fromTo(tel1, { y: 4 }, { y: 0, duration: 0.3, ease: "back.out(2)", immediateRender: false }, 5.78);   /* 4 drawing units = 14 px */
+  tl.to(tel, { x: -1300, autoAlpha: 0, duration: 0.35, ease: "power3.in" }, 6.49);                                                              /* down @6.49: gone by 6.84, before the cut to comp 03 at 6.89 */
+  tl.to({}, { duration: 0.01 }, 6.98);                      /* list @6.89: the cut to comp 03 lands here */
+
+  window.__timelines[ID] = tl;
+})();
+</script>
+</template>
+</body>
+</html>
